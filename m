@@ -4,99 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3375C98317
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 11:19:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08AE2C98317
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 11:23:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=39/0TbLlZwXCj4US53f0leG60BXGvQ7/dUyfM1c44jk=; b=wFVwhXgVEQ7YoR
-	9qJ4mOMVBTAxwNWcXdc6XjmxJH+4o+tY8eI2t1axulBXkUs4FDdH4Icmof/iX0lfZeLJYmYDN8EsG
-	LDAxLAmFKJ6U5iY6qXsM9bzgjPHrhkV8y90uLERW5R0RFfLc+wrAbIXyc4zjDTESgoNsiBU6c5nPv
-	fpqNELpRe7muXWSsi/OK+7QhsqW/XkUQ2opHkfvFUuYtmPkzebuVtWd/Fq9pMf0u8fbeHp2KvcEUf
-	dNza/aK6cyhIUNvWNOzI1ykh+3ZVX1GqyrrMSVgOKpzd1VIICEdz7AiY6CgBa5oc+W4kp8b9zxlRP
-	TpqwVV9NHiACAt/2PJgA==;
+	List-Owner; bh=LJohnwYHaQugMzsLSbj0tGergdpMOUKOzZzbbYFbf3Q=; b=zsI45BifSkNgJZ
+	+ZhsWnkBQAdPeok3Kwlu4dWgP+Fzx7/5rBJ/j7RTKBSPGs9ippzqrHA+IxRHyTwVWnDujPn8OOv/9
+	YMiGBuLNWBt1wAzd7b+RIboDxL9CxeknV7QQJnpG3UZDKFu3K7Yd8n147+IodAzpg9VA+KxMEZxf3
+	QvxpfYF3u6YLQksBExL1ylRjiy1S1dx2ANNVRDiZHFbrGMSs/IsucamZAJaXUvfvO3lQ4zcR1rl/p
+	ejbme0aGox8l1FNBySnjQx4oOtCN9QXxwb459s26T5lLXYNSK3Ktryq4FvYskNGNtASbxWPYHS1hs
+	DCWQ8CLLVgAloADD5Gcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9hTg-0000000AqFA-43Go;
-	Thu, 24 Sep 2026 11:19:00 +0000
-Received: from mail-pz2-x0e.google.com ([2607:f8b0:4864:3b::e])
+	id 1x9hYE-0000000Aqy1-10fr;
+	Thu, 24 Sep 2026 11:23:42 +0000
+Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9hTe-0000000AqEC-3REE
+	id 1x9hYB-0000000AqxH-1y7V
 	for linux-rockchip@lists.infradead.org;
-	Thu, 24 Sep 2026 11:18:59 +0000
-Received: by mail-pz2-x0e.google.com with SMTP id 41be03b00d2f7-cc1cea4bfd1so998782a12.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 24 Sep 2026 04:18:58 -0700 (PDT)
+	Thu, 24 Sep 2026 11:23:40 +0000
+Received: by mail-pj2-x10.google.com with SMTP id 98e67ed59e1d1-396cccbba92so1440266a91.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 24 Sep 2026 04:23:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790248738; x=1790853538; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1790249018; x=1790853818; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=hiZAP5CE2Qg+2953jUYih6NAEp+heJ/HVnYd8DX8Ozo=;
-        b=hBcMWvvf7V9nt1jpDkhXE/JJxX0nZ3VsDWywarGCB2rEo+4TaF1nU3uSiThXunJSva
-         Vu5J972rr9CUKLJQ1MUuFP7MZeZK8JB4/B8HC0FA5DI427PSBsNXut62NhdZElZ+gjK/
-         oewQ/0tQ8Ogrs7Tlq3TP+rRq8pXXI5ANz1KJa1Ufg/4Lf8MPBNCiwudgwj/ZL9vOpS4I
-         Q9toEhxJVhioPfqqbHAzzMwxEK5dFCxw2ya5M61miJXv5TZ7qyQHMnOuBGP3TnhErbbn
-         ideHgwbHYuz3slr6sil6XDcKiSpLmVXbpDeznt2foala7pWqk6KtWiZ5aFZT5hVP7DvY
-         El2g==
+        bh=dvO1Qkk2Cc/fKI8T9OqiFoCZ+Xfk2+7b9EWzAp6ijiU=;
+        b=RTg4YlulzmA5nCbxtF8etwao0EebGs99BiW2ZQtDAQu203qJjHCVCz4yO+zI48X8Ch
+         LQYSCnV0TNwmr7gGYdEN0aYvWRwr6e7ij93dwwJ405KFc20yw/DIIrin7XNiCPtOkOYH
+         Ophnol0UxPkUr/AC2as+jqHVrCs+YoSZ4pYHPIhWH/X9wvsw3sIFGcVj1HuR8LPbnbrC
+         TYla09seRQZ6Ey8lqBk4iqcRLpOkdABwr2YZk1g7vG6kmq/JrFXAd9+aLb1NoAe9049m
+         d5DDnDpoDazP5WrxjJeJEoBdz4DXv2XtvltrpPLbCXiMev7uYw44SoQ0jpYuQyKvGSJp
+         ZyFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790248738; x=1790853538;
+        d=1e100.net; s=20260707; t=1790249018; x=1790853818;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=hiZAP5CE2Qg+2953jUYih6NAEp+heJ/HVnYd8DX8Ozo=;
-        b=QuL7FIGWadBZpa33Hjaz2Tn6T1JE+/qbJbNGS/6ctieeVMlzrb9pme8ES78tFa4uSS
-         QM0pcaPmREIvb7ideXBhpXGxQ4Ho/RmgNKWqP3oxMLlqC3LW4MaqXBRrfKEER74Av9wt
-         dHjfrx1XsZDVV2ddWU5J27lt9FUA7U/LamCGpj9MJ3sQjL0NWNW6oIABeiLTPFPSZful
-         +Cre6dvWbbcglPZQFwkBl/Q4E1+XHzKmhXCZbOirBYT+X6q9mKe+B7+3TQJQjbzeRiHI
-         4SM0BI662OwWmsHoZrnOD/SEjeS+n161Q04fCbOea4YodPoptqMWY1cNgEizqhIEHMFk
-         XPNg==
-X-Forwarded-Encrypted: i=1; AKwUvBwynbJtDrmWvEk2QMEHKIwJQjqdcREi5O40eL9FD3ya7ReoU+Rpr95MAzNvWTPb4Av/b1gG0FDRTCDxB+YvMg==@lists.infradead.org
-X-Gm-Message-State: AFuF++mGyQ+OTuDbK7rOueaBAofkf+mV67vHTaKRPlCvp4cTECcXenVO
-	vpV9p6by0xNbGqh2Bxz+EnDKseSaQMZBlCSWybsTL6mxrUZvaChhYsQy
-X-Gm-Gg: AYBFou3SWiJh99UbDNyzaB0XfQK9AVmRAWY+JR8ZOV6YWe9XjqfvhZ9lCj8XMNbSaJ2
-	BVyksVYURbONru1FPaAg3VshfcOGWmKli+aaCKQ/IC3qLxN5Ow7MRyNvfmayonviRTvtpUMwkwt
-	+tVkTljS/pUM5xUvabkRDGM3Mjcl7krkqiBZCn4bRdM8Ckr7EnAxhiAnBlB7yjRpTdaAIZ/IHNH
-	HmFLr3tdSbKj2RFx7713Bpi6SJuyx8E/nVkuwbe4Pus96BgtU6NPxNfOHRtlu3MTNdkVuEwtcMu
-	9nceGwsTMxf9rveP1a+T/+rL6yhEIBBPniNb8/5tErxXPRL4WRLPl+oDUHF0KkHIGopEYPsFqVq
-	RUi0DLbr2g6uiuIB9K/rTZX19QS8MPR4edvpFPZK85VtHnFweEs3YRmjvxJJ9h+ojlN9EVEpNVd
-	/1/sL5Zx5/sFijqrGnG02ZVIgAr+4F6cfSm1dTkq8qJ+SuNfbDhTIEaTZp3taM5pmKYGIqDOtFC
-	hZxQfVkXz9cGjgHwM7zode2whjouCU/
-X-Received: by 2002:a17:90b:2dc5:b0:39d:efa9:cd25 with SMTP id 98e67ed59e1d1-3a09856fb98mr1677016a91.2.1790248733078;
-        Thu, 24 Sep 2026 04:18:53 -0700 (PDT)
-Received: from arch.localdomain (123202092053.ctinets.com. [123.202.92.53])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a0972efa0bsm4314680a91.8.2026.09.24.04.18.47
+        bh=dvO1Qkk2Cc/fKI8T9OqiFoCZ+Xfk2+7b9EWzAp6ijiU=;
+        b=rAlaHW4t6FOy0IaA8PsT2/nEwf6gYGKs2WqnxNPHFwDMZ+ZnfKpgzmemGmMpz6VWTO
+         EYD3WJYOx7VbYE4vPvhBEZylZ34vaD7QvG1dXyjNUdB9SdD00QW6sANTHskfzesVIkQ9
+         dgYM4WONQpQknRtF+dizHfYSdwoQ6a7A++HbWfuU8Z7K+1cMRYruGnkKPzNU6gtP0D1m
+         0S31CKMhhJFKUrkAnO8nsOUIklbK5Z5vGiTYlf2z1fTJjZbws3tdfXtTrGXU170/mu+I
+         uAmBycAn1Ql/piBSZ+19VAUgxUw1bMiSPFaQiAFy0bbAhmDxAntmYGzwdTWiOzjEjdOw
+         KjBQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxI59qsWL1e1q9RAI+jfN2x7SLS4bF92+NYHwzy8Hbg65haPeqdF9waFQ87PyDdbywXhyH85vxqjYqdUUQqzQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++nuCLqxBqz/m7gqCttu46ZGFH+egTu/GRDscWbTlpENSo/5wQVJ
+	UC90MtP+rFHfs/eXAyYchJ5zalUYgxXX0Bpfmt04L4YrCnxfWnnL8LUZ
+X-Gm-Gg: AYBFou1Jx3o66LJZIAY4kBdNgNhrkHAq/NPwtL7BtVkNH3QYODJphCkdOySCxsiy6ua
+	rY/79QoIX8/Xr/a9hPBbE9oh9umlD6N4xon1fZeokdWpH5eVH/3YDMZrna/lKxkL/Aevksrs5zY
+	hhxa6gLyMTX5g55QFhE8RjcrA1R0t7KlhROCrnWahIrPuYJfuuEUH3K0xuV0kK1pHo+9EJtfLPJ
+	IkCxFG6VZiGxJDhpIpZYtLGVy+rY6EbjPizaYWvAezTYBHy3zhTppzdKvkAd/sdZ5UROjHiOolB
+	cfmeEybY6aYBYCYiBo5ixjP+mykzBew5j0oF/rz6m8PeInOiqRj5j3oauUbL2AF8u6sA23nQDEb
+	dU26nTkMNtcMZ4FqXnx/KGut4AjUYTFyfqxw1S+CSHCy6bPQIzwnS30ftODOa08+qI21SbpSH4J
+	N01ZzdqLhfFZv6by2r8Dhw1ihXZ55PM4YqniyJx+GP33rBaf3er3+W5sBLTS7GjBZV
+X-Received: by 2002:a17:90b:524c:b0:39e:1310:cb36 with SMTP id 98e67ed59e1d1-3a0985bce17mr1718584a91.20.1790249018445;
+        Thu, 24 Sep 2026 04:23:38 -0700 (PDT)
+Received: from lgs.. ([2001:250:5800:1002::de93])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a0813318c1sm3586800a91.4.2026.09.24.04.23.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Sep 2026 04:18:52 -0700 (PDT)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Jun Yan <jerrysteve1101@gmail.com>,
-	Damon Ding <damon.ding@rock-chips.com>,
-	dri-devel@lists.freedesktop.org,
+        Thu, 24 Sep 2026 04:23:37 -0700 (PDT)
+From: Guangshuo Li <lgs201920130244@gmail.com>
+To: broonie@kernel.org,
+	heiko@sntech.de,
+	william.zhang@broadcom.com,
+	kursad.oney@broadcom.com,
+	jonas.gorski@gmail.com
+Cc: linux-spi@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	linusw@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2] drm/bridge: analogix_dp: use devm_phy_optional_get() for the DP PHY
-Date: Thu, 24 Sep 2026 19:18:42 +0800
-Message-ID: <20260924111843.937649-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	linux-rockchip@lists.infradead.org,
+	jon.lin@rock-chips.com,
+	bcm-kernel-feedback-list@broadcom.com,
+	noltari@gmail.com,
+	lgs201920130244@gmail.com
+Subject: [PATCH 0/3] spi: balance remove-path teardown in three drivers
+Date: Thu, 24 Sep 2026 19:23:26 +0800
+Message-ID: <20260924112329.1566051-1-lgs201920130244@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_041858_858783_2962DDCD 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20260924_042339_530879_AF5B2480 
+X-CRM114-Status: UNSURE (   6.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,62 +108,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DP PHY is optional: the Rockchip RK3399 eDP controller (used as the
-internal eDP port) has no separate PHY device and relies on its built-in
-PHY, which is programmed directly through the GRF registers, so its DT
-node carries no "phys"/"phy-names" property.
+Several SPI drivers establish resources or runtime-PM state during probe
+but do not perform the matching teardown after successful removal.
 
-Requesting the PHY with devm_phy_get() therefore returns -ENODEV (or
--ENOSYS when CONFIG_GENERIC_PHY is disabled) and the driver logs a
-misleading "no DP phy configured" error at probe time before falling back
-to a NULL phy.
+Add the missing unmap or runtime-PM cleanup in each driver's remove path,
+following the cleanup already used by its probe error paths.
 
-Use devm_phy_optional_get() instead, which returns NULL when the PHY is
-absent and otherwise behaves identically, and drop the manual -ENODEV/
--ENOSYS handling. This also removes the spurious error message.
+Guangshuo Li (3):
+  spi: fsl: unmap immr_spi_cs on remove
+  spi: rockchip-sfc: Clean up runtime PM on remove
+  spi: bcm63xx-hsspi: Disable runtime PM on remove
 
-Assisted-by: Claude:deepseek-v4-flash
-Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
-Reviewed-by: Damon Ding <damon.ding@rock-chips.com>
----
- .../drm/bridge/analogix/analogix_dp_core.c    | 22 ++++++-------------
- 1 file changed, 7 insertions(+), 15 deletions(-)
+ drivers/spi/spi-bcm63xx-hsspi.c | 1 +
+ drivers/spi/spi-fsl-spi.c       | 8 ++++++++
+ drivers/spi/spi-rockchip-sfc.c  | 6 ++++++
+ 3 files changed, 15 insertions(+)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 18e76d1e78e1..a126c411b5cc 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1427,21 +1427,13 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
- 	if (ret)
- 		return ERR_PTR(ret);
- 
--	dp->phy = devm_phy_get(dp->dev, "dp");
--	if (IS_ERR(dp->phy)) {
--		dev_err(dp->dev, "no DP phy configured\n");
--		ret = PTR_ERR(dp->phy);
--		if (ret) {
--			/*
--			 * phy itself is not enabled, so we can move forward
--			 * assigning NULL to phy pointer.
--			 */
--			if (ret == -ENOSYS || ret == -ENODEV)
--				dp->phy = NULL;
--			else
--				return ERR_PTR(ret);
--		}
--	}
-+	/*
-+	 * RK3288/RK3399 use Analogix DP controller built-in PHY,
-+	 * no extra PHY configuration is required.
-+	 */
-+	dp->phy = devm_phy_optional_get(dp->dev, "dp");
-+	if (IS_ERR(dp->phy))
-+		return ERR_CAST(dp->phy);
- 
- 	dp->clock = devm_clk_get(&pdev->dev, "dp");
- 	if (IS_ERR(dp->clock)) {
+
+base-commit: f03c39de3a1307371a4032757cd1732e91087c7d
 -- 
-2.55.0
+2.43.0
 
 
 _______________________________________________
