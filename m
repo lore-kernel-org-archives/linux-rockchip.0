@@ -4,82 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1B54C9830E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 17:51:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C1DBC9830E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 18:01:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OpbyVoDyshyOZ634sddDqhCxSwmeHeNTmsHgni/oSXE=; b=Sa/C9OYRnDLJofvmbE2qkSgRnO
-	Vc7xvFycDHFM+ShmBr9yiH4RKumzFVtnlRmJIPcvG3ZXH5xnPprAbD/jtRxiJeLb1SnT2NVvTwAB2
-	CfEkfGIQILyLQhrosJDqUyg6jV0TzVXO6hIaWl5BZsuz8quHKEna6+149px3u/cFz/cPCpk/qCVon
-	IsIWkkvwW3Bxuyy71tCv3mjxDkbQ38ZrggZIU7eE7ZwcMmo/B2fwqIGoiJJd6NlrOjrD5T8OELxUV
-	qC80pV3Sne4DknliO0LW7t7P9N6T/+x2igvBtsgvMfNkPUrHh5R2iSbSPr09m/IMLdfSy4gKMO97X
-	G8OAexZA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=T138rGHpHHArhyix1kzpW/bTHtnUfglB/7odT+OvrBo=; b=LZHP8h6GNWRl1G
+	ZBszjdrZufZK9hzsQPRTqCo8DAI2oXnfNdU4xOq0BU7Y3bU9GIvgj8hFEAKQONNbVnVugYcSjaD3M
+	zz0hXFuH3Sfjsd1Cd7kVvrdJ3FkJ309vXPjP9RZdxjipCXJyXadFZM+RvkEQtqqDKF8YeTSocHwvS
+	uvLVIQe4KIvrtMGnB3VUDO5Eh9sGvgr2PmFdxzo9mkXu0WOWV+EOsayS8Rj/mzZqJxuD23PfL6SfE
+	VJBD0jO8M/fTv2fldTV0v0cHpsp+F2h/ztG5JDEiB8fpgCyvhRxr7SGHyOoWRahuDUXq7kUQ/Ttb1
+	h0eUuTsbUZeWeXG3S2tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9nbP-0000000Bpvz-1bdG;
-	Thu, 24 Sep 2026 17:51:23 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x9nl4-0000000BrLw-25nb;
+	Thu, 24 Sep 2026 18:01:22 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9nbM-0000000Bpun-1WXW;
-	Thu, 24 Sep 2026 17:51:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790272277;
-	bh=E5sOGZv4PsnQ9lebGLSxJFxuo51klyzvMHE8CDz7Q9Y=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=kE0AuB1UulmjZhIOgwAwnOV/ZisIZPnLZDoiyztMOMVPai48Y0BDuo/TRzky24oKV
-	 BlU9BEI4mZqG1Zlw1mVvQIYMrua6m3+ZB4SMpqjomLxLwKxRnKZD1aJegtjVBwx6+z
-	 CbIEHai48Yp7bNY3Wlw8r8I7ChBrePh90mWCOnUqe1hGHc0NEZpFj2u4M8Xuv35hKu
-	 nV4vHYIOyCRKaJw/bW5OtsrBhJZSmMtHVTM+IQYaLzYHuLYpQNSOD16EHKVWFW4+fe
-	 2Jm8pc6q3POOIqco4Mrd2T6Z8VABOLfb10GpZzShkUCYPUDWri0vL3v/ckrSFN85F8
-	 XqipsgWgav70A==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2567017E0082;
-	Thu, 24 Sep 2026 19:51:15 +0200 (CEST)
-Message-ID: <518ec010db104f6f0e7c85607a97af408da44eed.camel@collabora.com>
-Subject: Re: [PATCH v3 2/3] media: dt-bindings: media: nxp, imx8mq-vpu:
- Remove nxp,imx8mq-vpu
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Conor Dooley <conor@kernel.org>, Benjamin Gaignard
-	 <benjamin.gaignard@collabora.com>
-Cc: p.zabel@pengutronix.de, mchehab@kernel.org, robh@kernel.org, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, Frank.Li@nxp.com,
- s.hauer@pengutronix.de, 	kernel@pengutronix.de, festevam@gmail.com,
- linux-media@vger.kernel.org, 	linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, 	imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, 	linux-kernel@vger.kernel.org,
- kernel@collabora.com
-Date: Thu, 24 Sep 2026 13:51:13 -0400
-In-Reply-To: <20260924-compare-useable-3e2863b66924@spud>
-References: <20260924130453.196299-1-benjamin.gaignard@collabora.com>
-	 <20260924130453.196299-3-benjamin.gaignard@collabora.com>
-	 <20260924-compare-useable-3e2863b66924@spud>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+	id 1x9nl2-0000000BrLG-3PgG;
+	Thu, 24 Sep 2026 18:01:20 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4F89F42DEE;
+	Thu, 24 Sep 2026 18:01:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 329B61F00893;
+	Thu, 24 Sep 2026 18:01:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790272880;
+	bh=3b7s0TZCouRV+fANKyon2fgb5XJsJs6Z3Co+PZgaJH0=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=iJsasJCeYcma1r+urKfOz0k8MclnTql/D1yVdZRNt6KeUQFwBy4IYdzChbWGVpUgC
+	 +m1YjISlr9tTMgCG899hV+yLjNlALOFMET9kxqPlyp8wXKbEboH0D0hLqJGnosXYbD
+	 n+jvB7849l/+p3ecltU8JlbFJrJAvCEsTznzdkIrYkVmFSFW3+zX8X6NjvWAdiGHQw
+	 lwwaapzE1FapwSoJ2H2a9rQqqetku6tCKb7DziCdCP5/0fgoIePhdZOZyuQ67IggFt
+	 Ed0+3r13bhWufGoDv2dm9/Hcj8vh2KnFyrzesy4OL3D1dQNX7tEOCMK2qZXdhzhrL/
+	 6bxE/sx8eTlKQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 568C43A566DD;
+	Thu, 24 Sep 2026 18:00:10 +0000 (UTC)
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_105120_562390_BEB3F129 
-X-CRM114-Status: GOOD (  19.91  )
+Subject: Re: [PATCH net v2] net: ethernet: stmmac: dwmac-rk: fix bulk clock
+ leak
+ when the PHY clock fails
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <179027280889.1685480.8117520252597627875.git-patchwork-notify@kernel.org>
+Date: Thu, 24 Sep 2026 18:00:08 +0000
+References: <20260923123713.3137146-1-coiaprant@gmail.com>
+In-Reply-To: <20260923123713.3137146-1-coiaprant@gmail.com>
+To: Coia Prant <coiaprant@gmail.com>
+Cc: heiko@sntech.de, maxime.chevallier@bootlin.com, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ sebastian.reichel@collabora.com, netdev@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, lorenzo.bianconi@oss.qualcomm.com
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,125 +70,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3655244688081771738=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
---===============3655244688081771738==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-ufgeUgCb5bgTB+Z5csz7"
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
+On Wed, 23 Sep 2026 20:37:13 +0800 you wrote:
+> gmac_clk_enable() enables the bulk clocks first and then the optional
+> PHY clock. If clk_prepare_enable() on the PHY clock fails, the function
+> returns without rolling back the bulk clocks, and bsp_priv->clk_enabled
+> stays false, so the later gmac_clk_enable(bsp_priv, false) becomes a
+> no-op and the bulk clock references are leaked.
+> 
+> Add the missing clk_bulk_disable_unprepare() on that failure path.
+> 
+> [...]
 
---=-ufgeUgCb5bgTB+Z5csz7
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Here is the summary with links:
+  - [net,v2] net: ethernet: stmmac: dwmac-rk: fix bulk clock leak when the PHY clock fails
+    https://git.kernel.org/netdev/net/c/8db67bb6a1ff
 
-Hi Conor,
-
-Le jeudi 24 septembre 2026 =C3=A0 17:55 +0100, Conor Dooley a =C3=A9crit=C2=
-=A0:
-> On Thu, Sep 24, 2026 at 03:04:52PM +0200, Benjamin Gaignard wrote:
-> > nxp,imx8mq-vpu has been tagged has deprecated since a while.
-> > After driver clean up it is time to remove it.
->=20
-> No users in linux doesn't mean no users, but I am guessing that there's
-> genuinely no users elsewhere and anyone using out of tree devicetrees
-> should have updated due to the warning at runtime?
-
-I've checked the vendor DT before they moved to the mainline driver, and th=
-ey
-never used this binding (actually they never made bindings).=20
-Here's what the DT was:
-
-		vpu: vpu@38300000 {
-			compatible =3D "nxp,imx8mq-hantro";
-			reg =3D <0x38300000 0x200000>;
-			reg-names =3D "regs_hantro";
-			interrupts =3D <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>, <GIC_SPI 8 IRQ_TYPE_LEVE=
-L_HIGH>;
-			interrupt-names =3D "irq_hantro_g1", "irq_hantro_g2";
-			clocks =3D <&clk IMX8MQ_CLK_VPU_G1_ROOT>, <&clk IMX8MQ_CLK_VPU_G2_ROOT>,=
- <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-			clock-names =3D "clk_hantro_g1", "clk_hantro_g2", "clk_hantro_bus";
-			assigned-clocks =3D <&clk IMX8MQ_CLK_VPU_G1>, <&clk IMX8MQ_CLK_VPU_G2>, =
-<&clk IMX8MQ_CLK_VPU_BUS>;
-			assigned-clock-parents =3D <&clk IMX8MQ_VPU_PLL_OUT>, <&clk IMX8MQ_VPU_P=
-LL_OUT>, <&clk IMX8MQ_SYS1_PLL_800M>;
-			assigned-clock-rates =3D <600000000>, <600000000>, <800000000>;
-			power-domains =3D <&pgc_vpu>;
-			status =3D "disabled";
-		};
-
-I've not aware of any other OS or booloader that offers media capabilities =
-using
-Linux mainline DT. The now deprecated nxp,imx8mq-vpu compatible had a short=
- live
-in the Linux tree if my memory is correct. Hope this is enough justificatio=
-n.
-
-regards,
-Nicolas
-
->=20
-> >=20
-> > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > ---
-> >  .../devicetree/bindings/media/nxp,imx8mq-vpu.yaml      | 10 ++++------
-> >  1 file changed, 4 insertions(+), 6 deletions(-)
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yam=
-l b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> > index 19528262810a..69619d2c86fa 100644
-> > --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> > +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> > @@ -14,12 +14,10 @@ description:
-> > =20
-> >  properties:
-> >    compatible:
-> > -    oneOf:
-> > -      - const: nxp,imx8mq-vpu
-> > -        deprecated: true
-> > -      - const: nxp,imx8mq-vpu-g1
-> > -      - const: nxp,imx8mq-vpu-g2
-> > -      - const: nxp,imx8mm-vpu-g1
-> > +    enum:
-> > +      - nxp,imx8mq-vpu-g1
-> > +      - nxp,imx8mq-vpu-g2
-> > +      - nxp,imx8mm-vpu-g1
-> > =20
-> >    reg:
-> >      maxItems: 1
-> > --=20
-> > 2.53.0
-> >=20
-
---=-ufgeUgCb5bgTB+Z5csz7
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCarVjEQAKCRDZQZRRKWBy
-9C4tAQD1qA+Ux1mXqgQgjzQg11/HgxYGtNNRdQM1ljOMoDXTQgD+IP4kVkw14aJT
-a6/hPh+9+Z/YwRaFTKestaGBrvZAkgI=
-=UaxT
------END PGP SIGNATURE-----
-
---=-ufgeUgCb5bgTB+Z5csz7--
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
---===============3655244688081771738==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3655244688081771738==--
-
