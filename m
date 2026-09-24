@@ -4,119 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95615C98311
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 10:25:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 024E5C98317
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 11:08:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=io08UHFKVq+j9akH2pQs7liUIZIOmkhxh0/ubG+ZI/Q=; b=CggUeeqC/kmqTX
-	qaDw0MY4klNMrrKdUcQuu0WnHBcc/a/47tBKgpX4qu3K930UuP3xqbJ+JHqaQ3tPQNb25jEmyw4C3
-	h1JM6puMN/quGEGkin+ZGCfPFN4jb+ABkmnNocacxZnxwlReqzuxg9161fbTuT6j8bxX/qSmUHzXw
-	SXOnH8E1+dK9aSJGrxy35i3Nv7ab9S+Zpgx38ld28s9EZNvqGgsSRso2J2HfuOfLZK422hQ0pXdQk
-	msjWsM3ABHzeMiUAhfLbQbBDIliBbjbEAcSP685vg924axjHpKdKgPXA/3mEV67ClywqPLitgsF9e
-	78Ca8BBtsdQR3lEtD1+w==;
+	List-Owner; bh=8knuydXko42ZlbgWQYTpNjT5DJ6C/79efwymJ+Lb1QI=; b=AW6BdHySMqxgO1
+	pM84sr7UtE1YBfLsUYaBmKjKXnTUmKka7Twa1dAW39bLc8wr3m+idaAocZQho06dqIay/V4mB6KjN
+	+3+CVaCNaflhetixmasf2A4Otfj2k8jwc7Oo54L1dw96OMtH0e9nfFN5XwiJBAKAJlbTBl32+iXQ/
+	/IcSLtHbpXjEhJO70uaN/+xTkd7DYe4kWPHq/ZMtKNqWMhgZeED0svGME9zvULxe+0u6P04mUyVn+
+	HvcQ8EcrdBFHx7hvBlT5psZISHVokyGObflJB/fY2o77VmJyEDsc8D/UZ+pLqLf2DjRo8r+Eah88z
+	dX1UgkGT+ztCq691gnLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9gdT-0000000Aj0x-21PR;
-	Thu, 24 Sep 2026 10:25:03 +0000
-Received: from fhigh-b6-smtp.messagingengine.com ([202.12.124.157])
+	id 1x9hJd-0000000Aogx-3jvG;
+	Thu, 24 Sep 2026 11:08:37 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9gdL-0000000Aiul-43cG;
-	Thu, 24 Sep 2026 10:24:57 +0000
-Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
-	by mailfhigh.stl.internal (Postfix) with ESMTP id 88EEC7A00BC;
-	Thu, 24 Sep 2026 06:24:54 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-06.internal (MEProxy); Thu, 24 Sep 2026 06:24:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm3; t=1790245494; x=
-	1790331894; bh=mlW+027m2NZqDmr1cPnSb/IcZBiCJqwfW1Ay6cbek0U=; b=n
-	yoBSMDXCIav8wrF3MpxD2M+pw9nLK4m+TZVzkDXEXqC6rq5iDdlDgm7bfuqATjce
-	tSJPwLsKhToGFxav7rLpI2S14InjdHaHbzm+PHkfefjiHlvNhSjpJ6gC2SB1iOMR
-	RMoxXgvu4l4M7Vq2D45gMh/t9OJ/gRq+6/IN5iOId19MUtvNTEmB9DqOIe0/ACpu
-	NA8uE0kpYIyo496eKeH8NreFRIJFS6VuFM95TXEhxesxSSOMdZ14k6ZTk21h1rBV
-	p/r0WrTKTtUU/04XGvru/u4XiCvSv9k+2Z3ju49eJ2rjg27JbZwUfIXrwrkdpOMr
-	4S0syPDwUlH0PtmbuLwZg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm1; t=1790245494; x=1790331894; bh=m
-	lW+027m2NZqDmr1cPnSb/IcZBiCJqwfW1Ay6cbek0U=; b=V8S5FlB634I+g+QQ1
-	4cvzxqLGrqZdpaHNIXQ9hhQUhimocjqkLk8JgqOmVf5pjd8UpEF+Qfdy5cU2ZdQj
-	CPr6spsKt0q7PVbInQUHcHU9AR3DZ6On1dvd9LHt7GA7yt/bAciDpwidfBiw6Tco
-	1S7/8VgA5BUrz+kT+NCqNoPkOQKf+QFTqECRDVdidVWIQrl5RNGkqAUQS6za9zy0
-	GDaKRnkuN9+22J3pFYfNAoxA1ruRbZwAo/asV511JKK0i+ze7wEvZ3UJuNKViJLo
-	EYwUi4rqUiMMsQ99L8diLOd2CnwoVBBZB9qG8XDNxjEXLsygX1BhVRT3OQouFpW1
-	KB1Hg==
-X-ME-Sender: <xms:dvq0amxO4CW-Zr53ptu8W_okf5jIIRVBD8rJowaJGQTwlYCNJLFtRw>
-    <xme:dvq0aiZMjghWuyZ3Bf5CIud1QWojQMAo_bEak7iP6IP59eszg8JxttBE0B9W9bCyS
-    IqOAgjC6HkABQUHxeSdbYD6Or2IA62jGIevHwbfT-n6xSRhOdAsjiY>
-X-ME-Received: <xmr:dvq0amLu3p6RzavpIRyQUDtifgtTnFDCILr20umt_vLA_-_dwaA50Zm2Dn686IEjT7MhsudJPw>
-X-ME-Proxy-Cause: dmFkZTE5U9DWJ/1d8NZBV16bjZrXhnu9+RjSei8Egg+AJBodp1SsqcAZICkdFDYYk8PQ/z
-    nbl5nAv32NCM/Rvob60jzzR/sJI+sbtZKf4EXYq6NkDnWs3QsBAvLEkGDZPcVAuKZu09hj
-    kufWDx+OHd427BpEwAmDDK2HcwDl5PIVxykoKPNTzoVswPV46/qyR6Xp/JY/TaNWyTgMqq
-    yMy5OLUd6yAzE6clJlYL4qCFZSrQCDEMACpcb7vwZPjxoszy3u6FTeAITQlCqDvBOfb2xA
-    f1SHw7kF1Gfs8fOU43Noc1IHs7QEkTjIEBtZWO5SBQ25T666ulWx7WKsjltbKYna0Y/oq0
-    eA7FxoFBfbFPEK71s28f3uysUgvoKKcWjAhElEIzvKnxO+Ho37/k4yYGqMIyDF+UuEaHt8
-    b2G0GUIGp5LTf8POaNh2eZZfsOoOUyn3MZA15XICMExObVdJlpLT6e1v8ALwxKd6qk4Yv6
-    uX5U6EhwCzAectZjuDt5jL8/JO7iYxz/Amil/KieYIs8NVFM1EHKvlzTgJHztAR5WgQDQu
-    j9xmUWGionl3ujVGnYSEINx3637DHZ8LUc++oLh2+lb0Jhkoy2jMErDtF/3+swIKZquKFs
-    H14Hw+XzAL+JT5mPNgxzEnYuAO6J0kALf738KmNXCDUzJz72n0oB105kTr5w
-X-ME-Proxy: <xmx:dvq0agzLZEEq1AGl33gS4xxyqz1UlWR_EDNf9IJ8eBkHZvzm1jOsXg>
-    <xmx:dvq0amPqgFdA7uYXH8aQndxkLyFeGbRN2BF6p7PI2s-4A6wNEf8KyA>
-    <xmx:dvq0asuxQrFX1EqFiLLVlIakKJaxZDydHrRXqV1CEruxpJjIZnPRPw>
-    <xmx:dvq0ar07uDmHwG9jFvb3ZGLUHQtjqhB3vc9fpoWsb6gP8ULb-RrJyQ>
-    <xmx:dvq0asa3xD_vgQXwF87ZhbvzyBqXli8ylpGF5u7iWRRK46wWzZ1rsseu>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 24 Sep 2026 06:24:44 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: tomeu@tomeuvizoso.net,
-	heiko@sntech.de,
+	id 1x9hJb-0000000AogD-2UkJ;
+	Thu, 24 Sep 2026 11:08:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1790248112;
+	bh=f1NI3qMziuOlznqvIL1ulfZOaRPAxcYcTLJ2j9fbPcQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=OcS3be1YIbiACfPsv66ogjTIWZxcX5iz0zBSGf60mdJxMRauXTVG706T5diEoSd/M
+	 3nnnFTNMoPi0lkjpjplX98h1tiL+2WsbTzxx5Ukdyy5fKHEbm9iBaCASc82Px2JQVy
+	 4fdnIpCFIARKLBDplE03n8y+BWnn9J+PQPPeyxToPsyRWV0mOoaEe9NR1NR9MaXUD/
+	 qHAKQU2G+h56IjQ2BRLjOPkYCwI3OtG5w5+07pHUHyndZlKxCPOJRBNuHlKD7I+Fct
+	 7AuztpxOdmrIGKQX13CEfW7fcnKEhCtFm8oYGTHpmI31wsGBi7fyKII1GGhQPYEFtr
+	 qRRtiaBp59FFg==
+Received: from benjamin-XPS-13-9310 (unknown [100.64.1.43])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1B88A17E0A68;
+	Thu, 24 Sep 2026 13:08:32 +0200 (CEST)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: nicolas.dufresne@collabora.com,
+	benjamin.gaignard@collabora.com,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org,
 	robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
-	joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	ulfh@kernel.org,
-	p.zabel@pengutronix.de,
-	ogabbay@kernel.org,
-	zhangqing@rock-chips.com
-Cc: royalnet026@gmail.com,
-	abel.vesa@oss.qualcomm.com,
-	sebastian.reichel@collabora.com,
-	sidong.yang@furiosa.ai,
-	u.kleine-koenig@baylibre.com,
-	chaoyi.chen@rock-chips.com,
-	diederik@cknow-tech.com,
-	alchark@flipper.net,
-	dri-devel@lists.freedesktop.org,
+	Frank.Li@nxp.com,
+	s.hauer@pengutronix.de,
+	kernel@pengutronix.de,
+	festevam@gmail.com
+Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	iommu@lists.linux.dev,
-	linux-pm@vger.kernel.org,
 	devicetree@vger.kernel.org,
+	imx@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: [PATCH v14 15/15] arm64: dts: rockchip: enable the NPU on rk3576-rock-4d
-Date: Thu, 24 Sep 2026 22:21:35 +1200
-Message-ID: <20260924102135.92217-16-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260924102135.92217-1-gahing@gahingwoo.com>
-References: <20260924102135.92217-1-gahing@gahingwoo.com>
+	kernel@collabora.com
+Subject: [PATCH v2 2/3] media: dt-bindings: media: nxp, imx8mq-vpu: Remove nxp,imx8mq-vpu
+Date: Thu, 24 Sep 2026 13:08:24 +0200
+Message-ID: <20260924110825.166238-3-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260924110825.166238-1-benjamin.gaignard@collabora.com>
+References: <20260924110825.166238-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_032456_100677_8FD51F56 
-X-CRM114-Status: UNSURE (   7.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260924_040835_786855_66864EF4 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,56 +88,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable both NPU cores and their IOMMUs on the ROCK 4D, and make vdd_npu_s0
-the NPU domain's supply so the rail is switched with the domain.
+nxp,imx8mq-vpu has been tagged has deprecated since a while.
+After driver clean up it is time to remove it.
 
-Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../boot/dts/rockchip/rk3576-rock-4d.dts      | 22 +++++++++++++++++++
- 1 file changed, 22 insertions(+)
+changes in v2:
+- have a separate patch for documentation
+- fix dt-bindings
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 272af1012..93d59c0a9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -722,6 +722,10 @@ &pcie0 {
- 	status = "okay";
- };
+ .../devicetree/bindings/media/nxp,imx8mq-vpu.yaml      | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+index 19528262810a..69619d2c86fa 100644
+--- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
++++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+@@ -14,12 +14,10 @@ description:
  
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	hdmi {
- 		hdmi_tx_on_h: hdmi-tx-on-h {
-@@ -779,6 +783,24 @@ wifi_en_h: wifi-en-h {
- 	};
- };
+ properties:
+   compatible:
+-    oneOf:
+-      - const: nxp,imx8mq-vpu
+-        deprecated: true
+-      - const: nxp,imx8mq-vpu-g1
+-      - const: nxp,imx8mq-vpu-g2
+-      - const: nxp,imx8mm-vpu-g1
++    enum:
++      - nxp,imx8mq-vpu-g1
++      - nxp,imx8mq-vpu-g2
++      - nxp,imx8mm-vpu-g1
  
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
-+
-+&rknn_core_1 {
-+	npu-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_1 {
-+	status = "okay";
-+};
-+
- &sai6 {
- 	status = "okay";
- };
+   reg:
+     maxItems: 1
 -- 
-2.43.0
+2.53.0
 
 
 _______________________________________________
