@@ -4,99 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E817AC98318
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 17:26:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1B54C9830E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 17:51:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5RgXTV3AqBsEpJd+7uKbknqqQzYsbT9zOhBmna+x/+8=; b=zf+7CiSs+F+PP1
-	wW1YVP+aZ0DEF8WqFDjuTXUIo0Yf9sCfH8aqAcrPzUhafrTay7CieLNF9kdgflQ5ur0haQwy5QTLz
-	BJHQ5/uVkMj+v4t0gOAbUvYB1SWC4n4OQJBYXlWZzFvWWzKFZVs/th4Cv6rU2K8s+jzQFHbcNoTfB
-	M+rieRJUeOtfnZTGgGg8PF1jH0xywXIA8Fe7B4XPK900Br4IDiJ+ezSE/PYKjAJW5t/4fWHCLka8I
-	cAJNXsaceCKmLbTXb3bWIETJTXPPG4hG6nw1/D9tk/Z80EsiECvjP+YE8mMlCNYIIIjUZfvvWcMjR
-	Oe3CZslRP8HTDHx7fjew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OpbyVoDyshyOZ634sddDqhCxSwmeHeNTmsHgni/oSXE=; b=Sa/C9OYRnDLJofvmbE2qkSgRnO
+	Vc7xvFycDHFM+ShmBr9yiH4RKumzFVtnlRmJIPcvG3ZXH5xnPprAbD/jtRxiJeLb1SnT2NVvTwAB2
+	CfEkfGIQILyLQhrosJDqUyg6jV0TzVXO6hIaWl5BZsuz8quHKEna6+149px3u/cFz/cPCpk/qCVon
+	IsIWkkvwW3Bxuyy71tCv3mjxDkbQ38ZrggZIU7eE7ZwcMmo/B2fwqIGoiJJd6NlrOjrD5T8OELxUV
+	qC80pV3Sne4DknliO0LW7t7P9N6T/+x2igvBtsgvMfNkPUrHh5R2iSbSPr09m/IMLdfSy4gKMO97X
+	G8OAexZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9nDb-0000000Biyt-0hfv;
-	Thu, 24 Sep 2026 17:26:47 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9nD3-0000000Bidz-1dxA;
-	Thu, 24 Sep 2026 17:26:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=lQLoppjSYZ4eXuWjqnBGhi/urt+nTFsbE0iqmDghzLU=; b=mcpUXnSzvqmXLzXkrRmHfTh4aA
-	LPXsl5qmyfyvPJ0zl0PyJjWf6FUVjbgbQHtsJUduN1z/tlYuf0woC8uN3XcUg2m7QTZdXvymKngfe
-	Xr8045sLaJgUSFYX3zeLueraEsj3seSLwscHObHGTrfbPrEw6IBh3TXH48hM2DDeq2guS9o5thDYY
-	IrPaNxowLRcimMifBr8hLjxuqN35oE8GL3pA3Q+eKG9K4XwcGbxl7xfwVRLHY5qqpe/wnvCM9rjCC
-	CDbVzL2lpaVdLfpTaU/4DJanxnQkahm0Slm8Mh2AkySSB6JvqZrbflTPAf1cZ53jmIPP8PWe1YrqS
-	OA9D+vjA==;
+	id 1x9nbP-0000000Bpvz-1bdG;
+	Thu, 24 Sep 2026 17:51:23 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x9nD0-0000000GF6Y-2TDx;
-	Thu, 24 Sep 2026 17:26:12 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1x9nbM-0000000Bpun-1WXW;
+	Thu, 24 Sep 2026 17:51:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790270762;
-	bh=YEWEtK3OAKTM8p7PXwLKo0yacKTTo23MmLht74kfYi8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ZEsiaBC9zZ+KG2q7Q7R0y5EjRpPfkC/kmcPHW7MNX9OM1w89g/o8T9vMxHOh4p1vJ
-	 x6N9si/dZH0pFlyZCdY7glZUFQYBKpv2GX3zR7zL7GLcvygsx1zygi4ySnIBJknYdo
-	 ++uy5pr2C9fz4ooaXfAa24vNWpvw0XSNjGkvpeijJLNF98UXczg2ZtI/SqaIIZIKtv
-	 y1PXnbbOlQ7BZFFpi2V7DS32c4ZofITJ2253484g+QUgOpTZd/b+iSGvONEuuzY8a1
-	 BAUE2DpQX0uhuGVzOPKdO6X3mKGCXU82rOz98TkXYqt1hxVfp8nyj0X5v3C4yrmQ09
-	 xCl49Z8UHZphw==
-Received: from jupiter.universe (unknown [100.64.1.62])
+	s=mail; t=1790272277;
+	bh=E5sOGZv4PsnQ9lebGLSxJFxuo51klyzvMHE8CDz7Q9Y=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=kE0AuB1UulmjZhIOgwAwnOV/ZisIZPnLZDoiyztMOMVPai48Y0BDuo/TRzky24oKV
+	 BlU9BEI4mZqG1Zlw1mVvQIYMrua6m3+ZB4SMpqjomLxLwKxRnKZD1aJegtjVBwx6+z
+	 CbIEHai48Yp7bNY3Wlw8r8I7ChBrePh90mWCOnUqe1hGHc0NEZpFj2u4M8Xuv35hKu
+	 nV4vHYIOyCRKaJw/bW5OtsrBhJZSmMtHVTM+IQYaLzYHuLYpQNSOD16EHKVWFW4+fe
+	 2Jm8pc6q3POOIqco4Mrd2T6Z8VABOLfb10GpZzShkUCYPUDWri0vL3v/ckrSFN85F8
+	 XqipsgWgav70A==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4760217E0D5D;
-	Thu, 24 Sep 2026 19:26:02 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id A1908480038; Thu, 24 Sep 2026 19:26:01 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 24 Sep 2026 19:25:42 +0200
-Subject: [PATCH v16 6/6] usb: dwc3: rockchip: fix USB-C reconnect in gadget
- mode
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2567017E0082;
+	Thu, 24 Sep 2026 19:51:15 +0200 (CEST)
+Message-ID: <518ec010db104f6f0e7c85607a97af408da44eed.camel@collabora.com>
+Subject: Re: [PATCH v3 2/3] media: dt-bindings: media: nxp, imx8mq-vpu:
+ Remove nxp,imx8mq-vpu
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Conor Dooley <conor@kernel.org>, Benjamin Gaignard
+	 <benjamin.gaignard@collabora.com>
+Cc: p.zabel@pengutronix.de, mchehab@kernel.org, robh@kernel.org, 
+	krzk+dt@kernel.org, conor+dt@kernel.org, Frank.Li@nxp.com,
+ s.hauer@pengutronix.de, 	kernel@pengutronix.de, festevam@gmail.com,
+ linux-media@vger.kernel.org, 	linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, 	imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, 	linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+Date: Thu, 24 Sep 2026 13:51:13 -0400
+In-Reply-To: <20260924-compare-useable-3e2863b66924@spud>
+References: <20260924130453.196299-1-benjamin.gaignard@collabora.com>
+	 <20260924130453.196299-3-benjamin.gaignard@collabora.com>
+	 <20260924-compare-useable-3e2863b66924@spud>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-Message-Id: <20260924-b4-rockchip-dwc3-rockchip-glue-v16-6-126a2e9133c3@collabora.com>
-References: <20260924-b4-rockchip-dwc3-rockchip-glue-v16-0-126a2e9133c3@collabora.com>
-In-Reply-To: <20260924-b4-rockchip-dwc3-rockchip-glue-v16-0-126a2e9133c3@collabora.com>
-To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Manivannan Sadhasivam <mani@kernel.org>
-Cc: Igor Paunovic <royalnet026@gmail.com>, linux-kernel@vger.kernel.org, 
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, 
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3153;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=YEWEtK3OAKTM8p7PXwLKo0yacKTTo23MmLht74kfYi8=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGq1XSlS+3KF/YdkO6CeAE9m8ZTAA49feZOcM
- GGF9k9kRzgWGYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqtV0pAAoJENju1/PI
- O/qap3sQAIFzrHsf7RhgG5KHrxkH4p1durXd17NT8Ez7CYxUZ0NqyS9rvbvRoOI3MorxKRe64/w
- SSz6fFo/0TdMlegOhmGvXSIPadXTOm9+uR6+9ry8elX4PCHgOO15gym9C3J/ZdKQ+plCL7wEGDn
- lLb+Jk/yHtMlREzB0tlDCfLC4crWkB74tZWIkDCWkIQYNzag/FoalbOaLAYZrG0Ju1nP/NTbz1R
- Vn6fo6yikBse69UFwGuUFvzICwfFX2DpTYAizd5bmAfCZj7H0CMUCa0WzNWINrtPNYRd5/xNg2s
- ltMKdEwa8E0q7qjL/4ubkpZV0yqELBWvuWF7xODtpGx1DbZ+lHYn+XEByU0qqNulzilrjnXGgOU
- bKAviin8AS/PqP0B5wMw+SlLFQ9uJQOdjM0pjwxNfLDgOE4o7/R9n13FAPnFJB9UseNM4bLB88g
- e3snrWFo+q8ONgY6hVyLNNa+rYx+VRHONuPUpzXg7Srm7nvD4YiypZZfenTk0LQK519UjMR+QOz
- x3H3aoojVUzDjEO3mj1+qXtiHi9PTJYgF2R79+ni4bVIxkC6zVWo8G93OuidRiOwWqYiwzxIxHE
- QL8uCCjoj7eHfw5RKmSYaY9P8jeTogPKmZ03vNiPUEnR6SVE/hUItgCTuFcfgIkT3bb9OcPmMw7
- J8zqghlf57Eb3+J1YDPAlNw==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_182610_867742_1C832D29 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20260924_105120_562390_BEB3F129 
+X-CRM114-Status: GOOD (  19.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,108 +91,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3655244688081771738=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When USB-C is configured in gadget mode and the cable is unplugged
-the USB controller is suspended. After plugging in the cable again,
-the USB controller stays suspended and thus the port status remains
-not-attached.
 
-Fix this by informing the USB core about VBUS updates when the PHY
-mode changes.
+--===============3655244688081771738==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-ufgeUgCb5bgTB+Z5csz7"
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/usb/dwc3/Kconfig         |  1 +
- drivers/usb/dwc3/dwc3-rockchip.c | 23 +++++++++++++++++++++++
- 2 files changed, 24 insertions(+)
 
-diff --git a/drivers/usb/dwc3/Kconfig b/drivers/usb/dwc3/Kconfig
-index 3c120ea9746d..344291daf1b2 100644
---- a/drivers/usb/dwc3/Kconfig
-+++ b/drivers/usb/dwc3/Kconfig
-@@ -193,6 +193,7 @@ config USB_DWC3_OCTEON
- config USB_DWC3_ROCKCHIP
- 	tristate "Rockchip DWC3 Platform Driver"
- 	depends on ARCH_ROCKCHIP || COMPILE_TEST
-+	depends on USB_GADGET || !USB_GADGET # if USB_GADGET=m, this can't be 'y'
- 	depends on OF
- 	default USB_DWC3
- 	help
-diff --git a/drivers/usb/dwc3/dwc3-rockchip.c b/drivers/usb/dwc3/dwc3-rockchip.c
-index 17b6c2ca9e19..ba8ffef2f27e 100644
---- a/drivers/usb/dwc3/dwc3-rockchip.c
-+++ b/drivers/usb/dwc3/dwc3-rockchip.c
-@@ -25,8 +25,17 @@ struct dwc3_rockchip {
- 	struct dwc3		dwc;
- 	struct dwc3_rk_phy_nb	usb3_phy_nb[DWC3_USB3_MAX_PORTS];
- 	u8			phy_reset_active;
-+	enum usb_role		role;
- };
- 
-+static void dwc3_rockchip_vbus_handler(struct dwc3 *dwc, bool present)
-+{
-+	if (!dwc->gadget || !dwc->gadget_driver)
-+		return;
-+
-+	usb_udc_vbus_handler(dwc->gadget, present);
-+}
-+
- static int dwc3_usb3_phy_notify(struct notifier_block *nb,
- 				unsigned long action, void *data)
- {
-@@ -57,6 +66,8 @@ static int dwc3_usb3_phy_notify(struct notifier_block *nb,
- 		if (!ret)
- 			return NOTIFY_OK;
- 
-+		dwc3_rockchip_vbus_handler(dwc, false);
-+
- 		/*
- 		 * Assert USB3 PHY soft reset within DWC3 before the external
- 		 * PHY resets. This disconnects the PIPE interface, preventing
-@@ -69,6 +80,7 @@ static int dwc3_usb3_phy_notify(struct notifier_block *nb,
- 		reg |= DWC3_GUSB3PIPECTL_PHYSOFTRST;
- 		dwc3_writel(dwc, DWC3_GUSB3PIPECTL(port), reg);
- 		spin_unlock_irqrestore(&dwc->lock, flags);
-+
- 		break;
- 
- 	case PHY_NOTIFY_POST_RESET:
-@@ -89,6 +101,8 @@ static int dwc3_usb3_phy_notify(struct notifier_block *nb,
- 		dwc3_writel(dwc, DWC3_GUSB3PIPECTL(port), reg);
- 		spin_unlock_irqrestore(&dwc->lock, flags);
- 
-+		dwc3_rockchip_vbus_handler(dwc, dwc_rk->role == USB_ROLE_DEVICE);
-+
- 		pm_runtime_put_autosuspend(dwc->dev);
- 		break;
- 	}
-@@ -130,7 +144,16 @@ static int dwc3_rk_phy_register_notifiers(struct dwc3 *dwc)
- 	return devm_add_action_or_reset(dwc->dev, dwc3_rk_phy_unregister_notifiers, dwc_rk);
- }
- 
-+static void dwc3_rockchip_set_role(struct dwc3 *dwc, enum usb_role role)
-+{
-+	struct dwc3_rockchip *dwc_rk = container_of(dwc, struct dwc3_rockchip, dwc);
-+
-+	dwc_rk->role = role;
-+	dwc3_rockchip_vbus_handler(dwc, role == USB_ROLE_DEVICE);
-+}
-+
- static struct dwc3_glue_ops dwc3_rockchip_glue_ops = {
-+	.pre_set_role = dwc3_rockchip_set_role,
- 	.post_phy_registration = dwc3_rk_phy_register_notifiers,
- };
- 
+--=-ufgeUgCb5bgTB+Z5csz7
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
--- 
-2.53.0
+Hi Conor,
 
+Le jeudi 24 septembre 2026 =C3=A0 17:55 +0100, Conor Dooley a =C3=A9crit=C2=
+=A0:
+> On Thu, Sep 24, 2026 at 03:04:52PM +0200, Benjamin Gaignard wrote:
+> > nxp,imx8mq-vpu has been tagged has deprecated since a while.
+> > After driver clean up it is time to remove it.
+>=20
+> No users in linux doesn't mean no users, but I am guessing that there's
+> genuinely no users elsewhere and anyone using out of tree devicetrees
+> should have updated due to the warning at runtime?
+
+I've checked the vendor DT before they moved to the mainline driver, and th=
+ey
+never used this binding (actually they never made bindings).=20
+Here's what the DT was:
+
+		vpu: vpu@38300000 {
+			compatible =3D "nxp,imx8mq-hantro";
+			reg =3D <0x38300000 0x200000>;
+			reg-names =3D "regs_hantro";
+			interrupts =3D <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>, <GIC_SPI 8 IRQ_TYPE_LEVE=
+L_HIGH>;
+			interrupt-names =3D "irq_hantro_g1", "irq_hantro_g2";
+			clocks =3D <&clk IMX8MQ_CLK_VPU_G1_ROOT>, <&clk IMX8MQ_CLK_VPU_G2_ROOT>,=
+ <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
+			clock-names =3D "clk_hantro_g1", "clk_hantro_g2", "clk_hantro_bus";
+			assigned-clocks =3D <&clk IMX8MQ_CLK_VPU_G1>, <&clk IMX8MQ_CLK_VPU_G2>, =
+<&clk IMX8MQ_CLK_VPU_BUS>;
+			assigned-clock-parents =3D <&clk IMX8MQ_VPU_PLL_OUT>, <&clk IMX8MQ_VPU_P=
+LL_OUT>, <&clk IMX8MQ_SYS1_PLL_800M>;
+			assigned-clock-rates =3D <600000000>, <600000000>, <800000000>;
+			power-domains =3D <&pgc_vpu>;
+			status =3D "disabled";
+		};
+
+I've not aware of any other OS or booloader that offers media capabilities =
+using
+Linux mainline DT. The now deprecated nxp,imx8mq-vpu compatible had a short=
+ live
+in the Linux tree if my memory is correct. Hope this is enough justificatio=
+n.
+
+regards,
+Nicolas
+
+>=20
+> >=20
+> > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > ---
+> >  .../devicetree/bindings/media/nxp,imx8mq-vpu.yaml      | 10 ++++------
+> >  1 file changed, 4 insertions(+), 6 deletions(-)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yam=
+l b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> > index 19528262810a..69619d2c86fa 100644
+> > --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> > +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> > @@ -14,12 +14,10 @@ description:
+> > =20
+> >  properties:
+> >    compatible:
+> > -    oneOf:
+> > -      - const: nxp,imx8mq-vpu
+> > -        deprecated: true
+> > -      - const: nxp,imx8mq-vpu-g1
+> > -      - const: nxp,imx8mq-vpu-g2
+> > -      - const: nxp,imx8mm-vpu-g1
+> > +    enum:
+> > +      - nxp,imx8mq-vpu-g1
+> > +      - nxp,imx8mq-vpu-g2
+> > +      - nxp,imx8mm-vpu-g1
+> > =20
+> >    reg:
+> >      maxItems: 1
+> > --=20
+> > 2.53.0
+> >=20
+
+--=-ufgeUgCb5bgTB+Z5csz7
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCarVjEQAKCRDZQZRRKWBy
+9C4tAQD1qA+Ux1mXqgQgjzQg11/HgxYGtNNRdQM1ljOMoDXTQgD+IP4kVkw14aJT
+a6/hPh+9+Z/YwRaFTKestaGBrvZAkgI=
+=UaxT
+-----END PGP SIGNATURE-----
+
+--=-ufgeUgCb5bgTB+Z5csz7--
+
+
+--===============3655244688081771738==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3655244688081771738==--
+
