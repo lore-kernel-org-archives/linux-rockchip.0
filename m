@@ -4,72 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADC80C98318
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 15:36:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7949C98318
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 16:03:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yWCKkYfetSe3ZQBdmKSO69S4gnOvj28w4STS2OUGHkE=; b=oRUDUV0gzFHYtV2I1Q3GOLYfg2
-	oVEdkVgZf3paEy3p8tXPp0stK/d8ae2hxRbMaTzZoZs6sfysgASLBJK+BiYb7tHXv2iIrCoeqs/nO
-	brxrAKYTxUnir2kMtqIFOjAVR0sV1aftkf7SPqgEIZpAjyflgL6299XtIx5VmE/tqmfOid3LOJKVu
-	07jnkSiaCIKtArbrp9HhwQRR+K2aWjRoEYovFwFyRzp7UzGxrPSWXZqW8CvYGx6piKFOfSAjFuK1J
-	Oi/IGvr1aXladYYPvJKNlOWtEfjf8nY+v0gZwV74nXmPqvX0gTzAkz092FmTx4zIt1CiJsH+0DeOz
-	V+FBU63Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=r4sdf3xR9qhQ9kcFHG92/cfi4BPQstMCWHZrUjue8xk=; b=eIfM37p2OT6GxX
+	V24H8YgxOpTDz6nL156Ikfj4DgceCNr1tn2VgmmzhU+FDr/ZVjvpMXzK4ZW/2cyN0bAWQFqH8kgSx
+	/OR9CJ6fKebxoDLnuO/irbFNfXvojBZW1Bu31gMp7v7y11gFcfFfsTtYLHTIB3vEcA1Z+Z9w5zj8E
+	GR3Xxx+mMmsY+IjECVTyzXKvblRlM5xs5+ruuU7im8GpugNa09gXwEUP7kyZFNbo1SGeQS7ZtQjei
+	EutsBFpi9elWGbqNW7Gjeg4ysFLAj2glVOZh4z6x4Yz1C4Tfb4DAI5wy74IHN/Ymu8oQIEK54iovF
+	vpcVJr/BhHE4Qc0vp6lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9lVA-0000000BRre-0HcM;
-	Thu, 24 Sep 2026 15:36:48 +0000
-Received: from sender6-op-o11.zoho.com ([165.173.180.11])
+	id 1x9lua-0000000BVu9-1fg0;
+	Thu, 24 Sep 2026 16:03:04 +0000
+Received: from smtp.forwardemail.net ([121.127.44.66])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9lV7-0000000BRql-1oR3;
-	Thu, 24 Sep 2026 15:36:46 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1790264193; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=avEIboCA7whGHLn5oj39qSTIrGRfMJV8ZiqxKNhqRMdlnAl9laOyKXZRMmDZGxAtqsOnI3KNvBup4aRqDeDGqAGSTxMBP3YIpLoFYceDvCnpHw6KRBZCd5Pi55cmpyk7ytvnBrur4jWrt7Gkrw9pDA7zTbKIKA26vOyisPURA8A=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1790264193; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=xpHCM0iE2esEzIC122AELBh0E5yUB3wABaM/lIaa61Q=; 
-	b=IGLIylyyEAOON9rdg0yA4hqUjiuq6Jqrl1jUNsPi/mNalOeB2EAYnEMZck+mj4p3YvS2lLKf1QUKxyyz8iE2fudVRUpg0YzJfd72WOB1ombH24l3MvMc6CIuoy6PRSPAbZmGBT0mhrYy9CoyX0YJhYc7E3qBx+PV2G4C1kFgBec=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790264193;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=xpHCM0iE2esEzIC122AELBh0E5yUB3wABaM/lIaa61Q=;
-	b=LeGGMk8wl/AL71GOyYLhJRlUUDzBlpFLWqtDay16AcCmgywF2N0TZJvNyycTamoh
-	e/LbcaLUo5dg0Z+buiTWVA5YujHT7M6thspb81LXzpJjAHSC5yZ7O/WOTV5aXtF+X3W
-	ZRjh6q31BvSv5IY0K9S718XkXmfZRTBhOzbFjsfA=
-Received: by smtp.zohomail.com with SMTPS id 179026419157669.64049589350486;
-	Thu, 24 Sep 2026 08:36:31 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id C4383180EDC; Thu, 24 Sep 2026 17:36:26 +0200 (CEST)
-Date: Thu, 24 Sep 2026 17:36:26 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>
-Cc: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, linux-kernel@vger.kernel.org, 
-	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, kernel@collabora.com, 
-	Igor Paunovic <royalnet026@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Manivannan Sadhasivam <mani@kernel.org>
-Subject: Re: [PATCH 2/5] usb: dwc3: rockchip: introduce glue driver
-Message-ID: <arVB7k5QRcwYfZEO@venus>
-References: <20260915-b4-rockchip-dwc3-rockchip-glue-v1-0-763bb546824e@collabora.com>
- <20260915-b4-rockchip-dwc3-rockchip-glue-v1-2-763bb546824e@collabora.com>
- <6eacce65-5636-413f-8213-10910f3a7ee8@oss.qualcomm.com>
+	id 1x9luW-0000000BVrh-3XbU
+	for linux-rockchip@lists.infradead.org;
+	Thu, 24 Sep 2026 16:03:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1790265777;
+ bh=4Z6hK1wJOvRpU/CGhkbccoyVt+96evFlvSWCRsULX+k=;
+ b=D3YsLwMNaJfRPq+ppJcriT30EIpDIa37YXLqxSSwvGMksoKScUpybiE8Is6AFXm2kUKpJr3IE
+ QmMx/XrFmO9CRTz5PsLulxdNDaZbYa/L1BJBnbyUMRlQK/vEplto52QXLAF9Bqx314qhxB1tPoz
+ DH9xRWONkg/HKBXLuoVrq0AXYQ49u/TFWLoZOAelAD/L0XPIZsyE8UrjMIo4HwpMm7Gxwys2kic
+ c783i/bD6G/7M8TGawnCgqwobJzzR4TS2VvHBQNz4lTRykwNZMKU9bOkAFJh04Jf4t5Wi4S18tr
+ vXn7L5fJ8xk+BEIj8DtHx41E7nqasM+1w8+ksDd0dSTA==
+X-Forward-Email-ID: 6ab549aec3cf5b1855119e7f
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.66
+X-Forward-Email-Version: 2.16.2
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <d3c0b1c9-a9fe-42c1-b865-dd1a8cc4e416@kwiboo.se>
+Date: Thu, 24 Sep 2026 18:02:50 +0200
 MIME-Version: 1.0
-In-Reply-To: <6eacce65-5636-413f-8213-10910f3a7ee8@oss.qualcomm.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/290.230.26
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] arm64: dts: rockchip: Remove cap-sd-highspeed on Rock
+ Pi S eMMC
+To: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+References: <1790147498-47766-1-git-send-email-shawn.lin@rock-chips.com>
+ <1790147498-47766-3-git-send-email-shawn.lin@rock-chips.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <1790147498-47766-3-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_083645_524409_975FDE9C 
-X-CRM114-Status: GOOD (  29.68  )
+X-CRM114-CacheID: sfid-20260924_090300_933897_6ED5C628 
+X-CRM114-Status: GOOD (  12.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,231 +72,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7446230430079325861=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---===============7446230430079325861==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="vu4syrqui7xkgy6d"
-Content-Disposition: inline
+On 9/23/2026 9:11 AM, Shawn Lin wrote:
+> cap-sd-highspeed declares SD high-speed support and has no place on
+> the non-removable eMMC node. Drop it.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+>  arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+> index c1e3098..677d129 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+> @@ -133,7 +133,6 @@
+>  
+>  &emmc {
+>  	cap-mmc-highspeed;
+> -	cap-sd-highspeed;
 
+The Rock Pi S board has two similar revisions that is supported by this
+DT, one has onboard SD NAND Flash and the other one has onboard eMMC
+supported by the emmc dw-mshc.
 
---vu4syrqui7xkgy6d
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 2/5] usb: dwc3: rockchip: introduce glue driver
-MIME-Version: 1.0
+So this board should have both cap-mmc-highspeed and cap-sd-highspeed
+here to support best speed depending on board revision.
 
-Hi Krishna,
+Regards,
+Jonas
 
-On Wed, Sep 23, 2026 at 11:23:01AM +0530, Krishna Kurapati wrote:
->=20
->=20
-> On 9/15/2026 8:47 PM, Sebastian Reichel wrote:
-> > Introduce Rockchip specific glue code for the Synopsys DWC3 USB driver.
-> > For now this handles things identical to the default glue.
-> >=20
->=20
-> [...]
->=20
-> > @@ -2448,11 +2448,26 @@ int dwc3_core_probe(const struct dwc3_probe_dat=
-a *data)
-> >   }
-> >   EXPORT_SYMBOL_GPL(dwc3_core_probe);
-> > +/*
-> > + * List of compatibles, which have "synopsys,dwc3" as a fallback
-> > + * compatible, but have a vendor specific glue driver that should
-> > + * be used instead of this one.
-> > + */
-> > +static const char *const dwc3_compatible_blocklist[] =3D {
-> > +	"rockchip,rk3588-dwc3",
-> > +	"rockchip,rk3576-dwc3",
-> > +};
-> > +
-> >   static int dwc3_probe(struct platform_device *pdev)
-> >   {
-> >   	struct dwc3_probe_data probe_data =3D {};
-> >   	struct resource *res;
-> >   	struct dwc3 *dwc;
-> > +	int i;
-> > +
-> > +	for (i =3D 0; i < ARRAY_SIZE(dwc3_compatible_blocklist); i++)
-> > +		if (device_is_compatible(&pdev->dev, dwc3_compatible_blocklist[i]))
-> > +			return -ENODEV;
->=20
-> Would it be better to split this patch into two ? I see core changes are
-> independent of addition of the new driver.
+>  	no-sdio;
+>  	non-removable;
+>  	pinctrl-names = "default";
 
-That's true from a pure compile time perspective, but the new glue
-driver is effectively dead code as it will never probe without that
-change.
-
-Greetings,
-
--- Sebastian
-
->=20
-> Regards,
-> Krishna,
->=20
-> >   	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> >   	if (!res) {
-> > diff --git a/drivers/usb/dwc3/dwc3-rockchip.c b/drivers/usb/dwc3/dwc3-r=
-ockchip.c
-> > new file mode 100644
-> > index 000000000000..62f2a03b08a2
-> > --- /dev/null
-> > +++ b/drivers/usb/dwc3/dwc3-rockchip.c
-> > @@ -0,0 +1,106 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/* Copyright (c) 2026, Collabora Ltd. */
-> > +#include <linux/module.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/pm_runtime.h>
-> > +#include "glue.h"
-> > +
-> > +struct dwc3_rockchip {
-> > +	struct dwc3		dwc;
-> > +};
-> > +
-> > +static int dwc3_rockchip_probe(struct platform_device *pdev)
-> > +{
-> > +	struct dwc3_probe_data probe_data =3D {};
-> > +	struct resource *res;
-> > +	struct dwc3_rockchip *dwc_rk;
-> > +
-> > +	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > +	if (!res) {
-> > +		dev_err(&pdev->dev, "missing memory resource\n");
-> > +		return -ENODEV;
-> > +	}
-> > +
-> > +	dwc_rk =3D devm_kzalloc(&pdev->dev, sizeof(*dwc_rk), GFP_KERNEL);
-> > +	if (!dwc_rk)
-> > +		return -ENOMEM;
-> > +
-> > +	dwc_rk->dwc.dev =3D &pdev->dev;
-> > +	dwc_rk->dwc.glue_ops =3D NULL;
-> > +
-> > +	probe_data.dwc =3D &dwc_rk->dwc;
-> > +	probe_data.res =3D res;
-> > +	probe_data.properties =3D DWC3_DEFAULT_PROPERTIES;
-> > +
-> > +	return dwc3_core_probe(&probe_data);
-> > +}
-> > +
-> > +static void dwc3_rockchip_remove(struct platform_device *pdev)
-> > +{
-> > +	dwc3_core_remove(platform_get_drvdata(pdev));
-> > +}
-> > +
-> > +static int __maybe_unused dwc3_rockchip_runtime_suspend(struct device =
-*dev)
-> > +{
-> > +	return dwc3_runtime_suspend(dev_get_drvdata(dev));
-> > +}
-> > +
-> > +static int __maybe_unused dwc3_rockchip_runtime_resume(struct device *=
-dev)
-> > +{
-> > +	return dwc3_runtime_resume(dev_get_drvdata(dev));
-> > +}
-> > +
-> > +static int __maybe_unused dwc3_rockchip_runtime_idle(struct device *de=
-v)
-> > +{
-> > +	return dwc3_runtime_idle(dev_get_drvdata(dev));
-> > +}
-> > +
-> > +static int __maybe_unused dwc3_rockchip_suspend(struct device *dev)
-> > +{
-> > +	return dwc3_pm_suspend(dev_get_drvdata(dev));
-> > +}
-> > +
-> > +static int __maybe_unused dwc3_rockchip_resume(struct device *dev)
-> > +{
-> > +	return dwc3_pm_resume(dev_get_drvdata(dev));
-> > +}
-> > +
-> > +static void __maybe_unused dwc3_rockchip_complete(struct device *dev)
-> > +{
-> > +	dwc3_pm_complete(dev_get_drvdata(dev));
-> > +}
-> > +
-> > +static int __maybe_unused dwc3_rockchip_prepare(struct device *dev)
-> > +{
-> > +	return dwc3_pm_prepare(dev_get_drvdata(dev));
-> > +}
-> > +
-> > +static const struct dev_pm_ops dwc3_rockchip_dev_pm_ops =3D {
-> > +	SET_SYSTEM_SLEEP_PM_OPS(dwc3_rockchip_suspend, dwc3_rockchip_resume)
-> > +	SET_RUNTIME_PM_OPS(dwc3_rockchip_runtime_suspend, dwc3_rockchip_runti=
-me_resume,
-> > +			   dwc3_rockchip_runtime_idle)
-> > +	.complete =3D pm_sleep_ptr(dwc3_rockchip_complete),
-> > +	.prepare =3D pm_sleep_ptr(dwc3_rockchip_prepare),
-> > +};
-> > +
-> > +static const struct of_device_id dwc3_rockchip_of_match[] =3D {
-> > +	{ .compatible =3D "rockchip,rk3588-dwc3" },
-> > +	{ .compatible =3D "rockchip,rk3576-dwc3" },
-> > +	{ }
-> > +};
-> > +MODULE_DEVICE_TABLE(of, dwc3_rockchip_of_match);
-> > +
-> > +static struct platform_driver dwc3_rockchip_driver =3D {
-> > +	.probe		=3D dwc3_rockchip_probe,
-> > +	.remove		=3D dwc3_rockchip_remove,
-> > +	.driver		=3D {
-> > +		.name	=3D "dwc3-rockchip",
-> > +		.pm	=3D pm_ptr(&dwc3_rockchip_dev_pm_ops),
-> > +		.of_match_table	=3D dwc3_rockchip_of_match,
-> > +	},
-> > +};
-> > +
-> > +module_platform_driver(dwc3_rockchip_driver);
-> > +
-> > +MODULE_LICENSE("GPL");
-> > +MODULE_DESCRIPTION("DesignWare DWC3 Rockchip Glue Driver");
-> >=20
->=20
-
---vu4syrqui7xkgy6d
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmq1Q3oACgkQ2O7X88g7
-+pqNww/9EHGMcp537E32jHoRUriW7+ZRqiKtCJUEczh/NpGV7a9xXNuE+bkz7LVq
-8UvGrp0IAOp4D25D87IBZIwDPnw67hIbvheZ0jI1RSFoEfccO2RDqEJuwgr7TqdC
-g0d427lgmozamZMyUVzI09/4Utnl3DSa8uWwYIq9/qRf6b5iqraovAoySq+KmKOY
-5hss824MlBk2PKv5Zo8O0dd9CwcSyZuwxDgRoBToCZxQbHJdnAoHtJJN2VmLzZVx
-N5IeQwKnqfLMS2lfiX5xSoRNotkrA7Ui5iKFvsKsLU/gARuQ6LHhChy9SE8aBww+
-chxvuSCF2s+FGF71RIHfUpVyq4+jMUdlL3ptA0mLVQrrUQsfinFAIuDtzQdTflBb
-ap3t6hwgj5zfBq/BueWKWUDfh8WurhILCEk45ALEKePEDKa7D5Dh1KEdwYBtTMy/
-G7FflOWk8J5oA9DiPHVGD5Bnu92PmD/yCxIEIDCWz03nK1cDJTl2+ahxrKrVKQa8
-1PmUSIabWXinh1fiptThR0Egj/dzscArNESi2IvoxtGBLyAVZ0aesZgGdURhV7w1
-lUxmBBlwcpDZr9TDgDakKW70TgPsuccXeCsgxLkMNm5ydtqU7l/gH5kDun4FrbWz
-0xZWpKVyrZvU0zEoz56h56Rbd+Hcas6pXZIFgJH1+tnZMCVfD7U=
-=yBxX
------END PGP SIGNATURE-----
-
---vu4syrqui7xkgy6d--
-
-
---===============7446230430079325861==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7446230430079325861==--
-
