@@ -4,98 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EC5AC9830D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 02:04:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 312D6C98304
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 03:24:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vrv5oTnOkDkmntJKVFM1/Jnw9cB6D/KEYfUiYfThqiA=; b=3wHXVVjy8JvCqh
-	YsS51WhUe93TLELVpjJ1CnfDXS2pB7VLQIPGHaQy3q3MFrgtv3twraIEnMOGiFL8dZgZj2oQxNCLM
-	/3GYTjXKIauRG27s+Dn6S8CEmOU+Yhm8SdB33mJmO6zwZ/lHjsP1xCpps02Jn7qcj7IduiXrHK1cN
-	8/TUZvX6uW7UczkelnEHBho34wrxH9IYurI/6TO6Ydn+ADfo9mhirMe53lT3ldAZZbKBQDrcWlw+2
-	yxO0E6wCGwpipYv93hahGHqfPnNofwm+XcyOJ7ilXaDAy8tooqS0GXDYlxn/sghHQIeS3hOL4iIum
-	Kzs59PXMJvJIruD6pDIQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iN9B3SrvDHkDBMLtxcIk5nfA+pef08OjhQt4h4Evrpg=; b=o++EWqpk3PXjoo
+	EWcLu7W2ahsqLFDHskNM/7YgxtDDX16zo4fSdxiZxoTwHiydQGMd7Jf7fYFy/BaYLgnrcJYuI+186
+	tg32lzn7a6fevhXJ2Je+m85PcCf9d1RQrizf4gE+DTAm/Xmsd9JZv1UL6MnS6Yvw90vMXq+6YFxK2
+	g0w40zWQ/9dK7Vjlu8WadTQMWymZZXp3yTXDN6molu7csccfTwa56fv6jEQqWaJrKfs2nUr3dGzEv
+	MG5cjYIJwUNvalH4JuQk66VFNC4bDuETVPI1RWn8gMZD/tJ0E6OXZxu8yvqWdiSyVrqKUnVyQ1vhN
+	tDI4ZcRMWf0MIGXhvLTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9Yp6-00000009q1v-3Qii;
-	Thu, 24 Sep 2026 02:04:32 +0000
-Received: from mail-pz2-x0f.google.com ([2607:f8b0:4864:3b::f])
+	id 1x9a4W-00000009vqX-12Mb;
+	Thu, 24 Sep 2026 03:24:32 +0000
+Received: from mail-m128202.netease.com ([103.209.128.202])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9Yp4-00000009q13-0KD1
-	for linux-rockchip@lists.infradead.org;
-	Thu, 24 Sep 2026 02:04:31 +0000
-Received: by mail-pz2-x0f.google.com with SMTP id d2e1a72fcca58-85469d249c5so993349b3a.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 23 Sep 2026 19:04:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790215469; x=1790820269; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=RmWPw9HQP1XagMM9TGKgOpF0w9bX79g0MmpHkabvFyc=;
-        b=Q8QloAngvWmx5UzZZ29wqtS6n0AxzWrYS4sctEjYvU/5yFA2rrFbQNOx52FBZmBXG/
-         2gXmdUkBezSFElT66oQ/CoMvmB3X8D0Z89ru44xPI+qGecmVft2+ydqqVRNzaHl1RycA
-         78pYx00IGYPRdzVb018f0QLwG8rkOp1fLYWtFS5UNXX1fU8eww0MA0Hu3PvZTLKPLBuN
-         i0adKu8unnIT3xZVajXCLFe2IkuZ0wlyWwvxbLj+ojkIAzR2XypW10NkE/HeDOMWrahX
-         0rF/UxOUasLq8F5/hJMezZTntzmwxuQ/t/fgiHNPEH7AkelORygE0Sshy/AYwmnyUV4g
-         ii1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790215469; x=1790820269;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=RmWPw9HQP1XagMM9TGKgOpF0w9bX79g0MmpHkabvFyc=;
-        b=CKrSh+Uro0hXDHmjslnxSGb0Xioy1UqNd5TOPT43a8O2icBbve8/zep0ma79lHnbOB
-         5Prt5XRQ8BgSndmx+PCn3WN2iqFuVNWQVytWzZGIotiqmddl9qynn+lgERs/Vt/0jzs3
-         NhEA1eII0HCMagOUZm4MrEbulfGnJKcfGbrMY9zYyJYhFoqq86nAXhEirxtQUJwsVLVo
-         rmPXdXu6NjMq1vCO9LBNdUAN4ZmrmhHb7yvHmttlERtywEiEtXPY0dD/s65kGvkXVfA4
-         1DNYu6mAsuhTD0kFR8JzvhG3Ie2Yy+nwlweoBq3iEaq2XPshjtp57Kx6S/EMn8GyYlxf
-         G0mA==
-X-Forwarded-Encrypted: i=1; AKwUvBz679y+kXjriNUcQxcFN0RZdtdQ4Dal0+wm67se4RyWZTyOTREXt81jCHJ6CVLFp93B9QCvpxki4rkY8UHO1Q==@lists.infradead.org
-X-Gm-Message-State: AFuF++malf1b8coD/QVgGoc3/DxBNSlBI7+y46RDGVJO2Yv4c52CFuz9
-	Kbwh6Uj+RffRT2jS7N3VyqyBnaMgMRCFwRVmNUWchVSAggiOZEtBENvEfRpXk5I9m3U=
-X-Gm-Gg: AYBFou24dRk7YM+6OqK50njtXbK9MNUuPXD2rX0ex8tZfktnSEPWe4BZXF6wRslqXs3
-	EMTSi1OI7BG+l9S5dhGNMOqDgyd5YUgwQvcU3iYgHUSwradVhRlkV6KckSu+5U6iFrOxEYDPJRG
-	aEfwWEHmuvla14PrtRuf99tr/ol8TMvBfVI4FCSM26s0JXIz1Lgb70Qb6ttUxUflamvK3Phz3bD
-	Evq6rWIYt7XleVryHk6JRMkDbZIz+ihCkisi4qU178shSGWMdP/DzmGIwfACgEdgmpnPDyuT77r
-	lUee6NB6leTj5frunpreVY13r8HO/ZjCuKrg1ZhM8Bcbe6ZKRU+vOGXJMAq0YOpNiGC4KvqVBWM
-	boq3gGp27kuDBDcSGJ/oNA7kdVuk9+0BMo/NYjrHWMuvmHXsbmDkh0EnxQ3HYJjrz0Pdd+XTf7L
-	22Wxn0i1ULPEfFPc1OpNrWospwVVlo+uVMq5OC7lusGPTnXWDFi75r0yt6SFlKH4p+zJbXIx8+h
-	ZtjHdab5m46vFBHWpOYt4nPMcTDgPIf
-X-Received: by 2002:a05:6a00:6088:b0:874:706d:856d with SMTP id d2e1a72fcca58-87e9b3ba37amr753328b3a.30.1790215468861;
-        Wed, 23 Sep 2026 19:04:28 -0700 (PDT)
-Received: from arch.localdomain (123202092053.ctinets.com. [123.202.92.53])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-87d1d5c1331sm2041625b3a.24.2026.09.23.19.04.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Sep 2026 19:04:28 -0700 (PDT)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Jun Yan <jerrysteve1101@gmail.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH RSEND] drm/bridge: analogix_dp: use devm_phy_optional_get() for the DP PHY
-Date: Thu, 24 Sep 2026 10:04:16 +0800
-Message-ID: <20260924020417.868588-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	id 1x9a4S-00000009vpi-29UG;
+	Thu, 24 Sep 2026 03:24:31 +0000
+Received: from [172.16.12.74] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4ef5e07a0;
+	Thu, 24 Sep 2026 11:24:13 +0800 (GMT+08:00)
+Message-ID: <0ef54850-6919-4a29-a8df-586a3dc2de5f@rock-chips.com>
+Date: Thu, 24 Sep 2026 11:24:11 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RSEND] drm/bridge: analogix_dp: use
+ devm_phy_optional_get() for the DP PHY
+To: Jun Yan <jerrysteve1101@gmail.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20260924020417.868588-1-jerrysteve1101@gmail.com>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <20260924020417.868588-1-jerrysteve1101@gmail.com>
+X-HM-Tid: 0aa0d17137df03a8kunma7ac608b17ff1d
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaSE0eVh4YTE5DGEpITU9DQ1YVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=S7TGv+sarLalZd+G1aldyflaBCPFJ/ccsGyJ1o7TbseyJqzgBAmed4IpDZ8RkxRwit1P2Tcveh1nWdsQO5Do+H0YIVY3p5ZFYQIm8HVHJoek7D3BXK8RLRXX/OHgp0FmwCe/Suw5h1IgqztLmiKoMNCcsXU5e5Tj/9l3hEGOI4c=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=GnL12Vnum1RDeStFlpQsv96wIifa5ytBlttslMHCaew=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_190430_113148_7DCDE002 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20260923_202429_539957_7CC5FC0F 
+X-CRM114-Status: GOOD (  20.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,62 +75,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DP PHY is optional: the Rockchip RK3399 eDP controller (used as the
-internal eDP port) has no separate PHY device and relies on its built-in
-PHY, which is programmed directly through the GRF registers, so its DT
-node carries no "phys"/"phy-names" property.
+Hi Jun,
 
-Requesting the PHY with devm_phy_get() therefore returns -ENODEV (or
--ENOSYS when CONFIG_GENERIC_PHY is disabled) and the driver logs a
-misleading "no DP phy configured" error at probe time before falling back
-to a NULL phy.
+On 9/24/2026 10:04 AM, Jun Yan wrote:
+> The DP PHY is optional: the Rockchip RK3399 eDP controller (used as the
+> internal eDP port) has no separate PHY device and relies on its built-in
+> PHY, which is programmed directly through the GRF registers, so its DT
+> node carries no "phys"/"phy-names" property.
+> 
+> Requesting the PHY with devm_phy_get() therefore returns -ENODEV (or
+> -ENOSYS when CONFIG_GENERIC_PHY is disabled) and the driver logs a
+> misleading "no DP phy configured" error at probe time before falling back
+> to a NULL phy.
+> 
+> Use devm_phy_optional_get() instead, which returns NULL when the PHY is
+> absent and otherwise behaves identically, and drop the manual -ENODEV/
+> -ENOSYS handling. This also removes the spurious error message.
+> 
+> Assisted-by: Claude:deepseek-v4-flash
+> Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
+> ---
+>   .../gpu/drm/bridge/analogix/analogix_dp_core.c | 18 +++---------------
+>   1 file changed, 3 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> index 18e76d1e78e1..28eb668d3e3f 100644
+> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> @@ -1427,21 +1427,9 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
+>   	if (ret)
+>   		return ERR_PTR(ret);
+>   
+> -	dp->phy = devm_phy_get(dp->dev, "dp");
+> -	if (IS_ERR(dp->phy)) {
+> -		dev_err(dp->dev, "no DP phy configured\n");
+> -		ret = PTR_ERR(dp->phy);
+> -		if (ret) {
+> -			/*
+> -			 * phy itself is not enabled, so we can move forward
+> -			 * assigning NULL to phy pointer.
+> -			 */
+> -			if (ret == -ENOSYS || ret == -ENODEV)
+> -				dp->phy = NULL;
+> -			else
+> -				return ERR_PTR(ret);
+> -		}
+> -	}
 
-Use devm_phy_optional_get() instead, which returns NULL when the PHY is
-absent and otherwise behaves identically, and drop the manual -ENODEV/
--ENOSYS handling. This also removes the spurious error message.
+It should be better to add some comments here:
 
-Assisted-by: Claude:deepseek-v4-flash
-Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
----
- .../gpu/drm/bridge/analogix/analogix_dp_core.c | 18 +++---------------
- 1 file changed, 3 insertions(+), 15 deletions(-)
+/*
+  * Exynos5/RK3288/RK3399 use Analogix DP controller built-in PHY,
+  * no separate PHY configuration is needed.
+  */
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 18e76d1e78e1..28eb668d3e3f 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1427,21 +1427,9 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
- 	if (ret)
- 		return ERR_PTR(ret);
- 
--	dp->phy = devm_phy_get(dp->dev, "dp");
--	if (IS_ERR(dp->phy)) {
--		dev_err(dp->dev, "no DP phy configured\n");
--		ret = PTR_ERR(dp->phy);
--		if (ret) {
--			/*
--			 * phy itself is not enabled, so we can move forward
--			 * assigning NULL to phy pointer.
--			 */
--			if (ret == -ENOSYS || ret == -ENODEV)
--				dp->phy = NULL;
--			else
--				return ERR_PTR(ret);
--		}
--	}
-+	dp->phy = devm_phy_optional_get(dp->dev, "dp");
-+	if (IS_ERR(dp->phy))
-+		return ERR_CAST(dp->phy);
- 
- 	dp->clock = devm_clk_get(&pdev->dev, "dp");
- 	if (IS_ERR(dp->clock)) {
--- 
-2.55.0
+> +	dp->phy = devm_phy_optional_get(dp->dev, "dp");
+> +	if (IS_ERR(dp->phy))
+> +		return ERR_CAST(dp->phy);
+>   
+>   	dp->clock = devm_clk_get(&pdev->dev, "dp");
+>   	if (IS_ERR(dp->clock)) {
+
+With the comment added:
+Reviewed-by: Damon Ding <damon.ding@rock-chips.com>
+
+Best regards,
+Damon
 
 
 _______________________________________________
