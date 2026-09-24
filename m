@@ -4,103 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23DBAC98317
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 11:13:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3375C98317
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 11:19:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8uKA9YJEx5ys7rftLFqIeSeTYIbc+WwExMHueRekU5g=; b=UkbJ7+nMJZ+si+
-	QCl3a07Cf4qcVvQ0p2ADanODXSiiE8clXRP5gE5gTpNdw8WWzrTi8zdhmc7XmTnl1kUZE07+dFEUh
-	aXhmLsyoT96bV3oUogMdD4ngse+hKhLOJK08demYwXKhfclAbC7K1fXYATTVQHNC/kb1BKlSFBgDQ
-	nLQyjlQ/jwLmwDKWy31d2rcttYrJeYYy4pcN+1gccx6SZvpmvHPUwPfp7ul73lVVXwt3EnD3dyogY
-	YxQP7xngJpNOXIDZUbePhKoAsdMSeQ6X+qiQbXFkSibkt8I9mUCzuhxtgaJ1wvAM9xtVlLUWr2rC9
-	+8U0O9NjlmRVMaJ1Te2g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=39/0TbLlZwXCj4US53f0leG60BXGvQ7/dUyfM1c44jk=; b=wFVwhXgVEQ7YoR
+	9qJ4mOMVBTAxwNWcXdc6XjmxJH+4o+tY8eI2t1axulBXkUs4FDdH4Icmof/iX0lfZeLJYmYDN8EsG
+	LDAxLAmFKJ6U5iY6qXsM9bzgjPHrhkV8y90uLERW5R0RFfLc+wrAbIXyc4zjDTESgoNsiBU6c5nPv
+	fpqNELpRe7muXWSsi/OK+7QhsqW/XkUQ2opHkfvFUuYtmPkzebuVtWd/Fq9pMf0u8fbeHp2KvcEUf
+	dNza/aK6cyhIUNvWNOzI1ykh+3ZVX1GqyrrMSVgOKpzd1VIICEdz7AiY6CgBa5oc+W4kp8b9zxlRP
+	TpqwVV9NHiACAt/2PJgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9hNt-0000000ApS7-2lGj;
-	Thu, 24 Sep 2026 11:13:01 +0000
-Received: from mail-pj2-x11.google.com ([2607:f8b0:4864:39::11])
+	id 1x9hTg-0000000AqFA-43Go;
+	Thu, 24 Sep 2026 11:19:00 +0000
+Received: from mail-pz2-x0e.google.com ([2607:f8b0:4864:3b::e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9hNr-0000000ApRD-2kfl
+	id 1x9hTe-0000000AqEC-3REE
 	for linux-rockchip@lists.infradead.org;
-	Thu, 24 Sep 2026 11:13:00 +0000
-Received: by mail-pj2-x11.google.com with SMTP id 98e67ed59e1d1-396ccb652d7so1348727a91.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 24 Sep 2026 04:12:59 -0700 (PDT)
+	Thu, 24 Sep 2026 11:18:59 +0000
+Received: by mail-pz2-x0e.google.com with SMTP id 41be03b00d2f7-cc1cea4bfd1so998782a12.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 24 Sep 2026 04:18:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790248379; x=1790853179; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=xajPQk8GjdXK5kaUdC9KQJ19YcliIXFOaF4kzScKofU=;
-        b=cNrcxY/SAqQ7XJg5ECEu/gyoC2zSvXs85CFF8tpk5yw+EomuiZUddGJVmVzZ4z+PeR
-         Aw8UhDpKl5WhJwk0qMEVUvpWE1G+TJiXUDZEqI6Njrnc3poBUg4HRskHt20Rqp6g/zEs
-         D651yb+jJhPx7w2mZ9Bnc04e2mvy1JQaGfhgx3xfH4yQa/J5aaLiZ0NxNRLdoqQWmQaU
-         cYBuBNH7PbXPUTDJVy+kbp98LCWk7mtDxwvsQ0YmVQhc8DVdFm1QANZnDEIpnsYVzq10
-         Sxfma6TPoES2HYRbdrgdIe8f1TqQWinkAVOSDQ/udNdKhADcStsT9RUx2RpCb6FQl79a
-         4nzw==
+        d=gmail.com; s=20251104; t=1790248738; x=1790853538; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=hiZAP5CE2Qg+2953jUYih6NAEp+heJ/HVnYd8DX8Ozo=;
+        b=hBcMWvvf7V9nt1jpDkhXE/JJxX0nZ3VsDWywarGCB2rEo+4TaF1nU3uSiThXunJSva
+         Vu5J972rr9CUKLJQ1MUuFP7MZeZK8JB4/B8HC0FA5DI427PSBsNXut62NhdZElZ+gjK/
+         oewQ/0tQ8Ogrs7Tlq3TP+rRq8pXXI5ANz1KJa1Ufg/4Lf8MPBNCiwudgwj/ZL9vOpS4I
+         Q9toEhxJVhioPfqqbHAzzMwxEK5dFCxw2ya5M61miJXv5TZ7qyQHMnOuBGP3TnhErbbn
+         ideHgwbHYuz3slr6sil6XDcKiSpLmVXbpDeznt2foala7pWqk6KtWiZ5aFZT5hVP7DvY
+         El2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790248379; x=1790853179;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=xajPQk8GjdXK5kaUdC9KQJ19YcliIXFOaF4kzScKofU=;
-        b=g/WLIXEGm99oUE8e4HLTRtW/X2JqF8ic8GrpHmxT4bIFqtUbebfMUM6KDvYg2WWTGq
-         uVvnMFmTzKPCQ8rR55sXs7aznpIJnxqFY6hNlHoaQFztg0wOopWnxozQGy4fkW+KwxKZ
-         XbqHOvvpSbWqKrSC7TcDqnnKrMgAaFy0jbibrweWvDNkw3uE+NdSHDGX9Yz/xbzANJXy
-         +vO8S+rN1zhNonrydpTBiq+ynipF/rpnOT2mHOjddTIXPfSkSFI9cEn2fP4Vnl080Wf2
-         pfYzpvoBTE9sW61zxfD11h2Vf/NLRrl4rie843fsQU1hL9YAO4qcuNJg1b7oMkkVhRkf
-         ld4Q==
-X-Forwarded-Encrypted: i=1; AKwUvBy3ceMCXbCvKHhvBydkBVMGX65l1G7U1ltVuKQyDcsOxOGmtS6WsrPkPNHCiL+Ln9FD9HFISzCZolEF23NG+A==@lists.infradead.org
-X-Gm-Message-State: AFuF++n4IumGCY4t037fWf+0+yx/ousWAF5tcHlPwmlXWYx90hPUBEjh
-	Oh49higSdlmKvfqFaMN9V1zu+BYbNNO6rWkFdob/p8RaPSJB11vbQjsf
-X-Gm-Gg: AYBFou1uNHWYq8m7Xe5HsPc78/x6f3jn0KcDI0zgz5uu3Iq3hJu9HdFfr91IJaFFJu3
-	pLKTwxaOFfvM42RubGy9HyOQH54MvsaMNqQT3z5Q1YICs296DUulFyO9ozTLsuSPHJFvH3qoNi2
-	KDdQzyv0AAhiG/HlsOK7IauSKwzBXHByG+jxwP/pSwC+fzxmduvwciSKdFQUrDQdW4MA/t8wpuv
-	NpqsmQZSigA/iQRJ4HT7zzNh3/NNzmDyKu75n7aLIbpGs8mjrDG9Fae+tj+D4fjJs2ok/DQRW0S
-	tjdS8TA4wzzFcygzKA8DDvQ8D+U3Q/oiL9E0F0hcRkgxzUEcW9zjrf5p4p3w9QOaPDGQKGnYOO2
-	ItofwcZbD0SQzklc77XJPJX7eZk70awGwm74l1EVevtVN1eSyMZqC+jLWYnjLFYZjn7ZCCLAAOP
-	fiKzbQ6U15GcB/Gwj58tKeRQOBRmTJoCWtwPKQNPkljVMVtUcKAtaTj6D3satSYEW9XayPsmY26
-	37DMuByAGMPxeJwAy+kYZYLxXYQHTXZyw==
-X-Received: by 2002:a17:90b:314e:b0:39e:5ade:f9de with SMTP id 98e67ed59e1d1-3a098b431dbmr1903170a91.26.1790248378423;
-        Thu, 24 Sep 2026 04:12:58 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1790248738; x=1790853538;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=hiZAP5CE2Qg+2953jUYih6NAEp+heJ/HVnYd8DX8Ozo=;
+        b=QuL7FIGWadBZpa33Hjaz2Tn6T1JE+/qbJbNGS/6ctieeVMlzrb9pme8ES78tFa4uSS
+         QM0pcaPmREIvb7ideXBhpXGxQ4Ho/RmgNKWqP3oxMLlqC3LW4MaqXBRrfKEER74Av9wt
+         dHjfrx1XsZDVV2ddWU5J27lt9FUA7U/LamCGpj9MJ3sQjL0NWNW6oIABeiLTPFPSZful
+         +Cre6dvWbbcglPZQFwkBl/Q4E1+XHzKmhXCZbOirBYT+X6q9mKe+B7+3TQJQjbzeRiHI
+         4SM0BI662OwWmsHoZrnOD/SEjeS+n161Q04fCbOea4YodPoptqMWY1cNgEizqhIEHMFk
+         XPNg==
+X-Forwarded-Encrypted: i=1; AKwUvBwynbJtDrmWvEk2QMEHKIwJQjqdcREi5O40eL9FD3ya7ReoU+Rpr95MAzNvWTPb4Av/b1gG0FDRTCDxB+YvMg==@lists.infradead.org
+X-Gm-Message-State: AFuF++mGyQ+OTuDbK7rOueaBAofkf+mV67vHTaKRPlCvp4cTECcXenVO
+	vpV9p6by0xNbGqh2Bxz+EnDKseSaQMZBlCSWybsTL6mxrUZvaChhYsQy
+X-Gm-Gg: AYBFou3SWiJh99UbDNyzaB0XfQK9AVmRAWY+JR8ZOV6YWe9XjqfvhZ9lCj8XMNbSaJ2
+	BVyksVYURbONru1FPaAg3VshfcOGWmKli+aaCKQ/IC3qLxN5Ow7MRyNvfmayonviRTvtpUMwkwt
+	+tVkTljS/pUM5xUvabkRDGM3Mjcl7krkqiBZCn4bRdM8Ckr7EnAxhiAnBlB7yjRpTdaAIZ/IHNH
+	HmFLr3tdSbKj2RFx7713Bpi6SJuyx8E/nVkuwbe4Pus96BgtU6NPxNfOHRtlu3MTNdkVuEwtcMu
+	9nceGwsTMxf9rveP1a+T/+rL6yhEIBBPniNb8/5tErxXPRL4WRLPl+oDUHF0KkHIGopEYPsFqVq
+	RUi0DLbr2g6uiuIB9K/rTZX19QS8MPR4edvpFPZK85VtHnFweEs3YRmjvxJJ9h+ojlN9EVEpNVd
+	/1/sL5Zx5/sFijqrGnG02ZVIgAr+4F6cfSm1dTkq8qJ+SuNfbDhTIEaTZp3taM5pmKYGIqDOtFC
+	hZxQfVkXz9cGjgHwM7zode2whjouCU/
+X-Received: by 2002:a17:90b:2dc5:b0:39d:efa9:cd25 with SMTP id 98e67ed59e1d1-3a09856fb98mr1677016a91.2.1790248733078;
+        Thu, 24 Sep 2026 04:18:53 -0700 (PDT)
 Received: from arch.localdomain (123202092053.ctinets.com. [123.202.92.53])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a0974ec5dfsm4399478a91.3.2026.09.24.04.12.53
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a0972efa0bsm4314680a91.8.2026.09.24.04.18.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Sep 2026 04:12:58 -0700 (PDT)
+        Thu, 24 Sep 2026 04:18:52 -0700 (PDT)
 From: Jun Yan <jerrysteve1101@gmail.com>
-To: damon.ding@rock-chips.com
-Cc: Laurent.pinchart@ideasonboard.com,
-	airlied@gmail.com,
-	andrzej.hajda@intel.com,
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Jun Yan <jerrysteve1101@gmail.com>,
+	Damon Ding <damon.ding@rock-chips.com>,
 	dri-devel@lists.freedesktop.org,
-	heiko@sntech.de,
-	jernej.skrabec@gmail.com,
-	jerrysteve1101@gmail.com,
-	jonas@kwiboo.se,
-	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	luca.ceresoli@bootlin.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	neil.armstrong@linaro.org,
-	rfoss@kernel.org,
-	simona@ffwll.ch,
-	tzimmermann@suse.de
-Subject: Re: [PATCH RSEND] drm/bridge: analogix_dp: use devm_phy_optional_get() for the DP PHY
-Date: Thu, 24 Sep 2026 19:12:49 +0800
-Message-ID: <20260924111251.936444-1-jerrysteve1101@gmail.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v2] drm/bridge: analogix_dp: use devm_phy_optional_get() for the DP PHY
+Date: Thu, 24 Sep 2026 19:18:42 +0800
+Message-ID: <20260924111843.937649-1-jerrysteve1101@gmail.com>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <a0754d11-d88b-4dda-972f-7c696a037bc2@rock-chips.com>
-References: <a0754d11-d88b-4dda-972f-7c696a037bc2@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_041259_698221_EA0DB794 
-X-CRM114-Status: GOOD (  30.42  )
+X-CRM114-CacheID: sfid-20260924_041858_858783_2962DDCD 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,67 +108,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-PiBPbiA5LzI0LzIwMjYgMTE6MjQgQU0sIERhbW9uIERpbmcgd3JvdGU6Cj4gPiBIaSBKdW4sCj4g
-PiAKPiA+IE9uIDkvMjQvMjAyNiAxMDowNCBBTSwgSnVuIFlhbiB3cm90ZToKPiA+PiBUaGUgRFAg
-UEhZIGlzIG9wdGlvbmFsOiB0aGUgUm9ja2NoaXAgUkszMzk5IGVEUCBjb250cm9sbGVyICh1c2Vk
-IGFzIHRoZQo+ID4+IGludGVybmFsIGVEUCBwb3J0KSBoYXMgbm8gc2VwYXJhdGUgUEhZIGRldmlj
-ZSBhbmQgcmVsaWVzIG9uIGl0cyBidWlsdC1pbgo+ID4+IFBIWSwgd2hpY2ggaXMgcHJvZ3JhbW1l
-ZCBkaXJlY3RseSB0aHJvdWdoIHRoZSBHUkYgcmVnaXN0ZXJzLCBzbyBpdHMgRFQKPiA+PiBub2Rl
-IGNhcnJpZXMgbm8gInBoeXMiLyJwaHktbmFtZXMiIHByb3BlcnR5Lgo+ID4+Cj4gPj4gUmVxdWVz
-dGluZyB0aGUgUEhZIHdpdGggZGV2bV9waHlfZ2V0KCkgdGhlcmVmb3JlIHJldHVybnMgLUVOT0RF
-ViAob3IKPiA+PiAtRU5PU1lTIHdoZW4gQ09ORklHX0dFTkVSSUNfUEhZIGlzIGRpc2FibGVkKSBh
-bmQgdGhlIGRyaXZlciBsb2dzIGEKPiA+PiBtaXNsZWFkaW5nICJubyBEUCBwaHkgY29uZmlndXJl
-ZCIgZXJyb3IgYXQgcHJvYmUgdGltZSBiZWZvcmUgZmFsbGluZyBiYWNrCj4gPj4gdG8gYSBOVUxM
-IHBoeS4KPiA+Pgo+ID4+IFVzZSBkZXZtX3BoeV9vcHRpb25hbF9nZXQoKSBpbnN0ZWFkLCB3aGlj
-aCByZXR1cm5zIE5VTEwgd2hlbiB0aGUgUEhZIGlzCj4gPj4gYWJzZW50IGFuZCBvdGhlcndpc2Ug
-YmVoYXZlcyBpZGVudGljYWxseSwgYW5kIGRyb3AgdGhlIG1hbnVhbCAtRU5PREVWLwo+ID4+IC1F
-Tk9TWVMgaGFuZGxpbmcuIFRoaXMgYWxzbyByZW1vdmVzIHRoZSBzcHVyaW91cyBlcnJvciBtZXNz
-YWdlLgo+ID4+Cj4gPj4gQXNzaXN0ZWQtYnk6IENsYXVkZTpkZWVwc2Vlay12NC1mbGFzaAo+ID4+
-IFNpZ25lZC1vZmYtYnk6IEp1biBZYW4gPGplcnJ5c3RldmUxMTAxQGdtYWlsLmNvbT4KPiA+PiAt
-LS0KPiA+PiDCoCAuLi4vZ3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5j
-IHwgMTggKysrLS0tLS0tLS0tLS0tLS0tCj4gPj4gwqAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0
-aW9ucygrKSwgMTUgZGVsZXRpb25zKC0pCj4gPj4KPiA+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMgYi8gCj4gPj4gZHJpdmVy
-cy9ncHUvZHJtL2JyaWRnZS9hbmFsb2dpeC9hbmFsb2dpeF9kcF9jb3JlLmMKPiA+PiBpbmRleCAx
-OGU3NmQxZTc4ZTEuLjI4ZWI2NjhkM2UzZiAxMDA2NDQKPiA+PiAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vYnJpZGdlL2FuYWxvZ2l4L2FuYWxvZ2l4X2RwX2NvcmUuYwo+ID4+ICsrKyBiL2RyaXZlcnMv
-Z3B1L2RybS9icmlkZ2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCj4gPj4gQEAgLTE0Mjcs
-MjEgKzE0MjcsOSBAQCBhbmFsb2dpeF9kcF9wcm9iZShzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVj
-dCAKPiA+PiBhbmFsb2dpeF9kcF9wbGF0X2RhdGEgKnBsYXRfZGF0YSkKPiA+PiDCoMKgwqDCoMKg
-IGlmIChyZXQpCj4gPj4gwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybiBFUlJfUFRSKHJldCk7Cj4g
-Pj4gLcKgwqDCoCBkcC0+cGh5ID0gZGV2bV9waHlfZ2V0KGRwLT5kZXYsICJkcCIpOwo+ID4+IC3C
-oMKgwqAgaWYgKElTX0VSUihkcC0+cGh5KSkgewo+ID4+IC3CoMKgwqDCoMKgwqDCoCBkZXZfZXJy
-KGRwLT5kZXYsICJubyBEUCBwaHkgY29uZmlndXJlZFxuIik7Cj4gPj4gLcKgwqDCoMKgwqDCoMKg
-IHJldCA9IFBUUl9FUlIoZHAtPnBoeSk7Cj4gPj4gLcKgwqDCoMKgwqDCoMKgIGlmIChyZXQpIHsK
-PiA+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAvKgo+ID4+IC3CoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAgKiBwaHkgaXRzZWxmIGlzIG5vdCBlbmFibGVkLCBzbyB3ZSBjYW4gbW92ZSBmb3J3YXJk
-Cj4gPj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAqIGFzc2lnbmluZyBOVUxMIHRvIHBoeSBw
-b2ludGVyLgo+ID4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgKi8KPiA+PiAtwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCBpZiAocmV0ID09IC1FTk9TWVMgfHwgcmV0ID09IC1FTk9ERVYpCj4gPj4g
-LcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBkcC0+cGh5ID0gTlVMTDsKPiA+PiAtwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCBlbHNlCj4gPj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCByZXR1cm4gRVJSX1BUUihyZXQpOwo+ID4+IC3CoMKgwqDCoMKgwqDCoCB9Cj4gPj4gLcKg
-wqDCoCB9Cj4gPiAKPiA+IEl0IHNob3VsZCBiZSBiZXR0ZXIgdG8gYWRkIHNvbWUgY29tbWVudHMg
-aGVyZToKPiA+IAo+ID4gLyoKPiA+ICDCoCogRXh5bm9zNS9SSzMyODgvUkszMzk5IHVzZSBBbmFs
-b2dpeCBEUCBjb250cm9sbGVyIGJ1aWx0LWluIFBIWSwKPiA+ICDCoCogbm8gc2VwYXJhdGUgUEhZ
-IGNvbmZpZ3VyYXRpb24gaXMgbmVlZGVkLgo+ID4gIMKgKi8KPiAKPiBXZWxsLCBJIHRoaW5rIGl0
-IHNob3VsZCBiZSBmaXhlZCB0bzoKPiAKPiAvKgo+ICAgKiBSSzMyODgvUkszMzk5IHVzZSBBbmFs
-b2dpeCBEUCBjb250cm9sbGVyIGJ1aWx0LWluIFBIWSwKPiAgICogbm8gZXh0cmEgUEhZIGNvbmZp
-Z3VyYXRpb24gaXMgcmVxdWlyZWQuCj4gICAqLwo+IAo+IFRoZSBFeHlub3M1eHh4IGNhc2UgbWF5
-IGJlIG1vcmUgY29tcGxleC4KPiAKClRoYW5rcyBmb3IgdGhlIHJldmlldy4gSSB3aWxsIGFkZCB0
-aGUgY29tbWVudHMgaW4gdGhlIHBhdGNoIGFuZCBzZW5kIHYyIHNvb24uCgo+ID4gCj4gPj4gK8Kg
-wqDCoCBkcC0+cGh5ID0gZGV2bV9waHlfb3B0aW9uYWxfZ2V0KGRwLT5kZXYsICJkcCIpOwo+ID4+
-ICvCoMKgwqAgaWYgKElTX0VSUihkcC0+cGh5KSkKPiA+PiArwqDCoMKgwqDCoMKgwqAgcmV0dXJu
-IEVSUl9DQVNUKGRwLT5waHkpOwo+ID4+IMKgwqDCoMKgwqAgZHAtPmNsb2NrID0gZGV2bV9jbGtf
-Z2V0KCZwZGV2LT5kZXYsICJkcCIpOwo+ID4+IMKgwqDCoMKgwqAgaWYgKElTX0VSUihkcC0+Y2xv
-Y2spKSB7Cj4gPiAKPiA+IFdpdGggdGhlIGNvbW1lbnQgYWRkZWQ6Cj4gPiBSZXZpZXdlZC1ieTog
-RGFtb24gRGluZyA8ZGFtb24uZGluZ0Byb2NrLWNoaXBzLmNvbT4KPiA+IAo+ID4gQmVzdCByZWdh
-cmRzLAo+ID4gRGFtb24KPiA+IAoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+The DP PHY is optional: the Rockchip RK3399 eDP controller (used as the
+internal eDP port) has no separate PHY device and relies on its built-in
+PHY, which is programmed directly through the GRF registers, so its DT
+node carries no "phys"/"phy-names" property.
+
+Requesting the PHY with devm_phy_get() therefore returns -ENODEV (or
+-ENOSYS when CONFIG_GENERIC_PHY is disabled) and the driver logs a
+misleading "no DP phy configured" error at probe time before falling back
+to a NULL phy.
+
+Use devm_phy_optional_get() instead, which returns NULL when the PHY is
+absent and otherwise behaves identically, and drop the manual -ENODEV/
+-ENOSYS handling. This also removes the spurious error message.
+
+Assisted-by: Claude:deepseek-v4-flash
+Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
+Reviewed-by: Damon Ding <damon.ding@rock-chips.com>
+---
+ .../drm/bridge/analogix/analogix_dp_core.c    | 22 ++++++-------------
+ 1 file changed, 7 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 18e76d1e78e1..a126c411b5cc 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1427,21 +1427,13 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
+ 	if (ret)
+ 		return ERR_PTR(ret);
+ 
+-	dp->phy = devm_phy_get(dp->dev, "dp");
+-	if (IS_ERR(dp->phy)) {
+-		dev_err(dp->dev, "no DP phy configured\n");
+-		ret = PTR_ERR(dp->phy);
+-		if (ret) {
+-			/*
+-			 * phy itself is not enabled, so we can move forward
+-			 * assigning NULL to phy pointer.
+-			 */
+-			if (ret == -ENOSYS || ret == -ENODEV)
+-				dp->phy = NULL;
+-			else
+-				return ERR_PTR(ret);
+-		}
+-	}
++	/*
++	 * RK3288/RK3399 use Analogix DP controller built-in PHY,
++	 * no extra PHY configuration is required.
++	 */
++	dp->phy = devm_phy_optional_get(dp->dev, "dp");
++	if (IS_ERR(dp->phy))
++		return ERR_CAST(dp->phy);
+ 
+ 	dp->clock = devm_clk_get(&pdev->dev, "dp");
+ 	if (IS_ERR(dp->clock)) {
+-- 
+2.55.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
