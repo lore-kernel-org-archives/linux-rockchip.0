@@ -4,96 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8707FC98311
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 09:08:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCD63C98314
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 09:31:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YnTR4QxmJIUEKCbgW26AmFQ7vndMFnWhoX8o6zeh7ow=; b=PYeJpiFUMEuA0O
-	m2JXPTN1pa1nWcYhhMaWZoIM+oolLcqAdRD3rhASMYo5ZN4qq+EwsjxTQ+YhI+54r50TElJUd19hw
-	OWnBtdNw/rNKdm577cz1lwCwGcOnTGsLFuVQGOHe1PbX+05GkurS1n4A+UAdlUZr819ISnidgzIdL
-	GEoK2q4F5MuZSyfUvSW5z7V6FAVj+9XTBgdaI+gqwtclUA7T8FTAbxJDGIvGArfct+x3GrErOv2vq
-	XqWIVX7/SRVpeeB9ANhWJDFA5+kTOd4aBIwZ70AHpH/Nno0l+hz9Uph/E9EtbozRJDNSG7p7IwC3K
-	AQr/pwNOeFUWQEl6alTA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eAywZkxnBj+SwEaMaSZF3OZ5hXqQPCTnlSbRs8FmE/g=; b=lBRxhcs6D/5jrV
+	Y3DUpAfgsYFCf/OX+22E17g+nNPBBVQvDLQftp9hTOYk4fi1snXf3oDzolC7MsLorB/0RTawhjiiG
+	xzhnwAA5rqXXPY3cmYAKDs6X6y0hD+vgqBXQbK905FIKsvaYdsBBWfa+EfRvy9GWXHEb0VgOMOZ2T
+	EwlqPGKr+pap8g12aCqik4w227047Z6f1JlDeD9TUNWCX3DBYIe+39YgL8DdTRWhe5TyJEQLjQ0PD
+	Oe+JMWWISBdOxkAYRHV4etucDXJv+ik5MekHSi/3mfZ1KCrGAc4aEBMdeONRtuEplfDexKTZ7nNXS
+	Cnx5u+xS1CTT7WphkM9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9fRS-0000000AXfl-1Hba;
-	Thu, 24 Sep 2026 09:08:34 +0000
-Received: from fout-b3-smtp.messagingengine.com ([202.12.124.146])
+	id 1x9fnJ-0000000AZqU-0e6e;
+	Thu, 24 Sep 2026 09:31:09 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9fRO-0000000AXe0-0chM
-	for linux-rockchip@lists.infradead.org;
-	Thu, 24 Sep 2026 09:08:31 +0000
-Received: from phl-compute-10.internal (phl-compute-10.internal [10.202.2.50])
-	by mailfout.stl.internal (Postfix) with ESMTP id 788161D000DC;
-	Thu, 24 Sep 2026 05:08:29 -0400 (EDT)
-Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-10.internal (MEProxy); Thu, 24 Sep 2026 05:08:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:content-type
-	:date:date:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:subject:subject:to:to; s=fm3;
-	 t=1790240909; x=1790327309; bh=Xqv1mDI99ah11f1yhlui/VOhRBkx83Hx
-	2Z3gvQ8bQaI=; b=iKFBwORCPZghVFx+fqXojWzijS9BVpdN3MCVmXnVdZLU3O72
-	cF2BCQuK/Gkdc7Nj+ktGrIJUSy/AWGXy8jsLmo02E+A/bE/JWvBScgd0j59TU9YF
-	/0mXWCpSBbkGTJsqRKTv33kyEJ4gbx5XdDHPOqN9b8KA4+JalN2xTkJcu/qEuqei
-	x/ht3f3vg83LfT81ow++pkzxeLqBXQpTD2usbbwFCBIN8aPtAj7854GVShGXVUWE
-	Y2KmytkIF1iEcjMuoax5FME567sJlCaRB91golaBS7qPL8H8+QsZYrOmIm113CHj
-	VkJX6pDI+LQuECaa8zsqTWa8nUgIzgzSEeOcZw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1790240909; x=
-	1790327309; bh=Xqv1mDI99ah11f1yhlui/VOhRBkx83Hx2Z3gvQ8bQaI=; b=m
-	cf7u/Z1rj5Z1Lu8O8JNtUsu1WZcqtFVBt1HxRdiQfGLDe7z3JFEgeHHqvL1Bm/zV
-	nMlft2xiwxzsolDtFBT3v7oGvD3rdLFryIWlvLmtbp1H/Eejv9nW28l7i86XDUWK
-	eiv/OZUlFBJbdeTaDmpO9c+IDUYxS6OsUP8uksDTLguABFrvtUuJTltnQVRT/0vY
-	xDMOiMXKe1V6XJBvq+f0aDm764Ixt0t4SsH4Ld6bZwmigofDVar564viDHo2m5rK
-	dgDHt8zX+qdrOT/pdM86atAwIbvhqj8a8WkxAxdXzs+4Ki1DycYE+zPAmPqDN7Dk
-	Wcd9uXZb4+rAdv1bJ9Kbw==
-X-ME-Sender: <xms:jei0agGdBCCE91c0e5Bakob4OWtQeJG4tiGzBYjYBYpynL2RuRL-ag>
-    <xme:jei0akTeIfFwEJl7rsPAjvMPXTdo4rr_ugGb0PNlvfl2SseRhZlEwMsW7n9plxzZh
-    GzS822gLtRsxWHLwKipiylFDp581GXKuD5C5zYNSqJ9IC_MfIDz8AEoKA>
-X-ME-Received: <xmr:jei0apIx1QVYE7AVBswccvqYtwUrosb1OVeVQw5055y5xpPNbdjwi1o58sSE0jPKIutKyHbUkw>
-X-ME-Proxy-Cause: dmFkZTEjk+BA8kFR4mTDVJK93FMrFhrDcC21+ja2Ou9J4aQPa7mAQU/u/OMl7DjWdnqXxf
-    Yw/XTeEm17OQ4MiYeM0kyjc4oNKLwrh70yyjKMNhV+l7VS/iEQKQjpsfn5Lgc1Il1nTOj7
-    453lX80zNYW+LunAzNxv//P3XWMeApfxqQrLmY4DDJR+sEpwtLQHZg0e9JqHzdQQuSv8Cn
-    XEot/EspdFKQqmmZCcmZyTMKN0m+/SdoM2ihkQChMvgj7hJfH0iI7VOhhHIzMBAMNsEi34
-    CZQVwG4MVMaIO0Y2IPfbokcrf/neUILiV2luvJjme9c1s7WUNAfD5dwSwMJHSk0ZUGDas/
-    peIispeLBZ7IbJxSCtn0hUYrGPNwqk927Ls+ESHG7RU4597HFR51vqNvJjo6vP345KfH+3
-    y+vD0hkMDX8Kns0SdW9nzqmMVX5APBlXf911Gv+CvruG3sVFvebiES+SXG2UF334TqwpwI
-    Zswv1B4KY28lnPDJMRyhCeQI8cs7MKAA5kz7jT2VSSkO11qUF7Yz+Zz6y4qvu3p4mPG0Hl
-    IFUsEryS29fj+dH3VxSh2lADcm2+Q3pcKfV5I9b+mf5nItr8mxywL+icQ17/ft5I0ptONr
-    d2duu00o76ajFJHK3HOqgttLcXMVMvT6nVqpvz6DBosWTt36Ua1RFy9TNKEw
-X-ME-Proxy: <xmx:jei0anZLtVPQE5zRwFgY_W4gij6pfcvRmHmwUfCH1Lrl8Kgout4rqg>
-    <xmx:jei0aj8BCVY-HGx4LKIc9uA2l-r7mG8IgNS4d6oSMU-mqcnqmcnS4g>
-    <xmx:jei0agaQtw8pRQxDteActYO-QNbCykHot-xeo4abQCvnOBH_aR8_dQ>
-    <xmx:jei0avOKyt3QVyYpdpao0l_29Mg7hs40toU0PS8IHFF0bkeX6S10ig>
-    <xmx:jei0aj8hQZ7rMd5mEpAImrYhUC8ADfg85nzmJSTMmUoB62MnUXzpUjxE>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 24 Sep 2026 05:08:26 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: heiko@sntech.de
-Cc: chaoyi.chen@rock-chips.com,
-	ulf.hansson@oss.qualcomm.com,
-	linux-pm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v13 09/14] pmdomain: rockchip: add optional per-domain power-on settle delay
-Date: Thu, 24 Sep 2026 21:08:24 +1200
-Message-ID: <20260924090824.38493-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <15844283.tv2OnDr8pf@phil>
-References: <20260915104328.45901-1-gahing@gahingwoo.com> <20260915104328.45901-10-gahing@gahingwoo.com> <15844283.tv2OnDr8pf@phil>
+	id 1x9fnH-0000000AZpb-1Yua;
+	Thu, 24 Sep 2026 09:31:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=5qHmT8mqoU/l4reYg7Eb+0uAE5mbLL+lTgBwhE2yy78=; b=kY/1/lGey/hiP9D8rAuHA+lH0x
+	b4PjNY0qIr70S4qcKahjuj/Ucg/XMwTPcSgoBIday+x68cG5777oeKLocgCGxvluDB7mkDSMw7sL2
+	Eeji6tvE6+lrfgfAePn7axk6EE3XUxbkH3/w6yQLvZzSBDYqiZsaV7ErzOiJl4eYMEcG4f6rOgIbx
+	lOmf3okgdgEWa1ZtmqtxQYEjEoZfH2q26ID/IvuR8K0L/ldsSJZW1Rx3sAnqFzS/DAzce3/klHYJy
+	YPxHzZW5B1Te6B+rDPB6osQfnZrev//gDj7GUOQ+T47ghr5tV6o0qV+UATeSGfBhr2WB2vBIZ//ks
+	1JCFwVdQ==;
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x9fnA-0000000Fmul-0KlA;
+	Thu, 24 Sep 2026 09:31:03 +0000
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 2276621E37;
+	Thu, 24 Sep 2026 09:30:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1790242251; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:  content-transfer-encoding:content-transfer-encoding;
+	bh=5qHmT8mqoU/l4reYg7Eb+0uAE5mbLL+lTgBwhE2yy78=;
+	b=xOCRYUji5YGOomTuwabeuv4lVWehlLnSbQO505eNnYFBDTJJHNVhtfcn7KWL9VuKtJUwUG
+	U3+pSI2mEPZ3M0+9eBkpAozXKLSo5EkBpSGt7NDDehFaq3dS0x9cm18PTHFk4lJLPZWl0Q
+	5UhrX93hczCoxNWG/GNyLWfbQPq0Lho=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1790242251;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:  content-transfer-encoding:content-transfer-encoding;
+	bh=5qHmT8mqoU/l4reYg7Eb+0uAE5mbLL+lTgBwhE2yy78=;
+	b=hcaG2BmBN8RpCzgUImDkVhCd4jadO1K10lHG0EliOUcZ6SKQ6PIi/Dd3pLETHtlt6oEMql
+	Q52sxpdwnDE6yxBw==
+Authentication-Results: smtp-out1.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=NCAQ8wlH;
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=B5K7fuSR
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1790242247; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:  content-transfer-encoding:content-transfer-encoding;
+	bh=5qHmT8mqoU/l4reYg7Eb+0uAE5mbLL+lTgBwhE2yy78=;
+	b=NCAQ8wlHzSjj22Mp5WtBpQSSbsGzsynKwAS9wnWJOqzDInDouS8G5yFj74601ElwpptgWz
+	BFp/X23TPESlPxJYSdg897HDlOYorWZ2VSJIZ52xyLnhYfAMluAdZ1kecNmmZMT8g7E3xY
+	ZjDe8kgwIAZLcbF901D6+4lVn1iSaoA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1790242247;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:  content-transfer-encoding:content-transfer-encoding;
+	bh=5qHmT8mqoU/l4reYg7Eb+0uAE5mbLL+lTgBwhE2yy78=;
+	b=B5K7fuSR7zGFiT91J2r1XWZaM/q96dFA32nS7RNZ/rQQjsSspv945N1hwzYCw8IwSVBVhK
+	jYelmgRKJLRWuZBA==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 70E0113668;
+	Thu, 24 Sep 2026 09:30:46 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id 2es5CcbttGp+IgAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Thu, 24 Sep 2026 09:30:46 +0000
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: jfalempe@redhat.com,
+	javierm@redhat.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	jani.nikula@linux.intel.com,
+	Alexander.Deucher@amd.com
+Cc: dri-devel@lists.freedesktop.org,
+	amd-gfx@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	intel-gfx@lists.freedesktop.org,
+	intel-xe@lists.freedesktop.org,
+	linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org,
+	nouveau@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	sashiko-reviews@lists.linux.dev,
+	Thomas Zimmermann <tzimmermann@suse.de>
+Subject: [PATCH v2 0/2] drm/fbdev: Move helpers to clients/ subdirectory
+Date: Thu, 24 Sep 2026 11:29:12 +0200
+Message-ID: <20260924093036.82356-1-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
+X-Rspamd-Action: no action
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Rspamd-Queue-Id: 2276621E37
+X-Spamd-Result: default: False [-3.01 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	MID_CONTAINS_FROM(1.00)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	R_MISSING_CHARSET(0.50)[];
+	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	MX_GOOD(-0.01)[];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	ARC_NA(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[21];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
+	FREEMAIL_TO(0.00)[redhat.com,linux.intel.com,kernel.org,gmail.com,ffwll.ch,amd.com];
+	RCVD_TLS_ALL(0.00)[];
+	DKIM_TRACE(0.00)[suse.de:+];
+	RCVD_COUNT_TWO(0.00)[2];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:rdns,imap1.dmz-prg2.suse.org:helo,suse.de:dkim,suse.de:mid];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
+	R_RATELIMIT(0.00)[to_ip_from(RLgosu6qu4h11rje89ht7rjgg5)];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_020830_233980_2E77D632 
-X-CRM114-Status: UNSURE (   6.36  )
+X-CRM114-CacheID: sfid-20260924_103101_999385_3F22CB76 
+X-CRM114-Status: UNSURE (   9.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -111,40 +164,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+Helpers for fbdev emulation are still linked into drm_kms_helper.ko,
+which is for mode setting. Move the source and header files to the
+clients/ subdirectory and link them into drm_client_lib.ko. This has
+some fallout throughout drivers, but it's all trivial.
 
-Chaoyi has given the mechanism, and I ran your experiment on v13 as
-posted, since the SError behind this patch was first seen in June on a
-board that held vdd_npu_s0 up with a local regulator-always-on and had
-no domain-supply.
+There are 3 module parameters to drm_kms_helper.ko that control fbdev
+emulation. For compatibility with existing installations, leave them
+in this module.
 
-Same kernel in every arm (this series, an unrelated dw-hdmi-qp patch,
-and a test-only override of the table delay), v13's rock-4d dtb, and for
-the last arm that dtb with only regulator-always-on added to vdd_npu_s0:
+v2:
+- update armada and docs
 
-  delay 15 us, rail follows the domain   536 cold power-ons, clean
-  delay 0,     rail follows the domain   SError at the first power-on
-  delay 0,     regulator-always-on       SError at the first power-on
+Thomas Zimmermann (2):
+  drm/fbdev: Move fbdev module parameters next to module init
+  drm/fbdev: Move fbdev helpers into client library
 
-Both failures are the same:
+ Documentation/gpu/drm-kms-helpers.rst         |  6 +--
+ drivers/gpu/drm/Makefile                      |  1 -
+ drivers/gpu/drm/amd/amdgpu/amdgpu_display.c   |  2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c       |  2 +-
+ drivers/gpu/drm/armada/armada_fbdev.c         |  2 +-
+ drivers/gpu/drm/clients/Makefile              |  3 +-
+ drivers/gpu/drm/clients/drm_fbdev_client.c    |  2 +-
+ .../drm_fbdev_helper.c}                       | 34 +---------------
+ drivers/gpu/drm/drm_crtc_helper_internal.h    |  9 +++++
+ drivers/gpu/drm/drm_fbdev_dma.c               |  2 +-
+ drivers/gpu/drm/drm_fbdev_shmem.c             |  2 +-
+ drivers/gpu/drm/drm_fbdev_ttm.c               |  2 +-
+ drivers/gpu/drm/drm_kms_helper_common.c       | 39 +++++++++++++++++++
+ drivers/gpu/drm/exynos/exynos_drm_fbdev.c     |  2 +-
+ drivers/gpu/drm/gma500/fbdev.c                |  2 +-
+ drivers/gpu/drm/i915/display/intel_fbdev.c    |  2 +-
+ drivers/gpu/drm/msm/msm_debugfs.c             |  2 +-
+ drivers/gpu/drm/msm/msm_fbdev.c               |  2 +-
+ drivers/gpu/drm/nouveau/dispnv50/disp.c       |  1 -
+ drivers/gpu/drm/omapdrm/omap_debugfs.c        |  2 +-
+ drivers/gpu/drm/omapdrm/omap_fbdev.c          |  2 +-
+ drivers/gpu/drm/radeon/radeon_device.c        |  2 +-
+ drivers/gpu/drm/radeon/radeon_fbdev.c         |  2 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |  2 +-
+ drivers/gpu/drm/sitronix/st7571.c             |  1 -
+ drivers/gpu/drm/tegra/fbdev.c                 |  2 +-
+ drivers/gpu/drm/vboxvideo/vbox_mode.c         |  2 +-
+ .../drm_fbdev_helper.h}                       |  4 +-
+ 28 files changed, 76 insertions(+), 60 deletions(-)
+ rename drivers/gpu/drm/{drm_fb_helper.c => clients/drm_fbdev_helper.c} (97%)
+ rename include/drm/{drm_fb_helper.h => clients/drm_fbdev_helper.h} (99%)
 
-  Kernel panic - not syncing: Asynchronous SError Interrupt
-   regmap_write+0x58/0x78
-   rockchip_pd_power+0x4b4/0x63c
-   rockchip_pd_power_on+0x7c/0xd4
 
-In the always-on arm the rail has been enabled since the regulator
-registered, so nothing is ramping at that first power-on (1.4 s,
-deferred probe), and it still faults. The fault needs only the domain,
-as Chaoyi says, and the delay removes it. The enable time is already
-described: rk3576-rock-4d.dts gives vdd_npu_s0
-regulator-enable-ramp-delay = <400>.
+base-commit: ff831af91674990f9f1814340860e96943d5df1a
+-- 
+2.55.0
 
-Limits: one boot per failing arm, nothing tried between 0 and 15 us, and
-neither failing arm got past its first power-on.
-
-Regards,
-Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
