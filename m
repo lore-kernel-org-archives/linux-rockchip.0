@@ -4,129 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3677BC98315
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 14:20:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F5DDC98321
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 15:30:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yAqewQthofj9g2ekKiha2+Zyrh++0Uj70jKrPI3J4EY=; b=ffDAXhaB3vNBEc
-	n8VsicuP0+9Q72OOFBV6KAna3GOgl0A7brnxTip9xIyg1hCjod36Dsymg+DJ7sQKnnaDgh92A+WBQ
-	9tlX3Yk6dURq86FoDTK5LHU4Z9EvWCl811owpWA/ie5g4audoPWT3mMLTY9ipSj8zdUfJ+0gldpWk
-	MXRhDD3FDDIJ8/0Mr4t7MN1vvO1B6a9qKu90U+NlutxSAVdLfk07tADqZxp4/6vXTXI2bI7on5703
-	2xTUhpmCKLhYi2pzns7O6knTBMbLDYPdMjQb2R0C5KzYxskR2WnCQFli+CN98jc1gH2uZ9owrb2Gj
-	JcsGrfWeol3cmnltHjVA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0KCsMRHraNdZRBNLMr7RlmgDbRBxCvWM/ltEyJWog6g=; b=vowJpWGdQUwqk7h4pX3/4tJ2jL
+	nA6sJ86/3Th1Dfh/6kYvfruK3Bk2g7LXeamwcUHzbm7M7k2UAuU2fwrH14qBQkgM+trHyzPiGCk7h
+	td51k3oyPQj/GWz8CfBzKChxFPsPw1gAn/ioRREkzuzxxgJ7hsjSSnvAXpe7aBovUFE8AbTwg7z58
+	DUJXTEvuaLrWjYb8rGh/m5YtWlIQK49B6kBkrNQdAZuoF8LC0yE+Nm2MAMmtQ0axZaWyUiDGjy4Y/
+	UMdFVWaY++f1mkHuCHFa9YBg/YW0N0Xmo+ENTMlnYtQu9j4t26nIsf0VN+Nn8pHeLLeD1ssJGusSK
+	6oyjPeRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9kJ4-0000000BFJV-2BFo;
-	Thu, 24 Sep 2026 14:20:14 +0000
-Received: from mail-norwayeastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20f::7] helo=OSPPR02CU001.outbound.protection.outlook.com)
+	id 1x9lOz-0000000BQPy-2zkn;
+	Thu, 24 Sep 2026 15:30:25 +0000
+Received: from sender6-op-o11.zoho.com ([165.173.180.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9kJ1-0000000BFIc-3LOj;
-	Thu, 24 Sep 2026 14:20:12 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=zAwMWyaLB064dmgP010inJPIbO1DQtBIA8kPZIpO3m+nNFbceKDA4eO/tXZ2cvAHGCKycgpD3fXYjvyH8BUh2LVdhzzuVS9yWFEzKCTClrgj9IH/vdh9Q5HyPCob2lg1zBc68gXf72Rz5YPIleTdfpBUHda2YdjqONxI0i6lLkwPrg2yCIagdpSWpz9uQGSZXlOK0zo7LM1EJ4IuHQv6sF8EX3HTYwcPN0WXEKVJfmNefgNtw36QHZijpZWgr4+nDEXT+/ehy2ZL6m18pTys4s8dtHHE3wKdkq73wsT9KsHBr1M0B1p1+bEh7Jeoc+mrGVBFG2QVsZXxJH/RKrcpmQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6pJHQs1U0YvgAycUyy7C4gMYdKpEuhTjgvchaA4KM1I=;
- b=YvMZpJiDul8D1fgUcq2YoD9g+e/tfXsIe6dIDFruBNHHFzQOXf2Zsd5EEojyOG3iYs48sYevz4SzRlh3BlwRY8ukFR+L1N+hgQm8OugHw92oH48wXbI7FHj17gkLuNsbk194UhV6UbCiKN/ooJYhjltOtr699vKGPKpw8MAlj8BHLczfY8UNyzN10BWJ/9KFmHqfglC9g1VAap0er1wY/CeBf+7QTPDgA4IEPHmQNj3K/1aV0awvo8RrzkbyVqkRpY4xjw5inFy70I8YQRclfYMTTwySNQm83SQBrYGnSlXFoob2kqUGqWtjZFfn9ZZkwzAoxQvmG3gY74gktDAFcA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6pJHQs1U0YvgAycUyy7C4gMYdKpEuhTjgvchaA4KM1I=;
- b=oZJTvpW96qcsy7bJZZVc0pOBPqK5jKjJQ5b7OwWR88stDyxNwmntOXG0XWlUMRzqcc+HTRGldS6wQgPsDU3pJ/1vX4yP7Q06otHkFjzzLYx8opD5LOSkmmeaS39HUJcoodhF4qI/Nc5xm522ork7N5FnKT80IraW5YiaueEeppVxjSMwJC8Y8lo5wbon8ChRNGrqE7tOnXyLxI+hs2mkhF/rOHgs9WgvV2lPGYZJTLrBczK6q+O8UsDWiGouO5aFIsfQUcQrLDOf6VWxzup0uJNV1qg6ZlOXT7Lno0cDwCfHnQlJCvZNAwteHrYMcnaPkZgGOTz5zn6ImX6Xr4m1lg==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
- by AM7PR04MB6775.eurprd04.prod.outlook.com (2603:10a6:20b:102::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.14; Thu, 24 Sep
- 2026 14:20:06 +0000
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c%7]) with mapi id 15.21.0451.014; Thu, 24 Sep 2026
- 14:20:06 +0000
-Date: Thu, 24 Sep 2026 09:19:56 -0500
-From: Frank Li <Frank.li@oss.nxp.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
-	mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, Frank.Li@nxp.com, s.hauer@pengutronix.de,
-	kernel@pengutronix.de, festevam@gmail.com,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v3 2/3] media: dt-bindings: media: nxp, imx8mq-vpu:
- Remove nxp,imx8mq-vpu
-Message-ID: <arUxjHjr99jGBmzj@SMW015318>
-References: <20260924130453.196299-1-benjamin.gaignard@collabora.com>
- <20260924130453.196299-3-benjamin.gaignard@collabora.com>
-Content-Disposition: inline
-In-Reply-To: <20260924130453.196299-3-benjamin.gaignard@collabora.com>
-X-ClientProxiedBy: PH5P222CA0004.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:510:34b::7) To GV2PR04MB11799.eurprd04.prod.outlook.com
- (2603:10a6:150:2cf::9)
+	id 1x9lOZ-0000000BPuc-1m43;
+	Thu, 24 Sep 2026 15:30:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1790263788; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=abg3tD7gCn40tZBonWdZgORycIx1YU6wZqDmUrH2Gnd23rPRFFfpKVI7MfbJcgUeDTTH+rCVFkfNQrX0juuIK+CS+RxWK314U/DEL0AewBkqJVf50oSpfmM1bGIgyew3jb8LtxEtN3MZKutX3cacJ58D6V7BOGvMygY572JEIJA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1790263788; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ojt2BoZRoit8YTa2oyVkPQDILAU3Mszm9vA+7r1Y+sA=; 
+	b=ALrCtEpougLfWu0xgNeeaNbeDwS2DhTMD4P7+sly0gtSqEHmZKOvNLMhVzCx0b+YKca9QIl44SlI6uScgj7MXwymTpijt+NLKgbkSMyy1BFecrMzAP6f5z4XGOwd/jFY4VwgzQGBPbTzRKjfbZI7yNS85AgHttitdOtHR3691kk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790263788;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=ojt2BoZRoit8YTa2oyVkPQDILAU3Mszm9vA+7r1Y+sA=;
+	b=XCyollQYtXMfftFpQuXEw/OZQ//HFVoEGB8bi3XL48hTfvEb06MV9q08GU21iSyt
+	hdSDtJU0YyHujH3q9GIqwWi6vHD7IjYwQJfKDIlJNmGsrSPi4quF48xJFVI+rDTIMJx
+	rqob72feqCv0BAAYruxTWcEG9cYbJKvjxOhuwnXI=
+Received: by smtp.zohomail.com with SMTPS id 1790263785416232.6245725162671;
+	Thu, 24 Sep 2026 08:29:45 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 86684180EDC; Thu, 24 Sep 2026 17:29:40 +0200 (CEST)
+Date: Thu, 24 Sep 2026 17:29:40 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Manivannan Sadhasivam <mani@kernel.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, 
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>, 
+	"kernel@collabora.com" <kernel@collabora.com>, Igor Paunovic <royalnet026@gmail.com>
+Subject: Re: [PATCH 2/5] usb: dwc3: rockchip: introduce glue driver
+Message-ID: <arU0_rRUerCfhAs0@venus>
+References: <20260915-b4-rockchip-dwc3-rockchip-glue-v1-0-763bb546824e@collabora.com>
+ <20260915-b4-rockchip-dwc3-rockchip-glue-v1-2-763bb546824e@collabora.com>
+ <arMkheCePz6PD8NZ@vbox>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|AM7PR04MB6775:EE_
-X-MS-Office365-Filtering-Correlation-Id: b306a56b-9f97-4884-49d5-08df1a46ee31
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|23010399003|1800799024|366016|7416014|19092799006|10067099003|56012099006|4143699003|22082099003|18002099003|11063799006;
-X-Microsoft-Antispam-Message-Info: jsYZulL+bcJ5tbqWtEKTeS+K3t60W7k84Rn6HjdkdcFgNlUeWKAQGPPVc/k+tiKYhOvgdoca4FO8b0+W+LripsHJl90/W9LA9mlQbInj4Gj3W3LhjNpE6D5traQ+4ydCq280ikqLIJNgEiKn5b1LFmaxDeUt1xCnjWaMdpXTC4gmK8p1GKcjZsDmcSJD/bYQr4wJfJDsMcCWFYmjmZuyMsaiUika3D68OxFCh1XeW1Q2rpqptSSOqIZOI9WVsP8p/z6T1iD7DhIakLgRbhi7s6cwHT1NL1g5cDCYE6JSWDdV/+R3p6/nzu1kkApfn4TgQaRjma62rToxkL3z6KESZO+H0+q3ONbYSLQngXJAeeN5DG+Vi9mU+MUuPEf26QtMZxe4+xbSZy5fqqZh4qxEvBynlI56wux0vrFKGQzr20txSOZRJaNwA+bXHDSd+n+plzx3rEi50c6AArL3jXuDDZ/Pm6wCmpSSdTNAGAFJXZNKgJEerKaeQUGh2q2Vpn3wAEJ8Vdj7M+qcRRZB2X3/omX1EuHpOkmVyKykREACRyupzaCB5BlWQOf5hM7aWWauyfHt7Ma0C8ERiV01MrhnW+CGo+q8GdRb+CH/28UTA37T591yJ/9FtEMoILe0dGl1S/9WOYd60ypxCt9qq2W/ieZGFPpDkUGmX0KYChhlHr8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(23010399003)(1800799024)(366016)(7416014)(19092799006)(10067099003)(56012099006)(4143699003)(22082099003)(18002099003)(11063799006);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?NSbJ/qOmYMFJ+vIQSj2n3UvfdYzTV7tSIRMeSQrnuxtLIalUqPSKeRiRTdO+?=
- =?us-ascii?Q?KIcvPv/M9FOEYX2OvFrbAk1N5a8s/fxB9DHKcWOpLpbLmV4o7oyvizhJZAZs?=
- =?us-ascii?Q?HAc6mMkl4ZjRtdcDXjMLu1eAvQefcVbrUiZ4AqVlUxGmdLf4GzIBwGTon9j+?=
- =?us-ascii?Q?PsNHbGRwlk/hQJJnTBZ9Ncx+VWt3WoM7XDvinqL5SVk0LSLoFTqaUFAjGMpf?=
- =?us-ascii?Q?VUg+W+h9ZojWZkl9kbssyuG71zXgGcxLRzU6vSWMGrIQg9FrIP03rt3IhWM4?=
- =?us-ascii?Q?34AYkLk6iZlYxkLA/qp6klbXuQNy8QM6Apkbe+99LXKNrPB8/Y54LhPYL1H7?=
- =?us-ascii?Q?B8YfYB0XiT11oZ3wsWA7Ce4p1r8fC9JnvAZl5OqcMbX66/QMd/sgGckMdEsB?=
- =?us-ascii?Q?70eYK99Eg3aYjztIZnXplbfxFgDVwLgIogzGNzE/NiEiwbanEGZPHV60HVHC?=
- =?us-ascii?Q?HVsteeQ9a1hYQMok6JaFu5kQ4PbsLYwwdyu2SoEMOkRjEbMPCFYSkl86qFdS?=
- =?us-ascii?Q?8VgobTMvovANe4tM1LjuyeF8Gh7ftHH9q5GJFDjZfNnpZA9BkBS6b+bawSEa?=
- =?us-ascii?Q?QqBqjkVYY6sucMV2pchspOgfW8wh15a5oIg1eTghpwJDECpChTJpvgda/LNA?=
- =?us-ascii?Q?ovjDHYGQ6wAlBtqsaS/d1S5DXQNR9MJwITx85OnRL4zt6nTz9tMxkHjC9Ohs?=
- =?us-ascii?Q?bjEw6NElSM4g1OiA9fzwMqtoFL1kmq5Jrxj4XbzXYVIZACvFFDQbWDupEcho?=
- =?us-ascii?Q?JO6EeJE8EtVYgmM/J0r5SXAxHugM3knOIQFYR8bhWeqCL0Nbsv4L88ykMcl5?=
- =?us-ascii?Q?Nlitybmy701r7Zf6VmDC+SKZdi6ZmunPeNbda7ZsoajNS7uQ+YpGVFWuDoP8?=
- =?us-ascii?Q?9YuNqsmEnQh9QLlgnKWyEBPhdpw7x+RCQW9Y57VAiiteqhl3lVHrq8NiH/VK?=
- =?us-ascii?Q?I73Y1ob76odnwsysZ4U2QKUheANr+2t7MKpzrxPeXEM1JLf0A6W4IeP9fBCR?=
- =?us-ascii?Q?q68IkECnBKvyo7Kjmxd4Zn875pYd4QakrKqmx6Lxq9GrCaglFhNBEGOKDgoo?=
- =?us-ascii?Q?SP3FxEU+ttpEcySdNbAe/j1XpRn2cDauve2LF86JMsC0O/vhgna/jQSKbu9C?=
- =?us-ascii?Q?98gyvXrO+dZ27lnvfZ/Mea+PPP1Zl/5KOL4zZ0PRN1hz+DqFWuP+2XDa9Vhe?=
- =?us-ascii?Q?EQLKGYPtcBPwppuWt72qVVBpnzJuWTLGYCP2LCC1cQxddcWsQpq7h4aYa5Gg?=
- =?us-ascii?Q?+4JRX8IqKRFtky+rovEecO1U4jlMpWhAkNHJZ5eUrgY1AUZxellrMyND/UFo?=
- =?us-ascii?Q?eNjyGrFlpd1EhmYINreXo01Rdn+WLR+I228Bdndl8ymeuiW1cVYfBbYLVb/u?=
- =?us-ascii?Q?L1UI5UihNgQOB6Sh/R7x2Phk1/19l5z2heHTaRYnx1hD7lNMWpuuqGR55xFh?=
- =?us-ascii?Q?dRooNXqGBn1+P1tlrvPcc9O9GYepev8GM2OzZo+uLtBYDG4FcZ6AkG+lvr8A?=
- =?us-ascii?Q?/T8HZVIsOhR6qVFwkwmH20afV2TvHGlwyI6Um14fPhzpPOd+Uj1xks62nifY?=
- =?us-ascii?Q?KLX2zbow1/vH0RUiCUwSLqCeDZ9cX5cHImv5osc9efpJ/icrowmzL2PV7BhX?=
- =?us-ascii?Q?nqy/Ib6pNc4WeO5zAYYgejP/+F6OPZvlwHvvbq2knoZkPR4NLll2HMyJ8+x8?=
- =?us-ascii?Q?sKy12alSnajzTapPYl24lP9Xb7oneDtRO0IL86hrM0DszUT9xRDsp9R4O6z/?=
- =?us-ascii?Q?i0hK0k6nqxYnSx95vzCUTQbUbLB789yI9q3l6agHEvkm36dVRdty?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b306a56b-9f97-4884-49d5-08df1a46ee31
-X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Sep 2026 14:20:06.0069
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Y7BKvAMJVeWo5W78QPHoAxSNmwLJ9pZw3+sOvGBeU4amTZCBD4n/tdCVLY6sx//u4LmNOo2HxYRvwKWGPshk823bmjbkJPjxGdNs9dbHifRoQ/wMa8C0AlMlPaWGQQF3
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR04MB6775
+In-Reply-To: <arMkheCePz6PD8NZ@vbox>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/290.230.26
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_072011_843787_006AC1FC 
-X-CRM114-Status: GOOD (  13.99  )
+X-CRM114-CacheID: sfid-20260924_082959_587856_FE621403 
+X-CRM114-Status: GOOD (  37.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,50 +82,265 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2853580336340256644=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 24, 2026 at 03:04:52PM +0200, Benjamin Gaignard wrote:
-> nxp,imx8mq-vpu has been tagged has deprecated since a while.
-> After driver clean up it is time to remove it.
->
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+--===============2853580336340256644==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5yc4rucu7v66hpki"
+Content-Disposition: inline
 
->  .../devicetree/bindings/media/nxp,imx8mq-vpu.yaml      | 10 ++++------
->  1 file changed, 4 insertions(+), 6 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> index 19528262810a..69619d2c86fa 100644
-> --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> @@ -14,12 +14,10 @@ description:
->
->  properties:
->    compatible:
-> -    oneOf:
-> -      - const: nxp,imx8mq-vpu
-> -        deprecated: true
-> -      - const: nxp,imx8mq-vpu-g1
-> -      - const: nxp,imx8mq-vpu-g2
-> -      - const: nxp,imx8mm-vpu-g1
-> +    enum:
-> +      - nxp,imx8mq-vpu-g1
-> +      - nxp,imx8mq-vpu-g2
-> +      - nxp,imx8mm-vpu-g1
->
->    reg:
->      maxItems: 1
-> --
-> 2.53.0
->
->
+
+--5yc4rucu7v66hpki
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 2/5] usb: dwc3: rockchip: introduce glue driver
+MIME-Version: 1.0
+
+Hi,
+
+On Wed, Sep 23, 2026 at 01:31:03AM +0000, Thinh Nguyen wrote:
+> On Tue, Sep 15, 2026, Sebastian Reichel wrote:
+> > Introduce Rockchip specific glue code for the Synopsys DWC3 USB driver.
+> > For now this handles things identical to the default glue.
+> >=20
+> > Tested-by: Igor Paunovic <royalnet026@gmail.com> # Orange Pi 5 Plus
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > ---
+> >  drivers/usb/dwc3/Kconfig         |  11 ++++
+> >  drivers/usb/dwc3/Makefile        |   1 +
+> >  drivers/usb/dwc3/core.c          |  15 ++++++
+> >  drivers/usb/dwc3/dwc3-rockchip.c | 106 +++++++++++++++++++++++++++++++=
+++++++++
+> >  4 files changed, 133 insertions(+)
+> >=20
+>=20
+> <...>
+>=20
+> > =20
+> > +/*
+> > + * List of compatibles, which have "synopsys,dwc3" as a fallback
+> > + * compatible, but have a vendor specific glue driver that should
+> > + * be used instead of this one.
+> > + */
+>=20
+> Shouldn't these be guarded by CONFIG_USB_DWC3_ROCKCHIP so that
+> we can still fall back to the generic DWC3 driver?
+
+I think it's better to not probe at all. The reason for introducing
+the new glue driver is avoiding PHY startup problems. They already
+happen every now and then (so the bug is not introduced by my USBDP
+patches, but rather its an existing race condition). Fixing the hangs
+also requires driving the reset notifier from the USBDP PHY, which is
+not part of this series. But I doubt we get a lot from making
+patch series interdependencies even more complicated by temporarily
+continueing to allow using the generic DWC3 driver on Rockchip.
+
+Note that the PHY startup hang probability increases a lot by my
+USBDP series. So once that landed the generic code is no longer
+usable without doing lots of reboots and getting very lucky.
+
+> > +static const char *const dwc3_compatible_blocklist[] =3D {
+>=20
+> #if IS_ENABLED(CONFIG_USB_DWC3_ROCKCHIP)
+>=20
+> > +	"rockchip,rk3588-dwc3",
+> > +	"rockchip,rk3576-dwc3",
+>=20
+> #endif
+>=20
+> > +};
+> > +
+>=20
+>=20
+>=20
+> >  static int dwc3_probe(struct platform_device *pdev)
+> >  {
+> >  	struct dwc3_probe_data probe_data =3D {};
+> >  	struct resource *res;
+> >  	struct dwc3 *dwc;
+> > +	int i;
+> > +
+> > +	for (i =3D 0; i < ARRAY_SIZE(dwc3_compatible_blocklist); i++)
+> > +		if (device_is_compatible(&pdev->dev, dwc3_compatible_blocklist[i]))
+> > +			return -ENODEV;
+> > =20
+> >  	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> >  	if (!res) {
+>=20
+>=20
+>=20
+> <...>
+>=20
+>=20
+>=20
+> > diff --git a/drivers/usb/dwc3/dwc3-rockchip.c b/drivers/usb/dwc3/dwc3-r=
+ockchip.c
+> > new file mode 100644
+> > index 000000000000..62f2a03b08a2
+> > --- /dev/null
+> > +++ b/drivers/usb/dwc3/dwc3-rockchip.c
+> > @@ -0,0 +1,106 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/* Copyright (c) 2026, Collabora Ltd. */
+> > +#include <linux/module.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/pm_runtime.h>
+> > +#include "glue.h"
+> > +
+> > +struct dwc3_rockchip {
+> > +	struct dwc3		dwc;
+> > +};
+> > +
+> > +static int dwc3_rockchip_probe(struct platform_device *pdev)
+> > +{
+> > +	struct dwc3_probe_data probe_data =3D {};
+> > +	struct resource *res;
+> > +	struct dwc3_rockchip *dwc_rk;
+> > +
+> > +	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > +	if (!res) {
+> > +		dev_err(&pdev->dev, "missing memory resource\n");
+> > +		return -ENODEV;
+> > +	}
+> > +
+> > +	dwc_rk =3D devm_kzalloc(&pdev->dev, sizeof(*dwc_rk), GFP_KERNEL);
+> > +	if (!dwc_rk)
+> > +		return -ENOMEM;
+> > +
+> > +	dwc_rk->dwc.dev =3D &pdev->dev;
+> > +	dwc_rk->dwc.glue_ops =3D NULL;
+> > +
+> > +	probe_data.dwc =3D &dwc_rk->dwc;
+> > +	probe_data.res =3D res;
+> > +	probe_data.properties =3D DWC3_DEFAULT_PROPERTIES;
+> > +
+> > +	return dwc3_core_probe(&probe_data);
+> > +}
+> > +
+> > +static void dwc3_rockchip_remove(struct platform_device *pdev)
+> > +{
+> > +	dwc3_core_remove(platform_get_drvdata(pdev));
+> > +}
+> > +
+> > +static int __maybe_unused dwc3_rockchip_runtime_suspend(struct device =
+*dev)
+>=20
+> Please use the same PM callback pattern as dwc3-generic-plat.c. That
+> should avoid the need for __maybe_unused on each callback.
+
+Will do. FWIW this wastes a bunch of memory for !CONFIG_PM by simply
+always including the code, even when it's not needed. I suppose
+that's fine as disabled CONFIG_PM is uncommon config anyways.
+
+> > +{
+> > +	return dwc3_runtime_suspend(dev_get_drvdata(dev));
+> > +}
+> > +
+> > +static int __maybe_unused dwc3_rockchip_runtime_resume(struct device *=
+dev)
+> > +{
+> > +	return dwc3_runtime_resume(dev_get_drvdata(dev));
+> > +}
+> > +
+> > +static int __maybe_unused dwc3_rockchip_runtime_idle(struct device *de=
+v)
+> > +{
+> > +	return dwc3_runtime_idle(dev_get_drvdata(dev));
+> > +}
+> > +
+> > +static int __maybe_unused dwc3_rockchip_suspend(struct device *dev)
+> > +{
+> > +	return dwc3_pm_suspend(dev_get_drvdata(dev));
+> > +}
+> > +
+> > +static int __maybe_unused dwc3_rockchip_resume(struct device *dev)
+> > +{
+> > +	return dwc3_pm_resume(dev_get_drvdata(dev));
+> > +}
+> > +
+> > +static void __maybe_unused dwc3_rockchip_complete(struct device *dev)
+> > +{
+> > +	dwc3_pm_complete(dev_get_drvdata(dev));
+> > +}
+> > +
+> > +static int __maybe_unused dwc3_rockchip_prepare(struct device *dev)
+> > +{
+> > +	return dwc3_pm_prepare(dev_get_drvdata(dev));
+> > +}
+> > +
+> > +static const struct dev_pm_ops dwc3_rockchip_dev_pm_ops =3D {
+> > +	SET_SYSTEM_SLEEP_PM_OPS(dwc3_rockchip_suspend, dwc3_rockchip_resume)
+> > +	SET_RUNTIME_PM_OPS(dwc3_rockchip_runtime_suspend, dwc3_rockchip_runti=
+me_resume,
+> > +			   dwc3_rockchip_runtime_idle)
+> > +	.complete =3D pm_sleep_ptr(dwc3_rockchip_complete),
+> > +	.prepare =3D pm_sleep_ptr(dwc3_rockchip_prepare),
+> > +};
+> > +
+> > +static const struct of_device_id dwc3_rockchip_of_match[] =3D {
+> > +	{ .compatible =3D "rockchip,rk3588-dwc3" },
+> > +	{ .compatible =3D "rockchip,rk3576-dwc3" },
+> > +	{ }
+> > +};
+> > +MODULE_DEVICE_TABLE(of, dwc3_rockchip_of_match);
+> > +
+> > +static struct platform_driver dwc3_rockchip_driver =3D {
+> > +	.probe		=3D dwc3_rockchip_probe,
+> > +	.remove		=3D dwc3_rockchip_remove,
+> > +	.driver		=3D {
+> > +		.name	=3D "dwc3-rockchip",
+> > +		.pm	=3D pm_ptr(&dwc3_rockchip_dev_pm_ops),
+> > +		.of_match_table	=3D dwc3_rockchip_of_match,
+> > +	},
+> > +};
+> > +
+> > +module_platform_driver(dwc3_rockchip_driver);
+> > +
+> > +MODULE_LICENSE("GPL");
+> > +MODULE_DESCRIPTION("DesignWare DWC3 Rockchip Glue Driver");
+> >=20
+>=20
+>=20
+> Thanks,
+> Thinh
+
+--5yc4rucu7v66hpki
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmq1QeAACgkQ2O7X88g7
++ppB2hAAjYENPwlnCsE+aWnPmc/FTPh4KKly3W7g+jkx92kcGIcWRH8hmIhQMl+I
+jPUOAsSbSWt55UU1YPfjv07sTJzZu3/0mV06gq0dzuPpg4ydlNO8JUenXrsCDOA6
+I2Rupq0w00a1abBCVazFtKDwk6pyF434Tt0f9x3F6OZule95Jhwi6ZqM9pYRt2es
+NOf1gTLVzPspX+jscjWhRm6KOk+ZS63jKkxXyer6W1OV2efRJAVd1hmPQzt1k7zC
+kFAWJxYc7r7nApdiHeEoKgudQTFg76D7rZ3eYbk9zLGifIwAe+SYUcUtJb3rsY7+
+9Kas/Edff1CUuNf5ho7v81cr8QvB+bytgv1eHGS5je7C3/zHRnUOfPUM6wIfdfr5
+kD7l+iAthwlokCyuftXJtrdgw0fV3WcFnUwTc0eA429xwUQpAxKhGvi3evWKFn0S
+ZuH65oux33Lde8rEvvzyF0uZWipCvk5FU2qPsdQpOvOdWU6jBL5XvHDo3pWVvyh1
+refxT+ZtLlKJbdJ9YKkNyQKhZr36DO5trAUMELrRFMRIx4p0VCRFrc6Pr/qnKtn9
+Ihw8vNzTw7P3VuiQo6INPC9/MtQQ6EMxGFXFP59yBxeBe2l9jmOna4Ea8NFljaa4
+3yT9E6uRDq9kj3rMt94cbdp+76Bq5McRwEsd+Zua6lo4q+tvGtI=
+=VHfI
+-----END PGP SIGNATURE-----
+
+--5yc4rucu7v66hpki--
+
+
+--===============2853580336340256644==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2853580336340256644==--
+
