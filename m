@@ -4,92 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEAB4C98314
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 07:15:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7FBCC98310
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 07:36:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n4H7WlK3gNKMBN2LhMPH6LMdB/qNM5cnkSwW24+akOM=; b=wpCxH6w3kDZNQh
-	21LjF0b/z0VJhLCpKCB1s264ompIMsHpgonhp6ybN/ANRZufZY+JR0sv+5JNTcvn5Yb3dG24keX0P
-	5FrnLwXiwRCAUc7goi/sMhs8/pk6FWsa2fk6ISxq+PdYOqFFoUz2Ft67pTFgw7y85aN/EuBSa7kSu
-	zK42qmMI2XPtTCXQj4uJ2o+25SgeJC3Aj1P1EbRhE1aspflDA+lxR2WHhc7Nk74bkXt533wBcZwsH
-	XoMyFCsYcEeyn1Vx6mLGeogoHSwl2YWQeHs7Q70hat0Bpt0vVsGZVk/CmQ02CXbRpM1xcBPO9WwFn
-	1A/a8X/be5VuRPrFLpxQ==;
+	List-Owner; bh=Sv2R7nVXbD+VIsfAX1ummfA1LPAXf7jcxwZ68N4isjk=; b=jABpdXUIAcuQ0p
+	EFHzPybXOtz3U44/BvWnc6m+0d4nPBRwV6iGRtruael7vW9+8jKNhjQ7E3qzC8X5EKkeCmc2Rpicm
+	l201tLSHeUVSTLDfYj6LCNZGJB6yyP9hvx8b4PqEtdk/uKXx12WXsDxnjy7n8RMtjY7t5jhzxEb8Q
+	k+D2VPNu5XgN4Wvvsw8ZNG6PT9UuCMh3ObZp6kAH8Vx6VN4mdvhUnrFJosqLO+E/0tvNm5VFb+KhK
+	Eu5zSDZ/pMaj+LS1Hs9DwvKUh3bcLmn7Eh3f7YJKMQFk/qJQ+B7xGn8XTzaxoseP+NOoCCtrvfNAf
+	TTljB+jEf2FrF98n5Gkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9dfc-0000000AFVs-3SZL;
-	Thu, 24 Sep 2026 07:15:04 +0000
-Received: from mail-ed2-x0e.google.com ([2a00:1450:4864:33::e])
+	id 1x9e0O-0000000AIwb-0QyL;
+	Thu, 24 Sep 2026 07:36:32 +0000
+Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9dfR-0000000AFPN-2LA4
+	id 1x9e0K-0000000AIvP-4AsL
 	for linux-rockchip@lists.infradead.org;
-	Thu, 24 Sep 2026 07:14:55 +0000
-Received: by mail-ed2-x0e.google.com with SMTP id 4fb4d7f45d1cf-6a9dfe4dfc0so2852881a12.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 24 Sep 2026 00:14:52 -0700 (PDT)
+	Thu, 24 Sep 2026 07:36:30 +0000
+Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-4843178b1c8so216377f8f.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 24 Sep 2026 00:36:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=wermuth-pl.20251104.gappssmtp.com; s=20251104; t=1790234092; x=1790838892; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1790235387; x=1790840187; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=W/q4IHYKCy6ATe5C6R4o2zyKGD60s2UPYSeHPBkDVEs=;
-        b=kclWb8x9/bGGZomPAwVMgKKS/obKK6w/Ck+eP6q0n9NQw5rkJ82P70o2f6OPAiRI5j
-         zS/5erLtltJSJGubogbaylI7RF56BaWjg2U0kMNNSb17Lgf3Sehdt98IG0fV+Gn97Zo/
-         bsLUAPFILWovWe7YrcNgp6fud1zCOHzQmdf2c+PWryNYqwmujxVtjprSieXeUeRJkVMf
-         oGl3hmSA04KSgxpvFQyT6Ll5Co8PPEecwCrNRmqQuFTSwPi3jfXNpkV/ZAJ0ATsgM51Y
-         XogAMVdUX9WDvr8F8D9P2bogC8cl1MlLY1Jb8H1ikggZvVmeFtSG8Eu5hH9K7P+zf3GS
-         UsRA==
+        bh=pQGSUWP+wqeItZ/eyVbalLMbvY0OTH5QJikLeqmKP+Y=;
+        b=s5yp9WHMbFp/bIFmeTKzqfgUyXN7+/yplotK42P+uTG/jXoBDf5FuRlx1zhAyeQjPC
+         d8K8vleLML6SnAujQaYRLAWMjQdzqEI2qNy4ePMVR2Ffbk0Fr+jkPfAqKGwBxTwm8fJL
+         FigGpkC3Qt0upLNjqcbo+8H7JqGo7L8SQIkgwek83ZF73CBTlaswGDXhKBJ4ALFG3tVl
+         LQK4cp9HvScISgH6g80UXrKO0FtZQFOPGTLAtV954XjpV79/dKyaxvaIsd6oPfWQXmZh
+         Fnb1U6WMvFwKGpYQK7TiOdvHMf1kOf/23H3QjHQ5LSymbX+fkyIr3RjNvV3WdPwWMaU4
+         SNVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790234092; x=1790838892;
+        d=1e100.net; s=20260707; t=1790235387; x=1790840187;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=W/q4IHYKCy6ATe5C6R4o2zyKGD60s2UPYSeHPBkDVEs=;
-        b=RlEOI9fZiCEIc66M8oVj+ALpQuQCk+MvhGjdzs3ER7qINwlh8GqJFndzbKYydKVf8x
-         2l9xfCAlXcEexwFPUROhrbcXYsFA8V19OHETLTvrJMmC9UIBlqkpHnc7/rlpoty8DlhW
-         zl/Sw0iHEyB0IGzdgdsR6Mxl9+LqybGweiADbTmdGLKAiBLrKY9nrFioEAkBZOwjDWht
-         be7cPdrM9yU88nWG4cvL9e/2H+QxI7n0Ga938N8CYj7L5S8fjLDoVPg5jRsK/7VWUJbP
-         ZOgnFNH8D1H5qJCr3CJHmVnKzuExAEvdq1Qw6VsmprZXLqBvzsh5vtU+rTQffNKnK8gQ
-         NdAA==
-X-Forwarded-Encrypted: i=1; AKwUvBwnAaIw6KhcOB6tF9zrqwiXcNhRF2KqleBgp1iESlNxLtP+Y9G6KmyRvd7KbxgYNI4Xw/5v7SBLWww8isSkZA==@lists.infradead.org
-X-Gm-Message-State: AFuF++lDumss9ftzMkXWyI4mUuhcd5VAi8L5UQhNXwY5Bym6DwjH3C2w
-	RX/vCfLGZD+ddFq2ozujBCLWueVBXskkdTRMzrIm5ok0iCdkuJiNLNEZJJtl4st56ac=
-X-Gm-Gg: AYBFou3yh46WeYS9DbexNfTTx6QDFtl31H352gp/lBNDBDQCTQy1wzVgxSGzFbY9gpA
-	kw/FfwNQ5kNZuwc5P//4y4e3f6WkJQQwQBUiWuA1Cxt5sCwbGxVp8cIwEDLb3IkZVyCrSgr602m
-	cQnSTHBdgEVZ0VKpKi53uHmYzB3jcwITMeEFWfcUV/+3R2SZr3nOXNjWU34mC4XOCRjQQ+eiNZD
-	pcQ8rsz9XgKV6zwTqkU7ol99+KEV8n3H7G3Iy8Nxl8tenjcOOpoW9t6KEpp61dQJq8K9Fw6qFCV
-	nvzLKvTh1RXhLG+FDGgKLhdeaaqAsBImuz8WdI9p6mzkRslXNhULPAaxd54tF4AFE2llLqnJwoL
-	8yylmm77XQYHX8qIz1t0iM3uJ4SZIXcSvJKaM7+bFcyEXZDjOIAMhjXNhzzg3osUcOpkvXmYX7r
-	AmXUwrXj8lwj61ox0UC96OnI25uERz05WEaIua5WmJKoZMUDZjKFcUYDsyit26wM01+I3rOOEv0
-	OucS8hBQoUH50i/zeOzXw/eI5B22tum2L3Isxx4uj39s/s=
-X-Received: by 2002:a05:6402:5385:b0:6aa:aaf2:f6a0 with SMTP id 4fb4d7f45d1cf-6aac8ecf65bmr1299955a12.1.1790234091341;
-        Thu, 24 Sep 2026 00:14:51 -0700 (PDT)
-Received: from janlin-02.home.wermuth.pl (109-206-198-27.host.skynet.net.pl. [109.206.198.27])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6aab38a9756sm3306589a12.25.2026.09.24.00.14.50
+        bh=pQGSUWP+wqeItZ/eyVbalLMbvY0OTH5QJikLeqmKP+Y=;
+        b=x29vA5TfoR5e2RtRlAU1DF1jFHOz1nrQP1IajZPHiGa4/+PCqF61msQhl1riFOtvXg
+         i35Z3szcr0MXC7MEObjuedYHQUFpd0SHN7+uF2jSaVWsGze7D4KCd0GkA0ogqXlGpXnL
+         fH0MVxtTBFbkdw3LhHB520hSf2BO3a/ueR+mSJAVjBETpX1s5TTH2aM4BSuUGpGxiq7r
+         RpnrOFUEUXPtmQrRH5mDd9LqhBIXGDPaSvVTV7JfaqVpAMLAQCGYNvzlnGlSbPSKxgq1
+         SEx2ZRquHxvV42gScDbJmEwZOKQSYHFTeDezzmQz4kkNIGuFzyBAPEWxgThmcW2UD8gB
+         hNWQ==
+X-Forwarded-Encrypted: i=1; AKwUvBwz5J5zmcMT5MIZ3MusaGncSMmoP+JiKWJg1nlp6SC9cJP1zZPHSCkZ+z0T11Uu27mbzJhBFt+gn5sCMyV4yg==@lists.infradead.org
+X-Gm-Message-State: AFuF++mtf9UXdNLIy+WZDrneG2Ewm3fQyTEJ7iz9+aCpRSFP/AGey9ED
+	awRs9Znry+yZiQd/F8yu+ynpI+YTzHi4wN6mn+2EvuB+usxF1i0tbjvc6xk/gQlL
+X-Gm-Gg: AYBFou0Ozg52vMPumaDQW5Unhm3euxvAQKXVs7/j03vt/z3c/8oLlNIke1U99t5DdrH
+	dGAMGu8l5nVSfm+oVfgVQF1yI9o/9hHa5+sYmktiynPnFYsR0p3xSVERis+2tfyZzc8F60BcH5C
+	+W3BKJrL4x4hqYhzaZOH4guwD4z8QljoGWnN5uwyQA3qkVFuf0fM5GQ8vvX5YjjP5DRSRHeTwP/
+	+cCd8EZFasQ3qBbQLdrB7zrOwecko97S0vo5Ug+KQolbrO/zXn+nuiHKIhxhyxANwHsCLhw1QkD
+	/q1QQ1rFjA1ci/hTw8tfwfIHyYtOUAHqSgz92/JMND6QYycKyQsmDjAqy0kuHNllFQeN1itGXQe
+	QXw269IJvlwrPmm4+G4xPp7Doyp5PikM06BRHdvVM2TVdBFY6m2vJffzfYLOkKpRqqYWhllPMs3
+	yhtGuzFKSWzUMtDBgrMMLSTjaaxuPH1WOa29R7eyq5u3j98twvKPLxNsehc2A/76mCCjetiMQ4/
+	XoUV2ijxWAkjLFuNMl+JZEaLzekcrDvm2UDlf+B0DIs1dX16dFiuUsFaJkChVjfHeNUsryPiJ+H
+	JBw=
+X-Received: by 2002:a05:6000:25ee:b0:487:342:d145 with SMTP id ffacd0b85a97d-488716c8044mr2252224f8f.2.1790235386830;
+        Thu, 24 Sep 2026 00:36:26 -0700 (PDT)
+Received: from OrangePi5-Plus.BB-HOME (20014C4E1B90C500C183EA9C12FF3B42.dsl.pool.telekom.hu. [2001:4c4e:1b90:c500:c183:ea9c:12ff:3b42])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4886877970fsm12839361f8f.24.2026.09.24.00.36.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Sep 2026 00:14:50 -0700 (PDT)
-From: Adam Wermuth <adam@wermuth.pl>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
+        Thu, 24 Sep 2026 00:36:26 -0700 (PDT)
+From: Igor Paunovic <royalnet026@gmail.com>
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+Cc: Igor Paunovic <royalnet026@gmail.com>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>,
+	Oded Gabbay <ogabbay@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	Jeff Hugo <jeff.hugo@oss.qualcomm.com>,
+	Robert Foss <rfoss@kernel.org>,
+	Sidong Yang <sidong.yang@furiosa.ai>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Jiaxing Hu <gahing@gahingwoo.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Guangshuo Li <lgs201920130244@gmail.com>,
+	=?UTF-8?q?H=C3=BCseyin=20BIYIK?= <boogiepop@gmx.com>,
+	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Adam Wermuth <adam@wermuth.pl>
-Subject: [PATCH 1/3] arm64: dts: rockchip: Enable USB 2.0 host1 on Radxa ROCK 3B
-Date: Thu, 24 Sep 2026 09:14:43 +0200
-Message-ID: <20260924071445.441822-2-adam@wermuth.pl>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260924071445.441822-1-adam@wermuth.pl>
-References: <20260924071445.441822-1-adam@wermuth.pl>
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 00/11] accel/rocket: DVFS for the RK3588 NPU
+Date: Thu, 24 Sep 2026 09:36:06 +0200
+Message-ID: <20260924073606.45849-1-royalnet026@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <CAPsqS2SC1GvzALUdf2xsHZDpNjDO7BXrmzk19OYTF6YopQc8iw@mail.gmail.com>
+References: <20260922080114.44662-1-royalnet026@gmail.com> <9cc5365470490b4b66364e60fb614ccda7e86c6f.camel@ndufresne.ca> <CAPsqS2SC1GvzALUdf2xsHZDpNjDO7BXrmzk19OYTF6YopQc8iw@mail.gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_001453_600259_24F37851 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20260924_003629_052305_EB4877E5 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,50 +120,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The USB 2.0 data lines of the M.2 B-key slot are routed to USB2_HOST3,
-which is served by usb_host1_ehci/ohci through the host port of
-usb2phy1. Enable the controllers and the PHY port so that modules in
-the B-key slot, such as LTE modems, can enumerate.
+On Thu, Sep 24, 2026 at 07:37:04AM +0200, Tomeu Vizoso wrote:
+> I will go a bit further and recommend you to not let the LLM write any
+> text at all that is to be consumed by humans. If you don't feel
+> confident in your English, you can ask it to correct and improve your
+> text. Or write it in your mother language and ask it to translate.
 
-Signed-off-by: Adam Wermuth <adam@wermuth.pl>
----
- arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+Thank you, Tomeu and Nicolas.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
-index 149a5306bb03..ad9a91c0d0d0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
-@@ -758,6 +758,14 @@ &usb_host0_xhci {
- 	status = "okay";
- };
- 
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
-+
- &usb_host1_xhci {
- 	status = "okay";
- };
-@@ -780,6 +788,11 @@ &usb2phy1 {
- 	status = "okay";
- };
- 
-+&usb2phy1_host {
-+	phy-supply = <&vcc5v0_usb_host>;
-+	status = "okay";
-+};
-+
- &usb2phy1_otg {
- 	phy-supply = <&vcc5v0_usb_host>;
- 	status = "okay";
--- 
-2.43.0
+Yes, it is true that reading and writing in English is hard for me
+(speaking is a little better than reading and writing). I understood
+your message, and thank you for the advice. I have already applied
+it to this reply: I wrote it in my mother language, and an LLM
+translated it into English and corrected it.
 
+In future replies I will always say when an LLM or Google has
+translated my text and corrected my grammar and spelling mistakes.
+
+Thank you, and kind regards,
+Igor Paunovic
 
 _______________________________________________
 Linux-rockchip mailing list
