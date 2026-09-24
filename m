@@ -4,106 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7FBCC98310
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 07:36:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34F78C98314
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 07:52:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Sv2R7nVXbD+VIsfAX1ummfA1LPAXf7jcxwZ68N4isjk=; b=jABpdXUIAcuQ0p
-	EFHzPybXOtz3U44/BvWnc6m+0d4nPBRwV6iGRtruael7vW9+8jKNhjQ7E3qzC8X5EKkeCmc2Rpicm
-	l201tLSHeUVSTLDfYj6LCNZGJB6yyP9hvx8b4PqEtdk/uKXx12WXsDxnjy7n8RMtjY7t5jhzxEb8Q
-	k+D2VPNu5XgN4Wvvsw8ZNG6PT9UuCMh3ObZp6kAH8Vx6VN4mdvhUnrFJosqLO+E/0tvNm5VFb+KhK
-	Eu5zSDZ/pMaj+LS1Hs9DwvKUh3bcLmn7Eh3f7YJKMQFk/qJQ+B7xGn8XTzaxoseP+NOoCCtrvfNAf
-	TTljB+jEf2FrF98n5Gkg==;
+	List-Owner; bh=KWB3Zlo/CsL4IbI2gKl8LihzxkkPuhK0/MZWU1kbhPk=; b=her159cplPxOqK
+	j2zFeFRDhnItR6KjmAenAuJ0ExAYtn5HMUii1tQo8n8NmQgeUcoKvbJ/5TiHHu4QACB8JdGrFKogf
+	MqclaRVdwIXLudpoO1pw27Z8D6OLLaOPm1xK2htYUuH8fkvxPzyVXk8u8N7BzuTKxRmPR21+pbEfN
+	9BF/WDuMBw56VI/3z+8RTIcfE+9SWkhudCHwG9kS/YKva925yu+mxaFULuVs3G/yZMj08S/k/y7wL
+	U29iB3NvoyQlA8fCvaA5pStNVi1Jrh2Jg811sku4Wt7QbbE3SaNG0hG3Y+kR+sBXV71qOrL9x+CwT
+	CgUdlRK0y66Qc6LtE01g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9e0O-0000000AIwb-0QyL;
-	Thu, 24 Sep 2026 07:36:32 +0000
-Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
+	id 1x9eFW-0000000ALYJ-3gGq;
+	Thu, 24 Sep 2026 07:52:10 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9e0K-0000000AIvP-4AsL
+	id 1x9eFV-0000000ALY1-2smf
 	for linux-rockchip@lists.infradead.org;
-	Thu, 24 Sep 2026 07:36:30 +0000
-Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-4843178b1c8so216377f8f.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 24 Sep 2026 00:36:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790235387; x=1790840187; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=pQGSUWP+wqeItZ/eyVbalLMbvY0OTH5QJikLeqmKP+Y=;
-        b=s5yp9WHMbFp/bIFmeTKzqfgUyXN7+/yplotK42P+uTG/jXoBDf5FuRlx1zhAyeQjPC
-         d8K8vleLML6SnAujQaYRLAWMjQdzqEI2qNy4ePMVR2Ffbk0Fr+jkPfAqKGwBxTwm8fJL
-         FigGpkC3Qt0upLNjqcbo+8H7JqGo7L8SQIkgwek83ZF73CBTlaswGDXhKBJ4ALFG3tVl
-         LQK4cp9HvScISgH6g80UXrKO0FtZQFOPGTLAtV954XjpV79/dKyaxvaIsd6oPfWQXmZh
-         Fnb1U6WMvFwKGpYQK7TiOdvHMf1kOf/23H3QjHQ5LSymbX+fkyIr3RjNvV3WdPwWMaU4
-         SNVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790235387; x=1790840187;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=pQGSUWP+wqeItZ/eyVbalLMbvY0OTH5QJikLeqmKP+Y=;
-        b=x29vA5TfoR5e2RtRlAU1DF1jFHOz1nrQP1IajZPHiGa4/+PCqF61msQhl1riFOtvXg
-         i35Z3szcr0MXC7MEObjuedYHQUFpd0SHN7+uF2jSaVWsGze7D4KCd0GkA0ogqXlGpXnL
-         fH0MVxtTBFbkdw3LhHB520hSf2BO3a/ueR+mSJAVjBETpX1s5TTH2aM4BSuUGpGxiq7r
-         RpnrOFUEUXPtmQrRH5mDd9LqhBIXGDPaSvVTV7JfaqVpAMLAQCGYNvzlnGlSbPSKxgq1
-         SEx2ZRquHxvV42gScDbJmEwZOKQSYHFTeDezzmQz4kkNIGuFzyBAPEWxgThmcW2UD8gB
-         hNWQ==
-X-Forwarded-Encrypted: i=1; AKwUvBwz5J5zmcMT5MIZ3MusaGncSMmoP+JiKWJg1nlp6SC9cJP1zZPHSCkZ+z0T11Uu27mbzJhBFt+gn5sCMyV4yg==@lists.infradead.org
-X-Gm-Message-State: AFuF++mtf9UXdNLIy+WZDrneG2Ewm3fQyTEJ7iz9+aCpRSFP/AGey9ED
-	awRs9Znry+yZiQd/F8yu+ynpI+YTzHi4wN6mn+2EvuB+usxF1i0tbjvc6xk/gQlL
-X-Gm-Gg: AYBFou0Ozg52vMPumaDQW5Unhm3euxvAQKXVs7/j03vt/z3c/8oLlNIke1U99t5DdrH
-	dGAMGu8l5nVSfm+oVfgVQF1yI9o/9hHa5+sYmktiynPnFYsR0p3xSVERis+2tfyZzc8F60BcH5C
-	+W3BKJrL4x4hqYhzaZOH4guwD4z8QljoGWnN5uwyQA3qkVFuf0fM5GQ8vvX5YjjP5DRSRHeTwP/
-	+cCd8EZFasQ3qBbQLdrB7zrOwecko97S0vo5Ug+KQolbrO/zXn+nuiHKIhxhyxANwHsCLhw1QkD
-	/q1QQ1rFjA1ci/hTw8tfwfIHyYtOUAHqSgz92/JMND6QYycKyQsmDjAqy0kuHNllFQeN1itGXQe
-	QXw269IJvlwrPmm4+G4xPp7Doyp5PikM06BRHdvVM2TVdBFY6m2vJffzfYLOkKpRqqYWhllPMs3
-	yhtGuzFKSWzUMtDBgrMMLSTjaaxuPH1WOa29R7eyq5u3j98twvKPLxNsehc2A/76mCCjetiMQ4/
-	XoUV2ijxWAkjLFuNMl+JZEaLzekcrDvm2UDlf+B0DIs1dX16dFiuUsFaJkChVjfHeNUsryPiJ+H
-	JBw=
-X-Received: by 2002:a05:6000:25ee:b0:487:342:d145 with SMTP id ffacd0b85a97d-488716c8044mr2252224f8f.2.1790235386830;
-        Thu, 24 Sep 2026 00:36:26 -0700 (PDT)
-Received: from OrangePi5-Plus.BB-HOME (20014C4E1B90C500C183EA9C12FF3B42.dsl.pool.telekom.hu. [2001:4c4e:1b90:c500:c183:ea9c:12ff:3b42])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4886877970fsm12839361f8f.24.2026.09.24.00.36.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Sep 2026 00:36:26 -0700 (PDT)
-From: Igor Paunovic <royalnet026@gmail.com>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>
-Cc: Igor Paunovic <royalnet026@gmail.com>,
-	Nicolas Dufresne <nicolas@ndufresne.ca>,
-	Oded Gabbay <ogabbay@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jeff Hugo <jeff.hugo@oss.qualcomm.com>,
-	Robert Foss <rfoss@kernel.org>,
-	Sidong Yang <sidong.yang@furiosa.ai>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Jiaxing Hu <gahing@gahingwoo.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Guangshuo Li <lgs201920130244@gmail.com>,
-	=?UTF-8?q?H=C3=BCseyin=20BIYIK?= <boogiepop@gmx.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 00/11] accel/rocket: DVFS for the RK3588 NPU
-Date: Thu, 24 Sep 2026 09:36:06 +0200
-Message-ID: <20260924073606.45849-1-royalnet026@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <CAPsqS2SC1GvzALUdf2xsHZDpNjDO7BXrmzk19OYTF6YopQc8iw@mail.gmail.com>
-References: <20260922080114.44662-1-royalnet026@gmail.com> <9cc5365470490b4b66364e60fb614ccda7e86c6f.camel@ndufresne.ca> <CAPsqS2SC1GvzALUdf2xsHZDpNjDO7BXrmzk19OYTF6YopQc8iw@mail.gmail.com>
+	Thu, 24 Sep 2026 07:52:09 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 718824128C
+	for <linux-rockchip@lists.infradead.org>; Thu, 24 Sep 2026 07:52:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53F021F0089B
+	for <linux-rockchip@lists.infradead.org>; Thu, 24 Sep 2026 07:52:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790236329;
+	bh=flhXc27wZ7lq+96q79C1lo9pyNK1W5OvD7SOTlgsYQY=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=Ptqlc8kxRS/O4MemHmjZ01Ds3sA61fs3CTI+JusAagmLQsN1Akqn2+RqNvZW8Uu1B
+	 fkVtGl19o2GvoAfTGg+wN4khUgWOJ9FZX6ktZ8KPNQnifbt782gXCEup9k83OVKU2t
+	 EPotrLbjrIE8X+v32os82VcQO6ZZF9OCqIB3J9O376A1cE7zOP/KVOHPHmH04n7+6z
+	 tdkyUv/Up2f/Iz9O8fAfZSk8Nri0naYfsAwGJoOlvBHaXT1tsMl7JNC0kw9wS2Iska
+	 V2pq+RIOw9lvDpy2GpXUcGS99+p1HdKg7KmPutL/KHb/YUGMP+2Bo5mPAMtHNBa5Oe
+	 8VnDmcBpmgBvw==
+Received: by mail-lr2-f35.google.com with SMTP id 38308e7fff4ca-3a302a4e42aso13123121fa.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 24 Sep 2026 00:52:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvByrsXk6yGqNB39H8fZP7hKNXf09iia09O2w+dTXEuWx23yFQdfbjvFBNrH2GfDt2vN416Q/1xGPljzuZoT2HQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++mwhQ9xIxHJncqiiDvOPb1cO6Al2ZrGq5KT/KY3PSy7SDdJWx19
+	wXuL56vq0ZhwOs6RXhoph0lcY+Jq3J7Z5ZMdvBbh7UikwY83Ly6l8BOJBTNglkNRj3yNCwqw4ci
+	EmaWM5gUCtdynwrEkPEah489OpC7ei3U=
+X-Received: by 2002:a05:6512:6c8:b0:5b8:b419:b7b with SMTP id
+ 2adb3069b0e04-5b8e0a18d1cmr355916e87.49.1790236328001; Thu, 24 Sep 2026
+ 00:52:08 -0700 (PDT)
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_003629_052305_EB4877E5 
-X-CRM114-Status: GOOD (  10.99  )
+References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
+ <20260916-drm-bridge-every-panel-v3-12-83afb4f1a707@bootlin.com>
+ <arInho2bsfJiCgjV@houat> <DLNCQEG62F5N.O98WAO4U2FJO@bootlin.com>
+In-Reply-To: <DLNCQEG62F5N.O98WAO4U2FJO@bootlin.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Thu, 24 Sep 2026 09:51:53 +0200
+X-Gmail-Original-Message-ID: <CAD++jLkk-a0MrQUiaDD8OoDDoYVwBwSjFTj5ZBy=Xo7MS4+01g@mail.gmail.com>
+X-Gm-Features: AclHuK8rPixm6Txa-uGEDmLc8FjUZWkrHeBO_IgguNN-8bSfUZSDFWgY_JslL90
+Message-ID: <CAD++jLkk-a0MrQUiaDD8OoDDoYVwBwSjFTj5ZBy=Xo7MS4+01g@mail.gmail.com>
+Subject: Re: [PATCH v3 12/19] drm/mcde: dsi: don't create a panel_bridge
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Maxime Ripard <mripard@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Jessica Zhang <jesszhan0024@gmail.com>, Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+	Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
+	Paul Kocialkowski <paulk@sys-base.io>, Inki Dae <inki.dae@samsung.com>, 
+	Jagan Teki <jagan@amarulasolutions.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
+	Sean Paul <sean@poorly.run>, Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
+	Randy Dunlap <rdunlap@infradead.org>, Albert Esteve <aesteve@redhat.com>, 
+	Anusha Srivatsa <asrivats@redhat.com>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+	Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>, 
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
+	asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
+	freedreno@lists.freedesktop.org, linux-tegra@vger.kernel.org, 
+	linux-doc@vger.kernel.org, linux-samsung-soc@vger.kernel.org
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,32 +97,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 24, 2026 at 07:37:04AM +0200, Tomeu Vizoso wrote:
-> I will go a bit further and recommend you to not let the LLM write any
-> text at all that is to be consumed by humans. If you don't feel
-> confident in your English, you can ask it to correct and improve your
-> text. Or write it in your mother language and ask it to translate.
-
-Thank you, Tomeu and Nicolas.
-
-Yes, it is true that reading and writing in English is hard for me
-(speaking is a little better than reading and writing). I understood
-your message, and thank you for the advice. I have already applied
-it to this reply: I wrote it in my mother language, and an LLM
-translated it into English and corrected it.
-
-In future replies I will always say when an LLM or Google has
-translated my text and corrected my grammar and spelling mistakes.
-
-Thank you, and kind regards,
-Igor Paunovic
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTHVjYSwKCnNvcnJ5IGZvciBteSBzbG93bmVzcyEKCk9uIFRodSwgU2VwIDI0LCAyMDI2IGF0
+IDk6MDHigK9BTSBMdWNhIENlcmVzb2xpIDxsdWNhLmNlcmVzb2xpQGJvb3RsaW4uY29tPiB3cm90
+ZToKPiBPbiBUdWUgU2VwIDIyLCAyMDI2IGF0IDk6MDkgQU0gQ0VTVCwgTWF4aW1lIFJpcGFyZCB3
+cm90ZToKCj4gPj4gLSAgICB9IGVsc2UgaWYgKGJyaWRnZSkgewo+ID4+ICsgICAgaWYgKCFicmlk
+Z2UpIHsKPiA+PiArICAgICAgICAgICAgZGV2X2VycihkZXYsICJubyBicmlkZ2VcbiIpOwo+ID4+
+ICsgICAgICAgICAgICByZXR1cm4gLUVOT0RFVjsKPiA+PiArICAgIH0gZWxzZSBpZiAoIWRybV9i
+cmlkZ2VfaXNfcGFuZWwoYnJpZGdlKSkgewo+ID4+ICAgICAgICAgICAgICAvKiBUT0RPOiBBVjgx
+MDAgSERNSSBlbmNvZGVyIGdvZXMgaGVyZSBmb3IgZXhhbXBsZSAqLwo+ID4+ICAgICAgICAgICAg
+ICBkZXZfaW5mbyhkZXYsICJjb25uZWN0ZWQgdG8gbm9uLXBhbmVsIGJyaWRnZSAodW5zdXBwb3J0
+ZWQpXG4iKTsKPiA+PiAgICAgICAgICAgICAgcmV0dXJuIC1FTk9ERVY7Cj4gPgo+ID4gSSB3b25k
+ZXIgaWYgd2Ugc3RpbGwgbmVlZCB0aGF0IGJyYW5jaC4gRXZlcnkgcGFuZWwgaXMgYSBicmlkZ2Ug
+bm93LCBhbmQKPiA+IGl0IGxvb2tzIGxpa2Ugd2UgZG9uJ3QgaGF2ZSBhbnkgc3BlY2lmaWMgcGFu
+ZWwgaGFuZGxpbmcgaW4gdGhpcyBkcml2ZXIsCj4gPiBzbyBJIGd1ZXNzIGl0IHN1cHBvcnRzIGJy
+aWRnZXMgYWxyZWFkeT8KPiA+Cj4gPiBMaW51cywgZG8geW91IGtub3cgd2h5IHRoaXMgY29uZGl0
+aW9uIHdhcyBoZXJlIGluIHRoZSBmaXJzdCBwbGFjZT8KPgo+IEkgaGFkIHRoZSBzYW1lIHRob3Vn
+aHQgd2hpbGUgd3JpdGluZyB0aGUgcGF0Y2gsIGJ1dCBJIGNob3NlIHRvIGJlCj4gY29uc2VydmF0
+aXZlLgo+Cj4gTGludXMsIHVubGVzcyB5b3UgaGF2ZSBtb3JlIGluZm8gSSdtIGdvaW5nIHRvIGFw
+cGx5IHRoZSBwYXRjaCBhcwo+IGlzLiBSZW1vdmluZyB0aGlzIHNwZWNpYWwgY2FzZSB3b3VsZCBi
+ZSB3ZWxjb21lIGFzIGEgbGF0ZXIgcGF0Y2guCgpJJ2Qgc2F5IGdvIGFoZWFkIGFzLWlzLgoKSSBk
+byBoYXZlIHRoZSBpZGVhIHRvIGNvZGUgdXAgYW5kIHN1Ym1pdCB0aGUgQVY4MTAwIGVuY29kZXIK
+YW5kIEkgaGF2ZSB0aGUgaGFyZHdhcmUgdG8gdGVzdCBpdCwgYnV0IGV2ZXJ5IG90aGVyIHVzZXIg
+c2hvdWxkCmJlIHVzaW5nIHBhbmVscyBkaXJlY3RseSwgYW5kIEkgd291bGQgYmUgdGhlIG9ubHkg
+bm9uLXBhbmVsCnVzZXIgc28gSSBjYW4gZGVhbCB3aXRoIGl0IHdoZW4gaXQgY29tZXMgdXAuCgpZ
+b3VycywKTGludXMgV2FsbGVpagoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
