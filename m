@@ -4,61 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CDB5C98318
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 16:55:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82A72C98321
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 17:26:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KbjHsAS8bRH95SbNYskhNzkVljYvP5U4LebC7a9bocA=; b=KupwmDaENI37yGv3f/96tGpMFs
-	AGuMPV+yp6ZhTfEe46FBZDV0LtrtwO7zmBqqpfSC6BvoycbseSypqDcvrrmDbK4xwUKBc4n6QhGt0
-	zykytVEkY794abZtnVSwa0+RTdryDUE5E41KOwXZu8miYmEt6eELJPia2MNx5hZzJ20hjq+yMdv/z
-	lX2NJ17GrowvzfvPN4UsgKHxfda/n+klfCL8OWfhLlv97jNP/C/gccjK9kunR7BpHvMWPVOqwPguF
-	+geMYjMcBGakW36g64XnGyuGmcugdXV8xnr/u9gnJWUBYXEEdBr1hcvp1XyDxvd2Bt51knX1L4d8V
-	3357ZSlA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fd7/Su5oWYL2KQMi86Y50K0tVjVZji9GbuCT9EL1cpU=; b=2cItJeKLk+FhER
+	in77y7Ml5d5JCZmLUUwgaGeIz95a6I+TZLKfGwjT6hkSMeMsZgGYBJbAW+8MR1NC4nGki7H8M3ft3
+	LHP/cWYPpobVu6YCm7/a2W02BdVeCHsoa56iWiRtk8Hhe1nRYC8ro6ELfpqDvhAEIMMFX6Gm11JAd
+	1akAH/eMX9+l/ZbqYqgEwutcQ0Nfwfchr9sJIDcLQ1xeoWQl7z7cRADUDNGCAasFQg4Prp9UhS0Ed
+	bwqN4UT5a4+k+Hpqr29TSS7Bro26BnvlGSpsyCpa8bZct1iV3QELFfrxeIpk/MT/1uTfFOL++D5ks
+	0KZdBWTaOF6PxOIHjkwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9mjP-0000000BfBM-0u4S;
-	Thu, 24 Sep 2026 16:55:35 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x9nD2-0000000Bie3-33Dv;
+	Thu, 24 Sep 2026 17:26:12 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9mjN-0000000BfAp-3UMF;
-	Thu, 24 Sep 2026 16:55:33 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id F290E601EF;
-	Thu, 24 Sep 2026 16:55:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60D951F000FF;
-	Thu, 24 Sep 2026 16:55:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790268932;
-	bh=fq72bTv0aDg8FP/1veCJLfYhWi+ANAEEZ3M/sgNIuzQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=X8jyjQG5wgjV3njzYK5bFpjnqGZC1M20JAXdKp9H0BJ2imlh+/DPGGmFmM4ki+co4
-	 k+OyAK/d4VWEP+/AxAqhE1w3+QSxvKozoMFwSBG3txdgWQlyQhMSczIN8hj2zkKZ79
-	 ySKIcaOGnKWJi1eoCtoooaoyG13R5c/9C1aGRSaNvERVUX1qpCqEl5XsuqzDFRXomz
-	 Icy/rFVg6U0+gL/QgdEWvPqTzDcCwPILCuEfN3z6KJmA2i18cStbLj8Qa7Z1nUdv19
-	 dlGshJAyfLYAZ0ZKR6kPdeX959KosICrTQdt/YXLA9BdsQbSA6I3I/6mFwHHDZzZfl
-	 B2EQW6jDQU5XA==
-Date: Thu, 24 Sep 2026 17:55:27 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
-	mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, Frank.Li@nxp.com, s.hauer@pengutronix.de,
-	kernel@pengutronix.de, festevam@gmail.com,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v3 2/3] media: dt-bindings: media: nxp, imx8mq-vpu:
- Remove nxp,imx8mq-vpu
-Message-ID: <20260924-compare-useable-3e2863b66924@spud>
-References: <20260924130453.196299-1-benjamin.gaignard@collabora.com>
- <20260924130453.196299-3-benjamin.gaignard@collabora.com>
+	id 1x9nCu-0000000BibN-2HCT;
+	Thu, 24 Sep 2026 17:26:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1790270762;
+	bh=3sBvjQKw6DJCadb53xNtWm7YOjLNwu7mLDnxmC9FK5w=;
+	h=From:Subject:Date:To:Cc:From;
+	b=OvimmMZvvNPbU+qiwT8pkh8D04s1znDaTjrL5RbYxyw91Pols0o4QT8N45TstG/Dm
+	 iGeGhgTuxgZf3iXKZfYhlYm3Uyn16/MQz1q7PyyO5JWveBJEiKJBNnpitJBdGtn9mv
+	 bXqNJ0hd9BBvpOmBjZBYoJUBYl38ZxT0A7+6uKVzqCVlObkzyln5hB9OfQp3WjD4Ou
+	 25rZ9AIRM3jE/C5H3E5oDFyu7TTUu6Km2b9QsYLreFkRV4wc52AdY8Hj5joQIlQo9R
+	 D/CPAEDJxn/uCfilhRjAta2OvzhZOGLJXTvQa79Vzvfx39gUaC+XrmmasaEFddaXwN
+	 exQA2DZIpwKIQ==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E96D517E0082;
+	Thu, 24 Sep 2026 19:26:01 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 9861748002B; Thu, 24 Sep 2026 19:26:01 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH v16 0/6] usb: dwc3: introduce Rockchip glue driver
+Date: Thu, 24 Sep 2026 19:25:36 +0200
+Message-Id: <20260924-b4-rockchip-dwc3-rockchip-glue-v16-0-126a2e9133c3@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20260924130453.196299-3-benjamin.gaignard@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4WOyw6CMBBFf4XM2hpKCwgr/8O4aMsIVaDaFtQY/
+ t3ySFy6PJM799wPOLQaHZTRByyO2mnTB6DZLgLViL5GoqtwgCROsrignEhOrFE31eg7qZ6K/ah
+ uByRFXqBgOUsrziCU3C1e9GsxnM4ru0FeUfm5dUtYfAxB7dcYSOGQKNN12pfRmO+DQ1GYvxvtv
+ LHvZe5Il/A2LP03bKQkJnnGpEx5dkg4HpVpWyGNFfvggvM0TV9qFEn6DwEAAA==
+X-Change-ID: 20260914-b4-rockchip-dwc3-rockchip-glue-979ea3735d43
+To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>
+Cc: Igor Paunovic <royalnet026@gmail.com>, linux-kernel@vger.kernel.org, 
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, 
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3046;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=3sBvjQKw6DJCadb53xNtWm7YOjLNwu7mLDnxmC9FK5w=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGq1XSmZhKGkf1izi3YlOhbYNbqIV6op3jl0F
+ 61epOfYQ/gp/YkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqtV0pAAoJENju1/PI
+ O/qax+wP/Ahzg72x8NLtRMgZovPAcWOphz1v0/zYHXkHMkouZ/xu1IREC7H0l4cDhe28zyTX3m/
+ YxxadEhLponFpvA8np0OcKyYAolg8zpmeC+/v4TCBg1aFShNqzoHn9gszHl4X5ne0WtSVQKSguE
+ v7qfEyZ/JaTwSev7frVc2ugB6qvKKxJJ9y0A9PobV9TPNwyH+hk7jfFE/9jmMZi4pxXRYAY1zBo
+ 7rUQivWhVwXY/Q8BFZGMRmt236pw3mi+7WB5bSTbG7JJFHgMptpxFNl6o9tBi6ZB9iTy5L1Q8PN
+ RVTfVNSMrYCRyFsFlhdfKj9QWhrO8foy2da0jA4sMO7oE21448UBXbFSexttcDOU5a0VS88Qfw2
+ 6oUg2r4s2XaUDsz3wqp5z7ggpP9r44wt9pID++jPj5kg1r06evftKwvBMuwlSXxtjctoOTr9x4x
+ mSgJlWQeSjUMIhQM2JqE/IH9fNZkQfN0/JT4LN6pHffnlxfGRaRlYcU+fdBdF5x46KwMpC1UnqW
+ C0ECA4JA90wYmPtNQ+vXlTkoVEziJqdwahqxPVNM0nJEwCekH85jvn8M+03hXqG1W6ktj+KyscZ
+ fRYWL2+33Qn2AEJahnc1gZjIit5GgyQHDzngcb0fAC4EGu+c4yzOATk30+A3wiOiRacRbVhRuCs
+ VQNrQqAWNhZUF99CyjXAsoA==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260924_102607_931328_070C5388 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,84 +97,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3029752137029971812=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============3029752137029971812==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="GsCwYJZyFBXDIRyI"
-Content-Disposition: inline
+The recent Rockchip platform have a combined PHY, which does USB3 and
+DisplayPort as well as muxing the lines in arbitrary order. Changing
+its enabled functionality requires a PHY reset and as the PHY provides
+a clock to the DWC3 controller, this can result in an SError. Apart
+from that the PHY might not start up correctly when the DWC3 PIPE
+interface is running. This series prepares a Rockchip specific DWC3
+glue driver to help out with these problems. To become useful more
+patches are needed on the Rockchip USBDP PHY side, which are send
+separately.
 
---GsCwYJZyFBXDIRyI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This was split from the USBDP cleanup series. It has no dependencies,
+but is required for part 3 for the USBDP cleanup series (which will
+be the final part).
 
-On Thu, Sep 24, 2026 at 03:04:52PM +0200, Benjamin Gaignard wrote:
-> nxp,imx8mq-vpu has been tagged has deprecated since a while.
-> After driver clean up it is time to remove it.
+Changes in v16:
+- Link to v15 (sorry, I missed force setting the revision for this
+  part in the series split, so the series says v1 in the patch subject):
+  https://patch.msgid.link/20260915-b4-rockchip-dwc3-rockchip-glue-v1-0-763bb546824e@collabora.com
+- Update first patch to also build the PM functions even when
+  PM is disabled
+- Add new patch for defining an empty usb_udc_vbus_handler stub
+  when USB_GADGET is disabled
+- Add dependency to Rockchip DWC3 glue, which disallows the
+  configuration with USB_DWC3_ROCKCHIP=y and USB_GADGET=m
+- Collect tags
 
-No users in linux doesn't mean no users, but I am guessing that there's
-genuinely no users elsewhere and anyone using out of tree devicetrees
-should have updated due to the warning at runtime?
+Changes in v15:
+ - Link to v14: https://patch.msgid.link/20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com
+ - Avoid #ifdef for CONFIG_PM in the new glue driver (Thinh Nguyen)
+ - Do not add #if IS_ENABLED around the DT compatible blacklist in the
+   generic driver, using the glue driver should be mandatory as the
+   generic driver results in arbitrary system hangs. Thinh Nguyen suggested
+   updating Kconfig for this, but did not clarify what that means.
+   Current Kconfig works the same way as the other mandatory glue
+   drivers.
+ - Split series to simplify review
 
->=20
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  .../devicetree/bindings/media/nxp,imx8mq-vpu.yaml      | 10 ++++------
->  1 file changed, 4 insertions(+), 6 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml =
-b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> index 19528262810a..69619d2c86fa 100644
-> --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> @@ -14,12 +14,10 @@ description:
-> =20
->  properties:
->    compatible:
-> -    oneOf:
-> -      - const: nxp,imx8mq-vpu
-> -        deprecated: true
-> -      - const: nxp,imx8mq-vpu-g1
-> -      - const: nxp,imx8mq-vpu-g2
-> -      - const: nxp,imx8mm-vpu-g1
-> +    enum:
-> +      - nxp,imx8mq-vpu-g1
-> +      - nxp,imx8mq-vpu-g2
-> +      - nxp,imx8mm-vpu-g1
-> =20
->    reg:
->      maxItems: 1
-> --=20
-> 2.53.0
->=20
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+Sebastian Reichel (6):
+      phy: core: add notifier infrastructure
+      usb: dwc3: rockchip: introduce glue driver
+      usb: dwc3: core: add post PHY registration hook for platform glue
+      usb: dwc3: rockchip: support PHY reset notifications
+      usb: gadget: define stub for usb_udc_vbus_handler
+      usb: dwc3: rockchip: fix USB-C reconnect in gadget mode
 
---GsCwYJZyFBXDIRyI
-Content-Type: application/pgp-signature; name=signature.asc
+ drivers/phy/phy-core.c           |  65 ++++++++++
+ drivers/usb/dwc3/Kconfig         |  12 ++
+ drivers/usb/dwc3/Makefile        |   1 +
+ drivers/usb/dwc3/core.c          |  17 ++-
+ drivers/usb/dwc3/core.h          |   9 ++
+ drivers/usb/dwc3/dwc3-rockchip.c | 254 +++++++++++++++++++++++++++++++++++++++
+ drivers/usb/dwc3/trace.c         |   3 +
+ include/linux/phy/phy.h          |  40 ++++++
+ include/linux/usb/gadget.h       |   5 +
+ 9 files changed, 405 insertions(+), 1 deletion(-)
+---
+base-commit: e5e04726cdd043e309677071ab1b65a4b18f422b
+change-id: 20260914-b4-rockchip-dwc3-rockchip-glue-979ea3735d43
 
------BEGIN PGP SIGNATURE-----
+Best regards,
+--  
+Sebastian Reichel <sebastian.reichel@collabora.com>
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCarVV/wAKCRB4tDGHoIJi
-0o8JAP9bPWkftttTcroD/Ebf05mqIGTFa7OMd08w4VwH1mEEgQD+LPTr10IFTyQQ
-y//zL0pKXfEzCfB463vA15kwJ030OAg=
-=7zii
------END PGP SIGNATURE-----
-
---GsCwYJZyFBXDIRyI--
-
-
---===============3029752137029971812==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3029752137029971812==--
-
