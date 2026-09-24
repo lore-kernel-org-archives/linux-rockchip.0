@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7949C98318
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 16:03:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7871C9830E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 16:12:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r4sdf3xR9qhQ9kcFHG92/cfi4BPQstMCWHZrUjue8xk=; b=eIfM37p2OT6GxX
-	V24H8YgxOpTDz6nL156Ikfj4DgceCNr1tn2VgmmzhU+FDr/ZVjvpMXzK4ZW/2cyN0bAWQFqH8kgSx
-	/OR9CJ6fKebxoDLnuO/irbFNfXvojBZW1Bu31gMp7v7y11gFcfFfsTtYLHTIB3vEcA1Z+Z9w5zj8E
-	GR3Xxx+mMmsY+IjECVTyzXKvblRlM5xs5+ruuU7im8GpugNa09gXwEUP7kyZFNbo1SGeQS7ZtQjei
-	EutsBFpi9elWGbqNW7Gjeg4ysFLAj2glVOZh4z6x4Yz1C4Tfb4DAI5wy74IHN/Ymu8oQIEK54iovF
-	vpcVJr/BhHE4Qc0vp6lw==;
+	List-Owner; bh=Uo263phaGkNPi42BRX8n4xvIzAtUy5uus8SA9/t6IUc=; b=oJnZrYz7+IiUT7
+	WcF4kniSKpAdkJ/QbtBmyLV/IjsHIwynTa+f0Bv18ycH7ygA/WB3MXazBwla7doGaRtu1Xkdu7H2K
+	2vHJ+JPx/JtmCpX25X8gilDG55v+Ya02/Fvvj0P5pu0TdDcrUGlHcj249hlonTShYlYKqwN7YWdC2
+	/3U/J94nas+rLucKKXyPXZTHZitc8BUmq0H4geZj44vzNCoS7L5nAJhBCQhtqawAa9wQ5apxUudd8
+	u6/w3v5iCIVe+T3UD0LEwi9eKFsf2Ghyh8Ya2cI8ygJAWTfHTKOQDrOMXgGkG21NNHhN0nzmgBg8J
+	MkRnb9j0O4LD9iGqmY8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9lua-0000000BVu9-1fg0;
-	Thu, 24 Sep 2026 16:03:04 +0000
+	id 1x9m3V-0000000BYoC-0avr;
+	Thu, 24 Sep 2026 16:12:17 +0000
 Received: from smtp.forwardemail.net ([121.127.44.66])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9luW-0000000BVrh-3XbU
+	id 1x9m3T-0000000BYn8-02lZ
 	for linux-rockchip@lists.infradead.org;
-	Thu, 24 Sep 2026 16:03:03 +0000
+	Thu, 24 Sep 2026 16:12:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
  Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1790265777;
- bh=4Z6hK1wJOvRpU/CGhkbccoyVt+96evFlvSWCRsULX+k=;
- b=D3YsLwMNaJfRPq+ppJcriT30EIpDIa37YXLqxSSwvGMksoKScUpybiE8Is6AFXm2kUKpJr3IE
- QmMx/XrFmO9CRTz5PsLulxdNDaZbYa/L1BJBnbyUMRlQK/vEplto52QXLAF9Bqx314qhxB1tPoz
- DH9xRWONkg/HKBXLuoVrq0AXYQ49u/TFWLoZOAelAD/L0XPIZsyE8UrjMIo4HwpMm7Gxwys2kic
- c783i/bD6G/7M8TGawnCgqwobJzzR4TS2VvHBQNz4lTRykwNZMKU9bOkAFJh04Jf4t5Wi4S18tr
- vXn7L5fJ8xk+BEIj8DtHx41E7nqasM+1w8+ksDd0dSTA==
-X-Forward-Email-ID: 6ab549aec3cf5b1855119e7f
+ s=fe-e1b5cab7be; t=1790266333;
+ bh=RPplfzolB2pTnE62YOM17Sgrq0rS4rod1kMvEv6yvGI=;
+ b=BeF3eaIG+AEXEtaHIs7gJMEFhn5OC9a52/G58dRbamCfnQnGyh+Ue0Rjj+GCZYlpnn7Je7fcK
+ 7IT9/XDxJ7OTvDSyUBFIqhjnu1xezaby5u/zIDqrNR5G9IJYvQ5f2s+x1jng/ls0OzvxeFNch+R
+ +vIm6gmb24M7KkStzZiD33/3upUk77Vi6j9rt07X+31uEknwC+mF+abfBiRZaMl/Gck8lPiTrkV
+ WS5wH9jY9gN+ELrRXTmRt052DgfWZUgobopWpQbfluJ9/lYJuzUhy3CO61Qi7w00HKQivt1cwKi
+ M3vErqjKF5l0Z+Wcf07Jk6VRJzgWPpzOBxET2K78hUNA==
+X-Forward-Email-ID: 6ab54bdc57e24cb1e471d61c
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  121.127.44.66
 X-Forward-Email-Version: 2.16.2
@@ -45,22 +45,25 @@ X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <d3c0b1c9-a9fe-42c1-b865-dd1a8cc4e416@kwiboo.se>
-Date: Thu, 24 Sep 2026 18:02:50 +0200
+Message-ID: <e03db2e9-085b-49ff-8d4a-bc112bc4ddd7@kwiboo.se>
+Date: Thu, 24 Sep 2026 18:12:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] arm64: dts: rockchip: Remove cap-sd-highspeed on Rock
- Pi S eMMC
-To: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <1790147498-47766-1-git-send-email-shawn.lin@rock-chips.com>
- <1790147498-47766-3-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Enable USB 2.0 host1 on Radxa
+ ROCK 3B
+To: Adam Wermuth <adam@wermuth.pl>, Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260924071445.441822-1-adam@wermuth.pl>
+ <20260924071445.441822-2-adam@wermuth.pl>
 Content-Language: en-US
 From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <1790147498-47766-3-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <20260924071445.441822-2-adam@wermuth.pl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_090300_933897_6ED5C628 
-X-CRM114-Status: GOOD (  12.82  )
+X-CRM114-CacheID: sfid-20260924_091215_105605_38930A76 
+X-CRM114-Status: GOOD (  14.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,41 +80,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Adam,
 
-On 9/23/2026 9:11 AM, Shawn Lin wrote:
-> cap-sd-highspeed declares SD high-speed support and has no place on
-> the non-removable eMMC node. Drop it.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
->  arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-> index c1e3098..677d129 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-> @@ -133,7 +133,6 @@
->  
->  &emmc {
->  	cap-mmc-highspeed;
-> -	cap-sd-highspeed;
+On 9/24/2026 9:14 AM, Adam Wermuth wrote:
+> The USB 2.0 data lines of the M.2 B-key slot are routed to USB2_HOST3,
+> which is served by usb_host1_ehci/ohci through the host port of
+> usb2phy1. Enable the controllers and the PHY port so that modules in
+> the B-key slot, such as LTE modems, can enumerate.
 
-The Rock Pi S board has two similar revisions that is supported by this
-DT, one has onboard SD NAND Flash and the other one has onboard eMMC
-supported by the emmc dw-mshc.
-
-So this board should have both cap-mmc-highspeed and cap-sd-highspeed
-here to support best speed depending on board revision.
+This and next patch is likely best suited as an dt-overlay.
 
 Regards,
 Jonas
 
->  	no-sdio;
->  	non-removable;
->  	pinctrl-names = "default";
+> 
+> Signed-off-by: Adam Wermuth <adam@wermuth.pl>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
+> index 149a5306bb03..ad9a91c0d0d0 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
+> @@ -758,6 +758,14 @@ &usb_host0_xhci {
+>  	status = "okay";
+>  };
+>  
+> +&usb_host1_ehci {
+> +	status = "okay";
+> +};
+> +
+> +&usb_host1_ohci {
+> +	status = "okay";
+> +};
+> +
+>  &usb_host1_xhci {
+>  	status = "okay";
+>  };
+> @@ -780,6 +788,11 @@ &usb2phy1 {
+>  	status = "okay";
+>  };
+>  
+> +&usb2phy1_host {
+> +	phy-supply = <&vcc5v0_usb_host>;
+> +	status = "okay";
+> +};
+> +
+>  &usb2phy1_otg {
+>  	phy-supply = <&vcc5v0_usb_host>;
+>  	status = "okay";
 
 
 _______________________________________________
