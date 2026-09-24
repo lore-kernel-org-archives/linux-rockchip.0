@@ -4,77 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B169AC9830E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 08:57:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62D99C98311
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 09:08:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D3NTc5DsDh+gHbYPWIPLw4Nu74K+KTlpNCa/wkW3Qr0=; b=jkos73+LQ+JWcz0NfqTgbxlWQj
-	xD70zaCA4v6lLKw93+QhY1lSrrUPvrva5Tq4t0k45fZ40Qk8QcjVSNfV1zZjNI2ByDjPMcwz75q6N
-	fSzvjOGBHoKCC+PYwHYAy1Wg40dIv2JzWB1Kj/ylFh2rF5rr+uD8ObE/lfWm1es26Lnvbll/YtMdT
-	0s3NbDdaBuetCSnnD+y2TdBvwDPnRJTETTha8KdeB6XJaXFG3nYLzQ1mA5Y1LxeBhD0E1cPNXxqY0
-	0+dx1BQLyIVaQOn0IXflcRi/yNpywaN3BQYHDTis9VrUH2dgYLlRTCN9dgQptHNlBKSs+/8F1rleN
-	YmvQdSaw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=llVWse3T4wEomz7xVQA45M/HBuNHvRnlRXpEYu1L+tk=; b=1mAIlvah/ilt27
+	ieMXDERigew7Qq6MW6zMnXQs9M9M1INLqPUOzHEQ6eT+3whHCYKIsZ89LGmgCsGpM24587P4mC08v
+	kuRWlcKKCAHr21voHnWGdwR7K8bwqJafy4KKD7GBBuOfARqWaplcI9Cw83AZNDigbbyU+ribgSxM/
+	JqTmTz6kkvZM8Aqfpr9Nw1QMl3OyKOZ9OPDu84EVOY0+V3hNs2HJ/5hMh2mSpP9G3Aw57ol93IPAC
+	uA54OllK7H+ILAgjxJszAwcfGIR5iFp/UA5Tk1z8sXV7jFO79zYdLKmscDsBWsnO86s6RpI1ck5bp
+	q4buTrhbHfUIBu00z9dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9fGk-0000000AWKJ-2bak;
-	Thu, 24 Sep 2026 08:57:30 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x9fRN-0000000AXdm-0xtw;
+	Thu, 24 Sep 2026 09:08:29 +0000
+Received: from fout-b3-smtp.messagingengine.com ([202.12.124.146])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9fGj-0000000AWJI-06HJ;
-	Thu, 24 Sep 2026 08:57:29 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 795ED43454;
-	Thu, 24 Sep 2026 08:57:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9AAFF1F00893;
-	Thu, 24 Sep 2026 08:57:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790240248;
-	bh=KsfA+7ZRfaMaOYHf9FLzqm+87QxZc0nf8pdVelteCEk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Y66Nn1F70+EOrXieRS0criFH3uxMANVUI7oanFcCoy8GmyXIy+pJT4bYVlm/thmPG
-	 N7qIdDiz1YmSsvWNdouFIMEZW4BAqVieOEmxdbjyjg8VeCwPdmNl98xvvOpohxm65Y
-	 GyNzGB6Z7BI3y56gBKntItSCJRjU51zGLLQXLvZnr16k3FQ6buDS49+J1C+07Q9T63
-	 n6nHxyci7fO61wmUlSLUGoMKJe5Tmzp5UMO6z0QysEePeglKrYmnlnSTGRtL4Xmc0R
-	 znGcbePU3j8NmjIOaR7E0m14ncuBzwafBVjkGLhSAzXI59gpYQZewywAESCZXVQDnZ
-	 5vqxv1raD/1Pw==
-Date: Thu, 24 Sep 2026 10:57:24 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Linus Walleij <linusw@kernel.org>
-Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Jessica Zhang <jesszhan0024@gmail.com>, Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
-	Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Paul Kocialkowski <paulk@sys-base.io>, Inki Dae <inki.dae@samsung.com>, 
-	Jagan Teki <jagan@amarulasolutions.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
-	Sean Paul <sean@poorly.run>, Jonathan Corbet <corbet@lwn.net>, 
-	Shuah Khan <skhan@linuxfoundation.org>, Randy Dunlap <rdunlap@infradead.org>, 
-	Albert Esteve <aesteve@redhat.com>, Anusha Srivatsa <asrivats@redhat.com>, 
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Hui Pu <Hui.Pu@gehealthcare.com>, 
-	Ian Ray <ian.ray@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
-	freedreno@lists.freedesktop.org, linux-tegra@vger.kernel.org, linux-doc@vger.kernel.org, 
-	linux-samsung-soc@vger.kernel.org
-Subject: Re: [PATCH v3 12/19] drm/mcde: dsi: don't create a panel_bridge
-Message-ID: <arTlpd-KAsVpj3UH@houat>
-References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
- <20260916-drm-bridge-every-panel-v3-12-83afb4f1a707@bootlin.com>
- <arInho2bsfJiCgjV@houat>
- <DLNCQEG62F5N.O98WAO4U2FJO@bootlin.com>
- <CAD++jLkk-a0MrQUiaDD8OoDDoYVwBwSjFTj5ZBy=Xo7MS4+01g@mail.gmail.com>
+	id 1x9fRL-0000000AXct-1zUw
+	for linux-rockchip@lists.infradead.org;
+	Thu, 24 Sep 2026 09:08:28 +0000
+Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
+	by mailfout.stl.internal (Postfix) with ESMTP id 307A21D00023;
+	Thu, 24 Sep 2026 05:08:24 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-01.internal (MEProxy); Thu, 24 Sep 2026 05:08:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:content-type
+	:date:date:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:subject:subject:to:to; s=fm3;
+	 t=1790240904; x=1790327304; bh=kbzH7qjqaOwJs9tvXnjG2IbxAbzm4f0k
+	LZPAR+JgW84=; b=M8CqYIdNbi4uc5RsPlzC7Vl7h+0MSRFgAHyUmuxOeGPSI5NJ
+	swA5QrXE3r0osIMJeWZiuef34Yo9ISApB7CNom62bqmucp3Cg9+ryh1tCM7Y9dAj
+	sMJLzBY/XNKTXzHS2uYF2TmaGuaqHzeI+htTP8Emgt0MtKgOZxsvqz5WLRhoJnrS
+	A7sJ0sPm4AmTtnbPME2fF4iVwqDdKlyIFwhkWzIK1VbczIG1sey+6U5bKCofugj1
+	V+N0IbcwNJv9Syc1jOJKuH594Y/AI+90/k1kVAFqBrV1T/sp3iea1MnMH/Ex0HwP
+	lI5Jd9tg7sSWr6+RD7DDp//nKQk1f2X/FWCsnw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1790240904; x=
+	1790327304; bh=kbzH7qjqaOwJs9tvXnjG2IbxAbzm4f0kLZPAR+JgW84=; b=p
+	DD4MiZOx75xMlL5FczWa6fpffjsxqY5U6XY2cEr+2twrHY4GcaaJc0k2fK5OMgVQ
+	XTXyma2nuVGr8t0Oc7MoS7FHJnKUhjoN/W9HWFgA/jdYseua+ipOvGAQXWpfft3l
+	Ql+x51MAA7Aa9gDX9YQ11pjYfP8xiTajQWkx2W6PU6qLvNm+SntMjQj0h/1Zs2m1
+	Uv4aNBTTpD4f1G5+JrYYnl5bR6BcOSCjeK9M/LV02TpyBvYdw1XklPbNeZXBftCz
+	BwZvL4lqbP7CC4fWjFCs86MX1a/ibBm2TkdNA0J5R8j5UpYaQxl9AGHNTV7GHYTo
+	J5zjpI0889obYjIktyQhA==
+X-ME-Sender: <xms:h-i0ahhtLT9rlJE9X-tKCBKMZ1QzCQclh8dgDaVdGtA65VcshSKCYA>
+    <xme:h-i0ainqRpD1tNqunlcJYFgRgPGyKx8wBg9k8H7EPufT4bzLO4smjS9MRSopHj8be
+    jvWGzLq7m0__rZevYohEafXG72_Gp42BUet-4EryLBClCcgtUfXK5PH>
+X-ME-Received: <xmr:h-i0aljCBATr659LeXSyehsjd8IAqOH8fbB1qOLMy8q0RWplSk_eOu6dIOb3VIC2KTRI1nyMJQ>
+X-ME-Proxy-Cause: dmFkZTGhribILWLZsbRrU4Y/cS3q14omnMoumwx+6zPO3/kzgsZAbgopM11gAgYklAnMHT
+    r8PmY3+S744nZ7vYIB3APy2UCljo+f8HLGJh3k+RQFLrJZnWvYguKKLNJ29x6WvdMSwQMo
+    3RCBqaEPTdWezhFfe4I4z96PUbeCaHxtU7vUfxB40hI8WOXZOt/UxbS7gh2kryMdVlIFBt
+    X+maJR+jkma8Wk1q4jUGrDqxwocYQeTz1pvJvwdOBncc/1CbAZF/5ydS9GJUS/Dxt2oypD
+    yuIZZ0fmLnRsJUh4Wz+YDQcCynTXAZG3EFfDTzldAWd97QM+7dcGZ0Yumxz4b8qPajhDZT
+    U+CyAK/OZokQZUiWrcCvhp42lYDB6Frudhl7EOTFFfbHzGpfwQAYtcTin79czFo+jB9u6n
+    7hVHQNrcTMsLFsoIEggN26BdXc7kzRTAkcRnowc3Xp00/cQ2eJ+h6dtDl5rs3WS7jbTQ7q
+    Sn6v/upBCYnQhmmoPZcOwtyAT1atfi7eZzPTj4YYqZ9lgG6e+1TNMeiQmyRsrYSjh0aiTw
+    +33cE1HuzyfY6oEGjQKOZN5Fi7rWzCrI13giX7jgJF/VPSpvxHSrbyUmEKecHS3s6RSor1
+    6XZTjHbRIwORK9E0VDXT1g6hmiXxNPYti55KfJt0C0XxQ/TzE6PHnVXuYRSA
+X-ME-Proxy: <xmx:h-i0atHQNqbtPlYRkfD93X2Rdd6eblFEh22EPtH0z-5243AxBEMOEw>
+    <xmx:h-i0avuGvB9ta111P0wHdckEhJ5aY329L9o6iJ0lM6EgZ66bnz6gdg>
+    <xmx:h-i0amdy8da_NS5S7y0Q0KiseSTt5OMwj6aK9q2z3UquoLyoyTApHw>
+    <xmx:h-i0atmoSs5XuHrDzHumVBsMaGGDiaJx6ETb7chR3V-ivq5gN1zJVA>
+    <xmx:iOi0angqRXkkOlbxiU3EQpR0bMM2ouL_Vq7Dfnx_lLRX7Q-O06sOxnuk>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 24 Sep 2026 05:08:20 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: ulf.hansson@oss.qualcomm.com
+Cc: heiko@sntech.de,
+	p.zabel@pengutronix.de,
+	tomeu@tomeuvizoso.net,
+	chaoyi.chen@rock-chips.com,
+	linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v13 00/14] accel/rocket: RK3576 NPU (RKNN) enablement
+Date: Thu, 24 Sep 2026 21:08:16 +1200
+Message-ID: <20260924090816.38457-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <CAPx+jO8EixqfXmrD8zkMkJe_B+2AATo=YNFJraAdE_O9X4KM-w@mail.gmail.com>
+References: <20260915104328.45901-1-gahing@gahingwoo.com> <CAPx+jO8EixqfXmrD8zkMkJe_B+2AATo=YNFJraAdE_O9X4KM-w@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAD++jLkk-a0MrQUiaDD8OoDDoYVwBwSjFTj5ZBy=Xo7MS4+01g@mail.gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260924_020827_689983_25ECFE7E 
+X-CRM114-Status: UNSURE (   4.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,98 +109,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6362412986852052026=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Ulf,
 
---===============6362412986852052026==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="fta6xv3zcvscpec2"
-Content-Disposition: inline
+Yes please. Could you take them from v14 rather than this version?
+Philipp pointed out that the binding allows one reset, so 10/14 should
+use of_reset_control_get_optional_exclusive() rather than the array
+form. v14 has that, your two commit message trims, and Heiko's split of
+13/14.
 
+In 9/14, v14 keeps one sentence beyond the two paragraphs you kept:
+RK3576_PD_NPU also gets need_regulator, which makes
+rockchip_pm_add_one_domain() power that domain off at probe on every
+rk3576 board. The subject does not describe that. Say if you want it
+gone too.
 
---fta6xv3zcvscpec2
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 12/19] drm/mcde: dsi: don't create a panel_bridge
-MIME-Version: 1.0
-
-On Thu, Sep 24, 2026 at 09:51:53AM +0200, Linus Walleij wrote:
-> Hi Luca,
->=20
-> sorry for my slowness!
->=20
-> On Thu, Sep 24, 2026 at 9:01=E2=80=AFAM Luca Ceresoli <luca.ceresoli@boot=
-lin.com> wrote:
-> > On Tue Sep 22, 2026 at 9:09 AM CEST, Maxime Ripard wrote:
->=20
-> > >> -    } else if (bridge) {
-> > >> +    if (!bridge) {
-> > >> +            dev_err(dev, "no bridge\n");
-> > >> +            return -ENODEV;
-> > >> +    } else if (!drm_bridge_is_panel(bridge)) {
-> > >>              /* TODO: AV8100 HDMI encoder goes here for example */
-> > >>              dev_info(dev, "connected to non-panel bridge (unsupport=
-ed)\n");
-> > >>              return -ENODEV;
-> > >
-> > > I wonder if we still need that branch. Every panel is a bridge now, a=
-nd
-> > > it looks like we don't have any specific panel handling in this drive=
-r,
-> > > so I guess it supports bridges already?
-> > >
-> > > Linus, do you know why this condition was here in the first place?
-> >
-> > I had the same thought while writing the patch, but I chose to be
-> > conservative.
-> >
-> > Linus, unless you have more info I'm going to apply the patch as
-> > is. Removing this special case would be welcome as a later patch.
->=20
-> I'd say go ahead as-is.
-
-I'm fine with that, but I really want this removed at some point.
-
-> I do have the idea to code up and submit the AV8100 encoder
-> and I have the hardware to test it, but every other user should
-> be using panels directly, and I would be the only non-panel
-> user so I can deal with it when it comes up.
-
-It won't change a thing. All existing "panel" users will be bridge users
-after this patch is merged. So whether you want to enable a bridge or
-not shouldn't matter, the only thing that does is whether the existing
-users would still work.
-
-Maxime
-
---fta6xv3zcvscpec2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCarTl8wAKCRAnX84Zoj2+
-dhwWAXwI9qMs84ZRfc2g48IeAyQiE/CtbfMWnKHKCoJcY62gOn2KtPtJlfAUSVSt
-Fz2FzIoBf1P/bkrhzAS0uao6/CjJ0F2xh689BoYPK8a7rDMJeckpdh6Df4f795pW
-2kQWWS2bNQ==
-=k5VA
------END PGP SIGNATURE-----
-
---fta6xv3zcvscpec2--
-
-
---===============6362412986852052026==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Regards,
+Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6362412986852052026==--
-
