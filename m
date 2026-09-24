@@ -4,71 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F3B7C98317
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 11:23:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 966FEC9831C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 11:24:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OvkCKrQvsAXHvfJW6axqbcBx27U2ofH+138apfXrJYA=; b=Y2C6lkiDl/Ss3Z
-	7Dn/c0eC49Xa2wZwl02LkhlKU630VDzVECa1e/liSdVSWWvljygHNBo5z2tXp/RuG9xfATYn3kIrQ
-	y2gzpg1XEmx48ikA3zIw7Y53ylGjV9FogTeLmcUuA6hcPmKGrbxogSmwdq7tl4e4y3CUAV8biQgCz
-	8VmQBxWa0oA1upGxNCA6stV1g2x0JqmWSFJuvwjamMZ9YcDLXY0klMZ5+ASzs/zaNOawuoE/dhlaL
-	H/bQdyP5+1WHyRsJbxGexkOJ0TqC++0d1bcQXUb5rzf/Q4zNATLJKKglFmjuuXHYiwp106iS41j75
-	15o35VoEmjFkR+M7k5/g==;
+	List-Owner; bh=eQywC2vOSb/nLdN+TDfMIrMsFT9VdQX+SaAC9/TX7es=; b=aQkQh0nvO6sD2D
+	Xg38Oer5OqRIIqiprmtnJHrxHxoeWStTlfQGxVUWLiBNRMnUrOzSqppiJ7mVKUu6CDz832aIfJLuh
+	bDA8etN7q330E0cGUXShWDmaV78Q3uZg7oj1W98MwbN19JsMunbtyqWJ/wSegPTYSXGyzdDZBXUwW
+	5TXADmj4VD6Lbal3RL7DNf4eXX2gEq28weDjffFBKnw0K+amnkWwxliGH/+Xp2L6q0PR/4aE5h7+c
+	s/UU0Z8M3DNJr0/5PDTokClUHA0oRSBEH3CChU3ZB41YNoye313YmI2wpDz/w4c5UM+l9zeg3V8r/
+	BzBoaj/0edRIWeABMIIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9hYR-0000000Ar4H-0HIV;
-	Thu, 24 Sep 2026 11:23:55 +0000
-Received: from mail-pj2-x11.google.com ([2607:f8b0:4864:39::11])
+	id 1x9hYW-0000000Ar84-12mT;
+	Thu, 24 Sep 2026 11:24:00 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9hYM-0000000Ar11-1nNs
+	id 1x9hYV-0000000Ar73-0ynp
+	for linux-rockchip@bombadil.infradead.org;
+	Thu, 24 Sep 2026 11:23:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=KXQnRB/nHO1IWYbvBq2662vmfOoejPsA25AzXQKF5g8=; b=UfOITGY1l3Yb1zO1Gt12PsCRxG
+	xwXEdVxNAfT1orGF1dDw0DX61tHxmgdNhAWoYEcW5rf0QTYfDlaysAdr5BFVmbfUAM5cUqxOTlQXM
+	3eeOvbRSl5USe6v+4BTbE+tfaxYhlhdYz/gzw1QdHtARXlRFMY0GGKMg7FOcKWYR2SXmZOjpuOdYV
+	R6tLl10iTxy1PGknzb7wOScADS8ZJpyvZOKpdDl4TOlNp+GJ5QsW13DZsUXnNNnhmTTCnUoX5wBau
+	cOP1bMOcoZaKI0DwfvIvEgasul02LLmRVQPF2BkOT153fxKwWwkKeAB+bTAyX3sBd22grOIlfby1N
+	xaBAmtQg==;
+Received: from mail-pj2-x0f.google.com ([2607:f8b0:4864:39::f])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x9hYS-0000000FtnD-1SVr
 	for linux-rockchip@lists.infradead.org;
-	Thu, 24 Sep 2026 11:23:51 +0000
-Received: by mail-pj2-x11.google.com with SMTP id d9443c01a7336-2d747eefae4so5478325ad.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 24 Sep 2026 04:23:50 -0700 (PDT)
+	Thu, 24 Sep 2026 11:23:58 +0000
+Received: by mail-pj2-x0f.google.com with SMTP id 98e67ed59e1d1-396ccdaea76so822172a91.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 24 Sep 2026 04:23:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790249029; x=1790853829; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1790249034; x=1790853834; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=JCxRdNlieCfNGhjYZk26pUpqaG4f6xkrRSGT2nKsEsw=;
-        b=md5SnOg/Kni34hnMfZWWA+6+rSkFa4Z9ekjFKF5OszXlNS/JPLuUNhhLJcaLGaVBbU
-         mB4X14dVY/wmAPs6Yh2SRQpSl96NIcXnRSF+jEVgFki8gBlfsaWleC30e1sZXTT6rAEq
-         nszTu2qXPzaVs+vk5BsK7VCt+9l6pYqOcIve+mq/383ZOuFgjmqOP06W0QnRBCwHqxjz
-         M16K7ij5j7OtohMOiyf7iNpR4E+WM/twrPaEdbmRi+9hSzmbzjevoQXjHAkDca8onVuV
-         CaadXkU2iu/oF0HRgmHa+W1vV0Htw1447cOGdLi1LwA4KVAcreyl9SX558WR6JQTFhA2
-         4irQ==
+        bh=KXQnRB/nHO1IWYbvBq2662vmfOoejPsA25AzXQKF5g8=;
+        b=P/9iphGlbONKBozAD3leq8G6q2Si0Yb9wlDlVmQ7fXqN1FVAiLoMkBrTjkriGEnQ/4
+         6cftTtC3TY8OEWZg3+OV3m+kAvAKFdnZY1aFMeaoOeBl7cYM2It1cqODaI7Zpf6SGh5I
+         ZMmkUzeRxphMmq0V9FOqVtSHGImvsSQAcEdLrVnZRSbb7SdDdl0Rv0lslHg40LRKjBrn
+         B9bXs4b+cnXYIzLypodTiWAEYkdmdRoGgdAHS2a9J9BRk+54ltIVm9R0JAxazTQoKbG/
+         Roqz7EeYMaTCoSU/wfJdnBF56pOTtM3Fv3WbrIXZriEQ5NyaGsi6e1kqhWwFll11yZdH
+         LDXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790249029; x=1790853829;
+        d=1e100.net; s=20260707; t=1790249034; x=1790853834;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=JCxRdNlieCfNGhjYZk26pUpqaG4f6xkrRSGT2nKsEsw=;
-        b=uLFms71Z0m5T2AYMbAqLiNhX9BZLHZUurPwGKA0q9WXx80LqPjHy6XXzyeXym8jUUE
-         OhpY4+C3UvPGmTZ5Btr4YUWIXGO3qCU0GWmfow7q47/rjd91rPhIz0okAqwX66qGhx6X
-         ktd6fnVRybnUGWVNp1yCzqjV+vBDdgl+4OXVBk4bwFDOxYRAYzWzhVHWiQ4x6Psow7EQ
-         Z6D6teBx8EYrUajLMOGdsjTUeqvMbc2q0xtrZFC/7QvIKFXD7ZcKjQPg31sPxivtV9Bt
-         FEAjAJhuZyDPaYZDWPF2NqPui3kwRQTZFGYgeQswDssovCze3tHWtBdLt3s078odBwZB
-         oRGg==
-X-Forwarded-Encrypted: i=1; AKwUvBzcn9IToKm10dTFCG9IXsaqGKMmeiq0VAt9oU1UaSQvAnFXj2yoMHrlCvVhKW71o67NXUl5K6aht0UztKw3kw==@lists.infradead.org
-X-Gm-Message-State: AFuF++kG6bXJVtIdNVKDz2Wd1L6ExK7aae5VeHYxpSxfbxB3fVV/lqnG
-	Su9aDXoNQRPek7pMfZ3lHcUa1jT/5RLxe4fT0i5ngWj/a0Y44qnior4H
-X-Gm-Gg: AYBFou1CEQkG26cpYI5S5+f/hIBf/GjUmwxDaZG5Qk1ArEynNebeJZTGCC3s0meCAEt
-	keCcX3/18P21BliTuhN8SjeKtTID8NzPM/OkYkk7tkDOUMoHL4G0vMdHGG35N5/JVMemrCbGC60
-	iQ5YDMVbtdzTY8U/nKtqI/pw7vMzOiSJSN8amEgX4BDmVJQ18Iz0ceUhyPuCQ1cOZGB/XHApmwi
-	k+lZvkaKJoMZRRvKwZcEPwEQfs3xdSf3doNi8YdPugs8g6N7icVcv+O8JC+J7I26wXxCLOsegFc
-	y9Wzy0NdVEp7jwgic0WsyIxHqxOeudDjpZVJ5fUMTo1l8gAAYr2iyepnOhY5GOHykUUa7Hz+y+P
-	dqB/VVAFrbyLar2AI7S01TqII/4OVAdCiSkk2NDr3DKDyU5JILwV1bSlY6rz4SLH1I9xfo8P0p4
-	CgwOwH1q35RZ1kGySN+dFxHwLUAm0YpolfGZ42oDN+GoWabKc4TUkymUY=
-X-Received: by 2002:a17:90b:38cc:b0:3a0:9564:2d3c with SMTP id 98e67ed59e1d1-3a09860e008mr1308139a91.8.1790249024756;
-        Thu, 24 Sep 2026 04:23:44 -0700 (PDT)
+        bh=KXQnRB/nHO1IWYbvBq2662vmfOoejPsA25AzXQKF5g8=;
+        b=L88q1XAm3TVj+M/FT3bmDW74PJvl095/n7zLge6w0WK/tbz+3nOHn9tpT2He6b0qqi
+         PRCm9NJkYs1wPbeDmCBLyFWfz1Po1HdhySz1/WNQPxH/9SMlhj1Vq/HGpMrN607pYCZ1
+         +Fsj8LpGDsTLNuAT1pqSnULIE8q5tefOACOXKoRCaBqs72JlJ4Xn15pYmBJMCRvzyOax
+         b2dSdMnTOeIzm4pblyqtpiOJh4Oh5BquWFHBWjj9FHNbpEbexRFrAfllyY/eXMhbb0Cb
+         XSaE28NLSg4AMERVCiYKbGll3hKCE8Ov38NYkQExJfaHaqfdakknC+LSeAR8pGDAx7Ul
+         UkoQ==
+X-Forwarded-Encrypted: i=1; AKwUvByeWC+kVW72naWKrFVOX6o+VdZDvC+46tJ3IVyPz+4U1e2raQxq5RfJ2UWcib30wEXWonqf6P/ctiAzBOU6FQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++m5WCWXca0VrEJW057Cgbc6mdF7XOvngoWx/jF0wlYy2eQLqxuQ
+	DNeUmDOShQ6y5x2S250JLdHNwt2w4RiuTlNvskdhzt9nO/OhKxWJe++C
+X-Gm-Gg: AYBFou2gm9QDMIS0hE8DbqBEeSlKPgw4B1z/Azz67w3QdjBUAae5FN1LC5JKpxgb51S
+	pdcmJ0nNa3vdV7Gn5rVKGVF8E59vhvo6n231WyG6wRy9KlNXRIvNYqzcqsedyDLNOiMPja4To4V
+	3eq7r7LcFFGUlGiS4SH8nFaZck439Nqgec52UoyvpO2QiOEi8U+JiXn7lTvJUQkInlKYSdmg19f
+	3HdW1h4GHmOjf1tyAANM45ODOQXIHDkvvd3GkSwpr+AXcF+44F6zab+uqGxnlpjzgl1O1utV8+Z
+	tLx0GzvG0jmy+oZxwBlCoAgP1qhODDE3tY0MhoxvM5wZMzoT1Nz/Gt7kFytulTlwjbL3fhNIriN
+	9/TJKKNQ0ti8G8l68QdBRKIGHvCz0o+XMGh7zC3ANm6D1gk5lZUbEUJI65Qu2JOrc7w5HJWcWQT
+	uAhAHOXx4Zj0QfCy5EqlXmj+J2r5qryS+8sY7GzVYAniZjuHNcSkvPGA==
+X-Received: by 2002:a17:90b:2e03:b0:39d:e1da:81e5 with SMTP id 98e67ed59e1d1-3a09864ac91mr1422278a91.11.1790249029396;
+        Thu, 24 Sep 2026 04:23:49 -0700 (PDT)
 Received: from lgs.. ([2001:250:5800:1002::de93])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a0813318c1sm3586800a91.4.2026.09.24.04.23.38
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a0813318c1sm3586800a91.4.2026.09.24.04.23.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Sep 2026 04:23:44 -0700 (PDT)
+        Thu, 24 Sep 2026 04:23:48 -0700 (PDT)
 From: Guangshuo Li <lgs201920130244@gmail.com>
 To: broonie@kernel.org,
 	heiko@sntech.de,
@@ -84,16 +99,17 @@ Cc: linux-spi@vger.kernel.org,
 	bcm-kernel-feedback-list@broadcom.com,
 	noltari@gmail.com,
 	lgs201920130244@gmail.com
-Subject: [PATCH 1/3] spi: fsl: unmap immr_spi_cs on remove
-Date: Thu, 24 Sep 2026 19:23:27 +0800
-Message-ID: <20260924112329.1566051-2-lgs201920130244@gmail.com>
+Subject: [PATCH 2/3] spi: rockchip-sfc: Clean up runtime PM on remove
+Date: Thu, 24 Sep 2026 19:23:28 +0800
+Message-ID: <20260924112329.1566051-3-lgs201920130244@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260924112329.1566051-1-lgs201920130244@gmail.com>
 References: <20260924112329.1566051-1-lgs201920130244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_042350_467863_4AD2089A 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20260924_122356_640786_66F8FE1D 
+X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,44 +126,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-of_fsl_spi_remove() does not unmap pinfo->immr_spi_cs after a
-successful probe when CONFIG_FSL_SOC is enabled and fsl,spisel_boot
-causes of_fsl_spi_probe() to map it with ioremap(). The probe error
-path already performs the matching iounmap().
+rockchip_sfc_probe() enables runtime PM and autosuspend before registering
+the controller. After a successful probe, rockchip_sfc_remove() tears down
+the controller and clocks without undoing that runtime PM setup.
 
-Retrieve pinfo from the platform data and call iounmap() when
-pinfo->immr_spi_cs is present, pairing normal removal with the mapping
-established by of_fsl_spi_probe().
+The probe error path resumes the device, drops the temporary usage count,
+disables runtime PM, marks the device suspended, and stops using
+autosuspend before disabling the clocks. The remove path lacks this
+matching cleanup.
 
-Fixes: 0f0581b24bd0 ("spi: fsl: Convert to use CS GPIO descriptors")
+Mirror the existing error-path sequence in rockchip_sfc_remove() before
+disabling the clocks.
+
+Fixes: 8011709906d0 ("spi: rockchip-sfc: Support pm ops")
 Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
 ---
- drivers/spi/spi-fsl-spi.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/spi/spi-rockchip-sfc.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/spi/spi-fsl-spi.c b/drivers/spi/spi-fsl-spi.c
-index e45816ef7b65..665902703973 100644
---- a/drivers/spi/spi-fsl-spi.c
-+++ b/drivers/spi/spi-fsl-spi.c
-@@ -702,10 +702,18 @@ static void of_fsl_spi_remove(struct platform_device *ofdev)
- {
- 	struct spi_controller *host = platform_get_drvdata(ofdev);
- 	struct mpc8xxx_spi *mpc8xxx_spi = spi_controller_get_devdata(host);
-+#if IS_ENABLED(CONFIG_FSL_SOC)
-+	struct fsl_spi_platform_data *pdata = dev_get_platdata(&ofdev->dev);
-+	struct mpc8xxx_spi_probe_info *pinfo = to_of_pinfo(pdata);
-+#endif
+diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
+index 662a994da60b..6e1c7d6318bb 100644
+--- a/drivers/spi/spi-rockchip-sfc.c
++++ b/drivers/spi/spi-rockchip-sfc.c
+@@ -747,6 +747,12 @@ static void rockchip_sfc_remove(struct platform_device *pdev)
+ 			 DMA_BIDIRECTIONAL);
+ 	free_pages((unsigned long)sfc->buffer, get_order(sfc->max_iosize));
  
- 	spi_unregister_controller(host);
- 
- 	fsl_spi_cpm_free(mpc8xxx_spi);
-+#if IS_ENABLED(CONFIG_FSL_SOC)
-+	if (pinfo->immr_spi_cs)
-+		iounmap(pinfo->immr_spi_cs);
-+#endif
++	pm_runtime_get_sync(&pdev->dev);
++	pm_runtime_put_noidle(&pdev->dev);
++	pm_runtime_disable(&pdev->dev);
++	pm_runtime_set_suspended(&pdev->dev);
++	pm_runtime_dont_use_autosuspend(&pdev->dev);
++
+ 	clk_disable_unprepare(sfc->clk);
+ 	clk_disable_unprepare(sfc->hclk);
  }
- 
- static struct platform_driver of_fsl_spi_driver = {
 -- 
 2.43.0
 
