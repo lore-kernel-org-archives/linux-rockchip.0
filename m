@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7871C9830E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 16:12:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CDB5C98318
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 16:55:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Uo263phaGkNPi42BRX8n4xvIzAtUy5uus8SA9/t6IUc=; b=oJnZrYz7+IiUT7
-	WcF4kniSKpAdkJ/QbtBmyLV/IjsHIwynTa+f0Bv18ycH7ygA/WB3MXazBwla7doGaRtu1Xkdu7H2K
-	2vHJ+JPx/JtmCpX25X8gilDG55v+Ya02/Fvvj0P5pu0TdDcrUGlHcj249hlonTShYlYKqwN7YWdC2
-	/3U/J94nas+rLucKKXyPXZTHZitc8BUmq0H4geZj44vzNCoS7L5nAJhBCQhtqawAa9wQ5apxUudd8
-	u6/w3v5iCIVe+T3UD0LEwi9eKFsf2Ghyh8Ya2cI8ygJAWTfHTKOQDrOMXgGkG21NNHhN0nzmgBg8J
-	MkRnb9j0O4LD9iGqmY8A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KbjHsAS8bRH95SbNYskhNzkVljYvP5U4LebC7a9bocA=; b=KupwmDaENI37yGv3f/96tGpMFs
+	AGuMPV+yp6ZhTfEe46FBZDV0LtrtwO7zmBqqpfSC6BvoycbseSypqDcvrrmDbK4xwUKBc4n6QhGt0
+	zykytVEkY794abZtnVSwa0+RTdryDUE5E41KOwXZu8miYmEt6eELJPia2MNx5hZzJ20hjq+yMdv/z
+	lX2NJ17GrowvzfvPN4UsgKHxfda/n+klfCL8OWfhLlv97jNP/C/gccjK9kunR7BpHvMWPVOqwPguF
+	+geMYjMcBGakW36g64XnGyuGmcugdXV8xnr/u9gnJWUBYXEEdBr1hcvp1XyDxvd2Bt51knX1L4d8V
+	3357ZSlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9m3V-0000000BYoC-0avr;
-	Thu, 24 Sep 2026 16:12:17 +0000
-Received: from smtp.forwardemail.net ([121.127.44.66])
+	id 1x9mjP-0000000BfBM-0u4S;
+	Thu, 24 Sep 2026 16:55:35 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9m3T-0000000BYn8-02lZ
-	for linux-rockchip@lists.infradead.org;
-	Thu, 24 Sep 2026 16:12:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1790266333;
- bh=RPplfzolB2pTnE62YOM17Sgrq0rS4rod1kMvEv6yvGI=;
- b=BeF3eaIG+AEXEtaHIs7gJMEFhn5OC9a52/G58dRbamCfnQnGyh+Ue0Rjj+GCZYlpnn7Je7fcK
- 7IT9/XDxJ7OTvDSyUBFIqhjnu1xezaby5u/zIDqrNR5G9IJYvQ5f2s+x1jng/ls0OzvxeFNch+R
- +vIm6gmb24M7KkStzZiD33/3upUk77Vi6j9rt07X+31uEknwC+mF+abfBiRZaMl/Gck8lPiTrkV
- WS5wH9jY9gN+ELrRXTmRt052DgfWZUgobopWpQbfluJ9/lYJuzUhy3CO61Qi7w00HKQivt1cwKi
- M3vErqjKF5l0Z+Wcf07Jk6VRJzgWPpzOBxET2K78hUNA==
-X-Forward-Email-ID: 6ab54bdc57e24cb1e471d61c
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.66
-X-Forward-Email-Version: 2.16.2
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <e03db2e9-085b-49ff-8d4a-bc112bc4ddd7@kwiboo.se>
-Date: Thu, 24 Sep 2026 18:12:09 +0200
+	id 1x9mjN-0000000BfAp-3UMF;
+	Thu, 24 Sep 2026 16:55:33 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id F290E601EF;
+	Thu, 24 Sep 2026 16:55:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60D951F000FF;
+	Thu, 24 Sep 2026 16:55:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790268932;
+	bh=fq72bTv0aDg8FP/1veCJLfYhWi+ANAEEZ3M/sgNIuzQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=X8jyjQG5wgjV3njzYK5bFpjnqGZC1M20JAXdKp9H0BJ2imlh+/DPGGmFmM4ki+co4
+	 k+OyAK/d4VWEP+/AxAqhE1w3+QSxvKozoMFwSBG3txdgWQlyQhMSczIN8hj2zkKZ79
+	 ySKIcaOGnKWJi1eoCtoooaoyG13R5c/9C1aGRSaNvERVUX1qpCqEl5XsuqzDFRXomz
+	 Icy/rFVg6U0+gL/QgdEWvPqTzDcCwPILCuEfN3z6KJmA2i18cStbLj8Qa7Z1nUdv19
+	 dlGshJAyfLYAZ0ZKR6kPdeX959KosICrTQdt/YXLA9BdsQbSA6I3I/6mFwHHDZzZfl
+	 B2EQW6jDQU5XA==
+Date: Thu, 24 Sep 2026 17:55:27 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
+	mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, Frank.Li@nxp.com, s.hauer@pengutronix.de,
+	kernel@pengutronix.de, festevam@gmail.com,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH v3 2/3] media: dt-bindings: media: nxp, imx8mq-vpu:
+ Remove nxp,imx8mq-vpu
+Message-ID: <20260924-compare-useable-3e2863b66924@spud>
+References: <20260924130453.196299-1-benjamin.gaignard@collabora.com>
+ <20260924130453.196299-3-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Enable USB 2.0 host1 on Radxa
- ROCK 3B
-To: Adam Wermuth <adam@wermuth.pl>, Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260924071445.441822-1-adam@wermuth.pl>
- <20260924071445.441822-2-adam@wermuth.pl>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20260924071445.441822-2-adam@wermuth.pl>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_091215_105605_38930A76 
-X-CRM114-Status: GOOD (  14.72  )
+In-Reply-To: <20260924130453.196299-3-benjamin.gaignard@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,64 +70,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3029752137029971812=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Adam,
+--===============3029752137029971812==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="GsCwYJZyFBXDIRyI"
+Content-Disposition: inline
 
-On 9/24/2026 9:14 AM, Adam Wermuth wrote:
-> The USB 2.0 data lines of the M.2 B-key slot are routed to USB2_HOST3,
-> which is served by usb_host1_ehci/ohci through the host port of
-> usb2phy1. Enable the controllers and the PHY port so that modules in
-> the B-key slot, such as LTE modems, can enumerate.
+--GsCwYJZyFBXDIRyI
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-This and next patch is likely best suited as an dt-overlay.
+On Thu, Sep 24, 2026 at 03:04:52PM +0200, Benjamin Gaignard wrote:
+> nxp,imx8mq-vpu has been tagged has deprecated since a while.
+> After driver clean up it is time to remove it.
 
-Regards,
-Jonas
+No users in linux doesn't mean no users, but I am guessing that there's
+genuinely no users elsewhere and anyone using out of tree devicetrees
+should have updated due to the warning at runtime?
 
-> 
-> Signed-off-by: Adam Wermuth <adam@wermuth.pl>
+>=20
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
-> index 149a5306bb03..ad9a91c0d0d0 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
-> @@ -758,6 +758,14 @@ &usb_host0_xhci {
->  	status = "okay";
->  };
->  
-> +&usb_host1_ehci {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host1_ohci {
-> +	status = "okay";
-> +};
-> +
->  &usb_host1_xhci {
->  	status = "okay";
->  };
-> @@ -780,6 +788,11 @@ &usb2phy1 {
->  	status = "okay";
->  };
->  
-> +&usb2phy1_host {
-> +	phy-supply = <&vcc5v0_usb_host>;
-> +	status = "okay";
-> +};
-> +
->  &usb2phy1_otg {
->  	phy-supply = <&vcc5v0_usb_host>;
->  	status = "okay";
+>  .../devicetree/bindings/media/nxp,imx8mq-vpu.yaml      | 10 ++++------
+>  1 file changed, 4 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml =
+b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> index 19528262810a..69619d2c86fa 100644
+> --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> @@ -14,12 +14,10 @@ description:
+> =20
+>  properties:
+>    compatible:
+> -    oneOf:
+> -      - const: nxp,imx8mq-vpu
+> -        deprecated: true
+> -      - const: nxp,imx8mq-vpu-g1
+> -      - const: nxp,imx8mq-vpu-g2
+> -      - const: nxp,imx8mm-vpu-g1
+> +    enum:
+> +      - nxp,imx8mq-vpu-g1
+> +      - nxp,imx8mq-vpu-g2
+> +      - nxp,imx8mm-vpu-g1
+> =20
+>    reg:
+>      maxItems: 1
+> --=20
+> 2.53.0
+>=20
 
+--GsCwYJZyFBXDIRyI
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCarVV/wAKCRB4tDGHoIJi
+0o8JAP9bPWkftttTcroD/Ebf05mqIGTFa7OMd08w4VwH1mEEgQD+LPTr10IFTyQQ
+y//zL0pKXfEzCfB463vA15kwJ030OAg=
+=7zii
+-----END PGP SIGNATURE-----
+
+--GsCwYJZyFBXDIRyI--
+
+
+--===============3029752137029971812==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3029752137029971812==--
+
