@@ -4,93 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D47FC98311
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 10:24:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95615C98311
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 10:25:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tFJgqB7onRLuCRauRycOBa0e70tiILbaVeK4q8gBBCc=; b=MYouuZQ0shcBhG
-	P4Nf9JDLuCImyWnNFxhSlag790S5bUUOAVfebuswzz814xtIogdYOdEQ3ICcN18S0/ISSuSYGJp85
-	F89rTGu4uEHOjx+buZd+fdxeYtr9bnNIp8GtG7PUug3Su0teAMNVVPsiJdyEoGYpa75WViqvvUJkf
-	1XKQDDTLWB5PhuxqTt7h10O1y3D0/2CTaOj2WZfw9daUKPARe0YgvYvxSm98m8S3Evzh4NXyqLeLh
-	BmKYiF3NFyoPtv411o5OgrJ5C0O+eP45nsZcOI+Qp5IBliK+Ulb6zC6fSluQdPuuCWLAOWg18QC9E
-	a5Z4drjuBlLvZBWzC4VQ==;
+	List-Owner; bh=io08UHFKVq+j9akH2pQs7liUIZIOmkhxh0/ubG+ZI/Q=; b=CggUeeqC/kmqTX
+	qaDw0MY4klNMrrKdUcQuu0WnHBcc/a/47tBKgpX4qu3K930UuP3xqbJ+JHqaQ3tPQNb25jEmyw4C3
+	h1JM6puMN/quGEGkin+ZGCfPFN4jb+ABkmnNocacxZnxwlReqzuxg9161fbTuT6j8bxX/qSmUHzXw
+	SXOnH8E1+dK9aSJGrxy35i3Nv7ab9S+Zpgx38ld28s9EZNvqGgsSRso2J2HfuOfLZK422hQ0pXdQk
+	msjWsM3ABHzeMiUAhfLbQbBDIliBbjbEAcSP685vg924axjHpKdKgPXA/3mEV67ClywqPLitgsF9e
+	78Ca8BBtsdQR3lEtD1+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9gdK-0000000AitL-2YDm;
-	Thu, 24 Sep 2026 10:24:54 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x9gdT-0000000Aj0x-21PR;
+	Thu, 24 Sep 2026 10:25:03 +0000
+Received: from fhigh-b6-smtp.messagingengine.com ([202.12.124.157])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9gdH-0000000Aiqj-11o3;
-	Thu, 24 Sep 2026 10:24:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=h8AuXepnzD9XaSOicrRYnsLBz/47hJApvicX3vZY0wg=; b=PNYBV/Al8qQHV2wDjkXI16omlZ
-	XjEeN5wNR7o/D2uoL4i0zoeO1wkaaq+rW3cwp3mBwnJ5AaW0I6KCwiA3x6g23loSxKk/o8e6BSWSF
-	rtSiOvqjZo7qH/8kJvgYb+9oZDaxeRRRAG1pktDC0AwY+t4xnfB9oeknWsoOcr9Lx191TcVdUQtlE
-	KG0uW+fwb/N0o+u15Dy/KM+pFnnN2R1MTTsIPPS/H/H88nECzufEJvyn6MhjDTbYlKI8KuuwKCslp
-	rSNdSZ+0qywEAOmiOPVTNQ7nK8y50PMph1wMVklDuSb6Y9K+MYHApL1SnIHKYy+F+S+UHQAphnqL/
-	KgC13Yiw==;
-Received: from fout-b4-smtp.messagingengine.com ([202.12.124.147])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x9gd9-0000000FqEc-2yKp;
-	Thu, 24 Sep 2026 10:24:50 +0000
-Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
-	by mailfout.stl.internal (Postfix) with ESMTP id E08541D000A7;
-	Thu, 24 Sep 2026 06:24:40 -0400 (EDT)
+	id 1x9gdL-0000000Aiul-43cG;
+	Thu, 24 Sep 2026 10:24:57 +0000
+Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
+	by mailfhigh.stl.internal (Postfix) with ESMTP id 88EEC7A00BC;
+	Thu, 24 Sep 2026 06:24:54 -0400 (EDT)
 Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-05.internal (MEProxy); Thu, 24 Sep 2026 06:24:41 -0400
+  by phl-compute-06.internal (MEProxy); Thu, 24 Sep 2026 06:24:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
 	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
 	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm3; t=1790245480; x=
-	1790331880; bh=h8AuXepnzD9XaSOicrRYnsLBz/47hJApvicX3vZY0wg=; b=q
-	XKcLVrrkjjgRE4Z4le52nr0lAY+x6UmVJNY/VUPywQtgrBwZIAq60fdDdLDQtJSM
-	Adbbx1gP9uCQVn/1xeqvB0A57F2iqIVisUD8OYtJYCMSHD9EwwKcUQ5xa16885vX
-	pGb3WVMSSx9aLWfG0KTz3HeigQouk6wyCjal6h8feGjT0rUVSaUadiTYt7qAeDCg
-	ZxW4WZKKuOvbBkqDlooRRl6cAw6LouzcdxzdT03wRFEBFmhPn1mM76in2r377fj9
-	O/m5wt9K3mei+jcYCp0sNJGNo/QO7sjOO7UCx82gY3T7RqWLYW4Gn3oa3uPhKKn/
-	jE+kQ/yIJ+WSA0LyjdJhw==
+	:reply-to:subject:subject:to:to; s=fm3; t=1790245494; x=
+	1790331894; bh=mlW+027m2NZqDmr1cPnSb/IcZBiCJqwfW1Ay6cbek0U=; b=n
+	yoBSMDXCIav8wrF3MpxD2M+pw9nLK4m+TZVzkDXEXqC6rq5iDdlDgm7bfuqATjce
+	tSJPwLsKhToGFxav7rLpI2S14InjdHaHbzm+PHkfefjiHlvNhSjpJ6gC2SB1iOMR
+	RMoxXgvu4l4M7Vq2D45gMh/t9OJ/gRq+6/IN5iOId19MUtvNTEmB9DqOIe0/ACpu
+	NA8uE0kpYIyo496eKeH8NreFRIJFS6VuFM95TXEhxesxSSOMdZ14k6ZTk21h1rBV
+	p/r0WrTKTtUU/04XGvru/u4XiCvSv9k+2Z3ju49eJ2rjg27JbZwUfIXrwrkdpOMr
+	4S0syPDwUlH0PtmbuLwZg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
 	:in-reply-to:in-reply-to:message-id:mime-version:references
 	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm1; t=1790245480; x=1790331880; bh=h
-	8AuXepnzD9XaSOicrRYnsLBz/47hJApvicX3vZY0wg=; b=Xb/TW3sINDKpBOvTK
-	64ILVP8UcJT/cLQgO65sRb/q7HHqNmaR1BgZh/W5KPg7cbhe3UZHlykad6YVAjyA
-	j0wifg8q/0XhZvl6lqQ1oDCDKaoMHvqNkSeAE8HDllo+5OjDylPbwuvyh/jtWP5i
-	8MP1edqwF3zdLm6Ce0wt76UW0TjEszstCDmgR33lQmrKDIuoH0zL1Sqk0sAHSs3k
-	JLt0AWbiGfgjN3Isk0VWLk6WPihA3Q98hXv9vsIFmQHQMYQczj0utcQdNPE3d223
-	AMYSl5y8cmtUcX9aiRfyxEDWP1E8ePQUaqhcD5dwS6HeE5bAREfxvvlKV1x15cI9
-	YY8TA==
-X-ME-Sender: <xms:aPq0aidVtH-ZSooFrerTo3X5lkYz4IwBckI0uKix_tk14yh_wzet3A>
-    <xme:aPq0asUrRSRSPcgygAuU0pgD5fIj1KSEXiDnNyO_iXSMltCbmCnQhyQSNBxiR5nDo
-    0nOFvZrIT5DbztVeSPalXIa6503_Vn12woLrjqnXaocA866_ofMVA>
-X-ME-Received: <xmr:aPq0ahX_OMF0hpBosZ-wmHQ8Le1UfPn9GW57b-z_dnnZT85pdygttpia-uQkgdleGrngHCWJ3Q>
-X-ME-Proxy-Cause: dmFkZTFsBxBnkxABgBGy+2y8oh2XcRM9qhNrQt63e9eXQe5iuApGdKOSmV7em8OherjGGN
-    2UkOtHmOQJGeWvpaeiVHFgUOdWvU0GuImx3mX3r6ii00a0IpQTJjp1cfkpgG25m29J5z7+
-    rNk1buhlGtDCpsLmFpRl17COSu+GXw+6L56rzVEP4tdwLkJGLabYhY6BNB4o0H87HOkC+U
-    fkFpHSoZagGd9OBbhGNpV1h7cbPjRcWqI/oILvcJB6xiDiwiovlBxFwMy88BO8jJwtdy3z
-    TcTfMivx0F11V30THQiKxsErjj9V/7m7iOeekydns3M5HrTYfcTxRRN6AGKc1ZzD4jZ9ZJ
-    9EHo5HHuloqbxdoLuHw9T1jbR8pFu5iyYB2qYmmOZbejz3o6MWJ60cL0WJRK6wumSOBiD2
-    bFu73y92SoDgJHAVWeEeIg+2A3SPLvWPujEbZiYL3mhSFP+kEQuyzwh41Yv4kdPUMsS5e2
-    1jy+u64/yhEAXTm9yNvatG3foUnNsSYn7fbi0i29UjMZYBr67+7L2VnEhRkVS/AbfUtn6m
-    h0ZvhySh7kCN/iqUMqkChKURGFsVvHFJRnO7+zqc7n8OQTQk5yrAUZohsmUwbmXbYmNFyt
-    VW7Fsr/B1ZxFAxn3q1d9+LYh/j4LRvd/1ND7t4wof3TW6eLOd6vy8hkGfc1g
-X-ME-Proxy: <xmx:aPq0akO5wmtjnGm9KpRAulh5B9VyesG678PmQbI4ZcgAAUDVZsTZNg>
-    <xmx:aPq0as7BOBIu_UROQ7v8085Q-rDX8hzlg7x4uuuYh-EiHoiRMLtJTw>
-    <xmx:aPq0alqMt73zmfn8D5RMM12ZKu4Wc5Hz4daODorWoHpHUq3IKRUrHg>
-    <xmx:aPq0aqDEqQGW9mYZR18gdHiyZvAQzZwxWAHSXBnQJndiFXfYTn0JoQ>
-    <xmx:aPq0avZ6xk-VJg7QX5bWJeso7ydkAbhZNf_YKDQoPmwxP8IkrMmIRnPh>
+	:x-me-sender:x-sasl-enc; s=fm1; t=1790245494; x=1790331894; bh=m
+	lW+027m2NZqDmr1cPnSb/IcZBiCJqwfW1Ay6cbek0U=; b=V8S5FlB634I+g+QQ1
+	4cvzxqLGrqZdpaHNIXQ9hhQUhimocjqkLk8JgqOmVf5pjd8UpEF+Qfdy5cU2ZdQj
+	CPr6spsKt0q7PVbInQUHcHU9AR3DZ6On1dvd9LHt7GA7yt/bAciDpwidfBiw6Tco
+	1S7/8VgA5BUrz+kT+NCqNoPkOQKf+QFTqECRDVdidVWIQrl5RNGkqAUQS6za9zy0
+	GDaKRnkuN9+22J3pFYfNAoxA1ruRbZwAo/asV511JKK0i+ze7wEvZ3UJuNKViJLo
+	EYwUi4rqUiMMsQ99L8diLOd2CnwoVBBZB9qG8XDNxjEXLsygX1BhVRT3OQouFpW1
+	KB1Hg==
+X-ME-Sender: <xms:dvq0amxO4CW-Zr53ptu8W_okf5jIIRVBD8rJowaJGQTwlYCNJLFtRw>
+    <xme:dvq0aiZMjghWuyZ3Bf5CIud1QWojQMAo_bEak7iP6IP59eszg8JxttBE0B9W9bCyS
+    IqOAgjC6HkABQUHxeSdbYD6Or2IA62jGIevHwbfT-n6xSRhOdAsjiY>
+X-ME-Received: <xmr:dvq0amLu3p6RzavpIRyQUDtifgtTnFDCILr20umt_vLA_-_dwaA50Zm2Dn686IEjT7MhsudJPw>
+X-ME-Proxy-Cause: dmFkZTE5U9DWJ/1d8NZBV16bjZrXhnu9+RjSei8Egg+AJBodp1SsqcAZICkdFDYYk8PQ/z
+    nbl5nAv32NCM/Rvob60jzzR/sJI+sbtZKf4EXYq6NkDnWs3QsBAvLEkGDZPcVAuKZu09hj
+    kufWDx+OHd427BpEwAmDDK2HcwDl5PIVxykoKPNTzoVswPV46/qyR6Xp/JY/TaNWyTgMqq
+    yMy5OLUd6yAzE6clJlYL4qCFZSrQCDEMACpcb7vwZPjxoszy3u6FTeAITQlCqDvBOfb2xA
+    f1SHw7kF1Gfs8fOU43Noc1IHs7QEkTjIEBtZWO5SBQ25T666ulWx7WKsjltbKYna0Y/oq0
+    eA7FxoFBfbFPEK71s28f3uysUgvoKKcWjAhElEIzvKnxO+Ho37/k4yYGqMIyDF+UuEaHt8
+    b2G0GUIGp5LTf8POaNh2eZZfsOoOUyn3MZA15XICMExObVdJlpLT6e1v8ALwxKd6qk4Yv6
+    uX5U6EhwCzAectZjuDt5jL8/JO7iYxz/Amil/KieYIs8NVFM1EHKvlzTgJHztAR5WgQDQu
+    j9xmUWGionl3ujVGnYSEINx3637DHZ8LUc++oLh2+lb0Jhkoy2jMErDtF/3+swIKZquKFs
+    H14Hw+XzAL+JT5mPNgxzEnYuAO6J0kALf738KmNXCDUzJz72n0oB105kTr5w
+X-ME-Proxy: <xmx:dvq0agzLZEEq1AGl33gS4xxyqz1UlWR_EDNf9IJ8eBkHZvzm1jOsXg>
+    <xmx:dvq0amPqgFdA7uYXH8aQndxkLyFeGbRN2BF6p7PI2s-4A6wNEf8KyA>
+    <xmx:dvq0asuxQrFX1EqFiLLVlIakKJaxZDydHrRXqV1CEruxpJjIZnPRPw>
+    <xmx:dvq0ar07uDmHwG9jFvb3ZGLUHQtjqhB3vc9fpoWsb6gP8ULb-RrJyQ>
+    <xmx:dvq0asa3xD_vgQXwF87ZhbvzyBqXli8ylpGF5u7iWRRK46wWzZ1rsseu>
 Feedback-ID: i7a5e4b5f:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 24 Sep 2026 06:24:32 -0400 (EDT)
+ 24 Sep 2026 06:24:44 -0400 (EDT)
 From: Jiaxing Hu <gahing@gahingwoo.com>
 To: tomeu@tomeuvizoso.net,
 	heiko@sntech.de,
@@ -120,16 +106,16 @@ Cc: royalnet026@gmail.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: [PATCH v14 14/15] arm64: dts: rockchip: add NPU (RKNN) nodes to rk3576
-Date: Thu, 24 Sep 2026 22:21:34 +1200
-Message-ID: <20260924102135.92217-15-gahing@gahingwoo.com>
+Subject: [PATCH v14 15/15] arm64: dts: rockchip: enable the NPU on rk3576-rock-4d
+Date: Thu, 24 Sep 2026 22:21:35 +1200
+Message-ID: <20260924102135.92217-16-gahing@gahingwoo.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260924102135.92217-1-gahing@gahingwoo.com>
 References: <20260924102135.92217-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_112448_517001_DC427241 
-X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-CacheID: sfid-20260924_032456_100677_8FD51F56 
+X-CRM114-Status: UNSURE (   7.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -147,113 +133,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the two RKNN cores and their IOMMUs, disabled, and label PD_NPU so a
-board can give it the NPU rail. Each core lists both core domains, its own
-first, as tested.
-
-Assign CLK_RKNN_DSU0 594 MHz. Nothing in mainline sets its rate or the NPU
-rail, and at the 786 MHz it comes up at, on the 750 mV a ROCK 4D boots
-with, two cores running together write wrong words, 11 to 25 in each pass
-of 5400 rows. 594 MHz is clean, and Rockchip's OPP table asks only 725 mV
-of its 500 and 600 MHz steps.
+Enable both NPU cores and their IOMMUs on the ROCK 4D, and make vdd_npu_s0
+the NPU domain's supply so the rail is switched with the domain.
 
 Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 74 +++++++++++++++++++++++-
- 1 file changed, 73 insertions(+), 1 deletion(-)
+ .../boot/dts/rockchip/rk3576-rock-4d.dts      | 22 +++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 26aaf4320..e9cd11b58 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1042,7 +1042,7 @@ power: power-controller {
- 				#address-cells = <1>;
- 				#size-cells = <0>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+index 272af1012..93d59c0a9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+@@ -722,6 +722,10 @@ &pcie0 {
+ 	status = "okay";
+ };
  
--				power-domain@RK3576_PD_NPU {
-+				pd_npu: power-domain@RK3576_PD_NPU {
- 					reg = <RK3576_PD_NPU>;
- 					#power-domain-cells = <1>;
- 					#address-cells = <1>;
-@@ -1269,6 +1269,78 @@ power-domain@RK3576_PD_VO1 {
- 			};
- 		};
++&pd_npu {
++	domain-supply = <&vdd_npu_s0>;
++};
++
+ &pinctrl {
+ 	hdmi {
+ 		hdmi_tx_on_h: hdmi-tx-on-h {
+@@ -779,6 +783,24 @@ wifi_en_h: wifi-en-h {
+ 	};
+ };
  
-+		rknn_core_0: npu@27700000 {
-+			compatible = "rockchip,rk3576-rknn-core";
-+			reg = <0x0 0x27700000 0x0 0x1000>,
-+			      <0x0 0x27701000 0x0 0x1000>,
-+			      <0x0 0x27703000 0x0 0x1000>;
-+			reg-names = "pc", "cna", "core";
-+			interrupts = <GIC_SPI 247 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru ACLK_RKNN0>, <&cru HCLK_RKNN_ROOT>,
-+				 <&cru CLK_RKNN_DSU0>, <&cru PCLK_NPUTOP_ROOT>,
-+				 <&cru ACLK_RKNN_CBUF>, <&cru HCLK_RKNN_CBUF>;
-+			clock-names = "aclk", "hclk", "npu", "pclk",
-+				      "aclk_cbuf", "hclk_cbuf";
-+			assigned-clocks = <&cru CLK_RKNN_DSU0>;
-+			assigned-clock-rates = <594000000>;
-+			resets = <&cru SRST_A_RKNN0>;
-+			reset-names = "srst_a";
-+			power-domains = <&power RK3576_PD_NPU0>, <&power RK3576_PD_NPU1>;
-+			iommus = <&rknn_mmu_0>;
-+			status = "disabled";
-+		};
++&rknn_core_0 {
++	npu-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
 +
-+		rknn_mmu_0: iommu@27702000 {
-+			compatible = "rockchip,rk3576-npu-iommu", "rockchip,rk3568-iommu";
-+			reg = <0x0 0x27702000 0x0 0x100>,
-+			      <0x0 0x27702100 0x0 0x100>;
-+			interrupts = <GIC_SPI 247 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru ACLK_RKNN0>, <&cru HCLK_RKNN_ROOT>,
-+				 <&cru CLK_RKNN_DSU0>, <&cru ACLK_RKNN_CBUF>,
-+				 <&cru HCLK_RKNN_CBUF>;
-+			clock-names = "aclk", "iface", "npu",
-+				      "aclk_cbuf", "hclk_cbuf";
-+			#iommu-cells = <0>;
-+			power-domains = <&power RK3576_PD_NPU0>;
-+			status = "disabled";
-+		};
++&rknn_mmu_0 {
++	status = "okay";
++};
 +
-+		rknn_core_1: npu@27708000 {
-+			compatible = "rockchip,rk3576-rknn-core";
-+			reg = <0x0 0x27708000 0x0 0x1000>,
-+			      <0x0 0x27709000 0x0 0x1000>,
-+			      <0x0 0x2770b000 0x0 0x1000>;
-+			reg-names = "pc", "cna", "core";
-+			interrupts = <GIC_SPI 248 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru ACLK_RKNN1>, <&cru HCLK_RKNN_ROOT>,
-+				 <&cru CLK_RKNN_DSU0>, <&cru PCLK_NPUTOP_ROOT>,
-+				 <&cru ACLK_RKNN_CBUF>, <&cru HCLK_RKNN_CBUF>;
-+			clock-names = "aclk", "hclk", "npu", "pclk",
-+				      "aclk_cbuf", "hclk_cbuf";
-+			assigned-clocks = <&cru CLK_RKNN_DSU0>;
-+			assigned-clock-rates = <594000000>;
-+			resets = <&cru SRST_A_RKNN1>;
-+			reset-names = "srst_a";
-+			power-domains = <&power RK3576_PD_NPU1>, <&power RK3576_PD_NPU0>;
-+			iommus = <&rknn_mmu_1>;
-+			status = "disabled";
-+		};
++&rknn_core_1 {
++	npu-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
 +
-+		rknn_mmu_1: iommu@2770a000 {
-+			compatible = "rockchip,rk3576-npu-iommu", "rockchip,rk3568-iommu";
-+			reg = <0x0 0x2770a000 0x0 0x100>,
-+			      <0x0 0x2770a100 0x0 0x100>;
-+			interrupts = <GIC_SPI 248 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru ACLK_RKNN1>, <&cru HCLK_RKNN_ROOT>,
-+				 <&cru CLK_RKNN_DSU0>, <&cru ACLK_RKNN_CBUF>,
-+				 <&cru HCLK_RKNN_CBUF>;
-+			clock-names = "aclk", "iface", "npu",
-+				      "aclk_cbuf", "hclk_cbuf";
-+			#iommu-cells = <0>;
-+			power-domains = <&power RK3576_PD_NPU1>;
-+			status = "disabled";
-+		};
++&rknn_mmu_1 {
++	status = "okay";
++};
 +
- 		gpu: gpu@27800000 {
- 			compatible = "rockchip,rk3576-mali", "arm,mali-bifrost";
- 			reg = <0x0 0x27800000 0x0 0x20000>;
+ &sai6 {
+ 	status = "okay";
+ };
 -- 
 2.43.0
 
