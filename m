@@ -4,60 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DD17C98311
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 10:18:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0709AC98311
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 10:22:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zkbre7QK0AmSN/ERrtRcK9GxdGg/eEoQgc98EemF4jo=; b=PSNNUQ01NFgv78
-	B12JqU+24T6EjWPvABE9B6lr8F3NC45nBrloqK9qFv6WEmOtd563GjfG1vPeJp/hMNImGoShvPKWA
-	3eZtwmSqAcPiV22xUbl9kAb6/chu7zIlRD7FK94q9mHpnUt8bzypMOlsgkvzeqw/sRvrFpE+02V/V
-	tTdAZAMoVI22Dx0mndejr9BxCR/Mzf8Mb9uK9gOO5RXGsGcfI4SQvb3EwjSTplVvplh9ZTtGmLlPY
-	YRCRgPpAIABEM+OywV9WaMi2vpTB8WO8HT0u7xDhHU/UsnB5oziFQkKRpOZzMautGI4uIUsqdn0Qu
-	87G4AVcuYgMTcqZP3KUg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0dlHYwjysrsmkkvQPOIs7BzfvAIg74bLu1P1eJhsGSY=; b=3tLObyOpsEV5rR
+	yV386b4E8xDf0i3BZ0Hn/iK/pPAhf0mB9kJ/7+v1RBZsKFw7prxjQ5M1Gd19M8TCJ5wB3MF0zzSYj
+	aZc8JViGNBJjfipKHIIBFmZHIphVgRoSGfhEYtzpGQRqlvVIXH2G+gOsyAOJzqXU81MzDHGVZt3OE
+	DFFp26+CZZqx1YFR+99pbrB80IQuukG9UZ0iAGG4Pn/ZwKQFULTzB9HNwwzU43Flyo/Q0sSEcrXHb
+	mQVtT944s/R1aM5P9lHYT6WdgJtNKc/8EiSkUzMq1EH0MmoR5RoMbgya1auj1Diq50pakSDzWPaIM
+	1S0es5QkJBZ3OctnFK3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9gWq-0000000AgeB-3jIG;
-	Thu, 24 Sep 2026 10:18:12 +0000
-Received: from out-232.mta0.migadu.com ([2001:41d0:1004:224b::e8] helo=mta0.migadu.com)
+	id 1x9gaa-0000000Ah70-2uSc;
+	Thu, 24 Sep 2026 10:22:04 +0000
+Received: from fout-b4-smtp.messagingengine.com ([202.12.124.147])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9gWn-0000000Agd9-1QJq
-	for linux-rockchip@lists.infradead.org;
-	Thu, 24 Sep 2026 10:18:11 +0000
-X-Envelope-To: linux-rockchip@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=JWr0NNjXQImzVIa+BZdcSYF6v2HZGC8+Dsd4ySZ+oq8=;
- c=simple/simple; d=cknow-tech.com;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1790245086; v=1; x=1790849886;
- b=hUMYvILhafahfaPkCnqVLqnZhFMZEyomL7AmnA4isFZcZsW+lplPAisbRGRHfD5wmjhx/tdk
- +z7B4EHXG4kOudpE5Mm5cq62eOL/bVUPhxVRvox516uH+V0feAsU89dm5VCHsu9LgyQg9OZjzAj
- O30uEVnSChASd5kOYRpNymvH7tXU1eHuczo1CfJ41WXFTIBWTOXii1tfwUcLDjHv5EoXWBfMO0o
- qX7RaJXtIJ0QXhhTWB/WartzTNOwKfxjVygkEJGb2k2R8NHJM3Nx+tCPmXLQcJA1oeYJehVrEPz
- XviU/a3BNVKzFUXPiSS/wM/8KI8cZv+Z21dfjbOnh9qKA==
-X-Envelope-To: linux-rockchip@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 75bbed6db142c758;
-	Thu, 24 Sep 2026 10:17:56 +0000
-X-Mizu-Trace-ID: 75bbed6db142c758
-X-Migadu-Flow: FLOW_OUT
-Mime-Version: 1.0
-Date: Thu, 24 Sep 2026 12:17:54 +0200
-Message-Id: <DLNGWXNFBWAP.2Z0ELO7NROZTC@cknow-tech.com>
-Cc: <linux-rockchip@lists.infradead.org>, <linux-pci@vger.kernel.org>,
- "Niklas Cassel" <cassel@kernel.org>, "Diederik de Haas"
- <diederik@cknow-tech.com>
-Subject: Re: [PATCH v4] PCI: dw-rockchip: Move the INTx irq setup to probe
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Shawn Lin" <shawn.lin@rock-chips.com>, "Manivannan Sadhasivam"
- <mani@kernel.org>, "Bjorn Helgaas" <bhelgaas@google.com>
-X-Mailer: aerc 0.22.0-24-g39041fd9f179
-References: <1790222793-77182-1-git-send-email-shawn.lin@rock-chips.com>
-In-Reply-To: <1790222793-77182-1-git-send-email-shawn.lin@rock-chips.com>
+	id 1x9gaN-0000000Ah43-1iGt;
+	Thu, 24 Sep 2026 10:21:53 +0000
+Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
+	by mailfout.stl.internal (Postfix) with ESMTP id 89BA61D00100;
+	Thu, 24 Sep 2026 06:21:49 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-04.internal (MEProxy); Thu, 24 Sep 2026 06:21:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm3; t=1790245309; x=1790331709; bh=W6tnudjnaq
+	nDvuJLZWbdA1XYcjcOG/KRBYhK5fxSl2U=; b=YV226EbjfVpuElFcw2Yq0ZEOf3
+	kV4oD1yEgBOGzqiHUWiGBUHsmuZWVgsCJn6s/sTW1jkG562sllnRbXnT1M+JSELY
+	Zq7awi+A4dmbEFQZ7+okF12O6itF/CxLx3TMAiHtctqB1kEMndbbrmrI2vlBk0Ba
+	XYbUEW3W70InY421d7O6sbJPaygVK8oL73OW89OVuXUbRzWTnkaWXWwvGtnCa3JV
+	7eskiX2aABw4Blhzre4ogXQtco0DYIeEDlJeWU5UZaRrxoHvb9CbR4taKSWEPB/n
+	sdoymmnO7c3wE+k0aJs9YPSv56gwVLdBgm0AETs8sQKNxIiQyUtVyWZtMOZg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+	1790245309; x=1790331709; bh=W6tnudjnaqnDvuJLZWbdA1XYcjcOG/KRBYh
+	K5fxSl2U=; b=kh2tFI+C70MTIXe/YX+q8448PWaZCZnhMa5jTmFR1nMou61UJcn
+	3WzJV+5IltfZrse2IpGQnglxx9FQZSd7rVblvWFZmqJQBxnrBOfOorgin2MRol1p
+	7GTIl/h47gfMqkO5WlEFQRGked+S8dxfQw7RG545ESliULywNkO2Qx5Hx9ThYn8j
+	nh/tRRBjbnioJwxB5HMlsLGLW+2Gl/aHQUMYACBSsEAo3f8tb9AmOPdf9xHoco3C
+	EVE8q1HQj6CrJx0/ZQZUP78PC1BIp9aqiXGjjWtSgSkRIL70tyRk/NRpuyBxa9xJ
+	S0Qvt0mK0sgHL8pUxHP7lrwawcp44DWbETA==
+X-ME-Sender: <xms:vPm0avPHMDwn28tloF3tMSEyu8VxF0-yiXQT0HsAbMGQFOGRv59D_Q>
+    <xme:vPm0aqvSQ30pPg-WEW7otfxJ7VOHupprZl9Nln6n-luqCRE4x86mOLUkQiJquwlmT
+    8kqev4u9lOuFsqkJNX5npO4SgiGf73qmqNwFMfAM2VaHTbC4UqsvEs>
+X-ME-Received: <xmr:vPm0aiGUv1jl5nzFATDJdBh4YPod_dURrATFLHxrFQJGEguGf87N8DiHfW9QxPYyoVWy8l0DIw>
+X-ME-Proxy-Cause: dmFkZTGUBsuQ8u1e21jVcr3eLNYG8Ga4Cps63LL/fYxHUubIriJLI2yezzT3bzXM0DpGzH
+    qkZsA9N9aBi9n2Y//Yi0OHlpEZJX5Bnw5YcMHpUTVUO0A8DdY/D5tvhfY4JQtyBJkgAFAw
+    TNXckoesIyFctYvXVe/Yo5XkqpKs0A5wEq4b+dKkkqErTVFOzm2U0Tqf5wP76p8dip0AEW
+    6goXFoqaPcnDdHoe8hK/ilbx/bv7lys+91iE7/Vpn/kNTv2VZk73o5DQPwhe3rGxKYgLLO
+    NoMtnnrti5i/YjyeP2uj7BGXhCqwtaB6+EwJplu7fHaOam2PsrbS75wAJYWOARwLKIr9OS
+    DPI/daDD++KB0WfxHB3zjHMjqNV9vZYf0wOy5M8lMuV0ULxpgCD6jL7ucgWwhkGq9g9783
+    Z9TyFguJ6VUEk3MHSGQ6MdIT1xTww7BiozZzx9xuSDFh5IhMlwK+2xIpfoV13jYDwHIAnV
+    jqIv0OdUCnHJYM+M5qe9XAget8mEh2DuV935JroNa8o8cDgx95KRO5U2Reaw1BbfPvyG6x
+    p75wqGpVNdSXqXUO3rxHI1jVOITR29X4JLt+ZAFW720YnBULxO/I8Xwje52RdiLHEfbleN
+    dqAns0cW41qUL8d047ZJggRqksth7LcFfxDruC5W93OmRI2UsyQh41lNQWzw
+X-ME-Proxy: <xmx:vPm0alRmLW-fC207vPYU88tB4X3W1sYpm4gXSIhoogYbRN6k9_SHXw>
+    <xmx:vPm0amj9Of0_Sc6lVVIi-35IpePezVZYs4b6rN9Ae3Ck6cb98PE9HQ>
+    <xmx:vPm0apZ7rprtTFURlb7CwWUcijiQ8Dh8h-GqaMleHSRjlNg37b7ZRg>
+    <xmx:vPm0anVkLpvzJvhB7q-vVOsUXaic03rqhvimGFh9nCF1pHIGlszOkQ>
+    <xmx:vfm0ajvYafMq3HjSolhWD51Kegqh9Jhm0fEBs5AvIOIkpn2yyLWIeKF5>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 24 Sep 2026 06:21:39 -0400 (EDT)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	ulfh@kernel.org,
+	p.zabel@pengutronix.de,
+	ogabbay@kernel.org,
+	zhangqing@rock-chips.com
+Cc: royalnet026@gmail.com,
+	abel.vesa@oss.qualcomm.com,
+	sebastian.reichel@collabora.com,
+	sidong.yang@furiosa.ai,
+	u.kleine-koenig@baylibre.com,
+	chaoyi.chen@rock-chips.com,
+	diederik@cknow-tech.com,
+	alchark@flipper.net,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	iommu@lists.linux.dev,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: [PATCH v14 00/15] accel/rocket: RK3576 NPU (RKNN) enablement
+Date: Thu, 24 Sep 2026 22:21:20 +1200
+Message-ID: <20260924102135.92217-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_031809_795784_FDB0F6E0 
-X-CRM114-Status: GOOD (  29.32  )
+X-CRM114-CacheID: sfid-20260924_032151_942706_C045ABA9 
+X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,129 +128,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu Sep 24, 2026 at 6:06 AM CEST, Shawn Lin wrote:
-> Since commit b376b3ff9cb0 ("PCI: dw-rockchip: Implement .reset_root_port()
-> and use for link down"), .reset_root_port() re-runs the host ops .init()
-> callback to reprogram the Root Complex after a controller reset. That
-> works for the register programming, but .init() is not re-entrant: it
-> also creates the INTx irq domain and installs the chained INTx handler.
-> Every root port reset therefore ends up with a second irq domain
-> registered for the same fwnode: the previous one is leaked, as it is
-> never removed, and worse, the INTx virqs of the downstream PCI devices
-> were allocated in the previous irq domain and are never re-mapped, while
-> the chained handler now looks up virqs in the new, empty domain. After a
-> link down recovery, INTx interrupts are silently lost.
->
-> Fix it by moving the of_irq_get_byname() lookup, the INTx irq domain
-> creation and the chained handler installation out of .init() and into
-> rockchip_pcie_configure_rc(), just before dw_pcie_host_init(). The
-> lookup has to happen before the host is initialized, because
-> dw_pcie_host_init() enumerates the bus and probes the downstream
-> devices, and pci_assign_irq() maps their INTx interrupts at that point:
-> if the domain does not exist yet, the mapping fails and the devices end
-> up without a usable INTx. This also mirrors how the qcom driver requests
-> its global IRQ, and leaves .init() with nothing but idempotent register
-> programming, so both .reset_root_port() and dw_pcie_resume_noirq() can
-> safely re-run it. Re-running of_irq_get_byname() on every resume is also
-> gone.
+This adds the RK3576 NPU to accel/rocket. The RK3576 has two cores of
+the RKNN block the driver supports on RK3588, with more clocks, two
+power domains per core, one reset instead of two, and a sixteen-bit task
+number in PC_TASK_CON.
 
-While with only patch 1 of v3 I still got (5x) this warning:
-  irq: no irq domain found for legacy-interrupt-controller !
-but no more stack traces.
+1/15 is Igor Paunovic's patch and also 05/11 of his DVFS series;
+whichever lands first, the other drops it. His 06/11 edits the same
+binding as 6/15.
 
-With v4 there are no stack traces and no more irq warnings.
-My NVMe drive, Ethernet NIC (also PCIe based) and both MT7925 based Wi-Fi
-and Bluetooth work fine, so feel free to include
+Changes since v13:
 
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPC-T6 Plus
+  3/15   The comment notes that a core still up with runtime PM disabled
+         is left unmasked (Sashiko). The message quotes Igor's re-runs
+         on v13; his earlier summary is behind the Links. Igor, say if
+         you want it back.
+  7/15   Heiko's Reviewed-by.
+  9/15   Message trimmed (Ulf), keeping one sentence on need_regulator.
+  10/15  One reset, not an array (Philipp), and the pointer is cleared
+         under pmu->mutex before it is put (Sashiko). Abel, the code
+         under your Reviewed-by changed; say if the tag should go.
+  12/15  Drops a claim that its test was byte exact; it was within one
+         count. Its comment on PC_TASK_CON now says the count clear
+         lands inside the task number and inflates it, which is what
+         happens.
+  13/15, 14/15
+         v13's 13/14, split as Heiko asked. 14/15 gives 786 MHz at 750
+         mV as 11 to 25 wrong words a pass; v12 and v13 said 13 to 20
+         wrong rows, which no record supports.
 
-Cheers,
-  Diederik
+The other messages, apart from 1/15, are shorter.
 
-> Fixes: b376b3ff9cb0 ("PCI: dw-rockchip: Implement .reset_root_port() and use for link down")
-> Suggested-by: Niklas Cassel <cassel@kernel.org>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
->
-> Changes in v4:
-> - drop the code comment (Niklas)
-> - create the INTx irq domain before dw_pcie_host_init() instead of
->   after it. dw_pcie_host_init() enumerates the bus and probes the
->   downstream devices, and their INTx interrupts get mapped at that
->   point, so registering the domain afterwards left every downstream
->   device without a usable INTx (flagged by the Sashiko review).
-> - this also removes the failing steps behind dw_pcie_host_init(), so
->   there is no error path left that would return with the root bus
->   registered and the rockchip structure about to be freed (flagged by
->   the Sashiko review).
->
-> Changes in v3:
-> - split devm-managed part into a seperate patch
->
-> Changes in v2:
-> - Moved the of_irq_get_byname() lookup, the INTx irq domain creation
->   and the chained handler installation out of the host ops .init()
->   callback into rockchip_pcie_configure_rc(), right after
->   dw_pcie_host_init(), as suggested by Niklas Cassel. This supersedes
->   v1 patch 1/2, as .init() no longer creates the irq domain, and
->   removes the rockchip_pcie_host_hw_init() helper from v1.
-> - Made the INTx irq domain devm-managed with
->   devm_irq_domain_instantiate() and uninstall the chained handler
->   through a devres action, addressing the probe failure leak and
->   use-after-free flagged by the Sashiko review.
->
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 27 +++++++++++++--------------
->  1 file changed, 13 insertions(+), 14 deletions(-)
->
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 1497686..bd86e32c 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -422,23 +422,9 @@ static void rockchip_pcie_stop_link(struct dw_pcie *pci)
->  static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
-> -	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-> -	struct device *dev = rockchip->pci.dev;
-> -	int irq, ret;
-> -
-> -	irq = of_irq_get_byname(dev->of_node, "legacy");
-> -	if (irq < 0)
-> -		return irq;
->  
->  	pci->dbi_base2 = pci->dbi_base + PCIE_TYPE0_HDR_DBI2_OFFSET;
->  
-> -	ret = rockchip_pcie_init_irq_domain(rockchip);
-> -	if (ret < 0)
-> -		dev_err(dev, "failed to init irq domain\n");
-> -
-> -	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
-> -					 rockchip);
-> -
->  	rockchip_pcie_configure_l1ss(pci);
->  	rockchip_pcie_enable_l0s(pci);
->  	pp->bridge->reset_root_port = rockchip_pcie_rc_reset_root_port;
-> @@ -731,6 +717,19 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
->  				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_RC),
->  				 PCIE_CLIENT_GENERAL_CON);
->  
-> +	irq = of_irq_get_byname(dev->of_node, "legacy");
-> +	if (irq < 0)
-> +		return irq;
-> +
-> +	ret = rockchip_pcie_init_irq_domain(rockchip);
-> +	if (ret < 0) {
-> +		dev_err(dev, "failed to init irq domain\n");
-> +		return ret;
-> +	}
-> +
-> +	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
-> +					 rockchip);
-> +
->  	pp = &rockchip->pci.pp;
->  	pp->ops = &rockchip_pcie_host_ops;
->  
+On Heiko's question, 9/15's delay at 0 makes the first power-on of the
+NPU domain take an async SError, also with vdd_npu_s0 always-on; at 15
+us, 536 cold power-ons were clean. Details are in the v13 9/14 thread:
+https://lore.kernel.org/all/20260924090824.38493-1-gahing@gahingwoo.com/
 
+Routing: Ulf offered to take 7, 9 and 10. 1 to 5, 11 and 12 go through
+accel, 13 to 15 through rockchip, 6 with accel and 8 with the DT patches
+that use it. 15/15 needs 9, 10 and 12 to 14 first; without 9, 10 and 13
+the NPU domain comes up with no settle delay or reset pulse and the
+board takes an SError at boot.
+
+Still open:
+
+  4/15   whether you want a fix for the asynchronous put, and which
+  5/15   moves the line that ZhaoJinming's "accel/rocket: Fix
+         iommu_group leak and unsafe IRQ register access" changes;
+         whichever lands first, the other conflicts
+  14/15  both NPU domains per core, as tested, or one
+  --     rocket_core_fini() puts the IOMMU group before it cancels the
+         timeout worker: fix it here or on its own
+  15/15  hold it a cycle, or coordinate the three trees
+
+Link to v13: https://lore.kernel.org/all/20260915104328.45901-1-gahing@gahingwoo.com/
+
+Igor Paunovic (1):
+  accel/rocket: request the core clocks by name
+
+Jiaxing Hu (14):
+  accel/rocket: take the completion register writes under job_lock
+  accel/rocket: wait for a running IRQ handler before resetting a core
+  accel/rocket: let the core suspend after a reset
+  accel/rocket: factor the completion tail out of the IRQ handler
+  dt-bindings: npu: rockchip: add rockchip,rk3576-rknn-core
+  dt-bindings: power: rockchip: allow resets in a power domain node
+  dt-bindings: iommu: rockchip: describe the RK3576 NPU MMU
+  pmdomain: rockchip: add optional per-domain power-on settle delay
+  pmdomain: rockchip: cycle an optional power-domain reset on power-on
+  accel/rocket: select the per-core clock and reset counts from match
+    data
+  accel/rocket: add RK3576 NPU (RKNN) support
+  arm64: dts: rockchip: add NPU core domain clocks and resets to rk3576
+  arm64: dts: rockchip: add NPU (RKNN) nodes to rk3576
+  arm64: dts: rockchip: enable the NPU on rk3576-rock-4d
+
+ .../bindings/iommu/rockchip,iommu.yaml        |  28 ++++
+ .../npu/rockchip,rk3588-rknn-core.yaml        |  47 +++++-
+ .../power/rockchip,power-controller.yaml      |   8 +
+ .../boot/dts/rockchip/rk3576-rock-4d.dts      |  22 +++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi      |  86 +++++++++-
+ drivers/accel/rocket/rocket_core.c            |  32 +++-
+ drivers/accel/rocket/rocket_core.h            |  11 +-
+ drivers/accel/rocket/rocket_device.c          |   7 +-
+ drivers/accel/rocket/rocket_drv.c             |  42 ++++-
+ drivers/accel/rocket/rocket_drv.h             |   2 +
+ drivers/accel/rocket/rocket_job.c             | 157 +++++++++++++++---
+ drivers/pmdomain/rockchip/pm-domains.c        |  89 +++++++---
+ 12 files changed, 467 insertions(+), 64 deletions(-)
+
+
+base-commit: 1a1de54f7369cd2b5bac0f265910e60ad3a6b4c3
+-- 
+2.43.0
 
 
 _______________________________________________
