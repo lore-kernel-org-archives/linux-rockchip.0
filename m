@@ -4,56 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B04B4C9830E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 20:21:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9983CC9831E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 22:43:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u6nLWg0+XeL2APvKGt8Um35OajB5oWqB+AWb+jh8JCY=; b=KL1JSFLkfFAhc/
-	silne1DNqmGZAWIqLcW5/PoA9OIz1hzMK8R8b3MoPcad1YIruvTvNbh+cXnqImVFbmPfSMoPNwx88
-	Ofxt9+jIzBdRkQdEgM3VPQTTm/NH6tFPobeRZcpDo5z4OaD33rwKvdfmzNsyg7DdRjwmZ9FfnSloy
-	zkDoPIFjynULkz7QbW58lvJfhon0uKf8ZCW19gopWCSux85tZcxZ8E/pdWscLZUZPw1HPKe8t5qGX
-	sbAxxDbcchJMLViaJ8HC48VqxGRgzxCSehSDOJyOyjHuQBvhFhdgpNCNbFQIZve8rinS4EXSg5ss9
-	zt2cDc0wR8ipenB4hL/w==;
+	List-Owner; bh=8Nc1vYpTEEu87r1uZnpxGPnEyVBa4nWFWZtYzIl+mI0=; b=fgGMmbQ5yKSKtZ
+	MgZIYxLI3w6rRA8FiladwtmBkQ9PjOMfr+q+X2mmOwHiHYGSzlscMK61U1CK3iVpz+fgV6QRtD6uH
+	+WEtPKqHzYNEr52S5pNgxpEw7nogyKBTpALAltV/VyE1nydEYatYPvbum4lxpesE43AdyDS8EiqOt
+	GVZwyKanebNWTWrPQDGH7gLPIPSDawsKFomnCU0kliVE+MItC4VZJ5c8e1joy/7cXWgqVKBFHr6l5
+	BEDvLl7umwHYPn2hyW+bTJRxbTANrC78WkLIrpji2JKhILRGjNeCfLoEunM6Sc3kcgoN3RAGatQuE
+	iz+MRpUrstYnCxEJ+Mvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9pwR-0000000C84B-0ETC;
-	Thu, 24 Sep 2026 20:21:15 +0000
-Received: from [95.181.193.9] (helo=mail.auroraos.dev)
+	id 1x9s9i-0000000CJGg-10yP;
+	Thu, 24 Sep 2026 22:43:06 +0000
+Received: from mgamail.intel.com ([198.175.65.10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9pwJ-0000000C82d-36M7;
-	Thu, 24 Sep 2026 20:21:14 +0000
-Received: from [192.168.2.104] (91.78.17.141) by exch16.corp.auroraos.dev
- (10.189.209.38) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1847.3; Thu, 24 Sep
- 2026 23:20:57 +0300
-Message-ID: <dda8d4cb-1c3e-4f6e-8d20-14e453effda2@auroraos.dev>
-Date: Thu, 24 Sep 2026 23:20:57 +0300
+	id 1x9s9f-0000000CJEu-0W0R;
+	Thu, 24 Sep 2026 22:43:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1790289783; x=1821825783;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=5k6ew4bZKs5Kak0IIZkqP5OL1erIyyXEfACAGORomcc=;
+  b=decaKPbU/p7zeQI2+zBZRLX+e64QZlwazVWCzaTmMOnTJsXHFY3438un
+   M3TQmTGEoGn53cCVTeLTAlEBuoat4oKLYyAkYcPWM+Q2F5k3jzPksa4Ix
+   hWYs9/CHkMhhe2QW3050vm2QQLk7CBac2sUMuq3lbfVm0N3UbQwWP6/II
+   UjCX+8YjGGUa3hiAtDv7rzjKpzLsefNg4+iG9K1esRqiwUTRR2dsZJ4wO
+   5WKuxbzSQYm31Saje5/gh0HqR8DvzDxYMlu6iRvJtcWKsJN0oOfsrcWR1
+   e8+fdhC8OVvprU1rBCYpY/GjuL7nABm1nxRi/4h9hx75qSe7na6MTdfuw
+   g==;
+X-CSE-ConnectionGUID: /oPqw4s2Qy6Wu/mKNoOoHg==
+X-CSE-MsgGUID: JzU+pS/zRYemynvur9QCUA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11915"; a="107459061"
+X-IronPort-AV: E=Sophos;i="6.27,121,1787036400"; 
+   d="scan'208";a="107459061"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Sep 2026 15:43:01 -0700
+X-CSE-ConnectionGUID: U5Dk8CFqRMui2FINcs4gCw==
+X-CSE-MsgGUID: 0sfLiX2TT1WjCokNpBJP4Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,121,1787036400"; 
+   d="scan'208";a="272276214"
+Received: from igk-lkp-server01.igk.intel.com (HELO a88263cc608e) ([10.211.93.152])
+  by orviesa010.jf.intel.com with ESMTP; 24 Sep 2026 15:42:58 -0700
+Received: from kbuild by a88263cc608e with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1x9s9U-000000000Sk-1VZT;
+	Thu, 24 Sep 2026 22:42:52 +0000
+Date: Fri, 25 Sep 2026 00:42:13 +0200
+From: kernel test robot <lkp@intel.com>
+To: Coia Prant <coiaprant@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: oe-kbuild-all@lists.linux.dev,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Coia Prant <coiaprant@gmail.com>
+Subject: Re: [PATCH net] net: ethernet: stmmac: dwmac-rk: fix bulk clock leak
+ when the PHY clock fails
+Message-ID: <202609250009.lQiuYnR7-lkp@intel.com>
+References: <20260919174223.2356964-1-coiaprant@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] pmdomain: rockchip: fix domain check in
- rockchip_pm_add_one_domain()
-To: Ulf Hansson <ulf.hansson@oss.qualcomm.com>
-CC: Ulf Hansson <ulfh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	<linux-pm@vger.kernel.org>, <linux-rockchip@lists.infradead.org>, Caesar Wang
-	<wxt@rock-chips.com>, Kevin Hilman <khilman@linaro.org>,
-	<linux-arm-kernel@lists.infradead.org>
-References: <20260920175928.42566-1-s.shtylyov@auroraos.dev>
- <CAPx+jO-Ph038WJQ4gMH93XzoMC09+meht=yT9JQBAnTD6HzGEg@mail.gmail.com>
- <d07cb609-ca44-46aa-bd56-2554846399f6@auroraos.dev>
- <CAPx+jO-c_w55jO9i_Db459Ya+9yV3nT3akQcaPxr0qb7TqSejQ@mail.gmail.com>
-Content-Language: en-US
-From: Sergey Shtylyov <s.shtylyov@auroraos.dev>
-In-Reply-To: <CAPx+jO-c_w55jO9i_Db459Ya+9yV3nT3akQcaPxr0qb7TqSejQ@mail.gmail.com>
-X-Originating-IP: [91.78.17.141]
-X-ClientProxiedBy: exch16.corp.auroraos.dev (10.189.209.38) To
- exch16.corp.auroraos.dev (10.189.209.38)
+Content-Disposition: inline
+In-Reply-To: <20260919174223.2356964-1-coiaprant@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_132107_784037_29B2B150 
-X-CRM114-Status: GOOD (  19.68  )
+X-CRM114-CacheID: sfid-20260924_154303_238693_D784561B 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,68 +96,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 9/24/26 11:48 AM, Ulf Hansson wrote:
+Hi Coia,
 
-[...]
+kernel test robot noticed the following build warnings:
 
->>>> In rockchip_pm_add_one_domain(), there's the check (most probably for
->>>> the case where the "reg" prop has an unexpected value?) which doesn't
->>>> make much sense as the variable pd_info will be NULL iff pmu->info->
->>>> domain_info is NULL and the variable id is 0.  What does make sense
->>>> there is checking pd_info->pwr_mask and pd_info->req_mask which (as
->>>> seems to follow from the code) can't both be 0 for a valid domain...
->>>>
->>>> Found by Linux Verification Center (linuxtesting.org) with the Svace
->>>> static analysis tool.
->>>>
->>>> Fixes: 7c696693a4f5 ("soc: rockchip: power-domain: Add power domain driver")
->>>> Signed-off-by: Sergey Shtylyov <s.shtylyov@auroraos.dev>
->>>
->>> Applied for next, but without the fixes tag, thanks!
+[auto build test WARNING on net/main]
 
-   One detail I've just remembered about: if the patch won't be backported to
-the stable kernels, it would be easier to just check rockchip_domain_info::name
-for NULL instead of the {pwr,req}_mask fields checked by the patch; this field
-seems to always be set for all domains the driver cares about, it just was added
-in 5.14-rc1 (I think), see this:
+url:    https://github.com/intel-lab-lkp/linux/commits/Coia-Prant/net-ethernet-stmmac-dwmac-rk-fix-bulk-clock-leak-when-the-PHY-clock-fails/20260920-014223
+base:   net/main
+patch link:    https://lore.kernel.org/r/20260919174223.2356964-1-coiaprant%40gmail.com
+patch subject: [PATCH net] net: ethernet: stmmac: dwmac-rk: fix bulk clock leak when the PHY clock fails
+config: loongarch-allyesconfig (https://download.01.org/0day-ci/archive/20260925/202609250009.lQiuYnR7-lkp@intel.com/config)
+compiler: clang version 22.1.8 (https://github.com/llvm/llvm-project ca7933e47d3a3451d81e72ac174dcb5aa28b59d1)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260925/202609250009.lQiuYnR7-lkp@intel.com/reproduce)
 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0a69452e03564c5eaf99f729de398cd94ee90851
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202609250009.lQiuYnR7-lkp@intel.com/
 
->>> Note, that I am dropping the fixes tag because if there was a real
->>> problem, we would require yet another fix on top to get the
+All warnings (new ones prefixed by >>):
 
-   The problem can (probably) happen iff a device tree has a domain # in
-the "reg" property that the driver doesn't care about -- in this case the
-.{pwr,req}_mask fields (and .name as well) will both be 0 (since IIRC a
-C compiler should set not explicitly initialized entried to 0). My patch
-was intended for checking for the domain #s that the driver doesn't care
-about (and so doesn't init in the *_pm_domains[] definitions, not for the
-validity of the domains it does care about; try looking at at e.g.
-include/dt-bindings/power/px30-power.h and you'll see that the "valid"
-domains start at 5 (and the domain #s are not even contiguous as e.g.
-PX30_PD_{CRYPTO,DDR} indices remain uninitialized)...
+>> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1168:5: warning: misleading indentation; statement is not part of the previous 'if' [-Wmisleading-indentation]
+    1168 |                                 return ret;
+         |                                 ^
+   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1165:4: note: previous statement is here
+    1165 |                         if (ret)
+         |                         ^
+   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1177:2: warning: non-void function does not return a value in all control paths [-Wreturn-type]
+    1177 |         } else {
+         |         ^
+   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1177:4: error: expected identifier or '('
+    1177 |         } else {
+         |           ^
+   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1189:2: error: expected identifier or '('
+    1189 |         return 0;
+         |         ^
+   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1190:1: error: extraneous closing brace ('}')
+    1190 | }
+         | ^
+   2 warnings and 3 errors generated.
 
->>> corresponding domain declaration to be correct. Yet, the patch is
->>> useful as is!  >>>>    I'm not sure I understand you. The patch should hopefully be
->> enough to detect the undefined entries (implicitly init'ed with
->> all 0s). What fix for the domain definitions do you have in mind,
->> turning the arrays into lookup tables by adding a domain ID as a
->> field to *struct* rockchip_domain_info?
-> 
-> Apologize if I was vague, but you kind of point out what I just said.
-> 
-> The patch helps us to *detect* incorrect entries. If it turns out we
-> find one, we need to fix that entry.
 
-   No, the intent was not to detect the improperly initialized entries but
-to verify the supplied DT is correct; I suppose this was the intention of
-the original (bogus) check in rockchip_pm_add_one_domain()...
+vim +/if +1168 drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
 
-> Kind regards
-> Uffe
+7ad269ea1a2b7d Roger Chen            2014-12-29  1152  
+7ad269ea1a2b7d Roger Chen            2014-12-29  1153  static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
+7ad269ea1a2b7d Roger Chen            2014-12-29  1154  {
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1155  	int ret;
+7ad269ea1a2b7d Roger Chen            2014-12-29  1156  
+7ad269ea1a2b7d Roger Chen            2014-12-29  1157  	if (enable) {
+7ad269ea1a2b7d Roger Chen            2014-12-29  1158  		if (!bsp_priv->clk_enabled) {
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1159  			ret = clk_bulk_prepare_enable(bsp_priv->num_clks,
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1160  						      bsp_priv->clks);
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1161  			if (ret)
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1162  				return ret;
+7ad269ea1a2b7d Roger Chen            2014-12-29  1163  
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1164  			ret = clk_prepare_enable(bsp_priv->clk_phy);
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1165  			if (ret)
+cb278e6780d874 Coia Prant            2026-09-20  1166  				clk_bulk_disable_unprepare(bsp_priv->num_clks,
+cb278e6780d874 Coia Prant            2026-09-20  1167  							   bsp_priv->clks);
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07 @1168  				return ret;
+cb278e6780d874 Coia Prant            2026-09-20  1169  			}
+23c94d63a7e395 David Wu              2018-06-28  1170  
+5c1fc7cb81dfed Russell King (Oracle  2026-02-04  1171) 			rk_configure_io_clksel(bsp_priv);
+5c1fc7cb81dfed Russell King (Oracle  2026-02-04  1172) 			rk_ungate_rmii_clock(bsp_priv);
+2f2b60a0ec2826 David Wu              2022-08-30  1173  
+7ad269ea1a2b7d Roger Chen            2014-12-29  1174  			mdelay(5);
+7ad269ea1a2b7d Roger Chen            2014-12-29  1175  			bsp_priv->clk_enabled = true;
+7ad269ea1a2b7d Roger Chen            2014-12-29  1176  		}
+7ad269ea1a2b7d Roger Chen            2014-12-29  1177  	} else {
+7ad269ea1a2b7d Roger Chen            2014-12-29  1178  		if (bsp_priv->clk_enabled) {
+5c1fc7cb81dfed Russell King (Oracle  2026-02-04  1179) 			rk_gate_rmii_clock(bsp_priv);
+7f864458e9a6d2 Sebastian Reichel     2025-10-14  1180  
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1181  			clk_bulk_disable_unprepare(bsp_priv->num_clks,
+ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1182  						   bsp_priv->clks);
+fecd4d7eef8b21 David Wu              2017-08-10  1183  			clk_disable_unprepare(bsp_priv->clk_phy);
+fecd4d7eef8b21 David Wu              2017-08-10  1184  
+7ad269ea1a2b7d Roger Chen            2014-12-29  1185  			bsp_priv->clk_enabled = false;
+7ad269ea1a2b7d Roger Chen            2014-12-29  1186  		}
+7ad269ea1a2b7d Roger Chen            2014-12-29  1187  	}
+7ad269ea1a2b7d Roger Chen            2014-12-29  1188  
+7ad269ea1a2b7d Roger Chen            2014-12-29  1189  	return 0;
+7ad269ea1a2b7d Roger Chen            2014-12-29  1190  }
+7ad269ea1a2b7d Roger Chen            2014-12-29  1191  
 
-MBR, Sergey
-
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
