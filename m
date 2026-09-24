@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 312D6C98304
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 03:24:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86C5EC98304
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 03:27:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iN9B3SrvDHkDBMLtxcIk5nfA+pef08OjhQt4h4Evrpg=; b=o++EWqpk3PXjoo
-	EWcLu7W2ahsqLFDHskNM/7YgxtDDX16zo4fSdxiZxoTwHiydQGMd7Jf7fYFy/BaYLgnrcJYuI+186
-	tg32lzn7a6fevhXJ2Je+m85PcCf9d1RQrizf4gE+DTAm/Xmsd9JZv1UL6MnS6Yvw90vMXq+6YFxK2
-	g0w40zWQ/9dK7Vjlu8WadTQMWymZZXp3yTXDN6molu7csccfTwa56fv6jEQqWaJrKfs2nUr3dGzEv
-	MG5cjYIJwUNvalH4JuQk66VFNC4bDuETVPI1RWn8gMZD/tJ0E6OXZxu8yvqWdiSyVrqKUnVyQ1vhN
-	tDI4ZcRMWf0MIGXhvLTA==;
+	List-Owner; bh=lDlM2OxBqQjeFwhrmpYPiQsYcDXtqDzeZ8pACvzIM5c=; b=l8RGCdt4LtqbnB
+	CeUZFbPUebQy7haPtTOpIMVJMDWrNpdUfwjNhdIKrYgt+/IQ+1vMlpUjQp6qT2fTw9Iths1Ff1rY3
+	slKh9RllM4qDW0Gsq1ud/50U2vMIS8i0To22rtM9HZNHg5peUH1aCeJChE0i7678rorYkEZKbRFmQ
+	j1+NiYUARdqCkyMsH4eQQEQ2oOlO/uRkeuMFq7RbnblWsIIsdZ2RqPFyQrUATNDmZewLp8K3BcTFK
+	0XhSNBIPr48MYmxEzGesfgD51OJURveCuRgG1rcCIXq8Cc7u1VnQDl6V1A92qs9yEld6zsUtx+kjq
+	U6UFvok16aKkcJXds8Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9a4W-00000009vqX-12Mb;
-	Thu, 24 Sep 2026 03:24:32 +0000
-Received: from mail-m128202.netease.com ([103.209.128.202])
+	id 1x9a7j-00000009wJi-48qq;
+	Thu, 24 Sep 2026 03:27:51 +0000
+Received: from mail-m93230.xmail.ntesmail.com ([103.126.93.230])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9a4S-00000009vpi-29UG;
-	Thu, 24 Sep 2026 03:24:31 +0000
-Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4ef5e07a0;
-	Thu, 24 Sep 2026 11:24:13 +0800 (GMT+08:00)
-Message-ID: <0ef54850-6919-4a29-a8df-586a3dc2de5f@rock-chips.com>
-Date: Thu, 24 Sep 2026 11:24:11 +0800
+	id 1x9a7g-00000009wIe-3VKb
+	for linux-rockchip@lists.infradead.org;
+	Thu, 24 Sep 2026 03:27:50 +0000
+Received: from [172.16.12.48] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4ef5fe4e7;
+	Thu, 24 Sep 2026 11:27:44 +0800 (GMT+08:00)
+Message-ID: <c531d929-24a3-4b5b-b329-a11b0191baf9@rock-chips.com>
+Date: Thu, 24 Sep 2026 11:27:44 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RSEND] drm/bridge: analogix_dp: use
- devm_phy_optional_get() for the DP PHY
-To: Jun Yan <jerrysteve1101@gmail.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20260924020417.868588-1-jerrysteve1101@gmail.com>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20260924020417.868588-1-jerrysteve1101@gmail.com>
-X-HM-Tid: 0aa0d17137df03a8kunma7ac608b17ff1d
+Cc: shawn.lin@rock-chips.com, Diederik de Haas <diederik@cknow-tech.com>,
+ linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
+ Manivannan Sadhasivam <mani@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>
+Subject: Re: [PATCH v3 0/3] Small INTx fixes for Rockchip's dwc based PCIe
+ controller driver
+To: Niklas Cassel <cassel@kernel.org>
+References: <1790044622-164744-1-git-send-email-shawn.lin@rock-chips.com>
+ <DLMKWV1AH8TZ.2R3JK2NPM4KZB@cknow-tech.com>
+ <08329b2b-449a-4036-8e82-ad67d0d037ee@rock-chips.com>
+ <arPvcQIu46N_gTmB@ryzen>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <arPvcQIu46N_gTmB@ryzen>
+X-HM-Tid: 0aa0d174730803a4kunmabe36c1150bb7c
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaSE0eVh4YTE5DGEpITU9DQ1YVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCQh1NVhkYTUNNHRpJQ0tJQlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUJCSU
+	5LVUpLS1VKQktCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=S7TGv+sarLalZd+G1aldyflaBCPFJ/ccsGyJ1o7TbseyJqzgBAmed4IpDZ8RkxRwit1P2Tcveh1nWdsQO5Do+H0YIVY3p5ZFYQIm8HVHJoek7D3BXK8RLRXX/OHgp0FmwCe/Suw5h1IgqztLmiKoMNCcsXU5e5Tj/9l3hEGOI4c=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=GnL12Vnum1RDeStFlpQsv96wIifa5ytBlttslMHCaew=;
+	b=SKP7ccLQWc33EiBC8F8/NJaKmN3/XEbN5/J3rG4yrcrHfH2lmAhzYVil6h74oaLY2ExwCJn8oTT3WizjF+Y01eA19ydHQnIwIOPt5RfF9iW6a5PouEn9Z1DRXqCKhKm4/4Ytst4X0IhW+u50Qk1tJrgIHMtFqP+5HpAnBtpn6+A=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=v+qqOE+xh9kXPgV1iezB4P8lSaYSSVqLNw4Hghtva1E=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_202429_539957_7CC5FC0F 
-X-CRM114-Status: GOOD (  20.31  )
+X-CRM114-CacheID: sfid-20260923_202749_090409_916DC535 
+X-CRM114-Status: GOOD (  28.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,80 +70,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jun,
-
-On 9/24/2026 10:04 AM, Jun Yan wrote:
-> The DP PHY is optional: the Rockchip RK3399 eDP controller (used as the
-> internal eDP port) has no separate PHY device and relies on its built-in
-> PHY, which is programmed directly through the GRF registers, so its DT
-> node carries no "phys"/"phy-names" property.
-> 
-> Requesting the PHY with devm_phy_get() therefore returns -ENODEV (or
-> -ENOSYS when CONFIG_GENERIC_PHY is disabled) and the driver logs a
-> misleading "no DP phy configured" error at probe time before falling back
-> to a NULL phy.
-> 
-> Use devm_phy_optional_get() instead, which returns NULL when the PHY is
-> absent and otherwise behaves identically, and drop the manual -ENODEV/
-> -ENOSYS handling. This also removes the spurious error message.
-> 
-> Assisted-by: Claude:deepseek-v4-flash
-> Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
-> ---
->   .../gpu/drm/bridge/analogix/analogix_dp_core.c | 18 +++---------------
->   1 file changed, 3 insertions(+), 15 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> index 18e76d1e78e1..28eb668d3e3f 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> @@ -1427,21 +1427,9 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
->   	if (ret)
->   		return ERR_PTR(ret);
->   
-> -	dp->phy = devm_phy_get(dp->dev, "dp");
-> -	if (IS_ERR(dp->phy)) {
-> -		dev_err(dp->dev, "no DP phy configured\n");
-> -		ret = PTR_ERR(dp->phy);
-> -		if (ret) {
-> -			/*
-> -			 * phy itself is not enabled, so we can move forward
-> -			 * assigning NULL to phy pointer.
-> -			 */
-> -			if (ret == -ENOSYS || ret == -ENODEV)
-> -				dp->phy = NULL;
-> -			else
-> -				return ERR_PTR(ret);
-> -		}
-> -	}
-
-It should be better to add some comments here:
-
-/*
-  * Exynos5/RK3288/RK3399 use Analogix DP controller built-in PHY,
-  * no separate PHY configuration is needed.
-  */
-
-> +	dp->phy = devm_phy_optional_get(dp->dev, "dp");
-> +	if (IS_ERR(dp->phy))
-> +		return ERR_CAST(dp->phy);
->   
->   	dp->clock = devm_clk_get(&pdev->dev, "dp");
->   	if (IS_ERR(dp->clock)) {
-
-With the comment added:
-Reviewed-by: Damon Ding <damon.ding@rock-chips.com>
-
-Best regards,
-Damon
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTmlrbGFzCgrlnKggMjAyNi8wOS8yMyDmmJ/mnJ/kuIkgMjM6MjUsIE5pa2xhcyBDYXNzZWwg
+5YaZ6YGTOgo+IEhlbGxvIFNoYXduLCBEaWVkZXJpaywKPiAKPiBPbiBXZWQsIFNlcCAyMywgMjAy
+NiBhdCAwNToyMTo1OVBNICswODAwLCBTaGF3biBMaW4gd3JvdGU6Cj4+Pgo+Pj4gSSBidWlsZCBh
+IGtlcm5lbCB3aXRoIHRoaXMgcGF0Y2ggc2V0ICg3LjN+cmM0LTIpIGFuZCBnb3Qgc2V2ZXJhbCB3
+YXJuaW5ncwo+Pj4gbGlrZSB0aGlzLCBzaG9ydGx5IGZvbGxvd2VkIGJ5IGEgc3RhY2sgdHJhY2U6
+Cj4+Cj4+IFNhc2hpa28gYWxyZWFkeSByZXBvcnR0ZWQgc29tZSB2YWxpZCBjb25jZXJuIGFyb3Vu
+ZCB0aGlzLCBhbmQgSSdsbCBwbGFuCj4+IHRvIHJld29yayB0aGlzIHNlcmllcyBhIGJpdCBsYXRl
+ci4gVGhhbmtzIGZvciByZXBvcnRpbmcgdGhpcy4KPiAKPiBKdXN0IHRoaW5raW5nIG91dCBsb3Vk
+Ogo+IAo+IFBhdGNoIDEvMyBpbiB0aGlzIHNlcmllcyBmaXhlcyBhIHJlZ3Jlc3Npb24sIHNvIGl0
+IHNob3VsZCBiZSBwaWNrZWQgdXAgYXMKPiBzb29uIGFzIHBvc3NpYmxlLgo+IAoKVGhhbmsgeW91
+IGZvciB5b3VyIGRldGFpbGVkIGFuYWx5c2lzIGFuZCB2YWx1YWJsZSBzdWdnZXN0aW9ucy4KCk15
+IG9yaWdpbmFsIGludGVudGlvbiB3YXMgdG8gcHJvdmlkZSBhIG1pbmltYWwgZml4IGZvciB0aGUg
+cmVncmVzc2lvbiAKaW50cm9kdWNlZCBkdXJpbmcgdGhlIG1lcmdlIHdpbmRvdy4gSG93ZXZlciwg
+YWZ0ZXIgU2FzaGlrbydzIHJldmlldywgCnNvbWUgZXhpc3RpbmcgcHJvYmxlbXMgKGV2ZW4gaWYg
+b25seSB0aGVvcmV0aWNhbCkgd2VyZSBwb2ludGVkIG91dCwgc28gCnRoZSBzZXJpZXMgZ3JldyBp
+bnRvIHRocmVlIHBhdGNoZXMuCgpJIGFncmVlIHdpdGggeW91ciByZWFzb25pbmc6IHBhdGNoIDEg
+Zml4ZXMgYSByZWFsIHJlZ3Jlc3Npb24gYW5kIHNob3VsZCAKYmUgcGlja2VkIHVwIGFzIHNvb24g
+YXMgcG9zc2libGUsIHdoaWxlIHBhdGNoZXMgMiBhbmQgMyBjYW4gYmUgaGFuZGxlZCAKc2VwYXJh
+dGVseS4gR2l2ZW4gdGhhdCB3ZSBhcmUgYXBwcm9hY2hpbmcgLXJjNSBhbmQgSSB3aWxsIGhhdmUg
+dHdvIApjb25zZWN1dGl2ZSBuYXRpb25hbCBob2xpZGF5cyBpbiB0aGUgY29taW5nIHdlZWtzLCBJ
+IG1heSBiZSB1bmFibGUgdG8gCmFjY2VzcyBteSBkZXZlbG9wbWVudCBlcXVpcG1lbnQgZm9yIGFi
+b3V0IHR3byB3ZWVrcy4gVGhlcmVmb3JlLCBJIHBsYW4gCnRvIHJldmlzZSBwYXRjaCAxIGJhc2Vk
+IG9uIHlvdXIgc3VnZ2VzdGlvbiAobW92aW5nIHRoZSBjb2RlIGJlZm9yZSAKZHdfcGNpZV9ob3N0
+X2luaXQoKSkgYW5kIHNlbmQgaXQgb3V0IHByb21wdGx5LgoKPiBQYXRjaCAyLzMgaXMgY29udmVy
+dGluZyB0aGUgcmVzb3VyY2VzIHRvIGJlIGRldmljZSBtYW5hZ2VkLgo+IEhvd2V2ZXIsIGFmdGVy
+IHBhdGNoIDEvMyAoaWYgdGhlIG1vdmVkIGNvZGUgaXMgY2FsbGVkIF9iZWZvcmVfCj4gZHdfcGNp
+ZV9ob3N0X2luaXQoKSkgdGhlIG9ubHkgdGhpbmcgbGVmdCBhZnRlciBkd19wY2llX2hvc3RfaW5p
+dCgpIGlzIHRoZQo+IFBDSUVfQ0xJRU5UX0lOVFJfTUFTS19NSVNDIHdyaXRlLgo+IAo+IEkuZS4g
+dGhlcmUgaXMgbm8gZXJyb3IgcmV0dXJuIHJlbWFpbnMgdGhhdCB3b3VsZCBuZWVkIGEgZHdfcGNp
+ZV9ob3N0X2RlaW5pdCgpLgo+IAo+IFNvIHRoZXJlIGlzIG5vIHN0cmljdCBuZWVkIHRvIGNvbnZl
+cnQgdG8gZGV2bV8oKS4KPiBZb3UgY2FuIGRvIHNvLCBidXQgdGhhdCBzaG91bGQgYmUgaW4gYSBz
+ZXBhcmF0ZSBzZXJpZXMgSU1PLgo+IAo+IAo+IEluIGZhY3QsIERpZWRlcmlrJ3MgbGF0ZXIgd2Fy
+bmluZ3MgYXJlIGEgcmVzdWx0IG9mIFBhdGNoIDIvMyB3aGljaCByZXBsYWNlZAo+IGlycV9kb21h
+aW5fY3JlYXRlX2xpbmVhcigpIHdpdGggZGV2bV9pcnFfZG9tYWluX2luc3RhbnRpYXRlKCk6Cj4g
+Cj4gICAgIGVycm9yOiBod2lycSAweDAgaXMgdG9vIGxhcmdlIGZvciA6cGNpZUBmZTE1MDAwMDps
+ZWdhY3ktaW50ZXJydXB0LWNvbnRyb2xsZXIKPiAgICAgV0FSTklORzoga2VybmVsL2lycS9pcnFk
+b21haW4uYzo2NzYgYXQgaXJxX2RvbWFpbl9hc3NvY2lhdGVfbG9ja2VkKzB4MTE4LzB4MWEwCj4g
+Cj4gCj4gVGhlIGZpeCBzZWVtcyB0byBiZSB0byBhZGQgLmh3aXJxX21heCA9IFBDSV9OVU1fSU5U
+WCwgdG8KPiByb2NrY2hpcF9wY2llX2luaXRfaXJxX2RvbWFpbigpOgo+IAo+IFRoZSBmaXggaXMg
+b25lIGxpbmUgaW4gcm9ja2NoaXBfcGNpZV9pbml0X2lycV9kb21haW4oKSA6Cj4gCQkJCS5zaXpl
+ID0gUENJX05VTV9JTlRYLAo+IAkJCQkuaHdpcnFfbWF4ID0gUENJX05VTV9JTlRYLAo+IAo+IAo+
+IAo+IFBhdGNoIDMvMyBsb29rcyBsaWtlIGEgdGhlb3JldGljYWwgcHJvYmxlbSB0aGF0IFNhc2hp
+a28gZm91bmQuCj4gCj4gSXMgdGhlIHVuZGVybHlpbmcgcHJvYmxlbSByZWFsPyBJdCdzIHBsYXVz
+aWJsZSwgYnV0IG5vYm9keSBoYXMgcmVwcm9kdWNlZCBpdC4KPiBGb3IgaXQgdG8gaGFwcGVuLCB0
+aGUgY29udHJvbGxlcidzIGxlZ2FjeSBJUlEgb3V0cHV0IGhhcyB0byBiZSBhc3NlcnRlZCB3aGls
+ZQo+IGNsb2NrcyBhcmUgZ2F0ZWQuIFR3byB3YXlzIHRoYXQgY291bGQgaGFwcGVuOgo+IAo+IC0g
+VGhlIG91dHB1dCB3YXMgaGlnaCB3aGVuIGNsa19idWxrX2Rpc2FibGVfdW5wcmVwYXJlKCkgZnJv
+emUgdGhlIGxvZ2ljLgo+IC0gQSBkZXZpY2Ugd2FzIHN0aWxsIGFzc2VydGluZyBJTlR4IHdoZW4g
+YW4gQUVSLSBvciBzeXNmcy10cmlnZ2VyZWQgcmVzZXQKPiAgICBzdG9wcGVkIHRoZSBsaW5rLgo+
+IAo+IFBhdGNoIDMvMyBpcyBub3QgZW5vdWdoIHRob3VnaDoKPiAKPiBkaXNhYmxlX2lycSgpIG5l
+dmVyIG1hc2tzIHRoaXMgY2hhaW5lZCBJUlEgaW4gaGFyZHdhcmUsIHNvCj4gcm9ja2NoaXBfcGNp
+ZV9pbnR4X2hhbmRsZXIoKSBjYW4gc3RpbGwgcnVuIGFuZCByZWFkIHRoZSB1bmNsb2NrZWQgQVBC
+Lgo+IAo+IFRoaXMgaXMgdGhlIGtpbmQgb2YgY2FzZSBJUlFfRElTQUJMRV9VTkxBWlkgZXhpc3Rz
+IGZvciwgYWNjb3JkaW5nIHRvIHRoZQo+IGNvbW1lbnQgYWJvdmUgaXJxX2Rpc2FibGUoKS4KPiAK
+PiBNaW5pbWFsIGFtZW5kIG9mIHBhdGNoIDMvMyBhcyBpdCBjdXJyZW50bHkgbG9va3M6Cj4gCj4g
+dHVybiBvZmYgbGF6eSBkaXNhYmxlIGZvciB0aGlzIGxpbmUgd2hlbiB0aGUgY2hhaW5lZCBoYW5k
+bGVyIGlzIGluc3RhbGxlZDoKPiAJaXJxX3NldF9zdGF0dXNfZmxhZ3Mocm9ja2NoaXAtPmludHhf
+aXJxLCBJUlFfRElTQUJMRV9VTkxBWlkpOwo+IAlpcnFfc2V0X2NoYWluZWRfaGFuZGxlcl9hbmRf
+ZGF0YShyb2NrY2hpcC0+aW50eF9pcnEsCj4gCQkJCQkgcm9ja2NoaXBfcGNpZV9pbnR4X2hhbmRs
+ZXIsIHJvY2tjaGlwKTsKPiAKPiBTdWNoIHRoYXQgaXJxX2Rpc2FibGUoKSBtYXNrcyB0aGUgY2hh
+aW5lZCBJUlEuCj4gCj4gRG8gd2Ugd2FudCBwYXRjaCAzLzM/IFByb2JhYmx5Li4gYnV0IHRoaXMg
+cmFjZSBzZWVtcyB2ZXJ5IHNtYWxsLi4uCj4gcHJvYmFibHkgbW9zdCBpbXBvcmVudCB0byBnZXQg
+cGF0Y2ggMSAod2l0aCB0aGUgY29kZSBtb3ZlIF9iZWZvcmVfCj4gZHdfcGNpZV9ob3N0X2luaXQo
+KSkgYWNjZXB0ZWQgQVNBUCwgYXMgaXQgY3VycmVudGx5IGlzIGNhdXNpbmcgcHJvYmxlbXMKPiBm
+b3IgRGllZGVyaWsuCj4gCj4gCj4gS2luZCByZWdhcmRzLAo+IE5pa2xhcwo+IAoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
