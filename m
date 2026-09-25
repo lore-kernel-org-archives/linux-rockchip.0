@@ -4,89 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEF8FC98325
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 16:26:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B78B5C98321
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 16:33:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
+	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7MD/YGbECthAKVyi5+GeqWRYaW3mAAlavyJhxWthiuo=; b=UEsBFQyi+izxkT
-	PVwZcmWypLQkpS8GoHRVL43UrhRCZ3QSnyG/Q/pcs1n2SIlSr4EJSvcxuTepurnA8wYJy01OCbz9B
-	rOj8ueK3++XWQc5jWKsijb5CxlgiSnn5LM2qo2EoPJPrPEGs6aEgbnPgz1BztHN5g+nRSltWxjSkA
-	+n9vlXJ1pDKI9qJtHQjqkNuDJrpTJRfNRrjLaQIb88ZAktMhVTBsTSj31HX9AVqxJPLz/ehszzTRu
-	G8d/Zka8TKX7FyGfKYtivBuXhIt4kkpq9Vsf6TGmf7FNwTWbA1lj7pqJGMeqzaRLuHkkH+DHY9kNi
-	1hRhJ/kWpJWIwAhWSprw==;
+	List-Owner; bh=tmFCgJXwe4041T1e5+dtTjvwpsUnQnQP49KuPmU7QWI=; b=M0xZ9F8IS41nL1
+	tVdLhEW4tcWSFCpaf2yUZBkDlMwQ9VKhtqWAft4rW2R6CCa+dyT3AwWJRHlccOjWwLxw64ljOe1/9
+	eV14k36aGP6RBEpK8YYCC2URCPjYe0jtAH0BkCLTHqJYduaG+baeujQIy2v7m/WgvmVKIBASbPBRM
+	5l2iqn459fB1YHYlw5rcfpn1RNntkSTnSW0+xLkQVUNz9sSC+F1JWaF8g2ORRjgRf0a+NxO9IKGHk
+	wFuDM6LVHDmhsdTrebp9c1x7w71U7+ExQf4xKp/CIUtSSDyRMDNRVQ9AR3ZmuabYLA6ECcRGxlkPf
+	3q8mbfc5ov4wAbEXADSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA8kE-0000000DvY3-3YyN;
-	Fri, 25 Sep 2026 16:25:54 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xA8ro-0000000DwaU-456q;
+	Fri, 25 Sep 2026 16:33:44 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA8kD-0000000DvXQ-0hwi
-	for linux-rockchip@lists.infradead.org;
-	Fri, 25 Sep 2026 16:25:53 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E788E43FE7
-	for <linux-rockchip@lists.infradead.org>; Fri, 25 Sep 2026 16:25:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFAC21F00893
-	for <linux-rockchip@lists.infradead.org>; Fri, 25 Sep 2026 16:25:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790353552;
-	bh=6fYDLPuw7TdEq9beCl8lZHCEAKip/STw7RgtlWkrkg8=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=SkZTyo4xxfFfIHkKIcVzKt/r6NVyGCRHYPlxBuj/CfdOc5/UiPnHhsNeysafJ83uT
-	 PrsApt20TbtzJyRpj/ArQV+ysPRtw70TjqJbVdGUsvZcqDtlWD9Kq6uCr9e2hR5TcQ
-	 WqHkFq31PmtukKbdE6y/W8GS9/XSR4o73yuajz9jGmCx6GdhINz2kzewMKYZle40Rz
-	 Jc4eglh/tm38aa+rDhaE+rYk23PpYcf8o3TBVaTamJ/idDzDGvcrFiD2suq/GxYFWK
-	 zgFkLbpLOozrM5LhUI306UQ1mmZ30ZjqiBsz8Sk4d6Pq2YHLUgL3h7x5LiWU8/PFE8
-	 PJ7V94nNq5nFA==
-Received: by mail-lf2-f12.google.com with SMTP id 2adb3069b0e04-5b8eb39a8edso580408e87.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 25 Sep 2026 09:25:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvBy+GyN32PzOEc3MTejPuNzKCKlYXJ04dH+qM3Iwv3hsOdppq8MADjPGm4OiVWIquuwqSWLrUh6TKZ7TsReACQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++nEGtqqJ/Hkz5isdlpWRkIT8ITadjIAqhCp7JqZr/ju4Pm22Xgq
-	B7DX4nNm7k8HJ+OQp4xwj2GIf1UBLpDMdZQyzhutpXbp+8xcyxfzF330rAUPZVm+RkC1q9jF9wY
-	T+ITs3qwcENvAEX0/uMXKTQu5Ik7u4t4=
-X-Received: by 2002:a05:6512:1344:b0:5b6:1a7c:59db with SMTP id
- 2adb3069b0e04-5b8df0d22f7mr2083445e87.53.1790353550897; Fri, 25 Sep 2026
- 09:25:50 -0700 (PDT)
-MIME-Version: 1.0
+	id 1xA8rl-0000000DwZD-0hM4;
+	Fri, 25 Sep 2026 16:33:43 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 501C94E4106E;
+	Fri, 25 Sep 2026 16:33:36 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id EE3D46073B;
+	Fri, 25 Sep 2026 16:33:35 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A19C0102F1E2A;
+	Fri, 25 Sep 2026 18:33:16 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1790354012; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=foA8UbomajTa22DkRxj3005Wjy2ttgaDybzSQGdZd1s=;
+	b=UVIlKBXcttrLLrKy6BGsauS7t/MyVySVo242G5oaPV7ZhSacbtUL9/V/bjZW7WNZtfq1nR
+	+p0xFsBSa6zjnsGOeaC4k55ZqS4p+L8CxFJ1kj9MDub7xt9b3MNbX/WBAAq8ZeIMvJrNJN
+	SfRoXd/ROpQ7w178tshiDhesA0DA7g37XVn2x5dwzGwQywmZcqUx40vWCBnfSSsYwE+JWR
+	RXubplVcLtikf8ywNM5oq/ITzF96yQOLn6ut5IGpZZm8xsnwWbfhqacoN8hxaeuPcZ74XL
+	FwQynJsoxdHzXMb8CFGKszltbAs2WVNKelNcVq7xoiwSgsz1TAy9wZGUtAtoEQ==
+Mime-Version: 1.0
+Date: Fri, 25 Sep 2026 18:33:15 +0200
+Message-Id: <DLOJIV124RG7.27SOPEOHBTA7W@bootlin.com>
+Subject: Re: [PATCH v3 12/19] drm/mcde: dsi: don't create a panel_bridge
+Cc: "Luca Ceresoli" <luca.ceresoli@bootlin.com>, "Andrzej Hajda"
+ <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
+ "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
+ <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
+ "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Thomas Zimmermann"
+ <tzimmermann@suse.de>, "David Airlie" <airlied@gmail.com>, "Simona Vetter"
+ <simona@ffwll.ch>, "Jessica Zhang" <jesszhan0024@gmail.com>, "Laurentiu
+ Palcu" <laurentiu.palcu@oss.nxp.com>, "Lucas Stach"
+ <l.stach@pengutronix.de>, "Frank Li" <Frank.Li@nxp.com>, "Sascha Hauer"
+ <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
+ <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>, "Paul
+ Cercueil" <paul@crapouillou.net>, "Paul Kocialkowski" <paulk@sys-base.io>,
+ "Inki Dae" <inki.dae@samsung.com>, "Jagan Teki"
+ <jagan@amarulasolutions.com>, "Marek Szyprowski"
+ <m.szyprowski@samsung.com>, "Sean Paul" <sean@poorly.run>, "Jonathan
+ Corbet" <corbet@lwn.net>, "Shuah Khan" <skhan@linuxfoundation.org>, "Randy
+ Dunlap" <rdunlap@infradead.org>, "Albert Esteve" <aesteve@redhat.com>,
+ "Anusha Srivatsa" <asrivats@redhat.com>, "Dmitry Baryshkov"
+ <dmitry.baryshkov@oss.qualcomm.com>, "Hui Pu" <Hui.Pu@gehealthcare.com>,
+ "Ian Ray" <ian.ray@gehealthcare.com>, "Thomas Petazzoni"
+ <thomas.petazzoni@bootlin.com>, <dri-devel@lists.freedesktop.org>,
+ <linux-kernel@vger.kernel.org>, <imx@lists.linux.dev>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mips@vger.kernel.org>,
+ <linux-rockchip@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <asahi@lists.linux.dev>,
+ <linux-arm-msm@vger.kernel.org>, <freedreno@lists.freedesktop.org>,
+ <linux-tegra@vger.kernel.org>, <linux-doc@vger.kernel.org>,
+ <linux-samsung-soc@vger.kernel.org>
+To: "Linus Walleij" <linusw@kernel.org>, "Maxime Ripard"
+ <mripard@kernel.org>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+X-Mailer: aerc 0.22.0
 References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
  <20260916-drm-bridge-every-panel-v3-12-83afb4f1a707@bootlin.com>
  <arInho2bsfJiCgjV@houat> <DLNCQEG62F5N.O98WAO4U2FJO@bootlin.com>
- <CAD++jLkk-a0MrQUiaDD8OoDDoYVwBwSjFTj5ZBy=Xo7MS4+01g@mail.gmail.com> <arTlpd-KAsVpj3UH@houat>
-In-Reply-To: <arTlpd-KAsVpj3UH@houat>
-From: Linus Walleij <linusw@kernel.org>
-Date: Fri, 25 Sep 2026 18:25:35 +0200
-X-Gmail-Original-Message-ID: <CAD++jLmktDoqn2EbXsNnyGRudo-q2NCxUf+9ZjeU+WrY4CBMWw@mail.gmail.com>
-X-Gm-Features: AclHuK_fq2ZWJ1A-qMmc6hpV7kHeTfdnkXq9HUzMYWRHIkAmDRIf8rPpfyjUW1o
-Message-ID: <CAD++jLmktDoqn2EbXsNnyGRudo-q2NCxUf+9ZjeU+WrY4CBMWw@mail.gmail.com>
-Subject: Re: [PATCH v3 12/19] drm/mcde: dsi: don't create a panel_bridge
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Jessica Zhang <jesszhan0024@gmail.com>, Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
-	Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Paul Kocialkowski <paulk@sys-base.io>, Inki Dae <inki.dae@samsung.com>, 
-	Jagan Teki <jagan@amarulasolutions.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
-	Sean Paul <sean@poorly.run>, Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
-	Randy Dunlap <rdunlap@infradead.org>, Albert Esteve <aesteve@redhat.com>, 
-	Anusha Srivatsa <asrivats@redhat.com>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
-	Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>, 
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
-	freedreno@lists.freedesktop.org, linux-tegra@vger.kernel.org, 
-	linux-doc@vger.kernel.org, linux-samsung-soc@vger.kernel.org
+ <CAD++jLkk-a0MrQUiaDD8OoDDoYVwBwSjFTj5ZBy=Xo7MS4+01g@mail.gmail.com>
+ <arTlpd-KAsVpj3UH@houat>
+ <CAD++jLmktDoqn2EbXsNnyGRudo-q2NCxUf+9ZjeU+WrY4CBMWw@mail.gmail.com>
+In-Reply-To: <CAD++jLmktDoqn2EbXsNnyGRudo-q2NCxUf+9ZjeU+WrY4CBMWw@mail.gmail.com>
+X-Last-TLS-Session-Version: TLSv1.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260925_093341_361299_3750FAEE 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,27 +107,21 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBTZXAgMjQsIDIwMjYgYXQgMTA6NTfigK9BTSBNYXhpbWUgUmlwYXJkIDxtcmlwYXJk
-QGtlcm5lbC5vcmc+IHdyb3RlOgo+IE9uIFRodSwgU2VwIDI0LCAyMDI2IGF0IDA5OjUxOjUzQU0g
-KzAyMDAsIExpbnVzIFdhbGxlaWogd3JvdGU6Cgo+ID4gPiBMaW51cywgdW5sZXNzIHlvdSBoYXZl
-IG1vcmUgaW5mbyBJJ20gZ29pbmcgdG8gYXBwbHkgdGhlIHBhdGNoIGFzCj4gPiA+IGlzLiBSZW1v
-dmluZyB0aGlzIHNwZWNpYWwgY2FzZSB3b3VsZCBiZSB3ZWxjb21lIGFzIGEgbGF0ZXIgcGF0Y2gu
-Cj4gPgo+ID4gSSdkIHNheSBnbyBhaGVhZCBhcy1pcy4KPgo+IEknbSBmaW5lIHdpdGggdGhhdCwg
-YnV0IEkgcmVhbGx5IHdhbnQgdGhpcyByZW1vdmVkIGF0IHNvbWUgcG9pbnQuCgpJZiBMdWNhIHdh
-bm5hIGZpeCB0aGlzIHVwIChkcm9wIHRoaXMgcGF0aCkgdGhhdCdzIGZpbmUgYnkgbWUsCmVsc2Ug
-c2VuZCBhIHBhdGNoIGltbWVkaWF0ZWx5IGFmdGVyIHRoaXMgaXMgYXBwbGllZCBhbmQgSSdsbApB
-Q0sgaXQuCgo+ID4gSSBkbyBoYXZlIHRoZSBpZGVhIHRvIGNvZGUgdXAgYW5kIHN1Ym1pdCB0aGUg
-QVY4MTAwIGVuY29kZXIKPiA+IGFuZCBJIGhhdmUgdGhlIGhhcmR3YXJlIHRvIHRlc3QgaXQsIGJ1
-dCBldmVyeSBvdGhlciB1c2VyIHNob3VsZAo+ID4gYmUgdXNpbmcgcGFuZWxzIGRpcmVjdGx5LCBh
-bmQgSSB3b3VsZCBiZSB0aGUgb25seSBub24tcGFuZWwKPiA+IHVzZXIgc28gSSBjYW4gZGVhbCB3
-aXRoIGl0IHdoZW4gaXQgY29tZXMgdXAuCj4KPiBJdCB3b24ndCBjaGFuZ2UgYSB0aGluZy4gQWxs
-IGV4aXN0aW5nICJwYW5lbCIgdXNlcnMgd2lsbCBiZSBicmlkZ2UgdXNlcnMKPiBhZnRlciB0aGlz
-IHBhdGNoIGlzIG1lcmdlZC4gU28gd2hldGhlciB5b3Ugd2FudCB0byBlbmFibGUgYSBicmlkZ2Ug
-b3IKPiBub3Qgc2hvdWxkbid0IG1hdHRlciwgdGhlIG9ubHkgdGhpbmcgdGhhdCBkb2VzIGlzIHdo
-ZXRoZXIgdGhlIGV4aXN0aW5nCj4gdXNlcnMgd291bGQgc3RpbGwgd29yay4KCkkga25vdywgYWxs
-IGl0IGRvZXMgaXMgY3JlYXRlIGEgc25hZyB0aGF0IEkgd291bGQgcnVuIGludG8gbXlzZWxmLgoK
-QnV0IGl0J3Mgbm90IGdvbm5hIGJlIGEgcHJvYmxlbSBmb3IgYW55b25lIGVsc2UsIHRoYXQncyBh
-bGwgSSBtZWFudC4KCllvdXJzLApMaW51cyBXYWxsZWlqCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+SGVsbG8gTGludXMsCgpPbiBGcmkgU2VwIDI1LCAyMDI2IGF0IDY6MjUgUE0gQ0VTVCwgTGludXMg
+V2FsbGVpaiB3cm90ZToKPiBPbiBUaHUsIFNlcCAyNCwgMjAyNiBhdCAxMDo1N+KAr0FNIE1heGlt
+ZSBSaXBhcmQgPG1yaXBhcmRAa2VybmVsLm9yZz4gd3JvdGU6Cj4+IE9uIFRodSwgU2VwIDI0LCAy
+MDI2IGF0IDA5OjUxOjUzQU0gKzAyMDAsIExpbnVzIFdhbGxlaWogd3JvdGU6Cj4KPj4gPiA+IExp
+bnVzLCB1bmxlc3MgeW91IGhhdmUgbW9yZSBpbmZvIEknbSBnb2luZyB0byBhcHBseSB0aGUgcGF0
+Y2ggYXMKPj4gPiA+IGlzLiBSZW1vdmluZyB0aGlzIHNwZWNpYWwgY2FzZSB3b3VsZCBiZSB3ZWxj
+b21lIGFzIGEgbGF0ZXIgcGF0Y2guCj4+ID4KPj4gPiBJJ2Qgc2F5IGdvIGFoZWFkIGFzLWlzLgo+
+Pgo+PiBJJ20gZmluZSB3aXRoIHRoYXQsIGJ1dCBJIHJlYWxseSB3YW50IHRoaXMgcmVtb3ZlZCBh
+dCBzb21lIHBvaW50Lgo+Cj4gSWYgTHVjYSB3YW5uYSBmaXggdGhpcyB1cCAoZHJvcCB0aGlzIHBh
+dGgpIHRoYXQncyBmaW5lIGJ5IG1lLAo+IGVsc2Ugc2VuZCBhIHBhdGNoIGltbWVkaWF0ZWx5IGFm
+dGVyIHRoaXMgaXMgYXBwbGllZCBhbmQgSSdsbAo+IEFDSyBpdC4KClRvIGF2b2lkIHBvc3Rwb25p
+bmcgdGhpcyBzZXJpZXMgSSBwbGFuIHRvIGFwcGx5IGFzIGlzIG9uIE1vbmRheS4gSSBjYW4gc2Vu
+ZAphbm90aGVyIHBhdGNoIGxhdGVyIHRvIHJlbW92ZSB0aGUgIXBhbmVsIGNhc2UuCgpUaGFua3Mg
+Zm9yIHRoZSBmZWVkYmFjayEKCkx1Y2EKCi0tCkx1Y2EgQ2VyZXNvbGksIEJvb3RsaW4KRW1iZWRk
+ZWQgTGludXggYW5kIEtlcm5lbCBlbmdpbmVlcmluZwpodHRwczovL2Jvb3RsaW4uY29tCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
