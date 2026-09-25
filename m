@@ -4,108 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED721C9830D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 08:03:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01290C98324
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 08:52:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n60idyfHp4UjYuo2NwuKXsRu3UVZ9Yw7QzXtYWgCGog=; b=iWB2ZORvhhlpXB
-	co3RsY4YmZ2XpRpGsBnaWd3r4x5TOx1TAN9SCdWOEDIJ4Pmwv2XFOUq3mNm7zC1SmIxgCpD+1JOWJ
-	DHql9ojVzZxd2V1erxc+pl9PL++Oc29p8gELWCT9dfRUCxOPbw9M7ikQPb/4cirmQDu/0/Z+Ocn49
-	AaOFkQKXLDbpHWC9MYINuT3YsygW0E1GPI4lmg1W6V1t3cj9OewmURBxb3180U4noH20bDVM/Y+HC
-	VtjUy0XzPa3snVyxnks7S2yYhNzTkr1bcGckDewBCurOsfMD/UrGpfuiY2ek5atwDcTh19RetyOTy
-	KUGGs0YoxUVRaAlmS2yA==;
+	List-Owner; bh=pkLAuW6XttR+loovrIc/C5xF6+ogJBiapfxMicRHVGE=; b=1BtnI3/GTes4Q/
+	S5uHYRQH6YXugzS84BnmJWo3NOxtlNTFUR2UAlLl4EBEDp+3xmsJ4L5mVP79K5cFJLD7RAD4b0Vqv
+	gWS0u3eVlSHKHftIYaU3xV9ASrVjqj5J/9yiXAOHNAX5oDx371eNkvU/73WEOx24XUFPHsc+Npk9i
+	1Pnx6FkSTqJoBy399jvWaLnnRqYHQnknF+IxRHkM7SRJqi6FHbQlw9NOAd4zICdb3Kud4kJzYUkja
+	wF7V+/OrPUGxxkubjj+FoXg5wv59du998X0ZtF0+wO+XMk0p5sGJq5uStvehZvUaLc4DR0rT5VeRm
+	mYtRI0pFuhrfmSswe+mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA0tr-0000000CsfU-1Ret;
-	Fri, 25 Sep 2026 08:03:19 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xA1f5-0000000CwMA-4BqO;
+	Fri, 25 Sep 2026 08:52:08 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA0tj-0000000CscT-39as
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 25 Sep 2026 08:03:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=U46+/TQQC41hUZlX1Jqyf2quyZyNvdapr8jATlMb4/s=; b=Msiz3PxIvkNqz519WK+ChirucO
-	SaybGfc5l255tyLxFfujxyILLIXP68LvqKTSOO744gSWQtp1CVqmasL5x7F8C2q+gveI1TH5yd6xz
-	GLcH40jxm+g9Z3Kwi3bV9mW2nUR0k52zyUXOYeKlg/Tw9fVxWSDOZWusidUcBniPTLfSCIhwmu9o0
-	6m6AG0Y4Utpx+7729Mp4Qn+dslKPjZpQ1CF4n4R2+N7H1fmQ6i2S208K9KugpgZJu6kt0OL2f912B
-	mjEeGZRHJd1dMRW9FIzN6B39inXMvrFxOnAIYqh+Ivzx57tRwTh6O1MAH1KqsejXmPleRCDv/LwEK
-	jZNZ3j/g==;
-Received: from mail-ej2-x0f.google.com ([2a00:1450:4864:34::f])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xA0tg-0000000Giba-1NU3
-	for linux-rockchip@lists.infradead.org;
-	Fri, 25 Sep 2026 08:03:10 +0000
-Received: by mail-ej2-x0f.google.com with SMTP id a640c23a62f3a-c2af3a4f193so8764066b.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 25 Sep 2026 01:03:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=wermuth-pl.20251104.gappssmtp.com; s=20251104; t=1790323386; x=1790928186; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=U46+/TQQC41hUZlX1Jqyf2quyZyNvdapr8jATlMb4/s=;
-        b=uLK5dmeEnhBlDvqohCPl/YT5ajsqYLIAzHdHFzvPsvgHwS1kljnsnYUA5gQbKoZtGK
-         UsMHIcZu/VNxz3VqfP5VL61BKQKPuQXSsQK4weknfV5SNUv2yh9iMmaXPpw1fy1JTW2a
-         3xkkvQPCeDQDlWiKJmle30TjmB1HScgHLv0HygNyeS6n9OJHO1ipnwDTGRzfhF03eWvw
-         wE53KlGY/rosP79cp3+DNda5zJQFshGK4cBzQK9MtwPNLAIb37K3PgmJSyY6hSdn7pUk
-         cVL2JkjJs2jU9bnoXGbu7rIrVPVUSo4kEWLS1IXvbRycSgTNNZoJraq4jMpxU/mb7ona
-         nIsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790323386; x=1790928186;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=U46+/TQQC41hUZlX1Jqyf2quyZyNvdapr8jATlMb4/s=;
-        b=sWkSEeqPufEMEAIYeywcLSwmNmkP2Cm7AJQMkOlctXKWNOKRLytwIbcvevDsZMtLSv
-         3WPUDL+x5j6hAmOqMjrlQzi3WsrOTVFoFfHtiG9xsO5ktavv2h6dh8V7dFZ468YnhMuo
-         bfBF6hvUwm+IbNs+pAsZWk5zyfXwlYm+n2YD+6rgrmZNdlz7Sbq+Dz1+1EeT5AWvahzj
-         PFOtJBOXCg+bmSiCPxy6DcShL4ZuUlbQ8QQtD/CXLHGdyfS8DPaW+xCoBIxj5wFq4uId
-         SGD+nAVWjLd1/m34HJ+Jjziukk31NIEOBmHEUKg2Er2fSXTEXfqUAxyv0fL2ZS8/0z7P
-         z7ag==
-X-Forwarded-Encrypted: i=1; AKwUvBwGFbLkT9oguxvXZALSGCNMmMTPvvzHCs57tEdkVY4Ki+n8SmMSJM8fsQ0eMsg0cxDCguDPjUgBI6NqyJtJVQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++nkd4jtptpqkcUAjA+lbQHSErTQsQxpmcPdI0UNy9pbWQnKWuDu
-	to7Py6dhERZqWw/zcuOY2Q4BQit/oMZVT8oifblPZc4D9t777GRirSFeqm7N4c3matc=
-X-Gm-Gg: AYBFou3vWu7le5zuFuT60qY5trNjsuU+za13VIUbt1drrTvMTxHH4BRAf+LkJHA+kFn
-	/5POuBnIDW0WY/4SBy/cteclisqQfJ9QEoBdmKxCppti2vWx7llw6/YUSoQtU+wk/Ud0xIwv2ag
-	uGbomQ2nfNBv7ywDr+OsZVN0H0BC6P/UPso1NJ7dW2fVYi8ckNGlYEAQoqMuQcYiGwuzTge86LV
-	dJqzyOxutueWhXb7wk33wloePvB/756rnRIfJxZHCwiAbSDzxfpfC442ma1796GQBcnPTElqbyU
-	6szEYrjKZbx3eXNNKBDuzfsywTeQte9hprYYqePAFu/iq7unL3+2J1VlZUlyhOstorjdK0YfsB1
-	mkL1sg+bGXU3IeRiLsTW555WaLdms69fIk44Kl8/+z56p+NblmyojR7CfcExb3jQmPRGRhoLR+4
-	veNYxejTDvs8rH8oCKX9/0S/8hxnswVfjGvdiR19UJrDSUjaw0V+QD49R/GLGv1JhLMs9y7fc6f
-	b8/IgVaIMYwywnfa64iy+tA2aGi2/j5oGpZt6fcwkGyF/c=
-X-Received: by 2002:a17:907:c08c:b0:c29:3aef:f2e2 with SMTP id a640c23a62f3a-c2ac25f2abemr418331766b.40.1790323386232;
-        Fri, 25 Sep 2026 01:03:06 -0700 (PDT)
-Received: from janlin-02.home.wermuth.pl (109-206-198-27.host.skynet.net.pl. [109.206.198.27])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c2ae757b9c1sm76976966b.33.2026.09.25.01.03.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Sep 2026 01:03:05 -0700 (PDT)
-From: Adam Wermuth <adam@wermuth.pl>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Jonas Karlman <jonas@kwiboo.se>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1xA1f0-0000000CwHm-1wFo;
+	Fri, 25 Sep 2026 08:52:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1790326318;
+	bh=gAAyuNdQDF4ETHAyne1/X64Yklt1QaBJ5mcW8AeGkoE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=WTLBEUVwode5zVuZsQnq8+DygSlEAFqxiBLy5xCWYv0F35XocViURSS9rxdpS5iv8
+	 PKNpJudbNIIJ4SihAlgEg+wVrkKq20Z9AeZzwSg7m0gDtgKRPzOw7UhVDeNkDnl7Ph
+	 Drt6zcXO26+pLu58L3d5AA7diaIpiILEWpZQfgn3Ye1plH7j9yTcrsk2+x76sRuDtD
+	 TK9bKIsx7BfRr3FtW3BoUjd1CCVEBRglh/xN9fr3bGeA3904WOQgGCXIOIE3oSuhjd
+	 fiBGB716cqyS78d/JbMTbkBfSJ3+TspwiEnl3U0ljjr3AQH9/Mhnj6LnlvPj7VtHBk
+	 B3VY3qFPeWsDw==
+Received: from benjamin-XPS-13-9310 (unknown [100.64.1.43])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0738417E0A27;
+	Fri, 25 Sep 2026 10:51:58 +0200 (CEST)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: nicolas.dufresne@collabora.com,
+	benjamin.gaignard@collabora.com,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	Frank.Li@nxp.com,
+	s.hauer@pengutronix.de,
+	kernel@pengutronix.de,
+	festevam@gmail.com,
+	conor@kernel.org
+Cc: linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Adam Wermuth <adam@wermuth.pl>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: Add WWAN overlay for Radxa ROCK 3B
-Date: Fri, 25 Sep 2026 10:02:58 +0200
-Message-ID: <20260925080258.46489-3-adam@wermuth.pl>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260925080258.46489-1-adam@wermuth.pl>
-References: <20260925080258.46489-1-adam@wermuth.pl>
+	kernel@collabora.com
+Subject: [PATCH v4 1/3] media: verisilicon: Remove deprecated variant
+Date: Fri, 25 Sep 2026 10:51:50 +0200
+Message-ID: <20260925085152.41852-2-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260925085152.41852-1-benjamin.gaignard@collabora.com>
+References: <20260925085152.41852-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260925_090308_669078_2161B9C7 
-X-CRM114-Status: GOOD (  16.18  )
+X-CRM114-CacheID: sfid-20260925_015202_652952_1473229D 
+X-CRM114-Status: GOOD (  15.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,123 +89,187 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The M.2 B-key slot on the ROCK 3B is intended for 4G/5G modules and
-is not always populated. Add a device tree overlay which enables the
-slot when a module is fitted:
+"nxp,imx8mq-vpu" is tagged as deprecated since:
+commit f3116f2e52e6 ("media: dt-bindings: media: nxp, imx8mq-vpu: Split G1 and G2 nodes")
+merged since v5.17-rc1. There is more reference to it since that.
+Remove for driver to clean up the code.
 
- - The USB 2.0 data lines of the slot are routed to USB2_HOST3, served
-   by usb_host1_ehci/ohci through the host port of usb2phy1. The slot
-   has no VBUS, so no supply is attached to the PHY port.
- - GPIO0_C6 (4G_PWREN_H) enables the 3.3V supply of the slot, which is
-   generated from vcc5v0_sys by a dedicated buck converter.
- - GPIO0_D6 (4G_RESET) drives RESET# and GPIO1_B0 (4G_DISABLE) drives
-   W_DISABLE1# of the slot. Both are hogged in their inactive state.
-
-Tested with a SIMCom SIM7600G-H module.
-
-Signed-off-by: Adam Wermuth <adam@wermuth.pl>
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/Makefile         |  5 ++
- .../dts/rockchip/rk3568-rock-3b-wwan.dtso     | 65 +++++++++++++++++++
- 2 files changed, 70 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-rock-3b-wwan.dtso
+changes in v4:
+- rework commit message
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index b677914cd3f1..8a1f24ccaa32 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -165,6 +165,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-radxa-e25.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-roc-pc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3b.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3b-wwan.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
-@@ -300,6 +301,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-qnap-ts433-pcb-12-10.dtb
- rk3568-qnap-ts433-pcb-12-10-dtbs := rk3568-qnap-ts433.dtb \
- 	rk3568-qnap-ts433-pcb-12-10.dtbo
+ .../media/platform/verisilicon/hantro_drv.c   |  10 --
+ .../media/platform/verisilicon/imx8m_vpu_hw.c | 105 ------------------
+ 2 files changed, 115 deletions(-)
+
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index ad71c0402ef3..12c804dcc669 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -725,7 +725,6 @@ static const struct of_device_id of_hantro_match[] = {
+ #endif
+ #ifdef CONFIG_VIDEO_HANTRO_IMX8M
+ 	{ .compatible = "nxp,imx8mm-vpu-g1", .data = &imx8mm_vpu_g1_variant, },
+-	{ .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
+ 	{ .compatible = "nxp,imx8mq-vpu-g1", .data = &imx8mq_vpu_g1_variant },
+ 	{ .compatible = "nxp,imx8mq-vpu-g2", .data = &imx8mq_vpu_g2_variant },
+ #endif
+@@ -1100,15 +1099,6 @@ static int hantro_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
  
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3b-wwan.dtb
-+rk3568-rock-3b-wwan-dtbs := rk3568-rock-3b.dtb \
-+	rk3568-rock-3b-wwan.dtbo
-+
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-vz-2-uhd.dtb
- rk3568-wolfvision-pf5-vz-2-uhd-dtbs := rk3568-wolfvision-pf5.dtb \
- 	rk3568-wolfvision-pf5-display-vz.dtbo \
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b-wwan.dtso b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b-wwan.dtso
-new file mode 100644
-index 000000000000..73a19408d61c
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b-wwan.dtso
-@@ -0,0 +1,65 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Device tree overlay for a WWAN module in the M.2 B-key slot
-+ * of the Radxa ROCK 3B.
-+ */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+
-+&{/} {
-+	vcc3v3_wwan: regulator-3v3-vcc-wwan {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wwan_pwren_h>;
-+		regulator-name = "vcc3v3_wwan";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+};
-+
-+&gpio0 {
-+	wwan-reset-hog {
-+		gpio-hog;
-+		gpios = <RK_PD6 GPIO_ACTIVE_LOW>;
-+		output-low;
-+		line-name = "wwan-reset";
-+	};
-+};
-+
-+&gpio1 {
-+	wwan-disable-hog {
-+		gpio-hog;
-+		gpios = <RK_PB0 GPIO_ACTIVE_LOW>;
-+		output-low;
-+		line-name = "wwan-w-disable";
-+	};
-+};
-+
-+&pinctrl {
-+	wwan {
-+		wwan_pwren_h: wwan-pwren-h {
-+			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
-+
-+&usb2phy1_host {
-+	status = "okay";
-+};
+-	/*
+-	 * Support for nxp,imx8mq-vpu is kept for backwards compatibility
+-	 * but it's deprecated. Please update your DTS file to use
+-	 * nxp,imx8mq-vpu-g1 or nxp,imx8mq-vpu-g2 instead.
+-	 */
+-	if (of_device_is_compatible(pdev->dev.of_node, "nxp,imx8mq-vpu"))
+-		dev_warn(&pdev->dev, "%s compatible is deprecated\n",
+-			 match->compatible);
+-
+ 	INIT_DELAYED_WORK(&vpu->watchdog_work, hantro_watchdog);
+ 
+ 	vpu->clocks = devm_kcalloc(&pdev->dev, vpu->variant->num_clocks,
+diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+index fa4224de4b99..b091d807ae4e 100644
+--- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+@@ -25,55 +25,6 @@
+ #define CTRL_G1_PP_FUSE		0x0c
+ #define CTRL_G2_DEC_FUSE	0x10
+ 
+-static void imx8m_soft_reset(struct hantro_dev *vpu, u32 reset_bits)
+-{
+-	u32 val;
+-
+-	/* Assert */
+-	val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
+-	val &= ~reset_bits;
+-	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
+-
+-	udelay(2);
+-
+-	/* Release */
+-	val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
+-	val |= reset_bits;
+-	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
+-}
+-
+-static void imx8m_clk_enable(struct hantro_dev *vpu, u32 clock_bits)
+-{
+-	u32 val;
+-
+-	val = readl(vpu->ctrl_base + CTRL_CLOCK_ENABLE);
+-	val |= clock_bits;
+-	writel(val, vpu->ctrl_base + CTRL_CLOCK_ENABLE);
+-}
+-
+-static int imx8mq_runtime_resume(struct hantro_dev *vpu)
+-{
+-	int ret;
+-
+-	ret = clk_bulk_prepare_enable(vpu->variant->num_clocks, vpu->clocks);
+-	if (ret) {
+-		dev_err(vpu->dev, "Failed to enable clocks\n");
+-		return ret;
+-	}
+-
+-	imx8m_soft_reset(vpu, RESET_G1 | RESET_G2);
+-	imx8m_clk_enable(vpu, CLOCK_G1 | CLOCK_G2);
+-
+-	/* Set values of the fuse registers */
+-	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_DEC_FUSE);
+-	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_PP_FUSE);
+-	writel(0xffffffff, vpu->ctrl_base + CTRL_G2_DEC_FUSE);
+-
+-	clk_bulk_disable_unprepare(vpu->variant->num_clocks, vpu->clocks);
+-
+-	return 0;
+-}
+-
+ /*
+  * Supported formats.
+  */
+@@ -234,45 +185,10 @@ static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
+ 	},
+ };
+ 
+-static int imx8mq_vpu_hw_init(struct hantro_dev *vpu)
+-{
+-	vpu->ctrl_base = vpu->reg_bases[vpu->variant->num_regs - 1];
+-
+-	return 0;
+-}
+-
+-static void imx8m_vpu_g1_reset(struct hantro_ctx *ctx)
+-{
+-	struct hantro_dev *vpu = ctx->dev;
+-
+-	imx8m_soft_reset(vpu, RESET_G1);
+-}
+-
+ /*
+  * Supported codec ops.
+  */
+ 
+-static const struct hantro_codec_ops imx8mq_vpu_codec_ops[] = {
+-	[HANTRO_MODE_MPEG2_DEC] = {
+-		.run = hantro_g1_mpeg2_dec_run,
+-		.reset = imx8m_vpu_g1_reset,
+-		.init = hantro_mpeg2_dec_init,
+-		.exit = hantro_mpeg2_dec_exit,
+-	},
+-	[HANTRO_MODE_VP8_DEC] = {
+-		.run = hantro_g1_vp8_dec_run,
+-		.reset = imx8m_vpu_g1_reset,
+-		.init = hantro_vp8_dec_init,
+-		.exit = hantro_vp8_dec_exit,
+-	},
+-	[HANTRO_MODE_H264_DEC] = {
+-		.run = hantro_g1_h264_dec_run,
+-		.reset = imx8m_vpu_g1_reset,
+-		.init = hantro_h264_dec_init,
+-		.exit = hantro_h264_dec_exit,
+-	},
+-};
+-
+ static const struct hantro_codec_ops imx8mq_vpu_g1_codec_ops[] = {
+ 	[HANTRO_MODE_MPEG2_DEC] = {
+ 		.run = hantro_g1_mpeg2_dec_run,
+@@ -319,30 +235,9 @@ static const struct hantro_irq imx8mq_g2_irqs[] = {
+ 	{ "g2", hantro_g2_irq },
+ };
+ 
+-static const char * const imx8mq_clk_names[] = { "g1", "g2", "bus" };
+-static const char * const imx8mq_reg_names[] = { "g1", "g2", "ctrl" };
+ static const char * const imx8mq_g1_clk_names[] = { "g1" };
+ static const char * const imx8mq_g2_clk_names[] = { "g2" };
+ 
+-const struct hantro_variant imx8mq_vpu_variant = {
+-	.dec_fmts = imx8m_vpu_dec_fmts,
+-	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_dec_fmts),
+-	.postproc_fmts = imx8m_vpu_postproc_fmts,
+-	.num_postproc_fmts = ARRAY_SIZE(imx8m_vpu_postproc_fmts),
+-	.postproc_ops = &hantro_g1_postproc_ops,
+-	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
+-		 HANTRO_H264_DECODER,
+-	.codec_ops = imx8mq_vpu_codec_ops,
+-	.init = imx8mq_vpu_hw_init,
+-	.runtime_resume = imx8mq_runtime_resume,
+-	.irqs = imx8mq_irqs,
+-	.num_irqs = ARRAY_SIZE(imx8mq_irqs),
+-	.clk_names = imx8mq_clk_names,
+-	.num_clocks = ARRAY_SIZE(imx8mq_clk_names),
+-	.reg_names = imx8mq_reg_names,
+-	.num_regs = ARRAY_SIZE(imx8mq_reg_names)
+-};
+-
+ static const struct of_device_id imx8mq_vpu_shared_resources[] = {
+ 	{ .compatible = "nxp,imx8mq-vpu-g1", },
+ 	{ .compatible = "nxp,imx8mq-vpu-g2", },
 -- 
-2.43.0
+2.53.0
 
 
 _______________________________________________
