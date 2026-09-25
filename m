@@ -4,72 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AF1CC9830E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 13:26:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46EA5C98321
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 13:56:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ec3JxAEp5/SlSHF5vA8VF2phzwpRTUy2pnxU/Rm2Yik=; b=pHaSFAnCX6qocBPwekX1c0b/3n
-	giEK3MtFPcGRKxk4BnbGYiWljppcCoKcm9Xv14xCr86K+TEoS/5nQj1Kjy/+z/Zu7A/+yxLm6Lfhx
-	1NJ0rLBH2r7BI3HLi0f+E/vIcX8PtBk1tJ2qZC51yJ7AsrD+Y0EF7IerkLx2A8bn/aJpY7Bhr+6oX
-	6Aavm+zZ9rMczOje1ZNl4AhmnzSj86Em1GZdj9CYxdeJAqZa2w/OWYVfSDR8gd9u/LsTmVGh53UCK
-	1/zXJEpa4pogc7dpNkxwseiD/36MbEf3/ohjVqmZs11nkrZ4kOFICbZ8OZj3StOsm1oGdYun8xYXD
-	8IjSX5Vw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fj0ZJX1AgK6I3MpQ6d2x8IyHpSGw7PZWg5g4CH1G5AE=; b=UiLLARonNqlI0w
+	DiS8SeR0XVaWfeD7uzz6BYIXhcc54SjEn2p4VDU0tGY5m7W5vu0tEdOx2hQhmVPpkJ2uOncrm3E6l
+	E/CH6eFFnFWe6tA3op5CwccGdzt286su5KMywkWdbSTuSKgJlebvTJiczwz6I9W3iagXGclmaYjTv
+	WiFlV9+FWXLDqIG6iQnTi01vMb1zmQ0Sl+VktjDHgvt9DRxq3Z3GzSkib4/LfRKQzCu9morbD8Syj
+	4rMOrnFNKqCTmCADhi2j3BhLvFlO4iizOhIUMsz1amd95awRS1bVtEDvhAZx5byzHAyzM69XZOMlf
+	c8H71TOcIVGrhFnyUneA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA5wM-0000000DQNH-2Aka;
-	Fri, 25 Sep 2026 13:26:14 +0000
-Received: from sender5-op-o11.zoho.com ([165.173.182.11])
+	id 1xA6Pa-0000000DVHv-0dQN;
+	Fri, 25 Sep 2026 13:56:26 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA5wK-0000000DQMQ-0Dwp;
-	Fri, 25 Sep 2026 13:26:13 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1790342763; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=V5FLorA8Lb3aR+vcL5FBo9HDzvNr64Cf6wlrnB53DORVFlYjiOs35o0mAH9WXbcVJtuCN5+bKVz1vO569f6YLvWjRy7AmXuVr+CBZ9fkfR38T9XJsur6Se7qCODeKZxCyDCzXXmvAMmwIg3m5s8Xg8pRfDp84AwXsDTw/EyFs+Q=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1790342763; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=tbI7BY1/DMfC1o6Nu52xiZ2zV1iIXaUIFyG9Dk4Azbw=; 
-	b=gCWWqz1hZ6/B0eBdHBhvi63kX9mJEe9OrAuvd0w3nkMv4nM8H82ZJ6cWfkNpOomro6me3pa7KVLKdQFIeLo1e+7Q7xYGNCHmHXuIggMPF2xfGWapJdPp3N1L87OKAV8BcYiQf3WWKCc6o+6B3+wHHW5deabV/kZUqykWFxgdgqk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790342763;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=tbI7BY1/DMfC1o6Nu52xiZ2zV1iIXaUIFyG9Dk4Azbw=;
-	b=jUSgJNOb5k/1s87wXZmGFXUJYpjBsFnNjpGjDRb7G8nxlk//Jj7ztMph0CXv85ue
-	Q9dzAnDSlGxTMMPL5iam1h7Gun8hUcotu+7ZAjXsav0wmiS1/g7NyXogVxct6TdkvAU
-	SdP79mNybPZxo3zmdQF9/MJ6Gp1JigCyINqy6IO0=
-Received: by smtp.zohomail.com with SMTPS id 1790342761292221.70362510434052;
-	Fri, 25 Sep 2026 06:26:01 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 4DE3E180809; Fri, 25 Sep 2026 15:25:57 +0200 (CEST)
-Date: Fri, 25 Sep 2026 15:25:57 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Adam Wermuth <adam@wermuth.pl>
-Cc: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Enable USB 2.0 host1 on Radxa
- ROCK 3B
-Message-ID: <arZ0nqBvHDzSbZOE@venus>
-References: <20260924071445.441822-1-adam@wermuth.pl>
- <20260924071445.441822-2-adam@wermuth.pl>
- <e03db2e9-085b-49ff-8d4a-bc112bc4ddd7@kwiboo.se>
- <CABkrwJ6uvjS8bez6j0MZbp2Y+O9RhyU09YOLrUzHaeUEVC=Qkg@mail.gmail.com>
+	id 1xA6PY-0000000DVGX-0vLs;
+	Fri, 25 Sep 2026 13:56:24 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 75B0960238;
+	Fri, 25 Sep 2026 13:56:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5439B1F000FF;
+	Fri, 25 Sep 2026 13:56:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790344583;
+	bh=6gKBCHyZM9t19y0TtvPgLwl6VVr2Q87MiH7gta/2BgQ=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=AdDQhcy7Ypf3G+sugD0QWJnzJHXj3FDWOJRMlcyBgHqF62ruwGlrt0buPNwPfjzHd
+	 FgWuP2jPvQesdyB/mcrkbRlEC7XYtEJrHiPb9luUZPM5JpOOIzm/GFHhyBtUW5BGwJ
+	 0NpW6Mh9ewRDxA989YpPpLZhzcUJiCBFanBzi0UgwR2C4rZdi0MG18cBkUTO0VloXI
+	 +l+VzpnrpNQAmtyvO92FjUCHmwogaEx55JcuBjF0WNxfYR6pTUjLx5LTIAEJNgvWLG
+	 NTtXNzlWj5KqzSxxmXaTMWUvId951qvRYGqqhnk9ExnoK1kl5r6BhJrOtvSuhu7UNh
+	 OTTd0c5Cybjrw==
+From: Brian Masney <masneyb@kernel.org>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Lee Jones <lee@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Emil Renner Berthing <kernel@esmil.dk>, 
+ Hal Feng <hal.feng@starfivetech.com>, 
+ Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
+ Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, 
+ Dominique Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>, 
+ Jerome Brunet <jbrunet+clk@baylibre.com>, 
+ Michal Wilczynski <m.wilczynski@samsung.com>
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ mfd@lists.linux.dev, linux-clk@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-riscv@lists.infradead.org, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, 
+ Maud Spierings <maud_spierings@murena.io>, 
+ Graham Markall <hello@big-grey.co.uk>, 
+ Icenowy Zheng <zhengxingda@iscas.ac.cn>, 
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+ Joshua Peisach <jpeisach@ubuntu.com>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+In-Reply-To: <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
+References: <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
+Subject: Re: (subset) [PATCH v4 00/20] drm: starfive: jh7110: Enable
+ display subsystem
+Message-Id: <179034455473.303481.8868788975078073035.b4-ty@b4>
+Date: Fri, 25 Sep 2026 09:55:54 -0400
 MIME-Version: 1.0
-In-Reply-To: <CABkrwJ6uvjS8bez6j0MZbp2Y+O9RhyU09YOLrUzHaeUEVC=Qkg@mail.gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/290.314.86
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260925_062612_153211_5B211E9B 
-X-CRM114-Status: GOOD (  29.42  )
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=685; i=masneyb@kernel.org;
+ s=20250903; h=from:subject:message-id;
+ bh=lkHMUyvPXXAoNeHQAE8KXfy1Ci9unePRn3tlP5thzt4=;
+ b=owGbwMvMwCW2/dJd9di6A+2Mp9WSGLK21TaVm22OqmC6N2mm46xdO+8svMPwWql/sfn0fzqfm
+ AJFey+c6ShlYRDjYpAVU2RZkmtUEJG6yvbeHU0WmDmsTCBDGLg4BWAi3u2MDLc6BUuj5M+GuQlt
+ /NLKd5nb5Z5cRdyXvIikDJ3S4ohVLowMb2Jv67feVFxk+GBC1Uv3okbpX2qPfn83MPKP41BpuTG
+ bAwA=
+X-Developer-Key: i=masneyb@kernel.org; a=openpgp;
+ fpr=A46D32705865AA3DDEDC2904B7D2DD275D7EC087
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,144 +103,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7530371607395619768=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============7530371607395619768==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ezpnci3ypobxl7j4"
-Content-Disposition: inline
+On Tue, 15 Sep 2026 17:32:08 +0200, Michal Wilczynski wrote:
+> drm: starfive: jh7110: Enable display subsystem
+> 
+> This series enables the display subsystem on the StarFive JH7110.
+> 
+> The dom_vout block holds the display controller (dc8200), the clock
+> generator (voutcrg) and the HDMI IP, all inside PD_VOUT. The HDMI IP is
+> a single register block containing both the controller and the PHY, and
+> it has a circular clock dependency with voutcrg:
+> 
+> [...]
 
+Applied, thanks!
 
---ezpnci3ypobxl7j4
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Enable USB 2.0 host1 on Radxa
- ROCK 3B
-MIME-Version: 1.0
+[14/20] clk: starfive: jh7110-vout: Allow pixel clock rate propagation
+        commit: af384d6e0573b416a7a28e0ab6300d797cae369d
 
-Hi,
+Best regards,
+-- 
+Brian Masney <masneyb@kernel.org>
 
-On Thu, Sep 24, 2026 at 09:03:00PM +0200, Adam Wermuth wrote:
-> On Thu, 24 Sep 2026 6:12 PM, Jonas Karlman wrote:
-> > This and next patch is likely best suited as an dt-overlay.
->=20
-> Thanks for the review. That makes sense, as the B-key slot is not
-> always populated.
->=20
-> For v2 I will move the host1 enablement and the WWAN power, RESET#
-> and W_DISABLE1# handling into a new rk3568-rock-3b-wwan.dtso overlay,
-> and keep only the fan patch in the base DT.
-
-Why would this be better suited as an Overlay? Nothing describes the
-specific card plugged in as it is auto-discovered via USB. The
-overlays are mostly required for things that cannot easily be
-auto-detected. FWIW we don't have M.2 Key M as a DT overlay either.
-
-Something to consider is, that for Key E and Key M there is a proper
-DT binding now: Documentation/devicetree/bindings/connector/pcie-m2-*.yaml
-
-We probably want the same for Key B.
-
-Greetings,
-
--- Sebastian
-
-
->=20
->=20
-> czw., 24 wrz 2026 o 18:12 Jonas Karlman <jonas@kwiboo.se> napisa=C5=82(a):
-> >
-> > Hi Adam,
-> >
-> > On 9/24/2026 9:14 AM, Adam Wermuth wrote:
-> > > The USB 2.0 data lines of the M.2 B-key slot are routed to USB2_HOST3,
-> > > which is served by usb_host1_ehci/ohci through the host port of
-> > > usb2phy1. Enable the controllers and the PHY port so that modules in
-> > > the B-key slot, such as LTE modems, can enumerate.
-> >
-> > This and next patch is likely best suited as an dt-overlay.
-> >
-> > Regards,
-> > Jonas
-> >
-> > >
-> > > Signed-off-by: Adam Wermuth <adam@wermuth.pl>
-> > > ---
-> > >  arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts | 13 +++++++++++++
-> > >  1 file changed, 13 insertions(+)
-> > >
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts b/arch/a=
-rm64/boot/dts/rockchip/rk3568-rock-3b.dts
-> > > index 149a5306bb03..ad9a91c0d0d0 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
-> > > @@ -758,6 +758,14 @@ &usb_host0_xhci {
-> > >       status =3D "okay";
-> > >  };
-> > >
-> > > +&usb_host1_ehci {
-> > > +     status =3D "okay";
-> > > +};
-> > > +
-> > > +&usb_host1_ohci {
-> > > +     status =3D "okay";
-> > > +};
-> > > +
-> > >  &usb_host1_xhci {
-> > >       status =3D "okay";
-> > >  };
-> > > @@ -780,6 +788,11 @@ &usb2phy1 {
-> > >       status =3D "okay";
-> > >  };
-> > >
-> > > +&usb2phy1_host {
-> > > +     phy-supply =3D <&vcc5v0_usb_host>;
-> > > +     status =3D "okay";
-> > > +};
-> > > +
-> > >  &usb2phy1_otg {
-> > >       phy-supply =3D <&vcc5v0_usb_host>;
-> > >       status =3D "okay";
-> >
->=20
-
---ezpnci3ypobxl7j4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmq2dloACgkQ2O7X88g7
-+pr/mg/7B+OoEEnFA754wyjYfRo8dxmBN2hNuzkDTAK9Nt3BsF9Isgc9nHMJ+u05
-nnyo/WzdkZA1PxvQHfCdAvM0GvqiGfjMJGrHSdlY9Oe49aVSDqz9nKiHWg2CWmDu
-zbTryJ8NW+5V/xeDGBHdM6cyMijY163EbOGYjiADvp5s5BRuHAtjyBp7mR1ioIQv
-WvJH80zO5zKZ+HEBrEQb7Ubtu1nutrdi1+dv0gd6+lLwLclsAz02GOzORBC3m4QG
-wm5tKVHKvatK2qNvPvqwOzagDLzRboJRizUK9xpsl0cFo8vUUhTBzyqANTxDr1f/
-ZnlntysqzIlUryj7lFxCUnR3faIMEZ/gNd19z87+JtMnyMpoMry5JSnaU+wcS9aO
-rLdK79wUux7VW3xMH35NWR7Tzh5OYXyizncw5TJ0l6vwlH8qGgS2M3wuisDtrzax
-lAkNhwXKCjokbemj2/JBGX632TZY/ZUHq+4mVQ27+6pjfx13efMiM6+FRfav2pfU
-BqONw6uZkbTi3RURfYMumfftnjczwQtqAd5sYV3cdVg9ufHRgs3yRgfVHbboKYPV
-dfJoj3w/UldTw4TB3VHzBdcQiQ7boCIVjIAJQkhTTil2nT2QqXk1ZATN+RDz3Q3n
-nILT8M3CGNu+7No4ijr1nksfo9Hev19qsbkVU4nORonCCwTvgUA=
-=rQLU
------END PGP SIGNATURE-----
-
---ezpnci3ypobxl7j4--
-
-
---===============7530371607395619768==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7530371607395619768==--
-
