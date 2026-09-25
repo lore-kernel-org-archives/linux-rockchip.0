@@ -4,117 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0381C98321
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 11:46:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1746EC98321
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 12:17:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Miih+YJYC8mmGg8BHpjsE2aAJQx0g0FzIDWTIGR/s28=; b=uCCEetbJavnday
-	ABfeTBNs97WbPmpYdD2fofasQVzDzU3Qy1v+IX2vIyrfBu2BEFUv5jFcfjFpJRhZJKATIncGUG17S
-	qkuHL4RqBm3nJAo1kqx2XjyfLsc7AsRhLvhhVokXre62cgr6R0VmUCGOtYVcoMKTebO7DIoqFvvd5
-	3LRn2PLf2rgQ8AC7NfrCpS0g7QKrLJK8o8UUtMGOVmvBHv8dv43vwei1MQuo4OCG/JbHtsm2nMlei
-	QqLG8ejZrWvf1avFFFZnNcXbJQQkNvIks01bbd1/AW5siBAksqEf+/Fz1OnyeSjZ4mDqMi3i2JN79
-	5Dwc2wdrdZkt3A0ocanQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iCLD1acMV4REk4ERUBKdX6t08g57I4tNPGL9ewE0dKc=; b=D7JOVLMq2gg4vg
+	iydpU3n0NxM8M4hnVKAGWgjCchyr/s1YAuI5ZkhuRfhbJmZNyxVdVBDn9EW4BaUpbWChy4aK5IaJN
+	LK4Ht0UCIf5ShSlpVhIL8k60gtvNfp4c4PfmQE6SVHLElT1omLhELNdet2m5XmNU+Yf3Roif9EsEx
+	gfBpySK4m9hIjPnSnjtvP5/Ni6L7L2APsCDg5JOwT3FxpbaWoSTa7QxMjVarbCMXFlW30X8zRxGy7
+	CSXTnNteVrE4ZRIyB+F84WBfn4ht4Q6n9LAQomLCICaiO5nST9ZX3oHwn4RXMpzqzBeH4tOmeEcRm
+	uDL0nJaHuLwEXv/t10hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA4OB-0000000DFWr-44i3;
-	Fri, 25 Sep 2026 11:46:51 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1xA4rw-0000000DIWI-1T21;
+	Fri, 25 Sep 2026 12:17:36 +0000
+Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA4O7-0000000DFVb-1EMa;
-	Fri, 25 Sep 2026 11:46:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1790336807; x=1821872807;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=MzxytXur9WLf3A2pht3GHrIFSKif0MmfcShH+hRjUuo=;
-  b=XqzLrXCAAd880vftDKmAaAb2a6r7BzqPqVy1tGe5kh9rAt3n5q8E/9n5
-   hsPfhbgTaZYDd44gkHfgLcbg7tWuiy88KXi0DUlXIxK2bSsHjAeCsD5u1
-   ipYxAIBX9EJWregbjpGPylaAG/5Hs8dgIck6NOzbORi36OpsvCUJeJKWZ
-   AwdMXHwyu6BLiVukcrYuIlVXJp0M5hCGbUAfz2YMS8oJnj85vb5KD81OB
-   uA+4JG6qoxmXrFKCL3vOdddxlxHfv2ytQQC9IGD/13Sf7jWLq/9F+q1Fn
-   q2CfYFaW8X0mFt9gMQk8T15mDPi9+jBceqaVDrDU9lGkdw+dJr273+Vpy
-   g==;
-X-CSE-ConnectionGUID: bZXOOsnzSVCPstqabEEACw==
-X-CSE-MsgGUID: Ts1uTvvUQOy3kGpr5w3ngw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11915"; a="101294069"
-X-IronPort-AV: E=Sophos;i="6.27,122,1787036400"; 
-   d="scan'208";a="101294069"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Sep 2026 04:46:46 -0700
-X-CSE-ConnectionGUID: zsABext2RMS632XbvRUi2Q==
-X-CSE-MsgGUID: biDbQJztS8CW1MOilcY0yw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,122,1787036400"; 
-   d="scan'208";a="274485235"
-Received: from hrotuna-mobl2.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.245.84])
-  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Sep 2026 04:46:36 -0700
-Received: from kekkonen.localdomain (localhost [IPv6:::1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id 28C66121182;
-	Fri, 25 Sep 2026 14:46:37 +0300 (EEST)
-Date: Fri, 25 Sep 2026 14:46:37 +0300
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Thierry Reding <thierry.reding@kernel.org>
-Cc: Kieran Bingham <kieran.bingham@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Geert Uytterhoeven <geert@linux-m68k.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jacopo Mondi <jacopo@jmondi.org>, Jimmy Su <jimmy.su@intel.com>,
-	Matthias Fend <matthias.fend@emfend.at>,
-	Mikhail Rudenko <mike.rudenko@gmail.com>,
-	Daniel Scally <dan.scally@ideasonboard.com>,
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-	Michael Riesch <michael.riesch@collabora.com>,
-	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
-	Sylvain Petinot <sylvain.petinot@foss.st.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Martin Kepplinger <martin.kepplinger@puri.sm>,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
-	Tommaso Merciai <tomm.merciai@gmail.com>,
-	Svyatoslav Ryhel <clamor95@gmail.com>,
-	Richard Acayan <mailingradian@gmail.com>,
-	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jonathan Hunter <jonathanh@nvidia.com>, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux@ew.tq-group.com, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
-	Alexander Stein <alexander.stein@ew.tq-group.com>,
-	David Heidelberg <david@ixit.cz>,
-	Vladimir Zapolskiy <vladimir.zapolskiy@linaro.org>,
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
-	Quentin Schulz <quentin.schulz@cherry.de>
-Subject: Re: [PATCH v6 0/6] dt-bindings: Orientation defines
-Message-ID: <arZfHdZS8U6MltVz@kekkonen.localdomain>
-References: <20260918-kbingham-orientation-v6-0-5e8b1f01be29@ideasonboard.com>
- <CAMuHMdWWOB48AUCbXh=9ZGCK2qZyVH06kJ2paRY-wxkq5NC16A@mail.gmail.com>
- <CAMuHMdVhK0vm_Ksze_=jG8D_=8Q45v+ezNbxwL7JntTt_v_fkg@mail.gmail.com>
- <20260921073538.GA1466037@killaraus.ideasonboard.com>
- <arEVs0FDleyHeeLj@orome>
- <178999124332.1723501.13535584681937232110@ping.linuxembedded.co.uk>
- <arEeG06MiZ_97uzH@orome>
+	id 1xA4rr-0000000DIVU-1jTe
+	for linux-rockchip@lists.infradead.org;
+	Fri, 25 Sep 2026 12:17:32 +0000
+Received: by mail-wm2-x11.google.com with SMTP id 5b1f17b1804b1-49e71cdb22bso6040315e9.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 25 Sep 2026 05:17:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1790338649; x=1790943449; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=pnLLA/1flpR0LOs70Cy40hhdZUyQOq32+JwGKeb+HsY=;
+        b=GbMIFgb+OgFOAy4zabwmNtoeJ8d0iINOhiYpWERNcqJ7eKdxNdZjjlMUmXtcgTTKbG
+         tGfDgKr+KXRYhWFWz2780ItISz8T6C3U1b1JohdHsaUO1X5ppaFfj5HjwYu0iu+laUnv
+         JwXrPL1BidKoQ0kL/w+GW2bxVlNxe0JgaMYbct/vPqnyaYL2txTAhrI+U8ZzEk8Lo25h
+         XORd2XQF476K+sxWpxfUGLBVaVlxuiAolaI0VfgWRQvduIkDwUMWkp2hraUKxD0aHnI8
+         Fwv/xkg7W1RIyPiqS7kDB+y9LfAOdn2WpDhCiVVLtX7lHIBZH9VIbCdE5nnXRugSM0ZW
+         Qb4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790338649; x=1790943449;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=pnLLA/1flpR0LOs70Cy40hhdZUyQOq32+JwGKeb+HsY=;
+        b=U5s4hl5spsW9Kyp+YFQ24FiipmM43lm7XJms4k43jEQtUzJV2TVXiUmEhDcXIecQBR
+         hGN90j1u1nm1YWEw9GyhC5UoXngiIUJIxlq5UNe+ECKWEf3Cn4y5JG1XgbU+so+TOdwE
+         EnlDz559XxyTs+XkxjY5o1Yn3F1SVuo66gIfbZpvh4EIDodXTEn1aHghsJ4iCZtukbdj
+         ASBcwq43Rt2f3y6AIKbBBp1LUcxuuzBISyw4F5vmeFJha3P6tliPAM3LnEwtx7pW++aI
+         phpio8DcjfzQUajSZeUQ3SwUMkORka4qlEDjtqpxixoYDyAhFxKqvIWdUGlkK+RKHkDJ
+         OFxA==
+X-Forwarded-Encrypted: i=1; AKwUvBxP/5n1w97+appyQiry31Z6qcV3GYpqKiYcrtZYx7ZyS2rkmochVdA5zv+xd4c2IWCo0gijxhhYIXTacPKk1w==@lists.infradead.org
+X-Gm-Message-State: AFuF++l9J7p6mI9PZZNPIStZFmKEX3qDiCNLaD3Jgm2yXPndPTpfa57L
+	oJc3M8gyj3W2uIN0DB5OiOltE15Gk2a/pc/2ttjHSnm9SkRAI1fcpN2A
+X-Gm-Gg: AYBFou2tGhlhrlrEviYqoT5yaILHBC7eZHa1RSpyL60JGe8hqDCUqDKfuJuTZaHiu79
+	Q+9m7TqrGjXNuaUBzHQ4Nv1v5+lA6+3YT87F+5+T56B3gSxRDs+B52b4zoLSTfrf/unxukjaMQO
+	WDCKpRZzQzDWlB4+hC+azkFHnz0FfBrzkvGnDVM+t6uVBXbLlNFRqrLoU/srZhbOljhfvW1PRMo
+	I45OtkqgNz8s3cocQSY1BK281CE70G/BeW3xKEIEjekfi8TgxeU4mYmdUZVw6vR/mS+m0EQ+6pU
+	cTcyB/Flsvu6A7DIed4YqM5z5T5Lk7QRUqOi0FXgjYznS6e7XzTy4Prh7M0U5hw0dwTQLm+z1q+
+	S49tAKCNJMdfws4RlF6rK6Ay8UrjBNUJtrWWnJ3WYKSQl9eTZamffcHXsJa+FU37jt59atrtK5e
+	FdHqxd2x36qTi9w0LuKuRikOdvpfFdG63Q+75BKDYV/Br1G98Ca5TateDKFcY++XiEW8jylZylt
+	aQMQEowGhu/sjd8UcC38DhsimIR0c8b5qRW+sziS0bfQTMZ+WDeuoao
+X-Received: by 2002:a05:600c:a4c:b0:49c:fa20:cc08 with SMTP id 5b1f17b1804b1-49fe67060cemr95925545e9.31.1790338648585;
+        Fri, 25 Sep 2026 05:17:28 -0700 (PDT)
+Received: from [127.0.1.1] (lmontsouris-656-1-83-121.w82-127.abo.wanadoo.fr. [82.127.110.121])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49fe5dff204sm218658205e9.14.2026.09.25.05.17.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Sep 2026 05:17:28 -0700 (PDT)
+From: Amin Gattout <amin.gattout@gmail.com>
+Date: Fri, 25 Sep 2026 14:16:34 +0200
+Subject: [PATCH] arm64: dts: rockchip: add radxa camera 4k on rock 4d
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <arEeG06MiZ_97uzH@orome>
+Message-Id: <20260925-rock4d-cam4k-v1-1-c9519c794fb3@gmail.com>
+X-B4-Tracking: v=1; b=H4sIACJmtmoC/3WOwW7DIBBEf8Xi3JXMmgXsX6lyMLA01HLigGO1i
+ vLvpUmt9tLjSPPmzU0UzomLGJqbyLylks6nGuRLI/xxPL0xpFCzwBZ12yNBPvtJBfDjrCbQ3BF
+ Kr6UjEhVZMsf08Zh7PTxzubp39uv3xk8j8+VaPeuz9qsZmofEyh7y1JHREJbjJ2DXqmiVRUlu2
+ FD8fbYj9ZcvCRCy3yCsBYyR6ILtVGD9L2RhS35cdptmI6XlsUW1M24sDP48z2kdGhcoKkuxixV
+ HJGc1mY6J+jG2ziApjkpaJQ73+xet8b0GWAEAAA==
+X-Change-ID: 20260925-rock4d-cam4k-6e3521c61b55
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Michael Riesch <michael.riesch@collabora.com>, 
+ Amin Gattout <amin.gattout@gmail.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1790338647; l=6138;
+ i=amin.gattout@gmail.com; s=20260818; h=from:subject:message-id;
+ bh=xN7v3X7hesRZVMkOlUzapj4+LgE0eflnCea4UWZu/Yw=;
+ b=OZchep/qy+LSg8lzxIh8Oj+wqfBHRnzl1TZKe6K5u/RJr37st+QIladMmca8auY7IK+tvcofI
+ kElz53+u8kLBlH+4eMmDLXVseU7JPr6FViJoY0U5hfCJ31WX/YilG5Q
+X-Developer-Key: i=amin.gattout@gmail.com; a=ed25519;
+ pk=MSIqDPkCOkwtyP8Fns1m+KFU9SgqoDl2mpLe18vL+hQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260925_044647_374919_0BF340B0 
-X-CRM114-Status: GOOD (  21.05  )
+X-CRM114-CacheID: sfid-20260925_051731_537252_AE370440 
+X-CRM114-Status: GOOD (  13.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,36 +114,184 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi folks,
+Add a device tree overlay for the Radxa Camera 4K (featuring the Sony
+IMX415 image sensor) to be applied on the Radxa ROCK 4D camera
+connector. The camera connects to CSI HOST1 through the MIPI D-PHY0
+in full mode.
 
-On Mon, Sep 21, 2026 at 02:10:17PM +0200, Thierry Reding wrote:
-> > > If all platform maintainers Ack this series, they could go through the
-> > > media tree where the shared include was already merged. Alternatively
-> > > the media maintainers could provide a shared branch for everyone to pull
-> > > into their platform trees.
-> > > 
-> > > But given that this is simply replacing a literal with a preprocessor
-> > > macro, maybe not worth the extra hassle.
-> > 
-> > Indeed, I'm not personally worried here. I thought that because Sakari
-> > had accepted the main patches these could go in now, so I refreshed the
-> > series.
-> > 
-> > I don't really care which route they go, or when. I'd rather not have to
-> > re-re-rebase again in two months ... but I can cope whatever :D There's
-> > certainly no urgency here.
-> 
-> You already have my Acked-by and I'm fine with anyone picking up the
-> Tegra DT changes. I don't think there's going to be any conflict with
-> any other work in the Tegra tree. If they don't get applied, I'll pick
-> it up for the next release.
+Signed-off-by: Amin Gattout <amin.gattout@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/Makefile              |   5 +
+ .../dts/rockchip/rk3576-rock-4d-radxa-cam4k.dtso   | 105 +++++++++++++++++++++
+ 2 files changed, 110 insertions(+)
 
-The patches seem to apply nicely to the media tree so I'll just merge them.
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index e7936a21c118..82b2afd420d5 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -183,6 +183,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-nanopi-m5.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-nanopi-r76s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-roc-pc.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-rock-4d.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-rock-4d-radxa-cam4k.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3582-radxa-e52c.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-sige7.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-w3.dtb
+@@ -311,6 +312,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10-pcie1.dtb
+ rk3576-evb1-v10-pcie1-dtbs := rk3576-evb1-v10.dtb \
+ 	rk3576-evb1-v10-pcie1.dtbo
+ 
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-rock-4d-radxa-4k-cam.dtb
++rk3576-rock-4d-radxa-4k-cam-dtbs := rk3576-rock-4d.dtb \
++	rk3576-rock-4d-radxa-cam4k.dtbo
++
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtb
+ rk3588-edgeble-neu6a-wifi-dtbs := rk3588-edgeble-neu6a-io.dtb \
+ 	rk3588-edgeble-neu6a-wifi.dtbo
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d-radxa-cam4k.dtso b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d-radxa-cam4k.dtso
+new file mode 100644
+index 000000000000..613a3e351500
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d-radxa-cam4k.dtso
+@@ -0,0 +1,105 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Device tree overlay for the Radxa Camera 4K attached to the camera
++ * connector of the Radxa ROCK 4D.
++ */
++
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/clock/rockchip,rk3576-cru.h>
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/media/video-interfaces.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++
++&{/} {
++	savdd_cam: regulator-savdd-cam {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio3 RK_PD0 GPIO_ACTIVE_HIGH>;
++		regulator-min-microvolt = <2900000>;
++		regulator-max-microvolt = <2900000>;
++		regulator-name = "savdd_cam";
++		vin-supply = <&vcc_3v3_s0>;
++	};
++
++	sdvdd_cam: regulator-sdvdd-cam {
++		compatible = "regulator-fixed";
++		regulator-min-microvolt = <1100000>;
++		regulator-max-microvolt = <1100000>;
++		regulator-name = "sdvdd_cam";
++		vin-supply = <&vcc_5v0_device>;
++	};
++
++	siovdd_cam: regulator-siovdd-cam {
++		compatible = "regulator-fixed";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		regulator-name = "siovdd_cam";
++		vin-supply = <&vcc_3v3_s0>;
++	};
++};
++
++&i2c5 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2c5m3_xfer>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	imx415: camera-sensor@1a {
++		compatible = "sony,imx415";
++		reg = <0x1a>;
++		assigned-clocks = <&cru CLK_MIPI_CAMERAOUT_M1>;
++		assigned-clock-rates = <37125000>;
++		avdd-supply = <&savdd_cam>;
++		clocks = <&cru CLK_MIPI_CAMERAOUT_M1>;
++		dvdd-supply = <&sdvdd_cam>;
++		orientation = <2>; /* External */
++		ovdd-supply = <&siovdd_cam>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&cam_rstn &cam_clk1m0_clk1>;
++		reset-gpios = <&gpio3 RK_PC7 GPIO_ACTIVE_LOW>;
++
++		port {
++			imx415_output: endpoint {
++				data-lanes = <1 2 3 4>;
++				link-frequencies = /bits/ 64 <445500000>;
++				remote-endpoint = <&csi1_input>;
++			};
++		};
++	};
++};
++
++&pinctrl {
++	cam {
++		cam_rstn: cam-rstn-pinctrl {
++			rockchip,pins = <3 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&csi1 {
++	status = "okay";
++};
++
++&csi1_in {
++	csi1_input: endpoint {
++		bus-type = <MEDIA_BUS_TYPE_CSI2_DPHY>;
++		data-lanes = <1 2 3 4>;
++		link-frequencies = /bits/ 64 <445500000>;
++		remote-endpoint = <&imx415_output>;
++	};
++};
++
++&csi_dphy0 {
++	status = "okay";
++};
++
++&vicap {
++	status = "okay";
++};
++
++&vicap_mmu {
++	status = "okay";
++};
 
--- 
-Regards,
+---
+base-commit: bd5f485f3f026225b86573e559af0b7254ef4184
+change-id: 20260925-rock4d-cam4k-6e3521c61b55
+prerequisite-change-id: 20260819-rk3576-dphy-2304f848215b:v2
+prerequisite-patch-id: fbe2d84f88709b8bf846debe6b8ce62c4392ca63
+prerequisite-patch-id: 9bce33933ae69e8cc7f7ef2f0d9acb969620bc85
+prerequisite-patch-id: bff0c668524f94b0b7901c682d5ccdccfe18d46e
+prerequisite-patch-id: 8f45701f840680a35e044f43ebd3087282847990
+prerequisite-change-id: 20260825-csi-2-rcv-dts-7712bd834de6:v2
+prerequisite-patch-id: fbe2d84f88709b8bf846debe6b8ce62c4392ca63
+prerequisite-patch-id: 9bce33933ae69e8cc7f7ef2f0d9acb969620bc85
+prerequisite-patch-id: bff0c668524f94b0b7901c682d5ccdccfe18d46e
+prerequisite-patch-id: 8f45701f840680a35e044f43ebd3087282847990
+prerequisite-patch-id: bdbb3e9b072469900cac21031cd799265b52d734
+prerequisite-patch-id: c91ceb74abc8bc79ac036990abdef4cbd7328f97
+prerequisite-change-id: 20260828-vicap-rk3576-6e7118ea0246:v2
+prerequisite-patch-id: fbe2d84f88709b8bf846debe6b8ce62c4392ca63
+prerequisite-patch-id: 9bce33933ae69e8cc7f7ef2f0d9acb969620bc85
+prerequisite-patch-id: bff0c668524f94b0b7901c682d5ccdccfe18d46e
+prerequisite-patch-id: 8f45701f840680a35e044f43ebd3087282847990
+prerequisite-patch-id: bdbb3e9b072469900cac21031cd799265b52d734
+prerequisite-patch-id: c91ceb74abc8bc79ac036990abdef4cbd7328f97
+prerequisite-patch-id: d4120ad9def5effeda632f831b6fd0cd59295285
+prerequisite-patch-id: e0c7e587fcaffe58b61fe78508efccec86dc7c79
+prerequisite-patch-id: 6a87bd22798d58cc8f9b30733f5b28a2fced05c1
+prerequisite-patch-id: a94c687ac3f648079b18dbb5109657fb038bd516
+prerequisite-patch-id: 76e36df1aab8a9853440aa28b4bda528ce2adfd7
 
-Sakari Ailus
+Best regards,
+--  
+Amin Gattout <amin.gattout@gmail.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
