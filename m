@@ -4,88 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 269F1C98321
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 11:11:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04599C98321
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 11:45:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fam6qKD0Z5s9rmJFVf/14AFEXaxDXKCdUqboCF/j9T4=; b=E1fKo228MTk1na
-	zk63x5j7apwK2HZbXtUP15TNZzzTGbPEA+R2Kn63fLOmNKNXCqekqWQvpPSwbxhFMPKkr3pBcAkmI
-	Q4gt2Ae7QDwswcif9uuK/hhxlKeOomu2xonkfxe4cCJLs5nIzy59Z+C8yYveZSBGjCiTgS9QsW2wG
-	zJLQlTPFJD2bbf5dKPEpmM9vt7C/LOUzw4ulVSP1Km4Bl6DYO9BdIeOejLP670DxjIkeSqCVkQ68z
-	Cm1CF+7DykrNI366mx6XRYRGzYCq9TtFDDrJ/MPf4Pax/Y23cR0deU2xhEMP2NldD3tYT+C7jeHaU
-	sUaewKdIL6eSBr39fAVw==;
+	List-Owner; bh=+ZvPGpfqOuuW0tUe0E5QpLy8NasVrZSN1QTXp8MdHNo=; b=u+gBTxoQ93UR5s
+	vnZyoh59oOyWUdox9ByYHSJnWraG77cQpDoVXdaeXnSTOuUe31V4Hdr2XgyY+Q7XG2/cEqfznXQxr
+	K4NRzBNALX3g9lYBiJEvwKbSah7pb3SNUc6yP0VdZyZMlMCsRJW0HPygAyAaa3V7R5dnE3X+qSYjU
+	q6YejYdnTSAFJ9aU4CXYAt8ZPyMWPIHRl6zwdQ+mPnsshNdje5hHSrj92C3OEL/Hh4118PzU5xqfR
+	SyB6AKvb2qu6CVFw5HIJOCsuAZtY8pX83fX7neDLirk/nenzEuCBxeR6ZYAGEpynP/5kP4vF4DhP4
+	If//6Zo9Hf/zZSkVZ+Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA3pw-0000000DANX-0m1H;
-	Fri, 25 Sep 2026 11:11:28 +0000
-Received: from mgamail.intel.com ([192.198.163.9])
+	id 1xA4Mu-0000000DEop-0aVV;
+	Fri, 25 Sep 2026 11:45:32 +0000
+Received: from mx1.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::107])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA3pt-0000000DAMg-2eId;
-	Fri, 25 Sep 2026 11:11:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1790334685; x=1821870685;
-  h=from:to:cc:subject:in-reply-to:references:date:
-   message-id:mime-version;
-  bh=pKJG4NNixG1bTghsu6d6b7QSc5YQncCMfKdLtiQwQAA=;
-  b=n8Cr6KedIOaRj44vEtEv4kL8b6m1CFmrTQ3nyGOLbYp3BTOVcm1TBOJt
-   YqP8z1W3PwLO5JP4bco72F9UCRjm66KNEE+iTCLafX77NO2O+F0SbWcaA
-   OtcCNgS8SHuzgB8Jf7qBfOJW+0cqVOT7TwRc2sQjmbz1wX6Amc6GRF6WP
-   NZpM5vf7QQzi4UjGGcMoIeREWKK8ZxyVhlkRPsHvyVXvaYP9SOwcKGZAj
-   wijsNqisII1iD26Q8hQov63Q1gTJqXrcqRcTqLPvRhoxFMfTHLDNnUsDa
-   FJrTdeSU6KJeryCZEF4M8mu06Zj6Id+yMYyZcE2wQlS1NICX4VHqTkRqB
-   g==;
-X-CSE-ConnectionGUID: gRVEfVxzRe610PxA6JP/uA==
-X-CSE-MsgGUID: n7QUw4UfSa6WsmDUpPqHAA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11915"; a="101778962"
-X-IronPort-AV: E=Sophos;i="6.27,122,1787036400"; 
-   d="scan'208";a="101778962"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Sep 2026 04:11:24 -0700
-X-CSE-ConnectionGUID: cAeg1zLZQKKVg0SQhiZSeg==
-X-CSE-MsgGUID: gN2VeGlYSaS63jTDQxoBpQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,122,1787036400"; 
-   d="scan'208";a="270788768"
-Received: from smoticic-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.90])
-  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Sep 2026 04:11:18 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Daniel Stone <daniel@fooishbar.org>, Vidith Madhu <vmadhu@nvidia.com>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, "Borah, Chaitanya
- Kumar" <chaitanya.kumar.borah@intel.com>, Leo Li <sunpeng.li@amd.com>,
- Daniel Stone <daniels@collabora.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Helge Deller <deller@gmx.de>, Andrzej
- Hajda <andrzej.hajda@intel.com>, Neil Armstrong
- <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent
- Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
- <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Luca
- Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
- Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan
- <andy.yan@rock-chips.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-fbdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com, Derek Foreman
- <derek.foreman@collabora.com>, wayland-devel@lists.freedesktop.org
-Subject: Re: [PATCH RFC 06/25] drm/connector: hdmi: Add VTEM EMP generation
-In-Reply-To: <CAPj87rO2+oSA7KtocG-M1hqgQTJO=3Qxmg-OMC5MmOLaja_kRg@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park,
- 6 krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
-References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
- <20260921-vrr-limiter-uapi-v1-6-2fcd7d011646@collabora.com>
- <a5bc012a-9b9e-eb2b-d67e-a91f2d93d6bf@nvidia.com>
- <CAPj87rO2+oSA7KtocG-M1hqgQTJO=3Qxmg-OMC5MmOLaja_kRg@mail.gmail.com>
-Date: Fri, 25 Sep 2026 14:11:15 +0300
-Message-ID: <80ac0fee0d67a9e44a4858be904bdbb2265e50b5@intel.com>
+	id 1xA4Mq-0000000DEmS-1uPh;
+	Fri, 25 Sep 2026 11:45:30 +0000
+Received: from [127.0.1.1] (unknown [IPv6:2a02:560:5dd5:4b00:9ebf:dff:fe00:fdb5])
+	(Authenticated sender: sha@pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 6CEB4201E6E;
+	Fri, 25 Sep 2026 13:45:26 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
+	s=20260414; t=1790336726;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MC47sMHNRJ/nvzIcP+t6YwsT76ZT+zbTX932PFJH7lE=;
+	b=NXKu3rZeFQl0D15h/4KyhMZkLkSGragapw0iZpP42KgQK/NCotv3+6gf/0PvWOIRDM09Jz
+	7sJ3UGuho6SkOsm/W5aWwJXCBeGQe+HUP3q/GhhjfFOGRdurG0GPHi21fGp8B4XEnA08A6
+	zSl4OPCjVXkvr9mGw+HFKpn0a7IK0mTcJ+FdGjt2qAFn8x+fQwkP5NcuEidTXniNpuSq3w
+	Tz1lF5KLH/Y0Umy6E3LjjzecRZSkGQR4HCHCIVKVSf8YdCIRdXb1N4r2lRgdBkI5l7Qgcp
+	ip04c00wSg39Tbr8PoJgfXWv0dRTNHjYhIcOIQX2hil1+ajQojqzz8yd2Uqcrg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
+	s=20260414; t=1790336726;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MC47sMHNRJ/nvzIcP+t6YwsT76ZT+zbTX932PFJH7lE=;
+	b=M9d/CE2XJ+95H+MVM7qgy3ZdE0aZUVtA76sFHWxhhVdxaMVqc5/xzN4PgrW48dHsb7srgB
+	irWA7K777uTXQfq5Lq+FAm0rdm9zZCNQPanGrQyxxtSOD/QZEx0eLDAfH5mbOOq7WI5LVb
+	3aaFGU/Dyqe+4r3uslC76O+Fst151UU/Db6+Q3aMHpAyeSZQMkCPrMHeaOhA7Nku3HzliH
+	kwJjybPjbcNZazcOqBKritkuL0vyv0ph4vfoK4FbAE9K0VJCEdZFYbfrPi4AvLkDasDGRq
+	iUEj9lfiDT9NzwdRP64KX4NJG6r9GKaqRjmBPFEZJQPL5fOTu82NOAXu32P4mg==
+ARC-Seal: i=1; s=20260414; d=pengutronix.de; t=1790336726; a=rsa-sha256;
+	cv=none;
+	b=N/I0pd1F1Hc90wgbNJXlwtXFGHIYHgOCdS3ISce0ZGZcj/y+xJBhsrpbs2M0Wn4uUSWHxp
+	kJXrPbxge2wnilTxDQ5Oo1DRIlcaxSgwbHILkyjj5tkT8eczgTGJ4eeLJ0MvmS5AQLAL+m
+	rZhxEm/qYGKaNJswsp3MR/CH/OiUfJ8tLGK07jogJifICuje7LZKlKqMzpsEIjacLpfr+t
+	k6bcK2YXZzsNMPWwDOau2wATxog6oVHM6tV/HZsKBDE+DiT6I3Hy3+RZMsaR1a6Rh3HQt+
+	hAcExV4k1jiSSoAEuKY8X6MLC5HuDot3K9NlyBxib8V8BNspK04NOVjbt/1wgA==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=sha@pengutronix.de smtp.mailfrom=s.hauer@pengutronix.de
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Date: Fri, 25 Sep 2026 13:45:27 +0200
+Subject: [PATCH v5 3/4] arm64: dts: rockchip: rk3588: Add JPEG decoder node
 MIME-Version: 1.0
+Message-Id: <20260925-rockchip-jpegdec-v5-3-30658833cb68@pengutronix.de>
+References: <20260925-rockchip-jpegdec-v5-0-30658833cb68@pengutronix.de>
+In-Reply-To: <20260925-rockchip-jpegdec-v5-0-30658833cb68@pengutronix.de>
+To: Lucas Sinn <lucas.sinn@wolfvision.net>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1790336726; l=2122;
+ i=s.hauer@pengutronix.de; s=20230412; h=from:subject:message-id;
+ bh=dd9ZB+DgEvJG+UhAAEoJPAdb4Iq3fKUiQVJjo25/3KI=;
+ b=H6CYZJo3AadXM8dV7CpzAcYKV3TvuUHYK8JfZrgNYlh5zBA49LIDiKArC5msK8hvacTus9Bhb
+ yg/nCK4/R0hD/hGr5lAI8fxyk6WdoNGzreZP6DhPXVBTnReLWg4nKpW
+X-Developer-Key: i=s.hauer@pengutronix.de; a=ed25519;
+ pk=4kuc9ocmECiBJKWxYgqyhtZOHj5AWi7+d0n/UjhkwTg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260925_041125_691636_355C050A 
-X-CRM114-Status: GOOD (  21.97  )
+X-CRM114-CacheID: sfid-20260925_044528_653458_B7063842 
+X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,67 +107,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 25 Sep 2026, Daniel Stone <daniel@fooishbar.org> wrote:
-> Hi Vidith,
->
-> On Fri, 25 Sept 2026 at 04:49, Vidith Madhu <vmadhu@nvidia.com> wrote:
->> On Mon, 21 Sep 2026, Nicolas Frattaroli wrote:
->> > +     if (!crtc_state->vrr_enabled) {
->> I don't think we should use the vrr_enabled CRTC property to determine
->> VRR_EN in the VTEM EMP. Transitioning the VRR mode sink-side typically causes
->> blanking, and it was discussed in patch [03/25] that drivers should be
->> free to handle vrr_enabled changes as a seamless switch since it only
->> concerns source-side VRR state (this is how the NVIDIA driver handles it).
->> Maybe it would make sense to extend the qms_enabled connector property
->> introduced in this patchset to an enum of {Off, Gaming, QMS}? This would allow
->> a standard path to control the VRR state on the sink, separately from
->> vrr_enabled.
->
-> I remain cautious of putting this amount of policy inside the kernel
-> and/or left to individual IHV choices. It's relatively obvious for
-> NVIDIA and AMD to say 'we'll always enable FRL/VRR to smash the
-> maximum rate (unless it's contraindicated by USB-C bandwidth somehow)
-> because the power burn is inconsequential', but if you were MediaTek
-> or Rockchip you'd probably make a different decision. Then again, if
-> you were an MTK device living on AC power, maybe you'd make the same
-> decision. Or maybe AMD would want to make a different decision on
-> laptop parts because the bandwidth is noticeable then.
->
-> The point is that I don't think we should bury this down in implicit
-> kernel state. I'm with you on surfacing this as an explicit connector
-> property. Possibly a bitmask of modes the user will use? e.g. {
-> frr_only = 0, maybe_gaming_vrr = (1 << 0),  maybe_qms = (1 << 1), ...
-> }? Or perhaps just a flag for whether the link should be negotiated as
-> wide as possible or tight to the existing mode params?
+Add device tree nodes for the Rockchip JPEG hardware decoder and its
+IOMMU on the RK3588.
 
-On a tangent, Ville and I have been tossing around an idea to introduce
-a drm device level property to control device "power mode" policy,
-mapping to the kind of setting userspace already provides. Could start
-of with the typical "performance", "balanced/default", and "power
-saver".
+The decoder is at 0xfdb90000 with its MMU at 0xfdb90480.  It takes the
+AXI and AHB clocks and resets, and sits in the VDPU power domain.  The
+AXI clock is pinned to 600 MHz, which is the rate the downstream BSP
+runs it at; it is a dedicated clock, not shared with another block.
 
-It could be a single high-level knob to choose policy in the drm core
-and drivers, instead of exposing a plethora of fine grained policy that
-don't necessarily map well between drivers and may have conflicts
-between them. And end up with a lot of ABI to maintain.
+Both blocks are entirely on-SoC and have no board dependency, so they are
+enabled unconditionally like the other codec blocks in this file.
 
-Policy decisions like this crop up all the time, even on things like how
-to choose Display Port link config and DSC and color depth, and my gut
-feeling is that just having e.g. those three options would help with
-design decisions massively.
+Assisted-by: Claude:claude-opus-5
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-The user and userspace could use AC power or battery level or whatever
-to decide which power mode to choose at the high level, and you wouldn't
-have to have every desktop environment tweak every little thing at the
-detailed level.
-
-
-BR,
-Jani.
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index 376ad04e07869..cc53878502898 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -1317,6 +1317,30 @@ rga: rga@fdb80000 {
+ 		power-domains = <&power RK3588_PD_VDPU>;
+ 	};
+ 
++	jpegd: video-codec@fdb90000 {
++		compatible = "rockchip,rk3588-jpegd";
++		reg = <0x0 0xfdb90000 0x0 0x400>;
++		interrupts = <GIC_SPI 129 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_JPEG_DECODER>, <&cru HCLK_JPEG_DECODER>;
++		clock-names = "axi", "ahb";
++		assigned-clocks = <&cru ACLK_JPEG_DECODER>;
++		assigned-clock-rates = <600000000>;
++		resets = <&cru SRST_A_JPEG_DECODER>, <&cru SRST_H_JPEG_DECODER>;
++		reset-names = "axi", "ahb";
++		iommus = <&jpegd_mmu>;
++		power-domains = <&power RK3588_PD_VDPU>;
++	};
++
++	jpegd_mmu: iommu@fdb90480 {
++		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdb90480 0x0 0x40>;
++		interrupts = <GIC_SPI 130 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_JPEG_DECODER>, <&cru HCLK_JPEG_DECODER>;
++		clock-names = "aclk", "iface";
++		power-domains = <&power RK3588_PD_VDPU>;
++		#iommu-cells = <0>;
++	};
++
+ 	vepu121_0: video-codec@fdba0000 {
+ 		compatible = "rockchip,rk3588-vepu121";
+ 		reg = <0x0 0xfdba0000 0x0 0x800>;
 
 -- 
-Jani Nikula, Intel
+2.47.3
+
 
 _______________________________________________
 Linux-rockchip mailing list
