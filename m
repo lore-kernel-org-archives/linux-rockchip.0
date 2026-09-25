@@ -4,63 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3042C98321
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 16:51:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51B8EC9830E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 18:42:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8L+GWQ2uNhEAK8a9k7oq9Nl5eEpUUqmLsHydMk7XU6Q=; b=C2X/wyzrekCAx96dze+bBw8aMv
-	LYOvSrlFdrsDuQij0opY6mI5TwTtw7b4x+yuECBUdRDR9zvNK/AExV6st7ngY+xAiG3Z74lbd/9dJ
-	L1wO6WLELieCvC9J2nbLFS3/OViGFWZFkeGF9uZ5Pm84V8XufkIxE7j7BOvpdvDISY4X8hFGGVKJ9
-	yjs731HnM0NrZc3sEhXB5ST8spi3vqPlvyjhOFBiCIYa9G7GoY5n0DkqasiDcoTbLxxzpbXQt8tS9
-	PRUoPOoYOi1ezRA9J0eCeiI61X5nAngKYP/pzVr/1b3iZjIdRoHfZQrfFh4S/ttj0p+d7qrjiXUfT
-	UjPJXm7w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ctn7t7ugVsZA78D7mfq5hK4uwOPw+mFkpMFJx8LJPUI=; b=1ZXTKpETJX3x++
+	gX5Jda8f0j5DrNuWz9RtVVd+R9Bi4TebpzeN5BTcvmMdw2iQJIhtgd7QEAIx1UlPIkmLhPWL7aUpj
+	m9+xPMQqnM384m1cfhUupPJiAcx1KUjoph2tieN5WS3wmup8uvvuB7DswFOBCbeLJ4Lbb3BGU/RVu
+	SPVx1BtpA1UVUXLRrPT/tYtxYdUP4RWOxbWj6iSNFkahmS4EZ+vRwNLlglAYrfmpxGP1cR+LGH1le
+	MDGBvhWv4u2IQKWUwjBR3235SX5L8Pmz3unZOzGrrqUpVpAsFjCAlA7Zmu8Nh2gBx19DGEdKnAOt+
+	FVQEX5Coy0mLJJLFt5Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA98u-0000000E0hT-3sXA;
-	Fri, 25 Sep 2026 16:51:24 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xAAsO-0000000EAya-1nkR;
+	Fri, 25 Sep 2026 18:42:28 +0000
+Received: from mail-westus3azon11010071.outbound.protection.outlook.com ([52.101.201.71] helo=PH7PR06CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA98t-0000000E0gs-2jk0;
-	Fri, 25 Sep 2026 16:51:23 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id EBE1C60136;
-	Fri, 25 Sep 2026 16:51:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59F3F1F00893;
-	Fri, 25 Sep 2026 16:51:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790355082;
-	bh=uTN2gUGLfjEmLI+kfBb4qKSBquVXwsBhaTfbpY2NRrY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ff4ROM4KRn94F3daBy8gUc+QsXb8btPOPmOKC3Kv/YBuIY+QMg624xqfPAFN3I33m
-	 t6SIDlDUtS2ifLCzs4Pi9sCZ03jW1xYlboCpY+JFD7BkO7P9At90Alwz3kQFDla8GL
-	 JmN/1pvjr9C4zEqapYWo5EvdFYdNuBC7LREsNebx3fD/NFAQZ+PZjOB8lH2d2kmc4x
-	 BhBbYyxRSXazwrYJ2ycjkxDVxR9w2cwGvK8OU5JNb/cPY87FDgxsmsnSWG+PK1IKuz
-	 WHO4RJ1IWJ2FNakGrl34eJUYtq2UOa3xiswvAbGEbazt9+0GmcePAmkaSeW5KWDFFP
-	 EjW22VqTYhlHg==
-Date: Fri, 25 Sep 2026 17:51:17 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	p.zabel@pengutronix.de, mchehab@kernel.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, Frank.Li@nxp.com,
-	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v3 2/3] media: dt-bindings: media: nxp, imx8mq-vpu:
- Remove nxp,imx8mq-vpu
-Message-ID: <20260925-generous-overbill-e5fa75aec1e7@spud>
-References: <20260924130453.196299-1-benjamin.gaignard@collabora.com>
- <20260924130453.196299-3-benjamin.gaignard@collabora.com>
- <20260924-compare-useable-3e2863b66924@spud>
- <518ec010db104f6f0e7c85607a97af408da44eed.camel@collabora.com>
+	id 1xAAsL-0000000EAxK-2lNf;
+	Fri, 25 Sep 2026 18:42:27 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Ye7prbYyACZ7WV/j8xgF4NgDZN/W5KrwcPAfEMlrHGTt8LY+5UKJAsX/4YF0rF2OZLxvCA3c59CTGHJRb0LKKUSK2czP9GHpNn7LPAQEyGn1AGQZQLubw9XYV0+3nLFqrFWbEGYXpXoQJ2NtFNjtrZNdhiI0ViSjswdWhjA4DhakSZ5w9YdsArj5jBqm93MBconTgACYaP0IsN0861rSeNUYN6Sp07J9hqLlE8n27R8UJXfW+EHMLMvBWO02QGfJ9H8n39AJRiWCOFe9+QZcEhr5OYEj94+pmPEFeFNOqgu6aLoaUCje7gMnFySqzCnhk9Ue6nqkFNUOT8g3H7jeNA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bOfpGmVAQ40dh+pQHepJXK/c9qXJ2THWPTvOZ/CTwew=;
+ b=dAEp5RbrpPVPWZ26lDjmhVwk0or1O5/dYjYIse39kqiyoCgZEW5QvdzdIED6KY5I0PB9Q5DYikSIJrCA3yrP86Lyzi354ooprk7kDxcxV3F3Ah8766hkYPFMcm4AsPirbQVuzNLH+ahikf+/A033GvBRbQ0xJnn4r4Etj7LHBMUf/1ZBCn+bnoKb2g4y6o8FUAcVaOHCDzfx/uCU9+AI9iFiv1fN/AA15p4A4C0sV08N9O87tpiQrQMvVZOsuLK7pJjwOKOb6sO7/OzIDIcCaVPD8DeWGrf6wOpNT+6YWDssEpM4iaZYYSkRg2V21Ankt5+ljmYSwdIX1VdJViqUOQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=collabora.com smtp.mailfrom=amd.com;
+ dmarc=pass (p=quarantine sp=quarantine pct=100) action=none
+ header.from=amd.com; dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bOfpGmVAQ40dh+pQHepJXK/c9qXJ2THWPTvOZ/CTwew=;
+ b=qnlffLAEep3mw5W5tcEvn1aLIj8wAFF1WPLmcAfA4cTfgXe7TbcC86TuBk+Y7H1wFgqPLUjoxSKwqD2mKO8gdh3nHgIx9hlKwa6Cz4K9+QJPVyemCzR73GHWjB7/wEIIMtkTi9fOFWA5W+Jf+wHY34BGXdQf0s2CmiU54pDjgtM=
+Received: from BL1PR13CA0448.namprd13.prod.outlook.com (2603:10b6:208:2c3::33)
+ by SA1PR12MB6994.namprd12.prod.outlook.com (2603:10b6:806:24d::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.18; Fri, 25 Sep
+ 2026 18:42:13 +0000
+Received: from BN7PEPF000000A9.namprd05.prod.outlook.com
+ (2603:10b6:208:2c3:cafe::3) by BL1PR13CA0448.outlook.office365.com
+ (2603:10b6:208:2c3::33) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.428.8 via Frontend Transport; Fri, 25
+ Sep 2026 18:42:13 +0000
+X-MS-Exchange-Authentication-Results: mx.microsoft.com 1; spf=pass (sender IP
+ is 165.204.84.17) smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=satlexmb08.amd.com; pr=C
+Received: from satlexmb08.amd.com (165.204.84.17) by
+ BN7PEPF000000A9.mail.protection.outlook.com (10.167.245.233) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.451.8 via Frontend Transport; Fri, 25 Sep 2026 18:42:13 +0000
+Received: from satlexmb10.amd.com (10.181.42.219) by satlexmb08.amd.com
+ (10.181.42.217) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.49; Fri, 25 Sep
+ 2026 13:42:13 -0500
+Received: from satlexmb08.amd.com (10.181.42.217) by satlexmb10.amd.com
+ (10.181.42.219) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.49; Fri, 25 Sep
+ 2026 13:42:12 -0500
+Received: from [10.254.92.96] (10.180.168.240) by satlexmb08.amd.com
+ (10.181.42.217) with Microsoft SMTP Server id 15.2.2562.49 via Frontend
+ Transport; Fri, 25 Sep 2026 13:42:11 -0500
+Message-ID: <8a3b2902-3255-4dd9-82f0-75a7747b710e@amd.com>
+Date: Fri, 25 Sep 2026 14:42:05 -0400
 MIME-Version: 1.0
-In-Reply-To: <518ec010db104f6f0e7c85607a97af408da44eed.camel@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC 13/25] drm: Add VRR target frame rate properties
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, "Borah, Chaitanya
+ Kumar" <chaitanya.kumar.borah@intel.com>, Daniel Stone
+	<daniels@collabora.com>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>, Helge Deller <deller@gmx.de>, Andrzej Hajda
+	<andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+	"Robert Foss" <rfoss@kernel.org>, Laurent Pinchart
+	<Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, "Jernej
+ Skrabec" <jernej.skrabec@gmail.com>, Luca Ceresoli
+	<luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Andy Yan
+	<andy.yan@rock-chips.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
+	<linux-fbdev@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <kernel@collabora.com>, Derek Foreman
+	<derek.foreman@collabora.com>, <wayland-devel@lists.freedesktop.org>
+References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
+ <20260921-vrr-limiter-uapi-v1-13-2fcd7d011646@collabora.com>
+ <0226527e-ee38-40ab-a2a8-1ae62013b950@amd.com>
+ <VERVf-aJRRKsBOI_3dpScg@collabora.com>
+Content-Language: en-US
+From: Leo Li <sunpeng.li@amd.com>
+In-Reply-To: <VERVf-aJRRKsBOI_3dpScg@collabora.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN7PEPF000000A9:EE_|SA1PR12MB6994:EE_
+X-MS-Office365-Filtering-Correlation-Id: ce00b8b2-9201-49bf-0f0c-08df1b34b715
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|36860700016|1800799024|376014|7416014|42112799006|23010399003|10067099003|56012099006|6133799003|22082099003|4143699003|18002099003|11063799006|921020;
+X-Microsoft-Antispam-Message-Info: Riz02biUVxIpWgvZ8NZKQ3bHHfi5XDtTnGglixOIZoMOKfZqZnSrKlyLmCbvraGXxP+fDoWmC+ktdi66xqY5IzauVpEsNpBFcHB7fR0XgGC1CPDEB36akuE0u6HK8DRrgtjV9L+bNTJTux6hZYmi13VxNhrnT68rRaQ8xTWGvmKF4Xs27xCzUfq8FUUmx0pKPw+NOUEhTvrKSqGfvCp40ykWxayMuAYfUXonibvH3KHwKtDQ2JPl0+WCxjykYc1T1N9EDe5/oR6Hh2Jbx2xHdBo1Av7NPmCAXQ15a1O8rwnHQcmOfyNtTMAvJ1VbbS4l6eY7i59Nlu0ypnjZYqE0FAJQfkdEsrnl0m6d8D9uVZHf5vIHZepeQwTpKgHWY7qr0zU+QD7CQbMf+Fs9y9gPV7nYbz0NvY5ZGpIklwkyC36AbTXIcdsl6KJrqv5G3tsdcoyvGvVIK0FdJRjSsNxs7TQPNg9rUNknIu3EmlV4KoIEGhdQ/qcqeO05mf5oohDUKdFLoeT+8o8fadf6Q+j5QP2g2l00tIYvsemtVny6nXNv+ikanLB+848lD8psMAyvch5mFIQoee0t30usWoYeXQSeh6SDDV7Lfddgd7eTHmeHIIUZbSW1FSSZP4a36biFaR9qYokkOkI/L+oEXg4Z3BbNZleZ5PNYI8uO6HzeKWOdWaOA9NHzv7W3YC41JURrWFU25fbc/3zkhVGeOUbc4GnaBQ+ACGaUxFdtHT1kCUJvxcQ840nj2bipygyik0AV
+X-Forefront-Antispam-Report: CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:satlexmb08.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(82310400026)(36860700016)(1800799024)(376014)(7416014)(42112799006)(23010399003)(10067099003)(56012099006)(6133799003)(22082099003)(4143699003)(18002099003)(11063799006)(921020);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: jXDzaoj4FClt0uR3OlLyale2P4nf1gIsETl9qEhpgRxvqtkkmEs/9Cq3w4BcLd+jvePx5wVs9K8OpZuXVhJpoz9eNOUG/vBCtMtYS6EZJLHLP5+pcZJoq3fhyfJbVkIixoWnGUmgR3RvNgHxdq8xVTEvOdNw7XdhJSBqwdyHWb8vJj6CGijlACtLmkRQxuzQaVonN+ycVJVBDeMuT//W57IZT7a4gxCrw7iKKKwjHwCCf9hNn/ZD2RC4WJmOy+d6QIQ8/d41rfwfwBFNf15aL6XzpugDbGcDBYmThbuXOLepDPmTBf8Jo5j6ADCHApoMQjZ27wNcZVtDUuJf35xhpYxUbtHkY7Xh7iqTK14HyGbdHcpkYvuXWFf6eaCh/VFhJgdf9+ClzC5xyijur1N6GTbKFMS0l55W/8Nuwy8W4oX5QuidxNhgCGsjv11rVcx9
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Sep 2026 18:42:13.3339
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ce00b8b2-9201-49bf-0f0c-08df1b34b715
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[satlexmb08.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN7PEPF000000A9.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB6994
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260925_114225_710717_0CCBA659 
+X-CRM114-Status: GOOD (  22.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,91 +136,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3277571441790982988=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============3277571441790982988==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="mC0ZFJQ+JqSh31eF"
-Content-Disposition: inline
-
---mC0ZFJQ+JqSh31eF
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Sep 24, 2026 at 01:51:13PM -0400, Nicolas Dufresne wrote:
-> Hi Conor,
->=20
-> Le jeudi 24 septembre 2026 =E0 17:55 +0100, Conor Dooley a =E9crit=A0:
-> > On Thu, Sep 24, 2026 at 03:04:52PM +0200, Benjamin Gaignard wrote:
-> > > nxp,imx8mq-vpu has been tagged has deprecated since a while.
-> > > After driver clean up it is time to remove it.
-> >=20
-> > No users in linux doesn't mean no users, but I am guessing that there's
-> > genuinely no users elsewhere and anyone using out of tree devicetrees
-> > should have updated due to the warning at runtime?
->=20
-> I've checked the vendor DT before they moved to the mainline driver, and =
-they
-> never used this binding (actually they never made bindings).=20
-> Here's what the DT was:
->=20
-> 		vpu: vpu@38300000 {
-> 			compatible =3D "nxp,imx8mq-hantro";
-> 			reg =3D <0x38300000 0x200000>;
-> 			reg-names =3D "regs_hantro";
-> 			interrupts =3D <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>, <GIC_SPI 8 IRQ_TYPE_LE=
-VEL_HIGH>;
-> 			interrupt-names =3D "irq_hantro_g1", "irq_hantro_g2";
-> 			clocks =3D <&clk IMX8MQ_CLK_VPU_G1_ROOT>, <&clk IMX8MQ_CLK_VPU_G2_ROOT=
->, <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-> 			clock-names =3D "clk_hantro_g1", "clk_hantro_g2", "clk_hantro_bus";
-> 			assigned-clocks =3D <&clk IMX8MQ_CLK_VPU_G1>, <&clk IMX8MQ_CLK_VPU_G2>=
-, <&clk IMX8MQ_CLK_VPU_BUS>;
-> 			assigned-clock-parents =3D <&clk IMX8MQ_VPU_PLL_OUT>, <&clk IMX8MQ_VPU=
-_PLL_OUT>, <&clk IMX8MQ_SYS1_PLL_800M>;
-> 			assigned-clock-rates =3D <600000000>, <600000000>, <800000000>;
-> 			power-domains =3D <&pgc_vpu>;
-> 			status =3D "disabled";
-> 		};
->=20
-> I've not aware of any other OS or booloader that offers media capabilitie=
-s using
-> Linux mainline DT. The now deprecated nxp,imx8mq-vpu compatible had a sho=
-rt live
-> in the Linux tree if my memory is correct. Hope this is enough justificat=
-ion.
-
-Yeah, and this kind of detail (plus the fact that the driver emitted a
-warning) are very helpful in the commit message for patches like this.
-Hint hint Benjamin!
-
---mC0ZFJQ+JqSh31eF
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaramhQAKCRB4tDGHoIJi
-0vuwAP97l8f+kng/LRWQUycXlp59bH1E1WLY6HcLhXhNVw5eZQD+M4FadnRs+7cb
-V/japjgTQ7Y+cGI9P1+T2PE+6OiOpgA=
-=dwjl
------END PGP SIGNATURE-----
-
---mC0ZFJQ+JqSh31eF--
 
 
---===============3277571441790982988==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+On 2026-09-22 11:26, Nicolas Frattaroli wrote:
+>>> + * VRR Limiter/Target Properties
+>>> + * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>> + *
+>>> + * The ``VRR_{MIN,MAX}_{NUMERATOR,DENOMINATOR}`` properties expose a mechanism
+>>> + * through which userspace can control the desired range of refresh rates in
+>>> + * which VRR is allowed to operate. Each rate is expressed as a
+>>> + * numerator/denominator fraction of refresh rates in Hz, allowing for rational
+>>> + * target rates like 24/1.001 Hz with no loss of precision or ambiguity.
+>>> + *
+>>> + * If the minimum and maximum rate are set to the same value (and not 0), they
+>>> + * are understood as a fixed target rate. This is especially useful for media
+>>> + * playback, where the content's frame rate is both constant and known in
+>>> + * advance. In such cases, a refresh rate that is not an integer multiple of the
+>>> + * content's frame rate will introduce judder, since not every frame is
+>>> + * displayed for the same amount of time. A modeset of the display with a
+>>> + * compatible rate may in those cases be either undesirable or impossible, but
+>>> + * the rate can still effectively be reached through VRR.
+>>> + *
+>>> + * .. _VRR-MIN-NUMERATOR:
+>>> + *
+>>> + * "VRR_MIN_NUMERATOR":
+>>> + *	Default &drm_crtc integer property forming the numerator of a
+>>> + *	numerator/denominator pair of a frame rate to set as the minimum VRR
+>>> + *	target rate. Set to 0 to disable.
+>>> + *
+>>> + * "VRR_MIN_DENOMINATOR":
+>>> + *	Default &drm_crtc integer property forming the denominator of a
+>>> + *	numerator/denominator pair of a frame rate to set as the minimum VRR
+>>> + *	target rate. If :ref:`VRR_MIN_NUMERATOR <VRR-MIN-NUMERATOR>` is not
+>>> + *	zero, it must be non-zero.
+>>> + *	Otherwise, must also be zero.
+>>> + *
+>>> + * .. _VRR-MAX-NUMERATOR:
+>>> + *
+>>> + * "VRR_MAX_NUMERATOR":
+>>> + *	Default &drm_crtc integer property forming the numerator of a
+>>> + *	numerator/denominator pair of a frame rate to set as the maximum VRR
+>>> + *	target rate. Set to 0 to disable.
+>>> + *
+>>> + * "VRR_MAX_DENOMINATOR":
+>>> + *	Default &drm_crtc integer property forming the denominator of a
+>>> + *	numerator/denominator pair of a frame rate to set as the maximum VRR
+>>> + *	target rate. If :ref:`VRR_MAX_NUMERATOR <VRR-MAX-NUMERATOR>` is not
+>>> + *	zero, it must be non-zero. Otherwise, must also be zero.
+>>>   */
+>> If VRR_MIN_NUMERATOR == 0 && VRR_MAX_NUMERATOR > 0, do we interpret that as
+>> vrr limiting is disabled?
+> You can picture VRR limiting as always being active, but with a limit rational
+> of 0 it uses the display's limit as per the EDID, which is what unlimited game
+> mode is. So with how it's implemented right now in hdmi_validate_vrr(), your
+> example would set a maximum target, but leave the minimum at whatever the
+> display defaults to.
+> 
+> Now that I'm thinking through this, a possible problem is that
+> drm_crtc_helper_vrr_is_fixed_rate() operates on the user supplied limits, but
+> if the display supplied lower limit is equal to the user supplied upper limit,
+> then we have a fixed rate scenario without recognising it as such. I think I
+> need to have a ponder on what the least surprising behaviour for userspace
+> is in that instance. The display limit stuff gets a bit complex due to
+> CinemaVRR and QMS TFRmin/TFRmax.
+> 
+> I'll improve the documentation on the next revision to make the meanings more
+> explicit.
+
+Perhaps a simple way is to require simultaneous setting MIN and MAX pairs?
+IOW, require userspace to set MIN and MAX simultaneously to >0, or =0. For example:
+
+if ((vrr_min_n == 0 || vrr_min_d == 0 ||
+     vrr_max_n == 0 || vrr_max_d == 0) &&
+    (vrr_min_n > 0 || vrr_max_n > 0))
+	return -EINVAL;
+
+That way, it's never ambiguous what userspace has requested for the range. They can copy the EDID supported range if they don't care about limiting one side, rather than leaving it at 0. It's then also clear if they requested a static Hz.
+
+Thanks,
+Leo
+ 
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3277571441790982988==--
-
