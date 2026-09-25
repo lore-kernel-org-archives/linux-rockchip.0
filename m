@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01290C98324
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 08:52:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C305C9830E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 08:52:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pkLAuW6XttR+loovrIc/C5xF6+ogJBiapfxMicRHVGE=; b=1BtnI3/GTes4Q/
-	S5uHYRQH6YXugzS84BnmJWo3NOxtlNTFUR2UAlLl4EBEDp+3xmsJ4L5mVP79K5cFJLD7RAD4b0Vqv
-	gWS0u3eVlSHKHftIYaU3xV9ASrVjqj5J/9yiXAOHNAX5oDx371eNkvU/73WEOx24XUFPHsc+Npk9i
-	1Pnx6FkSTqJoBy399jvWaLnnRqYHQnknF+IxRHkM7SRJqi6FHbQlw9NOAd4zICdb3Kud4kJzYUkja
-	wF7V+/OrPUGxxkubjj+FoXg5wv59du998X0ZtF0+wO+XMk0p5sGJq5uStvehZvUaLc4DR0rT5VeRm
-	mYtRI0pFuhrfmSswe+mQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ArM5aTKD4SGIC4ONsA+ap5tk/JtVV5Rkvso36DGOn04=; b=JAFXzOxX1mvb64
+	wAApi48jtTFKVMBDBjPyNk+XsrcT/UH2HxFsPI+FoD88iifDGG9T2atXTaTnbDMHxF1wJwREgA/48
+	HwIL2VLEnBjMdYMAfMSBSTnIGyxIXKHpqRRaytOcyoy+lK8lut3bbcogvuZ7l+ZacEjBGv1CpiXdL
+	YJrwCwFYMDznrt3aIJayew3g1MGd/arS9tUE63UpXJ29IKrVIkNIRqBw84WgWGrnRQjrOH9MFXVkm
+	/lAU31R2DtJYu4R5opLtbnQGxBqN5MaDf/3GI8nQ8BVCqCE+SxDYYVi3jWvEaTS3/DZLHis04mTG6
+	A/81o31m9LU1roLlU6+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA1f5-0000000CwMA-4BqO;
-	Fri, 25 Sep 2026 08:52:08 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xA1f5-0000000CwKf-1eSJ;
+	Fri, 25 Sep 2026 08:52:07 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA1f0-0000000CwHm-1wFo;
-	Fri, 25 Sep 2026 08:52:05 +0000
+	id 1xA1f0-0000000CwHt-0wFy;
+	Fri, 25 Sep 2026 08:52:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790326318;
-	bh=gAAyuNdQDF4ETHAyne1/X64Yklt1QaBJ5mcW8AeGkoE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=WTLBEUVwode5zVuZsQnq8+DygSlEAFqxiBLy5xCWYv0F35XocViURSS9rxdpS5iv8
-	 PKNpJudbNIIJ4SihAlgEg+wVrkKq20Z9AeZzwSg7m0gDtgKRPzOw7UhVDeNkDnl7Ph
-	 Drt6zcXO26+pLu58L3d5AA7diaIpiILEWpZQfgn3Ye1plH7j9yTcrsk2+x76sRuDtD
-	 TK9bKIsx7BfRr3FtW3BoUjd1CCVEBRglh/xN9fr3bGeA3904WOQgGCXIOIE3oSuhjd
-	 fiBGB716cqyS78d/JbMTbkBfSJ3+TspwiEnl3U0ljjr3AQH9/Mhnj6LnlvPj7VtHBk
-	 B3VY3qFPeWsDw==
+	s=mail; t=1790326317;
+	bh=0ww6mYNLdL0BcAvD2/pYjaJdM/Z/4qussweK6HJ34hA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=pQqjLsGzUjLdS4pEd6D+E96QGLgNTZZ4wLp6Dpxz3I45a+0elNWCyLSP32UfUz6SS
+	 BJEi2ZqBnEo7dqgvCmBlgMkGd5G1eHKofPRL+GlGqaQl3eBEu28TTdB/o6rgKj/KiD
+	 I8yesRrXAE9PIL1bY+o0/JiK42fa/NU0u5vLElfoR7YQrqUSa6cv1vObegB3YRyg3s
+	 QrJhfnS/aDpT9Rd2WvEbuqqRGe96EvL0KRogGVR00AuSNd5H4OEOqTQkk/WUo4aUwM
+	 Jd4KQEDb/Qjt+nBab9gJMzNmTxXLVsrP8vFwwzKovxh6FkgaHHsHtTPRT8qpovFPyO
+	 73kHFMWlD/qYg==
 Received: from benjamin-XPS-13-9310 (unknown [100.64.1.43])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0738417E0A27;
-	Fri, 25 Sep 2026 10:51:58 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 621FE17E09D6;
+	Fri, 25 Sep 2026 10:51:57 +0200 (CEST)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: nicolas.dufresne@collabora.com,
 	benjamin.gaignard@collabora.com,
@@ -63,16 +63,15 @@ Cc: linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v4 1/3] media: verisilicon: Remove deprecated variant
-Date: Fri, 25 Sep 2026 10:51:50 +0200
-Message-ID: <20260925085152.41852-2-benjamin.gaignard@collabora.com>
+Subject: [PATCH v4 0/3] media: verisilicon: remove unused variant and code clean up
+Date: Fri, 25 Sep 2026 10:51:49 +0200
+Message-ID: <20260925085152.41852-1-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260925085152.41852-1-benjamin.gaignard@collabora.com>
-References: <20260925085152.41852-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260925_015202_652952_1473229D 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20260925_015202_419731_F0A51AAB 
+X-CRM114-Status: UNSURE (   7.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,185 +88,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-"nxp,imx8mq-vpu" is tagged as deprecated since:
-commit f3116f2e52e6 ("media: dt-bindings: media: nxp, imx8mq-vpu: Split G1 and G2 nodes")
-merged since v5.17-rc1. There is more reference to it since that.
-Remove for driver to clean up the code.
+"nxp,imx8mq-vpu" variant has been tagged as deprecated since 4 years
+now. This series remove it and make some context's fields useless so
+remove them too.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
 changes in v4:
-- rework commit message
+- rework commits messages
+- add r-b tag
 
- .../media/platform/verisilicon/hantro_drv.c   |  10 --
+changes in v3:
+- remove more dead code
+
+changes in v2:
+- have a separate patch for documentation
+- fix dt-bindings
+- rebased on v7.3-rc1
+
+
+Benjamin Gaignard (3):
+  media: verisilicon: Remove deprecated variant
+  media: dt-bindings: media: nxp, imx8mq-vpu: Remove nxp,imx8mq-vpu
+  media: verisilicon: Remove useless internal fields
+
+ .../bindings/media/nxp,imx8mq-vpu.yaml        |  10 +-
+ drivers/media/platform/verisilicon/hantro.h   |   9 +-
+ .../media/platform/verisilicon/hantro_drv.c   |  30 +----
  .../media/platform/verisilicon/imx8m_vpu_hw.c | 105 ------------------
- 2 files changed, 115 deletions(-)
+ 4 files changed, 11 insertions(+), 143 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index ad71c0402ef3..12c804dcc669 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -725,7 +725,6 @@ static const struct of_device_id of_hantro_match[] = {
- #endif
- #ifdef CONFIG_VIDEO_HANTRO_IMX8M
- 	{ .compatible = "nxp,imx8mm-vpu-g1", .data = &imx8mm_vpu_g1_variant, },
--	{ .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
- 	{ .compatible = "nxp,imx8mq-vpu-g1", .data = &imx8mq_vpu_g1_variant },
- 	{ .compatible = "nxp,imx8mq-vpu-g2", .data = &imx8mq_vpu_g2_variant },
- #endif
-@@ -1100,15 +1099,6 @@ static int hantro_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
--	/*
--	 * Support for nxp,imx8mq-vpu is kept for backwards compatibility
--	 * but it's deprecated. Please update your DTS file to use
--	 * nxp,imx8mq-vpu-g1 or nxp,imx8mq-vpu-g2 instead.
--	 */
--	if (of_device_is_compatible(pdev->dev.of_node, "nxp,imx8mq-vpu"))
--		dev_warn(&pdev->dev, "%s compatible is deprecated\n",
--			 match->compatible);
--
- 	INIT_DELAYED_WORK(&vpu->watchdog_work, hantro_watchdog);
- 
- 	vpu->clocks = devm_kcalloc(&pdev->dev, vpu->variant->num_clocks,
-diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-index fa4224de4b99..b091d807ae4e 100644
---- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-@@ -25,55 +25,6 @@
- #define CTRL_G1_PP_FUSE		0x0c
- #define CTRL_G2_DEC_FUSE	0x10
- 
--static void imx8m_soft_reset(struct hantro_dev *vpu, u32 reset_bits)
--{
--	u32 val;
--
--	/* Assert */
--	val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
--	val &= ~reset_bits;
--	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
--
--	udelay(2);
--
--	/* Release */
--	val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
--	val |= reset_bits;
--	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
--}
--
--static void imx8m_clk_enable(struct hantro_dev *vpu, u32 clock_bits)
--{
--	u32 val;
--
--	val = readl(vpu->ctrl_base + CTRL_CLOCK_ENABLE);
--	val |= clock_bits;
--	writel(val, vpu->ctrl_base + CTRL_CLOCK_ENABLE);
--}
--
--static int imx8mq_runtime_resume(struct hantro_dev *vpu)
--{
--	int ret;
--
--	ret = clk_bulk_prepare_enable(vpu->variant->num_clocks, vpu->clocks);
--	if (ret) {
--		dev_err(vpu->dev, "Failed to enable clocks\n");
--		return ret;
--	}
--
--	imx8m_soft_reset(vpu, RESET_G1 | RESET_G2);
--	imx8m_clk_enable(vpu, CLOCK_G1 | CLOCK_G2);
--
--	/* Set values of the fuse registers */
--	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_DEC_FUSE);
--	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_PP_FUSE);
--	writel(0xffffffff, vpu->ctrl_base + CTRL_G2_DEC_FUSE);
--
--	clk_bulk_disable_unprepare(vpu->variant->num_clocks, vpu->clocks);
--
--	return 0;
--}
--
- /*
-  * Supported formats.
-  */
-@@ -234,45 +185,10 @@ static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
- 	},
- };
- 
--static int imx8mq_vpu_hw_init(struct hantro_dev *vpu)
--{
--	vpu->ctrl_base = vpu->reg_bases[vpu->variant->num_regs - 1];
--
--	return 0;
--}
--
--static void imx8m_vpu_g1_reset(struct hantro_ctx *ctx)
--{
--	struct hantro_dev *vpu = ctx->dev;
--
--	imx8m_soft_reset(vpu, RESET_G1);
--}
--
- /*
-  * Supported codec ops.
-  */
- 
--static const struct hantro_codec_ops imx8mq_vpu_codec_ops[] = {
--	[HANTRO_MODE_MPEG2_DEC] = {
--		.run = hantro_g1_mpeg2_dec_run,
--		.reset = imx8m_vpu_g1_reset,
--		.init = hantro_mpeg2_dec_init,
--		.exit = hantro_mpeg2_dec_exit,
--	},
--	[HANTRO_MODE_VP8_DEC] = {
--		.run = hantro_g1_vp8_dec_run,
--		.reset = imx8m_vpu_g1_reset,
--		.init = hantro_vp8_dec_init,
--		.exit = hantro_vp8_dec_exit,
--	},
--	[HANTRO_MODE_H264_DEC] = {
--		.run = hantro_g1_h264_dec_run,
--		.reset = imx8m_vpu_g1_reset,
--		.init = hantro_h264_dec_init,
--		.exit = hantro_h264_dec_exit,
--	},
--};
--
- static const struct hantro_codec_ops imx8mq_vpu_g1_codec_ops[] = {
- 	[HANTRO_MODE_MPEG2_DEC] = {
- 		.run = hantro_g1_mpeg2_dec_run,
-@@ -319,30 +235,9 @@ static const struct hantro_irq imx8mq_g2_irqs[] = {
- 	{ "g2", hantro_g2_irq },
- };
- 
--static const char * const imx8mq_clk_names[] = { "g1", "g2", "bus" };
--static const char * const imx8mq_reg_names[] = { "g1", "g2", "ctrl" };
- static const char * const imx8mq_g1_clk_names[] = { "g1" };
- static const char * const imx8mq_g2_clk_names[] = { "g2" };
- 
--const struct hantro_variant imx8mq_vpu_variant = {
--	.dec_fmts = imx8m_vpu_dec_fmts,
--	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_dec_fmts),
--	.postproc_fmts = imx8m_vpu_postproc_fmts,
--	.num_postproc_fmts = ARRAY_SIZE(imx8m_vpu_postproc_fmts),
--	.postproc_ops = &hantro_g1_postproc_ops,
--	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
--		 HANTRO_H264_DECODER,
--	.codec_ops = imx8mq_vpu_codec_ops,
--	.init = imx8mq_vpu_hw_init,
--	.runtime_resume = imx8mq_runtime_resume,
--	.irqs = imx8mq_irqs,
--	.num_irqs = ARRAY_SIZE(imx8mq_irqs),
--	.clk_names = imx8mq_clk_names,
--	.num_clocks = ARRAY_SIZE(imx8mq_clk_names),
--	.reg_names = imx8mq_reg_names,
--	.num_regs = ARRAY_SIZE(imx8mq_reg_names)
--};
--
- static const struct of_device_id imx8mq_vpu_shared_resources[] = {
- 	{ .compatible = "nxp,imx8mq-vpu-g1", },
- 	{ .compatible = "nxp,imx8mq-vpu-g2", },
 -- 
 2.53.0
 
