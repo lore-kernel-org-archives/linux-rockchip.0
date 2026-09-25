@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9983CC9831E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Sep 2026 22:43:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4B84C98318
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 02:03:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8Nc1vYpTEEu87r1uZnpxGPnEyVBa4nWFWZtYzIl+mI0=; b=fgGMmbQ5yKSKtZ
-	MgZIYxLI3w6rRA8FiladwtmBkQ9PjOMfr+q+X2mmOwHiHYGSzlscMK61U1CK3iVpz+fgV6QRtD6uH
-	+WEtPKqHzYNEr52S5pNgxpEw7nogyKBTpALAltV/VyE1nydEYatYPvbum4lxpesE43AdyDS8EiqOt
-	GVZwyKanebNWTWrPQDGH7gLPIPSDawsKFomnCU0kliVE+MItC4VZJ5c8e1joy/7cXWgqVKBFHr6l5
-	BEDvLl7umwHYPn2hyW+bTJRxbTANrC78WkLIrpji2JKhILRGjNeCfLoEunM6Sc3kcgoN3RAGatQuE
-	iz+MRpUrstYnCxEJ+Mvg==;
+	List-Owner; bh=FwnMWiINumE50ERXJO80nP2X9UQACS0g/YlYLg1IHc8=; b=ptUsGOjg4TfRj2
+	sN2ozwIFqKIjakOEJ5LjskdJFZzeYTWcB71159mfFx3ft+wT1jJ/8zVSobzXUqwo/pslRIzusmbnv
+	Eus2+d2TJKnl7C1Uz/6sfTLnY4nR2A2B6yJ9Pzq1QwCgPNqYKzkbxxZQ9HYlmlFX3I1gZkppLXTTF
+	HoITHLQeOF2NQnzrTr1HYfZz3txwFOyjs45phxHfBU7NJEeBQnYN4LITDRtJYgELd64J24bxJg4Ek
+	BPAgrJei/tLQRNpANqQZ8ELK8zfpMrBVM1ZyGbv7OHIGzaT9TlYZeidWsNB57Q56IvCjNmWhKtsWq
+	KFvr9AoBcyxffHbtju7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9s9i-0000000CJGg-10yP;
-	Thu, 24 Sep 2026 22:43:06 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1x9vI0-0000000CVp3-2zw7;
+	Fri, 25 Sep 2026 02:03:52 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9s9f-0000000CJEu-0W0R;
-	Thu, 24 Sep 2026 22:43:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1790289783; x=1821825783;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=5k6ew4bZKs5Kak0IIZkqP5OL1erIyyXEfACAGORomcc=;
-  b=decaKPbU/p7zeQI2+zBZRLX+e64QZlwazVWCzaTmMOnTJsXHFY3438un
-   M3TQmTGEoGn53cCVTeLTAlEBuoat4oKLYyAkYcPWM+Q2F5k3jzPksa4Ix
-   hWYs9/CHkMhhe2QW3050vm2QQLk7CBac2sUMuq3lbfVm0N3UbQwWP6/II
-   UjCX+8YjGGUa3hiAtDv7rzjKpzLsefNg4+iG9K1esRqiwUTRR2dsZJ4wO
-   5WKuxbzSQYm31Saje5/gh0HqR8DvzDxYMlu6iRvJtcWKsJN0oOfsrcWR1
-   e8+fdhC8OVvprU1rBCYpY/GjuL7nABm1nxRi/4h9hx75qSe7na6MTdfuw
-   g==;
-X-CSE-ConnectionGUID: /oPqw4s2Qy6Wu/mKNoOoHg==
-X-CSE-MsgGUID: JzU+pS/zRYemynvur9QCUA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11915"; a="107459061"
-X-IronPort-AV: E=Sophos;i="6.27,121,1787036400"; 
-   d="scan'208";a="107459061"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Sep 2026 15:43:01 -0700
-X-CSE-ConnectionGUID: U5Dk8CFqRMui2FINcs4gCw==
-X-CSE-MsgGUID: 0sfLiX2TT1WjCokNpBJP4Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,121,1787036400"; 
-   d="scan'208";a="272276214"
-Received: from igk-lkp-server01.igk.intel.com (HELO a88263cc608e) ([10.211.93.152])
-  by orviesa010.jf.intel.com with ESMTP; 24 Sep 2026 15:42:58 -0700
-Received: from kbuild by a88263cc608e with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1x9s9U-000000000Sk-1VZT;
-	Thu, 24 Sep 2026 22:42:52 +0000
-Date: Fri, 25 Sep 2026 00:42:13 +0200
-From: kernel test robot <lkp@intel.com>
-To: Coia Prant <coiaprant@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: oe-kbuild-all@lists.linux.dev,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Coia Prant <coiaprant@gmail.com>
-Subject: Re: [PATCH net] net: ethernet: stmmac: dwmac-rk: fix bulk clock leak
- when the PHY clock fails
-Message-ID: <202609250009.lQiuYnR7-lkp@intel.com>
-References: <20260919174223.2356964-1-coiaprant@gmail.com>
+	id 1x9vHo-0000000CVjS-2l7D;
+	Fri, 25 Sep 2026 02:03:40 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 867AC6022E;
+	Fri, 25 Sep 2026 02:03:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C17431F00893;
+	Fri, 25 Sep 2026 02:03:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790301819;
+	bh=2DcEvfwfmeVBZJUGXm+guglmvCS4PPEV/BwTo5J2CK8=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=j2IWEw2XjaXAKHXjlq/hSecnxIaNI96jV/cdtiOIjs0hrVaqddPU2KgtIpqwzhdI/
+	 Vc5t30TIluHsim1Cu1eDG5nQqEDg3gVLlmTWWLCYyBeowOiQj4SoL2WadbBJNOKL0Y
+	 25PeBfxgqNu4iqIxwOOOIgU3Cr6JRMB6JcjnkBlS0wuyjZjCiVmL9VaPH82NSqQEbz
+	 v03gQ3C23S0I/LA2DNOFFLny5UAHXkXHXQr1o+w4diItkyxnNOahXcKY4MQj+voR7f
+	 nzToISoDB7OAxyJgYRcGP507tClq2PJpZnUDDD2Jyfi8CKMKqQLtewrhNZBqr4W+zF
+	 Yq8/xKfPQ7COQ==
+Subject: Re: [PATCH net-next v10 02/11] dt-bindings: phy: rockchip:
+ naneng-combphy: add rockchip,sgmii-mac-sel property
+From: netdev-bot+sashiko@kernel.org
+To: coiaprant@gmail.com
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, heiko@sntech.de, vkoul@kernel.org,
+ maxime.chevallier@bootlin.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, prabhakar.mahadev-lad.rj@bp.renesas.com,
+ romain.gantois@bootlin.com, hkallweit1@gmail.com, neil.armstrong@linaro.org,
+ linux@armlinux.org.uk, shawn.lin@rock-chips.com, david@ixit.cz,
+ netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org
+Date: Fri, 25 Sep 2026 02:03:37 +0000
+Message-ID: <179030181733.2160803.4810080310196721706@kernel.org>
+In-Reply-To: <20260922200336.2201212-3-coiaprant@gmail.com>
+References: <20260922200336.2201212-3-coiaprant@gmail.com>
+X-sashiko-severity: Low
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260919174223.2356964-1-coiaprant@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_154303_238693_D784561B 
-X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,101 +73,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Coia,
-
-kernel test robot noticed the following build warnings:
-
-[auto build test WARNING on net/main]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Coia-Prant/net-ethernet-stmmac-dwmac-rk-fix-bulk-clock-leak-when-the-PHY-clock-fails/20260920-014223
-base:   net/main
-patch link:    https://lore.kernel.org/r/20260919174223.2356964-1-coiaprant%40gmail.com
-patch subject: [PATCH net] net: ethernet: stmmac: dwmac-rk: fix bulk clock leak when the PHY clock fails
-config: loongarch-allyesconfig (https://download.01.org/0day-ci/archive/20260925/202609250009.lQiuYnR7-lkp@intel.com/config)
-compiler: clang version 22.1.8 (https://github.com/llvm/llvm-project ca7933e47d3a3451d81e72ac174dcb5aa28b59d1)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260925/202609250009.lQiuYnR7-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202609250009.lQiuYnR7-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1168:5: warning: misleading indentation; statement is not part of the previous 'if' [-Wmisleading-indentation]
-    1168 |                                 return ret;
-         |                                 ^
-   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1165:4: note: previous statement is here
-    1165 |                         if (ret)
-         |                         ^
-   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1177:2: warning: non-void function does not return a value in all control paths [-Wreturn-type]
-    1177 |         } else {
-         |         ^
-   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1177:4: error: expected identifier or '('
-    1177 |         } else {
-         |           ^
-   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1189:2: error: expected identifier or '('
-    1189 |         return 0;
-         |         ^
-   drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c:1190:1: error: extraneous closing brace ('}')
-    1190 | }
-         | ^
-   2 warnings and 3 errors generated.
-
-
-vim +/if +1168 drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-
-7ad269ea1a2b7d Roger Chen            2014-12-29  1152  
-7ad269ea1a2b7d Roger Chen            2014-12-29  1153  static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
-7ad269ea1a2b7d Roger Chen            2014-12-29  1154  {
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1155  	int ret;
-7ad269ea1a2b7d Roger Chen            2014-12-29  1156  
-7ad269ea1a2b7d Roger Chen            2014-12-29  1157  	if (enable) {
-7ad269ea1a2b7d Roger Chen            2014-12-29  1158  		if (!bsp_priv->clk_enabled) {
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1159  			ret = clk_bulk_prepare_enable(bsp_priv->num_clks,
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1160  						      bsp_priv->clks);
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1161  			if (ret)
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1162  				return ret;
-7ad269ea1a2b7d Roger Chen            2014-12-29  1163  
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1164  			ret = clk_prepare_enable(bsp_priv->clk_phy);
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1165  			if (ret)
-cb278e6780d874 Coia Prant            2026-09-20  1166  				clk_bulk_disable_unprepare(bsp_priv->num_clks,
-cb278e6780d874 Coia Prant            2026-09-20  1167  							   bsp_priv->clks);
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07 @1168  				return ret;
-cb278e6780d874 Coia Prant            2026-09-20  1169  			}
-23c94d63a7e395 David Wu              2018-06-28  1170  
-5c1fc7cb81dfed Russell King (Oracle  2026-02-04  1171) 			rk_configure_io_clksel(bsp_priv);
-5c1fc7cb81dfed Russell King (Oracle  2026-02-04  1172) 			rk_ungate_rmii_clock(bsp_priv);
-2f2b60a0ec2826 David Wu              2022-08-30  1173  
-7ad269ea1a2b7d Roger Chen            2014-12-29  1174  			mdelay(5);
-7ad269ea1a2b7d Roger Chen            2014-12-29  1175  			bsp_priv->clk_enabled = true;
-7ad269ea1a2b7d Roger Chen            2014-12-29  1176  		}
-7ad269ea1a2b7d Roger Chen            2014-12-29  1177  	} else {
-7ad269ea1a2b7d Roger Chen            2014-12-29  1178  		if (bsp_priv->clk_enabled) {
-5c1fc7cb81dfed Russell King (Oracle  2026-02-04  1179) 			rk_gate_rmii_clock(bsp_priv);
-7f864458e9a6d2 Sebastian Reichel     2025-10-14  1180  
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1181  			clk_bulk_disable_unprepare(bsp_priv->num_clks,
-ea449f7fa0bf3f Sebastian Reichel     2023-04-07  1182  						   bsp_priv->clks);
-fecd4d7eef8b21 David Wu              2017-08-10  1183  			clk_disable_unprepare(bsp_priv->clk_phy);
-fecd4d7eef8b21 David Wu              2017-08-10  1184  
-7ad269ea1a2b7d Roger Chen            2014-12-29  1185  			bsp_priv->clk_enabled = false;
-7ad269ea1a2b7d Roger Chen            2014-12-29  1186  		}
-7ad269ea1a2b7d Roger Chen            2014-12-29  1187  	}
-7ad269ea1a2b7d Roger Chen            2014-12-29  1188  
-7ad269ea1a2b7d Roger Chen            2014-12-29  1189  	return 0;
-7ad269ea1a2b7d Roger Chen            2014-12-29  1190  }
-7ad269ea1a2b7d Roger Chen            2014-12-29  1191  
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhhbmsgeW91IGZvciB5b3VyIGNvbnRyaWJ1dGlvbiEgU2FzaGlrbyBBSSByZXZpZXcgZm91bmQg
+bW9yZSBzZXZlcmUKaXNzdWUocykgaW4gb3RoZXIgcGF0Y2hlcyBvZiB0aGlzIHNlcmllcy4gVGhp
+cyBtYWlsIGlzIG9ubHkgYW4gRllJLCBpbiBjYXNlCnlvdSB3YW50IHRvIGFkZHJlc3MgdGhlIG5p
+dCBwaWNrcyBiZWxvdyB3aGVuIHlvdSByZXNwaW4uCgpMb3cgcHJpb3JpdHkgLyBuaXQgcGlja3Mg
+Zm9yIHlvdXIgY29uc2lkZXJhdGlvbjoKCi0gW0xvd10gQ29uY2VybiAodmVyaWZpZWQgRkFMU0Ug
+UE9TSVRJVkUsIHJldGFpbmVkIGZvciBwb2xpY3kpOiAiVGhlCiAgYmluZGluZyBkb2N1bWVudHMg
+YHJvY2tjaGlwLHNnbWlpLW1hYy1zZWxgIGJ1dCBubyBpbi10cmVlIGNvZGUgcmVhZHPigKYKCi0t
+CgpkdC1iaW5kaW5nczogcGh5OiByb2NrY2hpcDogbmFuZW5nLWNvbWJwaHk6IGFkZCByb2NrY2hp
+cCxzZ21paS1tYWMtc2VsIHByb3BlcnR5CgpUaGlzIGFkZHMgYW4gb3B0aW9uYWwgcm9ja2NoaXAs
+c2dtaWktbWFjLXNlbCBwcm9wZXJ0eSB0byB0aGUgUm9ja2NoaXAKbmFuZW5nLWNvbWJwaHkgYmlu
+ZGluZyBzbyBhIGRldmljZSB0cmVlIGNhbiBzZWxlY3Qgd2hldGhlciB0aGUgUkszNTY4ClNHTUlJ
+IGludGVyZmFjZSBpcyByb3V0ZWQgdG8gR01BQzAgb3IgR01BQzEuIFRoZSBwcm9wZXJ0eSBpcyBh
+IHVpbnQzMgpsaW1pdGVkIHRvIDAgb3IgMSwgZGVmYXVsdGluZyB0byAxLCBhbmQgaXMgb25seSBh
+bGxvd2VkIGZvciB0aGUgUkszNTY4CmNvbXBhdGlibGUuCgo+IGRpZmYgLS1naXQgYS9Eb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcGh5L3BoeS1yb2NrY2hpcC1uYW5lbmctY29tYnBo
+eS55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9waHktcm9ja2No
+aXAtbmFuZW5nLWNvbWJwaHkueWFtbAo+IGluZGV4IDM3OWIwOGJkOWU5N2EuLjhlODk4YmNlOWFm
+NzMgMTAwNjQ0Cj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9w
+aHktcm9ja2NoaXAtbmFuZW5nLWNvbWJwaHkueWFtbAo+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9waHkvcGh5LXJvY2tjaGlwLW5hbmVuZy1jb21icGh5LnlhbWwKPiBA
+QCAtODAsNiArODAsMTUgQEAgcHJvcGVydGllczoKPiAgICAgIGRlc2NyaXB0aW9uOgo+ICAgICAg
+ICBTb21lIGFkZGl0aW9uYWwgcGlwZSBzZXR0aW5ncyBhcmUgYWNjZXNzZWQgdGhyb3VnaCBHUkYg
+cmVncy4KPiAgCj4gKyAgcm9ja2NoaXAsc2dtaWktbWFjLXNlbDoKPiArICAgICRyZWY6IC9zY2hl
+bWFzL3R5cGVzLnlhbWwjL2RlZmluaXRpb25zL3VpbnQzMgo+ICsgICAgZW51bTogWzAsIDFdCj4g
+KyAgICBkZWZhdWx0OiAxCj4gKyAgICBkZXNjcmlwdGlvbjoKPiArICAgICAgU2VsZWN0IGdtYWMw
+IG9yIGdtYWMxIHRvIGJlIHVzZWQgYXMgU0dNSUkgY29udHJvbGxlci4KPiArICAgICAgVGhlIGhh
+cmR3YXJlIHJlc2V0IHZhbHVlIGlzIEdNQUMxICgxKS4gU2V0IHRoaXMgdG8gMCB0byByb3V0ZQo+
+ICsgICAgICBTR01JSSB0byBHTUFDMC4KPiArCgpbU2V2ZXJpdHk6IExvd10KVGhpcyBpc24ndCBh
+IGJ1ZywganVzdCBhIG5vdGUgb24gb3JkZXJpbmcgd2l0aGluIHRoZSBzZXJpZXMuCgpBdCB0aGlz
+IGNvbW1pdCBhbG9uZSwgbm90aGluZyBpbiB0cmVlIHJlYWRzIHJvY2tjaGlwLHNnbWlpLW1hYy1z
+ZWwsIHNvIGEKZGV2aWNlIHRyZWUgc2V0dGluZyBpdCB0byAwIHdvdWxkIHZhbGlkYXRlIHdpdGhv
+dXQgYW55IGVmZmVjdCBvbiB0aGUKcGlwZSBHUkYgbXV4IGJpdC4KCkNoZWNraW5nIHRoZSByZXN0
+IG9mIHRoZSBzZXJpZXMsIHRoZSBjb25zdW1lciBkb2VzIGxhbmQgaW1tZWRpYXRlbHkKYWZ0ZXJ3
+YXJkczogcm9ja2NoaXBfY29tYnBoeV9wYXJzZV9kdCgpIGluCmRyaXZlcnMvcGh5L3JvY2tjaGlw
+L3BoeS1yb2NrY2hpcC1uYW5lbmctY29tYnBoeS5jIGdhaW5zCgoJcHJpdi0+c2dtaWlfbWFjX3Nl
+bCA9IDE7CglkZXZpY2VfcHJvcGVydHlfcmVhZF91MzIoZGV2LCAicm9ja2NoaXAsc2dtaWktbWFj
+LXNlbCIsICZwcml2LT5zZ21paV9tYWNfc2VsKTsKCmFuZCB0aGUgUEhZX1RZUEVfU0dNSUkgY2Fz
+ZSBvZiByazM1NjhfY29tYnBoeV9jZmcoKSBwcm9ncmFtcyB0aGUgYml0CmRlc2NyaWJlZCBoZXJl
+OgoKCQlyb2NrY2hpcF9jb21icGh5X3BhcmFtX3dyaXRlKHByaXYtPnBpcGVfZ3JmLCAmY2ZnLT5w
+aXBlX3NnbWlpX21hY19zZWwsCgkJCQkJICAgICBwcml2LT5zZ21paV9tYWNfc2VsID4gMCk7Cgp3
+aXRoIHRoZSBtYXRjaGluZyBkZXNjcmlwdG9yIGFkZGVkIHRvIHJrMzU2OF9jb21icGh5X2dyZmNm
+Z3MsIHNvIHRoZQpiZWhhdmlvdXIgaXMgY29tcGxldGUgYXQgdGhlIGVuZCBvZiB0aGUgc2VyaWVz
+IGFuZCBubyBjaGFuZ2UgaXMgbmVlZGVkCmhlcmUuCgo+IFsgLi4uIF0KCi0tIApTYXNoaWtvIEFJ
+IHJldmlldyDCtyBodHRwczovL25ldGRldi1haS5ib3RzLmxpbnV4LmRldi9zYXNoaWtvLyMvcGF0
+Y2hzZXQvMjAyNjA5MjIyMDAzMzYuMjIwMTIxMi0xLWNvaWFwcmFudCU0MGdtYWlsLmNvbQoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
+aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
