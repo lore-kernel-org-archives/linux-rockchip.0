@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C305C9830E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0911C98328
 	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2026 08:52:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ArM5aTKD4SGIC4ONsA+ap5tk/JtVV5Rkvso36DGOn04=; b=JAFXzOxX1mvb64
-	wAApi48jtTFKVMBDBjPyNk+XsrcT/UH2HxFsPI+FoD88iifDGG9T2atXTaTnbDMHxF1wJwREgA/48
-	HwIL2VLEnBjMdYMAfMSBSTnIGyxIXKHpqRRaytOcyoy+lK8lut3bbcogvuZ7l+ZacEjBGv1CpiXdL
-	YJrwCwFYMDznrt3aIJayew3g1MGd/arS9tUE63UpXJ29IKrVIkNIRqBw84WgWGrnRQjrOH9MFXVkm
-	/lAU31R2DtJYu4R5opLtbnQGxBqN5MaDf/3GI8nQ8BVCqCE+SxDYYVi3jWvEaTS3/DZLHis04mTG6
-	A/81o31m9LU1roLlU6+g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=42SJJVBVUTlHIDZcm1DI/ZDAYwalYS6Rf/S/28HFm0g=; b=P261hQS3pFFzFL
+	WmRVn7ngujWCEZ2n4I6asW2Sj2CFY3FBhlUf/lahJ5sCMjcwnyH7IYG0gFoAHu/GL2P8fL0A/eTyv
+	SwBJaVa3IUP7bxTx3MR7wYl0BXMROpX+ViuKEFzgtG+TCmpLfDLKrGMYAXha/EPjJOtANxhpnm07R
+	w5uT/8Br/GLFn6QnPwXsb2IK+5oAIDB7nLhn8eB2O/Bc9tKDnCD8b4GdntbihFfOJpPpMAvQI2Cy9
+	Ys51zIjToY6RF0WU3z7mK4pnavhM4QoSfCrvbWv0JsAd9xVyJXlTsxKGrh5H8n0we3Drqs4OeRsi/
+	xzr7kMOe+DeLRfZfr8vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA1f5-0000000CwKf-1eSJ;
+	id 1xA1f5-0000000CwLg-3PQh;
 	Fri, 25 Sep 2026 08:52:07 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA1f0-0000000CwHt-0wFy;
-	Fri, 25 Sep 2026 08:52:03 +0000
+	id 1xA1f0-0000000CwHo-1wQD;
+	Fri, 25 Sep 2026 08:52:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790326317;
-	bh=0ww6mYNLdL0BcAvD2/pYjaJdM/Z/4qussweK6HJ34hA=;
-	h=From:To:Cc:Subject:Date:From;
-	b=pQqjLsGzUjLdS4pEd6D+E96QGLgNTZZ4wLp6Dpxz3I45a+0elNWCyLSP32UfUz6SS
-	 BJEi2ZqBnEo7dqgvCmBlgMkGd5G1eHKofPRL+GlGqaQl3eBEu28TTdB/o6rgKj/KiD
-	 I8yesRrXAE9PIL1bY+o0/JiK42fa/NU0u5vLElfoR7YQrqUSa6cv1vObegB3YRyg3s
-	 QrJhfnS/aDpT9Rd2WvEbuqqRGe96EvL0KRogGVR00AuSNd5H4OEOqTQkk/WUo4aUwM
-	 Jd4KQEDb/Qjt+nBab9gJMzNmTxXLVsrP8vFwwzKovxh6FkgaHHsHtTPRT8qpovFPyO
-	 73kHFMWlD/qYg==
+	s=mail; t=1790326319;
+	bh=ZuPNXX1+qsZvk0iXEuJy1uQgtAKbJEJY89mQB5qbWx4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=C5IBom2Y0kfp1WZ/DVyK+oiY9Nxi9oAwok6aU0MB8ZP64JKQy1swbBOp82BPe4NeI
+	 yqOCGZ62a2E8nToK8USJ8A1E4N5r5FcRAwWHFgFHijp5riUL27utzhrtce0MeCMnOP
+	 5g69/ZMc/osXM/gsMqek5ejtDOaiXhM9Xtx0GEWudKF6KNsfRbBPqteo+ASxt7B2Tw
+	 TbSRB8poZKfiV3L4kvVmAzeU7vdt4hMLmb7pR/HJFkI7GMMLFLpfnlMjU+nuBW7Q7u
+	 XeJvfSeFxOdZcCDoSTm0DjTJ16rJcpejp+ICWeVdCTcy9bbjVmtNsK7vMyZ+wIfI9N
+	 Cultti6EWu/Zg==
 Received: from benjamin-XPS-13-9310 (unknown [100.64.1.43])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 621FE17E09D6;
-	Fri, 25 Sep 2026 10:51:57 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3DA5917E0B59;
+	Fri, 25 Sep 2026 10:51:59 +0200 (CEST)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: nicolas.dufresne@collabora.com,
 	benjamin.gaignard@collabora.com,
@@ -63,15 +63,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v4 0/3] media: verisilicon: remove unused variant and code clean up
-Date: Fri, 25 Sep 2026 10:51:49 +0200
-Message-ID: <20260925085152.41852-1-benjamin.gaignard@collabora.com>
+Subject: [PATCH v4 3/3] media: verisilicon: Remove useless internal fields
+Date: Fri, 25 Sep 2026 10:51:52 +0200
+Message-ID: <20260925085152.41852-4-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260925085152.41852-1-benjamin.gaignard@collabora.com>
+References: <20260925085152.41852-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260925_015202_419731_F0A51AAB 
-X-CRM114-Status: UNSURE (   7.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260925_015202_655423_33A074B5 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,34 +89,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-"nxp,imx8mq-vpu" variant has been tagged as deprecated since 4 years
-now. This series remove it and make some context's fields useless so
-remove them too.
+No more variants are using multiple registers regions so rename
+reg_bases to reg_base.
+Remove the useless fields and simplify driver code.
 
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
 changes in v4:
 - rework commits messages
 - add r-b tag
 
-changes in v3:
-- remove more dead code
+ drivers/media/platform/verisilicon/hantro.h   |  9 ++-------
+ .../media/platform/verisilicon/hantro_drv.c   | 20 +++++--------------
+ 2 files changed, 7 insertions(+), 22 deletions(-)
 
-changes in v2:
-- have a separate patch for documentation
-- fix dt-bindings
-- rebased on v7.3-rc1
-
-
-Benjamin Gaignard (3):
-  media: verisilicon: Remove deprecated variant
-  media: dt-bindings: media: nxp, imx8mq-vpu: Remove nxp,imx8mq-vpu
-  media: verisilicon: Remove useless internal fields
-
- .../bindings/media/nxp,imx8mq-vpu.yaml        |  10 +-
- drivers/media/platform/verisilicon/hantro.h   |   9 +-
- .../media/platform/verisilicon/hantro_drv.c   |  30 +----
- .../media/platform/verisilicon/imx8m_vpu_hw.c | 105 ------------------
- 4 files changed, 11 insertions(+), 143 deletions(-)
-
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index 0353de154a1e..ca03bc690fbf 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -72,8 +72,6 @@ struct hantro_irq {
+  * @num_irqs:			number of irqs in the array
+  * @clk_names:			array of clock names
+  * @num_clocks:			number of clocks in the array
+- * @reg_names:			array of register range names
+- * @num_regs:			number of register range names in the array
+  * @double_buffer:		core needs double buffering
+  * @legacy_regs:		core uses legacy register set
+  * @late_postproc:		postproc must be set up at the end of the job
+@@ -97,8 +95,6 @@ struct hantro_variant {
+ 	int num_irqs;
+ 	const char * const *clk_names;
+ 	int num_clocks;
+-	const char * const *reg_names;
+-	int num_regs;
+ 	unsigned int double_buffer : 1;
+ 	unsigned int legacy_regs : 1;
+ 	unsigned int late_postproc : 1;
+@@ -184,7 +180,7 @@ hantro_vdev_to_func(struct video_device *vdev)
+  *			dev_ macros.
+  * @clocks:		Array of clock handles.
+  * @resets:		Array of reset handles.
+- * @reg_bases:		Mapped addresses of VPU registers.
++ * @reg_base:		Mapped address of VPU registers.
+  * @enc_base:		Mapped address of VPU encoder register for convenience.
+  * @dec_base:		Mapped address of VPU decoder register for convenience.
+  * @ctrl_base:		Mapped address of VPU control block.
+@@ -204,10 +200,9 @@ struct hantro_dev {
+ 	struct device *dev;
+ 	struct clk_bulk_data *clocks;
+ 	struct reset_control *resets;
+-	void __iomem **reg_bases;
++	void __iomem *reg_base;
+ 	void __iomem *enc_base;
+ 	void __iomem *dec_base;
+-	void __iomem *ctrl_base;
+ 
+ 	struct mutex vpu_mutex;	/* video_device lock */
+ 	spinlock_t irqlock;
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 12c804dcc669..6e3a24156a69 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -1080,7 +1080,6 @@ static int hantro_probe(struct platform_device *pdev)
+ {
+ 	const struct of_device_id *match;
+ 	struct hantro_dev *vpu;
+-	int num_bases;
+ 	int i, ret;
+ 
+ 	vpu = devm_kzalloc(&pdev->dev, sizeof(*vpu), GFP_KERNEL);
+@@ -1128,21 +1127,12 @@ static int hantro_probe(struct platform_device *pdev)
+ 	if (IS_ERR(vpu->resets))
+ 		return PTR_ERR(vpu->resets);
+ 
+-	num_bases = vpu->variant->num_regs ?: 1;
+-	vpu->reg_bases = devm_kcalloc(&pdev->dev, num_bases,
+-				      sizeof(*vpu->reg_bases), GFP_KERNEL);
+-	if (!vpu->reg_bases)
+-		return -ENOMEM;
++	vpu->reg_base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(vpu->reg_base))
++		return PTR_ERR(vpu->reg_base);
+ 
+-	for (i = 0; i < num_bases; i++) {
+-		vpu->reg_bases[i] = vpu->variant->reg_names ?
+-		      devm_platform_ioremap_resource_byname(pdev, vpu->variant->reg_names[i]) :
+-		      devm_platform_ioremap_resource(pdev, 0);
+-		if (IS_ERR(vpu->reg_bases[i]))
+-			return PTR_ERR(vpu->reg_bases[i]);
+-	}
+-	vpu->enc_base = vpu->reg_bases[0] + vpu->variant->enc_offset;
+-	vpu->dec_base = vpu->reg_bases[0] + vpu->variant->dec_offset;
++	vpu->enc_base = vpu->reg_base + vpu->variant->enc_offset;
++	vpu->dec_base = vpu->reg_base + vpu->variant->dec_offset;
+ 
+ 	/**
+ 	 * TODO: Eventually allow taking advantage of full 64-bit address space.
 -- 
 2.53.0
 
