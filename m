@@ -4,77 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03D8BC98318
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Sep 2026 12:14:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F027FC98332
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Sep 2026 12:30:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pIy9qRNuk+I1H9PIzez1apYez2z7kj17yUhUZu4CB0I=; b=QjkDdUV49HxEhU
-	6yqLry84WzdFKBi/P80F0gOCcYhztTWnhnsuMqeC/i5r+gOPLpLTn1sFh8AHj+qLtpcDETuqilGgX
-	mgTGhC9QPqD9CuMaTqb4N/JB2XSaiT3JFAMisPLjDFZ56uZhh1tHWzyZreHutBM6IegYKrL43dkSJ
-	zYtXsURrQFur5sw+sK2HHyXxCWmsek6oaO9fjp1rTZ3LKhno9F0RN+5N+8prKpDJ2GhGLfMMFsYC8
-	A6upSF1Uor1obw/5KiC1AqNXs48xcpyZATX3BzSynvZsU7If1MVwJi+HhxFc5eHsGJ4cqe4ysVslT
-	FYjtCGaVpsrJb4FGHbfw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GWM8gf5KQ6gORCRJmptpnW114Mt/HQWcNDSAi4rS09A=; b=S2BWT9Tzlb45vw
+	JE107PfY6DsPP+jzloV5SpCuCxJRWCzHr1fUl9G7mBpdiDXzZ3Uq6AUpuYaMhNScyJm4KWi4MNB0y
+	USeeR5nKGj+tX8qsERK9TFGvKyJPkEMaKy5V1EpCC4GXor7l4AvaQoi+78LvTa03to0yCVwUgHLGa
+	hB/2LDcwU1azfCK2Bv3g9SZbFjFZFUWFp9YexdoKFdWKC/PSrrs4Eb/DCDtXv6+FSt5yLqgnV+yuv
+	zW4qMAzfHxwyfA9RXNgijd4L5+zru6eH1Pigy72AgzwpqbRKDshL6FeAjMRScqfDu2n8PsFvAvXHy
+	ozvlU5cjMljgkUzjla6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xARIM-0000000FMWw-3B5P;
-	Sat, 26 Sep 2026 12:14:22 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1xARYL-0000000FNXx-3TJA;
+	Sat, 26 Sep 2026 12:30:53 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xARIJ-0000000FMVT-3CKR;
-	Sat, 26 Sep 2026 12:14:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1790424821; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=nasoSrIl9KcUqK0DT8SzV5nVDXuxQRhCTTDweswR05ZrmYaXHn3oz9PlTU3oA5BvzEo1i9/OrERg6U/HNFW93k8Y1FFVHeNeLOk8fTw/1O/PiFtLVHvMrvWnGp9JbPR28G4UP3uNujBwxR1jPTFTHnysG9c7Y84viUOakjicA7o=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1790424821; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=NeIgan50r491jqmuR3ZRoobvDzKxm124IC7JCVTX4Hg=; 
-	b=U473Jxzs+gWttpqIClZECT9YHH0jfQMLHBhh78p2EE/W09lZmOmZbbuci6brvPYwSv1By9IHwDx+JZpVloBKcVbjxeL7eJy6mkILltw/k7pXJMKxzeIhH7FzyccCAXI+kOhoZInEaqVNHPdnZCr/kfNNHgTlLDl4ZBY8ng5k1Wc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790424821;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=NeIgan50r491jqmuR3ZRoobvDzKxm124IC7JCVTX4Hg=;
-	b=iPv2CDHqWUGmUCmjfvIt2UOD5Nt5e7yhBJIBrktXvKsWVZr4Ffm4/i3FnSCBsc4s
-	lE69f5fnxybJi3c8wAATYcUHA0sXHztWAWr36Hczs6UzJ0wzxOGdyAhhsIlM6Wv2MgP
-	3p00SA60uTQWk8DmNWDlt8XbFNXG8n3Py8lS/njo=
-Received: by smtp.zohomail.com with SMTPS id 179042481925589.85921556278674;
-	Sat, 26 Sep 2026 05:13:39 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>,
- Daniel Stone <daniels@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Helge Deller <deller@gmx.de>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Leo Li <sunpeng.li@amd.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-fbdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- Derek Foreman <derek.foreman@collabora.com>,
- wayland-devel@lists.freedesktop.org
-Subject: Re: [PATCH RFC 13/25] drm: Add VRR target frame rate properties
-Date: Sat, 26 Sep 2026 14:13:32 +0200
-Message-ID: <Fw4fv4KvQKui7PMYotsPFw@collabora.com>
-In-Reply-To: <8a3b2902-3255-4dd9-82f0-75a7747b710e@amd.com>
-References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
- <VERVf-aJRRKsBOI_3dpScg@collabora.com>
- <8a3b2902-3255-4dd9-82f0-75a7747b710e@amd.com>
+	id 1xARYK-0000000FNWw-12eT;
+	Sat, 26 Sep 2026 12:30:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-ID:Content-Description:In-Reply-To:References;
+	bh=abD+KsnFWSmUh8F1wZceMC0ht6cpp3prLqIlmdZ+jr8=; b=RtGDM2luS5gjatxXl6jsmNW49l
+	xYkdLKJIOOv+NMek/UrivU4pz6EX5wPgGbH3xF+e9TQd89ssE3l1LizhDC28cYUbTJJF+oXdvcrzS
+	FzgBa4ccu1MmfXmIiWb7na2/sbEEFCAuobabRuU7iwthm6vXRwup3yggHuFa2Za5cGPmO4tfqLbnM
+	CuzNi6TtEWP4dmRNly/IK5AlSxVijygwOG6aYdErPtKAfCJrM0byFhCRts8XsWSgmwIPOs9uPMk0f
+	Zm977/Bg9tQHvU6Onbj0u7R+fw7ccDYTo1qfxWETVXhJ+Aprj0cLq+HzS883fbjNxUtHQxZFoMD9b
+	j399M+dg==;
+Received: from mail-westus3azlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c107::3] helo=PH0PR06CU001.outbound.protection.outlook.com)
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1xARYG-00000000Ak4-3hrZ;
+	Sat, 26 Sep 2026 12:30:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=MHGXs7FX2VpedzM5icJXwvu3j8eVlo7rGmQnT9sGzP5urPJZTuTu1Qpb0etZYfn26Z1xyFsRHsFqV6BVOLGpLe1tYicIRYPcl9KNLAP4cAO192qxtCIg7K4UiOSk4UJ3LSB0ZfJnKBXR9mVfqhEd/gbi5O0A0a4oJVbJ1GSlYwHUDFX3sCgPeJj3KsPTgSCW7/oaxUVDdR7MVv3InBgyJlOL/h9PMMyi997xl7AYwONGpRatcOvDnsj6UBaSKJElE/ffc3rRXih/i6zGXJm1RjzIU5aUo+yONyhkUed4NGcB49/Ctczw9dWff+eo7sGL/tO9oy3zBtlmlzu0tu67RA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=abD+KsnFWSmUh8F1wZceMC0ht6cpp3prLqIlmdZ+jr8=;
+ b=ldCzHHY1BCjhlEbrRuUO4nrcZY5zPnAY/b+q2D0Rz2TWj+/SN8GU7LERSMiL0ZMCt0PkaZUL+tzwRboVW5lBjl/md8bklPWGbe3WVWnKnEZHLXEYAKz6YqLo403/T2xMguwZbrwYLcz3Q7qtviUMssjrwff9wOdwWNsqXat8761tO64XhyYKk7BD6Jdi2TM7Tsg3SAviAd9+HC6kAIj0/4LZdbxkT3kMCRydGslJTkQJ3ZXg+Jg4px/St/u5qRT1i7LRgZ5iX6Ok9nn+8vCG2M8T48HB8FUi/QjRmCSGytLtx1gTV8UhG7XaV2FY3HudJFbhltk+tm8+7Ame2xIo9g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=inmusicbrands.com; dmarc=pass action=none
+ header.from=inmusicbrands.com; dkim=pass header.d=inmusicbrands.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=inmusicbrands.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=abD+KsnFWSmUh8F1wZceMC0ht6cpp3prLqIlmdZ+jr8=;
+ b=N50bi+htjzT+NbYGu5qZYS8+bF9NYUDmzq5vaHJGHCGaISRUWpM2mhdOHb7wCxmRFq435HtKrAQ658JjF1Peb+xjxrtZ0MWaQCUEyItiiT5tFCBjzLGFmgIBhg88soKfcm4LFjPIbaihUg+DM67J9aA/BFmVsmYjl/hJ0uz9aX8=
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=inmusicbrands.com;
+Received: from BY1PR08MB10263.namprd08.prod.outlook.com
+ (2603:10b6:a03:5ad::14) by SA6PR08MB10427.namprd08.prod.outlook.com
+ (2603:10b6:806:43a::16) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.19; Sat, 26 Sep
+ 2026 12:30:16 +0000
+Received: from BY1PR08MB10263.namprd08.prod.outlook.com
+ ([fe80::399d:caec:5af7:cd51]) by BY1PR08MB10263.namprd08.prod.outlook.com
+ ([fe80::399d:caec:5af7:cd51%6]) with mapi id 15.21.0451.014; Sat, 26 Sep 2026
+ 12:30:16 +0000
+From: John Keeping <jkeeping@inmusicbrands.com>
+To: linux-media@vger.kernel.org
+Cc: John Keeping <jkeeping@inmusicbrands.com>,
+	Jacob Chen <jacob-chen@iotwrt.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] media: rockchip: rga: fix rotation on rev0 hardware
+Date: Sat, 26 Sep 2026 13:30:04 +0100
+Message-ID: <20260926123004.3874721-1-jkeeping@inmusicbrands.com>
+X-Mailer: git-send-email 2.55.0
+X-ClientProxiedBy: LO4P123CA0662.GBRP123.PROD.OUTLOOK.COM
+ (2603:10a6:600:316::18) To BY1PR08MB10263.namprd08.prod.outlook.com
+ (2603:10b6:a03:5ad::14)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BY1PR08MB10263:EE_|SA6PR08MB10427:EE_
+X-MS-Office365-Filtering-Correlation-Id: e8b85b2c-ef97-4c36-6fe8-08df1bc9eb88
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|52116014|366016|1800799024|23010399003|38350700014|5023799004|10067099003|56012099006|18002099003|3023799007;
+X-Microsoft-Antispam-Message-Info: /YbZgtKUiO5Crx8OgzwCsEdmrLhQP+c3XgsIsu70OHplX1zaPHoqTIW6mooUCMh+pifVYYI58WME2az1cK6aX342ly/NlrsOJT9uHtx0atqbH0PPjZkvALr4K4RoPegAEsY7673WFXwvLmVm6FxlRD4xZfjtWkNKhM2dQLYlLaPNUszR0d2fDbgU3cPlvCehBOz3QD8gdJhCaKssnDskqsBX25G7JaNZ22s/KR5gqLel9bg7UlwyVWIalVz0pztRWm3R3mLzWZSFvpP0h4nvBpuxK8yH3YkI2/CufCIEPrOQmIEkWskBUUl04hqVUgxWi8g6JF7vDkLIKquHuHVRJUZXINjhJJzD0lQ5dd079KJi0VGkbp4+5dTDo2icV5IFgHbbold8fYlUqSsiVVUrWUBC25aRb+57QNOIhH6EYONGn4xi+JgT/Zw95c75MahY6Y7cqPiO8qpT+9SarLQfD908EIYBDRnqp43petbKAdBK5axU0GD28HazPfJ4FaerH/Isa8OH5u5PoDL+bv2fxh6t8J0i/Ms3viMw/EFtFGmiS/QsfzVinRCRe9HDE2/9IMuBmYNkoGKcY5NnPrUlSBEH0XHDiHpOEJR5n+0Hxu+Qz2wcZSQTarEdlWQrLHjS4Czbi2HWu/H9dEHwhtxnGimu+H+uU0ekoZeWkWpFJ6bd8wninXXupBSZDN3u+B4I02F8ekg3FTQ2k99ek4dl2qQsnG76qWK6Q8CEs6t9wXI=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BY1PR08MB10263.namprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(52116014)(366016)(1800799024)(23010399003)(38350700014)(5023799004)(10067099003)(56012099006)(18002099003)(3023799007);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?YgkWg6cDtv/C4nnweSqYgVpnQvbNyBtKdE4trDqFIRLN42ttTv+zghO5qQiU?=
+ =?us-ascii?Q?kL0DnamkWcPMXQgEcYCixYQsjOU5r4Mr7pbWkCYLawS+0hcuoE4xdDhirsT9?=
+ =?us-ascii?Q?QFU/o/AqE8pYhVKGn7CISCni7Fj/FAWM6OlUED3Sl2vhKE6UdHUVDVZR0gqp?=
+ =?us-ascii?Q?j5gGa0E0ftaiVU6rwCLKwEKgHDbsB0n8AFIlKkaJFcSSMzPdSaerS7UEnYsS?=
+ =?us-ascii?Q?zxllZ/j2KIHxYEfkblGry+cqe6PHKc1myducgRiOu+3TUdSKky31qbxmPI6m?=
+ =?us-ascii?Q?JzhBnHO3XaTd6r2CBuBLOI6qghcercYjiIv9wfGI6seR9uaCH3u+KrBXwx6d?=
+ =?us-ascii?Q?+yEzdhYT99py5GHYYJE1HcRRYSfr2WhViqI7lZIyz0u0EvjCdMRz9GnI/uj1?=
+ =?us-ascii?Q?t6uQzdZm2stxWjHdpbul0jwB62UAPFgHF4QUylM4J+JpLOKNR3Fp++8J/XbP?=
+ =?us-ascii?Q?kIJjXgKbMKEFwXFrrlDXzc1rmA3FJmDpsyzWYVw+kyCNHRV8qgd5cEprqT2B?=
+ =?us-ascii?Q?m5OewB0Sihxxm10Dxm3j/ccmBQfJgnqqmqm39XKXpeTbtiQTKiS7S7myr6+x?=
+ =?us-ascii?Q?D+okzDwdeqoK3JK0A/2qEbZd1blnU6zzKaDy7ujuABxElUHBlJ7YV26WPUGr?=
+ =?us-ascii?Q?z4uhU9NKV9mIj6km44uMOoctv6gI60BrTWLrF1qug+3XhFvxSXg6N0vU22JC?=
+ =?us-ascii?Q?FusouUTJX1J330+Y2TaMyY4OPHSJuK+3C6E/bcJRZStooppLYAv9U9tFVH31?=
+ =?us-ascii?Q?YOCM3+lMIvqLc7jrwUxznd0yV5+UTfuwj0Hw/ZzVM2J1vZ44JYdtMFqdVzQz?=
+ =?us-ascii?Q?LUbafd03kpNt4hcBvqLZGULtGJZoPtgIGHa4vp2qw3hg0gm1PSHkF+m31/rX?=
+ =?us-ascii?Q?saQ1kPvsY8dmqos9Hjfjfpuv+GEz2aBiWMtI88JCKom1Ph2dCq6/nUgwTwGK?=
+ =?us-ascii?Q?9d2NPybdncogZJ9p7BZJN4JU4dsdgTufSKpUq05zBqxbdPHyS0LzpkKb3YE3?=
+ =?us-ascii?Q?4xRoxjhvtUNchsvJtzgaEJmYFHoUUm1mTzLlzzu8WF34q3X/5AEzqC7FPVF/?=
+ =?us-ascii?Q?mSzCZ5dcqTTiDXKYde/D99qoyo6dUdLj7/WsxlmYBlig7/6jmzYQ6sM4yPQq?=
+ =?us-ascii?Q?6qOlXsn5SwFuyoMMQctlKxUnPhXtqdjhhI0YCSRdXQI1SvmAiGrBXWctRhL4?=
+ =?us-ascii?Q?GRbSe5jKVaPbQTIDmtT82gI65b3GSmT07idOW0SyZxOx7AA7PbGjDRCoAq0l?=
+ =?us-ascii?Q?Ah1o3SgAGjCp6wGMpT5UjkLJx1f7JCenK6y1BL2mjY2YLRm7hkNv8xHSFiw2?=
+ =?us-ascii?Q?2+geGmbScMbr+44bYwfRMu2wrtPDDOkhEhUK6OL//9MeAFTG/A/uKv3k45lv?=
+ =?us-ascii?Q?UWXfFCsPToKleusnQKF4SSiUMW2LmUAtWCOlcT8wYbw/mPQ2/LVKkXLD7FZa?=
+ =?us-ascii?Q?DmyYZdkgzgvJP68SEXG43KdMPHhIjg/kRXGjXJH/LUcQU8svRLfOa8RvUCyK?=
+ =?us-ascii?Q?GZLUhaltTuUyd+nFO1nq9os8NZkPVMlWacJ8rtB8yCTvFWMjp+35/1mm1pOO?=
+ =?us-ascii?Q?VUqtV0alc5vdPUcxrZwImlAa64NZX0Azyf46p7CXIjKp0O11YMwjcUuaEarX?=
+ =?us-ascii?Q?x7PU++omNrZ433k9jUbCLClykNzz8up7IaN2fMFkEwn++0km2lXZ8izC/AjU?=
+ =?us-ascii?Q?IrgP3kLDdiUZ3otHZOmoUCJ4IVY4cgB6vo8l7LgzdBz8KacgfwvTv3hKhwVO?=
+ =?us-ascii?Q?VhTX5tU9Kux0ljX23fA0bi2uQXFlxeg=3D?=
+X-OriginatorOrg: inmusicbrands.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e8b85b2c-ef97-4c36-6fe8-08df1bc9eb88
+X-MS-Exchange-CrossTenant-AuthSource: BY1PR08MB10263.namprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2026 12:30:16.4908
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 24507e43-fb7c-4b60-ab03-f78fafaf0a65
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 8jZFxo9VoWY3d2R6ZpXtvGZL/04Kg39O/93iGXxFwGOY1HxGkyoGBf+4xNmlqFtR4uaxMr5xCVcaHCmY/weFJ5U+45mSG+VWVydQTVTdgeQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA6PR08MB10427
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260926_051419_838856_81BAF71E 
-X-CRM114-Status: GOOD (  30.02  )
+X-CRM114-CacheID: sfid-20260926_133049_273999_C7E572B1 
+X-CRM114-Status: GOOD (  15.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,101 +153,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Friday, 25 September 2026 20:42:05 Central European Summer Time Leo Li wrote:
-> 
-> On 2026-09-22 11:26, Nicolas Frattaroli wrote:
-> >>> + * VRR Limiter/Target Properties
-> >>> + * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> >>> + *
-> >>> + * The ``VRR_{MIN,MAX}_{NUMERATOR,DENOMINATOR}`` properties expose a mechanism
-> >>> + * through which userspace can control the desired range of refresh rates in
-> >>> + * which VRR is allowed to operate. Each rate is expressed as a
-> >>> + * numerator/denominator fraction of refresh rates in Hz, allowing for rational
-> >>> + * target rates like 24/1.001 Hz with no loss of precision or ambiguity.
-> >>> + *
-> >>> + * If the minimum and maximum rate are set to the same value (and not 0), they
-> >>> + * are understood as a fixed target rate. This is especially useful for media
-> >>> + * playback, where the content's frame rate is both constant and known in
-> >>> + * advance. In such cases, a refresh rate that is not an integer multiple of the
-> >>> + * content's frame rate will introduce judder, since not every frame is
-> >>> + * displayed for the same amount of time. A modeset of the display with a
-> >>> + * compatible rate may in those cases be either undesirable or impossible, but
-> >>> + * the rate can still effectively be reached through VRR.
-> >>> + *
-> >>> + * .. _VRR-MIN-NUMERATOR:
-> >>> + *
-> >>> + * "VRR_MIN_NUMERATOR":
-> >>> + *	Default &drm_crtc integer property forming the numerator of a
-> >>> + *	numerator/denominator pair of a frame rate to set as the minimum VRR
-> >>> + *	target rate. Set to 0 to disable.
-> >>> + *
-> >>> + * "VRR_MIN_DENOMINATOR":
-> >>> + *	Default &drm_crtc integer property forming the denominator of a
-> >>> + *	numerator/denominator pair of a frame rate to set as the minimum VRR
-> >>> + *	target rate. If :ref:`VRR_MIN_NUMERATOR <VRR-MIN-NUMERATOR>` is not
-> >>> + *	zero, it must be non-zero.
-> >>> + *	Otherwise, must also be zero.
-> >>> + *
-> >>> + * .. _VRR-MAX-NUMERATOR:
-> >>> + *
-> >>> + * "VRR_MAX_NUMERATOR":
-> >>> + *	Default &drm_crtc integer property forming the numerator of a
-> >>> + *	numerator/denominator pair of a frame rate to set as the maximum VRR
-> >>> + *	target rate. Set to 0 to disable.
-> >>> + *
-> >>> + * "VRR_MAX_DENOMINATOR":
-> >>> + *	Default &drm_crtc integer property forming the denominator of a
-> >>> + *	numerator/denominator pair of a frame rate to set as the maximum VRR
-> >>> + *	target rate. If :ref:`VRR_MAX_NUMERATOR <VRR-MAX-NUMERATOR>` is not
-> >>> + *	zero, it must be non-zero. Otherwise, must also be zero.
-> >>>   */
-> >> If VRR_MIN_NUMERATOR == 0 && VRR_MAX_NUMERATOR > 0, do we interpret that as
-> >> vrr limiting is disabled?
-> > You can picture VRR limiting as always being active, but with a limit rational
-> > of 0 it uses the display's limit as per the EDID, which is what unlimited game
-> > mode is. So with how it's implemented right now in hdmi_validate_vrr(), your
-> > example would set a maximum target, but leave the minimum at whatever the
-> > display defaults to.
-> > 
-> > Now that I'm thinking through this, a possible problem is that
-> > drm_crtc_helper_vrr_is_fixed_rate() operates on the user supplied limits, but
-> > if the display supplied lower limit is equal to the user supplied upper limit,
-> > then we have a fixed rate scenario without recognising it as such. I think I
-> > need to have a ponder on what the least surprising behaviour for userspace
-> > is in that instance. The display limit stuff gets a bit complex due to
-> > CinemaVRR and QMS TFRmin/TFRmax.
-> > 
-> > I'll improve the documentation on the next revision to make the meanings more
-> > explicit.
-> 
-> Perhaps a simple way is to require simultaneous setting MIN and MAX pairs?
-> IOW, require userspace to set MIN and MAX simultaneously to >0, or =0. For example:
-> 
-> if ((vrr_min_n == 0 || vrr_min_d == 0 ||
->      vrr_max_n == 0 || vrr_max_d == 0) &&
->     (vrr_min_n > 0 || vrr_max_n > 0))
-> 	return -EINVAL;
-> 
-> That way, it's never ambiguous what userspace has requested for the range.
-> They can copy the EDID supported range if they don't care about limiting
-> one side, rather than leaving it at 0. It's then also clear if they requested
-> a static Hz.
+On RK3288 where the RGA reports version zero [1], rotating a buffer
+gives corrupt output where one edge will be truncated.  This is a result
+of some adjustment done specifically for hardware revision zero.  But it
+seems this is not necessary and there is no evidence for why this
+adjustment should be applied on these hardware revisions.
 
-That's a good thought. It makes a lot of the logic simpler to catch bad
-conditions, and it's the kind of thing that can definitely be checked in
-connector-agnostic shared CRTC atomic_check code.
+Comparing the TRMs between RK3288 with revision zero and RK3588 with
+revision 3.2 there is evidence of new features supported by later
+hardware, but nothing indicating any difference in behaviour for
+rotation which is supported by all hardware revisions.
 
-Thanks for the suggestion, I'll likely adopt it for the next revision!
+The logic here looks wrong anyway, since it's bizarre that minor
+revision zero would need the adjustment for _all_ major revisions.  This
+was added with the initial version of the driver in commit f7e7b48e6d796
+("[media] rockchip/rga: v4l2 m2m support") so there is no detail in the
+Git history to indicate why this special-case might be needed.
 
-Kind regards,
-Nicolas Frattaroli
+[1] Comparing with the vendor code, it seems this is actually 1.3 with
+    the hardware reporting zero more by coincidence than design since the
+    version register is not defined for RK3288.
 
-> 
-> Thanks,
-> Leo
->  
+Signed-off-by: John Keeping <jkeeping@inmusicbrands.com>
+---
+v2:
+- Remove "rga" variable which is unused after this change
 
+ drivers/media/platform/rockchip/rga/rga-hw.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
+diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media/platform/rockchip/rga/rga-hw.c
+index be1bc8ddbd03b..2e7ec8b7c20f7 100644
+--- a/drivers/media/platform/rockchip/rga/rga-hw.c
++++ b/drivers/media/platform/rockchip/rga/rga-hw.c
+@@ -158,7 +158,6 @@ static void rga_cmd_set_dst_addr(struct rga_ctx *ctx, dma_addr_t dma_addr)
+ 
+ static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
+ {
+-	struct rockchip_rga *rga = ctx->rga;
+ 	u32 *dest = ctx->cmdbuf_virt;
+ 	unsigned int scale_dst_w, scale_dst_h;
+ 	unsigned int src_h, src_w, dst_h, dst_w;
+@@ -251,13 +250,6 @@ static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
+ 	 */
+ 	if (src_info.data.rot_mode == RGA_SRC_ROT_MODE_90_DEGREE ||
+ 	    src_info.data.rot_mode == RGA_SRC_ROT_MODE_270_DEGREE) {
+-		if (rga->version.major == 0 || rga->version.minor == 0) {
+-			if (dst_w == src_h)
+-				src_h -= 8;
+-			if (abs(src_w - dst_h) < 16)
+-				src_w -= 16;
+-		}
+-
+ 		scale_dst_h = dst_w;
+ 		scale_dst_w = dst_h;
+ 	} else {
+-- 
+2.55.0
 
 
 _______________________________________________
