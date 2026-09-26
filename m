@@ -4,139 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F027FC98332
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Sep 2026 12:30:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC47DC98332
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Sep 2026 13:16:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GWM8gf5KQ6gORCRJmptpnW114Mt/HQWcNDSAi4rS09A=; b=S2BWT9Tzlb45vw
-	JE107PfY6DsPP+jzloV5SpCuCxJRWCzHr1fUl9G7mBpdiDXzZ3Uq6AUpuYaMhNScyJm4KWi4MNB0y
-	USeeR5nKGj+tX8qsERK9TFGvKyJPkEMaKy5V1EpCC4GXor7l4AvaQoi+78LvTa03to0yCVwUgHLGa
-	hB/2LDcwU1azfCK2Bv3g9SZbFjFZFUWFp9YexdoKFdWKC/PSrrs4Eb/DCDtXv6+FSt5yLqgnV+yuv
-	zW4qMAzfHxwyfA9RXNgijd4L5+zru6eH1Pigy72AgzwpqbRKDshL6FeAjMRScqfDu2n8PsFvAvXHy
-	ozvlU5cjMljgkUzjla6g==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0qk+oJL0UFFVXv98KIX1kWYPqD6+izfDwiB9akbis/A=; b=wkNsgDSjafcpuF
+	g/duZGs887XyQ1On43IoFX9n1Y3MvO/e+GV+CWG0jDeCFHzJDcALjj74uVgLO/dFFxQ+rN4Npm9DX
+	HpTYgXg5VItfu8fhEgQWvc3B9QfxHUq9wzznhvT53X1KdBPUGk5aA5Vx8gbFe1Dohqag94Atu9D1G
+	ub5M9w19e4kD0eUvqOkHudpqwgH5zIvNQvCX+v8R5Ep1wOA801Vos08JrezVJ4HBhHXBRDnmr5mWN
+	YgWWYsDJlJYnJXBHlmeY3HjFV1Lo95Q2nF3FOlpxr0DBUOQMWjTuhBNsyAoyvQnPPypHD8S+zwZ/Q
+	okN74NUv07zVZqxrlY4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xARYL-0000000FNXx-3TJA;
-	Sat, 26 Sep 2026 12:30:53 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xASGN-0000000FQ8Y-2taw;
+	Sat, 26 Sep 2026 13:16:23 +0000
+Received: from mr-2005i-snip6-11.eps.apple.com ([2a01:b747:3000:206::5b] helo=outbound.mr.icloud.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xARYK-0000000FNWw-12eT;
-	Sat, 26 Sep 2026 12:30:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-ID:Content-Description:In-Reply-To:References;
-	bh=abD+KsnFWSmUh8F1wZceMC0ht6cpp3prLqIlmdZ+jr8=; b=RtGDM2luS5gjatxXl6jsmNW49l
-	xYkdLKJIOOv+NMek/UrivU4pz6EX5wPgGbH3xF+e9TQd89ssE3l1LizhDC28cYUbTJJF+oXdvcrzS
-	FzgBa4ccu1MmfXmIiWb7na2/sbEEFCAuobabRuU7iwthm6vXRwup3yggHuFa2Za5cGPmO4tfqLbnM
-	CuzNi6TtEWP4dmRNly/IK5AlSxVijygwOG6aYdErPtKAfCJrM0byFhCRts8XsWSgmwIPOs9uPMk0f
-	Zm977/Bg9tQHvU6Onbj0u7R+fw7ccDYTo1qfxWETVXhJ+Aprj0cLq+HzS883fbjNxUtHQxZFoMD9b
-	j399M+dg==;
-Received: from mail-westus3azlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c107::3] helo=PH0PR06CU001.outbound.protection.outlook.com)
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xARYG-00000000Ak4-3hrZ;
-	Sat, 26 Sep 2026 12:30:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=MHGXs7FX2VpedzM5icJXwvu3j8eVlo7rGmQnT9sGzP5urPJZTuTu1Qpb0etZYfn26Z1xyFsRHsFqV6BVOLGpLe1tYicIRYPcl9KNLAP4cAO192qxtCIg7K4UiOSk4UJ3LSB0ZfJnKBXR9mVfqhEd/gbi5O0A0a4oJVbJ1GSlYwHUDFX3sCgPeJj3KsPTgSCW7/oaxUVDdR7MVv3InBgyJlOL/h9PMMyi997xl7AYwONGpRatcOvDnsj6UBaSKJElE/ffc3rRXih/i6zGXJm1RjzIU5aUo+yONyhkUed4NGcB49/Ctczw9dWff+eo7sGL/tO9oy3zBtlmlzu0tu67RA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=abD+KsnFWSmUh8F1wZceMC0ht6cpp3prLqIlmdZ+jr8=;
- b=ldCzHHY1BCjhlEbrRuUO4nrcZY5zPnAY/b+q2D0Rz2TWj+/SN8GU7LERSMiL0ZMCt0PkaZUL+tzwRboVW5lBjl/md8bklPWGbe3WVWnKnEZHLXEYAKz6YqLo403/T2xMguwZbrwYLcz3Q7qtviUMssjrwff9wOdwWNsqXat8761tO64XhyYKk7BD6Jdi2TM7Tsg3SAviAd9+HC6kAIj0/4LZdbxkT3kMCRydGslJTkQJ3ZXg+Jg4px/St/u5qRT1i7LRgZ5iX6Ok9nn+8vCG2M8T48HB8FUi/QjRmCSGytLtx1gTV8UhG7XaV2FY3HudJFbhltk+tm8+7Ame2xIo9g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=inmusicbrands.com; dmarc=pass action=none
- header.from=inmusicbrands.com; dkim=pass header.d=inmusicbrands.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=inmusicbrands.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=abD+KsnFWSmUh8F1wZceMC0ht6cpp3prLqIlmdZ+jr8=;
- b=N50bi+htjzT+NbYGu5qZYS8+bF9NYUDmzq5vaHJGHCGaISRUWpM2mhdOHb7wCxmRFq435HtKrAQ658JjF1Peb+xjxrtZ0MWaQCUEyItiiT5tFCBjzLGFmgIBhg88soKfcm4LFjPIbaihUg+DM67J9aA/BFmVsmYjl/hJ0uz9aX8=
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=inmusicbrands.com;
-Received: from BY1PR08MB10263.namprd08.prod.outlook.com
- (2603:10b6:a03:5ad::14) by SA6PR08MB10427.namprd08.prod.outlook.com
- (2603:10b6:806:43a::16) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.19; Sat, 26 Sep
- 2026 12:30:16 +0000
-Received: from BY1PR08MB10263.namprd08.prod.outlook.com
- ([fe80::399d:caec:5af7:cd51]) by BY1PR08MB10263.namprd08.prod.outlook.com
- ([fe80::399d:caec:5af7:cd51%6]) with mapi id 15.21.0451.014; Sat, 26 Sep 2026
- 12:30:16 +0000
-From: John Keeping <jkeeping@inmusicbrands.com>
-To: linux-media@vger.kernel.org
-Cc: John Keeping <jkeeping@inmusicbrands.com>,
-	Jacob Chen <jacob-chen@iotwrt.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] media: rockchip: rga: fix rotation on rev0 hardware
-Date: Sat, 26 Sep 2026 13:30:04 +0100
-Message-ID: <20260926123004.3874721-1-jkeeping@inmusicbrands.com>
-X-Mailer: git-send-email 2.55.0
-X-ClientProxiedBy: LO4P123CA0662.GBRP123.PROD.OUTLOOK.COM
- (2603:10a6:600:316::18) To BY1PR08MB10263.namprd08.prod.outlook.com
- (2603:10b6:a03:5ad::14)
+	id 1xASGD-0000000FQ41-3UHf
+	for linux-rockchip@lists.infradead.org;
+	Sat, 26 Sep 2026 13:16:15 +0000
+Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
+	by p00-icloudmta-asmtp-us-west-2a-60-percent-2 (Postfix) with ESMTPS id 007361805189;
+	Sat, 26 Sep 2026 13:16:09 +0000 (UTC)
+X-ICL-RepId: 01a0dddb-e134-73b4-bb7b-d8f519d5127c
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQFMHV8EUxxCDFYAXRcOVk1KF1UYREVRMFAbXwJCDxwTVhUTC1NWWxNVF0YJGQhdHRkKUFAGXRIYXBRcUFgeRhJWDV0JGQZAXlAbXwJCDxwTVhUTHUMZDysISgRDB0UCXgslEwlTVlsTVRdGCRkIXR0ZFVoJClcAQAtOA1QFXR8RTxweGwVGAV1cG1YPUl1TQw9MCwh3AlEcVg1XQ1QEX04ZDEodUlZbE1UXRgk=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com; s=1a1hai; t=1790428573; x=1793020573; bh=IYxxudkVZ1VoNqwDsuEqFR76gpVJjA0lnUaaqwQi8ls=; h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:To:x-icloud-hme; b=H4EdhRd7ntCnbZuBAUyr2TUtr0kx7bdrHj6Fg4N+tPNfUVUMiSfxxZEJErlSPMW82FdJp451WxzdVemC2VGRcq/2V8hPwVACMEmyWXXqD3K6+lcqeFZ1apG7zM2YNPr3JfxyYWeiPlaMKklLaQeguLEOLjy6ts/44IAUMELbD30zAPyxCdnSLT+s1ZIVAf2GkAm/9o1PFl6vyBKC7hu/W6uvSw9FrjCbNw61BGbpqNzDuY61SdHnvGDiu71UlIduNXuxDD9GGcPvQx1jZMisYBRAJYOwTZGb1fss2CM5eqqDNxxtyFQT4T7YEFMFcbpZ/2SegrkPR+oboFJLdHNSFA==
+Received: from [127.0.0.1] (unknown [17.156.200.36])
+	by p00-icloudmta-asmtp-us-west-2a-60-percent-2 (Postfix) with ESMTPSA id AFC691800144;
+	Sat, 26 Sep 2026 13:16:06 +0000 (UTC)
+From: Sofus Forstreuter <sofus.c@icloud.com>
+Date: Sat, 26 Sep 2026 15:14:42 +0200
+Subject: [PATCH v2 03/17] media: v4l2: Add Apple interchange pixel formats
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BY1PR08MB10263:EE_|SA6PR08MB10427:EE_
-X-MS-Office365-Filtering-Correlation-Id: e8b85b2c-ef97-4c36-6fe8-08df1bc9eb88
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|52116014|366016|1800799024|23010399003|38350700014|5023799004|10067099003|56012099006|18002099003|3023799007;
-X-Microsoft-Antispam-Message-Info: /YbZgtKUiO5Crx8OgzwCsEdmrLhQP+c3XgsIsu70OHplX1zaPHoqTIW6mooUCMh+pifVYYI58WME2az1cK6aX342ly/NlrsOJT9uHtx0atqbH0PPjZkvALr4K4RoPegAEsY7673WFXwvLmVm6FxlRD4xZfjtWkNKhM2dQLYlLaPNUszR0d2fDbgU3cPlvCehBOz3QD8gdJhCaKssnDskqsBX25G7JaNZ22s/KR5gqLel9bg7UlwyVWIalVz0pztRWm3R3mLzWZSFvpP0h4nvBpuxK8yH3YkI2/CufCIEPrOQmIEkWskBUUl04hqVUgxWi8g6JF7vDkLIKquHuHVRJUZXINjhJJzD0lQ5dd079KJi0VGkbp4+5dTDo2icV5IFgHbbold8fYlUqSsiVVUrWUBC25aRb+57QNOIhH6EYONGn4xi+JgT/Zw95c75MahY6Y7cqPiO8qpT+9SarLQfD908EIYBDRnqp43petbKAdBK5axU0GD28HazPfJ4FaerH/Isa8OH5u5PoDL+bv2fxh6t8J0i/Ms3viMw/EFtFGmiS/QsfzVinRCRe9HDE2/9IMuBmYNkoGKcY5NnPrUlSBEH0XHDiHpOEJR5n+0Hxu+Qz2wcZSQTarEdlWQrLHjS4Czbi2HWu/H9dEHwhtxnGimu+H+uU0ekoZeWkWpFJ6bd8wninXXupBSZDN3u+B4I02F8ekg3FTQ2k99ek4dl2qQsnG76qWK6Q8CEs6t9wXI=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BY1PR08MB10263.namprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(52116014)(366016)(1800799024)(23010399003)(38350700014)(5023799004)(10067099003)(56012099006)(18002099003)(3023799007);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?YgkWg6cDtv/C4nnweSqYgVpnQvbNyBtKdE4trDqFIRLN42ttTv+zghO5qQiU?=
- =?us-ascii?Q?kL0DnamkWcPMXQgEcYCixYQsjOU5r4Mr7pbWkCYLawS+0hcuoE4xdDhirsT9?=
- =?us-ascii?Q?QFU/o/AqE8pYhVKGn7CISCni7Fj/FAWM6OlUED3Sl2vhKE6UdHUVDVZR0gqp?=
- =?us-ascii?Q?j5gGa0E0ftaiVU6rwCLKwEKgHDbsB0n8AFIlKkaJFcSSMzPdSaerS7UEnYsS?=
- =?us-ascii?Q?zxllZ/j2KIHxYEfkblGry+cqe6PHKc1myducgRiOu+3TUdSKky31qbxmPI6m?=
- =?us-ascii?Q?JzhBnHO3XaTd6r2CBuBLOI6qghcercYjiIv9wfGI6seR9uaCH3u+KrBXwx6d?=
- =?us-ascii?Q?+yEzdhYT99py5GHYYJE1HcRRYSfr2WhViqI7lZIyz0u0EvjCdMRz9GnI/uj1?=
- =?us-ascii?Q?t6uQzdZm2stxWjHdpbul0jwB62UAPFgHF4QUylM4J+JpLOKNR3Fp++8J/XbP?=
- =?us-ascii?Q?kIJjXgKbMKEFwXFrrlDXzc1rmA3FJmDpsyzWYVw+kyCNHRV8qgd5cEprqT2B?=
- =?us-ascii?Q?m5OewB0Sihxxm10Dxm3j/ccmBQfJgnqqmqm39XKXpeTbtiQTKiS7S7myr6+x?=
- =?us-ascii?Q?D+okzDwdeqoK3JK0A/2qEbZd1blnU6zzKaDy7ujuABxElUHBlJ7YV26WPUGr?=
- =?us-ascii?Q?z4uhU9NKV9mIj6km44uMOoctv6gI60BrTWLrF1qug+3XhFvxSXg6N0vU22JC?=
- =?us-ascii?Q?FusouUTJX1J330+Y2TaMyY4OPHSJuK+3C6E/bcJRZStooppLYAv9U9tFVH31?=
- =?us-ascii?Q?YOCM3+lMIvqLc7jrwUxznd0yV5+UTfuwj0Hw/ZzVM2J1vZ44JYdtMFqdVzQz?=
- =?us-ascii?Q?LUbafd03kpNt4hcBvqLZGULtGJZoPtgIGHa4vp2qw3hg0gm1PSHkF+m31/rX?=
- =?us-ascii?Q?saQ1kPvsY8dmqos9Hjfjfpuv+GEz2aBiWMtI88JCKom1Ph2dCq6/nUgwTwGK?=
- =?us-ascii?Q?9d2NPybdncogZJ9p7BZJN4JU4dsdgTufSKpUq05zBqxbdPHyS0LzpkKb3YE3?=
- =?us-ascii?Q?4xRoxjhvtUNchsvJtzgaEJmYFHoUUm1mTzLlzzu8WF34q3X/5AEzqC7FPVF/?=
- =?us-ascii?Q?mSzCZ5dcqTTiDXKYde/D99qoyo6dUdLj7/WsxlmYBlig7/6jmzYQ6sM4yPQq?=
- =?us-ascii?Q?6qOlXsn5SwFuyoMMQctlKxUnPhXtqdjhhI0YCSRdXQI1SvmAiGrBXWctRhL4?=
- =?us-ascii?Q?GRbSe5jKVaPbQTIDmtT82gI65b3GSmT07idOW0SyZxOx7AA7PbGjDRCoAq0l?=
- =?us-ascii?Q?Ah1o3SgAGjCp6wGMpT5UjkLJx1f7JCenK6y1BL2mjY2YLRm7hkNv8xHSFiw2?=
- =?us-ascii?Q?2+geGmbScMbr+44bYwfRMu2wrtPDDOkhEhUK6OL//9MeAFTG/A/uKv3k45lv?=
- =?us-ascii?Q?UWXfFCsPToKleusnQKF4SSiUMW2LmUAtWCOlcT8wYbw/mPQ2/LVKkXLD7FZa?=
- =?us-ascii?Q?DmyYZdkgzgvJP68SEXG43KdMPHhIjg/kRXGjXJH/LUcQU8svRLfOa8RvUCyK?=
- =?us-ascii?Q?GZLUhaltTuUyd+nFO1nq9os8NZkPVMlWacJ8rtB8yCTvFWMjp+35/1mm1pOO?=
- =?us-ascii?Q?VUqtV0alc5vdPUcxrZwImlAa64NZX0Azyf46p7CXIjKp0O11YMwjcUuaEarX?=
- =?us-ascii?Q?x7PU++omNrZ433k9jUbCLClykNzz8up7IaN2fMFkEwn++0km2lXZ8izC/AjU?=
- =?us-ascii?Q?IrgP3kLDdiUZ3otHZOmoUCJ4IVY4cgB6vo8l7LgzdBz8KacgfwvTv3hKhwVO?=
- =?us-ascii?Q?VhTX5tU9Kux0ljX23fA0bi2uQXFlxeg=3D?=
-X-OriginatorOrg: inmusicbrands.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e8b85b2c-ef97-4c36-6fe8-08df1bc9eb88
-X-MS-Exchange-CrossTenant-AuthSource: BY1PR08MB10263.namprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2026 12:30:16.4908
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 24507e43-fb7c-4b60-ab03-f78fafaf0a65
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 8jZFxo9VoWY3d2R6ZpXtvGZL/04Kg39O/93iGXxFwGOY1HxGkyoGBf+4xNmlqFtR4uaxMr5xCVcaHCmY/weFJ5U+45mSG+VWVydQTVTdgeQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA6PR08MB10427
+Message-Id: <20260926-avd-v2-3-ecebe6a3648e@icloud.com>
+References: <20260926-avd-v2-0-ecebe6a3648e@icloud.com>
+In-Reply-To: <20260926-avd-v2-0-ecebe6a3648e@icloud.com>
+To: Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, 
+ Neal Gompa <neal@gompa.dev>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sofus Forstreuter <sofus.c@icloud.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>
+Cc: asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.15.2
+X-Proofpoint-ORIG-GUID: RZxpVVsO5u48ZfgybvBa0VaPXOV-y4Ht
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTI2MDA1MiBTYWx0ZWRfX3lZGxroWTqfd
+ oH/blGbdAuzAJKVGQWe9nCf+gN3nyhp8s+pgYl8mgs5GMjEldCXLsE2zklB2voHRHcqTAZAOBMM
+ /zuuAjWXxfqrwDVW7AWohZLRGQq74KkirD4gplD6LX+25Mja5xuI9C0IoLcm4LVtDoieJvpAzKR
+ /8OAbQAGVUZlo4xwc7IaiyrkwGuAEHlQkhXgjsQ/uEDD2Hcisz5O0kKgGg/PSp+t83mU5XWFNqX
+ Ht6icTPIVr7w1Nkz1xcW69mqQCwvKznyHrJjUbmELlsUZqo67qxZH0wCtOMx+TDDrvVWBRphiBk
+ n0HxXzV48Zm1/UDX+sz+S5wy37O3Clc2wUVxCJ0E12uhjw/MuNzFFcy4fYHzpw=
+X-Authority-Info-Out: v=2.4 cv=LvifC3dc c=1 sm=1 tr=0 ts=6ab7c59b
+ cx=c_apl:c_pps:t_out a=9mRn2PO/+PIrVdEbaIuMPg==:117
+ a=9mRn2PO/+PIrVdEbaIuMPg==:17 a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10
+ a=x7bEGLp0ZPQA:10 a=kLM9Tyy99jAA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=v3ZZPjhaAAAA:8 a=XfseLEjigXvjOB_hP-0A:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: RZxpVVsO5u48ZfgybvBa0VaPXOV-y4Ht
+X-JNJ: AAAAAAABChFGzoGZDGVrPPJyQR4WNO9HCGl4ynz/q7qHQ5r6QkvXaESA0fmFBgsmIy2NCVdDzZe5/nFZJmr9eHu/IPILRkouev0skqVKObGLe1c/XXwc4lLu+ZTOb2v8VdgdSp/31NcX+8ef/b4gEOcQglMXV4Cg2eWEhI0jtKRKJaU1jmy5u1L6FLMdoRi0BiqnKYlL9dGb8Rc0vZR4LIeFtDRC+n9x9GILi2YzPNydY9QQkuNsMgE8LUCR737lVzsfgp+OQAUJaRxd9VmzknDyMZRHlkvAU5AIhvxQMoHHIZZ06dMaMtJ35sZjE3rJYoTbbSTEZa6nlckoe9+/LCgIXx0sLVryq2K0NpiBXjt2Ide37fZFTDRXoX8bTW6FH1Lv5c4+0/yHKqzwtqFyVVZKXBZhxXWYFvQJ9FUmcEQw8aXJCU9gsRbz5aXtVsDithJyPH0b7JB0CijxeUBBkNr1U4mGwUxrxAzfyycg2uMI9+jvNLMV/5xz4IvAiTbDLZJWpkDw2ql3zdYpJ3oWYPdl3ZltXSBwZ+NaNd42LBj9y4M2WNcBNaJhikvDh5xv5LrP4URek642kgiK9tqmY36yjUDq0x5GI9zrpKvoPYcIc9I/PvhySvOPvKyChHObt9Kvzktj5LgGSh+e6ZJMxpG6ELrW1j5oRma256juqb2B6+5si+utRWP3Wviw/wrJH6HrciRCwkpmYIdyrOYqD543nEToGRB43Qz2qv5UuH/JOKg1CIg+HE+W7DPMuLFji3mO0Lg7QsoZGatkE28Z6CxhkZ6QBtSFN8+MDPXlCOJEYSTmI0CXq0q4YUjVeS0g8gDhcy3VtfTMb1lfGBKxrUGXKpeFRQ+oj+GE9YxHbKbWqmqv5LMhEz/vSrfxxwkNDohbfA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260926_133049_273999_C7E572B1 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20260926_061613_899175_AFFEE31F 
+X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,61 +86,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On RK3288 where the RGA reports version zero [1], rotating a buffer
-gives corrupt output where one edge will be truncated.  This is a result
-of some adjustment done specifically for hardware revision zero.  But it
-seems this is not necessary and there is no evidence for why this
-adjustment should be applied on these hardware revisions.
+Apple Interchange is a compressed and tiled format modifier.
 
-Comparing the TRMs between RK3288 with revision zero and RK3588 with
-revision 3.2 there is evidence of new features supported by later
-hardware, but nothing indicating any difference in behaviour for
-rotation which is supported by all hardware revisions.
+Its intended use is for sharing buffers between hardware blocks (GPU,
+display controller, video codecs) on Apple platforms.
 
-The logic here looks wrong anyway, since it's bizarre that minor
-revision zero would need the adjustment for _all_ major revisions.  This
-was added with the initial version of the driver in commit f7e7b48e6d796
-("[media] rockchip/rga: v4l2 m2m support") so there is no detail in the
-Git history to indicate why this special-case might be needed.
+Add it to the v4l2_format_info table to help with calculating sizes.
 
-[1] Comparing with the vendor code, it seems this is actually 1.3 with
-    the hardware reporting zero more by coincidence than design since the
-    version register is not defined for RK3288.
-
-Signed-off-by: John Keeping <jkeeping@inmusicbrands.com>
+Signed-off-by: Sofus Forstreuter <sofus.c@icloud.com>
 ---
-v2:
-- Remove "rga" variable which is unused after this change
+ drivers/media/v4l2-core/v4l2-common.c | 7 +++++++
+ drivers/media/v4l2-core/v4l2-ioctl.c  | 6 ++++++
+ include/uapi/linux/videodev2.h        | 8 ++++++++
+ 3 files changed, 21 insertions(+)
 
- drivers/media/platform/rockchip/rga/rga-hw.c | 8 --------
- 1 file changed, 8 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media/platform/rockchip/rga/rga-hw.c
-index be1bc8ddbd03b..2e7ec8b7c20f7 100644
---- a/drivers/media/platform/rockchip/rga/rga-hw.c
-+++ b/drivers/media/platform/rockchip/rga/rga-hw.c
-@@ -158,7 +158,6 @@ static void rga_cmd_set_dst_addr(struct rga_ctx *ctx, dma_addr_t dma_addr)
+diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+index b78fc0845a16..eb2eb1c59fdd 100644
+--- a/drivers/media/v4l2-core/v4l2-common.c
++++ b/drivers/media/v4l2-core/v4l2-common.c
+@@ -336,6 +336,13 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
+ 		{ .format = V4L2_PIX_FMT_GREY,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 1, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
+ 		{ .format = V4L2_PIX_FMT_Y12,     .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
  
- static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
- {
--	struct rockchip_rga *rga = ctx->rga;
- 	u32 *dest = ctx->cmdbuf_virt;
- 	unsigned int scale_dst_w, scale_dst_h;
- 	unsigned int src_h, src_w, dst_h, dst_w;
-@@ -251,13 +250,6 @@ static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
- 	 */
- 	if (src_info.data.rot_mode == RGA_SRC_ROT_MODE_90_DEGREE ||
- 	    src_info.data.rot_mode == RGA_SRC_ROT_MODE_270_DEGREE) {
--		if (rga->version.major == 0 || rga->version.minor == 0) {
--			if (dst_w == src_h)
--				src_h -= 8;
--			if (abs(src_w - dst_h) < 16)
--				src_w -= 16;
--		}
--
- 		scale_dst_h = dst_w;
- 		scale_dst_w = dst_h;
- 	} else {
++		{ .format = V4L2_PIX_FMT_IC12, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
++		{ .format = V4L2_PIX_FMT_IC16, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 1 },
++		{ .format = V4L2_PIX_FMT_IC24, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
++		{ .format = V4L2_PIX_FMT_IC03, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2 },
++		{ .format = V4L2_PIX_FMT_IC23, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 1 },
++		{ .format = V4L2_PIX_FMT_IC43, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 1, .vdiv = 1 },
++
+ 		/* Tiled YUV formats */
+ 		{ .format = V4L2_PIX_FMT_NV12_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
+ 		{ .format = V4L2_PIX_FMT_NV15_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 5, 10, 0, 0 }, .bpp_div = { 4, 4, 1, 1 }, .hdiv = 2, .vdiv = 2,
+diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+index 1f2519ffeb2b..b3c49b08ef2f 100644
+--- a/drivers/media/v4l2-core/v4l2-ioctl.c
++++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+@@ -1561,6 +1561,12 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+ 		case V4L2_PIX_FMT_PISP_COMP2_GBRG: descr = "PiSP 8b GBGB/RGRG mode2 compr"; break;
+ 		case V4L2_PIX_FMT_PISP_COMP2_BGGR: descr = "PiSP 8b BGBG/GRGR mode2 compr"; break;
+ 		case V4L2_PIX_FMT_PISP_COMP2_MONO: descr = "PiSP 8b monochrome mode2 compr"; break;
++		case V4L2_PIX_FMT_IC12:		descr = "Interchange NV12"; break;
++		case V4L2_PIX_FMT_IC16:		descr = "Interchange NV16"; break;
++		case V4L2_PIX_FMT_IC24:		descr = "Interchange NV24"; break;
++		case V4L2_PIX_FMT_IC03:		descr = "Interchange P030"; break;
++		case V4L2_PIX_FMT_IC23:		descr = "Interchange P230"; break;
++		case V4L2_PIX_FMT_IC43:		descr = "Interchange P430"; break;
+ 		default:
+ 			if (fmt->description[0])
+ 				return;
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 5472e433ed06..918e060b6fe0 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -842,6 +842,14 @@ struct v4l2_pix_format {
+ #define V4L2_PIX_FMT_PISP_COMP2_BGGR	v4l2_fourcc('P', 'C', '2', 'B') /* PiSP 8-bit mode 2 compressed BGGR bayer */
+ #define V4L2_PIX_FMT_PISP_COMP2_MONO	v4l2_fourcc('P', 'C', '2', 'M') /* PiSP 8-bit mode 2 compressed monochrome */
+ 
++/* Apple Interchange, compressed and tiled formats */
++#define V4L2_PIX_FMT_IC12	v4l2_fourcc('I', 'C', '1', '2') /* Interchange NV12 */
++#define V4L2_PIX_FMT_IC16	v4l2_fourcc('I', 'C', '1', '6') /* Interchange NV16 */
++#define V4L2_PIX_FMT_IC24	v4l2_fourcc('I', 'C', '2', '4') /* Interchange NV24 */
++#define V4L2_PIX_FMT_IC03	v4l2_fourcc('I', 'C', '0', '3') /* Interchange P030 */
++#define V4L2_PIX_FMT_IC23	v4l2_fourcc('I', 'C', '2', '3') /* Interchange P230 */
++#define V4L2_PIX_FMT_IC43	v4l2_fourcc('I', 'C', '4', '3') /* Interchange P430 */
++
+ /* Renesas RZ/V2H CRU packed formats. 64-bit units with contiguous pixels */
+ #define V4L2_PIX_FMT_RAW_CRU10	v4l2_fourcc('C', 'R', '1', '0')
+ #define V4L2_PIX_FMT_RAW_CRU12	v4l2_fourcc('C', 'R', '1', '2')
+
 -- 
 2.55.0
 
