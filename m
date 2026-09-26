@@ -4,60 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52126C98318
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Sep 2026 08:42:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10FCDC98318
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Sep 2026 11:04:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2HyqR15sm8QCIpRZPUBxBm6gGRuyXXUNwJCMCBTdobk=; b=UQxoFdieHAP45L
-	lLwDlZ8J3nFqdXtUWJpZYuPaJRgUuryHeV/QQlnFJu6rUNRM55gyd5mdKZ35Q5XtuSrMYZg6tyaiG
-	i8Nr4DERlWu946Bxdcek/ATuE1Hn7Vb+NZp0sIVuT6nxYI55CPXXUa/mYpLjD/RNvsapp8VSiKhp2
-	x68HmfelnRiPX++jlax3SCtOYCBWEmvEDclQXWplQbLXMgTZ4nVQfUu5teTOoty4DmJc/DQ4ArinK
-	w5RHTO1UVta2TOIwkfztvgPUc+QPRs+myOtQC3fI8g5C0LFg6v1YhboYRCjUPxZX+7Fr82csR8UE6
-	e8F6ZwNFZrg1mhTp7/cQ==;
+	List-Owner; bh=J+U0npuRo7k6PSr0hoQM307xabpy54cemUroINUalOE=; b=UgjqQRtJzweu15
+	BJ4P7HJCsFkECJC0D2td2Sw6dnh7iE1ZdjQuAyvpfj+8CvpWZUj6vjgW2j37gCxA8O77G7yK1kyye
+	CyUEnP2EmnBpHU+gFzvtoraUE6AxFwVxAczKx9JHeoViy/oGH/GI/MGKO51p4lpc3tKf59M0ZHP4n
+	DQBDY2EtSuLLwAyOa5fPA2ZR7JCP3UlBfGT5a1xhSD/lLgSf+vZCO/LbXLwabIvwPdtLrkl51oRUy
+	04img3emlpk50TaxzDy1GNxF3iDkDsNeGV8FW5+iyMwcIJ7lZuDQMZzggf1nVrNCWbGoCXtV3zu7W
+	B8LI9bkpPq82a7F/0YgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xANzc-0000000FAj8-3pkm;
-	Sat, 26 Sep 2026 08:42:48 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xAQCn-0000000FHsE-0FA9;
+	Sat, 26 Sep 2026 11:04:33 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xANzb-0000000FAiS-0DnT;
-	Sat, 26 Sep 2026 08:42:47 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 35185601E4;
-	Sat, 26 Sep 2026 08:42:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8CA51F000FF;
-	Sat, 26 Sep 2026 08:42:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790412165;
-	bh=V2AoDkHxt5/ck9ZyVPAFqWeUoxXW3bq3RmcY+WbOVMQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=UDSbjbiFlxck3G3UTrDTNp+LBwXGOGJgGWH/TI22gK2RQ9e4khhack8IOymoenAoG
-	 //PI20I/PaLEdbgOnUOMEmOg4ZBRQXulshPCcN4rIsaMgPlZruNC3ZtqiJ0cQ4Dgk2
-	 503Rhmjw0Hz6JxAwkOrp//mDsVBsPubn/zs6FVZ0qLpEXfmW0EL95EsYXIIQBO3/gH
-	 1ee29WJ/vm8pLLWdJbEkXyP3BFkCuqQF5yeUmPSKJvddvSuN6s6ps7CoOyCMWPsrwI
-	 Yg7clPL5wuGZhUuWBYQKhSbD6mMov1pBWwQndkC7LcYwy1j2gCs3fJGV3o0eNZ1GQE
-	 9ivwAli37OWvA==
-Date: Sat, 26 Sep 2026 10:42:32 +0200
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Zhang Yubing <yubing.zhang@rock-chips.com>, Frank Wang <frank.wang@rock-chips.com>, 
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com, 
-	Igor Paunovic <royalnet026@gmail.com>
-Subject: Re: [PATCH v15 6/6] phy: rockchip: usbdp: Add USB-C state without DP
- enabled
-Message-ID: <rdx2u4cnxgbdkumgh4oaux7wvmb545ygcnuidpp6yvfntjtwgb@i7w72g4ebc62>
-References: <20260915-b4-rockchip-usbdp-cleanup-part3-v15-0-9ad90a456953@collabora.com>
- <20260915-b4-rockchip-usbdp-cleanup-part3-v15-6-9ad90a456953@collabora.com>
+	id 1xAQCk-0000000FHrf-0M4P;
+	Sat, 26 Sep 2026 11:04:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1790420616; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=J+d73KLeGearmnB+EsTVJtGDCcSURFACrgEwh5Gb7M21chj2jV1Iiit5g2XuHpnZOgApomGnOFshy2+ZE30TYmi6nLvX7XWaX3ZQ0NJbncOpDrpapmGFi2JDH4aar3UCF6ltRb51TYA3VIhMcspdRiaMrqpDZxado9d02/xh/JI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1790420616; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=rjuEah86VS9smQcbw1BPf2x1MuqJ0in2mIL+HloaBaM=; 
+	b=OsZKRAMkF8q9LsPcTuoqp84kacZgiIo6b+GtRP0r9W02fJtB+IdlVaEptr8d2jnOGWX4MJlaY71EqZAPEL5e3kGCysQa8cnPXjb7P0ohs7tXOGQlJrSM9eVbm+ROS9y06UMDSypBdEj6EGQtP5fotEzox+qOcsnX7OlEIregMpY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790420616;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=rjuEah86VS9smQcbw1BPf2x1MuqJ0in2mIL+HloaBaM=;
+	b=de3Qat5DuIdjZb7RKGMxcOSJibnNV+AOyda+7rjD/9kRdWeCv7eaCxRumnTNw0yg
+	2GK8KFKG72pJhpMyjbDG6PYCUF7AxmkDaBzBmMxAdLJMCyTH44V0un6ZpbVSV3AYipJ
+	+U6jHbOPfKhZYVu42mAeHC4//ujgMDLEI+MuFvhk=
+Received: by smtp.zohomail.com with SMTPS id 1790420615376767.1283057968208;
+	Sat, 26 Sep 2026 04:03:35 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Vidith Madhu <vmadhu@nvidia.com>
+Cc: "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>,
+ Leo Li <sunpeng.li@amd.com>, Daniel Stone <daniels@collabora.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Helge Deller <deller@gmx.de>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-fbdev@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com, Derek Foreman <derek.foreman@collabora.com>,
+ wayland-devel@lists.freedesktop.org
+Subject: Re: [PATCH RFC 06/25] drm/connector: hdmi: Add VTEM EMP generation
+Date: Sat, 26 Sep 2026 13:03:27 +0200
+Message-ID: <FJ8OpdCORV2b1oivG9-G9Q@collabora.com>
+In-Reply-To: <a5bc012a-9b9e-eb2b-d67e-a91f2d93d6bf@nvidia.com>
+References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com>
+ <20260921-vrr-limiter-uapi-v1-6-2fcd7d011646@collabora.com>
+ <a5bc012a-9b9e-eb2b-d67e-a91f2d93d6bf@nvidia.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260915-b4-rockchip-usbdp-cleanup-part3-v15-6-9ad90a456953@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260926_040430_219301_BC41333B 
+X-CRM114-Status: GOOD (  35.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,31 +86,192 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBTZXAgMTUsIDIwMjYgYXQgMDU6MzI6NTNQTSArMDIwMCwgU2ViYXN0aWFuIFJlaWNo
-ZWwgd3JvdGU6Cj4gVGhlIGRyaXZlciBjdXJyZW50bHkgb25seSBkaWZmZXJzIGJldHdlZW4gNCBs
-YW5lcyBEUCBtb2RlIG9yIGNvbWJpbmVkIERQCj4gKyBVU0IzIG1vZGUuIFRoaXMgbWFrZXMgc2Vu
-c2UgZnJvbSBhIGxhbmUgcm91dGluZyBwb2ludCBvZiB2aWV3LCBhcyB0aGUKPiBoYXJkd2FyZSBv
-bmx5IGhhcyAyIGxhbmVzIG9mIFVTQjMuCj4gCj4gQnV0IGFkZGluZyBhIHNlcGFyYXRlIHN0YXRl
-IGZvciBVU0Itb25seSBoZWxwcyB3aXRoIHBvd2VyIG1hbmFnZW1lbnQsCj4gc2luY2Ugd2UgYWx3
-YXlzIHBvd2VyIHVwIGFsbCBQSFkgcGFydHMgYWNjb3JkaW5nIHRvIHRoZSBjdXJyZW50IGhhcmR3
-YXJlCj4gc2V0dXAgdG8gYXZvaWQgZGF0YSBzdHJlYW0gaW50ZXJydXB0aW9ucy4gRXZlbiBpZiBz
-b21lIGxhbmVzIGFyZSBtdXhlZAo+IHRvIHRoZSBEUCBjb250cm9sbGVyIHRoZXJlIGlzIG5vIG5l
-ZWQgdG8ga2VlcCB0aGUgRFAgc2lkZSBlbmFibGVkIGlmCj4gc29tZXRoaW5nIHdpdGhvdXQgRFAg
-QWx0TW9kZSBpcyBwbHVnZ2VkIGludG8gVVNCLUMuCj4gCj4gVGhpcyBwb3RlbnRpYWxseSB0cmln
-Z2VycyBzb21lIG1vcmUgVVNCIHJlY29ubmVjdGlvbnMgZHVyaW5nIHRoZSBQRAo+IEFsdE1vZGUg
-bmVnb3RpYXRpb24gd2hlbiBzd2l0Y2hpbmcgZnJvbSBVU0Itb25seSB0byBjb21iaW5lZCBVU0Ir
-RFAKPiBtb2RlLiBUaGlzIHNob3VsZCBiZSBmaW5lLCBhcyB0aGUgY2FibGUgaXMgZnJlc2hseSBw
-bHVnZ2VkIGF0IHRoaXMKPiBwb2ludC4KPiAKPiBUZXN0ZWQtYnk6IElnb3IgUGF1bm92aWMgPHJv
-eWFsbmV0MDI2QGdtYWlsLmNvbT4gIyBPcmFuZ2UgUGkgNSBQbHVzCj4gU2lnbmVkLW9mZi1ieTog
-U2ViYXN0aWFuIFJlaWNoZWwgPHNlYmFzdGlhbi5yZWljaGVsQGNvbGxhYm9yYS5jb20+CgpSZXZp
-ZXdlZC1ieTogTWFuaXZhbm5hbiBTYWRoYXNpdmFtIDxtYW5pdmFubmFuLnNhZGhhc2l2YW1Ab3Nz
-LnF1YWxjb21tLmNvbT4KCi0gTWFuaQoKLS0gCuCuruCuo+Cuv+CuteCuo+CvjeCuo+CuqeCvjSDg
-rprgrqTgrr7grprgrr/grrXgrq7gr40KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Friday, 25 September 2026 05:48:54 Central European Summer Time Vidith Madhu wrote:
+> 
+> On Mon, 21 Sep 2026, Nicolas Frattaroli wrote:
+> 
+> > From: Derek Foreman <derek.foreman@collabora.com>
+> > 
+> > Add VTEM EMP generation to enable variable refresh rate signalling over
+> > HDMI.
+> > 
+> > These infoframes are only generated if the sink supports VRR.
+> > 
+> > Signed-off-by: Derek Foreman <derek.foreman@collabora.com>
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 60 +++++++++++++++++++++++++
+> >  include/drm/drm_connector.h                     |  5 +++
+> >  2 files changed, 65 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> > index d55548399687..33d0c9491643 100644
+> > --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> > +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> > @@ -853,6 +853,56 @@ static int hdmi_generate_hdmi_vendor_infoframe(const struct drm_connector *conne
+> >  	return 0;
+> >  }
+> >  
+> > +static int hdmi_generate_emp_infoframe_vtem(const struct drm_connector *connector,
+> > +					    struct drm_connector_state *conn_state)
+> > +{
+> > +	const struct drm_display_info *info = &connector->display_info;
+> > +	const struct drm_crtc_state *crtc_state =
+> > +		drm_atomic_get_crtc_state(conn_state->state, conn_state->crtc);
+> > +	struct drm_connector_hdmi_infoframe *infoframe =
+> > +		&conn_state->hdmi.infoframes.vtem;
+> > +	struct hdmi_emp_infoframe_vtem *vtem =
+> > +		&infoframe->data.vtem;
+> > +	const struct drm_crtc_vrr_state *vrr = &crtc_state->vrr_state;
+> > +	int vfront;
+> > +
+> > +	infoframe->set = false;
+> > +
+> > +	if (!connector->hdmi.funcs->vtem.write_infoframe)
+> > +		return 0;
+> > +
+> > +	if (!info->hdmi.vrr_capable)
+> > +		return 0;
+> > +
+> > +	hdmi_emp_infoframe_vtem_init(vtem);
+> > +	if (!crtc_state->vrr_enabled || vrr->vic) {
+> > +		vtem->base_refresh_rate = 0;
+> > +		vtem->base_vfront = 0;
+> It shouldn't hurt to always populate base_refresh_rate and base_vfront, 
+> might be cleaner to skip this check.
+
+Hm, I thought they had to be blank when the vic was non-zero. If that's more
+of a "they can be blank" then yeah I'm fine with skipping it. But that makes
+me question the purpose of vrr->vic, which is then no longer needed as it's
+not used anywhere else.
+
+> > +	} else {
+> > +		vtem->base_refresh_rate = drm_mode_vrefresh(&crtc_state->mode);
+> > +		vfront = crtc_state->adjusted_mode.crtc_vsync_start -
+> > +			 crtc_state->adjusted_mode.crtc_vdisplay;
+> > +		if (vfront > U8_MAX || vfront < 0)
+> > +			return -EINVAL;
+> > +
+> > +		vtem->base_vfront = vfront;
+> > +	}
+> > +	vtem->fva_factor_m1 = 0;
+> > +	infoframe->set = true;
+> > +
+> > +	if (!crtc_state->vrr_enabled) {
+> I don't think we should use the vrr_enabled CRTC property to determine 
+> VRR_EN in the VTEM EMP. Transitioning the VRR mode sink-side typically causes
+> blanking, and it was discussed in patch [03/25] that drivers should be 
+> free to handle vrr_enabled changes as a seamless switch since it only 
+> concerns source-side VRR state (this is how the NVIDIA driver handles it).
+
+I'll be honest, this is the first time I've thought about the VRR state
+communicated from userspace to kernel to be different to the VRR state
+communicated from kernel to display.
+
+> Maybe it would make sense to extend the qms_enabled connector property 
+> introduced in this patchset to an enum of {Off, Gaming, QMS}? This would allow
+> a standard path to control the VRR state on the sink, separately from
+> vrr_enabled.
+
+An earlier version of the patch series I was working on internally had a
+VRR limiter property that would either be Off (i.e. Game), Game-Limited,
+QMS-Limited, and it self-inflicted some amount of confusion because of
+the way things were named, so I refactored it to the limiter values being
+what determines whether a limiter is used, and the QMS enable to determine
+whether QMS is used to apply said limit. So my initial reaction is to be
+hesitant about expanding the collection of possible states exposed through
+the uAPI.
+
+To help my understanding: what does
+
+ vrr_enabled=true
+ $new_property=Off
+
+mean for presentation? Another state I'm curious about is
+
+ vrr_enabled=false
+ $new_property=Game
+
+which I assume is the case you're interested in, where the compositor does
+not want VRR presentation but we're keeping the sink in Game mode to avoid
+having the display go blank.
+
+is that correct, and something that does need an expanded property? I feel
+like userspace could be smart enough to do that by keeping vrr_enabled=true
+and then setting a fixed target, if the goal is to have non-VRR but with the
+display still in VRR mode.
+
+Kind regards,
+Nicolas Frattaroli
+
+> > +		vtem->m_const = false;
+> > +		vtem->game_vrr_en = false;
+> > +		return 0;
+> > +	}
+> > +
+> > +	vtem->game_vrr_en = true;
+> > +
+> > +	vtem->m_const = !vrr->dynamic;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> >  static int
+> >  hdmi_generate_infoframes(const struct drm_connector *connector,
+> >  			 struct drm_connector_state *conn_state)
+> > @@ -884,6 +934,10 @@ hdmi_generate_infoframes(const struct drm_connector *connector,
+> >  	if (ret)
+> >  		return ret;
+> >  
+> > +	ret = hdmi_generate_emp_infoframe_vtem(connector, conn_state);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> >  	return 0;
+> >  }
+> >  
+> > @@ -1494,6 +1548,12 @@ int drm_atomic_helper_connector_hdmi_update_infoframes(struct drm_connector *con
+> >  			goto out;
+> >  	}
+> >  
+> > +	if (info->hdmi.vrr_capable)
+> > +		ret = write_or_clear_infoframe(connector,
+> > +					&funcs->vtem, "VTEM",
+> > +					&old_conn_state->hdmi.infoframes.vtem,
+> > +					&new_conn_state->hdmi.infoframes.vtem);
+> > +
+> >  out:
+> >  	mutex_unlock(&connector->hdmi.infoframes.lock);
+> >  	return ret;
+> > diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+> > index e561a444515f..6e431eb81705 100644
+> > --- a/include/drm/drm_connector.h
+> > +++ b/include/drm/drm_connector.h
+> > @@ -1180,6 +1180,11 @@ struct drm_connector_hdmi_state {
+> >  		 * matching our state.
+> >  		 */
+> >  		struct drm_connector_hdmi_infoframe hdmi;
+> > +
+> > +		/**
+> > +		 * @vtem: VTEM EMP infoframes structure matching our state.
+> > +		 */
+> > +		struct drm_connector_hdmi_infoframe vtem;
+> >  	} infoframes;
+> >  
+> >  	/**
+> > 
+> 
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
