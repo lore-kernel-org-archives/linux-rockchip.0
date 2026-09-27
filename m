@@ -4,49 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E547EC9830E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Sep 2026 12:37:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C1EBC98332
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Sep 2026 12:37:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WTokhqs+1n4heKIc6jjOEMRnB43PMc36GH9Kufxs2+Y=; b=yMAB208c998Jbk
-	0cpQezbSvGpYRQicEnP50gFaRzOn0csi5snZQ2n+jDdJCR9LdykQljqF0cROfO17fc1+2WNdm1Uqo
-	3Cnhibuw1Nk8WEURO0LtcBtcKrx6jvN8YW9QyfAE0YaAgJBvzWFPYPI4bopZG48794C6JIY3cuWWa
-	t4SVgRZf6cl0n6QPC7VQVmjh26lgXtgRxgDJbDDrEqlsBdxPBittl2soOWaYsO99odzf1vbUqXO6v
-	IoaEuE69BcSQ9gazR8erH32wv46z8XKQUbX5yMuQAWxXPg4CRP79OL69V0YFKu0uYj2kurW3Z74hd
-	CcOQxR9JnzEL7DBbECJA==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bHtW3amSnU27yFLGgoZWq6hz6NstoWC0B3ctWHacDts=; b=Fa3GHXRtzCw62r
+	CppoXtSqSTql+iK3R2WyBveRaUYbd6nzlpR/rPxDgpZwyNDlwRC//1MRQpxSKqC1BtZhPknAe+fcn
+	1ja0/lfVD3rtVtjfdlTYcY+2YlygrtV6UEXULXPyFV0C+E1gTR3dmvHaFm6hh2MZqAk4NKu1NOqVL
+	jmtSH5FtD1SurXVnGIC6Skm7IjpUNZ00I2PQ8bpJLP52ZXZuFBVkmlMsEaESkzofrCYadOqSjTKLA
+	K9bEv+a9j/qc37XyM3Ayl1P6s4kRvp2U88P51GA/Q3Awnp1VImMfMiBrrNkh54/EK4lFgABpyOhUX
+	IZqcyizJpOxNNzjrxUJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAo7v-0000000GJhG-3oO6;
-	Sun, 27 Sep 2026 12:37:07 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
+	id 1xAo7z-0000000GJii-0LtO;
+	Sun, 27 Sep 2026 12:37:11 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAo7t-0000000GJgG-215m;
+	id 1xAo7u-0000000GJgW-2ZE4;
 	Sun, 27 Sep 2026 12:37:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID; bh=FyG054HNrO/kXG3
-	5lu7ivFIZVkhkQ5n7nZNjUmmDnN0=; b=Pb6EUO5qprKbaZkU1rmsjzYX1x2sPi7
-	0ZiXE2URkpy+MwjQzbzphLWecu+/rVN+zErL1rkabQ/8S8r/Ob10Qj5IzowBy7Ah
-	V9ONBAFe90bPzuCFLQVXh1Z3QF1sHm8M5ogMCdwDp9JjBy1pWlo1eYKlXZaaV2kC
-	egkhAtgadJhY=
+	s=s110527; h=From:To:Subject:Date:Message-ID; bh=copIDOk9MPWo/ov
+	98Kor/uunS41vMva72FnQRKJ6hn0=; b=aE29hHC5gz8S6ghSp3XCSwSTHiznpde
+	i5w4eYoZRSE5vhjgnMiaAEcH/HSzG5T2N7RhRbKCJO4McWZ+hlsHiLv+9dEZc9yQ
+	mC5gIYzugCotRXtG3tEKFkNFCbW/WN85xG0JVo9DDCcmQGmseOZsyp1EDjw2hHiW
+	audXVx07DvaE=
 From: BG9OXA <bg9oxa@163.com>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 0/2] arm64: dts: rockchip: add ALIENTEK QuarkPi-CA2
-Date: Sun, 27 Sep 2026 20:36:59 +0800
-Message-ID: <179051261955.4055.4823239353832017342@163.com>
-X-CM-TRANSID: _____wD3_0TrDblqcxuyBA--.50921S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxGryUWr15Kw4ftryxAr4DXFb_yoW5ur1fpF
-	Z8ZrWfKrs7KF1xu3s3uFs8CFWrArs3Jay5WF1kW34ayws8Jr1UJF4Sv3Z0q3W7urnagFyj
-	qF4Y9348CF1DZF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UTMKNUUUUU=
-X-CM-SenderInfo: lejz05rd6rljoofrz/xtbC3QyH9Gq5DexwsgAA3S
+Subject: [PATCH 1/2] dt-bindings: arm: rockchip: add ALIENTEK QuarkPi-CA2
+Date: Sun, 27 Sep 2026 20:37:03 +0800
+Message-ID: <179051262312.4055.11698105707712320261@163.com>
+In-Reply-To: <179051260955.4055.15953866975694461812@163.com>
+References: <179051260955.4055.15953866975694461812@163.com>
+X-CM-TRANSID: _____wD39xzvDblqvR2yBA--.43291S2
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Xry3CF48Cw47ur1xCr1xXwb_yoW3ArXEk3
+	WxuF15uFWrXFyFgw4rAFs7WFyqvw42krZ3AF1UAF1kA3yvkrs3KFZ5t342ya4xWr43urn3
+	CFn5tryxWFnxJjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUjp6zUUUUUU==
+X-CM-SenderInfo: lejz05rd6rljoofrz/xtbC3g+H9Gq5De98IwAA3M
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_053705_830640_9F818F3C 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20260927_053706_956757_92102FB8 
+X-CRM114-Status: UNSURE (   4.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,74 +67,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+Document the ALIENTEK QuarkPi-CA2, an RK3588S based single board computer.
 
-This short series adds support for the ALIENTEK QuarkPi-CA2, an RK3588S
-based single board computer.
-
-Board summary:
- - Rockchip RK3588S (4x Cortex-A76 + 4x Cortex-A55), LPDDR4x
- - eMMC, microSD slot, M.2 socket (PCIe 2.0 x1)
- - Gigabit Ethernet, USB 3.0 Type-A, USB 2.0 Type-A ports and a USB-C
-   port (USB 2.0 plus DisplayPort altmode)
- - HDMI output, MIPI DSI and MIPI CSI connectors
- - ES8388 analog codec with 3.5 mm jack, HUSB311 USB-C PD controller
- - 40-pin header, RK806 PMIC, IR receiver
- - No SPI-NOR; the vendor bootloader reads extlinux.conf from the SD/eMMC
-   boot partition
-
-Patch 1 documents the board in the Rockchip platform bindings, patch 2
-adds the device tree itself (plus its Makefile entry).  The "alientek"
-vendor prefix is already present in vendor-prefixes.yaml, so no vendor
-prefix change is needed.
-
-Tested on hardware with a 6.18 based kernel: boot from SD and eMMC,
-gigabit Ethernet, both USB 2.0 ports, the USB 3.0 Type-A port (5000 Mbps
-link), USB-C DisplayPort altmode, HDMI video and audio, ES8388 analog
-audio, M.2 PCIe, ADC keys, the IR receiver and ramoops.
-
-Notes worth the reviewer's attention:
-
- * The codec node keeps "clock-names = \"mclk\"" together with the
-   I2S0_8CH_MCLKOUT_TO_IO clock.  Without that name the MCLK never reaches
-   the codec pad and playback stays silent, even though every register,
-   the DAPM paths and the ALSA controls look correct.  Verified on
-   hardware both with and without the property.
-
- * The codec compatible list is "everest,es8323", "everest,es8388".  The
-   second entry is not cosmetic: sound/soc/codecs/es8328-i2c.c matches only
-   "everest,es8328" and "everest,es8388", so dropping it would leave the
-   codec without a driver.  Keeping it produces two dtbs_check warnings,
-   because an ES8323/ES8388 binding is not upstream yet and the node falls
-   back to everest,es8316.yaml (the compatible list is "too long" and
-   AVDD/DVDD/HPVDD/PVDD are unexpected).  Two mainline boards already use
-   "everest,es8323" with the same gap (rk3588-firefly-itx-3588j,
-   rk3588s-youyeetoo-r1), so it looks like a missing binding rather than a
-   board issue.  I left the binding out of this series to keep the board
-   port focused and will happily send it separately - please tell me which
-   form you prefer.
-
- * The USB 3.0 Type-A port is wired to usb_host2_xhci through combphy2_psu;
-   both are enabled here, as in the vendor BSP.  combphy2_psu is free on
-   this board because the M.2 socket uses pcie2x1l2 (combphy0_ps).
-
- * The MIPI CSI camera pipeline is described, but does not stream yet: the
-   sensor probes fine while the RK3588 VICAP/rkcif capture path is still
-   incomplete upstream, so those nodes are included for completeness only.
-
-This is my first patch to the Rockchip platform.  I am a Chinese hobbyist
-(amateur radio callsign BG9OXA) working on this board in my spare time, so
-please point out anything that does not follow the expected style.
-
-BG9OXA (2):
-  dt-bindings: arm: rockchip: add ALIENTEK QuarkPi-CA2
-  arm64: dts: rockchip: add ALIENTEK QuarkPi-CA2
-
- .../devicetree/bindings/arm/rockchip.yaml            |    5 +
- arch/arm64/boot/dts/rockchip/Makefile                |    1 +
- arch/arm64/boot/dts/rockchip/rk3588s-quarkpi-ca2.dts | 1508 +++++++++++++++++++
- 3 files changed, 1514 insertions(+)
-
+Signed-off-by: BG9OXA <bg9oxa@163.com>
+---
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -182,6 +182,11 @@
+           - const: alientek,clrv1126f
+           - const: rockchip,rv1126
+ 
++      - description: Alientek QuarkPi-CA2 board
++        items:
++          - const: alientek,quarkpi-ca2
++          - const: rockchip,rk3588s
++
+       - description: Edgeble Neural Compute Module 2(Neu2) SoM based boards
+         items:
+           - const: edgeble,neural-compute-module-2-io   # Edgeble Neural Compute Module 2 IO Board
 -- 
 2.43.0
 
