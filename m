@@ -4,94 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B2DAC9832F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Sep 2026 15:27:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0DA5C9832F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Sep 2026 16:07:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dgSpz62zoPcCrJYBILnz2asJHk2tN/Qr128ff5C7Fas=; b=IJSAa8J9bh4ipj
-	qhGyl9KOBMLHTu6s70oyB39PBwrtqZ2fGPxaVJP83Hh66iXp0RYYS8cKeaPUCEq+EntaVqcauewln
-	wWqRRSxZ75oG71GTpSRMERpRegClWxsq/60GamfFWX5KXH4PfxEknrL9ytztVHj0JTiEGdwMY0ByL
-	SyeQNAccMOThKPDVzEw5FovAUe4kFshLD0NshDkH2vAtNJ41pj6K+SQG0eFtP/nkNSJOWln1ArW5X
-	9/r9vYbaS7JEVgLNj9Zq9dKYpxbFIqqGDCy6XPbYHejCNT97hYKdSqLvc7tKZAQILb8+WklhPSOgy
-	mTrpPrymQsT4Rkt86c8g==;
+	List-Owner; bh=oodb1z58KillRQH25twkatFQMrlzWpvx6bnH77rRl8Q=; b=DxcZC5+tckSjn5
+	KXrCE3XMPCk+hF4JgSD7ZEUE2vLYE0KlFCUJOOzGc/bMjvkhzjDEtBakfwESsg8NzuRh7T8laDCRt
+	/H8xG6LaN17GeV55PKvsfZIQSyy5sqTyCcwCwjAY8zuqKXhgjPMNTll7U75068PrJu0cTxcVLzcN+
+	m6r6+iIz/6P0MNeZJu3jDP57uvTVTv4sb1FjvuFyXhNlgGLy0Lf7yV5XrmkstNoGTF7IoGRa/pIsa
+	N3J18OPZPEr7gwyrTDWgiWVc8aSqk8c0ycoFfaDOdRTrKxcVome/c2PXxKgdHhoaqwzF16+1ath21
+	SaEbKUQwf3Z3y647gLng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAqmV-0000000GW2H-1yoW;
-	Sun, 27 Sep 2026 15:27:11 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1xArPD-0000000GY1b-0Jyy;
+	Sun, 27 Sep 2026 16:07:11 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAqmR-0000000GW1T-0NcL;
-	Sun, 27 Sep 2026 15:27:09 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260927152657euoutp01fee60fb85c8f744f5b23de099f9efd5d~ZNwQwVanT0796507965euoutp01Z;
-	Sun, 27 Sep 2026 15:26:57 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260927152657euoutp01fee60fb85c8f744f5b23de099f9efd5d~ZNwQwVanT0796507965euoutp01Z
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1790522818;
-	bh=552yr90urBhvBvN6cAihy9SNDNfGhvxsBdcKYn8Bqkg=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=gjg9eQOWA0CxY3ngNhBHqtz1JM3KKcYnvAXf1eQWIfGbzS+ettayDylBqirZGSDZ0
-	 4/LXiCaTIPkLLVpd5a2xD3aFHM5RQsqbdNfRkqEjajd72YE31sUYSbxWhMeTWRmQ+F
-	 TWdrCd/edX3NzOp1vM2aOWlWptW3UGr6cosY45Yg=
-Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20260927152656eucas1p1473e0b9575b6efc4ccc01e99783bf8aa~ZNwPrSQNF0222902229eucas1p1j;
-	Sun, 27 Sep 2026 15:26:56 +0000 (GMT)
-Received: from [192.168.1.44] (unknown [106.210.136.40]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20260927152655eusmtip1c51d14fba318ce4acae93d017ad71be3~ZNwOCLRV_3134331343eusmtip1g;
-	Sun, 27 Sep 2026 15:26:55 +0000 (GMT)
-Message-ID: <a74ccc09-ed64-4915-ab85-232c6d953c3d@samsung.com>
-Date: Sun, 27 Sep 2026 17:26:54 +0200
+	id 1xArPA-0000000GY14-1fYz;
+	Sun, 27 Sep 2026 16:07:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=+oMeoZ4pGEsBia+lJYpRLMOIzaRZRIDGRSGowGGDiv0=; b=ygKYUhErkjokFDjmsL3hU3RSsU
+	SpM9nL/uVB5J5zwuyqTNQI3AHDGE41RqsI65O/FkM+cZAWxH5Ep7WAu4VtblAqpuI0anUL/Jk/pNl
+	61CuC6DFHZndKNr3B1Rp83apg17/rhmquKp6VMptUxdBN6QuMx+uafyfcNvuDtLmXWs4=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1xArP3-007XMX-3k; Sun, 27 Sep 2026 18:07:01 +0200
+Date: Sun, 27 Sep 2026 18:07:01 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: BG9OXA <bg9oxa@163.com>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: add ALIENTEK QuarkPi-CA2
+Message-ID: <89731a27-4d5f-4a01-88b1-26c2e0d65ef9@lunn.ch>
+References: <179051260955.4055.15953866975694461812@163.com>
+ <179051262683.4055.12205303753370851498@163.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 05/20] dt-bindings: display: verisilicon: Add
- starfive,jh7110-dc8200
-To: Icenowy Zheng <zhengxingda@iscas.ac.cn>, Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	<conor+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss
-	<rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>, Andy
-	Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Emil
-	Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
-	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
-	<sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Paul Walmsley
-	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
-	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
-	Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>, Jerome
-	Brunet <jbrunet+clk@baylibre.com>
-Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	mfd@lists.linux.dev, linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org, Marek Szyprowski
-	<m.szyprowski@samsung.com>, Maud Spierings <maud_spierings@murena.io>,
-	Graham Markall <hello@big-grey.co.uk>, Chaoyi Chen
-	<chaoyi.chen@rock-chips.com>, Joshua Peisach <jpeisach@ubuntu.com>,
-	=?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-Content-Language: en-US
-From: Michal Wilczynski <m.wilczynski@samsung.com>
-In-Reply-To: <1aa49a9bcf5c5a16ce38b57f8f508a31ca70c1ce.camel@iscas.ac.cn>
-X-CMS-MailID: 20260927152656eucas1p1473e0b9575b6efc4ccc01e99783bf8aa
-X-Msg-Generator: CA
-X-RootMTR: 20260915153222eucas1p213b95b05ea7eb9a18700af8888ef5a44
-X-EPHeader: CA
-X-CMS-RootMailID: 20260915153222eucas1p213b95b05ea7eb9a18700af8888ef5a44
-References: <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
-	<CGME20260915153222eucas1p213b95b05ea7eb9a18700af8888ef5a44@eucas1p2.samsung.com>
-	<20260915-jh7110-clean-send-v4-5-f0e4fd6f2cc8@samsung.com>
-	<1aa49a9bcf5c5a16ce38b57f8f508a31ca70c1ce.camel@iscas.ac.cn>
+Content-Disposition: inline
+In-Reply-To: <179051262683.4055.12205303753370851498@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_082707_746469_4CE1872C 
-X-CRM114-Status: GOOD (  14.44  )
+X-CRM114-CacheID: sfid-20260927_090708_439737_3D64C769 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,41 +65,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpPbiA5LzE4LzI2IDA3OjU4LCBJY2Vub3d5IFpoZW5nIHdyb3RlOgo+IOWcqCAyMDI2LTA5LTE1
-5LqM55qEIDE3OjMyICswMjAw77yMTWljaGFsIFdpbGN6eW5za2nlhpnpgZPvvJoKPj4gVGhlIEpI
-NzExMCBlbWJlZHMgYSBEQzgyMDAuIFRoZSBiaW5kaW5nIHJlcXVpcmVzIGFuIFNvQyBzcGVjaWZp
-Ywo+PiBjb21wYXRpYmxlIGFoZWFkIG9mIHRoZSBnZW5lcmljIG9uZSwgc28gYWRkIHRoZSBKSDcx
-MTAgdG8gdGhlIGVudW0uCj4+Cj4+IFJldmlld2VkLWJ5OiBKb3NodWEgUGVpc2FjaCA8anBlaXNh
-Y2hAdWJ1bnR1LmNvbT4KPj4gU2lnbmVkLW9mZi1ieTogTWljaGFsIFdpbGN6eW5za2kgPG0ud2ls
-Y3p5bnNraUBzYW1zdW5nLmNvbT4KPj4gLS0tCj4+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvZGlzcGxheS92ZXJpc2lsaWNvbixkYy55YW1sIHwgMSArCj4+ICAxIGZpbGUgY2hh
-bmdlZCwgMSBpbnNlcnRpb24oKykKPj4KPj4gZGlmZiAtLWdpdAo+PiBhL0RvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3ZlcmlzaWxpY29uLGRjLnlhbWwKPj4gYi9Eb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS92ZXJpc2lsaWNvbixkYy55YW1s
-Cj4+IGluZGV4Cj4+IDkxOWE5MDAxMjIwMTIwMDU0Y2I2MmQxZDAxYjcyOTMzNjcyNjZmOTUuLjA1
-YTIwMjYzM2NkMjczZmVjMzU4YzA5NWM2NAo+PiA1ODRkOTU5ZDk2ZDkwIDEwMDY0NAo+PiAtLS0g
-YS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS92ZXJpc2lsaWNvbixk
-Yy55YW1sCj4+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
-L3ZlcmlzaWxpY29uLGRjLnlhbWwKPj4gQEAgLTE2LDYgKzE2LDcgQEAgcHJvcGVydGllczoKPj4g
-ICAgY29tcGF0aWJsZToKPj4gICAgICBpdGVtczoKPj4gICAgICAgIC0gZW51bToKPj4gKyAgICAg
-ICAgICAtIHN0YXJmaXZlLGpoNzExMC1kYzgyMDAKPiAKPiBOb3RlOiB0aGlzIGJpbmRpbmcgaXMg
-YmVpbmcgcmVmYWN0b3JlZCBhcyBwYXJ0IG9mIE1BMzVEMSBzdXBwb3J0Cj4gaW50cm9kdWN0aW9u
-ICh0aGlzIFNvQyBoYXMgYSBzaW5nbGUtcG9ydCBEQyBsaWtlIGEgREM4MDAwKSwgYWZ0ZXIgdGhl
-Cj4gcmVmYWN0b3IgdGhlIGJpbmRpbmcgc3RyaW5nIG1pZ2h0IG5lZWQgdG8gYXBwZWFyIHR3aWNl
-Lgo+IAo+IFRoYW5rcywKPiBJY2Vub3d5CgpIaSwKVGhhbmsgeW91IGZvciBsZXR0aW5nIG1lIGtu
-b3cuIEkndmUgZm91bmQgdGhlIHBhdGNoc2V0IG9uIHRoZSBtYWlsaW5nCmxpc3QgWzFdLiBXaWxs
-IG1ha2Ugc3VyZSB0byByZWJhc2UgKGFuZCBmaXgpIGFmdGVyIGl0IGdldHMgaW4KKHByZXN1bWFi
-bHkgYmVmb3JlIHRoaXMgb25lIGFsdGhvdWdoIEknbSBub3QgMTAwJSBzdXJlKS4KClsxXSAtIGh0
-dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDI2MDkxODAzMDEyNS4zMTU5NzgtMi1hMDk4NzIw
-MzA2OUBnbWFpbC5jb20vCgoKPiAKPj4gICAgICAgICAgICAtIHRoZWFkLHRoMTUyMC1kYzgyMDAK
-Pj4gICAgICAgIC0gY29uc3Q6IHZlcmlzaWxpY29uLGRjICMgREMgSVBzIGhhdmUgZGlzY292ZXJh
-YmxlIElEL3JldmlzaW9uCj4+IHJlZ2lzdGVycwo+PiAgCj4gCj4gCgpCZXN0IHJlZ2FyZHMsCi0t
-IApNaWNoYWwgV2lsY3p5bnNraSA8bS53aWxjenluc2tpQHNhbXN1bmcuY29tPgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+> +&gmac1 {
+> +	/* Use rgmii-rxid mode to disable rx delay inside Soc */
+> +	phy-mode = "rgmii-rxid";
+
+https://elixir.bootlin.com/linux/v6.15/source/Documentation/devicetree/bindings/net/ethernet-controller.yaml#L287
+
+phy-mode describes the PCB. Does the PCB have an extra long clock line
+for RX?
+
+If the MAC has a delay which cannot be disabled, the MAC driver needs
+to handle this and mask the value passed to the PHY.
+
+Rockchip DTs are often messed up in this respect, but i've not seen
+any indication the MAC really does have delay which cannot be
+disabled. So this seems double wrong.
+
+    Andrew
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
