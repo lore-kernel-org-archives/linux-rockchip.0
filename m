@@ -4,95 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5368BC9830E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Sep 2026 12:24:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E547EC9830E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Sep 2026 12:37:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4q+ZKSFk5+l/0htvpofVzvfb30fbPDGLKpMd8ZNs5uI=; b=XohaW5el0bptLk
-	567j+Ivp/WZogSoQD50TfkaaKpngtJnHkM4fAL+drxVLi3xPu+BoVhUmbTwkkJpyHeNFc039spGxx
-	ySE6YnxCqUMHL/10YXRkPPqcHPqK0RWM10pqPvMcHXW24xHhpTEkf+pf4GWEY+7Cb6pM3WBLC9C9M
-	+NIeFPiIPvyvQ0fI+3i3v6aBSZx1PZEAy+kR2bPgmwI72OECDrffSOp7dJCliiBQQ7alw4Rs0k76v
-	VwiB2xjZ8Wxzn+W/TGO33MwR1ZVD+Bp5OkVS5CUOqmYivl3ci+GxE8tYLWD7rcWg2nXxwTRAhYXG2
-	y7GQhBcYiV1GsrjBw2tQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WTokhqs+1n4heKIc6jjOEMRnB43PMc36GH9Kufxs2+Y=; b=yMAB208c998Jbk
+	0cpQezbSvGpYRQicEnP50gFaRzOn0csi5snZQ2n+jDdJCR9LdykQljqF0cROfO17fc1+2WNdm1Uqo
+	3Cnhibuw1Nk8WEURO0LtcBtcKrx6jvN8YW9QyfAE0YaAgJBvzWFPYPI4bopZG48794C6JIY3cuWWa
+	t4SVgRZf6cl0n6QPC7VQVmjh26lgXtgRxgDJbDDrEqlsBdxPBittl2soOWaYsO99odzf1vbUqXO6v
+	IoaEuE69BcSQ9gazR8erH32wv46z8XKQUbX5yMuQAWxXPg4CRP79OL69V0YFKu0uYj2kurW3Z74hd
+	CcOQxR9JnzEL7DBbECJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAnvf-0000000GIsq-3DbB;
-	Sun, 27 Sep 2026 12:24:27 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1xAo7v-0000000GJhG-3oO6;
+	Sun, 27 Sep 2026 12:37:07 +0000
+Received: from m16.mail.163.com ([220.197.31.5])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAnvb-0000000GIs0-0jZk;
-	Sun, 27 Sep 2026 12:24:25 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20260927122417euoutp02c11f1b951ae847b50bcd234c1cea70a3~ZLQxMbr_w0190201902euoutp02E;
-	Sun, 27 Sep 2026 12:24:17 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20260927122417euoutp02c11f1b951ae847b50bcd234c1cea70a3~ZLQxMbr_w0190201902euoutp02E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1790511857;
-	bh=P49ZMU53FicxNQXQjDxDy7KxdjeVCJlhMGoMoRje+gw=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=RsvsBSoDQhTUVnfXDVSkrdrOYQ/Wsh1BtDWKN2OEHAmBv6/x/wUDE7dGn4v+y3IEz
-	 GVq1Qr7+km89frEDkm6XtTfcTKG+fawbhnA8f3Xzbe0L0H+SxxVsn3GOl+LN6Aiq1A
-	 6D6JssYUQkL1uITQAXH8aFS2M5L7bk1syryiiLFM=
-Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20260927122417eucas1p13bf27abd0a8e031bbc3a449d6390076b~ZLQwv5zRV1213312133eucas1p1O;
-	Sun, 27 Sep 2026 12:24:17 +0000 (GMT)
-Received: from [192.168.1.44] (unknown [106.210.136.40]) by
-	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20260927122415eusmtip2cb25e97ede526048fb85b90aa2ad6fdb~ZLQu-_M9m0941609416eusmtip2-;
-	Sun, 27 Sep 2026 12:24:15 +0000 (GMT)
-Message-ID: <b8777bd3-960a-4d2a-88f7-f8c818407298@samsung.com>
-Date: Sun, 27 Sep 2026 14:24:15 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 00/20] drm: starfive: jh7110: Enable display
- subsystem
-To: Joshua Peisach <jpeisach@ubuntu.com>, Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	<conor+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss
-	<rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>, Andy
-	Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Emil
-	Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
-	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
-	<sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Paul Walmsley
-	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
-	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
-	Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>, Jerome
-	Brunet <jbrunet+clk@baylibre.com>
-Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	mfd@lists.linux.dev, linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org, Marek Szyprowski
-	<m.szyprowski@samsung.com>, Maud Spierings <maud_spierings@murena.io>,
-	Graham Markall <hello@big-grey.co.uk>, Icenowy Zheng
-	<zhengxingda@iscas.ac.cn>, Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	=?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-Content-Language: en-US
-From: Michal Wilczynski <m.wilczynski@samsung.com>
-In-Reply-To: <DLIJUQCKB76W.3RHK9KPO5JSOZ@ubuntu.com>
-X-CMS-MailID: 20260927122417eucas1p13bf27abd0a8e031bbc3a449d6390076b
-X-Msg-Generator: CA
-X-RootMTR: 20260915153213eucas1p148f013af239a334fc78cdc249c0f8a61
-X-EPHeader: CA
-X-CMS-RootMailID: 20260915153213eucas1p148f013af239a334fc78cdc249c0f8a61
-References: <CGME20260915153213eucas1p148f013af239a334fc78cdc249c0f8a61@eucas1p1.samsung.com>
-	<20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
-	<DLGBPXP4F8E0.9X0QMZ9GFQVF@ubuntu.com>
-	<136d6789-2f0c-4a91-ab2d-de3a3f119d5d@samsung.com>
-	<DLIJUQCKB76W.3RHK9KPO5JSOZ@ubuntu.com>
+	id 1xAo7t-0000000GJgG-215m;
+	Sun, 27 Sep 2026 12:37:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID; bh=FyG054HNrO/kXG3
+	5lu7ivFIZVkhkQ5n7nZNjUmmDnN0=; b=Pb6EUO5qprKbaZkU1rmsjzYX1x2sPi7
+	0ZiXE2URkpy+MwjQzbzphLWecu+/rVN+zErL1rkabQ/8S8r/Ob10Qj5IzowBy7Ah
+	V9ONBAFe90bPzuCFLQVXh1Z3QF1sHm8M5ogMCdwDp9JjBy1pWlo1eYKlXZaaV2kC
+	egkhAtgadJhY=
+From: BG9OXA <bg9oxa@163.com>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 0/2] arm64: dts: rockchip: add ALIENTEK QuarkPi-CA2
+Date: Sun, 27 Sep 2026 20:36:59 +0800
+Message-ID: <179051261955.4055.4823239353832017342@163.com>
+X-CM-TRANSID: _____wD3_0TrDblqcxuyBA--.50921S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxGryUWr15Kw4ftryxAr4DXFb_yoW5ur1fpF
+	Z8ZrWfKrs7KF1xu3s3uFs8CFWrArs3Jay5WF1kW34ayws8Jr1UJF4Sv3Z0q3W7urnagFyj
+	qF4Y9348CF1DZF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UTMKNUUUUU=
+X-CM-SenderInfo: lejz05rd6rljoofrz/xtbC3QyH9Gq5DexwsgAA3S
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_052423_837656_A35820AE 
-X-CRM114-Status: GOOD (  26.46  )
+X-CRM114-CacheID: sfid-20260927_053705_830640_9F818F3C 
+X-CRM114-Status: GOOD (  17.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,168 +58,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi all,
 
+This short series adds support for the ALIENTEK QuarkPi-CA2, an RK3588S
+based single board computer.
 
-On 9/18/26 17:32, Joshua Peisach wrote:
-> On Thu Sep 17, 2026 at 1:22 PM EDT, Michal Wilczynski wrote:
->>
->>
->> On 9/16/26 02:45, Joshua Peisach wrote:
->>> On Tue Sep 15, 2026 at 11:32 AM EDT, Michal Wilczynski wrote:
->>>>
->>>> Testing
->>>> =======
->>>>
->>>> Tested on a VisionFive 2 v1.3B using modetest.
->>>
->>> I.. got nothing. I did have to manually modprobe the modules, but
->>> unless I am doing something wrong.. I didn't get anything and modetest
->>> just gave -2.
->>
->> Hmm have you also changed the DTB not just the kernel and the modules
->> (you can also built in everything).
->>
-> Yes (I didn't built-in everything, but I did make sure the DTB was
-> copied and flash-kernel was run)
-> 
->> Also note modetest needs -M verisilicon.
->>
-> 
-> "failed to open device 'versilicon' with busid '(null)': No such file
-> or directory"
-> 
-> 
->> If that is not it, could you send "dmesg | grep -iE
->> 'verisilicon|inno|hdmi|vout'" and "ls /sys/class/drm/"?
->>
-> the dmesg output:
-> 
-> [    0.090950] /soc/display-subsystem@29400000/hdmi@29590000/controller: Fixed dependency cycle(s) with /soc/display-subsystem@29400000/display@29400000
-> [    0.091029] /soc/display-subsystem@29400000/display@29400000: Fixed dependency cycle(s) with /soc/display-subsystem@29400000/hdmi@29590000/controller
-> [    0.104227] /hdmi-connector: Fixed dependency cycle(s) with /soc/display-subsystem@29400000/hdmi@29590000/controller
-> [    0.104272] /soc/display-subsystem@29400000/hdmi@29590000/controller: Fixed dependency cycle(s) with /hdmi-connector
-> 
-> 
-> /sys/class/drm only contains the file "version"
+Board summary:
+ - Rockchip RK3588S (4x Cortex-A76 + 4x Cortex-A55), LPDDR4x
+ - eMMC, microSD slot, M.2 socket (PCIe 2.0 x1)
+ - Gigabit Ethernet, USB 3.0 Type-A, USB 2.0 Type-A ports and a USB-C
+   port (USB 2.0 plus DisplayPort altmode)
+ - HDMI output, MIPI DSI and MIPI CSI connectors
+ - ES8388 analog codec with 3.5 mm jack, HUSB311 USB-C PD controller
+ - 40-pin header, RK806 PMIC, IR receiver
+ - No SPI-NOR; the vendor bootloader reads extlinux.conf from the SD/eMMC
+   boot partition
 
-Typo - it is "verisilicon" you are missing the i.
+Patch 1 documents the board in the Rockchip platform bindings, patch 2
+adds the device tree itself (plus its Makefile entry).  The "alientek"
+vendor prefix is already present in vendor-prefixes.yaml, so no vendor
+prefix change is needed.
 
-But that is not the real problem: /sys/class/drm holding only "version"
-means no DRM device registered at all and your dmesg shows no probe
-output from any of the drivers, so they are not being loaded.
+Tested on hardware with a 6.18 based kernel: boot from SD and eMMC,
+gigabit Ethernet, both USB 2.0 ports, the USB 3.0 Type-A port (5000 Mbps
+link), USB-C DisplayPort altmode, HDMI video and audio, ES8388 analog
+audio, M.2 PCIe, ADC keys, the IR receiver and ramoops.
 
-I would suspect something is missing from the .config.
+Notes worth the reviewer's attention:
 
-Those are relevant options for this series:
+ * The codec node keeps "clock-names = \"mclk\"" together with the
+   I2S0_8CH_MCLKOUT_TO_IO clock.  Without that name the MCLK never reaches
+   the codec pad and playback stays silent, even though every register,
+   the DAPM paths and the ALSA controls look correct.  Verified on
+   hardware both with and without the property.
 
-CONFIG_DRM_VERISILICON_DC=y
-CONFIG_CLK_STARFIVE_JH7110_VOUT=y
-CONFIG_SOC_STARFIVE_JH7110_VOUT_SUBSYSTEM=y
-CONFIG_SOC_STARFIVE_JH7110_HDMI_SUBSYSTEM=y
-CONFIG_PHY_STARFIVE_JH7110_INNO_HDMI=y
-CONFIG_DRM_STARFIVE_JH7110_INNO_HDMI=y
+ * The codec compatible list is "everest,es8323", "everest,es8388".  The
+   second entry is not cosmetic: sound/soc/codecs/es8328-i2c.c matches only
+   "everest,es8328" and "everest,es8388", so dropping it would leave the
+   codec without a driver.  Keeping it produces two dtbs_check warnings,
+   because an ES8323/ES8388 binding is not upstream yet and the node falls
+   back to everest,es8316.yaml (the compatible list is "too long" and
+   AVDD/DVDD/HPVDD/PVDD are unexpected).  Two mainline boards already use
+   "everest,es8323" with the same gap (rk3588-firefly-itx-3588j,
+   rk3588s-youyeetoo-r1), so it looks like a missing binding rather than a
+   board issue.  I left the binding out of this series to keep the board
+   port focused and will happily send it separately - please tell me which
+   form you prefer.
 
-easiest to build them in.
+ * The USB 3.0 Type-A port is wired to usb_host2_xhci through combphy2_psu;
+   both are enabled here, as in the vendor BSP.  combphy2_psu is free on
+   this board because the M.2 socket uses pcie2x1l2 (combphy0_ps).
 
-Run "make olddefconfig" after editing .config - DRM_VERISILICON_DC
-selects DRM_BRIDGE_CONNECTOR, DRM_DISPLAY_HELPER and DRM_GEM_DMA_HELPER,
-and if those did not get pulled in the DC never registers. Also verify
-after building how .config actually looks like.
+ * The MIPI CSI camera pipeline is described, but does not stream yet: the
+   sensor probes fine while the RK3588 VICAP/rkcif capture path is still
+   incomplete upstream, so those nodes are included for completeness only.
 
-With those options and correct dtb the drivers should probe correctly
-and there would be a trace in dmesg.
+This is my first patch to the Rockchip platform.  I am a Chinese hobbyist
+(amateur radio callsign BG9OXA) working on this board in my spare time, so
+please point out anything that does not follow the expected style.
 
+BG9OXA (2):
+  dt-bindings: arm: rockchip: add ALIENTEK QuarkPi-CA2
+  arm64: dts: rockchip: add ALIENTEK QuarkPi-CA2
 
-> 
-> -Josh
-> 
->>>
->>>> ---
->>>> Michal Wilczynski (20):
->>>>       dt-bindings: phy: Add starfive,jh7110-inno-hdmi-phy
->>>>       dt-bindings: display: bridge: Add starfive,jh7110-inno-hdmi-controller
->>>>       dt-bindings: mfd: Add starfive,jh7110-hdmi-subsystem
->>>>       dt-bindings: soc: starfive: Add starfive,jh7110-vout-syscon
->>>>       dt-bindings: display: verisilicon: Add starfive,jh7110-dc8200
->>>>       dt-bindings: soc: starfive: Add starfive,jh7110-vout-subsystem
->>>>       drm/bridge: inno-hdmi: Split probe out of bind
->>>>       drm/bridge: inno-hdmi: Allow the register map to come from a parent
->>>>       drm/bridge: inno-hdmi: Add .disable platform operation
->>>>       drm/bridge: inno-hdmi: Add .mode_valid platform operation
->>>>       drm/bridge: inno-hdmi: Make the PHY configuration table optional
->>>>       soc: starfive: Add jh7110-hdmi-subsystem driver
->>>>       soc: starfive: Add jh7110-vout-subsystem driver
->>>>       clk: starfive: jh7110-vout: Allow pixel clock rate propagation
->>>>       drm/bridge: starfive: Add JH7110 HDMI controller driver
->>>>       phy: Add common Innosilicon HDMI PHY helpers
->>>>       phy: rockchip: inno-hdmi: Use the common Innosilicon PHY helpers
->>>>       phy: starfive: Add jh7110-inno-hdmi-phy driver
->>>>       riscv: dts: starfive: jh7110: Update DT for display subsystem
->>>>       MAINTAINERS: Add StarFive JH7110 display subsystem entry
->>>>
->>>>  .../starfive,jh7110-inno-hdmi-controller.yaml      | 121 +++++
->>>>  .../bindings/display/verisilicon,dc.yaml           |   1 +
->>>>  .../mfd/starfive,jh7110-hdmi-subsystem.yaml        |  95 ++++
->>>>  .../phy/starfive,jh7110-inno-hdmi-phy.yaml         |  49 ++
->>>>  .../soc/starfive/starfive,jh7110-syscon.yaml       |   1 +
->>>>  .../starfive/starfive,jh7110-vout-subsystem.yaml   | 218 ++++++++
->>>>  MAINTAINERS                                        |  13 +
->>>>  arch/riscv/boot/dts/starfive/jh7110-common.dtsi    | 121 ++++-
->>>>  arch/riscv/boot/dts/starfive/jh7110.dtsi           | 105 +++-
->>>>  drivers/clk/starfive/clk-starfive-jh7110-vout.c    |   6 +-
->>>>  drivers/gpu/drm/bridge/Kconfig                     |  11 +
->>>>  drivers/gpu/drm/bridge/Makefile                    |   1 +
->>>>  drivers/gpu/drm/bridge/inno-hdmi.c                 | 112 +++-
->>>>  drivers/gpu/drm/bridge/jh7110-inno-hdmi.c          | 297 +++++++++++
->>>>  drivers/phy/Kconfig                                |   8 +
->>>>  drivers/phy/Makefile                               |   1 +
->>>>  drivers/phy/phy-inno-hdmi.c                        | 298 +++++++++++
->>>>  drivers/phy/rockchip/Kconfig                       |   1 +
->>>>  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c      | 168 +-----
->>>>  drivers/phy/starfive/Kconfig                       |  20 +
->>>>  drivers/phy/starfive/Makefile                      |   1 +
->>>>  drivers/phy/starfive/phy-jh7110-inno-hdmi.c        | 579 +++++++++++++++++++++
->>>>  drivers/soc/Kconfig                                |   1 +
->>>>  drivers/soc/Makefile                               |   1 +
->>>>  drivers/soc/starfive/Kconfig                       |  43 ++
->>>>  drivers/soc/starfive/Makefile                      |   3 +
->>>>  drivers/soc/starfive/jh7110-hdmi-subsystem.c       |  73 +++
->>>>  drivers/soc/starfive/jh7110-vout-subsystem.c       |  82 +++
->>>>  include/drm/bridge/inno_hdmi.h                     |  10 +-
->>>>  include/linux/phy/inno-hdmi-phy.h                  |  85 +++
->>>>  30 files changed, 2337 insertions(+), 188 deletions(-)
->>>> ---
->>>> base-commit: fd73f4a6659897191fa0d40695fe370925dd3780
->>>> change-id: 20251031-jh7110-clean-send-7d2242118026
->>>>
->>>> Best regards,
->>>
->>> By the way, something weird happenined while I applied the patches
->>> using git am. Somehow, some were out of order. The 10th patch
->>> adding .mode_valid tried to be applied before .disable even though
->>> in the series, the order is correctly set? git would obviously
->>> fail because the .disable entry did not exist in the header, so I had
->>> to manually put those in.
->>>
->>> I guess it's possible that something went wrong here? I personally
->>> pulled the mailbox from the lore.kernel.org mbox.gz file.
->>
->> I would recommend using b4 shazam instead
->>
->>>
->>
->> Best regards,
-> 
-> 
+ .../devicetree/bindings/arm/rockchip.yaml            |    5 +
+ arch/arm64/boot/dts/rockchip/Makefile                |    1 +
+ arch/arm64/boot/dts/rockchip/rk3588s-quarkpi-ca2.dts | 1508 +++++++++++++++++++
+ 3 files changed, 1514 insertions(+)
 
-Best regards,
 -- 
-Michal Wilczynski <m.wilczynski@samsung.com>
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
