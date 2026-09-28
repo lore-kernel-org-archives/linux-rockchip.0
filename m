@@ -4,99 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62883CA5FA3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 17:19:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84F88CA5FA1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 17:38:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hEDjZALc83Ea6HP02sFTeOMOJ6XN1QFH2MvBcToCu9E=; b=z46lQCjVVuACxh
-	c946llOlGPMEtw97+IUYuguYTVZHyI6l5XchM6A0pMH3UDeBLmwSnng9NuPgtneJb6TcfVhw64K1i
-	H9lLXf1eYd/R2EjZSdV6Wi01pEPLJsM5gtLySQtMLrLxS0eDthITM3CMibodorDQH6jBLks8qIdQS
-	sDsHe3Zwln9NmI8JjbnlyASwSwJgZmTKrqCIRB1gfOqGnH4SQM6szQpBvrprhPofqqy7sC5ViZVqq
-	tgizYySc5OVjZNseRDXLNj8JT5cPoSyjbDd5ceiwmoAvoBf+RkHCQeEE2OSHCKvB+EPLW3ZBOeD1c
-	2zLqjBaLyZ5a3dd+odBA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BzF43zupnFZ9vkCOlD22k72BpUr46YOh2AsBMWxeMr0=; b=HagMnx6jTa+fefEi/pfIvIZrBZ
+	4nBldvreWM6DJ424CWfRi5ed5syp+pdQM8efogkk9DgfhxDFEc1dJm8PdmKZs67gAHgzAHoRPa688
+	ONAJ3pUeLZaJyoAjQaGlJhBp6KWEclH7FfJvnuwIq450dgcqbu3hZAWCpOWr1ah9+wp4oGd+thqXt
+	4eQeBEbYUKt2weUqDWNySFg0jaS1CDpqIWKJKm0VpHxHuuP6Egjn7n9oXQ6TKanxXPx1qzIvcV89X
+	uK1m5OgaMACF4o33M5rW2yLlruxdsKHRmPUKcMvbmPsMNjZdALRPlhm+h4Abwkq7j0WyKqb8IaOre
+	KBp3IEVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBF0N-0000000186R-00Vy;
-	Mon, 28 Sep 2026 17:19:07 +0000
-Received: from mail-wr2-x0f.google.com ([2a00:1450:4864:30::f])
+	id 1xBFJT-00000001Bwb-0P6p;
+	Mon, 28 Sep 2026 17:38:51 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBEzu-000000017kw-3t8a
-	for linux-rockchip@lists.infradead.org;
-	Mon, 28 Sep 2026 17:18:40 +0000
-Received: by mail-wr2-x0f.google.com with SMTP id ffacd0b85a97d-488780459e2so3221272f8f.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 28 Sep 2026 10:18:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1790615917; x=1791220717; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=OKoAFSTyhxJJ9frySV0GsBnYnyW00C156g62nhJmL7I=;
-        b=r+aXL8/LYcgD7osVTvxO5vNSvaodC4Lgfrp8jbC4U2LcNPrl8k1c1puJv5bakCWYoV
-         EhVXqTHbH8z0maM5LELSis5ibrsEnCz+mWQ51Fz5NBNkyPbx6vLlJuUbIdBDBbT4wxwP
-         0CKah7KcXZ+XFYdYaNZwJdxS28J2SQrhr8xJchofx0Y75S6fE3utCLmnaox4JeC8JSFc
-         VNY5vh5GB5tXt348cvz39l7uPzV2RlxPlvLBHjXa1VmPY/X9PkUau2gQg4u2rAX+Jh4X
-         n5JirKuOJ385kVZHvTBiFFu9CLH5MrfItFB4NKPWwW/Zo4tgq9oxCvBRZ6qoEsQh7nbX
-         h05w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790615917; x=1791220717;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=OKoAFSTyhxJJ9frySV0GsBnYnyW00C156g62nhJmL7I=;
-        b=fRUJ69gj9PQ33bBwrT6TxdnBsfHajZ+g/ymKe4d4OITYq37gcYpZchk5JUDpuDfoj/
-         NLa/5QC07q2oIL095qYbJVUcyTQ5Jt5nw9EeFaz/syDlK4nT/UupE5ru8Is/aHJrtTNS
-         9kaAbZ9ZXpIuurIspHXR/WPdwdUuGySYVsPnHaEKsF5//+BtLc80g8NHei8JTQHwXBbK
-         U/6ZRc2++m+NxhxC/AfZZ/zhVXyDEWs52bkEE/h9+mIfqQ46pTZ5vhPtLcK1wMzftpMl
-         Penc7AGlt/cEp7RvhZ+nZs/Eg+yKiSvHFA5TLsj6vtUO5wtNIkLpmHcdP8XVaFFeTlxx
-         kUcw==
-X-Forwarded-Encrypted: i=1; AKwUvBy/XF8ggiCE+5oOlJwAGomDeiUpj1wL6pkoK06kcqBiIQ3OgWoi+r1BVqU4lRYaZa/LtPWWQ8ml+fUOqGkyzQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIfj+8qyRQiLzh6ggqeA9nQt8cEOVCgfc4Bc5IvFshySNvSCrLd
-	G463pIOokv6H5ej0CJsb2jSo7r6QrdIAnRdlwvYSeZaH7TxuMbAP60HMGoDxQPFxK9c=
-X-Gm-Gg: AYBFou1/9IhN1y24PLeahHrRC0gCL+mRhMkLjEkdYzT7SJdcq8MTq9ExPx4Ihn+WD9B
-	lQvRpq6qvU44s9FaopAAaTBhTTgKv0tdxbgt8TSRRuFevmWg84EEliPgW6l6jFppfLiS7wpK+A3
-	WOLuPrhqX5Syu/VGZTbtGcghiQ52BQQGPGKaKzDTvbeo27jTyBCf9dZZqNYUQr+4cu/NFHgMZBA
-	JAiPrgLDHAHtjTxTVoCzi1pCsXf9v+zYX6frATFFm5hBH3Sw84hyLylT4vWgTOSgH16Z/sAMZLC
-	/QB17+3uqyOtl0HrrJF8vt1QhKXRClqMmKvD3NPuMSvzh15Kle79oxsBY7eMSYOs7nrl/Ji8uuD
-	fQUl1t5vu24nOWmKLci1cOISJZx1GbfP6w9oAQxPpXdXSsh0YTsRGATfhtNVYd4EjtnR6898if5
-	A4yxUFh+ZftdzTs59s2A78gddkOi7L2lhem6uOQaLTqI0N16Iwi0kEovcHbz+d3RrJ0tCn5OVEj
-	5AJ/VrIkfr4gI7l
-X-Received: by 2002:a05:6000:2211:b0:487:a3f:1ea6 with SMTP id ffacd0b85a97d-4887171417cmr25452794f8f.11.1790615917277;
-        Mon, 28 Sep 2026 10:18:37 -0700 (PDT)
-Received: from alchark-surface.localdomain ([5.194.93.183])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4887a84221bsm29224973f8f.36.2026.09.28.10.18.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Sep 2026 10:18:37 -0700 (PDT)
-From: Alexey Charkov <alchark@flipper.net>
-Date: Mon, 28 Sep 2026 21:18:20 +0400
-Subject: [PATCH 5/5] arm64: dts: rockchip: name the reboot mode supplies on
- RK3576 EVB1
+	id 1xBFJQ-00000001Bvp-0Pcj;
+	Mon, 28 Sep 2026 17:38:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1790617123;
+	bh=cm6LZOs9tdRPrtPe5gULRZnl8glTxitRamqWO2HjM6M=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=a+xFFDZjnOnyStni+kc3EARxHUeD+ZZcf1nfcaIhFDTcpkD2mKslaqK6bX5ZXQQWU
+	 Z8FKcmQtQPArlOVrR0HbBoE19w3XjgFxR5bJluabOiQbv8JqTNIjObhtUx74mNCmwg
+	 JqMH9a1arwVbdJtgmVlVWaD0I/Dn0r0JOQnXbAe/2I9iEDN+jYADmNJXheEEJLnYV5
+	 VSiOfowBoDOkU/I94ZxVIUZyN5wRIrYP67TZPr7ZZDdQTadlMZpCwp/YcK7l6nwRLe
+	 MxwEN4LmYOsfKhim3+HU9g75j2+wHRI9wTF/aYgr6LHEe69pvLHyj97/WeFV9ch6bL
+	 98s4Hi9lMrt3A==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E12A117E007B;
+	Mon, 28 Sep 2026 19:38:41 +0200 (CEST)
+Message-ID: <7c4e321647646ee2dd15989765ce1d8260894a8f.camel@collabora.com>
+Subject: Re: [PATCH v5 1/3] media: verisilicon: Remove deprecated
+ nxp,imx8mp-vpu variant
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	p.zabel@pengutronix.de, mchehab@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, 	conor+dt@kernel.org, Frank.Li@nxp.com,
+ s.hauer@pengutronix.de, 	kernel@pengutronix.de, festevam@gmail.com,
+ conor@kernel.org
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	kernel@collabora.com
+Date: Mon, 28 Sep 2026 13:38:40 -0400
+In-Reply-To: <20260928080822.19553-2-benjamin.gaignard@collabora.com>
+References: <20260928080822.19553-1-benjamin.gaignard@collabora.com>
+	 <20260928080822.19553-2-benjamin.gaignard@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-Message-Id: <20260928-b4-rk3576-reboot-mode-v1-5-65486b03bd41@flipper.net>
-References: <20260928-b4-rk3576-reboot-mode-v1-0-65486b03bd41@flipper.net>
-In-Reply-To: <20260928-b4-rk3576-reboot-mode-v1-0-65486b03bd41@flipper.net>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Sebastian Reichel <sre@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-pm@vger.kernel.org, Alexey Charkov <alchark@flipper.net>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1714; i=alchark@flipper.net;
- h=from:subject:message-id; bh=GSDTTVtVozpx3VJNNfeRSYeJA9UCPSmKB3J4qrce5Vk=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTtWhhfLzE1objgdFrER4kj67Xv6uS5Fq0Sv/X5CXc90
- 9eGpgnrOiayMIhxMViKKbLM/bbEdqoR36xdHh5fYeawMoEMkRZpYAACFga+3MS8UiMdIz1TbUM9
- QyMdYx0jBi5OAZjqb6cZGRauctbcWyvRt/REtjnT1WhdyZehG1dG3G4LuafFJPFC2Z/hn7JD+Ey
- HiZqxx79dfRSpsVRALGraiop3H688uBfhO/lPBisA
-X-Developer-Key: i=alchark@flipper.net; a=openpgp;
- fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_101839_002716_5F207EB1 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20260928_103848_305592_DB319C36 
+X-CRM114-Status: GOOD (  25.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,60 +90,272 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7289859268060388061=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-A reset that carries a boot mode request has to leave the mode register
-intact, so it also leaves the regulators as the running system left
-them. The DDR firmware that runs next configures bus QoS in the
-interconnect, in CCI_GRF, DDR_GRF and NPU_GRF, and faults if a supply
-behind any of those is down. The NPU rail is the one most easily left
-unpowered, as nothing else on the board needs it.
 
-Name every supply those blocks sit behind, so that requesting a boot
-mode powers them regardless of what the running system happened to keep
-enabled.
+--===============7289859268060388061==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-YD8W0XNTTGrWR+Zg6iE7"
 
-Signed-off-by: Alexey Charkov <alchark@flipper.net>
----
- arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-index 4c82980a9f63..55951f290906 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-@@ -957,6 +957,22 @@ wifi_wake_host: wifi-wake-host {
- 	};
- };
- 
-+&reboot_mode {
-+	/*
-+	 * A reset that carries a boot mode request leaves the regulators as
-+	 * the running system left them, while the DDR firmware that runs next
-+	 * configures bus QoS in the interconnect, CCI_GRF, DDR_GRF and
-+	 * NPU_GRF, and it runs into a synchronous abort if any of the blocks
-+	 * is unpowered when it accesses them.
-+	 */
-+	ddr-supply = <&vdd_ddr_s0>;
-+	ddr2-supply = <&vdd2_ddr_s3>;
-+	ddr-pll-supply = <&vdda_ddr_pll_s0>;
-+	ddrq-supply = <&vddq_ddr_s0>;
-+	logic-supply = <&vdd_logic_s0>;
-+	npu-supply = <&vdd_npu_s0>;
-+};
-+
- &sai1 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sai1m0_lrck
+--=-YD8W0XNTTGrWR+Zg6iE7
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
--- 
-2.55.0
+Hi,
 
+Le lundi 28 septembre 2026 =C3=A0 10:08 +0200, Benjamin Gaignard a =C3=A9cr=
+it=C2=A0:
+> "nxp,imx8mq-vpu" is tagged as deprecated since:
+> commit f3116f2e52e6 ("media: dt-bindings: media: nxp, imx8mq-vpu: Split G=
+1 and G2 nodes")
+> merged since v5.17-rc1. There is more reference to it since that.
+> Remove for driver to clean up the code.
+
+There is not much sense to the above line, would you like to propose someth=
+ing.
+>=20
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../media/platform/verisilicon/hantro_drv.c   |  10 --
+>  .../media/platform/verisilicon/hantro_hw.h    |   1 -
+>  .../media/platform/verisilicon/imx8m_vpu_hw.c | 117 ------------------
+>  3 files changed, 128 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/me=
+dia/platform/verisilicon/hantro_drv.c
+> index ad71c0402ef3..12c804dcc669 100644
+> --- a/drivers/media/platform/verisilicon/hantro_drv.c
+> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
+> @@ -725,7 +725,6 @@ static const struct of_device_id of_hantro_match[] =
+=3D {
+>  #endif
+>  #ifdef CONFIG_VIDEO_HANTRO_IMX8M
+>  	{ .compatible =3D "nxp,imx8mm-vpu-g1", .data =3D &imx8mm_vpu_g1_variant=
+, },
+> -	{ .compatible =3D "nxp,imx8mq-vpu", .data =3D &imx8mq_vpu_variant, },
+>  	{ .compatible =3D "nxp,imx8mq-vpu-g1", .data =3D &imx8mq_vpu_g1_variant=
+ },
+>  	{ .compatible =3D "nxp,imx8mq-vpu-g2", .data =3D &imx8mq_vpu_g2_variant=
+ },
+>  #endif
+> @@ -1100,15 +1099,6 @@ static int hantro_probe(struct platform_device *pd=
+ev)
+>  	if (ret)
+>  		return ret;
+> =20
+> -	/*
+> -	 * Support for nxp,imx8mq-vpu is kept for backwards compatibility
+> -	 * but it's deprecated. Please update your DTS file to use
+> -	 * nxp,imx8mq-vpu-g1 or nxp,imx8mq-vpu-g2 instead.
+> -	 */
+> -	if (of_device_is_compatible(pdev->dev.of_node, "nxp,imx8mq-vpu"))
+> -		dev_warn(&pdev->dev, "%s compatible is deprecated\n",
+> -			 match->compatible);
+> -
+>  	INIT_DELAYED_WORK(&vpu->watchdog_work, hantro_watchdog);
+> =20
+>  	vpu->clocks =3D devm_kcalloc(&pdev->dev, vpu->variant->num_clocks,
+> diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/med=
+ia/platform/verisilicon/hantro_hw.h
+> index 13e573f1f19d..865de26ffbce 100644
+> --- a/drivers/media/platform/verisilicon/hantro_hw.h
+> +++ b/drivers/media/platform/verisilicon/hantro_hw.h
+> @@ -405,7 +405,6 @@ enum hantro_enc_fmt {
+>  extern const struct hantro_variant imx8mm_vpu_g1_variant;
+>  extern const struct hantro_variant imx8mq_vpu_g1_variant;
+>  extern const struct hantro_variant imx8mq_vpu_g2_variant;
+> -extern const struct hantro_variant imx8mq_vpu_variant;
+>  extern const struct hantro_variant px30_vpu_variant;
+>  extern const struct hantro_variant rk3036_vpu_variant;
+>  extern const struct hantro_variant rk3066_vpu_variant;
+> diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/=
+media/platform/verisilicon/imx8m_vpu_hw.c
+> index fa4224de4b99..0d6a71ae5f45 100644
+> --- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+> +++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+> @@ -13,67 +13,6 @@
+>  #include "hantro_g1_regs.h"
+>  #include "hantro_g2_regs.h"
+> =20
+> -#define CTRL_SOFT_RESET		0x00
+> -#define RESET_G1		BIT(1)
+> -#define RESET_G2		BIT(0)
+> -
+> -#define CTRL_CLOCK_ENABLE	0x04
+> -#define CLOCK_G1		BIT(1)
+> -#define CLOCK_G2		BIT(0)
+> -
+> -#define CTRL_G1_DEC_FUSE	0x08
+> -#define CTRL_G1_PP_FUSE		0x0c
+> -#define CTRL_G2_DEC_FUSE	0x10
+> -
+> -static void imx8m_soft_reset(struct hantro_dev *vpu, u32 reset_bits)
+> -{
+> -	u32 val;
+> -
+> -	/* Assert */
+> -	val =3D readl(vpu->ctrl_base + CTRL_SOFT_RESET);
+> -	val &=3D ~reset_bits;
+> -	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
+> -
+> -	udelay(2);
+> -
+> -	/* Release */
+> -	val =3D readl(vpu->ctrl_base + CTRL_SOFT_RESET);
+> -	val |=3D reset_bits;
+> -	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
+> -}
+> -
+> -static void imx8m_clk_enable(struct hantro_dev *vpu, u32 clock_bits)
+> -{
+> -	u32 val;
+> -
+> -	val =3D readl(vpu->ctrl_base + CTRL_CLOCK_ENABLE);
+> -	val |=3D clock_bits;
+> -	writel(val, vpu->ctrl_base + CTRL_CLOCK_ENABLE);
+> -}
+> -
+> -static int imx8mq_runtime_resume(struct hantro_dev *vpu)
+> -{
+> -	int ret;
+> -
+> -	ret =3D clk_bulk_prepare_enable(vpu->variant->num_clocks, vpu->clocks);
+> -	if (ret) {
+> -		dev_err(vpu->dev, "Failed to enable clocks\n");
+> -		return ret;
+> -	}
+> -
+> -	imx8m_soft_reset(vpu, RESET_G1 | RESET_G2);
+> -	imx8m_clk_enable(vpu, CLOCK_G1 | CLOCK_G2);
+> -
+> -	/* Set values of the fuse registers */
+> -	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_DEC_FUSE);
+> -	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_PP_FUSE);
+> -	writel(0xffffffff, vpu->ctrl_base + CTRL_G2_DEC_FUSE);
+> -
+> -	clk_bulk_disable_unprepare(vpu->variant->num_clocks, vpu->clocks);
+> -
+> -	return 0;
+> -}
+> -
+>  /*
+>   * Supported formats.
+>   */
+> @@ -234,45 +173,10 @@ static const struct hantro_fmt imx8m_vpu_g2_dec_fmt=
+s[] =3D {
+>  	},
+>  };
+> =20
+> -static int imx8mq_vpu_hw_init(struct hantro_dev *vpu)
+> -{
+> -	vpu->ctrl_base =3D vpu->reg_bases[vpu->variant->num_regs - 1];
+> -
+> -	return 0;
+> -}
+> -
+> -static void imx8m_vpu_g1_reset(struct hantro_ctx *ctx)
+> -{
+> -	struct hantro_dev *vpu =3D ctx->dev;
+> -
+> -	imx8m_soft_reset(vpu, RESET_G1);
+> -}
+> -
+>  /*
+>   * Supported codec ops.
+>   */
+> =20
+> -static const struct hantro_codec_ops imx8mq_vpu_codec_ops[] =3D {
+> -	[HANTRO_MODE_MPEG2_DEC] =3D {
+> -		.run =3D hantro_g1_mpeg2_dec_run,
+> -		.reset =3D imx8m_vpu_g1_reset,
+> -		.init =3D hantro_mpeg2_dec_init,
+> -		.exit =3D hantro_mpeg2_dec_exit,
+> -	},
+> -	[HANTRO_MODE_VP8_DEC] =3D {
+> -		.run =3D hantro_g1_vp8_dec_run,
+> -		.reset =3D imx8m_vpu_g1_reset,
+> -		.init =3D hantro_vp8_dec_init,
+> -		.exit =3D hantro_vp8_dec_exit,
+> -	},
+> -	[HANTRO_MODE_H264_DEC] =3D {
+> -		.run =3D hantro_g1_h264_dec_run,
+> -		.reset =3D imx8m_vpu_g1_reset,
+> -		.init =3D hantro_h264_dec_init,
+> -		.exit =3D hantro_h264_dec_exit,
+> -	},
+> -};
+> -
+>  static const struct hantro_codec_ops imx8mq_vpu_g1_codec_ops[] =3D {
+>  	[HANTRO_MODE_MPEG2_DEC] =3D {
+>  		.run =3D hantro_g1_mpeg2_dec_run,
+> @@ -319,30 +223,9 @@ static const struct hantro_irq imx8mq_g2_irqs[] =3D =
+{
+>  	{ "g2", hantro_g2_irq },
+>  };
+> =20
+> -static const char * const imx8mq_clk_names[] =3D { "g1", "g2", "bus" };
+> -static const char * const imx8mq_reg_names[] =3D { "g1", "g2", "ctrl" };
+>  static const char * const imx8mq_g1_clk_names[] =3D { "g1" };
+>  static const char * const imx8mq_g2_clk_names[] =3D { "g2" };
+> =20
+> -const struct hantro_variant imx8mq_vpu_variant =3D {
+> -	.dec_fmts =3D imx8m_vpu_dec_fmts,
+> -	.num_dec_fmts =3D ARRAY_SIZE(imx8m_vpu_dec_fmts),
+> -	.postproc_fmts =3D imx8m_vpu_postproc_fmts,
+> -	.num_postproc_fmts =3D ARRAY_SIZE(imx8m_vpu_postproc_fmts),
+> -	.postproc_ops =3D &hantro_g1_postproc_ops,
+> -	.codec =3D HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
+> -		 HANTRO_H264_DECODER,
+> -	.codec_ops =3D imx8mq_vpu_codec_ops,
+> -	.init =3D imx8mq_vpu_hw_init,
+> -	.runtime_resume =3D imx8mq_runtime_resume,
+
+Spotted by Sashiko, the function pointer is no longer used, and
+hantro_runtime_resume() in PM OPS is now a no-op.
+
+Nicolas
+
+> -	.irqs =3D imx8mq_irqs,
+> -	.num_irqs =3D ARRAY_SIZE(imx8mq_irqs),
+> -	.clk_names =3D imx8mq_clk_names,
+> -	.num_clocks =3D ARRAY_SIZE(imx8mq_clk_names),
+> -	.reg_names =3D imx8mq_reg_names,
+> -	.num_regs =3D ARRAY_SIZE(imx8mq_reg_names)
+> -};
+> -
+>  static const struct of_device_id imx8mq_vpu_shared_resources[] =3D {
+>  	{ .compatible =3D "nxp,imx8mq-vpu-g1", },
+>  	{ .compatible =3D "nxp,imx8mq-vpu-g2", },
+
+--=-YD8W0XNTTGrWR+Zg6iE7
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCarqmIAAKCRDZQZRRKWBy
+9GNDAQDi5g/izyjScUfwuU4O6Xxwh7AvWC7oaHTKLLAu6+l4FQD+NtOhbvdBfsgJ
+aBJCTXi+eGEL7YHNgbD6BylZgVF8BQo=
+=cNUk
+-----END PGP SIGNATURE-----
+
+--=-YD8W0XNTTGrWR+Zg6iE7--
+
+
+--===============7289859268060388061==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7289859268060388061==--
+
