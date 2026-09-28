@@ -4,96 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ED7FCA5FA3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 18:34:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CFB8CA5FA3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 19:29:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ouP2471hpnzmO7WJICFQC+gtNdObYw02vtjbW0haMx8=; b=ZlpyeSHPg0dXpV
-	UNx4xV3xjCOC387gxYh0VSFxohLm7DNncyppaJ7j7MFhr68C+8TbeYLR7kswhYThlk7owbUufL0vT
-	Ko6TJYrH7LoBfqW901pSAhGDF0k4q9DlWteY0EYca84E2X+AZDrzOoaZ5lvT0h3VruR+lfejQ1v1n
-	dFYPMfvY5dgdVLcnKH5zcQ7Pg8e0mIonQ6IV4t6LZrInY6iPKpG2kGTLZ9ItUnuNe3tl/KICeUJS4
-	qZFyaC7ISJpK9CrA+ZoqosOtiSOv78c7S52ICZiBo75Bdn7i1jMPI3Jk6J6/WlRXBBwxL49Qg5oPz
-	oJnk4xLsI9TevSSC6EjQ==;
+	List-Owner; bh=7ZaInyBEdOSUpRDhZ1Dle3rUDD2T3Z0yuGXcdi3Pxzw=; b=YU8YtbK0BOCuwI
+	TwBL4aIg0rFaZaVEIKBFdvTib6fqX8MOjNBUXGz9cYDwCDDr3oG90rTKoBkgoy3MhVpqraPr82OOb
+	zYhyCuTuh82KceFHqm6F+E24o5DrGhSuUxnLqftbdcZPaQMxxQ4Go1Krla4AoyMu5voPEGsDD0f8B
+	MyykAOQg2bylzNqjh8+z8/VA5xzOUE6LYAK4cg5TpYR+rfEl+EBzLkEkXao1Iyq4xLbhdkyJBSORL
+	vOnvLobnGGc4Ow3ZphESzyGM1p+XvNlsK3gCc9cITG0UtrLgIM08EFUSUd2D3pr6lGNsViNdQqu/c
+	75M+68tQikBeg/rJ4MFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBGBZ-00000001LDG-2VlM;
-	Mon, 28 Sep 2026 18:34:45 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1xBH1r-00000001QsX-0QN0;
+	Mon, 28 Sep 2026 19:28:47 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBGBQ-00000001L96-1hXN;
-	Mon, 28 Sep 2026 18:34:38 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20260928183430euoutp02d8c2ceefbbbee78d8631d795eb470987~Zj9SaDp1F1266812668euoutp02d;
-	Mon, 28 Sep 2026 18:34:30 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20260928183430euoutp02d8c2ceefbbbee78d8631d795eb470987~Zj9SaDp1F1266812668euoutp02d
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1790620470;
-	bh=4Zph+siZBeGkLK5OkBadCTawnz0zQ5RVLKRomkp3JFM=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=ooCPWuWAFvYF4ZM2kjMd6Sk5u8LAPjsE03rJcvHzAe/OskadksFIcixYe9TFn3SG5
-	 x2Lag0CNxSduPsZVTUcvY8qADKxrETrS0mODDs5RLBK7W0fG+vhAH96c+oaZU+BhSr
-	 uY8fE2y2hrrSNfQ4261WxiEAHHMqI6kqWuuKrmhg=
-Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20260928183429eucas1p291d65fe935c65b88fc63e99837bf87f8~Zj9RjhP5N2664926649eucas1p2Q;
-	Mon, 28 Sep 2026 18:34:29 +0000 (GMT)
-Received: from [192.168.1.44] (unknown [106.210.136.40]) by
-	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20260928183427eusmtip29fd870671ef52906c604dca1dab6db1e~Zj9Pk2-JD0396803968eusmtip22;
-	Mon, 28 Sep 2026 18:34:27 +0000 (GMT)
-Message-ID: <d4fb48de-829d-4285-9ca6-ab418a6f4987@samsung.com>
-Date: Mon, 28 Sep 2026 20:34:26 +0200
+	id 1xBH1q-00000001Qs2-0azF;
+	Mon, 28 Sep 2026 19:28:46 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 3B7ED60120;
+	Mon, 28 Sep 2026 19:28:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F39C1F000FF;
+	Mon, 28 Sep 2026 19:28:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790623724;
+	bh=cJHzxKXVtIY3P2yIJggYlartU1XE0ipq+eGOK0t1wt0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=FV1vBIsy+SJMPxhCKAU3fAvonyUNNwCFv27Vmyk/SuURYrycGycfXXiana4254/1E
+	 18ekcOUMpDcFVSI6uHiDLIGH6ewct+bqrjzOLXHajDpk0FM4hRyc5YP36qT9z5c5G6
+	 AQTP8XhFgWc/fu9vMHuyl/wYjEc1CFHp60HYtmEk914pJD8xS4Y7CayARzmQ42gTfK
+	 EQaii28pFUn5lRFDdlCGzb0GrrAxASWFHYl+VHZl70eJPM2zSCgBFD4SW+9+JuohSG
+	 YV+bpPHCDU2zlgP6SYgiKtdtXiBJM5xJ19u9OLh9EaM0DZRjFMa+wU0mLXpnR/Ry0E
+	 6TClnNMxJzzVA==
+Date: Mon, 28 Sep 2026 14:28:43 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: Sakari Ailus <sakari.ailus@linux.intel.com>,
+	linux-rockchip@lists.infradead.org,
+	Martin Kepplinger <martin.kepplinger@puri.sm>,
+	Svyatoslav Ryhel <clamor95@gmail.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Matthias Fend <matthias.fend@emfend.at>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	linux@ew.tq-group.com, Geert Uytterhoeven <geert+renesas@glider.be>,
+	Tommaso Merciai <tomm.merciai@gmail.com>,
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+	imx@lists.linux.dev, Michael Riesch <michael.riesch@collabora.com>,
+	devicetree@vger.kernel.org,
+	Sylvain Petinot <sylvain.petinot@foss.st.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>, linux-media@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	Richard Acayan <mailingradian@gmail.com>,
+	linux-tegra@vger.kernel.org,
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Benjamin Mugnier <benjamin.mugnier@foss.st.com>,
+	linux-arm-msm@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+	Jacopo Mondi <jacopo@jmondi.org>,
+	linux-arm-kernel@lists.infradead.org,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	linux-kernel@vger.kernel.org,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	Frank Li <Frank.Li@nxp.com>, Heiko Stuebner <heiko@sntech.de>,
+	Daniel Scally <dan.scally@ideasonboard.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Jimmy Su <jimmy.su@intel.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Mikhail Rudenko <mike.rudenko@gmail.com>
+Subject: Re: [PATCH v6 6/6] dt-bindings: media: i2c: himax,hm1246: Use
+ video-interface-devices
+Message-ID: <179062371908.398635.9659405053425999054.robh@kernel.org>
+References: <20260918-kbingham-orientation-v6-0-5e8b1f01be29@ideasonboard.com>
+ <20260918-kbingham-orientation-v6-6-5e8b1f01be29@ideasonboard.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 03/20] dt-bindings: mfd: Add
- starfive,jh7110-hdmi-subsystem
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
-	<neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
-	Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andrzej
-	Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, Laurent
-	Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
-	<jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
-	<luca.ceresoli@bootlin.com>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>, Andy
-	Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Emil
-	Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
-	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
-	<sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Paul Walmsley
-	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
-	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
-	Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>, Jerome
-	Brunet <jbrunet+clk@baylibre.com>, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, mfd@lists.linux.dev,
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, Marek
-	Szyprowski <m.szyprowski@samsung.com>, Maud Spierings
-	<maud_spierings@murena.io>, Graham Markall <hello@big-grey.co.uk>, Icenowy
-	Zheng <zhengxingda@iscas.ac.cn>, Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Joshua Peisach <jpeisach@ubuntu.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
-	<u.kleine-koenig@baylibre.com>
-Content-Language: en-US
-From: Michal Wilczynski <m.wilczynski@samsung.com>
-In-Reply-To: <20260917-colossal-phenomenal-rattlesnake-7aca88@quoll>
-X-CMS-MailID: 20260928183429eucas1p291d65fe935c65b88fc63e99837bf87f8
-X-Msg-Generator: CA
-X-RootMTR: 20260915153218eucas1p278c4870936afe1aaa52438660418f8c8
-X-EPHeader: CA
-X-CMS-RootMailID: 20260915153218eucas1p278c4870936afe1aaa52438660418f8c8
-References: <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
-	<CGME20260915153218eucas1p278c4870936afe1aaa52438660418f8c8@eucas1p2.samsung.com>
-	<20260915-jh7110-clean-send-v4-3-f0e4fd6f2cc8@samsung.com>
-	<20260917-colossal-phenomenal-rattlesnake-7aca88@quoll>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_113437_040804_3F85479A 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <20260918-kbingham-orientation-v6-6-5e8b1f01be29@ideasonboard.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,20 +106,26 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-
-On 9/17/26 08:54, Krzysztof Kozlowski wrote:
-> On Tue, Sep 15, 2026 at 05:32:11PM +0200, Michal Wilczynski wrote:
->> Add the dt-binding for the StarFive JH7110 HDMI subsystem.
+On Fri, 18 Sep 2026 11:44:18 +0100, Kieran Bingham wrote:
+> From: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
 > 
-> Your cover letter, in the first paragraph, should explain the
-> merging/dependencies constraints - this depends on previous patches and
-> cannot be taken alone.
+> The orientation property for video interface devices now has definitions
+> to prevent hardcoded integer values for the enum options.
+> 
+> Update the example binding documentation.
+> 
+> Signed-off-by: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
+> 
+> ---
+> v6:
+>  - Actually use the correct orientation!
+> ---
+>  Documentation/devicetree/bindings/media/i2c/himax,hm1246.yaml | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
 
-OK I will update this in the v5
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-Best regards,
--- 
-Michal Wilczynski <m.wilczynski@samsung.com>
 
 _______________________________________________
 Linux-rockchip mailing list
