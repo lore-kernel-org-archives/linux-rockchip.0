@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DD8FCA5FA1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 08:08:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDFB8CA5FA1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 08:08:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8MafRnEQiB1RF5Fcp2VvnLp0yiyVjHCqNospFnyXA/0=; b=nTkVcETXWnAL7T
-	exEQ7tKz93z8qud2DRWHX92CE9J6v04I9Rcpk1fIPnRkFBDjaGkYHH1SH+PyhkLIpOuNVLmb+VJsS
-	FEl3mJPOfM55kNLVDpHjvwiEe/Tr1DaCaagizO6rf7ictc4jg7Dw050iLVHbbtQZDsPXUOjE40Gxo
-	6sJ11i++8RtDyjSZ0BDbW2pkONgyroyN6IDmhP92z53NmGkfV5AJxYz7ya0626MAPPjClzFikk8b7
-	ZBN1R/0J3M5D/bL1bb7/FnXYsz5FNBGczJUxIoOgKAqsn/Zhcj6AfQrbPkg3AgloHz5JwPfCYywjS
-	BqiQkGVNwxn6uR8qVqpg==;
+	List-Owner; bh=bEM9rlvvoc9jJp3oLzfYbVSKQEccL2Ddtw/HuLXwxQU=; b=bIxwY+Dt2N2KQQ
+	UGx0SkEqm6BNMoTvhJcviwy8RhPceKyHxKKbSBVbPdXKtkmistxYbopVbZtcsRJ8CuWvxNgV2udju
+	pehHOQyPTlWYCApefJ780XQZLjr+HPH8xbPnV2wOBXhMsi0AcXoEDmIDKR1khmK71sf9KMhBTwx7I
+	TYEAHZ8y535Ro/P+3ZkvgEugF3f3/O5Tn9R1ptc4AwT0kUldn3tMPr7g8ISB3D6VRugSChEHLlxnw
+	gZz4fnF53zOloey0AeWxSnu0/CciyyHi7WYVwS+OB4eBrh/RcFiQJX6hPXUKwsfskcs3L4NOOnKVk
+	eADnMcWsbjh/znFaBb6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xB6PZ-000000001RB-43fa;
-	Mon, 28 Sep 2026 08:08:33 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xB6Pi-000000001Wz-2cM7;
+	Mon, 28 Sep 2026 08:08:42 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xB6PX-000000001Of-0mTp;
+	id 1xB6PX-000000001Oj-3fDP;
 	Mon, 28 Sep 2026 08:08:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1790582909;
-	bh=L3JAfB9rDunDZGmTzNF37GovFkFyKSeuFBXo+WBYgYA=;
+	bh=tElqHsQAF81nSVcFmZVlrfQ5KqZwzfeG/qXHFWZj4kM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eCLVTpalmsZm6V97YVjwFW0qFcnkPFNAuLRheXOu/pjoqVROmUrgHF0c8GX9P2xaS
-	 FElLrJBXMcPaN8/GyIvfZdK3xfqqmmW3OR+eMccjYn3vJJU62SRt6R5mxjYuPYz1Qi
-	 t+FuBnMdikUVjZ+juU+TPRt9ZKYElVP/pYlNHrEXemC0JOdcFY6G1QymhwIHeydTvq
-	 d1MXQaKgZB/mnCfngmOw8ZYcmMNvdPW0WWsSCk1xL3cstSyyguiAtQmQiiQrdYcPE8
-	 31t38XrorwJCl4FyCWXven5G5zNj+vGbgM4v6k77blBSnO0INiYtt8/bDsS8A9bCwu
-	 QwzuSIoQ8M3Bg==
+	b=GzgSELcU+uQLN6YAQjQEE4PtNKtd3L6ot43OeFVHFFPuKqpAfjR94jUZIVfdvVrP6
+	 6G8JxAzvIRT+hMt+zjjNADHjuhRNBKM6rQPBpEfhaAdX7m0Z0rpddctd4wh86+zAII
+	 cF3dsWDIf+SCN0PkA0UvweR3/7zck8L6Q/XabU8Y1vTTew+7CjqGPnQc0tyiUJeu1z
+	 gB64iHRUtOi+cYOUAbiZpqwQjkDbxncKsBekoBZoqvLXWkUY7DMJ5bis37AWa7WDzm
+	 3W1tvR4r0rW5b6meyQpzGDjBBBD8J+Y+uAEZyXYKK2am6Faj7oUEdLLQNsWL9q8yLV
+	 615OuzV4wnebQ==
 Received: from benjamin-XPS-13-9310.home (unknown [100.64.1.43])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B70F417E018B;
-	Mon, 28 Sep 2026 10:08:28 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6055517E0B21;
+	Mon, 28 Sep 2026 10:08:29 +0200 (CEST)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: nicolas.dufresne@collabora.com,
 	benjamin.gaignard@collabora.com,
@@ -62,18 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	imx@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v5 2/3] media: dt-bindings: media: nxp, imx8mq-vpu: Remove nxp,imx8mq-vpu
-Date: Mon, 28 Sep 2026 10:08:21 +0200
-Message-ID: <20260928080822.19553-3-benjamin.gaignard@collabora.com>
+	kernel@collabora.com
+Subject: [PATCH v5 3/3] media: verisilicon: Remove useless internal fields
+Date: Mon, 28 Sep 2026 10:08:22 +0200
+Message-ID: <20260928080822.19553-4-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260928080822.19553-1-benjamin.gaignard@collabora.com>
 References: <20260928080822.19553-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_010831_375574_9082BCF1 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20260928_010832_061602_56E0B503 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,49 +89,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-nxp,imx8mq-vpu has been tagged has deprecated since a while and
-driver emitted a warning when this bindings was used.
-Vendor DT use the following node before they moved to mainline driver:
-vpu: vpu@38300000 {
-	compatible = "nxp,imx8mq-hantro";
-	...
-};
-but that binding has never be documented.
-After driver clean up it is time to remove it.
+No more variants are using multiple registers regions so rename
+reg_bases to reg_base.
+
+Remove the useless fields and simplify driver code.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Reviewed-by: Frank Li <Frank.Li@nxp.com>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
 ---
-changes in v5:
-- add more details in commit message
-- add Conor Dooley accked-by tag
+ drivers/media/platform/verisilicon/hantro.h   | 10 ++--------
+ .../media/platform/verisilicon/hantro_drv.c   | 20 +++++--------------
+ 2 files changed, 7 insertions(+), 23 deletions(-)
 
- .../devicetree/bindings/media/nxp,imx8mq-vpu.yaml      | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-index 19528262810a..69619d2c86fa 100644
---- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-+++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-@@ -14,12 +14,10 @@ description:
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index 0353de154a1e..f85035a98b28 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -72,8 +72,6 @@ struct hantro_irq {
+  * @num_irqs:			number of irqs in the array
+  * @clk_names:			array of clock names
+  * @num_clocks:			number of clocks in the array
+- * @reg_names:			array of register range names
+- * @num_regs:			number of register range names in the array
+  * @double_buffer:		core needs double buffering
+  * @legacy_regs:		core uses legacy register set
+  * @late_postproc:		postproc must be set up at the end of the job
+@@ -97,8 +95,6 @@ struct hantro_variant {
+ 	int num_irqs;
+ 	const char * const *clk_names;
+ 	int num_clocks;
+-	const char * const *reg_names;
+-	int num_regs;
+ 	unsigned int double_buffer : 1;
+ 	unsigned int legacy_regs : 1;
+ 	unsigned int late_postproc : 1;
+@@ -184,10 +180,9 @@ hantro_vdev_to_func(struct video_device *vdev)
+  *			dev_ macros.
+  * @clocks:		Array of clock handles.
+  * @resets:		Array of reset handles.
+- * @reg_bases:		Mapped addresses of VPU registers.
++ * @reg_base:		Mapped address of VPU registers.
+  * @enc_base:		Mapped address of VPU encoder register for convenience.
+  * @dec_base:		Mapped address of VPU decoder register for convenience.
+- * @ctrl_base:		Mapped address of VPU control block.
+  * @vpu_mutex:		Mutex to synchronize V4L2 calls.
+  * @irqlock:		Spinlock to synchronize access to data structures
+  *			shared with interrupt handlers.
+@@ -204,10 +199,9 @@ struct hantro_dev {
+ 	struct device *dev;
+ 	struct clk_bulk_data *clocks;
+ 	struct reset_control *resets;
+-	void __iomem **reg_bases;
++	void __iomem *reg_base;
+ 	void __iomem *enc_base;
+ 	void __iomem *dec_base;
+-	void __iomem *ctrl_base;
  
- properties:
-   compatible:
--    oneOf:
--      - const: nxp,imx8mq-vpu
--        deprecated: true
--      - const: nxp,imx8mq-vpu-g1
--      - const: nxp,imx8mq-vpu-g2
--      - const: nxp,imx8mm-vpu-g1
-+    enum:
-+      - nxp,imx8mq-vpu-g1
-+      - nxp,imx8mq-vpu-g2
-+      - nxp,imx8mm-vpu-g1
+ 	struct mutex vpu_mutex;	/* video_device lock */
+ 	spinlock_t irqlock;
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 12c804dcc669..6e3a24156a69 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -1080,7 +1080,6 @@ static int hantro_probe(struct platform_device *pdev)
+ {
+ 	const struct of_device_id *match;
+ 	struct hantro_dev *vpu;
+-	int num_bases;
+ 	int i, ret;
  
-   reg:
-     maxItems: 1
+ 	vpu = devm_kzalloc(&pdev->dev, sizeof(*vpu), GFP_KERNEL);
+@@ -1128,21 +1127,12 @@ static int hantro_probe(struct platform_device *pdev)
+ 	if (IS_ERR(vpu->resets))
+ 		return PTR_ERR(vpu->resets);
+ 
+-	num_bases = vpu->variant->num_regs ?: 1;
+-	vpu->reg_bases = devm_kcalloc(&pdev->dev, num_bases,
+-				      sizeof(*vpu->reg_bases), GFP_KERNEL);
+-	if (!vpu->reg_bases)
+-		return -ENOMEM;
++	vpu->reg_base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(vpu->reg_base))
++		return PTR_ERR(vpu->reg_base);
+ 
+-	for (i = 0; i < num_bases; i++) {
+-		vpu->reg_bases[i] = vpu->variant->reg_names ?
+-		      devm_platform_ioremap_resource_byname(pdev, vpu->variant->reg_names[i]) :
+-		      devm_platform_ioremap_resource(pdev, 0);
+-		if (IS_ERR(vpu->reg_bases[i]))
+-			return PTR_ERR(vpu->reg_bases[i]);
+-	}
+-	vpu->enc_base = vpu->reg_bases[0] + vpu->variant->enc_offset;
+-	vpu->dec_base = vpu->reg_bases[0] + vpu->variant->dec_offset;
++	vpu->enc_base = vpu->reg_base + vpu->variant->enc_offset;
++	vpu->dec_base = vpu->reg_base + vpu->variant->dec_offset;
+ 
+ 	/**
+ 	 * TODO: Eventually allow taking advantage of full 64-bit address space.
 -- 
 2.53.0
 
