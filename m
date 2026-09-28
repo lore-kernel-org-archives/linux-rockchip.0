@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6C4BCA5FA1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 17:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1210BCA5FA3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 17:19:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=komVSB0T/uWI3VuLwDUk6ObZD4P34nmm5xxnoyuFZ3A=; b=uaC22hOUFMxdyV
-	rycfkD6fmIgi9XmSNURmK4kXCoKjSW2+mU2oV/5ISIqZ0Ydvh3cXtl0WkWu16wu/bWAXKz1ElZazG
-	A9k4251U3PnXc+dTt1php2JwYeQMOVDBKpoDGy8W43SSz+6a7hBWqQM2JfxU6vMtIHuYRk7LVGXHE
-	4pGTC3GLWJt8CBTZjqXzFOFYAjFqL5N9WzaHyiUp6Q8I94l+3cydJ9THbPMICLsEz7ufbaMA0Mogs
-	uqohK7ewH/qNCZn/KJa7aaFiDcS6anFiPDoiBLKzl4rhysIpznXPOqma49dUxX3kGOAN6u6v5rSQK
-	M1StiGmez5RJtoz4NpEQ==;
+	List-Owner; bh=Y2JVRQ5tpObYdLaXFgI94yz1HVrR0zuFc5LUI+s0fzc=; b=hpGzpPEmDpTfTe
+	IbJnyQIBbiSlxLFagRuZgcF0MDoEXodlEkn8U6EaibFByF4vrv6qVQLy7wIZOty/dsYhgCyfZQuDm
+	cL4q3j0+xVp6SQvBwCGXCgncnuFH1Xdp8J09WjEw9lIHjstONpI6KtwDKZQgFsnGWtAFqsfhdog/s
+	M4sIPIyYvcd/PNM4Ecc4lpXy1tJfOG6inFWWj9TPfM8siIt9/b5U4abKjIBi3Sn9BEil0U6TMYogB
+	lfDWGZl2MBMsWDmsOp1RMtwQ8n/JNQaZJHKcYNO37ZB8conJB2x55ukJQuYq+JnpyYk5UNDR/o3YU
+	2zMxaUrO3i1GiaTCSQdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBF0D-000000017xF-23UN;
+	id 1xBF0D-000000017x9-1iP8;
 	Mon, 28 Sep 2026 17:18:57 +0000
-Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
+Received: from mail-wr2-x27.google.com ([2a00:1450:4864:30::27])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBEzs-000000017jN-2mOw
+	id 1xBEzq-000000017ge-36NN
 	for linux-rockchip@lists.infradead.org;
-	Mon, 28 Sep 2026 17:18:38 +0000
-Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-482f6350f89so2092741f8f.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 28 Sep 2026 10:18:36 -0700 (PDT)
+	Mon, 28 Sep 2026 17:18:36 +0000
+Received: by mail-wr2-x27.google.com with SMTP id ffacd0b85a97d-4843796e373so1887150f8f.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 28 Sep 2026 10:18:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1790615915; x=1791220715; darn=lists.infradead.org;
+        d=flipper.net; s=google; t=1790615913; x=1791220713; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=OeSLEttyfMvpfX1KhFTKCRoBV4HzzJzo8yo9uusQA3w=;
-        b=iIczOCfv1t7bCw1iR5YcQxL7tyrN00CVV1deDBfbrNK1r69c5y4qWtiTg64w3zGFJo
-         v0QeAcdxexpwsNI4I9mz/X+cDObRieu9SFVz49o4tLzLHeFmff5JlWHx1SyLh3VThpnn
-         c/stwJYDhLhLxseY349AmY6DjUWtHANh9p5vQoCbDa7V+mCLnUXl66qBLMt/h48q0LzL
-         YimmnDp2OnwJpO2cDZG1RAebwm7tbYsux5Nj10yM0Vp6LhHclhAz1ZSZfWzkd0AcUtyB
-         Xc+17WSDCNW70a7/FwveSngQDOX52tWRiuTWymqIsF9LOc1TnK8GVVaDKtVrnpypFhxI
-         SHTQ==
+        bh=qzUE7F0kx/Sy/yA3+E0ssA+mT7Axk9cKYyuMi26SVJU=;
+        b=1gcnaea+HlJsd86187+m4FZDGzftFEdHyM4pVVOpe51FUb6GmpgJqvov6nIKX312wR
+         aLmGCG/hB8ROffjx5iTgJGKfeKVhDUJUvGqsJLsaf7aqlxwtIMffZDKHy85fZT2hlGUs
+         rQolLdthiUq/PG/ZZvzHM/CXLZASZFSL5HemnyYPozL1SNnxTOpZVJywcRq0d53EYv1o
+         ctR11OSZ1C6kd7roDbhvgvWKbF3IvwxkShYqYR5UG8Ls9kqv5qgwEtafLBJXKnb/Bt8A
+         G7ET96e0NJCJgmVQ0/VZpTklm5P3sXVnIEdyG1QLshyXmHx/EMnfcRFOg292cIvz3RJ5
+         Yr1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790615915; x=1791220715;
+        d=1e100.net; s=20260707; t=1790615913; x=1791220713;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=OeSLEttyfMvpfX1KhFTKCRoBV4HzzJzo8yo9uusQA3w=;
-        b=UJ8zI6RtmuQzZnnWMxais7ugQvysTIhYKXLCAffp63E5/dmYF3jOUpprnQZoHOew57
-         sevfiBYXHms3E/Wf/P2ceOHRgPTNdk9ds2A9iYvxqtxAIbnkbmgjXI9v5xw3tN/o+M0/
-         HOotfTLylHwA9we1BKMrVuvQeEfbJStm/WeAPugBLSTu5nLDoRbYtRH9YbE60WBxwRlW
-         FcLtUE7m+EbWVysyINwkjRNj/0ihX2/gVlrt/r/R7b72pcJJzrTX7kq+z8rYHOx0Ezm/
-         XAOSbZ4SyteGKR85bBq5DgPomlazEoK21eKloD5TwJq4gS7+uls6/1vdat18dkUksRAD
-         GtMw==
-X-Forwarded-Encrypted: i=1; AKwUvBy2jGIB9zU/LXpx5WC3zHfPWMCwJM0vGT+AbmhWl81ihw90pX0vL7MCzgWzD0vP1TMLv471mhDHzG5+yb0PzQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLjf6pV+96GYHfdYGZjiPL+s3YxXM7h4jN1lujSDlogaDsTMRah
-	VSluP8AJTW3xA0C0XUvBsm3s7MS+oGWG+YtZa7svyM81dy8AZJveymlQdVHrgEnxDUxCboicVp/
-	J8cUq
-X-Gm-Gg: AYBFou3O13Vg/ILQ1DZ2wT9WOp5XP5gKTr9vY7Kfa2/uRJFqAB7vGxnF5PZIVGiA9C9
-	up9iXRH7z0k9noraaUsGSQpcMGV+Y2BQP4+3+g6hvPG8d26OyBP3HOiT0yDI1vnIb+edd+7PG3+
-	sQEJWbUyoYGCYesfVQkqYQWkzkR8uf+8h3eP/vOsq+Fgq2J/xUFJ3m/Jw4rUKQq6tHIPKxvG3Gt
-	Who6E81QZldB50jP4NQtTWm4yI/B0yXPWShDvNPXA1NYF0WTIGN0YZuHa8O6zCehy1/xGbEl1JR
-	k2qS2t3RFn5SavM0tp5F3UuQHtuAQVC2Oy1I9cHbjHAaZmr09NRBnO/UUZe82GZX/AXvx0lyYx4
-	0lDw35Zb3EXTsaYVxxDLKQxzyr5LBIsdRWO4hhjcmple7T/mF5Cx/urF4tqyQ1o4y1bpk+qRnA5
-	q6/zMCyiOAEuf1omwFZ6yyDu/FylFpEFe8QTGe/TjJn4/rEWSShbffPsroZ9+k9hequn4nn3Pem
-	rHrn5P3JDXD4Qc7
-X-Received: by 2002:a05:6000:2010:b0:488:7803:c1ef with SMTP id ffacd0b85a97d-4887db496acmr19598301f8f.48.1790615915014;
-        Mon, 28 Sep 2026 10:18:35 -0700 (PDT)
+        bh=qzUE7F0kx/Sy/yA3+E0ssA+mT7Axk9cKYyuMi26SVJU=;
+        b=kFRnOKIqWzo3vKMq6mOchZRsTsHJyjv1RvMZYkvjQjZULOhLiy6wSGAPd4QlMql8mz
+         QSI+vTyBZL6DTEqZmQ5+JBFtcot3Mvqux4Dq/RDgyESF9ukIWhkbASt+ZZw5UcZXGjBM
+         DD0k15bn9N7qIyW98D00K2NCUz0XdQhzXsjWZj9bm409KxIfezSJRVm4SLmOumHAN6tY
+         Vy5kK0obCh3mkAFqr93L4E4xaMG4C7SbMiINv1pLo5ZOKzvhftFJ+amkWwQcMVljls2J
+         20ccdqed4gUXoOcA0XqGRzB+suamxTNHd6Vb4f4pE+4rtNzUgF6L/qSYOtzA8ReB1YEN
+         yeig==
+X-Forwarded-Encrypted: i=1; AKwUvBx+ezA3LWrRTJWcy1tX4ANaNZ3rN6B7BXC9tuGR5bhJNtoZbPiFU/wMxIAFM9irmMjnJucnLHtRsDncltOjbA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJ6G9sf/dmR/OzejnnW+GhGVhhOEBozDRnjHSWnCofLypLQ4v00
+	KqWSZ9oIviNGrKSLN7dMfqjyMG3EO21mF2bFl0O1hqXortor04rJWeknBQQKx1dQQFM=
+X-Gm-Gg: AYBFou1ziIewwPrppGOn9xModQJQWdSWf0ZHBgxTbevyHwyvT/wuOGtYsV71p2SlZpA
+	6n2mftPfSwUT6TbGv9fOujG/2HVdSUclu0q5Yzs2SwFJSAJawfF2yqPhbqJNQtBQeHMvZJkLbHr
+	3i6av0reB7OVB1hRgUOMObj2ipOnHF5XEy8DRENZTj6USY+fm1tK30F3fN3ihh1jMyEYGWFmv6Z
+	94yUfqCEVLPDwhmN8YDndn5ASCgQq1dYjl0Z0MfI+lPvg55I4/IaN6/Qn7KPZTwCgZqedsF2SFx
+	mdrkLPAD524g/clZ7N/LjDhIB8wPYWhlgdDpBZMrYVZ8Ay9R3k6PeH5+YNe2z8ENj1XVMTth89n
+	/u2K2jKX6rmJCgJdEkv3MbUoay9xBg8woIrj/OYMzNtTgnQNybp+4mLzlAaEs/kuhec9u1Hhybi
+	bVx5MLmu0nz8HGM0AbImANvzx8Pu+keYx0R56VeiBXp8P9vmVFcherJKc0p1fPiNrR0yE/B+x6i
+	VUOE6XSKPBVq+2GfRuKWJ0451o=
+X-Received: by 2002:a5d:5d10:0:b0:488:641b:2dfa with SMTP id ffacd0b85a97d-488716b28c5mr30171327f8f.2.1790615912742;
+        Mon, 28 Sep 2026 10:18:32 -0700 (PDT)
 Received: from alchark-surface.localdomain ([5.194.93.183])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4887a84221bsm29224973f8f.36.2026.09.28.10.18.32
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4887a84221bsm29224973f8f.36.2026.09.28.10.18.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Sep 2026 10:18:34 -0700 (PDT)
+        Mon, 28 Sep 2026 10:18:32 -0700 (PDT)
 From: Alexey Charkov <alchark@flipper.net>
-Date: Mon, 28 Sep 2026 21:18:19 +0400
-Subject: [PATCH 4/5] arm64: dts: rockchip: add reboot-mode node to RK3576
+Date: Mon, 28 Sep 2026 21:18:18 +0400
+Subject: [PATCH 3/5] power: reset: syscon-reboot-mode: enable supplies for
+ the next stage
 MIME-Version: 1.0
-Message-Id: <20260928-b4-rk3576-reboot-mode-v1-4-65486b03bd41@flipper.net>
+Message-Id: <20260928-b4-rk3576-reboot-mode-v1-3-65486b03bd41@flipper.net>
 References: <20260928-b4-rk3576-reboot-mode-v1-0-65486b03bd41@flipper.net>
 In-Reply-To: <20260928-b4-rk3576-reboot-mode-v1-0-65486b03bd41@flipper.net>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -86,17 +86,17 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  linux-pm@vger.kernel.org, Alexey Charkov <alchark@flipper.net>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2965; i=alchark@flipper.net;
- h=from:subject:message-id; bh=zmMCjORbtJtWDSFmQRFFbUAM5lSo+Rhe75Em9QNmcMI=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTtWhj3YPL0uTO2f9BiZBOvFShcsOx+TPNS04cRlyJ/n
- NhoxZrl3DGRhUGMi8FSTJFl7rcltlON+Gbt8vD4CjOHlQlkiLRIAwMQsDDw5SbmlRrpGOmZahvq
- GRrpGOsYMXBxCsBUP1Zm+GfCGWTwv5jr0yTn6vTWuYubuoonyJqYCTx5oahRz/y19jXDP+P9028
- 9SFQJEnud6vLruqLUqsUTilI7+E7pzmyTivQIZAMA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3628; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=YoPcT+r0NPwyBnJxWK4PIEC9nGCY4cC6HMWtxjxy0e8=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTtWhgXXaSTtI/Hu03nsp35v1ky2hOMxY/63+Pgd2A+t
+ eZtM8PVjoksDGJcDJZiiixzvy2xnWrEN2uXh8dXmDmsTCBDpEUaGICAhYEvNzGv1EjHSM9U21DP
+ 0EjHWMeIgYtTAKZaqIiRoXNpqZeOWp7gt8Wz/obaz1Q48eCojm67ouwvuYUNHLOX2TIyfCyaxO5
+ 9yPuJvSOjW6208LV7aXatE1/nnLD4wT5ntXQxLwA=
 X-Developer-Key: i=alchark@flipper.net; a=openpgp;
  fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_101836_746850_2BD8886A 
-X-CRM114-Status: GOOD (  14.12  )
+X-CRM114-CacheID: sfid-20260928_101834_834558_9F76C53F 
+X-CRM114-Status: GOOD (  20.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,79 +113,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3576 boot ROM chooses its boot device order from PMU1_GRF OS_REG0
-when that register holds one of its magic values: 0xef08a53c selects USB
-download (maskrom) mode, 0xef085a3X selects boot mode X, overriding what
-OTP or the SARADC strap would otherwise give.
+Requesting a boot mode on some SoCs such as the Rockchip RK3576 hands the
+request to the boot ROM in a register that a full reset would clear, so
+any reset that carries it has to leave the PMIC untouched. This means that
+the regulators stay in whichever power state the running OS left them,
+which may be unsuitable for the early boot code. E.g. on RK3576 the DDR
+initialization blob runs on the way back and accesses registers which
+Linux normally leaves powered down, resulting in an unrecoverable abort.
 
-OS_REG0 cannot be written ahead of a reset, as it is cleared by NPOR.
-Instead TF-A takes a request from PMU0_GRF OS_REG16, forwards it to
-OS_REG0 and masks the reset outputs so that it reaches the boot ROM.
-That register is the one U-Boot uses for its own boot modes as well.
+Get every supply named in the reboot mode node and enable it when a mode
+is written, which is when a mode is being requested. The supplies are
+deliberately left enabled afterwards: the system is on its way down, and
+what runs next cannot turn them on.
 
-Describe it as a syscon-reboot-mode node, so that a reboot can carry a
-request for maskrom or for a particular boot device. Under Linux, for
-example:
-
-	systemctl reboot --reboot-argument=maskrom
-
-Requesting anything other than maskrom needs a TF-A containing commit
-2a97ba20e901 ("feat(rk3576): forward any boot ROM boot mode request on
-reset"); older builds ignore those requests and boot normally.
-
-Link: https://docs.flipper.net/one/hardware/rk3576/boot-rom
 Signed-off-by: Alexey Charkov <alchark@flipper.net>
 ---
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 36 ++++++++++++++++++++++++++++++++
- 1 file changed, 36 insertions(+)
+ drivers/power/reset/syscon-reboot-mode.c | 39 ++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index e87ace5d05e6..c938dbcad712 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -881,6 +881,42 @@ php_grf: syscon@26020000 {
- 		pmu0_grf: syscon@26024000 {
- 			compatible = "rockchip,rk3576-pmu0-grf", "syscon", "simple-mfd";
- 			reg = <0x0 0x26024000 0x0 0x1000>;
-+
-+			/*
-+			 * OS_REG16 carries a boot mode request across a reset.
-+			 * TF-A picks it up while resetting the system, forwards
-+			 * it to the boot ROM through PMU1_GRF OS_REG0 and masks
-+			 * the reset outputs, so that the request survives NPOR.
-+			 * The modes below are listed in boot mode order, each
-+			 * naming the devices the boot ROM tries in turn.
-+			 */
-+			reboot_mode: reboot-mode {
-+				compatible = "syscon-reboot-mode";
-+				offset = <0x40>;
-+				mode-normal = <BOOT_NORMAL>;
-+				/* 1: USB */
-+				mode-maskrom = <BOOT_BROM_DOWNLOAD>;
-+				/* 2: SPI NOR, SPI NAND, USB */
-+				mode-spi = <0xef085a32>;
-+				/* 3: SPI NOR/NAND M1, eMMC, USB */
-+				mode-spi-m1 = <0xef085a33>;
-+				/* 4: SPI NOR/NAND M2, eMMC, USB */
-+				mode-spi-m2 = <0xef085a34>;
-+				/* 5: SPI NOR, SPI NAND, UFS, USB */
-+				mode-spi-ufs = <0xef085a35>;
-+				/* 6: SPI NOR/NAND M1, UFS, USB */
-+				mode-spi-m1-ufs = <0xef085a36>;
-+				/* 7: UFS, USB */
-+				mode-ufs = <0xef085a37>;
-+				/* 8: UFS, SD, USB */
-+				mode-ufs-sd = <0xef085a38>;
-+				/* 9: every SPI iomux, eMMC, SD, USB */
-+				mode-spi-all = <0xef085a39>;
-+				/* 10: eMMC, SD, USB */
-+				mode-emmc-sd = <0xef085a3a>;
-+				/* 11: eMMC, USB */
-+				mode-emmc = <0xef085a3b>;
-+			};
- 		};
+diff --git a/drivers/power/reset/syscon-reboot-mode.c b/drivers/power/reset/syscon-reboot-mode.c
+index e0772c9f70f7..3072922f1716 100644
+--- a/drivers/power/reset/syscon-reboot-mode.c
++++ b/drivers/power/reset/syscon-reboot-mode.c
+@@ -10,6 +10,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/reboot.h>
+ #include <linux/regmap.h>
++#include <linux/regulator/consumer.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/reboot-mode.h>
  
- 		pmu1_grf: syscon@26026000 {
+@@ -18,6 +19,8 @@ struct syscon_reboot_mode {
+ 	struct reboot_mode_driver reboot;
+ 	u32 offset;
+ 	u32 mask;
++	struct regulator_bulk_data *supplies;
++	int num_supplies;
+ };
+ 
+ static int syscon_reboot_mode_write(struct reboot_mode_driver *reboot,
+@@ -28,6 +31,20 @@ static int syscon_reboot_mode_write(struct reboot_mode_driver *reboot,
+ 
+ 	syscon_rbm = container_of(reboot, struct syscon_reboot_mode, reboot);
+ 
++	/*
++	 * Whatever acts on the mode (e.g. boot ROM) runs before the operating
++	 * system, and may need supplies that the running system had powered
++	 * down. Enable them here, and deliberately leave them enabled: the
++	 * system is on its way down, and what runs next may not know how to
++	 * turn them on.
++	 */
++	if (syscon_rbm->num_supplies) {
++		ret = regulator_bulk_enable(syscon_rbm->num_supplies,
++					    syscon_rbm->supplies);
++		if (ret < 0)
++			dev_err(reboot->dev, "enabling reboot mode supplies failed\n");
++	}
++
+ 	ret = regmap_update_bits(syscon_rbm->map, syscon_rbm->offset,
+ 				 syscon_rbm->mask, magic);
+ 	if (ret < 0)
+@@ -36,6 +53,13 @@ static int syscon_reboot_mode_write(struct reboot_mode_driver *reboot,
+ 	return ret;
+ }
+ 
++static void syscon_reboot_mode_put_supplies(void *data)
++{
++	struct syscon_reboot_mode *syscon_rbm = data;
++
++	regulator_bulk_free(syscon_rbm->num_supplies, syscon_rbm->supplies);
++}
++
+ static int syscon_reboot_mode_probe(struct platform_device *pdev)
+ {
+ 	int ret;
+@@ -59,6 +83,21 @@ static int syscon_reboot_mode_probe(struct platform_device *pdev)
+ 
+ 	of_property_read_u32(pdev->dev.of_node, "mask", &syscon_rbm->mask);
+ 
++	ret = of_regulator_bulk_get_all(&pdev->dev, pdev->dev.of_node,
++					&syscon_rbm->supplies);
++	if (ret < 0)
++		return dev_err_probe(&pdev->dev, ret,
++				     "can't get reboot mode supplies\n");
++
++	syscon_rbm->num_supplies = ret;
++	if (syscon_rbm->num_supplies) {
++		ret = devm_add_action_or_reset(&pdev->dev,
++					       syscon_reboot_mode_put_supplies,
++					       syscon_rbm);
++		if (ret)
++			return ret;
++	}
++
+ 	ret = devm_reboot_mode_register(&pdev->dev, &syscon_rbm->reboot);
+ 	if (ret)
+ 		dev_err(&pdev->dev, "can't register reboot mode\n");
 
 -- 
 2.55.0
