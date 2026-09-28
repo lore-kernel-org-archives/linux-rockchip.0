@@ -4,90 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC522C9833E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 08:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 830DCCA5FA2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 12:01:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:Subject:From:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i9Vqfijzn9Uu6sO8GKmCI/tn/9uQs2QLxinU7I5T9Sc=; b=M7+YWb6JIoZ6lq
-	+qwqMqDN2GyiJx2OIG8aumUpOa3M1/Y7Aw2/kKT8sNWKE2+7O5IStlIuX6xO55UYHlzGFCJQ3xuVa
-	Qy7jSBxo0DVBuyCj/k8u4JAmpEjLYiT2ekBetWwnwuEDzwQfSIQv8HFWw6BJAKezwpswpdS0ne3mD
-	fNxVBkWNgt5ZnyZKnlZl4HKaIiPYBlrQKsYJmkcP4DW9LxA0sc78kMs72PbeLA5iC3vUF7+XSPLqV
-	pAh3NfKT72x8Xat+ipHFKqIUGZRxQMNmmvJ2U86/ZpFXaECAzLx6z76gnJuZ2Wwmou149lnmGfykt
-	myp3P5uyCEWmMqZZ6ajg==;
+	List-Owner; bh=plnzVPTxeXoEDoMhnvL4bQI++3l1MzvMsUf3QBC+uQk=; b=mvu7jPTwAqmsdC
+	zofwqlNrNT1G2DKew6dvRRAttJiCSDMofJohHC1fz83SNKsQ4ntLTn68HzHuJGgO7y/wASSRBEvcM
+	RtMBr89xzXDRy9DZkYJF/vMvbvrn1LcMyqztJpYJOtYiDkMhdOxjcfenCA/35be7nMG41WK1WuUVQ
+	abxPPjIJLTF7AZXWVdiYCXy34dPHnslwDc3+FbtVa14ZyWmq2kJEQFsfQDlXR+h15A433J39bq2MO
+	ij0NbR+WyRBsoiqaiASHzAxTUmXHGm+QSG8lXIVfcKA4M8Vcz5OHLQswx5eVy0bUlMsCZb1pqKN2O
+	3pOX76UrK0ZvJw2xGwhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xB72T-000000008pH-3mgt;
-	Mon, 28 Sep 2026 08:48:45 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1xBA38-00000000W0D-18ov;
+	Mon, 28 Sep 2026 12:01:38 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xB72R-000000008oB-1F9W
-	for linux-rockchip@lists.infradead.org;
-	Mon, 28 Sep 2026 08:48:44 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id EDECB4E41089;
-	Mon, 28 Sep 2026 08:48:40 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id BA3E4601BD;
-	Mon, 28 Sep 2026 08:48:40 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B9ED0102F1EA6;
-	Mon, 28 Sep 2026 10:48:21 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1790585317; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=4TrL1LK87jREhsshgj9afbV5g3GJEMSvHjNMsw4bwYc=;
-	b=ZDa58Au2RHTizRo43gJ1JRUszIzTyZQkH6fdz231iZk+mFK47kmlmDY+0VETY5yPpnsekI
-	H2W47fDdg16ql/VlkfIClEu+3ESEBPzsHVxHQwSdkpqq7xS/LmLFAZ+c1Cwv0IKbwSw7wN
-	UNguMPFymrWlqGCyroCsOi8X9w+cBGPYBNKhNvYG1RBg11GdeNJxoWlU5ueicQVxlBuyqM
-	rssKNaxcGDmyEx8/mRYdRbY6UDDqUJjccvTKQdvCwKLp+ozx2FfNr7mFPECEsnr5mrfBuE
-	Qly9BUoYG+GYmxYZ6jpGEQOn3mIhX3sFqMhz33riAziOXByw/e3sDqg5nym3vw==
-Mime-Version: 1.0
-Date: Mon, 28 Sep 2026 10:48:20 +0200
-Message-Id: <DLQTIJA71AQ1.1RASTM0D6GMGX@bootlin.com>
-To: "Luca Ceresoli" <luca.ceresoli@bootlin.com>, "Andrzej Hajda"
- <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
- "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
- <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
- "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten Lankhorst"
- <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
- "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
- <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Jessica Zhang"
- <jesszhan0024@gmail.com>, "Laurentiu Palcu" <laurentiu.palcu@oss.nxp.com>,
- "Lucas Stach" <l.stach@pengutronix.de>, "Frank Li" <Frank.Li@nxp.com>,
- "Sascha Hauer" <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
- <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>, "Paul
- Cercueil" <paul@crapouillou.net>, "Paul Kocialkowski" <paulk@sys-base.io>,
- "Linus Walleij" <linusw@kernel.org>, "Inki Dae" <inki.dae@samsung.com>,
- "Jagan Teki" <jagan@amarulasolutions.com>, "Marek Szyprowski"
- <m.szyprowski@samsung.com>, "Sean Paul" <sean@poorly.run>, "Jonathan
- Corbet" <corbet@lwn.net>, "Shuah Khan" <skhan@linuxfoundation.org>, "Randy
- Dunlap" <rdunlap@infradead.org>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: Re: [PATCH v3 00/19] drm/panel: embed a drm_bridge into every
- drm_panel
-Cc: "Albert Esteve" <aesteve@redhat.com>, "Anusha Srivatsa"
- <asrivats@redhat.com>, "Dmitry Baryshkov"
- <dmitry.baryshkov@oss.qualcomm.com>, "Hui Pu" <Hui.Pu@gehealthcare.com>,
- "Ian Ray" <ian.ray@gehealthcare.com>, "Thomas Petazzoni"
- <thomas.petazzoni@bootlin.com>, <dri-devel@lists.freedesktop.org>,
- <linux-kernel@vger.kernel.org>, <imx@lists.linux.dev>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mips@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>,
- <linux-stm32@st-md-mailman.stormreply.com>, <asahi@lists.linux.dev>,
- <linux-arm-msm@vger.kernel.org>, <freedreno@lists.freedesktop.org>,
- <linux-tegra@vger.kernel.org>, <linux-doc@vger.kernel.org>,
- <linux-samsung-soc@vger.kernel.org>
-X-Mailer: aerc 0.22.0
-References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
-In-Reply-To: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1xBA34-00000000Vxy-40GS;
+	Mon, 28 Sep 2026 12:01:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version:
+	Content-Type; bh=8QIQAC1Squ20uW3BFDWzJ9EWESY3KXzBPAIvtArdRqI=;
+	b=eA7DeMMZQP+DiJNLwCRQg1gj9L4jE43tfQSNsBRe6OzEzkeW4kJKPGX0mUfCns
+	xnlmU1aNEpX/1GfkQBYJJFEI202R8A+VYLF1cvOlTA2tjrrT4srBTyUkbHzGjcvQ
+	Yb7W+VIF1A88X5ZLLRWpyyrzB8X2fJNHfIwtsULNl55fo=
+From: BG9OXA <bg9oxa@163.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 0/2] arm64: dts: rockchip: add ALIENTEK QuarkPi-CA2
+Date: Mon, 28 Sep 2026 20:01:31 +0800
+Message-ID: <179059689121.26126.16396827799983991795@163.com>
+In-Reply-To: <de8c3f72-26d1-4c9a-86c6-12afb3fe97d6@lunn.ch>
+References: <179051708448.31632.16350193430088134671@163.com> <de8c3f72-26d1-4c9a-86c6-12afb3fe97d6@lunn.ch>
+MIME-Version: 1.0
+X-CM-TRANSID: PigvCgBnTaobV7pqauFxBw--.30903S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7WFWUZw47WF18tw4UKr1DGFg_yoW8XFyrpa
+	y3trWUCws7tw1Ig3s3Ar48ZF48ZrWfKas8CryvgryUAay5K34akr1jgrs0q3WYkws7XFyF
+	9r4UWas5Ja1kZaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRSD7-UUUUU=
+X-CM-SenderInfo: lejz05rd6rljoofrz/xtbC+Rslkmq6VxvoYwAA3C
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_014843_501141_1A00244F 
-X-CRM114-Status: UNSURE (   4.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260928_050135_389872_1A02DD22 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,18 +66,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed Sep 16, 2026 at 3:45 PM CEST, Luca Ceresoli wrote:
-> This series embeds a drm_bridge into every drm_panel, as previously
-> discussed [1][2] and in previous iterations.
+Hello Andrew,
 
-Series applied to drm-misc-next.
+Thank you for the review, and for the timing guidance - you are right, and my
+apologies: v2 went out far too soon after v1. I will hold off on any further
+revision until the discussion here has settled, and no sooner than 2-3 working
+days. I have also disabled the automated reminder job that had been set up for
+this series, so nothing can be resent on its own.
 
-Luca
+On the phy-mode point in 2/2: you are correct that the value should describe the
+PCB, not work around a MAC-internal delay. The RGMII traces on this board are
+ordinary length; I used "rgmii-rxid" only because that is what the vendor BSP
+(and many Rockchip DTs) do. I will test plain "rgmii" on the hardware with the
+current tx_delay/rx_delay values and follow up with the measured results (link
+state, throughput, and error counters), and drop the rxid form if it is not
+needed.
 
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+If you have a preferred way for Rockchip boards to express this - plain "rgmii"
+with the delays in the MAC node, or the delay masked in the driver - please say
+so and I will prepare it that way.
+
+Two other things I should mention. The enable-active-high issue that sashiko
+flagged in 2/2 is already fixed locally and will be included in the next
+revision. And for transparency: I prepared this series with the help of AI
+tooling, which did the language conversion and consistency checking of the DTS.
+I review every line before it is sent, and I will be more careful from here on -
+both about the review cadence and about validating the result against the
+hardware.
+
+Thanks again,
+BG9OXA
+
 
 _______________________________________________
 Linux-rockchip mailing list
