@@ -4,71 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88079CA5FA2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 18:00:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62DE7CA5FA3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 18:09:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uafeCCorjLyfadN0GKE7bktKpYZ27uYC9Xrrx95iaP8=; b=eoXp6CRwkRpt0Z/aoRR0cHLIyE
-	unml6+Y3HEzTiqeTQBFasSK28X/KgydFrFFmV0NdPdMG2QF7aSsw7kAFa07X5hYIAc2ddUMx1wY0s
-	cNfk4KNmOPsT5hjdMjvRKYa1HJUhGLPR1F/eFnL0eSpFxcPwljq1sH8YjO5KAZ3USU+vqTWcbhgwM
-	Cq8aHQvFDkMVWLDBVmpc88WPCPr8DFGu9YOy7wNModDYwIDRGgLTruvrfb1/2gkvm4WaGBfCrxgno
-	d/qTO8Pzbzmy85VhGeol8scrZB7sVTYcI0SH9BvPrjukodxay7PTOJpaDxOxcoa3oEn+e1yWMe5iK
-	HnWQ85xg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WiuQRfnesVw6KoBXF2Fp5PAgGWKT8+Ax6RyNfCd/Cgs=; b=bHrbezBSi7iAZd
+	AYKD26YBoYeEfABKD9rNLK+yP0DJGdHC8JELG8bwAjOMvKNfMjchPJtsaRI1N1I8dTh1DTlYXlVUw
+	A8ofQYGIMwoDiKanguUCMkOCXKJW17v04U5LI2dcsCAA9o+Vm2he5ZFfRSJDVq9Fd81fKApgy2Fpl
+	rTeM+N9OnvjMt1yqNmnd+RURdUtUKf+hUD9PKn/PFC0SNaCHBgDzyMUnvMlQhEOGn7bJSR56EhJYr
+	0DoAwB80HB3c/IU2RRK96VCzEN4FJDItzbdYhTpSTxac4QNROVPzqr4yH+ByoSELDKN2zCSVPOHMt
+	FUmwENLD54iCxVav1QZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBFel-00000001FzR-33eZ;
-	Mon, 28 Sep 2026 18:00:51 +0000
-Received: from sender6-op-o11.zoho.com ([165.173.180.11])
+	id 1xBFnE-00000001HM6-3evx;
+	Mon, 28 Sep 2026 18:09:36 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBFei-00000001FyD-3GE8;
-	Mon, 28 Sep 2026 18:00:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1790618430; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=LPNI4MswH7Lzntzn90zDKT599utqlLYYxB65mXavT7wDLugpHBgF6zCKDAVr3jpuTuWKpt7nSHohwlogSJNXIQu63ODrw5AlEo1wbT/uAOB1meoE0y/JOIZWObjS48MJzKNOWXR+/Gwpfeu0NsS/MqRC8ilLhMcFIKhPRJGZWes=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1790618430; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=rx2Dp8F0G79AkzZ8TkfSoNMZCeNYUm4dgXzgVmBJYYU=; 
-	b=RQOMq9AHmT+JrwZb2c/bEpey0HjPjzJTWBWcDG727xpNONUU4xzfZPVGClzjnSnSWqpz4kQW0cAE8356G+oMxtia1EF6JRlNsd7Jy7hDRolt9GgGnqWRrFRAq0C10TQG7cRhZ1qgaLy5N/O59MY1uPqZ5GdezLaa6LjwQZVjRAI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790618430;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=rx2Dp8F0G79AkzZ8TkfSoNMZCeNYUm4dgXzgVmBJYYU=;
-	b=kNNoiGV6doOW3mVcl+p8MW6tf2EKhNZuGCmyzX6mJpdPZNghSdU5Lb7032525Zvi
-	WsihPJchqqZ/b++ELDdBz3wbWea72I1hph29bZ1pwvO4itw20C2m2xDLzMPCcn5HWxP
-	hmUx8QU2gtztNZf44iZHQ22CZGuiMMVwjsOqZUzY=
-Received: by smtp.zohomail.com with SMTPS id 1790618428921626.3807045692041;
-	Mon, 28 Sep 2026 11:00:28 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 9FC5618081B; Mon, 28 Sep 2026 20:00:24 +0200 (CEST)
-Date: Mon, 28 Sep 2026 20:00:24 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Maxime Chevallier <maxime.chevallier@bootlin.com>, linux-phy@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Igor Paunovic <royalnet026@gmail.com>, kernel@collabora.com
-Subject: Re: [PATCH] phy: rockchip: inno-usb2: ensure PHY is running when
- clock is requested
-Message-ID: <arqnn8s5yFmZzQvG@venus>
-References: <20260908-phy-rockchip-inno-usb2-clock-fix-v1-1-f7d59c31b908@collabora.com>
- <xnvakstneih6njyxfe27kdx54vy3zpnth24o4mjlzuoykb2pfh@np7dx62waujo>
+	id 1xBFnA-00000001HKd-4Aky
+	for linux-rockchip@lists.infradead.org;
+	Mon, 28 Sep 2026 18:09:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1790618970;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=WblzAY3JRV9CtwzNMKeAP2oGeUzXJbmdjxKWRmzPjT0=;
+	b=Cl4bJVb2yGMg418R/dWWSytlOLD4xTru66dMwgPYhwOdvR7JQ7aMGnWSaJHOrm1dqN4aWm
+	1qmnhlqCykCul0iw/1urYyg7q44LptyqaR+Y3rBBQ/p0rPqgKAfF1P1FTiLkZcXALxNQqa
+	XYi876v3i+nNO+RJLoq8ofQSnS94KGc=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-630-MZtezWkXPY-G0C_2Gw4KzA-1; Mon, 28 Sep 2026 14:09:28 -0400
+X-MC-Unique: MZtezWkXPY-G0C_2Gw4KzA-1
+X-Mimecast-MFC-AGG-ID: MZtezWkXPY-G0C_2Gw4KzA_1790618967
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-49e7631c43aso34555875e9.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 28 Sep 2026 11:09:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790618967; x=1791223767;
+        h=content-type:mime-version:message-id:date:references:in-reply-to
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=WblzAY3JRV9CtwzNMKeAP2oGeUzXJbmdjxKWRmzPjT0=;
+        b=q5m3PkdD2ZcunqjQCz/GeSzbs5BX2cXTiBmsEn/BVy9/8CwU0gTK6kUWmOYkeiNnyP
+         SoCGmFOZojnWA9soKw4AwuPfnZXwXVOkiKWNWnrpo9lbgE6rXnwLc+jPSwFqV6l7wlIk
+         5B2CZ3DsOz9r0g3a9UUE6zCL5kx9uxWnJMNPUknORQtpu6CjchV5yp8T+ACCbNckICpN
+         mnBb6u/IBsx1yEkS9J4Bf4IMNHHIIgQ4ebbuUZI/mniodoj2t+jh6dUm82Z2cfrNGSVe
+         9BtOY7GdOfVzjw05s9tfWmnEnbBOGxcxevmdpBx5ymq9G9+NYgkzxcYw2ZOKG6W+hiC2
+         XFiQ==
+X-Forwarded-Encrypted: i=1; AKwUvBy0LjS8RrimPy5uYhTpnlT3OKMM1o0C7GaSlaue619cCaAPtkRumhQJqpiLjgcSM/kfpdpJEHORX1kZYSRUpg==@lists.infradead.org
+X-Gm-Message-State: AFuF++kuY0JZKYDgJOxdFbJAw3aSv4zxixzyCQ7sa36BeeYalQIoqAzL
+	P9FZs/OajMwgqTUwKuffivimKaabLRHzReYPEUp7mFy3a8YTxeJTf/zHJ9kLCt7GY1Eozv3Hqh/
+	pUWNkQDduacFZVNsW9MWQlkm2f9W1LslHTZGWT+GLkMaV7k61iy/xI5GiQy7jD6Pq02fqmr9+fw
+	==
+X-Gm-Gg: AYBFou2AiN4ZRDjjy37RgtxTq0M0kyheiLicKG0SsJb2R5l7avl1w5hyIisbjmHz/vT
+	AEO9LXGqI9KcYx0ezdO6OVT6ZqoNDWDHCjWbNVKa102iE4rkeNhi7pWtii3qt0GfO3LOqTCNDwg
+	v0DmypMOnsnXOhx69bWwgehWhXj0QbKMjJmAcwH8rdQ6L4DxzmLz9ynqzSYOu7bZ/n8E9wImSiv
+	2snMarFdJiHTQBnMEaCXRerE++3L9i0vHX8EaknujkkeTZLcJvlihinM7gYW8i8YwLx46NpXUwP
+	hCbjyOZ8lQulzzHkSsvxIA+CTgNGe3U1hAhDl2qRE2PJ149UyiCjzzkwB5KIrtVt5mPESBm7wVJ
+	5CtzPKHY0neK+jiIGutuWegUN0Tz1xGoEiLYFamnHBAaMtI5HNqe9CFulfLxhoWD5GQ==
+X-Received: by 2002:a05:600c:1389:b0:49f:dcc8:c735 with SMTP id 5b1f17b1804b1-49fe66f4c7dmr231739885e9.18.1790618966876;
+        Mon, 28 Sep 2026 11:09:26 -0700 (PDT)
+X-Received: by 2002:a05:600c:1389:b0:49f:dcc8:c735 with SMTP id 5b1f17b1804b1-49fe66f4c7dmr231739375e9.18.1790618966445;
+        Mon, 28 Sep 2026 11:09:26 -0700 (PDT)
+Received: from localhost (62-151-111-63.jazzfree.ya.com. [62.151.111.63])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a00d10cb7dsm3533065e9.0.2026.09.28.11.09.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Sep 2026 11:09:25 -0700 (PDT)
+From: Javier Martinez Canillas <javierm@redhat.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>, jfalempe@redhat.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@gmail.com,
+ simona@ffwll.ch, jani.nikula@linux.intel.com, Alexander.Deucher@amd.com
+Cc: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
+ linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+ nouveau@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-tegra@vger.kernel.org, sashiko-reviews@lists.linux.dev, Thomas
+ Zimmermann <tzimmermann@suse.de>, Alex Deucher <alexander.deucher@amd.com>
+Subject: Re: [PATCH v4 1/2] drm/fbdev: Move fbdev module parameters next to
+ module init
+In-Reply-To: <20260928080323.23909-2-tzimmermann@suse.de>
+References: <20260928080323.23909-1-tzimmermann@suse.de>
+ <20260928080323.23909-2-tzimmermann@suse.de>
+Date: Mon, 28 Sep 2026 20:09:23 +0200
+Message-ID: <xlv133utfdt8.fsf@fmartine-thinkpadx1carbongen12.rmtes.csb>
 MIME-Version: 1.0
-In-Reply-To: <xnvakstneih6njyxfe27kdx54vy3zpnth24o4mjlzuoykb2pfh@np7dx62waujo>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/290.602.86
-X-ZohoMailClient: External
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Gd_8VYZUK1ayYW1hZz7UiTTKH3Qyc2UNjKcapDShU4c_1790618967
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_110048_879199_1B9D9577 
-X-CRM114-Status: GOOD (  36.85  )
+X-CRM114-CacheID: sfid-20260928_110933_107087_57BF106F 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,149 +111,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8996770244962548385=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Thomas Zimmermann <tzimmermann@suse.de> writes:
 
---===============8996770244962548385==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="untgwae5zqmwhmvm"
-Content-Disposition: inline
+Hello Thomas,
 
+> Define the parameters for fbdev emulation in the source file with the
+> module-initialization and exit code of drm_kms_helper.ko. The parameters
+> control some aspects of DRM's fbdev emulation. Common usage looks like
+>
+>   drm_kms_helper.drm_fbdev_overalloc=200
+>
+> on the kernel's command line. This has been possible for many years
+> and changing it would likely upset users.
+>
+> The emulation code is supposed to be moved into the module for DRM
+> clients. Keeping the parameters in drm_kms_helper.ko avoids breaking
+> systems the use them in the way described above.
+>
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
+> ---
 
---untgwae5zqmwhmvm
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH] phy: rockchip: inno-usb2: ensure PHY is running when
- clock is requested
-MIME-Version: 1.0
+Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
 
-Hello Mani,
+-- 
+Best regards,
 
-On Sat, Sep 26, 2026 at 04:50:07AM +0200, Manivannan Sadhasivam wrote:
-> On Tue, Sep 08, 2026 at 06:07:42PM +0200, Sebastian Reichel wrote:
-> > On RK3588 the OHCI controller registers can only be accessed when the
-> > PHY's 480MHz clock is running. After system suspend the controller is
-> > resumed before the PHY.
->=20
-> This statement is slightly confusing. There is no PM ops in this
-> PHY driver.
+Javier Martinez Canillas
+Core Platforms
+Red Hat
 
-I will take a closer look how it is powered off during suspend.
-Generally I expect it to loose state in any case as the related
-power domain should be disabled.
-
-> > The controller requests the clock, which opens
-> > the gate in the PHY's clock prepare function. But with the PHY suspended
-> > this just results in a dead clock being routed. The OHCI driver will
-> > then continue to access its registers resulting in a board hang.
-> >=20
-> > Fix this by resuming the suspended PHY in the clock's prepare function,
-> > so that the clock is really prepared once the function returns.
-> >=20
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > ---
-> > This was noticed on RK3588 EVB1 when resuming from system suspend. This
-> > is technically a fix, but its unclear when the bug was introduced and
-> > system suspend is broken on RK3588 for quite a while and not just due
-> > to this problem. So I think this fix can be merged the normal way via
-> > linux-next.
-> > ---
-> >  drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 37 +++++++++++++++++++=
-++++++++
-> >  1 file changed, 37 insertions(+)
-> >=20
-> > diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/ph=
-y/rockchip/phy-rockchip-inno-usb2.c
-> > index 7d8a533f24ae..07d400967def 100644
-> > --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > @@ -332,6 +332,39 @@ rockchip_usb2phy_clk480m_clkout_ctl(struct clk_hw =
-*hw, struct regmap **base,
-> >  	}
-> >  }
-> > =20
-> > +static int rockchip_usb2phy_clk480m_leave_suspend(struct clk_hw *hw)
-> > +{
-> > +	struct rockchip_usb2phy *rphy =3D container_of(hw, struct rockchip_us=
-b2phy, clk480m_hw);
-> > +	bool relock =3D false;
-> > +	int ret, i;
-> > +
-> > +	/* Limit to single port; it's unclear how multi-port should be handle=
-d */
-> > +	if (rphy->phy_cfg->num_ports > 1)
-> > +		return 0;
-> > +
-> > +	for (i =3D 0; i < rphy->phy_cfg->num_ports; i++) {
-> > +		struct rockchip_usb2phy_port *rport =3D &rphy->ports[i];
-> > +		const struct rockchip_usb2phy_port_cfg *port_cfg =3D rport->port_cfg;
-> > +
-> > +		if (!rport->phy || !port_cfg || !port_cfg->phy_sus.enable)
-> > +			continue;
-> > +		if (property_enabled(rphy->grf, &port_cfg->phy_sus)) {
-> > +			property_enable(rphy->grf, &port_cfg->phy_sus,
-> > +					false);
-> > +			relock =3D true;
-> > +		}
-> > +	}
-> > +
-> > +	if (relock) {
-> > +		ret =3D rockchip_usb2phy_reset(rphy);
-> > +		if (ret)
-> > +			return ret;
-> > +		usleep_range(1500, 2000);
-> > +	}
-> > +
->=20
-> This looks like a duplication of rockchip_usb2phy_power_on(). So I'm assu=
-ming
-> that phy_power_on() is not called by the OHCI driver before accessing the
-> registers. So why don't you fix that instead?
-
-I can look into it. My way of thinking was, that the clock should be
-running independently of that when the clock has been requested via
-common clock framework.
-
-Greetings,
-
--- Sebastian
-
---untgwae5zqmwhmvm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmq6qzQACgkQ2O7X88g7
-+pog+A/+MEyOCVKuYQ5mvlVbb5Ag+syHiOeLRFUzhUivNdnzrXzfdkriXModstAY
-TFfa4898XF49E/Ru7SIFZBvG/X+K0TwZmezCy6NKxZKAkxbt13pc8x4gxwMaalKb
-Pf7G51RdsaL+QVUGKiHzqjt2Ij8J3qvOp6QUTceI6kKA8xIg4D8ObWXi1m9FV0vT
-ep8U5w/l8/ZJ+8wTDawVBPMG/IZ03HoviEfeN7YB3Bbu7unEWkWUKWLAaa3o5Bj2
-urmwDdGa4AI7v8AQqg8hapFNDWNbW+0ltgv0fLBRJl9jyN49BVjDHbK/3YNFW4Vk
-nchGhClmnnc7g+Arwj+ddamMh42B52eXdN062igi1+9omeDm7QdXNoIyyuLT+Jwm
-Yu+fB+HiiOe2AKHNdB4mi85Z4D2p9eTNbA7xXgAAA+BGb7mNm02wdY3zvUC2mtCU
-6a/5qXzoypPq+WkbcKPOKfESeQ7wNcdETRAnHfSg8izrfW5lZ9ZsC2amUVDkWLo9
-VRJ61SESKkPvgTaqscTNIBFX20I46FU0noS/JSe6jTL7j+Phn36Ert4ZIH6JRZZK
-8ADc8nasbNs7VJ6AERiF5Z34j8uL36z7oRDiK7CzlYWhQGg9mbvfH5PjBZwuoYkr
-IGuop0RFl3hrViQsLJ4KPhyfNPUKIFPB+SbuAV0wy08eia2W4YU=
-=dCQG
------END PGP SIGNATURE-----
-
---untgwae5zqmwhmvm--
-
-
---===============8996770244962548385==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8996770244962548385==--
-
