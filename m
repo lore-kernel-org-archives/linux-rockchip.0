@@ -4,129 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71710CA5FA2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 16:42:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B587BCA5FA2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 17:18:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mZ3IO6oIAopckSNbCZ8aQv0sMU/z8HEbLXDhCuqV8aY=; b=uqBJGiXdJ9J6pa
-	9pdGTYL1B/PZcP2dg+0G6H7yndCbkExyWr15ZE0a/V4g8dhiFH6CAl5zhcS5W0EIpaLbiUeq5BqEe
-	riO8cHz/JbPDqxDThCgmsVqnvAJi7N5akKrRop2yGVaxTl1jxskOrFDHEsPVlDiI8DXZ9MkVVtCyB
-	PuKTLezPWJMfn6Wp2v2qMTLeeDY826Wl1AG1oOuksyTkT8YLNAetdIvI+tcOICw6Z5+TnJXOPxujx
-	1nQDd97nGDrp20XgeayEnk7CLVwPi8akt9aa1aIs3UFYnWpjEwuJV2V0Nh4YGoAJAysJr5NHzF/+3
-	zjyJGTirfoFjYLS0/qdA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NftSbUot3/fBHs+LXdCDcQT7mzCkWs7EossqPmH4u00=; b=pjXkrBhy8njagj
+	MHaMJsHFE3YSyWj/IMw7KIRj9uuk47kVl+/K2PNueOsOFruY94JDMX6VIlYkRFPMRYn3yrNO9m9Uy
+	qyNDqDkgYI4JspsbEuMZPEzZJxhGnG3GsHy/AlzKNbnkmlaHeXXxjlKTn9ZrMioMZBnavPrguVwFq
+	SxKLLeSMA/25IWFaqEvdp6oVJ0AuTUCsC0COm4hy25lYWxOsUdUZPDsElbh3aiX1FDTC79ZvB/m6m
+	aEnSueFxKTnReSRYWZKiYfUwQ7fE7v11VHo+bWBqPDnqIZykgrKG08YXcrnHgtyyGnsDli5re8NgD
+	u3nmONB5HJyTmVSggoYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBEQR-000000013nH-0XqK;
-	Mon, 28 Sep 2026 16:41:59 +0000
-Received: from mail-francesouthazon11011065.outbound.protection.outlook.com ([40.107.130.65] helo=MRWPR03CU001.outbound.protection.outlook.com)
+	id 1xBEzn-000000017fO-1Zsy;
+	Mon, 28 Sep 2026 17:18:31 +0000
+Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBEQP-000000013la-0nHn;
-	Mon, 28 Sep 2026 16:41:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=EEIj4C7poKz4M7Z3DWDfNqxX1N+nYm4tKYrSYLGt5vBG1EDcFq8fzggWdjCoXO+GYSIFCHFg+2LLe2GlMLjltQLFfcieQqZRqItHLyidZBiHEA4IPijFtjMeXi5QYo6CfrjKQunz760c3B9svKMPnrRjTCYBvwvSLHMgiLtwxK5seSWnW+i1kGiQ5XOuGvdFMLezVMDdTM+AcqAcDtCYTP5sCIYEzThemf8OxcT5SnU6b/Pf99wnAqWh1RL427m6c385qv2sA/rLu9tYeox+g6OH+KDHKKHNwgfUc1hDkjjJAZvq8uB1W5Sz5EZKcAVch2GZcgM7h03XQHHrXK6jcw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=1uy8lBu5StWu3f3+ss2y5On6Vp+f2gT5DtA0tXeFWNY=;
- b=wNfylZV9HhdtIAJoexM2boy4PlKsYC9XzkUI7Puhg3cWcQW5v+DarGasvTMyih8xLPyflCu+1PkA9Yth/XvQ5LmubpNpWpN+0eQcKeVZ+hQcZjn8xGnMZmS0WoVelQ+Az24jNi/BJzdekQFXOB3yUj4qXU8KLwwyi9elLozD153w/r5KVlY0Lxt+7KuJ4zAAVGUMLCedxvjPZaVugJF4UeR/4Wb+x/mvAlWS7wC+vEJSwyvjQCQyonrO9xM0/IIKZDDidqf8UQOLDKzB7sO1AIynjisAP5fPRVWdAEGJz8t/27Q2KRPqoQZ97qHd2oP9p2reKqwVP8w9Sm+Ev5GLiQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1uy8lBu5StWu3f3+ss2y5On6Vp+f2gT5DtA0tXeFWNY=;
- b=YvV7A8FRNFqNfVOV55NM7JxxuN9X0yHZQ8SMQ3jpsS2bJL6xerHU9x5UnvEdcoMscOt5bp+ZKKGOZ9CiULaOQ9N+y+59NFxWWSUwLWguHDNneWstkhzhZoe1OzG3ebzmNXriu6ByIKGqsYqs+FXmIXFijIukz8XSFok2ieobwUEXwzx1NPMQOujgqlar/7JRptmGCRHB6qDVTbiiw9BONY2Nq/cX1Ta1tJhmD3zxnfhSeKPtVqsx8YfZdGx/x9Di9g8zLfqmmqMqaEmOARzFHBvvUsIIFYcRBK9nEa61HlLvAAnl6fpPYVpx9HGTeYVryz5fgtRlFmvIzjxXgQnY2g==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
- by AMZPR04MB384512.eurprd04.prod.outlook.com (2603:10a6:20b:7c6::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.24; Mon, 28 Sep
- 2026 16:41:50 +0000
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c%7]) with mapi id 15.21.0451.022; Mon, 28 Sep 2026
- 16:41:50 +0000
-Date: Mon, 28 Sep 2026 11:41:37 -0500
-From: Frank Li <Frank.li@oss.nxp.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
-	mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, Frank.Li@nxp.com, s.hauer@pengutronix.de,
-	kernel@pengutronix.de, festevam@gmail.com, conor@kernel.org,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v5 1/3] media: verisilicon: Remove deprecated
- nxp,imx8mp-vpu variant
-Message-ID: <arqYwTQ5_nyqB_8U@SMW015318>
-References: <20260928080822.19553-1-benjamin.gaignard@collabora.com>
- <20260928080822.19553-2-benjamin.gaignard@collabora.com>
-Content-Disposition: inline
-In-Reply-To: <20260928080822.19553-2-benjamin.gaignard@collabora.com>
-X-ClientProxiedBy: CY5PR14CA0010.namprd14.prod.outlook.com
- (2603:10b6:930:2::25) To GV2PR04MB11799.eurprd04.prod.outlook.com
- (2603:10a6:150:2cf::9)
+	id 1xBEzk-000000017dv-1qk8
+	for linux-rockchip@lists.infradead.org;
+	Mon, 28 Sep 2026 17:18:29 +0000
+Received: by mail-wm2-x11.google.com with SMTP id 5b1f17b1804b1-49ffbd83a92so16549815e9.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 28 Sep 2026 10:18:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=flipper.net; s=google; t=1790615906; x=1791220706; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=/FtP8QfYvdqSZuTV1DgfaQnem0vOH6RafKPHcaYLj5g=;
+        b=TQ7zfIyR/LLz6HJliZoUxYB4mbcXavmRhdzUfZJmWj/MajymEombcIOH5t529yYxyM
+         H1/mfusu8IGVTsSOYeVdwUfDkjyeQAsu/bOI3ptWwYMuGeFfwwdtZxsQlFqAaHkAOykN
+         8q0LymOQeXOx8bg/K1bnLZGGzbr53K19HyvtcVsiIu99ukvTnuXGVoUfP0b0Ef0fezfs
+         594Cf/yudYTbXuGZQTkCLyt1zIJRKL65FtmrSbt6WKB5o2kqBvscGGiicFgM8W2ttY5S
+         i+CyfDnTupv3hlbXwFsU3UJxW8q6cMLMeXes8Qk6EYfZc177dK4GCOg/VcaQL2NWvQum
+         +GZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790615906; x=1791220706;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=/FtP8QfYvdqSZuTV1DgfaQnem0vOH6RafKPHcaYLj5g=;
+        b=npY71E7aFCi8oJqnL2F9F12gm3Jl9q0Eg++kayacoUogcf4kgSu8xBAeVu3Syi8eHy
+         z45ptwhlexpccOMoxjP4BuL4pjkotboGHW0A4vIT8OodSoOXAPe87et8T7351Z1fXRbY
+         45cU7UYSnKqOp1g0G56JXO8UFoD0WcccmDILvIy6uPJNC18hiaLMNZJtgQYJP1JuWCoY
+         bedwED7Uzm61i3wivGrsEX0TrKDPcIQpfN+tke+ivIzwqh03HM41QSwImCOyc/HeYd4t
+         oiU9jKdp+p/kWf7GMDjYxPArCIvz2GZ5UTWmE1bo52vuck2EsY8DYIFIVRzvcDvqHzM9
+         n+jA==
+X-Forwarded-Encrypted: i=1; AKwUvBylEyj633UxU6IPhgtiOOozUB6FdsWYz0vHSVgnD0lNh0ZWDLwCYj3i/N2BAMN7q1qaU3U1M68WGZVesIf4jQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++ntbeMvALiPbjqo14jvb25Z/nVrEmccT4F1K5xqvYtMFrnTpBt5
+	0Z1TZrnjmuNndYi96KK2V7sI8BYU8VPQ52v7IB2VzWRa2pEULoJb8In5qwTDqYrIdAk=
+X-Gm-Gg: AYBFou2VRBS5rj/GBwp1Hdv/Jq+6yim3/5BQGdNxWbAj9i3kCaBQcteDp61T+rmMs+K
+	Gg/+Dk26N7qTwL1nWc1jMuKRuMeL3JbQARJCJrII0kBE/sDhICsXmaEhDCQpsr+Ur6aAidKSADr
+	A0a+jjlLCWx/Zw16sqeykgfW+YX97jdHhNj2w4mevRN3VR4Gn2DjlHZd4fvYK1r8MOV1IhR9up3
+	lt9LR1vGTcm3moTJnCEiv75/n43PHC2FapySckytzYBIsW9joCynr+MWH8sSl2bx8fHJHUdufC3
+	V3Tmu275PgSrrL4/zgJughGKcV0lwvrIP8s0tejuEcDejRBQQQEUy24lSx9TANOYFcyeBvq/e1C
+	AguXdvwwDRrcZiB2vjw0N+NxjiXSmikhZWUVGJumllICnho7ETd4/m9Ln86C8pK/8zCJ9agyoHd
+	OvFAmfagr/wpBSRYFG89yyLiVSGrP9cad3sl99F/HJqdE3zA1RZRnIPOcXNCTOBdFdpjuwdqsuX
+	8ByBrUHAKyUVSsZ
+X-Received: by 2002:a05:600c:1d1c:b0:49f:bd3c:bc28 with SMTP id 5b1f17b1804b1-49fe6712809mr247163255e9.35.1790615905740;
+        Mon, 28 Sep 2026 10:18:25 -0700 (PDT)
+Received: from alchark-surface.localdomain ([5.194.93.183])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4887a84221bsm29224973f8f.36.2026.09.28.10.18.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Sep 2026 10:18:25 -0700 (PDT)
+From: Alexey Charkov <alchark@flipper.net>
+Subject: [PATCH 0/5] power: reset: syscon-reboot-mode: Add support for
+ Rockchip RK3576 reboot modes
+Date: Mon, 28 Sep 2026 21:18:15 +0400
+Message-Id: <20260928-b4-rk3576-reboot-mode-v1-0-65486b03bd41@flipper.net>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|AMZPR04MB384512:EE_
-X-MS-Office365-Filtering-Correlation-Id: d5ed45c0-2793-48d4-8855-08df1d7f64ce
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|1800799024|7416014|376014|366016|19092799006|10067099003|11063799006|56012099006|22082099003|18002099003|4143699003;
-X-Microsoft-Antispam-Message-Info: VSTSldyc8/I7FlqqFJKqnoBSGQds3Gxi9Jyl58izw+CVs6fThJkvEKDvDp9zpRfV0vGPzqLmLF07ZMzFDBAB8Q3NTH3AhQ3zr2V27VpW5xp3aWQgmJY6VgxrQeCa2IUfTcH7MqkmfIfxc/JLxaBm3eZRGH3XDDBBqSe+NFIy7p7aD6Jk5SSItNrUBkkyXxhDz9pyjo93IfJ90tkwaJI+BbLeivAeuM32bXf5RphuaSng49c0EkOHDYhKicB8z5aWuXfUYxO5AXv0+1NltUcdiachqw8q5gXrfMfnRGvx6/SdpSwu7nicdEpWp47nhuZRG4qFeluqXptleArGR5D437xnNTsrPUT6v7d91n5/aWLMgUpW859z26UIxkVcy7z+vrCv0FIABbZUPzmqjAhgey2b6WlyfPVmqT+u+ASPoBql8+t5lv1T+KsmzhX/NsrH3Kce20I9iCaBEwdwxbCkXwOZmpbube8UWQxFHbvQQVcXbrIwsWSjCVwEKic3pFPAP/yL3vHURUBYvojai/8QHfXhSyrhnROykZVG3cSpdGl1Xrf7kh91fNUvkXhbbhlQ7ohJ+iImrk4cE4FN+3e94mnOIB5EWbLIW3cuuqA1lyGPljUjRTAkk1OSRnwfH0ns69ZT9wcm4ESbC67vtmDVKpKzsVcfsb6Uzl+JMVONWYo=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(1800799024)(7416014)(376014)(366016)(19092799006)(10067099003)(11063799006)(56012099006)(22082099003)(18002099003)(4143699003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?3nLQKc8jq2D5eVqQvztd0p47bViiAZi8iJW09z0hc/mdtT+fWwjPmfOsbQqt?=
- =?us-ascii?Q?vpq8lcBiJXNxW0FNTlGudy6DO3kRqglIwNVuFZfHPy8CsmHhCcpkdIVeb0SO?=
- =?us-ascii?Q?aGm0U15zq8by9eDQbvCRXe1hTbBM82oGb2JRcM8fzO75+8i9nlESl5CFF/7a?=
- =?us-ascii?Q?fYvSr7n5Bt8gt42z1LvBcvyNenT9skdA44mUxqf0Wuzf0H238qRr9M5MPMAO?=
- =?us-ascii?Q?gvd9BY/4SErLA7HdMdTsFfT3o30n1JnSc6XA+oY1Cejaa19FImU+oXih9MXb?=
- =?us-ascii?Q?KuKD8zZmCjs0Vcra1P1y8BkZoWSlNLmOQEy8gg2sYp8sqDOr5zIKsvvic3U/?=
- =?us-ascii?Q?G3C2pD7XhS8HeTYUnJtpRMeEIjqq/eG/A4k9tE6MyCQGqLwJXstZrANI7/w9?=
- =?us-ascii?Q?5DPfc25NGd2JQtyS/0X/7iT9JFzi8MT78ufwwcQh+kMVsv5capOYJzcn39b8?=
- =?us-ascii?Q?rCfBB1Ldj/NscZ52clpVdulOkwQoGw4FEbFyLEy9niOT7BACZzDKmQBeZ9aa?=
- =?us-ascii?Q?vknMK9Edu3h4w/ktFDiToILza4Jf8zSbfV3Emsj6g9pVgtW3F9uEXVJMtY9k?=
- =?us-ascii?Q?yaF2oBgOjR5C+v0+wzhRg/2ueEUaQD+wgCBRZ5dEVVtBL/9z+0igu/xMxyPG?=
- =?us-ascii?Q?AuzGRppOqQgL4JrcW5EGXgxJXNHhLzid8gqlbk0KbbS59/sAY0lSPE6RB6Ur?=
- =?us-ascii?Q?TaITe3y+ZzBwEd1HHCV5leBFlKAkYW0EaYwAF3JWVZrAc5z+n0JQ6bwOxC2l?=
- =?us-ascii?Q?qNw6hWe2pK1Nxt5Bgqt+3faNqNHWLgB03+NCwUGUHUvi3iCbXK/r1VVj2NQh?=
- =?us-ascii?Q?t5ZudeIbkbCHvi2g3UlxhJzLsIH9wEEz8ad2Lm55nWRiNDCPyM3Bkv1sxEQZ?=
- =?us-ascii?Q?zfLdXPqd5u7xzPX5KrUF3FfFnxhwJUKqtIXsRpgOY4D2Hypam1tSwk+o1tTC?=
- =?us-ascii?Q?sIK1WmsWYsKTPJe8iJPzMzQ3zTaOHCjHyH31LVeN0MZ69CJy1weytPehKe/n?=
- =?us-ascii?Q?VVy81R1/tEYkNQNfxazTzkpD6K8UYMsAwjFAuVT/qpS3x3X3Hyd4KCtz9bFE?=
- =?us-ascii?Q?lON/PD6JFqbLTTpvzit5yqP61e6aLzXOVYgmpngw030pvBAsnenP2d0TRH4s?=
- =?us-ascii?Q?YDF6imE5sg7Ras2quRLB51SBldRzflvp3NP66+XBbvG01Gt2RCarKh5HbPbL?=
- =?us-ascii?Q?xoSu6dtDS85nhIh+xd7oVavXm70zWJjGcfAHlBBLUKPtwvBaaHVTdBsK4kK8?=
- =?us-ascii?Q?aknOf4ylk71g2N8IBbOkbesJmhb5GC/w1k8qlGlwyTW5Wzb5YI1gwcSMVAIw?=
- =?us-ascii?Q?ogsIWezClolaoifxHQHNqR6uDDGhMrUplPKA9OhTHehedk/DmIEQkBbDSyEA?=
- =?us-ascii?Q?I+CsDSK7Ux1zFC4NwgGtRBp7BDjQ14Z8TL6m8F552JEABMIDgSS5eutmaCdZ?=
- =?us-ascii?Q?cCWBfbWVGJjKHyLAJhRMDMy4IbqzSNpEqjOrQckR/aRcv1hj9R/NqhZIVXwK?=
- =?us-ascii?Q?OPfFkSbiHU7zI1tdvBH0A4X8nLScVbQHDa6nLZ+UMsEnZEHLaZz6GnXnKRII?=
- =?us-ascii?Q?L9cZTWlPiWNO75xaq7u+f4itA1vvpmNrLlLybB0W4mCw0nu6d38WCY9pgxoV?=
- =?us-ascii?Q?KiypxdYjNnB48VezWBvZgrXpijfrHa12rJ2Xlj8vNpH/aB9EH6n4LG0SVpFS?=
- =?us-ascii?Q?Pg/ZfWPHDIgb9XPGCCEVTHmTeWDyxgQRQ7AJAK47wIkRVkZk48Zwz5f+LPf3?=
- =?us-ascii?Q?4LvMPUN6fDTRGAA0QTtfUzbAPB8+sCsRILuTpdCqaj6tvFIHsphL?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d5ed45c0-2793-48d4-8855-08df1d7f64ce
-X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Sep 2026 16:41:50.2063
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: RD0bFvwTK623xxoInR9btQsMVOoUnDz2nrN3pExOua3ruqhpm1IYHf1nSJ8E89otkHf+qz207yNZOiHLKz2Vo0+hCiuETTbUWXpwndyms9IK1658tFlG40vrwgLBA8hq
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AMZPR04MB384512
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQ6CMBBG4auQWTtJbSuCVzEuKP3R0UjJFA0J4
+ e5WXX6L91bKUEGmU7WS4i1Z0liw31XU37rxCpZYTNbY2rS24eBZH+5wrFkRUpr5mSI4usZ4uDY
+ OxlNpJ8Ugy+97vvydX+GOfv7OaNs+19H5QHkAAAA=
+X-Change-ID: 20260928-b4-rk3576-reboot-mode-d3804e39df04
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Sebastian Reichel <sre@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-pm@vger.kernel.org, Alexey Charkov <alchark@flipper.net>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1836; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=s/mTlAGn0bObuTqVrR8xDe8Fg6yt56YXK2In/CNgXbE=;
+ b=kA0DAAoWsqLYjxBZ1KUByyZiAGq6oV6iNH/VmmFzlQ1hQhAYxvpamHsdpOIQq94PE4kcQtNIB
+ IiRBAAWCgA5FiEEnfakPZUyDpq6SEj1sqLYjxBZ1KUFAmq6oV4bFIAAAAAABAAObWFudTIsMi41
+ KzEuMTIsMywyAAoJELKi2I8QWdSlvdkA+wRRO3lgERV5W1lHYPI+DQvpFJPuu/7czqqt6XFZwTG
+ PAQDw9MHAy9l+53NYrKPFyIz2M01jBJjFuVhK7mB7r8c2Bw==
+X-Developer-Key: i=alchark@flipper.net; a=openpgp;
+ fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_094157_265693_8C770D4E 
-X-CRM114-Status: GOOD (  24.58  )
+X-CRM114-CacheID: sfid-20260928_101828_489619_699905CA 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,215 +114,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 28, 2026 at 10:08:20AM +0200, Benjamin Gaignard wrote:
-> "nxp,imx8mq-vpu" is tagged as deprecated since:
-> commit f3116f2e52e6 ("media: dt-bindings: media: nxp, imx8mq-vpu: Split G1 and G2 nodes")
-> merged since v5.17-rc1. There is more reference to it since that.
-> Remove for driver to clean up the code.
->
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
+Rockchip RK3576 supports reboots with a specified boot device priority
+mode, allowing one to override the board-defined strapping config and the
+OTP programmed priority setting.
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+Supporting it requires several changes though:
+- The boot mode request needs to be forwarded via TF-A to the boot ROM
+  (upstream since TF-A commit 2a97ba20e901 ("feat(rk3576): forward any
+  boot ROM boot mode request on reset"))
+- Some power supplies need to be kept active across the reboot to prevent
+  early boot code from running into a synchronous abort
+- The magic values for each of the supported boot modes need to be defined
+  for the OS to use
 
->  .../media/platform/verisilicon/hantro_drv.c   |  10 --
->  .../media/platform/verisilicon/hantro_hw.h    |   1 -
->  .../media/platform/verisilicon/imx8m_vpu_hw.c | 117 ------------------
->  3 files changed, 128 deletions(-)
->
-> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-> index ad71c0402ef3..12c804dcc669 100644
-> --- a/drivers/media/platform/verisilicon/hantro_drv.c
-> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-> @@ -725,7 +725,6 @@ static const struct of_device_id of_hantro_match[] = {
->  #endif
->  #ifdef CONFIG_VIDEO_HANTRO_IMX8M
->  	{ .compatible = "nxp,imx8mm-vpu-g1", .data = &imx8mm_vpu_g1_variant, },
-> -	{ .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
->  	{ .compatible = "nxp,imx8mq-vpu-g1", .data = &imx8mq_vpu_g1_variant },
->  	{ .compatible = "nxp,imx8mq-vpu-g2", .data = &imx8mq_vpu_g2_variant },
->  #endif
-> @@ -1100,15 +1099,6 @@ static int hantro_probe(struct platform_device *pdev)
->  	if (ret)
->  		return ret;
->
-> -	/*
-> -	 * Support for nxp,imx8mq-vpu is kept for backwards compatibility
-> -	 * but it's deprecated. Please update your DTS file to use
-> -	 * nxp,imx8mq-vpu-g1 or nxp,imx8mq-vpu-g2 instead.
-> -	 */
-> -	if (of_device_is_compatible(pdev->dev.of_node, "nxp,imx8mq-vpu"))
-> -		dev_warn(&pdev->dev, "%s compatible is deprecated\n",
-> -			 match->compatible);
-> -
->  	INIT_DELAYED_WORK(&vpu->watchdog_work, hantro_watchdog);
->
->  	vpu->clocks = devm_kcalloc(&pdev->dev, vpu->variant->num_clocks,
-> diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-> index 13e573f1f19d..865de26ffbce 100644
-> --- a/drivers/media/platform/verisilicon/hantro_hw.h
-> +++ b/drivers/media/platform/verisilicon/hantro_hw.h
-> @@ -405,7 +405,6 @@ enum hantro_enc_fmt {
->  extern const struct hantro_variant imx8mm_vpu_g1_variant;
->  extern const struct hantro_variant imx8mq_vpu_g1_variant;
->  extern const struct hantro_variant imx8mq_vpu_g2_variant;
-> -extern const struct hantro_variant imx8mq_vpu_variant;
->  extern const struct hantro_variant px30_vpu_variant;
->  extern const struct hantro_variant rk3036_vpu_variant;
->  extern const struct hantro_variant rk3066_vpu_variant;
-> diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-> index fa4224de4b99..0d6a71ae5f45 100644
-> --- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-> +++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-> @@ -13,67 +13,6 @@
->  #include "hantro_g1_regs.h"
->  #include "hantro_g2_regs.h"
->
-> -#define CTRL_SOFT_RESET		0x00
-> -#define RESET_G1		BIT(1)
-> -#define RESET_G2		BIT(0)
-> -
-> -#define CTRL_CLOCK_ENABLE	0x04
-> -#define CLOCK_G1		BIT(1)
-> -#define CLOCK_G2		BIT(0)
-> -
-> -#define CTRL_G1_DEC_FUSE	0x08
-> -#define CTRL_G1_PP_FUSE		0x0c
-> -#define CTRL_G2_DEC_FUSE	0x10
-> -
-> -static void imx8m_soft_reset(struct hantro_dev *vpu, u32 reset_bits)
-> -{
-> -	u32 val;
-> -
-> -	/* Assert */
-> -	val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
-> -	val &= ~reset_bits;
-> -	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
-> -
-> -	udelay(2);
-> -
-> -	/* Release */
-> -	val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
-> -	val |= reset_bits;
-> -	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
-> -}
-> -
-> -static void imx8m_clk_enable(struct hantro_dev *vpu, u32 clock_bits)
-> -{
-> -	u32 val;
-> -
-> -	val = readl(vpu->ctrl_base + CTRL_CLOCK_ENABLE);
-> -	val |= clock_bits;
-> -	writel(val, vpu->ctrl_base + CTRL_CLOCK_ENABLE);
-> -}
-> -
-> -static int imx8mq_runtime_resume(struct hantro_dev *vpu)
-> -{
-> -	int ret;
-> -
-> -	ret = clk_bulk_prepare_enable(vpu->variant->num_clocks, vpu->clocks);
-> -	if (ret) {
-> -		dev_err(vpu->dev, "Failed to enable clocks\n");
-> -		return ret;
-> -	}
-> -
-> -	imx8m_soft_reset(vpu, RESET_G1 | RESET_G2);
-> -	imx8m_clk_enable(vpu, CLOCK_G1 | CLOCK_G2);
-> -
-> -	/* Set values of the fuse registers */
-> -	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_DEC_FUSE);
-> -	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_PP_FUSE);
-> -	writel(0xffffffff, vpu->ctrl_base + CTRL_G2_DEC_FUSE);
-> -
-> -	clk_bulk_disable_unprepare(vpu->variant->num_clocks, vpu->clocks);
-> -
-> -	return 0;
-> -}
-> -
->  /*
->   * Supported formats.
->   */
-> @@ -234,45 +173,10 @@ static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
->  	},
->  };
->
-> -static int imx8mq_vpu_hw_init(struct hantro_dev *vpu)
-> -{
-> -	vpu->ctrl_base = vpu->reg_bases[vpu->variant->num_regs - 1];
-> -
-> -	return 0;
-> -}
-> -
-> -static void imx8m_vpu_g1_reset(struct hantro_ctx *ctx)
-> -{
-> -	struct hantro_dev *vpu = ctx->dev;
-> -
-> -	imx8m_soft_reset(vpu, RESET_G1);
-> -}
-> -
->  /*
->   * Supported codec ops.
->   */
->
-> -static const struct hantro_codec_ops imx8mq_vpu_codec_ops[] = {
-> -	[HANTRO_MODE_MPEG2_DEC] = {
-> -		.run = hantro_g1_mpeg2_dec_run,
-> -		.reset = imx8m_vpu_g1_reset,
-> -		.init = hantro_mpeg2_dec_init,
-> -		.exit = hantro_mpeg2_dec_exit,
-> -	},
-> -	[HANTRO_MODE_VP8_DEC] = {
-> -		.run = hantro_g1_vp8_dec_run,
-> -		.reset = imx8m_vpu_g1_reset,
-> -		.init = hantro_vp8_dec_init,
-> -		.exit = hantro_vp8_dec_exit,
-> -	},
-> -	[HANTRO_MODE_H264_DEC] = {
-> -		.run = hantro_g1_h264_dec_run,
-> -		.reset = imx8m_vpu_g1_reset,
-> -		.init = hantro_h264_dec_init,
-> -		.exit = hantro_h264_dec_exit,
-> -	},
-> -};
-> -
->  static const struct hantro_codec_ops imx8mq_vpu_g1_codec_ops[] = {
->  	[HANTRO_MODE_MPEG2_DEC] = {
->  		.run = hantro_g1_mpeg2_dec_run,
-> @@ -319,30 +223,9 @@ static const struct hantro_irq imx8mq_g2_irqs[] = {
->  	{ "g2", hantro_g2_irq },
->  };
->
-> -static const char * const imx8mq_clk_names[] = { "g1", "g2", "bus" };
-> -static const char * const imx8mq_reg_names[] = { "g1", "g2", "ctrl" };
->  static const char * const imx8mq_g1_clk_names[] = { "g1" };
->  static const char * const imx8mq_g2_clk_names[] = { "g2" };
->
-> -const struct hantro_variant imx8mq_vpu_variant = {
-> -	.dec_fmts = imx8m_vpu_dec_fmts,
-> -	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_dec_fmts),
-> -	.postproc_fmts = imx8m_vpu_postproc_fmts,
-> -	.num_postproc_fmts = ARRAY_SIZE(imx8m_vpu_postproc_fmts),
-> -	.postproc_ops = &hantro_g1_postproc_ops,
-> -	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
-> -		 HANTRO_H264_DECODER,
-> -	.codec_ops = imx8mq_vpu_codec_ops,
-> -	.init = imx8mq_vpu_hw_init,
-> -	.runtime_resume = imx8mq_runtime_resume,
-> -	.irqs = imx8mq_irqs,
-> -	.num_irqs = ARRAY_SIZE(imx8mq_irqs),
-> -	.clk_names = imx8mq_clk_names,
-> -	.num_clocks = ARRAY_SIZE(imx8mq_clk_names),
-> -	.reg_names = imx8mq_reg_names,
-> -	.num_regs = ARRAY_SIZE(imx8mq_reg_names)
-> -};
-> -
->  static const struct of_device_id imx8mq_vpu_shared_resources[] = {
->  	{ .compatible = "nxp,imx8mq-vpu-g1", },
->  	{ .compatible = "nxp,imx8mq-vpu-g2", },
-> --
-> 2.53.0
->
->
+This series enables the above with the RK3576 EVB1 board as the example
+user. Other boards will likely need a close to identical change to make
+use of this functionality, but need testing.
+
+Signed-off-by: Alexey Charkov <alchark@flipper.net>
+---
+Alexey Charkov (5):
+      dt-bindings: soc: rockchip: add boot ROM download boot mode
+      dt-bindings: power: reset: syscon-reboot-mode: allow supplies
+      power: reset: syscon-reboot-mode: enable supplies for the next stage
+      arm64: dts: rockchip: add reboot-mode node to RK3576
+      arm64: dts: rockchip: name the reboot mode supplies on RK3576 EVB1
+
+ .../bindings/power/reset/syscon-reboot-mode.yaml   |  8 +++++
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts   | 16 +++++++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 36 ++++++++++++++++++++
+ drivers/power/reset/syscon-reboot-mode.c           | 39 ++++++++++++++++++++++
+ include/dt-bindings/soc/rockchip,boot-mode.h       |  2 ++
+ 5 files changed, 101 insertions(+)
+---
+base-commit: 6375e61c01e93e35ee7acd336a689ac1fae4b509
+change-id: 20260928-b4-rk3576-reboot-mode-d3804e39df04
+
+Best regards,
+--  
+Alexey Charkov <alchark@flipper.net>
+
 
 _______________________________________________
 Linux-rockchip mailing list
