@@ -4,52 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 830DCCA5FA2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 12:01:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB640CA5FA2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 12:03:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=plnzVPTxeXoEDoMhnvL4bQI++3l1MzvMsUf3QBC+uQk=; b=mvu7jPTwAqmsdC
-	zofwqlNrNT1G2DKew6dvRRAttJiCSDMofJohHC1fz83SNKsQ4ntLTn68HzHuJGgO7y/wASSRBEvcM
-	RtMBr89xzXDRy9DZkYJF/vMvbvrn1LcMyqztJpYJOtYiDkMhdOxjcfenCA/35be7nMG41WK1WuUVQ
-	abxPPjIJLTF7AZXWVdiYCXy34dPHnslwDc3+FbtVa14ZyWmq2kJEQFsfQDlXR+h15A433J39bq2MO
-	ij0NbR+WyRBsoiqaiASHzAxTUmXHGm+QSG8lXIVfcKA4M8Vcz5OHLQswx5eVy0bUlMsCZb1pqKN2O
-	3pOX76UrK0ZvJw2xGwhA==;
+	List-Owner; bh=SwC/BnrPuMnMLTDDC0qrp9Sn+/SX9sEQAFubOFpUO4s=; b=HF1y4l4NyzQFeA
+	uHn/6ljVxmfYLUJTzExo/xYdE1Sn2/kExaA4o5BNnyTnrwHD36jF33y+/onamjhsoBN0P3jVBo9y/
+	fAJaJpQLFd8imXmIdLnqSqt0JKzwXLTl/s6WjU8cXbaqKSdSLjoAY6oRsLLdkU2mwYiFoq3kU4+31
+	iM/UvFSFNnwrbOBtp8UVuJhOuUMdVQVK5hHWCTympzHc6YC/U+jV06nu4W+0Dos2sxQLzu/GIWewD
+	JkuR7HfgyQ3JUhwjpGIJKsQBukpPQaKRYnruOFkiLCiuS04VLOMMmP97KNcQVgqvIA2J9zIs5//Jr
+	G87LzeZnDNa5lOAg3axA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBA38-00000000W0D-18ov;
-	Mon, 28 Sep 2026 12:01:38 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
+	id 1xBA4o-00000000WKs-463g;
+	Mon, 28 Sep 2026 12:03:23 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBA34-00000000Vxy-40GS;
-	Mon, 28 Sep 2026 12:01:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version:
-	Content-Type; bh=8QIQAC1Squ20uW3BFDWzJ9EWESY3KXzBPAIvtArdRqI=;
-	b=eA7DeMMZQP+DiJNLwCRQg1gj9L4jE43tfQSNsBRe6OzEzkeW4kJKPGX0mUfCns
-	xnlmU1aNEpX/1GfkQBYJJFEI202R8A+VYLF1cvOlTA2tjrrT4srBTyUkbHzGjcvQ
-	Yb7W+VIF1A88X5ZLLRWpyyrzB8X2fJNHfIwtsULNl55fo=
-From: BG9OXA <bg9oxa@163.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 0/2] arm64: dts: rockchip: add ALIENTEK QuarkPi-CA2
-Date: Mon, 28 Sep 2026 20:01:31 +0800
-Message-ID: <179059689121.26126.16396827799983991795@163.com>
-In-Reply-To: <de8c3f72-26d1-4c9a-86c6-12afb3fe97d6@lunn.ch>
-References: <179051708448.31632.16350193430088134671@163.com> <de8c3f72-26d1-4c9a-86c6-12afb3fe97d6@lunn.ch>
+	id 1xBA4m-00000000WK6-0bFH;
+	Mon, 28 Sep 2026 12:03:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=JS5dd5f9mWNpybqKgfuEd/QJ8IUXo+CpfbvRDEoiIGk=; b=ECHJ3cZwUWSupvEzyzR1mPXOLK
+	VK19JixYTDfT7fybYoFw9vuFW0SbnORD4Y9j8GdDG9U0x9ll+cMggmyyksZSibgyPky0jIZd9+52W
+	0htIfPxgQIkqF1zy95076+JaRF1wxQO8It9j4Ch+hEUzB/qGtobQbbooz+Of3zfmBVp9BCNTCcS5f
+	oZ/fo1tAlJA8vAJQG+hv1+g2hi8sxj6JDQmpbtgP6RN9UCZa2dRfAR4rfB4nuQ/Itfbs3LLphZKk8
+	UjHJNwa39/cTltFE+yjkzF6teFeYb8PsICQ/fTQpmq2Zx1djAdWIYGQsCxAErGU/HHsafXnccJO4L
+	ocKRP2tA==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>,
+ Seung-Woo Kim <sw0312.kim@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Peter Griffin <peter.griffin@linaro.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Damon Ding <damon.ding@rock-chips.com>
+Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v3 00/14] Add HPD support for Rockchip Analogix DP
+Date: Mon, 28 Sep 2026 14:02:34 +0200
+Message-ID: <3772572.AiC22s8V5E@diego>
+In-Reply-To: <20260928081418.3605775-1-damon.ding@rock-chips.com>
+References: <20260928081418.3605775-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-CM-TRANSID: PigvCgBnTaobV7pqauFxBw--.30903S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7WFWUZw47WF18tw4UKr1DGFg_yoW8XFyrpa
-	y3trWUCws7tw1Ig3s3Ar48ZF48ZrWfKas8CryvgryUAay5K34akr1jgrs0q3WYkws7XFyF
-	9r4UWas5Ja1kZaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRSD7-UUUUU=
-X-CM-SenderInfo: lejz05rd6rljoofrz/xtbC+Rslkmq6VxvoYwAA3C
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_050135_389872_1A02DD22 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20260928_050320_351369_A3CF2BB6 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,44 +74,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Andrew,
-
-Thank you for the review, and for the timing guidance - you are right, and my
-apologies: v2 went out far too soon after v1. I will hold off on any further
-revision until the discussion here has settled, and no sooner than 2-3 working
-days. I have also disabled the automated reminder job that had been set up for
-this series, so nothing can be resent on its own.
-
-On the phy-mode point in 2/2: you are correct that the value should describe the
-PCB, not work around a MAC-internal delay. The RGMII traces on this board are
-ordinary length; I used "rgmii-rxid" only because that is what the vendor BSP
-(and many Rockchip DTs) do. I will test plain "rgmii" on the hardware with the
-current tx_delay/rx_delay values and follow up with the measured results (link
-state, throughput, and error counters), and drop the rxid form if it is not
-needed.
-
-If you have a preferred way for Rockchip boards to express this - plain "rgmii"
-with the delays in the MAC node, or the delay masked in the driver - please say
-so and I will prepare it that way.
-
-Two other things I should mention. The enable-active-high issue that sashiko
-flagged in 2/2 is already fixed locally and will be included in the next
-revision. And for transparency: I prepared this series with the help of AI
-tooling, which did the language conversion and consistency checking of the DTS.
-I review every line before it is sent, and I will be more careful from here on -
-both about the review cadence and about validating the result against the
-hardware.
-
-Thanks again,
-BG9OXA
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRGFtb24sCgpBbSBNb250YWcsIDI4LiBTZXB0ZW1iZXIgMjAyNiwgMTA6MTQ6MDQgTWl0dGVs
+ZXVyb3DDpGlzY2hlIFNvbW1lcnplaXQgc2NocmllYiBEYW1vbiBEaW5nOgo+IFJlYmFzZSBhZnRl
+ciB0aGUgZm9sbG93aW5nIHR3byBwYXRjaCBzZXJpZXM6Cj4gWzBdIGh0dHBzOi8vbG9yZS5rZXJu
+ZWwub3JnL2FsbC8yMDI2MDkxNS1kcm0tYnJpZGdlLWRybV9wYW5lbC1jbGVhbnVwLXY0LTAtMzA0
+MDFkOTQwNmYzQGJvb3RsaW4uY29tLwo+IFsxXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwv
+MjAyNjA5MTYtZHJtLWJyaWRnZS1ldmVyeS1wYW5lbC12My0wLTgzYWZiNGYxYTcwN0Bib290bGlu
+LmNvbS8KPiAKPiBUaGlzIHNlcmllcyBpbXByb3ZlcyB0aGUgSFBEIChIb3RwbHVnIERldGVjdCkg
+aW50ZXJydXB0IGhhbmRsaW5nIGluCj4gdGhlIEFuYWxvZ2l4IERQIGRyaXZlciB0byBlbmFibGUg
+cmVsaWFibGUgbmF0aXZlIEhQRCBwaW4gZGV0ZWN0aW9uIG9uCj4gUm9ja2NoaXAgcGxhdGZvcm1z
+LCBhbmQgaW50cm9kdWNlcyBwbGF0Zm9ybS1zcGVjaWZpYyBIUEQgZGV0ZWN0aW9uCj4gc2NoZW1l
+cyB3aXRoIGZpbmUtZ3JhaW5lZCBpbnRlcnJ1cHQgY29udHJvbC4KCgpvbiBteSBlRFAgcGFuZWwg
+d2l0aCBncGlvLWhvdHBsdWcgdmlhIHRoZSBkcC1jb25uZWN0b3IgYXMgYmVmb3JlLCBJIGdldAph
+IHN1Y2Nlc3NmdWwgZGlzcGxheSBvdXRwdXQgZXZlbiBvbiBib290LgoKLSBwbHVnZ2VkIGluIG9u
+IGJvb3QgLSBkaXNwbGF5IHdvcmtzIC8gcmVwb3J0ZWQgYXMgY29ubmVjdGVkCiAgICAtIHBsdWdn
+ZWQgb3V0IC0gY29ycmVjdGx5IHJlcG9ydGVkIGFzIGRpc2Nvbm5lY3RlZAogICAgLSBwbHVnZ2Vk
+IGluIGFnYWluIC0gZGlzcGxheSB3b3JrcyAvIHJlcG9ydGVkIGFzIGNvbm5lY3RlZAoKLSB1bnBs
+dWdnZWQgb24gYm9vdCAtIGNvcnJlY3RseSByZXBvcnRlZCBhcyBkaXNjb25uZWN0ZWQKICAgIC0g
+cGx1Z2dlZCBpbiAtIGRpc3BsYXkgd29ya3MgLyByZXBvcnRlZCBhcyBjb25uZWN0ZWQKCk11bHRp
+cGxlIHBsdWdpbi9wbHVnb3V0IG9wZXJhdGlvbnMgYWZ0ZXJ3YXJkcyBhbHNvIHdvcmtlZCBuaWNl
+bHkuCgpTbwpUZXN0ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgpXaWxs
+IGRvIHJldmlld2luZyBvZiBwYXRjaGVzIG5vdyA7LSkKCgpUaGFua3MgZm9yIHdvcmtpbmcgb24g
+dGhhdApIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
