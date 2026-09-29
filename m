@@ -4,103 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95C1ECA5FA7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 18:42:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C72BCA5FA5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 18:55:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e/fVIFX81ymYXPq/ebCRueGQfwBrlvKBKlW9rRUXBRg=; b=M5Ja7IYk1lxhOoEWF4xe0tAFb/
-	OkIu0vkZFVergmvzxfXRkRy4KutH5pitiqMvHV/RVN+t7abMgUKkfxOokNd8Udwu8u0vqwT1Myuo4
-	vGAp2W0F6Hba+uBBXhJSY2aka+X+1sSc9sZ3Qar/TZgQh1I9qz8zJGoTz6xf361Dq0n5GAKkWdB4p
-	eeEo3jCd8j2lI7Ed+Bxf0QOdYxwlNUfXI6Wjq97Mvr26Nf33UZXK40PUNPAEsA1WcmoRzCTWWHIjU
-	ZRo+Kf9GAT1Zl4e4o3/k5vYAv7BDZWh5rE7cphsBPi1kST+l+SbcPj/Pu3EPBzeSzl/5LkddbIInp
-	v5b+hpRA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1bosdUGGlzSQ3KJ+Dib4naUvMvBnSpQKUNTFnZYV2KE=; b=II8sSzVCfTnH9y
+	zvmHRa0Yrd4tuM9sjSU2d/bceYCS51a7oJ6gQYEc0wVEPx+raKyQB6/age6zBl91TH0nuUcrShyvs
+	txUfulBsorRJkhuDzbA21bqbY+UoBs1ijYo6iJo2OORka0LRjhNGNlK4DGv1KO9+7qtR1Xg7ie7Yz
+	uVO0HzvAqTlPw3Q8H5Aj4voyR33PK4XYOy+yVhbuAPFKnQPzKOhWjiq+MNuRj6ebKL7b4UeIA+HGe
+	hhEAuuN0JOO8twKxwVtLvhJfHuF7Rq0hyEL5jZQumaSw9PABu23xHzI8UsCRHP6e+5EYtySRL9cpA
+	nRnkcCIs8bZrblzqz1tQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBcmp-00000004IlR-2neH;
-	Tue, 29 Sep 2026 18:42:43 +0000
-Received: from mail-vs2-x2a.google.com ([2a00:1450:4864:3a::2a])
+	id 1xBczF-00000004KAU-1gog;
+	Tue, 29 Sep 2026 18:55:33 +0000
+Received: from mail-northcentralusazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c105::5] helo=CH5PR02CU005.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBcmn-00000004Ikh-0jS6
-	for linux-rockchip@lists.infradead.org;
-	Tue, 29 Sep 2026 18:42:42 +0000
-Received: by mail-vs2-x2a.google.com with SMTP id ada2fe7eead31-7b2d5062bcaso2028879137.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 29 Sep 2026 11:42:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1790707360; x=1791312160; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-type:autocrypt:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=5xU2IbXhE/z5ABDUOgveshtAzBWv4hsn4Hu2VpZqugQ=;
-        b=OiFmvGzVRwNZfZ/u0NrFPt25WHZiBIWKvxX1Ph5wHWppS5rekPX8hDAVJgHxnJQYml
-         xQIQ+HREqvXNFZBYBEuqTMeJld7Jd9J157Q+s/g1HVdTBmVxb47ubJn1BptPuMHOgcxM
-         QgsXKdyHzFwhDpTVA6lxJlcg7cdeVbTcySOh3uJfFAj0minYtM9SwOzohAh7KYpBMsdw
-         xM0ZtfX2VW8CdkbFqZYB2yCfJwAQ22KShcLI+MS6fd3wpQ4J4fk9pnZpnDaflfjLQjJ/
-         FGF8hqUHhQjg2OIRMGbdzfcsbAvWD074AyS+FHeFXfSG7CzhF2GdxGm72FxQBO3fQfmH
-         j63w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790707360; x=1791312160;
-        h=mime-version:user-agent:content-type:autocrypt:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=5xU2IbXhE/z5ABDUOgveshtAzBWv4hsn4Hu2VpZqugQ=;
-        b=2tvqzJCKOGdsPVsJi9pO2cbZfYkL+40e6jytwz+FOkLcSiPyaLKocWvHPIKohNGA/E
-         iDdfYfKQpYHnkBh0sOuqsXbacup7taLI6MqQcLaT11B3za/5vOKksgIq5BSIVrrDPxOC
-         rrLXZmI9wRl56ni+GzPtwWxUEbxkRK222+VuF1UnYsh1regVlYq30EhJWLlt9/kYJzZh
-         S/iqo2io/yjKMaZ1Le4kokm+PO2d3OlKYsk+GRTPiMlaZv1U/mGz3l3KDt9a1aRuc+HL
-         M7TbVvmiRCPa4kaZJbzz4xWRxTmCo71a9thzpDR15rXh+wHlI+iWwr60srF6PyKmvM4r
-         ALOA==
-X-Forwarded-Encrypted: i=1; AKwUvBzdVINPJSbMeiCdteXV/RRb9X+iE7wWcNjh0UfU61/irC8WvXiBm9Txx0LjNiTFIdaxLc0fSsEDUVhs63pCdg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJLzUQLs9k75/rlk9lldSv2Woyp4AgYpYmg5Jj07W8yxwgOaAGA
-	AGE1q5o7qaK5oK9KaeRyMryuxrs5errdNaxu81eivGuE5fNWFONFGJp+MuwwwqDzZJU=
-X-Gm-Gg: AYBFou06y4xsjBNcKMDXOYQC/NPl3uMwoAArvecLi53+PIU/CmBfFj8YhPOHO+EE3ZX
-	DKUOl9gijdtkGtj182gPQyUuMr/XX9Bz4ExbpIbTq4SiAHUT2hkl2mNqjReOzi+xb6XLTItx/fr
-	gHUWmQ9jTLMHnKh6B8wgJwkTfJbXwVlgN/HKjGzYjjepPTTLs24dHWaqZmZ5VHzhGdK0Hc7xtCn
-	0izbOv5dc+KrDp7YbOYn/aGhzDRUGEEV7S2/iaYg9vaIA9RIcIb+W+BjsZ6u+nO+vqB2PDxEzuX
-	kNqmPrUAfO9qbg8EpJbul8r7hWg3WHSfdRJO9l+toUhJSPywcYaJMrurhZBTRtjMQe2DgetW5FS
-	5S7F3gfQktz61g1lX61wrBQ3u2kiOciUeufW3HzBOS8jBY0/H8/lxMPp7Sq/QtpAA/t+4yWZzwv
-	+chakx3IfGzYlvIiOVzT7Zv74x+i2OSIwQVTQraNvIe/I1FSaIhywD8hm8dKbnJ1+l8CkLEvfOj
-	SpoR7dDTrMZcQ==
-X-Received: by 2002:a05:6102:3e96:b0:7a8:2a34:433a with SMTP id ada2fe7eead31-7bc3c0968b9mr194936137.9.1790707359677;
-        Tue, 29 Sep 2026 11:42:39 -0700 (PDT)
-Received: from ?IPv6:2606:6d00:11:34bd::5ac? ([2606:6d00:11:34bd::5ac])
-        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-7bc7de014a3sm373692137.11.2026.09.29.11.42.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Sep 2026 11:42:38 -0700 (PDT)
-Message-ID: <6cbde49a7440bb59faa9eab91dfb8e99947be993.camel@ndufresne.ca>
-Subject: Re: [PATCH v3] media: rockchip: rga: fix rotation on rev0 hardware
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: John Keeping <jkeeping@inmusicbrands.com>, linux-media@vger.kernel.org
-Cc: Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel Garcia	
- <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
- <mchehab@kernel.org>,  Heiko Stuebner	 <heiko@sntech.de>,
- linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Date: Tue, 29 Sep 2026 14:42:36 -0400
-In-Reply-To: <20260929094142.928758-1-jkeeping@inmusicbrands.com>
-References: <20260929094142.928758-1-jkeeping@inmusicbrands.com>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+	id 1xBczA-00000004K9g-41bu;
+	Tue, 29 Sep 2026 18:55:30 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=CcISuY1t2yqwVynMpusv6Sqszojw01bTo9O+eaxlYIYGFomfvIowtMZYDM12Wr11iyjOFspgBuk+BfUmWxmPHyCr9fX8D4dPtA7B18SECepHSrVPYcPlCOtGyYZvZJoj8aNqMiP6uuc0jvWZr4dgEjODfT+zQOUMqIpYt2X2LhypdQoTFb9dL41po+KCJ/7/DOYXIbekT3qOozed/GQK8Jo9vYmMQxOul6Uinyrgh9P9/Zuqq24lxFukC+GdC4LGyO45tsxk8M28Ku5m+RvPpLRUype3yZ3eWKnvUVwWsgjWornlXcl0Dx49TfC7IfFy6YQeHYYQ2G+IBFQr5QkXPA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=mjKJSuoTM5b4dr07nc4WuyEmLr4CSPQderQexY8bCkE=;
+ b=NqhbvEeYW5uO8OKNS1cTWdLzxucE6OaP281W6kDexig+Q4jEYcsn/Ll3BKaQPc5ssRujvhai2FwpPyhPOx4VonZS8PvAJ2uygKKk59WeA8X3JPkK3zD59Bld8dRahbhycCyRuVS859XUpOi/DhGZgzkMFtZhk6Txku0hjd3d+dZdvF0ol0VhzTkn1DX/UWD08LYA6/1nx8++kAJVQ19tDuCD7YQPepe6DhuD+RIC6tJSRhI2ZeeDud0dJ6iIAtRHHXxKBqk5V7OEQ13dXOsng6lHye/yijwN4oNANsePgYwQafdNs0QQguSZyZX/6iPG0tTv5iFn5P6YEWcwDSJZKQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=mjKJSuoTM5b4dr07nc4WuyEmLr4CSPQderQexY8bCkE=;
+ b=IOQ7MxPBo7AC6BBmrZZPY11v9J24T/HmaQQuubH4v1rUg0qH5rzpHiA9+zfPE4YWiK1tcrtcT7y6Z1ggt3rtZvOuUbBOeoof99eLaiXqE39AeJ8G/dyZJXBOHW3vYbPc45p3oiuvt1KHeNNSNYqeqHXn4KZVvgvgtVrCuDCHt9aeZmJ9GY72i8PdhGrHuDd1XVCVilZgcR1Kj+u+cFGTYKUr+PGiOT1H5Um+9O4KeifWg0YlC7yNon4KMtC13FiyHC50EP7dGcb7Up+wa4WjqNQVLpk5c200VIlky0EOpTTA9apsk5pjend4o+c9gzckRRaxwIJpBS9IcN9fItzrtQ==
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from DM6PR12MB4925.namprd12.prod.outlook.com (2603:10b6:5:1b7::8) by
+ DS6PR12MB765380.namprd12.prod.outlook.com (2603:10b6:8:411::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.26; Tue, 29 Sep
+ 2026 18:55:20 +0000
+Received: from DM6PR12MB4925.namprd12.prod.outlook.com
+ ([fe80::9ac7:5274:235:5d72]) by DM6PR12MB4925.namprd12.prod.outlook.com
+ ([fe80::9ac7:5274:235:5d72%4]) with mapi id 15.21.0451.022; Tue, 29 Sep 2026
+ 18:55:20 +0000
+Date: Tue, 29 Sep 2026 13:55:18 -0500 (CDT)
+From: Vidith Madhu <vmadhu@nvidia.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+cc: "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>, 
+    Leo Li <sunpeng.li@amd.com>, Daniel Stone <daniels@collabora.com>, 
+    Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+    Maxime Ripard <mripard@kernel.org>, 
+    Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+    Simona Vetter <simona@ffwll.ch>, Helge Deller <deller@gmx.de>, 
+    Andrzej Hajda <andrzej.hajda@intel.com>, 
+    Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+    Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+    Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+    Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+    Sandy Huang <hjc@rock-chips.com>, 
+    =?ISO-8859-15?Q?Heiko_St=FCbner?= <heiko@sntech.de>, 
+    Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, 
+    linux-kernel@vger.kernel.org, linux-fbdev@vger.kernel.org, 
+    linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+    kernel@collabora.com, Derek Foreman <derek.foreman@collabora.com>, 
+    wayland-devel@lists.freedesktop.org
+Subject: Re: [PATCH RFC 06/25] drm/connector: hdmi: Add VTEM EMP generation
+In-Reply-To: <FJ8OpdCORV2b1oivG9-G9Q@collabora.com>
+Message-ID: <9dccf035-2806-7b92-ce17-00f95bcf773a@nvidia.com>
+References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com> <20260921-vrr-limiter-uapi-v1-6-2fcd7d011646@collabora.com> <a5bc012a-9b9e-eb2b-d67e-a91f2d93d6bf@nvidia.com> <FJ8OpdCORV2b1oivG9-G9Q@collabora.com>
+X-ClientProxiedBy: SA1P222CA0005.NAMP222.PROD.OUTLOOK.COM
+ (2603:10b6:806:22c::32) To DM6PR12MB4925.namprd12.prod.outlook.com
+ (2603:10b6:5:1b7::8)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6PR12MB4925:EE_|DS6PR12MB765380:EE_
+X-MS-Office365-Filtering-Correlation-Id: 24c371db-506e-4a83-a3c8-08df1e5b35cc
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|7416014|1800799024|376014|366016|4143699003|10067099003|5023799004|11063799006|56012099006|18002099003|22082099003|6133799003;
+X-Microsoft-Antispam-Message-Info: XxKnSOCwfH5viXMu+X0MqnUzd9qWG3w/CaF2oyijhSA53Rc8tBbg72ciwN4VJN7JeaAY4zpVzoEoqF3MDARkJAftJYdG5hzIl4f50Kh20NjkOhZwk3uJQIaeF8j9dO6S4eTcg3jX4r5MRc+NXsqGKpsWvOHnafZHK1F8icuFKOJo0PJg+tTTxjexs/mhDBBORhoKf6TeK9zCDmgOMxGuws+Ru9clr0Qx3d0Q2gedkbBrS2Q2Xsrcnc6YyOqlOH7rIRXwhkNwfw/nZvTM0Wk4Ej7XMKeui0KullQ0myCRFKfVeJU9w/DP1xYsq+FG9tQPWlH3Gjqbvo3WqOfRU5TZL6eECyBqVSXWp+44GEuJM1oweuU7PCNnTNLyaul6pmW2K8+Uei+FEk/1tNI2k0GHe6EGj/WH7Q4HtH+N+IuYOoGzQ+893NRvb7JKpneEBIkEfOSlaO2C01tjmkfrQN4z31kbQDVmU7uYMAmTOK8M//2Ws+kXEvLs9zThUUFsoWwGOdxXHP6aXbyzVK5UJ4uxUJhj7q1axCUQcWnvgzdWLw1+hYEJG3cpVku6WmkrGjik1SQac2c8mIjXyrcFXbcdTbSD0Tjl/OlQQ1h/3gOztnKx9Y++xneMMZ6j83JJwJ9UOtl+K4ohHs+4bDodTW6F7lQLfNO+ZmZW6TSU0uwGS0Y=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR12MB4925.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(7416014)(1800799024)(376014)(366016)(4143699003)(10067099003)(5023799004)(11063799006)(56012099006)(18002099003)(22082099003)(6133799003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?kBqb/LEXzU/V7EIJXRy9Kq7vhsFhl5i1YBEyJ9Ak8WxT4NzHhW9/ZGwny3ts?=
+ =?us-ascii?Q?i+GqG8+vLy16zAmoiHODqMUH+Wj+cKeZmoRMf2/B7PBdyJXElN7CeYrbgJdL?=
+ =?us-ascii?Q?PrhdLa6xVW6AzqbpodQvCxKXEJ1j1Sd0JwvWAhj8PnkHeWaVx+2sP78z6MpV?=
+ =?us-ascii?Q?s3MuHYf9jAJXQb7ssKrfQQR+9RMcEEeHt84+OFOm8DQb0kwznY9uD5WEygq9?=
+ =?us-ascii?Q?0SMECXtjle8LshSMwfEfw+BX+1qy8XAZY/ndOdeakHDxDOUVOuVeJKUbaY41?=
+ =?us-ascii?Q?z0MjLyzFVe9iJBMXYnEwFpQT3afxDnTbIlHLM7FNp0Alw21OxekM/0w5yMs4?=
+ =?us-ascii?Q?kFHbjlZhM3k/uTte+EDMti4m5mcn3Z09sO3/vYeMn5QJvE7/4lQYxG3DKPuM?=
+ =?us-ascii?Q?K9M0T/s1nsgWr3z4q4/oe5/Kq4CY5m0Q585P89VEbOwz+eE7cHbGZjabjP9A?=
+ =?us-ascii?Q?Fk2mHNtDwNhMVtV2xZyEQLLzjnlqwcAwfelNFy5/oriCP9M9DU+S61LekvUH?=
+ =?us-ascii?Q?SqCnLbQYZW0p9WzU+ULFMuia1CCiQFgB+icgg9LKbCj0tsJXMGaznmwKFN9K?=
+ =?us-ascii?Q?4ji0T6Px1fe4V3xMjaRFefIWxNVS9d4HbxbJWI1igYfPn9/N3FEQfsWz/5tE?=
+ =?us-ascii?Q?0v6xbs0f2Ye9q8qS895D6qpEuEYrJ7w43njX7G25YR7wdxRqSFFZx7s9mYrv?=
+ =?us-ascii?Q?W16+qfAw+dhbj3Ki5TcQCbfkRAQszGRjtzeyZR9aNsyNI3T8raldTc1aQxHk?=
+ =?us-ascii?Q?fFLBuwPR6KqN0sdmrAr/97k5r2dX1tiygb+HsHvrEPv/3M4J04fnpjr3kPbO?=
+ =?us-ascii?Q?ebyFv0UUKOFGqlz+b5snb1L73m87zpaV6Q0uQ7TaFsCQP9i4P/tt/52dtB0I?=
+ =?us-ascii?Q?EPnx8cvLh0dv+cmMqdpOr3ruwFdy5eHSsIWBRrYP+xJtL95vunyLCfQvmV4F?=
+ =?us-ascii?Q?Zcb2S++qqJE5EJHK3MM7KoNiTZlUnh6sWz1z7HGfLh8DEJ/F3fmpbE8M23G9?=
+ =?us-ascii?Q?AbLmn7/OC51hCyxyQBfcrpHH2Tor36XIZK80NT2eL3xh2LgN4aWHc8WZzAO2?=
+ =?us-ascii?Q?+KCucPB84k80lVmTEUpNPl4KGXA90MW4cdUA1/JjExZjJOfur78kEBMZh3K4?=
+ =?us-ascii?Q?VXw8RpaVUE4WqRuL5Ozkh/Q166CRDCcX3JdYyVDVQj/Q8AdYTx9ntrztl47L?=
+ =?us-ascii?Q?kmAeNkXcJvb3wQqqjRHNrGpXGVEM0JVNCfOJ4R2BGlQiWW8saVYtUpSst5Ly?=
+ =?us-ascii?Q?DpMPomoBUUWFgfp+FUTMWZNqz9zark+98DgiK/dw516YDHmucw6Ad/jpbEKq?=
+ =?us-ascii?Q?yVKwR/+N5mjbg9u5JeaLko+2VwO7vuxp+iCfrJjXsxWLscuqTnQWLqr81Wnx?=
+ =?us-ascii?Q?8T1LCtgtlhRxs1ikUo9GEhnYSEiaDgnvx2dR4G8IEZXDkXlrBBBLwuSHyQsh?=
+ =?us-ascii?Q?dfRlgVe3Wq3hlAZrPpK/Rg9gaeh/emVl0r4oi50gP3eGGbMewDUHathjpea0?=
+ =?us-ascii?Q?m9bA6J2l+ZYxrjjLhqinQ+ObQpc2Ys/V85swpnA+ex39Cxkk7SyhuA0tGqaw?=
+ =?us-ascii?Q?SZ/eMRLo67WdACK8pVgRsGHBDpZ1txhvOXr+P/ZGysw0ufp4ad14Zyg7pKmK?=
+ =?us-ascii?Q?UuCbcvOQRwX2njrhrRM5xUiJ8+yEFyYSIDOplEY/0VN1Z2hUJcImjHX3wGZF?=
+ =?us-ascii?Q?Em2hlYN8YQmWOfr6LIZba0uZ7TcQ0aFSuolQ04t3G2k2oP9T?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 24c371db-506e-4a83-a3c8-08df1e5b35cc
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR12MB4925.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Sep 2026 18:55:20.5092
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 1ck5mGjGg3gIOiBRu2cbKxqxJnoJISanoZBJr1bADJK4MFj0YPQ+hfKi3FRpdzPg3JRTIg3cOtp2g6Snigrfow==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS6PR12MB765380
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_114241_337241_00621947 
-X-CRM114-Status: GOOD (  24.71  )
+X-CRM114-CacheID: sfid-20260929_115529_073702_38DE82B5 
+X-CRM114-Status: GOOD (  48.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,116 +144,233 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0423808120882464052=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0423808120882464052==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-ILpt8SK1pUoNPTw2qXEH"
 
+On Sat, 26 Sep 2026, Nicolas Frattaroli wrote:
 
---=-ILpt8SK1pUoNPTw2qXEH
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+> On Friday, 25 September 2026 05:48:54 Central European Summer Time Vidith Madhu wrote:
+> > 
+> > On Mon, 21 Sep 2026, Nicolas Frattaroli wrote:
+> > 
+> > > From: Derek Foreman <derek.foreman@collabora.com>
+> > > 
+> > > Add VTEM EMP generation to enable variable refresh rate signalling over
+> > > HDMI.
+> > > 
+> > > These infoframes are only generated if the sink supports VRR.
+> > > 
+> > > Signed-off-by: Derek Foreman <derek.foreman@collabora.com>
+> > > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > > ---
+> > >  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 60 +++++++++++++++++++++++++
+> > >  include/drm/drm_connector.h                     |  5 +++
+> > >  2 files changed, 65 insertions(+)
+> > > 
+> > > diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> > > index d55548399687..33d0c9491643 100644
+> > > --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> > > +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> > > @@ -853,6 +853,56 @@ static int hdmi_generate_hdmi_vendor_infoframe(const struct drm_connector *conne
+> > >  	return 0;
+> > >  }
+> > >  
+> > > +static int hdmi_generate_emp_infoframe_vtem(const struct drm_connector *connector,
+> > > +					    struct drm_connector_state *conn_state)
+> > > +{
+> > > +	const struct drm_display_info *info = &connector->display_info;
+> > > +	const struct drm_crtc_state *crtc_state =
+> > > +		drm_atomic_get_crtc_state(conn_state->state, conn_state->crtc);
+> > > +	struct drm_connector_hdmi_infoframe *infoframe =
+> > > +		&conn_state->hdmi.infoframes.vtem;
+> > > +	struct hdmi_emp_infoframe_vtem *vtem =
+> > > +		&infoframe->data.vtem;
+> > > +	const struct drm_crtc_vrr_state *vrr = &crtc_state->vrr_state;
+> > > +	int vfront;
+> > > +
+> > > +	infoframe->set = false;
+> > > +
+> > > +	if (!connector->hdmi.funcs->vtem.write_infoframe)
+> > > +		return 0;
+> > > +
+> > > +	if (!info->hdmi.vrr_capable)
+> > > +		return 0;
+> > > +
+> > > +	hdmi_emp_infoframe_vtem_init(vtem);
+> > > +	if (!crtc_state->vrr_enabled || vrr->vic) {
+> > > +		vtem->base_refresh_rate = 0;
+> > > +		vtem->base_vfront = 0;
+> > It shouldn't hurt to always populate base_refresh_rate and base_vfront, 
+> > might be cleaner to skip this check.
+> 
+> Hm, I thought they had to be blank when the vic was non-zero. If that's more
+> of a "they can be blank" then yeah I'm fine with skipping it. But that makes
+> me question the purpose of vrr->vic, which is then no longer needed as it's
+> not used anywhere else.
+That's how I interpreted what's written in the HDMI spec - populating 
+these fields is only required in the VRR_EN=1 case, there is nothing 
+stated for VRR_EN=0. And, for VRR_EN=1 + (VIC != 0 or RID != 0), it is 
+explicitly stated the source may choose whether to populate them.
+> 
+> > > +	} else {
+> > > +		vtem->base_refresh_rate = drm_mode_vrefresh(&crtc_state->mode);
+> > > +		vfront = crtc_state->adjusted_mode.crtc_vsync_start -
+> > > +			 crtc_state->adjusted_mode.crtc_vdisplay;
+> > > +		if (vfront > U8_MAX || vfront < 0)
+> > > +			return -EINVAL;
+> > > +
+> > > +		vtem->base_vfront = vfront;
+> > > +	}
+> > > +	vtem->fva_factor_m1 = 0;
+> > > +	infoframe->set = true;
+> > > +
+> > > +	if (!crtc_state->vrr_enabled) {
+> > I don't think we should use the vrr_enabled CRTC property to determine 
+> > VRR_EN in the VTEM EMP. Transitioning the VRR mode sink-side typically causes
+> > blanking, and it was discussed in patch [03/25] that drivers should be 
+> > free to handle vrr_enabled changes as a seamless switch since it only 
+> > concerns source-side VRR state (this is how the NVIDIA driver handles it).
+> 
+> I'll be honest, this is the first time I've thought about the VRR state
+> communicated from userspace to kernel to be different to the VRR state
+> communicated from kernel to display.
+> 
+> > Maybe it would make sense to extend the qms_enabled connector property 
+> > introduced in this patchset to an enum of {Off, Gaming, QMS}? This would allow
+> > a standard path to control the VRR state on the sink, separately from
+> > vrr_enabled.
+> 
+> An earlier version of the patch series I was working on internally had a
+> VRR limiter property that would either be Off (i.e. Game), Game-Limited,
+> QMS-Limited, and it self-inflicted some amount of confusion because of
+> the way things were named, so I refactored it to the limiter values being
+> what determines whether a limiter is used, and the QMS enable to determine
+> whether QMS is used to apply said limit. So my initial reaction is to be
+> hesitant about expanding the collection of possible states exposed through
+> the uAPI.
+> 
+> To help my understanding: what does
+> 
+>  vrr_enabled=true
+>  $new_property=Off
+> 
+> mean for presentation?
+In this case, it should be acceptable to disable VRR on both the source 
+and sink and effectively ignore vrr_enabled=true. From reading
+https://elixir.bootlin.com/linux/v7.2.8/source/drivers/gpu/drm/drm_connector.c#L2370
+vrr_enabled is essentially a hint and there is no need to reject commits 
+because of its value (at least, that is how we handle it in the NVIDIA 
+driver).
+> Another state I'm curious about is
+> 
+>  vrr_enabled=false
+>  $new_property=Game
+> 
+> which I assume is the case you're interested in, where the compositor does
+> not want VRR presentation but we're keeping the sink in Game mode to avoid
+> having the display go blank.
+That's right, in this case VRR is enabled on the sink but deactivated 
+source-side. For NVIDIA, there is a distinct HW "deactivated" state of 
+VRR, but we could achieve the same result by setting the frame range 
+limits to a fixed value as you suggested.
+> 
+> is that correct, and something that does need an expanded property? I feel
+> like userspace could be smart enough to do that by keeping vrr_enabled=true
+> and then setting a fixed target, if the goal is to have non-VRR but with the
+> display still in VRR mode.
+I agree, I am a little concerned though about the transition period for 
+compositors to adopt this new model. I know for example KDE is using the 
+vrr_enabled property for their "AdaptiveSync" option, and it seems like it 
+would be a regression if all of a sudden toggling it caused display 
+blanking on newer kernels.
+If we're going to move towards this model, it may make sense to deprecate 
+the current vrr_enabled property and create a new one for connectors 
+rather than CRTCs (e.g. functionally similar to qms_enabled). This new 
+vrr_enabled property would then be used for the sink-side VRR mode 
+signalling. We could map it as follows:
 
-Le mardi 29 septembre 2026 =C3=A0 10:41 +0100, John Keeping a =C3=A9crit=C2=
-=A0:
-> On RK3288 where the RGA reports version zero [1], rotating a buffer
-> gives corrupt output where one edge will be truncated.  This is a result
-> of some adjustment done specifically for hardware revision zero.  But it
-> seems this is not necessary and there is no evidence for why this
-> adjustment should be applied on these hardware revisions.
->=20
-> Comparing the TRMs between RK3288 with revision zero and RK3588 with
-> revision 3.2 there is evidence of new features supported by later
-> hardware, but nothing indicating any difference in behaviour for
-> rotation which is supported by all hardware revisions.
->=20
-> The logic here looks wrong anyway, since it's bizarre that minor
-> revision zero would need the adjustment for _all_ major revisions.  This
-> was added with the initial version of the driver in commit f7e7b48e6d796
-> ("[media] rockchip/rga: v4l2 m2m support") so there is no detail in the
-> Git history to indicate why this special-case might be needed.
->=20
-> [1] Comparing with the vendor code, it seems this is actually 1.3 with
->     the hardware reporting zero more by coincidence than design since the
->     version register is not defined for RK3288.
->=20
-> Signed-off-by: John Keeping <jkeeping@inmusicbrands.com>
+qms_enabled=true, vrr_enabled={true, false} --> QMS-VRR
+qms_enabled=false, vrr_enabled=true         --> Gaming-VRR
+qms_enabled=false, vrr_enabled=false        --> Off
 
-Fixes: f7e7b48e6d796 ("[media] rockchip/rga: v4l2 m2m support")
-Cc: stable@vger.kernel.org
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+The semantics of the old vrr_enabled property would be implied by the 
+settings of vrr_{min_n, min_d, max_n, max_d} (e.g. if max=0, no VRR, else 
+hint the driver to use VRR).
 
-> ---
-> base-commit: 2579cbe68005f46fc7f8f95364f6b101b07b9d1c
->=20
-> v3:
-> - Rebase on media-committers/fixes and add base-commit to hopefully make
->   CI happy (patch content is completely unchanged)
-> v2:
-> - Remove variable that is unused after this change
-> ---
->  drivers/media/platform/rockchip/rga/rga-hw.c | 8 --------
->  1 file changed, 8 deletions(-)
->=20
-> diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media=
-/platform/rockchip/rga/rga-hw.c
-> index be1bc8ddbd03b..2e7ec8b7c20f7 100644
-> --- a/drivers/media/platform/rockchip/rga/rga-hw.c
-> +++ b/drivers/media/platform/rockchip/rga/rga-hw.c
-> @@ -158,7 +158,6 @@ static void rga_cmd_set_dst_addr(struct rga_ctx *ctx,=
- dma_addr_t dma_addr)
-> =20
->  static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
->  {
-> -	struct rockchip_rga *rga =3D ctx->rga;
->  	u32 *dest =3D ctx->cmdbuf_virt;
->  	unsigned int scale_dst_w, scale_dst_h;
->  	unsigned int src_h, src_w, dst_h, dst_w;
-> @@ -251,13 +250,6 @@ static void rga_cmd_set_trans_info(struct rga_ctx *c=
-tx)
->  	 */
->  	if (src_info.data.rot_mode =3D=3D RGA_SRC_ROT_MODE_90_DEGREE ||
->  	    src_info.data.rot_mode =3D=3D RGA_SRC_ROT_MODE_270_DEGREE) {
-> -		if (rga->version.major =3D=3D 0 || rga->version.minor =3D=3D 0) {
-> -			if (dst_w =3D=3D src_h)
-> -				src_h -=3D 8;
-> -			if (abs(src_w - dst_h) < 16)
-> -				src_w -=3D 16;
-> -		}
-> -
->  		scale_dst_h =3D dst_w;
->  		scale_dst_w =3D dst_h;
->  	} else {
-
---=-ILpt8SK1pUoNPTw2qXEH
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCarwGnQAKCRDZQZRRKWBy
-9I5zAQDENsSWZWYp+AVmTDcFYwYqOZBs5vG6vPbEM8JLE0qmywD+L4sImLRB2DW8
-3eXQUNCT5EOVLkntXGgixskKFIem2ww=
-=3GCb
------END PGP SIGNATURE-----
-
---=-ILpt8SK1pUoNPTw2qXEH--
-
-
---===============0423808120882464052==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Vidith
+> 
+> Kind regards,
+> Nicolas Frattaroli
+> 
+> > > +		vtem->m_const = false;
+> > > +		vtem->game_vrr_en = false;
+> > > +		return 0;
+> > > +	}
+> > > +
+> > > +	vtem->game_vrr_en = true;
+> > > +
+> > > +	vtem->m_const = !vrr->dynamic;
+> > > +
+> > > +	return 0;
+> > > +}
+> > > +
+> > >  static int
+> > >  hdmi_generate_infoframes(const struct drm_connector *connector,
+> > >  			 struct drm_connector_state *conn_state)
+> > > @@ -884,6 +934,10 @@ hdmi_generate_infoframes(const struct drm_connector *connector,
+> > >  	if (ret)
+> > >  		return ret;
+> > >  
+> > > +	ret = hdmi_generate_emp_infoframe_vtem(connector, conn_state);
+> > > +	if (ret)
+> > > +		return ret;
+> > > +
+> > >  	return 0;
+> > >  }
+> > >  
+> > > @@ -1494,6 +1548,12 @@ int drm_atomic_helper_connector_hdmi_update_infoframes(struct drm_connector *con
+> > >  			goto out;
+> > >  	}
+> > >  
+> > > +	if (info->hdmi.vrr_capable)
+> > > +		ret = write_or_clear_infoframe(connector,
+> > > +					&funcs->vtem, "VTEM",
+> > > +					&old_conn_state->hdmi.infoframes.vtem,
+> > > +					&new_conn_state->hdmi.infoframes.vtem);
+> > > +
+> > >  out:
+> > >  	mutex_unlock(&connector->hdmi.infoframes.lock);
+> > >  	return ret;
+> > > diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+> > > index e561a444515f..6e431eb81705 100644
+> > > --- a/include/drm/drm_connector.h
+> > > +++ b/include/drm/drm_connector.h
+> > > @@ -1180,6 +1180,11 @@ struct drm_connector_hdmi_state {
+> > >  		 * matching our state.
+> > >  		 */
+> > >  		struct drm_connector_hdmi_infoframe hdmi;
+> > > +
+> > > +		/**
+> > > +		 * @vtem: VTEM EMP infoframes structure matching our state.
+> > > +		 */
+> > > +		struct drm_connector_hdmi_infoframe vtem;
+> > >  	} infoframes;
+> > >  
+> > >  	/**
+> > > 
+> > 
+> 
+> 
+> 
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0423808120882464052==--
-
