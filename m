@@ -4,60 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3305CA5FA1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 08:46:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4C22CA5FA1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 08:50:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bm/KzzoqmjRFL1pLOmZqUDHqOydh4EVpx//p+YizUu8=; b=ePeuBwXHoGPU3z
-	UstlFj3GM+9IaLC4LquRJ26glbSIxQz2NzYc3olZvfcduXlroeMhDgthVbNMzmuvYwHlWjJ96IVBZ
-	qwwWR+xs8tC1+Y5+0jlc5CUyAfgM5Yxb/9wGzbjOof3H/sNurHNdXW1ihk7u+uyQVl93iNajDuXm7
-	oJBEi0jfTW6M9mwTBI4yuCa3B/E+TuCTC/uE4Vhn+mPBnqm4sdiRXP06ME3/kyNaaEgGcPRm541EZ
-	C7pVD0id43/oVYYBRpXCaVyjt3vNs92IOoc1+czJnGljW2D6iNfNK9LlylFWcbXTs6NKJ5njT+eOM
-	xopYVbOUPBL/iIDc10fg==;
+	List-Owner; bh=FNsti8MBh0S9EZpyU1zc4TVtyGpSDwZlmseWxKalsk4=; b=MP3/+xVCwfqjPG
+	4+MlONcr4ytfi54JAlujny/bLmmSlFiy0O1rjGVKLCSOhZFi3rk/p/p8McmodW/i19Yhgu6n3ljVP
+	oZZx4Z+oVLVtS/YpcTqO90Aq2o3nhZc2mElRz6MAVTW/2+zOa/giL/sub4s6UUGZ6Klz3b0tB22mC
+	PXuXKBoYTYco2b6pSHWJPXkRSJCSCP3LbnhzSRktBqaNgoVaRQrIn+3TrONv1X87mho3CuEl/Pwr0
+	8s5bDUM/hJca5t/uh9VyslHZyQDBHm2WWqIMp9O6jC3BFU716MEyftRRKFp53VWyGmImemevVLTVA
+	xmCmxcMUDA/jvteWJJ5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBTTz-00000002qA4-1hRg;
-	Tue, 29 Sep 2026 08:46:39 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xBTXx-00000002rjy-2nyH;
+	Tue, 29 Sep 2026 08:50:45 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBTTx-00000002q9D-3CF0;
-	Tue, 29 Sep 2026 08:46:37 +0000
+	id 1xBTXv-00000002rjE-3wgp;
+	Tue, 29 Sep 2026 08:50:44 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 32A1060210;
-	Tue, 29 Sep 2026 08:46:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB8FC1F00899;
-	Tue, 29 Sep 2026 08:46:35 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5C5BE43CC0;
+	Tue, 29 Sep 2026 08:50:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1352B1F00893;
+	Tue, 29 Sep 2026 08:50:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790671596;
-	bh=X2bjnjkfAYn9RGZpcWaVsSZdftTR1zHRUBhxYKKVJts=;
+	s=k20260515; t=1790671843;
+	bh=iHjy9vO2aI54cq6YGq1VyrqssYfLjBHwVVMGd7Q6AHw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=bQno3+SULrhkcdpaywbcogY3sw2IWoviVqeWjhZujw5vJL2hriSaN+jCc4r/oyM4o
-	 YWtKD/lKoaGUMqRFEWHGWI9sYi+96XjjMHCXUCkQwFnFiJ2EzS0RnCJv0BUTyxh9/b
-	 YCFe8i3LfGV0euQkNSuCSHFs5PvKCpGoFe6ndmmaD+d9z7uyqvYXTN6h2s32BL98/x
-	 yK5GwUvFJ6h4ZzkhW0GWeyJL5+mOBUPvg64cPgilh3WI29gbOIofA1zQiQ4P4yDDem
-	 HP6zTyCFR5uN6KjjbehUUOLQT0oPq3jZe5/kxbgRKlAsA9KWfCP7z4k/RiPnPIxaQQ
-	 bVIPuWr/pCtxQ==
-Date: Tue, 29 Sep 2026 10:46:32 +0200
+	b=ELMFc7Sr9rib/LSZVw9fEKfH5McI95NJK0hG/468hHgvfQOkVAIs9pFvTgrLWtnRG
+	 nrRb+tm42KIDjLgP1x+A9EtB+GUy6dSJndgs6tQO+jrT2v0auzkR6Xbi7fXddw7Fwq
+	 UxLoyygdRCSeQShV8ufrfoNzSsxS/zu6hLXptxINaMrCqt59CvMBGenKwihDKBRUki
+	 x2NM/PcPNO8dOpqSFHs0mC710nSJvMD6kiyKTdIXHmrgz8VnwCpXAQPdpO6qQmI9ZJ
+	 0cTpQcl/FMUMsIXLq/EBB0UudhqCwFjstRvS2ZDIx5qqYg1I/IhTb1CIkny7OO9Iqu
+	 lxFV1hF2j3Z4g==
+Date: Tue, 29 Sep 2026 10:50:39 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Sofus Forstreuter <sofus.c@icloud.com>
-Cc: Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, 
-	Neal Gompa <neal@gompa.dev>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Heiko Stuebner <heiko@sntech.de>, asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 01/17] dt-bindings: media: add apple,avd
-Message-ID: <20260929-poised-sympathetic-hound-c0ddf1@quoll>
-References: <20260926-avd-v2-0-ecebe6a3648e@icloud.com>
- <20260926-avd-v2-1-ecebe6a3648e@icloud.com>
+To: BG9OXA <bg9oxa@163.com>
+Cc: linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: add ALIENTEK
+ QuarkPi-CA2
+Message-ID: <20260929-ambitious-festive-orca-b59ffe@quoll>
+References: <179051707448.31632.10412780322071844492@163.com>
+ <179051708845.31632.10915026963421643453@163.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260926-avd-v2-1-ecebe6a3648e@icloud.com>
+In-Reply-To: <179051708845.31632.10915026963421643453@163.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,26 +70,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 26, 2026 at 03:14:40PM +0200, Sofus Forstreuter wrote:
-> +  compatible:
-> +    oneOf:
-> +      - items:
-> +          - enum:
-> +              - apple,t6030-avd
-> +              - apple,t6031-avd
-> +          - const: apple,t8122-avd
-> +      - enum:
-> +          - apple,t8103-avd
-> +          - apple,t8112-avd
-> +          - apple,t8122-avd
-> +          - apple,t6000-avd
-> +          - apple,t6020-avd
+On Sun, Sep 27, 2026 at 09:51:28PM +0800, BG9OXA wrote:
+> Document the ALIENTEK QuarkPi-CA2, an RK3588S based single board computer.
+> 
+> Signed-off-by: BG9OXA <bg9oxa@163.com>
 
-These are misordered. Order is alphabetical.
+Please read submitting patches.
 
-With this fixed:
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC (and consider --no-git-fallback argument, so you will
+not CC people just because they made one commit years ago). It might
+happen, that command when run on an older kernel, gives you outdated
+entries. Therefore please be sure you base your patches on recent Linux
+kernel.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Tools like b4 or scripts/get_maintainer.pl provide you proper list of
+people, so fix your workflow. Tools might also fail if you work on some
+ancient tree (don't, instead use mainline) or work on fork of kernel
+(don't, instead use mainline). Just use b4 and everything should be
+fine, although remember about 'b4 prep --auto-to-cc' if you added new
+patches to the patchset.
 
 Best regards,
 Krzysztof
