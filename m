@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D18ADCA5FA1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2026 21:51:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8616BCA5FA1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 01:40:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=onK24/80ms8OYFvrPdFy2lC2Xs4GHdi+aNlBDX2Wptw=; b=4VgzYOLJH4tozX
-	niBUVepP5dwcyx0xj7dXMDsAHNsNr5EjljEqRLqerspO2qSGIUXM8cMpUx4zeieTff1cGPI/HEnSE
-	KEmV57fUSIqW1bi0K9Zb5G32x7BAs7EyZVWBfuKHpugowFRVPB+GvNEL1JF068kBGgVI3zdrrm+Ae
-	7lcTAwdEqsehzlybSCY5au9a/8pwBJ2WtHPr7GxgqktvB1Br1NO6MbATYEWwdE9IZvTyzNpMQiS0p
-	i/h47P6Cei5+YLN/Xr6sA//UjM1RK/88QFpbVtcgfYyF2SGtASDz3JtnJflSP1m6hmCeWcRZzsF30
-	JAG2O9rhSlefpxG6Dqmg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9xwNFfWT2/8aIkr0f01e1/ZnoYLGWtQ6l2A7C2yC2FA=; b=N60pAlUL/AQkqR
+	I8kc23XRippbTguCXFvVwrgnzEsgSr1HzxnIaaBD8sKDN9yTfR7IbL8LKsPYqw8XwPKo4IATDdHL/
+	6PyWwBZ9Dk39w86DcZBBNSL9K1l0cqYE3MZT29F9bnXKTGPO7I0u1//Pl3HM73lGPbB1JFekmT8dh
+	SgIEBvw+fjj5MmJVn0kJJldER1lAXrlBapfurBRKRwoSlSCoGo9BGdQb1DtgBrp5JVoCq1OiUZc1o
+	73NuyQ3wR0MyNl9e2vOFxF6R6usa51ZTy2uiiAtV4TkmciYs2EfXsxKRJXDZQA4JwErE9j7hRI2bz
+	ckSY7nJTaiicL2gI0DPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBJFi-00000001iIG-1KDc;
-	Mon, 28 Sep 2026 21:51:14 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xBMp2-000000023x0-2BoY;
+	Tue, 29 Sep 2026 01:39:56 +0000
+Received: from mail-m16023653251.xmail.ntesmail.com ([160.236.53.251])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBJFh-00000001iHY-08Ew;
-	Mon, 28 Sep 2026 21:51:13 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 066BA60219;
-	Mon, 28 Sep 2026 21:51:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84E961F00898;
-	Mon, 28 Sep 2026 21:51:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790632271;
-	bh=8omIOHhw+uZwY84ggyKbDZolc6RD3clHULLyKqCQ5H4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To;
-	b=I6Avh3cjEKRwD9CabIrOhx9ysMlXH8SxulnHRCFe9AGF3GpLfHLPDI86yu6BE9yiK
-	 xrcDpTUPHThX3Nba7GaBRLnOntDkIRZImQgFOiHMYqfRFuoPdH6LqqdLERewePmUDZ
-	 VT9flbNSKsNTClvkLK5PfhZcqPDUxhH8WnKLu+5F3ZXSVc3Nj4li6GU/HxcoathddL
-	 iRE0idYGJtkcPgvaVmrmjAE/ALJNWC7XhGogquYF4bYTeLBhu665rRmXY4+kcRcbCa
-	 IRQI98ieNBG3SKokpLxosPgO6xP47mtQXuNR8MTbzMcu2MIzaoZz5nkl+06XTPuKnx
-	 rjlan8ve1mp+w==
-Date: Mon, 28 Sep 2026 16:51:10 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
-	heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com,
-	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
-	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com, cassel@kernel.org,
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Feizhou Yu <yufeizhou201@163.com>
-Subject: Re: [PATCH 1/2] PCI: dwc: Align register macros with Synopsys
- documentation
-Message-ID: <20260928215110.GA2266447@bhelgaas>
+	id 1xBMoz-000000023wM-0Vqf;
+	Tue, 29 Sep 2026 01:39:55 +0000
+Received: from [172.16.12.48] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4f6b915ad;
+	Tue, 29 Sep 2026 09:39:42 +0800 (GMT+08:00)
+Message-ID: <9d48120b-8206-4c74-8e98-3a1aea2d08bf@rock-chips.com>
+Date: Tue, 29 Sep 2026 09:39:41 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260928215007.GA2264960@bhelgaas>
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH 0/5] power: reset: syscon-reboot-mode: Add support for
+ Rockchip RK3576 reboot modes
+To: Alexey Charkov <alchark@flipper.net>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Sebastian Reichel <sre@kernel.org>
+References: <20260928-b4-rk3576-reboot-mode-v1-0-65486b03bd41@flipper.net>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <20260928-b4-rk3576-reboot-mode-v1-0-65486b03bd41@flipper.net>
+X-HM-Tid: 0aa0ead1536503a4kunm68e8d0327ea435
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaGh5LVh4fSkpDGh9KT00ZGlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQkxVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=eWazI0Pnn7knjwGZECTX+ulASdL6vLBpupw8PlWpjyQgib35ZuGJmKiYgU1Vw8dmz1m3gQLEYhQJSXd8dY1GLLmWZlYU2Te4TnKAIwEvzJed/bZRiXJLR93PwydEDwbOO11FFLvJ8AmiXtluSCCjjqcwl1ebHyCNXuTNAFemS08=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=eawiXWtUZj4uCM8OnFXHNWvbRpsp4qvBIm2uw04gQNk=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260928_183953_843891_C26697B2 
+X-CRM114-Status: GOOD (  19.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,55 +69,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 28, 2026 at 04:50:09PM -0500, Bjorn Helgaas wrote:
-> On Sat, Sep 12, 2026 at 12:25:36AM +0800, Hans Zhang wrote:
-> > The DWC PCIe register and field macros are inconsistently named and
-> > often do not match the Synopsys DesignWare PCIe Controller Reference
-> > Manual.  This makes it harder to cross-reference the code with the
-> > documentation when debugging or maintaining the driver.
-> 
-> > +#define  PORT_AFAC_L0S_ELS		24		/* L0s Entrance Latency shift */
-> > +#define  PORT_AFAC_L0S_ELM		GENMASK(26, 24)	/* L0s Entrance Latency mask */
-> > +#define  PORT_AFAC_L1_ELS		27		/* L1 Entrance Latency shift */
-> > +#define  PORT_AFAC_L1_ELM		GENMASK(29, 27)	/* L1 Entrance Latency mask */
-> 
-> Surely we don't need both the shift and the mask?  Maybe a separate
-> patch convert to FIELD_PREP()?
-
-Oops, sorry, didn't notice that Mani had already applied these.  This
-could be material for follow-on patches.
-
-> > +#define  GEN3_CTRL_RATE_SHADOW_SEL_SHIFT 24		/* Rate Shadow Select shift */
-> > +#define  GEN3_CTRL_RATE_SHADOW_SEL_MASK	GENMASK(25, 24)	/* Rate Shadow Select mask */
-> 
-> Ditto.
-> 
-> > +#define MSIX_DOORBELL			0x948
-> > +#define  MSIX_DOORBELL_PF_SHIFT		24
-> 
-> Probably would be better to define a mask so we have the position
-> *and* the width.
-> 
-> > @@ -621,15 +621,15 @@ static inline u32 event_counter_prog(struct tegra_pcie_dw *pcie, u32 event)
-> >  	u32 val;
-> >  
-> >  	val = dw_pcie_readl_dbi(&pcie->pci, pcie->ras_des_cap +
-> > -				PCIE_RAS_DES_EVENT_COUNTER_CONTROL);
-> > +				RAS_DES_EVENT_COUNTER_CONTROL);
-> >  	val &= ~(EVENT_COUNTER_EVENT_SEL_MASK << EVENT_COUNTER_EVENT_SEL_SHIFT);
-> >  	val |= EVENT_COUNTER_GROUP_5 << EVENT_COUNTER_GROUP_SEL_SHIFT;
-> >  	val |= event << EVENT_COUNTER_EVENT_SEL_SHIFT;
-> >  	val |= EVENT_COUNTER_ENABLE_ALL << EVENT_COUNTER_ENABLE_SHIFT;
-> 
-> Probably a good chance to convert these to FIELD_PREP() etc. as well,
-> maybe in a separate patch.
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQWxleGV5CgrlnKggMjAyNi8wOS8yOSDmmJ/mnJ/kuowgMToxOCwgQWxleGV5IENoYXJrb3Yg
+5YaZ6YGTOgo+IFJvY2tjaGlwIFJLMzU3NiBzdXBwb3J0cyByZWJvb3RzIHdpdGggYSBzcGVjaWZp
+ZWQgYm9vdCBkZXZpY2UgcHJpb3JpdHkKPiBtb2RlLCBhbGxvd2luZyBvbmUgdG8gb3ZlcnJpZGUg
+dGhlIGJvYXJkLWRlZmluZWQgc3RyYXBwaW5nIGNvbmZpZyBhbmQgdGhlCj4gT1RQIHByb2dyYW1t
+ZWQgcHJpb3JpdHkgc2V0dGluZy4KPiAKPiBTdXBwb3J0aW5nIGl0IHJlcXVpcmVzIHNldmVyYWwg
+Y2hhbmdlcyB0aG91Z2g6Cj4gLSBUaGUgYm9vdCBtb2RlIHJlcXVlc3QgbmVlZHMgdG8gYmUgZm9y
+d2FyZGVkIHZpYSBURi1BIHRvIHRoZSBib290IFJPTQo+ICAgICh1cHN0cmVhbSBzaW5jZSBURi1B
+IGNvbW1pdCAyYTk3YmEyMGU5MDEgKCJmZWF0KHJrMzU3Nik6IGZvcndhcmQgYW55Cj4gICAgYm9v
+dCBST00gYm9vdCBtb2RlIHJlcXVlc3Qgb24gcmVzZXQiKSkKPiAtIFNvbWUgcG93ZXIgc3VwcGxp
+ZXMgbmVlZCB0byBiZSBrZXB0IGFjdGl2ZSBhY3Jvc3MgdGhlIHJlYm9vdCB0byBwcmV2ZW50Cj4g
+ICAgZWFybHkgYm9vdCBjb2RlIGZyb20gcnVubmluZyBpbnRvIGEgc3luY2hyb25vdXMgYWJvcnQK
+PiAtIFRoZSBtYWdpYyB2YWx1ZXMgZm9yIGVhY2ggb2YgdGhlIHN1cHBvcnRlZCBib290IG1vZGVz
+IG5lZWQgdG8gYmUgZGVmaW5lZAo+ICAgIGZvciB0aGUgT1MgdG8gdXNlCj4gCj4gVGhpcyBzZXJp
+ZXMgZW5hYmxlcyB0aGUgYWJvdmUgd2l0aCB0aGUgUkszNTc2IEVWQjEgYm9hcmQgYXMgdGhlIGV4
+YW1wbGUKPiB1c2VyLiBPdGhlciBib2FyZHMgd2lsbCBsaWtlbHkgbmVlZCBhIGNsb3NlIHRvIGlk
+ZW50aWNhbCBjaGFuZ2UgdG8gbWFrZQo+IHVzZSBvZiB0aGlzIGZ1bmN0aW9uYWxpdHksIGJ1dCBu
+ZWVkIHRlc3RpbmcuCj4gCgpOaWNlIHdvcmssIEkgZGlkIGEgcXVpY2sgdGVzdCBvbiBteSBSSzM1
+NzYgRVZCMSBib2FyZCwgdGhpcwpzZXJpZXMgd29ya3MgZm9yIG1lLgoKVGVzdGVkLWJ5OiBTaGF3
+biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KCj4gU2lnbmVkLW9mZi1ieTogQWxleGV5
+IENoYXJrb3YgPGFsY2hhcmtAZmxpcHBlci5uZXQ+Cj4gLS0tCj4gQWxleGV5IENoYXJrb3YgKDUp
+Ogo+ICAgICAgICBkdC1iaW5kaW5nczogc29jOiByb2NrY2hpcDogYWRkIGJvb3QgUk9NIGRvd25s
+b2FkIGJvb3QgbW9kZQo+ICAgICAgICBkdC1iaW5kaW5nczogcG93ZXI6IHJlc2V0OiBzeXNjb24t
+cmVib290LW1vZGU6IGFsbG93IHN1cHBsaWVzCj4gICAgICAgIHBvd2VyOiByZXNldDogc3lzY29u
+LXJlYm9vdC1tb2RlOiBlbmFibGUgc3VwcGxpZXMgZm9yIHRoZSBuZXh0IHN0YWdlCj4gICAgICAg
+IGFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQgcmVib290LW1vZGUgbm9kZSB0byBSSzM1NzYKPiAg
+ICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IG5hbWUgdGhlIHJlYm9vdCBtb2RlIHN1cHBsaWVz
+IG9uIFJLMzU3NiBFVkIxCj4gCj4gICAuLi4vYmluZGluZ3MvcG93ZXIvcmVzZXQvc3lzY29uLXJl
+Ym9vdC1tb2RlLnlhbWwgICB8ICA4ICsrKysrCj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
+aGlwL3JrMzU3Ni1ldmIxLXYxMC5kdHMgICB8IDE2ICsrKysrKysrKwo+ICAgYXJjaC9hcm02NC9i
+b290L2R0cy9yb2NrY2hpcC9yazM1NzYuZHRzaSAgICAgICAgICAgfCAzNiArKysrKysrKysrKysr
+KysrKysrKwo+ICAgZHJpdmVycy9wb3dlci9yZXNldC9zeXNjb24tcmVib290LW1vZGUuYyAgICAg
+ICAgICAgfCAzOSArKysrKysrKysrKysrKysrKysrKysrCj4gICBpbmNsdWRlL2R0LWJpbmRpbmdz
+L3NvYy9yb2NrY2hpcCxib290LW1vZGUuaCAgICAgICB8ICAyICsrCj4gICA1IGZpbGVzIGNoYW5n
+ZWQsIDEwMSBpbnNlcnRpb25zKCspCj4gLS0tCj4gYmFzZS1jb21taXQ6IDYzNzVlNjFjMDFlOTNl
+MzVlZTdhY2QzMzZhNjg5YWMxZmFlNGI1MDkKPiBjaGFuZ2UtaWQ6IDIwMjYwOTI4LWI0LXJrMzU3
+Ni1yZWJvb3QtbW9kZS1kMzgwNGUzOWRmMDQKPiAKPiBCZXN0IHJlZ2FyZHMsCj4gLS0KPiBBbGV4
+ZXkgQ2hhcmtvdiA8YWxjaGFya0BmbGlwcGVyLm5ldD4KPiAKPiAKPiBfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4gCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
