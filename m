@@ -4,61 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22857CA5FA5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 02:21:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06748C9832A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 06:55:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X5xiKUTPTq+yHz1ZgAvXoK/ehPDtOHFGu0c0v6B4kmU=; b=sLM1smyGemffVD
-	KneAQN2Xt1K6uTDG2RzF5PBuAwPNT6dAUfkqcXehRSpX800Q9nxQkMiXCu9nNyg6XbPFErAC3qVZd
-	HHxRuGgye/9tjiRdXpWoRv5We1rO67SyN3aGG/Rb6CZEMzNuathTCfWc93AnN3ucyu4ivb/R2MnQy
-	w92FAaUf2r43YJLshR6VN2YlPwA9/ZvRxjXvVEpm3vCh1wP4svPl3MpmOJz32ncNmsZjS78980u9l
-	96ChhHMcBAVxgtPSnPx3HogIpGFxD7ZgrtQ8XHflXxIlLBs+REwZL2Ow+pfRhd3u3hYi823fYTwWc
-	qH7yVeiPgRg3WSmnYwRw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sfzaOnqFsJ9bGRI2QhIuWYgF7b53TvzzvgGxpgxhv4I=; b=e1tRrj/liju13R
+	NGY9OAtvz3W0+Iy6TTqLMSAb8z3Fp6MqpzjnWvwytQmRtXWDk797a1fCJ/zqzaI5yZXlDXtnO6kyD
+	BadrQiAm35zxLEDoXHIbmOYhwbzJ6U+kGR0C1zE++YF5hZUGthAA6KXnoCmf0vftcYD8Qee5+tfRl
+	dujipOGtjdM8iJ7+FLNFxmIfM3RHQv5bPxdgYjjNOlsw3Juc6iWWksrLqoFqJrkx77jB8zfJ1xuWQ
+	F/UpoGCDu7MJPtb9PIli+oM9vTw54B7s5oNYMq7Lau8qyuCzLjCvQPH9okS2wY0CZf1IuDQzdb0sO
+	3z2gVXAYGHsCF5vHBZmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBNTQ-000000027S3-0VnJ;
-	Tue, 29 Sep 2026 02:21:40 +0000
-Received: from mail-m93204.xmail.ntesmail.com ([103.126.93.204])
+	id 1xBRkI-00000002XO2-1w18;
+	Tue, 29 Sep 2026 06:55:22 +0000
+Received: from mail-m82181.xmail.ntesmail.com ([156.224.82.181])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBNTM-000000027Qg-1qSL;
-	Tue, 29 Sep 2026 02:21:39 +0000
-Received: from [172.16.12.48] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4f6d2dccf;
-	Tue, 29 Sep 2026 10:21:32 +0800 (GMT+08:00)
-Message-ID: <23589ca5-7b7e-4f0a-8da7-1cd8ca8cdc6e@rock-chips.com>
-Date: Tue, 29 Sep 2026 10:21:31 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, linux-spi@vger.kernel.org,
- linux-kernel@vger.kernel.org, linusw@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- jon.lin@rock-chips.com, bcm-kernel-feedback-list@broadcom.com,
- noltari@gmail.com
-Subject: Re: [PATCH 2/3] spi: rockchip-sfc: Clean up runtime PM on remove
-To: Guangshuo Li <lgs201920130244@gmail.com>, broonie@kernel.org,
- heiko@sntech.de, william.zhang@broadcom.com, kursad.oney@broadcom.com,
- jonas.gorski@gmail.com
-References: <20260924112329.1566051-1-lgs201920130244@gmail.com>
- <20260924112329.1566051-3-lgs201920130244@gmail.com>
+	id 1xBRkF-00000002XMe-0Y1N
+	for linux-rockchip@lists.infradead.org;
+	Tue, 29 Sep 2026 06:55:21 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4f768de6d;
+	Tue, 29 Sep 2026 14:55:12 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20260924112329.1566051-3-lgs201920130244@gmail.com>
-X-HM-Tid: 0aa0eaf7a0ba03a4kunm3f316cb87f1ea3
+To: Manivannan Sadhasivam <mani@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-pci@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH] PCI: dw-rockchip: Enable INTx affinity support
+Date: Tue, 29 Sep 2026 14:54:58 +0800
+Message-Id: <1790664898-207928-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0aa0ebf22c3303a4kunm1b4a75ea81b7dc
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCSk9CVh9NQk1NGk8fHx1OTFYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGkxDQ1ZDHh0YHxkeSU
+	NOHh1WFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tIVUpLSUJDQ0xVSktLVUtZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=b0Nmn4A2L3sB7JXXDYNJoZwkmkRNQshPXshO1PivLsRYoBKNfmCpAX4c41WhmHiA0V3vSIAX9UViYpiGG1X/sPsl25P7DD6NNfhtT2G05ZEkmQX+3/LTlPQGKQ4gWt5eINnmjHlEtJlDI4xXqGRHli26/2zelrE9jjcj0uhCTt4=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=608TxoAcsSFja39GdQX5iExTG94VTDqd7cjXZfeJR4s=;
+	b=FPEEZ7ZgsC/LbXuk08N790+AGkezJzI4aL94BObdSzcdHzsGhTB7XpDirPA6pC9ioeyaALvNYGnAX3WLzizAATC8cUhbiPR/sSqS+tujObAbYPRxb8eAlTh11ffl4FwyECdH9HG/G5uMLTPMAN9+S2m3beAON0cPMyMLXskqkAE=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=/cZOLmf/WtiucRoMtKUvb7+Grkz4rDeltc4jZcDpcmc=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_192136_689152_4A1362DC 
-X-CRM114-Status: GOOD (  12.98  )
+X-CRM114-CacheID: sfid-20260928_235519_841983_2166D0D6 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,41 +64,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgR3VhbmdzaHVvCgrlnKggMjAyNi8wOS8yNCDmmJ/mnJ/lm5sgMTk6MjMsIEd1YW5nc2h1byBM
-aSDlhpnpgZM6Cj4gcm9ja2NoaXBfc2ZjX3Byb2JlKCkgZW5hYmxlcyBydW50aW1lIFBNIGFuZCBh
-dXRvc3VzcGVuZCBiZWZvcmUgcmVnaXN0ZXJpbmcKPiB0aGUgY29udHJvbGxlci4gQWZ0ZXIgYSBz
-dWNjZXNzZnVsIHByb2JlLCByb2NrY2hpcF9zZmNfcmVtb3ZlKCkgdGVhcnMgZG93bgo+IHRoZSBj
-b250cm9sbGVyIGFuZCBjbG9ja3Mgd2l0aG91dCB1bmRvaW5nIHRoYXQgcnVudGltZSBQTSBzZXR1
-cC4KPiAKPiBUaGUgcHJvYmUgZXJyb3IgcGF0aCByZXN1bWVzIHRoZSBkZXZpY2UsIGRyb3BzIHRo
-ZSB0ZW1wb3JhcnkgdXNhZ2UgY291bnQsCj4gZGlzYWJsZXMgcnVudGltZSBQTSwgbWFya3MgdGhl
-IGRldmljZSBzdXNwZW5kZWQsIGFuZCBzdG9wcyB1c2luZwo+IGF1dG9zdXNwZW5kIGJlZm9yZSBk
-aXNhYmxpbmcgdGhlIGNsb2Nrcy4gVGhlIHJlbW92ZSBwYXRoIGxhY2tzIHRoaXMKPiBtYXRjaGlu
-ZyBjbGVhbnVwLgo+IAo+IE1pcnJvciB0aGUgZXhpc3RpbmcgZXJyb3ItcGF0aCBzZXF1ZW5jZSBp
-biByb2NrY2hpcF9zZmNfcmVtb3ZlKCkgYmVmb3JlCj4gZGlzYWJsaW5nIHRoZSBjbG9ja3MuCj4g
-CgpUaGFua3MgZm9yIHRoaXMgcGF0Y2guIEhvd2V2ZXIsIGl0IHdhcyBmaXhlZCwgc2VlOgpodHRw
-czovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9uZXh0L2xpbnV4LW5l
-eHQuZ2l0L2NvbW1pdC8/aWQ9MzRlMzJlOWFkZTU4ZTMyZGFmOTMzOTc0YzliNjk3ZDA2NmZjNWFh
-YQoKPiBGaXhlczogODAxMTcwOTkwNmQwICgic3BpOiByb2NrY2hpcC1zZmM6IFN1cHBvcnQgcG0g
-b3BzIikKPiBTaWduZWQtb2ZmLWJ5OiBHdWFuZ3NodW8gTGkgPGxnczIwMTkyMDEzMDI0NEBnbWFp
-bC5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL3NwaS9zcGktcm9ja2NoaXAtc2ZjLmMgfCA2ICsrKysr
-Kwo+ICAgMSBmaWxlIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL3NwaS9zcGktcm9ja2NoaXAtc2ZjLmMgYi9kcml2ZXJzL3NwaS9zcGktcm9ja2NoaXAt
-c2ZjLmMKPiBpbmRleCA2NjJhOTk0ZGE2MGIuLjZlMWM3ZDYzMThiYiAxMDA2NDQKPiAtLS0gYS9k
-cml2ZXJzL3NwaS9zcGktcm9ja2NoaXAtc2ZjLmMKPiArKysgYi9kcml2ZXJzL3NwaS9zcGktcm9j
-a2NoaXAtc2ZjLmMKPiBAQCAtNzQ3LDYgKzc0NywxMiBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9z
-ZmNfcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gICAJCQkgRE1BX0JJRElS
-RUNUSU9OQUwpOwo+ICAgCWZyZWVfcGFnZXMoKHVuc2lnbmVkIGxvbmcpc2ZjLT5idWZmZXIsIGdl
-dF9vcmRlcihzZmMtPm1heF9pb3NpemUpKTsKPiAgIAo+ICsJcG1fcnVudGltZV9nZXRfc3luYygm
-cGRldi0+ZGV2KTsKPiArCXBtX3J1bnRpbWVfcHV0X25vaWRsZSgmcGRldi0+ZGV2KTsKPiArCXBt
-X3J1bnRpbWVfZGlzYWJsZSgmcGRldi0+ZGV2KTsKPiArCXBtX3J1bnRpbWVfc2V0X3N1c3BlbmRl
-ZCgmcGRldi0+ZGV2KTsKPiArCXBtX3J1bnRpbWVfZG9udF91c2VfYXV0b3N1c3BlbmQoJnBkZXYt
-PmRldik7Cj4gKwo+ICAgCWNsa19kaXNhYmxlX3VucHJlcGFyZShzZmMtPmNsayk7Cj4gICAJY2xr
-X2Rpc2FibGVfdW5wcmVwYXJlKHNmYy0+aGNsayk7Cj4gICB9CgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Leverage the interrupt redirection infrastructure to enable CPU
+affinity support for the legacy INTx interrupts. The INTx virqs are
+demultiplexed by the chained handler of the "legacy" interrupt, whose
+affinity cannot be changed, so affinity control for the INTx virqs is
+achieved by redirecting the handler to run in IRQ work context on the
+target CPU.
+
+Mask the INTx source in .irq_pre_redirect() before the handler is
+redirected: the legacy interrupt is level triggered, so an unmasked
+line would keep re-firing the chained interrupt until the redirected
+handler runs.
+
+Same approach as the DesignWare core, commit eaf290c404f7c39f2 ("PCI:
+dwc: Enable MSI affinity support").
+
+Test was done on RK3588 EVB1 board with an NVMe with pci=nomsi
+parameter. The /proc/interrupts columns are trimmed for brevity.
+
+  # cat /proc/interrupts | grep INTx
+  51:  137 0 0 0 0 0 0 0 INTx 0 Edge PCIe PME, nvme0q0, nvme0q1
+  # echo 10 > /proc/irq/51/smp_affinity
+  # dd if=/dev/nvme0n1p1 of=/dev/null bs=1M count=200
+  200+0 records in
+  200+0 records out
+  209715200 bytes (210 MB, 200 MiB) copied, 0.182021 s, 1.2 GB/s
+  # cat /proc/interrupts | grep INTx
+  51:  137 0 0 0 946 0 0 0 INTx 0 Edge PCIe PME, nvme0q0, nvme0q1
+
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
+
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 1497686..af66142 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -149,7 +149,7 @@ static void rockchip_pcie_intx_handler(struct irq_desc *desc)
+ 	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_LEGACY);
+ 
+ 	for_each_set_bit(hwirq, &reg, 4)
+-		generic_handle_domain_irq(rockchip->irq_domain, hwirq);
++		generic_handle_demux_domain_irq(rockchip->irq_domain, hwirq);
+ 
+ 	chained_irq_exit(chip, desc);
+ }
+@@ -173,6 +173,16 @@ static struct irq_chip rockchip_intx_irq_chip = {
+ 	.irq_mask		= rockchip_intx_mask,
+ 	.irq_unmask		= rockchip_intx_unmask,
+ 	.flags			= IRQCHIP_SKIP_SET_WAKE | IRQCHIP_MASK_ON_SUSPEND,
++#ifdef CONFIG_SMP
++	/*
++	 * The legacy interrupt is level triggered. Mask the INTx source in
++	 * the parent's context before the handler is redirected, so that
++	 * the unmasked level line does not keep re-firing the chained
++	 * interrupt until the redirected handler runs.
++	 */
++	.irq_pre_redirect	= rockchip_intx_mask,
++	.irq_set_affinity	= irq_chip_redirect_set_affinity,
++#endif
+ };
+ 
+ static int rockchip_pcie_intx_map(struct irq_domain *domain, unsigned int irq,
+-- 
+2.7.4
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
