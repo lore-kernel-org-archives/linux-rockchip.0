@@ -4,107 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D06DCCA5FA5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 10:35:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC790CA5FA1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 12:57:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:Cc:To:In-Reply-To:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6j+MRtr2pBqwXzHHAd8AIJy90KF/Au1rh6czOUf5EVM=; b=1shNpBISuTWXgW
-	4WtkFWAqnBDXgAVKDKTUgF/EUUIvFvR0GfsfPc6l2dugVT6sOyGID3N43D02li0XkQ3q0qOFnnAQg
-	Cz26crldKYKr4UmJQwaQCqiYTz8oKwc7iMtiWecH55YfHyKP35T8mIjPoWhlnIpLyZMCEJzYWLGWO
-	Jd/ZGvJyLyeUV5lmu83wibvxS3hxFpOG8sZvlZgEKg8sKUuRtRJM9KGBmizNg85iX+yoTeIq4dLsz
-	R7UkyKS4O3RYrcQ/Wai8cbB2SfPuNCxVB23iDEoxjjcSPh86MBpbJppVlhYiIUQhY1+p37LdE5kRf
-	JIvx/5vfJg5zxB2eKRBQ==;
+	List-Owner; bh=n2X6ZTy855PnaNtTO9fKFgRuc2MrroFY0Psg8+FUFOo=; b=ArvJoNOUCysGp9
+	iR/6S7l7g48nsH354lkuJ5L75P1smyYZwgmTNWncxXXV9VtrCO1m95BZ3C2KQNqV6M7yi7/AF65kQ
+	Qfod7/tFEdcab167P13Br006TOKjmY0ZWLjSJ2cUZlNivRgxjbfbuKIZRtg0p+S6bGbY74yhP74b/
+	0m7uFVvoo4170RQXlEMsDsXfNDxiephkqsia0T6PJawJEQXtAlD7pu3jQ1bknXxZiDafqLeSbFMTk
+	YMw0mU/iSX/vEM1ElrcFK0HVkQe3TZvBDqf+xOjVGqZMdWs89yw7cs8FqwrO33S+sZRvtG9LwpG4s
+	GE2HOPlvsRMrn+zvWecw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBVBj-00000003FlC-1OwV;
-	Tue, 29 Sep 2026 10:35:55 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1xBXOL-00000003bTT-0zJ3;
+	Tue, 29 Sep 2026 12:57:05 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBV8o-00000003CHd-38GC;
-	Tue, 29 Sep 2026 10:32:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=References:Content-Type:Cc:To:
-	In-Reply-To:Message-Id:Content-Transfer-Encoding:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=r457fqQsZjuEuXBSPoj5rDr27WgbPfP74A0q9KhjNco=; b=CbjIz9O+w6vmiYlqjAQBC0NGJA
-	X8kJvja4HA1M+dGOGkSvNo25A/M9IiC+dKzc7PkK7JKJ8igq03uwvVaM8dOX8Gd19NxDHVcA39V98
-	fXasVL+/xp61nGDz9XgmpNW/gnT66n9+zBE1XYbKQj4VGnMhE9aymw24+lmcywMATk3ecIk/hlbHj
-	Dom2u8iVmplX/aUSpJ7h8E6UAadW3345bzbiWbcb0JD44K4iEAhhRAY7yt6ArkPXM2vn3Xj1NO6Mr
-	ox/d4yXDizmBknxu2yn3lK0lqa1TBfq2FxpmE3FT2E0o3ULm1yZVebxr5EwK9VDdGFV9NqlIUdhAv
-	fGIMj+MA==;
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
-	by casper.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBV8l-0000000CJiT-2MCX;
-	Tue, 29 Sep 2026 10:32:53 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20260929103250euoutp028c99beba02b74f50a7961d4572873ae2~ZxCCLUUT12627126271euoutp02i;
-	Tue, 29 Sep 2026 10:32:50 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20260929103250euoutp028c99beba02b74f50a7961d4572873ae2~ZxCCLUUT12627126271euoutp02i
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1790677970;
-	bh=r457fqQsZjuEuXBSPoj5rDr27WgbPfP74A0q9KhjNco=;
-	h=From:Date:Subject:In-Reply-To:To:Cc:References:From;
-	b=Dip6HfjTv58iDU4hbp+FJ2c/oDjy6s9wK+vNapH0RJIEEwt6gCQhSb7eizZwa72W7
-	 Ms5RYbVo4eIHF1XULMAu1EBZ+VsSk1ovtFdO0W0gTPrmLPuxlQktRqR7FBaXszWrF+
-	 vTR+J7nxi31ygx3i4M7gyzUbHyZS1jbfhlU2jwic=
-Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20260929103250eucas1p1ea04d70d2cc6c4ddfe11e596ea9814a1~ZxCBhfDIO0556805568eucas1p1V;
-	Tue, 29 Sep 2026 10:32:50 +0000 (GMT)
-Received: from AMDC4942.eu.corp.samsungelectronics.net (unknown
-	[106.210.136.40]) by eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20260929103247eusmtip131972b1ab22df47a0a0b5e5a1dbd5012~ZxB-HaPDZ2959829598eusmtip1X;
-	Tue, 29 Sep 2026 10:32:47 +0000 (GMT)
-From: Michal Wilczynski <m.wilczynski@samsung.com>
-Date: Tue, 29 Sep 2026 12:31:18 +0200
-Subject: [PATCH v5 21/21] MAINTAINERS: Add StarFive JH7110 display subsystem
- entry
+	id 1xBXOI-00000003bSL-1X99;
+	Tue, 29 Sep 2026 12:57:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1790686616; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Rt7F9cTQIqsjz0/NLpXxFU/ERhBy0Wq5tUNyvR0qSmXf+sbVn5wEqTfdOoyD6Jvuug97tgA9DIwfcw0AfIBeIugiu3B4q0/tjOvQvVlmr6vS8YyidT61uSPlXVM37ukrwZtcT4nYfG7IyzPieKbU3fzueVl8v7pQ7sMCVQZuMcU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1790686616; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=dw2G6qHIZr2q4Bt6ggK8RCIkbrjHTRhw+FWlDVwXhMw=; 
+	b=Y4j6sHPHlglWJ/oKpZoONft9cPvUrJh3rTAi/SfU2Qm7gB6A0lMTFnKkdjT4yxVGi/ZBxO2xsrz73GvFnO9Dl/JMoIhTW+09rzQaNL1Xh7U3Eik+cDFALzkdDmPihi1AOheVFsV83L1pxX7TJNazG5D/XzgdAC8M/KTjv0ydZLk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
+	dmarc=pass header.from=<michael.riesch@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790686616;
+	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=dw2G6qHIZr2q4Bt6ggK8RCIkbrjHTRhw+FWlDVwXhMw=;
+	b=RgJwRajfRURzMAck6XuHxeKK9XLgC4qoJTbyTeubCqyQnoIui8KFgVN5y/kFby1D
+	8paaPKm9XKd4B+sSHGNLJ19lfeeKISnD2LpEnA1nD0fiFN1m6YSYKGKLsjl+X43NvgI
+	jn06RIF6os8JMUwmNNVbIqXVi+V/JjzsJJWffMo0=
+Received: by smtp.zohomail.com with SMTPS id 1790686613886757.8277621120569;
+	Tue, 29 Sep 2026 05:56:53 -0700 (PDT)
+Message-ID: <e0699ffb-5e73-4fd5-b3e2-79cc7c2d49aa@collabora.com>
+Date: Tue, 29 Sep 2026 14:56:49 +0200
 MIME-Version: 1.0
-Message-Id: <20260929-jh7110-clean-send-v5-21-82b4d8e3c6c7@samsung.com>
-In-Reply-To: <20260929-jh7110-clean-send-v5-0-82b4d8e3c6c7@samsung.com>
-To: Vinod Koul <vkoul@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,  Conor Dooley
-	<conor+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>,  Robert Foss
-	<rfoss@kernel.org>,  Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,  Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>,  Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,  Andy Yan
-	<andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>,  Emil
-	Renner Berthing <kernel@esmil.dk>,  Hal Feng <hal.feng@starfivetech.com>, 
-	Michael Turquette <mturquette@baylibre.com>,  Stephen Boyd
-	<sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>,  Paul Walmsley
-	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,  Albert Ou
-	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,  Dominique
-	Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>,  Jerome
-	Brunet <jbrunet+clk@baylibre.com>
-Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,  Marek
-	Szyprowski <m.szyprowski@samsung.com>,  Maud Spierings
-	<maud_spierings@murena.io>,  Graham Markall <hello@big-grey.co.uk>,  Icenowy
-	Zheng <zhengxingda@iscas.ac.cn>,  Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
-	Joshua Peisach <jpeisach@ubuntu.com>,  =?utf-8?q?Uwe_Kleine-K=C3=B6nig?=
-	<u.kleine-koenig@baylibre.com>,  Michal Wilczynski
-	<m.wilczynski@samsung.com>
-X-Mailer: b4 0.15-dev
-X-CMS-MailID: 20260929103250eucas1p1ea04d70d2cc6c4ddfe11e596ea9814a1
-X-Msg-Generator: CA
-X-RootMTR: 20260929103250eucas1p1ea04d70d2cc6c4ddfe11e596ea9814a1
-X-EPHeader: CA
-X-CMS-RootMailID: 20260929103250eucas1p1ea04d70d2cc6c4ddfe11e596ea9814a1
-References: <20260929-jh7110-clean-send-v5-0-82b4d8e3c6c7@samsung.com>
-	<CGME20260929103250eucas1p1ea04d70d2cc6c4ddfe11e596ea9814a1@eucas1p1.samsung.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: rockchip: add radxa camera 4k on rock 4d
+To: Amin Gattout <amin.gattout@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20260925-rock4d-cam4k-v1-1-c9519c794fb3@gmail.com>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20260925-rock4d-cam4k-v1-1-c9519c794fb3@gmail.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_113251_659001_44A85975 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260929_055702_450556_56518DB1 
+X-CRM114-Status: GOOD (  18.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,44 +80,195 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The JH7110 display subsystem spans a PHY driver, a DRM bridge driver,
-a parent device and their bindings, and has no existing maintainer entry.
+Hi Amin,
 
-Add an entry covering them so patches reach someone who can review them.
+Thanks for the patch, LGTM!
 
-Reviewed-by: Joshua Peisach <jpeisach@ubuntu.com>
-Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
----
- MAINTAINERS | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+On 9/25/26 14:16, Amin Gattout wrote:
+> Add a device tree overlay for the Radxa Camera 4K (featuring the Sony
+> IMX415 image sensor) to be applied on the Radxa ROCK 4D camera
+> connector. The camera connects to CSI HOST1 through the MIPI D-PHY0
+> in full mode.
+> 
+> Signed-off-by: Amin Gattout <amin.gattout@gmail.com>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 72294ddfa5b757f805640919e3d6d5d7c4c48582..bd0a485744864cb713be759911c62442f0ffdaa5 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -26076,6 +26076,19 @@ S:	Maintained
- F:	Documentation/devicetree/bindings/net/starfive,jh7110-dwmac.yaml
- F:	drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
- 
-+STARFIVE JH7110 DISPLAY SUBSYSTEM
-+M:	Michal Wilczynski <m.wilczynski@samsung.com>
-+R:	Icenowy Zheng <zhengxingda@iscas.ac.cn>
-+S:	Maintained
-+F:	Documentation/devicetree/bindings/display/bridge/starfive,jh7110-inno-hdmi-controller.yaml
-+F:	Documentation/devicetree/bindings/phy/starfive,jh7110-inno-hdmi-phy.yaml
-+F:	Documentation/devicetree/bindings/soc/starfive/starfive,jh7110-hdmi-subsystem.yaml
-+F:	Documentation/devicetree/bindings/soc/starfive/starfive,jh7110-vout-subsystem.yaml
-+F:	drivers/gpu/drm/bridge/jh7110-inno-hdmi.c
-+F:	drivers/phy/starfive/phy-jh7110-inno-hdmi.c
-+F:	drivers/soc/starfive/jh7110-hdmi-subsystem.c
-+F:	drivers/soc/starfive/jh7110-vout-subsystem.c
-+
- STARFIVE JH7110 DPHY RX DRIVER
- M:	Jack Zhu <jack.zhu@starfivetech.com>
- M:	Changhuang Liang <changhuang.liang@starfivetech.com>
+Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
 
--- 
-2.34.1
+Best regards,
+Michael
+
+> ---
+>  arch/arm64/boot/dts/rockchip/Makefile              |   5 +
+>  .../dts/rockchip/rk3576-rock-4d-radxa-cam4k.dtso   | 105 +++++++++++++++++++++
+>  2 files changed, 110 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index e7936a21c118..82b2afd420d5 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -183,6 +183,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-nanopi-m5.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-nanopi-r76s.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-roc-pc.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-rock-4d.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-rock-4d-radxa-cam4k.dtbo
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3582-radxa-e52c.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-sige7.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-armsom-w3.dtb
+> @@ -311,6 +312,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-evb1-v10-pcie1.dtb
+>  rk3576-evb1-v10-pcie1-dtbs := rk3576-evb1-v10.dtb \
+>  	rk3576-evb1-v10-pcie1.dtbo
+>  
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-rock-4d-radxa-4k-cam.dtb
+> +rk3576-rock-4d-radxa-4k-cam-dtbs := rk3576-rock-4d.dtb \
+> +	rk3576-rock-4d-radxa-cam4k.dtbo
+> +
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-edgeble-neu6a-wifi.dtb
+>  rk3588-edgeble-neu6a-wifi-dtbs := rk3588-edgeble-neu6a-io.dtb \
+>  	rk3588-edgeble-neu6a-wifi.dtbo
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d-radxa-cam4k.dtso b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d-radxa-cam4k.dtso
+> new file mode 100644
+> index 000000000000..613a3e351500
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d-radxa-cam4k.dtso
+> @@ -0,0 +1,105 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Device tree overlay for the Radxa Camera 4K attached to the camera
+> + * connector of the Radxa ROCK 4D.
+> + */
+> +
+> +/dts-v1/;
+> +/plugin/;
+> +
+> +#include <dt-bindings/clock/rockchip,rk3576-cru.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/media/video-interfaces.h>
+> +#include <dt-bindings/pinctrl/rockchip.h>
+> +
+> +&{/} {
+> +	savdd_cam: regulator-savdd-cam {
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		gpio = <&gpio3 RK_PD0 GPIO_ACTIVE_HIGH>;
+> +		regulator-min-microvolt = <2900000>;
+> +		regulator-max-microvolt = <2900000>;
+> +		regulator-name = "savdd_cam";
+> +		vin-supply = <&vcc_3v3_s0>;
+> +	};
+> +
+> +	sdvdd_cam: regulator-sdvdd-cam {
+> +		compatible = "regulator-fixed";
+> +		regulator-min-microvolt = <1100000>;
+> +		regulator-max-microvolt = <1100000>;
+> +		regulator-name = "sdvdd_cam";
+> +		vin-supply = <&vcc_5v0_device>;
+> +	};
+> +
+> +	siovdd_cam: regulator-siovdd-cam {
+> +		compatible = "regulator-fixed";
+> +		regulator-min-microvolt = <1800000>;
+> +		regulator-max-microvolt = <1800000>;
+> +		regulator-name = "siovdd_cam";
+> +		vin-supply = <&vcc_3v3_s0>;
+> +	};
+> +};
+> +
+> +&i2c5 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&i2c5m3_xfer>;
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +	status = "okay";
+> +
+> +	imx415: camera-sensor@1a {
+> +		compatible = "sony,imx415";
+> +		reg = <0x1a>;
+> +		assigned-clocks = <&cru CLK_MIPI_CAMERAOUT_M1>;
+> +		assigned-clock-rates = <37125000>;
+> +		avdd-supply = <&savdd_cam>;
+> +		clocks = <&cru CLK_MIPI_CAMERAOUT_M1>;
+> +		dvdd-supply = <&sdvdd_cam>;
+> +		orientation = <2>; /* External */
+> +		ovdd-supply = <&siovdd_cam>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&cam_rstn &cam_clk1m0_clk1>;
+> +		reset-gpios = <&gpio3 RK_PC7 GPIO_ACTIVE_LOW>;
+> +
+> +		port {
+> +			imx415_output: endpoint {
+> +				data-lanes = <1 2 3 4>;
+> +				link-frequencies = /bits/ 64 <445500000>;
+> +				remote-endpoint = <&csi1_input>;
+> +			};
+> +		};
+> +	};
+> +};
+> +
+> +&pinctrl {
+> +	cam {
+> +		cam_rstn: cam-rstn-pinctrl {
+> +			rockchip,pins = <3 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +};
+> +
+> +&csi1 {
+> +	status = "okay";
+> +};
+> +
+> +&csi1_in {
+> +	csi1_input: endpoint {
+> +		bus-type = <MEDIA_BUS_TYPE_CSI2_DPHY>;
+> +		data-lanes = <1 2 3 4>;
+> +		link-frequencies = /bits/ 64 <445500000>;
+> +		remote-endpoint = <&imx415_output>;
+> +	};
+> +};
+> +
+> +&csi_dphy0 {
+> +	status = "okay";
+> +};
+> +
+> +&vicap {
+> +	status = "okay";
+> +};
+> +
+> +&vicap_mmu {
+> +	status = "okay";
+> +};
+> 
+> ---
+> base-commit: bd5f485f3f026225b86573e559af0b7254ef4184
+> change-id: 20260925-rock4d-cam4k-6e3521c61b55
+> prerequisite-change-id: 20260819-rk3576-dphy-2304f848215b:v2
+> prerequisite-patch-id: fbe2d84f88709b8bf846debe6b8ce62c4392ca63
+> prerequisite-patch-id: 9bce33933ae69e8cc7f7ef2f0d9acb969620bc85
+> prerequisite-patch-id: bff0c668524f94b0b7901c682d5ccdccfe18d46e
+> prerequisite-patch-id: 8f45701f840680a35e044f43ebd3087282847990
+> prerequisite-change-id: 20260825-csi-2-rcv-dts-7712bd834de6:v2
+> prerequisite-patch-id: fbe2d84f88709b8bf846debe6b8ce62c4392ca63
+> prerequisite-patch-id: 9bce33933ae69e8cc7f7ef2f0d9acb969620bc85
+> prerequisite-patch-id: bff0c668524f94b0b7901c682d5ccdccfe18d46e
+> prerequisite-patch-id: 8f45701f840680a35e044f43ebd3087282847990
+> prerequisite-patch-id: bdbb3e9b072469900cac21031cd799265b52d734
+> prerequisite-patch-id: c91ceb74abc8bc79ac036990abdef4cbd7328f97
+> prerequisite-change-id: 20260828-vicap-rk3576-6e7118ea0246:v2
+> prerequisite-patch-id: fbe2d84f88709b8bf846debe6b8ce62c4392ca63
+> prerequisite-patch-id: 9bce33933ae69e8cc7f7ef2f0d9acb969620bc85
+> prerequisite-patch-id: bff0c668524f94b0b7901c682d5ccdccfe18d46e
+> prerequisite-patch-id: 8f45701f840680a35e044f43ebd3087282847990
+> prerequisite-patch-id: bdbb3e9b072469900cac21031cd799265b52d734
+> prerequisite-patch-id: c91ceb74abc8bc79ac036990abdef4cbd7328f97
+> prerequisite-patch-id: d4120ad9def5effeda632f831b6fd0cd59295285
+> prerequisite-patch-id: e0c7e587fcaffe58b61fe78508efccec86dc7c79
+> prerequisite-patch-id: 6a87bd22798d58cc8f9b30733f5b28a2fced05c1
+> prerequisite-patch-id: a94c687ac3f648079b18dbb5109657fb038bd516
+> prerequisite-patch-id: 76e36df1aab8a9853440aa28b4bda528ce2adfd7
+> 
+> Best regards,
+> --  
+> Amin Gattout <amin.gattout@gmail.com>
+> 
 
 
 _______________________________________________
