@@ -4,125 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC37ACA5FA5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 09:42:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7AF1CA5FA1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 10:28:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=z8c0Uq6Y9VzcQjxZSgt13i/Gw5+tMPEtylxxh+kpjAo=; b=x1wgINzrsQaegY
-	P0l1lEO+69HyJRcy8QbYh2hRWFcCVxiF1dfqXpR0hXVQY+1O35gEIKEa8+XaocXryHxMSK5AxlO6q
-	UbD6I/3RGEZ2BMC61+aPFETljteldj+1obWkpvdB/3igKJmBoKEH+d+OsJbrakN7gRKpGgL+0T6/l
-	SQEpLoBB1QGrgJifpAvFMH68RChPM8IcupbC0IQLujKG9gcX6C0QsiTR0c9KSqajlRpNPsmeHpQAe
-	vSm9GWjJFW2SaoU7UINbFTOFyDiCPFYFePMU+2KnjcFYBV4qqC8XS3BUYnt1bxbUvKKhQ6BVcnk5a
-	zU2XwTgN6W+9AvSAPOGg==;
+	List-Owner; bh=6hQi8ozL8yotVqERjU3ATYLWeBnvGETaTtn1oP/7PNo=; b=HofsDZ7CmjgCxT
+	sceG8LHD0+Nv/5iGqzobY5AIlORfV3rRYlJHIsynyArMc/afC7vzKJMSxDGnd2ZNI9SrOj6TT6e3I
+	Fwp/rn/TmgIVvsTTbbAZz3WoaCf5X+2HTT4mdqLhCkGEk8QQqEjk9mNpHqXG6giEWwtKvoBWTjxdw
+	wfmyCpXQq9bHiDE3XDzyaRdnCRlf83vEmvXdyYcLsr9nmicdYIe6MBCDUIs6r0D57nr28hGw8yjdc
+	kZSJjqD3Gq2fXbMQKAYOlwgcUOpolYcR8jA2hL2KGp6fdXpX4lSvaZX/e0i5xAHNoHIjqlXTstWwM
+	GbBQ18tnIMBGY/3NCQMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBULd-0000000304w-1YBt;
-	Tue, 29 Sep 2026 09:42:05 +0000
-Received: from mail-westusazon11022103.outbound.protection.outlook.com ([52.101.43.103] helo=SJ2PR03CU001.outbound.protection.outlook.com)
+	id 1xBV4g-000000039yK-2H9N;
+	Tue, 29 Sep 2026 10:28:38 +0000
+Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBULb-00000003038-1Cqr;
-	Tue, 29 Sep 2026 09:42:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=wc5FoOAq1fL6zS+UOy5JrCA/GGXs8OM01ZuLXDE7u+82w89lpXLlQ5qJ8gv+lrgwb0Map5joWZIMy6feA5iZsYQuwrj2OpnHdma5gA5IkkXIse1Pvi2NJfoPqrBlWPZzUQQ5dxwRII/LBzowC/EM0l+HRydpfQ1xbfwWR9rZBK4h3qCdxqZjt70zd4Mc0HrlN/NsdLjirHrkLbTtG0tzFMJ+EE9xv5VLfcfShZvHEPvRQAryRkit+QVItegji/hroHSZff+avPu5TYtpmj5TIsyMMWWpbGtEAACfE8K4pdNIXf3L4FUZau+yV4agxA7Qya+AX1x3ATJ/hJGOe3llsw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lDTU7iO0ZBA4zx/KGe3uDYPq4bgJ/FjxVivfKNmjxPk=;
- b=IWhieonbGPlKXt9Z1a8Ir0FBIyb3BwexVJb8rWXULT9mfWjIYwcdP4Y4RKsH4VM8IWpIIsSwE/GZxPTLDGqLWqNXT3ITkQIqc3EBN9KDMWTaVQO02B/QKgCK0IaIYjxfSVtUny0774xMEkVGJ55NHu8j18sbCVTjoONTeqOdFlyFf2mLcP9eUZ7HhZYCmG4OGxN6iBusWUL9d0xFW7w+tVn+d48sgc01WUZxZdQDkrljXqp1d3XMpNIGzzKwU31Kbx/izOhcTbcKIviRWQZHIofL+FfO3Yc/zCqEXLO9Y9cjY1csSi4vJXRrs0uwsd22QsBg3QlQSVMtQDqJO1vgug==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=inmusicbrands.com; dmarc=pass action=none
- header.from=inmusicbrands.com; dkim=pass header.d=inmusicbrands.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=inmusicbrands.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=lDTU7iO0ZBA4zx/KGe3uDYPq4bgJ/FjxVivfKNmjxPk=;
- b=snw+ZCfkVeaf4egXdL6I61auki/TDP38f+oEw0kC3Z0loZ1bYm12X5Vhww1oeZlt2eFXA8Bh6G9QoSQFqDUqxQdRMDeASwOjrCUc+B5ccV+53j3pIZ8LL8033OfzJxx5oo8AiqV8+R1QrFgY5R3cUKKAJF8Kds3hDNPvgcF6pjs=
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=inmusicbrands.com;
-Received: from BY1PR08MB10263.namprd08.prod.outlook.com
- (2603:10b6:a03:5ad::14) by IA3PPF84B6E6F47.namprd08.prod.outlook.com
- (2603:10b6:20f:fc02::291) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.428.12; Tue, 29 Sep
- 2026 09:41:56 +0000
-Received: from BY1PR08MB10263.namprd08.prod.outlook.com
- ([fe80::399d:caec:5af7:cd51]) by BY1PR08MB10263.namprd08.prod.outlook.com
- ([fe80::399d:caec:5af7:cd51%6]) with mapi id 15.21.0451.022; Tue, 29 Sep 2026
- 09:41:56 +0000
-From: John Keeping <jkeeping@inmusicbrands.com>
-To: linux-media@vger.kernel.org
-Cc: John Keeping <jkeeping@inmusicbrands.com>,
-	Jacob Chen <jacob-chen@iotwrt.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3] media: rockchip: rga: fix rotation on rev0 hardware
-Date: Tue, 29 Sep 2026 10:41:42 +0100
-Message-ID: <20260929094142.928758-1-jkeeping@inmusicbrands.com>
-X-Mailer: git-send-email 2.55.0
-X-ClientProxiedBy: LO4P265CA0010.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:2ad::21) To BY1PR08MB10263.namprd08.prod.outlook.com
- (2603:10b6:a03:5ad::14)
+	id 1xBV4e-000000039xH-0dwZ
+	for linux-rockchip@lists.infradead.org;
+	Tue, 29 Sep 2026 10:28:37 +0000
+Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-4843cedd129so2272041f8f.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 29 Sep 2026 03:28:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=flipper.net; s=google; t=1790677714; x=1791282514; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=OjnLLZEy4NZ05RWw4wcrVNfIfzQkE+4cewTuv6QJdW8=;
+        b=tFmqNZiqQHRkHQzHX3AVZhY4m5KpIt0nIzJOUqE4TrcSFgUMEDYttWsenr3M6E0Vsh
+         WTsZmOAgWCwRoutLg7+4+TNqqaC01mruoDPc8Qu635DG6qy7Vf/AKbvaSqAERFFH5SiL
+         DCRuTX56UEe4m6h2BwgKw9l06lrFE2RmhssmAZmK8OV5IOG0qD7c6Y/XRaUbarbjb7j+
+         p5AAnwXm/tNwcheboEmJg1draLeVdsyio0tQjJbPn2XjgNNuaWQSK2ymMYW5Z5qKHMhp
+         uSDSC9BTXIIKHBbsgeTf2QVwBuo37cM/g6b48Jb19Do3fAv/g/pKY1mGQOujs+sYjbhE
+         hr4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790677714; x=1791282514;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=OjnLLZEy4NZ05RWw4wcrVNfIfzQkE+4cewTuv6QJdW8=;
+        b=Mdyr73cm0KWyt22xTtPEz6JnhIxuqdvyHa77efkhJATAMRZqkkABo00qo41ePvKBYi
+         HOt0YkhZv05ACzivXXX5k22qn5EHv4mfs4clNZr4MsLEWZZsnt/jHzuPtI/E/t8g8ayf
+         sLDTq+bVm64TtNH3E8/vjllc0S1UXffa1Bk9UT1XoDaFQRm1L6NShcchfC8+4v4mTExU
+         9LZmgXSDxJPNdZqpAv3InqIIZsGb8kuUXflOu1N6A7ppobGmq7Vf/3Q3H7jiWTg440X2
+         VxJ5TuLX/RIr81tm2RphPd/3uT674c8kPnX5erO8cO7CQpuMbsoWbGO9jnUufuw+k4fo
+         sZhQ==
+X-Forwarded-Encrypted: i=1; AKwUvBz6r6ulDSWi96zKmronvKFYwlnyJLz6oOKsKEgTbQ3LyeHyb0tQfhm7+M+6LRpGkXKV/aJRAMmcv6RpNfSLkw==@lists.infradead.org
+X-Gm-Message-State: AFuF++lZBYvSRPTtl/cWZ+v+3G4RUDBfT2B2X6G9vks+gKp9g9zy06wK
+	vnkTY2LZhyVKyjz+EzWzAkDi8jqi0K9DQD8znXozWhOmpPkQILsSvwkdOhqRa2QXNK4=
+X-Gm-Gg: AYBFou0etx0MX0JnTPC4vIb3AJHy4qjlYfR5PznnilajA0S6kqhzVxKe7a/4SUGCqoL
+	73Ph5IQYLetoPeUTd0pYxZJ4QOyw3qPbSEWOvcFlIXQ8joLXGncEn/63EaWOWhSTYfuAuYn/P8n
+	x4J1S0C4B3uUFsiftwDv9T+kCd1X4WvIpGA+cav3i2Mut0V9IG3xgn3OMpmgt2mw0WxEcOH6i2Z
+	BTygC3Ge8qDgiUlj+0f9IMw1Y5in1T7ddtgLl3pX6nTH1BBtQCrrvfiKGqQBBe7GkpTgLRpfBQA
+	aEyEnN+x0tUJRKLPB+49EwI+Ee66s34sXoTj+YZ2ySJ1CU12TwIv2Abn6hNNQJa/PeFXPr+JWk4
+	QKEiy16gjxMlgDNIaIoVMxzHL1qPc+pTaAm/w24CVXKbtSNui32KkM0sVU4m3svSSU5ZrA0py9+
+	Ri1visc8lVSEPz3GldUz+SnmmmXwTasy9bEOZf7eFbfDPlhp4ZCno4fiWeCiIsWJlC0c1d6aDoy
+	bAvEwj4zBMRxMHvog==
+X-Received: by 2002:a05:600c:198a:b0:49f:ce78:356c with SMTP id 5b1f17b1804b1-49fe67023femr268059845e9.29.1790677714116;
+        Tue, 29 Sep 2026 03:28:34 -0700 (PDT)
+Received: from alchark-surface.localdomain ([5.194.93.183])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a00cfb479asm66579305e9.15.2026.09.29.03.28.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 29 Sep 2026 03:28:33 -0700 (PDT)
+From: Alexey Charkov <alchark@flipper.net>
+Subject: [PATCH v2 0/5] power: reset: syscon-reboot-mode: Add support for
+ Rockchip RK3576 reboot modes
+Date: Tue, 29 Sep 2026 14:28:17 +0400
+Message-Id: <20260929-b4-rk3576-reboot-mode-v2-0-5a34ca72065a@flipper.net>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BY1PR08MB10263:EE_|IA3PPF84B6E6F47:EE_
-X-MS-Office365-Filtering-Correlation-Id: 566849f0-37cd-439f-5972-08df1e0de66b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|23010399003|376014|1800799024|366016|18002099003|38350700014|5023799004|3023799007|56012099006|10067099003;
-X-Microsoft-Antispam-Message-Info: j53Ph9Yz+ykOXIJUmW4YYd/c02+c98lSeJjHqGccWxyy9ddKVd0YoOI3kyuxVNWzCdrpoGVXekuSOddRfeOwgBvd6hWBNkaRS3l/iEPmKNW2LhdDggJkdbNhNHb0H6/QpopdfexEYCC2uZMqdsygu4a1gH/iTduWAvx2JuZ99fdFa2e4rqrO2mZUq4TFbfec5hdhFyacs4TX7+7CY+gNgyZHQms/CQf4nFNCoMGcc2LLD6FBi1Cl4nneq+eu55EjoWNY/9xW1+ofubcLVDhyhdJvu0O0Ayzghz8E8EGDiEtaLbZ1ylC+HxhTWrdgBLPiiynFZ5TQDnR7A48VLbaMjrL51RG8tEwfF1aVHRxmSc08wi64fRwCfpq2SyHtyJBvZxKZGjLN7NHyy5OpBh/FQAAvjQWoNf2/Z0k9ppO828YKjsQkXiW3nAWmSE4BH/C9vfRyY9ppapqN44G2rZtF8bwEBoQJ1uiH8qahe+76YOQiJimdUu92lQkC3OyBzgSMe/B5DC8qJwJ7d0uO0BemW3ETKVvrdacCKVTszLLUuPFalPJTNqfdVvsUIN/wxsq9zaNnG3aISo/Nau+YcPUlAnACaNrWb1TkT+7hE74v73zKFTOpN7CzsjamkrDEoJrPGSwyGxpALHQ42IHVQSTKNaSsQk+/Rt+I6ojQq/p2KfqDb2E2E5jw/yjJ5BOYUgrwwXY8dqurhMYFYpZ21kGcI3S1Z+E/RH2ja1h5t6Wzj7Y=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BY1PR08MB10263.namprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(23010399003)(376014)(1800799024)(366016)(18002099003)(38350700014)(5023799004)(3023799007)(56012099006)(10067099003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?sZfhBBfquAQXpTbq/1U2VVfjfqJ7Gkg/uBqkBJpCohqA+eEm53w8h9o8lwOQ?=
- =?us-ascii?Q?o8VxiOE5vxrIG5Ly6h64YWeSc/2koUnt/ZnXO4Pr1XzfbKHykpPNpKRSbyUR?=
- =?us-ascii?Q?X0PniUj17tbTHhcbC8B6IZ9cKzgfoPhuzJJa2FtGQhkVu8Vu53g5aKavYyCj?=
- =?us-ascii?Q?lsFAEAU7NwcuRn9oGuQU0l6urNKSYCBZxH5a6R/RjEIjX2jmW2r4hAh16F7A?=
- =?us-ascii?Q?SYUQQKDtFPVf6qtHdAcjHf60dAe0yP2cEQDpm9YwPDYCFkIcDCGiPPmO+SQW?=
- =?us-ascii?Q?pD2WYTmivH3VGchfUW5US40i/hTOaY5U+AArCTE2OrQiguI8ofAPv2Dfn1oe?=
- =?us-ascii?Q?ewJU2d2LXL4Cf5eW3NtEkDWUDlEBTUaf8c0AT0u6ANu/84o99rhpPH8qkViK?=
- =?us-ascii?Q?7PEL2TehSnUNGV38bHziPwS17x1ciKspIDQpuQit7WZvZu6vfpWXexyNAyRB?=
- =?us-ascii?Q?esNnc1SxQG1BbTphetlV5wq4uFZ4V1YDkLV4WyrCu/HP/lGVXtl4pwzu/tNR?=
- =?us-ascii?Q?c7ZgaHUeAEZ0ZZ1YTiR2mZ42aMcsWE0qmHxvQLY6G3EeefboOWzrEpgt+TcE?=
- =?us-ascii?Q?jz7VSPCoD30ADgHtR1BH8RWGnnhpNhMlsHS35IHlr8bV6u6YMIiHj8xjexK5?=
- =?us-ascii?Q?MpyXv2uIjTe15KlF++k4JeDgkGqw7e1Emg8zl+tNv3spCHNe8D1OPIkakdn9?=
- =?us-ascii?Q?aUguWtlxgVHRnxAEP26cVYfG4Hc6HipJ6dekT0e+cUktqFqVC86vPuZ0SJUE?=
- =?us-ascii?Q?7OQc9cGoIJtQIKOLsLB46Fbp7G+2n7xXWANOV6ypDw9cChEi67xu7F01/Jy+?=
- =?us-ascii?Q?4pgY60rzM1cWrAYPEtxd1twoRKGDWk9yfIS3DI8NTiYc1rJSUf8Crm5QLPs3?=
- =?us-ascii?Q?q1JxxFlflCeBEoJ3FxVF9+DGrZKMeBMUkICiMbwCNmFzRVhFmSZ4wlfj9oX+?=
- =?us-ascii?Q?Yavt4UvVlaMXr3At9KR+5uzdg4+Y3niOqBjH+OnEoK9UiXqVZpDiNTDqo7og?=
- =?us-ascii?Q?Dh1xJhSmvZQEis3ztY6YcNtlwH/Kygajb8T4kZV1/rVqZ5iX/g/WmtK/vFjh?=
- =?us-ascii?Q?4kg60akwku5oxJ/dEmvyGH7V94ZhCLWNODFXqz+cjxZRftVBReikJRT9BT9O?=
- =?us-ascii?Q?jnW9d5YXtslq86r34oPiidp5wAotubzZ5Jym6rHOi6aP6zVRLf0fdAWnOyYW?=
- =?us-ascii?Q?AnLRbUtvtNMayX0KlXZ4UZSHcLTheV+jL9lMoGkmUi81GyzzFjNukApms9vl?=
- =?us-ascii?Q?tbOmUi05VK74SZ7HueBCkwhgwvCv/FWCKQK4AysI+TrsXSOQ/O92fxYnHUh4?=
- =?us-ascii?Q?PY3tT2Ut02AL7ZGw8srtgNcWJcadFn5WFDgimuwBOqw6KTUB5pCwG8amAM7Z?=
- =?us-ascii?Q?W8NFcN28UXB43qLZtOPwZVDcO+Aulfmir3V8wy7HTWoZ4XDLXVcE0szOQ/6q?=
- =?us-ascii?Q?IhSPqTZ0oHN8cK1PVmTIeROmnnZAAMpb9Zk3k8Y0c4qrA5CZ70FE7swJkIR2?=
- =?us-ascii?Q?kUHXR7dGQUNdWF2sukyUiJeUkLSZgW6+ENVTEFY700kFMOADysiK4elucRmA?=
- =?us-ascii?Q?JRfytjqVJFeKGW5Q77JLRKkfevulailRoQeYvb6TLF/jZJNY6kslIwqfA/Am?=
- =?us-ascii?Q?xuXPbQA9kNVqdl0LhPlmlT5l55ExymXwkCroI0mlFzlYSZS2cG6Up3eLEiZm?=
- =?us-ascii?Q?jfYJjhySBCO/ebIErp1l/FYiGujkDBIuJ1cMRNSTL0tC+Z9tVoq66J4bLSIU?=
- =?us-ascii?Q?CLuEbptBxomUT9MhH+tOi2oGaHRJ/Gk=3D?=
-X-OriginatorOrg: inmusicbrands.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 566849f0-37cd-439f-5972-08df1e0de66b
-X-MS-Exchange-CrossTenant-AuthSource: BY1PR08MB10263.namprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Sep 2026 09:41:56.0383
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 24507e43-fb7c-4b60-ab03-f78fafaf0a65
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: fGIDVU/eJRt2IANtwLXJOh3q+iGFiA7+6g8QH3rT7RAUP+NobULikAjydgHu/apXrGc6kYda80XmIvqvKCDC/+Ak/VNGJOvOqdFT9HzFpMc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA3PPF84B6E6F47
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4WNTQ6CMBBGr0K6dkxpSwVX3sOwsHSQ8YeSaSUaw
+ t0FPIDLl7zvfZOIyIRRHLNJMI4UKfQLqF0mmu7SXxHILyyUVFZWqgRngO+6OFhgdCEkeAaP4HU
+ pDerKt9KIZTswtvTeuuf6x/HlbtikNbYaHcUU+LMdj/nq/fsYc5BgC1NaJ7XzJj+1DxoG5H2PS
+ dTzPH8B4FNEVc4AAAA=
+X-Change-ID: 20260928-b4-rk3576-reboot-mode-d3804e39df04
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Sebastian Reichel <sre@kernel.org>
+Cc: Alexey Charkov <alchark@flipper.net>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
+ Shawn Lin <shawn.lin@rock-chips.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2582; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=nD0jQ0sanXtfhte+cS4Eb6xgGbAdsdiqP+FoF7tBRHM=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTtnnSR24Hn36M+tdhN73vMn2dv5+A7vic1urqA+dy0K
+ GUb2eCHHRNZGMS4GCzFFFnmfltiO9WIb9YuD4+vMHNYmUCGSIs0MAABCwNfbmJeqZGOkZ6ptqGe
+ oZGOsY4RAxenAEz1tRxGhkeGK8/VXUmyZrOYcDszYNPaNR82PKzOOuRe6b9XaZNouyHDH265n3t
+ KDv94cDB6pZ1E28/UYKuKxnWzJsVOrauLnR14lR0A
+X-Developer-Key: i=alchark@flipper.net; a=openpgp;
+ fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_024203_351401_F9595C7E 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20260929_032836_219709_44FDEF63 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,68 +116,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On RK3288 where the RGA reports version zero [1], rotating a buffer
-gives corrupt output where one edge will be truncated.  This is a result
-of some adjustment done specifically for hardware revision zero.  But it
-seems this is not necessary and there is no evidence for why this
-adjustment should be applied on these hardware revisions.
+Rockchip RK3576 supports reboots with a specified boot device priority
+mode, allowing one to override the board-defined strapping config and the
+OTP programmed priority setting.
 
-Comparing the TRMs between RK3288 with revision zero and RK3588 with
-revision 3.2 there is evidence of new features supported by later
-hardware, but nothing indicating any difference in behaviour for
-rotation which is supported by all hardware revisions.
+Supporting it requires several changes though:
+- The boot mode request needs to be forwarded via TF-A to the boot ROM
+  (upstream since TF-A commit 2a97ba20e901 ("feat(rk3576): forward any
+  boot ROM boot mode request on reset"))
+- Some power supplies need to be kept active across the reboot to prevent
+  early boot code from running into a synchronous abort
+- The magic values for each of the supported boot modes need to be defined
+  for the OS to use
 
-The logic here looks wrong anyway, since it's bizarre that minor
-revision zero would need the adjustment for _all_ major revisions.  This
-was added with the initial version of the driver in commit f7e7b48e6d796
-("[media] rockchip/rga: v4l2 m2m support") so there is no detail in the
-Git history to indicate why this special-case might be needed.
+This series enables the above with the RK3576 EVB1 board as the example
+user. Other boards will likely need a close to identical change to make
+use of this functionality, but need testing.
 
-[1] Comparing with the vendor code, it seems this is actually 1.3 with
-    the hardware reporting zero more by coincidence than design since the
-    version register is not defined for RK3288.
-
-Signed-off-by: John Keeping <jkeeping@inmusicbrands.com>
+Signed-off-by: Alexey Charkov <alchark@flipper.net>
 ---
-base-commit: 2579cbe68005f46fc7f8f95364f6b101b07b9d1c
+Changes in v2:
+- Fixed a leak of the dynamically allocated syscon_rbm->supplies (Sashiko)
+- Uninitialized access to supplies[].supply (Sashiko) is fixed separately in:
+  https://lore.kernel.org/all/20260929-regulator-get-all-v1-1-e887c66a47f1@flipper.net/
+- Link to v1: https://patch.msgid.link/20260928-b4-rk3576-reboot-mode-v1-0-65486b03bd41@flipper.net
 
-v3:
-- Rebase on media-committers/fixes and add base-commit to hopefully make
-  CI happy (patch content is completely unchanged)
-v2:
-- Remove variable that is unused after this change
+To: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: Conor Dooley <conor+dt@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+To: Sebastian Reichel <sre@kernel.org>
+Cc: devicetree@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-pm@vger.kernel.org
+
 ---
- drivers/media/platform/rockchip/rga/rga-hw.c | 8 --------
- 1 file changed, 8 deletions(-)
+Alexey Charkov (5):
+      dt-bindings: soc: rockchip: add boot ROM download boot mode
+      dt-bindings: power: reset: syscon-reboot-mode: allow supplies
+      power: reset: syscon-reboot-mode: enable supplies for the next stage
+      arm64: dts: rockchip: add reboot-mode node to RK3576
+      arm64: dts: rockchip: name the reboot mode supplies on RK3576 EVB1
 
-diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media/platform/rockchip/rga/rga-hw.c
-index be1bc8ddbd03b..2e7ec8b7c20f7 100644
---- a/drivers/media/platform/rockchip/rga/rga-hw.c
-+++ b/drivers/media/platform/rockchip/rga/rga-hw.c
-@@ -158,7 +158,6 @@ static void rga_cmd_set_dst_addr(struct rga_ctx *ctx, dma_addr_t dma_addr)
- 
- static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
- {
--	struct rockchip_rga *rga = ctx->rga;
- 	u32 *dest = ctx->cmdbuf_virt;
- 	unsigned int scale_dst_w, scale_dst_h;
- 	unsigned int src_h, src_w, dst_h, dst_w;
-@@ -251,13 +250,6 @@ static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
- 	 */
- 	if (src_info.data.rot_mode == RGA_SRC_ROT_MODE_90_DEGREE ||
- 	    src_info.data.rot_mode == RGA_SRC_ROT_MODE_270_DEGREE) {
--		if (rga->version.major == 0 || rga->version.minor == 0) {
--			if (dst_w == src_h)
--				src_h -= 8;
--			if (abs(src_w - dst_h) < 16)
--				src_w -= 16;
--		}
--
- 		scale_dst_h = dst_w;
- 		scale_dst_w = dst_h;
- 	} else {
--- 
-2.55.0
+ .../bindings/power/reset/syscon-reboot-mode.yaml   |  8 +++++
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts   | 16 +++++++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 36 +++++++++++++++++++
+ drivers/power/reset/syscon-reboot-mode.c           | 41 ++++++++++++++++++++++
+ include/dt-bindings/soc/rockchip,boot-mode.h       |  2 ++
+ 5 files changed, 103 insertions(+)
+---
+base-commit: 6375e61c01e93e35ee7acd336a689ac1fae4b509
+change-id: 20260928-b4-rk3576-reboot-mode-d3804e39df04
+
+Best regards,
+--  
+Alexey Charkov <alchark@flipper.net>
 
 
 _______________________________________________
