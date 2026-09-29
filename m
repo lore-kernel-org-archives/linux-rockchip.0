@@ -4,134 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F40C0CA5FA7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 19:17:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E04FCA5FA5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2026 19:35:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
-	In-Reply-To:Subject:cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E/mgcF1QBIK++beawvf2JJhx2e+AY8vBH9eNIWZSNmE=; b=ng9+6lMWFFgDnz
-	8zp/Wlkc2rrjEPPuw6s1y6eGZ0hmLm5GFTxU9x6rDjF7/tHt/YlEBbeCozyLjJGChkdmJItsS82LW
-	3+uZBgGv43IQKCfHdXEraWx9IgzCIp7/v1ayLEerOQs+ghbMeYXZp7vvyVzqldBqmYa2girlW/iwx
-	POx+hbKgCjKpEaBWkJVbegbXEKvWbVbbNXn+FZNguMYgx4/EcVlFLc15tLSnmnHJ9ryAeHv0+Ig6R
-	dXleRRvJaEl31Qq/LlVM7eUwghcM1c5w1WxlHSu+WX8vyTvgsoeQkG/9yHDmb45ceAmQxMp1c/AH4
-	i8YwccWDqLPINo7eM/5Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=36dTv1XMt5dXS46xuyMsCEvA0dDFuY1aTmfEGZZo2X4=; b=wykOt1TKIAZqnRtKnL2cX/H/4L
+	D+sH37xnww4Zz2pnkDSMGddI/5jtGoqAVlYgS236CpKwPP3PtxFGphsgzQ26galjRbWPXHJ3LzSPV
+	M02tyt76bGGNzvEhP4ggWARBzkPUaGrqTO2uA4xpBV6mJxI4n6D3pazbuM4y0mFCHuL+6w31EW2l9
+	UFCIcdFj5yTt3p2oiqxiYzez+he29x175mrrKneGh5S6P0J/INO/1DhqsQF5qBRVIe4Y0xEotIsvt
+	nz4WZNGMC4sIeTqVnY7We0I2Jq5PB2Ewhcy2LFnaKMEeCuyjZkjQ2NnQGkXDslRr3b1CxD5I0TXny
+	TlkaMbTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBdKT-00000004MAv-0u5O;
-	Tue, 29 Sep 2026 19:17:29 +0000
-Received: from mail-westus3azon11010063.outbound.protection.outlook.com ([52.101.201.63] helo=PH7PR06CU001.outbound.protection.outlook.com)
+	id 1xBdbV-00000004Nur-1hQg;
+	Tue, 29 Sep 2026 19:35:05 +0000
+Received: from mail-qk2-x05.google.com ([2607:f8b0:4864:34::5])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBdKP-00000004MAJ-1T5E;
-	Tue, 29 Sep 2026 19:17:27 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Lx/6QB0vZBMP/L6Bg2sHywHV05hZ5cvhCnnYXbt7Lj0w/fOajznjQxUrdD7v2aKlpeZi5wb3A5n3sp/th/gqKmldcBOMILvU+Neo4mqKQt8kgMg68B+Wq9TdFv5bGgBBo7pRjiKpS7onKF1ylA70ndkK+kweekAFOV4huw/DVxWIH+YoRmG88f+jC/LKq3e17aWXvJ7cWfT4rgXnN0d4vYWkeklfK9wvLPA9s2chxRt4AwpGUiI/UDl64UzVv5o0yQkY4L6hiS1hedEFuG0U0wFEYFIZwvf7K2MVzxdqfDJ6azaKfFSyPrcHMcUrVyG7MaZtv4GYK4NM31dJCtGSqA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=M4O03XvYCn6/SXHU97qsTuLYimMdGLLJY6ENefQb1Os=;
- b=KJmG41j6yYfyXxT0zCobnc4kTUiNAvvc7kqp8mgICd2SSctl8iewfz9ZvwpnwNkAqIZRt+xg/Nwnzw5wlgxIXa/GWPT72AeeREpyFd2JbVQ/rPo/CxxHzE6LZKfOitatHMWWi8DL45o4vapR4N6ysaCgEpZrECSJAwFoQI+cdmX4G8LJnCUfxJ+usHveijCx+tcEhEChVm5JlP3bmHhR1j6KHZSSexA/vCb9OnR27nDRBgBZ5Bv11qTLABuW1k1Mnd7zcbWDy47CnwCr8naheXukcG8dPrCThTgKGc+IBAf442QO6fq7DSDS5dzsvrJWtm5rBNo/y4WRsHY5L3F+5w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=M4O03XvYCn6/SXHU97qsTuLYimMdGLLJY6ENefQb1Os=;
- b=U+zQnG+1DYW1jeggDQZa5/FIv0TLBwVk7INK2MuCUgROmFAms0L81MULwMw+44X+7eI679C2HuZfKtLJZ4YwJNNZ1y01Pi6FGnggOzeP2CQjZRlMqTV73zwsxMy8LlIAOeFHZN+3sKmnV9tQ6PiHfNNGRZjg9XwEQrZBd626wBEOBhLuPW7qjsJ9saqZ8uY0zY8stkJAIfsKRkam5yA5zs6gFx9uYqRQ1KlhhmlEWFnmSeOCDCCU4ANZkzMkmTjmyp2PtmPsuvs+dfKGE8o3TaaqMyWIidyAT5WcOwKPQQi2rbIjL27hL23biwyIXnxbSTBYIllI8nimRyFqGoJ6vQ==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from DM6PR12MB4925.namprd12.prod.outlook.com (2603:10b6:5:1b7::8) by
- CH3PR12MB8904.namprd12.prod.outlook.com (2603:10b6:610:167::9) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.451.25; Tue, 29 Sep 2026 19:17:07 +0000
-Received: from DM6PR12MB4925.namprd12.prod.outlook.com
- ([fe80::9ac7:5274:235:5d72]) by DM6PR12MB4925.namprd12.prod.outlook.com
- ([fe80::9ac7:5274:235:5d72%4]) with mapi id 15.21.0451.022; Tue, 29 Sep 2026
- 19:17:07 +0000
-Date: Tue, 29 Sep 2026 14:16:57 -0500 (CDT)
-From: Vidith Madhu <vmadhu@nvidia.com>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-cc: "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>, 
-    Leo Li <sunpeng.li@amd.com>, Daniel Stone <daniels@collabora.com>, 
-    Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-    Maxime Ripard <mripard@kernel.org>, 
-    Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-    Simona Vetter <simona@ffwll.ch>, Helge Deller <deller@gmx.de>, 
-    Andrzej Hajda <andrzej.hajda@intel.com>, 
-    Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-    Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-    Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-    Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-    Sandy Huang <hjc@rock-chips.com>, 
-    =?ISO-8859-15?Q?Heiko_St=FCbner?= <heiko@sntech.de>, 
-    Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org, 
-    linux-kernel@vger.kernel.org, linux-fbdev@vger.kernel.org, 
-    linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-    kernel@collabora.com, Derek Foreman <derek.foreman@collabora.com>, 
-    wayland-devel@lists.freedesktop.org
-Subject: Re: [PATCH RFC 13/25] drm: Add VRR target frame rate properties
-In-Reply-To: <20260921-vrr-limiter-uapi-v1-13-2fcd7d011646@collabora.com>
-Message-ID: <1b722d71-93d2-93a4-acdd-bc02b9a36f95@nvidia.com>
-References: <20260921-vrr-limiter-uapi-v1-0-2fcd7d011646@collabora.com> <20260921-vrr-limiter-uapi-v1-13-2fcd7d011646@collabora.com>
-X-ClientProxiedBy: BL1P221CA0011.NAMP221.PROD.OUTLOOK.COM
- (2603:10b6:208:2c5::23) To DM6PR12MB4925.namprd12.prod.outlook.com
- (2603:10b6:5:1b7::8)
+	id 1xBdbR-00000004Nsm-2Hrz
+	for linux-rockchip@lists.infradead.org;
+	Tue, 29 Sep 2026 19:35:03 +0000
+Received: by mail-qk2-x05.google.com with SMTP id af79cd13be357-9392f49a01eso316228685a.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 29 Sep 2026 12:34:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1790710499; x=1791315299; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=ayjPnwN3HqP7T0l2HJPneqSGhWsdxu4NXADnhmQjpQg=;
+        b=o8MBPcRa7Dp/LoBBmvZCausYHY2H/+1LhPiSJRX2zCKJkzyZNmq/EKxdDem14uMUq7
+         e2IE+9k89tlRbdV5fbalDQLEwvjdnYQyQ0rexVwpMHJFhKEyovarrHrXnxV7oam5Iqsw
+         5fwSsD5aZ/UEVp1cqDYAVlVEOR5gg3pkfmMtTS0SxkyQHuo5xWxWFoiNy1tLmk8camPl
+         Qq4DY/Ho5nZ/Tb6jPHsWUWQmPgsF0yZKYtzGMOVO5w9qrB01CuLEl4glWAkxfjO4aKcD
+         as71fLlX4BAu2IntOvWjeiTx3D8VhoCWO9+YbRTb5ggsRXeG/dGZ0k5hDrTGfRU3rZxq
+         UIYA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790710499; x=1791315299;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ayjPnwN3HqP7T0l2HJPneqSGhWsdxu4NXADnhmQjpQg=;
+        b=z4T92IMyzdWGVPGs83VMgaBNGJaObRPgIjw2sPp4Ir+I61xS/NUgU3QVY3JIDQo8Wg
+         txWxTpUhfSTjE/WcVlVP5Ch2Z39m96EKRKfzTZZqSZy0/Jcv8WH6Ia+5rPn8uFq8BLWg
+         aOv2Je4ZwiOgcFedh+RJzwglCSA3cuDHmvm7sjIXdb5OEFYkwBcjE9g2M/SyD/dHKrrl
+         VjYjg3PNXd+hsKPe5tYMs5EOVk57fPmG1AX4qu2nKjnyX6BtZDcG/+ClJ1TzoGCNbstB
+         zD2DCR6xtAE9/Y9XqU9Oj0T4u7yM4Wz0b4e2JzuKQDnB/kN+A7Z1HOIokSUjpHAD/5vT
+         f0Kw==
+X-Forwarded-Encrypted: i=1; AKwUvBxbWWeblYeQMNEwRh2N6m/r01pM+QPPdPXN+rmBEfJkQUqzaZLPe8tVKfcIsRCxXI6WUYtQIxfVJFLRxU371A==@lists.infradead.org
+X-Gm-Message-State: AFuF++nIcRufa/LWri4fAzleq/3Ul1F/gexsrt7n+MFxJpv0GxHqHlIj
+	hH/QV5AdTI3Kmh48ntQ0nFRTtOHdnsInPI+Ek+Mcr64fclqUQ/lq689f4s/sUZ5NfhQ=
+X-Gm-Gg: AYBFou0vbwJgr1C8PbhQQhetuu99NxJBKBBVrQNgrypiCjEsjgOd0jq9UkbpI3gvYAH
+	nO/QnnKh+5kUAohJGK08AvSawigJjT22VV+jRVIB82L9I/R/6Lxqp4YrNfJOkSd+40WN+D7dU+4
+	/9/3XSHPhFhFn68rVXs2bg5NDLqJrE+ViQzQeM69GNtQe9gk18uyGFfeKqCsRsRGHJXxjHFEQlf
+	DXN3lTIip1rnB04dEQmBkHlwt2aahel5NCNaOAiXkbq1l91/93xlfEiAcb0Im7pIdUh3TNl+75i
+	XrsFD4OYnXlanvKfclILk2KYQ+HMSrozHdLhJ3FYO+SC3H1YTSFcCNyRDELUPgSPuqsQVBcx7om
+	w0Pq+TZ6Q5BaDMgqGmVYBHRb3druZ/uqUN1f/q33UlpXifa6j8ie5pn+diEoLPLB1NDLlw+16v4
+	LOZhXSIVtRMBX8/zAIluwgO4XODkQ8B0JKrCKkSuEM7RWeZ14A00eZ/AmD6g27s1Utwcwm42zIe
+	kUBdivcSI/5sZrCkmDdKFcb
+X-Received: by 2002:a05:620a:4709:b0:939:8855:5535 with SMTP id af79cd13be357-93c9fa172f4mr116286985a.45.1790710498633;
+        Tue, 29 Sep 2026 12:34:58 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:11:34bd::5ac? ([2606:6d00:11:34bd::5ac])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-93c9f576569sm42575985a.47.2026.09.29.12.34.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 29 Sep 2026 12:34:57 -0700 (PDT)
+Message-ID: <c28b782fd2de05f4e1fdaa1df96a57f04640f4df.camel@ndufresne.ca>
+Subject: Re: [PATCH v5 2/4] media: rockchip: Add JPEG decoder driver
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Lucas Sinn <lucas.sinn@wolfvision.net>, Mauro Carvalho Chehab
+	 <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
+	 <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Date: Tue, 29 Sep 2026 15:34:55 -0400
+In-Reply-To: <97676b94-47f9-4937-a1aa-69e8bbd527df@pengutronix.de>
+References: <20260925-rockchip-jpegdec-v5-0-30658833cb68@pengutronix.de>
+	 <20260925-rockchip-jpegdec-v5-2-30658833cb68@pengutronix.de>
+	 <8a559d812623457381e65e0e62699ba043de7861.camel@ndufresne.ca>
+	 <97676b94-47f9-4937-a1aa-69e8bbd527df@pengutronix.de>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM6PR12MB4925:EE_|CH3PR12MB8904:EE_
-X-MS-Office365-Filtering-Correlation-Id: a4018eff-47c1-4738-c006-08df1e5e3c90
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|23010399003|376014|366016|22082099003|18002099003|4143699003|3023799007|6133799003|10067099003|56012099006|11063799006;
-X-Microsoft-Antispam-Message-Info: NV8n9sJRM8XxtoFVnGVWgoJYODFzuMwyxQQb2qDVFyiBU7tzK5Zou12nRmwpApIObdhdfpjX30EW1YVnAMzFcxk/CymQff3mTz1LVhDyNvIcjHRs6Va1NW6M+3hcUrXtCqoZ9KY0zsye+a4fhCxn3+8fv3g2h7ZhKcGhp/ijIExh2z4Ad93qHylGEQ0S3PFwcbe0ML3GjYdvIovVDQHqPCyebHIq7LZOQEeyjFNa57ulE5Cb01CViSKaZR4T1c23P0ZbZsClzoyuG/hr9xH1cHwoAPVziFZhvGNrQd75Rez/SuPbToc5liYbWWTYxLPVQ4Fm1sBfzoFNpMOs4KpmcyU+7deH1o5hT2NllenWq+D6e7yNZSlyYR2dFa+08wPcs+kZ/0vaBlNOKPCxT0T3/OPeZsblauGkiHsCkmuoiBcWguxZjpaub9aoynH9ZHSCljwb22E5yMiFKGNrYxkfn4cZrC6kzkfLDnIUfvfB48xeF2cc/w40yoprg0M3DbekYNKBdt45pQelBzLVWejPOgMo7D+Iwo15rvE46GO56c/Owh1dSuRfkJqdQNP4K6sYBlJOnRxYg0C8fz5NFn9+agYSxniUvYIRzUdH2hRApUx7DeA7FB2Tk7bjAH3GVsjFJQstahp1B0D+FNTSSeNQgigzi2eoiNqSiXHS3U7qXB8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR12MB4925.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(23010399003)(376014)(366016)(22082099003)(18002099003)(4143699003)(3023799007)(6133799003)(10067099003)(56012099006)(11063799006);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ewE5WswE4dW8lgkpDIzHRD6KLR0SqniecxhJ8mHXIggsHEa/SUNmeP79UeqP?=
- =?us-ascii?Q?dhVxKMaFnRDKCG+6PIGDYd+PIBOMqCScqjFVqCjKR7t23apSJDQex2wYmU27?=
- =?us-ascii?Q?2668H6V0rfvbescv9qvU1P90ZTbFeBeAuSLS8Fo+qFCnzmDtayZWahTAe56t?=
- =?us-ascii?Q?nkouCHBmaH576hHJWSBDpUr5VNvedLNopBgKXIB/xoE82gUuiBvsCaf6RZO+?=
- =?us-ascii?Q?Hq+giiXkSYAyF+4Lgw9yKe1qaGoay2EpcQAwjMMKhkbQVCgiHUlcW+y3ZQ0u?=
- =?us-ascii?Q?LhfaIpcg+qa3rkUyfUrW+HJLfbfpVDNO5pnypjE10fwHfOH9ACceL306EHBf?=
- =?us-ascii?Q?3QSdP4aceLJ0kkl98ghKowGuHgvM4x30dHvmZXhURJoMU6j7vUqg78/oZMy+?=
- =?us-ascii?Q?o7M6jR0isWiTfl3NKLjaA6FzTOZp1aED0rSxsFH+DHkWAjn4PtZ9MKY/Uizd?=
- =?us-ascii?Q?SoJZVzFFni2DwWfDdrB3+aPSptTzNSJ0+eIoiBdBDw62xYjVPSrWhAPESXTB?=
- =?us-ascii?Q?czr8T5WAU35HGTaNOQIsOKyC+D4HpmcGSffnj3X/TNfDYy8QGIHg+jKMprkJ?=
- =?us-ascii?Q?5V3SjKgUsa8pkVGPsNt2YB2WAhPExKfPL6kWXvz7NSrNfHqrOGQaU+iFpJuv?=
- =?us-ascii?Q?I5+7a5ShqxN6NVqXrbSNTUHySSh6aSjYOxxo83zkkIoSgfR1qx0rSAoR90wm?=
- =?us-ascii?Q?kiiEiYEYxDw4+8ZkDEmx51gn/TPhr7UD6J1NL9dcLWsNIRSsnf7m0cLqlKA1?=
- =?us-ascii?Q?3tVAi0fvlpvREN/T8jmCe49PdksOmkTKXlg0gi8f072PA9UxVYm/KwPoV9ys?=
- =?us-ascii?Q?r/ybs8Wk35/d5na0bQBddBdraxr1fL9hDPT+vfro1qHFIymyD9ZDTWbcaJv7?=
- =?us-ascii?Q?zAGryTj+yQoFwoYGrvrKt7YFnrU0gSf+qJJlhuV/cfykZd0tK4z9Zr84lN4m?=
- =?us-ascii?Q?ng5cpebI6EDBbq4OnvmK9sV03n7O3LU6w7rJtPmb6wZuHBppPiEiCxlMb6vu?=
- =?us-ascii?Q?DYy9c/UKnkfG7kznrTT9X+2eBE3CqX8GVcgMxv9XrEt+2DbID5DEQk+W3fzV?=
- =?us-ascii?Q?o7ZVpOIcwc2VDSlbqaZz2YGMBS52Pqt8u6YNBEGUdgoAGv37rRLS6JLaeGcf?=
- =?us-ascii?Q?86Vw+1k9ZV/ACAQxypKM5hiuel2JeGSyOfUpWhYPYdszsV53myHU/zNS78TP?=
- =?us-ascii?Q?eHGtVQiQ/j2UC0WN9LpqDnDlgYEri9veckG7nLw1A08dywKJL8kSUJ7qLpje?=
- =?us-ascii?Q?re6476NeLrITuFOVnn74yIaMSa4S7r4U5nX1DrqfzfgalpuONWQpMn+Q2Dxq?=
- =?us-ascii?Q?jAjhAytviuYu7iYYOWkw1O7PIGbpkmDfF2oleAwUnzm/Sit+6qtuaPxJtUA5?=
- =?us-ascii?Q?gjzEahhUp0oQOHwj4tCCeq6P4H4Mp5jRCZK6ZwdI5nF01Au1ZnO/ETi1z8ns?=
- =?us-ascii?Q?7ekUQJsDOGjXwRVfDR+bq9Q+FFg0VO2kpMg5bPc9/GKnbA1Y1ScvBvGnAMcW?=
- =?us-ascii?Q?Uy/3+t1Oeo4F0u5hnQIQuczIjJpTbgB/NlwWVl4R+iOcnkNOXLCA8OLthCJm?=
- =?us-ascii?Q?1N93IKLTzmq5L/pwSzmX5gMPOG1riUu1qm94SZwcOY7TLUa4bidIFnXOoger?=
- =?us-ascii?Q?ct1NDZ+ZhggOghRRAzOh+XF6GhbzY5dC58SM+c/yuSTMvr0tlnigpufLJ4UY?=
- =?us-ascii?Q?En3MULQkEYqkHcOj3SsQSNgUklgjOupc4gMUxCV942n9A8pv?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a4018eff-47c1-4738-c006-08df1e5e3c90
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR12MB4925.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Sep 2026 19:17:07.5276
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: zk03WeA6F2ep/LmfdTI3X3A+lDV/4VuIkroOo2Qo5k6GwyqIUQ+vvdWDoPjgtBVvHjGLAY+OF7i6k+APha82uA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB8904
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_121725_451394_F7B04AFF 
-X-CRM114-Status: GOOD (  35.72  )
+X-CRM114-CacheID: sfid-20260929_123501_719538_28C4DF50 
+X-CRM114-Status: GOOD (  51.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,299 +117,698 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1662458553450105838=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
+--===============1662458553450105838==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-e0QK1iLo/RR+fN85m10x"
 
-On Mon, 21 Sep 2026, Nicolas Frattaroli wrote:
 
-> Userspace may wish to set a target frame rate for the Variable Refresh
-> Rate mechanism. There are multiple possible ways such a target could be
-> communicated.
-> 
-> It's desirable for userspace to not only set a fixed target, but a
-> target range within which VRR may operate. This is because even if a
-> sink advertises a certain range as supported, said range may not be the
-> ideal range to use, as numbers on the extreme end of the range may
-> induce flickering or other glitches.
-My understanding is that flicker may also happen if the refresh rate 
-fluctuates significantly within the sinks' range, although I don't know 
-how common this is in practice. I would imagine these frame range limits
-would also be useful there to "dampen" the fluctuation.
-In any case, if we expect userspace to use the frame range limits for the 
-purpose of flicker avoidance, it may make sense to expose a read-only 
-connector property for whether the display is susceptible to such
-flickering. For example, NVIDIA G-SYNC monitors are resilient to this and
-it would hinder the user experience to unnecessarily impose such a limit. 
->
-> There's four choices to how one bracketing value for the target range
-> could be communicated:
-> 1. Target frame rate in something like millihertz
-> 2. Target frame period in something like usecs
-> 3. Target vtotal value
-> 4. Target frame rate as a fraction expressed by two integers
-> 
-> Choice 1 is unpleasant as it would introduce some amount of rounding to
-> common broadcast framerates like 24/1.001, which seems minor except that
-> exact matches to standard framerates would rely on making all userspace
-> and kernel agree on a specific method of rounding. This is sure to go
-> wrong, so is disqualified.
-> 
-> Choice 2 has the same problem as 1, with the added complication that
-> the EDID's VRR range is expressed in frames per second, and other HDMI
-> features express things in frames per second as well, which would
-> require possibly imprecise computations.
-> 
-> Choice 3 is disqualified as mechanisms other than VRR, such as FVA, may
-> also modify the vtotal value. Additionally, it has the same drawbacks of
-> choice 2 and 1.
-> 
-> Choice 4 is therefore what's implemented. The frame rate 24/1.001Hz, for
-> example, is expressed as nominator=24000 and denominator=1001. As there
-> is both a minimum and a maximum, there are 4 properties in total: two
-> numerators, and two denominators. A fixed rate with no variability is
-> expressed by setting the minimum fractional and the maximum fractional
-> properties to the same value.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  drivers/gpu/drm/drm_atomic_uapi.c | 24 +++++++++++++++++++++
->  drivers/gpu/drm/drm_connector.c   | 45 +++++++++++++++++++++++++++++++++++++++
->  drivers/gpu/drm/drm_crtc.c        |  8 +++++++
->  drivers/gpu/drm/drm_mode_config.c | 20 +++++++++++++++++
->  include/drm/drm_crtc.h            |  4 ++++
->  include/drm/drm_mode_config.h     | 45 +++++++++++++++++++++++++++++++++++++++
->  6 files changed, 146 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/drm_atomic_uapi.c b/drivers/gpu/drm/drm_atomic_uapi.c
-> index 1eebcf6f5e05..c9eb01d740b3 100644
-> --- a/drivers/gpu/drm/drm_atomic_uapi.c
-> +++ b/drivers/gpu/drm/drm_atomic_uapi.c
-> @@ -420,6 +420,22 @@ static int drm_atomic_crtc_set_property(struct drm_crtc *crtc,
->  		return ret;
->  	} else if (property == config->prop_vrr_enabled) {
->  		state->vrr_enabled = val;
-> +	} else if (property == config->prop_vrr_min_numerator) {
-> +		if (val > U32_MAX)
-> +			return -EINVAL;
-> +		state->vrr_state.vrr_min_n = val;
-> +	} else if (property == config->prop_vrr_min_denominator) {
-> +		if (val > U32_MAX)
-> +			return -EINVAL;
-> +		state->vrr_state.vrr_min_d = val;
-> +	} else if (property == config->prop_vrr_max_numerator) {
-> +		if (val > U32_MAX)
-> +			return -EINVAL;
-> +		state->vrr_state.vrr_max_n = val;
-> +	} else if (property == config->prop_vrr_max_denominator) {
-> +		if (val > U32_MAX)
-> +			return -EINVAL;
-> +		state->vrr_state.vrr_max_d = val;
->  	} else if (property == config->degamma_lut_property) {
->  		const size_t elem_size = sizeof(struct drm_color_lut);
->  		u64 lut_size;
-> @@ -505,6 +521,14 @@ drm_atomic_crtc_get_property(struct drm_crtc *crtc,
->  		*val = (state->mode_blob) ? state->mode_blob->base.id : 0;
->  	else if (property == config->prop_vrr_enabled)
->  		*val = state->vrr_enabled;
-> +	else if (property == config->prop_vrr_min_numerator)
-> +		*val = state->vrr_state.vrr_min_n;
-> +	else if (property == config->prop_vrr_min_denominator)
-> +		*val = state->vrr_state.vrr_min_d;
-> +	else if (property == config->prop_vrr_max_numerator)
-> +		*val = state->vrr_state.vrr_max_n;
-> +	else if (property == config->prop_vrr_max_denominator)
-> +		*val = state->vrr_state.vrr_max_d;
->  	else if (property == config->degamma_lut_property)
->  		*val = (state->degamma_lut) ? state->degamma_lut->base.id : 0;
->  	else if (property == config->ctm_property)
-> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-> index fc7d9fcf9d9f..5c07bd221977 100644
-> --- a/drivers/gpu/drm/drm_connector.c
-> +++ b/drivers/gpu/drm/drm_connector.c
-> @@ -2579,6 +2579,51 @@ EXPORT_SYMBOL(drm_mode_create_scaling_mode_property);
->   *
->   *	The driver may place further restrictions within these minimum
->   *	and maximum bounds.
-> + *
-> + * VRR Limiter/Target Properties
-> + * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> + *
-> + * The ``VRR_{MIN,MAX}_{NUMERATOR,DENOMINATOR}`` properties expose a mechanism
-> + * through which userspace can control the desired range of refresh rates in
-> + * which VRR is allowed to operate. Each rate is expressed as a
-> + * numerator/denominator fraction of refresh rates in Hz, allowing for rational
-> + * target rates like 24/1.001 Hz with no loss of precision or ambiguity.
-> + *
-> + * If the minimum and maximum rate are set to the same value (and not 0), they
-> + * are understood as a fixed target rate. This is especially useful for media
-> + * playback, where the content's frame rate is both constant and known in
-> + * advance. In such cases, a refresh rate that is not an integer multiple of the
-> + * content's frame rate will introduce judder, since not every frame is
-> + * displayed for the same amount of time. A modeset of the display with a
-> + * compatible rate may in those cases be either undesirable or impossible, but
-> + * the rate can still effectively be reached through VRR.
-> + *
-> + * .. _VRR-MIN-NUMERATOR:
-> + *
-> + * "VRR_MIN_NUMERATOR":
-> + *	Default &drm_crtc integer property forming the numerator of a
-> + *	numerator/denominator pair of a frame rate to set as the minimum VRR
-> + *	target rate. Set to 0 to disable.
-> + *
-> + * "VRR_MIN_DENOMINATOR":
-> + *	Default &drm_crtc integer property forming the denominator of a
-> + *	numerator/denominator pair of a frame rate to set as the minimum VRR
-> + *	target rate. If :ref:`VRR_MIN_NUMERATOR <VRR-MIN-NUMERATOR>` is not
-> + *	zero, it must be non-zero.
-> + *	Otherwise, must also be zero.
-> + *
-> + * .. _VRR-MAX-NUMERATOR:
-> + *
-> + * "VRR_MAX_NUMERATOR":
-> + *	Default &drm_crtc integer property forming the numerator of a
-> + *	numerator/denominator pair of a frame rate to set as the maximum VRR
-> + *	target rate. Set to 0 to disable.
-> + *
-> + * "VRR_MAX_DENOMINATOR":
-> + *	Default &drm_crtc integer property forming the denominator of a
-> + *	numerator/denominator pair of a frame rate to set as the maximum VRR
-> + *	target rate. If :ref:`VRR_MAX_NUMERATOR <VRR-MAX-NUMERATOR>` is not
-> + *	zero, it must be non-zero. Otherwise, must also be zero.
->   */
->  
->  /**
-> diff --git a/drivers/gpu/drm/drm_crtc.c b/drivers/gpu/drm/drm_crtc.c
-> index 63ead8ba6756..9244fbf97029 100644
-> --- a/drivers/gpu/drm/drm_crtc.c
-> +++ b/drivers/gpu/drm/drm_crtc.c
-> @@ -322,6 +322,14 @@ static int __drm_crtc_init_with_planes(struct drm_device *dev, struct drm_crtc *
->  					   config->prop_out_fence_ptr, 0);
->  		drm_object_attach_property(&crtc->base,
->  					   config->prop_vrr_enabled, 0);
-> +		drm_object_attach_property(&crtc->base,
-> +					   config->prop_vrr_min_numerator, 0);
-> +		drm_object_attach_property(&crtc->base,
-> +					   config->prop_vrr_min_denominator, 0);
-> +		drm_object_attach_property(&crtc->base,
-> +					   config->prop_vrr_max_numerator, 0);
-> +		drm_object_attach_property(&crtc->base,
-> +					   config->prop_vrr_max_denominator, 0);
->  	}
->  
->  	return 0;
-> diff --git a/drivers/gpu/drm/drm_mode_config.c b/drivers/gpu/drm/drm_mode_config.c
-> index 48a56f23dadb..da967d60f832 100644
-> --- a/drivers/gpu/drm/drm_mode_config.c
-> +++ b/drivers/gpu/drm/drm_mode_config.c
-> @@ -535,6 +535,26 @@ static int drm_mode_create_standard_properties(struct drm_device *dev)
->  		return -ENOMEM;
->  	dev->mode_config.prop_vrr_enabled = prop;
->  
-> +	prop = drm_property_create_range(dev, 0, "VRR_MIN_NUMERATOR", 0, U32_MAX);
-> +	if (!prop)
-> +		return -ENOMEM;
-> +	dev->mode_config.prop_vrr_min_numerator = prop;
-> +
-> +	prop = drm_property_create_range(dev, 0, "VRR_MIN_DENOMINATOR", 0, U32_MAX);
-> +	if (!prop)
-> +		return -ENOMEM;
-> +	dev->mode_config.prop_vrr_min_denominator = prop;
-> +
-> +	prop = drm_property_create_range(dev, 0, "VRR_MAX_NUMERATOR", 0, U32_MAX);
-> +	if (!prop)
-> +		return -ENOMEM;
-> +	dev->mode_config.prop_vrr_max_numerator = prop;
-> +
-> +	prop = drm_property_create_range(dev, 0, "VRR_MAX_DENOMINATOR", 0, U32_MAX);
-> +	if (!prop)
-> +		return -ENOMEM;
-> +	dev->mode_config.prop_vrr_max_denominator = prop;
-> +
->  	prop = drm_property_create(dev,
->  			DRM_MODE_PROP_BLOB,
->  			"DEGAMMA_LUT", 0);
-> diff --git a/include/drm/drm_crtc.h b/include/drm/drm_crtc.h
-> index 9d58158af459..df37f4ebb58e 100644
-> --- a/include/drm/drm_crtc.h
-> +++ b/include/drm/drm_crtc.h
-> @@ -67,6 +67,10 @@ struct drm_crtc_vrr_state {
->  	u8 vic;
->  	u16 cur_vtotal;
->  	u16 max_vtotal;
-> +	u32 vrr_min_n;
-> +	u32 vrr_min_d;
-> +	u32 vrr_max_n;
-> +	u32 vrr_max_d;
->  	u16 base_vtotal;
->  	bool dynamic;
->  };
-> diff --git a/include/drm/drm_mode_config.h b/include/drm/drm_mode_config.h
-> index 084517beb924..c8d5286f9267 100644
-> --- a/include/drm/drm_mode_config.h
-> +++ b/include/drm/drm_mode_config.h
-> @@ -702,6 +702,51 @@ struct drm_mode_config {
->  	 */
->  	struct drm_property *prop_vrr_enabled;
->  
-> +	/**
-> +	 * @prop_vrr_min_numerator: Default atomic CRTC property to indicate the
-> +	 * numerator of a numerator/denominator variable refresh rate minimum
-> +	 * target frame rate.
-> +	 *
-> +	 * If not zero, @prop_vrr_min_numerator divided by
-> +	 * @prop_vrr_min_denominator must result in a frame rate above the
-> +	 * sink's minimum VRR rate.
-> +	 */
-> +	struct drm_property *prop_vrr_min_numerator;
-> +
-> +	/**
-> +	 * @prop_vrr_min_denominator: Default atomic CRTC property to indicate
-> +	 * the denominator of a numerator/denominator variable refresh rate
-> +	 * minimum target frame rate.
-> +	 *
-> +	 * If @prop_vrr_min_numerator is set, @prop_vrr_min_denominator must not
-> +	 * be 0, and @prop_vrr_min_numerator divided by @prop_vrr_min_denominator
-> +	 * must result in a frame rate above the minimum VRR rate.
-> +	 */
-> +	struct drm_property *prop_vrr_min_denominator;
-> +
-> +	/**
-> +	 * @prop_vrr_max_numerator: Default atomic CRTC property to indicate the
-> +	 * numerator of a numerator/denominator variable refresh rate maximum
-> +	 * target frame rate range.
-> +	 *
-> +	 * The fraction expressed by this property divided by its corresponding
-> +	 * denominator must be equal to or greater than the value of
-> +	 * @prop_vrr_min_numerator.
-> +	 */
-> +	struct drm_property *prop_vrr_max_numerator;
-> +
-> +	/**
-> +	 * @prop_vrr_max_denominator: Default atomic CRTC property to indicate
-> +	 * the denominator of a numerator/denominator variable refresh rate
-> +	 * maximum target frame rate range.
-> +	 *
-> +	 * If @prop_vrr_max_numerator is set, @prop_vrr_max_denominator must not
-> +	 * be 0, and @prop_vrr_max_numerator divided by @prop_vrr_max_denominator
-> +	 * must result in a frame rate equal to or above @prop_vrr_min_numerator
-> +	 * divided by @prop_vrr_min_denominator.
-> +	 */
-> +	struct drm_property *prop_vrr_max_denominator;
-> +
->  	/**
->  	 * @dvi_i_subconnector_property: Optional DVI-I property to
->  	 * differentiate between analog or digital mode.
-> 
-> -- 
-> 2.55.0
-> 
-> 
+--=-e0QK1iLo/RR+fN85m10x
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le lundi 28 septembre 2026 =C3=A0 14:23 +0000, Sascha Hauer a =C3=A9crit=C2=
+=A0:
+> On 2026-09-25 10:31, Nicolas Dufresne wrote:
+> > > +++ b/drivers/media/platform/rockchip/rkjpegd/Kconfig
+> > > @@ -0,0 +1,16 @@
+> > > +# SPDX-License-Identifier: GPL-2.0
+> > > +config VIDEO_ROCKCHIP_JPEGD
+> > > +	tristate "Rockchip JPEG decoder driver"
+> > > +	depends on V4L_MEM2MEM_DRIVERS
+> > > +	depends on ARCH_ROCKCHIP || COMPILE_TEST
+> > > +	depends on VIDEO_DEV
+> > > +	depends on PM
+> > > +	select MEDIA_CONTROLLER
+> > > +	select V4L2_JPEG_HELPER
+> > > +	select V4L2_MEM2MEM_DEV
+> > > +	select VIDEOBUF2_DMA_CONTIG
+> > > +	help
+> > > +	  Support for the JPEG decoder Rockchip integrates into a number of
+> > > +	  its SoCs, decoding JPEG and MJPEG frames to NV12.
+> >=20
+> > nit: Should this help contains reference to the exact model ? (e.g. VDP=
+U720)
+>=20
+> Yes, will add.
+>=20
+> > > +
+> > > +#define RKJPEGD_NAME "rockchip-jpegd"
+> > > +
+> > > +/*
+> > > + * The reference manual gives 48x48 to 65536x65536, but a 32 bit siz=
+eimage
+> > > + * wraps well before the top of that range.  Cap at four times 4K in=
+ each
+> > > + * direction and hold both the coded format and the bitstream to it.
+> > > + */
+> > > +#define RKJPEGD_MIN_WIDTH	48
+> > > +#define RKJPEGD_MIN_HEIGHT	48
+> > > +#define RKJPEGD_MAX_SIZE	16384
+> >=20
+> > Seems quite strict and miss-leading, since you can't support stuff like
+> > 65536x160, which is barely 10MB / image. Can't you semantically filter =
+it, or
+> > let the allocation fails ?
+>=20
+> I had some trouble with possible integer overflows when allowing the
+> full 64k size, so I took the easy way of limiting to 16k which doesn't
+> overflow. I changed to use 64bit math which allows us to drop this
+> limitation.
+>=20
+> > > +/**
+> > > + * struct rkjpegd_dev - the decoder device
+> > > + *
+> > > + * @ref:		held by the binding, dropped by devres after every
+> > > + *			other devres resource is released, and by the video
+> > > + *			device, dropped from its release callback.
+> > > + * @v4l2_dev:		V4L2 device.
+> > > + * @mdev:		media device.
+> > > + * @vdev:		video device.
+> > > + * @m2m_dev:		mem2mem device.
+> > > + * @dev:		driver model device.
+> > > + * @clocks:		clocks named by @rkjpegd_clk_names.
+> > > + * @resets:		the block's reset lines, as one array control.
+> > > + * @regs:		register window.
+> > > + * @irq:		the block's interrupt, masked while the watchdog has
+> > > + *			the hardware to itself.
+> > > + * @vdev_lock:		serialises ioctls and the videobuf2 queues.
+> > > + * @drain_lock:		serialises the mem2mem drain state between
+> > > + *			V4L2_DEC_CMD_STOP/START and the completion of a job,
+> > > + *			which runs from the interrupt handler and the
+> > > + *			watchdog without @vdev_lock.
+> > > + * @watchdog_work:	fires when a job does not complete in time.
+> > > + * @needs_reset:	the block ended a job in error or without
+> > > + *			%VDPU720_SOFT_RST_RDY and has to be reset before
+> > > + *			the next one is programmed.  Set from the
+> > > + *			interrupt handler, consumed by rkjpegd_vdpu720_run();
+> > > + *			the reset itself sleeps and cannot be done in either
+> > > + *			the interrupt handler or anywhere else atomic.
+> > > + */
+> > > +struct rkjpegd_dev {
+> > > +	struct kref ref;
+> > > +	struct v4l2_device v4l2_dev;
+> > > +	struct media_device mdev;
+> >=20
+> > What do you use this media device for ?
+>=20
+> Turns out not at all. I'll drop it.
+>=20
+> > > +static void rkjpegd_reset_fmts(struct rkjpegd_ctx *ctx)
+> > > +{
+> > > +	u32 width =3D ALIGN(RKJPEGD_MIN_WIDTH, RKJPEGD_RAW_STEP);
+> > > +	u32 height =3D ALIGN(RKJPEGD_MIN_HEIGHT, RKJPEGD_RAW_STEP);
+> > > +
+> > > +	rkjpegd_fill_coded_fmt(&ctx->src_fmt, width, height, 0);
+> > > +	rkjpegd_set_default_colorimetry(&ctx->src_fmt);
+> > > +
+> > > +	mutex_lock(&ctx->fmt_lock);
+> >=20
+> > Have you considered using guard ?
+>=20
+> Will do, in case the lock actually survives this review.
+>=20
+> > > +static int rkjpegd_decoder_cmd(struct file *file, void *priv,
+> > > +			       struct v4l2_decoder_cmd *cmd)
+> > > +{
+> > > +	struct rkjpegd_ctx *ctx =3D file_to_rkjpegd_ctx(file);
+> > > +	struct rkjpegd_dev *jpegd =3D ctx->dev;
+> > > +	bool source_change, stopped;
+> > > +	unsigned long flags;
+> > > +	int ret;
+> > > +
+> > > +	ret =3D v4l2_m2m_ioctl_try_decoder_cmd(file, priv, cmd);
+> > > +	if (ret < 0)
+> > > +		return ret;
+> > > +
+> > > +	if (!vb2_is_streaming(v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx)))
+> > > +		return 0;
+> > > +
+> > > +	if (cmd->cmd =3D=3D V4L2_DEC_CMD_STOP) {
+> > > +		spin_lock_irqsave(&jpegd->drain_lock, flags);
+> > > +		ret =3D v4l2_m2m_ioctl_decoder_cmd(file, priv, cmd);
+> > > +		stopped =3D v4l2_m2m_has_stopped(ctx->fh.m2m_ctx);
+> > > +		spin_unlock_irqrestore(&jpegd->drain_lock, flags);
+> > > +		if (ret < 0)
+> > > +			return ret;
+> > > +
+> > > +		if (stopped)
+> > > +			v4l2_event_queue_fh(&ctx->fh, &rkjpegd_eos_event);
+> > > +
+> > > +		return 0;
+> > > +	}
+> > > +
+> > > +	/* Resumes after a drain or a resolution change alike. */
+> > > +	mutex_lock(&ctx->fmt_lock);
+> > > +	source_change =3D ctx->source_change;
+> > > +	mutex_unlock(&ctx->fmt_lock);
+> > > +
+> > > +	/* A drain the resolution change interrupted carries on. */
+> > > +	spin_lock_irqsave(&jpegd->drain_lock, flags);
+> > > +	if (!source_change || !ctx->fh.m2m_ctx->is_draining)
+> > > +		ret =3D v4l2_m2m_ioctl_decoder_cmd(file, priv, cmd);
+> >=20
+> > With guard, you could simply return here, and your could not need the r=
+et
+> > variable.
+>=20
+> Yes.
+>=20
+> > > +static int vdpu720_fill_chroma(struct rkjpegd_ctx *ctx,
+> > > +			       struct vb2_v4l2_buffer *dst_buf)
+> > > +{
+> > > +	struct rkjpegd_dev *jpegd =3D ctx->dev;
+> > > +	struct vb2_buffer *vb =3D &dst_buf->vb2_buf;
+> > > +	u32 y_size, size;
+> > > +	void *dst_cpu;
+> > > +	int ret;
+> > > +
+> > > +	mutex_lock(&ctx->fmt_lock);
+> >=20
+> > I keep seeing this fmt lock over and over and can't get my head around =
+why you
+> > would need that. There is implicit locking in the VIDIOC system that do=
+ protect
+> > these. Again, can you in your own word explain your choices ?
+>=20
+> It comes with dynamic resolution support. The check for a new resolution
+> has to be done in device_run() to make sure the resolution change takes
+> place on that exact frame. Doing it in buf_queue() would mean we get the
+> frames still in the queue wrong. We can't take vdev_lock in
+> device_run() which is why sashiko continuously stumbled upon missing
+> locking of ctx->dst_fmt.
+>=20
+> I cannot judge how propable an actual race or how serious this missing
+> locking is. But yes, the fmt_lock is a direct result of my LLM fighting
+> against Sashiko.
+>=20
+> So I could drop dynamic resolution support (which I don't need
+> currently), or we could ignore Sashiko here.
+
+That's the tougher one to solve I suppose. This is probably the first jpeg
+decoder implementing DYN_RESOLUTION, which is valid, just a feature more re=
+cent
+then most jpeg decoders today.
+
+I was mostly triggered by the fact  called fmt lock, since device_run() onl=
+y
+occurs while the device is streaming, and the format cannot change while
+streaming.
+
+On dynamic resolution change, to avoid the need for this locking, I believe=
+ you
+want to delay the update of the dst_fmt to when the draining have completed=
+ and
+userspace stop streaming. Only then it is safe, as in order to resume decod=
+ing,
+userspace will have to call streamon, which will fail if the allocated buff=
+ers
+are too small. There is no other validation of the buffer size in place, so
+otherwise you can just do CMD_START and let the HW write all over the place=
+.
+
+> >=20
+> > > +	y_size =3D ctx->dst_fmt.plane_fmt[0].bytesperline * ctx->dst_fmt.he=
+ight;
+> > > +	size =3D ctx->dst_fmt.plane_fmt[0].sizeimage;
+> > > +	mutex_unlock(&ctx->fmt_lock);
+> > > +
+> > > +	dst_cpu =3D vb2_plane_vaddr(vb, 0);
+> > > +	if (!dst_cpu) {
+> > > +		dev_err_ratelimited(jpegd->dev,
+> > > +				    "JPEG capture buffer has no kernel mapping\n");
+> > > +		return -EINVAL;
+> > > +	}
+> > > +
+> > > +	ret =3D rkjpegd_begin_cpu_access(vb, DMA_TO_DEVICE);
+> > > +	if (ret)
+> > > +		return ret;
+> > > +
+> > > +	memset(dst_cpu + y_size, 0x80, size - y_size);
+> > > +
+> > > +	rkjpegd_end_cpu_access(vb, DMA_TO_DEVICE);
+> >=20
+> > This had no place here, should be done by the io ops.
+>=20
+> I'll switch to a single plane output format as you suggested.
+>=20
+>=20
+> > > +	dma_sync_single_for_device(jpegd->dev, ctx->table_base.dma,
+> > > +				   ctx->table_base.size, DMA_TO_DEVICE);
+> > > +
+> > > +	/*
+> > > +	 * STRM_BASE must be 16-byte aligned, so split the address and reco=
+rd
+> > > +	 * the sub-block start byte.  Both come from the start of the plane=
+,
+> > > +	 * not the payload: videobuf2 lets data_offset carry arbitrary low
+> > > +	 * bits, which STRM_BASE has no way to encode.
+> > > +	 */
+> > > +	strm_off        =3D data_offset + hdr->ecs_offset;
+> > > +	hw_strm_off     =3D strm_off & ~0xfU;
+> > > +	strm_start_byte =3D strm_off & 0xfU;
+> > > +	strm_len_blks   =3D (ALIGN(payload - hw_strm_off, 16) - 1) >> 4;
+> > > +
+> > > +	ret =3D vdpu720_fill_regs(ctx, hdr, ctx->table_base.dma,
+> > > +				src_dma + hw_strm_off, strm_start_byte,
+> > > +				strm_len_blks, dst_dma);
+> > > +	if (ret)
+> > > +		return ret;
+> > > +
+> > > +	if (hdr->frame.num_components =3D=3D 1) {
+> > > +		ret =3D vdpu720_fill_chroma(ctx, dst_buf);
+> >=20
+> > That seems crazy expensive. If the HW does not fill the chroma, why do =
+you pick
+> > a multi-plane format in the first place. Use a Y only format instead.
+>=20
+> That's a better approach for sure.
+>=20
+> >=20
+> > Fixing that should let you skip kernel mapping of the destination buffe=
+r
+> > perhaps.
+>=20
+> Yes.
+>=20
+> >=20
+> > > +		if (ret)
+> > > +			return ret;
+> > > +	}
+> > > +
+> > > +	rkjpegd_arm_watchdog(jpegd);
+> > > +
+> > > +	/*
+> > > +	 * A frame whose entropy data ends early runs the decoder off the e=
+nd
+> > > +	 * of the stream, and with the condition masked it waits instead of
+> > > +	 * reporting.  VDPU720_ERR_MASK already covers the status.
+> > > +	 */
+> > > +	rkjpegd_write(jpegd,
+> > > +		      VDPU720_DEC_E | VDPU720_TIMEOUT_E | VDPU720_BUF_EMPTY_E,
+> > > +		      VDPU720_REG_INT);
+> > > +
+> > > +	return 0;
+> > > +}
+> > > +
+> > > +static irqreturn_t rkjpegd_vdpu720_irq(int irq, void *dev_id)
+> > > +{
+> > > +	struct rkjpegd_dev *jpegd =3D dev_id;
+> > > +	enum vb2_buffer_state state;
+> > > +	irqreturn_t ret =3D IRQ_NONE;
+> > > +	u32 status;
+> > > +
+> > > +	/* The registers are only clocked while the device is runtime activ=
+e. */
+> > > +	if (pm_runtime_get_if_active(jpegd->dev) <=3D 0)
+> > > +		return IRQ_NONE;
+> >=20
+> > Was that sashiko asking you to do that ?
+>=20
+> Yes, several times:
+>=20
+>   =E2=96=8E [High] The interrupt handler reads hardware registers without=
+ checking if the device is active via=20
+>   =E2=96=8E pm_runtime, leading to crashes on spurious interrupts.
+>=20
+>=20
+>   =E2=96=8E [Severity: High]
+>   =E2=96=8E This reads the VDPU720_REG_INT register unconditionally upon =
+entry. If a spurious interrupt or an=20
+>   =E2=96=8E irqpoll event occurs while the device is in a runtime-suspend=
+ed state (with clocks and power domains=20
+>   =E2=96=8E gated off), will this read trigger a synchronous external abo=
+rt on ARM? Should it use=20
+>   =E2=96=8E pm_runtime_get_if_active() to verify the power state first?
+>=20
+>   =E2=96=8E If a spurious interrupt fires while the IP block is held in r=
+eset, the rkjpegd_vdpu720_irq() handler=20
+>   =E2=96=8E will run. Because PM runtime is still active, pm_runtime_get_=
+if_active() will succeed, and the handler
+>   =E2=96=8E will try to read from the hardware (VDPU720_REG_INT), which c=
+an cause a bus stall or kernel panic.
+>=20
+> > To start with, if you clock off the
+> > device, you won't get the IRQ. If you clock off the device between the =
+start of
+> > this function and here in a race, you have some bigger problems in your=
+ driver.
+> >=20
+> > This type of IP is not free-running, its trigger based. When its trigge=
+red, it
+> > should be busy and a PM ref should be held. Be careful with sashiko rem=
+arks, it
+> > does not differentiate free-running IP from triggered IP.
+> >=20
+> > I'm also a little worried that maybe you don't actually understand this=
+, since
+> > its quite possible you simply fed sashiko into your llm to produce this=
+ v5.
+>=20
+> Ok, shows I have to think a bit more before taking Sashiko things for
+> granted.
+
+Yes, though I was off a little, what I mean is that for triggered devices l=
+ike
+this, which don't have known spurious IRQ hw bugs, you want the PM runtime =
+to be
+held for the duration of job, which imply it will be running on IRQ. The me=
+thod
+you have now would be useful if there was a shared IRQ or some known hardwa=
+re
+bugs to deal with.
+
+>=20
+> >=20
+> > > +
+> > > +	status =3D rkjpegd_read(jpegd, VDPU720_REG_INT);
+> > > +
+> > > +	/* First phase of the IRQ clear, see VDPU720_IRQ_CLR_KEEP. */
+> > > +	rkjpegd_write(jpegd, status & VDPU720_IRQ_CLR_KEEP, VDPU720_REG_INT=
+);
+> > > +
+> > > +	if (!(status & VDPU720_IRQ_RAW))
+> > > +		goto out_put;
+> > > +
+> > > +	rkjpegd_write(jpegd, 0, VDPU720_REG_INT);
+> > > +
+> > > +	state =3D (status & VDPU720_ERR_MASK) ?
+> > > +		VB2_BUF_STATE_ERROR : VB2_BUF_STATE_DONE;
+> >=20
+> > nit: Sometimes its nice to set the payload size to zero, to signal that=
+ this is
+> > not minor data corruption but a complete decode failure. Looking below,=
+ most
+> > err_info imply this. Its not a bug in your implementation though.
+>=20
+> Yes, will do.
+>=20
+> > > +/**
+> > > + * rkjpegd_abort_job() - take a running job away from the hardware
+> > > + * @jpegd:	device whose current job is to be ended
+> > > + *
+> > > + * Resets the block and hands the frame back as an error even if it =
+did
+> > > + * complete: the reset went through underneath it and cleared the in=
+terrupt
+> > > + * that would have said so.  The interrupt is masked across the sequ=
+ence so a
+> > > + * completion arriving in the middle cannot finish the job a second =
+time.
+> > > + *
+> > > + * The caller must have stopped the watchdog from firing first.  Whi=
+ch of the
+> > > + * two completes a job is decided by the cancel_delayed_work() in
+> > > + * rkjpegd_irq_done(), so a watchdog that is still armed makes this =
+racy.
+> > > + */
+> > > +static void rkjpegd_abort_job(struct rkjpegd_dev *jpegd)
+> > > +{
+> > > +	struct rkjpegd_ctx *ctx;
+> > > +
+> > > +	disable_irq(jpegd->irq);
+> >=20
+> > That is not needed for triggered IP, drop.
+>=20
+> Ok.
+>=20
+> > > +static void rkjpegd_device_run(void *priv)
+> > > +{
+> > > +	struct rkjpegd_ctx *ctx =3D priv;
+> > > +	struct rkjpegd_dev *jpegd =3D ctx->dev;
+> > > +	struct vb2_v4l2_buffer *src, *dst;
+> > > +	int ret;
+> > > +
+> > > +	src =3D v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> > > +	dst =3D v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+> > > +	if (WARN_ON(!src) || WARN_ON(!dst))
+> > > +		return;
+> >=20
+> > I don't think m2m framework will call run unless this condition is met,=
+ so this
+> > si likely redundant, please verify.
+>=20
+> Right, will remove.
+>=20
+> > > +/**
+> > > + * rkjpegd_has_eoi() - look for the end of image marker of a frame
+> > > + * @data:	the frame
+> > > + * @start:	offset of the entropy coded data in @data
+> > > + * @len:	length of @data
+> > > + *
+> > > + * v4l2_jpeg_parse_header() never looks behind the start of scan, so=
+ a
+> >=20
+> > If there is something about the common parser, fix the common parser. W=
+e don't
+> > want every driver to implement its own parsing. JPEG decoders are alrea=
+dy the
+> > exception, this is why we have stateless decoders for everything that w=
+as made
+> > later.
+>=20
+> I introduced it because it happened that for large resolutions userspace
+> passed buffers that couldn't fit a whole frame into them. Then decoding
+> stopped in the middle of a frame and the next buffer started at that
+> place inside a frame, so the buffers desynchronized with the frames.
+>=20
+> The hardware has a BUF_EMPTY_E interrupt which should catch this. I
+> think by handling this properly we can get rid of this has_eoi check.
+>=20
+> > > +static void rkjpegd_buf_queue(struct vb2_buffer *vb)
+> > > +{
+> > > +	struct vb2_v4l2_buffer *vbuf =3D to_vb2_v4l2_buffer(vb);
+> > > +	struct rkjpegd_ctx *ctx =3D vb2_get_drv_priv(vb->vb2_queue);
+> > > +
+> > > +	if (V4L2_TYPE_IS_CAPTURE(vb->vb2_queue->type)) {
+> > > +		if (vb2_is_streaming(vb->vb2_queue) &&
+> > > +		    v4l2_m2m_dst_buf_is_last(ctx->fh.m2m_ctx)) {
+> > > +			rkjpegd_last_buffer_done(ctx, vbuf);
+> > > +			v4l2_m2m_mark_stopped(ctx->fh.m2m_ctx);
+> > > +			v4l2_event_queue_fh(&ctx->fh, &rkjpegd_eos_event);
+> > > +			return;
+> > > +		}
+> > > +
+> > > +		v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
+> > > +		return;
+> > > +	}
+> > > +
+> > > +	rkjpegd_parse_src_buf(ctx, vb);
+> >=20
+> > This function can fail, its not clear once you ignore the return value =
+how the
+> > error will propagade to device_run() and produce a matching error dst b=
+uffer.
+>=20
+> The error travels through src_buf->parsed and rkjpegd_vdpu720_run()
+> bails out with an error when the frame couldn't be parsed. I can make
+> that clearer by returning an error from rkjpegd_parse_src_buf() and
+> setting the variable here instead.
+
+Not sure I completely followed, but the main point is either drop
+rkjpegd_parse_src_buf() return value and related code if not needed, or use=
+ the
+return value to propagate the error.
+
+>=20
+> > > +static void rkjpegd_stop_streaming(struct vb2_queue *vq)
+> > > +{
+> > > +	struct rkjpegd_ctx *ctx =3D vb2_get_drv_priv(vq);
+> > > +	struct vb2_v4l2_buffer *vbuf;
+> > > +
+> > > +	for (;;) {
+> > > +		if (V4L2_TYPE_IS_OUTPUT(vq->type))
+> > > +			vbuf =3D v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> > > +		else
+> > > +			vbuf =3D v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> > > +		if (!vbuf)
+> > > +			break;
+> > > +		if (V4L2_TYPE_IS_CAPTURE(vq->type))
+> > > +			vb2_set_plane_payload(&vbuf->vb2_buf, 0, 0);
+> > > +		v4l2_m2m_buf_done(vbuf, VB2_BUF_STATE_ERROR);
+> > > +	}
+> > > +
+> > > +	v4l2_m2m_update_stop_streaming_state(ctx->fh.m2m_ctx, vq);
+> > > +
+> > > +	/* A seek also ends a drain a resolution change had cut short. */
+> > > +	if (V4L2_TYPE_IS_OUTPUT(vq->type))
+> > > +		ctx->fh.m2m_ctx->last_src_buf =3D NULL;
+> > > +	else
+> > > +		rkjpegd_resume_drain(ctx);
+> > > +
+> > > +	if (V4L2_TYPE_IS_OUTPUT(vq->type) &&
+> > > +	    v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
+> > > +		v4l2_event_queue_fh(&ctx->fh, &rkjpegd_eos_event);
+> >=20
+> > That is strange, STREAMOFF will flush the queues, so adding an event to=
+ the
+> > event queue seems odd, I never seen that before.
+>=20
+> The same pattern is in the vicodec since [1], was added to mxc-jpeg in
+> [2] and went into this driver from there.
+>=20
+> Sending EOS here is deprecated anyway:
+>=20
+>       For backwards compatibility, the decoder will signal a ``V4L2_EVENT=
+_EOS``
+>       event when the last frame has been decoded and all frames are ready=
+ to be
+>       dequeued. It is a deprecated behavior and the client must not rely =
+on it.
+>       The ``V4L2_BUF_FLAG_LAST`` buffer flag should be used instead.
+>=20
+> Maybe we can just drop it for a new driver.
+
+But that's different, its about sending EOS event when the LAST buffer is q=
+ueued
+into the capture pool. Driver that strictly want to implement this backward
+compatibility must resort to queuing an empty LAST buffer. Doing this in
+streamoff seems odd, I would need to further dig into. I must admit, I neve=
+r
+seen that event being used, so I don't really know how it was historically =
+used.
+
+You can always leave it, I'm just not convince of the usefulness, as we sho=
+uld
+be flushing the queues when we stop streaming.
+
+>=20
+>=20
+> [1] d4d137de5f31 ("media: vicodec: use v4l2-mem2mem draining, stopped and=
+ next-buf-is-last states handling"
+> [2] 4911c5acf935 ("media: imx-jpeg: Implement drain using v4l2-mem2mem he=
+lpers")
+>=20
+> > > +static int rkjpegd_open(struct file *filp)
+> > > +{
+> > > +	struct rkjpegd_dev *jpegd =3D video_drvdata(filp);
+> > > +	struct rkjpegd_ctx *ctx;
+> > > +	int ret;
+> > > +
+> > > +	ctx =3D kzalloc_obj(*ctx);
+> >=20
+> > There is scope function to automatically free this on return.
+>=20
+> Yes, will change to that.
+>=20
+> > > +
+> > > +static struct platform_driver rkjpegd_driver =3D {
+> > > +	.probe =3D rkjpegd_probe,
+> > > +	.remove =3D rkjpegd_remove,
+> > > +	.driver =3D {
+> > > +		.name =3D RKJPEGD_NAME,
+> > > +		.of_match_table =3D of_rkjpegd_match,
+> > > +		.pm =3D pm_ptr(&rkjpegd_pm_ops),
+> > > +	},
+> > > +};
+> > > +module_platform_driver(rkjpegd_driver);
+> > > +
+> > > +MODULE_DESCRIPTION("Rockchip JPEG decoder driver");
+> > > +MODULE_AUTHOR("Lucas Sinn <lucas.sinn@wolfvision.net>");
+> > > +MODULE_LICENSE("GPL");
+> > > +MODULE_IMPORT_NS("DMA_BUF");
+> >=20
+> >=20
+> > Looking forward your feedback, I'm quite surprised of "your" choices, a=
+nd how
+> > you possibly have needed this complexity.
+>=20
+> Thanks for the thorough and honest review.
+>=20
+> When I first worked with v4l2_m2m many years ago I was excited how easy
+> it has become to write such an m2m driver. I am also shocked to see how
+> many possible races sashiko found and through which hoops I had to go to
+> make sashiko happy (I still haven't accomplished that it seems).
+>=20
+> Much of the complexity comes from two things: The watchdog and the
+> dynamic resolution handling.
+>=20
+> Sashiko claims the watchdog has to protect itself against a race with
+> the irq handler. That of course misses that the watchdog only triggers
+> because the IRQ doesn't come which makes it quite unlikely that the IRQ
+> comes in the precise moment the watchdog triggers.
+
+That should be solved using the watchdog API alone. On a theoretical basis
+(cause I don't program this every day):
+
+irq_func()
+{
+  if (!cancel_delayed_work(&dev->watchdog_work))
+		return IRQ_HANDLED;
+  ...
+}
+
+watchdog_func()
+{
+  reset_so_that_no_possible_irq_occures_passed_this_line();
+  return;
+}
+
+So in the IRQ handler, you use the delayed work API to guaranty that your
+whatchdog won't be called. If its being called, or has been called, then it=
+ does
+an early return.
+
+For the watchdog, the delayed worker code ensures that once called,
+cancel_delayed_work() will return false. You have to make sure you synchron=
+ously
+guaranty that no more IRQ will occur, hense why we operate a HW reset. Its =
+also
+usually the only way to recover a wedged IP.
+
+>=20
+> I explained the complexity added with the resolution changes inline above=
+.
+
+The resolution changes, drain flow and seek flow (see the state machine [0]=
+) is
+effectively very complex, with legacy behaviour built-in, I totally give th=
+at to
+you. Neil did a pass to improve the helpers, but it is still too complex an=
+d
+confusing. In fact, we did a great job, as we totally confused Sashiko, mea=
+ning
+neither human or machine can reliably review. I suggest to do a lot of test=
+ing
+in general for sure.
+
+[0]
+https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/dev-decoder.=
+html#state-machine
+
+Nicolas
+
+--=-e0QK1iLo/RR+fN85m10x
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCarwS3wAKCRDZQZRRKWBy
+9AV8AP9dNfnDOCVzEVsl1zA9N195QFS01NTTiQUw/BExWiWI8QEA6/bbJ/FzV3EQ
+QHLItqFsU5d8zcqLgXaWuegVCwp2xgg=
+=IFxD
+-----END PGP SIGNATURE-----
+
+--=-e0QK1iLo/RR+fN85m10x--
+
+
+--===============1662458553450105838==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1662458553450105838==--
+
