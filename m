@@ -4,62 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13BA5CA5FA5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 01:28:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DC36CA5FA5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 02:52:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ezflJWJcDjNgqoykiFN09o3bTGF8XzjV4UKJEpZNiTs=; b=07tqY7Sa6xA812
-	lh8Y5fZVwDea3KiRTm04FV4qLkhaXSEfRs+OP67xjyTPBs00PJlaWYvs/1CrblsCC2TqbFg2ff8NY
-	VbYOnA/OXals1v1j9j6iYz4km5wfpdsQy2OnG+va5nkZhu32sizOM2zCjqNPqccaWhlkB/BCgBVOz
-	bFEJUz1QKsoW4K2ADDCk2QxdfPx8gEHTL3Q52/lpvpg6CMkMKLRdrYmEpVOgbRGF7UWKCJq1P6sgt
-	ijg9UnhDnE0gXFcsLj7t4Sw39c+zLzfX58w6/JHHpQm3hjMzgcn4gWt1Aq1qA5VgCYL939GpKWzSD
-	W2ExQU7gTbD3TJ9SfihA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qYGbTbOdTX3+pbLzCVKn2diRPW1uuHnMkkzpVi9sYzc=; b=rjWpx+ZHOr8WL3
+	pCDdLT/6D1z7PJAw6cxS/Seyks7Mox2Nl7Xd0zoBtEOjWlzhAYXHYeaF5+2+vrMcQErCGfY9124Qx
+	CkHkfbL5nCvY3CD+2LxU2ExLXQg2rTihfsH4X439jlhbxrdlfy+MrCHc5cuOgk+BWY1rdbyv6ei2c
+	Dm3WAUanvczIyvAiB5S5HR6C3DNVLodeFV8CU4BewJWjweMlCG9riff9oz8YqzBhXnJjKub9e+/s7
+	iXDbLMCr3AjOiNBbPtdiut9Sy6d4J0t1G4qHD4eIPC5YC5xupv8B5EHkGzicOANPD2FfyP8vv5eIp
+	TP+Kp+c+BiZlKQxBa2Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBj7M-00000004reL-3c6o;
-	Wed, 30 Sep 2026 01:28:20 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
+	id 1xBkQX-00000004wAW-35Mm;
+	Wed, 30 Sep 2026 02:52:13 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBj7J-00000004rde-3R2A;
-	Wed, 30 Sep 2026 01:28:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
-	Content-Type; bh=y4LgJcxG58FFth/hB4/i7KbJf2H3darIqdWGj6YwQ/s=;
-	b=jjxRzqGTAYcYRKiHAHIVCbgcrTAW/dqGYAbEjBqLST5e81bz9cyk0EZOljUVwv
-	YiJa/Qmillt5urd1n7wlLmwWLeZsQ1fa4RAfaXMcwGZ/bPW/TLSwG1u5fDjNQeps
-	hUs5bBmyQ9VD2y8ZPgKQuBMw6abZAk8KFv2VpQlN1AmQw=
-Message-ID: <e8a9863f-d4ea-4796-8dfe-c59f5e379687@163.com>
-Date: Wed, 30 Sep 2026 09:27:31 +0800
+	id 1xBkQX-00000004wAG-0JiN;
+	Wed, 30 Sep 2026 02:52:13 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 853E340925;
+	Wed, 30 Sep 2026 02:52:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 5E3C2C2BCF6;
+	Wed, 30 Sep 2026 02:52:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1790736732;
+	bh=TI3eBdcLTSlpQRvsnz37lTuaeLP8kjd46bVtYcvMOIo=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=snrB02n2XKdkykmQGcW8gozBHstnK7QbWT+XCenJUFPfuCGSk136myE/ptj9Ky4PF
+	 O4F6qkTwAWF0dTmw2u+tDSROB0W7J0E4NJzoRX+oiktehXhQk5R6s1715OaNZF118F
+	 feTfx7Ga3DXwFK2OFW629BUvwFc2AzJ5Abu5biSjz8RwLYdiIfGAR265LQlfVZjOlF
+	 /q/ZIyP/GZaQxqAMflqAnRcYthZ0DLi6L8g5rgySZHZXv4YQI5clOf40waB/roXNH3
+	 g7v6te12F2zXIIRGItTXT/BvH5jdEWxAq+AtIFSZSVZzGSVnHb2PGVsCzVKoN/zavk
+	 JSMC2itGYgTbw==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 49C8BCA5FB3;
+	Wed, 30 Sep 2026 02:52:12 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Wed, 30 Sep 2026 05:52:03 +0300
+Subject: [PATCH] arm64: dts: rockchip: Add buttons to Kobol Helios64
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] PCI: dwc: Align register macros with Synopsys
- documentation
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
- heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com, pali@kernel.org,
- neil.armstrong@linaro.org, robh@kernel.org, jingoohan1@gmail.com,
- khilman@baylibre.com, jbrunet@baylibre.com,
- martin.blumenstingl@googlemail.com, cassel@kernel.org,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Feizhou Yu <yufeizhou201@163.com>
-References: <20260928215110.GA2266447@bhelgaas>
-Content-Language: en-US
-From: Hans Zhang <18255117159@163.com>
-In-Reply-To: <20260928215110.GA2266447@bhelgaas>
-X-CM-TRANSID: _____wD3B4aDZbxq7D5eBg--.58103S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7ZFWkWw1fJFy3Ary3Wr17Jrb_yoW8urWxpa
-	1xJF4rtw4DXF4aqw4Ig3WrX3W7Xrn3JrZ8X3yvqw18tan5Xr93Gr40grWjkFWkZrn3Kr1j
-	qr4jq3yxWry3Aa7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UC2NNUUUUU=
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCwwRE52q8ZYQf4QAA3t
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_182818_287426_0AF53BF5 
-X-CRM114-Status: GOOD (  11.46  )
+Message-Id: <20260930-helios64-buttons-v1-1-d76249064003@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAFJ5vGoC/x3MOwqAMBBF0a3I1AZilKBuRSz8PHVAEsmoCJK9G
+ yxPce9LgsAQarOXAm4W9i6hyDOatsGtUDwnk9HG6qbUasPOXmylxus8vRM1NuUwV6gBA0rZEbD
+ w8y+7PsYPxs+eEWIAAAA=
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3412; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=K7Z4uztvoCt3fl82OcCvlTFdzYYGS+LBErAXzdnqa6g=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFl7KsMuz/ewuZ0Yu7B3puHGxQ/E+UNnhuSwGwg/8ne4l
+ 8m06UF+RykLgxgXg6yYIsuEQxq3MpZc/evvYf4AZg4rE8gQBi5OAZhI5gpGhithfo9X/fWQ+ns2
+ bdUcpim6t3eVnV55ean3xjKFtLvBl1gZ/qclt8+Nnqu4u8eFwUtlWm4E47NaycktLf9bN5z+8lz
+ FiAEA
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,66 +80,151 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Igor Velkov <iav@iav.lv>
 
+The Helios64 front panel has Power and Recovery buttons. Power is
+wired to GPIO0_A5 and Recovery to SARADC channel 1. The board also
+routes a User1 button signal to GPIO0_A3 on front panel header P3.
 
-On 9/29/26 05:51, Bjorn Helgaas wrote:
-> On Mon, Sep 28, 2026 at 04:50:09PM -0500, Bjorn Helgaas wrote:
->> On Sat, Sep 12, 2026 at 12:25:36AM +0800, Hans Zhang wrote:
->>> The DWC PCIe register and field macros are inconsistently named and
->>> often do not match the Synopsys DesignWare PCIe Controller Reference
->>> Manual.  This makes it harder to cross-reference the code with the
->>> documentation when debugging or maintaining the driver.
->>
->>> +#define  PORT_AFAC_L0S_ELS		24		/* L0s Entrance Latency shift */
->>> +#define  PORT_AFAC_L0S_ELM		GENMASK(26, 24)	/* L0s Entrance Latency mask */
->>> +#define  PORT_AFAC_L1_ELS		27		/* L1 Entrance Latency shift */
->>> +#define  PORT_AFAC_L1_ELM		GENMASK(29, 27)	/* L1 Entrance Latency mask */
->>
->> Surely we don't need both the shift and the mask?  Maybe a separate
->> patch convert to FIELD_PREP()?
-> 
-> Oops, sorry, didn't notice that Mani had already applied these.  This
-> could be material for follow-on patches.
+Describe Power and User1 as gpio-keys and Recovery as adc-keys.
+The SARADC reference is the 1V8_S3 rail from RK808 LDO_REG3, so add
+that regulator.
 
-Hi Bjorn,
+Assisted-by: LLM
+Signed-off-by: Igor Velkov <iav@iav.lv>
+---
+Tested on 7.3-rc5 with evtest: Power reports KEY_POWER, Recovery
+reports BTN_1. Power wakes the board from s2idle. User1 has no button
+on the enclosure and is untested.
+---
+ .../boot/dts/rockchip/rk3399-kobol-helios64.dts    | 64 ++++++++++++++++++++++
+ 1 file changed, 64 insertions(+)
 
-I will send a patch separately based on the branch controller/dwc.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+index b2de018a7d36..d146e5075b4f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+@@ -11,6 +11,7 @@
+  */
+ 
+ /dts-v1/;
++#include <dt-bindings/input/input.h>
+ #include "rk3399.dtsi"
+ 
+ / {
+@@ -23,6 +24,20 @@ aliases {
+ 		mmc1 = &sdhci;
+ 	};
+ 
++	adc-keys {
++		compatible = "adc-keys";
++		io-channels = <&saradc 1>;
++		io-channel-names = "buttons";
++		keyup-threshold-microvolt = <1800000>;
++		poll-interval = <100>;
++
++		button-recovery {
++			label = "Recovery";
++			linux,code = <BTN_1>;
++			press-threshold-microvolt = <100000>;
++		};
++	};
++
+ 	avdd_0v9_s0: regulator-avdd-0v9-s0 {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "avdd_0v9_s0";
+@@ -68,6 +83,27 @@ fan2 {
+ 		cooling-levels = <0 80 170 255>;
+ 	};
+ 
++	gpio-keys {
++		compatible = "gpio-keys";
++		pinctrl-names = "default";
++		pinctrl-0 = <&pwr_btn &user1_btn>;
++
++		button-power {
++			debounce-interval = <100>;
++			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
++			label = "Power";
++			linux,code = <KEY_POWER>;
++			wakeup-source;
++		};
++
++		button-user1 {
++			debounce-interval = <100>;
++			gpios = <&gpio0 RK_PA3 GPIO_ACTIVE_LOW>;
++			label = "User Button 1";
++			linux,code = <BTN_0>;
++		};
++	};
++
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+@@ -352,6 +388,19 @@ regulator-state-mem {
+ 				};
+ 			};
+ 
++			vcc1v8_s3: LDO_REG3 {
++				regulator-name = "vcc1v8_s3";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
+ 			vcc_sdio_s0: LDO_REG4 {
+ 				regulator-name = "vcc_sdio_s0";
+ 				regulator-always-on;
+@@ -434,6 +483,16 @@ &pcie0 {
+ };
+ 
+ &pinctrl {
++	buttons {
++		pwr_btn: pwr-btn {
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		user1_btn: user1-btn {
++			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	gmac {
+ 		gphy_reset: gphy-reset {
+ 			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_output_low>;
+@@ -503,6 +562,11 @@ &pwm1 {
+ 	status = "okay";
+ };
+ 
++&saradc {
++	vref-supply = <&vcc1v8_s3>;
++	status = "okay";
++};
++
+ &sdhci {
+ 	bus-width = <8>;
+ 	mmc-hs200-1_8v;
 
+---
+base-commit: 23d8f49fcae5d72b77744c7f349c12462c3bb748
+change-id: 20260930-helios64-buttons-b93ad4e8ee2e
 
 Best regards,
-Hans
+-- 
+Igor Velkov <iav@iav.lv>
 
-
-> 
->>> +#define  GEN3_CTRL_RATE_SHADOW_SEL_SHIFT 24		/* Rate Shadow Select shift */
->>> +#define  GEN3_CTRL_RATE_SHADOW_SEL_MASK	GENMASK(25, 24)	/* Rate Shadow Select mask */
->>
->> Ditto.
->>
->>> +#define MSIX_DOORBELL			0x948
->>> +#define  MSIX_DOORBELL_PF_SHIFT		24
->>
->> Probably would be better to define a mask so we have the position
->> *and* the width.
->>
->>> @@ -621,15 +621,15 @@ static inline u32 event_counter_prog(struct tegra_pcie_dw *pcie, u32 event)
->>>   	u32 val;
->>>   
->>>   	val = dw_pcie_readl_dbi(&pcie->pci, pcie->ras_des_cap +
->>> -				PCIE_RAS_DES_EVENT_COUNTER_CONTROL);
->>> +				RAS_DES_EVENT_COUNTER_CONTROL);
->>>   	val &= ~(EVENT_COUNTER_EVENT_SEL_MASK << EVENT_COUNTER_EVENT_SEL_SHIFT);
->>>   	val |= EVENT_COUNTER_GROUP_5 << EVENT_COUNTER_GROUP_SEL_SHIFT;
->>>   	val |= event << EVENT_COUNTER_EVENT_SEL_SHIFT;
->>>   	val |= EVENT_COUNTER_ENABLE_ALL << EVENT_COUNTER_ENABLE_SHIFT;
->>
->> Probably a good chance to convert these to FIELD_PREP() etc. as well,
->> maybe in a separate patch.
 
 
 _______________________________________________
