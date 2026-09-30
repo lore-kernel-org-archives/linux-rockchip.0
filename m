@@ -4,79 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BFB4CA5FC4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 19:34:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E0E1CA5FCC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 21:52:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=so8Dr8HOssvGR1+qqAurtLsizaraUz+oLCRQolYINRc=; b=ptZEspUPWkHFQn
-	jrj/SHoIpsBxn3Pye+BAsr8liy6E8tK1czMaLunxzRsn0zrr1ONsn0S58iN0dRUTmmUIwmkGku1yt
-	ExUGdMZfOvE5Gu2ZQBOvBJGWhiRKSVfz2RCHpg1Qv2yD+vF4luycTN8ziNKw8vAa/7vpffrw8tO53
-	nOTHYu2wbNkZQSG470UB1LWLTTvFxDkYBZDBmON6rXP9vzdBb/VQUyqPc1c7gnPx83uSTTO53ljxv
-	kovMxThzifq+qNtwWjbucF1Y8oMO2EesMvJZEAXpeTziFpvAWUs7xG8jTqG2yTRrPEMELrFMsSHom
-	T3m9wtljsxRNRFUZ5ooA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=u2uVy0hSBE29/vvaLGgYvZLiUzLryAWmhzugoeBKqa4=; b=OUxHxi0jETOOkP
+	JYzv89mbF2wdsli7yHRL7hRvKmuorQz6+zZ1gcfDLD3VsoE2lzfdW2bjrb2gmNjxLMh4ekTpeRPop
+	Mo1aV5NDfuip5/SAaNjCqLpKrTFJct1IXD4MrwP5AlHEaIc+tyHaNTs6t2cYbmnh17VJQD2i0y+F/
+	PifNLPuRSNYWDyJl9N3ruMWzxqgKNiVnphlzswOPYX0ClsbISwWuPGEiBP30ZqWy3m88gHP6Ryfvj
+	g+O5OcPe2pI2bWbIAWRIXnT4DVY5uTm1wD5OlLnc4T6E3TTFocajBBI3dByApwjuuV2gKdK7apawA
+	/vUC1IxGmvetN+mpuQ7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xC04n-000000075HF-2azb;
-	Wed, 30 Sep 2026 19:34:49 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xC2Dd-00000007Jvp-1gRi;
+	Wed, 30 Sep 2026 21:52:05 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xC04m-000000075Gz-0tzc;
-	Wed, 30 Sep 2026 19:34:48 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A676642D82;
-	Wed, 30 Sep 2026 19:34:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 80568C2BCB9;
-	Wed, 30 Sep 2026 19:34:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1790796887;
-	bh=Gu/EkVwyQJgBD74XfphlWAlZsYmhDmD3C/OZgKSBQBc=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=tWfAJM5yLuZC6x0EfMQK/k3ydOvchipWQN7xO/1+ZyRwfPwLBMgXVQF6LuomhQ6Pu
-	 y8HtxeUS2ido0xMuz78q6WaW1Xc/7g2xW0Cgb1NJrfGiG6sUVuU5+UE4CVMkL4tCwF
-	 vGEYVls4UF8EnAEAtHVgc8/Y2cpjVdrGbsuA8sn1S+eXEFWwYpDWi8acZpHhZZRXns
-	 XYAOtied2p6M1SzknDM+5y23QF8DN9cVnVEmy2FOGeCa6fRRfCnhUoOf+zp4w67UrA
-	 D44qDt05z2GP6PYliJ0T0Jz5Dx4IvVPomWy4PCvSrXxCnyvD1zpnNouKvovG0IHd9B
-	 5yjb0aCJktsnQ==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6AF8CCA5FC4;
-	Wed, 30 Sep 2026 19:34:47 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Wed, 30 Sep 2026 19:34:45 +0000
-Subject: [PATCH net] net: stmmac: dwmac-rk: keep the GMAC powered when the
- PHY wakes the system
+	id 1xC2Da-00000007JtQ-1nIf;
+	Wed, 30 Sep 2026 21:52:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=FD05RHOFRGfYmVLDxBq8IkkAKhJy/zrMPVkcJKQGgug=; b=4CCUkl9IfkEKMKG8R7waFOW7Zo
+	sx5Jids8oyB/TLZO5vpfgAqsaJbVlAPBjWEcT1l715xC/SlHu94aUEQgVrm2TxsRknWwBWJrNjF4M
+	iLyXmjKvlsGc8qHDfXaHcA6uTTXTF0uYdDOqw0e2JwNxaJSuJy1F24YagV0Q3BYiv1yY=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1xC2DJ-008FQg-Nn; Wed, 30 Sep 2026 23:51:45 +0200
+Date: Wed, 30 Sep 2026 23:51:45 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: iav@iav.lv
+Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Eric Dumazet <edumazet@kernel.org>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net] net: stmmac: dwmac-rk: keep the GMAC powered when
+ the PHY wakes the system
+Message-ID: <1799630a-945e-49ca-b9d5-9e068c482cea@lunn.ch>
+References: <20260930-dwmac-rk-phy-wol-v1-1-9fdc50bd9ae4@iav.lv>
 MIME-Version: 1.0
-Message-Id: <20260930-dwmac-rk-phy-wol-v1-1-9fdc50bd9ae4@iav.lv>
-X-B4-Tracking: v=1; b=H4sIAFRkvWoC/x3MQQ5AMBBA0avIrE1SJJNwFbEohk5Q0oqSxt01l
- m/xfwTPTthDk0VwfImX3SYUeQaD0XZmlDEZSlWSqiuFY9j0gG7BwzwY9hV7LliTJkXUQ8oOx5P
- c/7IFyyd07/sBjY2M0WcAAAA=
-To: Maxime Chevallier <maxime.chevallier@bootlin.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
- Paolo Abeni <pabeni@redhat.com>, Heiko Stuebner <heiko@sntech.de>, 
- Eric Dumazet <edumazet@kernel.org>
-Cc: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, netdev@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, 
- linux-stm32@st-md-mailman.stormreply.com, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Igor Velkov <iav@iav.lv>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2718; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=v2FMuWUABRc83FaiGNq51H6LZX+xOp9sURDtyb+WJCs=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFl7U8JcJqjtMr1SfGhbwq86VaVL/1MuRUq7PIqVaL2io
- GEjv0y3o5SFQYyLQVZMkWXCIY1bGUuu/vX3MH8AM4eVCWQIAxenAEzkTg8jwzmJwFPGq3ZeYFsS
- VPt7jdRjNfmM5R/j5KKmbAtOF7U142dkmPtLeZd1f+6e3RFn/2wsXTBTxan4v5GWQnXAL3sDvfP
- HOAE=
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+Content-Disposition: inline
+In-Reply-To: <20260930-dwmac-rk-phy-wol-v1-1-9fdc50bd9ae4@iav.lv>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260930_145202_467485_040742F9 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,89 +73,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Igor Velkov <iav@iav.lv>
+On Wed, Sep 30, 2026 at 07:34:45PM +0000, Igor Velkov via B4 Relay wrote:
+> From: Igor Velkov <iav@iav.lv>
+> 
+> Since commit 6911308d7d11 ("net: stmmac: convert to phylink-managed
+> Wake-on-Lan"), the MAC device gets its wakeup flag only when the MAC
+> handles Wake-on-LAN itself. When the PHY handles it, device_may_wakeup()
+> is false for the MAC, and rk_gmac_suspend() powers the GMAC down: its
+> clocks stop and phy-supply is released.
+> 
+> On Helios64 (RTL8211F, Wake-on-LAN in the PHY) the board then hangs on
+> the first or second suspend with a magic-packet wake.
 
-Since commit 6911308d7d11 ("net: stmmac: convert to phylink-managed
-Wake-on-Lan"), the MAC device gets its wakeup flag only when the MAC
-handles Wake-on-LAN itself. When the PHY handles it, device_may_wakeup()
-is false for the MAC, and rk_gmac_suspend() powers the GMAC down: its
-clocks stop and phy-supply is released.
+You have not answered the question why is hangs? Given the current
+description, this just sounds like a workaround, not a fix.
 
-On Helios64 (RTL8211F, Wake-on-LAN in the PHY) the board then hangs on
-the first or second suspend with a magic-packet wake.
-
-Also keep the GMAC powered when phy_may_wakeup() is true, and remember
-the decision for resume.
-
-Fixes: 6911308d7d11 ("net: stmmac: convert to phylink-managed Wake-on-Lan")
-Assisted-by: LLM
-Signed-off-by: Igor Velkov <iav@iav.lv>
----
-Tested on Helios64 with 7.3-rc5: 20 of 20 suspends woke on a magic
-packet. The mainline Helios64 DT has no PHY node, so the test used a
-DT that describes the PHY with its interrupt and wakeup-source (a DT
-patch will follow), together with [1], which fixes an interrupt storm
-on resume.
-
-[1] https://lore.kernel.org/r/20260930-stmmac-irq-shut-v1-1-104d1a1dcb28@iav.lv
----
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 72bdbcb5e863..06faeb156b97 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -98,6 +98,7 @@ struct rk_priv_data {
- 	bool integrated_phy;
- 	bool supports_rgmii;
- 	bool supports_rmii;
-+	bool suspend_powerdown;
- 
- 	struct clk_bulk_data *clks;
- 	int num_clks;
-@@ -1530,10 +1531,13 @@ static int rk_set_clk_tx_rate(void *bsp_priv_, struct clk *clk_tx_i,
- 
- static int rk_gmac_suspend(struct device *dev, void *bsp_priv_)
- {
-+	struct net_device *ndev = dev_get_drvdata(dev);
- 	struct rk_priv_data *bsp_priv = bsp_priv_;
- 
--	/* Keep the PHY up if we use Wake-on-Lan. */
--	if (!device_may_wakeup(dev))
-+	/* Keep the MAC and PHY powered if either of them wakes the system. */
-+	bsp_priv->suspend_powerdown = !device_may_wakeup(dev) &&
-+		!(ndev->phydev && phy_may_wakeup(ndev->phydev));
-+	if (bsp_priv->suspend_powerdown)
- 		rk_gmac_powerdown(bsp_priv);
- 
- 	return 0;
-@@ -1543,8 +1547,7 @@ static int rk_gmac_resume(struct device *dev, void *bsp_priv_)
- {
- 	struct rk_priv_data *bsp_priv = bsp_priv_;
- 
--	/* The PHY was up for Wake-on-Lan. */
--	if (!device_may_wakeup(dev))
-+	if (bsp_priv->suspend_powerdown)
- 		rk_gmac_powerup(bsp_priv);
- 
- 	return 0;
-
----
-base-commit: 99b43ede9e355ba35244cc9470bf1819774ce39d
-change-id: 20260930-dwmac-rk-phy-wol-be1ea6a6066b
-
-Best regards,
--- 
-Igor Velkov <iav@iav.lv>
-
-
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
