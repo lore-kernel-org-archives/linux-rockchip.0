@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D974CA5FC7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 14:50:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD132CA5FC7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 14:51:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fbq2umydx+UraqxZNIoPAFeqF1gveJeMZ2ZskFxOdo8=; b=icxyZYGixn8J8I
-	pt6UQIdGxlaLCABZSk5k9O5EdcwKYuC19ribqeFHFdkuUoj6Q6w6bAstIvjoyUfML9syI7RdnnCnB
-	7X9wM8dtSfuNvQXdntyYA5YlpV5kVRM8wFcvHihWB6Z4F+HzBUjOTH9WFn0D3ZlGYwQXzvEkLDBDE
-	hWyliA5ALumnTUKfooUIsPc0NR/upZobzrxUm5AAuhoxVmNkMuoQC0rZ8toFFYT3gOpIKEhNDJOoM
-	uYxwFzFgY8XeUhX81YLsD1OOkCfUFX/9zj5KpSAVp2nL4Yd8ICBvjUpz+Bt2J/ZmOp6KaZ4IL0x4N
-	zEeUj6LVN2dQzIPQYJXg==;
+	List-Owner; bh=6C7GPq+bjM8AvtCP3YXW6V4We4HFSM2+et++4v+wRNY=; b=kphBqp+Yjmza4t
+	VL3e6fA5swm1xV8IWTsKC37tPTqfoKRDjt5hjo8U5OQIqYrsB3sD+LEnnKDxgpH/kuO2tg9sB2OYI
+	Jzi7tllJPmtslnCo2QkfSt4CH2pice3C+BgGgBf0juEsXIFBpFmnYrQpxw4j8MjPNQvhzgv1Wl/eU
+	v7ERAsDeF3L7X/cbsRq7DcKuHlFFOq6ivj6KJo4s03W28Ey/ctgFe7YvdMOLCk/DceayQLfanfHoQ
+	QGA7t+icZwibX29MJayCKoyzEnvKaJeByRrgo1fKyyKeK7YVGwCw4CVw0ncpEFrR0Jul6h57kEmp3
+	cVOzoP1ju2S1S+B4E1yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBve0-00000006NM4-2iuo;
-	Wed, 30 Sep 2026 14:50:52 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xBveF-00000006NXH-0MI3;
+	Wed, 30 Sep 2026 14:51:07 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBvdn-00000006NEQ-0gyj;
-	Wed, 30 Sep 2026 14:50:39 +0000
+	id 1xBve0-00000006NM9-3Qqi;
+	Wed, 30 Sep 2026 14:50:52 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id BB66843DEA;
-	Wed, 30 Sep 2026 14:50:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D02721F00898;
-	Wed, 30 Sep 2026 14:50:32 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D200E60232;
+	Wed, 30 Sep 2026 14:50:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8E421F00893;
+	Wed, 30 Sep 2026 14:50:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790779838;
-	bh=pLddcdeVhe5dBvuz28Kf0fu3WIAs8MgosfUWOghTQPI=;
+	s=k20260515; t=1790779851;
+	bh=P/YXD0eThUuuTt4F9igzSS8LTHnkxXyp0Ys+DH4Vt5I=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=gk5ij4ujsCezLMd8CRsnjZtyu6WtHMKifO3zWhhWbyCcuZb1xH6plVtyyKB5xEfU2
-	 czjGmI+kF7/iR51RMqdllhlUhnl15DOWTHTg5d4d+ktjJD1R6iPiauNf0yNnfyfOuG
-	 nYzDjnWbEsc/vmy4DIHJWEIoHvNpW1POLHvx6Cmzr50A1HyIMCGMJac34fbjMxhdY0
-	 B84UqzmA7lAfozDdGgoO3tFygGfbjQ2RDkAmgEd8xdKWIaUqOmQ/pbjQYhosj4Bd7Y
-	 xDAO46+5NuN9i0Kt3/SU7AQcMBSVbxga3GpYyDySZqEuH56JqX2xA4oj3YiXu0RFqw
-	 FCqcoX5bXRlKw==
+	b=eoMGnAJAT7k9Q/W+puZ7sbOAekBcynoxY8SGLfp+BhlNyPGzwX6s0JQaPFILE5sr7
+	 r/by7vIrFqNA1p+cFtZopIrD+1u5xzY9MXXd51xU2kIib6sYko/t5jbcSnUy59L7j3
+	 A2Z5jsM6jaYc5znlSktL3bmHlMTsFtXiU1ySfb6FtwG9Le7engpqaLXWM5LTYbx3Ku
+	 ffI7rgzoYOYuSUGi6WXs6FRps1IKmewiM2YyLiw3K19WvS5u77vmHXcdN9WNuCxZ6g
+	 7ly1YMud9kd6t7XMCipT9RwL9cUSjcmE/8rVnnbjI26G1GzOGeRE44dxrz9mNh6jN2
+	 N6SxT7h/XGX2g==
 From: Niklas Cassel <cassel@kernel.org>
 To: Bjorn Helgaas <bhelgaas@google.com>,
 	Bjorn Helgaas <helgaas@kernel.org>,
@@ -49,14 +49,13 @@ To: Bjorn Helgaas <bhelgaas@google.com>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Yue Wang <yue.wang@Amlogic.com>,
-	Hans Zhang <18255117159@163.com>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-	Frank Li <Frank.Li@nxp.com>
+	Hans Zhang <18255117159@163.com>
 Cc: Keith Busch <kbusch@kernel.org>,
 	mx2pg@pm.me,
 	dlemoal@kernel.org,
 	Niklas Cassel <cassel@kernel.org>,
 	Lukas Wunner <lukas@wunner.de>,
+	Frank Li <Frank.Li@nxp.com>,
 	Mahesh Vaidya <mahesh.vaidya@altera.com>,
 	Ricardo Pardini <ricardo@pardini.net>,
 	Shawn Lin <shawn.lin@rock-chips.com>,
@@ -74,14 +73,14 @@ Cc: Keith Busch <kbusch@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-amlogic@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [RFC PATCH 1/4] PCI: Update saved Max Payload Size in pcie_set_mps()
-Date: Wed, 30 Sep 2026 16:50:18 +0200
-Message-ID: <20260930145017.1356088-7-cassel@kernel.org>
+Subject: [RFC PATCH 3/4] PCI: Configure Root Port MPS after scanning its hierarchy
+Date: Wed, 30 Sep 2026 16:50:20 +0200
+Message-ID: <20260930145017.1356088-9-cassel@kernel.org>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260930145017.1356088-6-cassel@kernel.org>
 References: <20260930145017.1356088-6-cassel@kernel.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2978; i=cassel@kernel.org; h=from:subject; bh=rlNDwOLzu7ttLsyeROV+rK+yucTFtmlzkPThqRA5V+Q=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGLL2Kq48tTfu/UbLknfnnk+PVxez+Tfn/E3Tlcd6TH1E4 rfH9W+f11HKwiDGxSArpsji+8Nlf3G3+5TjindsYOawMoEMYeDiFICJJHkyMtxY37952cWwRSpv ouRPL9nM/tK0IXbCyUbzI8Yc782TFwcwMuyf/ziqUM25YJvDnq1p32Rz16XOrq2WePze0yayadK hg5wA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6471; i=cassel@kernel.org; h=from:subject; bh=HFUU72rF2I+ZOsd+sEY/LlyKiP4iGFfKJvkVITxGLEE=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGLL2Kq7Klj2e7y+kwi75nvMij9gfJY6sXqtEyx6TR5H2/ QuO3LjVUcrCIMbFICumyOL7w2V/cbf7lOOKd2xg5rAygQxh4OIUgIkoFDL8D2Eqr3qUHNf9zz65 jfnz0Yx181VVjuzMctd/z5S54p9uIiND36wPTy8snVM5285ucqtwr1v84TWla9N1upfOZVpzcnM XCwA=
 X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,80 +98,175 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-pcie_set_mps() changes the Max Payload Size (MPS) in the Device Control
-register but leaves the copy saved by pci_save_state() alone, so the next
-pci_restore_state() puts back the old value.
+With the default MPS strategy (PCIE_BUS_DEFAULT), pci_configure_mps()
+only matches each device's Maximum Payload Size (MPS) to its upstream
+bridge.  Root Ports have no upstream bridge, so their MPS stays at
+whatever firmware or the hardware default (128 bytes) left there, and the
+hierarchy below them inherits that value even if the Root Port and all
+devices below it support more.
 
-The PCI core does change the MPS of devices whose state has already been
-saved: pci_configure_mps() reduces a Root Port's MPS when a device with a
-smaller MPS Supported is hot-added directly below it (commit 9f0e89359775
-("PCI: Match Root Port's MPS to endpoint's MPSS as necessary")), and with
-"pci=pcie_bus_safe", pcie_bus_configure_settings() can do the same when
-pciehp calls it after a hot-add.  The Root Port's state was saved when it
-was added and again when portdrv probed it.
+Once the hierarchy below a Root Port has been scanned, and before drivers
+are bound, raise the Root Port and every device below it to the largest
+MPS they all support.  Do this from pcie_bus_configure_settings(), which
+the host bridge, ACPI and hotplug paths call after scanning, and from
+pci_rescan_bus() and pci_rescan_bus_bridge_resize(), which don't.
 
-Since commit 3fc686d550f6 ("PCI/ERR: Add support for resetting the Root
-Ports in a platform-specific way"), pcibios_reset_secondary_bus() restores
-that saved state, without saving it first, after host->reset_root_port()
-has reset the Root Port, e.g. during AER recovery or on Link Down with the
-qcom and Rockchip DWC drivers.  The Root Port then goes back to the old,
-larger MPS while the device below it is restored to the smaller one, so
-the Root Port may send TLPs that the device treats as Malformed.
+Leave a hierarchy alone if it contains a hotplug bridge other than the
+Root Port, typically a Switch Downstream Port: a device hot-added below it
+later can't lower the MPS of a hierarchy in use, so keep the MPS the
+hierarchy already had.  pcie_find_smpss() already returns the minimum MPS
+for such hierarchies, which never raises anything.  Don't raise an empty
+slot directly below a Root Port either; it is evaluated when a device is
+hot-added or rescanned there, which also allows raising the Root Port
+again after a device that supported less has been replaced.  Hierarchies
+with devices that may already have a driver bound are never changed.
 
-Update the saved copy of Device Control when pcie_set_mps() changes the
-MPS, like commit 909f7bf9b080 ("PCI: Update saved_config_space upon
-resource assignment") does for BARs.
+Since PCIE_BUS_DEFAULT can now raise MPS above what firmware programmed,
+apply the Intel 5000/5100 read completion coalescing quirk to it as well.
 
-Fixes: 3fc686d550f6 ("PCI/ERR: Add support for resetting the Root Ports in a platform-specific way")
+The other strategies are unchanged: PCIE_BUS_TUNE_OFF doesn't touch MPS,
+and PCIE_BUS_SAFE, PCIE_BUS_PERFORMANCE and PCIE_BUS_PEER2PEER already
+configure the hierarchy in pcie_bus_configure_settings().
+
+Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
+Co-developed-by: Hans Zhang <18255117159@163.com>
+Signed-off-by: Hans Zhang <18255117159@163.com>
 Assisted-by: LLM
 Signed-off-by: Niklas Cassel <cassel@kernel.org>
 ---
- drivers/pci/pci.c | 24 +++++++++++++++++++++++-
- 1 file changed, 23 insertions(+), 1 deletion(-)
+ drivers/pci/probe.c  | 83 ++++++++++++++++++++++++++++++++++++++++++++
+ drivers/pci/quirks.c |  3 +-
+ 2 files changed, 84 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-index b2879a6be5f8..5b126cd342ca 100644
---- a/drivers/pci/pci.c
-+++ b/drivers/pci/pci.c
-@@ -1736,6 +1736,24 @@ static void pci_restore_pcie_state(struct pci_dev *dev)
- 	pcie_capability_write_word(dev, PCI_EXP_SLTCTL2, cap[i++]);
+diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+index d8e58e5ef730..5f37b480b51d 100644
+--- a/drivers/pci/probe.c
++++ b/drivers/pci/probe.c
+@@ -3083,6 +3083,82 @@ static int pcie_bus_configure_set(struct pci_dev *dev, void *data)
+ 	return 0;
  }
  
-+/*
-+ * Update the saved copy of the Device Control register after changing it, so
-+ * that pci_restore_state() doesn't put back a stale value.  Device Control is
-+ * the first register saved by pci_save_pcie_state().
-+ */
-+static void pcie_update_saved_devctl(struct pci_dev *dev, u16 clear, u16 set)
++static int pcie_raise_mps(struct pci_dev *dev, void *data)
 +{
-+	struct pci_cap_saved_state *save_state;
-+	u16 *devctl;
++	int mps = *(int *)data;
 +
-+	save_state = pci_find_saved_cap(dev, PCI_CAP_ID_EXP);
-+	if (!save_state)
-+		return;
++	/* MPS is of type 'RsvdP' for VFs */
++	if (!pci_is_pcie(dev) || dev->is_virtfn)
++		return 0;
 +
-+	devctl = (u16 *)&save_state->cap.data[0];
-+	*devctl = (*devctl & ~clear) | set;
-+}
-+
- static int pci_save_pcix_state(struct pci_dev *dev)
- {
- 	int pos;
-@@ -5970,8 +5988,12 @@ int pcie_set_mps(struct pci_dev *dev, int mps)
- 
- 	ret = pcie_capability_clear_and_set_word(dev, PCI_EXP_DEVCTL,
- 						  PCI_EXP_DEVCTL_PAYLOAD, v);
-+	if (ret)
-+		return pcibios_err_to_errno(ret);
- 
--	return pcibios_err_to_errno(ret);
-+	pcie_update_saved_devctl(dev, PCI_EXP_DEVCTL_PAYLOAD, v);
++	if (pcie_get_mps(dev) < mps && pcie_set_mps(dev, mps))
++		pci_err(dev, "can't set Max Payload Size to %d\n", mps);
 +
 +	return 0;
- }
- EXPORT_SYMBOL(pcie_set_mps);
++}
++
++/*
++ * With PCIE_BUS_DEFAULT, pci_configure_mps() only matches each device to its
++ * upstream bridge, so a hierarchy inherits whatever MPS firmware, or the
++ * hardware default of 128 bytes, left in its Root Port.  Once the hierarchy
++ * below a Root Port has been enumerated, raise it to the largest MPS that all
++ * of its devices support.
++ *
++ * Leave hierarchies with a hotplug bridge other than the Root Port alone: a
++ * device hot-added below it can't lower the MPS once the hierarchy is in use.
++ * pcie_find_smpss() returns the minimum MPS for such hierarchies, which never
++ * raises anything.  A hotplug slot directly below the Root Port is fine: it
++ * is evaluated when a device is hot-added there, and an empty slot is not
++ * raised, so a Switch hot-added into it doesn't inherit a raised MPS.  Also
++ * leave hierarchies alone once any of their devices may have a driver bound.
++ */
++static void pcie_bus_raise_default_mps(struct pci_bus *bus)
++{
++	struct pci_dev *rp = bus->self;
++	u8 smpss = rp->pcie_mpss;
++	int mps, old_mps;
++
++	if (pci_pcie_type(rp) != PCI_EXP_TYPE_ROOT_PORT ||
++	    list_empty(&bus->devices) || pci_bus_in_use(bus))
++		return;
++
++	pci_walk_bus(bus, pcie_find_smpss, &smpss);
++	mps = 128 << smpss;
++	old_mps = pcie_get_mps(rp);
++	if (mps <= old_mps)
++		return;
++
++	pcie_raise_mps(rp, &mps);
++	pci_walk_bus(bus, pcie_raise_mps, &mps);
++	pci_info(rp, "Max Payload Size of hierarchy set to %d (was %d)\n",
++		 mps, old_mps);
++}
++
++/*
++ * A rescan doesn't go through pcie_bus_configure_settings(), so give the Root
++ * Port hierarchies it may have populated the same chance to be raised: every
++ * hierarchy below a rescanned root bus, or the one @bus belongs to.
++ */
++static void pcie_rescan_raise_default_mps(struct pci_bus *bus)
++{
++	struct pci_bus *child;
++	struct pci_dev *rp;
++
++	if (pcie_bus_config != PCIE_BUS_DEFAULT)
++		return;
++
++	if (pci_is_root_bus(bus)) {
++		list_for_each_entry(child, &bus->children, node)
++			if (child->self && pci_is_pcie(child->self))
++				pcie_bus_raise_default_mps(child);
++		return;
++	}
++
++	rp = pcie_find_root_port(bus->self);
++	if (rp && rp->subordinate)
++		pcie_bus_raise_default_mps(rp->subordinate);
++}
++
+ /*
+  * pcie_bus_configure_settings() requires that pci_walk_bus work in a top-down,
+  * parents then children fashion.  If this changes, then this code will not
+@@ -3098,6 +3174,11 @@ void pcie_bus_configure_settings(struct pci_bus *bus)
+ 	if (!pci_is_pcie(bus->self))
+ 		return;
  
++	if (pcie_bus_config == PCIE_BUS_DEFAULT) {
++		pcie_bus_raise_default_mps(bus);
++		return;
++	}
++
+ 	/*
+ 	 * FIXME - Peer to peer DMA is possible, though the endpoint would need
+ 	 * to be aware of the MPS of the destination.  To work around this,
+@@ -3536,6 +3617,7 @@ unsigned int pci_rescan_bus_bridge_resize(struct pci_dev *bridge)
+ 	max = pci_scan_child_bus(bus);
+ 
+ 	pci_assign_unassigned_bridge_resources(bridge);
++	pcie_rescan_raise_default_mps(bus);
+ 
+ 	pci_bus_add_devices(bus);
+ 
+@@ -3557,6 +3639,7 @@ unsigned int pci_rescan_bus(struct pci_bus *bus)
+ 
+ 	max = pci_scan_child_bus(bus);
+ 	pci_assign_unassigned_bus_resources(bus);
++	pcie_rescan_raise_default_mps(bus);
+ 	pci_bus_add_devices(bus);
+ 
+ 	return max;
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index de9bbccda21f..da171f4babe4 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -3452,8 +3452,7 @@ static void quirk_intel_mc_errata(struct pci_dev *dev)
+ 	int err;
+ 	u16 rcc;
+ 
+-	if (pcie_bus_config == PCIE_BUS_TUNE_OFF ||
+-	    pcie_bus_config == PCIE_BUS_DEFAULT)
++	if (pcie_bus_config == PCIE_BUS_TUNE_OFF)
+ 		return;
+ 
+ 	/*
 -- 
 2.55.0
 
