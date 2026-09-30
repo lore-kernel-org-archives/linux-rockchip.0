@@ -4,40 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31C1CCA5FC4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 18:49:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E375CA5FC5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 18:49:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gw91LGjCx7XwbHTnlnTlYkrFaFatxJhCE7XTDQ2GeQ0=; b=PaJkunT3vTdSA1
-	zXX/kxktlOYV7tgI2wJAcsdGhPJgbkHi8md0tH/c56whr6QveFqT5M6ASxTPCNjtikkiKESojY0SV
-	NW8GjZnqp6wXpg2y03k102qT3QWlj1IggdYK+2h/Sc9uIRog7SKktmMzXfZbBibMfwJ2R5HaC1afn
-	LD4/Ux1n2uwWUcVLow//uZ73GohPIGnKI0Q/8NvB5i47wmZISz+vc+7gSaSQiDR17RkobOhMMtmxS
-	89DZq+r0sOjuFO0tU5A1KJG4hK+MG8AasLZ0ceaYm/cUG5T9OqikgsjwRdOJhTrTHMb5PVwdJv4fb
-	Imvw5uv2wWyvbOCUwI/A==;
+	List-Owner; bh=gS5rij5PpLH8lnnPpWM6nol0i+t69jh6/d70c5X7kzM=; b=PZxgOZGuac4XCl
+	5XXB2yW7AwDOUFs1GCEl7JDTZhyeOlY+VvAyY/mll2W7jz6n3PwDbooYrK+HZgmdr+wggkd5DQ+kS
+	CFNleI5peqODdcG6mxKC3FYDdrCYPmibHG/5rFV3pa3D8we/SPnituopqr5j963P1V52S1t+mSmI4
+	pdQ2w4lbmr4Wd9FlDfLay2a+BeuMwgm/C2SGtJGiTQxZqObtEqL88+kfonAYG4aPG8nhheWLJARaK
+	OT08+acMh0pl7pqQpQsqSVYxiF/4OEzEh6QH57J28DINjdYmLIUx/h5jsYabyvlXf+GUklXo8FmZ/
+	3/DqUqMxOkpHL+rq/Umg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBzMz-000000071HH-2F3y;
-	Wed, 30 Sep 2026 18:49:33 +0000
+	id 1xBzNL-000000071No-0U6i;
+	Wed, 30 Sep 2026 18:49:55 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBzMo-000000071Cl-3hsy;
-	Wed, 30 Sep 2026 18:49:24 +0000
+	id 1xBzMp-000000071Cm-0pPU;
+	Wed, 30 Sep 2026 18:49:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=Onub4mykYcFwhE0hmKSL3j6CDl+1xSaBRFx2WEGfuGI=; b=ReTRdxmIfg0Hye6ZP10wYTJcXo
-	HoxN6a0/CEio9IG/FYxT4WtT+lpHnSOb5ZxcP2r8NOi1mmPVwqrSkCjMK5GuBHbL8CENzNfG1ksEC
-	1DTlBgjFFjohhv4n8kBpoET4fG+cxcYYr2jXHJcJOaF+d1Zi2l2b/SaYUAymEUDkMfW2Pe4qq2pfZ
-	hv353vlB9D5F3bZECkgIRlxw/7cSHuFhd0ckEwoVh3ReMdjQiDt0qnd/PTDWl2hjF9b7pJcSwXSef
-	RwgPfBgj6qG7+gCywgP2AwKk2VPCGvTO9k7SQCmWyL2IETpU+I/fyyIIhYnxKc0T47DdG+1SJpIAn
-	0cY0qDyA==;
+	bh=ns09Eizq9gM2NnPJw5DNGALzDeb2i0DrDbvIrjDIWdQ=; b=uDZ7k2T3nH12rjcCI6OGpnDxkI
+	dF5BOvVgtoKzSK8HGsNy5x+K25IAkUINHrBX2PGDFmT7d92X7nMwiZTwVOFsqu1YAROMxIHMLFIRc
+	0+HQhHeerEAfcSx5gVww5fUzHSVyALJ4jJmBrScGC/nnpvG6gzbC0UK6c+GsJq6GFdJVfY4dVSCT7
+	XH1zzciEv/zzkqw9/P0nHlD5teNlzWu2vNNVno+g/+bkssyYS8UAc1H0JZxHgouvWpLAmMaUm+uXG
+	+nT3I8/3VN+StF5KqLNjHq17AzNX0LyWOMYKfgFgfapKkKeho0aayLBB3cfb4XQypBgFNhrMOy9yE
+	ccnu7Jvg==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Mizuno Miotsuki <founder@crepuse.com>
+To: Adam Wermuth <adam@wermuth.pl>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	Jonas Karlman <jonas@kwiboo.se>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
@@ -45,16 +46,16 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 0/2] arm64: dts: rockchip: Add DFRobot UNIHIKER M10 V1.2 support
-Date: Wed, 30 Sep 2026 20:49:11 +0200
-Message-ID: <179079409728.2398180.15813648897564877390.b4-ty@sntech.de>
+Subject: Re: (subset) [PATCH v2 0/2] arm64: dts: rockchip: Add PWM fan and WWAN overlay for Radxa ROCK 3B
+Date: Wed, 30 Sep 2026 20:49:09 +0200
+Message-ID: <179079409724.2398180.1900201056909150214.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260919134125.59419-1-founder@crepuse.com>
-References: <20260919134125.59419-1-founder@crepuse.com>
+In-Reply-To: <20260925080258.46489-1-adam@wermuth.pl>
+References: <20260925080258.46489-1-adam@wermuth.pl>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260930_114923_435676_00B5B2B8 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20260930_114923_439113_77CE0EC5 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,25 +73,26 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 19 Sep 2026 13:41:29 +0000, Mizuno Miotsuki wrote:
-> Add initial mainline support for the DFRobot UNIHIKER M10 V1.2. Only
-> revision 1.2 is claimed because later board revisions have not been
-> electrically verified.
+On Fri, 25 Sep 2026 10:02:56 +0200, Adam Wermuth wrote:
+> The Radxa ROCK 3B has a 2-pin fan header and an M.2 B-key slot
+> intended for 4G/5G modules, neither of which is currently described
+> in the mainline device tree.
 > 
-> The board device tree enables a conservative core subset for a usable
-> mainline system: CPU regulation, eMMC, SD, RTL8723DS SDIO Wi-Fi, UART0,
-> USB host and peripheral operation, GPIO keys, and the watchdog.
-> Bluetooth, audio, display, touch, IMU, SARADC, and GD32 support are
-> intentionally deferred.
+> Patch 1 adds the PWM fan and ties it to the CPU thermal zone. Patch 2
+> adds a device tree overlay for the B-key slot, enabling the USB 2.0
+> host controller serving the slot as well as its power, RESET# and
+> W_DISABLE1# controls.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] dt-bindings: arm: rockchip: Add DFRobot UNIHIKER M10 V1.2
-      commit: 55010621f40c5b129fb0972f07e9d8d52aa6a765
-[2/2] arm64: dts: rockchip: Add DFRobot UNIHIKER M10 V1.2
-      commit: a2ff7779dd92246bd3e34a2f9600dade3794e6d2
+[1/2] arm64: dts: rockchip: Add PWM fan to Radxa ROCK 3B
+      commit: afcfb6982a13fb4b3e0045f96c7aa6d64063a034
+
+Only took patch1 as the discussion in v2 did not seem finished
+and doing it correctly trumps intermediate solutions, especially
+adding overlays we might have trouble removing in the future.
 
 Best regards,
 -- 
