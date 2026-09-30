@@ -4,78 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1BDBCA5FAD
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 00:21:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13BA5CA5FA5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 01:28:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:In-Reply-To:
-	Subject:cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=efLEXixkWevW0o63/bgKGwu374qbNCy5dTC0ZoowKuQ=; b=PBTkJkZuDsSrK6AoxVkr7H5vTW
-	kmX/uQPPswkk6R6sTmKFlSy5MbBwfm71HEQwCS8B4/GWS1W7ANTljjBwp5e3/ULLfsXd2WLN0Jtac
-	+9NppJ7lphLyxyyytMyCy8cg3Kb3PAD9fQ1Tm4oXXT9S1dsfhp6SMb7f3RUQJnpMwH5f6VQifdktn
-	XoOd5wgJwy+Ed3l2L75PlGGviYiIbF38A+Hh6Iquh9DfrjtUceO7/AIDPELouWoabesKHq7oeJvWQ
-	iClysO23I9EJQfqCYipHAwQbckehhAce+scD09+J5xekOeYxslklyYjvRDETRzjW/yjkLD6QxSx7a
-	tYLWkGtw==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ezflJWJcDjNgqoykiFN09o3bTGF8XzjV4UKJEpZNiTs=; b=07tqY7Sa6xA812
+	lh8Y5fZVwDea3KiRTm04FV4qLkhaXSEfRs+OP67xjyTPBs00PJlaWYvs/1CrblsCC2TqbFg2ff8NY
+	VbYOnA/OXals1v1j9j6iYz4km5wfpdsQy2OnG+va5nkZhu32sizOM2zCjqNPqccaWhlkB/BCgBVOz
+	bFEJUz1QKsoW4K2ADDCk2QxdfPx8gEHTL3Q52/lpvpg6CMkMKLRdrYmEpVOgbRGF7UWKCJq1P6sgt
+	ijg9UnhDnE0gXFcsLj7t4Sw39c+zLzfX58w6/JHHpQm3hjMzgcn4gWt1Aq1qA5VgCYL939GpKWzSD
+	W2ExQU7gTbD3TJ9SfihA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBi4B-00000004oPH-16eD;
-	Wed, 30 Sep 2026 00:20:59 +0000
-Received: from winds.org ([68.75.195.9])
+	id 1xBj7M-00000004reL-3c6o;
+	Wed, 30 Sep 2026 01:28:20 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBi47-00000004oNo-04QW;
-	Wed, 30 Sep 2026 00:20:56 +0000
-Received: by winds.org (Postfix, from userid 100)
-	id 26A288F95F83; Tue, 29 Sep 2026 20:20:50 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
-	by winds.org (Postfix) with ESMTP id 2557E13363343;
-	Tue, 29 Sep 2026 20:20:50 -0400 (EDT)
-Date: Tue, 29 Sep 2026 20:20:50 -0400 (EDT)
-From: Byron Stanoszek <gandalf@winds.org>
-To: Michal Wilczynski <m.wilczynski@samsung.com>
-cc: Vinod Koul <vkoul@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, 
-    Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
-    Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-    Conor Dooley <conor+dt@kernel.org>, 
-    Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, 
-    Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-    Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-    Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-    Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-    Maxime Ripard <mripard@kernel.org>, 
-    Thomas Zimmermann <tzimmermann@suse.de>, 
-    Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-    Emil Renner Berthing <kernel@esmil.dk>, 
-    Hal Feng <hal.feng@starfivetech.com>, 
-    Michael Turquette <mturquette@baylibre.com>, 
-    Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-    Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
-    Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, 
-    Dominique Belhachemi <db@domibel.de>, 
-    Brian Masney <bmasney+clk@redhat.com>, 
-    Jerome Brunet <jbrunet+clk@baylibre.com>, linux-phy@lists.infradead.org, 
-    devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-    dri-devel@lists.freedesktop.org, linux-clk@vger.kernel.org, 
-    linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-    linux-riscv@lists.infradead.org, 
-    Marek Szyprowski <m.szyprowski@samsung.com>, 
-    Maud Spierings <maud_spierings@murena.io>, 
-    Graham Markall <hello@big-grey.co.uk>, 
-    Icenowy Zheng <zhengxingda@iscas.ac.cn>, 
-    Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
-    Joshua Peisach <jpeisach@ubuntu.com>, 
-    =?ISO-8859-15?Q?Uwe_Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>, 
-    Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: Re: [PATCH v5 00/21] drm: starfive: jh7110: Enable display
- subsystem
-In-Reply-To: <20260929-jh7110-clean-send-v5-0-82b4d8e3c6c7@samsung.com>
-Message-ID: <e946786b-e063-6ddc-6b07-2fb67ff7a459@polinggroup.com>
-References: <CGME20260929103200eucas1p17af134cc3b93c242227964f574f13aa5@eucas1p1.samsung.com> <20260929-jh7110-clean-send-v5-0-82b4d8e3c6c7@samsung.com>
+	id 1xBj7J-00000004rde-3R2A;
+	Wed, 30 Sep 2026 01:28:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
+	Content-Type; bh=y4LgJcxG58FFth/hB4/i7KbJf2H3darIqdWGj6YwQ/s=;
+	b=jjxRzqGTAYcYRKiHAHIVCbgcrTAW/dqGYAbEjBqLST5e81bz9cyk0EZOljUVwv
+	YiJa/Qmillt5urd1n7wlLmwWLeZsQ1fa4RAfaXMcwGZ/bPW/TLSwG1u5fDjNQeps
+	hUs5bBmyQ9VD2y8ZPgKQuBMw6abZAk8KFv2VpQlN1AmQw=
+Message-ID: <e8a9863f-d4ea-4796-8dfe-c59f5e379687@163.com>
+Date: Wed, 30 Sep 2026 09:27:31 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] PCI: dwc: Align register macros with Synopsys
+ documentation
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: lpieralisi@kernel.org, kwilczynski@kernel.org, bhelgaas@google.com,
+ heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com, pali@kernel.org,
+ neil.armstrong@linaro.org, robh@kernel.org, jingoohan1@gmail.com,
+ khilman@baylibre.com, jbrunet@baylibre.com,
+ martin.blumenstingl@googlemail.com, cassel@kernel.org,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Feizhou Yu <yufeizhou201@163.com>
+References: <20260928215110.GA2266447@bhelgaas>
+Content-Language: en-US
+From: Hans Zhang <18255117159@163.com>
+In-Reply-To: <20260928215110.GA2266447@bhelgaas>
+X-CM-TRANSID: _____wD3B4aDZbxq7D5eBg--.58103S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7ZFWkWw1fJFy3Ary3Wr17Jrb_yoW8urWxpa
+	1xJF4rtw4DXF4aqw4Ig3WrX3W7Xrn3JrZ8X3yvqw18tan5Xr93Gr40grWjkFWkZrn3Kr1j
+	qr4jq3yxWry3Aa7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UC2NNUUUUU=
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCwwRE52q8ZYQf4QAA3t
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_172055_152920_21BA96E1 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20260929_182818_287426_0AF53BF5 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,36 +76,61 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 29 Sep 2026, Michal Wilczynski wrote:
 
-> This series enables the display subsystem on the StarFive JH7110.
->
-> [...]
-> - New patch 1 fixes v_HSYNC_POLARITY and v_VSYNC_POLARITY, which have
->  been swapped in inno-hdmi since the driver was merged. The hardware
->  puts HSYNC in bit 2 and VSYNC in bit 3, and the driver had them the
->  other way round. Almost all CEA modes drive both syncs with the same
->  polarity, so the two writes are indistinguishable and the bug only
->  shows on a mode whose polarities differ - a band of black rows at the
->  top of the screen, vsync_end - vsync_start + 1 rows tall. Reported
->  independently by Dominique Belhachemi, Maud Spierings and Byron
->  Stanoszek, and confirmed against the RK3128 TRM by Icenowy Zheng, so
->  this is a Rockchip fix too.
-> - Added a 201 MHz entry to the JH7110 pre-PLL table for a 2560x1440
->  mode Byron Stanoszek runs on a Dell U2711. It is derived the same way
->  as the neighbouring entries (fbdiv 134, /16, VCO 3.216 GHz) but I have
->  no sink that asks for it, so it is untested on my hardware.
 
-Hi Michal,
+On 9/29/26 05:51, Bjorn Helgaas wrote:
+> On Mon, Sep 28, 2026 at 04:50:09PM -0500, Bjorn Helgaas wrote:
+>> On Sat, Sep 12, 2026 at 12:25:36AM +0800, Hans Zhang wrote:
+>>> The DWC PCIe register and field macros are inconsistently named and
+>>> often do not match the Synopsys DesignWare PCIe Controller Reference
+>>> Manual.  This makes it harder to cross-reference the code with the
+>>> documentation when debugging or maintaining the driver.
+>>
+>>> +#define  PORT_AFAC_L0S_ELS		24		/* L0s Entrance Latency shift */
+>>> +#define  PORT_AFAC_L0S_ELM		GENMASK(26, 24)	/* L0s Entrance Latency mask */
+>>> +#define  PORT_AFAC_L1_ELS		27		/* L1 Entrance Latency shift */
+>>> +#define  PORT_AFAC_L1_ELM		GENMASK(29, 27)	/* L1 Entrance Latency mask */
+>>
+>> Surely we don't need both the shift and the mask?  Maybe a separate
+>> patch convert to FIELD_PREP()?
+> 
+> Oops, sorry, didn't notice that Mani had already applied these.  This
+> could be material for follow-on patches.
 
-I confirm that the hsync/vsync polarity and 201 MHz mode are both working on my
-setup in v5. Tested against 7.3-rc5 with af384d6e0573 and Bo Gan's cache
-coherency fixes. Thanks again for your work on this series!
+Hi Bjorn,
 
-Tested-by: Byron Stanoszek <gandalf@winds.org>
+I will send a patch separately based on the branch controller/dwc.
+
 
 Best regards,
-  -Byron
+Hans
+
+
+> 
+>>> +#define  GEN3_CTRL_RATE_SHADOW_SEL_SHIFT 24		/* Rate Shadow Select shift */
+>>> +#define  GEN3_CTRL_RATE_SHADOW_SEL_MASK	GENMASK(25, 24)	/* Rate Shadow Select mask */
+>>
+>> Ditto.
+>>
+>>> +#define MSIX_DOORBELL			0x948
+>>> +#define  MSIX_DOORBELL_PF_SHIFT		24
+>>
+>> Probably would be better to define a mask so we have the position
+>> *and* the width.
+>>
+>>> @@ -621,15 +621,15 @@ static inline u32 event_counter_prog(struct tegra_pcie_dw *pcie, u32 event)
+>>>   	u32 val;
+>>>   
+>>>   	val = dw_pcie_readl_dbi(&pcie->pci, pcie->ras_des_cap +
+>>> -				PCIE_RAS_DES_EVENT_COUNTER_CONTROL);
+>>> +				RAS_DES_EVENT_COUNTER_CONTROL);
+>>>   	val &= ~(EVENT_COUNTER_EVENT_SEL_MASK << EVENT_COUNTER_EVENT_SEL_SHIFT);
+>>>   	val |= EVENT_COUNTER_GROUP_5 << EVENT_COUNTER_GROUP_SEL_SHIFT;
+>>>   	val |= event << EVENT_COUNTER_EVENT_SEL_SHIFT;
+>>>   	val |= EVENT_COUNTER_ENABLE_ALL << EVENT_COUNTER_ENABLE_SHIFT;
+>>
+>> Probably a good chance to convert these to FIELD_PREP() etc. as well,
+>> maybe in a separate patch.
 
 
 _______________________________________________
