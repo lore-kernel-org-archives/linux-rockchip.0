@@ -4,93 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46ECFCA5FC1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 09:30:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21EB4CA5FC5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 09:30:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e7SB7nX3zLAw8/hZ+VRs95j8tcxGlxgH+kL8KT/4Tts=; b=d/yW7i7MgmDdNu
-	J8J65sDQ4Noq5RWEspb0rVJixYuhS3mEAmC1fIU3CqPb8huT/QhqS7GN1whxOPLC4FSLytrMBTEd6
-	mFRWXE+5ZJRqlmtJPLfojTYdH+n46JWGReIw0vzTt54XzFj8UGKyR2rht2dxoGqXIkVAkAB89UAbV
-	ybvZJCYoIBh7X7VznKbg4D5zknNWZKBAgoD1r/fQfMyhIOhV83vVTVEUC4yxLgjhhO8YTOQrVzZzI
-	2u8Hwvt7Lkm8f/hndHSgy/2LlDfcJAzAzrzSQuR/oCFoSQAPfNSjjlYTjlIBvycsHImHr3L35iHKi
-	Hkapv3xMpgS9cAMQ6w5A==;
+	List-Owner; bh=QoIdT1LKyczK5MNuuWxG0jyvPKHCqvJ7FHGJDXRXR8A=; b=WuXR/RsEHTcYXe
+	7iOpBABqQaQfopYPIw5CatOIXIuVDpkvC3abMdTyi4w6FMg8HTZNyRHsEvhI5KWUEqb6qiOann8dn
+	8TsUFNPYJ5Tx4yRNw0Kk1sroIjnA12U4OUGCdvB03rB5g4i609ub2FTzdndZtXbELkR813wAjLzQB
+	+tGfLjGlSOTyYLzbXAXXFLudBSNwAtioFENpDwNkyofUwpOox4dfprtgXsqBt07EhvbqGwZaF9NZc
+	z1nI8TD2fXVrVdnRN36iCQ6fvHvZuuJWkAO3tTbEeTuMbCjlaTLFfbZvJ5I+r6MLaNJ594QQnHWCq
+	X0r7MUvrG+zwJNTqxVtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBqeH-00000005ZRf-0FvI;
+	id 1xBqeH-00000005ZRx-10Nf;
 	Wed, 30 Sep 2026 09:30:49 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+Received: from mail-ed2-x10.google.com ([2a00:1450:4864:33::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBqe9-00000005ZO9-3NDW
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 30 Sep 2026 09:30:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=Zhvlpv/etnxxE1xo+vE8I3wMg7dBPdkR6wAnk76hoag=; b=GS0OQyDjEMMbVMMmAWmX6fkF/S
-	HqWkbtECWR4u0G28+Kr+aK0uCVnPVTd+R0ZLZ1ll3CZZlXNz1BLSl4h1bhR8YEyuCvmlTGI5gdHNh
-	85OmubZ2/E1BhmuFVSZ08mzOxnAfVDcDMosMLR5xxAva1aHZiYYyXSc1Vltk3mtqrdZtnbjXL5DNu
-	KJuJnfWgzVkNGu/jWY/x0gnRieXgQ0oUTMSx5cZC6QqzN+sV9MhuQx/3dmIoYHzHlXvAFAqidIPSY
-	9VNjEA/l++n1IQOe3HJX2jW18H6ys7LOHYWvPoxdKBe4ouYrG46GfZQ0k2waMTw78ONAldlssxaxv
-	c+ozMR2Q==;
-Received: from mail-ed2-x29.google.com ([2a00:1450:4864:33::29])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xBqe6-00000003aAf-1EVz
+	id 1xBqeD-00000005ZPQ-0xU6
 	for linux-rockchip@lists.infradead.org;
-	Wed, 30 Sep 2026 09:30:40 +0000
-Received: by mail-ed2-x29.google.com with SMTP id 4fb4d7f45d1cf-6aa0ee64afdso6169549a12.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 30 Sep 2026 02:30:37 -0700 (PDT)
+	Wed, 30 Sep 2026 09:30:46 +0000
+Received: by mail-ed2-x10.google.com with SMTP id 4fb4d7f45d1cf-6a605c198fdso8141702a12.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 30 Sep 2026 02:30:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790760636; x=1791365436; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1790760643; x=1791365443; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=Zhvlpv/etnxxE1xo+vE8I3wMg7dBPdkR6wAnk76hoag=;
-        b=gZ6LUAsAsQdGTlVlGOZ1QIZPPizbD1cNN+Q5DAIUyp3TGHcceXyQtamcikolooDm0n
-         t0XIER/u0wTLAXT99h32LqRmlLCZu5+saHVYTDX1r5TPe8spWD9WTg5NoahCMblr0xgu
-         taBkuFr7M1B2VxeHtSsE7i+38UowJxZCegAdK7yZT8y4fAQwnPUAooHKiahNPoNC2zLy
-         o5RT0s0nKCM1xvDO13RJRG0JszYed/3s/QSV5TfzxJdG1RcSrT0LCFnfAC+WXAkpsZqg
-         yM/Ejcm4GjcXJfNMok3pOqxjE1RAlMnE2AWmjXkqXENJzDKGU+lTq5We23HszNi/zI+B
-         0ukw==
+        bh=xy3iOEWnL0tHwimE1DNns8Vy695o1slJtCha6gEPJ2w=;
+        b=F+ZgDoZk/4LQKqd+6FjEyMM67mycB5HFCqDYIUir7EV6nlgOFKmySohGyioba/FhyI
+         SiUHGGtX2BRy5nUP+NEATAr7+qKFdoVCS3YJ5E7YKDVfjpbUOGKOyMn+ji0icEcUqX2/
+         pLfd/bnmuTyW/6WCzXu/Gw/rUGrKhBSPxOn41l3R+Rx4CdFJAxeELpozUdu/Tr9QyjaY
+         2sVoqCi4ojVZiGRut3w8dKqnYmyWk0a/zoKpWutusjwLRngkGRpZ4QjU5UYSW7b28HLZ
+         XiKuoeNrJLmryL49CNxWeA/UkrYubOrKLYEgpAldll3IVfimI1uVmbk/DvPAsqbjIkZr
+         d40A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790760636; x=1791365436;
+        d=1e100.net; s=20260707; t=1790760643; x=1791365443;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=Zhvlpv/etnxxE1xo+vE8I3wMg7dBPdkR6wAnk76hoag=;
-        b=CpJMfHcaLdvuIQgoU5bjyJPllDNzNBSZnY02sJLZWGhqmqOW1394cFfslR8uh1VMSP
-         A23qre7DfdVZlzXSbj6QzRrYqG/emmWyXLXSZQUM54TtoCv3O6EKDLvF2+wODWB59QE9
-         mW6xkr31zQFBwdlrCN2i/rKs1hl5zPAAJd5Xxb6eLpRJ3epsw/QU8f6rVBjJO0dLtO1W
-         cmQ7sPIsVtW/X/C4YD2SCQlQqGQJssuY/O4z0iLh3aI3fdz4NYl4Ijg1ac5+BozVfmns
-         93agtzja/xhBSA59CiLmWjuKYKDXNcqybud3CrtoGm4epPQDRSA9lmVg9hVg7TpgGin4
-         oPdA==
-X-Forwarded-Encrypted: i=1; AKwUvBzkKuk9O/ydbu9+sEbPkzRxMAtYSTi8XoGuaR05QM1rcsu1EIXUXwmx23OxswkH/3uODvomolZq8Ayo/7qsLw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLuZtPIxm8sbrOa2ffoHClXr8K6/XxV6hS4Rr9BE9jb4VEaMv55
-	/IUXFOsTnar1TXohjmnb3NDlLoWEwq0yV/vtX6dCxHvprBzT8ayR9qgE
-X-Gm-Gg: AYBFou1oF8o6MtcqlvdHN7Z6hrQhht3bZVPL0W0X7aM4l/h5kaxNQiLoiThk+nhcp5K
-	C4hrVgRlacEKoFnIRupZKVFImwngyzfd1rK46C/qOrIEhqyxV6Cora2mRhAIrXQ0KZkWAE3CE8J
-	1d3TVcDy4or/irfy7FYCuyXSwpxqr1PwZzdcUh/QLEF3OoP4R2hqrxbH4h35tT/Wt01EwNgCphF
-	ES2NK4UzlNwUh2EeZBezYftRiawg2oM257bk2PRy06BAJvYkqz3dAzyXUNKNe0hxUZZUUP74557
-	PdQSitU553QzYa+oAq6G/REBVfQ0X31e+CBW4o/0cfkIkVzGBWj8yXlhlYBh0ewJUQIwDh5nQLx
-	1aJIlEbcoiwJGWWD9yrx34iLCyuB2bPbjav4tgvHLE7cmvP1Lpo2amcToskSNe/pfRqyO4ff4sf
-	LROkxv3wZyPDsFIlQV9vpsCnUxWqskmmq6gfeqCSr5R3qVNznvwHVhRav45OfNkMJ5czmNwzcwW
-	WYLRzhRAR4=
-X-Received: by 2002:a05:6402:27d0:b0:6ac:68a3:3c30 with SMTP id 4fb4d7f45d1cf-6ae1992b71dmr568888a12.14.1790760636516;
-        Wed, 30 Sep 2026 02:30:36 -0700 (PDT)
+        bh=xy3iOEWnL0tHwimE1DNns8Vy695o1slJtCha6gEPJ2w=;
+        b=eypsPnOrKoMfEJRN141Gf9A1dPuPAV7X+bT1IRw1aNb+RKFHUABDH/J/JgqhAT3a9R
+         t+PlfLGHbGflcrP8NPK4NB0UyFjS+0cHaWPglTnzhe2GO9GvXmMd1nlSdLax3+WI6eO7
+         2X/VtxUQ2i8HpSUVYrOG06W9usDIt6ZOerDsMEBClfh+CaNrpcwY/e3lRqM2ACri5jRE
+         JM/kRIo4ZDRye3ULXJxeOOYrDM2fqGGzgnwp2xIL+ZSoimZJ2kTKy4vhAeF4KDUZ0bQs
+         LuKfAHR64kYop9DZgfCfBcXQQRfRcEzFh3k4oq028/gfSVGO+u7/28d7ZwfegCoxOA5a
+         CLvg==
+X-Forwarded-Encrypted: i=1; AKwUvBz+/3kpDjFLqKTLCzJuRwTUKaYMU5HzZ8VQFsswQCZH09oVHNijoIV/TlxJfCxIG3kYQ4ob5IeUzk0o4+R2xA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYILhNDRM3mUstMgqDmMXwFstCLq5UgiNBNPrJ+Nti2Ql2cscrQC
+	+udVOvHEpCBf4TiI2ngjksKlkpWTBmSh70mtnnUKMVfumYaNpSDY6kbW
+X-Gm-Gg: AYBFou2zP8nI2ISMp2/eKLPHeYLXlJw3mWuiDokaDxHBRRL0TSOzclhFLX1kOCm9FmN
+	U6oH8LBibpnHllf4L8+vX2nuytQz5iNl0wZgf1PIbYpyrPRvMKvx6v1jLGFLtmqyPK0QgphyR4+
+	N8Nc95w5gdHw608Jx7tSHEIoXyea/HZ6FFrRqm7g1iLdQckOUp/7mG2IluvsR1ZGN9ODtMwcGDG
+	s6f6GU9+AVISMOtqwlTB4saGoqAr78gs6o/3ShBX4LoWu+/cfqzKDnXSztpPJUpFNagX9wV0Ad9
+	NfSrwsTgUln3piny39KZ2rJws0o01q/sNuKFistJ2Bnf5v7UtKMtdW4/Zig9EFDMm6bTXT4Sa7p
+	qSFH8B8cGsz+gUl6L67dnP+r/KNYUHSWabtY/NJHpKOG0M+7crj9mSJGfeN2utTw/ETNlP9i1af
+	4k2sjKcQKXgW68uJtvpeAsFhNJfiIPjM61SxJ6mWRZGKqVv/QID2S2vXb1DdemDKxNAm+UHTXiV
+	IWtePJRMnY=
+X-Received: by 2002:a05:6402:24c6:b0:6aa:f1d2:ddaf with SMTP id 4fb4d7f45d1cf-6ae1992a5f5mr389769a12.10.1790760643233;
+        Wed, 30 Sep 2026 02:30:43 -0700 (PDT)
 Received: from localhost.localdomain ([193.107.16.39])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6ae1568e8b2sm485221a12.19.2026.09.30.02.30.34
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6ae1568e8b2sm485221a12.19.2026.09.30.02.30.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Sep 2026 02:30:36 -0700 (PDT)
+        Wed, 30 Sep 2026 02:30:42 -0700 (PDT)
 From: Dmitry Yashin <dmt.yashin@gmail.com>
-Date: Wed, 30 Sep 2026 14:29:04 +0500
-Subject: [PATCH 1/4] dt-bindings: arm: rockchip: add Forlinx FET3568-C
+Date: Wed, 30 Sep 2026 14:29:07 +0500
+Subject: [PATCH 4/4] arm64: dts: rockchip: add FIT-PCIE-SATA overlay
 MIME-Version: 1.0
-Message-Id: <20260930-ok3568-c-v1-1-a0ffd55f5c95@gmail.com>
+Message-Id: <20260930-ok3568-c-v1-4-a0ffd55f5c95@gmail.com>
 References: <20260930-ok3568-c-v1-0-a0ffd55f5c95@gmail.com>
 In-Reply-To: <20260930-ok3568-c-v1-0-a0ffd55f5c95@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -99,16 +84,16 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Dmitry Yashin <dmt.yashin@gmail.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1790760632; l=1111;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1790760632; l=2276;
  i=dmt.yashin@gmail.com; s=20260930; h=from:subject:message-id;
- bh=jBOWfAe/37a+DtWsY4pcfCQdJQrauO++5rYgJh/u5TQ=;
- b=S0YR/mEpWlrZhLop51WlR9UQ85qM7F+MHMXdP7xV2ma/HTK6GtzwTTt6llNqEnCLT+cEvMpYG
- 44HTadK8PWmDm3OWjTt7yWUx1aR1NxHfxb7wmEM91MYmPejst8jsK+H
+ bh=QtaCvtB82nVMHgqJpRLty7FgR+XTbYY1+IELklBAaFQ=;
+ b=14smWAzHi2xRrXpAi13KJaNbjx0ttZoWTFTNLI/D7Q5zDrRvqa5emJFRD2xr8nDIQxXywPHPT
+ +IVUk/ck9r+CLpAB3/8taFFhgxzFtu2slMMBjccsD5WGzHH/SqcCadx
 X-Developer-Key: i=dmt.yashin@gmail.com; a=ed25519;
  pk=vBe9jaaOEH5bQEvfzb1tWOlz3AMIcXCu/GL/CdlwJco=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260930_103038_692219_B4FDDD40 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20260930_023045_293128_CF385616 
+X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,40 +110,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-FET3568-C is an System on Module made by Forlinx based on Rockchip RK3568.
-This SoM used by OK3568-C Board.
+FIT-PCIE-SATA V1.0 is an adapter that included with OK3568-C board
+and allows to connect SATA drives to the device.
 
-FET3568-C features:
-- Rockchip RK3568
-- DDR4 1/2/4/8 GB
-- eMMC 8/16/32/64 GB
-- RK809 PMIC
-
-Add devicetree binding for Forlinx FET3568-C SoM.
+Add overlay to use combphy2 in SATA mode.
 
 Signed-off-by: Dmitry Yashin <dmt.yashin@gmail.com>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 7 +++++++
- 1 file changed, 7 insertions(+)
+ arch/arm64/boot/dts/rockchip/Makefile                    |  5 +++++
+ .../boot/dts/rockchip/rk3568-ok3568-c-fit-pcie-sata.dtso | 16 ++++++++++++++++
+ 2 files changed, 21 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index a799bb843f74..30a6794861cc 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -324,6 +324,13 @@ properties:
-           - const: firefly,rk3568-roc-pc
-           - const: rockchip,rk3568
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 48c83f79f83b..45e94a44107e 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -155,6 +155,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-mecsbc.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-nanopi-r5c.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-nanopi-r5s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-ok3568-c-fit-pcie-sata.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-ok3568-c.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-photonicat.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-qnap-ts233.dtb
+@@ -275,6 +276,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-lion-haikou-haikou-video-demo.dtb
+ rk3368-lion-haikou-haikou-video-demo-dtbs := rk3368-lion-haikou.dtb \
+ 	rk3368-lion-haikou-video-demo.dtbo
  
-+      - description: Forlinx FET3568-C SoM
-+        items:
-+          - enum:
-+              - forlinx,ok3568-c
-+          - const: forlinx,fet3568-c
-+          - const: rockchip,rk3568
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-ok3568-c-fit-pcie-sata.dtb
++rk3568-ok3568-c-fit-pcie-sata-dtbs := rk3568-ok3568-c.dtb \
++	rk3568-ok3568-c-fit-pcie-sata.dtbo
 +
-       - description: Forlinx FET3588-C SoM
-         items:
-           - enum:
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou-haikou-video-demo.dtb
+ rk3399-puma-haikou-haikou-video-demo-dtbs := rk3399-puma-haikou.dtb \
+ 	rk3399-puma-haikou-video-demo.dtbo
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-ok3568-c-fit-pcie-sata.dtso b/arch/arm64/boot/dts/rockchip/rk3568-ok3568-c-fit-pcie-sata.dtso
+new file mode 100644
+index 000000000000..474488ea994b
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3568-ok3568-c-fit-pcie-sata.dtso
+@@ -0,0 +1,16 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * FIT-PCIE-SATA V1.0 is an adapter that included with OK3568-C
++ * board and allows to connect SATA drives to the device.
++ */
++
++/dts-v1/;
++/plugin/;
++
++&pcie2x1 {
++	status = "disabled";
++};
++
++&sata2 {
++	status = "okay";
++};
 
 -- 
 2.55.0
