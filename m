@@ -4,78 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7027CA5FBE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 10:03:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3674CA5FC1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 10:04:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=450oDWaKeqZATjnJMLf8pLbTkR2nI0qL38b9kFoYCkc=; b=4LFp4rrOUeVP5e
-	rIdBj/23Lpn95CssPJKGxKr2FmuWxhAVi+FttX1+UZdnhJef5XQAwmDRu3s7jH3ynfhGCduxreI0S
-	pDjS8PgTydiT/otsNaRhB3Z2hN7LdtrudYjPPamYaOYEiSrmuyfBrWPnIQc5bDVBrBMn6WxgEcB1L
-	RLQYKCVpx23H+FM00iXEsEXPRnf3CJzJvYk3kFLFAwyl5Rkv9RyBIlHhtmQoADD3la/BnS30qFm0D
-	5WpRU2vOCG62f/RjUFEwXGdoBfo3f5vZSxCgEe9pNxrYp38jkxEthm2s405pIR1zcjBLH1873yOZ9
-	ijupqp+H7R+VkBann9dg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=auiQRWMWA9xgVjBFGzTnysu5OpaJjbNscoTP6uLOvus=; b=lYchzotyxThh8X
+	Yh66566B3BuaoGBCE1r0IQeZU+HxGBoAqhYrPO7uU8L7dFyRoHK16To2n1w+4bNZubSZrlLjW96Uh
+	QvnZBuj4zdJ8j/ALCVNWPNyA4w3weIgFtBdg/geo5JspceNo/RKEIGwVItJUJPHp3CCkMfs5CY7z/
+	5YLKZ2L50OnErqvcxQz1MihTMqEwBittPotS6oluEnUvz35DyT7W1heauVPClJPsFkd1zBnVt9yA/
+	tPGKB15uFv4v1NPs9BkeHulRM4rH4x5gO7moQQsJ07ImbG/+4nZiT3tN+mULeKRsJOCfkI2DCsmZ0
+	uWhw5VoOUJ3H0Ibnj7DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBrAE-00000005eGL-1whU;
-	Wed, 30 Sep 2026 10:03:50 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xBrBF-00000005eak-24Vq;
+	Wed, 30 Sep 2026 10:04:53 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBrAA-00000005eFV-2E51;
-	Wed, 30 Sep 2026 10:03:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=sh5fC0CUc10hXDTzkPBdCZZkzPfnJFt3NuMWURsgHZU=; b=dQDZx7GNYaKjOyAprY0oq3+rhC
-	/eRsMVCp7CHstO2amzfLwnWMpuZhOwZLV5zCzcz4BYLIiyI9kZ1yw0r9OgHEv+aIvi44sdtTirKwa
-	OQzxVHJQX/qDklqrlWPmwXgnqqXLejnfAonFjc6ADre+i/BSBCvUdjrrSrOrH6Dl1fxjxFXnwhCso
-	IPBJy26ZLjCtumpQqqejgo1MnBy4oKjXWyaJFjYC+jjpGjIJA0/q0xkiOVJoP0A2jPCkz/ZCOtkxz
-	ncKW0RperYZyh/uHq/5ZVrtrNlVK174R8UiChq058TY1LetGeH75URGVPxm0LcveI87AsX1YnSDo2
-	tHqzyTzg==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Vinod Koul <vkoul@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Emil Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,
- Dominique Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>,
- Jerome Brunet <jbrunet+clk@baylibre.com>,
- Michal Wilczynski <m.wilczynski@samsung.com>
-Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Maud Spierings <maud_spierings@murena.io>,
- Graham Markall <hello@big-grey.co.uk>,
- Icenowy Zheng <zhengxingda@iscas.ac.cn>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>,
- Joshua Peisach <jpeisach@ubuntu.com>,
- Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@baylibre.com>,
- Michal Wilczynski <m.wilczynski@samsung.com>
-Subject: Re: [PATCH v5 08/21] drm/bridge: inno-hdmi: Split probe out of bind
-Date: Wed, 30 Sep 2026 12:02:56 +0200
-Message-ID: <6535891.44csPzL39Z@diego>
-In-Reply-To: <20260929-jh7110-clean-send-v5-8-82b4d8e3c6c7@samsung.com>
-References: <20260929-jh7110-clean-send-v5-0-82b4d8e3c6c7@samsung.com>
- <CGME20260929103221eucas1p264107850882dde96fcda4772332d4f41@eucas1p2.samsung.com>
- <20260929-jh7110-clean-send-v5-8-82b4d8e3c6c7@samsung.com>
+	id 1xBrBC-00000005eYy-2xzK;
+	Wed, 30 Sep 2026 10:04:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1790762687;
+	bh=Y9n9hZH+mnhTp9vnyXSbiLthx3Dq0IHUxNJU42AUj1M=;
+	h=From:Subject:Date:To:Cc:From;
+	b=CIXJsM0eUpbAfQdHZxnNVJLenbQNfZl8wKKcdWkP60800mvGkyO40Cvp42LmvMSAa
+	 R4l2iY2aXpSxUjkh//a+XlNnZA2ZxymqEyr/JmhFq2x7w+A8BM2JLC+lgtMMxzWQv9
+	 gmFrCJnOLjcziQc8B28gqjr1Upq6cOd8o0+1N5tNCfEzwDyVZauGLyg/I+O1UL2V4A
+	 uGMTv3kR8qqL8RsYT9AruvgdutVuVjaMsSSUD4xDTEAulE8KVYfTuCTxwKUZdDHOQS
+	 CEjYEtN8K+pZMOBleXd93Brv2m8PlE+3EsGVmxbzKWvDbDxAd2Pk10yu1HajGSYbwh
+	 +Yu0rE5tAbRIA==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5EEEB17E0C41;
+	Wed, 30 Sep 2026 12:04:47 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 0D05848002B; Wed, 30 Sep 2026 12:04:47 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH v16 0/7] phy: rockchip: usbdp: Clean up the mess (part 3)
+Date: Wed, 30 Sep 2026 12:04:29 +0200
+Message-Id: <20260930-b4-rockchip-usbdp-cleanup-part3-v16-0-bc144f80afc4@collabora.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/5WR207EIBCGX6XhWjYcer7yPcxewDC7RdtSoa2aT
+ d9d2q4aNUa9Y2DyffwzFxLQWwykTi7E42yDdX0seH6TEGhUf0ZqTbwggomcVTylOqXewQM0dqB
+ T0Gag0KLqp4EOyo+SAqiCyVKiRkkiZfB4ss+b4u6412HS9wjjir12eHyconvc20iHIahNXSdXc
+ faTdY5PjJYMBXBuOGB5C65tlXZeHcB1q+E/vDWFeKOajBWgOS/S01+o4vN4zBPIj+rcThi5eeR
+ ykSuBFZcS5HeuVgFpPHd2rJO5OEQGcLLOrrFhdP5l21b84Tar9zy/LWaPVClTMZVmeZV9VR+XZ
+ XkFmyXmQxECAAA=
+X-Change-ID: 20260914-b4-rockchip-usbdp-cleanup-part3-cca70383ebe3
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Zhang Yubing <yubing.zhang@rock-chips.com>, 
+ Frank Wang <frank.wang@rock-chips.com>
+Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Igor Paunovic <royalnet026@gmail.com>, 
+ Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4236;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=Y9n9hZH+mnhTp9vnyXSbiLthx3Dq0IHUxNJU42AUj1M=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGq83r7Ka4MiIKkoZiuLdRM6XMean0lHusk1d
+ vzLIngWg38GeokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJqvN6+AAoJENju1/PI
+ O/qa+WIQAKR8KUScRo4d7pZWsXKJd7qTzAMgHA66AlhLhYzsIDKnUVuOz44VJKVhkPip3YNh62N
+ TpRcukdwYuchCzdd1wCVCs6CYoIgzlSpmJ3iXwrMBM+Qe4RJ8gVogjtGV9SgsvyrUAs/mJ5ZGEP
+ XKi1OS/gTKCSwY2uAlzBn50Hydp+14kVNUD3bjDfG1xCdPEHTi3jB618a/DjNIXAQrhHoQUOvlq
+ Oy1jI0lDi/RF1IzDHYBcYPmafv8trODI9RgXx5ieXcQUVqDc1+e8JjJo/z7175ZBKk+ud0nBP/k
+ xmZpBPn2QUMWrGg5x9lo/ylFncQksRzAceLFkJyeaLxbOV6TUO1hXQdVvoiJCgftq/P6P0n+2GS
+ 6rxdL2pvdjbn8TkcV3PFDmhyCPpo8b2Cab6haKLETjCr0ev/It3Fv9K7vj0VyVDfMJq5i9Vntra
+ Tj/2rHNoKBQBTJeNnK/Z+di73UeRlcf7YacEdSfU+Xp9xoTJq8t5Xc4cLfHAXVgaFHMida6xlhp
+ wQlDSolGfUPfKGs5lLJdlDC9+4yVTkEbCQirrvrgHmsYuLLGpMFBP0momUR5xcljJw6h6iuDCQE
+ LC1wrJyXjKGpryVnB/nT3orfh/OD1l7t/NyshAWYwShTM74jkNMbD+d6ecmTMaDYuYh/ggnhNOu
+ 7X1lHFC6TjejafPJfKSAvnA==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260930_030346_727240_3B49EACD 
-X-CRM114-Status: GOOD (  29.28  )
+X-CRM114-CacheID: sfid-20260930_030450_906864_7397C2C1 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,84 +99,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRGllbnN0YWcsIDI5LiBTZXB0ZW1iZXIgMjAyNiwgMTI6MzE6MDUgTWl0dGVsZXVyb3DDpGlz
-Y2hlIFNvbW1lcnplaXQgc2NocmllYiBNaWNoYWwgV2lsY3p5bnNraToKPiBpbm5vX2hkbWlfYmlu
-ZCgpIGJvdGggc2V0cyB1cCB0aGUgYnJpZGdlIGFuZCBhdHRhY2hlcyBpdCB0byBhIERSTQo+IGVu
-Y29kZXIuIEEgcGxhdGZvcm0gd2hvc2UgSERNSSBjb250cm9sbGVyIGlzIGEgY2hpbGQgb2YgYSBs
-YXJnZXIgZGV2aWNlCj4gbmVlZHMgdGhlIGZpcnN0IGhhbGYgd2l0aG91dCB0aGUgc2Vjb25kLCBz
-aW5jZSBpdCByZWdpc3RlcnMgYXMgaXRzIG93bgo+IHBsYXRmb3JtIGRyaXZlciBhbmQgbGV0cyB0
-aGUgRFJNIGNvcmUgYmluZCB0aGUgYnJpZGdlIGxhdGVyLgo+IAo+IE1vdmUgdGhlIHNldHVwIGlu
-dG8gYSBuZXcgZXhwb3J0ZWQgaW5ub19oZG1pX3Byb2JlKCksIGFuZCByZWR1Y2UKPiBpbm5vX2hk
-bWlfYmluZCgpIHRvIGEgd3JhcHBlciBhcm91bmQgaXQuCj4gCj4gTm8gZnVuY3Rpb25hbCBjaGFu
-Z2UgaW50ZW5kZWQuCj4gCj4gUmV2aWV3ZWQtYnk6IEpvc2h1YSBQZWlzYWNoIDxqcGVpc2FjaEB1
-YnVudHUuY29tPgo+IFNpZ25lZC1vZmYtYnk6IE1pY2hhbCBXaWxjenluc2tpIDxtLndpbGN6eW5z
-a2lAc2Ftc3VuZy5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvaW5uby1oZG1p
-LmMgfCA0OSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKystLS0tLQo+ICBpbmNsdWRl
-L2RybS9icmlkZ2UvaW5ub19oZG1pLmggICAgIHwgIDQgKysrKwo+ICAyIGZpbGVzIGNoYW5nZWQs
-IDQ3IGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZ3B1L2RybS9icmlkZ2UvaW5uby1oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2lu
-bm8taGRtaS5jCj4gaW5kZXggZDdjMzNiOTJlMmRkZjRjZWQ4NGQxNzMwNDQ2M2Y0NGJlNTIyNzBi
-OC4uN2E5ZjU0ZGNlMjY0N2YwMzIwZDc3NjI5YTI4MTU0ZWFkZTE0Mzg1ZiAxMDA2NDQKPiAtLS0g
-YS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2lubm8taGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9pbm5vLWhkbWkuYwo+IEBAIC05MjksNyArOTI5LDE0IEBAIHN0YXRpYyBpcnFy
-ZXR1cm5fdCBpbm5vX2hkbWlfaXJxKGludCBpcnEsIHZvaWQgKmRldl9pZCkKPiAgewo+ICAJc3Ry
-dWN0IGlubm9faGRtaSAqaGRtaSA9IGRldl9pZDsKPiAgCj4gLQlkcm1faGVscGVyX2hwZF9pcnFf
-ZXZlbnQoaGRtaS0+YnJpZGdlLmRldik7Cj4gKwkvKgo+ICsJICogVGhlIGludGVycnVwdCBpcyBy
-ZXF1ZXN0ZWQgaW4gcHJvYmUsIGJ1dCBicmlkZ2UuZGV2IGlzIG9ubHkgc2V0IG9uY2UKPiArCSAq
-IHRoZSBEUk0gbWFzdGVyIGJpbmRzIGFuZCBhdHRhY2hlcyB0aGUgYnJpZGdlLCB3aGljaCBtYXkg
-bmV2ZXIgaGFwcGVuLgo+ICsJICogRHJvcCBob3RwbHVnIGV2ZW50cyB0aGF0IGFycml2ZSBiZWZv
-cmUgdGhlbiByYXRoZXIgdGhhbiBkZXJlZmVyZW5jZSBhCj4gKwkgKiBOVUxMIGRybV9kZXZpY2Uu
-Cj4gKwkgKi8KPiArCWlmIChoZG1pLT5icmlkZ2UuZGV2KQo+ICsJCWRybV9oZWxwZXJfaHBkX2ly
-cV9ldmVudChoZG1pLT5icmlkZ2UuZGV2KTsKClRoaXMgaXMgbm90IHBhcnQgb2YgdGhlIGNvbW1p
-dCBkZXNjcmlwdGlvbiBhbmQgd2hpbGUgdHJ1ZSwgc2hvdWxkIGxpa2VseQpiZSBpdHMgb3duIHBh
-dGNoIHdpdGggaXRzIG93biBkZXNjcmlwdGlvbi4KCgo+ICAKPiAgCXJldHVybiBJUlFfSEFORExF
-RDsKPiAgfQo+IEBAIC0xMDYxLDExICsxMDY4LDI0IEBAIHN0YXRpYyBzdHJ1Y3QgaTJjX2FkYXB0
-ZXIgKmlubm9faGRtaV9pMmNfYWRhcHRlcihzdHJ1Y3QgaW5ub19oZG1pICpoZG1pKQo+ICAJcmV0
-dXJuIGFkYXA7Cj4gIH0KPiAgCj4gLXN0cnVjdCBpbm5vX2hkbWkgKmlubm9faGRtaV9iaW5kKHN0
-cnVjdCBkZXZpY2UgKmRldiwKPiAtCQkJCSBzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsCj4g
-LQkJCQkgY29uc3Qgc3RydWN0IGlubm9faGRtaV9wbGF0X2RhdGEgKnBsYXRfZGF0YSkKPiArLyoq
-Cj4gKyAqIGlubm9faGRtaV9wcm9iZSAtIEludGVybmFsIGhlbHBlciB0byBwZXJmb3JtIGNvbW1v
-biBzZXR1cAo+ICsgKiBAcGRldjogcGxhdGZvcm0gZGV2aWNlCj4gKyAqIEBwbGF0X2RhdGE6IFNv
-Qy1zcGVjaWZpYyBwbGF0Zm9ybSBkYXRhCj4gKyAqCj4gKyAqIFRoaXMgZnVuY3Rpb24gaGFuZGxl
-cyBhbGwgdGhlIGNvbW1vbiBoYXJkd2FyZSBzZXR1cDogYWxsb2NhdGluZyB0aGUgbWFpbgo+ICsg
-KiBzdHJ1Y3QsIG1hcHBpbmcgcmVnaXN0ZXJzLCBnZXR0aW5nIGNsb2NrcywgaW5pdGlhbGl6aW5n
-IHRoZSBoYXJkd2FyZSwKPiArICogc2V0dGluZyB1cCB0aGUgSVJRLCBhbmQgaW5pdGlhbGl6aW5n
-IHRoZSBEREMgYWRhcHRlciBhbmQgYnJpZGdlIHN0cnVjdC4KPiArICogSXQgcmV0dXJucyBhIHBv
-aW50ZXIgdG8gdGhlIGlubm9faGRtaSBzdHJ1Y3Qgb24gc3VjY2Vzcywgb3IgYW4gRVJSX1BUUgo+
-ICsgKiBvbiBmYWlsdXJlLgo+ICsgKgo+ICsgKiBUaGlzIGZ1bmN0aW9uIGlzIHVzZWQgYnkgbW9k
-ZXJuLCBkZWNvdXBsZWQgTUZEL2dsdWUgZHJpdmVycy4gSXQgcmVnaXN0ZXJzCj4gKyAqIHRoZSBi
-cmlkZ2UgYnV0IGRvZXMgbm90IGF0dGFjaCBpdC4KPiArICovCj4gK3N0cnVjdCBpbm5vX2hkbWkg
-Kmlubm9faGRtaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+ICsJCQkJICBj
-b25zdCBzdHJ1Y3QgaW5ub19oZG1pX3BsYXRfZGF0YSAqcGxhdF9kYXRhKQo+ICB7Cj4gLQlzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2ID0gdG9fcGxhdGZvcm1fZGV2aWNlKGRldik7Cj4gKwlz
-dHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+ICAJc3RydWN0IGlubm9faGRtaSAqaGRt
-aTsKPiAgCWludCBpcnE7Cj4gIAlpbnQgcmV0Owo+IEBAIC0xMTI4LDcgKzExNDgsMjQgQEAgc3Ry
-dWN0IGlubm9faGRtaSAqaW5ub19oZG1pX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LAo+ICAJaWYg
-KHJldCkKPiAgCQlyZXR1cm4gRVJSX1BUUihyZXQpOwo+ICAKPiAtCXJldCA9IGRybV9icmlkZ2Vf
-YXR0YWNoKGVuY29kZXIsICZoZG1pLT5icmlkZ2UsIE5VTEwsIERSTV9CUklER0VfQVRUQUNIX05P
-X0NPTk5FQ1RPUik7Cj4gKwlyZXR1cm4gaGRtaTsKPiArfQo+ICtFWFBPUlRfU1lNQk9MX0dQTChp
-bm5vX2hkbWlfcHJvYmUpOwo+ICsKPiArc3RydWN0IGlubm9faGRtaSAqaW5ub19oZG1pX2JpbmQo
-c3RydWN0IGRldmljZSAqZGV2LAo+ICsJCQkJIHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlciwK
-PiArCQkJCSBjb25zdCBzdHJ1Y3QgaW5ub19oZG1pX3BsYXRfZGF0YSAqcGxhdF9kYXRhKQo+ICt7
-Cj4gKwlzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2ID0gdG9fcGxhdGZvcm1fZGV2aWNlKGRl
-dik7Cj4gKwlzdHJ1Y3QgaW5ub19oZG1pICpoZG1pOwo+ICsJaW50IHJldDsKPiArCj4gKwloZG1p
-ID0gaW5ub19oZG1pX3Byb2JlKHBkZXYsIHBsYXRfZGF0YSk7Cj4gKwlpZiAoSVNfRVJSKGhkbWkp
-KQo+ICsJCXJldHVybiBoZG1pOwo+ICsKPiArCXJldCA9IGRybV9icmlkZ2VfYXR0YWNoKGVuY29k
-ZXIsICZoZG1pLT5icmlkZ2UsIE5VTEwsCj4gKwkJCQlEUk1fQlJJREdFX0FUVEFDSF9OT19DT05O
-RUNUT1IpOwo+ICAJaWYgKHJldCkKPiAgCQlyZXR1cm4gRVJSX1BUUihyZXQpOwoKVGhpcyBjbHV0
-dGVycyB1cCB0aGUgc3RydWN0dXJlIGV2ZW4gbW9yZSB0aGFuIGl0IGlzIHJpZ2h0IG5vdy4gRnJv
-bSAiYmluZCIKYmFjayB0byAicHJvYmUiIGFuZCAiZGV2IiBiYWNrIHRvICJwZGV2IiBhbmQgY2Fs
-bGluZyBhIGZ1bmN0aW9uIGNhbGxlZAoicHJvYmUiIGZyb20gdGhlIGJpbmQgY2FsbGJhY2suCgpZ
-b3UgYXJlIHJpZ2h0LCB0aGF0IGFsbCB0aGUgcmVzb3VyY2UgYWxsb2NhdGlvbiBjYW4gKGFuZCBw
-cm9iYWJseSBzaG91bGQpCmxpdmUgaW4gdGhlIGRyaXZlcnMgcHJvYmUtcGF0aCwgYnV0IHRoZW4g
-cGxlYXNlIGNhbGwgdGhhdCBwcm9iZSBmdW5jdGlvbgpmcm9tIHRoZSBhY3R1YWwgcHJvYmUgcGF0
-aC4KCkZvciBleGFtcGxlIHlvdSBjb3VsZCBsb29rIGF0IGhvdyBhbGwgdGhlIFN5bm9wc3lzIGJy
-aWRnZXMgZG8gdGhhdC4KCgpUaGFua3MKSGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+This series was split from the USBDP cleanup series and contains a bunch
+of critical bug fixes for the Rockchip USBDP driver, but the fixes
+depend on the cleanup and features added in the previous parts and
+cannot be sensibly moved to the start of everything.
+
+This part depends on the cleanup series part 1, part 2, as well as the
+series adding the new DWC3 glue driver.
+
+The most important change is the first patch adding PHY reset
+notification support (i.e. the PHY notifies the consumer that the
+PHY is about to reset).
+    
+Changes in v16:
+- Link to v15: https://patch.msgid.link/20260915-b4-rockchip-usbdp-cleanup-part3-v15-0-9ad90a456953@collabora.com
+- Split out "Disable USB3 port during normal power-on" from first patch
+- Collect R-b tags from Mani
+
+Changes in v15:
+ - Link to v14: https://patch.msgid.link/20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com
+ - Split the series, no patch changes in this part
+
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+Sebastian Reichel (7):
+      phy: rockchip: usbdp: Add phy reset notification support
+      phy: rockchip: usbdp: Disable USB3 port during normal power-on
+      phy: rockchip: usbdp: Drop -EPROBE_DEFER hack
+      phy: rockchip: usbdp: Rename mode to hw_mode
+      phy: rockchip: usbdp: Fix power state handling
+      phy: rockchip: usbdp: Re-init PHY on mux change
+      phy: rockchip: usbdp: Add USB-C state without DP enabled
+
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 237 ++++++++++++++++++------------
+ 1 file changed, 144 insertions(+), 93 deletions(-)
+---
+base-commit: e5e04726cdd043e309677071ab1b65a4b18f422b
+change-id: 20260914-b4-rockchip-usbdp-cleanup-part3-cca70383ebe3
+prerequisite-message-id: 20260915-rockchip-usbdp-cleanup-v15-0-80e2c11d1ce8@collabora.com
+prerequisite-patch-id: 27d601f203e30baebffc3486a1b787a2d280f5f7
+prerequisite-patch-id: b42efbccabb13cd37252ea9bbc3873141bd5b8f8
+prerequisite-patch-id: 8b416e19148a0b90c71778ff4fcc032b52ed49ce
+prerequisite-patch-id: 04b986df824850902431339cdf43787d8036ac5c
+prerequisite-patch-id: c0a6f7da1f986c76248c6271b0c04d8dab21e5cb
+prerequisite-patch-id: 12bf844fd4a355c1860812522fdb16a1ff4232ea
+prerequisite-patch-id: d71d6a6a232b59804f0775ba5c87d71bfdbbea61
+prerequisite-patch-id: 301c705f92061ccb1a1923ec5d3bdc1fdceca24d
+prerequisite-patch-id: 978560cb9620a16f57e14c424e8efa4ad7178747
+prerequisite-patch-id: a6562299bf87dc57d4b14a8079d2b1e3fe407702
+prerequisite-patch-id: 1b90e6acf41e9093636c3fe8791f46492b583520
+prerequisite-patch-id: 60f32afe1f50ed33d48041b41e7ec8a5841d0ebd
+prerequisite-patch-id: 8a9a01d462e581e6539bc9fd07b13e0f32933126
+prerequisite-patch-id: fbcfbe4a42de5c488052e865bfd146260be738fb
+prerequisite-patch-id: 7f3c3811dee1e11e0386ff2d8b4080f07bd68e88
+prerequisite-patch-id: 831ca526a0099f3f7292f2060df9888bdf3055b4
+prerequisite-message-id: 20260915-rockchip-usbdp-cleanup-part2-v15-0-8d507cb1174f@collabora.com
+prerequisite-patch-id: aa7f5784cc227e8dd7e9fe376dad1997828aefbc
+prerequisite-patch-id: 21ff208d83fc75ac5efa9f69d8aa36455d1ae94e
+prerequisite-patch-id: 4f721e51f1f4d57284354cc0b99b6a092b4603da
+prerequisite-patch-id: c5d9d7bf27e215f9f60ac98ce9cc2117b5041d38
+prerequisite-patch-id: e1cefd986004360890e009dede50fc849ce927df
+prerequisite-patch-id: e2788d7c6dad4f9b3352ed59c5b4bedd7c55529e
+prerequisite-patch-id: 45c0c6cdd117dba967ae3616531d7229fa853075
+prerequisite-patch-id: acca212cc347efc4748dbe8d74a192e0f58f0133
+prerequisite-patch-id: dabae3467575f218da2042bd26aa7314f599169e
+prerequisite-patch-id: 4208007b7e8ce5710399a7a1cd93a45b2da0007c
+prerequisite-patch-id: d2362c993cd9289d8849af2144a05da1bb5d84c9
+prerequisite-message-id: 20260924-b4-rockchip-dwc3-rockchip-glue-v16-0-126a2e9133c3@collabora.com
+prerequisite-patch-id: 14c0d95ef04887c85fa5b00910f128416efcf17a
+prerequisite-patch-id: c2e1c453454a7589a691fe391dc79e86f09ca7b7
+prerequisite-patch-id: dadeaf9e369e04d8b3329493a1a0756ddd6140f0
+prerequisite-patch-id: be213d23cea80f1c646983de557fb1305d545f63
+prerequisite-patch-id: 62b492b7b6e9957282f1029a02aaf258b63e990f
+prerequisite-patch-id: 3de1ce97765d8dfb34358b864b722b4be0d2162b
+
+Best regards,
+--  
+Sebastian Reichel <sebastian.reichel@collabora.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
