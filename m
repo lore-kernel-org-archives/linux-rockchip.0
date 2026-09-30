@@ -4,129 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6622CCA5FC7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 16:04:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19ADACA5FC4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 16:26:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LtRn+O+dglKZJ8rb+ytVqsAR6lQ8LZ0fyQ20b/jvS8Y=; b=0PfDOUch4z7XDD
-	LQu1b+qDwLi7Efw6e6n83So+XJajDOHjhJ4Pr/HsQ44lvT8tqjZlDTe1C90CP4vjzidc3T4eHo4cB
-	s25L52opI6+mL7cGhTSmQmYImDQoiPGVKOzb+8PY6KkoAFt6iRs2oc5PJDLEiHsh5wWJJGCs9VKA7
-	Z5ydIGUjULaPneiJpbEBkyCy24r67rhCyhxEBs2RkZnySoQMXIfCg4grSVrZzeV/oJvu0SMQYn7PM
-	XIn59dmYIdWB4+zgrbTDEjlP5zDpX0B0azOiJPytQN3vk7lgiUuehfB8lEq7i5rObUZWAb4Wka09g
-	cM3HULklqPzfuaD/XWBw==;
+	List-Owner; bh=FQanUIN3o3av/5gSARqS8QHjQVv40uWxnqo3a70fqXI=; b=dQYcg24T5U8QAE
+	fonhpww9a9sMhjq4zOJrcb586loTLxX1LJxJ390rqHZZZl0SYUitjJacFdMb9mQD0HNUllIzlkqeC
+	hvQEZ9hgCxjo2eorKlarjWFVGvdmG7/5EmQgm4qasu9BbAMgnDVFXykFRv1jboG86GTdvKIOllQqF
+	tEYORUlnlwU1VB96vOdPGPBqlcz0LuBd3sRTc81n32fbrujIU26SIjC/mePYT/srywvVFYIXwFr9g
+	pkFFHyVH8pKPidlSxuDfpi1Zf65kNlFDh/1q2DnQ+GXW40vepLaKQG5GDDNIkH1i4s+C/Cbum93i/
+	3qr1Bzqr9rD8m49KiXlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBwna-00000006cqG-2Rpu;
-	Wed, 30 Sep 2026 16:04:50 +0000
-Received: from mail-norwayeastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20f::7] helo=OSPPR02CU001.outbound.protection.outlook.com)
+	id 1xBx83-00000006h8W-2HF5;
+	Wed, 30 Sep 2026 16:25:59 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBwnU-00000006coI-2XoC;
-	Wed, 30 Sep 2026 16:04:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=WFL/NM8HTZQce4DYnrugx9qlqbWwThFd+ZYbi8c6gQLaletfLIpS1mvPDLyv0rIsLm8iKFSX5i01YrDbocu55KfIwxQH6ojlHqN17FoMR42UQueN3yEQ9RCjMbFL+mMJoYrsteJrXBxA0FnF9ka+kI7c/yXRbsiQrVnMuLa987CWnJ98OlC9x+eN+pBUM0u4mEMhPoC6UVjYRG+amjCea7j7ddaLleBclOtsyiezHxDketbLtcExoNe/ryebSzRVRAK0PAmAn1AgNcjmKNloXj/ysIV/E3eseklxd0yRlCGLo/mMxj7koKfHlQD6m/YITDHgtHSDQdFGpDQDthO2Dg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=H0+fRfGmNJk9dZlfXHPtMZ0o0/WnM2Da0jRT6bHhn9A=;
- b=B3ygnNYRrgjSPud3zMtoMWhp5ljp3wBWVo5jg6H5slAnVs/QxBHN5uq5phAdpGtzzN5vjOg+y1i1dRDO8KVPIGYs7QbATQ6sAcwtyfTQu7D/zg6iPq8Lsety5cTZibKdDd25IATgBONp9Z/NdfrL+WocAuJIb8BGPknnOcRudbeU8dSPt4GkpnOQjnnD5MCKYLvlSV5QmeGI3LWUXvB9t4AJ2+W8jkFCXTYRiaxLsUcoNty81gtVZ6dknf6ExtBiXA6Vd9Giz5C8pJGQrN0sSyMHAYoyy3h4CWbltQMA1rq8iYAIhAj+5BrTECDABUTyvrVBRT0dgb2mtAkM26CGvg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=H0+fRfGmNJk9dZlfXHPtMZ0o0/WnM2Da0jRT6bHhn9A=;
- b=Ghp1sF9n8jMojQRIBP3ieV78YiVaP8TGgcJoQA/RRkkeO4CtRmoHJNjRMhiYMiX4x7NkZQroSNOqH3rtLPXotwqW+JpAz9mPOVbxCQlPd6AZIgtOXTjiqXI55eDgb86sWc0M/BpQQ2TBZaShWYaEzTip+AT5PAuDaXWHRoNyiPsmOJEa7b9rSxo0yXkdZgqwTkNjxHHR7tjtkzROSH9uafZrKTU81GZgq23LqH4x+v4DcmEJct2+2ITphDVfKHMbVOscJyr0Xj2RVkYhoe5kN8RzwHyyHQ3N2Icnkwqky0sdyMtZjg8RaXkVbSnzBe8+3B25OsJ8pIylazPyuXimBQ==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
- by PAWPR04MB9911.eurprd04.prod.outlook.com (2603:10a6:102:38b::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.472.16; Wed, 30 Sep
- 2026 16:04:39 +0000
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c%7]) with mapi id 15.21.0451.022; Wed, 30 Sep 2026
- 16:04:39 +0000
-Date: Wed, 30 Sep 2026 11:04:27 -0500
-From: Frank Li <Frank.li@oss.nxp.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
-	mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, Frank.Li@nxp.com, s.hauer@pengutronix.de,
-	kernel@pengutronix.de, festevam@gmail.com, conor@kernel.org,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v6 1/3] media: verisilicon: Remove deprecated
- nxp,imx8mp-vpu variant
-Message-ID: <ar0zCzdfPum2KMML@SMW015318>
-References: <20260930151241.58233-1-benjamin.gaignard@collabora.com>
- <20260930151241.58233-2-benjamin.gaignard@collabora.com>
-Content-Disposition: inline
-In-Reply-To: <20260930151241.58233-2-benjamin.gaignard@collabora.com>
-X-ClientProxiedBy: CY3P220CA0011.NAMP220.PROD.OUTLOOK.COM
- (2603:10b6:930:fb::7) To GV2PR04MB11799.eurprd04.prod.outlook.com
- (2603:10a6:150:2cf::9)
+	id 1xBx80-00000006h75-0ScT;
+	Wed, 30 Sep 2026 16:25:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
+	bh=4S4Ky9H6NIrDlJuACD42DZExJrayfct7UMHssAIDYYg=; b=AJb2YSPuw7wtv4lkmK3uAK72s1
+	juNhAS6pj1bKUB/xj9E0hcOOFuas8ZYh1KyOS7wK591AxijFqMepwBtU1cCIbC8D2gup+djNLc4WZ
+	Bqx7D12iS5vxXEkTMbWhKsQ9eGpi7lb7c9A73a4jFbTByNFLnqVot7XgpfWl80o3PFR4+oQsJjO2Z
+	zse8Arb1xRB7LR/BKAPAz8UX5wvqDsDM72LmNOsizfBcMUhfeX/ti6QLlOGEX9FSAYeDHi/PlGuPt
+	nO0eKNyWHuU/nIvyynSTbrw8DkKePkUTdWJTAQlkQ3UkQOuPIdURta3RyTiXoSJptIN1Hpv23iWJu
+	MGl5Xv9g==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	quentin.schulz@cherry.de,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	damon.ding@rock-chips.com,
+	Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: [PATCH v5 2/2] arm64: dts: rockchip: add RK3588 DP carrier from Theobroma Systems
+Date: Wed, 30 Sep 2026 18:25:44 +0200
+Message-ID: <20260930162545.2357505-3-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260930162545.2357505-1-heiko@sntech.de>
+References: <20260930162545.2357505-1-heiko@sntech.de>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|PAWPR04MB9911:EE_
-X-MS-Office365-Filtering-Correlation-Id: 34deeaa8-410e-4dc3-530d-08df1f0c87ea
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|19092799006|376014|1800799024|7416014|366016|4143699003|10067099003|56012099006|11063799006|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: gwprnuxZvD5Skp8Kny35CheYenuIduO6POdK+4eiJOqP93jl7x3ADoMWeowBoY58wVXremJdBeZp+Be88QOrE6U8MdHsnAmk4I2W9aWlJFJTqx1e0RhWNOVkruTeA+kLsA03c6QmkL2by6x6diyRYbhWQmN3OvrY4kYWbbbdhcgKxZYOqTs0kHqaakPH2YnDCPI2w/bLAG5dBdJRWcpQzpLtpexcng03wN65PcyLXItKxaP0K5fYUYJezsoxiDAIyvip1IWLET0MXdTvwjfeUJjXRYZ2ZM0JuZyaRgqWg7k1z1lK238gS7hDPOaaqa4VcXnBHwpPo2AnmS1/PJEbsOtjq9KzJBSWoOwOhdSlOiEmvkfVDhnmfHAFKpenZbs+cfYxGExpHcHUOsqpj2XUvOsJeewdaGkeQzT4AdvkFrnfpCIvfgK5R5HlrovH/nY7SolcQILQvgdPb7k8hVKghfoAUUYSAK3O5uH9RUxj/WCjsrZTFH/wrfMl7zaPP+6Mx4tNA4eqa6nVg8gdRq+nVdehNuZk07oToZS7WNl3wNcFga1tryDlJQXBGsFFLKHTdHZFqqIeJDwLtKt0NSlp5W4bqQuZnTPk5da2dz1LmkU9wH4gQdVlTDl0R2ka3bKBglgI6kUJWzMxHScN12qGXXr4PF9L80SKY3rQyqdYPDI=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(19092799006)(376014)(1800799024)(7416014)(366016)(4143699003)(10067099003)(56012099006)(11063799006)(18002099003)(22082099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?9vWxYhh1+rhW2SHDOfbpfnt78fDag5Fs8Ud7pzW0N5ReNB4rRw+rRCVjD+ah?=
- =?us-ascii?Q?xWeQEsmyLQH2dl8vR9GXhssScvodiNNfiXe8XAMw/xGCVAhY0T12lCUyS6Q/?=
- =?us-ascii?Q?j91MBBOEvvQzwIeDePNbl5HcANTl7QbZoAnhwznKk3unSxy+JWdvSoOV/AzR?=
- =?us-ascii?Q?/eNdVW3t7KjvU0K/3Q3dwMD1buqV/SzEgBw/bOcFGaKfMgr2LMktd60m6BNq?=
- =?us-ascii?Q?iY6D1ZOq0OhJd0ZIrcpg+MdH27WSnYqmskep4TxSbBam4PsdIB70Cmy0CoMv?=
- =?us-ascii?Q?evcBOSVFcyEwY+JpCoZ1+f8LugDmyW4V62xkGujePSGmp5+ucXItNndC5VkY?=
- =?us-ascii?Q?Mt/Qp7+qYBqFSI8BSrgnWfnEfvBB/r6UF3OGHL7qkIa07I76l7imgLjZ4LcU?=
- =?us-ascii?Q?AB0Y6DggXcQW2BNa5d4McPNA1KJZLqZMmCcqF4LvWuGDZTWR4xJTUqmhCyxI?=
- =?us-ascii?Q?6uJPy4YZX+Tw15EKYnug3vtWD7yHIc9AZ13aW8GcfF8f6Yy5Uze/FmgPy2sM?=
- =?us-ascii?Q?YpGivG1gWcz7Tpoz3RMPbNhMPcDHkgRP5I/6DMuegOowM0ZosFbgq53AO3u7?=
- =?us-ascii?Q?GmwBkXUL2YEc68d5qiEZqCpZMN7aqvWgYRMauEygqAHxym0q944AjRMO3Snx?=
- =?us-ascii?Q?ILQlDKVA0KQNAS68Fwg/6cC7Nr0Ig7mrSaeIwoeAJhddPFGypJCRIgBMPlt2?=
- =?us-ascii?Q?y3xDne2NDvR0wZmPnUJq9slbUmJ2lCz6+zGViSYcF58RqwqFGLduDDriClKq?=
- =?us-ascii?Q?D3Y/D3GvoLOTxrJ5nzSYAe0/ehVEk/BnRxPoe22MeDGCJTP07ADIZNr0zFqv?=
- =?us-ascii?Q?wN3Lmg4bls1nKdlWCEEfChklUZ4ECIBahCy4aVCRdekb0EyjMj+btHQOFA/f?=
- =?us-ascii?Q?/2sn9qNeSfsCo19iNzKRGUopRgHMx9/wIHMkmnqo8SNYaAugVg38D+N55m1+?=
- =?us-ascii?Q?pKBiV9hv7Seb9WxcWjUJ0uFLgC6p75EtYg9+1mIOaGFpIfcrhNrDjnyYEN/s?=
- =?us-ascii?Q?EL2ZrAaIJEim4bSPK6b72YFA0wvz8utWeTKTlL0OXfeAbLlZ/U9SwBvQmyeH?=
- =?us-ascii?Q?iNEat30aP0tL2HDtwO96R6vr3qJmhcczCKf7Wv6uD703FWg8aCHYcaq1Czg8?=
- =?us-ascii?Q?xIHcRdO18hflGg2qt6f8GGapKDTaghAWMZyQjXQjKF2EFokqC95+CVGj+TuZ?=
- =?us-ascii?Q?HnbaArOX7A9lX/mXe+6F4zeoWO1B20X1usCcGOVEhpReT+/tLK2XKqjYkY9Y?=
- =?us-ascii?Q?akYUEB9SeDqopT7C89tx6jgacK2fIUq3hiXKwjg0QWGKjGSejxEjTS+V3VQs?=
- =?us-ascii?Q?a5XpEMgzvOIA6iVkHfXSKsIMCvUPHSJIMSK8wgsLcWGzgjPQt1reZblt/rAA?=
- =?us-ascii?Q?5LfTaxmLYhFYEK0EwHHHyd3mbvg7oeKVvxXPr8teG4LHQ9XyUmq9CZiqFUY2?=
- =?us-ascii?Q?GbkghkTjQ68qcz8GRWiSdgkQFFalhbkU1VK3qu0T9eiUmv6syYm0GzQnK3Ev?=
- =?us-ascii?Q?czTtDga810vnU13L7smUjgs1YuWijSq9k6BYWeLdHrrIWfX+qYhx464A+GYO?=
- =?us-ascii?Q?dRWpH0ezC3Q3uIN7WWU1vLe9ka2g7FYEpBWMiUvKU7XxMfuFABmXD9ZOcqtF?=
- =?us-ascii?Q?6/kmE+mkL4nZ78g3Rkp3f2pNvTNyG2KOvVq9oCBgFu/kFlOLjm7LegHZVZJi?=
- =?us-ascii?Q?iuHZ7RKdzREyjXv7rMroeREWvLwm9TbVbvs++MP+76WP38rGZYZCPBbTQvHd?=
- =?us-ascii?Q?ikq/bGufLtHiA1TDS6V+7pSV2BQx6bqlxK6PM09V80VCFS3Ndz/S?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 34deeaa8-410e-4dc3-530d-08df1f0c87ea
-X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Sep 2026 16:04:39.3230
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: OJiCxI6x1Y10NH0WAz4Bo6tFMQmUnRkSWyVIIr1ngHPuL9SL3qZEsG49G738rSrc1OXLlz5ni74C9kWViPkhVkcgylxg4aKfkC2umsI0CPKFk6JzTJ3L7DH73moroykS
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAWPR04MB9911
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260930_090444_812840_55F3ABFB 
-X-CRM114-Status: GOOD (  25.78  )
+X-CRM114-CacheID: sfid-20260930_092556_200789_0A1289CF 
+X-CRM114-Status: GOOD (  15.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,220 +73,160 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 30, 2026 at 05:12:39PM +0200, Benjamin Gaignard wrote:
-> "nxp,imx8mq-vpu" is tagged as deprecated since:
-> commit f3116f2e52e6 ("media: dt-bindings: media: nxp, imx8mq-vpu: Split G1 and G2 nodes")
-> merged since v5.17-rc1. There is more reference to it since that.
-> Remove all references to it into the driver and remove dead code.
->
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
+From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+The DisplayPort carrier is a very simple baseboard only providing serial,
+ethernet and a displayport output.
 
-> changes in v6:
-> - rework patch 1 commit message
-> Keep hantro_runtime_resume() because it harmless and futur patches will
-> need it.
->
->  .../media/platform/verisilicon/hantro_drv.c   |  10 --
->  .../media/platform/verisilicon/hantro_hw.h    |   1 -
->  .../media/platform/verisilicon/imx8m_vpu_hw.c | 117 ------------------
->  3 files changed, 128 deletions(-)
->
-> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-> index ad71c0402ef3..12c804dcc669 100644
-> --- a/drivers/media/platform/verisilicon/hantro_drv.c
-> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-> @@ -725,7 +725,6 @@ static const struct of_device_id of_hantro_match[] = {
->  #endif
->  #ifdef CONFIG_VIDEO_HANTRO_IMX8M
->  	{ .compatible = "nxp,imx8mm-vpu-g1", .data = &imx8mm_vpu_g1_variant, },
-> -	{ .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
->  	{ .compatible = "nxp,imx8mq-vpu-g1", .data = &imx8mq_vpu_g1_variant },
->  	{ .compatible = "nxp,imx8mq-vpu-g2", .data = &imx8mq_vpu_g2_variant },
->  #endif
-> @@ -1100,15 +1099,6 @@ static int hantro_probe(struct platform_device *pdev)
->  	if (ret)
->  		return ret;
->
-> -	/*
-> -	 * Support for nxp,imx8mq-vpu is kept for backwards compatibility
-> -	 * but it's deprecated. Please update your DTS file to use
-> -	 * nxp,imx8mq-vpu-g1 or nxp,imx8mq-vpu-g2 instead.
-> -	 */
-> -	if (of_device_is_compatible(pdev->dev.of_node, "nxp,imx8mq-vpu"))
-> -		dev_warn(&pdev->dev, "%s compatible is deprecated\n",
-> -			 match->compatible);
-> -
->  	INIT_DELAYED_WORK(&vpu->watchdog_work, hantro_watchdog);
->
->  	vpu->clocks = devm_kcalloc(&pdev->dev, vpu->variant->num_clocks,
-> diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-> index 13e573f1f19d..865de26ffbce 100644
-> --- a/drivers/media/platform/verisilicon/hantro_hw.h
-> +++ b/drivers/media/platform/verisilicon/hantro_hw.h
-> @@ -405,7 +405,6 @@ enum hantro_enc_fmt {
->  extern const struct hantro_variant imx8mm_vpu_g1_variant;
->  extern const struct hantro_variant imx8mq_vpu_g1_variant;
->  extern const struct hantro_variant imx8mq_vpu_g2_variant;
-> -extern const struct hantro_variant imx8mq_vpu_variant;
->  extern const struct hantro_variant px30_vpu_variant;
->  extern const struct hantro_variant rk3036_vpu_variant;
->  extern const struct hantro_variant rk3066_vpu_variant;
-> diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-> index fa4224de4b99..0d6a71ae5f45 100644
-> --- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-> +++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-> @@ -13,67 +13,6 @@
->  #include "hantro_g1_regs.h"
->  #include "hantro_g2_regs.h"
->
-> -#define CTRL_SOFT_RESET		0x00
-> -#define RESET_G1		BIT(1)
-> -#define RESET_G2		BIT(0)
-> -
-> -#define CTRL_CLOCK_ENABLE	0x04
-> -#define CLOCK_G1		BIT(1)
-> -#define CLOCK_G2		BIT(0)
-> -
-> -#define CTRL_G1_DEC_FUSE	0x08
-> -#define CTRL_G1_PP_FUSE		0x0c
-> -#define CTRL_G2_DEC_FUSE	0x10
-> -
-> -static void imx8m_soft_reset(struct hantro_dev *vpu, u32 reset_bits)
-> -{
-> -	u32 val;
-> -
-> -	/* Assert */
-> -	val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
-> -	val &= ~reset_bits;
-> -	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
-> -
-> -	udelay(2);
-> -
-> -	/* Release */
-> -	val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
-> -	val |= reset_bits;
-> -	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
-> -}
-> -
-> -static void imx8m_clk_enable(struct hantro_dev *vpu, u32 clock_bits)
-> -{
-> -	u32 val;
-> -
-> -	val = readl(vpu->ctrl_base + CTRL_CLOCK_ENABLE);
-> -	val |= clock_bits;
-> -	writel(val, vpu->ctrl_base + CTRL_CLOCK_ENABLE);
-> -}
-> -
-> -static int imx8mq_runtime_resume(struct hantro_dev *vpu)
-> -{
-> -	int ret;
-> -
-> -	ret = clk_bulk_prepare_enable(vpu->variant->num_clocks, vpu->clocks);
-> -	if (ret) {
-> -		dev_err(vpu->dev, "Failed to enable clocks\n");
-> -		return ret;
-> -	}
-> -
-> -	imx8m_soft_reset(vpu, RESET_G1 | RESET_G2);
-> -	imx8m_clk_enable(vpu, CLOCK_G1 | CLOCK_G2);
-> -
-> -	/* Set values of the fuse registers */
-> -	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_DEC_FUSE);
-> -	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_PP_FUSE);
-> -	writel(0xffffffff, vpu->ctrl_base + CTRL_G2_DEC_FUSE);
-> -
-> -	clk_bulk_disable_unprepare(vpu->variant->num_clocks, vpu->clocks);
-> -
-> -	return 0;
-> -}
-> -
->  /*
->   * Supported formats.
->   */
-> @@ -234,45 +173,10 @@ static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
->  	},
->  };
->
-> -static int imx8mq_vpu_hw_init(struct hantro_dev *vpu)
-> -{
-> -	vpu->ctrl_base = vpu->reg_bases[vpu->variant->num_regs - 1];
-> -
-> -	return 0;
-> -}
-> -
-> -static void imx8m_vpu_g1_reset(struct hantro_ctx *ctx)
-> -{
-> -	struct hantro_dev *vpu = ctx->dev;
-> -
-> -	imx8m_soft_reset(vpu, RESET_G1);
-> -}
-> -
->  /*
->   * Supported codec ops.
->   */
->
-> -static const struct hantro_codec_ops imx8mq_vpu_codec_ops[] = {
-> -	[HANTRO_MODE_MPEG2_DEC] = {
-> -		.run = hantro_g1_mpeg2_dec_run,
-> -		.reset = imx8m_vpu_g1_reset,
-> -		.init = hantro_mpeg2_dec_init,
-> -		.exit = hantro_mpeg2_dec_exit,
-> -	},
-> -	[HANTRO_MODE_VP8_DEC] = {
-> -		.run = hantro_g1_vp8_dec_run,
-> -		.reset = imx8m_vpu_g1_reset,
-> -		.init = hantro_vp8_dec_init,
-> -		.exit = hantro_vp8_dec_exit,
-> -	},
-> -	[HANTRO_MODE_H264_DEC] = {
-> -		.run = hantro_g1_h264_dec_run,
-> -		.reset = imx8m_vpu_g1_reset,
-> -		.init = hantro_h264_dec_init,
-> -		.exit = hantro_h264_dec_exit,
-> -	},
-> -};
-> -
->  static const struct hantro_codec_ops imx8mq_vpu_g1_codec_ops[] = {
->  	[HANTRO_MODE_MPEG2_DEC] = {
->  		.run = hantro_g1_mpeg2_dec_run,
-> @@ -319,30 +223,9 @@ static const struct hantro_irq imx8mq_g2_irqs[] = {
->  	{ "g2", hantro_g2_irq },
->  };
->
-> -static const char * const imx8mq_clk_names[] = { "g1", "g2", "bus" };
-> -static const char * const imx8mq_reg_names[] = { "g1", "g2", "ctrl" };
->  static const char * const imx8mq_g1_clk_names[] = { "g1" };
->  static const char * const imx8mq_g2_clk_names[] = { "g2" };
->
-> -const struct hantro_variant imx8mq_vpu_variant = {
-> -	.dec_fmts = imx8m_vpu_dec_fmts,
-> -	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_dec_fmts),
-> -	.postproc_fmts = imx8m_vpu_postproc_fmts,
-> -	.num_postproc_fmts = ARRAY_SIZE(imx8m_vpu_postproc_fmts),
-> -	.postproc_ops = &hantro_g1_postproc_ops,
-> -	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
-> -		 HANTRO_H264_DECODER,
-> -	.codec_ops = imx8mq_vpu_codec_ops,
-> -	.init = imx8mq_vpu_hw_init,
-> -	.runtime_resume = imx8mq_runtime_resume,
-> -	.irqs = imx8mq_irqs,
-> -	.num_irqs = ARRAY_SIZE(imx8mq_irqs),
-> -	.clk_names = imx8mq_clk_names,
-> -	.num_clocks = ARRAY_SIZE(imx8mq_clk_names),
-> -	.reg_names = imx8mq_reg_names,
-> -	.num_regs = ARRAY_SIZE(imx8mq_reg_names)
-> -};
-> -
->  static const struct of_device_id imx8mq_vpu_shared_resources[] = {
->  	{ .compatible = "nxp,imx8mq-vpu-g1", },
->  	{ .compatible = "nxp,imx8mq-vpu-g2", },
-> --
-> 2.53.0
->
->
+But its main functionality is that it routes the Analogix eDP controller
+to this DisplayPort output, which allows to test that controller simply
+by hooking it up to a suitable monitor.
+
+The Analogix-DP controller supports eDP 1.3 and DP 1.2, so can drive
+both eDP displays as well as full DP monitors. It does not support DP+
+so passive DP-to-HDMI adapters won't work.
+
+Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+---
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../rk3588-tiger-displayport-carrier.dts      | 113 ++++++++++++++++++
+ 2 files changed, 114 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
+
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 2edc9c0aceb5..bf80afba2351 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -217,6 +217,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus-radxa-cam4k-cam0.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus-radxa-cam4k-cam1.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5t.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-displayport-carrier.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou-video-demo.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-toybrick-x0.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts b/arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
+new file mode 100644
+index 000000000000..f6e95047fd5f
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
+@@ -0,0 +1,113 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2024 Cherry Embedded Solutions GmbH
++ */
++
++/dts-v1/;
++#include <dt-bindings/soc/rockchip,vop2.h>
++#include "rk3588-tiger.dtsi"
++
++/ {
++	model = "Theobroma Systems RK3588-Q7 SoM on Tiger Displayport Carrier v1";
++	compatible = "tsd,rk3588-tiger-displayport-carrier", "tsd,rk3588-tiger", "rockchip,rk3588";
++
++	aliases {
++		ethernet0 = &gmac0;
++	};
++
++	chosen {
++		stdout-path = "serial2:115200n8";
++	};
++
++	dp-connector {
++		compatible = "dp-connector";
++		dp-pwr-supply = <&vcc3v3_baseboard>;
++		/* Q7_DP_HPD# but Q7_HDMI_HPD# could be used too */
++		hpd-gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_LOW>;
++		label = "dp0";
++		pinctrl-0 = <&edp0_hpd_l>;
++		pinctrl-names = "default";
++		type = "full-size";
++
++		port {
++			dp_con_in: endpoint {
++				remote-endpoint = <&edp0_out_con>;
++			};
++		};
++	};
++
++	vcc3v3_baseboard: regulator-vcc3v3-baseboard {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc3v3_baseboard";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc5v0_baseboard>;
++	};
++
++	vcc5v0_baseboard: regulator-vcc5v0-baseboard {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_baseboard";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++	};
++};
++
++&edp0 {
++	status = "okay";
++};
++
++&edp0_in {
++	edp0_in_vp2: endpoint {
++		remote-endpoint = <&vp2_out_edp0>;
++	};
++};
++
++&edp0_out {
++	edp0_out_con: endpoint {
++		remote-endpoint = <&dp_con_in>;
++	};
++};
++
++&gmac0 {
++	status = "okay";
++};
++
++&hdptxphy0 {
++	status = "okay";
++};
++
++&mmu600_pcie {
++	status = "disabled";
++};
++
++&pinctrl {
++	edp0 {
++		edp0_hpd_l: edp0-hpd-l-pin {
++			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++};
++
++&uart2 {
++	pinctrl-0 = <&uart2m2_xfer>;
++	status = "okay";
++};
++
++&vop {
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vp2 {
++	vp2_out_edp0: endpoint@ROCKCHIP_VOP2_EP_EDP0 {
++		reg = <ROCKCHIP_VOP2_EP_EDP0>;
++		remote-endpoint = <&edp0_in_vp2>;
++	};
++};
+-- 
+2.47.3
+
 
 _______________________________________________
 Linux-rockchip mailing list
