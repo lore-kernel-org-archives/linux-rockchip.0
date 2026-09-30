@@ -4,53 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A1CBCA5FC5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 18:49:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31C1CCA5FC4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 18:49:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7lSmnuFqfC/i1QccQeuNNApDvTjyLXdu2JMN1IETNI0=; b=uzxJdqlLoaS6c8
-	qCLSEmj0obuJi1E9PsraWNdVqefkE+cZ2cX3FUwAt173IZBAJ2/3IWWYG14xouXSzbGyb7tXpai3e
-	6HqPjTEJLyoz+OPO9kn/0E27qoluTLUCbYfrd0eanjhI4AKcVZ5K/usQ8/XV+11Zlzf/HJKSJ1dc0
-	xBK/gUIOPd4YH6/cgKzbr8c8zwguzvCvi7vuT2gLtYRbexifUht1adFtd8hqQ1gAICGGOxRmL1u/P
-	Nk5y+gU/TfBiktRIUosKNpXAfQsXuZ9EVisUjs7yg9VjTKs0IAoqoyuUl8/ES19YxDOLAEsYcUm8U
-	g3WzQZGa0Oj2wKOxefoQ==;
+	List-Owner; bh=Gw91LGjCx7XwbHTnlnTlYkrFaFatxJhCE7XTDQ2GeQ0=; b=PaJkunT3vTdSA1
+	zXX/kxktlOYV7tgI2wJAcsdGhPJgbkHi8md0tH/c56whr6QveFqT5M6ASxTPCNjtikkiKESojY0SV
+	NW8GjZnqp6wXpg2y03k102qT3QWlj1IggdYK+2h/Sc9uIRog7SKktmMzXfZbBibMfwJ2R5HaC1afn
+	LD4/Ux1n2uwWUcVLow//uZ73GohPIGnKI0Q/8NvB5i47wmZISz+vc+7gSaSQiDR17RkobOhMMtmxS
+	89DZq+r0sOjuFO0tU5A1KJG4hK+MG8AasLZ0ceaYm/cUG5T9OqikgsjwRdOJhTrTHMb5PVwdJv4fb
+	Imvw5uv2wWyvbOCUwI/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBzMr-000000071Eb-3nhZ;
-	Wed, 30 Sep 2026 18:49:25 +0000
+	id 1xBzMz-000000071HH-2F3y;
+	Wed, 30 Sep 2026 18:49:33 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBzMo-000000071Cj-0tZf;
+	id 1xBzMo-000000071Cl-3hsy;
 	Wed, 30 Sep 2026 18:49:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=sGFQAyqZxGto/xbejaJELBnPG5mkf1KODe3C1Ny1nQA=; b=KVXHartTcoPYRK0T7Rp6T/Gxwk
-	23fOxS7kuOUfBGvP2/D8UPK5zsagMcS+XzrIbPxHXoa+aoYKmZ515A2ZTiaVVKkL5dANe28UxaIgb
-	PxNEHkKJFpJII9DZOwsMV7Hl6OWK/s0rtvsvVmBepyVbdzhTQt16iUDz1UqulILQR2sFXRU1qpZA8
-	gO3q1peISvPIRhQLc9OwgAe5Ts8LR75CcGp/9qCQQnKxcgYHZSR3jhA+P/142Bs2VfhzE8NDGrUAg
-	RUiutKALPGsXRBHdQ+1yEiB0kfPr9JAUyLZYI4baz9EpTmv42rvAsSxFGi5hNwpmiyFu3ThWPsKq0
-	4lY5AwAA==;
+	bh=Onub4mykYcFwhE0hmKSL3j6CDl+1xSaBRFx2WEGfuGI=; b=ReTRdxmIfg0Hye6ZP10wYTJcXo
+	HoxN6a0/CEio9IG/FYxT4WtT+lpHnSOb5ZxcP2r8NOi1mmPVwqrSkCjMK5GuBHbL8CENzNfG1ksEC
+	1DTlBgjFFjohhv4n8kBpoET4fG+cxcYYr2jXHJcJOaF+d1Zi2l2b/SaYUAymEUDkMfW2Pe4qq2pfZ
+	hv353vlB9D5F3bZECkgIRlxw/7cSHuFhd0ckEwoVh3ReMdjQiDt0qnd/PTDWl2hjF9b7pJcSwXSef
+	RwgPfBgj6qG7+gCywgP2AwKk2VPCGvTO9k7SQCmWyL2IETpU+I/fyyIIhYnxKc0T47DdG+1SJpIAn
+	0cY0qDyA==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Shawn Lin <shawn.lin@rock-chips.com>
+To: Mizuno Miotsuki <founder@crepuse.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: (subset) [PATCH 0/4] Clean up invalid MMC properties in Rockchip board DTs
-Date: Wed, 30 Sep 2026 20:49:14 +0200
-Message-ID: <179079409722.2398180.5227943339366758061.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/2] arm64: dts: rockchip: Add DFRobot UNIHIKER M10 V1.2 support
+Date: Wed, 30 Sep 2026 20:49:11 +0200
+Message-ID: <179079409728.2398180.15813648897564877390.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <1790147498-47766-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1790147498-47766-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <20260919134125.59419-1-founder@crepuse.com>
+References: <20260919134125.59419-1-founder@crepuse.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260930_114923_007254_248CF3B0 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260930_114923_435676_00B5B2B8 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,29 +72,25 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 23 Sep 2026 15:11:34 +0800, Shawn Lin wrote:
-> The MMC nodes in both arch/arm64/boot/dts/rockchip and
-> arch/arm/boot/dts/rockchip contain a few properties that
-> contradict the card type the node actually describes.
+On Sat, 19 Sep 2026 13:41:29 +0000, Mizuno Miotsuki wrote:
+> Add initial mainline support for the DFRobot UNIHIKER M10 V1.2. Only
+> revision 1.2 is claimed because later board revisions have not been
+> electrically verified.
 > 
-> 
-> 
-> Shawn Lin (4):
->   arm64: dts: rockchip: Remove broken-cd on Rock 5 ITX SDIO
->   arm64: dts: rockchip: Remove cap-sd-highspeed on Rock Pi S eMMC
->   arm64: dts: rockchip: Remove cap-mmc-highspeed from SD-only slots
->   ARM: dts: rockchip: Remove cap-mmc-highspeed from Omega4 sdmmc0
+> The board device tree enables a conservative core subset for a usable
+> mainline system: CPU regulation, eMMC, SD, RTL8723DS SDIO Wi-Fi, UART0,
+> USB host and peripheral operation, GPIO keys, and the watchdog.
+> Bluetooth, audio, display, touch, IMU, SARADC, and GD32 support are
+> intentionally deferred.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/4] arm64: dts: rockchip: Remove broken-cd on Rock 5 ITX SDIO
-      commit: 7c841000c377a3997e64f45c938dd77bfbd74cc6
-[3/4] arm64: dts: rockchip: Remove cap-mmc-highspeed from SD-only slots
-      commit: c7502a43087748277cf5c55d5a414672e82426c6
-[4/4] ARM: dts: rockchip: Remove cap-mmc-highspeed from Omega4 sdmmc0
-      commit: b86f1ad2e69b3ef2c1bb46f2b585ac8aff44cad2
+[1/2] dt-bindings: arm: rockchip: Add DFRobot UNIHIKER M10 V1.2
+      commit: 55010621f40c5b129fb0972f07e9d8d52aa6a765
+[2/2] arm64: dts: rockchip: Add DFRobot UNIHIKER M10 V1.2
+      commit: a2ff7779dd92246bd3e34a2f9600dade3794e6d2
 
 Best regards,
 -- 
