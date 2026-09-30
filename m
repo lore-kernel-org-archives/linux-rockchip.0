@@ -4,72 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6148CA5FC5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 18:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1BA6CA5FCF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2026 19:19:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S/SJcUA01ZJ7LppWg64oVXigiFSankEb2SqxY54OkZE=; b=G4kM4zZ0tMz9Fa
-	9lEWxRAYMoghYxSoQ/F6kjQi1eUfh5RqaXJCx80HF8Xu2fVPljFzAEXBbXNRQiXzfjZufQEBBj1Y2
-	He/amH7oPNR8Dolew8LFg8dah2Q7mPutT5pikBP4zNaBefIe5n9fcLN0pEMmrsNYOJQbdlsh7C8Xx
-	QP2/6uZhEl5n2irlanUQiLpQNpsRfsRv6ltRoL52MAjoo5hJFZljJ17Ykz16CxtlzE0BzCPG8MMSl
-	z9fLFsdU0GMjmtdsmfiSNgJrKZVVx++je2KAv/JxnLwRG613musQtR0/Qv4qe5nwDZtsMjAFUT4lm
-	0cles+gqCw3LyxiRN83g==;
+	List-Owner; bh=eVYq4wn9p1Wy77ET+QqLyU5N3KAUw8VXqg0Fp4sa5u4=; b=s3JwAr8+BDIKZM
+	xg67fKAyu6LJuEWSQKT3vwdhWAfug1xQKDxjW37kDcUPvJf05mcOifpmYmMjYRrNSPhjWgYBe5LVY
+	TetdG1BcSj0nXR7DuvMHEIGz/pJwCu80FTvx1Oeltyh6/03hwAdJNFyrykafxHEU2wl5yvQO927HM
+	VWC9DA8NbTHm8bJJOXZLMcVPZFvkWQpq+hHU0Ph14oED+7FrttpKXNC0eE6gx+qacbvT8du2D7Gul
+	kIYivemfkJUYH/VyvDxeJwOt+USGcjf9FI8xx6Y5U1/jmYGeN63WcKF51urWCwt3YGDBQfWE9COnd
+	CPmLg8fg14/nVnHh4tMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBzOU-000000071gi-3yD5;
-	Wed, 30 Sep 2026 18:51:06 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xBzpc-000000073zC-2bY6;
+	Wed, 30 Sep 2026 19:19:08 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBzMs-000000071EZ-1kJW;
-	Wed, 30 Sep 2026 18:49:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=nOkj2/NJ68nu7y5h+AGIOhr5AdQrQ8tR9kgRub30cxI=; b=Tbg6EGF7fqC4xtrbbOQppHFOmB
-	fWxivvhBU+em5wdf4XNeaSv18LHLaZbq8ghOu4leOPFMDBmSDNRyCR2v0v+x4ilmxtl4tQa7DlVQd
-	ywAeYrbx5WfABthdp/7DMiFqDDiX7m4Q3CdCDHdrNRfTTh4Xw6PaDglF3xu8E9/VPQXApfQVCo/rL
-	oyTlzjT5W4fsooq2nmEHRZuc7t6K28VqWiKYcS1pGBG/zBIHTk6P3Jh80bMIdU8Oq7VpIIVUja1iL
-	IK0JrlULAAYqRhSVVX7+dj9xPSlzftB5LQ04RYViNJ0hgOUC7NhZDIv+cheMwEsrPSz6pUlUeaIME
-	HnKUAJrw==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xBzMp-00000004DRE-2kME;
-	Wed, 30 Sep 2026 18:49:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=nOkj2/NJ68nu7y5h+AGIOhr5AdQrQ8tR9kgRub30cxI=; b=qu5cFbm6PMl2tQg99IiRVgNG89
-	LGuamJDMFlPTNYegtS4dTEubvqlAZyAMtoaaej29CmA5HPa6si+t4qn0ASCU0fznj3fZF7J1mt7PW
-	iax5DDvyfGxGWrJaNNmCBr80psChQ3qpGfpkjL7Gd6otk0/W5EYa74XMRLU2TfFsZMqd+8xNv35oB
-	R2H7cYHnm8XYuaMuENjWJMu7XsVqggwRbz+BurC5ZB4Vbh2XETeQe5uzw3o4R9TgV29N4tsf4Azcn
-	ITR/2HIxl1feGDxicgfF/DmMT0d/g1RbU14y12hCTBX5UcTpYAY83z4/vwwu5+pZ7/3ngAiIGe8ck
-	Tnr/mLgw==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1xBzpa-000000073yH-00zR;
+	Wed, 30 Sep 2026 19:19:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=XoUDkMKF7L1Z9q3nwhGq3tIuxBl8dHtlGRc13BPjNPo=; b=CVzhuWnti4+kryn8IEFwItWWNM
+	9IlhVS2Pj0dduA+RR0QTDF9yL8Bjwkk5n5VFdv4kgxf5lfuUUmooxWKBBv/Kdvviqym+UgrMV6V5P
+	y22BiSzrOl2nHPvkHn3+o+b85ypMo9T6kMW1eMgOvJt5NCDvJsfsu+Bi9qZKqbV7Lx3g=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1xBzpV-008E5Z-AF; Wed, 30 Sep 2026 21:19:01 +0200
+Date: Wed, 30 Sep 2026 21:19:01 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Dmitry Yashin <dmt.yashin@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Diederik de Haas <diederik@cknow-tech.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	=?UTF-8?q?Rapha=C3=ABl=20Jakse?= <raphael.kernel@jakse.fr>,
-	devicetree@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Add supplies for es8316 on RockPro64
-Date: Wed, 30 Sep 2026 20:49:10 +0200
-Message-ID: <179079409726.2398180.6334756596993767242.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260922133643.2730265-1-diederik@cknow-tech.com>
-References: <20260922133643.2730265-1-diederik@cknow-tech.com>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 3/4] arm64: dts: rockchip: add Forlinx OK3568-C
+Message-ID: <b81186ad-1da0-4c20-8b4a-aabdb7abb396@lunn.ch>
+References: <20260930-ok3568-c-v1-0-a0ffd55f5c95@gmail.com>
+ <20260930-ok3568-c-v1-3-a0ffd55f5c95@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260930-ok3568-c-v1-3-a0ffd55f5c95@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260930_194923_944715_73F7B33C 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20260930_121906_084863_593197B7 
+X-CRM114-Status: UNSURE (   7.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,25 +72,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+> +&gmac0 {
+> +	clock_in_out = "output";
+> +	phy-handle = <&rgmii_phy0>;
+> +	/* Use rgmii-rxid mode to disable rx delay inside Soc */
+> +	phy-mode = "rgmii-rxid";
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&gmac0_miim
+> +		     &gmac0_tx_bus2
+> +		     &gmac0_rx_bus2
+> +		     &gmac0_rgmii_clk
+> +		     &gmac0_rgmii_bus
+> +		     &gmac0_clkinout
+> +		     &eth0_pins>;
+> +	tx_delay = <0x36>;
+> +	status = "okay";
+> +};
+> +
+> +&gmac1 {
+> +	clock_in_out = "output";
+> +	phy-handle = <&rgmii_phy1>;
+> +	/* Use rgmii-rxid mode to disable rx delay inside Soc */
+> +	phy-mode = "rgmii-rxid";
 
-On Tue, 22 Sep 2026 15:36:22 +0200, Diederik de Haas wrote:
-> The DT binding for the es8316 got 4 power supplies added in commit
-> e9966d450b46 ("ASoC: dt-bindings: es8316: Add regulator supplies")
-> 
-> Page 28 of the schematic for both RockPro64 V2.0 as V2.1 describe those
-> various supplies, so add them to the DTS's.
-> 
-> 
-> [...]
+Yet another rockchip board which gets RGMII delays wrong.
 
-Applied, thanks!
+https://elixir.bootlin.com/linux/v6.15/source/Documentation/devicetree/bindings/net/ethernet-controller.yaml#L287
 
-[1/1] arm64: dts: rockchip: Add supplies for es8316 on RockPro64
-      commit: 9f587b25d9db29d180a1e483651dddc80f898db6
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
