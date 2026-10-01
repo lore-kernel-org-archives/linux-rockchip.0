@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0014CA5FCE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 07:32:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D16DECA5FC5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 07:39:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,60 +13,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:MIME-Version:In-Reply-To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=A7yTkshz/AcPxJ4WI41+A1aziKrBmqieEp35II1cI28=; b=m1p+JVJGOliq+d28ji3pyjnxDt
-	n+g2RlQIhNw0spSNxKnSYTxPxKLYMrucLBk4VlKRXCLeeAqjQck6LRxYxLNu0MnFNLvdxrzPvq6vl
-	exBt3/R7CIDe8bJQaGEH/ne9EDEMnLJl5/or1BQaRPgInYFOXTEetU9WHoCcTeYVPK7H8GMYeWPzB
-	XA23ZboSNNIFaKZiuM+lPQWG/3aTY8qzRKxsJLfc0EO4E795meH0awJRklIdm4Paag60mkxxN6mC6
-	1QFMzo2MQPaLdDvukkoE8Rf6AaE52W7UKW7RdaBCZLScjgAH1YR428NQ1/a3q+2G+Pnvzv2k481yX
-	+qBY4kPA==;
+	bh=ndpcCSm91m2uYDn6xpsS2JDGOxvtSvz4Qx27suVJcQw=; b=vGtRgZqjqCkMRMq83HXzf+jSRG
+	uJB0qh4Wu23djmfpXyN0bmLLkrCATPgwZ4AKgToVhFm+95WiGLZQmOLuoIYAaejuo0IRhBus/jx49
+	fEUKs3IO7J+zzxuqP1c6ep0G/RMhxfKdE3u52GdsHhMsCswIUGhrEpnmnG4cjn4q4WZ5FtD4ZRgb4
+	mRzRHUQK37a+PjVyF3KONsMTaJRQ3iHjmoPEFFjQFF9W5yeh5xvpduGOMsiuBEoltunpDzMofFYkm
+	2KoK8nS8PMygatcke7q314mDAj/4dYBBsG0HEKXNWlm3gCXTOG9FUrgqazuF6/4eN0kAhTHGXPCTF
+	EtUJ96Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCBH2-000000080DC-2wVD;
-	Thu, 01 Oct 2026 07:32:12 +0000
+	id 1xCBOT-000000081gg-0jbi;
+	Thu, 01 Oct 2026 07:39:53 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCBH1-000000080CT-1NxK
+	id 1xCBOS-000000081gS-2m9f
 	for linux-rockchip@lists.infradead.org;
-	Thu, 01 Oct 2026 07:32:11 +0000
+	Thu, 01 Oct 2026 07:39:52 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id F28E944799
-	for <linux-rockchip@lists.infradead.org>; Thu,  1 Oct 2026 07:32:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B81941F00A08
-	for <linux-rockchip@lists.infradead.org>; Thu,  1 Oct 2026 07:32:10 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1DE2543F00
+	for <linux-rockchip@lists.infradead.org>; Thu,  1 Oct 2026 07:39:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0131A1F000FF
+	for <linux-rockchip@lists.infradead.org>; Thu,  1 Oct 2026 07:39:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790839930;
-	bh=ELdBCMU5f7/O4ZMIta9o4UVKjIIZnw/X5SSJeT3GM90=;
+	s=k20260515; t=1790840392;
+	bh=6/ClGyojAdsXGc/BQReGBNWEln4ElamcBkeTBZDQp5g=;
 	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=m9ED6XoyFU6f6NSxPdVX7ZgGtbARjsD/CvfZD8tuhOkiZ6dKnPRKSRSktb3gLidmc
-	 VPbCeYi2IKHwWOv9a94mqT6hb1QyGGIuQBER4nXjiOTZRozsX037c2spwbLmYAMdft
-	 hSocy81uy0QFI/ZtDOvX28+07QuujnXHssLX3bpIUqE7ULrFoS3pV03E333y7RCNzK
-	 HsH5YwqLVDE8Ag8eULAvrQkln7YBVbnRdOZn5XnVa80W1ViRxENJZnXfTYVrjFagcy
-	 G3vUUO2AFJbwfAf2/N1XRAUG8lpRgJF09f4ryfCh5u+wg5DjSHuu95Tq7PJHOpKRZi
-	 qrKAsvE+hguKQ==
-Received: by mail-lf2-f13.google.com with SMTP id 2adb3069b0e04-5ba42966d5fso788312e87.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 01 Oct 2026 00:32:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvBx1XJOFIDa0sWwlIrqQSQczbu72Sl8+TAoFtElgsOMZ/+TczZ1V7/YUUBEr7FqtErVfE4V1plmt4hdhIZKikg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJ/Uq9jvdqMVngZEAFSeCcS1+kOu2iLr7KAThC5KNkQRaoVEnPg
-	RI2/fVQXw0sWCDx7VZ02/qV8rU3rxedpFFT/umEGEwQLmRnbbRguCvi4oBeXeddiYyZPGzC6q2i
-	7zlAmK1ZodBtpwx8o8UpBXsdslhNUu2GsjSakEKbD/g==
-X-Received: by 2002:ac2:42d0:0:b0:5b8:f97f:7a22 with SMTP id
- 2adb3069b0e04-5ba405ec7a1mr1161789e87.54.1790839929167; Thu, 01 Oct 2026
- 00:32:09 -0700 (PDT)
+	b=BXnAVlIqpQgegHPjEuLO7BR3tTQrvNlqKDezpD9CnjqeegVH+G0PGw8lDCEyR7XMh
+	 EBgW4o7iBLpZgP271FVGWqUaeqK2pMesncfSsxd4yGi90Qu2u3rWBkyEWqtTYyrVXA
+	 A5tksmI6LS85U15q0kjxvQBUgcRUyUrN7VROv0ghpNhBUzavLWLACsELKagRkNrKZU
+	 FxSL0GD5XYMw5p7fbhROz/iOIIVKW7nfq8CnP0aZdli0NUZpOri6uH+LkVdAtqlly2
+	 wwwGMrJaM4jkEZMWWuxUAOooP/4msfq6uvd3aaHy/QsGEFud7QCd5ID9EwWj0nNZ55
+	 bpfK8zbsP8Stg==
+Received: by mail-lf2-f13.google.com with SMTP id 2adb3069b0e04-5bb54bd50c2so117444e87.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 01 Oct 2026 00:39:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvBzWORitpktKctxe4Rfla056c2RpZ/DimdFvMWmj2pcqm+PTh6D0oF3hOKATN54+yYnMnMCfF2phGWNtleYswA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKStavLfdajpQQpM5aj5PMbdK+38PTqPeiG8mbZRyHcdCvxK/hf
+	ybQYMXQqrB3/Kg91NrkphhK5pbFY3LO80Yj6u9oNB2QUXu5DJJZBNCaPQJ3nk1tkNQg2XdtjgD9
+	fYhfVgvdWpnVTQQ3iAUgPKmqXauUs54MUiSOWhAcEww==
+X-Received: by 2002:a05:6512:2115:b0:5b8:f4ad:6e49 with SMTP id
+ 2adb3069b0e04-5ba402b86b1mr998420e87.8.1790840013059; Thu, 01 Oct 2026
+ 00:33:33 -0700 (PDT)
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Thu, 1 Oct 2026 10:32:07 +0300
+ HTTPREST; Thu, 1 Oct 2026 10:33:32 +0300
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Thu, 1 Oct 2026 10:32:07 +0300
+ HTTPREST; Thu, 1 Oct 2026 10:33:32 +0300
 From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <20260930163334.60b4a88c@kernel.org>
+In-Reply-To: <20260930163217.4003d232@kernel.org>
 MIME-Version: 1.0
 References: <20260923-qcom-sa8255p-emac-v15-0-e82f33720737@oss.qualcomm.com>
- <20260923-qcom-sa8255p-emac-v15-1-e82f33720737@oss.qualcomm.com> <20260930163334.60b4a88c@kernel.org>
-Date: Thu, 1 Oct 2026 10:32:07 +0300
-X-Gmail-Original-Message-ID: <CAMRc=MeUx2iHf8-d9yjZZ=n7VaG_GROvO2dW-bxavAS+XbGMFg@mail.gmail.com>
-X-Gm-Features: AclHuK8P_ZwjJ__3SNp9LNTCdpGSDaQAP4RQWoM4JsBj1lq1vbQDeX8sSTrNEMU
-Message-ID: <CAMRc=MeUx2iHf8-d9yjZZ=n7VaG_GROvO2dW-bxavAS+XbGMFg@mail.gmail.com>
-Subject: Re: [PATCH net-next v15 1/9] net: phy: aquantia: fix system interface
- type not updated in forced mode
+ <20260923-qcom-sa8255p-emac-v15-3-e82f33720737@oss.qualcomm.com> <20260930163217.4003d232@kernel.org>
+Date: Thu, 1 Oct 2026 10:33:32 +0300
+X-Gmail-Original-Message-ID: <CAMRc=MfEHHny4x8pi-M-WqvcTxFY+98TvRa1jFTKQBjYCzy8FQ@mail.gmail.com>
+X-Gm-Features: AclHuK_lOavdmNlSvx0sNUPmny1qPtgCYs4QE7hryCERWbwB8_l7zIoUuzlYZiM
+Message-ID: <CAMRc=MfEHHny4x8pi-M-WqvcTxFY+98TvRa1jFTKQBjYCzy8FQ@mail.gmail.com>
+Subject: Re: [PATCH net-next v15 3/9] phy: qcom: add the SGMII SerDes PHY
+ driver for SCMI systems
 To: Jakub Kicinski <kuba@kernel.org>
 Cc: Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
 	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
@@ -89,7 +89,7 @@ Cc: Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.or
 	linux-mips@vger.kernel.org, imx@lists.linux.dev, 
 	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
 	sophgo@lists.linux.dev, linux-riscv@lists.infradead.org, 
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, stable@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
 	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,35 +107,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 1 Oct 2026 01:33:34 +0200, Jakub Kicinski <kuba@kernel.org> said:
-> On Wed, 23 Sep 2026 17:14:35 +0200 Bartosz Golaszewski wrote:
->> aqr_gen1_read_status() decodes the MDIO_PHYXS_VEND_IF_STATUS register
->> to determine which SerDes interface the PHY is currently using on its
->> system side and stores the result in phydev->interface. phylink relies
->> on this value to configure the MAC.
+On Thu, 1 Oct 2026 01:32:17 +0200, Jakub Kicinski <kuba@kernel.org> said:
+> On Wed, 23 Sep 2026 17:14:37 +0200 Bartosz Golaszewski wrote:
+>> Implement support for the firmware-managed SGMII/SerDes PHY present on
+>> Qualcomm platforms. Do this as a separate driver from the HLOS-managed
+>> variant as they don't share almost any code.
 >>
->> The autoneg == AUTONEG_DISABLE check is not correct:
->> MDIO_PHYXS_VEND_IF_STATUS is set by the PHY firmware based on the
->> negotiated link speed, not based on whether autoneg was used to reach
->> it. When the link comes up at 1G in forced mode, the register correctly
->> reads SGMII, but the early return prevents phydev->interface from being
->> updated. It stays at whatever value it held before (typically 2500BASE-X
->> from the initial autoneg run), so phylink configures the MAC for the
->> wrong interface and the link cannot come up.
->>
->> Remove the autoneg guard so that the system interface type is always
->> decoded when the link is up.
->>
->> Cc: stable@vger.kernel.org
->> Fixes: 110a2432c520 ("net: phy: aquantia: add downshift support")
 >> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+>> ---
+>>  drivers/phy/qualcomm/Kconfig                   |  10 +++
+>>  drivers/phy/qualcomm/Makefile                  |   1 +
+>>  drivers/phy/qualcomm/phy-qcom-sgmii-eth-scmi.c | 117 +++++++++++++++++++++++++
+>>  3 files changed, 128 insertions(+)
 >
-> Sounds like a real regression, is it? Should we ship it to Linus
-> tomorrow so that it makes 7.3? stable + next does not compute for me
+> Hmm, why is this here? is there a hard dependency?
+> Otherwise it'd be better to send it separately out to Vinod,
+> this is drivers/phy after all.
 >
 
-Yes, this is independent from the rest of the series and a small fix. It sounds
-good to send it upstream ASAP.
+Heh, it's always the same question of whether to split larger series into
+per-subsystem threads or keep them together in order to provide the full
+picture and let maintainers pick up subsets of patches. I've been yelled at
+for doing both in the past. :)
+
+Ok, I'll split the next iteration into smaller chunks.
 
 Bart
 
