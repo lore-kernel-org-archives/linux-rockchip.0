@@ -4,54 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 480D4CA5FB3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 11:51:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 447BACA5FB3
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 12:09:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dNwkW/X/KTZOGnrOpNjZipXmJcC5XC8sNi4sjhbJwmk=; b=o0J74datLEuL9R
-	AzdQVtKFLVmX7yq17nMtXzfcbeEdDlrxnl6Q4OykgVRqVVkhk+njaOH4rLNnjaStAOsnYNHC4aVZs
-	DTayudCjzpSPOZudKG71iYAZKwyPKrILwopHAp2OMmYgVpt1xC/0qrQkW3LEZ9pUuWiLyBSR8eHWV
-	JFt0xj2BiC9RMZIADPExT031D+KntjuhQ/4o6YF67PmoVm5WRG6lTBQu2zpfsrWRQ+QfimkxJSjxj
-	SN1ClwAILTKTctpcU6MbS3B1A0gDGRhYqktakouacl3bBWW8hoXjrm3s1qspYFMqx1/qbJAtqIRnS
-	4w8rYhh66gLubV3baT2g==;
+	List-Owner; bh=MVahBghNvtugEQaib2nhPUICQMpJjyhA6GPo/x8ViXw=; b=jGxbPC9lS/w3QU
+	BhAi4V7txV94bVFakG9gA0aEsKwsALqQ/f8gXPw7K6U11quJ2sqo8XcpuYpqMp49I/KDN0FaseNui
+	U7NWXv4CivxpQJSjTQU5PI5ADuLPkSMMsJpfY9SBIhNWvNGHScRIw5H+05MWjBmLb3AkHxklav0jK
+	o5dRLz9gAaonfijEKcjVy4dMzM81+9fy8+m4iJ5xv/rAo4jK4+Fl0nxQqaG5ti67Q0lCwuI9L8tE7
+	W0F8s0eyk9KE3CUQpaUO1RctrxDkI3K1ejDkH7YxQ7TJdv6HhkJ7ARCDGUKoR8Y42m70Rm3Gu5E8E
+	NDu1hjpZzR36hY5fYWkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCFJR-00000008gfK-0ngW;
-	Thu, 01 Oct 2026 11:50:57 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xCFbC-00000008yui-3tRZ;
+	Thu, 01 Oct 2026 12:09:18 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCFJP-00000008gef-2kQ7;
-	Thu, 01 Oct 2026 11:50:55 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2990744021;
-	Thu,  1 Oct 2026 11:50:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D44D71F00899;
-	Thu,  1 Oct 2026 11:50:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790855455;
-	bh=rZYiPvtNcrffY7Ay63KQhcl5bvMLOR7QVe2mHkSjCNY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=hs0AK4OZmuEBYLvLfJJltebCbczCtGNT7ZlMgjJiptd89xDI97/NcJZQSkSIrZaix
-	 Be5R5sZUuN/h7+rNflp+QleaQi7e9p6fkQ1Geg4N3MIQYneYPLvZHMLNCdeRt7jyZl
-	 jZIfvCwbcSge59pDGXHCRUScwE53ze/147sZnljgaTLMn8nj/mRxsgejCqLlKpN0lS
-	 uH6bjaVj/mxRnHT/T631DwSp9pgm4Q5AsvIsqoLvPE2x+ZEewiWYXVqpIwmhwbtoge
-	 u0cmNa9JN0JRUeRTtyxYFv2gE924XJ9i7SHnpFIlDNaJIHLIhXFbd4Twf8l1e6Dpk+
-	 w4y5jQFU9on/w==
-Date: Thu, 1 Oct 2026 13:50:50 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: arm@kernel.org, soc@kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [GIT PULL] Rockchip dts64 changes for 7.4 #1
-Message-ID: <20261001-amusing-fat-parrot-a0c726@quoll>
-References: <1940582.atdPhlSkOF@phil>
+	id 1xCFZt-00000008vxF-0pZh;
+	Thu, 01 Oct 2026 12:07:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=GyeCL9VLJDxMlJIwAhfIiiYyFP5Y9P0dKixR5n332YQ=; b=Ye8mKcwncV2q0EFynQY8I75wMz
+	hVFo5KdGFWQZ0bX2vuoMzoFyHomXTilBCNrEZBPSOKO6AAPOezLJHjBYytN5NZtUxtBvAJ1xqcyuO
+	cA90bJZ/zuyeV7RVEI2UONmcOjVw0YUcfLRhJ8igOhqIBDej3f85K5Mt4Zr6X+XNp1XM=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1xCFZd-008N7b-Gy; Thu, 01 Oct 2026 14:07:41 +0200
+Date: Thu, 1 Oct 2026 14:07:41 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Igor Velkov <iav@iav.lv>
+Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Eric Dumazet <edumazet@kernel.org>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net] net: stmmac: dwmac-rk: keep the GMAC powered when
+ the PHY wakes the system
+Message-ID: <1795d1c1-7103-4dcb-856f-8881521417e0@lunn.ch>
+References: <20260930-dwmac-rk-phy-wol-v1-1-9fdc50bd9ae4@iav.lv>
+ <1799630a-945e-49ca-b9d5-9e068c482cea@lunn.ch>
+ <ab67bccd76b55d7252c5380a37809656.iav@iav.lv>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1940582.atdPhlSkOF@phil>
+In-Reply-To: <ab67bccd76b55d7252c5380a37809656.iav@iav.lv>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261001_050757_345065_49516E67 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,36 +80,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 21, 2026 at 11:44:31PM +0200, Heiko Stuebner wrote:
-> Hi soc maintainers,
+On Thu, Oct 01, 2026 at 06:11:09AM +0300, Igor Velkov wrote:
+> On Wed, Sep 30, 2026 at 11:51:45PM +0200, Andrew Lunn wrote:
+> > You have not answered the question why is hangs? Given the current
+> > description, this just sounds like a workaround, not a fix.
 > 
-> please find below some initial Rockchip DT64 changes for the merge-window
-> for 7.4 .
+> It hangs because the PHY interrupt handler accesses the powered-down MAC.
 > 
-> 
-> Please pull.
-> Thanks
-> Heiko
-> 
-> 
-> The following changes since commit cee9395acd8043be0644b25c34bfa86623f2b935:
-> 
->   Linux 7.3-rc1 (2026-08-30 13:34:40 -0700)
-> 
-> are available in the Git repository at:
-> 
->   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.4-rockchip-dts64-1
-> 
-> for you to fetch changes up to 7aa165b62ccaf340da22c517074e7c6853db55cd:
-> 
->   arm64: dts: rockchip: support CAN1-CAN2-UART4 adapter for RK3588 Jaguar (2026-09-02 13:07:56 +0200)
-> 
+> stmmac sets mac_managed_pm, so mdio_bus_phy_suspend() returns before
+> setting irq_suspended and phy_interrupt() runs the handler at once.
 
-Thanks, applied
+Why is the PHY interrupting? What interrupts are left enabled? Should
+the mask be changed to disable everything except wol?
 
-Best regards,
-Krzysztof
-
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
