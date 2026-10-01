@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C1A0CA5FD4
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 17:36:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89260CA5FD4
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 17:36:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ivauax2stt2yDMscdy3WdcKZRST/qXnGTAIcE5q/gLc=; b=GvV+6pEBeqhuIJ
-	ayp4fi+AED2I4mZ4qIdXmqM3mFhZcnVVTdQPP5FQW87D1Tiu9pxAtNX1YDTBCgJ2O8pdb7XV/p44i
-	bcMP0Uf90q/KKE1Be+MMTtQ8yd6HZ4xnKL6lofM67K8lu59g7GsRQyN8oEyxfKSGYda5PIkRLMGh2
-	BtLzREXT9c5hzSz93b/pqVQddvltJQoK7pPa7B2LR09ZdVitgPqGARtbV8WCqXsjN48nvhe4133Jq
-	vPwOuLWabGZOW/u9stzK3Wzuq0G1UKZwDM9cP6i6x5UnrgNSk8mRgkoz7alIBUVqRqEbsUxpCWCvj
-	o+EX/WsEJm2XVrL9VPZQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xLooYYJecz0Ctme67xC+feN9Xl0ZviNssOIKvfKgLg8=; b=Ueq5oMWrFVz4pn
+	4Ycoutnx4PfiEyKCC95+8TrJDCCbz/EFq4WjUy8bA90sy7cZaDIiTGADW5HNXHEZB8F+MPhP3Igcy
+	9U2SuzWjg7R+8A5t2orEi6xCC1U359SZsPCybI5mj8R6jM6++5kbed4pvNwxdg9RH4k+oHDUSe4y4
+	nfa8Yufd1NcQat/XsOKdxbQifwRh++zs1EkTFip77s7L2qlvCNhUAgxJXLJ3krbVOmCsM5VtXM7lF
+	9+/kf7XId0u+6YgGgPGPWFbFKOmnmR09/3swu/kogK0zNTknUIgfMNDw8Wp0lGMyogKEzoaYeFTCm
+	mJM3F97hGEjDMf207HUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCKhy-00000009sTI-0Llk;
-	Thu, 01 Oct 2026 17:36:38 +0000
-Received: from out-66.mta1.migadu.com ([95.215.58.66] helo=mta1.migadu.com)
+	id 1xCKi5-00000009sZW-3n5A;
+	Thu, 01 Oct 2026 17:36:45 +0000
+Received: from out-1.mta0.migadu.com ([2001:41d0:1004:224b::1] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCKht-00000009sRV-0xVB
+	id 1xCKi3-00000009sVZ-0Z1U
 	for linux-rockchip@lists.infradead.org;
-	Thu, 01 Oct 2026 17:36:36 +0000
+	Thu, 01 Oct 2026 17:36:44 +0000
 X-Envelope-To: linux-rockchip@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=1S97aZ5lqXhW4kBuXjOjGy0qBmexZE7CglrgJsyPvnY=;
+DKIM-Signature: a=rsa-sha256; bh=SoALhT7ctD/Ofq5oEPYAXAkgPEKatIJv6UIilwTDtfw=;
  c=simple/simple; d=cknow-tech.com;
  h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1790876189; v=1; x=1791480989;
- b=odnn4PryHsC0nYms3mMv90uyM8xf5QG4S0v9waDv9rO5gQCHfTUwvjKMX+czmTu78w9M/aUn
- EelOtEyRcK41BsT5PDu3QuiGXB/uVWc5LI5EvPOyaS0w0CJqH5kDqbD+h0b6Gcc0cnXZij0MF3I
- gZvBunhThb8dXCJgeV88koMEG3HKbLzA8ksIjvYQgiK3JnokucsTVdt14oRk0JJ/ZKfIOiZXRF9
- NsTzZp7YIfNubqktfEKQLjsL7cxZ4uMvp3aleZ899ZBzIOOTk5IVf6lrCYbH+r7pkHlMcoEm2vB
- UXt3khhFZydrZkcv3R14b+G6WYI6adtmCbM9zrE209aNw==
+ t=1790876201; v=1; x=1791481001;
+ b=kNnE23VMQUox9UleXFY4PNjn7rrveHEZaklWe3JIC+p0zRHUJ6HokdlBNuZ4jiVY+4MfZlQT
+ z524uyUVnXHwC8OhWLIK3y1bCuYTwppQgwB13mU7AOMBWnkcduQgoxSN8ZFnaHdfKLo3m9OrME8
+ VpsYKGlMcX88ZrdhtUWHSd2k8xASY42Q0tMgKgBgltJGovtLIuqNUwuZzBz91MAAe7F8qjrc3Za
+ mTPQF8rDQmEQnxJ4rvf5HjMuIKo+llhoWVQ5mfS8Cdxmfk/nkP4g/s67Q4JOJfoLN5tX/rxACBG
+ X/S81yc61Se6niAHcjjZh3s0yz0XIykiXzsNMDFQZPSRw==
 X-Envelope-To: linux-rockchip@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id e9cad268562f180b;
-	Thu, 01 Oct 2026 17:36:29 +0000
-X-Mizu-Trace-ID: e9cad268562f180b
+Received: by smtp.migadu.com with ESMTPS id 0533d356648de116;
+	Thu, 01 Oct 2026 17:36:40 +0000
+X-Mizu-Trace-ID: 0533d356648de116
 X-Migadu-Flow: FLOW_OUT
 From: Diederik de Haas <diederik@cknow-tech.com>
 To: Dafna Hirschfeld <dafna@fastmail.com>,
@@ -55,15 +55,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Diederik de Haas <diederik@cknow-tech.com>
-Subject: [PATCH 0/3] media: rockchip: Modernize PM_OPS
-Date: Thu,  1 Oct 2026 19:34:50 +0200
-Message-ID: <20261001173610.158931-1-diederik@cknow-tech.com>
+Subject: [PATCH 3/3] media: rkisp1: Switch to modern PM_OPS
+Date: Thu,  1 Oct 2026 19:34:53 +0200
+Message-ID: <20261001173610.158931-4-diederik@cknow-tech.com>
 X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20261001173610.158931-1-diederik@cknow-tech.com>
+References: <20261001173610.158931-1-diederik@cknow-tech.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261001_103633_511490_F35C9EA4 
-X-CRM114-Status: UNSURE (   7.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261001_103643_336685_2B08D2AB 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,32 +81,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-A bunch of new PM_OPS macros got introduced in commit
+A new set of modern PM_OPS macros got defined in commit
 1a3c7bb08826 ("PM: core: Add new *_PM_OPS macros, deprecate old ones")
 
-Straight up copied from that commit message:
+Switch to those new macros so that the PM callbacks are always seen by the
+compiler, but discarded if not used. This lets us drop the __maybe_unused
+annotation from the callback functions.
 
-    These new macros are very similar to their SET_*_PM_OPS() equivalent.
-    They however differ in the fact that the callbacks they set will always
-    be seen as referenced by the compiler. This means that the callback
-    functions don't need to be wrapped with a #ifdef CONFIG_PM guard, or
-    tagged with __maybe_unused, to prevent the compiler from complaining
-    about unused static symbols. The compiler will then simply evaluate at
-    compile time whether or not these symbols are dead code.
-
-So convert the rockchip media components which used the old macros to the
-new ones.
-
-Diederik de Haas (3):
-  media: rkvdec: Switch to modern PM_OPS
-  media: rockchip: rga: Switch to modern PM_OPS
-  media: rkisp1: Switch to modern PM_OPS
-
- drivers/media/platform/rockchip/rga/rga.c           |  9 ++++-----
+Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
+---
  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 11 +++++------
- drivers/media/platform/rockchip/rkvdec/rkvdec.c     |  9 +++------
- 3 files changed, 12 insertions(+), 17 deletions(-)
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index f90e01301943..e619a949dbc9 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -305,7 +305,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+  * Power
+  */
+ 
+-static int __maybe_unused rkisp1_runtime_suspend(struct device *dev)
++static int rkisp1_runtime_suspend(struct device *dev)
+ {
+ 	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+ 
+@@ -331,7 +331,7 @@ static int __maybe_unused rkisp1_runtime_suspend(struct device *dev)
+ 	return pinctrl_pm_select_sleep_state(dev);
+ }
+ 
+-static int __maybe_unused rkisp1_runtime_resume(struct device *dev)
++static int rkisp1_runtime_resume(struct device *dev)
+ {
+ 	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+ 	int ret;
+@@ -351,9 +351,8 @@ static int __maybe_unused rkisp1_runtime_resume(struct device *dev)
+ }
+ 
+ static const struct dev_pm_ops rkisp1_pm_ops = {
+-	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
+-				pm_runtime_force_resume)
+-	SET_RUNTIME_PM_OPS(rkisp1_runtime_suspend, rkisp1_runtime_resume, NULL)
++	SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend, pm_runtime_force_resume)
++	RUNTIME_PM_OPS(rkisp1_runtime_suspend, rkisp1_runtime_resume, NULL)
+ };
+ 
+ /* ----------------------------------------------------------------------------
+@@ -815,7 +814,7 @@ static struct platform_driver rkisp1_drv = {
+ 	.driver = {
+ 		.name = RKISP1_DRIVER_NAME,
+ 		.of_match_table = of_match_ptr(rkisp1_of_match),
+-		.pm = &rkisp1_pm_ops,
++		.pm = pm_ptr(&rkisp1_pm_ops),
+ 	},
+ 	.probe = rkisp1_probe,
+ 	.remove = rkisp1_remove,
 -- 
 2.55.0
 
