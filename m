@@ -4,71 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66AC5CA5FD2
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 15:30:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E87BCA5FD2
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 15:38:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z0WHdC0JtYO9EZLQORgi2gGu3uSaOpkH4glSHGs6Nc4=; b=K+lXfaW6wAOx/b
-	COJM92kiOekpVCOBr0DwreyNE7XIZBEJRPxpXBfNkjpoTKZxV8Gm/69ns/cXVxzXulOhAi5HxEg82
-	k9qqkeS06Mekdkv276E6DJiz52BsFXjsXVZNOSH6Di8D41uinscTPHrEvlccPI6B+AX6tivsdOrfZ
-	3BjrNwgHSWD3eeLcIilsW2yhUBztThw26dlqKhwms9EC6CWn5fSp3V7NfP/S3sT3eEWgdFBtKdI7X
-	N+OiaXpK0Z7gdpODzbOeYXQrSm9YhB8dVxnRBKEEzgFkZ45CRMN800/xAISzqkLs5+20PbsVcnIln
-	OmvhUkFOILpE5w6X1vwg==;
+	List-Owner; bh=IEN9pfxWnQGMN9Cfvn2rzEezetTNCmTep+PkGPeL0vU=; b=cgbLc+HOMJ+bah
+	hlazR5PAI1GQx8AnmX9ogtvZHrbhi7npoHpYd6b957tLa/K+DKZYZGYOpzhwZItHY03dEYbx084/P
+	bSmFehi46dIU5UdXNcRBcAlN6IVVs+DXscQskSAcRhLu6glU/sLPUVttyojaxYC3fkiLgMIkJfKZ7
+	FbIsIK+mPAudaytKlM6M9AaXGgUW5aMR6Ykgk7FomvfplGHx+dZr5PtzKiICa+6nLXyqiG/dOuNBV
+	8nc06vQzqY303oou+gPcRKVJW7e3xLWMJ2Dmv+Ioo31xL7TjX5F/idBTHvJht5PcVU37Lo7Ox69mr
+	a0M31PxnQe/PvkI8WiYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCIk2-00000009X8x-0hna;
-	Thu, 01 Oct 2026 15:30:38 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1xCIru-00000009Z1S-1tVq;
+	Thu, 01 Oct 2026 15:38:46 +0000
+Received: from email2.ecloud.global ([2a01:4f9:4b:5387::2] helo=mail2.ecloud.global)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCIju-00000009X7f-3MkJ;
-	Thu, 01 Oct 2026 15:30:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1790868626; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=XUgeEb3gNoxnt1XzcxOvhPvkfSd2suARWDp6D+NlkVMci0aO/Io7dIaDwfbnyzDQeWK7mqu3kbTJX6wqp/u8/ftfWVbnIR0F0OIjxowLRBCwOOQPT0YTFHyLDRW3Ns2i1rMpxAH61L8UwoAKub4QEnpSnPsdt99wkOSKYx28z+Y=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1790868626; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=n4qkix7dZvZjzdXjV58aFtwAsoYI5IyUdaFVc+NF8I8=; 
-	b=JYiBANQxSGCKWIBYig/nlk0aZpeNXXy3/puE2qgs15DrgwC4n8AoVuu/6EyhGNpMECW2YpHXoLPEVrmPglOmulUjNVJmSQp4nVj4zSlcMOt7rZ/QAObIaW3n68khA78DIIj3LWzOp2pki8wZyYtVf6R9bk8oSQ74Nm/Mujalpew=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
-	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790868626;
-	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=n4qkix7dZvZjzdXjV58aFtwAsoYI5IyUdaFVc+NF8I8=;
-	b=WYHLkrJJQwGtVsWH3fDUgmmHGwySrgSfdE2zx3VPHqehnrwaj9YotOQuX2+f71VK
-	pla1RVcYmMb2TjAMBLWX69aaACdq7yYLxALAYZ8EruWEQNs+rh2W4hADofm7Hu+mFhP
-	oXADJ+mKOiXFVydxR6jtjB21Ym+ouDFi2jWE5jWc=
-Received: by smtp.zohomail.com with SMTPS id 1790868624762694.0539957154162;
-	Thu, 1 Oct 2026 08:30:24 -0700 (PDT)
-Message-ID: <74d65aee-043e-42a1-bdb8-c1889c4c19a8@collabora.com>
-Date: Thu, 1 Oct 2026 17:30:21 +0200
+	id 1xCIrq-00000009Yzf-3npw;
+	Thu, 01 Oct 2026 15:38:44 +0000
+Received: from authenticated-user (mail2.ecloud.global [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail2.ecloud.global (Postfix) with ESMTPSA id 3A32C720B98;
+	Thu, 01 Oct 2026 15:38:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=murena.io; s=mail2;
+	t=1790869113;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xx70lC/bWUp788wCvnZl/epp/8zx5Fhu34iv8tJWVos=;
+	b=ToqdSVrd1HsEwQzmjfBFjYDZriKj3Sm05yKCCOdKEyfTliJyEP2YF4EEk8MenyLA9MSni7
+	GG43lHUfIUmAetKOeV1Ptr15wnRIInrp1qj7QaJKcQOslpMkya+w288xPjrp06HiB9VkwE
+	WXIw4BIPap4JOIojeomLaOpZ/sdWYWw=
+ARC-Seal: i=1; a=rsa-sha256; d=murena.io; s=mail2; cv=none; t=1790869113;
+	b=Ko5QVLSK+WrA7oMsstFqO36iwQ4nJpom37gtaBSd3BXP7TUrNUIDhYeZVK9BeJt3RMRkKj
+	vzWcU8F9J8ZrlYnMOUcDK6T404QQg1U0Gsx6kLkH1JPbEJkf6kFJyDFAP39PSJadud8ohU
+	e3c/yGRhMRfGyQuktdMVJ7V+6ZLnsNI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=murena.io;
+	s=mail2; t=1790869113;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xx70lC/bWUp788wCvnZl/epp/8zx5Fhu34iv8tJWVos=;
+	b=KPA9poo3H1N3+NopbQsllMRGvV20jq2v4Z9vJVtKN2JJKhB3uNRwhvrNu7iSWLfZvfTH0G
+	1fynS3FwlDKdQJiNqQhOIDExt0R1yFuv8eNBmGwcEvIpkwnw6luXLOgu1Nw0747QfDpET6
+	IZf+7KD7h27N9TPbnX3mv2Y7mMc8R/g=
+ARC-Authentication-Results: i=1;
+	mail2.ecloud.global;
+	auth=pass smtp.mailfrom=maud_spierings@murena.io
+Message-ID: <7d41064a-1f7f-4461-a4ea-513d6afce267@murena.io>
+Date: Thu, 1 Oct 2026 17:38:30 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/5] media: rockchip: rkcif: add support for rk3576
- vicap mipi capture
-To: Amin Gattout <amin.gattout@gmail.com>,
- Mehdi Djait <mehdi.djait@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH v5 13/21] drm/bridge: inno-hdmi: Make the register clock
+ source selectable
+To: Michal Wilczynski <m.wilczynski@samsung.com>,
+ Vinod Koul <vkoul@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260921-vicap-rk3576-v2-0-0a4582e20c72@gmail.com>
- <20260921-vicap-rk3576-v2-4-0a4582e20c72@gmail.com>
+ <conor+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Emil Renner Berthing <kernel@esmil.dk>, Hal Feng
+ <hal.feng@starfivetech.com>, Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,
+ Dominique Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>,
+ Jerome Brunet <jbrunet+clk@baylibre.com>
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Graham Markall <hello@big-grey.co.uk>,
+ Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+ Joshua Peisach <jpeisach@ubuntu.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+References: <20260929-jh7110-clean-send-v5-0-82b4d8e3c6c7@samsung.com>
+ <CGME20260929103233eucas1p1bc0682334aad710c3894271f46ba1f47@eucas1p1.samsung.com>
+ <20260929-jh7110-clean-send-v5-13-82b4d8e3c6c7@samsung.com>
 Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260921-vicap-rk3576-v2-4-0a4582e20c72@gmail.com>
-X-ZohoMailClient: External
+From: Maud Spierings <maud_spierings@murena.io>
+In-Reply-To: <20260929-jh7110-clean-send-v5-13-82b4d8e3c6c7@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261001_083030_966746_EE83AD84 
-X-CRM114-Status: GOOD (  22.03  )
+X-CRM114-CacheID: sfid-20261001_083843_170396_061A5F74 
+X-CRM114-Status: GOOD (  21.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,267 +113,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Amin,
+Hi Michal,
 
-Thanks for the patch!
+Can confirm that this is fixed now! Thanks for integrating this!
 
-On 9/21/26 17:30, Amin Gattout wrote:
-> The RK3576 Video Capture (VICAP) unit features a Digital Video Port
-> (DVP) and five MIPI CSI-2 capture interfaces. Compared to the RK3588
-> variant, the MIPI register blocks are laid out differently (there is
-> no block at offset 0x200), the ID_CTRL0 bit layout has changed, and
-> the VC/DT filter has moved from ID_CTRL0 to ID_CTRL1. The capture
-> size, which the other variants configure in ID_CTRL1, lives in the
-> ID_SET_SIZE register.
+Tested-by: Maud Spierings <maud_spierings@murena.io>
+
+Kind regards,
+Maud
+
+On 9/29/26 12:31, Michal Wilczynski wrote:
+> inno_hdmi_init_hw() drives the register interface from the system clock
+> on every platform, by setting v_REG_CLK_SOURCE_SYS unconditionally in
+> HDMI_SYS_CTRL.
 > 
-> On the RK3576 the pixel clock of each MIPI port enters the VICAP
-> through a dedicated CRU gate (CLK_VICAP_I0CLK to CLK_VICAP_I4CLK),
-> so the variant claims these five clocks in addition to aclk, hclk
-> and dclk.
+> That is not right everywhere. On the JH7110 a Framework 13 (fml13v01)
+> panel flickers continuously with the system clock selected and behaves
+> once the TMDS clock drives the register interface instead. Maud Spierings
+> found this by diffing HDMI_SYS_CTRL against the StarFive vendor kernel,
+> which leaves the bit clear.
 > 
-> Signed-off-by: Amin Gattout <amin.gattout@gmail.com>
-
-Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
-
-(and with that, for the complete patch series)
-
-Best regards,
-Michael
-
+> Add a plat_data flag for it rather than changing the bit for everyone.
+> The Rockchip integrations keep the system clock, so this is a no-op for
+> them; only a platform that asks for it gets the TMDS clock.
+> 
+> Reported-by: Maud Spierings <maud_spierings@murena.io>
+> Closes: https://lore.kernel.org/all/e780ecb8-918f-4816-99c8-b69b10b25a18@murena.io/
+> Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
 > ---
->  .../platform/rockchip/rkcif/rkcif-capture-mipi.c   | 140 +++++++++++++++++++++
->  .../platform/rockchip/rkcif/rkcif-capture-mipi.h   |   1 +
->  .../media/platform/rockchip/rkcif/rkcif-common.h   |   2 +-
->  drivers/media/platform/rockchip/rkcif/rkcif-dev.c  |  21 ++++
->  4 files changed, 163 insertions(+), 1 deletion(-)
+>   drivers/gpu/drm/bridge/inno-hdmi.c | 4 +++-
+>   include/drm/bridge/inno_hdmi.h     | 2 ++
+>   2 files changed, 5 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
-> index 432f47a1fc23..53e62d059764 100644
-> --- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
-> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
-> @@ -30,6 +30,14 @@
->  #define RK3568_MIPI_CTRL0_CROP_EN     BIT(5)
->  #define RK3568_MIPI_CTRL0_WRDDR(type) ((type) << 1)
->  
-> +#define RK3576_MIPI_CTRL0_HIGH_ALIGN  BIT(11)
-> +#define RK3576_MIPI_CTRL0_WRDDR(type) ((type) << 8)
-> +#define RK3576_MIPI_CTRL0_PARSE(type) ((type) << 4)
-> +#define RK3576_MIPI_CTRL0_DMA_EN      BIT(3)
-> +#define RK3576_MIPI_CTRL0_CROP_EN     BIT(1)
-> +
-> +#define RK3576_MIPI_CTRL1_DT(dt)      ((dt) << 2)
-> +
->  #define RK3588_MIPI_CTRL0_DMA_EN      BIT(28)
->  #define RK3588_MIPI_CTRL0_HIGH_ALIGN  BIT(27)
->  #define RK3588_MIPI_CTRL0_WRDDR(type) ((type) << 5)
-> @@ -490,6 +498,138 @@ const struct rkcif_mipi_match_data rkcif_rk3568_vicap_mipi_match_data = {
->  	},
->  };
->  
-> +static u32
-> +rkcif_rk3576_mipi_ctrl0(struct rkcif_stream *stream,
-> +			const struct rkcif_output_fmt *active_out_fmt)
-> +{
-> +	u32 ctrl0 = RKCIF_MIPI_CTRL0_CAP_EN | RK3576_MIPI_CTRL0_DMA_EN |
-> +		    RK3576_MIPI_CTRL0_CROP_EN;
-> +
-> +	switch (active_out_fmt->mipi.type) {
-> +	case RKCIF_MIPI_TYPE_RAW8:
-> +		break;
-> +	case RKCIF_MIPI_TYPE_RAW10:
-> +		ctrl0 |= RK3576_MIPI_CTRL0_PARSE(0x1);
-> +		if (!active_out_fmt->mipi.compact)
-> +			ctrl0 |= RK3576_MIPI_CTRL0_WRDDR(0x1);
-> +		break;
-> +	case RKCIF_MIPI_TYPE_RAW12:
-> +		ctrl0 |= RK3576_MIPI_CTRL0_PARSE(0x2);
-> +		if (!active_out_fmt->mipi.compact)
-> +			ctrl0 |= RK3576_MIPI_CTRL0_WRDDR(0x1);
-> +		break;
-> +	case RKCIF_MIPI_TYPE_RGB888:
-> +		ctrl0 |= RK3576_MIPI_CTRL0_PARSE(0x7);
-> +		break;
-> +	case RKCIF_MIPI_TYPE_YUV422SP:
-> +		ctrl0 |= RK3576_MIPI_CTRL0_WRDDR(0x4);
-> +		break;
-> +	case RKCIF_MIPI_TYPE_YUV420SP:
-> +		ctrl0 |= RK3576_MIPI_CTRL0_WRDDR(0x5);
-> +		break;
-> +	case RKCIF_MIPI_TYPE_YUV400:
-> +		ctrl0 |= RK3576_MIPI_CTRL0_WRDDR(0x3);
-> +		break;
-> +	default:
-> +		break;
-> +	}
-> +
-> +	return ctrl0;
-> +}
-> +
-> +static u32
-> +rkcif_rk3576_mipi_ctrl1(struct rkcif_stream *stream,
-> +			const struct rkcif_output_fmt *active_out_fmt)
-> +{
-> +	return RK3576_MIPI_CTRL1_DT(active_out_fmt->mipi.dt);
-> +}
-> +
-> +const struct rkcif_mipi_match_data rkcif_rk3576_vicap_mipi_match_data = {
-> +	.mipi_num = 5,
-> +	.mipi_ctrl0 = rkcif_rk3576_mipi_ctrl0,
-> +	.mipi_ctrl1 = rkcif_rk3576_mipi_ctrl1,
-> +	.regs = {
-> +		[RKCIF_MIPI_CTRL] = 0x20,
-> +		[RKCIF_MIPI_INTEN] = 0x74,
-> +		[RKCIF_MIPI_INTSTAT] = 0x78,
-> +	},
-> +	.regs_id = {
-> +		[RKCIF_ID0] = {
-> +			[RKCIF_MIPI_CTRL0] = 0x00,
-> +			[RKCIF_MIPI_CTRL1] = 0x04,
-> +			[RKCIF_MIPI_FRAME0_ADDR_Y] = 0x24,
-> +			[RKCIF_MIPI_FRAME0_ADDR_UV] = 0x2c,
-> +			[RKCIF_MIPI_FRAME0_VLW_Y] = 0x34,
-> +			[RKCIF_MIPI_FRAME0_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
-> +			[RKCIF_MIPI_FRAME1_ADDR_Y] = 0x28,
-> +			[RKCIF_MIPI_FRAME1_ADDR_UV] = 0x30,
-> +			[RKCIF_MIPI_FRAME1_VLW_Y] = RKCIF_REGISTER_NOTSUPPORTED,
-> +			[RKCIF_MIPI_FRAME1_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
-> +			[RKCIF_MIPI_CROP_START] = 0x90,
-> +			[RKCIF_MIPI_SET_SIZE] = 0xa0,
-> +		},
-> +		[RKCIF_ID1] = {
-> +			[RKCIF_MIPI_CTRL0] = 0x08,
-> +			[RKCIF_MIPI_CTRL1] = 0x0c,
-> +			[RKCIF_MIPI_FRAME0_ADDR_Y] = 0x38,
-> +			[RKCIF_MIPI_FRAME0_ADDR_UV] = 0x40,
-> +			[RKCIF_MIPI_FRAME0_VLW_Y] = 0x48,
-> +			[RKCIF_MIPI_FRAME0_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
-> +			[RKCIF_MIPI_FRAME1_ADDR_Y] = 0x3c,
-> +			[RKCIF_MIPI_FRAME1_ADDR_UV] = 0x44,
-> +			[RKCIF_MIPI_FRAME1_VLW_Y] = RKCIF_REGISTER_NOTSUPPORTED,
-> +			[RKCIF_MIPI_FRAME1_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
-> +			[RKCIF_MIPI_CROP_START] = 0x94,
-> +			[RKCIF_MIPI_SET_SIZE] = 0xa4,
-> +		},
-> +		[RKCIF_ID2] = {
-> +			[RKCIF_MIPI_CTRL0] = 0x10,
-> +			[RKCIF_MIPI_CTRL1] = 0x14,
-> +			[RKCIF_MIPI_FRAME0_ADDR_Y] = 0x4c,
-> +			[RKCIF_MIPI_FRAME0_ADDR_UV] = 0x54,
-> +			[RKCIF_MIPI_FRAME0_VLW_Y] = 0x5c,
-> +			[RKCIF_MIPI_FRAME0_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
-> +			[RKCIF_MIPI_FRAME1_ADDR_Y] = 0x50,
-> +			[RKCIF_MIPI_FRAME1_ADDR_UV] = 0x58,
-> +			[RKCIF_MIPI_FRAME1_VLW_Y] = RKCIF_REGISTER_NOTSUPPORTED,
-> +			[RKCIF_MIPI_FRAME1_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
-> +			[RKCIF_MIPI_CROP_START] = 0x98,
-> +			[RKCIF_MIPI_SET_SIZE] = 0xa8,
-> +		},
-> +		[RKCIF_ID3] = {
-> +			[RKCIF_MIPI_CTRL0] = 0x18,
-> +			[RKCIF_MIPI_CTRL1] = 0x1c,
-> +			[RKCIF_MIPI_FRAME0_ADDR_Y] = 0x60,
-> +			[RKCIF_MIPI_FRAME0_ADDR_UV] = 0x68,
-> +			[RKCIF_MIPI_FRAME0_VLW_Y] = 0x70,
-> +			[RKCIF_MIPI_FRAME0_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
-> +			[RKCIF_MIPI_FRAME1_ADDR_Y] = 0x64,
-> +			[RKCIF_MIPI_FRAME1_ADDR_UV] = 0x6c,
-> +			[RKCIF_MIPI_FRAME1_VLW_Y] = RKCIF_REGISTER_NOTSUPPORTED,
-> +			[RKCIF_MIPI_FRAME1_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
-> +			[RKCIF_MIPI_CROP_START] = 0x9c,
-> +			[RKCIF_MIPI_SET_SIZE] = 0xac,
-> +		},
-> +	},
-> +	.blocks = {
-> +		{
-> +			.offset = 0x100,
-> +		},
-> +		{
-> +			.offset = 0x300,
-> +		},
-> +		{
-> +			.offset = 0x400,
-> +		},
-> +		{
-> +			.offset = 0x500,
-> +		},
-> +		{
-> +			.offset = 0x600,
-> +		},
-> +	},
-> +};
-> +
->  static u32
->  rkcif_rk3588_mipi_ctrl0(struct rkcif_stream *stream,
->  			const struct rkcif_output_fmt *active_out_fmt)
-> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.h b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.h
-> index 7edaca44f653..4e17cbc04b76 100644
-> --- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.h
-> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.h
-> @@ -13,6 +13,7 @@
->  #include "rkcif-common.h"
->  
->  extern const struct rkcif_mipi_match_data rkcif_rk3568_vicap_mipi_match_data;
-> +extern const struct rkcif_mipi_match_data rkcif_rk3576_vicap_mipi_match_data;
->  extern const struct rkcif_mipi_match_data rkcif_rk3588_vicap_mipi_match_data;
->  
->  int rkcif_mipi_register(struct rkcif_device *rkcif);
-> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-common.h b/drivers/media/platform/rockchip/rkcif/rkcif-common.h
-> index f83c8099b78e..08a213438d34 100644
-> --- a/drivers/media/platform/rockchip/rkcif/rkcif-common.h
-> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-common.h
-> @@ -27,7 +27,7 @@
->  #include "rkcif-regs.h"
->  
->  #define RKCIF_DRIVER_NAME "rockchip-cif"
-> -#define RKCIF_CLK_MAX	  5
-> +#define RKCIF_CLK_MAX	  8
->  
->  enum rkcif_format_type {
->  	RKCIF_FMT_TYPE_INVALID,
-> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-dev.c b/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
-> index be3a174b9aab..2a5758776b3e 100644
-> --- a/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
-> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
-> @@ -53,6 +53,23 @@ static const struct rkcif_match_data rk3568_vicap_match_data = {
->  	.mipi = &rkcif_rk3568_vicap_mipi_match_data,
->  };
->  
-> +static const char *const rk3576_vicap_clks[] = {
-> +	"aclk",
-> +	"hclk",
-> +	"dclk",
-> +	"iclk",
-> +	"iclk1",
-> +	"iclk2",
-> +	"iclk3",
-> +	"iclk4",
-> +};
-> +
-> +static const struct rkcif_match_data rk3576_vicap_match_data = {
-> +	.clks = rk3576_vicap_clks,
-> +	.clks_num = ARRAY_SIZE(rk3576_vicap_clks),
-> +	.mipi = &rkcif_rk3576_vicap_mipi_match_data,
-> +};
-> +
->  static const char *const rk3588_vicap_clks[] = {
->  	"aclk",
->  	"hclk",
-> @@ -76,6 +93,10 @@ static const struct of_device_id rkcif_plat_of_match[] = {
->  		.compatible = "rockchip,rk3568-vicap",
->  		.data = &rk3568_vicap_match_data,
->  	},
-> +	{
-> +		.compatible = "rockchip,rk3576-vicap",
-> +		.data = &rk3576_vicap_match_data,
-> +	},
->  	{
->  		.compatible = "rockchip,rk3588-vicap",
->  		.data = &rk3588_vicap_match_data,
+> diff --git a/drivers/gpu/drm/bridge/inno-hdmi.c b/drivers/gpu/drm/bridge/inno-hdmi.c
+> index 56f7d41cdae49ae872599a86799412c421158369..db92013a3b1e7c1b6668e9257523a0ca8d2c23d7 100644
+> --- a/drivers/gpu/drm/bridge/inno-hdmi.c
+> +++ b/drivers/gpu/drm/bridge/inno-hdmi.c
+> @@ -580,7 +580,9 @@ static void inno_hdmi_init_hw(struct inno_hdmi *hdmi)
+>   	usleep_range(100, 150);
+>   
+>   	msk = m_REG_CLK_INV | m_REG_CLK_SOURCE | m_POWER | m_INT_POL;
+> -	val = v_REG_CLK_INV | v_REG_CLK_SOURCE_SYS | v_PWR_ON | v_INT_POL_HIGH;
+> +	val = v_REG_CLK_INV | v_PWR_ON | v_INT_POL_HIGH;
+> +	val |= hdmi->plat_data->reg_clk_source_tmds ? v_REG_CLK_SOURCE_TMDS :
+> +						      v_REG_CLK_SOURCE_SYS;
+>   	hdmi_modb(hdmi, HDMI_SYS_CTRL, msk, val);
+>   
+>   	inno_hdmi_standby(hdmi);
+> diff --git a/include/drm/bridge/inno_hdmi.h b/include/drm/bridge/inno_hdmi.h
+> index 1e9974401c39e3773bb339eaec0b45ff1dd9c975..620f035eb9846762ff91cd933b30e07eaeeae8ed 100644
+> --- a/include/drm/bridge/inno_hdmi.h
+> +++ b/include/drm/bridge/inno_hdmi.h
+> @@ -32,6 +32,8 @@ struct inno_hdmi_plat_data {
+>   	const struct inno_hdmi_plat_ops *ops;
+>   	struct inno_hdmi_phy_config *phy_configs;
+>   	struct inno_hdmi_phy_config *default_phy_config;
+> +	/* Clock the register interface from the TMDS clock, not the system clock. */
+> +	bool reg_clk_source_tmds;
+>   };
+>   
+>   struct inno_hdmi *inno_hdmi_bind(struct device *pdev,
 > 
 
 
