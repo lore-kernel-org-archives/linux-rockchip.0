@@ -4,85 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A09ACA5FC5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 07:01:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0014CA5FCE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 07:32:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9KVnLkvaSC/0oizhk/DwUsMwefOibkZiWtP1zDfqYFY=; b=IwNreQWet4EQg0
-	bt8AVduhyLdfX6HWWCeR+EKcIkSSY9hMfEAlqTyC+GCX2bLZQ97UA7Cb5Iz8937j+ojC/SEEgNTmJ
-	YsRioF6mauhY1MU20g8dEx1/l7aDxzrcBL2n1qXah1KTZ/KQ0jQHFuCAJZovn2zEBdNMT/Qocut6u
-	s0lPIrtURz8d7Kz6YZZeGioCGXmVWAyoZUoqxrvQJCQh/lC1KEnE5eHK4akgtJ2VoDCgLL6SfEOKq
-	PA0Qs7cwJUY5ddFwO4GyAXaPRtrK1kZV/yJ2r1txI811UiRZkKRClxJgRmrCLADc6Ol2JuQaMdnHi
-	pZT9c67fJKnAba0hwI5g==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:
+	References:MIME-Version:In-Reply-To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=A7yTkshz/AcPxJ4WI41+A1aziKrBmqieEp35II1cI28=; b=m1p+JVJGOliq+d28ji3pyjnxDt
+	n+g2RlQIhNw0spSNxKnSYTxPxKLYMrucLBk4VlKRXCLeeAqjQck6LRxYxLNu0MnFNLvdxrzPvq6vl
+	exBt3/R7CIDe8bJQaGEH/ne9EDEMnLJl5/or1BQaRPgInYFOXTEetU9WHoCcTeYVPK7H8GMYeWPzB
+	XA23ZboSNNIFaKZiuM+lPQWG/3aTY8qzRKxsJLfc0EO4E795meH0awJRklIdm4Paag60mkxxN6mC6
+	1QFMzo2MQPaLdDvukkoE8Rf6AaE52W7UKW7RdaBCZLScjgAH1YR428NQ1/a3q+2G+Pnvzv2k481yX
+	+qBY4kPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCAmm-00000007wHY-2dWj;
-	Thu, 01 Oct 2026 07:00:56 +0000
+	id 1xCBH2-000000080DC-2wVD;
+	Thu, 01 Oct 2026 07:32:12 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCAmY-00000007wFX-0cte
+	id 1xCBH1-000000080CT-1NxK
 	for linux-rockchip@lists.infradead.org;
-	Thu, 01 Oct 2026 07:00:42 +0000
+	Thu, 01 Oct 2026 07:32:11 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E335D44784
-	for <linux-rockchip@lists.infradead.org>; Thu,  1 Oct 2026 07:00:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B225E1F00923
-	for <linux-rockchip@lists.infradead.org>; Thu,  1 Oct 2026 07:00:41 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F28E944799
+	for <linux-rockchip@lists.infradead.org>; Thu,  1 Oct 2026 07:32:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B81941F00A08
+	for <linux-rockchip@lists.infradead.org>; Thu,  1 Oct 2026 07:32:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790838041;
-	bh=mElU9b/C7GbTRzayuEisivT56pskbTQfjgTfMpMhZqo=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=lai8yV4GET1ANIXcbjD6gxSIgj3Rbewk0/lu4lDjiGBK0AR2xznTwMZ8CAZDJyZ+L
-	 EsvRhzhNuZuaLDciN25FVrTaHZkxP0LHlYVvFBYK0H6yACyVsrCMUX1oTjEM7jmYTY
-	 Lml8J1D9V8IgUtC3M+fkAuJVWqFWPEeBj49DI/54rn0I8w7EvfJfGvHPCetwRZke+m
-	 Jrb5lxpINDotFvbXQ6w5GB2OIVzR4m29U2MsAoAZdl9oH5cDwh1t9GqoAezRLL1zgD
-	 8Mx7kcqUrZSvQETzlBiDJnpk2uqEDqsoQyIxANadAG7s+7/C3LEuQcMM5ylc6Q6NmT
-	 FapwKDBi/znAg==
-Received: by mail-lr2-f35.google.com with SMTP id 38308e7fff4ca-3a6124046f0so52244921fa.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 01 Oct 2026 00:00:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvBxNOErE0u80ILZYyuXtTcnnhiA/apfAzQmJwupa8kosi3/I3DIwPyZ5AxNAKKAdyxfmjK+xKM0DttUHQWAbHg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYITjuh7Vd29bfjyNMMQ0nWaDi2Z5gVV66KdpaHinWS88l+VTKm7
-	CfU42I4akNwVcAH21pN7GVil9qfHbkittn4eLua7ha3Ebj+2gnIddjlI8hnAIEC8sLhi14wT/jC
-	NuMmYh6WRLQIAIYJkbwtdI7OOa6jvgY8=
-X-Received: by 2002:a05:651c:2212:b0:3a6:5efa:5a41 with SMTP id
- 38308e7fff4ca-3a77925f62fmr11207181fa.21.1790838040414; Thu, 01 Oct 2026
- 00:00:40 -0700 (PDT)
+	s=k20260515; t=1790839930;
+	bh=ELdBCMU5f7/O4ZMIta9o4UVKjIIZnw/X5SSJeT3GM90=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=m9ED6XoyFU6f6NSxPdVX7ZgGtbARjsD/CvfZD8tuhOkiZ6dKnPRKSRSktb3gLidmc
+	 VPbCeYi2IKHwWOv9a94mqT6hb1QyGGIuQBER4nXjiOTZRozsX037c2spwbLmYAMdft
+	 hSocy81uy0QFI/ZtDOvX28+07QuujnXHssLX3bpIUqE7ULrFoS3pV03E333y7RCNzK
+	 HsH5YwqLVDE8Ag8eULAvrQkln7YBVbnRdOZn5XnVa80W1ViRxENJZnXfTYVrjFagcy
+	 G3vUUO2AFJbwfAf2/N1XRAUG8lpRgJF09f4ryfCh5u+wg5DjSHuu95Tq7PJHOpKRZi
+	 qrKAsvE+hguKQ==
+Received: by mail-lf2-f13.google.com with SMTP id 2adb3069b0e04-5ba42966d5fso788312e87.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 01 Oct 2026 00:32:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvBx1XJOFIDa0sWwlIrqQSQczbu72Sl8+TAoFtElgsOMZ/+TczZ1V7/YUUBEr7FqtErVfE4V1plmt4hdhIZKikg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJ/Uq9jvdqMVngZEAFSeCcS1+kOu2iLr7KAThC5KNkQRaoVEnPg
+	RI2/fVQXw0sWCDx7VZ02/qV8rU3rxedpFFT/umEGEwQLmRnbbRguCvi4oBeXeddiYyZPGzC6q2i
+	7zlAmK1ZodBtpwx8o8UpBXsdslhNUu2GsjSakEKbD/g==
+X-Received: by 2002:ac2:42d0:0:b0:5b8:f97f:7a22 with SMTP id
+ 2adb3069b0e04-5ba405ec7a1mr1161789e87.54.1790839929167; Thu, 01 Oct 2026
+ 00:32:09 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 1 Oct 2026 10:32:07 +0300
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 1 Oct 2026 10:32:07 +0300
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <20260930163334.60b4a88c@kernel.org>
 MIME-Version: 1.0
-References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com> <20260916-drm-bridge-every-panel-v3-18-83afb4f1a707@bootlin.com>
-In-Reply-To: <20260916-drm-bridge-every-panel-v3-18-83afb4f1a707@bootlin.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Thu, 1 Oct 2026 09:00:28 +0200
-X-Gmail-Original-Message-ID: <CAD++jL=89=_vKWso6+oj08FAVUqnWbiLv-DK5tkRregOchR+7w@mail.gmail.com>
-X-Gm-Features: AclHuK8HpV3tEuh3YdZ0JhZMwoz3UMRkOP0D37dSr_O7f63FhWL-xa0BlDmYi2w
-Message-ID: <CAD++jL=89=_vKWso6+oj08FAVUqnWbiLv-DK5tkRregOchR+7w@mail.gmail.com>
-Subject: Re: [PATCH v3 18/19] drm/tve200: don't create a panel_bridge
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Jessica Zhang <jesszhan0024@gmail.com>, Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
-	Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Paul Kocialkowski <paulk@sys-base.io>, Inki Dae <inki.dae@samsung.com>, 
-	Jagan Teki <jagan@amarulasolutions.com>, Marek Szyprowski <m.szyprowski@samsung.com>, 
-	Sean Paul <sean@poorly.run>, Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
-	Randy Dunlap <rdunlap@infradead.org>, Albert Esteve <aesteve@redhat.com>, 
-	Anusha Srivatsa <asrivats@redhat.com>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
-	Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>, 
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	asahi@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
-	freedreno@lists.freedesktop.org, linux-tegra@vger.kernel.org, 
-	linux-doc@vger.kernel.org, linux-samsung-soc@vger.kernel.org
+References: <20260923-qcom-sa8255p-emac-v15-0-e82f33720737@oss.qualcomm.com>
+ <20260923-qcom-sa8255p-emac-v15-1-e82f33720737@oss.qualcomm.com> <20260930163334.60b4a88c@kernel.org>
+Date: Thu, 1 Oct 2026 10:32:07 +0300
+X-Gmail-Original-Message-ID: <CAMRc=MeUx2iHf8-d9yjZZ=n7VaG_GROvO2dW-bxavAS+XbGMFg@mail.gmail.com>
+X-Gm-Features: AclHuK8P_ZwjJ__3SNp9LNTCdpGSDaQAP4RQWoM4JsBj1lq1vbQDeX8sSTrNEMU
+Message-ID: <CAMRc=MeUx2iHf8-d9yjZZ=n7VaG_GROvO2dW-bxavAS+XbGMFg@mail.gmail.com>
+Subject: Re: [PATCH net-next v15 1/9] net: phy: aquantia: fix system interface
+ type not updated in forced mode
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Vinod Koul <vkoul@kernel.org>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
+	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Fabio Estevam <festevam@gmail.com>, Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com, 
+	Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>, Romain Gantois <romain.gantois@bootlin.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	Maxime Ripard <mripard@kernel.org>, Christophe Roullier <christophe.roullier@foss.st.com>, 
+	Bartosz Golaszewski <brgl@kernel.org>, Radu Rendec <radu@rendec.net>, linux-arm-msm@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+	linux-arm-kernel@lists.infradead.org, Drew Fustini <dfustini@tenstorrent.com>, 
+	linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org, 
+	linux-mips@vger.kernel.org, imx@lists.linux.dev, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	sophgo@lists.linux.dev, linux-riscv@lists.infradead.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, stable@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,22 +102,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBTZXAgMTYsIDIwMjYgYXQgMzo0OOKAr1BNIEx1Y2EgQ2VyZXNvbGkgPGx1Y2EuY2Vy
-ZXNvbGlAYm9vdGxpbi5jb20+IHdyb3RlOgoKPiBOb3cgYSBwYW5lbF9icmlkZ2UgaXMgYXV0b21h
-dGljYWxseSBjcmVhdGVkIGZvciBldmVyeSBkcm1fcGFuZWwgYW5kIHRoZQo+IHBhbmVsLWJyaWRn
-ZSBBUEkgaXMganVzdCBhIGRlcHJlY2F0ZWQgd3JhcHBlciB0byBhY2Nlc3MgaXQuCj4KPiBVcGRh
-dGUgYW5kIHNpbXBsaWZ5IHRoZSBjb2RlIGJ5IGp1c3QgZ2V0dGluZyBhIHJlZmVyZW5jZSB0byB0
-aGUKPiBhbHJlYWR5LWV4aXN0aW5nIGJyaWRnZSB1c2luZyBvZl9kcm1fZ2V0X2JyaWRnZV9ieV9l
-bmRwb2ludCgpLgo+Cj4gQW5kIHNpbmNlIG9mX2RybV9maW5kX2FuZF9nZXRfYnJpZGdlKCkgcmV0
-dXJucyBhIHJlZmNvdW50ZWQgYnJpZGdlLCB0YWtlCj4gY2FyZSBvZiBwdXR0aW5nIHRoZSBicmlk
-Z2UgcmVmZXJlbmNlLgo+Cj4gU2lnbmVkLW9mZi1ieTogTHVjYSBDZXJlc29saSA8bHVjYS5jZXJl
-c29saUBib290bGluLmNvbT4KClJldmlld2VkLWJ5OiBMaW51cyBXYWxsZWlqIDxsaW51c3dAa2Vy
-bmVsLm9yZz4KCllvdXJzLApMaW51cyBXYWxsZWlqCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Thu, 1 Oct 2026 01:33:34 +0200, Jakub Kicinski <kuba@kernel.org> said:
+> On Wed, 23 Sep 2026 17:14:35 +0200 Bartosz Golaszewski wrote:
+>> aqr_gen1_read_status() decodes the MDIO_PHYXS_VEND_IF_STATUS register
+>> to determine which SerDes interface the PHY is currently using on its
+>> system side and stores the result in phydev->interface. phylink relies
+>> on this value to configure the MAC.
+>>
+>> The autoneg == AUTONEG_DISABLE check is not correct:
+>> MDIO_PHYXS_VEND_IF_STATUS is set by the PHY firmware based on the
+>> negotiated link speed, not based on whether autoneg was used to reach
+>> it. When the link comes up at 1G in forced mode, the register correctly
+>> reads SGMII, but the early return prevents phydev->interface from being
+>> updated. It stays at whatever value it held before (typically 2500BASE-X
+>> from the initial autoneg run), so phylink configures the MAC for the
+>> wrong interface and the link cannot come up.
+>>
+>> Remove the autoneg guard so that the system interface type is always
+>> decoded when the link is up.
+>>
+>> Cc: stable@vger.kernel.org
+>> Fixes: 110a2432c520 ("net: phy: aquantia: add downshift support")
+>> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+>
+> Sounds like a real regression, is it? Should we ship it to Linus
+> tomorrow so that it makes 7.3? stable + next does not compute for me
+>
+
+Yes, this is independent from the rest of the series and a small fix. It sounds
+good to send it upstream ASAP.
+
+Bart
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
