@@ -4,43 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89260CA5FD4
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 17:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC729CA5FDD
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 17:36:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xLooYYJecz0Ctme67xC+feN9Xl0ZviNssOIKvfKgLg8=; b=Ueq5oMWrFVz4pn
-	4Ycoutnx4PfiEyKCC95+8TrJDCCbz/EFq4WjUy8bA90sy7cZaDIiTGADW5HNXHEZB8F+MPhP3Igcy
-	9U2SuzWjg7R+8A5t2orEi6xCC1U359SZsPCybI5mj8R6jM6++5kbed4pvNwxdg9RH4k+oHDUSe4y4
-	nfa8Yufd1NcQat/XsOKdxbQifwRh++zs1EkTFip77s7L2qlvCNhUAgxJXLJ3krbVOmCsM5VtXM7lF
-	9+/kf7XId0u+6YgGgPGPWFbFKOmnmR09/3swu/kogK0zNTknUIgfMNDw8Wp0lGMyogKEzoaYeFTCm
-	mJM3F97hGEjDMf207HUQ==;
+	List-Owner; bh=7zDWy4SQu26QA9ORSmgW8/Pc2Q/EWuTuBh7dumAB1hE=; b=bPyyygZqjwytoz
+	t8db/o+8cAs1y6UXnXpGBc56A2zwEStr7KGLN1UsCA2NNuX0FlwyWjZld6L6BpTg8PK3dtD67ynPY
+	ysBtSA/Dv7YcWM9OGi0F+5iTK8shh6jI4pfWkXXQs/dP6As3aCa7cXrJeEglTN9Fdzaqah1zfpyub
+	/KDV610I28AaYNCh/9M8Yd4YYayhHutzp/Fie9lBS9SUgq9XWbp2nYlvRSFpJse9Vfvixa5/VEX0U
+	enBKso4YkpXhkm+NtTlqZdEmjdcksWMOK0EiPUuCYleaQYuaDxJKVZzuadXjQLwJNIlU08FvE3C+N
+	YOpkVO1A7vd62eLvjAZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCKi5-00000009sZW-3n5A;
-	Thu, 01 Oct 2026 17:36:45 +0000
-Received: from out-1.mta0.migadu.com ([2001:41d0:1004:224b::1] helo=mta0.migadu.com)
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCKi3-00000009sVZ-0Z1U
-	for linux-rockchip@lists.infradead.org;
+	id 1xCKi4-00000009sYH-35Hj;
 	Thu, 01 Oct 2026 17:36:44 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1xCKi3-00000009sW7-0JEE
+	for linux-rockchip@bombadil.infradead.org;
+	Thu, 01 Oct 2026 17:36:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=JDqPmLDFYlB7Z3ktQN/F8KCDkkX79VLLvZgcJBy2TBU=; b=jkGLx6FlMZFJ+iQ9bpzrmjl/uf
+	r9iTbwNr8H6mBa5L2Mo5DdpI0Sx22J9Tcd0/6LPPdpfrIzkR2XmykI7PfijelDazl9adAx10TXfPc
+	zMvQD2z+spWCREyhvyykVoBBuPOl0sULf38mZuhc/nHUd4wgvyPGVFSmVMkmQShqai0HXA+r9xvPm
+	NFqyDGMaPMcsPU0MsN3J2C5Ie9uJf2THYd3ZpUTJWyY/fUU3tn31psDHQYc9kylqgLmuEbxSEOxD9
+	o/6y52zljYfJd2qO+44g064wrZaPOL1Qa1AgwnoYC+W2TK91HTwHqOo8ZeqFPmhmx1OSTMDlVfhAx
+	brz5YiNg==;
+Received: from out-84.mta1.migadu.com ([95.215.58.84] helo=mta1.migadu.com)
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1xCKhz-00000005GOT-3jby
+	for linux-rockchip@lists.infradead.org;
+	Thu, 01 Oct 2026 17:36:41 +0000
 X-Envelope-To: linux-rockchip@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=SoALhT7ctD/Ofq5oEPYAXAkgPEKatIJv6UIilwTDtfw=;
+DKIM-Signature: a=rsa-sha256; bh=+aL1i0lxNCeiEOWt9v5pY59s5NqU4xro0mHTazEQe6g=;
  c=simple/simple; d=cknow-tech.com;
  h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1790876201; v=1; x=1791481001;
- b=kNnE23VMQUox9UleXFY4PNjn7rrveHEZaklWe3JIC+p0zRHUJ6HokdlBNuZ4jiVY+4MfZlQT
- z524uyUVnXHwC8OhWLIK3y1bCuYTwppQgwB13mU7AOMBWnkcduQgoxSN8ZFnaHdfKLo3m9OrME8
- VpsYKGlMcX88ZrdhtUWHSd2k8xASY42Q0tMgKgBgltJGovtLIuqNUwuZzBz91MAAe7F8qjrc3Za
- mTPQF8rDQmEQnxJ4rvf5HjMuIKo+llhoWVQ5mfS8Cdxmfk/nkP4g/s67Q4JOJfoLN5tX/rxACBG
- X/S81yc61Se6niAHcjjZh3s0yz0XIykiXzsNMDFQZPSRw==
+ t=1790876196; v=1; x=1791480996;
+ b=PGsVk0bAf7E2GjwQqubTwMs9wI2e+lsOvv8WHUkijTxzzr4eJxohuFWFwooi1JKCPIlkvz7E
+ THa0cu1Uw/bgZBhyKyAu7qQAt6pLVF4E4+yb3KjFRie0uZWqUtolWGXpPe+XQ3H+5ZVzI+vtCcS
+ PMQZfLNgMtO3En55v5mq7gjP38EQpJ50Fa9/W1OJgjLuyhaJ6QRPHhRg+R4fZQ2qzsudW2ygMVS
+ 9nUcauCBEVapvtgturtDIuSW3LEmnS0UTnE3FtCSitvRIK2Ztls05nPaCfKhOL6YMz3yIZUtdFk
+ n/gtInFKXAM43YyO144lHaWEwWZoCdIVTxPSHeRc4SzLg==
 X-Envelope-To: linux-rockchip@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 0533d356648de116;
-	Thu, 01 Oct 2026 17:36:40 +0000
-X-Mizu-Trace-ID: 0533d356648de116
+Received: by smtp.migadu.com with ESMTPS id 28778f0b3f296ced;
+	Thu, 01 Oct 2026 17:36:36 +0000
+X-Mizu-Trace-ID: 28778f0b3f296ced
 X-Migadu-Flow: FLOW_OUT
 From: Diederik de Haas <diederik@cknow-tech.com>
 To: Dafna Hirschfeld <dafna@fastmail.com>,
@@ -55,16 +70,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Diederik de Haas <diederik@cknow-tech.com>
-Subject: [PATCH 3/3] media: rkisp1: Switch to modern PM_OPS
-Date: Thu,  1 Oct 2026 19:34:53 +0200
-Message-ID: <20261001173610.158931-4-diederik@cknow-tech.com>
+Subject: [PATCH 2/3] media: rockchip: rga: Switch to modern PM_OPS
+Date: Thu,  1 Oct 2026 19:34:52 +0200
+Message-ID: <20261001173610.158931-3-diederik@cknow-tech.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261001173610.158931-1-diederik@cknow-tech.com>
 References: <20261001173610.158931-1-diederik@cknow-tech.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261001_103643_336685_2B08D2AB 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20261001_183640_153447_2B14AA56 
+X-CRM114-Status: GOOD (  14.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,52 +105,50 @@ annotation from the callback functions.
 
 Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ drivers/media/platform/rockchip/rga/rga.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index f90e01301943..e619a949dbc9 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -305,7 +305,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
-  * Power
-  */
- 
--static int __maybe_unused rkisp1_runtime_suspend(struct device *dev)
-+static int rkisp1_runtime_suspend(struct device *dev)
- {
- 	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
- 
-@@ -331,7 +331,7 @@ static int __maybe_unused rkisp1_runtime_suspend(struct device *dev)
- 	return pinctrl_pm_select_sleep_state(dev);
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index b3cb6bf8eb86..f28c93d63760 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -883,7 +883,7 @@ static void rga_remove(struct platform_device *pdev)
+ 	pm_runtime_disable(rga->dev);
  }
  
--static int __maybe_unused rkisp1_runtime_resume(struct device *dev)
-+static int rkisp1_runtime_resume(struct device *dev)
+-static int __maybe_unused rga_runtime_suspend(struct device *dev)
++static int rga_runtime_suspend(struct device *dev)
  {
- 	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
- 	int ret;
-@@ -351,9 +351,8 @@ static int __maybe_unused rkisp1_runtime_resume(struct device *dev)
+ 	struct rockchip_rga *rga = dev_get_drvdata(dev);
+ 
+@@ -892,7 +892,7 @@ static int __maybe_unused rga_runtime_suspend(struct device *dev)
+ 	return 0;
  }
  
- static const struct dev_pm_ops rkisp1_pm_ops = {
--	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
--				pm_runtime_force_resume)
--	SET_RUNTIME_PM_OPS(rkisp1_runtime_suspend, rkisp1_runtime_resume, NULL)
-+	SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend, pm_runtime_force_resume)
-+	RUNTIME_PM_OPS(rkisp1_runtime_suspend, rkisp1_runtime_resume, NULL)
+-static int __maybe_unused rga_runtime_resume(struct device *dev)
++static int rga_runtime_resume(struct device *dev)
+ {
+ 	struct rockchip_rga *rga = dev_get_drvdata(dev);
+ 
+@@ -900,8 +900,7 @@ static int __maybe_unused rga_runtime_resume(struct device *dev)
+ }
+ 
+ static const struct dev_pm_ops rga_pm = {
+-	SET_RUNTIME_PM_OPS(rga_runtime_suspend,
+-			   rga_runtime_resume, NULL)
++	RUNTIME_PM_OPS(rga_runtime_suspend, rga_runtime_resume, NULL)
  };
  
- /* ----------------------------------------------------------------------------
-@@ -815,7 +814,7 @@ static struct platform_driver rkisp1_drv = {
+ static const struct of_device_id rockchip_rga_match[] = {
+@@ -927,7 +926,7 @@ static struct platform_driver rga_pdrv = {
+ 	.remove = rga_remove,
  	.driver = {
- 		.name = RKISP1_DRIVER_NAME,
- 		.of_match_table = of_match_ptr(rkisp1_of_match),
--		.pm = &rkisp1_pm_ops,
-+		.pm = pm_ptr(&rkisp1_pm_ops),
+ 		.name = RGA_NAME,
+-		.pm = &rga_pm,
++		.pm = pm_ptr(&rga_pm),
+ 		.of_match_table = rockchip_rga_match,
  	},
- 	.probe = rkisp1_probe,
- 	.remove = rkisp1_remove,
+ };
 -- 
 2.55.0
 
