@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CA89CA5FCE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 06:59:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD2B5CA5FC5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Oct 2026 06:59:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sN4MkO3H9fIMm4CPyc4wVahWCm0lYcmzL/lc5v2Y+6E=; b=0XVXWnZAKkW8My
-	VozB9pBEwJlfE+gTMrp69Z7/Id9GGV/d7rWijzDNCMDPEcX2Xz+vPB54XYNwjGMvWYtgtWEhMBwVZ
-	dcPcJsT72S9viwwCJglHa84JpgOG+B9736sZnArYQrkUUJiVRhRGQhVwxMZWarVynHp7pIb/OlX/5
-	HMwIiA80cgTMbkjsYOkR0YGux9b/kHhaEm4KafaqmWokuq74lz6+BwjeTgbLa+qfcdkA2ZlIHLpj6
-	R/MTGV9i+bmtztAID6OfoNP7dZhLoJjouJ0YaMYuDyDi4WddVH5K46Kmlv4YBICrnyKwggwIeY3Nh
-	gHDe7kRkQ2E8Zi8/ngtg==;
+	List-Owner; bh=FR0QTzakJqPIBbc1O8ijTFsPhTjzhGjtyDTavmUE/ho=; b=CSB6iMlBR6Kj82
+	Q6KlCFfO1UZ6PL8/L+AtRbWoXnbTrjwAo8ktUv9DGmNzcd8sOJTkes6/a0I0wevP/pmFyBK5mcKqw
+	iCgyFAQ/iiBBfey72C5oCcNUXwUgZ/uXGjVOe2sruqydw84DCSU9NtJY0GwBbaWx213IbAtIX3F92
+	K/CPZeZ9tTBhN8QuYy0ExNT/P++02+3SRdn/6xkv3Im8NohhOr60yRHh/FMplGxZuvHzJ0phgjUQ6
+	CXFvwNz1N19fBvf7GsPqUXIKd2CX1UNq6rvHJUPCl2IBPoe520z+SY72rj4pIi+g2yliCrKQMnfOm
+	PAL35wUEO6ZueZEuL7qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCAlM-00000007w0K-2oiv;
-	Thu, 01 Oct 2026 06:59:28 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xCAlZ-00000007w3f-3aB3;
+	Thu, 01 Oct 2026 06:59:41 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCAlL-00000007w07-1TnC
+	id 1xCAlY-00000007w3R-3KXz
 	for linux-rockchip@lists.infradead.org;
-	Thu, 01 Oct 2026 06:59:27 +0000
+	Thu, 01 Oct 2026 06:59:40 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B093444793
-	for <linux-rockchip@lists.infradead.org>; Thu,  1 Oct 2026 06:59:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E8081F00898
-	for <linux-rockchip@lists.infradead.org>; Thu,  1 Oct 2026 06:59:26 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 2D35744798
+	for <linux-rockchip@lists.infradead.org>; Thu,  1 Oct 2026 06:59:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DACA61F00A08
+	for <linux-rockchip@lists.infradead.org>; Thu,  1 Oct 2026 06:59:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790837966;
-	bh=adKEV0wp8fnkm3B2gVtkxUbYQ0N4xZbbOvQZcLnu0xk=;
+	s=k20260515; t=1790837979;
+	bh=QJwfbKCyn/gh6UMXa/B9wDnCdxqQxEqYbYvEbOHcRzo=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=ZTEqIekgpZghTg8Qn8vwEmbcMeMYl2MORgJxn3aIHii9lmlTTHXZULIZaVG6qSbBU
-	 P1GpvEyVhrBhMi/mxpGoxmyOhDj0twY5/81waMYx34MNJYpyJW/LGUPeAxIk4Gb3tS
-	 291yIQxl1AzJd+hKdqlRFd6inzcyYydgb3tNfWPDRy9FVVDUzeGQbpXp2S02THGyJO
-	 cBNMWgzFXyDjGvG+KjD2jVAWTdEuZ5SPtgBv4hf/VJBW5T/eR3p7ntSCwVWjJbxHS/
-	 EtdsuoEljzPiJkqs+B/W+oywc3R6jty9xcO198geJNwEC8Z9ZM5JTuumBUxhIb+jXo
-	 21JWDU1ZRilHQ==
-Received: by mail-lf2-f12.google.com with SMTP id 2adb3069b0e04-5ba3e27d525so1237883e87.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 30 Sep 2026 23:59:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvBzD2J25XweejqHab8oTgDJiw0AUNRvqDp7M5Ot3xO4B2wPi5Re/J/bpnrmvsJGnvOf3JeG77iYUMdf5z2l2kA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIankQT3XTezGZusDDghIcr68CqJaugYU3ibm12BXNuABRNI1lk
-	yapUBALsboBfi/z+V4G+mrW5w38hF4C4Q3HjlqGkzpUslzSDs/ZRZ+8S7NYAsaFHhVB96M5Wda+
-	U8U+/df58ZQFzaAHmj4NSVLnAMVrMqvg=
-X-Received: by 2002:a05:6512:3ba0:b0:5ba:3b01:36a5 with SMTP id
- 2adb3069b0e04-5ba405ee75amr1389712e87.14.1790837964923; Wed, 30 Sep 2026
- 23:59:24 -0700 (PDT)
+	b=Eb7QsxdVvwC6Q6ASOE6RHWopINjqmVsM+asCISC8KzX4TbbjLlLnsFGewjxLBiuAL
+	 USpbOV25b9ZmxZxGODhRZ/pIOUEV4j/7ISqQiq/4Q3iBTdt2DVLljYevQD1l6XoyiL
+	 /6myJolVu0oJo4EALqct9L6A2ND53yX9mOAI/X1jCNzZ1CH/ZbM+48f/OViR41yaiE
+	 YSWVB+jXEhQSQQdD456ShpIZi68mzYXHl+aRD0Dw6RexksYrZgHbY19oPl/9V4B29b
+	 xtsP823iFmnkNIANNLcxBYI21WhoxAkFuarvbrBPjvq3midaRtXgYMBNaY+ttNwSXN
+	 HLUC7j9fQRUAA==
+Received: by mail-lr2-f35.google.com with SMTP id 38308e7fff4ca-3a6124046f0so52239001fa.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 30 Sep 2026 23:59:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvBwux6W7xiX4WqNym4aF6oKVGnkPxP3fRK6ueuClhJbFU5rpHbCCX49dEwj4o1ptSvD3gtkqfyNpzhbOoCdaJg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJ+dlaf/5DXTy2JP0NFmiU1OXv/FyGYHGb+VDfdq8tACP8Ky7LC
+	KubSJFYGigegTHolTiCHksBNd5dBYlj9Qe1QlzPYJLQ2s44lNSN+ew9qh1yuprKam2vJL8JbOFI
+	djJ/Zmo7eXYrlPWHmY38pqVMXJu0WYx0=
+X-Received: by 2002:a2e:a99a:0:b0:3a7:812b:d0b with SMTP id
+ 38308e7fff4ca-3a7812b1f22mr7437971fa.11.1790837978465; Wed, 30 Sep 2026
+ 23:59:38 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com> <20260916-drm-bridge-every-panel-v3-7-83afb4f1a707@bootlin.com>
-In-Reply-To: <20260916-drm-bridge-every-panel-v3-7-83afb4f1a707@bootlin.com>
+References: <20260916-drm-bridge-every-panel-v3-0-83afb4f1a707@bootlin.com> <20260916-drm-bridge-every-panel-v3-8-83afb4f1a707@bootlin.com>
+In-Reply-To: <20260916-drm-bridge-every-panel-v3-8-83afb4f1a707@bootlin.com>
 From: Linus Walleij <linusw@kernel.org>
-Date: Thu, 1 Oct 2026 08:59:09 +0200
-X-Gmail-Original-Message-ID: <CAD++jLkhYNZ4R4Z60zTzNoZwCtk4rcL-pCbgdHpNEzV-4oO_Wg@mail.gmail.com>
-X-Gm-Features: AclHuK8feDgrhg1tWHz9y2oJ4IDmaC5Th2MaGXRPg_l1XDpQ6IeWaj3r9RadEo0
-Message-ID: <CAD++jLkhYNZ4R4Z60zTzNoZwCtk4rcL-pCbgdHpNEzV-4oO_Wg@mail.gmail.com>
-Subject: Re: [PATCH v3 07/19] drm/panel: deprecate panel-bridge APIs
+Date: Thu, 1 Oct 2026 08:59:25 +0200
+X-Gmail-Original-Message-ID: <CAD++jL=G5ObsdvbhHFsEOeGYQFSd8Ggo7jaEupRTEdPmQD1e1A@mail.gmail.com>
+X-Gm-Features: AclHuK_sHPl7UkC73IJwZdQ3ifWpNCzHWYkFbMbP-K9-g_pDmrUnJv1iVcxQNBo
+Message-ID: <CAD++jL=G5ObsdvbhHFsEOeGYQFSd8Ggo7jaEupRTEdPmQD1e1A@mail.gmail.com>
+Subject: Re: [PATCH v3 08/19] drm/todo: add entry for removing the
+ panel_bridge API
 To: Luca Ceresoli <luca.ceresoli@bootlin.com>
 Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
 	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
@@ -100,13 +101,13 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 T24gV2VkLCBTZXAgMTYsIDIwMjYgYXQgMzo0NuKAr1BNIEx1Y2EgQ2VyZXNvbGkgPGx1Y2EuY2Vy
-ZXNvbGlAYm9vdGxpbi5jb20+IHdyb3RlOgoKPiBOb3cgdGhhdCBhIGRybV9icmlkZ2UgaXMgZW1i
-ZWRkZWQgaW50byBldmVyeSBkcm1fcGFuZWwsIHRoZSBwYW5lbF9icmlkZ2UgaXMKPiBub3QgbmVl
-ZGVkIGFueW1vcmUuIEl0cyBBUElzIGFyZSBqdXN0IGFjY2Vzc2luZyB0aGUgZW1iZWRkZWQgZHJt
-X2JyaWRnZQo+IHRyYW5zcGFyZW50bHkuCj4KPiBEZXByZWNhdGUgdGhlbSBhbGwsIGVuY291cmFn
-aW5nIHRvIHVzZSB0aGUgZHJtX2JyaWRnZSBBUEkuCj4KPiBTaWduZWQtb2ZmLWJ5OiBMdWNhIENl
-cmVzb2xpIDxsdWNhLmNlcmVzb2xpQGJvb3RsaW4uY29tPgoKUmV2aWV3ZWQtYnk6IExpbnVzIFdh
-bGxlaWogPGxpbnVzd0BrZXJuZWwub3JnPgoKWW91cnMsCkxpbnVzIFdhbGxlaWoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+ZXNvbGlAYm9vdGxpbi5jb20+IHdyb3RlOgoKPiBOb3cgdGhhdCBhIGRybS1icmlkZ2UgaXMgZW1i
+ZWRkZWQgaW50byBldmVyeSBkcm1fcGFuZWwgZHVyaW5nIHRoZSBwYW5lbAo+IGNyZWF0aW9uLCB0
+aGUgcGFuZWxfYnJpZGdlIGRvZXMgbm90IHJlYWxseSBleGlzdCBhbnltb3JlLiBJdHMgQVBJIGhh
+cyBiZWVuCj4gZGVwcmVjYXRlZCBhbmQga2VwdCB1bnRpbCBkcml2ZXJzIGNvbnZlcnQgdG8gdGhl
+IGJyaWRnZSBBUEkuCj4KPiBTaWduZWQtb2ZmLWJ5OiBMdWNhIENlcmVzb2xpIDxsdWNhLmNlcmVz
+b2xpQGJvb3RsaW4uY29tPgoKUmV2aWV3ZWQtYnk6IExpbnVzIFdhbGxlaWogPGxpbnVzd0BrZXJu
+ZWwub3JnPgoKWW91cnMsCkxpbnVzIFdhbGxlaWoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
