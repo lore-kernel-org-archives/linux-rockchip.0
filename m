@@ -4,101 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EBD0CA5FC4
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2026 09:13:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C138DCA5FDD
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2026 13:09:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FrE6WnAxeMK2fcIqto2gtMXxNLKkJ3gb1lyn4OnG1NQ=; b=T+ciRj62UqUsNa
-	IhoyaaWuGWIQLLB2l8+1JFD1kOpP8XxO50VAg2Luzsxs/LZZmNEFtfbmy7cIKGJhpzmsSH6KCizPW
-	laVL9f20KD854kVX+N4GcVcDTu+zIZa/aojLRB7a117rlZInoarhdpvl0ntcPn7CeulB2TH7ku8+N
-	asB5ZGJMAOoKMULxrjDXcoBOSa7Xl+FbTQIEZoaEFgag5BFirgOuYR1iEoop57dWZXkAvrFmsVVaS
-	PKa2UWiQSqMbzxo54uC0yGlfe+7aRN2Bapz3ZZUr+Sm7WtI0TW3Fo1JUlfC3dDat0emVrvghVt7nE
-	tT5+6Z/UcBwmblUrSQMA==;
+	List-Owner; bh=NCLPV5IVHGR94/OBV/qN2Dow7jNIKSgefbg0uzzMlwk=; b=HHeopkK10DF3gS
+	YHAhK4PqbTZscjHSq9C3Ph78eu8rLsyNr99nsiRpKnXD/fnY5U+WmoFZ2XxYmW+Zt1ntqPozL/Exq
+	pgmkPsKJgN3CSLt205ny2/yXpaKXzN/WqQ+5MyxOB0JfLJKesU57R2NT8t9IGxC+ve400iDQ7XXvy
+	UCyYMdMmK5Qk2BrsSMjXrhBGBDUTS6dFZzpsGhdm6OuLuYu371L+B7i7vfhZRCfskxKoCcobeJudl
+	a7rkkHG6Nu3zJdCM1n0vNJEXPi2PaaXKN1MiF8swbsYVNa21hz2dnxwgaOR2F7DGpeCoQTtZEYnmW
+	3DK0/C9NqLhVNAk8V4IQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCZKH-0000000B6Fe-04AX;
-	Fri, 02 Oct 2026 09:13:09 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xCd0p-0000000BdcE-31Fe;
+	Fri, 02 Oct 2026 13:09:19 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCZKG-0000000B6Ei-0Fng;
-	Fri, 02 Oct 2026 09:13:08 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1CCAC60A6B;
-	Fri,  2 Oct 2026 09:13:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25D1F1F000FF;
-	Fri,  2 Oct 2026 09:13:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790932386;
-	bh=E2MH5ucIaIApIUxucO1uUSHtEgWcgu2UJ4m0lbYAPS4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=h7cQ3wxP/WXnnUgi737EQnvb8mHwlBjSrqGRC25rUT2U+o2GapAWWMwQmfebd2ero
-	 75Rgg8Ka0aM9PZ3M4NoRhFEjTooSgRi5XecELvHhbcNfK1e6dYhgbgrhp8jFiZ2M6v
-	 bTCqnmPZn3dIZos81AX3ELuHFswxGZ+zwD1ixny8EFf/qLGnvQMrpw5klmEYkKO8gc
-	 BtwAq8A/FC6vFNLJnN7cyidMBcz51jc+fkq7nJFX5+lTqqZgfwvZzAmHpBPxkpv6Ch
-	 x19LJ1KsMd1ecksWtSLyfRcYhGpFbf5P9rFswBWW3uMN09znpCcWbguZ1bdTV8Rw6O
-	 tyMEUmJcTrPew==
-Message-ID: <f41a6261-ae04-44cb-b01f-b1da02d9cb80@kernel.org>
-Date: Fri, 2 Oct 2026 11:13:00 +0200
+	id 1xCd0m-0000000BdbG-1cBY;
+	Fri, 02 Oct 2026 13:09:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=KZjE+aJ4X+OqBxNEC4kYnyi3sOPxXey2hjWtTIRy3TE=; b=RpXcwATKgD3GA4eeikau6CnLBO
+	LdPpjqfIww+7LsNxanj8VUZB2FMcGjB4rARfcJQkjXWsPTEiSIOrm/3YOZ3+Qh6RsK9xIIpcQSt/+
+	H14XV958hnXmFOXE8863UqZRTEVM90dgQKX0D86ZcgZN1eL19Ik7Y6VxRMnw8qdf/2mUnz4vfo+zZ
+	uQNlGT+vrbDkruJaH1x7hs/FBHmVGcz+V6GBFbEpDAQCcSBeKGmL2/GtpPExqLkslJanwA3FaZ2zl
+	5RcHS9axOUEI9SdfAx/UEwaldv6TgsNpcR3/3JX2dOCX6trTZqpdkYqeIvQrADIKv4j3OOufIY6Hg
+	SrGJwHlw==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Russell King <linux@armlinux.org.uk>, Johan Jonker <jbx6244@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ =?UTF-8?B?SMO8c2V5aW4=?= BIYIK <boogiepop@gmx.com>
+Subject: Re: [PATCH] ARM: rockchip: smp: enable CPU1 for rk3066a
+Date: Fri, 02 Oct 2026 15:09:10 +0200
+Message-ID: <7009090.MHq7AAxBmi@diego>
+In-Reply-To: <545b78a0-159b-4ebd-9e2a-47d519c98bf9@gmail.com>
+References: <20260829-cpu-v1-1-33dca576db92@gmail.com> <2667576.VLH7GnMWUR@diego>
+ <545b78a0-159b-4ebd-9e2a-47d519c98bf9@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 0/2] arm64: dts: rockchip: add ALIENTEK QuarkPi-CA2
-To: BG9OXA <bg9oxa@163.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Andrew Lunn <andrew@lunn.ch>
-References: <20261002-b4-quarkpi-ca2-v6-0-9fc33f27ebb9@163.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <20261002-b4-quarkpi-ca2-v6-0-9fc33f27ebb9@163.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261002_060916_642945_8C148D9C 
+X-CRM114-Status: GOOD (  17.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,168 +61,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 02/10/2026 05:52, BG9OXA wrote:
-> Hi all,
-> 
-> This short series adds support for the ALIENTEK QuarkPi-CA2, an RK3588S
-> based single board computer.
-> 
-> Board summary:
->  - Rockchip RK3588S (4x Cortex-A76 + 4x Cortex-A55), LPDDR4x
->  - eMMC, microSD slot, M.2 socket (PCIe 2.0 x1)
->  - Gigabit Ethernet, USB 3.0 Type-A, USB 2.0 Type-A ports and a USB-C
->    port (USB 2.0/3.0 plus DisplayPort altmode, two DP lanes)
->  - HDMI output, three MIPI CSI and two MIPI DSI connectors
->  - ES8388 analog codec with 3.5 mm jack, HUSB311 USB-C PD controller
->  - 40-pin header, RK806 PMIC, IR receiver
->  - No SPI-NOR; the vendor bootloader reads extlinux.conf from the SD/eMMC
->    boot partition
-> 
-> Patch 1 documents the board in the Rockchip platform bindings, patch 2
-> adds the device tree itself (plus its Makefile entry).  The "alientek"
-> vendor prefix is already present in vendor-prefixes.yaml, so no vendor
-> prefix change is needed.
-> 
-> Tested on hardware: boot from SD and eMMC, gigabit Ethernet, the USB 2.0
-> ports, the USB 3.0 Type-A port (UAS storage device, 5000 Mbps link,
-> 309 MB/s), USB-C DisplayPort altmode, HDMI video and audio, ES8388 analog
-> playback over the 3.5 mm jack (checked with music), the ADC keys, the IR
-> receiver, the PWM fan and ramoops.  The M.2 socket is described following
-> the vendor design; no suitable device was available here to exercise that
-> link.  dtbs_check is clean for both patches.
-> 
-> Notes worth the reviewer's attention:
-> 
->  * The codec is clocked through I2S0_8CH_MCLKOUT_TO_IO rather than the
->    internal I2S0_8CH_MCLKOUT mux that the other boards reference.  On
->    RK3588 the MCLK-to-IO routing is a gate in SYS_GRF SOC_CON6 which the
->    bootloader leaves closed, so nothing drives MCLK out to the codec;
->    pointing "clocks" at the _TO_IO clock makes the codec driver open that
->    gate at probe, while "assigned-clocks" stays on the internal mux to
->    keep the 12.288 MHz rate.  Verified on hardware: i2s0_8ch_mclkout_to_io
->    is enabled with the codec (1-0011) as its consumer, and playback works.
-> 
->  * The codec compatible list is "everest,es8388", "everest,es8328", as
->    documented in everest,es8328.yaml and as used by the other boards with
->    this part.  The standalone ES8323 driver cannot instantiate a card on
->    this board at all, which is how the fitted part was confirmed.
-> 
->  * Analog capture from the 3.5 mm TRRS jack (headset microphone) does not
->    work yet: the capture stream returns a constant idle pattern (0xFFFF)
->    although the analog bypass path works, and the DAPM routes and the ALSA
->    controls look correct.  This looks like the same ES8328 capture problem
->    that has been reported for other boards, so I kept it out of this
->    series.
-> 
->  * The USB 3.0 Type-A port is wired to usb_host2_xhci through combphy2_psu;
->    both are enabled here, as in the vendor BSP.  combphy2_psu is free on
->    this board because the M.2 socket uses pcie2x1l2 (combphy0_ps).
-> 
->  * The 3.5 mm jack is fed from the codec outputs (LOUT1/ROUT1) and from the
->    headphone amplifier outputs, as in the vendor tree.  Describing only the
->    amplifier path was tried as well, and on this board that gives no output
->    at the jack at all (verified on hardware with a test tone and with music
->    playback), so both routes are kept.
-> 
->  * The board has three MIPI CSI and two MIPI DSI connectors, but no camera
->    or panel is described here: those are plug-in modules.  Enabling the
->    CSI-2 receiver without a sensor attached makes the driver fail to find
->    its endpoint at probe (verified on hardware), so, as in the vendor
->    tree, camera and panel descriptions belong in overlays.
-> 
->  * GbE: phy-mode is "rgmii-id".  As you explained, phy-mode describes the
->    PCB, and this PCB does not add RX/TX delays, so the delays have to come
->    from the PHY.  I went through where each delay is actually applied:
-> 
->      - MAC side: none.  dwmac-rk takes the delay values from the DT only
->        for the plain "rgmii", "rgmii-rxid" and "rgmii-txid" modes; for
->        PHY_INTERFACE_MODE_RGMII_ID it calls set_to_rgmii(priv, 0, 0), so
->        the RGMII delay registers are written with zero.  (The driver still
->        logs "set tx_delay to 0x30"/"set rx_delay to 0x10" when the
->        properties are absent, but those values are only the parse-time
->        defaults and do not reach the GRF in this mode.)
-> 
->      - PHY side: the delays.  The Motorcomm driver programs its internal
->        RGMII delay for RGMII_ID, using 1950 ps for both directions when
->        rx-internal-delay-ps / tx-internal-delay-ps are not specified,
->        which is its documented default for both directions.
-> 
->     So with "rgmii-id" nothing is added twice.  Measured on hardware with
->     iperf3 at gigabit line rate: in one 900 second run, 96.8 GB transferred
->     at 924 Mbit/s with zero retransmissions; in a second run on the final
->     revision of the series, 300 seconds in each direction, 925 Mbit/s
->     transmit and 937 Mbit/s receive, with 114 and 23 retransmits out of
->     roughly 24 million segments each way (a few ppm).  rx_crc_errors and
->     the other error counters stay at zero in both runs.
-> 
-> This is my first patch to the Rockchip platform.  I am a Chinese amateur
-> electronics hobbyist (amateur radio callsign BG9OXA) working on this board
-> in my spare time, so please point out anything that does not follow the
-> expected style.
-> 
-> Changes in v6:
-> - My oversight, sorry for the noise: when I switched phy-mode to "rgmii-id"
->   in v5 I forgot to update the commit message of patch 2/2 at the same time,
->   so the message still described the v3/v4 approach (delays applied on the
->   MAC side) while the code had moved to the PHY-side delays.  The message now
->   describes what the code does: the PHY adds the delays internally and the
->   MAC adds none, so nothing is applied twice.  The device tree is not touched
->   by this change; the compiled .dtb is byte-for-byte identical to the one in
->   v5 (verified).
-> - Keep the headphone routing as in v5.  On this board the 3.5 mm jack needs
->   the direct codec output routes: describing only the amplifier path gives
->   no output at the jack, which I verified on hardware with a test tone and
->   with music playback.  So the parallel routes are intentional here and
->   were not changed.
-> - Link to v5: https://lists.infradead.org/pipermail/linux-rockchip/2026-October/077620.html
-> 
-> Changes in v5:
-> - Use phy-mode = "rgmii-id" and let the PHY add the RGMII delays, instead of
->   "rgmii" with the delay applied on the MAC side, as pointed out by Andrew
->   Lunn.  The MAC adds no delay in this mode, so nothing is applied twice;
->   see the GbE note above for the details and the measurements.
-> - Move the Makefile entry so that the list stays in alphabetical order.
-> - Rename the headphone amplifier node to the generic name "audio-amplifier";
->   the labels are unchanged, so no reference is affected.  The audio routing
->   itself is unchanged, see the note above.
-> - Set the Type-C connector data-role to "host".  The XHCI controller is
->   host-only on this board (dr_mode = "host" and no usb-role-switch), and
->   the vendor DT lists "dual" only because the vendor configures that
->   controller as OTG.  The power role stays "dual", as the board can be
->   powered over Type-C.
-> - Link to v4: https://lists.infradead.org/pipermail/linux-rockchip/2026-October/077616.html
-> 
-> Changes in v4:
-> - Add the missing blank line between the include block and the root node.
-> - Fix the node indentation in a few places.  That cleanup is whitespace only;
->   the compiled .dtb is unchanged by it (verified byte-for-byte).
-> - Rename the Type-C controller node to the generic name "typec-port", as the
->   other boards using this part do, and drop its redundant status property.
-> - Give the fixed regulator nodes the "regulator-" name prefix, as the other
->   boards do; the labels are unchanged, so no reference is affected.
-> - Route the Type-C SuperSpeed lanes through the USBDP PHY, as the other
->   RK3588 boards do, so that the PHY does the orientation muxing.
-> - Feed the headphone amplifier from one codec output pair only; that is what
->   the other ES8388 boards do.
-> - Cc the people and lists reported by scripts/get_maintainer.pl.
-> - Link to v3: https://lists.infradead.org/pipermail/linux-rockchip/2026-October/077611.html
-> 
-
-
-This looks a lot like LLM generated stuff. Don't. The easiest way to
-annoy maintainers. We are not going to read long LLM-generated
-paragraphs for trivial stuff, because trivial stuff should be explained
-with one sentence.
-
-Best regards,
-Krzysztof
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSm9oYW4sCgpBbSBTb25udGFnLCAzMC4gQXVndXN0IDIwMjYsIDEzOjE3OjE1IE1pdHRlbGV1
+cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgSm9oYW4gSm9ua2VyOgo+IE9uIDgvMjkvMjYg
+MjM6NTksIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+ID4gQW0gU2Ftc3RhZywgMjkuIEF1Z3VzdCAy
+MDI2LCAwMTo0MDo1NyBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIEpvaGFu
+IEpvbmtlciB2aWEgQjQgUmVsYXk6Cj4gPj4gRnJvbTogSMO8c2V5aW4gQklZSUsgPGJvb2dpZXBv
+cEBnbXguY29tPgo+ID4+Cj4gPj4gUkszMDY2YSBDUFUxIGZhaWxzIHRvIGNvbWUgb25saW5lLiBG
+aXggYnkgdXNpbmcKPiA+PiBhIHNpbWlsYXIgbWFpbGJveCBjb25zdHJ1Y3Rpb24gYXMgaW4gdXNl
+IHdpdGgKPiA+PiBvdGhlciBSb2NrY2hpcCBTb0NzLgo+ID4gCj4gCj4gPiAiUkszMDY2IENQVTEg
+ZmFpbHMgdG8gY29tZSBvbmxpbmUgd2l0aCByZWNlbnQga2VybmVscy4uLi5bcmVzdF0iIG9yIHNv
+Cj4gCj4gTm90IHJlY2VudC4uCj4gCj4gPiBhbmQgYWxzbyBwbGVhc2UgdXNlIHRoZSBsaW5lIGxl
+bmd0aCB1cCBhIHJlc29uYWJsZSBsZW5ndGggbGlrZSBhcm91bmQgNzA+IHRvIDc1IGNoYXJhY3Rl
+cnMuCj4gPiAKPiA+IEFsc28sIGlzIGl0IGtub3duLCB3aHkgdGhhdCBoYXBwZW5zIC0gaS5lLiB3
+aGF0IGNoYW5nZWQ/Cj4gCj4gCj4gV2hhdCBsb2FkZXIgY2hhaW4gZGlkIHlvdSB1c2UgdGhlbj8K
+PiAKPiBUaGlzIGd1ZXNzaW5nISEhOgo+IEZyb20gVFJNOiBSSyBQWDIvcmszMDY2YSBzdXBwb3J0
+cyB0byBib290IGZyb20gaW50ZXJuYWwgYm9vdHJvbSBvciBlbWJlZGRlZCBTUkFNCj4gQ3VycmVu
+dGx5IHJrMzA2NiBVLWJvb3QgZG9lc24ndCByZW1hcCwgc28gd2UgZW5kIHVwIGluIFJPTSBjb2Rl
+IHdhaXRpbmcgZm9yIGRlYWRiZWFmOgo+IAo+IHZvaWQgbWFpbih2b2lkKQo+IHsKPiAgICAgICAg
+IGRlYWRiZWFmID0gMTsKPiAgICAgICAgIGlmICggIShfX21yYygxNSwgMCwgMCwgMCwgNSkgJiAw
+eEYpICkKPiAgICAgICAgIHsKPiAgICAgICAgICAgICAgICAgX19zZXRfQ1BTUigweEQydSk7Cj4g
+ICAgICAgICAgICAgICAgIF9fc2V0X0NQU1IoMHhEM3UpOwo+ICAgICAgICAgICAgICAgICBERUxB
+WV93cml0ZSgyNCk7Cj4gICAgICAgICAgICAgICAgIENSVV9DTEtTRUwoKTsKPiAgICAgICAgICAg
+ICAgICAgREVMQVkoMTAwMDApOwo+ICAgICAgICAgICAgICAgICBNQUlOX0xPT1AxeDQoKTsKPiAg
+ICAgICAgICAgICAgICAgRE5MX0xPT1AoKTsKPiAgICAgICAgICAgICAgICAgd2hpbGUgKCAxICkK
+PiAgICAgICAgICAgICAgICAgICAgICAgICA7Cj4gICAgICAgICB9Cj4gICAgICAgICBfX3NldF9D
+UFNSKDB4RDN1KTsKPiAgICAgICAgIHdoaWxlICggZGVhZGJlYWYgIT0gMHhERUFEQkVBRiApCj4g
+ICAgICAgICAgICAgICAgIF9fd2ZlKCk7Cj4gICAgICAgICBzZWNvbmRhcnlfc3RhcnR1cCgpOwo+
+IH0KPiAKPiBDYW4ndCBwdXQgYSBwcmVjaXNlIHRpbWUgdGFnIG9uIGl0IHNpbmNlIHdoZW4uCj4g
+TGV0IHVzIGxlYWQgYnkgd2hhdCBjdXJyZW50IGF2YWlsYWJsZSBvcGVuIHNvdXJjZSBsb2FkZXJz
+IHNvbHV0aW9ucyBjYW4gZG8uCj4gUGxlYXNlIGFkdmlzZSBoZXJlLgo+IEhvdyBmYXIgZG9lcyBh
+IGZpeGVzIHRhZyBoYXZlIHRvIGdvIGJhY2s/CgpTbyAuLi4gZm91bmQgdGltZSB0byB0ZXN0IGEg
+Yml0OgotIEJvdGggbXkgTWFyc2JvYXJkIChSSzMwNjYpIGFuZCBSYWR4YSBSb2NrIChSSzMxODgp
+IGN1cnJlbnRseSBoYXZlIGEKICB1LWJvb3QgdGhhdCBpcyByZWFsbHkgb2xkIC4uLiAyMDE3LjA5
+IC8gMjAxNy4xMSB0byBiZSBleGFjdC4KLSBCb3RoIGJvYXJkcyBjYW4gYnJpbmcgdXAgdGhlIG90
+aGVyIGNvcmVzIGp1c3QgZmluZQotIEl0IHNlZW1zIHRoZXJlIHRoZSByZW1hcCB3YXMgc3RpbGwg
+ZW5hYmxlZDoKICBodHRwczovL2dpdC51LWJvb3QtcHJvamVjdC5vcmcvdS1ib290L3UtYm9vdC8t
+L2Jsb2IvdjIwMTcuMTEvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMxODgtYm9hcmQuYz9yZWZf
+dHlwZT10YWdzI0wzMQotIFlvdSBjYW5ub3QgcmVxdWlyZSBwZW9wbGUgdG8gdXBkYXRlIHRoZWly
+IGJvb3Rsb2FkZXIsIG9ubHkgd29yayBhcm91bmQKICBvbGQgdmVyc2lvbnMuCgpSaWdodCBub3cg
+eW91IGVuZCB1cCB3aXRoIGEgbWVzaHVwIG9mIGRpZmZlcmVudCBwYXJ0cy4KSW4gdGhlIG9sZCBj
+b2RlcGF0aCwgc3JhbV9hZGRyKzQgY29udGFpbnMgdGhlIGtlcm5lbC1zdGFydC1hZGRyZXNzLCB3
+aGljaApub3cgZ2V0cyBvdmVyd3JpdHRlbiwgYnJlYWtpbmcgb2xkZXIgbG9hZGVycy4KClNvIHRo
+ZSB3YXkgZm9yd2FyZCB3b3VsZCBiZToKLSBhZGQgY29kZSB0aGF0IGRpc2FibGVzIHJlbWFwIG9u
+IGJvdGggcmszMDY2K3JrMzE4OCwgaG9wZWZ1bGx5IHJlc3VsdGluZwogIGluIHRoZSBzYW1lIGJl
+aGF2aW91ciBpbmRlcGVudCBvZiB0aGUgbG9hZGVyIHVzZWQKLSBjaGFuZ2UgdG8gdXNlIHRoZSBi
+b290cm9tIHBhdGggZm9yIGFsbCBzb2NzIGluIHJvY2tjaGlwX2Jvb3Rfc2Vjb25kYXJ5KCkKICBz
+byBqdXN0IHJlbW92ZSB0aGUgY29uZGl0aW9uYWwgYXJvdW5kIGl0Ci0gZHJvcCB0aGUgcm9ja2No
+aXBfc21wX3ByZXBhcmVfc3JhbSgpIHBhcnQsIGFzIGl0J3Mgbm90IG5lZWRlZCBhbnltb3JlCgoK
+SGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
