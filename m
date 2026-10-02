@@ -4,90 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2040FCA5FCE
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2026 02:58:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA50BCA5FD4
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2026 03:52:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=kBdHsch1yZurojdsSsL0d2Ny+rYg0e7KNa/WX2Ubqqo=; b=ZkgDLaRu6OZC11
-	Oy/ZnAm657oHRrK458zXEF6xH2aG6FOGlDJa/0Gi3GuMb+3ru2o7v1hKkQC13FAXq/YAx9UXyxpOJ
-	Ihp6talIKI/5lga+aSD3aHe4slKFkZDqH538OXpqJgEaYxpvNdM6/VaswnmOZg/EHEKcnE2rbhOez
-	sJ/BslmHH9+dgiqa/PGQiQmLn7sBv3bgr8X/scniFdiS4HSO63M7KxSpljU17SA3oHYdL20eI6/J2
-	tXeRe83+8YZ0DMt/CQo/6RhiJMAedMF6M190zYDT+6cchi7OMoq6063wSLN7UhBB6VRHAF+hsYFZY
-	E79upPUoTFpKUDVFytvA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qfSN0EXSVrkfX/Tk6aRn+f/nLH9zECEJYZrWlz4atVE=; b=bmzTXsnBEVJqBk
+	Gyv7LU8YiBohfSyegP3Q8oRlZcO3bBddgrgfmLBjOYFY7qF/lQdN2Yd5Zlqpaiz2mq1qHQlpixU0Z
+	7gl9QkYKdkCIrodkY9+kHbDvx3815NbX/z5Dfeh7cR654dTdG82N7g04lR1ZfPjQi2B0paEfiW/de
+	topNCPCNlj2bpNPHt6m74qXmxSK1xMFNtakH96C0iN4B8xJ8uiRP9f06QWE1b9nwd8JuJ+ssTeka2
+	RkxAEIyY7VExBtxwOl9c+ztC4b8NoD2ROZPj9uMLPePpF1NtAKaRY/X8Xwx+IDrbKxUAjmtGcfa5D
+	XK053wdASQvGxo9LVMGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCTTA-0000000AWxD-243g;
-	Fri, 02 Oct 2026 02:57:56 +0000
-Received: from mail-qt1-x863.google.com ([2607:f8b0:4864:20::863])
+	id 1xCUJx-0000000AZWf-2ya5;
+	Fri, 02 Oct 2026 03:52:29 +0000
+Received: from m16.mail.163.com ([220.197.31.5])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCTT7-0000000AWwP-3tZ2
-	for linux-rockchip@lists.infradead.org;
-	Fri, 02 Oct 2026 02:57:55 +0000
-Received: by mail-qt1-x863.google.com with SMTP id d75a77b69052e-534e6545939so20491cf.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 01 Oct 2026 19:57:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ausil.us; s=google; t=1790909872; x=1791514672; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=/8JFUeE5MEiIb7ITcrTZk76VTtK8zyPJORxw7JyUGnA=;
-        b=M6DLs/y5snG6C+KZzbedIHzRjfwyN79zkw4oK3C4FNoGtDZEO1j5/aht9DZlO+ag0m
-         LcD21bPyDQn49/p2wB2avxiQKvdy011B/nenUj5/P1wRFL8vmiH3EDQGPe+1CVVduxVu
-         UcbdTLhdW5h7a+gpjjqr5a2FGYrOpfsiuJVXm7peRBjDyNYbLRUFz/fiHFnXucQryBN+
-         G18ou4nyxPRB3dVwhZ7K8Mqs9NJVFXSI644jfvqy515l0uON7/lkuoxqiYxrsphH7dnr
-         uZ7MCudzU86mtCZejIvfXJKkAbY7EisQtG3tPKt3D91vCYz3XrLTL4kDrAjZBiBzJOrH
-         Jyjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790909872; x=1791514672;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=/8JFUeE5MEiIb7ITcrTZk76VTtK8zyPJORxw7JyUGnA=;
-        b=uS5ew/C9VfVX7pMG3WWuG7FEpVoWK3kcNTNl9gs3l8uLVkWl2o4AzmkNXbRHsD/yls
-         UwDRwORO2d3XLu9/D5gqFC03rz/wf5woUg9dNBEzGGMCWVXNn6a5YoNpSwu2xrOoMvBx
-         1/6X1EHNzXGIO8CkoQstlXMesRTtLOAHptPnLETNiu/T8Gqazo2NYKNufgxrNjoCC21P
-         XypHaJotJMkZ0mmBLv7/Sw3tfmXeQcEqBhcZso4luCQPNyqEkMZ8LcGLUD8mKB68Vu6z
-         X5gUTR4KCjdzyyaQsmPYcB9TPYseKR/rT5+xmyrkgwDqR6qkGitWrix1+Tuaj6A9kGc0
-         Z2GA==
-X-Forwarded-Encrypted: i=1; AKwUvBzgU+dBod3NXQ6GAB7zedIjhPwcoMfe9hQSLYEEeY4o/Lks67fOibdLjSuHSUxsaq9jwOreYGGgs/LSrCGinw==@lists.infradead.org
-X-Gm-Message-State: AFuF++k7nhrS5A3dHWwnL7sz2cy/bMwtWV7PqWnNYyugwLc6FadNUs4h
-	HVKcSZHN7rcRpTDqFknXdONxjYliIby+EyxSMp+EtaBB/lrB/Cpmzqndc6hMfGQqXrQXIAFWEW/
-	a9Ftyti8fKfFyBIGgHyECfJTakkQhPGABsWWO
-X-Gm-Gg: AYBFou3ORn7z+Oq3WCD/sD6AkYCPoIg2SCB2v2kwbns038WttRpd/MtC8YSG3Zv+jya
-	Fs9+ok3GCHhL4tBTzCDxAWYdrhgjzskKPTcju6YG1u55qqPzGKd0sQcWLMgN1glVYJxeJSRVBrQ
-	+Qc7GiJKqDw4WG3JhgzPiYqbU7P6Vm71a4iA2vvogIUcNQC/4Fog/VbYWUW0aTeixmM8LAaLyTS
-	S9AJTT8TKwyeTYtsRcS0dA1gJNzEnRzjSuz6U5Q+5I6M9rXl76NmqMPc7D0GQ98HQkFjMX2u+nt
-	vI86Raexh3OLbv/24Lgr9qYcCH0IjaLIM7QV2kqojG9vBK/99Ndhwrmv/9TIp0mYpPG1SxISlPl
-	zqea6kqDfZMDio+lvSgsu4yc=
-X-Received: by 2002:a05:620a:d8b:b0:93c:c987:7f70 with SMTP id af79cd13be357-93ce7c0dd2emr226556685a.21.1790909871950;
-        Thu, 01 Oct 2026 19:57:51 -0700 (PDT)
-Received: from ryac.ausil.us (207-179-239-100.mtco.net. [207.179.239.100])
-        by smtp-relay.gmail.com with ESMTPS id af79cd13be357-93cca1ea26fsm54885385a.3.2026.10.01.19.57.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Oct 2026 19:57:51 -0700 (PDT)
-X-Relaying-Domain: ausil.us
-From: Dennis Gilmore <dennis@ausil.us>
-To: linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org
-Cc: Alexey Charkov <alchark@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Dennis Gilmore <dennis@ausil.us>
-Subject: [PATCH] arm64: dts: rockchip: Use GPIO function for PCIe reset on Orange Pi 5 Pro
-Date: Thu,  1 Oct 2026 21:57:46 -0500
-Message-ID: <20261002025746.3284691-1-dennis@ausil.us>
-X-Mailer: git-send-email 2.55.0
+	id 1xCUJu-0000000AZVe-3r2c;
+	Fri, 02 Oct 2026 03:52:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Date:Subject:MIME-Version:Content-Type:
+	Message-Id:To; bh=HG7hLYwo6VKRj7UF0IiJn2CjzUewNY8+lmn/zodhbzY=;
+	b=Iz79VAHuPviVItrkWPC5D1s5A7KO4pL0saUgClXIBwNPQaSTWi/GcDKqA+IMpp
+	U74MTtB8sYm4HVxlophdrJrhQ6HMNte+fbOQlb4ZytZ0eXik0fuBRC2EvwafafwG
+	ma47g+vfOLZVPFTXxufEYs02d24e85FQGo7e30LQ3iJ6Q=
+From: BG9OXA <bg9oxa@163.com>
+Date: Fri, 02 Oct 2026 11:52:12 +0800
+Subject: [PATCH v6 1/2] dt-bindings: arm: rockchip: add ALIENTEK
+ QuarkPi-CA2
 MIME-Version: 1.0
+Message-Id: <20261002-b4-quarkpi-ca2-v6-1-9fc33f27ebb9@163.com>
+References: <20261002-b4-quarkpi-ca2-v6-0-9fc33f27ebb9@163.com>
+In-Reply-To: <20261002-b4-quarkpi-ca2-v6-0-9fc33f27ebb9@163.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Andrew Lunn <andrew@lunn.ch>, BG9OXA <bg9oxa@163.com>
+X-Mailer: b4 0.16.0
+X-CM-TRANSID: QCgvCgD3f4BsKr9qRjXKCQ--.24074S3
+X-Coremail-Antispam: 1Uf129KBjvdXoW7XryfJrWxWFWktFyxAF1DKFg_yoWfurbEka
+	4xuF15uFWrXFyFgw45Aan7GFyjqw47Krn7A3WUAF18A34vkws3KFZ5t342kFyxur43urn3
+	CFs5JryxXFnxGjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sR_YiiDUUUUU==
+X-CM-SenderInfo: lejz05rd6rljoofrz/xtbC3g8wnWq-Km8NywAA3q
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261001_195754_015484_061C6FF0 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20261001_205227_306106_F1912B7D 
+X-CRM114-Status: UNSURE (   6.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,66 +72,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The PERST# pins of pcie2x1l1 and pcie2x1l2 are used as reset-gpios,
-but the default pinctrl state muxes them to the controllers' dedicated
-PERST# function instead of GPIO.
+Document the ALIENTEK QuarkPi-CA2, an RK3588S based single board computer.
 
-Linux happens to work because the pin is switched to GPIO function
-when it is requested as a GPIO, but the devicetree should describe the
-pin function the board actually uses. Bootloaders such as U-Boot apply
-the pinctrl state as described and do not change the function when the
-GPIO is requested, and probing pcie2x1l2 then hangs.
-
-Add GPIO pinctrl nodes for both reset pins and use them in place of
-the PERST# function, like other RK3588 boards do.
-
-Fixes: f47af8ebbe53 ("arm64: dts: rockchip: Add Orange Pi 5 Pro board support")
-Signed-off-by: Dennis Gilmore <dennis@ausil.us>
+Signed-off-by: BG9OXA <bg9oxa@163.com>
 ---
- .../boot/dts/rockchip/rk3588s-orangepi-5-pro.dts   | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-pro.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-pro.dts
-index c9679bac1db7..783675337ab9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-pro.dts
-@@ -188,7 +188,7 @@ package_fan1: package-fan1 {
- /* NVMe */
- &pcie2x1l1 {
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie30x1m1_1_perstn>, <&pcie30x1m1_1_clkreqn>,
-+	pinctrl-0 = <&pcie2_1_rst>, <&pcie30x1m1_1_clkreqn>,
- 		    <&pcie30x1m1_1_waken>;
- 	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
- 	supports-clkreq;
-@@ -199,7 +199,7 @@ &pcie2x1l1 {
- /* NIC */
- &pcie2x1l2 {
- 	pinctrl-names = "default";
--	pinctrl-0 = <&pcie20x1m0_perstn>, <&pcie20x1m0_clkreqn>,
-+	pinctrl-0 = <&pcie2_2_rst>, <&pcie20x1m0_clkreqn>,
- 		    <&pcie20x1m0_waken>;
- 	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc3v3_eth>;
-@@ -223,6 +223,16 @@ ethernet_en: ethernet-en {
- 		};
- 	};
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index a799bb843..a3191bb90 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -182,6 +182,11 @@ properties:
+           - const: alientek,clrv1126f
+           - const: rockchip,rv1126
  
-+	pcie {
-+		pcie2_1_rst: pcie2-1-rst {
-+			rockchip,pins = <4 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
++      - description: Alientek QuarkPi-CA2 board
++        items:
++          - const: alientek,quarkpi-ca2
++          - const: rockchip,rk3588s
 +
-+		pcie2_2_rst: pcie2-2-rst {
-+			rockchip,pins = <3 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	usb {
- 		vcc5v0_otg_en: vcc5v0-otg-en {
- 			rockchip,pins = <0 RK_PC4 RK_FUNC_GPIO &pcfg_pull_down>;
+       - description: Edgeble Neural Compute Module 2(Neu2) SoM based boards
+         items:
+           - const: edgeble,neural-compute-module-2-io   # Edgeble Neural Compute Module 2 IO Board
+
 -- 
-2.55.0
+2.47.3
 
 
 _______________________________________________
