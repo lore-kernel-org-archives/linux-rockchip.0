@@ -4,57 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 824DACA5FF1
-	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Oct 2026 15:25:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AE4ECA5FEC
+	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Oct 2026 15:25:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G0R1OqfNXbJxbIY9Qb+K0eRfch5ecYTwJpVvEy4om4M=; b=hZc13rFEpJbS0k
-	xZGcGN1yd7Bjc4P49v6OjBX80LSPqFaqjSAAI2NRwFE12bA1MkZaYr3i3QdiIiB4EP5ZTk0gPAI/U
-	DdbJpm8mGKBjDJiC0e/rs9ncyDFESaJA4GRmy7cyrxIOEKh2FUaiFLKZpP6uTGWfFbMOqAAb9Wsrx
-	8wMzPdvJCZWkfeDS5RbH59Lptv9U1iuDiDbW2mUNG31o7O1lPQcON9Kz1vhzmjtnwc4UpqLWGZXBe
-	H1sZjE1i4v6D5IjX73DwwI/u/7w4rh8zlnT38Hj3ERebBjeU5sx0taHVsakc3t/iButkxUicQUD5s
-	dzLNVt857l+z0fK6QMrQ==;
+	List-Owner; bh=W3y+UmaA72c2OnBVc6x3SAYZ9aw+br6ofPgrrHp9WGQ=; b=WLgX4Ni3FF+SKV
+	vGoXy4DWJPjqbPsPw1jqRMQQ0drREt0XOm/b1+Os0BfxULtjcn5MtgvSOWy9GrCOaOvNgFTVsX5Ek
+	LFm2hyk09kxbrTIMo/72G4H6N6OK0Fi/5JrIStcL7jNcDfO2WurquxwvrT2TV8pTjwE67NzKUCVgr
+	meYe55tKOZ6DYuLA7+VuKWx1xVx1WG3IizKH3/algn7HKiY+AeZ0f+L7rnEeU5wxdjWXA+/ICJZzm
+	a3mSuc27nOlHpneDqqa6MeylRYmzcwvVbzipRKARQKCy7UvoLR5STGQdnxtUzu2g7XbHFgj+y8A/6
+	9c9vqHSS9t3gB/MC0lVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD1c2-0000000DgXn-0vGJ;
-	Sat, 03 Oct 2026 15:25:22 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xD1c6-0000000Dgan-2ZES;
+	Sat, 03 Oct 2026 15:25:26 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD1c0-0000000DgWY-48nq;
-	Sat, 03 Oct 2026 15:25:21 +0000
+	id 1xD1c2-0000000DgYG-3ow6;
+	Sat, 03 Oct 2026 15:25:22 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 68BFB60DA3;
+	by sea.source.kernel.org (Postfix) with ESMTP id AA22C43DF5;
+	Sat,  3 Oct 2026 15:25:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BED251F0089E;
 	Sat,  3 Oct 2026 15:25:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 042F71F0089C;
-	Sat,  3 Oct 2026 15:25:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791041120;
-	bh=DiX5YW6EBF7WudDBAa3mCh5+8hepxsK5EmgVDcVUaHs=;
+	s=k20260515; t=1791041122;
+	bh=kyYsESqJs1RzwQhHHMRkPTPKvdniJodMlR3dH9oEz/8=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=KxpJPO9Qmv2UgUpdX5duGVS+kcrJcLxiLByfXnXLACZpzcadShH9Ab148O92g8LYx
-	 3n4IWgPohS6M+beqz1UK5gL6Aykjda4JVWuRBu2mIyJ9ytS1ru2a0M5+mTtQTXERv8
-	 rto/2CSxMpZD8UbhRJvRq0yZ/RpjBLcOPpo2hQr0WGHROIpDGCRREEiRVaEr/7q1X/
-	 xYu7XQW3+gxpqgYjlefdOoafEgWwLkMeHZIkVX0xgCyE9dNdvZhNB2Zhx9z3bprTTf
-	 CvtwmoFlkp3jrcXTLJVk+sxgANh1xV803u9i68pbUHOASGA6CYrK2ZtOu9LNN77Sz6
-	 Vh2/3utiS3vmA==
+	b=XJUp2+9Tqlk4TNP3RVNnPIwzWwolmcT3BKGH1Eoy96F2Oe9bNwPFx2R1ST/lXpOma
+	 MR+TEEWlACc43BraA2FSUXEIW/6Px3Uhi129sF2N05SluWKma2Y4SgWN+gpNUCcyVm
+	 oi84C8hiS669+WIDvDKM3u8AJj/boBddD6I5bCkjFkMYVf1/td00zuhycERKL1rDVo
+	 pc6u4gPX2CceGauBDEdIp/PMunjwzSECLED+zFEvTFBTbx2jN9AeJVw28YBMNmxkXr
+	 pb3D3ds3c6Z3wubvJ+H9W8+bsQ6Eaz9NCCOCIY60RDHmRNhTVr9btQUZ8St9cyQHVN
+	 KL6dnZBPXD4gg==
 From: Vinod Koul <vkoul@kernel.org>
 To: Neil Armstrong <neil.armstrong@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Jason Yang <jason98166@gmail.com>
-Cc: Heiko Stuebner <heiko.stuebner@cherry.de>, 
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20260821-dcphy-rpm-v1-v1-1-a7db728b2539@gmail.com>
-References: <20260821-dcphy-rpm-v1-v1-1-a7db728b2539@gmail.com>
-Subject: Re: [PATCH] phy: rockchip-samsung-dcphy: Enable runtime PM at PHY
- core level
-Message-Id: <179104111766.223537.14780886695955286078.b4-ty@kernel.org>
-Date: Sat, 03 Oct 2026 17:25:17 +0200
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org
+In-Reply-To: <cover.1787240165.git.geert+renesas@glider.be>
+References: <cover.1787240165.git.geert+renesas@glider.be>
+Subject: Re: [PATCH 0/2] phy: Make sure clk_init_data is fully initialized
+Message-Id: <179104112038.223537.2313404929289351328.b4-ty@kernel.org>
+Date: Sat, 03 Oct 2026 17:25:20 +0200
 MIME-Version: 1.0
 X-Mailer: b4 0.14.3
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -74,20 +71,24 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 21 Aug 2026 19:44:19 +0800, Jason Yang wrote:
-> phy_create() only enables runtime PM on the new PHY device if the parent
-> already has it enabled, and this driver enables it afterwards. The PHY
-> device therefore never gets runtime PM, and phy_pm_runtime_get_sync()
-> returns -ENOTSUPP for every phy_init() and phy_power_on(). The block is
-> still resumed today, but only through the supplier link fw_devlink builds
-> from the phys phandle, which fw_devlink=off and =permissive do not.
+On Fri, 21 Aug 2026 12:08:38 +0200, Geert Uytterhoeven wrote:
+> 	Hi all,
+> 
+> The clk_init_data structure contains several mutually-exclusive members
+> for different methods to specify the possible parents of a clock,
+> prompting drivers to initialize only the members they need.  However,
+> not initializing all members may cause subtle issues, which are only
+> exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
+> enabled.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] phy: rockchip-samsung-dcphy: Enable runtime PM at PHY core level
-      commit: 261e84f9278f4373970471ad71479df20d82ed4c
+[1/2] phy: freescale: fsl-samsung-hdmi: Make sure clk_init_data is fully initialized
+      commit: fdc340bfc7ab60c4cbdb198c9972114b51d7caa3
+[2/2] phy: rockchip: Make sure clk_init_data is fully initialized
+      commit: 91967098fd985237ba0deff97809ab52d3e51fba
 
 Best regards,
 -- 
