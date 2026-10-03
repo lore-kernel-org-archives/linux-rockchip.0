@@ -4,65 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD25CA5FDD
-	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Oct 2026 21:33:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83C0BCA5FE4
+	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Oct 2026 22:36:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kcpWfoaO/GmTEODVKNanLA/p2UicR/QRQJ9FabpEBRk=; b=z9JEffucj9om6C
-	61L6X5gcpXffsAjknf1wC6TqgMpoWmO8Ss5eSI0sB8tbiHb+ZTXIHXAu6ZE2OMoVFiTdFBFCwav4y
-	2yzRPQItGh5lSLpDxZIU0hTVPPXdmxLj4ZTxGKn5kynSkkcm4lE5nywbcbOjkmQvSujrkwtwRXsyy
-	r2jU8Uy41W1gN1Plk/HaTdjUH1vbjTG+na1WaLMPoj/JM/4x5XGdwQZ37c/iryiAW77/VcThUy5BN
-	qFj/BAJzAUKK/+iGhPQaTXYicYrRfr+9qICZSEmd1Gj7eseWnQUQQC+LrqmyD0Vold6tXAH8l6Y8d
-	sFNj4v1h4eS62nWj+hNg==;
+	List-Owner; bh=ts01Q+vTbXH80xoxg/lQq90wAwhHE/hhXzsVB5aC+Xs=; b=0W9HBG5zNwoq6g
+	e7CsxWPP+8r2GsXOewHQKChyfWcifv7MK27KuJz62tyyKJnhEjYeBbiTbeUM3aOn1gBQfxpBLupXs
+	IZUEw8rMTcHQ/r/Ilq/TS6vq4/LvBcVLjgJhTk/pE/9otVIiIHXgA6Z08r5EMoO8bD+Rf7gLOK1N5
+	sFfKvfm83Hr+jiVDb6BiJnKXqc+oqr+MhWfDMXaJd+1rvc3fJGSB3sOQxSD2vSM6NIUPHd9ztuWl+
+	mitBLZ97ybULuLYJ+iDs3JxLP1ihAG7LrniLyiclIzCGpAvBIk+yg8cvOplojEsxRsLZ6L3jhRuJw
+	sgzE+LPULBBIbTWAYv1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD7Mg-0000000E54E-0xcK;
-	Sat, 03 Oct 2026 21:33:54 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xD8LH-0000000E7ew-1WoL;
+	Sat, 03 Oct 2026 22:36:31 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD7MY-0000000E51M-22x3;
-	Sat, 03 Oct 2026 21:33:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1791063221;
-	bh=kDXqnGMv+3/dGk6DPxEqeXvBQLgvyQU5ZWM8ZzjXf08=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OpnIRgT17QQtur0E7ZQ1+4nbWFI2gwCemx/0KapAoxCvcfbqCtyXKndD4Y+fQ/EM4
-	 SqhioB0vXIvFRNbrKcA0akg79VEJVi6YYscqU1hSEo3YXe4L/RHhabOeEzRRi7Ln9i
-	 SSh1J8rjqKFZf/dDdmtSXDdNjZE/UwDH0smNer4XqntGgxKFm8IE6xzEgk3EeVzHAh
-	 yZGuZF7ayBD43yRIH2gtEJc9jjtZ9y16CZZR9A04TYETZJCc90911F5G3rAO3U0DN+
-	 Bgfn6E9GoboB1gZGX+Oqt9rLkjryemH9M9FvyJ27hT1DtEIMtNPG7c/uZvjHnqzRMN
-	 +cXR9cJyjrgLA==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0716617E022A;
-	Sat, 03 Oct 2026 23:33:40 +0200 (CEST)
-Message-ID: <3c0dc77b-b692-498e-aed6-aa97d827b2f4@collabora.com>
-Date: Sun, 4 Oct 2026 00:33:40 +0300
+	id 1xD8Kt-0000000E7cP-2rBl;
+	Sat, 03 Oct 2026 22:36:18 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20261003223559euoutp025c12500faec891b33d1895efec774da0~bJej50LOi2979329793euoutp02W;
+	Sat,  3 Oct 2026 22:35:59 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20261003223559euoutp025c12500faec891b33d1895efec774da0~bJej50LOi2979329793euoutp02W
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1791066959;
+	bh=U3wvj1HZXvSFEqnxTHNRHB1lpN/qwUATGcRBe6uZy5E=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=s+ttd66VboYyGUSjzBv7F9IX2SuCBaJhFEnDHEhqvuOOeO3iV7tsKpo2xRAiGmACk
+	 nqccU/5pfph9t+/O5NfG7oJLVN/ERgwwZhnv5V7OBd8Gw10F6uQRnUeXg0TDAqoawV
+	 vIKIwNfyoQcs1aNgJ7jQnwNVRcoQEywfr2xjQb9g=
+Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20261003223558eucas1p2cb1d410a774401ec0c3c69c1f59d658d~bJei3nizz0619606196eucas1p2v;
+	Sat,  3 Oct 2026 22:35:58 +0000 (GMT)
+Received: from [192.168.1.44] (unknown [106.210.136.40]) by
+	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+	20261003223556eusmtip1c175f34ccabf55dbdb34e5940f15ffe5~bJeg2dql11552315523eusmtip1K;
+	Sat,  3 Oct 2026 22:35:56 +0000 (GMT)
+Message-ID: <3c5c15d9-ea7e-49a2-adae-ec3e3c72594b@samsung.com>
+Date: Sun, 4 Oct 2026 00:35:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] phy: hdmi: Add optional FRL TxFFE config options
-To: Vinod Koul <vkoul@kernel.org>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, kernel@collabora.com,
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20260901-hdptx-ffe-v2-0-3a5922c76fc5@collabora.com>
- <20260901-hdptx-ffe-v2-1-3a5922c76fc5@collabora.com>
- <asFoBih6P7Cr6Ute@parshuram>
+Subject: Re: [PATCH v4 01/20] dt-bindings: phy: Add
+ starfive,jh7110-inno-hdmi-phy
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
+	<neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
+	Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andrzej
+	Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, Laurent
+	Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
+	<jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
+	<luca.ceresoli@bootlin.com>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>, Andy
+	Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Emil
+	Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+	<sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Paul Walmsley
+	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
+	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
+	Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>, Jerome
+	Brunet <jbrunet+clk@baylibre.com>, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, mfd@lists.linux.dev,
+	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, Marek
+	Szyprowski <m.szyprowski@samsung.com>, Maud Spierings
+	<maud_spierings@murena.io>, Graham Markall <hello@big-grey.co.uk>, Icenowy
+	Zheng <zhengxingda@iscas.ac.cn>, Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Joshua Peisach <jpeisach@ubuntu.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
+	<u.kleine-koenig@baylibre.com>
 Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <asFoBih6P7Cr6Ute@parshuram>
+From: Michal Wilczynski <m.wilczynski@samsung.com>
+In-Reply-To: <3ee91c92-4e3a-4bac-85cf-923f5d77ceff@kernel.org>
+X-CMS-MailID: 20261003223558eucas1p2cb1d410a774401ec0c3c69c1f59d658d
+X-Msg-Generator: CA
+X-RootMTR: 20260915153214eucas1p2b548f3236ef98fb0cbf320e397420125
+X-EPHeader: CA
+X-CMS-RootMailID: 20260915153214eucas1p2b548f3236ef98fb0cbf320e397420125
+References: <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
+	<CGME20260915153214eucas1p2b548f3236ef98fb0cbf320e397420125@eucas1p2.samsung.com>
+	<20260915-jh7110-clean-send-v4-1-f0e4fd6f2cc8@samsung.com>
+	<20260917-mutant-chamois-of-competence-46ca77@quoll>
+	<1a1a9b49-430b-4218-b27d-e133d488e8d9@samsung.com>
+	<6cf9e611-bfc5-407b-8132-bd328f8b61fc@kernel.org>
+	<eaba2fa9-a1ce-4dac-9bd6-e0b3a3dd01ef@samsung.com>
+	<3ee91c92-4e3a-4bac-85cf-923f5d77ceff@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261003_143346_685891_ED2AEE7C 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20261003_153609_149511_CD3B3B87 
+X-CRM114-Status: GOOD (  28.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,37 +113,134 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Vinod,
 
-On 10/3/26 11:39 PM, Vinod Koul wrote:
-> On 01-09-26, 22:55, Cristian Ciocaltea wrote:
->> During HDMI 2.1 FRL link training, the source and sink can negotiate a
->> Transmitter Feed-Forward Equalization (TxFFE) level to improve the
->> signal quality.  Starting from zero, the source may increment the TxFFE
->> level up to a maximum agreed during the LTS3 stage if the sink keeps
->> reporting FLT failures.  TxFFE adjustment is optional and only attempted
->> when both the source and the connected sink support it.
+
+On 10/3/26 22:45, Krzysztof Kozlowski wrote:
+> On 03/10/2026 17:36, Michal Wilczynski wrote:
 >>
->> Since the existing HDMI PHY configuration API covers the FRL rate/lane
->> selection only, provide the following fields to the frl sub-struct of
->> phy_configure_opts_hdmi:
 >>
->> * ffe_level: the TxFFE level to apply, only meaningful when
->>   set_ffe_level is set.
+>> On 9/30/26 13:01, Krzysztof Kozlowski wrote:
+>>> On 25/09/2026 23:05, Michal Wilczynski wrote:
+>>>>>> +  clocks:
+>>>>>> +    maxItems: 1
+>>>>>> +    description: Reference oscillator.
+>>>>>
+>>>>> This barely counts as a resource, so usual question: no resources here?
+>>>>> no MMIO? Even the user of this phy is the block itself.
+>>>>>
+>>>>> This makes me wonder if this should be a device node in the first place
+>>>>> (instead folded into the parent).
+>>>>
+>>>> The PHY has no reg because the reg is shared with the controller and
+>>>> owned by the parent - patch 9 lets the bridge take its regmap from
+>>>> there.
+>>>>
+>>>> The user of the PHY is not only the block itself. It is the pixel clock
+>>>> provider for the whole display subsystem, voutcrg takes hdmitx0_pixelclk
+>>>> as the parent of its DC8200 pixel MUXes, and while HDMI output is active
+>>>> it is the only intended source for that clock. The parent has to be
+>>>> assigned explicitly so the general PLL does not end up driving the pixel
+>>>> clock, and so a DSI user does not reach the HDMI PHY clock generator.
+>>>>
+>>>> So it has to be its own node. The HDMI block has two independent
+>>>
+>>> I do not see the logic which lead to this conclusion. Pixel clock
+>>> provider, so a clock controller, cannot be a user of a phy. Clock
+>>> controller does not have a physical layer.
 >>
->> * set_ffe_level: a 1-bit flag that changes the semantics of the
->>   phy_configure() call, i.e. when set, the PHY driver must apply the new
->>   ffe_level and ignore the other frl related fields.
+>> Sorry I think the wording was not perfect. I meant the PHY node is a
+>> pixel clock provider. voutcrg consumes a clock not a PHY.
+>>
+>> voutcrg: clock-controller@295c0000 {
+>>          clocks = <&syscrg ...>, <&hdmi_phy>;
+>>          clock-names = ...,"hdmitx0_pixelclk";
+>> };
+>>
+>> The consumer of the PHY is only the hdmi controller.
+>>
+>> What matters for the node layout is where that clock goes. voutcrg is the
+>> SoC display clock controller - it is not part of the HDMI block:
+>>
+>> hdmi_phy -- pixel clock -> voutcrg
+>>                               |
+>>                               - pclk/mclk/bclk -> hdmi_controller
+>>                               - pix0/pix1 -> dc8200
+>>
+>> hdmi_phy and hdmi_controller are the same register block with one reg
+>> owned by the parent. So if that block is described as a single node:
+>>
+>> hdmi_node - pixel clock -> voutcrg
+>>      ^                          |
+>>      --- pclk/mclk/bclk --------
+>>
+>> the node provides a clock to voutcrg and consumes three clocks from
+>> voutcrg. That is a cycle in the device tree description.
 > 
-> The ffe_level 0 implies it is disabled, so why should we use a flag for
-> this? Rather use if value valid (non zero) logic to apply..?
+> There is no cycle. Internal signals to the block are not represented in DT.
+> 
+> What you have is a driver problem and you create some sort of DT
+> structure to solve that. DT purpose is NOT to solve your driver
+> dependencies or circular connections.
 
-That's not quite possible because level 0 is valid (and the default) according
-to HDMI 2.1 spec. The source is expected to reset TxFFE to default whenever a
-new FRL rate is set, hence the API shall be conformant. 
+The structure is not something I added. The voutcrg binding has required
+an input clock named hdmitx0_pixelclk since it was merged in 2023
+a097a5ec14df ("dt-bindings: clock: Add StarFive JH7110 Video-Output
+clock and reset generator") and this series does not touch that file:
 
-Regards,
-Cristian
+Documentation/devicetree/bindings/clock/starfive,jh7110-voutcrg.yaml
+       - const: hdmitx0_pixelclk
+
+Mainline satisfies it with a placeholder, because so far nothing provided the
+real clock:
+
+hdmitx0_pixelclk: hdmitx0-pixel-clock {
+            compatible = "fixed-clock";                                                                          
+            clock-output-names = "hdmitx0_pixelclk";
+            #clock-cells = <0>;
+};
+
+All this series does is point that existing input at the device that actually
+generates it.
+
+TRM [1] table 5-3  on page 529 lists the display CRG's input clocks. Most come from
+dom_vout_top, but three come from IP blocks inside the subsystem:
+
+clk_hdmitx0_pixelclk        297 MHz   u0_hdmi_tx.clk_pix
+clk_mipitx_dphy_rxesc        10 MHz   u0_mipitx_dphy.clk_rxesc
+clk_mipitx_dphy_txbytehs    297 MHz   u0_mipitx_dphy.clk_txbytehs
+
+and on page 530 the CRG offers clk_hdmitx0_pixelclk as Source1 for:
+
+u0_dc8200.clk_pix0      Source0 clk_dc8200_pix0  Source1 clk_hdmitx0_pixelclk
+u0_dc8200.clk_pix1      Source0 clk_dc8200_pix0  Source1 clk_hdmitx0_pixelclk
+u0_cdns_dsiTx.clk_dpi   Source0 clk_dc8200_pix0  Source1 clk_hdmitx0_pixelclk
+
+The DC8200 and the DSI TX are separate devices, so the pixel clock
+crosses two block boundaries to reach them.
+
+That is also why the DT has to be able to name it. Those MUXes have two
+parents and the selection is made in DT:
+
+&dc8200 {
+          assigned-clocks = <&voutcrg JH7110_VOUTCLK_DC8200_PIX0>, ...;
+          assigned-clock-parents = <&hdmi_phy>, <&hdmi_phy>;
+};
+
+and voutcrg takes it as an input clock because that is what the hardware
+does. If the PHY is folded into the HDMI node, that input phandle points at
+a node which also consumes pclk/mclk/bclk from voutcrg. That is where the
+cycle comes from - the hardware topology not the driver.
+
+[1] - https://doc-en.rvspace.org/JH7110/PDF/JH7110_TRM_StarFive_Preliminary_V2.pdf
+
+> 
+> Best regards,
+> Krzysztof
+> 
+
+Best regards,
+-- 
+Michal Wilczynski <m.wilczynski@samsung.com>
 
 _______________________________________________
 Linux-rockchip mailing list
