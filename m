@@ -4,56 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4971CA5FE6
-	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Oct 2026 20:49:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD25CA5FDD
+	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Oct 2026 21:33:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W90iUXypKQ42msNbfyG+PvoMXiAGEcpn0z+/eJW2YSk=; b=Imi8ntPx+83Zx4
-	wOBTGfn0ZLUx0z9tr4UNyZKrNc4So94YdG7TYF0/Oe3aDGLvH7CzkopA/ibqbNCopSX7NFCbhWdCk
-	sCa/AEre2/FFxUXYNeGrwHet9eZTH4XI8ft0UM9nCulPCETePTOdL/Cr7wHSUI7ldtLQaHCQsbOgO
-	QgEVKtmhJ5EePUFWvheBkpmgyUxQeqPNX5U+t3OeEeAKpTk/PPI+MaqJ6B/aq5IP4dpzq56flLV1c
-	WH1oduI2jnV1k6J9VmVjz2iPZ1fiP3FyXNod5cIILr22McZuD25BxOnDbVNcnbMTG6pu1gmXUF0VI
-	3fFVp6EhLDorNc9UD1sQ==;
+	List-Owner; bh=kcpWfoaO/GmTEODVKNanLA/p2UicR/QRQJ9FabpEBRk=; b=z9JEffucj9om6C
+	61L6X5gcpXffsAjknf1wC6TqgMpoWmO8Ss5eSI0sB8tbiHb+ZTXIHXAu6ZE2OMoVFiTdFBFCwav4y
+	2yzRPQItGh5lSLpDxZIU0hTVPPXdmxLj4ZTxGKn5kynSkkcm4lE5nywbcbOjkmQvSujrkwtwRXsyy
+	r2jU8Uy41W1gN1Plk/HaTdjUH1vbjTG+na1WaLMPoj/JM/4x5XGdwQZ37c/iryiAW77/VcThUy5BN
+	qFj/BAJzAUKK/+iGhPQaTXYicYrRfr+9qICZSEmd1Gj7eseWnQUQQC+LrqmyD0Vold6tXAH8l6Y8d
+	sFNj4v1h4eS62nWj+hNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD6g5-0000000E26f-2pPC;
-	Sat, 03 Oct 2026 20:49:53 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xD7Mg-0000000E54E-0xcK;
+	Sat, 03 Oct 2026 21:33:54 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD6g1-0000000E25V-1e2I;
-	Sat, 03 Oct 2026 20:49:49 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C316B60120;
-	Sat,  3 Oct 2026 20:49:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4803F1F0089C;
-	Sat,  3 Oct 2026 20:49:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791060588;
-	bh=uLpwZPO1GiiGvBIyjD7usPVtdy8rIg18LV4hbOtCaUc=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=I+D2htlQtoBEc7czW/e/gBvOF/j5BI2CXVNVMPgq4N5GxNHWZCYvvXsfGi7bKQksD
-	 +i1AZbJeiXpim+gCvJ2E8nnaz/rRs/AcJrD5iGi4Mggm2fH6iq3XMb5UTA3plFAiOB
-	 zdh8DCgAEuIi491FPq5o86MZzBQd+zAdoFrTJ8Ydcja5lg2WJQ6fuBFxKZ0BmGCRYk
-	 nQ4Qv17ukCnRZ9ujdpFY4uc7KQAypGz+oQYeHy63hYnX42zE7GWm7IHzAMyNjFTe+K
-	 6rXgtI9IiOD1qo9zKXB/oWemYzHPlvF65RrIfqU7liGLqAtPdi/N3Nd/ga7d/LINVp
-	 doIu2JFwOuaVA==
-From: Vinod Koul <vkoul@kernel.org>
-To: Neil Armstrong <neil.armstrong@linaro.org>, 
- Shawn Lin <shawn.lin@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <1788158204-161347-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1788158204-161347-1-git-send-email-shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] phy: rockchip: naneng-combphy: Fix TX detect RX
- termination errata
-Message-Id: <179106058693.240943.3035344211255216321.b4-ty@kernel.org>
-Date: Sat, 03 Oct 2026 22:49:46 +0200
+	id 1xD7MY-0000000E51M-22x3;
+	Sat, 03 Oct 2026 21:33:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1791063221;
+	bh=kDXqnGMv+3/dGk6DPxEqeXvBQLgvyQU5ZWM8ZzjXf08=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=OpnIRgT17QQtur0E7ZQ1+4nbWFI2gwCemx/0KapAoxCvcfbqCtyXKndD4Y+fQ/EM4
+	 SqhioB0vXIvFRNbrKcA0akg79VEJVi6YYscqU1hSEo3YXe4L/RHhabOeEzRRi7Ln9i
+	 SSh1J8rjqKFZf/dDdmtSXDdNjZE/UwDH0smNer4XqntGgxKFm8IE6xzEgk3EeVzHAh
+	 yZGuZF7ayBD43yRIH2gtEJc9jjtZ9y16CZZR9A04TYETZJCc90911F5G3rAO3U0DN+
+	 Bgfn6E9GoboB1gZGX+Oqt9rLkjryemH9M9FvyJ27hT1DtEIMtNPG7c/uZvjHnqzRMN
+	 +cXR9cJyjrgLA==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0716617E022A;
+	Sat, 03 Oct 2026 23:33:40 +0200 (CEST)
+Message-ID: <3c0dc77b-b692-498e-aed6-aa97d827b2f4@collabora.com>
+Date: Sun, 4 Oct 2026 00:33:40 +0300
 MIME-Version: 1.0
-X-Mailer: b4 0.14.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/3] phy: hdmi: Add optional FRL TxFFE config options
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, kernel@collabora.com,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+References: <20260901-hdptx-ffe-v2-0-3a5922c76fc5@collabora.com>
+ <20260901-hdptx-ffe-v2-1-3a5922c76fc5@collabora.com>
+ <asFoBih6P7Cr6Ute@parshuram>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <asFoBih6P7Cr6Ute@parshuram>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261003_143346_685891_ED2AEE7C 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,28 +79,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Vinod,
 
-On Mon, 31 Aug 2026 14:36:44 +0800, Shawn Lin wrote:
-> Some PHY revisions may fail to detect the peer RX's termination
-> resistor (RTERM) under certain critical temperature conditions.
-> This causes TX detection failures on PCIe links.
+On 10/3/26 11:39 PM, Vinod Koul wrote:
+> On 01-09-26, 22:55, Cristian Ciocaltea wrote:
+>> During HDMI 2.1 FRL link training, the source and sink can negotiate a
+>> Transmitter Feed-Forward Equalization (TxFFE) level to improve the
+>> signal quality.  Starting from zero, the source may increment the TxFFE
+>> level up to a maximum agreed during the LTS3 stage if the sink keeps
+>> reporting FLT failures.  TxFFE adjustment is optional and only attempted
+>> when both the source and the connected sink support it.
+>>
+>> Since the existing HDMI PHY configuration API covers the FRL rate/lane
+>> selection only, provide the following fields to the frl sub-struct of
+>> phy_configure_opts_hdmi:
+>>
+>> * ffe_level: the TxFFE level to apply, only meaningful when
+>>   set_ffe_level is set.
+>>
+>> * set_ffe_level: a 1-bit flag that changes the semantics of the
+>>   phy_configure() call, i.e. when set, the PHY driver must apply the new
+>>   ffe_level and ignore the other frl related fields.
 > 
-> Add a workaround to force the RTERM detection ready signal for
-> affected PHY revisions. This ensures reliable TX-to-RX termination
-> detection across all operating temperature ranges.
-> 
-> [...]
+> The ffe_level 0 implies it is disabled, so why should we use a flag for
+> this? Rather use if value valid (non zero) logic to apply..?
 
-Applied, thanks!
+That's not quite possible because level 0 is valid (and the default) according
+to HDMI 2.1 spec. The source is expected to reset TxFFE to default whenever a
+new FRL rate is set, hence the API shall be conformant. 
 
-[1/1] phy: rockchip: naneng-combphy: Fix TX detect RX termination errata
-      commit: d68e47a06c5cdc90cbd29ce2e74fa61eab5d47cc
-
-Best regards,
--- 
-~Vinod
-
-
+Regards,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
