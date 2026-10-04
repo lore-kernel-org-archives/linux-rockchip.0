@@ -4,72 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F9E6CA5FE6
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Oct 2026 12:54:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5917CA5FE6
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Oct 2026 17:22:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fkCBsAn0cqgOUsPGEaqkUGn1EoCUqJHdenTB5rsTjQo=; b=Bq2nxi1ao5EGmBXWaKz2IJJjey
-	KQPhBWR0TVgsxAVVEugg3HGAXQtpPZCuVuLcUVMp2bfJTZaW4mqeL5wYr4Ub799oII30FEOQuoJXs
-	wQehSe0mzoyILYsiaWa0rLMJ7hv5ZZ5PU9D8AFI7uD8mGd5IVKcYk8nymvKtYUD0k835b8CAX+LJo
-	qnHS12uQ7BDL5qucmVvSDsP3aV3ycSHX4PjWjyqQA4YE5/3N8LFOUo8vmKPlECyMFGoLLX5RvVLrM
-	xpsQzfIh/BUdONve07sja4FN3tX1lLTSRxE+McEZsCWqwdadB/7zy8BerilTAn0wTOMRs+n8mv3+3
-	1f8nodFA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ebPdSQaHOpEqYk5irH0ZKQzWhsAXlBqUICK6PBqA7MM=; b=HfxdQNaUWtHubS
+	CJvccBNMTf8cWTkKpwt2+eJ/GmXl53MTU+k/7MyoSUnLeISlc4AdYaeAYU05NRtLO6fq4v9jm/9OS
+	2TS4KmNMOisA+kyDd/spJsrfbnXlJzUV0U7zrmv955L5eLM3lc43ZbLiecyigU7o3JwLdEnuPZE3H
+	bV22hb9PyEmgoKdhBovYP9rRP78lMx4cHr4RRrLklAxOSfRkj3B5CUxeAkh9HDgSIydIdMSBPSE/g
+	2ow7T4apDs3KmgXXr6vpBogLXy8/u0+v56jzn1l46zg/+WXFlRd27MJ5sAjuAcqw09tp4JsVcAYHi
+	6dhDylLPHSpN8XPfzw+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDLir-0000000Eo2Z-0jt3;
-	Sun, 04 Oct 2026 12:53:45 +0000
-Received: from sender6-op-o11.zoho.com ([165.173.180.11])
+	id 1xDPv5-0000000F6uK-1Fvr;
+	Sun, 04 Oct 2026 17:22:39 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDLin-0000000Eo1N-28PD;
-	Sun, 04 Oct 2026 12:53:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1791118408; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ERdHo3cHKccOXgbrq8b29QDOmGsQZIGiBis4jkL77Qx8UdRQMBfHlcNfSBS3cvCxoEduYJzELzh/dsQjxEVkdf7tuOJlAikSIqen9Uc6TTfDpfY6KL/EUCO7kV5TOGmmWsfS+OYG239Kb161mPp0JhFlDFXaNkHPQIRueXCeD2g=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1791118408; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=bgDESfLrXKLmUyRoB+jOHoxIwRj5hwAQyXCFLNMDOaw=; 
-	b=BXb+XQbo8mfOEN2KNkURN75mCY7JDE2I8ckalYq3up5otZwNMvysJ3h9ZJtQ5daH3U+OHzk2S+VYXW8ok6VNcvjjiJ+YN748u4H91mAEPPwjxZOgpObKX8lhKYOX33BNdDcZEYLzcNC8okGJBr3vZQda9S6/rIxsy7gvFjLwMwc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1791118408;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=bgDESfLrXKLmUyRoB+jOHoxIwRj5hwAQyXCFLNMDOaw=;
-	b=LhlWsWuNz8iImIBP5PZJ7pN2Sjr03aA/vSWjOVJW+ydfVhsJshIfdrJL+P4aIEsX
-	qg6O2BDs8Qb4TRGiykr3anHHOL6KSAhgXJ8521bM+bO4UA2IeMurmPbb7h2pMaL0FrI
-	mHKpUMRMDWq2Eoc44L0JuKe0cM9JzpzmYmbBFTYs=
-Received: by smtp.zohomail.com with SMTPS id 1791118407425681.0566603227451;
-	Sun, 4 Oct 2026 05:53:27 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id AA4F4180950; Sun, 04 Oct 2026 14:44:11 +0200 (CEST)
-Date: Sun, 4 Oct 2026 14:44:11 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>
-Cc: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Igor Paunovic <royalnet026@gmail.com>, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-phy@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v16 1/6] phy: core: add notifier infrastructure
-Message-ID: <asJGziv0N3qtXo6_@venus>
-References: <20260924-b4-rockchip-dwc3-rockchip-glue-v16-0-126a2e9133c3@collabora.com>
- <20260924-b4-rockchip-dwc3-rockchip-glue-v16-1-126a2e9133c3@collabora.com>
- <asDFBIVf06-VaWdx@parshuram>
+	id 1xDPv1-0000000F6st-2zex
+	for linux-rockchip@lists.infradead.org;
+	Sun, 04 Oct 2026 17:22:38 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-3856d6fbcb3so476900a91.2
+        for <linux-rockchip@lists.infradead.org>; Sun, 04 Oct 2026 10:22:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791134551; x=1791739351; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=f7rAIIfQRjf/DZlHIopzmqG8GHaCqWeari8L74hauSs=;
+        b=BZNh0Kp7PsFGDPKlJjmq8/qsFSsJOeiQgI7Ijd3pStENlNeId3zHxJ8GikVwshY4ng
+         5+mQ83X7CwscggvHgh+oCbYtqK9HViA8ApHmDzAWx6v+8Nirz6rjvlhtowDKg0qwNdHv
+         g4c8uSHUtHIzzySEFICc4LYq1nm6Z6asYNiFONf8QupAM45mqwW9jN1blTgTd88NOGDY
+         q5MLXF3HOH8/dYKZCIwveZCXNx+lvW9N73OhpIFYD8VbknsrO7Ri8TOWspn+bEJESMlw
+         1C0MDLGKyn1+YqDqJHCt+7i/zkVKW0bC1Pyw1Dz3l4yFiZJr3yoJGJ1kMaOQ02tCLf9M
+         ji6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791134551; x=1791739351;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=f7rAIIfQRjf/DZlHIopzmqG8GHaCqWeari8L74hauSs=;
+        b=2UxRHeOk1dBxYl1U6g3Fdv8Jj/SxS0H/m7lqv/1lr9Kp4uZur48p5U5GsqR7xt23HU
+         26+crSMVrmMzSTq1TGJlx22EF2sa8ILBFqQfWw93Qz+qB5uhL8LSHsU1Hw9zHMEQBUnU
+         kxSSjFbuZuZwqN7Eomm0VSM17Op0wzvDOm+7aHGeFoesKFcmjK3FIB82YOvOSmI1t1qQ
+         dgLE9IYx9/jR4xrRRiJKNaTqSTnvsyTwND6avIuidO4fVvhkAGjoGgGxF5SHoTYcUl3O
+         7wU84eL8Botg7uio51D0LIUrarP/3zh2wzDAPSlyDq8FzychGmoSlisN5r/xqQloiH8e
+         g7uw==
+X-Forwarded-Encrypted: i=1; AKwUvBzcbLXfUXgF0l4ev66c9/eisZK7WJg2A6vIgnbdNke7IoNvHxPgEemhKpLMOsiccfu3AB+iIH/asbp+uA87kA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKE7kYA+AbvpvLW/SGKf/shi1MpOTc5LTNUEHFmG/kuHmCTGuDR
+	SaOBeFSzHpHUm4KRpwq27QAo0mBzdxk6ryQDBaSrDHzwJJbQeF57BEpB
+X-Gm-Gg: AYBFou2LCaXaR0+KNLmlBhwSPwbDPk1NRDkGHZp4v1Soy/vkv7ttFMfVOO1irk/C9bQ
+	Jr4WtSGy5X7LL8MzWOymiOHdTbikn33O1eg+3K0Kz0LkxORgpiueMa6nOWIJnzVo6Zm7W0Jp/oH
+	avnwCHQqQ3BPNEbc3z586ZM4lC5SxmCDeIjx8JnLPwQl8nqIw+98A3zbh8OYrSdA/2ggzoln4TK
+	yjM0hqq4tlAFlmpnvcSWb2FwAcWmP4RTrxa+CR4AH/BjPNptpw8ykPRo1BaI7k2iGu793IvD8o/
+	HStD2TsirJjJhNvrKKwF+aOmLlUWZUeLPp16ArMeHrBsXIrjs2zeQ6/OklDCNoHUFI5OKjkU0JP
+	XwuwyRGt9D8xaddHf9iLisiV79DL5C6n1/qGX+Mq5cGRiCREh9eSGFj4fh5cJhIvdtiW9/9UoVv
+	RbfB2HWmDrKpI5SPi28C1c7YqPxH/fIHkfCAxQbuK45NpWuujt9Nl8TZPD01HPWx2FjQhxpF5UM
+	WV5y0tRobA6Bg==
+X-Received: by 2002:a17:90b:4d:b0:3a4:aee8:76ef with SMTP id 98e67ed59e1d1-3a78717db57mr4586561a91.21.1791134551329;
+        Sun, 04 Oct 2026 10:22:31 -0700 (PDT)
+Received: from SonYoungWon.skbroadband ([121.125.40.90])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a6dd4bd483sm5847677a91.4.2026.10.04.10.22.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 04 Oct 2026 10:22:30 -0700 (PDT)
+From: Youngwon Son <yoson5375@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Youngwon Son <yoson5375@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Enable the NPU on ODROID-M2
+Date: Mon,  5 Oct 2026 02:21:15 +0900
+Message-ID: <20261004172115.5105-1-yoson5375@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <asDFBIVf06-VaWdx@parshuram>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/291.108.66
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261004_055341_615556_7FC161CC 
-X-CRM114-Status: GOOD (  23.78  )
+X-CRM114-CacheID: sfid-20261004_102235_993717_D66A56EA 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,116 +98,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3682761988108600373=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Enable the NPU cores and their IOMMUs on the ODROID-M2 and wire up
+the vdd_npu_s0 regulator.
 
---===============3682761988108600373==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tscrktrwpqpmy56x"
-Content-Disposition: inline
+As the regulator is now controlled through the NPU power domain,
+remove regulator-always-on. regulator-boot-on is not needed either,
+since the RK8602 state can be read back.
 
+Tested with the rocket driver and Mesa Teflon (MobileNet V1).
 
---tscrktrwpqpmy56x
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v16 1/6] phy: core: add notifier infrastructure
-MIME-Version: 1.0
+Signed-off-by: Youngwon Son <yoson5375@gmail.com>
+---
+ .../boot/dts/rockchip/rk3588s-odroid-m2.dts   | 36 +++++++++++++++++--
+ 1 file changed, 34 insertions(+), 2 deletions(-)
 
-Hello Vinod,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
+index 4e98fa3349..ea4d86a588 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
+@@ -320,8 +320,6 @@ vdd_npu_s0: regulator@42 {
+ 		reg = <0x42>;
+ 		fcs,suspend-voltage-selector = <1>;
+ 		regulator-name = "vdd_npu_s0";
+-		regulator-always-on;
+-		regulator-boot-on;
+ 		regulator-min-microvolt = <550000>;
+ 		regulator-max-microvolt = <950000>;
+ 		regulator-ramp-delay = <2300>;
+@@ -441,6 +439,10 @@ &pd_gpu {
+ 	domain-supply = <&vdd_gpu_s0>;
+ };
+ 
++&pd_npu {
++	domain-supply = <&vdd_npu_s0>;
++};
++
+ &pinctrl {
+ 	hdmi {
+ 		hdmi0_tx_on_h: hdmi0-tx-on-h {
+@@ -514,6 +516,36 @@ &pwm0 {
+ 	status = "okay";
+ };
+ 
++&rknn_core_0 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_core_1 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_core_2 {
++	npu-supply = <&vdd_npu_s0>;
++	sram-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_mmu_0 {
++	status = "okay";
++};
++
++&rknn_mmu_1 {
++	status = "okay";
++};
++
++&rknn_mmu_2 {
++	status = "okay";
++};
++
+ &saradc {
+ 	vref-supply = <&vcca_1v8_s0>;
+ 	status = "okay";
+-- 
+2.43.0
 
-On Sat, Oct 03, 2026 at 11:04:13AM +0200, Vinod Koul wrote:
-> On 24-09-26, 19:25, Sebastian Reichel wrote:
-> > Some PHY devices with multiple ports (e.g. USB3 and DP) require a reset
-> > if the configuration changes or cable orientation changes. This is a
-> > problem, as the consumer device will run into undefined behavior.
-> >=20
-> > With the new PHY notifier API introduced in this patch, the consumer
-> > driver can hook into reset events coming from a PHY device to handle the
-> > PHY going down gracefully.
-> >=20
-> > Note that this uses -ENOSYS instead of the more sensible -ENOTSUP for
-> > the stub functions when GENERIC_PHY is disabled to stay consistent with
-> > the existing ones.
->=20
-> I dont think this series has the usage of this.
->=20
-> I think I am still not convinced why a phy should notify as I dont feel
-> we have any mechanism to notifying. Checking status and letting people
-> know if not really a notification mechanism... Maybe add a status call
-> instead?
-
-This series contains the infrastructure and the consumer of the PHY
-reset notification (dwc3 rockchip glue driver). The producer/sender
-of the PHY reset notification is the first patch in the USBDP part 3
-series. I grouped the patches like this, so that this series has PHY
-patches followed by USB patches instead of PHY - USB - PHY. Patches
-must be applied in the exact order (i.e. first the patches added the
-PHY reset notifier infrastructure, then the DWC3 notification
-consumer and then the USBDP notification producer).
-
-The broader picture solved by this is (pre-existing race condition
-issue in USBDP):
-
-1. USBDP PHY provides critical resources to DWC3 USB controller
-2. USBDP PHY needs to reset to reconfigure (e.g. enable/disable DP side),
-   which means the resource is temporarily not available
-3. DWC3 accesses its registers during the reset -> SError, because PHY is o=
-ff
-
-This series combined with the first patch of USBDP part 3 changes
-things, so that it works like this:
-
-1. USBDP PHY provides critical resources to DWC3 USB controller
-2. USBDP PHY needs to reset to reconfigure (e.g. enable/disable DP side),
-   which means the resource is temporarily not available
-3. USBDP PHY driver sends pre-reset notification
-4. DWC3 goes into a safe mode after receiving the pre-reset notifiaction
-5. USBDP PHY does the reset
-6. USBDP PHY reset finishes, USBDP PHY driver sends post-reset nofication
-7. DWC3 returns to normal mode after receiving the post-reset notification
-
-This avoids running into the SError.
-
-Greetings,
-
--- Sebastian
-
---tscrktrwpqpmy56x
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmrCShcACgkQ2O7X88g7
-+pqKZQ/5AZjgJZAP0K7j3fjtoZWVfKvHdK5zDgEney3DOH3py7hJca0N2aruS7Ei
-b798piV1K9OKQHjBrBXdIRq9PbLP+iRfwiYmrNEaWbfPa+Gt8jUd0plVPFKZsb2e
-SIFgHA+ghthCj7o6RnwkkjB776aE1g+iAfqcJ74FJ023E2V6iFUasqkfukGiSeK9
-2QmzIwlJw6P+BIQw9YTAaEhbmzqHkWsO3gL7ACpNtd6fCigECCx1Brl2im0O53v/
-17gjBhQIQ4/wosGxPndKsqQaDhK92y4ZSNPf/rMfvR4UWt4Q0W0g2VT+blOXQ5Iu
-eppv8irdrM9VEhHr9LK/ZjkZaSqwJNe9w29lsfmSV3gFKnW4kiBhDF66ii3RvWfl
-lBPvlJvdZSB8+vpf/0Bjv3hedBnqlf4Wuhhv+j+PDqJUv54cWJN9c6scMvNezOT2
-H08JLoO48Ou6mrazNWQQISDlH/7hTWQ9F8+AhNXqrCnbxtxmiVJvgxDPYpe2kiTo
-aTDiIhg2z94VD2h/CmgiN5lwrKynXDzCC+eiDWZzHDUx13IabkIqgJeiLUMBkG3S
-RBwjLIm+MjmFCV2lQIyCIUJ70iCiue04CSR+h1HrloFZmXMEpmXkvUdWPLP4PiVC
-MaJaHzBopWFhSxD3c3yuweo4ywxFe9jp3Y4iK4Jmn9cVC+0OwHI=
-=lRt1
------END PGP SIGNATURE-----
-
---tscrktrwpqpmy56x--
-
-
---===============3682761988108600373==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3682761988108600373==--
-
