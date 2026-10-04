@@ -4,77 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21462CA5FE6
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Oct 2026 11:22:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F9E6CA5FE6
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Oct 2026 12:54:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BKeWkKrVbb/FCLCsDAmY2Axo+d5DL9Ubdp8xgE1t8Ek=; b=F9nr+BUFq3DXP5gIJjVwqRmgT7
-	a1rptarLDtOu7S2ABXUBCkDcZEq36PtIJ330MOkTUsL3uByDFefPGbabHzI0tGmtXb57rZI96coH8
-	hGzq0qG4v2xy5+UyPJTs1ucnMAyCqLn1eueZRHiC1cqpuWB2PhDKh6TBJd6plnq4P2skeuxP//39/
-	FtK7ws7Iw80x6WYLx3cfGKABd4s1dWvKq57wCEkKp/5NUV062qprGh9M7dRQR7PJtdIoR5GCr1XA/
-	yL644zcCD8Goa5OLUfYpIcLVGzHGe/eOmwkgrWgJ5Aqet1inEwDk9xbKXOHq9qdEctaAjxqhU6x95
-	MLjVZyhQ==;
+	bh=fkCBsAn0cqgOUsPGEaqkUGn1EoCUqJHdenTB5rsTjQo=; b=Bq2nxi1ao5EGmBXWaKz2IJJjey
+	KQPhBWR0TVgsxAVVEugg3HGAXQtpPZCuVuLcUVMp2bfJTZaW4mqeL5wYr4Ub799oII30FEOQuoJXs
+	wQehSe0mzoyILYsiaWa0rLMJ7hv5ZZ5PU9D8AFI7uD8mGd5IVKcYk8nymvKtYUD0k835b8CAX+LJo
+	qnHS12uQ7BDL5qucmVvSDsP3aV3ycSHX4PjWjyqQA4YE5/3N8LFOUo8vmKPlECyMFGoLLX5RvVLrM
+	xpsQzfIh/BUdONve07sja4FN3tX1lLTSRxE+McEZsCWqwdadB/7zy8BerilTAn0wTOMRs+n8mv3+3
+	1f8nodFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDKIW-0000000EjGZ-1NQb;
-	Sun, 04 Oct 2026 11:22:28 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xDLir-0000000Eo2Z-0jt3;
+	Sun, 04 Oct 2026 12:53:45 +0000
+Received: from sender6-op-o11.zoho.com ([165.173.180.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDKIG-0000000EjDU-3iVH;
-	Sun, 04 Oct 2026 11:22:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1791112929;
-	bh=EUT8CXIEWEuHtdvb/fdhF3SZ+ZMOpvpJA9++C1bf6hE=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=AMY6xSEOpZRFPRHEl0wmIwaFVCtWyZB+yKXGiRixSnlwO4RnxbiVH28BdCBFj30n2
-	 qzHhE9vXQN/ErfgSCtf3AMACsF3vIjAZBkJpdUAVaKhO6iUUEbH/Pv9p6nyDuWI04B
-	 s0rAQKJ9ZRNSK6OwuyXgPtaz1yFqoeqXZhbZ3zkX2mcs+ifiEV+zU9tCXXSQ7rizbX
-	 ktZhTSul6N1DsRu07hXf2pr8Qg0Y9o1lA1wNYlY52Y6jF2HpAlXJkh+3ujr9CZp6UC
-	 rQbDtPAlg9xIYj2dqqLbrUnmum69F1ppPYHCb65V35D2Xg+QQAuooCaFsXys69bjSj
-	 LadNIlr0sqbYQ==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2375917E0163;
-	Sun, 04 Oct 2026 13:22:09 +0200 (CEST)
-Message-ID: <d341e911ddf0831b79a713ae7694d2e4396eeb38.camel@collabora.com>
-Subject: Re: [PATCH] media: verisilicon: rockchip: Fix leaks in init
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Frank Li <Frank.li@oss.nxp.com>, Michail Tatas <michail.tatas@gmail.com>
-Cc: benjamin.gaignard@collabora.com, p.zabel@pengutronix.de,
- mchehab@kernel.org, 	heiko@sntech.de, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Date: Sun, 04 Oct 2026 07:22:08 -0400
-In-Reply-To: <aohrmDgzhRxC6M_D@SMW015318>
-References: <aoV3LLy5hSoKL4QP@michalis-linux>
-	 <aoXgSKnkbWZVKRui@lizhi-Precision-Tower-5810>
-	 <aodup3TleCfdxcF3@michalis-linux> <aohrmDgzhRxC6M_D@SMW015318>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
+	id 1xDLin-0000000Eo1N-28PD;
+	Sun, 04 Oct 2026 12:53:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1791118408; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=ERdHo3cHKccOXgbrq8b29QDOmGsQZIGiBis4jkL77Qx8UdRQMBfHlcNfSBS3cvCxoEduYJzELzh/dsQjxEVkdf7tuOJlAikSIqen9Uc6TTfDpfY6KL/EUCO7kV5TOGmmWsfS+OYG239Kb161mPp0JhFlDFXaNkHPQIRueXCeD2g=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1791118408; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=bgDESfLrXKLmUyRoB+jOHoxIwRj5hwAQyXCFLNMDOaw=; 
+	b=BXb+XQbo8mfOEN2KNkURN75mCY7JDE2I8ckalYq3up5otZwNMvysJ3h9ZJtQ5daH3U+OHzk2S+VYXW8ok6VNcvjjiJ+YN748u4H91mAEPPwjxZOgpObKX8lhKYOX33BNdDcZEYLzcNC8okGJBr3vZQda9S6/rIxsy7gvFjLwMwc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1791118408;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=bgDESfLrXKLmUyRoB+jOHoxIwRj5hwAQyXCFLNMDOaw=;
+	b=LhlWsWuNz8iImIBP5PZJ7pN2Sjr03aA/vSWjOVJW+ydfVhsJshIfdrJL+P4aIEsX
+	qg6O2BDs8Qb4TRGiykr3anHHOL6KSAhgXJ8521bM+bO4UA2IeMurmPbb7h2pMaL0FrI
+	mHKpUMRMDWq2Eoc44L0JuKe0cM9JzpzmYmbBFTYs=
+Received: by smtp.zohomail.com with SMTPS id 1791118407425681.0566603227451;
+	Sun, 4 Oct 2026 05:53:27 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id AA4F4180950; Sun, 04 Oct 2026 14:44:11 +0200 (CEST)
+Date: Sun, 4 Oct 2026 14:44:11 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Manivannan Sadhasivam <mani@kernel.org>, 
+	Igor Paunovic <royalnet026@gmail.com>, linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-phy@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v16 1/6] phy: core: add notifier infrastructure
+Message-ID: <asJGziv0N3qtXo6_@venus>
+References: <20260924-b4-rockchip-dwc3-rockchip-glue-v16-0-126a2e9133c3@collabora.com>
+ <20260924-b4-rockchip-dwc3-rockchip-glue-v16-1-126a2e9133c3@collabora.com>
+ <asDFBIVf06-VaWdx@parshuram>
 MIME-Version: 1.0
+In-Reply-To: <asDFBIVf06-VaWdx@parshuram>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/291.108.66
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261004_042213_095829_AD2E760D 
-X-CRM114-Status: GOOD (  33.08  )
+X-CRM114-CacheID: sfid-20261004_055341_615556_7FC161CC 
+X-CRM114-Status: GOOD (  23.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,136 +81,107 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6562195529758503692=="
+Content-Type: multipart/mixed; boundary="===============3682761988108600373=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============6562195529758503692==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-syfNJk6+Iel5b9W+gI0r"
+--===============3682761988108600373==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="tscrktrwpqpmy56x"
+Content-Disposition: inline
 
 
---=-syfNJk6+Iel5b9W+gI0r
-Content-Type: text/plain; charset="UTF-8"
+--tscrktrwpqpmy56x
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v16 1/6] phy: core: add notifier infrastructure
+MIME-Version: 1.0
 
-Le vendredi 21 ao=C3=BBt 2026 =C3=A0 10:15 -0500, Frank Li a =C3=A9crit=C2=
-=A0:
-> On Fri, Aug 21, 2026 at 12:16:23AM +0300, Michail Tatas wrote:
-> > On Wed, Aug 19, 2026 at 12:56:40PM -0400, Frank Li wrote:
-> > > On Wed, Aug 19, 2026 at 12:28:12PM +0300, Michail Tatas wrote:
-> > > > if one of the dma_alloc_coherent in the init fucntion fails then
-> > > > the previously allocated ones leak.
-> > > >=20
-> > > > Fix by freeing them in the error path.
-> > > >=20
-> > > > Fixes: 727a400686a2 ("media: verisilicon: Add Rockchip AV1 decoder"=
-)
-> > > > Signed-off-by: Michail Tatas <michail.tatas@gmail.com>
-> > > > ---
-> > > >  .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 68 +++++++++++++++=
-----
-> > > >  1 file changed, 55 insertions(+), 13 deletions(-)
-> > > >=20
-> > > > diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_=
-av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> > > > index e4e21ad37323..fa77fd402412 100644
-> > > > --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec=
-.c
-> > > > +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec=
-.c
-> > > > @@ -369,6 +369,7 @@ void rockchip_vpu981_av1_dec_exit(struct hantro=
-_ctx *ctx)
-> > > >=20
-> > > >  int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
-> > > >  {
-> > > > +	int ret =3D 0;
-> > > >  	struct hantro_dev *vpu =3D ctx->dev;
-> > > >  	struct hantro_av1_dec_hw_ctx *av1_dec =3D &ctx->av1_dec;
-> > > >=20
-> > > > @@ -377,39 +378,54 @@ int rockchip_vpu981_av1_dec_init(struct hantr=
-o_ctx *ctx)
-> > > >  	av1_dec->global_model.cpu =3D dma_alloc_coherent(vpu->dev, GLOBAL=
-_MODEL_SIZE,
-> > > >  						       &av1_dec->global_model.dma,
-> > > >  						       GFP_KERNEL);
-> > > > -	if (!av1_dec->global_model.cpu)
-> > > > -		return -ENOMEM;
-> > > > +	if (!av1_dec->global_model.cpu) {
-> > > > +		ret =3D -ENOMEM;
-> > > > +		goto global_model_cpu_err;
-> > > > +	}
-> > > > +
-> > > >  	av1_dec->global_model.size =3D GLOBAL_MODEL_SIZE;
-> > > >=20
-> > > >  	av1_dec->tile_info.cpu =3D dma_alloc_coherent(vpu->dev, AV1_TILE_=
-INFO_SIZE,
-> > > >  						    &av1_dec->tile_info.dma,
-> > > >  						    GFP_KERNEL);
-> > > > -	if (!av1_dec->tile_info.cpu)
-> > > > -		return -ENOMEM;
-> > > > +	if (!av1_dec->tile_info.cpu) {
-> > > > +		ret =3D -ENOMEM;
-> > > > +		goto tile_info_cpu_err;
-> > > > +	}
-> > > > +
-> > >=20
-> > > This function is called by hantro_probe() if I am correct
-> > >=20
-> > > there are dmam_alloc_coherent(), use dmam_alloc_coherent() will simpl=
-e
-> > > error handle and tear down.
-> > >=20
-> > > Frank
+Hello Vinod,
+
+On Sat, Oct 03, 2026 at 11:04:13AM +0200, Vinod Koul wrote:
+> On 24-09-26, 19:25, Sebastian Reichel wrote:
+> > Some PHY devices with multiple ports (e.g. USB3 and DP) require a reset
+> > if the configuration changes or cable orientation changes. This is a
+> > problem, as the consumer device will run into undefined behavior.
 > >=20
-> > Hello Frank,
+> > With the new PHY notifier API introduced in this patch, the consumer
+> > driver can hook into reset events coming from a PHY device to handle the
+> > PHY going down gracefully.
 > >=20
-> > I did not know about the dmam* functions thanks for letting me know.
-> > I read some of the docs about them and they seem to not apply to
-> > this particular case since this code is not called from the probe
-> > function but rather the hantro_start_streaming function. Since
-> > dmam_alloc_coherent() only releases memory at device removal,
-> > it wouldn't free them when the stream ends and a new stream would
-> > re-allocate while the old buffers lingered until detach.
-> > So I think manual dma_free_coherent() error path is the correct
-> > fit here.
+> > Note that this uses -ENOSYS instead of the more sensible -ENOTSUP for
+> > the stub functions when GENERIC_PHY is disabled to stay consistent with
+> > the existing ones.
 >=20
-> Okay, make sense.
+> I dont think this series has the usage of this.
 >=20
-> Reviewed-by: Frank Li <Frank.Li@nxp.com>
+> I think I am still not convinced why a phy should notify as I dont feel
+> we have any mechanism to notifying. Checking status and letting people
+> know if not really a notification mechanism... Maybe add a status call
+> instead?
 
-Applied, ty, and thanks for the review!
+This series contains the infrastructure and the consumer of the PHY
+reset notification (dwc3 rockchip glue driver). The producer/sender
+of the PHY reset notification is the first patch in the USBDP part 3
+series. I grouped the patches like this, so that this series has PHY
+patches followed by USB patches instead of PHY - USB - PHY. Patches
+must be applied in the exact order (i.e. first the patches added the
+PHY reset notifier infrastructure, then the DWC3 notification
+consumer and then the USBDP notification producer).
 
->=20
-> Frank
->=20
-> >=20
-> > Best regards,
-> > Michail
->=20
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+The broader picture solved by this is (pre-existing race condition
+issue in USBDP):
 
---=-syfNJk6+Iel5b9W+gI0r
+1. USBDP PHY provides critical resources to DWC3 USB controller
+2. USBDP PHY needs to reset to reconfigure (e.g. enable/disable DP side),
+   which means the resource is temporarily not available
+3. DWC3 accesses its registers during the reset -> SError, because PHY is o=
+ff
+
+This series combined with the first patch of USBDP part 3 changes
+things, so that it works like this:
+
+1. USBDP PHY provides critical resources to DWC3 USB controller
+2. USBDP PHY needs to reset to reconfigure (e.g. enable/disable DP side),
+   which means the resource is temporarily not available
+3. USBDP PHY driver sends pre-reset notification
+4. DWC3 goes into a safe mode after receiving the pre-reset notifiaction
+5. USBDP PHY does the reset
+6. USBDP PHY reset finishes, USBDP PHY driver sends post-reset nofication
+7. DWC3 returns to normal mode after receiving the post-reset notification
+
+This avoids running into the SError.
+
+Greetings,
+
+-- Sebastian
+
+--tscrktrwpqpmy56x
 Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCasI24AAKCRDZQZRRKWBy
-9MzeAPwLTlwz3JuuObmxyg+u4105o43JLe4Bob4ey9dS0EJDawEA6+5DtSs8KzMp
-H7ZnsmemjvkbNZPbk1eEqzItk5JtOg0=
-=RPVc
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmrCShcACgkQ2O7X88g7
++pqKZQ/5AZjgJZAP0K7j3fjtoZWVfKvHdK5zDgEney3DOH3py7hJca0N2aruS7Ei
+b798piV1K9OKQHjBrBXdIRq9PbLP+iRfwiYmrNEaWbfPa+Gt8jUd0plVPFKZsb2e
+SIFgHA+ghthCj7o6RnwkkjB776aE1g+iAfqcJ74FJ023E2V6iFUasqkfukGiSeK9
+2QmzIwlJw6P+BIQw9YTAaEhbmzqHkWsO3gL7ACpNtd6fCigECCx1Brl2im0O53v/
+17gjBhQIQ4/wosGxPndKsqQaDhK92y4ZSNPf/rMfvR4UWt4Q0W0g2VT+blOXQ5Iu
+eppv8irdrM9VEhHr9LK/ZjkZaSqwJNe9w29lsfmSV3gFKnW4kiBhDF66ii3RvWfl
+lBPvlJvdZSB8+vpf/0Bjv3hedBnqlf4Wuhhv+j+PDqJUv54cWJN9c6scMvNezOT2
+H08JLoO48Ou6mrazNWQQISDlH/7hTWQ9F8+AhNXqrCnbxtxmiVJvgxDPYpe2kiTo
+aTDiIhg2z94VD2h/CmgiN5lwrKynXDzCC+eiDWZzHDUx13IabkIqgJeiLUMBkG3S
+RBwjLIm+MjmFCV2lQIyCIUJ70iCiue04CSR+h1HrloFZmXMEpmXkvUdWPLP4PiVC
+MaJaHzBopWFhSxD3c3yuweo4ywxFe9jp3Y4iK4Jmn9cVC+0OwHI=
+=lRt1
 -----END PGP SIGNATURE-----
 
---=-syfNJk6+Iel5b9W+gI0r--
+--tscrktrwpqpmy56x--
 
 
---===============6562195529758503692==
+--===============3682761988108600373==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -226,5 +192,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============6562195529758503692==--
+--===============3682761988108600373==--
 
