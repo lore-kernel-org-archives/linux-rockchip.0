@@ -4,62 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 665BBCA5FEC
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Oct 2026 10:52:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21462CA5FE6
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Oct 2026 11:22:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vm5MRR+nphz/8zleYRKGUQJxGFPa1j0Ot1fuyL+gQ7o=; b=guaCSnseUx/aj3
-	LVz4JoQpgKcRoXow0kIlZIoXbt7OkVT1UpYajAVgZwLbHVTW9aFpV1CXRt3IsB6JIWn8vQLL2psq0
-	H06Jt9u2F88T8+TYTsNFjsvnGSrsbUo7hpyD//Mr0fF/I5ki5NpJ1VzDPA5qIcbb/UCWRxYDXJw/n
-	VzojNM2qN2MngHmAA76cp2tUU6nMvaX6dG1hW1lzZtjCh0WjCellbM9s2nTcwBxWJKitivswvapB3
-	zgFjWoAwXLHX18nP80IUQXaL35cRzuphRstEeS2Kl4/kZM/V5+Kx75IGO0g5aa8i9PISbm19xir5u
-	aWlNcITlPhgnKArBkqqg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BKeWkKrVbb/FCLCsDAmY2Axo+d5DL9Ubdp8xgE1t8Ek=; b=F9nr+BUFq3DXP5gIJjVwqRmgT7
+	a1rptarLDtOu7S2ABXUBCkDcZEq36PtIJ330MOkTUsL3uByDFefPGbabHzI0tGmtXb57rZI96coH8
+	hGzq0qG4v2xy5+UyPJTs1ucnMAyCqLn1eueZRHiC1cqpuWB2PhDKh6TBJd6plnq4P2skeuxP//39/
+	FtK7ws7Iw80x6WYLx3cfGKABd4s1dWvKq57wCEkKp/5NUV062qprGh9M7dRQR7PJtdIoR5GCr1XA/
+	yL644zcCD8Goa5OLUfYpIcLVGzHGe/eOmwkgrWgJ5Aqet1inEwDk9xbKXOHq9qdEctaAjxqhU6x95
+	MLjVZyhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDJpF-0000000EgE7-2byY;
-	Sun, 04 Oct 2026 10:52:13 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xDKIW-0000000EjGZ-1NQb;
+	Sun, 04 Oct 2026 11:22:28 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDJpE-0000000EgCq-1SbB;
-	Sun, 04 Oct 2026 10:52:12 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C73CA429D5;
-	Sun,  4 Oct 2026 10:52:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A0C51F000FF;
-	Sun,  4 Oct 2026 10:52:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791111131;
-	bh=Ded2t/lxa5/OOJ87UbsbJnDc5Xdi5OA3X44Xyk2z2B0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=FFLg41iwcTX3eTrwV8t5ajXGLkgtY0ZvuL5T/qeDdnKQBwVWD6N5vCzTPBYi+bBZY
-	 05fFRj3tAJZR+cbH5AyVdJa2W40q3K3/wb9BimQtqdglNKNr8+LXBwCiacs6srl2OR
-	 D1nb+Bqi7YFJkK8yerA5MXws9WGktv/Pf3ROeJSV0kVYffAZuT0/PNGgMQx5+u214k
-	 A7n7yhaCNIk/le8m+R9bbMMpGoc9Bfk21DQzyv2XNzjpVvTYeobV8hfnxfA8c0sh0c
-	 1v8WYrvs0C4AMhH4LDWpQBYsyvPmHVsnuGAofGaPT4Eyd4NqyueuT98NECkdbuH0nJ
-	 vVE6AkYtBSPsw==
-Date: Sun, 4 Oct 2026 12:52:07 +0200
-From: Vinod Koul <vkoul@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>, kernel@collabora.com,
-	linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 1/3] phy: hdmi: Add optional FRL TxFFE config options
-Message-ID: <asIv1zepKlIvzHX5@parshuram>
-References: <20260901-hdptx-ffe-v2-0-3a5922c76fc5@collabora.com>
- <20260901-hdptx-ffe-v2-1-3a5922c76fc5@collabora.com>
- <asFoBih6P7Cr6Ute@parshuram>
- <3c0dc77b-b692-498e-aed6-aa97d827b2f4@collabora.com>
+	id 1xDKIG-0000000EjDU-3iVH;
+	Sun, 04 Oct 2026 11:22:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1791112929;
+	bh=EUT8CXIEWEuHtdvb/fdhF3SZ+ZMOpvpJA9++C1bf6hE=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=AMY6xSEOpZRFPRHEl0wmIwaFVCtWyZB+yKXGiRixSnlwO4RnxbiVH28BdCBFj30n2
+	 qzHhE9vXQN/ErfgSCtf3AMACsF3vIjAZBkJpdUAVaKhO6iUUEbH/Pv9p6nyDuWI04B
+	 s0rAQKJ9ZRNSK6OwuyXgPtaz1yFqoeqXZhbZ3zkX2mcs+ifiEV+zU9tCXXSQ7rizbX
+	 ktZhTSul6N1DsRu07hXf2pr8Qg0Y9o1lA1wNYlY52Y6jF2HpAlXJkh+3ujr9CZp6UC
+	 rQbDtPAlg9xIYj2dqqLbrUnmum69F1ppPYHCb65V35D2Xg+QQAuooCaFsXys69bjSj
+	 LadNIlr0sqbYQ==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2375917E0163;
+	Sun, 04 Oct 2026 13:22:09 +0200 (CEST)
+Message-ID: <d341e911ddf0831b79a713ae7694d2e4396eeb38.camel@collabora.com>
+Subject: Re: [PATCH] media: verisilicon: rockchip: Fix leaks in init
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Frank Li <Frank.li@oss.nxp.com>, Michail Tatas <michail.tatas@gmail.com>
+Cc: benjamin.gaignard@collabora.com, p.zabel@pengutronix.de,
+ mchehab@kernel.org, 	heiko@sntech.de, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Date: Sun, 04 Oct 2026 07:22:08 -0400
+In-Reply-To: <aohrmDgzhRxC6M_D@SMW015318>
+References: <aoV3LLy5hSoKL4QP@michalis-linux>
+	 <aoXgSKnkbWZVKRui@lizhi-Precision-Tower-5810>
+	 <aodup3TleCfdxcF3@michalis-linux> <aohrmDgzhRxC6M_D@SMW015318>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3c0dc77b-b692-498e-aed6-aa97d827b2f4@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261004_042213_095829_AD2E760D 
+X-CRM114-Status: GOOD (  33.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,49 +86,145 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6562195529758503692=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 04-10-26, 00:33, Cristian Ciocaltea wrote:
-> Hi Vinod,
-> 
-> On 10/3/26 11:39 PM, Vinod Koul wrote:
-> > On 01-09-26, 22:55, Cristian Ciocaltea wrote:
-> >> During HDMI 2.1 FRL link training, the source and sink can negotiate a
-> >> Transmitter Feed-Forward Equalization (TxFFE) level to improve the
-> >> signal quality.  Starting from zero, the source may increment the TxFFE
-> >> level up to a maximum agreed during the LTS3 stage if the sink keeps
-> >> reporting FLT failures.  TxFFE adjustment is optional and only attempted
-> >> when both the source and the connected sink support it.
-> >>
-> >> Since the existing HDMI PHY configuration API covers the FRL rate/lane
-> >> selection only, provide the following fields to the frl sub-struct of
-> >> phy_configure_opts_hdmi:
-> >>
-> >> * ffe_level: the TxFFE level to apply, only meaningful when
-> >>   set_ffe_level is set.
-> >>
-> >> * set_ffe_level: a 1-bit flag that changes the semantics of the
-> >>   phy_configure() call, i.e. when set, the PHY driver must apply the new
-> >>   ffe_level and ignore the other frl related fields.
-> > 
-> > The ffe_level 0 implies it is disabled, so why should we use a flag for
-> > this? Rather use if value valid (non zero) logic to apply..?
-> 
-> That's not quite possible because level 0 is valid (and the default) according
-> to HDMI 2.1 spec. The source is expected to reset TxFFE to default whenever a
-> new FRL rate is set, hence the API shall be conformant. 
 
-Ah, looks like AI gave me wrong info about 0 being invalid, this is okay
-then
+--===============6562195529758503692==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-syfNJk6+Iel5b9W+gI0r"
 
 
--- 
-~Vinod
+--=-syfNJk6+Iel5b9W+gI0r
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Le vendredi 21 ao=C3=BBt 2026 =C3=A0 10:15 -0500, Frank Li a =C3=A9crit=C2=
+=A0:
+> On Fri, Aug 21, 2026 at 12:16:23AM +0300, Michail Tatas wrote:
+> > On Wed, Aug 19, 2026 at 12:56:40PM -0400, Frank Li wrote:
+> > > On Wed, Aug 19, 2026 at 12:28:12PM +0300, Michail Tatas wrote:
+> > > > if one of the dma_alloc_coherent in the init fucntion fails then
+> > > > the previously allocated ones leak.
+> > > >=20
+> > > > Fix by freeing them in the error path.
+> > > >=20
+> > > > Fixes: 727a400686a2 ("media: verisilicon: Add Rockchip AV1 decoder"=
+)
+> > > > Signed-off-by: Michail Tatas <michail.tatas@gmail.com>
+> > > > ---
+> > > >  .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 68 +++++++++++++++=
+----
+> > > >  1 file changed, 55 insertions(+), 13 deletions(-)
+> > > >=20
+> > > > diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_=
+av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> > > > index e4e21ad37323..fa77fd402412 100644
+> > > > --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec=
+.c
+> > > > +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec=
+.c
+> > > > @@ -369,6 +369,7 @@ void rockchip_vpu981_av1_dec_exit(struct hantro=
+_ctx *ctx)
+> > > >=20
+> > > >  int rockchip_vpu981_av1_dec_init(struct hantro_ctx *ctx)
+> > > >  {
+> > > > +	int ret =3D 0;
+> > > >  	struct hantro_dev *vpu =3D ctx->dev;
+> > > >  	struct hantro_av1_dec_hw_ctx *av1_dec =3D &ctx->av1_dec;
+> > > >=20
+> > > > @@ -377,39 +378,54 @@ int rockchip_vpu981_av1_dec_init(struct hantr=
+o_ctx *ctx)
+> > > >  	av1_dec->global_model.cpu =3D dma_alloc_coherent(vpu->dev, GLOBAL=
+_MODEL_SIZE,
+> > > >  						       &av1_dec->global_model.dma,
+> > > >  						       GFP_KERNEL);
+> > > > -	if (!av1_dec->global_model.cpu)
+> > > > -		return -ENOMEM;
+> > > > +	if (!av1_dec->global_model.cpu) {
+> > > > +		ret =3D -ENOMEM;
+> > > > +		goto global_model_cpu_err;
+> > > > +	}
+> > > > +
+> > > >  	av1_dec->global_model.size =3D GLOBAL_MODEL_SIZE;
+> > > >=20
+> > > >  	av1_dec->tile_info.cpu =3D dma_alloc_coherent(vpu->dev, AV1_TILE_=
+INFO_SIZE,
+> > > >  						    &av1_dec->tile_info.dma,
+> > > >  						    GFP_KERNEL);
+> > > > -	if (!av1_dec->tile_info.cpu)
+> > > > -		return -ENOMEM;
+> > > > +	if (!av1_dec->tile_info.cpu) {
+> > > > +		ret =3D -ENOMEM;
+> > > > +		goto tile_info_cpu_err;
+> > > > +	}
+> > > > +
+> > >=20
+> > > This function is called by hantro_probe() if I am correct
+> > >=20
+> > > there are dmam_alloc_coherent(), use dmam_alloc_coherent() will simpl=
+e
+> > > error handle and tear down.
+> > >=20
+> > > Frank
+> >=20
+> > Hello Frank,
+> >=20
+> > I did not know about the dmam* functions thanks for letting me know.
+> > I read some of the docs about them and they seem to not apply to
+> > this particular case since this code is not called from the probe
+> > function but rather the hantro_start_streaming function. Since
+> > dmam_alloc_coherent() only releases memory at device removal,
+> > it wouldn't free them when the stream ends and a new stream would
+> > re-allocate while the old buffers lingered until detach.
+> > So I think manual dma_free_coherent() error path is the correct
+> > fit here.
+>=20
+> Okay, make sense.
+>=20
+> Reviewed-by: Frank Li <Frank.Li@nxp.com>
+
+Applied, ty, and thanks for the review!
+
+>=20
+> Frank
+>=20
+> >=20
+> > Best regards,
+> > Michail
+>=20
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--=-syfNJk6+Iel5b9W+gI0r
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCasI24AAKCRDZQZRRKWBy
+9MzeAPwLTlwz3JuuObmxyg+u4105o43JLe4Bob4ey9dS0EJDawEA6+5DtSs8KzMp
+H7ZnsmemjvkbNZPbk1eEqzItk5JtOg0=
+=RPVc
+-----END PGP SIGNATURE-----
+
+--=-syfNJk6+Iel5b9W+gI0r--
+
+
+--===============6562195529758503692==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6562195529758503692==--
+
