@@ -4,60 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99DEFCA5FCE
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 12:42:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA841CA5FCE
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 13:15:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=n3ekBrm2S4Elk/DrmgYk9vL+BA96cnEs8N59Qola8R4=; b=38ayZUJJpqExcc
-	nslGuYhJJLZtTM6/etFTw0WfUIZHTtKU1izJsXC20crW7foM6OXmnzXuOCpJRPZ4EavMUtvoNmAVj
-	E52435NXygp+R8Gz69V4dhXQodVg3fV2/qA+/lKS+4q/mWUvmAAG7zarSqeIuhfjExm9K2h4jTAUv
-	ta3YDY+TgE1Yhes9THXcSyR7Z1w75G4TwWj7B6rJQNJOCuDd/wQzb7a1cJPmcZ4haqAIZCU1reaGO
-	K3nHfPtJF7eHKGcl0Oxrs6VPWhTtIBv3pZSBZ83R7kgjLF1ZIKSjV32pbv8TSX8NICVBCpMbK+8ft
-	JQx0jPZ/qhPp+mnRs6Yw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CTAU7UEGbrxLAi9avYPkx0PTyXCgt+rk+mNpvmBpoRI=; b=2Ni6aTSlw8iql0
+	7G36TJKQDWyzXoitIFAjDMHSvzFvjqfcPY7wWh10abLmqrw98Q93OP3hH7FVRjupf7LFOG8aO9y6i
+	/mRoTdVKJfNrnuRRsxXnqNnYR1AoB65JB1/ob+e8Hmo9cqD2S1/5H0aSnCcL3uiglS8jTq806hM8l
+	cqOy9IjGp/wSjSK/6EdnXaKlLMa/H2sSLjKqnJqE5VeQOp9qEpy6AOQzZEnSbfQikI1HDAoL1zd6V
+	9fAIJx81YmHRlT6QnePs1FAS9uWCTZPFtfPllk6uoEXXYbeTSO1JUFKx35nLvXGp9Q2bQCv/epoZz
+	JMjR4CLzqRxjTm9W6E/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDi15-0000000GPxQ-3Yms;
-	Mon, 05 Oct 2026 12:42:03 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xDiX5-0000000GVAV-2G1k;
+	Mon, 05 Oct 2026 13:15:07 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDi14-0000000GPxC-27IK;
-	Mon, 05 Oct 2026 12:42:02 +0000
+	id 1xDiWv-0000000GV6r-2jAk;
+	Mon, 05 Oct 2026 13:14:58 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9D8096022E;
-	Mon,  5 Oct 2026 12:42:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 493DE1F000FF;
-	Mon,  5 Oct 2026 12:41:59 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D4A6E431D7;
+	Mon,  5 Oct 2026 13:14:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB95C1F00893;
+	Mon,  5 Oct 2026 13:14:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791204121;
-	bh=nzUTkMGw2FUAW6LuwD/ZNDODRpqoHDAQwQFc1CjSYPg=;
-	h=From:To:Cc:Subject:Date;
-	b=SiJWDRnvdHzX5L6j68vY9lMX0NVa03XwvfSvzf9ju2puAsQL5sjT2lbkHuEvJw9P0
-	 jiW+mSmxbW4acqy/D1vZXZJsI9ri3fXUKKyOrCQh4PJvSVmn19hhHRR7tiFxK9q2rm
-	 K/XOJ02by9haIwWOkBm3a1EjV1WfktXnv/CIzMQBcJArea24vvJvy1E13ZMsdutB+C
-	 WseB7a3CSe1yZGKa7IxufovwcxV6I3WO+RNhZP7NadDWUIf+BTRINAQnCl027+jsHl
-	 66DUjOsMW7Cn8pc/7w14/maEAWMPc0kP6Tw9CNl0jguVMdvXlP1rKF4J327D/88QuE
-	 8sbuOPjsxCzaQ==
-From: Niklas Cassel <cassel@kernel.org>
-To: Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-	Frank Li <Frank.Li@nxp.com>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] PCI: Update saved Max Payload Size in pcie_set_mps()
-Date: Mon,  5 Oct 2026 14:41:55 +0200
-Message-ID: <20261005124154.2190628-2-cassel@kernel.org>
-X-Mailer: git-send-email 2.55.0
+	s=k20260515; t=1791206096;
+	bh=Vij8nuMtawA4EEgDodwVOo0PtTd64d9d4ZIlMDRzEPI=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=UWxpw7+wb4AEgH3i/RbPmgLiISDLNvgTkCc9/4d9oAeNZIRuLJnOgCzp+7DVxk9hR
+	 4QMeQS9Z+AmUWp/N2maz0kzleCDawQ+gQxxntnI8GvnCAy5TeID7NYTHuV+vCbJ2cQ
+	 /uO4kuzeKWb5yEAiFjk8/L+MmdQnZQJdqQrvcKykbsNV505IC17NDcuj0VOYdkl/cr
+	 540Z5UbXWAJvRqgQ2SPEKl+B4Jdfoejyv0XmPgaIMipUImUi40sLNNb1XdnnExHQJq
+	 ZjrQpqqiRIhP2NrbwOL4v4wAHeg6xiulwuvs324dj1fyhnfkmNe+FVDohbzTPyaCBz
+	 0YX/jtSF8T5VQ==
+From: Mark Brown <broonie@kernel.org>
+To: heiko@sntech.de, william.zhang@broadcom.com, kursad.oney@broadcom.com, 
+ jonas.gorski@gmail.com, Guangshuo Li <lgs201920130244@gmail.com>
+Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linusw@kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, jon.lin@rock-chips.com, 
+ bcm-kernel-feedback-list@broadcom.com, noltari@gmail.com
+In-Reply-To: <20260924112329.1566051-1-lgs201920130244@gmail.com>
+References: <20260924112329.1566051-1-lgs201920130244@gmail.com>
+Subject: Re: (subset) [PATCH 0/3] spi: balance remove-path teardown in
+ three drivers
+Message-Id: <179114318831.150114.12760845139771007579.b4-ty@b4>
+Date: Sun, 04 Oct 2026 21:46:28 +0200
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3263; i=cassel@kernel.org; h=from:subject; bh=FB+arrFjBGrAlUmQqtf4EI5iCQwOgK1EVKfXkbU9/y4=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGLIOzxayd460vzbjx9cSf+9520VljzBufGFU6Vrdoj2Fy 8t8kTFnRykLgxgXg6yYIovvD5f9xd3uU44r3rGBmcPKBDKEgYtTACZiG8rIMC2H+Zzy91Wxb2va tS3aNmSWV5wIcau1/rJy56Udhdt2bmdk+ObpJiHfI3Q8YqLC7I0Ryy1uzKybetzn15FJue+aLN/ cZgAA
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1522; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=HoRd64CGBSPHAygK6Bwh7r690KCdOZuqMTF0+T31sEo=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqw6LKIw6I/a46gzhc7bnqluU5FckkZTqnoRQOa
+ iofk9gNG6eJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCasOiygAKCRAk1otyXVSH
+ 0NlxB/9UJ7TS16VU2H/ap9bXFFDsZ0ziaeNgBroa41aDUN/rR/CBWJwP9doQg+ZZuhlHvGzQ4lD
+ QsWQ077htkcLBq+Fwe8B1PsMZv1DIJF2YOBngqVkS08Mh6pmRpGJNMBKyupl05hNrMTWCBzsdTj
+ B7BsdVqew3/8vToMJC8+lVuuhoP5X4W4G31gyMGa3nyj9/jYr+axDKI9CBx+pMpKsaEeUWNAMe7
+ EqaKmjnXcifikaen1Jsm7rFajHUmh97DzABF9KhJdHR1YKh5tb/6ASnWBdZ8LgNzYJkvLD6jB0g
+ Tb3n14IfnKjhBue3Gv8nNc/7qxJj8j1UMov0LNS1T4D6dEt7
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,88 +83,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-pcie_set_mps() changes the Max Payload Size (MPS) in the Device Control
-register but leaves the copy saved by pci_save_state() alone, so the next
-pci_restore_state() puts back the old value.
+On Thu, 24 Sep 2026 19:23:26 +0800, Guangshuo Li wrote:
+> spi: balance remove-path teardown in three drivers
+> 
+> Several SPI drivers establish resources or runtime-PM state during probe
+> but do not perform the matching teardown after successful removal.
+> 
+> Add the missing unmap or runtime-PM cleanup in each driver's remove path,
+> following the cleanup already used by its probe error paths.
+> 
+> [...]
 
-The PCI core does change the MPS of devices whose state has already been
-saved: pci_configure_mps() reduces a Root Port's MPS when a device with a
-smaller MPS Supported is hot-added directly below it (commit 9f0e89359775
-("PCI: Match Root Port's MPS to endpoint's MPSS as necessary")), and with
-"pci=pcie_bus_safe", pcie_bus_configure_settings() can do the same when
-pciehp calls it after a hot-add.  The Root Port's state was saved when it
-was added and again when portdrv probed it.
+Applied to
 
-Since commit 3fc686d550f6 ("PCI/ERR: Add support for resetting the Root
-Ports in a platform-specific way"), pcibios_reset_secondary_bus() restores
-that saved state, without saving it first, after host->reset_root_port()
-has reset the Root Port, e.g. during AER recovery or on Link Down with the
-qcom and Rockchip DWC drivers.  The Root Port then goes back to the old,
-larger MPS while the device below it is restored to the smaller one, so
-the Root Port may send TLPs that the device treats as Malformed.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.4
 
-Update the saved copy of Device Control when pcie_set_mps() changes the
-MPS, like commit 909f7bf9b080 ("PCI: Update saved_config_space upon
-resource assignment") does for BARs.
+Thanks!
 
-Fixes: 3fc686d550f6 ("PCI/ERR: Add support for resetting the Root Ports in a platform-specific way")
-Assisted-by: LLM
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
----
-This fix was originally sent out as part of my RFC series:
-https://lore.kernel.org/linux-pci/20260930145017.1356088-6-cassel@kernel.org/
+[1/3] spi: fsl: unmap immr_spi_cs on remove
+      https://git.kernel.org/broonie/spi/c/af1d882d421d
+[3/3] spi: bcm63xx-hsspi: Disable runtime PM on remove
+      https://git.kernel.org/broonie/spi/c/38232bd3cea7
 
-But sending this fix as a separate patch, as the fix is really unrelated
-to the rest of the series, so it could be picked up independently.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
- drivers/pci/pci.c | 24 +++++++++++++++++++++++-
- 1 file changed, 23 insertions(+), 1 deletion(-)
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-index 8cc6a89130b5..f3b82eb7bfaf 100644
---- a/drivers/pci/pci.c
-+++ b/drivers/pci/pci.c
-@@ -1736,6 +1736,24 @@ static void pci_restore_pcie_state(struct pci_dev *dev)
- 	pcie_capability_write_word(dev, PCI_EXP_SLTCTL2, cap[i++]);
- }
- 
-+/*
-+ * Update the saved copy of the Device Control register after changing it, so
-+ * that pci_restore_state() doesn't put back a stale value.  Device Control is
-+ * the first register saved by pci_save_pcie_state().
-+ */
-+static void pcie_update_saved_devctl(struct pci_dev *dev, u16 clear, u16 set)
-+{
-+	struct pci_cap_saved_state *save_state;
-+	u16 *devctl;
-+
-+	save_state = pci_find_saved_cap(dev, PCI_CAP_ID_EXP);
-+	if (!save_state)
-+		return;
-+
-+	devctl = (u16 *)&save_state->cap.data[0];
-+	*devctl = (*devctl & ~clear) | set;
-+}
-+
- static int pci_save_pcix_state(struct pci_dev *dev)
- {
- 	int pos;
-@@ -5983,8 +6001,12 @@ int pcie_set_mps(struct pci_dev *dev, int mps)
- 
- 	ret = pcie_capability_clear_and_set_word(dev, PCI_EXP_DEVCTL,
- 						  PCI_EXP_DEVCTL_PAYLOAD, v);
-+	if (ret)
-+		return pcibios_err_to_errno(ret);
- 
--	return pcibios_err_to_errno(ret);
-+	pcie_update_saved_devctl(dev, PCI_EXP_DEVCTL_PAYLOAD, v);
-+
-+	return 0;
- }
- EXPORT_SYMBOL(pcie_set_mps);
- 
--- 
-2.55.0
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
