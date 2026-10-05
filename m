@@ -4,62 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 303D6CA5FFD
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 19:08:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B5ECA5FFC
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 20:58:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hTTJN7gn0H+a/Y+ilkFF3yE936TyTdNlfLdp12PMiMg=; b=KV8h7ziUkQ+DRW
-	o6lPwUQA0wSFUFPq5h6O1q2kTsjE6PAlnYsDsa7w7a3PXZw4LAJFE4Co14MQwYLhd4tJdYeToRwds
-	oTVgovhBCxn2WJiBPQ9iY40WO0YL3WX3HQEUWLycKa4C896Vh17wTAlIYcihk1naALfrDEPcV6qiK
-	DAo09YtzbvlmBYutZncj6UHeK5RvhyO+dxZa6t17vGVXEG5Qvo6kqsf4DKo0SdAODSloys/ulwnlX
-	xxP9DJ64IjQSpgQJW12wSvuVE8linoiANGFHeqOu2Uv1O8nCkiR7AbiuCRGyFBbhE6J2JXsrYY3bd
-	1tvBBO3zL/oFvojt9obQ==;
+	List-Owner; bh=3wLyt1p8L5i1eNDNgmxJiRYgsAOjjFT0t4lqN5qxhgU=; b=GAIZ4xvhaLS0mI
+	qdHca5jxTTvHO/PqzOKYDFQBtco+jqKvfm4KRhrMEBtlUUFFD4On5LZpy1AYlvNn/1jOjV9qoyzBS
+	haaqzV7RBs1VhlBI6jfeVKFL6MQat1D2qOC0YjqSDAGrUROJX2yQrW10zrlaDEGCZu/jVXUXcRfr2
+	Z6shq0LMHhkN+MYXTxlcr+uCguUYm8RvcBJ31y0g8O7WbxQYfI78wiOAye+9K5bzz0x3i3JqVyqbR
+	cFL1UTrNOslI6QEADBRiCadv0jF/mMqORS+/P71ybVDL9W2hJqM0H+BVAEp6Yu0cSovDJQqqK9lCl
+	daxZW6Lur3pxYHpW6ndw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDo2X-0000000H2kc-0vQf;
-	Mon, 05 Oct 2026 19:07:57 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xDple-0000000HAJ3-0FKw;
+	Mon, 05 Oct 2026 20:58:38 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDo1h-0000000H2ev-13W0;
-	Mon, 05 Oct 2026 19:07:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=69MHVnGdOAe0SajgriMbKOljFABccXRQ0VGfA+upUvo=; b=LuzOGfVvoW9Jpv8B/8hUo0ZXzQ
-	S0jPXwmSOKae+3uANqfqfxTClfmCwMMRiksQSY236dpdqm1PCPW7HB18LRfmvyMqeitBpGPfQFRAL
-	XJ62YU7IJi0YkbBXofkTgSyo1ANHD9k/XgZIKrdIzpGW8wNF59tfnrYNPJYleFodMDRUDcnXnuqOc
-	+T5/C4XPwNgX3vLsacgau9p8XzncCNXXq1bLA56Coe20mnj3tBYYsJU0MTOHXzBIRL9I/KqKfycBz
-	O3lRq4TLpy3HXnZ/p+DbWgf9Wtc8Hmv0932KeB0sqFttWqOUjQs9Lc7GRFOYVNZWR16U4FV2e8Jxb
-	BFVHJYjA==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Michael Riesch <michael.riesch@collabora.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Amin Gattout <amin.gattout@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: Re: (subset) [PATCH v2 0/5] media: rockchip: add support for the RK3576 Video Capture unit
-Date: Mon,  5 Oct 2026 21:06:53 +0200
-Message-ID: <179122712929.3317128.1173871776565894592.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260921-vicap-rk3576-v2-0-0a4582e20c72@gmail.com>
-References: <20260921-vicap-rk3576-v2-0-0a4582e20c72@gmail.com>
+	id 1xDplb-0000000HAIB-3qb2;
+	Mon, 05 Oct 2026 20:58:35 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 24D3D42A2B;
+	Mon,  5 Oct 2026 20:58:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B8951F000FF;
+	Mon,  5 Oct 2026 20:58:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791233915;
+	bh=NNpKODSv8cbaDOfghRaj6Q3Wssu5+yBBdBSPkeZOgVA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=JWJmXdjvkJLsj4FzNwydM9W+G7D089NS9WmoDLl4jIQZ2o6K2BRfhjIs62fp3ry9g
+	 UtJg52BTRl368jxhDo0m/9gkQQ4iIZP8fpWEePEufdmCKmcpIdGF4wn2rjggtVXfFk
+	 0ozyafbkSWKH5tmB4AgtCFh1EU7fy1f91mAXCU2GQq9blUH2RPRPtirhEz8kQLf5fF
+	 8xLnRUpvu7sURoXENvhZPrh8NY5fDYOZ3xKhC3On/+MUMNZFZwXTpXFUDBVDctIQja
+	 TIr5pzqBDgyJQxZuBtTgX1zAo9cPwgU3jlYdtQcENO29cvv2zLcuduYu0epu3gp5qQ
+	 2RpBMcjCD2UlA==
+Date: Mon, 5 Oct 2026 13:58:33 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Coia Prant <coiaprant@gmail.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, Maxime Chevallier
+ <maxime.chevallier@bootlin.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Lad Prabhakar
+ <prabhakar.mahadev-lad.rj@bp.renesas.com>, Romain Gantois
+ <romain.gantois@bootlin.com>, Heiner Kallweit <hkallweit1@gmail.com>, Neil
+ Armstrong <neil.armstrong@linaro.org>, Russell King
+ <linux@armlinux.org.uk>, Shawn Lin <shawn.lin@rock-chips.com>, David
+ Heidelberg <david@ixit.cz>, netdev@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH net-next v10 00/11] net: pcs: add basic support for
+ RK3568 XPCS
+Message-ID: <20261005135833.37376f20@kernel.org>
+In-Reply-To: <20260922200336.2201212-1-coiaprant@gmail.com>
+References: <20260922200336.2201212-1-coiaprant@gmail.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261005_120705_312322_813BD21C 
-X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,30 +82,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Wed, 23 Sep 2026 04:03:24 +0800 Coia Prant wrote:
+> This series adds proper SGMII support for the Rockchip RK3568 SoC
+> using the integrated Synopsys DesignWare XPCS, along with necessary
+> fixes and refactoring in the stmmac core and XPCS driver.
 
-On Mon, 21 Sep 2026 17:29:56 +0200, Amin Gattout wrote:
-> This series adds support for the Video Capture (VICAP) unit of the
-> Rockchip RK3576 to the rkcif driver.
-> 
-> The RK3576 VICAP features a digital video port (DVP) and five MIPI
-> CSI-2 capture interfaces. Compared to the RK3588 variant, the MIPI
-> register blocks are laid out differently, the ID_CTRL0 bit layout has
-> changed, the VC/DT filter has moved from ID_CTRL0 to ID_CTRL1, and the
-> capture size is configured in the new ID_SET_SIZE register. In
-> addition, the pixel clock of each MIPI port enters the VICAP through a
-> dedicated gate in the clock and reset unit, so the VICAP claims five
-> interface clocks and five interface resets.
-> 
-> [...]
-
-Applied, thanks!
-
-[5/5] arm64: dts: rockchip: add vicap node to rk3576
-      commit: c9f69938f459e80471759008ce7504a637e801f6
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Someone marked this as changes requested. Not sure who and why.
+I was waiting for an ack from DT maintainers.
+If it wasn't you, either, maybe repost to re-queue this for review?
 
 _______________________________________________
 Linux-rockchip mailing list
