@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCA8BCA5FF0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 10:20:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99DEFCA5FCE
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 12:42:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2ElDKcT6AKZ7oNr65R5ax9pWT8B87rma6D0U2GqkPko=; b=kYlrmzFw+xFBpk
-	AXTgGTSBA8Ei4fyYFWjvT9RAkamA4R1phwtSBAZ9Xwzna+f9RmsBIIppgcBj/3n11oTao/EPEnCFU
-	lvfEj9YjTQ5qfsK4/HhvhuI8gmaTlCSw9GceqaX089iYVg1Sr1C4Qmut1Py8Mul40iADVlcooekgh
-	AvkyaA3MnEbP2r18c0LuYMgS7aeabB4X3Jv6666a7Dr2fxjrBfzOyNQn5Gr+hl5kU+sjkb3egFZZ4
-	jj/wJtt6ol746MbjLsTiu0TJABQk6Zpn5Pgg4LU7WMNXNmChL7TWZtB/e/pnCOB1epYTAdzHx4N9z
-	sGhCPahuUWXJ5n+axaqA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=n3ekBrm2S4Elk/DrmgYk9vL+BA96cnEs8N59Qola8R4=; b=38ayZUJJpqExcc
+	nslGuYhJJLZtTM6/etFTw0WfUIZHTtKU1izJsXC20crW7foM6OXmnzXuOCpJRPZ4EavMUtvoNmAVj
+	E52435NXygp+R8Gz69V4dhXQodVg3fV2/qA+/lKS+4q/mWUvmAAG7zarSqeIuhfjExm9K2h4jTAUv
+	ta3YDY+TgE1Yhes9THXcSyR7Z1w75G4TwWj7B6rJQNJOCuDd/wQzb7a1cJPmcZ4haqAIZCU1reaGO
+	K3nHfPtJF7eHKGcl0Oxrs6VPWhTtIBv3pZSBZ83R7kgjLF1ZIKSjV32pbv8TSX8NICVBCpMbK+8ft
+	JQx0jPZ/qhPp+mnRs6Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDfoX-0000000G9fd-3JXZ;
-	Mon, 05 Oct 2026 10:20:57 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xDi15-0000000GPxQ-3Yms;
+	Mon, 05 Oct 2026 12:42:03 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDfoW-0000000G9dt-0EER;
-	Mon, 05 Oct 2026 10:20:56 +0000
+	id 1xDi14-0000000GPxC-27IK;
+	Mon, 05 Oct 2026 12:42:02 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 70DD360A7F;
-	Mon,  5 Oct 2026 10:20:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 552301F00893;
-	Mon,  5 Oct 2026 10:20:52 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 9D8096022E;
+	Mon,  5 Oct 2026 12:42:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 493DE1F000FF;
+	Mon,  5 Oct 2026 12:41:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791195655;
-	bh=fs+vPKGM9euFPbmuig/kk7Y6Q16/AWU1bovoyR6PvLA=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=bx1ru7FUxUOa8za+jHJc18vTvLSX0rGMjYYZQPSfq/jyKsKUa7bZaaGGUva8/CfTp
-	 WMdg/G++C81yk6gAFR3I/6NfoohQO81VTmyJhdUvgpHl2uq7oES27vbdPul7Gg/ycR
-	 8ahPijtcC+M5tH33Nfw/9dR1u5U0cimYXpI8rG+4T5Sq9bvKPkC5xC1w6OplhFZ/pc
-	 XLACWo7KRYFVaNrB6q8VDfoc0b8heJahjdluTXnjV31T5YWumh5k9jFg53gseGOWjc
-	 Oyqzl+xkSTbBZL52hshd/MO5n45nFRAZiZgl6bsY3Q9RzZrNMw9P6d65IV36uGpAws
-	 P6enf4OhHtvkw==
-From: Vinod Koul <vkoul@kernel.org>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Amin Gattout <amin.gattout@gmail.com>
-Cc: Michael Riesch <michael.riesch@collabora.com>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-phy@lists.infradead.org, Conor Dooley <conor.dooley@microchip.com>
-In-Reply-To: <20260915-rk3576-dphy-v2-0-b56e68b54b8c@gmail.com>
-References: <20260915-rk3576-dphy-v2-0-b56e68b54b8c@gmail.com>
-Subject: Re: [PATCH v2 0/4] phy: rockchip: add support for the RK3576 MIPI
- CSI-2 DPHYs
-Message-Id: <179119565198.316652.7051689992732505012.b4-ty@kernel.org>
-Date: Mon, 05 Oct 2026 12:20:51 +0200
+	s=k20260515; t=1791204121;
+	bh=nzUTkMGw2FUAW6LuwD/ZNDODRpqoHDAQwQFc1CjSYPg=;
+	h=From:To:Cc:Subject:Date;
+	b=SiJWDRnvdHzX5L6j68vY9lMX0NVa03XwvfSvzf9ju2puAsQL5sjT2lbkHuEvJw9P0
+	 jiW+mSmxbW4acqy/D1vZXZJsI9ri3fXUKKyOrCQh4PJvSVmn19hhHRR7tiFxK9q2rm
+	 K/XOJ02by9haIwWOkBm3a1EjV1WfktXnv/CIzMQBcJArea24vvJvy1E13ZMsdutB+C
+	 WseB7a3CSe1yZGKa7IxufovwcxV6I3WO+RNhZP7NadDWUIf+BTRINAQnCl027+jsHl
+	 66DUjOsMW7Cn8pc/7w14/maEAWMPc0kP6Tw9CNl0jguVMdvXlP1rKF4J327D/88QuE
+	 8sbuOPjsxCzaQ==
+From: Niklas Cassel <cassel@kernel.org>
+To: Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
+	Frank Li <Frank.Li@nxp.com>
+Cc: Manivannan Sadhasivam <mani@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] PCI: Update saved Max Payload Size in pcie_set_mps()
+Date: Mon,  5 Oct 2026 14:41:55 +0200
+Message-ID: <20261005124154.2190628-2-cassel@kernel.org>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3263; i=cassel@kernel.org; h=from:subject; bh=FB+arrFjBGrAlUmQqtf4EI5iCQwOgK1EVKfXkbU9/y4=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGLIOzxayd460vzbjx9cSf+9520VljzBufGFU6Vrdoj2Fy 8t8kTFnRykLgxgXg6yYIovvD5f9xd3uU44r3rGBmcPKBDKEgYtTACZiG8rIMC2H+Zzy91Wxb2va tS3aNmSWV5wIcau1/rJy56Udhdt2bmdk+ObpJiHfI3Q8YqLC7I0Ryy1uzKybetzn15FJue+aLN/ cZgAA
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,33 +74,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+pcie_set_mps() changes the Max Payload Size (MPS) in the Device Control
+register but leaves the copy saved by pci_save_state() alone, so the next
+pci_restore_state() puts back the old value.
 
-On Tue, 15 Sep 2026 12:42:45 +0200, Amin Gattout wrote:
-> The Rockchip RK3576 features two MIPI CSI-2 DPHYs. The CSI-2 DPHYs can be
-> supported using the existing phy-rockchip-inno-csidphy driver.
-> 
-> This patch series adds support for this variant.
-> 
-> As you may have guessed, this is part of the efforts to bring the
-> support for the RK3576 camera pipeline (VICAP) mainline.
-> 
-> [...]
+The PCI core does change the MPS of devices whose state has already been
+saved: pci_configure_mps() reduces a Root Port's MPS when a device with a
+smaller MPS Supported is hot-added directly below it (commit 9f0e89359775
+("PCI: Match Root Port's MPS to endpoint's MPSS as necessary")), and with
+"pci=pcie_bus_safe", pcie_bus_configure_settings() can do the same when
+pciehp calls it after a hot-add.  The Root Port's state was saved when it
+was added and again when portdrv probed it.
 
-Applied, thanks!
+Since commit 3fc686d550f6 ("PCI/ERR: Add support for resetting the Root
+Ports in a platform-specific way"), pcibios_reset_secondary_bus() restores
+that saved state, without saving it first, after host->reset_root_port()
+has reset the Root Port, e.g. during AER recovery or on Link Down with the
+qcom and Rockchip DWC drivers.  The Root Port then goes back to the old,
+larger MPS while the device below it is restored to the smaller one, so
+the Root Port may send TLPs that the device treats as Malformed.
 
-[1/4] dt-bindings: soc: rockchip: add rk3576 csidphy grf syscon
-      (no commit info)
-[2/4] dt-bindings: phy: rockchip-inno-csi-dphy: add rk3576 variant
-      commit: 40c95f05093129e75f0180938de53dac65ce7e75
-[3/4] phy: rockchip: phy-rockchip-inno-csidphy: add support for rk3576 variant
-      commit: 47de65075563915363ed25affff41b9b4d004d4f
-[4/4] arm64: dts: rockchip: add csi dphy nodes to rk3576
-      (no commit info)
+Update the saved copy of Device Control when pcie_set_mps() changes the
+MPS, like commit 909f7bf9b080 ("PCI: Update saved_config_space upon
+resource assignment") does for BARs.
 
-Best regards,
+Fixes: 3fc686d550f6 ("PCI/ERR: Add support for resetting the Root Ports in a platform-specific way")
+Assisted-by: LLM
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
+---
+This fix was originally sent out as part of my RFC series:
+https://lore.kernel.org/linux-pci/20260930145017.1356088-6-cassel@kernel.org/
+
+But sending this fix as a separate patch, as the fix is really unrelated
+to the rest of the series, so it could be picked up independently.
+
+ drivers/pci/pci.c | 24 +++++++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+index 8cc6a89130b5..f3b82eb7bfaf 100644
+--- a/drivers/pci/pci.c
++++ b/drivers/pci/pci.c
+@@ -1736,6 +1736,24 @@ static void pci_restore_pcie_state(struct pci_dev *dev)
+ 	pcie_capability_write_word(dev, PCI_EXP_SLTCTL2, cap[i++]);
+ }
+ 
++/*
++ * Update the saved copy of the Device Control register after changing it, so
++ * that pci_restore_state() doesn't put back a stale value.  Device Control is
++ * the first register saved by pci_save_pcie_state().
++ */
++static void pcie_update_saved_devctl(struct pci_dev *dev, u16 clear, u16 set)
++{
++	struct pci_cap_saved_state *save_state;
++	u16 *devctl;
++
++	save_state = pci_find_saved_cap(dev, PCI_CAP_ID_EXP);
++	if (!save_state)
++		return;
++
++	devctl = (u16 *)&save_state->cap.data[0];
++	*devctl = (*devctl & ~clear) | set;
++}
++
+ static int pci_save_pcix_state(struct pci_dev *dev)
+ {
+ 	int pos;
+@@ -5983,8 +6001,12 @@ int pcie_set_mps(struct pci_dev *dev, int mps)
+ 
+ 	ret = pcie_capability_clear_and_set_word(dev, PCI_EXP_DEVCTL,
+ 						  PCI_EXP_DEVCTL_PAYLOAD, v);
++	if (ret)
++		return pcibios_err_to_errno(ret);
+ 
+-	return pcibios_err_to_errno(ret);
++	pcie_update_saved_devctl(dev, PCI_EXP_DEVCTL_PAYLOAD, v);
++
++	return 0;
+ }
+ EXPORT_SYMBOL(pcie_set_mps);
+ 
 -- 
-~Vinod
-
+2.55.0
 
 
 _______________________________________________
