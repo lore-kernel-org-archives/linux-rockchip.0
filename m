@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1880ACA5FCE
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 09:46:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24D07CA5FFD
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 09:46:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nFzLSeCR5jUDqPdY29vNDFS2JvdIIgomjJjjJ+NWvdU=; b=AhBcKr+tfgz23O
-	fyoxQemPlH4HO4VJXG9VLEgApe/DV9NgrPSAS9qMMZ/rmRC71HDDVQ1u/3K4OWuYc4zP7FsHpAFmA
-	5oNXRzsglS6ZPc5PZ6D2dl060+QFI9XNhpo7TOspbaLALVM01FFNHTVBar29GM4nMA61NxJZTSwmX
-	YFuNbUeccCz4Kih950Ez40nlBH8Ie+YdZ6QUE5/Glqcs0vjM4cxqolcFH+tcAWJ5jdRBKfsqSD0j4
-	kX5oUjSDgnzuxNcK19UxFqZap9byM4/kF1Gq6UkTHtKBkALbUBIXY7QZcMcklpn6EE2K02MAGKFzT
-	d9KxzIZAZOCzZl17xJbQ==;
+	List-Owner; bh=w1K4IUPLrWyTAwLm4oXh6Wb1+bic2lpxkKCJCBIA0DQ=; b=WOB0NYLS5tDheF
+	8veF3bxlQFUc7Nm35o4EV7b5n+GFHRNBzQo+upp2zLq91PcCbnDlyEa2B3sOqdudii4jxNTJr5Rux
+	04QPrmNj2ybuU9D0uWStwqrRCAWdgkaqGMArojnmYOM2HOFifOHmp2aybjgdSgu+4wbJ9tdm8z00J
+	rRyfUqmN9DgJNH5S/PzTeyiJPHHW0ZSJO7CUWihgTOMFdiO13KkndKvXH6V6UQjWqo3k3C0vmmB6s
+	3qCVSO9N+j5OfBih9glomoAZkr0PzRkmViYuU8cPBovWHcw7BI1hM18I0oPMQECnnM5Dhx8IFYXuz
+	PdQTNQPmDZbEWpvAtdhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDfH0-0000000G3Yn-1erH;
-	Mon, 05 Oct 2026 09:46:18 +0000
-Received: from mx1.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::107])
+	id 1xDfH5-0000000G3cd-0ra9;
+	Mon, 05 Oct 2026 09:46:23 +0000
+Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDfGx-0000000G3Vy-007s;
-	Mon, 05 Oct 2026 09:46:16 +0000
+	id 1xDfGx-0000000G3W3-2Tf9;
+	Mon, 05 Oct 2026 09:46:17 +0000
 Received: from [127.0.1.1] (unknown [IPv6:2a02:560:5ca5:d100:9ebf:dff:fe00:fdb5])
 	(Authenticated sender: sha@pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 4188B202353;
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 574DA202354;
 	Mon, 05 Oct 2026 11:46:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
 	s=20260414; t=1791193573;
@@ -36,19 +36,19 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=3HDgZKqvl5arTHrbz+lrMLe4miAykT2EZW+lIqpCaAY=;
-	b=b0CaOmewkngMR5ZqrsMzDgoqt8+U01rEqLiKh0FQTS/XgundAsqDhhwwn5Yh7BjxP35K0j
-	i3dp5oozMX4/THi5rf/wLYJxD9SxK8qINTB4QR9yDRDz634yxuxpdW4RN3rUEW7Coyip9n
-	G0nBlV5zVQE+66+LO6ixGzfBwW3r90Boh2hkxVQD1f7BG0IGaU+S6g9DwK2Q0XfSOx1zeb
-	RBoMmvfA5OUI25f95gmnnS6O2zTPnhqI/13l/jZILGVdC5lZTFGOcjewyjZavvvYXadzIn
-	qwyhbSll6qVt0NyfZLvKJHm2HhRagCAz9l12ROZj6RoKLTUnQTiJAD7a76MjIQ==
+	bh=tuoWp/N/KlBV8lwab/+aPTx/4RNkZa+sJjWMlvh/CQc=;
+	b=Sz72JUvl0Npg0vRw58xE8tpKL1ffvk5DhClTQLXqmi3W1HhGwoTgorlWWyKlSGrPadgziy
+	qypFel35YOen/AFKUg88ua1a2BEdSrnTaYkRMw2hbcAaI7esfuurZlRrbd43n1cg9EhZ99
+	ee3r5SDFXNBFH1bK5zSRSotBg44Abn35G6VDtI5NTku4x/So0/k+z5cDxE9EyZZNepd2S5
+	g/RJHVJ/alqQzt5dZ6lCInpheC7dakopFM01MmAnW2gWNbm5VMCY8HFf5QBF6LXgzu2Gcd
+	oVpRMTNn4YO6JZjp3TovPTDsrCdYefBW8baRMVA0hmK14umm1USvEYRVp6Ko8g==
 ARC-Seal: i=1; s=20260414; d=pengutronix.de; t=1791193573; a=rsa-sha256;
 	cv=none;
-	b=D6gvVJFXVaJVQKPYCNHPYr0qj6coMasLd5oUhk/jDIvk92AARzCir+usgZ2HWy4mX/jDJJ
-	MCAg5zsO0LMOm6HO8He2tqVsu96kyZNqt/CoupmC9eA0ro+pda+phajeWNm8NYSGzj8NkW
-	yl3vg5Aj93iK4Tkb201JgLjvodt5rzWwQREib6gRZQFcooJqrdxvgXN2L2bfBHRey4wtu1
-	XFOgUg2MhLJPrbFW3YfSL6YPtcBcx8OyEhXHiwuVlAPeEjxqocyjZd/dBZ6ssIAPGwwJQ5
-	8GV+15EdLeTKQ1cN4RFz/OXodKZAO6Rwn5wezzG/defPC4zylYevHd7TDzFTCA==
+	b=ZOpZZiexwEm4V71C2aeS0w2LnjQT6lEQaUlypac4TVmGYXtgTzOnW/bUes79LmEhKY/+2M
+	kK3GEXjWK4KDZSxMfM3C8YdTYX2svYKnRbRA0cbs53ck75I8WO++1Z/FKBfa2N9/w+7EpH
+	FLKgErqiWyXggOWQoqv8z6JlIux0r5OToc43mJEKOjE+up5+5NC+16BzgJ8lG0B9jolmcM
+	CEQBFnjfcjwDYJI2wARZnVWrj+xvkioJQ3Jay8CHtnFA2jssWoD6ZOLLDavHp2GDjF05on
+	VGIly3+zu1SWDqtUydZlcgWcMWjH7ymmnmYmbW7uc4z3vB35Rtj7k5pdq9Gt1A==
 ARC-Authentication-Results: i=1;
 	ORIGINATING;
 	auth=pass smtp.auth=sha@pengutronix.de smtp.mailfrom=s.hauer@pengutronix.de
@@ -58,17 +58,17 @@ ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=3HDgZKqvl5arTHrbz+lrMLe4miAykT2EZW+lIqpCaAY=;
-	b=F1SgvGl6jem+OjcY0EggxRsezew80QwL5hR83tRYjddMA7055nFn+dvYVkiBzDwGnlCQe3
-	k5tJEENF6kXvmzRSBsg/wIKBsCZoij0EB83HRRrHjAH865nE3sNUNqFOs7MFracbnVE/mE
-	VNHLq/6R5YVA8Af7pObqtRCn3Vun7DuwG6Ef0LIIzRZUdep4zijHR9f56DmZmmc42Fjx7x
-	e9/FoHpAsyhYMXFJeHJT8dEVFUHZ2gXfg0/FgYjEKSyBZY0RmWyP+K2kZAZ+VqSdJ99ZxO
-	Q5OZKxyqk8q3PVwi1azM1wQa9JeegWGUCZMQaetVz9ahK/h+HPLQGRyPyYuDuA==
+	bh=tuoWp/N/KlBV8lwab/+aPTx/4RNkZa+sJjWMlvh/CQc=;
+	b=fITpcM6PhL+b6Xyn99OwF72zlTvbd8ndDuD/zdqHK30OQj6etApicaSERqX58h1Te9pi79
+	iYVglfM2ueXyeJK1A4xQJO/YdBfXccdy97K8Irxz5JMq1oTUZnzrBih0qG7xjtgiV8hmVI
+	DTcMMfo4yE4Vfr06YfaYDU+qCd684fUHhHAGbC8KugcSe8Uq0AKaOO/IVvChAjqTwLjVJ5
+	3g15hJSKzXxUXH2m/hfLzDqcwh7X1RC0XNroiZFNbBYXvs5mB+Z4fVcv96VkJ1VIuxTxOz
+	49hlfbZmwPveZwriIBGconrlJ5Ve8/mphr5mBKEUnF1HrwEhZMzbZ0R7kWHYjg==
 From: Sascha Hauer <s.hauer@pengutronix.de>
-Date: Mon, 05 Oct 2026 11:46:10 +0200
-Subject: [PATCH v6 3/4] arm64: dts: rockchip: rk3588: Add JPEG decoder node
+Date: Mon, 05 Oct 2026 11:46:11 +0200
+Subject: [PATCH v6 4/4] arm64: dts: rockchip: rk356x: Add JPEG decoder node
 MIME-Version: 1.0
-Message-Id: <20261005-rockchip-jpegdec-v6-3-25f16dea1697@pengutronix.de>
+Message-Id: <20261005-rockchip-jpegdec-v6-4-25f16dea1697@pengutronix.de>
 References: <20261005-rockchip-jpegdec-v6-0-25f16dea1697@pengutronix.de>
 In-Reply-To: <20261005-rockchip-jpegdec-v6-0-25f16dea1697@pengutronix.de>
 To: Lucas Sinn <lucas.sinn@wolfvision.net>, 
@@ -80,17 +80,16 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791193572; l=2105;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1791193572; l=2439;
  i=s.hauer@pengutronix.de; s=20230412; h=from:subject:message-id;
- bh=lGGauPf6ZkseZOM/LSXBX6VE/9RDJeKUwsE6C323e7g=;
- b=ER3YSLOPxVsLi8F4vF47YnzQ10dOqb8pxyQYgFU+9tD2ePeuHfhBijzxTobfdyY5bO0mscEfp
- N99fSmWqMPXAkYwlTg1ZEjl5YOBJHx7snRTBQPv2d0o8Cabp1X48Bhm
+ bh=qLeZrdfkumnxcCcT4IZ8DVTZHmi+IuhUnXTquRcO/mI=;
+ b=t7raURYopiHbIwhBrLcTtJ1ICGjWSaVVLFN0R7SmjEooP8NK5Pcv9FJgWFi/y/fFCjbHu55i7
+ peP3upgVySNDfoY0SfaH/JsW+8F6dqSD5xaUjpc+lymHWWpdDmOEvD1
 X-Developer-Key: i=s.hauer@pengutronix.de; a=ed25519;
  pk=4kuc9ocmECiBJKWxYgqyhtZOHj5AWi7+d0n/UjhkwTg=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261005_024615_199580_5E8E9C03 
-X-CRM114-Status: UNSURE (   9.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261005_024615_788401_BDC84324 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,12 +107,22 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Add device tree nodes for the Rockchip JPEG hardware decoder and its
-IOMMU on the RK3588.
+IOMMU on the RK356x.
 
-The decoder is at 0xfdb90000 with its MMU at 0xfdb90480.  It takes the
-AXI and AHB clocks and resets, and sits in the VDPU power domain.  The
-AXI clock is pinned to 600 MHz, which is the rate the downstream BSP
-runs it at; it is a dedicated clock, not shared with another block.
+The decoder is the same block as on the RK3588, here at 0xfded0000 with
+its MMU at 0xfded0480 and the same 0x400 register window.  Only the
+integration differs: ACLK_JDEC and HCLK_JDEC instead of the JPEG decoder
+clocks, SRST_A_JDEC and SRST_H_JDEC for the AXI and AHB resets, and the
+RGA power domain rather than VDPU.
+
+No rate is assigned to the AXI clock here.  Unlike on the RK3588 it is a
+gate off aclk_rga_pre, shared with the RGA, the IEP and the EBC, so a
+rate set for the decoder would move those too.  Its mux tops out at
+300 MHz, which is also the default rate of the downstream driver.  The
+downstream device tree assigns no rate to it either, and the vepu node
+on the same clock tree already leaves it alone.
+
+The domain needs nothing else, it already lists qos_jpeg_dec.
 
 Both blocks are entirely on-SoC and have no board dependency, so they are
 enabled unconditionally like the other codec blocks in this file.
@@ -121,44 +130,42 @@ enabled unconditionally like the other codec blocks in this file.
 Assisted-by: LLM
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 376ad04e07869..cc53878502898 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1317,6 +1317,30 @@ rga: rga@fdb80000 {
- 		power-domains = <&power RK3588_PD_VDPU>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+index a5832895bd392..e6c7ae908a99f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -619,6 +619,28 @@ rga: rga@fdeb0000 {
+ 		power-domains = <&power RK3568_PD_RGA>;
  	};
  
-+	jpegd: video-codec@fdb90000 {
-+		compatible = "rockchip,rk3588-jpegd";
-+		reg = <0x0 0xfdb90000 0x0 0x400>;
-+		interrupts = <GIC_SPI 129 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_JPEG_DECODER>, <&cru HCLK_JPEG_DECODER>;
++	jpegd: video-codec@fded0000 {
++		compatible = "rockchip,rk3568-jpegd";
++		reg = <0x0 0xfded0000 0x0 0x400>;
++		interrupts = <GIC_SPI 62 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_JDEC>, <&cru HCLK_JDEC>;
 +		clock-names = "axi", "ahb";
-+		assigned-clocks = <&cru ACLK_JPEG_DECODER>;
-+		assigned-clock-rates = <600000000>;
-+		resets = <&cru SRST_A_JPEG_DECODER>, <&cru SRST_H_JPEG_DECODER>;
++		resets = <&cru SRST_A_JDEC>, <&cru SRST_H_JDEC>;
 +		reset-names = "axi", "ahb";
 +		iommus = <&jpegd_mmu>;
-+		power-domains = <&power RK3588_PD_VDPU>;
++		power-domains = <&power RK3568_PD_RGA>;
 +	};
 +
-+	jpegd_mmu: iommu@fdb90480 {
-+		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
-+		reg = <0x0 0xfdb90480 0x0 0x40>;
-+		interrupts = <GIC_SPI 130 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_JPEG_DECODER>, <&cru HCLK_JPEG_DECODER>;
++	jpegd_mmu: iommu@fded0480 {
++		compatible = "rockchip,rk3568-iommu";
++		reg = <0x0 0xfded0480 0x0 0x40>;
++		interrupts = <GIC_SPI 61 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_JDEC>, <&cru HCLK_JDEC>;
 +		clock-names = "aclk", "iface";
-+		power-domains = <&power RK3588_PD_VDPU>;
++		power-domains = <&power RK3568_PD_RGA>;
 +		#iommu-cells = <0>;
 +	};
 +
- 	vepu121_0: video-codec@fdba0000 {
- 		compatible = "rockchip,rk3588-vepu121";
- 		reg = <0x0 0xfdba0000 0x0 0x800>;
+ 	vepu: video-codec@fdee0000 {
+ 		compatible = "rockchip,rk3568-vepu";
+ 		reg = <0x0 0xfdee0000 0x0 0x800>;
 
 -- 
 2.47.3
