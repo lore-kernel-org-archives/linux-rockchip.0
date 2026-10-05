@@ -4,64 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2C88CA5FF0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 08:30:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08B59CA5FFC
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 09:06:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:To:
+	Message-Id:Date:Mime-Version:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C6M7//hUrzP9GApMkX/mseXXs8Yv8q7DlBdBlbac/ME=; b=Q4deMFJULaLCl4
-	kpGK1caxXZgjGLhScKjn7gPCJP8K2vs8UIBAaZhSEsZzqXlpHWwm4ecw2ZroQr1mLfSYGuZvYxox6
-	QFz3IUWhovp9ONl+1Y26VCgINf81oPIbaPj3QMjKXbfcyvitLx/Ndsr9baPRA+H2ElpEOoIdMc1xk
-	aYkHFRh/VsrK7316I4cz7jEOulyzw7VzpftbYQ3Uw+tScEWWSxJ3J5v1o7L4CiC5UaUm4vOB7iO7J
-	VrqF0rzibITF1TCUxGZJbiWnamBqNte6iIZtK00d1IF+Qm7vpql147l5y0sow6JIBRlmM5CkdgsNg
-	bsqhas9Af0jFU8JzyDrg==;
+	List-Owner; bh=5GvpOiQPH8845+s63SlmcclR58K0axMlaPEaGC+hZD4=; b=OE7btCOoCY174D
+	f/on8xjaIrUT0nS6CAWYJxDrfMre1Y305doxdYcioQZhZ/xuhMroR4rbJdBJUh38Ae94SLUwRXL3g
+	XhXDY5CFVodbD4MlNm2QelL0ircCjAnUmUYh6vGmPpm7co7dsZpDN1w/cyCMj/NXV8T0qhixj6ku6
+	b7dkiGegx4Pp7ujVFWKb7pHTcPDNDUx2hXOD1Wq3iFKOT6BqawTB6NDEsG74o5KcnBLkCQ+zzHfSC
+	kIzQLgoasD05x1iwZ0FKPa9EhvVb0ZQCqXeaUBPqWvlfkouLU85kyWK+fOoc36VLJWfGFGySlITyl
+	WvmVTgy1V3Jde6iOnORw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDe5g-0000000FtFG-0jjT;
-	Mon, 05 Oct 2026 08:30:32 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xDedz-0000000FvhH-1GBM;
+	Mon, 05 Oct 2026 09:05:59 +0000
+Received: from out-161.mta0.migadu.com ([2001:41d0:1004:224b::a1] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDe5c-0000000FtEH-1UHN;
-	Mon, 05 Oct 2026 08:30:28 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id F374A433DB;
-	Mon,  5 Oct 2026 08:30:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34EFC1F000FF;
-	Mon,  5 Oct 2026 08:30:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791189027;
-	bh=N1Tdp41tcttMIXzEsnKaz7v2lLzbgncTRrts6HtrK/4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=mc6BgPdstjE5mHOMP9Ya3gYfkxM1G9DPWSSKfzHGlwaMcKj+ezqoYdXv7kfxGT/GC
-	 OJqs/GNzf80R3VURsLMxkqwM7dWfJK4T5iqD1j8k9Z5NJpIZc76GEfLlzK8mXFUEIN
-	 mqc1FyvB1KMU+TFC+H827L6eA8DHmaQmsZa7xyxQRzeMtf68Z3yQ1jOB8goX8cs9aM
-	 T6kJXIkHI4tR+E+OLG1Uu221MxzfZdS7wB572QKdMl+GsTRSYU/GAfAe6OOHNsfjAi
-	 5tcLGHhA0q0hjePPSsKc/eI+ZxvDOaxTvzcmHVkkjcMFK2j3CT9zKYBz4wsZ+w2B+S
-	 uDf7pmmzAT7CA==
-Date: Mon, 5 Oct 2026 10:30:24 +0200
-From: Vinod Koul <vkoul@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Igor Paunovic <royalnet026@gmail.com>, linux-kernel@vger.kernel.org,
-	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v16 1/6] phy: core: add notifier infrastructure
-Message-ID: <asNgINDic6A3Gvtq@parshuram>
-References: <20260924-b4-rockchip-dwc3-rockchip-glue-v16-0-126a2e9133c3@collabora.com>
- <20260924-b4-rockchip-dwc3-rockchip-glue-v16-1-126a2e9133c3@collabora.com>
- <asDFBIVf06-VaWdx@parshuram>
- <asJGziv0N3qtXo6_@venus>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <asJGziv0N3qtXo6_@venus>
+	id 1xDedt-0000000Fvgk-2rtl
+	for linux-rockchip@lists.infradead.org;
+	Mon, 05 Oct 2026 09:05:55 +0000
+X-Envelope-To: linux-rockchip@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=KoFZEafNxf5g+ROjz45xDOkEXtfPFjDjTBfEVnRhnCU=;
+ c=simple/simple; d=cknow-tech.com;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1791191149; v=1; x=1791795949;
+ b=YI2tpVHpmVs17hw5SeJCnWj6sxt19BGc2xWe1CwjDQw9RNfycAMnIoOvgfpa43dGUWfXLjsO
+ wwydsLYLox0OOkG9MCPuFIJ80l4F2ZXto9lEvs4IL0u+TSLR1dZLKqGpPgv2qwKHv+EymK8vpAH
+ Tcc7Ida4UQUj2VIDFH4zKCrLR6I7Fus0eiivyZIVG/5kScF4azk4geHCpwU9H0nFXiYt+pVIEAv
+ OjhTxgBbzSqD8w8i1F/crRCvPr6jWx6ktDttVG/LSSfudjIPTaihIUUv5vusuqC0QCDogPGaImq
+ Jmj1ELSCpIEuy2SJ4R6/pIjb8/QqmZI0RN5z/n89izp6w==
+X-Envelope-To: linux-rockchip@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 7d7e3a11bcad3a34;
+	Mon, 05 Oct 2026 09:05:32 +0000
+X-Mizu-Trace-ID: 7d7e3a11bcad3a34
+X-Migadu-Flow: FLOW_OUT
+Mime-Version: 1.0
+Date: Mon, 05 Oct 2026 11:05:32 +0200
+Message-Id: <DLWS9II64U19.2RE8CUG71USY4@cknow-tech.com>
+To: <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH] dma-buf: Make DMABUF_DEBUG default to y on DEBUG_KERNEL
+ kernels
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+X-Mailer: aerc 0.22.0-31-g5c1c510d2b65
+References: <20260907020015.24719-1-kmehltretter@gmail.com>
+ <DLR74W1U9YPC.375IK0HOYHDIG@cknow-tech.com>
+In-Reply-To: <DLR74W1U9YPC.375IK0HOYHDIG@cknow-tech.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261005_020554_189435_F908A355 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,84 +73,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 04-10-26, 14:44, Sebastian Reichel wrote:
-> Hello Vinod,
-> 
-> On Sat, Oct 03, 2026 at 11:04:13AM +0200, Vinod Koul wrote:
-> > On 24-09-26, 19:25, Sebastian Reichel wrote:
-> > > Some PHY devices with multiple ports (e.g. USB3 and DP) require a reset
-> > > if the configuration changes or cable orientation changes. This is a
-> > > problem, as the consumer device will run into undefined behavior.
-> > > 
-> > > With the new PHY notifier API introduced in this patch, the consumer
-> > > driver can hook into reset events coming from a PHY device to handle the
-> > > PHY going down gracefully.
-> > > 
-> > > Note that this uses -ENOSYS instead of the more sensible -ENOTSUP for
-> > > the stub functions when GENERIC_PHY is disabled to stay consistent with
-> > > the existing ones.
-> > 
-> > I dont think this series has the usage of this.
-> > 
-> > I think I am still not convinced why a phy should notify as I dont feel
-> > we have any mechanism to notifying. Checking status and letting people
-> > know if not really a notification mechanism... Maybe add a status call
-> > instead?
-> 
-> This series contains the infrastructure and the consumer of the PHY
-> reset notification (dwc3 rockchip glue driver). The producer/sender
-> of the PHY reset notification is the first patch in the USBDP part 3
-> series. I grouped the patches like this, so that this series has PHY
-> patches followed by USB patches instead of PHY - USB - PHY. Patches
-> must be applied in the exact order (i.e. first the patches added the
-> PHY reset notifier infrastructure, then the DWC3 notification
-> consumer and then the USBDP notification producer).
-> 
-> The broader picture solved by this is (pre-existing race condition
-> issue in USBDP):
+On Mon Sep 28, 2026 at 9:28 PM CEST, Diederik de Haas wrote:
+> On Mon Sep 7, 2026 at 4:00 AM CEST, Karl Mehltretter wrote:
+>> Commit 646013f513f3 ("dma-buf: enable DMABUF_DEBUG by default on DEBUG
+>> kernels") changed the default of DMABUF_DEBUG to "y if DEBUG", but no
+>> Kconfig symbol DEBUG exists, so the option has had no default since.
+>>
+>> Use DEBUG_KERNEL, the Kconfig symbol for a debug kernel.
+>
+> I wondered why since 7.3-rc4 when playing videos I got a WHOLE lot of the
+> following error messages, which weren't there with 7.3-rc3:
+>
+>   [drm:rockchip_gem_iommu_map [rockchipdrm]] *ERROR* failed to map buffer: size=0 request_size=3956736
+>   [drm:rockchip_gem_prime_import_sg_table [rockchipdrm]] *ERROR* failed to import sg table: -12
+>
+> Both come from ``drivers/gpu/drm/rockchip/rockchip_drm_gem.c``.
+>
+> ...
+>
+> When I explicitly disable ``DMABUF_DEBUG``, I no longer see those errors.
+>
+> Whether that fixes or just hides a problem, I'll leave that for others to
+> decide.
 
-Thanks, this is helpful to understand the context. Few questions on
-below to help me understand more...
+It seems it hides the problem. Follow up with more context/links:
+https://lore.kernel.org/all/20261005064133.7305-1-kmehltretter@gmail.com/
 
-> 
-> 1. USBDP PHY provides critical resources to DWC3 USB controller
-
-what resources are these?
-
-> 2. USBDP PHY needs to reset to reconfigure (e.g. enable/disable DP side),
->    which means the resource is temporarily not available
-
-Who invokes reset, I guess the controller (dwc3), so it ought to be
-aware of the reset condition.
-
-> 3. DWC3 accesses its registers during the reset -> SError, because PHY is off
-
-I would assume that dwc3 should know about it as invoking entity..
-
-> 
-> This series combined with the first patch of USBDP part 3 changes
-> things, so that it works like this:
-> 
-> 1. USBDP PHY provides critical resources to DWC3 USB controller
-> 2. USBDP PHY needs to reset to reconfigure (e.g. enable/disable DP side),
->    which means the resource is temporarily not available
-> 3. USBDP PHY driver sends pre-reset notification
-> 4. DWC3 goes into a safe mode after receiving the pre-reset notifiaction
-> 5. USBDP PHY does the reset
-> 6. USBDP PHY reset finishes, USBDP PHY driver sends post-reset nofication
-> 7. DWC3 returns to normal mode after receiving the post-reset notification
-
-> 
-> This avoids running into the SError.
-> 
-> Greetings,
-> 
-> -- Sebastian
-
-
-
--- 
-~Vinod
 
 _______________________________________________
 Linux-rockchip mailing list
