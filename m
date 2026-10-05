@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA1F1CA5FF0
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Oct 2026 22:40:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 005EECA5FFC
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 00:39:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rAwI/JDQD6h2zDhQcYJF+ulHL5D7IVdLgz+APY6rtH0=; b=nMtnpXc+IytIET
-	N5rqdKYyJpGkmWc4S+Sx0MC716zKVBb80yE0X89XlcECTYmr3ur/xY+IEndAhRIahk/aan1MOCPHv
-	PEXhSQfFEJPzasNy8hTR+FHICWm0laeRQLk1sjJmRjZlMwjeepjYxzebv+IkhJNUOfn9FhomJz+dJ
-	vx7cQ+k1FUKNQpk1Hf5kemR8A0JBSyJ5D/A+OwjQ2pPJdxGOsaCvt10G9/qqGBB0C+PDajD3Ed/Xh
-	H+kawoLsqCJRklFYMs5sCQ3fhwW83ptWLJ6ZN22cMRJuDp7lk0T9lTR762a0h+dTACgKv4AlyXdkK
-	vRC/KGnARCfF3PSuCpUA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DUpBEtWT1OhuN1cPXKebvQiQ5uWXFr4M0InURtrlN0Y=; b=qIqfIQlRU9v3fK
+	7UOLzP+0M6ZErlrnRpwB4HbfZWbnWjbUWQanCvgOQDbOwW2hWRH7hXkGfUcoIfOEfmXC37WEGVeZi
+	K0xa5t83wK9lhPY/YJvgoa6NsrmArbgKBPwluqNYipn3nwB7IOLH38VLjp+f9kwIR50UwzeGNWo6i
+	jvYDywxd39g2i4sOQz675pTSZ4eOdO9LRtxc+7o7skWlsGwJbbLtLgszILs4hd4/BmMFQAQIqLqRf
+	bxD1c5TK0E/yVQg20SFsj+zRNJ/rt/T3W+bjfey6Q4rctSFG01yNtWshGlxWXoiOgPbqVKz5PZ/F9
+	nCsWlMnT24QCcOj3VRVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDUsF-0000000FRDu-1SFt;
-	Sun, 04 Oct 2026 22:40:03 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xDWjF-0000000FVxz-3qrL;
+	Mon, 05 Oct 2026 00:38:53 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDUsD-0000000FRDP-2aHf;
-	Sun, 04 Oct 2026 22:40:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A8A6F60200;
-	Sun,  4 Oct 2026 22:40:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 235EFC2BCB9;
-	Sun,  4 Oct 2026 22:40:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1791153600;
-	bh=u1lLC1WSbIv1AIKWpV3FLRj7881n0ba0sc0bTNDIolA=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=ea8WjSwbKtae6TmcoxiznkZwKEZcoR7xm5yfx2rK37Ycln38B9eDIPLSAOP9aTxby
-	 SJcV+ppApv7QbmOzi2azBynpR17T5mE6f8h2viokik6I74aD+fTRjHcvUEVBTwqVcV
-	 IQcsBbTYPN7EKmNN9srJCkTbNwGbAWzg3EaG0gw7lzUCTQbd97ojT/ssLsNXXZhvy2
-	 qYvTKlizqtDekJfNhQlOurDf792KsoV1Q1mGtd3A5FZ7nn3tHm4qiIGj3zWZ0Fb8GS
-	 EYcTEX9uNntha3U7VsgJSjmQUkGza3YobBNie8OIWgGfDNn9UTiayCDBoRnByDAMdF
-	 dUfC6l1ky+93g==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0F1BCCA5FCE;
-	Sun,  4 Oct 2026 22:40:00 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Sun, 04 Oct 2026 22:39:58 +0000
-Subject: [PATCH] arm64: dts: rockchip: Add the battery charger to Kobol
- Helios64
+	id 1xDWjC-0000000FVw1-1tJr;
+	Mon, 05 Oct 2026 00:38:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1791160726;
+	bh=Y//2B/y9c1+PInn0UoaxR3RF1A8oIriYQhCokHi1XEY=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=CCmzHR+yJ2n9MfkF6irj3PEzCxGhZVSFlwYI2AQkvKjrwLouXDfGrhZGq3lsYYEK+
+	 A23AXoSYEQyhuA9dZXxxSXxhKUCuveL8IiykwAf2OJt6f7TjpUF5yPaCUdil0ttKHC
+	 8Ueus4zQpjw2RsOloQ0p9aQNifkQ5Hx9gZBIEvbta5VxnPJKlQwy1rUAbomEsV3Ba5
+	 onPISy+IE4LkSaIg7J3G7MRiUgysvDWC7dVwg3fU+TShuR3txzeK3u0aQPjq1uWGQQ
+	 6vEHSwys18RpuLf7X/naMEdD9DzDscPhE8YCxlYM7yxGj7h42sK1nOIYzrHSI8eShi
+	 xBnFGj75JInKg==
+Received: from localhost (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3FF2017E04B7;
+	Mon, 05 Oct 2026 02:38:46 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Mon, 05 Oct 2026 03:38:02 +0300
+Subject: [PATCH v12 01/16] drm/bridge: dw-hdmi-qp: Demote i2c bus error
+ messages to debug level
 MIME-Version: 1.0
-Message-Id: <20261004-helios64-dc-charger-v1-1-0eabf0274d47@iav.lv>
-X-B4-Tracking: v=1; b=H4sIAL3VwmoC/x2MQQqAMAwEv1JyNtAWrehXxIO0sQZEJQURpH83C
- HMZmN0XCglTgdG8IHRz4fNQcY2BuC1HJuSkDt764KztcKOdzxJaTBG1kEyClGI7KEO0PejyElr
- 5+V+nudYPz9yeUGUAAAA=
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2197; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=DAhlfIUWqvGqD77K4GZRu5rOeDoaIBCJ6zw/SQS3zzI=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFmHru7Lig//2vTZPf/F63ncxZ1qTC/Md11Zp3Lm0+k0w
- w++ArWWHaUsDGJcDLJiiiwTDmncylhy9a+/h/kDmDmsTCBDGLg4BWAiLsoM/7OWJcyrnVq08Nm1
- lR9ZUift6rt/PSTI0cU++PmWY/8r36xiZNjWXfb2yb+pVWrX365/6X253ThbzUxTYn1y6QbRO7c
- fcbACAA==
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+Message-Id: <20261005-dw-hdmi-qp-scramb-v12-1-195157ba0b40@collabora.com>
+References: <20261005-dw-hdmi-qp-scramb-v12-0-195157ba0b40@collabora.com>
+In-Reply-To: <20261005-dw-hdmi-qp-scramb-v12-0-195157ba0b40@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Algea Cao <algea.cao@rock-chips.com>, Daniel Stone <daniels@collabora.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Diederik de Haas <diederik@cknow-tech.com>
+X-Mailer: b4 0.15.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261004_173850_665539_4EE7DFBA 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,83 +81,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Igor Velkov <iav@iav.lv>
+A NACK or timeout on the DDC bus is a normal condition when the sink is
+absent or unpowered.  Some displays keep HPD asserted and the EDID
+EEPROM readable while in standby, but leave the SCDC slave unpowered.
+This results in i2c-related error messages on every boot during
+scrambling setup, even though the condition is handled gracefully and
+the SCDC configuration is restored on the next hotplug event.
 
-Helios64 has a battery backup built around a BQ24133 charger. The
-charger works on its own; the SoC only sees two status lines:
+Log the i2c bus level failures with dev_dbg_ratelimited() instead,
+matching the silent behaviour of the non-QP dw-hdmi i2c bus algorithm.
+The DDC users already report failures at the appropriate level, e.g. the
+SCDC helpers via drm_scdc_dbg().  This also makes the no-hpd special
+casing of the read path messages redundant, so drop it.
 
-- VCC12V_DCIN_GOOD on GPIO0_A2, a divider from the 12 V input, high
-  while the mains adapter powers the board;
-- CHARGER_STATUS# on GPIO2_D3, the inverted STAT output of the charger,
-  high while the battery is charging.
-
-Describe them as a gpio-charger. Both lines have external resistors, so
-the pins get no pull.
-
-Assisted-by: LLM
-Signed-off-by: Igor Velkov <iav@iav.lv>
+Reported-by: Diederik de Haas <diederik@cknow-tech.com>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
-Tested on 7.3-rc5: online follows the mains adapter, status reads
-Charging while the battery recharges and Not charging once it is full.
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 16 ++++------------
+ 1 file changed, 4 insertions(+), 12 deletions(-)
 
-Schematic, sheets 9, 15 and 29:
-https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
----
- .../arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-index d146e5075b4f..813a39964357 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-@@ -62,6 +62,15 @@ chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index c9568aea98dc..9abcea92b720 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -350,22 +350,14 @@ static int dw_hdmi_qp_i2c_read(struct dw_hdmi_qp *hdmi,
  
-+	dc-charger {
-+		compatible = "gpio-charger";
-+		charger-type = "mains";
-+		gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
-+		charge-status-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&dcin_good>, <&charger_status>;
-+	};
-+
- 	clkin_gmac: external-gmac-clock {
- 		compatible = "fixed-clock";
- 		clock-frequency = <125000000>;
-@@ -493,6 +502,16 @@ user1_btn: user1-btn {
- 		};
- 	};
+ 		stat = wait_for_completion_timeout(&i2c->cmp, HZ / 10);
+ 		if (!stat) {
+-			if (hdmi->no_hpd)
+-				dev_dbg_ratelimited(hdmi->dev,
+-						    "i2c read timed out\n");
+-			else
+-				dev_err(hdmi->dev, "i2c read timed out\n");
++			dev_dbg_ratelimited(hdmi->dev, "i2c read timed out\n");
+ 			dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
+ 			return -EAGAIN;
+ 		}
  
-+	charger {
-+		charger_status: charger-status {
-+			rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		dcin_good: dcin-good {
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	gmac {
- 		gphy_reset: gphy-reset {
- 			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_output_low>;
+ 		/* Check for error condition on the bus */
+ 		if (i2c->stat & I2CM_NACK_RCVD_IRQ) {
+-			if (hdmi->no_hpd)
+-				dev_dbg_ratelimited(hdmi->dev,
+-						    "i2c read error\n");
+-			else
+-				dev_err(hdmi->dev, "i2c read error\n");
++			dev_dbg_ratelimited(hdmi->dev, "i2c read error\n");
+ 			dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
+ 			return -EIO;
+ 		}
+@@ -404,14 +396,14 @@ static int dw_hdmi_qp_i2c_write(struct dw_hdmi_qp *hdmi,
+ 
+ 		stat = wait_for_completion_timeout(&i2c->cmp, HZ / 10);
+ 		if (!stat) {
+-			dev_err(hdmi->dev, "i2c write time out!\n");
++			dev_dbg_ratelimited(hdmi->dev, "i2c write time out!\n");
+ 			dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
+ 			return -EAGAIN;
+ 		}
+ 
+ 		/* Check for error condition on the bus */
+ 		if (i2c->stat & I2CM_NACK_RCVD_IRQ) {
+-			dev_err(hdmi->dev, "i2c write nack!\n");
++			dev_dbg_ratelimited(hdmi->dev, "i2c write nack!\n");
+ 			dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
+ 			return -EIO;
+ 		}
 
----
-base-commit: 36bd12104f6e9462f6e97989fd8ef9eb1609623f
-change-id: 20261005-helios64-dc-charger-edc49c499c07
-
-Best regards,
 -- 
-Igor Velkov <iav@iav.lv>
-
+2.55.0
 
 
 _______________________________________________
