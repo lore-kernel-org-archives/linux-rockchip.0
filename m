@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6167CA5FFC
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 18:09:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B085ECA5FCE
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 19:07:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TnGQN2pGwf1g0OGnL5xqRMJ1mXNCePAnockgU2xoFMw=; b=rlRolnca91Z8YQ
-	v1uNE/g9D+pKxbkwUMoRyq86mSdpstouaux1NWiXVYilp1GXLee2NFZ1v60VjWO2hGaRv1NfnmjfN
-	7RWS0lmapvTD1zt5gW+e3BVv3jZArYeSZUbW9IhQ3yLSFmWUyETdPZv27AedUaCmsbLtkuPeaX3o1
-	mBeSytf8qsVgOL0YC9WeNpoV7oNfga9RK0erS+9E/1AAUbUGBZz6cape72Kr3+bxbxtyWxoAP635B
-	0o5c92YNWTjsX4Dy9r+KI/zsO1uxJ26EtRc0DXup8E1obmZ7clfklpW3pzGuMDXW2J0wgAZYrkGZU
-	hvfn+FJPKNK5f2PT2NlQ==;
+	List-Owner; bh=amcZRnnLHWF1ntV2ElhpqcYq+raSTdqllZytlYLbLqY=; b=c/bWisHh7uYkTC
+	zr3faLerc16GPLhA4lr22q8eyT6/MprTu2hx33Xv6PyRE86Mp9qYCwwfCwtaoIBwHRlPZkkBQgkU+
+	CDEyCKQs5QtpeZ6rdmyUq0Pqx5hc3Dmi4OlWNtK4XboO0yYio557Xl1hB9VfJkh76dxPk8dONVSAj
+	Xxkr0mdzR0W7pwmw2l8gCmv3JuiGXaWt4o9oSy9PCYr72ZO0vCx8T2hfHrz0jIbqfY6b8mmiVRYK9
+	E84DYVkwyz39oIKdoiIm6juzQBPdjT4cxNwZeyqwB8M0vbKqud9YdsRT/2l/Ck4xfHa6hQKOmGpxJ
+	dA+5iD8rn6Jy3MDmImCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDn84-0000000Gym4-3dUU;
-	Mon, 05 Oct 2026 18:09:36 +0000
+	id 1xDo2B-0000000H2ga-20Ae;
+	Mon, 05 Oct 2026 19:07:35 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDn7x-0000000Gyky-16ie;
-	Mon, 05 Oct 2026 18:09:30 +0000
+	id 1xDo1f-0000000H2ee-0EOB;
+	Mon, 05 Oct 2026 19:07:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=KWSjVCVfhYPrZE0ETR+lrH3OHG2RwgKAy0qCp+LBWOw=; b=wh8lZYdIq/+MLr9OmtxrVg5feF
-	wI8VSnydL3P+HMY/5BjwvsD2lnnS06rSgU2W8euhhCDVFrefnQ5PCU32v/O7zKxhLGsOt2R6qFyxh
-	LwRR5LelPnF25xPtDCvLom2b2ER2TWO0iUs08pyds84ppCK7xdd2KEzTnTM34xe4nT9DVQAdFJkLA
-	gMqrn4CzaLBO+4naoyBcls4HYaJ6wiUkERUaXynfy8M6hRPA5FMdGM5rVR9NNB4e3JWF2XLJqlKyB
-	jFb2VWcrHXvg4e/81tr2Hl1rjA08pjLEgByzNAMA0U3qSfrxPBv/IvsQXd/Tr//wBAWhOOf5jImut
-	+joamz0g==;
+	bh=2aHfuEbzIFM5SKQ3RDfYhX0clrFStbhhg1qVmhCdGp4=; b=b7fTSn3qHNbB6auHR+55ZWRdmk
+	1X+/mkBx9+EqouJ457B2/K56TPydv4UORugGm2WssBPazNa4r/s/+KaGH4WDX0Yj/tLcx1gv5BOZg
+	RDOOGVBjHJ4o4YRTyWGAM12C65BD4uWpZxgZ/RpHUfnLoFivqj8DSVThJ2uUQoiX2Mn1aTyIX4mF/
+	MjHXpDlb97x7kG7nkdcz9f7s3oOjEJVGiO0mncrX7WDXRhFACp062tEH9HbPqmfls1E5cRxiYjKjj
+	oifUjKTGQs18V2IGQJ3pm/TTdS1DK56oLxk/OFZOZ17UU9w7GNU4W9nOayBDq0158CpaGnvHB5pUx
+	N5p00AhQ==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
+To: Michael Riesch <michael.riesch@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
 	Amin Gattout <amin.gattout@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Michael Riesch <michael.riesch@collabora.com>,
+	linux-media@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org,
 	Conor Dooley <conor.dooley@microchip.com>
-Subject: Re: (subset) [PATCH v2 0/4] phy: rockchip: add support for the RK3576 MIPI CSI-2 DPHYs
-Date: Mon,  5 Oct 2026 20:09:18 +0200
-Message-ID: <179122375594.3298998.10291240183600049512.b4-ty@sntech.de>
+Subject: Re: (subset) [PATCH v2 0/2] Add MIPI CSI-2 receiver support for RK3576
+Date: Mon,  5 Oct 2026 21:06:52 +0200
+Message-ID: <179122712926.3317128.11498761891958238263.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260915-rk3576-dphy-v2-0-b56e68b54b8c@gmail.com>
-References: <20260915-rk3576-dphy-v2-0-b56e68b54b8c@gmail.com>
+In-Reply-To: <20260915-csi-2-rcv-dts-v2-0-bdaf8141616a@gmail.com>
+References: <20260915-csi-2-rcv-dts-v2-0-bdaf8141616a@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261005_110929_641681_C73A0529 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20261005_120703_096535_43803E2D 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,23 +76,22 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 15 Sep 2026 12:42:45 +0200, Amin Gattout wrote:
-> The Rockchip RK3576 features two MIPI CSI-2 DPHYs. The CSI-2 DPHYs can be
-> supported using the existing phy-rockchip-inno-csidphy driver.
+On Tue, 15 Sep 2026 13:56:39 +0200, Amin Gattout wrote:
+> This series adds the device tree binding and the SoC nodes for the
+> MIPI CSI-2 receiver units of the Rockchip RK3576. The receiver is the
+> same Synopsys DesignWare IP as in the RK3568 and the register map is
+> identical, so the existing driver is used unchanged via a fallback
+> compatible.
 > 
-> This patch series adds support for this variant.
-> 
-> As you may have guessed, this is part of the efforts to bring the
-> support for the RK3576 camera pipeline (VICAP) mainline.
+> Only the two receivers fed by the Innosilicon D-PHYs in full mode
+> (MIPI1 and MIPI3) are added; see patch 2 for the details.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/4] dt-bindings: soc: rockchip: add rk3576 csidphy grf syscon
-      commit: 21792937b01b9c36c9a1c4d039f3e1883856157c
-[4/4] arm64: dts: rockchip: add csi dphy nodes to rk3576
-      commit: e68360ded44be19051df2cb7e121ba7afd52035e
+[2/2] arm64: dts: rockchip: add mipi csi-2 receiver nodes to rk3576
+      commit: 5a610d237f689cde0a37a8fb3fb7c5a47fef0f84
 
 Best regards,
 -- 
