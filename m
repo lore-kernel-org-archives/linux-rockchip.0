@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 027D6CA5FF0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 17:11:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6167CA5FFC
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2026 18:09:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2GK6olX7t1QcDL5AJAEGXscCESLaw2vgNuF4ffhVvr4=; b=wcjAya3+wr7pDW
-	Xz9yfSkDdil0bGQvupqNZPLiNEbpihOmRBGvquTXlbTpR4nmLHcSvVybLC6WwVkvICGVHlPJeyXrB
-	7ZjZSGrk3Y1TXFr5VZzaGvVA/Z0yNidebgSt0Otgxo8PKW2MsyFNV1nIGtBowjhmYJWmvl4wC5/e4
-	fKnkfSjfNjeZ07UHVK837eMK4xET5M34PtHtAcw+PS3W5rCfUyomt6wMjiVW8Snq5XTq4BSZ9PvI5
-	oFRz7kbhkHbcNmf7omy9IdkYiiON40s4u5k6xwo0wsA5wTQ5Ip+iHVBtOlRbrZ/Ks8VMWSl8Ab3Sg
-	jwnnZ1zNLjb+O402aORA==;
+	List-Owner; bh=TnGQN2pGwf1g0OGnL5xqRMJ1mXNCePAnockgU2xoFMw=; b=rlRolnca91Z8YQ
+	v1uNE/g9D+pKxbkwUMoRyq86mSdpstouaux1NWiXVYilp1GXLee2NFZ1v60VjWO2hGaRv1NfnmjfN
+	7RWS0lmapvTD1zt5gW+e3BVv3jZArYeSZUbW9IhQ3yLSFmWUyETdPZv27AedUaCmsbLtkuPeaX3o1
+	mBeSytf8qsVgOL0YC9WeNpoV7oNfga9RK0erS+9E/1AAUbUGBZz6cape72Kr3+bxbxtyWxoAP635B
+	0o5c92YNWTjsX4Dy9r+KI/zsO1uxJ26EtRc0DXup8E1obmZ7clfklpW3pzGuMDXW2J0wgAZYrkGZU
+	hvfn+FJPKNK5f2PT2NlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDmDT-0000000GtaH-2hu0;
-	Mon, 05 Oct 2026 17:11:07 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xDn84-0000000Gym4-3dUU;
+	Mon, 05 Oct 2026 18:09:36 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDmDS-0000000GtYl-1PVo;
-	Mon, 05 Oct 2026 17:11:06 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1A80B414D2;
-	Mon,  5 Oct 2026 17:11:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C07521F00893;
-	Mon,  5 Oct 2026 17:11:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791220266;
-	bh=HYh2rxKMx2Wm+Lvc6QK3nB5xBauzxm6BmT4G4eVxSRw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ol/xJsFgT2Yczz6kItqZg4PP+pPv2843l7xlxzUkrJigmBhMGNe0PAkqpxaMgl7+R
-	 e0rZEDY8t4JKy/E54WTLLVpxIxf4gtJKewD84TlTTR+qRVPimWeUVX/xY6VlaaGM+N
-	 VoeT7ZwIZhH9zLh1L5Ci3GpGlrF9Ss8XT0RSi/BdGEJo/ibQkv88zFUfH65ZSv8iTS
-	 zERF4e1IFNdmw6A/EQ+HbwGY8UNtKK/+eYoQZ3d2P69bBQgucMVeJeZ/socIyT2QlI
-	 iwz6KVzrVYsvjLGn5FdXBV2iHoIIz6VWDqVhn52hWnz2mM6PV3DUmUWcK36ZPm5aja
-	 yDGeUGGFxRwsg==
-Date: Mon, 5 Oct 2026 12:11:05 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux-rockchip@lists.infradead.org,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Brian Masney <bmasney+clk@redhat.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Jerome Brunet <jbrunet+clk@baylibre.com>, linux-pm@vger.kernel.org,
-	Stephen Boyd <sboyd@kernel.org>, kernel@collabora.com,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	id 1xDn7x-0000000Gyky-16ie;
+	Mon, 05 Oct 2026 18:09:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=KWSjVCVfhYPrZE0ETR+lrH3OHG2RwgKAy0qCp+LBWOw=; b=wh8lZYdIq/+MLr9OmtxrVg5feF
+	wI8VSnydL3P+HMY/5BjwvsD2lnnS06rSgU2W8euhhCDVFrefnQ5PCU32v/O7zKxhLGsOt2R6qFyxh
+	LwRR5LelPnF25xPtDCvLom2b2ER2TWO0iUs08pyds84ppCK7xdd2KEzTnTM34xe4nT9DVQAdFJkLA
+	gMqrn4CzaLBO+4naoyBcls4HYaJ6wiUkERUaXynfy8M6hRPA5FMdGM5rVR9NNB4e3JWF2XLJqlKyB
+	jFb2VWcrHXvg4e/81tr2Hl1rjA08pjLEgByzNAMA0U3qSfrxPBv/IvsQXd/Tr//wBAWhOOf5jImut
+	+joamz0g==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 3/7] dt-bindings: devfreq: event: rockchip,dfi: add
- rk3576
-Message-ID: <179122026463.1037372.13014542138147307791.robh@kernel.org>
-References: <20260921-b4-rockchip-dfi-rk3576-support-v2-0-04f847016321@collabora.com>
- <20260921-b4-rockchip-dfi-rk3576-support-v2-3-04f847016321@collabora.com>
+	Conor Dooley <conor+dt@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Amin Gattout <amin.gattout@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Michael Riesch <michael.riesch@collabora.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: Re: (subset) [PATCH v2 0/4] phy: rockchip: add support for the RK3576 MIPI CSI-2 DPHYs
+Date: Mon,  5 Oct 2026 20:09:18 +0200
+Message-ID: <179122375594.3298998.10291240183600049512.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260915-rk3576-dphy-v2-0-b56e68b54b8c@gmail.com>
+References: <20260915-rk3576-dphy-v2-0-b56e68b54b8c@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260921-b4-rockchip-dfi-rk3576-support-v2-3-04f847016321@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261005_110929_641681_C73A0529 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,25 +77,27 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 21 Sep 2026 23:15:05 +0200, Sebastian Reichel wrote:
-> From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+On Tue, 15 Sep 2026 12:42:45 +0200, Amin Gattout wrote:
+> The Rockchip RK3576 features two MIPI CSI-2 DPHYs. The CSI-2 DPHYs can be
+> supported using the existing phy-rockchip-inno-csidphy driver.
 > 
-> The RK3576 has DFI hardware for monitoring the DDR's bandwidth much
-> like other rockchip SoCs do. Unlike the RK3588 however, it only has two
-> memory channels, so only two per-channel pclks for DFI.
+> This patch series adds support for this variant.
 > 
-> Add a compatible for this SoC's variant, and add it to the conditionals
-> at the bottom of the bindings file.
+> As you may have guessed, this is part of the efforts to bring the
+> support for the RK3576 camera pipeline (VICAP) mainline.
 > 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  .../bindings/devfreq/event/rockchip,dfi.yaml          | 19 +++++++++++++++++++
->  1 file changed, 19 insertions(+)
-> 
+> [...]
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Applied, thanks!
 
+[1/4] dt-bindings: soc: rockchip: add rk3576 csidphy grf syscon
+      commit: 21792937b01b9c36c9a1c4d039f3e1883856157c
+[4/4] arm64: dts: rockchip: add csi dphy nodes to rk3576
+      commit: e68360ded44be19051df2cb7e121ba7afd52035e
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
