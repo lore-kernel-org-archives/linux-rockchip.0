@@ -4,59 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA6E5CA5FFC
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2026 12:07:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43165CA5FED
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2026 13:24:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YRrDJGri4OY9oJh3Qt7lLLzxGPQOQQF61ojy/1x/wQM=; b=Tywu+rGViLV7rl
-	zuY3P9nAmWs8Ierhs4N/3XGWy83WcMi5jMG7ajMghkojIhD6AB3QFKxdAnIQ2KJsJgtxVPiov1wjK
-	Fny1bK5uojtXGPj5ZgsL7iKySH4mBqzH4RsY0ZaesmzCuCK5sBHbCdrW9cFkKQg4saseW1sZRY/Yb
-	COGMEcSuGrChaWQTPtBfJZQz+POsADhqacIOQTLk6OAKvHB7tJCXQgfxgjleWaJ7RkLkxEqU9z0ub
-	YzRhMiDx2F9zu9KUcP2fuOSqsEh2SYpXwdR5tYuMgpvUD7cEQ59qL8KdedvwQ8SBAQCGmJqWFw5Zm
-	Fju0oLVF43l1jXwI96+Q==;
+	List-Owner; bh=HlKQ2GgYAhE7TImjiK1LWFCycmpAQYxae6n2CDITeHI=; b=0DiW0mDn7XcA2N
+	06fj7YNtpKPFsd0dtnbjget20pp2WvXKmJQgjUA1uQHNSYkMVAu2hjO0ZtwZQXjnvtO6090w4tG2C
+	nnh+1FrLHktaCY1qOVyimGWa8+6xQkRGNrYcCrRIc37+vms6u8WodbVldq7H/acOt9sjsG4raLGqA
+	WZDWEFGozEJN9A4w0CujUirzqs5OBhHGyEr6jP5heQ5ChxPgplkXRdrwYAGRwIdoCTyXsUA+2MCAw
+	cxl34xv6d5EtHNL9nMXzh+gNUsqUP6QmrXzbccwkKaseNZDCGnR6333l4RW/H699uYhubjbAt/YKm
+	i3qP9UMP3F7760PXZP+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE3wr-00000000hmz-0BiE;
-	Tue, 06 Oct 2026 12:07:09 +0000
-Received: from mail-m10313119179.xmail.ntesmail.com ([103.131.191.79])
+	id 1xE59k-00000000qwh-0h9v;
+	Tue, 06 Oct 2026 13:24:32 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE3wn-00000000hlr-1WmB;
-	Tue, 06 Oct 2026 12:07:08 +0000
-Received: from [172.16.12.48] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 50150b1f5;
-	Tue, 6 Oct 2026 20:06:49 +0800 (GMT+08:00)
-Message-ID: <8dc2f33d-6c1e-4f5e-9f78-1f74405925a6@rock-chips.com>
-Date: Tue, 6 Oct 2026 20:06:46 +0800
+	id 1xE59i-00000000qw5-3Mjf;
+	Tue, 06 Oct 2026 13:24:30 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 399BD40245;
+	Tue,  6 Oct 2026 13:24:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB4EE1F000FF;
+	Tue,  6 Oct 2026 13:24:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791293070;
+	bh=76u9YDW7aKiOQkrk/yybh/tScB4dKv9L1ujivE8+las=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=DuOP5EDheODNf4/AFDlTAYw+nYmy4Ieq5s6wLw4yZmmzM3wVUzF9UFio40Cw54iKX
+	 tToacGZwZwpAAp6Lbwfel7lvim54fmBt8R2+A+3ZqdAJnskODzeZTnSczp+cRggMCL
+	 MUvYTYgDfE4uURhSfzFPb5nSIDSqfY2oO3fXNpbREmSjcl+gFnsfOwAt11p6W+V+EP
+	 cFo+Cnqmvngkk3pMjWYsdhjRyGLNZ0ctGv96xnF0PKv791p8VVLM+qeLazLX1rqylq
+	 V1gN0Nlu5tTZ3E9zhLTtZx1S9iKkjEGjY8Vd7q4gxBgGQQARdzbj7vI3M2YPk6+FGp
+	 0dwvNAIFXroxA==
+Date: Tue, 6 Oct 2026 08:24:28 -0500
+From: Rob Herring <robh@kernel.org>
+To: Coia Prant <coiaprant@gmail.com>
+Cc: Jakub Kicinski <kuba@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	David Wu <david.wu@rock-chips.com>, netdev@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net-next v10 1/6] dt-bindings: net: pcs: add
+ rockchip,rk3568-xpcs support
+Message-ID: <20261006132428.GA1659963-robh@kernel.org>
+References: <20261005223011.1124347-1-coiaprant@gmail.com>
+ <20261005223011.1124347-2-coiaprant@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, Manivannan Sadhasivam <mani@kernel.org>,
- linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] PCI: Update saved Max Payload Size in pcie_set_mps()
-To: Niklas Cassel <cassel@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
- Frank Li <Frank.Li@nxp.com>
-References: <20261005124154.2190628-2-cassel@kernel.org>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20261005124154.2190628-2-cassel@kernel.org>
-X-HM-Tid: 0aa1111bfc5503a4kunm971a00f5c37249
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZT01IVkhPTx1JQkgZSRlDGFYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=VP8/HEUqOtHBWrLrpK7O/mHzeRtOuXHwK5HPZDWDRTF6/sHhOH66ytHkco/0RYMYC8SLs5lFPhXvLSVridSALej40TD1llEbEyNG1iOj3Pjl3f34bdIQvzRrUOY4j8krCKeMm3jJgSCUbD81+rYvXGRBktbGjKchWdgao9MuKII=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=lgWbEUgSz0YKuspgKjuMWLzlYWgwmePe2UooMv1UNow=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261006_050706_040011_B81D5869 
-X-CRM114-Status: GOOD (  28.92  )
+Content-Disposition: inline
+In-Reply-To: <20261005223011.1124347-2-coiaprant@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,76 +75,131 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTmlrbGFzLAoK5ZyoIDIwMjYvMTAvMDUg5pif5pyf5LiAIDIwOjQxLCBOaWtsYXMgQ2Fzc2Vs
-IOWGmemBkzoKPiBwY2llX3NldF9tcHMoKSBjaGFuZ2VzIHRoZSBNYXggUGF5bG9hZCBTaXplIChN
-UFMpIGluIHRoZSBEZXZpY2UgQ29udHJvbAo+IHJlZ2lzdGVyIGJ1dCBsZWF2ZXMgdGhlIGNvcHkg
-c2F2ZWQgYnkgcGNpX3NhdmVfc3RhdGUoKSBhbG9uZSwgc28gdGhlIG5leHQKPiBwY2lfcmVzdG9y
-ZV9zdGF0ZSgpIHB1dHMgYmFjayB0aGUgb2xkIHZhbHVlLgo+IAo+IFRoZSBQQ0kgY29yZSBkb2Vz
-IGNoYW5nZSB0aGUgTVBTIG9mIGRldmljZXMgd2hvc2Ugc3RhdGUgaGFzIGFscmVhZHkgYmVlbgo+
-IHNhdmVkOiBwY2lfY29uZmlndXJlX21wcygpIHJlZHVjZXMgYSBSb290IFBvcnQncyBNUFMgd2hl
-biBhIGRldmljZSB3aXRoIGEKPiBzbWFsbGVyIE1QUyBTdXBwb3J0ZWQgaXMgaG90LWFkZGVkIGRp
-cmVjdGx5IGJlbG93IGl0IChjb21taXQgOWYwZTg5MzU5Nzc1Cj4gKCJQQ0k6IE1hdGNoIFJvb3Qg
-UG9ydCdzIE1QUyB0byBlbmRwb2ludCdzIE1QU1MgYXMgbmVjZXNzYXJ5IikpLCBhbmQgd2l0aAo+
-ICJwY2k9cGNpZV9idXNfc2FmZSIsIHBjaWVfYnVzX2NvbmZpZ3VyZV9zZXR0aW5ncygpIGNhbiBk
-byB0aGUgc2FtZSB3aGVuCj4gcGNpZWhwIGNhbGxzIGl0IGFmdGVyIGEgaG90LWFkZC4gIFRoZSBS
-b290IFBvcnQncyBzdGF0ZSB3YXMgc2F2ZWQgd2hlbiBpdAo+IHdhcyBhZGRlZCBhbmQgYWdhaW4g
-d2hlbiBwb3J0ZHJ2IHByb2JlZCBpdC4KPiAKPiBTaW5jZSBjb21taXQgM2ZjNjg2ZDU1MGY2ICgi
-UENJL0VSUjogQWRkIHN1cHBvcnQgZm9yIHJlc2V0dGluZyB0aGUgUm9vdAo+IFBvcnRzIGluIGEg
-cGxhdGZvcm0tc3BlY2lmaWMgd2F5IiksIHBjaWJpb3NfcmVzZXRfc2Vjb25kYXJ5X2J1cygpIHJl
-c3RvcmVzCj4gdGhhdCBzYXZlZCBzdGF0ZSwgd2l0aG91dCBzYXZpbmcgaXQgZmlyc3QsIGFmdGVy
-IGhvc3QtPnJlc2V0X3Jvb3RfcG9ydCgpCj4gaGFzIHJlc2V0IHRoZSBSb290IFBvcnQsIGUuZy4g
-ZHVyaW5nIEFFUiByZWNvdmVyeSBvciBvbiBMaW5rIERvd24gd2l0aCB0aGUKPiBxY29tIGFuZCBS
-b2NrY2hpcCBEV0MgZHJpdmVycy4gIFRoZSBSb290IFBvcnQgdGhlbiBnb2VzIGJhY2sgdG8gdGhl
-IG9sZCwKPiBsYXJnZXIgTVBTIHdoaWxlIHRoZSBkZXZpY2UgYmVsb3cgaXQgaXMgcmVzdG9yZWQg
-dG8gdGhlIHNtYWxsZXIgb25lLCBzbwo+IHRoZSBSb290IFBvcnQgbWF5IHNlbmQgVExQcyB0aGF0
-IHRoZSBkZXZpY2UgdHJlYXRzIGFzIE1hbGZvcm1lZC4KPiAKPiBVcGRhdGUgdGhlIHNhdmVkIGNv
-cHkgb2YgRGV2aWNlIENvbnRyb2wgd2hlbiBwY2llX3NldF9tcHMoKSBjaGFuZ2VzIHRoZQo+IE1Q
-UywgbGlrZSBjb21taXQgOTA5ZjdiZjliMDgwICgiUENJOiBVcGRhdGUgc2F2ZWRfY29uZmlnX3Nw
-YWNlIHVwb24KPiByZXNvdXJjZSBhc3NpZ25tZW50IikgZG9lcyBmb3IgQkFScy4KPiAKCkxHVE0s
-CgpSZXZpZXdlZC1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+CgpOb3Rl
-IHRoYXQgSSBzYXcgcGNpZV9zZXRfcmVhZHJxKCkgYWxzbyBjaGFuZ2VzIERldmljZSBDb250cm9s
-IHJlZ2lzdGVyIAp3aXRob3V0IHVwZGF0aW5nIHRoZSBzYXZlZCBjb3B5LCBzbyB0aGUgcmVzZXQt
-cmVzdG9yZSBwYXRoIHJldmVydHMgaXQKdG9vLiAgU2luY2UgeW91IGFkZGVkIHBjaWVfdXBkYXRl
-X3NhdmVkX2RldmN0bCgpLCBtaW5kIGZpeGluZyB0aGF0IGhlcmUKYXMgd2VsbD8KCgoKPiBGaXhl
-czogM2ZjNjg2ZDU1MGY2ICgiUENJL0VSUjogQWRkIHN1cHBvcnQgZm9yIHJlc2V0dGluZyB0aGUg
-Um9vdCBQb3J0cyBpbiBhIHBsYXRmb3JtLXNwZWNpZmljIHdheSIpCj4gQXNzaXN0ZWQtYnk6IExM
-TQo+IFNpZ25lZC1vZmYtYnk6IE5pa2xhcyBDYXNzZWwgPGNhc3NlbEBrZXJuZWwub3JnPgo+IC0t
-LQo+IFRoaXMgZml4IHdhcyBvcmlnaW5hbGx5IHNlbnQgb3V0IGFzIHBhcnQgb2YgbXkgUkZDIHNl
-cmllczoKPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1wY2kvMjAyNjA5MzAxNDUwMTcu
-MTM1NjA4OC02LWNhc3NlbEBrZXJuZWwub3JnLwo+IAo+IEJ1dCBzZW5kaW5nIHRoaXMgZml4IGFz
-IGEgc2VwYXJhdGUgcGF0Y2gsIGFzIHRoZSBmaXggaXMgcmVhbGx5IHVucmVsYXRlZAo+IHRvIHRo
-ZSByZXN0IG9mIHRoZSBzZXJpZXMsIHNvIGl0IGNvdWxkIGJlIHBpY2tlZCB1cCBpbmRlcGVuZGVu
-dGx5Lgo+IAo+ICAgZHJpdmVycy9wY2kvcGNpLmMgfCAyNCArKysrKysrKysrKysrKysrKysrKysr
-Ky0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAyMyBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4g
-Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL3BjaS5jIGIvZHJpdmVycy9wY2kvcGNpLmMKPiBp
-bmRleCA4Y2M2YTg5MTMwYjUuLmYzYjgyZWI3YmZhZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3Bj
-aS9wY2kuYwo+ICsrKyBiL2RyaXZlcnMvcGNpL3BjaS5jCj4gQEAgLTE3MzYsNiArMTczNiwyNCBA
-QCBzdGF0aWMgdm9pZCBwY2lfcmVzdG9yZV9wY2llX3N0YXRlKHN0cnVjdCBwY2lfZGV2ICpkZXYp
-Cj4gICAJcGNpZV9jYXBhYmlsaXR5X3dyaXRlX3dvcmQoZGV2LCBQQ0lfRVhQX1NMVENUTDIsIGNh
-cFtpKytdKTsKPiAgIH0KPiAgIAo+ICsvKgo+ICsgKiBVcGRhdGUgdGhlIHNhdmVkIGNvcHkgb2Yg
-dGhlIERldmljZSBDb250cm9sIHJlZ2lzdGVyIGFmdGVyIGNoYW5naW5nIGl0LCBzbwo+ICsgKiB0
-aGF0IHBjaV9yZXN0b3JlX3N0YXRlKCkgZG9lc24ndCBwdXQgYmFjayBhIHN0YWxlIHZhbHVlLiAg
-RGV2aWNlIENvbnRyb2wgaXMKPiArICogdGhlIGZpcnN0IHJlZ2lzdGVyIHNhdmVkIGJ5IHBjaV9z
-YXZlX3BjaWVfc3RhdGUoKS4KPiArICovCj4gK3N0YXRpYyB2b2lkIHBjaWVfdXBkYXRlX3NhdmVk
-X2RldmN0bChzdHJ1Y3QgcGNpX2RldiAqZGV2LCB1MTYgY2xlYXIsIHUxNiBzZXQpCj4gK3sKPiAr
-CXN0cnVjdCBwY2lfY2FwX3NhdmVkX3N0YXRlICpzYXZlX3N0YXRlOwo+ICsJdTE2ICpkZXZjdGw7
-Cj4gKwo+ICsJc2F2ZV9zdGF0ZSA9IHBjaV9maW5kX3NhdmVkX2NhcChkZXYsIFBDSV9DQVBfSURf
-RVhQKTsKPiArCWlmICghc2F2ZV9zdGF0ZSkKPiArCQlyZXR1cm47Cj4gKwo+ICsJZGV2Y3RsID0g
-KHUxNiAqKSZzYXZlX3N0YXRlLT5jYXAuZGF0YVswXTsKPiArCSpkZXZjdGwgPSAoKmRldmN0bCAm
-IH5jbGVhcikgfCBzZXQ7Cj4gK30KPiArCj4gICBzdGF0aWMgaW50IHBjaV9zYXZlX3BjaXhfc3Rh
-dGUoc3RydWN0IHBjaV9kZXYgKmRldikKPiAgIHsKPiAgIAlpbnQgcG9zOwo+IEBAIC01OTgzLDgg
-KzYwMDEsMTIgQEAgaW50IHBjaWVfc2V0X21wcyhzdHJ1Y3QgcGNpX2RldiAqZGV2LCBpbnQgbXBz
-KQo+ICAgCj4gICAJcmV0ID0gcGNpZV9jYXBhYmlsaXR5X2NsZWFyX2FuZF9zZXRfd29yZChkZXYs
-IFBDSV9FWFBfREVWQ1RMLAo+ICAgCQkJCQkJICBQQ0lfRVhQX0RFVkNUTF9QQVlMT0FELCB2KTsK
-PiArCWlmIChyZXQpCj4gKwkJcmV0dXJuIHBjaWJpb3NfZXJyX3RvX2Vycm5vKHJldCk7Cj4gICAK
-PiAtCXJldHVybiBwY2liaW9zX2Vycl90b19lcnJubyhyZXQpOwo+ICsJcGNpZV91cGRhdGVfc2F2
-ZWRfZGV2Y3RsKGRldiwgUENJX0VYUF9ERVZDVExfUEFZTE9BRCwgdik7Cj4gKwo+ICsJcmV0dXJu
-IDA7Cj4gICB9Cj4gICBFWFBPUlRfU1lNQk9MKHBjaWVfc2V0X21wcyk7Cj4gICAKCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Tue, Oct 06, 2026 at 06:30:03AM +0800, Coia Prant wrote:
+> Add device tree binding documentation for the Synopsys DesignWare
+> XPCS integrated on the Rockchip RK3568 SoC.
+> 
+> The XPCS is accessed over the APB3 bus and internally connected to
+> a Naneng Combo SerDes PHY.  It supports 1000BASE-X, SGMII, and
+> QSGMII modes, with four MII ports.
+> 
+> The four MII ports are described as ethernet-pcs-mii@N child nodes,
+> consumed by the Rockchip XPCS glue driver later in this series.
+> 
+> phys and phy-names are required because dtbs_check only validates
+> required properties for enabled nodes. The SerDes link is a board-level
+> design choice (combphy1 on some boards, combphy2 on others), so these
+> properties must be provided by the board device tree, not the SoC dtsi.
+> 
+> The CRU reset lines (SRST_XPCS*) are intentionally not described: no
+> in-tree user requests them, and bring-up relies on the PD_PIPE power
+> domain, the SerDes PHY and the in-IP soft reset. They can be added
+> later as optional without breaking ABI.
+> 
+> Signed-off-by: Coia Prant <coiaprant@gmail.com>
+> ---
+>  .../net/pcs/rockchip,rk3568-xpcs.yaml         | 110 ++++++++++++++++++
+>  1 file changed, 110 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/pcs/rockchip,rk3568-xpcs.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/net/pcs/rockchip,rk3568-xpcs.yaml b/Documentation/devicetree/bindings/net/pcs/rockchip,rk3568-xpcs.yaml
+> new file mode 100644
+> index 0000000000000..703fcff0e3f70
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/pcs/rockchip,rk3568-xpcs.yaml
+> @@ -0,0 +1,110 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/net/pcs/rockchip,rk3568-xpcs.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip RK3568 Synopsys DesignWare Ethernet PCS
+> +
+> +maintainers:
+> +  - Coia Prant <coiaprant@gmail.com>
+> +
+> +description: |
+> +  Rockchip RK3568 SoC integrates a Synopsys DesignWare Ethernet Physical
+> +  Coding Sublayer (XPCS).
+> +  The PCS provides an interface between the Media Access Control (MAC)
+> +  and the Physical Medium Attachment (PMA) sublayer through a Media
+> +  Independent Interface (GMII).
+> +
+> +  The XPCS is accessed over the APB3 bus and internally connected to a
+> +  Naneng Combo SerDes PHY.
+> +  It supports 1000BASE-X, SGMII and QSGMII modes.
+> +
+> +  The block contains four MII ports that can be individually enabled and
+> +  routed to one of the Ethernet GMAC controllers via the pcs-handle
+> +  property in the MAC device tree node.
+> +
+> +properties:
+> +  compatible:
+> +    const: rockchip,rk3568-xpcs
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  "#address-cells":
+> +    const: 1
+> +
+> +  "#size-cells":
+> +    const: 0
+> +
+> +  clocks:
+> +    items:
+> +      - description: APB3 bus interface clock (clk_csr_i), required for register access
+> +      - description: EEE clock (clk_eee_i), required for Energy Efficient Ethernet operation
+> +
+> +  clock-names:
+> +    items:
+> +      - const: csr
+> +      - const: eee
+> +
+> +  phys:
+> +    maxItems: 1
+> +
+> +  phy-names:
+> +    const: serdes
+
+You don't really need phy-names if there is only 1 entry.
+
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +patternProperties:
+> +  "^ethernet-pcs-mii@[0-3]$":
+> +    type: object
+> +    description:
+> +      One of the four MII ports of the XPCS. The port is linked to an
+> +      Ethernet MAC controller via the pcs-handle property in the MAC's
+> +      device tree node.
+> +
+> +    properties:
+> +      reg:
+> +        description: MII port number.
+> +        enum: [0, 1, 2, 3]
+> +
+> +    required:
+> +      - reg
+
+Why the child nodes? They don't contain anything.
+
+Perhaps that's due to pcs-handle not supporting arg cells to pass the 
+port number? That's about to change[1].
+
+Rob
+
+[1] https://github.com/devicetree-org/dt-schema/pull/198
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
