@@ -4,61 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A83C2CA5FFF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2026 10:29:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA6E5CA5FFC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2026 12:07:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zRzabpPYIz3mG//L6Zhz9L3LjI6zCC6dAIedJBDmZ+k=; b=1cwztbdkaceAyp
-	AthzgoWpkvY5RS3Iu1LKO6hPTJrcWYXlBvO5E10jhAj+7XSUKTT7CekTDCKpMfG7GG0DenfPhSxoL
-	rHoJ4ZSEeErq3K/5dey63bivfaSOr9JIyp3bj7ytdWOwKvLTAWqZLALJ9cOxbxNhgeR0HZDdFv5xa
-	D+A/ernpEBI6rZoGDh8SPnCLgWEfL0yFkLfjwjdFyljw154Nf2zB80+HvH5cR88bW5pGr51F4SQvj
-	pkSs5+hnXqJbeRbpGT3ruVOds9wu2k+6EP5wzQidWwrzcDVjIG8SPCqbqKpUH/Y5hF7Kae8GvGmwF
-	DD/oceGUhgwb3/ZO+Jsg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YRrDJGri4OY9oJh3Qt7lLLzxGPQOQQF61ojy/1x/wQM=; b=Tywu+rGViLV7rl
+	zuY3P9nAmWs8Ierhs4N/3XGWy83WcMi5jMG7ajMghkojIhD6AB3QFKxdAnIQ2KJsJgtxVPiov1wjK
+	Fny1bK5uojtXGPj5ZgsL7iKySH4mBqzH4RsY0ZaesmzCuCK5sBHbCdrW9cFkKQg4saseW1sZRY/Yb
+	COGMEcSuGrChaWQTPtBfJZQz+POsADhqacIOQTLk6OAKvHB7tJCXQgfxgjleWaJ7RkLkxEqU9z0ub
+	YzRhMiDx2F9zu9KUcP2fuOSqsEh2SYpXwdR5tYuMgpvUD7cEQ59qL8KdedvwQ8SBAQCGmJqWFw5Zm
+	Fju0oLVF43l1jXwI96+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE2Po-00000000V6D-1qoy;
-	Tue, 06 Oct 2026 10:28:56 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1xE3wr-00000000hmz-0BiE;
+	Tue, 06 Oct 2026 12:07:09 +0000
+Received: from mail-m10313119179.xmail.ntesmail.com ([103.131.191.79])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE2Pl-00000000V3x-1DBc;
-	Tue, 06 Oct 2026 10:28:55 +0000
-Received: from [127.0.1.1] (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D2570493;
-	Tue,  6 Oct 2026 12:26:50 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1791282411;
-	bh=eEGtRczHjxTULl4VBNXnvHlt2NPPQvYK7b8knK8rR0A=;
-	h=From:Subject:Date:To:Cc:From;
-	b=vTNZgkmaY3ZYP0PXZESp4xzjua/BQNFYTIwOOavAs6vGDDhDGxBtXcGp70GHp9RU3
-	 irG7MU+6FZnVoCv1vMLKuL6903KXxs4+mAMGGtMollzMDh0/Eu3des/v5XQdgm5bv8
-	 UGepERXRBSij7nfRsQR61jp0yEOMwDcilopiML58=
-From: Alen Karnil <alen.karnil@ideasonboard.com>
-Subject: [PATCH v3 0/2] media: rkisp1: Add YUV bypass support for rkisp1
-Date: Tue, 06 Oct 2026 11:28:31 +0100
-Message-Id: <20261006-media-rkisp1-add-yuv-bypass-support-for-rkisp1-v3-0-93d3d43991a0@ideasonboard.com>
+	id 1xE3wn-00000000hlr-1WmB;
+	Tue, 06 Oct 2026 12:07:08 +0000
+Received: from [172.16.12.48] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 50150b1f5;
+	Tue, 6 Oct 2026 20:06:49 +0800 (GMT+08:00)
+Message-ID: <8dc2f33d-6c1e-4f5e-9f78-1f74405925a6@rock-chips.com>
+Date: Tue, 6 Oct 2026 20:06:46 +0800
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/0WNQQrCMBBFr1Kydkqa2tq68h7iYppM7SBtwkwVR
- Xp3gyDu/oPPe2+jJExqjsXbCD1YOS4Z6l1h/ITLlYBDZuOsa21ftTBTYAS5saYKMAR43R8wvBK
- qgt5TirLCGOX38F1XedvVzdCRydIkNPLzGzxfMo8SZ1gnIfxnnG0qWzt7KPd5900PDlgRfak+r
- uuJA6HGZYgoofRxNtv2AUl/drnIAAAA
-X-Change-ID: 20260916-media-rkisp1-add-yuv-bypass-support-for-rkisp1-c881c0835b8e
-To: Dafna Hirschfeld <dafna@fastmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Alen Karnil <alen.karnil@ideasonboard.com>, 
- Isaac Scott <isaac.scott@ideasonboard.com>
-X-Mailer: b4 0.16.0
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, Manivannan Sadhasivam <mani@kernel.org>,
+ linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] PCI: Update saved Max Payload Size in pcie_set_mps()
+To: Niklas Cassel <cassel@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
+ Frank Li <Frank.Li@nxp.com>
+References: <20261005124154.2190628-2-cassel@kernel.org>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <20261005124154.2190628-2-cassel@kernel.org>
+X-HM-Tid: 0aa1111bfc5503a4kunm971a00f5c37249
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZT01IVkhPTx1JQkgZSRlDGFYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=VP8/HEUqOtHBWrLrpK7O/mHzeRtOuXHwK5HPZDWDRTF6/sHhOH66ytHkco/0RYMYC8SLs5lFPhXvLSVridSALej40TD1llEbEyNG1iOj3Pjl3f34bdIQvzRrUOY4j8krCKeMm3jJgSCUbD81+rYvXGRBktbGjKchWdgao9MuKII=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=lgWbEUgSz0YKuspgKjuMWLzlYWgwmePe2UooMv1UNow=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261006_032853_479802_EEBD84CD 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261006_050706_040011_B81D5869 
+X-CRM114-Status: GOOD (  28.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,66 +68,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi all, 
-
-I am taking over the series from Isaac.
-
-The goal is unchanged, which is allowing sensors that can
-output YUV streams to be used through the rkisp1's passthrough mode.
-
-In patch 1, the ISP mode has been replaced in two possible
-paths, as my hardware configuration only goes through a csi serializer
-I've only been able to test a single path (the lower else block),
-so the path requires testing with hardware I do not possess. 
-
-Cheers,
-Alen Karnil
-
-Tested on: v7.2, using OV5640, GC2145 and I.MX8MPlus
-Compile-tested on: media/next
-
----
-Changes in v3:
-- Reworked patch 1, to fix incorrect logic and add comment.
-- Reworded patch 2, including code comment.
-- Link to v2: https://lore.kernel.org/linux-media/20260205103207.4020959-1-isaac.scott@ideasonboard.com
-
---
-2.43.0
-
-To: Dafna Hirschfeld <dafna@fastmail.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-
----
-Alen Karnil (1):
-      media: rkisp1-isp: Set correct data mode for YUV bypass
-
-Isaac Scott (1):
-      media: rkisp1: Treat 8 bus width and 16 bus width formats the same
-
- drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
----
-base-commit: bd5f485f3f026225b86573e559af0b7254ef4184
-change-id: 20260916-media-rkisp1-add-yuv-bypass-support-for-rkisp1-c881c0835b8e
-
-Best regards,
---  
-Alen Karnil <alen.karnil@ideasonboard.com>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTmlrbGFzLAoK5ZyoIDIwMjYvMTAvMDUg5pif5pyf5LiAIDIwOjQxLCBOaWtsYXMgQ2Fzc2Vs
+IOWGmemBkzoKPiBwY2llX3NldF9tcHMoKSBjaGFuZ2VzIHRoZSBNYXggUGF5bG9hZCBTaXplIChN
+UFMpIGluIHRoZSBEZXZpY2UgQ29udHJvbAo+IHJlZ2lzdGVyIGJ1dCBsZWF2ZXMgdGhlIGNvcHkg
+c2F2ZWQgYnkgcGNpX3NhdmVfc3RhdGUoKSBhbG9uZSwgc28gdGhlIG5leHQKPiBwY2lfcmVzdG9y
+ZV9zdGF0ZSgpIHB1dHMgYmFjayB0aGUgb2xkIHZhbHVlLgo+IAo+IFRoZSBQQ0kgY29yZSBkb2Vz
+IGNoYW5nZSB0aGUgTVBTIG9mIGRldmljZXMgd2hvc2Ugc3RhdGUgaGFzIGFscmVhZHkgYmVlbgo+
+IHNhdmVkOiBwY2lfY29uZmlndXJlX21wcygpIHJlZHVjZXMgYSBSb290IFBvcnQncyBNUFMgd2hl
+biBhIGRldmljZSB3aXRoIGEKPiBzbWFsbGVyIE1QUyBTdXBwb3J0ZWQgaXMgaG90LWFkZGVkIGRp
+cmVjdGx5IGJlbG93IGl0IChjb21taXQgOWYwZTg5MzU5Nzc1Cj4gKCJQQ0k6IE1hdGNoIFJvb3Qg
+UG9ydCdzIE1QUyB0byBlbmRwb2ludCdzIE1QU1MgYXMgbmVjZXNzYXJ5IikpLCBhbmQgd2l0aAo+
+ICJwY2k9cGNpZV9idXNfc2FmZSIsIHBjaWVfYnVzX2NvbmZpZ3VyZV9zZXR0aW5ncygpIGNhbiBk
+byB0aGUgc2FtZSB3aGVuCj4gcGNpZWhwIGNhbGxzIGl0IGFmdGVyIGEgaG90LWFkZC4gIFRoZSBS
+b290IFBvcnQncyBzdGF0ZSB3YXMgc2F2ZWQgd2hlbiBpdAo+IHdhcyBhZGRlZCBhbmQgYWdhaW4g
+d2hlbiBwb3J0ZHJ2IHByb2JlZCBpdC4KPiAKPiBTaW5jZSBjb21taXQgM2ZjNjg2ZDU1MGY2ICgi
+UENJL0VSUjogQWRkIHN1cHBvcnQgZm9yIHJlc2V0dGluZyB0aGUgUm9vdAo+IFBvcnRzIGluIGEg
+cGxhdGZvcm0tc3BlY2lmaWMgd2F5IiksIHBjaWJpb3NfcmVzZXRfc2Vjb25kYXJ5X2J1cygpIHJl
+c3RvcmVzCj4gdGhhdCBzYXZlZCBzdGF0ZSwgd2l0aG91dCBzYXZpbmcgaXQgZmlyc3QsIGFmdGVy
+IGhvc3QtPnJlc2V0X3Jvb3RfcG9ydCgpCj4gaGFzIHJlc2V0IHRoZSBSb290IFBvcnQsIGUuZy4g
+ZHVyaW5nIEFFUiByZWNvdmVyeSBvciBvbiBMaW5rIERvd24gd2l0aCB0aGUKPiBxY29tIGFuZCBS
+b2NrY2hpcCBEV0MgZHJpdmVycy4gIFRoZSBSb290IFBvcnQgdGhlbiBnb2VzIGJhY2sgdG8gdGhl
+IG9sZCwKPiBsYXJnZXIgTVBTIHdoaWxlIHRoZSBkZXZpY2UgYmVsb3cgaXQgaXMgcmVzdG9yZWQg
+dG8gdGhlIHNtYWxsZXIgb25lLCBzbwo+IHRoZSBSb290IFBvcnQgbWF5IHNlbmQgVExQcyB0aGF0
+IHRoZSBkZXZpY2UgdHJlYXRzIGFzIE1hbGZvcm1lZC4KPiAKPiBVcGRhdGUgdGhlIHNhdmVkIGNv
+cHkgb2YgRGV2aWNlIENvbnRyb2wgd2hlbiBwY2llX3NldF9tcHMoKSBjaGFuZ2VzIHRoZQo+IE1Q
+UywgbGlrZSBjb21taXQgOTA5ZjdiZjliMDgwICgiUENJOiBVcGRhdGUgc2F2ZWRfY29uZmlnX3Nw
+YWNlIHVwb24KPiByZXNvdXJjZSBhc3NpZ25tZW50IikgZG9lcyBmb3IgQkFScy4KPiAKCkxHVE0s
+CgpSZXZpZXdlZC1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+CgpOb3Rl
+IHRoYXQgSSBzYXcgcGNpZV9zZXRfcmVhZHJxKCkgYWxzbyBjaGFuZ2VzIERldmljZSBDb250cm9s
+IHJlZ2lzdGVyIAp3aXRob3V0IHVwZGF0aW5nIHRoZSBzYXZlZCBjb3B5LCBzbyB0aGUgcmVzZXQt
+cmVzdG9yZSBwYXRoIHJldmVydHMgaXQKdG9vLiAgU2luY2UgeW91IGFkZGVkIHBjaWVfdXBkYXRl
+X3NhdmVkX2RldmN0bCgpLCBtaW5kIGZpeGluZyB0aGF0IGhlcmUKYXMgd2VsbD8KCgoKPiBGaXhl
+czogM2ZjNjg2ZDU1MGY2ICgiUENJL0VSUjogQWRkIHN1cHBvcnQgZm9yIHJlc2V0dGluZyB0aGUg
+Um9vdCBQb3J0cyBpbiBhIHBsYXRmb3JtLXNwZWNpZmljIHdheSIpCj4gQXNzaXN0ZWQtYnk6IExM
+TQo+IFNpZ25lZC1vZmYtYnk6IE5pa2xhcyBDYXNzZWwgPGNhc3NlbEBrZXJuZWwub3JnPgo+IC0t
+LQo+IFRoaXMgZml4IHdhcyBvcmlnaW5hbGx5IHNlbnQgb3V0IGFzIHBhcnQgb2YgbXkgUkZDIHNl
+cmllczoKPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1wY2kvMjAyNjA5MzAxNDUwMTcu
+MTM1NjA4OC02LWNhc3NlbEBrZXJuZWwub3JnLwo+IAo+IEJ1dCBzZW5kaW5nIHRoaXMgZml4IGFz
+IGEgc2VwYXJhdGUgcGF0Y2gsIGFzIHRoZSBmaXggaXMgcmVhbGx5IHVucmVsYXRlZAo+IHRvIHRo
+ZSByZXN0IG9mIHRoZSBzZXJpZXMsIHNvIGl0IGNvdWxkIGJlIHBpY2tlZCB1cCBpbmRlcGVuZGVu
+dGx5Lgo+IAo+ICAgZHJpdmVycy9wY2kvcGNpLmMgfCAyNCArKysrKysrKysrKysrKysrKysrKysr
+Ky0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAyMyBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4g
+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL3BjaS5jIGIvZHJpdmVycy9wY2kvcGNpLmMKPiBp
+bmRleCA4Y2M2YTg5MTMwYjUuLmYzYjgyZWI3YmZhZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3Bj
+aS9wY2kuYwo+ICsrKyBiL2RyaXZlcnMvcGNpL3BjaS5jCj4gQEAgLTE3MzYsNiArMTczNiwyNCBA
+QCBzdGF0aWMgdm9pZCBwY2lfcmVzdG9yZV9wY2llX3N0YXRlKHN0cnVjdCBwY2lfZGV2ICpkZXYp
+Cj4gICAJcGNpZV9jYXBhYmlsaXR5X3dyaXRlX3dvcmQoZGV2LCBQQ0lfRVhQX1NMVENUTDIsIGNh
+cFtpKytdKTsKPiAgIH0KPiAgIAo+ICsvKgo+ICsgKiBVcGRhdGUgdGhlIHNhdmVkIGNvcHkgb2Yg
+dGhlIERldmljZSBDb250cm9sIHJlZ2lzdGVyIGFmdGVyIGNoYW5naW5nIGl0LCBzbwo+ICsgKiB0
+aGF0IHBjaV9yZXN0b3JlX3N0YXRlKCkgZG9lc24ndCBwdXQgYmFjayBhIHN0YWxlIHZhbHVlLiAg
+RGV2aWNlIENvbnRyb2wgaXMKPiArICogdGhlIGZpcnN0IHJlZ2lzdGVyIHNhdmVkIGJ5IHBjaV9z
+YXZlX3BjaWVfc3RhdGUoKS4KPiArICovCj4gK3N0YXRpYyB2b2lkIHBjaWVfdXBkYXRlX3NhdmVk
+X2RldmN0bChzdHJ1Y3QgcGNpX2RldiAqZGV2LCB1MTYgY2xlYXIsIHUxNiBzZXQpCj4gK3sKPiAr
+CXN0cnVjdCBwY2lfY2FwX3NhdmVkX3N0YXRlICpzYXZlX3N0YXRlOwo+ICsJdTE2ICpkZXZjdGw7
+Cj4gKwo+ICsJc2F2ZV9zdGF0ZSA9IHBjaV9maW5kX3NhdmVkX2NhcChkZXYsIFBDSV9DQVBfSURf
+RVhQKTsKPiArCWlmICghc2F2ZV9zdGF0ZSkKPiArCQlyZXR1cm47Cj4gKwo+ICsJZGV2Y3RsID0g
+KHUxNiAqKSZzYXZlX3N0YXRlLT5jYXAuZGF0YVswXTsKPiArCSpkZXZjdGwgPSAoKmRldmN0bCAm
+IH5jbGVhcikgfCBzZXQ7Cj4gK30KPiArCj4gICBzdGF0aWMgaW50IHBjaV9zYXZlX3BjaXhfc3Rh
+dGUoc3RydWN0IHBjaV9kZXYgKmRldikKPiAgIHsKPiAgIAlpbnQgcG9zOwo+IEBAIC01OTgzLDgg
+KzYwMDEsMTIgQEAgaW50IHBjaWVfc2V0X21wcyhzdHJ1Y3QgcGNpX2RldiAqZGV2LCBpbnQgbXBz
+KQo+ICAgCj4gICAJcmV0ID0gcGNpZV9jYXBhYmlsaXR5X2NsZWFyX2FuZF9zZXRfd29yZChkZXYs
+IFBDSV9FWFBfREVWQ1RMLAo+ICAgCQkJCQkJICBQQ0lfRVhQX0RFVkNUTF9QQVlMT0FELCB2KTsK
+PiArCWlmIChyZXQpCj4gKwkJcmV0dXJuIHBjaWJpb3NfZXJyX3RvX2Vycm5vKHJldCk7Cj4gICAK
+PiAtCXJldHVybiBwY2liaW9zX2Vycl90b19lcnJubyhyZXQpOwo+ICsJcGNpZV91cGRhdGVfc2F2
+ZWRfZGV2Y3RsKGRldiwgUENJX0VYUF9ERVZDVExfUEFZTE9BRCwgdik7Cj4gKwo+ICsJcmV0dXJu
+IDA7Cj4gICB9Cj4gICBFWFBPUlRfU1lNQk9MKHBjaWVfc2V0X21wcyk7Cj4gICAKCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
