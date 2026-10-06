@@ -4,61 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C503CA5FFD
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2026 03:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FA26CA5FFE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2026 04:49:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Sd6/pyfGyG/n7CfU1w9rhrQ2BedMbB6MOvnx5xheKLQ=; b=3j4f2gWS6wO1WZ
-	E4tJfusaE6n5iJPeGmct14LOygL7+K+x1E75WOMLsMlbYnANF5UDldlQdZR1gK4MD0WOoMmyDoN57
-	9asSFr96C4c+UBoGtReH0TIjticolfifGDQAcgiWtrvgIPqBhf9zPAiu0am6g1PGZff9bb8+Y1KOm
-	i8LvR5LiiUHGQ3L/wlD0v2/DHuHKEim2W/QsoWDiVzB+FDy40aoeUpcpG6Z6xxPAFYEqh1QguLZoc
-	Ys/UpNq+E7Qmcmn6Z8VkXtuJcNR1yN9JbEtaEqUX07GcE8VTZyqa/G8d+s4Y5TtZ1QVAbnictuGUI
-	UP7gQq0heOuZ8THyEP3g==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fvHJYmWM1UDjiSFGgs5s/PesmPqM4YdfGUDk3z76Fuk=; b=sB/zWUM4AP4l68
+	wimkZo7SJ4JiR7YYOXRMJhGJ5K+KYtdFssEUme7n/PVkSAjDyCV+v+/xB1/rT/1CjTfd2ShgK6qV3
+	X/t1W7Zj5LF4EcHx4xHoCin/uQhyIKDqbJ/uf6RzzxP0kVMdzOkti2faSjIaWJTpNTl7dQ+I3zjNw
+	V3mIVGrL8nzwG5UPT9G2MdNM0LStvfCDxU4HCVnk6JHdG0BZ3+VL7qQDDsedtA/TS6RZLpmb9hzp7
+	p3vvQrgaPfCrE4djjMIwQ0yswQi+vWFMcVwntwL4b8AwW/+E4vbfDE8nogFTMR+lRll8/h06UoDsF
+	saySPHxh8sDMTNKUgGdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDvpi-0000000HYqY-3wMF;
-	Tue, 06 Oct 2026 03:27:14 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xDx6v-000000002S3-0Zbj;
+	Tue, 06 Oct 2026 04:49:05 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDvph-0000000HYq8-16M3;
-	Tue, 06 Oct 2026 03:27:13 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5AC04601F1;
-	Tue,  6 Oct 2026 03:27:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D12061F000FF;
-	Tue,  6 Oct 2026 03:27:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791257231;
-	bh=BjT4eIz3gx9cpb3bB/A7BLnqv/sJrakTzUqKFsTtq7g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=agzj5webOc/vjusOJXsIWgm1dpyC1w68XusjyTZ22WS+ZxS35CYb6KU++CaagoguV
-	 6bEtjDOplbw0XofFS/QqmaVzjlTqrv4MqAceJZAmiXbw18hwuPli07voe6E+eiwDMC
-	 2yr0OC6rbEMR9FAiQEqX5Azp6Y3FvSMkIpAuVcxfPHs+wFYui5WfTyuynN6oP6wFyw
-	 sgChu/npvlZDM1olQrNozKtIthl0xYUv+IgSG+GkCEHABK5sAOXojyI+Mans1aV+wh
-	 pZ3txDOEAyFQK4iue2cbvg4Yl8oLPlSGTigoek9n3TtDYcd5KKqDaYjpykneD9dZ55
-	 ytnPfxGF1seHQ==
-Date: Mon, 5 Oct 2026 22:27:10 -0500
-From: Rob Herring <robh@kernel.org>
-To: Coia Prant <coiaprant@gmail.com>
-Cc: Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v11 0/2] phy: rockchip: naneng-combphy: add SGMII MAC
- selection for RK3568
-Message-ID: <20261006032710.GA3539706-robh@kernel.org>
-References: <20261005225944.1171574-1-coiaprant@gmail.com>
+	id 1xDx6t-000000002Rp-3moj;
+	Tue, 06 Oct 2026 04:49:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 3003343668;
+	Tue,  6 Oct 2026 04:49:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 001D4C4AF0B;
+	Tue,  6 Oct 2026 04:49:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1791262141;
+	bh=k10XiJLWnHpFsNMiWX4Pai7y/jGhozADPMYq2+PHjNM=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=AI5uQ8RsFf4OYn9th+afVr2VW9OQiPkAVNI5WDVvq8j5SWkXSeGhwNaiflinUv3Tw
+	 Wv5uFdUBg8kdzLuTn+Gm9VuXFc6hndrDhcnU+8Q0NFUraX5GT6HPJw/BoqGyMA0jQ5
+	 v1LW79+LAFZvzR9yrWyYwrYpSeEnwAOpp3vsPR33DENIGiDpM4DQu1ZzC9fJUBoYe0
+	 p3VnzKd8tENcJ/NgCxdMsjG09cq6OuVJFijtiAOtRE0++FzeakiJsUR8T4InIqoWIz
+	 OnYv6Ziy4WkLZYF2jBGjqI/8vfEQ2VQnXFQlj11O68bfa0z0Qgffs/FfDiE1QvyQAI
+	 vh5BIbFcQVjYQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DFEF9CA5FFE;
+	Tue,  6 Oct 2026 04:49:00 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Tue, 06 Oct 2026 07:48:58 +0300
+Subject: [PATCH] arm64: dts: rockchip: Add the fan tachometers to Kobol
+ Helios64
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261005225944.1171574-1-coiaprant@gmail.com>
+Message-Id: <20261006-helios64-fan-tach-v1-1-1c87e72d42b2@iav.lv>
+X-B4-Tracking: v=1; b=H4sIALl9xGoC/x3MQQqAIBBA0avErBvQyVx0lWihNeZAWGhEEN09a
+ fkW/z9QOAsXGJoHMl9SZE8Vum1gji6tjLJUAymyWimLkTfZizUYXMLTzRFp8WS87kirHmp3ZA5
+ y/89xet8PxiNwOmMAAAA=
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2185; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=UqldmxTMEF3J34R8VW6EVq9SH4TMYUR5K/t8pdza0BQ=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFlHanenbA14+VvTLSX709oLufKqi4QL2zzLT2+9INujO
+ XPmyZezO0pZGMS4GGTFFFkmHNK4lbHk6l9/D/MHMHNYmUCGMHBxCsBEuMQY/oqYdqsrn5zZyfWU
+ +afFrQKxgtd/fevNxdIzeGrWMihqqDH8Zo9YYGChJHJtnVGn6ozQxDmVIQ8PLrH99l9nwtK5Jy0
+ jWQE=
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,26 +81,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 06, 2026 at 06:59:42AM +0800, Coia Prant wrote:
-> Changes since v10:
-> 
-> - Drop the top-level "default: 1" for "rockchip,sgmii-mac-sel".
->   dtschema injects top-level defaults into every matching node, and the
->   injected value conflicts with the "else" branch that forbids the
->   property on non-RK3568 variants, breaking dtbs_check on those
->   platforms. The driver already treats an absent property as 1 (GMAC1),
->   so behavior is unchanged.
+From: Igor Velkov <iav@iav.lv>
 
-What? That's not right. 'default' has no effect on the validation. 
-Please add it back. If the property doesn't apply to some variant, then 
-default doesn't matter.
+The tachometer outputs of both fan connectors reach the SoC through
+open-drain buffers, on GPIO4_C5 for P7 and GPIO4_C7 for P6, but the fan
+nodes do not describe them. pwm-fan therefore registers no fan1_input.
 
-Rob
+Describe each line as the fan's interrupt. The board pulls both lines
+up, so configure the pins without internal bias.
+
+Tested on 7.3-rc6: fan1_input reads 0 with the fans stopped and rises
+with the duty cycle, to about 3500 rpm at full speed on both fans.
+
+Assisted-by: LLM
+Signed-off-by: Igor Velkov <iav@iav.lv>
+---
+Schematic, sheets 30 and 36:
+https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
+---
+ arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+index d146e5075b4f..63ad79b4c8ac 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+@@ -74,6 +74,10 @@ fan1 {
+ 		compatible = "pwm-fan";
+ 		pwms = <&pwm0 0 40000 0>;
+ 		cooling-levels = <0 80 170 255>;
++		interrupt-parent = <&gpio4>;
++		interrupts = <RK_PC5 IRQ_TYPE_EDGE_FALLING>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&fan1_sense>;
+ 	};
+ 
+ 	fan2 {
+@@ -81,6 +85,10 @@ fan2 {
+ 		compatible = "pwm-fan";
+ 		pwms = <&pwm1 0 40000 0>;
+ 		cooling-levels = <0 80 170 255>;
++		interrupt-parent = <&gpio4>;
++		interrupts = <RK_PC7 IRQ_TYPE_EDGE_FALLING>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&fan2_sense>;
+ 	};
+ 
+ 	gpio-keys {
+@@ -493,6 +501,16 @@ user1_btn: user1-btn {
+ 		};
+ 	};
+ 
++	fan {
++		fan1_sense: fan1-sense {
++			rockchip,pins = <4 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		fan2_sense: fan2-sense {
++			rockchip,pins = <4 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	gmac {
+ 		gphy_reset: gphy-reset {
+ 			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_output_low>;
+
+---
+base-commit: 1892b1ccccb9d546903ad6a61ffb9e388acdec80
+change-id: 20261006-helios64-fan-tach-2db24b132105
+
+Best regards,
+-- 
+Igor Velkov <iav@iav.lv>
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
