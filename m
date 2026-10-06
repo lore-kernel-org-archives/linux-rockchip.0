@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC5D3CA6002
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95DEBCA5FF0
 	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2026 10:29:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,36 +12,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZyM0f9bxcZHKJjxHuRMkz9nQjis68yp/XsKFcUYcEio=; b=JiqCzinaactCUy
-	pN0aTCwUjIB8nh0TB0nviV2lJeRcdJoesrcDRVhFoQm+1cTPcONKcUj9odJm7gtWjtb23YoTgcnAp
-	7HuNFVCXP2WfybHhBJOHDCxVV5Oyl3vnou9+75G0RCkh1PbHfNN0atpvAodZGVN6EQlT/6y50UJRY
-	OEOnTarflCUH5/q3ZMNLk7Ap+/jz7dZQa2NNyOdNErjJQL+CI4WAZ2bJ0184NnSX/6MGSd7C2pkyh
-	GcFK9hkbTkgrJRPa7nqEPQSSB8ozMZZOXunrKp9wpiZvPoO1yaf8cWtxwCPxPZsva3uSo9iMIaVRQ
-	c9UXI3cLkB9za/86DudQ==;
+	List-Owner; bh=KAIT7YAiHUQ2zADR0C1p2rbMnCQWK3EMb7zTwHdMH9s=; b=J6O2QEFmQEjHfh
+	YYC910/WxFQXenVfppIt2ZAJ7l25PPPb/O3FsR/bYtFhqJ1zLZcFzv0332cNjGt3ZIZv5/H9OhnAK
+	GW06/2ldRdqFiWN+g14KsEQFP5psuG6dedhlb4lY/sXbhzDqMwa4VVgTcDCS2vRxcZ3kjibm9v4oy
+	pq1douxn+/22qxTOX0K1OUhQzDIbHlGvw9O+kwfSUiJKZ2jzrqx/W6qZA8WojNbfIPCC15fvg8Rmb
+	rj/8EWF7DWPs5tlClzf+IxYOG8c1OUeC2HHrklJE/eEp37HfWV6yHzCMVDvqyb7CpGFaZmgK39jz+
+	9ZPn3RLMxv284QD1i8Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE2Ps-00000000V8H-2g66;
-	Tue, 06 Oct 2026 10:29:00 +0000
+	id 1xE2Po-00000000V5i-15fV;
+	Tue, 06 Oct 2026 10:28:56 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE2Pl-00000000V3w-1RsH;
-	Tue, 06 Oct 2026 10:28:55 +0000
+	id 1xE2Pl-00000000V3y-0AWj;
+	Tue, 06 Oct 2026 10:28:54 +0000
 Received: from [127.0.1.1] (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 4BFB51741;
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B2B141CF8;
 	Tue,  6 Oct 2026 12:26:51 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1791282411;
-	bh=+AfdRTx1cR/olyvnRelrjVuz9aoZtfHV/xlP3g+WmQ0=;
+	s=mail; t=1791282412;
+	bh=CMwnIq4EzH/h8aGBC+9C1q1EScSn2RamA0/WP01JIRo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=bvs3H9J+Tsa5TCPe9NMtVBl6X3CajOiZORMobkPfD4ufnFTr8eOZFejL7juxN6UJV
-	 l1kLa08WspIG1hhDCccNLpPmLKLJG24j/JokKBDHHClt7P8Q4uMDRh6talqQoHKa+f
-	 wzNYfKniropkVQY7mlR7NKW0/Di31mK9E3wCSmZM=
+	b=uKry8SPeYfkaAUFPvUfiOgCdWdfxanbJRYX3QCqYJEUyoInmzGtnfalYf/5f1UDFv
+	 y6r4uQ/9SJQNrM3j4LpJXrLniiue6Ahxfw+i9VfmwuDm4bDd1L3lpc25wodzdTcStk
+	 lnXwshE2l0i58ogjoL7nA/o8kX3N3tgh9HSb5jpk=
 From: Alen Karnil <alen.karnil@ideasonboard.com>
-Date: Tue, 06 Oct 2026 11:28:32 +0100
-Subject: [PATCH v3 1/2] media: rkisp1-isp: Set correct data mode for YUV
- bypass
+Date: Tue, 06 Oct 2026 11:28:33 +0100
+Subject: [PATCH v3 2/2] media: rkisp1: Treat 8 bus width and 16 bus width
+ formats the same
 MIME-Version: 1.0
-Message-Id: <20261006-media-rkisp1-add-yuv-bypass-support-for-rkisp1-v3-1-93d3d43991a0@ideasonboard.com>
+Message-Id: <20261006-media-rkisp1-add-yuv-bypass-support-for-rkisp1-v3-2-93d3d43991a0@ideasonboard.com>
 References: <20261006-media-rkisp1-add-yuv-bypass-support-for-rkisp1-v3-0-93d3d43991a0@ideasonboard.com>
 In-Reply-To: <20261006-media-rkisp1-add-yuv-bypass-support-for-rkisp1-v3-0-93d3d43991a0@ideasonboard.com>
 To: Dafna Hirschfeld <dafna@fastmail.com>, 
@@ -50,11 +50,12 @@ To: Dafna Hirschfeld <dafna@fastmail.com>,
  Heiko Stuebner <heiko@sntech.de>
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Isaac Scott <isaac.scott@ideasonboard.com>, 
  Alen Karnil <alen.karnil@ideasonboard.com>
 X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261006_032853_540558_C0A068ED 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20261006_032853_258355_FED9D909 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,50 +72,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When the ISP sink is YUV, the ISP is in 'bypass' or passthrough mode,
-the current isp mode produces a garbled image, and in testing, setting
-to data mode produces a correct image.
+From: Isaac Scott <isaac.scott@ideasonboard.com>
 
-Replace references to ITU601 to DATA_MODE and add a comment to explain.
+The driver accepts 1x16 YUV formats, which are 16 bits per sample.
+Each sample being made of two 8-bit components. Add a fallthrough case
+to allow the ISP to handle the 8-bit components.
 
-Tested with OV5640 and I.MX8MPlus.
-
+Signed-off-by: Isaac Scott <isaac.scott@ideasonboard.com>
+[Alen:Rewrote commit message, added comment]
 Signed-off-by: Alen Karnil <alen.karnil@ideasonboard.com>
-
 ---
 v3:
  - Taken over from list and refreshed
- - Removed always true conditional check
- - Reworded commit mesasge to better represent changes
+ - Rewrote commit message following review and added code comment
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index 2311672cedb1..4de44f6ec753 100644
+index 4de44f6ec753..54b9028b1f41 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -240,13 +240,18 @@ static int rkisp1_config_isp(struct rkisp1_isp *isp,
- 		}
- 	} else if (sink_fmt->pixel_enc == V4L2_PIXEL_ENC_YUV) {
- 		acq_mult = 2;
-+		/*
-+		 * The datasheet specifies using ITU601 mode for YUV,
-+		 * however that results in a garbled image, data mode
-+		 * does not exhibit this.
-+		 */
- 		if (mbus_type == V4L2_MBUS_CSI2_DPHY) {
--			isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU601;
-+			isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_DATA_MODE;
- 		} else {
- 			if (mbus_type == V4L2_MBUS_BT656)
- 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU656;
- 			else
--				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU601;
-+				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_DATA_MODE;
- 		}
+@@ -264,6 +264,11 @@ static int rkisp1_config_isp(struct rkisp1_isp *isp,
  
- 		irq_mask |= RKISP1_CIF_ISP_DATA_LOSS;
+ 		switch (sink_fmt->bus_width) {
+ 		case 8:
++		case 16:
++			/*
++			 * 16-bit width YUV formats use 8 bits per component,
++			 * so they can be handled by the ISP same as 8-bit.
++			 */
+ 			acq_prop |= RKISP1_CIF_ISP_ACQ_PROP_IN_SEL_8B_ZERO;
+ 			break;
+ 		case 10:
 
 -- 
 2.53.0
