@@ -4,104 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 158F1CA5FFC
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2026 15:09:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E07CCA5FFC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2026 15:52:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PjONWUs2a9ZWWdh5VMpCiiH4gZtKfNvgH0WR2uX2utI=; b=dlxiXA6oAWGJOj
-	dTuFUg2TBcZeNwxOIJD8ZNJ41jTOGJSeSiGTwEbDeRY/rsQR+wrXU3eeTZI/POcaeQhJovYbxmReQ
-	3KL9Eu8Fogq6qiOplhJV8qC1KMuFTwwG9Zg2OWn69uv8ZNlaALKmztzloYlkxP5MIyciyCZebSrAp
-	cqNRFQJ1QQvcxd2zq5BA0X0TIMWH3YYD5usgRL6Lh8F1UOA2SwBvdng5xo/ZBiTZedTST+PW41KWh
-	oEG+M8MxUZcTVRhdyQsZa1mvFg12v1uwgdT01TdcvreDewovNrrTy5cUvPKNwTRXdUbNQXo1E9yZt
-	oauzQiMzh5zsn2QWBmFw==;
+	List-Owner; bh=FV5L0k9Nk1MVs0Llcj86tlts1mtXjdJF+qtO2Rq7Gqs=; b=CrvuywY19PU8nk
+	uRDNwfb8ddY1/xKIQucvnRqfLNRKMye3lBXIMGYAAfsmOvbEYzfhPB3kBuW6ZLYNR/OT+ZMO6mb5c
+	dV5ll+OYGpDc3V34bZsGNTGNwBU6GRAoZXafJkmD+SwP9YSulajrgYmHDHTDowmoe39CkF7vGkEZk
+	a1MAH2BqvHIScMWtfU6H02Dq4gCkddeu0QG2Lbx6C+0qdR3U9eU56vHoMxdeA55w7J0jN/XZVEeKu
+	yOqh4VVijmKi8yzX+8mwQn67bmPJY8XYV6aJhGQNLRRRpZyyhrwAemy731o3o7v8J24htIagsT15W
+	3UAxPVSeTTEau4XpsY1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE6n4-000000010Gn-2rcd;
-	Tue, 06 Oct 2026 15:09:14 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xE7Sl-000000014fb-29gh;
+	Tue, 06 Oct 2026 15:52:19 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE6n3-000000010Fy-0eV6;
-	Tue, 06 Oct 2026 15:09:13 +0000
+	id 1xE7Sk-000000014ew-0OlM;
+	Tue, 06 Oct 2026 15:52:18 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 99D82601E4;
-	Tue,  6 Oct 2026 15:09:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38C4F1F0089B;
-	Tue,  6 Oct 2026 15:09:09 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8C96940585;
+	Tue,  6 Oct 2026 15:52:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 455931F0089B;
+	Tue,  6 Oct 2026 15:52:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791299352;
-	bh=TXACSYhLXtVOS9sONVQPPWY9uQYglM+Zmt4FkOCBx3E=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=oeD9QMK/tXxY4ZxQ0+Gmxg5aPRwX8W4X1AsK0sM2/mcxH5WLbLIqfNtfXKgb//leF
-	 XSP48glRRhnj3pQa1VCq6PUqbetMprs1Ae1hsidFDVuXLj8C5jyU+QvHptSuSxkQfE
-	 OLjdV7BpPGqd7FFkWefViFpHPP966uaE8UsT1h3MUaiHorajeVhPBIeWZQmBY2K+cl
-	 OsoIa3GrOv8mEummzhMcMh6UXe19qhig9gh4u0Z0tqjxFK3uuzBls/sZGPruZopO6V
-	 gZab5ew9dzEGQqga0VIjn5fWAV8Olsicn1jGw5NFyHA+7kLvJVBwxbRdYKVdchrNiA
-	 4DV5zTUQMDIKA==
-Message-ID: <2639e56d-1fcd-4f20-b065-0066a6d841a4@kernel.org>
-Date: Tue, 6 Oct 2026 17:09:06 +0200
+	s=k20260515; t=1791301937;
+	bh=2Ub01gSpzkIPPc4VtXS/tUHnccetbhBgf8QWwTXERhw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=KOX43lIHXnXkOiPR8I7vX0iKTjhaYX1YpvjfUgBRcZYDu3hJU0USj+jKBrcKJnMcY
+	 Ph5T7kQ8XvvxDD/389E5TWK6DIRy+b4fxBwVa211/ZSpLoqTjEFLeY1ohgVBkWTO6B
+	 s5Mwrnjv0JfUixAu6KuzmciG0OUJbJI2idVC7h/hpeEmi/OqHs6MxY2+lnEaGoHpuO
+	 7JS4jaMRCs5GnPpb9/svHfMvW+zJjDppK6xW5xohEImdypQtfh1h+WITqlGmw8rq+X
+	 RDUkzM42SA5YNpl0Femws1pLptpj3T3EHvXrAy4BSm7iQDbhy+76QCUmf948ra1K/v
+	 fX/9qNmcyMrHQ==
+Date: Tue, 6 Oct 2026 10:52:16 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Quchaosheng <quchaosheng000406@163.com>
+Cc: Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
+	mfd@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	Zhang Qing <zhangqing@rock-chips.com>,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Chris Zhong <zyw@rock-chips.com>,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5] dt-bindings: mfd: rockchip,rk805: Convert pinctrl to
+ DT schema
+Message-ID: <179130193622.2397071.7473599240811145793.robh@kernel.org>
+References: <20260923083001.606935-1-quchaosheng000406@163.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/5] dt-bindings: soc: rockchip: add boot ROM download
- boot mode
-To: Alexey Charkov <alchark@flipper.net>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Sebastian Reichel <sre@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>
-References: <20260929-b4-rk3576-reboot-mode-v2-0-5a34ca72065a@flipper.net>
- <20260929-b4-rk3576-reboot-mode-v2-1-5a34ca72065a@flipper.net>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <20260929-b4-rk3576-reboot-mode-v2-1-5a34ca72065a@flipper.net>
+Content-Disposition: inline
+In-Reply-To: <20260923083001.606935-1-quchaosheng000406@163.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,21 +74,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 29/09/2026 12:28, Alexey Charkov wrote:
-> Rockchip boot ROMs enter USB download mode, commonly known as maskrom,
-> when they find 0xef08a53c in the register they take the boot mode from.
-> Add the magic under the name U-Boot already uses for it, so that boards
-> able to request it can do so symbolically.
+
+On Wed, 23 Sep 2026 16:30:01 +0800, Quchaosheng wrote:
+> pinctrl-rk805.txt describes the pinmux controller that is part of the
+> Rockchip RK805 PMIC. The PMIC itself is already described by
+> rockchip,rk805.yaml, so the pinmux part belongs there as well: the
+> pinctrl node is a child of the PMIC node, not a separate device.
 > 
-> Tested-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Fold the pinmux description into rockchip,rk805.yaml and drop the
+> standalone text binding.
+> 
+> While doing so, add the missing child node schema. The rockchip,rk805.yaml
+> schema ends with 'additionalProperties: false' but did not describe the pin
+> configuration child nodes at all, so a valid pinmux node like the one shown
+> in pinctrl-rk805.txt was rejected:
+> 
+>     pmic@18 (rockchip,rk805): 'rk805-default-pins' does not match any of
+>     the regexes: '^pinctrl-[0-9]+$'
+> 
+> The pin configuration nodes require 'pins'; without it a node that names
+> no pin is accepted silently, while the text binding it replaces listed
+> 'pins' as required. The RK805 exposes two output-only GPIOs, so 'pins' is
+> an enum of gpio0 and gpio1 and a typo such as "gpio2" is caught.
+> 
+> The nodes may be direct children of the PMIC, or sit one level deeper
+> inside a "pinmux" grouping node, which is the layout the example of the
+> text binding used. pinctrl-bindings.txt allows the configuration nodes to
+> be grandchildren of the pin controller, and the driver reaches both
+> layouts: pinconf_generic_dt_node_to_map() parses the referenced node and
+> then walks its children. The example shows both.
+> 
+> The example also regains the gpio-controller and #gpio-cells lines that the
+> example of the text binding had.
+> 
+> Reported-by: Sashiko <sashiko-bot@kernel.org>
+> Link: https://sashiko.dev/#/patchset/20260923034245.396417-1-quchaosheng000406@163.com?part=1
+> Link: https://sashiko.dev/#/patchset/20260923062746.516666-1-quchaosheng000406@163.com?part=1
+> Link: https://sashiko.dev/#/patchset/20260923074337.575122-1-quchaosheng000406@163.com?part=1
+> Assisted-by: LLM
+> Signed-off-by: Quchaosheng <quchaosheng000406@163.com>
+> ---
+> Changes in v5:
+> - The child nodes of the "pinmux" node were matched with a patternProperties
+>   entry guarded by "if: type: object". That has no "else", so a non-object
+>   property of the grouping node, a misspelled "typo = <1>;" for instance,
+>   matched the pattern and passed. Match them with additionalProperties
+>   against the same definition instead. dtschema puts phandle and status into
+>   the allowed properties there, so the grouping node keeps the phandle that
+>   pinctrl-0 points at, and every other property has to be a pin
+>   configuration node.
+> 
+> Changes in v4:
+> - Describe the pin configuration nodes both as direct children and inside a
+>   "pinmux" grouping node. Only the flat form was described, so the layout
+>   used by the example of the text binding this replaces was still rejected:
+> 
+>     pmic@18 (rockchip,rk805): 'pinmux' does not match any of the regexes:
+>       '-pins$', '^pinctrl-[0-9]+$'
+> 
+>   The nodes are now one definition referenced from both places, and the
+>   example shows the flat node and a "pinmux" node holding one.
+> - Name the binding in the summary, as
+>   Documentation/devicetree/bindings/submitting-patches.rst shows for a
+>   conversion ("dt-bindings: iio: adc: adi,ad7476: Convert to DT schema").
+> 
+> Changes in v3:
+> - Capitalize the summary phrase. dt-bindings: mfd: titles are capitalized
+>   after the subsystem prefix (Add 61, Convert 20 against convert 6).
+> - Add gpio-controller and #gpio-cells to the example, which the text
+>   binding's example had and the conversion dropped.
+> - gpio-controller and #gpio-cells are deliberately *not* added to the
+>   required list. rv1108-evb, rv1108-elgin-r1 and rk3328-a1 do not set
+>   them, so requiring them breaks three in-tree boards:
+> 
+>     rv1108-evb.dtb: pmic@18 (rockchip,rk805): 'gpio-controller' is a required property
+> 
+>   No rk8xx PMIC schema requires the pair, and gpio.yaml already enforces
+>   that they appear together ("'#gpio-cells' is a dependency of
+>   'gpio-controller'"). The pinctrl driver calls devm_gpiochip_add_data()
+>   unconditionally, so the property is not what makes the GPIO controller
+>   work either.
+> 
+> Changes in v2:
+> - Require 'pins' in the pin configuration nodes. Without it a node that
+>   names no pin passes validation, while the text binding listed 'pins'
+>   as required.
+> ---
+>  .../bindings/mfd/rockchip,rk805.yaml          | 60 +++++++++++++++++-
+>  .../bindings/pinctrl/pinctrl-rk805.txt        | 63 -------------------
+>  2 files changed, 59 insertions(+), 64 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt
+> 
 
-This is a fake test, you cannot test bindings how we understand Linux
-kernel testing. Please drop such blanket-fake test tags from all patches
-where this is not relevant.
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
