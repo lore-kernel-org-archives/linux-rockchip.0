@@ -4,61 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43DAFCA6007
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2026 03:03:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B41E7CA600B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2026 07:18:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=cadNNjVWnjSDFnFxTfit9vq/Z6ELsDW+zs8i+bWBA0E=; b=Awk1RjXlG5Jg8V
-	Z21pj1O5T0osaq/lZeVqO4QN+rltYiCBjXtFlPuyu9qHlUo+BcJVgPvRcTqdz8tFdLb7ZXTevz5G3
-	mkh5qdQBEUQkEgaZGrjhOmeYMyJyn9mDf2tuMbYMy3oWFZE9F4RQS4zgmuKJcB4Z4bm7aQ4z4tMah
-	j1f6dnUIXY6M9BZhJTcuXb0t8ZJMKuHmtxiZVYzjm5ziQUgUmLQ3CaXL3wUA/+3EOCGeAkJMFbMZs
-	Pt928KBcLk+OOXq9TLts/cK/CnKegGqPaLHpGLT7UiIyaKEgpyMMykXDJsFQzJ112Eh4iRDJYChCP
-	zYSHN1fK3Q+a8eiNoMGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=luu+SkR/Ke761zFZ8lQRg8PnE8hqnol/GuL3Tja9Qu0=; b=UD1FzYeii5xdyH
+	b2RUFstNFYrcU3iWbSVE4QEOXuXG3QGSXaRNLRaIedBZ++yWs7Dp2szTWalG/Rf0igvl2mz7wrTLG
+	gT6Q1uM00qAAMED9R9YYyyXFluCsQNuu2SldKsx/56awV+DrwZyIutxibHoMG7WPXb8QSdtXwnTfe
+	nmnF4EQ6CsqJfSzoormAZXvOoyUYSqL+NOTmO+pKNrxdhRIJbmofqvIcUZkUVw3CdDFLN/A1X2MLK
+	0jhGZOjhfSkM0XVY6gwBtHNyzbbs0V0/1qcnWTuf6PRY3jNqiBZQP6djgVCbNKy43+fupn+NkhR1z
+	ADqG7TC/UvKTnSZy/EjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEeQ2-00000003Qe9-3Myk;
-	Thu, 08 Oct 2026 03:03:42 +0000
-Received: from mail-m60231.netease.com ([210.79.60.231])
+	id 1xEiOt-00000003j6F-1vPK;
+	Thu, 08 Oct 2026 07:18:47 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEePy-00000003QdT-1PKB;
-	Thu, 08 Oct 2026 03:03:42 +0000
-Received: from xf.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 503d04501;
-	Thu, 8 Oct 2026 11:03:23 +0800 (GMT+08:00)
-From: Finley Xiao <finley.xiao@rock-chips.com>
-To: finley.xiao@rock-chips.com,
-	heiko@sntech.de,
-	Sudeep Holla <sudeep.holla@kernel.org>,
-	Cristian Marussi <cristian.marussi@arm.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	tony.xie@rock-chips.com,
-	huangtao@rock-chips.com,
-	frank.wang@rock-chips.com
-Subject: [PATCH v2] mailbox: arm_mhuv3: Keep the combined IRQ enabled during system suspend
-Date: Thu,  8 Oct 2026 11:02:14 +0800
-Message-ID: <20261008030214.368347-1-finley.xiao@rock-chips.com>
-X-Mailer: git-send-email 2.43.0
+	id 1xEiOs-00000003j5w-13it;
+	Thu, 08 Oct 2026 07:18:46 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9A38360252;
+	Thu,  8 Oct 2026 07:18:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D248C1F000FF;
+	Thu,  8 Oct 2026 07:18:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791443925;
+	bh=bIWEluHy4olmpdCKhHecoCjRfu/n7+ylkyhpZgJoDQY=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=YhNZ3kZYbA2kvqgVMOMv1chucJFUmlxb6iMyG/JWhON8FRL30yewBlVwIse4ouIOP
+	 6Lt9Yk8AeEZSdwsiSgZcBvbge+5Acgn9YMzhJXkxGxtI6UQMU2+P90beYGkXAfeyMD
+	 oZuRtxQGMSdCX+ny7/7pM92hPtB5PIwnUnMnJFKRJ434oSt/99MzPUQvzQWLDjeojF
+	 sUfVokpjAqJs9jUYhK+wYGNKe3+7Gu+izo3P2Xg/5HIoM4Y8c+6RN/wxwP5Zus9olb
+	 wdmY3D8+CarQ7pQqHp+XuD/nOC8mUgNk/DbCnZq+w2z9Rvo/amruLJ2ZZSvAZ3pBJs
+	 vsKzgNGPFBJqA==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ phucduc.bui@gmail.com
+Cc: Sugar Zhang <sugar.zhang@rock-chips.com>, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+In-Reply-To: <20260903112739.373621-1-phucduc.bui@gmail.com>
+References: <20260903112739.373621-1-phucduc.bui@gmail.com>
+Subject: Re: [PATCH 1/2] ASoC: rockchip: rockchip_sai: Handle runtime PM
+ resume failures in set_fmt
+Message-Id: <179137153110.2423942.4793821974137109884.b4-ty@b4>
+Date: Wed, 07 Oct 2026 13:12:11 +0200
 MIME-Version: 1.0
-X-HM-Tid: 0aa119772d6303a8kunm2f35a96c7c2dd0
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZH08YVk9PSUlKGB8aTE1NGVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=XM6+ZbnkmQNlAhn5qn2uDiSftM3yGfhBT2v45Nv+KYw2bZSQ+UQ2jQ3uV/fZH/5RD1pnEPlWylQsk6yWl/oG4z4CE20ipqczYhXBNtV35Ev8cajAV53RsoRfQ82AznQ3yuX3Uot3s01byq/lTdCDzJwYeQeyzNe1w43vIHdgDLs=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=Dgleh18hZRn+DpCzOwpEkJP+/6haGcTG+Q6HFfBYP18=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261007_200338_873548_14F59A20 
-X-CRM114-Status: GOOD (  11.58  )
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1316; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=jkEvlhNrGy4+zr/Kw7j1aPz+pb88B7Nghlwg5R4mxEw=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqx0PQHvrXauKfqKrTsbBnSOe4rrtmP4OQWk+1H
+ oVnsF8TNgOJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCasdD0AAKCRAk1otyXVSH
+ 0GeNB/oDhu8wDi9UdXa53rTKeQkmHe1JGb4K1econGzifJVtnAH+WpdnOAHqNocd973sKbYrYJK
+ b6aH18ARbId20iOkmNImVSYBMOXDJSc0sxRM4gzN0FqrIEDXs/7kULaF4e1xMSl0tEk4SSQ/GTH
+ fgf//KIHHsHB90pm/nqN3ZOC5tq+o5o8Gde+ATJ3jH9DL49ldBE4cxvOh2FjqgRuzf7Kyz3Bx43
+ ZPiriQ1KqDKBqp9HhSMI5bzVXcyjEUdTTgUbIyXNYJlKrsBYMlgrL0c7MnFjdSiCw08qAfuslU0
+ +5X7q8X0N3jGNPZUVFh1CtWaePdr8Xr5X+sf06c6USIVyuPv
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,69 +84,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When MHUv3 is used as the SCMI mailbox transport (arm,scmi-mailbox),
-SCMI clock and power-domain operations still need to work in the noirq
-phase of system suspend: genpd may power off a device's parent domain
-from genpd_suspend_noirq(), which issues scmi_clock_config_set() /
-scmi_power_state_set() and waits for the firmware reply via the mailbox
-RX IRQ.
+On Thu, 03 Sep 2026 18:27:38 +0700, phucduc.bui@gmail.com wrote:
+> ASoC: rockchip: rockchip_sai: Handle runtime PM resume failures in set_fmt
 
-However, dpm_suspend_noirq() calls suspend_device_irqs() before running
-the suspend_noirq callbacks, so the combined interrupts are already
-masked at that point and the SCMI transfer times out while waiting for
-the reply.
+Applied to
 
-Both the PBX and MBX combined interrupts are requested as threaded
-IRQs with only IRQF_ONESHOT. The MBX combined IRQ must stay enabled so
-that firmware replies are delivered, and the PBX combined IRQ, used
-for txdone by IRQ when not in polling mode, needs the same treatment.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
 
-IRQ threads are not frozen during system suspend, so with
-IRQF_NO_SUSPEND the threaded combined-IRQ handlers still run in the
-noirq phase.
+Thanks!
 
-Add IRQF_NO_SUSPEND to the MHUv3 combined IRQ registrations so that
-SCMI remains functional throughout the suspend/resume cycle. Note that
-this only keeps the IRQs functional during the suspend/resume cycle and
-does not make the mailbox a wakeup source.
+[1/2] ASoC: rockchip: rockchip_sai: Handle runtime PM resume failures in set_fmt
+      https://git.kernel.org/broonie/sound/c/39205bb7ed4f
+[2/2] ASoC: rockchip: rockchip_i2s: Handle runtime PM resume failures in set_fmt
+      https://git.kernel.org/broonie/sound/c/e9eb1854d161
 
-Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-Reviewed-by: Sudeep Holla <sudeep.holla@kernel.org>
----
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-Changes in v2:
-- Add Sudeep's Reviewed-by tag
-- Clarify that this does not make the mailbox a wakeup source
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
- drivers/mailbox/arm_mhuv3.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-diff --git a/drivers/mailbox/arm_mhuv3.c b/drivers/mailbox/arm_mhuv3.c
-index a1c528be47f3..04998e1346c5 100644
---- a/drivers/mailbox/arm_mhuv3.c
-+++ b/drivers/mailbox/arm_mhuv3.c
-@@ -980,7 +980,8 @@ static int mhuv3_setup_pbx(struct mhuv3 *mhu)
- 
- 		ret = devm_request_threaded_irq(dev, mhu->cmb_irq, NULL,
- 						mhuv3_pbx_comb_interrupt,
--						IRQF_ONESHOT, "mhuv3-pbx", mhu);
-+						IRQF_ONESHOT | IRQF_NO_SUSPEND,
-+						"mhuv3-pbx", mhu);
- 		if (ret)
- 			return dev_err_probe(dev, ret,
- 					     "Failed to request PBX IRQ\n");
-@@ -1017,7 +1018,8 @@ static int mhuv3_setup_mbx(struct mhuv3 *mhu)
- 				     "MBX combined IRQ is missing !\n");
- 
- 	ret = devm_request_threaded_irq(dev, mhu->cmb_irq, NULL,
--					mhuv3_mbx_comb_interrupt, IRQF_ONESHOT,
-+					mhuv3_mbx_comb_interrupt,
-+					IRQF_ONESHOT | IRQF_NO_SUSPEND,
- 					"mhuv3-mbx", mhu);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to request MBX IRQ\n");
--- 
-2.43.0
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
