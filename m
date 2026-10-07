@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48FA0CA5FF1
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Oct 2026 09:40:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67B0FCA5FFF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Oct 2026 09:50:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QJGouzd57Hp7eWVK3ENZhxb24kDbq3qeUqKuaEiifwY=; b=xPE+h8/921QdpH
-	fhSbhRYyartrmV+cT/vC7pd5I07+F934SfO2rDtvva44uKqFatSEyzcoebFY5UUzAbHm4N3BxFyOC
-	7cUi60Jf8rBuwcXk6X36Ns7xRftf9o1UQDvYZQgLPjKjSBr5vXwRMTXBZMsccK4OMsdmMKkfQAl1k
-	GrwbzOO3Vu3f7BS2UtL67V7LU361cUll6v5PwKa61engZiigPz87nZzNRMyVGGmC8UshiqMHIYghf
-	NcgE11epGuY8c5H67JqO7J1eYfx/KxFT53D5PZwgp3SjY06w9e4/DzOzJ+51Q8TyO5bMaK4BaROcZ
-	YYjuaABbXvw1HaqRuZEg==;
+	List-Owner; bh=Af+v6Vj/R5MzsVGgonQG8jE3w0wWxEytfOfCfP2v6b8=; b=R+HKd4Uppl1bbr
+	NydLMGnY7cQ0Al3u4UOk8hQSR10Ax0jAKzzG91kDDNIuhJaikXt2oIcu8vRDZ+bLqeZdG2qlGWnG0
+	hi9r1o0D3TbhJxs4s4Io9me1Flj6bMPCKW9yeFd/4z5RQPCHB9n1Pdi5VR49LSWQGyQ8m5mw2+BlQ
+	sfu0snVqFmqLPg14Bl3OW2ymDEU7Wqtqt0ZU4bfrI9oL389rUyG+r52u6x6WLeMfw0FZrDTkDk2NB
+	LUPIkDmXDPY0LdUC+7Mj7zcuGLl0+tqnYGb02PUVdCGTzRPmS34Czgf2CeG1vHPQeTfRKAq1oPyoN
+	FhPyu41hUn1NeW5lVNUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEO8H-00000002549-13xU;
-	Wed, 07 Oct 2026 09:40:17 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1xEOID-000000025wT-3BfP;
+	Wed, 07 Oct 2026 09:50:33 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEO8D-0000000253S-0npz;
-	Wed, 07 Oct 2026 09:40:15 +0000
+	id 1xEOI9-000000025w6-46OS;
+	Wed, 07 Oct 2026 09:50:32 +0000
 Received: from Vostro-3710.. (unknown [14.220.232.127])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 50294ce74;
-	Wed, 7 Oct 2026 17:40:06 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 50294cf3a;
+	Wed, 7 Oct 2026 17:50:26 +0800 (GMT+08:00)
 From: Chukun Pan <amadeus@jmu.edu.cn>
 To: amadeus@jmu.edu.cn
 Cc: conor+dt@kernel.org,
@@ -38,22 +38,22 @@ Cc: conor+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: fix adc button voltage on Radxa E52C
-Date: Wed,  7 Oct 2026 17:40:00 +0800
-Message-Id: <20261007094000.817223-1-amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v2 1/1] arm64: dts: rockchip: enable NPU on Radxa E52C
+Date: Wed,  7 Oct 2026 17:50:20 +0800
+Message-Id: <20261007095020.820283-1-amadeus@jmu.edu.cn>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260808100000.1518466-1-amadeus@jmu.edu.cn>
-References: <20260808100000.1518466-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20260816100000.3707339-1-amadeus@jmu.edu.cn>
+References: <20260816100000.3707339-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-X-HM-Tid: 0aa115bc07f103a2kunm98eed11335caa9
+X-HM-Tid: 0aa115c57bb403a2kunm498eaa4535d129
 X-HM-MType: 10
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaTx9DVhgfGU5MQ0oZTEseGVYeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKT1VJSUtVSUhJVUpJTFlXWRYaDxIVHRRZQVlPS0hVSktISk
-	5MSVVKS0tVSkJLS1kG
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCTxoZVksYQkJNTE9LHRodHlYeHw
+	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKT1VJSUtVSUhJVUpJTFlXWRYaDxIVHRRZQVlPS0hVSktJQk
+	1LSlVKS0tVS1kG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261007_024014_412692_B2257488 
-X-CRM114-Status: UNSURE (   3.47  )
+X-CRM114-CacheID: sfid-20261007_025030_610033_804FC79D 
+X-CRM114-Status: UNSURE (   5.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,7 +73,9 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
-> The ADC button voltage should be around 1.8 V, not 18 mV.
+> Like the RK3588, the RK3582 has NPUs. Enable the NPU cores and their
+> MMUs, and connect the regulators. Remove always-on and boot-on from
+> the regulator because it is connected to the NPU power domain.
 
 friendly ping
 
