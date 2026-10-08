@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 919EBCA600C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94BE7CA6014
 	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2026 19:18:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PlYwcTutX4OVEDEx3q6enJZCNizQ+pvXR433fUKrEeY=; b=yeNwrnF8n26Xm9
-	UIJD+Pu/qdpRLqcvdDzd8N3t/CEeGkuFMMEgKROBgq10hup9rSl08kffoo9L0crFGvxQAGAARkwpD
-	bLDOXnQcrgB8yIH6ueeMgA1mEosLXqVFbPKTjYvE8AjYeqEb96bXltNxK7kk1dKFJObTPANa03p1p
-	TZRaOYjO/Rv8UbJUZpPIdFXqbYqgKJSSuXONQiKaXLLvqpbRbO9QDGdrjd2dvUYizw6DKU4Y8zkZ5
-	fwCywf7wzTOWWJi4VhtFkJ+UCgAAoGBynq4qDhnQwjfev585do+WDPySU+R7DTtG13AOVhwJLwxI0
-	FcjGBuP4LIJuP8yTGfhQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=U4ek34jSD7ElOMjFlR9+xaSoeHwa3KWrvcFrAp5HuZQ=; b=PbTEf0dgVIbSMp
+	RsGCqsFgGSGPqyx2/pe4IozJ8bX1dT+aTy3u3EdviqvMaD/onNoR2HQLI6TyNplcUrZyuC9mOvaQQ
+	4vinG5D3O2ZXlQEz7vCwj33msqpj5QOqfOYkBldJ757gwQtTnfn3cubOSyTBhYexL9KMEQgrfrt8q
+	mrNeXYiPqLcM9FODwpRpQKyMASXHLfRsV4Ll2MRzWGZ0YqCfEZb88IbB9doxB2WqJqToEJH607qs7
+	aajU4lxjq47rhQa9/0B0bheg7Q+oEkcGXn34bU45SWldx+xd3Q3CzMY2VLibMiZ6EkpToMBLsWMce
+	ZhuzKFqZZ2RrGsb8aPdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEtdQ-00000004uob-44WQ;
+	id 1xEtdQ-00000004uoV-3gYT;
 	Thu, 08 Oct 2026 19:18:32 +0000
 Received: from mail-dy1-x1329.google.com ([2607:f8b0:4864:20::1329])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEtdO-00000004umo-2WX3
+	id 1xEtdN-00000004umL-2iHi
 	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Oct 2026 19:18:32 +0000
-Received: by mail-dy1-x1329.google.com with SMTP id 5a478bee46e88-35154cb9de2so4960135eec.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 08 Oct 2026 12:18:30 -0700 (PDT)
+	Thu, 08 Oct 2026 19:18:31 +0000
+Received: by mail-dy1-x1329.google.com with SMTP id 5a478bee46e88-35115b52125so4488682eec.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 08 Oct 2026 12:18:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=trailofbits.com; s=google; t=1791487110; x=1792091910; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=a14qc72yQKkzCAZ2CAoTwipNnd9qGKItgjyfXX9xZAw=;
-        b=XKHqRSIA45QWqnqriSW/FP3QRnQKNbeZTDtWaZIkp6WUzqYRMGfVoMxbRYwsoDmJzl
-         OL8c28zZAvdHZSm5ORQZu2GKWbK25W2bnhAd/e8lPTa2LhNbnSHiZMFA3Mfh29uDD6Om
-         hQJyj5jznS9VrqtVfRnOIchJVUuLuVH9sNuvDtOpDzaB1lWGWnCUJeGr9qNt/ReL2Xpr
-         hGBnTEZD76mb4ajLCmrRgHKKB3E+3QOhEv4LqBkUskpaTzkYFe1QzSrqPpAOOmTXAWbZ
-         ttLqz5O1AZu8l15j+ri0HFTc8l0AuXM9JBX6pDBS9r+AtN8aMxRYW1lyP68GQj3C1wKN
-         UYvw==
+        d=trailofbits.com; s=google; t=1791487109; x=1792091909; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=pOSWDS5/Ihvyp+1XM6mV0GAPNEch8iMG3fi5kmx4byo=;
+        b=NiXvfYF6KuZIiz0KW8pcBBYXtPyV0IXp4g0jG+jJVGZcV0ZP2x0A8MwFoM+aXyCNRx
+         oTboFk5B38Ol/3vazgf9DcqZASMeYjSOtTULd0ogdVkY6c/BWVO0VUfnlxSkXs5C4fER
+         W0L532fzhtxjPT5ieLwK+/K/shVxmDTy/q8j1cDBjdY09Y7CkWxzUmuygnjmKByFgVmF
+         oHJvIdUphdbvwJLitaTrQvu+KvOr4325o2xML4rGJSOE3v4M0aHu+Vsj1tZgq1C8lxYR
+         lfYlCV9t27P0k3Shd8ExbuCUV+1uDadNkdxc52iMvKZpr64dHpKLgYQN4W4BXcnZNPtr
+         wY6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791487110; x=1792091910;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=a14qc72yQKkzCAZ2CAoTwipNnd9qGKItgjyfXX9xZAw=;
-        b=kDKv8mZA5Lo+7wDcm1x0weWzsR3MYv7i1JCJcaCpj0zAa1Lx67l4SbTAVewg7SHbHL
-         yyU7ocoEA9D1JX6qGMivrYPpzVujB/pvi+P2S96Ki08iyQEGLyuPkSslcf/MAtcGFg6M
-         hU+5ERBJkbIOz/+vfZBcF5OOQG/ZSXfOInuthuQre5/fGt9gpGYClZdfG3upFQY87zBM
-         SzdTAUgzBjk5IGVntPo1gloiF+S0Wnsaep4y/R2pY+xvmu+J96LXWWN8a5C0OdSohJuD
-         ru7zx6+vFEiAPj91gBuIWee8H50TdYs97TVOH2E3DNeI8pLC58bly7E+jeAk60rp2gKy
-         8rHw==
-X-Forwarded-Encrypted: i=1; AKwUvBwnN0vEHVOkPZ3bOnKG8EfZKz2Gtt/hX1y+MAVhkl0eZLBn7UhIAx2FCg6Q3GVb7Vtf9XL9N778f/TO2dpxXA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKc2DS+OCMl89PN51/Ms7N6hV3An5iQO72M9hnBZjBwaCkgas2y
-	ec9zkBsQqp3gYQx4NTuM+GkFZCJaeoLYZ2PzdzsjMCDHEy4c3f4BeCl/zBCUg46AOI8=
-X-Gm-Gg: AYBFou1j6tnovcq6HslWVHmt5J32MilTC1RYhDUizNxH/RwMLBfrqetq0m6893nJ2iV
-	+Ykuo1i0JvRCFipnKH+U3U1STrO/R7CBoROpJZ+Vx7wWmyPVlTHinGKTIAWEB40YV28foMz6RLM
-	+BoPwsOzFMJX5Z3aPV5v96jjuhgjNVOPaoM2TyMSLLn7QIsJIp1gYNIpJ9oDB0nsu5jnGD8jfap
-	y7ytWo2YCd9UF+qXkTa+52jjRs/nvm93pstespgbXAXfdq55OQJCbOOkJSdDRr8mnIQXpDxB7F6
-	VOz18KJ+yLB2F287hGe0mFgt06XSbiFUM2pWtEcMqp/P5AKrFiH0dg3D6goEuoBivuPHiDTj90t
-	QF91gveb/s4MR+dCea3w3mLY8oLZY7lLSD95t1KlTOlAQudCnuNE5TPQMEamjce/qtE7JN8+8Sk
-	asrr+JNYebZ8jtyN29a0TvzV57aDSOBvdDbOzy2iqwIMV4ToOOUWZohvEeyY9g9nP82oqw4jmFc
-	ZbYAlzCEZJsRvqMaRbb4hiTeTjbdl7/ReKQISpRWqb8iONcrMXe2CVg74E/8QxZc45jhDc=
-X-Received: by 2002:a05:7300:8819:b0:33c:e72:5b3b with SMTP id 5a478bee46e88-3535f3cbcd4mr464739eec.25.1791487109863;
-        Thu, 08 Oct 2026 12:18:29 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1791487109; x=1792091909;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=pOSWDS5/Ihvyp+1XM6mV0GAPNEch8iMG3fi5kmx4byo=;
+        b=qrSKJd6BHBfBN0vT4efq+QlStse874hvJE6wzdk0z6suMWazS+SEkIzgjsw9GuW7p8
+         EvhYzJuBkwLpKPg/RvCGV8nGGAXPK2pjZoQWNi1hv0tVEUbQ9Y4zx97Ul09NOWSk3vYj
+         0WzKRu1myWkQkIGjlUHEtF4lzbNMcFCV+W4mwI0auqep9SRVUyosZPoG9oC1A9huEJ8F
+         VAyr3zRv10SEGbLvuGzoWU2aRBp08/ewf5Db3k7RBMbSRqjLqgGc4ijIvwy/PCgzjNB3
+         pwYeIne92WJQ762/3E6mLXuP7ukF94gbgs2IPLAbkzVyY4KsxprGXCYXTGqGv82g4wJb
+         fVQQ==
+X-Forwarded-Encrypted: i=1; AKwUvBx43Ca9Zh0yEDbpyUQgM5z+dFxdCji0NPQJOaEd4ut09EUxfBC4awRzPnbHwZEfWnWPsZAzm8aGd4JjN6ayfw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKulURVIS0VrQoLw8vsFf2wXmyiu7pcOqfUjsY7OJFegMtBFC4e
+	P2i7RWc2MCCJZsPLOMadBmJ2D6EQd8ht18TZz+vyH1buRLp7E5Mku9HwAKXLd5yP7vA=
+X-Gm-Gg: AYBFou1kxS0b1hvN0D9UFXFKN1yvVKBK0OJVzHrkufboSdMBiTONkmdV99TxUYwtqd1
+	MwfWUjQmY87DA5cmrRjw2CQBTNG5PlNsLVkzIkQQs7+n33e5Jk6FusfpM9BFLSiSJqmwSvDDgxU
+	FKWSvPpuGquQ8yK+BI5Xra3PcC6+Jgzh4NkXWas/eeGv3Rw7vCWK5+r5iah8Hftk4GlwmrgCxXM
+	0BAj0/B2CsRoeS7fHzfqLz+in4HnqUyaXdOQJX/r1JMDOipLKrOUIi3J6CfhOmmdFvkorxhWoOT
+	yQiPU84I/KTh0f2lSsGEow9oKqcoajKGzrtqV6H4Zp2gP+SnXO56IIvQoSzv3oyRVYL+OapMysZ
+	RaQ28hWAhHqjv1OcfgJXZWC2GO2IlJrr8GM8o/M0bRS0+7FBvYD8hax8ZcDKpL900wbfEbmurlR
+	8Mxp9b4itjBOsYTifKfO8bbotLW0WwW/7Qqt43pMwac9Ccfdmd9zli4Pqw2tNOXSe7a+NIJzHwK
+	1/tEY5VIce2r0qmm4y4Nc8FvA+HUoR6b3HBWAPI9AJm9dhHIQqlPGXiV+V/rfaM5PB3LWUsXvKk
+	lSxjUw==
+X-Received: by 2002:a05:693c:8941:10b0:351:1f66:469b with SMTP id 5a478bee46e88-3515dc54ec0mr7434477eec.2.1791487108233;
+        Thu, 08 Oct 2026 12:18:28 -0700 (PDT)
 Received: from localhost.localdomain ([2603:8001:5f01:8bab:bc88:5ec1:4f8a:5b23])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3537c841579sm117933eec.4.2026.10.08.12.18.28
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3537c841579sm117933eec.4.2026.10.08.12.18.26
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 08 Oct 2026 12:18:29 -0700 (PDT)
+        Thu, 08 Oct 2026 12:18:27 -0700 (PDT)
 From: Artem Dinaburg <artem@trailofbits.com>
 To: stable@vger.kernel.org
 Cc: Artem Dinaburg <artem@trailofbits.com>,
@@ -88,16 +88,15 @@ Cc: Artem Dinaburg <artem@trailofbits.com>,
 	Linus Walleij <linusw@kernel.org>,
 	Bartosz Golaszewski <brgl@kernel.org>,
 	jay.xu@rock-chips.com
-Subject: [PATCH 6.6.y 1/2] gpio: rockchip: teardown bugs and resource leaks
-Date: Thu,  8 Oct 2026 15:18:20 -0400
-Message-ID: <20261008191824.98662-2-artem@trailofbits.com>
+Subject: [PATCH 6.6.y 0/2] gpio: backport CVE-2026-53226, CVE-2026-64241
+Date: Thu,  8 Oct 2026 15:18:19 -0400
+Message-ID: <20261008191824.98662-1-artem@trailofbits.com>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20261008191824.98662-1-artem@trailofbits.com>
-References: <20261008191824.98662-1-artem@trailofbits.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261008_121830_650719_BBB07515 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20261008_121829_707612_09DCCF43 
+X-CRM114-Status: UNSURE (   7.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,101 +113,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Marco Scardovi <scardracs@disroot.org>
+Hi Greg, Sasha, and maintainers,
 
-[ Upstream commit 9500077678230e36d22bf16d2b9539c13e59a801 ]
+I'm working through the smaller CVE backports still missing from 6.6.y.
+These 2 upstream changes belong together for CVE-2026-53226,
+CVE-2026-64241. They must be applied in this order because the later change
+depends on or completes the earlier one.
 
-Address several teardown issues and resource leaks in the driver's remove
-path and error handling:
+The complete series is already present in 6.12.y, 6.18.y, and 7.2.y.
 
-1. Debounce clock reference leak: The debounce clock (bank->db_clk) is
-   obtained using of_clk_get() which increments the clock's reference
-   count, but clk_put() is never called. Register a devm action to
-   cleanly release it on unbind. Note that of_clk_get(..., 1) remains
-   necessary over devm_clk_get() because the DT binding does not define
-   clock-names, precluding name-based lookup.
+Could you please consider this series for 6.6.y?
 
-2. Unregistered chained IRQ handler: The chained IRQ handler is not
-   disconnected in remove(). If a stray interrupt fires after the driver
-   is removed, the kernel attempts to execute a stale handler, leading
-   to a panic. Fix this by clearing the handler in remove().
+Thanks,
+Artem Dinaburg
 
-3. IRQ domain leak: The linear IRQ domain and its generic chips are
-   allocated manually during probe but never removed. Remove the IRQ
-   domain during driver teardown to free the associated generic chips
-   and mappings.
+Series:
+  1. gpio: rockchip: teardown bugs and resource leaks
+  2. gpio: rockchip: fix generic IRQ chip leak on remove
 
-[ Backport to 6.6.y: For 6.6.y, send with 1c1e0fc88d6e (CVE-2026-53226)
-  so generic chips are explicitly removed before irq_domain_remove().
-  6.1.y lacks irq_domain_remove_generic_chips(), so it needs a
-  separately reviewed older generic-chip teardown backport. ]
-
-Fixes: 936ee2675eee ("gpio/rockchip: add driver for rockchip gpio")
-Assisted-by: Antigravity:gemini-3.5-flash
-Signed-off-by: Marco Scardovi <scardracs@disroot.org>
-Link: https://patch.msgid.link/20260526171050.12785-3-scardracs@disroot.org
-[Bartosz: don't emit an error message on devres allocation failure]
-Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Assisted-by: LLM
-Signed-off-by: Artem Dinaburg <artem@trailofbits.com>
----
-This is patch 1 of 2 in the ordered 6.6.y backport series.
-This change addresses CVE-2026-64241. Releases the debounce-clock
-reference, disconnects the chained IRQ handler, and removes the IRQ domain
-during driver teardown.
-
-The fix is already present in 6.12.y, 6.18.y, and 7.2.y, but not in 6.6.y.
-
- drivers/gpio/gpio-rockchip.c | 17 ++++++++++++++++-
- 1 file changed, 16 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index ff9a4b8611d7..e0e4f3ed5fdd 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -629,10 +629,17 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
- 	return ret;
- }
- 
-+static void rockchip_clk_put(void *data)
-+{
-+	struct clk *clk = data;
-+
-+	clk_put(clk);
-+}
-+
- static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
- {
- 	struct resource res;
--	int id = 0;
-+	int id = 0, ret;
- 
- 	if (of_address_to_resource(bank->of_node, 0, &res)) {
- 		dev_err(bank->dev, "cannot find IO resource for bank\n");
-@@ -662,6 +669,11 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
- 			dev_err(bank->dev, "cannot find debounce clk\n");
- 			return -EINVAL;
- 		}
-+
-+		ret = devm_add_action_or_reset(bank->dev, rockchip_clk_put,
-+					       bank->db_clk);
-+		if (ret)
-+			return ret;
- 	} else {
- 		bank->gpio_regs = &gpio_regs_v1;
- 		bank->gpio_type = GPIO_TYPE_V1;
-@@ -773,6 +785,9 @@ static int rockchip_gpio_remove(struct platform_device *pdev)
- {
- 	struct rockchip_pin_bank *bank = platform_get_drvdata(pdev);
- 
-+	irq_set_chained_handler_and_data(bank->irq, NULL, NULL);
-+	if (bank->domain)
-+		irq_domain_remove(bank->domain);
- 	gpiochip_remove(&bank->gpio_chip);
- 
- 	return 0;
--- 
-2.39.5
+base: v6.6.157 (79643295eba17affbd16ca97f3ef04c90266b28c) plus stable-queue
+revision 958ddf240a33ef26b1771be944f0ea6c3b597472
 
 _______________________________________________
 Linux-rockchip mailing list
