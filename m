@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABE24CA6007
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2026 10:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B94B4CA6007
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2026 10:40:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CuTVisaOA5ef8J5bXER3o/wyGfkR77ab/JSUt8RplxQ=; b=r+r13OojmshKVJ
-	QwV7fy8qj0JuqGDIcfJiNkyRv5iQuIxhvw4aGkp/L1/xdyqEcaAaU7KAcBUVfspFLXDutiKKhu3vE
-	w2TyLCJeKbUILWGuXd9BcCl/UOJP+DX5l9kvU0DR24A1MjZTp4xQPHQHZ8gnSKfYFLNJk6VAHRcll
-	nGrn+qhu5mHnYH2Rz3U2OMNxMiKWpuWmdVXIDu8FJ5uwd6ThAQ79XTrG0KBaEuwJBt1WlrFHhmdTG
-	+QUF1djVTgpqhjbwp9NsPka0FR/Y3hdcmRsideeTconlJJxvBs4KPYh9Hb0TBCg+lItyQLguK/WnS
-	kzpzFFXLZ8swZJO+raRQ==;
+	List-Owner; bh=Bg9yJgDq5kOuDjadTdiRfix6geH67FnxuuN4dCD+9Tc=; b=YYZd0p4+2YZ4ul
+	AiHm/neu6TNjDC0qX0OAZiyjGliVl6wTOcIgeFCIouOLWUmJ3eIP0DQqttnXhC6CN3tCvlTT+HoRm
+	bh82wTJdy/I7AV2o62xfd6pXOovZzLqdfht60i6wec9yZYTNwHFKlWuW8U8qqUoUFIlL58d7T3Qqq
+	B8ICOyYq0W1L0GTYpGQ1iEHZ+3sA9iSSMf7JLrPu6tZeRZ6nNqoDyDkhtcaGDHiwS4OD0YnD8YjCB
+	wHsK+bJNvBSbrvVi5E1UVF7t2M4/RnmhWRKo7QHiBVtsnefQ1DYss9Pd1xmKi2HrnCqEDbfnA5ODP
+	87TrLCRg5j85hI3CCXUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xElYG-000000049j4-1o2r;
-	Thu, 08 Oct 2026 10:40:40 +0000
-Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
+	id 1xElYT-000000049nN-2Vwm;
+	Thu, 08 Oct 2026 10:40:53 +0000
+Received: from mail-dy1-x1334.google.com ([2607:f8b0:4864:20::1334])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xElYD-000000049hf-27bl
+	id 1xElYR-000000049mU-3npv
 	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Oct 2026 10:40:38 +0000
-Received: by mail-dy1-x1330.google.com with SMTP id 5a478bee46e88-34bb8b31647so7925702eec.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 08 Oct 2026 03:40:37 -0700 (PDT)
+	Thu, 08 Oct 2026 10:40:53 +0000
+Received: by mail-dy1-x1334.google.com with SMTP id 5a478bee46e88-35120d43ecaso7720253eec.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 08 Oct 2026 03:40:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791456036; x=1792060836; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1791456051; x=1792060851; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=DCoq+QQx3kZdKIK7QgXRpmYJ03Qsfh2Iq2ERtZh+EYs=;
-        b=RlDwihUZdkDhV5W1a3uoxtosLuCmMlYX4NCMUipgHhjGGk8rBatAhokodD/NVEySCu
-         Z/kNh1tjqcuMXqLWBaXqoDiGW0YB28PkXxD5gXLdmkPi8CAWmRnXlAt1BYYbkYOF5xvF
-         5oeJxiAMYur5yZEWoG6pb7h+nACO7Vw9Ac/GMDoy9JiwOn+5MinYi0RwAu+rZioIw+D9
-         udxO5OjlcizDsfReb8DC4UaAx4G7B+rqIEpWtHUA3MWuX12Qh1/OzSsmS15Yd8brSH2J
-         JriZd8mTK/O0Cdiu5NtwfiRxZD/zjsgH1zGu5/MFtoRGlpod7vBGm6D+BmTPxYCwnV/7
-         4DdA==
+        bh=A3hFCOdGFcpARJPE61Pz7wx4lXLyiEMweFG5G2TuDs0=;
+        b=FuHsv3EGXUd22g0plp7KlKVqoJAPwFJm6nA/4wW32vEYBG3pNcyawNfq5hjl1LyXr8
+         Ne3CAksln9SAwbIzyusWx2dCDihFe9kmnVKaALFhFk8rNfICUZVL6XJKr60Q+9if/dSq
+         J6uJWGnYGadR9oXRLkAygKwEBqjdyhL5mDpIFzaOmW81tVYOgQ7jDyRTMaWhF25VXHM+
+         XYENFq7aPhQ9xx8UGdhS+KlTs8yR5i+vhMLCBZlKygY/DbMKTdH26enGhZIL6rgn6fa8
+         HVLZiyXadlxsoVieD/fyXYjhXqGxx+8yCDEFkxrIdj7p5fL2K3imqKO6SIZef+MJyRTU
+         SK7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791456036; x=1792060836;
+        d=1e100.net; s=20260707; t=1791456051; x=1792060851;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=DCoq+QQx3kZdKIK7QgXRpmYJ03Qsfh2Iq2ERtZh+EYs=;
-        b=W3uk1oEaLyz6Pv/eZlWPHM1RDyx9fXLr+mZNQZKCqbYawom2gwg5PKlaz6EHg0EAth
-         3KSgWi4NQDuld/5JE12aNT4V5dFIrn9z2UNOXCrYDiLZFSEMFH5lG4m8POVakwGyXdnv
-         xOL/B2VoTPxLizOdUL2A3ksh+HdDuq39Lyqqo5F0IHz2L6FEYM/XFmCvWcYZSYB+kyFO
-         2SfvwHBEz4J3S1m1w9e4UF8IpG+LiI17TtTSCtarBYPIEPE3+0NXW1yOHqaAOW7qZkME
-         EPzAuHTstoRU8gcP+wFkhIVZKaBObni1XHjsoFDwrfOEvT+iCyPQsI9WzEl18ec4GWq6
-         d3jQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzEOaEVfWirMKQOG3RekQHYWmOuwpbYvCWhZZ4i+QypwYZGHMGXIWOtOsd308Hkdjz556lAuxI/9zhfLdXRzQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLsHTui5vArAnZ1FaUb1S/Nurl/+X7FohX3OLGXnVGz7w9lqBXr
-	S0B5QRIau2jhheU7x9hjSR+kgKuL/cjv/DIisfuhKUY+gKQrda+dRU0J
-X-Gm-Gg: AYBFou1sOr4w2ryWg0kj7aq8c1jjIpRPlJboztsBuKiahrWg1bn+Ybxmzv2lTmjBing
-	F9k7S/qChsEjSm1uSZNjHUHBA+MycjZrGPaNCkekZYxFlGwoLZT1LNyIlxJ4X3gNa4NJ7SaYIFX
-	/kd7AmLCdYqGqukuAS/uoreiq5kg5xFnJ3MPnXgHBBJzC1sXIPmv2jp4+2kBLGkqeY6Jfnd0eHU
-	aL5zErbOUDAFvDnRMhQnpBrxWDyICfP2k5+xJSRIIgF52T3WyA+R+KAsw5u9vZpcclhzZ5ylOge
-	uHsAGKjpkeOaV1959MggrXmpp1JtPXP/wARR3vzAzVyzPwBC+90HlvnwAhpAWrIvwRz24TG50zw
-	e6HbBPlzG+yF76Rm5KqDEEFm0cQpU8GU1Y+0WqbPUVsOfbKpi59H4u5erfR2IDXPXjWUnWgYHRe
-	5Q8Z4FtlEuqjoQmZEfogoAuDh0Bvq7UER57jZSBbVR6hPNL8zYp/lOM26dFj+k9l1i+m8t1Yoir
-	QsF8/Us2AzsHuljUSc7d4rID/6eWw/3Q38a91BnhjB++H/Wze2hW2SYseQHvO03Wl20ydM5tW/U
-	uMH/xeCs0s/JKb5l00iOzVFg
-X-Received: by 2002:a05:7300:b088:b0:34c:b75a:ac1e with SMTP id 5a478bee46e88-3515df70a46mr6358739eec.33.1791456036268;
-        Thu, 08 Oct 2026 03:40:36 -0700 (PDT)
+        bh=A3hFCOdGFcpARJPE61Pz7wx4lXLyiEMweFG5G2TuDs0=;
+        b=ZpB+MDlQdUX2FIqlzNQfVzPvP59/uT1+8lDzYYq1ap7byf/Hh9XC5E70uZ/HhU/Zez
+         UKOAI0BTx0hXgqbRBtW4jplBFWeiGCeuNI7RnVQFT4mN6b0mhjGJgiZBrHIB9rs+XBJb
+         H44hK0/nNYeSMoRLBKDajUB0h97dTPfDLFWjwJTHtFeaZxA/30FniX2MRo2UdTJ+MSzP
+         79WZm08LzoqPEjSrB1lwYZdRel3pQqP7hsFC53amnllZ5lYPeS/rA4OjD8lFJuBq7bVJ
+         I1vnapPyvra4SCPzfzGSwy1h3aCP15xyESO2A6zTZpkFtRGfQvcSu1wRFnMUrmOtoRyG
+         Reag==
+X-Forwarded-Encrypted: i=1; AKwUvBw4LrdEdgimnj8NojuYLxSdt3F7rWJro8VGmH9eDd/oJaTTVpBO4DFdQIlV2Lm5YHdgK5uZvsD0vCpQ9pQ/lw==@lists.infradead.org
+X-Gm-Message-State: AFuF++nVPrzWYacR8T8MryhhqG0EPZJsgsDDQmTFAh+PKW9DPEwREUCQ
+	vJw9Ga1RhHtLbDtftJ073IF6CIDlQlf8rfSDp6Tqv2t0cwTQMcDRKqk9
+X-Gm-Gg: AYBFou1OIXLb7zyrCjf1jSZ5qKpKXDEamezaHxE6qHGZWaSBJ8dppj8t+w2E1Bt9FhV
+	FAE7lpUbkud2g+L0DkbqRsF7xpNk4OFX4dSEkPZRdA9kS9jZ2Vz99s/0Gh47233M+ZP1+lHC0ob
+	s5sb07pngDrTv3c6mNNStXquygvDdgulSLKeCt+Pi9asmDrhXNqR98fJYKGv5fbCUSckkKS5ZE+
+	es7VYih+CXbPcoXWVrhNqhQT5zjsssmL3GcrlhbD3LmDgkbV4vS9QBkkhCSiwttFdxoGQGXYZng
+	JwRQaCyFTETFtQU9hG7JoNDA1JLUfESMljYdNLMS8xmu9ZykFl7GnlebcHZzBVU7lGHI8kFelZ0
+	+h2ec2LQWNiIcPklCtL/dfcv0HOF8OtSzEa8t3WQp1OG8S+Coepv1VzjMWwbaBWJcMFFO6632uE
+	BEgMTLwUF4dQPK7+iQ9FRcHpPmjtjP3rfKMERnHGBhQXUSoxXDw25JxVXh/ToZ0zTMeFP7Pdfnr
+	0Z6nTUepQTvPjOmMZQlLl4L5Wv/wQkScApEr5szIZuNN5PGf/YkYIBWAIJ+VwcZb7fFqFxw5If0
+	pwxnOTLRSrUxJTsUH6x67pmI
+X-Received: by 2002:a05:693c:41d2:10b0:351:62fe:62 with SMTP id 5a478bee46e88-35162fe0200mr5293677eec.19.1791456050997;
+        Thu, 08 Oct 2026 03:40:50 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3517810b895sm7496369eec.17.2026.10.08.03.40.23
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3517810b895sm7496369eec.17.2026.10.08.03.40.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Oct 2026 03:40:35 -0700 (PDT)
+        Thu, 08 Oct 2026 03:40:49 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
 	Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
@@ -103,16 +103,16 @@ To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
 	Biju Das <biju.das.jz@bp.renesas.com>,
 	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
 	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 06/24] ASoC: amd: vangogh: Fix acp5x_dma_close() being skipped on rollback
-Date: Thu,  8 Oct 2026 17:38:13 +0700
-Message-ID: <20261008103831.542533-7-phucduc.bui@gmail.com>
+Subject: [PATCH 07/24] ASoC: amd: yc: Fix acp6x_pdm_dma_close() being skipped on rollback
+Date: Thu,  8 Oct 2026 17:38:14 +0700
+Message-ID: <20261008103831.542533-8-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261008103831.542533-1-phucduc.bui@gmail.com>
 References: <20261008103831.542533-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261008_034037_579492_6ADFD8B0 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20261008_034051_952020_356235BD 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,30 +133,30 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 From: bui duc phuc <phucduc.bui@gmail.com>
 
 snd_pcm_hw_constraint_integer() may return 1, which is then returned
-from acp5x_dma_open(). ASoC only marks the component as opened
+from acp6x_pdm_dma_open(). ASoC only marks the component as opened
 when .open() returns 0, so .close() can be skipped on rollback.
 
 Return 0 explicitly on success.
 
-Fixes: cab396d8b22c ("ASoC: amd: add ACP5x pcm dma driver ops")
+Fixes: ceb4fcc13ae5 ("ASoC: amd: add acp6x pdm driver dma ops")
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/amd/vangogh/acp5x-pcm-dma.c | 2 +-
+ sound/soc/amd/yc/acp6x-pdm-dma.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/amd/vangogh/acp5x-pcm-dma.c b/sound/soc/amd/vangogh/acp5x-pcm-dma.c
-index 831e30e9b042..33d59d992ee0 100644
---- a/sound/soc/amd/vangogh/acp5x-pcm-dma.c
-+++ b/sound/soc/amd/vangogh/acp5x-pcm-dma.c
-@@ -231,7 +231,7 @@ static int acp5x_dma_open(struct snd_soc_component *component,
- 	}
- 	i2s_data->acp5x_base = adata->acp5x_base;
- 	runtime->private_data = i2s_data;
+diff --git a/sound/soc/amd/yc/acp6x-pdm-dma.c b/sound/soc/amd/yc/acp6x-pdm-dma.c
+index 40c4d833f4ed..afa9f66533e3 100644
+--- a/sound/soc/amd/yc/acp6x-pdm-dma.c
++++ b/sound/soc/amd/yc/acp6x-pdm-dma.c
+@@ -209,7 +209,7 @@ static int acp6x_pdm_dma_open(struct snd_soc_component *component,
+ 
+ 	pdm_data->acp6x_base = adata->acp6x_base;
+ 	runtime->private_data = pdm_data;
 -	return ret;
 +	return 0;
  }
  
- static int acp5x_dma_hw_params(struct snd_soc_component *component,
+ static int acp6x_pdm_dma_hw_params(struct snd_soc_component *component,
 -- 
 2.43.0
 
