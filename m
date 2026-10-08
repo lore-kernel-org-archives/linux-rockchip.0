@@ -4,115 +4,171 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFC10CA600E
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2026 10:45:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0F42CA600B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2026 10:48:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=29Y+XiKWwvPcHhN9hP1A5H2TvBOw+7wMIZl8ZSR56pQ=; b=yHeNoODaG0Pcy/
-	mvp7MIcRw2CxzzBOUkJfd05szh7Qx+2B3v4Ous4L+7Mhw0Wy9nGlrbXhTgdI9uc7Sa0QN/SLby8CT
-	JCqwo8zYGCktdLaqJw5xQNtYAC11fRlNcR/PgOJ9PbEtqgdac/4LLUAIfIbZRA6uB9SqU+GxCU5J+
-	NZ1r8FiUPFrq6DGOTDFsM7ZLo53Ix26CHEdwz/imVDFMLKrCpFXnmiCEOvUc4VGZP2Sf+DqW5YAkG
-	jg0xIBwZQUr7c6lg5FVLHT5IACdQWphixbWl9E2SAhkbAV+gUSN35KDl/jhAhO/0bsWDjjux11lmJ
-	uhBg2M+16kaqgP13e3sw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7doAm4FWe6xfF6FoFNA58UV3JXQyXRyiO0k51x8uNrM=; b=zAoEoWggqv4rXIeRx9NT9OeKgW
+	jz25GWmXCxcUkOt5PLPAe04wQ4bxSP+sa69BLN1TyqhhTCWeVqXPR3Yvv++DEzTQ9xCgHpZsAxo8s
+	so0aShfcDNn6m/cYOk2E2xIu54D+Yh+4jOIfq40cPHODHiRAda0wvFRseE+OET66ESE+aNNZvJYeP
+	hvBhWehH8JxUh2eKctFVx+xhaX4RqoTiQBHdWHFugfdodjKeTsKErmhJiYTTfVyk4RZy4v7R2AZEI
+	Is7ru6UGi7FcDN+6fIbjuN0CSe5JaCjDoVRVBQUckqb/CTxxZ59j3ZvqXJL+IEXKPIgkP6c0ySdiX
+	MYcejkeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xElcj-00000004Bfn-2a4B;
-	Thu, 08 Oct 2026 10:45:17 +0000
-Received: from mail-dy1-x1333.google.com ([2607:f8b0:4864:20::1333])
+	id 1xElfe-00000004C1y-0eQj;
+	Thu, 08 Oct 2026 10:48:18 +0000
+Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xElcf-00000004Bde-1nWn
-	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Oct 2026 10:45:15 +0000
-Received: by mail-dy1-x1333.google.com with SMTP id 5a478bee46e88-3518cbe59b0so252749eec.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 08 Oct 2026 03:45:13 -0700 (PDT)
+	id 1xElfb-00000004C1R-0Q2q;
+	Thu, 08 Oct 2026 10:48:16 +0000
+Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
+	by mx0a-001ae601.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6986hBB52833491;
+	Thu, 8 Oct 2026 05:47:26 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	PODMain02222019; bh=A8bPMKXXoUVyRRMnKTARsrth0mIRixkcOPSVQZW2AV8=; b=
+	Y+wTAur259muS2CcVjSv+usgAF1Wxemv13sHYAM/udHJ1Q+eTwJ6nIq4/7FhTytG
+	D57AKFtcfvI6yy17n+8gM1tzqIHh2N/GPpQPuN7ezW3Uy+MDqmduqBfp+BxHE0J3
+	HbpcGwg8xFYAIMjFmPomI3In6C3T6Tcv+3BRrbTZjifiyAWELcERi/syIeM2lqJq
+	+9ZaCc7AlHQfWxmJ/YjZdE2kmP1aaqQvHx2vKSJy3mFuJYFZAWBXDe1CgziHkDCM
+	5gh9054pWC2t9f4ivyOf9EkVgdHgfHdCgY6EwxaHTFpxlhZDE1psbv1TlskCEuyj
+	wxr121o7fNs5R74FH9if9Q==
+Received: from sn4pr0501cu005.outbound.protection.outlook.com (mail-southcentralusazon11021131.outbound.protection.outlook.com [40.93.194.131])
+	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 4h5xdagpmy-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+	Thu, 08 Oct 2026 05:47:26 -0500 (CDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=T/Wmr9aO5xzcUDP2/yW7nf2gPQ83lFyhyPhzK7gMugiAK17Bqo+xvo481qN9RkDXFPHVlQKiKSjBjTZQFfICX+G/2NTuwwiNJWOYXjpLI0q+X6nF6KO/x78VHqFaZelKpb8cpwfRLsmBflJWbXu+2txApr4T5JN/MHCayDBKO11OBqGHaTLebnRp9/IL2p0zBWouf0QiT2p+u5w3DTk4c7NKLWs1viPsEzM3/slvxR2nDJUMJ/YTCPx0Ey7XGPGXTwcYQHidLQDqNL5IqkR3oQDZvdmByIvF0y5ulX+VUWxY0P1yObBzt1Zu+OJTaleCLghI73kzNmpATew1US10yg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=A8bPMKXXoUVyRRMnKTARsrth0mIRixkcOPSVQZW2AV8=;
+ b=FSxnrGvaf9ZvCD1v58MMo5MR/ZMh9tS423YN4kXKniR5zSSaiGjMu9Vn1j3C8ldXDA+yQEuYRIIsPW5bPnSMF1cSYFNsthq/J2SArmlOnzxRrJnA0A/16kMCtKQFi5mGIcJNXBzaT3i0x2mzqIA/wYYxl+lxNLCb+89UCchETFOdCnvHn0bcbdLa0yiyo1cu/9yeMs3ptrAaXoAhVXw0zRzUmFh8PBsh6ybMHrvcYOoerU3E1OLteBnqBC81QUfYOLf9vuHhxRHXPcEZj1vJaZAPiQcu0YcXaaA4LNalGub3/juHvS8Y321nBO4IBDxT1K01ehDRR3TGzyVGA3I+Dw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
+ is 84.19.233.75) smtp.rcpttodomain=amd.com
+ smtp.mailfrom=opensource.cirrus.com; dmarc=fail (p=reject sp=reject pct=100)
+ action=oreject header.from=opensource.cirrus.com; dkim=none (message not
+ signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791456312; x=1792061112; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=ew3yWeVvT9O5tBkIFDkvF2j0W+vU1/CnrAg2Miccmy4=;
-        b=EQk8cmvJ8vt/c4jC9hB7A7Y7x8arRSivO5guZcPrmBmI3ppyrx4t0txusAB2OeaPuV
-         6dDb/jd+pROPo8ZVjTwp1cecndQRp77ZiJ63hq6YmEeEro4UbBZWbtl6pt6mKiAu+h8L
-         bpzpAAc1479ujD5nFPQA/pHBW5IP8yva3ev/4QmJb+yfFm7p3CHJUhcEiZWQUMnAchCa
-         K+S6KjPzBgTv7jiM7XlgeyIl65PMSEppA6yAhb+Bvksy12AvxjkIG0/8BLjtKi6a7hAa
-         eu0BaYVaz/Li3+w9WCKkijjwc5hIl7Dq+hmhZYpMesuJ7SMeFzJZg19pjJaRPN0ppnvv
-         wvPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791456313; x=1792061113;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=ew3yWeVvT9O5tBkIFDkvF2j0W+vU1/CnrAg2Miccmy4=;
-        b=wwFaREqVOR5v7qrnWiFejK66guNtoqGBDU00nLsrGP6G661PIMQUtvEThXwINBqF3Q
-         N/kZvP2+rWgQay2mKfzD3rgPzrGqJJXVVUnLnI/1S7vX2iPmtcggcYwD0koFQ5uXVBiP
-         h3v3tcQIrXZ/A8w4uRl7QyRdiBEblVH/AXLjdb+5xrNu4BNk7wvuhJ0vFwQNSBPHSRlG
-         AI/T57FRPgbFKZn1vzbueYaiJVQSak+kjdPEEzdfRHOXrsdIweL3KU5Y+ile19o4Fk1X
-         OIO05OMUUMkB9INKHqkRyQWtjzt5gVD/U+1DmRYaQ6IyFgRS4aiz2U3kXiWfaZHEuuRQ
-         /DEw==
-X-Forwarded-Encrypted: i=1; AKwUvBy4t4c7trRTlC+65YO2QxZrjpYHTNtn6ZgPr83qlo2JwwCLudbupgHGK7VEr6xu/Tn7Fh3hMLojvIZWdLsqlw==@lists.infradead.org
-X-Gm-Message-State: AFuF++k8fxV93GFqU+hbO6HciGrYVDvZf66cunSGox8l+5+vdxB6K9tK
-	9AZgArO3SXW7w7lO+CynWCabJR5t54kAq6iNzmVfDNM+4ZREUpqgikJv
-X-Gm-Gg: AYBFou37TGH4hL2HO5fe272zghcHl6+WTaswyTBE3CBaeTERUnIsQ1i4elAlDmBvVeR
-	G3sON0X/XzXdYQceSXoRtNGcYq9uhw/CQaj2z1ojiR1NiW6z3EbmGFzvxmQMXzn8xXdfJxiQzAh
-	SCHa3tgV6dJhWpj0Jymqx+CLJGkctnTjzg3k39RfOyYLvFuYJgVcXHKlJVU+l/Mu8Q+RpJy1b9V
-	AC+xSYlefMcZjgt4DwSb2Wq/zdbPDq3OVOfDBifALiVE4K27OPW9L5NC1uTmqKyp5YZeVGc0gIU
-	ehFMzKGcAgkDmyRSvVIPa4T3+B4cM7qFZ57aP/CS+pLgpet5kI4RUw+uGCOHV7SmbTegoelBsIx
-	O1TuJVrn21JnWo7k0rdNVd1GAELnpzwPe0ThSs2K9nPUrGE0wvlNTRqXRdBkobOCsZdqdFYi8lv
-	ZvHYvg9ofr2pQS02NJw8watzQl/zGIxvcOeoulv5aibc/zJb3ZudYH+ZEgE/SKExeOhf0cXYAa+
-	rkqUSNVOSdAQM/FDnqOyuRDa8yDstedQz9r9ORTxLeEkTaIeCQNK4Q+paw3ShXCrT90wJN7JlN/
-	Sv5ikHWrNcJMeA==
-X-Received: by 2002:a05:7300:e9cf:20b0:339:851c:4c1 with SMTP id 5a478bee46e88-3517788c303mr2800571eec.18.1791456312416;
-        Thu, 08 Oct 2026 03:45:12 -0700 (PDT)
-Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3517810b895sm7496369eec.17.2026.10.08.03.44.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Oct 2026 03:45:11 -0700 (PDT)
-From: phucduc.bui@gmail.com
-To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
-	Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	povik+lin@cutebit.org,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Andrei Simion <andrei.simion@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	David Rhodes <david.rhodes@cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Shengjiu Wang <shengjiu.wang@gmail.com>,
-	Xiubo Li <Xiubo.Lee@gmail.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Nicolin Chen <nicoleotsuka@gmail.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Cezary Rojewski <cezary.rojewski@intel.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Biju Das <biju.das.jz@bp.renesas.com>,
-	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 24/24] ASoC: rockchip: rockchip_max98090: Mark the link as started on success
-Date: Thu,  8 Oct 2026 17:38:31 +0700
-Message-ID: <20261008103831.542533-25-phucduc.bui@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261008103831.542533-1-phucduc.bui@gmail.com>
-References: <20261008103831.542533-1-phucduc.bui@gmail.com>
+ d=cirrus4.onmicrosoft.com; s=selector2-cirrus4-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=A8bPMKXXoUVyRRMnKTARsrth0mIRixkcOPSVQZW2AV8=;
+ b=nYT29qJDNCPcUgiRVJxhf5iJ9/0om/uobx7I0aymKwOJfeDU9lSyvCkZQ7l3AxAkAGcBqeTMQpWjCsOd1PskRy8LxkKAxwzWzVGRVskA84pw/twImMvwvrZQW+PdAp9MuTxhHxYCSVgntVvHOdYr4+UlzLJyfrvzLoRAouuiMFw=
+Received: from CH2PR07CA0060.namprd07.prod.outlook.com (2603:10b6:610:5b::34)
+ by SA0PR19MB4190.namprd19.prod.outlook.com (2603:10b6:806:87::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.17; Thu, 8 Oct
+ 2026 10:47:22 +0000
+Received: from BN2PEPF000044A2.namprd02.prod.outlook.com
+ (2603:10b6:610:5b:cafe::7a) by CH2PR07CA0060.outlook.office365.com
+ (2603:10b6:610:5b::34) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.496.5 via Frontend Transport; Thu, 8
+ Oct 2026 10:47:22 +0000
+X-MS-Exchange-Authentication-Results: mx.microsoft.com 1; spf=softfail (sender
+ IP is 84.19.233.75) smtp.mailfrom=opensource.cirrus.com; dkim=none (message
+ not signed) header.d=none;dmarc=fail action=oreject
+ header.from=opensource.cirrus.com;
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ opensource.cirrus.com discourages use of 84.19.233.75 as permitted sender)
+Received: from edirelay1.ad.cirrus.com (84.19.233.75) by
+ BN2PEPF000044A2.mail.protection.outlook.com (10.167.243.153) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.496.14
+ via Frontend Transport; Thu, 8 Oct 2026 10:47:22 +0000
+Received: from ediswmail9.ad.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
+	by edirelay1.ad.cirrus.com (Postfix) with ESMTPS id E71CE406544;
+	Thu,  8 Oct 2026 10:47:20 +0000 (UTC)
+Received: from [198.90.208.11] (ediswws06.ad.cirrus.com [198.90.208.11])
+	by ediswmail9.ad.cirrus.com (Postfix) with ESMTPSA id B911B82024B;
+	Thu,  8 Oct 2026 10:47:20 +0000 (UTC)
+Message-ID: <fc7d2b73-e0a4-4a36-b6d4-8080ebb883f7@opensource.cirrus.com>
+Date: Thu, 8 Oct 2026 11:47:20 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 10/24] ASoC: codecs: cs42l42: Ensure the DAI is marked as
+ started on success
+To: phucduc.bui@gmail.com, Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
+        Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
+        Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+        Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+        povik+lin@cutebit.org, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+        Andrei Simion <andrei.simion@microchip.com>,
+        Nicolas Ferre <nicolas.ferre@microchip.com>,
+        Alexandre Belloni <alexandre.belloni@bootlin.com>,
+        David Rhodes <david.rhodes@cirrus.com>,
+        Shengjiu Wang <shengjiu.wang@gmail.com>,
+        Xiubo Li <Xiubo.Lee@gmail.com>, Fabio Estevam <festevam@gmail.com>,
+        Nicolin Chen <nicoleotsuka@gmail.com>, Frank Li <Frank.Li@nxp.com>,
+        Sascha Hauer <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
+        Cezary Rojewski <cezary.rojewski@intel.com>,
+        Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+        Bard Liao <yung-chuan.liao@linux.intel.com>,
+        Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+        Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+        Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+        Geert Uytterhoeven <geert+renesas@glider.be>,
+        Magnus Damm <magnus.damm@gmail.com>,
+        Biju Das <biju.das.jz@bp.renesas.com>,
+        Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+        Heiko Stuebner <heiko@sntech.de>
+References: <20261008103831.542533-1-phucduc.bui@gmail.com>
+ <20261008103831.542533-11-phucduc.bui@gmail.com>
+Content-Language: en-GB
+From: Richard Fitzgerald <rf@opensource.cirrus.com>
+In-Reply-To: <20261008103831.542533-11-phucduc.bui@gmail.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN2PEPF000044A2:EE_|SA0PR19MB4190:EE_
+X-MS-Office365-Filtering-Correlation-Id: fee34c9c-3c0b-44c8-5d07-08df25298880
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700016|61400799027|7416014|376014|82310400026|23010399003|921020|4143699003|56012099006|11063799006|10067099003|16102099003|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: nkFKTZiaaxNZ7xWIgXffBIJcYjXa3CmJE1Ub25UpI1q/MOPSqInEAbGS4ABjPPEtyme4YRxkOux8FNbjEJhS13ivLbdSKd5LZsksZsHYu1h9S3QLTCQakivs1s2KMWNk95Mg7TWgm67BGtdf8L7EUWuBFzh7RWwmbglXldIGCyPoQKaeDX9iEu23hATWL+mm9SKuaS97FEoBoL+6DuWlt4VmaMT8KlaVSgnMXknD7G8V8azgGibTtZgKPCRULThhdjsZJTcDGmdlXBAUjcuwnHcJstL/5xAPlCDQFuS8EUZDcwHfTOzMVKiuEKaz3U+y9BlNYDLTOodVewVMOVqsyPQhz82n5d6yk4FKX6L5tfh6tXGvUkKl9i1EtUMIHS40JhDnT74ieSORwof0SeLWM3UBr9/2WilnkxV4MVLqWqVYq3qzmNdYpRM2EshMqA3DBKHOdObyX40X1mgG/sYfbZHCr5SvhXMKJH2EzPJqrG1pglDYKKme2DmhRQK5veqoSzcoKebqBHMvc4XnEE9PMVtaJdTjSOrM0rIDwPGgnBVY0QAkltcrP2pr1APSwt4oSwyNls0qyXdkwKIIDcI41fBBtSFpml54CTxFFCzfSIzcPvXcnFJHcmTRkbqfHdtAngf8+6+AMLqibkA/7ednJ8+IQ4wO9R0gJ2SJR6NXOLHPFuiwGJ1MplA30GmJ/mOzjpJytwhkzVvSOMLLF1FLT7kirFc0EapDP5ghKyMvtXTWgCiEFNQQxZpLE0CGGZYC
+X-Forefront-Antispam-Report: CIP:84.19.233.75;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:edirelay1.ad.cirrus.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(36860700016)(61400799027)(7416014)(376014)(82310400026)(23010399003)(921020)(4143699003)(56012099006)(11063799006)(10067099003)(16102099003)(18002099003)(22082099003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: PBe+T2ZEkoYeSHCWmlw0UQAiLGFHwVsI0xsuCNdDF3b/ZOrF1wS7uiavppTyYB9iKPJgDYaVEfEYfxx9RKJeo3AJ/ip/pgIdWVrHFrhRB3yQfrWIsEfJBhC6ZzQh0djfYIqA0vsMowM9kvWypomMiYDhr/gAaVKEaPGjrTWsIWshfTBswWbfpNSz3cpjPRnQEnWSe5e9MKvdCN2KAWaDR6rqviRp6+/NydXimS7mitPkXrR4wqUdEFpk/VkWc7XD6M5bjJN6bjKC+f0v3OBNRMw3j2wqv1sOaWnDXRFvsz/ThVrhf2a4/YUAF1L7jfr5FDPsXdOtoazxmZbwpfhUQh/eSlT3X+fxwlogTQV9Lis+UqnS5ggLdEFJjKBdZv5oEzQCQ4m9Qfox40f2sJAxejDqCLU3zClnhaNbdmi/hT/JncuPqNGOvIrd7HdO8iBB
+X-Exchange-RoutingPolicyChecked: t/mJeDsSAX+hZb5eSoXHv38iF3dKjiMSkYdIORoHB2N8Xq2quy741cWD+OTZVi3HeNqU5Gpn4gsbPs2Etiix5szxge1KDtUvFx4dspVoGJWFFzmTHhRAUROBX0ja6w5ERyZ3SrAtba38NPk2VMVrwQ+fTDHqWyE5odUow+od5gSo+Wb4BOSzaiFb7O46toQxqhCXD8LXF1zyPULT9y3h7uC1A87QdDwW4/X+cXxAMvDId7BTMCkCAzavxmOsJ+F6kHb/1tYxPmzqDHsQO++HQMiAYqlkkoS8Dy/INTAEDRX4gTuw1XSvBMtwNZxxYbCunEFvX+9ZQBdSF+N27ZdKtA==
+X-OriginatorOrg: opensource.cirrus.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Oct 2026 10:47:22.2052
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: fee34c9c-3c0b-44c8-5d07-08df25298880
+X-MS-Exchange-CrossTenant-Id: bec09025-e5bc-40d1-a355-8e955c307de8
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=bec09025-e5bc-40d1-a355-8e955c307de8;Ip=[84.19.233.75];Helo=[edirelay1.ad.cirrus.com]
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-BN2PEPF000044A2.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR19MB4190
+X-Proofpoint-GUID: Tu_XbspTBko2DPZX-MnYNNGMtZHGjeoS
+X-Authority-Analysis: v=2.4 cv=es1KXYpX c=1 sm=1 tr=0 ts=6ac774be cx=c_pps
+ a=p09nrIMaU8oQorgrX9pGYA==:117 a=h1hSm8JtM9GN1ddwPAif2w==:17
+ a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
+ a=a81USf9_NmXag9WO:21 a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s63m1ICgrNkA:10
+ a=RWc_ulEos4gA:10 a=VkNPw1HP01LnGYTKEx00:22 a=iX4cTi3TZMoOKdANLEfx:22
+ a=Dj2-6B8FqX4mGL0U3gbX:22 a=pGLkceISAAAA:8 a=KS_8xAV4BarEr0G-hnMA:9
+ a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: Tu_XbspTBko2DPZX-MnYNNGMtZHGjeoS
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA4MDA0MiBTYWx0ZWRfXz8VyN0pPA5xb
+ bJtsWc+nNmTUwfnM+CGMooVBxbYaQJV2M6Rivqy/qiloj8fVP6GwP1WX88t66ydSE4q5cKUheDr
+ 6HotsHS9kKl6eDUWSFCBhWV5pcg5jT5t4UDO8/SGjUyfR1okUz0oXZxkptzH53/hmPqZxvu+xb3
+ 5D7wYvoIUctOFkSdRIBwb0KW2YDuXsF8Vjb/zIRiXqkRJWzgdpJwfirg1yEuETy+Ga2dtU68bhL
+ 7vIwn83PUhhosxGlFQL2dWENDwakXbVAMFQ8sIgf6C9icl90lBRWUY7j3qfoLktqicHJVlK07Aj
+ Z4M/JbhlK9jDYNp9DbG8LYeDC0Emn8+0V10oZjb+GSS8SGQqO/5Mft5Wu+HVBmSJbEIPzWhdQAd
+ sYPQV+FBYB49ewjCZ8o7LSU/F4DwrZjk4SF0Y0m90DVbCWeDRYxxED8LDb3B1KhxeOU0rne64DQ
+ lkFXLmMJqOY1VkUiblQ==
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA4MDA0MiBTYWx0ZWRfX2NHUAcPhx5py
+ dqIWgpQAJmTWo4FOVvF64U9bDz15m2iIOhpOk7OIHjmKi4WcjRWGgf394Dvgq9YTNhO3++eiEw0
+ 0vM4qZCE5kNWxnGMoGhvwxw4/GVOiHU=
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261008_034513_471408_2D7B1462 
-X-CRM114-Status: GOOD (  14.48  )
+X-CRM114-CacheID: sfid-20261008_034815_173131_21A98974 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,56 +180,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: imx@lists.linux.dev, wangdicheng <wangdicheng@kylinos.cn>, Kees Cook <kees@kernel.org>, Sang-Heon Jeon <ekffu200098@gmail.com>, Pengpeng Hou <pengpeng@iscas.ac.cn>, Bo Shen <voice.shen@atmel.com>, Neo Chang <YLCHANG2@nuvoton.com>, linux-rockchip@lists.infradead.org, bui duc phuc <phucduc.bui@gmail.com>, Chris Bainbridge <chris.bainbridge@gmail.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, linux-sound@vger.kernel.org, Ravulapati Vishnu vardhan rao <Vishnuvardhanrao.Ravulapati@amd.com>, u.kleine-koenig@baylibre.com, Zain Aboobacker <zainaboobacker33@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, Md Shofiqul Islam <shofiqtest@gmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>, patches@opensource.cirrus.com, Linus Walleij <linusw@kernel.org>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>, asahi@lists.linux.dev, Hemanth Selam <hemanth.selam@gmail.com>, linuxppc-dev@lists.ozlabs.org, Syed Saba Kareem <syed.sabakareem@amd.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: imx@lists.linux.dev, wangdicheng <wangdicheng@kylinos.cn>, Kees Cook <kees@kernel.org>, Sang-Heon Jeon <ekffu200098@gmail.com>, Pengpeng Hou <pengpeng@iscas.ac.cn>, Bo Shen <voice.shen@atmel.com>, Neo Chang <YLCHANG2@nuvoton.com>, linux-rockchip@lists.infradead.org, Chris Bainbridge <chris.bainbridge@gmail.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, linux-sound@vger.kernel.org, Ravulapati Vishnu vardhan rao <Vishnuvardhanrao.Ravulapati@amd.com>, u.kleine-koenig@baylibre.com, Zain Aboobacker <zainaboobacker33@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, Md Shofiqul Islam <shofiqtest@gmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>, patches@opensource.cirrus.com, Linus Walleij <linusw@kernel.org>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>, asahi@lists.linux.dev, Hemanth Selam <hemanth.selam@gmail.com>, linuxppc-dev@lists.ozlabs.org, Syed Saba Kareem <syed.sabakareem@amd.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: bui duc phuc <phucduc.bui@gmail.com>
+On 08/10/2026 11:38 am, phucduc.bui@gmail.com wrote:
+> From: bui duc phuc <phucduc.bui@gmail.com>
+> 
+> snd_pcm_hw_constraint_minmax() may return 1, which is then returned
+> from cs42l42_dai_startup(). ASoC only marks the DAI as started when
+> .startup() returns 0.
+Is there any reason why we can't change ASoC to mark the DAI as started
+if return is not an error?
 
-snd_pcm_hw_constraint_minmax() may return 1, which is then returned
-from rk_aif1_startup(). ASoC only marks the DAI link as started
-when .startup() returns 0.
 
-This currently has no functional impact, as there is no .shutdown()
-callback in the relevant snd_soc_ops. Still, return 0 explicitly on
-success to match what ASoC expects and ensure the DAI link is correctly
-marked as started.
+int snd_soc_dai_startup(struct snd_soc_dai *dai,
+			struct snd_pcm_substream *substream)
+{
+<SNIP>
 
-Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
----
- sound/soc/rockchip/rockchip_max98090.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+	if (ret < 0)
+		soc_dai_ret(dai, ret);
 
-diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
-index 426506a8e18e..d54c36682415 100644
---- a/sound/soc/rockchip/rockchip_max98090.c
-+++ b/sound/soc/rockchip/rockchip_max98090.c
-@@ -191,12 +191,18 @@ static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
- 
- static int rk_aif1_startup(struct snd_pcm_substream *substream)
- {
-+	int ret;
- 	/*
- 	 * Set period size to 240 because pl330 has issue
- 	 * dealing with larger period in stress testing.
- 	 */
--	return snd_pcm_hw_constraint_minmax(substream->runtime,
--			SNDRV_PCM_HW_PARAM_PERIOD_SIZE, 240, 240);
-+	ret = snd_pcm_hw_constraint_minmax(substream->runtime,
-+					   SNDRV_PCM_HW_PARAM_PERIOD_SIZE,
-+					   240, 240);
-+	if (ret < 0)
-+		return ret;
-+
-+	return 0;
- }
- 
- static const struct snd_soc_ops rk_aif1_ops = {
--- 
-2.43.0
+	soc_dai_mark_push(dai, substream, startup);
 
+	return soc_dai_ret(dai, 0);
+}
 
 _______________________________________________
 Linux-rockchip mailing list
