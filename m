@@ -4,90 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6962CCA600C
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2026 15:37:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7D00CA600C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2026 16:33:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FTv5B5uikUK5FNAxDYLkFcD2dE5qYSmdd7SzuHv4sSc=; b=LlNm9jPizuwnZW
-	p73vbF1tZgPVRyTixZ0LpxEFdeD4hIqebfUB+uzhei+M+k8CGqMPraQDyUQWAMk2XCEcn6RIXXabz
-	Zt0QV9ovC1JWE3w2YAEOBCVLHK+VUNCU17ngcLX3mwWMDNcf9gZ5by+D1N3F9yCS9nUpUQzTXTfaz
-	Z30N3N1tJa89J69upbBGMXluINY2OGgwgX9sVeS3z7g1xecVgGG9TxCC1N2tFo+rps8UuzYulae6V
-	p1Wxv8PROFP+CvKda2AYlgRFlyA1CClwjZ7pTtUTYZZEpBQcEG2ucpB3IvXH7+u/67FeeDaYY+HDz
-	emX5X/qPgo7stss4bwYQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=C61hHP4bdxuK7YpXoFa2nt+/vqdi/AX4B3XnbwDl+Bo=; b=PEBm62aoyoPaBF
+	KpgIH7+0wvfY6oT4RbxP22VB/+864yPPMfbr/t7h8e1KTnz0xlxE4tkRZE+AXmITZZBcmdvzOXQGL
+	9UlaOIALVMIWiNtfSygPWrvvDdB2hf6gVR070ZPG8xUZHtr3ARDulTonet3xoojBBtNJINaZu6EWA
+	ijWSKGKwAs37EAiyEZj6nMrw9bcbxgNTHXeu9GSWGJ+LCG1K3zbybAX7Va9fakE80IuKXIzzyAnKH
+	aEWWdPWxlAVruOH9cuVmgsF90cveIXBCyp85lIAoyPMnrIOQvrsRDEEnx486aKBvahVqHW0j/FrzX
+	Y/doZIwMAqZOFMyHa0ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEqB8-00000004cXJ-0d3y;
-	Thu, 08 Oct 2026 15:37:06 +0000
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
+	id 1xEr39-00000004hLC-2d9e;
+	Thu, 08 Oct 2026 16:32:55 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEqB5-00000004cW7-3k7G
-	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Oct 2026 15:37:05 +0000
-Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-cc4d192643dso1478821a12.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 08 Oct 2026 08:37:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791473823; x=1792078623; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=q0g5RUJYsTuTINK7t/PSk6wKRYNvtbwpJDwV+1FAvsQ=;
-        b=ZP8klpcZ5VoSOT89uzegkCUo4siRxt6x+pVwkgplQf9wQ3jD7Y281f3ztF5ZtXU70Y
-         Iby+zs0zmBHJd8C4zEh45Tmg9ojTJPlotognr9O3JldNqzXigiM4M22Gy4bKpiKw8vVd
-         FLpOkrYWIbgTIoihJffB2QFp/PmeNsw+DQCwrj0QiF2VZwjYi6VEse5zdw7AG6u8scS/
-         RA4oXejYmnWZbJ38bunoI0ZE+4UoRa7m73wV6AFw3w4MAhLVN38Db/PrtLGIxp+4gnrD
-         0iT373PPqGfzNLIuWAtFDIUB4F2lfDetAxgUt3fpqFR0eKOY6VEssSlh4ZSxfWUXz6yW
-         xPVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791473823; x=1792078623;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=q0g5RUJYsTuTINK7t/PSk6wKRYNvtbwpJDwV+1FAvsQ=;
-        b=bgxqA5WFGANE/yPpmEpVBkSrIz0n7UEtrhReCLKUcwp5KOrLIUOl1uFxnyqRel/DOC
-         FCX+H/v5RlFHSrGDBv9BghdVwX1ihKrt1xtHQLsxckCQnsyi+jDRi6KGzVSnz1KdMiEY
-         mpLyU60cCTNvU5JiNz+UtkUhf/caj06nHx7eqz3ucFddPnTfS+0Ecg9tovS9hUARx4c0
-         hbXUtZwMGPfmyZqPqE98NzVckm0Y83Nj6QiBWoLOETUd3mWmwwCi3a96GqvT7nmlUcPw
-         LOOPtnmz7HfQUlAjRQIRE1wypzJujmod5C2eM9G2GEUfBNKW6cOMbpHNROdq/MnUxI5/
-         z0Ig==
-X-Forwarded-Encrypted: i=1; AKwUvByRGPOhfTBBK2xahtbHuzoH4aIPwcFyh/rXw9mwGdV0nPhmNTYD/Joli8cPiRGmYpNoI5qtwQ6lraBAIM8OKw==@lists.infradead.org
-X-Gm-Message-State: AFuF++mRNMaxvo0gCouH79Wwn84gi+uAMcayd5EsTqw73IRWo0zEDfjQ
-	cC5OsOrYc43Vkrc9OchyufIHCOHEmIGFpEO8AQzHmSOkirfDdvLVgVt6
-X-Gm-Gg: AYBFou2N9F9UEdLZ3axEoaURijpkJjxW9JOox07y1d9peEoY0VmCsySEpDbYldeOC4K
-	DlUoARjhWRs3NHCP/mLqU5X4rljXTzzrnNbZWxTLkZNFgVIwQDort6O0Z9a3daM2da4GybFqHlw
-	jhcoAeD9P7jnW+huxedodV3Y2LsNw6PZJ6wUX29xEHLve+V5Itw8hQlpa616QCd35dWMg/3uJlV
-	KHqar7oZ7xWV2jPQy0h76b1EeZWHDBbfMrgXnuMhoTcCpDyTccpOFyRWhOFboVyqm7qFnB0zQ7t
-	+YmU27FxLTIp2FXw03Dyi9WThkg9wOTdzcGOBGq1cBc68CKHv6LIjNPrcZzxtL4zT/HHFhuLbA9
-	ryCD4GnGsVjGCiOyxRGWwKBUzQmq52ogFr3hQCm1tfascwT8mVhxq/BYfsFE8xr/3CJ3D9dVJss
-	bppKP6z8ntEeZz2VI0lvVCb2yOZSQWDvPK3p3S+8v0op741R1HzzHGnzTIeSKJ/ZqDloaUIr2Gi
-	T2m74mbTp8A9aoRtg==
-X-Received: by 2002:a05:6a21:608a:b0:3dd:85a8:4c57 with SMTP id adf61e73a8af0-3e1340542b4mr4754282637.30.1791473818297;
-        Thu, 08 Oct 2026 08:36:58 -0700 (PDT)
-Received: from arch.localdomain ([161.33.202.10])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cd35736f232sm263479a12.26.2026.10.08.08.36.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Oct 2026 08:36:57 -0700 (PDT)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Jun Yan <jerrysteve1101@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Add dma-names to RK356x UART nodes
-Date: Thu,  8 Oct 2026 23:36:16 +0800
-Message-ID: <20261008153620.238580-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.56.0
+	id 1xEr37-00000004hKA-3VxX;
+	Thu, 08 Oct 2026 16:32:53 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id ED11A60A74;
+	Thu,  8 Oct 2026 16:32:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9AE031F000FF;
+	Thu,  8 Oct 2026 16:32:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791477172;
+	bh=vOmhtgpp0CunsN7e7nTP80xujGK1hi9KxA+e2Q5Bid0=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=ZrIv3h6uHbT7jpD/++Tbd99EhBLTIXx/iEToD8YKEUGJ0YmDpGUOCBe/rAwePrP4P
+	 c6k5m/VX+1k1bl2eyzFSrOgzXFnU6c0BmHT9Og0C3Jsfm1fx8W7zQTJW0vbTTjqcxO
+	 wWh/txaYR7j5Doys2nX9VEs0xXBeR/ZbW6LgWaDMrrce+qqRTvNwg1XmWptLAxT8yG
+	 4yjEcVBi4j+T9pARmbJgo57sxe69VrDvEGdLQ/R8iJ2qytGwtYh8g7OyZaoRYvaf5F
+	 dexO212QCB14qQ6+ncvh02ME0vMaIUlD45Afl3ciXJvbVYtse6Gh5I3Mget2wpJOyi
+	 Et45NHqzkBCoA==
+Subject: Re: [PATCH net-next v10 1/6] dt-bindings: net: pcs: add
+ rockchip,rk3568-xpcs support
+From: netdev-bot+sashiko@kernel.org
+To: coiaprant@gmail.com
+Cc: kuba@kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
+ edumazet@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, heiko@sntech.de, maxime.chevallier@bootlin.com,
+ hkallweit1@gmail.com, linux@armlinux.org.uk, david.wu@rock-chips.com,
+ netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Date: Thu, 08 Oct 2026 16:32:51 +0000
+Message-ID: <179147717113.434549.5384797662065196680@kernel.org>
+In-Reply-To: <20261005223011.1124347-2-coiaprant@gmail.com>
+References: <20261005223011.1124347-2-coiaprant@gmail.com>
+X-sashiko-severity: Low
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261008_083703_930403_EC70B349 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,115 +69,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK356x UART nodes define a dmas property but omit the matching
-dma-names property, so the 8250 driver fails to request a DMA channel
-and falls back to PIO, logging:
-
-  of_dma_request_slave_channel: dma-names property of node
-  '/serial@fe650000' missing or empty
-
-Add the missing dma-names = "tx", "rx" to uart0 through uart9,
-matching other Rockchip SoCs such as the RK3308.
-
-Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index a5832895bd39..098493c04ecc 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -443,6 +443,7 @@ uart0: serial@fdd50000 {
- 		clocks = <&pmucru SCLK_UART0>, <&pmucru PCLK_UART0>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 0>, <&dmac0 1>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1449,6 +1450,7 @@ uart1: serial@fe650000 {
- 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 2>, <&dmac0 3>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart1m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1463,6 +1465,7 @@ uart2: serial@fe660000 {
- 		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 4>, <&dmac0 5>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart2m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1477,6 +1480,7 @@ uart3: serial@fe670000 {
- 		clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 6>, <&dmac0 7>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart3m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1491,6 +1495,7 @@ uart4: serial@fe680000 {
- 		clocks = <&cru SCLK_UART4>, <&cru PCLK_UART4>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 8>, <&dmac0 9>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart4m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1505,6 +1510,7 @@ uart5: serial@fe690000 {
- 		clocks = <&cru SCLK_UART5>, <&cru PCLK_UART5>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 10>, <&dmac0 11>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart5m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1519,6 +1525,7 @@ uart6: serial@fe6a0000 {
- 		clocks = <&cru SCLK_UART6>, <&cru PCLK_UART6>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 12>, <&dmac0 13>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart6m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1533,6 +1540,7 @@ uart7: serial@fe6b0000 {
- 		clocks = <&cru SCLK_UART7>, <&cru PCLK_UART7>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 14>, <&dmac0 15>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart7m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1547,6 +1555,7 @@ uart8: serial@fe6c0000 {
- 		clocks = <&cru SCLK_UART8>, <&cru PCLK_UART8>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 16>, <&dmac0 17>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart8m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1561,6 +1570,7 @@ uart9: serial@fe6d0000 {
- 		clocks = <&cru SCLK_UART9>, <&cru PCLK_UART9>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 18>, <&dmac0 19>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart9m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
--- 
-2.56.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhhbmsgeW91IGZvciB5b3VyIGNvbnRyaWJ1dGlvbiEgU2FzaGlrbyBBSSByZXZpZXcgZm91bmQg
+bW9yZSBzZXZlcmUKaXNzdWUocykgaW4gb3RoZXIgcGF0Y2hlcyBvZiB0aGlzIHNlcmllcy4gVGhp
+cyBtYWlsIGlzIG9ubHkgYW4gRllJLCBpbiBjYXNlCnlvdSB3YW50IHRvIGFkZHJlc3MgdGhlIG5p
+dCBwaWNrcyBiZWxvdyB3aGVuIHlvdSByZXNwaW4uCgpMb3cgcHJpb3JpdHkgLyBuaXQgcGlja3Mg
+Zm9yIHlvdXIgY29uc2lkZXJhdGlvbjoKCi0gW0xvd10gVGhlIG5ldyBiaW5kaW5nCiAgRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9wY3Mvcm9ja2NoaXAscmszNTY4LXhwY3Mu
+eWFtbOKApgoKLS0KCmR0LWJpbmRpbmdzOiBuZXQ6IHBjczogYWRkIHJvY2tjaGlwLHJrMzU2OC14
+cGNzIHN1cHBvcnQKClRoaXMgYWRkcyBhIG5ldyBiaW5kaW5nIGZvciB0aGUgU3lub3BzeXMgRGVz
+aWduV2FyZSBYUENTIG9uIHRoZSBSb2NrY2hpcApSSzM1NjggU29DLiBUaGUgWFBDUyBzaXRzIG9u
+IHRoZSBBUEIzIGJ1cywgY29ubmVjdHMgdG8gYSBOYW5lbmcgQ29tYm8KU2VyRGVzIFBIWSwgYW5k
+IGV4cG9zZXMgZm91ciBNSUkgcG9ydHMgYXMgZXRoZXJuZXQtcGNzLW1paUBOIGNoaWxkIG5vZGVz
+LgpUaGUgY29tbWl0IG1lc3NhZ2Ugc2F5cyB0aGUgQ1JVIHJlc2V0IGxpbmVzIGFyZSBsZWZ0IG91
+dCBvbiBwdXJwb3NlLgoKPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL25ldC9wY3Mvcm9ja2NoaXAscmszNTY4LXhwY3MueWFtbCBiL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9uZXQvcGNzL3JvY2tjaGlwLHJrMzU2OC14cGNzLnlhbWwKPiBu
+ZXcgZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4IDAwMDAwMDAwMDAwMDAuLjcwM2ZjZmYwZTNmNzAK
+PiAtLS0gL2Rldi9udWxsCj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L25ldC9wY3Mvcm9ja2NoaXAscmszNTY4LXhwY3MueWFtbAoKWyAuLi4gXQoKPiArICBwaHlzOgo+
+ICsgICAgbWF4SXRlbXM6IDEKPiArCj4gKyAgcGh5LW5hbWVzOgo+ICsgICAgY29uc3Q6IHNlcmRl
+cwo+ICsKPiArICBwb3dlci1kb21haW5zOgo+ICsgICAgbWF4SXRlbXM6IDEKPiArCgpbIC4uLiBd
+Cgo+ICtyZXF1aXJlZDoKPiArICAtIGNvbXBhdGlibGUKPiArICAtIHJlZwo+ICsgIC0gIiNhZGRy
+ZXNzLWNlbGxzIgo+ICsgIC0gIiNzaXplLWNlbGxzIgo+ICsgIC0gY2xvY2tzCj4gKyAgLSBjbG9j
+ay1uYW1lcwo+ICsgIC0gcGh5cwo+ICsgIC0gcGh5LW5hbWVzCj4gKyAgLSBwb3dlci1kb21haW5z
+Cj4gKwo+ICthZGRpdGlvbmFsUHJvcGVydGllczogZmFsc2UKCltTZXZlcml0eTogTG93XQpTaG91
+bGQgdGhpcyBiaW5kaW5nIGRlc2NyaWJlIHRoZSBYUENTIHJlc2V0IGlucHV0cz8gVGhlIENSVSBi
+aW5kaW5nCmhlYWRlciBhbHJlYWR5IGhhcyBmb3VyIHJlc2V0IElEcyBmb3IgdGhpcyBibG9jazoK
+CmluY2x1ZGUvZHQtYmluZGluZ3MvY2xvY2svcmszNTY4LWNydS5oOgojZGVmaW5lIFNSU1RfWFBD
+UwkJMTUwCiNkZWZpbmUgU1JTVF9YUENTX1RYX0RJVjEwCTE1MQojZGVmaW5lIFNSU1RfWFBDU19S
+WF9ESVYxMAkxNTIKI2RlZmluZSBTUlNUX1hQQ1NfWEdYU19SWAkxNTMKClRoZSBjb21taXQgbWVz
+c2FnZSBnaXZlcyB0aGlzIHJlYXNvbiBmb3IgbGVhdmluZyB0aGVtIG91dDoKCiAgVGhlIENSVSBy
+ZXNldCBsaW5lcyAoU1JTVF9YUENTKikgYXJlIGludGVudGlvbmFsbHkgbm90IGRlc2NyaWJlZDog
+bm8KICBpbi10cmVlIHVzZXIgcmVxdWVzdHMgdGhlbSwgYW5kIGJyaW5nLXVwIHJlbGllcyBvbiB0
+aGUgUERfUElQRSBwb3dlcgogIGRvbWFpbiwgdGhlIFNlckRlcyBQSFkgYW5kIHRoZSBpbi1JUCBz
+b2Z0IHJlc2V0LgoKVGhhdCByZWFzb24gaXMgYmFzZWQgb24gd2hhdCBkcml2ZXJzIHVzZSB0b2Rh
+eSwgbm90IG9uIHdoYXQgdGhlIGhhcmR3YXJlCmhhcy4gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL3dyaXRpbmctYmluZGluZ3MucnN0IHNheXM6CgogIERPIGF0dGVtcHQgdG8gbWFr
+ZSBiaW5kaW5ncyBjb21wbGV0ZSBldmVuIGlmIGEgZHJpdmVyIGRvZXNuJ3Qgc3VwcG9ydAogIHNv
+bWUgZmVhdHVyZXMuCgpUaGUgc2NoZW1hIGhhcyBubyByZXNldHMgb3IgcmVzZXQtbmFtZXMgcHJv
+cGVydHkgYW5kIGVuZHMgd2l0aAphZGRpdGlvbmFsUHJvcGVydGllczogZmFsc2UuIEEgRFQgdGhh
+dCBmdWxseSBkZXNjcmliZXMgdGhlIGhhcmR3YXJlIHdpdGgKc29tZXRoaW5nIGxpa2UgcmVzZXRz
+ID0gPCZjcnUgU1JTVF9YUENTPiwgLi4uIHdvdWxkIHRoZW4gZmFpbApkdF9iaW5kaW5nX2NoZWNr
+IGFuZCBkdGJzX2NoZWNrLgoKVGhlIGluLUlQIHNvZnQgcmVzZXQgYWxzbyBvbmx5IGFjdHMgaW5z
+aWRlIHRoZSBQQ1MgcmVnaXN0ZXIgYmxvY2suIEl0CmRvZXMgbm90IGFwcGVhciB0byBjb3ZlciB0
+aGUgVFgvUlggZGl2MTAgb3IgWEdYUyBSWCByZXNldCBkb21haW5zLgoKQ291bGQgcmVzZXRzIGFu
+ZCByZXNldC1uYW1lcyBiZSBhZGRlZCBub3csIGV2ZW4gYXMgb3B0aW9uYWwgcHJvcGVydGllcz8K
+Ck9uIGEgcmVsYXRlZCBwb2ludCB0aGF0IEkgaGF2ZSBub3QgYmVlbiBhYmxlIHRvIGNvbmZpcm06
+IHRoZSBnZW5lcmljCnNucHMsZHcteHBjcyBiaW5kaW5nIGRvY3VtZW50cyBhbiBzYmRfaW50cl9v
+IGludGVycnVwdHMgb3V0cHV0LCBhbmQKYWRkaXRpb25hbFByb3BlcnRpZXM6IGZhbHNlIGFsc28g
+cmVqZWN0cyB0aGF0IGhlcmUuIERvZXMgUkszNTY4IHJvdXRlCnRoYXQgaW50ZXJydXB0IHRvIHRo
+ZSBHSUM/IElmIGl0IGRvZXMsIHNob3VsZCBpbnRlcnJ1cHRzIGJlIGxpc3RlZCB0b28/CgotLSAK
+U2FzaGlrbyBBSSByZXZpZXcgwrcgaHR0cHM6Ly9uZXRkZXYtYWkuYm90cy5saW51eC5kZXYvc2Fz
+aGlrby8jL3BhdGNoc2V0LzIwMjYxMDA1MjIzMDExLjExMjQzNDctMS1jb2lhcHJhbnQlNDBnbWFp
+bC5jb20KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
