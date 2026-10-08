@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E559CA6007
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2026 10:44:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 992A6CA6007
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2026 10:45:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9IL/Vl5gPvde4AeJsFIqh4ipkv/HdzxdabDitLLmAj4=; b=Wq69u6tKjyCRzT
-	V3Yj6cIxIpqQnyn7MCZdmvxG0ziSNZD+zI+Jy77WNlCGftQDISbOCUxbGs97kMLIRHglI5BMH8XS6
-	rXB1fqG/l3ewF16llabsPlDITePc3Zg3o/jXOHXN4W1t4xJgQ7X9AuJsrbrPZl5UxLYQ8RCott0B6
-	pbojpkCIPmjYxnZNp8Q5B7jXfni1ldIzt7G6KNSLNOv03ElIu0odgNxVqtKA5kRy3jlqcDgd4Pgu3
-	hw1ryq+zUM/oYRbi9LpvpvgqmnfkH7YusHvscwidcoZA5PodVUPJ+nWZittBOU0BF9pIaHX3PCdPr
-	9lhqwAiRNGQ57kpATDcA==;
+	List-Owner; bh=CpZNiWAkqQ6ytOATA9FI33clbcyFc/mmw7Z71onsw+g=; b=rdrPLfBeBG2Ied
+	9xM7DpoE0lIxQ8DwWhBPjxBK8Q5AqJ11dLbslL9q6+6bIQFTCBmIog5iOteJS/cG9P5FYG2BPURmn
+	x7gulqwpMcyE+nikl3HkJr7kBjXuQcN6j7Ft+KtMWl/Yu/V1fzJnt4GN+95bKPWIZ+W6tuMdsaNAr
+	nDRSkcywmyp601Ye6Y6w9m935rtbXIfse0zSkBV9UWjUJVPIL93o6xQ5lCqmzyu2iIIRJ2F4lt3X+
+	VcLrzseSIUcXUxHkOZCG1iMsFlv7k5oLHvwK07cD0pf8od/r7WLq28xjTCBh4hCqbsYEREA/vro2P
+	5+ozk9q+l+56I5V4L02w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xElcB-00000004BS5-1MZe;
-	Thu, 08 Oct 2026 10:44:43 +0000
-Received: from mail-dy1-x1329.google.com ([2607:f8b0:4864:20::1329])
+	id 1xElcQ-00000004BXY-1xMA;
+	Thu, 08 Oct 2026 10:44:58 +0000
+Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xElc9-00000004BQr-3Oee
+	id 1xElcO-00000004BWL-18j6
 	for linux-rockchip@lists.infradead.org;
-	Thu, 08 Oct 2026 10:44:42 +0000
-Received: by mail-dy1-x1329.google.com with SMTP id 5a478bee46e88-3282db206d3so800578eec.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 08 Oct 2026 03:44:41 -0700 (PDT)
+	Thu, 08 Oct 2026 10:44:57 +0000
+Received: by mail-dy1-x1330.google.com with SMTP id 5a478bee46e88-34ca2d54925so7792315eec.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 08 Oct 2026 03:44:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791456281; x=1792061081; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1791456295; x=1792061095; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=vINDjRMMYaX6AakE2nE7lJ054HdL6sHwsDn4uy023fE=;
-        b=lm7ojHWS2wJap9hydSSkB3vBZ1GzEYQyxNETnsk7nON39hJtRSWidIY+snfZEufL5C
-         bQgijAwrYOqY43JZ4xc9+X+CUgyGgdMKWw7oWHeVlGJvSJohG8cFLkoTqcfPw+uEKEWF
-         J2Vd15qv324n5KFQ2Z/O1M5IVjB/EsTD5KaOJ9ca9YF0HzWNHZ+uXaCZO3DngGnuTgbt
-         FO4/7xdvFXERg6SiWgORNXkcoDuuR1RMb1Pid4apnXV4QZqG5QKxnc2DDYK699YJj4lL
-         AEGHizmpiJGC0IpQI4DlUPWjRO++yKhZtFQnZr4/SCgLHWmJCh5uEStncKX2hwr/1ALH
-         eDuQ==
+        bh=vuCt8LfoeVxeGP9EXdKyFEToJzhlOF5O+NhVLwPyMgM=;
+        b=D2liA3Ulgmx8buHWzpFIZLHlDYJBUbPlcxeWF3ocZeT8Nom+3T7WvZFSJrmota4/Em
+         FnA6TCyzP31/nQB/FCyp67OAjbiHO5YtdVqM05OTM9UvsfyG99GvttAHtC3JuNMgzymd
+         2fjWqz3aeNc4D9H5zfOjLvgeAzmxs7VH2EXhqSGcq0MBmMU/00EQeLy4fzwO3AgSU57w
+         R+3YB6LCVK7S2M2NHNlV81wBPwzJaoLjV6ZfO4QBCMhjwg2u8CECzUY/Q9xPy1L6JiVh
+         sPe5CeEOjdx4tvMz94CwZqKr6i1pME6REE6F39rZ/wRSCCvwGQiHa+Kl3t2lGdwNQbJ8
+         JnVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791456281; x=1792061081;
+        d=1e100.net; s=20260707; t=1791456295; x=1792061095;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=vINDjRMMYaX6AakE2nE7lJ054HdL6sHwsDn4uy023fE=;
-        b=aON/5QCvoc8oMd34SVUQKJMsRNE2UYCveIMrT57XGI+5fmrLDZuIE3nFqR5UcjdaDw
-         6cq84EwZFeutIDxHT1Iz0/DaFltqOBdBFLeevqhjviQ8CDP2RslKD64PtQGmgKwYWkpz
-         LBBXkKjwa1B7GPSZBFbzLQmsX1LdbjMF/m9s1M4wSEH5Yc2OcYdbEILFiRMoYcNW1O/F
-         KNeN5NHNPnaznxVvHGsKdu08x+QR2T9BJBSQmULjU0xLDpqYrAIwkIN4nNaCTlvPHEFX
-         s5E8WK/eESVEsUKUCUiH3+XJIiiUhBXUl24B7n/GiGf7p8SUyeX/eMH5kfx3H3QWz4xp
-         cjcQ==
-X-Forwarded-Encrypted: i=1; AKwUvBxDUQtoNy4qNt00VQM7ge6I9M5TlqZWx35r7VvbhW1Ae98GvIfUTsnB9OXJbz0GjlBA3Ja4vxmwdJBhWHwiIg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLvIuPCJocD70EAb+4i7Di809OLnuBJ3XIwhynWVn8UDTAwWe9V
-	1rqL/ZS29hOanzsc0UuOm71pD90ml4rlWh+WdBq3cp9Zw/+h2cGHWH/f
-X-Gm-Gg: AYBFou3qR0qPtCbbJZQwXXWbOD0ZhQwXa5E0htmQQb5vYafXXup1GTRNwlcMQ21II7Q
-	0cqf+8Smhm5GZFM39ubd0zxPkSQqJDa6UheYe3avyI7UIFDZHt0r+r0jQJKYgrUvObHug/s+4Ss
-	555zv/hqQYIbCcAUfeLJAwbro9v2C8v6id+yhEynQTW8wxfEdAeXOG7Fjj6pusPhkB+DhwPigFk
-	cYPibe5aTKvBIur3ueh9ifDhy5jsm0bMg+a7GJuaN+rcfNHM+UQspv1pvi7uTp8mzSiCzgiWwRZ
-	bkjDWCvMFGSb11SjLai83uzM2lFT8leQUkxSISpN4fIbJWJBC8dmF8nviBY3nv55g+IdlsxvUYb
-	5cSX30bCw1i48PjmUCvzBafXtfwMUnKOTWYvZ+I6oSuSaCBY/6oM2+Wa2ONJnBYEzvMzziYDMlz
-	I2t/faLdsUm/NnTBNnM2GeBJz7+Zt9OSgwSLAQ+89Z00+cqLaCeg2IP/Xw+UJnhW75g62xIirKY
-	5SAkdJep+9HGCIzI192MmweS9MaOSNOIYBn7vYp02uc7rcnMc5GrVrBmdEdd/Eq0JFH6LxQw6dk
-	BuN5bTK1NnZ6h2AVIj206O2P
-X-Received: by 2002:a05:693c:8801:10b0:34d:861c:99b8 with SMTP id 5a478bee46e88-3515de37354mr6607922eec.21.1791456280856;
-        Thu, 08 Oct 2026 03:44:40 -0700 (PDT)
+        bh=vuCt8LfoeVxeGP9EXdKyFEToJzhlOF5O+NhVLwPyMgM=;
+        b=F+V1hr7ALmjmRoe2cU9KMTIuO2s6KZmow10IAAMwQve5gFUhY60qTm47L4TV7yzIIC
+         cyUIyDAyOAU98DNB5D26jJ+7i5N2Kx9rHaLo5aVJvH8Ahpn0BmJb1r7eY21yCn7hTFsU
+         5yIm5cVMZ++EOF6aw0j66VSxVAbMoPXEQjNCFr21nQCKPV8WdUJw598S2wgPlKzbd3UE
+         NsH+oFVHsS/1V41XIueMo463+vJNuzbCsTojadG/PZ2HjG/VvvVm467GZgoGbYfWrlXb
+         byHz54hDk5QtYMhKYXLqi1GIg2P43fz2tLrcZrxg4zdqTptbZKW+6fLN2CFRHhkjNElY
+         ClPw==
+X-Forwarded-Encrypted: i=1; AKwUvBw4STs4LnUBLBtPLXZKhgptWQQcSBI9lwiJ0cfLCSRiR06SdQVeYvNO3nOjvllfzQgD+4R0G1AFV59zJ8fuXA==@lists.infradead.org
+X-Gm-Message-State: AFuF++kFhdia19v64fsk33vwaDE7BjWAFhkeSS8C3Rm+qJqhTD7gPPZN
+	LFbWyvgMTCbCChQY+lWAmIRm8CZ2uhxLQtuYeGPqqeg6pG063FoqmPe/
+X-Gm-Gg: AYBFou1BgxrLoIxx9oxq0MBtukcg1eNsT0EeesIEqISdqjYLk0vAcVihnPuAGu3CzaE
+	/PUOdITUcu2+hegIHUuCHDJucj9iQY3cuECXwZVfFbSlNBNppwvSnpZdrxrpl+B8Fbd/gigCWoZ
+	44BdFoDZ2MoB8befkakMiKjBFQGZuS45FiUFTOb6il7ySEi1pi+iORQlBgryvpYR3Clg0qS4GJr
+	FhoIxI+OXF1qwblP5KQg5+pF+5w2zYbGZI1qdrlDjVg/0LjlWGt0AEtknrIfP7z2QUdF1SFk/SA
+	Aek5oIk2WxMMQLRvWtHyBGfJe3TmXlxu+TcMWJY1bvcWCYe20m1avSYz6Lo7jppboQIecMizWWE
+	tkDt5nGEhH8ZSlKkMKKYxmGTslCcfR5kgT2v+rxEIDMsUSysnZG4mpltuVd9QnOE+wC1Q0eT/Sx
+	s4O7aMZSpaDv0VBV0BFnvlzfXswXLtk1kkH2UkfxRUnhmQDy0k5nnrcDG4TwCU7RPVthOYozRzK
+	+tMSQxFjDMxnRCPbLUTJR3sdb+cjO509NvYUC5WvSLcYizvsG+CyxrDkB9/uzHIjMy46rFuVKmJ
+	KZkhJ34xekRxoQ==
+X-Received: by 2002:a05:693c:88c6:10b0:328:3944:ee53 with SMTP id 5a478bee46e88-3515da28859mr6112721eec.2.1791456295330;
+        Thu, 08 Oct 2026 03:44:55 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3517810b895sm7496369eec.17.2026.10.08.03.44.28
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3517810b895sm7496369eec.17.2026.10.08.03.44.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Oct 2026 03:44:40 -0700 (PDT)
+        Thu, 08 Oct 2026 03:44:54 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
 	Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
@@ -103,16 +103,16 @@ To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
 	Biju Das <biju.das.jz@bp.renesas.com>,
 	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
 	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 22/24] ASoC: renesas: rz-ssi: Ensure the component is marked as opened on success
-Date: Thu,  8 Oct 2026 17:38:29 +0700
-Message-ID: <20261008103831.542533-23-phucduc.bui@gmail.com>
+Subject: [PATCH 23/24] ASoC: rockchip: rk3399_gru_sound: Mark the link as started on success
+Date: Thu,  8 Oct 2026 17:38:30 +0700
+Message-ID: <20261008103831.542533-24-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261008103831.542533-1-phucduc.bui@gmail.com>
 References: <20261008103831.542533-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261008_034441_855699_BA173BA4 
-X-CRM114-Status: GOOD (  13.63  )
+X-CRM114-CacheID: sfid-20261008_034456_319825_7E849419 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,56 +132,42 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: bui duc phuc <phucduc.bui@gmail.com>
 
-snd_pcm_hw_constraint_integer() may return 1, which is then returned
-from rz_ssi_pcm_open_xx(). ASoC only marks the component as opened when
-.open() returns 0.
+snd_pcm_hw_constraint_minmax() may return 1, which is then returned
+from rockchip_sound_startup(). ASoC only marks the DAI link as started
+when .startup() returns 0.
 
-This currently has no functional impact, as the component driver has no
-.close() callback. Still, return 0 explicitly on success to match what
-ASoC expects and ensure the component is correctly marked as opened.
+This currently has no functional impact, as there is no .shutdown()
+callback in the relevant snd_soc_ops. Still, return 0 explicitly on
+success to match what ASoC expects and ensure the DAI link is correctly
+marked as started.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/renesas/rz-ssi.c | 18 +++++++++++++++---
- 1 file changed, 15 insertions(+), 3 deletions(-)
+ sound/soc/rockchip/rk3399_gru_sound.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/sound/soc/renesas/rz-ssi.c b/sound/soc/renesas/rz-ssi.c
-index b1587f499cb8..2e297f721bb6 100644
---- a/sound/soc/renesas/rz-ssi.c
-+++ b/sound/soc/renesas/rz-ssi.c
-@@ -937,17 +937,29 @@ static const struct snd_pcm_hardware rz_ssi_pcm_hardware = {
- static int rz_ssi_pcm_open_pio(struct snd_soc_component *component,
- 			       struct snd_pcm_substream *substream)
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index 04e7bed8275d..0ec80a4b8c59 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -258,10 +258,15 @@ static int rockchip_sound_dmic_hw_params(struct snd_pcm_substream *substream,
+ static int rockchip_sound_startup(struct snd_pcm_substream *substream)
  {
+ 	struct snd_pcm_runtime *runtime = substream->runtime;
 +	int ret;
-+
- 	snd_soc_set_runtime_hwparams(substream, &rz_ssi_pcm_hardware);
  
--	return snd_pcm_hw_constraint_integer(substream->runtime,
-+	ret = snd_pcm_hw_constraint_integer(substream->runtime,
- 					    SNDRV_PCM_HW_PARAM_PERIODS);
+ 	runtime->hw.formats = SNDRV_PCM_FMTBIT_S16_LE;
+-	return snd_pcm_hw_constraint_minmax(runtime, SNDRV_PCM_HW_PARAM_RATE,
+-			8000, 96000);
++	ret = snd_pcm_hw_constraint_minmax(runtime, SNDRV_PCM_HW_PARAM_RATE,
++					   8000, 96000);
 +	if (ret < 0)
 +		return ret;
 +
 +	return 0;
  }
  
- static int rz_ssi_pcm_open_dma(struct snd_soc_component *component,
- 			       struct snd_pcm_substream *substream)
- {
--	return snd_pcm_hw_constraint_integer(substream->runtime,
--					     SNDRV_PCM_HW_PARAM_PERIODS);
-+	int ret;
-+
-+	ret = snd_pcm_hw_constraint_integer(substream->runtime,
-+					    SNDRV_PCM_HW_PARAM_PERIODS);
-+	if (ret < 0)
-+		return ret;
-+
-+	return 0;
- }
- 
- static snd_pcm_uframes_t rz_ssi_pcm_pointer(struct snd_soc_component *component,
+ static const struct snd_soc_ops rockchip_sound_max98357a_ops = {
 -- 
 2.43.0
 
