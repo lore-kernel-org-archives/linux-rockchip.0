@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF6A0CA601E
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Oct 2026 17:10:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 658C7CA9EBB
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Oct 2026 20:45:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6d5ULi+DLxGA5XZkuX2+LixxXn51/QtUwPmR7U4C69s=; b=i1slMsmz/te6Oo
-	M0UfLmKlm/QhJFf+yhoDlSRw66bk6H9ZOfBMNsp5RYGfikD/TmL+AblkmDptfRXbqGQDDgPMczNyF
-	wZjtBg6h0h+7qJbWyiFn0S0L30urETTI0/+G8adQPl6dHHWF5/5HibJGNTd2/elDBBN0pZ+NA5Uel
-	qOmuXfwEioE9aslyLdoUvyocHyb7Hb0oN7hPa+JPNIlg4uYVYaQBq1rhqt7x8fZEsDWstayB/Unuq
-	2o5e/FuvkyVCrgYKgRUlksqxeQUrwASfKqexUp8Cj2uNw1Wk1Wz0mucPUM2xYOPe5mq+RHo85wkQu
-	LRo5EcpWlKBPj7J1J04A==;
+	List-Owner; bh=aKgNASbj6w3K4+JLMmXsooMH9t8UkcCSEQJ19hGW5Rw=; b=DmEmehTPDmRhaP
+	7cHFi6l7DcmxT1nryarYXJXBoT1m3+5P+SGmvAyAxpFl7qlOj+EE8PBbDHqPA0BhXT2Qm5PhZiJ5Z
+	QWm/Ww/+8bJpOxooQHKYOwtvU1iVBg6bOijSML0XPksMXxysPHmUj/1Ipwxgzrtb4gNU+bAD39Xr2
+	DY0EabiQOn2x0sJEe82cXVmo1+3JOSxyi0ULPYGc7qpdNf2003u/9Y0aoUrO6YtqleC6FVnnPGisg
+	vMQ7PDv/UVsYmFupKa2DiC590L7wekk6xR8kq+hP/PlZ9U058/sM/ZTZwE97biy2gAcmN5Wh3JuEg
+	xGerC9Zavw60tXxTNd8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFE7F-00000006lfn-0s4g;
-	Fri, 09 Oct 2026 17:10:41 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xFHTL-00000007CRx-3i3M;
+	Fri, 09 Oct 2026 20:45:43 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFE7D-00000006lex-3uAo;
-	Fri, 09 Oct 2026 17:10:39 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5EFCA60DC8;
-	Fri,  9 Oct 2026 17:10:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F3431F00893;
-	Fri,  9 Oct 2026 17:10:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791565839;
-	bh=dmxj2lj4Q4GvWHDzZDgnLPWqXygKdSJybIHJoEn8ViA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=fNJmsG4zhF1In7gUjuHjtoK0y53A40lP41waKw8zUGqnvv15X1G9pdk5Lqech6gOb
-	 yENDX+AjLLoSkDSU4BS0Ai0SxkRgfATOzRdD3r3tPsEJk2Iay3psi9yFFAGXc+AWS1
-	 DFsJRk0BPOk34qC4wTly5FvQz0LcAo8n2bKwNo7xK4uS/VLou944qNzjR3e4HsEBSO
-	 MI5o2jheNu3TG3rZ3M0WWGXTr8pWgNxTq50I++Ve562U7XLK7oWCLYemapQpHy+tNi
-	 HK+A4l4d7tQo4Bcl/iqDPtnjREwKxdM/OBHgSctFsX9WIZACkNqTFllxlMRgrlOPdh
-	 8GoxcrYGpOICg==
-From: Sasha Levin <sashal@kernel.org>
-To: stable@vger.kernel.org
-Cc: Sasha Levin <sashal@kernel.org>,
-	Artem Dinaburg <artem@trailofbits.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Marco Scardovi <scardracs@disroot.org>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>,
-	Andy Shevchenko <andy@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Linus Walleij <linusw@kernel.org>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	jay.xu@rock-chips.com
-Subject: Re: [PATCH 6.6.y 0/2] gpio: backport CVE-2026-53226, CVE-2026-64241
-Date: Fri,  9 Oct 2026 13:09:48 -0400
-Message-ID: <2026-10-09-1-daily-reply-0011-gpio-rockchip-teardown-6-6@kernel.org>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261008191824.98662-1-artem@trailofbits.com>
-References: <20261008191824.98662-1-artem@trailofbits.com>
+	id 1xFHTJ-00000007CRD-3gdv;
+	Fri, 09 Oct 2026 20:45:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 38E0C43FF2;
+	Fri,  9 Oct 2026 20:45:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id BB838C2BCF5;
+	Fri,  9 Oct 2026 20:45:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1791578740;
+	bh=8Dh3/kTrrUzopsVDi24w70drLr5YK5nQYk6yCKgYsfU=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=BCN84LD4RVj0r5m99SObb1+WkeSuEGZdqnyaUvbgXbsN8ZqxxO6pGDqI38JcmfB5Y
+	 d8FOOZleAja8EpKiJelsOmyYsVFjVcqwHtVul32XSjxBpsjkH6+PlNnPNiPAqqwz9Y
+	 Ghh5m2f/EsAPhme8GhRmQgUL1NBRSbqDAmAH5683JxudOT5kkltap9h3DS45yKDDLk
+	 xcQ1hjqWcPiJtuFB4mJFbU2/wiZkL65ZWeIAgJ/KfvINu0TUF61HuXX6/YkwvuV5T5
+	 qIFrGFtaoX3KwEHxkXdSqS7c962LGJHfPCGel+rm7sar+WLdX8jUaPpbRO5azDGg5g
+	 HV3Hu/hn6OUmA==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B40FCA9EBE;
+	Fri,  9 Oct 2026 20:45:40 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Fri, 09 Oct 2026 20:45:37 +0000
+Subject: [PATCH 2/2] arm64: dts: rockchip: Add the GPIO expander to Kobol
+ Helios64
 MIME-Version: 1.0
+Message-Id: <20261009-helios64-pca9655-v1-2-673ee4432650@iav.lv>
+References: <20261009-helios64-pca9655-v1-0-673ee4432650@iav.lv>
+In-Reply-To: <20261009-helios64-pca9655-v1-0-673ee4432650@iav.lv>
+To: Linus Walleij <linusw@kernel.org>, 
+ Bartosz Golaszewski <brgl@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Rosen Penev <rosenp@gmail.com>, 
+ Gregory Clement <gregory.clement@bootlin.com>, Andrew Lunn <andrew@lunn.ch>, 
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, 
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1651; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=yiECMN73jBgrYRCL1OT9sV1tguqxvNtakL0UezggRNg=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFkng4rNuqN2vtj0ip27NpNHZpv0rKlJs64mMa2QvXl+q
+ dAE7qMGHaUsDGJcDLJiiiwTDmncylhy9a+/h/kDmDmsTCBDGLg4BWAibSaMDB8UfsZ80Ghxj1V3
+ j0l50nfjx1yJtQv5Z2qIfu7MsqoKr2JkOBLnInwscmvL1C2p98trnmfur1ZdE6xwMf91R1Xtm2d
+ u/AA=
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,18 +85,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> Could you please consider this series for 6.6.y?
+From: Igor Velkov <iav@iav.lv>
 
-Queued the series for 6.6, thanks.
+Helios64 has an ON Semiconductor PCA9655E 16-bit GPIO expander at 0x20
+on I2C2, powered from VCC3V3_SYS_S3, with its lines on the P5 GPIO
+header. Its INT# output goes to GPIO0_B1 with an external pull-up (R59
+to 1V8_S3), so the pin has no internal bias. Schematic, sheet 34:
+https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
+
+Assisted-by: LLM
+Signed-off-by: Igor Velkov <iav@iav.lv>
+---
+ .../boot/dts/rockchip/rk3399-kobol-helios64.dts      | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+index d146e5075b4f..a860bd2b3afc 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+@@ -453,6 +453,20 @@ &i2c2 {
+ 	i2c-scl-falling-time-ns = <30>;
+ 	status = "okay";
+ 
++	gpio@20 {
++		compatible = "onnn,pca9655", "nxp,pca9555";
++		reg = <0x20>;
++		gpio-controller;
++		#gpio-cells = <2>;
++		interrupt-controller;
++		#interrupt-cells = <2>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PB1 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&exp16_int_l>;
++		vcc-supply = <&vcc3v3_sys_s3>;
++	};
++
+ 	temp@4c {
+ 		compatible = "national,lm75";
+ 		reg = <0x4c>;
+@@ -493,6 +507,12 @@ user1_btn: user1-btn {
+ 		};
+ 	};
+ 
++	expander {
++		exp16_int_l: exp16-int-l {
++			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	gmac {
+ 		gphy_reset: gphy-reset {
+ 			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_output_low>;
 
 -- 
-Thanks,
-Sasha
+2.43.0
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
