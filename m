@@ -4,69 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54729CA6015
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Oct 2026 13:46:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7973CA6015
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Oct 2026 14:43:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oiTMGET9r9wNyQoXZVXET2KFfaoXu21Q+J1lyskhgBs=; b=Ylk7t6h6fKRxOt
-	B8lHdZC9lKCtG6XbPH7fQ9cj+lP7mpzO7N9gzX1smhLLaUa1DI+U+LiovFdoY1x58xBiclMG7ZP7B
-	PBsxZEDfZO7tiXH3MFfcHbxBrlj5xdwgi5Be4Uwn9gyPj68JEI/8dNL6g9Jk2qN+eMZhjn9bOJkFX
-	Id/xckmVwBpE+36Qrb2WmxW9kFMSVbDsvTTAdmZajnABECEWJeeevqV+Y/RMIGQ3FqP1nyycp+qy8
-	2JAEjMrwnt3w3j1JHorLCZ6OZTo8fFF29sX8fPvuC+fKFX8WbqWYJV/BcFi9jSyLCafknoldaic5O
-	LzzriiavfthXuT2mT9fw==;
+	List-Owner; bh=d3w0PXiZZ/+8b4XDkx/9JzutjeJG6WRnBGQeAgHNr98=; b=vn3hVHiqeI1MxX
+	2sRY+cVCRiCQC/wooBw3eKSqxqtV9kjOcmZCZnOpu4mKb6y6SNkYEAfITl9rjSaty2ts9pVJZzOtO
+	DAFGQ4ubqhhCFw3BqSLLvnrSJZ4b4+5q0jAgx1RUY52rLma9TBvioNylG+Jy/DU8W8nppkOleFKvX
+	sJV72zMJ+UdXPWjSnPcNGAAU4GSvtL8BkI1XVm9/G3agUqsz4okIOx0begB+Z/Ac2zk51QkdhWbvb
+	RYs/9jzyN1K9rNx6OnZiZaGX3tv9NVIjVt9WaLhPYUL+br3LvUForTf3mvqaRrZkFSu0AY2+Zhzvm
+	VKOKQqxy1WXyfRc9Xdsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFAuz-00000006P8H-35Ga;
-	Fri, 09 Oct 2026 13:45:49 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFAuw-00000006P7H-2HGu;
-	Fri, 09 Oct 2026 13:45:48 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1DB151BB2;
-	Fri,  9 Oct 2026 06:45:40 -0700 (PDT)
-Received: from [10.2.212.23] (e121345-lin.cambridge.arm.com [10.2.212.23])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B52B03F882;
-	Fri,  9 Oct 2026 06:45:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
-	t=1791553543; bh=DD1Dd6zQCZIL1Q8on/NlVlUe2Wldo3fQEOD4meT8UxM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=gnLpuRokbn1clWc8EJwJHhsNy/Pb86hrST53B1KzKMlyIgxZehwb5uWYNwr3oOCJD
-	 dAr7z4W2wZj60KnLrUHoeEsllqOyaRk9qT9U6IS7jDoRB7iX4OANYSmO3jgIVspmBe
-	 UGog5Sc1MD57YnI2+FApvh7BCBCeCXf4k19knFp4=
-Message-ID: <e055558e-7142-4fb3-bf53-19c8c929e51f@arm.com>
-Date: Fri, 9 Oct 2026 14:45:39 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/2] iommu, drm/rockchip: Map private-domain imports
- from DMA addresses
-To: Karl Mehltretter <kmehltretter@gmail.com>, iommu@lists.linux.dev,
- dri-devel@lists.freedesktop.org
-Cc: Diederik de Haas <diederik@cknow-tech.com>, Joerg Roedel
- <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andyshrk@163.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Rob Clark <robin.clark@oss.qualcomm.com>, Jason Gunthorpe <jgg@nvidia.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Jianfeng Liu <liujianfeng1994@gmail.com>, linux-media@vger.kernel.org,
- linaro-mm-sig@lists.linaro.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+	id 1xFBos-00000006TRB-00JQ;
+	Fri, 09 Oct 2026 14:43:34 +0000
+Received: from mail-southcentralusazlp170120001.outbound.protection.outlook.com ([2a01:111:f403:c10d::1] helo=SN4PR2101CU001.outbound.protection.outlook.com)
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1xFBoo-00000006TPc-2o34;
+	Fri, 09 Oct 2026 14:43:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=WMXBW8OrP+OXkDBF2gTJPHqP6lllVDNfoESgP/Qfw/lRHLLA8+7AsUJ9BvGpfmxVy6E5EEs/s0Mc+/VFTlhfbFGus7S8gl/S1aI2zoFhELiZJDS8a9kA3f4UGO/WLpgVb4II2OKM2on4i5v27DAMnaNOQt1QwGOwJZ0tUgSUKSbkcVnvIEkHDOsEwRIXA5d/wMyWPG1fhzYRVpoOpqoXJ2LLDsy+ksxf14svR3mE3lhAj8obf4pW1RZRdRGRqX42pp3KdK5duknm31ImllekCYFQ0qiYcEfn0PLVM/HhXAECYn7qHcynuJPstrzW4CpvFF0HRAi+Z6wK5DapI8/5bA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Lzj0/FMthPmD+zy8ocYz7qr/nwxApU7bjPa3TkzroPc=;
+ b=tSPDse3dL1sEtnU/MOK7b1m33wpJtBjoeQyuCrWrUM6dVzobp2vMwFI/XfUDXxiSlan7W0rtPdP+g1p8TLeTUnKfODrW7xPSv5juL0umKB5MbVj9n0pa7f/TGthR/GFpmROjYt8LKBpr+jKiaRMn/rtLwBIPC/xPn8OQm+aAR7SX7kQIB5cJKNSbFk/yHhwGCHjINtjTZJ4UhpZ1oleuyliqZ1ZbfHrfmQaqN5z73Elkg1ivNNEHEAZjy85D01+vbMvF6V8LAH8DOij/N9oPlA1rDYTaHOBj7aFbs76ZviAPXVCg39kAb2CtXPKtpil45x2C6SzakSMwUg6k2aX+PQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Lzj0/FMthPmD+zy8ocYz7qr/nwxApU7bjPa3TkzroPc=;
+ b=MPdRqLmnHsIYs+6FZXShhvJQgFFHB3WUo4d7i5jowa2ioNP4cQR+PrPnN4vwBd8FXxoCCveVunr6Z9EAg9Z28wFzl0yLa3sotKOzWD2DHrfqMchpkEp2o0lXbd8xlIRuVPLRy1mmvG4BQCqFyznCYBLQNHyrt32LwuqhElR/jyBN/wmFgcWCnHK0OwoEV2zr8ValgBqcgHJl7BhFzbeyamkgCeQEdnYcfuko24BhLLBXxHopaMf/RWrTZwpvo0gsc5pYwJr2omRlmFyzRpz+FtrW819Kk8Z39xdbgPjx78HaOCv/eY9NpvdKcIcTiFXwiUqiIsuMFPTMPqxfSOpslg==
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CHBPR12MB731189.namprd12.prod.outlook.com
+ (2603:10b6:610:33d::12) by IA0PR12MB8207.namprd12.prod.outlook.com
+ (2603:10b6:208:401::8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.16; Fri, 9 Oct
+ 2026 14:43:20 +0000
+Received: from CHBPR12MB731189.namprd12.prod.outlook.com
+ ([fe80::b0e5:123d:fe06:e10d]) by CHBPR12MB731189.namprd12.prod.outlook.com
+ ([fe80::b0e5:123d:fe06:e10d%6]) with mapi id 15.21.0496.015; Fri, 9 Oct 2026
+ 14:43:20 +0000
+Date: Fri, 9 Oct 2026 11:43:19 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Karl Mehltretter <kmehltretter@gmail.com>,
+	Alistair Popple <apopple@nvidia.com>
+Cc: iommu@lists.linux.dev, dri-devel@lists.freedesktop.org,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andyshrk@163.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Jianfeng Liu <liujianfeng1994@gmail.com>,
+	linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH 1/2] iommu: Add iommu_map_sgtable_dma()
+Message-ID: <20261009144319.GA58900@nvidia.com>
 References: <20261009002114.67851-1-kmehltretter@gmail.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <20261009002114.67851-1-kmehltretter@gmail.com>
+ <20261009002114.67851-2-kmehltretter@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20261009002114.67851-2-kmehltretter@gmail.com>
+X-ClientProxiedBy: YT4PR01CA0035.CANPRD01.PROD.OUTLOOK.COM
+ (2603:10b6:b01:fe::21) To CHBPR12MB731189.namprd12.prod.outlook.com
+ (2603:10b6:610:33d::12)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CHBPR12MB731189:EE_|IA0PR12MB8207:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5c1ff189-dbec-443b-9628-08df2613a9b2
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|23010399003|7416014|18002099003|22082099003|4143699003|56012099006|10067099003|11063799006;
+X-Microsoft-Antispam-Message-Info: l1SKlmN7a5cmPfSoAOiOcHkmYwgnQPag5BK4t68BmMxHgEvn8pLf9uN/3EIJb3wvZcG0k8D6b99yvIK3q2sc4Knnzbapo+BAt7uhTVE7nGUlETM1CQqd+Wvu2km7CLMYhNVA9OHoc1d7bVFFMc8Vu5v1Ju0arAx6NtcMUg2zZn0ehEAv6LispeEiMphD37MCUUt4GLt1cbNiZRnKH57aTVuijVrCxCpVLCyzp6LCnxMvtXkIoT+t31taIKLU32ICkS6g/0TYoP7jLqSCRva7OJivNzROracYYTOnSzCY4kQu/jv3/7jM+oTQCmL95Ycz/k4sOmQv0G2gYZa2HCBRAio/rocnMbvEVuJkCEtNi1L4XzNUDhp7ib7lvjMKE3cEh0hqQOyKY7/g73pyqPW6B8WtT+ctxVjwmJ2a4sXP8d3RZbouA6BbCb393KGvbcZtm+l2iIqxZOPLPudQpkbQTpV9X9qbFpMog0Kw/D3+tC9HK3X5oBnYH36/RreiqDlkhrYBksKDLX0i3SwwJOxwvQ9ht0mH+pYV6W8wS985kinyAJY860WWbZCzk8FyEdQC+aCeFa4BFp+SJTpMzTbyry/xu3lzF6ILgsE2/1md+8qAZ2q5PHrGkmI8yb9p6/eCADQ9ZT0fPZRMPC6S3bWDo+/k0sDQlPFkXOl8GitG1HM=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CHBPR12MB731189.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(23010399003)(7416014)(18002099003)(22082099003)(4143699003)(56012099006)(10067099003)(11063799006);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?wvH+h9sEGxVzQEnUy9PMqtWLSATdT2bltIY1F4wxk77ddwR2hNm3YqIqWKyJ?=
+ =?us-ascii?Q?0kiT5CSfisUxHz0he3Ls0FNd4gsvy1vYAGMR7wv9XAHeFfEhmA1Hy8xBpgfc?=
+ =?us-ascii?Q?CeVQp3MJSXujY6S/6KjxsxNN8FrszCmWUSyg+HN4+tmbOS+pVO4gCmfgPeRp?=
+ =?us-ascii?Q?R3oLX33LU4l4xqitz4eQ9qyAyhC7ed/ybXIzDlxg3ZEqBxiHJA3MrONirZnG?=
+ =?us-ascii?Q?fD37etUy09OAZRAltCjVKSwKWTaE6H0jQcYsQ+5F1dqbwxsYPpTLa56Uyhay?=
+ =?us-ascii?Q?6HJLGJ3nRBQI4Wyly7o0mmlIVpdXOOOO4tqpl5bgEpanXWQ0jogbCtnd1bl6?=
+ =?us-ascii?Q?Wf8wEFkUSqk3jH78YAeJ+sz6PIFpwdGtV49ljXpczrYS4aybuman/MaJ5GCu?=
+ =?us-ascii?Q?xDQ6P16MAkWtLTl0BLd9CgRBSoKYAjWIm/sjRIxHGaPGLu/Ny1xZssx3qRW8?=
+ =?us-ascii?Q?1UsemdXhqCi4EJSSNY/c+owRbCNYoJXcw5YITM+9Nmwe1fieB92yRqFQlPV1?=
+ =?us-ascii?Q?xOYF7i1c3yDNS4NBVOpZliWhFl7+vdaeKEa8dgMiV91M1wK8Ua9iaX1aP5iB?=
+ =?us-ascii?Q?0JrmMD5kSGHssr2P0ww73kEEqAuMh5212+RjxK5g8Vx0K/usKFt06aLUiHzx?=
+ =?us-ascii?Q?2AxLAtr4x2SBOJHuzEaJFB+RxyFCHMpCo9aPlOxmKm49T8d3jya3SflNpxR3?=
+ =?us-ascii?Q?Hzc8c4dqJuMeZObCXwA2yxRAWiLr5k3NHITvQI4WW9b31fpS04A7NY6Kd6PD?=
+ =?us-ascii?Q?UpofJoOF3xMwlul0Ef7KL/li0NCcFpI88Dejwp3kV705nugUnfljxtmyQrGi?=
+ =?us-ascii?Q?qHQvhGyOhX/S9AflTnx8BuxT97VWChuzl81DvefiAJt6EB4E/3Hpj3VEFx23?=
+ =?us-ascii?Q?WgQliMVT0hfzOTndcB8rQ+X0xCIg5c4XL+tSvZCIL1LwQjjvJF9/0E5FG94V?=
+ =?us-ascii?Q?hqxMjp/hhw20y+dQdDkke0jDnDZfH0tJUWYubwgBI4XM+Y+YN9HBgHnQx5Nj?=
+ =?us-ascii?Q?IRqc7RFXaCiuUkT9dM+1ETT1mHF2MK3/Pr5yeNbVs3GLn3olp7bSSlhpOVrc?=
+ =?us-ascii?Q?A/AGvYtRhAGCQnGBZGrgLy7tqNgPIzXCXD3IlmAFeBH5PBUU4kIfo9m4vwdW?=
+ =?us-ascii?Q?fBKCQmMtFza2GCltsV7XSFqpL92ukqAEZcAaE+S/fKYm9YI3rCGrLR28SEG1?=
+ =?us-ascii?Q?I0/Cfm0UVlMHUo2oqdxZ6c6yWA6FTYAasmde8R/9AeB/17v6qSPU6ljSFgqc?=
+ =?us-ascii?Q?azgs7gWy+PmFlBYNMKMM8nLdV0sVVUlyNhIfoZYZVr3JhTK78UqBn2mZTiNx?=
+ =?us-ascii?Q?nsBhMNXKaei69iB0p+lXpwnRgUGJzolEq8Ff/rSLCR668A1Ia1uKlmVZwzGo?=
+ =?us-ascii?Q?3miEQqNwXzDBqGjAZ/3desJsJDbmc91gO1K0aqBMoUt6GKGWQgzebcoTVZw0?=
+ =?us-ascii?Q?pVsl/Emf8W4tShIdo146xKZLYbRIkOqL5QAezBUquRswv41/suLqaL4Gw3As?=
+ =?us-ascii?Q?hbEbPUWlXzK7bTjZUY2onnMPaFpxD2ZbvmBjnBlk8s/85glTTcZ+V5stiibk?=
+ =?us-ascii?Q?3H12B1+NT2FeJOyg6LjP/TwgajA92WPxNmfVK5OjehLDEw2j7hfc3dJmLNDv?=
+ =?us-ascii?Q?xY7/FDMZI/3nG8/pEAp1YpR6gwsKKfucUJCWWxN4ZJ2MNxW/VCszX+Koe9xc?=
+ =?us-ascii?Q?NlwzNTit9HetBJPQkLO2YFQgm71Dkmijic1wc7nfwQRDLiYQ?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5c1ff189-dbec-443b-9628-08df2613a9b2
+X-MS-Exchange-CrossTenant-AuthSource: CHBPR12MB731189.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Oct 2026 14:43:20.3977
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qzXEd/gUoEsZUvqa7XwV8tugZN2Bt6Reo9yjYPaCXa8IdvlCUBp//hoqG4EFVYXY
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB8207
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261009_064546_662828_284A3FF8 
-X-CRM114-Status: GOOD (  24.95  )
+X-CRM114-CacheID: sfid-20261009_074330_722500_02852FB7 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,113 +148,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 09/10/2026 1:21 am, Karl Mehltretter wrote:
-> Diederik reported failed video-buffer imports on RK3588 with
-> DMABUF_DEBUG. The proposed warn-only mode [1] confirmed CPU-side
-> attachment access in rockchip_gem_iommu_map() during Sway video resizing.
+On Fri, Oct 09, 2026 at 02:21:13AM +0200, Karl Mehltretter wrote:
+> DMA-BUF attachments provide DMA addresses, not CPU-side pages.
+> iommu_map_sgtable() needs those pages, so private-domain importers such
+> as Rockchip cannot use it with strict DMABUF_DEBUG.
 > 
-> This RFC keeps Rockchip's private scanout domain. Patch 1 copies live
-> iommu-dma mappings into another domain. Patch 2 uses it for PRIME
-> imports. Unsupported inputs keep the old page-based path, which remains
-> unfixed under strict DMABUF_DEBUG.
-> 
-> Rob's MSM approach assumes direct DMA [2]. Rockchip's attachment instead
-> provides IOVAs from the VOP's default domain, which cannot be mapped
-> unchanged into the private domain. Each import retains both mappings
-> and adds one reverse lookup per 4 KiB.
-> 
-> Christian rejected reverse translation in the earlier MSM proposal [3].
-> Robin NAKed exporting iommu_get_dma_domain() [4]. Keeping the helper in
-> dma-iommu.c does not resolve the physical-address objection.
+> Add an iommu-dma helper to map a live attachment into another domain by
+> translating through the device's default DMA domain. Roll back target
+> mappings on error. This still recovers physical addresses
+> internally.
 
-And if I'd had the context of the whole series, I would have said what I 
-can see now, that the entire premise is fundamentally wrong, 
-irrespective of abusing the internal helper or not.
+Absolutely not. You cannot recover the phys_addr's from a DMABUF
+expoter by using iommu_iova_to_phys(). Christian is adamant that
+drivers must not use physical addresses, and I will not agree to any
+hacks like this to try to end-run around his prohibition by abusing
+iommu subsystem.
 
-> Sharing the first VOP's default DMA domain, as Exynos does, would avoid
-> the translation but also change native-buffer mapping.
-> 
-> Is retaining the private domain and reverse-translating the DMA mappings
-> an acceptable direction? If so, I'll address the remaining limitations
-> before posting a non-RFC version.
+NAKed-by: Jason Gunthorpe <jgg@nvidia.com>
 
-No. If a driver has attached the device to its own unmanaged IOMMU 
-domain then it is using that domain, not the default domain, and thus 
-has even less reason to go poking at the default domain than usual 
-(where the "usual" is tenuous enough in itself). In this situation DMA 
-mapping only needs to take care of non-coherent cache maintenance, and 
-32-bit ARM is actually the better example here.
+If you want to keep the domain in the rockchip driver you have to fix
+DMABUF to allow an importer to use an iommu domain safely.
 
-The fact that iommu-dma does a load of unnecessary work and returns a 
-bogus DMA address just to still get the cache maintenance as a 
-side-effect is a hideous inefficiency (which folks have complained about 
-before...) and absolutely should not be relied upon. It needs to go 
-away. There were reasons why in the original iommu_dma_ops design it was 
-rather impractical to do better (in fact iommu_get_dma_domain() itself 
-is largely just a hack around some of those limitations), but since 
-b67483b3c44e ("iommu/dma: Centralise iommu_setup_dma_ops()") and 
-particularly b5c58b2fdc42 ("dma-mapping: direct calls for dma-iommu"), 
-it now really could and should be cleaned up - it just needs something 
-slightly different from the standard dma-direct behaviour, as for this 
-case we need to ignore the DMA mask and any bouncing conditions.
+It *must not* be done with a scatterlist interface, sorry, I know that
+is alot of work but Alistair is going to take a serious stab at it.
 
-Thanks,
-Robin.
-> Base: mainline 602042bf29f6. The warn-only RFC is not a prerequisite.
-> No stable backport requested. Strict-by-default DMABUF_DEBUG took effect
-> in v7.3-rc4.
-> 
-> Testing (builds and QEMU only):
-> 
-> - W=1 object and stub builds passed on arm64, ARM32 with/without LPAE,
->    x86-64 GCC/Clang, i386, s390, RISC-V and UML, including dynamic SWIOTLB.
-> - Rockchip strict/warn A/B reproduced the control failure and warning.
->    Treatments checked every page and byte in 83 imports each. Primary
->    buffers had 1/127/507 DMA segments under the default 64 KiB limit.
-> - SMMUv3 strict/lazy tests, missing-source, bounds and rollback tests
->    passed. Real bounced attachments exercised alignment and pool
->    rejection with no target mapping or DMA.
-> - Invalid forced-SWIOTLB Rockchip provider runs are excluded. Expected
->    segment-limit and unsupported-fallback diagnostics remain.
-> 
-> The rig uses a custom Rockchip IOMMU model and the real GEM callback in a
-> test module, not VOP2, Sway or a real exporter. RK3588 hardware, two-VOP
-> and 32-bit ARM runtime testing are outstanding.
-> 
-> Hardware testing is welcome, particularly with Diederik's Sway resize
-> workload. Compare control and both patches on the same base/config,
-> first with strict DMABUF_DEBUG, then with the warn-only RFC on both.
-> Please report full dmesg, config, exporter and visible display problems.
-> Keep a known-good boot kernel. DMABUF_DEBUG=n testing is welcome too.
-> 
-> Developed and tested with LLM assistance.
-> 
-> [1] https://lore.kernel.org/r/20261005064133.7305-1-kmehltretter@gmail.com/
-> [2] https://lore.kernel.org/r/20261006131000.81501-1-robin.clark@oss.qualcomm.com/
-> [3] https://lore.kernel.org/r/bd4e5ece-1358-4e0b-bb04-ba9de62d26f6@amd.com/
-> [4] https://lore.kernel.org/r/47bf9a4c-2a47-4e93-bcdf-8d953c9a5ab8@arm.com/
-> 
-> Reports:
-> https://lore.kernel.org/r/DLR74W1U9YPC.375IK0HOYHDIG@cknow-tech.com/
-> https://lore.kernel.org/r/DLYLA3WQNN3X.3FB9MO8ZWBQ5@cknow-tech.com/
-> 
-> Karl Mehltretter (2):
->    iommu: Add iommu_map_sgtable_dma()
->    drm/rockchip: Map imported buffers from DMA addresses
-> 
->   drivers/gpu/drm/rockchip/rockchip_drm_gem.c |  19 ++-
->   drivers/iommu/dma-iommu.c                   | 131 ++++++++++++++++++++
->   include/linux/iommu.h                       |  12 ++
->   3 files changed, 157 insertions(+), 5 deletions(-)
-> 
-> 
-> base-commit: 602042bf29f6efde39cfb5fdd9289bf4854bc0c5
+Many users want this, not just rockchip. So help with the work to
+allow iommufd to do this and you will get it for free.
 
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
