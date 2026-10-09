@@ -4,90 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39A58CA6015
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Oct 2026 02:01:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 703BCCA6015
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Oct 2026 06:11:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KxhZBn3UaRt41YltOAZOBi1Lm/glK/Ag+Ey0pMaVD8c=; b=P4jz0FK7J4F8dN
-	vEZufmPUI7c2kvRdF7Ovb++pYNZaAgSXUvjQ14tjJWtHmB5MGI1WiKAeByUhMRkK1N6GJ+Bvq+xd5
-	4le4pktLBCVTPa9BEnw3GgLn4hefEt3cNlXxKVh+s66BIWy1FMpP8Zwyl8049HwjcCwsaqLm42Sje
-	LJvqhZ3IWMFaaPpv0JDtxKdyR9hYm/cKyVclbyW+XXm++8bwC+iBNDeI/IPeoNQssRy7uGkMdNaU8
-	Q3hAXA1h4Hxbof5+MgqktzWA8ZmjhtiNj0PBik9Y3lYqFu9x3390vZPzuGBlNibLHfpRW/rNmd3WZ
-	IXDcRGdmokaDbsjrbr6w==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yCfQ2gua6fPkR1TFFdZtNFhrhA1KQ5LcK7JVRCQEjYA=; b=3LxUpbjcroj/Ae
+	WvEHWWSD5qSFjW34a4M1GJHpLwPOiQ7q8vlsh0jQqBUVCrdPG7gBhSNEAWUgZcl9LQdZgrRoJpG2p
+	FBp2hoLPDZepqVOPdo7h+0/4Th8/sTdXitgNxJ5kf1HWfw41fE+1xSFPiPcwrydgXbPrvyaE1r3Mm
+	qjKuE+3+xc7lpBmIfN3C8kr3SbfxpF7A/FJHxuj1kVdItGPcYmNPGUM0DWbGRBBB5+Ee1gza3bi5v
+	RZh5HVy/0ITUvaohKqtZxGOWb7d5lUjDLwyiz4iWESMf2kPXADn4Hruo4Htuvp5MAnoDR1DBaJ86P
+	SUqG8t+DZWTEUSiMTwUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEzv9-00000005GNo-24hZ;
-	Fri, 09 Oct 2026 02:01:15 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1xF3om-00000005b6A-2rAY;
+	Fri, 09 Oct 2026 06:10:56 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEzv6-00000005GMu-1cRt
-	for linux-rockchip@lists.infradead.org;
-	Fri, 09 Oct 2026 02:01:14 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-3a4b9732d5aso3251494a91.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 08 Oct 2026 19:01:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791511271; x=1792116071; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=2fDuH5AqlzghdgOw85VEEM3nScrcIHTb70P6L+D1SRk=;
-        b=nrChnQkbwFZsqDfSvMyIwbZ+IIHLdXFvZ0si3X0OFYadS9u8wtI0UaRx6SRxA4tuUC
-         sQrsMDChRqgwfbMcs4zC5dT8lrxsQp/xwRSAPsElmDpS4XZGTX5MUOoUu9R91dfvhCBr
-         XOHUVeMWkN8W91K0Syc9yFWxZoy3ZPrF4HJdFmuLrQp0f/XHqa3c7EngxY9xddeKyrxS
-         OvadALJQ2WNSZzCXRUzFlH6elh+pX/jNVa5nScmTyrg7i+0QW8oN+h6gAF3m3ib0sZ2D
-         i0cVW72Wbv5+oEOSX/H7+bnGlcXUdyUWJ8FSDFnMf7A41rhSg0+IhgM/U6p5TT9yeB31
-         YEeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791511271; x=1792116071;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=2fDuH5AqlzghdgOw85VEEM3nScrcIHTb70P6L+D1SRk=;
-        b=XlGMmdm1BHS3Kkb3VynW1wFWxvdZsYxEPrtEFLK9J/590AuDFoW/emQEAhvfkfeqHB
-         WA38AkcP/ryjahWW1o0qXHFlUcPYPCPkGDWqhUkeudTVRZKV3+WWrurmnuKhm+lpmpIZ
-         2XnP4Y3Pbi5AWUAFq/N1v9OnMq+L5gdoaQHTk/Sy2dtfg8PANxfy5x2LfkVf/s+kZXkf
-         e5np/gWxEnGCU2PPW68U0bWLTIYT38cYw3yora20BPZ5MbmP11M9tGgACJlpTbglSzNM
-         iXocUPp24ZMdDeQmp5pTZGI+KyX0c4nLPyVc0rU09BTesJ2SYUP/zJJf4n19YfOvmizf
-         eJ5g==
-X-Forwarded-Encrypted: i=1; AKwUvBwtTohm1nSoEKCTAn4jvRIcY2K7dmZlajGiaYhj4IwsNPImo3/3rvLOhHCTwttWzcdK0RSvAghn68ZcYa9JiQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKpwTkTK6aHPQ0L1VceBq7FopDqv+zQC1ukwJvG9IwWMoLywte2
-	H0Yx9PwxFoscowWNqW5lc5YnDFARpPohQlUoE8XzXsooaxgsRvkuCfCZ
-X-Gm-Gg: AYBFou05fyN3ycgF7ZhKFZ+qVmxPquk6mrJOXQPrwXJSvbxs64cNnzDDqLx0CGl39Ye
-	A6hh5XNuhLj1prl2uxlPRv4upeKxUR70vNtMlE2rz47iIMLmvl8OxZK2rGxq3qBepp14o6qMJsE
-	+jPsMV6aVDL5O5hXvqwBa6Fho0zL25w6mLtBN+u9L3euthEu8frwpCp64KReS+isTL1m6zdoKuC
-	zCwBxgkT3y8bZTvKqesIFQAeS2dVDCOq3s3GZJih+6+XgW3vAd2rumzlUbhdlnTIPB7XkSwXtG9
-	tk4VZPX9M/BtmWn/jdrLBij+3xCGhjcWoRkffSiTs53zaweYEppYWtWuDucVbgtUxdLIHe66aKy
-	dG4C4uHq2i7LJoBS0iNWheJK/dttHL+2DGNTy9xGXHF7mF6btii34nd8zJCP9sMipBsNAn0beZj
-	MGL1hS0D19V6Z0YZTgj0oYKzaZLaFMr/q1I/8KKrik3Nc5ZrKsBBuDis6Qb2xOIR2h3UO7c4KaG
-	OcL3tI=
-X-Received: by 2002:a17:90a:e707:b0:3a8:796e:ca18 with SMTP id 98e67ed59e1d1-3ab3ace27f1mr572130a91.59.1791511271485;
-        Thu, 08 Oct 2026 19:01:11 -0700 (PDT)
-Received: from arch.localdomain ([161.33.202.10])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3ab38fc9e52sm1095770a91.13.2026.10.08.19.01.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Oct 2026 19:01:11 -0700 (PDT)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Liang Chen <cl@rock-chips.com>
-Cc: Jun Yan <jerrysteve1101@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
+	id 1xF3ol-00000005b5I-290u;
+	Fri, 09 Oct 2026 06:10:55 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id EF04160DC4;
+	Fri,  9 Oct 2026 06:10:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F31A1F000FF;
+	Fri,  9 Oct 2026 06:10:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791526254;
+	bh=c86SoGE1Kg7yW8Xxg7bYgRohDAmBjRHhxs1LV7dRFlk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=eo6RksSSxkU6k+l+kl0JUmYd0VQm4MWjr/ltDGnWYAqesoJZtgjTrPdZF6rzLSsi7
+	 NNskKdRM4s2KdwrDLFtm6BA900F9OTX1bzYgarfFmdn3uGvYZi1wc3rhWF+iHy3alJ
+	 rRcaVG3Lu6FAMvizi6/x9uYauef+8ajhuPrdDeuX/Rha5Yaf7fxuvTyqpORpPwxAre
+	 cOo4l575Q6l94S0z4AhLS6OgYcW4Uvunv40Vv6aOfIBzcbnST1xM5nqXyBRbMDPe6C
+	 XXocUbThrD1ewcu1hcs5IsR0/HkFXdkLctICsrRcT2rwSgGl7lJV0wrkHZM8CWTcb9
+	 WZkU+y+QNsqPA==
+Date: Fri, 9 Oct 2026 08:10:52 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Haotian Zhang <vulab@iscas.ac.cn>
+Cc: Takashi Iwai <tiwai@suse.com>, linux-arm-kernel@lists.infradead.org, 
+	Romain Perier <romain.perier@collabora.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+	linux-rockchip@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>, 
+	Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-sound@vger.kernel.org, 
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: rockchip: Add dma-names to RK356x UART nodes
-Date: Fri,  9 Oct 2026 10:01:02 +0800
-Message-ID: <20261009020103.364498-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.56.0
+Subject: Re: [PATCH] ASoC: rockchip: fix device node reference leak in
+ rk3288_hdmi_analog
+Message-ID: <20261009-formidable-ubiquitous-buffalo-2127bc@quoll>
+References: <20261008181459.2762862-1-vulab@iscas.ac.cn>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261008_190112_452252_1A2D5DB4 
-X-CRM114-Status: GOOD (  10.83  )
+Content-Disposition: inline
+In-Reply-To: <20261008181459.2762862-1-vulab@iscas.ac.cn>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,113 +72,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK356x UART nodes define a dmas property but omit the matching
-dma-names property, so the 8250 driver fails to request a DMA channel
-and falls back to PIO, logging:
 
-  of_dma_request_slave_channel: dma-names property of node
-  '/serial@fe650000' missing or empty
+On Fri, 09 Oct 2026 02:14:59 +0800, Haotian Zhang wrote:
+> snd_rk_mc_probe() acquires references to the codec and CPU device nodes
+> with of_parse_phandle() and stores them in the static rk_dailink, but the
+> driver never calls of_node_put() on them. All error paths and the success
+> path simply return, and the driver has no remove callback, so the
+> references are leaked for the whole lifetime of the card and each failed
+> or repeated probe leaks another pair. The same pattern was fixed for the
+> sibling rockchip_rt5645.c driver.
+> 
+> Release the codec and CPU device nodes on every probe error path and in a
+> new remove callback, and also drop the extra reference placed in args.np
+> by of_parse_phandle_with_fixed_args().
+> 
+> Fixes: eaae2ea73593 ("ASoC: rockchip: Add machine driver for RK3288 boards that use analog/HDMI")
+> Assisted-by: DeepSeek-V4.1-Flash
+> Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
+> ---
+>  sound/soc/rockchip/rk3288_hdmi_analog.c | 42 +++++++++++++++++++------
+>  1 file changed, 33 insertions(+), 9 deletions(-)
+> 
 
-Add the missing dma-names = "tx", "rx" to uart0 through uart9,
-matching other Rockchip SoCs such as the RK3588.
 
-Fixes: a3adc0b9071d ("arm64: dts: rockchip: add core dtsi for RK3568 SoC")
-Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
----
-Changes in v2:
-  - Add Fixes tag for the commit that introduced the dmas property.
 
-v1: https://lore.kernel.org/all/20261008153620.238580-1-jerrysteve1101@gmail.com/
+Multiple things here:
+1. Your team ignored completely previous feedback.
 
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+2. You use multiple identities with this email, thus I actually doubt we speak
+   with actual person.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index a5832895bd39..098493c04ecc 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -443,6 +443,7 @@ uart0: serial@fdd50000 {
- 		clocks = <&pmucru SCLK_UART0>, <&pmucru PCLK_UART0>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 0>, <&dmac0 1>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1449,6 +1450,7 @@ uart1: serial@fe650000 {
- 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 2>, <&dmac0 3>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart1m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1463,6 +1465,7 @@ uart2: serial@fe660000 {
- 		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 4>, <&dmac0 5>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart2m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1477,6 +1480,7 @@ uart3: serial@fe670000 {
- 		clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 6>, <&dmac0 7>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart3m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1491,6 +1495,7 @@ uart4: serial@fe680000 {
- 		clocks = <&cru SCLK_UART4>, <&cru PCLK_UART4>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 8>, <&dmac0 9>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart4m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1505,6 +1510,7 @@ uart5: serial@fe690000 {
- 		clocks = <&cru SCLK_UART5>, <&cru PCLK_UART5>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 10>, <&dmac0 11>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart5m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1519,6 +1525,7 @@ uart6: serial@fe6a0000 {
- 		clocks = <&cru SCLK_UART6>, <&cru PCLK_UART6>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 12>, <&dmac0 13>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart6m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1533,6 +1540,7 @@ uart7: serial@fe6b0000 {
- 		clocks = <&cru SCLK_UART7>, <&cru PCLK_UART7>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 14>, <&dmac0 15>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart7m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1547,6 +1555,7 @@ uart8: serial@fe6c0000 {
- 		clocks = <&cru SCLK_UART8>, <&cru PCLK_UART8>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 16>, <&dmac0 17>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart8m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
-@@ -1561,6 +1570,7 @@ uart9: serial@fe6d0000 {
- 		clocks = <&cru SCLK_UART9>, <&cru PCLK_UART9>;
- 		clock-names = "baudclk", "apb_pclk";
- 		dmas = <&dmac0 18>, <&dmac0 19>;
-+		dma-names = "tx", "rx";
- 		pinctrl-0 = <&uart9m0_xfer>;
- 		pinctrl-names = "default";
- 		reg-io-width = <4>;
--- 
-2.56.0
+3. Finally, same feedback:
+You sent multiple independent patches, to multiple independent
+subsystems. The amount of these patches clearly suggest this was
+AI generated and most likely not tested.
+
+More importantly, you sent all this work without properly organizing
+relevant patches into patchsets. This makes reviewing difficult
+and might cause multiple reviewers to address the same issue.
+Replying to the entire set is impossible and requires handling each
+patch independently, instead of applying or discarding the set.
+Maintainers also won't see the bigger picture of your work. Quite
+worrying.
+
+This is on the verge of hostile patch: bomb us with so many
+contributions, we won't be able to handle them in efficient manner,
+like responding ONCE to ask you to slow down.  Considering all this
+is untested and LLM generated, I have even more doubts whether this
+should be considered for review.
+
+Please read kernel documentation BEFORE posting more work. It will
+explain you how to identify subsystems, how to organize your work per
+subsystem (so a patchset grouping multiple patches with a short cover
+letter), how to document usage of LLM and how what you should not do
+if this was posted in a good faith.
+
+Best regards,
+Krzysztof
+
+
+
 
 
 _______________________________________________
