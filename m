@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AFFCCA6017
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 20:00:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87783CA6017
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 21:52:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
 	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=klqDp7/A+eGsywz0luORdG+PEqiM/4VtGVCkYMc9PUs=; b=W2gyAnMCtBaOF8
-	r7Pa9R90sVZxUJr4TwYzNDUsrk0eeVPj+XjKTolAHkTfs14Cawz73hejANS0j4KKaRno7BpiLE9bm
-	DxCLrgCW/EkMVDhBsYsGE6eLE8Dks45+UJ2CE4kYp1YWxH4FvqQzUv7UZVtuVcNBB4NskmvIwVArx
-	poGAM2xjzNwzrhidMFun4hjBIV2blP5lLA3bkTxRR7Ra/YXptwMImODDJ0loufwqwR0FoX7WR5Jn9
-	VKIJGSglHUIw2lwitSW+mN8vrT2y54cNyV9N0QxOBBWai8fSqC7TX/VSvssvSkZJ93xqUzYp5IJ8C
-	TeARsFLyHg52PJQ9+v/A==;
+	List-Owner; bh=ZhfR8wYSRMh5fjy9NmILw2pCHwwi1QdbLyDY/p5o1U4=; b=JeAfmA+DLwnUFd
+	tyVOsquRIl+A+x1o+Ov4jusInGcBTlnG2LiABCHi/+H6gFtGqBrtUFwHM3V/kt1njM338K29pNvhT
+	mQrTritzMFhikDLAE/MBNHe8XqxVwbSeHOrx3XBwFpqu6Vd+IrDbcKs8ddERkTWLnVqK4gvM20i72
+	SOoWqEYJwXDNokqjXvKO2A9adTCMalKlFdTzG36xb5Rgw9D2cKgyRPURQkbcVnhkCSba2k+gIoRJw
+	Z+ezQ1MCH8jBfdL5OP+qHvYhwybnZFaY5sh1Hbxb0OOjpCu01yHA73XxCvi9UPYMg7con0jC1E2BV
+	ZA2VP+6pNO88Q2dqTmtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFdF4-00000008Q8L-0IZm;
-	Sat, 10 Oct 2026 20:00:26 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xFez1-00000008T30-1O1M;
+	Sat, 10 Oct 2026 21:51:59 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFdF2-00000008Q85-1kXl;
-	Sat, 10 Oct 2026 20:00:24 +0000
+	id 1xFez0-00000008T2Z-1oRz;
+	Sat, 10 Oct 2026 21:51:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 71338602CC;
-	Sat, 10 Oct 2026 20:00:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 096DFC2BCB9;
-	Sat, 10 Oct 2026 20:00:23 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 97FE741942;
+	Sat, 10 Oct 2026 21:51:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6C34DC2BCB9;
+	Sat, 10 Oct 2026 21:51:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1791662423;
-	bh=INhYC89c0fkz7duYIP5TtM0wbq9gO2yYmBeJHMpXEdo=;
+	s=k20201202; t=1791669117;
+	bh=FxeeGnUnF2T3tAbw1CVrJPxzZ/AfexZI161cKG8bLAk=;
 	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=mfXy1Pp9LFsulrG2ge35MGdOxR5P986wKoXB8oHZBNWt/QSHLd918tDNP8fQStoxS
-	 SYx7pyQbltQj65vbdAkdHFDe2j2ohDM0kQIwYZ1pFSoEFDcqheN9OGiLjtYS91t0kn
-	 2/o/N4DEN9ucHRhhYezpxfZAhZJwtpzMoUhtHM9vi5y/62Z5cBw0VarVYC2kgMF1hi
-	 ML3NERBSElFFfFXbQOVzUBG+16CL5Hw4Nq0UJiA6t5+Qf1GkA25b0re6S6e9GBgPdf
-	 DlaWZj6CU545Xc8jgBZKGZg3hz0iEfHzMAx4AK69qt/AmzGKl+pUc6Yx4LpegzxxsV
-	 d3woNnuXFSxgA==
+	b=VdenR65rsLe+ESlFBzGy3CFc6IdcWhr97l23ZZ1YEPC6kb2+4c0gtJsS0CFCsgvjk
+	 yvmKTN32M3uBi+vE1L3f99hwe0q18KSQVnSpS24g3gMV/pqrxEPuoWk3GXOMn1ETDX
+	 BZKxeNiJH+SrgEQmlF9KspQiL9z8GPixlI0BEg556GBa+i3aNMJ/qH6O1HqA0H2T5e
+	 1C17Ae4UhKv8ACq9JMUxfY5oQ0IOzgFfueYFhKkEhOHSpf05yx4T4naGHhll8Bsfvs
+	 gln+2sFrCdRcd+/ztVbASE2Yw1jVKHJIJurq0mp6tOHNk93zMw4HlOHg8J+2N/4OeA
+	 YHbzZr+JkNjTQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D2DDACA9EC1;
-	Sat, 10 Oct 2026 20:00:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58E1ECA9ECA;
+	Sat, 10 Oct 2026 21:51:57 +0000 (UTC)
 From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Sat, 10 Oct 2026 23:00:16 +0300
-Subject: [PATCH] arm64: dts: rockchip: Add the buzzer to Kobol Helios64
+Date: Sun, 11 Oct 2026 00:51:50 +0300
+Subject: [PATCH] arm64: dts: rockchip: Enable USB host0 on Kobol Helios64
 MIME-Version: 1.0
-Message-Id: <20261010-b4-helios64-beeper-v1-1-6235643158cf@iav.lv>
-X-B4-Tracking: v=1; b=H4sIAFCZymoC/x3MwQpAQBRG4VfRXbt1ZwzJq8hi8OOW0ExJad7dZ
- PktznkpIigidcVLAbdGPY8MUxY0bf5YwTpnkxXbGDHCo+MNu56xcTwCFwJ7Uwmst1UtLeXwClj
- 0+af9kNIHU5U6eGQAAAA=
+Message-Id: <20261011-b4-helios64-usb-host0-v1-1-693fe316701b@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAHWzymoC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzNDA0ND3SQT3YzUnMz8YjMT3dLiJN2M/OISA10TgyTjpORkC1NDQ3MloN6
+ CotS0zAqwudGxtbUAu+CJwmcAAAA=
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1395; i=iav@iav.lv;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1470; i=iav@iav.lv;
  h=from:subject:message-id;
- bh=CLjRnKOQVnSgjGYiJTawa4WmYQi+xZfiDphqtnkUSz0=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFmnZgZGPnopq23L8KTpTftrtQJp7gzji4+ZMvW/F58Ie
- +W8cPLpjlIWBjEuBlkxRZYJhzRuZSy5+tffw/wBzBxWJpAhDFycAjCRrXIM/wyqdJSauPsM2HNq
- bZt9Tv3l2RL3XP6PRmEmT1eES3jvNIb/EbXJe2aGTNzAqqE4W9+N0fHuHI/cz4otD3aEh13yXcf
- JDwA=
+ bh=sOQzi5FpUnQRY9CzfpIrcgu8d6QPkrlieETtWvyjiVY=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFmnNpf/zlN1581VmqNuLyprdcWlMpZj80sDU8ZykT6+D
+ RcWO0h2lLIwiHExyIopskw4pHErY8nVv/4e5g9g5rAygQxh4OIUgInwczEybH/0/9C+3PN1zzZI
+ LUzmOJf4997RfcUb2KbPe/G8KPL1KkFGhvM7tePOGvs3n8i02n5VSWP2g1/RBw1qf11NXiIj8PP
+ WW0YA
 X-Developer-Key: i=iav@iav.lv; a=openpgp;
  fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
 X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
@@ -88,44 +88,61 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Igor Velkov <iav@iav.lv>
 
-Helios64 has a 2-pin header, P4, for an external buzzer: pin 1 is 5 V,
-pin 2 is switched to ground by a MOSFET driven from GPIO4_D3
-(BUZZER_ON), active high. Describe it as a gpio-beeper.
+USB host0 of the RK3399 (USB0_DP/DN) is wired to the USB 2.0 pins of
+the M.2 Key-B slot J2. Enable the host port of u2phy0 and the EHCI and
+OHCI controllers behind it.
 
 Assisted-by: LLM
 Signed-off-by: Igor Velkov <iav@iav.lv>
 ---
-Schematic, sheets 30 and 35:
+Schematic, sheet 33:
 https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
-P4 in the header list ("Buzzer Alarm Speaker"):
-https://wiki.kobol.io/helios64/hardware/
 
-Tested on mainline: GPIO4_D3 follows the beeper input events. Nothing is
-plugged into P4 here, so no sound check.
+Tested on mainline: the EHCI and OHCI root hubs come up. The M.2 slot
+is empty here, so no device was attached.
 ---
- arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-index 63ad79b4c8ac..d84b777b7153 100644
+index 63ad79b4c8ac..ae887806f21d 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-@@ -58,6 +58,11 @@ avdd_1v8_s0: regulator-avdd-1v8-s0 {
- 		vin-supply = <&vcc3v3_sys_s3>;
- 	};
+@@ -639,6 +639,15 @@ &tsadc {
+ 	status = "okay";
+ };
  
-+	beeper {
-+		compatible = "gpio-beeper";
-+		gpios = <&gpio4 RK_PD3 GPIO_ACTIVE_HIGH>;
-+	};
++&u2phy0 {
++	status = "okay";
 +
- 	chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
++	host-port {
++		/* phy for &usb_host0_ehci and &usb_host0_ohci, M.2 slot */
++		status = "okay";
++	};
++};
++
+ &u2phy1 {
+ 	status = "okay";
+ 
+@@ -653,6 +662,14 @@ &uart2 {
+ 	status = "okay";
+ };
+ 
++&usb_host0_ehci {
++	status = "okay";
++};
++
++&usb_host0_ohci {
++	status = "okay";
++};
++
+ &usbdrd3_1 {
+ 	status = "okay";
+ 
 
 ---
 base-commit: d2abcbb905b0e4b2e06b257fa1e5bcf4faa6dbda
-change-id: 20261010-b4-helios64-beeper-a130e2a23508
+change-id: 20261011-b4-helios64-usb-host0-40b3bcc85117
 
 Best regards,
 -- 
