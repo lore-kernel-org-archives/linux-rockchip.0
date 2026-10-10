@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27952CA6004
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 11:14:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94D80CA6004
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 12:10:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KyMSHPIBTolDH3PUDIrkrbjp+B/v4CRoC8ohXQnPsnw=; b=QPjruXSZzRJ9m5
-	grrI0drqy4OSQ8+TcvN93CJiXP70+REnOpjrzDr4EgTV9UNBt4EfQL9Zxs8YFfLIDuGbeN9S7EvSx
-	btDIBGl5troyA1U1f5loAr9aMru5lDknIPlbTNU25WEXwBgeIE/5Zy8L+arcJW8CRDUWJSgnFxxRe
-	AJYZkzAvHgx0q8y5JcNpfZZEJYfL59lXCxg8GTEGgihDm4Z9MDajxAmzAQQ9/KAjIp6GBJvdS3hk/
-	YE9LkWARKfwbgmLkWUXUuKJodlZ+qg7TiEma6R4zIbvgGN/c5UVtXDzEjBR7tkJIY+A2qlRjQcAjK
-	s2WiD3UcAJK2BbFosrJg==;
+	List-Owner; bh=aBDUe3knXwcyJkPQz/OmGgp9cSb+ExCo4nA9W8lHNwc=; b=V7nuYGgQc7cevF
+	Gs7JDN/D1jyRMtamhxGyIjHTelJG1c/DojMK/YPfEfQZKAXgtj5/8xPWn0FYsuzGvGq1/GEzX7DB0
+	VxG1bXSg/7zHOM71scWRqRLRCihG8kduUagFEJc5Qw6f8aG5v4rL1/U6NNxxd3XQNv6Vr6fx+ujgx
+	BUvjMM5xq2DREKdCNt6UY3aQBbjeqe+qoNi7TXr2ppkkYT24hFu3JYRSEab6+nIUDRn8LqxeiKbYg
+	ibKvTAcdW7o4/bPgOISxfn6MVX2VEDm/x/Xo6t6HFZduzHy4uLBoCUZqXCiueZozYPY13n519Rsoq
+	hCe2EuhGpKZBbyZjHZPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFV2L-00000007twQ-2Njl;
-	Sat, 10 Oct 2026 11:14:45 +0000
+	id 1xFVuN-0000000807J-2GDI;
+	Sat, 10 Oct 2026 12:10:35 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFV27-00000007tmi-2A8U;
-	Sat, 10 Oct 2026 11:14:34 +0000
+	id 1xFVuK-0000000806U-23Yy;
+	Sat, 10 Oct 2026 12:10:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=rRvOqyoa2yGlfCD6zElvclBcIrUaBdOVdd/2GnBR7tE=; b=kZtjQvAHyRZZBrt4oeO+HQ/QE6
-	G9ydsbXj8mzw6jrGPOqfpRYADvpDHhXfzFi8f3VAz0k3vwRpKdDL1DDTIUEI47XQm1t/M207MGE79
-	1G+Txy9UIBNtO0QNnSaYO51Peok7ZRo44gvUAkk8+JmPsWsShHr8ZX+xue0j/x1yakt1ZNPBfmLcM
-	RnsQwfsuqpnhTW6BzLUiH9H4J7El3uwHi45C0c7WzhZsVQ1C+G8xbesRu2Md+wFco5/WeXMF+6cyr
-	kG6ya5n0lAa34vvlJFpvc37N6WED9dsO+MQBL636rHRLtUDhdU9S1iLrobuovQDZfqgUdVDIOgSNo
-	fF5ohTqg==;
+	bh=i3Qo4vQuldjoeK8jA2JAjzxfTebhX5t9oUEQ8z+qotY=; b=VTWpHr+KtF39azVyZIek20nMIY
+	+FnSybPUCNY+P86lTxWZKiDvVoUwLAQfs86PABO9X1B6OA5CBTgAWjQ9+ulq4vwWyuQtvBciOf5LC
+	kQQIkOM0c5qYIq8rzgd8YqPou+h6GbyQBtdVugkuW6ZySR0nuBbzlh2HX6eWidtzNIdNdmgvYFZN6
+	/u+bXQdBMsX59PrLoiu98t0F5ZebvgkL7k07zhOZLPZxTGtBuRKjOn+agpb8hYSsb9W13Ij4PKH8C
+	Y4B3yZzR6abkNMZd6Mn8LzTVRmnhl2pfOAqAw/KrMbFIA+tvHuLqMTjz6lbbxgIlcO896HHQffzaZ
+	0bXg6tSA==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: Chukun Pan <amadeus@jmu.edu.cn>
 Cc: Heiko Stuebner <heiko@sntech.de>,
@@ -45,17 +45,16 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	devicetree@vger.kernel.org
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: remove FRL GPIO for 100ASK DshanPi A1
-Date: Sat, 10 Oct 2026 13:14:09 +0200
-Message-ID: <179163084343.3536058.11998324830928383594.b4-ty@sntech.de>
+Subject: Re: [PATCH v2 0/2] arm64: dts: rockchip: Add Radxa E54C
+Date: Sat, 10 Oct 2026 14:10:21 +0200
+Message-ID: <179163420722.3552553.10756820019323228213.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261010100000.2236931-1-amadeus@jmu.edu.cn>
-References: <20261010100000.2236931-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20260820100020.3370385-1-amadeus@jmu.edu.cn>
+References: <20260820100020.3370385-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_041431_554359_0135F22E 
-X-CRM114-Status: UNSURE (   8.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261010_051032_814160_87506717 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,18 +72,22 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 10 Oct 2026 18:00:00 +0800, Chukun Pan wrote:
-> According to the schematic [1], the 100ASK DshanPi A1 board does not
-> have an hdmi_tx_on_h pin, so removed the non-existent FRL GPIO.
+On Thu, 20 Aug 2026 18:00:18 +0800, Chukun Pan wrote:
+> This series requires the following commit in Linux v7.2 to make the
+> switch work: https://github.com/torvalds/linux/commit/9da2c8672f77
 > 
-> [1] https://dl.100ask.net/Hardware/MPU/RK3576-DshanPi-A1/DshanPi-A1-RK3576-SCH_V1.1.pdf
+> There was a conflict between eMMC and SPI Flash, so the unmounted
+> eMMC was disabled. The schematic can be found below:
+> https://dl.radxa.com/e/e54c/hw/radxa_e54c_v1.2_schematic.pdf
 > 
-> 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: remove FRL GPIO for 100ASK DshanPi A1
-      commit: 99feb764fa6c3b260e03903f5d30e15428fedc08
+[1/2] dt-bindings: arm: rockchip: Add Radxa E54C
+      commit: 49b9e84fcd80bcc16f78ad8386b83f76f61f3a4d
+[2/2] arm64: dts: rockchip: Add Radxa E54C
+      commit: ae965b9856f033145e292b0c29082a26bcc45efd
 
 Best regards,
 -- 
