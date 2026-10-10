@@ -4,57 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C778CA9EBB
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 01:39:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 844D1CA9EBE
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 09:34:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WhYFhg3gl0+YP6KVwnP6pp2F1RdH0Vh/Qk+08I1MMg8=; b=GtvxUudNwar8LV
-	E+AM72Vj/BHlcxHYnzUSrgCsyBQWlH7v7aW+iFd7VqO6KSC4vW0TEoHlXOmoyyNO50mXKbZPN1oAv
-	KY/liuLOW3iQ/grfNORzrXFwLddKufve3pudd92VzAJ07cwj5ZLW2FVSFRpWw0t7tcrWJcnMX6+VU
-	pHTghtlBQtPL5BZClyMnlPr77hTpd8iX6ANsxUV/FVLbOGJj+MxjuF88E+1JA7pi4kTrNynNlRi5k
-	rNdgjlF+lrazsPkxIGjpphWOnJ3a4cH0Ty0yn5M8RmWMEFXMKopfXJuhE/B2d2DrH2u4G+Z7BI3C6
-	n4sZnnRq3ZrKP1LJGt3A==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ys8jdSFZ2Z0vdJxFaIZaz+8ioG6SxKsO2tJcg68txlI=; b=IG0QZTsZR4KoLr
+	aXltTEN2bghqSVKBX5lV1QK4RAbIfP7ZxeHMPLQ2uJaLK5btHf9W7UV2hPM5HnfXUqTlPE2SfsENv
+	UYb8SXM2LgfLTtv0mvDGm40p+dG1NZBeisB2jYr/VEaYocEaAUFAN+WderQgkIL0NCeYo2PQsPf9h
+	wSHnzHZtOcZ1/0v2rgJcGL9uUqdPPzT14rZClWZaQCzdGqErkQapxVEnpVxjeCwqxtZIFs+RW4R6L
+	1MrqI9MMqWFlyxOIE4F+1Kx7dx9ddRa2HvP6g/ZZ0ixIky7v+bRBnAsf6L9h6hDNEuzbPulEbCX9Z
+	C0ZxSF0fTiu5hSlQ74AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFM3F-00000007Ogu-162F;
-	Sat, 10 Oct 2026 01:39:05 +0000
-Received: from mail-m10187.netease.com ([154.81.10.187])
+	id 1xFTTQ-00000007mKA-0JSC;
+	Sat, 10 Oct 2026 09:34:36 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFM3A-00000007OgT-3YxZ
+	id 1xFTTN-00000007mJJ-42Of
 	for linux-rockchip@lists.infradead.org;
-	Sat, 10 Oct 2026 01:39:03 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 508234b94;
-	Sat, 10 Oct 2026 09:38:54 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	linux-rockchip@lists.infradead.org,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	linux-pci@vger.kernel.org,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	stable@vger.kernel.org
-Subject: [PATCH] PCI/ASPM: Fix NULL pointer dereference in sysfs show/store callbacks
-Date: Sat, 10 Oct 2026 09:38:25 +0800
-Message-Id: <1791596305-153177-1-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-X-HM-Tid: 0aa123768a7a03a4kunm0642a6a3492e2
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGUtDGFYeHhoYGk9DQh
-	5JHkxWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
-	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=kNYGskwI8i6baHLpmz4TFoYov1vARZDrCkhVERdfJ66QXHhpcQY2kO2gvNtCf5ka7XtIOodP1VVG33kB3HH7R/kkdUrMcROn8fTXBtguUinNjMGxrUtrgdgj6sR7NlLY9UmFFbdGv4dU72O7NdE7jB2ZnmdOl0t6qNuiaoRXIgE=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=K5gGo+uuMA/yw6R3+RiKP53hcTnHquTmjoVQ44yzRDM=;
-	h=date:mime-version:subject:message-id:from;
+	Sat, 10 Oct 2026 09:34:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1791624869; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=EEyL3qzzRRzgHRu8VtXOT+mY5lV5YpqodTH09NGf95sKxR9GenSYOD2+y73Ze3H7SayRiWRW1snQMBlZoqLhHACfykJ8odR9m17tKsdDK3OY/davyZChaegKFWYXB9/aqoUIGQ8rxbgk2Z23j1sFjH8cx0hmjwRHH+8flXmEp6A=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1791624869; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=rZsrZLkn4mQTThBrfu1oy9TNax+FKoxpczJfFI0TXoM=; 
+	b=aQJSmdC4PhvkAPlrGWDF1PhoHN3Wty9/hhcC1cGraXSgEwrvry6C8dgapBgH7/UcjLIXtcAk+F6BuNiIUaaMlGNPq18eJLWGeuYnEv68bUt2xW1P7mrwcBrqsvMgpEVdlYo0FIw9iSiDg2BQo9qn0heOdm1HrkW0/3H0HAepNaA=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
+	dmarc=pass header.from=<michael.riesch@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1791624869;
+	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=rZsrZLkn4mQTThBrfu1oy9TNax+FKoxpczJfFI0TXoM=;
+	b=Lho6FrVpmAGzNVKlmc9iS2Bmnqvso77akvLhk/XlaY3Wkp30Lei97ycNGnQ9AngP
+	6/u37eE7a97IDBoZByzOLAO/NEd15v+dq7G75hwVY/NOPk2tQKSIc9u6Q5H0FdX77FR
+	JzZrO1NQ4cwY7fJaRUu1VPpGE6MXL+98xLtaipfU=
+Received: by smtp.zohomail.com with SMTPS id 1791624867359835.895102375287;
+	Sat, 10 Oct 2026 02:34:27 -0700 (PDT)
+Message-ID: <d0ad70a4-f797-4757-b650-55b521889a95@collabora.com>
+Date: Sat, 10 Oct 2026 11:34:23 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: RK3588 combo MIPI D-PHY (phy-rockchip-samsung-dcphy) + real
+ sensor - any known-working case?
+To: Evan O' Keeffe <evanokeeffe@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, =?UTF-8?B?5qWK5pm65oiQ?=
+ <jason98166@gmail.com>
+References: <CAJ8W1Lxmz8W2tS+HmwS6_CbDWUR9ATccUtR8+XK4hSGxjOx6gg@mail.gmail.com>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <CAJ8W1Lxmz8W2tS+HmwS6_CbDWUR9ATccUtR8+XK4hSGxjOx6gg@mail.gmail.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261009_183901_651784_2F3DAF1A 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20261010_023434_091794_168486E8 
+X-CRM114-Status: GOOD (  18.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,152 +75,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Reading or writing a link state sysfs attribute after the upstream
-bridge's pcie_link_state has been freed triggers a NULL pointer
-dereference.
+Hi Evan,
 
-This was first seen on a 6.12 based kernel by userspace stress testing a
-PCIe endpoint on an RK3588 EVB1 (Intel I350 dual-port NIC behind the
-root port). The same NULL pointer dereference exists in upstream and can
-be reproduced reliably on:
+On 10/9/26 12:24, Evan O' Keeffe wrote:
+> Hi Michael, my name is Evan O'Keeffe and I'm working on the RK3588S for a new
+> hyperspectral camera project.
+> 
+> Thanks for the rkcif/VICAP work landing in 7.2 - got us most of the way to a
+> working camera on an Orange Pi CM5 tablet board (RK3588S). Wanted to
+> check something
+> specific before I sink more time into it.
+> 
+> The board's camera connector is wired (confirmed independently from two
+> vendor BSP devicetree files) to CSI host port 0 via the Samsung combo D-PHY
+> (phy-rockchip-samsung-dcphy.c / mipidcphy0), not the simple Innosilicon D-PHY
+> path. Sensor is a Sony IMX219, 2-lane, 456MHz link frequency (912Mbps HS
+> rate).
+Thanks for your interest! Sounds like a very interesting project!
 
-  # lspci
-  00:00.0 PCI bridge: Rockchip Electronics Co., Ltd RK3588 (rev 01)
-  01:00.0 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01)
-  01:00.1 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01)
+> Everything I can check in software passes cleanly:
+> - i2c control plane confirmed solid (chip ID, MODE_SELECT, CSI_LANE_MODE,
+>   DPHY_CNTRL all read back correct via direct register reads during an
+>   active stream attempt)
+> - Sensor confirmed actually in streaming mode (MODE_SELECT=0x01) via
+>   register readback, not just assumed
+> - Full media pipeline validates and v4l2_subdev_enable_streams succeeds
+>   through the whole chain (sensor -> dw-mipi-csi2rx -> rkcif-mipi0)
+> - The DCPHY's PLL_LOCK status bit genuinely passes (real register poll in
+>   samsung_mipi_dcphy_pll_enable, not just computed math) at the exact
+>   target rate (912MHz, prediv=1, fbdiv=76)
+> - CSI2 host CONTROL register readback exactly matches what
+>   dw_mipi_csi2rx_start() computes and writes
+> 
+> But: zero interrupts ever fire on rockchip-cif's IRQ line, and ERR1/ERR2 on
+> the CSI2 host stay at 0x0 - total silence, not corrupted data. Hardware
+> itself is confirmed good (same cable/sensor works fine on the vendor BSP
+> kernel/driver stack).
+> 
+> Before I go further down the register-level rabbit hole: do you know of
+> any real-sensor test case that's actually exercised the combo-PHY path
+> (as opposed to the simple-PHY ports 2/4 that the ROCK 5B+ IMX415 testing
+> covered)? Everything I can find in current devicetrees that enables
+> mipidcphy0/1 does so with no sensor attached at all, so I can't tell if
+> this is a known gap, a subtle bring-up step I'm missing, or something
+> board-specific on my end.
+> 
+> Happy to share full register dumps / dmesg / devicetree if useful.
+>
 
-by running:
+This all has a simple cause: the support for the CSI part of the DC
+Combo PHY has not yet landed in mainline. However, there is ongoing work
+you can test [0].
 
-  echo 1 > /sys/bus/pci/devices/0000:01:00.0/remove
-  cat /sys/bus/pci/devices/0000:01:00.1/link/l1_aspm
+@Jason: Is there an upcoming v5 of your patches BTW?
 
-Unable to handle kernel NULL pointer dereference at virtual address 0000000000000030
-Mem abort info:
-  ESR = 0x0000000096000004
-  EC = 0x25: DABT (current EL), IL = 32 bits
-  SET = 0, FnV = 0
-  EA = 0, S1PTW = 0
-  FSC = 0x04: level 0 translation fault
-Data abort info:
-  ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
-  CM = 0, WnR = 0, TnD = 0, TagAccess = 0
-  GCS = 0, Overlay = 0, DirtyBit = 0
-user pgtable: 4k pages, 48-bit VAs, pgdp=0000000106959000
-[0000000000000030] pgd=0000000000000000, p4d=0000000000000000
-Internal error: Oops: 0000000096000004 [#1]  SMP
-Modules linked in:
-CPU: 3 UID: 0 PID: 646 Comm: cat Not tainted 7.3.0-rc6-next-20261007-00007-gf2fe32674ebe-dirty #134 PREEMPT(full)
-Hardware name: Rockchip RK3588 EVB1 V10 Board (DT)
-pstate: 40400009 (nZcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-pc : l1_aspm_show+0x64/0x88
-lr : dev_attr_show+0x24/0x68
-sp : ffff800086f9bbf0
-x29: ffff800086f9bbf0 x28: ffff0001036c0000 x27: 0000000000000000
-x26: 0000000000000000 x25: 000000007ffff001 x24: 0000000000000001
-x23: ffff800081781630 x22: ffff0001008d3c00 x21: ffff0001053b9000
-x20: ffff0001020880d0 x19: ffff800082441c28 x18: 0000000000000000
-x17: 0000000000000000 x16: 0000000000000000 x15: 0000000000000000
-x14: 0000000000000000 x13: 0000000000000000 x12: 00000000ffffe000
-x11: ffff0001053b9000 x10: 0000000000c00010 x9 : 0000000000000070
-x8 : 0000000000000000 x7 : 0000000000000000 x6 : 000000000000003f
-x5 : 0000000000000040 x4 : 0000000000000000 x3 : 0000000000000004
-x2 : ffff0001053b9000 x1 : ffff800082441c28 x0 : ffff0001053b9000
-Call trace:
- l1_aspm_show+0x64/0x88 (P)
- dev_attr_show+0x24/0x68
- sysfs_kf_seq_show+0xb8/0x138
- kernfs_seq_show+0x2c/0x38
- seq_read_iter+0x120/0x3e0
- kernfs_fop_read_iter+0x60/0x188
- vfs_read+0x200/0x2b8
- ksys_read+0x74/0xe8
- __arm64_sys_read+0x1c/0x28
- invoke_syscall+0x44/0xec
- el0_svc_common+0x8c/0xd8
- do_el0_svc+0x1c/0x28
- el0_svc+0x3c/0x98
- el0t_64_sync_handler+0x84/0x12c
- el0t_64_sync+0x198/0x19c
-Code: aa1f03e8 d503233f a9bf7bfd 910003fd (b9403108)
- ---[ end trace 0000000000000000 ]---
-Kernel panic - not syncing: Oops: Fatal exception
-SMP: stopping secondary CPUs
-Kernel Offset: disabled
-CPU features: 0x0,70000000,0070002a,01180a42,0800e20b
-Memory Limit: none
- ---[ end Kernel panic - not syncing: Oops: Fatal exception ]---
+Hope that helps!
 
-The sysfs attributes are created for every device below the link, but
-the link state is freed by pcie_aspm_exit_link_state() when function 0
-of the downstream component is removed. A sibling function or a sysfs
-reader still holding a reference can then call into the show/store
-callbacks while pcie_aspm_get_link() returns NULL.
+Best regards,
+Michael
 
-aspm_attr_show_common(), aspm_attr_store_common(), clkpm_show() and
-clkpm_store() all dereference the link pointer unconditionally. Add the
-missing NULL checks, mirroring pcie_aspm_enabled(), and return -ENODEV.
-
-Cc: stable@vger.kernel.org
-Fixes: 72ea91afbfb0 ("PCI/ASPM: Add sysfs attributes for controlling ASPM link states")
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
-
- drivers/pci/pcie/aspm.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
-index f8e6497..0e0ba0e6 100644
---- a/drivers/pci/pcie/aspm.c
-+++ b/drivers/pci/pcie/aspm.c
-@@ -1777,6 +1777,9 @@ static ssize_t aspm_attr_show_common(struct device *dev,
- 	struct pci_dev *pdev = to_pci_dev(dev);
- 	struct pcie_link_state *link = pcie_aspm_get_link(pdev);
- 
-+	if (!link)
-+		return -ENODEV;
-+
- 	return sysfs_emit(buf, "%d\n", (link->aspm_enabled & state) ? 1 : 0);
- }
- 
-@@ -1788,6 +1791,9 @@ static ssize_t aspm_attr_store_common(struct device *dev,
- 	struct pcie_link_state *link = pcie_aspm_get_link(pdev);
- 	bool state_enable;
- 
-+	if (!link)
-+		return -ENODEV;
-+
- 	if (kstrtobool(buf, &state_enable) < 0)
- 		return -EINVAL;
- 
-@@ -1836,6 +1842,9 @@ static ssize_t clkpm_show(struct device *dev,
- 	struct pci_dev *pdev = to_pci_dev(dev);
- 	struct pcie_link_state *link = pcie_aspm_get_link(pdev);
- 
-+	if (!link)
-+		return -ENODEV;
-+
- 	return sysfs_emit(buf, "%d\n", link->clkpm_enabled);
- }
- 
-@@ -1847,6 +1856,9 @@ static ssize_t clkpm_store(struct device *dev,
- 	struct pcie_link_state *link = pcie_aspm_get_link(pdev);
- 	bool state_enable;
- 
-+	if (!link)
-+		return -ENODEV;
-+
- 	if (kstrtobool(buf, &state_enable) < 0)
- 		return -EINVAL;
- 
--- 
-2.7.4
-
+[0]
+https://lore.kernel.org/linux-rockchip/20260821-dcphy-rx-v1-v4-0-f1797634233d@gmail.com/
 
 _______________________________________________
 Linux-rockchip mailing list
