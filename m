@@ -4,101 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCFB6CA6004
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 12:24:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9D74CA6017
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 12:29:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9B9YUKPF0xraIsWfTizlgkkI5F6dNIsAMoPcBSAViZw=; b=0f3Y7Ulob5mPxJ
-	XBGu9xwaq2OQ/ENtDELxrL3mt54OtIentNo8nc0KYpqGaPUFqzh76ztDr1pEoH8YnrEmtmcEfYBtS
-	tYvXSDuJVNnQ/oWgur9VJp4Bow0VwevHGCyXdNa/IkSQBvGUQQ8lcwQEqzgP8wubggtuAW5/ysGOX
-	EojGuLA3trr9So3r++tjJWIAgk2U/J/cYQWn17CCMOsbL5QrvL4xrVmRu1aqi98PCHCjdu4ofhes5
-	id38eI8YsR3Tiz1C43fbaidpMjlfQLp6EqjSMsnEHCDmcYboKf8+SJFTbM9w8LLuyAt4BDz1EguBH
-	iijKsEEU/LCUWyQSIoOQ==;
+	List-Owner; bh=pT0Wmt3Wy8qepP9P1hmbKDaXCFRiGa+PqNK3DciUVME=; b=R841uy3ayX8p+i
+	NCJyJ92p70IuAsI1R7TellvssGAEqgeY/j+GbMD1axRv7J5o+D4Lz8oFPaEBFh9s3+dtpnvEJsSFL
+	MbOpe/dhy1HBIlWDQKN8u8veuGv3Rh6+4+OU1THd5F0cOcKT2ovyfwBx5ikVaMD0TJSJPNitTp+4K
+	W7TYzd4hYSx1ORqqAwS4Nfkyv5qPrp3izpEFTwq9qxDh+W/atak6a8o25FHvpr1E95fnwRs9LYkrh
+	36aW2pZ9Zp7byNZNX4H14x5OLpoJrYeOUAuV8hcfn83JD2puhDMxW7Qj0Aw2eK5ObkxioG6VY0a07
+	uVEiiLaxrYq11MD/Tv8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFW7V-000000080x6-4B5S;
-	Sat, 10 Oct 2026 12:24:09 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1xFWCs-000000081Y7-2ujL;
+	Sat, 10 Oct 2026 12:29:42 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFW7Q-000000080vf-3AJO;
-	Sat, 10 Oct 2026 12:24:08 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20261010122357euoutp02bf04a99341e5bbc43473ffce11d38391~dKpMJ5mLK1277212772euoutp02E;
-	Sat, 10 Oct 2026 12:23:57 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20261010122357euoutp02bf04a99341e5bbc43473ffce11d38391~dKpMJ5mLK1277212772euoutp02E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1791635037;
-	bh=W/evXz/fk2nDwkRg/LgD/8BHntxXciqgyux6ksl533s=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=WBqwhh+vwDnb1ddbWTUFdAtvh6PQvDDQRRNk1HdcMIi3YL0IpQaH9EngEeVFTNiS2
-	 zAYBnlByApQHLgVml8kj8M6k9C1EeX0he4lF7JmuWaeUwc9WRCYjLFDgXMMFHKWIh+
-	 8uGWecAQfgqPR4OXwT5HvF14YaSXEiRzHLkPV2iY=
-Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20261010122357eucas1p1892ef8aa961af3208f81f5356316372e~dKpL1ApHV2372723727eucas1p1W;
-	Sat, 10 Oct 2026 12:23:57 +0000 (GMT)
-Received: from [192.168.1.44] (unknown [106.210.136.40]) by
-	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20261010122355eusmtip2ad5884c70b787c8d696f7ac9805aa691~dKpKCi3Gt0696206962eusmtip2U;
-	Sat, 10 Oct 2026 12:23:55 +0000 (GMT)
-Message-ID: <e0c42946-ed2a-41cc-9f2a-1bb089e02085@samsung.com>
-Date: Sat, 10 Oct 2026 14:23:55 +0200
+	id 1xFWCq-000000081XV-0fsE
+	for linux-rockchip@lists.infradead.org;
+	Sat, 10 Oct 2026 12:29:41 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-6a5d24ae3ddso83882a12.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 10 Oct 2026 05:29:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791635378; cv=none;
+        d=google.com; s=arc-20260327;
+        b=b3ix+dyLWj13tV9Q/Y6+LzFxBRbOwJbJxdxqqqO53EMr0UiM4s4Rwu1Gph5u000yjM
+         sS5UVeliRPbSVTtY7rs1V8hL7E8UcASNkn23+x9hPxEUGNC2HTwp9O87W8BLGZv6Bd+d
+         0F3WzfWTGTac8fkMcv/KLxVpGUxEqs1QX84if09abQhugb0wAJatIiQgG9Dmnv6VddX8
+         Sy+2YakPDJKl8yoyYOwqdwYtsAanKxsDDIZHeqCYc7lMthQPS1kAfwkH/FS5rHGWifD6
+         6A6AC3UJEFhPpTfHolgIxlQUnF42znV4MXslksWidWlSpVgJCItfD1aiJJGYkR9aJrp5
+         cbIA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=+8VTeX55HVqAT9opVeVIhA5Fbbeg21BZnaBNdhVu5Eg=;
+        fh=q9AYNxeV1Q6ow0D+v4SDiBAzMdrJK9fO9cHNRU/GPjE=;
+        b=awMeEpjv6Gzsr5acwEZir+bOs0vCEUnY27FrbRoPMJcrJpXsWsD+r5lKhX01uRY0E9
+         2PIHKlQN+hWskfq9SrfMOSgT0wWJnTiF6XqIaqttzIeYWxoZZPO4jeAbnhgEk1FRcUai
+         9NCDnLewFIiprG1n4ggnaY8OUwpdDUquJDiWQoS7DGv2Qj7kYMhN9fPh5RuKuS7k76To
+         8tdtp1Y2uVgSWOUJPwEb26jGTP+A+DTAVOSU23FwCqCp8K5kYaCJfBP/qtoyGS34Qsce
+         g/tTMSFlhvUwCTwGWPCUUz8OrwgRBbWgVinTHuZzMJ6bmD/LUXzbLnzkAVuOj/nTdjs/
+         REyw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791635378; x=1792240178; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=+8VTeX55HVqAT9opVeVIhA5Fbbeg21BZnaBNdhVu5Eg=;
+        b=hqrQD6e9VcmVBlqHhSNnUUh/F62RrrJt2AnO8EwMDszPVAyDaUFSrihNbHfDljS5eX
+         hhG+uoeOI48SlrqPGz5/T1o+1ig3w4YpU3THwedPLXprn1yRiSMxgcjnKDNFsg0lnX2y
+         F1aN0Hb7q0eIb8A9tkbtS2dvR6zcW62BzLFyrNLUeLys/wgcvuiMW5BYGqHmpqLJrwbF
+         OtXyG822w0foYs4UB0kydQJ51ODhS43LjTNReoklkrVPk69mJAUAnZ9CLYRjCbDyEBPk
+         czr8JkMVdHqsTuTJOPNOx9iRFh+LzJrGKaZJWwi1bIHSp4wWcVfQpFUZVdAKaNtsVmK9
+         pk3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791635378; x=1792240178;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=+8VTeX55HVqAT9opVeVIhA5Fbbeg21BZnaBNdhVu5Eg=;
+        b=fnnF42a6t8fGRiZIpLsyU1H3pwRZiv2p6Aa1rGksouvr9wQ9ml+QzRQp3uwpU5cbgr
+         qNcYQDWb9YkW8X/ZmofKDHiLKBpAo6C9cCtOTOObqjnHUYEaQiPTfBcbtEaqWCIOkbnW
+         x0gx7jVysF3V/weYY/Yhia7iv+mH+uc4sLNkvj0PEVdcrx1Dw0OqBKME7zJsFcwbqKJ1
+         DLGLLz3T0epzm3NuXB1ToUIHcEf7TmElG3rBhwyKXqgjETW3z5aqA7GKu9IOxwZp0P7h
+         dMoRWSuNZfiuP7hxuvjpyp3cQryiXCs+idk3Cfngz4Z8qGCb8Kov0kJW0AYuuXcoRx+K
+         vgeg==
+X-Forwarded-Encrypted: i=1; AKwUvBw/3aEXPseq8pIR3WPYpt1RL7GUcxv+lQK4KI5rroxfHNvhWV4Agktj76kDqQOrgPM2+nx2tQvaUqoZCaMCzQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIjunaPtUVLBOxn7TetIGrVJ3poyWXJrrK6OYMYGHmqv8VvpmN7
+	Fd20AxLwkyCRkbhv8EuY8a9ukGb4sGl92GZD5pMg4a5+s/bvN2TapskrU3eT/FNYK4X0+T2h0zp
+	bnq/4ffD/AkLgyhYraPHf6KoS52gcAgc=
+X-Gm-Gg: AYBFou1V1QRC3PfXLR7eIu3+ysMmeXpWqKsO7GB+8odPyI+EqDXwKhv+AKEkqap+/cb
+	nGnbkHotLDizIIls2uYzRiRz52mNI6J9KhewjSUMIumcu2kOPZRC44w7d2bcL/RfGmnYFMf1q2c
+	vTbq6/blB2kwOA8T5YQjf7bOeM5JHlQ7d8bS8QJPMZeL+BJRuqjRfF7TodplbRNBoxuJYgL6zVq
+	bn4wV9owo1ITRGs6BZ8hUbvF9B263IG6AopdK2bLzLEOnca1y9xYCo9F6iJU+ZjlZiRZGdDcWj3
+	E04cNj83ng/y0lyuQsEcdd6YLpb5tUNsoBaC4mXsFX4Q75X4VPCECeo=
+X-Received: by 2002:a05:6402:510f:b0:6ac:c1dc:fa1d with SMTP id
+ 4fb4d7f45d1cf-6b17c161b69mr4459541a12.0.1791635377450; Sat, 10 Oct 2026
+ 05:29:37 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 01/20] dt-bindings: phy: Add
- starfive,jh7110-inno-hdmi-phy
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
-	<neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
-	Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andrzej
-	Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, Laurent
-	Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
-	<jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
-	<luca.ceresoli@bootlin.com>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>, Andy
-	Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Emil
-	Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
-	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
-	<sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Paul Walmsley
-	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
-	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
-	Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>, Jerome
-	Brunet <jbrunet+clk@baylibre.com>, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, mfd@lists.linux.dev,
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, Marek
-	Szyprowski <m.szyprowski@samsung.com>, Maud Spierings
-	<maud_spierings@murena.io>, Graham Markall <hello@big-grey.co.uk>, Icenowy
-	Zheng <zhengxingda@iscas.ac.cn>, Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Joshua Peisach <jpeisach@ubuntu.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
-	<u.kleine-koenig@baylibre.com>
-Content-Language: en-US
-From: Michal Wilczynski <m.wilczynski@samsung.com>
-In-Reply-To: <ac7b82e6-22ea-465c-8477-bbe0bd9c8c27@kernel.org>
-X-CMS-MailID: 20261010122357eucas1p1892ef8aa961af3208f81f5356316372e
-X-Msg-Generator: CA
-X-RootMTR: 20260915153214eucas1p2b548f3236ef98fb0cbf320e397420125
-X-EPHeader: CA
-X-CMS-RootMailID: 20260915153214eucas1p2b548f3236ef98fb0cbf320e397420125
-References: <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
-	<CGME20260915153214eucas1p2b548f3236ef98fb0cbf320e397420125@eucas1p2.samsung.com>
-	<20260915-jh7110-clean-send-v4-1-f0e4fd6f2cc8@samsung.com>
-	<20260917-mutant-chamois-of-competence-46ca77@quoll>
-	<1a1a9b49-430b-4218-b27d-e133d488e8d9@samsung.com>
-	<6cf9e611-bfc5-407b-8132-bd328f8b61fc@kernel.org>
-	<eaba2fa9-a1ce-4dac-9bd6-e0b3a3dd01ef@samsung.com>
-	<3ee91c92-4e3a-4bac-85cf-923f5d77ceff@kernel.org>
-	<3c5c15d9-ea7e-49a2-adae-ec3e3c72594b@samsung.com>
-	<ac7b82e6-22ea-465c-8477-bbe0bd9c8c27@kernel.org>
+References: <CAJ8W1Lxmz8W2tS+HmwS6_CbDWUR9ATccUtR8+XK4hSGxjOx6gg@mail.gmail.com>
+ <d0ad70a4-f797-4757-b650-55b521889a95@collabora.com>
+In-Reply-To: <d0ad70a4-f797-4757-b650-55b521889a95@collabora.com>
+From: =?UTF-8?B?5qWK5pm65oiQ?= <jason98166@gmail.com>
+Date: Sat, 10 Oct 2026 20:31:06 +0800
+X-Gm-Features: AclHuK-IPHdAvK6sqjbc38x9Pduyne1K6iFz4SxTEEOTK-1KGJAqyhJfkv-7xAA
+Message-ID: <CAPwA33+xXOuTi9tZKN2mwD9NxeWX8EvZBpDSDzo4=prNfKQLwA@mail.gmail.com>
+Subject: Re: RK3588 combo MIPI D-PHY (phy-rockchip-samsung-dcphy) + real
+ sensor - any known-working case?
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: "Evan O' Keeffe" <evanokeeffe@gmail.com>, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_052405_396423_8D215D84 
-X-CRM114-Status: GOOD (  31.48  )
+X-CRM114-CacheID: sfid-20261010_052940_215499_C73BFA2E 
+X-CRM114-Status: UNSURE (   6.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,168 +114,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 10/4/26 09:15, Krzysztof Kozlowski wrote:
-> On 04/10/2026 00:35, Michal Wilczynski wrote:
->>
->>
->> On 10/3/26 22:45, Krzysztof Kozlowski wrote:
->>> On 03/10/2026 17:36, Michal Wilczynski wrote:
->>>>
->>>>
->>>> On 9/30/26 13:01, Krzysztof Kozlowski wrote:
->>>>> On 25/09/2026 23:05, Michal Wilczynski wrote:
->>>>>>>> +  clocks:
->>>>>>>> +    maxItems: 1
->>>>>>>> +    description: Reference oscillator.
->>>>>>>
->>>>>>> This barely counts as a resource, so usual question: no resources here?
->>>>>>> no MMIO? Even the user of this phy is the block itself.
->>>>>>>
->>>>>>> This makes me wonder if this should be a device node in the first place
->>>>>>> (instead folded into the parent).
->>>>>>
->>>>>> The PHY has no reg because the reg is shared with the controller and
->>>>>> owned by the parent - patch 9 lets the bridge take its regmap from
->>>>>> there.
->>>>>>
->>>>>> The user of the PHY is not only the block itself. It is the pixel clock
->>>>>> provider for the whole display subsystem, voutcrg takes hdmitx0_pixelclk
->>>>>> as the parent of its DC8200 pixel MUXes, and while HDMI output is active
->>>>>> it is the only intended source for that clock. The parent has to be
->>>>>> assigned explicitly so the general PLL does not end up driving the pixel
->>>>>> clock, and so a DSI user does not reach the HDMI PHY clock generator.
->>>>>>
->>>>>> So it has to be its own node. The HDMI block has two independent
->>>>>
->>>>> I do not see the logic which lead to this conclusion. Pixel clock
->>>>> provider, so a clock controller, cannot be a user of a phy. Clock
->>>>> controller does not have a physical layer.
->>>>
->>>> Sorry I think the wording was not perfect. I meant the PHY node is a
->>>> pixel clock provider. voutcrg consumes a clock not a PHY.
->>>>
->>>> voutcrg: clock-controller@295c0000 {
->>>>          clocks = <&syscrg ...>, <&hdmi_phy>;
->>>>          clock-names = ...,"hdmitx0_pixelclk";
->>>> };
->>>>
->>>> The consumer of the PHY is only the hdmi controller.
->>>>
->>>> What matters for the node layout is where that clock goes. voutcrg is the
->>>> SoC display clock controller - it is not part of the HDMI block:
->>>>
->>>> hdmi_phy -- pixel clock -> voutcrg
->>>>                               |
->>>>                               - pclk/mclk/bclk -> hdmi_controller
->>>>                               - pix0/pix1 -> dc8200
->>>>
->>>> hdmi_phy and hdmi_controller are the same register block with one reg
->>>> owned by the parent. So if that block is described as a single node:
->>>>
->>>> hdmi_node - pixel clock -> voutcrg
->>>>      ^                          |
->>>>      --- pclk/mclk/bclk --------
->>>>
->>>> the node provides a clock to voutcrg and consumes three clocks from
->>>> voutcrg. That is a cycle in the device tree description.
->>>
->>> There is no cycle. Internal signals to the block are not represented in DT.
->>>
->>> What you have is a driver problem and you create some sort of DT
->>> structure to solve that. DT purpose is NOT to solve your driver
->>> dependencies or circular connections.
->>
->> The structure is not something I added. The voutcrg binding has required
->> an input clock named hdmitx0_pixelclk since it was merged in 2023
->> a097a5ec14df ("dt-bindings: clock: Add StarFive JH7110 Video-Output
->> clock and reset generator") and this series does not touch that file:
->>
->> Documentation/devicetree/bindings/clock/starfive,jh7110-voutcrg.yaml
->>        - const: hdmitx0_pixelclk
->>
->> Mainline satisfies it with a placeholder, because so far nothing provided the
->> real clock:
->>
->> hdmitx0_pixelclk: hdmitx0-pixel-clock {
->>             compatible = "fixed-clock";                                                                          
->>             clock-output-names = "hdmitx0_pixelclk";
->>             #clock-cells = <0>;
->> };
->>
->> All this series does is point that existing input at the device that actually
->> generates it.
->>
->> TRM [1] table 5-3  on page 529 lists the display CRG's input clocks. Most come from
->> dom_vout_top, but three come from IP blocks inside the subsystem:
->>
->> clk_hdmitx0_pixelclk        297 MHz   u0_hdmi_tx.clk_pix
->> clk_mipitx_dphy_rxesc        10 MHz   u0_mipitx_dphy.clk_rxesc
->> clk_mipitx_dphy_txbytehs    297 MHz   u0_mipitx_dphy.clk_txbytehs
->>
->> and on page 530 the CRG offers clk_hdmitx0_pixelclk as Source1 for:
->>
->> u0_dc8200.clk_pix0      Source0 clk_dc8200_pix0  Source1 clk_hdmitx0_pixelclk
->> u0_dc8200.clk_pix1      Source0 clk_dc8200_pix0  Source1 clk_hdmitx0_pixelclk
->> u0_cdns_dsiTx.clk_dpi   Source0 clk_dc8200_pix0  Source1 clk_hdmitx0_pixelclk
->>
->> The DC8200 and the DSI TX are separate devices, so the pixel clock
->> crosses two block boundaries to reach them.
->>
->> That is also why the DT has to be able to name it. Those MUXes have two
->> parents and the selection is made in DT:
->>
->> &dc8200 {
->>           assigned-clocks = <&voutcrg JH7110_VOUTCLK_DC8200_PIX0>, ...;
->>           assigned-clock-parents = <&hdmi_phy>, <&hdmi_phy>;
->> };
->>
->> and voutcrg takes it as an input clock because that is what the hardware
->> does. If the PHY is folded into the HDMI node, that input phandle points at
->> a node which also consumes pclk/mclk/bclk from voutcrg. That is where the
->> cycle comes from - the hardware topology not the driver.
-> 
-> Which is perfectly "fine" - present in many other SoCs as well. This is
-> not different and your arguments are insufficient to give here
-> exceptions. Why? Because again you use as an argument a Linux driver
-> problem (cyclic dependency). Basically to solve Linux problem you
-> introduce new empty nodes.
-> 
-> Best regards,
-> Krzysztof
-> 
-
-OK probe ordering is a Linux concern and can't be used it to justify the
-binding.
-
-We spoke briefly about this on Monday and I came away thinking the node
-is acceptable as long as it is justified by what it describes rather
-than by probe order. Is that the right reading of what you meant?
-
-On that basis the PHY node:
-- is a clock provider, and voutcrg consumes that clock and
-  routes it on to the DC8200 pixel MUXes and the DSI TX
-- is a phy provider for the controller
-- takes a different input clock than the controller - xin24m, against
-  pclk/mclk/bclk from voutcrg
-- is separate IP - the same Innosilicon PHY that RK3328 instantiates at its
-  own address (phy@ff430000), which here shares a register window with the
-  controller
-
-The reg is the only thing it does not have of its own, and that is shared
-with the controller and owned by the parent.
-
-Best regards,
--- 
-Michal Wilczynski <m.wilczynski@samsung.com>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTWljaGFlbCwKCj4gQEphc29uOiBJcyB0aGVyZSBhbiB1cGNvbWluZyB2NSBvZiB5b3VyIHBh
+dGNoZXMgQlRXPwoKVGhlIGRpc2N1c3Npb24gb24gbXkgdjQgcGF0Y2ggc2VyaWVzIGlzIGN1cnJl
+bnRseSBwZW5kaW5nIGFuZCB3YWl0aW5nCmZvciBteSBkZXZpY2UgdHJlZSAgcGF0Y2guIEnigJl2
+ZSBhbHJlYWR5IHNlbnQgb3V0IGFuIFJGQyBwYXRjaCBbMF0gZm9yCml0LCBidXQgaGF2ZW4ndCBy
+ZWNlaXZlZCBhbnkgZmVlZGJhY2sgeWV0LgoKSGkgRXZhbiwKCk15IHY0IHNlcmllcyB3aXRoIHRo
+ZSBkZXZpY2UgdHJlZSBwYXRjaCBbMF0gd2FzIGFsc28gdGVzdGVkIG9uIFJLMzU4OFMKKyBJTVgy
+MTkuIEhvcGUgdGhpcyBoZWxwcyEKCkJlc3QgcmVnYXJkcywKSmFzb24KClswXQpodHRwczovL2xv
+cmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC8yMDI2MDkwNDA3NTUzNC41NzQwMzctMS1qYXNv
+bjk4MTY2QGdtYWlsLmNvbS8KCgo+IEBKYXNvbjogSXMgdGhlcmUgYW4gdXBjb21pbmcgdjUgb2Yg
+eW91ciBwYXRjaGVzIEJUVz8KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
