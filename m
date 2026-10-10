@@ -4,56 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77A84CA9EBE
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 10:00:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E799CA9EC0
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 11:14:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=I9suqdBxsDw7za6YNdmiOS+I485fwLrFJxD4at0kO7g=; b=19FC/NiCsGsx5T
-	oaqzRiz+XdRr+gV6RI87neUGM/W4FpaKWETJuStbYFQe3ZxmuLwqWclJcNcrzn/l6ow3PdAi8u7Hr
-	ToTbMSWIU9OPokhDCLgLJGCo9w7kmGTzrSt3RgzT6Q5qoVEWjBIm0565auoZq9hi2TiJ/C7rf1G9T
-	eDL97fqynGIkgu2HLNhds6AHHfy+nUBh0p44ftFWZU2ZCCh5r6XVX4IwW/yZNY3pgFm2/ybSvH8G/
-	SmsD8wqDTmfEkxLcwjXy8BFhetYtyDEfXXb9Qc8hjhdb8eqvwa9nEB6HuNsF/INHkIqkcg/EXZYse
-	5L8dkNJZA2+7tpDxDtsQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/FDWEeektxuUy4hsxEB6HpYbKw40MNbtEEJxnNWJjjI=; b=v6uei4/+t1wpjF
+	hM4+lA13IpUNgFnd5IRwcecNFbpOHunQpZRHM5wx26VmZPdQMKP3bFIA+9ebPp3t6FLdhQKNbTcP0
+	IiXuj0g+TeHm2Eqfew6CCsyNLJV/qUsGeNgW87/WIZrG2pX2HaTiZIT7svRVbAr9u+XgAKz8Y7L/T
+	NzoXI18EP3H0j5gA1VoxB51S22O5nIR+7rD7p2+D/lWC6ZIMZsWCNO7CgzQoB7CluGMVvy7G/BfCb
+	zAmMI+xj51i4P7FfYZpIojCWfxiy+MvByHmUK8/jRd7wS7+VB9Z/t34HTUZ9wjmBRfu2M8XIn8eA8
+	BgzVTao3zFg0uUGkQ0WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFTsV-00000007oU2-3e1G;
-	Sat, 10 Oct 2026 10:00:31 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1xFV29-00000007tnu-393p;
+	Sat, 10 Oct 2026 11:14:33 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFTsQ-00000007oT7-1gsY;
-	Sat, 10 Oct 2026 10:00:29 +0000
-Received: from Vostro-3710.. (unknown [14.220.232.127])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 508f731cf;
-	Sat, 10 Oct 2026 18:00:06 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Chukun Pan <amadeus@jmu.edu.cn>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
+	id 1xFV27-00000007tmf-1hKH;
+	Sat, 10 Oct 2026 11:14:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=2QMIZs/oc9yRzCjq2BhYPtU9ekIc1h07F+4lA6c/ZXg=; b=w0wmdhV4TiNxrVczb8Yn1jK5Uq
+	z9NbpQm6+pdQpgWIGADElquT73oCjhiP0ECtJupz4vup0N0dog3gNHt1JVe7xCJ+AqcwoTiIS+QTS
+	p2fcJ1jT4uGfSW/N4wa6ap7IRA7lj5CxacLO4ezT8RPmJGlvETJY8D6HjD2Vy/1q8HN2xJeoMCzwn
+	vjYVefeCgpiWLKrn2k39AvtMtmSapJafXgl3NqPxVe44jRAxj3Fhh7/ciK0DNyfVkugt4XWA1w0lm
+	suTZDgdjnI5CaL2RJ7CBpGGrNJP2ymO21UrEoD07TtolSW96y/6w2+MHwQBrjM3LHPPqW5zhrobm2
+	jD7Oihgg==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH 1/1] arm64: dts: rockchip: remove FRL GPIO for 100ASK DshanPi A1
-Date: Sat, 10 Oct 2026 18:00:00 +0800
-Message-Id: <20261010100000.2236931-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.34.1
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: add pcie30phy data-lanes on rk3588 coolpi-cm5-evb
+Date: Sat, 10 Oct 2026 13:14:11 +0200
+Message-ID: <179163084344.3536058.1908487872830452514.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <1791536997-182608-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1791536997-182608-1-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0aa125416a5a03a2kunmbe14e65c40c299
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaSUMfVh5PH0pJGRhKSkpJGVYeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKT1VJSUtVSUhJVUpJTFlXWRYaDxIVHRRZQVlLVUtVS1VLWQ
-	Y+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_030026_641912_A39C09AC 
-X-CRM114-Status: UNSURE (   7.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261010_041431_495244_922DB421 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,47 +66,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-According to the schematic [1], the 100ASK DshanPi A1 board does not
-have an hdmi_tx_on_h pin, so removed the non-existent FRL GPIO.
 
-[1] https://dl.100ask.net/Hardware/MPU/RK3576-DshanPi-A1/DshanPi-A1-RK3576-SCH_V1.1.pdf
+On Fri, 09 Oct 2026 17:09:57 +0800, Shawn Lin wrote:
+> Both pcie3x2 (PHY port1) and pcie3x4 (PHY port0) are enabled, but
+> pcie30phy had no data-lanes. Without it the PHY defaults to aggregation
+> mode and assigns all four lanes to port0, leaving pcie3x2 without lanes
+> and unable to establish a link. Set data-lanes = <1 1 2 2> to split the
+> lanes as 2+2 between the two controllers.
+> 
+> 
+> [...]
 
-Fixes: 2cd97880fbc4 ("arm64: dts: rockchip: Add frl-enable-gpios to rk3576 boards")
-Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
----
- .../arm64/boot/dts/rockchip/rk3576-100ask-dshanpi-a1.dts | 9 ---------
- 1 file changed, 9 deletions(-)
+Applied, thanks!
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-100ask-dshanpi-a1.dts b/arch/arm64/boot/dts/rockchip/rk3576-100ask-dshanpi-a1.dts
-index 05fb4a7f9a16..41c90414e898 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-100ask-dshanpi-a1.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-100ask-dshanpi-a1.dts
-@@ -278,9 +278,6 @@ &gpu {
- };
- 
- &hdmi {
--	frl-enable-gpios = <&gpio2 RK_PB0 GPIO_ACTIVE_LOW>;
--	pinctrl-0 = <&hdmi_txm0_pins &hdmi_tx_scl &hdmi_tx_sda &hdmi_tx_on_h>;
--	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-@@ -741,12 +738,6 @@ hp_det: hp-det {
- 		};
- 	};
- 
--	hdmi {
--		hdmi_tx_on_h: hdmi-tx-on-h {
--			rockchip,pins = <2 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
--		};
--	};
--
- 	pcie {
- 		pcie_reset: pcie-reset {
- 			rockchip,pins = <1 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
+[1/1] arm64: dts: rockchip: add pcie30phy data-lanes on rk3588 coolpi-cm5-evb
+      commit: 5f48abc96182700a006b25b9bfbf80c19455760a
+
+Best regards,
 -- 
-2.34.1
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
