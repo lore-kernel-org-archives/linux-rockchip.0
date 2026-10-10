@@ -4,74 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A285CA9EC5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 13:22:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A59A4CA9EBE
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 13:24:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZBV4IgjUh0rnW5hJi7lpwxrodIeP1keK3YFyYZEyv38=; b=UAt0VKSSczyj0a
-	j3dG6U2r7mLpulkwqtyqmn5mofvqrcCpGJNa/7fPP4dUyCdbFtk529SbY9rEpeIZkOKWSwMJBNcga
-	vTq6YInaue7A6P6WPbfF7ROdqqN3kh5k7gdwgxzxf1Gy5S2sU+steLQiUN0vwxWg6GHTpyrKdAqUP
-	Vn9RlbP/dVkDSaUKdOi32GP8tC/459dDg4Qwv3GTNxZTuZLTlyowzL1n2bdaeAUU+CGdc8yI5DcVh
-	UmbSzO+9wOwJULoNQCw4I4WtKXp0CtpYvC6zgFSq/JoQOkztGUQnx+yUgSccbAa8+bNaQQ9SAk5Zj
-	MfFZI7N6y88hHybJSAzQ==;
+	List-Owner; bh=bt+/tUNDYFgxqv5A8LPqRl7MrWmMwfobihNZiA2CdhM=; b=pO6ezo50ohZtTY
+	rEfmpOGT9rIS/sqhY8P0fmFb9PV3Q5AW/vqwuDyWCv2JfWD8WdtfqL0e1D1YDTM+soBgszloDsL/g
+	HdRz29tZknDidVdL79Hf49eXBr8y5LkWS4ArI50PQLqa1bC8jS5KlE7vv3qcNlF5sGtKDdD2oHFn/
+	JuI+VlRToXzCcCDWVPcJMaY7ywzR7uIxEIm1npVFuBOOsuXGRClEmeUFKnpDCu63Rs2ngra55ZfzX
+	j+p9oOw2XYOYYspICt+LRBlV8ki4OYWAQHKFmzZtEjsdN+uPqovOtVl/oo8FEFrx7ThNWbepTxljD
+	fY5g0qtLskkUHBWBRQXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFX1g-000000086DG-43Wr;
-	Sat, 10 Oct 2026 13:22:12 +0000
+	id 1xFX3g-000000086aH-0rxh;
+	Sat, 10 Oct 2026 13:24:16 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFX1e-000000086CE-03C3;
-	Sat, 10 Oct 2026 13:22:11 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1791638521; cv=none; 
+	id 1xFX3c-000000086ZN-2gKs
+	for linux-rockchip@lists.infradead.org;
+	Sat, 10 Oct 2026 13:24:13 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1791638651; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=dD2gFjlbKNoAl8LTV75sK9VXGb7c7D2nja/IdlD13MvBaNvNn4+3enQUGEPSn1bVUpnv4GH5D006AzpsHyb6NIqR1eCxNqvngLW+xust6QHTsdJ2QaQdBsZidF3RyKmDzxMO1MlfBrPvb8iCrnR9qVANLFCGDc78+0ed154BUMk=
+	b=B5Jjy8MbRyGtHDgV3g3vBxLsyqS5aErY/GYlbv7A/V+9fV8yetA5DbnUGJud7URDfQdKOZN0O3jRqqJGthTue4OdXWLTji3Ub1/pkVXzVGsg8WHIjmsNLYMrVsnphf2A8gvo+fi4dqFgx0epU+J81npXHpvNOkD8LyPl+XdIrok=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1791638521; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=kcVMv81811zZuAv2FuonuKSFUIjIBAqY9YBibiFltS4=; 
-	b=XyjSZBsJxu0e6lteqZ47727sNylQS80cuJcxtpX9oUqsmo+pAfboKegDpMlyZ2eXcM9nB590ERRPgGNgQ40vx+n2QPIb8rX6/9WnplcC/vLB8KP4i0P4210hjdhDs9qEQjls4LX+RTxfrDjfFIhdr7+4G6ZlFzWAYwbwMXUrM74=
+	t=1791638651; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=gb7AaUWUIXpySxS8771qcQwcMa6ieF3yokmH3F3IHoU=; 
+	b=XJKzbmGzuhsBqbvCVsv3iCcX6MyG3LU+17pTgfkSkDUEjj4pOsQnwC/pgP0PviPyDlN2M1QChiqAfRI4YpEAkHWuxoNMWcfxwV1LazwKPocP/n35VJypWLm3WCCOVxhH/f1qtSgwH2GD2gPHX9w5xOo2wqCk1XGfn/zCJufjr1I=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
 	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1791638521;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1791638651;
 	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
 	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=kcVMv81811zZuAv2FuonuKSFUIjIBAqY9YBibiFltS4=;
-	b=SFlalIgSeP3zaMP6VPGO7p4PDiu3c6Eqoa8nkuvLg9ifm2r7sLMsqkKF/zIul6Cb
-	C7NfoS9w5Gd+EHYW16ky0t8G1IdtnJPu1vAakoNQtDI5TxuecoHB7n7C4mz94aGNLse
-	rPlpxc24X2XblYNlB4ms6gA6JM4iL/alk6pPR+Gs=
-Received: by smtp.zohomail.com with SMTPS id 1791638520514317.5735096552768;
-	Sat, 10 Oct 2026 06:22:00 -0700 (PDT)
-Message-ID: <c746c60f-cc12-4827-bef2-1d1d6f605d0b@collabora.com>
-Date: Sat, 10 Oct 2026 15:21:54 +0200
+	bh=gb7AaUWUIXpySxS8771qcQwcMa6ieF3yokmH3F3IHoU=;
+	b=Pmcw7ECpli/Zl/4Y1oIj0behrEOwIaeGSfLQgdYTXKQUyBx9sDtxpukOGZDWOB4p
+	T8LyyRmMVRZ6UDoHbbyCe01cOkOeQuKBPWQeEL4RDZR6qavbac7p+caeQLfEpBiDlA9
+	1sFFiBydXiAmhW3y3XcjftrddPrKnZ/r4tJOaB7k=
+Received: by smtp.zohomail.com with SMTPS id 1791638650576673.9286419400119;
+	Sat, 10 Oct 2026 06:24:10 -0700 (PDT)
+Message-ID: <8af98508-ab30-4735-8aae-8c10d3bd1161@collabora.com>
+Date: Sat, 10 Oct 2026 15:24:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 5/7] phy: rockchip-samsung-dcphy: Factor the
- transmitter teardown into a helper
-To: jason98166@gmail.com, Vinod Koul <vkoul@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Guochun Huang <hero.huang@rock-chips.com>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260821-dcphy-rx-v1-v4-0-f1797634233d@gmail.com>
- <20260821-dcphy-rx-v1-v4-5-f1797634233d@gmail.com>
+Subject: Re: RK3588 combo MIPI D-PHY (phy-rockchip-samsung-dcphy) + real
+ sensor - any known-working case?
+To: =?UTF-8?B?5qWK5pm65oiQ?= <jason98166@gmail.com>
+Cc: Evan O' Keeffe <evanokeeffe@gmail.com>, linux-rockchip@lists.infradead.org
+References: <CAJ8W1Lxmz8W2tS+HmwS6_CbDWUR9ATccUtR8+XK4hSGxjOx6gg@mail.gmail.com>
+ <d0ad70a4-f797-4757-b650-55b521889a95@collabora.com>
+ <CAPwA33+xXOuTi9tZKN2mwD9NxeWX8EvZBpDSDzo4=prNfKQLwA@mail.gmail.com>
 Content-Language: en-US
 From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260821-dcphy-rx-v1-v4-5-f1797634233d@gmail.com>
+In-Reply-To: <CAPwA33+xXOuTi9tZKN2mwD9NxeWX8EvZBpDSDzo4=prNfKQLwA@mail.gmail.com>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_062210_128199_94A74AC6 
-X-CRM114-Status: GOOD (  19.65  )
+X-CRM114-CacheID: sfid-20261010_062412_743477_0471A680 
+X-CRM114-Status: GOOD (  13.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,100 +76,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jason,
-
-Thank you for your work!
-
-On 8/21/26 14:02, Jason Yang via B4 Relay wrote:
-> From: Jason Yang <jason98166@gmail.com>
-> 
-> The transmitter's power-on path is in samsung_mipi_dphy_tx_power_on(),
-> but the power_off callback still does the teardown itself.
-> 
-> Move the teardown into samsung_mipi_dphy_tx_power_off(), so that
-> power-on and power-off are a matching pair. Both callbacks then have a
-> type switch whose arms are plain returns. Turn each into an early guard
-> for the not yet supported C-PHY and drop the unreachable trailing
-> return.
-> 
-> No functional change intended.
-> 
-> Signed-off-by: Jason Yang <jason98166@gmail.com>
-> ---
->  drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 31 ++++++++++-------------
->  1 file changed, 14 insertions(+), 17 deletions(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-> index f58907dec733..5d9d44a1d6a2 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-> @@ -1361,37 +1361,34 @@ static int samsung_mipi_dphy_tx_power_on(struct samsung_mipi_dcphy *samsung)
->  	return 0;
->  }
->  
-> +static int samsung_mipi_dphy_tx_power_off(struct samsung_mipi_dcphy *samsung)
-> +{
-> +	samsung_mipi_dphy_tx_lane_disable(samsung);
-> +	samsung_mipi_dcphy_pll_disable(samsung);
-> +
-> +	return 0;
-> +}
-> +
->  static int samsung_mipi_dcphy_tx_power_on(struct phy *phy)
->  {
->  	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
->  
-> -	switch (samsung->type) {
-> -	case PHY_TYPE_DPHY:
-> -		return samsung_mipi_dphy_tx_power_on(samsung);
-> -	default:
-> -		/* CPHY part to be implemented later */
-> +	/* CPHY part to be implemented later */
-> +	if (samsung->type != PHY_TYPE_DPHY)
->  		return -EOPNOTSUPP;
-> -	}
-
-What is the value of doing that? Personally I'd leave the switch.
-
-Best regards,
-Michael
-
->  
-> -	return 0;
-> +	return samsung_mipi_dphy_tx_power_on(samsung);
->  }
->  
->  static int samsung_mipi_dcphy_tx_power_off(struct phy *phy)
->  {
->  	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
->  
-> -	switch (samsung->type) {
-> -	case PHY_TYPE_DPHY:
-> -		samsung_mipi_dphy_tx_lane_disable(samsung);
-> -		break;
-> -	default:
-> -		/* CPHY part to be implemented later */
-> +	/* CPHY part to be implemented later */
-> +	if (samsung->type != PHY_TYPE_DPHY)
->  		return -EOPNOTSUPP;
-> -	}
->  
-> -	samsung_mipi_dcphy_pll_disable(samsung);
-> -
-> -	return 0;
-> +	return samsung_mipi_dphy_tx_power_off(samsung);
->  }
->  
->  static int
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSmFzb24sCgpPbiAxMC8xMC8yNiAxNDozMSwg5qWK5pm65oiQIHdyb3RlOgo+IEhpIE1pY2hh
+ZWwsCj4gCj4+IEBKYXNvbjogSXMgdGhlcmUgYW4gdXBjb21pbmcgdjUgb2YgeW91ciBwYXRjaGVz
+IEJUVz8KPiAKPiBUaGUgZGlzY3Vzc2lvbiBvbiBteSB2NCBwYXRjaCBzZXJpZXMgaXMgY3VycmVu
+dGx5IHBlbmRpbmcgYW5kIHdhaXRpbmcKPiBmb3IgbXkgZGV2aWNlIHRyZWUgIHBhdGNoLiBJ4oCZ
+dmUgYWxyZWFkeSBzZW50IG91dCBhbiBSRkMgcGF0Y2ggWzBdIGZvcgo+IGl0LCBidXQgaGF2ZW4n
+dCByZWNlaXZlZCBhbnkgZmVlZGJhY2sgeWV0LgoKR29vZCB0byBoZWFyIGZyb20geW91IGFnYWlu
+ISBHaXZlbiB0aGF0IEtyenlzenRvZiBoYXMgbm90IHJlcGxpZWQgeWV0LCBJCnRoaW5rIHRoYXQg
+aGUgZXhwZWN0cyB0aGUgdGVzdCBwYXRjaCB0byBiZSBpbmNvcnBvcmF0ZWQgcHJvcGVybHkgaW4g
+YQp2NS4gRldJVyB0aGUgcGF0Y2ggbG9va2VkIHJlYXNvbmFibGUgdG8gbWUuCgpCVFcgSSB0cmll
+ZCB0byBhcHBseSB5b3VyIHBhdGNoZXMgb250byB2Ny4zIGFuZCBpdCBzZWVtcyB0aGV5IGRvbid0
+CmFwcGx5IGNsZWFubHkuCgpDYW4geW91CiAtIHJlYmFzZSB5b3VyIGNoYW5nZXMgb250byB0aGUg
+bGF0ZXN0IExpbnV4IHZlcnNpb24KIC0gdXNlCgogICAgI2RlZmluZSBQSFlfRElSRUNUSU9OX1JY
+CTAKICAgICNkZWZpbmUgUEhZX0RJUkVDVElPTl9UWAkxCgogICBmb3IgdGhlIGRpc3RpbmN0aW9u
+IGJldHdlZW4gdGhlIENTSSBhbmQgdGhlIERTSSBwYXJ0IChsZXQncyB0cnkgdGhhdCkKIC0gYWRk
+IHRoZSBkZXZpY2UgdHJlZSBwYXRjaCB0byB0aGUgc2VyaWVzCgphbmQgc2VuZCB2NSBvdXQsIHBs
+ZWFzZT8KClRoYW5rcyBhIGxvdCBhbmQgYmVzdCByZWdhcmRzLApNaWNoYWVsCgo+IAo+IEhpIEV2
+YW4sCj4gCj4gTXkgdjQgc2VyaWVzIHdpdGggdGhlIGRldmljZSB0cmVlIHBhdGNoIFswXSB3YXMg
+YWxzbyB0ZXN0ZWQgb24gUkszNTg4Uwo+ICsgSU1YMjE5LiBIb3BlIHRoaXMgaGVscHMhCj4gCj4g
+QmVzdCByZWdhcmRzLAo+IEphc29uCj4gCj4gWzBdCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
+bGludXgtcm9ja2NoaXAvMjAyNjA5MDQwNzU1MzQuNTc0MDM3LTEtamFzb245ODE2NkBnbWFpbC5j
+b20vCj4gCj4gCj4+IEBKYXNvbjogSXMgdGhlcmUgYW4gdXBjb21pbmcgdjUgb2YgeW91ciBwYXRj
+aGVzIEJUVz8KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
