@@ -4,71 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFC9BCA9ECA
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 21:53:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58742CA9ECA
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 23:29:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=aHUrXNU7u+yW4seJamEWdSeE9O0b2l+lFsVgyMqAF7s=; b=Sdy4tjCcNuTLKI
-	fzBaGG/QO27hplNdKWcF+/mYJjvns4akOz1do4Dq5ry3NMp+KlBXhNjPH9j+mJhtrgWOh/i2g0XAw
-	LeF1xIpEdsIrCGE3yUhxOYt6wx+Mi7ezzeWxfj2AYZ6We0y8h/qlQXHIBKnoYO/nDvAqaJRjsaBYt
-	eqQ37Na2xHqX2AWi6y1H1yin+5hprUIZFfBL2/q3VhMxmPj427ehZxcPFe1DeRANg7yGpqvm2TlKZ
-	DO8S4iNCJpyxNwSBrosBeJNfIkkRID6YGM7/Ac9rHBP0fJHH6bsCFpWaNUTycFO5T+zyrt4FXQh1z
-	aI/TlEJcAaH3XZJEueBg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dGsKd1/RCOsj6Bg6vYJ87J1Mcz6uyVyJR2iSQI9LPLI=; b=g+QTJQ/hCoHiry
+	q3aLGZG4V8p2eNcDp3ksNTW/eU1W4xexeU4VLDpvPAXXMLtZiL7n3vL5wF5lGUU2LMfHpZsEMk56W
+	JIIWwQGgWXnp/h7B4GDdy9yraon+vgSkS+DVyY8PBW9UCxLf+JAafby6Iva6TGTLBz6jsqT9gI4GW
+	3A7Zx7qbaMnGXvdaYw3y0Ck7rdephOpslZN0iMfvx0AwyJjwumh3g2fnb1kWXGk6zIDvG1Zg51Fni
+	aZ8cgFn5JstH0FnTpWdW31N2Ckbl9crN1ZPPnpV/ZDXpCt1YQxxo6AybA0RZwmemsXTyDp9oehGeI
+	iboZRSwcmx8AqRY6q0vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFf05-00000008TF3-3ZGp;
-	Sat, 10 Oct 2026 21:53:05 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xFgVC-00000008XG1-3rBb;
+	Sat, 10 Oct 2026 23:29:18 +0000
+Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFf04-00000008TDe-0wUS;
-	Sat, 10 Oct 2026 21:53:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8C6F540A55;
-	Sat, 10 Oct 2026 21:53:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 6C1FCC2BCB9;
-	Sat, 10 Oct 2026 21:53:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1791669183;
-	bh=SB4ZAuEiQKRXeywG/ez21/G2gN88L39KmM6wGar9fao=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=EprNz6NOKutoSUawMRz+SITbTbEiRm31R1ihhg3H2XwxlDF3CKXwoTz2NbX/K3XTV
-	 XG7gUu2kelfn5BuJ8NK15TrfBgatr730n7+7xmAqjiteYB5yrmQWYcZsaKLGGl1Fl+
-	 1vfLhGAuJwoAtTlJh4I4JBMlxszOn0A155T926lQh7IdzAKBLNCHivxs7AxVhEIJwv
-	 5MpbEJx1+UuxyRBMYXoHRRzuFSWXu4uId1I+AMSPr+WGf2kEnhQ3htbvfRX0wlD6gP
-	 cZwyT8qfg5vIcp0KS/AKE2G5VQVjZobxWdahsgBuuC/013flJbvRk4Tzl5zPeo4WbZ
-	 SUMy/ebzYm0DA==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B2ADCA9ECA;
-	Sat, 10 Oct 2026 21:53:03 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Sun, 11 Oct 2026 00:53:01 +0300
-Subject: [PATCH] arm64: dts: rockchip: Add the GPU to Kobol Helios64
+	id 1xFgV8-00000008X8J-1svf;
+	Sat, 10 Oct 2026 23:29:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=KyJ5HqNoODl9B7HgmBUMCuBdsXY1NRKFnbDA7m+GTJmlXmTMxj8Lri3uoMhkGyTJPx3mg1NdTMTaWh+hF1Msu2j9Fi4hNqlzT09jFnGmCjx2c7HgcTADMe/Tk1CJIZ+yq8LryLoSubnqFJyf7YC5CPdvmntS5zsInUp4Aq10yHJAi2dFhoRgjXfBVvpkRV8m/MNiuRkoFXJOB6gkI+5cS62ZHT5e9q8CN68R2hnlFKeWpgzkD7/uCBtAYV3Q2mneQQyI/tZM5wV+DGN/I+FSGou6mPuBRHindSBAGbSVx2y8hWhGMztXgXRz3ayQENACEj9bO6iFXeC6P2pvH09elA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=O4DOenSHZXLOEY44pTD3DkipbCFtO9ZoOq+R0x9TSxY=;
+ b=YxTpRytQxu8AeH8FSvEvlQkAE7uoTHDpvlt9GFcU31r87XPhyfwQpaL4Wa5mTwlP6XzLdLclvTX8VYBL4UHesdqCLiFvSN7xS2/zhBRf7MycZ20hOyv1iIMkm6hinsJie8UZODOIkI9e38tudNc9kakA1WMfUU3L1nuSOqPh1Ti9FG2F+Kqz+oio8DAPt0e0gNqnJKuXabGrZowxwP3N5pRo1+6OHffia7Rz7uQTQbZ6PHpYQpJz15A/gCJs7rdlVwEzEkZ/kGkjVTFooEwNQDudD8lVG8yzEBIzFmC9ihvYjU5apf9i/QZFwVJwhUUqVQUMIpylRWfj4g5bG2maWA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=crepuse.com; dmarc=pass action=none header.from=crepuse.com;
+ dkim=pass header.d=crepuse.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crepuse.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=O4DOenSHZXLOEY44pTD3DkipbCFtO9ZoOq+R0x9TSxY=;
+ b=e6CkoebYBzsQWjItLR+07gacrsI16mD41Womr11mcesQxX8Q5m2l9iGBGpLgaHi/w50ztysjv5kkKP/bC1WAFnIaANTccc6viPKhq8BqpPfR4X0iOSQumCar79xm5YdFZ+v1rtmtQgTeHO/mfnQLkF2GBz4hr2LfIB+WmIfW2ydaaGI9FjVvDEZuUQ34hJs/66choekMG1FJN4fd0BHpj5zlWP2uDHj5Ykwe+5x4wK0DdJgjXFBDZ1uL2dIUFG++GSzR5viWF/dh/mEbH7vbX7EF/1wVfYvgRa6bOBOEeKxudeLI/iI6mHkN33X60p9gHIQrHFSw+oW8gAO5eEX0wg==
+Received: from KUYPR01MB8186.apcprd01.prod.exchangelabs.com
+ (2603:1096:d10:8d::16) by TYZPR01MB4380.apcprd01.prod.exchangelabs.com
+ (2603:1096:400:1d0::13) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.20; Sat, 10 Oct
+ 2026 23:29:00 +0000
+Received: from KUYPR01MB8186.apcprd01.prod.exchangelabs.com
+ ([fe80::fe2d:77d4:b78a:358a]) by KUYPR01MB8186.apcprd01.prod.exchangelabs.com
+ ([fe80::fe2d:77d4:b78a:358a%4]) with mapi id 15.21.0496.018; Sat, 10 Oct 2026
+ 23:29:00 +0000
+From: Miotsuki Mizuno <founder@crepuse.com>
+To: "heiko@sntech.de" <heiko@sntech.de>, "neil.armstrong@linaro.org"
+	<neil.armstrong@linaro.org>
+CC: "airlied@gmail.com" <airlied@gmail.com>, "conor+dt@kernel.org"
+	<conor+dt@kernel.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "dri-devel@lists.freedesktop.org"
+	<dri-devel@lists.freedesktop.org>, "jesszhan0024@gmail.com"
+	<jesszhan0024@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "maarten.lankhorst@linux.intel.com"
+	<maarten.lankhorst@linux.intel.com>, "mripard@kernel.org"
+	<mripard@kernel.org>, "noralf@tronnes.org" <noralf@tronnes.org>,
+	"robh@kernel.org" <robh@kernel.org>, "simona@ffwll.ch" <simona@ffwll.ch>,
+	"tzimmermann@suse.de" <tzimmermann@suse.de>
+Subject: [PATCH 2/2] arm64: dts: rockchip: Enable display on UNIHIKER M10 V1.2
+Thread-Topic: [PATCH 2/2] arm64: dts: rockchip: Enable display on UNIHIKER M10
+ V1.2
+Thread-Index: AQHdWQ8hFJRhwWXzdE2tquFEKUvWcQ==
+Date: Sat, 10 Oct 2026 23:29:00 +0000
+Message-ID: <20261010232857.26950-3-founder@crepuse.com>
+References: <20261010232857.26950-1-founder@crepuse.com>
+In-Reply-To: <20261010232857.26950-1-founder@crepuse.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=crepuse.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: KUYPR01MB8186:EE_|TYZPR01MB4380:EE_
+x-ms-office365-filtering-correlation-id: c90915bf-cea8-4208-25c6-08df272643a4
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|23010399003|1800799024|366016|7416014|376014|10067099003|261009223027099003|38070700021|6133799003|22082099003|18002099003|56012099006;
+x-microsoft-antispam-message-info: 7nsbm5xvzJT5GOO5PIlw1ik4b6OxO1D53KkN3wgbRrqJ+F62pLYGATjZFe2HXm6UgnWoFAi7l1MMRfeB1nbhgLGhaBvc+k3MyysVZwcNobBvCIMJEtoaUwm/y88hQAQeypKQLmCpq6ylvj4Yfbyt6qOoQ6NKuVapSRUJZoJ83CB48o/utvKxJ11ZXJ8N+e4ucZ7vJtTLzHOZ/A2HQvuKqYkoQBnZvVV2Vm32WfH+wVLTH0XDASOdlmPnusRHg8qt88a9zm39arkpsVih66ZwWbOUjO2s5Y3STLy29Mv5v0xgIGeNA0ZRIUPVzFUMQ5HaG56bv8FvJpFzT4Jru2HWfNRg8b64n82Y6TETy3lDSuYZ5FiUs0yiXPlnAUwROAfnDecDiqr35qTZPaRLV6bC2XEpmREoP2VEszmppfPSkAb741mrYJxgjS0Rv2UxFp4g7DTMoVch2MgxeAU1rEQ85iUZ/T4dvgFRYv87FdLWdYeN+rUyTL/DtR00Cc73TL3aW3JdHjqvLI2/oTKPHsDPFWPen/7DXS6vlXF2Si9L3kT7Ww62RY2smcNrOtOvEvub8B78IztjhMgOzW46Y7+8WtyEeDnXkCWfJGzGbdsauM0hS6zHi7RRXcEKZb74tU11QFFolcChMcLl0Jh0UNfufGpFOw44ZX9WQjoD8fGxIoG7C036dh8q2aEqIq8gH4BGYaUhGRWx2X7M/KssloVwCA==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KUYPR01MB8186.apcprd01.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(1800799024)(366016)(7416014)(376014)(10067099003)(261009223027099003)(38070700021)(6133799003)(22082099003)(18002099003)(56012099006);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?lDNKaSbxlju37eV/MdEAv4vY1IN4Rhbr0m3hE13sz7+JBrUXFCZxrkRrNw?=
+ =?iso-8859-1?Q?D27t0KKyMkhSTR8KttkAHWpv5IEosr3B9Hvj+GVO8gp57ijJOOQ8IUtvp/?=
+ =?iso-8859-1?Q?1w1HQ8mjIGSL4FVgLh/mhaa70E+NXA8tHV7ItrH8rnwlgBCvUjwOrcjroi?=
+ =?iso-8859-1?Q?Khe+w5dFzo/C7w/sVxMa0q/SFLiZG72M5DI1JdtVU0IZDLqdqTOI/xiZ/H?=
+ =?iso-8859-1?Q?QEDczOL2jaRFdYb4yAv6SF3NMJz1d3aBq/OgY3Wzep7ABzeZZPr9J8FLNZ?=
+ =?iso-8859-1?Q?o92b21iiZATuHAajO/gASNbfgHOj5aqpGzTcEMJIhBdT8ugPE2wDnSoYTB?=
+ =?iso-8859-1?Q?NaW8dZeGwJL20Q9rA3tRhpauMvd1ezdrZ/NZYvt2BmyoZBnnMoVf7bnlc8?=
+ =?iso-8859-1?Q?MrXKiJwxwcIThyjHL+3aj5oX0KofQTd9dGx9ysgstEZK8EgdBAsczfpRnc?=
+ =?iso-8859-1?Q?irciUxuKiL6uq+R7AC6beJcyUXF5J2ITT0CztwtA5kU+TvKwSbQ2GvQ0Jm?=
+ =?iso-8859-1?Q?Qh7IvivSx9d7DvAdjliOz2773dV55ZDyh2sXRfBPn4eUiPs1CFQWFUvOKb?=
+ =?iso-8859-1?Q?Inf65Yw0XO3awrNSc7vbqbxAMXVdzXOtKn5HXHEm7tg9dNlI1WRuYSoDl4?=
+ =?iso-8859-1?Q?Q+UCcho+3kgO/D2Rx2KdhJf/XXPRAp9Gs6C0yqXj0Z0mnsw6cqbjzjXEDC?=
+ =?iso-8859-1?Q?HlObTavJynAPBSwlC1+mbNv762Lk7Lr+9876ucUU0Th35QScP8jeCI2AMy?=
+ =?iso-8859-1?Q?d0HJJN8JY+v0vw5F//dhZF51WfhGkMdQzIUbG3S9Iui5FHnx9q6JjexhB4?=
+ =?iso-8859-1?Q?ZPeTDZKY4YtHvOdOTgcaD9VpcA8dLy4fFB08G6aga7k4T9LU4oqFZgEPnX?=
+ =?iso-8859-1?Q?H+0iDj4v0u6lA1f5SyHE51xIXcma4ktFaJwhSYzBfgK1HYiSuAKuJuBBD9?=
+ =?iso-8859-1?Q?Y0i9U4iQ6bRpWrdUFJs7l2NAQ1OrzHPmb61iZmiRXxyEF/ZaxUIaQoy7yr?=
+ =?iso-8859-1?Q?FNJedVAXzWsSGuvsabh1qn3f+nx8RrhuAVCwJuC9wHmMDjoPoUWJxi9N2h?=
+ =?iso-8859-1?Q?v4YHdNVypEBVtP8g+obVJCiCXxZx2KTS7pZvhaTlmMzMuwWS/vPuRLj42R?=
+ =?iso-8859-1?Q?o22mF1fpJRwIgmotzdxbjIPOA1uqBB2tzMtHr0D6Ba8TQfQekDlkaPllPV?=
+ =?iso-8859-1?Q?tg9Cf/+gbdQBBYM/Gg7w0XIPWQpT1/HyCoy5SMjf2Z9LoystBSSAgPbNxs?=
+ =?iso-8859-1?Q?NB8fq8MuYbc38BMD59mM4xeQ+0pS5Mvlzn9hCFPxdhxKpKRaWN77bgXDR8?=
+ =?iso-8859-1?Q?oIVHEFZth8vcmRd0YA0+mdd0kcFXNYW1QjMTtjtVcN5K4B9kMC8yRoEI/H?=
+ =?iso-8859-1?Q?6r+BzXV79eswXwiisDWrFHY3KD90DTBvclZNIMHzMNlpSlesb0Ze4kd9n0?=
+ =?iso-8859-1?Q?uHeC9B80pS01uHzDBmpQiWe6/iMoxQUC+qhrzIZgJS2AjJDCBr5qDirYdk?=
+ =?iso-8859-1?Q?VQynbZ6GbJQwJ5oLEADjAUC8uMSpuD2IsVGy3KribuhEYd5bIbCzhaHxnm?=
+ =?iso-8859-1?Q?4cT1cIqJM8dq8tRz5eOYD6zRKfY47tWqEvTa65IkAk4FqkHK81/AuFFc3y?=
+ =?iso-8859-1?Q?c1SFKGpqLSbUKWiP9HlvohurKL1t3wkwAdM9CEuplNJztSlTyc5fRi3HDi?=
+ =?iso-8859-1?Q?mvYzFyvcQ/k7/iBSB/wKJKPbNjJ24k0pcinKRQL/OWvQVOjJjz3nEYFbid?=
+ =?iso-8859-1?Q?FiGvIUb8iecGq2QrwpcwfqQK9hTfeMZwYXUS3mzupEIetp?=
 MIME-Version: 1.0
-Message-Id: <20261011-b4-helios64-gpu-v1-1-bd83c6ecd19e@iav.lv>
-X-B4-Tracking: v=1; b=H4sIALyzymoC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzNDA0MD3SQT3YzUnMz8YjMT3fSCUl0jizQTY0vj1KRUU3MloK6CotS0zAq
- widGxtbUAwYhAdmEAAAA=
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2291; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=QC0ldbg5vEEp/9pOfxvQQHo+177uJ6uj3YQwTElyKdA=;
- b=kA0DAAoWMpeVi+pfeQMByyZiAGrKs76jR2bGxizOiVPl+2Tkq9d9BhPKXJXtt97sdU9l4TP3Q
- Yh1BAAWCgAdFiEEkMIo2mik1f1PSDfgMpeVi+pfeQMFAmrKs74ACgkQMpeVi+pfeQOp0AEAlPVZ
- fa0yZOz1Z8GnX32xqyA7QSrRld40rIphRKp9DroA/0OkglmIjvWGiZ1QMVZ5LC3vUV3Xuj7CFVE
- rOCLpC+UO
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+X-OriginatorOrg: crepuse.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: KUYPR01MB8186.apcprd01.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c90915bf-cea8-4208-25c6-08df272643a4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Oct 2026 23:29:00.6616
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 9e189589-0b8b-4283-80ca-b0157c0a04fa
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: o1pKG1j8KdfU2x2kfdTRDNPu0uPtkZTytlx1jwwP/WR1oWmCgKrLqPAgzTJ9qC0KRWrdNK7f9EB7v1xxM8DvXg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR01MB4380
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261010_162914_517791_9862D235 
+X-CRM114-Status: UNSURE (   6.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,95 +146,116 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Igor Velkov <iav@iav.lv>
+Enable the onboard 240x320 SPI display using panel-mipi-dbi. Add its
+D/C and reset GPIOs, display timing, and PWM1 backlight, and enable
+SPI2 with a maximum transfer frequency of 50 MHz.
 
-The GPU core of Helios64 is supplied by U12, a Silergy SYR838 on i2c0
-at 0x41, with its VSEL pin on GPU_SLEEP_H (GPIO1_B6). Describe it as
-silergy,syr828, the way vdd_cpu_b (a SYR837) is described as
-silergy,syr827, and enable the GPU.
+Assign SPI2 a 100 MHz input clock from DPLL so that the controller's
+even baud-rate divider can provide 50 MHz for pixel transfers.
 
-Assisted-by: LLM
-Signed-off-by: Igor Velkov <iav@iav.lv>
+Describe the 43.2 x 57.6 mm active area as 43 x 58 mm in the integer
+millimetre properties. The panel uses RGB565 pixel data and requires the
+external
+initialization file dfrobot,unihiker-m10-display.bin. No DRM or SPI
+controller driver changes are needed.
+
+Signed-off-by: Mizuno Miotsuki <founder@crepuse.com>
 ---
-Schematic, sheet 7:
-https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
+ .../dts/rockchip/rk3308-unihiker-m10-v1.2.dts | 53 +++++++++++++++++++
+ 1 file changed, 53 insertions(+)
 
-Tested on mainline: panfrost probes, devfreq moves vdd_gpu from 825 mV
-at 200 MHz to 1100 mV at 800 MHz, glmark2-es2-wayland under headless
-weston scores 548-577 in three runs. Two of them logged one panfrost
-job timeout each; the Armbian DT gave none in three runs.
----
- .../boot/dts/rockchip/rk3399-kobol-helios64.dts    | 28 ++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-index 63ad79b4c8ac..1f50982291bf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-@@ -339,6 +339,11 @@ &gmac {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts b/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
+index 0c03f118378a..4dc01ea73e44 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
+@@ -22,6 +22,14 @@ chosen {
+ 		stdout-path = "serial0:1500000n8";
+ 	};
+ 
++	backlight: backlight {
++		compatible = "pwm-backlight";
++		pwms = <&pwm1 0 10000 0>;
++		brightness-levels = <0 16 32 48 64 80 96 112 128
++				     144 160 176 192 208 224 240 255>;
++		default-brightness-level = <12>;
++	};
++
+ 	keys {
+ 		compatible = "gpio-keys";
+ 
+@@ -154,6 +162,13 @@ &pinctrl {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rtc_32k>;
+ 
++	lcd {
++		lcd_control: lcd-control {
++			rockchip,pins = <1 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>,
++				       <1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	sdmmc {
+ 		sd_vcc_en: sd-vcc-en {
+ 			rockchip,pins = <4 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -183,6 +198,10 @@ &pwm0 {
  	status = "okay";
  };
  
-+&gpu {
-+	mali-supply = <&vdd_gpu>;
++&pwm1 {
 +	status = "okay";
 +};
 +
- &i2c0 {
- 	clock-frequency = <400000>;
- 	i2c-scl-rising-time-ns = <168>;
-@@ -453,6 +458,25 @@ regulator-state-mem {
- 			regulator-off-in-suspend;
- 		};
- 	};
-+
-+	vdd_gpu: regulator@41 {
-+		compatible = "silergy,syr828";
-+		reg = <0x41>;
-+		fcs,suspend-voltage-selector = <1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vsel2_pin>;
-+		regulator-name = "vdd_gpu";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <712500>;
-+		regulator-max-microvolt = <1500000>;
-+		regulator-ramp-delay = <1000>;
-+		vin-supply = <&vcc5v0_sys>;
-+
-+		regulator-state-mem {
-+			regulator-off-in-suspend;
-+		};
-+	};
+ &sdio {
+ 	#address-cells = <1>;
+ 	#size-cells = <0>;
+@@ -216,6 +235,40 @@ &sdmmc {
+ 	status = "okay";
  };
  
- &i2c2 {
-@@ -538,6 +562,10 @@ pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins = <0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
++&spi2 {
++	assigned-clocks = <&cru SCLK_SPI2>;
++	assigned-clock-parents = <&cru PLL_DPLL>;
++	assigned-clock-rates = <100000000>;
++	status = "okay";
 +
-+		vsel2_pin: vsel2-pin {
-+			rockchip,pins = <1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>;
++	display@0 {
++		compatible = "dfrobot,unihiker-m10-display", "panel-mipi-dbi-spi";
++		reg = <0>;
++		spi-max-frequency = <50000000>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&lcd_control>;
++		dc-gpios = <&gpio1 RK_PB6 GPIO_ACTIVE_HIGH>;
++		/* The DBI reset helper drives logical low, then high. */
++		reset-gpios = <&gpio1 RK_PB4 GPIO_ACTIVE_HIGH>;
++		backlight = <&backlight>;
++		format = "r5g6b5";
++		width-mm = <43>;
++		height-mm = <58>;
++
++		panel-timing {
++			clock-frequency = <0>;
++			hactive = <240>;
++			vactive = <320>;
++			hback-porch = <0>;
++			hfront-porch = <0>;
++			hsync-len = <0>;
++			vback-porch = <0>;
++			vfront-porch = <0>;
++			vsync-len = <0>;
 +		};
- 	};
- 
- 	power {
-
----
-base-commit: d2abcbb905b0e4b2e06b257fa1e5bcf4faa6dbda
-change-id: 20261010-b4-helios64-gpu-28f4393ebe57
-
-Best regards,
++	};
++};
++
+ &u2phy {
+ 	status = "okay";
+ };
 -- 
-Igor Velkov <iav@iav.lv>
-
+2.56.0
 
 
 _______________________________________________
