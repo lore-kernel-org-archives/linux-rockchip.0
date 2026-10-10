@@ -4,57 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 493DFCA9EC0
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 19:27:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AFFCCA6017
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 20:00:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=webLg6caE300Cp0yVPLTkaRYOrt838qyZg4InMLerTo=; b=ewKWp5RmHyZPpG
-	15gIqcZI/FcJBsldLlcSiSqx/fOwu1c1os7KbVZ6rVJ1Z0h1RyBQPHi/kefxsM06jCgVBf6mkdU9i
-	iTF4Z4iah4DK4CEAfgM/kNdDY6aFmzz1CXxeWngRJdOVWZz/HUDXKWbrwo4L3Z+f11wAA4P+woOHt
-	nNIY+3i4MtYfHZAqAlbfSDyicawJ0xV2se9thkNiPwaFhmEKANDzTn3Tr60Q0/qxKHO41orFm7VJC
-	tm5DjbT/WCKOf+qknmWsGdeJeTPXqIFHED9Vk337xCgRWGfcxblB/tSl7tu29iW/xqqJVQvQAoF+D
-	yTd04kg+IJ8agGcIw/Cw==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=klqDp7/A+eGsywz0luORdG+PEqiM/4VtGVCkYMc9PUs=; b=W2gyAnMCtBaOF8
+	r7Pa9R90sVZxUJr4TwYzNDUsrk0eeVPj+XjKTolAHkTfs14Cawz73hejANS0j4KKaRno7BpiLE9bm
+	DxCLrgCW/EkMVDhBsYsGE6eLE8Dks45+UJ2CE4kYp1YWxH4FvqQzUv7UZVtuVcNBB4NskmvIwVArx
+	poGAM2xjzNwzrhidMFun4hjBIV2blP5lLA3bkTxRR7Ra/YXptwMImODDJ0loufwqwR0FoX7WR5Jn9
+	VKIJGSglHUIw2lwitSW+mN8vrT2y54cNyV9N0QxOBBWai8fSqC7TX/VSvssvSkZJ93xqUzYp5IJ8C
+	TeARsFLyHg52PJQ9+v/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFcj2-00000008P1Z-0gCY;
-	Sat, 10 Oct 2026 19:27:20 +0000
-Received: from mx.nabladev.com ([178.251.229.89])
+	id 1xFdF4-00000008Q8L-0IZm;
+	Sat, 10 Oct 2026 20:00:26 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFciz-00000008P0I-0enI
-	for linux-rockchip@lists.infradead.org;
-	Sat, 10 Oct 2026 19:27:19 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 764831086F7;
-	Sat, 10 Oct 2026 21:26:58 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nabladev.com;
-	s=dkim; t=1791660420;
-	h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=2jg4Zg9CY3g2Liw7gGHp2KJ5maqfxequAZ88NAf4gZk=;
-	b=W5xvqxGbc02BTI2TJnYlayEy/DAsWqTJ83UtPEWeM5UYLxqihTQXn2iEpPG2zhGWgMAV3H
-	IQdkN20j5Dszlmpobk8g0huambde8vfpGuKuxGLQqCctVs3uV39iFX6IPROcaDtVaeYTH0
-	CN3rjvR9gCJrcY6Mv+VR2N33LdP2XqzAgeC/6ZeFte5cl+pZVA/zp9UURgXRsrvK/kMb7S
-	DbncncUXHRD/bex88cm4WDnBLAhq8/uRigLUIMidtADtcDG8hI1VFHRNnU0ZTegU5I0mfd
-	0gNHpIl49zFj6UZefWVXm7HLu35flLcnNVboVE5r2iS6O0DbgU1EYhJBU0F5hQ==
-From: "Fabio Estevam" <festevam@nabladev.com>
-In-Reply-To: <1791641839-74584-3-git-send-email-shawn.lin@rock-chips.com>
-References: <1791641839-74584-1-git-send-email-shawn.lin@rock-chips.com> <1791641839-74584-3-git-send-email-shawn.lin@rock-chips.com>
-Date: Sat, 10 Oct 2026 21:26:58 +0200
-Cc: "Stephen Boyd" <sboyd@kernel.org>, heiko@sntech.de, "Brian Masney" <bmasney+clk@redhat.com>, "Jerome Brunet" <jbrunet+clk@baylibre.com>, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org
-To: "Shawn Lin" <shawn.lin@rock-chips.com>
+	id 1xFdF2-00000008Q85-1kXl;
+	Sat, 10 Oct 2026 20:00:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 71338602CC;
+	Sat, 10 Oct 2026 20:00:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 096DFC2BCB9;
+	Sat, 10 Oct 2026 20:00:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1791662423;
+	bh=INhYC89c0fkz7duYIP5TtM0wbq9gO2yYmBeJHMpXEdo=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=mfXy1Pp9LFsulrG2ge35MGdOxR5P986wKoXB8oHZBNWt/QSHLd918tDNP8fQStoxS
+	 SYx7pyQbltQj65vbdAkdHFDe2j2ohDM0kQIwYZ1pFSoEFDcqheN9OGiLjtYS91t0kn
+	 2/o/N4DEN9ucHRhhYezpxfZAhZJwtpzMoUhtHM9vi5y/62Z5cBw0VarVYC2kgMF1hi
+	 ML3NERBSElFFfFXbQOVzUBG+16CL5Hw4Nq0UJiA6t5+Qf1GkA25b0re6S6e9GBgPdf
+	 DlaWZj6CU545Xc8jgBZKGZg3hz0iEfHzMAx4AK69qt/AmzGKl+pUc6Yx4LpegzxxsV
+	 d3woNnuXFSxgA==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D2DDACA9EC1;
+	Sat, 10 Oct 2026 20:00:22 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Sat, 10 Oct 2026 23:00:16 +0300
+Subject: [PATCH] arm64: dts: rockchip: Add the buzzer to Kobol Helios64
 MIME-Version: 1.0
-Message-ID: <a44bfaca-9c4e-dc0c-6f83-364a7953bb44@nabladev.com>
-Subject: =?utf-8?q?Re=3A?= [PATCH 2/2] =?utf-8?q?clk=3A?==?utf-8?q?_rockchip=3A?= 
- fix wrong PMU CLKSEL register on rv1103b
-User-Agent: SOGoMail 5.12.11
-X-Last-TLS-Session-Version: None
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_122717_726488_71BB6FFF 
-X-CRM114-Status: UNSURE (   5.51  )
-X-CRM114-Notice: Please train this message.
+Message-Id: <20261010-b4-helios64-beeper-v1-1-6235643158cf@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAFCZymoC/x3MwQpAQBRG4VfRXbt1ZwzJq8hi8OOW0ExJad7dZ
+ PktznkpIigidcVLAbdGPY8MUxY0bf5YwTpnkxXbGDHCo+MNu56xcTwCFwJ7Uwmst1UtLeXwClj
+ 0+af9kNIHU5U6eGQAAAA=
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1395; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=CLjRnKOQVnSgjGYiJTawa4WmYQi+xZfiDphqtnkUSz0=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFmnZgZGPnopq23L8KTpTftrtQJp7gzji4+ZMvW/F58Ie
+ +W8cPLpjlIWBjEuBlkxRZYJhzRuZSy5+tffw/wBzBxWJpAhDFycAjCRrXIM/wyqdJSauPsM2HNq
+ bZt9Tv3l2RL3XP6PRmEmT1eES3jvNIb/EbXJe2aGTNzAqqE4W9+N0fHuHI/cz4otD3aEh13yXcf
+ JDwA=
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,30 +80,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Shawn,
+From: Igor Velkov <iav@iav.lv>
 
-On Saturday, October 10, 2026 11:17 -03, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+Helios64 has a 2-pin header, P4, for an external buzzer: pin 1 is 5 V,
+pin 2 is switched to ground by a MOSFET driven from GPIO4_D3
+(BUZZER_ON), active high. Describe it as a gpio-beeper.
 
-> clk_32k and dbclk_pmu_gpio0 use RK3568_PMU_CLKSEL_CON(0), which is the
-> wrong SoC macro and resolves to 0x100 in the PERICRU region instead of
-> the RV1103B PMUCRU register at 0x70300. Reading or setting these clocks
-> would access an unrelated register.
-> 
-> Use RV1103B_PMUCLKSEL_CON(0), as already done for the XIN_RC_SRC clock
-> in the same file.
-> 
-> Fixes: 3e65e426d457 ("clk: rockchip: Add clock controller for the RV1103B")
-> Cc: Fabio Estevam <festevam@nabladev.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Assisted-by: LLM
+Signed-off-by: Igor Velkov <iav@iav.lv>
+---
+Schematic, sheets 30 and 35:
+https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
+P4 in the header list ("Buzzer Alarm Speaker"):
+https://wiki.kobol.io/helios64/hardware/
 
-Thanks for the fix.
+Tested on mainline: GPIO4_D3 follows the beeper input events. Nothing is
+plugged into P4 here, so no sound check.
+---
+ arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Reviewed-by: Fabio Estevam <festevam@gmail.com>
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+index 63ad79b4c8ac..d84b777b7153 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+@@ -58,6 +58,11 @@ avdd_1v8_s0: regulator-avdd-1v8-s0 {
+ 		vin-supply = <&vcc3v3_sys_s3>;
+ 	};
+ 
++	beeper {
++		compatible = "gpio-beeper";
++		gpios = <&gpio4 RK_PD3 GPIO_ACTIVE_HIGH>;
++	};
++
+ 	chosen {
+ 		stdout-path = "serial2:1500000n8";
+ 	};
+
+---
+base-commit: d2abcbb905b0e4b2e06b257fa1e5bcf4faa6dbda
+change-id: 20261010-b4-helios64-beeper-a130e2a23508
+
+Best regards,
+-- 
+Igor Velkov <iav@iav.lv>
+
 
 
 _______________________________________________
