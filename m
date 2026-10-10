@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0834CA601E
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 00:25:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C778CA9EBB
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 01:39:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ag/VA0ZqRPGoVSEilDxNIj/rm1lD2GjSzDpNxgqD66w=; b=WknsIoNdHVemYe
-	KpM2qngUEdQF5xjCXB7iLisUFxHO4HEtp+s8uM75t9HmVIgNV7WJCerBtCwHuoTWpFihHHW+0Lfgl
-	OqfPInEQm/J9tfADo29BXWDgrJJO+iCqk1P90sEvKV881WJ+sgbZLcyFNu+pxAwDuYVJuqTCathL5
-	KDZCRFi+kJ97HSZt3MKyZfDNko5hkO4rBryik0YLeQOYoHAfODyMoVcXxU/JSFUJf9zpJyVjXfNO3
-	jkOMJ29GubJ0QH0cZV4mQxKHra59gcqjeGKIGEaoYLh3vGFDLqXTdQmj5QjnkK8KY4uop6rc9XhnS
-	zZLB9YasZw8fUXSFIh6w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WhYFhg3gl0+YP6KVwnP6pp2F1RdH0Vh/Qk+08I1MMg8=; b=GtvxUudNwar8LV
+	E+AM72Vj/BHlcxHYnzUSrgCsyBQWlH7v7aW+iFd7VqO6KSC4vW0TEoHlXOmoyyNO50mXKbZPN1oAv
+	KY/liuLOW3iQ/grfNORzrXFwLddKufve3pudd92VzAJ07cwj5ZLW2FVSFRpWw0t7tcrWJcnMX6+VU
+	pHTghtlBQtPL5BZClyMnlPr77hTpd8iX6ANsxUV/FVLbOGJj+MxjuF88E+1JA7pi4kTrNynNlRi5k
+	rNdgjlF+lrazsPkxIGjpphWOnJ3a4cH0Ty0yn5M8RmWMEFXMKopfXJuhE/B2d2DrH2u4G+Z7BI3C6
+	n4sZnnRq3ZrKP1LJGt3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFKts-00000007MgP-0uK2;
-	Sat, 10 Oct 2026 00:25:20 +0000
-Received: from mail-m9351.xmail.ntesmail.com ([103.126.93.51])
+	id 1xFM3F-00000007Ogu-162F;
+	Sat, 10 Oct 2026 01:39:05 +0000
+Received: from mail-m10187.netease.com ([154.81.10.187])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFKtn-00000007Mfu-298O
+	id 1xFM3A-00000007OgT-3YxZ
 	for linux-rockchip@lists.infradead.org;
-	Sat, 10 Oct 2026 00:25:18 +0000
-Received: from [172.16.12.48] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5080294ff;
-	Sat, 10 Oct 2026 08:25:09 +0800 (GMT+08:00)
-Message-ID: <9dbcf07c-d419-49af-8973-e8ad4eaa6a04@rock-chips.com>
-Date: Sat, 10 Oct 2026 08:25:06 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org,
- linux-pci@vger.kernel.org, Niklas Cassel <cassel@kernel.org>,
- Diederik de Haas <diederik@cknow-tech.com>
-Subject: Re: [PATCH v4] PCI: dw-rockchip: Move the INTx irq setup to probe
-To: Manivannan Sadhasivam <mani@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>
-References: <1790222793-77182-1-git-send-email-shawn.lin@rock-chips.com>
+	Sat, 10 Oct 2026 01:39:03 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 508234b94;
+	Sat, 10 Oct 2026 09:38:54 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <1790222793-77182-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Tid: 0aa12333097603a4kunm69849e103de83
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: Manivannan Sadhasivam <mani@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	linux-pci@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	stable@vger.kernel.org
+Subject: [PATCH] PCI/ASPM: Fix NULL pointer dereference in sysfs show/store callbacks
+Date: Sat, 10 Oct 2026 09:38:25 +0800
+Message-Id: <1791596305-153177-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0aa123768a7a03a4kunm0642a6a3492e2
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCHR8eVh9ITE9DSxhOQ0NLTVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGUtDGFYeHhoYGk9DQh
+	5JHkxWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=c4daUppCQdM6nxUlqfqyhYf24jnKXM0jApWeFdyWmnymge0PwhpMJ/a0QkfqqnkPIf/S412V85ecyro4jhvtgLgc5dB7NT6luSl4flYXbq0CTuFE9yO4cWUBFoa3hUwsz5f++MD17nQAETWxHqlfhgo0FygUGlZ8KH18OQgsblQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=yWXryQvPqykwhvyA9eaQayuovKocXa9vYqkFwBkwj8c=;
+	b=kNYGskwI8i6baHLpmz4TFoYov1vARZDrCkhVERdfJ66QXHhpcQY2kO2gvNtCf5ka7XtIOodP1VVG33kB3HH7R/kkdUrMcROn8fTXBtguUinNjMGxrUtrgdgj6sR7NlLY9UmFFbdGv4dU72O7NdE7jB2ZnmdOl0t6qNuiaoRXIgE=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=K5gGo+uuMA/yw6R3+RiKP53hcTnHquTmjoVQ44yzRDM=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261009_172516_113428_623E885D 
-X-CRM114-Status: GOOD (  30.58  )
+X-CRM114-CacheID: sfid-20261009_183901_651784_2F3DAF1A 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,102 +66,154 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTWFuaSwgQmpvcm4KCuWcqCAyMDI2LzA5LzI0IOaYn+acn+WbmyAxMjowNiwgU2hhd24gTGlu
-IOWGmemBkzoKPiBTaW5jZSBjb21taXQgYjM3NmIzZmY5Y2IwICgiUENJOiBkdy1yb2NrY2hpcDog
-SW1wbGVtZW50IC5yZXNldF9yb290X3BvcnQoKQo+IGFuZCB1c2UgZm9yIGxpbmsgZG93biIpLCAu
-cmVzZXRfcm9vdF9wb3J0KCkgcmUtcnVucyB0aGUgaG9zdCBvcHMgLmluaXQoKQo+IGNhbGxiYWNr
-IHRvIHJlcHJvZ3JhbSB0aGUgUm9vdCBDb21wbGV4IGFmdGVyIGEgY29udHJvbGxlciByZXNldC4g
-VGhhdAo+IHdvcmtzIGZvciB0aGUgcmVnaXN0ZXIgcHJvZ3JhbW1pbmcsIGJ1dCAuaW5pdCgpIGlz
-IG5vdCByZS1lbnRyYW50OiBpdAo+IGFsc28gY3JlYXRlcyB0aGUgSU5UeCBpcnEgZG9tYWluIGFu
-ZCBpbnN0YWxscyB0aGUgY2hhaW5lZCBJTlR4IGhhbmRsZXIuCj4gRXZlcnkgcm9vdCBwb3J0IHJl
-c2V0IHRoZXJlZm9yZSBlbmRzIHVwIHdpdGggYSBzZWNvbmQgaXJxIGRvbWFpbgo+IHJlZ2lzdGVy
-ZWQgZm9yIHRoZSBzYW1lIGZ3bm9kZTogdGhlIHByZXZpb3VzIG9uZSBpcyBsZWFrZWQsIGFzIGl0
-IGlzCj4gbmV2ZXIgcmVtb3ZlZCwgYW5kIHdvcnNlLCB0aGUgSU5UeCB2aXJxcyBvZiB0aGUgZG93
-bnN0cmVhbSBQQ0kgZGV2aWNlcwo+IHdlcmUgYWxsb2NhdGVkIGluIHRoZSBwcmV2aW91cyBpcnEg
-ZG9tYWluIGFuZCBhcmUgbmV2ZXIgcmUtbWFwcGVkLCB3aGlsZQo+IHRoZSBjaGFpbmVkIGhhbmRs
-ZXIgbm93IGxvb2tzIHVwIHZpcnFzIGluIHRoZSBuZXcsIGVtcHR5IGRvbWFpbi4gQWZ0ZXIgYQo+
-IGxpbmsgZG93biByZWNvdmVyeSwgSU5UeCBpbnRlcnJ1cHRzIGFyZSBzaWxlbnRseSBsb3N0Lgo+
-IAo+IEZpeCBpdCBieSBtb3ZpbmcgdGhlIG9mX2lycV9nZXRfYnluYW1lKCkgbG9va3VwLCB0aGUg
-SU5UeCBpcnEgZG9tYWluCj4gY3JlYXRpb24gYW5kIHRoZSBjaGFpbmVkIGhhbmRsZXIgaW5zdGFs
-bGF0aW9uIG91dCBvZiAuaW5pdCgpIGFuZCBpbnRvCj4gcm9ja2NoaXBfcGNpZV9jb25maWd1cmVf
-cmMoKSwganVzdCBiZWZvcmUgZHdfcGNpZV9ob3N0X2luaXQoKS4gVGhlCj4gbG9va3VwIGhhcyB0
-byBoYXBwZW4gYmVmb3JlIHRoZSBob3N0IGlzIGluaXRpYWxpemVkLCBiZWNhdXNlCj4gZHdfcGNp
-ZV9ob3N0X2luaXQoKSBlbnVtZXJhdGVzIHRoZSBidXMgYW5kIHByb2JlcyB0aGUgZG93bnN0cmVh
-bQo+IGRldmljZXMsIGFuZCBwY2lfYXNzaWduX2lycSgpIG1hcHMgdGhlaXIgSU5UeCBpbnRlcnJ1
-cHRzIGF0IHRoYXQgcG9pbnQ6Cj4gaWYgdGhlIGRvbWFpbiBkb2VzIG5vdCBleGlzdCB5ZXQsIHRo
-ZSBtYXBwaW5nIGZhaWxzIGFuZCB0aGUgZGV2aWNlcyBlbmQKPiB1cCB3aXRob3V0IGEgdXNhYmxl
-IElOVHguIFRoaXMgYWxzbyBtaXJyb3JzIGhvdyB0aGUgcWNvbSBkcml2ZXIgcmVxdWVzdHMKPiBp
-dHMgZ2xvYmFsIElSUSwgYW5kIGxlYXZlcyAuaW5pdCgpIHdpdGggbm90aGluZyBidXQgaWRlbXBv
-dGVudCByZWdpc3Rlcgo+IHByb2dyYW1taW5nLCBzbyBib3RoIC5yZXNldF9yb290X3BvcnQoKSBh
-bmQgZHdfcGNpZV9yZXN1bWVfbm9pcnEoKSBjYW4KPiBzYWZlbHkgcmUtcnVuIGl0LiBSZS1ydW5u
-aW5nIG9mX2lycV9nZXRfYnluYW1lKCkgb24gZXZlcnkgcmVzdW1lIGlzIGFsc28KPiBnb25lLgo+
-IAoKVGhlIG9mZmVuZGluZyBjb21taXQgd2FzIGludHJvZHVjZWQgaW4gdGhpcyBjeWNsZS4gSXMg
-dGhlcmUgYW4Kb3Bwb3J0dW5pdHkgdG8gbWVyZ2UgdGhpcyBmaXggaW50byA3LjM/Cgo+IEZpeGVz
-OiBiMzc2YjNmZjljYjAgKCJQQ0k6IGR3LXJvY2tjaGlwOiBJbXBsZW1lbnQgLnJlc2V0X3Jvb3Rf
-cG9ydCgpIGFuZCB1c2UgZm9yIGxpbmsgZG93biIpCj4gU3VnZ2VzdGVkLWJ5OiBOaWtsYXMgQ2Fz
-c2VsIDxjYXNzZWxAa2VybmVsLm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXdu
-LmxpbkByb2NrLWNoaXBzLmNvbT4KPiAtLS0KPiAKPiBDaGFuZ2VzIGluIHY0Ogo+IC0gZHJvcCB0
-aGUgY29kZSBjb21tZW50IChOaWtsYXMpCj4gLSBjcmVhdGUgdGhlIElOVHggaXJxIGRvbWFpbiBi
-ZWZvcmUgZHdfcGNpZV9ob3N0X2luaXQoKSBpbnN0ZWFkIG9mCj4gICAgYWZ0ZXIgaXQuIGR3X3Bj
-aWVfaG9zdF9pbml0KCkgZW51bWVyYXRlcyB0aGUgYnVzIGFuZCBwcm9iZXMgdGhlCj4gICAgZG93
-bnN0cmVhbSBkZXZpY2VzLCBhbmQgdGhlaXIgSU5UeCBpbnRlcnJ1cHRzIGdldCBtYXBwZWQgYXQg
-dGhhdAo+ICAgIHBvaW50LCBzbyByZWdpc3RlcmluZyB0aGUgZG9tYWluIGFmdGVyd2FyZHMgbGVm
-dCBldmVyeSBkb3duc3RyZWFtCj4gICAgZGV2aWNlIHdpdGhvdXQgYSB1c2FibGUgSU5UeCAoZmxh
-Z2dlZCBieSB0aGUgU2FzaGlrbyByZXZpZXcpLgo+IC0gdGhpcyBhbHNvIHJlbW92ZXMgdGhlIGZh
-aWxpbmcgc3RlcHMgYmVoaW5kIGR3X3BjaWVfaG9zdF9pbml0KCksIHNvCj4gICAgdGhlcmUgaXMg
-bm8gZXJyb3IgcGF0aCBsZWZ0IHRoYXQgd291bGQgcmV0dXJuIHdpdGggdGhlIHJvb3QgYnVzCj4g
-ICAgcmVnaXN0ZXJlZCBhbmQgdGhlIHJvY2tjaGlwIHN0cnVjdHVyZSBhYm91dCB0byBiZSBmcmVl
-ZCAoZmxhZ2dlZCBieQo+ICAgIHRoZSBTYXNoaWtvIHJldmlldykuCj4gCj4gQ2hhbmdlcyBpbiB2
-MzoKPiAtIHNwbGl0IGRldm0tbWFuYWdlZCBwYXJ0IGludG8gYSBzZXBlcmF0ZSBwYXRjaAo+IAo+
-IENoYW5nZXMgaW4gdjI6Cj4gLSBNb3ZlZCB0aGUgb2ZfaXJxX2dldF9ieW5hbWUoKSBsb29rdXAs
-IHRoZSBJTlR4IGlycSBkb21haW4gY3JlYXRpb24KPiAgICBhbmQgdGhlIGNoYWluZWQgaGFuZGxl
-ciBpbnN0YWxsYXRpb24gb3V0IG9mIHRoZSBob3N0IG9wcyAuaW5pdCgpCj4gICAgY2FsbGJhY2sg
-aW50byByb2NrY2hpcF9wY2llX2NvbmZpZ3VyZV9yYygpLCByaWdodCBhZnRlcgo+ICAgIGR3X3Bj
-aWVfaG9zdF9pbml0KCksIGFzIHN1Z2dlc3RlZCBieSBOaWtsYXMgQ2Fzc2VsLiBUaGlzIHN1cGVy
-c2VkZXMKPiAgICB2MSBwYXRjaCAxLzIsIGFzIC5pbml0KCkgbm8gbG9uZ2VyIGNyZWF0ZXMgdGhl
-IGlycSBkb21haW4sIGFuZAo+ICAgIHJlbW92ZXMgdGhlIHJvY2tjaGlwX3BjaWVfaG9zdF9od19p
-bml0KCkgaGVscGVyIGZyb20gdjEuCj4gLSBNYWRlIHRoZSBJTlR4IGlycSBkb21haW4gZGV2bS1t
-YW5hZ2VkIHdpdGgKPiAgICBkZXZtX2lycV9kb21haW5faW5zdGFudGlhdGUoKSBhbmQgdW5pbnN0
-YWxsIHRoZSBjaGFpbmVkIGhhbmRsZXIKPiAgICB0aHJvdWdoIGEgZGV2cmVzIGFjdGlvbiwgYWRk
-cmVzc2luZyB0aGUgcHJvYmUgZmFpbHVyZSBsZWFrIGFuZAo+ICAgIHVzZS1hZnRlci1mcmVlIGZs
-YWdnZWQgYnkgdGhlIFNhc2hpa28gcmV2aWV3Lgo+IAo+ICAgZHJpdmVycy9wY2kvY29udHJvbGxl
-ci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jIHwgMjcgKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0t
-Cj4gICAxIGZpbGUgY2hhbmdlZCwgMTMgaW5zZXJ0aW9ucygrKSwgMTQgZGVsZXRpb25zKC0pCj4g
-Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2No
-aXAuYyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+IGlu
-ZGV4IDE0OTc2ODYuLmJkODZlMzJjIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xs
-ZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIv
-ZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+IEBAIC00MjIsMjMgKzQyMiw5IEBAIHN0YXRpYyB2b2lk
-IHJvY2tjaGlwX3BjaWVfc3RvcF9saW5rKHN0cnVjdCBkd19wY2llICpwY2kpCj4gICBzdGF0aWMg
-aW50IHJvY2tjaGlwX3BjaWVfaG9zdF9pbml0KHN0cnVjdCBkd19wY2llX3JwICpwcCkKPiAgIHsK
-PiAgIAlzdHJ1Y3QgZHdfcGNpZSAqcGNpID0gdG9fZHdfcGNpZV9mcm9tX3BwKHBwKTsKPiAtCXN0
-cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCA9IHRvX3JvY2tjaGlwX3BjaWUocGNpKTsKPiAt
-CXN0cnVjdCBkZXZpY2UgKmRldiA9IHJvY2tjaGlwLT5wY2kuZGV2Owo+IC0JaW50IGlycSwgcmV0
-Owo+IC0KPiAtCWlycSA9IG9mX2lycV9nZXRfYnluYW1lKGRldi0+b2Zfbm9kZSwgImxlZ2FjeSIp
-Owo+IC0JaWYgKGlycSA8IDApCj4gLQkJcmV0dXJuIGlycTsKPiAgIAo+ICAgCXBjaS0+ZGJpX2Jh
-c2UyID0gcGNpLT5kYmlfYmFzZSArIFBDSUVfVFlQRTBfSERSX0RCSTJfT0ZGU0VUOwo+ICAgCj4g
-LQlyZXQgPSByb2NrY2hpcF9wY2llX2luaXRfaXJxX2RvbWFpbihyb2NrY2hpcCk7Cj4gLQlpZiAo
-cmV0IDwgMCkKPiAtCQlkZXZfZXJyKGRldiwgImZhaWxlZCB0byBpbml0IGlycSBkb21haW5cbiIp
-Owo+IC0KPiAtCWlycV9zZXRfY2hhaW5lZF9oYW5kbGVyX2FuZF9kYXRhKGlycSwgcm9ja2NoaXBf
-cGNpZV9pbnR4X2hhbmRsZXIsCj4gLQkJCQkJIHJvY2tjaGlwKTsKPiAtCj4gICAJcm9ja2NoaXBf
-cGNpZV9jb25maWd1cmVfbDFzcyhwY2kpOwo+ICAgCXJvY2tjaGlwX3BjaWVfZW5hYmxlX2wwcyhw
-Y2kpOwo+ICAgCXBwLT5icmlkZ2UtPnJlc2V0X3Jvb3RfcG9ydCA9IHJvY2tjaGlwX3BjaWVfcmNf
-cmVzZXRfcm9vdF9wb3J0Owo+IEBAIC03MzEsNiArNzE3LDE5IEBAIHN0YXRpYyBpbnQgcm9ja2No
-aXBfcGNpZV9jb25maWd1cmVfcmMoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwKPiAgIAkJ
-CQkgUENJRV9DTElFTlRfU0VUX01PREUoUENJRV9DTElFTlRfTU9ERV9SQyksCj4gICAJCQkJIFBD
-SUVfQ0xJRU5UX0dFTkVSQUxfQ09OKTsKPiAgIAo+ICsJaXJxID0gb2ZfaXJxX2dldF9ieW5hbWUo
-ZGV2LT5vZl9ub2RlLCAibGVnYWN5Iik7Cj4gKwlpZiAoaXJxIDwgMCkKPiArCQlyZXR1cm4gaXJx
-Owo+ICsKPiArCXJldCA9IHJvY2tjaGlwX3BjaWVfaW5pdF9pcnFfZG9tYWluKHJvY2tjaGlwKTsK
-PiArCWlmIChyZXQgPCAwKSB7Cj4gKwkJZGV2X2VycihkZXYsICJmYWlsZWQgdG8gaW5pdCBpcnEg
-ZG9tYWluXG4iKTsKPiArCQlyZXR1cm4gcmV0Owo+ICsJfQo+ICsKPiArCWlycV9zZXRfY2hhaW5l
-ZF9oYW5kbGVyX2FuZF9kYXRhKGlycSwgcm9ja2NoaXBfcGNpZV9pbnR4X2hhbmRsZXIsCj4gKwkJ
-CQkJIHJvY2tjaGlwKTsKPiArCj4gICAJcHAgPSAmcm9ja2NoaXAtPnBjaS5wcDsKPiAgIAlwcC0+
-b3BzID0gJnJvY2tjaGlwX3BjaWVfaG9zdF9vcHM7Cj4gICAKCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Reading or writing a link state sysfs attribute after the upstream
+bridge's pcie_link_state has been freed triggers a NULL pointer
+dereference.
+
+This was first seen on a 6.12 based kernel by userspace stress testing a
+PCIe endpoint on an RK3588 EVB1 (Intel I350 dual-port NIC behind the
+root port). The same NULL pointer dereference exists in upstream and can
+be reproduced reliably on:
+
+  # lspci
+  00:00.0 PCI bridge: Rockchip Electronics Co., Ltd RK3588 (rev 01)
+  01:00.0 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01)
+  01:00.1 Ethernet controller: Intel Corporation I350 Gigabit Network Connection (rev 01)
+
+by running:
+
+  echo 1 > /sys/bus/pci/devices/0000:01:00.0/remove
+  cat /sys/bus/pci/devices/0000:01:00.1/link/l1_aspm
+
+Unable to handle kernel NULL pointer dereference at virtual address 0000000000000030
+Mem abort info:
+  ESR = 0x0000000096000004
+  EC = 0x25: DABT (current EL), IL = 32 bits
+  SET = 0, FnV = 0
+  EA = 0, S1PTW = 0
+  FSC = 0x04: level 0 translation fault
+Data abort info:
+  ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
+  CM = 0, WnR = 0, TnD = 0, TagAccess = 0
+  GCS = 0, Overlay = 0, DirtyBit = 0
+user pgtable: 4k pages, 48-bit VAs, pgdp=0000000106959000
+[0000000000000030] pgd=0000000000000000, p4d=0000000000000000
+Internal error: Oops: 0000000096000004 [#1]  SMP
+Modules linked in:
+CPU: 3 UID: 0 PID: 646 Comm: cat Not tainted 7.3.0-rc6-next-20261007-00007-gf2fe32674ebe-dirty #134 PREEMPT(full)
+Hardware name: Rockchip RK3588 EVB1 V10 Board (DT)
+pstate: 40400009 (nZcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+pc : l1_aspm_show+0x64/0x88
+lr : dev_attr_show+0x24/0x68
+sp : ffff800086f9bbf0
+x29: ffff800086f9bbf0 x28: ffff0001036c0000 x27: 0000000000000000
+x26: 0000000000000000 x25: 000000007ffff001 x24: 0000000000000001
+x23: ffff800081781630 x22: ffff0001008d3c00 x21: ffff0001053b9000
+x20: ffff0001020880d0 x19: ffff800082441c28 x18: 0000000000000000
+x17: 0000000000000000 x16: 0000000000000000 x15: 0000000000000000
+x14: 0000000000000000 x13: 0000000000000000 x12: 00000000ffffe000
+x11: ffff0001053b9000 x10: 0000000000c00010 x9 : 0000000000000070
+x8 : 0000000000000000 x7 : 0000000000000000 x6 : 000000000000003f
+x5 : 0000000000000040 x4 : 0000000000000000 x3 : 0000000000000004
+x2 : ffff0001053b9000 x1 : ffff800082441c28 x0 : ffff0001053b9000
+Call trace:
+ l1_aspm_show+0x64/0x88 (P)
+ dev_attr_show+0x24/0x68
+ sysfs_kf_seq_show+0xb8/0x138
+ kernfs_seq_show+0x2c/0x38
+ seq_read_iter+0x120/0x3e0
+ kernfs_fop_read_iter+0x60/0x188
+ vfs_read+0x200/0x2b8
+ ksys_read+0x74/0xe8
+ __arm64_sys_read+0x1c/0x28
+ invoke_syscall+0x44/0xec
+ el0_svc_common+0x8c/0xd8
+ do_el0_svc+0x1c/0x28
+ el0_svc+0x3c/0x98
+ el0t_64_sync_handler+0x84/0x12c
+ el0t_64_sync+0x198/0x19c
+Code: aa1f03e8 d503233f a9bf7bfd 910003fd (b9403108)
+ ---[ end trace 0000000000000000 ]---
+Kernel panic - not syncing: Oops: Fatal exception
+SMP: stopping secondary CPUs
+Kernel Offset: disabled
+CPU features: 0x0,70000000,0070002a,01180a42,0800e20b
+Memory Limit: none
+ ---[ end Kernel panic - not syncing: Oops: Fatal exception ]---
+
+The sysfs attributes are created for every device below the link, but
+the link state is freed by pcie_aspm_exit_link_state() when function 0
+of the downstream component is removed. A sibling function or a sysfs
+reader still holding a reference can then call into the show/store
+callbacks while pcie_aspm_get_link() returns NULL.
+
+aspm_attr_show_common(), aspm_attr_store_common(), clkpm_show() and
+clkpm_store() all dereference the link pointer unconditionally. Add the
+missing NULL checks, mirroring pcie_aspm_enabled(), and return -ENODEV.
+
+Cc: stable@vger.kernel.org
+Fixes: 72ea91afbfb0 ("PCI/ASPM: Add sysfs attributes for controlling ASPM link states")
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
+
+ drivers/pci/pcie/aspm.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
+index f8e6497..0e0ba0e6 100644
+--- a/drivers/pci/pcie/aspm.c
++++ b/drivers/pci/pcie/aspm.c
+@@ -1777,6 +1777,9 @@ static ssize_t aspm_attr_show_common(struct device *dev,
+ 	struct pci_dev *pdev = to_pci_dev(dev);
+ 	struct pcie_link_state *link = pcie_aspm_get_link(pdev);
+ 
++	if (!link)
++		return -ENODEV;
++
+ 	return sysfs_emit(buf, "%d\n", (link->aspm_enabled & state) ? 1 : 0);
+ }
+ 
+@@ -1788,6 +1791,9 @@ static ssize_t aspm_attr_store_common(struct device *dev,
+ 	struct pcie_link_state *link = pcie_aspm_get_link(pdev);
+ 	bool state_enable;
+ 
++	if (!link)
++		return -ENODEV;
++
+ 	if (kstrtobool(buf, &state_enable) < 0)
+ 		return -EINVAL;
+ 
+@@ -1836,6 +1842,9 @@ static ssize_t clkpm_show(struct device *dev,
+ 	struct pci_dev *pdev = to_pci_dev(dev);
+ 	struct pcie_link_state *link = pcie_aspm_get_link(pdev);
+ 
++	if (!link)
++		return -ENODEV;
++
+ 	return sysfs_emit(buf, "%d\n", link->clkpm_enabled);
+ }
+ 
+@@ -1847,6 +1856,9 @@ static ssize_t clkpm_store(struct device *dev,
+ 	struct pcie_link_state *link = pcie_aspm_get_link(pdev);
+ 	bool state_enable;
+ 
++	if (!link)
++		return -ENODEV;
++
+ 	if (kstrtobool(buf, &state_enable) < 0)
+ 		return -EINVAL;
+ 
+-- 
+2.7.4
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
