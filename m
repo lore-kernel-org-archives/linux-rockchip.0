@@ -4,127 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FFC3CA9ECE
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2026 23:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED14ACA9EC7
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Oct 2026 01:50:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FbudWjAL+I9Tp5F/kse8a0Piccb6YLFs/S5G8KaHEZg=; b=O4pxMgY/DJnylA
-	0DnjooRZVEIxiF5SzL03Q3gccheqVD6L0+lU7o/j3Bxyha4h/t14PtmMAEMH8j1GhzKK+iQdVmZoz
-	JaQDDRDRR7cifbooC0H65/mRiERGYm83HQvfrTVFG3MacZ6DTOGHvNezSUZ7BTtb6+HU8wXNmwWos
-	7mc69hFeo2n8Stu0ZsNkNGCBhgnBqeNl+jpLg74n3AcQc4SXoA618M6GS7UG4FRApGA0ZHMHhy0YG
-	JapEVH3o5mqsPP0/+Pc1NqtD57X4iH7QPx5EmA/4pdh8o7WNtkSvRmUCzxmOBGxiFejRJlttMKVxD
-	7+ZBaaaxk3lFHLcNs39Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Y61qe+QLOlKyT/gI3ex+opCYonGJEIq3gm2DyhhF/KA=; b=xkVicCJFN0pR+4
+	5SRW8Tdc+Xh6II0LbzRlQb6BIDCQdQpLn77+60Zl6dTmDaRYLmxaPJ3itvh9oFYOxfz3t7lAGFcQX
+	sZqJkvTeQeZG6AbxD5g4cqnKH3Z1eFpbFikLEtIYF1Tqs3yCZWRkBZRy13wF5hQQl3Zj9dabXXws9
+	WpfpE9iWz73oaCdZMWtHSdNvnNCO9cXaVpE6Tl3gHx0/6yA7HCdtUDNsUrHgn+wawV2kg8uWe5YwE
+	ygu08zMn9qVTDOavuMggUDxYHpBEGXsvYVn0KYj/qo/E4PJonje64g6doiUlmntYhn63/0S95GPVr
+	0YwKyZccu/aQHoqKN6KQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFgVI-00000008XLg-12RY;
-	Sat, 10 Oct 2026 23:29:24 +0000
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+	id 1xFihC-00000008dKs-3sWk;
+	Sun, 11 Oct 2026 01:49:50 +0000
+Received: from mail-m60244.netease.com ([210.79.60.244])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFgVA-00000008X8J-1H6Q;
-	Sat, 10 Oct 2026 23:29:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vnrNR9iTQbIlWKTld4SCX+YAbVGU0RLSLf5npnFerhtnHCrA1zYJ0xidBxQjIsZNQuFb3/kGMM88u1ultJ1hmZ6BgtrlFv3P02mwyJwfAVOG0Hsb5UQ34ymB2VDygJbe1CHDuAXuZ4e+KOE16cf6wvvtUdSrL4Ja3cj1Nl+mfkA+fUH+8Ov8bTZPUL6Lq03lTfF0Svq6qvJOXPKrlKrcc2qEoK4IUFIMLsSZuficRHGhfGb3LlvRtA0kiq4z84SHS7Qm5fAINnL3fXlkk8VJ0HCG77WSD+1G8gFKcacA0drKxUVKhckVDUaCCVrkwXYIGxUv9jNqPXOVxbciReeCIA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3nib+XQhHn46elPT55aySIvy1nFy+5k86DfpGBdSRo4=;
- b=vwqq/JPKaVU+UIuac4eG7ceg7MxirOUxbUuRxg0C/ZeJhAaCNBEKaBGDPJWPGV39+oWJMG8tbc4ipYoHVGMt48yZDmf3p1/9h+7j1bd0gAN1ZeBlnYSFHF1uA/R9DldS90INZUM/ISYdWZD/bL7nOYhUoMikY2CtPCgukyFD67V12KEwLoVUbhaN1zhaI8xuNCuaDlNIfmtQ2rJv5alg8VSVlB8Oq4OsZnIRo9zGBeAsZiRr2rgiQ9dSrNHX2ajFZqh+Ta6yV6SefLN9F1xfZjeFQ+sD79hkG1zMAULhs6Ak9OveaukFs7Nkx97E6usDDYAqbxSPMEjzzqRpHSHj2g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=crepuse.com; dmarc=pass action=none header.from=crepuse.com;
- dkim=pass header.d=crepuse.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crepuse.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3nib+XQhHn46elPT55aySIvy1nFy+5k86DfpGBdSRo4=;
- b=RV/YMVe7rhO6z3aWBotymcNznhZKGqOZaaKPZ869qK2AMOhIVzMVBfymem1DX8ziOVRTBK7uOTxwZB6qaeqyT8qYw+72ovjugrJ0fMJQB2vwHWM3Bewn2/aCCE5na0sFFc721Ur2T8qEEWncatFewktNaI8R9T6kMlFdUp4Nx8cksT6yskK5WO71SjwfaqLsVMqHU+3wdPIjU/TreHyY7i/5ZMYiiIFKgNsIsLnM7AmId9xc1Mun9KxYA0icT4mgt5q1cehc4sKgiAzMuCcQpDXmU0LBhugwFZPsaW0zz+X62gXzieXLElcVyey6f8r3NuYabPqjkVcRtKY4i0z8xA==
-Received: from KUYPR01MB8186.apcprd01.prod.exchangelabs.com
- (2603:1096:d10:8d::16) by TYZPR01MB4380.apcprd01.prod.exchangelabs.com
- (2603:1096:400:1d0::13) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.20; Sat, 10 Oct
- 2026 23:29:10 +0000
-Received: from KUYPR01MB8186.apcprd01.prod.exchangelabs.com
- ([fe80::fe2d:77d4:b78a:358a]) by KUYPR01MB8186.apcprd01.prod.exchangelabs.com
- ([fe80::fe2d:77d4:b78a:358a%4]) with mapi id 15.21.0496.018; Sat, 10 Oct 2026
- 23:29:10 +0000
-From: Miotsuki Mizuno <founder@crepuse.com>
-To: "heiko@sntech.de" <heiko@sntech.de>
-CC: "conor+dt@kernel.org" <conor+dt@kernel.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "robh@kernel.org" <robh@kernel.org>
-Subject: [PATCH] arm64: dts: rockchip: Enable touchscreen on UNIHIKER M10 V1.2
-Thread-Topic: [PATCH] arm64: dts: rockchip: Enable touchscreen on UNIHIKER M10
- V1.2
-Thread-Index: AQHdWQ8miAWIfw64yEyob26Vhs9d7A==
-Date: Sat, 10 Oct 2026 23:29:10 +0000
-Message-ID: <20261010232908.26968-1-founder@crepuse.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=crepuse.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: KUYPR01MB8186:EE_|TYZPR01MB4380:EE_
-x-ms-office365-filtering-correlation-id: 3b2778aa-d255-4a8d-e7d7-08df27264962
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|23010399003|1800799024|366016|376014|10067099003|261009223027099003|38070700021|6133799003|18002099003|56012099006;
-x-microsoft-antispam-message-info: Qzc2of2vcb6Xiu9S/PG5d+IINRRHILJD918OcqMZEdFFwSeloiINDuNgEibInSdhcEldE7uX6gD1LMRYSVZJwkwQZfSW1dAR7zKo6k9eip7oi4QH8JlKiLZFwSKcrQ8sKobZavJLI2UYLVltVsQSaPdf7gZmwV9d2dZOMLVcOTJhSv46wWJvvAJ0Wc1I80RGz3nHAcT/evJT9S+31E66KC5OYv8CVcZGbte/fyJS/xzuCqWhVNIl2P4i2oBTRtGTL3S5xowblA+m0gDQYUsu4Gegeleiyl021hcYcMQTHQWNcMMRzVdyzXxP7SivPDgIfQFCyWUdacZlRtHvkSGZzSv51jqCG3lzb21D8mxOT7rMyXN68+5prXHE9VwMRfHXfogNul8G40vJgat7b8CzKQoaCPvKwZDl7USCSjVDZlNxWv+Op/OrCdRbUmsxhoK9s1sB5cnSnrK7O0wcM10OtwSOHjYmIed/BpC+0iVDFiB98CcxLVcoNGsJIOm5Nr7rFSDx3+EJ8fWSkBeSOQNirmxiHJR62AuWqY9haHvo3dOUw0hnrHxQl+mpKCkOKCUL0mGfTRiqZ/gagVCcxIRVEEwvhPVBA8iIIbPDLdIBrIYzr9c2QbkvARj5WnYGjsrRnBtlNqOg8pOgUOi3J5NuJRezErKkxfNoz974fKmSPWuOWrlyB0+n4ryF9bg4hOf9M9m9WI9g6n0L/4HKual9b4tOLv4oOzKMoVFAbKm4yMg=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KUYPR01MB8186.apcprd01.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(1800799024)(366016)(376014)(10067099003)(261009223027099003)(38070700021)(6133799003)(18002099003)(56012099006);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?mt6ezFpoAbDKiJa1kxpLaFLWZFXBtzLX1gRpAXTH0EnV2sAh+6HCyikv7h?=
- =?iso-8859-1?Q?aIsR3oATre9WmoKmBWwexluMvdIRruzZRXa7wloLps1Hz/DVDQirFPhY9d?=
- =?iso-8859-1?Q?QvlGbRSe2laVtcB4FlnwTYdKoqqR/vf7q9Qh8dUfwtzhQquPnXkSQgXF7E?=
- =?iso-8859-1?Q?JVbxcvWylMY3oMecod8N4EIY2YGxzl9iNTBcPXlyt3UMWejO9UYRcGXF6K?=
- =?iso-8859-1?Q?uoPgByvMwY9eS+4mcqCq7QD3dmkJAwDuNFk2Agz13I5wU+1ZC/xP/R7nJV?=
- =?iso-8859-1?Q?BqNcmx1sF3VqttknzaycsrdhP7eW7Da+3WGqEYgKB7lrycB39E0K6QHyo0?=
- =?iso-8859-1?Q?KSUwdKB89kZj8VxHvO02AxSRzOu4TXJgQ1IdTFSpsfplngY7ekA1B+agN2?=
- =?iso-8859-1?Q?BS4xnsE3f3Bk+ht8RHV/LskhnQvpvngEFiYq7gRzi2fOmlUp3++34Iou+j?=
- =?iso-8859-1?Q?tDs0sokGtYrjlxHIaQXKufpmdxfSC2J2uspwfUyHVX3mzHlpaZcADZhMmT?=
- =?iso-8859-1?Q?iStHtM2kVYQ3YpFqqAtpV4XTxZgIP2/Q9qCixo7OUlusQ64V2xtV8UnDwH?=
- =?iso-8859-1?Q?NmD25+fFQ53kOBCEs+34y2t4zqXH6WAXZS/bw37acLlBPs8gFWROq2FTLr?=
- =?iso-8859-1?Q?BBwF93spM15CGqfkIUcpQpZ72HsjFaPDCdcT1w1bz5qrrdkJeilpWorvjl?=
- =?iso-8859-1?Q?EEvEVU2RPmhh+YnslRxqjscFl8jm0L4AmHnXrRN2JPsbveDQ60qE3GGHjp?=
- =?iso-8859-1?Q?X3kpPOm6UgpR5rnpcXlblt3BWofNtgk/PnHtE33tPDrc06VeNKmA7CxG0g?=
- =?iso-8859-1?Q?zgAss3hNgNDsZt4YsDDj/T2xsvAbUP6HC6mO+HNcubXnbHgVFqQdAPOrVT?=
- =?iso-8859-1?Q?0Bie0cP4TVtKMMh/qcUz6QPqlZDONzruIYsOPUPyVmrcioub/wvv06Fww3?=
- =?iso-8859-1?Q?gJoJr7QYmD2gcy0+u/VY6G2ybezu5j79NnWl98OPXVa+9f4PfihV6dk1SP?=
- =?iso-8859-1?Q?r9STq54701wN89Qb//LN86Gq8i+Lnl7Zoz8ru4kJwDpF8q83goOYfd+2EQ?=
- =?iso-8859-1?Q?P9k0oP7PxmBN9RF0wj5KcnQVperBu2fgt/wwTxxKR1K+Jx2/a+tlXiuucr?=
- =?iso-8859-1?Q?1kUAbYJmy39YdokbuycsY4cLudUh/JhLohR3pEffbBHi7Ge0NkHeMF8AKq?=
- =?iso-8859-1?Q?QS5ER/sx1ImXhLEuXvsx+rtMZ6FGnUAtd2mQB+o9mnoKiH+9FXAd1Icgdw?=
- =?iso-8859-1?Q?jMbrUUuYxciIpIykZqrYHROMAdhMcmO3KJS4RkfxgCBG7wduuZ8IgIEbp2?=
- =?iso-8859-1?Q?g5R0Z0H4tjPe1lz/vLD7WvxcbNmEaBnu1C30OfQ/37bD5xX04y2ECxluiv?=
- =?iso-8859-1?Q?d1nBAihmM7uY09QfmyuS9x/PtF74dQvX3Ou484pk/1lGwv7MPws8G3kXCd?=
- =?iso-8859-1?Q?fmEIr+DnQJm4CTsJNGuaHamWPXXSM1OU2D+Tzm2xWPr1XC/p9Bk6yD6Nnp?=
- =?iso-8859-1?Q?AT7iq2H8YcVtAGRKK3TkT8E3g1K25dfJswVLIe846vkNsDsq1Q3aBNQJiO?=
- =?iso-8859-1?Q?agBxNxYlPvlIxlZVS/1JD/3fr7hg0FN/nT9j87f/PXzlm2dTGMdI3im2MI?=
- =?iso-8859-1?Q?uf4DzyBGOUcQGT93Sk5L0sHSzjhF84tkRsh0xgICewMKcfzt897hSX/+81?=
- =?iso-8859-1?Q?HEpdkgQN8OELwlKXdOgalipAJccNpvWSYf+jMa0b9Y2v8KopMEzT2A+MMU?=
- =?iso-8859-1?Q?J3U6RDwrc4YwjyDQVE1ujOZL/0k4x7iI/xhsla4kraKk6E?=
+	id 1xFih8-00000008dKM-3X5Y;
+	Sun, 11 Oct 2026 01:49:50 +0000
+Received: from [172.16.12.48] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 5097b761b;
+	Sun, 11 Oct 2026 09:49:39 +0800 (GMT+08:00)
+Message-ID: <8bf7a001-8b65-4129-8b41-a2986bb78643@rock-chips.com>
+Date: Sun, 11 Oct 2026 09:49:39 +0800
 MIME-Version: 1.0
-X-OriginatorOrg: crepuse.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: KUYPR01MB8186.apcprd01.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3b2778aa-d255-4a8d-e7d7-08df27264962
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Oct 2026 23:29:10.2375
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 9e189589-0b8b-4283-80ca-b0157c0a04fa
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: omVew64FUv/0zARFU2EYQUbXqUHt0Kpdh0RKH/l2FoiVhlMkxQH4P8p+fk4yH8MkzYJwFzwfSeutUpZ9J68z6A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR01MB4380
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable HS400 enhanced strobe on
+ Kobol Helios64 eMMC
+To: iav@iav.lv, Heiko Stuebner <heiko@sntech.de>
+References: <20261011-b4-helios64-emmc-hs400-v1-1-36951d319229@iav.lv>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <20261011-b4-helios64-emmc-hs400-v1-1-36951d319229@iav.lv>
+X-HM-Tid: 0aa128a6c25703a4kunm693df481f314c
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCH0JPVkoZQ0lJTE0YTh5PSVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=DunVzkjct1HK2gDhGF78vAGWOTvXmbTFQCh7jdOS9zME+63fNyXovf246jrlLtHymCuh7IhBhE6hXj7e22ZxFXxNQRR65irjZ3/7IU3Y41SWAfKeJWwf5C0gppNIqzSez7L2SkUBt7yRgAX2XFZGGv4ZhPowE9pEnx+s9w7iurY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=1i8L10GRky4bG22WnSj3l/2lPWD2x42vP1059qe6SY4=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_162916_352032_96B41DF0 
-X-CRM114-Status: UNSURE (   7.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261010_184947_463102_70ACF2EA 
+X-CRM114-Status: GOOD (  16.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,67 +68,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Describe the onboard NS2009 resistive touchscreen at I2C2 address 0x48.
-Use the tested inverted Y direction and raw Z1 contact threshold of 150.
-Retain the native 12-bit ADC coordinate range.
-
-The I2C2 controller is enabled by a separate board preparation patch.
-This device node is independent of the display binding and DTS changes,
-and depends on the separately submitted NS2009 binding and driver.
-
-Link: https://lore.kernel.org/r/20261009144729.85832-1-founder@crepuse.com
-Signed-off-by: Mizuno Miotsuki <founder@crepuse.com>
----
-
-This board patch depends on the common I2C2 preparation commit and the
-separately submitted NS2009 vendor-prefix/binding series. Those NS2009
-dependencies are not in the pinned Rockchip tree; only the validation
-branch imports them unchanged. The display series has no such dependency.
-The prerequisite I2C2 board patch was submitted separately:
-https://lore.kernel.org/r/20261010232831.26908-1-founder@crepuse.com
-
-Validation: native DTS build passed, but native dt-validate -m reports
-an unmatched NS2009 compatible. With submitted dependencies, target
-CHECK_DTBS=y, direct dt-validate and binding example checks passed.
-The exact combined DTB booted normally; the tester confirmed touch
-direction and operation. Capture: nine down/up pairs, 208 frames, no
-SYN_DROPPED, final released. One E0 ff ff invalid sample (-EIO) was
-recorded; this is disclosed for review of the pending NS2009 support.
-Deep suspend and calibrated five-point coverage are not claimed.
-
- arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts b/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
-index 0c03f118378a..7ae3cc8a86e0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
-@@ -134,6 +134,13 @@ &emmc {
- &i2c2 {
- 	clock-frequency = <400000>;
- 	status = "okay";
-+
-+	touchscreen@48 {
-+		compatible = "nsiway,ns2009";
-+		reg = <0x48>;
-+		touchscreen-min-pressure = <150>;
-+		touchscreen-inverted-y;
-+	};
- };
- 
- &io_domains {
-
-base-commit: f4f7ecd2e0e8debcbab4789717cc79d570d665e3
--- 
-2.56.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+5ZyoIDIwMjYvMTAvMTEg5pif5pyf5pelIDU6NTIsIElnb3IgVmVsa292IHZpYSBCNCBSZWxheSDl
+hpnpgZM6Cj4gRnJvbTogSWdvciBWZWxrb3YgPGlhdkBpYXYubHY+Cj4gCj4gVGhlIGVNTUMgb2Yg
+SGVsaW9zNjQgcnVucyBpbiBIUzIwMC4gUnVuIGl0IGluIEhTNDAwIGVuaGFuY2VkIHN0cm9iZSBh
+dAo+IDE1MCBNSHosIGFzIG9uIEdydS4gVGhlIHN0cm9iZSBsaW5lIGdvZXMgc3RyYWlnaHQgZnJv
+bSB0aGUgU29DIHRvIHRoZQo+IERTIHBpbiBvZiB0aGUgZU1NQyB3aXRoIG5vIHB1bGwtZG93biBv
+biB0aGUgYm9hcmQsIHNvIGVuYWJsZSB0aGUgb25lCj4gaW4gdGhlIGVNTUMgUEhZLgo+IAoKUmV2
+aWV3ZWQtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgoKPiBBc3Npc3Rl
+ZC1ieTogTExNCj4gU2lnbmVkLW9mZi1ieTogSWdvciBWZWxrb3YgPGlhdkBpYXYubHY+Cj4gLS0t
+Cj4gU2NoZW1hdGljLCBzaGVldCAxNDoKPiBodHRwczovL3dpa2kua29ib2wuaW8vaGVsaW9zNjQv
+ZmlsZXMvc2NoZW1hdGljcy9IZWxpb3M2NF9TY2hlbWF0aWNzX1JldjEuMi5wZGYKPiAKPiBUZXN0
+ZWQgb24gbWFpbmxpbmUgd2l0aCB0aHJlZSAyIEdpQiB3cml0ZSBhbmQgcmVhZC1iYWNrIHBhc3Nl
+cywgbm8KPiBlcnJvcnMuIFJhdyByZWFkcyBnbyBmcm9tIDE4MCBNQi9zIGluIEhTMjAwIHRvIDI0
+NyBNQi9zLiBXaXRob3V0IHRoZQo+IHB1bGwtZG93biwgd3JpdGVzIGRyb3BwZWQgdG8gYWJvdXQg
+MSBNQi9zIHdpdGggcmVwZWF0ZWQKPiAibW1jMTogcnVubmluZyBDUUUgcmVjb3ZlcnkiLgo+IC0t
+LQo+ICAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkta29ib2wtaGVsaW9zNjQu
+ZHRzIHwgNCArKysrCj4gICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspCj4gCj4gZGlm
+ZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWtvYm9sLWhlbGlv
+czY0LmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWtvYm9sLWhlbGlv
+czY0LmR0cwo+IGluZGV4IDYzYWQ3OWI0YzhhYy4uZjc4NDgyYzRjMjg1IDEwMDY0NAo+IC0tLSBh
+L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWtvYm9sLWhlbGlvczY0LmR0cwo+
+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWtvYm9sLWhlbGlvczY0
+LmR0cwo+IEBAIC0zMjAsNiArMzIwLDcgQEAgJmNwdV9sMyB7Cj4gICB9Owo+ICAgCj4gICAmZW1t
+Y19waHkgewo+ICsJcm9ja2NoaXAsZW5hYmxlLXN0cm9iZS1wdWxsZG93bjsKPiAgIAlzdGF0dXMg
+PSAib2theSI7Cj4gICB9Owo+ICAgCj4gQEAgLTU4Niw4ICs1ODcsMTEgQEAgJnNhcmFkYyB7Cj4g
+ICB9Owo+ICAgCj4gICAmc2RoY2kgewo+ICsJYXNzaWduZWQtY2xvY2stcmF0ZXMgPSA8MTUwMDAw
+MDAwPjsKPiAgIAlidXMtd2lkdGggPSA8OD47Cj4gICAJbW1jLWhzMjAwLTFfOHY7Cj4gKwltbWMt
+aHM0MDAtMV84djsKPiArCW1tYy1oczQwMC1lbmhhbmNlZC1zdHJvYmU7Cj4gICAJbm9uLXJlbW92
+YWJsZTsKPiAgIAl2cW1tYy1zdXBwbHkgPSA8JnZjYzF2OF9zeXNfczA+Owo+ICAgCXN0YXR1cyA9
+ICJva2F5IjsKPiAKPiAtLS0KPiBiYXNlLWNvbW1pdDogZDJhYmNiYjkwNWIwZTRiMmUwNmIyNTdm
+YTFlNWJjZjRmYWE2ZGJkYQo+IGNoYW5nZS1pZDogMjAyNjEwMTEtYjQtaGVsaW9zNjQtZW1tYy1o
+czQwMC05Yzc4NGYzNWQ4ZGQKPiAKPiBCZXN0IHJlZ2FyZHMsCgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
