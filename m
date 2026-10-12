@@ -4,48 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FC1ACA9ED1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2026 10:20:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 912F8CA9EC5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2026 12:17:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=AlI5jFKFuYKSpptyfEWa6zbBWkOxjfp3vV4+b27fvJM=; b=FtCT+Mf8P6MGHc
-	t8wxcSVvEW9dlK5xKmwi7GMGdx9xNHJpg4VFxm4x0d4Ni402QKeGFgpb5r++pXGg05W60mVKcg2fq
-	znhPC1rF1YvKBQBgSdso2ffm5fkei2lsKi0V4lt6kNcRk9GYv7QTC418m+4zBU14Vtl53NQ8PC/ye
-	cLNsgj7IfLO7DLbP5uQW2qRLgmrMFsaFkNBVMlU7N+GPyCCbZx9PL0P8ZiXud9uEOrReU9gsQMoxe
-	VQCLd7Ux2EiwDm/TzTJX0LDp4INrHvuHxxCCq5stMh7lROqLDNsVGgjm5aQsHFf+Q2WElwjzyyyvz
-	VOYvNxtepYpoIIlj81Ww==;
+	List-Owner; bh=P200of4FPtZ41fI9DlOlfLHN9VWK8UF8IUk4Tc8J2ZQ=; b=QWkmj8P75qhR0D
+	9YSxXaoJbpODM4UwOg+w9KL5PU7nsv7EwemcEaMYvhJUQszPuqXsvJQlBU92Z02zI6IZ4Rn2FNOGn
+	WzTAK53zYpC8XoLdoo1MT0LCJGAyI6c6KvQWRTADDYpnbn/nuPc/8yqZ40H8KQj6eMjuLmgEMkiqE
+	rO3TK0+WrnonIMK7FOi0XBGCWEjPGohVMCMGgHHms9Oea6PPTbKGBwSu8lDTJA19RTtgH+PJX5SHu
+	gU32IrNsmqskAeYYJHZQyefbFVSGBUL+8G0CdpgccqvlS+6Lb/2SnVe4kkclavjP3/hTyhO2AYsL4
+	uz/d44cn8dlwfh0EVwhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGD93-0000000ACCF-3Kh0;
-	Mon, 12 Oct 2026 10:20:37 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xGEyP-0000000AQQ8-3hih;
+	Mon, 12 Oct 2026 12:17:45 +0000
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGD92-0000000ACBj-0341;
-	Mon, 12 Oct 2026 10:20:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=SLBCl332laY7zsY7WJDeYl95lbnGzbtwn7xkysuYFDY=; b=AP3JnuKHpnMXLw5lodkNehn9nC
-	3KSJ7dp/QPaqGJXpGcCJcbH7yMxZeEHQYZO1VMMG+qOR6xoGuOhGG8CxnY6EolSt2shvXolwR6+CO
-	W1QEqY2ami7Z05VV2RZc744QwbNiaZuqMJymisc5GttqCtmavhM/6jhsA1NQV3TN8SH8TnR5pmPgM
-	wh1poFKu1igGaX2bWQ3xI4SVT/M5edhmqNn4atYbAziflHCpfp52eYTZdJMFRRx1WdZugW2BJj624
-	8r69CQ/yw2nzu0YyIp7l76toeTwvCo22wyfBqC7NBguoPoB7r2jX5T1pRVVwfHrr7/1BHFR2TkXBC
-	Ayv9O/Hg==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts64 changes for 7.4 #3
-Date: Mon, 12 Oct 2026 12:20:30 +0200
-Message-ID: <2330337.ZfL8zNpBrT@phil>
+	id 1xGEyK-0000000AQL9-47vc;
+	Mon, 12 Oct 2026 12:17:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=yyV8BPCyZ2pw7eV+2hcUJM0YyUU86gs4x8HzNhZxn94FvxK9Y69JxeO4pIbaoGBqcxCc2uTVGEkbEOkobkpAFiqre7gJ3wmMh7u0+pu/hYeufFTOGDtfiqtVZvdV0npjNix1gKcjFgRYXm0Aai0I6VSYe7A3MV+TMDrldkh4wxteD+rFVslGyImNsRFxRQnEopb5aazTKLTAS7ndi+TVqZQnMhV3oa++0PjXKlGqJHjKKbUCsfN64q/RCc5xul195WqrufkjUolrQC9I/8tyw1o3WVyLR+ANDfvppawxyHK77YkeLLeyfLUcl1U79TTM/cFrd0k+Gb7R2lhFRLCG+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kBn9xMEd7nl4v8mIBfhuQucdIoRf1k4cWjKiIqvp+8M=;
+ b=cwCYHXEm5S20V4KBES3HF9/bdpJcdLONRkIhEhfuiST86Qb00b0+aaXj4fGohO//0qEDP07aMqPSBGMpfBGxX4aYdcRjFbomdJRHIwRrzZk0jjRdzaREGyjipRlHL5FYnSY8Kvy35K4ZpI7vLXuIiUP3eta9qhG7uzIMnx/P3LDMQSLXU4x7qhe7/qaLoqthEZd+PYR5OfFHvyylH5VNhUh/SDy6H3JbTNI9NbMTdauHppJvEa25PPwMWjKFpVNfKoR2IarAnl+JqUd+F3oucrBk6mBU3TPZLPFrnEiMkOSqktnsQ7vI5SHK8YL5FEg7ZlaQOXpKEVYCINZQtEzIUA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=crepuse.com; dmarc=pass action=none header.from=crepuse.com;
+ dkim=pass header.d=crepuse.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crepuse.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kBn9xMEd7nl4v8mIBfhuQucdIoRf1k4cWjKiIqvp+8M=;
+ b=lpTsRVARhkyKmJjOvhEwoSGbdsvQ2HF4A0du70PFDKbo3nkZnFnY3Rn0NKme8K/XhfY5nmXu0eQYgPVTS1LsG6xS/GKOT3/PIjiA3lJGGIctmL8kCSBFfnk34MgumT51/nmpk6Allj0u4HI1Rexs8Y0recus8rt40O+dDyx4rALYj0oDdNFInqpThZBcH/ovxR00T6BRXsW1idIG7GD/O6YvWUyAcJh9b1f7uziugXOLwnZbxsTcIr9/d9T87KefO7uKUhSi1zM3Q/YFOdIRc4a5QvzTwtmLqlKu3ya4XO3u9/qobjHtsGjkUaUBBhevLeG5e/8xtM1AKZJn5KrvHQ==
+Received: from KUYPR01MB8186.apcprd01.prod.exchangelabs.com
+ (2603:1096:d10:8d::16) by TY2PPF1753F85B8.apcprd01.prod.exchangelabs.com
+ (2603:1096:408::389) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.21; Mon, 12 Oct
+ 2026 12:17:18 +0000
+Received: from KUYPR01MB8186.apcprd01.prod.exchangelabs.com
+ ([fe80::fe2d:77d4:b78a:358a]) by KUYPR01MB8186.apcprd01.prod.exchangelabs.com
+ ([fe80::fe2d:77d4:b78a:358a%4]) with mapi id 15.21.0496.020; Mon, 12 Oct 2026
+ 12:17:17 +0000
+From: Miotsuki Mizuno <founder@crepuse.com>
+To: "heiko@sntech.de" <heiko@sntech.de>
+CC: "broonie@kernel.org" <broonie@kernel.org>, "conor+dt@kernel.org"
+	<conor+dt@kernel.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-sound@vger.kernel.org"
+	<linux-sound@vger.kernel.org>, "luca.ceresoli@bootlin.com"
+	<luca.ceresoli@bootlin.com>, "robh@kernel.org" <robh@kernel.org>
+Subject: [PATCH v2 0/1] Enable audio on UNIHIKER M10 V1.2
+Thread-Topic: [PATCH v2 0/1] Enable audio on UNIHIKER M10 V1.2
+Thread-Index: AQHdWkOfvy0wg5W0UEG0uss1FK2C2g==
+Date: Mon, 12 Oct 2026 12:17:17 +0000
+Message-ID: <20261012121709.53418-1-founder@crepuse.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=crepuse.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: KUYPR01MB8186:EE_|TY2PPF1753F85B8:EE_
+x-ms-office365-filtering-correlation-id: 3df6c7bc-ff8f-418e-dd06-08df285ac1be
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|376014|1800799024|7416014|366016|23010399003|38070700021|56012099006|261009223027099003|10067099003|18002099003;
+x-microsoft-antispam-message-info: 5rGTkNlJqb7P7oqGx2o5/7c/yriBqcNAfJpCPaupVQCsxx/rS1ruEmdDkA0GC1xH2NOWJJeM8+LUTzuF+B5B38l2HmhTPDyvKrgQeFLpd0V5pZCtPXoZ0R4oBCqpOaBmMc5KBd85MonK641t3DaAY4Ywna/sYrSX2d1xqzbmxBe/9xEVQYcHFVwEYm1hBgtsyupEqEXZUsETG5lSQi2rnDmPlzn4ahIZCcmuNs3TQsxUomYQr/NXmu0mJkRIG1O9R38HBB2/wGRa/iJCGTekfsGtDPJFGcBIMP7+wfaOPqEuqzsDsPOh/dkbG2alEA3OKC9doO1n5r0LLAdLhUVlGgjOmMgRUoZYnRs/fNA4eyUkF7PxEJNcegD9gtT7+lnIzeP+2pmIRDqX016PRiQU+wslfBSkCPTEM9cr7OLK6hfCAC8lcX9fpN9IXMK20yVlCn9V9rbk/0bqZNTPoehn+t5AY3HQI+GFLv9fba6vJ8GgYZJvz7B9jJHsf8SkKXoozkj5+Ss/3rsSAfEfJLpfxjt33SSLxsHGmNi9mDRfdGA7X3+sRGP3fS2Gl/K5vBQH9yELnFIoXq6y7l7WubjXyeOX7CFxmTBl581b2pFfibo7y/jQ96upBQkk44TdhDk3HpEJNfy1/duc474/U4y0p88AXS/2XeWJeW3gDaF0CzrKnEXTH5qBR1+muYx3Qq6iJtEZ942w0yyQf+WQ4Q2m0g2OxD86NYEeyuvm4G0ySTo=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KUYPR01MB8186.apcprd01.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(7416014)(366016)(23010399003)(38070700021)(56012099006)(261009223027099003)(10067099003)(18002099003);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?EsOJA4xLhSHU2l48HSyePjF2ZLjpZBc2WhkWkyig4kajLtv8L7rHiHfNyV?=
+ =?iso-8859-1?Q?MpWlcmL+BVDp+zhLuELBMXvKHXMICACMVH2eBSmmaTTp6ToF4apZc4KQ2z?=
+ =?iso-8859-1?Q?MX3r42XcXIqzbhQ1mWEiYdM3Ujt7KMP5jYOsxYo650DyK/kpL/P5JIdpjD?=
+ =?iso-8859-1?Q?uQGIf9/c6L5Moi+d3ARkmG9d+xWzhdrwJGR7fMXpwD2mZmoi6U/2bk+1co?=
+ =?iso-8859-1?Q?cdUwCeMF4LZ2jDRYDErODtM8RjZ6/DNJlNLEzdG1FRGhm1AT+ROwWj+qi2?=
+ =?iso-8859-1?Q?lWdjJB3Fp0HXAbszNy77fZD1fdrgd3SVTZ7zJg9PxzVz5ukJuNQU9AzFy0?=
+ =?iso-8859-1?Q?LR/7o0c5t7qIfS4A9/qlwex5YOfEqebMp0Pm5vdUUJ/CGg/Fxnk2uT9P8t?=
+ =?iso-8859-1?Q?0+XgWBJ/sBjeibcOR5RYMyUO3SE06cmPvz+zx5xVK2uIvCgamcgIXL3Xx8?=
+ =?iso-8859-1?Q?ItYGMQ7M7wxg63BLjk06aFkEw7b0DbZywwoadi+escXdLzOITVxhKaAkDn?=
+ =?iso-8859-1?Q?rIgYrytW8hNdYUQKm+WxiguWTrEsZu0tAjIABAnqIEDom4eDRD80uCblTf?=
+ =?iso-8859-1?Q?Wm4PgqcM7XDxVZ2KzSxhlek4V0Ehiy4g28eX+WLY5k1mgdNULlF51dIQ1G?=
+ =?iso-8859-1?Q?L7cioGC7tARd0mHlYv+ucwEWu2nCWNxywj1ylo9DRUpb80XWk1shQMBpr8?=
+ =?iso-8859-1?Q?1rHXkUgUnTHzgeux5XYy4bQx6/DvYmfMzG4ucgWtgdOWKcVOvZ69pTWbFa?=
+ =?iso-8859-1?Q?kr88Eg3zyWJ6EE/dPjXbksXo5wtVTHWu03nhBNeDwPo7kKFX/H9+SbfcYt?=
+ =?iso-8859-1?Q?wPaZOXm7MS52aDBzcEK37yNNKIV9KdG9Zqsgbj8w6HSNJJXCcfeM/50wcQ?=
+ =?iso-8859-1?Q?FT1EuhKkacHBoz2OGw7vLb5LXdPNp7Qsncazy/UR3eCSos5L6Y7V6B2ki+?=
+ =?iso-8859-1?Q?KJC7w6gXTsrFQukT+DPOcWPQeA9NOxqbu+KsTEUlulLfdvkdylPAav9Fb/?=
+ =?iso-8859-1?Q?7uYnsZPlsq2wMaBOpQ7I/X7LSsmnU5kBUYFTTW9gJfzqZqBxnbAxYnyQ0E?=
+ =?iso-8859-1?Q?trr4oBpA4twYRDI+ML0/rReZ2bzifI8cC3X9iBS4ENTztka/w5fOt/CgC3?=
+ =?iso-8859-1?Q?WMDzKjX3rYwbAWlOW1InSWC8ob/L5HESNAsP556u4y0yCcYI1J+9Tyhsoe?=
+ =?iso-8859-1?Q?3ABs1S+fcKjQZdRXor6v9VCII+WSTKpwPtUSkLmaouvGFiOpvPLXvXCtOR?=
+ =?iso-8859-1?Q?NWrGiAOrqTeJyU/PNWcDMWVOqBbwvtrTLyhWMmnOqGgn2xba207e+WnjiM?=
+ =?iso-8859-1?Q?+rqOtNuksl/+MkodL1lS46t34kC0n9cCgc8TB9QKIW0GF/wJnYNR/cNapn?=
+ =?iso-8859-1?Q?pdpVY2RW+/tFEPkG1neweFZPPBP8Gn/Bhc/9cVfXvpqVoa0GCXXVhkTnP4?=
+ =?iso-8859-1?Q?wj4ZncBbKPUvbSAhVSX9OtE6mUN1+Zc2kNWWcjBLWXV8dGPfeIOTs0cTx5?=
+ =?iso-8859-1?Q?aHyFhDwkPH4jwtwhdmC/wusvwb4MwGdSLvR6lqd8ieWY7/oK7G7IZ4Zw66?=
+ =?iso-8859-1?Q?ldXs407FOpnC5mEYK602yyuH1JmS6L1h1/u/6J5giN4zV8QkKalZZ18mUb?=
+ =?iso-8859-1?Q?0ZeQ1m4T9mH+ScOCTCE5FpZDyKfi5ZlKvkJ43Zevea5YP/sstWWdpW9P5o?=
+ =?iso-8859-1?Q?o7jyMmD1tHg0sXNPRmScfM7HNOoBZTeBB/6jxqiMYjiNq1VLJcor7Ex7Nj?=
+ =?iso-8859-1?Q?2E1QR6u275UtYv5abpdpnyZGqwtmSeI0wvDi+pJxgKrN38?=
 MIME-Version: 1.0
+X-OriginatorOrg: crepuse.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: KUYPR01MB8186.apcprd01.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3df6c7bc-ff8f-418e-dd06-08df285ac1be
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Oct 2026 12:17:17.2059
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 9e189589-0b8b-4283-80ca-b0157c0a04fa
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: hfvzRGymbUhdEdy8K3MqkRuhRTAmikOb3HjFaRgqZ3ucmKJiNRY2Ol/w+tX719MFyTlhd+8bpCtKPXlbl8d8kQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY2PPF1753F85B8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261012_032036_101045_EA6BD5B8 
-X-CRM114-Status: GOOD (  15.50  )
+X-CRM114-CacheID: sfid-20261012_051741_028202_8D750B51 
+X-CRM114-Status: UNSURE (   6.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,136 +143,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi soc maintainers,
+Enable the internal codec, I2S2 and onboard microphone route. The board
+uses codec revision B; that driver support is already accepted in the
+ASoC for-7.4 tree as commit 157f7cba77a9. It is a runtime dependency,
+not a change to the existing codec binding.
 
-please find below some more Rockchip dt changes for arm64
-for the next merge window.
+Changes since v1:
+- Normalize author/sender identity and preserve it in the patch body.
+- Recheck ordinary and strict checkpatch in the actual Git repository.
 
-Please pull.
+Mizuno Miotsuki (1):
+  arm64: dts: rockchip: Enable audio on DFRobot UNIHIKER M10 V1.2
 
-Thanks
-Heiko
-
-
-The following changes since commit fa932a9b632ff0d80390b940e6aabe38ac305fe1:
-
-  arm64: dts: rockchip: Add MangoPi M28K (2026-10-01 00:22:48 +0200)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.4-rockchip-dts64-3
-
-for you to fetch changes up to ae965b9856f033145e292b0c29082a26bcc45efd:
-
-  arm64: dts: rockchip: Add Radxa E54C (2026-10-10 14:04:34 +0200)
-
-----------------------------------------------------------------
-New boards: Radxa E54C using the RK3582 (a production variant of the
-RK3588 where probably defective cores and gpus get disabled),
-DP-carrier for the RK3588-tiger SoM, NanoPi M6
-
-Interesting new peripherals: DPHY, CSI-2 and VICAP on RK3576 so all 3
-bigger current-gen SoCs (RK3568, RK3576, RK3588) can now receive camera
-data - yay.
-
-Apart from that a rename of the hdmi-audio-cards to allow actual alsa
-profiles to bind to something actually sane; and the regular bunch of
-board-specific peripheral enablement/fixes.
-
-----------------------------------------------------------------
-Amin Gattout (5):
-      dt-bindings: soc: rockchip: add rk3576 csidphy grf syscon
-      arm64: dts: rockchip: add csi dphy nodes to rk3576
-      arm64: dts: rockchip: add mipi csi-2 receiver nodes to rk3576
-      arm64: dts: rockchip: add vicap node to rk3576
-      arm64: dts: rockchip: add radxa camera 4k on rock 4d
-
-Chukun Pan (5):
-      arm64: dts: rockchip: fix adc button voltage on Radxa E52C
-      arm64: dts: rockchip: enable NPU on Radxa E52C
-      arm64: dts: rockchip: remove FRL GPIO for 100ASK DshanPi A1
-      dt-bindings: arm: rockchip: Add Radxa E54C
-      arm64: dts: rockchip: Add Radxa E54C
-
-Dennis Gilmore (1):
-      arm64: dts: rockchip: Use GPIO function for PCIe reset on Orange Pi 5 Pro
-
-Detlev Casanova (5):
-      arm64: dts: rockchip: Rename rk3328 HDMI audio card
-      arm64: dts: rockchip: Rename rk3399 HDMI audio card
-      arm64: dts: rockchip: Rename rk3566 and rk3568 HDMI audio cards
-      arm64: dts: rockchip: Rename rk3576 HDMI audio card
-      arm64: dts: rockchip: Rename rk3588 HDMI audio cards
-
-Heiko Stuebner (2):
-      dt-bindings: arm: rockchip: add RK3588 DP carrier from Theobroma Systems
-      arm64: dts: rockchip: add RK3588 DP carrier from Theobroma Systems
-
-Igor Velkov (2):
-      arm64: dts: rockchip: Add buttons to Kobol Helios64
-      arm64: dts: rockchip: Add the fan tachometers to Kobol Helios64
-
-Joachim Eastwood (12):
-      arm64: dts: rockchip: fix missing sdmmc cd pinctrl on rk3588s-nanopi-r6
-      arm64: dts: rockchip: fix missing pcie rst pinctrl on rk3588s-nanopi-r6
-      arm64: dts: rockchip: remove pull up on rtc int pin on rk3588s-nanopi-r6
-      arm64: dts: rockchip: add pcie2x1l2 clkreq on rk3588s-nanopi-r6
-      arm64: dts: rockchip: remove always-on and boot-on from vdd_npu_s0 reg on rk3588s-nanopi-r6
-      arm64: dts: rockchip: remove useless vcc_3v3_pcie20 from rk3588s-nanopi-r6
-      arm64: dts: rockchip: add gmac1 phy-supply to rk3588s-nanopi-r6
-      arm64: dts: rockchip: remove bogus vcc5v0_usb regulator from rk3588s-nanopi-r6
-      arm64: dts: rockchip: add comment about gmac phy-mode to rk3588s-nanopi-r6
-      arm64: dts: rockchip: refactor rk3588s-nanopi-r6 to support M6 boards
-      dt-bindings: arm: rockchip: add FriendlyElec NanoPi M6
-      arm64: dts: rockchip: add support for NanoPi M6 board
-
-Shawn Lin (2):
-      arm64: dts: rockchip: add pcie30phy data-lanes on rk3588 coolpi-cm5-evb
-      arm64: dts: rockchip: fix M.2 E-key reset pinctrl on rk3588 rock-5-itx
-
-Yaozhong Li (3):
-      arm64: dts: rockchip: fix analog headphone output on rk3399-firefly
-      arm64: dts: rockchip: disable unused i2s0 on rk3399-firefly
-      arm64: dts: rockchip: enable HDMI audio on rk3399-firefly
-
-Youngwon Son (1):
-      arm64: dts: rockchip: Enable the NPU on ODROID-M2
-
- .../devicetree/bindings/arm/rockchip.yaml          |   15 +-
- .../devicetree/bindings/soc/rockchip/grf.yaml      |    1 +
- arch/arm64/boot/dts/rockchip/Makefile              |    8 +
- arch/arm64/boot/dts/rockchip/rk3328.dtsi           |    2 +-
- arch/arm64/boot/dts/rockchip/rk3399-base.dtsi      |    2 +-
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    |   36 +-
- .../boot/dts/rockchip/rk3399-kobol-helios64.dts    |   82 ++
- arch/arm64/boot/dts/rockchip/rk3566-base.dtsi      |    4 +
- arch/arm64/boot/dts/rockchip/rk3568.dtsi           |    4 +
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi      |    1 -
- .../boot/dts/rockchip/rk3576-100ask-dshanpi-a1.dts |    9 -
- .../dts/rockchip/rk3576-rock-4d-radxa-cam4k.dtso   |  105 ++
- arch/arm64/boot/dts/rockchip/rk3576.dtsi           |  172 ++-
- arch/arm64/boot/dts/rockchip/rk3582-radxa-e52c.dts |   38 +-
- arch/arm64/boot/dts/rockchip/rk3582-radxa-e54c.dts | 1172 ++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |    2 +-
- .../boot/dts/rockchip/rk3588-coolpi-cm5-evb.dts    |    1 +
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi     |    2 +-
- arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts |    2 +-
- .../rockchip/rk3588-tiger-displayport-carrier.dts  |  110 ++
- .../arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi |  142 +++
- .../boot/dts/rockchip/rk3588s-nanopi-m6v1.dts      |   57 +
- .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi |  792 +------------
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi   |  797 +++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts |   36 +-
- .../boot/dts/rockchip/rk3588s-orangepi-5-pro.dts   |   14 +-
- 26 files changed, 2777 insertions(+), 829 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-rock-4d-radxa-cam4k.dtso
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3582-radxa-e54c.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-tiger-displayport-carrier.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6v1.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
+ .../dts/rockchip/rk3308-unihiker-m10-v1.2.dts | 30 +++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
 
+base-commit: ae965b9856f033145e292b0c29082a26bcc45efd
+-- 
+2.56.0
 
 
 _______________________________________________
