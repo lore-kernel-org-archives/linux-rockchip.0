@@ -4,58 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1689CA9ED5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2026 06:55:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5CBDCA9ED0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2026 09:08:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1B4wB4zz96l3tvIu35xdOofAB3qrT/nIcEQHBp3IIeI=; b=235CvSK2g0fN3v
-	7s5oc28BbCLH+d6yGfPTWYxGbNPHf8B+xlWohkUXA3uUGncBIxlm49Tj53TsQFgFokMJml0vBhVOv
-	qJTbq2TLh7unWmoY7IuFuyQLz9fIu/Hx6HWkphA7WCrB7CBOUD/PSI3B5Z084CDeYpJ2sFItN9Sod
-	haCDVHpY4Sn7ph/uFAIsjCNSR01MFNY0KjNri7IXGcV4IcEsBG3UJnFeuqj+eFzN+bOUhovDIM3Sc
-	iSP81EbmZdz88QU/PljbpKpp499+WXzzK3ahgq7FWNllScsNVuuB3ukvN1NJc9JUSJtkL0fyEiODR
-	wWBNO6whOmwzWMc9TEpw==;
+	List-Owner; bh=gRd2XXyMnlKDeTCL1+7xstqS/xm6aJdMvKKvDRZovlY=; b=uBuTa11NyhDFlH
+	oGuyucMjdq4c/CWYIMYar6DlwMcMC7h9Oskjp0PR+Ar4sH2mi4NC4Y9ygiQQQcJ/xdfCXC1ZYWWBX
+	FTK75KFm4dhzTqKnwBHTzVExj/PvpI8EQ1oI1CzNA2BFaGupo2blcEtwo790NOCAkjpZSw1dTavwP
+	N9A2obK5IP1enB1Ycv4TS56IYdUCUh1+zC+JM7UujQtsYT1qG37QT6In0heXgjD1Qejg234c57aFc
+	KxcnwU5pKHC4jVNPcjT1s9W61Z5+GphBC+QPIf+CYDj77bhQ7LltJzioioSnAenOCJVA3H0o/CgNT
+	JiOK9XJDv0nT3l4EG7IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xG9wJ-00000009mKL-1FCn;
-	Mon, 12 Oct 2026 06:55:15 +0000
-Received: from mail-m128239.netease.com ([103.209.128.239])
+	id 1xGC0p-0000000A1aD-3HLQ;
+	Mon, 12 Oct 2026 09:08:03 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xG9wG-00000009mJW-0Axl;
-	Mon, 12 Oct 2026 06:55:14 +0000
-Received: from [172.16.12.48] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 50b00267e;
-	Mon, 12 Oct 2026 14:55:04 +0800 (GMT+08:00)
-Message-ID: <5c8a2985-e1aa-4062-bca8-fb05809b0d3c@rock-chips.com>
-Date: Mon, 12 Oct 2026 14:55:03 +0800
+	id 1xGC0o-0000000A1Zf-1oxf;
+	Mon, 12 Oct 2026 09:08:02 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 70C7360DAB;
+	Mon, 12 Oct 2026 09:08:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB5A91F0089B;
+	Mon, 12 Oct 2026 09:07:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791796081;
+	bh=goq+JeHIaRhlCLADmOhVfg9jBpIH59a4o5nfeW4t5k0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=cFJcVMsWKwWrwG2WSeEddAr+C5puvHsl0QWEUiGCwGtadC23C7OeusX33uBRdc/Tp
+	 fzIHdehL/zlfEvtyrVpFSTGkxz5VyM7Txn6jgTXIICH8d0EtxDoLnCfEpYNbbObgdt
+	 UzyRMlWZeVegRPRS6LpEjua4yb9nqFnDJt7tb07eGGK2Y269QqMf7GHzZPm1cpeUw1
+	 q/JYvNIr5kAbeSwmPO9L3VHa9wkuLtCyT2HxejVLvynm15H7dexZhkJgxl0vYaT9Sg
+	 iBMZDlZkAJFA6IFKEpepWY0xRnr5YOfhMsPlzrkMTUolP2bZZtYbaK+Yx4+ui6tjpR
+	 P9XPCbFMMdCGA==
+Date: Mon, 12 Oct 2026 11:07:56 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Igor Velkov <iav@iav.lv>
+Cc: Linus Walleij <linusw@kernel.org>, 
+	Bartosz Golaszewski <brgl@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Rosen Penev <rosenp@gmail.com>, 
+	Gregory Clement <gregory.clement@bootlin.com>, Andrew Lunn <andrew@lunn.ch>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: gpio: pca95xx: add onnn,pca9655 with
+ nxp,pca9555 fallback
+Message-ID: <20261012-cuddly-pastel-stork-1d11e5@quoll>
+References: <20261009-helios64-pca9655-v1-0-673ee4432650@iav.lv>
+ <20261009-helios64-pca9655-v1-1-673ee4432650@iav.lv>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, conor+dt@kernel.org,
- devicetree@vger.kernel.org, heiko@sntech.de, krzk+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, robh@kernel.org
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa E54C
-To: Chukun Pan <amadeus@jmu.edu.cn>
-References: <4903cefa-4926-4bae-93e9-1165bb9ae646@rock-chips.com>
- <20261012064010.1837103-1-amadeus@jmu.edu.cn>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20261012064010.1837103-1-amadeus@jmu.edu.cn>
-X-HM-Tid: 0aa12ee4bb9903a4kunm5e92b5b71addac
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCTxlOVh8aTk1JT0IaGUsaSlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=dcu/8CbeQxrj27k75dgmHMQK6ZG4pjwsRnfgVTy3VCZnsY8P+MDVlGNRuoNvTij7L2dO5fIOYhNEptPmKWbplAQGYt3St/9nEpH4XpkDG9TgqtyYd0ditS0+jwqoM4+h2f2afFrULgkuZqTjvgtqXrQko6tLcWoL8JYuUpGgOaU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=d8fEydYQ9ABesQI0CRxDNvPg0eyljVYmUDFMToCw+i0=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261011_235512_634074_635443D6 
-X-CRM114-Status: GOOD (  12.01  )
+Content-Disposition: inline
+In-Reply-To: <20261009-helios64-pca9655-v1-1-673ee4432650@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,28 +70,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2h1a3VuCgrlnKggMjAyNi8xMC8xMiDmmJ/mnJ/kuIAgMTQ6NDAsIENodWt1biBQYW4g5YaZ
-6YGTOgo+IEhpLAo+IAo+PiBJIHdhcyBjaGVja2luZyBhbGwgUENJZSBwYXJ0IG9mIHJvY2tjaGlw
-IGR0cyBmaWxlcyBhbmQgd29uZGVyZWQgd2h5IGl0J3MKPj4gbWFya2VkIGFzIGFuIGFsd2F5cy1v
-biByZWd1bGF0b3IuIEJ1dCBpZiBpdCdzIGFjdHVhbGx5IG5vdCwgaXQnZCBiZQo+PiBiZXR0ZXIg
-dG8gaW1wcm92ZSBpdCBsYXRlci4gVGhhdCB3b3VsZCBtYWtlIHJlc2V0IHJvb3Rwb3J0IG1lY2hh
-bmlzbQo+PiB3b3JrIGJldHRlci4KPiAKPiBQbGVhc2UgcmVmZXIgdG8gcGFnZSAyMSBvZiB0aGUg
-c2NoZW1hdGljWzFdLiBUaGUgM1YzX1BDSUUgcmVndWxhdG9yCj4gaXMgZW5hYmxlZCBieSB0aGUg
-UE1JQyBhbmQgY2Fubm90IGJlIGNvbnRyb2xsZWQgYnkgdGhlIGtlcm5lbC4gU28gSQo+IHRoaW5r
-IGl0J3MgY29ycmVjdCB0byBtYXJrIGl0IGFzIGFsd2F5cy1vbi4KPiAKPiBbMV0gaHR0cHM6Ly9k
-bC5yYWR4YS5jb20vZS9lNTRjL2h3L3JhZHhhX2U1NGNfdjEuMl9zY2hlbWF0aWMucGRmCj4gCgpU
-aGFuayB5b3UgZm9yIHByb3ZpZGluZyB0aGUgc2NoZW1hdGljLiBJdCBkb2VzIGFwcGVhciB0byBi
-ZSBpbiBhbgp1bmNvbnRyb2xsZWQgc3RhdGUuIFRoZW9yZXRpY2FsbHksIFBDSWUgY29udHJvbCB0
-aW1pbmcgcmVxdWlyZXMgYQpjb250cm9sbGFibGUgcG93ZXIgc3VwcGx5LiBUaGUgY3VycmVudCBk
-ZXNpZ24gbWF5IGNhdXNlIHRyb3VibGUKZW51bWVyYXRpbmcgY2VydGFpbiBkZXZpY2VzIGR1ZSB0
-byBhbHdheXMtb24gcG93ZXIuIFVuZm9ydHVuYXRlbHksIHRoaXMKYm9hcmQgYWxyZWFkeSBoYXMg
-YWx3YXlzLW9uIHBvd2VyLCBzbyBsZXQncyBqdXN0IGxlYXZlIGl0IGFzIGlzLgoKPiBUaGFua3Ms
-Cj4gQ2h1a3VuCj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+On Fri, Oct 09, 2026 at 08:45:36PM +0000, Igor Velkov wrote:
+> The ON Semiconductor PCA9655E is a 16-bit I2C GPIO expander that the
+> pca953x driver handles as a PCA9555: both entries of its OF match
+> table carry OF_953X(16, PCA_INT), and onnn,pca9655 has been there since
+> commit 6d49b3a0f351 ("gpio: pca953x: Add support for the On Semi
+> pca9655"). Document it with nxp,pca9555 as the fallback, the form the
+> comments in armada-388-clearfog.dtsi and armada-388-helios4.dts ask
+> for. The I2C core tries OF matching first, so the fallback form
+> probes; tested on Helios64, the first user.
+
+Last sentence is redundant. Patches should not explain standard Linux
+mechanics.
+
+
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
