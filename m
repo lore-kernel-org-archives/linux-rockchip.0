@@ -4,77 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C9B1CA9ED0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2026 16:06:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35060CA9ED1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2026 16:12:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BMGKaRohb6ruhzD9Nc7zJDM95+2TQN4PlXcBQ2tNiiE=; b=Hi9ctb8KVBcIj+
-	w4waCEpERMvzeRd95mpJtqlxsrRWZd+Dx5++Je6xobhjYVQ42rFlq28Z1d2vtvQhp1PejbU2ISSU9
-	uBN+7qCRgG9P6Ub/wpSHCmNk3RsmqcsVWPIkLA7QYYOUUoKLOjGVKwG3YRqABYOeKLE8P/YOMGZUu
-	F0oSV1OfkOms2uaZPiBPFT/x7uLFsgS44yV59Ojy+kkhd/RYUlsZyjsAK4C1VYifGm27BbDgH/phk
-	p7cefBiJM1KuCK1l+gdoFBTFArhK+OpRx29TDoogaJF/Bon5dcFdqxsIJwk5xPr2tPckg8fIV+nJd
-	O4Gr+RUpfR3dkyPalViA==;
+	List-Owner; bh=f9/pO9ppGEzqok4fM1Uhtoer4emzFSLs3veG8LzKFQI=; b=HQKg5fKrf0l2wm
+	hRW3py0svAF2oUDMbv7MCgf9m7W0mYYOHyVdLHECDbN5KXfF4gBMu3ZmQs6cBDkTXItkSaEbAbYPe
+	Cc8Sm25vu/p2TJrDe9VdreNC5vLTGWXsJNl226qbtFiikOguQVSeIDRafIpZ32bkb3B3FwCoDH9u3
+	OlMiYwU6xMrSHtBM+Avz2pBifdh5/TlJH9W0Pr7z4qd5lJfZa+d1SUM/eIQEPOOLL4fUwAK+N7peP
+	rDZlBwI6e4VWV254nIKvk7lYq9oKBiCduhuQ57/7sTrvSO+v7cnJcR0ZgULZpUpxqGaFlKIXJZZkb
+	UxLE425MJb3jbiPHcnSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGIX2-0000000Aupd-2h4j;
-	Mon, 12 Oct 2026 16:05:44 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xGIdD-0000000AvXT-3AcR;
+	Mon, 12 Oct 2026 16:12:07 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGIWz-0000000Aup4-0UCj;
-	Mon, 12 Oct 2026 16:05:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=ZI1jrhehYU+RLKzgYORjc8QBBzD771a1CdXAHNaSzhg=; b=z6bRrKRKJWtCYbq8O15zAVKj2D
-	bBzZr2i0KPOh74I4rQGdau7VTdAKbFhVeChAGUfakuuH16JYr91BIvvM2DR8J5GTsNfTmOADDDUxf
-	gSoyRlC/x31Z4YlNZF5zkwo55heQMtbGri91zlsdtqFHHohb+H9DxwCDSKr6LDuUCTXSZfauun/tz
-	NrO/lXE2WYRRkEAAhCYmJkoGjtPR5hOBGyZDTq5cfSZ+MeN5U9LIoWoSrQ37zsIatc5ItLcALCsSm
-	JbN9AMSF08rKqA3DshjDy6cC4kBWFUfdh/eTx9n1MZZ2KPNuYZ72C+gPT77kQZbxoDI5Mp78yAqb9
-	DNXK2IKQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Algea Cao <algea.cao@rock-chips.com>,
-	Daniel Stone <daniels@collabora.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	kernel@collabora.com,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Maud Spierings <maud_spierings@hotmail.com>,
-	=?UTF-8?q?Robin=20R=C3=A4ber?= <robin.raebi@gmail.com>,
-	Igor Paunovic <royalnet026@gmail.com>,
-	Sashiko <sashiko-bot@kernel.org>
-Subject: Re: [PATCH v12 00/16] Add HDMI 2.0 support to DW HDMI QP TX
-Date: Mon, 12 Oct 2026 18:05:01 +0200
-Message-ID: <179182109533.3793653.8971698569867906952.b4-ty@b4>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261005-dw-hdmi-qp-scramb-v12-0-195157ba0b40@collabora.com>
-References: <20261005-dw-hdmi-qp-scramb-v12-0-195157ba0b40@collabora.com>
+	id 1xGIdC-0000000AvX8-3a29;
+	Mon, 12 Oct 2026 16:12:06 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9B1D543CDD;
+	Mon, 12 Oct 2026 16:12:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 409281F0089B;
+	Mon, 12 Oct 2026 16:12:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791821526;
+	bh=dwOf8Dc4TxSx32WOzwSp7Q6nGhu/G9ZRjwK/NvjcHHs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=BLngqW/i/yi7ouv1qN2l4qytDHWZGEsgW9NgpRR52R9+cyCj/rmsP5IvvkOB+5vQG
+	 R484XftbLYU9MiKQ9XKPIewGqbjy8WBgpeGCwosXf9nvFqxtfXY2V7h1uvRYbw/M8U
+	 Sxp15CxL6AIr1cVFAkS6AO0wvrFJ1wYIx1ydRFdIjrAHFCmf/5QB2zGf68tf8gq7Jy
+	 5OiFbxE/1SqAf4w0i5kg5CY1N1cxunIJUwZj9G4DM/cvLZdkp/nkgzF7aHVUiLEQuJ
+	 1OZGsZq3J7G8FOUYnO2yAUWC7fRgyZu3qgMtmFG+lJiggWml6+EAX4lIkXs0JlzgSV
+	 7p0q1lM1JO32g==
+Date: Mon, 12 Oct 2026 21:41:57 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Wentao Liang <vulab@iscas.ac.cn>
+Cc: bivvy.bi@rock-chips.com, heiko@sntech.de, kishon@kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, neil.armstrong@linaro.org, vkoul@kernel.org, 
+	stable@vger.kernel.org
+Subject: Re: [PATCH] phy: rockchip: inno-dsidphy: Fix runtime PM leak in
+ inno_dsidphy_power_on()
+Message-ID: <as0GyAtxP7a0oqrB@debian>
+References: <20260917134627.2153845-1-vulab@iscas.ac.cn>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261012_090541_178124_37753C10 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <20260917134627.2153845-1-vulab@iscas.ac.cn>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,64 +66,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 05 Oct 2026 03:38:01 +0300, Cristian Ciocaltea wrote:
-> Enable HDMI 2.0 display modes (e.g. 4K@60Hz) on the Synopsys DW HDMI QP
-> TX controller, as found in Rockchip RK3576 & RK3588 SoCs, by making use
-> of the scrambler infrastructure introduced recently in the DRM core and
-> HDMI display helpers.
-> 
-> The first group of patches wires up the SCDC scrambling feature itself
-> in the DW HDMI QP bridge driver, while improving i2c fault handling,
-> and providing enable/disable HPD PHY ops and a HPD notify helper.
-> 
-> [...]
-
-Applied, thanks!
-
-[01/16] drm/bridge: dw-hdmi-qp: Demote i2c bus error messages to debug level
-        commit: 7de65917d29cc0747bdbd5f30ad2f8a3d0a236b9
-[02/16] drm/bridge: dw-hdmi-qp: Provide .{enable,disable}_hpd() PHY ops
-        commit: 23594060f8019e400c55abe4b982f4ddfbb06471
-[03/16] drm/bridge: dw-hdmi-qp: Remove unused workqueue include and define
-        commit: 994452efe9c7871d7a6de8c31ba6e5a2c9733e99
-[04/16] drm/bridge: dw-hdmi-qp: Add HDMI 2.0 scrambling support
-        commit: 046dbe428a69e0e2a8d09ac7de75ebc9bd469a46
-[05/16] drm/bridge: dw-hdmi-qp: Provide dw_hdmi_qp_hpd_notify() helper
-        commit: a58efc1aa0bb67abe1946be72a1c67d17d78aadf
-[06/16] drm/rockchip: dw_hdmi_qp: Fix invalid drvdata access in PM ops
-        commit: b6e19848c9db535d81d6db85c7cc1324e6611791
-[07/16] drm/rockchip: dw_hdmi_qp: Cancel pending HPD work on suspend
-        commit: 5d0aa771a5308f6a6c83eeaa89351a472ae580c3
-[08/16] drm/rockchip: dw_hdmi_qp: Add missing newlines in dev_err_probe() messages
-        commit: 7554a1cb23148a3ab0b74c7edd47356c26b40ead
-[09/16] drm/rockchip: dw_hdmi_qp: Use local dev variable consistently in bind()
-        commit: 1fe516676a1ca0678b27408f7b5f91b4e9f5bbc9
-[10/16] drm/rockchip: dw_hdmi_qp: Avoid spurious HPD IRQ thread wakeups
-        commit: 8bba3185c107b6bb6d59a1fb0c516e24dd90dee4
-[11/16] drm/rockchip: dw_hdmi_qp: Mask RK3576 HPD IRQ in io_init
-        commit: 383fad9dac0c136334cf257fa1a1ce5180e08740
-[12/16] drm/rockchip: dw_hdmi_qp: Implement .{enable,disable}_hpd() PHY ops
-        commit: 40e100d4af8f29df7ddc7e867412bf81836fb32c
-[13/16] drm/rockchip: dw_hdmi_qp: Factor out HPD interrupt (un)mask helpers
-        commit: b0d607d0c35b206b3ec0497dedbd0fa48f108144
-[14/16] drm/rockchip: dw_hdmi_qp: Control the HPD IRQ line via the bridge HPD ops
-        commit: 91f92a7487c4efef52b13bc864f5c16858791ba4
-[15/16] drm/rockchip: dw_hdmi_qp: Use dw_hdmi_qp_hpd_notify() for HPD reports
-        commit: bba9ac0a9047f3df5d5160140785c1d885debb06
-[16/16] drm/bridge: dw-hdmi-qp: Drop unused .setup_hpd() phy op
-        commit: fc9370d7b1c927f5a7f20e1251b8ee7bc0698954
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBTZXAgMTcsIDIwMjYgYXQgMDE6NDY6MjdQTSArMDAwMCwgV2VudGFvIExpYW5nIHdy
+b3RlOgo+IGlubm9fZHNpZHBoeV9wb3dlcl9vbigpIHJlc3VtZXMgdGhlIGRldmljZSB3aXRoIHBt
+X3J1bnRpbWVfZ2V0X3N5bmMoKSwKPiBidXQgdGhlIGRlZmF1bHQgY2FzZSBvZiB0aGUgbW9kZSBz
+d2l0Y2ggcmV0dXJucyAtRUlOVkFMIHdpdGhvdXQKPiBkcm9wcGluZyB0aGF0IHJlZmVyZW5jZS4g
+IFRoZSBtYXRjaGluZyBwbV9ydW50aW1lX3B1dCgpIGxpdmVzIGluCj4gaW5ub19kc2lkcGh5X3Bv
+d2VyX29mZigpLCB3aGljaCB0aGUgUEhZIGNvcmUgZG9lcyBub3QgcnVuIHdoZW4KPiBwb3dlcl9v
+bigpIGZhaWxzLgo+IAo+IFJlbGVhc2UgdGhlIHJ1bnRpbWUgUE0gcmVmZXJlbmNlIGJlZm9yZSBy
+ZXR1cm5pbmcuCj4gCj4gRml4ZXM6IGI3NTM1YTNiYzBiYSAoInBoeS9yb2NrY2hpcDogQWRkIHN1
+cHBvcnQgZm9yIElubm9zaWxpY29uIE1JUEkvTFZEUy9UVEwgUEhZIikKPiBDYzogc3RhYmxlQHZn
+ZXIua2VybmVsLm9yZwo+IFNpZ25lZC1vZmYtYnk6IFdlbnRhbyBMaWFuZyA8dnVsYWJAaXNjYXMu
+YWMuY24+CgpSZXZpZXdlZC1ieTogTWFuaXZhbm5hbiBTYWRoYXNpdmFtIDxtYW5pdmFubmFuLnNh
+ZGhhc2l2YW1Ab3NzLnF1YWxjb21tLmNvbT4KCi0gTWFuaQoKLS0gCuCuruCuo+Cuv+CuteCuo+Cv
+jeCuo+CuqeCvjSDgrprgrqTgrr7grprgrr/grrXgrq7gr40KCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
