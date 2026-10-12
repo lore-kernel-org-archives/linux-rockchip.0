@@ -4,109 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54242CA9ED0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2026 20:15:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83771CA9EDC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2026 21:57:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s9qV8vUSfef3zZ0kEXswaLj7HEGonqdZKZdXWNBxo4w=; b=0b9EGEmDDxPTpX
-	mSQndlwIiIA96OZHV8xSzXaehOm4DDCQ1RbGvNOkDtq4bQzYE/czVVFpZL7v3GBEXdXRMlXqNswMH
-	qZMoMYdhAs0xXNKbrw/RYW8CYXtx8BYF9CUmUVXS6LaVDdXcJ1wKmkYQxklaXHJ6azXTO5haVHEYe
-	MbQ2ru9gT26us8IPb8+BreL+uqreu793y8wXL04RcRz9Xz6B2mPav3i7sKJbDweBPw3G2G64P1DW1
-	7fj36YuOB5b+o5hKAn2VuB6auw7CkLp4TXdX1Jbm/0G8umdfSPsHEk9aD+Kj3irbYKgVIKREadV+E
-	lkoblL8dbLTaMQJiFSHA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=xelLLgAMc6qNHkUTN4dhaFyV+34OhY6nIpUgLHr+S04=; b=x8Dr6glDFwV9lk
+	7nklpReqgUewCH4DZCKsTTKXbbJPG3Qz0ES2yd/78l+GWcS2DiXaw0DjjrQeRO77OLmbxA4QKy6Ri
+	SfLVGiupAm7vf2eHcAXoV11Gc61NKmI1MKYPjcVcmB9qlucvRUKvKHUNmlwwTqnMPK2cSd1PBrDQ9
+	HNeS1dtqJBcdX4+dj1+af/Xo1EyIpiEXrAZlU3/btnHC/OUUkgXQ1d1r9UpQIfLd1kUtn2ZxwojYC
+	qFIdqh6/DSO7vi6IfaoGtAXCyk/6r6F/NSaRSwXYAwNmWn7X7KsjBbS7MTwJeC/V+FODEEWX+U5cV
+	qHm62kUfRD/1yq1f1mYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGMQN-0000000BS4p-0fWJ;
-	Mon, 12 Oct 2026 20:15:07 +0000
-Received: from mail-ej2-x09.google.com ([2a00:1450:4864:34::9])
+	id 1xGO0p-0000000BaYz-3aqk;
+	Mon, 12 Oct 2026 21:56:51 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGMQJ-0000000BS2b-2Yeg
-	for linux-rockchip@lists.infradead.org;
-	Mon, 12 Oct 2026 20:15:05 +0000
-Received: by mail-ej2-x09.google.com with SMTP id a640c23a62f3a-c2e36c7fc5dso120805666b.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 12 Oct 2026 13:15:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791836101; cv=none;
-        d=google.com; s=arc-20260327;
-        b=jCDyD53gPU+90WfDgUxvsVCMBfsBjfQD2e4/JKo4B/rOZUROJ54GH4PP0dvyvthc9/
-         gp4laDbxuf0kQjpzmTjW/EPtUSoEPMqhNCuDlmw+PBBVnCGWKAkSQ0TeKNQWMKk42gH7
-         0OPYYYLJk/3LSFeJfVvGQqytFlGOGo4m6YGfXmk6ngPA02OJfsJZ85ijfY0VYMuCF3KG
-         1fLPIRcWSH+RjGznXX4a5nWkBMElA01enMvSN4NCdT4EX9ok7+wroUJdj7cXGQd9xqzG
-         lx0W2EXEPSJCT6c9UN0RLe+FmTApnDX06CfJ61kiF5+t5Dybu/xxN+0LvKzysucALpdN
-         aKYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=HS3YiJJwuBFYmXT0xY3bh6dZ6ZY38Ujwfz/IeJXETc0=;
-        fh=TJVjZLuU9Hbj9nnSgsPgTJShHgUZ5tXB9feHncsA0Kg=;
-        b=SZexVZDX/aCnwpLj8nK2nnkhtcI7dZe3EwYFcvXUxu4g//gdbj0y0mG9USuHxReDgZ
-         1kiz2ptk9Tacp9qeYi0NK5E0UQ8sh8jyJi2RFViupuARCuNBPeCUbNF3muGSUDMISj7n
-         z0OC/GrlliS5ZqGcymJLGX59RkTu+b3h7HzdA9voHuzq806Gc9FFEw0DIaCWTuvwqWcO
-         ZVwudWipPbbMsBA91fQNes7SFTlT2O7chcAb2ch3UZbpIaLOtm/j30TdhZUtdVUOwJsz
-         zGBgA60PvUtc5XmW9fizlZPGuvtxHTXGZ5PxLrDUkhUPcikUOF/EJ5F6oI/BXBJgalbG
-         iqXQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791836101; x=1792440901; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=HS3YiJJwuBFYmXT0xY3bh6dZ6ZY38Ujwfz/IeJXETc0=;
-        b=QoXd5cUt/UCkl4kLksu/rlF81HaiG+MMMIpRb9zsDTvJ0jmiMJHnppOiZsUxEaG1r2
-         HFZMxRMP7MEraoDk4Aw6FHai8Pr7szsj1vdAeTd7yUOiHrNfAIMgUBvMQ3baR+EyjX24
-         NPwHnvdZe/N0CQIRGyiqVwqT06z+q86ucvu5ariJGH7fMv6iW/REkAzUpRzG6l2O+ttd
-         d2ib416+SSRnfpaxhJQ+vYWc5h7DQGjO8ZEV/9xhNQUx6F0e/+gFatGQ9wQNK/CyaJke
-         ng/GrAITQViEE99tGM5j7METo9FAZM28jKwW/UKiInSRn5JSo6GtKIZuaKHg0sZA8kVB
-         lqRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791836101; x=1792440901;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=HS3YiJJwuBFYmXT0xY3bh6dZ6ZY38Ujwfz/IeJXETc0=;
-        b=RLqFfxQgqZlIe1ZwHxXNI44U7MdMbjKLv6eyobJWMTLHl04ZANy3h1AfAclJ8iRd1y
-         lydTjbGFK+6nyXraVgYuVTWpnV2aI7dWVmMtcTKX13M8rf2lZVrtTW/bDeqRFOP1e77Y
-         6ahtjtFQms1zWiRrbeSxGrCAEC4m98wTAeV4kH2etKvEbXZT22LqQsSXxs/gEN61aFJT
-         5RlYXXjnZY38ShFRoAE6+VCpFPE7VAx2gOK0mj1J5qvK3JMyIwv6cu4qjBBxb6F5bvyW
-         ZEyouoYb3Jo+QnVajJM61xSiSOihJhAFRKAwwmigY0LVVonoPy9qdmsWMwc/qNw5ddQn
-         9FKg==
-X-Forwarded-Encrypted: i=1; AKwUvBxm4uEegt8GvLFDVE5b6ZxK+LWG0k2oMyAC1k8Q2gG4BXsXPAN5J9I4OOqG9EsWfxm8IXNeF/Ww/OD9i/AcIw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLS7AgvRZVCbWfyYPi/NHrGYEemt2gWDk0VlajYa4PE+4OeQbQI
-	eJRkBOFloLPyDLvzR/AKb6NDX7sgG3QTIa2yn0Z6eUkP76PZMMLPa7HL92jDSvlm8AIF0ffE4nZ
-	0oq9LCEnrS4TKzf2+9MBiFqwoZMYloXT37UMrU/l1pA==
-X-Gm-Gg: AYBFou0QIN94clHHjgXDlpsH9JrIR7L7+UObF/nR8qtF//DAukoCUe5aRbLUDcYwUVr
-	KyHQcAvlF/yrMuYRF7WFEmtiZ9FzNtkTKFrLjZvAKCBelsSvFdCXlwpe7SX8yG4BbF8v35BpTBx
-	FtpfVtAyv5jegdXzT4NgUg+elpCpJ51Gmp0zvK6gouoPtxKbFGHgleizWesSl1Z9d1bP9VTNj5/
-	HcyP+66rQgixOHUmy8N5RBQkyEUKOwI2iJZ8Smr0AWThogONmKN01lBx5Fik9kPqG9RSgXDT+V8
-	Zbuh++NaSM/EA0Xs20wJ2gFRNNJD7YSzbLaFByW5lQ1vxbh+3rtzufhRXZY=
-X-Received: by 2002:a17:907:9712:b0:c2e:808a:f781 with SMTP id
- a640c23a62f3a-c31a9f8bc7cmr977286166b.34.1791836101394; Mon, 12 Oct 2026
- 13:15:01 -0700 (PDT)
+	id 1xGO0o-0000000BaYa-3lAv;
+	Mon, 12 Oct 2026 21:56:50 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4240240F19;
+	Mon, 12 Oct 2026 21:56:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E96C01F0089B;
+	Mon, 12 Oct 2026 21:56:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791842210;
+	bh=h+gWx/IABU3vfuF4WLNZB9HmpNOUI9aLl9gcRzQY+ag=;
+	h=Date:From:To:Cc:Subject:In-Reply-To;
+	b=NBi1Q1eTZ7MbGFGki1+4M8JBGZNAJnH4suS99EIigC2wNZE5oDgGtKsCev8hKl2W1
+	 EL7FAZhjEYY8bENAp0UlZGxJQNJBAfutVc25w+L1VL9gmnT5gZ28ltTg+DhCrS6yNY
+	 wDI5IwB7kyOXR0F9BjbHx5Nu4dldkGC39Nd0XwC+Wr4a8gCYXbbGzQIBS2ZosJb5Gc
+	 x+U+4mJnfPEWsFrwPJZpj1ajy3DCsdNi+8M/DHPD7Lwz1IkQvyN7hGZ51IF7VqTK92
+	 7nd68s9r4PsMcW3uwKN9jIJphjiN7qJK9GnzVz63GslJU2rick0UgD+obnczda6IpR
+	 5kbEkHnHDuqpw==
+Date: Mon, 12 Oct 2026 16:56:48 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Manivannan Sadhasivam <mani@kernel.org>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] PCI: Update saved Max Payload Size in pcie_set_mps()
+Message-ID: <20261012215648.GA1404779@bhelgaas>
 MIME-Version: 1.0
-References: <20261006162807.2843858-1-coiaprant@gmail.com> <20261006162807.2843858-3-coiaprant@gmail.com>
- <ac2a4e80-6d35-457a-bdc5-ee8511198bec@rock-chips.com> <CALj3r0gQ_U2ZUJkRgF4NdB1Gd3A8ZT3T6qjLhwGZPg=VUXLsrQ@mail.gmail.com>
-In-Reply-To: <CALj3r0gQ_U2ZUJkRgF4NdB1Gd3A8ZT3T6qjLhwGZPg=VUXLsrQ@mail.gmail.com>
-From: Coia Prant <coiaprant@gmail.com>
-Date: Tue, 13 Oct 2026 04:14:52 +0800
-X-Gm-Features: AclHuK9DIbMdxghdp8dVnDg3M3UkCfAC1pjnUxZw0sP50Y9CDUKz7Qi3PzTsHZE
-Message-ID: <CALj3r0hSyVpn4Upbun4DOk5hdOH+fzEFG2E3LpfvS2YUXH8twA@mail.gmail.com>
-Subject: Re: [PATCH v13 2/2] phy: rockchip: naneng-combphy: add SGMII MAC
- selection for RK3568
-To: Vinod Koul <vkoul@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261012_131503_706086_9000B042 
-X-CRM114-Status: UNSURE (   6.90  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <20261005124154.2190628-2-cassel@kernel.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,15 +71,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Vinod,
+On Mon, Oct 05, 2026 at 02:41:55PM +0200, Niklas Cassel wrote:
+> pcie_set_mps() changes the Max Payload Size (MPS) in the Device Control
+> register but leaves the copy saved by pci_save_state() alone, so the next
+> pci_restore_state() puts back the old value.
+> 
+> The PCI core does change the MPS of devices whose state has already been
+> saved: pci_configure_mps() reduces a Root Port's MPS when a device with a
+> smaller MPS Supported is hot-added directly below it (commit 9f0e89359775
+> ("PCI: Match Root Port's MPS to endpoint's MPSS as necessary")), and with
+> "pci=pcie_bus_safe", pcie_bus_configure_settings() can do the same when
+> pciehp calls it after a hot-add.  The Root Port's state was saved when it
+> was added and again when portdrv probed it.
+> 
+> Since commit 3fc686d550f6 ("PCI/ERR: Add support for resetting the Root
+> Ports in a platform-specific way"), pcibios_reset_secondary_bus() restores
+> that saved state, without saving it first, after host->reset_root_port()
+> has reset the Root Port, e.g. during AER recovery or on Link Down with the
+> qcom and Rockchip DWC drivers.  The Root Port then goes back to the old,
+> larger MPS while the device below it is restored to the smaller one, so
+> the Root Port may send TLPs that the device treats as Malformed.
+> 
+> Update the saved copy of Device Control when pcie_set_mps() changes the
+> MPS, like commit 909f7bf9b080 ("PCI: Update saved_config_space upon
+> resource assignment") does for BARs.
+> 
+> Fixes: 3fc686d550f6 ("PCI/ERR: Add support for resetting the Root Ports in a platform-specific way")
+> Assisted-by: LLM
+> Signed-off-by: Niklas Cassel <cassel@kernel.org>
 
-Gentle ping on this series. It was sent on Oct 6 and carries Conor's
-Acked-by on the binding.
+Applied to pci/mps for v7.4, thanks!
 
-Is there anything you'd like changed, or is it just queued?
-
-Thanks,
-Coia
+> ---
+> This fix was originally sent out as part of my RFC series:
+> https://lore.kernel.org/linux-pci/20260930145017.1356088-6-cassel@kernel.org/
+> 
+> But sending this fix as a separate patch, as the fix is really unrelated
+> to the rest of the series, so it could be picked up independently.
+> 
+>  drivers/pci/pci.c | 24 +++++++++++++++++++++++-
+>  1 file changed, 23 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+> index 8cc6a89130b5..f3b82eb7bfaf 100644
+> --- a/drivers/pci/pci.c
+> +++ b/drivers/pci/pci.c
+> @@ -1736,6 +1736,24 @@ static void pci_restore_pcie_state(struct pci_dev *dev)
+>  	pcie_capability_write_word(dev, PCI_EXP_SLTCTL2, cap[i++]);
+>  }
+>  
+> +/*
+> + * Update the saved copy of the Device Control register after changing it, so
+> + * that pci_restore_state() doesn't put back a stale value.  Device Control is
+> + * the first register saved by pci_save_pcie_state().
+> + */
+> +static void pcie_update_saved_devctl(struct pci_dev *dev, u16 clear, u16 set)
+> +{
+> +	struct pci_cap_saved_state *save_state;
+> +	u16 *devctl;
+> +
+> +	save_state = pci_find_saved_cap(dev, PCI_CAP_ID_EXP);
+> +	if (!save_state)
+> +		return;
+> +
+> +	devctl = (u16 *)&save_state->cap.data[0];
+> +	*devctl = (*devctl & ~clear) | set;
+> +}
+> +
+>  static int pci_save_pcix_state(struct pci_dev *dev)
+>  {
+>  	int pos;
+> @@ -5983,8 +6001,12 @@ int pcie_set_mps(struct pci_dev *dev, int mps)
+>  
+>  	ret = pcie_capability_clear_and_set_word(dev, PCI_EXP_DEVCTL,
+>  						  PCI_EXP_DEVCTL_PAYLOAD, v);
+> +	if (ret)
+> +		return pcibios_err_to_errno(ret);
+>  
+> -	return pcibios_err_to_errno(ret);
+> +	pcie_update_saved_devctl(dev, PCI_EXP_DEVCTL_PAYLOAD, v);
+> +
+> +	return 0;
+>  }
+>  EXPORT_SYMBOL(pcie_set_mps);
+>  
+> -- 
+> 2.55.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
