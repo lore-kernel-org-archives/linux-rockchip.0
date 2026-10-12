@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83771CA9EDC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2026 21:57:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1E5ECA9EC5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2026 22:07:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=xelLLgAMc6qNHkUTN4dhaFyV+34OhY6nIpUgLHr+S04=; b=x8Dr6glDFwV9lk
-	7nklpReqgUewCH4DZCKsTTKXbbJPG3Qz0ES2yd/78l+GWcS2DiXaw0DjjrQeRO77OLmbxA4QKy6Ri
-	SfLVGiupAm7vf2eHcAXoV11Gc61NKmI1MKYPjcVcmB9qlucvRUKvKHUNmlwwTqnMPK2cSd1PBrDQ9
-	HNeS1dtqJBcdX4+dj1+af/Xo1EyIpiEXrAZlU3/btnHC/OUUkgXQ1d1r9UpQIfLd1kUtn2ZxwojYC
-	qFIdqh6/DSO7vi6IfaoGtAXCyk/6r6F/NSaRSwXYAwNmWn7X7KsjBbS7MTwJeC/V+FODEEWX+U5cV
-	qHm62kUfRD/1yq1f1mYA==;
+	List-Owner; bh=4SDAcYfsTSaoNcZNse3xpe+SAEP5y3TcOAdeRx8VkPo=; b=P1v9+GLhcL2J3K
+	rTwkaYz1DGWzd77kI2Yx/K+yTZWZ0o9xoNZrG4mUN7Se0qN27s/NVj+lekahzk2AM+9APRWrZH4Oz
+	w/XZ+LXWacN5ImJNNFp9ubxnQRGp1POi4ZTvl4tojbrktApS2kznOfy+EmuE9D0bATfDN6bfwlroE
+	lDRhFg85858DX5/tc0JGcrxbtLcZWdc5NoxTQ1jDvFSiosZaypQ0W3qUxO5UnsuwgEwyBaJ9aKmKA
+	nksHvMvT5hQ1ZLmJQyM4MzLgHaMqLHZSKejRWtxVa2yOeZuTgMfoaM+CXT+9j13A+fDi2WrjN+Ztk
+	pwkIfgSpooINJcW78N9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGO0p-0000000BaYz-3aqk;
-	Mon, 12 Oct 2026 21:56:51 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xGOB3-0000000BbFQ-0gfQ;
+	Mon, 12 Oct 2026 22:07:25 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGO0o-0000000BaYa-3lAv;
-	Mon, 12 Oct 2026 21:56:50 +0000
+	id 1xGOB1-0000000BbFH-2swX
+	for linux-rockchip@lists.infradead.org;
+	Mon, 12 Oct 2026 22:07:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4240240F19;
-	Mon, 12 Oct 2026 21:56:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E96C01F0089B;
-	Mon, 12 Oct 2026 21:56:49 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 2902843D8B;
+	Mon, 12 Oct 2026 22:07:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFB531F0089B;
+	Mon, 12 Oct 2026 22:07:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791842210;
-	bh=h+gWx/IABU3vfuF4WLNZB9HmpNOUI9aLl9gcRzQY+ag=;
+	s=k20260515; t=1791842843;
+	bh=6PVJFzjPMA7qNHqs2dFBMgouUeHMvFrAyguDRkUZ3f8=;
 	h=Date:From:To:Cc:Subject:In-Reply-To;
-	b=NBi1Q1eTZ7MbGFGki1+4M8JBGZNAJnH4suS99EIigC2wNZE5oDgGtKsCev8hKl2W1
-	 EL7FAZhjEYY8bENAp0UlZGxJQNJBAfutVc25w+L1VL9gmnT5gZ28ltTg+DhCrS6yNY
-	 wDI5IwB7kyOXR0F9BjbHx5Nu4dldkGC39Nd0XwC+Wr4a8gCYXbbGzQIBS2ZosJb5Gc
-	 x+U+4mJnfPEWsFrwPJZpj1ajy3DCsdNi+8M/DHPD7Lwz1IkQvyN7hGZ51IF7VqTK92
-	 7nd68s9r4PsMcW3uwKN9jIJphjiN7qJK9GnzVz63GslJU2rick0UgD+obnczda6IpR
-	 5kbEkHnHDuqpw==
-Date: Mon, 12 Oct 2026 16:56:48 -0500
+	b=gtFnrjfYjnYvomiUA7c6+FN6nlqzX3eH2pI45V1iODFTdX2oD7uIb93/FJhyJG69l
+	 9lgOa1kzfEmF71pemhSYL47BN3oJ8lDj+tSK9cpqmg8oQjIM+y0baEMM2khNqEE0Od
+	 zZxgXoklPgdIOkU1fIIpQ0fEmYzebBG81zEVTWKFpTxuWeDh8xMSmS5/Py+j6CXa42
+	 Th2bwm2LGFsiNeRztZ0Uhvl9EUXYUmb2lLR4RUPy2D+fibiUvpxPUO6GDJig18xj/I
+	 HUzdr22DTTkZ1hlSTv33jkLTRHqN5N6AeO5zdFaesEEkjxFeiVRDuZp6hEHAkre/Ta
+	 anFPT3fR1yTaQ==
+Date: Mon, 12 Oct 2026 17:07:21 -0500
 From: Bjorn Helgaas <helgaas@kernel.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	Manivannan Sadhasivam <mani@kernel.org>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] PCI: Update saved Max Payload Size in pcie_set_mps()
-Message-ID: <20261012215648.GA1404779@bhelgaas>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Manivannan Sadhasivam <mani@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
+	Niklas Cassel <cassel@kernel.org>,
+	Diederik de Haas <diederik@cknow-tech.com>
+Subject: Re: [PATCH v4] PCI: dw-rockchip: Move the INTx irq setup to probe
+Message-ID: <20261012220721.GA1407960@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20261005124154.2190628-2-cassel@kernel.org>
+In-Reply-To: <1790222793-77182-1-git-send-email-shawn.lin@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,92 +71,120 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 05, 2026 at 02:41:55PM +0200, Niklas Cassel wrote:
-> pcie_set_mps() changes the Max Payload Size (MPS) in the Device Control
-> register but leaves the copy saved by pci_save_state() alone, so the next
-> pci_restore_state() puts back the old value.
+On Thu, Sep 24, 2026 at 12:06:33PM +0800, Shawn Lin wrote:
+> Since commit b376b3ff9cb0 ("PCI: dw-rockchip: Implement .reset_root_port()
+> and use for link down"), .reset_root_port() re-runs the host ops .init()
+> callback to reprogram the Root Complex after a controller reset. That
+> works for the register programming, but .init() is not re-entrant: it
+> also creates the INTx irq domain and installs the chained INTx handler.
+> Every root port reset therefore ends up with a second irq domain
+> registered for the same fwnode: the previous one is leaked, as it is
+> never removed, and worse, the INTx virqs of the downstream PCI devices
+> were allocated in the previous irq domain and are never re-mapped, while
+> the chained handler now looks up virqs in the new, empty domain. After a
+> link down recovery, INTx interrupts are silently lost.
 > 
-> The PCI core does change the MPS of devices whose state has already been
-> saved: pci_configure_mps() reduces a Root Port's MPS when a device with a
-> smaller MPS Supported is hot-added directly below it (commit 9f0e89359775
-> ("PCI: Match Root Port's MPS to endpoint's MPSS as necessary")), and with
-> "pci=pcie_bus_safe", pcie_bus_configure_settings() can do the same when
-> pciehp calls it after a hot-add.  The Root Port's state was saved when it
-> was added and again when portdrv probed it.
+> Fix it by moving the of_irq_get_byname() lookup, the INTx irq domain
+> creation and the chained handler installation out of .init() and into
+> rockchip_pcie_configure_rc(), just before dw_pcie_host_init(). The
+> lookup has to happen before the host is initialized, because
+> dw_pcie_host_init() enumerates the bus and probes the downstream
+> devices, and pci_assign_irq() maps their INTx interrupts at that point:
+> if the domain does not exist yet, the mapping fails and the devices end
+> up without a usable INTx. This also mirrors how the qcom driver requests
+> its global IRQ, and leaves .init() with nothing but idempotent register
+> programming, so both .reset_root_port() and dw_pcie_resume_noirq() can
+> safely re-run it. Re-running of_irq_get_byname() on every resume is also
+> gone.
 > 
-> Since commit 3fc686d550f6 ("PCI/ERR: Add support for resetting the Root
-> Ports in a platform-specific way"), pcibios_reset_secondary_bus() restores
-> that saved state, without saving it first, after host->reset_root_port()
-> has reset the Root Port, e.g. during AER recovery or on Link Down with the
-> qcom and Rockchip DWC drivers.  The Root Port then goes back to the old,
-> larger MPS while the device below it is restored to the smaller one, so
-> the Root Port may send TLPs that the device treats as Malformed.
-> 
-> Update the saved copy of Device Control when pcie_set_mps() changes the
-> MPS, like commit 909f7bf9b080 ("PCI: Update saved_config_space upon
-> resource assignment") does for BARs.
-> 
-> Fixes: 3fc686d550f6 ("PCI/ERR: Add support for resetting the Root Ports in a platform-specific way")
-> Assisted-by: LLM
-> Signed-off-by: Niklas Cassel <cassel@kernel.org>
+> Fixes: b376b3ff9cb0 ("PCI: dw-rockchip: Implement .reset_root_port() and use for link down")
+> Suggested-by: Niklas Cassel <cassel@kernel.org>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Applied to pci/mps for v7.4, thanks!
+Applied to pci/for-linus for v7.3, thanks for the reminder.
 
 > ---
-> This fix was originally sent out as part of my RFC series:
-> https://lore.kernel.org/linux-pci/20260930145017.1356088-6-cassel@kernel.org/
 > 
-> But sending this fix as a separate patch, as the fix is really unrelated
-> to the rest of the series, so it could be picked up independently.
+> Changes in v4:
+> - drop the code comment (Niklas)
+> - create the INTx irq domain before dw_pcie_host_init() instead of
+>   after it. dw_pcie_host_init() enumerates the bus and probes the
+>   downstream devices, and their INTx interrupts get mapped at that
+>   point, so registering the domain afterwards left every downstream
+>   device without a usable INTx (flagged by the Sashiko review).
+> - this also removes the failing steps behind dw_pcie_host_init(), so
+>   there is no error path left that would return with the root bus
+>   registered and the rockchip structure about to be freed (flagged by
+>   the Sashiko review).
 > 
->  drivers/pci/pci.c | 24 +++++++++++++++++++++++-
->  1 file changed, 23 insertions(+), 1 deletion(-)
+> Changes in v3:
+> - split devm-managed part into a seperate patch
 > 
-> diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-> index 8cc6a89130b5..f3b82eb7bfaf 100644
-> --- a/drivers/pci/pci.c
-> +++ b/drivers/pci/pci.c
-> @@ -1736,6 +1736,24 @@ static void pci_restore_pcie_state(struct pci_dev *dev)
->  	pcie_capability_write_word(dev, PCI_EXP_SLTCTL2, cap[i++]);
->  }
->  
-> +/*
-> + * Update the saved copy of the Device Control register after changing it, so
-> + * that pci_restore_state() doesn't put back a stale value.  Device Control is
-> + * the first register saved by pci_save_pcie_state().
-> + */
-> +static void pcie_update_saved_devctl(struct pci_dev *dev, u16 clear, u16 set)
-> +{
-> +	struct pci_cap_saved_state *save_state;
-> +	u16 *devctl;
-> +
-> +	save_state = pci_find_saved_cap(dev, PCI_CAP_ID_EXP);
-> +	if (!save_state)
-> +		return;
-> +
-> +	devctl = (u16 *)&save_state->cap.data[0];
-> +	*devctl = (*devctl & ~clear) | set;
-> +}
-> +
->  static int pci_save_pcix_state(struct pci_dev *dev)
+> Changes in v2:
+> - Moved the of_irq_get_byname() lookup, the INTx irq domain creation
+>   and the chained handler installation out of the host ops .init()
+>   callback into rockchip_pcie_configure_rc(), right after
+>   dw_pcie_host_init(), as suggested by Niklas Cassel. This supersedes
+>   v1 patch 1/2, as .init() no longer creates the irq domain, and
+>   removes the rockchip_pcie_host_hw_init() helper from v1.
+> - Made the INTx irq domain devm-managed with
+>   devm_irq_domain_instantiate() and uninstall the chained handler
+>   through a devres action, addressing the probe failure leak and
+>   use-after-free flagged by the Sashiko review.
+> 
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 27 +++++++++++++--------------
+>  1 file changed, 13 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index 1497686..bd86e32c 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -422,23 +422,9 @@ static void rockchip_pcie_stop_link(struct dw_pcie *pci)
+>  static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
 >  {
->  	int pos;
-> @@ -5983,8 +6001,12 @@ int pcie_set_mps(struct pci_dev *dev, int mps)
+>  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+> -	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
+> -	struct device *dev = rockchip->pci.dev;
+> -	int irq, ret;
+> -
+> -	irq = of_irq_get_byname(dev->of_node, "legacy");
+> -	if (irq < 0)
+> -		return irq;
 >  
->  	ret = pcie_capability_clear_and_set_word(dev, PCI_EXP_DEVCTL,
->  						  PCI_EXP_DEVCTL_PAYLOAD, v);
-> +	if (ret)
-> +		return pcibios_err_to_errno(ret);
+>  	pci->dbi_base2 = pci->dbi_base + PCIE_TYPE0_HDR_DBI2_OFFSET;
 >  
-> -	return pcibios_err_to_errno(ret);
-> +	pcie_update_saved_devctl(dev, PCI_EXP_DEVCTL_PAYLOAD, v);
+> -	ret = rockchip_pcie_init_irq_domain(rockchip);
+> -	if (ret < 0)
+> -		dev_err(dev, "failed to init irq domain\n");
+> -
+> -	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
+> -					 rockchip);
+> -
+>  	rockchip_pcie_configure_l1ss(pci);
+>  	rockchip_pcie_enable_l0s(pci);
+>  	pp->bridge->reset_root_port = rockchip_pcie_rc_reset_root_port;
+> @@ -731,6 +717,19 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+>  				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_RC),
+>  				 PCIE_CLIENT_GENERAL_CON);
+>  
+> +	irq = of_irq_get_byname(dev->of_node, "legacy");
+> +	if (irq < 0)
+> +		return irq;
 > +
-> +	return 0;
->  }
->  EXPORT_SYMBOL(pcie_set_mps);
+> +	ret = rockchip_pcie_init_irq_domain(rockchip);
+> +	if (ret < 0) {
+> +		dev_err(dev, "failed to init irq domain\n");
+> +		return ret;
+> +	}
+> +
+> +	irq_set_chained_handler_and_data(irq, rockchip_pcie_intx_handler,
+> +					 rockchip);
+> +
+>  	pp = &rockchip->pci.pp;
+>  	pp->ops = &rockchip_pcie_host_ops;
 >  
 > -- 
-> 2.55.0
+> 2.7.4
 > 
 
 _______________________________________________
