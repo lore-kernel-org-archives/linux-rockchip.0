@@ -4,147 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22034CC6B33
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 09:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 107E4CC6B3C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 10:32:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K4LJCLbqClWmmvAkZ0EebCzVdP+eJHio8IF/clcaS6E=; b=noKgjmaHsHzwN9
-	ldfbiKp3fNaYeyJZ4BIfOMxRmmFgTrmwvCNY3yZfh4UlYR1NT4UZpQdqwGTLXv92RqOsZG3W0TDnw
-	+OsrI2iEtv4PTAzsYUBpJdvHnvCqY1F2pH+RtFVwOD012phmaAxFZJehOLzc6hxsINocAs1yEUJgQ
-	sc76LoojC7Xwj7VW0vC42yMnWa7GzlCKuOUXZpbGIsR3eoWd2SjTgq9lc1FxvRPPf+brt2jNzgGFm
-	3IAxDa/ZkESb9mKRviiLqzcvh0rP2RvMLDZbmFXcnXF9FVwCVA5LTz3WJ8McifUCyYLYumgAeT5iM
-	G6vQohDBexOUMsQLu1Ug==;
+	List-Owner; bh=3L5HF0aNPESz0izrwkMKd8deSDCCz1eY2TDcSC6OTpk=; b=nvIe7YE+yCoge4
+	STpBPmoYHnYpDeZVQGvD/O8Y+++eFUswQfPRIBDLWXxa/oGhlhdguDs0KTm+lGLg2LTj9XtjGEG20
+	jRo+e/mUf58ADau4G0WpX+8d6FCzmDLeIdzINMRNr9IMv6WZVgwHkZAmlw1Z9tkFClMO8z+UZdLAX
+	Yd02TcPtAswtbTPpLMXgslE/Jz1eYgn1rHzveDRdko7xI3nLenH8NoiOTnyD7zk3HTU1E++ag82v2
+	UXNM7eNrq9ndglui2Ya+yuIpEEB1Ps8hT10hvptvnOWzbJL0oE75mWU37ssDUs3tDkhnYUTx0dIIr
+	GaU0it4ME0AR13/DJ0Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHI4k-0000000HKbt-1gvR;
-	Thu, 15 Oct 2026 09:48:38 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1xHIlF-0000000HS2j-2zwY;
+	Thu, 15 Oct 2026 10:32:33 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHI4h-0000000HKaW-3w6m
-	for linux-rockchip@lists.infradead.org;
-	Thu, 15 Oct 2026 09:48:37 +0000
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69F9jThX2809295
-	for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2026 09:48:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=; b=PYQ2LI9aj27depOZ
-	qeweAXNBoA1cgejsFBYuNOalTEdQi3dhHBovBh4X5s67yygNgxEewsmXMGVxJwUJ
-	xknMYhgUc0U7Sl1gvwmfoSE5dAGNJJuDkn+GDtdTh7un98iVQ654iXublSoIG3Sg
-	f8/PFJQdbcAqm40e55coyKkeZVOK6GRgywvAcUQXGRBcvkXlnuBLxfiHkaHOdsz1
-	wmwCWbaM+/YW1xU8d9Nq/H2ax0JHCw5413mffdzYSGHYgbysfsd7RDtp7UYVhM9L
-	wNHziNWZ6WJxj9qi4gJBZqjatGt/8HL8VCV/ZVmkfN3Qytu6KTQuq4NVby86xgfi
-	1zT+xg==
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com [209.85.219.70])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4han54swk1-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2026 09:48:34 +0000 (GMT)
-Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-91b89618384so6344986d6.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2026 02:48:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1792057714; x=1792662514; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=;
-        b=JM/6MUG4lsxwHUss9MLFJYAQbPygn48G5iafPI95Yp2dqmvwPxtB/xrW5ubsW+eVua
-         SimpYMDoBJpuvAiL0r+b5kT/TY8J5HUnuRffuP0DLyY0yeFwh946xDZzCA2YsIQBTu2u
-         uhaJiI7JqtI98c4EFLqjg8LnrLs4np1bso1dZYJ6JCZxpNu5IapNy1YiUS0T7PViREZA
-         A6NdtDGM1movQj9/qfGUh6URr3Y/m3UZyON4p+OSt6ZsuMF5OkUhbujv2cxNXn2o4cD7
-         1cznDsR2uTqtZfDACdHkG/LYxShtIdHW9zhRmg+bbG2ipLBdzp6uD/xb8+oNxRbf7osG
-         CSTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792057714; x=1792662514;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=;
-        b=XT4lCTxBhND1O+2UD1JePwgsXK5XFC2hk2312WWZbjkzPAuMxY6Byu8DO/VBQgYNRG
-         3sY8jhKmxjW7dmuDkTCY/yur8EA8ebYLALsJJP+wqMwrVMjF95YyL1TGXTYIGYaZxcpi
-         SHTk3nWMPN2cruAMw80oJYfjwu9jRtlIooi/Qp/2N8mDKNfruzvji36kCvTnEqbeLgnG
-         nYxGKH3HctuYoZIlNdgvS35UWhE0/RBelahOmyDmtRhjKA0/y92vVJtww4M7B6Utx1k/
-         zba98ruwTmmtjlDiFssqki3wy9b1/aU+H99NtTjldgYkACiwg6ZcpbBlx99KjxYw1SHK
-         cxAg==
-X-Forwarded-Encrypted: i=1; AKwUvBxRsZ1o74ks302PhqY7P7r+pAk/BE9P7mvm2Zt/aONOVwT55dUFhsr2TPEla3Y5HCUKUwVVGEcxTySZWVdrsA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKA5+NKleslB4XUBe6wGuL8HMvQ0LrAHJfk5BgepaRZmHamOj5w
-	6mpslZJfR/9VQh7ICbiT7CeYp2wFoi0oido6bwAxPCTSu3DzmyUHyo+fK3BlLc6gp1UAEnGKab2
-	FzNaJmn9IMPKQLigDphz//Ku66HFbqIjcaRltuOgh5m9C3Tr227chXxo2eqpcBN6wQXCbVgC54t
-	0uTgBt06Q=
-X-Gm-Gg: AYBFou3/6DdDhICncnZyPezsrYHFY/yNGeK+yuIZGIawS5Nl74MLQpxLA9YHyIJzRwu
-	KFPwKfY68kU/lQ/wJHVN4yRJcQHAsOj2hNCPOToV4t/T7dU1q0LfwBJ2OFrJ2xJvt4C7dLRwyqA
-	UdzbcnnyFdDTXiue6mnuxqKWTl8SI6Zo0ZqIPr6mccpIWDgwITi5Mqclf5xfuXo+ZvjcItisqGy
-	eDVuq8hs/72LFVpjdN8lJVZknKR7U3iYfMs1HS0pqDLrPrbLTS4amJv0oG4nq6X5/R2AbOvl8hJ
-	MnMqlmPMiwqOtl6A0giaWQc+T4YXgzeqDrNKJymfj5sO+1PTCy+k4W2Q8HIjYxoa5OsqA21f+87
-	ANyiqi3M0TufnrJDunNsUGA==
-X-Received: by 2002:a05:622a:507:b0:532:d67e:bc2e with SMTP id d75a77b69052e-5359f0634femr356797941cf.0.1792057714113;
-        Thu, 15 Oct 2026 02:48:34 -0700 (PDT)
-X-Received: by 2002:a05:622a:507:b0:532:d67e:bc2e with SMTP id d75a77b69052e-5359f0634femr356797601cf.0.1792057713501;
-        Thu, 15 Oct 2026 02:48:33 -0700 (PDT)
-Received: from [192.168.226.26] ([178.235.128.140])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c3eda622246sm102601366b.70.2026.10.15.02.48.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Oct 2026 02:48:32 -0700 (PDT)
-Message-ID: <812d0272-db2a-4dd4-8e6c-e66145af2db5@oss.qualcomm.com>
-Date: Thu, 15 Oct 2026 11:48:29 +0200
+	id 1xHIlA-0000000HS1E-34Hx;
+	Thu, 15 Oct 2026 10:32:28 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id E29F340E15;
+	Thu, 15 Oct 2026 10:32:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 14E431F000C6;
+	Thu, 15 Oct 2026 10:32:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792060347;
+	bh=LsdCD24KD2Tp7y3HBX5d5H3zRxOHnSIBh2ksy9wg8Ts=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=PI5GrVnWNLXPUfA56WspsR/Sfk0JXapnfU2XLZpZyaYhVj7WNauNiYX8WZHeKvjuX
+	 5SPyA829h6ChMVvtyYpWgC9r5KhwBmWi0V9iMUVWBSOABvvFFoQ7pIFY42kEWmFQDW
+	 eH/hAvT8mHUsib5HpTG1kCLTIREHI5WbXfXRuxWoLuvwfn0jI4Kmv3qzJqMtz1kniP
+	 2mY6REC4hDxFvstBjKKrjG0lY9PS7KCcSPrnW2it1S5hUOa0yuDC9X/40L4T6+HGb3
+	 ynwiYKfpWJ3TlxbrBUA9buCkJjSpmDaMyM6UnyC3rTAvgSUUUH05G4s3qMUaPr+7SB
+	 I2d/0P6cLtriw==
+From: Mark Brown <broonie@kernel.org>
+To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>, 
+ Venkata Prasad Potturu <venkataprasad.potturu@amd.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, povik+lin@cutebit.org, 
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+ Andrei Simion <andrei.simion@microchip.com>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ David Rhodes <david.rhodes@cirrus.com>, 
+ Richard Fitzgerald <rf@opensource.cirrus.com>, 
+ Shengjiu Wang <shengjiu.wang@gmail.com>, Xiubo Li <Xiubo.Lee@gmail.com>, 
+ Fabio Estevam <festevam@gmail.com>, Nicolin Chen <nicoleotsuka@gmail.com>, 
+ Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Cezary Rojewski <cezary.rojewski@intel.com>, 
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
+ Bard Liao <yung-chuan.liao@linux.intel.com>, 
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, 
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>, Biju Das <biju.das.jz@bp.renesas.com>, 
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
+ Heiko Stuebner <heiko@sntech.de>, phucduc.bui@gmail.com
+In-Reply-To: <20261008103831.542533-1-phucduc.bui@gmail.com>
+References: <20261008103831.542533-1-phucduc.bui@gmail.com>
+Subject: Re: [PATCH 00/24] ASoC: Fix constraint return value handling
+Message-Id: <179190764565.42298.7608820451808443258.b4-ty@b4>
+Date: Tue, 13 Oct 2026 17:07:25 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] arm64: dts: qcom: Use DP AltMode defines
-To: Sebastian Reichel <sre@kernel.org>,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        Rob Herring <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konradybcio@kernel.org>
-Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
-        linux-arm-msm@vger.kernel.org, kernel@collabora.com,
-        Sebastian Reichel <sebastian.reichel@collabora.com>
-References: <20261014-dp-altmode-dt-defines-v1-0-b657c9b6e4c3@collabora.com>
- <20261014-dp-altmode-dt-defines-v1-4-b657c9b6e4c3@collabora.com>
-Content-Language: en-US
-From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-In-Reply-To: <20261014-dp-altmode-dt-defines-v1-4-b657c9b6e4c3@collabora.com>
-X-Authority-Analysis: v=2.4 cv=RYQFmFtv c=1 sm=1 tr=0 ts=6ad0a172 cx=c_pps
- a=oc9J++0uMp73DTRD5QyR2A==:117 a=PRfkaYvzSr8QmIIGAkY2Sg==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
- a=QX4gbG5DAAAA:8 a=EUspDBNiAAAA:8 a=C_hJBzH1aKR8969NbtkA:9 a=QEXdDO2ut3YA:10
- a=iYH6xdkBrDN1Jqds4HTS:22 a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDE1MDAzOCBTYWx0ZWRfX2+m9SeMhYmR9
- BRgofp4fPXNHkVd0n5BL+62Cw9QpUbwRVWdhidIG3V4BKZDahHqGnAEQwnogl1F6EH4dm0ynUFP
- T7RjvbGAPIHy757qsitZT+TAhpsf3yCki2AgC/GI0RsqgvttRtoIv83fVcxk0KUSjTsbRAahKFP
- kvgSlecnlFuDDKdrQ3VQO5hWEc83T/jkIcGKNNbtpWhEGppSkDQV8d4VvnZmOTXdCd3alCWIcDQ
- 6j+tmJht5ZQuI9TaawLjIN1/c9xzClrGfoqcIhLXcLlQsxuiK/zl95HB4S3ACb8gHnQs0mkz1L4
- eszZlAl6SkZIZRZUPacGXCD3U1S4ylob6kUExt5FNifoMseVy4NraLCorYBbteen/VYNIMK42qi
- qxQxsdQC2MMnfF9Eramf4Ri+Syow5oOKEa/yQsN9L5ajZA1yPi4c6eVrioycr1r/UXwAv80NYl+
- VPSJhy9qtfrUYGMLlTA==
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDE1MDAzOCBTYWx0ZWRfXzdJLEUPcybO7
- khD3C5zN979TmPUv5dCUpzaGhAAGnhqX6rFjrmgbtkejafecP9D2nekS8OcUwG6jhO3SnUtfL+k
- 0ioZjTE5NVbB6qHTBnuQvexfxXIDeOk=
-X-Proofpoint-GUID: VZ-uO1Hn9OvVPLNZ8bk0-vLhTh3wvQEN
-X-Proofpoint-ORIG-GUID: VZ-uO1Hn9OvVPLNZ8bk0-vLhTh3wvQEN
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-14_01,2026-10-14_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 phishscore=0 bulkscore=0 suspectscore=0 impostorscore=0
- lowpriorityscore=0 spamscore=0 malwarescore=0 clxscore=1015 adultscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2610080000 definitions=main-2610150038
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261015_024836_099034_373F975F 
-X-CRM114-Status: GOOD (  10.62  )
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4621; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=XUYOScsxtpoMvmTZT4+4w0G08Qy83jX28yQHeYVl7kI=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLIurF436QbXa43IwJtVz+a9/WP+dErigiRWRdWnu6RO7
+ AjMf7hrdUcpC4MYF4OsmCJLXBb3y/qS12v4Di5sg5nDygQyhIGLUwAmIiLKyHDq2uODof8nCxuF
+ ZpfxcTPWcS7d8W7zzOu3Jb2WdVWxqZ9n+J+wZiZ7iINepZ/T5W/rbJe6Pjpf3LOofnnrcZW5jw+
+ FszMBAA==
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,23 +92,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: imx@lists.linux.dev, wangdicheng <wangdicheng@kylinos.cn>, Kees Cook <kees@kernel.org>, Sang-Heon Jeon <ekffu200098@gmail.com>, Pengpeng Hou <pengpeng@iscas.ac.cn>, Bo Shen <voice.shen@atmel.com>, Neo Chang <YLCHANG2@nuvoton.com>, linux-rockchip@lists.infradead.org, Chris Bainbridge <chris.bainbridge@gmail.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, linux-sound@vger.kernel.org, Ravulapati Vishnu vardhan rao <Vishnuvardhanrao.Ravulapati@amd.com>, u.kleine-koenig@baylibre.com, Zain Aboobacker <zainaboobacker33@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, Md Shofiqul Islam <shofiqtest@gmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>, patches@opensource.cirrus.com, Linus Walleij <linusw@kernel.org>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>, asahi@lists.linux.dev, Hemanth Selam <hemanth.selam@gmail.com>, linuxppc-dev@lists.ozlabs.org, Syed Saba Kareem <syed.sabakareem@amd.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/14/26 11:31 PM, Sebastian Reichel wrote:
-> From: Sebastian Reichel <sebastian.reichel@collabora.com>
+On Thu, 08 Oct 2026 17:38:07 +0700, phucduc.bui@gmail.com wrote:
+> ASoC: Fix constraint return value handling
 > 
-> Use the new USB-C DP AltMode defines for the SVID and the capabilities
-> VDO to make the DTs more readable.
+> From: bui duc phuc <phucduc.bui@gmail.com>
 > 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
+> Hi all,
+> 
+> snd_pcm_hw_constraint_minmax() and snd_pcm_hw_constraint_integer()
+> may return positive values on success. However, ASoC only marks the
+> DAI, link, or component as started or opened when the corresponding
+> callback returns 0.
+> 
+> [...]
 
-Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Applied to
 
-Konrad
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
+
+Thanks!
+
+[01/24] ASoC: amd: acp: Fix .close() being skipped on rollback
+        https://git.kernel.org/broonie/misc/c/2c3400aa9f39
+[02/24] ASoC: amd: ps: Fix acp63_pdm_dma_close() being skipped on rollback
+        https://git.kernel.org/broonie/misc/c/172888114dda
+[03/24] ASoC: amd: ps: Fix acp63_sdw_dma_close() being skipped on rollback
+        https://git.kernel.org/broonie/misc/c/45dd2b22ea89
+[04/24] ASoC: amd: raven: Fix acp3x_dma_close() being skipped on rollback
+        https://git.kernel.org/broonie/misc/c/37ceef26df57
+[05/24] ASoC: amd: renoir: Fix acp_pdm_dma_close() being skipped on rollback
+        https://git.kernel.org/broonie/misc/c/a92571113ef2
+[06/24] ASoC: amd: vangogh: Fix acp5x_dma_close() being skipped on rollback
+        https://git.kernel.org/broonie/misc/c/38559fcd1c51
+[07/24] ASoC: amd: yc: Fix acp6x_pdm_dma_close() being skipped on rollback
+        https://git.kernel.org/broonie/misc/c/06654a3ef513
+[08/24] ASoC: apple: mca: Ensure the DAI is marked as started on success
+        https://git.kernel.org/broonie/misc/c/4d23ef7515dd
+[09/24] ASoC: atmel: atmel-pcm-pdc: Fix atmel_pcm_close() being skipped on rollback
+        https://git.kernel.org/broonie/misc/c/50aaca643038
+[10/24] ASoC: codecs: cs42l42: Ensure the DAI is marked as started on success
+        https://git.kernel.org/broonie/misc/c/c2a3d0b2be0c
+[11/24] ASoC: codecs: nau8325: Ensure the DAI is marked as started on success
+        https://git.kernel.org/broonie/misc/c/0634e7b24727
+[12/24] ASoC: codecs: nau8540: Ensure the DAI is marked as started on success
+        https://git.kernel.org/broonie/misc/c/1de1fd7c69a3
+[13/24] ASoC: codecs: nau8821: Ensure the DAI is marked as started on success
+        https://git.kernel.org/broonie/misc/c/fc5da89a0a8a
+[14/24] ASoC: codecs: nau8824: Ensure the DAI is marked as started on success
+        https://git.kernel.org/broonie/misc/c/e66285731262
+[15/24] ASoC: codecs: nau8825: Ensure the DAI is marked as started on success
+        https://git.kernel.org/broonie/misc/c/552944e3b027
+[16/24] ASoC: codecs: wm8580: Ensure the DAI is marked as started on success
+        https://git.kernel.org/broonie/misc/c/b2c81f056c53
+[17/24] ASoC: codecs: wm8782: Ensure the DAI is marked as started on success
+        https://git.kernel.org/broonie/misc/c/29f52545ada7
+[18/24] ASoC: imx-pcm-rpmsg: Fix imx_rpmsg_pcm_close() being skipped on rollback
+        https://git.kernel.org/broonie/misc/c/85e56c3bbb7e
+[19/24] ASoC: intel: atom: Fix .shutdown() being skipped on rollback
+        https://git.kernel.org/broonie/misc/c/e3bb57581104
+[20/24] ASoC: renesas: fsi: Ensure the component is marked as opened on success
+        https://git.kernel.org/broonie/misc/c/6bba4e5a171c
+[21/24] ASoC: renesas: msiof: Fix msiof_close() being skipped on rollback
+        https://git.kernel.org/broonie/misc/c/b7c58a55fd9b
+[22/24] ASoC: renesas: rz-ssi: Ensure the component is marked as opened on success
+        https://git.kernel.org/broonie/misc/c/fd5c45166d65
+[23/24] ASoC: rockchip: rk3399_gru_sound: Mark the link as started on success
+        https://git.kernel.org/broonie/misc/c/8a43611c834f
+[24/24] ASoC: rockchip: rockchip_max98090: Mark the link as started on success
+        https://git.kernel.org/broonie/misc/c/303961c7daf1
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
 _______________________________________________
 Linux-rockchip mailing list
