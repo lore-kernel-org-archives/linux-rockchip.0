@@ -4,65 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A76A0CC6B1D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 22:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1302CC6B15
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 22:52:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RSdzxV4rh5/A5lmHSmdb7k8ktdcEwuyku9qsynnVq7Q=; b=wrm3iOH8pJ02N4
-	+YXvvfPtAGgojdXmFk6/snKpJfS+iEMubFM9RyQC5SQSZxtFpzzvkMOwhTB8U+61GIa4QmiUJf3y4
-	TWtp/r5vnToiQdepqOW0zGZ0is39oAIjgmHy8Gg0jw+4BaWYpm9WgoKLJeqMam7Jz/SYIM7GWisI4
-	b32Gx1gSvQvEVirCwFmUTSKnFG6G81tCZTfHn35G34yPB3rlagn3+LLT6WZPUATLaNAz431ot+3MH
-	rW0bTmAl+a08aGv5sfJ9J7euFxVciZX89Amwh0I81w8thxG3jGMryptrBdHVI1ucfTApHY8q4Bz/n
-	R2xWYk2JplS4KSjp4N7g==;
+	List-Owner; bh=zOD3aRI3BWqTafIgrYjnAoSeifksiInbV9973rgcUhg=; b=ZkBmqlh7K9Q7hM
+	QSVeCQ4JQt1Yfpszc/ubkDm24kiBHdyjYMRDdj16YSdJqqydrQfamjp93EYzEPZquqSEndOl5x52T
+	6bFUgc+uz4M+aG2tuc+TIe3rvghlZ9scOpVjMRA680Na6dWk5gOxWRHANBkbQ42aJuUrYpbChoGtZ
+	iLuZPz6sQRQ6dw99s/TTfV3TWKBzgaO0vm0Zkdj7gqOLi4Hh+GAJ+nHNx1wl7NVjJBwLxK7BsRKSg
+	mJgeaiowt+diQu12Fc9NWkoUgmq5Ql3Vhdy19fRKBDfahaRm2U1MyB4Mla2tHNeOc/GaJmQ5nZSON
+	uAMY1PZSfYnqF7GpuZew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGlMD-0000000EBEw-1UkH;
-	Tue, 13 Oct 2026 22:52:29 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGlLo-0000000EB1h-2vMT;
-	Tue, 13 Oct 2026 22:52:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=P/i4dUPN3aN2IgixpKjGT3nzBaX8eT2Yvo5TQQCFDZ8=; b=Zj/wPVWj7DGqj9AbdNF5xNxb8B
-	cKyOxy8rBrgXvi4N+MFPRj2tpOIEQBYMwSjSeUyzum6DB3s5jiFXhYwZNAxNhFAbblC0Slfr+G6y6
-	ek13TsOmmDtpYZzIPKGi55ZekuKITaCtLqu0JKNeFE+O4jvsx5AsbDw9u9rtVBwGhbHwlkc1rbDIl
-	dslDSHvR+DcLvhgCNfro3/t6oMrTHenynGDVDrr4fxfNLrhGpETPPWnwu2M2YZz5z/ukW8R4wGffg
-	SWvObyfxw8rcyhJaM9tUDvvOyVIz30qFy1qBsr6a+oVyyCLzh6V86miSgA1kGYgu8c8/Yby4qv0ZP
-	fhw+ICig==;
+	id 1xGlMT-0000000EBOS-2g5I;
+	Tue, 13 Oct 2026 22:52:45 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xGlLk-0000000GAm3-2HnH;
-	Tue, 13 Oct 2026 22:52:03 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1xGlLn-0000000EAzx-03hx;
+	Tue, 13 Oct 2026 22:52:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1791931912;
-	bh=hvWdJ69mM+J4kuIJVLecF3GZlHnrtRwAfhlvCxEoTvM=;
+	s=mail; t=1791931919;
+	bh=t4xm3scI4l7rWR2iBzxLstmE0RTUxpACdTblDz3oXNQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=DwSTBTR7mEnpATJYkkEKIwVcEr37n2KuoHdOlGWQ9LdcY4r8Yl5ATwKeAJbLwugH+
-	 xxPcEd/Xv8rquPEHs+IWS1TFocIpOW0MT7eQPj90Q+YYBRGkSpDySGnkNu3Kary/sp
-	 F6mwdnhcrFQ8xsBBBzTzIGGyanG13bfJVDNJFPr1kc3pZ/23F+/RQpVQEg25qM788f
-	 wPc+4nuCxNV48ayEpADZoI4mGfzG4i10Ztav7BTn0cBjHvClOzDUh/M/oJujlljURc
-	 g6iaJxOPvqE6vD5J0UydgL1vahXQC2NVLPmvFqG7J6MAUFQlC79l3wediM7Pyi73so
-	 TfjJoFLGcLXrQ==
+	b=CFVeqWm9bZ+b2qYqAyW6WEpI8vPhOwqd06tI38Fo7G+7VirPG5DQgRCp1R/nABSVf
+	 qQkR8ZzJ2LDrzOleN4SQWWjn/3+1gVpn1cFFupHnNq/CE4/TZTjXWP9JzYv8Ddkh99
+	 SOq3lCVBniNaGs5lVLfhwGI5xso2ykivJ8urd5cMpxubp41BZRR4La+NoP5e4dMm02
+	 +LeLuMKMLWqjmEdj6+Tn2uNQZQIB5AmdZfQl9x1iHZYF36Q7PMqq+TA5mjhftczIVT
+	 +usZqzS25oWkvGTZ2ARJG0braLal0GO55OFZEKUjClBPPAeKCTuWJ0/udB9/NJHQZT
+	 SSy5iZ9kpRc9g==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CE74D17E0C98;
-	Wed, 14 Oct 2026 00:51:52 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1726417E1509;
+	Wed, 14 Oct 2026 00:51:59 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 14 Oct 2026 01:51:20 +0300
-Subject: [PATCH v5 03/15] drm/rockchip: vop2: Balance state on
- atomic_enable() error paths
+Date: Wed, 14 Oct 2026 01:51:29 +0300
+Subject: [PATCH v5 12/15] drm/rockchip: dw_hdmi_qp: Do not mask error code
+ in atomic_check()
 MIME-Version: 1.0
-Message-Id: <20261014-dw-hdmi-qp-yuv-v5-3-6fab0fe43a9b@collabora.com>
+Message-Id: <20261014-dw-hdmi-qp-yuv-v5-12-6fab0fe43a9b@collabora.com>
 References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com>
 In-Reply-To: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -85,12 +71,11 @@ To: Sandy Huang <hjc@rock-chips.com>,
 Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, 
  dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>, 
- Igor Paunovic <royalnet026@gmail.com>
+ linux-kernel@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261013_235201_294491_DD2B7B8A 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20261013_155203_556301_9F6EB8E3 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,214 +92,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-vop2_crtc_atomic_enable() prepares vp->dclk and, for the first CRTC,
-calls vop2_enable(), incrementing the shared vop2->enable_count before
-programming VOP2 registers.  Two later failure points return early with
-only vop2_unlock(), leaking the dclk prepare, the enable_count
-increment, and the core clocks / PM runtime reference from
-vop2_enable().
+dw_hdmi_qp_rockchip_get_vop_format() calls
+drm_atomic_get_bridge_state(), which takes the bridge private object
+lock through the atomic state's ww acquire context and may therefore
+fail with -EDEADLK when the lock is contended.
 
-Since the disable path decrements enable_count unconditionally, the
-leaked increment skews the count, causing an underflow or premature
-shutdown of core clocks and PM runtime while another CRTC is active.
+The DRM core expects -EDEADLK to be propagated up from atomic_check()
+so it can drop all held locks and restart the commit.  Replacing it
+with a hardcoded -EINVAL defeats this backoff mechanism, making
+otherwise valid commits fail spuriously when multiple threads perform
+atomic commits concurrently.
 
-Moreover, cleaning up on the enable error paths alone is insufficient.
-A CRTC whose atomic_enable() bailed is still committed as active, so
-vop2_crtc_atomic_disable() still runs its full teardown, releasing the
-same dclk prepare and enable_count a second time, thus underflowing both
-counts and, where vop2_enable() ran, touching VOP registers with core
-clocks gated.
+Propagate the error code returned by the helper instead of
+unnecessarily overriding it.
 
-Fix this by reverting exactly what was set up on failure, and track the
-per-VP bring-up state so atomic_disable() skips teardown when
-atomic_enable() never completed.  Additionally, ensure any further
-hardware programming is also skipped within the affected RPM commit
-tail, i.e. in the callbacks gated by drm_atomic_helper_commit_planes():
-vop2_crtc_atomic_begin(), vop2_plane_atomic_update{update|disable}() and
-vop2_crtc_atomic_flush().
-
-Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
 Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/all/20260623202043.8BFE21F000E9@smtp.kernel.org/
-Link: https://lore.kernel.org/all/20260623202043.8BFE21F000E9@smtp.kernel.org/
-Tested-by: Igor Paunovic <royalnet026@gmail.com>
+Closes: https://lore.kernel.org/all/20260902230603.AF5C61F000E9@smtp.kernel.org/
+Fixes: a18aa0dd7a0b ("drm/rockchip: dw_hdmi_qp: Implement "color format" DRM property")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 68 ++++++++++++++++++++++------
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  6 +++
- 2 files changed, 59 insertions(+), 15 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index e0caea93a896..36384f029ef7 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1033,6 +1033,9 @@ static void vop2_crtc_atomic_disable(struct drm_crtc *crtc,
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index f2a1ea8dfefa..db1933d75ced 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -203,7 +203,7 @@ dw_hdmi_qp_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
  
- 	vop2_lock(vop2);
+ 	ingest_fmt = dw_hdmi_qp_rockchip_get_vop_format(encoder, conn_state);
+ 	if (ingest_fmt < 0)
+-		return -EINVAL;
++		return ingest_fmt;
  
-+	if (!vp->enabled)
-+		goto out_unlock;
-+
- 	old_crtc_state = drm_atomic_get_old_crtc_state(state, crtc);
- 	drm_atomic_helper_disable_planes_on_crtc(old_crtc_state, false);
- 
-@@ -1063,11 +1066,14 @@ static void vop2_crtc_atomic_disable(struct drm_crtc *crtc,
- 
- 	clk_disable_unprepare(vp->dclk);
- 
-+	vp->enabled = false;
-+
- 	vop2->enable_count--;
- 
- 	if (!vop2->enable_count)
- 		vop2_disable(vop2);
- 
-+out_unlock:
- 	vop2_unlock(vop2);
- 
- 	if (crtc->state->event && !crtc->state->active) {
-@@ -1197,13 +1203,21 @@ static void vop2_plane_atomic_disable(struct drm_plane *plane,
- 	struct drm_plane_state *old_pstate = NULL;
- 	struct vop2_win *win = to_vop2_win(plane);
- 	struct vop2 *vop2 = win->vop2;
-+	struct vop2_video_port *vp;
- 
- 	drm_dbg(vop2->drm, "%s disable\n", win->data->name);
- 
- 	if (state)
- 		old_pstate = drm_atomic_get_old_plane_state(state, plane);
--	if (old_pstate && !old_pstate->crtc)
--		return;
-+
-+	if (old_pstate) {
-+		if (!old_pstate->crtc)
-+			return;
-+
-+		vp = to_vop2_video_port(old_pstate->crtc);
-+		if (!vp->enabled)
-+			return;
-+	}
- 
- 	vop2_win_disable(win);
- 	vop2_win_write(win, VOP2_WIN_YUV_CLIP, 0);
-@@ -1298,6 +1312,9 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 	if (WARN_ON(!crtc))
- 		return;
- 
-+	if (!vp->enabled)
-+		return;
-+
- 	if (!pstate->visible) {
- 		vop2_plane_atomic_disable(plane, state);
- 		return;
-@@ -1803,8 +1820,11 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
- 		return;
- 	}
- 
--	if (!vop2->enable_count)
--		vop2_enable(vop2);
-+	if (!vop2->enable_count) {
-+		ret = vop2_enable(vop2);
-+		if (ret)
-+			goto err_unprepare_dclk;
-+	}
- 
- 	vop2->enable_count++;
- 
-@@ -1831,10 +1851,8 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
- 		clock = vop2->ops->setup_intf_mux(vp, rkencoder->crtc_endpoint_id, polflags);
- 	}
- 
--	if (!clock) {
--		vop2_unlock(vop2);
--		return;
--	}
-+	if (!clock)
-+		goto err_put_enable_count;
- 
- 	if (vcstate->output_mode == ROCKCHIP_OUT_MODE_AAAA &&
- 	    !(vp_data->feature & VOP2_VP_FEATURE_OUTPUT_10BIT))
-@@ -1852,8 +1870,7 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
- 		default:
- 			drm_err(vop2->drm, "Unknown DRM_MODE_CONNECTOR %d\n",
- 				vcstate->output_type);
--			vop2_unlock(vop2);
--			return;
-+			goto err_put_enable_count;
- 		}
- 	else
- 		out_mode = vcstate->output_mode;
-@@ -1965,6 +1982,18 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
- 
- 	drm_crtc_vblank_on(crtc);
- 
-+	vp->enabled = true;
-+
-+	vop2_unlock(vop2);
-+
-+	return;
-+
-+err_put_enable_count:
-+	if (!--vop2->enable_count)
-+		vop2_disable(vop2);
-+
-+err_unprepare_dclk:
-+	clk_disable_unprepare(vp->dclk);
- 	vop2_unlock(vop2);
- }
- 
-@@ -2023,6 +2052,9 @@ static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
- 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
- 	struct vop2 *vop2 = vp->vop2;
- 
-+	if (!vp->enabled)
-+		return;
-+
- 	vop2->ops->setup_overlay(vp);
- }
- 
-@@ -2034,13 +2066,19 @@ static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
- 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
- 	struct vop2 *vop2 = vp->vop2;
- 
--	/* In case of modeset, gamma lut update already happened in atomic enable */
--	if (!drm_atomic_crtc_needs_modeset(crtc_state) && crtc_state->color_mgmt_changed)
--		vop2_crtc_atomic_try_set_gamma_locked(vop2, vp, crtc, crtc_state);
-+	if (vp->enabled) {
-+		/*
-+		 * In case of modeset, gamma lut update already happened
-+		 * in atomic enable.
-+		 */
-+		if (!drm_atomic_crtc_needs_modeset(crtc_state) &&
-+		    crtc_state->color_mgmt_changed)
-+			vop2_crtc_atomic_try_set_gamma_locked(vop2, vp, crtc, crtc_state);
- 
--	vop2_post_config(crtc, false, crtc_state, old_crtc_state);
-+		vop2_post_config(crtc, false, crtc_state, old_crtc_state);
- 
--	vop2_cfg_done(vp);
-+		vop2_cfg_done(vp);
-+	}
- 
- 	spin_lock_irq(&crtc->dev->event_lock);
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index ffcb39c130aa..b209b2d5b96d 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -243,6 +243,12 @@ struct vop2_video_port {
- 
- 	struct completion dsp_hold_completion;
- 
-+	/**
-+	 * @enabled: CRTC fully brought up by atomic_enable(); allows
-+	 * atomic_disable() to skip teardown after a failed enable.
-+	 */
-+	bool enabled;
-+
- 	/**
- 	 * @win_mask: Bitmask of windows attached to the video port;
- 	 */
+ 	if (hdmi->tmds_char_rate == conn_state->hdmi.tmds_char_rate &&
+ 	    s->output_bpc == conn_state->hdmi.output_bpc &&
 
 -- 
 2.55.0
