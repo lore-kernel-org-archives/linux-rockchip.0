@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9EB2CC6B12
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 22:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BBC9CC6B15
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 22:52:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aiwUe+mexfuqqK5pxqy8cUJhrNrscBiziTc4d2IuXqQ=; b=ixdl7lJ+fMjBz1
-	t103vpo9ISgkW3CoSE5MN09b3w9m8k5VKsnaliYGR+nG3gOZDg9QVbU+5zUTVw9sKzMUN4hUGSoAZ
-	Z76DJhW3KkLnibK6H99vw8oIsP7Y5/fMegGKx8gRyIJbFMLeV54cVRxe4FjKLj09NdhFM38FpGmwD
-	652MMGih6X1Ed9PRTH6niI+iHEyRMlkIKdtt7KdkCeRqFRkEcmq68jK3lgrizv8ONSv8ba8tkarcF
-	HCWc0dWBSZuOxdpvH7gcCqryW7TesvB8GrFVxvE6cDbuAkSNC8AZ5ZBnCKV89TM4g/CiMhffPN/8D
-	QxsnrX/xqA7hcmpTRm+g==;
+	List-Owner; bh=kgWMuTDWijgkU9iRNrcmCWNZ0dN0fXdnRDHiwtKLcyk=; b=eFcciSu72tu9Al
+	DNVffQSDkAESUwRUILHB+4MnJLValH18OA3DfkRYZTOKclQ9mBeFjXKWmtBPcLJ7RCnahZMogPa4c
+	gn0v8BXu9WheVzKSD9lKIM0Gx8Evhop0vxklTy8ZCgB9a3hRzdQ5wzj6PfOC7wuOTqmDCE5yHvrob
+	Kr0tAgiSfVJlVPWbl3Z2Z5++njDh36PxHGdrTazYWA1+CJM/sPQRPLtyyZb7XBSzBXWMGn0hcPeK7
+	i7ylMbiN2SB7EuXmse3gr5bORMtBc6+lOvzBEKSdsNAFDRkCmBs00U1QESBpO2aFOsKeRaqjPtEL6
+	hSlboQRPaab7oIosW0gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGlMZ-0000000EBUc-2ut4;
-	Tue, 13 Oct 2026 22:52:51 +0000
+	id 1xGlMQ-0000000EBOJ-1Jdq;
+	Tue, 13 Oct 2026 22:52:42 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGlLq-0000000EB3e-35jl;
-	Tue, 13 Oct 2026 22:52:06 +0000
+	id 1xGlLo-0000000EB1c-2tk7;
+	Tue, 13 Oct 2026 22:52:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=azy+lvw4tv28cLPoevsTISSZ2RTA6Rb364gYAOFhXYc=; b=hMZO3DIND/yQxIPIClsW2HYmpK
-	2xfFOFsGDrRek6EK9p+bguCbwhRTk+zEtOrRhoYqoJJhyTyZor7EJ607P6DCAfMcSN9cX2TtKLZQ+
-	N8tuAJ8uk/m9uBbWNh7N9SSR8bRV1yuaiBUhZN3/k5bcuNSDJJx64TtUG2TvvHtJn1buIYkJVDznz
-	a/4Q0kHAQaBV0LVw+WT+Vj5zFbJzMZsW8yhyae48G9qNuLSKZXqDrEhr4+/KqoXrdwoqaOHg7ejLU
-	kAXHTwmyL9TMxFG+yCxeajL9tszy4USfoUAZnKmKYpfFkh1KfzRwz4pV0X14xJTD7d/2bBqi0fBaH
-	S2+Q5aMQ==;
+	bh=O6hnHQJ2O4C2TuONJOPs3eNQ4JKVqqvHZI30zRwkoR0=; b=CcGSpsQMsjs8OYGMOkNTXNaJMS
+	ErYpIhFXmKChm1MlExAj23tnyiS9ubZLcGUhT4VcmtK+sREIQqY/6FhFsijOyRocu1T7t6TXR24D/
+	jNza2ibVTUVfDhir8zwf00ufZVYbOPdeFAsTFCgo54RqK0iPwSZiczY3tA5qxiGnv6EQF+a8n84He
+	XZ5zZ6KW536ohkgbBelEdjtU+T2SXAWNJqi6bCxn4cAZ0q3lBVcRulrS7+fc2ky7l2jxzf0fKo5TR
+	SpcpBEFHnAfmqEgoQ2iYvCihXiAHx70bIrSTgOEzA/smHHmIt6e++9Oj53PGwszVUB6dV1ChaFKPb
+	K3vTJw8Q==;
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xGlLn-0000000GAn6-2fSE;
-	Tue, 13 Oct 2026 22:52:05 +0000
+	id 1xGlLk-0000000GAm9-2Iwe;
+	Tue, 13 Oct 2026 22:52:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1791931917;
-	bh=8mxhko46nETQLzY3aai7N6WNArVPyT2cOeaA+192tXY=;
+	s=mail; t=1791931913;
+	bh=e11OdPT81oEiswOclnJuj1hBcz1HaIKK+zMCIpkyO/M=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=NCw8Hzd65E1VlbUma0bZtFchk9MHaYA9RvwlxdFbYR8+f1nhXthBbqmdiriiKVo/H
-	 xiZjSQR0g4kcIBC/ADwi/Dwjxww61wtO9H/fg5pzhmNnv6ZZM8MRLKeQkNWz7rUTv/
-	 Ys9H95jvn94b7BD9yqAfWjbkFPNEedfIg8rTIjF/nRm/NPYofGObCxQT4MvOyP83xe
-	 /klxPJ36+Xj4V3bXk5SfzYU3oW+LZ8gwPKMlI/3MnxU5KonKdGbdg6WE5KsDCA1AmY
-	 xY0WNQQ/mJiYnFCrPJzjdSCnMARxLO5RoW/E8j+SbXuOzbrd2m8rigCmRcDM39nSZk
-	 GzHa/82f8rOZw==
+	b=qLo+f+sqMFr3+owkbxcwExKNYhCTGpLuJ1rTW59IMzfFWzbOspiG9vVU57RNFaCTG
+	 Iz0cCgCX2oqAhz1wTw7IXVwUp7TuPaS3W7uGEt92QRdzalPn3TPDZZe/Bjx3h3JQrs
+	 vfEu2VbkKmI22iF+2mKpDPHwxyny3e7lVmtxT1rN54ENr9AJuLlC/qyIx1uzoZQy97
+	 BH5h7YKpjw/eTDvFJfbiUudzCOHtgIN/IE+V6mOqvTssrmMSLP3yZ8/v8l5yp/HC9D
+	 IzzRcW5sAPTXPG29xsuyFAFiZU4utI8FPRC33DTlhqLZ6ORHx0aZxor/cjFQRH3f1u
+	 Phz138BMUkypQ==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDF5C17E1003;
-	Wed, 14 Oct 2026 00:51:56 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8343F17E0CA6;
+	Wed, 14 Oct 2026 00:51:53 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 14 Oct 2026 01:51:26 +0300
-Subject: [PATCH v5 09/15] drm/rockchip: vop2: Consolidate HDMI PHY PLL
- clock parent switch
+Date: Wed, 14 Oct 2026 01:51:21 +0300
+Subject: [PATCH v5 04/15] drm/rockchip: vop2: Send pending event when
+ atomic_enable() fails
 MIME-Version: 1.0
-Message-Id: <20261014-dw-hdmi-qp-yuv-v5-9-6fab0fe43a9b@collabora.com>
+Message-Id: <20261014-dw-hdmi-qp-yuv-v5-4-6fab0fe43a9b@collabora.com>
 References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com>
 In-Reply-To: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -85,11 +85,12 @@ To: Sandy Huang <hjc@rock-chips.com>,
 Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, 
  dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Igor Paunovic <royalnet026@gmail.com>
+ linux-kernel@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>, 
+ Igor Paunovic <royalnet026@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261013_235204_045167_E96407CB 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20261013_235201_298683_03389523 
+X-CRM114-Status: GOOD (  15.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,81 +107,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DCLK parent switch logic for HDMI0 and HDMI1 PHY PLLs was
-duplicated, with each endpoint repeating the same clk_get_parent(),
-clk_set_parent() and error handling calls.
+vop2_crtc_atomic_flush() stashes the CRTC completion event in vp->event
+and relies on the frame start interrupt (VP_INT_FS_FIELD) to deliver it
+later via drm_crtc_send_vblank_event().  Since atomic_enable() runs
+before atomic_flush(), bailing on an error path makes it skip
+drm_crtc_vblank_on() and leave the video port disabled.  atomic_flush()
+still traps the event in vp->event, but since the port never scans out,
+the frame start interrupt does not fire and the event is not delivered.
+Userspace waiting for the flip completion then blocks indefinitely.
 
-Refactor this by first selecting the appropriate PHY PLL clock handle
-based on the active HDMI endpoint, then performing the parent switch in
-a single shared code path.
+Note the event cannot be flushed from atomic_disable(), as userspace
+waits for the completion before committing the next state, so the
+disable does not arrive and draining it there would deadlock.
 
+Use the newly added vp->enabled flag to detect this in atomic_flush()
+and send the event immediately when the port did not come up, rather
+than deferring it to an interrupt that will never occur.  This also
+avoids the spurious drm_crtc_vblank_get() WARN previously hit on the
+failed enable path, where the vblank is not on.
+
+Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Closes: https://lore.kernel.org/all/20260706194935.AC7601F000E9@smtp.kernel.org/
 Tested-by: Igor Paunovic <royalnet026@gmail.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 36 +++++++++++-----------------
- 1 file changed, 14 insertions(+), 22 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 2fa27028892c..45f3acbfa634 100644
+index 36384f029ef7..3bbbe365b5f1 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1964,42 +1964,34 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
- 		unsigned int bpc = vcstate->output_mode == ROCKCHIP_OUT_MODE_YUV422 ?
- 					8 : (vcstate->output_bpc ?: 8);
- 		unsigned long max_dclk = DIV_ROUND_CLOSEST_ULL(VOP2_MAX_DCLK_RATE * 8, bpc);
-+		struct clk *pll_hdmiphy = NULL;
+@@ -2083,8 +2083,19 @@ static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
+ 	spin_lock_irq(&crtc->dev->event_lock);
  
- 		if (clock <= max_dclk) {
- 			drm_for_each_encoder_mask(encoder, crtc->dev, crtc_state->encoder_mask) {
- 				struct rockchip_encoder *rkencoder = to_rockchip_encoder(encoder);
- 
- 				if (rkencoder->crtc_endpoint_id == ROCKCHIP_VOP2_EP_HDMI0) {
--					if (!vop2->pll_hdmiphy0)
--						break;
--
--					if (!vp->dclk_src)
--						vp->dclk_src = clk_get_parent(vp->dclk);
--
--					ret = clk_set_parent(vp->dclk, vop2->pll_hdmiphy0);
--					if (ret < 0)
--						drm_warn(vop2->drm,
--							 "Could not switch to HDMI0 PHY PLL: %d\n",
--							 ret);
-+					pll_hdmiphy = vop2->pll_hdmiphy0;
- 					break;
- 				}
- 
- 				if (rkencoder->crtc_endpoint_id == ROCKCHIP_VOP2_EP_HDMI1) {
--					if (!vop2->pll_hdmiphy1)
--						break;
--
--					if (!vp->dclk_src)
--						vp->dclk_src = clk_get_parent(vp->dclk);
--
--					ret = clk_set_parent(vp->dclk, vop2->pll_hdmiphy1);
--					if (ret < 0)
--						drm_warn(vop2->drm,
--							 "Could not switch to HDMI1 PHY PLL: %d\n",
--							 ret);
-+					pll_hdmiphy = vop2->pll_hdmiphy1;
- 					break;
- 				}
- 			}
- 		}
-+
-+		if (pll_hdmiphy) {
-+			if (!vp->dclk_src)
-+				vp->dclk_src = clk_get_parent(vp->dclk);
-+
-+			ret = clk_set_parent(vp->dclk, pll_hdmiphy);
-+			if (ret < 0)
-+				drm_warn(vop2->drm,
-+					 "Failed to switch DCLK to HDMI PHY PLL: %d\n",
-+					 ret);
+ 	if (crtc->state->event) {
+-		WARN_ON(drm_crtc_vblank_get(crtc));
+-		vp->event = crtc->state->event;
++		/*
++		 * A failed atomic_enable() leaves the video port disabled with
++		 * no scanout, so the frame start interrupt that normally
++		 * delivers vp->event never fires. Send the event right away in
++		 * that case to avoid stalling the flip completion.
++		 */
++		if (vp->enabled) {
++			WARN_ON(drm_crtc_vblank_get(crtc));
++			vp->event = crtc->state->event;
++		} else {
++			drm_crtc_send_vblank_event(crtc, crtc->state->event);
 +		}
++
+ 		crtc->state->event = NULL;
  	}
  
- 	clk_set_rate(vp->dclk, clock);
 
 -- 
 2.55.0
