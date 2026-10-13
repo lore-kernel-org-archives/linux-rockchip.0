@@ -4,150 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40A86CC6B03
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 06:15:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F167ACC6B03
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 06:39:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:To:Subject:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e20a0kro8fRfwFVsYog9RfqlX2YhfAz9zqFDM32cHYE=; b=H2WPSWFx7rUnx8qKZe8zvCDsYw
-	YPBfOwesWpRmNqGAlPV0qo9KN09SiwPjLESkwf9WhkayHw0dKeBsjPy0G481zUN1V9rJzVkmuWbwL
-	oICmExeE3xMQ36nM+uRzZRW9NnrPi70stamz2Jbreal6HJSXFSvp5739SCEkQ1uJWrRaODKxvlWpx
-	N3xWejcj/OgRQHINqQbC8fUBG3+q/15kLxZs3E91SO4TR99IzjoPNVxt30PlhLywseKiu2R1gG7aB
-	riCMoNuS3js7YtziIJKK0gsaoz4FJ+4bmYhzusMu3AY2U0+uEXZ22cwfX14+yAyrn2dNXPus9/fhy
-	dtTrVNNQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
+	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xzzYJaIpqeHBi4+neKUQJa7aTC7dQ54dQxQw58yxA6M=; b=2IA5I5sANzk8q2
+	7y4eqx/toAWIsIF0FJ1+r42ICfya6E3ak0j6yjPTgOVO94DF0Jf6bSJnL8YcIzG/4ncazo7LE7AHY
+	1RLxSfHjuZKsLhJ3OtZa4EMFHDiLOhnLbz/YWnZJJp/1+EiQajWMebwfqp/JW4DMBFa05HPlPb3H6
+	cLeDMJl64JZ6N98unlg6VEtCaMNL5gJWCq+atrpFesQqHajdyGCCxlEQyEStG+v0lwe4MQAke8SdC
+	LoqBA1lZM6WAkgdGQxd9jM5E3e6pbnIT1xrMaWtBn7/JZv3tG1wGcKoZCS/CpMhn1b1IIzj88hHD4
+	6KtFLR0Jm/4j7lmdJ53Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGVnX-0000000C7aJ-3UPy;
-	Tue, 13 Oct 2026 06:15:39 +0000
-Received: from mail-northcentralusazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c105::1] helo=CH1PR05CU001.outbound.protection.outlook.com)
+	id 1xGWAZ-0000000C9zH-2O6o;
+	Tue, 13 Oct 2026 06:39:27 +0000
+Received: from out162-62-57-137.mail.qq.com ([162.62.57.137])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGVnP-0000000C7ZI-3TJU;
-	Tue, 13 Oct 2026 06:15:37 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=XWpiT/HcjXOxX/Q6K5L+xNQQHyB+mtSw0FynfaXNQOx0UAKSwwJj3zXGsLjhsUhXsygM/Lf6WirMKbLVEEDfnnFR8Ph4/fD2Hvuo7cWrDtTgNQ1Gd1zcF6tDx4QN3zyUk5FtsGBTPAynt0EvG4KQcdlaHAnPes/7miCsLmtyJ3QBlqIlioptM6UN22/zvHY+uud/Wkrazinc9GYTk7Nbr31m/xOtQ/2C3lzrV4n/mmUaI94PGU20Sa4UsQqu+P9Wf4X5J54B4hx5HnJRzDCJfKiu4v9ZwzuMFOELcWjJm+fCfuIFfYgj1E8SDR5TjLfKxb+aqheUIDUNDpMsbkOC6A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=MBe7StqWg/YQxm0Wsb8nlDNjmKCbhc1M9C+wYGi6VJU=;
- b=wTWxqerDebAjWhN9/FsRnRn+/CgZ1Embp4CH/XONAP0aiP2+BNK+zb/6xZm7+cSGfblUEVBuE5lQjk8tPhLYG3tpyXgNjTS5wZlc0GoS1GAAWgZUY70zfcTmrXyWo/gFD2ascuLAZMXxUnuDkRP389FPHGw4I7i74tF+D1WUbkwh4u+xu/KfHAF+HhG5LfqiHQAr4Hg+dEFcGPADLoUhrEY7jO9q5LM/RpmfMX/Kr+UO3TUG7iJ/p8z5x4ywbVFGq8dMt88vDORZS+0ODLOjPzAifDSOe9qTWtrO3YUI6txHxvDW0+axj+dVhPGS4vDkR0fhC7mXhCsYCa/2fSn9fg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MBe7StqWg/YQxm0Wsb8nlDNjmKCbhc1M9C+wYGi6VJU=;
- b=3mBVxgBV3sjlNwMrT3S1up4m8NIorvFy9XbcK/uWcaUU2xnx/vggO9oftQAh4u3fDkB0JlbuPivrA/zb5JHp3t/Y4myLzD2qywpQqG26RBEZ9xvSLQOmDX+WA03QcpR3oN+BqKQyTH/mbs10xucr2QJHk9JWCn7yR/alVsZ/lZo=
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from DS2PR12MB9567.namprd12.prod.outlook.com (2603:10b6:8:27c::8) by
- CY8PR12MB8361.namprd12.prod.outlook.com (2603:10b6:930:7b::18) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.496.16; Tue, 13 Oct 2026 06:15:23 +0000
-Received: from DS2PR12MB9567.namprd12.prod.outlook.com
- ([fe80::636:1b52:24ca:d7e5]) by DS2PR12MB9567.namprd12.prod.outlook.com
- ([fe80::636:1b52:24ca:d7e5%4]) with mapi id 15.21.0522.011; Tue, 13 Oct 2026
- 06:15:23 +0000
-Message-ID: <fc30ea4e-3c2f-4ba4-9ae2-054db9b49fd5@amd.com>
-Date: Tue, 13 Oct 2026 11:43:54 +0530
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/24] ASoC: Fix constraint return value handling
-To: phucduc.bui@gmail.com,
- Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- povik+lin@cutebit.org, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Andrei Simion <andrei.simion@microchip.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- David Rhodes <david.rhodes@cirrus.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Shengjiu Wang <shengjiu.wang@gmail.com>, Xiubo Li <Xiubo.Lee@gmail.com>,
- Fabio Estevam <festevam@gmail.com>, Nicolin Chen <nicoleotsuka@gmail.com>,
- Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Cezary Rojewski <cezary.rojewski@intel.com>,
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>, Biju Das <biju.das.jz@bp.renesas.com>,
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- Heiko Stuebner <heiko@sntech.de>
-References: <20261008103831.542533-1-phucduc.bui@gmail.com>
-Content-Language: en-US
-From: "Mukunda,Vijendar" <vijendar.mukunda@amd.com>
-In-Reply-To: <20261008103831.542533-1-phucduc.bui@gmail.com>
-X-ClientProxiedBy: PNYP287CA0095.INDP287.PROD.OUTLOOK.COM
- (2603:1096:c01:2b8::8) To CH1PR12MB9576.namprd12.prod.outlook.com
- (2603:10b6:610:2ad::14)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS2PR12MB9567:EE_|CY8PR12MB8361:EE_
-X-MS-Office365-Filtering-Correlation-Id: a32061d8-35c3-431d-09f2-08df28f15d3c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|23010399003|7416014|366016|1800799024|22082099003|18002099003|921020|11063799006|10067099003|56012099006|261009223027099003;
-X-Microsoft-Antispam-Message-Info: 08rnzLHITOy9yHoFyXcCJY2OY2sh3a+4Bfa4H49Dmv6PLMgLKcZWYpeHcPB8O2DhZApo5tF2N35a51EB5N2ix0lSwWdX0UEQvemGccRaBGkQrBrE/wGtysqkaeY2m6QMASUVRSs9F8kjl0vwep/lQ5XLVePmjPOo8bGUdrdEL/fxBuEJLgtEkMqWa2JkbqF9iDUdAq8FzPFJhm39OHxv7G0fjxSO2LkkgDp6K7mQyurb1QCHurRmOiu3sA9nejKx60+kWecLpqgopggVrqL9x8UrNwmMwNUmERO7BlwvYXs8xpw+wFIQ2PByljYzBUtHVxo6EbXFifHCC0MiNb6OQcX1Z3cI5E4VeukG77vletcePlOSASXVePSAFaGkjKd5dHobqEcDrJX2kOUJ5J2Sd/r5oVBansk6x/5OUujS+CovbFTr4s/jyOMSNF7UmmGUHmKFH9NBko1BS/maiTRhh5ous+YyKJE0Onhpj9N5D5ghJ1it1Tosm9a8JG+/PYYtDej4NGGi0xhWCkF1Tm3EiJVp8/LTkzuDWOYzDMWfvQsKXCdzkC7n1/yvNJnb8ES6A7D6cwieoeLOjoxuWMqnMBcQQ/GHIh0E0bSzbX/rVV7Zbq3vES9i8MHPIQ0EgtragQI6T0fnDYuC/Qnsp14aklpTtg/YIPoqgEnJkHPUFZ3qNvMZLUi2k2phyuEB7dBxAB2jj9kPOO3KyfIiutMWKQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS2PR12MB9567.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(23010399003)(7416014)(366016)(1800799024)(22082099003)(18002099003)(921020)(11063799006)(10067099003)(56012099006)(261009223027099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SVJoVXFKS21ZWW1sL0hMSk1HeG9UMDdWbG5OejdkQnVFUzJGckdWcG5JdVYr?=
- =?utf-8?B?cDRZcG5iNnVEQWhWMG9Qbm5wVE5vd08vVnZaOE02bTdGclo4bTF1L0s5YjJX?=
- =?utf-8?B?MzhoL0s1MGVsekhsTXZIay9lZmlQVG1hblRtSUdMQmdIUm1VSVN1djcrbFRI?=
- =?utf-8?B?R0VsWG1xUkRCQmZGWFFQb21qMUtVN1ZLTFN3cC82dEdYUG1ZUnQzcm9qREla?=
- =?utf-8?B?eFcxNVBldnRHaXRHY1ptWUwwSmtBb3lRMi95NENyM290aU0vbm5pQWl5NGt0?=
- =?utf-8?B?L1FXWSt0ZlpXV2h1ZEsrRTJBMEh1SjNpVUxFcXU5VHZHLzVuaVJ4Tk5mNWZO?=
- =?utf-8?B?NlkyamJFa1RaVFNkbWVvTll4cHA1L0NyTTQ2a3g2RkUwSUhDRGtnd28zTXVH?=
- =?utf-8?B?UXo5SWRHcXA5NjlFcE1TTVFTTkk0eHpTTDVXbjRacVhlR2hRVFh1dzFvMTVr?=
- =?utf-8?B?WmRPakpjSmFqb2xQeGJCYUVVQzYrL0l1cTM4b3IzbWVCSVBGcEtHRnRnN3Vy?=
- =?utf-8?B?cFJJVHl3ekhxMFpEaGlNSi9DckRyUFc5VEd3Zk56TEhodlJmMjFlc1BSZjZH?=
- =?utf-8?B?YVl1UC9WUzFaOHZiQmYyc3NPZjEwSDNVZ1Z4Z3l1SStqQlpmUkhVcGFqUHVZ?=
- =?utf-8?B?eDF3clptQ1E5OUh3dHJTdUNqdzZQanZRRVVocWRRcG5Wc1JoQjhUN0NBY2VG?=
- =?utf-8?B?QkMrSmZSdXdYdEZ2dzN5VUdtdFdkelJDWldRWEZQNDNJTEJEdFc1U2tpclRh?=
- =?utf-8?B?OFdXNHJPa2d0UTJTNHR0cDBBaHcwSUJPRGovOEt5SkhkTFZhejgybHdyZlBE?=
- =?utf-8?B?VnRaNEtVaXpMVFZaMFRqTkIxVXVsNG4zdTJlLzRMcy8wTkc5L3l1dTMxNkZS?=
- =?utf-8?B?VkxhbExMNkhVTlRvRWozRGVrLzRyeHgrUnNtaHVRVHorQ3BnMGxuVHI3WmZV?=
- =?utf-8?B?ZWlLc1pqL2Rja2h3Vkk0UmpSMkFCWFNGTXJkdy83Z3V6eG5MWitzaFZQTjVZ?=
- =?utf-8?B?NmtxRllWTlFpK3MzeWt0Y1pDS1VyRThQdkI3Q2c3RGRzQm11WFEyRnduQjhu?=
- =?utf-8?B?UjZOUllaWHRvcUhlR21IMmg1WGcxYXlzY1VqTUtjOSthZzJheHhTTlBPVUZo?=
- =?utf-8?B?UWFZRjQ4cW15SGRFOTVwdVRvOVFsSjNnWitqRnZzZ2JVNldXRUFaMUJzeWY0?=
- =?utf-8?B?d09LdFE4VmJQQnZLOWFvZ3plalRreVd4UU1IODVoR2FUNFZNSlFvQXpLVjJa?=
- =?utf-8?B?bmNud0c2SG5JbU5neHJyWXZja0EzM3lRU3JGR0xYNy9ydkYxUnlmTDlybUVs?=
- =?utf-8?B?Nm1ITm9NK2NpdUZhaVczY1MyYTh5TXYwZmFwWlAyV0MyOWdwSS9Mb0JHSUY2?=
- =?utf-8?B?NE9HYWYvdVFnSDNkczhCRjZteXZ4dEhHeFNaaVU4dFVpNllxWVVWeGNuOS9w?=
- =?utf-8?B?d3JJc2FpSEY2N1pSc1RiSVZOSDR3ek1ybnFaVGwvMzAvZG8wd2QvUHljOUll?=
- =?utf-8?B?QUNLY09SekxQYVFoSDNncmJPcTFidy9EVis3NzRJcTV6ejd5MmQzN0pDQnEr?=
- =?utf-8?B?MFd5WEU2QktxRGluNk1acllZcFpDNmFRQXNDMzZDWVJmdFVKTENocjBWcW9V?=
- =?utf-8?B?c0NJYW9zSldMMkp0Z1I2NjhkYUJ4Zk5ITjZwK0I3RytvT3FoMzZZdkdSbmZz?=
- =?utf-8?B?Nm1MOFM0NWRqRUxlMGtPVXgyZ2hsVmsrZnpRbXphZHljcGJ0Myt1YnYxYkxU?=
- =?utf-8?B?ME9UeThiaER1aEgwT3hCNW5nZTIyUjR4NllKbDZIQVpBeUIwK2NpQ1ducE02?=
- =?utf-8?B?TXhSUGltOGk3MjhmemlOa0g1T1Rxa2UvN3VWaCtVS1NSbjk0c1g3eXNYQUlh?=
- =?utf-8?B?N1ZiaVJ6KzUvRmxrSmRaZ1dEKzdSNU8rcjNUWC9NMDFOM29HMHJTOVY4ZHJI?=
- =?utf-8?B?c2lneCswWlRjLzdjV0gwcWdhalZnbXY5THA4NWwrVlByd08zU21Wb2dYcG1W?=
- =?utf-8?B?RlFNVlhZemN2Y2pHenpTR3E1SlI1Wmw4SDBsOVl1L1dqcEZER05EbGNaVnp4?=
- =?utf-8?B?b0hhUXBhS2d4THZuOW9wM0VmZk0xSzR4UDNaKzVFczhROVJnMWNZaFVpb0Zl?=
- =?utf-8?B?ZENuZ0R6QjFGbER1dlYvT05JSThWdDdJREVFM250NWl4NWlqMUwrUC9jUXlS?=
- =?utf-8?B?SW9tMm5QQ1g5YVFxOVVrU3NJYzdZL1dhbmNUK2hnVmx3aU5pak45czF2dmxQ?=
- =?utf-8?B?dG8yYnRzYmFPUGd2NXJ0TWhMVGdMQ2ViU3RyS0hmanU3WGJoQkMwTTVoalNK?=
- =?utf-8?B?U2lDMVd4K2xIUkdXZUhHejJYNGc5MThlWFFPeFVuRGJJMS9XTi9FZz09?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a32061d8-35c3-431d-09f2-08df28f15d3c
-X-MS-Exchange-CrossTenant-AuthSource: CH1PR12MB9576.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Oct 2026 06:15:23.4472
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: aX75sSD/MU5v0dDkdSUFpp+UUs/LHYM7COUlfF4v40Wptu1EBOw6DjOmuuOm4mFfrnyo6rgmGnjIAJIBYbSFOA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB8361
+	id 1xGWAW-0000000C9yI-3J18;
+	Tue, 13 Oct 2026 06:39:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1791873558; bh=pufvseFPv7SRb1Qgh0FRdHx2ORcY7iConWw/5V0rGEY=;
+	h=From:To:Cc:Subject:Date:References:In-Reply-To;
+	b=ICLydNTrn1d2R8B3oA6Ne5LMObic3hefiEHJsSHqzHjLhETbuhZw5TU37qI1FUq5c
+	 +sPq3UcNc0om+e62BegxI+jBF8+JOcclJ9RqbkiP94hn0/5XszgDgw/EOiR+zJzHeS
+	 fS6rtkQWe5nWWWEZQnUr1GnU47YfggtveK8RDcFY=
+X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
+X-QQ-XMAILINFO: Nyxko0BhXiLd41+Tw1uOs1BrxflslPSuTweuL7/54vmiFn65mefZgLh3iJk0vk
+	 4PgO9c7OYsrvouL0DCf7NvL0FnAY1OugU9nc6oG1RSyVaQQYnCbDrjfRHwkNaMNwbIitX/KFUy0+b
+	 vQZQEvC9TWG8cgMZqG6mo1KO3ImT+3q0JS4SIu6dhSE8H/PLXFFCNrCXjwDh38Rxir59UvwkHy/Ob
+	 1iFyXxvqEqq3s9i0cflrbzPIhUCm5/QYeulrMjW/hyDYVYVlu4QuiWvY+LAtvKF2oB97KiVh7HdBu
+	 vZYjICUlz+tec5u7Wm8oE0zBT5+4dEiJnfFN8fdDoL8Kp+6zqKWsr5OWBvayO3zRuKbnilymr0X9+
+	 xbpw5PFHXVm5skbrwRF9he+Tmdl3o3hzPs0LJQD+FA6+P5FJADNnnWYxmwRowiKsOyHgPW2Ftj2zQ
+	 o2RN9WT5ojU/sGWyI7M3WJ0kzOI0mEcq9Drcm9U7TQRNcoqKasP0kQtcs5XPmNpdwK1WAUsarwi9W
+	 zsnQRsoUfEJsZTqM0AanWJ9bPGROJoMmLEkQLL7cTYMtuJXJABZRpo7PwhIY4wh53oVvCpq0lQUrC
+	 vbPeLrlSwarpLSTg96Kc56cvPLOceAxLOnodo5MUbFoi1VlVs1rf0ghnBA9ibEYUo/ylziOwcEzE7
+	 3yEFl0D2/JFbyCIVTbbb0BeeK6yl0J/bnAlYgPQ5S+VrFOdaKNlFHyVtPvOvx1/5oUoUxZOyJ7gOW
+	 8JyAqmHv5yGQsfj929TBRyq5YTiq1FOVLRenMVOR0HopbLAevLLJ0vc/GDghICuUdy8gHOn+kLSGz
+	 qeCoFzd3q3j4yxVeE3qZmNeAt54uBU7OwwCIHw4Y6WLptPnCyQnXSJlTx3ALHwRjz+AGAUBd0Yylt
+	 vubGXg02JvAnJQ+b8ICAbaYgerS26pq3G2qBq5sPW9ENd2UgJPiMk6DP3gzw1M71fuKt7O9y1EmSC
+	 qGnRHrpLMCXRzGOrlHhkVmPu9BcJt2SZGhJI0X1d/bxPOW5CYLMJ52pk7E4qhYn/GxWpW4w48fn3L
+	 TWWUM34sJbtpv70o1MwxLQp1aZ4NEAQy8ffHfQhGRThZ+kMlq/n0+RP8YyRwW//3XNWNTNXyt1WHe
+	 1qQwGqRGK3v0nA==
+From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
+To: "=?utf-8?B?bmV0ZGV2LWJvdCtzaW5mbw==?=" <netdev-bot+sinfo@kernel.org>
+Cc: "=?utf-8?B?TWFyYyBLbGVpbmUtQnVkZGU=?=" <mkl@pengutronix.de>, "=?utf-8?B?VmluY2VudCBNYWlsaG9s?=" <mailhol@kernel.org>, "=?utf-8?B?U2ViYXN0aWFuIEFuZHJ6ZWogU2lld2lvcg==?=" <bigeasy@linutronix.de>, "=?utf-8?B?Q2xhcmsgV2lsbGlhbXM=?=" <clrkwllms@kernel.org>, "=?utf-8?B?U3RldmVuIFJvc3RlZHQ=?=" <rostedt@goodmis.org>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?bmV0ZGV2?=" <netdev@vger.kernel.org>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?c3RhYmxl?=" <stable@vger.kernel.org>
+Subject: Re: [PATCH net] can: rockchip_canfd: stop bus-off restart before closing the device
+Mime-Version: 1.0
+Date: Tue, 13 Oct 2026 14:39:15 +0800
+X-Priority: 3
+Message-ID: <tencent_1385D030CB2025348D8C05842272FB01350A@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+References: <tencent_5802EE88434010229EDF7A53084D994C6106@qq.com>
+	<179186216396.2527009.17545175870858054500@kernel.org>
+In-Reply-To: <179186216396.2527009.17545175870858054500@kernel.org>
+X-QQ-mid: xmsezb41-0t1791873555t7ffge0n2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261012_231535_540616_B55C1C9D 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20261012_233925_355905_F81F9AB7 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,99 +78,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: imx@lists.linux.dev, wangdicheng <wangdicheng@kylinos.cn>, Kees Cook <kees@kernel.org>, Sang-Heon Jeon <ekffu200098@gmail.com>, Pengpeng Hou <pengpeng@iscas.ac.cn>, Bo Shen <voice.shen@atmel.com>, Neo Chang <YLCHANG2@nuvoton.com>, linux-rockchip@lists.infradead.org, Chris Bainbridge <chris.bainbridge@gmail.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, linux-sound@vger.kernel.org, Ravulapati Vishnu vardhan rao <Vishnuvardhanrao.Ravulapati@amd.com>, u.kleine-koenig@baylibre.com, Zain Aboobacker <zainaboobacker33@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, Md Shofiqul Islam <shofiqtest@gmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>, patches@opensource.cirrus.com, Linus Walleij <linusw@kernel.org>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>, asahi@lists.linux.dev, Hemanth Selam <hemanth.selam@gmail.com>, linuxppc-dev@lists.ozlabs.org, Syed Saba Kareem <syed.sabakareem@amd.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
+>  - How the issue was discovered, e.g. hit in production, hit during
+>    development, syzbot report, manual code inspection, LLM or static
+>    analysis tool scan.
 
-On 10/8/26 16:08, phucduc.bui@gmail.com wrote:
-> [You don't often get email from phucduc.bui@gmail.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
->
-> From: bui duc phuc <phucduc.bui@gmail.com>
->
-> Hi all,
->
-> snd_pcm_hw_constraint_minmax() and snd_pcm_hw_constraint_integer()
-> may return positive values on success. However, ASoC only marks the
-> DAI, link, or component as started or opened when the corresponding
-> callback returns 0.
->
-> This series fixes affected ASoC drivers to return 0 on success and
-> properly handle rollback paths.
->
-> Found by manual code inspection.
-For AMD patches:
+Thanks for pointing this out. This work started with a real failure on a
+production robot, rather than a general scan for potential driver bugs.
 
-Reviewed-By: Vijendar Mukunda <Vijendar.Mukunda@amd.com>
->
-> Compile-tested only.
->
-> Best regards,
-> Phuc
->
-> bui duc phuc (24):
->    ASoC: amd: acp: Fix .close() being skipped on rollback
->    ASoC: amd: ps: Fix acp63_pdm_dma_close() being skipped on rollback
->    ASoC: amd: ps: Fix acp63_sdw_dma_close() being skipped on rollback
->    ASoC: amd: raven: Fix acp3x_dma_close() being skipped on rollback
->    ASoC: amd: renoir: Fix acp_pdm_dma_close() being skipped on rollback
->    ASoC: amd: vangogh: Fix acp5x_dma_close() being skipped on rollback
->    ASoC: amd: yc: Fix acp6x_pdm_dma_close() being skipped on rollback
->    ASoC: apple: mca: Ensure the DAI is marked as started on success
->    ASoC: atmel: atmel-pcm-pdc: Fix atmel_pcm_close() being skipped on
->      rollback
->    ASoC: codecs: cs42l42: Ensure the DAI is marked as started on success
->    ASoC: codecs: nau8325: Ensure the DAI is marked as started on success
->    ASoC: codecs: nau8540: Ensure the DAI is marked as started on success
->    ASoC: codecs: nau8821: Ensure the DAI is marked as started on success
->    ASoC: codecs: nau8824: Ensure the DAI is marked as started on success
->    ASoC: codecs: nau8825: Ensure the DAI is marked as started on success
->    ASoC: codecs: wm8580: Ensure the DAI is marked as started on success
->    ASoC: codecs: wm8782: Ensure the DAI is marked as started on success
->    ASoC: imx-pcm-rpmsg: Fix imx_rpmsg_pcm_close() being skipped on
->      rollback
->    ASoC: intel: atom: Fix .shutdown() being skipped on rollback
->    ASoC: renesas: fsi: Ensure the component is marked as opened on
->      success
->    ASoC: renesas: msiof: Fix msiof_close() being skipped on rollback
->    ASoC: renesas: rz-ssi: Ensure the component is marked as opened on
->      success
->    ASoC: rockchip: rk3399_gru_sound: Mark the link as started on success
->    ASoC: rockchip: rockchip_max98090: Mark the link as started on success
->
->   sound/soc/amd/acp/acp-platform.c             |  2 +-
->   sound/soc/amd/ps/ps-pdm-dma.c                |  2 +-
->   sound/soc/amd/ps/ps-sdw-dma.c                |  2 +-
->   sound/soc/amd/raven/acp3x-pcm-dma.c          |  2 +-
->   sound/soc/amd/renoir/acp3x-pdm-dma.c         |  2 +-
->   sound/soc/amd/vangogh/acp5x-pcm-dma.c        |  2 +-
->   sound/soc/amd/yc/acp6x-pdm-dma.c             |  2 +-
->   sound/soc/apple/mca.c                        | 11 ++++++++---
->   sound/soc/atmel/atmel-pcm-pdc.c              |  2 ++
->   sound/soc/codecs/cs42l42.c                   | 11 ++++++++---
->   sound/soc/codecs/nau8325.c                   | 11 ++++++++---
->   sound/soc/codecs/nau8540.c                   | 11 ++++++++---
->   sound/soc/codecs/nau8821.c                   | 11 ++++++++---
->   sound/soc/codecs/nau8824.c                   | 11 ++++++++---
->   sound/soc/codecs/nau8825.c                   | 11 ++++++++---
->   sound/soc/codecs/wm8580.c                    | 10 ++++++++--
->   sound/soc/codecs/wm8782.c                    |  7 ++++++-
->   sound/soc/fsl/imx-pcm-rpmsg.c                |  2 +-
->   sound/soc/intel/atom/sst-mfld-platform-pcm.c |  2 +-
->   sound/soc/renesas/fsi.c                      |  6 ++++--
->   sound/soc/renesas/rcar/msiof.c               |  6 ++++--
->   sound/soc/renesas/rz-ssi.c                   | 18 +++++++++++++++---
->   sound/soc/rockchip/rk3399_gru_sound.c        |  9 +++++++--
->   sound/soc/rockchip/rockchip_max98090.c       | 10 ++++++++--
->   24 files changed, 119 insertions(+), 44 deletions(-)
->
-> --
-> 2.43.0
+The production system used a LubanCat-5IO with an RK3588, running a
+6.18.55-current-rockchip64 PREEMPT_RT kernel with local CAN patches. Its
+1 Mbit/s CAN bus connected four CANopen motors operating at 100 Hz and
+four sensors operating at 20 Hz.
 
+>  - Whether the issue was actually triggered, or is only theoretical
+>    (e.g. found by code inspection). If it was triggered please include
+>    the symptoms, like the stack trace or error messages.
 
+The observed failure was a persistent TX stall: RX continued, but the TX
+queue remained stopped and subsequent sends returned ENOBUFS. The
+interface still reported ERROR-ACTIVE, and the hardware indicated neither
+a bus-off condition nor a pending TX request.
+
+I will submit two patches for this issue; this is the first one.
+
+This patch is not a direct fix for that failure. It fixes a race
+that was already present in the driver and that I found during
+fault-injection testing of the echo-loss fix: close_candev() cancels
+restart_work only after the IRQ has been freed and the controller has
+been stopped, so a queued bus-off restart can re-enable the controller
+and its interrupts after IRQ teardown, and can requeue timestamp work
+that may later access registers after runtime suspend has disabled the
+clocks. The second patch builds on this serialization and addresses the
+echo-loss stall itself.
+
+Regards,
+Cunhao Lu
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
