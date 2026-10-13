@@ -4,124 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33E09CC6B09
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 05:49:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CF83CA9ED0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 06:04:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:References:
-	In-Reply-To:Subject:To:From:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=G49lHZO87hWw/e5g1cj/PSGCKiVi4FCzL2suQ2F9LTM=; b=qAF9lsHEcvKQOXbZMqqTLojDrc
-	qFTpAx5D7ZJ6l/k/103K2/Lybd+qvz40KifL4HKeLygpj3UzacGNieH33QCx4wVUsxKwwqe40YnGR
-	o2UzUrYH02hYYnVkUFDMqaf1gznlbATVN5gPlJGfMpBONoeSw1rvYM4JedRp3kH7SazkJrtRW85db
-	+5yWMEI0xTvdBaewDIEZc97G2EaQV7E8nGFoMGAhWiyspejSPwpc/n6YFTAckEoJseMRytyuOLgrI
-	QcI7UvTCZ6RSAoIBG99q/UyziXezkzCmwzE5XSlK8Dgz1VZ5XuVa707Lkx6NbReyFjby95yYVQZJq
-	DAP78qSQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LkGKAqfLA3Eu+Nyn2lei8rY2fengD4w95ryXdklks6c=; b=ClV5pzX7EtzPSR
+	0qYemc1l0QDH1Tsvx+8wzp9uoG7FqPHWVcHFYqAN+gZTkH5R9hp3P1wi/6du8FFuRb4OB8/Xns1iE
+	b9Xv4kEbOa6WiCWL5yAQq/xKMzs7/tFPiKj+HjReTTC9m7vTShT72dF4+QL9RMEgQdqeMX2HC7XgZ
+	2YGok6sGq6lCPbJiJraVfDz4r30kXIZVavDEWrBphoRARo3JqCEG9EcQNlqc9D9zSnQGQxsmdzHzn
+	IK2EvN63CsSRZdeicziefmWPp4x3/tRN/qRuPTKejsLrj/LtebCX1LYiZp32ceMbdYBWjZLmvOvhy
+	CwePTLmqocJkfVKPce6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGVO9-0000000C3LK-3MrX;
-	Tue, 13 Oct 2026 05:49:25 +0000
-Received: from mail-japanwestazlp170110001.outbound.protection.outlook.com ([2a01:111:f403:c407::1] helo=OS0P286CU010.outbound.protection.outlook.com)
+	id 1xGVcu-0000000C4wJ-1bdn;
+	Tue, 13 Oct 2026 06:04:40 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGVO5-0000000C3Kb-2rva;
-	Tue, 13 Oct 2026 05:49:23 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=c3AEQ8EBGl5MHr9tMn23v+AlTCa9Qt9pfLiAZaAyMz5QC5GklVTrTuRTFuNlstI18q5WyebgeE4PGflyQlngDOInkAHeAAb5Y9wByD9vBjeZBgX+mv3qLIFV7vyeS+c/6BQQJZn6sW1cldfAt2eV8oO0Blvq0H9lVIQYByw9kHTlWjUee1vcqFewR/WhCUJn6/sikLx09P47MdUaIB3yoYbRJxNTiqAgfFSA6q5RxNXDZXryE25UaS+aF+JrqB+xBzWm5GPHPulUAzr7blwCGcB7VldQjQKMrDz3xfi19+7BV64Oj6Fz6pwhq+gYn30YfKJ16WpPb/ijJtQt71fOOw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=mp4kNcT6sN/DhX0KQ0u7QvOx+wAFjqgfJsq0MdX8UbM=;
- b=vwg+fWk+NE6Wmd3FfEspwo0lEA08RR4Dyy6jBwHFdltZnh4/lPDwXFiecIP/pQB+182/yBGdD0A8vwgrIvh+fodtx/yZ1QyiO1UPIZZNTBxu5SboC3f8jFUOa1SUK27btdZeYlR5HBZxiwwfOryE7Xdb3ih57FCdcL/+oULAKh2LhH5kdfo04uJMjAl+Eoispz1QVlSn8VP8FlF8Mz5aNOzfuiIukQJG2xCavCzLxUo839rAcYA5xvf4v5PC3bFe4Au/DyOzbIkjDopYVw8+e4q1P4LPWeQhQWX+gsrY/JJrpte8nLsCeSOj1nUKayFGw90akOGwiwyT5AbIruVFHQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=renesas.com; dmarc=pass action=none header.from=renesas.com;
- dkim=pass header.d=renesas.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=renesas.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mp4kNcT6sN/DhX0KQ0u7QvOx+wAFjqgfJsq0MdX8UbM=;
- b=mCzKcaJDdA5ghKzb5aCUugmgbS7ssjCsIKXm8KwhikE4uD6bovMlh7V+ywYahYp1utUJ64t6aj7nwQeWjgzVVdLM1bCk7f+1AP2a2xrUqRbrxJIfSFmIvt8iqGW+QK5QjzHcgy/cj/Mb3y/PW5CeBTEy8EP9XBa5tryrLx7DbSM=
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=renesas.com;
-Received: from OS9PR01MB820914.jpnprd01.prod.outlook.com
- (2603:1096:604:50f::14) by TYCPR01MB18295.jpnprd01.prod.outlook.com
- (2603:1096:405:3f3::20) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.23; Tue, 13 Oct
- 2026 05:49:07 +0000
-Received: from OS9PR01MB820914.jpnprd01.prod.outlook.com
- ([fe80::12e4:c507:3730:2294]) by OS9PR01MB820914.jpnprd01.prod.outlook.com
- ([fe80::12e4:c507:3730:2294%6]) with mapi id 15.21.0496.021; Tue, 13 Oct 2026
- 05:49:07 +0000
-Message-ID: <87se2aw3ot.wl-kuninori.morimoto.gx@renesas.com>
-From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-To: Bui Duc Phuc <phucduc.bui@gmail.com>
-Subject: Re: [PATCH 21/24] ASoC: renesas: msiof: Fix msiof_close() being skipped on rollback
-In-Reply-To: <CAABR9nHvCfabGfBu85bm1r=hP3b0ZiCsgZfShhOv3gNUfjjhGg@mail.gmail.com>
-References: <20261008103831.542533-1-phucduc.bui@gmail.com>
-	<20261008103831.542533-22-phucduc.bui@gmail.com>
-	<87o6cyxyau.wl-kuninori.morimoto.gx@renesas.com>
-	<CAABR9nHvCfabGfBu85bm1r=hP3b0ZiCsgZfShhOv3gNUfjjhGg@mail.gmail.com>
-User-Agent: Wanderlust/2.15.9 Emacs/30.2 Mule/6.0
-Date: Tue, 13 Oct 2026 05:49:06 +0000
-X-ClientProxiedBy: TY4P301CA0113.JPNP301.PROD.OUTLOOK.COM
- (2603:1096:405:37e::13) To OS9PR01MB820914.jpnprd01.prod.outlook.com
- (2603:1096:604:50f::14)
+	id 1xGVcr-0000000C4tn-33ik
+	for linux-rockchip@lists.infradead.org;
+	Tue, 13 Oct 2026 06:04:39 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-3ab752f6244so2088508a91.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 12 Oct 2026 23:04:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791871475; x=1792476275; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=acEtVgfuadFdXlisXUuNZxKScLo0hQqEFXfuOZQe1a4=;
+        b=YLlyt/W5kaEWZwUsTe/AnzY9+HoJlUFjGnS6CZT76gNnw1KzuJfDV/dWleEUoTplpW
+         vGwvxOw8jwdaxqIijz8MUJkvXJMlf5I7S1xelSfaBFmCOPDJd+GlkeGkyyTmVQqppYNx
+         hqwWr5egq2vgXwhHo10LCjTiYN5utx1CFZwZ0K1WgTQ9NpIiIFenijbvfclp8XW2HEIh
+         a85Qt0tfoxifiXb9KchBgLgNaqich7s4J44PqG4rnsG997jOa1NcpuZ49c0DHQJW/uWW
+         nFQKQSsjAkmvZWahbbAlPsmvIW4SDPlNZrzcgaCuJqsNrN+bIdyWja0KHqiLOk8pa5Ki
+         6UvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791871475; x=1792476275;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=acEtVgfuadFdXlisXUuNZxKScLo0hQqEFXfuOZQe1a4=;
+        b=Zb+9K1qjpmIhbhmy0UN7wiCKSXdXSNBfQ4lI7vjjqHCXP80TqemwdIGhPAA9d/vT9c
+         lQ6p5KNnBvnq0XLdBScW/iGQIQNOisecfrYKIGLF7jfd/E4lxT24nB30maY3Nl+Rx0Ou
+         P9+MklCaR6dfhWp9ytBSNHN8NXbwLIK3E2rdsRqQQrFrPhckJt7XsOcotnxIX5Y74DiF
+         d+Z3TjVunEBqQY5l8Gqn82XB3pEQFeueY1exzqPCJ64ehigqDZtL2rUqp8fyBliiNXKB
+         EtUM0yG1sOG9ieuJZm+gvgPtDXmzGQBDGodEnFQLBNBi281xxkm4kQ2JvK1x7LZmXBjR
+         r8Sg==
+X-Forwarded-Encrypted: i=1; AKwUvBxtdlnOPOBSp5a22Z0Eie0dHxD99/nIbgX3My4SW6xXnK+8XN6m14CnHyjDedRiozaTrjrVbj1iV2H9TEtcbQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIjqKeDAViefzoOY6welGKT5E62Scyj3HKEUv8GRw6FSJMyYbzq
+	nNfB/GfMT4beEL3JooaZMUr3lUfN122y7a9qpukXndBl4OvopE7cej55
+X-Gm-Gg: AYBFou0BmcqOj8wnnG3mRJK+s7IJA/qZQCiHACFwMrOsNURFYQw8Be8dlj+b3jccy9d
+	lzHaXBf4uuOkthEiR07BaWDHxjqanTKyXqSExyFhMQMBOIbGcLnl1OqZmRoZ1PZkgeDZ1NznqpU
+	k+rKTWq+BBGqWg5Tb0Nn4Pvdd0dOsW4/jJLp9QqOpYujazBiltESERfbZlol20Ym9enUmGgSo29
+	q0BOGDxhPiDgJ/jPusVvkdUBLFabKORJiZqoNOkA0HT+TUqsfEnSoZLUG9UPb406XPQQp87D8KT
+	P56ZA8BrR4YYEY3HFZszIao2re/eEfzC9nGwF94zgAKY/GvmAE9bMkvqiDp2esJKcewe6Xy+B+o
+	x24i6svubwBUZUEFJHJYqjCXlUJQdcMEn3s5orwTRKaVvWba1FZKd6F/F9vQldDgiRiC5IJK/Nn
+	XyuaLfSwSl4D9HpgvLhR7BG3CVB0XMgAiYYBz1mYKkUz0jurryRAGONMuuVJRu1Ac0nxPBCyAc9
+	5iaxLKX/qsseOUKxLQ=
+X-Received: by 2002:a17:90b:4d86:b0:3a8:6571:b43f with SMTP id 98e67ed59e1d1-3ab3a9f7f28mr9589394a91.29.1791871475585;
+        Mon, 12 Oct 2026 23:04:35 -0700 (PDT)
+Received: from [10.25.160.252] ([165.85.154.27])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3ab38f4863esm23035084a91.11.2026.10.12.23.04.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Oct 2026 23:04:34 -0700 (PDT)
+Message-ID: <14bbf027-4a16-4bac-b530-d4654ed38d4a@gmail.com>
+Date: Tue, 13 Oct 2026 14:04:10 +0800
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: OS9PR01MB820914:EE_|TYCPR01MB18295:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3f6a0406-453c-49a8-92e9-08df28edb256
-X-LD-Processed: 53d82571-da19-47e4-9cb4-625a166a4a2a,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|52116014|366016|1800799024|23010399003|38350700014|4143699003|11063799006|56012099006|22082099003|18002099003|261009223027099003|10067099003;
-X-Microsoft-Antispam-Message-Info: 1Jlexqp1K1uiOC8MxrBi+rK4m54CERxPt+styf6DRrDlqQNahMCy2oEnmnJAcA+i88EvpmwGiNqmd4Kx2X4ng7njaJV/zgqWkGx0fhEPzMLsgFQnZDq/kNJ0sS768N59WnyKMhCoyjd0Z9Hc39xMNkbKXjJDOyWCrIKHhSKb48GFSDkKB00yDmbFCUdxl2ECooNlx7MwNFvg3DN5oPoGdvHh3I9OTkoAADleOwz/qtZg221/pBBuBF35ns77yg9FpCsRW/Z3RfqnJX7EZedkLtrm0MhYUncL3gnYlc3V7RiQ0hrhcVnDfiRu1+Vt1s7oW965V+MP+pOct4vDiEHHkfAUEDcWc/s7FZspnIZj1cwcHlDQV48CHVeKsjYS0Xtxh8nKAL2bIXwK367GD35tfIucDzp4OnOUnVcTwoJGr83Btb0fC2tNfxcRv2kusGCSaC2q+vTT+vDETg0Q+JBX69fz2r0f3ATxP8Tkzn+vGLTwPhfo/IopZI7F/PgRyvsZx1SRRmRIu4fdSodb0OHIXwquFxGEIyDS22u6FLl1ss3iesK95fP/U7OZ+3rH+SFapyyri0brEPovoMsmf7masMxl6z8bLZM0z4VUZfE/sBP7eFLzL+JCXDqXe4XIC50jqCjQ28oeX466s2NqpFiqDm63UHC6mNw2K29FqCJJo87YHgGUk9DvqJQwlXybMz2wOrSKbWi+4Y5gI6wUtipZrA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:OS9PR01MB820914.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(52116014)(366016)(1800799024)(23010399003)(38350700014)(4143699003)(11063799006)(56012099006)(22082099003)(18002099003)(261009223027099003)(10067099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?MZrjW+v5vxFE4vAe1Wp+XbgvfMxeIEZEPdBmthUtXmMR5hLX1tIAOylXEVlA?=
- =?us-ascii?Q?Mez7qSpWMZGW1/JYmIAkilpTWElFOIdkGct2goBRpO9GUBu88B0wm97LJZHB?=
- =?us-ascii?Q?6zpPRl+BgpdkEoYxWDLchiIAtP0MBPccnLf1lsv/exdt8kIuYCU9uc13O/fY?=
- =?us-ascii?Q?sZGfb+TW8apv+E1GnFv517Z+elGhv5rxU/MeNSvoy3JcuhEqwrTHigrLF8xG?=
- =?us-ascii?Q?SiP1lAD4Dhp0OMS8MzSmvzu502n3ivfWY6oSRRfR24awem9pr8Ug+v0VS0Ux?=
- =?us-ascii?Q?Bc5hyScfbZK2d2oRlSAMLwDIg2yzkfNwYJK/N9wdzwAqBgLpLVet5bSPdc0R?=
- =?us-ascii?Q?C46wrb4hVUiDIDY8bp1F8RmHsq9oLZ4StSMPS59dstSzxQhb30rPjElKwxKx?=
- =?us-ascii?Q?bdP/SNnOOxf1bLx57i9lPwZYjs5aRX0IzpVcN7xiwVtzpPRwaHbLZUguTZRV?=
- =?us-ascii?Q?8JCwuHasMjDIo59+2Cnp1k4D1BwX9cOf2aORkQuKin4gfBo/mt7ivLvm1FIF?=
- =?us-ascii?Q?LoWjpJViGDHl0n7fP2I40CiLez9alFJvWUPKPxDWTl+wB+4ufKZP9kGJiIux?=
- =?us-ascii?Q?HJviFDNh2apeviK+WfZx6qhlQa1aJk7zXMW5mymNMLy3HUuB+597mnlfaO43?=
- =?us-ascii?Q?V2KUh/ndTNyez7/h/z18Zr6HL0Kie10cmk74+bv6zj0HWEAP8wdjFes4TEla?=
- =?us-ascii?Q?HDOwUzhE9jqAqtHjmnYraVoRMoiUZ0Q3jAlbQrmL6cNwjZR4Cfe6NDsjnD0t?=
- =?us-ascii?Q?xNlfJiAoE561y5YWPePzKHAOsa3ZHy88MvJmY4Uxs6dxYamU0UTnW4TlGBbI?=
- =?us-ascii?Q?1V7x6UZq20jqasBR/JjlXd7eD8P3fp2oYzraQ++GV2kAG+UPtd3Ew2SDuPCz?=
- =?us-ascii?Q?WFY1HiOjOHiykDLv/52Leymudf0cmiAx3kg/RIyFqIH4LPoL0bMXyDZLHqWR?=
- =?us-ascii?Q?zUbjudNYNckpJTsr8CKXcHqsHy/zSQKoWKtsw03N90t3ensE4WxDTnsXDh+q?=
- =?us-ascii?Q?o7Ow/3Xbxo32VDJU6HgvDFwdzv86Sc8ohbaHwHni/QgLVltmadKu6pM5xe7P?=
- =?us-ascii?Q?QqWYM07AZlI7Q/c77z/cfJHLrpY2NwBeNZW8gj/KoshlHLrhgFYjjBNt7+DS?=
- =?us-ascii?Q?Kn5hQH3UWlPd7NCTOsn0tjXR/TArXEFlrYWTG0BgU5gnbkNWKrtfFWr6nJa1?=
- =?us-ascii?Q?sJe9mqHYEbRyXSiisQ+fHZ1D7eti23DWUUR4fervrdKJTX463YxF0sgeeIR5?=
- =?us-ascii?Q?VrVEzDOyjyXxo3ItZ6G0bbHx4uvG9lzgNdGRQbQcDeAhLgc/ll+YWqjXdMks?=
- =?us-ascii?Q?vSOOWNGPBfLWsVzbt7BdkvmRVphIefzeO7MkzpSNzAQ9bmS3uAOSVutTkSuA?=
- =?us-ascii?Q?cNzE+CevQ7VOFYfX91TfbGr0Ss+FZZmjXYUqu2XMELQiBijKUc5tl79l16HS?=
- =?us-ascii?Q?hKFPx+5DZb18quXWsw9w4EXDD7xzSXhVMlSt4fW1tpnlYRVG0JS51rkZOpQk?=
- =?us-ascii?Q?Np3eD4dnqMFNpTfj1VFGDLnQj7o5I+C4f7mtNZL3YSx7bznCQFVxJeabVb0r?=
- =?us-ascii?Q?mVNcQJc0kPv73b/K60lMRg7qSEG+JnMp0niDq72mXLMkc3pSelVdPFm0SDal?=
- =?us-ascii?Q?6jqM6CmI8tR0xLCt68tQi1N7PdSF9iKtTzS6KLPFk27jR+U/R1L9G8cBIW+1?=
- =?us-ascii?Q?5zJOYwwyQFqpHnYTCLJVa+PYao2CsTJp8jWpcmH6/pQzfWV/I4NDwdrvK3pL?=
- =?us-ascii?Q?BgTlHYgrMa5z3xZ+Fj8pMCNgcOCE67MOMKbu6uF9d8yE33jPHlyD?=
-X-OriginatorOrg: renesas.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3f6a0406-453c-49a8-92e9-08df28edb256
-X-MS-Exchange-CrossTenant-AuthSource: OS9PR01MB820914.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Oct 2026 05:49:07.5134
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 53d82571-da19-47e4-9cb4-625a166a4a2a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: gMsOVrRM0gfmlVFKJ7EkF7t5SyQBpZFrkSo1AC0tCDpHVIz7l6POciAvZEY3uc/iXVMzfmAYmL4McDfqc/G3niiqCMNkNagTq0UPp1Arkq8LzOtnFWqf91JbvBMPyWU1
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYCPR01MB18295
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 18/24] ASoC: imx-pcm-rpmsg: Fix imx_rpmsg_pcm_close()
+ being skipped on rollback
+To: phucduc.bui@gmail.com, Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
+ Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ povik+lin@cutebit.org, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Andrei Simion <andrei.simion@microchip.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ David Rhodes <david.rhodes@cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Shengjiu Wang <shengjiu.wang@gmail.com>, Xiubo Li <Xiubo.Lee@gmail.com>,
+ Fabio Estevam <festevam@gmail.com>, Nicolin Chen <nicoleotsuka@gmail.com>,
+ Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Cezary Rojewski <cezary.rojewski@intel.com>,
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+ Bard Liao <yung-chuan.liao@linux.intel.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>, Biju Das <biju.das.jz@bp.renesas.com>,
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+ Heiko Stuebner <heiko@sntech.de>
+References: <20261008103831.542533-1-phucduc.bui@gmail.com>
+ <20261008103831.542533-19-phucduc.bui@gmail.com>
+Content-Language: en-US
+From: Chancel Liu <chancel.liu@gmail.com>
+In-Reply-To: <20261008103831.542533-19-phucduc.bui@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261012_224921_745901_5870172B 
-X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-CacheID: sfid-20261012_230437_798300_7028BB57 
+X-CRM114-Status: UNSURE (   8.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -134,35 +122,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: imx@lists.linux.dev, Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Bard Liao <yung-chuan.liao@linux.intel.com>, Xiubo Li <Xiubo.Lee@gmail.com>, Venkata Prasad Potturu <venkataprasad.potturu@amd.com>, Frank Li <Frank.Li@nxp.com>, Cezary Rojewski <cezary.rojewski@intel.com>, Zain Aboobacker <zainaboobacker33@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Bjorn Helgaas <bhelgaas@google.com>, Pengpeng Hou <pengpeng@iscas.ac.cn>, Bo Shen <voice.shen@atmel.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Neo Chang <YLCHANG2@nuvoton.com>, Fabio Estevam <festevam@gmail.com>, Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>, Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, Geert Uytterhoeven <geert+renesas@glider.be>, Chris Bainbridge <chris.bainbridge@gmail.com>, Shengjiu Wang <shengjiu.wang@gmail.com>, Takashi Iwai <tiwai@suse.com>, Magnus Damm <magnus.damm@gmail.com>, Vinod Koul <vkoul@kernel.org>, Kees Cook <kees@kernel.org>, Vijendar Mukunda <Vijendar.Mukunda@amd.com>, povik+lin@cutebit.org, linux-rockchip@lists.infradead.org, Charles Keepax <ckeepax@opensource.cirrus.com>, Ravulapati Vishnu vardhan rao <Vishnuvardhanrao.Ravulapati@amd.com>, Sascha Hauer <s.hauer@pengutronix.de>, Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, linux-sound@vger.kernel.org, Nicolin Chen <nicoleotsuka@gmail.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, Mark Brown <broonie@kernel.org>, wangdicheng <wangdicheng@kylinos.cn>, Syed Saba Kareem <syed.sabakareem@amd.com>, Biju Das <biju.das.jz@bp.renesas.com>, Jaroslav Kysela <perex@perex.cz>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, Sang-Heon Jeon <ekffu200098@gmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Kai Vehmanen <kai.vehmanen@linux.intel.com>, patches@opensource.cirrus.com, Linus Walleij <linusw@kernel.org>, linuxppc-dev@lists.ozlabs.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Md Shofiqul Islam <shofiqtest@gmail.com>, asahi@lists.linux.dev, Pengutronix Kernel Team <kernel@pengutronix.de>, Andrei Simion <andrei.simion@microchip.com>, u.kleine-koenig@baylibre.com, David Rhodes <david.rhodes@cirrus.com>, Hemanth Selam <hemanth.selam@gmail.com>
+Cc: imx@lists.linux.dev, wangdicheng <wangdicheng@kylinos.cn>, Kees Cook <kees@kernel.org>, Sang-Heon Jeon <ekffu200098@gmail.com>, Pengpeng Hou <pengpeng@iscas.ac.cn>, Bo Shen <voice.shen@atmel.com>, Neo Chang <YLCHANG2@nuvoton.com>, linux-rockchip@lists.infradead.org, Chris Bainbridge <chris.bainbridge@gmail.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, linux-sound@vger.kernel.org, Ravulapati Vishnu vardhan rao <Vishnuvardhanrao.Ravulapati@amd.com>, u.kleine-koenig@baylibre.com, Zain Aboobacker <zainaboobacker33@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, Md Shofiqul Islam <shofiqtest@gmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>, patches@opensource.cirrus.com, Linus Walleij <linusw@kernel.org>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>, asahi@lists.linux.dev, Hemanth Selam <hemanth.selam@gmail.com>, linuxppc-dev@lists.ozlabs.org, Syed Saba Kareem <syed.sabakareem@amd.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-Hi Bui
-
-> I'll add a comment to explain why the return value must be normalized to 0
-> in the affected drivers.
-
-Thanks
-
-> For MSIOF, I noticed that snd_dmaengine_pcm_open() already calls
-> snd_pcm_hw_constraint_integer() for SNDRV_PCM_HW_PARAM_PERIODS,
-> so the call in msiof_open() seems redundant.
+On 10/8/2026 6:38 PM, phucduc.bui@gmail.com wrote:
+> From: bui duc phuc <phucduc.bui@gmail.com>
 > 
-> Since the first call succeeds, the second call should return 0.
-> Would removing the redundant call be acceptable?
+> snd_pcm_hw_constraint_integer() may return 1, which is then returned
+> from imx_rpmsg_pcm_open(). ASoC only marks the component as opened
+> when .open() returns 0, so .close() can be skipped on rollback.
+> 
+> Return 0 explicitly on success.
+> 
+> Fixes: 3c00eceb2a53 ("ASoC: imx-pcm-rpmsg: Add platform driver for audio base on rpmsg")
+> Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 
-Nice cache, yes please.
+Reviewed-by: Chancel Liu <chancel.liu@gmail.com>
 
-
-Thank you for your help !!
-
-Best regards
----
-Kuninori Morimoto
+Regards,
+Chancel Liu
 
 _______________________________________________
 Linux-rockchip mailing list
