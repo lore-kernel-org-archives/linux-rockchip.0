@@ -4,77 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B62ECC6B12
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 18:52:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03137CC6B21
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 22:52:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:In-Reply-To:
-	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yEOOE/ET5bsj/j4raM+vj8rpqWRh6NrE7R8uj84AGY8=; b=pNsp84SHNinn4H
-	/3/i9N3bRpmQN+eanNnhmUzIetipvjRz8YCMO0stwnt2O/n8SS3fPJRhm/SWi9Beedbnr7iT/HAbK
-	TV/i1PaI74RlgUNd4cmWaef4eGDBIDN4j+rvmWspdKK5cim3vSHAaVJ4Q24UwHvBUC4Xz0ZMbuSQ0
-	oWE488GF32Av4YClwZt4uyzjfwtgDWpc9OCR6yHRp+mP4soppQJZCWJ61uSRRcTxRFqgr3o6EN5wY
-	GXrG4TN2zO9h4DEF63wd61aI5LzpjzSxV5dIQx2gY2L7w4yJK/EmhNXnvsAnA2aQ3+RuEzEfs4pYg
-	JBVDxv0T6B+gMrNyK1CQ==;
+	List-Owner; bh=01xZxWYcuK1HM7upNauZ20bYK4vd25Asy0MqqtsyHtE=; b=r3rZsXzZw9xjMP
+	igAaFtneIPZGc1hTt3/FFz4FbyK6srZyHeDZQV6K67FYW6gdrYiflMcn99BAWL1lnm0uh6LSaX6QY
+	34uOLUUaQq3/61Z40/5bmf67s5jU3UZEBPtQS2xywKSat0xlEGtK9geZx8h6Ous3wL/Mx53Q73fJ+
+	ZYjfsKwzrnomDsX70VeJI4OycNthbMzhCQQjA1MHPPYJbWZNdAeIwHSR/nHwGT7GK/3fnDRLGAbU5
+	YoUPOGFobEYtZ9B3dI4S5CgYHEa1jwmUnh460H6bJLQ4c5S0eZEwMRjbzNEhHc7lnmptYgSci8VVV
+	JFL7gFXViHr2CLO6Lo5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGhbb-0000000Drud-2mRa;
-	Tue, 13 Oct 2026 18:52:07 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xGlLo-0000000EB21-0NH2;
+	Tue, 13 Oct 2026 22:52:04 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGhba-0000000Drtt-1kyI;
-	Tue, 13 Oct 2026 18:52:06 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 87949601FF;
-	Tue, 13 Oct 2026 18:52:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF59A1F00898;
-	Tue, 13 Oct 2026 18:51:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791917525;
-	bh=Ngs2H5drVhSSsY3k+1XuymWpnKLMqckm0fPB9uQ+rqU=;
-	h=Subject:From:To:Cc:In-Reply-To:References:Date;
-	b=izNyqB47eFZArRZRZNS7dTQBn7NwqycEpAbpoYBJgMJHm+NegzSQJJwS9MSZqK8ml
-	 O/n/XnPby62gp/+ntCAkK7UK82X0JjnzHR46YNg4EAdRAyzA9ezr8+TmuN5FKEzBVr
-	 omqTZ6m2XYVmBNVdBxfh/aj4Nf16K6MuR/0tBlTl7NNrDa0DSi3KoLSYOmjvbq20sG
-	 1qzaP5hmeiCdwv+HFpK7Bk6xNdL17OPUR93hPZ96+DtT22aXWPU9BtrOcyHA9NFAkj
-	 LDv543Ch+E5iEcLOjnjzHigokCbH7xyt9ftQHuTec+TrL9mxhxGQyTBVzsiz7Fib/3
-	 MaqwfMaUWeA6g==
+	id 1xGlLh-0000000EAyT-0QQ2;
+	Tue, 13 Oct 2026 22:52:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1791931912;
+	bh=aGe8nmSYDlD89HTgEIf0ZL1zah8iMagTLLYRYG/Zwn4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=hz/RgD9z8WHcN3LTL8qA4lGYsKX7/T/GZJJAAVzXeAsmKvIaUkUtuRGj9UC/P4GqD
+	 M4s7XzYid6QbMcNhYIXsTx80WEEOssdwSJZSQtACTHrOnUYU/Bd5S3LEeAxwIP20N9
+	 LCM7cox81TSZtOQp5avw9mKGZlf1c89RLt2svn+wwqCajPbJhsIWkocMkMtsRJYniK
+	 SrD3Zyzw1jCKiw1GrM7U4phVpHD+x9zm2aKvxugxHFv+MsBdPKEM6ZR8I7okVOb/8B
+	 yedvfJyUOodJNdVRlsPBTH7HwWIYSybZhZZ3E9YMCx2N3V/p48W7gEbXLgl5rsTQqE
+	 4Ixm8KFEdujLQ==
+Received: from localhost (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2873617E0962;
+	Wed, 14 Oct 2026 00:51:52 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Wed, 14 Oct 2026 01:51:19 +0300
+Subject: [PATCH v5 02/15] drm/rockchip: vop2: Fix resource leak on
+ vop2_enable() error path
 MIME-Version: 1.0
-Subject: Re: [PATCH v6 10/10] PCI: dw-rockchip: Clear debug buffer before
- entering L2
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Jingoo Han <jingoohan1@gmail.com>, 
- Shawn Lin <shawn.lin@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, 
- Mark Brown <broonie@kernel.org>, 
- "Yury Norov (NVIDIA)" <yury.norov@gmail.com>, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Alexey Charkov <alchark@flipper.net>, linux-pci@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com
-In-Reply-To: <20260908-rockchip-pcie-system-suspend-v6-10-fbabcca9921b@collabora.com>
-References: <20260908-rockchip-pcie-system-suspend-v6-0-fbabcca9921b@collabora.com>
- <20260908-rockchip-pcie-system-suspend-v6-10-fbabcca9921b@collabora.com>
-Date: Wed, 14 Oct 2026 00:21:54 +0530
-Message-Id: <179191751499.12828.9504625790909143778.b4-reply@b4>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1907; i=mani@kernel.org;
- h=from:subject:message-id; bh=lgEh/kHjjKO7vlCJXlboj9R2tBBVF0LjFp0XPpozdIc=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBqzn3N2W74pXFoa1XfcNm77M+sJBrelI12u1im6
- DOtwTHu2E+JATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCas59zQAKCRBVnxHm/pHO
- 9fCPCACKrsGNtItOmtzFMwfvK3S2OTHm0WlhE8B9Bq3QvNwVmHc4MWIAPWgpJJFErQkW+fKFsgS
- OK2nKjCZPQjX1E/GPEviJYaE6jDC21nZTcpEbw3LIKNt65fRGD9BQXrrYAZCC4/T4t+ebJq9elA
- 7pKr9kuBovq6rM9zOu4mrf3VXtOy4ocOOnqJoJos1ocBaEr5KtoWUVpWmCFZiz1e4KeEZVEwp+8
- 4QpTK3CNffdbl5DyM020BUhChR8dZai2ITRvgPaFK7Vrw5R5g4JpvMj424vp75+gj3wa3KVBWBm
- chKJnVneASzyRoDqKo9o5wqtmiTDxxjfHq7QVoecFMZviPI1
-X-Developer-Key: i=mani@kernel.org; a=openpgp;
- fpr=C668AEC3C3188E4C611465E7488550E901166008
+Message-Id: <20261014-dw-hdmi-qp-yuv-v5-2-6fab0fe43a9b@collabora.com>
+References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com>
+In-Reply-To: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Daniel Stone <daniels@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Daniel Stone <daniel@fooishbar.org>, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, 
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>, 
+ Igor Paunovic <royalnet026@gmail.com>
+X-Mailer: b4 0.15.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261013_155159_145373_D6A001A6 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,58 +93,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2026-09-08 16:51 +0200, Sebastian Reichel wrote:
-> Clear the debug buffer before entering the L2 state to ease debugging
-> link training issues on resume.
-> 
+vop2_enable() returns void, so callers cannot tell whether powering up
+the VOP2 succeeded.
 
-What is this debug buffer and what value does it provide?
+Additionally, if rockchip_drm_dma_attach_device() fails, vop2_enable()
+returns without disabling the core clocks or dropping the runtime PM
+reference taken earlier, leaking both.
 
-> Cc: Shawn Lin <shawn.lin@rock-chips.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index e675918ba184..a508f4fffd2a 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -77,6 +77,9 @@
->  #define  PCIE_CLKREQ_NOT_READY		FIELD_PREP_WM16(BIT(0), 0)
->  #define  PCIE_CLKREQ_PULL_DOWN		FIELD_PREP_WM16(GENMASK(13, 12), 1)
->  
-> +/* General Debug Register */
-> +#define PCIE_CLIENT_GENERAL_DEBUG	0x104
-> +
->  /* RASDES TBA information */
->  #define PCIE_CLIENT_CDM_RASDES_TBA_INFO_CMN	0x154
->  #define  PCIE_CLIENT_CDM_RASDES_TBA_L1_1	BIT(4)
-> @@ -1043,6 +1046,11 @@ static int rockchip_pcie_rc_reset_root_port(struct pci_host_bridge *bridge,
->  	return ret;
->  }
->  
-> +static inline void rockchip_pcie_link_status_clear(struct rockchip_pcie *rockchip)
+Make vop2_enable() return int and unwind all resources on every failure
+path.  As disabling the core clocks is also needed in vop2_disable(),
+factor it out into a local helper used by both.
 
-No inline in .c files, please.
+Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Closes: https://lore.kernel.org/all/20260623202043.8BFE21F000E9@smtp.kernel.org/
+Link: https://lore.kernel.org/all/20260623202043.8BFE21F000E9@smtp.kernel.org/
+Tested-by: Igor Paunovic <royalnet026@gmail.com>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 39 +++++++++++++++++++---------
+ 1 file changed, 27 insertions(+), 12 deletions(-)
 
-> +{
-> +	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_GENERAL_DEBUG, 0x0);
-> +}
-> +
->  static int rockchip_pcie_suspend(struct device *dev)
->  {
->  	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-> @@ -1056,6 +1064,11 @@ static int rockchip_pcie_suspend(struct device *dev)
->  
->  	rockchip->intx = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_MASK_LEGACY);
->  
-> +	/* All sub-devices are in D3hot by PCIe stack */
-> +	dw_pcie_dbi_ro_wr_dis(pci);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index bfb384142568..e0caea93a896 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -860,6 +860,13 @@ static int vop2_core_clks_prepare_enable(struct vop2 *vop2)
+ 	return ret;
+ }
+ 
++static void vop2_core_clks_disable_unprepare(struct vop2 *vop2)
++{
++	clk_disable_unprepare(vop2->pclk);
++	clk_disable_unprepare(vop2->aclk);
++	clk_disable_unprepare(vop2->hclk);
++}
++
+ static void rk3588_vop2_power_domain_enable_all(struct vop2 *vop2)
+ {
+ 	u32 pd;
+@@ -871,7 +878,7 @@ static void rk3588_vop2_power_domain_enable_all(struct vop2 *vop2)
+ 	vop2_writel(vop2, RK3588_SYS_PD_CTRL, pd);
+ }
+ 
+-static void vop2_enable(struct vop2 *vop2)
++static int vop2_enable(struct vop2 *vop2)
+ {
+ 	int ret;
+ 	u32 version;
+@@ -879,25 +886,24 @@ static void vop2_enable(struct vop2 *vop2)
+ 	ret = pm_runtime_resume_and_get(vop2->dev);
+ 	if (ret < 0) {
+ 		drm_err(vop2->drm, "failed to get pm runtime: %d\n", ret);
+-		return;
++		return ret;
+ 	}
+ 
+ 	ret = vop2_core_clks_prepare_enable(vop2);
+-	if (ret) {
+-		pm_runtime_put_sync(vop2->dev);
+-		return;
+-	}
++	if (ret)
++		goto err_put_pm;
+ 
+ 	ret = rockchip_drm_dma_attach_device(vop2->drm, vop2->dev);
+ 	if (ret) {
+-		drm_err(vop2->drm, "failed to attach dma mapping, %d\n", ret);
+-		return;
++		drm_err(vop2->drm, "failed to attach dma mapping: %d\n", ret);
++		goto err_disable_clks;
+ 	}
+ 
+ 	version = vop2_readl(vop2, RK3568_VERSION_INFO);
+ 	if (version != vop2->version) {
+ 		drm_err(vop2->drm, "Hardware version(0x%08x) mismatch\n", version);
+-		return;
++		ret = -EINVAL;
++		goto err_detach_dma;
+ 	}
+ 
+ 	/*
+@@ -932,6 +938,17 @@ static void vop2_enable(struct vop2 *vop2)
+ 		    VOP2_INT_BUS_ERRPR << 16 | VOP2_INT_BUS_ERRPR);
+ 	vop2_writel(vop2, RK3568_SYS1_INT_EN,
+ 		    VOP2_INT_BUS_ERRPR << 16 | VOP2_INT_BUS_ERRPR);
++
++	return 0;
++
++err_detach_dma:
++	rockchip_drm_dma_detach_device(vop2->drm, vop2->dev);
++err_disable_clks:
++	vop2_core_clks_disable_unprepare(vop2);
++err_put_pm:
++	pm_runtime_put_sync(vop2->dev);
++
++	return ret;
+ }
+ 
+ static void vop2_disable(struct vop2 *vop2)
+@@ -942,9 +959,7 @@ static void vop2_disable(struct vop2 *vop2)
+ 
+ 	regcache_drop_region(vop2->map, 0, vop2_regmap_config.max_register);
+ 
+-	clk_disable_unprepare(vop2->pclk);
+-	clk_disable_unprepare(vop2->aclk);
+-	clk_disable_unprepare(vop2->hclk);
++	vop2_core_clks_disable_unprepare(vop2);
+ }
+ 
+ static bool vop2_vp_dsp_lut_is_enabled(struct vop2_video_port *vp)
 
-I don't understand the code and the comment. Please explain.
-
-- Mani
+-- 
+2.55.0
 
 
 _______________________________________________
