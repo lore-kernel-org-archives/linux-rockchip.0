@@ -4,99 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A535CC6B0F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 13:47:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40E81CC6B0F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 13:48:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Ao2bDXKGBoOTXiYbIG7ilIyUduho0dz5oxwpiyonhUQ=; b=JBrexnT7iNVwGO
-	M/8rU97Z4Njf1pH9VhkWR4j5NaH3uK2gZdMJ1mJT2gT4UVTQHXqHE0qL21XIch/syIN71xuVEecdk
-	hMlUzB+HGXabHGDHi/mugiDk+ONP8/PO8uYQnywFBp9g4UsnEu/RIEQLF6GfEZCzZyvVkq5gbVxtQ
-	8o7VaKp4fut9bG3Hd9qS5crxAnimFjuo1nPKJ2sSYIaBAqs1J0DWHw0nT/er0XeYr7WkwkAsKpSWV
-	zgHHBdJMb5dApht0wUlPYEQO6366wXgbRfgx/pLjud3MJfddO3Pc/k50oS9nWen0qKPrdaQr/Pc60
-	rt6m1h5S+5cb32Vh7y5A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MgVTjA3ZmxANmRGVKDS8uuTVSZx+6GvzMow3ezLLrBs=; b=YWK+HR56xhqQ2k
+	fKezicg7+nE3f4MEbBTwP8UTYP20J09btpCE2kSTxleQcaQT/747pPmZFLf9/W4YVujPLSWH9Jqp5
+	kDi8npWquopsPXYAgPAEjT7+JPTMYeXiWMYpyNbNvD2cwf6sGM9aiaC4uOzEMWRJKETkDuWFCLySw
+	8ta+03v4PBLHi0pHTbBeCBpKG9N4rQ1pXBvkbUnfrY9gotFnFtrmZq0/CJXEM1fU14Ae4cxi6wOLI
+	AjPGHjnl6ps+G63ILJetJhUrq/YDWD9HZukaIs+ZJeS+NaorybsoekwasHyshl68XSnO5aXgQpWnD
+	rpavqv7SfOvxgnNJB1wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGcqa-0000000CzzM-0iyt;
-	Tue, 13 Oct 2026 13:47:16 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1xGcrb-0000000D0H2-0Zs8;
+	Tue, 13 Oct 2026 13:48:19 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGcqX-0000000CzyP-0GQM
-	for linux-rockchip@lists.infradead.org;
-	Tue, 13 Oct 2026 13:47:14 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-88cfa501c5cso1035615b3a.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 13 Oct 2026 06:47:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791899232; x=1792504032; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=OEd55JoJOoDV13ld4fQoCE8domEIQzBBmawfYivXwdA=;
-        b=ZxI5fOtEHFfBw5hX92gnslOEIEBeAf5S+/OsukkRj8EcihFZbj+JGYzMiaYkcFHkzD
-         t09yO7nWB47SyYjn+SZfXFJQqMC+NuNltfPrs+lZimKVeeOJpwzzVNjI52qPeWyi7cmd
-         U713gqDU+mCjwx2VoRwab1YLQeUzb4OvSJMmbL9vOB7D3uyvUO0yGZoU5pepMd+8NQOS
-         KCFkYqTsQZLL7xZRGvVk3f8Xsob0ZeqwLU6SqF9ZMOFhQLD98qDFzvqeaRSvMUqlyZQu
-         q13VRlxNvnpoWvjuiyxUoidrDZkJVLPleVu2Zkjw7r4vXTXI+1wY/2LyWyA/iikECdd5
-         Oygw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791899232; x=1792504032;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=OEd55JoJOoDV13ld4fQoCE8domEIQzBBmawfYivXwdA=;
-        b=Lo63jVdnb3hfudQgKdC9SFpJuy2x3DdG4VVFOCg6e1NlQeVkL8pPU8LomhrQYUMxcY
-         ZTa9TbYJkw7jDEqtkhZAvRnBvENNEqh3ZFtCubefHxyYBLHLUZmP2REdKvh5PTpUxnj6
-         D7d39P/OS2I4IMuzE41nTme92aJb6Ehqfl5Kyr8GrElFy8MqLnsqHSry7tCRV5Zs+C/S
-         1ehlS4l05JTSlSUEXgwhQUFaE3rO3G0gDz9AsDj4Oz3N9EYER4Y4m1oKhqgYjMwAbJVR
-         E9j8+zhsBCLaIaGNmgISXJgeQtM1CLrdweSd6irJpOMmfYlGbkwturEImSOMZuLBaJA8
-         xKpA==
-X-Forwarded-Encrypted: i=1; AKwUvBz4CVOjZYIWBhJIGHvZYP13Dyo5rfjQm2rnbOfX6rvdM+Zbg9ZLZSelnt1E/3023nsIqIe7QwMC1SelX/CIKQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJV9aV/iGKBOVBc2MzhRLC0SAIWZx8F0u0OZUwpeh7FIlCmmRSN
-	0wY4n70Z0rUM/K0iPsDThVvMSrIuj56b9iEuJsP4UZtxJr9Fd3MMGeH4
-X-Gm-Gg: AYBFou0mIhsmIh2QKS15cERDHTAH9p+Z3FZdapBxzsRjLC3YnDrMaBOlkWj/VK6LyyV
-	qhGadZ3/hr2upRl6RDtCZpcFPc87HzfiZuZ/QJZ1fLzSQ0noDSt0k+c/TRi5EkXe0gORf/arxDQ
-	boOL7FV1jYOagaRKuP6R3qkMQ+G9kIJYjbq3e6ROg1RAPkH7hepWgBSg3NKQoWSREr+R2g4DKxB
-	7xamwKM7rZmt1ZYeWfwewpbAGHx62bfrIcDYR/XfiMqfiVBQkA6KNK2hwlCHBZAX0Cn2hDJ+ye9
-	6W6PgmyCVFHX/ugJaDtxKL8uRO3Qll/dcm3x25OP2zGK24M81IgirNziHMzStjg0dPmq1kr7juF
-	cKMvVUAf2k+mKeavd123tyxXrIVjGywPxD/OaYpQiEnB1WEp0UtxmFX7NoC7dlHWYF5zX1aXL0b
-	Qpgpd+B+NY7Oqzlqwk0HlHgPaupA/D0sfn5dit9tXL1kPkSBTTpf3ZJJ5wS84U8dJDapIQBVpIa
-	lz72yzDxg==
-X-Received: by 2002:a05:6a00:b50:b0:882:626a:709f with SMTP id d2e1a72fcca58-897c3ff5155mr10872889b3a.3.1791899231770;
-        Tue, 13 Oct 2026 06:47:11 -0700 (PDT)
-Received: from arch.localdomain ([161.118.199.118])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-896c3cc80b0sm5044853b3a.29.2026.10.13.06.47.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Oct 2026 06:47:11 -0700 (PDT)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Jun Yan <jerrysteve1101@gmail.com>,
-	Damon Ding <damon.ding@rock-chips.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 RESEND] drm/bridge: analogix_dp: use devm_phy_optional_get() for the DP PHY
-Date: Tue, 13 Oct 2026 21:46:57 +0800
-Message-ID: <20261013134659.335829-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.56.0
+	id 1xGcrY-0000000D0GE-1C0t;
+	Tue, 13 Oct 2026 13:48:16 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6A076602C3;
+	Tue, 13 Oct 2026 13:48:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45EB31F000FF;
+	Tue, 13 Oct 2026 13:48:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791899295;
+	bh=MwsHrhWwBAqFC5XDIDWmcboOdLh7zz3XrR9XYaXosSk=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=ZqqqnXTXL5JQQBVpDNrKTM+tmsrFuh0quFdrhPcnKsyO7YbA+lJycODBdX98wdONc
+	 xUDQCxz05TL7W75efE5ASsLNQRZLVN5/dBp9WD573ytfDG0rg2Gk6R7d3M/iNI88tL
+	 RXJb6RL0tTmjBoZjyP/89KYnxPitqQKJ2XWJyoLAyjiE3wbbIVMxyquN7oWk7nKoNs
+	 G/DNMOqBz69isfb+qUI0N2FHmmRXZndeYKJs8ErRvSxrMPnyE7FdVH504bw8/T3/9U
+	 V0v7mrpEZLQLR7Z1iMbD/vHjPrNTjS1Th3v8OWXdvYA4WVEeKVP1iPVbQHnszEI5Qh
+	 LSdKlEbgaI3Yg==
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>, 
+ Geraldo Nascimento <geraldogabriel@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+ linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <cover.1781622998.git.geraldogabriel@gmail.com>
+References: <cover.1781622998.git.geraldogabriel@gmail.com>
+Subject: Re: [PATCH v7 0/3] PCI: rockchip: 5.0 GT/s speed discouraged by
+ Rockchip
+Message-Id: <179189927768.12828.5970294502454132706.b4-ty@b4>
+Date: Tue, 13 Oct 2026 19:17:57 +0530
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261013_064713_105628_04229F4A 
-X-CRM114-Status: GOOD (  12.83  )
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=909; i=mani@kernel.org;
+ h=from:subject:message-id; bh=MJ2L3Ts8++Q18HVodqsi50qgRqQHnU8MLJbv9TbaZZU=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBqzjaWuJsyJInKTko4kslC28gQaP58gTARVbj2t
+ UDexrJ/9uWJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCas42lgAKCRBVnxHm/pHO
+ 9W4rB/9dfTBuarNvfVBSNUuYe2/Gdg9P5KVqDROq9kkrp8mxE5shnJedONgaWeuv7GI66sIjIjn
+ rD8FbCw8pRxng8BoATEhuSMlZq9QKbV13RebbzDMgpYoPdBjw1frOv6uMUZ6kgyMtdpgUZYOO2C
+ 6W410/kMupZjqqanx7W73Bg0LNMWuga+2rwyzOr9Rle1AQMco1hT/dcrVbMzU6NKDOmENnyC2G4
+ ZFyrxo0ZSnXNk044fYyMemjU2ZwBwMiy3hR6fO4hCWslzj52aK4AN++wb3smZb7GQGuT1yVJU2B
+ NGzRdxzYXeyLJH+Yber3rvaSu6wuzO3i3KToeCmVjn3+03YS
+X-Developer-Key: i=mani@kernel.org; a=openpgp;
+ fpr=C668AEC3C3188E4C611465E7488550E901166008
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,70 +80,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DP PHY is optional: the Rockchip RK3399 eDP controller (used as the
-internal eDP port) has no separate PHY device and relies on its built-in
-PHY, which is programmed directly through the GRF registers, so its DT
-node carries no "phys"/"phy-names" property.
-
-Requesting the PHY with devm_phy_get() therefore returns -ENODEV (or
--ENOSYS when CONFIG_GENERIC_PHY is disabled) and the driver logs a
-misleading "no DP phy configured" error at probe time before falling back
-to a NULL phy.
-
-Use devm_phy_optional_get() instead, which returns NULL when the PHY is
-absent and otherwise behaves identically, and drop the manual -ENODEV/
--ENOSYS handling. This also removes the spurious error message.
-
-Assisted-by: Claude:deepseek-v4-flash
-Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
-Reviewed-by: Damon Ding <damon.ding@rock-chips.com>
----
- .../drm/bridge/analogix/analogix_dp_core.c    | 22 ++++++-------------
- 1 file changed, 7 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 6df6963740d2..637b1bff0f6c 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1426,21 +1426,13 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
- 	if (ret)
- 		return ERR_PTR(ret);
- 
--	dp->phy = devm_phy_get(dp->dev, "dp");
--	if (IS_ERR(dp->phy)) {
--		dev_err(dp->dev, "no DP phy configured\n");
--		ret = PTR_ERR(dp->phy);
--		if (ret) {
--			/*
--			 * phy itself is not enabled, so we can move forward
--			 * assigning NULL to phy pointer.
--			 */
--			if (ret == -ENOSYS || ret == -ENODEV)
--				dp->phy = NULL;
--			else
--				return ERR_PTR(ret);
--		}
--	}
-+	/*
-+	 * RK3288/RK3399 use Analogix DP controller built-in PHY,
-+	 * no extra PHY configuration is required.
-+	 */
-+	dp->phy = devm_phy_optional_get(dp->dev, "dp");
-+	if (IS_ERR(dp->phy))
-+		return ERR_CAST(dp->phy);
- 
- 	dp->clock = devm_clk_get(&pdev->dev, "dp");
- 	if (IS_ERR(dp->clock)) {
--- 
-2.56.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Ck9uIFR1ZSwgMTYgSnVuIDIwMjYgMTI6MjQ6NDggLTAzMDAsIEdlcmFsZG8gTmFzY2ltZW50byB3
+cm90ZToKPiBQQ0k6IHJvY2tjaGlwOiA1LjAgR1QvcyBzcGVlZCBkaXNjb3VyYWdlZCBieSBSb2Nr
+Y2hpcAo+IAo+IERyYWdhbiBTaW1pYyBhbHJlYWR5IGhhZCB3YXJuZWQgbWUgb2YgcG90ZW50aWFs
+IGlzc3VlcyB3aXRoIDUuMCBHVC9zCj4gc3BlZWQgb3BlcmF0aW9uIGluIFJvY2tjaGlwIFBDSWUu
+IEhvd2V2ZXIsIGluIHJlY2VudCBpbnRlcmFjdGlvbnMKPiB3aXRoIFNoYXduIExpbiBmcm9tIFJv
+Y2tjaGlwIGl0IGNhbWUgdG8gbXkgYXR0ZW50aW9uIHRoZXJlJ3MgZ3JhdmUKPiBkYW5nZXIgaW4g
+dGhlIHVua25vd24gZXJyYXRhIHJlZ2FyZGluZyA1LjAgR1QvcyBvcGVyYXRpb25hbCBzcGVlZAo+
+IG9mIHRoZWlyIFBDSWUgY29yZSwgaW5jbHVkaW5nIGRhdGEgbG9zcy4KPiAKPiBbLi4uXQoKQXBw
+bGllZCwgdGhhbmtzIQoKWzEvM10gUENJOiByb2NrY2hpcC1lcDogZG8gbm90IGF0dGVtcHQgNS4w
+IEdUL3MgcmV0cmFpbmluZwogICAgICBjb21taXQ6IDM5Zjg5ZGRlMGE3NmIyMjlkZjdlYjM1NmFh
+ZjZmNDQ0YjRmOGE2MzYKWzIvM10gUENJOiByb2NrY2hpcC1ob3N0OiBkbyBub3QgYXR0ZW1wdCA1
+LjAgR1QvcyByZXRyYWluaW5nCiAgICAgIGNvbW1pdDogNTk4OGE1M2Y1YmY3NThiMmQ0MWNiNmUw
+ODMyYzE5Yjk2OTJjNzZkMgpbMy8zXSBQQ0k6IHJvY2tjaGlwOiBkcml2ZSBhdCAyLjUgR1Qvcywg
+ZXJyb3Igb3RoZXIgc3BlZWRzCiAgICAgIGNvbW1pdDogNjI4NDMwMzFjYTFmMTFkMWI4ZTkwZTdm
+NTU4YzFiM2M0Y2Q3NzE4NAoKQmVzdCByZWdhcmRzLAotLSAK4K6u4K6j4K6/4K614K6j4K+N4K6j
+4K6p4K+NIOCumuCupOCuvuCumuCuv+CuteCuruCvjQoKCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
