@@ -4,58 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C607CC6B08
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 11:58:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CF78CA9ED2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 12:50:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sA90QEihQn1kVS804SuHDpvOgRzrLAVU+4BtFRajLKE=; b=db2lSrMFPdvdSh
-	9l0Llsjo4haF4XeeJ9abdBYYCmKaH6c2evdSfVBrp6AuxcXCXRKRr96qkcQT2Le0UiVN7TTTJxhON
-	xGPRIlZTCozYhn94RkZ8acGmqMPRBllGwG9o9KqwV+ynaazdMnAX81Uk80VIcaMhpD5wPsCbpgLb2
-	H9BKxFG1Dy19O8CX07/MbPj4h6U1JpR+XhZhX+b0ejxWagg+pJFaejmB4d3pC0Drb56whlq4FJB0Y
-	pjWXVp0YIIrvbj/TPlsGawTmsV/LeJaT1q7Sfz6B7RW/wiBO+Rr59506HkuE4nVgT2BmJ5r1s+66l
-	YTkErfuQakivcq6iqw2A==;
+	List-Owner; bh=J6/2ISy7WWCrOcs175z2/nEyHr6IkygPQ4Ujh3poNK8=; b=1pV0WhBT9YxQ6n
+	gwVEfnY5LQLlclXFpCSnFpMlUF6nJ5vhJjqO2vQ2acqFGZ4TG7OuqYVmwmQYxsshYjjqdvIGD/3xf
+	Cx/rgacTIssmE9pvfPjPgjsJ+tAHkCdWxUqpvJ26wZyfxbbEqWk+FCfX+sA/87tC86M1yiSSomvjx
+	XP8tpR9f4/IaxLqDoOV+gH50KYBh9NeXM42J8YWP34p+Ey7jGtUZPAFU1aBGx27EgEbyqjDbAoO1r
+	/OeN1BIoMzjARc1RUlm5isoiDbRapdtVwhjSo/VUN+nsnV0bLkAmGLOjgnDgqULhoThgeYxyKWZWp
+	8WsutcQTCdU1WZjjIBtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGb9I-0000000Clld-226C;
-	Tue, 13 Oct 2026 11:58:28 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xGbxK-0000000CrVR-1zBo;
+	Tue, 13 Oct 2026 12:50:10 +0000
+Received: from mail-m254116.xmail.netease.com ([103.129.254.116])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGb9G-0000000ClkK-2hig;
-	Tue, 13 Oct 2026 11:58:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=ZykDT+ldOzat3VDDIfdr94Z8vYDUwlbjCPKhDjwqAq8=; b=beEAKW6+D9+iNxOMMY0U47alwX
-	9IM+2guNvCmM+zaK7ZAK5V4YiBCz1N7/1xsrp9vpTMaI/swxy4BFxZ1ERfm4Gzaz0rsCcdpeznHQO
-	sQQwDsEM+rbxRo5GOQ4TRZBE+EojBkkWgWWr8StSUeWPl0Aj90lkeF7b5oLGWdmBQeqJsED7wHRCL
-	JcRIDDYZHZ9pSspM4AueDpJy68wDjkffQG6bbKTYypYB3tx0KItxaJWPRwExZrgtXrta3DWyb287W
-	YzCpuU5OOmnVq9Ee55bAgfaaFoXIdaOT/Kqi7+XkCggOd/1XRWLgFFZvQELYdn2mLIBPe3fgNiShW
-	8chlMX5A==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Oded Gabbay <ogabbay@kernel.org>,
-	Igor Paunovic <royalnet026@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Jiaxing Hu <gahing@gahingwoo.com>,
+	id 1xGbxE-0000000CrRr-3IsI;
+	Tue, 13 Oct 2026 12:50:07 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 50e2b9410;
+	Tue, 13 Oct 2026 20:49:56 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Robert Foss <rfoss@kernel.org>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Dave Jones <s.dave.jones@gmail.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] accel/rocket: search every core slot when a core is removed
-Date: Tue, 13 Oct 2026 13:58:08 +0200
-Message-ID: <179189268363.3989522.7509478122641676060.b4-ty@b4>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260904125936.26234-1-royalnet026@gmail.com>
-References: <20260904125936.26234-1-royalnet026@gmail.com>
+	linux-phy@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v1 3/6] drm/bridge: analogix_dp: Add support for RK3568
+Date: Tue, 13 Oct 2026 20:49:43 +0800
+Message-Id: <20261013124946.1807886-4-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261013124946.1807886-1-damon.ding@rock-chips.com>
+References: <20261013124946.1807886-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
+X-HM-Tid: 0aa1354ff96d03a8kunm2e7c128b3011
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZGE9CVkNMSBoeQkhPQk0ZGVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=JuzpEdyh6q2PKnnzbV9fUvczxR9S9PF/ZyzTKgTb0ud+zFhStt531+OqzuMLXl605+r0H9XgG8RqEDNY1IWn6aQvry5gBYwayJgn5UNVGX+eLJopSEMUTZw8mTsYXhlk2fWTPlAWQnXDqUHa4LtHYVIQdA7ChPvOhQBRzw7F2h8=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=25k85pYDNNS/jLMeaSTi2zceBGz4hvcyKDt+za22gLw=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261013_045826_682068_1BE21179 
-X-CRM114-Status: UNSURE (   8.34  )
+X-CRM114-CacheID: sfid-20261013_055005_782107_1C32AA1D 
+X-CRM114-Status: UNSURE (   7.90  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,25 +95,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The RK3568 SoC integrates an eDP transmitter based on the Analogix
+DisplayPort core.  Like RK3288 and RK3399, its main link consists of
+4 physical lanes running at 1.62/2.7 Gbps per lane.
 
-On Fri, 04 Sep 2026 14:59:36 +0200, Igor Paunovic wrote:
-> rocket_remove() decrements rdev->num_cores for each core it removes,
-> while find_core_for_dev() searches slots 0 to num_cores - 1. Unbinding
-> the cores in the order they were bound therefore loses the last one: by
-> the time it is removed the search range has already shrunk past its
-> slot, so find_core_for_dev() returns -1 and rocket_remove() gives up
-> without doing anything.
-> 
-> [...]
+Add a new RK3568_EDP device type and let it share the link rate and
+lane count limits of the RK3288/RK3399 variants.
 
-Applied, thanks!
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+---
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 1 +
+ include/drm/bridge/analogix_dp.h                   | 2 ++
+ 2 files changed, 3 insertions(+)
 
-[1/1] accel/rocket: search every core slot when a core is removed
-      commit: 6eff1d69dae808a1518aee5a58d0853a8db3f1be
-
-Best regards,
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 90245d55d1d2..2aefb4615a4f 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1375,6 +1375,7 @@ static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
+ 	switch (dp->plat_data->dev_type) {
+ 	case RK3288_DP:
+ 	case RK3399_EDP:
++	case RK3568_EDP:
+ 		/*
+ 		 * Like Rk3288 DisplayPort TRM indicate that "Main link
+ 		 * containing 4 physical lanes of 2.7/1.62 Gbps/lane".
+diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
+index f152ca8c3218..7b5615ae0dc1 100644
+--- a/include/drm/bridge/analogix_dp.h
++++ b/include/drm/bridge/analogix_dp.h
+@@ -16,6 +16,7 @@ enum analogix_dp_devtype {
+ 	EXYNOS_DP,
+ 	RK3288_DP,
+ 	RK3399_EDP,
++	RK3568_EDP,
+ 	RK3576_EDP,
+ 	RK3588_EDP,
+ };
+@@ -25,6 +26,7 @@ static inline bool analogix_dp_is_rockchip(enum analogix_dp_devtype type)
+ 	switch (type) {
+ 	case RK3288_DP:
+ 	case RK3399_EDP:
++	case RK3568_EDP:
+ 	case RK3576_EDP:
+ 	case RK3588_EDP:
+ 		return true;
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
