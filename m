@@ -4,69 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F167ACC6B03
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 06:39:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 177E2CC6B03
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 10:13:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
-	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xzzYJaIpqeHBi4+neKUQJa7aTC7dQ54dQxQw58yxA6M=; b=2IA5I5sANzk8q2
-	7y4eqx/toAWIsIF0FJ1+r42ICfya6E3ak0j6yjPTgOVO94DF0Jf6bSJnL8YcIzG/4ncazo7LE7AHY
-	1RLxSfHjuZKsLhJ3OtZa4EMFHDiLOhnLbz/YWnZJJp/1+EiQajWMebwfqp/JW4DMBFa05HPlPb3H6
-	cLeDMJl64JZ6N98unlg6VEtCaMNL5gJWCq+atrpFesQqHajdyGCCxlEQyEStG+v0lwe4MQAke8SdC
-	LoqBA1lZM6WAkgdGQxd9jM5E3e6pbnIT1xrMaWtBn7/JZv3tG1wGcKoZCS/CpMhn1b1IIzj88hHD4
-	6KtFLR0Jm/4j7lmdJ53Q==;
+	List-Owner; bh=0+Z5SWbPyVdbe9YK7AlLFXFlBKxEdDuRgFjxMkhcweM=; b=vGzC7EAiH50dVr
+	ar8oOGhQAzVA3lQ+kceCNHi9sLxe2cRaQWuz5Dh4poA5alott6twb78LpcjZu0l/PRQLkYI0KpfXm
+	blldS2bDF4YbEQMhhafUaDLz0aWpnj79EQorq8l27PxIjoRNVQnVvNqqHV0PM5PYXrekxhdhGVOcH
+	RmZrAkbFaklSq43SYUNIQ7aN/ntaFv1s4NThL+Z3ffr0FEdMXhsEXKfcnQR+ExDLk9ciHeV/kf2cT
+	Hu7/fJsfEt7DU3kfo5adwz84ANuhTrAbcgWiVi4fWDy5eAwuj33sFCo9VCRdfRpIkovwUThK4U3v2
+	fstP5EgvHFj9LE9I1SeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGWAZ-0000000C9zH-2O6o;
-	Tue, 13 Oct 2026 06:39:27 +0000
-Received: from out162-62-57-137.mail.qq.com ([162.62.57.137])
+	id 1xGZVA-0000000CWrj-13Wd;
+	Tue, 13 Oct 2026 10:12:56 +0000
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGWAW-0000000C9yI-3J18;
-	Tue, 13 Oct 2026 06:39:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1791873558; bh=pufvseFPv7SRb1Qgh0FRdHx2ORcY7iConWw/5V0rGEY=;
-	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=ICLydNTrn1d2R8B3oA6Ne5LMObic3hefiEHJsSHqzHjLhETbuhZw5TU37qI1FUq5c
-	 +sPq3UcNc0om+e62BegxI+jBF8+JOcclJ9RqbkiP94hn0/5XszgDgw/EOiR+zJzHeS
-	 fS6rtkQWe5nWWWEZQnUr1GnU47YfggtveK8RDcFY=
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
-X-QQ-XMAILINFO: Nyxko0BhXiLd41+Tw1uOs1BrxflslPSuTweuL7/54vmiFn65mefZgLh3iJk0vk
-	 4PgO9c7OYsrvouL0DCf7NvL0FnAY1OugU9nc6oG1RSyVaQQYnCbDrjfRHwkNaMNwbIitX/KFUy0+b
-	 vQZQEvC9TWG8cgMZqG6mo1KO3ImT+3q0JS4SIu6dhSE8H/PLXFFCNrCXjwDh38Rxir59UvwkHy/Ob
-	 1iFyXxvqEqq3s9i0cflrbzPIhUCm5/QYeulrMjW/hyDYVYVlu4QuiWvY+LAtvKF2oB97KiVh7HdBu
-	 vZYjICUlz+tec5u7Wm8oE0zBT5+4dEiJnfFN8fdDoL8Kp+6zqKWsr5OWBvayO3zRuKbnilymr0X9+
-	 xbpw5PFHXVm5skbrwRF9he+Tmdl3o3hzPs0LJQD+FA6+P5FJADNnnWYxmwRowiKsOyHgPW2Ftj2zQ
-	 o2RN9WT5ojU/sGWyI7M3WJ0kzOI0mEcq9Drcm9U7TQRNcoqKasP0kQtcs5XPmNpdwK1WAUsarwi9W
-	 zsnQRsoUfEJsZTqM0AanWJ9bPGROJoMmLEkQLL7cTYMtuJXJABZRpo7PwhIY4wh53oVvCpq0lQUrC
-	 vbPeLrlSwarpLSTg96Kc56cvPLOceAxLOnodo5MUbFoi1VlVs1rf0ghnBA9ibEYUo/ylziOwcEzE7
-	 3yEFl0D2/JFbyCIVTbbb0BeeK6yl0J/bnAlYgPQ5S+VrFOdaKNlFHyVtPvOvx1/5oUoUxZOyJ7gOW
-	 8JyAqmHv5yGQsfj929TBRyq5YTiq1FOVLRenMVOR0HopbLAevLLJ0vc/GDghICuUdy8gHOn+kLSGz
-	 qeCoFzd3q3j4yxVeE3qZmNeAt54uBU7OwwCIHw4Y6WLptPnCyQnXSJlTx3ALHwRjz+AGAUBd0Yylt
-	 vubGXg02JvAnJQ+b8ICAbaYgerS26pq3G2qBq5sPW9ENd2UgJPiMk6DP3gzw1M71fuKt7O9y1EmSC
-	 qGnRHrpLMCXRzGOrlHhkVmPu9BcJt2SZGhJI0X1d/bxPOW5CYLMJ52pk7E4qhYn/GxWpW4w48fn3L
-	 TWWUM34sJbtpv70o1MwxLQp1aZ4NEAQy8ffHfQhGRThZ+kMlq/n0+RP8YyRwW//3XNWNTNXyt1WHe
-	 1qQwGqRGK3v0nA==
-From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
-To: "=?utf-8?B?bmV0ZGV2LWJvdCtzaW5mbw==?=" <netdev-bot+sinfo@kernel.org>
-Cc: "=?utf-8?B?TWFyYyBLbGVpbmUtQnVkZGU=?=" <mkl@pengutronix.de>, "=?utf-8?B?VmluY2VudCBNYWlsaG9s?=" <mailhol@kernel.org>, "=?utf-8?B?U2ViYXN0aWFuIEFuZHJ6ZWogU2lld2lvcg==?=" <bigeasy@linutronix.de>, "=?utf-8?B?Q2xhcmsgV2lsbGlhbXM=?=" <clrkwllms@kernel.org>, "=?utf-8?B?U3RldmVuIFJvc3RlZHQ=?=" <rostedt@goodmis.org>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?bmV0ZGV2?=" <netdev@vger.kernel.org>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?c3RhYmxl?=" <stable@vger.kernel.org>
-Subject: Re: [PATCH net] can: rockchip_canfd: stop bus-off restart before closing the device
-Mime-Version: 1.0
-Date: Tue, 13 Oct 2026 14:39:15 +0800
-X-Priority: 3
-Message-ID: <tencent_1385D030CB2025348D8C05842272FB01350A@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-References: <tencent_5802EE88434010229EDF7A53084D994C6106@qq.com>
-	<179186216396.2527009.17545175870858054500@kernel.org>
-In-Reply-To: <179186216396.2527009.17545175870858054500@kernel.org>
-X-QQ-mid: xmsezb41-0t1791873555t7ffge0n2
+	id 1xGZV7-0000000CWqy-0EyQ
+	for linux-rockchip@lists.infradead.org;
+	Tue, 13 Oct 2026 10:12:54 +0000
+Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-cc4aa0246b7so1170409a12.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 13 Oct 2026 03:12:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791886372; cv=none;
+        d=google.com; s=arc-20260327;
+        b=qpuFg18o1+FiNj0EekZmT6A3HoNjM0UVSK0Tw3DeFZYwqLTjTgYQqMHCBz9kQpL6Nn
+         Vb/I4J/6KO3qIzt1xNBmoRa05tWmwAYhFk5ZbNSJBfV2FkHPP+OOQu9da3sXh7tfvhtZ
+         VbCxZ5hqDnuLlM+90Woj5qtR7/JU+V0L+ENZeGDpSvF5TBCBgMxOY0qbGtiQlEaqpRug
+         6VBQs02TGEmq9I2LfncVg9duOKfKZp/Ym4DO/A8178EOK6Mv3At8oBgBG5Rz3LNkgqt/
+         Fnnimp5d2HMTEmvI/gXvdyKwR3hAANz8xmYqbu2ICzHCSOghcveszcr2u606pigLesyf
+         3rYg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=oYpuymV3tgk09qaaDkKOhd9dg2Zp4VCoofN6vnpJl7A=;
+        fh=X9RKQr+ilFmnd7wpOgEQXSeTE0SxAQzkvlRlN9HMkmg=;
+        b=NXHfLkeyWbIWZt9Tqgs443FmyVudwLCjWkr6fTyjJrDlxkDrjzBEPQ8xppFHelh3Kx
+         WhtRZOioFxqt7IQHkc0uGGhruClGVj1A0WzjvdTsU+jkFnpBs6HYn4OTY4CPIPAVf+Du
+         Ut/GuhXE3YC2VlOl/PqVr/izehEeTym19dKaqxLXkk4U9eno2ORtkAnVJJqYpj2RRoZK
+         rDCXnoeJGQpbG+MpayasjSQ7oZCdquXpVCbMnhijzfe/jaqtJglZBXqJG79BOBdUu1Rx
+         bGxpf5C5yQmuaqby+la/KPdzh09jFKCbsvM7E7YCIgk/Lmr58SRbpThv9vMzdDeEXzGh
+         NSLA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791886372; x=1792491172; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=oYpuymV3tgk09qaaDkKOhd9dg2Zp4VCoofN6vnpJl7A=;
+        b=DZj+MBSfRv7GD6qs4ntEjPeGXPxOiiHROxWPYK1toh2+rUahasU5slXU0Ug0FOcuQE
+         CHW/HC8ZQW5JP0JHZXWfwBvVoPnZCvGAjB7tlgdU1KNf5fKJEbz77sBttXlR/KtDrCmB
+         uPrG15q6eO00p1XZEUyUHAvt3QPLAnRjoIPZ6huYLPfL8Dxa0dACUh6EFRXvUuKBT+M9
+         /o2MJtG7emKZP44qy+e6TbUqCpPhB7Lt6a1jrkhRcUjsqrjq6S9Kc7/eL8dga4Il0+QO
+         XmKXa1BBA0e7KZRHesoIZ57yrs/v95j661uAWbZXYpp+0kOEDmq6m37lGgo14/9Gbz5R
+         X7gA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791886372; x=1792491172;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=oYpuymV3tgk09qaaDkKOhd9dg2Zp4VCoofN6vnpJl7A=;
+        b=VSRIJ5otdWtUqt+6D/2zf+vrGlfmFl/DHHxorTMyqidmeWpEa3QCkFRSX9FCW77jkD
+         iw1ABjAb5cmstoDnH9hEZzBUg2GZZlgUi2CSSoU5FZxdlJih04CEI/igZ4/YeF68jFQ4
+         hxi3E3t4z/2jjnl+drueIcv1DyJYry0eo1de0H1/8/XcYlvRdJBVF26JIGQ1g2uB8ATh
+         ofCTHW3ufavYvqWQ0jRstq8vTuIaxzw9+LBvMcKeroeJGf3E2lZGxZhf30BkIJW2k3vs
+         62cepqXeX6dF5zMncxTOmG9i918Ee+JQQdKaN1ZuzjrmlVtZ1UUbUZC5ZEqKixRmWrLW
+         /5kQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxvoA51U7cf3BXjpwQI3bXih2YfV2RfRVJKdpVQeDZwQD/Jk/pCn5qpqHlaZPd3sZSLgrDlFpIC59mN7p6iqw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLRnaw+VxM7vM/O2ns/YXrRuu7/lmnsJI6KQRb/Zr80SKcTcXMR
+	afqBCilO1RMDNHxdd9XhJ4QChyf2WTfPl1N4+HZWDhTvK5h4BureHigseLPzb0f0fQ33G1r47Mt
+	Urelg+TiTNitLFwUcqWBxXHzf6Ik8870=
+X-Gm-Gg: AYBFou1b4rDIbGwXmxB7qvk87UtjKTaucl+/mQBnFswkjRbHKioXdlVyTEAGjuE5/Om
+	+XcPnlHvu3M5oZV4FWvmHIWMoS3F4vb3+sXBgH8zPuHEVDlkbs5zgY1qQCscT/Vku5GyDUuAPl6
+	sWAwMHfkcbSii5+AsFUR64xH3o8RNIIDokIVjP4mUNWoN7ztUzY9LgCSSXSPiDtQFk/DCIhaCa6
+	MsaH0z5rIaYnUfZjr3PLxcVuQ1O14poTcSmeD9AptbwkY2CBckzWKN5Xr/QamnN9qtDg386Vm2p
+	haxLzNXuadgeOcpbQkHUfEJDizdH8fJzEZ0gmwlITlcrhHayDcCC8bUR83U3AU8qSyC/3lG40KL
+	F7XkcY5SgfWcFgHZxNTCS8L8Q+IvS/vtEUi9ZBcFUjqLqvwNfw2nA9qb/QMeTqNvn1oc=
+X-Received: by 2002:a05:6300:6bc8:10b0:3e1:9071:acb1 with SMTP id
+ adf61e73a8af0-3e19071d79emr3692539637.89.1791886371799; Tue, 13 Oct 2026
+ 03:12:51 -0700 (PDT)
+MIME-Version: 1.0
+References: <20261008103831.542533-1-phucduc.bui@gmail.com>
+ <20261008103831.542533-22-phucduc.bui@gmail.com> <87o6cyxyau.wl-kuninori.morimoto.gx@renesas.com>
+ <CAABR9nHvCfabGfBu85bm1r=hP3b0ZiCsgZfShhOv3gNUfjjhGg@mail.gmail.com> <87se2aw3ot.wl-kuninori.morimoto.gx@renesas.com>
+In-Reply-To: <87se2aw3ot.wl-kuninori.morimoto.gx@renesas.com>
+From: Bui Duc Phuc <phucduc.bui@gmail.com>
+Date: Tue, 13 Oct 2026 17:12:40 +0700
+X-Gm-Features: AclHuK9ysK1Jav05byu2z6c82z-Prt9juV9RV67s1OGQmeMH_qLrceJ2TQNxX6U
+Message-ID: <CAABR9nG-YJZEdj6pVD-gbGU6J2EfRMQYsKd7u0UTgfrWOyAPXA@mail.gmail.com>
+Subject: Re: [PATCH 21/24] ASoC: renesas: msiof: Fix msiof_close() being
+ skipped on rollback
+To: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261012_233925_355905_F81F9AB7 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20261013_031253_102628_C83633DF 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,48 +113,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: imx@lists.linux.dev, Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Bard Liao <yung-chuan.liao@linux.intel.com>, Xiubo Li <Xiubo.Lee@gmail.com>, Venkata Prasad Potturu <venkataprasad.potturu@amd.com>, Frank Li <Frank.Li@nxp.com>, Cezary Rojewski <cezary.rojewski@intel.com>, Zain Aboobacker <zainaboobacker33@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Bjorn Helgaas <bhelgaas@google.com>, Pengpeng Hou <pengpeng@iscas.ac.cn>, Bo Shen <voice.shen@atmel.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Neo Chang <YLCHANG2@nuvoton.com>, Fabio Estevam <festevam@gmail.com>, Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>, Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, Geert Uytterhoeven <geert+renesas@glider.be>, Chris Bainbridge <chris.bainbridge@gmail.com>, Shengjiu Wang <shengjiu.wang@gmail.com>, Takashi Iwai <tiwai@suse.com>, Magnus Damm <magnus.damm@gmail.com>, Vinod Koul <vkoul@kernel.org>, Kees Cook <kees@kernel.org>, Vijendar Mukunda <Vijendar.Mukunda@amd.com>, povik+lin@cutebit.org, linux-rockchip@lists.infradead.org, Charles Keepax <ckeepax@opensource.cirrus.com>, Ravulapati Vishnu vardhan rao <Vishnuvardhanrao.Ravulapati@amd.com>, Sascha Hauer <s.hauer@pengutronix.de>, Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, linux-sound@vger.kernel.org, Nicolin Chen <nicoleotsuka@gmail.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, Mark Brown <broonie@kernel.org>, wangdicheng <wangdicheng@kylinos.cn>, Syed Saba Kareem <syed.sabakareem@amd.com>, Biju Das <biju.das.jz@bp.renesas.com>, Jaroslav Kysela <perex@perex.cz>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, Sang-Heon Jeon <ekffu200098@gmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Kai Vehmanen <kai.vehmanen@linux.intel.com>, patches@opensource.cirrus.com, Linus Walleij <linusw@kernel.org>, linuxppc-dev@lists.ozlabs.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Md Shofiqul Islam <shofiqtest@gmail.com>, asahi@lists.linux.dev, Pengutronix Kernel Team <kernel@pengutronix.de>, Andrei Simion <andrei.simion@microchip.com>, u.kleine-koenig@baylibre.com, David Rhodes <david.rhodes@cirrus.com>, Hemanth Selam <hemanth.selam@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Morimoto-san,
 
->  - How the issue was discovered, e.g. hit in production, hit during
->    development, syzbot report, manual code inspection, LLM or static
->    analysis tool scan.
+Thank you for your confirmation.
 
-Thanks for pointing this out. This work started with a real failure on a
-production robot, rather than a general scan for potential driver bugs.
+> > For MSIOF, I noticed that snd_dmaengine_pcm_open() already calls
+> > snd_pcm_hw_constraint_integer() for SNDRV_PCM_HW_PARAM_PERIODS,
+> > so the call in msiof_open() seems redundant.
+> >
+> > Since the first call succeeds, the second call should return 0.
+> > Would removing the redundant call be acceptable?
+>
+> Nice cache, yes please.
+>
 
-The production system used a LubanCat-5IO with an RK3588, running a
-6.18.55-current-rockchip64 PREEMPT_RT kernel with local CAN patches. Its
-1 Mbit/s CAN bus connected four CANopen motors operating at 100 Hz and
-four sensors operating at 20 Hz.
+For rz-ssi: in DMA mode, the driver registers the generic dmaengine
+PCM component, whose .open callback already applies the integer
+PERIODS constraint via snd_dmaengine_pcm_open().
 
->  - Whether the issue was actually triggered, or is only theoretical
->    (e.g. found by code inspection). If it was triggered please include
->    the symptoms, like the stack trace or error messages.
+Could we drop rz_ssi_pcm_open_dma() instead, and keep the return
+value fix only for rz_ssi_pcm_open_pio()?
 
-The observed failure was a persistent TX stall: RX continued, but the TX
-queue remained stopped and subsequent sends returned ENOBUFS. The
-interface still reported ERROR-ACTIVE, and the hardware indicated neither
-a bus-off condition nor a pending TX request.
+Best regards,
+Phuc
 
-I will submit two patches for this issue; this is the first one.
-
-This patch is not a direct fix for that failure. It fixes a race
-that was already present in the driver and that I found during
-fault-injection testing of the echo-loss fix: close_candev() cancels
-restart_work only after the IRQ has been freed and the controller has
-been stopped, so a queued bus-off restart can re-enable the controller
-and its interrupts after IRQ teardown, and can requeue timestamp work
-that may later access registers after runtime suspend has disabled the
-clocks. The second patch builds on this serialization and addresses the
-echo-loss stall itself.
-
-Regards,
-Cunhao Lu
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
