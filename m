@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97B93CC6B0F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 12:50:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B448CA9ED2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 12:50:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c57FA3YqwtJeMSFIYXQgFAw0nbmA4u3viVovcDpszN0=; b=tsQ7F5hBj7xPwl
-	dIn9mI+V3tW0tEfqCpkGRU9QGQ+VfRxkMpHUhvkCuyrDTPezsu25BRJluHhffeFBuSJaobIWKUgaD
-	eG1DhoWZ/Yob0IKWNefAMVkkNXb9mo1xL0MUhX5lLWPyVi9r634/lAlpJMM4Sn/Ibs5eMrG+OSpDh
-	yD8Al6W3vJX01Y/ajlJ8LvvP2ouKJWy57QKrCoBjdhiaeTt4alkn+rzZWtNZmPcsA6TTzWYaOBxnQ
-	oqsHS6oOTxCFYNEqP1Rz2aSGgZ3Hc6Gda7KFTgCt8vxZMv2fs+/TJZTCp288GFap1N9vKHwXHOvqH
-	ljUeWO1SdWSbV9lqeKrg==;
+	List-Owner; bh=L5KdbqpsYISWplm95+fUTdMWWmDbAF6RPOfZAdOraqc=; b=ajVhkNB8bYQSf3
+	ocEFBvw/kYbKAuFelhAM1hNRcraSGY0nOHkBb8IXt6XTIYlcA1n2LjpYgV7Bp7piQ+zWkCuiFo1bV
+	f3zHqytsQ0rSd4CiVeG3OOiKXk6zIHosxciz2+AWi6rIQNEBFEvc7FXTpPXXHT2J5ywIrr15WFd85
+	veSGVzsxPsV9CqxSsVvNHEaOBONrc0zXoLdTNDKLicjC0nzCCEBFrI7E0cLedKMDAHvAtZQEIC+es
+	35GEY1ktoOunp+4nq6tA24jjcg+B9FzCU2P00Q+nVnrDcoBcHWeV8cG83X+Bg5X01FBoPsV36A4kK
+	rbD/HuSz7/PpS14muluA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGbxQ-0000000CrdS-47tq;
+	id 1xGbxQ-0000000CrcQ-2Phh;
 	Tue, 13 Oct 2026 12:50:16 +0000
-Received: from mail-m10313119144.xmail.ntesmail.com ([103.131.191.44])
+Received: from mail-m82213676.xmail.ntesmail.com ([8.221.36.76])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGbxE-0000000CrRq-40xC;
-	Tue, 13 Oct 2026 12:50:11 +0000
+	id 1xGbxF-0000000CrSM-3v9B;
+	Tue, 13 Oct 2026 12:50:10 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 50e2b940d;
-	Tue, 13 Oct 2026 20:49:53 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 50e2b9417;
+	Tue, 13 Oct 2026 20:49:59 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	Heiko Stuebner <heiko@sntech.de>,
@@ -58,26 +58,26 @@ Cc: Neil Armstrong <neil.armstrong@linaro.org>,
 	linux-kernel@vger.kernel.org,
 	linux-phy@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v1 1/6] dt-bindings: display: rockchip: analogix-dp: Add support for RK3568
-Date: Tue, 13 Oct 2026 20:49:41 +0800
-Message-Id: <20261013124946.1807886-2-damon.ding@rock-chips.com>
+Subject: [PATCH v1 6/6] arm64: dts: rockchip: rk356x: Add eDP controller and phy nodes
+Date: Tue, 13 Oct 2026 20:49:46 +0800
+Message-Id: <20261013124946.1807886-7-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261013124946.1807886-1-damon.ding@rock-chips.com>
 References: <20261013124946.1807886-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0aa1354ff06a03a8kunm2e7c128b3006
+X-HM-Tid: 0aa13550074b03a8kunm2e7c128b301c
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDTEpNVkgZHkxNTENJGUgfT1YVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZS0pIVhlJHR1KHxodSUpOTFYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=esBq9R/0QwuJDYEtUDg/KknoEf7ksaQ6gizTruRkyCR2u10Wc22GMR33bSvqXmlMkjNtueJ7cE8cwrjHlLY2rslWcSTFtVpKvEdcaZcIXtZEaxocYkP0xempWqC3vjvhud7ANeDNZ0SFpMljUV3zVZ4fM5VKFGRE5yhXiW6CMBs=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=aqA05e3tEQzex5IV+W6xDQvoZ2RGk3y5IlP3Z09UWS0=;
+	b=aMrkd1w3cOMiKQR592KKTSf8/Xz+rXFqkIdE5hn8Rm8zrg785Tlf48qPwLc/ZkLfqinhKQJRDAc7ffodadXmJ65XQJkjhRQqiaILyk+HIVPftpjDxU+8uVTcbLoYe3Noj13fCyXC/0KpWFbhQJeFkkp7JNdyE7QFwRVbmtwm9ko=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=u0DlQ/xf40TjrEq/cqhW2BlOW/2RL9CDbLOchel23Qo=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261013_055005_910758_5C535C14 
-X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-CacheID: sfid-20261013_055006_661078_B1B9EE0A 
+X-CRM114-Status: UNSURE (   7.56  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,80 +95,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document the "rockchip,rk3568-edp" compatible.  Like RK3576/RK3588,
-the RK3568 eDP controller has the dp/pclk/hclk clocks and dp/apb
-resets, but unlike them it does not use GRF registers, so make the
-"rockchip,grf" property conditional on the SoC.
-
-Also document the optional avdd-0v9 and avdd-1v8 supplies, which are
-needed by the RK3568 eDP controller.
+Add the eDP PHY GRF (with the eDP PHY child node) and the eDP
+controller nodes for the RK3568/RK3566 SoCs.
 
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 ---
- .../rockchip/rockchip,analogix-dp.yaml        | 25 ++++++++++++++++++-
- 1 file changed, 24 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 41 +++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
-index 39dafe75a680..f8670a4e0430 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
-@@ -15,6 +15,7 @@ properties:
-     enum:
-       - rockchip,rk3288-dp
-       - rockchip,rk3399-edp
-+      - rockchip,rk3568-edp
-       - rockchip,rk3576-edp
-       - rockchip,rk3588-edp
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+index a5832895bd39..3b60e4355ad8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -403,6 +403,20 @@ usb2phy1_grf: syscon@fdca8000 {
+ 		reg = <0x0 0xfdca8000 0x0 0x8000>;
+ 	};
  
-@@ -47,6 +48,16 @@ properties:
-       - const: dp
-       - const: apb
- 
-+  avdd-0v9-supply:
-+    description:
-+      A 0.9V supply that powers up the SoC internal circuitry. The actual
-+      supply source varies between different boards.
++	edp_phy_grf: syscon@fdcb0000 {
++		compatible = "rockchip,rk3568-edp-phy-grf", "syscon", "simple-mfd";
++		reg = <0x0 0xfdcb0000 0x0 0x100>;
++		clocks = <&cru PCLK_EDPPHY_GRF>;
 +
-+  avdd-1v8-supply:
-+    description:
-+      A 1.8V supply that powers up the SoC internal circuitry. The actual
-+      supply source varies between different boards.
++		edp_phy: edp-phy {
++			compatible = "rockchip,rk3568-edp-phy";
++			clocks = <&pmucru XIN_OSC0_EDPPHY_G>;
++			clock-names = "refclk";
++			#phy-cells = <0>;
++			status = "disabled";
++		};
++	};
 +
-   rockchip,grf:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description:
-@@ -61,11 +72,22 @@ required:
-   - clock-names
-   - resets
-   - reset-names
--  - rockchip,grf
+ 	pmucru: clock-controller@fdd00000 {
+ 		compatible = "rockchip,rk3568-pmucru";
+ 		reg = <0x0 0xfdd00000 0x0 0x1000>;
+@@ -879,6 +893,33 @@ hdmi_out: port@1 {
+ 		};
+ 	};
  
- allOf:
-   - $ref: /schemas/display/bridge/analogix,dp.yaml#
- 
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3568-edp
-+    then:
-+      properties:
-+        rockchip,grf: false
-+    else:
-+      required:
-+        - rockchip,grf
++	edp: edp@fe0c0000 {
++		compatible = "rockchip,rk3568-edp";
++		reg = <0x0 0xfe0c0000 0x0 0x10000>;
++		clocks = <&pmucru XIN_OSC0_EDPPHY_G>, <&cru PCLK_EDP_CTRL>, <&cru HCLK_VO>;
++		clock-names = "dp", "pclk", "hclk";
++		interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
++		phys = <&edp_phy>;
++		phy-names = "dp";
++		power-domains = <&power RK3568_PD_VO>;
++		resets = <&cru SRST_EDP_24M>, <&cru SRST_P_EDP_CTRL>;
++		reset-names = "dp", "apb";
++		status = "disabled";
 +
-   - if:
-       properties:
-         compatible:
-@@ -100,6 +122,7 @@ allOf:
-         compatible:
-           contains:
-             enum:
-+              - rockchip,rk3568-edp
-               - rockchip,rk3576-edp
-               - rockchip,rk3588-edp
-     then:
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			edp_in: port@0 {
++				reg = <0>;
++			};
++
++			edp_out: port@1 {
++				reg = <1>;
++			};
++		};
++	};
++
+ 	qos_gpu: qos@fe128000 {
+ 		compatible = "rockchip,rk3568-qos", "syscon";
+ 		reg = <0x0 0xfe128000 0x0 0x20>;
 -- 
 2.34.1
 
