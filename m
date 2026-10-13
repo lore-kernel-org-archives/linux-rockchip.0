@@ -4,71 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40E81CC6B0F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 13:48:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96DCACC6B08
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 14:27:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MgVTjA3ZmxANmRGVKDS8uuTVSZx+6GvzMow3ezLLrBs=; b=YWK+HR56xhqQ2k
-	fKezicg7+nE3f4MEbBTwP8UTYP20J09btpCE2kSTxleQcaQT/747pPmZFLf9/W4YVujPLSWH9Jqp5
-	kDi8npWquopsPXYAgPAEjT7+JPTMYeXiWMYpyNbNvD2cwf6sGM9aiaC4uOzEMWRJKETkDuWFCLySw
-	8ta+03v4PBLHi0pHTbBeCBpKG9N4rQ1pXBvkbUnfrY9gotFnFtrmZq0/CJXEM1fU14Ae4cxi6wOLI
-	AjPGHjnl6ps+G63ILJetJhUrq/YDWD9HZukaIs+ZJeS+NaorybsoekwasHyshl68XSnO5aXgQpWnD
-	rpavqv7SfOvxgnNJB1wA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W7Zh7SomxKj1gdyXvLCNiWFNw8FKWScyMuqlSbJzYM4=; b=NJVAjtTWSZxkJtgXEMait/uJkQ
+	EN3tLd9osf7BU6opj9igSpQKsCg+wF3KfN2LU2iANRjLijz/b0xGMUYmNIp8WjhwQ7Ih6PcqfDrLa
+	yaFjMfWEkTftDanE7LdJSg169mT1v9b365g331hOHc+wlBTkJpJzF2r3OLJ0n0S1Ko2TLhROIAuN4
+	Yh5KbHsyBkMm8ZBp+0j7nvu5aPML7fg1AIeCOfU94TuvUOCj/K0+wFOjIkEQgquzm4ylQP9Eg+QZq
+	B2pAm0oItezACEJICvZ9iZuC5o0AQZ979ZVVG8sXCM9tAb5NbyHLthphZTTPFXgLjud7jNHK8a1/B
+	OQr+aE3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGcrb-0000000D0H2-0Zs8;
-	Tue, 13 Oct 2026 13:48:19 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xGdTU-0000000D5hG-0XaS;
+	Tue, 13 Oct 2026 14:27:28 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGcrY-0000000D0GE-1C0t;
-	Tue, 13 Oct 2026 13:48:16 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6A076602C3;
-	Tue, 13 Oct 2026 13:48:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45EB31F000FF;
-	Tue, 13 Oct 2026 13:48:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791899295;
-	bh=MwsHrhWwBAqFC5XDIDWmcboOdLh7zz3XrR9XYaXosSk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=ZqqqnXTXL5JQQBVpDNrKTM+tmsrFuh0quFdrhPcnKsyO7YbA+lJycODBdX98wdONc
-	 xUDQCxz05TL7W75efE5ASsLNQRZLVN5/dBp9WD573ytfDG0rg2Gk6R7d3M/iNI88tL
-	 RXJb6RL0tTmjBoZjyP/89KYnxPitqQKJ2XWJyoLAyjiE3wbbIVMxyquN7oWk7nKoNs
-	 G/DNMOqBz69isfb+qUI0N2FHmmRXZndeYKJs8ErRvSxrMPnyE7FdVH504bw8/T3/9U
-	 V0v7mrpEZLQLR7Z1iMbD/vHjPrNTjS1Th3v8OWXdvYA4WVEeKVP1iPVbQHnszEI5Qh
-	 LSdKlEbgaI3Yg==
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>, Dragan Simic <dsimic@manjaro.org>, 
- Geraldo Nascimento <geraldogabriel@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
- linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <cover.1781622998.git.geraldogabriel@gmail.com>
-References: <cover.1781622998.git.geraldogabriel@gmail.com>
-Subject: Re: [PATCH v7 0/3] PCI: rockchip: 5.0 GT/s speed discouraged by
- Rockchip
-Message-Id: <179189927768.12828.5970294502454132706.b4-ty@b4>
-Date: Tue, 13 Oct 2026 19:17:57 +0530
+	id 1xGdTR-0000000D5fI-1x4Z;
+	Tue, 13 Oct 2026 14:27:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=ApdHT9jlstoFu3E8M4KUrdFK8TNXHrk50WUdd+Ue74E=; b=beK6GkdQy1NZ4PQecms08ATFrl
+	kSS+/POC5xGJIYGlVy0bc14YW4vezfpxbldFQ8R53Jdw68eBuV3P65FwDtUIlPFhIYV+URkdJ/TiH
+	b7Q+wSdDo39FL9/whKJ9aM+FlZKOuosk2xxJVMLnGPh/Lo0BSCkKqsaM6HaAif+cSdTdK7DDrPDHI
+	29UoUC4tanqgDKFu1VvSllaLPZqnF1AqIP4UnUWF9O4V9gMVshnZD/NkDLh2gNpIIxKfFcDCTMD5h
+	SalpfbaEzOhZzzdHURgpnTUGkUzOa7OwBGHjprvxjZriFs1L29Gy9Xk4B5wK7gWHLuBsrA+jBW3gP
+	Mh1J9KHg==;
+Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
+	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
+	id 1xGdTL-0000000Fdty-3o5Z;
+	Tue, 13 Oct 2026 14:27:24 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
+	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 805422018C1;
+	Tue, 13 Oct 2026 16:27:17 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
+	s=20260414; t=1791901637;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ApdHT9jlstoFu3E8M4KUrdFK8TNXHrk50WUdd+Ue74E=;
+	b=gmAViN1StYgezRvrnW2kU8LQG8nMplvHkIg+MierkaxjevnZyfzwz2xBT3bQZ/Lx2On66e
+	CxZEqSRp7QUJczqg6DXtuwRFjWeUrdY9yxtUsaNcvLXqkBXvfekIH5AXc8P5+EoBIO/cCR
+	CLMiMhVkysMTlrD5KKWKWyxlB317sBBB69hXj/EfsbTvMeldaOAc/qFbkT+sB/7gIh1I1s
+	IrEgx+oQ8a03xHgo4L/dYoxwcSEGq1gxQ1OSl19BJ3FOAFfVFw6QbGscuqQ2siuorLz8tI
+	DOm9vTThYYK8qVtXI/CkZlMfYsvXF1GLy5frs94qdDe3W/zF6nT9VVTfFKRaTQ==
+ARC-Seal: i=1; s=20260414; d=pengutronix.de; t=1791901637; a=rsa-sha256;
+	cv=none;
+	b=BDXTtdWUkb9ZmZKI6YGH0IyAPrPSXhaar59i2sS6xaP2XB3PAz9yy/y+eEYlzp/3kKG3Lb
+	/GHldNmy/YDouinmqqgbO5+qvEwMf37IWsHG60/cvIGFunGXArKj+y0zmUtARQbf5oEw2g
+	aOX8ok8x+G7ujGhJnTOyBCggpNnMk8fZuruZ74RAwT0rl+mS5CB8OK3PeHgh7dW+Eh928z
+	QDB3FdSTFBff8M/pWw2CI8saJnAK0/4OPtea59luZ5UnNvsU3EqP6QU3ikOx82H+Ye2l1E
+	sHF29Jj1xEbX51X652LMo81vWn4NZfEw3OfSxPtV63h+lUrjRzGglIkeQGN8Ug==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=relay-from-drehscheibe.grey.stw.pengutronix.de smtp.mailfrom=mkl@pengutronix.de
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
+	s=20260414; t=1791901637;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ApdHT9jlstoFu3E8M4KUrdFK8TNXHrk50WUdd+Ue74E=;
+	b=f1QeBoW0Ze/ClU7CMtKhrNIi3ByiryX7MiewNu1+Sdzb+h3dJ9+7RT7HD1Z4Fu2PLkn8ND
+	T8zWl1BCf6IZCvaiIN1vAWqtvpmvHBhx89nvOv1w6SHBNd7UIKKb2Bxxqjut93IJE3w4Oz
+	n9uUASxmUnDTHoMIzEoYr9mdPTrVQH8/TrzqNoQx8Xdey7KU+DGe+618tczic++uLL8fQ2
+	SuevtlTvbvVPLKsjW0P1Lzd9qaj9jDf68eqI3sqVQvbe2kF/nUGF7dNE6j0pJ4zvjeebRg
+	kPr2tp8PUecAK1nDJF5VX2KeahtdWU018s7EAwvdyFDDF0t913j+l1uLgjAFUQ==
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b] helo=bjornoya.blackshift.org)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <mkl@pengutronix.de>)
+	id 1xGdTJ-005hqR-1L;
+	Tue, 13 Oct 2026 16:27:17 +0200
+Received: from pengutronix.de (p4ffb23c7.dip0.t-ipconnect.de [79.251.35.199])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(Client did not present a certificate)
+	(Authenticated sender: mkl-all@blackshift.org)
+	by smtp.blackshift.org (Postfix) with ESMTPSA id 191795C31D7;
+	Tue, 13 Oct 2026 14:27:17 +0000 (UTC)
+Date: Tue, 13 Oct 2026 16:27:16 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Cunhao Lu <1579567540@qq.com>
+Cc: Vincent Mailhol <mailhol@kernel.org>, 
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Clark Williams <clrkwllms@kernel.org>, 
+	Steven Rostedt <rostedt@goodmis.org>, linux-can <linux-can@vger.kernel.org>, 
+	netdev <netdev@vger.kernel.org>, kernel <kernel@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>, 
+	linux-rockchip <linux-rockchip@lists.infradead.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, stable <stable@vger.kernel.org>
+Subject: Re: [PATCH net] can: rockchip_canfd: stop bus-off restart before
+ closing the device
+Message-ID: <20261013-tricky-piculet-of-ampleness-cada4c-mkl@pengutronix.de>
+References: <tencent_5802EE88434010229EDF7A53084D994C6106@qq.com>
+ <20261013-hissing-saiga-of-endeavor-ef5e03-mkl@pengutronix.de>
+ <tencent_F9D491A400474428BFE7262F1A1799A88407@qq.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=909; i=mani@kernel.org;
- h=from:subject:message-id; bh=MJ2L3Ts8++Q18HVodqsi50qgRqQHnU8MLJbv9TbaZZU=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBqzjaWuJsyJInKTko4kslC28gQaP58gTARVbj2t
- UDexrJ/9uWJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCas42lgAKCRBVnxHm/pHO
- 9W4rB/9dfTBuarNvfVBSNUuYe2/Gdg9P5KVqDROq9kkrp8mxE5shnJedONgaWeuv7GI66sIjIjn
- rD8FbCw8pRxng8BoATEhuSMlZq9QKbV13RebbzDMgpYoPdBjw1frOv6uMUZ6kgyMtdpgUZYOO2C
- 6W410/kMupZjqqanx7W73Bg0LNMWuga+2rwyzOr9Rle1AQMco1hT/dcrVbMzU6NKDOmENnyC2G4
- ZFyrxo0ZSnXNk044fYyMemjU2ZwBwMiy3hR6fO4hCWslzj52aK4AN++wb3smZb7GQGuT1yVJU2B
- NGzRdxzYXeyLJH+Yber3rvaSu6wuzO3i3KToeCmVjn3+03YS
-X-Developer-Key: i=mani@kernel.org; a=openpgp;
- fpr=C668AEC3C3188E4C611465E7488550E901166008
+In-Reply-To: <tencent_F9D491A400474428BFE7262F1A1799A88407@qq.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261013_152722_133572_90B18D20 
+X-CRM114-Status: GOOD (  33.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,27 +120,120 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============8253953709145302232=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ck9uIFR1ZSwgMTYgSnVuIDIwMjYgMTI6MjQ6NDggLTAzMDAsIEdlcmFsZG8gTmFzY2ltZW50byB3
-cm90ZToKPiBQQ0k6IHJvY2tjaGlwOiA1LjAgR1QvcyBzcGVlZCBkaXNjb3VyYWdlZCBieSBSb2Nr
-Y2hpcAo+IAo+IERyYWdhbiBTaW1pYyBhbHJlYWR5IGhhZCB3YXJuZWQgbWUgb2YgcG90ZW50aWFs
-IGlzc3VlcyB3aXRoIDUuMCBHVC9zCj4gc3BlZWQgb3BlcmF0aW9uIGluIFJvY2tjaGlwIFBDSWUu
-IEhvd2V2ZXIsIGluIHJlY2VudCBpbnRlcmFjdGlvbnMKPiB3aXRoIFNoYXduIExpbiBmcm9tIFJv
-Y2tjaGlwIGl0IGNhbWUgdG8gbXkgYXR0ZW50aW9uIHRoZXJlJ3MgZ3JhdmUKPiBkYW5nZXIgaW4g
-dGhlIHVua25vd24gZXJyYXRhIHJlZ2FyZGluZyA1LjAgR1QvcyBvcGVyYXRpb25hbCBzcGVlZAo+
-IG9mIHRoZWlyIFBDSWUgY29yZSwgaW5jbHVkaW5nIGRhdGEgbG9zcy4KPiAKPiBbLi4uXQoKQXBw
-bGllZCwgdGhhbmtzIQoKWzEvM10gUENJOiByb2NrY2hpcC1lcDogZG8gbm90IGF0dGVtcHQgNS4w
-IEdUL3MgcmV0cmFpbmluZwogICAgICBjb21taXQ6IDM5Zjg5ZGRlMGE3NmIyMjlkZjdlYjM1NmFh
-ZjZmNDQ0YjRmOGE2MzYKWzIvM10gUENJOiByb2NrY2hpcC1ob3N0OiBkbyBub3QgYXR0ZW1wdCA1
-LjAgR1QvcyByZXRyYWluaW5nCiAgICAgIGNvbW1pdDogNTk4OGE1M2Y1YmY3NThiMmQ0MWNiNmUw
-ODMyYzE5Yjk2OTJjNzZkMgpbMy8zXSBQQ0k6IHJvY2tjaGlwOiBkcml2ZSBhdCAyLjUgR1Qvcywg
-ZXJyb3Igb3RoZXIgc3BlZWRzCiAgICAgIGNvbW1pdDogNjI4NDMwMzFjYTFmMTFkMWI4ZTkwZTdm
-NTU4YzFiM2M0Y2Q3NzE4NAoKQmVzdCByZWdhcmRzLAotLSAK4K6u4K6j4K6/4K614K6j4K+N4K6j
-4K6p4K+NIOCumuCupOCuvuCumuCuv+CuteCuruCvjQoKCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============8253953709145302232==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="p2fdgwty2yztquzs"
+Content-Disposition: inline
+
+
+--p2fdgwty2yztquzs
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH net] can: rockchip_canfd: stop bus-off restart before
+ closing the device
+MIME-Version: 1.0
+
+On 13.10.2026 21:06:21, Cunhao Lu wrote:
+> Hi Marc,
+>
+> > AFAICS this is a systematic problem and should IMHO not worked around in
+> > one driver only.
+>
+> Agreed. I initially only noticed the problem in the Rockchip CAN-FD
+> driver and did not consider the common CAN code.
+
+Thanks to your analysis, it was easy to reach that conclusion. :)
+
+> > netif_running() tests __LINK_STATE_START, which is removed in
+> > __dev_close_many() prior to calling the driver's ndo_stop().
+> >
+> > Can we make use of netif_running() prior to calling do_set_mode(dev,
+> > CAN_MODE_START)? from can_restart()?
+>
+> If you have no objections, I think it would be better to put the
+> netif_running() check after the existing !priv->do_set_mode check and
+> before netif_carrier_ok():
+>
+>         if (!priv->do_set_mode)
+>                 return -EOPNOTSUPP;
+>
+>         if (!netif_running(dev))
+>                 return -ENETDOWN;
+>
+> This would preserve the existing error precedence for devices that do
+> not support restart.
+
+ACK
+
+> > can_bus_off() should not schedule_delayed_work() if !netif_running().
+>
+> Agreed. Although this would change the behavior of some drivers, I think
+> it should help improve stability.
+
+ok
+
+> > We still have to call cancel_delayed_work_sync(&priv->can.restart_work)
+> > from each driver, though.
+
+Let's wrap that into a function and put this into linux/can/dev.h. It's
+name could be something like close_candev_cancel_restart_sync().
+
+> I can make changes to the other drivers. However, I do not have the
+> corresponding hardware and would not be able to test the changes on
+> real devices, so I am concerned about the risk. I would like to confirm:
+> do I need to audit and fix the restart behavior of every CAN device
+> driver?
+
+I think it's OK to fix the rockchip driver only.
+
+> > What do you think?
+>
+> I will address these comments in v2. Thanks for your review.
+
+Please split the changes into several patches:
+- fix the existing infrastructure
+- add new close_candev_cancel_restart_sync() function
+- use this function in the rockchip driver
+
+regards,
+Marc
+
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--p2fdgwty2yztquzs
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQSl+MghEFFAdY3pYJLMOmT6rpmt0gUCas4/wQAKCRDMOmT6rpmt
+0sMkAP9SLysRPyc/bN1kfprQlX5GQAMSIsfWuKXrKvknT5XDYQD/fce1XVIeVE/g
+Wu3BWgWdmmI0Sq7/V4pT4SEDHKDXXQM=
+=J0Bg
+-----END PGP SIGNATURE-----
+
+--p2fdgwty2yztquzs--
+
+
+--===============8253953709145302232==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8253953709145302232==--
+
