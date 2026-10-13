@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03137CC6B21
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 22:52:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58A0CCC6B1D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 22:52:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=01xZxWYcuK1HM7upNauZ20bYK4vd25Asy0MqqtsyHtE=; b=r3rZsXzZw9xjMP
-	igAaFtneIPZGc1hTt3/FFz4FbyK6srZyHeDZQV6K67FYW6gdrYiflMcn99BAWL1lnm0uh6LSaX6QY
-	34uOLUUaQq3/61Z40/5bmf67s5jU3UZEBPtQS2xywKSat0xlEGtK9geZx8h6Ous3wL/Mx53Q73fJ+
-	ZYjfsKwzrnomDsX70VeJI4OycNthbMzhCQQjA1MHPPYJbWZNdAeIwHSR/nHwGT7GK/3fnDRLGAbU5
-	YoUPOGFobEYtZ9B3dI4S5CgYHEa1jwmUnh460H6bJLQ4c5S0eZEwMRjbzNEhHc7lnmptYgSci8VVV
-	JFL7gFXViHr2CLO6Lo5w==;
+	List-Owner; bh=iaKoS5Tn/HdzKWgaigCxwqoiYW6DZVlGM1LYgM0SmV4=; b=KTWgauFnl8llE0
+	t96+tWzamqNNTmTAvVOanARkVniHw2RHdqtFrWeqER4SbCce727ZlXeuChg8enc2ApclCI3KU0E5U
+	+LgINHwvmOQDbmZ9rYRoOP7KnKVGD7KmzXLCMZSzb46JlE4higMqQbPuixkB9n2fAfPe4sbMrOmns
+	aoD3NEkKCRiT+OcbOkHDh5W4i4CSMqt8MrtBGxhJzy5Yan5q99AIgdQkReOJMLo0+NnyrSx156K8a
+	mfv2jVVnuP8q8iBG2rpYeSaVqeJDvlqRsqYkRixReE+lgs6eZ3B+RTRfI7Fi9/0eZs+Mlod+PnwE2
+	nQ4rAz9S9P+hfIOPQRAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGlLo-0000000EB21-0NH2;
-	Tue, 13 Oct 2026 22:52:04 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xGlLn-0000000EB1A-33O0;
+	Tue, 13 Oct 2026 22:52:03 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGlLh-0000000EAyT-0QQ2;
+	id 1xGlLh-0000000EAyS-115w;
 	Tue, 13 Oct 2026 22:52:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1791931912;
-	bh=aGe8nmSYDlD89HTgEIf0ZL1zah8iMagTLLYRYG/Zwn4=;
+	s=mail; t=1791931911;
+	bh=nePb0kyyjWqyo41M5uZpRKK5NGs/j1qWip36phnEELk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hz/RgD9z8WHcN3LTL8qA4lGYsKX7/T/GZJJAAVzXeAsmKvIaUkUtuRGj9UC/P4GqD
-	 M4s7XzYid6QbMcNhYIXsTx80WEEOssdwSJZSQtACTHrOnUYU/Bd5S3LEeAxwIP20N9
-	 LCM7cox81TSZtOQp5avw9mKGZlf1c89RLt2svn+wwqCajPbJhsIWkocMkMtsRJYniK
-	 SrD3Zyzw1jCKiw1GrM7U4phVpHD+x9zm2aKvxugxHFv+MsBdPKEM6ZR8I7okVOb/8B
-	 yedvfJyUOodJNdVRlsPBTH7HwWIYSybZhZZ3E9YMCx2N3V/p48W7gEbXLgl5rsTQqE
-	 4Ixm8KFEdujLQ==
+	b=dRMJX4Dv0PxU9KOJVHz25PsXe4o4o7GUByBFiJ/T944KhXP3y/i66526T2qXC0ueZ
+	 FbsGhTAWn7ifpYPQjWlB1fuI6k/Zy0/XP7/na5E6VfZd4j4f0khcqNcQCPX3BRGuhk
+	 FFHEVAs+GgxX2/cQ1Y1IVoKs0PnpWwrV81AAyk2M6IVdhlfYnG4A6YSE5Ym0zUgzoY
+	 CTOJJea+OdOlRHbpkgAwcnYDmSVHyKdkMwHxjkb8yku3d4mv4uoR1J5drbnQkPgSXr
+	 GeDDe/NDsfSmCFKY1McyYooEI8XHRa9svLG+yhgTiMetSHeDr/zhgUhNqQJNQJmS+m
+	 vslKPVpsa+Tjw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2873617E0962;
-	Wed, 14 Oct 2026 00:51:52 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 72AAE17E07F0;
+	Wed, 14 Oct 2026 00:51:51 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 14 Oct 2026 01:51:19 +0300
-Subject: [PATCH v5 02/15] drm/rockchip: vop2: Fix resource leak on
- vop2_enable() error path
+Date: Wed, 14 Oct 2026 01:51:18 +0300
+Subject: [PATCH v5 01/15] dt-bindings: display: vop2: Add missing reset
+ properties
 MIME-Version: 1.0
-Message-Id: <20261014-dw-hdmi-qp-yuv-v5-2-6fab0fe43a9b@collabora.com>
+Message-Id: <20261014-dw-hdmi-qp-yuv-v5-1-6fab0fe43a9b@collabora.com>
 References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com>
 In-Reply-To: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -71,12 +71,13 @@ To: Sandy Huang <hjc@rock-chips.com>,
 Cc: kernel@collabora.com, Andy Yan <andyshrk@163.com>, 
  dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>, 
- Igor Paunovic <royalnet026@gmail.com>
+ linux-kernel@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261013_155159_145373_D6A001A6 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20261013_155159_154738_8A31C6D7 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,116 +94,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-vop2_enable() returns void, so callers cannot tell whether powering up
-the VOP2 succeeded.
+Document the VOP2 resets corresponding to the AXI, AHB and DCLK_VP0..2
+clocks, which are common to all supported SoCs, plus DCLK_VP3 which is
+provided only on RK3588.
 
-Additionally, if rockchip_drm_dma_attach_device() fails, vop2_enable()
-returns without disabling the core clocks or dropping the runtime PM
-reference taken earlier, leaking both.
+While at it, move 'iommus' in the example up into the expected position
+to keep the properties in alphabetical order.
 
-Make vop2_enable() return int and unwind all resources on every failure
-path.  As disabling the core clocks is also needed in vop2_disable(),
-factor it out into a local helper used by both.
-
-Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/all/20260623202043.8BFE21F000E9@smtp.kernel.org/
-Link: https://lore.kernel.org/all/20260623202043.8BFE21F000E9@smtp.kernel.org/
-Tested-by: Igor Paunovic <royalnet026@gmail.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 39 +++++++++++++++++++---------
- 1 file changed, 27 insertions(+), 12 deletions(-)
+ .../bindings/display/rockchip/rockchip-vop2.yaml   | 46 +++++++++++++++++++++-
+ 1 file changed, 44 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index bfb384142568..e0caea93a896 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -860,6 +860,13 @@ static int vop2_core_clks_prepare_enable(struct vop2 *vop2)
- 	return ret;
- }
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+index 93da1fb9adc4..f993cef0323b 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+@@ -82,6 +82,20 @@ properties:
+       - {}
+       - {}
  
-+static void vop2_core_clks_disable_unprepare(struct vop2 *vop2)
-+{
-+	clk_disable_unprepare(vop2->pclk);
-+	clk_disable_unprepare(vop2->aclk);
-+	clk_disable_unprepare(vop2->hclk);
-+}
++  resets:
++    minItems: 5
++    maxItems: 6
 +
- static void rk3588_vop2_power_domain_enable_all(struct vop2 *vop2)
- {
- 	u32 pd;
-@@ -871,7 +878,7 @@ static void rk3588_vop2_power_domain_enable_all(struct vop2 *vop2)
- 	vop2_writel(vop2, RK3588_SYS_PD_CTRL, pd);
- }
- 
--static void vop2_enable(struct vop2 *vop2)
-+static int vop2_enable(struct vop2 *vop2)
- {
- 	int ret;
- 	u32 version;
-@@ -879,25 +886,24 @@ static void vop2_enable(struct vop2 *vop2)
- 	ret = pm_runtime_resume_and_get(vop2->dev);
- 	if (ret < 0) {
- 		drm_err(vop2->drm, "failed to get pm runtime: %d\n", ret);
--		return;
-+		return ret;
- 	}
- 
- 	ret = vop2_core_clks_prepare_enable(vop2);
--	if (ret) {
--		pm_runtime_put_sync(vop2->dev);
--		return;
--	}
-+	if (ret)
-+		goto err_put_pm;
- 
- 	ret = rockchip_drm_dma_attach_device(vop2->drm, vop2->dev);
- 	if (ret) {
--		drm_err(vop2->drm, "failed to attach dma mapping, %d\n", ret);
--		return;
-+		drm_err(vop2->drm, "failed to attach dma mapping: %d\n", ret);
-+		goto err_disable_clks;
- 	}
- 
- 	version = vop2_readl(vop2, RK3568_VERSION_INFO);
- 	if (version != vop2->version) {
- 		drm_err(vop2->drm, "Hardware version(0x%08x) mismatch\n", version);
--		return;
-+		ret = -EINVAL;
-+		goto err_detach_dma;
- 	}
- 
- 	/*
-@@ -932,6 +938,17 @@ static void vop2_enable(struct vop2 *vop2)
- 		    VOP2_INT_BUS_ERRPR << 16 | VOP2_INT_BUS_ERRPR);
- 	vop2_writel(vop2, RK3568_SYS1_INT_EN,
- 		    VOP2_INT_BUS_ERRPR << 16 | VOP2_INT_BUS_ERRPR);
++  reset-names:
++    minItems: 5
++    items:
++      - const: axi
++      - const: ahb
++      - const: dclk_vp0
++      - const: dclk_vp1
++      - const: dclk_vp2
++      - const: dclk_vp3
 +
-+	return 0;
+   rockchip,grf:
+     $ref: /schemas/types.yaml#/definitions/phandle
+     description:
+@@ -148,6 +162,12 @@ allOf:
+         clock-names:
+           maxItems: 5
+ 
++        resets:
++          maxItems: 5
 +
-+err_detach_dma:
-+	rockchip_drm_dma_detach_device(vop2->drm, vop2->dev);
-+err_disable_clks:
-+	vop2_core_clks_disable_unprepare(vop2);
-+err_put_pm:
-+	pm_runtime_put_sync(vop2->dev);
++        reset-names:
++          maxItems: 5
 +
-+	return ret;
- }
+         interrupts:
+           maxItems: 1
  
- static void vop2_disable(struct vop2 *vop2)
-@@ -942,9 +959,7 @@ static void vop2_disable(struct vop2 *vop2)
+@@ -194,6 +214,12 @@ allOf:
+             - {}
+             - const: pll_hdmiphy0
  
- 	regcache_drop_region(vop2->map, 0, vop2_regmap_config.max_register);
++        resets:
++          maxItems: 5
++
++        reset-names:
++          maxItems: 5
++
+         interrupts:
+           minItems: 4
  
--	clk_disable_unprepare(vop2->pclk);
--	clk_disable_unprepare(vop2->aclk);
--	clk_disable_unprepare(vop2->hclk);
-+	vop2_core_clks_disable_unprepare(vop2);
- }
+@@ -246,6 +272,12 @@ allOf:
+             - const: pll_hdmiphy0
+             - const: pll_hdmiphy1
  
- static bool vop2_vp_dsp_lut_is_enabled(struct vop2_video_port *vp)
++        resets:
++          minItems: 6
++
++        reset-names:
++          minItems: 6
++
+         interrupts:
+           maxItems: 1
+ 
+@@ -289,9 +321,19 @@ examples:
+                               "dclk_vp0",
+                               "dclk_vp1",
+                               "dclk_vp2";
+-                power-domains = <&power RK3568_PD_VO>;
+-                rockchip,grf = <&grf>;
+                 iommus = <&vop_mmu>;
++                power-domains = <&power RK3568_PD_VO>;
++                resets = <&cru SRST_A_VOP>,
++                         <&cru SRST_H_VOP>,
++                         <&cru SRST_VOP0>,
++                         <&cru SRST_VOP1>,
++                         <&cru SRST_VOP2>;
++                reset-names = "axi",
++                              "ahb",
++                              "dclk_vp0",
++                              "dclk_vp1",
++                              "dclk_vp2";
++                rockchip,grf = <&grf>;
+                 vop_out: ports {
+                     #address-cells = <1>;
+                     #size-cells = <0>;
 
 -- 
 2.55.0
