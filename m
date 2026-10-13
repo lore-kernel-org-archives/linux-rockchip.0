@@ -4,70 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B1CFCC6B12
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 16:21:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67964CC6B0E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 17:29:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=xBiY5HUYECU18Z/GWHQDotVUJlvEOB23VnH7cHE5efA=; b=MsR3G6kUlNO7un
-	L5nG3Cs5NsEX8wf1dak80djJyrIZAtl/3aaEUVIHvKIKZ3O0Q5+vV/xTjdvApntq4xjM0XS9KUMqz
-	k98TdGAO2j8O44uvvr51buxGx0QD/1kEE9+wMMlNJvCoSGkcerhkVbOm2cVAvNieljRm1cQgYUiJE
-	LZOqCfZf3MA4xaU+GH1EjptIbDfnZ3HwvgtSDWhf+IWqj3jwYvAJTCOeAtgrjuN53eedjvltbhzR9
-	vjobIhJyp/QUGsRXeZsq8OyxzI4c48jFjipR9AYUUoQmEgg2eEvXYgV2lWqhRbSt2Gn3VBaNPJ3W2
-	GuLZQi2ffPq9+GtrzKXg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:In-Reply-To:
+	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=StBflLbu4ppWLncsqZ13fiRPIqdOhEherc9PF8b6GE8=; b=Rscjun6vdD1m85
+	twCsgHTpCl04cEytrU8lE6ysB4SjgLhq4xqXRFDQpkLQDKNsSgAuF0pk+iuQjEyqi/JV616DGFJZu
+	D9NItdYhSfyJNH1WhnSsJIQbcoTiCb9rWGiopbRndRCwErVcWPvWmBUpU5+HjK9rBWWjCDAt7wRrl
+	R9QVS6R9/+Y2mMKusk0rBY3lsbLdW7JwgQ4y981zx5TuEV2GWKqzh90+oEVGKk4CZXnMywiw7CxCn
+	rjGjfIQeld1JwHXuol/A+03DYAfnwkD/DlB+EsT+AwlLW3rSBM03jZrQuCipCIjXgVLhMLQRU4WyX
+	gztFtprXHhqQzgfkscTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGfFY-0000000DU52-0rCs;
-	Tue, 13 Oct 2026 16:21:12 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xGgJn-0000000Dgqq-4728;
+	Tue, 13 Oct 2026 17:29:39 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGfFW-0000000DU4M-2Sqa;
-	Tue, 13 Oct 2026 16:21:10 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BC3C143646;
-	Tue, 13 Oct 2026 16:21:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 9DAE5C2BCFA;
-	Tue, 13 Oct 2026 16:21:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1791908468;
-	bh=VNYPdJ4wEtWkT0Y/2fd/VTKgy3YvUbQ0+27HlwKQ/Ro=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=UFJlN+u5qnszwTlR/iaFsYdDmPGqZRjvplKJeCNbKoNdCJ5TIHm5TzC4IbdAuxAjW
-	 cuXw05DFNb29CqrS1jSPSTjD4R/l2Hbk1a1hJgtOOP8ujogMeslUHbdrurXqR8Bbuk
-	 u3pqKI0PvxnobZz3+3XbT7slQg9rvlt483AhAHOLXNG9JKwPwB7mNI0YM3pmmLJudZ
-	 CFeusN9EGEWHANGNx0k7AJD4CovdRr2gP7pRGOQ2iaEED1nCEc/wG4S7eUKTGy0v/9
-	 fBgNpDG3l5QYDLdqzm30vlmIGe/EFZMBVjABckHRQji/7KxUMT6nGanaQQSSomATON
-	 wPT0Zft7AhpbQ==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 88274CC6B12;
-	Tue, 13 Oct 2026 16:21:08 +0000 (UTC)
-From: Johan Jonker via B4 Relay <devnull+jbx6244.gmail.com@kernel.org>
-Date: Tue, 13 Oct 2026 18:20:49 +0200
-Subject: [PATCH v2] ARM: rockchip: smp: enable secondary rk3066a/rk3188
- CPUs
+	id 1xGgJm-0000000DgqV-0uKy;
+	Tue, 13 Oct 2026 17:29:38 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 879CE4128F;
+	Tue, 13 Oct 2026 17:29:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DBC81F000FF;
+	Tue, 13 Oct 2026 17:29:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791912577;
+	bh=P8VEovx8JONIwJgHiq9qjYKdW2rGuYmIo2hI8vH7e/Q=;
+	h=Subject:From:To:Cc:In-Reply-To:References:Date;
+	b=WijAxQMlggVG2Nt+6tHnQK2j2LdbSFh+sb5Ffqf3oG5ynJ3NRMwJNOEP/JRzlc21n
+	 6GhyB62CxLBzrRZH9QlSc+cniYNn1FihFt3ZHKcHAAOkxyeUGlUYvRFXhIKldm4t53
+	 Zh/iyczWTUSXiiFIrVF9cFepA4I3WFsxEVi7OOGo6C+l0pWJRBO+n+8AMFajqjgNXC
+	 ThCt0wvkd6jWY/V1+FhEKO68ZEQY5azCxdIC3Ukao5HzUQMyByu2ujp3vqh4jrd3vs
+	 NXU/GqULDJXpoO2lwsIkppGVph1v1kle4kwaSDoeeUQTBIElzyr3etumR+ZPUwtR90
+	 dtorQJcqXmoIg==
 MIME-Version: 1.0
-Message-Id: <20261013-cpu-v2-v2-1-fe3bbc9edd33@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAGBazmoC/x2NQQqDMBAAvyJ7diGJGGq/Ujwk6abuwVR2qwji3
- xs9DjMwBygJk8KzOUBoY+VvqeDaBtIUyoeQ35XBGeetsR2mZcXNYfRDjtRb/7Ad1DgGJYwSSpq
- ufA76I7nEIpR5vw+v8Tz/JekG5XEAAAA=
-To: Russell King <linux@armlinux.org.uk>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Johan Jonker <jbx6244@gmail.com>
-X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791908467; l=7171;
- i=jbx6244@gmail.com; s=20260824; h=from:subject:message-id;
- bh=TOd8kf5U59z0fbWNbtTzfLXZRq7A+S8BMcAJBPeNlig=;
- b=FIum5UyKRKnfUX7R7ElIVsKMSnUwPji/54UVS1ZPtpJ29ldzfNAHvYJSnat4iF12xUHcV3uHG
- VFyOkHgKt2oDUNdmfvGh8i+Z2FkGLxGkqfU3TiZrnNkPobYB9ocqqGl
-X-Developer-Key: i=jbx6244@gmail.com; a=ed25519;
- pk=MK5Flx1ndjAF0uwXdNm8VvvoghD4KWCNd2hQE8QGyl0=
-X-Endpoint-Received: by B4 Relay for jbx6244@gmail.com/20260824 with
- auth_id=971
-X-Original-From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v6 02/10] PCI: dw-rockchip: Restore vpcie3v3 regulator
+ handle
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Jingoo Han <jingoohan1@gmail.com>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Mark Brown <broonie@kernel.org>, 
+ "Yury Norov (NVIDIA)" <yury.norov@gmail.com>, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Alexey Charkov <alchark@flipper.net>, linux-pci@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+In-Reply-To: <20260908-rockchip-pcie-system-suspend-v6-2-fbabcca9921b@collabora.com>
+References: <20260908-rockchip-pcie-system-suspend-v6-0-fbabcca9921b@collabora.com>
+ <20260908-rockchip-pcie-system-suspend-v6-2-fbabcca9921b@collabora.com>
+Date: Tue, 13 Oct 2026 22:59:20 +0530
+Message-Id: <179191256030.12828.12537293247860204675.b4-reply@b4>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2211; i=mani@kernel.org;
+ h=from:subject:message-id; bh=gX936auQn/4bFr8iOTHvtW8beKIHFNLtLQiaQL514Ag=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBqzmpz29diTcasNkOcChxQ3Mpfp/32IhiCxbGwk
+ xiwMs1fjOmJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCas5qcwAKCRBVnxHm/pHO
+ 9fE9B/90x7NRyqLgmO824AjUzkKW3dwQHQH4pLj5pehJeGcYhuJxrur8hVe2zGul+gCczmJsm2n
+ eQCsgt01NtV5jymJPvG7PfP7okwHyJ/A8pIHm8xJZ8MMCtk7cAm5L+a5e+qTGqub3Mgjk2i/epF
+ orzjNaI/z/tcyWgcEkZyZh6NN85XC8NidZYKfjOgzrYdrFIrvDTNwuCIUJ2dlkyi79fGaJkMBGf
+ IfKlqOYpEEx8bcGAPqnOha6/nXtOPbA/oe+RX06k8aQCpkHheb3huKQsiHyTYVZ6cffXYOb5JyG
+ 1NTbSg/ZZL9LTESgD6AWPZ5bEKnp/DjEjskbqVRc3lZb5kWA
+X-Developer-Key: i=mani@kernel.org; a=openpgp;
+ fpr=C668AEC3C3188E4C611465E7488550E901166008
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,230 +86,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: jbx6244@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Johan Jonker <jbx6244@gmail.com>
+On 2026-09-08 16:51 +0200, Sebastian Reichel wrote:
+> This reverts commit c930b10f17c0 ("PCI: dw-rockchip: Simplify regulator
+> setup with devm_regulator_get_enable_optional()"), which nicely cleaned
+> up the code.
+> 
+> The vpcie3v3 regulator handle is needed to disable the regulator during
+> system suspend (to be added in its own patch).
+> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 23 +++++++++++++++++------
+>  1 file changed, 17 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index dc85564e5001..f67ad3c31c35 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -112,6 +112,7 @@ struct rockchip_pcie {
+>  	unsigned int clk_cnt;
+>  	struct reset_control *rst;
+>  	struct gpio_desc *rst_gpio;
+> +	struct regulator *vpcie3v3;
+>  	struct irq_domain *irq_domain;
+>  	const struct rockchip_pcie_of_data *data;
+>  	bool supports_clkreq;
+> @@ -844,15 +845,22 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  		return ret;
+>  
+>  	/* DON'T MOVE ME: must be enable before PHY init */
+> -	ret = devm_regulator_get_enable_optional(dev, "vpcie3v3");
+> -	if (ret < 0 && ret != -ENODEV)
+> -		return dev_err_probe(dev, ret,
+> -				     "failed to enable vpcie3v3 regulator\n");
+> +	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+> +	if (IS_ERR(rockchip->vpcie3v3)) {
+> +		if (PTR_ERR(rockchip->vpcie3v3) != -ENODEV)
+> +			return dev_err_probe(dev, PTR_ERR(rockchip->vpcie3v3),
+> +					"failed to get vpcie3v3 regulator\n");
+> +		rockchip->vpcie3v3 = NULL;
+> +	} else {
+> +		ret = regulator_enable(rockchip->vpcie3v3);
+> +		if (ret)
+> +			return dev_err_probe(dev, ret,
+> +					     "failed to enable vpcie3v3 regulator\n");
+> +	}
+>  
+>  	ret = rockchip_pcie_phy_init(rockchip);
+>  	if (ret)
+> -		return dev_err_probe(dev, ret,
+> -				     "failed to initialize the phy\n");
+> +		goto disable_regulator;
 
-Early Rockchip SoCs like rk3066a and rk3188 had boot loaders
-that remapped the boot ROM and the internal memory. Currently
-U-boot makes use of a common board file without remapping
-resulting in the secondary CPUs power up hanging in a wait loop.
+Not a deal breaker, but keeping dev_err_probe() here wouldn't hurt.
 
-Make the various boot loader methods work by:
-
-* add code that disables remapping on both rk3066 and rk3188
-* change to use the same boot ROM path for all socs in rockchip_boot_secondary()
-* drop the rockchip_smp_prepare_sram() part
-
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- arch/arm/mach-rockchip/Makefile  |   2 +-
- arch/arm/mach-rockchip/core.h    |  10 ----
- arch/arm/mach-rockchip/headsmp.S |  16 ------
- arch/arm/mach-rockchip/platsmp.c | 105 +++++++++++++++------------------------
- 4 files changed, 42 insertions(+), 91 deletions(-)
-
-diff --git a/arch/arm/mach-rockchip/Makefile b/arch/arm/mach-rockchip/Makefile
-index 62596d5deb88..d05123a7b711 100644
---- a/arch/arm/mach-rockchip/Makefile
-+++ b/arch/arm/mach-rockchip/Makefile
-@@ -3,4 +3,4 @@ CFLAGS_platsmp.o := -march=armv7-a
- 
- obj-$(CONFIG_ARCH_ROCKCHIP) += rockchip.o
- obj-$(CONFIG_PM_SLEEP) += pm.o sleep.o
--obj-$(CONFIG_SMP) += headsmp.o platsmp.o
-+obj-$(CONFIG_SMP) += platsmp.o
-diff --git a/arch/arm/mach-rockchip/core.h b/arch/arm/mach-rockchip/core.h
-deleted file mode 100644
-index fabcaa66607c..000000000000
---- a/arch/arm/mach-rockchip/core.h
-+++ /dev/null
-@@ -1,10 +0,0 @@
--/* SPDX-License-Identifier: GPL-2.0-or-later */
--/*
-- * Copyright (c) 2013 MundoReader S.L.
-- * Author: Heiko Stuebner <heiko@sntech.de>
-- */
--
--extern char rockchip_secondary_trampoline;
--extern char rockchip_secondary_trampoline_end;
--
--extern unsigned long rockchip_boot_fn;
-diff --git a/arch/arm/mach-rockchip/headsmp.S b/arch/arm/mach-rockchip/headsmp.S
-deleted file mode 100644
-index 37a7ea524a16..000000000000
---- a/arch/arm/mach-rockchip/headsmp.S
-+++ /dev/null
-@@ -1,16 +0,0 @@
--/* SPDX-License-Identifier: GPL-2.0-or-later */
--/*
-- * Copyright (c) 2013 MundoReader S.L.
-- * Author: Heiko Stuebner <heiko@sntech.de>
-- */
--#include <linux/linkage.h>
--#include <linux/init.h>
--
--ENTRY(rockchip_secondary_trampoline)
--	ldr	pc, 1f
--ENDPROC(rockchip_secondary_trampoline)
--	.globl	rockchip_boot_fn
--rockchip_boot_fn:
--1:	.space	4
--
--ENTRY(rockchip_secondary_trampoline_end)
-diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-index f659d894bfae..ece17e9cbaca 100644
---- a/arch/arm/mach-rockchip/platsmp.c
-+++ b/arch/arm/mach-rockchip/platsmp.c
-@@ -21,17 +21,21 @@
- #include <asm/smp_plat.h>
- #include <asm/mach/map.h>
- 
--#include "core.h"
--
- static void __iomem *scu_base_addr;
- static void __iomem *sram_base_addr;
- static int ncores;
- 
-+#define RK3066_GRF_SOC_CON0	0x0150
-+#define RK3188_GRF_SOC_CON0	0x00a0
-+
-+#define NOC_REMAP		BIT(12)
-+
- #define PMU_PWRDN_CON		0x08
- #define PMU_PWRDN_ST		0x0c
- 
- #define PMU_PWRDN_SCU		4
- 
-+static struct regmap *grf;
- static struct regmap *pmu;
- static int has_pmu = true;
- static struct reset_control *cpu_rstc[4];
-@@ -133,66 +137,21 @@ static int rockchip_boot_secondary(unsigned int cpu, struct task_struct *idle)
- 	if (ret < 0)
- 		return ret;
- 
--	if (read_cpuid_part() != ARM_CPU_PART_CORTEX_A9) {
--		/*
--		 * We communicate with the bootrom to active the cpus other
--		 * than cpu0, after a blob of initialize code, they will
--		 * stay at wfe state, once they are activated, they will check
--		 * the mailbox:
--		 * sram_base_addr + 4: 0xdeadbeaf
--		 * sram_base_addr + 8: start address for pc
--		 * The cpu0 need to wait the other cpus other than cpu0 entering
--		 * the wfe state.The wait time is affected by many aspects.
--		 * (e.g: cpu frequency, bootrom frequency, sram frequency, ...)
--		 */
--		mdelay(1); /* ensure the cpus other than cpu0 to startup */
--
--		writel(__pa_symbol(secondary_startup), sram_base_addr + 8);
--		writel(0xDEADBEAF, sram_base_addr + 4);
--		dsb_sev();
--	}
--
--	return 0;
--}
--
--/**
-- * rockchip_smp_prepare_sram - populate necessary sram block
-- * Starting cores execute the code residing at the start of the on-chip sram
-- * after power-on. Therefore make sure, this sram region is reserved and
-- * big enough. After this check, copy the trampoline code that directs the
-- * core to the real startup code in ram into the sram-region.
-- * @node: mmio-sram device node
-- */
--static int __init rockchip_smp_prepare_sram(struct device_node *node)
--{
--	unsigned int trampoline_sz = &rockchip_secondary_trampoline_end -
--					    &rockchip_secondary_trampoline;
--	struct resource res;
--	unsigned int rsize;
--	int ret;
--
--	ret = of_address_to_resource(node, 0, &res);
--	if (ret < 0) {
--		pr_err("%s: could not get address for node %pOF\n",
--		       __func__, node);
--		return ret;
--	}
--
--	rsize = resource_size(&res);
--	if (rsize < trampoline_sz) {
--		pr_err("%s: reserved block with size 0x%x is too small for trampoline size 0x%x\n",
--		       __func__, rsize, trampoline_sz);
--		return -EINVAL;
--	}
--
--	/* set the boot function for the sram code */
--	rockchip_boot_fn = __pa_symbol(secondary_startup);
--
--	/* copy the trampoline to sram, that runs during startup of the core */
--	memcpy_toio(sram_base_addr, &rockchip_secondary_trampoline, trampoline_sz);
--	flush_cache_all();
--	outer_clean_range(0, trampoline_sz);
--
-+	/*
-+	* We communicate with the bootrom to active the cpus other
-+	* than cpu0, after a blob of initialize code, they will
-+	* stay at wfe state, once they are activated, they will check
-+	* the mailbox:
-+	* sram_base_addr + 4: 0xdeadbeaf
-+	* sram_base_addr + 8: start address for pc
-+	* The cpu0 need to wait the other cpus other than cpu0 entering
-+	* the wfe state.The wait time is affected by many aspects.
-+	* (e.g: cpu frequency, bootrom frequency, sram frequency, ...)
-+	*/
-+	mdelay(1); /* ensure the cpus other than cpu0 to startup */
-+
-+	writel(__pa_symbol(secondary_startup), sram_base_addr + 8);
-+	writel(0xDEADBEAF, sram_base_addr + 4);
- 	dsb_sev();
- 
- 	return 0;
-@@ -320,9 +279,27 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
- 	for (i = 1; i < ncores; i++)
- 		pmu_set_power_domain(0 + i, false);
- 
-+	/* Make sure that the remap function is disabled */
- 	if (read_cpuid_part() == ARM_CPU_PART_CORTEX_A9) {
--		if (rockchip_smp_prepare_sram(node)) {
--			of_node_put(node);
-+		unsigned int reg;
-+		int ret;
-+
-+		if (of_machine_is_compatible("rockchip,rk3066a")) {
-+			reg = RK3066_GRF_SOC_CON0;
-+			grf = syscon_regmap_lookup_by_compatible("rockchip,rk3066-grf");
-+		} else {
-+			reg = RK3188_GRF_SOC_CON0;
-+			grf = syscon_regmap_lookup_by_compatible("rockchip,rk3188-grf");
-+		}
-+
-+		if (IS_ERR(grf)) {
-+			pr_err("%s: could not find grf dt node\n", __func__);
-+			return;
-+		}
-+
-+		ret = regmap_update_bits(grf, reg, NOC_REMAP, 0);
-+		if (ret < 0) {
-+			pr_err("%s: could not update remap function\n", __func__);
- 			return;
- 		}
- 	}
-
----
-base-commit: 9d80aa4617b32f5054c5aa471d06b66704854935
-change-id: 20261013-cpu-v2-b69fbe516813
-
-Best regards,
--- 
-Johan Jonker <jbx6244@gmail.com>
-
+- Mani
 
 
 _______________________________________________
