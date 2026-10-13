@@ -4,123 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E93B2CA9EC5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 00:03:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E72D0CA9EDE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2026 03:23:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:References:
-	In-Reply-To:Subject:To:From:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=u2ZkMeUeo5LQQvpeQZmm8lYjP5z5PTVIKsbTyRGPmdU=; b=rnW8GBuKvMjW6OJg5YXFy1Nv7I
-	ojS1sKc8qtZ6hd5Fq9bhxDyL3DjtOIW63jDARMJzMe9nFxATGHYZ2ySE8MYplWWQUQ8dxgyFDsivj
-	5Fxkxm/MVEbtgvPqK9LU7XoTOgF6bdSIBSRJyl8bkIQOewbRWJQj+mmM+cIVItPtAJopwB4GujouE
-	cAJ1rm7dF8jUNIoG4Ho8zE74IlgSTnRscDnQ/ZWmaiqbA5Dg3TqF/o2JihYtjAD+n3ppw5Hx9H7rH
-	X9PMOMTpj4ggg/4nmzrUoi8tBcOizOofZgBJ7QsXUCkuD/mcDR02h7+s4yTJ8Wi6e6w4BXGy3OYmy
-	Fl4zofvg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Subject:Date:From:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=oBhM4UYzs7yYkJZMf0slPv2g1XPSoAaHu3oh6d4V8G4=; b=V3DbslzEH9WAUB
+	uAecp6f0b8rrdeCdxVbwN2xoNT6Hi0ZUXp7E+EJtw63j/oD+Z9G8PcJbmBYegFUBN0IvvxH9AEsZ6
+	MNKB9KjbclYLAHdlqSfuoQFbGBugp4sSQaNKEjgX99drjBqHifDW0odvpI7Fk4kSJ6FODOdWmEmjg
+	5nwnqSY5eI897GmQ3A18pH+MXq9B1ZY5Ynss9vrEzDOJYE4bpQUySRF0LicE3nELRKIaBUerKrC8f
+	2SqEH96rjvP1pGkSAAHIAmO3cIxQRFGPjf9msEFl3Xsr9tykoQfHE52DmEwB9ewyfe4hQQ8kJTrbK
+	qdwZdOpKspv2Apz2khlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGPyo-0000000BhB6-3d2d;
-	Tue, 13 Oct 2026 00:02:54 +0000
-Received: from mail-japaneastazon11010057.outbound.protection.outlook.com ([52.101.229.57] helo=TY3P286CU002.outbound.protection.outlook.com)
+	id 1xGT6e-0000000Brm2-49Cu;
+	Tue, 13 Oct 2026 03:23:12 +0000
+Received: from out162-62-57-87.mail.qq.com ([162.62.57.87])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGPyk-0000000BhAE-3bgo;
-	Tue, 13 Oct 2026 00:02:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=rV1ttbA/Ye+3cQEEMo0qFGR+VZiXn2uJ4efKTNY0sta60hCkYUVFjdEMjuP7BigObFdU9lEOk0UpxJGIGPIJrz2qiSsNFuy5rPB1bEAvFIRibNpHdyvhSGIrvEZbJyDufYrZZsGZo1tavfEKRdI2tEF3zUavFG2nuZhxh8YPUEs9R1Dham72rh8+speKc9v3TuAYuvR+8EcTpR6VMF+0mCpfGJmZCWSe+6Alcqe6qaKwSRs+JSGVRpq8uJh7ahGlbVNE9PgqvVDZ2/3lSLNO9+8bB+sPEGagvthljuB2l9BR8VsmuMwgfl6ANlrjrG0lz5C+F0czztRXOyJKuHmZVA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jxgaGAP8pLC+BmI8ukX1jfb5CQ/im84yKraARY1OSWo=;
- b=i72icGRLi/dkoFimUmnTPOaLV1IwSMeMVCtt+lSBQsR52VL+IztFlvN/87aYlD7D50Bn79tMK2B0/exmI8Liy3yDCy8pxSyPQj2vGZfjmmg9KrQq9QfLg+mFgyWjqpJntsCgsfBzZdHVZGFnmH4zQRtAExkpFTqcg0xy/BTZbE1CSFa4BwuFxxQVduVtTNiZmOrRlDakIai1IGqXFwBGMvbm9P0Om6Cuoqt5QFiAIXr2QxlfqhhRidggq3Sll8amzX9LKKf5zCfAy39pxNxsKxBJFegtejMvfepVICh67WS6jdWVI98YxIZe2RncBDx+mGweLTxtYBllBI/ZIWiFsA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=renesas.com; dmarc=pass action=none header.from=renesas.com;
- dkim=pass header.d=renesas.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=renesas.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=jxgaGAP8pLC+BmI8ukX1jfb5CQ/im84yKraARY1OSWo=;
- b=QUeSO+NF6/jDw9ndhS9J1qhcNkezwyUkzBzeqfVOewms5Vy1S4IKQibaQtnDKSvjshgD9kTLzw5KNl83fiNanZfrJSzlIRllnfvu7QYl5stihHTbgrZxWXochJ55gRUS6w96/FJDz5aAo9dV3Iu1y1geyyMs+MSIKTLMc4BDsJ4=
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=renesas.com;
-Received: from OS9PR01MB820914.jpnprd01.prod.outlook.com
- (2603:1096:604:50f::14) by TYCPR01MB11460.jpnprd01.prod.outlook.com
- (2603:1096:400:388::7) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.23; Tue, 13 Oct
- 2026 00:02:35 +0000
-Received: from OS9PR01MB820914.jpnprd01.prod.outlook.com
- ([fe80::12e4:c507:3730:2294]) by OS9PR01MB820914.jpnprd01.prod.outlook.com
- ([fe80::12e4:c507:3730:2294%6]) with mapi id 15.21.0496.021; Tue, 13 Oct 2026
- 00:02:35 +0000
-Message-ID: <87o6cyxyau.wl-kuninori.morimoto.gx@renesas.com>
-From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-To: phucduc.bui@gmail.com
-Subject: Re: [PATCH 21/24] ASoC: renesas: msiof: Fix msiof_close() being skipped on rollback
-In-Reply-To: <20261008103831.542533-22-phucduc.bui@gmail.com>
-References: <20261008103831.542533-1-phucduc.bui@gmail.com>
-	<20261008103831.542533-22-phucduc.bui@gmail.com>
-User-Agent: Wanderlust/2.15.9 Emacs/30.2 Mule/6.0
-Date: Tue, 13 Oct 2026 00:02:33 +0000
-X-ClientProxiedBy: TYCP301CA0082.JPNP301.PROD.OUTLOOK.COM
- (2603:1096:405:7b::20) To OS9PR01MB820914.jpnprd01.prod.outlook.com
- (2603:1096:604:50f::14)
+	id 1xGT6U-0000000BrlR-0wey
+	for linux-rockchip@lists.infradead.org;
+	Tue, 13 Oct 2026 03:23:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1791861765; bh=n5aSjpi38d97JoTIKAE9ofjyp7sKD4gBZolpt7WmoUk=;
+	h=From:Date:Subject:To:Cc;
+	b=ar0ZEqi5vqSzBHq0/26EVxrVXGLCPh/SiR6GiUEY2CZwZXEkJDiFqWNSrsv7/mOON
+	 CmKQuhHcbGHxS8vO95SARwxT7ZGb1c5AthM+1sJG0qS/EwfYPkkr3m1B9ZEEh09SNw
+	 mOmTNBHma/HdhiVdAmy3/9+FTtWaq0eDKDTe7CmQ=
+Received: from ubuntu2204.localdomain ([2409:8d20:7f:35d:9e54:40ff:fe02:3f0f])
+	by newxmesmtplogicsvrsza73-0.qq.com (NewEsmtp) with SMTP
+	id 5AA184C4; Tue, 13 Oct 2026 11:22:42 +0800
+X-QQ-mid: xmsmtpt1791861762takf3foip
+Message-ID: <tencent_5802EE88434010229EDF7A53084D994C6106@qq.com>
+X-QQ-XMAILINFO: MlsYLnHA0UVjWnp7hi0CZSt7AYwx3Dlpux5tMi53y2dxpTPQTxCoE7WziwLp/l
+	 V9WsvrSu2jmFlr2nf/vrfvlmSOWV40/V1Rrx4/INqVH3CQOiTfzHUlJFxh+p7i6/iisSafKzXi8r
+	 6y2LdHMQDvMPS9hN0ujcgVZolio/nkv2HcpQPc7fJpKR7Tq6V506QsoNdj5NXv5gU3TiCMDxjpuE
+	 q74ONYXjm5qLjYrfKFAFLtnMKtVIRoeH5UtApQnoRO2Ky6prnDsU75kTJySU8eZK66IQKfzk7JfG
+	 Yl5Gru/A61Sw6ni8SyHEK8tKDOu7gOenphyWJjvJgyFPlOZYByFsUk603I2yTDetxjlMWE5DlXHO
+	 6XtfClD30Sm9PtN2So7rGf2rjIozhQdXQha9SaawaX8aie91AC+JXKN5afEmRh0IAyfcaUSQqnc9
+	 vEHXCrK6uECPcYNrZADd3gJsbtlHORLRJeSz8Ry+sKIhp9btZ/M/8U8i38YfJYAd1tkns9JeYlFX
+	 3jwmJB9A/+n2dP6Pww/UlniRdD89B2aLgOAI2jaCpRTYAMGW+xS339GHm8lX1rjMKykLi7jLvK6G
+	 RXfWe6NObbXnqhjO5E3G+4IBo2mTJXvxL8PDar9BcmItjd/9v5iaDAIBMjNLvDgB615LPDEDKFOZ
+	 Ts/2Nk8qd9fLs+5saJwqT//VQf8SGQpqfjv+TEreL93dcXAqgFExbu/aMNsYzg2aF1llwfaHo37W
+	 onqV+q8e8W38IlFxgjCxyBB9Miw+DJIc2AmRyyTdQZalfC75HFt9IM1l3dbUYgUHmKZXk2DrumLD
+	 HyeO5aHQqwjKZxhFqnya7NfyGhue6XhdPzWqlXGXhuue9XbDjBJ03L9Tp4gG6FNAeHkgKPNaKcog
+	 kEn2G/EW/KsyDqmgzR+JkWtpY+tdwbSgy1ip+6PHbMKv6BIW9xYkt/C4Uq3YP97z6aSvmLqgqK9z
+	 /88uB08Oly/aPF1ezaC483aolF6iJ4sofO4xaMU36Nhsz1O9NaiLMipOCYepT/d10L8KttsnHfmo
+	 nhVSd9mB4H+S+EDdwAeDH8zW8J5NnoaTPS9OVpMwS90dhlqWR2fPfIYnfDQcCST6pTko38zpOt/6
+	 8qP0WA5jDceBDRcpLPApCT9WK8MHDUE5xRfSdV1uBoOwTG3utYLmSCSs5iBHHp1dUwgwBoONW/Kh
+	 nHDEY=
+X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
+From: Cunhao Lu <1579567540@qq.com>
+Date: Tue, 13 Oct 2026 11:22:37 +0800
+Subject: [PATCH net] can: rockchip_canfd: stop bus-off restart before
+ closing the device
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: OS9PR01MB820914:EE_|TYCPR01MB11460:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6478e393-ee5b-4890-17b6-08df28bd4913
-X-LD-Processed: 53d82571-da19-47e4-9cb4-625a166a4a2a,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|376014|1800799024|52116014|7416014|366016|18002099003|22082099003|10067099003|11063799006|4143699003|261009223027099003|56012099006|38350700014;
-X-Microsoft-Antispam-Message-Info: B6U3afTkf7VLXQKinV3m/9XC8elWhApxBH+FQzvshZe4INQHXDLCl5gxgqNcoA9Msw/YE3kbENXU+LEsdKoofIF56H7qV0nR5zI05gaIWPcGFaDL5MR/VR2I4g5rQP2dZprVME79f849Y9REscwVwAqWoAhgat9GQ8r1iKLNJwWVMDi0oltFZoKq1MaFscgTlk1nZWb5Narvcr35VoZWDnQKWyfXcYPDBEtroEInlyUfHIBpsjKuPhC5IY9GnXFclWBWIcptSGWTWrceYVthuUA0mijs5EKVwC3vHPXcaJYQ5AHESdQdFI40DshLh4jAD7DP8kegJBOgak5Xn6kqAu90f6G2/rmwYOT4yrq49CijemiOlv1Ps1ZmQkSW+veCFot6MXMf6ombY6/23YNk8w98FrrjgTW/MWuZRRoBaJyfp1D+pT2hcWQgcV8PuLonF1KNRKhfLLdphVgYv/OKo0+Ge4GP5HiEEW3nVi8b5lwB73jsGjCesgiRm932Spph8ZFce2Ab20tCruw80z/9gzE9nJI+dJBs69lstHtQNXowtkR9IEedl9H44GSZGFj8sdeb2gssT6IEs4uCcH6U1IL3JGb0i4I2sEc6IPp3G3eVWC1WS/7BvQb70eTWRd2xpVtRGeMM1qgBWSCfJRqFRNNgciMV96vouyxnYEZj94YsrN3CU7CJGbO01z/7K3hKD3nuoi9qTGTCakY3sWhRkj9dsSEfrDSPDlzK/94hP3A=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:OS9PR01MB820914.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(376014)(1800799024)(52116014)(7416014)(366016)(18002099003)(22082099003)(10067099003)(11063799006)(4143699003)(261009223027099003)(56012099006)(38350700014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?2Y0MHFmRQVecE6UWj4+qneyKAKTfupSRmsdcjbsldQpxWBwR8g/Gbmc7Tfun?=
- =?us-ascii?Q?02+Xgy7BowWAcG4EEkiugsbJHHNEDcRjjVrbfWUsXflQCsp0UAh63d/2bOMb?=
- =?us-ascii?Q?wkz1G5i4CR3kmYEVPUOJnesW4jQgaYzzlGUf0Q0zeXfjt9j3IxeUcP0xWwD4?=
- =?us-ascii?Q?/jgwlU2luJDfDcyT3m+U582/5y8P1c7O/FBYLm7eaypblUy0V6jAKHSRvr8j?=
- =?us-ascii?Q?4xVmusNL9nuWNyJhvrQKD8r8hjMUUbK1rYa4hGutmZ5ftEFvJyzf8sFsDbzw?=
- =?us-ascii?Q?reQxmSqsKakR3a9ZA2VQcjy3XLGuRP1rygXZBXcl4btz6Tu0o19/vkIQVA6q?=
- =?us-ascii?Q?INwGLU+VV7SZ+QB9nXmg2Werp0BbDdiDdRsFD68so/jgGL5YUyzpawock0tL?=
- =?us-ascii?Q?o1UW8E6BZw4TP8VxCaxo3eP1SWsd2gxizASb4cuuXlGdFp0AG0UuD1LjxX5R?=
- =?us-ascii?Q?vhJIFpGa+lw95jckCPj5FBU0dA3ndVRj9WJVS+WXPYegOpCrBs+8kkBVv/Ei?=
- =?us-ascii?Q?U8qAc6DR2fgFraMhUKnnhCOGuNGPdb/O07cQSFO666IFz++7XkoYL9ImTVxD?=
- =?us-ascii?Q?lOCkFtt2nm+Yfl6jtTFaDg4FCsM2s/KTByyqPb3D+RG1zghEsjTQ3T8m5Lk5?=
- =?us-ascii?Q?EBJuMVCDf/DhqpuLEXmrcmRQCb0kAC0MH27WXMiIrWeNyAbC08u5maDGPTel?=
- =?us-ascii?Q?g5ZWDKs6TyZSQyTfhVVyESQV6uzGtgaw5sNn5vLGVxGau3urv+a0tS5dovJe?=
- =?us-ascii?Q?Ob66Ac/ct4dVGViS/gTQXl99cce5snc9QbrtMO8/Ctu8P81zSGSnCQLQmoff?=
- =?us-ascii?Q?1n6yNTVQxGeRvarOMH7GZZhthrXWyJxFC6ODn4g9OQ+c45gLlfUUE1QH11AE?=
- =?us-ascii?Q?KHKh2aehY3ALtoZchKX5Tam0q1S6XM4rlOKsVo6Emb9lrHAXmbhvh21QRe7N?=
- =?us-ascii?Q?qZP878bBuO+0x8yIjKebbaDp8V6P/lB0PXvVqGonPS8A7AS9P6tbl0punLUE?=
- =?us-ascii?Q?2Pu+meKMXBFQzdmG9qe9hi0gvITtwgEux2JpOv11sq3DOdvweX/Mfb8PVABC?=
- =?us-ascii?Q?GfpQGMxVGDIubdoEmB0YuBQBQBX1OhnaFp6JDv7QX1ZpEkwKuKnehlNuvqf4?=
- =?us-ascii?Q?0+wH8IdDtGsDVUawvi//fg56C+qtC4Ee+MINcbk7y51XcBhrZDh/2C70cIy2?=
- =?us-ascii?Q?VbU1sjtqs4KiuxhSsP6RWpE566DEf7guGOatHg4gR/W5F9YAUBcU3TlseaGs?=
- =?us-ascii?Q?VXtnkbBPpFc0Okxnsf3KdZuXS0y7I5klfDJhTxfDxR/DSw1RtXOmkTJXYol2?=
- =?us-ascii?Q?17oJ6E9CZxaTqQSXP0dSm84qeqVIHNXV68cCmj1mcilkOXfpQscQyOtpH5q5?=
- =?us-ascii?Q?hCy3vfjl4m8o2bceO4yX3ImLCu6/R0xuSgAvlXsQNrBkRAUkUNmsqFX2FIt2?=
- =?us-ascii?Q?jwOdtogQ/mf19kyXfw4/TxCTm/zrDWYPGnhkCP3gW/DOiDmiByI5lZ1xmAFG?=
- =?us-ascii?Q?8jjjIklLz+8ZU2JcA04Yx6NX+RNXpo5NQXVqo4+27APVc/PDEL8X9o908wJE?=
- =?us-ascii?Q?TGNG84phtWmZM3oRwyHpxiMGPeiwzv2sBye+t5ihCbTnhR88wKlWhTm03hUG?=
- =?us-ascii?Q?BQxl5DbNpMoPJ8Xn26FtjogiZOf7wpOgT2TYJgHvnS5tAsEgPBn6G3OtWyH3?=
- =?us-ascii?Q?MZt2tc/VB/7A4m+Y3b+MQmsJQ+quQEZi7OmV4d8Aj2Hi1O3NdFZLe0EM6OeF?=
- =?us-ascii?Q?sYhwevaKCofcyToBLApqNLv8flc2Jxc=3D?=
-X-OriginatorOrg: renesas.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6478e393-ee5b-4890-17b6-08df28bd4913
-X-MS-Exchange-CrossTenant-AuthSource: OS9PR01MB820914.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Oct 2026 00:02:35.1392
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 53d82571-da19-47e4-9cb4-625a166a4a2a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: xPXbv9+4JIq43tVogX7MCApz4tHDqhyI12nJcIfpeTvwrnUfuP5qGbKcyB4uZ0UcTM4xDazKMtHd6Xzh8jX989H8ZmLhH2qaHyjRVXmgNA1BjHKziYyZq090ZFn2PsfA
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYCPR01MB11460
+X-OQ-MSGID: <20261013-rockchip-canfd-restart-close-v1-1-72cac4f932cf@qq.com>
+X-B4-Tracking: v=1; b=H4sIAPyjzWoC/yXMwQrCMAyA4VcZORtYpxP0VcRDm6YuKu1IOhHG3
+ t2qx/8/fCsYq7DBuVtB+SUmJbdwuw5o8vnGKLE1DP1wdL3boxZ60CQzks8porJVrxXpWYyRQ+T
+ xNB6SCwkaMSsnef/4C2SucP1PW8KdqX5h2LYPhSdx8oUAAAA=
+X-Change-ID: 20261013-rockchip-canfd-restart-close-ebde5954f1bf
+To: Marc Kleine-Budde <mkl@pengutronix.de>, 
+ Vincent Mailhol <mailhol@kernel.org>, 
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
+ Clark Williams <clrkwllms@kernel.org>, Steven Rostedt <rostedt@goodmis.org>
+Cc: linux-can@vger.kernel.org, netdev@vger.kernel.org, 
+ kernel@pengutronix.de, Heiko Stuebner <heiko@sntech.de>, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org, 
+ Cunhao Lu <1579567540@qq.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261012_170250_917687_DABCC070 
-X-CRM114-Status: UNSURE (   8.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261012_202302_826028_A29A5397 
+X-CRM114-Status: GOOD (  22.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,36 +90,185 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: imx@lists.linux.dev, Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Bard Liao <yung-chuan.liao@linux.intel.com>, Xiubo Li <Xiubo.Lee@gmail.com>, Venkata Prasad Potturu <venkataprasad.potturu@amd.com>, Frank Li <Frank.Li@nxp.com>, Cezary Rojewski <cezary.rojewski@intel.com>, Zain Aboobacker <zainaboobacker33@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Bjorn Helgaas <bhelgaas@google.com>, Pengpeng Hou <pengpeng@iscas.ac.cn>, Bo Shen <voice.shen@atmel.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Neo Chang <YLCHANG2@nuvoton.com>, Fabio Estevam <festevam@gmail.com>, Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>, Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, Geert Uytterhoeven <geert+renesas@glider.be>, Chris Bainbridge <chris.bainbridge@gmail.com>, Shengjiu Wang <shengjiu.wang@gmail.com>, Takashi Iwai <tiwai@suse.com>, Magnus Damm <magnus.damm@gmail.com>, Vinod Koul <vkoul@kernel.org>, Kees Cook <kees@kernel.org>, Vijendar Mukunda <Vijendar.Mukunda@amd.com>, povik+lin@cutebit.org, linux-rockchip@lists.infradead.org, Charles Keepax <ckeepax@opensource.cirrus.com>, Ravulapati Vishnu vardhan rao <Vishnuvardhanrao.Ravulapati@amd.com>, Sascha Hauer <s.hauer@pengutronix.de>, Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, linux-sound@vger.kernel.org, Nicolin Chen <nicoleotsuka@gmail.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, Mark Brown <broonie@kernel.org>, wangdicheng <wangdicheng@kylinos.cn>, Syed Saba Kareem <syed.sabakareem@amd.com>, Biju Das <biju.das.jz@bp.renesas.com>, Jaroslav Kysela <perex@perex.cz>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, Sang-Heon Jeon <ekffu200098@gmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Kai Vehmanen <kai.vehmanen@linux.intel.com>, patches@opensource.cirrus.com, Linus Walleij <linusw@kernel.org>, linuxppc-dev@lists.ozlabs.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Md Shofiqul Islam <shofiqtest@gmail.com>, asahi@lists.linux.dev, Pengutronix Kernel Team <kernel@pengutronix.de>, Andrei Simion <andrei.simion@microchip.com>, u.kleine-koenig@baylibre.com, David Rhodes <david.rhodes@cirrus.com>, Hemanth Selam <hemanth.selam@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The close path cancels restart_work after freeing the IRQ and stopping
+hardware. A queued bus-off restart can therefore enable the controller
+and interrupts after teardown. It can also restart timestamp work before
+runtime suspend.
 
-Hi
+Serialize restart with the close transition using a mutex. Mark the
+device closing and mask its interrupts before synchronizing the IRQ.
+Release the mutex before cancelling restart_work, so a queued restart
+can observe the closing state without deadlocking.
 
-> From: bui duc phuc <phucduc.bui@gmail.com>
-> 
-> snd_pcm_hw_constraint_integer() may return 1, which is then returned
-> from msiof_open(). ASoC only marks the component as opened
-> when .open() returns 0, so .close() can be skipped on rollback.
-> 
-> Return 0 explicitly on success.
-> 
-> Fixes: c61caec22820 ("ASoC: renesas: add MSIOF sound support")
-> Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
-> ---
+Exclude the IRQ handler while reinitializing the hardware on restart.
+Do not disable the shared IRQ line while waiting for work to finish.
 
-If so, we would like to have such comment to indicate such background,
-because it is not intuitive for people.
-Otherwise, someone (maybe me :) will return to the original code.
-
-Thank you for your help !!
-
-Best regards
+Fixes: ff60bfbaf67f ("can: rockchip_canfd: add driver for Rockchip CAN-FD controller")
+Cc: stable@vger.kernel.org
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
 ---
-Kuninori Morimoto
+When automatic bus-off recovery is enabled, bringing the interface down
+can race with a pending or running restart. The driver currently relies
+on close_candev() to cancel restart_work, but calls it only after freeing
+the IRQ, disabling RX offload and stopping the controller. A restart in
+that interval can re-enable the controller and its interrupts after IRQ
+teardown, and requeue timestamp work after it has been stopped. That work
+can subsequently access registers after runtime suspend disables the
+controller clocks.
+
+Serialize the restart callback and the close transition with a mutex and
+a closing flag. The close path marks the device as closing and masks its
+interrupts, then synchronizes the IRQ before cancelling restart_work.
+This drains any handler that could still schedule a restart. Cancellation
+runs outside the mutex so that a restart waiting for the lock can observe
+the closing flag and exit. IRQ teardown, RX offload shutdown and the final
+hardware stop follow only after restart work has finished. The shared IRQ
+line is disabled only around hardware reinitialization in the restart
+callback, not while cancelling work in the close path.
+
+The standalone fix was tested on a LubanCat-5IO running a PREEMPT_RT
+kernel. The 1 Mbit/s CAN bus was connected to four CANopen motors
+operating at 100 Hz and four sensors operating at 20 Hz.
+A bitrate mismatch forced bus-off, with automatic restart set to 100 ms;
+25 iterations brought the interface down at delays spanning immediate
+close through 130 ms after bus-off. Every iteration reached bus-off and
+scheduled recovery, with no crashes or kernel traces observed. Automatic
+recovery was also checked with the interface left up, including a 1 s
+restart delay. The reported build completed without warnings.
+---
+ drivers/net/can/rockchip/rockchip_canfd-core.c | 40 +++++++++++++++++++-------
+ drivers/net/can/rockchip/rockchip_canfd.h      |  5 ++++
+ 2 files changed, 35 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
+index 37c1c22c40c9..e38ddd143a3a 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-core.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
+@@ -244,6 +244,8 @@ static void rkcanfd_chip_interrupts_enable(const struct rkcanfd_priv *priv)
+ static void rkcanfd_chip_interrupts_disable(const struct rkcanfd_priv *priv)
+ {
+ 	rkcanfd_write(priv, RKCANFD_REG_INT_MASK, RKCANFD_REG_INT_ALL);
++	/* Flush the mask before synchronizing a shared IRQ. */
++	rkcanfd_read(priv, RKCANFD_REG_INT_MASK);
+ }
+ 
+ static void rkcanfd_chip_fifo_setup(struct rkcanfd_priv *priv)
+@@ -353,19 +355,27 @@ static int rkcanfd_set_mode(struct net_device *ndev,
+ 			    enum can_mode mode)
+ {
+ 	struct rkcanfd_priv *priv = netdev_priv(ndev);
++	int err = 0;
+ 
+-	switch (mode) {
+-	case CAN_MODE_START:
+-		rkcanfd_chip_start(priv);
+-		rkcanfd_chip_interrupts_enable(priv);
+-		netif_wake_queue(ndev);
+-		break;
+-
+-	default:
++	if (mode != CAN_MODE_START)
+ 		return -EOPNOTSUPP;
++
++	mutex_lock(&priv->state_lock);
++	if (READ_ONCE(priv->closing)) {
++		err = -ENETDOWN;
++		goto out_unlock;
+ 	}
+ 
+-	return 0;
++	disable_irq(ndev->irq);
++	rkcanfd_chip_start(priv);
++	rkcanfd_chip_interrupts_enable(priv);
++	enable_irq(ndev->irq);
++	netif_wake_queue(ndev);
++
++out_unlock:
++	mutex_unlock(&priv->state_lock);
++
++	return err;
+ }
+ 
+ static struct sk_buff *
+@@ -666,6 +676,9 @@ static irqreturn_t rkcanfd_irq(int irq, void *dev_id)
+ 	struct rkcanfd_priv *priv = dev_id;
+ 	u32 reg_int_unmasked, reg_int;
+ 
++	if (READ_ONCE(priv->closing))
++		return IRQ_NONE;
++
+ 	reg_int_unmasked = rkcanfd_read(priv, RKCANFD_REG_INT);
+ 	reg_int = reg_int_unmasked & ~priv->reg_int_mask_default;
+ 
+@@ -736,6 +749,7 @@ static int rkcanfd_open(struct net_device *ndev)
+ 	rkcanfd_chip_start(priv);
+ 	can_rx_offload_enable(&priv->offload);
+ 
++	WRITE_ONCE(priv->closing, false);
+ 	err = request_irq(ndev->irq, rkcanfd_irq, IRQF_SHARED, ndev->name, priv);
+ 	if (err)
+ 		goto out_rkcanfd_chip_stop;
+@@ -758,9 +772,14 @@ static int rkcanfd_stop(struct net_device *ndev)
+ {
+ 	struct rkcanfd_priv *priv = netdev_priv(ndev);
+ 
++	mutex_lock(&priv->state_lock);
++	WRITE_ONCE(priv->closing, true);
++	rkcanfd_chip_interrupts_disable(priv);
++	mutex_unlock(&priv->state_lock);
++	synchronize_irq(ndev->irq);
++	cancel_delayed_work_sync(&priv->can.restart_work);
+ 	netif_stop_queue(ndev);
+ 
+-	rkcanfd_chip_interrupts_disable(priv);
+ 	free_irq(ndev->irq, priv);
+ 	can_rx_offload_disable(&priv->offload);
+ 	rkcanfd_chip_stop_sync(priv, CAN_STATE_STOPPED);
+@@ -921,6 +940,7 @@ static int rkcanfd_probe(struct platform_device *pdev)
+ 	priv->can.do_set_mode = rkcanfd_set_mode;
+ 	priv->can.do_get_berr_counter = rkcanfd_get_berr_counter;
+ 	priv->ndev = ndev;
++	mutex_init(&priv->state_lock);
+ 
+ 	match = device_get_match_data(&pdev->dev);
+ 	if (match) {
+diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
+index 95bea9bfd8a2..c81233142a74 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd.h
++++ b/drivers/net/can/rockchip/rockchip_canfd.h
+@@ -12,6 +12,7 @@
+ #include <linux/can/rx-offload.h>
+ #include <linux/clk.h>
+ #include <linux/io.h>
++#include <linux/mutex.h>
+ #include <linux/netdevice.h>
+ #include <linux/reset.h>
+ #include <linux/skbuff.h>
+@@ -478,6 +479,10 @@ struct rkcanfd_priv {
+ 	unsigned int tx_head;
+ 	unsigned int tx_tail;
+ 
++	bool closing;
++	/* Serializes restart with the close transition. */
++	struct mutex state_lock;
++
+ 	u32 reg_mode_default;
+ 	u32 reg_int_mask_default;
+ 	struct rkcanfd_devtype_data devtype_data;
+
+---
+base-commit: 24a19b953e2a3d0ea5a8c4951a0ab8f32720c907
+change-id: 20261013-rockchip-canfd-restart-close-ebde5954f1bf
+
+Best regards,
+--  
+Cunhao Lu <1579567540@qq.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
