@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C44FCC6B30
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1069CC6B31
 	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 16:34:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fwdFnJASHSqw0rBGmxiyHiFb9nX2uU3XqAqIBK06B3I=; b=NH+8y3E+eesKPO
-	acZQZ6AjzlVuFcPMnwWJBQez/4am4SpobqtQkQFyauvmZ0dhtU1FQI+N6gsJl82V+EYtVSh1x/fkC
-	Nki4Lar/qOYBWvxN7CguQU3V4jXe8qF2bGGdO8sdn96LCmvYersZMIxempEZVWUYbF2QNpTkDQR/O
-	/g07S9fzUY4J3l2hmv0Asmm3DHw9SqnpZYoE1daFVcw/+y/puCWgLvhbyJRzMimNBQqTUC98KXjd2
-	cozLYaR+9KMCX6DbiWsZS+PUV+Ket4DJYnuT+uOFa0CUzEqj2vr5+ruEO26KQayTVMxKdStaH2diN
-	MIaXZLGHLQNKLFRG7/WQ==;
+	List-Owner; bh=0c2uajob4uI+uq4/wvFh2xNjKHaCed1etqRnThYT/Q8=; b=A19iMfe7zRjifU
+	7gPLfLmIWTzJBVCfmcmhFe3rrYHF1Dp1cEWtLrFonx7GWQ2ZKjhDP/sLCSdo+MjoCx2Ssh1k5VMkE
+	96Gzkdb1L5v1YfqlS0h6+NClPhYjYQUqy+lX5Umv562gb3DBPrBTYaOk7msg4wV3raEKIRQi4Ed2v
+	IeqViCDUuspFXUTBkkkkWYeJRPpLPr8/4cYgLdQv/ypjKwfTax3qHWGqqMFrrAeQRRZ/bi+O+fPA8
+	0EVfTOYYIUAbXHNSv8EjVTvuEErWD4T0SEYSENmBVDNMdKa3rKbn/vhyHOTaKmNU0AUhAw8h9IWL6
+	oNGRKMYxt/roFJzR3eFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH1wL-0000000FzHh-15bk;
-	Wed, 14 Oct 2026 16:34:53 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xH1wK-0000000FzFI-0efD;
+	Wed, 14 Oct 2026 16:34:52 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH1wF-0000000Fz7W-2Vq2;
+	id 1xH1wF-0000000Fz7C-1yM8;
 	Wed, 14 Oct 2026 16:34:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 224CA44780;
+	by sea.source.kernel.org (Postfix) with ESMTP id 0405A43CCB;
 	Wed, 14 Oct 2026 16:34:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 05E31C2BCFD;
-	Wed, 14 Oct 2026 16:34:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id DB7DAC32781;
+	Wed, 14 Oct 2026 16:34:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1791995687;
-	bh=K8zjjQF5yT+P0g5cD5EJ3sZntjAqtwV3y6uaav5MeLo=;
+	s=k20201202; t=1791995686;
+	bh=KcLH0FxVAapkgL1Wnemj3DDftG9cNXCHkk3pyZsGg28=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=dupVvL7jK0tZTW+Dl5XkC7hQJ2qJe6LwpUX2gbWEjdSLNU5uNfFYIm64q0BcBLsrl
-	 nFzbm2HZCEPkWuiPgdvHAU/bNv8JL+PlXLexvh7jgJyGmUtU4wwjddmRu8zNX0adbf
-	 tCW6pBpGwpeCa41No0aTsMBUP6dnoR/tr5v9ko0SxK1i/ticQkJc3ptIEBJW3NHuo3
-	 4ZACFsCX+DAL4Ujm6eySpFBnpPzgoy6acLjxl/rwuiM6gQrFXFLEtkMJmkNTNY+rKF
-	 WyMw8hfvg4esirRsVtBiAMUAT5/Zj2MdlMcgDxhS3HBCwxguQ+K1nIUfihbh1P+4M5
-	 GygRhV5eXFV7g==
+	b=g7Ay201IC4os8fAnpHozDHFRJqTDFZuIvj16PSbw+OJa7r8AFOq3N2oUt3fnTS4AG
+	 gaTQOuVUVJfiXPXUmHFcikMDJOCfgTI3yHFaRLj3seHw8SuCAGTNFm5QBEDj4yFVgB
+	 75B3CdVr9DQy/e+k48vx69lPSckrlI2EnvRWkE4DDQCKRGyDPIVr4GqHDJ9Wx7f5P1
+	 DLbcnf2NxQLroV5HBcKQZuQ1Mt//j0dIRQfVNo5XU6/3Mc1SfL2wNB64U68dWqENGu
+	 D0cgVCeUH+Z2Ituf0+oZfmgiUtYs84J/149eKRjaML9IRUC9i/UI/MCTUzDOt45/m6
+	 uFpCKKOScd19A==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E98B3CC6B1A;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C84C6CC6B2D;
 	Wed, 14 Oct 2026 16:34:46 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Wed, 14 Oct 2026 18:33:09 +0200
-Subject: [PATCH 9/9] arm64: dts: rockchip: rk3588s-nanopi-m6: rename pcie2
- power rail
+Date: Wed, 14 Oct 2026 18:33:07 +0200
+Subject: [PATCH 7/9] arm64: dts: rockchip: rk3588s-nanopi: rename gmac1
+ reset pin
 MIME-Version: 1.0
-Message-Id: <20261014-nanopi-m6-improvements-v1-9-e713f71eb4d3@gmail.com>
+Message-Id: <20261014-nanopi-m6-improvements-v1-7-e713f71eb4d3@gmail.com>
 References: <20261014-nanopi-m6-improvements-v1-0-e713f71eb4d3@gmail.com>
 In-Reply-To: <20261014-nanopi-m6-improvements-v1-0-e713f71eb4d3@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,11 +58,11 @@ Cc: Diederik de Haas <diederik@cknow-tech.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  Joachim Eastwood <joachim.eastwood@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791995685; l=1347;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1791995685; l=1121;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=sa5+w9akUhc5UnYTeKWIOEz5rjtnoSRpmbzGcB+u7yU=;
- b=S9y6ZtmyOvHQtvQQ3RbtPmpquB7+uHS1JIHD0tDq1fzByb33nuRGpCC0nLBIpHPgHT7gRSFlw
- ZK6IvbFglwhCPJUDKZ/dwkjDGARX5g1LfxqTfkoYkjluFxMTCoAC9ar
+ bh=WtATwbQABKVY4tLFdbXIynQTMB75uVl3gBt3XPQsrKw=;
+ b=y5mvhJ2yoRh9AD4k14R+VjYXo4zI6vfesUROGPLsbB5nNirUtfticeo6qcZRum1dT8Lbf9Cps
+ X1qZH/93LJRCbvzaavWw3KVxuumgRToZ1bZH5cCVH+lRv2lxvB3h+6I
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -87,43 +87,36 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-vcc3v3_pcie matches the signal name in the schematics, which simplifies
+gmac1_rstn matches the signal name in the schematics, which simplifies
 cross-referencing.
 
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
-index ca115d8e108a..dd61c61fe7d7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
-@@ -36,13 +36,13 @@ user_led: led-1 {
- 		};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
+index 56264ff3b409..2789c3d9bcc4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
+@@ -274,7 +274,7 @@ rgmii_phy1: ethernet-phy@1 {
+ 		compatible = "ethernet-phy-id001c.c916";
+ 		reg = <0x1>;
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&rtl8211f_rst>;
++		pinctrl-0 = <&gmac1_rstn>;
+ 		reset-assert-us = <20000>;
+ 		reset-deassert-us = <100000>;
+ 		reset-gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
+@@ -346,7 +346,7 @@ usb_host_pwren: usb-host-pwren { /* usb20_host_pwren on M6 */
  	};
  
--	vcc_3v3_pcie: regulator-vcc-3v3-pcie {
-+	vcc3v3_pcie: regulator-vcc3v3-pcie {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
- 		gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pcie20x1_2_con_pwren>;
--		regulator-name = "vcc_3v3_pcie";
-+		regulator-name = "vcc3v3_pcie";
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
- 		vin-supply = <&vcc5v0_sys>;
-@@ -95,7 +95,7 @@ &pcie2x1l1 { /* M.2 E-key 2230 */
- 
- &pcie2x1l2 { /* M.2 M-key 2280 */
- 	pinctrl-0 = <&pcie20x1_2_perstn_m0>, <&pcie20x1m0_clkreqn>, <&pcie20x1m0_waken>;
--	vpcie3v3-supply = <&vcc_3v3_pcie>;
-+	vpcie3v3-supply = <&vcc3v3_pcie>;
- };
- 
- &pinctrl {
+ 	rtl8211f {
+-		rtl8211f_rst: rtl8211f-rst {
++		gmac1_rstn: gmac1-rstn {
+ 			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
 
 -- 
 2.56.0
