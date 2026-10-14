@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1818ECC6B1D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 02:55:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ACAFCC6B19
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 02:55:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Date:Subject:From:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mETxDHPSLRXpyyfjVtAxdWR1zXXry+48LuuKWkk05Ys=; b=owMilhNzsZbYjZ
-	LzHafxx8drZ5ERVy5xA3E1nkojfk79un3K/HVx1mFwSfpZv7a9nfM2ORqWF6+6wx7WLFMwplr3rdD
-	7GYRBj8Ic4KJhh8miZLJMX7/Dw2s8+5uUFjljZ0tcIEhhLWtqhhUF6u3pGSMFWbN3FnIbRcCkJffD
-	I+7ocxRqzvCaELQwzsgx8utyqssrnMlflmgpPF0/3HZ0UanWRsZbIxjXwOkkuQia/vsVCg23fupzz
-	sGeb9KFqX7sAXeyerFNUi8gSZ9g0NzPRKP2kAQ1vulRbYo7/yuJDbut2iI4a52nc+/5VUkP4N3VwH
-	L87PCwB3pv4/fBJOLm0Q==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=/Q4WAUi11NklR6wP57zydIpYbAVMFP9OmE3m8d/Zix8=; b=v/Qq7ge5D/CQ2XVKYfKbRkerD3
+	DZ+pBMi8w1MEHj80ZHPOOqRIWJJYSDEbCVmMCm0XPxeQ5LSb2rIlRHBb/Peps5PBFx+UIBZYdGob0
+	Huovop8MvfQTfYL6Tn66i90C/biabEhRb6gPDcdiIAS7TCg1yCJaw65+PBPNd76frwcWxvcLoOcDK
+	Fjiad6ECtc+fMpb6xrIM5OaepUb6xvr/MSDQtBB401wA0dPLaXGKRs03m7m17alle/vjE2MsVUPBv
+	OOSXDEXPXcKM1CNT/ZRKWBpwFJijnw6pjrsRrLJ8GsYOuqKQpBNobPLdKeUpAvNDoHYGwW6ZVP/dp
+	7gP+WevA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGp8g-0000000EOga-2nAj;
+	id 1xGp8g-0000000EOhC-3i63;
 	Wed, 14 Oct 2026 02:54:46 +0000
-Received: from out203-205-221-202.mail.qq.com ([203.205.221.202])
+Received: from out203-205-221-149.mail.qq.com ([203.205.221.149])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGp8Z-0000000EOdy-0v4X;
+	id 1xGp8c-0000000EOeR-37N7;
 	Wed, 14 Oct 2026 02:54:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1791946474; bh=b4ozHVcOqt/iZHojtGeuVSx2GbW78Ml/7CqGJpmtouM=;
-	h=From:Subject:Date:To:Cc;
-	b=OuSOOJ2CC8hsla+HQIGLA93Yg2ExXwvhtoL0Ev0zPLwOKV8YdcfeoBK1TPxM9u44D
-	 Wrmdy1Zxa8OZr2RYlOIjBMgOSTF+IvXwn0hrw452MUBhoKeUhq6u0WCMzk9pBQavQk
-	 hNn88Q7/9SucHLOQQJj3iKaTANwwbrGFkRSdGYc4=
+	t=1791946480; bh=rrsBLriRgC1EgL80ODJnHwyIwn1KvUDijJjv6Fz1IwE=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc;
+	b=p4GGPcp9hmNOT7VRCgExfsOA9ZMqsJrZpGMZH8xcy/qFH3949NvkJkyFfWng2XQCT
+	 PIZaIfbUsj/zd+ALJjqi97fb55++CtfpXX3WIlG48VriQ6CDEal1kBI9x5u18TzzSG
+	 FQLKs0saKNdx+oYUHtXzy5WJZZ02VKZj4084u1X0=
 Received: from ubuntu2204.localdomain ([2409:8d20:7f:35d:9e54:40ff:fe02:3f0f])
 	by newxmesmtplogicsvrszc50-0.qq.com (NewEsmtp) with SMTP
 	id D9F194D5; Wed, 14 Oct 2026 10:54:31 +0800
-X-QQ-mid: xmsmtpt1791946471tymorsemr
-Message-ID: <tencent_82C93561D200C84C24608C80049C23EEF80A@qq.com>
-X-QQ-XMAILINFO: NuWMYPidmbsncYYUfCbx+ODYZ/B1/OTdioH5b776hHOjXOZMZC9zLzZ5YqNiNw
-	 XRWM0gmUvZbNHzcwOLcPF+OL0O85cD0Fs/+oU4zYEGrdXGUxPJRpaO3EElFstEiKIp2Jls3iKBfE
-	 ia66a68XGFPZ1lxie5yR4plhLadb+WFaO0pKaz8V3ZpaH7Z/WjfcuGUjLeLlFdbLznsxqFxqUWAx
-	 fzwD4RtCoN9pS05hmBw63ATq6zS/sFjheexFVNydZSqCHl/eTXeNPWrWtE+JCasyORGEREr/W74m
-	 HP2CeyUfYscTuKYiTDE6lrcWG9BoJ1HMO4AF4h5yhUDAsb4S5iejDvM/zB8bqclHemu4drh52c+6
-	 SCzAFUM1Z/m9wLUJfZDPvBAsxHHvmcB+gLSIQXc7F7pn07+jgYcL18OSI4tMFOlAtOKEoaWDO8b1
-	 2M5hAM9GCxElFgjYeNGnyDjNslhYlaazoxFjsH+TWAIM9aiyO4neqXrm0CAePgkU2Uas2Oz0Hra1
-	 x4HeIqjIpDWqzWh+3vPMJHyGYszuLgY38ZH1Cm3+ClTxYn2Gy9N60Hn8iboZoi3/pMYn/dTXwrzA
-	 VlzqU5S2Oz3mhOFk2nDnzWLWQrYJEO/tNWZORY33ToB971ukRe9P+aCGG5JpCF3aii0qe/weDO+t
-	 0xfwikpUrEh/HWn7j2YbdZEG83nmiYOf6f+YLynHCdhlPWptsX/BNyGyIVYrBhSbld/lQC8n7Tyf
-	 lDRw1zKRdZsy5M6YgotQ9N0oDmvptFDVecZeLvLicyTuqlsz+IGr29cRggM3AXRyLh/XRpP2pZN9
-	 1nOUciMeCA7Y5wSb2p+w8jx4oljQjOyX9nDT895oYsOTv/9fhx9vLpySpMNEhmVYnDIEZxM8j/qo
-	 sgtsox/D3BGloq0GWjbFMpQUYL3jLlbA3xX/XBaQ/bBG5K9MNS+jEF4Utc8aibygRuiTsl8REACm
-	 ObI3UWehNkLilUywJHdUbvU85tW3L0T24Pq5YLNOgEh+v+SVkQO0Efs2OcPZLW9L6eu0eSl6R3e/
-	 XpCc7sJsv38SWowzXP4PVx2ASWQ/dbGPfjrQ7kiHo7ZmPxFF84lsJN8zKGjcPHst8wjLYxJRZFIg
-	 jIjIf8naxwz2oWud1Eiem690fHeMS1PzJDwUMxVy/G1diOjze3ZE2E+PIbRzzTSoP0FF4iDXTOzs
-	 STbweT82I06IUhoKAeUA+qXfORR3pNCvWqDqmD9dXKa/RsCrD7FEhh3BPy6agbDf/1GHWvIIuj6v
-	 Xq3zAW95YWgzyM
+X-QQ-mid: xmsmtpt1791946477t7xfc84ol
+Message-ID: <tencent_B15E13184DA04C4382F48848C006A2B51F06@qq.com>
+X-QQ-XMAILINFO: N5UQ4LLbVXWPL282Toa2IMxmL68QeoSL/cfBpJlIlNWoy17a2y+V4vEH9aBaxP
+	 HPVtgjaOhAA+m/x39+UfLBuFCL5F+koTsVOsMiAhGRfLOKOrXoD2bjXUauIykD717W7gyOcn0ToP
+	 svMPzBTaMOxzGte5r9wpjz5VTNc8bR3rP8BR3zG6pBpzmokke0eQSTdQuBY4PPuW41tzu3eex/7K
+	 +q5ElWy3zVjJLlI0+r7NFIsNa40Z5IC+ujcDT0dWqa4X8J/tAhGQ8SH24fBQhQPwP1oHpNal9h84
+	 piau0KUO88uUsA3ac6B+r3iGBEwCwzNVn6JhH0+UYVXajptNex5I70hPPE0A3h6iQdWkaJrFyBc+
+	 uvgWg3JUa+fEk/zq2z7n8bKGy7lqdA2iRfbEjy7X5nEyde9vl1+t0vNzFNHOIz9W4ItPNUNjx5KL
+	 u8PxmV6Z9cslTzq4PRmfIm2oCvTDMBznjMQZI+Pvnzpczi9AZjnhMqJ+ERVfeTSdLAeFJrBXgsjz
+	 K0MpzFxpeCmg5X8zSUYgGTM9k3y73E/7Yo12z8PmWGpYRfjelQ6/5k5CraF+GOdjjQir7v9l/j9z
+	 ZHvzP7bTfow1/FLLavrdp18Uu0PI+5TqaBXzdhJE97nFVv4jWDkpm1azygi8TlEIDUq7BRn9W3uh
+	 wYMp1Y3k0PfQ9D1jeWsg/sFV0FBLyXiKxAl3TgldFWeLzUjIej/N53KeBLJ8nyO69PKgRCQG5w8a
+	 ev4/nrFyHdi8HD9QvbrVlc36QCgC9p32QzIDtmaBVt5K3MSjacuZAmgtjvZ7h/nLQL6P5Tfy2BzM
+	 i1w0ZPEUh1DeeZ52pT8czg0wu1ERu/33zJLLmobo8xnv8Gj2PPJww1pVsnknuhjZIgLHzOaOVKyE
+	 7yTrhxqWFWbYtDk+qWHK6BcMYxxDVDtRfZdhyVjG1W/nNUR36xSR7haR8jOMalPFBq9zFrW81AzR
+	 yGeU/EuQD9oq/ZIa96vfCYJa+rYL67ZTWwlL0J+5afmqtlfGSSMb3RnUzUrKF8ufShkp39yaHIOi
+	 KlnDaxhWnNPcsOYlGTwT5AoRvnrAdsNBud1JPxw+ijbJdFl4l09SQCHkvj1T6ILw7BtD5bFctPXX
+	 UPdxfkVLPRAgwZy+ggrnPMD38Ylki1g/9e16nPgnhcBYHq46qfoM0I6OEL1nF3ERmqbEH39Qs263
+	 xcFHJVwzAUY9IfSmIOuc/6LG7bpS/+FSlfQAk=
 X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
 From: Cunhao Lu <1579567540@qq.com>
-Subject: [PATCH net v2 0/3] can: fix bus-off restart during device close
-Date: Wed, 14 Oct 2026 10:54:21 +0800
-X-OQ-MSGID: <20261014-rockchip-canfd-restart-close-v2-0-c8fbdfad1803@qq.com>
+Date: Wed, 14 Oct 2026 10:54:24 +0800
+Subject: [PATCH net v2 3/3] can: rockchip_canfd: cancel bus-off restart
+ before closing the device
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAN3uzmoC/42OTQ6CMBCFr0Jm7RhaQIMr72FYlOlU6k8LbSUaw
- t0FvIDL9/Lle2+CyMFyhFM2QeDRRuvdEuQuA+qUuzJavWSQuTyIXBQYPN2psz2SckZj4JhUSEg
- PHxm51VzVVWlEa2BR9IGNfW/6CzhO0PzK+GpvTGkVr1hnY/Lhs50YxQb/tzcKFHiUpKg0dSHJn
- IdhT/4JzTzPX7F9js7cAAAA
-X-Change-ID: 20261013-rockchip-canfd-restart-close-ebde5954f1bf
+X-OQ-MSGID: <20261014-rockchip-canfd-restart-close-v2-3-c8fbdfad1803@qq.com>
+References: <20261014-rockchip-canfd-restart-close-v2-0-c8fbdfad1803@qq.com>
+In-Reply-To: <20261014-rockchip-canfd-restart-close-v2-0-c8fbdfad1803@qq.com>
 To: Marc Kleine-Budde <mkl@pengutronix.de>, 
  Vincent Mailhol <mailhol@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
  "David S. Miller" <davem@davemloft.net>, 
@@ -76,8 +74,8 @@ Cc: linux-can@vger.kernel.org, linux-kernel@vger.kernel.org,
  stable@vger.kernel.org, Cunhao Lu <1579567540@qq.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261013_195441_523862_E65183C6 
-X-CRM114-Status: GOOD (  19.85  )
+X-CRM114-CacheID: sfid-20261013_195444_522611_D3C82CD7 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,94 +92,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This work started from a real failure on a production robot using a
-LubanCat-5IO with an RK3588. RX continued, but the TX queue remained
-stopped and subsequent sends returned ENOBUFS. The interface still
-reported ERROR-ACTIVE, and the hardware indicated neither a bus-off
-condition nor a pending TX request.
+The close path cancels restart_work through close_candev() only after
+freeing the IRQ, disabling RX offload and stopping the controller. A
+running restart can re-enable the controller and its interrupts after
+IRQ teardown, or restart timestamp work after it has been stopped and
+before runtime suspend removes the controller clocks.
 
-While testing the echo-loss fix with fault injection, I discovered a
-separate race between bus-off restart and device close. This series fixes
-that race; the fix for the original TX stall will follow separately.
+Call close_candev_cancel_restart_sync() at the start of ndo_stop(), while
+the resources needed by a running restart are still available. The core
+netif_running() check prevents a late restart from entering the driver,
+while this cancellation waits for one that has already passed the check.
+Keep close_candev() after IRQ teardown for the final cancellation and
+echo cleanup, including work queued by an IRQ racing with the first
+cancellation.
 
-When automatic bus-off recovery is enabled, bringing the interface down
-can race with a pending or running restart. The Rockchip driver currently
-relies on close_candev() to cancel restart_work, but calls it only after
-freeing the IRQ, disabling RX offload, and stopping the controller. A
-restart in that interval can re-enable the controller and its interrupts
-after IRQ teardown, and requeue timestamp work after it has been stopped.
-That work can subsequently access registers after runtime suspend
-disables the controller clocks.
+Exclude the IRQ handler while reinitializing hardware in the restart
+callback: the handler continues processing after scheduling recovery,
+and a shared interrupt can also invoke it while this controller's
+interrupts are masked. Keep the shared IRQ enabled while the close path
+waits for restart work to finish.
 
-The networking core clears the running flag before calling ndo_stop().
-The first patch uses that flag to avoid scheduling or starting bus-off
-recovery once the interface is observed to be no longer running. The
-second patch adds close_candev_cancel_restart_sync() so drivers can wait
-for recovery separately from the echo cleanup in close_candev(). The
-third patch uses this helper at the start of the Rockchip close path.
-
-The running-state checks do not replace synchronization with a restart
-that has already passed the check. Rockchip waits for that work before
-tearing down its resources, and keeps close_candev() at the end for the
-final cancellation and echo cleanup. IRQ exclusion during hardware
-reinitialization is retained; the shared IRQ is not disabled while the
-close path waits for restart work.
-
-I tested v2 on a LubanCat-5IO running a PREEMPT_RT kernel, using the same
-setup and procedure as v1. The 1 Mbit/s CAN bus was connected to four
-CANopen motors operating at 100 Hz and four sensors operating at 20 Hz.
-A bitrate mismatch forced bus-off with automatic restart set to 100 ms.
-The v2 campaign completed 380 valid bus-off iterations, covering automatic
-recovery, close while recovery was pending, close near three delay points,
-200 randomized stress iterations, manual recovery, and reopen after close.
-All 380 iterations reached bus-off and scheduled recovery.
-
+Fixes: ff60bfbaf67f ("can: rockchip_canfd: add driver for Rockchip CAN-FD controller")
+Cc: stable@vger.kernel.org
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
 ---
-Changes in v2:
-- Split the series into the common checks, the cancellation helper, and
-  its use in Rockchip.
-- Check netif_running() after the do_set_mode capability check and before
-  the restart notification, echo cleanup, and carrier update.
-- Only queue automatic recovery for a running interface; keep reporting
-  bus-off and make the log message match the scheduling decision.
-- Add close_candev_cancel_restart_sync() in linux/can/dev.h and use it in
-  close_candev() without changing the existing cleanup order.
-- Replace the Rockchip mutex and closing flag with an early call to the
-  helper. Drop the extra close-path IRQ synchronization and mask readback.
-- Retain IRQ exclusion around hardware reinitialization in the restart
-  callback.
-- Link to v1:
-  https://lore.kernel.org/linux-can/tencent_5802EE88434010229EDF7A53084D994C6106@qq.com/
+ drivers/net/can/rockchip/rockchip_canfd-core.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-To: Marc Kleine-Budde <mkl@pengutronix.de>
-To: Vincent Mailhol <mailhol@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-To: "David S. Miller" <davem@davemloft.net>
-To: Wolfgang Grandegger <wg@grandegger.com>
-To: Oliver Hartkopp <socketcan@hartkopp.net>
-To: kernel@pengutronix.de
-Cc: linux-can@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
+index 37c1c22c40c9..fb8f6b067502 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-core.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
+@@ -356,8 +356,10 @@ static int rkcanfd_set_mode(struct net_device *ndev,
+ 
+ 	switch (mode) {
+ 	case CAN_MODE_START:
++		disable_irq(ndev->irq);
+ 		rkcanfd_chip_start(priv);
+ 		rkcanfd_chip_interrupts_enable(priv);
++		enable_irq(ndev->irq);
+ 		netif_wake_queue(ndev);
+ 		break;
+ 
+@@ -758,6 +760,7 @@ static int rkcanfd_stop(struct net_device *ndev)
+ {
+ 	struct rkcanfd_priv *priv = netdev_priv(ndev);
+ 
++	close_candev_cancel_restart_sync(ndev);
+ 	netif_stop_queue(ndev);
+ 
+ 	rkcanfd_chip_interrupts_disable(priv);
 
----
-Cunhao Lu (3):
-      can: dev: prevent bus-off recovery when the interface is not running
-      can: dev: add close_candev_cancel_restart_sync()
-      can: rockchip_canfd: cancel bus-off restart before closing the device
-
- drivers/net/can/dev/dev.c                      | 12 +++++++-----
- drivers/net/can/rockchip/rockchip_canfd-core.c |  3 +++
- include/linux/can/dev.h                        | 12 ++++++++++++
- 3 files changed, 22 insertions(+), 5 deletions(-)
----
-base-commit: 24a19b953e2a3d0ea5a8c4951a0ab8f32720c907
-change-id: 20261013-rockchip-canfd-restart-close-ebde5954f1bf
-
-Best regards,
---  
-Cunhao Lu <1579567540@qq.com>
+-- 
+2.34.1
 
 
 _______________________________________________
