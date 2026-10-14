@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B369CC6B33
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3983CC6B35
 	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 16:34:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g4fc6YC64g1nJr7QFDUnqad0RjTldCQpUlwpW84hCko=; b=fss4b+TqY3e+Ec
-	3tt/2QWNo3YgTXdmoJeqWGPEK4AdUNzufWj8CspgltNsRaxk5hga3QAhnL5mTeyehA8tE2tA7QICX
-	DCT5vrpSabjmIGGCCv/cU56qMxRBYtYGgfZCIPfqPoyH+zZChnVgeZucAMk5bj7WE6SG2Z42fYDTK
-	1GhjMs4Jf22zh4uUcjzKi6JhtwTBrNpKmlqTPY+Uu1vVBPC+mamVYE/qx3RLbEOs/tx/hoyJb/1yV
-	ffV0RWclO3R3z6f+qGRlfmWvgdmMbK3JXbIyXFzp5d29kkP3Kl1BzSjpGEIRjmdrDCs307MJ+nj69
-	BvKgUVxurFQZJxD7AR5w==;
+	List-Owner; bh=m4FcUcPV3aucjtYFcj0N2Om9YtL5KtClfBcMiru0J0A=; b=EJD2+TVjIWpV0j
+	urmeuUATmsqLvGDEA2y4H4BslJy3SVJMY8W94lu8XDet1a1PasW2D5lI7cFAguoruwrDry/nvyQEp
+	X1Ys/CHIlo9G2mea8xF8LD5W4TU3NJm2mtLDyu3hXOj8MrWGKMq6nkS5w9TbABYvxu3KvOOIR9vAR
+	lFkSq3K8OVtFNUWErVp5pSuZanTjrzVM0cCGNX7LaawITmKRZnzI93AGbn+HfRffSMVhrDVtuqrW6
+	ki2PNzymERq98txIaBh9x8Ngz5/qZKl68xDsVj2d73yLU/CaZNtm5FXJUcJY2HLOeg8gnnRYFEJR2
+	mTsSPHaVxxB/2tVSGC4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH1wJ-0000000FzDn-0vHl;
-	Wed, 14 Oct 2026 16:34:51 +0000
+	id 1xH1wL-0000000FzGa-0Xf5;
+	Wed, 14 Oct 2026 16:34:53 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH1wF-0000000Fz73-1MNn;
+	id 1xH1wF-0000000Fz7B-1kDh;
 	Wed, 14 Oct 2026 16:34:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C640343E5E;
+	by sea.source.kernel.org (Postfix) with ESMTP id E80784451D;
 	Wed, 14 Oct 2026 16:34:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A0B5CC2BD04;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id C9B8FC4AF11;
 	Wed, 14 Oct 2026 16:34:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1791995686;
-	bh=CVP/lsh2OMxbAxyrsqtFsBf7NrmFGY3bXfa3uq0o7zE=;
+	bh=DQlqMZ8mkMUn9N8GXl8KrKZD30XKvJbahTg3l+XwR6U=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Olu6vZzz8emS87CbFVEuz5AS8IW4ir9L+xE+oDaUs87vEY5dESWbfTyVX4kATTWfS
-	 zs40MyTl3CNtCliT9NwCBdVA2ILbUPK8pYgIWc1LJh/lYi/SXlL3+UnIot1/oZ+OHl
-	 sUoeZd/x37f3wnrL9mtXR1Oz9IbdTQjd0i7ge1CWZRx6ssxbhdhMwEcMn7OHKV0BEh
-	 H9HyAHIVdH+K+ziXK48aw45a9XoKzq/NUJdTpmhOfuTXrEF+kwN+8sfzNjg94VKuFT
-	 xItiGWH2I40Na5WHnbf3tkh5ywtxX4B4bEipGwMWEeRRxe62JIRSssRlNj8VaACJPt
-	 xMcb2XzVDEepw==
+	b=jdlqOOIKxUz8nWWD4gpzAxhsxiwkZvwBNPjVcO+v8ZUBDVKl8h2gTycEc2woCijzz
+	 rlPKz7iNt0eJ2KZkZJAENH2dO6sF3TyCDYNKGRcsorcZeTtT1fb8idx4b0XjZGG2I1
+	 ElkO+N4VB07YCp/cvktULvp5rZU192n5ayoSNFlicFWirQRYCMi2NfyJjSwbgqOMnj
+	 wGSIEMZ/0cdO/79O83KMslUAkFJqGpHgMATJJ9r8z7SYlFsCmUnTOW8ELdaROUJCHf
+	 /sSvXOc7TTA40E2nFwmos5xY8MHUX3sUc/YoLeqsdENnku19K82ClxqWDsghysamzr
+	 rh9i8HBHT/9rg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D828CC6B2D;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B7139CC6B2E;
 	Wed, 14 Oct 2026 16:34:46 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Wed, 14 Oct 2026 18:33:04 +0200
-Subject: [PATCH 4/9] arm64: dts: rockchip: rk3588s-nanopi: move vcc_3v3_s0
- to nanopi-r6
+Date: Wed, 14 Oct 2026 18:33:06 +0200
+Subject: [PATCH 6/9] arm64: dts: rockchip: rk3588s-nanopi: rename usb host
+ power pin
 MIME-Version: 1.0
-Message-Id: <20261014-nanopi-m6-improvements-v1-4-e713f71eb4d3@gmail.com>
+Message-Id: <20261014-nanopi-m6-improvements-v1-6-e713f71eb4d3@gmail.com>
 References: <20261014-nanopi-m6-improvements-v1-0-e713f71eb4d3@gmail.com>
 In-Reply-To: <20261014-nanopi-m6-improvements-v1-0-e713f71eb4d3@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,11 +58,11 @@ Cc: Diederik de Haas <diederik@cknow-tech.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  Joachim Eastwood <joachim.eastwood@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791995685; l=3028;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1791995685; l=1217;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=LW5ZqnxsOBSTr6UvbPg/uqbC8B0uUFOPy+2nS2Lvnv0=;
- b=xobRsExttICvlp8s0V+6I7q0DL9iq1IbxeHH7rjT7TMHvmLis5EnZc3ilg6J95NCik+ehSEON
- JX9Xmt+uojMBJjXqLVxnJpbUUnyQuzCcsr7RgF8UnCCVM35fbKZA1pi
+ bh=69W1lTAzZdFrwbRG3RydcrBa/M/DJ1hW57t5Lc/1y5A=;
+ b=w57+GkJsIHqACLRjfvRURkDV9sghuLwE/rhvN7ApWzAK69xtm/pBI79RuU2ftW/2qL9ZdLu1V
+ 7X6SWMF54IHBgu5VLcz4EIvIwGS8hBO8V4MSMgC+6JLrn0jc9mleIO2
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -87,96 +87,37 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-This regulator (power switch) is only present on R6 boards, and not M6
-boards. It is regulator-always-on and regulator-boot-on because it's
-controlled by the vcc_1v8_s0 power rail from the PMIC.
-
-On R6 boards it's used by the Ethernet phy, and some VCCIO rails on the
-SoC itself.
+usb_host_pwren matches the signal name in the schematics, which
+simplifies cross-referencing. In M6/M6V2 this pin was renamed to
+usb20_host_pwren.
 
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi |  4 ++++
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi | 14 ++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi    | 11 -----------
- 3 files changed, 18 insertions(+), 11 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
-index 6644d3b72c9c..6205a542cd1a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
-@@ -85,6 +85,10 @@ &i2s0_sdi0
- 	status = "okay";
- };
- 
-+&gmac1 {
-+	phy-supply = <&vcc_3v3_s3>;
-+};
-+
- &pcie2x1l1 { /* M.2 E-key 2230 */
- 	vpcie3v3-supply = <&vdd_mpcie_3v3>;
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-index ac9eebd2b790..b0892a3c633b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-@@ -48,6 +48,16 @@ lan2_led: led-3 {
- 		};
- 	};
- 
-+	vcc_3v3_s0: regulator-vcc-3v3-s0 {
-+		compatible = "regulator-fixed";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-name = "vcc_3v3_s0";
-+		vin-supply = <&vcc_3v3_s3>;
-+	};
-+
- 	vcc5v0_usb_otg0: regulator-vcc5v0-usb-otg0 {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -61,6 +71,10 @@ vcc5v0_usb_otg0: regulator-vcc5v0-usb-otg0 {
- 	};
- };
- 
-+&gmac1 {
-+	phy-supply = <&vcc_3v3_s0>;
-+};
-+
- &pinctrl {
- 	gpio-key {
- 		key1_pin: key1-pin {
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
-index a47677926a59..a99e2e60c5f7 100644
+index 1d37862edb5b..56264ff3b409 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
-@@ -61,16 +61,6 @@ vcc_1v1_nldo_s3: regulator-vcc-1v1-nldo-s3 {
- 		vin-supply = <&vcc5v0_sys>;
+@@ -79,7 +79,7 @@ vcc5v0_host_20: regulator-vcc5v0-host-20 {
+ 		enable-active-high;
+ 		gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&vcc5v0_host20_en>;
++		pinctrl-0 = <&usb_host_pwren>;
+ 		regulator-name = "vcc5v0_host_20";
+ 		regulator-min-microvolt = <5000000>;
+ 		regulator-max-microvolt = <5000000>;
+@@ -340,7 +340,7 @@ sdmmc_pwren: sdmmc-pwren {
  	};
  
--	vcc_3v3_s0: regulator-vcc-3v3-s0 {
--		compatible = "regulator-fixed";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <3300000>;
--		regulator-max-microvolt = <3300000>;
--		regulator-name = "vcc_3v3_s0";
--		vin-supply = <&vcc_3v3_s3>;
--	};
--
- 	vcc_3v3_sd_s0: regulator-vcc-3v3-sd-s0 {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -154,7 +144,6 @@ &gmac1 {
- 	clock_in_out = "output";
- 	phy-handle = <&rgmii_phy1>;
- 	phy-mode = "rgmii-rxid"; /* Vendor provided tx delay value below */
--	phy-supply = <&vcc_3v3_s3>;
- 	pinctrl-0 = <&gmac1_miim
- 		     &gmac1_tx_bus2
- 		     &gmac1_rx_bus2
+ 	usb {
+-		vcc5v0_host20_en: vcc5v0-host20-en {
++		usb_host_pwren: usb-host-pwren { /* usb20_host_pwren on M6 */
+ 			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
 
 -- 
 2.56.0
