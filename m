@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31B8ACC6B24
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 02:55:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9148ECC6B1F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 02:55:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,55 +13,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:Subject:Date:From:Message-ID:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=Pm1K0QnqpYZWGoTAjDJkuevvfdrTD/99odoaYx3Q7dQ=; b=eG/kgZZwOPIdnruY7YlDqZi64P
-	mUNMVvb570Pd6Ex4Dfc1+rpSPUsLJ+BhPPY81w5vGsiQR/Ae0KECRDJKZrZSykGTsxi0Z/6/YXAdz
-	jfb4XpKAkbHD7AempV5Ka8CLCYHMmKhbo3oq4DKV3JO6G6DwUIczBv39VaOmoIa0jGTTAUzcgzGn3
-	ugRV9aCX/9OxRvBM5WJ6c5QPTDYMl2yn8p03M3prN800T4ZGxB4b9v9FmdGp5Z9+X2IEfWZosB3Wm
-	u9ltAniAzQX3CAf8XDtTmjhp/tZSXW+harNIs7Oqj4f2hNjwNgFfW+WCwK8zOgWxM/oBs6h5SOm6y
-	grhk6rmw==;
+	bh=Xq/cTeQg69qYrkT0molPDhc4A4BFidHZXMpV0z87ENw=; b=xw4CpM9F2V/eFMhooxXNSdTOZj
+	4Iw1ajFHtsxHT70yzHxEBsyPKmMLg4/z9eSjEAq+2+mIctkqyKOR8u3miv+4rFAZ9GXYWRtb+B/U8
+	pHXS3ve1SugxaFAhpsswQ1hevn0tMvKjtMdtORghoMtAJzMdl537c7rt3w9wpKzLhKUZkcdOyJoap
+	FOqAYwOqhegH+KpMLML7C50TmxmY5WMWjoDh5IgrNDt2xgQWck98M19gkOCmaJTVUGwRh7lCXQLRp
+	CUve2wFpUUNEWHJmYucqUiGYihz22O0Bbv3FZ3Ta2FB5585oT2xWlxsq/5MAqD8bWDDEiijBtr5JV
+	N3vmeUug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGp8r-0000000EOnA-1rHA;
-	Wed, 14 Oct 2026 02:54:59 +0000
+	id 1xGp8p-0000000EOlA-10tL;
+	Wed, 14 Oct 2026 02:54:55 +0000
 Received: from out162-62-58-216.mail.qq.com ([162.62.58.216])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGp8b-0000000EOe6-2ToR;
-	Wed, 14 Oct 2026 02:54:46 +0000
+	id 1xGp8d-0000000EOeM-0cq0;
+	Wed, 14 Oct 2026 02:54:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1791946476; bh=bkxb/SSvWmoJe26HTtHwdhNk0MSZX0RLO3LLp8B2RzA=;
+	t=1791946478; bh=SlaBJZtNavmX6zCqmUviGf9ic7El5j7ShsoZ2FR8fJQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=KAVCdpnnmDhYevQxOc0Mow5176er9Wiy+bMzWBp5zLm8y4FMP+K4YgyE2cScY7rrZ
-	 940RNd1HTiQWBjWxvGXhwoPUMhXEYsw8y/cDwt3rhyevvFUop4P0IKaf1CbJrh0sNh
-	 yOYDWV0WDNmmYHEZ8SLu9kjarvVc5kFVw/d+5DvQ=
+	b=KNZ5/3MOiDTg+1Mpnm0y3eB4YHNu8lHUe2grCMxXq7sPHxeYU7p3oMOPEodLaGvi4
+	 DC4rneJoy0zwgwYyXz/M3dTyd1lena9zqssATe4bipnnvwROPa7ABehUfTKxiT6X63
+	 oK+FDLNlCr4aASLV5MvR4eKKPvOpOrlGazcNbS9E=
 Received: from ubuntu2204.localdomain ([2409:8d20:7f:35d:9e54:40ff:fe02:3f0f])
 	by newxmesmtplogicsvrszc50-0.qq.com (NewEsmtp) with SMTP
 	id D9F194D5; Wed, 14 Oct 2026 10:54:31 +0800
-X-QQ-mid: xmsmtpt1791946473tjd2h8u74
-Message-ID: <tencent_196A2433801631CD2FA42998465E26316105@qq.com>
-X-QQ-XMAILINFO: OW/hvONf2Ob/Fv5PtXrSHO3o8leLMIOT/zbKLJ/ZSXvI26/6VVSH6VIIkOITCM
-	 wfUEePpEWQfE55IMcuu4zToWE/qxBFV+Yd28b+4uOYxUV3FsXhkwLTxDwlOwhkSREjC7/00ZjFT9
-	 mU+n5XpEbBymlsM24cCMOxLmgdM9F9Lz8O2hb1qSz2uC+D9z4eX6dXX5hRBYqhQZxcGY+AaAfkwx
-	 cIU7oXoGQUEjToTAtiGDEemkD/WzXN5B655eZ/zRSFcE3JvdklQawptKNSpzZ4xZH8dumVC5uEZV
-	 /vgM1kZKGcio8KUVwCNyOfF7awGzxLWD2sPL9UdNkEWDPTT2Aa6lLR480JIrpLBJejEQBjprxucS
-	 kCosNiBBJL4HC7MB07p6YTYsZjBU4hQta/uVefNghRPd1fyPVBiOUAu432RKZ60fPInuDfeUMJAn
-	 YymOtMTgv/Wc//KNi03yt/Bb1UiCZZu2RDQPzupn8yl+2aJja7gCV6ZYy7ce+nDagMnO0eVXVy4X
-	 CRMk549afx7NHo+5uzhyx1qPulU74NSeV9Q41mRYiINKeB38btaalJrl37THto55EKNtqhozGnCg
-	 peFyRhNgXbSEcur/ptLaYvRn5ASdZ8SzfaGYG+OMORvJScx5F62j3dVhe45Yl/v12OPWwEYhoe4O
-	 8cld1rBKNI+gwLCdgdiBVCCsHWwiIPdJT3jZYxAVfapOBcY9zxzhaV7V6+K8HOlP605UiCgIQMsD
-	 v1CWXM7wigTZJ/6MPPXR8oKEkqPQLi0tsaRph7zZtkoxtFoVfhaLoG5aCpzuskc/LUZMQ2xIeXd9
-	 EhoK9RNKIdyY+BiAUGGi0zN1sYdh4yrAQzxShgBRLHrvTNqEQsGH2FFByTT2XnswQ2ugfuD5Moc3
-	 sD4WYgPtSe/elyUpRl4WtS77byUDSuDneNP44JXvZol/7ONKDq9KX+4Y0vcVAws3P41QKSnJP8QQ
-	 BaiuuK4EtN0C0CA8fESZOZgoaSHjuQ6CmDmeY8UaeXHYYH+Dc5vpc9tcM0YG/X0xeXNHQucd/UAC
-	 rEh+83IV8gg3ky/ROx+vAoJdV/3F3nKIBh7iI87fBa8SMJ/pX6gHyvynSQ4LPqQqyQgMuPATZgS/
-	 ZM6MW1Jy9DXa3SBoHLSO4Al5MoucXadTujNY026LxoICMI6CD7/BmuYDEs1FwdTVHU7NnpHSeoNJ
-	 m8iEMHPqpwmNErKw==
-X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
+X-QQ-mid: xmsmtpt1791946475t0lby78zb
+Message-ID: <tencent_1A4427E01591CB0FA02998E6444633016705@qq.com>
+X-QQ-XMAILINFO: MUl6Z5IrFzo7vV377QRRxDj1H2eZN9VpYU5KY/su5UDqE03n4ei5n6d+3zQgSX
+	 /7iiIrkOt8lr0WSb0kxz0k8zN9ipX6D1ZcmhKIe08yoN0W9Bx+6KKggl+nWGljEpNtWzV+AwIXsC
+	 T7mD0CcASAzgl/O3AQ07bdSf0dLgbjcVGQufZHl7bpM/uBZu3RfZonYWOKj5ckyTyrfSZ5Ez2hje
+	 +lNvuJuh7g6WxcZudsaC7yAgKvfUdIM9JDl4Aa/EYZcCtHdJxjdtpBQqN8qJ+ba9vLeXTXBojXIz
+	 MTzz0aAR1XMGMnS8AM6BsPj8DwG+3MnzvE82fyYiMQMIDJn1BTYFKNO02BWo61uodZ3sBkTPgA2V
+	 0WbpH0eK+Qhrb5OnOe0soszLV6fgl28Syz0oPJo9t1wNup6RLYk65OHCspxb851HtYpDLNEb8KKh
+	 uFjKZPv4+StV2vYisu//b2/Pg7oYTphvKWXTF2MPUurwOryg/4znOQT8D/BjsEWAevttzgR0s4S0
+	 Yl4MC228cE+K8STx8Qm2moGfnemeNEEjdPiwPtK/DZZ4dJFBKCQLN5ixmqGLcjfrLmi6Vzgp1ZVc
+	 MVq5Z1I5uQNYFqDLsV3AxR8/qtdb352o4qtNEdVSOnicNxklInpFTBpaHQFWMR/r5jYM5KvMa+Ub
+	 ls+sNHc3t55r4ViP/2B3ZQIbqloOlg5o5nylfRZQtjFyDsqw8lVC5AhraOiBtaNXbz8KosWLEuHE
+	 qRj2NI7AnIWGD8NSR53HDSEfWo7YuPVFsjGBM+Ldrw2Juxtq4+fgyLAd6MkQxHOMuMhdV2/aZ6+X
+	 Zjv72C2z9h0/26VAqVvHXqJ9F1nFOA9JOFceFzSQlXr92IDkHSdPs2RTo59Sw2wKZsqisgKf20oQ
+	 svdPVIQKgb1Nv/6PUvHGCN0V3wOoiyupqRG02G8tcgzTSiq9xQ4xomIN3cX+1vH61WF8j+QL087D
+	 7VVZ0oW1bvGdnb6BZ8qNe5watUbOjWQuEYZ4jJSxWVx5SG6OWAiXgELxmOyi+qlRZX0385POda4i
+	 5GFw4c2GrIhXAKHPTCxg2gb3Oq0yTWMMebyBrPzM4VTN46C2p9ZVZH+M+d6H+5szQfuBgN7WFMnw
+	 OJ6+z2m4VqXdU/ZLL9TexVyO275TzdvVzk+TY+Unh8DbMPX40480spxdVInwu/nrCKEvQLBeIJMk
+	 oPmJpYSUf+8lCcwRTroK7mhumv
+X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
 From: Cunhao Lu <1579567540@qq.com>
-Date: Wed, 14 Oct 2026 10:54:22 +0800
-Subject: [PATCH net v2 1/3] can: dev: prevent bus-off recovery when the
- interface is not running
+Date: Wed, 14 Oct 2026 10:54:23 +0800
+Subject: [PATCH net v2 2/3] can: dev: add
+ close_candev_cancel_restart_sync()
 MIME-Version: 1.0
-X-OQ-MSGID: <20261014-rockchip-canfd-restart-close-v2-1-c8fbdfad1803@qq.com>
+X-OQ-MSGID: <20261014-rockchip-canfd-restart-close-v2-2-c8fbdfad1803@qq.com>
 References: <20261014-rockchip-canfd-restart-close-v2-0-c8fbdfad1803@qq.com>
 In-Reply-To: <20261014-rockchip-canfd-restart-close-v2-0-c8fbdfad1803@qq.com>
 To: Marc Kleine-Budde <mkl@pengutronix.de>, 
@@ -74,8 +74,8 @@ Cc: linux-can@vger.kernel.org, linux-kernel@vger.kernel.org,
  stable@vger.kernel.org, Cunhao Lu <1579567540@qq.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261013_195444_518718_BEF8EE7A 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20261013_195444_520126_CA4CF155 
+X-CRM114-Status: GOOD (  11.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,64 +92,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The networking core clears __LINK_STATE_START before calling ndo_stop(),
-but CAN bus-off recovery neither checks this state before queuing work
-nor before calling the driver's restart callback. Recovery can therefore
-be queued or started after the interface has begun closing, potentially
-re-enabling hardware while the driver is tearing it down.
+Drivers may need to wait for bus-off recovery before tearing down the
+IRQ and hardware resources used by their restart callback. Calling
+close_candev() at that point also flushes echo skbs, which belongs after
+the driver has quiesced the users of those buffers.
 
-Check netif_running() in can_restart() before flushing echo skbs, sending
-the restart notification or enabling the carrier. Keep the existing
-unsupported-operation check first. In can_bus_off(), only schedule
-recovery for a running interface and make the log message reflect that
-decision. Keep reporting bus-off and disabling the carrier.
+Add close_candev_cancel_restart_sync() in linux/can/dev.h so drivers can
+cancel the core restart work separately, without accessing can_priv's
+work item directly. The helper only cancels restart work; callers must
+still stop its producers and call close_candev() for the final cleanup.
 
-These checks do not wait for recovery that has already passed the check,
-nor serialize the check with work submission. Drivers still need to
-cancel restart work before tearing down resources and quiesce its
-producers before their final cleanup.
+Use the helper in close_candev(), preserving its existing cancellation
+and echo cleanup order.
 
-Fixes: 39549eef3587 ("can: CAN Network device driver and Netlink interface")
 Cc: stable@vger.kernel.org
 Signed-off-by: Cunhao Lu <1579567540@qq.com>
 ---
- drivers/net/can/dev/dev.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/net/can/dev/dev.c |  4 +---
+ include/linux/can/dev.h   | 12 ++++++++++++
+ 2 files changed, 13 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/can/dev/dev.c b/drivers/net/can/dev/dev.c
-index 769745e22a3c7..92492c503446e 100644
+index 92492c503446e..52e8c4854ae0d 100644
 --- a/drivers/net/can/dev/dev.c
 +++ b/drivers/net/can/dev/dev.c
-@@ -198,6 +198,9 @@ static int can_restart(struct net_device *dev)
- 	if (!priv->do_set_mode)
- 		return -EOPNOTSUPP;
- 
-+	if (!netif_running(dev))
-+		return -ENETDOWN;
-+
- 	if (netif_carrier_ok(dev))
- 		netdev_err(dev, "Attempt to restart for bus-off recovery, but carrier is OK?\n");
- 
-@@ -264,8 +267,9 @@ int can_restart_now(struct net_device *dev)
- void can_bus_off(struct net_device *dev)
+@@ -534,9 +534,7 @@ EXPORT_SYMBOL_GPL(of_can_transceiver);
+  */
+ void close_candev(struct net_device *dev)
  {
- 	struct can_priv *priv = netdev_priv(dev);
-+	const bool restart = priv->restart_ms && netif_running(dev);
- 
--	if (priv->restart_ms)
-+	if (restart)
- 		netdev_info(dev, "bus-off, scheduling restart in %d ms\n",
- 			    priv->restart_ms);
- 	else
-@@ -273,7 +277,7 @@ void can_bus_off(struct net_device *dev)
- 
- 	netif_carrier_off(dev);
- 
--	if (priv->restart_ms)
-+	if (restart)
- 		schedule_delayed_work(&priv->restart_work,
- 				      msecs_to_jiffies(priv->restart_ms));
+-	struct can_priv *priv = netdev_priv(dev);
+-
+-	cancel_delayed_work_sync(&priv->restart_work);
++	close_candev_cancel_restart_sync(dev);
+ 	can_flush_echo_skb(dev);
  }
+ EXPORT_SYMBOL_GPL(close_candev);
+diff --git a/include/linux/can/dev.h b/include/linux/can/dev.h
+index 6d0710d6f571d..a277d12332f15 100644
+--- a/include/linux/can/dev.h
++++ b/include/linux/can/dev.h
+@@ -22,6 +22,7 @@
+ #include <linux/can/skb.h>
+ #include <linux/ethtool.h>
+ #include <linux/netdevice.h>
++#include <linux/workqueue.h>
+ 
+ /*
+  * CAN mode
+@@ -115,6 +116,17 @@ struct can_priv *safe_candev_priv(struct net_device *dev);
+ 
+ int open_candev(struct net_device *dev);
+ void close_candev(struct net_device *dev);
++
++/* Cancel bus-off restart before tearing down resources used by the restart
++ * callback. The driver must still call close_candev() for the final cleanup.
++ */
++static inline void close_candev_cancel_restart_sync(struct net_device *dev)
++{
++	struct can_priv *priv = netdev_priv(dev);
++
++	cancel_delayed_work_sync(&priv->restart_work);
++}
++
+ void can_set_default_mtu(struct net_device *dev);
+ void can_set_cap_info(struct net_device *dev);
+ int __must_check can_set_static_ctrlmode(struct net_device *dev,
 
 -- 
 2.34.1
