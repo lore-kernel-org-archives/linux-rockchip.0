@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79C32CC6B2C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 08:21:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB2B9CC6B1A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 08:21:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+A5/7/DfAYy4feRLoddATYoR3EjPnwr2cia9r6w0N3w=; b=zuwbLcgcNl9x16
-	y8FXbMesuuLVhH/pNqH712WAhbYJbcozoXX09OnGn+faKGV+6zLmwynQ8ty+7Sp7xOnDrRDbwVam7
-	ghSxjieaKdU6g8cB+8gKvABC40hfIO2zyt9lfuuUD5uZ/W3fhJfMzI+Lh8Tfrl3cKs/A/ifP5sLok
-	a9Shnw+qky9VqmIlV5JZNfH2o1HeXmkkouo188Mg5IQArn8j3pYEwX9Yim6fM6F86reQlTot0oCwr
-	lGlnZSxrWC1R+cer77U1HxW+gm36CCbPk626AwyGPLCX4p4AIxG1Vu3BBHDDvfuMshx7FoZVZntRT
-	GuNB8Xrt1jK0h0vMZGuA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LS0gHKCS6DSd/4HkrgqcYb8rBAF+C7kDbPqXuctJxEc=; b=dOAQBdNoNuMEUv
+	IaZAhIuuYAbwXXcLDeGPTbZPqXRweCjZ+iLpwK9cmvFqwEL15lDMR3X3xASz4Ig0pT1Gh8tYgO369
+	wuvII0nNHOqdWg0cbC+l3EPrsx3MsiWazr94DkBV98jbvNSXzVcm9QdmxdzMz1XSyxq8mMFiFr6C5
+	hC1aFJjlet95Kscig0Wmb880d7GR/qF6bUiuJEkNJ2D3niAMlQKJtLJQoEp96qlf+PdJSMcMrAXc7
+	br4scCELplhfcBcMlEuqBPFAj+R2j7lvraMZEx9wF1EZgm3jjN2KvPLUArZzVkZDLKVLnMb4G2ZkB
+	OKdaR7NiJezAS0MKGRjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGuEr-0000000Eryw-1xgc;
-	Wed, 14 Oct 2026 08:21:29 +0000
+	id 1xGuEx-0000000Es23-3Qiu;
+	Wed, 14 Oct 2026 08:21:35 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGuEp-0000000Erxx-1JqX
+	id 1xGuEw-0000000Es0T-1jay
 	for linux-rockchip@bombadil.infradead.org;
-	Wed, 14 Oct 2026 08:21:27 +0000
+	Wed, 14 Oct 2026 08:21:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=j8YsVbXOdF61Llj8qBDqVp2Fp9mYBbP2iNpUhV0IltE=; b=BHGR45p1/ccBmHHDJmb/aTuEAx
-	BEiBEUWGpCF6EXvchcMx0vtqy1UIC2GqlqTVz6RFuTMBJvKM9jaTHmB64wyAcH/rLjZTvzFlNGQI9
-	hqc25mWhcXl6XGzaJl2up/yXeOzN4luyYn/DoMAgm0LRDYpwGZIhQWniljFBMeqhGaCKsAKts9GFp
-	AbjJBAPICbI7MahWSrGBgANlbNW3rsRqpPexTGKqVSlqAYxwCqSBtHR7qXPgCoudamQGijRWcp6Ij
-	4mY/iiYdJrV7HAvkmNtZ8XbHA3SxJdJ5PpluhBKh0fm7t/p0KYpNvF5fQuEzjitblV4I/ohau8sJP
-	jops1hhA==;
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=yVCZM5zURPRE62cvJS0zNIsVrphYetwj1gaMWhP5efk=; b=nO7oo667DCNt8J1FSGQGyq/tBS
+	AhZaSDVg87S7ei+TyLhZnz8znzRDrqiQzc60ecxBw0KpJq33rhVHbp+vagJIHXoCzQSLi7jQ8BLJ0
+	LYMzykqFy/+FVrzsQ3bi7ZYYEw4IRlO/cH/dnkwbV0Q6cr/4dSWvQbGQE18wymanN0ugg49+8OG66
+	tqTOYpuC2TjyHgg6a9PG30yfF7yOG2HWjyjdoNQpatZkgDPaXT7SgWLdXuyE0fR+qopDkRS3BwFKU
+	GRwC9Ao8tnDN8E4h6v/cEGRWkbbCc/e/mGGBuyp9/l6ShrnH+HEOVOLuAC6IYp+okr1qiIRwupcFz
+	7nfrA9Lw==;
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
 	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xGuEj-0000000GUhv-3Cjf
+	id 1xGuEt-0000000GUip-1ppi
 	for linux-rockchip@lists.infradead.org;
-	Wed, 14 Oct 2026 08:21:26 +0000
-Received: by mail-pg1-x535.google.com with SMTP id 41be03b00d2f7-cc50ad2d650so2891717a12.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 01:21:19 -0700 (PDT)
+	Wed, 14 Oct 2026 08:21:33 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id 41be03b00d2f7-ca766c1c9ccso1314414a12.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 01:21:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1791966078; x=1792570878; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=j8YsVbXOdF61Llj8qBDqVp2Fp9mYBbP2iNpUhV0IltE=;
-        b=lW0gA5aelr4uJmLkDKadaeYXqe7w6QnllFmwPrs/ClpPAR37xe7GdXrSDZ+TvY1sFn
-         Q8xVjo/BFgiB8IPfkZsqJEs5bSMr0j4op70/SmMR++A4L9XmHU4Rd2hOQsMdEDJBWnIs
-         4GlUqfm9q/tovgD6VkUYjG0ryklUd1JCBil8Q=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791966078; x=1792570878;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1791966089; x=1792570889; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=j8YsVbXOdF61Llj8qBDqVp2Fp9mYBbP2iNpUhV0IltE=;
-        b=RDdZV6U1ylkVcH1qusv6qK64BYJruEDQRk3m2OxUTwQnpyxBj79xl5XaY4YrTNs/sH
-         WeICwdM9AxPpXqeEGN3lMIcsqPUrXbrHlnEFWWywANGt5awI+V4v08Rd40QKif9c2py6
-         /1bAIQQt0ncWbZO+GbLNb3INrROtdFFok5OclysNq4ZmYAefgqmSVqoNUEX/XrRonnsa
-         l6j4jsOv/gDyOPw/EqE4H9x0FrEcjrCQXijhXvZA9W19mMCdSzhW7FObZDud0ys2SMWj
-         VH5FFEnaj6+5NdMIHohNFW9GQTseLfHISze7TGAsXQZzcRGgBb4w/3rqHcOUKCwRdZNQ
-         PN1w==
-X-Forwarded-Encrypted: i=1; AKwUvBxuMC85Q82dwDZ34pmZQvOPtG/2w1Bjo8AKHsua1UIMS938keElqS4287tonaGTgdEDOIQj5mI8pkErHFzSeA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIzyvVgCAzYDN1vCMa/dZQQ1BqbazOa2AixY4Kt+LEbwdCXDGlc
-	BuFCbuPQBRQNE7lExx1XUQpSjYk2pTd1TA+Vt5D+z2nMpSK3i6zGTxR59RfsGL8OJA==
-X-Gm-Gg: AYBFou0lSwitMZvEHcJ6bZbCB01SmB5mwrhRcqxyPbNv5iQlJr4ljtA71ZuLVj30jG+
-	4FJt6daI7aorkWSPPoGXq7bqZ7qn9zPe6mqR9JkZ9U0lI1PFOf41VWN7aALYIv3jUia+PnZLB9E
-	Y2jBcU+AAU4gz8Mho1m6mnF0D6oPe1yqtRxqupmyU+h0bxAyYrCg+1+4eA0bIbnwN8ioq1bibGO
-	Eg4Vi3/QUzz3JK5usNzJjQssLrwM9MrAg8S74VG1hqe5ZsNlf0BzY5hW0P1EON3mqOxWCGmHauU
-	1BexJFGfkAkJhTgbVIJaZzuwvTiA76fTZSH0iUmaPlTqUAS1JgLMpKmTrLyuUfPdSISf3TOD4tu
-	Z+bxpvY6+ifvkWKrVUO2xnHegQ+uoz3DFZWH9YATLF0bIsBy+Z3jTjAxvIUCvqyuxGdalt3/NB3
-	w4WHzz4LYhCcIh9XCXt4GK1y60rjtsk138mbV2g1LSca4zK0Pofwj34tQbBwTblBVpvKb3admlp
-	kpvMVjnHONWTu5BK8KqGTJ/iJ56ZVlwLDk3cwFbuEAd38naRt/lXrEpo8aZlncCL7Zd
-X-Received: by 2002:a17:90b:4a45:b0:39d:f247:bab with SMTP id 98e67ed59e1d1-3ab3a2fe791mr12737876a91.6.1791966077891;
-        Wed, 14 Oct 2026 01:21:17 -0700 (PDT)
+        bh=yVCZM5zURPRE62cvJS0zNIsVrphYetwj1gaMWhP5efk=;
+        b=VJPWNbk/pi14CtSWdduvaEexCh6yqwUM5eGhJVf/veCCoxXu2KysLZFu6lW0ddE38c
+         7DNNwpKMWsYSuloeACoyt7hIeQFV5T8JCY3+xpzEnQrEKi6aSDPhgyZZjoYOwZ20EJSu
+         pH8qi9hhoilPHQdePUn93LyKenn8dnR1k093o=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791966089; x=1792570889;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=yVCZM5zURPRE62cvJS0zNIsVrphYetwj1gaMWhP5efk=;
+        b=cPevKdt9kvD0zf0hWrj5M+4X/kglq1ifrLwMbKEXCoVvc5BDaH1OoRXP/v9d+Tcm0F
+         FwXcFRMfdIoIPjJklZRFML7Ln/DUXJHbn+Q1zT6xxi6CKFqIA+jQrrKq5XM3Up/hksFh
+         qTQKVKnP7POv0GbaSy0Tfx+eQkgOAf/tD9WUjnhyZYaelpzwbNFHAHBNP64XHhOjOVwi
+         RxbXeQoHAm/9Eja4z0zAEw77tM3DYKf/GEugKATBxcrbynoaKwSaQi8jmsKmxhAmWT6D
+         oQKwUJQionhgMR1GZ2aKFfQUizz35Is87lxf5Zr3mKxkBa/Uq2nPMFKrPiXBdHBug5Et
+         Wlvg==
+X-Forwarded-Encrypted: i=1; AKwUvBysmD2WrNRWt4WO1xQ/sZ7504XVAe4o4cNdiOypfBaeArHViricJWFF7TUlAjTN+pcihSnWNgGbU4TQx3HhAw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJtIiVMoLu6NSSdIUqB6btTL7GloFpf0oPtyaUH9myD4s2qEwit
+	iBByzSUQG0z2Xo21HuBZPle3DtFpnL1w5FAI7V+y1QfJemtNeblkJ1FnCZr5YKXxkA==
+X-Gm-Gg: AYBFou2bDnh24bqkfdlm5i5pIoikJWhMOSXzL3Y6JNcyVEpi6dAmrYLzXpyTuRxB/pE
+	U6P/vUhQO7iJfANTJRbLOi4zi94EuUnrU6QvlV2cFb+xEmMdb6tOmhWpf0IkDrsRzcowyBBrz/U
+	lEjHUKpNcwEtnCTYxznnRoypyV7E4gx1jG+J94jqhROKLjtu6cn2p14aiX+yTqaDcuVUP8Jmbni
+	UHnWVow343bUyySZqU4iYaViaz68f+YXF4jt+L0n9m8GKgpOsv8lCqO0v5fE9J22g2ft36bpDpW
+	NJmSi3TjgaHhzll1JLonimsGoyA1CelongLBosQ7HYzScwuTY9QIW9jHuvDJXksFfBJ37p7Wz8f
+	8ZBl48zuxumlBxp8fqlbp0EmBw3uzAD2FgMEur9w+2DlkShxYzRcA/0KMrTJ/uFE+g3nZsPETE6
+	28PXZDhQ6NL0DUrwNxUs+F6JBF5xdJRDwaG89bK/X1s9w0fVbMClgFQrjzXlHLs9JEXK0vRlz2a
+	y6vkMIoOrBUhVQEtGprRvvhlrQfzNwd9f0pNNnh1pdoCGYZGT0Deski0Q==
+X-Received: by 2002:a17:90b:2b44:b0:3ac:7842:bd50 with SMTP id 98e67ed59e1d1-3ac7842c19bmr520798a91.15.1791966089278;
+        Wed, 14 Oct 2026 01:21:29 -0700 (PDT)
 Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:203d:7:373a:9eb7:c5ba:7b5c])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3ac5f04e324sm3682141a91.2.2026.10.14.01.21.06
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3ac5f04e324sm3682141a91.2.2026.10.14.01.21.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Oct 2026 01:21:17 -0700 (PDT)
+        Wed, 14 Oct 2026 01:21:28 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Felipe Balbi <balbi@kernel.org>,
@@ -143,14 +144,16 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-riscv@lists.infradead.org,
 	spacemit@lists.linux.dev
-Subject: [PATCH 0/2] dt-bindings: usb: downstream host ports for hcd and dwc3
-Date: Wed, 14 Oct 2026 16:20:34 +0800
-Message-ID: <20261014082037.1774672-1-wenst@chromium.org>
+Subject: [PATCH 1/2] dt-bindings: usb: hcd: Add downstream USB ports
+Date: Wed, 14 Oct 2026 16:20:35 +0800
+Message-ID: <20261014082037.1774672-2-wenst@chromium.org>
 X-Mailer: git-send-email 2.56.0.212.g129ede20d9-goog
+In-Reply-To: <20261014082037.1774672-1-wenst@chromium.org>
+References: <20261014082037.1774672-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261014_092124_291400_EC2F5355 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20261014_092131_698445_C48DA13E 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,59 +170,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Besides hard-wired downstream USB devices, a USB HCD's downstream ports
+can also connect to USB connector nodes via OF graph, just like with a
+USB hub.
 
-Hi folks,
+Allow a "ports" child node and describe the possible downstream port
+nodes. USB downstream port numbers start at 1.
 
-I mentioned to a couple people at LPC that the USB host controller
-bindings were missing downstream port definitions, and that the ones
-used for dwc3 don't align with USB hardware port numbering.
+Also fix up the address portion of hard-wired downstream USB devices to
+match.
 
-The dwc3 discrepancy was originally noticed by Wei [1] and Konrad [2]
-while adapting my M.2 E-key USB support series [3][4] to Qualcomm devices.
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ Documentation/devicetree/bindings/usb/usb-hcd.yaml | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-Here are the binding changes. If you were CC-ed, then you were listed as
-the maintainer of any one of the dwc3 implementations or platforms using
-it. So this change would affect you.
-
-Patch 1 adds the "ports" definitions to the common USB host controller
-binding. This just follows what is used in usb-hub.yaml. Nothing
-special.
-
-Patch 2 "fixes" the port numbering used in the common dwc3 binding. The
-dwc3 includes an XHCI for host mode operation, and its port numbering
-should follow the common usb-hcd.yaml binding. This clashes with the
-existing arbitrary port numbering found in dwc3. I checked all the
-big projects, and it seems that only Linux is using them, and it doesn't
-care about the numbering anyway.
-
-So while the patches looks small, there are actually 26 other dwc3
-implementation bindings that are affected.
-
-And this series currently only has the binding changes. There are
-probably close to 500 dts files that need to be fixed as well. I asked
-LLM to help me fix the arm64 ones already, and it seemed to do a good
-job with some hand holding.
-
-Please have a look. I fully expect there to be a lot of hair pulling.
-
-
-Thanks
-ChenYu
-
-[1] https://lore.kernel.org/all/20260731073306.1895428-1-wei.deng@oss.qualcomm.com/
-[2] https://lore.kernel.org/all/c6526ba0-be08-46c6-a501-1b161939657c@oss.qualcomm.com/
-[3] v6: https://lore.kernel.org/all/20260721065413.2306137-1-wenst@chromium.org/
-[4] v9 (latest): https://lore.kernel.org/all/20260916075745.3549953-1-wenst@chromium.org/
-
-
-Chen-Yu Tsai (2):
-  dt-bindings: usb: hcd: Add downstream USB ports
-  dt-bindings: usb: snps,dwc3: Fix downstream port numbering
-
- .../devicetree/bindings/usb/snps,dwc3-common.yaml      |  4 ++--
- Documentation/devicetree/bindings/usb/usb-hcd.yaml     | 10 +++++++++-
- 2 files changed, 11 insertions(+), 3 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/usb/usb-hcd.yaml b/Documentation/devicetree/bindings/usb/usb-hcd.yaml
+index 45a19d4928af..24df99dfb243 100644
+--- a/Documentation/devicetree/bindings/usb/usb-hcd.yaml
++++ b/Documentation/devicetree/bindings/usb/usb-hcd.yaml
+@@ -29,8 +29,16 @@ properties:
+   "#size-cells":
+     const: 0
+ 
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++    description: The downstream facing USB ports
++
++    patternProperties:
++      "^port@[1-9a-f][0-9a-f]?$":
++        $ref: /schemas/graph.yaml#/properties/port
++
+ patternProperties:
+-  "^.*@[0-9a-f]{1,2}$":
++  "^.*@[1-9a-f][0-9a-f]?$":
+     description: The hard wired USB devices
+     type: object
+     $ref: /schemas/usb/usb-device.yaml
 -- 
 2.56.0.212.g129ede20d9-goog
 
