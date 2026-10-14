@@ -4,152 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB305CC6B27
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 08:28:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEA61CC6B1A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 09:30:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Gf/5/KJ9rTk6CXuKsWE/R7yF8Y89bv/tSasSm8336Yw=; b=OjUoZPJkaP2FWJsR27nShDTJak
-	vBTwyqxAobnpR8aMI+O90MxaACONK/k0Z2ODQH4GkjxipT21QQz0V8/+ZB8WLrJ9tNbxMSr0oJ7es
-	HFtTODWoe7XxMdjix29YKJBue7Ii5rYCMHIJMNcug9jlaOz88+rh9ar/+Hn8vmow2MLLot3IfH1Zz
-	TjD4yxDdltN7YuUTNP27rMFJK7kZAMD0bz8QzCeYkUuUf5WkQUd+pZTOIXisN+ND/vMVvYJT2dTPm
-	RlylpPfxGlsIObumBQcSg1bVVuPb09D2nMks/cD1dLyd/IaPFKbNlnnfYHBbkaP13VqqFpoTMxK7r
-	DcddPqxA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yB7wkCYUyJhioXhnb8j/JZhhzDt8s4pQ9kNCGSPg2bs=; b=2mwgSpA+uka4U4
+	z02m1eCILqGC464OQaaoyWPp//MyR1fC/hL4mxw5wboUifBzUEKxehuCgAeUBmZbpHt1225QTSAsd
+	SxzXmh7XFzb5ql9eTMriv6lPyBP4+DSVTmrSdQGuiQKgg9wAqx7a/0kwmIUWQy81pbgvTzmAW9iUI
+	n6DkhtbK0s7+Ap+vd7HTLrsqa9/AADd5blJuXX0egawnSd+Ksa12fHWUQ+FenRk+0Di6YkubpDYO8
+	2c5gUiFeiAqBXAx71N1nngtWSl7jcm13xHt+cgHFx0Gl5MXIas+Q6sMqLC8yuaj0bTnvoUW3j+98Y
+	nTPwaAqOAebFansnBiKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGuLW-0000000Et0x-0n0j;
-	Wed, 14 Oct 2026 08:28:22 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1xGvJF-0000000F2FJ-0koZ;
+	Wed, 14 Oct 2026 09:30:05 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGuLS-0000000Et04-0Ehl
+	id 1xGvJD-0000000F2E7-1HNJ
+	for linux-rockchip@bombadil.infradead.org;
+	Wed, 14 Oct 2026 09:30:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=pMwu/+dLKz/hELXQ8G9suR4fEQW92masMZdt6u+igOk=; b=LktIfDSIh5E1JJGxkybKpX/vYg
+	EibU00eiMpmOzd+ADSlMqhRcnQHTO5pufOM4Q77v5SNU4YhYBjkph3JBj4Ft0h0Inn/I0ezMoHAML
+	gh4guFvRZ7ptmd4gN0ApFWvsPGAHuRGceLrTaFvUQzo009CTK5FMRFMhbOUqbyNllh+o0xwZBVTrk
+	loLXOhwhQ3DBNYzTqiqasAbrp9cjBgu4LdRTlGv6ZGq+bjO2FC1K1AwFvYrjDFIOhXaN5dKIM4+jK
+	CV0UsxBGgagF6/1xAjcJisCuzzWtlU/NxMGCX3rCMYeLsiqQiybPPaJV4QYHhZ7dhrzsQjkwkrryO
+	SPxPxdcA==;
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
+	id 1xGvJ9-0000000GYta-2Lp6
 	for linux-rockchip@lists.infradead.org;
-	Wed, 14 Oct 2026 08:28:19 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-49fbb2acc90so32629515e9.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 01:28:15 -0700 (PDT)
+	Wed, 14 Oct 2026 09:30:02 +0000
+Received: by mail-yx1-xb12d.google.com with SMTP id 956f58d0204a3-677bc4704cbso3533698d50.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 02:29:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791970197; cv=none;
+        d=google.com; s=arc-20260327;
+        b=YoFgfTT8Ud1e+kNKgN7yzTbNlqnjtkkw+hOgjcn0DnlOkgWIg0FtOYFbt8a990fFlu
+         hEtoAynIk4wSYbBNykPbmiolqIW8ArOSBcxuoeUIaCb3Y+pg2Fa8WpenPOajgFigavNL
+         +n8hOmnvmktGdweuKWE0qITtR7qyz8s3690CnEMgxkb4jSog7m/YjhIQrNWDUWax5Wdd
+         oyz0dcYZpY42FM+Ipgo4If79KYNaPKo7uix2snQ/Qb22pOQGnwrpiITPnNyFd2Dqsrep
+         B1uV/FaUstJmV11gmOHsxHHXa24jmOS8MW26ksLV4sviE69piB665nMK73SjQvucb10o
+         +ZKQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=pMwu/+dLKz/hELXQ8G9suR4fEQW92masMZdt6u+igOk=;
+        fh=AUEJCmvkR8JMIHWzycmIKTwV2BV4il3utuVKBs/iYxE=;
+        b=PRztN21gQuk1Y1q043SJ6T5suqIkzu/I8VhOKO5aSeVlYbBK/TDRKHzq8IBgIu4pbl
+         KCsCidBaeFHvgegtF3RpbN1jbjJUqMOZtxmlmL/k7hVYEKEm3cQhKKThqHmGaXwbOngA
+         ASP5FGFVNCCFHtOhIr0U/TJs0cpTfO5qlF25w+3piXWOO2apZa8BURDsHHmSlWvBjqYA
+         PYVW980mPLB5+fxaDJ3C4JWlKPD/vUe+BmqQ6IVqZ3k2O4j0L4arInGLzwk4UMpizoc2
+         2wr9HzidFjfpNHJeUBhz76duc+oZRVYDCpOPOlkxySK2R70OHlGVu2+LGcH+LFkHDe0W
+         s3Sg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1791966494; x=1792571294; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:organization
-         :autocrypt:content-language:references:cc:to:subject:reply-to:from
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=BEWX0NnWZSM0xUTF33KaixK1TLeuUgRnotvYl3b7sMI=;
-        b=pG1EiSUzVKSzRs4g0NFOZFBr2WtE+LfjdN8cvyvFWLxy06xbH/ucLnL5dS4wboaetl
-         orhdg+mF67SgexRnZS12p11Gplztm30AEbyJEGu3F6xdRzKL5dbRr3qcr2d/qrI8+Vtl
-         CVTYje9twrPG9O7QJiiAHyFOVc2SLAZvp6IPQYKN6E+p8gcG3RtV6yAzXPWj/o87tBNX
-         L5Il+IVJzorbljLWVMjaSo2tWCPCzeLMPYmO2PUZU3H1BbmG7HtmpBqbkbOrSD8ieAwU
-         +A++/FzkFAjatVXwHK3j3vFnx4eiTjPfh9QFurRpIaZHxC3MlrQnLCFTy+kIGrcR0gVY
-         ZrTg==
+        d=chromium.org; s=google; t=1791970197; x=1792574997; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=pMwu/+dLKz/hELXQ8G9suR4fEQW92masMZdt6u+igOk=;
+        b=BauyZDJQiex3D2egMv8EtfCNE63DHZEM/hLAR7pUOS6MSP7mhsHEBxEVouuAhVQ1Sw
+         aQRP5otfRdOLTO8cM+ND+ZMb3hUZi9QmYgaodsFUujqw2K3khUr7QJ+8r9VPZxw4a7Bx
+         5eyI/LKCydXmeaDityX7pughq88FXoZOydEWA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791966494; x=1792571294;
-        h=content-transfer-encoding:content-type:in-reply-to:organization
-         :autocrypt:content-language:references:cc:to:subject:reply-to:from
-         :user-agent:mime-version:date:message-id:x-gm-gg:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=BEWX0NnWZSM0xUTF33KaixK1TLeuUgRnotvYl3b7sMI=;
-        b=AtS/p0mFhuOJzd3C+h//cJ5IaC4PlsLPY31BJiGcxWF0hsrn83MLXGGHm6X9OdndbI
-         mkAwQQBZ0nMHGZ7TKzSToLCZ4PnrF5K/iow/2g/igpaBglbSMLsmiXA/zYl1wqbNoUB0
-         5D7iggVTXTZH0VVDyIbc3ya0vAKWm7u+RdW7txVJboPXvU+ixP52fsuEtVKTihLruxjV
-         mDCUwZspLYaCkY53IG+Ws6jqvrq0cZ41FKHQCBEgX9lz3APO4b94W6wUgA0PIEvJo7F3
-         WLKOms+Do/tbf6IIqOBh58uinYUqCai3l+5gKpvQ180+z4B6x2Y1jxMkgJ9hw+4cNgpD
-         7uTw==
-X-Forwarded-Encrypted: i=1; AKwUvBzbm7nqATdhW89BRuf0sT9AkCzuqwveYQtvtuhEmeTuCs4aVX3gAIzTEtTfXD9s+WyGmmeYCMtkdqMs/YJa6g==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJD7kFFwtoctgw1mi2CoJasygkf7Omek3BZRlO+M3wj2BdmtRr+
-	SB35rGS8b76Yg/nav5Rhn2dyi1+hwbhVAf8bFV11RTLO3YVLPiuaNbGXECBSyFNZ6Sg=
-X-Gm-Gg: AYBFou392O1hXT7rTvn+BeLH14ozigZjxje/Ozl+vJhNTKNY3T+Xk4lX6teC2EgOdiC
-	yhgaEUX5B21MgsKo/1vaUtQNdwWBWExJic3MgQm8Hiqts3KkjQiDa55kKfpSKL0pQNxT6Crsxse
-	DLA61XIDyTDVbwwupkaaBx+4M3DNxhgDcomYp7zCPKjSX6CBRifEarDmvvaiT4ACAoavk5ZpIvF
-	U8dvsBtr2y6VW5209ai15l5iWs7gaDGPJoY+ATdwYi7DGhH4kaPgigEY5h/y6O5JvAa0BErtbN/
-	79k8ne0SQkkVuFNCZkiALj304PC+N8NLm7Oa1zJFrymPCUr+qH+fIch5NWsUlM2nnhtGW9r6XMm
-	+upKBYTGsvHdcsWxEPm64XfSUoccx1O7A3aSv8aDXP0EG5mIcrAN6/yZmKPw3ciVsBzVzkVYfoH
-	6d2dUzQj8CAdooyUYnSrKm8sBMvqJpgr8StRO192UGTMaCl+thEu3cVDPe30G1St4yh5ORTWco7
-	peSHXaPXBynRPRgxdu6yvjfu+TwrH30VEAcXsESO3l8D2O3yc7n2CA=
-X-Received: by 2002:a05:600c:8b04:b0:4a0:1e37:ae41 with SMTP id 5b1f17b1804b1-4a18e4d67edmr291581105e9.24.1791966494135;
-        Wed, 14 Oct 2026 01:28:14 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:106d:1080:ef1f:5ab3:36fa:3ccb? ([2a01:e0a:106d:1080:ef1f:5ab3:36fa:3ccb])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a1b4b8a184sm17182865e9.2.2026.10.14.01.28.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Oct 2026 01:28:13 -0700 (PDT)
-Message-ID: <7020a7a6-332e-4fd0-a659-d82eb768614c@linaro.org>
-Date: Wed, 14 Oct 2026 10:28:11 +0200
+        d=1e100.net; s=20260707; t=1791970197; x=1792574997;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=pMwu/+dLKz/hELXQ8G9suR4fEQW92masMZdt6u+igOk=;
+        b=0sM+BpCcTf2PXcpBozRfl+9IuURrhomZ3Nq5Bk56BcMPANva7COvy/51MjkauJJXUU
+         JiNc9YJw7OwtwN7T+U8MnbSqAHAWqVaArPjAlpTyIiB9lcpGS3wBDV0nP4i/Vs3BEItI
+         Y2VoA3ZxMlUexz0z0pyM8A+0QfXtffeFEe0CS/8OyGF0+kye9hL0CCjWnX78YojsweqD
+         BKSoi5tFHx006+A9r6gx2/PltvZZsfu2L+nqxsjIi2z2C2fAnqvpOzC1FCMoOJB4PL2f
+         4qkJVuAV0EUYNNHD27VPLMa8eoGA/3CMU9Aet61/gHjdwmPc1GxhUFU24cd0p317dEXw
+         XlPg==
+X-Forwarded-Encrypted: i=1; AKwUvByVVIkMx0Z56b04PfBkzEt0c8QvnsnunJRnJ7Q6zwUbT5bU5LHN6YTIJnAY/Yyvekg2W5Zdv0vmr89jYoBq5A==@lists.infradead.org
+X-Gm-Message-State: AFq9FYI3fcgYDjNyKKQ23pBeebXVY4jQb/WsqTD5/PRcqAXty0L4iPQL
+	bOh3SQoRJY/yfJiLuUo9K6LtcuaP9Ezu9f/dbgSN5z5cifhbxIzCaTjJqpmHPbPVqYaS5pHngRK
+	o9q9NzttCT00gRR92qqfrB7ByyRQ11FikFv/ub0XP
+X-Gm-Gg: AYBFou0ZnC5SXZZiHFhh6KF/tdmjDREwTzc6nk2rWlOmr95g5tAGFWF51t8OC4EY7E+
+	aCA61AwZuJn4KDN+l1Lz9zUIBfjAb0sdMolCaPRo/cM1bH+Oh7T6j5EuLFIZLjKG5yjIHqiFGmt
+	+Krhg0GlcK1KLs6HHUyOwV/rPD3uaLJfBFlX+ycOs3LFzTglhnTOBp0+yGW+NzkDPR4H+TNV44h
+	erUVC84wj5uwJFQC9rDfVC/hQ8ZbDIhqU/1315ZZYkqXBuounMpCZM2xtxeIvrqFcwU/SJbEiRL
+	hoOjQaZIV4Gt30ISBb62NIUGReLTcWUmKbmZSlwskuyb8plaSn3cTC7pEFa4ZwvPXOQ=
+X-Received: by 2002:a05:690e:1094:10b0:677:d106:6f97 with SMTP id
+ 956f58d0204a3-679363475c0mr3180487d50.152.1791970197053; Wed, 14 Oct 2026
+ 02:29:57 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Neil Armstrong <neil.armstrong@linaro.org>
-Subject: Re: [PATCH 2/2] dt-bindings: usb: snps,dwc3: Fix downstream port
- numbering
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Felipe Balbi <balbi@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
- Neal Gompa <neal@gompa.dev>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Ryan Chen <ryan_chen@aspeedtech.com>, Billy Tsai
- <billy_tsai@aspeedtech.com>, Michal Simek <michal.simek@amd.com>,
- Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Peter Griffin
- <peter.griffin@linaro.org>, =?UTF-8?Q?Andr=C3=A9_Draszik?=
- <andre.draszik@linaro.org>, Tudor Ambarus <tudor.ambarus@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Alim Akhtar <alim.akhtar@samsung.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, Yixun Lan <dlan@kernel.org>,
- Troy Mitchell <troy.mitchell@linux.spacemit.com>,
- Minda Chen <minda.chen@starfivetech.com>,
- Shyam Pandey <radhey.shyam.pandey@amd.com>,
- Wei Yang <yangwei1@eswincomputing.com>,
- Senchuan Zhang <zhangsenchuan@eswincomputing.com>,
- Hang Cao <caohang@eswincomputing.com>, Li Jun <jun.li@nxp.com>,
- Peng Fan <peng.fan@nxp.com>, Roy Luo <royluo@google.com>,
- Yang Xiwen <forbidden405@foxmail.com>,
- Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>,
- Robert Marko <robert.marko@sartura.hr>, Xu Yang <xu.yang_2@nxp.com>,
- Wesley Cheng <quic_wcheng@quicinc.com>,
- Stanley Chang <stanley_chang@realtek.com>, Ze Huang <huang.ze@linux.dev>,
- Aswath Govindraju <a-govindraju@ti.com>, Roger Quadros <rogerq@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
- linux-aspeed@lists.ozlabs.org, imx@lists.linux.dev,
- linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
- spacemit@lists.linux.dev
-References: <20261014082037.1774672-1-wenst@chromium.org>
- <20261014082037.1774672-3-wenst@chromium.org>
-Content-Language: en-US, fr
-Autocrypt: addr=neil.armstrong@linaro.org; keydata=
- xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
- GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
- BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
- qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
- 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
- AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
- OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
- Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
- YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
- GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
- UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
- GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
- yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
- QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
- SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
- 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
- Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
- oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
- M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
- 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
- KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
- 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
- QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
-Organization: Linaro
-In-Reply-To: <20261014082037.1774672-3-wenst@chromium.org>
+References: <20261014082037.1774672-1-wenst@chromium.org> <20261014082037.1774672-3-wenst@chromium.org>
+ <7020a7a6-332e-4fd0-a659-d82eb768614c@linaro.org>
+In-Reply-To: <7020a7a6-332e-4fd0-a659-d82eb768614c@linaro.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 14 Oct 2026 18:29:46 +0900
+X-Gm-Features: AclHuK9N2qPZVqRIKj3AC2e-RNgLBJ_oiV-FNmg6s8RgvBJGg_msVeXPasEPdno
+Message-ID: <CAGXv+5G1kgyumbj7wGf6rPFbg3spSO0zYmEkn-hZT4qUdJbytA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] dt-bindings: usb: snps,dwc3: Fix downstream port numbering
+To: Neil Armstrong <neil.armstrong@linaro.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <balbi@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Sven Peter <sven@kernel.org>, 
+	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>, Joel Stanley <joel@jms.id.au>, 
+	Andrew Jeffery <andrew@codeconstruct.com.au>, Ryan Chen <ryan_chen@aspeedtech.com>, 
+	Billy Tsai <billy_tsai@aspeedtech.com>, Michal Simek <michal.simek@amd.com>, 
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Peter Griffin <peter.griffin@linaro.org>, =?UTF-8?Q?Andr=C3=A9_Draszik?= <andre.draszik@linaro.org>, 
+	Tudor Ambarus <tudor.ambarus@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, Yixun Lan <dlan@kernel.org>, 
+	Troy Mitchell <troy.mitchell@linux.spacemit.com>, Minda Chen <minda.chen@starfivetech.com>, 
+	Shyam Pandey <radhey.shyam.pandey@amd.com>, Wei Yang <yangwei1@eswincomputing.com>, 
+	Senchuan Zhang <zhangsenchuan@eswincomputing.com>, Hang Cao <caohang@eswincomputing.com>, 
+	Li Jun <jun.li@nxp.com>, Peng Fan <peng.fan@nxp.com>, Roy Luo <royluo@google.com>, 
+	Yang Xiwen <forbidden405@foxmail.com>, 
+	Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>, 
+	Robert Marko <robert.marko@sartura.hr>, Xu Yang <xu.yang_2@nxp.com>, 
+	Wesley Cheng <quic_wcheng@quicinc.com>, Stanley Chang <stanley_chang@realtek.com>, 
+	Ze Huang <huang.ze@linux.dev>, Aswath Govindraju <a-govindraju@ti.com>, 
+	Roger Quadros <rogerq@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	asahi@lists.linux.dev, linux-aspeed@lists.ozlabs.org, imx@lists.linux.dev, 
+	linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, 
+	spacemit@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261014_012818_150012_A683FC04 
-X-CRM114-Status: GOOD (  23.29  )
+X-CRM114-CacheID: sfid-20261014_103000_203824_30BCCDCA 
+X-CRM114-Status: GOOD (  35.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -161,82 +152,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: Neil Armstrong <neil.armstrong@linaro.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/14/26 10:20, Chen-Yu Tsai wrote:
-> The DWC3 controller can operate in host mode. It does so with a XHCI
-> compliant host controller. The XHCI has two downstream ports, one for
-> HS and one for SS. USB downstream ports start from 1, not 0.
-
-Is there something in index 0 we will need to define at some point ?
-
-Using 0 as base for numbering in DT isn't incompatible with the USB
-spec using base 1 for numbering,
-
-> 
-> Reconcile the downstream port numbering with the common USB host
-> binding, renumbering the downstream port numbers from 0 and 1 to
-> 1 and 2.
-> 
-> This is non-backwards compatible, however it won't break current
-> major implementations:
-> 
-> - dwc3 "gadget mode" in Linux kernel only requires a connection to be
->    present; it doesn't matter which port it is
->    - dwc3 "host mode" OF graph connections aren't supported yet [1]
-> - FreeBSD doesn't use the OF graph for anything
-> - U-boot doesn't use the OF graph for USB
-> - OpenBSD doesn't support dwc3, only the XHCI in dwc3, and doesn't use
->    the OF graph for USB
-> - coreboot doesn't use the OF graph for anything
-> - Zephyr doesn't support dwc3
-> - TF-A doesn't use the OF graph for anything
-> - EDK2 doesn't support dwc3 and doesn't support OF graph
-> - OP-TEE doesn't support dwc3 and doesn't support OF graph
-> 
-> [1] WIP to tie OF graph port node to USB port device
-> 
-> Fixes: a33113f73693 ("dt-bindings: usb: snps,dwc3: document HS & SS OF graph ports")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
-> It is unclear to me whether the HS/SS numbering is fixed for all dwc3
-> variants. I checked Allwinner H616 and Rockchip RK3588 and they both
-> have HS as port 1 and SS as port 2.
-> 
-> This also doesn't cover a potential "multi-port" DWC3 implementation,
-> which Qualcomm seems to have.
-
-It breaks the current Qualcomm numbering on numerous boards.
-
-> ---
->   Documentation/devicetree/bindings/usb/snps,dwc3-common.yaml | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/usb/snps,dwc3-common.yaml b/Documentation/devicetree/bindings/usb/snps,dwc3-common.yaml
-> index 6c0b8b653824..4b6304bd2ec1 100644
-> --- a/Documentation/devicetree/bindings/usb/snps,dwc3-common.yaml
-> +++ b/Documentation/devicetree/bindings/usb/snps,dwc3-common.yaml
-> @@ -410,11 +410,11 @@ properties:
->         property is used.
->   
->       properties:
-> -      port@0:
-> +      port@1:
->           $ref: /schemas/graph.yaml#/properties/port
->           description: High Speed (HS) data bus.
->   
-> -      port@1:
-> +      port@2:
->           $ref: /schemas/graph.yaml#/properties/port
->           description: Super Speed (SS) data bus.
->   
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBPY3QgMTQsIDIwMjYgYXQgNToyOOKAr1BNIE5laWwgQXJtc3Ryb25nCjxuZWlsLmFy
+bXN0cm9uZ0BsaW5hcm8ub3JnPiB3cm90ZToKPgo+IE9uIDEwLzE0LzI2IDEwOjIwLCBDaGVuLVl1
+IFRzYWkgd3JvdGU6Cj4gPiBUaGUgRFdDMyBjb250cm9sbGVyIGNhbiBvcGVyYXRlIGluIGhvc3Qg
+bW9kZS4gSXQgZG9lcyBzbyB3aXRoIGEgWEhDSQo+ID4gY29tcGxpYW50IGhvc3QgY29udHJvbGxl
+ci4gVGhlIFhIQ0kgaGFzIHR3byBkb3duc3RyZWFtIHBvcnRzLCBvbmUgZm9yCj4gPiBIUyBhbmQg
+b25lIGZvciBTUy4gVVNCIGRvd25zdHJlYW0gcG9ydHMgc3RhcnQgZnJvbSAxLCBub3QgMC4KPgo+
+IElzIHRoZXJlIHNvbWV0aGluZyBpbiBpbmRleCAwIHdlIHdpbGwgbmVlZCB0byBkZWZpbmUgYXQg
+c29tZSBwb2ludCA/CgpPbiB0aGUgaG9zdCBzaWRlLCBuby4gRG93bnN0cmVhbSBwb3J0cyBzdGFy
+dCBhdCAxLgoKT24gdGhlIGRldmljZSBtb2RlIHNpZGUsIEkgYmVsaWV2ZSB0aGUgbnVtYmVycyBh
+cmUgY29tcGxldGVseSBtYWRlIHVwLgoKPiBVc2luZyAwIGFzIGJhc2UgZm9yIG51bWJlcmluZyBp
+biBEVCBpc24ndCBpbmNvbXBhdGlibGUgd2l0aCB0aGUgVVNCCj4gc3BlYyB1c2luZyBiYXNlIDEg
+Zm9yIG51bWJlcmluZywKCkJ1dCB5b3UgZW5kIHVwIHdpdGggZGl2ZXJnaW5nIG51bWJlcmluZyBz
+Y2hlbWVzLCBhbmQgaXQgZGl2ZXJnZXMKZnJvbSBvdGhlciBVU0IgY29udHJvbGxlcnMsIHBhcnRp
+Y3VsYXJseSBYSENJLCB3aGljaCBEV0MzIGVtYmVkcy4KCkFuZCBpdCBhbHNvIGRpZmZlcnMgZnJv
+bSB0aGUgbnVtYmVyaW5nIGN1cnJlbnRseSB1c2VkIGZvciBkaXJlY3RseQpjb25uZWN0ZWQgb25i
+b2FyZCBkZXZpY2VzIChsaWtlIGh1YnMpLCB3aGljaCB1c2Ugb3IgZXhwZWN0IHRoZSBVU0IKbnVt
+YmVyaW5nIHNjaGVtZS4KClN1cmUgd2UgY2FuIG1ha2UgRFdDMyAic3BlY2lhbCIsIGRyb3AgaW5j
+bHVzaW9uIG9mIHVzYi1oY2QueWFtbCwKYW5kIGR1cGxpY2F0ZSB0aGUgc2VjdGlvbiBmb3Igb25i
+b2FyZCBkZXZpY2VzLiBPbiBMaW51eCwgd2UgY2FuCmFkZCBzb21lIG1vcmUgY29kZSB0byB4aGNp
+X2ZpbmRfcmF3X3BvcnRfbnVtYmVyKCkgdG8gbWFrZSBhbgpleGNlcHRpb24gZm9yIERXQzMgY29u
+dHJvbGxlcnMuCgpBbHNvLCB1c2Jfb2ZfZ2V0X2Nvbm5lY3RfdHlwZSgpIGlzIGFscmVhZHkgYnJv
+a2VuIGZvciBEV0MzIGJhc2VkCmNvbnRyb2xsZXJzIHRoYXQgb25seSBkZXNjcmliZSB0aGUgSFMg
+Y29ubmVjdGlvbiBidXQgbm90IHRoZSBTUwpjb25uZWN0aW9uLiB1c2Jfb2ZfZ2V0X2Nvbm5lY3Rf
+dHlwZSgpIGN1cnJlbnRseSBkb2Vzbid0IGNhbGwKdXNiX2hjZF9maW5kX3Jhd19wb3J0X251bWJl
+cigpIHNvIGJvdGggSFMgYW5kIFNTIGdldCBtYXBwZWQgdG8gcG9ydCAxLAp3aGljaCB3b3VsZG4n
+dCBiZSBpbiB0aGUgRFQgc2luY2UgSFMgaXMgY3VycmVudGx5IHBvcnRAMC4gQnV0IGV2ZW4gaWYK
+aXQgZGlkLCBTUyB3b3VsZCBnZXQgbWFwcGVkIHRvIHBvcnQgMiBhbnl3YXkuCgoKSU1ITyBoYXZp
+bmcgY29uc2lzdGVudCBudW1iZXJpbmcgYWNyb3NzIGNvbnRyb2xsZXIgdHlwZXMgd291bGQgYmUK
+YmV0dGVyLiBUaGlzIGF2b2lkcyBtYWtpbmcgdGhlIFVTQiBjb3JlIGFuZCBodWIgY29kZSBkZWFs
+IHdpdGggbW9yZQpleGNlcHRpb25zLCBhbmQgYWxzbyBlYXNpZXIgdG8gdW5kZXJzdGFuZCBhbmQg
+d3JpdGUgZGV2aWNlIHRyZWVzLgoKPiA+IFJlY29uY2lsZSB0aGUgZG93bnN0cmVhbSBwb3J0IG51
+bWJlcmluZyB3aXRoIHRoZSBjb21tb24gVVNCIGhvc3QKPiA+IGJpbmRpbmcsIHJlbnVtYmVyaW5n
+IHRoZSBkb3duc3RyZWFtIHBvcnQgbnVtYmVycyBmcm9tIDAgYW5kIDEgdG8KPiA+IDEgYW5kIDIu
+Cj4gPgo+ID4gVGhpcyBpcyBub24tYmFja3dhcmRzIGNvbXBhdGlibGUsIGhvd2V2ZXIgaXQgd29u
+J3QgYnJlYWsgY3VycmVudAo+ID4gbWFqb3IgaW1wbGVtZW50YXRpb25zOgo+ID4KPiA+IC0gZHdj
+MyAiZ2FkZ2V0IG1vZGUiIGluIExpbnV4IGtlcm5lbCBvbmx5IHJlcXVpcmVzIGEgY29ubmVjdGlv
+biB0byBiZQo+ID4gICAgcHJlc2VudDsgaXQgZG9lc24ndCBtYXR0ZXIgd2hpY2ggcG9ydCBpdCBp
+cwo+ID4gICAgLSBkd2MzICJob3N0IG1vZGUiIE9GIGdyYXBoIGNvbm5lY3Rpb25zIGFyZW4ndCBz
+dXBwb3J0ZWQgeWV0IFsxXQo+ID4gLSBGcmVlQlNEIGRvZXNuJ3QgdXNlIHRoZSBPRiBncmFwaCBm
+b3IgYW55dGhpbmcKPiA+IC0gVS1ib290IGRvZXNuJ3QgdXNlIHRoZSBPRiBncmFwaCBmb3IgVVNC
+Cj4gPiAtIE9wZW5CU0QgZG9lc24ndCBzdXBwb3J0IGR3YzMsIG9ubHkgdGhlIFhIQ0kgaW4gZHdj
+MywgYW5kIGRvZXNuJ3QgdXNlCj4gPiAgICB0aGUgT0YgZ3JhcGggZm9yIFVTQgo+ID4gLSBjb3Jl
+Ym9vdCBkb2Vzbid0IHVzZSB0aGUgT0YgZ3JhcGggZm9yIGFueXRoaW5nCj4gPiAtIFplcGh5ciBk
+b2Vzbid0IHN1cHBvcnQgZHdjMwo+ID4gLSBURi1BIGRvZXNuJ3QgdXNlIHRoZSBPRiBncmFwaCBm
+b3IgYW55dGhpbmcKPiA+IC0gRURLMiBkb2Vzbid0IHN1cHBvcnQgZHdjMyBhbmQgZG9lc24ndCBz
+dXBwb3J0IE9GIGdyYXBoCj4gPiAtIE9QLVRFRSBkb2Vzbid0IHN1cHBvcnQgZHdjMyBhbmQgZG9l
+c24ndCBzdXBwb3J0IE9GIGdyYXBoCj4gPgo+ID4gWzFdIFdJUCB0byB0aWUgT0YgZ3JhcGggcG9y
+dCBub2RlIHRvIFVTQiBwb3J0IGRldmljZQo+ID4KPiA+IEZpeGVzOiBhMzMxMTNmNzM2OTMgKCJk
+dC1iaW5kaW5nczogdXNiOiBzbnBzLGR3YzM6IGRvY3VtZW50IEhTICYgU1MgT0YgZ3JhcGggcG9y
+dHMiKQo+ID4gU2lnbmVkLW9mZi1ieTogQ2hlbi1ZdSBUc2FpIDx3ZW5zdEBjaHJvbWl1bS5vcmc+
+Cj4gPiAtLS0KPiA+IEl0IGlzIHVuY2xlYXIgdG8gbWUgd2hldGhlciB0aGUgSFMvU1MgbnVtYmVy
+aW5nIGlzIGZpeGVkIGZvciBhbGwgZHdjMwo+ID4gdmFyaWFudHMuIEkgY2hlY2tlZCBBbGx3aW5u
+ZXIgSDYxNiBhbmQgUm9ja2NoaXAgUkszNTg4IGFuZCB0aGV5IGJvdGgKPiA+IGhhdmUgSFMgYXMg
+cG9ydCAxIGFuZCBTUyBhcyBwb3J0IDIuCj4gPgo+ID4gVGhpcyBhbHNvIGRvZXNuJ3QgY292ZXIg
+YSBwb3RlbnRpYWwgIm11bHRpLXBvcnQiIERXQzMgaW1wbGVtZW50YXRpb24sCj4gPiB3aGljaCBR
+dWFsY29tbSBzZWVtcyB0byBoYXZlLgo+Cj4gSXQgYnJlYWtzIHRoZSBjdXJyZW50IFF1YWxjb21t
+IG51bWJlcmluZyBvbiBudW1lcm91cyBib2FyZHMuCgpZZXMuIEl0IGJyZWFrcyBfZXZlcnlvbmVf
+IHVzaW5nIHRoZSBjdXJyZW50IG51bWJlcmluZyBpbiB0aGUgc2Vuc2UgdGhhdAp0aGV5IGFyZSBu
+byBsb25nZXIgdmFsaWQsIGJ1dCBzaG91bGQgbm90IGFmZmVjdCBhY3R1YWwgdXNhZ2UuCgpUaGlz
+IGNvbW1lbnQgcmVmZXJzIHRvICJtdWx0aXBvcnQiIGNvbnRyb2xsZXJzIGZyb20gUXVhbGNvbW0g
+WzFdLCB3aGljaAp3b3VsZCBoYXZlIHBvcnRzIGJleW9uZCAxIGFuZCAyLgoKWzFdIGh0dHBzOi8v
+bG9yZS5rZXJuZWwub3JnL2FsbC8yMDI0MDQyMDA0NDkwMS44ODQwOTgtOC1xdWljX2tyaXNrdXJh
+QHF1aWNpbmMuY29tLwoKCj4gPiAtLS0KPiA+ICAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL3VzYi9zbnBzLGR3YzMtY29tbW9uLnlhbWwgfCA0ICsrLS0KPiA+ICAgMSBmaWxlIGNo
+YW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0
+IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9zbnBzLGR3YzMtY29tbW9u
+LnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdXNiL3NucHMsZHdjMy1j
+b21tb24ueWFtbAo+ID4gaW5kZXggNmMwYjhiNjUzODI0Li40YjYzMDRiZDJlYzEgMTAwNjQ0Cj4g
+PiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdXNiL3NucHMsZHdjMy1j
+b21tb24ueWFtbAo+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Vz
+Yi9zbnBzLGR3YzMtY29tbW9uLnlhbWwKPiA+IEBAIC00MTAsMTEgKzQxMCwxMSBAQCBwcm9wZXJ0
+aWVzOgo+ID4gICAgICAgICBwcm9wZXJ0eSBpcyB1c2VkLgo+ID4KPiA+ICAgICAgIHByb3BlcnRp
+ZXM6Cj4gPiAtICAgICAgcG9ydEAwOgo+ID4gKyAgICAgIHBvcnRAMToKPiA+ICAgICAgICAgICAk
+cmVmOiAvc2NoZW1hcy9ncmFwaC55YW1sIy9wcm9wZXJ0aWVzL3BvcnQKPiA+ICAgICAgICAgICBk
+ZXNjcmlwdGlvbjogSGlnaCBTcGVlZCAoSFMpIGRhdGEgYnVzLgo+ID4KPiA+IC0gICAgICBwb3J0
+QDE6Cj4gPiArICAgICAgcG9ydEAyOgo+ID4gICAgICAgICAgICRyZWY6IC9zY2hlbWFzL2dyYXBo
+LnlhbWwjL3Byb3BlcnRpZXMvcG9ydAo+ID4gICAgICAgICAgIGRlc2NyaXB0aW9uOiBTdXBlciBT
+cGVlZCAoU1MpIGRhdGEgYnVzLgo+ID4KPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
