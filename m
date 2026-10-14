@@ -4,67 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80D9DC3DA7A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 20:14:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78E62CC6B31
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 21:32:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8D1Bxhp3Hwzg2hsODhqsx18L7CbmH7xzaDBJtnmNS8M=; b=0oBSZMYn2aqHKa
-	7DqCiwn8aSL4WaX1QusX6wfMa3EPQBZDDJT+d1IloX7U9v3AaAokyIqG4yL6VUSCwIuqylFq7HBsv
-	M6PnfBAYkJAGSVs5jjWCfvSOYmpUWIrkmtvI27LQpfo6DiGMtQbWIMAB/jAGooIR4F9ku//m4E3rA
-	3Ug4ioCxvQDLI78X2AgIvK836x+BfhNweToEdGX3huxuA73KjoosIG7cm7iq+uCBy7/vrJG2ENXYJ
-	ANz0cGSI1DIw35HAIvEyczw9wEMg58Ef8TpyG14N2DJtUzR/zEvwDqcTy9c33kmzpEfrJvSlZw4VD
-	D6c5egDkZfyjwqZpddQg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uhtH3rFt4jRnfmK3CBcGFvpBAW/e7p7CR7weufIQTb4=; b=Ft/xL2+xXPFN/J
+	pl51JqNu724/f2+S5+bFfal39RAeVbf7qTpZqDjWu35mGv3BdpMp512G1E1w3BPvaIIbB31kqEcml
+	F+DsNzbZruYNXfyUB9HPUXyYlzqx2lCzK2aULPMUTH0TcprWTX6da7ng2LTwRW3eQ3n+hE3iDmD+D
+	bGOfFH8C1P++OAAGdOiEWo2FMaydqe8vbGSXBg4W99jH+vDanM5ybI0g8vOpSm9l3HTTQN2ALVBH2
+	9BpHb6oVTmsYzQmhGrODk8JKbYs2114gqqwl6K941Guxr8ENeKc4vrXaNWEw7bMngkic4FkkYtMAK
+	IMqIIM4D1Qfzc9a8ak2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH5N6-0000000GFi8-45Dr;
-	Wed, 14 Oct 2026 20:14:44 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xH6a0-0000000GKX5-3Q11;
+	Wed, 14 Oct 2026 21:32:08 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH5N6-0000000GFhe-1jhB;
-	Wed, 14 Oct 2026 20:14:44 +0000
+	id 1xH6Zx-0000000GKUI-1r9t;
+	Wed, 14 Oct 2026 21:32:06 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7F5646020C;
-	Wed, 14 Oct 2026 20:14:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AB491F000C4;
-	Wed, 14 Oct 2026 20:14:42 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D569D4479F;
+	Wed, 14 Oct 2026 21:32:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84A781F000C6;
+	Wed, 14 Oct 2026 21:32:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792008883;
-	bh=i3kPv2EnHCuSJTkONfOoKlbv7OJfV/DzN4cTtsaG+7s=;
-	h=Date:From:To:Cc:Subject;
-	b=QX2FLAgyAwNAACG4J/atDWNVOgM1duxzU+cwgZ/o4t+utd/n1VJ99q6OYk+BLOeHG
-	 6KOQfkVx2UiQeInHTw5ePbQNEQcnNO6xQfqGIUhh6J9SNEZz5OKO3UwHLJ9+UHuZYx
-	 Gnbah9qgTEUwliytxHKs1jwjU8F6DoIXBlADu0dZ/ToJgGmM2fMZxOpqKSkIw7hIvP
-	 m37Q6AMK73LIXKip7brd5H6Llw0XNcTV2TTDWg0+78IXW8UZeQvZFgMzQD1AmE2TQ+
-	 eqsi0bOrYkZK0MVT4EiycQwRG4Zo9d9ECk4/KL7Wtqj0ZO2u5Jv7Q6xQOgIfD/2dsu
-	 iCH27PqF3ftXw==
-Date: Wed, 14 Oct 2026 15:14:41 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Linus Torvalds <torvalds@linux-foundation.org>
-Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
-	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Lukas Wunner <lukas@wunner.de>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Mahesh J Salgaonkar <mahesh@linux.ibm.com>,
-	Oliver OHalloran <oohall@gmail.com>,
-	Christian Koenig <christian.koenig@amd.com>,
-	Vitaly Prosyak <vitaly.prosyak@amd.com>,
-	amd-gfx@lists.freedesktop.org, Aditya Garg <aditya.garg@linux.dev>,
-	Jason Perlow <jperlow@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Niklas Cassel <cassel@kernel.org>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] PCI fixes for v7.3
-Message-ID: <20261014201441.GA1661922@bhelgaas>
+	s=k20260515; t=1792013524;
+	bh=n4bYhTdRxOIvSYNEVOuBVwZfG0oYfdpuMp66lA53CL8=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc;
+	b=bpxw8tV02mBatpIOGwmCGxmrFiQ75HYb9OxsnDk3RjVkoNG/T6yA6jFexrrj9q8Qm
+	 uF8UxM2IwK0DI2DW8c4nwLxPy8qoa749m2s9wJLpJN/z4llEyp1CAW9C6lVInL620e
+	 1USd5ujhRFjgcyZMQeMLNIWxAUsSqo8ZuLU0zDEXvAHc1tiDOk/rmEM4c4V1ojsqKU
+	 t3B1UCAcGD/Nn//tA8h4e3hcXueCBBmyHlE3jAnXxcvsaXqrG1hdIHrl3RUYIQxouO
+	 L6rEN68dnM8XXt73SR8vyTMUFwxqdqlJ2APJNovg9743f5xJkuPwZLV+l431xrfT5y
+	 UnZOkovChO9Jw==
+Received: by venus (Postfix, from userid 1000)
+	id 6EB011811F8; Wed, 14 Oct 2026 23:32:02 +0200 (CEST)
+From: Sebastian Reichel <sre@kernel.org>
+Date: Wed, 14 Oct 2026 23:31:51 +0200
+Subject: [PATCH 3/4] arm64: dts: mediatek: Use DP AltMode defines
 MIME-Version: 1.0
-Content-Disposition: inline
+Message-Id: <20261014-dp-altmode-dt-defines-v1-3-b657c9b6e4c3@collabora.com>
+References: <20261014-dp-altmode-dt-defines-v1-0-b657c9b6e4c3@collabora.com>
+In-Reply-To: <20261014-dp-altmode-dt-defines-v1-0-b657c9b6e4c3@collabora.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konradybcio@kernel.org>
+Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-msm@vger.kernel.org, kernel@collabora.com, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2116;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=7FNEaDo7pGA047wI3FK4TKWZhXwLjIbr474e9i4K9eQ=;
+ b=owEBbQKS/ZANAwAKAdju1/PIO/qaAcsmYgBqz/TRTgD15gyUoA1EJiK1ufhTOPiWWz1DgIB3K
+ rbh7UdFI4yJAjMEAAEKAB0WIQTvZg0HRj+Lcmp5VBPY7tfzyDv6mgUCas/00QAKCRDY7tfzyDv6
+ mjYkD/4gfqFQqfvo/G2RzBfC3qPlVX3/CJkbPdHElRSfkHsIERq+ee8LwGW1uH6+2TRHMBegkPW
+ +WH43q53usn1LPTfsLP2ie1Ke5aTliJs2NyeezZHN+GuV1VWFJCwI4+tCirirMBfK/m3EOMIMqu
+ rBKW3/5Ww0f90ncFMe4mccdmsaHDeNYCmwt0PSExHzc83XCU/LLW4swkTdaV6zMp/eq4yEbBp4A
+ Npl0cUtZHmPcJH6BkLtQi69MEK1BGloTD/HyvYq6PjO4wB916xQasNNwe37h89WL+lCQKcAPxut
+ Lu/QrstgTwlVR36TJJH4eDXmBZNrwtPIXxZVkjXzgbyw6oTwEGXYGxGJD785zY/wP3n2t8GZmdO
+ L8UvP8hVx6fLS5POyecRhbL5lW6tn7e1lZxzPpQb8K6AINNnFtfOsodwkBwe9cuzBqJSM2ypOxk
+ Ae9L/vlOuSynGuKQYY0nwiuOF6G3OVLgtQs1x+8gvQ9roSS14Ux4yXa1mlMNdghIxeAkjJhuq10
+ hEFZpl2wdyqh9Q4RqdtEFcL3H5j5Cw+SL9Pej0mGSnK486+FD4EFJK2bAa0CVinbBME/O/9LOov
+ L5RudMAtsczkucxdUcrgufyHxCOLom1k5l7sc1xUbuLexdf1T1kFhw1fN+4hKJ6gtTUZCwaW9Sd
+ ZP+tn54Nsu0Y76g==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,42 +96,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit cee9395acd8043be0644b25c34bfa86623f2b935:
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-  Linux 7.3-rc1 (2026-08-30 13:34:40 -0700)
+Use the new USB-C DP AltMode defines for the SVID and the capabilities
+VDO to make the DTs more readable. This also fixes up mt8390 Genio
+platform incorrectly announcing UFP_D (upwards facing) support. This
+feature is unfortunately not supported by the SoC.
 
-are available in the Git repository at:
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi |  8 ++++++--
+ arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi | 10 ++++++++--
+ 2 files changed, 14 insertions(+), 4 deletions(-)
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git tags/pci-v7.3-fixes-5
+diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+index 669eaec662f3..02f8b33d64ac 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+@@ -527,8 +527,12 @@ PDO_FIXED_DUAL_ROLE |
+ 
+ 			altmodes {
+ 				displayport {
+-					svid = /bits/ 16 <0xff01>;
+-					vdo = <0x001c1c47>;
++					svid = /bits/ 16 <USB_DISPLAYPORT_SVID>;
++					vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
++						      DP_CAP_UHBR_13_5_UNSUPPORTED,
++						      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
++						      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
++						      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
+ 				};
+ 			};
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
+index aef908df530e..3f7d57dfcf93 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
+@@ -597,8 +597,14 @@ PDO_FIXED_DUAL_ROLE |
+ 
+ 				altmodes {
+ 					displayport {
+-						svid = /bits/ 16 <0xff01>;
+-						vdo = <0x00001c46>;
++						svid = /bits/ 16 <USB_DISPLAYPORT_SVID>;
++						vdo = <VDO_DP(DP_CAP_DPAM_V2_0,
++							      DP_CAP_CABLE_TYPE_PASSIVE,
++							      DP_CAP_UHBR_13_5_UNSUPPORTED,
++							      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
++							      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
++							      DP_CAP_SIGNALLING_HBR3,
++							      DP_CAP_DFP_D)>;
+ 					};
+ 				};
+ 
 
-for you to fetch changes up to 4e9f69d08253471d92bcc46b363fbada06bd59c4:
+-- 
+2.53.0
 
-  PCI: dw-rockchip: Move INTx IRQ setup to probe (2026-10-12 17:01:54 -0500)
-
-----------------------------------------------------------------
-
-  - Leave ANFE masked on Apple T2 Secure Enclave, which fixes spontaneous
-    poweroff regressions on MacBookPro16,1 and likely other models with the
-    T2 caused by new Advisory Non-Fatal Error support (Jason Perlow)
-
-  - Move dw-rockchip INTx IRQ setup from rockchip_pcie_host_init(), where
-    it runs after every reset, to the rockchip_pcie_probe() path to avoid
-    installing new IRQ handler (which causes INTx IRQs to be lost) and
-    leaking an IRQ domain on every reset; fixes a regression added this
-    cycle (Shawn Lin)
-
-----------------------------------------------------------------
-Jason Perlow (1):
-      PCI/AER: Keep ANFE masked on Apple T2 Secure Enclave
-
-Shawn Lin (1):
-      PCI: dw-rockchip: Move INTx IRQ setup to probe
-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 27 +++++++++++++--------------
- drivers/pci/pcie/aer.c                        |  3 ++-
- drivers/pci/quirks.c                          | 11 +++++++++++
- include/linux/pci.h                           |  1 +
- 4 files changed, 27 insertions(+), 15 deletions(-)
 
 _______________________________________________
 Linux-rockchip mailing list
