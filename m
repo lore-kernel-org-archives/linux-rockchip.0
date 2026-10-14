@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D019C3DA7A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 16:35:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46BA0CC6B2C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 16:35:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LYL0+XYuaN8hD8wO+pnEZSFZlNxo8GJjaF956ZY3O/Q=; b=luWUUX8KMQqNId
-	13cENhjdLHkJFnE1fnJU8KnyrG6zKKLPplsscK4GokbI5P/CElZWLDqj7vptmJZQpOiB2Nc29FEXN
-	F1A+00Ijf+IHp4d+IDoRX1gsRRN5YRYrLoNCSFa7D+mTgJ+4p4gpbsVi/ZnItPDm6+Lw6m0rxsTAY
-	Kvs+/lZNjB9zHSCcM7KUbWvSnf1sGXmqmVu9qCEfGja/jl35+YPMQHYFoxrga+xhnSLwXnvcKjyK7
-	TaWgEAnyj1ecQ0Cadk8aL67J4DPmezbe1oSWuBiOQ75BJGyGgTPv/AwJordVTSXcPUH8rR5SMOOpq
-	bSz5T97GQniooT3xJR3g==;
+	List-Owner; bh=SX1F7v/qytv2RK04j2F/FvT9k3JaC0oDEgTQ4HNrgFU=; b=XJ0Ltk6fpEDlJz
+	QNlVqGZLvcMGbviBxvNNdVL4vkFfLNYfb0aJ5oTUtNhtA8N4OrUH77Wou7I19frPKIWPBX8z54AxU
+	9BcCihzcXWa3HTLAgMr/ZpnhwK5pDgEtSkOaAKySMouYGX7/BkoJZREunPePQ0uglWt15u9LUAQPq
+	lS99kCQCPjHVAO4McgKKYLfwusc8Dog9NNqqsr9Mc1Xx7T53x7zcMTR9WCf8U1gW5JyT7SJvGyUvU
+	HmLn/G6WvJWi5iWX1Nvar8K9adrXs7YCVlhhNLSGYk3MOXczTQaRmvY7nspum0ItPZWjfxXzccWbw
+	/QvjI0l0EFSk7rnFqjbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH1wH-0000000FzAT-1zDH;
-	Wed, 14 Oct 2026 16:34:49 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xH1wG-0000000Fz8o-3Lox;
+	Wed, 14 Oct 2026 16:34:48 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH1wF-0000000Fz70-1MEP;
+	id 1xH1wF-0000000Fz6z-0gg9;
 	Wed, 14 Oct 2026 16:34:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id AF41D43D61;
+	by sea.source.kernel.org (Postfix) with ESMTP id 9905143D0D;
 	Wed, 14 Oct 2026 16:34:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 86AC1C2BCFD;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 72A47C2BCF7;
 	Wed, 14 Oct 2026 16:34:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1791995686;
-	bh=e8rMZVE3Hk775NxesQzgW+3PXKTFyUNToxKWcBLcdF8=;
+	bh=ALUyyge6FUZ6GWamul8z2xtbvXbH61GTco3jjpVzi54=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=MBlGeYNVIQgpLdRiQPLaIMmCMRLCexPNwn2DOk26KeTeEOkoL7QfuFg760eZr/JIq
-	 gZY2fDILXQ7X3/Mgk1oWNCxrsKmpSR+VtbNclsHDXad8DC3GcLJp95muw9ZBoLLE8R
-	 +MXJ+rK6Mpjl57j8U9atmwgtQEMZGyEsN/Uwjs9DrpxB3ZHoLZiFxeKbTTTPkqXjhq
-	 qX7i2aLAiOKN6UUE0aDnzcD4Ep8tDOGbqT0EWS/rdqrbP3F6mHm8v/kpCxO0QDvmCq
-	 QlRPUyQl3P4naR9iTzqj4+/ExnKXvF8jw+1qi1KqbEllwo9o1GSGDPZ3fPfS7/18js
-	 36DyanSc8wmGg==
+	b=ipRc0OAmGqmZyBY/NKktdCe/Mj+58+8V056sW7ZEYdXbdh1zpy2cVDKsd+m6NRaCF
+	 oihJmJORLGn8kDm5J2AgaCI9u9Q8khE/kst6n6SxMMRC/9wBi6Wv8Y27ZOS+bszstb
+	 9016BxuG6/xGZ5rFu7vl8YlPAYwUmosav7+dELLGorZ9C8p6wmXV8Vm37BWyBX+TeY
+	 kkxCJiGQ2ZI7391b3vOXJcl5kCQgsNF1uhU4Z7gNZ/z2iD810QzbVXtS4gm/s7x0fJ
+	 Uacc/8o/1QHdzHg666r8870DrsY9+uMKie7pQJw18+fewU8MvCzr+vK/+c2Iu0t820
+	 hoSNGln9lasyA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 635DFCC6B29;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5144AC3DA7A;
 	Wed, 14 Oct 2026 16:34:46 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Wed, 14 Oct 2026 18:33:02 +0200
-Subject: [PATCH 2/9] arm64: dts: rockchip: rk3588s-nanopi: enable mmc-hs400
- and add supplies
+Date: Wed, 14 Oct 2026 18:33:01 +0200
+Subject: [PATCH 1/9] arm64: dts: rockchip: rk3588s-nanopi: fix sd min/max
+ voltage
 MIME-Version: 1.0
-Message-Id: <20261014-nanopi-m6-improvements-v1-2-e713f71eb4d3@gmail.com>
+Message-Id: <20261014-nanopi-m6-improvements-v1-1-e713f71eb4d3@gmail.com>
 References: <20261014-nanopi-m6-improvements-v1-0-e713f71eb4d3@gmail.com>
 In-Reply-To: <20261014-nanopi-m6-improvements-v1-0-e713f71eb4d3@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,11 +58,11 @@ Cc: Diederik de Haas <diederik@cknow-tech.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  Joachim Eastwood <joachim.eastwood@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791995685; l=829;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1791995685; l=999;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=VE54I6DLOZ7xz7Z1AlY0TEKLCJ6TB2BmQB8DBGvEYKc=;
- b=85xFApN3E8VWMpqzu+YBwEcK9UJkEbqhZr3q4PIxJnwDmASdeSIqMdS2PvzHIbkqQpk4gkEJv
- vr5NzyioSxQDmik7i32Obm3Bz4UzWOBAzhHVMFxlvPovbq22pt9i1en
+ bh=ZL0Hzb2jEWUjL2wvU/uKxEAnzsHMxAzmFWNQXvnrLKo=;
+ b=G2CZan4JvljYpymAFg6tQTWMFL8j5loRE3S67B5NyNlSv4GXYdGWQ8Iycbgd6uQFQNZk20w+p
+ D4sUbWZyF0pAgaH4+zwPCWNAhfBeV1G3ZqMHFelarJm9l2BE2z2pTz+
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -87,29 +87,29 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-The NanoPi 6 series all support eMMC 5.1 HS400 mode. This also matches
-the vendor device tree. Also add power supplies while at it.
+This regulator is only a simple power switch and cannot change the
+output voltage.
 
+Fixes: c08257d642ac ("arm64: dts: rockchip: refactor rk3588s-nanopi-r6 to support M6 boards")
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
-index 8c36268e9876..8c77ee71ebf8 100644
+index 22b0cdee22b4..8c36268e9876 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
-@@ -390,7 +390,10 @@ &sdhci {
- 	no-sdio;
- 	no-sd;
- 	non-removable;
--	mmc-hs200-1_8v;
-+	mmc-hs400-1_8v;
-+	mmc-hs400-enhanced-strobe;
-+	vmmc-supply = <&vcc_3v3_s3>;
-+	vqmmc-supply = <&vcc_1v8_s3>;
- 	status = "okay";
- };
+@@ -79,8 +79,8 @@ vcc_3v3_sd_s0: regulator-vcc-3v3-sd-s0 {
+ 		pinctrl-0 = <&sd_s0_pwr>;
+ 		regulator-name = "vcc_3v3_sd_s0";
+ 		regulator-boot-on;
+-		regulator-max-microvolt = <3000000>;
+-		regulator-min-microvolt = <3000000>;
++		regulator-max-microvolt = <3300000>;
++		regulator-min-microvolt = <3300000>;
+ 		vin-supply = <&vcc_3v3_s3>;
+ 	};
  
 
 -- 
