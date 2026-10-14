@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E355BCC6B39
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 16:35:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B7AFCC6B2D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 16:35:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=W5Pv+f7lzp5Q4HGmLwv/XFvDmru9+jLlVbRjBP6mDa4=; b=4RHPWeG8s3Yxqs
-	LOktpaTBLzad+T9Qivx389vKt8MgWXF2P2whn+6fSZplgj0GlIvFe8T/k2mFOu0LWCGelNOnLmRUF
-	QwCtLZ5LCqHDiTSGlzWeKmFSFu5v90ldSMrKsJk02ewI/g+rFo0wf80NUgfUlCcAVBVPXEKhikSJe
-	6TZkwHkfN0z4WZOtP8lubEHLsWAVDtBWpR4Aa49nDlwksYRvaLmvzRvsMdsnIaiQrLSSsXlBUc+8U
-	4jrkzSQPwyAYpxzR05VI2PfHDajwcN0RVev0HQSWnUF6KVAx66FmHmUa1hkyxttEZU+hXgkEf+BGK
-	vqCx9o/6A8Pt8ajn8eNg==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CGPn+EFvUhOdzKM9ciGcfINvKE22QOj4xhN1EIJE4cs=; b=VnK/6ag5LAHzTv
+	zu3HwnHyuig7HqWzhh/NKa42lfVEwvoDE4ihAvaBm81waXKBmPz317jLXQhjtg68FseuUYuuBKPQw
+	OexiIzqWI/vU1NY3FLgThworOZxkFdc6Wf56J/cr1kapTetiEMrhciKCpxBcx25nhjYKzyuzIVmk5
+	rnabNgyhFuXxSNlY09/OuKiT1RgAcLy3S/U2c2zlzZKWNEMNZNx3SyBVwLv3fW1IAhLx/dz3C4JKG
+	tNi0Uj7FgWHSuxL73ZdyVSrR4+LdUZ+kiBezgt7MQULpB+8F+XBnfJTLFiAnirgde/lL0nbG3bOSy
+	dNTI1JDKpN1riPmMmFYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH1wJ-0000000FzEX-3Rcg;
-	Wed, 14 Oct 2026 16:34:51 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xH1wL-0000000FzIV-2Qfl;
+	Wed, 14 Oct 2026 16:34:53 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH1wF-0000000Fz74-1F1y;
+	id 1xH1wF-0000000Fz7V-2VxS;
 	Wed, 14 Oct 2026 16:34:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BAB1460229;
-	Wed, 14 Oct 2026 16:34:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 645E8C2BCC7;
+	by sea.source.kernel.org (Postfix) with ESMTP id 11B224458C;
+	Wed, 14 Oct 2026 16:34:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id E9976C2BCFF;
 	Wed, 14 Oct 2026 16:34:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1791995686;
-	bh=M4oiCczvM6va+isk9WjeSYqDXsbuek40oN13boAHt8I=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=GY6hGui2T5XXWfuvUg2CXIN7d7GbyaU67iYK7LarS6o7YTUT/e4MixZDdV+fKEKVQ
-	 eekPGvE5bOLRZMLM2fadWSG8B+C76415U/MoR5iNCdmDjJRsw4eM/CWxSGFH7WRWn1
-	 IIAgaVserzho4ufjgOOG9IKWoyw60RhPfMtiAumkC0rK7O+oA5vsTryvNEcz7XbQOv
-	 0i3V9/zkZlcP+aud6kdzmRYPZQork5inhKvk8jlsfNf2TOQ6/plmer5WtFq15vYKyf
-	 0rCo2zkaC0VvWz/pUjfHifQ2O071VqIYGyKp53DmAwJAGfaGhnvLFSFj/LSCcoxkAX
-	 m2Zh4/WD/W3Xw==
+	s=k20201202; t=1791995687;
+	bh=yoEkzv3L18sWFC59rJDzuQJ9eP+Jz/EAEuSDh1mibNY=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=fB1eeuJJlYK6UEGbklkPSoK/EAepoW/iFbSAeXUmCOG+ZJybhYDBaUBFbhdtImbuR
+	 uyCsSfAZCZ5NsFPd6tkQwNLS6BDq3CT5uvSQ/M6PR1Z4xbiGaPDM2SMWqlLaXh6dB4
+	 +irT29j2/VYlZu8WVnL9afOS6MR08nl+VfiLXuL8+XMg/VP6ErHG09q187RYtCkEnv
+	 EXiCjQsxdVs+vkAgMG3TXl2JUo/1cWQJKZR5NYmiMwol8w5xkE7jguVt516Yb4Pp0f
+	 3bkk98lAvcf8a+JNFZW09lKDJEF5tIXny3+tpn9fFJB3R1G7KYko5yYTmTpj3VbkuV
+	 ZBtsCzZCNn0vQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D388CC6B1D;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D87BBC3DA7A;
 	Wed, 14 Oct 2026 16:34:46 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Subject: [PATCH 0/9] arm64: dts: rockchip: NanoPi 6 series fixes and
- improvements
-Date: Wed, 14 Oct 2026 18:33:00 +0200
-Message-Id: <20261014-nanopi-m6-improvements-v1-0-e713f71eb4d3@gmail.com>
+Date: Wed, 14 Oct 2026 18:33:08 +0200
+Subject: [PATCH 8/9] arm64: dts: rockchip: rk3588s-nanopi-m6: rename pcie2
+ power pin
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMTQ6CQAxA4auQrm0yTORHr2JYQK1Qk+lMpkhMC
- Hd31OW3eG8H4yxscK12yLyJSdSC+lQBLaPOjHIvBu986zp/QR01JsHQooSU48aBdTVs+jNRN7m
- e6gZKnDI/5P0b34a/7TU9mdbvDY7jA1Si6uZ6AAAA
-X-Change-ID: 20260729-nanopi-m6-improvements-584cc7b08c15
+Message-Id: <20261014-nanopi-m6-improvements-v1-8-e713f71eb4d3@gmail.com>
+References: <20261014-nanopi-m6-improvements-v1-0-e713f71eb4d3@gmail.com>
+In-Reply-To: <20261014-nanopi-m6-improvements-v1-0-e713f71eb4d3@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
 Cc: Diederik de Haas <diederik@cknow-tech.com>, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  Joachim Eastwood <joachim.eastwood@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791995685; l=1823;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1791995685; l=1149;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=M4oiCczvM6va+isk9WjeSYqDXsbuek40oN13boAHt8I=;
- b=xeGKQRKGVzN67jaE0vQ2rOyJewPenDA0ogXBP4ukvIeWddMRTGL61vnp9dk5p0HmKdbZxvORi
- lmfDP60AGfbDqIcrlIFG5lraHthr6513r8hHj9ES9D337D1w3tWZExj
+ bh=GfKqko+BDEDT60oHbA0Oxe3Rj0eMd1CHLKLNk3udR1A=;
+ b=Z+r8PqUi76NbwVK8sVcXAQug20g8SdGQ4/NrTN1UApcxjAeBJd8eciHBIVaVullfyosGIHwp/
+ jF3YyjAAfBKAuAh1hQItJf0VcHsWNvNWk0EINVvj0d6tn3WDcw6KaCm
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -87,45 +85,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series contains a few fixes and miscellaneous improvements
-for the NanoPi 6 series of boards.
+From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-Patch 1 fixes the voltage range on the SDMMC regulator.
-Patch 2 enables HS400 mode on eMMC. Tested on my M6 board.
-Patch 3 adds an IIO HWMON device to monitor the input voltage.
-Patch 4 moves a regulator that only exist R6 boards to the correct dtsi.
-Patch 5-9 renames DT names to match the schematics signals/nets.
-
-If patch 5-9 is just considered churn I'll drop them. These are more
-nice to have and just makes it easier to cross-reference DT and
-schematics.
-
-Based on linux-rockchip tag v7.4-rockchip-dts64-3.
+pcie20x1_2_con_pwren matches the signal name in the schematics, which
+simplifies cross-referencing.
 
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
-Joachim Eastwood (9):
-      arm64: dts: rockchip: rk3588s-nanopi: fix sd min/max voltage
-      arm64: dts: rockchip: rk3588s-nanopi: enable mmc-hs400 and add supplies
-      arm64: dts: rockchip: rk3588s-nanopi: add voltage iio-hwmon device
-      arm64: dts: rockchip: rk3588s-nanopi: move vcc_3v3_s0 to nanopi-r6
-      arm64: dts: rockchip: rk3588s-nanopi: rename sd power pin
-      arm64: dts: rockchip: rk3588s-nanopi: rename usb host power pin
-      arm64: dts: rockchip: rk3588s-nanopi: rename gmac1 reset pin
-      arm64: dts: rockchip: rk3588s-nanopi-m6: rename pcie2 power pin
-      arm64: dts: rockchip: rk3588s-nanopi-m6: rename pcie2 power rail
+ arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- .../arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi | 14 ++++---
- .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi | 14 +++++++
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi   | 45 ++++++++++++----------
- 3 files changed, 48 insertions(+), 25 deletions(-)
----
-base-commit: ae965b9856f033145e292b0c29082a26bcc45efd
-change-id: 20260729-nanopi-m6-improvements-584cc7b08c15
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
+index 6205a542cd1a..ca115d8e108a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
+@@ -41,7 +41,7 @@ vcc_3v3_pcie: regulator-vcc-3v3-pcie {
+ 		enable-active-high;
+ 		gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&pcie2_2_pwren>;
++		pinctrl-0 = <&pcie20x1_2_con_pwren>;
+ 		regulator-name = "vcc_3v3_pcie";
+ 		regulator-min-microvolt = <3300000>;
+ 		regulator-max-microvolt = <3300000>;
+@@ -116,7 +116,7 @@ hp_det: hp-det {
+ 	};
+ 
+ 	pcie {
+-		pcie2_2_pwren: pcie2-2-pwren {
++		pcie20x1_2_con_pwren: pcie20x1-2-con-pwren {
+ 			rockchip,pins = <3 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
 
-Best regards,
---  
-Joachim Eastwood <joachim.eastwood@gmail.com>
+-- 
+2.56.0
 
 
 
