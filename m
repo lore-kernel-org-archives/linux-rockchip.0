@@ -4,61 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FF95CA9EDE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 03:58:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEFB2CA9EDE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 04:00:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f39h8DDvqWlAgecD8HrD+ioibLHHmtwxuRl3i+sd7T0=; b=x4UenWo/MHc/H2
-	m5w5A/Z1u7y9UvSwifBpvzDYByB3/oWmp/3Oump7JBXpiPbdXXN1zHhre/I39Pu61ibZMHihG04VK
-	n3R0gAqM41dRNTyr3q35vLcDTgFc04zo2S5QOZWq15o3kpcDA0CH/HsRRnlE0+HSHA6wr7xcMdT6X
-	pDCSL/6PdZd+BivH2TV/wAYJDGLUMAx07S6tbETw0ZN27kM6cK0cCdmzzfZlIKNVM08awPwEjDnYl
-	xkSMme5KJ9xyvburzyAEFQoJTgK6XpXCY0iw0WvWUUZh7AGF29n5VwCxhXvtj5POFZzB1sUuOfvFf
-	VG2E1HX0SDmtTrK0S2OA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QRh4IDedxZVgi2vjdCGyYPa9CEfIu9sdQnC/F7lAXwg=; b=DNUn80/kIHAKcT
+	AA9bmqHQ6PmyCzEEVitX7NIG6HBTEZycdWu4saugOu8VjEEEcuLiXkwsEZFJEsCPMqkMFiL78+YOj
+	Eo8164UKf26p8xlXkcGt55xTK076G54RUk15UcTWMN3QQ0Rs+ahqjjr+YkFnt8Ny680ecmTuLNold
+	3XsJvVrLZAmsDoZhPyNh1VNORIad8cgu0HnLu7TBKZJDo0+3NmMs+GjTsLrvHskYqOjAzRdGCuDn5
+	uJhRpQ882fFYmrLuQliNHnIeERgNfJzp35qD/wf9tFHDa7GhrdYPAnsqZO72WHrlmiiIl+dC7yKnO
+	pHeXv36uiw0zHRUsKB5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHCbo-0000000Gm4y-0ROU;
-	Thu, 15 Oct 2026 03:58:24 +0000
-Received: from sender-op-o17.zoho.eu ([136.143.169.17])
+	id 1xHCdT-0000000GmMY-2mGq;
+	Thu, 15 Oct 2026 04:00:07 +0000
+Received: from mail-m10169.netease.com ([154.81.10.169])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHCbb-0000000Gm3i-0S49;
-	Thu, 15 Oct 2026 03:58:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1792036686; cv=none; 
-	d=zohomail.eu; s=zohoarc; 
-	b=XzPeRgEUlE3s0CSareeggcFzEnRfqc7xoCpj4oo2E82QbQDlix7V9KbvZ06IcxJ9gTngzArzUTu8Ow3hnS1aRWzkj4bGt5IyX1V/G2XM9xXXre3FgXvqDEIWBVpCSZhAKOblOCeOA12su29hYHCisU3xO6Ep//FiMZI0//bwxiI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
-	t=1792036686; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=pifDH0uDw0EMlv5YUttgPbWoNR7hI3QK3uBz9udZ6wU=; 
-	b=APm6ig9UNFz+3FbTT3D47VhHIUfHoLuD+FBpe36tSfRK1owNP9HeEHs5gNYxj+4joCsSS5mXJL66RtNpKJZuCMltMuVEHqcsRaBylNyW/p4CAT5GOtq6RPo9cXi/9c35wZW3HTAV1X4fqE1IoK75Xa1ZS+pKdc4SeHsSTLf90U0=
-ARC-Authentication-Results: i=1; mx.zohomail.eu;
-	dkim=pass  header.i=iav.lv;
-	spf=pass  smtp.mailfrom=iav@iav.lv;
-	dmarc=pass header.from=<iav@iav.lv>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1792036686;
-	s=zoho; d=iav.lv; i=iav@iav.lv;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:In-Reply-To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=pifDH0uDw0EMlv5YUttgPbWoNR7hI3QK3uBz9udZ6wU=;
-	b=CZ6T92YOtgOrWHHIxR94ereumsmrWWD6DTCKVTY8K/N+10dtHCVhqhIuwMjV3YpX
-	r6jdNdqtfKPRbFC9HiksDsmVyvOKT2GinsZhkRFVI6G0hRSMMpKSZUBWkRslMMian4S
-	Q9AcHjYd+6rT1uvzOFwT/24GGv6Qo9fjV/ODwSzA=
-Received: by smtp.zoho.eu with SMTPS id 1792036684329824.7527309360931;
-	Thu, 15 Oct 2026 05:58:04 +0200 (CEST)
-Date: Thu, 15 Oct 2026 06:58:02 +0300
-From: Igor Velkov <iav@iav.lv>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>, Michael Riesch <michael.riesch@collabora.com>, Diederik de Haas <diederik@cknow-tech.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Fix devices suspend freeze on RK3568/RK3566
-In-Reply-To: <20260624192726.781864-3-jonas@kwiboo.se>
-References: <20260624192726.781864-1-jonas@kwiboo.se> <20260624192726.781864-3-jonas@kwiboo.se>
-Message-ID: <20261015-m1-tested-by-usb-clk-v2-2@iav.lv>
-MIME-Version: 1.0
+	id 1xHCdN-0000000GmLP-1YbV;
+	Thu, 15 Oct 2026 04:00:05 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 511c64fea;
+	Thu, 15 Oct 2026 11:59:55 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Neil Armstrong <neil.armstrong@linaro.org>,
+	Vinod Koul <vkoul@kernel.org>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH] phy: rockchip: naneng-combphy: Fix overwritten PLL SSC control bit
+Date: Thu, 15 Oct 2026 11:59:47 +0800
+Message-Id: <1792036787-37927-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0aa13db771c103a4kunm0d452a123b0e15
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZQkpMHlYaGkJLGhhPH0
+	gaTh9WFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=UsVVxotJPQ1v+E+yDQ7Hi3OH6sxoy5G2le0fc7Kf46PYtHIc/cK8J2RGT0KFe/VlZTC7a7MQ8Cbbb7bNvBv2gwl8Xod/CFpt6nzvR6Uc0zSs8AfQoelkaJfkBqSBKWkCxF1W13N9FQ076FLaUPmurKAHWGwyIGTlj4LzuwYaLB0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=5ouESOob9KPg2dEHIqwtyo3anJ0ed+UGtz0b1buJpts=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261014_205813_201600_69F8BFF3 
-X-CRM114-Status: UNSURE (   4.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261014_210002_319726_E5F969F4 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,16 +64,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Tested on ODROID-M1 (RK3568) with 7.3-rc7: without this patch
-pm_test=devices hung while suspending the first OHCI controller 4 of
-14 times, with it all 31 runs passed.
+rk_combphy_common_cfg_ssc() first sets RK3568_PHYREG33_PLL_SSC_CTRL on the
+RK3588 and RK3576 SoCs, then, for PCIe at 24MHz, programs the PLL KVCO
+adjust field. The latter used a plain writel() of the FIELD_PREP() value,
+which cleared all the other bits of RK3568_PHYREG33, including the
+PLL_SSC_CTRL bit that had just been set a few lines above.
 
-Tested-by: Igor Velkov <iav@iav.lv>
+Use rockchip_combphy_updatel() so that only the KVCO field is updated and
+the SSC control bit is preserved, as the comment and the pre-consolidation
+code intended.
+
+Fixes: 0b31f297557f ("phy: rockchip: naneng-combphy: Consolidate SSC configuration")
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
+
+ drivers/phy/rockchip/phy-rockchip-naneng-combphy.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+index 3102a99..b6cc010 100644
+--- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+@@ -526,7 +526,8 @@ static void rk_combphy_common_cfg_ssc(struct rockchip_combphy_priv *priv, unsign
+ 
+ 		val = FIELD_PREP(RK3568_PHYREG33_PLL_KVCO_MASK,
+ 				 RK3576_PHYREG33_PLL_KVCO_VALUE);
+-		writel(val, priv->mmio + RK3568_PHYREG33);
++		rockchip_combphy_updatel(priv, RK3568_PHYREG33_PLL_KVCO_MASK,
++					 val, RK3568_PHYREG33);
+ 	}
+ }
+ 
+-- 
+2.7.4
+
 
 _______________________________________________
 Linux-rockchip mailing list
