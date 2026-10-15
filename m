@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B662CC6B3A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 15:17:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0300CCC6B33
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 15:53:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Date:Message-Id:
-	References:In-Reply-To:From:Subject:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pD00G5iMot6cBvH6ANCBIK0HiafruhD5HXTpdfmURto=; b=QgGpoHoClCsYA6
-	mkAA/tsHBnyokG1C78b2iIzttQWooCXRSp04TPwcX3zgHLrCDHDDtldmt5BNsgdoc+twk14O9l0zf
-	FWRK0/DEd7hveAp9R9n/PqmgOIS8QPZCUjgI5CQs32kTCbjps4GSe2fUrcy/uhHlWEprN9CJzpg4W
-	TnrX24VfFUezHwR3wrnqS+OKDEd0Yp0cT24MEgnI4c0387P8TJQ4x4QkUk/cpDSdD2iTCaRk+2hXG
-	7/iVoQvW75mq94cyqWmqpTlfqpOh5KudCOxToEpF5oPr9XTZ//jJ/e+ciAH6MC15E7xtQrMj8URnT
-	bBGRoxT+C6JACUcAkv4w==;
+	List-Owner; bh=9skLKIAm+4AFoLNqlqFPWeERQYmoRSWDEnL+sLl18JA=; b=M4HmY+7ljmeKyF
+	JqQUwCxTFSPO98HHR283J7CayJpEyCNDWAM0vgukQ7F11chB8qidhwTVWHn5Rrd5W9cjES+8/NrB6
+	ZgFTcLcV3qhTnmUlhpE+2r/k/JzdQOkCF334dzNN22O2LUb4qUOFMZ3bm1sFwLJ90wkudW5WRZc3U
+	gdUG7k3NGkL0cmPdaomNBICrXgMn2DppJ5TE5cpiPM+VN/GfIq6AP0AJk4sH166DIfKd6ZV95KtuR
+	fcA4ay7pcygw6+pLIjHVZbNo9A2v+zLGbDPUHn6hw856ixSvc71YKkIx9Ed6EwaeDXF4THNpO4WD6
+	HDpa7ra3lyIwhnFOAUnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHNCT-00000000XfF-2dJi;
-	Thu, 15 Oct 2026 15:16:57 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xHNlX-00000000ctG-3lqw;
+	Thu, 15 Oct 2026 15:53:11 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHNCO-00000000Xdw-2rbI;
-	Thu, 15 Oct 2026 15:16:52 +0000
+	id 1xHNlU-00000000cs9-3JNI;
+	Thu, 15 Oct 2026 15:53:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 62CAB41454;
-	Thu, 15 Oct 2026 15:16:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 434A31F000C4;
-	Thu, 15 Oct 2026 15:16:52 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 3FC2A601EF;
+	Thu, 15 Oct 2026 15:53:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8EBF71F000C4;
+	Thu, 15 Oct 2026 15:53:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792077412;
-	bh=czOd1zQNZUMw6GYUrJDnQ96E5UzYrct07og54e6yZVI=;
-	h=Subject:From:In-Reply-To:References:Date:To:Cc;
-	b=FnhN7rn2I9a3CYDafvP6ph9HvJGJLus1SL7dxzz9VKYPUJGPNeLGgEAVgkxo7IXpN
-	 ncyBPoZQBK/FMqML0x6qDwqP7pQx08xtTSuniOpfxskxUtHFPltIoaPY5c2qIdUiG5
-	 qFxB81eVLMz6xtEcNC7Q3tZ6r8tAbJ9oYOQQQ3DTicO3GmcRaCj59afGJKMbuayn1A
-	 GMzBYTkUhDt85X44JI2UsWUztLpbOTxXegYsxEEhUvdTsdD8GSLVFM2Gv0rN241rX9
-	 iFwQQ70fMZuKjr9r2bqnUoVBqc8OWW4y3mXmmdOf433kujdenSqi+dTmUk0C2mulg6
-	 0Vb8k3sB0qtqA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3A3A0392EB21;
-	Thu, 15 Oct 2026 15:16:52 +0000 (UTC)
-Subject: Re: [GIT PULL] PCI fixes for v7.3
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <20261014201441.GA1661922@bhelgaas>
-References: <20261014201441.GA1661922@bhelgaas>
-X-PR-Tracked-List-Id: Upstream kernel work for Rockchip platforms <linux-rockchip.lists.infradead.org>
-X-PR-Tracked-Message-Id: <20261014201441.GA1661922@bhelgaas>
-X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git tags/pci-v7.3-fixes-5
-X-PR-Tracked-Commit-Id: 4e9f69d08253471d92bcc46b363fbada06bd59c4
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: e177c722b3dd9ad432195b5c2cbbfe58c909a821
-Message-Id: <179207741094.3496071.13040126142711127127.pr-tracker-bot@kernel.org>
-Date: Thu, 15 Oct 2026 15:16:50 +0000
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Linus Torvalds <torvalds@linux-foundation.org>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, Lukas Wunner <lukas@wunner.de>, Alex Deucher <alexander.deucher@amd.com>, Mahesh J Salgaonkar <mahesh@linux.ibm.com>, Oliver OHalloran <oohall@gmail.com>, Christian Koenig <christian.koenig@amd.com>, Vitaly Prosyak <vitaly.prosyak@amd.com>, amd-gfx@lists.freedesktop.org, Aditya Garg <aditya.garg@linux.dev>, Jason Perlow <jperlow@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Niklas Cassel <cassel@kernel.org>, Diederik de Haas <diederik@cknow-tech.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+	s=k20260515; t=1792079588;
+	bh=HVw7Nmm0VW1a3sl5XHyrI6+aoyrs2z1eR25B+WaHeQs=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=cM9FQrU6LiVZexQnyD/RSRu/KEyxBDWORjo59+NoyN8ppIcaspjtF4wM9B/Qim4KS
+	 8RDAfqeWp/ny0IWEr/T8IFYtrtW79Z8LLJYRYp2mjBlSvN8keOUMRFcIedplYrLCzE
+	 ULc3tQSh/G85xDz8ysCHEx1NSL7eUJKCcUKMMANfIre0SU6o6RJglPA9eRAM8hdjQ/
+	 m1EJzFZmHyz1gL5iSll/M8IOBIlunQKplebkdLxWMU7SU6EUfFpJFWY9hauO6cXrVL
+	 h1FMql5Lz5fALhNwjqpOJA/54uJNApzN3Rogs2h6lUF39hk+VT0zPeGPgj+M1t8ZfN
+	 camhYwBdkU0jg==
+From: Lee Jones <lee@kernel.org>
+To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Quchaosheng <quchaosheng000406@163.com>
+Cc: Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>, 
+ mfd@lists.linux.dev, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20260923083001.606935-1-quchaosheng000406@163.com>
+References: <20260923083001.606935-1-quchaosheng000406@163.com>
+Subject: Re: (subset) [PATCH v5] dt-bindings: mfd: rockchip,rk805: Convert
+ pinctrl to DT schema
+Message-Id: <179207958534.2076854.17430709456309504242.b4-ty@b4>
+Date: Thu, 15 Oct 2026 16:53:05 +0100
+MIME-Version: 1.0
+X-Mailer: b4 0.16-dev-ad80c
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,26 +69,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The pull request you sent on Wed, 14 Oct 2026 15:14:41 -0500:
-
-> git://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git tags/pci-v7.3-fixes-5
-
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/e177c722b3dd9ad432195b5c2cbbfe58c909a821
-
-Thank you!
-
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/prtracker.html
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCAyMyBTZXAgMjAyNiAxNjozMDowMSArMDgwMCwgUXVjaGFvc2hlbmcgd3JvdGU6Cj4g
+cGluY3RybC1yazgwNS50eHQgZGVzY3JpYmVzIHRoZSBwaW5tdXggY29udHJvbGxlciB0aGF0IGlz
+IHBhcnQgb2YgdGhlCj4gUm9ja2NoaXAgUks4MDUgUE1JQy4gVGhlIFBNSUMgaXRzZWxmIGlzIGFs
+cmVhZHkgZGVzY3JpYmVkIGJ5Cj4gcm9ja2NoaXAscms4MDUueWFtbCwgc28gdGhlIHBpbm11eCBw
+YXJ0IGJlbG9uZ3MgdGhlcmUgYXMgd2VsbDogdGhlCj4gcGluY3RybCBub2RlIGlzIGEgY2hpbGQg
+b2YgdGhlIFBNSUMgbm9kZSwgbm90IGEgc2VwYXJhdGUgZGV2aWNlLgo+IAo+IEZvbGQgdGhlIHBp
+bm11eCBkZXNjcmlwdGlvbiBpbnRvIHJvY2tjaGlwLHJrODA1LnlhbWwgYW5kIGRyb3AgdGhlCj4g
+c3RhbmRhbG9uZSB0ZXh0IGJpbmRpbmcuCj4gCj4gWy4uLl0KCkFwcGxpZWQsIHRoYW5rcyEKClsx
+LzFdIGR0LWJpbmRpbmdzOiBtZmQ6IHJvY2tjaGlwLHJrODA1OiBDb252ZXJ0IHBpbmN0cmwgdG8g
+RFQgc2NoZW1hCiAgICAgIGNvbW1pdDogYzJmODI4OGE1OGUyMmZlZWViOWM0NDRiYmFmZjE3OWIw
+MDU4ZTQ1OQoKLS0KTGVlIEpvbmVzIFvmnY7nkLzmlq9dCgoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
+bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
