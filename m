@@ -4,73 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DF0BCC6B38
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 09:46:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22034CC6B33
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 09:48:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kXAocWWGrhommeTjv0rD+0C5kOX4GzHhYF/9TCf77IU=; b=myQxkOUTQguoNE
-	eVK+8DQkwFArt2PItILZaHp801eyarBNunWzsJjgAvPssIadHsAJWg7voBp5j8aMTSDhTaSi4OMzK
-	73xm3oY/DHy3/4iaNX7ZzORl1nbdrkBwsQYMGxIj5+pUOh8Jx44hsFWtChI3miZgibReU2Q15t0vJ
-	Nv1QPrXrdDZkjJqiZmFD0LipwtUNGZYDS84r0OlNFdCMFPBgE9GxaM1wfUoElNy5TnvXNsqXy2XYV
-	wAM0BopDWsgz/Z54C36/5saQM+IJWGR8U52BU+UGAljwxdn6yRMQkmITQeyEpSxYd3BR96X2Le6Lb
-	0DO9unsQbeOYwUnim1Kg==;
+	List-Owner; bh=K4LJCLbqClWmmvAkZ0EebCzVdP+eJHio8IF/clcaS6E=; b=noKgjmaHsHzwN9
+	ldfbiKp3fNaYeyJZ4BIfOMxRmmFgTrmwvCNY3yZfh4UlYR1NT4UZpQdqwGTLXv92RqOsZG3W0TDnw
+	+OsrI2iEtv4PTAzsYUBpJdvHnvCqY1F2pH+RtFVwOD012phmaAxFZJehOLzc6hxsINocAs1yEUJgQ
+	sc76LoojC7Xwj7VW0vC42yMnWa7GzlCKuOUXZpbGIsR3eoWd2SjTgq9lc1FxvRPPf+brt2jNzgGFm
+	3IAxDa/ZkESb9mKRviiLqzcvh0rP2RvMLDZbmFXcnXF9FVwCVA5LTz3WJ8McifUCyYLYumgAeT5iM
+	G6vQohDBexOUMsQLu1Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHI2I-0000000HJHI-43nS;
-	Thu, 15 Oct 2026 09:46:06 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xHI4k-0000000HKbt-1gvR;
+	Thu, 15 Oct 2026 09:48:38 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHI2G-0000000HJCT-3OD2;
-	Thu, 15 Oct 2026 09:46:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 421F960A64;
-	Thu, 15 Oct 2026 09:46:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id EBFF8C2BD00;
-	Thu, 15 Oct 2026 09:46:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1792057564;
-	bh=AgR2linT6h6dXKgUQ5agGAs0DYjDGca+poQtrxWEcX8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Xzf4ba5nP5R81CLT0sSkN+1DUrP3+AY/s9BHC+PQMyDvonIQxUzA6zNo2QL8vxd7r
-	 xb94MPv3ebeXHLv9kiFSRy5DrPhiMbW2yB2omasBrS1Yom3wM6nmMtOqev8s8mgt3V
-	 YiuZHLSkZ9on/D4wUav2dvX/5w+BIjJ7c9xgzi0Vsp/YPTPO2LmkNbNN4A3eso0TDK
-	 FThze1jqNRYooNsLTIfFPE9BgIwM58K7mYIZxDMZS9IUqkX+kIeUApUzsGo1xLlZcj
-	 4kgLzx5lWjZOiTXDKHmVq4WGrfmO+K/Ni4ImnBaeegt/4KQ27JeDOtp0211wh1r73j
-	 zavvCWyE6VnWg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D8CA5CC6B3C;
-	Thu, 15 Oct 2026 09:46:03 +0000 (UTC)
-From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
-Date: Thu, 15 Oct 2026 17:45:05 +0800
-Subject: [PATCH net v5 4/6] can: rockchip_canfd: prevent timestamp work
- from rearming after bus-off
+	id 1xHI4h-0000000HKaW-3w6m
+	for linux-rockchip@lists.infradead.org;
+	Thu, 15 Oct 2026 09:48:37 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69F9jThX2809295
+	for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2026 09:48:35 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=; b=PYQ2LI9aj27depOZ
+	qeweAXNBoA1cgejsFBYuNOalTEdQi3dhHBovBh4X5s67yygNgxEewsmXMGVxJwUJ
+	xknMYhgUc0U7Sl1gvwmfoSE5dAGNJJuDkn+GDtdTh7un98iVQ654iXublSoIG3Sg
+	f8/PFJQdbcAqm40e55coyKkeZVOK6GRgywvAcUQXGRBcvkXlnuBLxfiHkaHOdsz1
+	wmwCWbaM+/YW1xU8d9Nq/H2ax0JHCw5413mffdzYSGHYgbysfsd7RDtp7UYVhM9L
+	wNHziNWZ6WJxj9qi4gJBZqjatGt/8HL8VCV/ZVmkfN3Qytu6KTQuq4NVby86xgfi
+	1zT+xg==
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com [209.85.219.70])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4han54swk1-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2026 09:48:34 +0000 (GMT)
+Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-91b89618384so6344986d6.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2026 02:48:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1792057714; x=1792662514; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=;
+        b=JM/6MUG4lsxwHUss9MLFJYAQbPygn48G5iafPI95Yp2dqmvwPxtB/xrW5ubsW+eVua
+         SimpYMDoBJpuvAiL0r+b5kT/TY8J5HUnuRffuP0DLyY0yeFwh946xDZzCA2YsIQBTu2u
+         uhaJiI7JqtI98c4EFLqjg8LnrLs4np1bso1dZYJ6JCZxpNu5IapNy1YiUS0T7PViREZA
+         A6NdtDGM1movQj9/qfGUh6URr3Y/m3UZyON4p+OSt6ZsuMF5OkUhbujv2cxNXn2o4cD7
+         1cznDsR2uTqtZfDACdHkG/LYxShtIdHW9zhRmg+bbG2ipLBdzp6uD/xb8+oNxRbf7osG
+         CSTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792057714; x=1792662514;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=;
+        b=XT4lCTxBhND1O+2UD1JePwgsXK5XFC2hk2312WWZbjkzPAuMxY6Byu8DO/VBQgYNRG
+         3sY8jhKmxjW7dmuDkTCY/yur8EA8ebYLALsJJP+wqMwrVMjF95YyL1TGXTYIGYaZxcpi
+         SHTk3nWMPN2cruAMw80oJYfjwu9jRtlIooi/Qp/2N8mDKNfruzvji36kCvTnEqbeLgnG
+         nYxGKH3HctuYoZIlNdgvS35UWhE0/RBelahOmyDmtRhjKA0/y92vVJtww4M7B6Utx1k/
+         zba98ruwTmmtjlDiFssqki3wy9b1/aU+H99NtTjldgYkACiwg6ZcpbBlx99KjxYw1SHK
+         cxAg==
+X-Forwarded-Encrypted: i=1; AKwUvBxRsZ1o74ks302PhqY7P7r+pAk/BE9P7mvm2Zt/aONOVwT55dUFhsr2TPEla3Y5HCUKUwVVGEcxTySZWVdrsA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKA5+NKleslB4XUBe6wGuL8HMvQ0LrAHJfk5BgepaRZmHamOj5w
+	6mpslZJfR/9VQh7ICbiT7CeYp2wFoi0oido6bwAxPCTSu3DzmyUHyo+fK3BlLc6gp1UAEnGKab2
+	FzNaJmn9IMPKQLigDphz//Ku66HFbqIjcaRltuOgh5m9C3Tr227chXxo2eqpcBN6wQXCbVgC54t
+	0uTgBt06Q=
+X-Gm-Gg: AYBFou3/6DdDhICncnZyPezsrYHFY/yNGeK+yuIZGIawS5Nl74MLQpxLA9YHyIJzRwu
+	KFPwKfY68kU/lQ/wJHVN4yRJcQHAsOj2hNCPOToV4t/T7dU1q0LfwBJ2OFrJ2xJvt4C7dLRwyqA
+	UdzbcnnyFdDTXiue6mnuxqKWTl8SI6Zo0ZqIPr6mccpIWDgwITi5Mqclf5xfuXo+ZvjcItisqGy
+	eDVuq8hs/72LFVpjdN8lJVZknKR7U3iYfMs1HS0pqDLrPrbLTS4amJv0oG4nq6X5/R2AbOvl8hJ
+	MnMqlmPMiwqOtl6A0giaWQc+T4YXgzeqDrNKJymfj5sO+1PTCy+k4W2Q8HIjYxoa5OsqA21f+87
+	ANyiqi3M0TufnrJDunNsUGA==
+X-Received: by 2002:a05:622a:507:b0:532:d67e:bc2e with SMTP id d75a77b69052e-5359f0634femr356797941cf.0.1792057714113;
+        Thu, 15 Oct 2026 02:48:34 -0700 (PDT)
+X-Received: by 2002:a05:622a:507:b0:532:d67e:bc2e with SMTP id d75a77b69052e-5359f0634femr356797601cf.0.1792057713501;
+        Thu, 15 Oct 2026 02:48:33 -0700 (PDT)
+Received: from [192.168.226.26] ([178.235.128.140])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c3eda622246sm102601366b.70.2026.10.15.02.48.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 15 Oct 2026 02:48:32 -0700 (PDT)
+Message-ID: <812d0272-db2a-4dd4-8e6c-e66145af2db5@oss.qualcomm.com>
+Date: Thu, 15 Oct 2026 11:48:29 +0200
 MIME-Version: 1.0
-Message-Id: <20261015-rockchip-canfd-restart-close-v5-4-ae77327037c9@qq.com>
-References: <20261015-rockchip-canfd-restart-close-v5-0-ae77327037c9@qq.com>
-In-Reply-To: <20261015-rockchip-canfd-restart-close-v5-0-ae77327037c9@qq.com>
-To: Marc Kleine-Budde <mkl@pengutronix.de>, 
- Vincent Mailhol <mailhol@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- "David S. Miller" <davem@davemloft.net>, 
- Wolfgang Grandegger <wg@grandegger.com>, 
- Oliver Hartkopp <socketcan@hartkopp.net>, kernel@pengutronix.de
-Cc: linux-can@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- stable@vger.kernel.org, Cunhao Lu <1579567540@qq.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792057562; l=4366;
- i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
- bh=L729iyLZPqYSYXdNKiWcUHyKMxTpCJWqzC68GEcr5dM=;
- b=0MVJ+BIqIaebv3xImpSH68HgrQQlpVsGpqPfqGQzvOswDDIW5CnxBfoW4ECnLxDbm3AXX8h0f
- Z2G+RLZV0m9AAvXLz6QfL+5OmMkDAa9+wyuZ8DvpAFBJPR50Ou+GzKp
-X-Developer-Key: i=1579567540@qq.com; a=ed25519;
- pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
-X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
- auth_id=1177
-X-Original-From: Cunhao Lu <1579567540@qq.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/4] arm64: dts: qcom: Use DP AltMode defines
+To: Sebastian Reichel <sre@kernel.org>,
+        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Konrad Dybcio <konradybcio@kernel.org>
+Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
+        linux-arm-msm@vger.kernel.org, kernel@collabora.com,
+        Sebastian Reichel <sebastian.reichel@collabora.com>
+References: <20261014-dp-altmode-dt-defines-v1-0-b657c9b6e4c3@collabora.com>
+ <20261014-dp-altmode-dt-defines-v1-4-b657c9b6e4c3@collabora.com>
+Content-Language: en-US
+From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+In-Reply-To: <20261014-dp-altmode-dt-defines-v1-4-b657c9b6e4c3@collabora.com>
+X-Authority-Analysis: v=2.4 cv=RYQFmFtv c=1 sm=1 tr=0 ts=6ad0a172 cx=c_pps
+ a=oc9J++0uMp73DTRD5QyR2A==:117 a=PRfkaYvzSr8QmIIGAkY2Sg==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
+ a=QX4gbG5DAAAA:8 a=EUspDBNiAAAA:8 a=C_hJBzH1aKR8969NbtkA:9 a=QEXdDO2ut3YA:10
+ a=iYH6xdkBrDN1Jqds4HTS:22 a=AbAUZ8qAyYyZVLSsDulk:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDE1MDAzOCBTYWx0ZWRfX2+m9SeMhYmR9
+ BRgofp4fPXNHkVd0n5BL+62Cw9QpUbwRVWdhidIG3V4BKZDahHqGnAEQwnogl1F6EH4dm0ynUFP
+ T7RjvbGAPIHy757qsitZT+TAhpsf3yCki2AgC/GI0RsqgvttRtoIv83fVcxk0KUSjTsbRAahKFP
+ kvgSlecnlFuDDKdrQ3VQO5hWEc83T/jkIcGKNNbtpWhEGppSkDQV8d4VvnZmOTXdCd3alCWIcDQ
+ 6j+tmJht5ZQuI9TaawLjIN1/c9xzClrGfoqcIhLXcLlQsxuiK/zl95HB4S3ACb8gHnQs0mkz1L4
+ eszZlAl6SkZIZRZUPacGXCD3U1S4ylob6kUExt5FNifoMseVy4NraLCorYBbteen/VYNIMK42qi
+ qxQxsdQC2MMnfF9Eramf4Ri+Syow5oOKEa/yQsN9L5ajZA1yPi4c6eVrioycr1r/UXwAv80NYl+
+ VPSJhy9qtfrUYGMLlTA==
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDE1MDAzOCBTYWx0ZWRfXzdJLEUPcybO7
+ khD3C5zN979TmPUv5dCUpzaGhAAGnhqX6rFjrmgbtkejafecP9D2nekS8OcUwG6jhO3SnUtfL+k
+ 0ioZjTE5NVbB6qHTBnuQvexfxXIDeOk=
+X-Proofpoint-GUID: VZ-uO1Hn9OvVPLNZ8bk0-vLhTh3wvQEN
+X-Proofpoint-ORIG-GUID: VZ-uO1Hn9OvVPLNZ8bk0-vLhTh3wvQEN
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-14_01,2026-10-14_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 phishscore=0 bulkscore=0 suspectscore=0 impostorscore=0
+ lowpriorityscore=0 spamscore=0 malwarescore=0 clxscore=1015 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610080000 definitions=main-2610150038
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261015_024836_099034_373F975F 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,135 +156,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Cunhao Lu <1579567540@qq.com>
+On 10/14/26 11:31 PM, Sebastian Reichel wrote:
+> From: Sebastian Reichel <sebastian.reichel@collabora.com>
+> 
+> Use the new USB-C DP AltMode defines for the SVID and the capabilities
+> VDO to make the DTs more readable.
+> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
 
-The bus-off IRQ cancels timestamp work asynchronously. If the worker
-is already running, it can requeue itself after cancellation and keep
-polling while the controller remains bus-off.
+Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 
-Add a dedicated lock and an active flag, initialized once at probe.
-Serialize the worker's active check, counter read and self-requeue with
-start and stop. Clear the flag under the lock before cancelling work
-so no worker can read the counter or rearm after deactivation. Enable
-the flag and schedule the initial work under the same lock at start.
-
-Keep both cancellation calls outside the lock so synchronous stop can
-wait for the worker to finish.
-
-Fixes: 4e1a18bab124 ("can: rockchip_canfd: add hardware timestamping support")
-Cc: stable@vger.kernel.org
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
----
- .../net/can/rockchip/rockchip_canfd-timestamp.c    | 34 +++++++++++++++++++---
- drivers/net/can/rockchip/rockchip_canfd.h          |  4 +++
- 2 files changed, 34 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-timestamp.c b/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
-index ad582afbbd68..0fa791849c95 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
-@@ -30,18 +30,27 @@ static void rkcanfd_timestamp_work(struct work_struct *work)
- {
- 	const struct delayed_work *delayed_work = to_delayed_work(work);
- 	struct rkcanfd_priv *priv;
-+	unsigned long flags;
- 
- 	priv = container_of(delayed_work, struct rkcanfd_priv, timestamp);
--	timecounter_read(&priv->tc);
--
--	schedule_delayed_work(&priv->timestamp, priv->work_delay_jiffies);
-+	spin_lock_irqsave(&priv->timestamp_lock, flags);
-+	if (priv->timestamp_active) {
-+		timecounter_read(&priv->tc);
-+
-+		/* Serialize requeueing with timestamp_stop(). */
-+		schedule_delayed_work(&priv->timestamp, priv->work_delay_jiffies);
-+	}
-+	spin_unlock_irqrestore(&priv->timestamp_lock, flags);
- }
- 
- void rkcanfd_timestamp_work_init(struct rkcanfd_priv *priv)
- {
-+	spin_lock_init(&priv->timestamp_lock);
-+	priv->timestamp_active = false;
- 	INIT_DELAYED_WORK(&priv->timestamp, rkcanfd_timestamp_work);
- }
- 
-+/* The caller must quiesce IRQs and timestamp work before reconfiguration. */
- void rkcanfd_timestamp_init(struct rkcanfd_priv *priv)
- {
- 	const struct can_bittiming *dbt = &priv->can.fd.data_bittiming;
-@@ -93,17 +102,34 @@ void rkcanfd_timestamp_init(struct rkcanfd_priv *priv)
- 
- void rkcanfd_timestamp_start(struct rkcanfd_priv *priv)
- {
--	timecounter_init(&priv->tc, &priv->cc, ktime_get_real_ns());
-+	unsigned long flags;
- 
-+	spin_lock_irqsave(&priv->timestamp_lock, flags);
-+	timecounter_init(&priv->tc, &priv->cc, ktime_get_real_ns());
-+	priv->timestamp_active = true;
- 	schedule_delayed_work(&priv->timestamp, priv->work_delay_jiffies);
-+	spin_unlock_irqrestore(&priv->timestamp_lock, flags);
- }
- 
- void rkcanfd_timestamp_stop(struct rkcanfd_priv *priv)
- {
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&priv->timestamp_lock, flags);
-+	priv->timestamp_active = false;
-+	spin_unlock_irqrestore(&priv->timestamp_lock, flags);
-+
- 	cancel_delayed_work(&priv->timestamp);
- }
- 
- void rkcanfd_timestamp_stop_sync(struct rkcanfd_priv *priv)
- {
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&priv->timestamp_lock, flags);
-+	priv->timestamp_active = false;
-+	spin_unlock_irqrestore(&priv->timestamp_lock, flags);
-+
-+	/* The worker needs timestamp_lock to finish. */
- 	cancel_delayed_work_sync(&priv->timestamp);
- }
-diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index e1debab54534..2743c96ed42f 100644
---- a/drivers/net/can/rockchip/rockchip_canfd.h
-+++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -15,6 +15,7 @@
- #include <linux/netdevice.h>
- #include <linux/reset.h>
- #include <linux/skbuff.h>
-+#include <linux/spinlock.h>
- #include <linux/timecounter.h>
- #include <linux/types.h>
- #include <linux/u64_stats_sync.h>
-@@ -485,8 +486,11 @@ struct rkcanfd_priv {
- 
- 	struct cyclecounter cc;
- 	struct timecounter tc;
-+	/* Protects timestamp_active and worker reads/requeueing. */
-+	spinlock_t timestamp_lock;
- 	struct delayed_work timestamp;
- 	unsigned long work_delay_jiffies;
-+	bool timestamp_active;
- 
- 	struct can_berr_counter bec;
- 
-
--- 
-2.34.1
-
-
+Konrad
 
 _______________________________________________
 Linux-rockchip mailing list
