@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC873CC6B1C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 03:56:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FF95CA9EDE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 03:58:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:References:
 	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vmo9EGgIEeCl5Z0fHepjtsMfXwFVRisMMwn6JRFwEkc=; b=HIOaJwWOVGkwsF
-	veA1bFctMl/kIN1NJcZNA5Ds2Ro3rlDqCZS1LGprQSXbhp6nV4fvvlmtuQRUoAJjFJRydrPWotbHS
-	X7kgIP8MwLQMNUKTqRgcbwi/L4lZarcYVgHIBts8gJbkf5lffS6m4RUkmlls+RKuA07r4q0XCfqfr
-	l1Y0WV+5r7wJemsCPUsLhGbrA5LqbIMsNE+rNJesiy+VjUcBGTyRU/kPgZIMzVXxzp7uAyMJKIqKK
-	RII8h9uQ+PShnrqb0tizrZtHDVNbZh6AfqmePOQzp8c9jX94ALWVPjOWDoKqMjHEv3AVX1Gkh0yXF
-	wIKX1lMW2TG+fPV5LdFg==;
+	List-Owner; bh=f39h8DDvqWlAgecD8HrD+ioibLHHmtwxuRl3i+sd7T0=; b=x4UenWo/MHc/H2
+	m5w5A/Z1u7y9UvSwifBpvzDYByB3/oWmp/3Oump7JBXpiPbdXXN1zHhre/I39Pu61ibZMHihG04VK
+	n3R0gAqM41dRNTyr3q35vLcDTgFc04zo2S5QOZWq15o3kpcDA0CH/HsRRnlE0+HSHA6wr7xcMdT6X
+	pDCSL/6PdZd+BivH2TV/wAYJDGLUMAx07S6tbETw0ZN27kM6cK0cCdmzzfZlIKNVM08awPwEjDnYl
+	xkSMme5KJ9xyvburzyAEFQoJTgK6XpXCY0iw0WvWUUZh7AGF29n5VwCxhXvtj5POFZzB1sUuOfvFf
+	VG2E1HX0SDmtTrK0S2OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHCa2-0000000GlrH-1Z3H;
-	Thu, 15 Oct 2026 03:56:34 +0000
+	id 1xHCbo-0000000Gm4y-0ROU;
+	Thu, 15 Oct 2026 03:58:24 +0000
 Received: from sender-op-o17.zoho.eu ([136.143.169.17])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHCZx-0000000Glnr-0vdv;
-	Thu, 15 Oct 2026 03:56:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1792036578; cv=none; 
+	id 1xHCbb-0000000Gm3i-0S49;
+	Thu, 15 Oct 2026 03:58:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1792036686; cv=none; 
 	d=zohomail.eu; s=zohoarc; 
-	b=HyjvtTwhbqCnEDH+MM5AHhQ87mjpWDv0DrsKtXsvxuq6lhn5N8rGWPQIDyZY+fAh3AwiXa8Xe8gKNdvpdhizsg3rYIKeozFX0ia2GSRiCj5c2xsb6FL/h3xmfTAbUqDsPQh5Jh8U/yD/0CZi0W8xf58qk9HbFWXjr3xClzlQGHU=
+	b=XzPeRgEUlE3s0CSareeggcFzEnRfqc7xoCpj4oo2E82QbQDlix7V9KbvZ06IcxJ9gTngzArzUTu8Ow3hnS1aRWzkj4bGt5IyX1V/G2XM9xXXre3FgXvqDEIWBVpCSZhAKOblOCeOA12su29hYHCisU3xO6Ep//FiMZI0//bwxiI=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
-	t=1792036578; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=OJEWc0eoUwLODa0bYpq9gJ49xJvUkRMXg6H5LcqBKIo=; 
-	b=E2eOfspFM5gCwbCsatAD8Fn64RGT0FWn/DZ21T2Vv7mPZIfNcaJBPbyt6tyxbyE4w8/sHczqOnDHrTzd56qEYsQOgN7zpToITst4OEZuCqK8qcKj1HEtzHAJlsP9QHCB44m8hXXcJ/MMGYJJcgDkbp5t2xrV/r3djHvQzPQvJKw=
+	t=1792036686; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=pifDH0uDw0EMlv5YUttgPbWoNR7hI3QK3uBz9udZ6wU=; 
+	b=APm6ig9UNFz+3FbTT3D47VhHIUfHoLuD+FBpe36tSfRK1owNP9HeEHs5gNYxj+4joCsSS5mXJL66RtNpKJZuCMltMuVEHqcsRaBylNyW/p4CAT5GOtq6RPo9cXi/9c35wZW3HTAV1X4fqE1IoK75Xa1ZS+pKdc4SeHsSTLf90U0=
 ARC-Authentication-Results: i=1; mx.zohomail.eu;
 	dkim=pass  header.i=iav.lv;
 	spf=pass  smtp.mailfrom=iav@iav.lv;
 	dmarc=pass header.from=<iav@iav.lv>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1792036578;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1792036686;
 	s=zoho; d=iav.lv; i=iav@iav.lv;
 	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:In-Reply-To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=OJEWc0eoUwLODa0bYpq9gJ49xJvUkRMXg6H5LcqBKIo=;
-	b=Akc0haoJe+d24pdB1r5qr5Bcd+Rzg071FeSpZ0OaUBwMo+3lG/uVXD9prR3yw8Jw
-	+yU+IVSHY82dU1hfI40eJWMTNT8+27LnGlakJMMMuQtW/TVDIaykx4UkM1jGgrcfk90
-	XGvHILAdm1gFbK6VaI6HvHZKz7m07gmIqnLQQt28=
-Received: by smtp.zoho.eu with SMTPS id 1792036574971162.77080539620772;
-	Thu, 15 Oct 2026 05:56:14 +0200 (CEST)
-Date: Thu, 15 Oct 2026 06:56:12 +0300
+	bh=pifDH0uDw0EMlv5YUttgPbWoNR7hI3QK3uBz9udZ6wU=;
+	b=CZ6T92YOtgOrWHHIxR94ereumsmrWWD6DTCKVTY8K/N+10dtHCVhqhIuwMjV3YpX
+	r6jdNdqtfKPRbFC9HiksDsmVyvOKT2GinsZhkRFVI6G0hRSMMpKSZUBWkRslMMian4S
+	Q9AcHjYd+6rT1uvzOFwT/24GGv6Qo9fjV/ODwSzA=
+Received: by smtp.zoho.eu with SMTPS id 1792036684329824.7527309360931;
+	Thu, 15 Oct 2026 05:58:04 +0200 (CEST)
+Date: Thu, 15 Oct 2026 06:58:02 +0300
 From: Igor Velkov <iav@iav.lv>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Jingoo Han <jingoohan1@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, "Yury Norov (NVIDIA)" <yury.norov@gmail.com>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com, Igor Velkov <iav@iav.lv>
-Subject: Re: [PATCH v6 09/10] PCI: dw-rockchip: Add system PM support
-In-Reply-To: <20260908-rockchip-pcie-system-suspend-v6-9-fbabcca9921b@collabora.com>
-References: <20260908-rockchip-pcie-system-suspend-v6-0-fbabcca9921b@collabora.com> <20260908-rockchip-pcie-system-suspend-v6-9-fbabcca9921b@collabora.com>
-Message-ID: <20261015-m1-tested-by-pcie-v6-09@iav.lv>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>, Michael Riesch <michael.riesch@collabora.com>, Diederik de Haas <diederik@cknow-tech.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Fix devices suspend freeze on RK3568/RK3566
+In-Reply-To: <20260624192726.781864-3-jonas@kwiboo.se>
+References: <20260624192726.781864-1-jonas@kwiboo.se> <20260624192726.781864-3-jonas@kwiboo.se>
+Message-ID: <20261015-m1-tested-by-usb-clk-v2-2@iav.lv>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261014_205629_545678_85365A04 
-X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-CacheID: sfid-20261014_205813_201600_69F8BFF3 
+X-CRM114-Status: UNSURE (   4.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,26 +75,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Tested on ODROID-M1 (RK3568, NVMe on pcie3x2) with 7.3-rc7 and Jonas'
-EHCI/OHCI clock patch: s2idle 4/4, deep 6/6, the NVMe stays usable
-after resume. Without this series it is lost on resume:
-
-  nvme 0002:21:00.0: Unable to change power state from D3cold to D0, device inaccessible
+Tested on ODROID-M1 (RK3568) with 7.3-rc7: without this patch
+pm_test=devices hung while suspending the first OHCI controller 4 of
+14 times, with it all 31 runs passed.
 
 Tested-by: Igor Velkov <iav@iav.lv>
-
-> +	ret = dw_pcie_suspend_noirq(pci);
-> +	if (ret)
-> +		return ret;
-> +
-> +	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
-> +	rockchip_pcie_phy_deinit(rockchip);
-
-When pci_host_common_d3cold_possible() returns false,
-dw_pcie_suspend_noirq() returns 0 without setting pci->suspended. The
-controller is then powered down here anyway, and dw_pcie_resume_noirq()
-returns early on !pci->suspended, so the RC is not set up again and the
-link is not restarted. I did not hit this path on M1.
 
 _______________________________________________
 Linux-rockchip mailing list
