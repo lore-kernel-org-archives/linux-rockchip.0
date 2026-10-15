@@ -4,131 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3451CCC6B39
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 09:00:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A551BCC6B38
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 09:46:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k+1lRQ7tN7k9gj8BdjgK+4GgcpqCTRNPd/u1zg1CHqU=; b=wjDJQou6F3ipAa
-	kC5psF3sQnounw3d5dB64aa+u+x8+CgJcEd6GAF3oBSKSVUKWKRl/lfn/aV3T3B69+gouZ5p2ZwQO
-	mdEfnCpaLqoLvFoiZX9tycBQNGfZM7H3nkcGvScljY45EbyqwAB4ul6FOOgDNjsR21yqJO1c2+ib7
-	jg2BkYPjCm8TZxpzLug47U6UGkifzTTNsZJxrKO/3M698MsMqqE0TFkP16XaIrWzvifaVAh0PuGAW
-	6qYWYYsdDuoK8xfFSIg9ZsBm4pY/36GSZMUb3CEOPgVZkMuHbGQdbiL6YYX7zLfITsJxPBO7PKeIU
-	lLiJivIiRz3skaXTTG+g==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WECs+GYzMrTw6+TsQ+n7cod92eGSA+FgD2wnRDfdcVs=; b=rg+hX1PnQMdsRd
+	5BdmIiSV/X9UXbrF80zNvNNvajGQTEDitybU/FjOTyGw/kYVFqWZmZZAKbWGQEli+N1/6Ahv1oG70
+	Gw1DUCo5VezePpzcFXGfMVGC4uOlptWYJaiys+Tt34kL+cnedebmeuFaDop4Z39e1oHqR6I57nC8M
+	BeYfa+XCr4vVB8bKQuZZjLxNgOJ1YqPWqQ8Uaq53vKSCGqKLmqCDrRstGInkGjiblbGQMeuWulCx2
+	KE/VMpUE1/dvvrkeucOu1eSGB67eBHw21yyUYpdvRhlzt95WkmmEKMqhboWKyxoJYHGkJYHTkxqap
+	/wVXJdS0v1t0g34HUpUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHHKG-0000000HCsr-0fs0;
-	Thu, 15 Oct 2026 09:00:36 +0000
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+	id 1xHI2H-0000000HJDJ-1ajf;
+	Thu, 15 Oct 2026 09:46:05 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHHKC-0000000HCr6-1gwn
-	for linux-rockchip@lists.infradead.org;
-	Thu, 15 Oct 2026 09:00:33 +0000
-Received: by mail-yx1-xb130.google.com with SMTP id 956f58d0204a3-677d35fd1d2so1504388d50.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2026 02:00:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792054827; cv=none;
-        d=google.com; s=arc-20260327;
-        b=rrbzaLLRzDbEjGUwyr31qgLoX9Gn4NKolAwyM9qCXh5NPBb5pWmNMGI5tnUBPC1Pic
-         rL81QQWLT7sny0KsW7I8GTIM0awjg6tDG3i0zne5pb7t6CPrXo6wpkZY6bl1otteEMCn
-         nAvcpnA//+QSPaEP0YZsNV0ln2DDH5GaFSzAjQ90TGQ31eGYqVZ1zX0t/nise3O5t6aA
-         7UVoqgWPSY7HQk68C08CJrjXuIS33/S4G5KG56lYy1ZkcWIAHaylN5zJapD9o2354Lfv
-         kRQe7HmEcqHCJMxo72scjR3W+jDV7jTGmgejveVHlSS/OjMyezzr92y/Vqh8/9uuWcaP
-         2JUg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=H2bwf3Gv5oNr3T6PPFbiYLp5czeo2CNPZ2amlY5zFVU=;
-        fh=l8Fif7AfNU4CbaBW0tgNe8MOn6BBXG81KIX+eZTP7Rk=;
-        b=Rc56PLibl1lW9hxUbH/Nvnj4PMmp8HLqMBrBkA8f8nX+9g+eGhITUhh+cwUYc0rX0w
-         /i5VRUEoLNwsY7Mtf8w7eU5u44jqSm1WgiRC+NP8l2C6Mdp/MY2Sqm25LOoFJEiTNQ4e
-         Y5Ni3iZgLX0AJMl40OLrOJsf7NfLr6C2D3mChNr5/jRTn+UgacyHh/IUveYl7yqMH5C/
-         TcZdHxeThRcLAYokETCSy4JUgBAcBi/5cKL/Svj/twuA8Ty/O0BP/fqpKvC4bCEd7aqW
-         z5H6KBnfo5rimY7YTHhoW/UsJcm5HSyuXY+6y3mB6iFkX+sKcAjW7BB8nyeJOA04oY0y
-         vfyA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1792054827; x=1792659627; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=H2bwf3Gv5oNr3T6PPFbiYLp5czeo2CNPZ2amlY5zFVU=;
-        b=lUrWq00CEXpNQb7Y/jyPMFEXluKqklVVE06erlfq0yZTbwMnfnl2MwgKAuG+QkSsev
-         SzryBikODMRpH/7ffaPDjhQje/nmOxg3i7uGv7jRjQk3NzrMILu4EuQc1ppHzLkFB9Jk
-         OJJGNDvgLSW89Q6RN/76RtLY9oeZXzEuBikpY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792054827; x=1792659627;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=H2bwf3Gv5oNr3T6PPFbiYLp5czeo2CNPZ2amlY5zFVU=;
-        b=FP2agWUM5CFUdU0YGVdB2PUT7IiiBN8svKauEPT7Q0dIxacchL6HoS59dCz6rl1C8A
-         DF4aZ8kinYAlDwbsn919vDoF86ewodUMhOIT1jYX5d7xy4QgsCige08/rokjhtN5AzJc
-         6saby1xWOzkoXSH2Fx3sRuhWwJmmFiZ7kLQGGuq5es/wgH9K/Z60PqWsqsX0rJlwNMRD
-         Vke9YqtevhdrdoaANUOYjWWtGDqQRsbbM2Hg017nNzptUSHH3fUshr6FBf661sgaoWBU
-         L3AaYSujTw5NOPacZ5wAf+TacT7T7bd0ZS9oyW4gscFVqaKwdWEP/a8mpDXXAqPSf4CX
-         mFQw==
-X-Forwarded-Encrypted: i=1; AKwUvBwCysvYua50NkHWt5SfaclvvIzR0ASKwVabc0nx2OrD5LtanqYUjBUG7tV/G4SqzUTEmDUuBbYacs+IPkxpRw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIZQngkewda5qyka9FqVYUtcGWK6DeCKHuyKIaSqC5bOcwo8oJA
-	eBLIzbvBIkAFv81LpIeXv6kMQkk+f5BlBL7ATVhTac5n6ytZQH7BAh4SMk6tCeaIY0qImf/6Af3
-	LC9A+B8L8rOAfxhioxUybijSURheNCU6USN+bL4lj
-X-Gm-Gg: AYBFou2EfgSSUHgYHOvaO1b6aYUPRUFsn5kOfe4JoWFADkJ9kmI0iEiEU9AQfCfsjnk
-	IlZ3P64G/ZWtYvQHG4DiV05YE8VBM1tSmg5AK9eKAbg4g6+5meKw74fTigreH+ZIkZOSnAqHezY
-	3RgmCjKzkrWwhU4rIzdbLzTOHam+jzQpP4CbBBBazcutjucwrUTS4Jifa4jnFPOwAXpQ0lFvdFE
-	5KCUV5XDwja5rAT9TJSS8RgYkZ61HEtI78x204JvpV6iS+qud5AINSwsz0O+d7TCOrlCoC6phYZ
-	P/smfKDOvGOnYQJyWgQ9ZubWfysgMgJHRog4SwN/3Hb6SlXgeT6MfYwb1r/+ZSETmwQ=
-X-Received: by 2002:a53:ac9e:0:b0:675:449d:3d74 with SMTP id
- 956f58d0204a3-679362786a1mr5012542d50.92.1792054826173; Thu, 15 Oct 2026
- 02:00:26 -0700 (PDT)
+	id 1xHI2G-0000000HJBx-0b6M;
+	Thu, 15 Oct 2026 09:46:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E0932436B6;
+	Thu, 15 Oct 2026 09:46:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id B8C1FC2BCF5;
+	Thu, 15 Oct 2026 09:46:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1792057563;
+	bh=SaE49nUJpdyW2sxts16Btp7urzlfh/U7nHcUO3p/JXk=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=Or8i7eFODOTzKvnqux0DqDEvivmTzZxF7hvY7hnZ10vSidsrseZ+ectXSuoz8rh/C
+	 MP6OEYJz82tPQGrTPAs8hKYYDFuxuYwxlR9YIJkageXfB5DjyS1gmvCGmsCnP03g24
+	 brhai1H8OVgcC8j6HACHExs+xcIouZqSc/Obk3IKKEsdPntMIEmMntCx3j4tqtZtYw
+	 P2TNb39FHGn57S0VYhoW8CI6wN6uW6SW1G89e1YRPBC5r7t0Pd6DsRZZsNKAf/98St
+	 jD8YRh+voqTmIFqGF/3++3zGPxl+DTdFEJ4w+jbd2qV9F9HQbEU3t40AIT2a8Tzq+V
+	 ur17FXsu8Hrfg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 958CDCC6B34;
+	Thu, 15 Oct 2026 09:46:03 +0000 (UTC)
+From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
+Subject: [PATCH net v5 0/6] can: fix bus-off restart and device close races
+Date: Thu, 15 Oct 2026 17:45:01 +0800
+Message-Id: <20261015-rockchip-canfd-restart-close-v5-0-ae77327037c9@qq.com>
 MIME-Version: 1.0
-References: <20261014082037.1774672-1-wenst@chromium.org> <20261014082037.1774672-3-wenst@chromium.org>
- <7020a7a6-332e-4fd0-a659-d82eb768614c@linaro.org> <CAGXv+5G1kgyumbj7wGf6rPFbg3spSO0zYmEkn-hZT4qUdJbytA@mail.gmail.com>
- <03375a31-0ac6-47a4-b0dc-6327080e1622@linaro.org> <b4c0761b-34f2-42ad-97e7-ab34ae776281@oss.qualcomm.com>
- <8d4d3ec2-3c97-4a46-97f8-048fdf81b853@linaro.org>
-In-Reply-To: <8d4d3ec2-3c97-4a46-97f8-048fdf81b853@linaro.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 15 Oct 2026 18:00:14 +0900
-X-Gm-Features: AclHuK909vzDVZhhmMGqz8RNS4kIz2k4tldUZDjIEfGnLkXIyAs5uz5oF7-pLmQ
-Message-ID: <CAGXv+5G_ig=k-eH8Cp0ES70WxTHcBS2TVj9VmHaG9caROiAuQQ@mail.gmail.com>
-Subject: Re: [PATCH 2/2] dt-bindings: usb: snps,dwc3: Fix downstream port numbering
-To: Neil Armstrong <neil.armstrong@linaro.org>
-Cc: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi <balbi@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Sven Peter <sven@kernel.org>, 
-	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>, Joel Stanley <joel@jms.id.au>, 
-	Andrew Jeffery <andrew@codeconstruct.com.au>, Ryan Chen <ryan_chen@aspeedtech.com>, 
-	Billy Tsai <billy_tsai@aspeedtech.com>, Michal Simek <michal.simek@amd.com>, 
-	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Peter Griffin <peter.griffin@linaro.org>, =?UTF-8?Q?Andr=C3=A9_Draszik?= <andre.draszik@linaro.org>, 
-	Tudor Ambarus <tudor.ambarus@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
-	Masami Hiramatsu <mhiramat@kernel.org>, Yixun Lan <dlan@kernel.org>, 
-	Troy Mitchell <troy.mitchell@linux.spacemit.com>, Minda Chen <minda.chen@starfivetech.com>, 
-	Shyam Pandey <radhey.shyam.pandey@amd.com>, Wei Yang <yangwei1@eswincomputing.com>, 
-	Senchuan Zhang <zhangsenchuan@eswincomputing.com>, Hang Cao <caohang@eswincomputing.com>, 
-	Li Jun <jun.li@nxp.com>, Peng Fan <peng.fan@nxp.com>, Roy Luo <royluo@google.com>, 
-	Yang Xiwen <forbidden405@foxmail.com>, 
-	Ahmad Zainie <wan.ahmad.zainie.wan.mohamad@intel.com>, 
-	Robert Marko <robert.marko@sartura.hr>, Xu Yang <xu.yang_2@nxp.com>, 
-	Wesley Cheng <quic_wcheng@quicinc.com>, Stanley Chang <stanley_chang@realtek.com>, 
-	Ze Huang <huang.ze@linux.dev>, Aswath Govindraju <a-govindraju@ti.com>, 
-	Roger Quadros <rogerq@kernel.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	asahi@lists.linux.dev, linux-aspeed@lists.ozlabs.org, imx@lists.linux.dev, 
-	linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, 
-	spacemit@lists.linux.dev, Mathias Nyman <mathias.nyman@intel.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261015_020032_512379_6DE3BA11 
-X-CRM114-Status: GOOD (  39.36  )
+X-B4-Tracking: v=1; b=H4sIAJ2g0GoC/5XOS04DMRAE0KtEXtPIXxKz4h6IxbjdzZjPOLHNC
+ BTN3XEGCSWrwLJapVd9FJVKoiruN0dRaE415akHd7MROA7TM0GKPQst9Z2SykDJ+Ipj2gMOE0c
+ oVNtQGuBbrgQUIjnvLKvAohP7Qpw+V/5RTNTE08+xfoQXwnaCT7Ux1ZbL1/rErNby3/ZmBQq2G
+ ge07I1GfjgcbjG/rzuzPpfsFUmDBNxxiDxEtZPmQjL/kUyXWFKwSnqprb6Q7Lnkrki2S/0b65m
+ 33jr5Ky3L8g1uJDbVugEAAA==
+X-Change-ID: 20261013-rockchip-canfd-restart-close-ebde5954f1bf
+To: Marc Kleine-Budde <mkl@pengutronix.de>, 
+ Vincent Mailhol <mailhol@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ "David S. Miller" <davem@davemloft.net>, 
+ Wolfgang Grandegger <wg@grandegger.com>, 
+ Oliver Hartkopp <socketcan@hartkopp.net>, kernel@pengutronix.de
+Cc: linux-can@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ stable@vger.kernel.org, Cunhao Lu <1579567540@qq.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792057562; l=7232;
+ i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
+ bh=SaE49nUJpdyW2sxts16Btp7urzlfh/U7nHcUO3p/JXk=;
+ b=QETCn/MIXGzbMnlWURSFolwVCVhnD284ffEPu2Uaes5BNNT1XuOsddwiBtXd1+UItE9iGHu/X
+ T9xQC9GKcu8BcfdN/7uhLIvQNui/dwms/I9qdDGdbvJyTWo2s8FjKk7
+X-Developer-Key: i=1579567540@qq.com; a=ed25519;
+ pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
+X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
+ auth_id=1177
+X-Original-From: Cunhao Lu <1579567540@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,104 +85,161 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: 1579567540@qq.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-KENjLWVkIE1hdGhpYXMsIHRoZSB4SENJIGRyaXZlciBtYWludGFpbmVyIGluIGNhc2UgSSBtaXN1
-bmRlcnN0b29kIHhIQ0kuKQoKT24gVGh1LCBPY3QgMTUsIDIwMjYgYXQgNDo0NOKAr1BNIE5laWwg
-QXJtc3Ryb25nCjxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPiB3cm90ZToKPgo+IE9uIDEwLzE0
-LzI2IDE4OjM2LCBLb25yYWQgRHliY2lvIHdyb3RlOgo+ID4gT24gMTAvMTQvMjYgMTE6NDQgQU0s
-IE5laWwgQXJtc3Ryb25nIHdyb3RlOgo+ID4+IE9uIDEwLzE0LzI2IDExOjI5LCBDaGVuLVl1IFRz
-YWkgd3JvdGU6Cj4gPj4+IE9uIFdlZCwgT2N0IDE0LCAyMDI2IGF0IDU6MjjigK9QTSBOZWlsIEFy
-bXN0cm9uZwo+ID4+PiA8bmVpbC5hcm1zdHJvbmdAbGluYXJvLm9yZz4gd3JvdGU6Cj4gPj4+Pgo+
-ID4+Pj4gT24gMTAvMTQvMjYgMTA6MjAsIENoZW4tWXUgVHNhaSB3cm90ZToKPiA+Pj4+PiBUaGUg
-RFdDMyBjb250cm9sbGVyIGNhbiBvcGVyYXRlIGluIGhvc3QgbW9kZS4gSXQgZG9lcyBzbyB3aXRo
-IGEgWEhDSQo+ID4+Pj4+IGNvbXBsaWFudCBob3N0IGNvbnRyb2xsZXIuIFRoZSBYSENJIGhhcyB0
-d28gZG93bnN0cmVhbSBwb3J0cywgb25lIGZvcgo+ID4+Pj4+IEhTIGFuZCBvbmUgZm9yIFNTLiBV
-U0IgZG93bnN0cmVhbSBwb3J0cyBzdGFydCBmcm9tIDEsIG5vdCAwLgo+ID4KPiA+IFsuLi5dCj4g
-Pgo+ID4KPiA+Pj4gSU1ITyBoYXZpbmcgY29uc2lzdGVudCBudW1iZXJpbmcgYWNyb3NzIGNvbnRy
-b2xsZXIgdHlwZXMgd291bGQgYmUKPiA+Pj4gYmV0dGVyLiBUaGlzIGF2b2lkcyBtYWtpbmcgdGhl
-IFVTQiBjb3JlIGFuZCBodWIgY29kZSBkZWFsIHdpdGggbW9yZQo+ID4+PiBleGNlcHRpb25zLCBh
-bmQgYWxzbyBlYXNpZXIgdG8gdW5kZXJzdGFuZCBhbmQgd3JpdGUgZGV2aWNlIHRyZWVzLgo+ID4+
-Cj4gPj4gSSB3YXMgaW4gdGhlIGltcHJlc3Npb24gdGhlIHBvcnQgbnVtYmVyIG5vdCBuZWNlc3Nh
-cmlseSByZWZsZWN0cwo+ID4+IGFuIGFjdHVhbCBwaHlzaWNhbCBudW1iZXJpbmcsIGFuZCBjYW4g
-YmUgYSBsb2dpY2FsIG51bWJlciB3ZSB3b3VsZAo+ID4+IHRoZW4gbWFwIGluIHRoZSBrZXJuZWwu
-Cj4gPj4KPiA+PiBJIGRvbid0IHNlZSBhbnkgaXNzdWUgaGVyZSBoYXZpbmcgYmFzZSAwIGZvciB0
-aGUgYmluZGluZ3MgYW5kIHRoZW4KPiA+PiBjb252ZXJ0aW5nIGl0IHRvIGJhc2UgMSBmb3IgdGhl
-IFhIQ0kgcG9ydCBudW1iZXJpbmcuCj4gPgo+ID4gSSB0aG91Z2h0IGJhc2UxIGNvbWVzIGZyb20g
-dGhlIFVTQiBzcGVjIGFuZCBub3QganVzdCBYSENJPwo+Cj4gVGhpcyBpcyBteSBxdWVzdGlvbiwg
-aXMgdGhlIHNwZWMgc2F5czogZWFjaCBVU0IgSG9zdCBDb250cm9sbGVyIHJvb3QKPiBwb3J0IHNo
-YWxsIGJlIGNvbnNpZGVyZWQgYXMgYSBwb3J0IG9mIGEgSHViIGFuZCBudW1iZXJlZCB0aGUgc2Ft
-ZSB3YXksCj4gdGhlbiBmaW5lLCBsZXQncyB1c2UgdGhlIGJhc2UxIG51bWJlcmluZy4KPgo+IEFz
-IEkgdW5kZXJzdGFuZCBob3cgVVNCIGlzIGFyY2hpdGVjdHVyZWQsIGFsbCBkb3duc3RyZWFtIHBv
-cnRzIG9mIEh1YnMKPiBhcmUgbnVtYmVyZWQgaW4gYmFzZTEsIGFuZCB0aGUgd2hvbGUgdG9wb2xv
-Z3kgaXMgYmFzZWQgb24gdGhhdC4KPgo+IEJ1dCBoZXJlLCB3ZSBhcmUgc3BlYWtpbmcgb2YgcGh5
-c2ljYWxseSBzZXBhcmF0ZSBVU0IgYnVzc2VzLCBvbmUKPiBVU0IyLjAgYW5kIG9uZSBVU0IzLjAs
-IGEgY29udHJvbGxlciBjb3VsZCBhbHNvIGhhdmUgMTAgVVNCMi4wIHBvcnRzCj4gYW5kIDUgVVNC
-My4wIHBvcnRzLCB3aG8ga25vd3MuIFRoZSB3YXkgdGhvc2Ugd2lsbCBiZSBudW1iZXJlZCBpcyBu
-b3QKPiBwYXJ0IG9mIHRoZSBzcGVjaWZpY2F0aW9uIGJlY2F1c2UgdGhlIHNwZWNpZmljYXRpb24g
-b25seSB0aGUgZGVmaW5lcwo+IHRoZSB0b3BvbG9neSBvZiBhbiBVU0IgYnVzLCBsaWtlIFBDSShl
-KSBkZWZpbmVzIHRoZSB0b3BvbG9neSBvbiBhIFBDSShlKSBidXMuCgpObywgdGhlIFhIQ0kgc3Bl
-YyBhY3R1YWxseSBzcGVjaWZpZXMgaG93IHRvIGlkZW50aWZ5IHRoZSBudW1iZXIgb2YgcG9ydHMK
-YW5kIHdoaWNoIHBvcnQgc3VwcG9ydHMgd2hhdCB2ZXJzaW9uLiBTZWUgYmVsb3cuCgo+IEhvdyB3
-ZSBhZ2dyZWdhdGUgYWxsIHRob3NlIGJ1c3NlcyB0byBhYnN0cmFjdCB0aGVtIHRvIHNvZnR3YXJl
-IGlzIG5vdAo+IHBhcnQgb2YgdGhlIHNwZWMsIHdlIGNob3NlIHRvIGRlY2xhcmUgYSBmYWtlIHJv
-b3QgSHViIHdpdGggYSBwaHlzaWNhbAo+IGRvd25zdHJlYW0gcG9ydCBhcyBhIHZpcnR1YWwgcG9y
-dCBvZiB0aGUgcm9vdCBIdWIsIGZpbmUgYnV0IHRoaXMgaXMKPiBwdXJlbHkgc29mdHdhcmUgYWJz
-dHJhY3Rpb24uCgpBcyBmYXIgYXMgSSB1bmRlcnN0YW5kIHRoZSBpbXBsZW1lbnRhdGlvbiBpbiBM
-aW51eCBhbmQgdGhlIFhIQ0kgc3BlYywKdGhlIFhIQ0kgaGFyZHdhcmUgcmVnaXN0ZXJzIGdpdmUg
-dGhlICJtYXhpbXVtIG51bWJlciBvZiBwb3J0cyIgaW4KSENTUEFSQU1TMS4gVGhlbiB0aGVyZSBp
-cyBhdCBsZWFzdCAxICJ4SENJIFN1cHBvcnRlZCBQcm90b2NvbCBDYXBhYmlsaXR5IgplbnRyeSBp
-biB0aGUgIkV4dGVuZGVkIGNhcGFiaWxpdGllcyIgc2VjdGlvbiB0aGF0IGRlc2NyaWJlcyBhIGdy
-b3VwIG9mCnBvcnRzIChvZmZzZXQgYW5kIG51bWJlcikgYW5kIHRoZSBVU0IgcHJvdG9jb2wgc3Vw
-cG9ydGVkIGJ5IHRoYXQgZ3JvdXAuCgpVc2luZyB0aGUgZXhhbXBsZSBnaXZlbiBieSB0aGUgWEhD
-SSBzcGVjIG9uIHBhZ2UgMzMwIGFzIGZpZ3VyZSA0LTM1OgoKICAgIFhIQ0kgcG9ydCAxOiBIUyBv
-biBwaHlzaWNhbCBwb3J0IDEKICAgIFhIQ0kgcG9ydCAyOiBIUyBvbiBwaHlzaWNhbCBwb3J0IDIK
-ICAgIFhIQ0kgcG9ydCAzOiBIUyBvbiBwaHlzaWNhbCBwb3J0IDMKICAgIFhIQ0kgcG9ydCA0OiBI
-UyBvbiBwaHlzaWNhbCBwb3J0IDQKICAgIFhIQ0kgcG9ydCA1OiBTUyBvbiBwaHlzaWNhbCBwb3J0
-IDMKICAgIFhIQ0kgcG9ydCA2OiBTUyBvbiBwaHlzaWNhbCBwb3J0IDQKClRoZSBEVCB3b3VsZCBi
-ZSBzb21ldGhpbmcgbGlrZToKCiAgICB4aGNpIHsKICAgICAgICBwb3J0cyB7CiAgICAgICAgICAg
-IHBvcnRAMSB7IC8qIGdyYXBoIHRvIEhTIEVQIG9uIFVTQiBBIGNvbm5lY3RvciAxICovIH07CiAg
-ICAgICAgICAgIHBvcnRAMiB7IC8qIGdyYXBoIHRvIEhTIEVQIG9uIFVTQiBBIGNvbm5lY3RvciAy
-ICovIH07CiAgICAgICAgICAgIHBvcnRAMyB7IC8qIGdyYXBoIHRvIEhTIEVQIG9uIFVTQiBBIGNv
-bm5lY3RvciAzICovIH07CiAgICAgICAgICAgIHBvcnRANCB7IC8qIGdyYXBoIHRvIEhTIEVQIG9u
-IFVTQiBBIGNvbm5lY3RvciA0ICovIH07CiAgICAgICAgICAgIHBvcnRANSB7IC8qIGdyYXBoIHRv
-IFNTIEVQIG9uIFVTQiBBIGNvbm5lY3RvciAzICovIH07CiAgICAgICAgICAgIHBvcnRANiB7IC8q
-IGdyYXBoIHRvIFNTIEVQIG9uIFVTQiBBIGNvbm5lY3RvciA0ICovIH07CiAgICAgICAgfTsKICAg
-IH07Cgo+IFdlIG1heSBvbmx5IHVzZSB0aGUgaGFyZHdhcmUgSVAgcG9ydCBudW1iZXJpbmcgaW4g
-dGhlIGJpbmRpbmdzLCBub3QKPiB0aGUgc29mdHdhcmUgYWJzdHJhY3Rpb24uCgpBbmQgd2UgYXJl
-IHVzaW5nIGhhcmR3YXJlIHBvcnQgbnVtYmVyaW5nLiBJdCdzIGp1c3QgdGhlIG51bWJlcnMgdXNl
-ZAphcmUgdGhlIHBoeXNpY2FsIHBvcnQgbnVtYmVycyBmcm9tIHRoZSBYSENJIHJlZ2lzdGVycywg
-bm90IHRoZSBsb2dpY2FsCnBvcnQgbnVtYmVycyBvbiB0aGUgcm9vdCBodWJzLgoKSW4gZmFjdCwg
-d2UgY291bGQgc2F5IHRoYXQgdGhlIHBvcnQgbnVtYmVycyBvbiB0aGUgcm9vdCBodWJzIGZvciBY
-SENJCmFyZSBtYWRlIHVwLgoKPiBXZSBjb3VsZCB1c2UgdGhlIGJhc2UxIHRvIGRlc2NyaWJlIHRo
-ZSBEV0MzIHBvcnRzLCBidXQgaG93IHRvIGRlc2NyaWJlCj4gYWxsIHRoZSBwaHlzaWNhbCBVU0Ig
-YnVzc2VzIGEgY29udHJvbGxlciBjYW4gZXhwb3NlID8gV2UgbWF5IG5vdCBsaW1pdAo+IHRoZSBi
-aW5kaW5ncyB0byBVU0IyLjAgYW5kIFVTQjMuMCBwb3J0cyBvbmx5LgoKVGVjaG5pY2FsbHksIHRo
-ZXJlIGlzIG9uZSBidXMgZm9yIFVTQiAyLjAgYW5kIG9uZSBidXMgZm9yIFVTQiAzLjAuIEJ1dApj
-dXJyZW50bHkgZm9yIFhIQ0kgaW4gRFQsIHdlIGRlc2NyaWJlIHRoZSBoYXJkd2FyZSBwb3J0cyBk
-aXJlY3RseSwKcmVnYXJkbGVzcyBvZiB0aGUgVVNCIHByb3RvY29sIHRoZXkgc3VwcG9ydC4KCkkg
-ZG9uJ3Qga25vdyB3aHkgd2UgZG9uJ3QgZGVzY3JpYmUgdGhlIHJvb3QgaHViLCBidXQgbWF5YmUg
-aXQncyBiZWNhdXNlCnByaW9yIHRvIFhIQ0kgdGhlIGNvbnRyb2xsZXIgYW5kIHJvb3QgaHViIHdl
-cmUgdGhlIHNhbWUgZW50aXR5PyBFdmVuIGZvcgpYSENJLCB0aGUgcm9vdCBodWIgaXMgbW9yZSBv
-ZiBhIGxvZ2ljYWwgZW50aXR5LgoKQW5kIEFGQUlDVCwgdGhlIGhhcmR3YXJlIHJlZ2lzdGVycyBk
-b24ndCBkaXN0aW5ndWlzaCBiZXR3ZWVuIHBvcnRzIG9uIHRoZQpVU0IgMi4wIHJvb3QgaHViIHZz
-IHRoZSBVU0IgMy4wIHJvb3QgaHViLiBUaGUgcG9ydCBjb250cm9sIHJlZ2lzdGVycyBhcmUKanVz
-dCBpbiBhbiBhcnJheSwgaW5kZXhlZCBmcm9tIDEgdG8gbWF4UG9ydHMsIGkuZS4gdGhlIHBoeXNp
-Y2FsIGluZGV4LgoKPiBIb3cgYWJvdXQgdGhlIFVTQjQsIGRvZXMgaXQgdXNlIHRoZSBVU0IzLjAg
-cG9ydCA/CgpJJ20gbm90IGZhbWlsaWFyIHdpdGggVVNCNC4gQSBxdWljayBzZWFyY2ggc2F5cyB0
-aGF0IGl0IGNhbiB0dW5uZWwKVVNCIDMueCwgRFAsIGFuZCBQQ0llLCBhbmQgaXQgZG9lc24ndCBo
-YXZlIGl0cyBvd24gVVNCIEhDSSBkZWZpbmVkLgoKU28gSSdtIHRoaW5raW5nIHRoZSBVU0I0IGNv
-bnRyb2xsZXIgd291bGQgYmUgbW9yZSBsaWtlIGEgbmV4dXMgbm9kZQpvciBtdWx0aXBsZXhpbmcg
-bm9kZSwgb3IgcGVyaGFwcyBsaWtlIGEgVVNCIEMgY29ubmVjdG9yLiBJdCBoYXMgaW5wdXQKcG9y
-dHMgZm9yIGFsbCB0aGUgcHJvdG9jb2xzIGl0IGNhbiB0dW5uZWwsIGNvbm5lY3RlZCB0byB0aGVp
-ciByZXNwZWN0aXZlCmNvbnRyb2xsZXJzIChYSENJLCBEUCwgUENJZSkuIFRoZSBiaW5kaW5nIHBy
-b2JhYmx5IHdvdWxkIGJlIHZlcnkgbWVzc3kKaWYgb25lIGNvbnRyb2xsZXIgc3VwcG9ydGVkIG11
-bHRpcGxlIG91dGdvaW5nIHBvcnRzLCBhcyBlYWNoIGRvd25zdHJlYW0KcG9ydCBoYXMgYSAzLXRv
-LTEgcmVsYXRpb25zaGlwIHdpdGggaXRzIHJlc3BlY3RpdmUgdXBzdHJlYW0gcHJvdG9jb2wKaW50
-ZXJmYWNlcy4KCgpDaGVuWXUKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+This work started from a real failure on a production robot using a
+LubanCat-5IO with an RK3588. RX continued, but the TX queue remained
+stopped and subsequent sends returned ENOBUFS. The interface still
+reported ERROR-ACTIVE, and the hardware indicated neither a bus-off
+condition nor a pending TX request.
+
+While testing the echo-loss fix with fault injection, I discovered a
+separate race between bus-off restart and device close. This series fixes
+that race; the fix for the original TX stall will follow separately.
+
+Rockchip currently cancels restart_work in close_candev(), after freeing
+the IRQ, disabling RX offload and stopping the controller. A concurrent
+restart can re-enable the controller and interrupts after IRQ teardown,
+and requeue timestamp work that accesses registers after runtime suspend
+has disabled the controller clocks.
+
+The CAN core checks netif_running() before scheduling or starting
+recovery. A new close_candev_cancel_restart_sync() helper lets Rockchip
+wait for any restart already in progress before tearing down resources.
+The final close_candev() call retains cancellation and echo cleanup.
+
+Rockchip restart masks the device's interrupts and drains active IRQ
+handlers without disabling the shared interrupt line. It also drains
+timestamp work before reinitializing the controller and timecounter.
+Shared IRQ handling stays suspended until initialization is complete.
+Timestamp locking prevents workers from rearming after deactivation and
+keeps timestamp conversions consistent with timecounter updates.
+
+The bus-off path drains TX submission and RX-side echo users before
+publishing BUS_OFF, protecting the CAN core's echo flush during manual
+recovery. Consumed RX FIFO entries are dropped while TX is disabled to
+prevent self-transmitted frames from reaching ordinary RX. Startup
+serializes carrier restoration, IRQ resumption and queue wake with a new
+bus-off. The series also fixes RX offload cleanup when request_irq() fails
+during open.
+
+The following issues were also identified during this work:
+
+- Races in the Rockchip bus error counter cache.
+- Incomplete runtime PM clock cleanup in Rockchip during removal or
+  failed registration.
+
+These two issues are outside this series. When I have time,
+I will send separate patches to fix them one by one.
+
+Hardware testing used a LubanCat-5IO running a Linux 6.18 PREEMPT_RT
+kernel with this series backported. Tests covered 2,700 ranging
+request/response exchanges and 630 seconds of continuous traffic,
+including three naturally scheduled timestamp worker runs. RX, TX echo
+and TX completion hardware timestamps were present throughout, with no
+backward or abnormal jumps.
+
+Test-only instrumentation captured 20 close/IRQ interleavings, including
+15 with multiple FIFO entries. In every case, consumed self-transmitted
+frames were dropped after TX was disabled, the FIFO was drained, and
+traffic resumed after reopening.
+
+All 100 classic CAN loopback tests, 20 automatic and 20 manual restarts
+using synthetic bus-off injection, and 20 down/up cycles passed. No
+timestamp worker ran during about 300 seconds after close, and no
+deadlocks or WARN/Oops were observed.
+
+---
+Changes in v5:
+- Drop consumed RX FIFO entries under tx_lock when TX is disabled
+  instead of only skipping echo filtering.
+- Link to v4:
+  https://patch.msgid.link/20261015-rockchip-canfd-restart-close-v4-0-ad149ff79450@qq.com
+
+Changes in v4:
+- Serialize timecounter_cyc2time() with the worker's timecounter_read()
+  and startup's timecounter_init() using timestamp_lock.
+- Update rkcanfd_skb_set_timestamp() to take a non-const private pointer
+  and document the expanded scope of timestamp_lock.
+- Link to v3:
+  https://patch.msgid.link/20261014-rockchip-canfd-restart-close-v3-0-f0eb41090242@qq.com
+
+Changes in v3:
+- Replace disable_irq()/enable_irq() in Rockchip restart with device
+  interrupt masking, mask readback, irq_suspended and synchronize_irq().
+- Use release/acquire ordering when resuming the IRQ handler.
+- Initialize timestamp delayed work once at probe and synchronously
+  cancel it before restart reinitializes the timecounter.
+- Balance RX offload enablement when request_irq() fails during open.
+- Prevent timestamp work from reading the counter or rearming after
+  deactivation, with cancellation outside the lock.
+- Drain TX submission and RX-side echo users before publishing BUS_OFF,
+  protecting the core's pre-restart echo flush.
+- Serialize carrier restoration, IRQ enablement and queue wake with a new
+  bus-off; suspend shared IRQ handling during open until startup finishes.
+- Link to v2:
+  https://lore.kernel.org/linux-can/tencent_82C93561D200C84C24608C80049C23EEF80A@qq.com/
+
+Changes in v2:
+- Split the series into the common checks, the cancellation helper, and
+  its use in Rockchip.
+- Check netif_running() after the do_set_mode capability check and before
+  the restart notification, echo cleanup, and carrier update.
+- Only queue automatic recovery for a running interface; keep reporting
+  bus-off and make the log message match the scheduling decision.
+- Add close_candev_cancel_restart_sync() in linux/can/dev.h and use it in
+  close_candev() without changing the existing cleanup order.
+- Replace the Rockchip mutex and closing flag with an early call to the
+  helper. Drop the extra close-path IRQ synchronization and mask readback.
+- Retain IRQ exclusion around hardware reinitialization in the restart
+  callback.
+- Link to v1:
+  https://lore.kernel.org/linux-can/tencent_5802EE88434010229EDF7A53084D994C6106@qq.com/
+
+To: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Vincent Mailhol <mailhol@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+To: "David S. Miller" <davem@davemloft.net>
+To: Wolfgang Grandegger <wg@grandegger.com>
+To: Oliver Hartkopp <socketcan@hartkopp.net>
+To: kernel@pengutronix.de
+Cc: linux-can@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+
+---
+Cunhao Lu (6):
+      can: dev: prevent bus-off recovery when the interface is not running
+      can: dev: add close_candev_cancel_restart_sync()
+      can: rockchip_canfd: cancel bus-off restart before closing the device
+      can: rockchip_canfd: prevent timestamp work from rearming after bus-off
+      can: rockchip_canfd: serialize TX with bus-off and restart
+      can: rockchip_canfd: serialize timecounter timestamp conversion
+
+ drivers/net/can/dev/dev.c                          | 12 ++--
+ drivers/net/can/rockchip/rockchip_canfd-core.c     | 67 ++++++++++++++++++++--
+ drivers/net/can/rockchip/rockchip_canfd-rx.c       | 26 ++++++---
+ .../net/can/rockchip/rockchip_canfd-timestamp.c    | 43 ++++++++++++--
+ drivers/net/can/rockchip/rockchip_canfd-tx.c       | 16 +++++-
+ drivers/net/can/rockchip/rockchip_canfd.h          | 11 +++-
+ include/linux/can/dev.h                            | 12 ++++
+ 7 files changed, 162 insertions(+), 25 deletions(-)
+---
+base-commit: 24a19b953e2a3d0ea5a8c4951a0ab8f32720c907
+change-id: 20261013-rockchip-canfd-restart-close-ebde5954f1bf
+
+Best regards,
+--  
+Cunhao Lu <1579567540@qq.com>
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
