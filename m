@@ -4,145 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF113CC6B36
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2026 23:47:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E0CDCC6B2D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 01:40:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0/8LQZGeMLV2RWbHL9kq9H5THPNXjKn/ldMIIsyCuFM=; b=uqt2yaddENvqkN
-	2BpdfAH4sK5IMfH7tYevANv8LRaKCYRaR15aCie5gvh/jiYrAhvw9+d0B1prGQ+W2crkv4KG0N3cC
-	X/H30YTZekNtHtPLpAIBiG6klccEAuLNMzLW79NrHDAqXMFIboSMWk4pRxBduB2RjfTppXUSWSjox
-	Uj/+VYDtB4en5jmQzOjWMDKsTeiGZxxVenHgrysqhp/heVs1cOif3DYrNjihghsO+Vj9Q4y9Gjzml
-	7GUrs8HM1aMYL0ONCmTnOSwdklE1uwJb7oHiEj6327YUfcHqTzp2VhNgt1wuH8RIuPnzqAq+yVoSy
-	Dd+RVZM6Ktc2ZEpPdYZA==;
+	List-Owner; bh=khzcbZKQ1X2Iph2e2VHfoXSyTcxsmc7ZcsBSpSczSe8=; b=EPz/0JbmohYf+g
+	UptkDBw8+xjewzJMcv4XTKiGKDnuMQIEq23gWD0MCzsNOV9A+OujG+Nj/8lrY6tXENt++awNekvfH
+	4PDdwpyQ1UdV7cJ6GjK1n6B6+qYy1ANJUqAzeqluoummUNyzZoleQq8lqGDi7/bCW8LDwzrAVLzMl
+	QLI1BNYQ1Xq8lvVgQ+HxmX++gWirv2gC2Y2oxL0wOkxLkYAH/TXMZ8eNGUErVhcD74YVPz08w3SPi
+	3Fs1eJIF1EWKFCAVsj1HrU2dp2ZjBQvsdOxhp/x4ljCbcIpM2PyhJc3q6HGIfBhVlNFupgzCxhOHT
+	Rur99Y4iUwCiIMrSO9sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH8hL-0000000GTGx-0kbL;
-	Wed, 14 Oct 2026 23:47:51 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1xHARe-0000000GaXE-45cz;
+	Thu, 15 Oct 2026 01:39:46 +0000
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH8hH-0000000GTFf-3sV9
+	id 1xHARc-0000000GaWL-0vjR
 	for linux-rockchip@lists.infradead.org;
-	Wed, 14 Oct 2026 23:47:49 +0000
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69ENKFVa1682633
-	for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 23:47:47 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=8jeQjHDKcOHCXmCoyag9tPF5
-	EdS/R/OQDxIBgOt2FOY=; b=LSCWDxQwT4suNSOnBFbCQ7rfN+pgjj16sC1Fqza/
-	LD7YzSGPrkPPTmsXIJnfzfyoENc2oNnRMAfD2+GN1A7pyUlReFCB1DLIaYIWm93u
-	59gdvlM/1NP8rSjQthbco/PWpU0ehjYRrZFtcsND5TMvdeZH8Xt+eHwH8RmCP5ON
-	TwR5G0E/6kMI+/uYKiR221325vASNsyMQ60zxtkwdM9ToWu04Ief4EEnPS/O+8R9
-	jMuJ3LsjMd+SbarNRQyNVPZuB+YKiaIAiIXZNdzi6KN003SX+XuH+KNmJQjpdwWD
-	wHBNJ9rrAfbXwN8Dwp2iyaQ7A5W9Q/8LyXOY/aBwNosVqQ==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hacb01rbf-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 23:47:47 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-93e46c120dfso128082385a.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 16:47:47 -0700 (PDT)
+	Thu, 15 Oct 2026 01:39:45 +0000
+Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-cd633ef819bso293056a12.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 18:39:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792028383; cv=none;
+        d=google.com; s=arc-20260327;
+        b=Md3XsQirta+Pmd5Xzd/eMY75lH7m+WUyX+jZTwh8gd5oKmrxdntSCJdv2sc76KIxvy
+         lyeQ0Eod25cEnWDgpNTJp2X0bpC8UrnDFk35gLqcXJwgLZzI6z6ljI2EQF8U7D2SWGyL
+         WIUe81N5ZwrbCNsd4LZEI5t7d1tNhKPFJtjlVkMwfHguYM7/DmRYZr5JfDu+4qAJ9t2U
+         wzx+jJ8ma855m8VGVKBYM1vmwaFgmbAMPGvS8K6loIYxC2Cnz7LzsKQTMXQ+JEfAREo2
+         kYZiAHFlrszLyVkaBAfiXXGZHwmMP1jBS6doujXnfI7a20GahAOy5D8uq95IrQzXhAk3
+         xBhg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=7UAKkSVFiLjeCKqwwiBA8/TCsyeb/yPhvR9ZVVpCVjM=;
+        fh=CD1UgfQl9tfe0U70Jnv1X2dVP9W65oyqECOnlQvZdqA=;
+        b=s7zy9bCT0jD10Ve3zlsyt48I8IXxRBTZHvWIxGbF88pwy12Nmb6Dk9Rb96t3nuhout
+         qxMJ1BGaD2pysRFg4SaX5fgzypXhMdnTWIyVXTxjb5xQTFVqKaYFS/IdXuv1qZ8HCqOc
+         ql5LMCEFj/MBOIJD6eNkyj72v658lDRWqet6MlScTQWOBdJaVzXb0Chd+vBXyciKMhM9
+         UlS7siMhUa1vkbJsnKnb12AE2enZIkS6CyR1CzXJWkO+oscVCHU/WcQC2Bbkztcwr36D
+         hQwP0WMkyldyFgL8ZdmNJR3p3JvuVtbhaBBBc0wgddkkL49ujNV8SAJ3iiH5Wn9uy9vF
+         s4bQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1792021666; x=1792626466; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=8jeQjHDKcOHCXmCoyag9tPF5EdS/R/OQDxIBgOt2FOY=;
-        b=Z5yLRz4T9Flvg1ju8eF9h+/kBXrx74qYbBPFLD/F6ra0ANgSH52OXBbECuynrjBVcD
-         x3RGOJmYKPs7VIVitsOcXO68nLayMnAt35YH5EShbhYgvE5+8V/HMKgnVjAMS+oB7lav
-         ediFO+VIoZQMWbsqzpwRhEdnc5O3hm1mN+jnNep0cFzO6ebaeFvBeJRa+XjyWJk4H+uA
-         BuT+gdp1KRA02Oe7dtn5Ycd3DnuZHQIcW7mS5PrhmoSsTChvSWt9rhCnYrBT3SnkOchv
-         +CJ/8lHjjkYTATfZvULP8u0dcPOuGqNs9pVgzAopuutDvzT48dvh7YP/l38LManZId1w
-         xm3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792021666; x=1792626466;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+        d=gmail.com; s=20251104; t=1792028383; x=1792633183; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=8jeQjHDKcOHCXmCoyag9tPF5EdS/R/OQDxIBgOt2FOY=;
-        b=KouyLuAKNJBvOWNrOGrVExW3ArCdNOgamAnM8S13P3DkilhKNfUldum8yrLNFpR4KE
-         7ZepSfhsLQNHd7acZi7aB9syV35RClI9/1adTGjBBGyH5o03TQmoyu+7Q0Krkh8DE+dJ
-         CXyIdjq76qQoA8yUnzguJ2p4bO7cWz157Nxtq3DE95ZlHu9eKJf9ncImpqeCIwSfAVOS
-         nFeVPTd0hTPCSzzSth0J2ahN2f3IWxG+S/ZfSwcqOktvE5lXvssNo5K4QuXrXyQkFSZn
-         714v9w6Twr6nnFDlItlolNV3ttjjTwzfwDUDJEw6qmujmgdLUVV+N5Szg2GLsUU3rC7M
-         Lrkw==
-X-Forwarded-Encrypted: i=1; AKwUvBz0y4X2+cxHOSuSSAVcg2rewBbSdsukLhmt1Agb4mNEmAg6NCfoBl3rkwMS2sq/cNHbdz2rntPm8fH35V+XOQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYL8rbZafD/DpFa5fcLNRaNBWHvxHeILquO6LrRK4/xdWKmrBzg6
-	tEXDPla8Qbho5+AoV7RxkVEmJPQoZV1taMI1pH7vyIzc1fhCBgkCYOGqYU08REI6PqOsTnYzk8D
-	vh3txrXKBPTTD8KgBcG+l/mrSGEoxcT6WrSayRDvCYLocu+6/1fUF3GwBiElN2QfuFZ6qCtojRr
-	Q=
-X-Gm-Gg: AYBFou06SQYWjvkNjIq03EkcYiMBInXdZPm7kcT3iF6iJcp39GnHWu1GkhSjFknxS+M
-	oMRD3djhaTJCuCwEjMvbi3eJrO2Pp5ZdzXJ1y9AQZv2wirZFGAk2P+pkZyC7heXg2gNikzb8dU5
-	Q6q3aJLQuav1dIl50e0qcML0KvGp9vV0zhtxR3PxDRUXwsimckzCyDEHrK2IpCL7QT0jqdxpnZa
-	v+XVvVe0UDIdJKV3ImUBQDzIgibUMZIh3+ypJPHuk5+5ewjTPHFCF8veH6pNE5wfBA0zQcMcmmL
-	IZSpr/me2+ahh69RTI4iR38fc0ByG27JH152W6DcovSmS7VYqfqaGgFgL3Qizkgu1i3e2j+DweZ
-	wQoIOzOOiBe+VQ8kCECC1cRAKPc1peHSLqk2QUqVNZ/KOoEEY0XeuysySgWlWP3cP7JpahAcmcG
-	HwI9N49e9ccgb9
-X-Received: by 2002:a05:620a:84c3:b0:939:ed29:8ad with SMTP id af79cd13be357-93ebd0bf49emr2568371585a.3.1792021666294;
-        Wed, 14 Oct 2026 16:47:46 -0700 (PDT)
-X-Received: by 2002:a05:620a:84c3:b0:939:ed29:8ad with SMTP id af79cd13be357-93ebd0bf49emr2568368585a.3.1792021665765;
-        Wed, 14 Oct 2026 16:47:45 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3aafdeaa3afsm2113211fa.14.2026.10.14.16.47.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Oct 2026 16:47:42 -0700 (PDT)
-Date: Thu, 15 Oct 2026 02:47:39 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Sebastian Reichel <sre@kernel.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        Rob Herring <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konradybcio@kernel.org>, linux-usb@vger.kernel.org,
-        devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
-        linux-arm-msm@vger.kernel.org, kernel@collabora.com,
-        Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH 3/4] arm64: dts: mediatek: Use DP AltMode defines
-Message-ID: <mtiuiy5rfqsozygax7fuifbotn2vno2irdtkc6bew2xxasd2mq@uypohil5zz2g>
-References: <20261014-dp-altmode-dt-defines-v1-0-b657c9b6e4c3@collabora.com>
- <20261014-dp-altmode-dt-defines-v1-3-b657c9b6e4c3@collabora.com>
+        bh=7UAKkSVFiLjeCKqwwiBA8/TCsyeb/yPhvR9ZVVpCVjM=;
+        b=HMm9xyT7ZvLHd8OA8c53ds1gEH/66EWr5ZfpEfqgDcp2cfm0A7l9IQ7OxFMZQhRcEO
+         srHXhfLaA3fNRS0vwficq7UejnhjOOadRfB5RdDnLA4ikHw2u2Y80gdSatcMQmUoAACI
+         NEJ1ocbLXXktnkweMqSpzVOHJsKk2nKr2bCoFvD5FA99hvf9H6OUHMMphMLrphzBQzgG
+         hnCB2QqChV1k6vgHPVs/m6mzW3kkEsqKCEJMYCWzS+/2GSEq8xxk+xXAlxQBPmoQ6quU
+         lp9ojPTDbLt8q6TkfUEgSwH842+sw0CDIofxqT8Ji9v9c0NZMx7UrWBqxaRmXAuMpWAr
+         DDpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792028383; x=1792633183;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=7UAKkSVFiLjeCKqwwiBA8/TCsyeb/yPhvR9ZVVpCVjM=;
+        b=zV3Gp4SOxWOX9DG3qTpm12Lkq0MOnPw7EoK0q7rOUJmGTc1bXRbnTKGiAyFm8Sk6Pc
+         77ykdl0qywgTUqL1or63gRmRHECn81S5qxXVGLwq0u42GQjhcW2uBHGrABK1//nTp/6I
+         CfLUDxGFMOtYljAp82GdSFTvm2xCuIeijPmyX1NDB7E/bEMU5wxzXp2xXtVTCifhSXAl
+         pUeANpyNKaFESEWHMTZdCS3ciNtryVXHOFCl/LyatXuLvBIczjIiBLPhWuWKvyk6UpYf
+         8DFXSWXt78x9dIjCk22VB7lyOcrbsb2o7XUATIbL1rgKAp9QtCCQYE6xteq3k5YYalaJ
+         BnLg==
+X-Forwarded-Encrypted: i=1; AKwUvBwaYSnn68VjHPgEPWVPNUj63p942o4lX5sQL4xac4pCLjl+R/Sd+42iYWej3WHm45boLYy4dE21eqM3lPRXJw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJTErWuuK5wVFNfiIQrA4qujNS+O0JNhVfhvECT7npUkDaLKPk8
+	6JaqA579yUj9LQ2Ar8bfLvXkjIF4jHU4jjEaoMQe1TMhEsCUHHoAqg40S8aZ7Hkr5DITIiHfqaz
+	eWKBIAWp9ZFaQxj00mDdCFpsQEbSbhys=
+X-Gm-Gg: AYBFou0VMJAOJ2lICT3GF9VXcesy7pNfFmWsAG6XObBGPZv1eq2uxBHAucDQBw7bHJC
+	qSIMayR84dNl82kDsp+Y32tjATH8kx0aAylg/+UrrXtsqyzsluxu98wt8Bsnseu9o72gkF1DE4T
+	2F1u2hRwjVppCK6lc0K0XDWjpyVoRDIloVIV/Vf4yYOfkhqdjKxGKbsjE4awZxsxCcmQ8wrTguM
+	Oo2/hdFRYliwAeoq0gI23Th9uBMR4njR0qU3j82uJ4IOyt0R/73Soux5YGwsoOSM3lxiTfJe+uD
+	O84pTzlH6Filnb9O3lfYxeIZ1DobbD9aZ4ZP/P5NMftfPAPex4HnNGYUUVTS9Gd+T6yWhp7yOKM
+	W75RlwnPFR5YJoGl5rjSWJdCj5FFV01bg4T6n7EK/9ZmOErdPqXivPuu4OxaJqycR+Jg=
+X-Received: by 2002:a17:90b:4acc:b0:3a0:e1f7:9b04 with SMTP id
+ 98e67ed59e1d1-3ab3a60ac9amr16312045a91.12.1792028382966; Wed, 14 Oct 2026
+ 18:39:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261014-dp-altmode-dt-defines-v1-3-b657c9b6e4c3@collabora.com>
-X-Authority-Analysis: v=2.4 cv=VKpIDNPX c=1 sm=1 tr=0 ts=6ad014a3 cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22 a=QX4gbG5DAAAA:8
- a=Gdl50fq9-iV3HN9amUMA:9 a=CjuIK1q_8ugA:10 a=bTQJ7kPSJx9SKPbeHEYW:22
- a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDE0MDA5NCBTYWx0ZWRfX5xwKedorf3Qt
- 69M6mzUKCZhjG+j3p2RSCKy62sK7GcW+YNyejjIgsuHapafJVdn1S4fJvIYJ/ZpxR4LEDm999Q8
- uGVaUKp6cYBfKhQGicOPN7yzzYrnE3Q=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDE0MDA5NCBTYWx0ZWRfX/HefvMBKXlbw
- 3iEKW1VPNfobZ8S4WU70qOzZscugNa3+PV6/oi9aqnw98sdVN5OLeSKrXnYjJXw52XTMHS2c3Qn
- X4S271HuELr1v+SGMtlcm2Motptnod067p+FachDFyuYD7Bn3SwrH5Zpo47Kw3Uum6HNRF/umVB
- MBYYfQjXw/Egkn4PJIr7nq0J8n6BTqcMqsQgY0vVYqBUfs5AXkXoGfOmGG1zBDF5A+U+hLYwDZO
- StfdTz/rA3W8/SaBwl3eYbl6Y7m2CXOCngGHkVGCxV5mLeHfStQG3KeIn6GeYcx/IkccGDlqraA
- TrvpGe83HjfVhAAAaV2Z+1UVm8owZEjbKOi+IoTswVJn48W36eZVIapKz6CgfrvBHwyAkZO4QRW
- UU9GwIcRzkYL7w175tDRomSCP4KBWZtX5Jw6xQG8DNyc0u5fPHbiuaoIXpvI9naG74cgMpdeFXY
- s6Tqg90W+6YB9W+56BQ==
-X-Proofpoint-ORIG-GUID: a5KzWRQJBwogMbBwNEq0CB5Sp0XHYW04
-X-Proofpoint-GUID: a5KzWRQJBwogMbBwNEq0CB5Sp0XHYW04
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-13_01,2026-10-14_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 bulkscore=0 lowpriorityscore=0 impostorscore=0 suspectscore=0
- malwarescore=0 phishscore=0 spamscore=0 clxscore=1015 priorityscore=1501
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2610080000 definitions=main-2610140094
+References: <20261008103831.542533-1-phucduc.bui@gmail.com>
+ <20261008103831.542533-22-phucduc.bui@gmail.com> <87o6cyxyau.wl-kuninori.morimoto.gx@renesas.com>
+ <CAABR9nHvCfabGfBu85bm1r=hP3b0ZiCsgZfShhOv3gNUfjjhGg@mail.gmail.com>
+ <87se2aw3ot.wl-kuninori.morimoto.gx@renesas.com> <CAABR9nG-YJZEdj6pVD-gbGU6J2EfRMQYsKd7u0UTgfrWOyAPXA@mail.gmail.com>
+ <87qzhtyxw6.wl-kuninori.morimoto.gx@renesas.com> <3a6759c7-84bc-46ff-93f1-965c7e8dd4d0@tuxon.dev>
+In-Reply-To: <3a6759c7-84bc-46ff-93f1-965c7e8dd4d0@tuxon.dev>
+From: Bui Duc Phuc <phucduc.bui@gmail.com>
+Date: Thu, 15 Oct 2026 08:39:29 +0700
+X-Gm-Features: AclHuK8C1u90VDPCucQhY3afyuLfcxP0SCIJrlA3M2hLxVwcjMsqinLCGr2nhSI
+Message-ID: <CAABR9nFA5p=5hnMoxFHLtmGEj4kvfrN6M6UFPnm9hRQv_CAP6Q@mail.gmail.com>
+Subject: Re: [PATCH 21/24] ASoC: renesas: msiof: Fix msiof_close() being
+ skipped on rollback
+To: claudiu beznea <claudiu.beznea@tuxon.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261014_164748_142190_FB43B907 
-X-CRM114-Status: GOOD (  21.08  )
+X-CRM114-CacheID: sfid-20261014_183944_257713_4EF3DD09 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,79 +115,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: imx@lists.linux.dev, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Xiubo Li <Xiubo.Lee@gmail.com>, Venkata Prasad Potturu <venkataprasad.potturu@amd.com>, Frank Li <Frank.Li@nxp.com>, Cezary Rojewski <cezary.rojewski@intel.com>, Zain Aboobacker <zainaboobacker33@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, Pengpeng Hou <pengpeng@iscas.ac.cn>, Bo Shen <voice.shen@atmel.com>, Neo Chang <YLCHANG2@nuvoton.com>, Fabio Estevam <festevam@gmail.com>, Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>, Heiko Stuebner <heiko@sntech.de>, Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, Geert Uytterhoeven <geert+renesas@glider.be>, Chris Bainbridge <chris.bainbridge@gmail.com>, Shengjiu Wang <shengjiu.wang@gmail.com>, wangdicheng <wangdicheng@kylinos.cn>, Magnus Damm <magnus.damm@gmail.com>, Vinod Koul <vkoul@kernel.org>, Kees Cook <kees@kernel.org>, Vijendar Mukunda <Vijendar.Mukunda@amd.com>, povik+lin@cutebit.org, linux-rockchip@lists.infradead.org, Charles Keepax <ckeepax@opensource.cirrus.com>, Ravulapati Vishnu vardhan rao <Vishnuvardhanrao.Ravulapati@amd.com>, Sascha Hauer <s.hauer@pengutronix.de>, Nicolas Ferre <nicolas.ferre@microchip.com>, Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, linux-sound@vger.kernel.org, Nicolin Chen <nicoleotsuka@gmail.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, Mark Brown <broonie@kernel.org>, u.kleine-koenig@baylibre.com, Syed Saba Kareem <syed.sabakareem@amd.com>, Biju Das <biju.das.jz@bp.renesas.com>, Jaroslav Kysela <perex@perex.cz>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, Sang-Heon Jeon <ekffu200098@gmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Kai Vehmanen <kai.vehmanen@linux.intel.com>, patches@opensource.cirrus.com, Linus Walleij <linusw@kernel.org>, linuxppc-dev@lists.ozlabs.org, Takashi Iwai <tiwai@suse.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Md Shofiqul Islam <shofiqtest@gmail.com>, Bard Liao <yung-chuan.liao@linux.intel.com>, asahi@lists.linux.dev, Pengutronix Kernel Team <kernel@pengutronix.de>, Andrei Simion <andrei.simion@microchip.com>, David Rhodes <david.rhodes@cirrus.com>, Hemanth Selam <hemanth.selam@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 14, 2026 at 11:31:51PM +0200, Sebastian Reichel wrote:
-> From: Sebastian Reichel <sebastian.reichel@collabora.com>
-> 
-> Use the new USB-C DP AltMode defines for the SVID and the capabilities
-> VDO to make the DTs more readable. This also fixes up mt8390 Genio
-> platform incorrectly announcing UFP_D (upwards facing) support. This
-> feature is unfortunately not supported by the SoC.
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi |  8 ++++++--
->  arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi | 10 ++++++++--
->  2 files changed, 14 insertions(+), 4 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-> index 669eaec662f3..02f8b33d64ac 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-> @@ -527,8 +527,12 @@ PDO_FIXED_DUAL_ROLE |
->  
->  			altmodes {
->  				displayport {
-> -					svid = /bits/ 16 <0xff01>;
-> -					vdo = <0x001c1c47>;
-> +					svid = /bits/ 16 <USB_DISPLAYPORT_SVID>;
+Hi Claudiu, Morimoto-san,
 
-USB_SVID_DP_ALTMODE
+> >
+> >> For rz-ssi: in DMA mode, the driver registers the generic dmaengine
+> >> PCM component, whose .open callback already applies the integer
+> >> PERIODS constraint via snd_dmaengine_pcm_open().
+> >>
+> >> Could we drop rz_ssi_pcm_open_dma() instead, and keep the return
+> >> value fix only for rz_ssi_pcm_open_pio()?
+> >
+> > It seems fine, but I don't know detail of rz-ssi.
+> > Claudiu, what do you think ?
+>
+> That should work. I'll test v2 once it's out.
+>
 
-> +					vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
-> +						      DP_CAP_UHBR_13_5_UNSUPPORTED,
-> +						      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
-> +						      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
-> +						      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
->  				};
->  			};
->  
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-> index aef908df530e..3f7d57dfcf93 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-> @@ -597,8 +597,14 @@ PDO_FIXED_DUAL_ROLE |
->  
->  				altmodes {
->  					displayport {
-> -						svid = /bits/ 16 <0xff01>;
-> -						vdo = <0x00001c46>;
-> +						svid = /bits/ 16 <USB_DISPLAYPORT_SVID>;
+Thanks for your help and feedback. I'll send v2 now.
 
-USB_SVID_DP_ALTMODE
-
-> +						vdo = <VDO_DP(DP_CAP_DPAM_V2_0,
-> +							      DP_CAP_CABLE_TYPE_PASSIVE,
-> +							      DP_CAP_UHBR_13_5_UNSUPPORTED,
-> +							      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
-> +							      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
-> +							      DP_CAP_SIGNALLING_HBR3,
-> +							      DP_CAP_DFP_D)>;
->  					};
->  				};
->  
-> 
-> -- 
-> 2.53.0
-> 
-
--- 
-With best wishes
-Dmitry
+Best regards,
+Phuc
 
 _______________________________________________
 Linux-rockchip mailing list
