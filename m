@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07B90CC6B33
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 01:46:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14192CC6B30
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 01:46:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=geIm3+DN2+88YqenzwuAlw0qQTygaBO2u7ymd/DmvOg=; b=CC5czJgieA6Qiz
-	hd/3K9IiWAPI8825EhWtdo91AOl4k6Y1lOgJyfnSGNaC4Vfu+rqRU7Xk88x05rI53NIENfZeW/lJg
-	Joc3094fb4iLaNParwy15xXesz4de53g/kx1ln3vyoQi/IUbDnlU2LTJH6jmUxsj5gLiYTXmz1dRn
-	G/o63+tHMuev85nUbsn2avwEmdk2YFLD1md9dVMC6La4XsKX2LmKZak+oucStpJ5T29Qlhjl/zA7X
-	iyJIRnpTZzLegL+b6Cwmml75/iUuq0gQJ2XiRvsrQmVdGotxOTw2AGZrhZYkXsGP7e3GyD5cN6rGQ
-	ARCrNtfzr6jXTwoFAHWw==;
+	List-Owner; bh=uefRidfszarXgqbvpljOKnQtaYXWiJCpqFdxlwY9ZjU=; b=MfxYwL7hnKvW/R
+	J5UfDSA/uN7/+DG7Jujdflvxd/YdLyNM98EQjjAz5IaRq9cgR336WKHSpxns+MOJ+4HrjHhxqC0Bz
+	Hj3fKfP1lFNbwp7bYL1TzCk3uF+Fd2Y2YjTuHa/V+3dqKve7Frcm9jpHDlZja3/mrDAzeLGNVT3ie
+	dggci57PgCXyq6GuA9TJtmx6bTqTpgKwAcAMU1fEqN4j654HAvdm44VAQP51cxvB5vMnB/XWkQQ9p
+	L87ZYW0UVMjN+GlldFj0BR+tNHWA90ybm8/1/Tgowk953bG+EKlNIS3/Uvm6/iN2OOsTDPJJRe2+F
+	uVGiP+Frxv1HjR2KzzAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHAXy-0000000GbYS-2v6J;
-	Thu, 15 Oct 2026 01:46:18 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1xHAYH-0000000Gbdh-08Hh;
+	Thu, 15 Oct 2026 01:46:37 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHAXv-0000000GbXF-0sKC
+	id 1xHAY9-0000000GbbZ-26iE
 	for linux-rockchip@lists.infradead.org;
-	Thu, 15 Oct 2026 01:46:16 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2e8fe8e343fso18304215ad.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 18:46:14 -0700 (PDT)
+	Thu, 15 Oct 2026 01:46:33 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-2e95bd1c14cso1947065ad.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 18:46:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792028774; x=1792633574; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1792028788; x=1792633588; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=kUuyyTReTSIMtXgKEYicRWK2Sg4dljNH29dcQFqlL0M=;
-        b=khX0k+CAbDodT0m1e/s5wlcJd8olpid7ryIOpKwpAMOv2KC5S10JPi1088S6JJTNNX
-         +7jKZa1xSKSJ2OhV9QFGqhBkWn6oVGQr5XxKRJ5cxsiC/HIgB7aNsp3uwL/fZv2GX78g
-         BJKF6tcjerYJebOOqSMewcM88/gqjFIqWDzMnsPn16A6vofkrJZ3RgXpotCrystiLGt/
-         uHcSm9hlbt+SoOCvC3zlfipeovPLXHB/+AKEqXMFBtkNpaCFcvWYLmKp+o7pwcPS42ld
-         WUTVFp/8iN0WkByUft+0eoD9DXuqvJzaBAcDNDpzAGFt2MfNWy3pHBVIccnMgErKU4VN
-         lVMA==
+        bh=FVoaE90uxAa4MGE2u5YmtFWHqpvVUok70EqIpA+eTKA=;
+        b=shgII2k/r0RTMnOgV/OIC8tlr8Fha0AudORJwW0AiyXYzrXLxJKwnJJUFzbVij4FaG
+         TKr63z7dfJu3oT0mC/f/SyeVXuCRKe2CGUxAus/Fhr90deL6/a4bs+Q7ZuYzrNKoeqMb
+         /7XzVBrzCrM3qFqyb6ANaOh2FblWAxtepc5LcGo+Hwggc4XaxYPBKzFsN2aB3/Dj7nSh
+         xG+zYdEpOvVJ9OtHR0aLF+UN7vLWYeWzRAqZNHU5O4DhXyUH904oWeqJDwS3s3DNvBLH
+         6gz+X8ftqeaajFZ/Bsq+6EZNBLt6GOJzWrfO2HCKapLT4hJmywzEpKCmRwBKw6V98KYu
+         /hrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792028774; x=1792633574;
+        d=1e100.net; s=20260707; t=1792028788; x=1792633588;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=kUuyyTReTSIMtXgKEYicRWK2Sg4dljNH29dcQFqlL0M=;
-        b=0EJ7jS9ywbP7VG/p2iEGKU+vfnt5kjVmCaMTWflGvUF49+hj9DYcsfuJiCXYsSuFKv
-         eEmv1ElIUGueNmxtI7U3FzlpkznxTjJvS7PL3oB2VhOGeMxjxSDayd61o3cwM5njcZ5F
-         L2ZWAdkyhUPJh7ExzJWUCi46trFCYCqE9y4SOxWhiDhvbSTsHcOyfl7FA4zNo3SwC+Qx
-         DVmA2ZaHf381tMI9q6LSH7j+DQe6Z0c/bhXg0iqY7sAZcF1Mogfo71zgHORk81dfwwph
-         cwMBf6orZ2l5M5ZITeUKSpejrO1bJ+4iyPOFDTpXyKHwGkMMPI8/AyZ0bjHdm3OtskHP
-         Zc+Q==
-X-Forwarded-Encrypted: i=1; AKwUvBzGu1a9Gtu4VDZeX6v+VxUPEiZNJhvdTXXvBiSyzx+i4s7v87KxiifQOpHI8r7wxtEOtrI0tVQCusimjZeFXg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJE2IVqYc8MDV1QJUhPcVx4O4NrsrdIJWfJMucFeGZRCmbI+Ws6
-	XlMLa+Jfo9q9paC+/vGxKHE/DMV1H+r+M3K/9qUkXeGspnH650714pmP
-X-Gm-Gg: AYBFou0AyFVlwYbdMwXy50I0q0EN/oiw4byFoXzgp4omuxAwdHmC9RRMP8CTbYvyH+x
-	TkEje6/5Sjcesw9JlYRWCY0Wn4bHKcL7ShT3sz/Jia4sq9jNRE/QqAbC/3bI9VlDsL0YnA3NenD
-	OX6xLFIZROIzSCwLE1Pa0XuSunyT7yyqd7wI/b3gKSr/q5ugDGHqMahafS0af7ud6nDqtlpkJVr
-	fNKs1cP++iBwwfeqyiiOahNGYKtNQL+OqaotLuIVIjfoto/q6KnN93SiHWALj/MQfyv5JOqigt+
-	6ekhvb65j2lN8iFkuMpZxJBmEtO2H8XJs92xYxjoI2PRmwiskZBYBrrCcHERaU60vUgF1Yh/Jea
-	f5OUt/mLaMWnbLXy8bgMLjfMvEHx/smgav/NkzChYMRvrlnL5bV4k6mczP74z20DL30MTp+YASP
-	e9A5A/2ny9xJKwKGZYC3hSzuefioWjjbSjFFA+FIxUgReizRfui2zZWIEilc/neltbNKBgAmcFF
-	Zz63ro20aywdSywSaeRod56S7/qd1MuEpKuMcEJrA/IAf8z0RPj+qB0R0uZzfayDOjGq+eoqEYR
-	kekC2i8Cto8Kjg==
-X-Received: by 2002:a17:902:cec2:b0:2dd:c0ff:e72b with SMTP id d9443c01a7336-2e842e02a57mr138459075ad.61.1792028774224;
-        Wed, 14 Oct 2026 18:46:14 -0700 (PDT)
+        bh=FVoaE90uxAa4MGE2u5YmtFWHqpvVUok70EqIpA+eTKA=;
+        b=0GTOuOmBi9RkgU2YDw0C544EI4k18vxGc2k3O+nL2Z2bq5Qu/wf9d+CtFYTOJs9rBm
+         ClN7LzwSnIH0f70LkZjL0fFWqXYN/4DTSNwIN32tgoFCaUvH9Uyv635P6pzi47RO3Guy
+         76zcyiQaOW2oJIO+ebDSx/ahC+oThM4PTo7U6POhLgfNABUsfuYlPsztP+UK8a4exIzR
+         HjULMvJGf2PLMR/ZxiTSdVwPlawPRJ55mRpskI0VzXhZjJ9k4vBzsVkK4DUhLWY5mnVo
+         XVsZBF0E6xInfBzc5HvCcoNOl/1OHBLOWHWtQXpfM7NpcZpfkAjSVnIFGxBeOFdrJpwh
+         +bzQ==
+X-Forwarded-Encrypted: i=1; AKwUvBx780B6msPDpxEljnRBShQPJ0UCJkyyxJ+QeFWK0KbKKZxlPbfT8U+PFOvv5w1PD9+mt/yIz2L4+9MUoGlyrA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYI6Hp+Ab2M1ep7xOa4g0pxGsPKkliU1ZToA7/ZboIu8G17im6BY
+	CZyMSLhoQzkQAwJWJnH54uvDd4+11Bl+c8bPEB/UtUbaX+Y07+PxbgUW
+X-Gm-Gg: AYBFou0jX1cn42MvidZ98OmNAm8H5/DSQ5FUyfi8ZI+tI8PI/43WpholnIx+cNggE0p
+	fNrRAJ0M1t2XOuiqGATovrUcrfh2piBJrlFIYIlhvhG4EpUHAmOUdDlwqPxBLQKccOpBato+zx/
+	MYung28t+yhU6jQUG5uDlF/osnyxl6ZQKkr0l2+h6320I0XEXUbRIBuKktsEygVrzcqBw/sSBFV
+	67OMtECuLOv7ZoXpUK4MP2aQ3qGMGPSQMrbRW+0TFTN6PdgtVhwMQSPShRUQ7MqwmnTj2T51x8p
+	vX+7oSy2YEUIjERViYFf/qVEUqF4cBcbp1uYG82f+uiNsEFNFySHZMS62GHdxVPrPto9aYLINxS
+	eRjUxBgfmR+mW/atnAWk2b3zRKDyOAlbO84OZHZnegaqYQtzzQCUZcAYgdTxap6Zuneg8BZVd4l
+	SRCbsIo+QKfA0ahegrIp0zX/owD40Bn+YuXAh43t5srp6STN6NRGl+wgNTzCkS+sjzzUULCBZlP
+	Z7GuenGsUgYpNfIFrVdztFgkELuoJ2Rz/J19yfvoh8IMjfZSYaGf5nkx5FBCqYzfkP6eKnzutar
+	+sWxnrcgR/CTAg==
+X-Received: by 2002:a17:903:38c8:b0:2e5:e3da:be04 with SMTP id d9443c01a7336-2e84304792emr134212015ad.59.1792028788486;
+        Wed, 14 Oct 2026 18:46:28 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2e8422b8cc1sm73202995ad.54.2026.10.14.18.46.00
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2e8422b8cc1sm73202995ad.54.2026.10.14.18.46.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Oct 2026 18:46:13 -0700 (PDT)
+        Wed, 14 Oct 2026 18:46:27 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
 	Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
@@ -103,16 +103,16 @@ To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
 	Biju Das <biju.das.jz@bp.renesas.com>,
 	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
 	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2 08/25] ASoC: apple: mca: Ensure the DAI is marked as started on success
-Date: Thu, 15 Oct 2026 08:43:07 +0700
-Message-ID: <20261015014324.5569-9-phucduc.bui@gmail.com>
+Subject: [PATCH v2 09/25] ASoC: atmel: atmel-pcm-pdc: Fix atmel_pcm_close() being skipped on rollback
+Date: Thu, 15 Oct 2026 08:43:08 +0700
+Message-ID: <20261015014324.5569-10-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261015014324.5569-1-phucduc.bui@gmail.com>
 References: <20261015014324.5569-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261014_184615_249261_1EED1DFE 
-X-CRM114-Status: GOOD (  14.43  )
+X-CRM114-CacheID: sfid-20261014_184632_753834_1713027D 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,54 +132,36 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: bui duc phuc <phucduc.bui@gmail.com>
 
-snd_pcm_hw_constraint_minmax() may return 1, which is then returned
-from mca_fe_startup(). ASoC only marks the DAI as started when
-.startup() returns 0.
+snd_pcm_hw_constraint_integer() may return 1, which is then returned
+from atmel_pcm_open(). ASoC only marks the component as opened
+when .open() returns 0, so .close() can be skipped on rollback.
 
-This currently has no functional impact, as mca_fe_ops has no
-.shutdown() callback. Still, return 0 explicitly on success to
-match what ASoC expects and ensure the DAI is correctly marked as
-started.
+Return 0 explicitly on success.
 
+Fixes: 92dfa6198623 ("ASoC: atmel-pcm: split into two file")
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/apple/mca.c | 16 +++++++++++++---
- 1 file changed, 13 insertions(+), 3 deletions(-)
+ sound/soc/atmel/atmel-pcm-pdc.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/sound/soc/apple/mca.c b/sound/soc/apple/mca.c
-index be702b2942a5..26022a42a95e 100644
---- a/sound/soc/apple/mca.c
-+++ b/sound/soc/apple/mca.c
-@@ -516,6 +516,7 @@ static int mca_fe_startup(struct snd_pcm_substream *substream,
- {
- 	struct mca_cluster *cl = mca_dai_to_cluster(dai);
- 	unsigned int mask, nchannels;
-+	int ret;
- 
- 	if (cl->tdm_slots) {
- 		if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK)
-@@ -528,9 +529,18 @@ static int mca_fe_startup(struct snd_pcm_substream *substream,
- 		nchannels = 2;
+diff --git a/sound/soc/atmel/atmel-pcm-pdc.c b/sound/soc/atmel/atmel-pcm-pdc.c
+index 374f93fa6e0b..4cedf2ad934d 100644
+--- a/sound/soc/atmel/atmel-pcm-pdc.c
++++ b/sound/soc/atmel/atmel-pcm-pdc.c
+@@ -295,6 +295,13 @@ static int atmel_pcm_open(struct snd_soc_component *component,
  	}
+ 	runtime->private_data = prtd;
  
--	return snd_pcm_hw_constraint_minmax(substream->runtime,
--					    SNDRV_PCM_HW_PARAM_CHANNELS,
--					    1, nchannels);
-+	ret = snd_pcm_hw_constraint_minmax(substream->runtime,
-+					   SNDRV_PCM_HW_PARAM_CHANNELS,
-+					   1, nchannels);
-+	if (ret < 0)
-+		return ret;
-+
 +	/*
-+	 * ASoC only marks the DAI as started when .startup() returns 0.
-+	 * Since snd_pcm_hw_constraint_minmax() may return 1, explicitly
-+	 * return 0 to ensure the DAI is correctly marked as started.
++	 * ASoC only marks the component as opened when .open() returns 0.
++	 * Since snd_pcm_hw_constraint_integer() may return 1, explicitly
++	 * return 0 to ensure .close() is not skipped on rollback.
 +	 */
 +	return 0;
++
+  out:
+ 	return ret;
  }
- 
- static int mca_fe_set_tdm_slot(struct snd_soc_dai *dai, unsigned int tx_mask,
 -- 
 2.43.0
 
