@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C78D8CCA465
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 18:37:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD80CC6B38
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 18:52:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n6cxdIoiMv8bbOkK72vX19H3/EAQR9A1pafDZRC1BWE=; b=WnT+9ednQaODBP
-	vwKqGyUuYfVGG0gzir+uqxguj9Le9u3TXIi8AVhE1vIl6FoQVBhq89XhRGRaRLEbkrnw4aCseR33u
-	Jut6tSiN0wZfl+M7TZtgeevAUXlea/UJ6oajq/+NFghKXWbnTJ3CBKpVY01JSjG1jQDgVOx8s2yy7
-	rc1C6aPJKHKTXx+O0qQ2xHLrYI2qwwbnoFZFaaYVKygDW0ZPSpK768vrIdBgjqlx20ulWRF/3pMRA
-	TB1ajoY+lDP2xt0lv5gdEddX/ooivO0KFvwR0HDCt76k5E2QDbFXy3zBWq0Ij9p5+/xQalWsRGiDL
-	3CfPSZB6lVwZa8Niq79w==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tER7flnD4RftecTPcua0u79fuFpxcKsGITLlRfA7V4E=; b=NAQTqZ02SGBUj/
+	Zm3pBbf7s8wq9tCtq/GFTUWrHTvghSlpWgg6MICm+e/Jhw8ja/d61aAkWF6mY5vYJatNhnYOagrum
+	TtCr3ohhRkxmkiaLib6rZdwnXeTDzGt4MEgAgiPLaL6mdPSlNgP8f/UxPe1hvVDgzJ+zjhva+m9AG
+	zplAg9xdNs9UE2/LSP4I2rE0wnSTheD0rbb0Ye8AcnfE7adBd/QQUv9P4b/9G7eRW2+fDHTTu1h44
+	sU692/yvpfZtrp9UZzFxvFHz8i5M81D31ELTogEVO8bgm4XCQ9CmAme9J+e/LNGrxXRsJDYn7ZgdP
+	0BlkG3O+oCU9mFuq2Q1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHQKE-00000001BCe-0uDS;
-	Thu, 15 Oct 2026 18:37:10 +0000
-Received: from sender5-op-o11.zoho.com ([165.173.182.11])
+	id 1xHQYY-00000001Czq-1ccm;
+	Thu, 15 Oct 2026 18:51:58 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHQK7-00000001BAC-3U8K;
-	Thu, 15 Oct 2026 18:37:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1792089408; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=CuWzWNG412sDNpIVBCmeo+WtprfTM7ZyG+yUBzd1MdznPwZoQseROmiH1vA+dzieTpp+eoXzBx/yTafA+jonkYw5MnW3Ir/LiT6rQqFSkDmWcCLWs7EbkFWMYREbwym3JZ9lyla6LYfV8RDgrNlLztPaS8vGSSK6s+XqP2kTCoM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1792089408; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=SBCToxam7lH6D1Zy4CTeR8nhuH4qVrhsoveYwS13PKc=; 
-	b=J8HfK+pkKuWPvTlEFjVwkJgolkWl3s1jKU9Prgj6r17WeuQnLC+Wev1CHUugdn7vE757yIUu7/OJHP2PSQOLbzUfxOJ4da5/Bb92iUlWH33LcFP38kNWacNe+ct/6iw1LIXY9Xa1c7xmJ39TOgj4xnE5RTv7THBy8GiPjWk3eOQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1792089408;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To:Message-Id:Reply-To;
-	bh=SBCToxam7lH6D1Zy4CTeR8nhuH4qVrhsoveYwS13PKc=;
-	b=cBYCwRLgF9N7aPy3H8aFbSHbNioMm/BGKK3zaKxfQpssdkm3FaLPqhJH6ZpdAqQY
-	F1ICdhmWBjaOcJ3uhbfv1zWUdGZvDsEg9+gWfAfFv4V0tZCgAHLoRNArQJ0jps+1yR0
-	vR7rNXHa0CdG+IwciZ4xqXDyP/m4dnbKVDBr+aHI=
-Received: by smtp.zohomail.com with SMTPS id 1792089405357896.4451913582732;
-	Thu, 15 Oct 2026 11:36:45 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 8F2C418036E; Thu, 15 Oct 2026 20:36:40 +0200 (CEST)
-Date: Thu, 15 Oct 2026 20:36:40 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Igor Paunovic <royalnet026@gmail.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>, 
-	"kernel@collabora.com" <kernel@collabora.com>
-Subject: Re: [PATCH v16 4/6] usb: dwc3: rockchip: support PHY reset
- notifications
-Message-ID: <atEZ1pHZOqoIoQma@venus>
-References: <20260924-b4-rockchip-dwc3-rockchip-glue-v16-0-126a2e9133c3@collabora.com>
- <20260924-b4-rockchip-dwc3-rockchip-glue-v16-4-126a2e9133c3@collabora.com>
- <asA211DtVMDPAuAL@vbox>
+	id 1xHQYW-00000001CzE-3bop;
+	Thu, 15 Oct 2026 18:51:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 830EE429CD;
+	Thu, 15 Oct 2026 18:51:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 5D63CC2BCF4;
+	Thu, 15 Oct 2026 18:51:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1792090316;
+	bh=1dzvgxln+eWwNsg9VVLAQoObHp1kZXAmcMPbWrIWUGI=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=BDtQ/H9240qHfpFhXPRul95ldjWLptYIs6WjJgpPhdaSF9HWvF+SPS2lXl3VEO5sc
+	 znwXDqxFYdsomh0zh/Fz3yaANgn8UOocEkEziNgKdjqN2OKF3FXwOvo1VVlPPLSEwW
+	 mQlcBqytx+Uo+6f4EKL8/fhIxrYR6G89V0i9P50rBxfQJTVCxobg/fe/b5SzaUy2cG
+	 ZFh8oJsd0+QIUyB+GJEkQGzG1fEniam95t75cat8uUZPZKGKS+6X7pYrmQUUWV5piT
+	 EaA+hUAIHRQDGQrAXUvIzZDPqcsclNxZ6zJ48NVfVq4Oo69Bkat+R+zlB1ro3m76aN
+	 RZv8LWF1AGHJg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A4EACCA465;
+	Thu, 15 Oct 2026 18:51:56 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Thu, 15 Oct 2026 21:51:50 +0300
+Subject: [PATCH v2] genirq/kexec: Do not take the bus lock of an interrupt
+ chip on the crash path
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <asA211DtVMDPAuAL@vbox>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/292.75.81
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261015_113703_936055_4FE4C850 
-X-CRM114-Status: GOOD (  46.74  )
+Message-Id: <20261015-kexec-irq-bus-lock-v2-1-2af15f0757b6@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAMUg0WoC/32NQQ6CMBBFr0Jm7Zi2lEZceQ/DAuhUJhDAVhsM6
+ d2tHMDle8l/f4dAninAtdjBU+TAy5xBnQroh3Z+ELLNDEooI4WocKSNemT/xO4dcFr6EZ2+2Ko
+ 2RuvSQh6unhxvR/TeZB44vBb/OT6i/Nm/uShRoqid6apSldqIG7fxPEVoUkpfIn/K67EAAAA=
+To: Thomas Gleixner <tglx@kernel.org>
+Cc: Radu Rendec <radu@rendec.net>, Marc Zyngier <maz@kernel.org>, 
+ Eliav Farber <farbere@amazon.com>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>, Baoquan He <baoquan.he@linux.dev>, 
+ Heiko Stuebner <heiko@sntech.de>, kexec@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4880; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=WElKsqp4WDpVY7lXmV1kTAIN6zD/+3FmBNHjKTykQeU=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFkXFY7N/8PFuXRta+C1bq24OsHXr/0+nHew+X7/qsvLB
+ EXtxtX3OkpZGMS4GGTFFFkmHNK4lbHk6l9/D/MHMHNYmUCGMHBxCsBEQqIZGToOulXNq9tV/mnJ
+ QY0v0l7PFZpXZJiyGopfF2P7qmNV58/wv1ppX4hiS4gID8/X27mvzI/9sGHfvFCtw3TZpd/aKp8
+ WMwIA
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,242 +84,150 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Igor Velkov <iav@iav.lv>
 
-On Fri, Oct 02, 2026 at 11:39:22PM +0000, Thinh Nguyen wrote:
-> On Thu, Sep 24, 2026, Sebastian Reichel wrote:
-> > On recent Rockchip platforms (at least RK3588 & RK3576), DWC3 IP is used
-> > with a USBDP PHY providing USB3 and DP. This PHY needs to be reset when
-> > the mode changes, which may happen when plugging in different USB-C
-> > devices.
-> > 
-> > If the USBDP PHY resets with the DWC3 IP running, its internal state
-> > corrupts resulting in the USBDP PHY not being able to lock some PLL
-> > clocks, which effectively renders USB3 unusable.
-> > 
-> > To fix the issue this adds handling for the new PHY framework reset
-> > notifications, which will assert PHYSOFTRST before the actual PHY
-> > is disabled and will deassert it once the PHY returns.
-> > 
-> > Tested-by: Igor Paunovic <royalnet026@gmail.com> # Orange Pi 5 Plus
-> > Acked-by: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > ---
-> >  drivers/usb/dwc3/dwc3-rockchip.c | 127 ++++++++++++++++++++++++++++++++++++++-
-> >  drivers/usb/dwc3/trace.c         |   3 +
-> >  2 files changed, 129 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/usb/dwc3/dwc3-rockchip.c b/drivers/usb/dwc3/dwc3-rockchip.c
-> > index 4129aefd6a8b..17b6c2ca9e19 100644
-> > --- a/drivers/usb/dwc3/dwc3-rockchip.c
-> > +++ b/drivers/usb/dwc3/dwc3-rockchip.c
-> > @@ -2,11 +2,136 @@
-> >  /* Copyright (c) 2026, Collabora Ltd. */
-> >  #include <linux/module.h>
-> >  #include <linux/platform_device.h>
-> > +#include <linux/phy/phy.h>
-> >  #include <linux/pm_runtime.h>
-> >  #include "glue.h"
-> > +#include "io.h"
-> > +
-> > +struct dwc3_rockchip;
-> > +
-> > +/**
-> > + * struct dwc3_rk_phy_nb - wrapper for PHY notifier block
-> > + * @nb: notifier block
-> > + * @dwc: back-pointer to the DWC3 controller
-> 
-> I missed this from the last review: dwc here is supposed to be dwc_rk.
-> 
-> > + * @port_index: USB3 port index this notifier is registered for
-> > + */
-> > +struct dwc3_rk_phy_nb {
-> > +	struct notifier_block	nb;
-> > +	struct dwc3_rockchip	*dwc_rk;
-> > +	u8			port_index;
-> > +};
-> >  
-> >  struct dwc3_rockchip {
-> >  	struct dwc3		dwc;
-> > +	struct dwc3_rk_phy_nb	usb3_phy_nb[DWC3_USB3_MAX_PORTS];
-> > +	u8			phy_reset_active;
-> > +};
-> > +
-> > +static int dwc3_usb3_phy_notify(struct notifier_block *nb,
-> > +				unsigned long action, void *data)
-> > +{
-> > +	struct dwc3_rk_phy_nb *pnb = container_of(nb, struct dwc3_rk_phy_nb, nb);
-> > +	struct dwc3_rockchip *dwc_rk = pnb->dwc_rk;
-> > +	struct dwc3 *dwc = &dwc_rk->dwc;
-> > +	int port = pnb->port_index;
-> > +	unsigned long flags;
-> > +	u32 reg;
-> > +	int ret;
-> > +
-> > +	switch (action) {
-> > +	case PHY_NOTIFY_PRE_RESET:
-> > +		/*
-> > +		 * If already suspended, the resume path will reinit GUSB3PIPECTL
-> > +		 * via dwc3_core_init(). A forced resume is not possible as that
-> > +		 * would call phy_init() resulting in a deadlock. Due to the
-> > +		 * phy_init() in the resume path there is also no need to block
-> > +		 * async RPM resume on our side, since the PHY synchronizes it
-> > +		 * for us.
-> > +		 *
-> > +		 * pm_runtime_get_if_active() returns 0 when suspended (skip),
-> > +		 * 1 when active (ref held), or -EINVAL when PM is disabled
-> > +		 * (device always active). In the -EINVAL case PM ref counting
-> > +		 * is a no-op, so the unconditional put in POST_RESET is safe.
-> 
-> The -EINVAL case is not no-op here. No reference is taken, but
-> pm_runtime_put_autosuspend() in POST_RESET still decrements the usage
-> count, causing underflow or taking some other reference. Should we skip
-> if ret < 0 too?
+machine_kexec_mask_interrupts() calls irq_set_irqchip_state() for every
+started interrupt. That function takes the bus lock of the chip and
+desc->lock, and syncs the chip when it drops them. On the crash path
+interrupts are off and the other CPUs are stopped, so a chip whose bus
+transfer is completed by an interrupt never returns from the sync.
 
-It's only fine to skip when PM=off, because then the GUSB3PIPECTL
-is off anyways. If Runtime PM is disabled (and thus the hardware
-is always on), the quirk is needed. But in that case the rpm_put
-should be a noop. This only runs into problems, when the user
-enables runtime PM between pre and post reset. I'm not sure how
-to best avoid that. Also the reset happens relatively fast, so
-this will basically never happen.
+On RK3399 boards with an RK808 PMIC the RTC alarm interrupt belongs to
+the regmap-irq chip of the RK808, which sits on I2C. rk808_irq_chip sets
+init_ack_masked, so regmap_irq_sync_unlock() writes the ack register on
+every unlock, and the I2C controller needs its own interrupt to finish
+the transfer. A panic with a crash kernel loaded prints
 
-> > +		 */
-> > +		ret = pm_runtime_get_if_active(dwc->dev);
-> > +		if (!ret)
-> > +			return NOTIFY_OK;
-> > +
-> > +		/*
-> > +		 * Assert USB3 PHY soft reset within DWC3 before the external
-> > +		 * PHY resets. This disconnects the PIPE interface, preventing
-> > +		 * the DWC3 from interfering with PHY reinitialization and
-> > +		 * avoiding LCPLL lock failures.
-> > +		 */
-> > +		spin_lock_irqsave(&dwc->lock, flags);
-> > +		dwc_rk->phy_reset_active |= BIT(port);
-> > +		reg = dwc3_readl(dwc, DWC3_GUSB3PIPECTL(port));
-> > +		reg |= DWC3_GUSB3PIPECTL_PHYSOFTRST;
-> > +		dwc3_writel(dwc, DWC3_GUSB3PIPECTL(port), reg);
-> > +		spin_unlock_irqrestore(&dwc->lock, flags);
-> > +		break;
-> > +
-> > +	case PHY_NOTIFY_POST_RESET:
-> > +		spin_lock_irqsave(&dwc->lock, flags);
-> > +		if (!(dwc_rk->phy_reset_active & BIT(port))) {
-> > +			spin_unlock_irqrestore(&dwc->lock, flags);
-> > +			return NOTIFY_OK;
-> > +		}
-> > +
-> > +		dwc_rk->phy_reset_active &= ~BIT(port);
-> > +
-> > +		/*
-> > +		 * Deassert PHY soft reset to reconnect the PIPE interface
-> > +		 * after PHY reinitialization.
-> > +		 */
-> > +		reg = dwc3_readl(dwc, DWC3_GUSB3PIPECTL(port));
-> > +		reg &= ~DWC3_GUSB3PIPECTL_PHYSOFTRST;
-> > +		dwc3_writel(dwc, DWC3_GUSB3PIPECTL(port), reg);
-> > +		spin_unlock_irqrestore(&dwc->lock, flags);
-> > +
-> > +		pm_runtime_put_autosuspend(dwc->dev);
-> > +		break;
-> > +	}
-> > +
-> > +	return NOTIFY_OK;
-> > +}
-> > +
-> > +static void dwc3_rk_phy_unregister_notifiers(void *data)
-> 
-> BTW, when does this get executed? Could it be executed after the
-> dwc3_core_exit() powering off the phy and turning off the clocks? The
-> reset notifier may still be called in this case and read dwc3 registers.
-> Can we make sure this is done before dwc3_core_remove() in
-> dwc3_rockchip_remove()?
+  SMP: stopping secondary CPUs
 
-mh; this might actually happen. I didn't notice, because I just
-followed the PHY registration, which uses devm.
+and then nothing until the watchdog resets the board.
 
-But for the next version I will replace the PHY reset notifier API
-with direct calls between the DWC3 rockchip glue driver and the
-USBDP PHY driver as Vinod Koul does not want the PHY reset notifier
-API and asked for it to be done that way instead. With that I can
-ensure that the function is only called while the PHY is powered.
+machine_kexec_mask_interrupts() takes neither lock for the other
+operations on the descriptor. Move the search for the chip that
+implements irq_set_irqchip_state() into __irq_set_irqchip_state(), which
+takes no locks, and call it from machine_kexec_mask_interrupts().
 
-Greetings,
+Fixes: 78fd584cdec0 ("arm64: kdump: implement machine_crash_shutdown()")
+Suggested-by: Thomas Gleixner <tglx@kernel.org>
+Assisted-by: LLM
+Signed-off-by: Igor Velkov <iav@iav.lv>
+---
+Tested with sysrq-c and kdump-tools on Kobol Helios64 (RK3399, RK808),
+7.3-rc7: the dump is saved 3 of 3. Without a fix it hangs 3 of 3 (7.3-rc5).
+---
+Changes in v2:
+- Clear the active state through a lockless __irq_set_irqchip_state()
+  instead of skipping chips with irq_bus_lock. The manage.c part is
+  Thomas' proposal from the v1 thread.
+- Link to v1: https://lore.kernel.org/r/20261005-kexec-irq-bus-lock-v1-1-09f6b5323460@iav.lv
+---
+ kernel/irq/internals.h |  1 +
+ kernel/irq/kexec.c     |  2 +-
+ kernel/irq/manage.c    | 43 ++++++++++++++++++++++++-------------------
+ 3 files changed, 26 insertions(+), 20 deletions(-)
 
--- Sebastian
+diff --git a/kernel/irq/internals.h b/kernel/irq/internals.h
+index 2c30e7537987..703a062be878 100644
+--- a/kernel/irq/internals.h
++++ b/kernel/irq/internals.h
+@@ -83,6 +83,7 @@ enum {
+ #include "settings.h"
+ 
+ extern int __irq_set_trigger(struct irq_desc *desc, unsigned long flags);
++extern int __irq_set_irqchip_state(struct irq_desc *desc, enum irqchip_irq_state which, bool val);
+ extern void __disable_irq(struct irq_desc *desc);
+ extern void __enable_irq(struct irq_desc *desc);
+ 
+diff --git a/kernel/irq/kexec.c b/kernel/irq/kexec.c
+index 1a3deffe6b5b..f245b9876422 100644
+--- a/kernel/irq/kexec.c
++++ b/kernel/irq/kexec.c
+@@ -25,7 +25,7 @@ void machine_kexec_mask_interrupts(void)
+ 			 * First try to remove the active state from an interrupt which is forwarded
+ 			 * to a VM. If the interrupt is not forwarded, try to EOI the interrupt.
+ 			 */
+-			check_eoi = irq_set_irqchip_state(i, IRQCHIP_STATE_ACTIVE, false);
++			check_eoi = __irq_set_irqchip_state(desc, IRQCHIP_STATE_ACTIVE, false);
+ 		}
+ 
+ 		if (check_eoi && chip->irq_eoi && irqd_irq_inprogress(&desc->irq_data))
+diff --git a/kernel/irq/manage.c b/kernel/irq/manage.c
+index 4fbb8f960dbf..94c2e13ddf8d 100644
+--- a/kernel/irq/manage.c
++++ b/kernel/irq/manage.c
+@@ -2747,6 +2747,28 @@ int irq_get_irqchip_state(unsigned int irq, enum irqchip_irq_state which, bool *
+ }
+ EXPORT_SYMBOL_GPL(irq_get_irqchip_state);
+ 
++int __irq_set_irqchip_state(struct irq_desc *desc, enum irqchip_irq_state which, bool val)
++{
++	struct irq_data *data = irq_desc_get_irq_data(desc);
++	struct irq_chip *chip;
++
++	do {
++		chip = irq_data_get_irq_chip(data);
++
++		if (WARN_ON_ONCE(!chip))
++			return -ENODEV;
++
++		if (chip->irq_set_irqchip_state)
++			break;
++
++		data = irqd_get_parent_data(data);
++	} while (data);
++
++	if (data)
++		return chip->irq_set_irqchip_state(data, which, val);
++	return -EINVAL;
++}
++
+ /**
+  * irq_set_irqchip_state - set the state of a forwarded interrupt.
+  * @irq:	Interrupt line that is forwarded to a VM
+@@ -2761,25 +2783,8 @@ EXPORT_SYMBOL_GPL(irq_get_irqchip_state);
+  */
+ int irq_set_irqchip_state(unsigned int irq, enum irqchip_irq_state which, bool val)
+ {
+-	scoped_irqdesc_get_and_buslock(irq, 0) {
+-		struct irq_data *data = irq_desc_get_irq_data(scoped_irqdesc);
+-		struct irq_chip *chip;
+-
+-		do {
+-			chip = irq_data_get_irq_chip(data);
+-
+-			if (WARN_ON_ONCE(!chip))
+-				return -ENODEV;
+-
+-			if (chip->irq_set_irqchip_state)
+-				break;
+-
+-			data = irqd_get_parent_data(data);
+-		} while (data);
+-
+-		if (data)
+-			return chip->irq_set_irqchip_state(data, which, val);
+-	}
++	scoped_irqdesc_get_and_buslock(irq, 0)
++		return __irq_set_irqchip_state(scoped_irqdesc, which, val);
+ 	return -EINVAL;
+ }
+ EXPORT_SYMBOL_GPL(irq_set_irqchip_state);
 
-> 
-> Thanks,
-> Thinh
-> 
-> > +{
-> > +	struct dwc3_rockchip *dwc_rk = data;
-> > +	struct dwc3 *dwc = &dwc_rk->dwc;
-> > +	int i;
-> > +
-> > +	for (i = 0; i < dwc->num_usb3_ports; i++)
-> > +		phy_unregister_notifier(dwc->usb3_generic_phy[i],
-> > +					&dwc_rk->usb3_phy_nb[i].nb);
-> > +
-> > +	/* Release any PM references from in-flight resets */
-> > +	for (i = 0; i < dwc->num_usb3_ports; i++) {
-> > +		if (dwc_rk->phy_reset_active & BIT(i))
-> > +			pm_runtime_put_autosuspend(dwc->dev);
-> > +	}
-> > +	dwc_rk->phy_reset_active = 0;
-> > +}
-> > +
-> > +static int dwc3_rk_phy_register_notifiers(struct dwc3 *dwc)
-> > +{
-> > +	struct dwc3_rockchip *dwc_rk = container_of(dwc, struct dwc3_rockchip, dwc);
-> > +	int i;
-> > +
-> > +	for (i = 0; i < dwc->num_usb3_ports; i++) {
-> > +		dwc_rk->usb3_phy_nb[i].nb.notifier_call = dwc3_usb3_phy_notify;
-> > +		dwc_rk->usb3_phy_nb[i].dwc_rk = dwc_rk;
-> > +		dwc_rk->usb3_phy_nb[i].port_index = i;
-> > +		phy_register_notifier(dwc->usb3_generic_phy[i],
-> > +				      &dwc_rk->usb3_phy_nb[i].nb);
-> > +	}
-> > +
-> > +	return devm_add_action_or_reset(dwc->dev, dwc3_rk_phy_unregister_notifiers, dwc_rk);
-> > +}
-> > +
-> > +static struct dwc3_glue_ops dwc3_rockchip_glue_ops = {
-> > +	.post_phy_registration = dwc3_rk_phy_register_notifiers,
-> >  };
-> >  
-> >  static int dwc3_rockchip_probe(struct platform_device *pdev)
-> > @@ -26,7 +151,7 @@ static int dwc3_rockchip_probe(struct platform_device *pdev)
-> >  		return -ENOMEM;
-> >  
-> >  	dwc_rk->dwc.dev = &pdev->dev;
-> > -	dwc_rk->dwc.glue_ops = NULL;
-> > +	dwc_rk->dwc.glue_ops = &dwc3_rockchip_glue_ops;
-> >  
-> >  	probe_data.dwc = &dwc_rk->dwc;
-> >  	probe_data.res = res;
-> > diff --git a/drivers/usb/dwc3/trace.c b/drivers/usb/dwc3/trace.c
-> > index 088995885678..8c4e2a7b142e 100644
-> > --- a/drivers/usb/dwc3/trace.c
-> > +++ b/drivers/usb/dwc3/trace.c
-> > @@ -9,3 +9,6 @@
-> >  
-> >  #define CREATE_TRACE_POINTS
-> >  #include "trace.h"
-> > +
-> > +EXPORT_TRACEPOINT_SYMBOL_GPL(dwc3_readl);
-> > +EXPORT_TRACEPOINT_SYMBOL_GPL(dwc3_writel);
-> > 
-> > -- 
-> > 2.53.0
-> > 
+---
+base-commit: 4351cc74202857f5b85b3573c477c9f798f5cd88
+change-id: 20261005-kexec-irq-bus-lock-f48d5966443d
+
+Best regards,
+-- 
+Igor Velkov <iav@iav.lv>
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
