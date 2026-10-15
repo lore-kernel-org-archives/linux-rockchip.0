@@ -4,52 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1247CCC6B33
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 11:12:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08C1FCC6B34
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 13:46:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bbBveBHwIfvqPTzyQsyFX5x1oSKc7m9z8OuhTPdSxhg=; b=ppfZIqfbYw3BP9N+zJ3+Bfcnre
-	UTQS6NwM/c08zwU1Egq7Xz572Az3pNAzSsz49M84Q09cwpt/qx7uTE7RhcrJ2N3IQJcDu5uvDRudZ
-	jDG5AgL8/7jEpp/s594GDEBGd6MeGiRiNy4Sk1Rtap0KnBQYPPggeorqKuyR5g/zjyd2wojEZaZpR
-	ilZ8QILs1fzxrj5dttvn7yARIlvuwLHNawyYQILi+Xo5xBSGJIIcKZsdD5YSMHzo9fFTAXwa/4MDa
-	9LUeofe0fv59FaUDTw16UWYhmU5IK64HW4WpUlS6jgRbBYtaBFPA0MlnBiYNe+hSR5gEMvRxrtz8i
-	0JGZ4zEQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Tfs4rS9GEcCmVOscdGjq9282DaEHzCRDNV6ayaoa8pg=; b=WAXik8IDB0egky
+	UltXKPG1qqC2UQ5k5lkWnGLudnxjEPEQxTVLCg/PoFYy/3ww2aDCCVDPZBimTTotaURv3joUlsqIi
+	1qydDl2xUpZPhlOABeynqbQc7O30mizTXvVaEzwZej6JiUtEsa8vSRrhGisZlbEQ1k/wO1jRiAX4C
+	2y+EHDo/z2co1uPnnLDse2fbcoN2toqbKxoiG/MkDiJAx9gUBrEjfWGM7t8t2GJdvCUsamF4ZuD+Q
+	mu1lB8S/EBsawHe6ww0u7yA2gx3c/oY5+hfYeq+02ea+4DLcFcDNvZ/olRwliJtvKMKNpQi9XUrFM
+	+SEwalAWIlvkueTlPZmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHJNy-0000000HXhL-3nxP;
-	Thu, 15 Oct 2026 11:12:34 +0000
+	id 1xHLmp-00000000Hs5-2wJv;
+	Thu, 15 Oct 2026 13:46:23 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHJNw-0000000HXh9-1wgo;
-	Thu, 15 Oct 2026 11:12:32 +0000
+	id 1xHLmo-00000000Hra-3TPt;
+	Thu, 15 Oct 2026 13:46:22 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id CFC5443277;
-	Thu, 15 Oct 2026 11:12:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5727F1F000C4;
-	Thu, 15 Oct 2026 11:12:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 491A0408C0;
+	Thu, 15 Oct 2026 13:46:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B87B31F000C4;
+	Thu, 15 Oct 2026 13:46:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792062751;
-	bh=Hd6BBnEO5pGpbCON7Q87RSeR9u1q3VXpiWY+WMKFASs=;
+	s=k20260515; t=1792071982;
+	bh=Kx/01Nsq1UY3kmElra+GwWgne6z+msRWvpMdj34qnwk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=R+8xOXUkDkZ9pKZHBmcNtj8NyuP6cR0oqQgoZ8UCc+tB3DzT4QCvEJXW8Nh+PAHLO
-	 l4qO7p4Clap8JJBD57iJA17dF9oaApVDpvp9NMyxi2p9zza3C5/jxCXVuqp97P3kH/
-	 6RncdVn38CsHW39zcgI8DIfqy4X+t2GhIU9JFMzzboPBxl+hGJOmX6ojQV+MHKJjzv
-	 keBaU7H/dW4cHXdRTPAOoj3PXUzd0obz4/xGRkI4yhpdkI4hjeNJmNTCIIZMIQGcGL
-	 wUvK5fhMpbxaZqaxQQpRrEEA+IDFwqvTiLrkNMorRjRdP64wUDyKUMoYHX3QYp6pVZ
-	 cc0SD3e32mliw==
-Date: Thu, 15 Oct 2026 12:12:17 +0100
-From: Mark Brown <broonie@kernel.org>
-To: phucduc.bui@gmail.com
-Subject: Re: [PATCH v2 00/25] ASoC: Fix constraint return value handling
-Message-ID: <ad722297-5ca5-42c5-a07e-59fa958387c1@sirena.org.uk>
-References: <20261015014324.5569-1-phucduc.bui@gmail.com>
+	b=iVz7KgO9Cm2mX6ny5SHc02ay/J/zYG7KOkNB+c1dCyFPSh++xhzNK0dd/gZ8N7Q3F
+	 DNpCy3deOCDafeJOyy+94wg8QGz31E0cLl9S8ZBRyZXi/dp2LOXTqNRiQI/uWBlo6e
+	 mflihpcygGeZiZpLIgpl616jKl0Ni62cZYg1Ek/1yBEBXZ4iFx6ljLIKbWyWUhV+Y7
+	 wiIDv74TdBVF5Zsjam4B6NBNPRhSp0FDySL1e9jmidB9KyT4yywxbSeWqtiL1WJwJD
+	 lcf7+cyCKW2RaHbLYA7yJovxTZ34ppYEbsmp3cF1KCbkcF8o7oj3+cDd5scuLAL196
+	 skaObiIf7rIOQ==
+Date: Thu, 15 Oct 2026 14:46:16 +0100
+From: Lee Jones <lee@kernel.org>
+To: Yaozhong Li <yaozhonguwl@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>, mfd@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH v3 2/3] mfd: rk8xx: Release the power hold GPIOs
+ before powering off
+Message-ID: <20261015134616.GA1907748@google.com>
+References: <20260929140649.55-1-yaozhonguwl@gmail.com>
+ <20260929140649.55-3-yaozhonguwl@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20261015014324.5569-1-phucduc.bui@gmail.com>
-X-Cookie: Tax and title extra.
+Content-Disposition: inline
+In-Reply-To: <20260929140649.55-3-yaozhonguwl@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,60 +69,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: imx@lists.linux.dev, Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Xiubo Li <Xiubo.Lee@gmail.com>, Venkata Prasad Potturu <venkataprasad.potturu@amd.com>, Frank Li <Frank.Li@nxp.com>, Cezary Rojewski <cezary.rojewski@intel.com>, Zain Aboobacker <zainaboobacker33@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Bjorn Helgaas <bhelgaas@google.com>, Pengpeng Hou <pengpeng@iscas.ac.cn>, Bo Shen <voice.shen@atmel.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Neo Chang <YLCHANG2@nuvoton.com>, Fabio Estevam <festevam@gmail.com>, Shengjiu Wang <shengjiu.wang@gmail.com>, Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, Geert Uytterhoeven <geert+renesas@glider.be>, Chris Bainbridge <chris.bainbridge@gmail.com>, Bard Liao <yung-chuan.liao@linux.intel.com>, Takashi Iwai <tiwai@suse.com>, Magnus Damm <magnus.damm@gmail.com>, Vinod Koul <vkoul@kernel.org>, Kees Cook <kees@kernel.org>, Vijendar Mukunda <Vijendar.Mukunda@amd.com>, povik+lin@cutebit.org, linux-rockchip@lists.infradead.org, Charles Keepax <ckeepax@opensource.cirrus.com>, Sascha Hauer <s.hauer@pengutronix.de>, Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, linux-sound@vger.kernel.org, Nicolin Chen <nicoleotsuka@gmail.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, Sang-Heon Jeon <ekffu200098@gmail.com>, wangdicheng <wangdicheng@kylinos.cn>, Syed Saba Kareem <syed.sabakareem@amd.com>, Biju Das <biju.das.jz@bp.renesas.com>, Jaroslav Kysela <perex@perex.cz>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Kai Vehmanen <kai.vehmanen@linux.intel.com>, patches@opensource.cirrus.com, Linus Walleij <linusw@kernel.org>, linuxppc-dev@lists.ozlabs.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Md Shofiqul Islam <shofiqtest@gmail.com>, asahi@lists.linux.dev, Pengutronix Kernel Team <kernel@pengutronix.de>, Andrei Simion <andrei.simion@microchip.com>, u.kleine-koenig@baylibre.com, David Rhodes <david.rhodes@cirrus.com>, Hemanth Selam <hemanth.selam@gmail.com>
-Content-Type: multipart/mixed; boundary="===============0377280096953371102=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Tue, 29 Sep 2026, Yaozhong Li wrote:
 
---===============0377280096953371102==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="syrl3Afg657kytt3"
-Content-Disposition: inline
+> rk808_power_off() writes the PMIC's shutdown bit directly. On boards where
+> lines driven by the SoC gate the PMIC's power-off path, a shutdown
+> performed this way does not stick: the rails drop and immediately come
+> back up, so the board restarts instead of staying off. U-Boot reports the
+> result as a power-on reset.
+> 
+> Take those lines as an optional GPIO array, hold them asserted while the
+> system runs and release them - waiting power-hold-delay-ms - before
+> writing the shutdown bit. Device trees without the property retain the
+> existing behaviour.
+> 
+> The array is claimed before any child device is registered, so that a
+> -EPROBE_DEFER from the GPIO provider does not tear down the regulators,
+> RTC and clocks that devm_mfd_add_devices() has already registered.
+> 
+> On a Firefly-RK3399 the shutdown stuck when such a line went from high to
+> low before the shutdown bit was written, and did not when the line was
+> never driven.
+> 
+> Assisted-by: LLM
+> Signed-off-by: Yaozhong Li <yaozhonguwl@gmail.com>
 
+Why is this still an RFC?  That means it should not be applied.
 
---syrl3Afg657kytt3
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Oct 15, 2026 at 08:42:59AM +0700, phucduc.bui@gmail.com wrote:
-
-> Changes in v2:=20
->  - Add Reviewed-by tags from Vijendar Mukunda and Chancel Liu.
->  - Remove redundant integer constraints already applied by=20
->    snd_dmaengine_pcm_open().
-
-v1 was applied, please send incremental changes for the differences.
-
---syrl3Afg657kytt3
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmrQtRAACgkQJNaLcl1U
-h9DzAQf/WcguhgqKmLmBlSGrfAmohZap9b+qyUgyk3gBcdL4pfDRN2N0m/jg80sq
-EGu7yBR6LzgAalcEkMLnjACfVsi4kZuopa6nijef9rrYX/cJcxUrOSjK3l2G+rD8
-U6h20fO6YVWgAkmtLtV9G7PU+gy+06ZO8snDL9dTODv9DYyWZvQ4mTgJvAK7rYQP
-mBKi2rhlpXe2rMyRIvXW4FQtX1kqOzt+gtSHjApzltjchxaDuM6/jThE4a8+o4Ms
-XpUeCo9/Bg4u29Zt4okIN1S1up/cOjyNcEQwgf+5Lf0qlZXbV4Dyk43TNms3vuED
-ZSE26kZ6DpaP/lgPoejNuYeJrPX9Pw==
-=HbjQ
------END PGP SIGNATURE-----
-
---syrl3Afg657kytt3--
-
-
---===============0377280096953371102==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Lee Jones
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0377280096953371102==--
-
