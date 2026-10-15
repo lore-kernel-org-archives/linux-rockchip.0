@@ -4,106 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E0CDCC6B2D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 01:40:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 315FCCC6B30
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 01:44:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=khzcbZKQ1X2Iph2e2VHfoXSyTcxsmc7ZcsBSpSczSe8=; b=EPz/0JbmohYf+g
-	UptkDBw8+xjewzJMcv4XTKiGKDnuMQIEq23gWD0MCzsNOV9A+OujG+Nj/8lrY6tXENt++awNekvfH
-	4PDdwpyQ1UdV7cJ6GjK1n6B6+qYy1ANJUqAzeqluoummUNyzZoleQq8lqGDi7/bCW8LDwzrAVLzMl
-	QLI1BNYQ1Xq8lvVgQ+HxmX++gWirv2gC2Y2oxL0wOkxLkYAH/TXMZ8eNGUErVhcD74YVPz08w3SPi
-	3Fs1eJIF1EWKFCAVsj1HrU2dp2ZjBQvsdOxhp/x4ljCbcIpM2PyhJc3q6HGIfBhVlNFupgzCxhOHT
-	Rur99Y4iUwCiIMrSO9sA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=oOw2vtwr4F3UA6QtQp08Ns/K/M8a48XjSV8hO+7VJTo=; b=k7oOpaosvMbZc5
+	oeZb8R4Oz4otpn2eSW2pb3Z8f131Q8KAxjJrfk4PAO5OMx0t8KpC/1YKL1P732atEI/t3MHkFjjxr
+	fcZ+rmNJRh/2l/5iK41aCke1B42REXVVrGlESnpKIkR9oPHIoAICS+Q7NX2De31VicLQc4NolARvN
+	qpm7NWmOnCMmwN35aochFFpLHp8ZE/Xwi0rLdOIJ/sF9WFQUE1a0+18Fy55jCk1GdMOH8nUkk+8Zb
+	5fvKFnEluGGjDdbDyhH2iuLApGfrz7ebxvPQznB0bhBVK8NuVCyF4uym+PEfBmQMVqf90JZ6kINcM
+	zWSpu4vob+v/PBDCBz/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHARe-0000000GaXE-45cz;
-	Thu, 15 Oct 2026 01:39:46 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1xHAVj-0000000GatL-1IIg;
+	Thu, 15 Oct 2026 01:43:59 +0000
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHARc-0000000GaWL-0vjR
+	id 1xHAVh-0000000Gase-00ey
 	for linux-rockchip@lists.infradead.org;
-	Thu, 15 Oct 2026 01:39:45 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-cd633ef819bso293056a12.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 18:39:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792028383; cv=none;
-        d=google.com; s=arc-20260327;
-        b=Md3XsQirta+Pmd5Xzd/eMY75lH7m+WUyX+jZTwh8gd5oKmrxdntSCJdv2sc76KIxvy
-         lyeQ0Eod25cEnWDgpNTJp2X0bpC8UrnDFk35gLqcXJwgLZzI6z6ljI2EQF8U7D2SWGyL
-         WIUe81N5ZwrbCNsd4LZEI5t7d1tNhKPFJtjlVkMwfHguYM7/DmRYZr5JfDu+4qAJ9t2U
-         wzx+jJ8ma855m8VGVKBYM1vmwaFgmbAMPGvS8K6loIYxC2Cnz7LzsKQTMXQ+JEfAREo2
-         kYZiAHFlrszLyVkaBAfiXXGZHwmMP1jBS6doujXnfI7a20GahAOy5D8uq95IrQzXhAk3
-         xBhg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=7UAKkSVFiLjeCKqwwiBA8/TCsyeb/yPhvR9ZVVpCVjM=;
-        fh=CD1UgfQl9tfe0U70Jnv1X2dVP9W65oyqECOnlQvZdqA=;
-        b=s7zy9bCT0jD10Ve3zlsyt48I8IXxRBTZHvWIxGbF88pwy12Nmb6Dk9Rb96t3nuhout
-         qxMJ1BGaD2pysRFg4SaX5fgzypXhMdnTWIyVXTxjb5xQTFVqKaYFS/IdXuv1qZ8HCqOc
-         ql5LMCEFj/MBOIJD6eNkyj72v658lDRWqet6MlScTQWOBdJaVzXb0Chd+vBXyciKMhM9
-         UlS7siMhUa1vkbJsnKnb12AE2enZIkS6CyR1CzXJWkO+oscVCHU/WcQC2Bbkztcwr36D
-         hQwP0WMkyldyFgL8ZdmNJR3p3JvuVtbhaBBBc0wgddkkL49ujNV8SAJ3iiH5Wn9uy9vF
-         s4bQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Thu, 15 Oct 2026 01:43:58 +0000
+Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-cd3310348d2so3183636a12.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 18:43:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792028383; x=1792633183; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=7UAKkSVFiLjeCKqwwiBA8/TCsyeb/yPhvR9ZVVpCVjM=;
-        b=HMm9xyT7ZvLHd8OA8c53ds1gEH/66EWr5ZfpEfqgDcp2cfm0A7l9IQ7OxFMZQhRcEO
-         srHXhfLaA3fNRS0vwficq7UejnhjOOadRfB5RdDnLA4ikHw2u2Y80gdSatcMQmUoAACI
-         NEJ1ocbLXXktnkweMqSpzVOHJsKk2nKr2bCoFvD5FA99hvf9H6OUHMMphMLrphzBQzgG
-         hnCB2QqChV1k6vgHPVs/m6mzW3kkEsqKCEJMYCWzS+/2GSEq8xxk+xXAlxQBPmoQ6quU
-         lp9ojPTDbLt8q6TkfUEgSwH842+sw0CDIofxqT8Ji9v9c0NZMx7UrWBqxaRmXAuMpWAr
-         DDpg==
+        d=gmail.com; s=20251104; t=1792028636; x=1792633436; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=geVeIRJMETVZrOFQgXZr74ay0B29FFoh4B/JZUuVWw0=;
+        b=amldT5LpnT/MOeIja0O1U1+UCBciB+1GpAWT0H9pYhVY6s584ur8JKzYIxpy2WFTWE
+         JHHyPpKyKtA+WhnQFVLusZca3uaVBGZZzv/gi6UD8bzk5pzQu1mb+QxbeC2BhJevWlA+
+         rswguwBUcXvsBR1wI7Z3ekKqcpRKXcW5xi3wYliRCi0dOi5nwpT7VkJaqsrJh+PHt///
+         jfxaDq/SGxUJojvelPRNcPtLhfspwF4L9Bj28n0Lo5+epmI2d1h7SnrZH6/eKlJdjyT/
+         IaR6UrM/N6kRzqrR4kvToxZQUB6XIhfOmcYZ0Hkebn5zCulqU6IPl5IOVMGVfviiw9GQ
+         GBrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792028383; x=1792633183;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=7UAKkSVFiLjeCKqwwiBA8/TCsyeb/yPhvR9ZVVpCVjM=;
-        b=zV3Gp4SOxWOX9DG3qTpm12Lkq0MOnPw7EoK0q7rOUJmGTc1bXRbnTKGiAyFm8Sk6Pc
-         77ykdl0qywgTUqL1or63gRmRHECn81S5qxXVGLwq0u42GQjhcW2uBHGrABK1//nTp/6I
-         CfLUDxGFMOtYljAp82GdSFTvm2xCuIeijPmyX1NDB7E/bEMU5wxzXp2xXtVTCifhSXAl
-         pUeANpyNKaFESEWHMTZdCS3ciNtryVXHOFCl/LyatXuLvBIczjIiBLPhWuWKvyk6UpYf
-         8DFXSWXt78x9dIjCk22VB7lyOcrbsb2o7XUATIbL1rgKAp9QtCCQYE6xteq3k5YYalaJ
-         BnLg==
-X-Forwarded-Encrypted: i=1; AKwUvBwaYSnn68VjHPgEPWVPNUj63p942o4lX5sQL4xac4pCLjl+R/Sd+42iYWej3WHm45boLYy4dE21eqM3lPRXJw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJTErWuuK5wVFNfiIQrA4qujNS+O0JNhVfhvECT7npUkDaLKPk8
-	6JaqA579yUj9LQ2Ar8bfLvXkjIF4jHU4jjEaoMQe1TMhEsCUHHoAqg40S8aZ7Hkr5DITIiHfqaz
-	eWKBIAWp9ZFaQxj00mDdCFpsQEbSbhys=
-X-Gm-Gg: AYBFou0VMJAOJ2lICT3GF9VXcesy7pNfFmWsAG6XObBGPZv1eq2uxBHAucDQBw7bHJC
-	qSIMayR84dNl82kDsp+Y32tjATH8kx0aAylg/+UrrXtsqyzsluxu98wt8Bsnseu9o72gkF1DE4T
-	2F1u2hRwjVppCK6lc0K0XDWjpyVoRDIloVIV/Vf4yYOfkhqdjKxGKbsjE4awZxsxCcmQ8wrTguM
-	Oo2/hdFRYliwAeoq0gI23Th9uBMR4njR0qU3j82uJ4IOyt0R/73Soux5YGwsoOSM3lxiTfJe+uD
-	O84pTzlH6Filnb9O3lfYxeIZ1DobbD9aZ4ZP/P5NMftfPAPex4HnNGYUUVTS9Gd+T6yWhp7yOKM
-	W75RlwnPFR5YJoGl5rjSWJdCj5FFV01bg4T6n7EK/9ZmOErdPqXivPuu4OxaJqycR+Jg=
-X-Received: by 2002:a17:90b:4acc:b0:3a0:e1f7:9b04 with SMTP id
- 98e67ed59e1d1-3ab3a60ac9amr16312045a91.12.1792028382966; Wed, 14 Oct 2026
- 18:39:42 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1792028636; x=1792633436;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=geVeIRJMETVZrOFQgXZr74ay0B29FFoh4B/JZUuVWw0=;
+        b=0vkbd+EHaZbL21jmOiMjbQdOZGWJPLx14mJlgQ6THivd2n3HehxWZ46KW3wIOqI0sG
+         WfLV/ZkUS3mM1ZFbHPaV8ejUk00Mzd/qbpZ99j75nDWh9yOBg1jYYIZ5KpU441HPxKpG
+         hIDjcgFVFN5YShE80Y5gCbrm4kZts7StVNr1MqWz1JVo1Mslmu/74mrf2Woo5sweyRDt
+         cjOUXAGrbupuYc+XqyxzBcwCrbD/TBpQo1LPN12ot4mehvDNrrNLFHE6YomO7bCyRGkX
+         napUI2zwS7Hjkun+twvXPwncS87wjYLxHfodVZFcEPw/+I6SuurRnYmyK8DhA2Jxkuyi
+         PWFQ==
+X-Forwarded-Encrypted: i=1; AKwUvByVh/231CHHy7PYPjrLE586DJia7fHvsXsz1MqxrnGW2D88sGaVjgs6Vhaue4jl6BQuShEJgP0IdacSTv4m6A==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLKIdAGwqIs89LXwUfZm7l7th5CP673u+BlVBui3PZog5Cr/Urw
+	wGkZXMUmby0KOutYIoPoadakkxf6oPrJDUQnjx3YaIZsre2xNP59bjTs
+X-Gm-Gg: AYBFou29MFIWYpT5Nm1vAeOZSaHfV+YA10l8uXj+Hc7UIPTdTljG2KijbYisGiXGFPh
+	RhPClGRkMasORWRx2tQor1ccNLWJaW49l1kw0T9q+MrZQSGZQyUKtsV2jD/SY6hjsj9ZjLlXG4w
+	P8GFBU2OdfAFU4wCoB0BlwlqXRkekEYVXu/RSSx4a/e6vlrpNWRriwTlBs2ELagXgaXXkd2q0Ac
+	yYHEVKy+RdVFmxwsml6raepkKg3AmXQIOkr4EkgFuuIGaimvl6df+pTxamhKo9NBvtqlSQ60xaU
+	m0g48yHSaNwRg+8qwU6FQLqRF+ze2dr79AH3fwNKPv5kvH/D4zyKHpD7dvuxwkyKFObG0bVPPqj
+	srtjPkYMZwGuTdXz/HDCDi+qMNAmnCsUwwiaJRyZrre1nVoQfDYz1JySq4uNsujjUB8TCU4APlx
+	/+S2wwS3NzFd5WQW53BDAVYsLRSJJMglAThzzLtsGqlhyjD3qMhbAcT1I/9FwXgn6JDyuDp5EhT
+	3VOFIfNErcj2d6QzQsPAm87EbStZR81BqXyigz6y7lDcDyA8DyyBQomhJMRaUCGAxQKL+OMH6XG
+	gdtjFKnWkMRCEQ==
+X-Received: by 2002:a17:90b:4a49:b0:3ac:a167:8542 with SMTP id 98e67ed59e1d1-3aca16787f0mr98748a91.30.1792028636097;
+        Wed, 14 Oct 2026 18:43:56 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2e8422b8cc1sm73202995ad.54.2026.10.14.18.43.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Oct 2026 18:43:55 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
+	Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	povik+lin@cutebit.org,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Andrei Simion <andrei.simion@microchip.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Shengjiu Wang <shengjiu.wang@gmail.com>,
+	Xiubo Li <Xiubo.Lee@gmail.com>,
+	Fabio Estevam <festevam@gmail.com>,
+	Nicolin Chen <nicoleotsuka@gmail.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
+	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+	Bard Liao <yung-chuan.liao@linux.intel.com>,
+	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v2 00/25] ASoC: Fix constraint return value handling
+Date: Thu, 15 Oct 2026 08:42:59 +0700
+Message-ID: <20261015014324.5569-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20261008103831.542533-1-phucduc.bui@gmail.com>
- <20261008103831.542533-22-phucduc.bui@gmail.com> <87o6cyxyau.wl-kuninori.morimoto.gx@renesas.com>
- <CAABR9nHvCfabGfBu85bm1r=hP3b0ZiCsgZfShhOv3gNUfjjhGg@mail.gmail.com>
- <87se2aw3ot.wl-kuninori.morimoto.gx@renesas.com> <CAABR9nG-YJZEdj6pVD-gbGU6J2EfRMQYsKd7u0UTgfrWOyAPXA@mail.gmail.com>
- <87qzhtyxw6.wl-kuninori.morimoto.gx@renesas.com> <3a6759c7-84bc-46ff-93f1-965c7e8dd4d0@tuxon.dev>
-In-Reply-To: <3a6759c7-84bc-46ff-93f1-965c7e8dd4d0@tuxon.dev>
-From: Bui Duc Phuc <phucduc.bui@gmail.com>
-Date: Thu, 15 Oct 2026 08:39:29 +0700
-X-Gm-Features: AclHuK8C1u90VDPCucQhY3afyuLfcxP0SCIJrlA3M2hLxVwcjMsqinLCGr2nhSI
-Message-ID: <CAABR9nFA5p=5hnMoxFHLtmGEj4kvfrN6M6UFPnm9hRQv_CAP6Q@mail.gmail.com>
-Subject: Re: [PATCH 21/24] ASoC: renesas: msiof: Fix msiof_close() being
- skipped on rollback
-To: claudiu beznea <claudiu.beznea@tuxon.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261014_183944_257713_4EF3DD09 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20261014_184357_041639_48CF3F2F 
+X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,32 +122,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: imx@lists.linux.dev, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Xiubo Li <Xiubo.Lee@gmail.com>, Venkata Prasad Potturu <venkataprasad.potturu@amd.com>, Frank Li <Frank.Li@nxp.com>, Cezary Rojewski <cezary.rojewski@intel.com>, Zain Aboobacker <zainaboobacker33@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, Pengpeng Hou <pengpeng@iscas.ac.cn>, Bo Shen <voice.shen@atmel.com>, Neo Chang <YLCHANG2@nuvoton.com>, Fabio Estevam <festevam@gmail.com>, Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>, Heiko Stuebner <heiko@sntech.de>, Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, Geert Uytterhoeven <geert+renesas@glider.be>, Chris Bainbridge <chris.bainbridge@gmail.com>, Shengjiu Wang <shengjiu.wang@gmail.com>, wangdicheng <wangdicheng@kylinos.cn>, Magnus Damm <magnus.damm@gmail.com>, Vinod Koul <vkoul@kernel.org>, Kees Cook <kees@kernel.org>, Vijendar Mukunda <Vijendar.Mukunda@amd.com>, povik+lin@cutebit.org, linux-rockchip@lists.infradead.org, Charles Keepax <ckeepax@opensource.cirrus.com>, Ravulapati Vishnu vardhan rao <Vishnuvardhanrao.Ravulapati@amd.com>, Sascha Hauer <s.hauer@pengutronix.de>, Nicolas Ferre <nicolas.ferre@microchip.com>, Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, linux-sound@vger.kernel.org, Nicolin Chen <nicoleotsuka@gmail.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, Mark Brown <broonie@kernel.org>, u.kleine-koenig@baylibre.com, Syed Saba Kareem <syed.sabakareem@amd.com>, Biju Das <biju.das.jz@bp.renesas.com>, Jaroslav Kysela <perex@perex.cz>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, Sang-Heon Jeon <ekffu200098@gmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Kai Vehmanen <kai.vehmanen@linux.intel.com>, patches@opensource.cirrus.com, Linus Walleij <linusw@kernel.org>, linuxppc-dev@lists.ozlabs.org, Takashi Iwai <tiwai@suse.com>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Md Shofiqul Islam <shofiqtest@gmail.com>, Bard Liao <yung-chuan.liao@linux.intel.com>, asahi@lists.linux.dev, Pengutronix Kernel Team <kernel@pengutronix.de>, Andrei Simion <andrei.simion@microchip.com>, David Rhodes <david.rhodes@cirrus.com>, Hemanth Selam <hemanth.selam@gmail.com>
+Cc: imx@lists.linux.dev, wangdicheng <wangdicheng@kylinos.cn>, Kees Cook <kees@kernel.org>, Sang-Heon Jeon <ekffu200098@gmail.com>, Pengpeng Hou <pengpeng@iscas.ac.cn>, Bo Shen <voice.shen@atmel.com>, Neo Chang <YLCHANG2@nuvoton.com>, linux-rockchip@lists.infradead.org, bui duc phuc <phucduc.bui@gmail.com>, Chris Bainbridge <chris.bainbridge@gmail.com>, Charles Keepax <ckeepax@opensource.cirrus.com>, linux-sound@vger.kernel.org, u.kleine-koenig@baylibre.com, Zain Aboobacker <zainaboobacker33@gmail.com>, Bjorn Helgaas <bhelgaas@google.com>, Md Shofiqul Islam <shofiqtest@gmail.com>, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, patches@opensource.cirrus.com, Linus Walleij <linusw@kernel.org>, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>, asahi@lists.linux.dev, Hemanth Selam <hemanth.selam@gmail.com>, linuxppc-dev@lists.ozlabs.org, Syed Saba Kareem <syed.sabakareem@amd.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Claudiu, Morimoto-san,
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-> >
-> >> For rz-ssi: in DMA mode, the driver registers the generic dmaengine
-> >> PCM component, whose .open callback already applies the integer
-> >> PERIODS constraint via snd_dmaengine_pcm_open().
-> >>
-> >> Could we drop rz_ssi_pcm_open_dma() instead, and keep the return
-> >> value fix only for rz_ssi_pcm_open_pio()?
-> >
-> > It seems fine, but I don't know detail of rz-ssi.
-> > Claudiu, what do you think ?
->
-> That should work. I'll test v2 once it's out.
->
+Hi all,
 
-Thanks for your help and feedback. I'll send v2 now.
+snd_pcm_hw_constraint_minmax() and snd_pcm_hw_constraint_integer()
+may return positive values on success. However, ASoC only marks the
+DAI, link, or component as started or opened when the corresponding
+callback returns 0.
+
+This series fixes affected ASoC drivers to return 0 on success and
+properly handle rollback paths.
+
+Found by manual code inspection.
+
+Compile-tested only.
+
+Link v1: 
+https://lore.kernel.org/all/20261008103831.542533-1-phucduc.bui@gmail.com/
+
+Changes in v2: 
+ - Add Reviewed-by tags from Vijendar Mukunda and Chancel Liu.
+ - Remove redundant integer constraints already applied by 
+   snd_dmaengine_pcm_open().
 
 Best regards,
 Phuc
+
+bui duc phuc (25):
+  ASoC: amd: acp: Fix .close() being skipped on rollback
+  ASoC: amd: ps: Fix acp63_pdm_dma_close() being skipped on rollback
+  ASoC: amd: ps: Fix acp63_sdw_dma_close() being skipped on rollback
+  ASoC: amd: raven: Fix acp3x_dma_close() being skipped on rollback
+  ASoC: amd: renoir: Fix acp_pdm_dma_close() being skipped on rollback
+  ASoC: amd: vangogh: Fix acp5x_dma_close() being skipped on rollback
+  ASoC: amd: yc: Fix acp6x_pdm_dma_close() being skipped on rollback
+  ASoC: apple: mca: Ensure the DAI is marked as started on success
+  ASoC: atmel: atmel-pcm-pdc: Fix atmel_pcm_close() being skipped on
+    rollback
+  ASoC: codecs: cs42l42: Ensure the DAI is marked as started on success
+  ASoC: codecs: nau8325: Ensure the DAI is marked as started on success
+  ASoC: codecs: nau8540: Ensure the DAI is marked as started on success
+  ASoC: codecs: nau8821: Ensure the DAI is marked as started on success
+  ASoC: codecs: nau8824: Ensure the DAI is marked as started on success
+  ASoC: codecs: nau8825: Ensure the DAI is marked as started on success
+  ASoC: codecs: wm8580: Ensure the DAI is marked as started on success
+  ASoC: codecs: wm8782: Ensure the DAI is marked as started on success
+  ASoC: imx-pcm-rpmsg: Fix imx_rpmsg_pcm_close() being skipped on
+    rollback
+  ASoC: intel: atom: Fix .shutdown() being skipped on rollback
+  ASoC: renesas: fsi: Ensure the component is marked as opened on
+    success
+  ASoC: renesas: msiof: Remove redundant period constraint
+  ASoC: renesas: rz-ssi: Ensure the component is marked as opened on
+    success
+  ASoC: renesas: rz-ssi: Remove redundant component open callback
+  ASoC: rockchip: rk3399_gru_sound: Mark the link as started on success
+  ASoC: rockchip: rockchip_max98090: Mark the link as started on success
+
+ sound/soc/amd/acp/acp-platform.c             |  7 ++++++-
+ sound/soc/amd/ps/ps-pdm-dma.c                |  8 +++++++-
+ sound/soc/amd/ps/ps-sdw-dma.c                |  8 +++++++-
+ sound/soc/amd/raven/acp3x-pcm-dma.c          |  8 +++++++-
+ sound/soc/amd/renoir/acp3x-pdm-dma.c         |  8 +++++++-
+ sound/soc/amd/vangogh/acp5x-pcm-dma.c        |  8 +++++++-
+ sound/soc/amd/yc/acp6x-pdm-dma.c             |  8 +++++++-
+ sound/soc/apple/mca.c                        | 16 +++++++++++++---
+ sound/soc/atmel/atmel-pcm-pdc.c              |  7 +++++++
+ sound/soc/codecs/cs42l42.c                   | 16 +++++++++++++---
+ sound/soc/codecs/nau8325.c                   | 16 +++++++++++++---
+ sound/soc/codecs/nau8540.c                   | 16 +++++++++++++---
+ sound/soc/codecs/nau8821.c                   | 16 +++++++++++++---
+ sound/soc/codecs/nau8824.c                   | 16 +++++++++++++---
+ sound/soc/codecs/nau8825.c                   | 16 +++++++++++++---
+ sound/soc/codecs/wm8580.c                    | 15 +++++++++++++--
+ sound/soc/codecs/wm8782.c                    | 12 +++++++++++-
+ sound/soc/fsl/imx-pcm-rpmsg.c                |  8 +++++++-
+ sound/soc/intel/atom/sst-mfld-platform-pcm.c |  7 ++++++-
+ sound/soc/renesas/fsi.c                      | 11 +++++++++--
+ sound/soc/renesas/rcar/msiof.c               | 16 ++++++----------
+ sound/soc/renesas/rz-ssi.c                   | 19 +++++++++++--------
+ sound/soc/rockchip/rk3399_gru_sound.c        | 14 ++++++++++++--
+ sound/soc/rockchip/rockchip_max98090.c       | 15 +++++++++++++--
+ 24 files changed, 234 insertions(+), 57 deletions(-)
+
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
