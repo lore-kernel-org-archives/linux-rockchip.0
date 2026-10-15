@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44615CC6B2D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 01:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81666CC6B30
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2026 01:47:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ak8qwW+9BI2AnrslD2qzNnXrMAQ5Nh9HKkmPTdAPTV0=; b=3l6Qq9pwpCwIgp
-	CGwlSJ/LbpaSfJlheB0s2hWtN7P9OfhBygY2cPCD3s5+nkCuzFtoKiuTOWqmA9ToTkgLi+FM6haOc
-	nQtMSVr1cmnHRw9nvT/Ef2XPI7k/gulfGip3psuYv2Smg0cgEvrEuMLnIO6+4E/IEzTLB/ZZpzROl
-	yDfLULsLc1FEM37VqixPRWm8/2C8MqYA3cyY7KRmj5pJHCeHC6lTQe5GUO65qiz1lSsYTISczTxms
-	faAZ0MSjwjMH90/K6SKscm5/X52L/0arA0ebW2dvzsNe3OyjL1v8E60OBn6BE+XZzO/HS6zIZ/sO6
-	/vroHoIndgSPE8025AlQ==;
+	List-Owner; bh=V20alREr6nrKiqwNFfP+nJsIi2/poiSj7pY1Nd9y3+w=; b=Osttfinx8e5rmJ
+	I4VE1DtimowO+7OClB1hmfQW7QRpd4NybWmWjoPJ4I6v4xhT4KCzOYIuowdzQc6jNOsNKf4C9Eowf
+	arkA+R3B0laBWD3MbfnAERC7OqnQ9adGu4k6PivHCFhBIR4J06WWyyYfoRRp7vp3hx9yotMc7mI1I
+	xCCH6+ICmAzzAqruuUnEE5N1uxKid8zIrqgyPLUu9a8NmBEFBdeDNqQpKXTj3kmxd6Pz9mpPGTJHN
+	ZFbFMMQFlsmA1Sbme7thBaMNawp6XJbOx6ns05t/CkjP39TzLAdEOJVUbXWdKIenzLwq5Fc3Udtfx
+	Qm/nvf2D745+puuHoEmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHAYh-0000000GbmM-0Opu;
-	Thu, 15 Oct 2026 01:47:03 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1xHAZ3-0000000GbrD-01OK;
+	Thu, 15 Oct 2026 01:47:25 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHAYc-0000000GbkY-0Aj2
+	id 1xHAYz-0000000GbqM-2SPh
 	for linux-rockchip@lists.infradead.org;
-	Thu, 15 Oct 2026 01:46:59 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2e608cd460eso25827755ad.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 18:46:57 -0700 (PDT)
+	Thu, 15 Oct 2026 01:47:22 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2e8246b13cbso35373585ad.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 14 Oct 2026 18:47:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792028817; x=1792633617; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1792028841; x=1792633641; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=QkExA76YJWwf2po0CbLVw6mxayxnqBJKULe/shJjNF8=;
-        b=C9rDe4vAZ5bhVg2cl8tvVjkVdhlGz1rSYYksWSPaFD6Q8SHFi/hopjtqtyCl9jfbtL
-         aYbK80SEJ01jC5VpCgLbYx8oOiSJL7z0lyuQphEx5uHrMMe82HKWgSG2jq7aci/yjUsg
-         Lsu7h0vlD/TjMgAeQjWC69UIzWpuE93erXpfG/rrzosWP9NJEkQ+6K2Z5pGRqwW92Ofc
-         rcJq0g1oug8KEkyImN8C1RCoPSfMTHZ8scoJqYT1oIZwSorgkdpoF5+1YjkfCSruF/Vs
-         i6S5hEISccwIihzpePMLFDqTlU3lMgPmvaPaLHjh3RyRwJkKYH+HtvsXmU9uO/t+TFwA
-         y4/w==
+        bh=sl+xZe1w/+ufceVKXDka/4tzEgH/pdjCTIAX9h5M0vo=;
+        b=LUSwSRpQWCFzvz5p3fFxud0GWXAgcrNyxRacsWd3ItUa2bl77cdHJge9npWUSc4D+4
+         xjf24YPGa1f3LbHB22st4QnqoEY/IbDOhFio20U/j38ZZL6XdX4zXvIlzBXj0uDlHdGq
+         R3ezgxFIt5Fun/AwKyge4Oq1bceXp7iEUGpKSUabPPQwz+bS5/8M5Rf2To9tQimg3lYf
+         WiScmxYQVzRd717tRWOwPrJkAcfo49mRaQlwor6O3PcMqcwucTvXOG5i4qNFaIkSmvQr
+         M1j4YZjCMIdE1QcaoZzN27T1S6A+gLh75PWbVPKlxQi38hz+1TB3yiNoRfpf/RpkzTFd
+         rjZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792028817; x=1792633617;
+        d=1e100.net; s=20260707; t=1792028841; x=1792633641;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=QkExA76YJWwf2po0CbLVw6mxayxnqBJKULe/shJjNF8=;
-        b=LpjG7RmUiCkI66WyikDvXoyFL6z2ZlOP9jQBrmEFQH7nO8RIcowv7/lWJVO+/lNKzI
-         mRjzubb8NrE2U1Nl4buiR+rqtrkqTOkG6/z492kvHv/8vI3s65Ocumepd7/TpavsI7t5
-         p14DdRsZLsMIqXttN7fdbIA59pwNl57k2/FKbJe43to9lF1P5IWnMyPH5ZMQS54A3OT6
-         Wb3ZbHxsTsTPpU1LEbRz87Wl8BEQbDV4L65ZiDPJfTShMKYvjATtiPck5agwBvqI0hJV
-         Io9wcftWgZ4Jw+/mZXpGgoKkZ8WbDBOoO3R9oiXGxkjkI0/ywiuptWpXjxE2lAPhAXJY
-         ITFQ==
-X-Forwarded-Encrypted: i=1; AKwUvBwqh54nnWHoTBavVW0w6GnuNoZRRjtGcgBgb8X2R8ss1H05GOCdnXPYipc1L9wnonRkfQL6McgpKV6e1jlvpQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYITz9njfYReHWovtDk+uV+8v7TUIDoXgPy2iduc3Y5yDoZTN8+N
-	jsKrp/feSJ1K2c2cEPoKxje1h/e4opxaEr46b5CRee3yuyDPA+5+0UiP
-X-Gm-Gg: AYBFou1D1F+c7VZXSvvorHFNZMKyQ3+sqmmP3PZ8NaUWMgK34RHPR+hfFZEMCnqMOBJ
-	dpkNLy1h6jf55YY91FHLYMi3BRtdQjE7OloTzarxiYJDSbuLz7QVxWQqGJSiOvdzrcYWw6qKhd4
-	/+6trhaImVq9R1pG3CzcNDWR4O3/4vAgtiAcOt19zxY33S58aUWGJ9+VNtZ2P5+G1UmezrleaSo
-	+k9CNm/zG2Ew0/BH0TkFRNeX1GmqNeWForXqDTnfgCjoBW1LFs2RkhTC/2GbX89t2K6EMUP1pPQ
-	oSyke3AiVstNJemU4HWZJzKyvfXa288IIcVEq9Q07Yp3TbcKkE4OD8oOUywlQHt7w69wuS4RZrI
-	WEK366r6ri4TMg3egZrSXaxKCywKAgHEjVsXh9uLtSIq/h1riGgwxGspacjuBnxkRghcLB9uNR5
-	y7Y4de3GbRIBkdMIdVtISkewXytD57AYNwd0CKORp6cALcYtLI/LdmibmqOCdtZHzAtRmEF9Xz1
-	0moV+HXuLhIYdn/De91ptnrqd7CrRcGV4OK4ILUuPKO2N72nFuX6OH0LHDjcUiM6FmYbfqew3y8
-	MihSPhrShEW6geeQoK/Ab9LT
-X-Received: by 2002:a17:902:ebca:b0:2e9:401f:f0f4 with SMTP id d9443c01a7336-2e9401ffb38mr25578395ad.16.1792028816992;
-        Wed, 14 Oct 2026 18:46:56 -0700 (PDT)
+        bh=sl+xZe1w/+ufceVKXDka/4tzEgH/pdjCTIAX9h5M0vo=;
+        b=l+QepyaiBe/res5suDCbQkkMEmpngI8cXAobBoLMNhOEchprwQXvEXPhXmdSID8nnL
+         THvFq0I8fJzHettsBIXx+yaMgZRbtDrRtTzzfpUvgWcBxQOszpaOUg4pnAprCNeSEy49
+         dNOLwG1R/ednHBp9IxP0sd+WHqkOvL4SholV9Oa1xCili2L1ys5VG9Xnr9Hap9cDlosG
+         PjGjl8nhcuwxdGeJNZ6xlOu+k/0z+8UCdgZi6fDBrC28oSqTLi9UwDnGu2hKe+VFocGe
+         /0Nh0/axmPlI0CtPJWteaTwM2b+VMyIf3/8GZSRop445SE1o+A6DbMBZpQenS1nIAH1K
+         hMhQ==
+X-Forwarded-Encrypted: i=1; AKwUvBwDUBPlhouA916wT29IB2FQfxPOBLUfHnsZIvvEPImdn+SvZ6IKp+L5j9gN5/pO8r3d5UrEp9t0plLt1nnQzw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIke4KvPDZVuv6KImCdNI5lnESyxDPrXxJLnKaswyjCazXtV9Db
+	SAi3BhDANXd/5VySSHO+N5hq+MC57qIQOjKs2lMsgS5qIWwwetkXr0xm
+X-Gm-Gg: AYBFou1G1Kq/UcJndau3RKn4wumEVdtUiXqBMdf3vDZD4BxhQrt6QYamtrSW2aYrmHK
+	sxsQS1kjbRb4ZOkY3P35+VbCT+ZDAqpzHTxoReDDkTttj0r3R2thEftT3zsuyoGNKqfkH4D57R6
+	4utIBR4zI0JmxFk8jieE1n+Oofy1VTBmSGUiCYoJ09EtpOiTPRvWp35RU8RSHP5qC40kxfJv7zT
+	5wQvrKQnuUBO3skHukuoMjA9KlGKeid/gPzkobcTvp2I1+AKyIxi1VMHwzSpxJMCICh7dyMg4pG
+	MwranuVZUmJZ8OlAxIb1XDqC3e0Bj2zHFv9Wr67EzcG99FAxKgVAoBOSMQ3MY6nRfzZ1VtAcQ1J
+	P2qSP/mWHajllaaOFae7Ge2rheaCMnmogt35uG89R8TWNoXH8ZSbztuGTh/Upm7ZgsM2YDQHbYv
+	vx+iusJcDyRltoi/T0JTrema0t/DagshgqUWW3EtyH6r4aCcTCaLVLfR/CqNlYa9MlXgZlZqsk/
+	HDEIoGpaADUMCfJjkkv+HWERSIiXj0fQp4eauc2ckcMhf2fvdUr8MtZKr3QapUJU6w7JAjavtNQ
+	k4d1BNEc/ae1Uw==
+X-Received: by 2002:a17:902:f54a:b0:2e9:628d:e9c1 with SMTP id d9443c01a7336-2e9628df363mr1150385ad.26.1792028840848;
+        Wed, 14 Oct 2026 18:47:20 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2e8422b8cc1sm73202995ad.54.2026.10.14.18.46.43
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2e8422b8cc1sm73202995ad.54.2026.10.14.18.47.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Oct 2026 18:46:55 -0700 (PDT)
+        Wed, 14 Oct 2026 18:47:19 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
 	Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
@@ -103,16 +103,16 @@ To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
 	Biju Das <biju.das.jz@bp.renesas.com>,
 	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
 	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2 11/25] ASoC: codecs: nau8325: Ensure the DAI is marked as started on success
-Date: Thu, 15 Oct 2026 08:43:10 +0700
-Message-ID: <20261015014324.5569-12-phucduc.bui@gmail.com>
+Subject: [PATCH v2 12/25] ASoC: codecs: nau8540: Ensure the DAI is marked as started on success
+Date: Thu, 15 Oct 2026 08:43:11 +0700
+Message-ID: <20261015014324.5569-13-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261015014324.5569-1-phucduc.bui@gmail.com>
 References: <20261015014324.5569-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261014_184658_079721_0D5E5BB3 
-X-CRM114-Status: GOOD (  14.20  )
+X-CRM114-CacheID: sfid-20261014_184721_622619_1C4D263F 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,39 +133,39 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 From: bui duc phuc <phucduc.bui@gmail.com>
 
 snd_pcm_hw_constraint_minmax() may return 1, which is then returned
-from nau8325_dai_startup(). ASoC only marks the DAI as started when
+from nau8540_dai_startup(). ASoC only marks the DAI as started when
 .startup() returns 0.
 
-This currently has no functional impact, as nau8325_dai_ops has no
+This currently has no functional impact, as nau8540_dai_ops has no
 .shutdown() callback. Still, return 0 explicitly on success to
 match what ASoC expects and ensure the DAI is correctly marked as
 started.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/nau8325.c | 16 +++++++++++++---
+ sound/soc/codecs/nau8540.c | 16 +++++++++++++---
  1 file changed, 13 insertions(+), 3 deletions(-)
 
-diff --git a/sound/soc/codecs/nau8325.c b/sound/soc/codecs/nau8325.c
-index 2c95ed00a681..5ccf4c110567 100644
---- a/sound/soc/codecs/nau8325.c
-+++ b/sound/soc/codecs/nau8325.c
-@@ -489,14 +489,24 @@ static int nau8325_dai_startup(struct snd_pcm_substream *substream,
+diff --git a/sound/soc/codecs/nau8540.c b/sound/soc/codecs/nau8540.c
+index d4211a76b096..09e7f31a904d 100644
+--- a/sound/soc/codecs/nau8540.c
++++ b/sound/soc/codecs/nau8540.c
+@@ -419,14 +419,24 @@ static int nau8540_dai_startup(struct snd_pcm_substream *substream,
  	struct snd_soc_component *component = dai->component;
- 	struct nau8325 *nau8325 = snd_soc_component_get_drvdata(component);
- 	const struct nau8325_osr_attr *osr;
+ 	struct nau8540 *nau8540 = snd_soc_component_get_drvdata(component);
+ 	const struct nau8540_osr_attr *osr;
 +	int ret;
  
- 	osr = nau8325_get_osr(nau8325);
+ 	osr = nau8540_get_osr(nau8540);
  	if (!osr || !osr->osr)
  		return -EINVAL;
  
 -	return snd_pcm_hw_constraint_minmax(substream->runtime,
 -					    SNDRV_PCM_HW_PARAM_RATE,
--					    0, CLK_DA_AD_MAX / osr->osr);
+-					    0, CLK_ADC_MAX / osr->osr);
 +	ret = snd_pcm_hw_constraint_minmax(substream->runtime,
 +					   SNDRV_PCM_HW_PARAM_RATE,
-+					   0, CLK_DA_AD_MAX / osr->osr);
++					   0, CLK_ADC_MAX / osr->osr);
 +	if (ret < 0)
 +		return ret;
 +
@@ -177,7 +177,7 @@ index 2c95ed00a681..5ccf4c110567 100644
 +	return 0;
  }
  
- static int nau8325_hw_params(struct snd_pcm_substream *substream,
+ static int nau8540_hw_params(struct snd_pcm_substream *substream,
 -- 
 2.43.0
 
