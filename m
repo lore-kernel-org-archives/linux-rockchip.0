@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2AF9CCA462
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E2A4CCF2C4
 	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 13:40:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,57 +12,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G6v9Y8U/FdTOSnX7cTQk0d1gVIoJW1FQGNvVTzBWWrA=; b=U00Dk7TXk1urAh
-	SVrYwIq+gF3DhgvBgwIuOMgEODE3yNefu/IF1YXNjZG068iEEw67YFk586AcOF65fC0Mqi0qKusOK
-	FC5e41uLPQaw34XhFH38jnQgvEigbdhyQR1v8N0w0Aiu52dZNKsMdjhFzWHogHdXQsg7H0+JaWv4e
-	dzNbIABJ3uvyI+kvou0fAUnnpQ3T6TSYLOHJbmfxjsaUQ3mxwCLpn2rgs9jRf9U0cGrcNWPufGCKc
-	bdR8aLJGebjYbSsOio38bkGrXc2Bn7qN6TuuY9IAxBY6CUAaE0X0i1MfKizvARLWzxe3hD7RRaAda
-	4z5QyV7DZ+3+HBm/QcZQ==;
+	List-Owner; bh=70Ft81hXZhFwNi1hgArPy6QRnGjx/6CIlCBTmEka5Gs=; b=MtlM0WO6YZd+1b
+	5Z8H5pInMGp4QkHHJlHafauojrNX2L/kHbHvUMZBKKpuq3zn2OMitLO+41+b1a6qOc+Ni+CeaI0e7
+	JeF8XlrhtB9dew5nBXixmDVZ2m++kJARSPwwDcD6fzxTd4hgJIP7O0GC1uU6CEU0lGAFdrLrWY5Om
+	lkXxRaSesD0VGYQip8HPQgwxvB4XbpcgRYDXVC1QQCR6bhaB25bzF4GT0gwP7hZbewNMLQn3L+g4k
+	5a/ge1FsTPmw54itgb/OdBpaGH7XBqdYO4DnrCRWu84UwpEm6gZy0QkIwoJhdXcBMHs7Y6EKR5UYs
+	8B0T00gnyajX/0Phoajg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHiAu-000000033id-2For;
-	Fri, 16 Oct 2026 13:40:44 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xHiAw-000000033km-04jH;
+	Fri, 16 Oct 2026 13:40:46 +0000
+Received: from smtp-bc08.mail.infomaniak.ch ([2001:1600:19:e38::bc08])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHiAr-000000033hQ-41ks
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 16 Oct 2026 13:40:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=rby9aMUP3wS4QVj+L75VJHl3m44mIgdEySaWpDHMJtU=; b=AYVcUBa7PP8spyOGaVejvJNoCf
-	aY0wv9gad1UKybP+AFJCHxqtRyG8T0cWEXYDZRuVg+w+yIK/pVoCUywzg9DQKfZxEKODXJSrlT8bm
-	qqy7ft1xFlaH12JULvH18SW/C+DESrdQr+2o+eUdAokI7txgjql80DQQudm7L/OUpmQ8Fj0oJbe8D
-	70c8t23XSf6ivXp3t9ESNKmFX0wwnzFXo7+DzPeh7UWwMoH7OjBLuRk0oZNDH0YIAygSQ2BWObozu
-	V3Wb8PLtvMDj3voBCiZ5iapY6R0AvvXdfOP33FRx0qoEpYRzfn7XD8GFDHSGtHbrFv4LhL5b/2n/8
-	nqoW8S8g==;
-Received: from smtp-42ae.mail.infomaniak.ch ([2001:1600:19:7ff8::42ae])
-	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xHiAp-00000001YZE-0SWb
+	id 1xHiAp-000000033gU-1GNE
 	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Oct 2026 13:40:40 +0000
-Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4j5mKZ1rZTzbDV;
-	Fri, 16 Oct 2026 15:40:34 +0200 (CEST)
+	Fri, 16 Oct 2026 13:40:42 +0000
+Received: from smtp-4-0001.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10::a6c])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4j5mKc2PFjzcQp;
+	Fri, 16 Oct 2026 15:40:36 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0leil.net;
-	s=20231125; t=1792158034;
-	bh=rby9aMUP3wS4QVj+L75VJHl3m44mIgdEySaWpDHMJtU=;
+	s=20231125; t=1792158036;
+	bh=Qy9U0bG4fRIRlqiXJDykXRQp/u4OIoI8vbmr2tAGcYc=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=PJ2jYvhCE2ltzTYfbPhrdNhg7OORW9X6b7wwaaMvOTLdJ52mTAP7qj7z/BcNMrf9c
-	 Z1KpIBAZwlzbFIkECW+Zj8TBQhulMcAQV4483QXizeVdzjnfWZ088VB7PpfF1NPnM0
-	 /Mp76YRHtzQzWER6TJhTZ1TjCs1u5Q9oa6a5FqMq89LeE5A10hfBORceq1dpJVMY9d
-	 XCbbX9JyfX8/60eR2xhz91bDBZLN/625WG1stsw1At1UGFxpPF7LnZD8y6AW3ze1pk
-	 0jzXAeL7l2a82V0p3recGqJbxUU80chlwcZnQKhXT2D7DA3CldNONQtubQPtirIDjn
-	 OsIznf/31S4QA==
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4j5mKY1fMjzFrp;
-	Fri, 16 Oct 2026 15:40:33 +0200 (CEST)
+	b=Hh5149DuwUXmaq2dZwmroDWpjTHfh+z2s1E7viZ2WaxW2Yg9LBFxF0zDgJq06VNZp
+	 OEhUGqo15ZRvRfYV88WV9xc/0TBFH19A/it4Hda42mVv+oVSUGHs056R7zoUZCyfm5
+	 TnKuiMzBoD2NJlovJgc9rMD/pWFykIHLVJxvobM3m+cD7vTecqyi3at8VTyWlJrYu2
+	 LPT1uVnJo4qG1utJPCGjK1VcZ6EYSuViRErt36PldsHYocZeWVQALc9QRoQDLivOmf
+	 Ydt8cqN2GUsahMjfaE2vfRlsW/q6udthI2n86//lz5eURYZ+RBVBJcjKbvccmQ4KwT
+	 J/C+x67+8+tzA==
+Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4j5mKb2J0nzFpT;
+	Fri, 16 Oct 2026 15:40:35 +0200 (CEST)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Fri, 16 Oct 2026 15:39:57 +0200
-Subject: [PATCH 1/3] media: v4l2-common: add V4L2_PIX_FMT_Y10 to
- v4l2_format_info
+Date: Fri, 16 Oct 2026 15:39:59 +0200
+Subject: [PATCH 3/3] media: synopsys: csi2rx: add support for Y8 and Y10
+ bus formats
 MIME-Version: 1.0
-Message-Id: <20261016-v4l-y8-y10-csi-vicap-v1-1-27bb87aa745d@cherry.de>
+Message-Id: <20261016-v4l-y8-y10-csi-vicap-v1-3-27bb87aa745d@cherry.de>
 References: <20261016-v4l-y8-y10-csi-vicap-v1-0-27bb87aa745d@cherry.de>
 In-Reply-To: <20261016-v4l-y8-y10-csi-vicap-v1-0-27bb87aa745d@cherry.de>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -75,8 +60,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 X-Mailer: b4 0.17-dev
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_144039_274782_7EA12135 
-X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-CacheID: sfid-20261016_064039_483762_C245DCA3 
+X-CRM114-Status: UNSURE (   8.65  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,27 +81,36 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Quentin Schulz <quentin.schulz@cherry.de>
 
-Add Y10 format to the v4l2_format_info table.
+The OV9282 camera sensor driver can output in those two formats, but the
+CSI2 RX controller driver didn't advertise support for them yet.
 
-Co-developed-by: Michael Riesch <michael.riesch@collabora.com>
-Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+Suggested-by: Michael Riesch <michael.riesch@collabora.com>
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- drivers/media/v4l2-core/v4l2-common.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/media/platform/synopsys/dw-mipi-csi2rx.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index 65db7340ad384..2c36ae15610e1 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -333,6 +333,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
- 		{ .format = V4L2_PIX_FMT_YVU420,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
- 		{ .format = V4L2_PIX_FMT_YUV422P, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 1 },
- 		{ .format = V4L2_PIX_FMT_GREY,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 1, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
-+		{ .format = V4L2_PIX_FMT_Y10,     .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
- 
- 		/* Tiled YUV formats */
- 		{ .format = V4L2_PIX_FMT_NV12_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
+diff --git a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+index 41e48365167e5..d8c6377235506 100644
+--- a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
++++ b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+@@ -198,6 +198,16 @@ static const struct dw_mipi_csi2rx_format formats[] = {
+ 		.depth = 16,
+ 		.csi_dt = MIPI_CSI2_DT_YUV422_8B,
+ 	},
++	{
++		.code = MEDIA_BUS_FMT_Y10_1X10,
++		.depth = 10,
++		.csi_dt = MIPI_CSI2_DT_RAW10,
++	},
++	{
++		.code = MEDIA_BUS_FMT_Y8_1X8,
++		.depth = 8,
++		.csi_dt = MIPI_CSI2_DT_RAW8,
++	},
+ 	/* RGB formats */
+ 	{
+ 		.code = MEDIA_BUS_FMT_RGB888_1X24,
 
 -- 
 2.56.0
