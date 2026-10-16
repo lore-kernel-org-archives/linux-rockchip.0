@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAEF1CCF2C7
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 18:44:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29091CCF2C3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 18:44:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mojuJQCdMOTps9dgCCSU9YGeW1y2fTHQoOvETe1+L2E=; b=Vq33JTEPRAhkmb
-	2kNHmkq8aHf3XutMDqX3oDv3DhqeTIiawDQw0DxuqEEofyB5ICXDv7oWCvGGz8HSgp8rQD6VlcwIq
-	nDpnLbR6WdLNZTBEN4hXgvy0z9Y8puGbGr6qg1HgXbbHpIuK5vMRPUmIGAlq4JIBpb5eRD7jE28QX
-	b5wr0OSSwm6nk5Zhy/JQquDKJdcAj+nM5X/anpaeoxcKc/3W0x7RZnYUQ/dKwGMOX6kwuuu7FPvEw
-	Q0Y/nT7UF4/xaDuVbXgnyWFl5+3CuXPBPknwQJoHMwc0AkhtCbbYDuwSBtxhrkJPGGDCXUWBli9uZ
-	OUFPq5fqqdaGGIhZij/A==;
+	List-Owner; bh=N2iJAekypdW/KpM0KN1lfPCNC2Mi+XIB4GBZEMeXUrk=; b=UHeGnLc16aAohT
+	xhsCRj0EfNlHIZv0wPZ2E+VMzhodcJ1hzn/l0rRhUJHKGm0vE/smvh82xqOvfS577ZhSbbOm+J9IP
+	MuN1W69Hfjme2gUuQbY0/hMw+kgEOALokM+fn36EGQ32ZEnQ9Iz6EP0UUWvrdIC614tYzql4OBr+O
+	/zu7lE/bqHMtV0Vm9W+tSjqQklv+on+paIOcCy12d7Wk76oHA8ngBAg3OCG1s3sC5pjl3cJC+WVs5
+	smWbzTUey30G53CpbpYTW1SXuJnXYkW7AV32aIH7vV4xMmWE4RYWQHVdTnbH6T5KetMyq8tLblkZo
+	QC7ZwHO+0h6O0G1vRBiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHmuE-00000003i4r-1hkE;
-	Fri, 16 Oct 2026 18:43:50 +0000
+	id 1xHmuJ-00000003iBv-1MAw;
+	Fri, 16 Oct 2026 18:43:55 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHmu1-00000003hsI-3mey;
-	Fri, 16 Oct 2026 18:43:40 +0000
+	id 1xHmu4-00000003hu3-3Qfj;
+	Fri, 16 Oct 2026 18:43:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1792176214;
-	bh=ajby+69181ATcgw6MxCUTCcnnZAWh+YZh/D1NNgYaPc=;
+	s=mail; t=1792176215;
+	bh=rcNmKpWmTn7+TJeXvWtVirw/uYcmmOwXMSqcMxV5Cbs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=DC+hLVAXZ4r0scMw6U0rykjJrQjgru2Gots0AwEmTnxHZtajwa78hpWwCFP9VmfTt
-	 roI9m3hbCuRT4ahJJw4fIM7MRa0sf+B89bNPTiCosUbd9wHXkcoF6CQmw+bjWBDTtJ
-	 Gr4rDsS5ulxTZjuTu+MVOi8TcFrtpSkJvpgbudwwxJjnlh+jgwoy4vBRx3HkGWF8nB
-	 k7KhGGGIGkYxkNXGjag6fU0CMsfgL3weP2RqMy4lywwDU61B6QrnDM8zKeFqnrgxm+
-	 lUiKPzWJ9Y5MRZxl301w7tnnFAST3XyHW83pyUh9NM/ruwNRKyUGIBDvqfcx3zEtFx
-	 darpnZc3JRN5w==
+	b=LR/iTvUB2PiesU2ocSTLMe7rcti0zwPA5rzdkX8MqPYw5QqW5WVeI2agCM+XOuy0U
+	 7p7HzJK2y6GE2SOFlzsDWVDL5Eo3MxZaQ+LFt2/EQih5MScB41KEXY/drj/lXBzB+X
+	 qhKx8KyAFvELoNKbAlwwm3ZG61Nt/t8/kSuercjAYGPsFy0/ePoiusnFG55uM8cDMs
+	 vd/Fdc1XU7LmyUXlmga/CBDgiKbwaWZfALOQaV/jLvS5311GvlTW8w7UyIoVlldqCF
+	 DJ9DdmeVFN+vQZeLmBKsEdPLiy+tsOBtSMdrcBoAm6QgoTzhbxfctSuI9PZ7c+10n7
+	 EkNCckaLqfhEQ==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AC06217E1134;
-	Fri, 16 Oct 2026 20:43:34 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0900817E150A;
+	Fri, 16 Oct 2026 20:43:35 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 6219F48002F; Fri, 16 Oct 2026 20:43:34 +0200 (CEST)
+	id 693FF480038; Fri, 16 Oct 2026 20:43:34 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 16 Oct 2026 20:43:18 +0200
-Subject: [PATCH v17 2/7] phy: rockchip: usbdp: Add reset hook support for
- dwc3
+Date: Fri, 16 Oct 2026 20:43:22 +0200
+Subject: [PATCH v17 6/7] usb: gadget: define stub for usb_udc_vbus_handler
 MIME-Version: 1.0
-Message-Id: <20261016-b4-rockchip-dwc3-rockchip-glue-v17-2-876f96893e2f@collabora.com>
+Message-Id: <20261016-b4-rockchip-dwc3-rockchip-glue-v17-6-876f96893e2f@collabora.com>
 References: <20261016-b4-rockchip-dwc3-rockchip-glue-v17-0-876f96893e2f@collabora.com>
 In-Reply-To: <20261016-b4-rockchip-dwc3-rockchip-glue-v17-0-876f96893e2f@collabora.com>
 To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
@@ -63,26 +62,27 @@ Cc: Igor Paunovic <royalnet026@gmail.com>, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, 
  kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4662;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1158;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=ajby+69181ATcgw6MxCUTCcnnZAWh+YZh/D1NNgYaPc=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrScFbrZQcHhRObFIRq4D3q79ndKV0HDoYQU
- fWmakTPifYk4okCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq0nBWAAoJENju1/PI
- O/qa7kwP/2PNZdQaxgJAVv0xh915RrRj6q1RpKjKE9y5X/ICQJcUephy6RXIAWRHbMzRVMkGSWb
- Z8r9by4vOQ6qM6ks+K+be6tQ84X39Dzf97e8TH3uC+ffAKzNLZJQhEwVu4RfIzD6AJ5DJpZKcFM
- L+d3p5R1JhQ1RgEKYNNO1H53xeySJRJiothC2HCyOSS7AQF8U4ruPc+vV70axTbvzk53p3OfSl7
- vjnyEmwa0riVjJ8ZEOIWVADx9wNz2DvLOAG8S6fMd0JSTrhIRDNBtWgD34HfvIVWnGQPXGO3mFd
- aWSWoo1bUYUXtz4Vyrot6v6XXWi4NZ9sqwvz76gBLMZFW9HOsMxAr8OzRLtzidYKxvkikv9Fu1I
- 33/vuW0u2PCoiWDmCEwbrLdahXN4s59bUiKNSl0MP1n77BFUW2eECvmGR2HXl8AV1DiGGkXq+zl
- xPQTnmfcfDFTFbDEsksZ8nYfea35OguVLUjZAQ3dZDAQT1x/rKMw5My2SU7LsJzvYvbFiy70CnW
- QXYJwQ5fWemGYCPVvTr/RIiegXH2R/2dsCSTIUyQ3R8ffBJ3x1Ci/FY2TNECmBJUDmAhs0BwrlE
- je+fpMZxmoXgEY6fDLuE7+37J6rDUptoH7bUY7A7gnpBAhne0h/I1KT9qT+Q4znw2NW3bQyeCCx
- fDuE+4IzFiPF9ga0aPcAyCQ==
+ bh=rcNmKpWmTn7+TJeXvWtVirw/uYcmmOwXMSqcMxV5Cbs=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrScFYby+uJAZWIY7sw6GUsT0sIvZNldNy8k
+ L5xwycZoZ23w4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq0nBWAAoJENju1/PI
+ O/qaiO8P/RchQsDCIz5c6MSTQzxEfbvDysNdjQo5ZonsfvVa9IkkyDY/Mw6ctvp8G/nkPiKue3M
+ 8fP6us/dQXc/wCs7QpwwkejrlRU7zTlbmaSxEl1sHUs1+vkR3eM6o6GOnb5OHHQjJPwRjhujPig
+ RYVbz+peaHx9m76zx3wN+D80vKsDoknXZRgIKLhRoxEHNzNrxnxrY5k983cTWKP8h0R3aJveL6x
+ dTTwLDMC5OETxEKkvZMgLY2/c9Q+NUfZp7Pb2valgWqVrdKZHeBpsa2fk3yaf8DkGS75JL4ZLDZ
+ HNh8sTl6a/fdTKB1pHqOw7rIriz8+ggosrA8MCU+urTsY2ajZ+rujO35a4Zi1jCGY285qUVlxKx
+ UQkcJRmvKn8yIliM9gFD6Gl5sX5NJQeGp1PIgD3ppoNhMNEXi7gVkqg1uQbdbblYPBNUm06LMjS
+ PurFZp0z34JzlmuRabHHycDZJhPvhfThPvhO2vmhFs4CjfHYmmrsa0If+k9LfF5XH1MbX+hr7lj
+ cGoeLlAl/YFJWS3ITMNpObhWwjRxCCjBaW9tp/qGE24oMDv9LnczTeyJTm53qzZkM3doJarxjIP
+ Q/0qqIqODUyEEj+zTqBFxNKxEtlp3fykxbP+h38JGYBY/SFvS3GYjMA12RwvyRUfuo0GQcKO/yO
+ vKffKxujQujuvJB5hyus8RA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_114338_104779_A2E13746 
-X-CRM114-Status: GOOD (  20.78  )
+X-CRM114-CacheID: sfid-20261016_114341_054092_71036C5A 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,154 +99,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When TCPM (Type-C Port Manager) triggers a orientation or mux
-change, the PHY needs to reset. This results in the PHY no longer
-providing a clock to the USB controller. If the USB controller
-registers are accessed without the clock, SErrors are generated.
+Platform drivers with optional gadget mode support may want to
+call usb_udc_vbus_handler to properly handle a cable being
+re-plugged.
 
-This can be avoided by switching the clock provider for the USB
-controller. But after switching the clock, the USB PHY sometimes does
-not succeed to lock its "cmn ana lcpll" PLLs again. I suspect this is
-due to a clock glitch and after some debugging figured out that this
-can be avoided by disabling the USB controller's PIPE interface while
-the PHY reset is ongoing.
-
-Implement an API that allows the USBDP to actively request a reset
-from DWC3 as a quirk.
+Ensure these drivers can call the function without a hard dependency on
+CONFIG_USB_GADGET or having the ifdef logic in the driver.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 57 +++++++++++++++++++++++++++++--
- include/linux/phy/rockchip-usbdp.h        | 16 +++++++++
- 2 files changed, 71 insertions(+), 2 deletions(-)
+ include/linux/usb/gadget.h | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index db69dd24f73b..b396f286e785 100644
---- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -19,6 +19,7 @@
- #include <linux/module.h>
- #include <linux/mutex.h>
- #include <linux/phy/phy.h>
-+#include <linux/phy/rockchip-usbdp.h>
- #include <linux/platform_device.h>
- #include <linux/property.h>
- #include <linux/regmap.h>
-@@ -179,6 +180,9 @@ struct rk_udphy {
+diff --git a/include/linux/usb/gadget.h b/include/linux/usb/gadget.h
+index 8285b19a25e0..551e71b6eda0 100644
+--- a/include/linux/usb/gadget.h
++++ b/include/linux/usb/gadget.h
+@@ -979,7 +979,12 @@ extern int usb_gadget_ep_match_desc(struct usb_gadget *gadget,
+ /*-------------------------------------------------------------------------*/
  
- 	/* utilized for USB */
- 	bool hs; /* flag for high-speed */
-+	int (*dwc3_reset_handler)(void *data, int port, bool pre);
-+	void *dwc3_reset_data;
-+	int dwc3_reset_port;
- 
- 	/* utilized for DP */
- 	struct gpio_desc *sbu1_dc_gpio;
-@@ -995,6 +999,43 @@ static int rk_udphy_parse_dt(struct rk_udphy *udphy)
- 	return rk_udphy_reset_init(udphy, dev);
- }
- 
-+static int rk_udphy_run_reset_handler(struct rk_udphy *udphy, bool pre)
-+{
-+	if (!udphy->dwc3_reset_handler)
-+		return 0;
-+
-+	if (!(udphy->sw_mode & UDPHY_MODE_USB))
-+		return 0;
-+
-+	return udphy->dwc3_reset_handler(udphy->dwc3_reset_data, udphy->dwc3_reset_port, pre);
-+}
-+
-+void rk_udphy_unregister_reset_handler(struct phy *phy)
-+{
-+	struct rk_udphy *udphy = phy_get_drvdata(phy);
-+
-+	guard(mutex)(&udphy->mutex);
-+
-+	udphy->dwc3_reset_handler = NULL;
-+	udphy->dwc3_reset_data = NULL;
-+	udphy->dwc3_reset_port = 0;
-+}
-+EXPORT_SYMBOL(rk_udphy_unregister_reset_handler);
-+
-+void rk_udphy_register_reset_handler(struct phy *phy,
-+				     int (*reset_handler)(void *data, int port, bool pre),
-+				     void *data, int port)
-+{
-+	struct rk_udphy *udphy = phy_get_drvdata(phy);
-+
-+	guard(mutex)(&udphy->mutex);
-+
-+	udphy->dwc3_reset_handler = reset_handler;
-+	udphy->dwc3_reset_data = data;
-+	udphy->dwc3_reset_port = port;
-+}
-+EXPORT_SYMBOL(rk_udphy_register_reset_handler);
-+
- static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
- {
- 	int ret;
-@@ -1005,24 +1046,36 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
- 	}
- 
- 	if (udphy->status == UDPHY_MODE_NONE) {
-+		rk_udphy_run_reset_handler(udphy, true);
-+
- 		ret = rk_udphy_setup(udphy);
--		if (ret)
-+		if (ret) {
-+			rk_udphy_run_reset_handler(udphy, false);
- 			return ret;
-+		}
- 
- 		if (!udphy->hs && udphy->mode & UDPHY_MODE_USB)
- 			rk_udphy_u3_port_disable(udphy, false);
- 		udphy->phy_needs_reinit = false;
-+
-+		rk_udphy_run_reset_handler(udphy, false);
- 	} else if (udphy->phy_needs_reinit) {
-+		rk_udphy_run_reset_handler(udphy, true);
-+
- 		rk_udphy_u3_port_disable(udphy, true);
- 		udelay(10);
- 
- 		ret = rk_udphy_init(udphy);
--		if (ret)
-+		if (ret) {
-+			rk_udphy_run_reset_handler(udphy, false);
- 			return ret;
-+		}
- 
- 		if (!udphy->hs && udphy->mode & UDPHY_MODE_USB)
- 			rk_udphy_u3_port_disable(udphy, false);
- 		udphy->phy_needs_reinit = false;
-+
-+		rk_udphy_run_reset_handler(udphy, false);
- 	}
- 
- 	udphy->status |= mode;
-diff --git a/include/linux/phy/rockchip-usbdp.h b/include/linux/phy/rockchip-usbdp.h
-new file mode 100644
-index 000000000000..6923ac28303b
---- /dev/null
-+++ b/include/linux/phy/rockchip-usbdp.h
-@@ -0,0 +1,16 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+/*
-+ * Rockchip USBDP Combo PHY with Samsung IP block driver
-+ *
-+ * Copyright (C) 2026 Collabora Ltd
-+ */
-+
-+#ifndef __ROCKCHIP_USBDP
-+#define __ROCKCHIP_USBDP
-+
-+void rk_udphy_unregister_reset_handler(struct phy *phy);
-+void rk_udphy_register_reset_handler(struct phy *phy,
-+				     int (*reset_handler)(void *data, int port, bool pre),
-+				     void *data, int port);
-+
+ /* utility to update vbus status for udc core, it may be scheduled */
++#if IS_ENABLED(CONFIG_USB_GADGET)
+ extern void usb_udc_vbus_handler(struct usb_gadget *gadget, bool status);
++#else
++static inline void usb_udc_vbus_handler(struct usb_gadget *gadget, bool status)
++{}
 +#endif
+ 
+ /*-------------------------------------------------------------------------*/
+ 
 
 -- 
 2.53.0
