@@ -4,86 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF933CCF2C4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 18:44:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C8D0CCF2C3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 22:37:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ndt+5L39ccCnWXYZiinSzFLZSpksKoBKybD/36NULQQ=; b=4SrurwpmcFbiEV
-	Fjq0TWGOf8CHd72A1JWcOxhqrVcCuprVo+tKT7Xyw1t7EdvoMw47gabSL7Mrryk6ZaHgXTtSXZGxu
-	SEyzF7uf1g8s2+/zkiYHj4zI8SMbUYq5v1K/yOrorUpna8R3Mvl4lG408+wqre8w+rlfD5pbXP7ut
-	Idby8xAcJcIn5wI40GT8Dq3drbk8kGo/6OQ2XHc8lwMeg7aNs7UTwRDm3jLr43d3VqFjGUYhBeVvt
-	fvOJcbEPwMgAtzveViXIaS5qBp1q8E22K5wGt1/9q0odtloWCiZU181cSv9fBdo3S3bGB9IB/ye0L
-	9QoYogyMqjhUQaD5GAVQ==;
+	List-Owner; bh=8D44WtdCpOJJOGCvpKlawJ6FuePvoI8PDFO0/HBySuo=; b=SccACUebF7RGn9
+	uPWsRqmOmos7Fl4dX5sfJCkqme7vX4t097Dg0G9O4gZxv010NeF4+Q3e0jkPglw6qhOnuIjiut42g
+	bLdBqitLYskQ7AQRHnqts8wdrEI+IfB5M+K4UC7oakLXNjCQrSm83lQvduKIEaY9E4/4TCvXNfVWR
+	uRRabDudCh6NPRgDG1T7LPSHvUG+yznqMD4aec09i+qrlwwT2N/A8n9/85JcMYbyung83VL+ESdjQ
+	oWoUCC0HRWX3yTz3iqeHca0aTggefa2gSKCgQip+VRmYnJCb24H+iVpiFecRM8bl1LGxXByKAY6KO
+	OcZ0EK9NCtsCbylvCpNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHmuE-00000003i5a-2oPH;
-	Fri, 16 Oct 2026 18:43:50 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xHqXt-00000004BDu-2iRL;
+	Fri, 16 Oct 2026 22:37:01 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHmu1-00000003hsH-3moG;
-	Fri, 16 Oct 2026 18:43:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1792176214;
-	bh=u1NJ7iPwSqksBo4kmNU/fQeqoWOdC3qmPcDydleD2LU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=jFY8T34OoEmseB2CcfM4AMThycPAjSyWjXL+CYEvSmUDlMz/wrGZr5MkDo6xuKo3p
-	 3u90BGGOwBuGGL+xSYRil0NqW7OR/SwxhvvkgJgGHTf1eNZLRjm2tdDa5WC0/LNgmx
-	 V0hGpfD986ev+W+3W+6Q6y3w40rBkRZTEFwnUbyXs6PeDhRfPEoHciUaWY2K1b1DFb
-	 HWSDD8+8Hftgn8J1CVGg4KvTQL2lDmC8cQto5EDzVnxy+8vXMmbWooDiHnhyik2lSr
-	 kz6CdguoPk6YJTgH/GLxkGkYucGDCWH309m/u++rpag/6Tm2aXQMHJP61HyOZpqszW
-	 gZoKwLzRX60ag==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AE73317E142F;
-	Fri, 16 Oct 2026 20:43:34 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 659FE480031; Fri, 16 Oct 2026 20:43:34 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 16 Oct 2026 20:43:20 +0200
-Subject: [PATCH v17 4/7] usb: dwc3: core: add post PHY registration hook
- for platform glue
+	id 1xHqXr-00000004BDM-1o9O;
+	Fri, 16 Oct 2026 22:37:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=1OIdajx1AC8ugqYiL+Ehn0uiLIubAtd5Cp9SN33d2y8=; b=ckLBauByU8LiGS+iOGmWnvoPCs
+	qtYSD2lPhfiqIO2+yDB7SYsjufItglhuWkLay6X2/EmI0R8w6DcjD28qZplPlwa6IDmG8JJYF4jck
+	IbK46fQkvXsvNKgeh18s0WK9GFv5g4uy6doHl228Rkq0ZZln9ds+1732G4AHoG75pDmWNEZZWmo54
+	skKD49uYCWSLCeUauzPyJ3nfLkrRfIZ9bPbGC7f7KPFwZkYQlGoUF8xeqPcFuqV2Fj1XhHkH2B+At
+	ZnKjqBgNX4EbKQj+61fCaV0Bvxi5ln0H2oxwBIPLQX+0eEsgohu509hfL+m4f/FxX1uzPEUwtGXeM
+	cZi3+7tA==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Russell King <linux@armlinux.org.uk>, jbx6244@gmail.com
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v2] ARM: rockchip: smp: enable secondary rk3066a/rk3188 CPUs
+Date: Sat, 17 Oct 2026 00:36:55 +0200
+Message-ID: <1979829.CQOukoFCf9@diego>
+In-Reply-To: <20261013-cpu-v2-v2-1-fe3bbc9edd33@gmail.com>
+References: <20261013-cpu-v2-v2-1-fe3bbc9edd33@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20261016-b4-rockchip-dwc3-rockchip-glue-v17-4-876f96893e2f@collabora.com>
-References: <20261016-b4-rockchip-dwc3-rockchip-glue-v17-0-876f96893e2f@collabora.com>
-In-Reply-To: <20261016-b4-rockchip-dwc3-rockchip-glue-v17-0-876f96893e2f@collabora.com>
-To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Manivannan Sadhasivam <mani@kernel.org>
-Cc: Igor Paunovic <royalnet026@gmail.com>, linux-kernel@vger.kernel.org, 
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, 
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2142;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=u1NJ7iPwSqksBo4kmNU/fQeqoWOdC3qmPcDydleD2LU=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrScFaMBVUE9wtc4lIDEBce3ZzSkHe7LF8Mj
- maEpr0E2aj5AokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq0nBWAAoJENju1/PI
- O/qaHcAP/2gUzpAqxA+EJEqvViGGk1bo38n1+QJ0ulGoowOzXTOf/QruXeXlojDpFUxZsEfEiN7
- qrJTzDUDEhbULxl09qXjIH79G03J/6I2HkqjZXmvEjvLxcbTIZosQMClTCkIAzj7a1zMg8CL1iv
- ME9tMPqQszs57xY2IQDHr1Euk4+rK/TRbu7Kcx8ksWMuFVyFxNA0TSx3vFHW+mz+OJ3PIgg3fYM
- o8X0rjYajFHeylCn3D+1v8IR4G79DB6ihXO2c/33Sr6EyYxK+pHCeQnrXXblwgdIDBxH4vA1TPx
- HpwV4Oy1QQjfAPyM7ISjOJL6xirma1nIEUPJK+ZYkc6SaFOxtVwOpZCGB3YaKIMrebzwuX76J/I
- Zc2ZbJu5wek/wImfK3OfLWL/dac4tQL3Yw1iAuLZUAmfd/0I+lxy6VbW1WWVrwr4Nt3FmYrfvAW
- wYIiZrTHIBwXsUrWJvMtxsCNfcgCh4TdxMWigUyX3x665lngXMKaPawQgMhGmS0Of09boAt/NNk
- OwLW/KvuCboXf7/BDj6VOXIVtfsMHX7bLR+6J+UnsJydyfonfoa8rTJgKqBWG0UqXi4VnJtBNPZ
- 1r+Pu2JvnTLL405je+N0J6G9OwLZ2AZRx7BJU/3UzFSZQgO56ueZxPrLQG0qZVDwsiKt/X+Ezhd
- ri/tuvasEhQE2ngKCXiw4Jw==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_114338_124711_D5CDBAE7 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20261016_153659_519921_229136AB 
+X-CRM114-Status: GOOD (  21.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,74 +59,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for custom PHY handling steps in platform glue code
-by adding a post registration hook. This will be used for handling
-PHY reset notifications on the Rockchip platform.
-
-Tested-by: Igor Paunovic <royalnet026@gmail.com> # Orange Pi 5 Plus
-Acked-by: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
-Reviewed-by: Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/usb/dwc3/core.c | 2 +-
- drivers/usb/dwc3/core.h | 9 +++++++++
- 2 files changed, 10 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index 4b7132887a03..daf5aec07fbf 100644
---- a/drivers/usb/dwc3/core.c
-+++ b/drivers/usb/dwc3/core.c
-@@ -1613,7 +1613,7 @@ static int dwc3_core_get_phy(struct dwc3 *dwc)
- 		}
- 	}
- 
--	return 0;
-+	return dwc3_post_phy_registration(dwc);
- }
- 
- static int dwc3_core_init_mode(struct dwc3 *dwc)
-diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-index 608daeb7ef10..e9d8df0a298e 100644
---- a/drivers/usb/dwc3/core.h
-+++ b/drivers/usb/dwc3/core.h
-@@ -995,10 +995,12 @@ struct dwc3_scratchpad_array {
-  *				need to be passed on to glue layer
-  * @pre_set_role: Notify glue of role switch notifications
-  * @pre_run_stop: Notify run stop enable/disable information to glue
-+ * @post_phy_registration: Called directly after PHY got registered
-  */
- struct dwc3_glue_ops {
- 	void	(*pre_set_role)(struct dwc3 *dwc, enum usb_role role);
- 	void	(*pre_run_stop)(struct dwc3 *dwc, bool is_on);
-+	int	(*post_phy_registration)(struct dwc3 *dwc);
- };
- 
- /**
-@@ -1655,6 +1657,13 @@ static inline void dwc3_pre_run_stop(struct dwc3 *dwc, bool is_on)
- 		dwc->glue_ops->pre_run_stop(dwc, is_on);
- }
- 
-+static inline int dwc3_post_phy_registration(struct dwc3 *dwc)
-+{
-+	if (dwc->glue_ops && dwc->glue_ops->post_phy_registration)
-+		return dwc->glue_ops->post_phy_registration(dwc);
-+	return 0;
-+}
-+
- #if IS_ENABLED(CONFIG_USB_DWC3_HOST) || IS_ENABLED(CONFIG_USB_DWC3_DUAL_ROLE)
- int dwc3_host_init(struct dwc3 *dwc);
- void dwc3_host_exit(struct dwc3 *dwc);
-
--- 
-2.53.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSm9oYW4sCgpBbSBEaWVuc3RhZywgMTMuIE9rdG9iZXIgMjAyNiwgMTg6MjA6NDkgTWl0dGVs
+ZXVyb3DDpGlzY2hlIFNvbW1lcnplaXQgc2NocmllYiBKb2hhbiBKb25rZXIgdmlhIEI0IFJlbGF5
+Ogo+IEZyb206IEpvaGFuIEpvbmtlciA8amJ4NjI0NEBnbWFpbC5jb20+Cj4gCj4gRWFybHkgUm9j
+a2NoaXAgU29DcyBsaWtlIHJrMzA2NmEgYW5kIHJrMzE4OCBoYWQgYm9vdCBsb2FkZXJzCj4gdGhh
+dCByZW1hcHBlZCB0aGUgYm9vdCBST00gYW5kIHRoZSBpbnRlcm5hbCBtZW1vcnkuIEN1cnJlbnRs
+eQo+IFUtYm9vdCBtYWtlcyB1c2Ugb2YgYSBjb21tb24gYm9hcmQgZmlsZSB3aXRob3V0IHJlbWFw
+cGluZwo+IHJlc3VsdGluZyBpbiB0aGUgc2Vjb25kYXJ5IENQVXMgcG93ZXIgdXAgaGFuZ2luZyBp
+biBhIHdhaXQgbG9vcC4KPiAKPiBNYWtlIHRoZSB2YXJpb3VzIGJvb3QgbG9hZGVyIG1ldGhvZHMg
+d29yayBieToKPiAKPiAqIGFkZCBjb2RlIHRoYXQgZGlzYWJsZXMgcmVtYXBwaW5nIG9uIGJvdGgg
+cmszMDY2IGFuZCByazMxODgKPiAqIGNoYW5nZSB0byB1c2UgdGhlIHNhbWUgYm9vdCBST00gcGF0
+aCBmb3IgYWxsIHNvY3MgaW4gcm9ja2NoaXBfYm9vdF9zZWNvbmRhcnkoKQo+ICogZHJvcCB0aGUg
+cm9ja2NoaXBfc21wX3ByZXBhcmVfc3JhbSgpIHBhcnQKPiAKPiBTaWduZWQtb2ZmLWJ5OiBKb2hh
+biBKb25rZXIgPGpieDYyNDRAZ21haWwuY29tPgoKaW4gZ2VuZXJhbCB0aGlzIHNlZW1zIHRvIHdv
+cmsgb24gYm90aCBteSByazMxODgtcm9jayBhbmQgcmszMDY2LW1hcnNib2FyZCwKYWZ0ZXIgSSBk
+aWQgc29tZSBjaGFuZ2VzOgoKPiAtLS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL2NvcmUuaAo+
+ICsrKyAvZGV2L251bGwKPiBAQCAtMSwxMCArMCwwIEBACj4gLS8qIFNQRFgtTGljZW5zZS1JZGVu
+dGlmaWVyOiBHUEwtMi4wLW9yLWxhdGVyICovCj4gLS8qCj4gLSAqIENvcHlyaWdodCAoYykgMjAx
+MyBNdW5kb1JlYWRlciBTLkwuCj4gLSAqIEF1dGhvcjogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNu
+dGVjaC5kZT4KPiAtICovCj4gLQo+IC1leHRlcm4gY2hhciByb2NrY2hpcF9zZWNvbmRhcnlfdHJh
+bXBvbGluZTsKPiAtZXh0ZXJuIGNoYXIgcm9ja2NoaXBfc2Vjb25kYXJ5X3RyYW1wb2xpbmVfZW5k
+Owo+IC0KPiAtZXh0ZXJuIHVuc2lnbmVkIGxvbmcgcm9ja2NoaXBfYm9vdF9mbjsKCnRoYXQgZmls
+ZSBpcyBpbmNsdWRlZCByb2NrY2hpcC5jIGFzIHdlbGwsIG5vdCBzdXJlIHdoeSB0aGF0IGlzIGlu
+IHRoZXJlLApidXQgdGhpcyBpbmNsdWRlIG5lZWRzIHRvIGJlIHJlbW92ZWQgdG9vLgoKWy4uLl0K
+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcGxhdHNtcC5jIGIvYXJjaC9h
+cm0vbWFjaC1yb2NrY2hpcC9wbGF0c21wLmMKPiBpbmRleCBmNjU5ZDg5NGJmYWUuLmVjZTE3ZTlj
+YmFjYSAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3BsYXRzbXAuYwo+ICsr
+KyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcGxhdHNtcC5jCgpbLi4uXQoKPiBAQCAtMzIwLDkg
+KzI3OSwyNyBAQCBzdGF0aWMgdm9pZCBfX2luaXQgcm9ja2NoaXBfc21wX3ByZXBhcmVfY3B1cyh1
+bnNpZ25lZCBpbnQgbWF4X2NwdXMpCj4gIAlmb3IgKGkgPSAxOyBpIDwgbmNvcmVzOyBpKyspCj4g
+IAkJcG11X3NldF9wb3dlcl9kb21haW4oMCArIGksIGZhbHNlKTsKPiAgCj4gKwkvKiBNYWtlIHN1
+cmUgdGhhdCB0aGUgcmVtYXAgZnVuY3Rpb24gaXMgZGlzYWJsZWQgKi8KPiAgCWlmIChyZWFkX2Nw
+dWlkX3BhcnQoKSA9PSBBUk1fQ1BVX1BBUlRfQ09SVEVYX0E5KSB7Cj4gLQkJaWYgKHJvY2tjaGlw
+X3NtcF9wcmVwYXJlX3NyYW0obm9kZSkpIHsKPiAtCQkJb2Zfbm9kZV9wdXQobm9kZSk7Cj4gKwkJ
+dW5zaWduZWQgaW50IHJlZzsKPiArCQlpbnQgcmV0Owo+ICsKPiArCQlpZiAob2ZfbWFjaGluZV9p
+c19jb21wYXRpYmxlKCJyb2NrY2hpcCxyazMwNjZhIikpIHsKPiArCQkJcmVnID0gUkszMDY2X0dS
+Rl9TT0NfQ09OMDsKPiArCQkJZ3JmID0gc3lzY29uX3JlZ21hcF9sb29rdXBfYnlfY29tcGF0aWJs
+ZSgicm9ja2NoaXAscmszMDY2LWdyZiIpOwo+ICsJCX0gZWxzZSB7Cj4gKwkJCXJlZyA9IFJLMzE4
+OF9HUkZfU09DX0NPTjA7Cj4gKwkJCWdyZiA9IHN5c2Nvbl9yZWdtYXBfbG9va3VwX2J5X2NvbXBh
+dGlibGUoInJvY2tjaGlwLHJrMzE4OC1ncmYiKTsKPiArCQl9Cj4gKwo+ICsJCWlmIChJU19FUlIo
+Z3JmKSkgewo+ICsJCQlwcl9lcnIoIiVzOiBjb3VsZCBub3QgZmluZCBncmYgZHQgbm9kZVxuIiwg
+X19mdW5jX18pOwo+ICsJCQlyZXR1cm47Cj4gKwkJfQo+ICsKPiArCQlyZXQgPSByZWdtYXBfdXBk
+YXRlX2JpdHMoZ3JmLCByZWcsIE5PQ19SRU1BUCwgMCk7Cgp0aGUgR1JGIHJlZ2lzdGVycyB1c2Ug
+aGlnaHdvcmQtbWFza3MsIHNvIHRoaXMgc2hvdWxkIHByb2JhYmx5IGJlIGxpa2UKCXJldCA9IHJl
+Z21hcF93cml0ZShncmYsIHJlZywgTk9DX1JFTUFQIDw8IDE2KTsKZW5hYmxpbmcgdGhlIE5PQ19S
+RU1BUCBiaXQgZm9yIHdyaXRpbmcgYW5kIHRodXMgaGF2aW5nICIwIiB3cml0dGVuCnRvIHRoYXQg
+Yml0LgoKCkhlaWtvCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
