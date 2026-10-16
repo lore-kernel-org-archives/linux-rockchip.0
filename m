@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE804CCA464
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 05:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F229CC6B2D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 05:38:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
+	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BslnJxGXaQXrtFvSH4ot9hGSN7fUwA+Chl4tv9d1lC8=; b=hk/N+k8ZGjBTNN
-	O/PfVIXKQvPp0/bs8TULtSbO+DzXawARwwIl0eUoZZEES6c/j9pRYMARlTfqkWbHMxxvi/gAdP0rM
-	fGaQEIEBKsSOCvk99Cc3gyCifexM4u27zdc2QXNvxe8srx2saXpnLgwmQBCyvCMMZXcbvTQUD8HkG
-	pT7BVZmFG00igQA1GYovGcVhvxHGVQCBAgjpQVO4/Pt2v2vTIUMeq3rrkEzv+7spfN1LdZLyOdi6D
-	uAr7gsQoa+mNw3JlOc0/EpFJug6pQnA/v7juimVkAkZYRKTcoP5+occwnXc+uWUEOmRW2DQRqi9Ph
-	n4OmGfS+0Mh6/48Ljnug==;
+	List-Owner; bh=wstXbXra93RIszlGqbOYBRm3I+vrrsQoRyN6e1v1IXw=; b=t2oV3GFAmSwImJ
+	65erdBoVQhs7+utIOKR41KNKhKLTgxGiUAEnk40+lAjedVQxaNjTq9hJXoUJ8g/r0q7njpmvL39gb
+	635YyQe41BN12MPVqDsjD/8IVCYj9sscg4TlKc0O/y+bAaRk5XZj4cdMjubTK0/gy5BkZZc8Lxn5b
+	WvnExcJ6tyRbYpRcdvzN3Pj/syxprX1PVitKty9STtGe+PK7lk8Hfa9lAM51AhfA0M64xOrlw+mY0
+	kYviXCRu3cCiPZjZH6RaFcwg/s5oWO/nMSWHSZsfk7buYU7AJQMKJAujeRjy3/PoZnd3CE7JNbygy
+	WbYGYL9ZJZiW09Ld+v0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHaad-000000022Dt-2Ke9;
-	Fri, 16 Oct 2026 05:34:47 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xHae8-000000022cZ-09U4;
+	Fri, 16 Oct 2026 05:38:24 +0000
+Received: from out203-205-221-239.mail.qq.com ([203.205.221.239])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHaaU-000000022AS-3z9r;
-	Fri, 16 Oct 2026 05:34:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4E377601FA;
-	Fri, 16 Oct 2026 05:34:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id F05DAC2BCFD;
-	Fri, 16 Oct 2026 05:34:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1792128877;
-	bh=6m8Ojyo9TbI7mj4V/7EpCvY/aUscvJAlabnYrJd4b4Q=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=oiH5yQq6irJQzvLhxtPFPBZp60Z2kcKvQI/PUmvcV/tKbVW+9mIpv+TBsa2SKiChy
-	 GpN4F+8wEsl1upQ4c3hP2RrWutOfAyGdWVIhMSoRFiYUkuHnDxqhCqhJh2CideiuK9
-	 FdSWUMLiKLnksRDwlNuz1952+y5U65VPWljYvUEA3mwk4na8T92G9ZlZZoRWIdmMaL
-	 442bTBl+6W6hxsVri/33h8qsP+wofaS3J8ap3ghFQaw/9JDcJxScc1AG7zXK6rS9cO
-	 OybPRDaLhMMARf8My1ChcQ1egRzaq9ZecDG0LGGGyNsB1RDqMBdVFSCe0uFKSLk/ul
-	 7kqZ1AMmNUYAg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E0209CC6B2D;
-	Fri, 16 Oct 2026 05:34:36 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Fri, 16 Oct 2026 08:34:34 +0300
-Subject: [PATCH 2/2] arm64: dts: rockchip: Describe the unused RK808
- outputs on Kobol Helios64
-MIME-Version: 1.0
-Message-Id: <20261016-helios64-power-tree-v1-2-31d6c8dc5092@iav.lv>
-References: <20261016-helios64-power-tree-v1-0-31d6c8dc5092@iav.lv>
-In-Reply-To: <20261016-helios64-power-tree-v1-0-31d6c8dc5092@iav.lv>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1855; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=q+lERKCDnOjng4lQyfplDkXO0aaernq5BCDtZUzNjMI=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFkXt2ffMj9gPDm6g7HyEbORruy0LcsZ/xyd/oBlpX55w
- gGj8zcKO0pZGMS4GGTFFFkmHNK4lbHk6l9/D/MHMHNYmUCGMHBxCsBE7u5j+Ct2695OU5Uyfe9Y
- yxYbu7tTUrZdfOOlebPqg7zL2sc5mw4x/K+wOrNTMFNSSmNZlMPuXv5q9qX37bQF0i7nvfOVlz+
- whwMA
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+	id 1xHae4-000000022bd-3kVJ;
+	Fri, 16 Oct 2026 05:38:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1792129097; bh=I9S/3scpv8TmDMpc3q9HAsNyW70EViJX64k08LJms7E=;
+	h=From:To:Cc:Subject:Date:References:In-Reply-To;
+	b=cxP/9htKshkcGlqtR4PvqVrttAC60cxFdU3CFwAtVdMna9nJUCuGcFYHgqj0JYOM7
+	 590j5kv3z7felF+xg7pg5NzW5a8zyCK9qQQhIUZt+8XgiSZKnvFMghRzF0EHYe7FXm
+	 8ij3wmlTIst7OSxdj2lX8dSYrycWjL67PIJ5hT9I=
+X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
+X-QQ-XMAILINFO: MYbC+rXBLyObodfQCA4D7TaoC77kH8yp+juHBOTeycoxYspZxP8BMQM5plRqXp
+	 zbvO/D7gGuVDNON12sGweqj9HkecQI4fZdeQtgAf1H6bnhUZfr8LRxHn5k8b0uE8Wo2TLq75I38VY
+	 0ebyvfRz6/Zi7lyNeEk7JwBPtXFp8/m6nTP/SXbxRGJFon3KvSxWFVCgKj/6pPp41Z/qbPqohN2fX
+	 XPn6RlPVn/woGfgLwefe588P4RvHw0q5J78CFmV6tijn2hlCNhwMm5eDZzd+PWGVWUWkGF+doB7gJ
+	 rpvnLW87wnglxDOV3aSGqiOL8cfxlW86STqrxcyTcqDYjsMtOHJj2uj97DGLNUyTKS4NWRPCDwKYg
+	 7L7CKTFFkWbQyOzkvIrHekv94DixLNKaUZc/mZ1rZglKBJL8YO2s/kHiVSxFlciinot5mMnk+98Bh
+	 eNBspZUi2qlD5d+8wfWmwjU1Tmi1f1ZkI5Bq+vjWg38iE5kD7/zF0dWF0cifVX6dn257A4A2oTNdq
+	 sbc9rm4fO6RyAHoBe4MZ6LpA4p5r4xHPDwrTFkD0C7rOV0pNuoT44E+LluRhECc5PR0AXcfvJtuow
+	 c3PQNqJLzLL4b/SlNICw8piy5WMwbDG/9bFKVP0vnJuKpEOBXC5W0/Ny3UKWgzNgLhWFDvSjAzMx1
+	 gAcWME4YV6xUkumRdI4ai0eG+xLxS3iNQMDZ3q+H7TapI5wLcfRzhJMo2ssLaVdkjzpKmAn/Z40BX
+	 dRWsFCoVgYKeRVn9JQ1hA0a6YBeEIRJX9TGK4f+AX/XXWbraDLdX65RPfygGvWTjzslM2IL9KjTIp
+	 BniCtuPJi/F6r418IHXaw9rTQlSzCN9AbIG9R7PQrwjU88rb68DvwqACQaC3ydKS57IDP7GtNh1Wq
+	 GAYT7PnwxekubUkpk0SFywKN5wWvGoExUeDr+Ltwb+kVBvfu/xoNM8cQcU1B77baOackPJuT7dZSi
+	 UJ7IlCp43FxSDPrYerbSF9vQPpPZupFEm7VdaBjs3oSi8eaZwYK3HU1ye7Zm5ENVtl1GI70Y0QHj2
+	 E5aFPDjlYbhyLT77QicDd4corlf6N9UQCPwZ1
+From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
+To: "=?utf-8?B?bmV0ZGV2LWJvdCtzYXNoaWtv?=" <netdev-bot+sashiko@kernel.org>
+Cc: "=?utf-8?B?bWts?=" <mkl@pengutronix.de>, "=?utf-8?B?bWFpbGhvbA==?=" <mailhol@kernel.org>, "=?utf-8?B?aGVpa28=?=" <heiko@sntech.de>, "=?utf-8?B?ZGF2ZW0=?=" <davem@davemloft.net>, "=?utf-8?B?d2c=?=" <wg@grandegger.com>, "=?utf-8?B?c29ja2V0Y2Fu?=" <socketcan@hartkopp.net>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?c3RhYmxl?=" <stable@vger.kernel.org>, "=?utf-8?B?a3ViYQ==?=" <kuba@kernel.org>
+Subject: Re: [PATCH net v3 1/5] can: dev: prevent bus-off recovery when the interface is not running
+Mime-Version: 1.0
+Date: Fri, 16 Oct 2026 13:38:15 +0800
+X-Priority: 3
+Message-ID: <tencent_F6326E09D62380013188767E4F4D66345808@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+References: <20261014-rockchip-canfd-restart-close-v3-1-f0eb41090242@qq.com>
+	<179212694915.1406898.5096495212984871051@kernel.org>
+In-Reply-To: <179212694915.1406898.5096495212984871051@kernel.org>
+X-QQ-mid: xmsezb41-0t1792129095tq0zz4chp
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261015_223821_269212_B2F80A15 
+X-CRM114-Status: GOOD (  17.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,86 +77,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Igor Velkov <iav@iav.lv>
+Hi,
 
-The Helios64 schematic lists RK808 LDO_REG1, LDO_REG2, LDO_REG5,
-LDO_REG7 and SWITCH_REG2 as unused (sheet 2). Each output has only a
-0.1 uF capacitor and goes nowhere else (sheet 6).
+> [Severity: Medium]
+> Is this check enough to prevent the failure described in the commit
+> message, "potentially re-enabling hardware while the driver is tearing it
+> down"?
 
-Describe them with the names from the schematic and no constraints, so
-the regulator core switches them off as unused.
+No, netif_running() alone does not serialize restart with ndo_stop(). A
+restart that has already passed the check can still overlap with hardware
+teardown. The commit message explicitly documents this limitation and the
+need for drivers to cancel restart work before tearing down resources.
 
-Link: https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
-Assisted-by: LLM
-Signed-off-by: Igor Velkov <iav@iav.lv>
----
- .../boot/dts/rockchip/rk3399-kobol-helios64.dts      | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+For Rockchip, the series already calls close_candev_cancel_restart_sync()
+at the start of rkcanfd_stop(). This cancels pending work and waits for any
+restart already in progress before disabling interrupts, freeing the IRQ
+or stopping the controller. The final close_candev() remains after IRQ
+teardown for final cancellation and echo cleanup.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-index cf247d6c6212..35e92e1c8ff8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-@@ -436,6 +436,14 @@ regulator-state-mem {
- 				};
- 			};
- 
-+			vcc1v8_dvp: LDO_REG1 {
-+				regulator-name = "vcc1v8_dvp";
-+			};
-+
-+			vcc3v0_touch: LDO_REG2 {
-+				regulator-name = "vcc3v0_touch";
-+			};
-+
- 			vcc1v8_s3: LDO_REG3 {
- 				regulator-name = "vcc1v8_s3";
- 				regulator-always-on;
-@@ -462,6 +470,10 @@ regulator-state-mem {
- 				};
- 			};
- 
-+			vcca3v0_codec: LDO_REG5 {
-+				regulator-name = "vcca3v0_codec";
-+			};
-+
- 			vcc1v5_s3: LDO_REG6 {
- 				regulator-name = "vcc1v5_s3";
- 				regulator-always-on;
-@@ -475,6 +487,10 @@ regulator-state-mem {
- 				};
- 			};
- 
-+			vcca1v8_codec: LDO_REG7 {
-+				regulator-name = "vcca1v8_codec";
-+			};
-+
- 			vcc3v0_s3: LDO_REG8 {
- 				regulator-name = "vcc3v0_s3";
- 				regulator-always-on;
-@@ -497,6 +513,10 @@ regulator-state-mem {
- 					regulator-off-in-suspend;
- 				};
- 			};
-+
-+			vcc3v3_s0: SWITCH_REG2 {
-+				regulator-name = "vcc3v3_s0";
-+			};
- 		};
- 	};
- 
+As discussed earlier, this series limits the driver-side fix to Rockchip.
+You are right that sja1000 and flexcan still have the window you describe.
+Those pre-existing races need separate driver fixes; the core checks do
+not resolve them. For Rockchip, the series uses the early-cancellation
+approach you suggest rather than adding RTNL locking to the worker.
 
--- 
-2.43.0
+> [Severity: Low]
+> This isn't a bug, but the comment above can_bus_off() still describes the
+> old condition:
+>
+> /* CAN bus-off
+>  *
+>  * This functions should be called when the device goes bus-off to
+>  * tell the netif layer that no more packets can be sent or received.
+>  * If enabled, a timer is started to trigger bus-off recovery.
+>  */
+>
+> Could it mention that recovery is now only scheduled when the interface
+> is running?
 
+Agreed. I will update the comment to refer to delayed work and state that
+recovery is scheduled only when automatic recovery is enabled and the
+interface is running. I will also clarify the running-interface condition
+in the restart-ms documentation. If v5 is accepted, I will send a
+separate documentation cleanup patch later.
 
-
+Regards,
+Cunhao Lu
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
