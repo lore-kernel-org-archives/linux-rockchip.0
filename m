@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CC23CC6B2D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 04:01:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CBA2CC6B2D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 04:10:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EXt964suxswy6wzMQBP5aiIXnbTxXqH1KlCxWJPQofE=; b=1AJ2AZ/1EwdM39
-	5JDe2laxZMxnIClhmt0kNIRh4bSmeeWgO53CaLQku7FFMhcISxInK4jF4ySMlQ7YfnlrRs7fqsCM3
-	hqbZkU73dWT7iERathKrS5qNip/0ZBzc02jlVMTbTUkBIhhlfobdiD5J0F/QtPzjefz4DILNGpfkA
-	K/HWEQHAw+iYl4BFlopBsZZzgq5RDoF7+f5lUBUgU8O92WBK/YB/0GibmCgf5ZrfJKnaI4UBo6t+9
-	EyCy8LX2vRcFaYeNOeNLUFybTwzwqGaYw2nN4281OBGvF3RyhdirR0B2r7w6gakR8usEAeym8WDSs
-	p0rL9HgDwBP41l5GwuQA==;
+	List-Owner; bh=iHQOmDcPp1CwvAP18iZx96BFnvI0iRc7aLdrT/i2k/g=; b=0/Ax99wiPTR5/p
+	KGOdeKxOSQD7kr8ErY3RpR6YS8etY5CeU+SYocygH5ls4qsRvHd7w83tgqYaAte3o3+JJZkXxdzvN
+	MOkCV1s5DtzXGPcBs+7KMTHRc4MbWcxPTl4+rTuxhFwwb40p1SMiiHVY1KstXffQ6GUNPWmZBg3dJ
+	UOS/EnuZLMHVDsXssYyZ55+0O/fvrgAbr0nMJdOToA4aR3yGLPLlPxSrXRYB+OWOowLzoD70Pw81u
+	bLZoA3Tivg9kN4XT27LUdayNqY4R4ejAdn75dUVl/pS+tsmsGJHhcxwR3bPxIEZTgvFko5HEglHOy
+	vq4jRNfS+k7gWYxqd24g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHZ89-00000001vjs-3NRH;
-	Fri, 16 Oct 2026 04:01:17 +0000
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+	id 1xHZH2-00000001wRK-0inp;
+	Fri, 16 Oct 2026 04:10:28 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHZ87-00000001vjJ-3Efy
+	id 1xHZGy-00000001wQE-44Ed
 	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Oct 2026 04:01:16 +0000
-Received: by mail-pg1-x52a.google.com with SMTP id 41be03b00d2f7-cd3310348d2so315225a12.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2026 21:01:15 -0700 (PDT)
+	Fri, 16 Oct 2026 04:10:26 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2dd76b1361dso19750565ad.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2026 21:10:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792123274; x=1792728074; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1792123824; x=1792728624; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=5Qhe5E4dgThyJhSYyDtuQ9hNBBoGOWOTPXhOMe7iZzE=;
-        b=DS3dtelZPe21xaa38tKFF6++oO9Dl5RVmXDSqEDLjVhrr6Zldp6abD6nEdRcKRmhQJ
-         jZdAX4jTUTlZh7jvYdZ4/eND87XQJJYGfdHDvBhaG0LcTl4ud2SKowf19X52qSQvm2EY
-         LeQnn+tW9cq9a+Gb1dLI2evE/GgCnQAIIXMHm4kksjd+VVPnE6VEht3cH34RR8Q6sdB4
-         XV4Bo6156mrlwuxvNXztrLZXsSFITHFcc50iVhh9WdbwNkqISv1bp870Yg2vZYp8ZkHa
-         2dfg969xSbxXFY7CQWLgWK0/EfCzrZRaNEPH516FpZ9rCyJz8YqnXt4iyAI4MRWPa+d/
-         EiZA==
+        bh=LqPJpnpDl1bjZy/2WTSO/k4hLO3gGJGG3iYDq3mgh9U=;
+        b=Mt+EyER5Ahxtcgrx2AEg/QqnkkLbv0pwdlnhtGC2/Y3gjbimYN10J+HVexrdj4DVJP
+         fEz0QTnvcoZ9wlOjW5Yx2PGhmlBMIR2NkSghn6X+xCgt73WZEefK+1M31AYxH48qbnCt
+         afMFpvg6FsTX5dBCxHsbz3KReO9gOZQK17S4cniiAwjMFdvNhr+LAjhBFA3p/FnaWoQA
+         Nc3eGmB2TsZxG7AUMRp6PuhdOWKa2BKANFY9xqHgzVDC+B3tSCE0jlYejsq2CIo2lUBE
+         /t9n5H606+b//S+WTcR0zf39X3k8s2BXWLzrR41d3N6l04v8BCoDEqZGPczOf/JPTyZP
+         55Sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792123274; x=1792728074;
+        d=1e100.net; s=20260707; t=1792123824; x=1792728624;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=5Qhe5E4dgThyJhSYyDtuQ9hNBBoGOWOTPXhOMe7iZzE=;
-        b=Kki/lYfBPQwWpOQSXwNVYA4vs/NBodZa3h/E2tbXjOv1xaDciYFtJkzYT5CredSN+l
-         v9z4uG9mih592yXSrzWVMH7Qh1C0giHs+GOVkTaua+HcmuBxcBGaFivN97VJo/vJm7l2
-         nCz7kxQky8VLyN5QdgRZnEq97XCz601LmPJ2q0LLma8xCfqPyk41zbI3EbVSZfi/RTx6
-         Cgx7xqZfKoUEvtZIvFMh+9GbdIj59/296PFcIKi0Ue77IZIiy+Pe15dD9jjtTyosgXGh
-         nsKzSmUKYVQGc9boXh7mxOJ+bP7YK273HNyLPmzWIBMQ0koS8TO8qvMv3sUeNa0BiU6E
-         Gbgg==
-X-Forwarded-Encrypted: i=1; AKwUvBwavAE2cqSQ1sonO5fUoFQS+w3KHbwwYM0JmTbqPnu+lJ9rbrfsIuS92AG/vegnb2d8pLV+5PsFuTMXCOZpxg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJg+kHc/UQ0yl0WVF6c/RNd166uLXKiOZJO6uIfBnWD3jE18qrs
-	rmdU/djPUrpFAh1kxXf5AznO3FsDf+2ilWD+PkUHm9iHz0DZ6iWTHTJp
-X-Gm-Gg: AYBFou39tqRgvAM2fCyBNwIh1D21GBarL3MF/Apt51Z/sOw/699E41fLhOSnmbuaC9G
-	xuPr+w8J1OuY+SPQuE7LJIwBnh9ZWkyHEsCEMcIgYDNCoUgl1M0A684f+AVL7mS4PE01yt7rbE5
-	jGXJhAn2fW/S3Y5Vx31IGkjJMi38giYCVbc5CJLI9qx1kwpgexep2AoSOho+jM8kRtIcZT3RdLF
-	IjiVOPfmqOvfMGNXuHSG/nwHbgmOmHWxzoeKaqZUPY3sVURZrrYpCh0q7EfgtuvxVcAMh5RZr5S
-	BY/I/ipar83McNqIZ1kTZ03fjVKt0iKiYvhl0gtSHr5HjIZFumvvtWH1NN4Ydomb8ToZg2bUwxh
-	WT/y/A0BuMmfPF0bPRshStQ2qt8Om3Rq2NQEMOWN3qCZ/F1zR4aO/tTzcR+JR6nH1GoM9xIrWkz
-	qTB72tjpDruXINDqqS2EE1FP+/VsJap0GTCLKxhhs+nmET0v/ADFgwbj4/7shdRj/WSkISrkFl4
-	E4G9wElymirNeFKRMUcQJoxFT1xjhIqc+OSB0Yz7oNzX5XJxD+kQVnPekM69Gp2qvwU8pUGuGN5
-	DWVfDLj66GtmECw=
-X-Received: by 2002:a17:90b:39a4:b0:3ac:b764:8521 with SMTP id 98e67ed59e1d1-3acbb9255ccmr1718768a91.38.1792123274359;
-        Thu, 15 Oct 2026 21:01:14 -0700 (PDT)
+        bh=LqPJpnpDl1bjZy/2WTSO/k4hLO3gGJGG3iYDq3mgh9U=;
+        b=Ur+zN6+U70c3Y6IzIGNCOvSCWGU31+iGVDZIWjQE29EgrlvENfB60o7bvJGn/TFcdh
+         vi4IL3hEFK85W8Oy4bhcJPxqK6R4tuWebzn78vyEm54++sZxoa7+L7OyhHS6lXIuPJOw
+         rtDcVbPDom+iaJigCKlA5jTBYFoAX+ox+blwaDKghv+3eSvzw6Lbibm45AVyEXjI/RXx
+         b8DspD9QYq7fHDw7d5vkeQT6zz3Ki/CeSfnz9vfUZko7+5MO542IckETOEcFMtgAJwQR
+         Q8frWtZ/QTjZLg5UVHIkjuOF5TdaqJv8/+ss3bwV66r3bMcHJ3w5IrIpTkUM3t8g1bsJ
+         JMRQ==
+X-Forwarded-Encrypted: i=1; AKwUvBwptKkuEinMGfaVz5aztnIhLSqTQ/DmgW6oW3VibX3CnoRhkIobwjNXiFzetK4jxu3+1+0Wh3DSPnqWMMd4/g==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJ2HV2+IFocQ1O5ZXWsUYux4MBMGeMUZutWraByqXFe0sonVzHv
+	qxXWFRLhrbxhWi66ixrK5tDB3waurkE6xWT3/sRWE7CIlb4XyRkIxW/5
+X-Gm-Gg: AYBFou15DPz4hCjEVN/4y+HsPdkhuxwibmGGbyPHDlg93jQMC1PA6c67UODSmX7Ause
+	q0JIU9iAbyoKYd9X4WJWYnuW46ms373/83K4rU9g1E4XVMK3eZlCpLyGwc5ywoh3DdzoqL5Znkh
+	4VaD3uoCBF6VbZjyvxXh2/y6AdU6HVM9VndAwO6F/+JvXSJhnnaHcMngdPjb8czgvpsPY7zviVw
+	k3EAGZqYmkyQxfNSmnFfWKTMeJvJf47h1nbJ8Ig+P414AQ4P6z7UPOLG6bLY5mQnAu1VAXg7gj+
+	svUG54lOhX53NgJqs7qdp+5bhX0e8mOa61JtSI8zTNACLuLitwmHU7Ui7Rs5CUqO+AwExa4I5Gx
+	RCReFmPTLkBgsHy3X6Zyarv4okY1vh/gi4aCVnpTJnZ4P8BvQP32W1OAW7RufB7t98IqpoXGRRz
+	cvDuN2gHHF32/A98b9I3H9+3oNXB3/C1vDg4oC1xWtYntkp8yLHwBNZ1wScIp2XShUmVEZ8D+H2
+	kbNSM0MVQ7Xao9FLlp6jSxQdcae00TgsSSY+JgitHCP8w7Dv0Edt8XfEJmF54RtnE4MCTsII2Kb
+	fa8JZXDUKb7mvw==
+X-Received: by 2002:a17:902:d4c8:b0:2e9:970c:2c5 with SMTP id d9443c01a7336-2e9970c073cmr381995ad.39.1792123823874;
+        Thu, 15 Oct 2026 21:10:23 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3acc4872861sm2304450a91.7.2026.10.15.21.01.03
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2e97e8ab443sm3815785ad.65.2026.10.15.21.10.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Oct 2026 21:01:13 -0700 (PDT)
+        Thu, 15 Oct 2026 21:10:23 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
 	Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
@@ -103,16 +103,17 @@ To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
 	Biju Das <biju.das.jz@bp.renesas.com>,
 	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
 	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2 25/25] ASoC: rockchip: rockchip_max98090: Mark the link as started on success
-Date: Fri, 16 Oct 2026 11:00:48 +0700
-Message-ID: <20261016040048.506531-1-phucduc.bui@gmail.com>
+Subject: [PATCH 01/11] ASoC: amd: Explain component open return value handling
+Date: Fri, 16 Oct 2026 11:09:36 +0700
+Message-ID: <20261016040946.521195-2-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261015014324.5569-1-phucduc.bui@gmail.com>
-References: <20261015014324.5569-1-phucduc.bui@gmail.com>
+In-Reply-To: <20261016040946.521195-1-phucduc.bui@gmail.com>
+References: <20261016040946.521195-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261015_210115_817966_D976B887 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20261015_211025_019481_BA74304C 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,50 +133,140 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: bui duc phuc <phucduc.bui@gmail.com>
 
-snd_pcm_hw_constraint_minmax() may return 1, which is then returned
-from rk_aif1_startup(). ASoC only marks the DAI link as started
-when .startup() returns 0.
+Add comments explaining why the .open() callbacks must return 0
+on success to ensure proper rollback handling and prevent future
+changes from reintroducing the issue.
 
-This currently has no functional impact, as there is no .shutdown()
-callback in the relevant snd_soc_ops. Still, return 0 explicitly on
-success to match what ASoC expects and ensure the DAI link is correctly
-marked as started.
-
+Reviewed-by: Vijendar Mukunda <Vijendar.Mukunda@amd.com>
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/rockchip/rockchip_max98090.c | 15 +++++++++++++--
- 1 file changed, 13 insertions(+), 2 deletions(-)
+ sound/soc/amd/acp/acp-platform.c      | 5 +++++
+ sound/soc/amd/ps/ps-pdm-dma.c         | 6 ++++++
+ sound/soc/amd/ps/ps-sdw-dma.c         | 6 ++++++
+ sound/soc/amd/raven/acp3x-pcm-dma.c   | 6 ++++++
+ sound/soc/amd/renoir/acp3x-pdm-dma.c  | 6 ++++++
+ sound/soc/amd/vangogh/acp5x-pcm-dma.c | 6 ++++++
+ sound/soc/amd/yc/acp6x-pdm-dma.c      | 6 ++++++
+ 7 files changed, 41 insertions(+)
 
-diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
-index 426506a8e18e..de392b420ebd 100644
---- a/sound/soc/rockchip/rockchip_max98090.c
-+++ b/sound/soc/rockchip/rockchip_max98090.c
-@@ -191,12 +191,23 @@ static int rk_aif1_hw_params(struct snd_pcm_substream *substream,
+diff --git a/sound/soc/amd/acp/acp-platform.c b/sound/soc/amd/acp/acp-platform.c
+index ba6dfe8fb6b7..f2c8853775ad 100644
+--- a/sound/soc/amd/acp/acp-platform.c
++++ b/sound/soc/amd/acp/acp-platform.c
+@@ -248,6 +248,11 @@ static int acp_dma_open(struct snd_soc_component *component, struct snd_pcm_subs
+ 	list_add_tail(&stream->list, &chip->stream_list);
+ 	spin_unlock_irq(&chip->acp_lock);
  
- static int rk_aif1_startup(struct snd_pcm_substream *substream)
- {
-+	int ret;
- 	/*
- 	 * Set period size to 240 because pl330 has issue
- 	 * dealing with larger period in stress testing.
- 	 */
--	return snd_pcm_hw_constraint_minmax(substream->runtime,
--			SNDRV_PCM_HW_PARAM_PERIOD_SIZE, 240, 240);
-+	ret = snd_pcm_hw_constraint_minmax(substream->runtime,
-+					   SNDRV_PCM_HW_PARAM_PERIOD_SIZE,
-+					   240, 240);
-+	if (ret < 0)
-+		return ret;
-+
 +	/*
-+	 * ASoC only marks the DAI link as started when .startup() returns 0.
-+	 * Since snd_pcm_hw_constraint_minmax() may return 1, explicitly
-+	 * return 0 to ensure the DAI link is correctly marked as started.
++	 * ASoC only marks the component as opened when .open() returns 0.
++	 * Since snd_pcm_hw_constraint_integer() may return 1, explicitly
++	 * return 0 to ensure .close() is not skipped on rollback.
 +	 */
-+	return 0;
+ 	return 0;
  }
  
- static const struct snd_soc_ops rk_aif1_ops = {
+diff --git a/sound/soc/amd/ps/ps-pdm-dma.c b/sound/soc/amd/ps/ps-pdm-dma.c
+index 28e0686e9373..12c341e89bce 100644
+--- a/sound/soc/amd/ps/ps-pdm-dma.c
++++ b/sound/soc/amd/ps/ps-pdm-dma.c
+@@ -211,6 +211,12 @@ static int acp63_pdm_dma_open(struct snd_soc_component *component,
+ 
+ 	pdm_data->acp63_base = adata->acp63_base;
+ 	runtime->private_data = pdm_data;
++
++	/*
++	 * ASoC only marks the component as opened when .open() returns 0.
++	 * Since snd_pcm_hw_constraint_integer() may return 1, explicitly
++	 * return 0 to ensure .close() is not skipped on rollback.
++	 */
+ 	return 0;
+ }
+ 
+diff --git a/sound/soc/amd/ps/ps-sdw-dma.c b/sound/soc/amd/ps/ps-sdw-dma.c
+index 553fe11a2e50..c2640985f54c 100644
+--- a/sound/soc/amd/ps/ps-sdw-dma.c
++++ b/sound/soc/amd/ps/ps-sdw-dma.c
+@@ -337,6 +337,12 @@ static int acp63_sdw_dma_open(struct snd_soc_component *component,
+ 	stream->stream_id = cpu_dai->id;
+ 	stream->instance = amd_manager->instance;
+ 	runtime->private_data = stream;
++
++	/*
++	 * ASoC only marks the component as opened when .open() returns 0.
++	 * Since snd_pcm_hw_constraint_integer() may return 1, explicitly
++	 * return 0 to ensure .close() is not skipped on rollback.
++	 */
+ 	return 0;
+ }
+ 
+diff --git a/sound/soc/amd/raven/acp3x-pcm-dma.c b/sound/soc/amd/raven/acp3x-pcm-dma.c
+index 072f3dc35d40..765057499021 100644
+--- a/sound/soc/amd/raven/acp3x-pcm-dma.c
++++ b/sound/soc/amd/raven/acp3x-pcm-dma.c
+@@ -237,6 +237,12 @@ static int acp3x_dma_open(struct snd_soc_component *component,
+ 
+ 	i2s_data->acp3x_base = adata->acp3x_base;
+ 	runtime->private_data = i2s_data;
++
++	/*
++	 * ASoC only marks the component as opened when .open() returns 0.
++	 * Since snd_pcm_hw_constraint_integer() may return 1, explicitly
++	 * return 0 to ensure .close() is not skipped on rollback.
++	 */
+ 	return 0;
+ }
+ 
+diff --git a/sound/soc/amd/renoir/acp3x-pdm-dma.c b/sound/soc/amd/renoir/acp3x-pdm-dma.c
+index c0481a9ba858..89dc60849c06 100644
+--- a/sound/soc/amd/renoir/acp3x-pdm-dma.c
++++ b/sound/soc/amd/renoir/acp3x-pdm-dma.c
+@@ -233,6 +233,12 @@ static int acp_pdm_dma_open(struct snd_soc_component *component,
+ 
+ 	pdm_data->acp_base = adata->acp_base;
+ 	runtime->private_data = pdm_data;
++
++	/*
++	 * ASoC only marks the component as opened when .open() returns 0.
++	 * Since snd_pcm_hw_constraint_integer() may return 1, explicitly
++	 * return 0 to ensure .close() is not skipped on rollback.
++	 */
+ 	return 0;
+ }
+ 
+diff --git a/sound/soc/amd/vangogh/acp5x-pcm-dma.c b/sound/soc/amd/vangogh/acp5x-pcm-dma.c
+index 33d59d992ee0..72050fa2de80 100644
+--- a/sound/soc/amd/vangogh/acp5x-pcm-dma.c
++++ b/sound/soc/amd/vangogh/acp5x-pcm-dma.c
+@@ -231,6 +231,12 @@ static int acp5x_dma_open(struct snd_soc_component *component,
+ 	}
+ 	i2s_data->acp5x_base = adata->acp5x_base;
+ 	runtime->private_data = i2s_data;
++
++	/*
++	 * ASoC only marks the component as opened when .open() returns 0.
++	 * Since snd_pcm_hw_constraint_integer() may return 1, explicitly
++	 * return 0 to ensure .close() is not skipped on rollback.
++	 */
+ 	return 0;
+ }
+ 
+diff --git a/sound/soc/amd/yc/acp6x-pdm-dma.c b/sound/soc/amd/yc/acp6x-pdm-dma.c
+index afa9f66533e3..cba2509faaa1 100644
+--- a/sound/soc/amd/yc/acp6x-pdm-dma.c
++++ b/sound/soc/amd/yc/acp6x-pdm-dma.c
+@@ -209,6 +209,12 @@ static int acp6x_pdm_dma_open(struct snd_soc_component *component,
+ 
+ 	pdm_data->acp6x_base = adata->acp6x_base;
+ 	runtime->private_data = pdm_data;
++
++	/*
++	 * ASoC only marks the component as opened when .open() returns 0.
++	 * Since snd_pcm_hw_constraint_integer() may return 1, explicitly
++	 * return 0 to ensure .close() is not skipped on rollback.
++	 */
+ 	return 0;
+ }
+ 
 -- 
 2.43.0
 
