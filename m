@@ -4,87 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31D90CCA46C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 04:10:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89A5ECC6B38
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 04:11:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HJq2F+z+ZxqwGhr3as7vhuWeU4Q/RaMEZDea5aSfNao=; b=3B7yh+Mqlql5CL
-	UjHXLOLtmrG+5B1uqupVe8ft1YAiQfe8gyWyAU2w7BDt+nm0t4hHozPHa1dBbdRP8OavJnesLCd1q
-	PpRq6ji+TtxDqF7KjedSRQX7dug8MDh+n64n3cH5dsXnKDOlrU7/iSkRu7ZOdU1l/q5eybGjsBX0l
-	i0K+IyMOvuaHyvEC+9lRr4I16dbS7GpEnmf1qN1JcDLmPEmauLVKYvXKGOZqpLwLrWgpC8tHQPQCh
-	iyH2TCgsE7Lu0Tcnj4uFuB3vHAzrVU7bmaG1/L8Zr6hA0pQCz8ZSA1k4S7N+N0buqD/QFS3SaZ2DN
-	yUnS4tYHlvyteLsYxsgw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=T06dleKgF9X8O4Jq6Q4Rqcu6PaY4hrDWPlflaIMxxHc=; b=tXW0JukTLveh8F
+	JkaWWrzSv6zDvA4+AOzQOszh3VtyZzdJyvm0yzHujq53jd75cGgeIj1yqKP9bTgvkAkp6w7Imiot6
+	IeeHrc82siK0neMmDrze6K2ehfRo7u/6DVDlV8PH/FAAcw7rF2t10ljtApBJ2szuQC2mxsG5ltRT2
+	k+iO6gKANUCar+DVSzcnjoRMlRCIpvsJJ32L3M54xCRynwNT87ejidlbO/jAvUoh/9SuvDnQwlOmp
+	K0wcaWTCBaSZZDX/AmEp/EfYFYQQdx3ggB7lvh6qGvQx7bODUpA3xaWWzHG89HF3rzG2u+IEjOeEs
+	8jW4h+DjXGtuxSTn8cWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHZHJ-00000001wWY-2ebq;
-	Fri, 16 Oct 2026 04:10:45 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xHZHR-00000001wZu-3OIf;
+	Fri, 16 Oct 2026 04:10:53 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHZHI-00000001wVx-0Imz
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 16 Oct 2026 04:10:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=SYnQxKBL88L7bG0SnRsZyN/ibAKxj/QjIVLFKTNculY=; b=au1gj+Zw4JLR8rwR2FeDPvEnu/
-	nBipfHkQMb0Ooq48cXbQ65niAgU0HwCbL9t/3P6sUWW+xiRf7FqoD4X0QBNUvxd1UDpDbXdJ6/phj
-	hJYINR5C0sYzvqs7LQLemtphXmeGD/5BoCCSBLI3ekKlf2Xt0V4DjNJfdP5gzfNxujR7emUn20Vxp
-	1E85iJDntZTRRuqwlFpEDQ8NySZyTA4oYqg3vpQ9Dt6aDiIZzjSzI6HYJYlYgRDQ1Dm4XaBSFHm6a
-	aJ75FfDuLbyiOB5krcf+tYuV6aCVSOKo9dPQCc/+ZMEtqp1zucpt+1ao/8o3NGcGUx3qPBoxkq1nu
-	/lzp3I6Q==;
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
-	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xHZGl-000000015LM-34MB
+	id 1xHZHN-00000001wY4-23WI
 	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Oct 2026 04:10:39 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2e60f9af6e6so22915405ad.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2026 21:10:10 -0700 (PDT)
+	Fri, 16 Oct 2026 04:10:51 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2df8c28a0b1so27289575ad.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2026 21:10:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792123809; x=1792728609; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=SYnQxKBL88L7bG0SnRsZyN/ibAKxj/QjIVLFKTNculY=;
-        b=mByapUYsjmRYj8+L9c4IJR0TWmNZXFFfZm7I+n5EI034Aazuyv2mrmO5aXri7j7iLQ
-         TXJEHF7c69YQwaD0NaQnFgPCbb8x2tAgnkEsZcbrsWgiw+EWr5aWGAfn+Udv6aW795ZR
-         y4mXla8xObx6GY4vAgPL33J9B4lrJrlvFvydPqpCtZdL6Fg0ZD9GI8jHU1KVXrx9uaAS
-         AtEmG9DEMk03TY59J2s0DoE8WcamWwZ/UCcLq3Kr0X4nlVlLQYPiCKIpQOcL8PwDUBNm
-         dXs67FfhMc/RTlEtrM7ueDCrNzNHlTiKvonavK22F+fMxmJAcUsVL8Hx8iB44aj0gAF0
-         RibQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792123809; x=1792728609;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1792123848; x=1792728648; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=SYnQxKBL88L7bG0SnRsZyN/ibAKxj/QjIVLFKTNculY=;
-        b=xZ0a32Yet5Jaovon0FxLGo/wudS5DWfTsYignI7NI8+Mm1UNoCcN8PqTfQKhrclGvz
-         aMJ+cKoT8TYoo3g/rJW2IKtfUV5ujoUDFEo2XdqI9LLq4exHjAFsOmPqfzmhRoQDvI/I
-         cMh6SY+/4OMD4/NwRrKIl8OEsIsL+jCgacdfc/FRfBPbg2MIkJEhtjDrNEbSEuhJPge7
-         WNxr5xB9DAkFE9o4ByFQrq5symbTK5kE/ZvA4L8E8Fq4WFdYiN15/B77bpzBl4PTbDMM
-         Qvf98DoCqWALBehxLsPgkWAaA9n0t+AD+TQM8URRE/krB6ImZNGUYe4tDj54d0YERghj
-         3NxQ==
-X-Forwarded-Encrypted: i=1; AKwUvByDCO/v3uxolPIROypp4feh78bTm6NfeqbA0YGz7+Cm4m8T5zrXIPMDYpUHZ+88T8ytXQq5fFO8Yb9ZeYHORA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIt7lns0D7Gl1Ap8Y4hS4IejI+XsOEE7gKAcfiQ1U+5sNcYghhI
-	YiPkUs84LG/3CAcWArjscqoPgn0BOHiImfiAL7ZSlS9N5rCWLJees4Ke
-X-Gm-Gg: AYBFou2CxdTANhZRxrWl+g9JrdAEMVdxRDFx9Umm3HXceCySO7hEE1yPXOWj7eKChmb
-	oQKGJpIKP8jFxrwZccveRh8HM5VhrEm22f7RBjjiHid3tYOqB5HYLP1CWVE1JWNIYlE9ISLmZIk
-	9kCUVnVbYkVChYviYfuMARNZ5h5JPuMlsc5lNtUbVsyNwKsI5sT53NA4rgC5PhuABuDGy7GM2IR
-	43/h8uZjD2n1DbxH6vT98l9RjpqVeyUPlbaxhJGPpHasKo9Hc1zghQuIh6kYXNRb4LJup/OzDCJ
-	T9Zzsoc7I/p0mKF4Zjb1K2tJbuvIEhxe1N5sjDjueIfWjxYDCxmTKWz4SIPMq7+s90lbTLCTTej
-	OTpmaRY0LXiFETx5VkYkshOfnNICJd4j1wl+0GPRvds++laaEq3OG28ZYQKdQcsHAQ3E7O/6MFL
-	qbJepbyM0rD16bS5dVr6w7ilCuL1PXgeT7bG2n1486xPHH9GGNYJdOTOr0pH7aDHTZFCt+A+GMk
-	pOPcBdBxFQflXDohoGc/7gd29KLpjVqH1wtkGtaEgN+0NwUMmYBO7kkBFWf+R3vGD+bIKwj+PgV
-	J06fUiUqFiOF0w==
-X-Received: by 2002:a17:902:cec2:b0:2db:7941:9e11 with SMTP id d9443c01a7336-2e842cd431cmr197979565ad.9.1792123809100;
-        Thu, 15 Oct 2026 21:10:09 -0700 (PDT)
+        bh=cRXMnaMYG3V2xMcW/3gwqdrm84/mm5oGaOhlRKzj2Og=;
+        b=i1cy77voNsEL5OxybqQO5nmXjcezbxOUFN8jSRJisxQDe6Nu4B1Q4LEcRFJEwa0PTq
+         6ceCqvll8zrHPBYD9+GlNRB5pQLoI4wvgS3aPMFDRzDYMelrwCAiCZ4oZS4s+DKukBvB
+         ae0TO3Lvcdpw3ZX8Dtw91Y/vPnBJHMY8eNndO0+lWIYKNIreBXZJk6nmRqqfGO1GTbmJ
+         oZsI57GbK4+EJkx98lGcA9EikxI1EKijkeV5hWHcIKr1uCobmoUu1HmXzMg5+DbkIgcv
+         8KT4ioiup5sjYGrLIMG4ICU9c7A6GS8HPHt8Y2Fi0pyEcTS+kAMLfCODdtZsC6FRojld
+         Ibiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792123848; x=1792728648;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=cRXMnaMYG3V2xMcW/3gwqdrm84/mm5oGaOhlRKzj2Og=;
+        b=czPPdILdu4xT0G67BPoJbjL+lizMPqsvxWe1hWRO/jwx4+Fq+nOTAsWMUr0A+TXUp6
+         sOKDxHykBWk1/tmZJLQgcO2QfgE/nubeM5UBmYoPqS1IJn5uIkkbTmyXrZVzngplUJol
+         OuyPEGFsyWk9muXuBYjDL3Sj5D8BruOp2OxL9bz/RRCUn3RaIepZbG1adO4PLG6+gwW9
+         Xj3701EHu87KvFZQjGdog6uiynzrEGH26Uf/x7yXEvdnZkNp/RJKDtpaiyRZxCKOEZ3E
+         QBQPjG9l3irG+tcFfB5sQgvRQvjC4LmIz9LiO07YCtlf70xtiXU2ni5oWKnlH1agjK7r
+         NUGg==
+X-Forwarded-Encrypted: i=1; AKwUvBy2qwITRtnn2D+c2IXLV6hP7GGTOY9sMbwgLI/ON5smFqm83mCiyxlzRqxEYH7OuIJ+k2T+3D3+2nj6JfPyaA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJBov3jn7J+jfoWkujB1pB9paeAn2JZqVxHbnUoyzG9absoNZYS
+	9Ds6L/cHUl2ew2IE/xKlCmIabpAUWT06kpML9n1MIU4PGipXGC3fiaBB
+X-Gm-Gg: AYBFou2rhM5oQZWii9lTs96jRybDgEFEw2WvwR5wQAEnoej5ykrjjCj5xZuXDD1HyZ7
+	7mxNJd8n8c+pEo4VgaSILqk5CH10qyLSqaopaq2oWe38cVMwdMmklQaIZD35cDmjFH9pfsq4zFc
+	2CBKnyZmkW3gnDrW8JgtxxBmaalfXJGw2e3Cxn1vxLfqmlDYxEBxvJk5LYAtJGzfmtV/YrAVgMS
+	1R8Yj/37vuQf9h+ggCnrgCvRRj6oy5XPZ9BGqjLGztp8EJjDWA2Xyy5qgx0q4JSDcqRrYi/LWaI
+	EKB9lV4Kn9rjsZb18LaS7pRILKgIz3TsS6bf8EJBmec+NRnZgV4AU8fs3b0TGd8cqkYAveqLo5+
+	u17XKVxHDYsGm51+Y/IMX882R9qyY4/AWoB7H9XoSMzfjTflvpGeSykv3K9GQkHv6GAiTSKwcvc
+	90VRiv5pHq/lLIQkq2617ojmBhHxTKEdIUTC6PKfaUNueYF7T1+LTfwfh1wi4NbsRob760IqnyZ
+	pUjyoSgS7Yyn2ROMOkfrXdNi9Wf+VvatefAr4oeONrZa4t6GzgpKN7pHjsJLvqBR45mweMRgzl7
+	mu4r7TZHznEPrw==
+X-Received: by 2002:a17:903:181:b0:2e9:842d:3c34 with SMTP id d9443c01a7336-2e9842d3dd5mr10658595ad.13.1792123848458;
+        Thu, 15 Oct 2026 21:10:48 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2e97e8ab443sm3815785ad.65.2026.10.15.21.09.56
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2e97e8ab443sm3815785ad.65.2026.10.15.21.10.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Oct 2026 21:10:08 -0700 (PDT)
+        Thu, 15 Oct 2026 21:10:48 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
 	Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
@@ -117,14 +103,16 @@ To: Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
 	Biju Das <biju.das.jz@bp.renesas.com>,
 	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
 	Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 00/11] ASoC: Address remaining PCM constraint issues
-Date: Fri, 16 Oct 2026 11:09:35 +0700
-Message-ID: <20261016040946.521195-1-phucduc.bui@gmail.com>
+Subject: [PATCH 03/11] ASoC: atmel: Explain component open return value handling
+Date: Fri, 16 Oct 2026 11:09:38 +0700
+Message-ID: <20261016040946.521195-4-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261016040946.521195-1-phucduc.bui@gmail.com>
+References: <20261016040946.521195-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_051036_666070_EEB693AA 
-X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-CacheID: sfid-20261015_211049_537978_8F2F2DEF 
+X-CRM114-Status: UNSURE (   9.11  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -145,66 +133,31 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: bui duc phuc <phucduc.bui@gmail.com>
 
-Hi all,
+Add a comment explaining why .open() must return 0 on success
+to ensure proper rollback handling and prevent future changes
+from reintroducing the issue.
 
-Since v1 has already been applied, this series provides incremental 
-changes to address the remaining items from v2:
- - Add comments explaining why .open() and .startup() must return 0 
-   on success to prevent the issue from being reintroduced.
- - Add Reviewed-by tags from Vijendar Mukunda and Chancel Liu, 
-   and Acked-by tags from Morimoto-san and Cezary.
- - Remove redundant integer constraints already applied 
-   by snd_dmaengine_pcm_open().
+Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+---
+ sound/soc/atmel/atmel-pcm-pdc.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Link v1: 
-https://lore.kernel.org/all/20261008103831.542533-1-phucduc.bui@gmail.com/
-Link v2: 
-https://lore.kernel.org/all/20261015014324.5569-1-phucduc.bui@gmail.com/
-
-Compile-tested only.
-
-Best regards,
-Phuc
-
-bui duc phuc (11):
-  ASoC: amd: Explain component open return value handling
-  ASoC: apple: Explain DAI startup return value handling
-  ASoC: atmel: Explain component open return value handling
-  ASoC: codecs: Explain DAI startup return value handling
-  ASoC: imx-pcm-rpmsg: Explain component open return value handling
-  ASoC: intel: atom: Explain DAI startup return value handling
-  ASoC: renesas: msiof: Explain component open return value handling
-  ASoC: renesas: msiof: Remove redundant period constraint
-  ASoC: renesas: rz-ssi: Explain component open return value handling
-  ASoC: renesas: rz-ssi: Remove redundant component open callback
-  ASoC: rockchip: Explain DAI link startup return value handling
-
- sound/soc/amd/acp/acp-platform.c             |  5 +++++
- sound/soc/amd/ps/ps-pdm-dma.c                |  6 ++++++
- sound/soc/amd/ps/ps-sdw-dma.c                |  6 ++++++
- sound/soc/amd/raven/acp3x-pcm-dma.c          |  6 ++++++
- sound/soc/amd/renoir/acp3x-pdm-dma.c         |  6 ++++++
- sound/soc/amd/vangogh/acp5x-pcm-dma.c        |  6 ++++++
- sound/soc/amd/yc/acp6x-pdm-dma.c             |  6 ++++++
- sound/soc/apple/mca.c                        |  5 +++++
- sound/soc/atmel/atmel-pcm-pdc.c              |  5 +++++
- sound/soc/codecs/cs42l42.c                   |  5 +++++
- sound/soc/codecs/nau8325.c                   |  5 +++++
- sound/soc/codecs/nau8540.c                   |  5 +++++
- sound/soc/codecs/nau8821.c                   |  5 +++++
- sound/soc/codecs/nau8824.c                   |  5 +++++
- sound/soc/codecs/nau8825.c                   |  5 +++++
- sound/soc/codecs/wm8580.c                    |  5 +++++
- sound/soc/codecs/wm8782.c                    |  5 +++++
- sound/soc/fsl/imx-pcm-rpmsg.c                |  6 ++++++
- sound/soc/intel/atom/sst-mfld-platform-pcm.c |  5 +++++
- sound/soc/renesas/fsi.c                      |  5 +++++
- sound/soc/renesas/rcar/msiof.c               | 10 ++--------
- sound/soc/renesas/rz-ssi.c                   | 19 +++++--------------
- sound/soc/rockchip/rk3399_gru_sound.c        |  5 +++++
- sound/soc/rockchip/rockchip_max98090.c       |  5 +++++
- 24 files changed, 124 insertions(+), 22 deletions(-)
-
+diff --git a/sound/soc/atmel/atmel-pcm-pdc.c b/sound/soc/atmel/atmel-pcm-pdc.c
+index 552bfa30d4ba..4cedf2ad934d 100644
+--- a/sound/soc/atmel/atmel-pcm-pdc.c
++++ b/sound/soc/atmel/atmel-pcm-pdc.c
+@@ -295,6 +295,11 @@ static int atmel_pcm_open(struct snd_soc_component *component,
+ 	}
+ 	runtime->private_data = prtd;
+ 
++	/*
++	 * ASoC only marks the component as opened when .open() returns 0.
++	 * Since snd_pcm_hw_constraint_integer() may return 1, explicitly
++	 * return 0 to ensure .close() is not skipped on rollback.
++	 */
+ 	return 0;
+ 
+  out:
 -- 
 2.43.0
 
