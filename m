@@ -4,49 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C44FCCA490
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 16:06:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34740CC6B38
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 16:06:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tXkKN1UtBj7ikOMvxuRtaUEvDsMhDoTeaBvbhqazg0M=; b=CwpcUMIwlyg7mu
-	l+fj/qo5l2QbGmNxWul21ex8tYBTvKHq62ceOpjNqcofcffHM4ISiX5RlwHXpAtVU7syZ9nZqMyIQ
-	gPQKRcI33cl26dVMIkg9lh2cX1ktNz7ngrfsZ+mSoax2jTQ4Tq4KlAm/ItS/nn3MpyXjhbxVMDAjx
-	mYHBthuRHDsmWndGcVBjP32267zuP9cb/iwEgThmwrSSjvSEs8sCm2LDRPCRymHkeEdcH1XSLYjx3
-	aRXqRQ5oQoAo4vXRmdpxvMkWAESiRlsIk/Uit85V9a84JVVfjKZfrzwCaFIoIojw3SIb5Yz3gtj9D
-	lbnWyr+rsVsaK1TDeY8w==;
+	List-Owner; bh=1YBTTNc5C2OYfBAFuzSXK+3AotjXqXbohy+GHtoTS4k=; b=cMDC7mTLoIS8UV
+	mQCwCtbIo50wLrS6S40D+Pjs5kE2fLwoJ4JPZGMT6kgWDDAuSdzBtqMkRL71orcG57z35H3m//jKy
+	esqlbQ5F0Ta3LrK30orD3v+Hitu6JN209YY3t2R31pIiVdWgOSMUCKbH9HETso63zbJrViND4r6+/
+	7iHWKJouwoPthvyWWTQiTQ2AwhGFlK0/1YzdjMu02ln9GDYZj8WdXPF6XnqtwseCbipQe2fW/TiDW
+	7Zb5yOd478nqkbALcE2W2j2osTu5aSXKo2FrH7kBZoaSshzSHbXefQYxrw0HvFQas6Hdbs+1x021+
+	paf2tftCaq7bYEOhKQXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHkSC-00000003OEo-22oL;
-	Fri, 16 Oct 2026 16:06:44 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHkSB-00000003ODY-0ntu;
-	Fri, 16 Oct 2026 16:06:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=1GuIjwnutapXL5RSBydFeEzZIlwcykWtwbrgx8uSRFI=; b=pI5eHEriagnnfJmqgmrHf+pvLm
-	x0z6xgRzyIHW/6yrtUFignoAe9Ru4CVAw/xQMp4iaHUycaGw0FfTHU5WM6a21sycCROf9dYjh52XD
-	yUR+u0IT+IKAdWA4CQwHpRt3sAvPWtmA9g/aNskgEO9brx957kT6c5sI4bU4EyRTb973X8706lDUE
-	xLlleizqXBbq3l7KrrFO5zoyMs0ryRQpbc+9uUYOuBrkVffB1mvxOJkyvARFArQHavGvjBXkNvdNx
-	7e/YY9CrWosNZuQu4uYb/re1BuUjwqEsNazoHUDJwiPJ7YBfVZxtPtBnQmdlgNFrDFLuK00jQAxrr
-	8ddmTpGw==;
+	id 1xHkS0-00000003O9I-05VJ;
+	Fri, 16 Oct 2026 16:06:32 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
-	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xHkS8-00000001i8G-2Ee3;
-	Fri, 16 Oct 2026 16:06:42 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1xHkRw-00000003O8F-3Kef;
+	Fri, 16 Oct 2026 16:06:30 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
 	 (Exim 4.100.1)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1xHkS0-0000000086I-3HYE;
-	Fri, 16 Oct 2026 16:06:32 +0000
-Date: Fri, 16 Oct 2026 17:06:29 +0100
+	id 1xHkRd-0000000085t-2pQA;
+	Fri, 16 Oct 2026 16:06:09 +0000
+Date: Fri, 16 Oct 2026 17:06:06 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Paul Elder <paul.elder@ideasonboard.com>
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -61,16 +47,16 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v3 2/5] media: rkisp2: Add parameters output video node
-Message-ID: <atJLhTeuvukW4XFx@makrotopia.org>
+Subject: Re: [PATCH v3 0/5] media: rockchip: rkisp2: Add driver for ISP on
+ Rk3588
+Message-ID: <atJLbtG3cGDOWMSx@makrotopia.org>
 References: <20260827-rkisp2-v3-0-e91ff0a604d6@ideasonboard.com>
- <20260827-rkisp2-v3-2-e91ff0a604d6@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260827-rkisp2-v3-2-e91ff0a604d6@ideasonboard.com>
+In-Reply-To: <20260827-rkisp2-v3-0-e91ff0a604d6@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_170640_664279_CA90988C 
-X-CRM114-Status: GOOD (  27.65  )
+X-CRM114-CacheID: sfid-20261016_090628_992158_5B5B5F3B 
+X-CRM114-Status: GOOD (  42.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,168 +73,196 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 27, 2026 at 07:48:31PM +0900, Paul Elder wrote:
-> Implement support for setting parameters on the ISP by queueing
-> parameter buffers to rkisp2.
+On Thu, Aug 27, 2026 at 07:48:29PM +0900, Paul Elder wrote:
+> Hello everyone!
+>
+> This patch series adds a new rkisp2 driver that aims to support all
+> Rockchip 2.x and 3.x series ISPs. Here we add support for the version on
+> the RK3588, which as far as I'm aware is a 3.0.
 [...]
 
 Hi Paul,
 
-A few comments from running this on the RV1126; the RK3588 statements
-are by code inspection.
+I have been running this series on the RV1126, whose ISP is a 2.0, with
+an IMX415 at 1920x1080 and 30 fps, through libcamera (your rkisp2
+pipeline handler with a few changes) and through the raw readback path
+fed from the VICAP driver. Most of the series works there as it is.
+Below is a summary of the comments I sent on the individual patches,
+followed by the list of changes the 2.0 needed, so that you can see
+which of them are differences between the ISP versions and which may
+affect the RK3588 as well. I have no RK3588, so every statement about
+the 3.0 is by code inspection.
 
-[...]
-> +++ b/Documentation/userspace-api/media/v4l/metafmt-rkisp2.rst
-[...]
-> +The configuration parameters are passed to the :ref:`rkisp2_params
-> +<rkisp2_params>` metadata output video node, using the
+Summary of the per-patch comments
+---------------------------------
 
-There is no rkisp2_params label anywhere under Documentation/ (rkisp1
-defines its labels in admin-guide/media/rkisp1.rst), so Sphinx warns
-about an undefined label. The same holds for rkisp2_stats in patch 3.
+Patch 1, driver:
+- The ISP is not started when a raw readback node is started before
+  the main or self path: pipe.start_count counts the readback nodes.
+- The CR plane base address is never written, so the three-plane
+  formats write their third plane to an unprogrammed address.
+- The 4:2:0 capture formats name YUYV8_1_5X8 as media bus code, which
+  the ISP source pads do not offer, so link validation fails for them.
+- The MPFBC_CTRL format list has NV21M twice and lacks NV12M and
+  YUV420.
+- V4L2_ISP is not selected although patches 2 and 3 need it;
+  V4L2_FWNODE and GENERIC_PHY_MIPI_DPHY are selected without a user.
+- A full quantization range accepted on the source pad is never
+  applied to the hardware (CSM_Y_FULL_ENA and CSM_C_FULL_ENA).
+- The raw readback stop path releases the buffers without waiting for
+  the read in progress.
+- RKISP1_V30 is added to the rkisp1 uapi without a user, plus a few
+  small items.
 
-[...]
-> +++ b/drivers/media/platform/rockchip/rkisp2/rkisp2-params.c
-[...]
-> +static void rkisp2_params_goc(struct rkisp2_params *params,
-[...]
-> +	if (arg->mode == RKISP2_ISP_GOC_MODE_EQUIDISTANT)
-> +		control = ISP3X_GAMMA_OUT_CTRL_MODE_EQUIDISTANT;
-> +	if (arg->mode == RKISP2_ISP_GOC_SEGMENTS_48)
-> +		control |= ISP3X_GAMMA_OUT_CTRL_SEGMENTS_48;
+Patch 2, params:
+- The params buffer consumed at stream start is never returned to user
+  space.
+- The resizer bypass test compares the luma size only, so an unscaled
+  4:2:0 output gets one chroma row per luma row.
+- The GOC handler tests mode against the segments enum.
+- The resizer is left unprogrammed when the first params buffer has no
+  CROP block, and the default crop without a params buffer is the
+  top-left window of the frame.
+- A missing cleanup on a registration failure and an undefined label
+  in the documentation.
 
-The second test is meant for arg->segments. As
-RKISP2_ISP_GOC_SEGMENTS_48 and RKISP2_ISP_GOC_MODE_EQUIDISTANT are both
-1, equidistant mode always gets the 48 segment layout and the segments
-member of the uapi is dead.
+Patch 3, stats:
+- The stats block table lists HIST_BIG1 twice, so HIST_BIG2 is lost.
+- The AE lite and AWB blocks go out with stale payload and done flag
+  when their status bit is not set.
+- Smaller items, and a question about the 3A interrupt line.
 
-[...]
-> +static void rkisp2_params_crop_init(struct rkisp2_params *params)
-> +{
-> +	struct rkisp2_device *rkisp2 = params->rkisp2;
-> +
-> +	/* Create an initial crop configuration to configure */
-> +	struct rkisp2_params_crop arg = {
-> +		.header.type = RKISP2_PARAMS_BLOCK_CROP,
-> +		.header.flags = 0,
-> +		.header.size = sizeof(struct rkisp2_params_crop),
-> +		.crop_en = RKISP2_ISP_CROP_ENABLE_MAIN | RKISP2_ISP_CROP_ENABLE_SELF,
-> +
-> +		.mp_crop.h_offs = 0,
-> +		.mp_crop.v_offs = 0,
-> +		.mp_crop.h_size = rkisp2->resizer_devs[0].source_size.width,
-> +		.mp_crop.v_size = rkisp2->resizer_devs[0].source_size.height,
+Patch 5, dts:
+- The isp0 node has three interrupts while the binding allows two.
 
-Without a params buffer at stream start this crops a window of the
-output size at the top left corner, so a 1920x1080 capture from a
-3864x2192 sensor shows that corner only. The sink size (what the CROP
-block uses when it is disabled), scaled by the resizer, is what rkisp1
-does and what a plain v4l2-ctl capture expects.
+Changes needed for the RV1126
+-----------------------------
+Full (draft-quality) tree at
 
-[...]
-> +static void rkisp2_params_configure(struct rkisp2_params *params,
-[...]
-> +	/* update shadow register immediately */
-> +	rkisp2_param_set_bits(params, RKISP2_CIF_ISP_CTRL,
-> +			      RKISP2_CIF_ISP_CTRL_ISP_CFG_UPD);
-> +
-> +	if (prio == RKISP2_PARAMS_CONFIG_PRIO_NONE)
-> +		vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_DONE);
-> +}
-[...]
-> +void rkisp2_params_pre_configure(struct rkisp2_params *params,
-[...]
-> +	spin_lock_irq(&params->buf_lock);
-> +	buf = list_first_entry_or_null(&params->params,
-> +				       struct rkisp2_params_buffer, queue);
-> +	spin_unlock_irq(&params->buf_lock);
-> +
-> +	if (!buf) {
-> +		/*
-> +		 * Initialize crop in the event that are no pre-queued
-> +		 * parameter buffers
-> +		 */
-> +		rkisp2_params_crop_init(params);
-> +		return;
-> +	}
-> +
-> +	rkisp2_params_configure(params, buf, RKISP2_PARAMS_CONFIG_PRIO_PRE);
+https://github.com/dangowrt/linux/tree/rk-isp2-rv1126
 
-When a buffer is queued but carries no CROP block, neither path
-programs the dual crop and the resizer, so they keep the state of the
-previous stream (the IRCL pulse in rkisp2_isp_stop() resets the ISP
-and MIPI blocks only) or the reset state. With a capture size that
-differs from the sink size the MI is then fed frames of the wrong
-size. Running rkisp2_params_crop_init() first and letting a CROP block
-override it covers both cases.
+These are commits on top of your v3. "2.0" below means what I observed
+on the RV1126; where I know whether the 3.0 shares it, I say so.
 
-> +}
-> +
-> +void rkisp2_params_post_configure(struct rkisp2_params *params)
-> +{
-> +	struct rkisp2_params_buffer *buf;
-> +
-> +	spin_lock_irq(&params->buf_lock);
-> +	buf = list_first_entry_or_null(&params->params,
-> +				       struct rkisp2_params_buffer, queue);
-> +	if (buf)
-> +		list_del(&buf->queue);
-> +	spin_unlock_irq(&params->buf_lock);
-> +
-> +	if (!buf)
-> +		return;
-> +
-> +	rkisp2_params_configure(params, buf, RKISP2_PARAMS_CONFIG_PRIO_POST);
-> +}
+1. Model description for the RV1126: three clocks, a third interrupt
+   line for the CSI-2 receiver and raw read status (the handler only
+   counts the receiver errors), 4416x3312 as maximum input size, plus
+   the binding and dts entries. RV1126 specific.
 
-The buffer is taken off the list here and configured with PRIO_POST,
-which does not complete it (see above), so a params buffer queued
-before STREAMON never comes back from DQBUF; at STREAMOFF vb2 warns
-that stop_streaming left a buffer in active state and releases it
-itself. rkisp1_params_post_configure() completes the buffer after the
-LSC group; vb2_buffer_done() belongs here after the POST pass.
+2. SWS_CFG: keep the reset value and add only the frame drop disable
+   bit; ACK_FRM_PRO_DIS is not defined on the 2.0. Whether the 3.0
+   holds anything in that register that the current write clears I
+   do not know (asked in patch 1).
 
-[...]
-> +	ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
-> +	if (ret) {
-> +		dev_err(rkisp2->dev,
-> +			"failed to register %s, ret=%d\n", vdev->name, ret);
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_media:
-> +	media_entity_cleanup(&vdev->entity);
-> +	mutex_destroy(&node->vlock);
-> +	return ret;
+3. Extra readback lines: the 2.0 does not finish the last lines of a
+   frame it converts from Bayer to YUV out of memory unless the
+   readback presents 24 lines more than the frame has. The lines are
+   added to the readback buffer and picture size and to the ISP
+   acquisition and output height, and cut off by the dual crop, which
+   stays enabled for the YUV paths when the crop covers the frame.
+   The vendor driver does this for the 2.0 only.
 
-goto err_media here as well. Neither path releases the vb2 queue that
-was initialised above.
+4. No image stabiliser on the 2.0: rkisp2_config_ism() is skipped by
+   a model flag. The RK3588 keeps it, as your comment there says.
 
-[...]
-> +++ b/drivers/media/platform/rockchip/rkisp2/rkisp2-resizer.c
-[...]
-> +void rkisp2_resizer_configure(struct rkisp2_resizer *rsz,
-[...]
-> +	if (crop->width == rsz->source_size.width && crop->height == rsz->source_size.height)
-> +		rkisp2_resizer_disable_rsz(rsz);
-> +	else
-> +		rkisp2_resizer_config_rsz(rsz, crop,
-> +					  &rsz->source_size,
-> +					  &rsz->source_format);
+5. Bus priority and hurry bits in the upper part of ISP_CTRL, set on
+   the 2.0 as the vendor driver does; without them the readback
+   competes with the camera interface on equal terms. 2.0 specific as
+   far as I know.
 
-The bypass test compares the luma size only. The ISP delivers 4:2:2,
-and rkisp2_resizer_config_rsz() handles the chroma subsampling when it
-runs, but an unscaled 4:2:0 stream (crop equal to the output size)
-disables the resizer and the MI gets one chroma row per luma row. On
-the RV1126 main path the chroma plane offset wraps halfway through the
-frame and the chroma of the lower half lands on the upper half
-(displaced colour ghosts and neutral halos). rkisp1_rsz_config()
-bypasses only when the size and the subsampling are both unchanged;
-the same test here fixed it for me. I do not know whether the 3.0 MI
-subsamples on its own in the ISP32_MI_OUTPUT_YUV420 mode; if it does
-not, this applies to the RK3588 too.
+6. The word swap of the unpacked readback samples (LE_ALIGN) is made
+   a model property: the RV1126 camera interface writes the samples in
+   the order the 2.0 readback expects, and with the swap the chroma
+   comes out as noise. Strictly this depends on what produced the
+   buffer rather than on the ISP version.
+
+7. VI_ISP_CLK_CTRL: rkisp2_config_clk() writes the register with the
+   ISP1 bit names (ISP_3A | ISP_RAW). The 2.0 layout differs, and its
+   bits 21 and 22 gate the memory read and raw read engines; left
+   clear, the readback delivers exactly one frame after a reset and
+   nothing afterwards. The vendor 2.0 driver writes 0x7fe009. I do not
+   know the 3.0 layout.
+
+8. The readback buffer is handed back from the ISP frame complete
+   interrupt instead of the main or self path frame end: on the 2.0
+   the main path frame end arrives about 10 ms before the readback
+   engine has finished the frame, so the buffer went back to user
+   space and the next base address was written while the frame was
+   still being read. I do not know where the 3.0 finishes the read
+   relative to the MI frame end.
+
+9. Readback trigger ordering: on the 2.0 the CSI2RX_CTRL0 write that
+   switches SW_IBUF_OP_MODE away from the reset value and sets
+   SW_CSI2RX_EN at the same time loses its trigger in about 7 % of
+   the stream starts (the mode is latched, the enable is dropped, no
+   V_START follows). Writing the op mode with the enable clear before
+   the MI configuration update that rkisp2_cap_stream_enable() issues,
+   and starting the first buffer like every later one (base write,
+   then the enable write), fixed it: 120 of 120 starts. I do not know
+   whether the 3.0 shares this.
+
+10. Resizer chroma subsampling for 4:2:0 output (patch 2 comment).
+
+11. AWB measurement on the 2.0: its RAWAWB block does not have the
+    weight RAM and the count RAM at the addresses the driver uses
+    (the RAM read zeros in every mode I tried), so the AWB stats block
+    stays empty. The 2.0 still has the white balance measurement of
+    the ISP core, the rkisp1 style block, so I program that from the
+    AWB_MEAS parameters (window spanning the 15x15 grid, RGB mode,
+    the maximum limits as thresholds) and report its count and means
+    in a new AWB_MEAN stats block. 2.0 specific.
+
+12. CSM output range from the pad quantization (patch 1 comment).
+
+13. CSC defaults: when user space sets only the colorspace with
+    SET_CSC (libcamera does that for sYCC), I filled the other fields
+    from the colorspace defaults. Re-reading subdev-formats.rst, a
+    DEFAULT field keeps the received value by definition, so your
+    code is right here and this is a libcamera matter.
+
+14. 3A status at frame end (patch 3 question): leaving ISP3A_IMSC
+    clear and reading ISP3A_RIS in rkisp2_stats_isr_eof() brought the
+    ISP interrupt count from about 1400 per frame down to two.
+
+15. Default crop covering the whole frame (patch 2 comment).
+
+16. vb2_dma_contig_set_max_seg_size(dev, DMA_BIT_MASK(32)) in probe:
+    the arm32 IOMMU DMA ops map an imported dmabuf in segments of the
+    device's maximum segment size with separate IOVA allocations, so
+    importing the readback buffers into the main path failed as not
+    contiguous. Harmless on arm64; rkvdec does the same.
+
+17. ISP reset on stop: on the 2.0 the IRCL ISP and MIPI reset pulse in
+    rkisp2_isp_stop() does not clear the raw readback front end, and
+    the next stream starts with the previous CSI2RX state and misses
+    its first frame. The "isp" and "isp-rx-p" reset lines are
+    asserted instead, as the vendor driver does in its stop path.
+    RV1126 specific.
+
+18. HIST_BIG2 stats table entry (patch 3 comment).
+
+19. VICAP (rkcif) side: the unpacked raw output is written MSB
+    aligned as the readback expects, the MIPI interrupts are masked
+    while the receiver is powered, and a larger sizeimage is accepted
+    so that the buffers carry the extra lines of item 3. The frames
+    are handed to the readback inside the kernel through a small
+    consumer interface of the rkcif driver, selected when the readback
+    node's link to the ISP is disabled; this replaces the user space
+    copy of every raw frame into the readback node that I started
+    with. It is the RV1126 counterpart of the inline mode pad you
+    reserved, except that the frames still go through memory.
+
+Tested configuration: RV1126 with an IMX415 at 1920x1080 and 30 fps.
+libcamera with cam and with GStreamer (libcamerasrc into the hantro
+JPEG encoder), AE and AWB converging, two minutes at a constant 30 fps;
+the readback path alone, 1974 frames in 66 s; 120 of 120 stream starts
+delivering frames. The self path, 4K and raw output I have not tested.
+
+Once the series has settled I can post the remainder of the above as
+follow-up patches on top of it, if that suits you. The libcamera side
+(VICAP entities taken from the media graph, start order, colour space
+propagation, IMX415 tuning) is on a branch here as well and I can send
+it to libcamera-devel.
 
 Best regards,
 Daniel
