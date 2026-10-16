@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32041CC6B38
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 05:34:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE804CCA464
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 05:34:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H6aLaAq1UgYx8boIP8isaxj2T54W6Q8bnnjpMIoOwew=; b=b3oHxH8U9MtfvF
-	LnIc2ZIWcolNyM7kmFOr+4OYFDe430lM3Tx3WOjGHz1IvFN5qUWDnbNGJgd9h7uOwtcpYZwKz3WZc
-	QSKXG5f2yx2lfcqS4H5Wlf3aZUpFQ8TZGyxjr/Sl/7rzonUTB8lS68EDRA6oSpHbbUAScGYDyJavx
-	/KtCq8AZXiaRi59E+lFvFgiIYA3ZNAR8h0kQaAkDWo8CA2waxSSi1pKVUMPd0d/8f+zWuTt99B8Aa
-	KxJ14huNOOdKN9CzSpxGhyFkKv3U9zgR76JgnNcx1M7XOllJTZVsSEpuST2cjelImvjemZpghgbPw
-	ta5+Rsqi9oGQJOQRWaTQ==;
+	List-Owner; bh=BslnJxGXaQXrtFvSH4ot9hGSN7fUwA+Chl4tv9d1lC8=; b=hk/N+k8ZGjBTNN
+	O/PfVIXKQvPp0/bs8TULtSbO+DzXawARwwIl0eUoZZEES6c/j9pRYMARlTfqkWbHMxxvi/gAdP0rM
+	fGaQEIEBKsSOCvk99Cc3gyCifexM4u27zdc2QXNvxe8srx2saXpnLgwmQBCyvCMMZXcbvTQUD8HkG
+	pT7BVZmFG00igQA1GYovGcVhvxHGVQCBAgjpQVO4/Pt2v2vTIUMeq3rrkEzv+7spfN1LdZLyOdi6D
+	uAr7gsQoa+mNw3JlOc0/EpFJug6pQnA/v7juimVkAkZYRKTcoP5+occwnXc+uWUEOmRW2DQRqi9Ph
+	n4OmGfS+0Mh6/48Ljnug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHaaV-000000022Ap-1clc;
-	Fri, 16 Oct 2026 05:34:39 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xHaad-000000022Dt-2Ke9;
+	Fri, 16 Oct 2026 05:34:47 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHaaT-000000022AA-49yX;
-	Fri, 16 Oct 2026 05:34:38 +0000
+	id 1xHaaU-000000022AS-3z9r;
+	Fri, 16 Oct 2026 05:34:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0FA4343E51;
+	by tor.source.kernel.org (Postfix) with ESMTP id 4E377601FA;
 	Fri, 16 Oct 2026 05:34:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id DDFF6C2BCF5;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id F05DAC2BCFD;
 	Fri, 16 Oct 2026 05:34:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1792128876;
-	bh=ZxsOdDqyqZ5PUwyuJkILZgVHvyQRAaYr9E2FOh0uF/8=;
+	s=k20201202; t=1792128877;
+	bh=6m8Ojyo9TbI7mj4V/7EpCvY/aUscvJAlabnYrJd4b4Q=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=BO6uPG7yJFjXa+CepEYqALNbN8AC4h7DoYqHd/+IgkbCqNp0WBv7JGw67kK1c/ZF4
-	 ExcMAgsH67HZg8t69fRURcAMqm4AWCIgjRp5y8FkpoBV1oM11AnvJEcd/esFzkrfT4
-	 UBDNnRC/6y1PvjomtS90pFTnpEH3pJhays7HN0oX8uOCj+WBZFbFqYm8eu3VZlZ6j0
-	 1uwOY6ON7B7IDtBh4lw8YeP0rV3kc/oR6n/fSnPSWftEGMq1ydpReKPyRRM2spmmDa
-	 O8R+ofqJl7i9JL5zRlwhqcbMTuYkYEsx9YEiOeZhm+rzGgqBlAAFsYpanbL2npeHEk
-	 E2YJRFG2Ogp4A==
+	b=oiH5yQq6irJQzvLhxtPFPBZp60Z2kcKvQI/PUmvcV/tKbVW+9mIpv+TBsa2SKiChy
+	 GpN4F+8wEsl1upQ4c3hP2RrWutOfAyGdWVIhMSoRFiYUkuHnDxqhCqhJh2CideiuK9
+	 FdSWUMLiKLnksRDwlNuz1952+y5U65VPWljYvUEA3mwk4na8T92G9ZlZZoRWIdmMaL
+	 442bTBl+6W6hxsVri/33h8qsP+wofaS3J8ap3ghFQaw/9JDcJxScc1AG7zXK6rS9cO
+	 OybPRDaLhMMARf8My1ChcQ1egRzaq9ZecDG0LGGGyNsB1RDqMBdVFSCe0uFKSLk/ul
+	 7kqZ1AMmNUYAg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CDBDDCC6B38;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E0209CC6B2D;
 	Fri, 16 Oct 2026 05:34:36 +0000 (UTC)
 From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Fri, 16 Oct 2026 08:34:33 +0300
-Subject: [PATCH 1/2] arm64: dts: rockchip: Describe more of the power tree
- on Kobol Helios64
+Date: Fri, 16 Oct 2026 08:34:34 +0300
+Subject: [PATCH 2/2] arm64: dts: rockchip: Describe the unused RK808
+ outputs on Kobol Helios64
 MIME-Version: 1.0
-Message-Id: <20261016-helios64-power-tree-v1-1-31d6c8dc5092@iav.lv>
+Message-Id: <20261016-helios64-power-tree-v1-2-31d6c8dc5092@iav.lv>
 References: <20261016-helios64-power-tree-v1-0-31d6c8dc5092@iav.lv>
 In-Reply-To: <20261016-helios64-power-tree-v1-0-31d6c8dc5092@iav.lv>
 To: Heiko Stuebner <heiko@sntech.de>
@@ -58,13 +58,13 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3722; i=iav@iav.lv;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1855; i=iav@iav.lv;
  h=from:subject:message-id;
- bh=8ZjlctZruWiHyaCJNzcvo71K9qLA5V8M8d4dh5Ckn8g=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFkXt2fdmxnxeLKiXNIWuwOPLnT9kJh0ud/Mv8FixdlGw
- YPpCUbvOkpZGMS4GGTFFFkmHNK4lbHk6l9/D/MHMHNYmUCGMHBxCsBE9G4wMmxoy/xw2qI804Rl
- RtSPJXLFz8QTWp4X/1w9J+rZhry1WtcY/pf839Zewv7msmGI7CyGA2ZPr7A05ex4ke775OefqQ+
- eWzMBAA==
+ bh=q+lERKCDnOjng4lQyfplDkXO0aaernq5BCDtZUzNjMI=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFkXt2ffMj9gPDm6g7HyEbORruy0LcsZ/xyd/oBlpX55w
+ gGj8zcKO0pZGMS4GGTFFFkmHNK4lbHk6l9/D/MHMHNYmUCGMHBxCsBE7u5j+Ct2695OU5Uyfe9Y
+ yxYbu7tTUrZdfOOlebPqg7zL2sc5mw4x/K+wOrNTMFNSSmNZlMPuXv5q9qX37bQF0i7nvfOVlz+
+ whwMA
 X-Developer-Key: i=iav@iav.lv; a=openpgp;
  fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
 X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
@@ -88,131 +88,68 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Igor Velkov <iav@iav.lv>
 
-Add the regulators that the Helios64 schematic shows and the device
-tree does not describe yet:
+The Helios64 schematic lists RK808 LDO_REG1, LDO_REG2, LDO_REG5,
+LDO_REG7 and SWITCH_REG2 as unused (sheet 2). Each output has only a
+0.1 uF capacitor and goes nowhere else (sheet 6).
 
-- RK808 DCDC_REG3 vcc_ddr_s3, LDO_REG6 vcc1v5_s3 and SWITCH_REG1
-  vcc3v3_sys_s0 (sheet 6),
-- the fixed 0.9 V regulator vcc0v9_s3, fed from vcc3v3_sys_s3 (sheet 8),
-- the hard disk supplies vcc5v0_hdd and vcc12v_hdd, fed from
-  vcc12v_dcin_bkup (sheets 4 and 9).
-
-The hdd_a_power and hdd_b_power switches each take both vcc5v0_hdd and
-vcc12v_hdd (sheet 5). A regulator has one vin-supply, so the two disk
-supplies stay without a consumer.
+Describe them with the names from the schematic and no constraints, so
+the regulator core switches them off as unused.
 
 Link: https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
 Assisted-by: LLM
 Signed-off-by: Igor Velkov <iav@iav.lv>
 ---
- .../boot/dts/rockchip/rk3399-kobol-helios64.dts    | 63 ++++++++++++++++++++++
- 1 file changed, 63 insertions(+)
+ .../boot/dts/rockchip/rk3399-kobol-helios64.dts      | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-index 63ad79b4c8ac..cf247d6c6212 100644
+index cf247d6c6212..35e92e1c8ff8 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-@@ -178,6 +178,16 @@ usblan_power: regulator-usblan-power {
- 		vin-supply = <&vcc5v0_usb>;
- 	};
- 
-+	vcc0v9_s3: regulator-vcc0v9-s3 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc0v9_s3";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <900000>;
-+		regulator-max-microvolt = <900000>;
-+		vin-supply = <&vcc3v3_sys_s3>;
-+	};
-+
- 	vcc1v8_sys_s0: regulator-vcc1v8-sys-s0 {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc1v8_sys_s0";
-@@ -215,6 +225,16 @@ regulator-state-mem {
- 		};
- 	};
- 
-+	vcc5v0_hdd: regulator-vcc5v0-hdd {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_hdd";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc12v_dcin_bkup>;
-+	};
-+
- 	vcc5v0_perdev: regulator-vcc5v0-perdev {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc5v0_perdev";
-@@ -271,6 +291,16 @@ vcc12v_dcin_bkup: regulator-vcc12v-dcin-bkup {
- 		regulator-max-microvolt = <12000000>;
- 		vin-supply = <&vcc12v_dcin>;
- 	};
-+
-+	vcc12v_hdd: regulator-vcc12v-hdd {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc12v_hdd";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+		vin-supply = <&vcc12v_dcin_bkup>;
-+	};
- };
- 
- /*
-@@ -383,6 +413,16 @@ regulator-state-mem {
+@@ -436,6 +436,14 @@ regulator-state-mem {
  				};
  			};
  
-+			vcc_ddr_s3: DCDC_REG3 {
-+				regulator-name = "vcc_ddr_s3";
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
++			vcc1v8_dvp: LDO_REG1 {
++				regulator-name = "vcc1v8_dvp";
 +			};
 +
- 			vcc1v8_sys_s3: DCDC_REG4 {
- 				regulator-name = "vcc1v8_sys_s3";
++			vcc3v0_touch: LDO_REG2 {
++				regulator-name = "vcc3v0_touch";
++			};
++
+ 			vcc1v8_s3: LDO_REG3 {
+ 				regulator-name = "vcc1v8_s3";
  				regulator-always-on;
-@@ -422,6 +462,19 @@ regulator-state-mem {
+@@ -462,6 +470,10 @@ regulator-state-mem {
  				};
  			};
  
-+			vcc1v5_s3: LDO_REG6 {
-+				regulator-name = "vcc1v5_s3";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1500000>;
-+				regulator-max-microvolt = <1500000>;
++			vcca3v0_codec: LDO_REG5 {
++				regulator-name = "vcca3v0_codec";
++			};
 +
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1500000>;
-+				};
+ 			vcc1v5_s3: LDO_REG6 {
+ 				regulator-name = "vcc1v5_s3";
+ 				regulator-always-on;
+@@ -475,6 +487,10 @@ regulator-state-mem {
+ 				};
+ 			};
+ 
++			vcca1v8_codec: LDO_REG7 {
++				regulator-name = "vcca1v8_codec";
 +			};
 +
  			vcc3v0_s3: LDO_REG8 {
  				regulator-name = "vcc3v0_s3";
  				regulator-always-on;
-@@ -434,6 +487,16 @@ regulator-state-mem {
- 					regulator-suspend-microvolt = <3000000>;
+@@ -497,6 +513,10 @@ regulator-state-mem {
+ 					regulator-off-in-suspend;
  				};
  			};
 +
-+			vcc3v3_sys_s0: SWITCH_REG1 {
-+				regulator-name = "vcc3v3_sys_s0";
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
++			vcc3v3_s0: SWITCH_REG2 {
++				regulator-name = "vcc3v3_s0";
 +			};
  		};
  	};
