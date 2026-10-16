@@ -4,77 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04CE4CCA48B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 08:52:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D5E9CCA462
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2026 08:57:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:In-Reply-To:
-	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q3PtaIwBE/GLZR9iOOJEurx3mjIILwyVQoAyA5HSlK8=; b=KHwW/fKQXpYnP7
-	pqAAK7hkmqrO30X/47FL9qg97MjPtL0KfqI0STMPoqT4DOTGlDgcT/B2CJukCh1ONvWvQu0V+7m1m
-	NPXBxfO0xkpjhDoBCd0iJTVuCRI/iyme5Wnb4WhUUa8zmRiULGMS2iHGVG2O1tUeQNEN4dCj7+KHH
-	Rj29qaGmFfefqnnbl4Y//BjsrE0R8V0nZzAR0WXv2tCNEmjSbbVGWz246o+5Hh4NpQM3Ve55OAEEl
-	malOA7h8h8QNUISR22mWmrs7hmpBFvrQ5c8zbem/aAllPWjYnDONxQQpUen8tN+IYdJj6bHHsOU8q
-	OteuLSPzdiYsTQ+p9gqQ==;
+	List-Owner; bh=bFo7Rx0pZD8IzHtHsre9zp6c9FSwm0KcALffFAI9G9k=; b=qF2giO7t6Aj/jx
+	dSGa9uT90TWPN8FBY16IWxrSmv2tbnSPsJdJzxqLfqQyIegm+/2VeWIuV5vipx4t/YpTDVZzbioGc
+	gnXnjg1PgsgOqg9okhZGmqu0rktpfWlMZEbsac5G3xh0FVRwqDVn1uQd1qFohUogIUDa3D48Hs+ak
+	9zMeCTIzJ5q9ibw3QkxY3EpY8f5C7EURXnFqwh2Hs0aPzGpxOL5LItXaS32fCGekZdgH8rXvjeiIz
+	2TrIpu1bbap6EGiTgucZpr4iUSnVt478dF8Y1YfiBpfUXiJJQVGdYdOacn6OL+aTBCLGTf2DKA4Ct
+	daYGNQy02iRLZn23UQ7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHdfS-00000002NRT-3veZ;
-	Fri, 16 Oct 2026 08:51:58 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1xHdkF-00000002O63-0d97;
+	Fri, 16 Oct 2026 08:56:55 +0000
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHdfP-00000002NOr-0rA1
+	id 1xHdkC-00000002O3s-1Jf1
 	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Oct 2026 08:51:57 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 1440FC6220F;
-	Fri, 16 Oct 2026 08:52:47 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 48DB36075D;
-	Fri, 16 Oct 2026 08:51:50 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5481B10328C00;
-	Fri, 16 Oct 2026 10:51:37 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1792140708; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=ChS8CbLEvyFZVuYslDWXhsoD8DGk8VUp5ILUon7wnlY=;
-	b=FyCLCVxkCDn6SxkXHmUNA69irjP1CxhoV/CWQHtcj/s82zfmdSuPFeHZcqDwuI6y2RZgwc
-	wIev23C/pJfx83qUOIuOWk1zftExtkKtkdIwQ0IIFjjI/xCSIGSzbK+8YtsHQMksKb5QOW
-	gVpfKo+NHJiF47Q8YidnxrqEySqpEmuRheElrrfeFa9rtFMRHDWYM/Qzn6+tRRBQ9i21ii
-	NmV0nCvarkBkTupW8iHUMUonhdAMrNN0Q/O7QPLlV5V18cL6gu+QH4QFF2Y4yOnNh1DIN5
-	LT1+gdlbxOSU71IeNW1Xhtw34nFeySDy3R+5ybE2YAAC95oEvPJWD1RCm6YHTw==
+	Fri, 16 Oct 2026 08:56:53 +0000
+Received: by mail-pg1-x531.google.com with SMTP id 41be03b00d2f7-cc785ed8aacso343431a12.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 16 Oct 2026 01:56:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1792141011; x=1792745811; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=4t98YFhToVmXSdqpvYlx+jh33cXkNHD7dPs1AUtblco=;
+        b=b2Wr8fHP1/ARpXnQO1CI99PtwGhY5z+RgnlrCkXgys4RaqrO3Vm7d6AKvJU1ZAKMcV
+         1YfVrWWWYnnK1KglX1JbYtSk6iS6jy99QXRoQJ+9vgJqIpyCrZVJw00gW5mdJdN0xzN9
+         WmJHOZO5T0Lq+tIP79WPkNSwM4TFBGy8ntPgfiumXX9WJlbv5w8VzO3qfOCcJwNFH55w
+         V9KIpiVENDVSdmQA7S4J4SfZWyGirTNiYlZCJ1JIIebj1B2XZ0rEoU6t0AwyV61c/Rpp
+         UgObuDWdGrwSbJoF/k88467yJWd7NOuh3pfZU2ycQuRmrLJzDo6n3qf9WKqwtkzTJD6/
+         VcAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792141011; x=1792745811;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=4t98YFhToVmXSdqpvYlx+jh33cXkNHD7dPs1AUtblco=;
+        b=OJhgERGSKCHRf+plNguUq4XH+O/zFev3pG4NVokpjpkMey1S8RLHtfORiSgickq+g7
+         JEEgj5dU6mOSW8cVihcJMryuCOIABAyKLK8kEJxp+UCGm4zd1TDJ5rCPjazCk/VM3u01
+         kZ8etOH8bHU91BYlLwfd78gcucaAhQK2Q7/FeNMQroA2hUr2oGbCj0gfCYYE+Bgxvu34
+         q65LIlARZHjzkOldnPmszAccIG8PYp0ZITBlV7Noy5XelZ2ZSw74HV0mIHIt1NF5KqmA
+         wBnBl20rgZmP600AGmgqoYTzvPovYAtOEVg+B+0FJBe8kzizzknQXWFbpqaTFewnlMIe
+         46YA==
+X-Forwarded-Encrypted: i=1; AKwUvBxvss0Etbtxo0aZN+vYOo+IzXjzyUDvNAvNhnxu3jKFEJkklnM4RfUjQPNaPDd1DC++G+Q0Q+bYyYNRp6asRQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIks9/6HS9Aco0wgWBMFzH+m4x6p0dinVTY48KKlVPtSVNNjvhZ
+	wo8SHH2F6WFxPKGP6CNQCtuh+0WzRCoPZaNJMuIAknFLaZnus6UHkBiR
+X-Gm-Gg: AYBFou0cUL5ONtZhvz9VFQQEdWXAApAo4hNUhhdcfF6kpTQ9mDRI/RLmESyqNsZQ9sn
+	bNU2MH7eJj55p2fVBmqMH6ik4phYeQY5ZTBATL5bH6eumeQdXG/LD+KJg41x7dWGsCGijUCdGK2
+	nIIpKmkQzqJKplkP1l57uFcCoylQiOjNCnRPVPPte6mUhg6/pTXdKX5Jw4DvnK/86F3iz+bbSsu
+	l1BEooeZZnMrxduHJT9FwgaPXw+spNXnzHDsp5DXOq77Qe3+PPL9eljWzHsjPvWFnmLaM2jFoiD
+	r9//Mqgqu9zsNNW9vtAfPufLqZvWfMMJDi3VQ3psekOY8vVo4N1oB1MRDrlz4TrKmP7hxlePXFp
+	v3uGPc0GgEk0LV3fZ0tDj7DMxFmXKsEMywvaN2OA+o7nUS2PmCSMMOjM8nDhm/dt7sz+5orOQoX
+	6fHVclLHWztxPlSQIWNUKw600+eB8SYnK+7pqf0h1CQKhH3fgsb8tMZghOrRs1wpDEzuF3kQs47
+	CHdRfb/W2dRdhJrzavuqKOXHHCI7g==
+X-Received: by 2002:a17:902:dac2:b0:2dd:b95a:e1db with SMTP id d9443c01a7336-2e8429a9f89mr307105675ad.3.1792141010736;
+        Fri, 16 Oct 2026 01:56:50 -0700 (PDT)
+Received: from [127.0.1.1] (211-23-39-77.hinet-ip.hinet.net. [211.23.39.77])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2e97e882a20sm6971025ad.62.2026.10.16.01.56.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 16 Oct 2026 01:56:50 -0700 (PDT)
+From: Jason Yang <jason98166@gmail.com>
+Date: Fri, 16 Oct 2026 16:56:35 +0800
+Subject: [PATCH v5 1/8] dt-bindings: phy: Add PHY_DIRECTION_TX/RX
+ definitions
 MIME-Version: 1.0
-Subject: Re: [PATCH 5/8] drm/bridge: ite-it66121: Advertise HDMI 1.2
- capabilities
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Andy Yan <andy.yan@rock-chips.com>, Liu Ying <victor.liu@nxp.com>, 
- Phong LE <ple@baylibre.com>, Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Chen-Yu Tsai <wens@kernel.org>, Samuel Holland <samuel@sholland.org>, 
- kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev
-In-Reply-To: <20261001-bridge-advert-hdmi-caps-v1-5-f8806570e243@collabora.com>
-References: <20261001-bridge-advert-hdmi-caps-v1-0-f8806570e243@collabora.com>
- <20261001-bridge-advert-hdmi-caps-v1-5-f8806570e243@collabora.com>
-Date: Fri, 16 Oct 2026 10:51:32 +0200
-Message-Id: <179214069221.3071818.10591269637696395115.b4-review@b4>
+Message-Id: <20261016-dcphy-rx-v1-v5-1-e63b49eabe2d@gmail.com>
+References: <20261016-dcphy-rx-v1-v5-0-e63b49eabe2d@gmail.com>
+In-Reply-To: <20261016-dcphy-rx-v1-v5-0-e63b49eabe2d@gmail.com>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Guochun Huang <hero.huang@rock-chips.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Michael Riesch <michael.riesch@collabora.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Jason Yang <jason98166@gmail.com>
 X-Mailer: b4 0.16.0
-X-Last-TLS-Session-Version: TLSv1.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792141002; l=1157;
+ i=jason98166@gmail.com; s=20260721; h=from:subject:message-id;
+ bh=YkXszimtwNYxX/s0QEul4OMgnFGKSMEKdd1MDqGTukk=;
+ b=LEId1ZHxKIWdktOliHM+CAcf07+0pEcd9I8lHvqF1BdgteiRACfEYBQ+XTP3tpx89PFHzEumx
+ aaGdm4smqtiD2t/AMT7acnwO3RJ+9CO4aUpskESVMlXGNjLOdrzRAUn
+X-Developer-Key: i=jason98166@gmail.com; a=ed25519;
+ pk=xQmD001Q/ooHl39PxyQtusbUQmgbOsSfpFryRVWZ/k4=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_015155_419960_A7FE9751 
-X-CRM114-Status: UNSURE (   6.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261016_015652_360890_64E80D47 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,27 +119,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 01 Oct 2026 04:14:36 +0300, Cristian Ciocaltea <cristian.ciocaltea@collabora.com> wrote:
-> Bridges using DRM_BRIDGE_OP_HDMI are now expected to also provide a
-> supported HDMI version.  This is not yet enforced, but will become
-> mandatory once the migration to the new caps-based HDMI connector
-> initialization API is completed.
-> 
-> Since none of the chip variants handled by the driver can drive a TMDS
-> character rate exceeding 148.5 MHz, advertise HDMI 1.2 as the supported
-> version.  HDMI 1.2 allows up to 165 MHz, so set the bridge's
-> max_tmds_char_rate to ensure the connector limit derived from
-> supported_hdmi_ver remains within the hardware capabilities.
-> 
-> [...]
+A MIPI D-PHY or C-PHY can be a transmitter or a receiver. Some PHY
+blocks have one of each and can use them at the same time, so one PHY
+node offers two PHYs. The existing cell, PHY_TYPE_DPHY or
+PHY_TYPE_CPHY, selects the mode of the whole block, not one of the two
+PHYs.
 
-Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Tested-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Add PHY_DIRECTION_TX and PHY_DIRECTION_RX for a cell that selects the
+transmitter or the receiver. The first user is the Rockchip RK3588 MIPI
+DC-PHY, where the transmitter serves a DSI host and the receiver a CSI-2
+host.
+
+Suggested-by: Michael Riesch <michael.riesch@collabora.com>
+Link: https://lore.kernel.org/r/7425ac83-f6d8-4443-a26e-a47f9306aa24@collabora.com
+Signed-off-by: Jason Yang <jason98166@gmail.com>
+---
+ include/dt-bindings/phy/phy.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/include/dt-bindings/phy/phy.h b/include/dt-bindings/phy/phy.h
+index 979b5dfd8353..9ead74d9a172 100644
+--- a/include/dt-bindings/phy/phy.h
++++ b/include/dt-bindings/phy/phy.h
+@@ -29,4 +29,7 @@
+ #define PHY_POL_INVERT		1
+ #define PHY_POL_AUTO		2
+ 
++#define PHY_DIRECTION_TX	0
++#define PHY_DIRECTION_RX	1
++
+ #endif /* _DT_BINDINGS_PHY */
 
 -- 
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+2.43.0
 
 
 _______________________________________________
