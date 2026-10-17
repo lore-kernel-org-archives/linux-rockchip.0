@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E30DCCCA463
-	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Oct 2026 03:43:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D8D5CCA463
+	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Oct 2026 03:54:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
 	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C8/McqJmMQMRi/ruWpsMTjL0YM7jHvAA/DSbdagon6M=; b=htPheTrLH+bIyV
-	t/GP5h8rtLTjiHU1eow4sfgxN6yQk1mhTRYc+mTUQqVMBtdriztyCJrz5fZ4T+Lin84SPoCSawmBH
-	Va4mnnoF1TEgyYI8JmkkFfvIBy8URH0yTPAiaU6VTMg/ofAAGhBZikeVfJrymunMfEuZCMjEFZobe
-	BwrB0i0FOoSou+0kHRvaAAXvHUD9sY5RVJ515+VhX9WYJAuLXMzmR+tEsjEokpfKW/De4XvOoMwhP
-	ZZt9DNXxUwEg3024xTq0kCVMhNqYYYyBq2iJJGl/Cz6tLRRP5bRS3K3WlfuT2pgwpIl1whxy5ilbi
-	kIBowUIHq1GGeff8L17Q==;
+	List-Owner; bh=KUwV5J+WRtsM4IUJz3K/AoH5qqV9zRPFh1nN14esVAM=; b=GST9eSrkycP6DR
+	qdOcxL1h9W9Jg6yqEhSbvuInRxR2B/LqlLmQfuzlS98OxAH5LzE6BYPKuhOYbu+eAx4DOaklRRPdK
+	c9IvtVS6oq8oMx0muxPJrg2M+MkBZdIAFKvuBQJ9mPeWC7aJ0A4QP3MqaSENSKN4/4SHsvO67zL/t
+	kLKYQkqWuMP2dxxTb8XlUNPyDwkSy3iPKKGYy0ZDR2SLFVJMSbNA5bvV3LfqtcdaMDehyoQzJ22TX
+	Z2Qm8T9pQ8GjtFWrP79qZa4c7K1o5jxoTd5HklhwmakSwz2ODjrkyzGvuFizBLlYUDcJfUDljv2nD
+	9oMrFiuAxJp2wWBv1fbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHvK5-00000004OC3-2ipg;
-	Sat, 17 Oct 2026 03:43:05 +0000
+	id 1xHvUs-00000004OU6-0oTp;
+	Sat, 17 Oct 2026 03:54:14 +0000
 Received: from out162-62-57-49.mail.qq.com ([162.62.57.49])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHvK0-00000004OBU-3YBY;
-	Sat, 17 Oct 2026 03:43:04 +0000
+	id 1xHvUo-00000004OTL-2YKz;
+	Sat, 17 Oct 2026 03:54:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1792208576; bh=IJerTsz81r38Lu15HZf4hJIHhOGCfMms4JugNb/dsME=;
+	t=1792209246; bh=BiIpDiNO+A5zvu0yb7FPXXF68Vr0h0A6t93DHhTsnoY=;
 	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=iZ1WZnvmP0UgbKX1bbGEoK0kDWP0HZlrhxOdMjhEVR04MC9vqi/sL5AAU30DGjHWh
-	 6Byp6bVZs1MHaK/d7EpzZ1M5y773BPRmPFST6s4gTC5XeMiOz7l70UZfoeSwg9S/Gi
-	 YNfWla7RIXeiQRA0AyKAeRwpUJJdUx7zj6sCNKTY=
-X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
-X-QQ-XMAILINFO: NSJPTvnisrLj8wYCImFMHtnbfUIUrHAx6PvluKs+g2oQLbqcVRcJSfuBcVZi8A
-	 3S6K3AJ9XY2PBPtPafsNigyty01JlIh2DiQMP98xjjHKxjVA8y5pEblgtwz6GTPTZFYvn2bb8lUiN
-	 g4xxRhYyddD2rWNTWI6TUACh7LGt4SGvSbku3uIx5Q1JPDwIIcBV8+L976Xz7pK0I3T996x+CVOQr
-	 Bb7bBr/HVOFxxCxyTMMSOIUGHLz7Q0EtewJolS4d8Ac41C34TlZjhrhtN8bxNtNywy1ujMMkkd4JV
-	 //s4b79C/ScJapoenMUcTRvmm5b6DxMZDQ/szS4Re9YHWPzB6j2OEpLTPlSqR7FglFRWIK//JF2p6
-	 jml3tYO26gzphLflxNyaYTNseBMSxwtr8wbTYByithwGVxUTamUlzVIcPSagPMx5Q6QRMCFERKGEE
-	 MTreGbpNuxEqUhFJMu1T+RHZwe1So6h8oAvZAPTsNWuNHdMNcTYlNXOLUMAYD9FOhQmUlwrCuJ8QB
-	 G9B0e9YH0pm3IC6bwbHwOcFXpywq5vfzQHvlIa17hYK0JTCaC0W++DPbqYbLL3HNe6nuwU/tha+dQ
-	 Z9dgkn19JoNSDlGi47qwHjW3xcf5lKKUntMT2sZ7zeqKbsa9XBXZFd4/JE2WYW+26Mg4UV3t8k6wv
-	 aYnp6IsSbIi2ZzrBjMTRVlzFizRDP59yOMTgobaMYTSyRGKf/i09sMleXrUOZjntzRJiNN5E5F/yV
-	 1ReCXSUXlFn+Ptyx9qP2+Sb2oFz/IlkXZUHGKs9v9Q8H7yursXo8+4D5UejOjKwA4vcNBC90i4pm7
-	 0LG/s2fVZLNbQmhCqAPpl8hRlf2Qgizd0CMXHTbJ7pxZNL+nsuaWbbvPnD7WsV3Blt3k9lwmqZoDf
-	 3JJsKqzVXNKR179r78Q65DqDmyWasLoL0Qsfg1Pkb1UWVuEksPTwsysie8uUUDZ3/iyF3u7KuefqD
-	 +sJaoYck9ZBN8HddAngnVvWDcNASOlttI5O47dfhlCTNm+8XnegR6fGVxdtjL2owdG60nBoMg+2S4
-	 Q90dze2izJJyTcefwhAFzVdWYlpmm3zCYh24kmnmFiEs2A/8Ik+WjecL0nrIRhGW7cK8S
+	b=c8KYv1IlkDwxF5UNekDmtO+A+XX+nT/FlPS9BrchF9gqyzu70bG5M1Bbwb8qmtnMl
+	 Bh1FH2zjKqC18jaikYs04xeJBfJf3Ke1IreDvJxY1tXOMJPQOd6IPHThsgrVxI8twY
+	 MjtqLNlk9RH1xQ5ZzPntpr1KmnrZ9kg0rZg/MHL8=
+X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
+X-QQ-XMAILINFO: NH2c3QqomeNikxeJuDQAEIQjSXALw5wWoyJKWbS38jUGjjE+0FUKEOE6/HeRya
+	 9vOjAxN/dM/jrxLKVIQucQSTNctilefGfiRmjeyzL35MZx7leZFPU1QdOKDb6VZu3vdldRNN+2lAv
+	 ixAo6Aijx4ND0GKKh/b/awJmMvGPmrvriJXXLz6V3PVaB/oZlAcYSzWNCH3+KB/GNPU+VUz89XEKj
+	 q9fAz6xHnF6VzTe6hxOWuoBvxdTVCp72UWN6eI2FWZTgHFkAJ2NanBXp3vIJOtw4BBVyZjaywRxxS
+	 UC7VqtoEhYfUhpnHWbL5TNU0A3LkfLDHrREaFm2+gpUPP5J6pHm4Qih7yUdpczynuT1lRw4XZ2x4W
+	 JK9Xbj5pHOKtowYmzk0G3E6uqbsRjDwWbO7ibzzcr7gujPk3mpz1XL4kE3t2vBVenyFtZZngxy/fN
+	 3CM9ywJo3xXNLxTQq+wITtbOQYffVTgRM8eYAanankf1G8jQbAZsadVoNW1YBQzOf+0zmHB6+yWe6
+	 hjpNEtyaCehh0T9ztuUKr1iSbvAa9NGAUbUlqIstdOOh7XGuhW0C7G0p8bmqWwa3H6y0xQIfPqucB
+	 BtZ9/HpBGDoN0rQsqelTfvbe6bsjrNsUzpbTpUcMSPCpAY3ELxXURV+2YQC3RY0v1czVZuvlyKqgd
+	 jR2WqLVtTjuCw4RFsVysSoRX3+hx7Oyj80nLitTjhJ/YHyhcrRAOtiJPGdjnXRZA0ec71dO3XXuUN
+	 H6CxKzMbvqnILU86Ef2KHLhyaCM9FShN8q357N53bIE0HnAylyjMJ13yjO2nUNpdacMY1qgNp3g1K
+	 G8LdxkB6kYsXDA7rvwKLhn5LstWZL7Y/ivKW+mkwPcFqPwpXtgla38OwkJ5nfVm5j6tiPEbgfn3+9
+	 Y770mMgHxgwzLXxGXYAEaRYGkrJRsrDK9MBsqhNMuJMexbRe5ZU+rMemmFKIq5EguEkkCnzN0gxks
+	 lCnMnUAsx468MpAX1LhV/R73TcpFLXWCtfUQasXEl8tj+Y5BKO+vjxclMCZ+ei+SsVnio+PTOOJIQ
+	 rWJey/VF2o3OrQuXoWl8Vl+pFP4RGgCUbjg3V0Lq5Ioek+iVFEmN+/o+vNzX6qPW4FC553xy6O/PA
+	 o1g+ZQpJ4jLJjknypRuXz9qZkSWsbiOOHM8=
 From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
 To: "=?utf-8?B?bmV0ZGV2LWJvdCtzYXNoaWtv?=" <netdev-bot+sashiko@kernel.org>
 Cc: "=?utf-8?B?bWts?=" <mkl@pengutronix.de>, "=?utf-8?B?bWFpbGhvbA==?=" <mailhol@kernel.org>, "=?utf-8?B?aGVpa28=?=" <heiko@sntech.de>, "=?utf-8?B?ZGF2ZW0=?=" <davem@davemloft.net>, "=?utf-8?B?d2c=?=" <wg@grandegger.com>, "=?utf-8?B?c29ja2V0Y2Fu?=" <socketcan@hartkopp.net>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?c3RhYmxl?=" <stable@vger.kernel.org>, "=?utf-8?B?a3ViYQ==?=" <kuba@kernel.org>
-Subject: Re: [PATCH net v5 2/6] can: dev: add close_candev_cancel_restart_sync()
+Subject: Re: [PATCH net v5 5/6] can: rockchip_canfd: serialize TX with bus-off and restart
 Mime-Version: 1.0
-Date: Sat, 17 Oct 2026 11:42:53 +0800
+Date: Sat, 17 Oct 2026 11:54:03 +0800
 X-Priority: 3
-Message-ID: <tencent_BCC00222B29F6013030D8F0C6C02DEC84E06@qq.com>
+Message-ID: <tencent_C91338471C02F811B1FC329B56683265FE09@qq.com>
 X-QQ-MIME: TCMime 1.0 by Tencent
 X-Mailer: QQMail 2.x
 X-QQ-Mailer: QQMail 2.x
-References: <20261015-rockchip-canfd-restart-close-v5-2-ae77327037c9@qq.com>
-	<179219884300.1406898.17794218418731765550@kernel.org>
-In-Reply-To: <179219884300.1406898.17794218418731765550@kernel.org>
-X-QQ-mid: xmsezb41-0t1792208573tmm7xzz68
+References: <20261015-rockchip-canfd-restart-close-v5-5-ae77327037c9@qq.com>
+	<179219884425.1406898.18319979032484933416@kernel.org>
+In-Reply-To: <179219884425.1406898.18319979032484933416@kernel.org>
+X-QQ-mid: xmsezb41-0t1792209243t8ya42z76
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_204301_448182_A980DB83 
-X-CRM114-Status: GOOD (  15.89  )
+X-CRM114-CacheID: sfid-20261016_205411_179919_AD339C90 
+X-CRM114-Status: GOOD (  16.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,33 +86,50 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Hi,
 
 > [Severity: Low]
-> This isn't a bug, but could the commit message say why this is going to
-> stable?
->
-> On its own, the patch is a no-op refactor of close_candev() plus a new
-> helper. It has no Fixes: tag and no "# prerequisite for ..." annotation.
+> This lock stays held with hard IRQs disabled until the end of
+> rkcanfd_start_xmit(). The locked region includes the echo skb handling:
+> 
+> drivers/net/can/rockchip/rockchip_canfd-tx.c:rkcanfd_start_xmit() {
+>     ...
+> frame_len = can_skb_get_frame_len(skb);
+> err = can_put_echo_skb(skb, ndev, tx_head, frame_len);
+> if (!err)
+> netdev_sent_queue(priv->ndev, frame_len);
+>     ...
+> }
+> 
+> can_put_echo_skb()->can_create_echo_skb() clones the skb and then calls
+> consume_skb() on the original. If the clone fails, it calls kfree_skb()
+> instead. can_put_echo_skb() also calls kfree_skb() in three cases: IFF_ECHO
+> is clear, the protocol check fails, or the echo slot is still occupied.
+> 
+> Freeing the original skb runs the socket destructor (sock_wfree()). If this
+> is the last TX skb of a closed socket, that can continue into __sk_free().
+> 
+> The comment above dev_kfree_skb_irq() in include/linux/netdevice.h says
+> kfree_skb() and consume_skb() must not be called with hardware interrupts
+> disabled. Before this patch, ndo_start_xmit() ran with only BH disabled.
 
-This patch is a prerequisite for the next patch, "can: rockchip_canfd:
-cancel bus-off restart before closing the device".
+You are right. On non-PREEMPT_RT kernels, the new locking places the
+original skb's release inside an IRQ-disabled section. I will fix this
+in the next revision while preserving the synchronization with bus-off
+and close.
 
-> [Severity: Low]
-> In this patch, the only caller of close_candev_cancel_restart_sync() is
-> close_candev() in drivers/net/can/dev/dev.c, and that conversion keeps
-> the old behaviour. As a result, no driver's ndo_stop gets the early
-> cancellation that the commit message describes.
-> ...
-> Could the commit message mention that user, so the helper doesn't look
-> unused when this patch is reviewed alone?
+> [Severity: Medium]
+> This is a pre-existing issue that this patch did not introduce. What
+> happens when can_put_echo_skb() fails earlier in this function?
 
-Yes. The following Rockchip patch is the intended user. The current
-commit message explains why drivers need the helper, but does not
-explicitly name that user. The conversion of close_candev() intentionally
-preserves its existing behaviour.
+Yes, the existing code still advances tx_head and submits the frame after
+echo allocation fails. When tx_tail reaches the empty slot, completion
+matching fails and tx_tail cannot advance, which can stall TX.
 
-If v6 is needed, I will update the commit message to clarify this.
+This predates the series. I have recorded it as a separate follow-up fix
+and will keep it outside this restart/close series.
 
 Regards,
 Cunhao Lu
+
+pw-bot: cr
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
