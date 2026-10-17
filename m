@@ -4,88 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81432CCF2C7
-	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Oct 2026 14:24:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B518CCF2C4
+	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Oct 2026 14:51:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pD4KxZ0PnVA8VeiiJXjuZLiBAZwr4CwU498UDFAYaK4=; b=nyWhfvsU/TJ0+D
-	3UjDNCKhXRlEsOFKEG0dHRozpv0ugoR2is2s6beZmV75HYvNNKSmO/mPqkpL5cy5kdv9RK+6asTXU
-	dYyLi0D5z0SaQexVE1CDjhnxdoltpI+1sS/9EpIpgK3p3DrlX868Zt6gDJ3FLib29QfWnJxm88IqK
-	Q7A+p97q/JYRdSs+6VPLNhq4anVJ35eWejt60WhD9v7wFEj9LL2SOGVBt5xSPx3nLoP6kWoz1Cm+Q
-	ADHymUOUdwdZU87iYN4KTHJD/7hAdfuLRQjZN0g4//zT1YVZXc8qImVNgT6QHvmujTeYsDDeBRdTP
-	Uc5tXwxaIXKB8uGwJ4bg==;
+	List-Owner; bh=kXAocWWGrhommeTjv0rD+0C5kOX4GzHhYF/9TCf77IU=; b=ZB/xTiehpbJfHN
+	MQ2y+RvxvJAuxrYyMo9gubBo7qavcqAJAseQkRyUW3SXkd3CR83sqI1icY0wmHUu4mdIlo50IJQrd
+	IpTQgy3jybTb338E+FvdKj8UZtZu3Ozr3dSknYIdUg6EBX9FBUjWD73923chKE6r/YVqPe+9loZVC
+	VolSWpnru4hxqyTcsOtpb4gsquvRoKnrNvFSNioZuxd2c6pEJ30Y72A9OC7DdxEOVfj8iueK7olfv
+	VWKDm2ZUZEMJe3I5/WCX9QmsQCC2URBqpuEjUrSBupRVKY+da+386ozDCIPxthgaSEFEXup4PEDFf
+	Ef2/t89qXbgVTh4C0yBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xI5Ky-00000004p6U-29sT;
-	Sat, 17 Oct 2026 14:24:40 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1xI5kR-00000004qU1-0hkH;
+	Sat, 17 Oct 2026 14:50:59 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xI5Ku-00000004p5u-31ym;
-	Sat, 17 Oct 2026 14:24:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1792247077; x=1823783077;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=QbHfjeIGKiQU338q0g8Oeylgixw3zvUk+tNkDLgIDxc=;
-  b=AbPIZaLYS6jNuT8zSgDtNqDpMZRokBBKDK5YuTFDJUo5sE+/qYjDB0jk
-   lSYQHY5VOshyXJDmL9JgRB1NX4GamQIqQth3yIfRSEhi78tOZDlmnA7Bj
-   A7bgGfgP0awapfkpZwSDD7Kkt16tM9gCACMdo2ofcGNRFQw2cKTYB+dbo
-   BI9K/9vy3GQRaFf0dMfQNdaEPnrGcxCbhkI57y5AuD5HFmutWPwGXw3bV
-   76+dTelMFSE/uu9g2Zw4CA8zWBfBgJ7YJbo1ovvv1GTa2JhOLRJTNlcHH
-   xq+xVCSTG+qKeWOX5lajrFDaJqN3D9KbEhi6TYzJecaurohI+8QfgW0IE
-   w==;
-X-CSE-ConnectionGUID: dchz8LlxSO61AKBvTgGI8w==
-X-CSE-MsgGUID: r27xaSBgSsSF16aFBYgQYg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11937"; a="906141"
-X-IronPort-AV: E=Sophos;i="6.27,163,1787036400"; 
-   d="scan'208";a="906141"
-Received: from fmviesa013.fm.intel.com ([10.60.135.153])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Oct 2026 07:24:35 -0700
-X-CSE-ConnectionGUID: HOZEW8DFQk2gJA2zyd7wTA==
-X-CSE-MsgGUID: haglIp14ROaLRtm+xsBwMQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,163,1787036400"; 
-   d="scan'208";a="3935055"
-Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
-  by fmviesa013.fm.intel.com with ESMTP; 17 Oct 2026 07:24:31 -0700
-Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1xI5Km-00000000JPy-32zq;
-	Sat, 17 Oct 2026 14:24:28 +0000
-Date: Sat, 17 Oct 2026 22:23:54 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sebastian Reichel <sre@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	kernel@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH 3/4] arm64: dts: mediatek: Use DP AltMode defines
-Message-ID: <202610172234.PyocmhiR-lkp@intel.com>
-References: <20261014-dp-altmode-dt-defines-v1-3-b657c9b6e4c3@collabora.com>
+	id 1xI5kP-00000004qRk-0KqS;
+	Sat, 17 Oct 2026 14:50:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 66CBA447C9;
+	Sat, 17 Oct 2026 14:50:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 411EEC32782;
+	Sat, 17 Oct 2026 14:50:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1792248656;
+	bh=AgR2linT6h6dXKgUQ5agGAs0DYjDGca+poQtrxWEcX8=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=autH7ykWjxRtT6SLnU0NLMkGoX/kK9+71AIC225bVXh51Y6/BJzzDj3FotFxXxXVX
+	 JFJztIUIuycU9EY+nYCJPb/mfi860zEHJsQgtGaiu9IbycDdMYft//DXqGd7WrEVBH
+	 teOp9KI38rQrmUyf00Bllt0J/nAWPZ8eU+n2L2mfEPpR9ff649x0a3fxvVRZ4FAObg
+	 HwQilluPn0QowvzcvyLfh17i1wTsF16xjz16vgYePVnjCkClStoMiaFf8dqBNiuGR6
+	 qpyV8JUf0dcFYr9ztIQ8d8r0OrJeONxvJQ34KRxIsWpdS7i1jLGEHM/Y+qsGjwaQyT
+	 w3CBKiPf+UPwg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27F98CCF2C4;
+	Sat, 17 Oct 2026 14:50:56 +0000 (UTC)
+From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
+Date: Sat, 17 Oct 2026 22:50:54 +0800
+Subject: [PATCH net v6 4/6] can: rockchip_canfd: prevent timestamp work
+ from rearming after bus-off
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261014-dp-altmode-dt-defines-v1-3-b657c9b6e4c3@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261017_072436_777081_29EFB026 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+Message-Id: <20261017-rockchip-canfd-restart-close-v6-4-ed605feb4b6e@qq.com>
+References: <20261017-rockchip-canfd-restart-close-v6-0-ed605feb4b6e@qq.com>
+In-Reply-To: <20261017-rockchip-canfd-restart-close-v6-0-ed605feb4b6e@qq.com>
+To: Marc Kleine-Budde <mkl@pengutronix.de>, 
+ Vincent Mailhol <mailhol@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ "David S. Miller" <davem@davemloft.net>, 
+ Wolfgang Grandegger <wg@grandegger.com>, 
+ Oliver Hartkopp <socketcan@hartkopp.net>, kernel@pengutronix.de, 
+ Eric Dumazet <edumazet@kernel.org>, Jakub Kicinski <kuba@kernel.org>, 
+ Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>, 
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
+ Randy Dunlap <rdunlap@infradead.org>
+Cc: linux-can@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ netdev@vger.kernel.org, linux-doc@vger.kernel.org, stable@vger.kernel.org, 
+ Cunhao Lu <1579567540@qq.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792248654; l=4366;
+ i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
+ bh=L729iyLZPqYSYXdNKiWcUHyKMxTpCJWqzC68GEcr5dM=;
+ b=Yc81tvY6uDwUlOz5ahvRrINdDKUci5oaevm+DQj42SL8lMcNY9QovMFVZNgFIHKAwlZsYsF9l
+ WfqfV5G57sYAuFO8f4LTyCy/h8g2BuN3Usb7lkD4xGQf7J9nduy+wwS
+X-Developer-Key: i=1579567540@qq.com; a=ed25519;
+ pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
+X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
+ auth_id=1177
+X-Original-From: Cunhao Lu <1579567540@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,41 +87,135 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+From: Cunhao Lu <1579567540@qq.com>
 
-kernel test robot noticed the following build errors:
+The bus-off IRQ cancels timestamp work asynchronously. If the worker
+is already running, it can requeue itself after cancellation and keep
+polling while the controller remains bus-off.
 
-[auto build test ERROR on 0fcb05b72344f40806cbe810de8872f1698bf053]
+Add a dedicated lock and an active flag, initialized once at probe.
+Serialize the worker's active check, counter read and self-requeue with
+start and stop. Clear the flag under the lock before cancelling work
+so no worker can read the counter or rearm after deactivation. Enable
+the flag and schedule the initial work under the same lock at start.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Sebastian-Reichel/dt-bindings-connector-Add-DP-AltMode-VDO-definitions/20261014-233149
-base:   0fcb05b72344f40806cbe810de8872f1698bf053
-patch link:    https://lore.kernel.org/r/20261014-dp-altmode-dt-defines-v1-3-b657c9b6e4c3%40collabora.com
-patch subject: [PATCH 3/4] arm64: dts: mediatek: Use DP AltMode defines
-config: arm64-randconfig-1001-20261017 (https://download.01.org/0day-ci/archive/20261017/202610172234.PyocmhiR-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.4.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261017/202610172234.PyocmhiR-lkp@intel.com/reproduce)
+Keep both cancellation calls outside the lock so synchronous stop can
+wait for the worker to finish.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202610172234.PyocmhiR-lkp@intel.com/
+Fixes: 4e1a18bab124 ("can: rockchip_canfd: add hardware timestamping support")
+Cc: stable@vger.kernel.org
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
+---
+ .../net/can/rockchip/rockchip_canfd-timestamp.c    | 34 +++++++++++++++++++---
+ drivers/net/can/rockchip/rockchip_canfd.h          |  4 +++
+ 2 files changed, 34 insertions(+), 4 deletions(-)
 
-All errors (new ones prefixed by >>):
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-timestamp.c b/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
+index ad582afbbd68..0fa791849c95 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-timestamp.c
+@@ -30,18 +30,27 @@ static void rkcanfd_timestamp_work(struct work_struct *work)
+ {
+ 	const struct delayed_work *delayed_work = to_delayed_work(work);
+ 	struct rkcanfd_priv *priv;
++	unsigned long flags;
+ 
+ 	priv = container_of(delayed_work, struct rkcanfd_priv, timestamp);
+-	timecounter_read(&priv->tc);
+-
+-	schedule_delayed_work(&priv->timestamp, priv->work_delay_jiffies);
++	spin_lock_irqsave(&priv->timestamp_lock, flags);
++	if (priv->timestamp_active) {
++		timecounter_read(&priv->tc);
++
++		/* Serialize requeueing with timestamp_stop(). */
++		schedule_delayed_work(&priv->timestamp, priv->work_delay_jiffies);
++	}
++	spin_unlock_irqrestore(&priv->timestamp_lock, flags);
+ }
+ 
+ void rkcanfd_timestamp_work_init(struct rkcanfd_priv *priv)
+ {
++	spin_lock_init(&priv->timestamp_lock);
++	priv->timestamp_active = false;
+ 	INIT_DELAYED_WORK(&priv->timestamp, rkcanfd_timestamp_work);
+ }
+ 
++/* The caller must quiesce IRQs and timestamp work before reconfiguration. */
+ void rkcanfd_timestamp_init(struct rkcanfd_priv *priv)
+ {
+ 	const struct can_bittiming *dbt = &priv->can.fd.data_bittiming;
+@@ -93,17 +102,34 @@ void rkcanfd_timestamp_init(struct rkcanfd_priv *priv)
+ 
+ void rkcanfd_timestamp_start(struct rkcanfd_priv *priv)
+ {
+-	timecounter_init(&priv->tc, &priv->cc, ktime_get_real_ns());
++	unsigned long flags;
+ 
++	spin_lock_irqsave(&priv->timestamp_lock, flags);
++	timecounter_init(&priv->tc, &priv->cc, ktime_get_real_ns());
++	priv->timestamp_active = true;
+ 	schedule_delayed_work(&priv->timestamp, priv->work_delay_jiffies);
++	spin_unlock_irqrestore(&priv->timestamp_lock, flags);
+ }
+ 
+ void rkcanfd_timestamp_stop(struct rkcanfd_priv *priv)
+ {
++	unsigned long flags;
++
++	spin_lock_irqsave(&priv->timestamp_lock, flags);
++	priv->timestamp_active = false;
++	spin_unlock_irqrestore(&priv->timestamp_lock, flags);
++
+ 	cancel_delayed_work(&priv->timestamp);
+ }
+ 
+ void rkcanfd_timestamp_stop_sync(struct rkcanfd_priv *priv)
+ {
++	unsigned long flags;
++
++	spin_lock_irqsave(&priv->timestamp_lock, flags);
++	priv->timestamp_active = false;
++	spin_unlock_irqrestore(&priv->timestamp_lock, flags);
++
++	/* The worker needs timestamp_lock to finish. */
+ 	cancel_delayed_work_sync(&priv->timestamp);
+ }
+diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
+index e1debab54534..2743c96ed42f 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd.h
++++ b/drivers/net/can/rockchip/rockchip_canfd.h
+@@ -15,6 +15,7 @@
+ #include <linux/netdevice.h>
+ #include <linux/reset.h>
+ #include <linux/skbuff.h>
++#include <linux/spinlock.h>
+ #include <linux/timecounter.h>
+ #include <linux/types.h>
+ #include <linux/u64_stats_sync.h>
+@@ -485,8 +486,11 @@ struct rkcanfd_priv {
+ 
+ 	struct cyclecounter cc;
+ 	struct timecounter tc;
++	/* Protects timestamp_active and worker reads/requeueing. */
++	spinlock_t timestamp_lock;
+ 	struct delayed_work timestamp;
+ 	unsigned long work_delay_jiffies;
++	bool timestamp_active;
+ 
+ 	struct can_berr_counter bec;
+ 
 
-   Lexical error: arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi:600.25-45 Unexpected 'USB_DISPLAYPORT_SVID'
->> FATAL ERROR: Syntax error parsing input tree
---
-   Lexical error: arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi:530.24-44 Unexpected 'USB_DISPLAYPORT_SVID'
->> FATAL ERROR: Syntax error parsing input tree
+-- 
+2.34.1
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+
 
 _______________________________________________
 Linux-rockchip mailing list
