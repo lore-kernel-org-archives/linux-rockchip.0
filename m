@@ -4,58 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCF71CCF2C4
-	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Oct 2026 01:01:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 954CACCA463
+	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Oct 2026 03:27:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
+	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rly+rQMuyIfZpKkMsX6s3+L1QVHad+QT1d8t9st9yZY=; b=IrRsQnY1bQRqOT
-	QVVmUKHKCRwBC2ChIrnJS1ygHIQPfATp6ahE4Rr0UU0f7/Vdr5TvnufK4gE05bCCYBB7fUk0v5d8P
-	Grb96t4WETte52agHRrpXbWwoV7ko1vT+e01E2nHsdCpLw3ZiCtBa3lKtUITJcL7L/NIxL+N+FENE
-	ZDxScTZdep68lvmc73x9lPq8MEqPGvzcH2ttTQmsjyL6GgMetJvSEzG1ZBSV36po8IoEsiULd60yx
-	p9Zmi/TUTWYdXT/l7gOM/wy/l5urBTyx49rZei1L4xiNFS+kfcdCgvxOaiUTIdgZCtHDrkWv9q9Bw
-	d1Re25UND9EG50OZ3wSA==;
+	List-Owner; bh=8lxrbYKVpBUFQTxE9CMoZXykJ3vUsOTNh3jlCXglY8A=; b=LaMzbyikcReM8i
+	ZqrBfvsLS2pUjE0ZOzUSofJDZM7nQdSCT/pa2fFPgc1B+kj9RowlfcMj1ctshpw2uWmvKGBQZ+M3F
+	xFfghGCYMgpAnUBuP2VuTCc9RnKeEgcDLBXh3yJ4P/14uulPYYP9zJlmMfJJIdAacAlxaYWWiexyg
+	ynFfkoa4OTlDpSvNV+m5M9WL8wsDReDeB0s9n0ALco/pss+cXwx85cJccOlQvAeaZJM6YMkBevgho
+	dU6yu4xsgrRU5po8uNREZ+fH1OOLKxbSa+7NmaZYFhhW7sUQhBjeiJOwJlNxJhXH9rf3ZycCYP7vv
+	JErxxAtU3MJRN6UM1OfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHsmz-00000004Hhj-3zTJ;
-	Sat, 17 Oct 2026 01:00:45 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xHv4n-00000004NTS-1ghv;
+	Sat, 17 Oct 2026 03:27:17 +0000
+Received: from out162-62-57-49.mail.qq.com ([162.62.57.49])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHsmy-00000004HhA-0CI1;
-	Sat, 17 Oct 2026 01:00:44 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2160A6053E;
-	Sat, 17 Oct 2026 01:00:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 264F01F000C4;
-	Sat, 17 Oct 2026 01:00:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792198842;
-	bh=4j55LpyEzQqGZji30wH6uo27jlh2slcCgrKqqgdzSd0=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=fNUH0f8mUl0ONLtRGMszF3YX7K0flj8GBgM78D0CbsVswCBUmji4YYgFc2shnFNzd
-	 t/pWiKSk32Tw9rpflI97pBaUnbE06URQT+tCPEsQG10DAtlMbfN02zgHER6wQT4U0K
-	 +PmQVkS3FUiZ62nqFF78kDhtFiNYruMQxrxaPOQf8EFzIfqy3pwvG6kN5eIQrLfTqg
-	 lWN5efeCAJgOjPkb0oZDlLOBdMhFIvchzeJJo7xIMkYWyfxqX13Ap/g2yJ5C8Ntqcg
-	 EHXpA2apnDi3E/pYE7D7qwbM96LR8QZDPi80eTJ/OMpsvTP7jjJTPKXdnJIW3al2aw
-	 1cC0cX6pvz3kw==
-Subject: Re: [PATCH net v5 1/6] can: dev: prevent bus-off recovery when the
- interface is not running
-From: netdev-bot+sashiko@kernel.org
-To: 1579567540@qq.com
-Cc: mkl@pengutronix.de, mailhol@kernel.org, heiko@sntech.de,
- davem@davemloft.net, wg@grandegger.com, socketcan@hartkopp.net,
- kernel@pengutronix.de, linux-can@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, stable@vger.kernel.org, kuba@kernel.org
-Date: Sat, 17 Oct 2026 01:00:41 +0000
-Message-ID: <179219884173.1406898.3472467604167875171@kernel.org>
-In-Reply-To: <20261015-rockchip-canfd-restart-close-v5-1-ae77327037c9@qq.com>
+	id 1xHv4k-00000004NSl-0qYG;
+	Sat, 17 Oct 2026 03:27:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1792207625; bh=oPvpngYgb3gDSbNgR2i6nItLp+8/l01MxAbIoxQYnPk=;
+	h=From:To:Cc:Subject:Date:References:In-Reply-To;
+	b=jyRkvwq8F5spYxmKdsFv9Bdn64KIAYRJpssWfbGiZ2U6ccSdczsuW3DSC5eFVIfDt
+	 ubPCKdDGmpRjNHbU/xm6CQBBYmUQlaPD8F8F0stvFUKOl2ZOowwDmALD4SM+7el3nJ
+	 ZEiAlNxivZAx3nER/4w4eXFlQsx5T5m08Gx9fCVg=
+X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
+X-QQ-XMAILINFO: N/Vcqssfup8JQjUcZJqhvtZnz0BM1ovXR1FQrDMUcw43sIlBo0ec2E7J6fTSPm
+	 99rBKKqRA0X8/g8znrLel5OZReJE8SnpzJPCH1Xy9Ad44Qlyb/Yd2/COi2/nzV0+ifFhk5faskbik
+	 iogObJWwosHWc1UFZ13gA8sHm+fjFUsbV92xoMRHmrbVuaPKSrFXNqpvAdl1nPNRCXRBAgS23JO3+
+	 S26px2QISMzyzzcN3Bgm9lYOAAAl9Y8ulT89XuKNnljaCur9hzX5FtDmufmMHlsCCmq7fjEroR3t+
+	 7bSz8LBtaeu/qH/JRTP8QNIhV4J9miIj4UueaKGH0dbq+p7oIj7dCeBqo/s/s+8X4Au48HnQ+PM6U
+	 cn8RNAI7bVHyTrYRbl8nseyJe1ucs+Qg9hmKf2MZ1qfHveSGxUi/VoMlN6FbqQKXON9zlovAhNPS4
+	 kmv2Rkyw/I+E5EE5TwN7rSGv2Spy+ExFiP249ipYHA5UPNAjZZ3T4582mtXi1ejhB7KXNC6D52QGH
+	 kGSfk8uxlM1JfPBabHnE6G9UOZzWnT8l4h/umZNzIyzRl5/dl0kDpr0N+Wk36ht8thXnkOQiq74FH
+	 oBZ67SRvIMprALVb76h1LMhw2NITwrB8v5DMqR9k+clTFtV3tKc1UHkheRMpZLyAE4Gps5ZBmO4ut
+	 gSGk0MKGga/jit1hucE27G3gsjv0lWJB/gd+M3xWNAI17ogA8hfBtYA0BNpr4YGPpdEc11YI+T/gK
+	 ywwNI/qh+of/jjaZtELyuMKyHcBXkCKCFC6l7B7m3v+wx/DfdwONP+Z/OavEkAIFe6A3iPs9evwUK
+	 9RXsTm5QcZC+UnqPsodOg9F0mt1MxnFX1CS8c2QKlnc9OZkU4N72xr80noEGvXCl+dSSaegTeSLwq
+	 sy2Ykn1LgywfILS/7F5DrFtVfwvfEgdSfnepRmwtew7JBq/lcviMli6wjIBwdyWdtzLioDYQjL99q
+	 gyoONzmfyxh5IcwzybNVrZktD4itjnmQQvNWYsaiOz0C9k2Au+cSLHUPr7wht8ErCXNO2iNzUslzm
+	 WOfAYJxqfSxmHQ6b0ry+8ootz2fol8RJ7g5UWFqoHLUZhkDg2W4LapuCtKj53VJDRk1t5VOJDcx4W
+	 9hjbVzUXf8ACoTrD+iSkZ4nu69mFNm5P7drA75ySsjCQJDIE9kYNX7tBrncevk3uhsINDbknSktmc
+	 w==
+From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
+To: "=?utf-8?B?bmV0ZGV2LWJvdCtzYXNoaWtv?=" <netdev-bot+sashiko@kernel.org>
+Cc: "=?utf-8?B?bWts?=" <mkl@pengutronix.de>, "=?utf-8?B?bWFpbGhvbA==?=" <mailhol@kernel.org>, "=?utf-8?B?aGVpa28=?=" <heiko@sntech.de>, "=?utf-8?B?ZGF2ZW0=?=" <davem@davemloft.net>, "=?utf-8?B?d2c=?=" <wg@grandegger.com>, "=?utf-8?B?c29ja2V0Y2Fu?=" <socketcan@hartkopp.net>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?c3RhYmxl?=" <stable@vger.kernel.org>, "=?utf-8?B?a3ViYQ==?=" <kuba@kernel.org>
+Subject: Re: [PATCH net v5 1/6] can: dev: prevent bus-off recovery when the interface is not running
+Mime-Version: 1.0
+Date: Sat, 17 Oct 2026 11:27:03 +0800
+X-Priority: 3
+Message-ID: <tencent_AB234A019188927E4F4DAB34DF32E2091E08@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
 References: <20261015-rockchip-canfd-restart-close-v5-1-ae77327037c9@qq.com>
-X-sashiko-severity: Medium
-MIME-Version: 1.0
+	<179219884173.1406898.3472467604167875171@kernel.org>
+In-Reply-To: <179219884173.1406898.3472467604167875171@kernel.org>
+X-QQ-mid: xmsezb41-0t1792207623tzsdiwpov
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261016_202714_967677_29630E13 
+X-CRM114-Status: GOOD (  16.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,127 +79,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhhbmsgeW91IGZvciB5b3VyIGNvbnRyaWJ1dGlvbiEgU2FzaGlrbyBBSSByZXZpZXcgZm91bmQg
-MSBwb3RlbnRpYWwKaXNzdWUocykgdG8gY29uc2lkZXIuCgpDcml0aWNhbDogMCDCtyBIaWdoOiAw
-ICgxKSDCtyBNZWRpdW06IDEgwrcgTG93OiAwCgpJZiB5b3UgYmVsaWV2ZSBub25lIG9mIHRoZSBp
-c3N1ZXMgYXJlIGxlZ2l0aW1hdGUsIHBsZWFzZSByZXBseSB0byBlYWNoCmlzc3VlIG9mIE1lZGl1
-bSBzZXZlcml0eSBvciBoaWdoZXIgYW5kIGV4cGxhaW4gd2h5IHRoZSBBSSBpcyB3cm9uZy4KSWYg
-YW55IG9mIHRoZW0gYXJlIGxlZ2l0aW1hdGUgYW5kIHlvdSBwbGFuIHRvIHJlc3BpbiwgcGxlYXNl
-IGxldCBwYXRjaHdvcmsKa25vdyBieSBpbmNsdWRpbmcgInB3LWJvdDogY3IiIGFzIGEgc2VwYXJh
-dGUgbGluZSBhdCB0aGUgZW5kIG9mIHlvdXIgcmVwbHkKKG9uZSBzdWNoIHJlcGx5IHBlciBzZXJp
-ZXMgaXMgZW5vdWdoKS4KCi0gW01lZGl1bV0gSW4gY2FuX3Jlc3RhcnQoKSAoZHJpdmVycy9uZXQv
-Y2FuL2Rldi9kZXYuYyksIHRoZSBuZXcKICBuZXRpZl9ydW5uaW5nKCkgY2hlY2sgaXMgbG9ja2xl
-c3MgYW5kIGlzIG5vdCBzZXJpYWxpemVkIHdpdGjigKYKClByZS1leGlzdGluZyBpc3N1ZXM6Ci0g
-W0hpZ2hdIGNhbl9idXNfb2ZmKCkgKGRyaXZlcnMvbmV0L2Nhbi9kZXYvZGV2LmM6MjcwLTI4Mikg
-cmVhZHMKICBuZXRpZl9ydW5uaW5nKCkgaW50byBgcmVzdGFydGAgYW5kIG9ubHkgbGF0ZXIgY2Fs
-bHPigKYKCi0tCgpjYW46IGRldjogcHJldmVudCBidXMtb2ZmIHJlY292ZXJ5IHdoZW4gdGhlIGlu
-dGVyZmFjZSBpcyBub3QgcnVubmluZwoKVGhpcyBjb21taXQgYWRkcyBhIG5ldGlmX3J1bm5pbmco
-KSBjaGVjayB0byBjYW5fcmVzdGFydCgpLCBzbyBhIGJ1cy1vZmYKcmVzdGFydCBpcyBza2lwcGVk
-IHdoZW4gdGhlIGludGVyZmFjZSBpcyBub3QgcnVubmluZy4gSXQgYWxzbyBjaGFuZ2VzCmNhbl9i
-dXNfb2ZmKCkgdG8gc2NoZWR1bGUgcmVzdGFydF93b3JrIG9ubHkgd2hlbiByZXN0YXJ0X21zIGlz
-IHNldCBhbmQKdGhlIGludGVyZmFjZSBpcyBydW5uaW5nLgoKPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9uZXQvY2FuL2Rldi9kZXYuYyBiL2RyaXZlcnMvbmV0L2Nhbi9kZXYvZGV2LmMKPiBpbmRleCA3
-Njk3NDVlMjJhM2M3Li45MjQ5MmM1MDM0NDZlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L2Nh
-bi9kZXYvZGV2LmMKPiArKysgYi9kcml2ZXJzL25ldC9jYW4vZGV2L2Rldi5jCj4gQEAgLTE5OCw2
-ICsxOTgsOSBAQCBzdGF0aWMgaW50IGNhbl9yZXN0YXJ0KHN0cnVjdCBuZXRfZGV2aWNlICpkZXYp
-Cj4gIAlpZiAoIXByaXYtPmRvX3NldF9tb2RlKQo+ICAJCXJldHVybiAtRU9QTk9UU1VQUDsKPiAg
-Cj4gKwlpZiAoIW5ldGlmX3J1bm5pbmcoZGV2KSkKPiArCQlyZXR1cm4gLUVORVRET1dOOwo+ICsK
-CltTZXZlcml0eTogTWVkaXVtXQpJcyB0aGlzIGNoZWNrIGVub3VnaCB0byBkZWxpdmVyIHdoYXQg
-dGhlIHN1YmplY3QgbGluZSBwcm9taXNlcz8gSXQgcmVhZHMKdGhlIHJ1bm5pbmcgYml0IG9uY2Ug
-d2l0aG91dCBhbnkgbG9jay4gY2FuX3Jlc3RhcnRfd29yaygpIHJ1bnMgb24gdGhlCnN5c3RlbSB3
-b3JrcXVldWUgd2l0aG91dCBSVE5MIG9yIGFueSBDQU4tcHJpdmF0ZSBsb2NrLCBzbyBub3RoaW5n
-IG9yZGVycwppdCBhZ2FpbnN0IF9fZGV2X2Nsb3NlX21hbnkoKSBhbmQgbmRvX3N0b3AoKS4KClRo
-ZSBjb21taXQgbWVzc2FnZSBkZXNjcmliZXMgdGhlIHByb2JsZW0gYXM6CgogICJSZWNvdmVyeSBj
-YW4gdGhlcmVmb3JlIGJlIHF1ZXVlZCBvciBzdGFydGVkIGFmdGVyIHRoZSBpbnRlcmZhY2UgaGFz
-CiAgYmVndW4gY2xvc2luZywgcG90ZW50aWFsbHkgcmUtZW5hYmxpbmcgaGFyZHdhcmUgd2hpbGUg
-dGhlIGRyaXZlciBpcwogIHRlYXJpbmcgaXQgZG93bi4iCgpUaGF0IHN0aWxsIHNlZW1zIHBvc3Np
-YmxlIGlmIHRoZSB3b3JrIHBhc3NlcyB0aGlzIGNoZWNrIGp1c3QgYmVmb3JlCl9fZGV2X2Nsb3Nl
-X21hbnkoKSBjbGVhcnMgX19MSU5LX1NUQVRFX1NUQVJUOgoKcmVzdGFydF93b3JrICAgICAgICAg
-ICAgICAgICAgICAgICAgICBpcCBsaW5rIHNldCBjYW5YIGRvd24KY2FuX3Jlc3RhcnQoKQogIG5l
-dGlmX3J1bm5pbmcoKSA9PSB0cnVlCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgX19kZXZfY2xvc2VfbWFueSgpCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBjbGVhcl9iaXQoX19MSU5LX1NUQVRFX1NUQVJUKQogICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgbmRvX3N0b3AoKSAtPiBzamExMDAwX2Nsb3NlKCkKICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2V0X3Jlc2V0X21vZGUoZGV2KTsKICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZnJlZV9pcnEoZGV2LT5pcnEs
-IGRldik7CiAgY2FuX2ZsdXNoX2VjaG9fc2tiKCkKICBuZXRpZl9yeChza2IpCiAgbmV0aWZfY2Fy
-cmllcl9vbigpCiAgcHJpdi0+ZG9fc2V0X21vZGUoZGV2LCBDQU5fTU9ERV9TVEFSVCkKICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xvc2VfY2FuZGV2KCkKICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjYW5jZWxfZGVsYXllZF93b3Jr
-X3N5bmMoKQoKY2FuY2VsX2RlbGF5ZWRfd29ya19zeW5jKCkgaW4gY2xvc2VfY2FuZGV2KCkgd2Fp
-dHMgZm9yIHRoZSB3b3JrIHRvCmZpbmlzaCwgYnV0IGl0IGRvZXMgbm90IHVuZG8gdGhlIHJlc3Rh
-cnQuIFRoZSBjb250cm9sbGVyIGVuZHMgdXAgaW4Kb3BlcmF0aW5nIG1vZGUgd2l0aCBpbnRlcnJ1
-cHRzIGVuYWJsZWQgYW5kIG5vIElSUSBoYW5kbGVyIHJlZ2lzdGVyZWQuClRoZSBjYXJyaWVyIGlz
-IGFsc28gb24gd2hpbGUgdGhlIGludGVyZmFjZSBpcyBkb3duLgoKV2l0aCBhIHNoYXJlZCBJUlEg
-bGluZSwgY291bGQgdGhpcyBjYXVzZSBhbiB1bmhhbmRsZWQgaW50ZXJydXB0IHN0b3JtCmFuZCBn
-ZXQgdGhlIGxpbmUgZGlzYWJsZWQgZm9yIG90aGVyIGRldmljZXM/IE9uIHJ1bnRpbWUtUE0gZHJp
-dmVycywgY2FuCmRvX3NldF9tb2RlKCkgdG91Y2ggcmVnaXN0ZXJzIGFmdGVyIHRoZSBjbG9ja3Mg
-aGF2ZSBiZWVuIGN1dD8KCk1hbnkgZHJpdmVycyAoc2phMTAwMCwgY2M3NzAsIGF0OTEsIGNfY2Fu
-LCBmbGV4Y2FuLCBzdW40aSwgdGlfaGVjYyBhbmQKb3RoZXJzKSByZXNldCB0aGUgY2hpcCBhbmQg
-ZnJlZSB0aGUgSVJRIGJlZm9yZSB0aGV5IGNhbGwgY2xvc2VfY2FuZGV2KCkuCkxhdGVyIGluIHRo
-ZSBzZXJpZXMsIGNsb3NlX2NhbmRldl9jYW5jZWxfcmVzdGFydF9zeW5jKCkgaXMgYWRkZWQgYW5k
-CmNhbGxlZCBlYXJseSBpbiBuZG9fc3RvcCgpLCBidXQgb25seSBmb3Igcm9ja2NoaXBfY2FuZmQg
-KCJjYW46CnJvY2tjaGlwX2NhbmZkOiBjYW5jZWwgYnVzLW9mZiByZXN0YXJ0IGJlZm9yZSBjbG9z
-aW5nIHRoZSBkZXZpY2UiKS4KClNob3VsZCB0aGUgb3RoZXIgZHJpdmVycyBnZXQgdGhlIHNhbWUg
-Y2hhbmdlPyBPciBjb3VsZCB0aGUgY29yZQpzZXJpYWxpemUgdGhpcyBzbyB0aGUgd2luZG93IGlz
-IGNsb3NlZCBmb3IgZXZlcnkgZHJpdmVyPwoKPiBAQCAtMjY0LDggKzI2Nyw5IEBAIGludCBjYW5f
-cmVzdGFydF9ub3coc3RydWN0IG5ldF9kZXZpY2UgKmRldikKPiAgdm9pZCBjYW5fYnVzX29mZihz
-dHJ1Y3QgbmV0X2RldmljZSAqZGV2KQo+ICB7Cj4gIAlzdHJ1Y3QgY2FuX3ByaXYgKnByaXYgPSBu
-ZXRkZXZfcHJpdihkZXYpOwo+ICsJY29uc3QgYm9vbCByZXN0YXJ0ID0gcHJpdi0+cmVzdGFydF9t
-cyAmJiBuZXRpZl9ydW5uaW5nKGRldik7Cj4gIAo+IC0JaWYgKHByaXYtPnJlc3RhcnRfbXMpCj4g
-KwlpZiAocmVzdGFydCkKPiAgCQluZXRkZXZfaW5mbyhkZXYsICJidXMtb2ZmLCBzY2hlZHVsaW5n
-IHJlc3RhcnQgaW4gJWQgbXNcbiIsCj4gIAkJCSAgICBwcml2LT5yZXN0YXJ0X21zKTsKPiAgCWVs
-c2UKPiBAQCAtMjczLDcgKzI3Nyw3IEBAIHZvaWQgY2FuX2J1c19vZmYoc3RydWN0IG5ldF9kZXZp
-Y2UgKmRldikKPiAgCj4gIAluZXRpZl9jYXJyaWVyX29mZihkZXYpOwo+ICAKPiAtCWlmIChwcml2
-LT5yZXN0YXJ0X21zKQo+ICsJaWYgKHJlc3RhcnQpCj4gIAkJc2NoZWR1bGVfZGVsYXllZF93b3Jr
-KCZwcml2LT5yZXN0YXJ0X3dvcmssCj4gIAkJCQkgICAgICBtc2Vjc190b19qaWZmaWVzKHByaXYt
-PnJlc3RhcnRfbXMpKTsKPiAgfQoKW1NldmVyaXR5OiBIaWdoXQpUaGlzIGlzIGEgcHJlLWV4aXN0
-aW5nIGlzc3VlIGFuZCB3YXMgbm90IGludHJvZHVjZWQgYnkgdGhpcyBwYXRjaC4gVGhlCnBhdGNo
-IG1ha2VzIHRoZSB3aW5kb3cgc21hbGxlciwgYnV0IGNhbiByZXN0YXJ0X3dvcmsgc3RpbGwgYmUg
-cXVldWVkCmFmdGVyIGNsb3NlX2NhbmRldigpIGhhcyBjYW5jZWxsZWQgaXQ/CgpyZXN0YXJ0IGlz
-IHJlYWQgYmVmb3JlIG5ldGRldl9pbmZvKCkgYW5kIG5ldGlmX2NhcnJpZXJfb2ZmKCkgcnVuLgpO
-b3RoaW5nIHRpZXMgdGhhdCByZWFkIHRvIHRoZSBsYXRlciBzY2hlZHVsZV9kZWxheWVkX3dvcmso
-KSwgb3IgdG8gdGhlCnNpbmdsZSBjYW5jZWxfZGVsYXllZF93b3JrX3N5bmMoKSBpbiBjbG9zZV9j
-YW5kZXYoKS4KClNvbWUgZHJpdmVycyBjYWxsIGNsb3NlX2NhbmRldigpIGJlZm9yZSB0aGV5IHN0
-b3AgdGhlaXIgYnVzLW9mZgpwcm9kdWNlci4gbWNwMjUxeF9zdG9wKCkgaXMgb25lIGV4YW1wbGU6
-Cgpkcml2ZXJzL25ldC9jYW4vc3BpL21jcDI1MXguYzptY3AyNTF4X3N0b3AoKSB7CgkuLi4KCWNs
-b3NlX2NhbmRldihuZXQpOwoKCXByaXYtPmZvcmNlX3F1aXQgPSAxOwoJZnJlZV9pcnEoc3BpLT5p
-cnEsIHByaXYpOwoJLi4uCn0KCk1lYW53aGlsZSB0aGUgdGhyZWFkZWQgSVNULCBtY3AyNTF4X2Nh
-bl9pc3QoKSwgY2FsbHMgY2FuX2J1c19vZmYoKS4KaGkzMTEwX3N0b3AoKSwgbXNjYW5fY2xvc2Uo
-KSwgcGVha191c2JfbmRvX3N0b3AoKSBhbmQgZjgxNjA0X2Nsb3NlKCkKdXNlIHRoZSBzYW1lIG9y
-ZGVyLgoKT25lIHBvc3NpYmxlIHNlcXVlbmNlOgoKbWNwMjUxeF9jYW5faXN0KCkgICAgICAgICAg
-ICAgICAgICAgICB1bnJlZ2lzdGVyIC8gaWZkb3duCiAgY2FuX2J1c19vZmYoKQogICAgcmVzdGFy
-dCA9IHRydWUKICAgIDxwcmVlbXB0ZWQ+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgX19kZXZfY2xvc2VfbWFueSgpCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBjbGVhcl9iaXQoX19MSU5LX1NUQVRFX1NUQVJUKQogICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgbWNwMjUxeF9zdG9wKCkKICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgY2xvc2VfY2FuZGV2KCkKICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICBjYW5jZWxfZGVsYXllZF93b3JrX3N5bmMoKQogICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBmcmVlX2lycSgpICAvKiB3YWl0cyBm
-b3IgSVNUICovCiAgICBuZXRpZl9jYXJyaWVyX29mZigpCiAgICBzY2hlZHVsZV9kZWxheWVkX3dv
-cmsoJnByaXYtPnJlc3RhcnRfd29yaywgLi4uKQoKQWZ0ZXIgdGhhdCwgbm90aGluZyBjYW5jZWxz
-IHRoZSB3b3JrLiBmcmVlX2NhbmRldigpIGlzIG9ubHk6Cgp2b2lkIGZyZWVfY2FuZGV2KHN0cnVj
-dCBuZXRfZGV2aWNlICpkZXYpCnsKCWZyZWVfbmV0ZGV2KGRldik7Cn0KCnVucmVnaXN0ZXJfY2Fu
-ZGV2KCkgZG9lcyBub3QgdG91Y2ggcmVzdGFydF93b3JrIGVpdGhlci4gT24gZHJpdmVyIHVuYmlu
-ZApvciBVU0IgdW5wbHVnLCB0aGUgZGV2aWNlIGNhbiBiZSBmcmVlZCBiZWZvcmUgcmVzdGFydF9t
-cyBleHBpcmVzLiBXb3VsZAp0aGUgcGVuZGluZyBkZWxheWVkX3dvcmsgdGltZXIgYW5kIHdvcmsg
-aXRlbSB0aGVuIHNpdCBpbnNpZGUgZnJlZWQKbmV0ZGV2X3ByaXYgbWVtb3J5PwoKVGhlIGRldmlj
-ZSBtaWdodCBpbnN0ZWFkIGJlIHJlb3BlbmVkIGJlZm9yZSB0aGUgd29yayBydW5zLiBfX2Rldl9v
-cGVuKCkKc2V0cyBfX0xJTktfU1RBVEVfU1RBUlQgYmVmb3JlIG5kb19vcGVuKCksIGFuZCBvcGVu
-X2NhbmRldigpIGRvZXMgbm90CmNhbmNlbCB0aGUgd29yay4gV291bGQgdGhlIHN0YWxlIHdvcmsg
-dGhlbiBwYXNzIHRoZSBuZXcgbmV0aWZfcnVubmluZygpCmNoZWNrIGluIGNhbl9yZXN0YXJ0KCkg
-YW5kIGNhbGwgZG9fc2V0X21vZGUoQ0FOX01PREVfU1RBUlQpIHdoaWxlIHRoZQpkcml2ZXIncyBv
-d24gb3BlbiBzZXF1ZW5jZSBpcyBydW5uaW5nPwoKVGhlIHNlcmllcyBkb2VzIG5vdCBhZGQgYSBj
-YW5jZWwgaW4gZnJlZV9jYW5kZXYoKSBvciB1bnJlZ2lzdGVyX2NhbmRldigpLgpXb3VsZCBjYW5j
-ZWxsaW5nIG9yIGRpc2FibGluZyByZXN0YXJ0X3dvcmsgdGhlcmUgY2xvc2UgdGhpcyB3aW5kb3c/
-CgotLSAKU2FzaGlrbyBBSSByZXZpZXcgwrcgaHR0cHM6Ly9uZXRkZXYtYWkuYm90cy5saW51eC5k
-ZXYvc2FzaGlrby8jL3BhdGNoc2V0LzIwMjYxMDE1LXJvY2tjaGlwLWNhbmZkLXJlc3RhcnQtY2xv
-c2UtdjUtMC1hZTc3MzI3MDM3YzklNDBxcS5jb20KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi,
+
+> [Severity: Medium]
+> Is this check enough to deliver what the subject line promises? It reads
+> the running bit once without any lock. can_restart_work() runs on the
+> system workqueue without RTNL or any CAN-private lock, so nothing orders
+> it against __dev_close_many() and ndo_stop().
+
+The check alone does not serialize restart with ndo_stop(), as noted in
+the commit message. For Rockchip, this series also calls
+close_candev_cancel_restart_sync() at the beginning of rkcanfd_stop(),
+while the resources are still available, to wait for any restart that
+has already passed the check before tearing down the hardware and IRQ.
+The pre-existing teardown races in other drivers are outside the scope
+of this series and should be addressed in separate patches.
+
+> [Severity: High]
+> This is a pre-existing issue and was not introduced by this patch. The
+> patch makes the window smaller, but can restart_work still be queued
+> after close_candev() has cancelled it?
+
+Yes, if a bus-off producer is still running, the check does not prevent
+it from queuing work after cancellation. For Rockchip, the series keeps
+the final close_candev() after free_irq() has drained the bus-off
+producer. This final cancellation catches work queued after the early
+cancellation, and the running check prevents such work from restarting
+the hardware while the interface is down.
+
+The late-enqueue and lifetime issues in other drivers should also be
+handled in separate patches. This series is limited to the Rockchip
+CAN-FD restart/close races and does not add a generic free/unregister
+safeguard.
+
+Regards,
+Cunhao Lu
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
