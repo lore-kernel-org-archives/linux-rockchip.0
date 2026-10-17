@@ -4,78 +4,167 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3FE9CCF2D4
-	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Oct 2026 14:51:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 232F1CCF2CA
+	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Oct 2026 16:35:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aCbr093OvKhYINPLz8TnDyUOX34beuA+ZQPdr8F4jxE=; b=4cpJWnmsaY9zwt
-	zRplEi0QTBJJKvY1NlFQpQUoyqsTLdCe4WXUhZSWOaLMzPzkL/wxE86C7bGdCCo6D43v5V0v5CNCm
-	macs+TYRimqPkEreHxxrSPFrC3g2ZLBPpTWAPAHuFoyEFPdLI8Yy4F2JvDCz3v+XpamuQd9DuZbbe
-	ph1OkGTEIDdNv8MkqihP40MSMsLzupC2n5JpeeEMEayADuNNRXRXgD0LDgl+6e21sDDoEUdQOovSI
-	oBxl9MU29hWVNw1Pxl9/GM0PdOYHLsEKWvpZvpOAKeNdWz9ERsO5VOnDIMhHpJkCrdH+3VFqfO99f
-	0034HT+VipU0W4a9jKVQ==;
+	List-Owner; bh=YzuF8N+9SHz7XXypF+gWWPcIE7jnUfv62gtECS/KizM=; b=eI078Gpm5s6fce
+	y2IIlS9RxQCIFeELO+aIShJVlmLjxnJmpz41A+WDhQtjb8OtGnUjP5Jb0CGFytCKo0hcqLSEtZcoP
+	p641lYFP/OlorOquYJjcOiKFkIAy+Ysf/huRIcndyBay8yiMW6W4LizNQmYlvy/bNfzNATjBfKPdb
+	zRQsLPsg8gYw1hF0H5Hxihf/i/iQWBYTONRiRoOgmdNeHxS4NIfmV5YYRk4fwEQfEHjy71fRZet+u
+	mBUMqigM8tGMAOC2CSlP6nP+3KLZ3Vl7COW949pyxi3Onm4EE6Iiv0mpDAa45xwxG9oNJlAEewMxu
+	P6yjZAUFK0xauiNWCNWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xI5kR-00000004qVA-2mJJ;
-	Sat, 17 Oct 2026 14:50:59 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xI7NC-00000004vpp-32ZP;
+	Sat, 17 Oct 2026 16:35:06 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xI5kP-00000004qRt-1Nvx;
-	Sat, 17 Oct 2026 14:50:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6E87C447D6;
-	Sat, 17 Oct 2026 14:50:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 4FDECC4AF0D;
-	Sat, 17 Oct 2026 14:50:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1792248656;
-	bh=qoPoaukoJuUEirjNqjSlygzFTRC7K9O/GkMtSH/EZnM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=X2UnLdCQbqo2JPXQsQTMAdL1E3mfIOYisPNBKbriVkjdg2dQfbGKYvp9j7RzGzRkj
-	 WKRYqMvPWO92ABdR9oS1DbBY5lrMUqEWc6TMGniQxaoltU/1Pz4pYxcPP0FVaGUq+2
-	 5775JFyEup2+cgJ97fpaOVm2q6TmvThdysazkYPh/7AFgf5aWiL3odeYepmRC+QUF1
-	 91kpWcbr/IHaTv0GvW4apDhiNZ03FMy6LyynU96oCeihU+jeTJ04RPp0wwokicJntk
-	 1CNhWV21CClOfBlrpRkBgMkHZ/lsnmnIRM7syUuvfFTlTO/3VjjMY0S0SOiTMK7FT7
-	 YtVjBVtZFbBTg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3DE51CCF2CF;
-	Sat, 17 Oct 2026 14:50:56 +0000 (UTC)
-From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
-Date: Sat, 17 Oct 2026 22:50:55 +0800
-Subject: [PATCH net v6 5/6] can: rockchip_canfd: serialize TX with bus-off
- and restart
+	id 1xI7N7-00000004vnp-2CTV
+	for linux-rockchip@lists.infradead.org;
+	Sat, 17 Oct 2026 16:35:05 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69HGAigP021133
+	for <linux-rockchip@lists.infradead.org>; Sat, 17 Oct 2026 16:35:00 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=M8Exf5uWUb9cZkvT1EFUDPQ1
+	TTQV69aXO+M/fGf49Pw=; b=SvbhEerpHza+8SdmQLIHmI2tzCGBloUXBXclwzhH
+	3zvmJVOB8xwyS3hhxJYTNNiBUKV0XY8PSqCFVNpgzc6CSSWCLvfPtkFeAkh9XIK1
+	xP0T0+G1nwM3GWS7HSfRWAo/8PcMnsmd7shqnuEJ3rpDIoglzHyWZguFMOBASYUQ
+	xSZvhnsNiP058el1npRPaibWiTLs12fbApd83r4HIqKT8fCMA72QZOq1uwE3l8N7
+	UFCDy0DUt44epTi+3yVj932X9a0ROrwhjoNKlti0uhJoGJp9p+GEAT/QwlAJKX30
+	ztQqKDxqmquratQ7dPnl35V6MTTEyo6UTZRB8hrvMHd/Fg==
+Received: from mail-dl1-f72.google.com (mail-dl1-f72.google.com [74.125.82.72])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hc26k16yp-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Sat, 17 Oct 2026 16:35:00 +0000 (GMT)
+Received: by mail-dl1-f72.google.com with SMTP id a92af1059eb24-147be78cd56so3798096c88.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 17 Oct 2026 09:35:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1792254900; x=1792859700; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=M8Exf5uWUb9cZkvT1EFUDPQ1TTQV69aXO+M/fGf49Pw=;
+        b=joxoQ+w115Ag++LsrGnwW9GgIp7ViMgAFIfQISUIslGla1nScZUjZe3i5eBw19DzKc
+         lo30PapsGh++LhMhd27bSKIqFEkX53paxKTiczCYikfDr6BDPLQgFWhTHBuvKwA9xknk
+         seEm7rLV+zbP8JnPwK7mMUCLchaI5sNVNqinJFVwJbaw7aLfRUC7S3UiJFaEB4b3a8Tw
+         LZo8oDwxj83F+tmtEsuH0rS4ITUcarRyyhi6Wk4d53JTORduj0LrsNB3HreprsYQo3IB
+         42Dz/OKlio1ATKrejxF9A5ef5PKJGazKHD5wIlgtKDmO0Hzk60xe7zSsF3n7GPVd5liL
+         Jc4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792254900; x=1792859700;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=M8Exf5uWUb9cZkvT1EFUDPQ1TTQV69aXO+M/fGf49Pw=;
+        b=TaLnlSE83BGvNUnLSEP1YJ9NWXorj6RiI8Z4mRU2ftkQAlJ1dmocFb1efGKXtQe5nS
+         /9cPlMI2z/mZ3+k4EHqrmopG1qc8SvJ7p0rWRD4axZ3F0tOv31BYc04QRk5/BbB/Y5bj
+         3/UYWwQmC2hjjZkHNu+FrlnFabByUyRGRv2CJn2AZ3LjwOCDuxJsVwnDZHo5IcbWfkBD
+         HX866cM2UHYtIhWu3x9bCBEpFlXrxgr94HFPUeJGtTO9t2/NJ8KPzzQ1a7TYuSvVGNM/
+         WMGPLWTf5HuGi1gaYfCVfyKelIRBSpbfEqW7urfZJRwVkDtpu7mGZm+K9xu4VSjes6ay
+         jd1g==
+X-Forwarded-Encrypted: i=1; AKwUvBygNjNqVIrtpUMZxmuehdxtK8kRA1EGC1UU67xMOxYj20atmGDZyEloHGPIRqxcbYs2UsW9zK/5LHDqEOrySw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYImKHI/XjdWeTNV22TbeeNVQv5TGW/OHB/pv+r4c6jZfeaiyAMe
+	5iDTuGTyYGA/zdMa0XxYTpnwVP4S1IE5b2oIwN+BsVTniYn8bCbB+Dvs8/yNC0+qjTUarOsxyxU
+	GFmoOAgjqOZQlHvNp1hS45R5VYxACwjnauTYV9ClUbey2qnagktp1ft9QqLXKXnDoxg1tH+FD9c
+	Q=
+X-Gm-Gg: AYBFou0Sshnw4+8SAYNkgFF9dczfWpoR3rDJ8aT1obHlvuWcNWfWLQt5YGeJYvXbELz
+	dWw6pe5PZkzI9Sefd/j3DUR2KeguSw9ltbVc5KLo/P4vCdilV1zV/u4y0+tAYEkWP3Uqx9ztu51
+	gtyEJIVr6Y15SEbvOt3hgv9A0eELmvAuX+ArjqVKyMBUV6HuHPc+pUgNsrk3n9L3bJaMJRByQT9
+	h0GNORWXn94OTb94ZARNHjHG3nM3pbZcl8pv4eJ8zvb+XRePjpk6eDANraH/Ub53ZAyaqxbSvza
+	bNH0P/jjtBvUyVXowphnNCKmiUyE9HNbBlCy0MRVsDKdrZXrupge4X8Os2WZUZibwS6e2aIcnDB
+	/TOs58lEvOfHH
+X-Received: by 2002:a05:701b:205b:10b0:184:d593:2897 with SMTP id a92af1059eb24-185138b5855mr4814757c88.29.1792254899653;
+        Sat, 17 Oct 2026 09:34:59 -0700 (PDT)
+X-Received: by 2002:a05:701b:205b:10b0:184:d593:2897 with SMTP id a92af1059eb24-185138b5855mr4814714c88.29.1792254898926;
+        Sat, 17 Oct 2026 09:34:58 -0700 (PDT)
+Received: from oss.qualcomm.com ([202.46.23.25])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3608258aa66sm21415852eec.20.2026.10.17.09.34.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 17 Oct 2026 09:34:58 -0700 (PDT)
+Date: Sat, 17 Oct 2026 22:04:43 +0530
+From: Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>
+To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+        Konrad Dybcio <konradybcio@kernel.org>, Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>,
+        Andrew Lunn <andrew+netdev@lunn.ch>,
+        "David S. Miller" <davem@davemloft.net>,
+        Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue <alexandre.torgue@foss.st.com>,
+        Vinod Koul <vkoul@kernel.org>,
+        Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+        Chen-Yu Tsai <wens@kernel.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Kevin Hilman <khilman@baylibre.com>,
+        Jerome Brunet <jbrunet@baylibre.com>, Shawn Guo <shawnguo@kernel.org>,
+        Fabio Estevam <festevam@gmail.com>,
+        Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com,
+        Romain Gantois <romain.gantois@bootlin.com>,
+        Geert Uytterhoeven <geert+renesas@glider.be>,
+        Magnus Damm <magnus.damm@gmail.com>,
+        Maxime Ripard <mripard@kernel.org>,
+        Christophe Roullier <christophe.roullier@foss.st.com>,
+        Bartosz Golaszewski <brgl@kernel.org>,
+        Eric Dumazet <edumazet@kernel.org>, Radu Rendec <radu@rendec.net>,
+        linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
+        linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+        linux-stm32@st-md-mailman.stormreply.com,
+        linux-arm-kernel@lists.infradead.org,
+        Drew Fustini <dfustini@tenstorrent.com>, linux-sunxi@lists.linux.dev,
+        linux-amlogic@lists.infradead.org, linux-mips@vger.kernel.org,
+        imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+        linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev,
+        linux-riscv@lists.infradead.org,
+        Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Subject: Re: [PATCH net-next v16 3/7] net: stmmac: qcom-ethqos: set serdes
+ mode before powerup
+Message-ID: <atOjo+X7y3WniiT3@oss.qualcomm.com>
+References: <20261014-qcom-sa8255p-emac-v16-0-0266c2ead980@oss.qualcomm.com>
+ <20261014-qcom-sa8255p-emac-v16-3-0266c2ead980@oss.qualcomm.com>
 MIME-Version: 1.0
-Message-Id: <20261017-rockchip-canfd-restart-close-v6-5-ed605feb4b6e@qq.com>
-References: <20261017-rockchip-canfd-restart-close-v6-0-ed605feb4b6e@qq.com>
-In-Reply-To: <20261017-rockchip-canfd-restart-close-v6-0-ed605feb4b6e@qq.com>
-To: Marc Kleine-Budde <mkl@pengutronix.de>, 
- Vincent Mailhol <mailhol@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- "David S. Miller" <davem@davemloft.net>, 
- Wolfgang Grandegger <wg@grandegger.com>, 
- Oliver Hartkopp <socketcan@hartkopp.net>, kernel@pengutronix.de, 
- Eric Dumazet <edumazet@kernel.org>, Jakub Kicinski <kuba@kernel.org>, 
- Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>, 
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
- Randy Dunlap <rdunlap@infradead.org>
-Cc: linux-can@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- netdev@vger.kernel.org, linux-doc@vger.kernel.org, stable@vger.kernel.org, 
- Cunhao Lu <1579567540@qq.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792248654; l=11892;
- i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
- bh=cItqtt/nO+EQ+rRHd1Iqovlc2WtXn4+MqXYOKjNeIgo=;
- b=sC/mPBVNzh58y24z5v2PT9wAiVW3ZKVp3SQrV3x+26eHSa5XZFUU/tMvhK3RUUfBY+VYuwDAY
- f8UlprTYaLyBydU9SdClozCOiSn8UH5IqVQjr4amwskgjeOVLUIM5S4
-X-Developer-Key: i=1579567540@qq.com; a=ed25519;
- pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
-X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
- auth_id=1177
-X-Original-From: Cunhao Lu <1579567540@qq.com>
+Content-Disposition: inline
+In-Reply-To: <20261014-qcom-sa8255p-emac-v16-3-0266c2ead980@oss.qualcomm.com>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDE3MDA2NiBTYWx0ZWRfX8kkvA775VcOK
+ pIXISHPnQJFPVjrXHwPy2lsxeRmJxD36/PLnrMhF+fR64iM3Jr8EkjpvEwsULwKcTREUTDoR8/g
+ ptZu4fCErmzT7wLV5D7xYZXV7Y0ntLX0MLc6vUlHdDF7A158Dx41v+S/NuVt/I9NaGqQv3wpy+O
+ tjfeB4wg4GdnD+OC1HSdUpec6bIzYrXpHlkLkKT51e9zWVuGHktOPla22W0UNkq4oyjZmi38K5G
+ n92f+XZueUHTd6vdEsGSqX8WHiS3w8+Qcaq9QtNsCOtBNuBIFI+qTFkCGO86BhcQkJTjbYJito2
+ ovSFHZw5Uxc+nZdlFPPs/O5o5ztVzroYGIdOP3ZDfwcbyBgUTORKoWQo8ZCfhFWyO+8EK5N+ttJ
+ MpbXXuJEUlIafxZyl/hEx1SwooXKBZNZ/+tFMucE/QefQX0lKRimh3RYEVQ2MP4WjnV68exrcUf
+ BkYu7ThZxyUcR3yiMFA==
+X-Proofpoint-GUID: JJlYyWhoVeW6r3bJ8iXj35Dj3U4yyEP8
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDE3MDA2NiBTYWx0ZWRfX3HtRdoGOrgqP
+ QQMzLwXjRcg8rD0hiMZFYlev/hU2l/SQqEoCcydIfQ+yNLi0xREhtUgGGVXLn63m0pGINxS9NPg
+ xhUpRG92eO2NW3I9n+Kf59G7We2pf4Y=
+X-Proofpoint-ORIG-GUID: JJlYyWhoVeW6r3bJ8iXj35Dj3U4yyEP8
+X-Authority-Analysis: v=2.4 cv=Cowq4X4D c=1 sm=1 tr=0 ts=6ad3a3b4 cx=c_pps
+ a=bS7HVuBVfinNPG3f6cIo3Q==:117 a=ZePRamnt/+rB5gQjfz0u9A==:17
+ a=kj9zAlcOel0A:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
+ a=EUspDBNiAAAA:8 a=6xCJM4BY7YgkIKmfACwA:9 a=CjuIK1q_8ugA:10
+ a=vBUdepa8ALXHeOFLBtFW:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-17_05,2026-10-14_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 impostorscore=0 adultscore=0 priorityscore=1501 suspectscore=0
+ lowpriorityscore=0 bulkscore=0 phishscore=0 spamscore=0 malwarescore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610080000 definitions=main-2610170066
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261017_093501_570039_FCDF59B0 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,336 +176,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Cunhao Lu <1579567540@qq.com>
+On Wed, Oct 14, 2026 at 02:36:42PM +0200, Bartosz Golaszewski wrote:
+> Call phy_set_mode_ext() before phy_power_on() in
+> qcom_ethqos_serdes_powerup(). This is harmless for existing users but on
+> SCMI systems this is required for the PHY driver to select the right
+> performance level - which translates to the link speed. This is done
+> ahead of adding support for the firmware-managed EMAC on Qualcomm sa8255p.
+> 
+> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+> ---
 
-The bus-off path can reset the controller while ndo_start_xmit() is
-active. CAN restart also flushes the echo ring before calling set_mode(),
-so disabling TX in that callback is too late to protect echo slots.
+As mentioned in the commit message, this should be harmless for existing
+non-SCMI systems and I did not see any issues while testing this series on
+IQ 9075 EVK, so:
 
-Serialize TX submission, RX-side completion and retry with a private
-lock and enabled flag. Disable TX and drain these users before publishing
-CAN_STATE_BUS_OFF, protecting the core's echo flush during automatic and
-manual recovery. Reject further submissions with NETDEV_TX_BUSY.
+Tested-by: Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>
+Reviewed-by: Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>
 
-If close disables TX after an RX IRQ has consumed a self-transmitted
-frame, skipping echo filtering alone would deliver it as ordinary RX.
-Check tx_enabled under the same lock after consuming the FIFO entry. If
-TX is disabled, drop the entry without accessing the echo ring, retrying
-TX, waking the queue or allocating an ordinary RX skb. Return success so
-the caller continues draining the FIFO.
-
-After draining the old IRQ and reinitializing the controller, restore
-carrier, enable TX, resume IRQ handling and wake the queue under the
-lock. This prevents the old bus-off IRQ from leaving manual recovery
-with carrier off, while allowing a new bus-off to take precedence.
-
-Keep shared IRQ handling suspended during open until initialization is
-complete, and leave TX disabled on close or failed open. Keep resets and
-synchronous IRQ/work draining outside the lock.
-
-Keep a reference to the original skb across can_put_echo_skb() and
-release it after unlocking, so its socket destructor cannot run with
-hard IRQs disabled. If echo preparation fails, drop the frame without
-advancing tx_head, accounting BQL or requesting TX. This also fixes the
-existing failure path that could stall TX on an empty echo slot.
-
-Fixes: b6661d73290c ("can: rockchip_canfd: add TX PATH")
-Cc: stable@vger.kernel.org
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
-
----
-Changes in v6:
-- Defer the original skb's release until after unlocking.
-- Abort TX submission if echo preparation fails.
-
-Changes in v5:
-- Drop consumed RX FIFO entries when tx_enabled is false under tx_lock,
-  rather than skipping only echo filtering and delivering them as RX.
----
- drivers/net/can/rockchip/rockchip_canfd-core.c | 51 ++++++++++++++++++++++----
- drivers/net/can/rockchip/rockchip_canfd-rx.c   | 26 +++++++++----
- drivers/net/can/rockchip/rockchip_canfd-tx.c   | 40 +++++++++++++++++---
- drivers/net/can/rockchip/rockchip_canfd.h      |  3 ++
- 4 files changed, 100 insertions(+), 20 deletions(-)
-
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
-index 4b3db07242395..150748c0b6845 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-@@ -326,6 +326,35 @@ static void rkcanfd_chip_start(struct rkcanfd_priv *priv)
- 		   rkcanfd_read(priv, RKCANFD_REG_MODE));
- }
- 
-+static void rkcanfd_tx_disable(struct rkcanfd_priv *priv)
-+{
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&priv->tx_lock, flags);
-+	priv->tx_enabled = false;
-+	netif_stop_queue(priv->ndev);
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
-+}
-+
-+static void rkcanfd_chip_start_finish(struct rkcanfd_priv *priv)
-+{
-+	unsigned long flags;
-+
-+	/* Serialize carrier, IRQ enable and queue wake with a new bus-off. */
-+	spin_lock_irqsave(&priv->tx_lock, flags);
-+	/* A manual restart may have raced with the old bus-off IRQ's
-+	 * netif_carrier_off(). That IRQ is now drained; restore carrier
-+	 * before resuming IRQ handling so a new bus-off takes precedence.
-+	 */
-+	netif_carrier_on(priv->ndev);
-+	priv->tx_enabled = true;
-+	/* Publish the initialized state before resuming IRQ handling. */
-+	smp_store_release(&priv->irq_suspended, false);
-+	rkcanfd_chip_interrupts_enable(priv);
-+	netif_wake_queue(priv->ndev);
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
-+}
-+
- static void __rkcanfd_chip_stop(struct rkcanfd_priv *priv, const enum can_state state)
- {
- 	priv->can.state = state;
-@@ -357,6 +386,7 @@ static int rkcanfd_set_mode(struct net_device *ndev,
- 
- 	switch (mode) {
- 	case CAN_MODE_START:
-+		rkcanfd_tx_disable(priv);
- 		rkcanfd_chip_interrupts_disable(priv);
- 		/* Flush the interrupt mask write before suspending the handler. */
- 		rkcanfd_read(priv, RKCANFD_REG_INT_MASK);
-@@ -367,10 +397,7 @@ static int rkcanfd_set_mode(struct net_device *ndev,
- 		rkcanfd_timestamp_stop_sync(priv);
- 
- 		rkcanfd_chip_start(priv);
--		/* Publish the initialized state before resuming IRQ handling. */
--		smp_store_release(&priv->irq_suspended, false);
--		rkcanfd_chip_interrupts_enable(priv);
--		netif_wake_queue(ndev);
-+		rkcanfd_chip_start_finish(priv);
- 		break;
- 
- 	default:
-@@ -604,6 +631,12 @@ static int rkcanfd_handle_state_error_int(struct rkcanfd_priv *priv)
- 	 * handles cf == NULL.
- 	 */
- 	skb = rkcanfd_alloc_can_err_skb(priv, &cf, &timestamp);
-+	if (new_state == CAN_STATE_BUS_OFF) {
-+		/* Drain TX before publishing BUS_OFF, which permits a manual
-+		 * restart to flush echo SKBs before calling our set_mode().
-+		 */
-+		rkcanfd_tx_disable(priv);
-+	}
- 	can_change_state(ndev, cf, tx_state, rx_state);
- 
- 	if (new_state == CAN_STATE_BUS_OFF) {
-@@ -749,6 +782,8 @@ static int rkcanfd_open(struct net_device *ndev)
- 	if (err)
- 		goto out_close_candev;
- 
-+	/* A shared IRQ may run as soon as request_irq() succeeds. */
-+	WRITE_ONCE(priv->irq_suspended, true);
- 	rkcanfd_chip_start(priv);
- 	can_rx_offload_enable(&priv->offload);
- 
-@@ -756,13 +791,12 @@ static int rkcanfd_open(struct net_device *ndev)
- 	if (err)
- 		goto out_rkcanfd_chip_stop;
- 
--	rkcanfd_chip_interrupts_enable(priv);
--
--	netif_start_queue(ndev);
-+	rkcanfd_chip_start_finish(priv);
- 
- 	return 0;
- 
- out_rkcanfd_chip_stop:
-+	rkcanfd_tx_disable(priv);
- 	can_rx_offload_disable(&priv->offload);
- 	rkcanfd_chip_stop_sync(priv, CAN_STATE_STOPPED);
- 	pm_runtime_put(ndev->dev.parent);
-@@ -776,7 +810,7 @@ static int rkcanfd_stop(struct net_device *ndev)
- 	struct rkcanfd_priv *priv = netdev_priv(ndev);
- 
- 	close_candev_cancel_restart_sync(ndev);
--	netif_stop_queue(ndev);
-+	rkcanfd_tx_disable(priv);
- 
- 	rkcanfd_chip_interrupts_disable(priv);
- 	free_irq(ndev->irq, priv);
-@@ -939,6 +973,7 @@ static int rkcanfd_probe(struct platform_device *pdev)
- 	priv->can.do_set_mode = rkcanfd_set_mode;
- 	priv->can.do_get_berr_counter = rkcanfd_get_berr_counter;
- 	priv->ndev = ndev;
-+	spin_lock_init(&priv->tx_lock);
- 
- 	match = device_get_match_data(&pdev->dev);
- 	if (match) {
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-index 24e87daa1df00..5e64317d4eee6 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
-@@ -91,6 +91,7 @@ rkcanfd_fifo_header_to_cfd_header(const struct rkcanfd_priv *priv,
- 	return len + cfd->len;
- }
- 
-+/* Called with tx_lock held and TX enabled. */
- static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
- 				const struct canfd_frame *cfd_rx, const u32 ts,
- 				bool *tx_done)
-@@ -204,7 +205,9 @@ static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
- 	struct canfd_frame cfd[1] = { }, *skb_cfd;
- 	struct rkcanfd_fifo_header header[1] = { };
- 	struct sk_buff *skb;
-+	unsigned long flags;
- 	unsigned int len;
-+	bool tx_done = false;
- 	int err;
- 
- 	/* read header into separate struct and convert it later */
-@@ -237,15 +240,24 @@ static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
- 		return 0;
- 	}
- 
--	if (rkcanfd_get_tx_pending(priv)) {
--		bool tx_done = false;
-+	/* Drop FIFO entries while TX is disabled, as they may be self-
-+	 * received frames. Do not access the echo ring, retry TX or wake the
-+	 * queue while restart owns the ring. The entry is already consumed.
-+	 */
-+	spin_lock_irqsave(&priv->tx_lock, flags);
-+	if (unlikely(!priv->tx_enabled)) {
-+		spin_unlock_irqrestore(&priv->tx_lock, flags);
-+		return 0;
-+	}
- 
-+	err = 0;
-+	if (rkcanfd_get_tx_pending(priv))
- 		err = rkcanfd_rxstx_filter(priv, cfd, header->ts, &tx_done);
--		if (err)
--			return err;
--		if (tx_done && !(priv->can.ctrlmode & CAN_CTRLMODE_LOOPBACK))
--			return 0;
--	}
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
-+	if (err)
-+		return err;
-+	if (tx_done && !(priv->can.ctrlmode & CAN_CTRLMODE_LOOPBACK))
-+		return 0;
- 
- 	/* Manual handling of CAN Bus Error counters. See
- 	 * rkcanfd_get_corrected_berr_counter() for detailed
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-index 12200dcfd3389..f86e31599b0a8 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-@@ -69,12 +69,19 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 	u32 reg_frameinfo, reg_id, reg_cmd;
- 	unsigned int tx_head, frame_len;
- 	const struct canfd_frame *cfd;
-+	unsigned long flags;
- 	int err;
- 	u8 i;
- 
- 	if (can_dev_dropped_skb(ndev, skb))
- 		return NETDEV_TX_OK;
- 
-+	spin_lock_irqsave(&priv->tx_lock, flags);
-+	if (unlikely(!priv->tx_enabled)) {
-+		netif_stop_queue(ndev);
-+		goto out_busy;
-+	}
-+
- 	if (!netif_subqueue_maybe_stop(priv->ndev, 0,
- 				       rkcanfd_get_effective_tx_free(priv),
- 				       RKCANFD_TX_STOP_THRESHOLD,
-@@ -85,7 +92,7 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 				    priv->tx_head, priv->tx_tail,
- 				    rkcanfd_get_tx_pending(priv));
- 
--		return NETDEV_TX_BUSY;
-+		goto out_busy;
- 	}
- 
- 	cfd = (struct canfd_frame *)skb->data;
-@@ -117,16 +124,21 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 	tx_head = rkcanfd_get_tx_head(priv);
- 	reg_cmd = RKCANFD_REG_CMD_TX_REQ(tx_head);
- 
-+	/* Keep the original skb alive until IRQs are restored so echo
-+	 * preparation cannot invoke its socket destructor under tx_lock.
-+	 */
-+	frame_len = can_skb_get_frame_len(skb);
-+	err = can_put_echo_skb(skb_get(skb), ndev, tx_head, frame_len);
-+	if (unlikely(err || !priv->can.echo_skb[tx_head]))
-+		goto out_drop;
-+
- 	rkcanfd_write(priv, RKCANFD_REG_FD_TXFRAMEINFO, reg_frameinfo);
- 	rkcanfd_write(priv, RKCANFD_REG_FD_TXID, reg_id);
- 	for (i = 0; i < cfd->len; i += 4)
- 		rkcanfd_write(priv, RKCANFD_REG_FD_TXDATA0 + i,
- 			      *(u32 *)(cfd->data + i));
- 
--	frame_len = can_skb_get_frame_len(skb);
--	err = can_put_echo_skb(skb, ndev, tx_head, frame_len);
--	if (!err)
--		netdev_sent_queue(priv->ndev, frame_len);
-+	netdev_sent_queue(priv->ndev, frame_len);
- 
- 	WRITE_ONCE(priv->tx_head, priv->tx_head + 1);
- 
-@@ -137,7 +149,25 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
- 				  RKCANFD_TX_STOP_THRESHOLD,
- 				  RKCANFD_TX_START_THRESHOLD);
- 
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
-+	dev_consume_skb_any(skb);
-+
-+	return NETDEV_TX_OK;
-+
-+out_drop:
-+	ndev->stats.tx_dropped++;
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
-+	/* An invalid index leaves the extra reference unconsumed. */
-+	if (err == -EINVAL)
-+		dev_kfree_skb_any(skb);
-+	dev_kfree_skb_any(skb);
-+
- 	return NETDEV_TX_OK;
-+
-+out_busy:
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
-+
-+	return NETDEV_TX_BUSY;
- }
- 
- void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
-diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index 2743c96ed42f0..4a2bdc205296e 100644
---- a/drivers/net/can/rockchip/rockchip_canfd.h
-+++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -476,6 +476,9 @@ struct rkcanfd_priv {
- 	struct net_device *ndev;
- 
- 	void __iomem *regs;
-+	/* Serialize TX submission/completion with bus-off and restart. */
-+	spinlock_t tx_lock;
-+	bool tx_enabled;
- 	unsigned int tx_head;
- 	unsigned int tx_tail;
- 
-
--- 
-2.34.1
-
+	Ayaan
 
 
 _______________________________________________
