@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D439ECCF2D1
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Oct 2026 04:55:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14647CCF2CF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Oct 2026 04:55:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6La15NqrVrB3n5grcol5qqL1E054/vF1m/Kf0l7OAoM=; b=pk8eXxyM8tXz7C
-	8sv5bILmktDbIGY/y8nJoJwc0DGEG2NMC37ccpAXgrQZQmVohG/iTDeCIEfmf/AQMvqRVNq2hNNpM
-	T8rmX9SrW42DooT3Lr3HYHsRXPGb21RiyAuPp0qiJ6y+Ks2mP/XU7Ucp/mO2vbVBwrlD7raGk0uBh
-	kydgdzk+dKBwGuXK73kQEK2m+MvXJaDxbQtxMk96M6nN0BA3xZWVOH4K5ixEr/8fK3f9x8VTwrLOo
-	MMt87rV648id+kKeuCl0rLCdS3QqTWXSxz5Insev2oDMflVLsSo+JV85zN49hxE1suNoK3HKIcxa6
-	Nl0i/+mlaWrIH1p62Y9A==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=T38aOil5PqaYSQYZY6Ed4ppEFLnzr1mJrD1F3mSnnnA=; b=aq08F0T6x6BQTB
+	5jf4DxhXLk3xsaF72o+7qIsnGB2rd8Y0X+TQG001r4YxVYW6lth1lbLIAmAsl7jVNutKNgYlMb0A3
+	BDlOfcOHYPioTpm8SrGE1IXUWALjruWDVwZe4gNXuafyHPcGW8Mcek46TpnZlxXuBjZA1Er9BEfS2
+	KF3cmoqHeYGAM0G/Vcfu7ludFZDWSF2RUrJ3+o6RF02Se7FFoZ5Z8jaemHwPL4+KyKtNxweKLkvV0
+	xOuvCatB7K7lOAnSX2QgqEhp2JA+Xj6Ok+0kQTZT6cNUeFoK+NFOk/zKTMGvvrY3p/Y8CDm3efJbP
+	kM8ZGs7IkV5LOeQX+5+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIIvT-00000005XOV-1mnq;
-	Sun, 18 Oct 2026 04:55:15 +0000
+	id 1xIIvd-00000005XT9-41ZL;
+	Sun, 18 Oct 2026 04:55:25 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIIvR-00000005XO7-2V2E;
-	Sun, 18 Oct 2026 04:55:13 +0000
+	id 1xIIvY-00000005XQ7-1AaQ;
+	Sun, 18 Oct 2026 04:55:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 076BD40D3F;
-	Sun, 18 Oct 2026 04:55:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id D28DCC2BCFD;
-	Sun, 18 Oct 2026 04:55:12 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 184C9447E9;
+	Sun, 18 Oct 2026 04:55:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 0388EC4AF1B;
+	Sun, 18 Oct 2026 04:55:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1792299312;
-	bh=fUdq2VvosvV5UWVKEKg821xAaTCVqPc2wV9SA9hzTFA=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=F8kp6cvPLCznrDZQRsfWwsbMwi8ryaNHvXrMLCEVa08Wfi/crE7frkp4zq/LIWvKN
-	 8snGkDu4d6PluMefPivoYxgwdyC12loGvdTOcyL1bAcKRRk9+2ncvKMfEyvfa8Cr+U
-	 1+Ao1VduB4YEgTv1QxigHtWFY7Xd942cFcSHjj9iydth/d+PEAAkHD8evBP26Lp0gI
-	 JF6DNQl0MK0wZD00EJLTXYl2BIIVlbpzynBmqBuXBSiRkPMyhhSB6X/SR1ORIKnCS1
-	 qaEzP8H4XL8RkJwJIaKq0s6+RE18hylbrWYXoqPDbBiiUnmk2Wmp3ro29+FJJA+8ni
-	 vXWO7jPIalrrg==
+	s=k20201202; t=1792299315;
+	bh=St4QUOnykiewwv5EWmKAgq6LofwIxgwobf+CO8xJ7Cw=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=EVaZFPguy1CSmuXJVzvtLdcgiUiMUvwA44isfx1jNqnAYgXj9HrYugfgFgakMMEF4
+	 kIttJkrC938RlLw6aCQBZknlKI+DJHtiQqmzW2btxAs3ycdOeJ1/HrOsx8H5Kkr6L3
+	 TtyEviRoBDj/33EoQF1rUi+6veTRgB48bOMA71K/HnB6gLIEVmCM8oav39xNo7Ldpx
+	 57WCSYCFW4E2hNszLy37UBsxdgkyaxX9vle1f3SAABzuIRhQz+Vcb5E0hJIqzD0bNl
+	 yp4DWc2IGN6RxKVoGscw5cNFQgUBCe4gn2OJoI3GyhIEVQXxc8h+WREdRtPvCpwTb9
+	 +t7o8ANDQjw4w==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AAD78CCF2C4;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DD40ECCF2CF;
 	Sun, 18 Oct 2026 04:55:12 +0000 (UTC)
 From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Subject: [PATCH 0/2] Label the fans on Kobol Helios64
-Date: Sun, 18 Oct 2026 07:54:58 +0300
-Message-Id: <20261018-helios64-fan-label-v1-0-69a3f96d4efa@iav.lv>
+Date: Sun, 18 Oct 2026 07:55:00 +0300
+Subject: [PATCH 2/2] arm64: dts: rockchip: Label the fans on Kobol Helios64
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIACJR1GoC/x3MQQqEMAxG4atI1gaMDipeRVykM79joFRpQYTi3
- S0uv8V7mRKiIdFUZYo4LdkeCqSu6Ltp+IPtV0xt0/bSyMgbvO2p//Cqgb06eFYZOsUgDg5UwiN
- iteudzst9P0FKSfJkAAAA
+Message-Id: <20261018-helios64-fan-label-v1-2-69a3f96d4efa@iav.lv>
+References: <20261018-helios64-fan-label-v1-0-69a3f96d4efa@iav.lv>
+In-Reply-To: <20261018-helios64-fan-label-v1-0-69a3f96d4efa@iav.lv>
 To: Guenter Roeck <linux@roeck-us.net>, Jean Delvare <jdelvare@suse.com>, 
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
@@ -59,13 +58,13 @@ Cc: linux-hwmon@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1298; i=iav@iav.lv;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1083; i=iav@iav.lv;
  h=from:subject:message-id;
- bh=fUdq2VvosvV5UWVKEKg821xAaTCVqPc2wV9SA9hzTFA=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFlXAlVnOwqGVKsLxp8pFLmVty+gpnDn3QfGWpO672yNT
- Nv5MPtuRykLgxgXg6yYIsuEQxq3MpZc/evvYf4AZg4rE8gQBi5OAZjIcSeG/znP3I4tdzJ2dc71
- 3fzX/M6ErX+XmzBnMzFNmvo3fOa0nU2MDM8+G82JLt9QcuiksMlzXQGPoD3Kc49b287pUZ18Wmx
- uNCcA
+ bh=8aw4Q5PUDH6ZuJvAmunt0x+2TojvBEPQhOMZdMQFsu4=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFlXAnWNvvozNJcwG/2IF53P377q+jN24+aDyi9OWF76Y
+ VjwYd2DjlIWBjEuBlkxRZYJhzRuZSy5+tffw/wBzBxWJpAhDFycAjARpxUM/9Q0si8d+u9uvkTq
+ fGi3Y591yt/ohHMNGo0+tbafjjhqcDMybBVtdBKLYUk2kte+/jTVbEHY7alm522eTNvJp8i+KnE
+ iMwA=
 X-Developer-Key: i=iav@iav.lv; a=openpgp;
  fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
 X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
@@ -87,40 +86,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Helios64 has two identical PWM fans, and userspace can tell them apart
-only by their platform device names. Patch 1 makes pwm-fan.yaml
-reference fan-common.yaml, as Rob suggested, which also allows label;
-the hwmon core already exposes it as the label attribute. Patch 2 names
-the fans after their headers, P6 and P7.
+From: Igor Velkov <iav@iav.lv>
 
-To: Guenter Roeck <linux@roeck-us.net>
-To: Jean Delvare <jdelvare@suse.com>
-To: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>
-To: Conor Dooley <conor+dt@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-hwmon@vger.kernel.org
-Cc: devicetree@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
+Name each fan after the header it plugs into, so that userspace can
+tell the two apart through the hwmon label attribute.
 
+Assisted-by: LLM
 Signed-off-by: Igor Velkov <iav@iav.lv>
 ---
-Igor Velkov (2):
-      dt-bindings: hwmon: pwm-fan: Reference the common fan schema
-      arm64: dts: rockchip: Label the fans on Kobol Helios64
+ arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- .../devicetree/bindings/hwmon/pwm-fan.yaml         | 22 +++++-----------------
- .../boot/dts/rockchip/rk3399-kobol-helios64.dts    |  4 ++--
- 2 files changed, 7 insertions(+), 19 deletions(-)
----
-base-commit: d2abcbb905b0e4b2e06b257fa1e5bcf4faa6dbda
-change-id: 20261018-helios64-fan-label-a173ae71bebe
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+index 63ad79b4c8ac..a206827903e9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+@@ -70,8 +70,8 @@ clkin_gmac: external-gmac-clock {
+ 	};
+ 
+ 	fan1 {
+-		/* fan connected to P7 */
+ 		compatible = "pwm-fan";
++		label = "P7";
+ 		pwms = <&pwm0 0 40000 0>;
+ 		cooling-levels = <0 80 170 255>;
+ 		interrupt-parent = <&gpio4>;
+@@ -81,8 +81,8 @@ fan1 {
+ 	};
+ 
+ 	fan2 {
+-		/* fan connected to P6 */
+ 		compatible = "pwm-fan";
++		label = "P6";
+ 		pwms = <&pwm1 0 40000 0>;
+ 		cooling-levels = <0 80 170 255>;
+ 		interrupt-parent = <&gpio4>;
 
-Best regards,
 -- 
-Igor Velkov <iav@iav.lv>
+2.43.0
 
 
 
