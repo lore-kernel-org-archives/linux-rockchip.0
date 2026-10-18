@@ -4,83 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1F48CCF2C7
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Oct 2026 00:47:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 956DDCCF2C4
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Oct 2026 01:14:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FWDnbMn+180JEovGvvLUfAY4T1TBOk+TtwmA7/BwR28=; b=AsW/E2BA0qbV+f
-	nCSKrKUvcuLjg5tCOV5GP2afd5PCafKI5KhAqxfxULF1OYguuXkF2+5VrK/iBN6anZ7L1/7CF8YI8
-	Z0yr6STOYdzYJG+o8kCECYcQQmBFbA9OMPQYiIaZpmk9JwLKjwMMPrctL+2Ir9gTTG0OTHiRoYeDX
-	IFSml3DTMzq+NHbnCxY5EaKm2NFBNmIN3qqMh8LPAjQFy9JemZW1WPi2dKD3Haf/7MnXHYTNVJMRb
-	Pw4eP8kXFRBrYrWRcTbc/6Ie00dFo+wyIt5t2toNhl3sqwvLzFBb996HCKaqpdPhdeoLbR4Lpp/Dr
-	p1ZS2GGhYsYDm0qoYfmg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2L5d1pIjB5UxVDlrKhgt9+3+r0yBBQRs8GUcLYupy8M=; b=aczT3tDcn6BTLT
+	0Jpk8i31ulkZ4Cu3LXRZdc4uBwtFn5yqiF60OA9KjSrWln2HShWkGOfG5UsvXpLOK50hBRBPApRCK
+	7vd6yXS2gudhHH+dQUGv72xemJpk5F9v6iYxHEX21/4v7af7ppJqawlJGkgjn9wtPRRKNpO0Q3Ee+
+	CtEGn9rue9T7W4MR5Xb02SFJRjgF54Bsk52ipzEmvNrirpRqvL7/mnHlFOppu3oE8Noc0QJKogh/2
+	aD6YrWeRKGMWxKMdfUGOt0nhMjaG9ofxFigOKlkDOor62XSOdciMAWzNzfeazDebxBp5SEh80ewrO
+	ACEVTRjAHq3PfF7cY3eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIF3s-00000005Ng2-0HLC;
-	Sun, 18 Oct 2026 00:47:40 +0000
-Received: from mgamail.intel.com ([198.175.65.19])
+	id 1xIFTm-00000005Oky-0mJG;
+	Sun, 18 Oct 2026 01:14:26 +0000
+Received: from mail-m60251.netease.com ([210.79.60.251])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIF3p-00000005NfS-0PzM;
-	Sun, 18 Oct 2026 00:47:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1792284457; x=1823820457;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=daoOQm05VwaFoZ0+CpbIgWX8Bo/e4Sr3//Gl6DlQae0=;
-  b=ltODWq9Udr3rn8gdruveJSEkGaH2dYI4GhcMkscBDVkVDd4j+kQyRURm
-   HoI4qgch8o/IWMK5Q4idWmnNVUlhaKZczUqOpkFz+Rtr04N7UdgWem1sr
-   SqN3pFxgkcujbpYe6/Zulg2KGHtI/OHuZo6Ly6pIDfQCosQHcWGVdeDdx
-   VYVVLPnOE55rn3L87ii+YtH8nve5rbkuzben8lx9JgvTa3W3QAYfF1r9W
-   etw/Jmsj35LCpG1xAPheBjI3e81YpMOCCe8AnOhf8aADfxnOWJOD178Q9
-   dakdWGd5a54urq9FV/biSG8MZR8gZPr+1Dt3xfwtQGCbckKj8hMefOcPW
-   Q==;
-X-CSE-ConnectionGUID: dxWA0wcPRuO2D0VIzfSSZQ==
-X-CSE-MsgGUID: h8OOT8z4T/iKp5njtQ8iwQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11938"; a="1049618"
-X-IronPort-AV: E=Sophos;i="6.27,163,1787036400"; 
-   d="scan'208";a="1049618"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Oct 2026 17:47:35 -0700
-X-CSE-ConnectionGUID: 7QNb9IvsTCmVMcmTPGQv7w==
-X-CSE-MsgGUID: IT3zV5cIQzKxka3VbTtNMw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,163,1787036400"; 
-   d="scan'208";a="2646600"
-Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
-  by orviesa010.jf.intel.com with ESMTP; 17 Oct 2026 17:47:32 -0700
-Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1xIF3h-00000000Juw-19NP;
-	Sun, 18 Oct 2026 00:47:29 +0000
-Date: Sun, 18 Oct 2026 08:47:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Igor Paunovic <royalnet026@gmail.com>, linux-kernel@vger.kernel.org,
-	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
-	kernel@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH v17 5/7] usb: dwc3: rockchip: add USBDP PHY reset quirk
-Message-ID: <202610180841.U0qsol4i-lkp@intel.com>
-References: <20261016-b4-rockchip-dwc3-rockchip-glue-v17-5-876f96893e2f@collabora.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261016-b4-rockchip-dwc3-rockchip-glue-v17-5-876f96893e2f@collabora.com>
+	id 1xIFTi-00000005OkN-2dHj;
+	Sun, 18 Oct 2026 01:14:24 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 516b7c389;
+	Sun, 18 Oct 2026 09:14:08 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Neil Armstrong <neil.armstrong@linaro.org>,
+	Vinod Koul <vkoul@kernel.org>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v3] phy: rockchip: snps-pcie3: Raise the SRAM init timeout
+Date: Sun, 18 Oct 2026 09:13:56 +0800
+Message-Id: <1792286036-208067-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0aa14c92c0e503a4kunm45ec892d57f54b
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGhoaGFYdTUkZGktOQk
+	NITEJWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=BdfzurCnBKdS3DAwiY88g2bVhn92ph4pJNxmegZ5sCs1rdYaSCfUqyde6uxLNfCXZGE7REeLAlcPWgz4zN/QZKJZ9Jz+yYdgplw9FZMEhmxNWkxI961zKwHuWdHLuFDAXaxyRIV/A67rovrCqw5Q3OShdR5gPDkx9bpnTzom40w=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=y6oBHr1RIjL235ab4ihjZJKHFVq1SAaM3woeHFxUorA=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261017_174737_239982_C06D4FFE 
-X-CRM114-Status: UNSURE (   9.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261017_181423_244684_AAEC227E 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,40 +64,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+The SRAM initialization of the PCIe3 PHY may take longer than the 500us
+currently allowed, especially on a slow power-up such as at low
+temperature. In that case the driver reports
 
-kernel test robot noticed the following build warnings:
+  lock failed 0x..., check input refclk and power supply
 
-[auto build test WARNING on 8f56fdf3d8cb9f1dbdc93bf9ac816698aa6f70b7]
+even though the input refclk and power supply are fine.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Sebastian-Reichel/phy-rockchip-usbdp-Track-PHY-power-state/20261016-204317
-base:   8f56fdf3d8cb9f1dbdc93bf9ac816698aa6f70b7
-patch link:    https://lore.kernel.org/r/20261016-b4-rockchip-dwc3-rockchip-glue-v17-5-876f96893e2f%40collabora.com
-patch subject: [PATCH v17 5/7] usb: dwc3: rockchip: add USBDP PHY reset quirk
-config: hexagon-randconfig-1000-20261018 (https://download.01.org/0day-ci/archive/20261018/202610180841.U0qsol4i-lkp@intel.com/config)
-compiler: clang version 24.0.0git (https://github.com/llvm/llvm-project 6719b9e31d6a93099612c474eec76d9f41d0275a)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261018/202610180841.U0qsol4i-lkp@intel.com/reproduce)
+Raise the timeout to 20ms and use a named constant for it, applied to
+both the RK3568 and RK3588 paths.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202610180841.U0qsol4i-lkp@intel.com/
+A non-zero sleep interval (1ms) is passed to the polling helpers so the
+CPU is yielded between reads. With sleep_us == 0 the helpers tight-loop,
+which would otherwise burn the CPU during the now much longer wait.
 
-All warnings (new ones prefixed by >>):
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
 
->> Warning: drivers/usb/dwc3/dwc3-rockchip.c:22 struct member 'dwc_rk' not described in 'dwc3_rk_phy_nb'
->> Warning: drivers/usb/dwc3/dwc3-rockchip.c:22 Excess struct member 'dwc' description in 'dwc3_rk_phy_nb' (did you mean one of: 'dwc_rk')
->> Warning: drivers/usb/dwc3/dwc3-rockchip.c:22 struct member 'dwc_rk' not described in 'dwc3_rk_phy_nb'
->> Warning: drivers/usb/dwc3/dwc3-rockchip.c:22 Excess struct member 'dwc' description in 'dwc3_rk_phy_nb' (did you mean one of: 'dwc_rk')
+Changes in v3:
+- Use RK_PCIE_SRAM_INIT_TIMEOUT_US(Sebastian)
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Changes in v2:
+- pass 1ms to the polling helper(Sashiko)
+
+ drivers/phy/rockchip/phy-rockchip-snps-pcie3.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
+index 4e8ffd1..ce7d8db 100644
+--- a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
++++ b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
+@@ -18,6 +18,9 @@
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ #include <linux/reset.h>
++#include <linux/units.h>
++
++#define RK_PCIE_SRAM_INIT_TIMEOUT_US		(20 * USEC_PER_MSEC)
+ 
+ /* Register for RK3568 */
+ #define GRF_PCIE30PHY_CON1			0x4
+@@ -127,7 +130,7 @@ static int rockchip_p3phy_rk3568_init(struct rockchip_p3phy_priv *priv)
+ 	ret = regmap_read_poll_timeout(priv->phy_grf,
+ 				       GRF_PCIE30PHY_STATUS0,
+ 				       reg, SRAM_INIT_DONE(reg),
+-				       0, 500);
++				       1000, RK_PCIE_SRAM_INIT_TIMEOUT_US);
+ 	if (ret)
+ 		dev_err(&priv->phy->dev, "%s: lock failed 0x%x, check input refclk and power supply\n",
+ 		       __func__, reg);
+@@ -187,11 +190,11 @@ static int rockchip_p3phy_rk3588_init(struct rockchip_p3phy_priv *priv)
+ 	ret = regmap_read_poll_timeout(priv->phy_grf,
+ 				       RK3588_PCIE3PHY_GRF_PHY0_STATUS1,
+ 				       reg, RK3588_SRAM_INIT_DONE(reg),
+-				       0, 500);
++				       1000, RK_PCIE_SRAM_INIT_TIMEOUT_US);
+ 	ret |= regmap_read_poll_timeout(priv->phy_grf,
+ 					RK3588_PCIE3PHY_GRF_PHY1_STATUS1,
+ 					reg, RK3588_SRAM_INIT_DONE(reg),
+-					0, 500);
++					1000, RK_PCIE_SRAM_INIT_TIMEOUT_US);
+ 	if (ret)
+ 		dev_err(&priv->phy->dev, "lock failed 0x%x, check input refclk and power supply\n",
+ 			reg);
+-- 
+2.7.4
+
 
 _______________________________________________
 Linux-rockchip mailing list
