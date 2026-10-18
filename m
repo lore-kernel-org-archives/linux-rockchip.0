@@ -4,91 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DFBECCF2CC
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Oct 2026 06:36:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A8E2CCF2C4
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Oct 2026 06:45:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q+021M8GxotQCFbeE92iIzB2iSAcUCP35HBkog7RLw8=; b=2nGYYcRj41cVRp
-	aDe7+Op+rgdea0X7Oa4YWq88WPa0syBoDL2Desaj1FwBtsWYE/eR0XSK6GeguoXxfdeQ5TJAF8dKk
-	LTi6hT8NL6Nj0e9O9ko3YrrT7K7OPgH+FQRPmsYbp6hHUDiKyAqRKFHkgewgvvtV0off5UeVmhuPW
-	Or2ZEqPR8Sh7LZDsUt0lfJRZyF0aIEBB88HQqbyBCKaD60x+kjLW1Ih9hFgGwP1HVY1Onz/IKlXne
-	fYOib8R6xjwhKYvGHmkTQT7fh4FhOZQbTRQy9ZF5f6pL0C4ZKL2IlN3tcpiGASKLt8E3OPtA97Chb
-	30bGX5V3e5zSYn1kaj5Q==;
+	List-Owner; bh=TnWziIDjHlG66AxMPp0ZJaAurfSg20wowfoUJMM4eaI=; b=u9hidsLzorqdZQ
+	gQw9rh50+kGOnaZGZyJLrouWOE0P/pyx4BDHyNMoJ6bnEmvntAAZuIFRdJXbvgc1QbuDwWRdRl+8B
+	WEheneOX9F8Bl6wPKxLrvz7RCur7Id+yH1LPy/mGcdfAeuV5ut+1IZHUz84gpdRZHMHKW1HwinX1i
+	RhMrGg7wIIJsbrs9NdGvDGrgbwyWe9PLL4OZaSmCPoicocvLoT/kGXAn1VbXm4xCJS2CYjfWx+5wO
+	h/NHtM7hI2PpHgMIOaUdLVzEjQURPCK4QWtovuTnO6rqAIpOxE6SzKgjIBZSh5iO8i/Y0qQa5zEak
+	LMJRp0uOXsh0bCFwn4Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIKVA-00000005czl-3XOJ;
-	Sun, 18 Oct 2026 06:36:12 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1xIKeF-00000005djK-0miK;
+	Sun, 18 Oct 2026 06:45:35 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIKV4-00000005cwX-3OiK
-	for linux-rockchip@lists.infradead.org;
-	Sun, 18 Oct 2026 06:36:08 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-89f85edd210so488885b3a.2
-        for <linux-rockchip@lists.infradead.org>; Sat, 17 Oct 2026 23:36:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792305366; x=1792910166; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=tCpwVytRBHG001ylJlx6CLpltdlyxsoct+VeDjqc/64=;
-        b=S6sgD6MvJdSCNbi/dA0fSqyzPZH1rsV7mIm4DbNIbrUazItjyp7hgh9gUx+Gd46Y/R
-         ECfoZAkbgCNJgDf089Me/1G7CWBJn3zQVBGCy8AGrEEsyurgE2J7o20V7cslpBoQlWTz
-         STSuHhbEZKVyK1dKL8C1/dEJvJuYQkpk2CAlEGuvpR42pyKEvdBLmmb4icEAjI95EMuZ
-         t4CksuYzdpIzjCqIik3lxn/HTfAt4hc15qUJ7wKr/WKihZEWCxWdv8WiBjQ0VaL668f3
-         YFrv/GaeFWIhz8cdlPo9MUsi9Mdy/kw3Q3v0yCNsnPRu2mHRsvMXSxLEVlV2ixCpaoLj
-         Kkmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792305366; x=1792910166;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=tCpwVytRBHG001ylJlx6CLpltdlyxsoct+VeDjqc/64=;
-        b=npxtienlUQHFKZN7wdAOOZvUrTUvSrB+h8skh0SMZtby28BaadO//wh3i8HVRVEbRh
-         2GKxpuv7soadD7IR+QmGv2kdgRS/NzAF952kvsd581Xpb8rzm4o2NwfJ2LxjxThTHrpJ
-         pa14kAh7YqR5gaetp3OrdhmigJk8YuBWVYr3r7bv4V/99957xQfVsWkiqqZ81za5PUwC
-         NbmkxHHjd5UMjblUbn4zJxufb2dA3UfPMvzRZwtbsfM0FHoAkruhdd1l2lJJIMuy7+Oc
-         3G4mUsxrm07JwM6itIMzN9x7xhnT5w4jW2VUv535dbEyH3+VfwlUoh8MniUdA5UMzdGB
-         VV9A==
-X-Forwarded-Encrypted: i=1; AKwUvBwh3ZTWxcQbHjvrdXNH/ytMIf9Ht4UB7KiFk/q2g/l9Dufbn42mhxiX1Jjp4QW4uqxgs3r+8Yz09Fc70QzXLw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJMznZlmR/+CJT103+oiEfgwwUetT6ljiUpXU4lK5rchkYdMC+L
-	UvMs+OE9YygAfyLnEqEZj+UrL6L7WfqaHyc0dDZsAR+Qr5Y/kiIYeqF5
-X-Gm-Gg: AYBFou2FYQcZmJETH5TCw3xwiou/jiSX0b24HuWfrXesoTk3041XrZoHJzS7C06GStR
-	OgUDUCO7b86rKv1p0j0Zgl3utD4lTS8oJBB2gCCyX7jALUEb5Nsxc4aHLOO9IRvdJZ59wcvRuCD
-	LJLFrEs7cvGK4iuLyvnvLms8UiU+BP1aRkssiQxgmpeoyR98cCGK7+glNTdZcsFA+ww7HppHGlQ
-	Vwl150FLBF8N7DDYrJo95kC0RcuehZ7wLTtGITJWt2fxldSn/lUI9D0ognIRYYNO1S2Ra/YsU2R
-	yM5Qm7fJ5j42ogpeO/tux4vYgX1O11qaI9ETMSAjXNXbONibgmE5vqeeWhjH445QyVIzHDw0MLK
-	Ph0fS0IbDkEYbJPV25sfMngVL7Y+QBUSKfmvuI/CB/BmWY9uDmwKurr8OJHRLcqkfNnHcCKrO2W
-	RtN7NLJiBVWXbnGkzDULr+ycQ7TBDxkRGsB+1ZVlDSpeOpugSsgyytDtLKY9/sCIVeLsqVxnzUj
-	EIvpm5rscQLa63s3w==
-X-Received: by 2002:a05:6a00:13a0:b0:89e:ad95:e01 with SMTP id d2e1a72fcca58-8a04be6af1emr3279470b3a.46.1792305365889;
-        Sat, 17 Oct 2026 23:36:05 -0700 (PDT)
-Received: from [127.0.1.1] (2403-580b-35b2-8--43b.ip6.aussiebb.net. [2403:580b:35b2:8::43b])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-89f57653ea9sm2718874b3a.32.2026.10.17.23.36.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 17 Oct 2026 23:36:05 -0700 (PDT)
-From: Kel Modderman <kelvmod@gmail.com>
-Date: Sun, 18 Oct 2026 16:35:30 +1000
-Subject: [PATCH 1/2] arm64: dts: rockchip: Move SD card regulator to Orange
- Pi 5/5B
+	id 1xIKeA-00000005di4-2e76;
+	Sun, 18 Oct 2026 06:45:31 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 56CD744500;
+	Sun, 18 Oct 2026 06:45:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 320A71F000C5;
+	Sun, 18 Oct 2026 06:45:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792305930;
+	bh=7foX2sltJUBrduQaVLWCnWkINXoCkL4ewEk5y5ZKQ58=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=Zogmw17uoSjVmvTpbTjGgSQHk/XQKQObiSDRXGOMLOqj8YxLEaWE4DCQwudfUyuzJ
+	 GEjLPRfApfAvyS6x9APx5Yr4MO9E5I5b3tCAZ13Dkxzy9mbt+Ekz4FsLZNlY/nKd2U
+	 HGStFM2SUZoqs2sWqHojVeCh/dswU9yY6cQkSWRrSmQYR3pZbp9SFVeSCJajUEv3SJ
+	 iWzKzWf9ZXpjSsIVp9Pj4sxX2VktaHgX/3fcJ3GC+2rWUAisjlXlQsKYqmQsJ5SeS/
+	 quS33+0yUAwrG7STT+Sqeo/LJ9sCsyXWivR63BWr+mj2518y1r7+JfT+BwB3K1Qirz
+	 tOmqHQkZZMKWQ==
+Subject: Re: [PATCH net-next v12 2/6] dt-bindings: net: pcs: add
+ rockchip,rk3568-xpcs support
+From: netdev-bot+sashiko@kernel.org
+To: coiaprant@gmail.com
+Cc: kuba@kernel.org, netdev@vger.kernel.org, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@kernel.org, pabeni@redhat.com, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+ maxime.chevallier@bootlin.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, hkallweit1@gmail.com, linux@armlinux.org.uk,
+ david.wu@rock-chips.com, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Date: Sun, 18 Oct 2026 06:45:28 +0000
+Message-ID: <179230592878.3135.12873232337699291552@kernel.org>
+In-Reply-To: <20261017054406.1828061-3-coiaprant@gmail.com>
+References: <20261017054406.1828061-3-coiaprant@gmail.com>
+X-sashiko-severity: Low
 MIME-Version: 1.0
-Message-Id: <20261018-opi5pro-amp-v1-1-05c84e91bf6d@gmail.com>
-References: <20261018-opi5pro-amp-v1-0-05c84e91bf6d@gmail.com>
-In-Reply-To: <20261018-opi5pro-amp-v1-0-05c84e91bf6d@gmail.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Dennis Gilmore <dennis@ausil.us>, Alexey Charkov <alchark@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Kel Modderman <kelvmod@gmail.com>
-X-Mailer: b4 0.16.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261017_233606_858035_B767AB42 
-X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,94 +70,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-vcc_3v3_sd_s0 switches SD card power via GPIO4_B5 on the Orange Pi 5 and
-5B, but the shared rk3588s-orangepi-5.dtsi is also included by the
-Orange Pi 5 Pro. On the Pro, SD power is not switched and GPIO4_B5
-enables the headphone amplifier instead, so the inherited regulator
-claims that pin.
-
-Move the regulator and the sdmmc vmmc-supply into
-rk3588s-orangepi-5-5b.dtsi, which only the 5 and 5B include.
-
-Fixes: f47af8ebbe53 ("arm64: dts: rockchip: Add Orange Pi 5 Pro board support")
-Signed-off-by: Kel Modderman <kelvmod@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi | 14 ++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi    | 11 -----------
- 2 files changed, 14 insertions(+), 11 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
-index 6e081bc06c..13351e4130 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
-@@ -67,6 +67,16 @@ vbus_typec: regulator-vbus-typec {
- 		regulator-max-microvolt = <5000000>;
- 		vin-supply = <&vcc5v0_sys>;
- 	};
-+
-+	vcc_3v3_sd_s0: regulator-vcc-3v3-sd-s0 {
-+		compatible = "regulator-fixed";
-+		gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_LOW>;
-+		regulator-name = "vcc_3v3_sd_s0";
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc_3v3_s3>;
-+	};
- };
- 
- &gmac1 {
-@@ -218,6 +228,10 @@ regulator-state-mem {
- };
- 
- 
-+&sdmmc {
-+	vmmc-supply = <&vcc_3v3_sd_s0>;
-+};
-+
- &usb_host0_xhci {
- 	dr_mode = "otg";
- 	usb-role-switch;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-index fd0efa8d1b..615e914fdc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-@@ -39,16 +39,6 @@ hdmi0_con_in: endpoint {
- 		};
- 	};
- 
--	vcc_3v3_sd_s0: regulator-vcc-3v3-sd-s0 {
--		compatible = "regulator-fixed";
--		gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_LOW>;
--		regulator-name = "vcc_3v3_sd_s0";
--		regulator-boot-on;
--		regulator-min-microvolt = <3300000>;
--		regulator-max-microvolt = <3300000>;
--		vin-supply = <&vcc_3v3_s3>;
--	};
--
- 	vcc5v0_sys: regulator-vcc5v0-sys {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc5v0_sys";
-@@ -297,7 +287,6 @@ &sdmmc {
- 	no-mmc;
- 	no-sdio;
- 	sd-uhs-sdr104;
--	vmmc-supply = <&vcc_3v3_sd_s0>;
- 	vqmmc-supply = <&vccio_sd_s0>;
- 	status = "okay";
- };
-
--- 
-2.55.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhhbmsgeW91IGZvciB5b3VyIGNvbnRyaWJ1dGlvbiEgU2FzaGlrbyBBSSByZXZpZXcgZm91bmQg
+bW9yZSBzZXZlcmUKaXNzdWUocykgaW4gb3RoZXIgcGF0Y2hlcyBvZiB0aGlzIHNlcmllcy4gVGhp
+cyBtYWlsIGlzIG9ubHkgYW4gRllJLCBpbiBjYXNlCnlvdSB3YW50IHRvIGFkZHJlc3MgdGhlIG5p
+dCBwaWNrcyBiZWxvdyB3aGVuIHlvdSByZXNwaW4uCgpMb3cgcHJpb3JpdHkgLyBuaXQgcGlja3Mg
+Zm9yIHlvdXIgY29uc2lkZXJhdGlvbjoKCi0gW0xvd10gVGhlIG5ldyBiaW5kaW5nCiAgRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9wY3Mvcm9ja2NoaXAscmszNTY4LXhwY3Mu
+eWFtbOKApgoKLS0KCmR0LWJpbmRpbmdzOiBuZXQ6IHBjczogYWRkIHJvY2tjaGlwLHJrMzU2OC14
+cGNzIHN1cHBvcnQKClRoaXMgcGF0Y2ggYWRkcyBhIGRldmljZSB0cmVlIGJpbmRpbmcgZm9yIHRo
+ZSBTeW5vcHN5cyBEZXNpZ25XYXJlIFhQQ1Mgb24KdGhlIFJvY2tjaGlwIFJLMzU2OCBTb0MuIFRo
+ZSBYUENTIHNpdHMgb24gdGhlIEFQQjMgYnVzIGFuZCBjb25uZWN0cwppbnRlcm5hbGx5IHRvIHRo
+ZSBOYW5lbmcgQ29tYm8gU2VyRGVzIFBIWS4gSXQgc3VwcG9ydHMgMTAwMEJBU0UtWCwgU0dNSUkK
+YW5kIFFTR01JSS4KCj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
+aW5ncy9uZXQvcGNzL3JvY2tjaGlwLHJrMzU2OC14cGNzLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2Rl
+dmljZXRyZWUvYmluZGluZ3MvbmV0L3Bjcy9yb2NrY2hpcCxyazM1NjgteHBjcy55YW1sCj4gbmV3
+IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwMDAwMDAwLi5hMzMxODgwZWIxMWMxCj4g
+LS0tIC9kZXYvbnVsbAo+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9u
+ZXQvcGNzL3JvY2tjaGlwLHJrMzU2OC14cGNzLnlhbWwKClsgLi4uIF0KCj4gK3Byb3BlcnRpZXM6
+Cj4gKyAgY29tcGF0aWJsZToKPiArICAgIGNvbnN0OiByb2NrY2hpcCxyazM1NjgteHBjcwo+ICsK
+PiArICByZWc6Cj4gKyAgICBtYXhJdGVtczogMQo+ICsKPiArICBjbG9ja3M6Cj4gKyAgICBpdGVt
+czoKPiArICAgICAgLSBkZXNjcmlwdGlvbjogQVBCMyBidXMgaW50ZXJmYWNlIGNsb2NrIChjbGtf
+Y3NyX2kpLCByZXF1aXJlZCBmb3IgcmVnaXN0ZXIgYWNjZXNzCj4gKyAgICAgIC0gZGVzY3JpcHRp
+b246IEVFRSBjbG9jayAoY2xrX2VlZV9pKSwgcmVxdWlyZWQgZm9yIEVuZXJneSBFZmZpY2llbnQg
+RXRoZXJuZXQgb3BlcmF0aW9uCj4gKwo+ICsgIGNsb2NrLW5hbWVzOgo+ICsgICAgaXRlbXM6Cj4g
+KyAgICAgIC0gY29uc3Q6IGNzcgo+ICsgICAgICAtIGNvbnN0OiBlZWUKPiArCj4gKyAgcGh5czoK
+PiArICAgIG1heEl0ZW1zOiAxCj4gKwo+ICsgIHBvd2VyLWRvbWFpbnM6Cj4gKyAgICBtYXhJdGVt
+czogMQo+ICsKPiArcmVxdWlyZWQ6Cj4gKyAgLSBjb21wYXRpYmxlCj4gKyAgLSByZWcKPiArICAt
+IGNsb2Nrcwo+ICsgIC0gY2xvY2stbmFtZXMKPiArICAtIHBoeXMKPiArICAtIHBvd2VyLWRvbWFp
+bnMKPiArCj4gK2FkZGl0aW9uYWxQcm9wZXJ0aWVzOiBmYWxzZQoKW1NldmVyaXR5OiBMb3ddClNo
+b3VsZCB0aGlzIGJpbmRpbmcgbGV0IHRoZSBYUENTIGFjdCBhcyBhIGNsb2NrIHByb3ZpZGVyPwoK
+VGhlIFJLMzU2OCBDUlUgdXNlcyBYUENTLW5hbWVkIGNsb2NrcyBhcyBwYXJlbnRzIGZvciB0aGUg
+R01BQyBSWC9UWAptdXhlcywgaW4gZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzU2OC5jOgoK
+UE5BTUUobXV4X2dtYWMwX3J4X3R4X3ApID0geyAiY2xrX2dtYWMwX3JnbWlpX3NwZWVkIiwgImNs
+a19nbWFjMF9ybWlpX3NwZWVkIiwgImNsa19nbWFjMF94cGNzX21paSIgfTsKUE5BTUUobXV4X2dt
+YWMxX3J4X3R4X3ApID0geyAiY2xrX2dtYWMxX3JnbWlpX3NwZWVkIiwgImNsa19nbWFjMV9ybWlp
+X3NwZWVkIiwgImNsa19nbWFjMV94cGNzX21paSIgfTsKClRoZXNlIGFyZSB0aGUgcGFyZW50cyBv
+ZiBTQ0xLX0dNQUMwX1JYX1RYIGFuZCBTQ0xLX0dNQUMxX1JYX1RYLgpyazM1NngtYmFzZS5kdHNp
+IHBhc3NlcyB0aG9zZSBjbG9ja3MgdG8gdGhlIEdNQUMgYXMgbWFjX2Nsa19yeCwKbWFjX2Nsa190
+eCBhbmQgY2xrX21hY19zcGVlZC4gTm90aGluZyBpbiB0aGUgdHJlZSByZWdpc3RlcnMKY2xrX2dt
+YWMwX3hwY3NfbWlpIG9yIGNsa19nbWFjMV94cGNzX21paSB0b2RheS4KCkZvciBTR01JSSBvbiBH
+TUFDMC9HTUFDMSwgYSBib2FyZCBEVCB3b3VsZCBuZWVkIGFzc2lnbmVkLWNsb2NrLXBhcmVudHMK
+dG8gcG9pbnQgU0NMS19HTUFDbl9SWF9UWCBhdCB0aGUgWFBDUyBNSUkgY2xvY2suIFRoaXMgc2No
+ZW1hIGhhcyBubwojY2xvY2stY2VsbHMgb3IgY2xvY2stb3V0cHV0LW5hbWVzLCBhbmQgYWRkaXRp
+b25hbFByb3BlcnRpZXM6IGZhbHNlCm1lYW5zIGR0X2JpbmRpbmdfY2hlY2sgcmVqZWN0cyB0aGVt
+LiBTbyB0aGUgRFQgY2FuJ3QgbmFtZSB0aGUgWFBDUyBub2RlCmFzIHRoZSBzb3VyY2Ugb2YgdGhh
+dCBjbG9jay4gQm9hcmRzIHdvdWxkIGhhdmUgdG8gdXNlIGEgZml4ZWQtY2xvY2sKcGxhY2Vob2xk
+ZXIgY2FycnlpbmcgdGhlIENSVSdzIHN0cmluZyBuYW1lIGluc3RlYWQuCgpEb2N1bWVudGF0aW9u
+L2RldmljZXRyZWUvYmluZGluZ3Mvd3JpdGluZy1iaW5kaW5ncy5yc3Qgc2F5cyAiRE8gYXR0ZW1w
+dAp0byBtYWtlIGJpbmRpbmdzIGNvbXBsZXRlIGV2ZW4gaWYgYSBkcml2ZXIgZG9lc24ndCBzdXBw
+b3J0IHNvbWUKZmVhdHVyZXMiLiBUaGUgY29tbWl0IG1lc3NhZ2UgZXhwbGFpbnMgd2h5IHRoZSBT
+UlNUX1hQQ1MqIHJlc2V0cyBhcmUKbGVmdCBvdXQgYnV0IHNheXMgbm90aGluZyBhYm91dCB0aGUg
+TUlJIGNsb2NrIG91dHB1dHMuCgpDb3VsZCAjY2xvY2stY2VsbHMgKGFuZCBjbG9jay1vdXRwdXQt
+bmFtZXMsIGlmIG5lZWRlZCkgYmUgYWRkZWQgZm9yIHRoZQpwZXItcG9ydCBNSUkgY2xvY2tzPyBP
+ciBjb3VsZCB0aGUgY29tbWl0IG1lc3NhZ2Ugc2F5IHdoeSB0aGV5IGFyZSBsZWZ0Cm91dD8KCj4g
+Kwo+ICtleGFtcGxlczoKClsgLi4uIF0KCi0tIApTYXNoaWtvIEFJIHJldmlldyDCtyBodHRwczov
+L25ldGRldi1haS5ib3RzLmxpbnV4LmRldi9zYXNoaWtvLyMvcGF0Y2hzZXQvMjAyNjEwMTcwNTQ0
+MDYuMTgyODA2MS0xLWNvaWFwcmFudCU0MGdtYWlsLmNvbQoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
+bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
