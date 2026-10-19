@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF35DCCF2E3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 13:36:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E323CCF2E3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 13:37:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
 	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S2T4AllS2ebln3d33RHgWAFCGHkvuW7lT+YF18XDB04=; b=VLZ6OCDq5j/42kf430AbVEnEd+
-	+YGo4hXtrCQk1Euby8wwNlaupgVDk9d0QRvp92iAmqUTAd2d/I5Ya7b41kbe2QDbRWjD/ZGw5oM5C
-	HbHs9XDfIDdumgVPzCN6uBezLO6/F9pE5fByGmxSMtjgx8v6Cq7be1daMNGzm1ZoJ0giFEZdvpohz
-	zZvx5Pkgxc+BbaEuXzYJH9k3rTulWMuECLr6txSzA7o63M3GeJTC/oiZDe0HpJ5JY9GpPUK2AvbIY
-	iJU/BFrYw/YH44VQHAtKEedk2ILQqLx7bsq+bMD3U59A3Kd6QJiQEBg9VARC+Trs87N+qrIIfurIy
-	FctLqNCA==;
+	bh=VmMt1lhemKA77+BzjnKyNCK7pNIcDvwgtF1Zh2L2NxY=; b=iqg1oVjmaMDxTcqp8TlSeJo4xt
+	SEabJrU2QK1YcwDxLY+Re7x145Rl1wAGZ9XuAqVgZ+qVW4m6Q6Sd6LCMHqJw7G1li0mHszXY3wU4H
+	6adrOQ4tFjsvDshRnggJNMUfh1q0WoNynwr7fe2UKCkGmKQr/6+6N4/VE/oOdV4rFTj9MYeR+cCPF
+	hNlYIXd/44teTCSHJv7na55KWwyXt4izbvAsWCPQYBXqCxPld/dYQWf3laLE4uhMoZ+TK5uvjLsbJ
+	GnToB5LWPEkuUP1gbbQcm3We3iFDfM1rRXFNx+A4HFZuWaPW3tVAb1p+18UQQ+SAHOhllu4nNI9Cr
+	y33Ev9mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInXB-00000007Wnf-3F2Z;
-	Mon, 19 Oct 2026 13:36:13 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1xInY6-00000007Wwp-0dVh;
+	Mon, 19 Oct 2026 13:37:10 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInX9-00000007Wml-0Hj3
+	id 1xInY2-00000007WwA-20lu
 	for linux-rockchip@lists.infradead.org;
-	Mon, 19 Oct 2026 13:36:12 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-4a171b677d2so12597575e9.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 19 Oct 2026 06:36:09 -0700 (PDT)
+	Mon, 19 Oct 2026 13:37:07 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-6b1f4d8e09aso3019657a12.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 19 Oct 2026 06:37:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=tuxon.dev; s=google; t=1792416969; x=1793021769; darn=lists.infradead.org;
+        d=tuxon.dev; s=google; t=1792417024; x=1793021824; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:in-reply-to:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=u7QI1RqFBazH73cHjUm3bJRQ468s8YNQSYzETjY7O2I=;
-        b=Bi8uBr66BPe4Z8RsUkAgyKrUIhZrDT2/GzQZ6XIa3AsGXAgnPkBm4uFtpOcIoRkqvn
-         KWUbbCzQUWnSXmXJ/epZiEkdbGsJzn0BbBPkJ1E1Z+j9cMjeTe3v1RShqDyVF87IcgGl
-         mLS/Gzvv+VLUYkMHIwPf20bdDQX0jQSxeyPzWKFqpz19L41COSjxo+JdRtoWL7JU4lVf
-         7l4/0d3V/36sFvruLMeXcRNevfM7N+U/U0ATMHzDmKEIDaphdQDW8VHfMkrHulGsOkFr
-         CJY0k+rd+fTaSSc31SyPSgIMw1hOAZ15KG7skMO5TXvXusBOpjve9vNDOV+y0eJ7/rRG
-         jUAQ==
+        bh=kc0HBa20pNgTgn9A/dNG9MRjR4EzrI7cz68avvggZvk=;
+        b=ne+zXMmCTjGRLo5qIi+wiwyDqo/KJnJhAlU5XA8OuMbtwCrMH8bmQ2hKxp/DzwIPfp
+         B5As1B4y14CTm9o/5we/fYLLydHBlFGeEMmTnrFZOn/PwZc2DEDAw9CcM8ONyDLfsAMR
+         FKPrH4Iv1kBmAl1aQ7rOOwcCmEi+2hk0jg94nNAbW5g8wwbaanFPsppP1wNfhV/bUSjL
+         Rx2UN5prJF7Fmkbkp6SZyVcmGDKj81Oz8nILjBEP802Q1Ipm4S59ErcsBqrOO3sKrEES
+         orrXODbuPA/VddbYm7Qjo4ZUuUwlANsCdyvcmKMZBDdfloT5753AN1MAXBchbWm6yWwN
+         r6Pg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792416969; x=1793021769;
+        d=1e100.net; s=20260707; t=1792417024; x=1793021824;
         h=content-transfer-encoding:content-type:in-reply-to:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=u7QI1RqFBazH73cHjUm3bJRQ468s8YNQSYzETjY7O2I=;
-        b=2p1pG4LSzFLP5kp4R21PV7Xv3CfkRl/tGBo/9s0NBA/moLVPiROx5+r6n//9DUPh0z
-         mOMBPYR2HiqWwo8xXwkImr0hDkUYmbfO9Ka/R1wXaca28n8zyLmVQ59klxOQS+A88Pq+
-         cwKwvDojrDXmFv402heKbqkrx5zC7ZVK5wNygjPm7M/0Lu5cwotsyOdZDNMM2p4FwxUx
-         5W59w9K0owVcVmdekKKoesxBoKHy8OApfLTAC8WBJAfzJypDfJlCr7kSqgnI9YlbpblV
-         Ev4gazPTGw63r+1FpNf2bzXd5n3MW67MiRCC0C7oYMu87VuTr7DkXkovjGKQj3l6+LGA
-         pcvw==
-X-Forwarded-Encrypted: i=1; AKwUvBx1zscX54K+ir3PmLFjC8gSgfqIvwzHBDqKzIUgwP5ZncVESgS4KblV5Yjqp2prwkrUbTGmAGM4e1VLJOWCaA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJx+ovAfxt3lI5OzaLRs1/+xq73pcBA22DR2qdnKTyyrhPALXdP
-	6iihhp0TLzypnvXy2eiGXwMcUUg6pKq12ZizL4jomX0FPXOVMBwoT8+ioNojjmutHb0=
-X-Gm-Gg: AYBFou2DA7/leXiMEBpNPZR62NVIyfBwK8loj0hP6CP4d1Gmc4ejI8KjAZrwNDXaqfL
-	XBer5SPMqNxMM1L30B2MbHozWDd/o9XTXFQ3S4NkRLeuGKUHFFrdehtyY53J3ET7NVLwbVaOmw/
-	jvMsT5S1OIFVW/CueuEQV36GwBeXliZckl0pxMrN0ht7OLxM67Ha5A5GGevD1PcukCc1JJq5IhJ
-	FCI8zHNOQTszdA8v3y1wAukl8vNBd2EkGFmdwtUdga1XQQIVIhOJqCCBC23Noa3O/2mKkkbZoOT
-	sZipw3xioJrpiU0W4qymMjuBE0mFDleVjPDiDgYtRixCZ0CxK5XAkYAcegMaqudexnaNtSl3HAz
-	88ehmVXuDlRa2YPqZTVApETvPikilSzdu5I/6qLT6igfQOEAgOctsO2gtcN5oEtM8Xx354GD6CQ
-	b6ObqdL05QzgaEud57EODOWh7TSnzV1JJF+kT2yg3lJVWn/QwgaV38qxutgf3i3hKKW41UoIwWk
-	OwEEkzP
-X-Received: by 2002:a05:600c:c168:b0:4a1:ed0c:f051 with SMTP id 5b1f17b1804b1-4a1ed0cf21dmr30497355e9.5.1792416967770;
-        Mon, 19 Oct 2026 06:36:07 -0700 (PDT)
+        bh=kc0HBa20pNgTgn9A/dNG9MRjR4EzrI7cz68avvggZvk=;
+        b=cGOXNzoyXdOPl0N3otEg3dggiFL74MshCwKD4dY/rDdPaP0WmT5UHKk6KFZ2bM9n6F
+         jsJkVjtP8DGaj7Pir34GH0gPXTMvYrfc2IOdeghzxX5E66YJhjnUYqeszJnYuGC8NXS0
+         DE2HqMqQQTEKDIyQo1orPluHybJYV1YxaZG/4ZxFPCXP1OOAGR87hXEk4Rn1OMEQEZXQ
+         OCc2PY/OzJtRplhQr2M7UcXDh7iU0sxZanCB4J72k9s/Rsl0Gmsn251RW994/LYnfIn5
+         IkVqdAOXYyNwXF4Y/Ga8OxgDbRn84WGyju1GSaiOwUIXBE4OlcRh01qjf6cvEihzPQzT
+         bP1g==
+X-Forwarded-Encrypted: i=1; AKwUvBzv/DI9QZFYfLobxUu26OOvdjxiGShKHvZbkg5w2xQFfh3yVmg6nVzi0O9vkal6PaixV2W6962ufTe9Gmn8cg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKAqad37whYn+tU2D/HlIYABOpNvepS17eh3GbG1cHH5v9NrEUe
+	84vzGZjIBjvUdLLhPqQOjbTYC6pErWzC5IGFJiMvbRewQhlad2XzlQZvgK5gB2j/AtY=
+X-Gm-Gg: AYBFou2qqA5e0Il7wemMcPXZ3rKWWrg/9nGZR1I9xRDDOOAN1newQA+3KuKU7Z8ZJsz
+	6mdUSHTbMX8kkXQgdJK0N3MsJtUr3n3Y+vj1waYaOZb9fq8S4UXbq3/lpe7dhRSjRmuwVAYoegU
+	J66+j+jdmZnFtgrnmKPW4helztTvCqdNXnfB1Qi2iPDptdtdpm437kqeL7ecpZ6cvSRutwygDLH
+	mJgw422ShJeMEcN9vhOK112C/mP8GmQ/JRjyTRT+MNlyfpT1ucAKtAibp3Kb4ScyR/8byCeOlqO
+	iFFxmGDPtzpfMh83goNugfV3OasJo8wtuuXpzfcwO1+fM+IWEHErzy2NqmHPzYrtxyambpCfkHP
+	YmLV/rh4Kn5fMrTTwsMzGHL0/dGgef/QPSg2MoG7BbXDcMxvEUapGyqX9C+zDHIQygZodDYhiO0
+	DUhd1sPLm83xDYYOE1HaUqsb9uTgIdq+ztS9Szt6aBwKQKtqY10CXpklOPJ7wY5DZW/omzFsQeI
+	1rbLZs=
+X-Received: by 2002:a05:6402:5489:b0:6af:8a4b:7aad with SMTP id 4fb4d7f45d1cf-6b3a81a6d00mr4333695a12.28.1792417023411;
+        Mon, 19 Oct 2026 06:37:03 -0700 (PDT)
 Received: from [192.168.50.4] ([82.78.167.221])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48dfd4f8cfesm20387473f8f.37.2026.10.19.06.36.00
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48dfd4f5177sm22897379f8f.30.2026.10.19.06.36.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Oct 2026 06:36:03 -0700 (PDT)
-Message-ID: <0cf7bef8-42fd-475d-b47a-9cb8629644ed@tuxon.dev>
-Date: Mon, 19 Oct 2026 16:35:59 +0300
+        Mon, 19 Oct 2026 06:37:01 -0700 (PDT)
+Message-ID: <14f60932-9a85-45ee-ad87-593c20cc116b@tuxon.dev>
+Date: Mon, 19 Oct 2026 16:36:57 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/11] ASoC: renesas: rz-ssi: Explain component open
- return value handling
+Subject: Re: [PATCH 10/11] ASoC: renesas: rz-ssi: Remove redundant component
+ open callback
 To: phucduc.bui@gmail.com, Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
  Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
@@ -102,13 +102,13 @@ To: phucduc.bui@gmail.com, Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
  Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
  Heiko Stuebner <heiko@sntech.de>
 References: <20261016040946.521195-1-phucduc.bui@gmail.com>
- <20261016040946.521195-10-phucduc.bui@gmail.com>
+ <20261016040946.521195-11-phucduc.bui@gmail.com>
 Content-Language: en-US
 From: claudiu beznea <claudiu.beznea@tuxon.dev>
-In-Reply-To: <20261016040946.521195-10-phucduc.bui@gmail.com>
+In-Reply-To: <20261016040946.521195-11-phucduc.bui@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_063611_169017_E61BC39C 
-X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-CacheID: sfid-20261019_063706_563786_3D6A6EC8 
+X-CRM114-Status: UNSURE (   6.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -132,15 +132,19 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 10/16/26 07:09, phucduc.bui@gmail.com wrote:
 > From: bui duc phuc<phucduc.bui@gmail.com>
 > 
-> Add a comment explaining why .open() must return 0 on success
-> to ensure the component is correctly marked as opened and
-> prevent future changes from reintroducing the issue.
+> In DMA mode, the generic dmaengine PCM component already applies
+> the integer PERIODS constraint in snd_dmaengine_pcm_open().
+> 
+> Since rz_ssi_pcm_open_dma() only applies this constraint, remove
+> the redundant component .open callback.
 > 
 > Signed-off-by: bui duc phuc<phucduc.bui@gmail.com>
 
 FTR:
 
 Reviewed-by: Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>
+Tested-by: Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
