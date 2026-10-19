@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E55C4CCF2E7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 10:29:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C77ECCF2E4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 10:29:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g3nNawcdfhqL4bkpeSJm1WIR69YfkVgn3JU5g+6HXpU=; b=Z8HFbgl3ESlXw8
-	LHOBTpV76BZMLFAUD/UCPGJfIgf/3/j3lQgGRG28XFTq3iMYXhN+kNrDnnXGLokEnJrnt5BeJs34z
-	D4XlXImimo2fY74aoo3I0jc7COre5qFJXpIQkh5JY99qJLR4HuNWeKVXwVei2erqFGUh7fnn8+yc4
-	83L/sMwgU3xFY+pxW9SHRovUiZENwjV80nnCR6GEUwcI3IbCxtSWkFx2wlAMHc+INxwZZ5CFkIUrg
-	lLZ2W/GpKzHn6SdIN0jM0mpMr+m06uXqUpZUmLcAHpeQSgq+I0u6MifidCdFk+HaS3mmKTDCAxEoo
-	M7Cagfsa5mMHBcJIkCfQ==;
+	List-Owner; bh=L5KdbqpsYISWplm95+fUTdMWWmDbAF6RPOfZAdOraqc=; b=jiOZ2H6P1RwN5h
+	KtdBUAgooo5chQLosKQWPkKj9PwrJbt6jFrbE+SeoNZSYr/7uI2Um6kr14DybpBwUbs5CoUw3Zzm/
+	pt30V0JLHalmGnv4wNqG1LQRYDg0s+iPkd641LF84zTRzzAixo43swJraJGT/7Lxd+SGNElld5ULE
+	OWZ534RDRhGdHD9TiMtyyftuBVecc+TU40tKeuBV+i8VGV+EZnEl9fAla4ODOesylPXRy7lp58K4C
+	mdnCVK6PSJwXm625+oYTKcA8ei7DkUD7kSX2h4wUuOFOCowZBUqHz0P8RlivtKRxlt5Rg0+KfDrWv
+	86DlC38SjFzvHPc3NJYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIkc9-00000007BvR-2zC5;
-	Mon, 19 Oct 2026 10:29:09 +0000
-Received: from mail-m9343.xmail.ntesmail.com ([103.126.93.43])
+	id 1xIkcA-00000007Bx8-0vvl;
+	Mon, 19 Oct 2026 10:29:10 +0000
+Received: from mail-m205210164252.xmail.ntesmail.com ([205.210.164.252])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIkbs-00000007Bde-3ill;
-	Mon, 19 Oct 2026 10:28:54 +0000
+	id 1xIkbv-00000007BeI-0IMz;
+	Mon, 19 Oct 2026 10:28:56 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 518d3ddad;
-	Mon, 19 Oct 2026 18:28:48 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 518d3ddb4;
+	Mon, 19 Oct 2026 18:28:49 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	Heiko Stuebner <heiko@sntech.de>,
@@ -59,26 +59,27 @@ Cc: Neil Armstrong <neil.armstrong@linaro.org>,
 	linux-kernel@vger.kernel.org,
 	linux-phy@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v2 5/6] drm/rockchip: analogix_dp: Add support for RK3568
-Date: Mon, 19 Oct 2026 18:28:23 +0800
-Message-Id: <20261019102824.3157044-6-damon.ding@rock-chips.com>
+Subject: [PATCH v2 6/6] arm64: dts: rockchip: rk356x: Add eDP controller and phy nodes
+Date: Mon, 19 Oct 2026 18:28:24 +0800
+Message-Id: <20261019102824.3157044-7-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261019102824.3157044-1-damon.ding@rock-chips.com>
 References: <20261019102824.3157044-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0aa153b4ebb803a8kunme348c01b2f6c4e
+X-HM-Tid: 0aa153b4f0f103a8kunme348c01b2f6c59
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCGk8ZVklJGElLSkhCQ04dGVYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaGUpJVklLSkNKH0odTkMeS1YVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=UwB4wSn/rBgxjYEqq23Aca4mCS85peuuusbGTAkUmvlqfXMP13iu4VEudylGE6F0rcQ62CoVlo5A4VXWaP4RRVEJZMJpAJsNlWf1GAUYzHtXmcAx9rVhTVXkFEIDRbc44mnDMY5sdp3Rd2s13lWLwug+epl/YclQxwjnnTUdCdU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=PIme3hcZlC53RfvT2IEjzq2swieDeYbsRW7Jr3b/EnY=;
+	b=Knnwf9OeJchsgWsBAold0rtvUsMcikqn3N7Tstzi0RF78LiKL+0hcUNzU3r66POuNBTKSc6aCQNh5ya64BLf4RfzI5tvu6iSx2UT0321l0g6IsDWW0wOw/4aIZw7VUk0LsLvVA+lqVUHpHaB+uYvsxtVEdloGDUjX85pRvm1NSs=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=u0DlQ/xf40TjrEq/cqhW2BlOW/2RL9CDbLOchel23Qo=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_032853_205398_A9430404 
-X-CRM114-Status: GOOD (  15.13  )
+X-CRM114-CacheID: sfid-20261019_032855_475281_6EDD6292 
+X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,86 +96,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3568 eDP controller does not require any GRF configurations,
-so make the "rockchip,grf" property optional.  Also enable the
-optional avdd-0v9 and avdd-1v8 supplies which power the eDP PHY.
-
-Add the "rockchip,rk3568-edp" compatible along with its chip data;
-the register base in the chip data is used to match the platform
-device memory resource.
+Add the eDP PHY GRF (with the eDP PHY child node) and the eDP
+controller nodes for the RK3568/RK3566 SoCs.
 
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-
 ---
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 41 +++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-Changes in v2:
-- Fail the probe when the chip data requires GRF configurations while
-  the "rockchip,grf" property is missing.(Sashiko)
----
- .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 24 ++++++++++++++++++-
- 1 file changed, 23 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index ccdd4b9ecdb8..38c78360842f 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -320,12 +320,17 @@ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
- 	struct device *dev = dp->dev;
- 	struct device_node *np = dev->of_node;
- 	struct clk *clk;
-+	int ret;
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+index a5832895bd39..3b60e4355ad8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -403,6 +403,20 @@ usb2phy1_grf: syscon@fdca8000 {
+ 		reg = <0x0 0xfdca8000 0x0 0x8000>;
+ 	};
  
--	dp->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-+	dp->grf = syscon_regmap_lookup_by_phandle_optional(np, "rockchip,grf");
- 	if (IS_ERR(dp->grf))
- 		return dev_err_probe(dev, PTR_ERR(dp->grf),
- 				     "failed to get rockchip,grf property\n");
- 
-+	if (!dp->grf && (dp->data->lcdc_sel.valid || dp->data->edp_mode.valid))
-+		return dev_err_probe(dev, -EINVAL,
-+				     "missing the required rockchip,grf property\n");
++	edp_phy_grf: syscon@fdcb0000 {
++		compatible = "rockchip,rk3568-edp-phy-grf", "syscon", "simple-mfd";
++		reg = <0x0 0xfdcb0000 0x0 0x100>;
++		clocks = <&cru PCLK_EDPPHY_GRF>;
 +
- 	dp->grfclk = devm_clk_get_optional(dev, "grf");
- 	if (IS_ERR(dp->grfclk))
- 		return dev_err_probe(dev, PTR_ERR(dp->grfclk),
-@@ -351,6 +356,14 @@ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
- 		return dev_err_probe(dev, PTR_ERR(dp->apbrst),
- 				     "failed to get apb reset control\n");
- 
-+	ret = devm_regulator_get_enable_optional(dev, "avdd-0v9");
-+	if (ret && ret != -ENODEV)
-+		return dev_err_probe(dev, ret, "failed to enable avdd-0v9\n");
++		edp_phy: edp-phy {
++			compatible = "rockchip,rk3568-edp-phy";
++			clocks = <&pmucru XIN_OSC0_EDPPHY_G>;
++			clock-names = "refclk";
++			#phy-cells = <0>;
++			status = "disabled";
++		};
++	};
 +
-+	ret = devm_regulator_get_enable_optional(dev, "avdd-1v8");
-+	if (ret && ret != -ENODEV)
-+		return dev_err_probe(dev, ret, "failed to enable avdd-1v8\n");
-+
- 	return 0;
- }
+ 	pmucru: clock-controller@fdd00000 {
+ 		compatible = "rockchip,rk3568-pmucru";
+ 		reg = <0x0 0xfdd00000 0x0 0x1000>;
+@@ -879,6 +893,33 @@ hdmi_out: port@1 {
+ 		};
+ 	};
  
-@@ -530,6 +543,14 @@ static const struct rockchip_dp_chip_data rk3288_dp[] = {
- 	{ /* sentinel */ }
- };
- 
-+static const struct rockchip_dp_chip_data rk3568_edp[] = {
-+	{
-+		.chip_type = RK3568_EDP,
-+		.reg = 0xfe0c0000,
-+	},
-+	{ /* sentinel */ }
-+};
++	edp: edp@fe0c0000 {
++		compatible = "rockchip,rk3568-edp";
++		reg = <0x0 0xfe0c0000 0x0 0x10000>;
++		clocks = <&pmucru XIN_OSC0_EDPPHY_G>, <&cru PCLK_EDP_CTRL>, <&cru HCLK_VO>;
++		clock-names = "dp", "pclk", "hclk";
++		interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
++		phys = <&edp_phy>;
++		phy-names = "dp";
++		power-domains = <&power RK3568_PD_VO>;
++		resets = <&cru SRST_EDP_24M>, <&cru SRST_P_EDP_CTRL>;
++		reset-names = "dp", "apb";
++		status = "disabled";
 +
- static const struct rockchip_dp_chip_data rk3576_edp[] = {
- 	{
- 		.chip_type = RK3576_EDP,
-@@ -555,6 +576,7 @@ static const struct rockchip_dp_chip_data rk3588_edp[] = {
- static const struct of_device_id rockchip_dp_dt_ids[] = {
- 	{.compatible = "rockchip,rk3288-dp", .data = &rk3288_dp },
- 	{.compatible = "rockchip,rk3399-edp", .data = &rk3399_edp },
-+	{.compatible = "rockchip,rk3568-edp", .data = &rk3568_edp },
- 	{.compatible = "rockchip,rk3576-edp", .data = &rk3576_edp },
- 	{.compatible = "rockchip,rk3588-edp", .data = &rk3588_edp },
- 	{}
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			edp_in: port@0 {
++				reg = <0>;
++			};
++
++			edp_out: port@1 {
++				reg = <1>;
++			};
++		};
++	};
++
+ 	qos_gpu: qos@fe128000 {
+ 		compatible = "rockchip,rk3568-qos", "syscon";
+ 		reg = <0x0 0xfe128000 0x0 0x20>;
 -- 
 2.34.1
 
