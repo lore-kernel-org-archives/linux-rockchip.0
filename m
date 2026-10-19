@@ -4,110 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69AD1CCF2DA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 08:54:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 217EBCCF2D6
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 08:59:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dDiIoNTgRCvoUrWRA8HsX586JinroG1nKyHO+IZlRAk=; b=vdAGvLTrg54hXT
-	/XZIo8s1Tuo3lDLc/zsXrK0Q6JHoW1uRxGKHuI0yMjvgyG6ovlQBhOrkv+NEYAladQNxgoNfM8aE7
-	qNsqUQDUnsowcTn8h4yyJp6cAQK3Vukto8S7L/LAnvGm813s75dE9FK6gF5cogmLbtzHjBBT0PMOm
-	Ss3UWNIBqIkDDvJc+ZqXsxtJiuSOcrjyoAnw0/vox5csBb9gm+p1hEoKqZ2cqD6C+zFpicqRul/+9
-	TlWZBMb7Z7wlGThKqJIIgq86ofcLPezUYY233L2c4C6lTXsYgd5t8b8GBP4X05yzJ1z9KaUDzV6D4
-	gr8mSdlcfB9O9aJ/AuWQ==;
+	List-Owner; bh=bBA6N4MaCIjZDMicTBD9ZLr8xG8JCRRs54itrUTAcMI=; b=Tm1TJYIqb7bJB6
+	rMavs4rB/Uq/q8UE9MG4RdWNITuS2ZCUrBOAMAG4sS1ULnf0okncblTZEwpvZxYn0WHH+U5IcMqTs
+	ovKhDcPMs15PRZY/IxT2LAMC2uix1pWGFNFQmJu6cHF3wNyKtf3pCgoajxfQWyYTQQkT4QQvl9cGr
+	1+E1ITmMH2jdBiAHDOa1gFuR1Mr/JOecPgJHScf10F4Oqvdvw1a+E3cLLdCKgrwRrITHhMI5IyS4W
+	38yz5rdOjA0FVVdo+1Ss6jI8WY39cxI+zRWXmoTZoGdeiFGQsXv7aA73JITM04CsQHjd2yxNKvLoi
+	GUO+mGWC0OWtsTDgrdqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIj5q-00000006uHv-3Alm;
-	Mon, 19 Oct 2026 08:51:42 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1xIjD8-00000006vHu-3DKy;
+	Mon, 19 Oct 2026 08:59:14 +0000
+Received: from mail-m3274.qiye.163.com ([220.197.32.74])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIj5m-00000006uGB-2CeX
-	for linux-rockchip@lists.infradead.org;
-	Mon, 19 Oct 2026 08:51:41 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-6aa046a99c6so355103a12.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 19 Oct 2026 01:51:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792399897; cv=none;
-        d=google.com; s=arc-20260327;
-        b=rHxlaAK7ks/RlchBh9PHtMcshBdaBF2zW0Liaq8ut6560jorHTBNYLXW6KGf1eCvtI
-         YOFr0xjDK1KNF4h9+ccx8EQWMilag12dq2Wswmv0639QXBv5NMj8+o055TLzLCJqUT3B
-         B0kJLSR7L/h4eD1fCPDOLEKxSrHDnpL1InsoyHp9ui7xFuLq/6Vr9bTqhwRQW9OdBUVN
-         RdsZFusmWSfMHX6Qb6HN0JO6xlueAXoPB0WDRpR6iFCytn6Ho57iFK5XeKkg9OXosfXY
-         3IWexPdhQm2+nOVgN518IpEmEIhBgwvlWKkpX6TDDHhq6G+161/wQoQsnF4z9Wa2IaN9
-         HnpQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=YZGPcgD9AFqKQnqdPo2/PO6pxJ4WnzRDZW0BsKuEGoY=;
-        fh=Q9DkBfplBECbDVyPJcPJqMIoE4jgFiwQZzZoObKcClI=;
-        b=SxS8OwLSNPiM9LACCxezY4AxiDUmnytbnw50m3+Rahrw9xYEkEMg7g35KweYpk4PXc
-         rEMGCd+IXLPMG/F2y4gf+PlE2swZnc82AeB+Cg/DkZiahl0/Onl6J3q51bWqYcpmTIRB
-         JhqcASTp5BVKgs8ekXp8VTR4nCUUv8DSfdyIDiHaZO57DjN0veL7cZoqL4W4MJVT4Erb
-         TgUzKn0aBbhKQczp/H92eLPc+B2ePmIsZt3plx/ZC2Z0UwCZpq/IdPTPDueg11NWeoHH
-         UEvovHJ1sumq5fSeNEBsXEI4k2P3lnUaJ0z15cwm87exggsdEgH0Kx5UC9Q0zOs5zQr5
-         4yOA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792399897; x=1793004697; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=YZGPcgD9AFqKQnqdPo2/PO6pxJ4WnzRDZW0BsKuEGoY=;
-        b=MIs+xPYl67x0OCK2qjAYAJ7ZI1SAMpVWt220Ux0OLkKeac1s01Q+MsUi20ga090WjE
-         4YYjWNAf5esA8q4k9enb3+t2qbhBzOW/vlrFnKQXUYW/YbdVpl391MKdaHBRMy7m1yVp
-         6C5Jj944Z+xTFPlGcRKg3fMuNg0dFw2N+szGHZTKqzmN/0EGnQ3h5ABUAQcff32QSZre
-         HjJk8+gLBOGFlXO/CaXNaLii10kkdyT3XePPrnMaW75icy9h42GCRAmYKTboyJVmuvA7
-         +xAcgblDEPTbGWiVRJyxXRXXG0JYTvkzWgE2DRXz7GU6bFAIgS5skctak98Vjj1jEArE
-         PYYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792399897; x=1793004697;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=YZGPcgD9AFqKQnqdPo2/PO6pxJ4WnzRDZW0BsKuEGoY=;
-        b=vHF18miAiuUtU4cGiTFqk7hgWRYS3RZlYbzHDZNo6JzsItbVCt0wJK/G4mfMv99kz6
-         /2n8+hbMbkTgqy+vq53cr1lxsWLOEABIVAh9nKfsGvNwH96TJciiS55OgsMFhTlp7Ea3
-         MzhH3yLVDE3RZefbSt2f/zxfOn7VrqkyrI2+qh/cVzUhjUCiG0KAl2uJ968JvmG0PQ+O
-         SD5s73EL20gJvdmXnyXL0fSQxaWg1PqJ2Ln4jexqh/5cG5UgE0DN4ryGPHUf3gJPy5cQ
-         5+vAMnPbJcnL4DLF6uVIrzI2/LMgbjTuCEIDpG8pMx7bMub+UJa1i7INIPF3Q3ORvG/6
-         tprQ==
-X-Forwarded-Encrypted: i=1; AKwUvBwCgCFMPha+yxQTNZBfXL5o5oyzwM6D+Vvdl2pEUKwGYlILpzueWF1Rny7nypyVbZjP87un+SosyYlDYIc2Ug==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJ1knJOe+J9PC1kC7xuGGA/mqFJIKn1FPrHbdu1qrSGV3UzlDiD
-	mTaGNfgWyzEdoslW3Gzwzwl8PYDZkdem+1UfI5H2i36fAD82uiaPbA/1BHT+52tCj3zan99G2bn
-	VZoDjDGjBPUbILM8+rTX6KT6SD8tmCyw=
-X-Gm-Gg: AYBFou3WvI34VlmMuUpnzE662sdQ0eawfbhcTMMTY0BNGVq8nIvvPBFHS+398KAvfiG
-	TTVkXYatZJ7yL+WVFYcFLDnujLYR8b/fghhD3AEq54S6KL2gN+FqWOgWqqgoQAGfdHewVsgdVRV
-	s3WrYqiuhFoq0xGNKgzFe9sdX5T3KPUg7RnuuyBh0oiSf4/0C2JDIsWhppeB2+suNifKymCCJli
-	updMYngpDR9DSOXWx24O4BSPaIhDZpSTKB/LWdBlCHiJh60KZ6wWBfun6astMcks2V/NOquSjQ+
-	USvO23FI/fN8P8TXSm99nqd/BlSDz4EZwYlmCUsZXJlJqL56cyojbw==
-X-Received: by 2002:aa7:cd16:0:b0:6b1:a509:8a2 with SMTP id
- 4fb4d7f45d1cf-6b3a8153c70mr3342735a12.2.1792399896018; Mon, 19 Oct 2026
- 01:51:36 -0700 (PDT)
+	id 1xIjD5-00000006vF8-0kvt;
+	Mon, 19 Oct 2026 08:59:13 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 5189b85e7;
+	Mon, 19 Oct 2026 16:59:05 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v4 04/14] drm/bridge: analogix_dp: Extend clear_hotplug_interrupts to accept IRQ bitmask
+Date: Mon, 19 Oct 2026 16:58:26 +0800
+Message-Id: <20261019085836.3065008-5-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261019085836.3065008-1-damon.ding@rock-chips.com>
+References: <20261019085836.3065008-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-References: <20261016-dcphy-rx-v1-v5-0-e63b49eabe2d@gmail.com>
- <20261016-dcphy-rx-v1-v5-2-e63b49eabe2d@gmail.com> <f337f41f-2ada-4958-b0f9-379e78e96a3d@linaro.org>
-In-Reply-To: <f337f41f-2ada-4958-b0f9-379e78e96a3d@linaro.org>
-From: =?UTF-8?B?5qWK5pm65oiQ?= <jason98166@gmail.com>
-Date: Mon, 19 Oct 2026 16:51:23 +0800
-X-Gm-Features: AclHuK_WAI6-16edIPrAFWjpLBUVloumDqFsNS60JoizZzHWBKP6V-AdFc5lP64
-Message-ID: <CAPwA33KFY0avDH-F_5w01vqWu=RK=nXZ=za-Do5Zm3S8CPtGgA@mail.gmail.com>
-Subject: Re: [PATCH v5 2/8] dt-bindings: phy: rockchip,rk3588-mipi-dcphy: Add
- a cell to select TX or RX
-To: "Bryan O'Donoghue" <bryan.odonoghue@linaro.org>
-Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Guochun Huang <hero.huang@rock-chips.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Michael Riesch <michael.riesch@collabora.com>, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>, linux-phy@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+X-HM-Tid: 0aa15362c81903a8kunm6ee755052eac10
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCT0MeVkgaTR9LTUhMTR5LGlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=Clej9k4IdOig0ysPU1w2UKKegGxjf8FGjVKnBJSeCtdJ3IYKfSqgnn9MC9Qc5Sh11H2Bh8sYxhNWafY2s20ru0nvZdJMERx2W7vrRk3zXZaEauuEt8PUeZw4NnMzBhHd9ANBvVncBavKMVuXHDf/X30mgiRLjRsVgosLN56myKA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=F65PdF+O4TnaiCPbi/wJyx/pQHrDgW8OY44OG/TvwMs=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_015140_093735_F2FDCB9C 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20261019_015911_691337_E5396D89 
+X-CRM114-Status: GOOD (  13.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,28 +93,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Bryan,
+Update analogix_dp_clear_hotplug_interrupts() to take an irq_type
+bitmask argument. Instead of clearing all hotplug interrupt bits
+unconditionally, only clear the interrupt flags corresponding to the
+triggered events.
 
-> Two consumers use them - which them ? Two consumers use the receivers at
-> the same time ?
+Pass the detected IRQ bitmask from the irq thread handler, and use the
+full HPD_IRQ_ALL mask during HPD initialization.
 
-> Its minor but instead of "them" define what the them is.
-> The second cell, if present
->
-> -> you want to make clear it is optional.
+Tested-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 
-I will check my description and make sure there is nothing misleading.
+---
 
-> Not really related to this patch but how do you envision that
-> requirement being enforced, per driver ?
+Changes in v2:
+- Add separate patch for IRQF_ONESHOT to resolve interrupt mask issues
+  triggered by interrupt preemption.(Sashiko)
 
-The transmitter and the receiver of this PHY share the bias block, and
-the TRM explicitly does not allow them to run in different modes. Since
-this is part of this PHY's spec, the check is done in this driver's
-xlate for now.
+Changes in v3:
+- Rename newly added macro HPD_IRQ to HPD_IRQ_ALL.
 
-Best regards
-Jason
+Changes in v4:
+- Add Tested-by tag.
+---
+ .../drm/bridge/analogix/analogix_dp_core.c    |  2 +-
+ .../drm/bridge/analogix/analogix_dp_core.h    |  2 +-
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 28 +++++++++++++------
+ 3 files changed, 22 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 974be5b702dc..f88e3263ba0e 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -717,7 +717,7 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ 
+ 	irq_type = analogix_dp_get_irq_type(dp);
+ 	if (irq_type)
+-		analogix_dp_clear_hotplug_interrupts(dp);
++		analogix_dp_clear_hotplug_interrupts(dp, irq_type);
+ 
+ 	if (irq_type & DP_IRQ_TYPE_HP_CABLE_IN ||
+ 	    irq_type & DP_IRQ_TYPE_HP_CABLE_OUT) {
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+index 3f40d95757c5..88fa538a5949 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+@@ -196,7 +196,7 @@ int analogix_dp_init_analog_func(struct analogix_dp_device *dp);
+ void analogix_dp_init_hpd(struct analogix_dp_device *dp);
+ void analogix_dp_force_hpd(struct analogix_dp_device *dp);
+ u32 analogix_dp_get_irq_type(struct analogix_dp_device *dp);
+-void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp);
++void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp, u32 irq_type);
+ void analogix_dp_reset_aux(struct analogix_dp_device *dp);
+ void analogix_dp_init_aux(struct analogix_dp_device *dp);
+ int analogix_dp_get_plug_in_status(struct analogix_dp_device *dp);
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+index 49c1961e4326..2c1d4655114b 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+@@ -24,6 +24,11 @@
+ #define COMMON_INT_MASK_4	(HOTPLUG_CHG | HPD_LOST | PLUG)
+ #define INT_STA_MASK		INT_HPD
+ 
++#define HPD_IRQ_ALL		(DP_IRQ_TYPE_HP_CABLE_IN | DP_IRQ_TYPE_HP_CABLE_OUT | \
++				 DP_IRQ_TYPE_HP_CHANGE | DP_IRQ_TYPE_IRQ_HPD)
++#define COMMON_INT_4_HPD_IRQ	(DP_IRQ_TYPE_HP_CABLE_IN | DP_IRQ_TYPE_HP_CABLE_OUT | \
++				 DP_IRQ_TYPE_HP_CHANGE)
++
+ void analogix_dp_enable_video_mute(struct analogix_dp_device *dp, bool enable)
+ {
+ 	u32 reg;
+@@ -375,18 +380,25 @@ int analogix_dp_init_analog_func(struct analogix_dp_device *dp)
+ 	return 0;
+ }
+ 
+-void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp)
++void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp, u32 irq_type)
+ {
+-	u32 reg;
++	u32 reg = 0;
+ 
+-	if (dp->hpd_gpiod)
++	if (dp->hpd_gpiod || !irq_type)
+ 		return;
+ 
+-	reg = HOTPLUG_CHG | HPD_LOST | PLUG;
+-	writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_STA_4);
++	if (irq_type & COMMON_INT_4_HPD_IRQ) {
++		if (irq_type & DP_IRQ_TYPE_HP_CABLE_IN)
++			reg |= PLUG;
++		if (irq_type & DP_IRQ_TYPE_HP_CABLE_OUT)
++			reg |= HPD_LOST;
++		if (irq_type & DP_IRQ_TYPE_HP_CHANGE)
++			reg |= HOTPLUG_CHG;
++		writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_STA_4);
++	}
+ 
+-	reg = INT_HPD;
+-	writel(reg, dp->reg_base + ANALOGIX_DP_INT_STA);
++	if (irq_type & DP_IRQ_TYPE_IRQ_HPD)
++		writel(INT_HPD, dp->reg_base + ANALOGIX_DP_INT_STA);
+ }
+ 
+ void analogix_dp_init_hpd(struct analogix_dp_device *dp)
+@@ -396,7 +408,7 @@ void analogix_dp_init_hpd(struct analogix_dp_device *dp)
+ 	if (dp->hpd_gpiod)
+ 		return;
+ 
+-	analogix_dp_clear_hotplug_interrupts(dp);
++	analogix_dp_clear_hotplug_interrupts(dp, HPD_IRQ_ALL);
+ 
+ 	reg = readl(dp->reg_base + ANALOGIX_DP_SYS_CTL_3);
+ 	reg &= ~(F_HPD | HPD_CTRL);
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
