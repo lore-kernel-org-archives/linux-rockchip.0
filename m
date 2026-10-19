@@ -4,54 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E53ACCF2D3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 05:23:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E24A4CCF2D6
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 06:51:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SMe+pMdlc9xd9jVNQMHQktA1GGEIh+eDzjc4TVlJDPQ=; b=GeUS8sf4g57N9S
-	5t6yaUkIqt/hxpIgMm8xzLYtuIdDcanzjqF7gLxhiuRZQPqqen+cMz0vXwn4thnugqCZhO9cniJBK
-	LYSurHgfrXDKfdZPLAyriud421QRYbCr0TqjGXTFkD8ukroD9hbS1fv/H4V7+zdrLexCnquaJtAJk
-	Cy17c+hnX2fEMaEhqto7Im3hyl8+Y93MWnNB/+amAxY+NOgI4cTbNCYpu4u02q9RChCWG70SUqBpP
-	EROZUYtBh2N78y60RSjn9915GmiIatMZkHs55zv7jEmZm1i1+NoAdyLhfMSztGZqGTSOk/ueOGLTa
-	NC7NIt9xvkXwgLDovuJQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=w9PTDkZYdz/yCAVBWHzLtSA91r/a7dEXft7VrXNH8VY=; b=B1rep2B6xP7ETm
+	h/DrGRe3yweOW/Sk+39osWgOEyA0wKqT962Ae0qW/6l+syWyL69Z5oIeLU2yUlT6GE7yyuaL7ExZw
+	cLEl8KxSqPtT5NKNmlUkx5PVWc65JFNMaf4T64qVKdJ+u3zAJGNXo5zXCVN87Es1d043vJPnrIkKr
+	6QPKuD5apatM9sOx1jZg8zT7qMeXpC/MRGhH7suliGKl7Ge7lU7EhK3VX6xVW9Abv0Rif8wLaC2Dl
+	wv/m49mED0Q1iEnAtVSz0vuVtIfm082Bzz88N9+KOi565OtlZGQ+3apKhM2RXxC9UajMZ0XPaL0C0
+	mnF/Sa/gmg7aw+2qhCzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIfpm-00000006d9D-2e2W;
-	Mon, 19 Oct 2026 05:22:54 +0000
-Received: from mail-m10230.netease.com ([154.81.10.230])
+	id 1xIhBS-00000006itT-3nON;
+	Mon, 19 Oct 2026 06:49:22 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIfpj-00000006d8q-18oD;
-	Mon, 19 Oct 2026 05:22:53 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 518080e91;
-	Mon, 19 Oct 2026 13:22:38 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] arm64: dts: rockchip: rk3568-evb1: enable PCIe3x2
-Date: Mon, 19 Oct 2026 13:22:29 +0800
-Message-Id: <1792387349-86262-1-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-X-HM-Tid: 0aa1529c9c8803a4kunmb7170bb964a91b
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZQklCS1ZMGh4dSBlIGk
-	hPHhhWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
-	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=EiSMxUAMU9NWJAnpomFtM/SYCLemTt/A+YcLj45L1KtpRadRp/RyUKwBSpYlzqnbGAPpRc/yYp0I9aZ3SeJEQjj4+eRhA7YR8SA2CRpym3oBHjJcTQ9mTimIJgvuCt8IZ881uBYUXR4pMB8Qz0C7VQSWScVI+l59Xv8UwaH7lhA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=2YKOUOcqlf/jhBc2Amo176pZLS9eddz9Qiil9Inca28=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261018_222251_872388_21F558A3 
-X-CRM114-Status: UNSURE (   9.18  )
-X-CRM114-Notice: Please train this message.
+	id 1xIhBR-00000006it1-1drS;
+	Mon, 19 Oct 2026 06:49:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id C1FAC4160F;
+	Mon, 19 Oct 2026 06:49:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0220D1F000C4;
+	Mon, 19 Oct 2026 06:49:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792392560;
+	bh=J4OMYiiG3ut7MrExL3jhw5ap4nPHmzyK4fpnY5BaTSw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=BcHtS95v6TJqYLJjwqZL4FSWE2sJ4aSzOIb7ycKZjpBqYxiSxwHDR6Sk78w/Uk1b3
+	 2QYnMlfrCZD9hEY5AS9fzZ3WW32aANmCxrhvjmYGyzwrpbfnm4QKFLl8c9e42vtkuG
+	 /PFjgzg1Ejgjz0WPEc8kJ0H2T6wYKP0vGn5AuXpQvBoBmq561PxravxIKN0xL1gL02
+	 LaWS9V0GRW8heVBUe9tTZR4v+SAJnnmIrxbNF0FjEg29vrM9jzm5ip9rg9XPJNWrXs
+	 xfnUhsGWS7Pr8u8AULwpl/oPbNxSVBX9cDVS33OOQ5W9EGpeIQz49+/DlNI9J9drpe
+	 FVKjDx/2XdRKg==
+Date: Mon, 19 Oct 2026 08:49:17 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Dmitry Yashin <dmt.yashin@gmail.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Johannes Berg <johannes@sipsolutions.net>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/5] dt-bindings: net: rfkill-gpio: document
+ reset-gpios property
+Message-ID: <20261019-aggressive-frigatebird-of-courage-9cc7d6@quoll>
+References: <20261016-ok3568-c-v2-0-068d68430e6d@gmail.com>
+ <20261016-ok3568-c-v2-1-068d68430e6d@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20261016-ok3568-c-v2-1-068d68430e6d@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,83 +71,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the PCIe3x2 controller on the RK3568 EVB1 board: add the GPIO
-controlled vcc3v3_pcie supply along with its pinctrl entry, and wire
-the PERST# reset pin and the supply to the controller node.
+On Fri, Oct 16, 2026 at 03:29:33PM +0500, Dmitry Yashin wrote:
+> rfkill-gpio driver requiers at-least one of the gpios to be defined:
+> shutdown-gpios or reset-gpios. Document missing reset-gpios property.
+> Also add example for wwan with both gpios.
+> 
+> Signed-off-by: Dmitry Yashin <dmt.yashin@gmail.com>
+> ---
+>  .../devicetree/bindings/net/rfkill-gpio.yaml       | 23 +++++++++++++++++++++-
+>  1 file changed, 22 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/rfkill-gpio.yaml b/Documentation/devicetree/bindings/net/rfkill-gpio.yaml
+> index 4a706a41ab38..66f6ad2872ff 100644
+> --- a/Documentation/devicetree/bindings/net/rfkill-gpio.yaml
+> +++ b/Documentation/devicetree/bindings/net/rfkill-gpio.yaml
+> @@ -29,7 +29,12 @@ properties:
+>        - wlan
+>        - wwan
+>  
+> +  reset-gpios:
+> +    description: GPIO connected to device's reset pin (RESET#)
+> +    maxItems: 1
+> +
+>    shutdown-gpios:
+> +    description: GPIO connected to device's shutdown pin (W_DISABLE1#, etc.)
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+That's the same pin. This was sent multiple times, why is this time
+different?
 
- arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts | 34 ++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-index b01f952..cab8c2d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-@@ -92,6 +92,19 @@
- 		vin-supply = <&dc_12v>;
- 	};
- 
-+	vcc3v3_pcie: regulator-vcc3v3-pcie {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc3v3_pcie_en_pin>;
-+		regulator-name = "vcc3v3_pcie";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		startup-delay-us = <5000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
- 	vcc5v0_sys: regulator-vcc5v0-sys {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc5v0_sys";
-@@ -576,6 +589,18 @@
- 	};
- };
- 
-+&pcie30phy {
-+	status = "okay";
-+};
-+
-+&pcie3x2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_reset_pin>;
-+	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_pcie>;
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	display {
- 		vcc3v3_lcd0_n_en: vcc3v3_lcd0_n_en {
-@@ -592,6 +617,15 @@
- 		};
- 	};
- 
-+	pcie {
-+		pcie_reset_pin: pcie-reset-pin {
-+			rockchip,pins = <2 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+		vcc3v3_pcie_en_pin: vcc3v3-pcie-en-pin {
-+			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	pmic {
- 		pmic_int: pmic_int {
- 			rockchip,pins =
--- 
-2.7.4
+Best regards,
+Krzysztof
 
 
 _______________________________________________
