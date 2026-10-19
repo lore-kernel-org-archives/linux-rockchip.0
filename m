@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B4D7CCF2D6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 09:06:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71EF8CCF2D6
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 09:24:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bh6Gd6uTvCbs4vJUv739QM5QlLGRvYaSfDYyXBtuD8Q=; b=2CO8o35NnoBxtA
-	WcG3xn1qkziDDMrtrsc34/8AIBaiYT8f18P0xY3GTuAYW+TPZdsswIkS4cJ9m2GhpR+Nj50nzA9w6
-	a27GmECbr5k1tUIj5VqRkxidGFC+85ukpPupjxfFbW1h+EK1ejuDj9YlE452tTlDqYciCFkFr862j
-	Uh0WUW1r+Qeis1/HxdUBA1ZbfD/HiQPmwCP5KYjiZQ4pTe6iTxysPd5KSHR2JjMnv3CzRR8dr4WJw
-	wuto2cwGUziTamzkyP6C1aoKLooOIN4v/HTaFitjQh/t7T1BpqcN1r/WHzpSVXK/PpyvhnxQ+OAxd
-	9slQ/JTbrtRYhZB/IIPw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1j6cmxHmWsCEUVOUsfNNWNtgSP/WB8M4LaCUjhxxvP0=; b=WglAnWTbGQLyOx
+	EMDs34tAs587L+JpECk1YSDgLqhQ6oYjGwQz6HLEW3j63Un7A21mWPVkq29VdEtEikvHFUD+V4ryK
+	zKeG/dDJnwYTjzb83dlLu4l6PeDBCWsGkLU/zDtpx0pQEMlgDUnF4xH/euxXrl1AcFBEGIqzWXIUt
+	MlaepGdoGB3wt2xr3tJgz/d9SrvFN9aKILA9Ale62R+amZlp2gvCBTRhkuAuMoz+8bqIZRH/c/iQf
+	P/4WuiYR5mPJYv8V2W05DTuWT0IudTRFGyUHKNJ/azKUTUMr2gpoUJqqPm5I6KwRRX0D5pM20Y7R0
+	2L04ZxNiHFH0ZNlA7g7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIjK5-00000006xJb-3gJ5;
-	Mon, 19 Oct 2026 09:06:25 +0000
+	id 1xIjbj-00000006zDN-1haE;
+	Mon, 19 Oct 2026 09:24:39 +0000
 Received: from mailgate01.uberspace.is ([95.143.172.20])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIjK2-00000006xII-2VuM
+	id 1xIjbW-00000006zAf-0RWi
 	for linux-rockchip@lists.infradead.org;
-	Mon, 19 Oct 2026 09:06:24 +0000
+	Mon, 19 Oct 2026 09:24:36 +0000
 Received: from devico.uberspace.de (devico.uberspace.de [185.26.156.185])
-	by mailgate01.uberspace.is (Postfix) with ESMTPS id 5FA5360EF6
-	for <linux-rockchip@lists.infradead.org>; Mon, 19 Oct 2026 11:06:11 +0200 (CEST)
-Received: (qmail 9972 invoked by uid 990); 19 Oct 2026 09:06:11 -0000
+	by mailgate01.uberspace.is (Postfix) with ESMTPS id 51C8B610F1
+	for <linux-rockchip@lists.infradead.org>; Mon, 19 Oct 2026 11:24:24 +0200 (CEST)
+Received: (qmail 17388 invoked by uid 990); 19 Oct 2026 09:24:24 -0000
 Authentication-Results: devico.uberspace.de;
 	auth=pass (plain)
 Received: from unknown (HELO unknown) (::1)
-	by devico.uberspace.de (Haraka/3.1.1) with ESMTPSA; Mon, 19 Oct 2026 11:06:11 +0200
+	by devico.uberspace.de (Haraka/3.1.1) with ESMTPSA; Mon, 19 Oct 2026 11:24:23 +0200
 From: Leonard Lausen <leonard@lausen.nl>
-To: heiko@sntech.de,
-	gahing@gahingwoo.com
+To: ulfh@kernel.org,
+	heiko@sntech.de
 Cc: leonard@lausen.nl,
 	robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
+	detlev.casanova@collabora.com,
+	finley.xiao@rock-chips.com,
+	zhangqing@rock-chips.com,
+	inindev@gmail.com,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	tomeu@tomeuvizoso.net,
-	ulfh@kernel.org,
 	linux-pm@vger.kernel.org,
-	dri-devel@lists.freedesktop.org
-Subject: [PATCH] arm64: dts: rockchip: Enable the NPU on NanoPi M5
-Date: Mon, 19 Oct 2026 09:03:42 +0000
-Message-ID: <20261019090348.378183-2-leonard@lausen.nl>
+	gahing@gahingwoo.com
+Subject: [PATCH 0/2] Fix Panfrost boot hang on NanoPi M5
+Date: Mon, 19 Oct 2026 09:24:14 +0000
+Message-ID: <20261019092417.391522-1-leonard@lausen.nl>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260924102135.92217-1-gahing@gahingwoo.com>
-References: <20260924102135.92217-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
 X-Rspamd-Bar: /
-X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) BAYES_HAM(-2.999999) R_MISSING_CHARSET(0.5)
-X-Rspamd-Score: -0.099999
+X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) MIME_GOOD(-0.1) MID_CONTAINS_FROM(1) BAYES_HAM(-2.99944) R_MISSING_CHARSET(0.5)
+X-Rspamd-Score: -0.09944
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=lausen.nl; s=uberspace;
 	h=from:to:cc:subject:date;
-	bh=G5e7xDGKZrF0gm5xtX9ZO1xpalWcEwZGn20RV5qhZOo=;
-	b=f/xc/cIQtFrsxLz/Lbmo5IdXDWN1Nrtyv76OmaMwgrWVwizASO8PSVWBL6ZVrf1WYnh+GQI4aL
-	vNTJS1mQD6I373/xRbpDJJNBrDqVzQXq68RrYD8wdr16Rz33/Z+qiX+uZnpgpY1rPPtYNxIs71rS
-	fyw+4eM8gaAhIBMGy0GpLzOmaPMFUSDm1KXaP9GOkrsfPifax5LEjRNEQDfDHyNzaGHSyweOQQCC
-	7k14CJO8hoR9LjQZGsUV76vTX1lwVOz4HSZjgCs7/IBXHM9Jeh9QbNrYOIk9FUwbGZJ6IMWq67bQ
-	7AR+3tjyCMwO9UyLj9VHIcRsv0+8jVO8k+CV3c7M7XFIYToZ1fdbQtDMCTHrZBxM95Xi+rvEKKxU
-	T0r+1gy8O4Dg7mlZpoHy0mqUVWGuP310FSQpfMOGNJ6jkbrniiRo4YWpKueM1ZiazjwmiI73tDCf
-	WsphzaJMUij036yyEUDAhHJ1CzsXxLZm3S1KCppCXV/EfPlUW1FHW+GBoq0EP21deYfCAd2beibl
-	BKptxgUHHkOY7k4skd+5AHdP08DO+5NI7ZIDXSMZ8kHcEtaeCCBRm7hCLwlTNeXBn4Mf4HElO0UM
-	TGxV+OFP+FaG8sqpTVcVoTGIiVdGrjvqVh8/GgRSe5JFNQfzFWqc7At4jQ4bvzaAj2RSW3LjDIy7
-	s=
+	bh=opmJhQyRutddC51J+UVfKfOELmccvq4ueY+QZcg7O50=;
+	b=xEVa71HfxgzTXjABTg3LFhDeiY+KPhHuBBLKFjWpvaMgE158Dm1ZrlJzK95jpAGL7N0fd7IpkM
+	AqjSk9GAzbbvO5yPzF755FOljuK3bPGTtgofYiwuU8DtUV0MtFeae6tlaJg4XdbsMzwa9+bFJD+c
+	R/kRHNdL46B9QjDvse8ZpRsOc9k48uDmwpOYZCOc4ZOSwQpeekfA9iYrxAQMqfmPkOf2rSGxRhKY
+	hspsVJPtZW/jznh7ZeSKecyjW/BeW3xTAc5aVi758lFQgMbrOdUA3VPK/kuArPxDkHlqwAF37GBO
+	wXgzwbs8r1ZBv/73yO5tMzFBSx2ndkgyS+xbP1J2po8Rbogrux5mo0HfWQeSjckAWA3yZ3yqMXn2
+	1UhpHAyK4AYL1szvzY3RCtlZem9oNPMtah119Hi/pR6g2jmnmI/k9HwQDP2zsrNw0Sghv/20Yr+7
+	yPXkb3muAca5Emc+XtN+tn1xmLSD4su6bOgkj9VmQ/LNCQ3QQfcQFCFxHYq3KGk3FnDZhfWcPWv5
+	F/6JKMd5rzj0XvZfAEVOK88vPsVyDxeo5GTVCgoQhN4MX4IOu1qVMqkxPX6E0IPpjoMC5g/EUXQ0
+	PcoIuKn73shWMzhh/mAaaGqC8PjKrF9l+bxUSfWr+nkFUC2m6Ht/DLg7o3Po7cMQ7ndBLTMEt1L2
+	0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_020622_896267_90749906 
-X-CRM114-Status: UNSURE (   8.16  )
+X-CRM114-CacheID: sfid-20261019_022426_307158_19C13089 
+X-CRM114-Status: UNSURE (   5.09  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,81 +94,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Connect the NPU parent power domain and both RKNN cores to the existing
-RK806 vdd_npu_s0 regulator, and enable both cores and their IOMMUs on the
-NanoPi M5.
+On the NanoPi M5, boot hangs during Panfrost initialization. Before this
+fix, booting required blacklisting Panfrost on the kernel command line.
+Loading Panfrost after boot reports a GPU power-domain acknowledgment
+timeout.
 
-The domain supply lets the power-domain driver enable the rail before
-powering on the NPU. Each core also references the rail through its
-npu-supply property.
+Enable regulator management for the RK3576 GPU power domain and connect
+its supply to the NanoPi M5 GPU rail.
 
-Link: https://lore.kernel.org/all/20260924102135.92217-1-gahing@gahingwoo.com/
-Signed-off-by: Leonard Lausen <leonard@lausen.nl>
----
-Applies on top of this series.
+The regulator-capable descriptor is based on Jiaxing Hu's RK3576 NPU work:
+https://lore.kernel.org/all/20260924102135.92217-10-gahing@gahingwoo.com/
 
-The NPU has been tested and works on the NanoPi M5.
-The NanoPi M5 DTB builds with W=1 and passes schema validation.
+On the NanoPi M5 with CONFIG_DRM_PANFROST=m, boot and Panfrost
+initialization succeed, and GPU workloads run successfully. W=1 driver
+and DTB builds and schema validation pass.
 
- .../boot/dts/rockchip/rk3576-nanopi-m5.dts    | 22 +++++++++++++++++++
- 1 file changed, 22 insertions(+)
+Leonard Lausen (2):
+  pmdomain: rockchip: Manage the RK3576 GPU domain supply
+  arm64: dts: rockchip: Fix GPU domain supply on NanoPi M5
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-index 227fe6f3ec7c7..96c21838419e8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-@@ -800,6 +800,10 @@ &pcie0 {
- 	status = "okay";
- };
- 
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	gmac {
- 		gmac0_int: gmac0-int {
-@@ -877,6 +881,24 @@ usb_otg0_pwren_h: usb-otg0-pwren-h {
- 	};
- };
- 
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_1 {
-+	npu-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_1 {
-+	status = "okay";
-+};
-+
- &sai2 {
- 	status = "okay";
- };
+ arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts |  4 ++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi          |  2 +-
+ drivers/pmdomain/rockchip/pm-domains.c            | 10 +++++++---
+ 3 files changed, 12 insertions(+), 4 deletions(-)
 
-base-commit: 24a19b953e2a3d0ea5a8c4951a0ab8f32720c907
-prerequisite-patch-id: 46ebb679e93d3d25393e8cbf8fc3c955bcc01bd4
-prerequisite-patch-id: 0a572164fcadaa890f0fcd7795e9aed71b4110f7
-prerequisite-patch-id: 7d00dce28af9d650165613b4e63fc1632f1001b0
-prerequisite-patch-id: 1f4f63a13e342a642ce4ee33c64115c7ec09998d
-prerequisite-patch-id: 30b7597254007acdb9ce6f76535df17a896b92ee
-prerequisite-patch-id: 8f7794535e7def740abb4c0c154cd2dec15b1c26
-prerequisite-patch-id: e6dae43a32f177292235c896dd7534e704121afd
-prerequisite-patch-id: a18dcdf841b6975b1e5be01a931430c0a5711f47
-prerequisite-patch-id: c98141bac89990a409fa2a6d3bea93796c9d58ab
-prerequisite-patch-id: d72696eb07efc69faaee3da39b1995d2b2cef289
-prerequisite-patch-id: 6d5c580e02cd2ba4e1f0a590fdcd49dd643b91b0
-prerequisite-patch-id: 48b926e205e294a27d6e11d00b10d98205fd4afb
-prerequisite-patch-id: 8babd101cd3628a478872e8a28a9081906b87160
-prerequisite-patch-id: a0129d3f560f297a03780ef78be819e7aa0775fe
+
+base-commit: c03c1a14507dfaf8b856c2608f9ac216021fc222
 -- 
 2.47.3
 
