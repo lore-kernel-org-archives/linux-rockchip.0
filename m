@@ -2,62 +2,61 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 756D0606A31F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 21:13:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C4432606A31A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 21:16:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EPilFyEt;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=NqIpl9pC
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JLp2Thk/;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=n5LHFLHQ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oVZoMX0fkNzLxK0K2E/D4qGayhpecZE74kEQ+zZagC4=; b=EPilFyEtJb+E19
-	q6RQ4filunG/4yF0ZqSwR7CdbSfGA69CBeDhM/hMtmHZyuoQsocP6rr35Lqtw/4/fNf0YRVeEXRwj
-	YRRazn0XzOZbCfZcizsbIiYCElsLAAxZ29dBepKfbCn60iJivji461ZZgSwh4AJ0yEVt862rolnFj
-	TaTiwcqfZq1XA7DqMnbbN1VFaJPKkIfi6bGmPX8IyEpb6VK1CNBbNh2nNUZrKvncnGTNQKTMzmEK/
-	fe9x338v2qNlsBkswakx2+F9VMQOae3uKdMXy3OBR1jd8CxG1aPwG/jHT5VnPSvhaQRFsX69lrdLT
-	tEFZ8vZ9leDcJDaJKbcA==;
+	List-Owner; bh=+p5lUZCHsJ1+5/RXyMqG7CcxmJ9HiOHOKUxP56RPMXY=; b=JLp2Thk/rfu494
+	MudzESG18T0t+xL7TpJg8GfIgCsw19k/QwWDlK1NjLz+/DgN5DkpvO3594fuW7eSoyvEw0luQ9R/W
+	fttSxTq0CQ3X5B81STOGu/b8/nvRhDS3sdgVHvfkq4jCzNyyz3jvu+5YHT1WYC/d26Pq0TrGllvry
+	4sZjhqvpHl86C6A3fSdZlTM7UqWErw4tb3oCcD7GBK4cH28jSozsFTd206fr7urzEPUZ6rTvaD5Ew
+	wKCSIpsXrwmo0Xk7Qjlc3QczaFXqArzJW7FpGj9ClF+CVlh9LN15Q4orbQfu1m6L49X47a9T4atFq
+	7DVxXXNt8JHmGwMrtdRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIufN-00000008MNt-0gKn;
-	Mon, 19 Oct 2026 21:13:09 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1xIuig-00000008Man-2IfU;
+	Mon, 19 Oct 2026 21:16:34 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIufK-00000008MNL-3Lo1;
-	Mon, 19 Oct 2026 21:13:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=nag2B8Ch3hK9SXC5XfJia0Hg3V0D0m5XcYZNjThfpdc=; b=NqIpl9pCltsIliKDjXgVxf4lwC
-	eoz/IuSR/baG4ak0YWk8mCCIY9AQ5xezNNWWv5SzcgfwZL4tBXAqLKT4uK1exSqs1nvV801XkQgYi
-	quUGrzfQtsfGo5W07K/+hv5JVmvlvhyCEiQ1VshMXlcCuBI5GOIAvQ10agAtOC35fzf8=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1xIuf0-00Bi1J-0V; Mon, 19 Oct 2026 23:12:46 +0200
-Date: Mon, 19 Oct 2026 23:12:45 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Miguel Jesus Seron Gonzalez <info@gluon.es>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Dongjin Kim <tobetter@gmail.com>, Chukun Pan <amadeus@jmu.edu.cn>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: odroid-m1: use rgmii-id for gmac0
-Message-ID: <c8860bfb-b8b8-4255-9b98-42c129ecddc6@lunn.ch>
-References: <20261019192254.6933-1-info@gluon.es>
+	id 1xIuif-00000008Mag-2doA
+	for linux-rockchip@lists.infradead.org;
+	Mon, 19 Oct 2026 21:16:33 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7513260A66;
+	Mon, 19 Oct 2026 21:16:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 799021F000CA;
+	Mon, 19 Oct 2026 21:16:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792444592;
+	bh=jgtUknoDH3FZsXM4n8QrE86+N8BKczlf2RGSNuULytA=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date;
+	b=n5LHFLHQOLzDyBNyRcOIBkTrBCkHppS9/ygf9c0ijuND+vrQqFTEwq0cHaOD1Zotu
+	 EmwTfQ5W6OcxBmkKxS+/X0561qrELHUnqAxsLFWiLYYkagHT3hqTEbolKcaoVUW26s
+	 VSJuxMkqZ362B6+2iQkvGI8uNZu5oPLfr3+D4vHfM23cqJFqoN6uxUwgrcvGGIVZfe
+	 SHiVn8fnmlO8vbFIvktEKeSBvtM0qWLYZ/r5+OiiTDQxq5/Ji/D2O/SU+XKuXUo0cv
+	 hlBseneFG7tRO6CiP/qlhvj5yicve0N7puxDqOUCyG2b44XHbr+l6sKAvVrGR21YGC
+	 TcgcOS84YYQ0Q==
+From: Thomas Gleixner <tglx@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org, Manivannan
+ Sadhasivam <mani@kernel.org>
+Subject: Re: [PATCH] PCI: dw-rockchip: Enable INTx affinity support
+In-Reply-To: <d6becae5-df39-422b-8d2c-f15efb4ef4a5@rock-chips.com>
+References: <1790664898-207928-1-git-send-email-shawn.lin@rock-chips.com>
+ <atRLsp1qUA_sGS-0@debian> <87y0bubws7.ffs@fw13>
+ <d6becae5-df39-422b-8d2c-f15efb4ef4a5@rock-chips.com>
+Date: Mon, 19 Oct 2026 23:16:29 +0200
+Message-ID: <87se21bdci.ffs@fw13>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261019192254.6933-1-info@gluon.es>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_141306_860055_B3F4B537 
-X-CRM114-Status: GOOD (  16.38  )
-X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,65 +66,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Oct 19, 2026 at 09:22:54PM +0200, Miguel Jesus Seron Gonzalez wrote:
-> The gmac0 node uses phy-mode "rgmii" with the MAC delays
-> tx_delay = <0x4f> and rx_delay = <0x2d>. On some boards this TX delay
-> does not work at 1000 Mbit/s. Dongjin Kim reported iperf3 throughput
-> below 200 Mbit/s on REV 1.0 20220613 boards. On a REV 1.0 20211112
-> board, TX from the board stalls completely in iperf3 and ping loss
-> grows with frame size (5% at 56 bytes, 20% at 1472 bytes), while RX is
-> unaffected. Other boards work with the current value, so it seems to
-> be marginal rather than wrong everywhere.
-> 
-> Instead of tuning the MAC TX delay again, switch to phy-mode
-> "rgmii-id", so that the RTL8211F PHY adds both RGMII delays, and drop
-> the MAC delay properties, as suggested by Chukun Pan. Dongjin
-> confirmed in the same thread that rgmii-id works.
-> 
-> With this change, on the REV 1.0 20211112 board at 1000 Mbit/s full
-> duplex, there were 3 retransmitted TCP segments out of 24929 (0.012%)
-> over almost four hours, no RX/TX errors and no ping loss.
-> 
-> Fixes: fd3583267703 ("arm64: dts: rockchip: Add Hardkernel ODROID-M1 board")
-> Link: https://lore.kernel.org/r/20250819075522.2238643-1-tobetter@gmail.com
-> Suggested-by: Chukun Pan <amadeus@jmu.edu.cn>
-> Assisted-by: Claude:claude-opus-5-5
-> Signed-off-by: Miguel Jesus Seron Gonzalez <info@gluon.es>
-
-> @@ -200,7 +200,7 @@ &gmac0 {
->  	assigned-clock-rates = <0>, <125000000>;
->  	clock_in_out = "output";
->  	phy-handle = <&rgmii_phy0>;
-> -	phy-mode = "rgmii";
-> +	phy-mode = "rgmii-id";
->  	phy-supply = <&vcc3v3_sys>;
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&gmac0_miim
-> @@ -209,9 +209,6 @@ &gmac0_rx_bus2
->  		     &gmac0_rgmii_clk
->  		     &gmac0_rgmii_bus>;
->  	status = "okay";
-> -
-> -	tx_delay = <0x4f>;
-> -	rx_delay = <0x2d>;
-
-Correct from the DT binding point of few.
-
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-
-    Andrew
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBPY3QgMTkgMjAyNiBhdCAwODoyNSwgU2hhd24gTGluIHdyb3RlOgo+IOWcqCAyMDI2
+LzEwLzE5IOaYn+acn+S4gCA0OjA0LCBUaG9tYXMgR2xlaXhuZXIg5YaZ6YGTOgo+PiBPbiBTdW4s
+IE9jdCAxOCAyMDI2IGF0IDEwOjA1LCBNYW5pdmFubmFuIFNhZGhhc2l2YW0gd3JvdGU6Cj4+PiBP
+biBUdWUsIFNlcCAyOSwgMjAyNiBhdCAwMjo1NDo1OFBNICswODAwLCBTaGF3biBMaW4gd3JvdGU6
+Cj4+Pj4gTGV2ZXJhZ2UgdGhlIGludGVycnVwdCByZWRpcmVjdGlvbiBpbmZyYXN0cnVjdHVyZSB0
+byBlbmFibGUgQ1BVCj4+Pj4gYWZmaW5pdHkgc3VwcG9ydCBmb3IgdGhlIGxlZ2FjeSBJTlR4IGlu
+dGVycnVwdHMuIFRoZSBJTlR4IHZpcnFzIGFyZQo+Pj4+IGRlbXVsdGlwbGV4ZWQgYnkgdGhlIGNo
+YWluZWQgaGFuZGxlciBvZiB0aGUgImxlZ2FjeSIgaW50ZXJydXB0LCB3aG9zZQo+Pj4+IGFmZmlu
+aXR5IGNhbm5vdCBiZSBjaGFuZ2VkLCBzbyBhZmZpbml0eSBjb250cm9sIGZvciB0aGUgSU5UeCB2
+aXJxcyBpcwo+Pj4+IGFjaGlldmVkIGJ5IHJlZGlyZWN0aW5nIHRoZSBoYW5kbGVyIHRvIHJ1biBp
+biBJUlEgd29yayBjb250ZXh0IG9uIHRoZQo+Pj4+IHRhcmdldCBDUFUuCj4+Pj4KPj4+PiBNYXNr
+IHRoZSBJTlR4IHNvdXJjZSBpbiAuaXJxX3ByZV9yZWRpcmVjdCgpIGJlZm9yZSB0aGUgaGFuZGxl
+ciBpcwo+Pj4+IHJlZGlyZWN0ZWQ6IHRoZSBsZWdhY3kgaW50ZXJydXB0IGlzIGxldmVsIHRyaWdn
+ZXJlZCwgc28gYW4gdW5tYXNrZWQKPj4+PiBsaW5lIHdvdWxkIGtlZXAgcmUtZmlyaW5nIHRoZSBj
+aGFpbmVkIGludGVycnVwdCB1bnRpbCB0aGUgcmVkaXJlY3RlZAo+Pj4+IGhhbmRsZXIgcnVucy4K
+Pj4+Pgo+Pj4+IFNhbWUgYXBwcm9hY2ggYXMgdGhlIERlc2lnbldhcmUgY29yZSwgY29tbWl0IGVh
+ZjI5MGM0MDRmN2MzOWYyICgiUENJOgo+Pj4+IGR3YzogRW5hYmxlIE1TSSBhZmZpbml0eSBzdXBw
+b3J0IikuCj4+Pj4KPj4+PiBUZXN0IHdhcyBkb25lIG9uIFJLMzU4OCBFVkIxIGJvYXJkIHdpdGgg
+YW4gTlZNZSB3aXRoIHBjaT1ub21zaQo+Pj4+IHBhcmFtZXRlci4gVGhlIC9wcm9jL2ludGVycnVw
+dHMgY29sdW1ucyBhcmUgdHJpbW1lZCBmb3IgYnJldml0eS4KPj4+Pgo+Pj4+ICAgICMgY2F0IC9w
+cm9jL2ludGVycnVwdHMgfCBncmVwIElOVHgKPj4+PiAgICA1MTogIDEzNyAwIDAgMCAwIDAgMCAw
+IElOVHggMCBFZGdlIFBDSWUgUE1FLCBudm1lMHEwLCBudm1lMHExCj4+Pj4gICAgIyBlY2hvIDEw
+ID4gL3Byb2MvaXJxLzUxL3NtcF9hZmZpbml0eQo+Pj4+ICAgICMgZGQgaWY9L2Rldi9udm1lMG4x
+cDEgb2Y9L2Rldi9udWxsIGJzPTFNIGNvdW50PTIwMAo+Pj4+ICAgIDIwMCswIHJlY29yZHMgaW4K
+Pj4+PiAgICAyMDArMCByZWNvcmRzIG91dAo+Pj4+ICAgIDIwOTcxNTIwMCBieXRlcyAoMjEwIE1C
+LCAyMDAgTWlCKSBjb3BpZWQsIDAuMTgyMDIxIHMsIDEuMiBHQi9zCj4+Pj4gICAgIyBjYXQgL3By
+b2MvaW50ZXJydXB0cyB8IGdyZXAgSU5UeAo+Pj4+ICAgIDUxOiAgMTM3IDAgMCAwIDk0NiAwIDAg
+MCBJTlR4IDAgRWRnZSBQQ0llIFBNRSwgbnZtZTBxMCwgbnZtZTBxMQo+Pj4+Cj4+Pj4gU2lnbmVk
+LW9mZi1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4+Pgo+Pj4gSSdk
+IGxpa2UgdG8gZ2V0IGFuIEFjayBmcm9tIFRob21hcyBmb3IgdGhpcyBwYXRjaCBzaW5jZSBJJ20g
+bm90IGFuIGlycWNoaXAKPj4+IGV4cGVydCB0byBkZWNpcGhlciB3aGV0aGVyIHRoaXMgcGF0Y2gg
+aXMgdmFsaWQgb3Igbm90LgoKWWVzLCB0aGUgcGF0Y2ggaXMgdmFsaWQgYW5kIHVzZXMgdGhlIHJl
+ZGlyZWN0aW9uIG1lY2hhbmlzbSBjb3JyZWN0bHkuCgpBY2tlZC1ieTogVGhvbWFzIEdsZWl4bmVy
+IDx0Z2x4QGtlcm5lbC5vcmc+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
