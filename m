@@ -4,56 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06A6ACCA490
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Oct 2026 20:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 858F6CCF2D5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 00:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DGn3+mjzqM7OXRZA5vazq60PHw/4h5X8gB5OmGvZE18=; b=Newvlxk20e231q
-	XuUuIiQ/vVOrPik+KZaAEkosrIWYxE9Zrf3NW9X1DUOhEhP9t5/d22m8hjSvQ0n7h41fcMK7Fw7NK
-	9k4ezyXCXnOA6OiymAq+TB2eu/F5O97mu0Brt/ljE/tEtQgww4r+NIX7p01aBf6jy+nbuWd5neIMq
-	RtfWbj97P/Pg+6w/px/NBSmojBj2PxGaY19mH0Yx/lMNv7bJuqo37/dOMaI1l46tVMLaeemh4LnvU
-	NA0+izcS5ksAHDSDDjOanTM4gBNkPN4rhPuzSIXlPNbRIJFTV4RiWh42arBZ2+IDII9+iUcVH3Diw
-	4297GYdMqO24LSFLvSRg==;
+	List-Owner; bh=MQbufVBzmX7jA815lBlhNyjJTYKmm135sSnFLWTcj2k=; b=MvRTTqnIt1wawI
+	kSu9NhhKqUbbCeiir+dUr7UrKDuBNZCSCyfpyIy4YAQXOBTSyv7poQuQjCZIkd1JN50Q+Ht4+2Jgc
+	FlcP4MyeM1VWlarLdI9mP6xLjPgD4Z7ltzWgWWTNWagKUlGO2wu7vqBVLIkSd3coVi55ITYblDmkJ
+	SDZelko4SuDTHNwdg6bNiXQ4PJ6BXOyUYmmJW0DzK1baCjoghNkUgt01zwTyBpwQBwCMCmi+7Xg7D
+	U10n+cpC8FyGDUc2iiBRdhreF99V0vvbJSMHRNUeOtWQEegMSpqId83F+AID6P1M/Cvki+N1r2QmB
+	HHuwvm561Dh9jM5qR49g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIX7P-00000006BwQ-1ENA;
-	Sun, 18 Oct 2026 20:04:31 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xIbBu-00000006Kel-01ZV;
+	Mon, 19 Oct 2026 00:25:26 +0000
+Received: from mail-m103131191185.xmail.ntesmail.com ([103.131.191.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIX7N-00000006Bw7-3KDr
+	id 1xIbBn-00000006KeO-39pN
 	for linux-rockchip@lists.infradead.org;
-	Sun, 18 Oct 2026 20:04:29 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5B15E4075B;
-	Sun, 18 Oct 2026 20:04:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7582C1F000C5;
-	Sun, 18 Oct 2026 20:04:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792353868;
-	bh=gMSKwfEUvy76tp19EXY6DU7m5XMqNAf5LjZmGXHDufw=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date;
-	b=nTLME0r7ugQMR3bx7GO1a9UK9dBkIkrbG9Q0ZnHrOMWeE3s0r7zgfhdvvh3VrQJZB
-	 QShihuGuW7obaY8TW8GvFkdlhgHtOSC4ryJY363163F1fJzQGVNbQEAMKYomT1T6ju
-	 G/zKsCr3ddiJkgYBERfwKJRr+LwA2YVz2YuNs3iA9JNXLlpT30EoL96bFOmIwCQc4j
-	 O7sDgvegd4coN/t4/cw7g9Rcrft/T4bNaY3TCRM1FlDSdm1ZdTJ/JG+LdpzSrlZP9q
-	 08x6EpPBCELxcg9+AjtQ5Whwoazxyr+fkn6fi40V20ZnU/JhpIK+utysDGOKKdgHTX
-	 11Rx9dTf4X8tQ==
-From: Thomas Gleixner <tglx@kernel.org>
-To: Manivannan Sadhasivam <mani@kernel.org>, Shawn Lin
- <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-rockchip@lists.infradead.org,
- linux-pci@vger.kernel.org
-Subject: Re: [PATCH] PCI: dw-rockchip: Enable INTx affinity support
-In-Reply-To: <atRLsp1qUA_sGS-0@debian>
-References: <1790664898-207928-1-git-send-email-shawn.lin@rock-chips.com>
- <atRLsp1qUA_sGS-0@debian>
-Date: Sun, 18 Oct 2026 22:04:24 +0200
-Message-ID: <87y0bubws7.ffs@fw13>
+	Mon, 19 Oct 2026 00:25:24 +0000
+Received: from [172.16.12.48] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 517613f42;
+	Mon, 19 Oct 2026 08:25:13 +0800 (GMT+08:00)
+Message-ID: <d6becae5-df39-422b-8d2c-f15efb4ef4a5@rock-chips.com>
+Date: Mon, 19 Oct 2026 08:25:09 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
+ Manivannan Sadhasivam <mani@kernel.org>
+Subject: Re: [PATCH] PCI: dw-rockchip: Enable INTx affinity support
+To: Thomas Gleixner <tglx@kernel.org>
+References: <1790664898-207928-1-git-send-email-shawn.lin@rock-chips.com>
+ <atRLsp1qUA_sGS-0@debian> <87y0bubws7.ffs@fw13>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <87y0bubws7.ffs@fw13>
+X-HM-Tid: 0aa1518c524103a4kunm24f5ed8a5ff813
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDTxlPVh9LHUsYSU5MHx8aQlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=TD9n+NTh0EX+TpPG74TbMH6mKTeQLOCgnsFyB63BJkXrvDa+A7RnAHBg15/jS8FdsfitzXlgRk0TY93MtG+j/j/imUrzWs7+stzxiupdg5fIAZynzQI8qEsp4VmEOlBvNtw8DqGaG3Y0X/8Z2WtQ9oRck5/pJ4tp1+bVuG/ipUk=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=7M+DcHmAl0Qr6G2WXxfJbEG7iMvZDkTSZZ2o71deWKo=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261018_172520_433618_0F108C45 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,51 +67,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 18 2026 at 10:05, Manivannan Sadhasivam wrote:
-> On Tue, Sep 29, 2026 at 02:54:58PM +0800, Shawn Lin wrote:
->> Leverage the interrupt redirection infrastructure to enable CPU
->> affinity support for the legacy INTx interrupts. The INTx virqs are
->> demultiplexed by the chained handler of the "legacy" interrupt, whose
->> affinity cannot be changed, so affinity control for the INTx virqs is
->> achieved by redirecting the handler to run in IRQ work context on the
->> target CPU.
->> 
->> Mask the INTx source in .irq_pre_redirect() before the handler is
->> redirected: the legacy interrupt is level triggered, so an unmasked
->> line would keep re-firing the chained interrupt until the redirected
->> handler runs.
->> 
->> Same approach as the DesignWare core, commit eaf290c404f7c39f2 ("PCI:
->> dwc: Enable MSI affinity support").
->> 
->> Test was done on RK3588 EVB1 board with an NVMe with pci=nomsi
->> parameter. The /proc/interrupts columns are trimmed for brevity.
->> 
->>   # cat /proc/interrupts | grep INTx
->>   51:  137 0 0 0 0 0 0 0 INTx 0 Edge PCIe PME, nvme0q0, nvme0q1
->>   # echo 10 > /proc/irq/51/smp_affinity
->>   # dd if=/dev/nvme0n1p1 of=/dev/null bs=1M count=200
->>   200+0 records in
->>   200+0 records out
->>   209715200 bytes (210 MB, 200 MiB) copied, 0.182021 s, 1.2 GB/s
->>   # cat /proc/interrupts | grep INTx
->>   51:  137 0 0 0 946 0 0 0 INTx 0 Edge PCIe PME, nvme0q0, nvme0q1
->> 
->> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->
-> I'd like to get an Ack from Thomas for this patch since I'm not an irqchip
-> expert to decipher whether this patch is valid or not.
-
-I'm happy to look at it, but I can't be bothered to fish it out from a
-mail archive. Can you please bounce me the original submission?
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgVGhvbWFzCgrlnKggMjAyNi8xMC8xOSDmmJ/mnJ/kuIAgNDowNCwgVGhvbWFzIEdsZWl4bmVy
+IOWGmemBkzoKPiBPbiBTdW4sIE9jdCAxOCAyMDI2IGF0IDEwOjA1LCBNYW5pdmFubmFuIFNhZGhh
+c2l2YW0gd3JvdGU6Cj4+IE9uIFR1ZSwgU2VwIDI5LCAyMDI2IGF0IDAyOjU0OjU4UE0gKzA4MDAs
+IFNoYXduIExpbiB3cm90ZToKPj4+IExldmVyYWdlIHRoZSBpbnRlcnJ1cHQgcmVkaXJlY3Rpb24g
+aW5mcmFzdHJ1Y3R1cmUgdG8gZW5hYmxlIENQVQo+Pj4gYWZmaW5pdHkgc3VwcG9ydCBmb3IgdGhl
+IGxlZ2FjeSBJTlR4IGludGVycnVwdHMuIFRoZSBJTlR4IHZpcnFzIGFyZQo+Pj4gZGVtdWx0aXBs
+ZXhlZCBieSB0aGUgY2hhaW5lZCBoYW5kbGVyIG9mIHRoZSAibGVnYWN5IiBpbnRlcnJ1cHQsIHdo
+b3NlCj4+PiBhZmZpbml0eSBjYW5ub3QgYmUgY2hhbmdlZCwgc28gYWZmaW5pdHkgY29udHJvbCBm
+b3IgdGhlIElOVHggdmlycXMgaXMKPj4+IGFjaGlldmVkIGJ5IHJlZGlyZWN0aW5nIHRoZSBoYW5k
+bGVyIHRvIHJ1biBpbiBJUlEgd29yayBjb250ZXh0IG9uIHRoZQo+Pj4gdGFyZ2V0IENQVS4KPj4+
+Cj4+PiBNYXNrIHRoZSBJTlR4IHNvdXJjZSBpbiAuaXJxX3ByZV9yZWRpcmVjdCgpIGJlZm9yZSB0
+aGUgaGFuZGxlciBpcwo+Pj4gcmVkaXJlY3RlZDogdGhlIGxlZ2FjeSBpbnRlcnJ1cHQgaXMgbGV2
+ZWwgdHJpZ2dlcmVkLCBzbyBhbiB1bm1hc2tlZAo+Pj4gbGluZSB3b3VsZCBrZWVwIHJlLWZpcmlu
+ZyB0aGUgY2hhaW5lZCBpbnRlcnJ1cHQgdW50aWwgdGhlIHJlZGlyZWN0ZWQKPj4+IGhhbmRsZXIg
+cnVucy4KPj4+Cj4+PiBTYW1lIGFwcHJvYWNoIGFzIHRoZSBEZXNpZ25XYXJlIGNvcmUsIGNvbW1p
+dCBlYWYyOTBjNDA0ZjdjMzlmMiAoIlBDSToKPj4+IGR3YzogRW5hYmxlIE1TSSBhZmZpbml0eSBz
+dXBwb3J0IikuCj4+Pgo+Pj4gVGVzdCB3YXMgZG9uZSBvbiBSSzM1ODggRVZCMSBib2FyZCB3aXRo
+IGFuIE5WTWUgd2l0aCBwY2k9bm9tc2kKPj4+IHBhcmFtZXRlci4gVGhlIC9wcm9jL2ludGVycnVw
+dHMgY29sdW1ucyBhcmUgdHJpbW1lZCBmb3IgYnJldml0eS4KPj4+Cj4+PiAgICAjIGNhdCAvcHJv
+Yy9pbnRlcnJ1cHRzIHwgZ3JlcCBJTlR4Cj4+PiAgICA1MTogIDEzNyAwIDAgMCAwIDAgMCAwIElO
+VHggMCBFZGdlIFBDSWUgUE1FLCBudm1lMHEwLCBudm1lMHExCj4+PiAgICAjIGVjaG8gMTAgPiAv
+cHJvYy9pcnEvNTEvc21wX2FmZmluaXR5Cj4+PiAgICAjIGRkIGlmPS9kZXYvbnZtZTBuMXAxIG9m
+PS9kZXYvbnVsbCBicz0xTSBjb3VudD0yMDAKPj4+ICAgIDIwMCswIHJlY29yZHMgaW4KPj4+ICAg
+IDIwMCswIHJlY29yZHMgb3V0Cj4+PiAgICAyMDk3MTUyMDAgYnl0ZXMgKDIxMCBNQiwgMjAwIE1p
+QikgY29waWVkLCAwLjE4MjAyMSBzLCAxLjIgR0Ivcwo+Pj4gICAgIyBjYXQgL3Byb2MvaW50ZXJy
+dXB0cyB8IGdyZXAgSU5UeAo+Pj4gICAgNTE6ICAxMzcgMCAwIDAgOTQ2IDAgMCAwIElOVHggMCBF
+ZGdlIFBDSWUgUE1FLCBudm1lMHEwLCBudm1lMHExCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogU2hh
+d24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4+Cj4+IEknZCBsaWtlIHRvIGdldCBh
+biBBY2sgZnJvbSBUaG9tYXMgZm9yIHRoaXMgcGF0Y2ggc2luY2UgSSdtIG5vdCBhbiBpcnFjaGlw
+Cj4+IGV4cGVydCB0byBkZWNpcGhlciB3aGV0aGVyIHRoaXMgcGF0Y2ggaXMgdmFsaWQgb3Igbm90
+Lgo+IAo+IEknbSBoYXBweSB0byBsb29rIGF0IGl0LCBidXQgSSBjYW4ndCBiZSBib3RoZXJlZCB0
+byBmaXNoIGl0IG91dCBmcm9tIGEKPiBtYWlsIGFyY2hpdmUuIENhbiB5b3UgcGxlYXNlIGJvdW5j
+ZSBtZSB0aGUgb3JpZ2luYWwgc3VibWlzc2lvbj8KClN1cmUsIHlvdSBjYW4gY2hlY2sgaXQgZnJv
+bToKCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXBjaS84N3kwYnVid3M3LmZmc0BmdzEz
+L1QvI21mMGQ1M2EwZTI3Y2IxNDJlYzBhMmIwOTQxOGVhMmE3ZjA0ZGJiMzIxCgo+IAo+IAoKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
