@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E4D5CCF2DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 10:40:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 869A8CCF2DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 13:25:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FlOU5BcXvehqGR4ZGifgn8LP6MLZ3WpAvvUCVnU5NZU=; b=IkE0z+QBNWEEQU
-	uFYCpkFTYvkH0Ux5CTG7YaIn1kvXyjRk9r/vgdweZrxOoWvs/oiWWIJgRT32xZ3DzQ/8xKUSmcUHV
-	Xn4yuBWSnhhcGa5x8jnEyr587ki0Y2p5cUZKj2lrZx6C1eWvrSJd1o/hKyvvHSS7DOkI/5K8nthQ7
-	Ffuuiaic9cY8RE0uuli1AsZjK2Vjr0IOS4ydWm3xMfA+kXUs6smWOlFtZ4dDClD6GLcQQtYNVpJOu
-	kS71EGoVR2xbdNr6bpPKSYly7fa+GiTUDav42C52W4WXK9Kj9l+NtGyitGuVZhX/5MHF+WDmSettn
-	zvbbcCz/cn89L2GG8XpQ==;
+	List-Owner; bh=4InLkJ3KRKIKdCWkGBkg7x50z91Q7+VkTsSnpdKDb+0=; b=mso0iH2pjLfAjF
+	ZTwU/zfMzrU430ep6xEvFFVKG3+5x74abM2au+XbspEDQP/t5X3nAWb8L6OHwOLvYGXrE0MlGIRIp
+	OkMUuX7zp2pHUxd83tJ7v1uR6a+K/C9UhphHFFiKesrEbJJreGssOHch/kqp6FHoPgexArLnfm3yu
+	+spr3AQtVqI0C+3Gp8eMXrzdqUyE0uU5GztT6uzkaZCUWoGkPhoQ8PuFnv/EyN3zeT3UOOTZq22dQ
+	9yfNg1CiaJRklnYxHXrpuOXa1T+Ob2enp6uDt6QldXRGJxyIWLbTeXAWbL0tA8EBVePvyYje/IYLR
+	yG/5Tp2iIyWCcGYUwFdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIknR-00000007DkP-3gIJ;
-	Mon, 19 Oct 2026 10:40:49 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xInMp-00000007Vm4-0KWg;
+	Mon, 19 Oct 2026 13:25:31 +0000
+Received: from nimiomail.com ([217.160.32.16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIknO-00000007DjQ-2l2i;
-	Mon, 19 Oct 2026 10:40:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1792406442;
-	bh=q6N5Aio8FeUee+E5prkHvtU2XRa+2nEtmXw5f1D/Naw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QcW07TuK1MwNhKhje1WJ+t3EqobvIzT4fFt8pAfQq1Ry+KN3bfWOxfxsjs65IfEmk
-	 ZrxC/F2ps+CsAzZctOfBCOPkmyBxqWcSkrmwQu0toqCT66A2BbUUpIQ1XipUslbcIp
-	 PxJVqnf72ATj0HUPRKkVC2ePYl5bufxR2sN6NZoRqtICeDZY651Yo6IvSasYq/e5M7
-	 ANGyJfDkRiGMApo9VfGg6OOyNfojbu06tMsB0q6B1cUJlWN8Ub2NKabuXPgRv2c3ga
-	 AYq8+JewqBnT9JkTAWaI0wvzZGwDqAf36KNNE0hgpthO/SN0uSfXGpsGx+X4zgYdWH
-	 JIXlJmD21RpoQ==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0DF6C17E0908;
-	Mon, 19 Oct 2026 12:40:42 +0200 (CEST)
-Message-ID: <1c2c222f-53fa-496c-a8ba-9717beb6dcf3@collabora.com>
-Date: Mon, 19 Oct 2026 13:40:41 +0300
+	id 1xInMl-00000007VkW-3PXm;
+	Mon, 19 Oct 2026 13:25:30 +0000
+Received: from nimiomail.com (localhost.localdomain [127.0.0.1])
+	by nimiomail.com (Postfix) with ESMTP id 4BE2981700;
+	Mon, 19 Oct 2026 15:25:24 +0200 (CEST)
+Authentication-Results: nimiomail.com (amavis) (amavisd-new);
+	dkim=pass (2048-bit key) header.d=gluon.es
+Received: from nimiomail.com ([127.0.0.1])
+	by nimiomail.com (nimiomail.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ui28TZHKyGdY; Mon, 19 Oct 2026 15:25:23 +0200 (CEST)
+Received: from DESKTOP-2QFDG0H.tail76f4b.ts.net (21.red-2-139-241.staticip.rima-tde.net [2.139.241.21])
+	by nimiomail.com (Postfix) with ESMTPSA id 9759680C3B;
+	Mon, 19 Oct 2026 15:25:22 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gluon.es; s=default;
+	t=1792416323; bh=UuFuN1oxKEfnvw+6wAwkdT8F1FrmY0AhYnpatZF4Q4g=;
+	h=From:To:Subject;
+	b=IQHUfwV7yw62rgNEWUYH5woMq0H871U/xN3bYCH7ngoEoHNNMv3dp8B3yKkAdnggb
+	 j4iBG71UuvYWMD/rVCCUxbl90rY5iUD1qTyX4cQBDjYaOXFyo/um0fR+3gFEbJQwI0
+	 xqgUfd5e2AZ6mVl6bFWZobgfmRQsdNnFOcV8Jg5LinGWEpXBg3XQMbqxujyx9F1yTl
+	 dnQPOe+yousYddfhp/5GizNy0ow0A9r4DPvdVqSaDXCHWLEhnFNhbS4UhpVspUwlNn
+	 McBMAgrBUSGZL31Kx4f9aJiflrQ5ndzcYMsmbHJCWPXaETXpWj5Cdlug/vece4JjNy
+	 Del2rES0Q9ytA==
+Authentication-Results: nimiomail.com;
+	spf=pass (sender IP is 2.139.241.21) smtp.mailfrom=info@gluon.es smtp.helo=DESKTOP-2QFDG0H.tail76f4b.ts.net
+Received-SPF: pass (nimiomail.com: connection is authenticated)
+From: Miguel Jesus Seron Gonzalez <info@gluon.es>
+To: Dongjin Kim <tobetter@gmail.com>
+Cc: Chukun Pan <amadeus@jmu.edu.cn>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Change ethernet TXD timing delay
+ value
+Date: Mon, 19 Oct 2026 15:25:13 +0200
+Message-ID: <20261019132513.879-1-info@gluon.es>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <aKU1rJKzkkS4P+VT@anyang>
+References: <20250819075522.2238643-1-tobetter@gmail.com>
+ <20250819151019.877709-1-amadeus@jmu.edu.cn> <aKU1rJKzkkS4P+VT@anyang>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 6/6] drm/rockchip: dw_hdmi_qp: Advertise BT.709 and
- BT.2020 colorimetries
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
- =?UTF-8?Q?Jan_Clau=C3=9Fen?= <jan.claussen10@web.de>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20261018123037.19560-1-jan.claussen10@web.de>
- <20261018123037.19560-7-jan.claussen10@web.de>
- <039f91a1-7944-4092-9f9c-29b60e8fb17a@rock-chips.com>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <039f91a1-7944-4092-9f9c-29b60e8fb17a@rock-chips.com>
+X-PPP-Message-ID: <179241632328.1079602.4812919760712785367@nimiomail.com>
+X-PPP-Vhost: gluon.es
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_034047_547178_040F6DF6 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20261019_062528_307601_E782F8C4 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +85,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTAvMTkvMjYgNjoxOSBBTSwgQ2hhb3lpIENoZW4gd3JvdGU6Cj4gSGkgSmFuLAo+IAo+IE9u
-IDEwLzE4LzIwMjYgODozMCBQTSwgSmFuIENsYXXDn2VuIHdyb3RlOgo+PiBFeHBvc2UgQlQuMjAy
-MCBSR0IgYW5kIFlDQyBjb2xvcmltZXRyeSBzbyB1c2Vyc3BhY2UgY2FuIGVuYWJsZSBIRFIKPj4g
-b3V0cHV0LiBBbHNvIGV4cGxpY2l0bHkgZXhwb3NlIEJULjcwOSBZQ0MgYXMgaXQgaXMgbGlzdGVk
-IGluIHRoZQo+PiBSb2NrY2hpcCBSSzM1ODggVFJNIFYxLjAtUGFydDIgMjAyMjAzMDkgZGF0YSBz
-aGVldC4KPj4KPj4gVGVzdGVkIG9uIGEgUmFkeGEgUm9jayA1QiAoUkszNTg4KSB3aXRoIGFuIExH
-IE9MRUQ1NUI4N0xDIGluIEtERQo+PiBQbGFzbWEgNi43LjU6IGVuYWJsaW5nIEhEUiBzd2l0Y2hl
-cyB0aGUgY29sb3JzcGFjZSB0byBCVC4yMDIwLCBhbmQKPj4gZGlzYWJsaW5nIGl0IHJlc3RvcmVz
-IHRoZSBkZWZhdWx0Lgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBKYW4gQ2xhdcOfZW4gPGphbi5jbGF1
-c3NlbjEwQHdlYi5kZT4KPj4gLS0tCj4+Cj4+IE5vdCBzdXJlIGlmIEJULjcwOSBuZWVkcyB0byBi
-ZSBleHBsaWNpdGx5IGV4cG9zZWQgaGVyZSwgYnV0IGl0IGlzIG1lbnRpb25lZCBpbiB0aGUgZGF0
-YSBzaGVldC4KPj4gTWlnaHQgYmUgY292ZXJlZCBieSBEUk1fTU9ERV9DT0xPUklNRVRSWV9ERUZB
-VUxUIHRob3VnaC4KPiAKPiBDYzogQ3Jpc3RpYW4gQ2lvY2FsdGVhIDxjcmlzdGlhbi5jaW9jYWx0
-ZWFAY29sbGFib3JhLmNvbT4KPiAKPiBIaSBDcmlzdGlhbiwgbWF5IGJlIHlvdSB3b3VsZCBiZSBp
-bnRlcmVzdGVkIGluIHRoaXMgc2VyaWVzPwoKSGkgQ2hhb3lpLCBJIGFscmVhZHkgcGxhbm5lZCB0
-byBjaGVjayB0aGlzIG91dCBzb29uLiBQbGVhc2Ugbm90ZSB0aGVyZSdzIGEgbmV3ZXIKcmV2aXNp
-b24gb2YgdGhlIHNlcmllcywgc28gSSB0aGluayBpdCdzIGJlc3QgdG8gbW92ZSBmdXJ0aGVyIGRp
-c2N1c3Npb25zIHRoZXJlLgoKUmVnYXJkcywKQ3Jpc3RpYW4KCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
-aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Dongjin,
+
+On Wed, Aug 20, 2025 at 11:40:44AM +0900, Dongjin Kim wrote:
+> Thank you for suggesting me to try 'rgmii-id' again.
+>
+> I'd remember that 'rgmii-id' didn't work with the very early version of
+> the board, however your suggestion works. Let me test the change with
+> more boards and submit the new patch when it's done.
+
+I ran into the same problem on an ODROID-M1 board marked
+"REV 1.0 20211112", an earlier revision than the 20220613 one in your
+patch, running Home Assistant OS (kernel 6.18.52). With the current
+tx_delay = <0x4f>, about 6.6% of all TCP segments were retransmitted
+at 1000 Mbit/s and larger HTTP transfers stalled.
+
+I tested Chukun's suggestion (phy-mode = "rgmii-id", with tx_delay and
+rx_delay removed; the driver reports "init for RGMII_ID") on the same
+board, on a 1000 Mbit/s full-duplex link. It works fine on this early
+revision as well:
+
+- 3 retransmitted TCP segments out of 24929 (0.012%) over 3 h 49 min
+  of uptime, and no RX/TX errors
+- 90 sequential requests for large files (22.5 MB in total): no
+  failures, 1.4 s in total, the slowest one 47 ms
+- 120 parallel requests (75 MB in total): no failures, 1.2 s
+
+For comparison, tx_delay = <0x35> gave 0.03% retransmissions on the
+same board.
+
+Are you still planning to send a v3 with rgmii-id? If you don't have
+time for it, I'd be happy to send it with Chukun's Suggested-by. Either
+way, for the rgmii-id version:
+
+Tested-by: Miguel Jesus Seron Gonzalez <info@gluon.es>
+
+Thanks,
+Miguel
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
