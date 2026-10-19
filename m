@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFFABCCF2E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 08:59:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B4D7CCF2D6
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 09:06:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mj+PNY7gXfOnNtdQvbgeP3nX5jVrdODmTs8FzolBLPQ=; b=wyRTr9iPdhS+le
-	E1h7YOD2HCU62aTcdXrIuVDeiSBTFwJyAGX0RdIhfg/DRU6sfqrZd2iTRgfbbu4pCnmbkiGwGoOZ5
-	YMuCK9VcSaVaCL+Dj9dl8UfxkecEzNeKOzb+U/Usl6vHCT2738TqRZ2bokPzr2xsR/ZzmqkIIMUsS
-	VTi+hgSih5xktOEC7McVu0Md+vZ0wP6KQwX7lvU+jriGgF7TzZjsDN/LJEwzI0RL5RwcU6+jpdmnC
-	o/fibyOp5fcxDq/0MRljhgAAalql4KsWQiTmAUdEvE5n+f4xOdAqN772oY37niHPfUe0Se3F25ZNM
-	05On73GTikxyI0G1pD3Q==;
+	List-Owner; bh=bh6Gd6uTvCbs4vJUv739QM5QlLGRvYaSfDYyXBtuD8Q=; b=2CO8o35NnoBxtA
+	WcG3xn1qkziDDMrtrsc34/8AIBaiYT8f18P0xY3GTuAYW+TPZdsswIkS4cJ9m2GhpR+Nj50nzA9w6
+	a27GmECbr5k1tUIj5VqRkxidGFC+85ukpPupjxfFbW1h+EK1ejuDj9YlE452tTlDqYciCFkFr862j
+	Uh0WUW1r+Qeis1/HxdUBA1ZbfD/HiQPmwCP5KYjiZQ4pTe6iTxysPd5KSHR2JjMnv3CzRR8dr4WJw
+	wuto2cwGUziTamzkyP6C1aoKLooOIN4v/HTaFitjQh/t7T1BpqcN1r/WHzpSVXK/PpyvhnxQ+OAxd
+	9slQ/JTbrtRYhZB/IIPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIjDW-00000006vnd-24OK;
-	Mon, 19 Oct 2026 08:59:38 +0000
-Received: from mail-m15571.qiye.163.com ([101.71.155.71])
+	id 1xIjK5-00000006xJb-3gJ5;
+	Mon, 19 Oct 2026 09:06:25 +0000
+Received: from mailgate01.uberspace.is ([95.143.172.20])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIjDE-00000006vMY-0dA9;
-	Mon, 19 Oct 2026 08:59:22 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5189b8634;
-	Mon, 19 Oct 2026 16:59:16 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
+	id 1xIjK2-00000006xII-2VuM
+	for linux-rockchip@lists.infradead.org;
+	Mon, 19 Oct 2026 09:06:24 +0000
+Received: from devico.uberspace.de (devico.uberspace.de [185.26.156.185])
+	by mailgate01.uberspace.is (Postfix) with ESMTPS id 5FA5360EF6
+	for <linux-rockchip@lists.infradead.org>; Mon, 19 Oct 2026 11:06:11 +0200 (CEST)
+Received: (qmail 9972 invoked by uid 990); 19 Oct 2026 09:06:11 -0000
+Authentication-Results: devico.uberspace.de;
+	auth=pass (plain)
+Received: from unknown (HELO unknown) (::1)
+	by devico.uberspace.de (Haraka/3.1.1) with ESMTPSA; Mon, 19 Oct 2026 11:06:11 +0200
+From: Leonard Lausen <leonard@lausen.nl>
+To: heiko@sntech.de,
+	gahing@gahingwoo.com
+Cc: leonard@lausen.nl,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v4 13/14] drm/bridge: analogix_dp: Handle HPD notification from downstream bridge
-Date: Mon, 19 Oct 2026 16:58:35 +0800
-Message-Id: <20261019085836.3065008-14-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20261019085836.3065008-1-damon.ding@rock-chips.com>
-References: <20261019085836.3065008-1-damon.ding@rock-chips.com>
+	linux-kernel@vger.kernel.org,
+	tomeu@tomeuvizoso.net,
+	ulfh@kernel.org,
+	linux-pm@vger.kernel.org,
+	dri-devel@lists.freedesktop.org
+Subject: [PATCH] arm64: dts: rockchip: Enable the NPU on NanoPi M5
+Date: Mon, 19 Oct 2026 09:03:42 +0000
+Message-ID: <20261019090348.378183-2-leonard@lausen.nl>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260924102135.92217-1-gahing@gahingwoo.com>
+References: <20260924102135.92217-1-gahing@gahingwoo.com>
 MIME-Version: 1.0
-X-HM-Tid: 0aa15362f4ce03a8kunm6ee755052eac82
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaT01KVk5MGklOThpKGktLHlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	JDQk1VSktLVUtZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=W7ZRLWseXdUoGO1+miqThGBT8wv2rvGjxONBL091lcgTEK+2pS7w2gUkTzjg47Vjrx4ILSMF1fRv63ftpaTGBLHmbt62cadlk9wxVu/dVBwdUJm4j1pqc0avVvHPUbB3wrZrvIifSnuIxL5ON+V1itePIw9pfW7b8Dc7AJySNrY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=K/O4+f7RawSwy8Rs/c1ysu/2IkMAn3RGhQhN7V+GUH8=;
-	h=date:mime-version:subject:message-id:from;
+X-Rspamd-Bar: /
+X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) BAYES_HAM(-2.999999) R_MISSING_CHARSET(0.5)
+X-Rspamd-Score: -0.099999
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=lausen.nl; s=uberspace;
+	h=from:to:cc:subject:date;
+	bh=G5e7xDGKZrF0gm5xtX9ZO1xpalWcEwZGn20RV5qhZOo=;
+	b=f/xc/cIQtFrsxLz/Lbmo5IdXDWN1Nrtyv76OmaMwgrWVwizASO8PSVWBL6ZVrf1WYnh+GQI4aL
+	vNTJS1mQD6I373/xRbpDJJNBrDqVzQXq68RrYD8wdr16Rz33/Z+qiX+uZnpgpY1rPPtYNxIs71rS
+	fyw+4eM8gaAhIBMGy0GpLzOmaPMFUSDm1KXaP9GOkrsfPifax5LEjRNEQDfDHyNzaGHSyweOQQCC
+	7k14CJO8hoR9LjQZGsUV76vTX1lwVOz4HSZjgCs7/IBXHM9Jeh9QbNrYOIk9FUwbGZJ6IMWq67bQ
+	7AR+3tjyCMwO9UyLj9VHIcRsv0+8jVO8k+CV3c7M7XFIYToZ1fdbQtDMCTHrZBxM95Xi+rvEKKxU
+	T0r+1gy8O4Dg7mlZpoHy0mqUVWGuP310FSQpfMOGNJ6jkbrniiRo4YWpKueM1ZiazjwmiI73tDCf
+	WsphzaJMUij036yyEUDAhHJ1CzsXxLZm3S1KCppCXV/EfPlUW1FHW+GBoq0EP21deYfCAd2beibl
+	BKptxgUHHkOY7k4skd+5AHdP08DO+5NI7ZIDXSMZ8kHcEtaeCCBRm7hCLwlTNeXBn4Mf4HElO0UM
+	TGxV+OFP+FaG8sqpTVcVoTGIiVdGrjvqVh8/GgRSe5JFNQfzFWqc7At4jQ4bvzaAj2RSW3LjDIy7
+	s=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_015920_384383_CF7A364C 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20261019_020622_896267_90749906 
+X-CRM114-Status: UNSURE (   8.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,153 +94,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When the display pipeline includes a display-connector bridge with
-hpd-gpios configured, the connector's hotplug status is managed by the
-display-connector bridge through its GPIO, not by the Analogix DP
-controller's native HPD. In this configuration, the DP controller's
-internal HPD polling in analogix_dp_detect_hpd() does not reflect the
-actual connection state.
+Connect the NPU parent power domain and both RKNN cores to the existing
+RK806 vdd_npu_s0 regulator, and enable both cores and their IOMMUs on the
+NanoPi M5.
 
-At attach time, detect whether a downstream bridge provides HPD events
-(DRM_BRIDGE_OP_HPD) while none of them provides detection
-(DRM_BRIDGE_OP_DETECT). When found, switch to hpd notify mode: cache
-the connection status reported through the .hpd_notify callback, mute
-the controller's native HPD interrupts and skip their initialization,
-and trust the cached status instead of polling the typically
-unconnected native HPD pin.
+The domain supply lets the power-domain driver enable the rail before
+powering on the NPU. Each core also references the rail through its
+npu-supply property.
 
-Suggested-by: Heiko Stuebner <heiko@sntech.de>
-Link: https://lore.kernel.org/all/5609825.iZASKD2KPV@diego/
-Tested-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-
+Link: https://lore.kernel.org/all/20260924102135.92217-1-gahing@gahingwoo.com/
+Signed-off-by: Leonard Lausen <leonard@lausen.nl>
 ---
+Applies on top of this series.
 
-Changes in v3:
-- Introduce hpd_notify_mode flag to skip native HPD operations when
-  HPD comes from a downstream bridge.
+The NPU has been tested and works on the NanoPi M5.
+The NanoPi M5 DTB builds with W=1 and passes schema validation.
 
-Changes in v4:
-- Add Tested-by tag.
----
- .../drm/bridge/analogix/analogix_dp_core.c    | 27 ++++++++++++++++++-
- .../drm/bridge/analogix/analogix_dp_core.h    |  2 ++
- .../gpu/drm/bridge/analogix/analogix_dp_reg.c |  7 +++--
- 3 files changed, 33 insertions(+), 3 deletions(-)
+ .../boot/dts/rockchip/rk3576-nanopi-m5.dts    | 22 +++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index df898f314254..90245d55d1d2 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -45,7 +45,7 @@ static const bool verify_fast_training;
- static bool analogix_dp_require_pm_for_hpd_irq(struct analogix_dp_device *dp)
- {
- 	return analogix_dp_is_rockchip(dp->plat_data->dev_type) && !dp->hpd_gpiod &&
--	       !dp->force_hpd;
-+	       !dp->force_hpd && !dp->hpd_notify_mode;
- }
- 
- static void analogix_dp_init_dp(struct analogix_dp_device *dp)
-@@ -936,6 +936,21 @@ static bool analogix_dp_bridge_force_connected(struct analogix_dp_device *dp)
- 	return force_connected;
- }
- 
-+static bool analogix_dp_has_downstream_hpd(struct analogix_dp_device *dp)
-+{
-+	bool hpd_bridge = false;
-+
-+	drm_for_each_bridge_in_chain_from(dp->bridge.next_bridge, bridge) {
-+		if (bridge->ops & DRM_BRIDGE_OP_DETECT)
-+			return false;
-+
-+		if (bridge->ops & DRM_BRIDGE_OP_HPD)
-+			hpd_bridge = true;
-+	}
-+
-+	return hpd_bridge;
-+}
-+
- static int analogix_dp_bridge_attach(struct drm_bridge *bridge,
- 				     struct drm_encoder *encoder,
- 				     enum drm_bridge_attach_flags flags)
-@@ -964,6 +979,7 @@ static int analogix_dp_bridge_attach(struct drm_bridge *bridge,
- 		 * accurate hotplug state.
- 		 */
- 		dp->force_connected_mode = analogix_dp_bridge_force_connected(dp);
-+		dp->hpd_notify_mode = analogix_dp_has_downstream_hpd(dp);
- 	}
- 
- 	return 0;
-@@ -1260,6 +1276,14 @@ static void analogix_dp_bridge_atomic_post_disable(struct drm_bridge *bridge,
- 		DRM_ERROR("Failed to enable psr (%d)\n", ret);
- }
- 
-+static void analogix_dp_bridge_notify(struct drm_bridge *bridge, struct drm_connector *connector,
-+				      enum drm_connector_status status)
-+{
-+	struct analogix_dp_device *dp = to_dp(bridge);
-+
-+	dp->connection_notified = (status == connector_status_connected);
-+}
-+
- static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
- 	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-@@ -1272,6 +1296,7 @@ static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
- 	.attach = analogix_dp_bridge_attach,
- 	.edid_read = analogix_dp_bridge_edid_read,
- 	.detect = analogix_dp_bridge_detect,
-+	.hpd_notify = analogix_dp_bridge_notify,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
+index 227fe6f3ec7c7..96c21838419e8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
+@@ -800,6 +800,10 @@ &pcie0 {
+ 	status = "okay";
  };
  
- static int analogix_dp_dt_parse_lanes_map(struct analogix_dp_device *dp)
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-index 5f5698c73d88..9f25fb6545ad 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-@@ -171,6 +171,8 @@ struct analogix_dp_device {
- 	bool			fast_train_enable;
- 	bool			psr_supported;
- 	bool			force_connected_mode;
-+	bool			hpd_notify_mode;
-+	bool			connection_notified;
++&pd_npu {
++	domain-supply = <&vdd_npu_s0>;
++};
++
+ &pinctrl {
+ 	gmac {
+ 		gmac0_int: gmac0-int {
+@@ -877,6 +881,24 @@ usb_otg0_pwren_h: usb-otg0-pwren-h {
+ 	};
+ };
  
- 	u8 dpcd[DP_RECEIVER_CAP_SIZE];
- 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index abbcdba1a438..4c5e18d40dad 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -193,7 +193,7 @@ void analogix_dp_config_interrupt(struct analogix_dp_device *dp)
- 	writel(0, dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_2);
- 	writel(0, dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_3);
- 
--	if (dp->hpd_gpiod) {
-+	if (dp->hpd_gpiod || dp->hpd_notify_mode) {
- 		analogix_dp_mute_hpd_interrupt(dp, HPD_IRQ_ALL);
- 		return;
- 	}
-@@ -435,7 +435,7 @@ void analogix_dp_init_hpd(struct analogix_dp_device *dp)
- {
- 	u32 reg;
- 
--	if (dp->hpd_gpiod)
-+	if (dp->hpd_gpiod || dp->hpd_notify_mode)
- 		return;
- 
- 	analogix_dp_clear_hotplug_interrupts(dp, HPD_IRQ_ALL);
-@@ -539,6 +539,9 @@ int analogix_dp_get_plug_in_status(struct analogix_dp_device *dp)
- 	if (dp->hpd_gpiod) {
- 		if (gpiod_get_value(dp->hpd_gpiod))
- 			return 0;
-+	} else if (dp->hpd_notify_mode) {
-+		if (dp->connection_notified)
-+			return 0;
- 	} else {
- 		reg = readl(dp->reg_base + ANALOGIX_DP_SYS_CTL_3);
- 		if (reg & HPD_STATUS)
++&rknn_core_0 {
++	npu-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_core_1 {
++	npu-supply = <&vdd_npu_s0>;
++	status = "okay";
++};
++
++&rknn_mmu_0 {
++	status = "okay";
++};
++
++&rknn_mmu_1 {
++	status = "okay";
++};
++
+ &sai2 {
+ 	status = "okay";
+ };
+
+base-commit: 24a19b953e2a3d0ea5a8c4951a0ab8f32720c907
+prerequisite-patch-id: 46ebb679e93d3d25393e8cbf8fc3c955bcc01bd4
+prerequisite-patch-id: 0a572164fcadaa890f0fcd7795e9aed71b4110f7
+prerequisite-patch-id: 7d00dce28af9d650165613b4e63fc1632f1001b0
+prerequisite-patch-id: 1f4f63a13e342a642ce4ee33c64115c7ec09998d
+prerequisite-patch-id: 30b7597254007acdb9ce6f76535df17a896b92ee
+prerequisite-patch-id: 8f7794535e7def740abb4c0c154cd2dec15b1c26
+prerequisite-patch-id: e6dae43a32f177292235c896dd7534e704121afd
+prerequisite-patch-id: a18dcdf841b6975b1e5be01a931430c0a5711f47
+prerequisite-patch-id: c98141bac89990a409fa2a6d3bea93796c9d58ab
+prerequisite-patch-id: d72696eb07efc69faaee3da39b1995d2b2cef289
+prerequisite-patch-id: 6d5c580e02cd2ba4e1f0a590fdcd49dd643b91b0
+prerequisite-patch-id: 48b926e205e294a27d6e11d00b10d98205fd4afb
+prerequisite-patch-id: 8babd101cd3628a478872e8a28a9081906b87160
+prerequisite-patch-id: a0129d3f560f297a03780ef78be819e7aa0775fe
 -- 
-2.34.1
+2.47.3
 
 
 _______________________________________________
