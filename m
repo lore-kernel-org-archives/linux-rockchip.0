@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 217EBCCF2D6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 08:59:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCBD8CCF2D6
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2026 08:59:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bBA6N4MaCIjZDMicTBD9ZLr8xG8JCRRs54itrUTAcMI=; b=Tm1TJYIqb7bJB6
-	rMavs4rB/Uq/q8UE9MG4RdWNITuS2ZCUrBOAMAG4sS1ULnf0okncblTZEwpvZxYn0WHH+U5IcMqTs
-	ovKhDcPMs15PRZY/IxT2LAMC2uix1pWGFNFQmJu6cHF3wNyKtf3pCgoajxfQWyYTQQkT4QQvl9cGr
-	1+E1ITmMH2jdBiAHDOa1gFuR1Mr/JOecPgJHScf10F4Oqvdvw1a+E3cLLdCKgrwRrITHhMI5IyS4W
-	38yz5rdOjA0FVVdo+1Ss6jI8WY39cxI+zRWXmoTZoGdeiFGQsXv7aA73JITM04CsQHjd2yxNKvLoi
-	GUO+mGWC0OWtsTDgrdqw==;
+	List-Owner; bh=u3GPZCF+vnAFrg5Z0mBm0S7BEDX6j/pffAC3BHPeOB0=; b=F+dVEejUdvA4l8
+	ni3DAarkNehj1ktQTi7+sEugs3IdIfnvL/k5fGdqKFY4QwOL07vVEy9e2oVgyp7xWV7wLAey/JAJG
+	KywxxhwGz13bTL/a2sUx61WaBdFLjvrQLpz95EOs5AEE7LlqS1sE1eJaMk1RufzDItW0vDu6tL0Xa
+	0UQ8qWi4OIthmW+etkxAn+02+2n4hMop5e8visCVtYX8IUULt0nRHe5z1BWoNuIdfRPXeRkWpcDri
+	0CetxoujjMN4xioJXMnwnGD89bD32DZtIqHzgdzRjF1z8gnPtPVuqmo+9TK8uoFfdcfGEttp9baKL
+	wnjGuRFJmJB4VcnXcgsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIjD8-00000006vHu-3DKy;
-	Mon, 19 Oct 2026 08:59:14 +0000
-Received: from mail-m3274.qiye.163.com ([220.197.32.74])
+	id 1xIjDA-00000006vKO-49wr;
+	Mon, 19 Oct 2026 08:59:17 +0000
+Received: from mail-m19731100.qiye.163.com ([220.197.31.100])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIjD5-00000006vF8-0kvt;
-	Mon, 19 Oct 2026 08:59:13 +0000
+	id 1xIjD6-00000006vFD-1DeZ;
+	Mon, 19 Oct 2026 08:59:14 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5189b85e7;
-	Mon, 19 Oct 2026 16:59:05 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 5189b85f3;
+	Mon, 19 Oct 2026 16:59:06 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -57,26 +57,26 @@ Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
 	linux-samsung-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v4 04/14] drm/bridge: analogix_dp: Extend clear_hotplug_interrupts to accept IRQ bitmask
-Date: Mon, 19 Oct 2026 16:58:26 +0800
-Message-Id: <20261019085836.3065008-5-damon.ding@rock-chips.com>
+Subject: [PATCH v4 05/14] drm/bridge: analogix_dp: Extend mute/unmute HPD interrupts to accept irq bitmask
+Date: Mon, 19 Oct 2026 16:58:27 +0800
+Message-Id: <20261019085836.3065008-6-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261019085836.3065008-1-damon.ding@rock-chips.com>
 References: <20261019085836.3065008-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0aa15362c81903a8kunm6ee755052eac10
+X-HM-Tid: 0aa15362cd4703a8kunm6ee755052eac20
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCT0MeVkgaTR9LTUhMTR5LGlYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDGEgdVk0ZGBlCHU4fHUxPTFYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
 	9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=Clej9k4IdOig0ysPU1w2UKKegGxjf8FGjVKnBJSeCtdJ3IYKfSqgnn9MC9Qc5Sh11H2Bh8sYxhNWafY2s20ru0nvZdJMERx2W7vrRk3zXZaEauuEt8PUeZw4NnMzBhHd9ANBvVncBavKMVuXHDf/X30mgiRLjRsVgosLN56myKA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=F65PdF+O4TnaiCPbi/wJyx/pQHrDgW8OY44OG/TvwMs=;
+	b=K80nvsKhJZ+bj6K9S3rgnMSoAvBK9ts7C7Fd9slP6lYu3I5hoM0Vyjh0wvZhai99mMI2RkJHgcaFEEO0EWE8mseHmklFcSA1RG1hNibgy2smr+Zwo+JRPIcsnfJM/5LyDzP8ovE1sjPm1rnsBQPg5X2wbXIUJM3zstjJy96rOMI=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=Ib+2qnriz6dyrp57c/Zt7thWj09jat9644102uTcbYE=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_015911_691337_E5396D89 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20261019_015912_545373_AB5CA883 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,13 +93,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Update analogix_dp_clear_hotplug_interrupts() to take an irq_type
-bitmask argument. Instead of clearing all hotplug interrupt bits
-unconditionally, only clear the interrupt flags corresponding to the
-triggered events.
+Update the HPD interrupt mute/unmute routines to accept an irq_type
+bitmask parameter, allowing selective per-bit mask control instead of
+operating on all HPD interrupt bits unconditionally.
 
-Pass the detected IRQ bitmask from the irq thread handler, and use the
-full HPD_IRQ_ALL mask during HPD initialization.
+With IRQF_ONESHOT handling IRQ line masking during threaded handler
+execution, these helpers are no longer needed in the runtime IRQ path.
+They are retained for init-time use by analogix_dp_config_interrupt()
+to configure platform-specific HPD interrupt masks.
+
+Also extract the irq_type-to-COMMON_INT_STA_4 bit mapping into a shared
+helper to avoid duplication in the clear/mute/unmute paths, and drop
+the now unused COMMON_INT_4_HPD_IRQ macro.
 
 Tested-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
@@ -107,104 +112,154 @@ Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 ---
 
 Changes in v2:
-- Add separate patch for IRQF_ONESHOT to resolve interrupt mask issues
-  triggered by interrupt preemption.(Sashiko)
+- Update commit messages to align with newly added IRQF_ONESHOT related
+  commit.
 
 Changes in v3:
-- Rename newly added macro HPD_IRQ to HPD_IRQ_ALL.
+- Extract the irq_type bit mapping into a shared helper and document
+  the mask register polarity once.
+- Drop the unused COMMON_INT_4_HPD_IRQ macro.
 
 Changes in v4:
 - Add Tested-by tag.
 ---
- .../drm/bridge/analogix/analogix_dp_core.c    |  2 +-
- .../drm/bridge/analogix/analogix_dp_core.h    |  2 +-
- .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 28 +++++++++++++------
- 3 files changed, 22 insertions(+), 10 deletions(-)
+ .../drm/bridge/analogix/analogix_dp_core.h    |  4 +-
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 80 ++++++++++++-------
+ 2 files changed, 55 insertions(+), 29 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 974be5b702dc..f88e3263ba0e 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -717,7 +717,7 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
- 
- 	irq_type = analogix_dp_get_irq_type(dp);
- 	if (irq_type)
--		analogix_dp_clear_hotplug_interrupts(dp);
-+		analogix_dp_clear_hotplug_interrupts(dp, irq_type);
- 
- 	if (irq_type & DP_IRQ_TYPE_HP_CABLE_IN ||
- 	    irq_type & DP_IRQ_TYPE_HP_CABLE_OUT) {
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-index 3f40d95757c5..88fa538a5949 100644
+index 88fa538a5949..6a3566b2e8de 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-@@ -196,7 +196,7 @@ int analogix_dp_init_analog_func(struct analogix_dp_device *dp);
- void analogix_dp_init_hpd(struct analogix_dp_device *dp);
- void analogix_dp_force_hpd(struct analogix_dp_device *dp);
- u32 analogix_dp_get_irq_type(struct analogix_dp_device *dp);
--void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp);
-+void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp, u32 irq_type);
- void analogix_dp_reset_aux(struct analogix_dp_device *dp);
- void analogix_dp_init_aux(struct analogix_dp_device *dp);
- int analogix_dp_get_plug_in_status(struct analogix_dp_device *dp);
+@@ -185,8 +185,8 @@ void analogix_dp_init_interrupt(struct analogix_dp_device *dp);
+ void analogix_dp_reset(struct analogix_dp_device *dp);
+ void analogix_dp_swreset(struct analogix_dp_device *dp);
+ void analogix_dp_config_interrupt(struct analogix_dp_device *dp);
+-void analogix_dp_mute_hpd_interrupt(struct analogix_dp_device *dp);
+-void analogix_dp_unmute_hpd_interrupt(struct analogix_dp_device *dp);
++void analogix_dp_mute_hpd_interrupt(struct analogix_dp_device *dp, u32 irq_type);
++void analogix_dp_unmute_hpd_interrupt(struct analogix_dp_device *dp, u32 irq_type);
+ int analogix_dp_wait_pll_locked(struct analogix_dp_device *dp);
+ void analogix_dp_set_pll_power_down(struct analogix_dp_device *dp, bool enable);
+ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index 49c1961e4326..2c1d4655114b 100644
+index 2c1d4655114b..6ac03a1aa512 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -24,6 +24,11 @@
- #define COMMON_INT_MASK_4	(HOTPLUG_CHG | HPD_LOST | PLUG)
- #define INT_STA_MASK		INT_HPD
+@@ -26,8 +26,20 @@
  
-+#define HPD_IRQ_ALL		(DP_IRQ_TYPE_HP_CABLE_IN | DP_IRQ_TYPE_HP_CABLE_OUT | \
-+				 DP_IRQ_TYPE_HP_CHANGE | DP_IRQ_TYPE_IRQ_HPD)
-+#define COMMON_INT_4_HPD_IRQ	(DP_IRQ_TYPE_HP_CABLE_IN | DP_IRQ_TYPE_HP_CABLE_OUT | \
-+				 DP_IRQ_TYPE_HP_CHANGE)
+ #define HPD_IRQ_ALL		(DP_IRQ_TYPE_HP_CABLE_IN | DP_IRQ_TYPE_HP_CABLE_OUT | \
+ 				 DP_IRQ_TYPE_HP_CHANGE | DP_IRQ_TYPE_IRQ_HPD)
+-#define COMMON_INT_4_HPD_IRQ	(DP_IRQ_TYPE_HP_CABLE_IN | DP_IRQ_TYPE_HP_CABLE_OUT | \
+-				 DP_IRQ_TYPE_HP_CHANGE)
 +
++static u32 analogix_dp_irq_type_to_common_int_sta4(u32 irq_type)
++{
++	u32 reg = 0;
++
++	if (irq_type & DP_IRQ_TYPE_HP_CABLE_IN)
++		reg |= PLUG;
++	if (irq_type & DP_IRQ_TYPE_HP_CABLE_OUT)
++		reg |= HPD_LOST;
++	if (irq_type & DP_IRQ_TYPE_HP_CHANGE)
++		reg |= HOTPLUG_CHG;
++
++	return reg;
++}
+ 
  void analogix_dp_enable_video_mute(struct analogix_dp_device *dp, bool enable)
  {
- 	u32 reg;
-@@ -375,18 +380,25 @@ int analogix_dp_init_analog_func(struct analogix_dp_device *dp)
- 	return 0;
+@@ -196,30 +208,50 @@ void analogix_dp_config_interrupt(struct analogix_dp_device *dp)
+ 	writel(reg, dp->reg_base + ANALOGIX_DP_INT_STA_MASK);
  }
  
--void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp)
-+void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp, u32 irq_type)
+-void analogix_dp_mute_hpd_interrupt(struct analogix_dp_device *dp)
++/*
++ * Both ANALOGIX_DP_COMMON_INT_MASK_4 and ANALOGIX_DP_INT_STA_MASK use
++ * 0 to mask and 1 to unmask the corresponding interrupt sources.
++ */
++void analogix_dp_mute_hpd_interrupt(struct analogix_dp_device *dp, u32 irq_type)
  {
 -	u32 reg;
-+	u32 reg = 0;
++	u32 reg, mask;
  
--	if (dp->hpd_gpiod)
-+	if (dp->hpd_gpiod || !irq_type)
- 		return;
+-	/* 0: mask, 1: unmask */
+-	reg = readl(dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_4);
+-	reg &= ~COMMON_INT_MASK_4;
+-	writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_4);
++	if (!irq_type)
++		return;
  
--	reg = HOTPLUG_CHG | HPD_LOST | PLUG;
--	writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_STA_4);
-+	if (irq_type & COMMON_INT_4_HPD_IRQ) {
-+		if (irq_type & DP_IRQ_TYPE_HP_CABLE_IN)
-+			reg |= PLUG;
-+		if (irq_type & DP_IRQ_TYPE_HP_CABLE_OUT)
-+			reg |= HPD_LOST;
-+		if (irq_type & DP_IRQ_TYPE_HP_CHANGE)
-+			reg |= HOTPLUG_CHG;
-+		writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_STA_4);
+-	reg = readl(dp->reg_base + ANALOGIX_DP_INT_STA_MASK);
+-	reg &= ~INT_STA_MASK;
+-	writel(reg, dp->reg_base + ANALOGIX_DP_INT_STA_MASK);
++	mask = analogix_dp_irq_type_to_common_int_sta4(irq_type);
++	if (mask) {
++		reg = readl(dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_4);
++		reg &= ~mask;
++		writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_4);
 +	}
- 
--	reg = INT_HPD;
--	writel(reg, dp->reg_base + ANALOGIX_DP_INT_STA);
-+	if (irq_type & DP_IRQ_TYPE_IRQ_HPD)
-+		writel(INT_HPD, dp->reg_base + ANALOGIX_DP_INT_STA);
++
++	if (irq_type & DP_IRQ_TYPE_IRQ_HPD) {
++		reg = readl(dp->reg_base + ANALOGIX_DP_INT_STA_MASK);
++		reg &= ~INT_HPD;
++		writel(reg, dp->reg_base + ANALOGIX_DP_INT_STA_MASK);
++	}
  }
  
- void analogix_dp_init_hpd(struct analogix_dp_device *dp)
-@@ -396,7 +408,7 @@ void analogix_dp_init_hpd(struct analogix_dp_device *dp)
- 	if (dp->hpd_gpiod)
+-void analogix_dp_unmute_hpd_interrupt(struct analogix_dp_device *dp)
++void analogix_dp_unmute_hpd_interrupt(struct analogix_dp_device *dp, u32 irq_type)
+ {
+-	u32 reg;
++	u32 reg, mask;
+ 
+-	/* 0: mask, 1: unmask */
+-	reg = COMMON_INT_MASK_4;
+-	writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_4);
++	if (!irq_type)
++		return;
+ 
+-	reg = INT_STA_MASK;
+-	writel(reg, dp->reg_base + ANALOGIX_DP_INT_STA_MASK);
++	mask = analogix_dp_irq_type_to_common_int_sta4(irq_type);
++	if (mask) {
++		reg = readl(dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_4);
++		reg |= mask;
++		writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_4);
++	}
++
++	if (irq_type & DP_IRQ_TYPE_IRQ_HPD) {
++		reg = readl(dp->reg_base + ANALOGIX_DP_INT_STA_MASK);
++		reg |= INT_HPD;
++		writel(reg, dp->reg_base + ANALOGIX_DP_INT_STA_MASK);
++	}
+ }
+ 
+ int analogix_dp_wait_pll_locked(struct analogix_dp_device *dp)
+@@ -382,20 +414,14 @@ int analogix_dp_init_analog_func(struct analogix_dp_device *dp)
+ 
+ void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp, u32 irq_type)
+ {
+-	u32 reg = 0;
++	u32 reg;
+ 
+ 	if (dp->hpd_gpiod || !irq_type)
  		return;
  
--	analogix_dp_clear_hotplug_interrupts(dp);
-+	analogix_dp_clear_hotplug_interrupts(dp, HPD_IRQ_ALL);
+-	if (irq_type & COMMON_INT_4_HPD_IRQ) {
+-		if (irq_type & DP_IRQ_TYPE_HP_CABLE_IN)
+-			reg |= PLUG;
+-		if (irq_type & DP_IRQ_TYPE_HP_CABLE_OUT)
+-			reg |= HPD_LOST;
+-		if (irq_type & DP_IRQ_TYPE_HP_CHANGE)
+-			reg |= HOTPLUG_CHG;
++	reg = analogix_dp_irq_type_to_common_int_sta4(irq_type);
++	if (reg)
+ 		writel(reg, dp->reg_base + ANALOGIX_DP_COMMON_INT_STA_4);
+-	}
  
- 	reg = readl(dp->reg_base + ANALOGIX_DP_SYS_CTL_3);
- 	reg &= ~(F_HPD | HPD_CTRL);
+ 	if (irq_type & DP_IRQ_TYPE_IRQ_HPD)
+ 		writel(INT_HPD, dp->reg_base + ANALOGIX_DP_INT_STA);
 -- 
 2.34.1
 
