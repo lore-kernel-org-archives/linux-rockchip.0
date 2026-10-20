@@ -2,75 +2,137 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EE60D606A327
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2026 14:10:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0FE9D606A326
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2026 14:18:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4HLv4cTs;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ol6g562a
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bn72R5o4;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=YP919FM0;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=RQFY4KG8
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bZizstFQBQUwSodGot/o2Ggdd5aqJ+UJlfgavU3fsdE=; b=4HLv4cTs4vABwT
-	HyLaynG3IwRutqX4q6uiQdFJUVPNBM0SFZ8uleyZJlq3Cr2E1a7ZLkL4e4ELcCeZGacf+ET90eAsU
-	07WlyySABJ4+xqx7+3AdCS7Sr/wO9U/mP237ARrfbQ4ki/85a0E5n3ewN2EVffUpqJvo75h5hOOfY
-	ett80WTqeRF77V6KUMcS1rd4LlsXoT7D7CAUvAjJgAueYte4wdKcygzaj0ExZLEeJorQtTmoCBy4L
-	2txOHtlKkWyWi/UOKDWjLMSCqxz/Za8AaiYZ2OXlwQ+1DW+9h55fOjQHD0iVjepHVvzj3FvIEmgKu
-	o4JxJUF/r7EqND2dyCQw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yvldJ7rOFyYRjivdz98oocs9tKe7WIbMzRakMiZKhnE=; b=bn72R5o4uf2gTk
+	RW8uuxJ3a4R3NSOkNO9tzD42LrfnAm1hs4zAK68ZaEY0QM+5aB8JUvT+nrbIAFF0RxrQrME9OSdki
+	A12WaKtAvLME+B45ILu7JKasu2mByPgfVVWvFqSyNpQq0Rm1xWmhLlE4afmLgwBQHUlPd/3zRS1uP
+	6Wu+yawC+lZatAtT28G3HxAKDa3rmdZGGOmSnldg6D0I/uc6HNmPbvTF3apB21P6WueNB90by8PDu
+	yB7G5ue2TNZHVVVdrCBxTYbTJ1OWWXiqq159iL2h2Rs88D3S3LCfqQf7WI0/+f33RlQJsMiQZEBpR
+	l8KkfZ+LVaP+kTZd5t6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJAY6-00000009tCw-3PKj;
-	Tue, 20 Oct 2026 14:10:42 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xJAel-00000009uDK-0u4w;
+	Tue, 20 Oct 2026 14:17:35 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJAY5-00000009tBu-0AMc;
-	Tue, 20 Oct 2026 14:10:41 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 640A9413DF;
-	Tue, 20 Oct 2026 14:10:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D3801F000C4;
-	Tue, 20 Oct 2026 14:10:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792505440;
-	bh=6OFxyQtijBXYSbvcaeMGg6HSw20JVaD24lHAGl8RQ2E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ol6g562a328HhuoljmZTxXatRs5NBevcNy7ffv0uafG1txZ5Lu89zsglQ57D+IXXj
-	 3fSewLLQaumJDPFb0wUgSpJr3hFmusYrkbHHJklEmQvOWf9leWpFmN7sYG0bBSa5vw
-	 1jsan5AGieccaW+dM+AfFdLheolL8u3WY7/I3CkVcMqi+aQLOVqbtw/5PGw+HrDpeO
-	 j2ynXCIrvUClI8Qfx96F+Jk1W5KfZUi6jwDR+/23DhmS5m7xLPMnF/zPOFg6VS5U75
-	 /dD9Tfm2dUDiC0Jn/92vk33QIHU6TSb49Y96N1Hj9vXn0SjITfNzLQk2Y5kdC7DPO2
-	 HbX4ELMkGaGwg==
-Date: Tue, 20 Oct 2026 09:10:39 -0500
-From: Rob Herring <robh@kernel.org>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: =?utf-8?B?5qWK5pm65oiQ?= <jason98166@gmail.com>,
-	Michael Riesch <michael.riesch@collabora.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Guochun Huang <hero.huang@rock-chips.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 2/8] dt-bindings: phy: rockchip,rk3588-mipi-dcphy: Add
- a cell to select TX or RX
-Message-ID: <20261020141039.GB4157247-robh@kernel.org>
-References: <20261016-dcphy-rx-v1-v5-0-e63b49eabe2d@gmail.com>
- <20261019150631.GA265407-robh@kernel.org>
- <73ef0d06-75c5-4c10-b4c3-c7b3c07a1e18@collabora.com>
- <2501273.NG923GbCHz@diego>
+	id 1xJAei-00000009uBl-0Vu7
+	for linux-rockchip@lists.infradead.org;
+	Tue, 20 Oct 2026 14:17:33 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69KD9oIV2845507
+	for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2026 14:17:31 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=qcppdkim1; bh=Sd2t6zfawn/sdEB5TPQXH1fGTRUUwWcMIRf
+	zxgxuW6I=; b=YP919FM0JOYKraNflm4XG/APZyEWo54y3fi66Z0fTAs4bAhHoxq
+	b7dfs1GWiIhn1B8gJSqaaEyoHlleHSrPdzUXY6KyRHLEa1ITiRmi3XQQRD1o2KAh
+	p72CMes9DeabKGDmY/h9wLQpJv0NM/0CO70eeYndFDGjsdzPaZ44xaYbo6YZ7Im+
+	JGtwHe1gp3srX54aQeDrRWV9WIqRUId44loA0wPT1Lqd9DlPdqm6BOgDhVNTUrn+
+	MBFvcbC/J/z23LhDaCBphc1xH0rdh40vyzgJJ0hK4wcwbSW3BnYIes9qbspMBViA
+	6UiADy+7dsulCTyEbAJN0RzJG5Wm+mv21MA==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hdw5natkf-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2026 14:17:31 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-93f37c94ceeso138989885a.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2026 07:17:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1792505850; x=1793110650; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=Sd2t6zfawn/sdEB5TPQXH1fGTRUUwWcMIRfzxgxuW6I=;
+        b=RQFY4KG8DXga9DLKmemfr7kRFvYAgzYW4vE0Ys2iVYzOELUOKHCcTIK67O63JPOOBS
+         JLk8p3eYRLByE1y3EviYqxegBwdkvySO6trM7VflqYdCCukCnDphaWADrc2DbpSp2HGQ
+         dxOs8zyaOGOi6uGi/TB6qXMvTjtkv83tNCdmwk/QiIk2aBdj+Vvg/U3RzYU+8sXMIb0L
+         SNz+VkqHO3t52hS94Bg9l46eztn7ONP6An1VNbLeNcZ1tTNFwK13YIYzqKOqD/jlsC3k
+         PFQ33sHsX/IjR5YHzxJBQID6b4jtP441u/mBuwLaJG8P7TDVIV6MXFst1rI6koLlKlVU
+         QpmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792505850; x=1793110650;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=Sd2t6zfawn/sdEB5TPQXH1fGTRUUwWcMIRfzxgxuW6I=;
+        b=stTUYSI150HhSMSfPKx887z+zukg4n1T3lqcw2QWnrWNkFvyOC6qcBvHAKtO2DnD+j
+         4gXRQJVMq4gN1Du/kiTbIqywrB1UYOD7NckhPTlSmDEdqhTYuWv6x6N/Fk7cNc1gzI77
+         fgv9d9p1lmNZ7OYMxV2aVBKpGAbWYvCZ3UxUkYNTyIELZJGjqg8ezhiKKxIKNPAEIZ+S
+         dZ0cv5gWjT+PGwBXqfu51TQCUKX8NfjiASCCXyulX/Mk4zexDC5tiIKjzo1wZmDf12PX
+         Xn8+HWm49ACRU1An19Zxnnx44KL7eGNO9lhhsyVb1jkAhli83NcchVKZXSVbsEr/8ua4
+         tW5w==
+X-Forwarded-Encrypted: i=1; AKwUvByK6jEIwvrXlKzuQ3TwX9AGjYat+zle/YoDAKpDjipx45vVAhH6l4+11P9Fvrd8pRBd9G4KPGzh9MO7naCZeQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIpFi6SXqXu03tvgxgj8mDVv9FTEIZPWfNXWaalUUMUjPqZ6j0w
+	czMxYO7o27klFoXle+vwvlymskJxMV7mogEqtnd2wzSjohYVstLJGGBi5I2xOuXW34rqzk5Yvw4
+	N9NjdcRJ7w7blDMdRcIWuWji83l55FdFFn9VnRHqE/YkVCbtVm0y4oqsQ2RlOI1xlDCmx6Oqg3J
+	c=
+X-Gm-Gg: AYBFou25tCvj2CSXMBOLtMjclnM02EpV7iy2EfYNLLkYtvy8rRSaRvYW2ySlY6IdGAO
+	JWu4mpttNX7XHy3db0Bvg7zHkPVGimdKDtvgI7fy9ipQZoGdqdpwUgRxvWDV5ZDgYLFOPdDgzj4
+	pqTL+028FLqxPj2bxuvaSoIOmfn/RjVM2ar6YPpKGuIqZHC7I1Pe1vpiPWuLhxda9fCIxwmQ4rV
+	rXdtWHVJV+GBwDQ8eCohjumJYuskbtPQJ9F44MLsyutTDKoMzs25Z+y/sTUeNPumiKYSVUV7L07
+	o3z8XPpD6HYYTvTKfwjh6Mg+kJnwtSb4uKAVk+tpmplCPwGLmGvVJaluywPjhhOv5UzBW9kJVIQ
+	SU8l+r7A/BixvLAIKjkFY8pPA+3U=
+X-Received: by 2002:a05:620a:4493:b0:93f:4498:603a with SMTP id af79cd13be357-93f4c993775mr333473285a.35.1792505849960;
+        Tue, 20 Oct 2026 07:17:29 -0700 (PDT)
+X-Received: by 2002:a05:620a:4493:b0:93f:4498:603a with SMTP id af79cd13be357-93f4c993775mr333466385a.35.1792505849328;
+        Tue, 20 Oct 2026 07:17:29 -0700 (PDT)
+Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:4884:6e9a:d9ff:9fa6])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e1d810043sm6642276f8f.16.2026.10.20.07.17.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Oct 2026 07:17:28 -0700 (PDT)
+From: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
+To: rafael@kernel.org
+Cc: Daniel Lezcano <daniel.lezcano@kernel.org>,
+        Heiko Stuebner <heiko@sntech.de>, Shuah Khan <shuah@kernel.org>,
+        Manaf Meethalavalappu Pallikunhi <manaf.pallikunhi@oss.qualcomm.com>,
+        linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-kselftest@vger.kernel.org
+Subject: [PATCH v3 0/6] powercap: Add generic hierarchy support and convert DTPM
+Date: Tue, 20 Oct 2026 16:16:50 +0200
+Message-ID: <cover.1792504834.git.daniel.lezcano@oss.qualcomm.com>
+X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2501273.NG923GbCHz@diego>
+X-Proofpoint-ORIG-GUID: j9w68VDTzZMmNQLQhh6zMtmdd1rHggIE
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIwMDA1NiBTYWx0ZWRfXzAS3PQho1Zfq
+ tP8FgxefDp0CPBZiI73Me+ap2p3O8+SAbzjS3Ph5CMxn1RTRu6Cbov1WRMqFAsp4yO+QuG44eXr
+ hz2UmKYXKujI9gtEedTxM1ghOZg75Q0dcHtE11qM50GQ/Iqui46wqNtKQ9S9E8Sxz9o+tipJ4j0
+ DW0D25oBPw5EI7bbJ8/yj7fREWp8iwE4vyo20MKY46MnsUlEUdcnrFWYcpXtE9Ng6laRc1TsqgF
+ sl4rX3mDlqWS5QFY/x4IfrPRZPm1GxVMk20ktxOuUf0EF2q7RevhGvp+7+98Z6rKNrHgRRHMd3x
+ Id89DKCKCRUlmwgxlOI5BTEYSGsTditsxFjgy+9T7EcU6K9CJuZFE/Yz7l6GVSJs3Pg00mITfKt
+ 23AvKFQgCptyQpU0AgjIkPjBY7Zce5Q+L8KvdOVj4SW7zaYITGzPldGwsCrF3hzzXHDvX1zV1pH
+ 2KuZb8H36YHQGln/7ug==
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIwMDA1NiBTYWx0ZWRfX2MjRjYwTwGpz
+ VMKpigBzxYJpf8/p2aNicorRE40wnFoBAXsN7fF2M5pCbw8B6QKoWjyLAmC0PpPI3BGPM704VOS
+ lxwkSg7ATugVaYEgsdNIZZ7nIqBHjMU=
+X-Authority-Analysis: v=2.4 cv=VI9IDNPX c=1 sm=1 tr=0 ts=6ad777fb cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=xqWC_Br6kY4A:10 a=660iZSQnnn4A:10
+ a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
+ a=eoimf2acIAo5FJnRuUoq:22 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8
+ a=q5TblVhm6hz4NYUcPxYA:9 a=PEH46H7Ffwr30OY-TuGO:22
+X-Proofpoint-GUID: j9w68VDTzZMmNQLQhh6zMtmdd1rHggIE
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-20_02,2026-10-19_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 phishscore=0 adultscore=0 lowpriorityscore=0 spamscore=0
+ malwarescore=0 clxscore=1015 priorityscore=1501 bulkscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610200056
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261020_071732_169899_E7986B00 
+X-CRM114-Status: GOOD (  17.32  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,97 +142,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-T24gVHVlLCBPY3QgMjAsIDIwMjYgYXQgMDM6Mzc6MzVQTSArMDIwMCwgSGVpa28gU3TDvGJuZXIg
-d3JvdGU6Cj4gQW0gRGllbnN0YWcsIDIwLiBPa3RvYmVyIDIwMjYsIDAwOjIwOjQ3IE1pdHRlbGV1
-cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgTWljaGFlbCBSaWVzY2g6Cj4gPiBIaSBhbGws
-Cj4gPiAKPiA+IE9uIDEwLzE5LzI2IDE3OjA2LCBSb2IgSGVycmluZyB3cm90ZToKPiA+ID4gT24g
-TW9uLCBPY3QgMTksIDIwMjYgYXQgMDQ6MTU6MDNQTSArMDgwMCwg5qWK5pm65oiQIHdyb3RlOgo+
-ID4gPj4gSGkgS3J6eXN6dG9mLCBSb2IsCj4gPiA+Pgo+ID4gPj4+IEV4aXN0aW5nIE9TIHNob3Vs
-ZCBpZ25vcmUgc3VycGx1cyBjZWxsIGlmIHRoZSBkcml2ZXIgaXMgY29kZWQgcHJvcGVybHkuCj4g
-PiA+Pj4gU2FtZSBhcyBhZGRpbmcgbmV3IHByb3BlcnRpZXMgb3IgbmV3IGZyb250LWNvbXBhdGli
-bGUuICBUaGUgcXVlc3Rpb24gaXMKPiA+ID4+PiBob3cgdGhlIGV4aXN0aW5nIGRyaXZlciBiZWhh
-dmVzPwo+ID4gPj4KPiA+ID4+IEFzIHlvdSBwb2ludGVkIG91dCBvbiA1LzgsIHRoZSB4bGF0ZSBj
-aGVja3MgYXJnc19jb3VudCAhPSAxLiBUaGUgREMtUEhZCj4gPiA+PiBkcml2ZXIgd2FzIG1lcmdl
-ZCBpbiB2Ni4xNSwgc28gZXZlcnkga2VybmVsIHNpbmNlIDYuMTUgZmFpbHMgb24gYSBzZWNvbmQg
-Y2VsbC4KPiA+ID4+Cj4gPiA+PiAxLiBLZWVwIHRoZSBzZWNvbmQgY2VsbC4gQWRkIHRoZSBwYXRj
-aCBhcyBmb2xsb3dzOgo+ID4gPj4KPiA+ID4+IC0gaWYgKGFyZ3MtPmFyZ3NfY291bnQgIT0gMSkg
-ewo+ID4gPj4gKyBpZiAoYXJncy0+YXJnc19jb3VudCA8IDEpIHsKPiA+ID4+ICAgICBkZXZfZXJy
-KGRldiwgImludmFsaWQgbnVtYmVyIG9mIGFyZ3VtZW50c1xuIik7Cj4gPiA+PiAgICAgcmV0dXJu
-IEVSUl9QVFIoLUVJTlZBTCk7Cj4gPiA+PiAgIH0KPiA+ID4+Cj4gPiA+PiArIGlmIChhcmdzLT5h
-cmdzX2NvdW50ID4gMSAmJiBhcmdzLT5hcmdzWzFdKSB7Cj4gPiA+PiArICAgZGV2X2VycihkZXYs
-ICJvbmx5IHRoZSB0cmFuc21pdHRlciBpcyBzdXBwb3J0ZWRcbiIpOwo+ID4gPj4gKyAgIHJldHVy
-biBFUlJfUFRSKC1FSU5WQUwpOwo+ID4gPj4gKyB9Cj4gPiA+Pgo+ID4gPj4gICBXaXRoIEZpeGVz
-OiBhbmQgQ2M6IHN0YWJsZSwgdGhlIHN0YWJsZSBrZXJuZWxzIG1haW50YWluZWQgYXQgdGhhdAo+
-ID4gPj4gICB0aW1lIChjdXJyZW50bHkgNi4xOC55IGFuZCA3LjIueSkga2VlcCBEU0kgd29ya2lu
-ZyB3aXRoIHRoZSBuZXcKPiA+ID4+ICAgZHRzLCBhbmQgdGhlIHJlY2VpdmVyIGZhaWxzIGNsZWFu
-bHkgaW5zdGVhZCBvZiBnZXR0aW5nIHRoZSB0cmFuc21pdHRlci4KPiA+ID4+ICAgQnV0IEVPTCBr
-ZXJuZWxzICg2LjE1LCA2LjE2LCA2LjE3LCA2LjE5LCA3LjAsIDcuMSkgc3RheSBhZmZlY3RlZC4K
-PiA+ID4+ICAgSXQgZ29lcyBpbiB3aXRoIHRoZSBzZXJpZXMsIHNpbmNlIHR3by1jZWxsIGR0cyBv
-bmx5IGV4aXN0IGFmdGVyIGl0Lgo+ID4gPj4KPiA+ID4+IDIuIFVzZSBhIGZsYWcgaW4gdGhlIHVw
-cGVyIGJpdHMgb2YgdGhlIGV4aXN0aW5nIGNlbGwsIGFzIFJvYgo+ID4gPj4gICAgIHN1Z2dlc3Rl
-ZC4gRXhpc3Rpbmcga2VybmVscyBhcmUgbm90IGFmZmVjdGVkLCB1bmxlc3MgYSBib2FyZCBlbmFi
-bGVzCj4gPiA+PiAgICAgdGhlIERDLVBIWSBDU0ktMiByZWNlaXZlciBvbiA3LjAgb3IgbGF0ZXIg
-d2l0aG91dCB0aGlzIHNlcmllcy4KPiA+ID4+Cj4gPiA+PiBJIHdpbGwgd3JpdGUgdGhlIGltcGFj
-dCBjbGVhcmx5IHdoaWNoZXZlciAgYXBwcm9hY2ggaXMgc2VsZWN0ZWQgaW4KPiA+ID4+IHRoZSBy
-ZWxhdGVkIGNvbW1pdCBtZXNzYWdlcyBhbmQgdGhlIGNvdmVyIGxldHRlci4KPiA+ID4+Cj4gPiA+
-PiBJIHRoaW5rIHRoZSBjZWxsIGFwcHJvYWNoIGlzIGVhc2llciB0byByZWFkIGFuZCBtb3JlIHN5
-bW1ldHJpYyBpbiB0aGUKPiA+ID4+IGxvbmcgdGVybSwKPiA+ID4+IGJ1dCBpdCBicmVha3MgbW9y
-ZS4gV2hpY2ggb25lIGRvIHlvdSB0aGluayBpcyBiZXR0ZXI/IFRoYW5rcy4KPiA+ID4gCj4gPiA+
-IEknbSBub3QgYSB1c2VyIG9mIHRoaXMgcGxhdGZvcm0sIHNvIEkgZG9uJ3QgY2FyZS4gVXAgdG8g
-dGhlIHBsYXRmb3JtIAo+ID4gPiBtYWludGFpbmVycyB0byBkZWNpZGUgaWYgYnJlYWthZ2UgaXMg
-YWNjZXB0aWJsZS4gWW91IGp1c3QgbmVlZCB0byAKPiA+ID4gZG9jdW1lbnQgdGhlIGlzc3VlIGlu
-IHRoZSBjb21taXQgbWVzc2FnZS4KPiA+ID4gCj4gPiA+IFJvYgo+ID4gCj4gPiBJdCdzIGEgYml0
-IG9mIGEgcGlja2xlLCBhbGwgdGhpcy4KPiA+IAo+ID4gSSBnYXZlIGl0IHNvbWUgbW9yZSB0aG91
-Z2h0LiBJbiB0aGUgZW5kIHRoaXMgaXMgYW4gSVAgYmxvY2sgd2l0aCB0d28KPiA+IFBIWXMuIE5v
-IG1vcmUsIG5vIGxlc3MuIE9uZSBjZWxsIGlzIHN1ZmZpY2llbnQgdG8gYWRkcmVzcyB0aG9zZSwg
-YW5kIGl0Cj4gPiBjb3VsZCBiZSAwIGZvciB0aGUgdHJhbnNtaXR0aW5nIFBIWSAoRFNJLCBkaXNw
-bGF5KSBhbmQgMSBmb3IgdGhlCj4gPiByZWNlaXZpbmcgUEhZIChDU0ksIGNhbWVyYSkuCj4gPiAK
-PiA+IE9mIGNvdXJzZSB0aGUgdHdvIFBIWXMgY2FuIG9wZXJhdGUgaW4gZWl0aGVyIERQSFkgb3Ig
-Q1BIWSBtb2RlLiBUaGUKPiA+IHBoeS1jZWxscyBoYXZlIGJlZW4gKG1pcz8pdXNlZCB0byBzZWxl
-Y3QgdGhlIHByb3BlciBtb2RlIG9mIGNvbWJvIFBIWXMsCj4gPiBhbmQgdGhpcyBwcmluY2lwbGUg
-aGFzIGJlZW4gYXBwbGllZCBoZXJlIHRvby4KPiA+IAo+ID4gSG93ZXZlciwgd2UgaGF2ZSB0aGUg
-c3BlY2lhbCBzaXR1YXRpb24gaGVyZSB0aGF0IHRoZSBtb2RlIGNhbiBvbmx5IGJlCj4gPiBjaGFu
-Z2VkIGZvciB0aGUgY29tcGxldGUgSVAgYmxvY2sgKGFuZCB0aHVzIGZvciBib3RoIFBIWXMgYXQg
-dGhlIHNhbWUKPiA+IHRpbWUpLiBBcyBCcnlhbiBwb2ludHMgb3V0LCB3ZSBuZWVkIHRvIGNoZWNr
-IGFuZCBjb21wbGFpbiBpZiB0aGUgUEhZCj4gPiBtb2RlIGlzIG5vdCBzZXQgdG8gdGhlIHNhbWUg
-dmFsdWUgZm9yIGJvdGggUEhZcy4KPiA+IAo+ID4gSSBzdWdnZXN0IHVzaW5nIGEgcHJvcGVydHkK
-PiA+ICAgICBzYW1zdW5nLGNwaHktbW9kZTsKPiAKPiBJIGd1ZXNzLCBhIG1heWJlIG5pY2VyIHdh
-eSB3b3VsZCBiZSBtaW1pY2luZwo+IAlEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
-cGh5L2ludGVsLGNvbWJvLXBoeS55YW1sCj4gCj4gd2l0aCBpdHMKPiAJaW50ZWwscGh5LW1vZGUg
-PSA8eD4KPiAKPiB3aXRoIHggY29taW5nIGZyb20gaW5jbHVkZS9kdC1iaW5kaW5ncy9waHkvcGh5
-LmgKPiBmb3IgdGhlIGRpc3RpbmN0aW9uIGJldHdlZW4gY3BoeSBhbmQgZHBoeSwgc28gd2UgZG9u
-J3QgaW50cm9kdWNlIHlldAo+IGFub3RoZXIgd2F5IHRvIGRlc2NyaWJlIHRoaXMuCgpXZSBhbHJl
-YWR5IGhhdmUgdGhlIHBsYWluICdwaHktdHlwZScgcHJvcGVydHkgd2hpY2ggdGFrZXMgdGhlIHNh
-bWUgClBIWV9NT0RFX3ggdmFsdWVzLiBXZSBkb24ndCBuZWVkIHlldCBhbm90aGVyIHZlbmRvciBz
-cGVjaWZpYyBwcm9wZXJ0eS4KCj4gCj4gPiAobmFtZSB0byBiZSBiaWtlc2hlZGRlZCkgdGhhdCBz
-ZXRzIHRoZSBjb21wbGV0ZSBJUCBibG9jayBpbnRvIENQSFkgbW9kZQo+ID4gKERQSFkgYmVpbmcg
-dGhlIGRlZmF1bHQpIHRvIGRpc3Rpbmd1aXNoIGJldHdlZW4gdGhlIG1vZGVzLiBTaW5jZSBib3Ro
-Cj4gPiBtb2RlcyB1c2UgYSBkaWZmZXJlbnQgZWxlY3RyaWNhbCBpbnRlcmZhY2UsIHRoaXMgaXMg
-Y2xlYXJseSBhIGhhcmR3YXJlCj4gPiB0aGluZyBhbmQgdGh1cyBzdWl0YWJsZSBmb3IgZGV2aWNl
-IHRyZWUuCj4gPiAKPiA+IFRoZW4sIHdlIGNhbiBhZGRyZXNzIHRoZSB0d28gUEhZcyB3aXRoIHRo
-ZSBoZWxwIG9mIHRoZSBhbHJlYWR5IGV4aXN0aW5nCj4gPiBwaHkgY2VsbCAod2l0aG91dCBhbnkg
-Yml0ZmxhZyB0d2Vha3MgdG8gdGhlIHZhbHVlKS4KPiA+IAo+ID4gVGhlIHNvbGUgZHJhd2JhY2sg
-aXMgdGhhdCB3ZSBuZWVkIHRvIGFjY2VwdCB0aGUgUEhZX1RZUEVfRFBIWSBhbmQKPiA+IFBIWV9U
-WVBFX0NQSFkgdmFsdWVzIHRoYXQgc29tZSBPUyBpbiB0aGUgZmllbGQgbWlnaHQgcGFzcy4gKEZv
-ciBMaW51eCwKPiA+IGl0IHNob3VsZCBvbmx5IGJlIHRoZSBmb3JtZXIuKSBBbmQgd2UgbmVlZCB0
-byBoYW5kbGUgdGhvc2UgdmFsdWVzCj4gPiBjb3JyZWN0bHkuIEJ1dCBJIHRoaW5rIHRoaXMgaXMg
-bm90IG1vcmUgcGFpbmZ1bCB0aGFuIHRoZSBvdGhlcgo+ID4gYXBwcm9hY2hlcy4gQXQgdGhlIHNh
-bWUgdGltZSwgdGhpcyBkZXNpZ24gc2VlbXMgdG8gYmUgdGhlIG1vc3QgY29ycmVjdAo+IAo+IFRo
-ZSBjdXJyZW50IGNlbGwgdmFsdWVzIGFyZSAxMCArIDExLCBzbyBhcyBsb25nIGFzIHdlIGRvbid0
-IHJlLXVzZSB0aG9zZQo+IGV4YWN0IHZhbHVlcyBmb3IgdGhlIG90aGVyIGNvbnN0YW50cyB0aGUg
-ZHJpdmVyIHNob3VsZCBzb21ld2hhdCBlYXNpbHkKPiBiZSBhYmxlIHRvIHJlY29nbml6ZSBhbiBv
-bGQgRFQ/CgpJIHRoaW5rIHlvdSB3aWxsIHN0aWxsIGhhdmUgYW4gQUJJIGlzc3VlIG9mIHdoYXQg
-ZG9lcyBvbGQgT1MgZG8gd2l0aCBuZXcgCnZhbHVlcz8KClJvYgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Powercap controllers may expose trees of power zones, such as packages,
+clusters and CPUs. This series adds generic helpers to duplicate a static
+hierarchy description, create its zones through backend callbacks, and
+destroy them in reverse order. Parents must precede their children in the
+node array; the helpers validate that ordering rather than sorting nodes.
+
+Drivers supporting multiple platforms can place each platform's hierarchy
+description and node array in initdata. powercap_hierarchy_dup() creates a
+working copy of the selected hierarchy and rebases its parent pointers.
+All original descriptions, including those for unused platforms, can then
+be reclaimed automatically with init memory. Names and backend-private
+data are not duplicated and must remain valid for the working hierarchy.
+
+The controller supplies creation and destruction callbacks to connect the
+generic hierarchy traversal to its backend. The creation callback receives
+the control type, node name, private data and parent zone, registers the
+zone with its operations and constraints, and returns it to the helper.
+The destruction callback unregisters it during rollback or teardown.
+
+The API supports both fatal creation errors, which roll back previously
+created zones, and optional nodes: a NULL callback result skips a node and
+its descendants while allowing independent branches to be created.
+
+The helpers were motivated by the SPEL work and also let DTPM share the
+same hierarchy infrastructure:
+https://lore.kernel.org/lkml/20260702-qcom_spel_driver_upstream-v3-0-434d50f0c5b0@oss.qualcomm.com/
+
+A kselftest exercises static and duplicated hierarchies, skipped branches,
+reuse after partial destruction, and rejection of repeated creation. Its
+userspace script checks the 16 exported zones and selected attribute
+values, then removes the module with a sysfs attribute descriptor open.
+
+DTPM is converted to the generic helpers while preserving best-effort
+creation when individual backends are unavailable. The CPU backend finds
+an online sibling when a hierarchy's representative CPU is offline.
+Entirely offline policies remain unavailable during initialization.
+
+The RK3399 description is reduced to one CPU entry per cpufreq policy.
+The old backend already suppressed duplicate registration; the extra
+entries were redundant descriptions, not additional registered zones.
+Finally, a shared Rockchip virtual descriptor and an RK3588 CPU hierarchy
+are added. RK3588's three frequency domains are represented by cpu@0,
+cpu@400 and cpu@600 below a virtual package node; no GPU zone is added
+for RK3588 in this series.
+
+Changes in v3 (since v2):
+- Rebase on v7.3-rc7.
+- Add POWERCAP_HIERARCHY_INIT() and document static versus duplicated
+  hierarchy ownership and lock initialization.
+- Explain how duplication retains the selected platform hierarchy while
+  init memory containing the original descriptions is reclaimed, and
+  describe the controller callbacks and their arguments.
+- Reject populated hierarchies with -EBUSY before invoking callbacks.
+- Validate names and parent ordering before zone creation, including for
+  static hierarchies; document the accepted hierarchy structure.
+- Use explicit mutex locking, a signed reverse-loop index, and the clearer
+  powercap_node.zone member name.
+- Define NULL creation results as skipped branches and retain rollback for
+  error pointers, preserving DTPM's best-effort behavior.
+- Handle offline CPU representatives through an online policy sibling
+  while holding the CPU hotplug read lock.
+- Fix selftest output-directory handling and module cleanup, use
+  powercap-owned zone allocations, and keep shell validation/counting in
+  the main shell so failures propagate.
+- Extend and document selftest coverage for static creation, skipped
+  branches, hierarchy reuse, -EBUSY, and an open descriptor at teardown.
+- Fix indentation, __initdata placement, unnamed setup callback arguments,
+  and whitespace-only lines reported by checkpatch and patch application.
+- Correct descriptions of redundant CPU entries and actual sysfs checks;
+  add Assisted-by attribution.
+
+Earlier generic hierarchy API and selftest submission:
+https://lore.kernel.org/all/20260806110159.69690-1-daniel.lezcano@oss.qualcomm.com/
+
+Assisted-by: LLM
+
+Daniel Lezcano (6):
+  powercap: Add generic zone hierarchy creation helpers
+  selftests/powercap: Add powercap hierarchy creation API tests
+  powercap: dtpm: Remove duplicate RK3399 CPU hierarchy nodes
+  powercap: dtpm: Use generic powercap hierarchy helpers
+  powercap: dtpm: Rename Rockchip virtual node descriptor
+  powercap: dtpm: Add RK3588 hierarchy
+
+ drivers/powercap/dtpm.c                       | 177 +++++-----
+ drivers/powercap/dtpm_cpu.c                   |  62 +++-
+ drivers/powercap/dtpm_devfreq.c               |  22 +-
+ drivers/powercap/powercap_sys.c               | 204 ++++++++++++
+ drivers/soc/rockchip/dtpm.c                   | 129 ++++++--
+ include/linux/dtpm.h                          |   6 +-
+ include/linux/powercap.h                      | 205 ++++++++++++
+ tools/testing/selftests/Makefile              |   1 +
+ tools/testing/selftests/powercap/Kbuild       |   3 +
+ tools/testing/selftests/powercap/Makefile     |  27 ++
+ .../selftests/powercap/powercap_hierarchy.c   | 305 ++++++++++++++++++
+ .../selftests/powercap/powercap_hierarchy.sh  | 126 ++++++++
+ 12 files changed, 1115 insertions(+), 152 deletions(-)
+ create mode 100644 tools/testing/selftests/powercap/Kbuild
+ create mode 100644 tools/testing/selftests/powercap/Makefile
+ create mode 100644 tools/testing/selftests/powercap/powercap_hierarchy.c
+ create mode 100755 tools/testing/selftests/powercap/powercap_hierarchy.sh
+
+
+base-commit: 24a19b953e2a3d0ea5a8c4951a0ab8f32720c907
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
