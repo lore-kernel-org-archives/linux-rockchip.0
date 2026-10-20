@@ -2,47 +2,51 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B462E606A31A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2026 09:39:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8112860A6F5E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2026 09:39:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xLn1JUBu;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=icloud.com header.i=@icloud.com header.a=rsa-sha256 header.s=1a1hai header.b=fAZBTzRm
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=AryMUHpG;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=icloud.com header.i=@icloud.com header.a=rsa-sha256 header.s=1a1hai header.b=bTf6u2bO
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1Z1sUL15RMa7uU4Dscmwpm9boj/TBkefAdOmxgDZNWc=; b=xLn1JUBumiISvJ
-	eMRhbia5PKtfLVEVeONfNxsTN/HJOvfkkyfMiExja+onddjcLO91xWruRUMlnE1NYeYjriDTlN3OS
-	1IlbyGaZ+pnpagUAM3Ish7gQFdTBFmDbb19OjT7HO5XlNH5aW4FiOfJHSutPIy2OjksM4hFKm3hcK
-	KqXWCYh67SZdPeaCaQZNwF93Wr47INrNgwLjZ2/HRVmwjZ/xyszahfx678wDxpmRtcO4Z7PRicV8A
-	tbpnPjU1lOfbqUo2mLyYb7qdy8hcrofnsuQR8bvSXDwdxMetqYCVuPMNLGQkDHKjnUavRfYp1Z/Lb
-	XJA2BPYQ9/Y5oPtDAPGg==;
+	List-Owner; bh=3ax1DA6ViPvuy5nAcnJbVDPOJRTFjcVQVnasstlGmZs=; b=AryMUHpGVIwaWc
+	LkatSNIXNYt67aKV6A1apYVKFJ/HbYcutoYLYthqnN/vSCyDvQZ1pm+VJyV2vczxC2/YRUHGX9Qy5
+	MZJU3fBuHt3lX9Vr/WaytnYAlElDwQJrqP1tjiK+6srmjiNOUJxV2qyKkwsAUupQy4PsON8nC+1vs
+	2JT7tF4lZO5sy73z35gxf3dBSkx/uOHKGOa07BwZzRWCKSxMPzekJWloNsZq2YIy6euWhu6C4owyb
+	WBAtZUrCMsQTeqLtUPA/GuvjK0xt7glQigSUyRfPNkwaaessrF/kbgAucHwqtu/TVq/qdE9rArRB6
+	xJoKQjiIbMmQY0dDdzcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ6JT-00000009J2e-0cw4;
-	Tue, 20 Oct 2026 09:39:19 +0000
-Received: from st-2005a-snip6-5.eps.apple.com ([2a01:b747:3001:202::6] helo=outbound.st.icloud.com)
+	id 1xJ6Je-00000009JIR-1UEN;
+	Tue, 20 Oct 2026 09:39:30 +0000
+Received: from npq-east2-cluster1-host4-snip4-10.eps.apple.com ([57.103.77.23] helo=outbound.ci.icloud.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ6JP-00000009IyI-3t0O
+	id 1xJ6JW-00000009J5s-1XYu
 	for linux-rockchip@lists.infradead.org;
-	Tue, 20 Oct 2026 09:39:17 +0000
+	Tue, 20 Oct 2026 09:39:24 +0000
+Received: from outbound.st.icloud.com (unknown [10.168.160.109])
+	by p00-icloudmta-junk-forwarder-us-central-1k-2 (Postfix) with ESMTPS id 3EB5718000B8;
+	Tue, 20 Oct 2026 09:39:20 +0000 (UTC)
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
-	by p00-icloudmta-asmtp-us-east-1a-60-percent-11 (Postfix) with ESMTPS id BCB3718006A4;
-	Tue, 20 Oct 2026 09:39:12 +0000 (UTC)
-X-ICL-RepId: 01a158ad-e0af-7edb-9223-19ee11044e0d
-X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQFMHV8EUxxCDFYAXRcOVk1KF1UYREVRMFAbXwJCDxwTVhUTC1NWWxNVF0YJGQhdHRkKUFAGXRIYXBRcUFgeRhJWDV0JGRhGXlAbXwJCDxwTVhUTHUMZDysISgRDB0UCXgslEwlTVlsTVRdGCRkIXR0ZFVoJClcAQAtOAl0FWx8RTxweGwRGBl0BTVAPVgoAQQtNV1V3AlEcVg1XQ1QEX04ZDEodUlZbE1UXRgk=
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com; s=1a1hai; t=1792489155; x=1824025155; bh=6RRowT7xHJs8A6zNEf76Dvwzc/XBDK8xSl9XH7Sx0So=; h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:To:x-icloud-hme; b=fAZBTzRmS328JC55tvY1KE1xdYOmj4iuoCTTAcLXcU8GvSg30agRDemFcWznewNaASNSFZ+u3efAKvZWo5PAIXg20ChMUx+UF4GNLAFz0eIafGxxcay3OwW0mpoXnhKDjOJRO/A+mAhJfRKqlwadbWKRZayJXiyhko0HMSWhcnuM+h5vqcUIlNe8VgRBErzdfPrkO4bJjnW+rSL4al55mpbOrahulw0rujHsrHZPcEepDFJL99iDdZkyLHr86nrvwt4a+J0wl3gpK+vA6mxyL2TNSoArUbk2vK+HKySEzuzPlMoANgyGYYIboqwgWR5swUh0QYlGYnInhiUwkhePnA==
+	by p00-icloudmta-asmtp-us-east-1a-60-percent-11 (Postfix) with ESMTPS id 5B00018006A6;
+	Tue, 20 Oct 2026 09:39:15 +0000 (UTC)
+X-ICL-RepId: 01a158ad-ea9e-77be-a574-0d91f7a53b9e
+X-Suspected-Spam: true
+X-ICL-Out-Info: HUtFB0MEWwJACUgHTUQeDxhcEV4JVgdeUEoRQ1APXxxCCkAdXwJFAUAZHVdQRARUBUpWUC1eCF4fTBwdDlgGEhZdRVoOWwRHFBcbXAAXGVFNCE4TBVIHXU1WDUcPWB5cFBcLR0NeCF4fTBwdDlgGEgBNCg42BlkFXglWA0MFNhIUXUVaDlsERxQXG1wAFwZbFAREAV0FXQNAC0geDEEPHwYKVQZAD15RElgZAVwFXlZIeRFQAVgeVl5aF15TFx9LAFxFWg5bBEcU
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com; s=1a1hai; t=1792489160; x=1824025160; bh=BaRJoFp820wGDuLIad4CqTTahL72+upV0QSxufpoJyI=; h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:To:x-icloud-hme; b=bTf6u2bO/DseEvQFT6gPNsMQWPGW/ecZInU2RKc7O7SZ7gtEN+qU8e5llFeUgbRn1N9fCUxqyDHuN47rQMO7L5Ce5XH+dibZ3bPknNCvQh6HajhYiiHwBMWir7kKP5hX9fCC4EvDYbO53+tDbiTGhrGwofgfpbvFT7+LNQjTATAi1iVOuINiWs0La505JIgus2xuseplnISxLEncnCRKbbeoosQFIJI1udVLvhTAL+Ml/MFiYxbJ0DbOSqZxqOb3RUll9e9qSGmxzB548NsIMNm54SAMyyc/IWfLJjD0gtOlyoUIOE+BZLIesUFHZJeFsFsvhaOsvbcXy/osSgDldw==
 Received: from [127.0.0.1] (unknown [17.156.216.30])
-	by p00-icloudmta-asmtp-us-east-1a-60-percent-11 (Postfix) with ESMTPSA id 2A3EA1800115;
-	Tue, 20 Oct 2026 09:39:10 +0000 (UTC)
+	by p00-icloudmta-asmtp-us-east-1a-60-percent-11 (Postfix) with ESMTPSA id 606B51800691;
+	Tue, 20 Oct 2026 09:39:12 +0000 (UTC)
 From: Sofus Forstreuter <sofus.c@icloud.com>
-Date: Tue, 20 Oct 2026 11:37:45 +0200
-Subject: [PATCH v3 04/17] media: v4l2-ctrls: validate av1 tile info
+Date: Tue, 20 Oct 2026 11:37:46 +0200
+Subject: [PATCH v3 05/17] media: v4l2-ctrls: validate vp9 tile_rows_log2
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261020-avd-v3-4-85cbaa2125d8@icloud.com>
+Message-Id: <20261020-avd-v3-5-85cbaa2125d8@icloud.com>
 References: <20261020-avd-v3-0-85cbaa2125d8@icloud.com>
 In-Reply-To: <20261020-avd-v3-0-85cbaa2125d8@icloud.com>
 To: Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, 
@@ -54,24 +58,24 @@ Cc: asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
  linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIwMDAzOCBTYWx0ZWRfX8xjb45bNmWAN
- vEcmVqjrR9p7nIp3ft6RmL6KYSXVacvnE8qJioPIOqm373VTofwVp65tDmrGUKgQnmmx00cg9KE
- W3pwTXaUgHjxkdPEC39ABO+HccZrFQ9yUnIKjQE+sjmq02l0W7SVzAbt9ijRI8ET2y619HyiQGv
- qiMowGs/rSS1Li4PO9Lk766rLjEPQ95Blo/4bABziKM7B3JDsizICp3KfS1dETwvD+p/lvpOigF
- z6mzZtDOxa+PBetif52+QYqmAFkK87duNpoqsd+mmumSCeTIG0UZxTRh7JYCfXQ6LJY+Nc7wl1V
- 4R19uBV7Lyf+HubQ5vO+fcKDtr3re5Drxlv4yJFVNLR/3GqM2qZhHXWDCkgir8=
-X-Proofpoint-GUID: TCqKx8od3_A5hMzFSEhBt7AyYaGn9mUA
-X-Proofpoint-ORIG-GUID: TCqKx8od3_A5hMzFSEhBt7AyYaGn9mUA
-X-Authority-Info-Out: v=2.4 cv=FvkIPmrq c=1 sm=1 tr=0 ts=6ad736c2
+X-Proofpoint-GUID: P1RivSia7mvEILQX6piLNZtW-SnVAnzC
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIwMDAzOCBTYWx0ZWRfXz+qusdGMe59Q
+ ozmhUAeZVGFtjJ7LZxj4dFtSo8qgNqmO0OL0baefzgRvjZTq/5cucMSoq/z/8J8lBtDkgrDX9j4
+ 1EsxoSXuLQzxiyMpbJ1j7wT/6IEchJ5iODWEOyljDRBuhFXH2//43XO5IKIU3vptv8FglOlc06j
+ yZFlF2Xk96YShgrVG+owN1OprCKlwjagJQb7xbW8ayNwz3e2uogb6bJwpokYrGwYoTa5f1TxL+R
+ c4gB/qJ55u8UVyLlYmq5vAvc8dkRNMCkkoLjH2W9L70cd+FqKqAbjlq7dRUIBk+ibqqQ0xqPLo3
+ 5LjXXb8b65ji6PclhZikg0MVgVDSAh8jJO+fQ6dd2MgcuRa+Vb7l2OMMv7Dskc=
+X-Proofpoint-ORIG-GUID: P1RivSia7mvEILQX6piLNZtW-SnVAnzC
+X-Authority-Info-Out: v=2.4 cv=UMfQ3Sfy c=1 sm=1 tr=0 ts=6ad736c5
  cx=c_apl:c_pps:t_out a=oyWFxbOnq+dmhQrAPgaJYA==:117
  a=oyWFxbOnq+dmhQrAPgaJYA==:17 a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10
  a=x7bEGLp0ZPQA:10 a=kLM9Tyy99jAA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=v3ZZPjhaAAAA:8 a=IjdaWMjaTc4ojD0rA64A:9 a=QEXdDO2ut3YA:10
-X-JNJ: AAAAAAABtWP6bfkHQcYuEQl+N1NNC+zUHk/D/3dDuVzmbOBY6nsLiBMOnx96fHzygYtqOfAINIxg0vgm3t9qFiNshawlm7rlq2dJP2LY4MqGjwr+Ypj6vyl42J5QSt1jahEqjJkoIXsJ9tdZISPHCoEmRNjuCLFrihO0axlqUHQ+qG4xq7D2FyFyeNq78rIDGhJz2UWxFavziCOtg3mD9Og1uKJZOWLBQISZqlCE8OBDEzXmqMiqNNxGYo40p2j0K4WK9fSrn9DfgUAX+3uy8YdGYvWMaX7kcJUp3Yl8lSAuIGQv4kP88Wlg8+YtwVmQVkZatjqA1e7neRq8nzFL3p3CW4ikk5Ew8A2uiZZg2QViWv+xvamT6Dlt7fkVVvQPU5Rfhozea5QxavC9YHGQALy1VQMdkdA7KZmpTwHRExY8K7pC0e7QkropePn5wBRdgryFJTwntyZSP2WwdanU52ecFR5s+ptZxdEizMIeYEgEfu7V4tk4FSyt2ix6YOvcoOBrt/v2Fn35XnhJzWNwNASwAndWEYXHUoTiZE1G5ZB+E6gOYwQEgOsP9QNvuPNH4qdzk0oGY8ehjXEMd6ckrs8j6dZWD/oKRGK5gFGCMFwyJo5a15BjrFwWR6OMldhD9t70SUHjiAXW4N+SnN6Y5cT0tBamfXMzI7BwZYi3cXyyN35MJL69MHm+UmdDU9Pv/YAIO0QLnLVWjlcRYwRStVeRz8OmtUxwg/bw0JJksmpeCE+WolF7q1w18G1AYZH2P1ZD1SwHcMco4AdhM3/aFcnXEaB0G80kkcKjGOjeaAW26KMy34KGT4UpH+ZkFck0JckVFSn8Ume815IFsPIN0pnhboAftcQlgDYqMlUyZYUDkxU5p9tEucv0XuHpxZpuJqibAU2r46EGRYZGt56YfwsXGT9fOLXXuzPp5LzVjOtj+7clPta6dgn4e2Ij
+ a=v3ZZPjhaAAAA:8 a=AhhewsDm9b8M-hAPyywA:9 a=QEXdDO2ut3YA:10
+X-JNJ: AAAAAAABtqijtwkJwGZwKjPwmzt2BpWebcDONZPRT27B7PKKItBFlOb8iyd7Ca2wsaquft/g8+HOoUpfV61jBB8Hvartcyp0aCJRNhsAd1fb754NpfnptkT0RXyXM56vxoDeUTnZlgcyWdoo7CuhRWd74RW3JTmyhHGPxZPV8h0QPaSYnMBVlDWPWIMXjCJ2p53ROJTInalQYSBk9AhmeTwTuYN/OmnpWax3a5pOwy2U+FF8gknU8ODLIg/zy9HdLI3VLtosTWFok49BnUHMzHXcE+uGvgIFKHGDYYLTxUCweRqbud//Fzq1CjLczHeWgNjWCIHekgP/lSEehG37rFQxRE4yNDzluQi+mh4oM0lLSg8M42O1dBB54flGlruOdi854DudcVWb4Br9VTv43Qf/muc9XXu7NepFSWkKGqBig83Cef2vXMbYM0TFcflr5JLQRyJ6fUhueDDBWqrYe5ynlkxiZj3xJM2ghiMOBiVIVbLoquYXXPeAknE9oAGjnUSRbJ6rekDRpCyzmHIGU9PEfiYG1CXfH/xZOtjFB99nNrIQqQBpOR2I/kyCL5RIo7IFhteE3T4bubTUNiS7nXeqAOtAcE0U4YEvxsisrjOztmdXWMNoqvoh79RWagBEFQE86RUTe+pCTdklsObNslx2tw5mxw6p65BIl6JggFDphSl8M6tKVpUJgUOU2OFl2sY8Xm4OsBg4kPwkLaP5nVFDNs0xKgtMovzPeNWVrS2aoH+soRkYdBHRo+26xLmN55bhtSc8hqi7VwRR+5HYiEkYsC8nyGMgzo+42RUSxBpLhbmWzRvdFGWsEzDxsTi0Fgk4vdOEW6kXOFbFMZsSSOdtHxk8HQpF3zvlSbZmjzv+bIfNh8sEuZ1dTEQHTZiWneJJ/tLGducKwYoY/eg2b4lgVOTZRaLKn4Um9Oa7A2f3qTkUkD8w8A==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261020_023916_062433_75888869 
-X-CRM114-Status: GOOD (  11.68  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261020_023922_516257_1F34BB81 
+X-CRM114-Status: GOOD (  10.90  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,61 +96,25 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Many drivers use tile_cols and/or tile_rows, so make sure they are
-valid.
-
-Increase V4L2_AV1_MAX_TILE_COUNT to MAX_TILE_COLS * MAX_TILE_ROWS
-
 Reviewed-by: Neal Gompa <neal@gompa.dev>
 Signed-off-by: Sofus Forstreuter <sofus.c@icloud.com>
 ---
- drivers/media/v4l2-core/v4l2-ctrls-core.c | 15 +++++++++++++++
- include/uapi/linux/v4l2-controls.h        |  2 +-
- 2 files changed, 16 insertions(+), 1 deletion(-)
+ drivers/media/v4l2-core/v4l2-ctrls-core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-index 661a3a25da52..922cf74c4eb8 100644
+index 922cf74c4eb8..384ff77771ea 100644
 --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
 +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-@@ -800,10 +800,25 @@ static int validate_av1_film_grain(struct v4l2_ctrl_av1_film_grain *fg)
- 	return 0;
- }
+@@ -638,7 +638,7 @@ validate_vp9_frame(struct v4l2_ctrl_vp9_frame *frame)
+ 	 * According to the spec, tile_cols_log2 shall be less than or equal
+ 	 * to 6.
+ 	 */
+-	if (frame->tile_cols_log2 > 6)
++	if (frame->tile_cols_log2 > 6 || frame->tile_rows_log2 > 2)
+ 		return -EINVAL;
  
-+static int validate_av1_tile_info(struct v4l2_av1_tile_info *ti)
-+{
-+	if (ti->tile_cols > V4L2_AV1_MAX_TILE_COLS ||
-+	    ti->tile_rows > V4L2_AV1_MAX_TILE_ROWS)
-+		return -EINVAL;
-+
-+	if (ti->context_update_tile_id >= ti->tile_cols * ti->tile_rows)
-+		return -EINVAL;
-+
-+	return 0;
-+}
-+
- static int validate_av1_frame(struct v4l2_ctrl_av1_frame *f)
- {
- 	int ret = 0;
- 
-+	ret = validate_av1_tile_info(&f->tile_info);
-+	if (ret)
-+		return ret;
- 	ret = validate_av1_quantization(&f->quantization);
- 	if (ret)
- 		return ret;
-diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-index d17e41d51d2e..abdfa102a77b 100644
---- a/include/uapi/linux/v4l2-controls.h
-+++ b/include/uapi/linux/v4l2-controls.h
-@@ -2939,7 +2939,7 @@ struct v4l2_ctrl_vp9_compressed_hdr {
- #define V4L2_AV1_MAX_NUM_PLANES		3
- #define V4L2_AV1_MAX_TILE_COLS		64
- #define V4L2_AV1_MAX_TILE_ROWS		64
--#define V4L2_AV1_MAX_TILE_COUNT		512
-+#define V4L2_AV1_MAX_TILE_COUNT		4096
- 
- #define V4L2_AV1_SEQUENCE_FLAG_STILL_PICTURE		  0x00000001
- #define V4L2_AV1_SEQUENCE_FLAG_USE_128X128_SUPERBLOCK	  0x00000002
+ 	if (frame->reference_mode > V4L2_VP9_REFERENCE_MODE_SELECT)
 
 -- 
 2.55.0
