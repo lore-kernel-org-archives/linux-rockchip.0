@@ -2,34 +2,34 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 01BBF60A3824
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 84BF360A2610
 	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2026 03:09:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fvi0/Ywv;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=R6y0wWT2
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uxYbUYvk;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=ejSv5eT7
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lhZ5tHEwyL/5lROxI3zv2y2it7RFyjRpLyKUhQbReVo=; b=fvi0/YwvLoII0o
-	4tDxwqf9DneSxIUJZ0b8PS5VoD7QRqK3lgTO7wpyKRWVKnhOsA95gnRfi6WyQ5Os2WiZur/GeQars
-	Y9BiPZZyRp9F0bydUAIukpXJkCwMEkAV2dvXgg73/dNNSXQu9MWRVUbfmVHEumgtAWMQGbAuzrOrN
-	fcUyuEBhHfdW2Pa9QozeJKkoNhc5ag7T9qUMYqkCsT0wvJA/mZstUVgxvccRF7AaMuygT+xvpAsJn
-	qfhd5eYmSx0Lzyx/24zKTWIwAccZcPWl7i6DnUFGfajf2osM5dlAZKclpFCLLbTuy1lDlHoj3/YqJ
-	arYYpzanWIA2C2Csn0MA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7AvjCujJ8Ra1prsf1Y+hPSZ5dF0MtOv1RrZS9YeGtlA=; b=uxYbUYvkKoM2LP
+	H7vam6aOc9IlP8lS6Ztv5U3VTw9cXm/6cYLtZhmexTraeviXbHX/bu5wVbk8L80x8fCDccmlTN+QI
+	T5p1uGdCuo5fjm8yNk2PcEatvPAzUiepLfPmMTdWarmmK0GKbT8SV8ouhNDrX72oWiRnE2eY7kaex
+	e+tpLnQmYPNBFJHLO++pmCVB2Wsy4bQjnZz9NP8A8Xpr4wPxyG/cpC9wQZlsjQvxbps9jgmrBkMXn
+	6+6KhtT6QYlcrzHX/F1SrMYQ9PoBMRDeFroDe9DxNWlY5zzZ93Uv30LjlqU3UDOiEwSxVf8Nh91F7
+	ZGd3gLgvFgOxYfBEvR1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ0EK-00000008lFU-0JRC;
-	Tue, 20 Oct 2026 03:09:36 +0000
-Received: from mail-m60251.netease.com ([210.79.60.251])
+	id 1xJ0EH-00000008lDX-2oft;
+	Tue, 20 Oct 2026 03:09:33 +0000
+Received: from mail-m60204.netease.com ([210.79.60.204])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ0EG-00000008lCk-3H2Z;
-	Tue, 20 Oct 2026 03:09:34 +0000
+	id 1xJ0EE-00000008lCh-00wo;
+	Tue, 20 Oct 2026 03:09:32 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 51a4cee81;
-	Tue, 20 Oct 2026 11:09:28 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 51a4cee65;
+	Tue, 20 Oct 2026 11:09:25 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	Heiko Stuebner <heiko@sntech.de>,
@@ -60,27 +60,25 @@ Cc: Neil Armstrong <neil.armstrong@linaro.org>,
 	linux-kernel@vger.kernel.org,
 	linux-phy@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v3 2/6] dt-bindings: phy: Add rockchip,rk3568-edp-phy
-Date: Tue, 20 Oct 2026 11:09:12 +0800
-Message-Id: <20261020030916.3223833-3-damon.ding@rock-chips.com>
+Subject: [PATCH v3 0/6] Add eDP support for RK3568
+Date: Tue, 20 Oct 2026 11:09:10 +0800
+Message-Id: <20261020030916.3223833-1-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20261020030916.3223833-1-damon.ding@rock-chips.com>
-References: <20261020030916.3223833-1-damon.ding@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa157490f9103a8kunmfd20f05334c750
+X-HM-Tid: 0aa15749028c03a8kunmfd20f05334c72b
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaHklCVkkYS0xMH04YTUNJHVYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaHh8aVksaTRlKTEsaTE8dHlYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=R6y0wWT2nnSV2WXaa1gQkDyuye2uuSHCXbSdvBW+qlw1rVM5UOyEDOI5Kj67CamC05tWqQAyMOBy4z3UZupioXXe4rNerDSx11Kvgeay0TShCnzdqrs5HesMkDQHbF1AY42QzCg5zCZfxiMBKF+0krqMx2PQTxSObHM53u8uwZs=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=V6YTkuc+JQ/Q5NgJoM+Ztyfr/5wVw30o5S+KA6zRLSw=;
+	b=ejSv5eT7K0+24gI8HbGP05HopX6koZdp+6lHCq0dDME2HQCRxnv9QB5FmRNP2hIjezD8oVsbDOrRGzT4gNj5j6MI2uKSOExLWPjL1Ie3b+8U3ARCtv1AzVSIQc0mnv+kwxxfMstgCL5uzVWb11nYY3Co41IV/QaKnbVLwQNt+4I=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=dt0N3ix0wAIYmAU9lbiuaFzpuHythTIbWJzQ9DvOTyA=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_200933_035867_8070B897 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20261019_200931_063553_B71147D2 
+X-CRM114-Status: GOOD (  13.90  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,131 +92,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Document the eDP transmitter PHY with NaNeng IP block found on the
-RK3568 SoC.  The PHY is controlled through the eDP PHY GRF registers,
-so its node is modeled as a child of the eDP PHY GRF syscon.  Also
-add the "rockchip,rk3568-edp-phy-grf" compatible and the "edp-phy"
-child node reference to the Rockchip GRF schema.
+PATCH 1 is to document the "rockchip,rk3568-edp" compatible in the
+        Rockchip Analogix DP binding.
+PATCH 2 is to add the binding for the RK3568 eDP PHY with NaNeng IP block.
+PATCH 3 is to add the RK3568 support for the Analogix DP bridge driver.
+PATCH 4 is to add the driver for the Rockchip eDP Transmitter PHY with
+        NaNeng IP block.
+PATCH 5 is to add the RK3568 support for the Rockchip Analogix DP driver.
+PATCH 6 is to add the eDP controller and eDP PHY nodes for the RK3568
+        SoCs.
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
----
- .../bindings/phy/rockchip,rk3568-edp-phy.yaml | 59 +++++++++++++++++++
- .../devicetree/bindings/soc/rockchip/grf.yaml | 15 +++++
- 2 files changed, 74 insertions(+)
+Tested on RK3568 EVB1 baord with LG eDP panel LP079QX1-SP0V.
+
+&edp {
+  avdd-0v9-supply = <&vdda0v9_image>;
+  avdd-1v8-supply = <&vcca1v8_image>;
+  force-hpd;
+  status = "okay";
+
+  aux-bus {
+    panel {
+      compatible = "edp-panel";
+      backlight = <&backlight>;
+      power-supply = <&vcc3v3_lcd0_n>;
+      no-hpd;
+
+      port {
+        panel_in_edp: endpoint {
+          remote-endpoint = <&edp_out_panel>;
+        };
+      };
+    };
+  };
+};
+
+&edp_in {
+  edp_in_vp0: endpoint {
+    remote-endpoint = <&vp0_out_edp>;
+  };
+};
+
+&edp_out {
+  edp_out_panel: endpoint {
+    remote-endpoint = <&panel_in_edp>;
+  };
+};
+
+&edp_phy {
+  status = "okay";
+};
+
+&vp0 {
+  vp0_out_edp: endpoint@ROCKCHIP_VOP2_EP_EDP0 {
+    reg = <ROCKCHIP_VOP2_EP_EDP0>;
+    remote-endpoint = <&edp_in_vp0>;
+  };
+};
+
+Damon Ding (6):
+  dt-bindings: display: rockchip: analogix-dp: Add support for RK3568
+  dt-bindings: phy: Add rockchip,rk3568-edp-phy
+  drm/bridge: analogix_dp: Add support for RK3568
+  phy: rockchip: Add support for Naneng eDP phy
+  drm/rockchip: analogix_dp: Add support for RK3568
+  arm64: dts: rockchip: rk356x: Add eDP controller and phy nodes
+
+ .../rockchip/rockchip,analogix-dp.yaml        |  25 +-
+ .../bindings/phy/rockchip,rk3568-edp-phy.yaml |  59 +++
+ .../devicetree/bindings/soc/rockchip/grf.yaml |  15 +
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi |  41 ++
+ .../drm/bridge/analogix/analogix_dp_core.c    |   1 +
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  24 +-
+ drivers/phy/rockchip/Kconfig                  |  10 +
+ drivers/phy/rockchip/Makefile                 |   1 +
+ .../phy/rockchip/phy-rockchip-naneng-edp.c    | 453 ++++++++++++++++++
+ include/drm/bridge/analogix_dp.h              |   2 +
+ 10 files changed, 629 insertions(+), 2 deletions(-)
  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
+ create mode 100644 drivers/phy/rockchip/phy-rockchip-naneng-edp.c
 
-diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
-new file mode 100644
-index 000000000000..afe7bc3d839e
---- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
-@@ -0,0 +1,59 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/phy/rockchip,rk3568-edp-phy.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip eDP Transmitter PHY with NaNeng IP block
-+
-+maintainers:
-+  - Damon Ding <damon.ding@rock-chips.com>
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+description:
-+  On the RK3568 SoC the eDP PHY is controlled through the eDP PHY GRF
-+  registers, therefore the PHY node is expected to be a child of the
-+  eDP PHY GRF syscon node.
-+
-+properties:
-+  compatible:
-+    const: rockchip,rk3568-edp-phy
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    const: refclk
-+
-+  "#phy-cells":
-+    const: 0
-+
-+required:
-+  - compatible
-+  - clocks
-+  - clock-names
-+  - "#phy-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rk3568-cru.h>
-+
-+    soc {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      edp_phy_grf: syscon@fdcb0000 {
-+        compatible = "rockchip,rk3568-edp-phy-grf", "syscon", "simple-mfd";
-+        reg = <0x0 0xfdcb0000 0x0 0x100>;
-+        clocks = <&cru PCLK_EDPPHY_GRF>;
-+
-+        edp_phy: edp-phy {
-+          compatible = "rockchip,rk3568-edp-phy";
-+          clocks = <&pmucru XIN_OSC0_EDPPHY_G>;
-+          clock-names = "refclk";
-+          #phy-cells = <0>;
-+        };
-+      };
-+    };
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index 7bcb4e2f47ec..8d4ced0145b8 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -93,6 +93,7 @@ properties:
-               - rockchip,rk3399-grf
-               - rockchip,rk3399-pmugrf
-               - rockchip,rk3562-pmu-grf
-+              - rockchip,rk3568-edp-phy-grf
-               - rockchip,rk3568-grf
-               - rockchip,rk3568-pmugrf
-               - rockchip,rk3576-ioc-grf
-@@ -156,6 +157,19 @@ allOf:
-           $ref: /schemas/phy/rockchip,rk3288-dp-phy.yaml#
-           unevaluatedProperties: false
- 
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3568-edp-phy-grf
-+
-+    then:
-+      properties:
-+        edp-phy:
-+          type: object
-+          $ref: /schemas/phy/rockchip,rk3568-edp-phy.yaml#
-+          unevaluatedProperties: false
-+
-   - if:
-       properties:
-         compatible:
-@@ -309,6 +323,7 @@ allOf:
-         compatible:
-           contains:
-             enum:
-+              - rockchip,rk3568-edp-phy-grf
-               - rockchip,rk3576-dcphy-grf
-               - rockchip,rk3576-vo1-grf
-               - rockchip,rk3588-vo-grf
+---
+
+Changes in v2:
+- Apply the lane-dependent TX configurations in set_lanes() instead of
+  set_rate(), and store the lane count for set_voltages(), since the
+  Analogix DP core issues separate phy_configure() calls and the lane
+  count is only valid in the set_lanes/set_voltages calls.(Sashiko)
+- Initialize val to zero in rockchip_edp_phy_enabled() to avoid using
+  an uninitialized variable when regmap_read() fails.(Sashiko)
+- Fail the probe when the chip data requires GRF configurations while
+  the "rockchip,grf" property is missing.(Sashiko)
+- Rebase onto latest drm-misc-next tree.
+
+Changes in v3:
+- Restore the PHY related changes which were missing in v2 for
+  unexpected reasons.
+
 -- 
 2.34.1
 
