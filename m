@@ -2,46 +2,46 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 74A45606A319
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2026 07:30:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 633A0606A319
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2026 07:30:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=spC8vNJJ;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=airkyi.com header.i=@airkyi.com header.a=rsa-sha256 header.s=altu2504 header.b=tVr5tDMY
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ko/zisxS;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=airkyi.com header.i=@airkyi.com header.a=rsa-sha256 header.s=altu2504 header.b=Ecw7d2ok
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zWKRlzSrfXS/+Q3M7bXGKLjEkvYr/MoSpBh7FBg8bKU=; b=spC8vNJJjYFjkn
-	ppvPhmcshKpcyiajgUoTWHIbqYYKozl98Bvi2JChEXOT7znVx/HaRu7SdtIvJUiBLcO8Wf8oCzEKe
-	Qe2K37zwGGo3wjkv3K/CLQomHNLi8eVgGr/Ca5rRksD981ZngnuE55mqpGDt0y6DQUNaoKXu7GjOZ
-	4ZphW1P9qSVAV9TXBQbNNBOOJdjIdrYmCyRtyNYpmfkEPz3BIzQ0Dw5J/mVo5/G2QYAHs8Lqc+PRF
-	kc62LYCnpPeIq9YeVV+cssBipKvQj9h2o5EFA8JPHcoS1YFrIY4ZX6NchnFPPGC+5a+GkeIJtHYBw
-	eDGjEaRNHUWfyZI6qd2w==;
+	List-Owner; bh=LbBj28KumQt1zLDURWZVm4m/b5OMNhgfk52AmAARX3c=; b=ko/zisxSNTZI+N
+	x/F3TnxUGwVgGy8P0c2i9HmUNUrTh1NoTx+ieY2wQGaDLx65ypvB+VKk8Ztm5cuTMfH65gJXOgSzK
+	swTvVtaHAHB+ZgkOeisMZNlB6SVVvWP5Fuxiw3VwNwKYZ5oiHhyRru/p+C5VnVxZIiZJqx2SLzQMi
+	EUDtrIu72jlelT3RdMzXf8wOz4kdmxkd2Dqa3Z3o9s7O2pgRKgKz4lqJuJhn1IhNbJjiFFzyE7wnL
+	E/dp9kEqL1dRdr9yGB/dAiycIN05aWXJOkFmW9NHt68k8mD1FZwuIac0WemoYxFbC3SwS8cqNKdym
+	4VpG/xVQSnp9Oj8h6GLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ4II-000000092AI-0y44;
-	Tue, 20 Oct 2026 07:29:58 +0000
-Received: from smtpbgeu2.qq.com ([18.194.254.142])
+	id 1xJ4IN-000000092Fx-4AA0;
+	Tue, 20 Oct 2026 07:30:03 +0000
+Received: from smtpbgbr1.qq.com ([54.207.19.206])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ4IB-00000009237-2Q6O;
-	Tue, 20 Oct 2026 07:29:56 +0000
+	id 1xJ4II-0000000923f-0NIm;
+	Tue, 20 Oct 2026 07:30:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1792481324;
-	bh=00DSnvQSLlU7c2a5io39bkdl0ItMeQnbkaYseBDyixg=;
+	s=altu2504; t=1792481337;
+	bh=RJlSQp8r350iMwIMlHz6kJOY3IIHWCaiqptCoWQnTWs=;
 	h=From:To:Subject:Date:Message-Id;
-	b=tVr5tDMY480SJldj4Uui1fSaH3thmQcb9Me1tFBp2ARPQ5hQF+Oh4AKa6GKn2eOr/
-	 VTVUJ5OW6Kyzhrs/HJGx3iY9oyEwO9x2pcaHVxqY8DvDFIvAphsgKCikGaA8CEb6HT
-	 rQnBnt91R+ztPMznPpDIY0jYq61+XAAgbICYm7r4=
-X-QQ-mid: zesmtpsz4t1792481322t514923e1
-X-QQ-Originating-IP: /TJ000w8y8vwIxYHjlAvlKq+mX/nB5pqqfq7aEdXmZY=
+	b=Ecw7d2okmv3MI5PTqvU7ijFiZ6GaLd7uRglRD8ks/FVq//5EOeKHmNgetu5s1uaka
+	 y1RygjT3y9Q/clUQCqjWRetzxo/48/eh1qbFcpnnAGvNipBSFKMmWWXjfO8l8VZLmW
+	 tfLkXAwv279C4jVbIS2CUFqjRYakApsNPfMIBWPA=
+X-QQ-mid: zesmtpsz4t1792481335t9bc8c4d2
+X-QQ-Originating-IP: rMyewjLzKncWQnPrp9ri5tZ/Pt41y4HBpk1o+5qM6Fw=
 Received: from DESKTOP-8BT1A2O.localdomain ( [61.154.14.86])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 20 Oct 2026 15:28:37 +0800 (CST)
+	id ; Tue, 20 Oct 2026 15:28:50 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 6990828045487407985
+X-BIZMAIL-ID: 11522251199344246924
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -68,35 +68,36 @@ Cc: linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-phy@lists.infradead.org,
 	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH v8 1/7] drm/bridge: aux-hpd-bridge: Add drm_dev_has_dp_hpd_bridge()
-Date: Tue, 20 Oct 2026 15:28:10 +0800
-Message-Id: <20261020072816.180-2-kernel@airkyi.com>
+Subject: [PATCH v8 3/7] drm/display: Add soft depend for aux-hpd-typec-dp-bridge module
+Date: Tue, 20 Oct 2026 15:28:12 +0800
+Message-Id: <20261020072816.180-4-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20261020072816.180-1-kernel@airkyi.com>
 References: <20261020072816.180-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: MJ6jNhKcfW6R3v6PMslEjS4Ucgmtk3fxIZa4H9JtnTKBsVcTMUrZl1R/
-	/WAFY+Vl4eG+tnTM9gayApsSf/8e/vDoBTQJ2+pi8vyB1k3kG32NW5c35dU9euwVQN5PRgq
-	nwobbkTFicPiHYixgj6/88BmqqWT4e/BuvPctbrsS6ErCCYKlBqpeO5hNHKZ2HWOjhUn/4g
-	Q69tFGZknXFFhJTQuBZVfHi/IeZx4NSI39SrL1D5yZJacsN1rdovCwC5Rp9olrTF9dy9fju
-	zj3npXYdQtInFZEHmOyJgcne4GpKyvqkAqAA0Ekyhr6nD3FgT5mP0M1vnutqrLCOlVb32Kx
-	32zMb5Vl60CfOORqw0Kf2qUx6NEMrwjTJOhKNnCdzQDC6B5f861AX5ZnkXylIZ0g7CZ9jFI
-	PIuh+HRb0ITK1faQ0B4YoMmrhWuBDMy0oHX/KBMEa+k0kCyiyRTvN9B7maUOTBDHfyXh/Mp
-	7qU0YD4w2liAlrVFZ6bCJriLZWwGKCCJSmCsbBEZLMyYoEQpgjxiw+P7SlqAeWEQPjlEIp0
-	C/IVhK4EDU45k6PoWXCN/fxpYfzm+nhJvDq9gx7I86n8jdOPS25SNplv2QTy6P1jsY8g2oC
-	RTewu/GpSC4mM/GJ8YuXpYbynPpNfWXZUdTgwUd6XBZF3jU9HeG46TspXSknqlMjqFp1Oqy
-	ENGohaIUEep6VZxwMI8kKXvd42moN9jNhHLSzaIwdtfvIST7SIS7YTK6HjOL4zruFBRTEEd
-	Y78vh8T/AIPF0KTIZRbyyGRS0qa4edvkGMGVIcIoEHDACU+h9vEWNGaikk9HnPJzOOwpHG+
-	WPpnDJwpkkSpnstjV9yLIyHmYDTBBuiCCdGjwNvoomFN4aiReF0u0PltzTAzmUlfGxrP418
-	cLanHGzSv0lF/OtVV75YHOk5pp3OljAOXMutlG7GoYUToeHigtobuc5JrXyDSu62LdVvOm2
-	WoEtvVaaX99qsMT4foUClnNEHgnckhSmsychjDYflSOO9Mw+BFmAV22vm63CPxGCurE/eBK
-	ssAtWNww==
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
+X-QQ-XMAILINFO: ONv4FG6+I+02HuzVCkn9c1eMWjR1sOgpi+JuGdKA/qUelVTLqUc7tkbY
+	RbOH0B0UsLGVQIKwMchojlDv3dIbFEMBnNIoGa4EwXTGHSkLR2+MhnOgZ0KF+6YhZdrH3f6
+	9vTPDL8l4BhSMEmQROVzAInVBD/lMtIU5nAL/vbJdcT2zy8mqBZElRRwXOMmqzploLr/fPP
+	tZlDSuY41SKs3yltn7mgS9C/IOBSigLbfjWYNJgeCdSqN6+Pie2iGIUKqoC/QVuEkCA7nBN
+	UFMgooxaUPKqHqTTwnYwWoF62HwAA1UEB5Ly7lQiEnK1kYDPIXO72StMGf5HJyM23TVm2KR
+	XDDUUSD6O13JHXLYWLXZmrtgcdnudofXknaoVWU16b2Pb7+i7bpLQDFkkEcHh1+vsQQxFur
+	fr6WMKk0xV86qWDPPvNVefrfz77nYMtfBzcdC6sWsaxAx4qLZXoG9+406wFZCg2t0TG3IhH
+	qzn2Ds+XYRvZ3DD92Bpca0LStAm5SNAHmSuti/mBVMmmg2k8FrEsPMoURiGZblqG3suSHwk
+	fI7oCVJLpaAhg1BeU/Ia8xkasPezBtRs45Q3pYCnjw1+zO7L5Jp45IBzU0yK9Dk8C3mlKIA
+	piQ2Kkj92I12lze9glMPtGzkiwbBPXAItpeNwu3MXFtllSKV1YdtdOceLqP0iV3Ymx8lFQH
+	fkHi7g1iaNFy0L4xoyZIumRE6VNH7AFtyDAJ+U4kDxgFyPVRcHM60TpRNLg0BU5DlEACG9m
+	TF4xtoETQPXGJ52yUYVDAKEegv1He7r+3YUjneSPStEMVddfGL4b+q+TVdsaFCS2ZxrkDtS
+	W8j0Odl4HvbMCrJNk/u0Vgjp7jLd2MK079XzuTS65s2MTCT3eyJ1HF4akUIsabVZCWtgVLU
+	EudQ8MhWhqaPtV0Bo5fRnGJOTqPSNTyq8FzoM0Fk9epnXhvW6fMFnzLSI1xvp8v6kUA/hC9
+	P+DrtruQCgEUoeA04xThdJ4m+HjIeOGmUGPJaEkEq9g3vTXAXFoksOWLLOGOh6xZeZh36Db
+	mWSTVDQLpkquCRSzL1Fvx0Sp3iWCs=
+X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261020_002952_415231_38439E43 
-X-CRM114-Status: GOOD (  13.56  )
+X-CRM114-CacheID: sfid-20261020_002958_944754_AADEB0DD 
+X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -121,112 +122,35 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Add a new API to check whether a DisplayPort HPD bridge has already
-been registered. This helps avoid duplicate registration of the same
-HPD bridge, although the current framework allows doing so.
+The aux-hpd-typec-dp-bridge module serves as a generic TypeC
+DisplayPort HPD bridge and is not required by any other
+module. Therefore, it will not be auto-loaded.
+
+Given that the drm_display_helper module houses DisplayPort-related
+helper code, add a MODULE_SOFTDEP() within it to suggest loading the
+aux-hpd-typec-dp-bridge module beforehand.
 
 Suggested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 ---
-(no changes since v7)
+(no changes since v6)
 ---
- drivers/gpu/drm/bridge/aux-hpd-bridge.c | 42 ++++++++++++++++++++++++-
- include/drm/bridge/aux-bridge.h         |  6 ++++
- 2 files changed, 47 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/display/drm_display_helper_mod.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/bridge/aux-hpd-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
-index a2e525aa5788..7aa630fcf735 100644
---- a/drivers/gpu/drm/bridge/aux-hpd-bridge.c
-+++ b/drivers/gpu/drm/bridge/aux-hpd-bridge.c
-@@ -13,6 +13,8 @@
- #include <drm/drm_bridge.h>
- #include <drm/bridge/aux-bridge.h>
- 
-+#define DRM_AUX_HPD_BRIDGE_NAME	"dp_hpd_bridge"
-+
- static DEFINE_IDA(drm_aux_hpd_bridge_ida);
- 
- struct drm_aux_hpd_bridge_data {
-@@ -37,6 +39,44 @@ static void drm_aux_hpd_bridge_free_adev(void *_adev)
- 	auxiliary_device_uninit(_adev);
+diff --git a/drivers/gpu/drm/display/drm_display_helper_mod.c b/drivers/gpu/drm/display/drm_display_helper_mod.c
+index d8a6e6228773..f0152d6b0b2d 100644
+--- a/drivers/gpu/drm/display/drm_display_helper_mod.c
++++ b/drivers/gpu/drm/display/drm_display_helper_mod.c
+@@ -18,5 +18,6 @@ static void __exit drm_display_helper_module_exit(void)
+ 	drm_dp_aux_dev_exit();
  }
  
-+static int hpd_bridge_match(struct device *dev, const void *data)
-+{
-+	const struct device_node *np = data;
-+	struct auxiliary_device *adev;
-+
-+	if (!dev_is_auxiliary(dev))
-+		return 0;
-+
-+	adev = to_auxiliary_dev(dev);
-+	if (strcmp(adev->name, DRM_AUX_HPD_BRIDGE_NAME))
-+		return 0;
-+
-+	return adev->dev.platform_data == np;
-+}
-+
-+/**
-+ * drm_dev_has_dp_hpd_bridge - check whether a HPD DisplayPort bridge is registered
-+ * @parent: device instance providing this bridge
-+ * @np: device node pointer corresponding to this bridge instance
-+ *
-+ * Walk the children of @parent and check whether a HPD DisplayPort bridge for
-+ * the given @np has already been registered via devm_drm_dp_hpd_bridge_add().
-+ *
-+ * Return: true if a HPD bridge for @parent / @np already exists, false otherwise
-+ */
-+bool drm_dev_has_dp_hpd_bridge(struct device *parent, struct device_node *np)
-+{
-+	struct device *child;
-+
-+	child = device_find_child(parent, np, hpd_bridge_match);
-+	if (child) {
-+		put_device(child);
-+		return true;
-+	}
-+	return false;
-+}
-+EXPORT_SYMBOL_GPL(drm_dev_has_dp_hpd_bridge);
-+
- /**
-  * devm_drm_dp_hpd_bridge_alloc - allocate a HPD DisplayPort bridge
-  * @parent: device instance providing this bridge
-@@ -64,7 +104,7 @@ struct auxiliary_device *devm_drm_dp_hpd_bridge_alloc(struct device *parent, str
- 	}
- 
- 	adev->id = ret;
--	adev->name = "dp_hpd_bridge";
-+	adev->name = DRM_AUX_HPD_BRIDGE_NAME;
- 	adev->dev.parent = parent;
- 	adev->dev.release = drm_aux_hpd_bridge_release;
- 	adev->dev.platform_data = of_node_get(np);
-diff --git a/include/drm/bridge/aux-bridge.h b/include/drm/bridge/aux-bridge.h
-index c2f5a855512f..cca07a8e2d45 100644
---- a/include/drm/bridge/aux-bridge.h
-+++ b/include/drm/bridge/aux-bridge.h
-@@ -25,6 +25,7 @@ struct auxiliary_device *devm_drm_dp_hpd_bridge_alloc(struct device *parent, str
- int devm_drm_dp_hpd_bridge_add(struct device *dev, struct auxiliary_device *adev);
- struct device *drm_dp_hpd_bridge_register(struct device *parent,
- 					  struct device_node *np);
-+bool drm_dev_has_dp_hpd_bridge(struct device *parent, struct device_node *np);
- void drm_aux_hpd_bridge_notify(struct device *dev, enum drm_connector_status status);
- #else
- static inline struct auxiliary_device *devm_drm_dp_hpd_bridge_alloc(struct device *parent,
-@@ -44,6 +45,11 @@ static inline struct device *drm_dp_hpd_bridge_register(struct device *parent,
- 	return NULL;
- }
- 
-+static inline bool drm_dev_has_dp_hpd_bridge(struct device *parent, struct device_node *np)
-+{
-+	return false;
-+}
-+
- static inline void drm_aux_hpd_bridge_notify(struct device *dev, enum drm_connector_status status)
- {
- }
++MODULE_SOFTDEP("pre: aux-hpd-typec-dp-bridge");
+ module_init(drm_display_helper_module_init);
+ module_exit(drm_display_helper_module_exit);
 -- 
 2.53.0
 
