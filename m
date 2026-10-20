@@ -2,52 +2,49 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46B3960A2638
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B462E606A31A
 	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2026 09:39:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hu3w8qQg;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=icloud.com header.i=@icloud.com header.a=rsa-sha256 header.s=1a1hai header.b=oeYhXdvQ
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xLn1JUBu;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=icloud.com header.i=@icloud.com header.a=rsa-sha256 header.s=1a1hai header.b=fAZBTzRm
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=xpvcFxOFhPMHviA7zTtJTiW9kA4hv3KU6vSAV+adSi4=; b=hu3w8qQgrENtlC
-	YRtUepgV+lppU/eAAEhfOno8GAWf8yk24NiMvasZXJj3pevfx4X6IwpUOylNUCfTm6Q1SwZKkgVn5
-	8TZlgNAEeZM+3MTlISTICNaiwXSVd9Srtel9EEWVC+YTSVR231p+Nlj4SmDcBxCtPBl2Q0vAIw6Jz
-	GXBK0Arxm/OCvwr/HEXoYNnT9T02lEbkEhtpMxIu2vYsViWqydPUDnzKNPfTxRbdN3ZKpSMkBZJ/d
-	HfORXUtO6VfapWamr0b0M7SrYHQ9yXk2V/SMMhQsllnTQqa7Oo+qyTRqSwn2cZWS/IN11Gh3gUtIL
-	uW9i93FjG8WALL5Wmifw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1Z1sUL15RMa7uU4Dscmwpm9boj/TBkefAdOmxgDZNWc=; b=xLn1JUBumiISvJ
+	eMRhbia5PKtfLVEVeONfNxsTN/HJOvfkkyfMiExja+onddjcLO91xWruRUMlnE1NYeYjriDTlN3OS
+	1IlbyGaZ+pnpagUAM3Ish7gQFdTBFmDbb19OjT7HO5XlNH5aW4FiOfJHSutPIy2OjksM4hFKm3hcK
+	KqXWCYh67SZdPeaCaQZNwF93Wr47INrNgwLjZ2/HRVmwjZ/xyszahfx678wDxpmRtcO4Z7PRicV8A
+	tbpnPjU1lOfbqUo2mLyYb7qdy8hcrofnsuQR8bvSXDwdxMetqYCVuPMNLGQkDHKjnUavRfYp1Z/Lb
+	XJA2BPYQ9/Y5oPtDAPGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ6JO-00000009IxN-1YxL;
-	Tue, 20 Oct 2026 09:39:14 +0000
-Received: from st-2005f-snip6-11.eps.apple.com ([2a01:b747:3001:202::3d] helo=outbound.st.icloud.com)
+	id 1xJ6JT-00000009J2e-0cw4;
+	Tue, 20 Oct 2026 09:39:19 +0000
+Received: from st-2005a-snip6-5.eps.apple.com ([2a01:b747:3001:202::6] helo=outbound.st.icloud.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ6JK-00000009Iv1-2f4N
+	id 1xJ6JP-00000009IyI-3t0O
 	for linux-rockchip@lists.infradead.org;
-	Tue, 20 Oct 2026 09:39:13 +0000
+	Tue, 20 Oct 2026 09:39:17 +0000
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
-	by p00-icloudmta-asmtp-us-east-1a-60-percent-11 (Postfix) with ESMTPS id BA9C91800233;
-	Tue, 20 Oct 2026 09:39:03 +0000 (UTC)
-X-ICL-RepId: 01a158ad-bd7a-7c32-92c3-6ed5fd9b36de
-X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQFMHV8EUxxCDFYAXRcOVk1KF1UYREVRMFAbXwJCDxwTVhUTC1NWWxNVF0YJGQhdHRkKUFAGXBIYXBRcUFgeRhJWDV0JGRhGXlAbXwJCDxwTVhUTHUMZDysISgRDB0UCXgslEwlTVlsTVRdGCRkIXR0ZFVoJClcAQAtOAl0FWx8RTxweGwRGAl0BTVAPVgoAQQtNV1V3AlEcVg1XQ1QEX04ZDEodUlZbE1UXRgk=
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com; s=1a1hai; t=1792489146; x=1824025146; bh=7bY8wUwtgPs4LjAtoVin5T9Yra70bsBW9lT50OPRGns=; h=From:Subject:Date:Message-Id:MIME-Version:Content-Type:To:x-icloud-hme; b=oeYhXdvQxsM1dsKJ/FmdIc0PzmXwHLzdR5pLW6gEPuQbSlI3K6z3n+sVHq2nFFH9ZTetvRuixjtDJD87nyFqOhCjdJqzZBltWwff2EClErgreG60M8tD8bUWIlsFHxgpCNBvLHjQV43L0vuD19AAwzsKScERl8S73/rCKne25MnOiNI876WWzTHjD5Jv4C5ilk6jHwEj/scshUG6ut+eTWwXm48GXLOGOjmTl+WhVslqhcbOyyxslNe0i3BAFR+aC5n+PmeGcXleTuXIgUum5htacDSbAisoEtWPsKg+LWlm0garm1us/MxGdf0GH9KfrMAfySUSb1thhI/lUhzpLg==
+	by p00-icloudmta-asmtp-us-east-1a-60-percent-11 (Postfix) with ESMTPS id BCB3718006A4;
+	Tue, 20 Oct 2026 09:39:12 +0000 (UTC)
+X-ICL-RepId: 01a158ad-e0af-7edb-9223-19ee11044e0d
+X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQFMHV8EUxxCDFYAXRcOVk1KF1UYREVRMFAbXwJCDxwTVhUTC1NWWxNVF0YJGQhdHRkKUFAGXRIYXBRcUFgeRhJWDV0JGRhGXlAbXwJCDxwTVhUTHUMZDysISgRDB0UCXgslEwlTVlsTVRdGCRkIXR0ZFVoJClcAQAtOAl0FWx8RTxweGwRGBl0BTVAPVgoAQQtNV1V3AlEcVg1XQ1QEX04ZDEodUlZbE1UXRgk=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com; s=1a1hai; t=1792489155; x=1824025155; bh=6RRowT7xHJs8A6zNEf76Dvwzc/XBDK8xSl9XH7Sx0So=; h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:To:x-icloud-hme; b=fAZBTzRmS328JC55tvY1KE1xdYOmj4iuoCTTAcLXcU8GvSg30agRDemFcWznewNaASNSFZ+u3efAKvZWo5PAIXg20ChMUx+UF4GNLAFz0eIafGxxcay3OwW0mpoXnhKDjOJRO/A+mAhJfRKqlwadbWKRZayJXiyhko0HMSWhcnuM+h5vqcUIlNe8VgRBErzdfPrkO4bJjnW+rSL4al55mpbOrahulw0rujHsrHZPcEepDFJL99iDdZkyLHr86nrvwt4a+J0wl3gpK+vA6mxyL2TNSoArUbk2vK+HKySEzuzPlMoANgyGYYIboqwgWR5swUh0QYlGYnInhiUwkhePnA==
 Received: from [127.0.0.1] (unknown [17.156.216.30])
-	by p00-icloudmta-asmtp-us-east-1a-60-percent-11 (Postfix) with ESMTPSA id E991D1800099;
-	Tue, 20 Oct 2026 09:39:00 +0000 (UTC)
+	by p00-icloudmta-asmtp-us-east-1a-60-percent-11 (Postfix) with ESMTPSA id 2A3EA1800115;
+	Tue, 20 Oct 2026 09:39:10 +0000 (UTC)
 From: Sofus Forstreuter <sofus.c@icloud.com>
-Subject: [PATCH v3 00/17] media: apple: add avd driver
-Date: Tue, 20 Oct 2026 11:37:41 +0200
-Message-Id: <20261020-avd-v3-0-85cbaa2125d8@icloud.com>
+Date: Tue, 20 Oct 2026 11:37:45 +0200
+Subject: [PATCH v3 04/17] media: v4l2-ctrls: validate av1 tile info
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/1WN0Q6CIBhGX8X919EEEcSr3qN1ofibtJIGymrOd
- w90bXV5tu+cbwGPzqCHOlvAYTDe2DFCcchAD814RWK6yMByJnJFJWlCRyRiySVvuag0xOXTYW9
- eW+V82dnP7Q31lNS0GIyfrHtvN4Gm3bdYbcVASU64UlKqgva8LE9G3+3cHbV9QEoG9iMxsUssS
- qixRdEUglf4J63r+gFZyNiq3gAAAA==
-X-Change-ID: 20260917-avd-7ee5474b468c
+Message-Id: <20261020-avd-v3-4-85cbaa2125d8@icloud.com>
+References: <20261020-avd-v3-0-85cbaa2125d8@icloud.com>
+In-Reply-To: <20261020-avd-v3-0-85cbaa2125d8@icloud.com>
 To: Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, 
  Neal Gompa <neal@gompa.dev>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -55,29 +52,25 @@ To: Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
  Philipp Zabel <p.zabel@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>
 Cc: asahi@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
  linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIwMDAzOCBTYWx0ZWRfX2diVI5HIqkD6
- xox+gGqW884YFBY8E7hxR8hQ44nrKoStjdfwXxRIawWDyp0br2tIEnb8JKQuYTn5y/WilAyUHQC
- l2PS3sSS0y0ATjQVEagH6f87/Aoq9uPrsVvwjHeIX7wmgWNJ0mkXFuKEaGaJA9mw4j3ydSvW+54
- 3tH0voIu28VhvBKs/G+GO8UL7NXqET89D+Y8bWKsjgs5mrN6Gsi46LTm9HkAMeP5JLAnIr81QCk
- lZXnI5CoJim/hpgh+2gUyoHVN9UAMU65BmGWjmh2HoepR20Oa12yrFFpmCzwGR/paO0ZAYKPvxQ
- 9epU8YoobV0yEq9rE7VUTSPyNbCOsTIXnMKCAoTnb+HIDJk90Eol6Hd8aBAekg=
-X-Proofpoint-GUID: -YrXYUg9FEzCSjC2detl4GzAsqMkRAdk
-X-Proofpoint-ORIG-GUID: -YrXYUg9FEzCSjC2detl4GzAsqMkRAdk
-X-Authority-Info-Out: v=2.4 cv=O6M0fR9W c=1 sm=1 tr=0 ts=6ad736b9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIwMDAzOCBTYWx0ZWRfX8xjb45bNmWAN
+ vEcmVqjrR9p7nIp3ft6RmL6KYSXVacvnE8qJioPIOqm373VTofwVp65tDmrGUKgQnmmx00cg9KE
+ W3pwTXaUgHjxkdPEC39ABO+HccZrFQ9yUnIKjQE+sjmq02l0W7SVzAbt9ijRI8ET2y619HyiQGv
+ qiMowGs/rSS1Li4PO9Lk766rLjEPQ95Blo/4bABziKM7B3JDsizICp3KfS1dETwvD+p/lvpOigF
+ z6mzZtDOxa+PBetif52+QYqmAFkK87duNpoqsd+mmumSCeTIG0UZxTRh7JYCfXQ6LJY+Nc7wl1V
+ 4R19uBV7Lyf+HubQ5vO+fcKDtr3re5Drxlv4yJFVNLR/3GqM2qZhHXWDCkgir8=
+X-Proofpoint-GUID: TCqKx8od3_A5hMzFSEhBt7AyYaGn9mUA
+X-Proofpoint-ORIG-GUID: TCqKx8od3_A5hMzFSEhBt7AyYaGn9mUA
+X-Authority-Info-Out: v=2.4 cv=FvkIPmrq c=1 sm=1 tr=0 ts=6ad736c2
  cx=c_apl:c_pps:t_out a=oyWFxbOnq+dmhQrAPgaJYA==:117
  a=oyWFxbOnq+dmhQrAPgaJYA==:17 a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10
  a=x7bEGLp0ZPQA:10 a=kLM9Tyy99jAA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=NEAV23lmAAAA:8 a=bC-a23v3AAAA:8 a=v3ZZPjhaAAAA:8 a=VwQbUJbxAAAA:8
- a=dOLNmq4gAAAA:8 a=JfrnYn6hAAAA:8 a=heJNy-4494lu-r3jR4IA:9 a=QEXdDO2ut3YA:10
- a=FO4_E8m0qiDe52t0p3_H:22 a=_m6CO-mWuQdSFutSHjXj:22 a=1CNFftbPRP8L7MoqJWF3:22
-X-JNJ: AAAAAAABHjawVn0MCen8ecItlfTWx4zsNFrLOfIkjZwpVOKP8zTdwmRZKkwvobqvoYjub2XciAp1VHG8tSpaTLLVP1nRpf8KCD2SXulHfjcjkOPakTaPo/Era84DgUfBrasoXHvZuFPtjDfPHAMEa2vAne4gsMnraLYB9SFCNcvplZIv03RKIqp4P+BDMZB25wVH0tvnK4/D9VJ8z0rJT5H2IiZbFBAJfHBnwJ0X3SxkUxW7pFRuc/ipe7YNo1++xUv8iEnCztoemVzhRu3zFLMjmZqbkIhyV5xxpGDLEwFZ+DBYmy5xPQoGaJKGz2dNv4Gsyt7RXEjOgGztUzjv6/X2ysufcjxk7iku0mrGHOfa3ctAH3CI6RDiGEjHGIGwQzH+BejhG3WBeQVGQyp9/ysH9ivqsrHDY2nJHuP7P/P1wSdQKkIjHoEbqNXFyAEZzb+YMZd4di+/eixoBVBJoWiM7+vijSqUnXkTJ11ZL9dTa3fN0SowEIofn4gRF7e1CAJtjGGBLeEblMGnouBrn3QCT1DAbz5RQnegTArJVEfXhcghB5sy+AV8jEJJ5Ob2u+q8SUttzFb68QT15+DI65SPBaofHnemyMitcaEcxxAH34TOZ3HD3y7bKPFb69MtBXTjhFQwQxNbGa3OgjTl/E6xpOe5WYp4wwg0UbGOhBLBokHBT/3p7A5ueeMeIdbnv1c8VgMF2pIXA8uIQ32ViQ5/yaTAbaEHpeU0GsNc+rA8cwWqBbF/mdLWkfzl4H9aGLthH6EPtDy0MCR+2FRyR6IvnnD7CXTimr9sg5keZcaILIbPYOKP65bijtxPqQQqrT22f9n6GcRyty73+V+yIG4dTCZejvpnBsfEwIhfYIOXLIwQINno+mTDStmp9E+4dRmFBFgSgWds3yU694dbbiNyiQ9S/apsI0KJpJvCpVONv719XsFZ/MBjbtMW+VXtiC92/jGc/GtpC1HFkVV/d5lOSL5cWRx
- WsNmwufgcWHh7ksk1Y9kK9MMYEjaQGwDMwxD+5qnp1J2MpP4EXOh8UotaESg5zHMcpFD0+QsBnuF1StFMibIvTIIxR++Ac3t4QAJdPijGPboqKQ+uPDBgCigYBaG5VE3M+5sSjGbQXmOg/gHJZPxHf8oxWuF4a79lQH7PrrNziPubd9Usjl5gwn81fFctEQaYYLaFA2SVEiHd4udjZZMvalWp9dhHWTAI6mnJKNlSTpQnNKgWtjlF/NCp+M8YgRZFGh+4HW0j55E5iN8hrOX/TEz2qOttQG+QdOUWD9zGecRkEebC/94xpSvV/rOriOiv2DngZ9GCQBMo1Do41587SSdPnW9bWwGf4iVL5GkJ8GxWmc83uQ/ya4ujzDwZpoQtep30kekpi8lLH/C02Fcengh6jtBCb3X4pBJftsXvWgcpPouq4h0=
+ a=v3ZZPjhaAAAA:8 a=IjdaWMjaTc4ojD0rA64A:9 a=QEXdDO2ut3YA:10
+X-JNJ: AAAAAAABtWP6bfkHQcYuEQl+N1NNC+zUHk/D/3dDuVzmbOBY6nsLiBMOnx96fHzygYtqOfAINIxg0vgm3t9qFiNshawlm7rlq2dJP2LY4MqGjwr+Ypj6vyl42J5QSt1jahEqjJkoIXsJ9tdZISPHCoEmRNjuCLFrihO0axlqUHQ+qG4xq7D2FyFyeNq78rIDGhJz2UWxFavziCOtg3mD9Og1uKJZOWLBQISZqlCE8OBDEzXmqMiqNNxGYo40p2j0K4WK9fSrn9DfgUAX+3uy8YdGYvWMaX7kcJUp3Yl8lSAuIGQv4kP88Wlg8+YtwVmQVkZatjqA1e7neRq8nzFL3p3CW4ikk5Ew8A2uiZZg2QViWv+xvamT6Dlt7fkVVvQPU5Rfhozea5QxavC9YHGQALy1VQMdkdA7KZmpTwHRExY8K7pC0e7QkropePn5wBRdgryFJTwntyZSP2WwdanU52ecFR5s+ptZxdEizMIeYEgEfu7V4tk4FSyt2ix6YOvcoOBrt/v2Fn35XnhJzWNwNASwAndWEYXHUoTiZE1G5ZB+E6gOYwQEgOsP9QNvuPNH4qdzk0oGY8ehjXEMd6ckrs8j6dZWD/oKRGK5gFGCMFwyJo5a15BjrFwWR6OMldhD9t70SUHjiAXW4N+SnN6Y5cT0tBamfXMzI7BwZYi3cXyyN35MJL69MHm+UmdDU9Pv/YAIO0QLnLVWjlcRYwRStVeRz8OmtUxwg/bw0JJksmpeCE+WolF7q1w18G1AYZH2P1ZD1SwHcMco4AdhM3/aFcnXEaB0G80kkcKjGOjeaAW26KMy34KGT4UpH+ZkFck0JckVFSn8Ume815IFsPIN0pnhboAftcQlgDYqMlUyZYUDkxU5p9tEucv0XuHpxZpuJqibAU2r46EGRYZGt56YfwsXGT9fOLXXuzPp5LzVjOtj+7clPta6dgn4e2Ij
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261020_023910_750021_19975906 
-X-CRM114-Status: GOOD (  21.01  )
+X-CRM114-CacheID: sfid-20261020_023916_062433_75888869 
+X-CRM114-Status: GOOD (  11.68  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,172 +84,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+Many drivers use tile_cols and/or tile_rows, so make sure they are
+valid.
 
-This series enables hardware video decoding on Apple Silicon M1, M2 and
-M3 SoCs. It adds support for all the codecs AVD (Apple Video Decoder)
-supports, which is H264, H265, VP9 and AV1 (only on M3+).
+Increase V4L2_AV1_MAX_TILE_COUNT to MAX_TILE_COLS * MAX_TILE_ROWS
 
-The AVD is a bit unique both as a video decoder and an IP block on Apple
-Silicon SoCs. Instead of following the normal "a register for each
-parameter", AVD is programmed through one single register. This means
-the order of the writes are important, but its also important to ensure
-we dont write faster than the hardware can process. To solve this, we
-use the included Cortex-M3 co-processor. The CM3 accepts unsigned code,
-which we take advantage off [1].
-The driver prepares the instructions and writes them into segments,
-which are submitted to the CM3. The CM3 then programs the hardware and
-notifies the AP when the job is done or if an error occurred.
-
-The driver implements the V4L2 M2M stateless decoder API. The driver's
-framework is based very heavy on rkvdecs driver. It therefore comes as
-no suprise that `v4l2-compliance` reports no errors:
-Total for avd device /dev/video0: 49, Succeeded: 49, Failed: 0, Warnings: 0
-
-The fluster scores are:
-JVT-AVC_V1: 77/135
-JVT-FR-EXT: 42/69
-VP9-TEST-VECTORS: 216/305
-VP9-TEST-VECTORS-HIGH: 1/6
-JCT-VC-HEVC_V1: 145/147
-AV1-TEST-VECTORS: 238/242
-
-Since not all unsupported H264 streams are rejected, the scores
-depend on the reset working, this only works with a patch to the
-apple-dart driver so that the IOMMU attach/detach trick works.
-
-All codecs support 4:2:2, 4:2:0, in 10 and 8 bit. By default, AVD
-outputs in NV12, NV16, P010 and P210. Support for 4:4:4 and 12 bit
-formats has not been added yet.
-
-Internally the AVD uses an Apple specific compressed and tiled format
-called Interchange to store reference image data. This is stored after
-image data across all codecs. Apple Interchange is used for sharing
-buffers with other hardware blocks (GPU, display controller).
-The V4L2 pixel formats have been added to help with calculating sizes.
-
-This driver has been tested on most Apple Silicon SoCs in our downstream
-tree [2]. Its expected this driver will work on M4, M5, M6 and the Neo,
-with firmware already being written for all except the M6 SoCs [3].
-
-The groundwork for this was laid many years ago by Jamie, R and Eileen,
-who through a combined effort managed to reverse engineer many core
-parts of the AVD block.
-This driver would not have been possible without the work done by
-Eileen, who wrote initial support for H264, H265, VP9 and excellent
-tooling [4], allowing me to reverse engineer AV1 and make the driver
-conformant.
-
-[1] https://github.com/sofus13/avd-fw/tree/avd-next-fw
-[2] https://github.com/AsahiLinux/linux
-[3] https://github.com/AsahiLinux/avd-fw
-[4] https://github.com/eiln/avd/tree/main
-
+Reviewed-by: Neal Gompa <neal@gompa.dev>
 Signed-off-by: Sofus Forstreuter <sofus.c@icloud.com>
 ---
-Changes in v3:
-- Align output buffer (fixes 2 hevc tests)
-- Renamed interchange formats
-- Fix various bitmasks
-- Fix minor things reported by sashiko
-- Pickup Krzysztof and Neal's R-b
-- Link to v2: https://patch.msgid.link/20260926-avd-v2-0-ecebe6a3648e@icloud.com
+ drivers/media/v4l2-core/v4l2-ctrls-core.c | 15 +++++++++++++++
+ include/uapi/linux/v4l2-controls.h        |  2 +-
+ 2 files changed, 16 insertions(+), 1 deletion(-)
 
-Changes in v2:
-- Patch order
-- Fixed dt-bindings by constraining all properties
-- Fixed dts, add interrupts, iommus and regs. Drop labels, fix names
-- Add Apple Interchange format
-- Add more av1 and vp9 validation to v4l2-ctrls
-- Validate more codec parameters
-- Use the new CM3 firmware (drop avd-hw, drop submission loops)
-- Updated cover to reflect changes
-- Link to v1: https://patch.msgid.link/20260918-avd-v1-0-49977931f455@icloud.com
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+index 661a3a25da52..922cf74c4eb8 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+@@ -800,10 +800,25 @@ static int validate_av1_film_grain(struct v4l2_ctrl_av1_film_grain *fg)
+ 	return 0;
+ }
+ 
++static int validate_av1_tile_info(struct v4l2_av1_tile_info *ti)
++{
++	if (ti->tile_cols > V4L2_AV1_MAX_TILE_COLS ||
++	    ti->tile_rows > V4L2_AV1_MAX_TILE_ROWS)
++		return -EINVAL;
++
++	if (ti->context_update_tile_id >= ti->tile_cols * ti->tile_rows)
++		return -EINVAL;
++
++	return 0;
++}
++
+ static int validate_av1_frame(struct v4l2_ctrl_av1_frame *f)
+ {
+ 	int ret = 0;
+ 
++	ret = validate_av1_tile_info(&f->tile_info);
++	if (ret)
++		return ret;
+ 	ret = validate_av1_quantization(&f->quantization);
+ 	if (ret)
+ 		return ret;
+diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+index d17e41d51d2e..abdfa102a77b 100644
+--- a/include/uapi/linux/v4l2-controls.h
++++ b/include/uapi/linux/v4l2-controls.h
+@@ -2939,7 +2939,7 @@ struct v4l2_ctrl_vp9_compressed_hdr {
+ #define V4L2_AV1_MAX_NUM_PLANES		3
+ #define V4L2_AV1_MAX_TILE_COLS		64
+ #define V4L2_AV1_MAX_TILE_ROWS		64
+-#define V4L2_AV1_MAX_TILE_COUNT		512
++#define V4L2_AV1_MAX_TILE_COUNT		4096
+ 
+ #define V4L2_AV1_SEQUENCE_FLAG_STILL_PICTURE		  0x00000001
+ #define V4L2_AV1_SEQUENCE_FLAG_USE_128X128_SUPERBLOCK	  0x00000002
 
-To: Sven Peter <sven@kernel.org>
-To: Janne Grunau <j@jannau.net>
-To: Neal Gompa <neal@gompa.dev>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>
-To: Conor Dooley <conor+dt@kernel.org>
-To: Sofus Forstreuter <sofus.c@icloud.com>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: asahi@lists.linux.dev
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-media@vger.kernel.org
-Cc: devicetree@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-
----
-Sofus Forstreuter (17):
-      dt-bindings: media: add apple,avd
-      media: v4l2: Add P210 pixel format
-      media: v4l2: Add Apple interchange pixel formats
-      media: v4l2-ctrls: validate av1 tile info
-      media: v4l2-ctrls: validate vp9 tile_rows_log2
-      media: apple: add avd driver
-      media: apple: avd: add h264 support
-      media: apple: avd: add vp9 support
-      media: apple: avd: add hevc support
-      media: apple: avd: add av1 support
-      arm64: dts: apple: t8103: add avd nodes
-      arm64: dts: apple: t8112: add avd nodes
-      arm64: dts: apple: t8122: add avd nodes
-      arm64: dts: apple: t600x: add avd nodes
-      arm64: dts: apple: t602x: add avd nodes
-      arm64: dts: apple: t6030: add avd nodes
-      arm64: dts: apple: t6031: add avd nodes
-
- .../devicetree/bindings/media/apple,avd.yaml       |  127 +
- .../userspace-api/media/v4l/pixfmt-yuv-planar.rst  |   14 +-
- MAINTAINERS                                        |    2 +
- arch/arm64/boot/dts/apple/t600x-dieX.dtsi          |   32 +
- arch/arm64/boot/dts/apple/t602x-dieX.dtsi          |   32 +
- arch/arm64/boot/dts/apple/t6030.dtsi               |   32 +
- arch/arm64/boot/dts/apple/t6031-dieX.dtsi          |   32 +
- arch/arm64/boot/dts/apple/t8103.dtsi               |   32 +
- arch/arm64/boot/dts/apple/t8112.dtsi               |   32 +
- arch/arm64/boot/dts/apple/t8122.dtsi               |   32 +
- drivers/media/platform/Kconfig                     |    1 +
- drivers/media/platform/Makefile                    |    1 +
- drivers/media/platform/apple/Kconfig               |    5 +
- drivers/media/platform/apple/Makefile              |    3 +
- drivers/media/platform/apple/avd/Kconfig           |   18 +
- drivers/media/platform/apple/avd/Makefile          |    5 +
- .../media/platform/apple/avd/avd-av1-entropymode.c | 4698 ++++++++++++++++++++
- .../media/platform/apple/avd/avd-av1-entropymode.h |  284 ++
- drivers/media/platform/apple/avd/avd-av1.c         | 1432 ++++++
- drivers/media/platform/apple/avd/avd-drv.c         |  782 ++++
- drivers/media/platform/apple/avd/avd-h264.c        |  862 ++++
- drivers/media/platform/apple/avd/avd-hevc.c        | 1328 ++++++
- drivers/media/platform/apple/avd/avd-inst.h        |  210 +
- drivers/media/platform/apple/avd/avd-v4l2.c        |  995 +++++
- drivers/media/platform/apple/avd/avd-vp9.c         | 1054 +++++
- drivers/media/platform/apple/avd/avd.h             |  299 ++
- drivers/media/v4l2-core/v4l2-common.c              |    8 +
- drivers/media/v4l2-core/v4l2-ctrls-core.c          |   17 +-
- drivers/media/v4l2-core/v4l2-ioctl.c               |    7 +
- include/uapi/linux/v4l2-controls.h                 |    2 +-
- include/uapi/linux/videodev2.h                     |    9 +
- 31 files changed, 12383 insertions(+), 4 deletions(-)
----
-base-commit: d7e7bca7169873b46e857c025c10f3336c1258d8
-change-id: 20260917-avd-7ee5474b468c
-
-Best regards,
---  
-Sofus Forstreuter <sofus.c@icloud.com>
+-- 
+2.55.0
 
 
 _______________________________________________
