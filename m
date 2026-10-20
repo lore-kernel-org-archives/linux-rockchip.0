@@ -2,68 +2,102 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7F9A0606A319
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2026 03:17:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1A822606A31A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2026 05:37:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=48nfJ3pU;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=LTcyNHDD
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zYcPW/nC;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=k8jsSQEz
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uel5MFGQKm4IoOKwXG3KaaMNu5he/I5Z060FOdwmlwU=; b=48nfJ3pUGhnBeR
-	OuyWf2zHfAn/cGOOyC1t8KLh9CGn6JPMY0MQkcTQZkFH9dw1WufI0CfMIL+toJH9rjeQKUbaXf9Tu
-	/rwON/KciHFlDawDqeFc16YGnSu9UUCNPv2scSblE0A2570pBT7zEama6r6RkKgh3QZ20ERiwp2aq
-	TT793LYwyiAf3g9ynFePj7th8oJmyaTWkekiQpSlzCK2qWL68+9WW4qgiEoqPOcRuEJyLFGUjMY/k
-	OsclqUP8e2NotOOvmoAgtkKR+byyjglxrC2wjWLbVRthCXCXMwtaFo6D1pfUK1PYcEBfKu4njKCdr
-	4aELzrYZBoKd212Aujaw==;
+	List-Owner; bh=tbBwqHXt/Um5+ON/xSzviB6XS03T/1MXxey7dz8nQac=; b=zYcPW/nCdfL5TN
+	ZEUP336Iwq5tAgDUrjF8BepkCTst/HlIJmq/U9Hkgcw0bz+HVx/YF34BKEg4s7x/ygZ6CLzyCGCZj
+	y5A5Ji5W+94E2RkOY4mG0EthSG0n5QCBLySqzjJLA3RzCSHcnfLGo1XGLxQbGgTOPv5imDE5TW4mC
+	mLlhiot+bjNcEKU7lFcJgOsOWXk1hcqxnqJeAM0GCRrIey/0UBiwLSs4jxjJQkt6TdbSFgwEQXPQ1
+	8InIkuCoBq/JBEd9qTOWhKOlJ1MWWk/vOOoq6jmv4uTqsVrQYC1lf7I82Xxmk/mV77o/SCmS1FWnG
+	8OgyChydtB5dHbZJjIWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ0Lr-00000008mVy-1Fy0;
-	Tue, 20 Oct 2026 03:17:23 +0000
-Received: from mail-m10313119171.xmail.ntesmail.com ([103.131.191.71])
+	id 1xJ2Wx-00000008so7-3AI9;
+	Tue, 20 Oct 2026 05:36:59 +0000
+Received: from mgamail.intel.com ([198.175.65.10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ0Ln-00000008mSq-1S9b;
-	Tue, 20 Oct 2026 03:17:22 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 51a517e44;
-	Tue, 20 Oct 2026 11:17:11 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Vinod Koul <vkoul@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
+	id 1xJ2Wu-00000008sn1-0p0R;
+	Tue, 20 Oct 2026 05:36:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1792474616; x=1824010616;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=NaJiqPkqH2nAedLRE+95pl1WPOXe5cB3p9iVy/Z4kMI=;
+  b=k8jsSQEzd+SVS9XFaOgOSSnnFUi+adP4QJ9X/u6FgdCauxX4Jf0gCo62
+   wP1g4KOT5V8HgrNWgEYpmGkOfamRnm7TCDnaXn8VapZGzpDzSiIHBLf+P
+   fTKDkAybZxxDgEQpS3d8dPgUMIlWJG4Tw7xPgjd8fknWsi6qSFlTw7izF
+   1IRnfOUg7bWyHOKUotQPr1aP5+Nc/gImEBAPmdjqDCj8DKqH8Gar9WAaw
+   RWIHxDHiKki+EkKvz720tbtzpUKaT3dflItG/nE4FPcb/2587ko2uAV1Y
+   /cHvBaEXFMobQaW36ByOcn0mqKfd/d45U7YS9HdW+7iVPlSiat12YXFSc
+   Q==;
+X-CSE-ConnectionGUID: Jo1mEybGRAqtdQz2/Jxf5w==
+X-CSE-MsgGUID: 7/W+a9PpT4WEUpSNNa5KHg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11940"; a="1059263"
+X-IronPort-AV: E=Sophos;i="6.27,168,1787036400"; 
+   d="scan'208";a="1059263"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Oct 2026 22:36:55 -0700
+X-CSE-ConnectionGUID: 9G3YAZlkQj2waR4JmZbv1A==
+X-CSE-MsgGUID: MzXHmm7cTBqL5aMo89B8cA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,168,1787036400"; 
+   d="scan'208";a="2784862"
+Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
+  by fmviesa005.fm.intel.com with ESMTP; 19 Oct 2026 22:36:50 -0700
+Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1xJ2Wj-00000000Mxa-3KkM;
+	Tue, 20 Oct 2026 05:36:45 +0000
+Date: Tue, 20 Oct 2026 13:36:21 +0800
+From: kernel test robot <lkp@intel.com>
+To: Damon Ding <damon.ding@rock-chips.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
-	devicetree@vger.kernel.org,
-	Samuel Holland <samuel@sholland.org>,
-	Coia Prant <coiaprant@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 2/2] phy: rockchip: snps-pcie3: Load updated PHY firmware on RK3568
-Date: Tue, 20 Oct 2026 11:16:46 +0800
-Message-Id: <1792466206-127946-3-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1792466206-127946-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1792466206-127946-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Tid: 0aa15750208103a4kunm7337cf0a901643
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGUpKTFZMTEhDHksZQ0
-	8ZQ0pWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
-	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=LTcyNHDDmbj98pBnGtdjaKh4btnRPsnFbmRTB8wX9QjYBPcI5alvkXF7/xAZbj545ssp7AYsNbd5YQnk9E2JFTMI0zbJ5nhavGPo4MwUhBkY4+gcw6EayERIdBgMzk3dNvFid1bhFXankgv9ghe9xf4NBU+b66rcWhQIE8vDb9E=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=aBGbZSOm3WCp2POi9EH+waPzOsjBiCw0vKW+3KxQbak=;
-	h=date:mime-version:subject:message-id:from;
+	Robert Foss <rfoss@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: oe-kbuild-all@lists.linux.dev,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v4 11/14] drm/bridge: analogix_dp: Use
+ bridge->next_bridge instead of plat_data field
+Message-ID: <202610201309.w3JSXlP5-lkp@intel.com>
+References: <20261019085836.3065008-12-damon.ding@rock-chips.com>
+X-Archived-By: <archiver.kernel.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20261019085836.3065008-12-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_201720_956910_A41983B7 
-X-CRM114-Status: GOOD (  27.31  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261019_223656_305952_2C4E4053 
+X-CRM114-Status: GOOD (  13.76  )
+X-Spam-Score: -4.7 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,228 +107,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The RK3568 PCIe3 PHY can load an updated firmware into its internal
-SRAM during initialization. Without it the PHY may come up with a stale
-microcode and fail to establish a stable link.
+Hi Damon,
 
-Load the firmware named by the optional firmware-name DT property during
-probe, so that it is available in the phy_init() context and is not read
-from the filesystem on every init. During initialization, clear SDRAM
-load done and bypass, wait for the SRAM to lock, map the SRAM into the
-register window, write the firmware and finally signal SDRAM load done.
+kernel test robot noticed the following build errors:
 
-The firmware is optional: when firmware-name is absent (older DTBs) or
-the file cannot be loaded, the driver keeps the behaviour unchanged and
-uses the microcode already present in the PHY.
+[auto build test ERROR on drm-misc/drm-misc-next]
+[also build test ERROR on drm/drm-next next-20261019]
+[cannot apply to daeinki-drm-exynos/exynos-drm-next linus/master v7.3]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+url:    https://github.com/intel-lab-lkp/linux/commits/Damon-Ding/drm-bridge-analogix_dp-Return-bitmask-from-analogix_dp_get_irq_type/20261019-165823
+base:   https://gitlab.freedesktop.org/drm/misc/kernel.git drm-misc-next
+patch link:    https://lore.kernel.org/r/20261019085836.3065008-12-damon.ding%40rock-chips.com
+patch subject: [PATCH v4 11/14] drm/bridge: analogix_dp: Use bridge->next_bridge instead of plat_data field
+config: nios2-randconfig-1000-20261020 (https://download.01.org/0day-ci/archive/20261020/202610201309.w3JSXlP5-lkp@intel.com/config)
+compiler: nios2-linux-gcc (GCC) 11.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261020/202610201309.w3JSXlP5-lkp@intel.com/reproduce)
 
- drivers/phy/rockchip/phy-rockchip-snps-pcie3.c | 101 ++++++++++++++++++++++++-
- 1 file changed, 99 insertions(+), 2 deletions(-)
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202610201309.w3JSXlP5-lkp@intel.com/
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-index ce7d8db..bc1b4d0 100644
---- a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-+++ b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-@@ -7,6 +7,7 @@
- 
- #include <linux/clk.h>
- #include <linux/delay.h>
-+#include <linux/firmware.h>
- #include <linux/io.h>
- #include <linux/iopoll.h>
- #include <linux/kernel.h>
-@@ -19,11 +20,13 @@
- #include <linux/regmap.h>
- #include <linux/reset.h>
- #include <linux/units.h>
-+#include <linux/unaligned.h>
- 
- #define RK_PCIE_SRAM_INIT_TIMEOUT_US		(20 * USEC_PER_MSEC)
- 
- /* Register for RK3568 */
- #define GRF_PCIE30PHY_CON1			0x4
-+#define GRF_PCIE30PHY_CON4			0x10
- #define GRF_PCIE30PHY_CON6			0x18
- #define GRF_PCIE30PHY_CON9			0x24
- #define GRF_PCIE30PHY_DA_OCM			(BIT(15) | BIT(31))
-@@ -31,6 +34,11 @@
- #define GRF_PCIE30PHY_WR_EN			(0xf << 16)
- #define SRAM_INIT_DONE(reg)			(reg & BIT(14))
- 
-+#define GRF_PCIE30PHY_CON4_SDRAM_LD_DONE	BIT(14)
-+#define GRF_PCIE30PHY_CON4_SDRAM_BYPASS		BIT(13)
-+#define GRF_PCIE30PHY_CON9_SRAM_MAP		(0x3 << 8)
-+#define GRF_PCIE30PHY_CON9_SRAM_MAP_WE		(0x3 << 24)
-+
- #define RK3568_BIFURCATION_LANE_0_1		BIT(0)
- 
- /* Register for RK3588 */
-@@ -56,6 +64,7 @@ struct rockchip_p3phy_ops;
- 
- struct rockchip_p3phy_priv {
- 	const struct rockchip_p3phy_ops *ops;
-+	struct device *dev;
- 	void __iomem *mmio;
- 	/* mode: RC, EP */
- 	int mode;
-@@ -70,6 +79,8 @@ struct rockchip_p3phy_priv {
- 	int num_lanes;
- 	u32 lanes[4];
- 	u32 rx_cmn_refclk_mode[4];
-+	const struct firmware *fw;
-+	const char *fw_name;
- };
- 
- struct rockchip_p3phy_ops {
-@@ -96,6 +107,34 @@ static int rockchip_p3phy_set_mode(struct phy *phy, enum phy_mode mode, int subm
- 	return 0;
- }
- 
-+static void rockchip_p3phy_release_fw(void *data)
-+{
-+	struct rockchip_p3phy_priv *priv = data;
-+
-+	release_firmware(priv->fw);
-+	priv->fw = NULL;
-+}
-+
-+static void rockchip_p3phy_rk3568_load_fw(struct rockchip_p3phy_priv *priv)
-+{
-+	const struct firmware *fw = priv->fw;
-+	int i;
-+
-+	/* Map the PHY SRAM into the register window to write the firmware. */
-+	regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON9,
-+		     GRF_PCIE30PHY_CON9_SRAM_MAP | GRF_PCIE30PHY_CON9_SRAM_MAP_WE);
-+
-+	for (i = 0; i < fw->size / sizeof(u16); i++)
-+		writel(get_unaligned_le16(fw->data + i * sizeof(u16)),
-+		       priv->mmio + (i << 2));
-+
-+	dev_dbg(priv->dev, "loaded PHY firmware %s, size %zu\n",
-+		priv->fw_name, fw->size);
-+
-+	/* Unmap: field back to 0 with the write-enable for bits[9:8] */
-+	regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON9, GRF_PCIE30PHY_CON9_SRAM_MAP_WE);
-+}
-+
- static int rockchip_p3phy_rk3568_init(struct rockchip_p3phy_priv *priv)
- {
- 	struct phy *phy = priv->phy;
-@@ -125,16 +164,41 @@ static int rockchip_p3phy_rk3568_init(struct rockchip_p3phy_priv *priv)
- 			     GRF_PCIE30PHY_WR_EN & ~RK3568_BIFURCATION_LANE_0_1);
- 	}
- 
-+	/* Clear SDRAM load done and bypass before loading the new firmware. */
-+	if (priv->fw) {
-+		regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON4,
-+			     GRF_PCIE30PHY_CON4_SDRAM_LD_DONE << 16);
-+		regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON4,
-+			     GRF_PCIE30PHY_CON4_SDRAM_BYPASS << 16);
-+	}
-+
- 	reset_control_deassert(priv->p30phy);
- 
- 	ret = regmap_read_poll_timeout(priv->phy_grf,
- 				       GRF_PCIE30PHY_STATUS0,
- 				       reg, SRAM_INIT_DONE(reg),
- 				       1000, RK_PCIE_SRAM_INIT_TIMEOUT_US);
--	if (ret)
-+	if (ret) {
- 		dev_err(&priv->phy->dev, "%s: lock failed 0x%x, check input refclk and power supply\n",
- 		       __func__, reg);
--	return ret;
-+		return ret;
-+	}
-+
-+	/*
-+	 * Load the updated PHY firmware into the internal SRAM and signal
-+	 * SDRAM load done once it has been written. The firmware update is
-+	 * optional: when no firmware-name is described in DT (older DTBs)
-+	 * the microcode already present in the PHY is used as-is.
-+	 */
-+	if (priv->fw) {
-+		rockchip_p3phy_rk3568_load_fw(priv);
-+
-+		regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON4,
-+			     (GRF_PCIE30PHY_CON4_SDRAM_LD_DONE << 16) |
-+			     GRF_PCIE30PHY_CON4_SDRAM_LD_DONE);
-+	}
-+
-+	return 0;
- }
- 
- static const struct rockchip_p3phy_ops rk3568_ops = {
-@@ -250,12 +314,14 @@ static int rockchip_p3phy_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct rockchip_p3phy_priv *priv;
- 	struct device_node *np = dev->of_node;
-+	const char *fw_name;
- 	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
- 		return -ENOMEM;
- 
-+	priv->dev = dev;
- 	priv->mmio = devm_platform_get_and_ioremap_resource(pdev, 0, NULL);
- 	if (IS_ERR(priv->mmio)) {
- 		ret = PTR_ERR(priv->mmio);
-@@ -268,6 +334,37 @@ static int rockchip_p3phy_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 	}
- 
-+	/*
-+	 * RK3568 can load an updated PHY firmware into its internal SRAM. The
-+	 * firmware file is named by the optional firmware-name property; when
-+	 * it is not described (older DTBs) or cannot be loaded, keep using the
-+	 * microcode already present in the PHY.
-+	 */
-+	if (priv->ops == &rk3568_ops && !of_property_read_string(np, "firmware-name",
-+								 &fw_name)) {
-+		ret = request_firmware(&priv->fw, fw_name, dev);
-+		if (ret) {
-+			dev_warn(dev, "PHY firmware %s not available: %d\n",
-+				 fw_name, ret);
-+			priv->fw = NULL;
-+		} else if (priv->fw->size % sizeof(u16)) {
-+			dev_warn(dev, "invalid PHY firmware size %zu, skip update\n",
-+				 priv->fw->size);
-+			release_firmware(priv->fw);
-+			priv->fw = NULL;
-+		} else {
-+			priv->fw_name = fw_name;
-+		}
-+
-+		if (priv->fw) {
-+			ret = devm_add_action_or_reset(dev,
-+						       rockchip_p3phy_release_fw,
-+						       priv);
-+			if (ret)
-+				return ret;
-+		}
-+	}
-+
- 	priv->phy_grf = syscon_regmap_lookup_by_phandle(np, "rockchip,phy-grf");
- 	if (IS_ERR(priv->phy_grf)) {
- 		dev_err(dev, "failed to find rockchip,phy_grf regmap\n");
--- 
-2.7.4
+All errors (new ones prefixed by >>):
 
+   nios2-linux-ld: drivers/gpu/drm/bridge/analogix/analogix_dp_core.o: in function `analogix_dp_aux_done_probing':
+>> drivers/gpu/drm/bridge/analogix/analogix_dp_core.c:1669:(.text+0xb80): undefined reference to `devm_drm_of_display_mode_bridge'
+>> drivers/gpu/drm/bridge/analogix/analogix_dp_core.c:1669:(.text+0xb80): relocation truncated to fit: R_NIOS2_CALL26 against `devm_drm_of_display_mode_bridge'
+
+
+vim +1669 drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+
+  1660	
+  1661	static int analogix_dp_aux_done_probing(struct drm_dp_aux *aux)
+  1662	{
+  1663		struct analogix_dp_device *dp = to_dp(aux);
+  1664		struct analogix_dp_plat_data *plat_data = dp->plat_data;
+  1665		struct drm_bridge *bridge = &dp->bridge, *next_bridge;
+  1666		int port = plat_data->dev_type == EXYNOS_DP ? 0 : 1;
+  1667	
+  1668		if (plat_data->dev_type == EXYNOS_DP && of_get_display_timings(dp->dev->of_node)) {
+> 1669			next_bridge = devm_drm_of_display_mode_bridge(dp->dev, dp->dev->of_node,
+  1670								      DRM_MODE_CONNECTOR_eDP);
+  1671			if (IS_ERR(next_bridge))
+  1672				return PTR_ERR(next_bridge);
+  1673			bridge->next_bridge = drm_bridge_get(next_bridge);
+  1674	
+  1675			return component_add(dp->dev, plat_data->ops);
+  1676		}
+  1677	
+  1678		/*
+  1679		 * If of_drm_get_bridge_by_endpoint() returns -ENODEV, there may be no
+  1680		 * valid panel or bridge nodes. The driver should go on for the
+  1681		 * driver-free bridge or the DP mode applications.
+  1682		 */
+  1683		bridge->next_bridge = of_drm_get_bridge_by_endpoint(dp->dev->of_node, port, 0);
+  1684		if (IS_ERR(bridge->next_bridge)) {
+  1685			if (PTR_ERR(bridge->next_bridge) == -ENODEV)
+  1686				bridge->next_bridge = NULL;
+  1687			else
+  1688				return PTR_ERR(bridge->next_bridge);
+  1689		}
+  1690	
+  1691		return component_add(dp->dev, plat_data->ops);
+  1692	}
+  1693	
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
