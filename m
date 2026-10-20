@@ -2,94 +2,94 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 091F4606A31A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2026 14:18:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 12186606A31E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2026 14:18:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=z5eTxPyK;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=O1u6Asj4;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=cHBmDvEb
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Wnfpp9df;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=HgTU9/O/;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=i/zvKAWv
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qt8xVz/2P1f8ZikrYGSySbnY01p+TGu3qOenw1Hsbxs=; b=z5eTxPyKQPLjOf
-	Z05TYVyNr3euns5PPhoQxNryvTrjfQiKmLZ+pOLNx61+EpEZCcICWhqVrxs+IYvgMFhTMvAI8/XJC
-	TnKDCdYYehCveQUAyN0TCurUOXW69mARLwKs6vMZoRdQPodUleU/42PpZq8rNTF+V/TXx15BrBOeK
-	aP74R6IZAJrw+gDM9WPKJDNQe+DKrflbs8ORqNx92rkD/AIKTLvhH8DX7xiGp7W6hey10f4cco9sT
-	/+ludQT3JHY48I1sIIFNz6LxkB7ecn1qnl41UYbywvZ9HqwXfzDDydcSbBnPswAHjQYd6bXTLeLS6
-	iUPIAVM5QMSkg+UzY6Gg==;
+	List-Owner; bh=VWe5A3dwh4D/qZnKDO2M8aYb7S6tSRb8wrjv4VdHF80=; b=Wnfpp9dfSQmxeZ
+	M55oHXP8qeaVEP1K8zPB8jAt4DFtYakIbRepv/nu6t+9jYXQrQf/Ojl760jurl7KQ76ALAD+7vNO+
+	3PyaQT9h17UXbSH7CpYvCNLt/HezmeSTgN6d/+3mqqeRxpkKGyq76S0CWLg7CEEBh86Vpf5MIkN8H
+	7ey7sKfAcuRxjYgKp9qreAGW63HSAqHoB/52fV/ppnfAppWHRdtADC6d3mNE8ZNxAqY9EXep/9PTS
+	2Yx9Q8xsHC5njRbTQxSbESp4yUKPihg/2kQn84Qeb/TuJDof4g/c0lGKclnIpE5skE6QGrezbX2d3
+	c7EevCA7GuhTEecaa6hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJAew-00000009uNG-1jwp;
+	id 1xJAew-00000009uMq-0IxT;
 	Tue, 20 Oct 2026 14:17:46 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJAes-00000009uJL-179W
+	id 1xJAeq-00000009uHw-2kdj
 	for linux-rockchip@lists.infradead.org;
-	Tue, 20 Oct 2026 14:17:43 +0000
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69KD9r6b1781315
-	for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2026 14:17:42 GMT
+	Tue, 20 Oct 2026 14:17:42 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69KD9vHt270588
+	for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2026 14:17:40 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=8J4j0djyVVF
-	C/C1z8k5Rma/HbptDjpjZS/vt1pUoijY=; b=O1u6Asj471qzv8lGc4di8WmrEup
-	+DJtLvvwD5gLoCj0Kfqmwnbvj3SUqfuDtfGq5rWZaSa66O9VGQ8X4SmJHkSiJYcd
-	2Tq9bPtyIAW/W6XskJSCNhA1aEivFnqcx3B1Aji9aLbEtoMOyeoz1J2YoZsKxlOL
-	F1Zb+KQAlT3+xZT5TPU/oXEi09LqG8zy/klXnsdRHnRI2bsS9ywkeZn7fzIMfloQ
-	P1K/NN71OHE5VlZE5//45yBAQcPTWFLp8zqo8sUUB3P+EzH5DMwgyN4d679N0pus
-	LJhb/IiXkgx9RGeS7LIbvn+NYcRWjO0cHZhPb8PudVNbMUopp8DLb4sGcbw==
+	:mime-version:references:subject:to; s=qcppdkim1; bh=1NDBcYoeE+s
+	SJBb2f8lqRgiwhotRgd/vtsQ8UHxnhhE=; b=HgTU9/O/2Vlzvei/HDHzQCwgv79
+	5GKISE2mAhdmqyBEdXw/cwFJ/VAlbLskloD/kBgGq5jDV+gD11g5m9a5HzsR1qT5
+	P6E5BsSTxGg4YcTPSTxN1x8AlxoA2BQe6WlQmprZEWpxmAoBuO6Iqw6w244BbUfg
+	iXefClq6N94eTp6K/Ecw9PAVlOAN5GIdDGnsp6X9H8hufHhWuBCnlNvJ3O+doQP0
+	LjG+OJS1qeqFlHEaGyAbGB31cRyK4XwZXcl/7ZL4Q75aG85zuJtfKk1w45YZQa3k
+	TBwFAekXSUTtAcda0VPGPPGbEWEUNYQ1JuC833XfYvi730eAayCWvMsr+nQ==
 Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4he7h28k6h-1
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4he7hv8huw-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2026 14:17:41 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-93f33438950so854193285a.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2026 07:17:41 -0700 (PDT)
+	for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2026 14:17:40 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-93e92aad34aso664905085a.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2026 07:17:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1792505861; x=1793110661; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1792505859; x=1793110659; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=8J4j0djyVVFC/C1z8k5Rma/HbptDjpjZS/vt1pUoijY=;
-        b=cHBmDvEbu1Dm8xw9eGX9JaLwzsLEsZHBf1nG7pTlIklMMuQJAz7gsNNJLaPH24vA7c
-         35sUt4e1i3/5MkyWp3ijuv6vJdevSD+o/5e/Q0yBWl889S+fctpDPHcYa0uAJ96k9iTN
-         is5ZszSfrHs/h6pIwuKXPXZjr9YKxcyQsV+6OdCFzL1wGmDYluSZNdP2+T1TkSsYhh5G
-         vaoJZIPuj5tiU7tdvJdcwP1S+quCACfoj9vHBDjXAqS+zZLUaizuKclOJ0CL1LmBwQxa
-         evSjcw3JDu+WBkmbr8k3INFtxMJY0egGn5jpZLG6LEOXhYDegAcnK7mRJHH77nM5vEcN
-         HySw==
+        bh=1NDBcYoeE+sSJBb2f8lqRgiwhotRgd/vtsQ8UHxnhhE=;
+        b=i/zvKAWvfkfytpcLXHkfBQcMY0U/qdl8p/BdZwkhGmHVM0+TCkuoAatwHiElFgkf5o
+         oO3+nrh6bSwo+mzXLmsJk9LWoPhLDxvtUeXoS7ekYkIxQz/jTW5F+z7t0Qbgu09gEcck
+         /U206AZUt8c/vkVZstzHL9PJnfaRnMAlxMLVQBwQGJ20O9yGKKXDhjnvHerCmAqTKRIN
+         xrOhFUFdBNDS3cI50dLt4ufhRkcwfRVwTuwa1LpyLBm29xA8ymqsxY1KleWTnlI0ylh4
+         g+RKX5K8AulNeRvgQ7kTRjYW6ok3iZz5QcWAM5cr2M/Y3mnw9gmXKsmnM5BBp4BiQ576
+         MHqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792505861; x=1793110661;
+        d=1e100.net; s=20260707; t=1792505859; x=1793110659;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=8J4j0djyVVFC/C1z8k5Rma/HbptDjpjZS/vt1pUoijY=;
-        b=qjdStk3q+ARVHCbbBxYCQgoWFRTNtJO+HcN9b5nkonV3CH99KAGP5Z4orzz8tpah39
-         G6VTjuCvIuJ/C6NDKFoPCLGZRn3D2jfYThYGoNUPitAglPdZCYEGJYWQLPokuhU0iqo0
-         jap+Kxss/hUVmCBhGpTr2mHMWb5SBz4FGATDKGP81IYcJlbDi13V8GBmAvgZKG9hfIBR
-         MyfkGF9ECbQnrtNVIdBnoDtr/6eYzctUtn10JKHmmff1MANIyF3W0XLjC3XDuJO2pJH+
-         GGZAis1Sf/mRL/wwI4YFddYq+NFSdbGMdg9UonTw8Qik++v58UeWW2+bFG21st4Bqv8T
-         7VNg==
-X-Forwarded-Encrypted: i=1; AKwUvBwh2h4rRHqbxC/s9wq7Is8R+fnBTsIxo6UYay/niKut/b2IA19b4/mxLAEyUM0VUB9JR+oJiJ+dFDvnCZbR7w==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLM+LG6nMUyg5qKTfhjbW4odhnJDDZfgajO7vDD2IK5nQeFpLoi
-	PHjeSSJ98imkLz8TB5nxRzSvJkQ1Jeb5iPY5r2mfCVJP7WRk5tyeWY4csSv9go7w39L/gGMNrxr
-	/CNGbTrcQI3r4f+j+xw+Ed462qYhBWF5qpiCcJmib9lQlpPDufl4bq+rsFvKQoqKaLYa/ZEUqlk
-	k=
-X-Gm-Gg: AYBFou2u2+Y2Iso4riZKnzQXmColtmva9XZzY/aIrw2N6INZrV9ALkyD0i6zEsrHLbq
-	b5Z8X+rCj16afPBKOR1Fik4z62Spccg5hQUKTNkLKrDuWSjGfzeF5ZsX6SasUsIVeWrActo1mpe
-	OHrQJSwa3L7QVP/l1g+NL9r4FkSdb1EqgV5oCtCM8YpKlHQ6XKcSv+f7q3LdnbdyzrR41Sg1PLL
-	AS8GTrLaKW+caKzmYM6PvmNZZv+xdo9tfyUXxrkQ+52BRTh/Mq/VhjwY9A7N91PLn2pMqKYtuv6
-	w0QqztrIrTbo92xlhzeF2uUAPpIqfdC8RSoKdv4bDwOU1eq5iGqqrvFlNUW2ti7aE/pUd0ucfky
-	6tkRYBDFoAxup3Ck8xALJgx4YSqw=
-X-Received: by 2002:a05:620a:19a5:b0:93e:b0c3:388d with SMTP id af79cd13be357-93f29b7f65cmr1936774885a.11.1792505860680;
-        Tue, 20 Oct 2026 07:17:40 -0700 (PDT)
-X-Received: by 2002:a05:620a:19a5:b0:93e:b0c3:388d with SMTP id af79cd13be357-93f29b7f65cmr1936767785a.11.1792505860129;
-        Tue, 20 Oct 2026 07:17:40 -0700 (PDT)
+        bh=1NDBcYoeE+sSJBb2f8lqRgiwhotRgd/vtsQ8UHxnhhE=;
+        b=t4BfRRtQDgFDlEw+1lipStGQyuxvHD2OVAks3C43DOwg7n4NWdx6d0Qk/k1mFRPKE7
+         0D91X+35QLBcZWPPEaLyzUKhCgYIwAw9WIpyBD4j/LramHFTICBYEMRqj/DXTDzhkm4/
+         WnW64WEWpvjtShZ9iSY08aoyZ46A1i6Cj74PW3bzmxMPkdt2krOeIAHhft7Z/K1tmvlT
+         QqwDoI1+RNlx7CkCWw0UfosVsoSsuCemsadybpChbMHlQBOCHeRLbwdhbtG7W2dwYoDF
+         al1xI4gRejILR9xEIYWU07sU1gJU3b1tB+1eN65QFG0zDESbfEvWiJNY8yXZfg4iBN8A
+         wKgA==
+X-Forwarded-Encrypted: i=1; AKwUvBwSNREu9RFCqdmNb8+o363o9pj4HlOjqtQ3/5yP6OjAMSHXfUE0pfWsRTUdjp0GkMiHJDopNmcvJ2+9xhs6OA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYK29myyzajnWazdneSz1ImedblPcLMnKEGhazv+I9Vqnde6+UXR
+	XtM++edi+UeBZsPOFiuPozhVTfUsuVCh7/zMjvt/dVWHNcOR10SSoQWK+uzRbo8PflaVJMCMiEs
+	knm7AgH6+eEIo9RFjWcIOxq1sxozCACMt8zvEEW0r0Ie0Ef+tWcnOOZPEFdcNCDKff16/CHdGnF
+	U=
+X-Gm-Gg: AYBFou2AEGiP1ndtokyT/rd4kreDINUyI3Wdjj46oIhaPQyxKedAQOrRkoiVvVZZWBC
+	/fWMPWn8pwXVlWseWwdZcCJE0OqzWNebKhnJ2HOBNk9ejhMph+Q/vfDPJ1h68O776vfWhU6DMaw
+	5JGWj7SrZUYYNKBKia3I/ieRcgLKTpD+qq5nhNc+FcrjVSzozw8Jt+2mvhuju+J5rtYGzqfUJkk
+	f8eZ1wbm64oKmkRsKaTFXi94pddEnetHqA2UFRix6k3aXLH8c1iecal67xcRndmkmOyyDWg6CVI
+	OoVqLhr+xkUdJWRdyJdAVS5k7/9AfhiJ4MQ24bHygf9ArFKUvKS8bwIJ+GFXQYa7KQfvW9ZuoMl
+	YBm3lIrGaJRUJKCoGEI9NGLhr3xQ=
+X-Received: by 2002:a05:620a:c4f:b0:93e:6c02:d181 with SMTP id af79cd13be357-93f29cefaa6mr1839544385a.14.1792505858350;
+        Tue, 20 Oct 2026 07:17:38 -0700 (PDT)
+X-Received: by 2002:a05:620a:c4f:b0:93e:6c02:d181 with SMTP id af79cd13be357-93f29cefaa6mr1839537185a.14.1792505857796;
+        Tue, 20 Oct 2026 07:17:37 -0700 (PDT)
 Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:4884:6e9a:d9ff:9fa6])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e1d810043sm6642276f8f.16.2026.10.20.07.17.38
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e1d810043sm6642276f8f.16.2026.10.20.07.17.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Oct 2026 07:17:39 -0700 (PDT)
+        Tue, 20 Oct 2026 07:17:37 -0700 (PDT)
 From: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
 To: rafael@kernel.org
 Cc: Daniel Lezcano <daniel.lezcano@kernel.org>,
@@ -97,44 +97,45 @@ Cc: Daniel Lezcano <daniel.lezcano@kernel.org>,
         Manaf Meethalavalappu Pallikunhi <manaf.pallikunhi@oss.qualcomm.com>,
         linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
         linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org, linux-kselftest@vger.kernel.org
-Subject: [PATCH v3 3/6] powercap: dtpm: Remove duplicate RK3399 CPU hierarchy nodes
-Date: Tue, 20 Oct 2026 16:16:53 +0200
-Message-ID: <38f5964cadd33f8b03afaf9ff740653258367d72.1792504834.git.daniel.lezcano@oss.qualcomm.com>
+        linux-rockchip@lists.infradead.org, linux-kselftest@vger.kernel.org,
+        Thomas Huth <thuth@redhat.com>, Vasily Gorbik <gor@linux.ibm.com>
+Subject: [PATCH v3 2/6] selftests/powercap: Add powercap hierarchy creation API tests
+Date: Tue, 20 Oct 2026 16:16:52 +0200
+Message-ID: <83799bf79e85e9e2ab77140e632f11d96b17a04f.1792504834.git.daniel.lezcano@oss.qualcomm.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1792504834.git.daniel.lezcano@oss.qualcomm.com>
 References: <cover.1792504834.git.daniel.lezcano@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Proofpoint-GUID: f8wc11H9jo0tlouGU242SVxbZKXP8Cqr
-X-Proofpoint-ORIG-GUID: f8wc11H9jo0tlouGU242SVxbZKXP8Cqr
-X-Authority-Analysis: v=2.4 cv=EuJHPicA c=1 sm=1 tr=0 ts=6ad77805 cx=c_pps
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIwMDA1NiBTYWx0ZWRfXxu/Z7VJqGzR8
+ B/VhqztVVm4dxnj9ccHFcly7Kjm/7vhe3GUbEI4Msy6pKqtleAKVtnbpavkSgKYj4fMdJVZWwQy
+ 6qGhJwV6WVrqWPXQxsXqEJ4+ZP6513dD7cmDJ7/JeSc4UHzq/kt6GdhQTmTp1KWlwwB1F/Qg3GY
+ Giq1kGORpBTGXXiJBtBBcBsGW+Rtlwj4RveKSB/K0UGfhRJyPqbYmekf7yi/+GxmYj6AULqALe9
+ zYsUcuwadsPzQNxv+fQfs6AKABjAdLTbAlPilApf9snagaLe7NG9idMjo7MUn2t5aMGrD8Jvyqj
+ TF0esf1i91kt7dvLgZGpX1jegDlZFOmuGW++Nl4pGJEI3gkBGNv+J9/2Y3xm9Dg4uBJZOA6qlb/
+ 2dr7i2cpk8+Hoa144HNimhUPJv/mUqwopnl9Kk6MCFCVgMvw6k9xxjyiJX4COv+WpS3sLwAYhSA
+ bJ6c+KOORIEfx6Tkp+g==
+X-Proofpoint-ORIG-GUID: vPgvIhm63NBU1L-xvimeEjf1UeBvUOgh
+X-Proofpoint-GUID: vPgvIhm63NBU1L-xvimeEjf1UeBvUOgh
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIwMDA1NiBTYWx0ZWRfX2gp1U3nQ2/Bx
+ nRiVpwiz9gpKQAb67I6/t+wmIcdztNKxANUiU5BqNGQvZrLSWvMwhLP+Nez1MfbN/DdTBPZLBeb
+ 04ioxbPiS9GbBBKIkMLEKU7gCH+HUOY=
+X-Authority-Analysis: v=2.4 cv=NppE4MdJ c=1 sm=1 tr=0 ts=6ad77804 cx=c_pps
  a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=xqWC_Br6kY4A:10 a=660iZSQnnn4A:10
  a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=yOCtJkima9RkubShWh1s:22 a=EUspDBNiAAAA:8 a=EpzjDTW3ywHV2UopgxgA:9
- a=PEH46H7Ffwr30OY-TuGO:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDIwMDA1NiBTYWx0ZWRfXy4z5M2FkJt1f
- VbDXD067T4MlhfLrmA3dh1tF6DlOBgsZj4FjlLoDat5C9Z0MWdOEnnGJ/3NevzoazWjnqULqChl
- ulbi68fkdRRx0FsYhfR4JJFtFq3LBms=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDIwMDA1NiBTYWx0ZWRfXx5C+2DttThHZ
- 8l1SluRBJCqvBrcD52RUBbbN9Rgy4ZNf5ZBP/8BRuQi5zjKlrJVWirwvJSq38NQx36/R0c42osE
- T6vjzCeBl/d7q/rTNTXYCpkBxGhAp5mwl3lYqW5A3XfOcl6LfLR8AFhtTfi2rpBwtZBzu6SbFun
- hUHNCZXN+LKiofy4Q1Sdv3RfriohPedXok/ZecNu9CeBzYVtqqFdgfEwzu+/jV8CTHqucySA0mP
- 96s65GcgYBZGjaaGBwlWKUvgcRlINGlAcwzYIRaY1dJiJNd1FuDJrMrSvCzMTQAYLha0qT3dw1W
- 3FmEvi1GHOj2X7opyRz1jItYMb7h/NeRsrz6pJ5j0tCY766Ov90fGU4tk0JYkgjayv27ePcib5x
- NTunnt2hYQBqvIeDc03jNTp1LHC81ACON9y/qwJmrhPSZG6YyDugAFO19oXVRFFKnd3t8l4Ka7X
- RhxSrHq2MfH9pQhHPMg==
+ a=DJpcGTmdVt4CTyJn9g5Z:22 a=bC-a23v3AAAA:8 a=EUspDBNiAAAA:8
+ a=NQaYcpb_sPWQE13iVsoA:9 a=PEH46H7Ffwr30OY-TuGO:22 a=FO4_E8m0qiDe52t0p3_H:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-10-20_02,2026-10-19_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 impostorscore=0 clxscore=1015 spamscore=0 adultscore=0
- priorityscore=1501 lowpriorityscore=0 suspectscore=0 phishscore=0 bulkscore=0
+ impostorscore=0 malwarescore=0 spamscore=0 priorityscore=1501 clxscore=1015
+ suspectscore=0 phishscore=0 lowpriorityscore=0 adultscore=0 bulkscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610200056
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261020_071742_316821_6FA66F9D 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20261020_071740_705098_814AAC7E 
+X-CRM114-Status: GOOD (  24.54  )
 X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -155,71 +156,562 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The DTPM CPU backend registers one powercap zone per cpufreq policy,
-not per CPU. On RK3399, CPUs sharing the same cpufreq policy therefore
-map to the same DTPM zone.
+The powercap hierarchy API introduces generic helpers to duplicate,
+instantiate and destroy a complete powercap hierarchy from a static
+description.
 
-Remove the redundant CPU nodes from the RK3399 hierarchy and keep only
-one CPU node per cpufreq policy. The backend already suppresses duplicate
-registration through its per-CPU state, so the removed entries are
-redundant descriptions of the same zones. Keep both CPU policy domains
-and the GPU in the hierarchy, preparing for one created zone per generic
-hierarchy node.
+Add a kselftest exercising this API. The test builds a synthetic
+powercap hierarchy composed of a package, three CPU clusters and twelve
+CPUs, registers it as a powercap control type and checks the zone count
+and selected sysfs attribute values. It also checks that the controller
+directory disappears when the module is unloaded.
 
-Also fix indentation in the Rockchip device match table.
+Exercise direct static creation, duplication, skipped clusters and their
+descendants, reuse after partial destruction, and repeated creation
+returning -EBUSY without replacing existing zone pointers. Callback
+checks verify the controller, name and backend-private data supplied by
+the helpers.
 
+The test consists of:
+
+* a kernel module implementing a synthetic powercap hierarchy and
+  dummy callbacks;
+* a userspace kselftest script that loads the module, checks 16 zones
+  and their power and constraint attributes, unloads the module with an
+  attribute descriptor open, and checks controller removal.
+
+Use powercap-owned zone allocations so registration failures are cleaned
+up by the core. Build generated module files in the selftest output
+directory and extend the common clean target with Kbuild module cleanup.
+
+This provides a regression test for the powercap hierarchy helpers and
+their integration with the powercap core.
+
+Cc: Manaf Meethalavalappu Pallikunhi <manaf.pallikunhi@oss.qualcomm.com>
+Link: https://patch.msgid.link/20260806110159.69690-3-daniel.lezcano@oss.qualcomm.com
 Assisted-by: LLM
 Signed-off-by: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
 ---
 Changes in v3 (since v2):
 - Rebase on v7.3-rc7.
-- Fix Rockchip match-table indentation here rather than in patch 1.
-- Clarify that the existing backend suppresses duplicate registration.
+- Use TEST_GEN_FILES and MO=$(OUTPUT); preserve the common clean recipe.
+- Use powercap-owned allocations for consistent registration cleanup.
+- Keep validation and counting in the main shell so failures propagate.
+- Add static creation, skipped branches, reuse and -EBUSY checks, and
+  hold a sysfs descriptor open across module removal.
+- Document the tests and describe their actual assertions.
+- Fix closing-brace indentation and __initdata placement.
 - Add Assisted-by attribution.
 
- drivers/soc/rockchip/dtpm.c | 22 +++++-----------------
- 1 file changed, 5 insertions(+), 17 deletions(-)
+ tools/testing/selftests/Makefile              |   1 +
+ tools/testing/selftests/powercap/Kbuild       |   3 +
+ tools/testing/selftests/powercap/Makefile     |  27 ++
+ .../selftests/powercap/powercap_hierarchy.c   | 305 ++++++++++++++++++
+ .../selftests/powercap/powercap_hierarchy.sh  | 126 ++++++++
+ 5 files changed, 462 insertions(+)
+ create mode 100644 tools/testing/selftests/powercap/Kbuild
+ create mode 100644 tools/testing/selftests/powercap/Makefile
+ create mode 100644 tools/testing/selftests/powercap/powercap_hierarchy.c
+ create mode 100755 tools/testing/selftests/powercap/powercap_hierarchy.sh
 
-diff --git a/drivers/soc/rockchip/dtpm.c b/drivers/soc/rockchip/dtpm.c
-index b36d4f752c30..e71f315fbb6b 100644
---- a/drivers/soc/rockchip/dtpm.c
-+++ b/drivers/soc/rockchip/dtpm.c
-@@ -20,30 +20,18 @@ static struct dtpm_node __initdata rk3399_hierarchy[] = {
- 	[2] = { .name = "/cpus/cpu@0",
- 		.type = DTPM_NODE_DT,
- 		.parent = &rk3399_hierarchy[1] },
--	[3] = { .name = "/cpus/cpu@1",
-+	[3] = { .name = "/cpus/cpu@100",
- 		.type = DTPM_NODE_DT,
- 		.parent = &rk3399_hierarchy[1] },
--	[4] = { .name = "/cpus/cpu@2",
-+	[4] = { .name = "/gpu@ff9a0000",
- 		.type = DTPM_NODE_DT,
- 		.parent = &rk3399_hierarchy[1] },
--	[5] = { .name = "/cpus/cpu@3",
--		.type = DTPM_NODE_DT,
--		.parent = &rk3399_hierarchy[1] },
--	[6] = { .name = "/cpus/cpu@100",
--		.type = DTPM_NODE_DT,
--		.parent = &rk3399_hierarchy[1] },
--	[7] = { .name = "/cpus/cpu@101",
--		.type = DTPM_NODE_DT,
--		.parent = &rk3399_hierarchy[1] },
--	[8] = { .name = "/gpu@ff9a0000",
--		.type = DTPM_NODE_DT,
--		.parent = &rk3399_hierarchy[1] },
--	[9] = { /* sentinel */ }
-+	[5] = { /* sentinel */ }
- };
- 
- static struct of_device_id __initdata rockchip_dtpm_match_table[] = {
--        { .compatible = "rockchip,rk3399", .data = rk3399_hierarchy },
--        {},
-+	{ .compatible = "rockchip,rk3399", .data = rk3399_hierarchy },
-+	{},
- };
- 
- static int __init rockchip_dtpm_init(void)
+diff --git a/tools/testing/selftests/Makefile b/tools/testing/selftests/Makefile
+index bc4fdb6f5337..764cca6182ce 100644
+--- a/tools/testing/selftests/Makefile
++++ b/tools/testing/selftests/Makefile
+@@ -104,6 +104,7 @@ TARGETS += pidfd
+ TARGETS += pid_namespace
+ TARGETS += pipe
+ TARGETS += power_supply
++TARGETS += powercap
+ TARGETS += powerpc
+ TARGETS += prctl
+ TARGETS += proc
+diff --git a/tools/testing/selftests/powercap/Kbuild b/tools/testing/selftests/powercap/Kbuild
+new file mode 100644
+index 000000000000..baa0d0ba9593
+--- /dev/null
++++ b/tools/testing/selftests/powercap/Kbuild
+@@ -0,0 +1,3 @@
++# SPDX-License-Identifier: GPL-2.0
++
++obj-m += powercap_hierarchy.o
+\ No newline at end of file
+diff --git a/tools/testing/selftests/powercap/Makefile b/tools/testing/selftests/powercap/Makefile
+new file mode 100644
+index 000000000000..5041ff1acee5
+--- /dev/null
++++ b/tools/testing/selftests/powercap/Makefile
+@@ -0,0 +1,27 @@
++# SPDX-License-Identifier: GPL-2.0
++
++# User-space test script
++TEST_PROGS := powercap_hierarchy.sh
++
++# Kernel module built as part of the test
++TEST_GEN_FILES := powercap_hierarchy.ko
++
++KDIR ?= $(if $(O),$(O),$(realpath ../../../..))
++
++.DEFAULT_GOAL := all
++
++include ../lib.mk
++
++.PHONY: modules
++
++$(OUTPUT)/powercap_hierarchy.ko: modules
++
++modules:
++	$(MAKE) -C $(KDIR) M=$(CURDIR) MO=$(OUTPUT) modules
++
++.PHONY: clean_modules
++
++clean: clean_modules
++
++clean_modules:
++	$(MAKE) -C $(KDIR) M=$(CURDIR) MO=$(OUTPUT) clean
+diff --git a/tools/testing/selftests/powercap/powercap_hierarchy.c b/tools/testing/selftests/powercap/powercap_hierarchy.c
+new file mode 100644
+index 000000000000..baabd2420f9c
+--- /dev/null
++++ b/tools/testing/selftests/powercap/powercap_hierarchy.c
+@@ -0,0 +1,305 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
++ *
++ * Author: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
++ *
++ * Powercap hierarchy description test module
++ *
++ * Test coverage:
++ * - Duplicate an init-only description for use after module initialization.
++ * - Create and destroy a hierarchy directly from a static initializer.
++ * - Skip a cluster and its children while creating independent branches.
++ * - Destroy the partial hierarchy and create the complete hierarchy again.
++ * - Reject repeated creation with -EBUSY and preserve existing zone pointers.
++ * - Check callback arguments and preservation of backend-private data.
++ *
++ * The complete hierarchy remains registered for powercap_hierarchy.sh to
++ * check its 16 zones and exported attribute values. Module removal destroys
++ * it so the script can check cleanup with a sysfs descriptor still open.
++ */
++#include <linux/powercap.h>
++#include <linux/string.h>
++
++struct pch_test_data {
++	int value;
++};
++
++static struct powercap_node pch_test_nodes[] __initdata = {
++	[0] = { .name = "package",
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[1] = { .name = "cluster0", .parent = &pch_test_nodes[0],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[2] = { .name = "cluster1", .parent = &pch_test_nodes[0],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[3] = { .name = "cluster2", .parent = &pch_test_nodes[0],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[4] = { .name = "cpu0", .parent = &pch_test_nodes[1],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[5] = { .name = "cpu1", .parent = &pch_test_nodes[1],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[6] = { .name = "cpu2", .parent = &pch_test_nodes[1],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[7] = { .name = "cpu3", .parent = &pch_test_nodes[1],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[8] = { .name = "cpu4", .parent = &pch_test_nodes[2],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[9] = { .name = "cpu5", .parent = &pch_test_nodes[2],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[10] = { .name = "cpu6", .parent = &pch_test_nodes[2],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[11] = { .name = "cpu7", .parent = &pch_test_nodes[2],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[12] = { .name = "cpu8", .parent = &pch_test_nodes[3],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[13] = { .name = "cpu9", .parent = &pch_test_nodes[3],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[14] = { .name = "cpu10", .parent = &pch_test_nodes[3],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++	[15] = { .name = "cpu11", .parent = &pch_test_nodes[3],
++		.data = &(struct pch_test_data) { .value = 0xDEADBEEF } },
++};
++
++static struct powercap_hierarchy pch_test_hierarchy __initdata =
++	POWERCAP_HIERARCHY_INIT(pch_test_hierarchy, pch_test_nodes,
++				ARRAY_SIZE(pch_test_nodes));
++
++static struct powercap_hierarchy *hierarchy;
++
++static struct powercap_control_type *pct;
++
++static int pch_test_get_max_power_range_uw(struct powercap_zone *pcz,
++					   u64 *power_uw)
++{
++	*power_uw = 0xBADC0FFEE;
++	return 0;
++}
++
++static int pch_test_get_power_uw(struct powercap_zone *pcz,
++				 u64 *power_uw)
++{
++	*power_uw = 0xC0FFEE;
++	return 0;
++}
++
++static const struct powercap_zone_ops pch_test_ops = {
++	.get_max_power_range_uw = pch_test_get_max_power_range_uw,
++	.get_power_uw = pch_test_get_power_uw,
++};
++
++static int pch_test_set_power_limit_uw(struct powercap_zone *pcz,
++				       int cid, u64 power_uw)
++{
++	return 0;
++}
++
++static int pch_test_get_power_limit_uw(struct powercap_zone *pcz,
++				       int cid, u64 *power_uw)
++{
++	*power_uw = 0xDEADC0DE;
++	return 0;
++}
++
++static int pch_test_set_time_window_us(struct powercap_zone *pcz,
++				       int cid, u64 power_uw)
++{
++	return 0;
++}
++
++static int pch_test_get_time_window_us(struct powercap_zone *pcz,
++				       int cid, u64 *power_uw)
++{
++	*power_uw = 0xDEADC0DE;
++	return 0;
++}
++
++static int pch_test_get_max_power_uw(struct powercap_zone *pcz,
++				     int cid, u64 *power_uw)
++{
++	*power_uw = 0xDEADC0DE;
++	return 0;
++}
++
++static const char *pch_test_get_name(struct powercap_zone *pcz, int cid)
++{
++	return "my constraint name";
++}
++
++static const struct powercap_zone_constraint_ops pch_test_constraint_ops = {
++	.set_power_limit_uw = pch_test_set_power_limit_uw,
++	.get_power_limit_uw = pch_test_get_power_limit_uw,
++	.set_time_window_us = pch_test_set_time_window_us,
++	.get_time_window_us = pch_test_get_time_window_us,
++	.get_max_power_uw = pch_test_get_max_power_uw,
++	.get_name = pch_test_get_name,
++};
++
++static struct powercap_zone *pch_test_create(struct powercap_control_type *pct,
++					     const char *name, void *data,
++					     struct powercap_zone *parent)
++{
++	struct pch_test_data *pcht_data = data;
++	struct powercap_zone *pcz;
++
++	/* Validate the arguments and private data supplied by the helper. */
++	if (!pct) {
++		pr_err("Invalid NULL controller type\n");
++		return ERR_PTR(-EINVAL);
++	}
++
++	if (!name) {
++		pr_err("Invalid NULL name\n");
++		return ERR_PTR(-EINVAL);
++	}
++
++	if (pcht_data->value != 0xDEADBEEF) {
++		pr_err("Invalid pcht data != 0xDEADBEEF");
++		return ERR_PTR(-EINVAL);
++	}
++
++	pcz = powercap_register_zone(NULL, pct, name, parent,
++				     &pch_test_ops, 1, &pch_test_constraint_ops);
++	if (IS_ERR(pcz)) {
++		pr_err("Failed to register powercap zone '%s': %ld\n",
++		       name, PTR_ERR(pcz));
++	}
++
++	return pcz;
++}
++
++static void pch_test_destroy(struct powercap_control_type *pct,
++			     struct powercap_zone *zone,
++			     void *data)
++{
++	struct pch_test_data *pcht_data = data;
++
++	/* Destruction must receive the original private data and a valid zone. */
++	if (!pct) {
++		pr_err("Invalid NULL controller type\n");
++		return;
++	}
++
++	if (!zone) {
++		pr_err("Invalid NULL zone\n");
++		return;
++	}
++
++	if (pcht_data->value != 0xDEADBEEF) {
++		pr_err("Invalid pcht data != 0xDEADBEEF");
++		return;
++	}
++
++	powercap_unregister_zone(pct, zone);
++}
++
++static struct powercap_zone *
++pch_test_skip_cluster(struct powercap_control_type *pct, const char *name,
++		      void *data, struct powercap_zone *parent)
++{
++	if (!strcmp(name, "cluster0"))
++		return NULL;
++
++	return pch_test_create(pct, name, data, parent);
++}
++
++static int __init pch_test_init(void)
++{
++	struct powercap_zone *zones[ARRAY_SIZE(pch_test_nodes)];
++	size_t i;
++	int ret;
++
++	/* Keep a runtime copy whose parent pointers survive init memory release. */
++	hierarchy = powercap_hierarchy_dup(&pch_test_hierarchy);
++	if (IS_ERR(hierarchy)) {
++		ret = PTR_ERR(hierarchy);
++		pr_err("Failed to dup the hierarchy: %d\n", ret);
++		return ret;
++	}
++
++	pct = powercap_register_control_type(NULL, "powercap-test", NULL);
++	if (IS_ERR(pct)) {
++		ret = PTR_ERR(pct);
++		pr_err("Failed to register control type: %d\n", ret);
++		goto out_free_hierarchy;
++	}
++
++	/* Exercise direct creation with a statically initialized hierarchy lock. */
++	ret = powercap_hierarchy_create(pct, &pch_test_hierarchy,
++					pch_test_create, pch_test_destroy);
++	if (ret) {
++		pr_err("Failed to create the static hierarchy: %d\n", ret);
++		goto out_unregister_pct;
++	}
++
++	powercap_hierarchy_destroy(pct, &pch_test_hierarchy, pch_test_destroy);
++
++	/* NULL skips cluster0 and its descendants, but not the other clusters. */
++	ret = powercap_hierarchy_create(pct, hierarchy,
++					pch_test_skip_cluster, pch_test_destroy);
++	if (ret)
++		goto out_unregister_pct;
++
++	for (i = 0; i < hierarchy->nr_nodes; i++) {
++		/* Node 1 is cluster0; nodes 4 through 7 are its four CPUs. */
++		bool skipped = i == 1 || (i >= 4 && i <= 7);
++
++		if (!!hierarchy->nodes[i].zone == skipped) {
++			pr_err("Unexpected zone state after skipping cluster0\n");
++			ret = -EINVAL;
++			goto out_destroy_hierarchy;
++		}
++	}
++
++	/* Partial destruction must leave the hierarchy reusable for a full tree. */
++	powercap_hierarchy_destroy(pct, hierarchy, pch_test_destroy);
++
++	ret = powercap_hierarchy_create(pct, hierarchy, pch_test_create, pch_test_destroy);
++	if (ret) {
++		pr_err("Failed to create the hierarchy: %d\n", ret);
++		goto out_unregister_pct;
++	}
++
++	/* A second creation must return -EBUSY without replacing any zone. */
++	for (i = 0; i < hierarchy->nr_nodes; i++)
++		zones[i] = hierarchy->nodes[i].zone;
++
++	ret = powercap_hierarchy_create(pct, hierarchy, pch_test_create, pch_test_destroy);
++	if (ret != -EBUSY) {
++		pr_err("Expected -EBUSY when recreating the hierarchy, got %d\n", ret);
++		ret = -EINVAL;
++		goto out_destroy_hierarchy;
++	}
++
++	for (i = 0; i < hierarchy->nr_nodes; i++) {
++		if (hierarchy->nodes[i].zone != zones[i]) {
++			pr_err("Recreation changed an existing zone\n");
++			ret = -EINVAL;
++			goto out_destroy_hierarchy;
++		}
++	}
++
++	/* Leave the full tree available for the userspace sysfs checks. */
++	return 0;
++
++out_destroy_hierarchy:
++	powercap_hierarchy_destroy(pct, hierarchy, pch_test_destroy);
++out_unregister_pct:
++	powercap_unregister_control_type(pct);
++out_free_hierarchy:
++	powercap_hierarchy_free(hierarchy);
++	return ret;
++}
++module_init(pch_test_init);
++
++static void __exit pch_test_exit(void)
++{
++	/* Remove zones before their controller; the script checks disappearance. */
++	powercap_hierarchy_destroy(pct, hierarchy, pch_test_destroy);
++	powercap_hierarchy_free(hierarchy);
++	powercap_unregister_control_type(pct);
++}
++module_exit(pch_test_exit);
++
++MODULE_DESCRIPTION("Powercap hierarchy test driver");
++MODULE_LICENSE("GPL");
++MODULE_AUTHOR("Daniel Lezcano <daniel.lezcano@oss.qualcomm.com");
+diff --git a/tools/testing/selftests/powercap/powercap_hierarchy.sh b/tools/testing/selftests/powercap/powercap_hierarchy.sh
+new file mode 100755
+index 000000000000..6d1394a7d56b
+--- /dev/null
++++ b/tools/testing/selftests/powercap/powercap_hierarchy.sh
+@@ -0,0 +1,126 @@
++#!/bin/sh
++# SPDX-License-Identifier: GPL-2.0
++
++# Loading the module runs its in-kernel hierarchy API checks. Then validate
++# all 16 exported zones, their power readings and constraint attributes, and
++# removal of the controller while a sysfs attribute descriptor remains open.
++
++ksft_pass=0
++ksft_fail=1
++ksft_skip=4
++
++MODULE=powercap_hierarchy
++CONTROL=powercap-test
++SYSFS=/sys/devices/virtual/powercap/$CONTROL
++
++fail()
++{
++	echo "FAIL: $*"
++	exit $ksft_fail
++}
++
++skip()
++{
++	echo "SKIP: $*"
++	exit $ksft_skip
++}
++
++cleanup()
++{
++	if lsmod | grep -q "^${MODULE}\b"; then
++		if ! rmmod "$MODULE"; then
++			echo "WARNING: failed to unload $MODULE"
++		fi
++	fi
++}
++
++trap cleanup EXIT INT TERM
++
++[ "$(id -u)" -eq 0 ] || skip "must be run as root"
++
++insmod ./powercap_hierarchy.ko || fail "failed to load module"
++
++[ -d "$SYSFS" ] || fail "missing $SYSFS"
++
++check_zone()
++{
++	zone=$1
++
++	# Check required attributes and the deterministic values from the module.
++	[ -f "$zone/name" ] || fail "$zone/name missing"
++
++	[ -f "$zone/power_uw" ] || \
++		fail "$zone/power_uw missing"
++
++	[ -f "$zone/max_power_range_uw" ] || \
++		fail "$zone/max_power_range_uw missing"
++
++	power=$(cat "$zone/power_uw")
++	[ "$power" = "12648430" ] || \
++		fail "$zone: unexpected power_uw ($power)"
++
++	max=$(cat "$zone/max_power_range_uw")
++	[ "$max" = "50159747054" ] || \
++		fail "$zone: unexpected max_power_range_uw ($max)"
++
++	constraint="$zone/constraint_0"
++
++	name=$(cat "$constraint""_name")
++	[ "$name" = "my constraint name" ] || \
++		fail "$constraint: bad constraint name"
++
++	pl=$(cat "$constraint""_power_limit_uw")
++	[ "$pl" = "3735929054" ] || \
++		fail "$constraint: bad power limit"
++
++	mp=$(cat "$constraint""_max_power_uw")
++	[ "$mp" = "3735929054" ] || \
++		fail "$constraint: bad max power"
++}
++
++zones=0
++
++namefiles=$(find "$SYSFS" -type f -name name) || fail "failed to list zones"
++
++while IFS= read -r namefile
++do
++	zone=$(dirname "$namefile")
++
++	case "$zone" in
++		*/constraint_*)
++			continue
++			;;
++	esac
++
++	check_zone "$zone"
++
++	zones=$((zones + 1))
++done <<EOF
++$namefiles
++EOF
++
++#
++# Count the number of powercap zones.
++#
++[ "$zones" -eq 16 ] || \
++	fail "expected 16 zones, got $zones"
++
++#
++# Keep an attribute open across module removal, then close it afterwards.
++#
++exec 3<"$zone/power_uw" || fail "failed to open power_uw before removal"
++cleanup
++exec 3<&-
++
++#
++# Verify that the hierarchy disappeared.
++#
++if [ -d "$SYSFS" ]; then
++	fail "$SYSFS still exists after module removal"
++fi
++
++trap - EXIT INT TERM
++
++echo "PASS"
++
++exit $ksft_pass
 -- 
 2.43.0
 
