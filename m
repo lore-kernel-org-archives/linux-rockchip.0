@@ -2,67 +2,67 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 936FB606A319
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Oct 2026 03:06:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B0494606A325
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Oct 2026 08:04:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=A6sxVjdk;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=CMv2JSWj
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sQAPkNAP;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=bDpM4kwH
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=89PMh5EXGP6+OI0wVXOwTjZg92p3z26LrlM+odd5EhA=; b=A6sxVjdkYwvfaD
-	imzx+6Ies+P8ZiJwBRacAZQxX4mLHSawbhhKJHlQctgr214lG7NvCzalYvwkjZbbub1sUpOOdMbbF
-	qiuIkzNcHB1QCHkQzVHSAhkmyyBSDiicxKbTl99SfRDiBCJr5KzYHM7vRrX5qJkbp/3ecbUrnH8H9
-	qtZ2i0fmGyUMxGqqfQZIZgGvNce9QPsXmNA/nTNMl3zf7YN4pSktym6X+6OoidtxrGBSPYj5MnioE
-	wuQ3AfZgE1ilo5AgpDIxrdFwWVWxafUX7FkvAmEKsxzS+3Hp6KY5aWh4TQCnc+EyC+xs7SuyNV1xy
-	dNLXv1Wsq6uNfIHiWB1Q==;
+	List-Owner; bh=xbBhm4W/XSEI5w+TvBDifUAnaGfJj87vfdCptkddddw=; b=sQAPkNAPP2g1VI
+	HxF1ton7imlQHng45mZDWFi9/8q1iiL79dJRGiBKQz+EA/elRGZhXv5/PTzAJjbDuC6pnS9p0W+Tj
+	yij1UBY56CnVZ/118h/6QQT393XV/kXqQ6Gu8ve9XPYjVMRW0slqV4wqaDssQLfnf+3BQKHclFcTq
+	jRTq0Hry6KGSj4HBA2VTrr8fhea4RGJblX1x7udRU/GG/T9y5ItnWIqJfCaVZoEvrdNuGNuQl1tgn
+	8ulZpYBVNqh8gxCwWFDAYmKEAZUUH3rXFuW05oTmW4fA8WwmEp05GrZQ7dBted3s5wWPLccr+Kim+
+	Dmch8+f7HwqeVgE8NDhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJMeS-0000000Aykc-0rBy;
-	Wed, 21 Oct 2026 03:06:04 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xJRIt-0000000BICe-3tNN;
+	Wed, 21 Oct 2026 08:04:07 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJMeQ-0000000AykL-1acN;
-	Wed, 21 Oct 2026 03:06:02 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 44CAF60416;
-	Wed, 21 Oct 2026 03:06:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C873A1F000C9;
-	Wed, 21 Oct 2026 03:06:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792551961;
-	bh=YWCBZA77zc/p/5rLcj2aumPqvMgt4N1QGO7iyPGLOqs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=CMv2JSWjRnAZ2/m4AEei3NrqIExmFUjFGQ1RY/thuH7p1SGY1bj5GCd14enqm6Ef7
-	 Sf65nQBJlLmx6elbTPwkhB/IxYoD6bdGI1ZkYIBdzJM9kZpL2T0lDQ84f1E4kOiyqN
-	 MY2UEqCt82KT7NTkTlqjviUzZrtr7tI3nWRAwJ0S1HwTjn4AaUcpFFstAvhm35Ob8q
-	 Gdx2kqBn5wdbxhPpCHdjLV854oQD1H9q2ocTp4HVU1zdiJZxGw7SmBZN6xqKTzMhkk
-	 KnRyuHFxmOxH7kgh3pMf9v9O2ehLKl2yKSjivHPvR+SzLgKV0eq092neBf+owZFfAg
-	 CvstQOvSTwohg==
-Date: Tue, 20 Oct 2026 22:06:00 -0500
-From: Rob Herring <robh@kernel.org>
-To: Yaozhong Li <yaozhonguwl@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Chris Zhong <zyw@rock-chips.com>,
-	Zhang Qing <zhangqing@rock-chips.com>,
-	Joseph Chen <chenjh@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	mfd@lists.linux.dev, devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 1/3] dt-bindings: mfd: rk8xx: add board level power
- hold GPIOs
-Message-ID: <20261021030600.GA3816650-robh@kernel.org>
-References: <20261020140127.720-1-yaozhonguwl@gmail.com>
- <20261020140127.720-2-yaozhonguwl@gmail.com>
+	id 1xJRIr-0000000BIBR-1pmw;
+	Wed, 21 Oct 2026 08:04:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=Dpk6oZW2/pIfMTZ5y5HTyizlc9Lr7d1oiu8c5BoQlkY=; b=bDpM4kwHriQ1sFZK2YGUYqM+SJ
+	Ls2GKe9T6Q16wdIVF0sIzmbdiO7gAx2lt4lCag3lyfSN1GaGRIKVpJwultXZbxL0u5mQGwvtc0TQD
+	JXvZG/E5H3HNZjKKqYq4rXaXbCX2zNEpYfY5qPiiWbyzxhey/mkyqwG9lfBlVMWco0SPcM9A2l6ii
+	b0nSfG/YGAAB1uwEdpfxgbiIMeezk3BB817qsMBw7BJvnQ3jldRGTUXcmfQtYMdl/R3NyB74ykCS5
+	Qd7zOjXD/EnxwWM2+rji23j/ZoKJnaub74Vpm2N8aNUxp7beklzAqa9M/+tzxAuKonma76t0gIQTo
+	awv8ofqw==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>
+Cc: =?UTF-8?B?5qWK5pm65oiQ?= <jason98166@gmail.com>,
+ Michael Riesch <michael.riesch@collabora.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Guochun Huang <hero.huang@rock-chips.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 2/8] dt-bindings: phy: rockchip,rk3588-mipi-dcphy: Add a cell
+ to select TX or RX
+Date: Wed, 21 Oct 2026 10:03:45 +0200
+Message-ID: <3435698.oiGErgHkdL@diego>
+In-Reply-To: <20261021024239.GA3667411-robh@kernel.org>
+References: <20261016-dcphy-rx-v1-v5-0-e63b49eabe2d@gmail.com>
+ <25254818.ouqheUzb2q@diego> <20261021024239.GA3667411-robh@kernel.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261020140127.720-2-yaozhonguwl@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261021_010405_677564_6EA5D4D2 
+X-CRM114-Status: GOOD (  61.89  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,147 +72,146 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Oct 20, 2026 at 10:01:12PM +0800, Yaozhong Li wrote:
-> Some boards route "power hold" lines from the SoC into the board's power
-> circuitry. Those lines have to be held asserted while the system is
-> running and released before the PMIC shutdown request is written,
-> otherwise the rails can drop and come back up instead of staying off.
-> 
-> Add power-hold-gpios to describe those lines and power-hold-delay-ms for
-> the settle time. The driver reads them for every RK8xx variant that is
-> the system power controller, so add them to all seven RK8xx schemas.
-> 
-> The array is bounded at two entries. Firefly's vendor kernel handles
-> exactly two such lines, pmic,hold-gpio and pmic,stby-gpio, and its board
-> files use one or both of them, with an RK808 and with an RK818.
-> 
-> The lines are released from the PMIC's power-off path, so they are only
-> meaningful when the PMIC is the system power controller. Require that,
-> accepting whichever spellings of the property each schema allows.
-> 
-> Assisted-by: LLM
-> Signed-off-by: Yaozhong Li <yaozhonguwl@gmail.com>
-> ---
->  .../bindings/mfd/rockchip,rk801.yaml          | 23 +++++++++++++++
->  .../bindings/mfd/rockchip,rk805.yaml          | 29 +++++++++++++++++++
->  .../bindings/mfd/rockchip,rk806.yaml          | 23 +++++++++++++++
->  .../bindings/mfd/rockchip,rk808.yaml          | 29 +++++++++++++++++++
->  .../bindings/mfd/rockchip,rk816.yaml          | 23 +++++++++++++++
->  .../bindings/mfd/rockchip,rk817.yaml          | 29 +++++++++++++++++++
->  .../bindings/mfd/rockchip,rk818.yaml          | 29 +++++++++++++++++++
->  7 files changed, 185 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
-> index 7c71447..2f9554d 100644
-> --- a/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
-> @@ -29,6 +29,25 @@ properties:
->      description:
->        Telling whether or not this PMIC is controlling the system power.
->  
-> +  power-hold-gpios:
-> +    minItems: 1
-> +    maxItems: 2
-> +    description:
-> +      Board level power hold lines driven by the SoC. They have to be held
-> +      asserted while the system is running and released before the PMIC
-> +      shutdown request is written, otherwise the rails can drop and come
-> +      back up instead of staying off. Only meaningful when this PMIC is the
-> +      system power controller, as the lines are released as part of its
-> +      power-off path.
-> +      The lines are released in the order listed, and power-hold-delay-ms
-> +      elapses once, after the last of them.
-> +
-> +  power-hold-delay-ms:
-> +    default: 0
-> +    description:
-> +      Time to wait after releasing power-hold-gpios before the shutdown
-> +      request is written, to let the lines settle.
-> +
->    wakeup-source:
->      type: boolean
->      description:
-> @@ -71,6 +90,10 @@ properties:
->          unevaluatedProperties: false
->      additionalProperties: false
->  
-> +dependencies:
-> +  power-hold-delay-ms: [ power-hold-gpios ]
-> +  power-hold-gpios: [ system-power-controller ]
-> +
->  required:
->    - compatible
->    - reg
-> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
-> index da23915..1a11c98 100644
-> --- a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
-> @@ -48,6 +48,26 @@ properties:
->  
->    system-power-controller: true
->  
-> +  power-hold-gpios:
-> +    minItems: 1
-> +    maxItems: 2
-> +    description:
-> +      Board level power hold lines driven by the SoC. They have to be held
-> +      asserted while the system is running and released before the PMIC
-> +      shutdown request is written, otherwise the rails can drop and come
-> +      back up instead of staying off. Only meaningful when this PMIC is the
-> +      system power controller, through either system-power-controller or
-> +      the deprecated rockchip,system-power-controller, as the lines are
-> +      released as part of its power-off path.
-> +      The lines are released in the order listed, and power-hold-delay-ms
-> +      elapses once, after the last of them.
-
-If you have paragraphs, you need a '>' modifier and blank line between 
-paragraphs.
-
-> +
-> +  power-hold-delay-ms:
-> +    default: 0
-> +    description:
-> +      Time to wait after releasing power-hold-gpios before the shutdown
-> +      request is written, to let the lines settle.
-> +
->    wakeup-source:
->      type: boolean
->      description:
-> @@ -102,6 +122,15 @@ allOf:
->          clock-output-names:
->            maxItems: 2
->  
-> +dependencies:
-
-If you are going to use dependentSchemas, then use dependentRequired 
-here.
-
-> +  power-hold-delay-ms: [ power-hold-gpios ]
-> +
-> +dependentSchemas:
-> +  power-hold-gpios:
-> +    anyOf:
-> +      - required: [ system-power-controller ]
-> +      - required: [ 'rockchip,system-power-controller' ]
-
-Presumably the latter is deprecated. If you are updating a DT to use 
-power-hold-gpios, then replace 'rockchip,system-power-controller' with 
-'system-power-controller' while you are doing that. Then this can be 
-just a dependentRequired entry.
-
-Rob
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTWl0dHdvY2gsIDIxLiBPa3RvYmVyIDIwMjYsIDA0OjQyOjM5IE1pdHRlbGV1cm9ww6Rpc2No
+ZSBTb21tZXJ6ZWl0IHNjaHJpZWIgUm9iIEhlcnJpbmc6Cj4gT24gVHVlLCBPY3QgMjAsIDIwMjYg
+YXQgMDQ6NTc6MzRQTSArMDIwMCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gPiBBbSBEaWVuc3Rh
+ZywgMjAuIE9rdG9iZXIgMjAyNiwgMTY6MTA6MzkgTWl0dGVsZXVyb3DDpGlzY2hlIFNvbW1lcnpl
+aXQgc2NocmllYiBSb2IgSGVycmluZzoKPiA+ID4gT24gVHVlLCBPY3QgMjAsIDIwMjYgYXQgMDM6
+Mzc6MzVQTSArMDIwMCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gPiA+ID4gQW0gRGllbnN0YWcs
+IDIwLiBPa3RvYmVyIDIwMjYsIDAwOjIwOjQ3IE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0
+IHNjaHJpZWIgTWljaGFlbCBSaWVzY2g6Cj4gPiA+ID4gPiBIaSBhbGwsCj4gPiA+ID4gPiAKPiA+
+ID4gPiA+IE9uIDEwLzE5LzI2IDE3OjA2LCBSb2IgSGVycmluZyB3cm90ZToKPiA+ID4gPiA+ID4g
+T24gTW9uLCBPY3QgMTksIDIwMjYgYXQgMDQ6MTU6MDNQTSArMDgwMCwg5qWK5pm65oiQIHdyb3Rl
+Ogo+ID4gPiA+ID4gPj4gSGkgS3J6eXN6dG9mLCBSb2IsCj4gPiA+ID4gPiA+Pgo+ID4gPiA+ID4g
+Pj4+IEV4aXN0aW5nIE9TIHNob3VsZCBpZ25vcmUgc3VycGx1cyBjZWxsIGlmIHRoZSBkcml2ZXIg
+aXMgY29kZWQgcHJvcGVybHkuCj4gPiA+ID4gPiA+Pj4gU2FtZSBhcyBhZGRpbmcgbmV3IHByb3Bl
+cnRpZXMgb3IgbmV3IGZyb250LWNvbXBhdGlibGUuICBUaGUgcXVlc3Rpb24gaXMKPiA+ID4gPiA+
+ID4+PiBob3cgdGhlIGV4aXN0aW5nIGRyaXZlciBiZWhhdmVzPwo+ID4gPiA+ID4gPj4KPiA+ID4g
+PiA+ID4+IEFzIHlvdSBwb2ludGVkIG91dCBvbiA1LzgsIHRoZSB4bGF0ZSBjaGVja3MgYXJnc19j
+b3VudCAhPSAxLiBUaGUgREMtUEhZCj4gPiA+ID4gPiA+PiBkcml2ZXIgd2FzIG1lcmdlZCBpbiB2
+Ni4xNSwgc28gZXZlcnkga2VybmVsIHNpbmNlIDYuMTUgZmFpbHMgb24gYSBzZWNvbmQgY2VsbC4K
+PiA+ID4gPiA+ID4+Cj4gPiA+ID4gPiA+PiAxLiBLZWVwIHRoZSBzZWNvbmQgY2VsbC4gQWRkIHRo
+ZSBwYXRjaCBhcyBmb2xsb3dzOgo+ID4gPiA+ID4gPj4KPiA+ID4gPiA+ID4+IC0gaWYgKGFyZ3Mt
+PmFyZ3NfY291bnQgIT0gMSkgewo+ID4gPiA+ID4gPj4gKyBpZiAoYXJncy0+YXJnc19jb3VudCA8
+IDEpIHsKPiA+ID4gPiA+ID4+ICAgICBkZXZfZXJyKGRldiwgImludmFsaWQgbnVtYmVyIG9mIGFy
+Z3VtZW50c1xuIik7Cj4gPiA+ID4gPiA+PiAgICAgcmV0dXJuIEVSUl9QVFIoLUVJTlZBTCk7Cj4g
+PiA+ID4gPiA+PiAgIH0KPiA+ID4gPiA+ID4+Cj4gPiA+ID4gPiA+PiArIGlmIChhcmdzLT5hcmdz
+X2NvdW50ID4gMSAmJiBhcmdzLT5hcmdzWzFdKSB7Cj4gPiA+ID4gPiA+PiArICAgZGV2X2Vycihk
+ZXYsICJvbmx5IHRoZSB0cmFuc21pdHRlciBpcyBzdXBwb3J0ZWRcbiIpOwo+ID4gPiA+ID4gPj4g
+KyAgIHJldHVybiBFUlJfUFRSKC1FSU5WQUwpOwo+ID4gPiA+ID4gPj4gKyB9Cj4gPiA+ID4gPiA+
+Pgo+ID4gPiA+ID4gPj4gICBXaXRoIEZpeGVzOiBhbmQgQ2M6IHN0YWJsZSwgdGhlIHN0YWJsZSBr
+ZXJuZWxzIG1haW50YWluZWQgYXQgdGhhdAo+ID4gPiA+ID4gPj4gICB0aW1lIChjdXJyZW50bHkg
+Ni4xOC55IGFuZCA3LjIueSkga2VlcCBEU0kgd29ya2luZyB3aXRoIHRoZSBuZXcKPiA+ID4gPiA+
+ID4+ICAgZHRzLCBhbmQgdGhlIHJlY2VpdmVyIGZhaWxzIGNsZWFubHkgaW5zdGVhZCBvZiBnZXR0
+aW5nIHRoZSB0cmFuc21pdHRlci4KPiA+ID4gPiA+ID4+ICAgQnV0IEVPTCBrZXJuZWxzICg2LjE1
+LCA2LjE2LCA2LjE3LCA2LjE5LCA3LjAsIDcuMSkgc3RheSBhZmZlY3RlZC4KPiA+ID4gPiA+ID4+
+ICAgSXQgZ29lcyBpbiB3aXRoIHRoZSBzZXJpZXMsIHNpbmNlIHR3by1jZWxsIGR0cyBvbmx5IGV4
+aXN0IGFmdGVyIGl0Lgo+ID4gPiA+ID4gPj4KPiA+ID4gPiA+ID4+IDIuIFVzZSBhIGZsYWcgaW4g
+dGhlIHVwcGVyIGJpdHMgb2YgdGhlIGV4aXN0aW5nIGNlbGwsIGFzIFJvYgo+ID4gPiA+ID4gPj4g
+ICAgIHN1Z2dlc3RlZC4gRXhpc3Rpbmcga2VybmVscyBhcmUgbm90IGFmZmVjdGVkLCB1bmxlc3Mg
+YSBib2FyZCBlbmFibGVzCj4gPiA+ID4gPiA+PiAgICAgdGhlIERDLVBIWSBDU0ktMiByZWNlaXZl
+ciBvbiA3LjAgb3IgbGF0ZXIgd2l0aG91dCB0aGlzIHNlcmllcy4KPiA+ID4gPiA+ID4+Cj4gPiA+
+ID4gPiA+PiBJIHdpbGwgd3JpdGUgdGhlIGltcGFjdCBjbGVhcmx5IHdoaWNoZXZlciAgYXBwcm9h
+Y2ggaXMgc2VsZWN0ZWQgaW4KPiA+ID4gPiA+ID4+IHRoZSByZWxhdGVkIGNvbW1pdCBtZXNzYWdl
+cyBhbmQgdGhlIGNvdmVyIGxldHRlci4KPiA+ID4gPiA+ID4+Cj4gPiA+ID4gPiA+PiBJIHRoaW5r
+IHRoZSBjZWxsIGFwcHJvYWNoIGlzIGVhc2llciB0byByZWFkIGFuZCBtb3JlIHN5bW1ldHJpYyBp
+biB0aGUKPiA+ID4gPiA+ID4+IGxvbmcgdGVybSwKPiA+ID4gPiA+ID4+IGJ1dCBpdCBicmVha3Mg
+bW9yZS4gV2hpY2ggb25lIGRvIHlvdSB0aGluayBpcyBiZXR0ZXI/IFRoYW5rcy4KPiA+ID4gPiA+
+ID4gCj4gPiA+ID4gPiA+IEknbSBub3QgYSB1c2VyIG9mIHRoaXMgcGxhdGZvcm0sIHNvIEkgZG9u
+J3QgY2FyZS4gVXAgdG8gdGhlIHBsYXRmb3JtIAo+ID4gPiA+ID4gPiBtYWludGFpbmVycyB0byBk
+ZWNpZGUgaWYgYnJlYWthZ2UgaXMgYWNjZXB0aWJsZS4gWW91IGp1c3QgbmVlZCB0byAKPiA+ID4g
+PiA+ID4gZG9jdW1lbnQgdGhlIGlzc3VlIGluIHRoZSBjb21taXQgbWVzc2FnZS4KPiA+ID4gPiA+
+ID4gCj4gPiA+ID4gPiA+IFJvYgo+ID4gPiA+ID4gCj4gPiA+ID4gPiBJdCdzIGEgYml0IG9mIGEg
+cGlja2xlLCBhbGwgdGhpcy4KPiA+ID4gPiA+IAo+ID4gPiA+ID4gSSBnYXZlIGl0IHNvbWUgbW9y
+ZSB0aG91Z2h0LiBJbiB0aGUgZW5kIHRoaXMgaXMgYW4gSVAgYmxvY2sgd2l0aCB0d28KPiA+ID4g
+PiA+IFBIWXMuIE5vIG1vcmUsIG5vIGxlc3MuIE9uZSBjZWxsIGlzIHN1ZmZpY2llbnQgdG8gYWRk
+cmVzcyB0aG9zZSwgYW5kIGl0Cj4gPiA+ID4gPiBjb3VsZCBiZSAwIGZvciB0aGUgdHJhbnNtaXR0
+aW5nIFBIWSAoRFNJLCBkaXNwbGF5KSBhbmQgMSBmb3IgdGhlCj4gPiA+ID4gPiByZWNlaXZpbmcg
+UEhZIChDU0ksIGNhbWVyYSkuCj4gPiA+ID4gPiAKPiA+ID4gPiA+IE9mIGNvdXJzZSB0aGUgdHdv
+IFBIWXMgY2FuIG9wZXJhdGUgaW4gZWl0aGVyIERQSFkgb3IgQ1BIWSBtb2RlLiBUaGUKPiA+ID4g
+PiA+IHBoeS1jZWxscyBoYXZlIGJlZW4gKG1pcz8pdXNlZCB0byBzZWxlY3QgdGhlIHByb3BlciBt
+b2RlIG9mIGNvbWJvIFBIWXMsCj4gPiA+ID4gPiBhbmQgdGhpcyBwcmluY2lwbGUgaGFzIGJlZW4g
+YXBwbGllZCBoZXJlIHRvby4KPiA+ID4gPiA+IAo+ID4gPiA+ID4gSG93ZXZlciwgd2UgaGF2ZSB0
+aGUgc3BlY2lhbCBzaXR1YXRpb24gaGVyZSB0aGF0IHRoZSBtb2RlIGNhbiBvbmx5IGJlCj4gPiA+
+ID4gPiBjaGFuZ2VkIGZvciB0aGUgY29tcGxldGUgSVAgYmxvY2sgKGFuZCB0aHVzIGZvciBib3Ro
+IFBIWXMgYXQgdGhlIHNhbWUKPiA+ID4gPiA+IHRpbWUpLiBBcyBCcnlhbiBwb2ludHMgb3V0LCB3
+ZSBuZWVkIHRvIGNoZWNrIGFuZCBjb21wbGFpbiBpZiB0aGUgUEhZCj4gPiA+ID4gPiBtb2RlIGlz
+IG5vdCBzZXQgdG8gdGhlIHNhbWUgdmFsdWUgZm9yIGJvdGggUEhZcy4KPiA+ID4gPiA+IAo+ID4g
+PiA+ID4gSSBzdWdnZXN0IHVzaW5nIGEgcHJvcGVydHkKPiA+ID4gPiA+ICAgICBzYW1zdW5nLGNw
+aHktbW9kZTsKPiA+ID4gPiAKPiA+ID4gPiBJIGd1ZXNzLCBhIG1heWJlIG5pY2VyIHdheSB3b3Vs
+ZCBiZSBtaW1pY2luZwo+ID4gPiA+IAlEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mv
+cGh5L2ludGVsLGNvbWJvLXBoeS55YW1sCj4gPiA+ID4gCj4gPiA+ID4gd2l0aCBpdHMKPiA+ID4g
+PiAJaW50ZWwscGh5LW1vZGUgPSA8eD4KPiA+ID4gPiAKPiA+ID4gPiB3aXRoIHggY29taW5nIGZy
+b20gaW5jbHVkZS9kdC1iaW5kaW5ncy9waHkvcGh5LmgKPiA+ID4gPiBmb3IgdGhlIGRpc3RpbmN0
+aW9uIGJldHdlZW4gY3BoeSBhbmQgZHBoeSwgc28gd2UgZG9uJ3QgaW50cm9kdWNlIHlldAo+ID4g
+PiA+IGFub3RoZXIgd2F5IHRvIGRlc2NyaWJlIHRoaXMuCj4gPiA+IAo+ID4gPiBXZSBhbHJlYWR5
+IGhhdmUgdGhlIHBsYWluICdwaHktdHlwZScgcHJvcGVydHkgd2hpY2ggdGFrZXMgdGhlIHNhbWUg
+Cj4gPiA+IFBIWV9NT0RFX3ggdmFsdWVzLiBXZSBkb24ndCBuZWVkIHlldCBhbm90aGVyIHZlbmRv
+ciBzcGVjaWZpYyBwcm9wZXJ0eS4KPiA+IAo+ID4gZXZlbiBiZXR0ZXIgdGhlbiAuLi4gYW5kIEkg
+ZGlkbid0IGxvb2sgZGVlcCBlbm91Z2ggaXQgc2VlbXMuCj4gPiAKPiA+IAo+ID4gPiA+ID4gKG5h
+bWUgdG8gYmUgYmlrZXNoZWRkZWQpIHRoYXQgc2V0cyB0aGUgY29tcGxldGUgSVAgYmxvY2sgaW50
+byBDUEhZIG1vZGUKPiA+ID4gPiA+IChEUEhZIGJlaW5nIHRoZSBkZWZhdWx0KSB0byBkaXN0aW5n
+dWlzaCBiZXR3ZWVuIHRoZSBtb2Rlcy4gU2luY2UgYm90aAo+ID4gPiA+ID4gbW9kZXMgdXNlIGEg
+ZGlmZmVyZW50IGVsZWN0cmljYWwgaW50ZXJmYWNlLCB0aGlzIGlzIGNsZWFybHkgYSBoYXJkd2Fy
+ZQo+ID4gPiA+ID4gdGhpbmcgYW5kIHRodXMgc3VpdGFibGUgZm9yIGRldmljZSB0cmVlLgo+ID4g
+PiA+ID4gCj4gPiA+ID4gPiBUaGVuLCB3ZSBjYW4gYWRkcmVzcyB0aGUgdHdvIFBIWXMgd2l0aCB0
+aGUgaGVscCBvZiB0aGUgYWxyZWFkeSBleGlzdGluZwo+ID4gPiA+ID4gcGh5IGNlbGwgKHdpdGhv
+dXQgYW55IGJpdGZsYWcgdHdlYWtzIHRvIHRoZSB2YWx1ZSkuCj4gPiA+ID4gPiAKPiA+ID4gPiA+
+IFRoZSBzb2xlIGRyYXdiYWNrIGlzIHRoYXQgd2UgbmVlZCB0byBhY2NlcHQgdGhlIFBIWV9UWVBF
+X0RQSFkgYW5kCj4gPiA+ID4gPiBQSFlfVFlQRV9DUEhZIHZhbHVlcyB0aGF0IHNvbWUgT1MgaW4g
+dGhlIGZpZWxkIG1pZ2h0IHBhc3MuIChGb3IgTGludXgsCj4gPiA+ID4gPiBpdCBzaG91bGQgb25s
+eSBiZSB0aGUgZm9ybWVyLikgQW5kIHdlIG5lZWQgdG8gaGFuZGxlIHRob3NlIHZhbHVlcwo+ID4g
+PiA+ID4gY29ycmVjdGx5LiBCdXQgSSB0aGluayB0aGlzIGlzIG5vdCBtb3JlIHBhaW5mdWwgdGhh
+biB0aGUgb3RoZXIKPiA+ID4gPiA+IGFwcHJvYWNoZXMuIEF0IHRoZSBzYW1lIHRpbWUsIHRoaXMg
+ZGVzaWduIHNlZW1zIHRvIGJlIHRoZSBtb3N0IGNvcnJlY3QKPiA+ID4gPiAKPiA+ID4gPiBUaGUg
+Y3VycmVudCBjZWxsIHZhbHVlcyBhcmUgMTAgKyAxMSwgc28gYXMgbG9uZyBhcyB3ZSBkb24ndCBy
+ZS11c2UgdGhvc2UKPiA+ID4gPiBleGFjdCB2YWx1ZXMgZm9yIHRoZSBvdGhlciBjb25zdGFudHMg
+dGhlIGRyaXZlciBzaG91bGQgc29tZXdoYXQgZWFzaWx5Cj4gPiA+ID4gYmUgYWJsZSB0byByZWNv
+Z25pemUgYW4gb2xkIERUPwo+ID4gPiAKPiA+ID4gSSB0aGluayB5b3Ugd2lsbCBzdGlsbCBoYXZl
+IGFuIEFCSSBpc3N1ZSBvZiB3aGF0IGRvZXMgb2xkIE9TIGRvIHdpdGggbmV3IAo+ID4gPiB2YWx1
+ZXM/Cj4gPiAKPiA+IHdhc24ndCB0aGUgbWFpbiBjb250cmFjdCwgYSBuZXdlciBrZXJuZWwgc2hv
+dWxkIHN1cHBvcnQgb2xkIERUcyA/Cj4gCj4gV2VsbCwgeWVzLCBpdCB3YXMuIFRoYXQgd2FzIGEg
+cG9zaXRpb24gSSBpbmhlcml0ZWQuIEkgaGVhciBjb21wbGFpbnRzIAo+IGFib3V0IHRoZSBvcHBv
+c2l0ZSB0aG91Z2guCj4gCj4gPiBBa2EgdGhlIERUIGlzIHBhcmtlZCBpbiBzb21lIGZpcm13YXJl
+IHBhcnQgKHUtYm9vdD8pIGFuZCBnZXRzIGhhbmRlZAo+ID4gdG8gdGhlIG5ld2VyIGtlcm5lbC4K
+PiA+IAo+ID4gSSBkb24ndCBzZWUgZGVsaWJlcmF0ZWx5IGhhbmRpbmcgYSBuZXdlciBEVEIgdG8g
+YW4gb2xkZXIga2VybmVsIGFzIGEKPiA+IHZlcnkgY29tbW9uIG9jY3VyZW5jZT8KPiAKPiBEbyB5
+b3Ugd2FudCB0aGluZ3MgdG8gYnJlYWsgd2hlbiB5b3UgZG8gYSBmaXJtd2FyZSB1cGRhdGUgdGhh
+dCdzIHBpY2tlZCAKPiB1cCBhIG5ld2VyIERUPyBJIGRvbid0Lgo+IAo+IAo+ID4gQW5kIGZyb20g
+YSBwcmFjdGljYWwgc3RhbmRwb2ludDoKPiA+IAo+ID4gV2UncmUgdGFsa2luZyBhYm91dCBkZXZp
+Y2VzIHdpdGggRFNJIGRpc3BsYXlzIHRoYXQgYXJlIGF0IHN0YWtlIGhlcmUsCj4gPiBzbyB3ZSdy
+ZSBpbiB0aGUgZW1iZWRkZWQgd29ybGQuCj4gPiAKPiA+IEluIG90aGVyIGFyZWFzIHdlJ3JlIHN0
+aWxsIGZpZ2h0aW5nIGJhc2ljIGZ1bmN0aW9uYWxpdHkgbGlrZSBhY3R1YWxseQo+ID4gaGFuZGxp
+bmcgdGhlIHR5cGUtYyBvcmllbnRhdGlvbiBjb3JyZWN0bHkgaW4gdGhlIHVzYnBoeS4KPiA+IAo+
+ID4gU28gSSByZWFsbHkgZG9uJ3Qgc2VlIGEgZGV2aWNlIHdpdGggYSB1c2VyLXVwZGF0ZWFibGUg
+bWFpbmxpbmUga2VybmVsIG91dAo+ID4gaW4gdGhlIGZpZWxkLCBhcGFydCBmcm9tIHBlb3BsZSBo
+YWNraW5nIGFyb3VuZCBvbiB0aGVpciBkZXZpY2VzIHRvIHRyeQo+ID4gb3V0IG5ldyBmZWF0dXJl
+cyBhbmQgbmV3IGtlcm5lbHMsIHNpbXBseSBiZWNhdXNlIGNvcmUgZnVuY3Rpb25hbGl0eQo+ID4g
+aXMgc3RpbGwgZXZvbHZpbmcgaW4gbWFpbmxpbmUuCj4gPiAKPiA+IAo+ID4gUkszNTc2L1JLMzU4
+OCBkZXZpY2VzIHN0aWxsIHNoaXAgd2l0aCBhIHZlbmRvciB1LWJvb3Qva2VybmVsLCB3aXRoCj4g
+PiBjb21wbGV0ZWx5IGluY29tcGF0aWJsZSBEVEIgYWZ0ZXJhbGwuCj4gCj4gSSBjYW4gb25seSBr
+ZWVwIG15IG93biBob3VzZSBjbGVhbi4uLgoKb2sgOi0pIAoKCj4gSSBvbmx5IGFzayB0aGF0IGNv
+bXBhdGliaWxpdHkgaXNzdWVzIGJlIGRvY3VtZW50ZWQuIFVwIHRvIGluZGl2aWR1YWwgCj4gcGxh
+dGZvcm1zIHRvIGRlY2lkZSBpZiB0aGV5IGNhcmUgb3Igbm90LiBTbywgeW91ciBkZWNpc2lvbi4K
+ClRoZSBkaXNjdXNzaW9uIHdvdWxkIGJlIGEgbG90IGRpZmZlcmVudCBmb3IgU29DcyBsaWtlIHRo
+ZSBSSzMzOTkgb3IgUFgzMAp0aGF0IGNhbiBhbmQgaGF2ZSBydW4gbWFpbmxpbmUgc29mdHdhcmUg
+aW4gYSB1c2FibGUgd2F5IGZvciB5ZWFycyBub3cuClJLMzU2OCB2ZXJ5IGxpa2VseSBmYWxscyBp
+biB0aGF0IGFyZWEgdG9vLgoKQnV0IGZvciB0aGUgaW4tcHJvZ3Jlc3MgU29DcyBSSzM1NzYgYW5k
+IFJLMzU4OCBhbnlib2R5IHdhbnRpbmcgdG8gcnVuCmEgZ2VuZXJpYyB1c2Vyc3BhY2Ugd291bGQg
+bmVlZCBhIGhlYXZpbHkgcGF0Y2hlZCBrZXJuZWwgYW55d2F5LCB3aXRoCm90aGVyIHVucmV2aWV3
+ZWQvdW5tZXJnZWQgZHQtY2hhbmdlcywgc28gcGVyc29uYWxseSBJIGNhbiBsaXZlIHdpdGggaXQu
+CgpFc3BlY2lhbGx5IGlmIHdlIGtlZXAgdGhlIChpbiBteSBleWVzKSBtb3JlIGNvbW1vbiBjYXNl
+CihvbGQgZHRiLCBuZXcga2VybmVsKSB3b3JraW5nLgoKCkhlaWtvCgoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
