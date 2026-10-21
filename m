@@ -2,102 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9BBE4606A319
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Oct 2026 02:02:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B91F0606A32E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Oct 2026 02:20:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ES5s/rIp;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=eSD7Coup
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4fG0+KzH;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=NYaa27a+
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Iyp+VuEk7ENMuWceDxuWLN+LdsflxssvFwJYXgcbkQ4=; b=ES5s/rIpd3FFYj
-	mRvteYuj0amFbiQFGRiXshAhIH4egYlTHAVca+GrJHltzHjfOKDS2vKUyhLbwvLYQ1ab6Ca7LZclV
-	b0FIWIh9t/8nngjeAmmTPqoXTrmnN0BZ/B+FdyiNyvMRzqsvnAfZmqj9BopdbQj3dX4YTkFyw2Vn0
-	fw4rOlVppSfn3DeR5VxbeX0HGv5zai3hk/0831pFM1ZAhy7HsY6Z5Ne8O/Inb3IhGg6EWbIM/2Cf2
-	oVPGTWyiSw9iqKStKlo1YuTJQHpCtAGQMGk5zva44qKYLvYwV8XYRxgXpgpQ3B55ySQ+09EG3w4d6
-	d5fSzF1xywm75K+OxrsA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WZG6EUCzaIH4ARPh3Pef9CQDKAAJrJCn+Zgo/iDjtmc=; b=4fG0+KzHllt+TW
+	R1o4Cfs87hWFOZtO9W1aig84kH7hejh0hBFGFqM80NUnJscpO6WS+FwZDhSeLjjEAZujkr89iPeIk
+	vTn5w0kW7EOUn/ZRliE3hBX1DcHke65MFmZVAj8MRrXjMLCp3LKr/xKMrN4GnO+7gueYgFirDQ4dj
+	vPy0en0rNAP0NrGOOohWjggEpM8mmEVjOLThaMmOEB9aurpd5AdokJM087jDY4p69y42xWLXe5pMw
+	MnM4y/monh0LBulNsKg3kGm6K7TzcEc2NpoUf0YCL8CBaUM+uI9UEWwO93XRl/55Zi4FSpE2KPDqY
+	grmhoMqZCGiuyLO2dVLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJLf1-0000000AvGO-2FDz;
-	Wed, 21 Oct 2026 02:02:35 +0000
+	id 1xJLw6-0000000Aw59-45Wj;
+	Wed, 21 Oct 2026 02:20:14 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJLez-0000000AvG9-3CPi;
-	Wed, 21 Oct 2026 02:02:33 +0000
+	id 1xJLw4-0000000Aw4j-2zpI;
+	Wed, 21 Oct 2026 02:20:12 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id AA22C601F1;
-	Wed, 21 Oct 2026 02:02:32 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1792548152;
-	b=hQ1W6tdyEFzXVuVZwcb9SD7JGXgDWAmguY+qAGBfvI0nRDYSGwuMOy6Htt1VHhusyt/e
-	 kSDr+6n+KZJGhYxKaO09aL4IbL2ZgZudoNiGax4ly3c0kpQptOpeyPR5zN9YpNE77C0bI
-	 aPuE4x0AfjxvxgseHfrVcX1nQV8J9e8Q/B51MOAQEDkVL7yupjEwTr4M8hh+hCdnLa8KA
-	 UCcJEegpHYIME/DgTiPy0B+e4SaEZg+v8Qw1A3kF/ZjuupTQGEPMb1H0Z25lOhfPv/3Mh
-	 GlrZgfr5f3affeCkbN6CCwPH7CmG9mHn59m8YUlJuaerVh1I5JTgM+roB6OT36rd5VA==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1792548152;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
-	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
-	 Content-Transfer-Encoding;
-	bh=f0yKeF4w4GH+4lXqeNbGng0xeltVKW31ll58aa+tTMY=;
-	b=W/4ZXCzJRmOslF46zwU0v2yhYioJyet2oDl5VdLCyp26KzaaSVt/9dXp/kT62EqqO4G0
-	 bCO4okQqmPGzHA1nXSHLp4C5ZGOgAa7u/+kWbN+sKHy/9A0ygCchv3Gn+wQYpCQUTKhR5
-	 qTAvov6a/nk7t3qghoMIJtZO153ZcM/wuSM1zHQ2lzTX7PObqqT8jHr+1GThuW6pR0dZt
-	 6yncQuZlQsl28trQoxQ1MqGRFOaWUk3NKS4ZYIapql2Jz0IvCs8LFdOq6bFlNBHAOV2ZA
-	 MlQ8OLyNUCilBtSQFX9pZwchhSu+kVl/8021gohLSFmvSt//W47CBHOWz7+qpxY2Fpg==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id EA6781F000C9;
-	Wed, 21 Oct 2026 02:02:31 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 638FA60A66;
+	Wed, 21 Oct 2026 02:20:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0BC5E1F000CA;
+	Wed, 21 Oct 2026 02:20:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792548152;
-	bh=f0yKeF4w4GH+4lXqeNbGng0xeltVKW31ll58aa+tTMY=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=eSD7Couposucux9BBfClKOEFLwEoiFInTcZfcMuL22QeyB9Il3A3mLqtFMb3OYpUv
-	 z6HREFIMJLJSDgpwow3xoGobUeAprDaJm1Gu1+e1d+995hyBWgj/ETKCub5YP6B8te
-	 7EqE3WyT5srHrs+cxM+GtkyeXufO7w9TvH2TrbtFzaEswLE7ooc5W2lxcatrGueeay
-	 fv8F1PDNoefCjIbk+UAW7tmcl+MaT4BMRNIbZLlS7tWqAKvCNz8SlaCWzl6nk+f1tU
-	 iQXuxeONsL0Gzmi4CAEQ+FT6Ct9Un1wbKfFoJmzJw+yG5Se18P/5l+zQvVXOFQkKmJ
-	 HAXwJGj4KFWAg==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 7A8474326F;
-	Wed, 21 Oct 2026 02:02:31 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Wed, 21 Oct 2026 02:02:29 +0000
-Subject: [PATCH] arm64: dts: rockchip: Add vdd_log and vdd_center to Kobol
- Helios64
+	s=k20260515; t=1792549211;
+	bh=CPwgKGW+9+HgEnPqxnA55xboDkaUxoq5NKTXtZj/nJE=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=NYaa27a+E7gei+Ol9psKdfXfiAU6OpungqJR76z1KeeQFEFjyBLQ7xIxVzxWnluTL
+	 lv3N7b/TqCO/EiJdxHVaCU/fcS6BXhoq6fF14VrgR+8ZHJNQf46BZXs2+XZrUw9yu2
+	 /5Dr1WnBxhlBBstrX1xZ2aF6ul1B9XIocoPHlvkMtCSnKmDJeRAtjl0UvhLiY7ZJYp
+	 3UJd9MC0EZ19gJ/B5qErRGgDAFgHjiX+qs3qfbAw2AxYBptLmuv9JTlDFdtBnYRi2t
+	 k1Q1LqBg+wMQ3NJei12Fvm2YJG37ykFf7fVyuZSUo5hlj3OGXZY/EK4OAQNR3gnpqp
+	 SiLeJk2xQV++w==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id F146D3809A0D;
+	Wed, 21 Oct 2026 02:20:10 +0000 (UTC)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261021-helios64-vdd-log-center-v1-1-4cafd110e0e5@iav.lv>
-X-B4-Tracking: v=1; b=H4sIADUd2GoC/x3MQQqAIBBA0avErBtoTCy6SrQwnWogNDQiiO6et
- HyL/x/InIQzDNUDiS/JEkMB1RW4zYaVUXwxqEYZahThxrvEbDRe3uMeV3QcTk44U+sXPZuutwS
- lPhIvcv/ncXrfDzkFkdJpAAAA
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2557; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=RDt7P+CwOHiaEZvswLkEBaOOUqR15G5E3l+XUXhUTd8=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFk3ZM28ok6uurQ4RuGJvaChU8C3vtWXs34WMTzvOV6gO
- ofBseBRRykLgxgXg6yYIsuEQxq3MpZc/evvYf4AZg4rE8gQBi5OAZhI8SmG/1lfjils1Jsu0lPc
- klw6+daeKx4PfI8siAiqF+btd3xrHsjIsCsy+OKF7YymHVIti1g23t9sLJ3R8S8h2Svyb/PRd0d
- jGQE=
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+Subject: Re: [PATCH net-next v16 0/7] net: stmmac: qcom-ethqos: add support
+ for
+ SCMI power domains
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <179254920980.330607.14638814196996636300.git-patchwork-notify@kernel.org>
+Date: Wed, 21 Oct 2026 02:20:09 +0000
+References: <20261014-qcom-sa8255p-emac-v16-0-0266c2ead980@oss.qualcomm.com>
+In-Reply-To: <20261014-qcom-sa8255p-emac-v16-0-0266c2ead980@oss.qualcomm.com>
+To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Cc: andersson@kernel.org, konradybcio@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, andrew+netdev@lunn.ch,
+ davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
+ mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, vkoul@kernel.org,
+ peppe.cavallaro@st.com, wens@kernel.org, jernej.skrabec@gmail.com,
+ neil.armstrong@linaro.org, khilman@baylibre.com, jbrunet@baylibre.com,
+ shawnguo@kernel.org, festevam@gmail.com, jan.petrous@oss.nxp.com,
+ s32@nxp.com, mohd.anwar@oss.qualcomm.com, romain.gantois@bootlin.com,
+ geert+renesas@glider.be, magnus.damm@gmail.com, mripard@kernel.org,
+ christophe.roullier@foss.st.com, brgl@kernel.org, edumazet@kernel.org,
+ radu@rendec.net, linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, dfustini@tenstorrent.com,
+ linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org,
+ linux-mips@vger.kernel.org, imx@lists.linux.dev,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ sophgo@lists.linux.dev, linux-riscv@lists.infradead.org,
+ bartosz.golaszewski@linaro.org, sashiko-bot@kernel.org,
+ martin.blumenstingl@googlemail.com, krzysztof.kozlowski@oss.qualcomm.com,
+ prabhakar.mahadev-lad.rj@bp.renesas.com
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,103 +86,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Igor Velkov <iav@iav.lv>
+Hello:
 
-The Helios64 feeds VDD_LOG from a PWM regulator driven by PWM2 and
-VDD_CENTER from DCDC_REG1 of the RK808, but the device tree describes
-neither of them.
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Describe both. The vdd_log range comes from the schematic (sheet 8):
-0.83 V with 3.0 V on LOG_DVS_PWM and 1.4 V with 0 V, so the PWM is
-inverted. vdd_center gets the same limits as vdd_cpu_l.
+On Wed, 14 Oct 2026 14:36:39 +0200 you wrote:
+> Add support for the firmware-managed variant of the DesignWare MAC on
+> the sa8255p platform. This series contains new DT bindings and driver
+> changes required to support the MAC in the STMMAC driver.
+> 
+> It also reorganizes the ethqos code quite a bit to make the introduction
+> of power domains into the driver a bit easier on the eye.
+> 
+> [...]
 
-With U-Boot setting both rails to 950 mV, Linux 7.3-rc7 reports 949 mV
-and 950 mV.
+Here is the summary with links:
+  - [net-next,v16,1/7] net: stmmac: dwmac4: don't program the 1us tick counter without a CSR clock
+    https://git.kernel.org/netdev/net-next/c/d09d7b8e86e5
+  - [net-next,v16,2/7] dt-bindings: net: qcom: document the ethqos device for SCMI-based systems
+    https://git.kernel.org/netdev/net-next/c/534198a05d92
+  - [net-next,v16,3/7] net: stmmac: qcom-ethqos: set serdes mode before powerup
+    https://git.kernel.org/netdev/net-next/c/7af44cb9e447
+  - [net-next,v16,4/7] net: stmmac: qcom-ethqos: update phy_mode to the resolved interface in mac_finish()
+    https://git.kernel.org/netdev/net-next/c/05b3ea7346e3
+  - [net-next,v16,5/7] net: stmmac: qcom-ethqos: reuse the address of ethqos_emac_driver_data
+    https://git.kernel.org/netdev/net-next/c/92719abd6378
+  - [net-next,v16,6/7] net: stmmac: qcom-ethqos: factor out linux-level setup into a separate function
+    https://git.kernel.org/netdev/net-next/c/acf1e3db9151
+  - [net-next,v16,7/7] net: stmmac: qcom-ethqos: add support for sa8255p
+    https://git.kernel.org/netdev/net-next/c/bb3183e1c938
 
-Assisted-by: LLM
-Signed-off-by: Igor Velkov <iav@iav.lv>
----
-No regulator-state-mem: deep suspend does not resume on this board yet,
-so no suspend value is tested.
-
-U-Boot sets both rails to 950 mV:
-https://lore.kernel.org/r/20261021-b4-helios64-v1-1-74afe8aa6d72@iav.lv
-
-This conflicts with the pending power tree series in the list of fixed
-regulators; I will rebase whichever goes in second:
-https://lore.kernel.org/r/20261016-helios64-power-tree-v1-0-31d6c8dc5092@iav.lv
----
- .../boot/dts/rockchip/rk3399-kobol-helios64.dts    | 24 ++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-index 63ad79b4c8ac..3c2ba805e999 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-@@ -271,6 +271,17 @@ vcc12v_dcin_bkup: regulator-vcc12v-dcin-bkup {
- 		regulator-max-microvolt = <12000000>;
- 		vin-supply = <&vcc12v_dcin>;
- 	};
-+
-+	vdd_log: regulator-vdd-log {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm2 0 25000 1>;
-+		pwm-supply = <&vcc5v0_sys>;
-+		regulator-name = "vdd_log";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <830000>;
-+		regulator-max-microvolt = <1400000>;
-+	};
- };
- 
- /*
-@@ -370,6 +381,15 @@ rk808: pmic@1b {
- 		#clock-cells = <1>;
- 
- 		regulators {
-+			vdd_center: DCDC_REG1 {
-+				regulator-name = "vdd_center";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+			};
-+
- 			vdd_cpu_l: DCDC_REG2 {
- 				regulator-name = "vdd_cpu_l";
- 				regulator-always-on;
-@@ -580,6 +600,10 @@ &pwm1 {
- 	status = "okay";
- };
- 
-+&pwm2 {
-+	status = "okay";
-+};
-+
- &saradc {
- 	vref-supply = <&vcc1v8_s3>;
- 	status = "okay";
-
----
-base-commit: d2abcbb905b0e4b2e06b257fa1e5bcf4faa6dbda
-change-id: 20261021-helios64-vdd-log-center-b13df4b678a1
-
-Best regards,
+You are awesome, thank you!
 -- 
-Igor Velkov <iav@iav.lv>
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
 
