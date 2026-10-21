@@ -2,82 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3D70A606A339
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6F60A6071DB6
 	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Oct 2026 16:13:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wlnlnaJ8;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=CGVXLq7n
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aRqChnHb;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=hNK10IxB
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Knalpf7Zs7KaTyaFnw4p704RvJxOtgaGHwb0UPE3oGk=; b=wlnlnaJ8LcibK7
-	jRlnaurb7KQIFRYOb8rO2v9y5+JkJvjSuuldl1ea5laTGhtNaz3F8rLa6/50kma+oYOgivTo93FG1
-	ctsKxK7sPucICy+BpUp12MMqBTzBrtva8Y91dfcnVvuJI5pu+6flR2236KPMywXT5ZfyrGzdwqbeN
-	neOpsoJDS46BpK+EPvI+oq7IC9H93vcHB6KmahzHNgFqXcfQhv/AFOv1BLYJDd+SLE07qZRI89xbC
-	EiX8DoxUg5qJ8dnifMuoxNeP6r9kVtIS0cLZVIMVAkBmy6SenbySWRrF7coG/YZB3baXin6psQrVk
-	VHJAYlg9bYFyxjWJXF2w==;
+	List-Owner; bh=zV0I7/YuDKS+HkR/Zl5ge7s+2cNT5fgiljI5EO/tz9Y=; b=aRqChnHbIJB9Oi
+	+K9sRSOjwTJGsD/KCLFpvQv/HuAFNdyhKy0ECl7Fg5BJIPFU3oVQGzjoSQPiWXW4FYJGMSHEjgxtz
+	O+JdtyRAUQOeBZMgLiE2Eq5koSyYbuXiuE72RbXGWV3+e0j6Qh9Yy92SuVypCQlYw+s8lajdWn2dV
+	8n6SX8xTG5BYXrydVVG72nLILAtoTDQRq5BS0xFzudEBk5keAVORMFqN2ESubsG/hqZS8ifKGFwbH
+	fV4hjqZSPAET0Muoew+mLQNv3VzitZOpPnqx9kaNzGL29CaStk6NEkSxFVdacCygWJnonwtkg/7a/
+	FuP+q1j2Pg5MFirnuHWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJYwO-0000000CNf5-2ghz;
-	Wed, 21 Oct 2026 16:13:24 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xJYwN-0000000CNdV-2Sse;
+	Wed, 21 Oct 2026 16:13:23 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJYvz-0000000CMzb-0S1z;
-	Wed, 21 Oct 2026 16:12:59 +0000
+	id 1xJYvx-0000000CMxZ-2IqK;
+	Wed, 21 Oct 2026 16:12:57 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D50BE43F2F;
-	Wed, 21 Oct 2026 16:12:58 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4481742AB2;
+	Wed, 21 Oct 2026 16:12:57 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1792599178;
-	b=H2KBRH0jdeurfwmnClkpBcQfkuc0Nfk82p5OZtVJMZfDkVO2OednVVLZ2Ic/diN3jrGl
-	 W5qlwbH91jqGjJdbPDgcO/A/9f82wTkAbJh/mIEZCG3URhzaVQbXZXrhGMVlrsqeYKxku
-	 lNkvdi4M7m7yAXDFslzt9OK86UlawC+nJDdZU9nwLCnvNODkmnJuH5QD01YsWYcFIoRv5
-	 HlC/gNKMzyc/7gy85YVzNNOk16mYx4tF+KStQ3EQwy0Z9H7l+Nb3IsZjPJw4+ib8/PdW7
-	 y/3XSIpxcOL9F6O55qRVa/v2rWGzJ0nepJKnKLdJkZMzYyjWFyA3juDrHsB9MdegvSg==
+	t=1792599177;
+	b=CWh91nuCu2BWFxa/N2djTnwymRhGqvdTaZ/TuIKkpV3zUExBZOM5pqPMDopIf8vBgCY8
+	 QlCKgVwVPmeIvE+nR+o529uQUrbXVc0jWa1wZezAEsRTqYN/OUT4RRo5P9UOLCuppbEVp
+	 ZdZAVNfbNB9s4UNLgdTwXd5iUJdybAehwuDOxY2OgXKnjZ7WLWBzZE8GLlbYkqoNy8e8h
+	 rX1mMpTy4onPB7voYwYhIv3yji1kTXjKZ7fbz83oPD/UGGxRuMq00ahUGuf7lBwptPsZ6
+	 zPQEzwOsK0dXvgSwF/bnD3n2T2GiygQZaHjR+8/j+GZp9ssANYfU+mr5dw/u9aM6zgw==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1792599178;
+	c=relaxed/relaxed; t=1792599177;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=mU+ZJ6bdJY00yNid6WD/x4CcVJmOkjk6bjWXStTXRjs=;
-	b=vl05iI2h5ZebzxVPv0T4oWVcOHtZwGJgBzQyM/BEY7u+mzsQGKWKHiqjfbeGMspXQNHX
-	 0wx0+3cHoQNyOG3mVSc8BuaX1w1klncXduHOkC6JIoCLpOwc5mF8i3m4nHH6r8BXXZaNR
-	 wQdF/MqIQZy1DrU8EAjD/uCXzOLtVIa5o5vnlPZ5Z/FTzz3VI/IXRsUDE3dlXHZL4nJzT
-	 65QxBcAMjyIO7ddvchjeMf3Z6vc1wf++3LEo5sdPqcvuHjhd2oNzc39tGXyjKUWrpjDbh
-	 Dpb2JRfocz29R9JS/pONkRGJBlBWwIBBLMCFUIhAeSLMuURmpiF7Wq9rn20Rgnp3V2Q==
+	bh=2V1GtdaPYam0RV/wqc+Y0xlUnVgiTsq/Rq95bOUlABI=;
+	b=GdMhumQPN3FRNVX4HnBGRTOysbnrYxQrnpXXeXpoGnwMM3Pm6sfP6psy3pv2aqPehTrM
+	 cTdy1W/UkOEHld1XTLCLQAGfxLcFF2ZZl+Yrk0ClWMjvlUKTH4DO9jzqesvBbH/3p3cH/
+	 A3WrO/96dQ3M6ufx3vLxV6TNuqFneUbSZzhF4ymcGlIlg9uMebYSoFNPdqFsLpK5ML7tA
+	 7Yuwp9HhWMRXWrZRRhlb+USDta4JGXkbhWPkBXvU5+pCHuymyaGtfps+pUeZ/lVJf1dGB
+	 FMjLrdE1Ieniw9vXWdGmsX4DUGxQiIPlpkO5LuvBo7DEHuNRllN9DJLSd2hJIPhSN3g==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 8CAB51F02818;
-	Wed, 21 Oct 2026 16:12:43 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id B05521F0181B;
+	Wed, 21 Oct 2026 16:12:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792599178;
-	bh=mU+ZJ6bdJY00yNid6WD/x4CcVJmOkjk6bjWXStTXRjs=;
+	s=k20260515; t=1792599177;
+	bh=2V1GtdaPYam0RV/wqc+Y0xlUnVgiTsq/Rq95bOUlABI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=CGVXLq7nJAoRsQ/8+RMQmWQo/PK5w0+pI88/4KV0ciqAzxHrad13lOXbNYOsHwMRB
-	 rcXFQx5PYhndx6ocJM9RCX5RPJOvfoaHPkdniTlJxbOMjSieXVoDfbQsscywEEMMxY
-	 b7s/q+bFNb69GHM82ACsJdnsXjFLOIOmjdm6+9G6FcwtXx91qCnfgMKFZ/fNsYFD53
-	 DudBA4C92ctJoq+Tf00B2wUmUMGQEU/iUdu7xqVV5+oEWmJ31PloHu2qLcO4qSM3a3
-	 0+rTYwGRAZS8kUqY/vWyt24pefw80dv0vg6Irpd4hW+WNG8mJypZe/cYExvNu8FQAU
-	 BBO5SsyOAWtmg==
+	b=hNK10IxB3YqZoup7OXxnMRFHrfB0ouQqjoiOhVTSmUOh1ZHHLXdiqQ0jsthSBgyjK
+	 Fa61Sik/isoZdCHvgzgVHf8XGn0EUjYigUDAlLt0WujSgyFYH9viws1t0Q0sx7FTYi
+	 4hO7sZl8P8iBTZG7qPqSbOrik0Q6hdoPsK+tZm6lF3/q3rOBYiXDBWH3RSYL/yuLqo
+	 ARyJu3E9/RzkAhuaT0DOiMzBwMHoAmX4O3+b1shEv4nmsOFlBBwAaRX6qlZ82yaju6
+	 uFORu2pyMvQZV8y+lm0heSpx9Mcmk1gAVIibG2GBghUynHIjFfM5A1voRMEh1NEI/c
+	 /jFfQmzaIGywA==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id ED7544340D;
+	by lkml.kernel.org (Postfix) with ESMTP id BDFC1433F7;
 	Wed, 21 Oct 2026 16:12:23 +0000 (UTC)
 From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
-Date: Thu, 22 Oct 2026 00:11:24 +0800
-Subject: [PATCH 27/27] arm64: dts: rockchip: Add initial support for
- Forlinx OK3572-C
+Date: Thu, 22 Oct 2026 00:11:19 +0800
+Subject: [PATCH 22/27] phy: rockchip-naneng-combphy: Add RK3572 support
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261022-add-board-ok3572-c-v1-27-0b0fd85a31ee@qq.com>
+Message-Id: <20261022-add-board-ok3572-c-v1-22-0b0fd85a31ee@qq.com>
 References: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
 In-Reply-To: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
 To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
@@ -114,11 +113,11 @@ Cc: Cunhao Lu <1579567540@qq.com>, linux-clk@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, linux-phy@lists.infradead.org, 
  linux-usb@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792599138; l=17255;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792599138; l=8706;
  i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
- bh=wegpf4+/6fWlUcMz3SbXhVxhPt+HaLtfWjEQb+t6S0E=;
- b=BjDqEW7HgjKW2N7CulXPP3bnJ7tJNOv/mL6Kzow0zBKY/GF9HQ+vqSejln/4VFAEgYy7alRP9
- 4l1ujdyIQM/CoHGApHcbY/TFy4YZ7txPw6NT8BBVdZhqk5ayT86XoIz
+ bh=wC2aLPgJOhrcC7ie1Sc3x8qp5suDThHbcIf1QuP1Gno=;
+ b=DzUmoa+fO7xpmPZra3NC8fmhgRM7tqdEJ+v+VPO74dHb/SZ/y1gKncl1LRskmymmm4VxE4krX
+ fKu2I3IpxIyA0/dkLTBuOzaN29bA75HSzMDiQUPFwJdGWyKSPzU5m24
 X-Developer-Key: i=1579567540@qq.com; a=ed25519;
  pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
 X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
@@ -147,694 +146,232 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Cunhao Lu <1579567540@qq.com>
 
-Describe the OK3572-C carrier board and FET3572-C system-on-module.
+Support PCIe, USB3, and SATA operation on the RK3572 combo PHY.
 
 Signed-off-by: Cunhao Lu <1579567540@qq.com>
 ---
- arch/arm64/boot/dts/rockchip/Makefile              |   1 +
- .../dts/rockchip/rk3572-forlinx-fet3572-c.dtsi     | 369 +++++++++++++++++++++
- .../boot/dts/rockchip/rk3572-forlinx-ok3572-c.dts  | 286 ++++++++++++++++
- 3 files changed, 656 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-naneng-combphy.c | 201 +++++++++++++++++++++
+ 1 file changed, 201 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index e7936a21c118..d028e9cccceb 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -168,6 +168,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-display-vz.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-wolfvision-pf5-io-expander.dtbo
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3572-forlinx-ok3572-c.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-100ask-dshanpi-a1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-anbernic-rg-vita-pro.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3576-armsom-cm5-io.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3572-forlinx-fet3572-c.dtsi b/arch/arm64/boot/dts/rockchip/rk3572-forlinx-fet3572-c.dtsi
-new file mode 100644
-index 000000000000..d9a662aef6ad
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3572-forlinx-fet3572-c.dtsi
-@@ -0,0 +1,369 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2025 Forlinx Embedded Tech. Co., Ltd
-+ * Copyright (c) 2026 Cunhao Lu <1579567540@qq.com>
-+ */
+diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+index 7843356a4dd4..e13a78ab5777 100644
+--- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+@@ -1000,6 +1000,204 @@ static const struct rockchip_combphy_cfg rk3568_combphy_cfgs = {
+ 	.combphy_cfg	= rk3568_combphy_cfg,
+ };
+ 
++static int rk3572_combphy_cfg(struct rockchip_combphy_priv *priv)
++{
++	const struct rockchip_combphy_grfcfg *cfg = priv->cfg->grfcfg;
++	unsigned long rate;
 +
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include "rk3572.dtsi"
-+#include "rk3572-opp.dtsi"
++	switch (priv->type) {
++	case PHY_TYPE_PCIE:
++		/* Set SSC downward spread spectrum */
++		rockchip_combphy_updatel(priv, GENMASK(5, 4), BIT(4), 0x7c);
 +
-+/ {
-+	compatible = "forlinx,fet3572-c", "rockchip,rk3572";
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con0_for_pcie, true);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con1_for_pcie, true);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con2_for_pcie, true);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con3_for_pcie, true);
++		break;
++	case PHY_TYPE_USB3:
++		/* Set SSC downward spread spectrum */
++		rockchip_combphy_updatel(priv, GENMASK(5, 4), BIT(4), 0x7c);
 +
-+	vcc5v0_sys_s5: regulator-vcc5v0-sys-s5 {
-+		compatible = "regulator-fixed";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-name = "vcc5v0_sys_s5";
-+	};
++		/* Enable adaptive CTLE for USB3.0 Rx */
++		rockchip_combphy_updatel(priv, GENMASK(0, 0), BIT(0), 0x38);
 +
-+	vcc_ldo_s3: regulator-vcc-ldo-s3 {
-+		compatible = "regulator-fixed";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-max-microvolt = <2100000>;
-+		regulator-min-microvolt = <2100000>;
-+		regulator-name = "vcc_ldo_s3";
-+	};
++		/* Set PLL KVCO fine tuning signals */
++		rockchip_combphy_updatel(priv, GENMASK(4, 2), BIT(3), 0x80);
++
++		/* Set PLL LPF R1 to su_trim[10:7]=1001 */
++		writel(0x4, priv->mmio + (0xb << 2));
++
++		/* Set PLL input clock divider 1/2 */
++		rockchip_combphy_updatel(priv, GENMASK(7, 6), BIT(6), 0x14);
++
++		writel(0x32, priv->mmio + (0x11 << 2));
++
++		/* Set PLL KVCO to min and set PLL charge pump current to max */
++		writel(0xf0, priv->mmio + (0xa << 2));
++
++		/* Set Rx squelch input filter bandwidth */
++		writel(0x0d, priv->mmio + (0x14 << 2));
++
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_txcomp_sel, false);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_txelec_sel, false);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->usb_mode_set, true);
++		break;
++	case PHY_TYPE_SATA:
++		/* Enable adaptive CTLE for SATA Rx */
++		rockchip_combphy_updatel(priv, GENMASK(0, 0), BIT(0), 0x38);
++
++		/* Set tx_rterm = 50 ohm and rx_rterm = 43.5 ohm */
++		writel(0x8f, priv->mmio + (0x06 << 2));
++
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con0_for_sata, true);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con1_for_sata, true);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con2_for_sata, true);
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->con3_for_sata, true);
++		rockchip_combphy_param_write(priv->pipe_grf, &cfg->pipe_con0_for_sata, true);
++		rockchip_combphy_param_write(priv->pipe_grf, &cfg->pipe_con1_for_sata, true);
++		break;
++	default:
++		dev_err(priv->dev, "incompatible PHY type\n");
++		return -EINVAL;
++	}
++
++	rate = clk_get_rate(priv->refclk);
++
++	switch (rate) {
++	case 24000000:
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_24m, true);
++		if (priv->type == PHY_TYPE_USB3 || priv->type == PHY_TYPE_SATA) {
++			/* Set ssc_cnt[9:0]=0101111101 & 31.5KHz */
++			rockchip_combphy_updatel(priv, GENMASK(7, 6), BIT(6), 0xe << 2);
++
++			rockchip_combphy_updatel(priv, GENMASK(7, 0), 0x5f, 0xf << 2);
++		} else if (priv->type == PHY_TYPE_PCIE) {
++			/* PLL KVCO tuning fine */
++			rockchip_combphy_updatel(priv, GENMASK(4, 2), 0x4 << 2, 0x20 << 2);
++
++			writel(0x0, priv->mmio + (0x1b << 2));
++
++			/* Set up su_trim: T0_1 */
++			writel(0x90, priv->mmio + (0xa << 2));
++			writel(0x02, priv->mmio + (0xb << 2));
++			writel(0x57, priv->mmio + (0xd << 2));
++
++			writel(0x5f, priv->mmio + (0xf << 2));
++		}
++		break;
++	case 25000000:
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_25m, true);
++		break;
++	case 100000000:
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_100m, true);
++		if (priv->type == PHY_TYPE_PCIE) {
++			/* gate_tx_pck_sel length select work for L1SS */
++			writel(0xc0, priv->mmio + 0x74);
++
++			/* PLL KVCO tuning fine */
++			rockchip_combphy_updatel(priv, GENMASK(4, 2), 0x4 << 2, 0x20 << 2);
++
++			/* Set up rx_trim: PLL LPF C1 85pf R1 1.25kohm */
++			writel(0x4c, priv->mmio + (0x1b << 2));
++
++			/* Set up su_trim: T3_P1 650mv */
++			writel(0x90, priv->mmio + (0xa << 2));
++			writel(0x43, priv->mmio + (0xb << 2));
++			writel(0x88, priv->mmio + (0xc << 2));
++			writel(0x56, priv->mmio + (0xd << 2));
++		} else if (priv->type == PHY_TYPE_SATA) {
++			/* downward spread spectrum +500ppm */
++			rockchip_combphy_updatel(priv, GENMASK(7, 4), 0x50, 0x1f << 2);
++
++			/* ssc ppm adjust to 3500ppm */
++			rockchip_combphy_updatel(priv, GENMASK(3, 0), 0x7, 0x9 << 2);
++		}
++		break;
++	default:
++		dev_err(priv->dev, "Unsupported rate: %lu\n", rate);
++		return -EINVAL;
++	}
++
++	if (priv->ext_refclk) {
++		rockchip_combphy_param_write(priv->phy_grf, &cfg->pipe_clk_ext, true);
++		if (priv->type == PHY_TYPE_PCIE && rate == 100000000) {
++			writel(0x10, priv->mmio + (0x20 << 2));
++
++			writel(0x0c, priv->mmio + (0x1b << 2));
++
++			/*
++			 * Set up su_trim: T3_P1 650mv
++			 * CKRCV termination resistor adjust 11: Hi-Z
++			 */
++			writel(0x90, priv->mmio + (0xa << 2));
++			writel(0x43, priv->mmio + (0xb << 2));
++			writel(0xb8, priv->mmio + (0xc << 2));
++			writel(0x56, priv->mmio + (0xd << 2));
++		}
++	}
++
++	if (priv->enable_ssc) {
++		rockchip_combphy_updatel(priv, GENMASK(4, 4), BIT(4), 0x7 << 2);
++		/* PLL control SSC module period should be set */
++		rockchip_combphy_updatel(priv, GENMASK(5, 5), BIT(5), 0x20 << 2);
++
++		if (priv->type == PHY_TYPE_PCIE && rate == 24000000) {
++			/* xin24m T0_1 650mV */
++			writel(0x00, priv->mmio + (0x10 << 2));
++			writel(0x32, priv->mmio + (0x11 << 2));
++			writel(0x00, priv->mmio + (0x1b << 2));
++			writel(0x90, priv->mmio + (0x0a << 2));
++			writel(0x02, priv->mmio + (0x0b << 2));
++			writel(0x08, priv->mmio + (0x0c << 2));
++			writel(0x57, priv->mmio + (0x0d << 2));
++			writel(0x40, priv->mmio + (0x0e << 2));
++			writel(0x5f, priv->mmio + (0x0f << 2));
++			writel(0x10, priv->mmio + (0x20 << 2));
++			/* ssc_cnt: 0101111101 & 31.5KHz */
++			rockchip_combphy_updatel(priv, GENMASK(7, 6), BIT(6), 0xe << 2);
++			rockchip_combphy_updatel(priv, GENMASK(7, 0), 0x5f, 0xf << 2);
++		} else if (priv->type == PHY_TYPE_PCIE && rate == 100000000) {
++			/* ssc_cnt: 1000110001 & 31.5KHz */
++			rockchip_combphy_updatel(priv, GENMASK(7, 6), BIT(6), 0xe << 2);
++			rockchip_combphy_updatel(priv, GENMASK(7, 0), 0x8c, 0xf << 2);
++		}
++	}
++
++	if (priv->type == PHY_TYPE_PCIE)
++		rockchip_combphy_updatel(priv, BIT(5), BIT(5), 0x64);
++
++	return 0;
++}
++
++static const struct rockchip_combphy_grfcfg rk3572_combphy_grfcfgs = {
++	/* pipe-phy-grf */
++	.usb_mode_set		= { 0x0000, 5, 0, 0x00, 0x04 },
++	.pipe_clk_24m		= { 0x0004, 14, 13, 0x00, 0x00 },
++	.pipe_clk_25m		= { 0x0004, 14, 13, 0x00, 0x01 },
++	.pipe_clk_100m		= { 0x0004, 14, 13, 0x00, 0x02 },
++	.pipe_txelec_sel	= { 0x0008, 12, 12, 0x00, 0x01 },
++	.pipe_txcomp_sel	= { 0x0008, 15, 15, 0x00, 0x01 },
++	.pipe_clk_ext		= { 0x000c, 9, 8, 0x02, 0x01 },
++	.pipe_phy_status	= { 0x0034, 6, 6, 0x01, 0x00 },
++	.con0_for_pcie		= { 0x0000, 15, 0, 0x00, 0x1000 },
++	.con1_for_pcie		= { 0x0004, 15, 0, 0x00, 0x0000 },
++	.con2_for_pcie		= { 0x0008, 15, 0, 0x00, 0x0101 },
++	.con3_for_pcie		= { 0x000c, 15, 0, 0x00, 0x0200 },
++	.con0_for_sata		= { 0x0000, 15, 0, 0x00, 0x0129 },
++	.con1_for_sata		= { 0x0004, 15, 0, 0x00, 0x0000 },
++	.con2_for_sata		= { 0x0008, 15, 0, 0x00, 0x80c1 },
++	.con3_for_sata		= { 0x000c, 15, 0, 0x00, 0x0407 },
++	/* php-grf */
++	.pipe_con0_for_sata	= { 0x0058, 2, 0, 0x00, 0x2 },
++	.pipe_con1_for_sata	= { 0x005c, 2, 0, 0x00, 0x2 },
 +};
 +
-+&cpu_b0 {
-+	cpu-supply = <&vdd_cpu_big_s0>;
++static const struct rockchip_combphy_cfg rk3572_combphy_cfgs = {
++	.grfcfg		= &rk3572_combphy_grfcfgs,
++	.combphy_cfg	= rk3572_combphy_cfg,
 +};
 +
-+&cpu_l0 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&cpu_l4 {
-+	cpu-supply = <&vdd_cpu_lit_s0>;
-+};
-+
-+&i2c0 {
-+	clock-frequency = <400000>;
-+
-+	status = "okay";
-+
-+	rk806: pmic@23 {
-+		compatible = "rockchip,rk806";
-+		reg = <0x23>;
-+		#gpio-cells = <2>;
-+		gpio-controller;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA6 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-0 = <&pmic_int>;
-+		pinctrl-names = "default";
-+		system-power-controller;
-+		vcc1-supply = <&vcc5v0_sys_s5>;
-+		vcc2-supply = <&vcc5v0_sys_s5>;
-+		vcc3-supply = <&vcc5v0_sys_s5>;
-+		vcc4-supply = <&vcc5v0_sys_s5>;
-+		vcc5-supply = <&vcc5v0_sys_s5>;
-+		vcc6-supply = <&vcc5v0_sys_s5>;
-+		vcc7-supply = <&vcc5v0_sys_s5>;
-+		vcc8-supply = <&vcc5v0_sys_s5>;
-+		vcc9-supply = <&vcc5v0_sys_s5>;
-+		vcc10-supply = <&vcc5v0_sys_s5>;
-+		vcc11-supply = <&vcc_ldo_s3>;
-+		vcc12-supply = <&vcc5v0_sys_s5>;
-+		vcc13-supply = <&vcc_ldo_s3>;
-+		vcc14-supply = <&vcc_ldo_s3>;
-+		vcca-supply = <&vcc5v0_sys_s5>;
-+
-+		regulators {
-+			vdd_cpu_lit_s0: dcdc-reg1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-enable-ramp-delay = <400>;
-+				regulator-max-microvolt = <950000>;
-+				regulator-min-microvolt = <550000>;
-+				regulator-name = "vdd_cpu_lit_s0";
-+				regulator-ramp-delay = <12500>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_npu_s0: dcdc-reg2 {
-+				regulator-boot-on;
-+				regulator-enable-ramp-delay = <400>;
-+				regulator-max-microvolt = <950000>;
-+				regulator-min-microvolt = <550000>;
-+				regulator-name = "vdd_npu_s0";
-+				regulator-ramp-delay = <12500>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_cpu_big_s0: dcdc-reg3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <950000>;
-+				regulator-min-microvolt = <550000>;
-+				regulator-name = "vdd_cpu_big_s0";
-+				regulator-ramp-delay = <12500>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <750000>;
-+				};
-+			};
-+
-+			vcc_3v3_s3: dcdc-reg4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-name = "vcc_3v3_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vdd_gpu_s0: dcdc-reg5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-enable-ramp-delay = <400>;
-+				regulator-max-microvolt = <900000>;
-+				regulator-min-microvolt = <550000>;
-+				regulator-name = "vdd_gpu_s0";
-+				regulator-ramp-delay = <12500>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vddq_ddr_s0: dcdc-reg6 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vddq_ddr_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_logic_s0: dcdc-reg7 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <800000>;
-+				regulator-min-microvolt = <550000>;
-+				regulator-name = "vdd_logic_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v8: dcdc-reg8 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-name = "vcc_1v8";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vdd2_ddr_s3: dcdc-reg9 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vdd2_ddr_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vdd_ddr_s0: dcdc-reg10 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <850000>;
-+				regulator-min-microvolt = <750000>;
-+				regulator-name = "vdd_ddr_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <800000>;
-+				};
-+			};
-+
-+			vdd_0v75_s3: nldo-reg1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <750000>;
-+				regulator-min-microvolt = <750000>;
-+				regulator-name = "vdd_0v75_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <750000>;
-+				};
-+			};
-+
-+			vdda_0v85_s0: nldo-reg2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <850000>;
-+				regulator-min-microvolt = <850000>;
-+				regulator-name = "vdd_0v85_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda_hdmi_s0: nldo-reg3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <837500>;
-+				regulator-min-microvolt = <837500>;
-+				regulator-name = "vdda_hdmi_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda_ddr_pll_s0: nldo-reg4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <850000>;
-+				regulator-min-microvolt = <850000>;
-+				regulator-name = "vdda_ddr_pll_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda_0v75_s0: nldo-reg5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <750000>;
-+				regulator-min-microvolt = <750000>;
-+				regulator-name = "vdda_0v75_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v8_s3: pldo-reg1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-name = "vcc_1v8_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vccio_1v8_s0: pldo-reg2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-name = "vccio_1v8_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda_1v2_s0: pldo-reg3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <1200000>;
-+				regulator-min-microvolt = <1200000>;
-+				regulator-name = "vdda_1v2_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc3v3_sd_s0: pldo-reg4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-name = "vcc3v3_sd_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vccio_sd_s0: pldo-reg5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-name = "vccio_sd_s0";
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcca1v8_pldo6_s3: pldo-reg6 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-name = "vcca1v8_pldo6_s3";
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&pinctrl {
-+	pmic {
-+		pmic_int: pmic-int {
-+			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	max-frequency = <200000000>;
-+	mmc-hs400-1_8v;
-+	mmc-hs400-enhanced-strobe;
-+	no-sd;
-+	no-sdio;
-+	non-removable;
-+	pinctrl-0 = <&emmc_rstnout_pins &emmc_bus8_pins &emmc_clk_pins
-+		    &emmc_cmd_pins &emmc_strb_pins>;
-+	pinctrl-names = "default";
-+	vmmc-supply = <&vcc_3v3_s3>;
-+	vqmmc-supply = <&vcc_1v8_s3>;
-+
-+	status = "okay";
-+};
-+
-+&tsadc {
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3572-forlinx-ok3572-c.dts b/arch/arm64/boot/dts/rockchip/rk3572-forlinx-ok3572-c.dts
-new file mode 100644
-index 000000000000..754fbce00162
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3572-forlinx-ok3572-c.dts
-@@ -0,0 +1,286 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2025 Forlinx Embedded Tech. Co., Ltd
-+ * Copyright (c) 2026 Cunhao Lu <1579567540@qq.com>
-+ */
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/usb/pd.h>
-+#include "rk3572-forlinx-fet3572-c.dtsi"
-+
-+/ {
-+	compatible = "forlinx,ok3572-c", "forlinx,fet3572-c", "rockchip,rk3572";
-+	model = "Forlinx OK3572-C";
-+
-+	aliases {
-+		ethernet0 = &gmac0;
-+		ethernet1 = &gmac1;
-+		mmc0 = &sdhci;
-+		mmc1 = &sdmmc0;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial0:1500000n8";
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+		pinctrl-0 = <&work_led_gpio>;
-+		pinctrl-names = "default";
-+
-+		led-0 {
-+			function = LED_FUNCTION_STATUS;
-+			gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
-+			linux,default-trigger = "heartbeat";
-+		};
-+	};
-+
-+	vcc_usb_hub_1v2: regulator-usb-hub-1v2 {
-+		compatible = "regulator-fixed";
-+		regulator-always-on;
-+		regulator-max-microvolt = <1200000>;
-+		regulator-min-microvolt = <1200000>;
-+		regulator-name = "vcc_usb_hub_1v2";
-+		vin-supply = <&vcc5v0_sys_s5>;
-+	};
-+
-+	vcc_usb_hub_3v3: regulator-usb-hub-3v3 {
-+		compatible = "regulator-fixed";
-+		regulator-always-on;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-name = "vcc_usb_hub_3v3";
-+		vin-supply = <&vcc5v0_sys_s5>;
-+	};
-+
-+	vbus5v0_typec: regulator-vbus5v0-typec {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PD1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&usb_drd0_pwren>;
-+		pinctrl-names = "default";
-+		regulator-max-microvolt = <5000000>;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-name = "vbus5v0_typec";
-+		vin-supply = <&vcc5v0_sys_s5>;
-+	};
-+
-+	vcc5v0_usb3_host: regulator-vcc5v0-usb3-host {
-+		compatible = "regulator-fixed";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-name = "vcc5v0_usb3_host";
-+		vin-supply = <&vcc5v0_sys_s5>;
-+	};
-+};
-+
-+&combphy1_psu {
-+	status = "okay";
-+};
-+
-+&gmac0 {
-+	clock_in_out = "output";
-+	phy-handle = <&rgmii0_phy>;
-+	phy-mode = "rgmii-rxid"; /* Schematic adds a 2ns delay to RX_CLK */
-+	phy-supply = <&vcc_3v3_s3>;
-+	pinctrl-0 = <&eth0_miim_pins &eth0_tx_bus2_pins &eth0_rx_bus2_pins
-+		    &eth0_rgmii_clk_pins &eth0_rgmii_bus_pins>;
-+	pinctrl-names = "default";
-+	tx_delay = <0x21>;
-+
-+	status = "okay";
-+};
-+
-+&gmac1 {
-+	clock_in_out = "output";
-+	phy-handle = <&rgmii1_phy>;
-+	phy-mode = "rgmii-rxid"; /* Schematic adds a 2ns delay to RX_CLK */
-+	phy-supply = <&vcc_3v3_s3>;
-+	pinctrl-0 = <&eth1m0_miim_pins &eth1m0_tx_bus2_pins &eth1m0_rx_bus2_pins
-+		    &eth1m0_rgmii_clk_pins &eth1m0_rgmii_bus_pins>;
-+	pinctrl-names = "default";
-+	tx_delay = <0x20>;
-+
-+	status = "okay";
-+};
-+
-+&i2c2 {
-+	status = "okay";
-+
-+	usb-typec@22 {
-+		compatible = "fcs,fusb302";
-+		reg = <0x22>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA5 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-0 = <&usbc0_int>;
-+		pinctrl-names = "default";
-+		vbus-supply = <&vbus5v0_typec>;
-+
-+		connector {
-+			compatible = "usb-c-connector";
-+			data-role = "dual";
-+			label = "USB-C";
-+			op-sink-microwatt = <1000000>;
-+			power-role = "dual";
-+			sink-pdos = <PDO_FIXED(5000, 1000, PDO_FIXED_USB_COMM)>;
-+			source-pdos =
-+				<PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
-+			try-power-role = "sink";
-+
-+			port {
-+				usbc0_role_sw: endpoint {
-+					remote-endpoint =
-+						<&usb_drd0_role_switch>;
-+				};
-+			};
-+		};
-+	};
-+
-+	gpio@23 {
-+		compatible = "nxp,pcal6524";
-+		reg = <0x23>;
-+		#gpio-cells = <2>;
-+		gpio-controller;
-+		#interrupt-cells = <2>;
-+		interrupt-controller;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA0 IRQ_TYPE_EDGE_FALLING>;
-+		pinctrl-0 = <&extio_int_gpio>;
-+		pinctrl-names = "default";
-+		vcc-supply = <&vcc_3v3_s3>;
-+	};
-+};
-+
-+&mdio0 {
-+	rgmii0_phy: ethernet-phy@2 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <2>;
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio3 RK_PC0 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&mdio1 {
-+	rgmii1_phy: ethernet-phy@1 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <1>;
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&pinctrl {
-+	extio {
-+		extio_int_gpio: extio-int {
-+			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	leds {
-+		work_led_gpio: work-led {
-+			rockchip,pins = <0 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	usb {
-+		usb_drd0_pwren: usb-drd0-pwren {
-+			rockchip,pins = <0 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		usbc0_int: usbc0-int {
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&sdmmc0 {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	max-frequency = <200000000>;
-+	no-mmc;
-+	no-sdio;
-+	pinctrl-0 = <&sdmmc0m0_bus4_pins &sdmmc0m0_clk_pins &sdmmc0m0_cmd_pins
-+		    &sdmmc0m0_det_pins &sdmmc0_pwren_pins>;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc3v3_sd_s0>;
-+	vqmmc-supply = <&vccio_sd_s0>;
-+
-+	status = "okay";
-+};
-+
-+&u2phy0 {
-+	status = "okay";
-+};
-+
-+&u2phy0_otg {
-+	status = "okay";
-+};
-+
-+&u2phy1 {
-+	status = "okay";
-+};
-+
-+&u2phy1_otg {
-+	phy-supply = <&vcc5v0_usb3_host>;
-+
-+	status = "okay";
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-+
-+&usb_drd0_dwc3 {
-+	dr_mode = "otg";
-+	maximum-speed = "high-speed";
-+	phys = <&u2phy0_otg>;
-+	phy-names = "usb2-phy";
-+	usb-role-switch;
-+	snps,dis_u2_susphy_quirk;
-+	snps,usb2-lpm-disable;
-+
-+	status = "okay";
-+
-+	port {
-+		usb_drd0_role_switch: endpoint {
-+			remote-endpoint = <&usbc0_role_sw>;
-+		};
-+	};
-+};
-+
-+&usb_drd1_dwc3 {
-+	#address-cells = <1>;
-+	dr_mode = "host";
-+	#size-cells = <0>;
-+
-+	status = "okay";
-+
-+	hub_2_0: hub@1 {
-+		compatible = "usb4b4,6502", "usb4b4,6506";
-+		reg = <1>;
-+		peer-hub = <&hub_3_0>;
-+		reset-gpios = <&gpio2 RK_PB0 GPIO_ACTIVE_LOW>;
-+		vdd2-supply = <&vcc_usb_hub_3v3>;
-+		vdd-supply = <&vcc_usb_hub_1v2>;
-+	};
-+
-+	hub_3_0: hub@2 {
-+		compatible = "usb4b4,6500", "usb4b4,6504";
-+		reg = <2>;
-+		peer-hub = <&hub_2_0>;
-+		reset-gpios = <&gpio2 RK_PB0 GPIO_ACTIVE_LOW>;
-+		vdd2-supply = <&vcc_usb_hub_3v3>;
-+		vdd-supply = <&vcc_usb_hub_1v2>;
-+	};
-+};
-+
-+&wdt {
-+	status = "okay";
-+};
+ static int rk3576_combphy_cfg(struct rockchip_combphy_priv *priv)
+ {
+ 	const struct rockchip_combphy_grfcfg *cfg = priv->cfg->grfcfg;
+@@ -1407,6 +1605,9 @@ static const struct of_device_id rockchip_combphy_of_match[] = {
+ 		.data = &rk3568_combphy_cfgs,
+ 	},
+ 	{
++		.compatible = "rockchip,rk3572-naneng-combphy",
++		.data = &rk3572_combphy_cfgs,
++	}, {
+ 		.compatible = "rockchip,rk3576-naneng-combphy",
+ 		.data = &rk3576_combphy_cfgs,
+ 	},
 
 -- 
 2.34.1
