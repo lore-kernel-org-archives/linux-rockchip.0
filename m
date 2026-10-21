@@ -2,81 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 369526072B00
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3EF126072B02
 	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Oct 2026 16:12:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LwFkmLVl;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=feOiJJ7C
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=InAUsBtp;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=J9Ef8cxY
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y6qq/DWCLPOnIi4w2EXgKNM9iAtLaKwuyAs9F5HpSpU=; b=LwFkmLVlz3Y72o
-	tWLEayIkooPJyy3cvhTC8ip1FvULEgaW4OPmaq0h7wzW38Djv0CAytjGECfIqYi4Z/BPwn/GDm08F
-	PeSuaXgT623NzTuvVCwN5AcBRXDUwPOCLarrVcEkGD/Cw2NiHq1oLwMYXhFrzgNbzVgQRo3AnSMtY
-	OBzTsnmqD3QJev47T0GoLij30RLYFNvM1Ytc9hqBwny8cs6U+Nz5Tzx3RXTLlrs4qrS6VaTJgz2O4
-	qH7wDdce0/EHFRF5G5Opu3IGfUBiw61L/DrXV61+/Ja10w9V/12XdpoJBJAMZo430f1Cuqq5aU30g
-	vp3fKwqKmiMWWpiVPwLA==;
+	List-Owner; bh=T7xYyLUMa4rsqwD3hIJlEs854DyEQv27rToz0wxAwgo=; b=InAUsBtp92n3qT
+	giBBy9HU18oA61GXsgT/FMWeMVcCVEzTE9nvdYsIc9yoOr90wM3R5eGG9qMuy5FTDdCp9OQQODeVR
+	9AZKOftvIk+g5wsjzDWFRQNybgDQrsMyjSf147Kn1/eZFwEW/jpeR0CNmhah3tFLfNNujuCk/58zc
+	CEyPilM+pCW5sVFLfvjSyl7Qv60vNla0KqciAYhPa3bTuRgDRpjsOBq9JM2sCrSP390zAtIr7O0hX
+	ZY+gqy+v6MD58d7IRIo/8ymmxXytpKmsZ8z9Vg26lpStqeg4HN3kprV4f3d3y7hNutc77aWUJhyVf
+	QIvdCsZ/lUemrcgySQ7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJYvm-0000000CMhA-1g5i;
-	Wed, 21 Oct 2026 16:12:46 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xJYvo-0000000CMjc-0V8n;
+	Wed, 21 Oct 2026 16:12:48 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJYvc-0000000CMTP-3k3Q;
-	Wed, 21 Oct 2026 16:12:36 +0000
+	id 1xJYvd-0000000CMTu-1NUE;
+	Wed, 21 Oct 2026 16:12:37 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8EB474479B;
-	Wed, 21 Oct 2026 16:12:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1142641FC7;
+	Wed, 21 Oct 2026 16:12:37 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1792599156;
-	b=V1AKN+hUQEhmgjm0wYRZG7snHlVnxQE5pSI9FKW/TCzF6Khr+f87coE8Cnu62Pk+YXg6
-	 7D0z7PRFyAENaBXH0VVC2/ik/WPhY2u8d2GyCNDI8PnrgH9AX+/XJ7+SwM0R2aZXAvfVH
-	 iI1qtdQ4stieYTvxCUvMKICbFwuKH4dTt29u+S9VUt0kQiugyK7oMLmq/PLNt7UOqQISk
-	 Anx7T+y82ExaUVALX/4q4As2GZ5I/oCpwzaaHHECVGWAkSo4c2fzZwC08Iq4Xg7QvvNpb
-	 DPqPw/qXSFFWzUsbM05SpzzbiQUz2ACeIaIvHE9EIKo1CfE6icTgI9q0Kfpn7yfmVLQ==
+	b=AskeLuO9DhVUVcQ2oPT+aeDX6JPA26PTuWs15MFNmhQhC+8odIIs3NK0HCFakO0zoSKA
+	 xObQ3bIVAy9z4BmOv0pLspnGCn/qDWWCF64gzNoE04+N4TKS7AOk0xVGOul4WO90RN76S
+	 p7/ppxqyGdzlplQNcmJGbb9/5Ty0wZxdv2FgKL3PH1LelZjnXTQ21bNCLkSOZ7gGEXD16
+	 72LbE+mW+gC/J3rYsvzsZdMhjuBH8/4yaDGieraDedB0LwpH+cfW2OwEasPI0FD5cF2Ry
+	 6KWxGA+PqEoBVC6T3DT+m7VEFpXg/Kd6HwYW+TKJT4YDCcXf7ecZCNJDLamIYDeXByQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1792599156;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=HkfHwPyLmt0lyg8sxRRrXUSzNOY48bkzXVEumriQRkI=;
-	b=dqDoS20fyPrd52S0C2OV53JBdMUqJw2XPA/xwDMXM6xQQdLHaUwx1/g9aJUEMTnrWlix
-	 QcmfDa2+laMmZZseOzGUDVDzmHoREArw7bmm3vwuDBuKF5veKNuCbUCPw2yRsRg8d6A3w
-	 z9l9VClgsX/1Ob5n36CxLgk5+q8rn3XY6AilUjhJEXxON2c7gGYMDN2dhnfyvN/oSagvo
-	 UZjwupfOqtp4ApVR8ZUOoCjo2pcG2Gf0vm9K9P8zau+t7Dizrp6kZskgzrZSbR/ykFGZk
-	 EXHkbIbn2xuNnjjN3TF3OMazrorhLoE+NnfADuQEeosIKpTpIpMJeFLU8M2qI5CcvqQ==
+	bh=ghjDVnN9LsVPKNNzN/vbJQ3mpejB87UEXyfdI53eas4=;
+	b=dNVDip+1leId2un+E63yr9C6CuWYVGP5+LR8n4gvTVVealxNybpgDWhyX8H01k9QjhLa
+	 qsL6TUELJYGLwpdP/HM4gUxqxX2sScIyj9Pnfbukp+tzpJEntydRYT52OAmSVgygByzY7
+	 PrunTgZ4F5WEhe/hgdRU/WDWvtq8qZXJXh21v3O68vJSTrRzHG+HuIyCBZPRsPmYH9I7e
+	 0Oj93bt8NevQh4yw81TkNOIjkOzZk9YfTLGA1hgWvRgz+gsryrlzND6XzZqXzq9Z5Juhb
+	 LLq7Atk2J4bvhYjpnVq7/frqgVxA7kUvLBwWsXXwF75O1hTzzynjWtdDKrAZQo1eyVg==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 033081F01579;
-	Wed, 21 Oct 2026 16:12:32 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id CC9401F0157F;
+	Wed, 21 Oct 2026 16:12:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1792599156;
-	bh=HkfHwPyLmt0lyg8sxRRrXUSzNOY48bkzXVEumriQRkI=;
+	bh=ghjDVnN9LsVPKNNzN/vbJQ3mpejB87UEXyfdI53eas4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=feOiJJ7CaEdz4v99fj7u0fDU4oEE8dM0UXT+qfqynL8DOF0iF3/EezTvUrBd/EC/l
-	 jpANYZh5G45vk99pDDJlpoOE9B6g558+gs2u4nkqDOOE3+rPDt6TbG4Js0zAx4qgfW
-	 rwwP6YBENPZ5c54O/ryZEhsp0Fhpt2sVyzNVnV5E9kDSOvy1kjv9pLygRtACtPPwkx
-	 Gh3CAp5Wiqk4QisanjuQhlpLyKWZvxxel7urfaHoWxqOcKLObXmeBGLnMsX7VR5Lik
-	 97qvwQNcZKh1/bUk10BHvZ5b0KSUke0/k9FcNa4ivBOP1A2pXBaWJDZ+TrFY2RrsH0
-	 g+3F02DYhYQcA==
+	b=J9Ef8cxYIo4Cf5DTgAn5U4aMl/aLMcL25vdKOdiGJ/3bXLAJBJzlXZEtNY357FKhP
+	 lY3h52ms1KOLKZvV59A9lgVE/1vzmG9uTORrrixiXptxvknJxR7/1471IVjsO26zyh
+	 rxoVbOdIN+4tsY47BM6cjMUBtIsjLiMaCHq78Zm8TSl3y9fut8E48mR59Q5sO7e7MO
+	 KHE48Z99IGvW3KMYEqQrgdASVloy/u18Vwl6TyJ+kTgeqsDuPbi7YKKbhWljTtCBen
+	 aJHYbMBRHokYO6h8juffFIDZEshXh8tx20Mxe7d+PWFofQW/j4sAznNUQmhyb4uZCD
+	 JxRiB2FKwTTSQ==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 64558433CD;
+	by lkml.kernel.org (Postfix) with ESMTP id 6D084433D1;
 	Wed, 21 Oct 2026 16:12:23 +0000 (UTC)
 From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
-Date: Thu, 22 Oct 2026 00:11:09 +0800
-Subject: [PATCH 12/27] dt-bindings: serial: snps-dw-apb-uart: Add RK3572
+Date: Thu, 22 Oct 2026 00:11:10 +0800
+Subject: [PATCH 13/27] dt-bindings: mmc: rockchip: Add RK3572 controllers
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261022-add-board-ok3572-c-v1-12-0b0fd85a31ee@qq.com>
+Message-Id: <20261022-add-board-ok3572-c-v1-13-0b0fd85a31ee@qq.com>
 References: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
 In-Reply-To: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
 To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
@@ -113,11 +113,11 @@ Cc: Cunhao Lu <1579567540@qq.com>, linux-clk@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, linux-phy@lists.infradead.org, 
  linux-usb@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792599138; l=863;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792599138; l=1519;
  i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
- bh=D1FXViPVwujIOTT9x4HkdtazDzg/Nd0v50dhD62lfCw=;
- b=bXyhxcCQAaxGkzUkidwaNd9WBOseIQ1bn1C/gLwHjeftMUjLXEIu+l0mtI8wNJbpQezhprCb9
- eiCgnJoV0jgBq1kJsV9P1ps6h5idPRU5RDnkGRCmnonnKH3T6X+xldJ
+ bh=sQ7kmloA49WrSzIqOzAxP/3d4RkCk4R1kcxdgqDQWos=;
+ b=pqqKJGkd2U1YPXo/wn/BctY3QQzArrjEr1/m2ewIpOrS/UlTX1rRSsgpmqGc85FC4oFNDXrKO
+ nVCbtKiT6XzC4OkVHRePSPO6HPP3iAfEoFVxQaAbRErJlDoPQIpFCFT
 X-Developer-Key: i=1579567540@qq.com; a=ed25519;
  pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
 X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
@@ -146,25 +146,40 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Cunhao Lu <1579567540@qq.com>
 
-Add the RK3572 UART compatible using the Synopsys fallback.
+Add the RK3572 SD and eMMC compatibles using the RK3576 fallbacks.
 
 Signed-off-by: Cunhao Lu <1579567540@qq.com>
 ---
- Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml   | 1 +
+ Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml | 3 +++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml b/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
-index 664305de4986..4567f8e76c9f 100644
---- a/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
-+++ b/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
-@@ -70,6 +70,7 @@ properties:
-               - rockchip,rk3528-uart
-               - rockchip,rk3562-uart
-               - rockchip,rk3568-uart
-+              - rockchip,rk3572-uart
-               - rockchip,rk3576-uart
-               - rockchip,rk3588-uart
-               - rockchip,rv1103b-uart
+diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+index 21ecfaa454f45..08db29af3e969 100644
+--- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
++++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+@@ -50,6 +50,7 @@ properties:
+       # for Rockchip RK3576 with phase tuning inside the controller
+       - items:
+           - enum:
++              - rockchip,rk3572-dw-mshc
+               - rockchip,rv1103b-dw-mshc
+           - const: rockchip,rk3576-dw-mshc
+       - const: rockchip,rk3576-dw-mshc
+diff --git a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+index cd823a3ef2130..a4e04fedfd33d 100644
+--- a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
++++ b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+@@ -13,6 +13,9 @@ maintainers:
+ properties:
+   compatible:
+     oneOf:
++      - items:
++          - const: rockchip,rk3572-dwcmshc
++          - const: rockchip,rk3576-dwcmshc
+       - items:
+           - enum:
+               - rockchip,rk3528-dwcmshc
 
 -- 
 2.34.1
