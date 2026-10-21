@@ -2,109 +2,85 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 961B0606A31B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Oct 2026 18:06:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2E675606A31B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Oct 2026 22:27:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cscqLnl/;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=GIsMc5I5;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=kUmatMKE
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ppY/92LY;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=ahip0nLo
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3kJeVhcbIeBe1C/Bd9FOj6LYF+sTdAByHRbSu9W68yw=; b=cscqLnl/Bbznki
-	lQm5D8suhObmQM6Bfovut+LXQZTY7jILTPUOaPBYuJ6e0+cvf3Yg5bWtKP1ag73jL2o2Vq5eDilT+
-	NsHTvBoNDhVyw6IqhMUgFfNWOsEtRwlRSjUxkdXZKTy/CEg8ThVEYgy334MacVI5Dptv+qCziPcOg
-	oANuT17/tvnBmuahoLkwUGGLw8MFN3O7TChojctZ/GmJWBn27VXhFATZ0XIYbs9DXCzqEB0hFmL88
-	WEmJvUBNowIYwv5hIsBtzRHOCYoF0L7NHNrCA08CosFqLRN7gw36aII75qKTIKvWjzBhFceOL89Iy
-	JJd7IRkdgd8osl+2UqAg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pttdFRNSR4edPMpYEV8NpeifpllXha1jzl2EGMvFadI=; b=ppY/92LYaIJXRj
+	t6OHNnZ/EwUUcA3NeoXYHwTlOp+FX1McV1eYCtpneL7Tbs95k32k48MT3FKeY9n4nz1RvYR/0J3rY
+	SEY9tU3WvGcdP/gS2ASzl8oObmN6IqUjObsxFnYNeSsB/fAuBMJq+fWXzIYo+3nyYNpm6R01222Dk
+	L0/zI7jtjROtgsFuW8Th02bYZdeNBxtbX1uJLFXA4MQBktjKHbfHGSG+zKxJCBGqrgvByKINgR7rK
+	TkKpTcmQpJvc+X8jdlhlXbnTnLhNsyP9xe+do08Ul3VSMxHs9692Ize52Wb3pG1U8DOzfxrDE2LZA
+	0HuxS1RWRZKHnD+8kaTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJahZ-0000000CcKB-30hZ;
-	Wed, 21 Oct 2026 18:06:13 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xJemH-0000000Cyf2-1cEI;
+	Wed, 21 Oct 2026 22:27:21 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJahF-0000000Cc4z-0WoQ;
-	Wed, 21 Oct 2026 18:05:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:From:Sender:Reply-To:
-	Content-ID:Content-Description:In-Reply-To:References;
-	bh=hOD5mLcBK7GdDzc+hP/nBfTeNhiJpFKyDAI5dsuQmz0=; b=GIsMc5I5AiBEmtzkakH2pvFS5V
-	G+CcIkIlRQd3k8dYe4Yk3gQAYY45Zjkh52vBjojwlKeDJYEHXwo+ab0GczhrLPrbOmE3V3fRNV4xZ
-	arxUOc70kjKmhF3o3IQtbMB5gETqY9cvMXcETLxfkNg19TYZbTFyor/x5jCZr2tdCCcr4S3HB9wOi
-	/f80/PDDEADQrOvVV1MsXT2whSaBtWh9h2k3WWXKCyxWzR4uP2AxgZAFbwISxvXxR8tB9VstUEEwp
-	rXz1J+XGYe2IXK3WjSKW/8iqQ1m8M3xV9PMd1neQP9tEMP1zhHtOtpjt1/xh49lzRTeYJ8tXpCe8I
-	tffT1+9g==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xJahB-000000066hI-3T5K;
-	Wed, 21 Oct 2026 18:05:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1792605943;
-	bh=GBz8KxB0mYTo8vmR2wcwHafVwvgU21md1OrcI7l2HBc=;
-	h=From:Subject:Date:To:Cc:From;
-	b=kUmatMKErNeM9ljzSWIMX+UQfYouqzl3ucc7gFAwICBSvYokGLFupD/ydnSGdfnhF
-	 lAa+5EeOTkuACfy0hVyAbMqPFyEtqTa9iIjPfnXKqBo9NW02XW3LHuyRPUNo6Dalye
-	 PqIMadd48zR/igZuF4++hx+9Ai8FGce2XyjuRYTyeYS61T7Xg7k2dwxkJzuLO/xQ2f
-	 iLklXjn3QYVvoIJb2tBT4NCOGiKYgER0ue3DGDX3rVSezsdM4UcyrrasbRACIdp0Gp
-	 6T0VUgEZUe5s0DqASTHGXt+NfsdEDZP3ORtMu+IRAjmxoQvKe+xEeqsPYt7/5GECFT
-	 ABOuFIaTyHi0A==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9ECB017E07EC;
-	Wed, 21 Oct 2026 20:05:43 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 60A3D48002B; Wed, 21 Oct 2026 20:05:43 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v18 0/7] usb: dwc3: introduce Rockchip glue driver
-Date: Wed, 21 Oct 2026 20:05:25 +0200
-Message-Id: <20261021-b4-rockchip-dwc3-rockchip-glue-v18-0-60000d03fca2@collabora.com>
+	id 1xJemD-0000000CyeR-0ig3;
+	Wed, 21 Oct 2026 22:27:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=/Fy3vYhdZ1fZJw/ef1BHjs8s8zcYhlFJOKnLAYjNcDY=; b=ahip0nLoapq7XNH6QNpOVtb4m1
+	v9qkpz3ynmvBUaq1pY2hva8QWaxHgiHoOeSnNhhju1iR+aDBpS/dLNMOwzBYJvRU8rBPIPtekaBih
+	UFFW3nOQB74FBnrB9qM1ynbrPFfu2WgCeIeDxxh5fTnvTP1vua3IhW9hjFaW7tpx+IUehaWhXHRtw
+	7/hAQlyEEAMuIHnEvSMdaZpb8O+NYdHRn0bTvbMeVN7wUbB1Um8gTTRDs1MkuumU5I+IKAMeHv3gJ
+	4iSFShsmBWdNiqU6W/oEkAqlpYEgjRHYL1hTuijyP7XwhRv89sbfIX1K7DnO5doVnMZhhbY111jaH
+	pVKUI+cg==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
+ Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Elaine Zhang <zhangqing@rock-chips.com>, Lee Jones <lee@kernel.org>,
+ Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>,
+ Richard Cochran <richardcochran@gmail.com>, Ulf Hansson <ulfh@kernel.org>,
+ Andi Shyti <andi.shyti@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Jisheng Zhang <jszhang@kernel.org>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, David Wu <david.wu@rock-chips.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>,
+ Maxime Chevallier <maxime.chevallier@bootlin.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
+ Jaehoon Chung <jh80.chung@samsung.com>, Shawn Lin <shawn.lin@rock-chips.com>,
+ 1579567540@qq.com
+Cc: Cunhao Lu <1579567540@qq.com>, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ mfd@lists.linux.dev, linux-gpio@vger.kernel.org, netdev@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-i2c@vger.kernel.org,
+ linux-serial@vger.kernel.org, linux-mmc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-phy@lists.infradead.org,
+ linux-usb@vger.kernel.org
+Subject: Re: [PATCH 07/27] clk: rockchip: Add RK3572 clock and reset support
+Date: Thu, 22 Oct 2026 00:26:36 +0200
+Message-ID: <2339330.72vocr9iq0@diego>
+In-Reply-To: <20261022-add-board-ok3572-c-v1-7-0b0fd85a31ee@qq.com>
+References: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
+ <20261022-add-board-ok3572-c-v1-7-0b0fd85a31ee@qq.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4XOy07DMBAF0F+JvMYofsSPrvofiIUf48aQ1sVOA
- qjKv+OmFSCElOUdzZy5F1QgRyho11xQhjmWmE41EPXQINeb0wFw9HWAaEtFqwnHluOc3Kvr4xn
- 7d8d+0mGYAGupwTDJOs8Zqsg5Q4gf64en51suk30BN17V+0aGt6m+Hm9ryJoC2KXjMY67RoVOB
- B+YV86iq9DHMqb8uVaeyXpwL9dtlZsJbrEUzNqOC0U57F0aBmNTNo/138rPRPwyKd82RUUJFYa
- CJow59i8qv1HS1otNVFZUSRG0UJoBDX/RZVm+AGE++sC9AQAA
-X-Change-ID: 20260914-b4-rockchip-dwc3-rockchip-glue-979ea3735d43
-To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Manivannan Sadhasivam <mani@kernel.org>
-Cc: Igor Paunovic <royalnet026@gmail.com>, linux-kernel@vger.kernel.org, 
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, 
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5152;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=GBz8KxB0mYTo8vmR2wcwHafVwvgU21md1OrcI7l2HBc=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrY/vfbPeL02jCoNIekbPtoQlNPY+XtBmtvX
- cWUYUEIHQl93okCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq2P73AAoJENju1/PI
- O/qa8b4P+wYNFLYmfkpGcFycLnG2Zl0B1mN+MmmzH3Y5PVp9rjv7vePW9Ie0U5yb3GUtbB3Cq/o
- nfNuINH27ifU6aPxRVG45ylk0SPJM08wzwoY3gBPKo9tbgZlcxODxrzFggr5tqKjlccqzXb83Aw
- IyaC/JQS0XcNRt6DxK22rCxYLyLKu+O2ueEVX4CDhER8AHCzgtsv9Nt3ORxhztldk0IxfIo6Xl7
- kHGaIw6olCK3Q2W1Auahkc832leCOlqRde2p8DQd3GcDLz/amq7+8yRvZ4px1+0it/2b8kOmM7a
- QGW+QQj2RN9avpWfZ2KbJGYtUm7aS8PnbAFmnlsNZuEAsuc8hNscZlKFIcaSH/qm3rIJxihfpM/
- 9wV71i21sj5BMubWZrQU/AuoPEm8sp69RLnG5gp9ofRhh6O7hVMq9P+wZAnsaatTFw6id96/ddE
- rksO6eOFzTPvRdiqH7Zkx7kAmFcYQq4jJQ0UBLxZbo3A/YlgcPWM+j9duFR7CSAWByFgITLo9Ys
- MgjRz9JetqE1L5S19rLtJtc+wYFqHxF05x6UB49fJXw6n5oYOL+A9Xy8l6+4DeRqLEFiWgxsxlI
- Z2Psj+1qW5cUu6c7tPYPEw3iYVZD9u05mB2vU6+QUlImDqBHW+2Ko666m7L6RGC3DKUgACf7foZ
- fbGs+L7TCFIPO1NUX6Kg1Cw==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261021_190549_990332_7DDCC929 
-X-CRM114-Status: GOOD (  25.00  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20261021_152717_408357_6BAB93D8 
+X-CRM114-Status: GOOD (  14.39  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,116 +90,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The recent Rockchip platform have a combined PHY, which does USB3 and
-DisplayPort as well as muxing the lines in arbitrary order. Changing its
-enabled functionality requires a PHY reset and as the PHY provides a
-clock to the DWC3 controller, this can result in an SError. Apart from
-that the PHY might not start up correctly when the DWC3 PIPE interface
-is running. This series prepares a Rockchip specific DWC3 glue driver to
-help out with these problems. To become useful more patches are needed
-on the Rockchip USBDP PHY side, which are send separately.
-
-This was split from the USBDP cleanup series. v17 has a dependency on
-the patches that have been merged to phy's for-next branch. There are
-some additional Rockchip USBDP phy fixes, which depend on this series
-(which is effectively also a fix).
-
-Changes in v18:
-- Link to v17: https://patch.msgid.link/20261016-b4-rockchip-dwc3-rockchip-glue-v17-0-876f96893e2f@collabora.com
-- Always clear UDPHY_MODE_USB in rk_udphy_usb3_phy_exit (Sashiko)
-- Add reset quirk stub functions for CONFIG_PHY_ROCKCHIP_USBDP=n (Sashiko)
-- Add NULL check in phy for loop, possibly needed on older Rockchip platforms (Sashiko)
-- Hold DWC3 lock in dwc3_rockchip_vbus_handler (Sashiko)
-- Drop 'struct dwc3_rk_phy_nb' left over from prev. versions (Sashiko)
-- Rework the runtime PM code to rely on PHY side serializing it for us,
-  which simplifies things (Sashiko, myself)
-- Skip reset in high-speed only mode, as the USB3 PHY is unused and
-  it does not matter that it wouldn't work. (myself)
-- Due to the rework, make the reset callback return void (myself)
-- Replace useless cleanup from unregister function with WARN_ON; unregister is
-  only called after phy_exit and afterwards reset function can no longer
-  be called (myself)
-- Use modern guard helpers for the spin locks (myself)
-
-Changes in v17:
-- Link to v16: https://patch.msgid.link/20260924-b4-rockchip-dwc3-rockchip-glue-v16-0-126a2e9133c3@collabora.com
-- Add new patch adding just sw_mode, which was part of the "phy:
-  rockchip: usbdp: Fix power state handling" patch in USBDP cleanup
-  part 3 series; sw_mode will be used by the dwc3/usbdp reset quirk now
-- drop generic PHY reset notifier API; I discussed this series at Linux
-  Plumbers Conference with Vinod Koul and he prefers a local driver
-  hack/quirk instead
-- rework USBDP and DWC3 rockchip glue for the local driver quirk
-  using direct function calls
-- Ensure that the reset handler in DWC3 is only called when the PHY is
-  initialized (and thus DWC3 is running)
-- Also set vbus in the last patch when dwc3 is configured to device only
-  mode (in contrast to dual-role mode being in device mode).
-
-Changes in v16:
-- Link to v15 (sorry, I missed force setting the revision for this
-  part in the series split, so the series says v1 in the patch subject):
-  https://patch.msgid.link/20260915-b4-rockchip-dwc3-rockchip-glue-v1-0-763bb546824e@collabora.com
-- Update first patch to also build the PM functions even when
-  PM is disabled
-- Add new patch for defining an empty usb_udc_vbus_handler stub
-  when USB_GADGET is disabled
-- Add dependency to Rockchip DWC3 glue, which disallows the
-  configuration with USB_DWC3_ROCKCHIP=y and USB_GADGET=m
-- Collect tags
-
-Changes in v15:
- - Link to v14: https://patch.msgid.link/20260813-rockchip-usbdp-cleanup-v14-0-b5ad9c68fa11@collabora.com
- - Avoid #ifdef for CONFIG_PM in the new glue driver (Thinh Nguyen)
- - Do not add #if IS_ENABLED around the DT compatible blacklist in the
-   generic driver, using the glue driver should be mandatory as the
-   generic driver results in arbitrary system hangs. Thinh Nguyen suggested
-   updating Kconfig for this, but did not clarify what that means.
-   Current Kconfig works the same way as the other mandatory glue
-   drivers.
- - Split series to simplify review
-
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
-Sebastian Reichel (7):
-      phy: rockchip: usbdp: Track PHY power state
-      phy: rockchip: usbdp: Add reset hook support for dwc3
-      usb: dwc3: rockchip: introduce glue driver
-      usb: dwc3: core: add post PHY registration hook for platform glue
-      usb: dwc3: rockchip: add USBDP PHY reset quirk
-      usb: gadget: define stub for usb_udc_vbus_handler
-      usb: dwc3: rockchip: fix USB-C reconnect in gadget mode
-
- drivers/phy/rockchip/phy-rockchip-usbdp.c |  82 ++++++++++-
- drivers/usb/dwc3/Kconfig                  |  13 ++
- drivers/usb/dwc3/Makefile                 |   1 +
- drivers/usb/dwc3/core.c                   |  17 ++-
- drivers/usb/dwc3/core.h                   |   9 ++
- drivers/usb/dwc3/dwc3-rockchip.c          | 227 ++++++++++++++++++++++++++++++
- drivers/usb/dwc3/trace.c                  |   3 +
- include/linux/phy/rockchip-usbdp.h        |  31 ++++
- include/linux/usb/gadget.h                |   5 +
- 9 files changed, 383 insertions(+), 5 deletions(-)
----
-base-commit: 8f56fdf3d8cb9f1dbdc93bf9ac816698aa6f70b7
-change-id: 20260914-b4-rockchip-dwc3-rockchip-glue-979ea3735d43
-
-Best regards,
---  
-Sebastian Reichel <sebastian.reichel@collabora.com>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpBbSBNaXR0d29jaCwgMjEuIE9rdG9iZXIgMjAyNiwgMTg6MTE6MDQgTWl0dGVsZXVyb3DD
+pGlzY2hlIFNvbW1lcnplaXQgc2NocmllYiBDdW5oYW8gTHUgdmlhIEI0IFJlbGF5Ogo+IEZyb206
+IEN1bmhhbyBMdSA8MTU3OTU2NzU0MEBxcS5jb20+Cj4gCj4gQ1BVIGNsb2NrcyBhcmUgbWFuYWdl
+ZCBieSBTQ01JLiBLZWVwIEJQTEwgYW5kIExQTEwgZW5hYmxlZCBmb3IgZmlybXdhcmUKPiBjb25z
+dW1lcnMuCj4gCj4gU2lnbmVkLW9mZi1ieTogQ3VuaGFvIEx1IDwxNTc5NTY3NTQwQHFxLmNvbT4K
+ClsuLi5dCgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszNTcyLmMg
+Yi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszNTcyLmMKPiBuZXcgZmlsZSBtb2RlIDEwMDY0
+NAo+IGluZGV4IDAwMDAwMDAwMDAwMC4uNzhmZDM1ZjVmMjdkCj4gLS0tIC9kZXYvbnVsbAo+ICsr
+KyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazM1NzIuYwo+IEBAIC0wLDAgKzEsMTk3MiBA
+QAo+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMAo+ICsvKgo+ICsgKiBDb3B5
+cmlnaHQgKGMpIDIwMjUgUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uLCBMdGQuCj4gKyAqIEF1dGhv
+cjogRWxhaW5lIFpoYW5nIDx6aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+Cj4gKyAqLwoKQXMgeW91
+IGRpZG4ndCB3cml0ZSB0aGlzIGRyaXZlciBvbiB5b3VyIG93biBhbmQgZXZlbiBrZXB0IHRoZSBv
+cmlnaW5hbAphdXRob3IsIHBsZWFzZSBhbHNvIGNyZWRpdCB0aGUgb3JpZ2luYWwgYXV0aG9yIGlu
+IHRoZSBjb21taXQgaXRzZWxmLgoKVGhpcyBjYW4gYmUgZG9uZSBmb3IgZXhhbXBsZSB3aXRoIHNv
+bWV0aGluZyBsaWtlCglnaXQgY29tbWl0IC0tYW1lbmQgLS1hdXRob3I9IkVsYWluZSBaaGFuZyA8
+emhhbmdxaW5nQHJvY2stY2hpcHMuY29tPiIKYW5kIGluIHRoZSBjb21taXQgYWxzbyBoYXZlIGJv
+dGggc2lnbmVkLW9mZnMtYnksIGFrYSBFbGFpbmUgZmlyc3QKdGhlbiB5b3VycyBiZWxvdyBhcyB0
+aGUgc3VibWl0dGVyLCBpLmUuIGxpa2UKCisrKysrKysrKysrClNpZ25lZC1vZmYtYnk6IEVsYWlu
+ZSBaaGFuZyA8emhhbmdxaW5nQHJvY2stY2hpcHMuY29tPgpbZG9jdW1lbnQgd2hhdCBjaGFuZ2Vz
+IHlvdSBkaWQgaW5zaWRlIHRoZSBicmFja2V0c10KU2lnbmVkLW9mZi1ieTogQ3VuaGFvIEx1IDwx
+NTc5NTY3NTQwQHFxLmNvbT4KKysrKysrKysrKysKClRoZSBzYW1lIGFwcGxpZXMgdG8gYWxsIGNv
+bW1pdHMgY29taW5nIGZyb20gdGhlIFJvY2tjaGlwIHZlbmRvciBrZXJuZWwuCgoKVGhhbmtzCkhl
+aWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
