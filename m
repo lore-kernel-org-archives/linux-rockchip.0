@@ -2,86 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 91240606A319
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Oct 2026 10:16:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E06F6606A319
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Oct 2026 10:22:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gq6tQ035;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=VDynZMsn;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=cknow-tech.com header.i=@cknow-tech.com header.a=rsa-sha256 header.s=key1 header.b=MzoRXlTX
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=y72Uppag;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=cknow-tech.com header.i=@cknow-tech.com header.a=rsa-sha256 header.s=key1 header.b=bu88LMKg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KtsKpsAz13U5ilaFs9ZBUsGggLfXptCLpDnlkFAncV4=; b=gq6tQ035q+oBru
-	DS1KCxs+L9qfw6msXjDziohFTw/F+SGQtOpJROJIc83ihDrOVMlLxEjnTBDLAGCldOE4pJK1Dd1Li
-	nT/HjM8abJ1HLpVR/sq+1+LF1vVVfvZIdJrEyKm0JJeQDZjBqgsf1ONPF5fYfCLazcSADJnuvYC/j
-	p2/HAjXJD8tfzrDiKY0h2Z40sV9dCFP/6psu5DLNqa+bpPeslBiEva/2PTpI1I/gl9KvWfOFwaNX8
-	R0kjD9ciFMtBf6h2m5zpB1fNf5NvlH2vYhC2QAbjEN1sZ0MgLBizcJfU5iAqqjjvaASkQlilBGuRh
-	EnUBiWxRbQnMxrR5LUYA==;
+	List-Owner; bh=zdk+F3wA1pl2LgA5H3vf5THe4THpQ0Zlc3FT5VYhOIE=; b=y72UppagNPqJ0e
+	D959apkMC5k/yIoNrz8XUQJr4jPgmpU1/k6DqqcyHAWTbtY6Uyi7PTl4yHKBcizUZ5vT3DyqyC0HE
+	u87TZLXQHwKWAcH9Iho4tXSXf9LUm5ms4UjIlRSYfVIdL49iJiHgcl74n0yPgxVQ8nrh84Lhnd92K
+	EOXHhKj/6Yv5SDujwXVBXDQ74btd9gjnvNaq+ntJBA8qGviBhdgbtEPhsbkYuN5kcYF5i22Jchlnt
+	beJ5AdBkLE5R38xyWH5hrPtFgD0/08pMTKQ02glc/cNDZLUgIBLZR5Tb+fYwMWDJcafjU+M6FP2Ym
+	h0gXK+be2aKwvcoMDKqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJTMS-0000000BaIc-2jQN;
-	Wed, 21 Oct 2026 10:15:56 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xJTSP-0000000Bb0P-3Ftb;
+	Wed, 21 Oct 2026 10:22:05 +0000
+Received: from out-244.mta1.migadu.com ([2001:41d0:203:375::f4] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJTMQ-0000000BaI2-2wAc
-	for linux-rockchip@bombadil.infradead.org;
-	Wed, 21 Oct 2026 10:15:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=qID+dEtKjHnTB7zRrjAZ+x1ovn7794ILO31jRDajG3g=; b=VDynZMsnOFqsxMDe06Akrps2/d
-	B6/vEQ8avZNpLkh0+5MVF5s8Jb6tBLEu5FFxG5kmS/3ntvFOYvsFcwns2qZtVEVsUeNWiSMftdsQb
-	IIy61MKmRp+Cz7OI/QZiyiYZC4+XhY3hW4gC4OJR0UaDWqCPjgTpSuDMfbjYYyDUHt0QgFDoVONo/
-	in8KDEzV/RwX6oZNsxhbjYNlO9jWUntBq1SJZLoq/oS/sPCM01aBu6CZGHTJrGSoIbiXjBwVJ0GSR
-	hiqxoLu4Hqz0RG5ZEqty+orvT7fiD9jc6q6/0bQAoubjr7TNu95HKD10oH2nczC1iw+E+xRtVfvCG
-	b1qwjO0A==;
-Received: from out-159.mta0.migadu.com ([2001:41d0:1004:224b::9f] helo=mta0.migadu.com)
-	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xJTMN-00000005h7L-3Eho
+	id 1xJTSM-0000000BazA-3zpy
 	for linux-rockchip@lists.infradead.org;
-	Wed, 21 Oct 2026 10:15:53 +0000
+	Wed, 21 Oct 2026 10:22:04 +0000
 X-Envelope-To: linux-rockchip@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=gsCMZZdvoKKiSu7dqO9JkNt1TMT38UkvVw1xwlAFKHE=;
+DKIM-Signature: a=rsa-sha256; bh=M7vQgWT3GoO7sduxULKgRFfbTcBneeSPs/0sueXAB60=;
  c=simple/simple; d=cknow-tech.com;
  h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1792577742; v=1; x=1793182542;
- b=MzoRXlTXc+JAtToIuPIerhcflb10/HaSykfPkyk9peAW+RP8wlgKsKIHjPMmynjgBKnzgFC9
- jp2IBpB2CbkGAKg+MEnPw4kXJyQY2aQaqHFgTix9HznEDdBq3Zh4/RFks6Ue/mIipL4qYZ4TpQU
- FpjjVtToQ3hFu5COTGPm30qRwdaJI7OftEDPaqFNDJBcAJ+GY5K315TPi/t8cAg14Ruf+bwRr54
- xTB2h0fi/4PspJ65z4lxfxAFyYkircfCMmMUNUT7xRNgeZQIzE/4phVfXsVgELWE5G7+ZP7IE1J
- 7zX2PrTFxEfv+XnqKhvDRSDqcV6psfzxUPOqfxqHmSisw==
+ t=1792578120; v=1; x=1793182920;
+ b=bu88LMKgSTxv6LpzEV6zMT1oIN3YbHyyI+rZ2+bUVkAJ/4StqocrlrDPhTm5hKgGmg9jYwez
+ wGddRvL7ngAQN2LsBuVpNloKuGP30jP0rM/YCAJnLTobxrxRtXnq30voD4jZ0Krxj+325L0Alyq
+ gypcDQfhvLjKR2gdfO6wi8V0UyrB6m/BkKxmIEvMXI5KN/6SfU/ZkpoKylkAUzx4QLzrYcOHH9v
+ cHM+Zow1zBBUGUWsy6LkvnmzF9v5cLW2mebefqkJ9pnzhRrUv6Cz609SY1uBvy3B1U1B8b25UQq
+ QjfPHYZ2unoeFmabW+4O/0cZ7ExkIEvZ0pf15NVlBI5Pw==
 X-Envelope-To: linux-rockchip@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 6805060a84a1d670;
-	Wed, 21 Oct 2026 10:15:38 +0000
-X-Mizu-Trace-ID: 6805060a84a1d670
+Received: by smtp.migadu.com with ESMTPS id adc20fdeee7e491e;
+	Wed, 21 Oct 2026 10:22:00 +0000
+X-Mizu-Trace-ID: adc20fdeee7e491e
 X-Migadu-Flow: FLOW_OUT
 From: Diederik de Haas <diederik@cknow-tech.com>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+To: Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
 	Manivannan Sadhasivam <mani@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	linux-pci@vger.kernel.org,
+Cc: linux-phy@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Diederik de Haas <diederik@cknow-tech.com>
-Subject: [PATCH] PCI: dw-rockchip: Remove redundant dev_err()
-Date: Wed, 21 Oct 2026 12:14:57 +0200
-Message-ID: <20261021101533.609118-1-diederik@cknow-tech.com>
+Subject: [PATCH] phy: rockchip: inno-usb2: Remove redundant dev_err()
+Date: Wed, 21 Oct 2026 12:21:20 +0200
+Message-ID: <20261021102155.609575-1-diederik@cknow-tech.com>
 X-Mailer: git-send-email 2.55.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261021_111551_947674_0F27118A 
-X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-CacheID: sfid-20261021_032203_165563_9DEC3D5E 
+X-CRM114-Status: UNSURE (   8.21  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,37 +90,76 @@ So remove the now-redundant driver-specific dev_err() calls.
 
 Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 23 ++++---------------
+ 1 file changed, 5 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 14976861f8ef..a4dbfc52c2f1 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -718,10 +718,8 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
- 	ret = devm_request_threaded_irq(dev, irq, NULL,
- 					rockchip_pcie_rc_sys_irq_thread,
- 					IRQF_ONESHOT, "pcie-sys-rc", rockchip);
--	if (ret) {
--		dev_err(dev, "failed to request PCIe sys IRQ\n");
-+	if (ret)
- 		return ret;
--	}
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index e47b89015586..0a8a22e7aa9c 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -1183,10 +1183,8 @@ static int rockchip_usb2phy_port_irq_init(struct rockchip_usb2phy *rphy,
+ 						rockchip_usb2phy_linestate_irq,
+ 						IRQF_ONESHOT,
+ 						"rockchip_usb2phy", rport);
+-		if (ret) {
+-			dev_err(rphy->dev, "failed to request linestate irq handle\n");
++		if (ret)
+ 			return ret;
+-		}
+ 		break;
+ 	case USB2PHY_PORT_OTG:
+ 		/*
+@@ -1202,11 +1200,8 @@ static int rockchip_usb2phy_port_irq_init(struct rockchip_usb2phy *rphy,
+ 							IRQF_ONESHOT,
+ 							"rockchip_usb2phy_otg",
+ 							rport);
+-			if (ret) {
+-				dev_err(rphy->dev,
+-					"failed to request otg-mux irq handle\n");
++			if (ret)
+ 				return ret;
+-			}
+ 		} else {
+ 			rport->bvalid_irq = of_irq_get_byname(child_np, "otg-bvalid");
+ 			if (rport->bvalid_irq < 0) {
+@@ -1221,11 +1216,8 @@ static int rockchip_usb2phy_port_irq_init(struct rockchip_usb2phy *rphy,
+ 							IRQF_ONESHOT,
+ 							"rockchip_usb2phy_bvalid",
+ 							rport);
+-			if (ret) {
+-				dev_err(rphy->dev,
+-					"failed to request otg-bvalid irq handle\n");
++			if (ret)
+ 				return ret;
+-			}
  
- 	/* LTSSM enable control mode */
- 	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1);
-@@ -764,10 +762,8 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
- 	ret = devm_request_threaded_irq(dev, irq, NULL,
- 					rockchip_pcie_ep_sys_irq_thread,
- 					IRQF_ONESHOT, "pcie-sys-ep", rockchip);
--	if (ret) {
--		dev_err(dev, "failed to request PCIe sys IRQ\n");
-+	if (ret)
- 		return ret;
--	}
+ 			rport->id_irq = of_irq_get_byname(child_np, "otg-id");
+ 			if (rport->id_irq < 0) {
+@@ -1240,11 +1232,8 @@ static int rockchip_usb2phy_port_irq_init(struct rockchip_usb2phy *rphy,
+ 							IRQF_ONESHOT,
+ 							"rockchip_usb2phy_id",
+ 							rport);
+-			if (ret) {
+-				dev_err(rphy->dev,
+-					"failed to request otg-id irq handle\n");
++			if (ret)
+ 				return ret;
+-			}
+ 		}
+ 		break;
+ 	default:
+@@ -1491,10 +1480,8 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 						IRQF_ONESHOT,
+ 						"rockchip_usb2phy",
+ 						rphy);
+-		if (ret) {
+-			dev_err_probe(rphy->dev, ret, "failed to request usb2phy irq handle\n");
++		if (ret)
+ 			return ret;
+-		}
+ 	}
  
- 	/*
- 	 * LTSSM enable control mode, and automatically delay link training on
+ 	return PTR_ERR_OR_ZERO(provider);
 -- 
 2.55.0
 
