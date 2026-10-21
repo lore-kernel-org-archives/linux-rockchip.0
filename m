@@ -2,82 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DC87660A4ADE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Oct 2026 16:13:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B1AC6079715
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Oct 2026 16:13:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kv1832xd;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=epttRTa+
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eeuSt+ae;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=No0xofZM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GzafqHXVt7sPqIIEWKDP/PEep7nzmhL38Klfo6xLOWk=; b=kv1832xdNxm6I5
-	ZNMAPTB8TO+cMciGUm9iOL3IfNAvH2kA4x+yUH45t6zTeiAqVICQcAHNrXnb9NYLe7QYMPNIPxwEr
-	Mii9Gjo/UaHAuJu0toZLMcQIitr4SJJ4TQWfV9kFCJl3HbOUUG7y1Gpi4DPnYQyiNJQuLQpBV6QEg
-	XyGUsio15Lfqsp5rspn9lIWeYh00jGb+14OWQb4dHBHtPVSVrBaYDsRppPNhOUuUwkUT5bMnSGoad
-	34yLdIwDngFdA3VmUVHbe3QBIN2PTrbpyZWQywGmfTMCPK6RwG+exuetzsAqa/k8L8EBhwhZBocDk
-	jPR3irnoEKCHfACk3iNw==;
+	List-Owner; bh=GSctFRrN8AlC5UuysetnrjhuXr03JqOfOovrl9lHzRg=; b=eeuSt+aeHpeZ2E
+	Vmf0opvoe1A31grC78Jerr8oYrpJDcxrNWKAZqwEzKkqnVunGK3yxnBXHBCyqAlbxCeKEReXgZ2zP
+	nLmaPr2Noped8YlkTF3ck0PaABoxYH+ch88TjkGAAPwdT5S/TprtRw1CcurvN8xC2oQ3XmqyNHtH4
+	sOzS4reebdJpQXi8WMdyH7ZZelp7FtT0P4p979E/qDkrECBe7NsO9IzC6QTErTfEUr/pWAjasWf1Z
+	ME982ZZLdJbUsyvCLmaVfWUPLgBZ0uIq78DZwYOdSgd+1ArlSbGzg+ujOxLIKSTOwGYGUmh5VeB88
+	BYWyh1X8TSymV1W5VYWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJYw2-0000000CN5G-3iVQ;
-	Wed, 21 Oct 2026 16:13:02 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xJYw3-0000000CN5y-3oSA;
+	Wed, 21 Oct 2026 16:13:03 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJYvh-0000000CMZR-2bhd;
+	id 1xJYvh-0000000CMZS-3Fwz;
 	Wed, 21 Oct 2026 16:12:42 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5F7EF41740;
+	by sea.source.kernel.org (Postfix) with ESMTP id 7716844791;
 	Wed, 21 Oct 2026 16:12:41 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1792599161;
-	b=JorBuyBlW1euBntLPTQOqS+U7eXgpC6EvYKr/kep3jo9wYPZTtVLe2AOoAQWFxkuYh6x
-	 G3gzkPyg1BsuzK+h40qNJ1nRJtVNe6HRGlPDfzXvSCJOhTlA7RkeZzUoLfsSS73H6Db4H
-	 DYkMlV7F9/6cH/6sqTXrhNO0P+OnQZkg2m2D+vZwDDRrHDOz6c3DYxSxyAPwAck2UuTAi
-	 2p4tYtfLDvdDv39OWJJMMtIMQhLlpBbuUKbw6N2uQnQzk99zF8q/NxeqkWXZSZ66WQJ4B
-	 PatO3V/O6bH/swKlKUuRGEwh16i+ho//lNJ/jXPu04aTFb0LKOcb0NJ1yarA57ROPZg==
+	b=RQsOV/TskJajjHT07pmXIfVkyn41wrMBcQGub5xgeFNQEnLkez9qpgj6Anj9/bjmyPEA
+	 3GYggnRHcjwTYeb0slG+w9UpZoTuYUWgqJtcjJiT7lUD2sQxYFfG5g+fiHQeOClPwDq08
+	 PtBaGY3WbWSa4ba6HPAs/L/4N9pzG/zkrts87uqKlLR30pxpoDDMaS6duUeODPM5qBBPj
+	 TxTNDInjwPxi5FVzAVYWjX9yqhfcjAiJGMTs1hX7CTCLvNRShPEDjoIp5x9n0Zvy0d52j
+	 Ic8kKwX6eyMSGXLxg/IpXXy65LOSzvyS6Tq16yxqiiRdjXtqgpnPVWI6w6T977tCFxA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1792599161;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=LP8P98vzBMv+Zob0ozcgR6w6Rai6LO0a+epncRMX6Ww=;
-	b=Uw0Ss7gnKM+bqRFKM0YZUB63yMgW1jcGI8eAHt3LWkQjAjD/ZFO9FLm5IYEYC6FuQzRL
-	 t8q1Ng3Ae1i+QsCEYmjuDKrjp3uVOSNE3flgeKQpsIRiifIjC0P9IEaKxI6rNPiomq95h
-	 hTqQDWi3SFCfdLoxDmh++6dJ2NWG3fPi8yoXATgXCWzR6VT60OVbjCLPvvRerJSnEMBSo
-	 VoT/Y9H//2OiO4AW7jISKXD28yoTmvx2AR/JOXYxe3hHNbLf6xkBhxhP+DGcQXhOr57sb
-	 T6ZqfmQmDPBbjK6+LAUguR8kucfxbRZ5UI+YRVKBnZZNN8mcRHSCedpAxYfB6+oEdfw==
+	bh=y/aRDDf0tbbhcaRVo5zqbs8kQxH53mVifboQgC8oqlg=;
+	b=stQAULPk/5bO1ymm3K6Y3yigWQuGCrRA9dWKmvKGlwRNtdlDrfla7mfINDe3RDuUXi5J
+	 Sq4HvniIQjunGN6KB0XTH+PZPl922KPivPaspx3sdbgA3YG0lgI4YZcbt3GEslJNMegj2
+	 cHuUWRBcYic7hZC9SBWjpEOfToAeWyN5jUczQufdCCGET7pqw+gDjqn8QNtCjFBA2r0+R
+	 liq0kW97DL2aght/vS5i6KtXYnm2XnJbCzhg72us1NmtZngd0tFv/ner6YMwwBw9pJarF
+	 zAdFaSNQXCzk868/9ffp3X0eFYbDu5pOSgNXB1Q5S6//DPciLFgLBUJwaAtPbJvFYzQ==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 58F541F01579;
-	Wed, 21 Oct 2026 16:12:38 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 615431F01576;
+	Wed, 21 Oct 2026 16:12:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1792599161;
-	bh=LP8P98vzBMv+Zob0ozcgR6w6Rai6LO0a+epncRMX6Ww=;
+	bh=y/aRDDf0tbbhcaRVo5zqbs8kQxH53mVifboQgC8oqlg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=epttRTa+N7d/V+IJbb8+jb38Az/i+bQb6j6VwN5EijVD8VEUQK5m4TrqkRd1kZLuq
-	 WmeTrNEj7RtLPr6xnX7qhHkzxwLHO7Yfvf/rg0fOqR4CW3QAxXAbNhQq3t9/sn+XtW
-	 i7JsD5aS69f8b28Rxd+Beb/CFSIgST1NXFaXMN21QuLBGx6UmlNqy4H/FYg6YkFhXe
-	 PRjmYqTngpp8HoWoXIXO47fYGWweSDrQHOsT0/eqvIOuAxjFzGtEPjjPV6v2uYBDnf
-	 WrgHHW8Scl9ujlYri729m2GlymqDxwd4ktsORGzsEY1notiDQB9kEI2APCDARzPa32
-	 W+3H98DHvRn6A==
+	b=No0xofZMIhsfubV6JJaw0xy43d1X/1e6d2S8HU41lM7BsQeg7cU5kSLkc6I+lnqqk
+	 pXvZl5FkO13VXrXT4b1bMgxJgLv/bugZFMrlMWo9e+BJOHhYmZIxHvRpAO1KLwrQIG
+	 vcRuulPn1l47T8bqXEJnc77yYgi7Lm/1do5rNSn9+9BPecerclNyuL+XAU0x6Q1A0O
+	 pSDgS6Dr+oo5LHxLfC6LROhHicmGu30Cz8oD3DqTyjFnBz7WmKSsfkE0uLvOG84qmf
+	 VvkCRdt1K0Qe5dPBWHWFvedjkd6FTGagAMGIloBSMMR/M+lEy8UyBgfu1fNNCj18hX
+	 NwlXuZiGoBuFA==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id A1C60433EA;
+	by lkml.kernel.org (Postfix) with ESMTP id 87663433DE;
 	Wed, 21 Oct 2026 16:12:23 +0000 (UTC)
 From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
-Date: Thu, 22 Oct 2026 00:11:16 +0800
-Subject: [PATCH 19/27] dt-bindings: phy: rockchip-naneng-combphy: Add
- RK3572
+Date: Thu, 22 Oct 2026 00:11:13 +0800
+Subject: [PATCH 16/27] net: stmmac: dwmac-rk: Add RK3572 support
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261022-add-board-ok3572-c-v1-19-0b0fd85a31ee@qq.com>
+Message-Id: <20261022-add-board-ok3572-c-v1-16-0b0fd85a31ee@qq.com>
 References: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
 In-Reply-To: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
 To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
@@ -114,11 +113,11 @@ Cc: Cunhao Lu <1579567540@qq.com>, linux-clk@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, linux-phy@lists.infradead.org, 
  linux-usb@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792599138; l=1724;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792599138; l=2887;
  i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
- bh=muiYAjJWpuGEfEfEQInT266/4Hkdo7WfF6Hfmvodf7s=;
- b=u7xQH47HEEiJM7iDR4aUZxkboJprU6o0pJOV6oty4ocqWDZfMFbkOdNHDe8oGSvbC/+NyCe3z
- 4GwHAc8JPQ9AktBEBSAVKjrBjaxuP3xF3LMKiGHLmOiMTTbBta/pmfh
+ bh=Rg9amKxMbRRIlhFsyxhoXU1NtXTBv4uhUyFMSA2skGM=;
+ b=RlAQCZ0baz8YNd+Fe9U9uTTuBsNuYyNIkkmM+sLmCxpFmmJfRH2JQSdcgqoVkpSpp4l5+IsQp
+ ugoGbndipGsB56oFRJkFSBRBu0gv0dr6kL+awbNU6Vp7rpINPT9yOUy
 X-Developer-Key: i=1579567540@qq.com; a=ed25519;
  pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
 X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
@@ -137,77 +136,95 @@ Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 From: Cunhao Lu <1579567540@qq.com>
 
-The RK3572 combo PHY uses two input clocks and one reset.
+Configure RGMII delays and clocks for both RK3572 GMAC controllers,
+using GMAC-specific GRF registers.
 
 Signed-off-by: Cunhao Lu <1579567540@qq.com>
 ---
- .../bindings/phy/phy-rockchip-naneng-combphy.yaml  | 23 ++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 53 ++++++++++++++++++++++++++
+ 1 file changed, 53 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
-index 379b08bd9e97a..80cee3f8874d9 100644
---- a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
-+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
-@@ -15,6 +15,7 @@ properties:
-       - rockchip,rk3528-naneng-combphy
-       - rockchip,rk3562-naneng-combphy
-       - rockchip,rk3568-naneng-combphy
-+      - rockchip,rk3572-naneng-combphy
-       - rockchip,rk3576-naneng-combphy
-       - rockchip,rk3588-naneng-combphy
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 72bdbcb5e863..1a22233179ab 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -872,6 +872,58 @@ static const struct rk_gmac_ops rk3568_ops = {
+ 	},
+ };
  
-@@ -22,12 +23,14 @@ properties:
-     maxItems: 1
- 
-   clocks:
-+    minItems: 2
-     items:
-       - description: reference clock
-       - description: apb clock
-       - description: pipe clock
- 
-   clock-names:
-+    minItems: 2
-     items:
-       - const: ref
-       - const: apb
-@@ -94,6 +97,26 @@ required:
-   - "#phy-cells"
- 
- allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          const: rockchip,rk3572-naneng-combphy
-+    then:
-+      properties:
-+        clocks:
-+          maxItems: 2
-+        clock-names:
-+          maxItems: 2
-+        resets:
-+          maxItems: 1
-+        reset-names:
-+          maxItems: 1
-+    else:
-+      properties:
-+        clocks:
-+          minItems: 3
-+        clock-names:
-+          minItems: 3
-   - if:
-       properties:
-         compatible:
++#define RK3572_VCCIO0_3_VO_IOC_CON1		0x10608
++#define RK3572_VCCIO1_2_4_VI_IOC_CON1		0x12604
++#define RK3572_VCCIO5_6_IOC_MISC0		0x14630
++#define RK3572_PHP_GRF_GMAC0_CON		0x0070
++#define RK3572_NVM0_GRF_GMAC1_CON		0x0020
++
++static int rk3572_init(struct rk_priv_data *bsp_priv)
++{
++	switch (bsp_priv->id) {
++	case 0:
++		bsp_priv->gmac_grf_reg = RK3572_PHP_GRF_GMAC0_CON;
++		break;
++	case 1:
++		bsp_priv->gmac_grf_reg = RK3572_NVM0_GRF_GMAC1_CON;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	bsp_priv->clock_grf_reg = bsp_priv->gmac_grf_reg;
++	return 0;
++}
++
++static void rk3572_set_to_rgmii(struct rk_priv_data *bsp_priv,
++				int tx_delay, int rx_delay)
++{
++	u32 val = GRF_FIELD(14, 8, rx_delay) | GRF_FIELD(6, 0, tx_delay) |
++		  GRF_FIELD(15, 15, !!rx_delay) | GRF_FIELD(7, 7, !!tx_delay);
++
++	if (bsp_priv->id == 1) {
++		regmap_write(bsp_priv->php_grf, RK3572_VCCIO0_3_VO_IOC_CON1, val);
++		regmap_write(bsp_priv->php_grf, RK3572_VCCIO5_6_IOC_MISC0, val);
++	} else {
++		regmap_write(bsp_priv->php_grf, RK3572_VCCIO1_2_4_VI_IOC_CON1, val);
++	}
++}
++
++static const struct rk_gmac_ops rk3572_ops = {
++	.init = rk3572_init,
++	.set_to_rgmii = rk3572_set_to_rgmii,
++	.gmac_phy_intf_sel_mask = GENMASK_U16(11, 9),
++	.gmac_rmii_mode_mask = BIT_U16(3),
++	.clock.io_clksel_io_mask = BIT_U16(7),
++	.clock.gmii_clk_sel_mask = GENMASK_U16(6, 5),
++	.clock.rmii_clk_sel_mask = BIT_U16(5),
++	.clock.rmii_gate_en_mask = BIT_U16(4),
++	.supports_rmii = true,
++	.php_grf_required = true,
++	.regs_valid = true,
++	.regs = { 0x29d20000, 0x2a040000, 0 },
++};
++
+ /* VCCIO0_1_3_IOC */
+ #define RK3576_VCCIO0_1_3_IOC_CON2		0X6408
+ #define RK3576_VCCIO0_1_3_IOC_CON3		0X640c
+@@ -1629,6 +1681,7 @@ static const struct of_device_id rk_gmac_dwmac_match[] = {
+ 	{ .compatible = "rockchip,rk3506-gmac", .data = &rk3506_ops },
+ 	{ .compatible = "rockchip,rk3528-gmac", .data = &rk3528_ops },
+ 	{ .compatible = "rockchip,rk3568-gmac", .data = &rk3568_ops },
++	{ .compatible = "rockchip,rk3572-gmac", .data = &rk3572_ops },
+ 	{ .compatible = "rockchip,rk3576-gmac", .data = &rk3576_ops },
+ 	{ .compatible = "rockchip,rk3588-gmac", .data = &rk3588_ops },
+ 	{ .compatible = "rockchip,rv1108-gmac", .data = &rv1108_ops },
 
 -- 
 2.34.1
