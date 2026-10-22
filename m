@@ -2,63 +2,96 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 91486606A322
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 02:58:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 56265606A323
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 02:59:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KMs3PO/t;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=kPzRWNxA
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=c7Tdi4xG;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=b3uPEPP0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v5xIh/BV5c+RKNSLcbcPCEMNx4eHhl1UtK+nH9vymWc=; b=KMs3PO/tW3VCC9
-	loPlZUCtp4B9uxEf1dw9zZdOMD6Zahm1eF3RelM/TmbhiSYQ0EZhfddFiQz/b6twqtfHG+j0lswi1
-	t03c8R3LITcY53cesbfchc0V9ScIgE4on1Uqw3vVciM92D3w8+ejtZ77ZYo+dLHoZ9LmUKhPdCct5
-	nu5URDkw2lK5ZjOEUENFqAtws01g0/XobHt88JBYnYGQ6AIWbTini+oDVUBvs5r40X6H+oIm6wQcd
-	+wF3YP0v27eeeDLghK3losVVGBBGeTyFCpfzR1cWz4MgIQbKb35nL6grPBAXLhhFHnNaJCDqMBeqe
-	7zfPKiBx9mVPzIYA9w2A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nRrrsFtCdpuk2PI1lhIzOdzy3ezYzXxjqaHX4Y9ERsA=; b=c7Tdi4xGAWDm+C
+	qugrMCe40YtDk99VRlG/eq3jSjKjqPaomiyT4SXDT9BKaPZ0GnVnn4lJafoi/k9LiUeuMF94xc/UO
+	FqrwTBXbVtLMgZ3/o7FGz5rw/TaX/50PpMn1POjVuMQlEQ9QM0kH6G7c6QQ7Be6VDBmzd/4qWoxaP
+	Q3HIbetNDRydpn/TC586TAPoeg4a+6ZJImU77s6EufQYUkRGx9eLO/iapWQIsmWzWo68pBjeTHfUM
+	WwmW1pwV684+O7lUYRKVCAfb4G07PFaUYEhCBRm7Tc5zAgfX6ZWPlyDYUC/mfQTISTdZa7m+gXwO1
+	LqYMryCi/QMYSHhVO+fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJj11-0000000DFQ1-2GQH;
-	Thu, 22 Oct 2026 02:58:51 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xJj17-0000000DFSx-36pZ;
+	Thu, 22 Oct 2026 02:58:57 +0000
+Received: from mail-dy2-x0a.google.com ([2607:f8b0:4864:36::a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJj0z-0000000DFPG-2rUX;
-	Thu, 22 Oct 2026 02:58:49 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 25D1B42E7C;
-	Thu, 22 Oct 2026 02:58:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D276C1F000C1;
-	Thu, 22 Oct 2026 02:58:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792637929;
-	bh=owsw2t3VbnUT+VYXvyiHdO0anm6pLWfVu4gJk6+tS5I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=kPzRWNxAw+rpFkdgDhE4B1ZH8n0Cp7DLop2rZpB+GTvfVrF3OcUkP5hIi1gEnvAl+
-	 LQhqrMRAA4bijS2L9F9cb4QrQjdYdW3fPKVVacTENw0yOdItQiCVJZJm42LxRD3sML
-	 EJaryHk7YHedsItsVVDVIV/SgryUPZzH4+MTT9NzDUOux/c4S1yD19kI/R9OVKhkKU
-	 L2HB1/KxQchjCDxaBLqt3KIu9yvuNZoaNbGrmyGclZOox3o7YwoYGt0xnjmEioO3zK
-	 +rXp+nLiNzNbpvRkj1rg4agawGvCDvEocE1/ZRkjItmK/D3ppswLYMSXOYRrbIi5c8
-	 ClPyxMRZUmbDg==
-Date: Wed, 21 Oct 2026 21:58:48 -0500
-From: Rob Herring <robh@kernel.org>
-To: Bob Hui <bg9oxa@163.com>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1xJj14-0000000DFRA-43nM
+	for linux-rockchip@lists.infradead.org;
+	Thu, 22 Oct 2026 02:58:56 +0000
+Received: by mail-dy2-x0a.google.com with SMTP id 5a478bee46e88-33e48934fa8so493821eec.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 21 Oct 2026 19:58:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1792637934; x=1793242734; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=Jzi3iIHS+OZtD6vkcJ1pUU6mViKNGOUw7LaZHSgnXgo=;
+        b=b3uPEPP0GpdSoeJ2WvDIrnCmMSCZf4YxA47zY4zC1nRFs7g9bxoo78BQTrrriHqtY6
+         6vD5KY5H6KZl77o8/OvLTpn2VtdXFG5hrWCjUFipBvzY/A1SdlOdZl8X2/LqCY6kBZu5
+         nPkzMIzzP45Njnha7kXujZYZtVwNeFyS55Pth/epVOz3znJyDFdm4PQFO3r7Gtrkwitu
+         +GXfUvQ6zi0R1EmJCEK9aI5KfaKt8ghxR/M2BF9Gwi1wy1AT1gjGQGjsuErevof5u5mx
+         0hkWcmizAM20t9cEGQpafvAL1k3aC/A/nYYjZYHV4+dKGCKgUEQq/9ENEIdtxs4CyabE
+         N3dg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792637934; x=1793242734;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=Jzi3iIHS+OZtD6vkcJ1pUU6mViKNGOUw7LaZHSgnXgo=;
+        b=neIdjItoenh23+ZXsUu6rrokOooqshmuFReXhKIXvMgKyT9j/G9G8vT+CRSUmy9MiH
+         DtwqhLarv9F2aMGUeqqQvoWna+t0LXO7tRcuaZQ8Poqc86DDivmfVFexxZAVZJ//7HNp
+         va0LUYzohENu5+slwKlLBXi444XWtmpTfXJKEs7OeyuyivpADzO9SNeZFgcTR/G+MqqM
+         Qme4Ioqe7GTxJK+8MdUH0xk3aDAkRhEAvbZiBxOG3iryjuZVt88TTe+RASrq+COUWfgI
+         XaNmQPya01jla13ufmpLRyFfJ7XH+a6pBz1WDT6HikgluPHlHQvEX9paD6CknL540/eN
+         whAw==
+X-Forwarded-Encrypted: i=1; AKwUvBxhsTiGu+dSgqLsohq8RlSs1ZkvYPP5IhWToEbvu6FQSkUa3ok7mOzLzL2KM7n1B3+fuHlb7UUydAeJNQeMcQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKPY2p+gzrccUV+oZ+Kkcxvxsjkp/T9qTuYng9t5aRMD7E7ptn1
+	FwFKHNHtwjni9cy7Nnp5f2bv6PmT7pbtSS+gQ0fbx0+j8j38Fh2sAIJc
+X-Gm-Gg: AYBFou3blfVV/4BBP3MmgW3s8AUIhTjLSuQGjmYQtZIYJ5BEBSIQkpLJBffGd6Lpgu3
+	PVJ/u7oZYLL9R3ytKq2yi8i52iFU4w0tOhVMAl23dk6XmSrVbTO1VTbpWg4suavioSAK9Cvr1sH
+	5rnQ2cWTT5sH1o0v4BgI9GhYvoyryzIiJbDXxYxsiT3h+4/OongqTF7VODmQj2t9pe80ZB0vcnM
+	ryWJ5QpoTCDw7od5FpLQ144moDC9h4b0YMFTcnuwetbn8mQ6W1dOJRRvZx6vuIpAcAxoeWGeb2s
+	8VS08xjqJek42u/crTL9Dt9hbjqvdCMzylfmDdUV5a/kA+2nOMHKWdLRSrpwfDWCyILwNdEMK7Y
+	PBiTmGDt/zYXpQV1CBSdLipjnTfIR3z0pgRo3pgt1CVSGNeFfFtBnQ4u8NQ5kbUjH0ROh8T0drC
+	9Rqm9fnSnTmxHktryZ6K9VadlfTcvCKB/8QzWVBwJpedcbx+bCONZgombz6JBd3S5+Utje+fQd3
+	ECnMMqpgQD/ViC/DCNAAGW+IN4F+Letz9MBeY768IP7mIhGujkuxw==
+X-Received: by 2002:a05:7022:ea59:b0:182:94d7:f76a with SMTP id a92af1059eb24-190a728a66dmr4591460c88.43.1792637933923;
+        Wed, 21 Oct 2026 19:58:53 -0700 (PDT)
+Received: from server.lan ([168.138.199.194])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36740cc8c6dsm13029572eec.12.2026.10.21.19.58.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 21 Oct 2026 19:58:53 -0700 (PDT)
+From: Coia Prant <coiaprant@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew@lunn.ch>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v9 1/2] dt-bindings: arm: rockchip: Add ALIENTEK
- QuarkPi-CA2
-Message-ID: <20261022025848.GA879686-robh@kernel.org>
-References: <20261021-quarkpi-ca2-v9-0-b75006b22bc5@163.com>
- <20261021-quarkpi-ca2-v9-1-b75006b22bc5@163.com>
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	David Heidelberg <david@ixit.cz>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Coia Prant <coiaprant@gmail.com>
+Subject: [PATCH v11 0/3] arm64: dts: rockchip: add RK3568 XPCS nodes and enable SGMII on Photonicat
+Date: Thu, 22 Oct 2026 10:58:41 +0800
+Message-ID: <20261022025844.150320-1-coiaprant@gmail.com>
+X-Mailer: git-send-email 2.47.3
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261021-quarkpi-ca2-v9-1-b75006b22bc5@163.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261021_195855_012915_E89CCB16 
+X-CRM114-Status: GOOD (  12.71  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,23 +104,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Oct 21, 2026 at 10:05:21PM +0800, Bob Hui wrote:
-> Document the ALIENTEK QuarkPi-CA2, an RK3588S based single board
-> computer.
-> 
-> Assisted-by: Hermes:deepseek-v4-flash
-> Signed-off-by: Bob Hui <bg9oxa@163.com>
+This series adds the RK3568 XPCS and fixed-clock nodes, describes the
+RGMII PHY LEDs on the Ariaboard Photonicat, and enables the SGMII LAN
+port on the same board.
 
-You missed adding Conor's ack. Twice.
+Changes since v10:
 
-Rob
+- The rockchip,sgmii-mac-sel property on combphy2 is no longer set in
+  the Photonicat DTS. The property is tri-state: when absent, the
+  driver leaves the routing unchanged. If the bootloader has already
+  routed combphy2 SGMII to GMAC0, the link works without the explicit
+  property. A follow-up will add it once the PHY binding lands in
+  linux-next.
+
+- The RGMII PHY LED configuration is now a separate patch (patch 2).
+
+- The SGMII PHY LED configuration on mdio0 stays in the Photonicat
+  patch (patch 3), since it belongs to the port being enabled.
+
+Dependencies:
+- XPCS binding and driver (rockchip,rk3568-xpcs, XPCS glue, dwmac-rk
+  SGMII, pcs-handle binding): merged in net-next and present in
+  linux-next.
+  https://git.kernel.org/netdev/net-next/c/5e91edfb0e45
+
+- PHY binding+driver (rockchip,sgmii-mac-sel): still in review on
+  linux-phy. Not required for this version to compile or pass
+  dtbs_check; only needed for the follow-up that sets the property
+  explicitly.
+
+- Generic PM domain (genpd) changes: runtime-only, not a DTS
+  dependency.
+
+The XPCS node is disabled by default and only enabled on boards that
+use SGMII. The fixed-clock nodes are always present, as they are
+static clock sources.
+
+dtbs_check passes with the current linux-next, since the XPCS binding
+is already merged.
+---
+Coia Prant (3):
+  arm64: dts: rockchip: rk3568: add XPCS and fixed-clock nodes
+  arm64: dts: rockchip: rk3568-photonicat: add RGMII PHY LEDs
+  arm64: dts: rockchip: rk3568-photonicat: enable SGMII LAN port
+
+ .../boot/dts/rockchip/rk3568-photonicat.dts   | 68 ++++++++++++++++++-
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 23 +++++++
+ 2 files changed, 89 insertions(+), 2 deletions(-)
+
+-- 
+2.47.3
+
 
 _______________________________________________
 Linux-rockchip mailing list
