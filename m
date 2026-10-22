@@ -2,46 +2,47 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F33D3606A31D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 07:19:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 16AED606A319
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 07:19:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=v0/2RKYD;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=airkyi.com header.i=@airkyi.com header.a=rsa-sha256 header.s=altu2504 header.b=JnZOZtD5
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=g4q9N+Zj;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=airkyi.com header.i=@airkyi.com header.a=rsa-sha256 header.s=altu2504 header.b=iGK9olYf
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=q8gvooBGma+WAhNKdz43m2jyFtV9ZmOkOxlmS1hCyNc=; b=v0/
-	2RKYDoVRjTCNjAE6l4HuOnaq4jT2d1YRo3l0ebXOEz7VT4rHRBdgJ29s2e/6dB+cZHRPqenXeKJDL
-	viiknzZpNkxl293EpnnAY4P15zx1JzMGlxfa/z02DsxbfY7UbovfoCaWRgOt+FHA/IjeDpVi/tcSw
-	EdT8QOe/yBBpz2v8gG394l6K13kpYnMHUo3cTtS/pZjX5uRaoYFA8uRgtJgR2o+zufwXjo5Xots+V
-	jUHzuWyNpKlLmnCwzGzq86ZJMHOvXfyhKDQXI1lA6ag2OdPRajLFmU242aVgGauxZNm8lj0PpmxoK
-	oKgns5TKEfsvAagEoVf5IMlpEC4ItUg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=1/kxUwC7WH9TvCty/BG9Xd7ONPH2E6em2eCjYZw9D3o=; b=g4q9N+Zj7SSZ+u4O/gpHRs8//W
+	rCfvRAHTUzD3GoCmoUebIGNU897fUiwboY8lf44Ldbhx0XIHkEEyoZewWUUkRQvI0RiuztAO3hFNY
+	5rt0tDbMujJfYR0/7Am5oj0JuIfHUSTBoQkyGsyBq1btr0mmSPaQmdtpMWD+3iiVwN/iJBXLFycET
+	TZRlMUU9IPhKinnA8zclUWfFOwBoemSAKBAo3f9K+HqcB2dIQtmwVhfZX+O3yqnY3nHQIDWAT0rHy
+	Ayl56mN2OFaEPON+zvnx11tHnow3yiY51sBbhc3n2K4ZfF9T/B5A8Rt0bs2whM12gaEb5/gFp+4xy
+	as35WK/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJn58-0000000DYD7-1Rai;
-	Thu, 22 Oct 2026 07:19:22 +0000
-Received: from smtpbgsg2.qq.com ([54.254.200.128])
+	id 1xJn5E-0000000DYG0-2itk;
+	Thu, 22 Oct 2026 07:19:28 +0000
+Received: from bg1.exmail.qq.com ([114.132.124.171])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJn53-0000000DYBw-3djg;
-	Thu, 22 Oct 2026 07:19:19 +0000
+	id 1xJn58-0000000DYD1-1paR;
+	Thu, 22 Oct 2026 07:19:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1792653493;
-	bh=QjUw+2kIgxNmIRZcsifp7nN5L+j7gN/V3v4KCZkaLmw=;
+	s=altu2504; t=1792653505;
+	bh=XQtpwBbNQSG09Tws7x6dKc8i9V8heR9xSsqFP4cmwGE=;
 	h=From:To:Subject:Date:Message-Id;
-	b=JnZOZtD5w4AbDz+LqkMLwwojz+oZA/pFrmcwwo5zPlSgGALlGckwfbshZrqmMpTiu
-	 kZothQ4evEFVvIbyKvEgzbOtmmVkjUz0vBF7a7qI9YqY2oF72dxEQc1g1A/7Rjt3+8
-	 CMQJEVZ4DJt4+mSGVxN3s2dWO+pMGw9VCbO/UGnM=
-X-QQ-mid: esmtpgz10t1792653486t4a2ab009
-X-QQ-Originating-IP: h2yaRNFQb6Ei6q1nI4we5w8kZoco3AP8xkEaOsyViFc=
+	b=iGK9olYfhfA4y021DIIpEgCiYqOum0QL2mTxvkOeiW7s50/EaBQuuLnI3/rn1fRwe
+	 Ph0E+YRqvNKa0x+mntAy/PIhYPvnYNcZTsKH6/PAa5y9digGnuKSskxE4aJnMVR79t
+	 nQC74wdCrapIBqIGIETOayRCjLOpttRcUFmybZ8c=
+X-QQ-mid: esmtpgz10t1792653498tf61c24c6
+X-QQ-Originating-IP: HX1t2sOuxhJHsPQIrTI7coDscVM70zdTd26TmRi7hpU=
 Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 22 Oct 2026 15:18:03 +0800 (CST)
+	id ; Thu, 22 Oct 2026 15:18:14 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 6284087679707757170
+X-BIZMAIL-ID: 3961529649271326920
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -51,33 +52,35 @@ To: Sandy Huang <hjc@rock-chips.com>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	David Airlie <airlied@gmail.com>,
 	Simona Vetter <simona@ffwll.ch>
-Subject: [PATCH 0/3] drm/rockchip: vop2: Add 8K support for RK3588 vop2
-Date: Thu, 22 Oct 2026 15:17:34 +0800
-Message-Id: <20261022071737.508-1-kernel@airkyi.com>
+Subject: [PATCH 2/3] drm/rockchip: vop2: Skip UV plane setup for packed YUV formats
+Date: Thu, 22 Oct 2026 15:17:36 +0800
+Message-Id: <20261022071737.508-3-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20261022071737.508-1-kernel@airkyi.com>
+References: <20261022071737.508-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: Odky5wNUcHo/YCa80XQB9bTx/4SXD48tfuBQ2Wes57AEWIvRYAO1apvO
-	m7Emup3ovRwNCE9Bq5AXaf8LWlFzgqMkK0VVvzayrdWOOqWpN7jj0O+nmOFWass6OJ78cm5
-	1dDpcq9yYO9uWweVdbtXF1aMtPqdX4XdgYSx7uHSlnlLrdf2dNXoYCEhghJux8Pv2oJWjSa
-	o802dR76lPhhRQSCZdQGlM0W1sBR+NNEfLDQcWVVpRNehlUNoBdR02Fauo7MOroGVjo5t+/
-	hIAkruBfHyPigZVmCSANRkBgwgWUg6hz5I4OctiTa/QLZsG6JnRIB3DnJTNQi23hOSO2cC0
-	/0lchAlI63m2aaDC8KosJsdXxEJEN6PjaTAkurm8CsJ//1OFMcPvD2yBMU1/Y7oW4RAE1qV
-	l1+osV+HpNtyxPbLFwDv2Pr+x30ipPOI0bCwrDHxLHR6YIpjUY+1rUFPVOfbCeo0kPP88q6
-	Mo7mKsXju8FQAomQ6boFMJoNfkv57Q6Jwgz8nFJgcwA0kRpRsLNFa/TVfZDLT118wyzTZgE
-	8bwjRs1ssQK6FjiF1AnsSQX++4J4rtIgtRuZa87a/icg8EnYia8CkaLgKlDwNQRf/rb9kgk
-	8pw5+8gO3eNslkdg+H5HvGwTCwUbPHPNTdR4Yvcu+SZQE8HItAxQEv4+tc1GNKkUmF8ckvK
-	pk9gLyek6uI/D7tPeARxKtjT65pzYa4Quj4LdJ7tfy6aJ4Y/eifz9m4BhRqw1y2uq83lYlT
-	dJQT314U4EWShGlUOU7jcId6CzUkQWtMx+efBJFhM9QNSDyZqYv2gnUSg7IZztYlEEdBR26
-	hhKoR9IAfQLn6LT+MW8wr+lOANs4bAdW6zMoMe1UF1YFTjSJ0LpzejZW2aESMfJFHkY5v2r
-	kPO+gGj6ZyrfhEKtI/Dcp6Yhjy4scjmWLpkVLPjXNC5H0potFZcXHM4sfqxl+OBvzjjs/fD
-	PdBxoZ0VSAFsVW6f7v4Hz5865C5sjPDhodsKvIKWi4eaKDEpcQUgpJJu6b5C4Fai2flw=
-X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
+X-QQ-XMAILINFO: NoZl3lE/gOeTIssJYm9dwfUzK2ivny64agxuuKT8sgLXssg5JwxufI1w
+	rjwrwj65Qi8kRktx8CsotRy92BiF17hKXmpGBPKlwfBYSnwCjomxrp8bFQGH27V8IrRc7Vi
+	e89CXj3GPYnC7WMsqPPwomsFuiazyiKNJHpBgLMxh5SNr5KW5CEcsEtey5J9Vf4oiCl0jBM
+	CQDe5ZCre85244mGheF4CG+ZnXrDDFxSX0bXNrZlSY6ePn95oQpTgEQ8ann+BEDBSI85cs1
+	olXdc17oKME+67Q1lVZaLGit4mWj6b3/Smaw9K4ZS0CK7r2URs9O25gjS1HN2Ph2o7uy0oq
+	Y6hUWNVE+CINNL2zHHfiaAfqB6uNDuJrOnuZvI9UXOD7/AM2p5chPI5s2+T6xaUmdZIMUUb
+	DTHvb8/XSZ4kUDKj0T+NVs9XTmV9ck39aG7z4S8y1KY6D7nnXwvyNKCQQEfvvMi+kbZNZ7z
+	NnZzFwnldKTL7BhJdP3SUZPUws+djhzauVTgWyJwulwobkjlepbmzlpMXD8SDQGMMbxYgPJ
+	Vc/l6UKsuCSlfK77YiBwdjQsF1+p808Fjp1+i6bN7yzPZ2pSfxKkgZkKEauEhKUABQZ6ROf
+	BY36SyoVLWpRfHQ01Up1w1WKnf/QrDsvc1zjkKvU9og8xwbfyDUjxzqsIb/oz1+t9K3poLN
+	/Yx2/vqVebY8N/g8SA+fESyG7OoEeslTJu82wxLwz179No4Zz6YxMhDNeGLoLItfcq/jLwD
+	OwgSWANpRDYFhRfPbRZfIxQl4daN0Gln/jQt7qO4AynXKcR8lceoqY+OjOsEVby274+l2QS
+	HvaYLwqIQuMItQqOZUJWPe4udgsBQKNiLEWeElhIW9malH7EwsWpLAzdn/bITK+Wfs6vhSP
+	SAxm9cIhB7uNastRIbFEKhFZr8PulbkVg5EhVr8ZoT7pbBAn9QJewaTNGaEbC16nUedOjfe
+	XxJKeKCsiVxum22u+/DBIbKQg1Cpty3838s1Uve1kGZxdLU1mslM7KGrmrxj9zRp7yQ+G48
+	uSp+dNUyLsfMuPDJLm
+X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261022_001918_270835_CB07DB30 
-X-CRM114-Status: UNSURE (   9.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261022_001923_125737_8540A95F 
+X-CRM114-Status: GOOD (  11.81  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,50 +97,48 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Hi,
+Packed YUV formats store chroma interleaved with luma in the same plane,
+so they have no plane 1 that the UV address registers could point at.
 
-This series adds support for 8K output on the RK3588 VOP2. HDMI is not
-ready yet, but I believe @Sebastian and @Cristian might be interested in
-this?
+Restrict both the plane 1 offset calculation and the UV register writes
+to formats with more than one plane.
 
-8K output on the RK3588 is done by splicing two VPs together, with VP0
-outputting the left half of the screen and VP1 the right half. In
-addition, 8K planes have to be split in half as well to stay within the
-width limit of a single plane. Similarly, there are a few post-processing
-details that need to be handled.
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Note that splice mode is not only usable for 8K output. This means the
-mode can be tested at 4K and even lower resolutions, by simply changing 
-this one line:
-
--#define VOP2_MAX_VP_OUTPUT_WIDTH    4096
-+#define VOP2_MAX_VP_OUTPUT_WIDTH    (3840 / 2) /* for 4K test */
-
-And yes, this has been tested at 4K over HDMI on the RK3588 EVB1 :)
-
-Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-Chaoyi Chen (3):
-  drm/rockchip: vop2: Use drm_format_info_min_pitch() for plane offsets
-  drm/rockchip: vop2: Skip UV plane setup for packed YUV formats
-  drm/rockchip: vop2: Support 8K output by splicing two video ports
-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h  |   5 +
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 410 +++++++++++++++++--
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  63 +++
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 193 +++++++--
- 4 files changed, 595 insertions(+), 76 deletions(-)
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 480aa8c8a8d2..42ef1b996656 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1305,7 +1305,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 	rk_obj = to_rockchip_obj(fb->obj[0]);
+ 
+ 	yrgb_mst = rk_obj->dma_addr + offset + fb->offsets[0];
+-	if (fb->format->is_yuv) {
++	if (fb->format->is_yuv && fb->format->num_planes > 1) {
+ 		int hsub = fb->format->hsub;
+ 		int vsub = fb->format->vsub;
+ 
+@@ -1461,7 +1461,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 	uv_swap = vop2_win_uv_swap(fb->format->format);
+ 	vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
+ 
+-	if (fb->format->is_yuv) {
++	if (fb->format->is_yuv && fb->format->num_planes > 1) {
+ 		vop2_win_write(win, VOP2_WIN_UV_VIR, DIV_ROUND_UP(fb->pitches[1], 4));
+ 		vop2_win_write(win, VOP2_WIN_UV_MST, uv_mst);
+ 	}
 -- 
 2.53.0
 
