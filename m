@@ -2,89 +2,83 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 614C1606A31D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 06:39:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F33D3606A31D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 07:19:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=c6l4OsVn;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=OcU43TI8;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=YNeRhBW2
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=v0/2RKYD;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=airkyi.com header.i=@airkyi.com header.a=rsa-sha256 header.s=altu2504 header.b=JnZOZtD5
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
-	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ztbF/769dVd785apvMIp6iHviy6YMhNfESVn3v9Z0L4=; b=c6l4OsVnlvl03B
-	nff1cIdLtLwt0iBd5YiqeuilKniSLPETDmMJTHXnjYX5DoEjUO6Ok0K1j5ypLN1QvMtq7rTf6y9eA
-	+C5pmy3BhP9hjW6NzpOzsJY/DW94zq4ortMNlpf8hLnSlnJPQfC2GWWuD5h+KllkGue2nPC2Swusx
-	079kdY0FRVku8kMincWjh7GMhLs7Sb9hVgDCSEUFaiy4TsU6b3VxcwzqWle+DuBlZWC9OLLaauANg
-	MZLjlE3Ao1UT0yO969GtYrISCn6C4fWt46/oaOwwujtDqr3WQrQa91AvjieXv5jy8twD+tBMIKqZn
-	lnIhIKUmQ71rSiqrzxew==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=q8gvooBGma+WAhNKdz43m2jyFtV9ZmOkOxlmS1hCyNc=; b=v0/
+	2RKYDoVRjTCNjAE6l4HuOnaq4jT2d1YRo3l0ebXOEz7VT4rHRBdgJ29s2e/6dB+cZHRPqenXeKJDL
+	viiknzZpNkxl293EpnnAY4P15zx1JzMGlxfa/z02DsxbfY7UbovfoCaWRgOt+FHA/IjeDpVi/tcSw
+	EdT8QOe/yBBpz2v8gG394l6K13kpYnMHUo3cTtS/pZjX5uRaoYFA8uRgtJgR2o+zufwXjo5Xots+V
+	jUHzuWyNpKlLmnCwzGzq86ZJMHOvXfyhKDQXI1lA6ag2OdPRajLFmU242aVgGauxZNm8lj0PpmxoK
+	oKgns5TKEfsvAagEoVf5IMlpEC4ItUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJmS4-0000000DU6p-3ekA;
-	Thu, 22 Oct 2026 06:39:00 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xJn58-0000000DYD7-1Rai;
+	Thu, 22 Oct 2026 07:19:22 +0000
+Received: from smtpbgsg2.qq.com ([54.254.200.128])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJmS3-0000000DU6W-1Anq;
-	Thu, 22 Oct 2026 06:38:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:References:Message-ID:Date
-	:Content-Transfer-Encoding:Content-Type:Mime-Version:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=VQFTusPZWZAQO9ncVP5/pVATTKlUKVRB9FJ/9plts7M=; b=OcU43TI84rN5wBU9r9VQim9lMI
-	/z+U1eRs90O/gUNNxyzOjwn0EIbsA6BKwUUEnosvg2yR2d7l4t1Ec64o6SIelLvHC04f2nT+EKjCr
-	E1wIDdwIsnMBeuXSvtXTXrjuXOXc+4PJzbRmI2uMJluNepG/Fr6Qq8LRthK8N/o9QPsNhKgSP2T2x
-	zgxIbk+PHRAnzLCdRbILsPqCBzva0Tpv6rS71F0i0blFiD2cF6+0UmmxD4IxYegvqm3iMgTLl9xUD
-	ItJ/4eb8TealBwGvEEcxUnECbsqAA9tuEFAgUppDwbQSFMdJDoM+9LAXWXj7aCxZPMfhe69R0/TZb
-	e4O2N69g==;
-Received: from out162-62-58-216.mail.qq.com ([162.62.58.216])
-	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xJmRt-00000006W7d-2RZx;
-	Thu, 22 Oct 2026 06:38:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1792651124; bh=VQFTusPZWZAQO9ncVP5/pVATTKlUKVRB9FJ/9plts7M=;
-	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=YNeRhBW2tuGtVSGUiFjgVj6gaMR/c1/FJ+61cIbS0pluPJZDHhNTWydiRbOpV++4y
-	 7H7W+aH0oW4FH/zKDqio7TfxOsWNcQ2B+zSQSzoQNl2PaEWqbwfqY7RIy9joAD7ABw
-	 vTe9cGWJ+w3A8V0eJZzDRuLetTvElIuvxol0YoX8=
+	id 1xJn53-0000000DYBw-3djg;
+	Thu, 22 Oct 2026 07:19:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1792653493;
+	bh=QjUw+2kIgxNmIRZcsifp7nN5L+j7gN/V3v4KCZkaLmw=;
+	h=From:To:Subject:Date:Message-Id;
+	b=JnZOZtD5w4AbDz+LqkMLwwojz+oZA/pFrmcwwo5zPlSgGALlGckwfbshZrqmMpTiu
+	 kZothQ4evEFVvIbyKvEgzbOtmmVkjUz0vBF7a7qI9YqY2oF72dxEQc1g1A/7Rjt3+8
+	 CMQJEVZ4DJt4+mSGVxN3s2dWO+pMGw9VCbO/UGnM=
+X-QQ-mid: esmtpgz10t1792653486t4a2ab009
+X-QQ-Originating-IP: h2yaRNFQb6Ei6q1nI4we5w8kZoco3AP8xkEaOsyViFc=
+Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Thu, 22 Oct 2026 15:18:03 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 6284087679707757170
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andyshrk@163.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>
+Subject: [PATCH 0/3] drm/rockchip: vop2: Add 8K support for RK3588 vop2
+Date: Thu, 22 Oct 2026 15:17:34 +0800
+Message-Id: <20261022071737.508-1-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+X-QQ-SENDSIZE: 520
+Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: Odky5wNUcHo/YCa80XQB9bTx/4SXD48tfuBQ2Wes57AEWIvRYAO1apvO
+	m7Emup3ovRwNCE9Bq5AXaf8LWlFzgqMkK0VVvzayrdWOOqWpN7jj0O+nmOFWass6OJ78cm5
+	1dDpcq9yYO9uWweVdbtXF1aMtPqdX4XdgYSx7uHSlnlLrdf2dNXoYCEhghJux8Pv2oJWjSa
+	o802dR76lPhhRQSCZdQGlM0W1sBR+NNEfLDQcWVVpRNehlUNoBdR02Fauo7MOroGVjo5t+/
+	hIAkruBfHyPigZVmCSANRkBgwgWUg6hz5I4OctiTa/QLZsG6JnRIB3DnJTNQi23hOSO2cC0
+	/0lchAlI63m2aaDC8KosJsdXxEJEN6PjaTAkurm8CsJ//1OFMcPvD2yBMU1/Y7oW4RAE1qV
+	l1+osV+HpNtyxPbLFwDv2Pr+x30ipPOI0bCwrDHxLHR6YIpjUY+1rUFPVOfbCeo0kPP88q6
+	Mo7mKsXju8FQAomQ6boFMJoNfkv57Q6Jwgz8nFJgcwA0kRpRsLNFa/TVfZDLT118wyzTZgE
+	8bwjRs1ssQK6FjiF1AnsSQX++4J4rtIgtRuZa87a/icg8EnYia8CkaLgKlDwNQRf/rb9kgk
+	8pw5+8gO3eNslkdg+H5HvGwTCwUbPHPNTdR4Yvcu+SZQE8HItAxQEv4+tc1GNKkUmF8ckvK
+	pk9gLyek6uI/D7tPeARxKtjT65pzYa4Quj4LdJ7tfy6aJ4Y/eifz9m4BhRqw1y2uq83lYlT
+	dJQT314U4EWShGlUOU7jcId6CzUkQWtMx+efBJFhM9QNSDyZqYv2gnUSg7IZztYlEEdBR26
+	hhKoR9IAfQLn6LT+MW8wr+lOANs4bAdW6zMoMe1UF1YFTjSJ0LpzejZW2aESMfJFHkY5v2r
+	kPO+gGj6ZyrfhEKtI/Dcp6Yhjy4scjmWLpkVLPjXNC5H0potFZcXHM4sfqxl+OBvzjjs/fD
+	PdBxoZ0VSAFsVW6f7v4Hz5865C5sjPDhodsKvIKWi4eaKDEpcQUgpJJu6b5C4Fai2flw=
 X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
-X-QQ-XMAILINFO: N6vT1niysq6m+dolIeSRQmZ0Z/lSCBqEUxgMgKnhlcqyDzFYwRYb/nFI862AH8
-	 hx16FZ7vQ76yOO4KNrAZLP9nGxJ89E38Vmc3rNG+xB70iOUAV7wSRAQwTihTOulk5fqrM0fPZ230B
-	 KEjiMz7HM7L4qzHyBVCqvG9OHxF9AE9K5R4nq44q5B5A5vDvoF2e6N2kZaxF1Xwl7qyXn0HPU+w0q
-	 jx+hU0FDBXH84DVvxXpEVC45nfZW7RE5b4cT+s2JTCz893w+J65yZGKPYhKhbfVjLu1uzs423rZHF
-	 YhpWLoHB7Z5iyFTSqhVekL+bsNuil22wBS381bllGmpRd0Z5eGD8IpYIPKcsKtvIw3suSvGWztqCp
-	 ZGnIzV/u3oZCv65hNU2vXGJYFoE1CwNhDvwyxZLhcqUptZfdM3alzxLkTi4sZcGcAkl0YQLxv0wcs
-	 xDYdGeTy4dt8w7sun/yBo2hbrgzaosoCMO9RohKNuUElD6qUPsPbWHI0n7ImrN45HY2QPGs1bCvVk
-	 MWSRQYnB5gBQQseXW+2S7fzKMYfLxHzAz/06wSHooNP221o35sl8hHLxnG+gxrgIhpp8SEAZcRLdv
-	 wttYLqc66aRhuxibq6faN+1fdUvvf0l4cS04L724Xdz7CC95Ngz5WGvieS2ipVQY1PH3RPEC0SCQc
-	 LLZDi4lUTEtGHPpV3lXVwSsXOJZKBClnzlse4Bo/O+ZEZSX8poOOa0aS22M1U1Gi0XNUU8VxABkh2
-	 bEmFwFeuf6x8bwc+bj+CMBVRMOBbJozHjSlFbbqRMjHcly44ucpG1KRKT5UmvuIARe2VdvezT5O6l
-	 4AjpimmT+Wwm48X5K++Szf3pWy8brWR888+n7HrXrJNl+S1bpTLclyQC60yZO5MIsRD1+1zgcsxEy
-	 Y16MLptC3/0G6NBTSzeoOt/17k+XaE4mdHZh69reiQfF1CWqaBhKA87ASDRQ945nLDYWOlNQ6C5AI
-	 wOHX74OkmtP7bfnjvPr48Afne4f9RYdonvRTS0CxUYkICRgEbasogiv1kyvxnWGZzdyciyj+lRx9T
-	 ZTKQ1aSJt3odwsS1uNe1fIHMqU8WkURomskKvfn9JQJrjd4w=
-From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
-To: "=?utf-8?B?U2hhd24gTGlu?=" <shawn.lin@rock-chips.com>
-Cc: "=?utf-8?B?c2hhd24ubGlu?=" <shawn.lin@rock-chips.com>, "=?utf-8?B?bGludXgtY2xr?=" <linux-clk@vger.kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bWZk?=" <mfd@lists.linux.dev>, "=?utf-8?B?bGludXgtZ3Bpbw==?=" <linux-gpio@vger.kernel.org>, "=?utf-8?B?bmV0ZGV2?=" <netdev@vger.kernel.org>, "=?utf-8?B?bGludXgtcG0=?=" <linux-pm@vger.kernel.org>, "=?utf-8?B?bGludXgtaTJj?=" <linux-i2c@vger.kernel.org>, "=?utf-8?B?bGludXgtc2VyaWFs?=" <linux-serial@vger.kernel.org>, "=?utf-8?B?bGludXgtbW1j?=" <linux-mmc@vger.kernel.org>, 
-	"=?utf-8?B?bGludXgtc3RtMzI=?=" <linux-stm32@st-md-mailman.stormreply.com>, "=?utf-8?B?bGludXgtcGh5?=" <linux-phy@lists.infradead.org>, "=?utf-8?B?bGludXgtdXNi?=" <linux-usb@vger.kernel.org>
-Subject: Re: [PATCH 00/27] rockchip: Add RK3572 and Forlinx OK3572-C support
-X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0
-Date: Thu, 22 Oct 2026 14:37:30 +0800
-X-Priority: 3
-Message-ID: <tencent_1468586598128C460803261171FD769AA209@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-References: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
-	<7fa26028-5c7c-4c5d-8cc5-3116b2e51cc0@rock-chips.com>
-In-Reply-To: <7fa26028-5c7c-4c5d-8cc5-3116b2e51cc0@rock-chips.com>
-X-QQ-mid: xmsezb41-0t1792651050t9mjujcfl
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261022_073850_294083_7FB9D4D3 
-X-CRM114-Status: GOOD (  11.28  )
-X-Spam-Score: 0.1 (/)
+X-CRM114-CacheID: sfid-20261022_001918_270835_CB07DB30 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,24 +88,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-arm-kernel@lists.infradead.org
+X-Archived-By: <archiver.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGksCgo+IFRoYW5rcyBmb3IgeW91ciBwYXRjaGVzLiBUeXBpY2FsbHksIGEgc2VyaWVzIG9mIHRo
-aXMgc2l6ZSBjb3ZlcmluZyBTb0MKPiBzdXBwb3J0IHNob3VsZCBiZSBzcGxpdCBieSBzdWJzeXN0
-ZW3vvIxmb3IgaW5zdGFuY2UsIHNlcGFyYXRlIERUIGJpbmRpbmcKPiBhbmQgZHJpdmVyIHBhdGNo
-ZXMgZm9yIGVhY2ggc3Vic3lzdGVt77yMYW5kIG9ubHkgQ0MgdGhlIHJlbGV2YW50Cj4gbWFpbnRh
-aW5lcnMgYW5kIG1haWxpbmcgbGlzdHMuIFRoZSBEVFMgcGF0Y2ggY2FuIGZvbGxvdyBhZnRlcndh
-cmRzLgoKVGhhbmsgeW91IGZvciB0aGUgZ3VpZGFuY2UuIEkgYXBvbG9naXplIGZvciB0aGUgaW5j
-b252ZW5pZW5jZS4gSSdsbCBzcGxpdAp2MiBieSBzdWJzeXN0ZW0uCgpCZXN0IHJlZ2FyZHMsCkN1
-bmhhbwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+
+Hi,
+
+This series adds support for 8K output on the RK3588 VOP2. HDMI is not
+ready yet, but I believe @Sebastian and @Cristian might be interested in
+this?
+
+8K output on the RK3588 is done by splicing two VPs together, with VP0
+outputting the left half of the screen and VP1 the right half. In
+addition, 8K planes have to be split in half as well to stay within the
+width limit of a single plane. Similarly, there are a few post-processing
+details that need to be handled.
+
+Note that splice mode is not only usable for 8K output. This means the
+mode can be tested at 4K and even lower resolutions, by simply changing 
+this one line:
+
+-#define VOP2_MAX_VP_OUTPUT_WIDTH    4096
++#define VOP2_MAX_VP_OUTPUT_WIDTH    (3840 / 2) /* for 4K test */
+
+And yes, this has been tested at 4K over HDMI on the RK3588 EVB1 :)
+
+Cc: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+Chaoyi Chen (3):
+  drm/rockchip: vop2: Use drm_format_info_min_pitch() for plane offsets
+  drm/rockchip: vop2: Skip UV plane setup for packed YUV formats
+  drm/rockchip: vop2: Support 8K output by splicing two video ports
+
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h  |   5 +
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 410 +++++++++++++++++--
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  63 +++
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 193 +++++++--
+ 4 files changed, 595 insertions(+), 76 deletions(-)
+
+-- 
+2.53.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
