@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 16AED606A319
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 07:19:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6565B606A31B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 07:19:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=g4q9N+Zj;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=airkyi.com header.i=@airkyi.com header.a=rsa-sha256 header.s=altu2504 header.b=iGK9olYf
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wl7w7KXT;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=airkyi.com header.i=@airkyi.com header.a=rsa-sha256 header.s=altu2504 header.b=EcTkj4Zg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
@@ -14,35 +14,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=1/kxUwC7WH9TvCty/BG9Xd7ONPH2E6em2eCjYZw9D3o=; b=g4q9N+Zj7SSZ+u4O/gpHRs8//W
-	rCfvRAHTUzD3GoCmoUebIGNU897fUiwboY8lf44Ldbhx0XIHkEEyoZewWUUkRQvI0RiuztAO3hFNY
-	5rt0tDbMujJfYR0/7Am5oj0JuIfHUSTBoQkyGsyBq1btr0mmSPaQmdtpMWD+3iiVwN/iJBXLFycET
-	TZRlMUU9IPhKinnA8zclUWfFOwBoemSAKBAo3f9K+HqcB2dIQtmwVhfZX+O3yqnY3nHQIDWAT0rHy
-	Ayl56mN2OFaEPON+zvnx11tHnow3yiY51sBbhc3n2K4ZfF9T/B5A8Rt0bs2whM12gaEb5/gFp+4xy
-	as35WK/Q==;
+	bh=o/g94UV8nOMh15UpjxITwrbkU3bDyubDsSGzpMReOrI=; b=wl7w7KXTb/3NJBm4ke+YN1DpLg
+	pdGQCaOcD39ljPjzk14Kh2MYv67ECpRvlotXYpUjzhThQQG0d7h/ieZ2FgdnibtY8GZanafRX+RXG
+	78+s4SR2EU4ShVUTv5n7rrvC48jHtn04VlrzSeUzw3AtHruavL1AiCGu7TfMTPDP4qgoqYvCE/gex
+	xwR3v+jK3CHBC9LKVLUAUydyZiP6WZSA9eX4ZoleZ4Xg0sF35Y0/iu+PCevavtzHDEzqaFSMS8ObI
+	bOxiuVCllkA7eL1Fk+UsbFD8XI+TxM25BvNHfY1rISPphr4Xe666rCmgMSbsBdNGDfqep9GwRAw3M
+	rDsR/y/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJn5E-0000000DYG0-2itk;
-	Thu, 22 Oct 2026 07:19:28 +0000
-Received: from bg1.exmail.qq.com ([114.132.124.171])
+	id 1xJn5K-0000000DYJJ-3wmX;
+	Thu, 22 Oct 2026 07:19:34 +0000
+Received: from smtpbguseast3.qq.com ([54.243.244.52])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJn58-0000000DYD1-1paR;
-	Thu, 22 Oct 2026 07:19:24 +0000
+	id 1xJn5H-0000000DYCQ-16t2;
+	Thu, 22 Oct 2026 07:19:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1792653505;
-	bh=XQtpwBbNQSG09Tws7x6dKc8i9V8heR9xSsqFP4cmwGE=;
+	s=altu2504; t=1792653499;
+	bh=B6Mr2zeUEC2vgnMxDsc0lK+gzeSHU+oHhXXsC+EDQCg=;
 	h=From:To:Subject:Date:Message-Id;
-	b=iGK9olYfhfA4y021DIIpEgCiYqOum0QL2mTxvkOeiW7s50/EaBQuuLnI3/rn1fRwe
-	 Ph0E+YRqvNKa0x+mntAy/PIhYPvnYNcZTsKH6/PAa5y9digGnuKSskxE4aJnMVR79t
-	 nQC74wdCrapIBqIGIETOayRCjLOpttRcUFmybZ8c=
-X-QQ-mid: esmtpgz10t1792653498tf61c24c6
-X-QQ-Originating-IP: HX1t2sOuxhJHsPQIrTI7coDscVM70zdTd26TmRi7hpU=
+	b=EcTkj4Zgfd9kWchDZ1MX0wxUGykVGPaYDRsXRdiPzmmrwJYkHXFB64S75sM2u2MiH
+	 UydhTwdKqG4bj0M5AWX9V9O0HBlRMppDYsawE86LAK1ndM/zvu9xxDg2q4TRPlQQd5
+	 epjlRmcUQsKezOftm9rz0KPZXF/C0rXYG9o2XX3E=
+X-QQ-mid: esmtpgz10t1792653492ta104827c
+X-QQ-Originating-IP: ZCwMVggbhxksKaYJi2SD6aPvDovFtD5NqMcNITo2/mU=
 Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 22 Oct 2026 15:18:14 +0800 (CST)
+	id ; Thu, 22 Oct 2026 15:18:08 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 3961529649271326920
+X-BIZMAIL-ID: 6992850712652161128
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -52,35 +52,37 @@ To: Sandy Huang <hjc@rock-chips.com>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	David Airlie <airlied@gmail.com>,
 	Simona Vetter <simona@ffwll.ch>
-Subject: [PATCH 2/3] drm/rockchip: vop2: Skip UV plane setup for packed YUV formats
-Date: Thu, 22 Oct 2026 15:17:36 +0800
-Message-Id: <20261022071737.508-3-kernel@airkyi.com>
+Subject: [PATCH 1/3] drm/rockchip: vop2: Use drm_format_info_min_pitch() for plane offsets
+Date: Thu, 22 Oct 2026 15:17:35 +0800
+Message-Id: <20261022071737.508-2-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20261022071737.508-1-kernel@airkyi.com>
 References: <20261022071737.508-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: NoZl3lE/gOeTIssJYm9dwfUzK2ivny64agxuuKT8sgLXssg5JwxufI1w
-	rjwrwj65Qi8kRktx8CsotRy92BiF17hKXmpGBPKlwfBYSnwCjomxrp8bFQGH27V8IrRc7Vi
-	e89CXj3GPYnC7WMsqPPwomsFuiazyiKNJHpBgLMxh5SNr5KW5CEcsEtey5J9Vf4oiCl0jBM
-	CQDe5ZCre85244mGheF4CG+ZnXrDDFxSX0bXNrZlSY6ePn95oQpTgEQ8ann+BEDBSI85cs1
-	olXdc17oKME+67Q1lVZaLGit4mWj6b3/Smaw9K4ZS0CK7r2URs9O25gjS1HN2Ph2o7uy0oq
-	Y6hUWNVE+CINNL2zHHfiaAfqB6uNDuJrOnuZvI9UXOD7/AM2p5chPI5s2+T6xaUmdZIMUUb
-	DTHvb8/XSZ4kUDKj0T+NVs9XTmV9ck39aG7z4S8y1KY6D7nnXwvyNKCQQEfvvMi+kbZNZ7z
-	NnZzFwnldKTL7BhJdP3SUZPUws+djhzauVTgWyJwulwobkjlepbmzlpMXD8SDQGMMbxYgPJ
-	Vc/l6UKsuCSlfK77YiBwdjQsF1+p808Fjp1+i6bN7yzPZ2pSfxKkgZkKEauEhKUABQZ6ROf
-	BY36SyoVLWpRfHQ01Up1w1WKnf/QrDsvc1zjkKvU9og8xwbfyDUjxzqsIb/oz1+t9K3poLN
-	/Yx2/vqVebY8N/g8SA+fESyG7OoEeslTJu82wxLwz179No4Zz6YxMhDNeGLoLItfcq/jLwD
-	OwgSWANpRDYFhRfPbRZfIxQl4daN0Gln/jQt7qO4AynXKcR8lceoqY+OjOsEVby274+l2QS
-	HvaYLwqIQuMItQqOZUJWPe4udgsBQKNiLEWeElhIW9malH7EwsWpLAzdn/bITK+Wfs6vhSP
-	SAxm9cIhB7uNastRIbFEKhFZr8PulbkVg5EhVr8ZoT7pbBAn9QJewaTNGaEbC16nUedOjfe
-	XxJKeKCsiVxum22u+/DBIbKQg1Cpty3838s1Uve1kGZxdLU1mslM7KGrmrxj9zRp7yQ+G48
-	uSp+dNUyLsfMuPDJLm
-X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
+X-QQ-XMAILINFO: MCk7GSmjSGXyJoQ8J8QJW4mNcKy6UUKftkpIU5sMqXCUiejKUB+N2CgV
+	6/9upJi9+HQ5/hqwwsHgfP9gK+1AvUPJiV9SvJQarkEZs8SqM6LPFxLM0rwqaZKkUYzkFgc
+	Fr4gC8hGWIawsTtym4Zl90OEWriXwL4ttDImaMm1Yrm63XeJinazvweon90xPScuU1X7MUC
+	/lzr5xXVG+YOJUKMwM/zMg5vP8/WF4nGlgPQ+Aai2gB+nJdfh3kvq+LjYvEWdrrQeVay9ng
+	tiubNHqcRdnwhcGYjIAT6/vHNVEUsmU2fCt2Obw6PJEZe715zi/FuC40XCpKqGY4LuMj3tD
+	ltR1WUVlEOsfrjbQ1kN4ykOVfReY9PQ38TIcsR5/JAoBDI/BDUeBZ8wBOsfzRhs98AfEOpz
+	qAwwkLAe7fSaDp7YPjGZFkIro9TblF41zihrcNpI35jSXBWW7qFPqjUBn1ZX5ubOoOjYiRl
+	Jy8CWl2wyGwv55uFTILJ6m8KkUzws78Yvq+M/857wzCgk5qVTMFTpRF7XmbMNEdHaBJlFJl
+	EwBSeM7pcHKG7LjzBbfT6TBHhINWR+4p4PjI5SNM3/FZZcKH648P2K4E8zOhQiwQUgYSW3t
+	sMFvygDsNA7OemS5/SPR0kwcXed8QdqXjzk1Uls0xQxbkwHs+wKvsc6MkTEsRNmtvypwWNi
+	s9IAnRTh8yD2ruTy6bFfepjocWJ8puUFdpjtcWPO5NYoIkyzD9JIzdvZqscBnc4ejmewr4S
+	kQxnLBeGsuzLkCSukmy/3JTfGXiW9epNnIFlPRMUXsSfB5KwwytlI8EwwB7NRM8O2DDsE19
+	/Ff/pwIT0AHf+2FjfC6GQx/uRr7aEGq7LEayqJI7mnOTKM1jWQlg8ia8sYe/IUM5X0oEUH1
+	PW/ox82XHXB72DwHbvSkuHqKosUnDCgitges3xdqabWhmva8N3cekB+37xbjDDoU+Z0ErZo
+	6WguNIzkuLVamy7G41Ri7Bp51m446UpA31CCtGFTBbzofKyPS2+HzIwcDui1vFcjq6EVtfL
+	zJZEI1SiDdS1SZ+QjuBLIjX625AGc5NtihSOqWDMZn+inQP5J/1c+V20hV08L0J7oUHzxDJ
+	Q==
+X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261022_001923_125737_8540A95F 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20261022_001931_854995_9F7380D0 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,48 +99,59 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-21.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Packed YUV formats store chroma interleaved with luma in the same plane,
-so they have no plane 1 that the UV address registers could point at.
+Use the block aware helper instead of cpp[], the latter aliases
+char_per_block and is wrong for packed 10-bit formats like NV15,
+NV20 and NV30.
 
-Restrict both the plane 1 offset calculation and the UV register writes
-to formats with more than one plane.
+Tested with modetest[0]:
 
+```
+	modetest -s 86:3840x2160 -P \
+	59@83:3940x2160~96,0,3840,2160+0+0@NV20 -a
+```
+
+fb size (3940x2160), src at (96, 0) with size (3840x2160),
+dst at (0, 0) with size (3840x2160)
+
+[0]: https://github.com/windowsair/libdrm/tree/src-pos-support
+
+Assisted-by: LLM
 Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 480aa8c8a8d2..42ef1b996656 100644
+index 4cce3e336f5b..480aa8c8a8d2 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1305,7 +1305,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 	rk_obj = to_rockchip_obj(fb->obj[0]);
+@@ -1290,7 +1290,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
  
- 	yrgb_mst = rk_obj->dma_addr + offset + fb->offsets[0];
--	if (fb->format->is_yuv) {
-+	if (fb->format->is_yuv && fb->format->num_planes > 1) {
+ 	afbc_en = drm_is_afbc(fb->modifier);
+ 
+-	offset = (src->x1 >> 16) * fb->format->cpp[0];
++	offset = drm_format_info_min_pitch(fb->format, 0, src->x1 >> 16);
+ 
+ 	/*
+ 	 * AFBC HDR_PTR must set to the zero offset of the framebuffer.
+@@ -1309,6 +1309,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
  		int hsub = fb->format->hsub;
  		int vsub = fb->format->vsub;
  
-@@ -1461,7 +1461,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 	uv_swap = vop2_win_uv_swap(fb->format->format);
- 	vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
++		offset = drm_format_info_min_pitch(fb->format, 1, src->x1 >> 16) / hsub;
+ 		offset = (src->x1 >> 16) * fb->format->cpp[1] / hsub;
+ 		offset += (src->y1 >> 16) * fb->pitches[1] / vsub;
  
--	if (fb->format->is_yuv) {
-+	if (fb->format->is_yuv && fb->format->num_planes > 1) {
- 		vop2_win_write(win, VOP2_WIN_UV_VIR, DIV_ROUND_UP(fb->pitches[1], 4));
- 		vop2_win_write(win, VOP2_WIN_UV_MST, uv_mst);
- 	}
 -- 
 2.53.0
 
