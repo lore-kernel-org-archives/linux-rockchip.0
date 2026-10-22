@@ -2,67 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E2C8D606A31E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 00:00:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0532B606A31E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 02:21:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SAsFY26A;
-	dkim=temperror header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=SH7ETnz1
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PNt2Xc9M;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=SQsWjO/B
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TcVWW/yfilNHEkNRgWGylvpBZwF2gq0xpNc+iC64FRY=; b=SAsFY26A0jNm/2
-	eQCh0k23AtQD2k0SmWu+KPHXjxA8liyiXk783w7nuMEo1+8Jx33ksBzOi5purUMI+KTYoqBE7juX0
-	GGwHREgl7RYEDAUWZYoL0QG0t6k+kXsINYqX5OdTAcYigRZprCxZStcejJuBSpyej9qIRWF63TrCv
-	H11EaNpgXF24kABGo8doTRjCsow4VYOlmNvz9MT5Fsl8dWn5dmhI5yzEuBYNqEIwcozuhEEtkejIr
-	z5NEFQXpwg0o3s+Ro4x83YDesCcN6IFB4Zz75/GyH18BCHDGlDQbaBxdgaaFHt+aERYq8b/eVhT0D
-	ibqiwzNSvdkLzEv0jkxw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kqWrw6VaChPXSvIB/APiF+9y59XcQaS7AKB9e5zJTpk=; b=PNt2Xc9MIJxknG
+	eK9yYtEu1XHWS+I48OGMyP1Usneb8Tm1F38I5s+60CA39Hmsr2Wy1X35ITqx6Yf4Tpx+tpM7knHJR
+	OVgm76nzmKRAwvDKCCmNsTyi6MbYNVeqLo0HMCxh23c6lLgsL2JeOl4vZHvPRBEOGDEdtPruGD+wZ
+	RKVL+sp5Q2NTYtLnMTrYWGOUgqZRmQ/89pch4vmfy8Bw17Z51SyzP7VxP77DToPjnILFyJfwXHMr1
+	OXlpC/Q5PWhbXb/TkbQRPpaLYC6jekfVKue2q4ZcJJ1FgFwDSF941ki9EoibCXh2Xc40x5ENwCp8c
+	0s+niQLaHf/QhzKdfIfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJgED-0000000D4VL-2U2f;
-	Thu, 22 Oct 2026 00:00:17 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xJiR3-0000000DByn-25bU;
+	Thu, 22 Oct 2026 02:21:41 +0000
+Received: from mail-m82218.xmail.ntesmail.com ([156.224.82.218])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJgEC-0000000D4Up-23nM;
-	Thu, 22 Oct 2026 00:00:16 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 911C460A97;
-	Thu, 22 Oct 2026 00:00:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 434A81F000C4;
-	Thu, 22 Oct 2026 00:00:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792627215;
-	bh=oeaPBug6/xWLhwouYwYkca8RXEKCAo3ofPz2I6rBfnw=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=SH7ETnz1YetRCDkzeITBRMBeku3mwFPAxNZWkqy6KmisasaXRbX4c4kCLRfifqzyJ
-	 NpaaYD+up0TXFSX0C/3gyj07Iro0J/ymad22CpJrvUwagcJojPs14Ey+vmMwe6mYxk
-	 EWx1PcDCAtrOXGDFl62y63LcSoW+QSEXhyvCkbd1OoNY9JCutqPvG+S3Pj7TieuXoQ
-	 iIBLm92zZUYGE1UAVCT9hYRfJB1m4G4oyg1SHREO9Qr1M+0iAhSoiPlr8DqTDsoPiH
-	 uLeAhH9kCVb8TKLBJavXbW5IGSsuuIwSh752UIp7/S73NTf3PJc3I2szPD7k26zcUA
-	 py9Sq9NWLuulw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3A374380A963;
-	Thu, 22 Oct 2026 00:00:15 +0000 (UTC)
+	id 1xJiQy-0000000DBxx-2r5r
+	for linux-rockchip@lists.infradead.org;
+	Thu, 22 Oct 2026 02:21:39 +0000
+Received: from xf.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 51ed1a686;
+	Thu, 22 Oct 2026 10:21:21 +0800 (GMT+08:00)
+From: Finley Xiao <finley.xiao@rock-chips.com>
+To: finley.xiao@rock-chips.com,
+	heiko@sntech.de,
+	linux-pm@vger.kernel.org
+Cc: cw00.choi@samsung.com,
+	myungjoo.ham@samsung.com,
+	kant@allwinnertech.com,
+	kyungmin.park@samsung.com,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	tony.xie@rock-chips.com,
+	huangtao@rock-chips.com,
+	stable@vger.kernel.org
+Subject: [PATCH v2] PM / devfreq: governor_userspace: Guard against NULL governor_data during switch
+Date: Thu, 22 Oct 2026 10:21:09 +0800
+Message-ID: <20261022022109.642339-1-finley.xiao@rock-chips.com>
+X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next v12 0/6] net: pcs: add basic support for RK3568
- XPCS
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <179262721377.1368559.4824000922345412806.git-patchwork-notify@kernel.org>
-Date: Thu, 22 Oct 2026 00:00:13 +0000
-References: <20261017054406.1828061-1-coiaprant@gmail.com>
-In-Reply-To: <20261017054406.1828061-1-coiaprant@gmail.com>
-To: Coia Prant <coiaprant@gmail.com>
-Cc: kuba@kernel.org, netdev@vger.kernel.org, andrew+netdev@lunn.ch,
- davem@davemloft.net, edumazet@kernel.org, pabeni@redhat.com, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
- maxime.chevallier@bootlin.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, hkallweit1@gmail.com, linux@armlinux.org.uk,
- david.wu@rock-chips.com, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
+X-HM-Tid: 0aa16169bbfa03a8kunm107f5dafdcf40
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCGkNMVktIGh4aSR5PGUhKTVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=SQsWjO/BBQxHRkBsgnOgPcYakFTvOHyIRj2GImr8AO68bBY89hVXHoLa6TNZu3KXBhhUd81Q+Ribz86i2eUFntrPEMtZHVgnMh5vImDK3OYzXDhNouRqu3OqVlHl2Zspg1EK0I+0QzZRqyi52cDbqSf7FKScBLfaDFvv0wkp4KU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=rTtOEHpuUdG1ZN7wpfmh79f1UZoM9LFVHJpiq1FULQo=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261021_192137_346648_F8549416 
+X-CRM114-Status: GOOD (  12.04  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,53 +76,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hello:
+The userspace governor is the only one that uses devfreq->governor_data,
+allocated in its DEVFREQ_GOV_START handler (userspace_init()) and freed
+in its DEVFREQ_GOV_STOP handler (userspace_exit()).
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+When switching governors via sysfs (governor_store in devfreq.c), the
+sequence is:
 
-On Sat, 17 Oct 2026 13:43:58 +0800 you wrote:
-> This series adds proper SGMII support for the Rockchip RK3568 SoC
-> using the integrated Synopsys DesignWare XPCS, along with necessary
-> fixes and refactoring in the stmmac core and XPCS driver.
-> 
-> Motivation
-> ==========
-> The RK3568 integrates a DW XPCS accessed via APB3 and connected to
-> a Naneng Combo SerDes PHY.  Several boards (e.g., Ariaboard
-> Photonicat) use this interface for Gigabit Ethernet.  However, the
-> current upstream stmmac driver does not support this configuration,
-> and the XPCS driver has issues in SGMII poll mode that cause the
-> link to be reported incorrectly.
-> 
-> [...]
+STOP(old) -> df->governor = userspace -> START(userspace) -> userspace_init
 
-Here is the summary with links:
-  - [net-next,v12,1/6] net: pcs: xpcs: add ANRESTART support for SGMII link recovery
-    https://git.kernel.org/netdev/net-next/c/e42329945d16
-  - [net-next,v12,2/6] dt-bindings: net: pcs: add rockchip,rk3568-xpcs support
-    https://git.kernel.org/netdev/net-next/c/20bd39c3c267
-  - [net-next,v12,3/6] net: pcs: xpcs: add Rockchip RK3568 platform glue driver
-    https://git.kernel.org/netdev/net-next/c/b9e7cb89aac8
-  - [net-next,v12,4/6] dt-bindings: net: rockchip-dwmac: document pcs-handle
-    https://git.kernel.org/netdev/net-next/c/dffa8241fca5
-  - [net-next,v12,5/6] net: stmmac: dwmac-rk: add SGMII support for RK3568
-    https://git.kernel.org/netdev/net-next/c/5cd3229579ef
-  - [net-next,v12,6/6] MAINTAINERS: add entry for Rockchip XPCS driver
-    https://git.kernel.org/netdev/net-next/c/5e91edfb0e45
+Between the df->governor assignment and userspace_init() completing,
+governor_data is still NULL (the previous governor never touched it,
+and the core does not clear or pre-allocate it). During that window,
+asynchronous paths that call update_devfreq() outside of the driver's
+control -- the OPP notifier (devfreq.c:686) and the pm_qos notifier
+(devfreq.c:707) -- run devfreq_update_target() under df->lock and reach
+devfreq_userspace_func(), which dereferences governor_data without a
+NULL check, causing:
 
-You are awesome, thank you!
+  Unable to handle kernel access to user memory outside uaccess routines
+  pc : devfreq_userspace_func+0xc/0x28
+  lr : devfreq_update_target+0x58/0x158
+
+Add a NULL check in devfreq_userspace_func() and fall back to
+previous_freq, which is the same behaviour as the existing "no user
+frequency specified yet" branch. This closes the race for all callers
+since every path ultimately goes through get_target_freq.
+
+Additionally, take devfreq->lock around the kfree()/NULL assignment in
+userspace_exit(). Without it, a concurrent OPP/pm_qos notifier running
+under devfreq->lock could read governor_data after it is freed but
+before it is set to NULL, constituting a use-after-free.
+
+Fixes: 5fdded844892 ("PM/devfreq: governor: Add a private governor_data for governor")
+Cc: stable@vger.kernel.org
+Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+
+Link: https://lore.kernel.org/linux-pm/20260723080806.1451-1-finley.xiao@rock-chips.com/
+---
+Changes in v2:
+- Add Fixes: tag and Cc: stable@vger.kernel.org
+
+ drivers/devfreq/governor_userspace.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/devfreq/governor_userspace.c b/drivers/devfreq/governor_userspace.c
+index 3906ebedbae8..f7a485c43fd7 100644
+--- a/drivers/devfreq/governor_userspace.c
++++ b/drivers/devfreq/governor_userspace.c
+@@ -24,7 +24,7 @@ static int devfreq_userspace_func(struct devfreq *df, unsigned long *freq)
+ {
+ 	struct userspace_data *data = df->governor_data;
+ 
+-	if (data->valid)
++	if (data && data->valid)
+ 		*freq = data->user_frequency;
+ 	else
+ 		*freq = df->previous_freq; /* No user freq specified yet */
+@@ -110,8 +110,10 @@ static void userspace_exit(struct devfreq *devfreq)
+ 	if (devfreq->dev.kobj.sd)
+ 		sysfs_remove_group(&devfreq->dev.kobj, &dev_attr_group);
+ 
++	mutex_lock(&devfreq->lock);
+ 	kfree(devfreq->governor_data);
+ 	devfreq->governor_data = NULL;
++	mutex_unlock(&devfreq->lock);
+ }
+ 
+ static int devfreq_userspace_handler(struct devfreq *devfreq,
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.43.0
 
 
 _______________________________________________
