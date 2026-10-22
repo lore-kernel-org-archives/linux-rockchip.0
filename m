@@ -2,114 +2,113 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3AF40606A323
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 17:12:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6EDF4606A31B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 17:13:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fQaAMlxP;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=nQBpIvu4
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CnQRsphm;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ixit.cz header.i=@ixit.cz header.a=rsa-sha256 header.s=dkim header.b=Z3NFlIqi
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=svIKwVsGWJn2j4JDA6vpY/TwAMW3L1+9j+aS2+eU0gk=; b=fQaAMlxPCUkouDJpVgYkJk2PJf
-	I2G1cHEAGss/optI7U3t1JeRf0SR8b13fmUAukCAUSovPd8xdBtrO+kAqYiHA8TBZz4EQ/X+Z0I1+
-	l7yfoxlaFuiM707two8+HaUn6d7GqsV5Taup9m74UBLbqd9Q4Zq0F4mQvH+022rZhR0vp+wteiZ69
-	dGq4mq61AdXH3AqjVQQAyf/10U+L9pJZA5T/EgqaW/jSWA9K55BkHC6WJDHm7IY7D9wmr9DRISFrZ
-	FfNrG20BiCyJLSaeP0/T3fbkq4nTWNy8RSfTqkXWNJ6IioDrrY15mxvFkfWKGGTPu6aVvCpCMojKL
-	cbivO8vA==;
+	bh=LpVDkGBskSFCD8DI71MpZFt3orRgsV19tW3g4nZMLE8=; b=CnQRsphm2VEclVj/S0vAh9STZv
+	pfN5zLejysq7DpxbGqOm4dgaEp+CChaAOrCERT+jlax4AwNZ3uNTGZyqWXIchWFzJn+TpGCKzi6R6
+	r783q4uuZO+mtJ3pa+GLMTDjjZ9S/BCdA5iP4OQEPSTMJS8TXKiM3Pcrwjp2T+fFH/NlP8AvXcLgp
+	BQbjFMJU91jZfTyE61xfnMYSsiZsIdIf4wNyRjo/vAKsfpLQZ5vRM4GVh7PfrdUxjYhMWOxC/XoGA
+	FLz3Vl8nNmLlRBiOieH0ZrpCXBliJFxEb+BgbU/0Kyz/ayzVSP3O2kIzopmSb9xQ+pw9UvDAfh0Fs
+	xXOee/1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xJwL4-0000000EZJ9-1bza;
-	Thu, 22 Oct 2026 17:12:26 +0000
-Received: from mail-ej2-x09.google.com ([2a00:1450:4864:34::9])
+	id 1xJwM6-0000000EZVS-1lOp;
+	Thu, 22 Oct 2026 17:13:30 +0000
+Received: from ixit.cz ([84.42.129.46])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xJwL1-0000000EZHz-2wOo
-	for linux-rockchip@lists.infradead.org;
-	Thu, 22 Oct 2026 17:12:25 +0000
-Received: by mail-ej2-x09.google.com with SMTP id a640c23a62f3a-c3ff043bce9so1255366b.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 22 Oct 2026 10:12:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792689141; cv=none;
-        d=google.com; s=arc-20260327;
-        b=WRIzZ3cNXIF3xmXYCLpvap7jHhz/XRv4oZXy5R9V2+JwZhkg0yeFVAw0kTS5XH3A0J
-         K5PDNTcrLnQyK0/zoY5Ir0dN0pHd3r7qXAJudujUwdPIbsgadrF4BUi6DAhMT78S6TyA
-         tR/7gS40mshQ2VUn96OVkQyE+GCf+x8jx7WIeOSkvv34FaRAyDO2MuEwUfiF2F+ENsJe
-         Oxh6DUAZuN27DIQjbYN4YnKkvkFF4CDwJFXeCMj1QDxn0QcZqyjiv1yfMafRfpdG6DCe
-         Hmc/4vxKfxM1BTEbzztjlSbl+ARReAeWKoByBaFM272jfHPYb21BcbDqWS7+Gzyta689
-         3uYQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=hs6z4qUCneEFm9kHDK24+LRTeO4FQK/dQ4HNM7ckJB8=;
-        fh=fJ2ENw8l9NU3oSt+ZrigfnS7SCG3x55o5oDU6BIwGew=;
-        b=pa7IUB2un0nzFKw/1hDP0vHGLjxJq0BuaLUl7T5cZTFTqXb6QdgC8uyWXIaQuFeEGa
-         dX5y4JR05EggktgDCYisPws7xv700mQ+ZU1VDJ6e36VX215kn5NvMSixJ28FE9rHX9SQ
-         nJ7VfZtMD/JBNuVKKV+QkE8HFMdOdYBAthfrrgoDE6DKiNFssXcLaW6bBYz5mzplRWB0
-         NL0OKbSdGkau+/MfwmUx+3EVUviP761I3mBJpSIg/Bl7RpHxid3brLfCwHacDWRuzW1X
-         /e5VHyD93t1mc08bRcfsGDwE01VcmtEPLF+ysBm+hWUaLYkifaOI4pdChNi4J8v3bl8Q
-         r7Jg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792689141; x=1793293941; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=hs6z4qUCneEFm9kHDK24+LRTeO4FQK/dQ4HNM7ckJB8=;
-        b=nQBpIvu4uZjGf75T7E4EvexMQRjh+7xLzVCMuIz8xI1P0eHe0LRCl5NqQbPx9br8I/
-         zfNiQ+KC8NXcwBEzelwVuL5b08VyUEMVdNbLD9N2CVXbh9Cq+k0DNVlTE5WxRULu+67D
-         taUfwExLeRbWPjrUE3RpX9XrPzV6lt5Vf3aD/PE64ZFVKlGJybo44+gui1zo4pIYbF9C
-         wsyfOqBqllMaYy0DS1kJcL8tK9R3sHjrj+wZnXHHXXkaGCjrGpIsR5dA2CXxptMqhIZh
-         /IX/3r0zolfovG7FnvsWHp1iJOELJBEt2Y59oSskaoa1PIwbk2BM2gv1o1GlPpiNkYl8
-         j/qQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792689141; x=1793293941;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=hs6z4qUCneEFm9kHDK24+LRTeO4FQK/dQ4HNM7ckJB8=;
-        b=dZfgrF/1vZWpRNXx/jxnHQxc7grLk/CvXpfwkDOMq4TfYGlcvDJXmaTnIOcOCbQQpU
-         Hfqcgg7/eSMNqRTa26+MzpOd7zGwDW0lPBc2t3LIDaepgy+ogYadmHfAVWsGG/UhE321
-         bU/AhgF2nhwAHEqQ870nmwXTfFtbBmtjcVrD/0zuSPgehfJHInVQH8oZBnduFKPEM8S7
-         3q/+n7ES2HZ54PlkhkPBZvnzLvJK/vwWZL54IBeh3nbdG5hG9Fb+6WDr46H2CBK+A8vE
-         oRZfTNdSdD80tmV/ictQhCLwmTQu9zsAVHiofa8BBQWdjut/vHYKZhkAoQ02Jm3jsIl6
-         pKhw==
-X-Forwarded-Encrypted: i=1; AKwUvByiyfm0GXRGOsRfOnibXXzgysvJdJ6cAAbSA0UHz5ZjpER1VKjGPEDnEEtu8zw0iVQBvLj2+lYM08ZnHn3jOA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYI1KKSoOYUFJwwgXAyc7qflsZ9X7Vwm+kWi3/B4+XW0WJaRoYgW
-	z9TL6jQ8S9eNMcY1IPlLy+FdS1hbCxAHRWUZg7REB2jitwza1ydVWZrpzWtHXQSOcAinfQGLiKj
-	r2b4by6mcKeZz9ozCPw2mpElWQEuCZPU=
-X-Gm-Gg: AYBFou2G5mnycp8Wx7XcDMOlJI53MqZziPKYAhUPgiJykLGpSzS3LnhHdJtuN+g54Q5
-	VecPRfN1krkrzm9+aXaifoID6H6W0kMXBeFWtBsAEp/Ef2JObB+GKuz/xubIiWy5RGrSFhosmkX
-	ljZShcBmf8mGQD79ZVq9y32VV73UYj2dP7g6eu4jDDKkJnarMSVRiCuhKPe4V0gwhbgJEgNm++C
-	U9OW+I1PV0RagQNKmQc4qcRbtYQ9R5rEnrC7+HsJZIWmClRAk7gD6ljMPExjHmV1VEr/pHblBhR
-	O2hu/EiRKUm+gFsh27eLt/5YCIZS7Cwzn0n29gasoK4kEowpLjtsCyaggOsbHsOwE7Q8msZA3Dl
-	ZnV/N7uxVI4vaCq5X3lzQIQzbkWiSeRNsiUrUI1wGHz3INnCs+KbtU63P8don
-X-Received: by 2002:a17:907:1c95:b0:c26:19de:9aec with SMTP id
- a640c23a62f3a-c4679b577d3mr599686166b.43.1792689140926; Thu, 22 Oct 2026
- 10:12:20 -0700 (PDT)
+	id 1xJwM2-0000000EZUN-2udC;
+	Thu, 22 Oct 2026 17:13:28 +0000
+Received: from [IPV6:2a02:830a:f787:8f00:d622:eaa3:3dd6:8f5e] (unknown [IPv6:2a02:830a:f787:8f00:d622:eaa3:3dd6:8f5e])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by ixit.cz (Postfix) with ESMTPSA id F33D153401FC;
+	Thu, 22 Oct 2026 19:13:06 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ixit.cz; s=dkim;
+	t=1792689187;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=BxP4L3Q28QKs8ZX4ZIVySQQGIyqmdKOqnViS6m4Za3s=;
+	b=Z3NFlIqiL6ubHUlwUPgphNNqwfHWewXF4OTMvhmzNyMAr/K6OiwxM4Ty2Sr/pz/I0LvXqX
+	mnR93+lmvAB1WR0+KS9J8/9ZQX8cdBHtnwNWh1TL0manVbLnFWirPTBPKpGBpZkCb9Db7z
+	4u4NsKqaNnE3N7l4/jQSEa4R2NVXcnk=
+Message-ID: <fbd174d9-261d-4fed-b26e-2990de7af2d0@ixit.cz>
+Date: Thu, 22 Oct 2026 19:13:06 +0200
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261022025844.150320-1-coiaprant@gmail.com> <20261022025844.150320-4-coiaprant@gmail.com>
- <e7f68299-1c0d-4b0f-948b-4835086c0df8@lunn.ch>
-In-Reply-To: <e7f68299-1c0d-4b0f-948b-4835086c0df8@lunn.ch>
-From: Coia Prant <coiaprant@gmail.com>
-Date: Fri, 23 Oct 2026 01:12:07 +0800
-X-Gm-Features: AclHuK9Aw-1KGTe0rcDr7TiLvHCZz-VKOsYzCIMnUV4-DQLpiOO8Gle6TTGKUh8
-Message-ID: <CALj3r0gMA45HG2khs2SyehftU5KAHR5i7__CKXSZR8GSE1Q19A@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v11 3/3] arm64: dts: rockchip: rk3568-photonicat: enable
  SGMII LAN port
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Shawn Lin <shawn.lin@rock-chips.com>, David Heidelberg <david@ixit.cz>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+To: Andrew Lunn <andrew@lunn.ch>, Coia Prant <coiaprant@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20261022025844.150320-1-coiaprant@gmail.com>
+ <20261022025844.150320-4-coiaprant@gmail.com>
+ <e7f68299-1c0d-4b0f-948b-4835086c0df8@lunn.ch>
+Content-Language: en-US, cs-CZ
+From: David Heidelberg <david@ixit.cz>
+Autocrypt: addr=david@ixit.cz; keydata=
+ xsFNBF5v1x4BEADS3EddwsNsvVAI1XF8uQKbdYPY/GhjaSLziwVnbwv5BGwqB1tfXoHnccoA
+ 9kTgKAbiXG/CiZFhD6l4WCIskQDKzyQN3JhCUIxh16Xyw0lECI7iqoW9LmMoN1dNKcUmCO9g
+ lZxQaOl+1bY/7ttd7DapLh9rmBXJ2lKiMEaIpUwb/Nw0d7Enp4Jy2TpkhPywIpUn8CoJCv3/
+ 61qbvI9y5utB/UhfMAUXsaAgwEJyGPAqHlC0YZjaTwOu+YQUE3AFzhCbksq95CwDz4U4gdls
+ dmv9tkATfu2OmzERZQ6vJTehK0Pu4l5KmCAzYg42I9Dy4E6b17x6NncKbcByQFOXMtG0qVUk
+ F1yeeOQUHwu+8t3ZDMBUhCkRL/juuoqLmyDWKMc0hKNNeZ9BNXgB8fXkRLWEUfgDXsFyEkKp
+ NxUy5bDRlivf6XfExnikk5kj9l2gGlNQwqROti/46bfbmlmc/a2GM4k8ZyalHNEAdwtXYSpP
+ 8JJmlbQ7hNTLkc3HQLRsIocN5th/ur7pPMz1Beyp0gbE9GcOceqmdZQB80vJ01XDyCAihf6l
+ AMnzwpXZsjqIqH9r7T7tM6tVEVbPSwPt4eZYXSoJijEBC/43TBbmxDX+5+3txRaSCRQrG9dY
+ k3mMGM3xJLCps2KnaqMcgUnvb1KdTgEFUZQaItw7HyRd6RppewARAQABzSBEYXZpZCBIZWlk
+ ZWxiZXJnIDxkYXZpZEBpeGl0LmN6PsLBlAQTAQgAPgIbAwULCQgHAgYVCgkICwIEFgIDAQIe
+ AQIXgBYhBNd6Cc/u3Cu9U6cEdGACP8TTSSByBQJl+KksBQkPDaAOAAoJEGACP8TTSSBy6IAQ
+ AMqFqVi9LLxCEcUWBn82ssQGiVSDniKpFE/tp7lMXflwhjD5xoftoWOmMYkiWE86t5x5Fsp7
+ afALx7SEDz599F1K1bLnaga+budu55JEAYGudD2WwpLJ0kPzRhqBwGFIx8k6F+goZJzxPDsf
+ loAtXQE62UvEKa4KRRcZmF0GGoRsgA7vE7OnV8LMeocdD3eb2CuXLzauHAfdvqF50IfPH/sE
+ jbzROiAZU+WgrwU946aOzrN8jVU+Cy8XAccGAZxsmPBfhTY5f2VN1IqvfaRdkKKlmWVJWGw+
+ ycFpAEJKFRdfcc5PSjUJcALn5C+hxzL2hBpIZJdfdfStn+DWHXNgBeRDiZj1x6vvyaC43RAb
+ VXvRzOQfG4EaMVMIOvBjBA/FtIpb1gtXA42ewhvPnd5RVCqD9YYUxsVpJ9d+XsAy7uib3BsV
+ W2idAEsPtoqhVhq8bCUs/G4sC2DdyGZK8MRFDJqciJSUbqA+5z1ZCuE8UOPDpZKiW6H/OuOM
+ zDcjh0lOzr4p+/1TSg1PbUh7fQ+nbMuiT044sC1lLtJK0+Zyn0GwhR82oNM4fldNsaHRW42w
+ QGD35+eNo5Pvb3We5XRMlBdhFnj7Siggp4J8/PJ6MJvRyC+RIJPGtbdMB2/RxWunFLn87e5w
+ UgwR9jPMHAstuTR1yR23c4SIYoQ2fzkrRzuazsFNBF5v1x4BEADnlrbta2WL87BlEOotZUh0
+ zXANMrNV15WxexsirLetfqbs0AGCaTRNj+uWlTUDJRXOVIwzmF76Us3I2796+Od2ocNpLheZ
+ 7EIkq8budtLVd1c06qJ+GMraz51zfgSIazVInNMPk9T6fz0lembji5yEcNPNNBA4sHiFmXfo
+ IhepHFOBApjS0CiOPqowYxSTPe/DLcJ/LDwWpTi37doKPhBwlHev1BwVCbrLEIFjY0MLM0aT
+ jiBBlyLJaTqvE48gblonu2SGaNmGtkC3VoQUQFcVYDXtlL9CVbNo7BAt5gwPcNqEqkUL60Jh
+ FtvVSKyQh6gn7HHsyMtgltjZ3NKjv8S3yQd7zxvCn79tCKwoeNevsvoMq/bzlKxc9QiKaRPO
+ aDj3FtW7R/3XoKJBY8Hckyug6uc2qYWRpnuXc0as6S0wfek6gauExUttBKrtSbPPHiuTeNHt
+ NsT4+dyvaJtQKPBTbPHkXpTO8e1+YAg7kPj3aKFToE/dakIh8iqUHLNxywDAamRVn8Ha67WO
+ AEAA3iklJ49QQk2ZyS1RJ2Ul28ePFDZ3QSr9LoJiOBZv9XkbhXS164iRB7rBZk6ZRVgCz3V6
+ hhhjkipYvpJ/fpjXNsVL8jvel1mYNf0a46T4QQDQx4KQj0zXJbC2fFikAtu1AULktF4iEXEI
+ rSjFoqhd4euZ+QARAQABwsF8BBgBCAAmAhsMFiEE13oJz+7cK71TpwR0YAI/xNNJIHIFAmX4
+ qVAFCQ8NoDIACgkQYAI/xNNJIHKN4A/+Ine2Ii7JiuGITjJkcV6pgKlfwYdEs4eFD1pTRb/K
+ 5dprUz3QSLP41u9OJQ23HnESMvn31UENk9ffebNoW7WxZ/8cTQY0JY/cgTTrlNXtyAlGbR3/
+ 3Q/VBJptf04Er7I6TaKAmqWzdVeKTw33LljpkHp02vrbOdylb4JQG/SginLV9purGAFptYRO
+ 8JNa2J4FAQtQTrfOUjulOWMxy7XRkqK3QqLcPW79/CFn7q1yxamPkpoXUJq9/fVjlhk7P+da
+ NYQpe4WQQnktBY29SkFnvfIAwqIVU8ix5Oz8rghuCcAdR7lEJ7hCX9bR0EE05FOXdZy5FWL9
+ GHvFa/Opkq3DPmFl/0nt4HJqq1Nwrr+WR6d0414oo1n2hPEllge/6iD3ZYwptTvOFKEw/v0A
+ yqOoYSiKX9F7Ko7QO+VnYeVDsDDevKic2T/4GDpcSVd9ipiKxCQvUAzKUH7RUpqDTa+rYurm
+ zRKcgRumz2Tc1ouHj6qINlzEe3a5ldctIn/dvR1l2Ko7GBTG+VGp9U5NOAEkGpxHG9yg6eeY
+ fFYnMme51H/HKiyUlFiE3yd5LSmv8Dhbf+vsI4x6BOOOq4Iyop/Exavj1owGxW0hpdUGcCl1
+ ovlwVPO/6l/XLAmSGwdnGqok5eGZQzSst0tj9RC9O0dXO1TZocOsf0tJ8dR2egX4kxM=
+In-Reply-To: <e7f68299-1c0d-4b0f-948b-4835086c0df8@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261022_101223_819564_82604BCF 
-X-CRM114-Status: UNSURE (   6.46  )
+X-CRM114-CacheID: sfid-20261022_101327_027844_A5B6F763 
+X-CRM114-Status: UNSURE (   6.25  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -121,24 +120,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW5kcmV3IEx1bm4gPGFuZHJld0BsdW5uLmNoPiDkuo4yMDI25bm0MTDmnIgyM+aXpeWRqOS6lCAw
-MDo1OOWGmemBk++8mgo+Cj4gPiArICAgICBzZ21paV9waHk6IGV0aGVybmV0LXBoeUAzIHsKPiA+
-ICsgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJldGhlcm5ldC1waHktaWVlZTgwMi4zLWMyMiI7
-Cj4gPiArICAgICAgICAgICAgIHJlZyA9IDwweDM+Owo+ID4gKyAgICAgICAgICAgICBtYXgtc3Bl
-ZWQgPSA8MTAwMD47Cj4KPiBQb2ludGxlc3MuIFNHTUlJIGNhbm5vdCBkbyBmYXN0ZXIsIHNvIHRo
-ZXJlIGlzIG5vIG5lZWQgdG8gbGltaXQgaXQuCj4KPiAgICAgICAgIEFuZHJldwoKSGkgQW5kcmV3
-LAoKUmlnaHQsIFNHTUlJIHRvcHMgb3V0IGF0IDEwMDBNYnBzIGFueXdheS4gRHJvcHBpbmcgbWF4
-LXNwZWVkLgoKQ29pYQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+On 22/10/2026 18:58, Andrew Lunn wrote:
+>> +	sgmii_phy: ethernet-phy@3 {
+>> +		compatible = "ethernet-phy-ieee802.3-c22";
+>> +		reg = <0x3>;
+>> +		max-speed = <1000>;
+> 
+> Pointless. SGMII cannot do faster, so there is no need to limit it.
+
+device-tree is a description. whatever the device can do should be there,
+
+"Maximum PHY supported speed in Mbits / seconds." thus 1000 is correct value.
+
+thus max-speed <1000>; LGTM
+
+David
+
+> 
+> 	Andrew
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
