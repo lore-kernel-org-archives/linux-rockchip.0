@@ -2,82 +2,66 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 99D67606A319
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 16:58:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 44B39606A319
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Oct 2026 17:01:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hxF84waY;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=EVo7b4Bz;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=DZ9qUTSe
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MbvdY/EL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=cJ6pB+ZzR0W/DNBeFZTQq70ZzAcSiFhge+FPv55Hl14=; b=hxF84waYy9A+Um2NFkfZBTQD5G
-	hwTC35xVeUn7TRoB0OymQJpjCLLcJoH9nTfRcUhoVb3V4F1Gs9MiftfehmdTbDzlKR3AszybHzipx
-	MT+/Y2ljnNlZkgMMB41yVr7UZiUIx/YcgJUpa24Ijfdw0Tr1MVro4CVHQFmbQ34fyIeZvYG0qx+Tg
-	EHomUjt4ufq1VOytDCVvex1tEArqWLjOYOyhcxIW3qZOzLttYIgi4R1bqGUamFKzbf8F2l7ZzjDqm
-	4npATdcZBAJgtG9L6A4Hz59M2DcN6I6nS+gtnBaB46cYV5SkEXVuXBiM9MrOu54Yrv7AR5y0zzUuq
-	MVTAhD7g==;
+	bh=l5sMpodFV5FwAHuk6f8PGfvME53G06LXHz+ukXYD/O0=; b=MbvdY/ELrMiiXAwnz12l4fc3uR
+	KUeXJh/ZHfAA7PJRT9mDCP7h2o07gG2Pyl4kHv8XD1UtR851vo1gGexa7Qe4pyVsQ/wyBPnS7gSnT
+	xeZwWbxvIGqkFBHHEQD0V/SiEsXzepxAhoZMtaFYiohMWWTXBznx6lm9mev3PWQXcEi1utv/2wBYf
+	ipcEf+kyISOTEKICgJ3TuK3YjMEN3Sh74Vx5Do9V2sknthyf1zA68MsFlCM1nWElBo4ReGekYhR5S
+	TkVc8i2vr7nnRGVuRW5YQWG1jP1jMN6ocRS0IfEezSx+DNq8hoQG6dUu4VmwXTG89bdLyagqa5uMy
+	KbSiua8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xJw7a-0000000EYH2-3QBp;
-	Thu, 22 Oct 2026 16:58:30 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xJwA7-0000000EYaD-1uuR;
+	Thu, 22 Oct 2026 17:01:07 +0000
+Received: from verein.lst.de ([213.95.11.211])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xJw7Y-0000000EYGl-40sP;
-	Thu, 22 Oct 2026 16:58:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=lW8Xt0YJtAlPG22lX4O67YHeXeu7KYiXU4EfIgJSL9o=; b=EVo7b4BzS92khx6er0YSKgy/Wd
-	RhsghLfjTyGwBY2u9HlooR7RvQKo9f4V+E+p8sZEoFAghwyBczkeYv00xmvi4DkYVD0r6nqKvQmPN
-	TY5QZiOlC6q1bXrkq9dI89yp/9JT3JOTL5O7vWTmmoPctArA0+gt7Bzm/YkefDNIkEfjRa3AgtRQt
-	5CIariTUKfhk8u8CmUXbsvhJd66e8ZabKT3EOYO1BL7ov1zaR2Qk1Ql6sZkLeS+zvat3adj8DgAYd
-	ZZsF4qZ2E2Us28E5LJpBJWBanF1nGBZSgFfy6laScHOHtWrx8JHRbi0+Tm++XSGinGA1sgy02kF4R
-	tf32ueZQ==;
-Received: from vps0.lunn.ch ([156.67.10.101])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xJw7W-00000007Zju-0Rf7;
-	Thu, 22 Oct 2026 16:58:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=lW8Xt0YJtAlPG22lX4O67YHeXeu7KYiXU4EfIgJSL9o=; b=DZ9qUTSeEEseQv/aDXthShbwS2
-	DxN0zVjdwjrHbfGwSEJfQmo0ulGFDy4tea/8sHwWaYw5HssITuNYq8q9EcgbKc2eH4Fq/dFKXOtYz
-	9QSp+ueNkHrySluyEuw2POGQuJpyOEjGv+jJH+yEL0XJtSKpigzet+6JJ4PGaTmdtghk=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1xJw7K-00CIVE-Az; Thu, 22 Oct 2026 18:58:14 +0200
-Date: Thu, 22 Oct 2026 18:58:14 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Coia Prant <coiaprant@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	David Heidelberg <david@ixit.cz>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v11 3/3] arm64: dts: rockchip: rk3568-photonicat: enable
- SGMII LAN port
-Message-ID: <e7f68299-1c0d-4b0f-948b-4835086c0df8@lunn.ch>
-References: <20261022025844.150320-1-coiaprant@gmail.com>
- <20261022025844.150320-4-coiaprant@gmail.com>
+	id 1xJwA4-0000000EYYi-1YCn;
+	Thu, 22 Oct 2026 17:01:06 +0000
+Received: by verein.lst.de (Postfix, from userid 107)
+	id 9F96068D09; Thu, 22 Oct 2026 19:00:52 +0200 (CEST)
+X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
+	aws-us-west-2-korg-listserv-alma10-1
+X-Spam-Level: 
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=4.0.1
+Received: from rocky.lan (dynamic-077-002-186-156.77.2.pool.telefonica.de [77.2.186.156])
+	by verein.lst.de (Postfix) with ESMTPSA id 081A368C4E;
+	Thu, 22 Oct 2026 19:00:36 +0200 (CEST)
+Date: Thu, 22 Oct 2026 19:00:26 +0200
+From: Torsten Duwe <duwe@lst.de>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Lucas Sinn <lucas.sinn@wolfvision.net>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v7 2/4] media: rockchip: Add JPEG decoder driver
+Message-ID: <20261022190026.6cb0a534@rocky.lan>
+In-Reply-To: <20261022-rockchip-jpegdec-v7-2-3fd7dd55f408@pengutronix.de>
+References: <20261022-rockchip-jpegdec-v7-0-3fd7dd55f408@pengutronix.de>
+	<20261022-rockchip-jpegdec-v7-2-3fd7dd55f408@pengutronix.de>
+Organization: LST e.V.
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.50; aarch64-suse-linux-gnu)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261022025844.150320-4-coiaprant@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261022_175826_262435_E8FE7701 
-X-CRM114-Status: UNSURE (   6.76  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20261022_100104_702581_3235E40C 
+X-CRM114-Status: GOOD (  19.23  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,21 +74,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
-X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
-	aws-us-west-2-korg-listserv-alma10-1
 
-> +	sgmii_phy: ethernet-phy@3 {
-> +		compatible = "ethernet-phy-ieee802.3-c22";
-> +		reg = <0x3>;
-> +		max-speed = <1000>;
+Hi Sascha,
 
-Pointless. SGMII cannot do faster, so there is no need to limit it.
+first: thank you for driving this :)
 
-	Andrew
+On Thu, 22 Oct 2026 13:06:40 +0200
+Sascha Hauer <s.hauer@pengutronix.de> wrote:
+
+> Add a driver for the JPEG hardware decoder Rockchip integrates into a
+> number of its SoCs. 
+
+[...]
+
+> +static int rkjpegd_enum_fmt_vid_out(struct file *file, void *priv,
+> +				    struct v4l2_fmtdesc *f)
+> +{
+> +	if (f->index)
+> +		return -EINVAL;
+> +
+> +	f->pixelformat = V4L2_PIX_FMT_JPEG;
+> +	f->flags |= V4L2_FMT_FLAG_DYN_RESOLUTION;
+> +
+> +	return 0;
+> +}
+> +
+> +static int rkjpegd_enum_framesizes(struct file *file, void *priv,
+> +				   struct v4l2_frmsizeenum *fsize)
+> +{
+> +	/* The decoded format follows the bitstream, nothing to enumerate. */
+> +	if (fsize->pixel_format == V4L2_PIX_FMT_NV12 ||
+> +	    fsize->pixel_format == V4L2_PIX_FMT_GREY)
+> +		return -ENOTTY;
+> +
+> +	if (fsize->pixel_format != V4L2_PIX_FMT_JPEG)
+> +		return -EINVAL;
+> +
+> +	if (fsize->index)
+> +		return -EINVAL;
+> +
+> +	fsize->type = V4L2_FRMSIZE_TYPE_STEPWISE;
+> +	fsize->stepwise.min_width = RKJPEGD_MIN_WIDTH;
+> +	fsize->stepwise.max_width = RKJPEGD_MAX_SIZE;
+> +	fsize->stepwise.step_width = RKJPEGD_CODED_STEP;
+> +	fsize->stepwise.min_height = RKJPEGD_MIN_HEIGHT;
+> +	fsize->stepwise.max_height = RKJPEGD_MAX_SIZE;
+> +	fsize->stepwise.step_height = RKJPEGD_CODED_STEP;
+> +
+> +	return 0;
+> +}
+
+Can it do JPEG, MJPEG or maybe both? AFAICT the difference is minimal,
+so maybe try to be more permissive?
+
+[...]
+
+> +static const struct v4l2_ioctl_ops rkjpegd_ioctl_ops = {
+> +	.vidioc_querycap = rkjpegd_querycap,
+> +	.vidioc_enum_framesizes = rkjpegd_enum_framesizes,
+> +
+> +	.vidioc_enum_fmt_vid_cap = rkjpegd_enum_fmt_vid_cap,
+> +	.vidioc_g_fmt_vid_cap_mplane = rkjpegd_g_fmt_vid_cap,
+> +	.vidioc_try_fmt_vid_cap_mplane = rkjpegd_try_fmt_vid_cap,
+> +	.vidioc_s_fmt_vid_cap_mplane = rkjpegd_s_fmt_vid_cap,
+> +
+> +	.vidioc_enum_fmt_vid_out = rkjpegd_enum_fmt_vid_out,
+> +	.vidioc_g_fmt_vid_out_mplane = rkjpegd_g_fmt_vid_out,
+> +	.vidioc_try_fmt_vid_out_mplane = rkjpegd_try_fmt_vid_out,
+> +	.vidioc_s_fmt_vid_out_mplane = rkjpegd_s_fmt_vid_out,
+> 
+
+You are populating only the *_out_mplane members and not the single
+plane ones? So a greyscale JPEG needs to go _mplane with 1 plane?
+
+And for color, the colorspace on the decoded side should be
+V4L2_COLORSPACE_JPEG, not sRGB, I think.
+
+Would you mind to give a hint about your test setup?
+
+Thanks,
+	Torsten
 
 _______________________________________________
 Linux-rockchip mailing list
