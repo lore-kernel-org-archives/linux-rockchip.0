@@ -2,98 +2,102 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BA17160A2607
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Oct 2026 08:21:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3D973606A31E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Oct 2026 10:35:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qBE2Ofsu;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=j73r+lT4
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TMcvIRbo;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PQvDIONv
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=5EvzLX13Q8HhMtO+xGJoAoLI4tcvrz+XxQxwqDLmZTg=; b=qBE2Ofsu2lmB4w5xuWTiHhSEyg
-	WXlk501/m8Z74lLHqPUDL0cpjjRWVSKJrNtFpFQIq0HkGA8axCkBc4Tfkx8Jmle8YwAHL11mATlsJ
-	Jrx46MqldU876QrPd1pPu9qse2DGwUGQVWuug5DCUaPoOrNEiMd+3Zc25tyYv2uW8j1KD9zPC0Z07
-	sGLDUCcW1v5WvJNtf9Oa/Nj9R1xJu5uu1zYtSo3aPj7TdTeAT2St7P/8/vzBEM2I1acoMyWX5ssbJ
-	UMMoLzmXU7ZtlxUsucFi8CAY9ZCSWssZffne0M+aA1YsPUPTfzxs02UnoBXlp5aNkKZ3dP9SmNhb0
-	KJ7+VThA==;
+	bh=NGccvoJvbge7A4gECLZqcd4qGKdnYfxcyiBPrdv7RsE=; b=TMcvIRboT/lPSPRiPSzj/6KKWp
+	tnWRbNUEFiepkCiyTIMGdD2B23nJ4cyAqV81uF8O7bb5M8TZ1In+Z/ZynDViX9bCWj/S/NVOMJAKK
+	QucShT6XJPCndfO7WXN9akYwkIn/sXtYoM7bjq96aMVi9s/uLhAjFPDcU/huah5cR2UQdRCI6T909
+	uQx/ByW0iYPnAlfSxrOd+8ZQA8aOdFKNgTksRXMvV2L2ngPUyqEPlG+yCMxofmjMkUDi5YhO/eW7a
+	O7ZDR2oXS8DP0M6aMCG9QS0DNg047GG4jj/IoJFnHV0Azt93h4cGRrEAWhT69klGkiRsGPRH+Odmj
+	R5luAUHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKAWh-0000000Fv2d-08uE;
-	Fri, 23 Oct 2026 08:21:23 +0000
+	id 1xKCbz-0000000GAMh-3i2f;
+	Fri, 23 Oct 2026 10:34:59 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKAWf-0000000Fv2A-0qKT;
-	Fri, 23 Oct 2026 08:21:21 +0000
+	id 1xKCby-0000000GAMS-2SsP;
+	Fri, 23 Oct 2026 10:34:58 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A518340A1D;
-	Fri, 23 Oct 2026 08:21:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 03DF940576;
+	Fri, 23 Oct 2026 10:34:58 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1792743680;
-	b=yqumJyKUIwjsAXvSZEixJacibLfnkBa+d7NYfvhkGAiTuYDT733LNH9T6l3xB8c4CcY0
-	 iHHWyJVNlZ47vacEoFq1kwe5N62hmQQXRh+fETrKkDWjdATTdluCcBxpJhdDxVp26TazD
-	 7it8JyrCYbwFUDZjpJZKRe2nDabKtooALNW6qiU2lCX6AEzAvfPMLB42js8vi+lpxYPLv
-	 xWNTlIyUdddq8p4l7IuxJ52gotOsmPrL4uDhzG9ecc7tANFBIqtD1+Kin50Ht9W+JitRa
-	 AosPELMRKKmvx9oVHBoDgYnYe+8cRNAuSGwLX4z59QLGIam/ei9LuPHAK+tDgKLu3kQ==
+	t=1792751697;
+	b=vtTrQqlYoAfgpVKTRkfeNKiKaJkFMM4+0mYLxRpMP79gjW4kpquyxDAAzpX1639J6/vY
+	 EJzzwiC5qtHqi4G26gcArnpw1yW5Lkg2XXQ6IQTCSD8yWwkPTTiz/Z+lrtUZSuY9DO2Zj
+	 Bf+W3p0QElqQdDrHLYTa2CzDW5n5GA3BF66GrMWYmj4qqSwOSj2NPw2Xrzn/DV92T4Q1Z
+	 rdWr+nB1GYReOJ8envjDp1x6qHHFEyprLm48KQbnWG/vsoxX+Tf37Oo7VDhdOQYLgKtFQ
+	 T0V6Pm7MEcRsKYRdxiAcRbVKNs/oJc8jXsVsNxfDTFbE1eIY8coGTGJ0UVBH2A0IEKA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1792743680;
+	c=relaxed/relaxed; t=1792751697;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=RZFjcUKLDQB2Qqzwh+QT+vaE3N63TGAe0FwqXRZaMiE=;
-	b=AAhY0Y0n13RTqoCqQaPZn/Tof9MngJXjnKG0jkRQ1zQdTfNmPqbdrVZSFION+jdRHX+E
-	 fC9+V4a3cE1FPp0U+0qCa8UFUe9O5rvawcgc3kGhkEcbHouD/sh+LOlotcQS6frmrhtdF
-	 MGoPT5skZwThiWarwYs7WHbkoWNigUVnrBB+JpUHI4G9n19evwgqm4wcwtuQ6aPVhbHh2
-	 LWsD59Lv/6rpeWOKhhF8M3txIAAsJgZrfJJjLZPV42OqWj+iErepZITkLRr5pfPCPOvHl
-	 XbA3ohtZZ3h2FOKz5bugczxC3a/g+Mc7AqICy/gU7R4jrfwXSdlCzCOftFTkDBXli5Q==
+	 Content-Transfer-Encoding:Message-Id:References:In-Reply-To:To:Cc:
+	 X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=/WQ4vID/mN8x91/Hin8+gAfqOnZUVOATpdd7pB1ex1o=;
+	b=kPH6/RT871st26BgefQ2FLPJIc+8ZvQfLZXkWQ+xa6vG50XJjzvxxsTh30fLCpthMTS+
+	 BTA98cTBx9RCzx9OA1cvgXBWigUHwoRoPvj5w3dngjgPNaJ1DWB51i7D20q6hVRaNdpyN
+	 yQOfdXOdesnU0TKfyXSSmf06ROCxNfap3uPfdeTdy/zfBbTHNhpRspwVC7AOiJUY1aky2
+	 xB042Oh7d1iL1wlcoaB2Jewhu4uPLr4PaiDRkz1mDlTjrJm0K5duROqps2ToBfFOjJgtC
+	 G9PKeB67mXDXLtEL/Z1svJVQswtBnK7vt23OmLzdoqNH9A5qHezU6pxFvpjJFK208vw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id EFF6C1F01825;
-	Fri, 23 Oct 2026 08:21:19 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id C93751F031E0;
+	Fri, 23 Oct 2026 10:34:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792743680;
-	bh=RZFjcUKLDQB2Qqzwh+QT+vaE3N63TGAe0FwqXRZaMiE=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=j73r+lT4gTh664Jz/EMl3qFFghk9nujJvX6BWafr8b5iYg/u4c1MJ9aM2fbtH+YZ6
-	 7Bq9oqt3kJfiNN/xAMOWDkZr/2S/qEQIMIOZbxHTz6MTAWzwLy2F6J5NhMob+chanW
-	 cpn1glCQuXdkCJi5aK9O8w+4yIfX/0V+d1ZlNUaeHFfhMYeVbJBLm7U3Utmk7qDG8V
-	 w/CjiG2PBroao/yM4ChQSxTd1DmDnzngKfh4q4vKnknk5Yx2Lsg4M2eAEQv/eOZdvg
-	 ycgFGaGoYpu5rXNQDqaMnNIKLE167dXwegBThFou6fNjIzKjAJPeGsCp1Rx+tRjhX0
-	 lNEuMPQIXoCOQ==
+	s=k20260515; t=1792751697;
+	bh=/WQ4vID/mN8x91/Hin8+gAfqOnZUVOATpdd7pB1ex1o=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=PQvDIONvMj41mtezMZcnAqxwIFpMfVAFjUo97f60wbYO2e0dqA7KZ1DG4ZWcGUPuO
+	 RBk9kF+lzgj2h9QwRj68aVUprIT0XNXOQ9rglYyYX77G0JbFGgDb0970eZwzgMJOJ/
+	 CeValCdn29Y+EPa6OLyGVlyP/pfIPRIBIT1UnPEAS2cWmrMy6wv6VEvzSCnpoHD0E3
+	 8d4XOWWqE2Jki6YB26lJKcbX9Jsv9wiWKZeJTEwEwd1InL6xWOew8r7vrP9dOdr3MC
+	 8Up5YaFQ1TV6w4uxQp5RC2PnAHeS2D+bElu5lcPYB9rC+QaafIEp+xs/1L4LfW4ncB
+	 vZK3epHc2WZow==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 6FC1F4441C;
-	Fri, 23 Oct 2026 08:21:19 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 39F12444B6;
+	Fri, 23 Oct 2026 10:34:56 +0000 (UTC)
 From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
-Date: Fri, 23 Oct 2026 16:21:05 +0800
-Subject: [PATCH] gpio: rockchip: Fix debounce arithmetic for GPIO v2
+Date: Fri, 23 Oct 2026 18:33:48 +0800
+Subject: [PATCH v2 2/3] clk: rockchip: Add internal support for 24-bit
+ fractional dividers
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261023-fix-rockchip-gpio-v2-debounce-v1-1-f1141bd5b58f@qq.com>
-X-B4-Tracking: v=1; b=H4sIAPAY22oC/yXMQQrCMBBG4auUWTuQTqFFryIu7OS3HYUkJLYUS
- u9u1OW3eG+ngmwodGl2ylitWAwV7akhne9hApuvJnHSt046ftjGOepLZ0s8JYu8CnuMcQkKPru
- hH9RD4Duqj5RRg9//evu7LOMT+v5O6Tg+e9INuoEAAAA=
-X-Change-ID: 20261023-fix-rockchip-gpio-v2-debounce-90767cde2ed3
-To: Linus Walleij <linusw@kernel.org>, 
- Bartosz Golaszewski <brgl@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Jianqun Xu <jay.xu@rock-chips.com>
-Cc: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+Message-Id: <20261023-add-board-ok3572-c-clk-v2-2-90b98836be6e@qq.com>
+References: <20261023-add-board-ok3572-c-clk-v2-0-90b98836be6e@qq.com>
+In-Reply-To: <20261023-add-board-ok3572-c-clk-v2-0-90b98836be6e@qq.com>
+To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
+ Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Elaine Zhang <zhangqing@rock-chips.com>, 
+ Richard Cochran <richardcochran@gmail.com>
+Cc: Cunhao Lu <1579567540@qq.com>, linux-clk@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- stable@vger.kernel.org, Cunhao Lu <1579567540@qq.com>
+ netdev@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792743678; l=3798;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792751694; l=14090;
  i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
- bh=990tz6V6xSqlnsWsntOcrs9gs3SDwAyWpRr2l3eS5jA=;
- b=MT2tjLEkyabOrZ4KFYK1MjnqubLChv5mTzLHiyvAzJ27voIKRUdgCfGc/HuEDJpf4r0Ur6HxK
- vjeJI+cZ4ILCoeBSjnIhtn2ioR6lVFz7/f31Em4yLqEq8ZqZtgJwf7S
+ bh=g4og6gXFCPqPOvWzSj01unU/KsfsRvRArrypYhCzl8U=;
+ b=RRvtNqgLAb19LEIJVSXou9PQY+KG1dFJhkJIGfO2mM0bwXfdftTNFbgCBEStM6TtdRbyK1jYd
+ gPn+chBCYyaD6zDIoHn2DRQXiPbI1XuCEOleXOkrGrDwclGRgufN4o+
 X-Developer-Key: i=1579567540@qq.com; a=ed25519;
  pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
 X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
@@ -120,105 +124,462 @@ X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Cunhao Lu <1579567540@qq.com>
+From: Elaine Zhang <zhangqing@rock-chips.com>
 
-The debounce interval calculations use unsigned long operands. On 32-bit
-systems, the numerator used to calculate the maximum interval overflows
-before division, while multiplying the requested interval by the clock
-rate overflows before it is assigned to a u64. A zero debounce clock rate
-also causes division by zero.
+Some Rockchip clocks split each 24-bit numerator and denominator between
+a low register containing 16 bits of each value and a high register
+containing the remaining 8 bits.
 
-Use 64-bit arithmetic for both calculations and reject a zero clock rate
-before division.
+Import the vendor fractional-divider-v2 implementation and add a Rockchip
+clock branch type for these clocks. Retain the vendor rational
+approximation, small-numerator handling, and register access order. Adapt
+the rate callback to the determine_rate API and keep registration local to
+the Rockchip clock driver. This prerequisite does not add a public clock
+API or DT clock ID.
 
-At 32768 Hz, a 1 us request rounds to zero divider periods. Subtracting
-one then wraps the divider value to ULONG_MAX. Decrement only a nonzero
-rounded period count so that such requests use the smallest divider
-value.
+The implementation is ported from the Rockchip vendor driver and includes
+a subsequent copyright spelling correction.
 
-Fixes: 3bcbd1a85b68 ("gpio/rockchip: support next version gpio controller")
-Cc: stable@vger.kernel.org
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 Signed-off-by: Cunhao Lu <1579567540@qq.com>
 ---
-This pre-existing issue was found by Sashiko AI during the RK3572
-mainlining work:
-https://sashiko.dev/#/patchset/20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com?part=9
+ drivers/clk/rockchip/Makefile                    |   1 +
+ drivers/clk/rockchip/clk-fractional-divider-v2.c | 339 +++++++++++++++++++++++
+ drivers/clk/rockchip/clk.c                       |  10 +
+ drivers/clk/rockchip/clk.h                       |  25 ++
+ 4 files changed, 375 insertions(+)
 
-On 32-bit systems, the unsigned long products used to calculate the
-maximum and requested debounce intervals can overflow before being
-assigned to u64. A zero debounce clock rate also causes division by
-zero. In addition, at 32768 Hz, a 1 us request rounds to zero divider
-periods, so subtracting one underflows to ULONG_MAX.
-
-This patch performs both interval calculations in 64-bit arithmetic,
-rejects a zero clock rate, and avoids decrementing a zero rounded period
-count. The existing set_config fallback and divider register accesses
-are unchanged.
-
-Validation:
-
-- A host reproducer confirmed the 32768 Hz, 1 us underflow and the
-  incorrect maximum interval produced by 32-bit arithmetic.
-- The combined GPIO arithmetic suite passed 126 cases for each modeled
-  arithmetic width, covering both legacy GPIO v2 and RK3572 V2.7. The
-  suite includes zero-clock-rate and request-boundary cases. The 32-bit
-  run models unsigned long arithmetic; the 64-bit run uses the native
-  host width. Both are arithmetic-level host tests, not ARM32 hardware
-  or electrical tests.
-
-AI assistance:
-
-- Codex / DeepSeek V4.1 Flash were used for:
-  - Collecting data
-  - Automating tests
-  - Reviewing and adjusting code style to follow community conventions
----
- drivers/gpio/gpio-rockchip.c | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index 77b239a9a601..714604c11d78 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -201,20 +201,25 @@ static int rockchip_gpio_set_debounce(struct gpio_chip *gc,
- {
- 	struct rockchip_pin_bank *bank = gpiochip_get_data(gc);
- 	const struct rockchip_gpio_regs	*reg = bank->gpio_regs;
--	unsigned long flags, div_reg, freq, max_debounce;
-+	unsigned long flags, div_reg, freq;
- 	bool div_debounce_support;
- 	unsigned int cur_div_reg;
--	u64 div;
-+	u64 div, max_debounce;
- 
- 	if (bank->gpio_type == GPIO_TYPE_V2 && !IS_ERR(bank->db_clk)) {
- 		div_debounce_support = true;
- 		freq = clk_get_rate(bank->db_clk);
--		max_debounce = (GENMASK(23, 0) + 1) * 2 * 1000000 / freq;
-+		if (!freq)
-+			return -EINVAL;
+diff --git a/drivers/clk/rockchip/Makefile b/drivers/clk/rockchip/Makefile
+index 554b7eb83dc91..91d4ea4837e3e 100644
+--- a/drivers/clk/rockchip/Makefile
++++ b/drivers/clk/rockchip/Makefile
+@@ -10,6 +10,7 @@ clk-rockchip-y += clk-pll.o
+ clk-rockchip-y += clk-cpu.o
+ clk-rockchip-y += clk-gate-grf.o
+ clk-rockchip-y += clk-half-divider.o
++clk-rockchip-y += clk-fractional-divider-v2.o
+ clk-rockchip-y += clk-inverter.o
+ clk-rockchip-y += clk-mmc-phase.o
+ clk-rockchip-y += clk-muxgrf.o
+diff --git a/drivers/clk/rockchip/clk-fractional-divider-v2.c b/drivers/clk/rockchip/clk-fractional-divider-v2.c
+new file mode 100644
+index 0000000000000..5ab2c43180661
+--- /dev/null
++++ b/drivers/clk/rockchip/clk-fractional-divider-v2.c
+@@ -0,0 +1,339 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2024 Rockchip Electronics Co., Ltd.
++ *
++ * Adjustable fractional divider clock implementation.
++ * Uses rational best approximation algorithm.
++ *
++ * Output is calculated as
++ *
++ *	rate = (m / n) * parent_rate				(1)
++ *
++ * This is useful when we have a prescaler block which asks for
++ * m (numerator) and n (denominator) values to be provided to satisfy
++ * the (1) as much as possible.
++ *
++ * Since m and n have the limitation by a range, e.g.
++ *
++ *	n >= 1, n < N_width, where N_width = 2^nwidth		(2)
++ *
++ * for some cases the output may be saturated. Hence, from (1) and (2),
++ * assuming the worst case when m = 1, the inequality
++ *
++ *	floor(log2(parent_rate / rate)) <= nwidth		(3)
++ *
++ * may be derived. Thus, in cases when
++ *
++ *	(parent_rate / rate) >> N_width				(4)
++ *
++ * we might scale up the rate by 2^scale (see the description of
++ * CLK_FRAC_DIVIDER_POWER_OF_TWO_PS for additional information), where
++ *
++ *	scale = floor(log2(parent_rate / rate)) - nwidth	(5)
++ *
++ * and assume that the IP, that needs m and n, has also its own
++ * prescaler, which is capable to divide by 2^scale. In this way
++ * we get the denominator to satisfy the desired range (2) and
++ * at the same time a much better result of m and n than simple
++ * saturated values.
++ */
 +
-+		div = (u64)(GENMASK(23, 0) + 1) * 2 * USEC_PER_SEC;
-+		max_debounce = div64_u64(div, freq);
- 		if (debounce > max_debounce)
- 			return -EINVAL;
++#include <linux/clk-provider.h>
++#include <linux/io.h>
++#include <linux/device.h>
++#include <linux/slab.h>
++#include <linux/rational.h>
++#include "clk.h"
++
++struct clk_fractional_divider_v2 {
++	struct clk_hw	hw;
++	void __iomem	*reg;
++	void __iomem	*high_reg;
++	u8		mshift;
++	u8		mwidth;
++	u32		mmask;
++	u8		nshift;
++	u8		nwidth;
++	u32		nmask;
++	u8		high_mshift;
++	u8		high_mwidth;
++	u32		high_mmask;
++	u8		high_nshift;
++	u8		high_nwidth;
++	u32		high_nmask;
++	u8		flags;
++	void		(*approximation)(struct clk_hw *hw,
++					 unsigned long rate,
++					 unsigned long *parent_rate,
++					 unsigned long *m, unsigned long *n);
++	spinlock_t	*lock; /* Protects the low and high register pair. */
++};
++
++#define to_clk_fd_v2(_hw) container_of(_hw, struct clk_fractional_divider_v2, hw)
++
++static inline u32 clk_fd_v2_readl(struct clk_fractional_divider_v2 *fd,
++				  void __iomem *reg)
++{
++	return readl(reg);
++}
++
++static inline void clk_fd_v2_writel(struct clk_fractional_divider_v2 *fd,
++				    void __iomem *reg, u32 val)
++{
++	writel(val, reg);
++}
++
++static unsigned long clk_fd_v2_recalc_rate(struct clk_hw *hw,
++					   unsigned long parent_rate)
++{
++	struct clk_fractional_divider_v2 *fd = to_clk_fd_v2(hw);
++	unsigned long flags = 0;
++	unsigned long m_low, n_low, m_high, n_high, m, n;
++	u32 val_low, val_high;
++	u64 ret;
++
++	if (fd->lock)
++		spin_lock_irqsave(fd->lock, flags);
++	else
++		__acquire(fd->lock);
++
++	val_low = clk_fd_v2_readl(fd, fd->reg);
++	val_high = clk_fd_v2_readl(fd, fd->high_reg);
++
++	if (fd->lock)
++		spin_unlock_irqrestore(fd->lock, flags);
++	else
++		__release(fd->lock);
++
++	m_low = (val_low & fd->mmask) >> fd->mshift;
++	n_low = (val_low & fd->nmask) >> fd->nshift;
++	m_high = (val_high & fd->high_mmask) >> fd->high_mshift;
++	n_high = (val_high & fd->high_nmask) >> fd->high_nshift;
++	m = (m_high << 16) | m_low;
++	n = (n_high << 16) | n_low;
++
++	if (fd->flags & CLK_FRAC_DIVIDER_ZERO_BASED) {
++		m++;
++		n++;
++	}
++
++	if (!n || !m)
++		return parent_rate;
++
++	ret = (u64)parent_rate * m;
++	do_div(ret, n);
++
++	return ret;
++}
++
++static void clk_fractional_divider_general_approximation_v2(struct clk_hw *hw,
++							    unsigned long rate,
++							    unsigned long *parent_rate,
++							    unsigned long *m, unsigned long *n)
++{
++	struct clk_fractional_divider_v2 *fd = to_clk_fd_v2(hw);
++	unsigned long scale;
++
++	/*
++	 * Get rate closer to *parent_rate to guarantee there is no overflow
++	 * for m and n. In the result it will be the nearest rate left shifted
++	 * by (scale - fd->nwidth) bits.
++	 *
++	 * For the detailed explanation see the top comment in this file.
++	 */
++	scale = fls_long(*parent_rate / rate - 1);
++	if (scale > fd->nwidth)
++		rate <<= scale - fd->nwidth;
++
++	rational_best_approximation(rate, *parent_rate,
++				    GENMASK(fd->mwidth - 1, 0),
++				    GENMASK(fd->nwidth - 1, 0),
++				    m, n);
++}
++
++static int clk_fd_v2_determine_rate(struct clk_hw *hw,
++				    struct clk_rate_request *req)
++{
++	struct clk_fractional_divider_v2 *fd = to_clk_fd_v2(hw);
++	unsigned long m, n;
++	u64 ret;
++
++	if (!req->rate || req->rate >= req->best_parent_rate) {
++		req->rate = req->best_parent_rate;
++		return 0;
++	}
++
++	if (fd->approximation)
++		fd->approximation(hw, req->rate, &req->best_parent_rate, &m, &n);
++	else
++		clk_fractional_divider_general_approximation_v2(hw, req->rate,
++								&req->best_parent_rate,
++								&m, &n);
++
++	ret = (u64)req->best_parent_rate * m;
++	do_div(ret, n);
++	req->rate = ret;
++
++	return 0;
++}
++
++static int clk_fd_v2_set_rate(struct clk_hw *hw, unsigned long rate,
++			      unsigned long parent_rate)
++{
++	struct clk_fractional_divider_v2 *fd = to_clk_fd_v2(hw);
++	unsigned long flags = 0;
++	unsigned long m, n, m_low, n_low, m_high, n_high;
++	u32 val, val_high;
++
++	rational_best_approximation(rate, parent_rate,
++				    GENMASK(fd->mwidth - 1, 0),
++				    GENMASK(fd->nwidth - 1, 0),
++				    &m, &n);
++
++	if (fd->flags & CLK_FRAC_DIVIDER_ZERO_BASED) {
++		m--;
++		n--;
++	}
++	/*
++	 * When compensation the fractional divider,
++	 * the [1:0] bits of the numerator register are omitted,
++	 * which will lead to a large deviation in the result.
++	 * Therefore, it is required that the numerator must
++	 * be greater than 4.
++	 *
++	 * Note that there are some exceptions here:
++	 * If there is an even frac div, we need to keep the original
++	 * numerator(<4) and denominator. Otherwise, it may cause the
++	 * issue that the duty ratio is not 50%.
++	 */
++	if (m < 4 && m != 0) {
++		if (n % 2 == 0)
++			val = 1;
++		else
++			val = DIV_ROUND_UP(4, m);
++
++		n *= val;
++		m *= val;
++		if (n > GENMASK(fd->nwidth + fd->high_nwidth - 1, 0)) {
++			pr_debug("%s n(%ld) is overflow, use mask value\n",
++				 __func__, n);
++			n = GENMASK(fd->nwidth + fd->high_nwidth - 1, 0);
++		}
++	}
++
++	if (fd->lock)
++		spin_lock_irqsave(fd->lock, flags);
++	else
++		__acquire(fd->lock);
++
++	m_low = m & fd->nmask;
++	n_low = n & fd->nmask;
++	m_high = (m & GENMASK(fd->mwidth - 1, (fd->mwidth - fd->high_mwidth))) >>
++		 (fd->mwidth - fd->high_mwidth);
++	n_high = (n & GENMASK(fd->nwidth - 1, (fd->nwidth - fd->high_nwidth))) >>
++		 (fd->nwidth - fd->high_nwidth);
++
++	val_high = clk_fd_v2_readl(fd, fd->high_reg);
++	val_high &= ~(fd->high_mmask | fd->high_nmask);
++	val_high |= (m_high << fd->high_mshift) | (n_high << fd->high_nshift);
++
++	clk_fd_v2_writel(fd, fd->high_reg, val_high);
++
++	val = clk_fd_v2_readl(fd, fd->reg);
++	val &= ~(fd->mmask | fd->nmask);
++	val |= (m_low << fd->mshift) | (n_low << fd->nshift);
++	clk_fd_v2_writel(fd, fd->reg, val);
++
++	if (fd->lock)
++		spin_unlock_irqrestore(fd->lock, flags);
++	else
++		__release(fd->lock);
++
++	return 0;
++}
++
++static const struct clk_ops clk_fractional_divider_ops_v2 = {
++	.recalc_rate = clk_fd_v2_recalc_rate,
++	.determine_rate = clk_fd_v2_determine_rate,
++	.set_rate = clk_fd_v2_set_rate,
++};
++
++static struct clk_hw *clk_hw_register_fractional_divider_v2(struct device *dev,
++							    const char *name,
++							    const char *parent_name,
++							    unsigned long flags,
++							    void __iomem *reg,
++							    u8 mshift, u8 mwidth,
++							    u8 nshift, u8 nwidth,
++							    void __iomem *high_reg,
++							    u8 high_mshift, u8 high_mwidth,
++							    u8 high_nshift, u8 high_nwidth,
++							    u8 clk_divider_flags,
++							    spinlock_t *lock)
++{
++	struct clk_fractional_divider_v2 *fd;
++	struct clk_init_data init;
++	struct clk_hw *hw;
++	int ret;
++
++	fd = kzalloc_obj(*fd);
++	if (!fd)
++		return ERR_PTR(-ENOMEM);
++
++	init.name = name;
++	init.ops = &clk_fractional_divider_ops_v2;
++	init.flags = flags;
++	init.parent_names = parent_name ? &parent_name : NULL;
++	init.num_parents = parent_name ? 1 : 0;
++
++	fd->reg = reg;
++	fd->mshift = mshift;
++	fd->mwidth = mwidth + high_mwidth;
++	fd->mmask = GENMASK(mwidth - 1, 0) << mshift;
++	fd->nshift = nshift;
++	fd->nwidth = nwidth + high_nwidth;
++	fd->nmask = GENMASK(nwidth - 1, 0) << nshift;
++	fd->high_reg = high_reg;
++	fd->high_mshift = high_mshift;
++	fd->high_mwidth = high_mwidth;
++	fd->high_mmask = GENMASK(high_mwidth - 1, 0) << high_mshift;
++	fd->high_nshift = high_nshift;
++	fd->high_nwidth = high_nwidth;
++	fd->high_nmask = GENMASK(high_nwidth - 1, 0) << high_nshift;
++	fd->flags = clk_divider_flags;
++	fd->lock = lock;
++	fd->hw.init = &init;
++
++	hw = &fd->hw;
++	ret = clk_hw_register(dev, hw);
++	if (ret) {
++		kfree(fd);
++		hw = ERR_PTR(ret);
++	}
++
++	return hw;
++}
++
++struct clk *rockchip_clk_register_frac_v2(struct device *dev,
++					  const char *name,
++					  const char *parent_name,
++					  unsigned long flags,
++					  void __iomem *reg,
++					  u8 mshift, u8 width,
++					  void __iomem *high_reg,
++					  u8 high_mshift, u8 high_width,
++					  u8 clk_divider_flags,
++					  spinlock_t *lock)
++{
++	struct clk_hw *hw;
++
++	hw = clk_hw_register_fractional_divider_v2(dev, name, parent_name, flags,
++						   reg, mshift, width, 0, width,
++						   high_reg, high_mshift, high_width,
++						   0, high_width,
++						   clk_divider_flags,
++						   lock);
++	if (IS_ERR(hw))
++		return ERR_CAST(hw);
++	return hw->clk;
++}
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index ee8c79b938d3c..0646a2e6af0a8 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -589,6 +589,16 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ 				list->gate_flags, flags, list->child,
+ 				&ctx->lock);
+ 			break;
++		case branch_fraction_divider_v2:
++			clk = rockchip_clk_register_frac_v2(NULL, list->name,
++							    list->parent_names[0], flags,
++							    ctx->reg_base + list->muxdiv_offset,
++							    list->mux_shift, list->mux_width,
++							    ctx->reg_base + list->div_offset,
++							    list->div_shift, list->div_width,
++							    list->div_flags,
++							    &ctx->lock);
++			break;
+ 		case branch_half_divider:
+ 			clk = rockchip_clk_register_halfdiv(list->name,
+ 				list->parent_names, list->num_parents,
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 72b36bba31523..dce4db3f67b04 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -781,6 +781,13 @@ struct clk *rockchip_clk_register_ddrclk(const char *name, int flags,
+ 					 int ddr_flags, void __iomem *reg_base,
+ 					 spinlock_t *lock);
  
--		div = debounce * freq;
--		div_reg = DIV_ROUND_CLOSEST_ULL(div, 2 * USEC_PER_SEC) - 1;
-+		div = (u64)debounce * freq;
-+		div_reg = DIV_ROUND_CLOSEST_ULL(div, 2 * USEC_PER_SEC);
-+		div_reg = div_reg ? div_reg - 1 : 0;
- 	} else {
- 		div_debounce_support = false;
++struct clk *rockchip_clk_register_frac_v2(struct device *dev,
++					  const char *name, const char *parent_name,
++					  unsigned long flags, void __iomem *reg,
++					  u8 mshift, u8 width,
++					  void __iomem *high_reg, u8 high_mshift, u8 high_width,
++					  u8 clk_divider_flags, spinlock_t *lock);
++
+ #define ROCKCHIP_INVERTER_HIWORD_MASK	BIT(0)
+ 
+ struct clk *rockchip_clk_register_inverter(const char *name,
+@@ -806,6 +813,7 @@ enum rockchip_clk_branch_type {
+ 	branch_grf_mux,
+ 	branch_divider,
+ 	branch_fraction_divider,
++	branch_fraction_divider_v2,
+ 	branch_gate,
+ 	branch_grf_gate,
+ 	branch_linked_gate,
+@@ -1014,6 +1022,23 @@ struct rockchip_clk_branch {
+ 		.child		= ch,				\
  	}
+ 
++#define COMPOSITE_FRAC_V2(_id, cname, pname, f, mo, ms, mw, do, ds, dw, df)\
++	{							\
++		.id		= _id,				\
++		.branch_type	= branch_fraction_divider_v2,	\
++		.name		= cname,			\
++		.parent_names	= (const char *[]){ pname },	\
++		.num_parents	= 1,				\
++		.flags		= f,				\
++		.muxdiv_offset	= mo,				\
++		.mux_shift	= ms,				\
++		.mux_width	= mw,				\
++		.div_offset	= do,				\
++		.div_shift	= ds,				\
++		.div_width	= dw,				\
++		.div_flags	= df,				\
++	}
++
+ #define COMPOSITE_FRACMUX_NOGATE(_id, cname, pname, f, mo, df, ch) \
+ 	{							\
+ 		.id		= _id,				\
 
----
-base-commit: 734bef548a96e8774d6eef5dfa2026c6edc4e80b
-change-id: 20261023-fix-rockchip-gpio-v2-debounce-90767cde2ed3
-
-Best regards,
---  
-Cunhao Lu <1579567540@qq.com>
+-- 
+2.34.1
 
 
 
