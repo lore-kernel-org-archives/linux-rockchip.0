@@ -2,86 +2,98 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98092606A325
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Oct 2026 06:59:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DC545606A334
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Oct 2026 07:53:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UYGKTzXx;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=pengutronix.de header.i=@pengutronix.de header.a=rsa-sha256 header.s=20260414 header.b=COP0c/ae
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=biO2yAs1;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=Ffqrxkz2
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:References:In-Reply-To:
-	Cc:To:Subject:From:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=dN0ByIiNEubVG5e7VW4uGK+VgFTqaaYmnDtrW8H3n4M=; b=UYGKTzXxpw5rr7xm/dOfeJNmP4
-	Cu9mMsYpVn9y6L4LxvaTNCgZG769Y/0BClwTKU2AkE0oD0iiwmlcTcpjumim6RZT7FLxbJomKkMaK
-	d3b/hXo9SPRaSUMDOXrdMwPEP9SEb7HMAzyl21WQvspy0WCOhyO+MhzF5BWqZK427kIT26qRGH7NP
-	BZZmrrqdmz+TVbn9mI9kx8uUXWa/Zfh+iWqBP0UgvwjY1mr/qU0K9vu7fqfsH76wohNFfFZQljKh4
-	hyJhMVZ0C2ZP8R/VNxpzaAG9NNLxzzl0+xwSFUooxF/ZZOmbpNbnrf3Xh90gSyMkvNBVD08jRBgK6
-	z92bJE6g==;
+	bh=TWF2tQ58GJWKKMPTtFMEDZ1Cx94ZcBvd45uRLLTxcMw=; b=biO2yAs1LpXHcYFp3RahKXimjj
+	TERtt7meJiU7KPZ16tam06DMUMGpn0IkHy/QreuH1gA7rtUznF+2MA9Dst4nL0EnVU/sgh6o358U+
+	obNlFHHxPGP+dQ5TJXCo44SJ9IOla/N3GPaablAnM7BrxDsUoGDSWp2eThJ5G1zI/e1LkOz2cEifp
+	vMkBuCKNUZRq753NsjdAvYCUDRGK/Tg5r7OoXEfPXwp/LR72p8M6wGbGRAqMMfYkbXr3fQampe51H
+	e5uTnnVu0jPbw5GvFCh3t3m242soDN2PxLVOumjsOt9IzCu7VX3lqG3BarfGytgv0kvzDOL/PoTH0
+	OpL1ODXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xK9FY-0000000FfRy-13bh;
-	Fri, 23 Oct 2026 06:59:36 +0000
-Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
+	id 1xKA5F-0000000FoAR-02N4;
+	Fri, 23 Oct 2026 07:53:01 +0000
+Received: from mail-dl2-x0a.google.com ([2607:f8b0:4864:38::a])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xK9FU-0000000FfPw-36wO;
-	Fri, 23 Oct 2026 06:59:35 +0000
-Received: from [127.0.0.1] (unknown [IPv6:2a02:560:5ca5:d100:9ebf:dff:fe00:fdb5])
-	(Authenticated sender: sha@pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 25D28200208;
-	Fri, 23 Oct 2026 08:59:30 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
-	s=20260414; t=1792738770;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5WUYJH09/Iy/2Pqz1SpjpByH7uaHMKWs6PkgJ+HFOqE=;
-	b=COP0c/ae33eU2nr8ufHwDNo8/1U1SpPul/FROCBH0dr6mR3LUU5mdq6RUQiOkgHWaIykAN
-	vOusL9unHBrQzHksnuHHTdGqTrRPhGSgJH+Br9SUKdjZkL5XHznx7gCMP6SrowrfCZgNbs
-	Bk9mM/5wkdeQuzdp3rmWnZN8CX+bk1DTlsdaMITCoO+S0FbqKstKHzFgiPUd8nqqrG5+yG
-	hc83VLJBwFqKLAHjB8VP1RR4fOR8RlpCF5FhBYS7YtJoXzw25lRS62yublqh8pUWD8GP9s
-	5PRuOxVc+z4Lnlegg6PXMu16SV4rpULCbdQYQkF2eGMTidfAAIbQ1/LF4xWWOg==
-ARC-Seal: i=1; s=20260414; d=pengutronix.de; t=1792738770; a=rsa-sha256;
-	cv=none;
-	b=dFXCkMHNNoQihSuiD0QcaPCvK22UBLxXS0kmxLEyQu3wPO3zREhDResdyQeNJVn0mkmxjB
-	j+aU118/54rjN3SRj8eUmWzo6vs03yBigI/RnP9/BTGlX2EDijO5kre3LrNGscYKw6zVyD
-	h1i2SmxlAFPEJ2UIxZR0pNtA/1Ub4OD+KZ2nrgKf1wj9Nrr6nKv4MlpFyL2DggViEuVz3j
-	wZbRXOWisvqclPsTvKwHmCELOQEyveMvGnjOLWJGzzpAxFgEBf0spQT0EqJJ9lPffHRBVs
-	ZAXwjFtPuv+gtUWWRsCWGdjD9nnXrOqJ9BrNXjhIUvg9IxMEoWRgsCK/gTEiAA==
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=sha@pengutronix.de smtp.mailfrom=s.hauer@pengutronix.de
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
-	s=20260414; t=1792738770;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5WUYJH09/Iy/2Pqz1SpjpByH7uaHMKWs6PkgJ+HFOqE=;
-	b=VBQWGtzqBPmkhreSKXjEzQRfkhq2OiPXFcksB5OThxlFeCMnC6EfEQOHu9kAfQkwIdnDwb
-	CYN5DFcM/Pz2kWfwimOZWpXjbRMTGJp5W1CgRasJ55AQR5U1YF42V0U0rXLgkf+2O8AZUa
-	4HmLsy5RaWHSZoWXklsMimTuu/2ZnnEEr0PbdRKmW+LTfsQhJu1K9usTS7HFfsIeqeSHBx
-	SseYUOrRdtigpuWMilPLB8SwWBNzC56yrkjrjDoqkIRnjnwoFAyKmbwDN7R24yyXd7zBrY
-	KJINmtSho+qE6nzsAJ7PKUtB4wX6HVPeWFSreCqHq0CW62OQmKsSQGzQH57l4g==
-Message-ID: <132e7b48-8233-4977-ade1-2ee94b2b19e7@pengutronix.de>
-From: "Sascha Hauer" <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v7 2/4] media: rockchip: Add JPEG decoder driver
-To: "Torsten Duwe" <duwe@lst.de>
-Cc: "Sascha Hauer" <s.hauer@pengutronix.de>, "Lucas Sinn" <lucas.sinn@wolfvision.net>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>, "Rob Herring" <robh@kernel.org>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko
- Stuebner" <heiko@sntech.de>, "Philipp Zabel" <p.zabel@pengutronix.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20261022190026.6cb0a534@rocky.lan>
-References: <20261022-rockchip-jpegdec-v7-0-3fd7dd55f408@pengutronix.de>
- <20261022-rockchip-jpegdec-v7-2-3fd7dd55f408@pengutronix.de>
- <20261022190026.6cb0a534@rocky.lan>
-Date: Fri, 23 Oct 2026 06:59:29 +0000
+	id 1xKA5C-0000000Fo91-06j7
+	for linux-rockchip@lists.infradead.org;
+	Fri, 23 Oct 2026 07:52:59 +0000
+Received: by mail-dl2-x0a.google.com with SMTP id a92af1059eb24-175ec8c4efeso16395c88.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 23 Oct 2026 00:52:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1792741977; x=1793346777; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=m6NACu8GwCde3sJ9HWwodKjqPsu0GwIqcYBIIRb4XxU=;
+        b=Ffqrxkz2hseCPRApamMOU2vgMpPTzeF84kaxM/bGUhxclwfkT1S6rKGXE6bvuCS5Us
+         zC4Sw6xNXSiLTD70WAppxajxqgVG+3J4j2MQqUWN+aof1k6OZAV8J/itAac0dT47A5I9
+         WgbTRBleDownFDeSZ9YZixcNJrFKQOmJga6+sQA4puDCLIpgjgcbFwjNb7VJZOvi8Ybc
+         WHSk5GfmHhlT4akyM7Z+40CgUC00bH4XDxwLdE/r2wFl26Pe1TpM5dultvZkVT8tMW6K
+         2YdyjTitDNPcoZ3mC883DIsBSWNhP7YF7UhxhPcIkuthnYFP6RoiNw6woiDjiUhzoomL
+         kZow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792741977; x=1793346777;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=m6NACu8GwCde3sJ9HWwodKjqPsu0GwIqcYBIIRb4XxU=;
+        b=z55i9pKoTYQy4GaRWFXNMmr27l3wPAnhTAew9qcKNuc+wL0WxMdBxoxbOLi4S/mmfD
+         ld4cH8ZagGLLG/nn87utxYVEyq0Tc95fs4UFo+poj/FSrZnf5G4JwWnykvs9MtSyPRww
+         8GtB+ufnlqVOvrzcrMKex/GEvr2YwvAdPsgwRrNvgrTVbggB1cIzm+twSILw9zmPXj5m
+         ltJjeEQhIfhEitkj7Z18aNvEglMjnq8mTKPVfNaZryryUToml1+iHIUX00hzKTWAVmtJ
+         DXuEYegBFHxex/4BlZz+zeRJN7tuwsUCYbZatM9rc3aYR6ajh9IqZzBai3BxxTOFXfvx
+         xp6w==
+X-Forwarded-Encrypted: i=1; AKwUvBytfzhdwthjYoSIW+M43EfCvaic9NuVSSjLw4aRI2bNtVEEI2PlCb0UUcHXtfJNv6c2+x/NsUbK/s4u1zxNbQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLhkhR6+qULLfRkigC4GP1hs3FFabEq+kYEkAqELCLCqwk8e+BH
+	wYeJXMw6ZTWP9hOUcM7D1tLmrxl4NsPMgcCml91/YlIHlqMXF01cuxZJ
+X-Gm-Gg: AYBFou3VnvxHJtjmBOl8zovplopL7zGLNb4eh1tEyOjGqJTig2Z46MfvRQy4uwRv0TK
+	hupTLxCqn6OHOtI16IhvdO6PHIbxvU2baxR0JlLObWvWlgjltjdpLTIGhUxE9BKCouPgLngOyFL
+	u2D1x2HOqmTjcjsH2n5hhd6elc1wrIAO4fZAT6uhnHcrAyo+VDioA3VpaS7OnuN+fpI5vWj/IKz
+	OZKRZA0Xn+x/YLXlPDYBcAa40xHQVytp1ww2vUxaOGdoPWSL62+I6Dt8WMT0/LWF5CKYHIIO9Ng
+	Dm883irZ8v9Y4dQQ0SmwlVJDYn68YUcts6FadHKt6GPIIrMnyYUKhY6/+clnnqOvwHIBedpzcmi
+	3bmQHHy+JyecObtCYyBI157fAPRTvarQLghYoZvkpe77rjGqe8kR2upVVSq1dXxn1QUwvoWT6S0
+	SbkvnbjJmyvVn7KVVm7XA2/X+fcRW4YElyGA9psH85wemW9tEnGAf14k2t9wpc2904GY3GMIl+V
+	D0lAskjnnQcTD/gFQUtLZtw9BGFOTHpQwK+l8nmweUSk3Rn2LH+Gg==
+X-Received: by 2002:a05:701b:2302:b0:143:2968:564c with SMTP id a92af1059eb24-195c627d93fmr1822085c88.26.1792741976804;
+        Fri, 23 Oct 2026 00:52:56 -0700 (PDT)
+Received: from server.lan ([168.138.199.194])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-195eae0e830sm4122132c88.10.2026.10.23.00.52.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 23 Oct 2026 00:52:56 -0700 (PDT)
+From: Coia Prant <coiaprant@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S . Miller" <davem@davemloft.net>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>
+Cc: Eric Dumazet <edumazet@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Coia Prant <coiaprant@gmail.com>,
+	netdev@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH net v2 0/4] net: pcs: xpcs: fix runtime PM and clock lifecycle
+Date: Fri, 23 Oct 2026 15:52:11 +0800
+Message-ID: <20261023075214.1793922-2-coiaprant@gmail.com>
+X-Mailer: git-send-email 2.47.3
+X-Archived-By: <archiver.kernel.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261022_235932_942574_A4673049 
-X-CRM114-Status: GOOD (  24.33  )
+X-CRM114-CacheID: sfid-20261023_005258_067916_F9126E6B 
+X-CRM114-Status: GOOD (  18.51  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,136 +104,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Torsten,
+This series fixes the runtime PM and CSR clock lifecycle in the DW XPCS
+platform driver, a misleading error message in the Rockchip glue driver,
+and the MAINTAINERS coverage for the platform driver and its binding.
 
-On 2026-10-22 19:00, Torsten Duwe wrote:
-> Hi Sascha,
-> 
-> first: thank you for driving this :)
-> 
-> On Thu, 22 Oct 2026 13:06:40 +0200
-> Sascha Hauer <s.hauer@pengutronix.de> wrote:
-> 
-> > Add a driver for the JPEG hardware decoder Rockchip integrates into a
-> > number of its SoCs. 
-> 
-> [...]
-> 
-> > +static int rkjpegd_enum_fmt_vid_out(struct file *file, void *priv,
-> > +				    struct v4l2_fmtdesc *f)
-> > +{
-> > +	if (f->index)
-> > +		return -EINVAL;
-> > +
-> > +	f->pixelformat = V4L2_PIX_FMT_JPEG;
-> > +	f->flags |= V4L2_FMT_FLAG_DYN_RESOLUTION;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int rkjpegd_enum_framesizes(struct file *file, void *priv,
-> > +				   struct v4l2_frmsizeenum *fsize)
-> > +{
-> > +	/* The decoded format follows the bitstream, nothing to enumerate. */
-> > +	if (fsize->pixel_format == V4L2_PIX_FMT_NV12 ||
-> > +	    fsize->pixel_format == V4L2_PIX_FMT_GREY)
-> > +		return -ENOTTY;
-> > +
-> > +	if (fsize->pixel_format != V4L2_PIX_FMT_JPEG)
-> > +		return -EINVAL;
-> > +
-> > +	if (fsize->index)
-> > +		return -EINVAL;
-> > +
-> > +	fsize->type = V4L2_FRMSIZE_TYPE_STEPWISE;
-> > +	fsize->stepwise.min_width = RKJPEGD_MIN_WIDTH;
-> > +	fsize->stepwise.max_width = RKJPEGD_MAX_SIZE;
-> > +	fsize->stepwise.step_width = RKJPEGD_CODED_STEP;
-> > +	fsize->stepwise.min_height = RKJPEGD_MIN_HEIGHT;
-> > +	fsize->stepwise.max_height = RKJPEGD_MAX_SIZE;
-> > +	fsize->stepwise.step_height = RKJPEGD_CODED_STEP;
-> > +
-> > +	return 0;
-> > +}
-> 
-> Can it do JPEG, MJPEG or maybe both? AFAICT the difference is minimal,
-> so maybe try to be more permissive?
+The issue was found while using pcs-xpcs-plat.c as a reference for the
+Rockchip XPCS glue driver (pcs-xpcs-rk.c). On Rockchip the CSR clock
+(PCLK_XPCS) is required for register access, which exposed two problems
+in the generic platform driver:
 
-It can do both. Gstreamer uses image/jpeg und thus V4L2_PIX_FMT_JPEG for
-both, so it just works. It seems most jpeg decoders in Linux do not have
-need to support V4L2_PIX_FMT_MJPEG.
+  - it calls pm_runtime_set_active() before runtime PM is enabled and
+    before the clock is prepared/enabled, so a later suspend tries to
+    disable a clock that was never enabled;
 
-> 
-> [...]
-> 
-> > +static const struct v4l2_ioctl_ops rkjpegd_ioctl_ops = {
-> > +	.vidioc_querycap = rkjpegd_querycap,
-> > +	.vidioc_enum_framesizes = rkjpegd_enum_framesizes,
-> > +
-> > +	.vidioc_enum_fmt_vid_cap = rkjpegd_enum_fmt_vid_cap,
-> > +	.vidioc_g_fmt_vid_cap_mplane = rkjpegd_g_fmt_vid_cap,
-> > +	.vidioc_try_fmt_vid_cap_mplane = rkjpegd_try_fmt_vid_cap,
-> > +	.vidioc_s_fmt_vid_cap_mplane = rkjpegd_s_fmt_vid_cap,
-> > +
-> > +	.vidioc_enum_fmt_vid_out = rkjpegd_enum_fmt_vid_out,
-> > +	.vidioc_g_fmt_vid_out_mplane = rkjpegd_g_fmt_vid_out,
-> > +	.vidioc_try_fmt_vid_out_mplane = rkjpegd_try_fmt_vid_out,
-> > +	.vidioc_s_fmt_vid_out_mplane = rkjpegd_s_fmt_vid_out,
-> > 
-> 
-> You are populating only the *_out_mplane members and not the single
-> plane ones? So a greyscale JPEG needs to go _mplane with 1 plane?
+  - with CONFIG_PM disabled, the runtime resume path is compiled out
+    and the CSR clock is never enabled at all.
 
-Yes.
+Patch 1 fixes the initial runtime PM status and registers a devm action
+that force-suspends the device on teardown, so the clock does not leak
+when the driver is removed while runtime-active.
 
-> 
-> And for color, the colorspace on the decoded side should be
-> V4L2_COLORSPACE_JPEG, not sRGB, I think.
+Patch 2 handles !CONFIG_PM builds by preparing/enabling the CSR clock
+manually and disabling it in the cleanup action. It also switches to
+RUNTIME_PM_OPS() and pm_ptr(), which are no-ops when CONFIG_PM is
+enabled, so that the runtime callbacks stay referenced and .pm is NULL
+in !CONFIG_PM builds. Because the CSR clock is optional and both cases
+are handled in the driver, Kconfig is left untouched and no PM
+dependency is added.
 
-from colorspace-details.rst:
+Patch 3 rewords the cleanup action error message in the Rockchip glue
+driver, which was merged into mainline today and currently mentions only
+the EEE clock even though the action also tears down runtime PM.
 
-   The JPEG standard does not actually store colorspace
-   information. So if something other than sRGB is used, then the driver
-   will have to set that information explicitly. Effectively
-   ``V4L2_COLORSPACE_JPEG`` can be considered to be an abbreviation for
-   ``V4L2_COLORSPACE_SRGB``, ``V4L2_XFER_FUNC_SRGB``, ``V4L2_YCBCR_ENC_601``
-   and ``V4L2_QUANTIZATION_FULL_RANGE``.
+Patch 4 lists pcs-xpcs-plat.c and its DT binding under the DW XPCS
+entry. pcs-xpcs-plat.c currently only matches the ETHERNET PHY LIBRARY
+entry, and the binding is only matched by the generic DT and networking
+rules, so the entry does not cover the whole driver.
 
-These are the values the driver sets on the capture side. mxc-jpeg for
-example does the same.
+No upstream platform currently enables pcs-xpcs-plat with a real CSR
+clock dependency, so neither runtime issue is reachable in mainline
+today. Because of that, no Fixes: or Cc: stable tags are included, as
+discussed in the v1 thread.
 
-> 
-> Would you mind to give a hint about your test setup?
+The patches touch code that is already in mainline: the platform driver
+has been there since f6bb3e9d98c2, and the Rockchip glue driver was
+merged today. They are fixes to existing code, not new drivers or new
+features.
 
-I tested with Gstreamer, like different variants of:
+Changes in v2:
+  - drop Fixes: and Cc: stable, and state in the commit messages that
+    no upstream platform can trigger the issue;
+  - add a note on Kconfig: the CSR clock is optional, so there is no
+    need to select or depend on PM for all platforms;
+  - add a fix for the Rockchip glue driver error message;
+  - add MAINTAINERS coverage for pcs-xpcs-plat.c and its binding.
 
-for format in I420 Y42B Y444 Y41B GRAY8; do x=1920; y=1088; GST_DEBUG=2 \
-        gst-launch-1.0 videotestsrc num-buffers=100 ! \
-        video/x-raw,format=$format,width=$x,height=$y ! \
-        jpegenc ! jpegparse ! v4l2jpegdec ! waylandsink sync=false; done
+Thread v1: https://lore.kernel.org/all/20260704214808.1566710-1-coiaprant@gmail.com/
+---
+Coia Prant (4):
+  net: pcs: xpcs-plat: fix runtime PM initialization
+  net: pcs: xpcs-plat: fix clock lifecycle for !CONFIG_PM builds
+  net: pcs: xpcs-rk: fix cleanup action error message
+  MAINTAINERS: list DW XPCS platform driver and binding under XPCS entry
 
-I also tested several single frame jpegs with various defects/oddities
-in them, also all with gstreamer.
+ MAINTAINERS                     |  2 ++
+ drivers/net/pcs/pcs-xpcs-plat.c | 62 ++++++++++++++++++++++++++++-----
+ drivers/net/pcs/pcs-xpcs-rk.c   |  2 +-
+ 3 files changed, 56 insertions(+), 10 deletions(-)
 
-Sascha
-
---
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+-- 
+2.47.3
 
 
 _______________________________________________
