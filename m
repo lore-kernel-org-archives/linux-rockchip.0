@@ -2,76 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CD8F4606A32C
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F3002606A324
 	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Oct 2026 05:36:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=v347PO4d;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=BLDFD6WG
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nQHjy48+;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=KfJtO4yn
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=cek+K2fvZGJpAdh/P8XiDcczQA+mkRrnXNVTeBjDtvU=; b=v347PO4dJcmtck5X3XLcU/rlpH
-	1hrtQri/oC51YfhJO1p8IaJEPMaU42wxuKiaegpW5Pj2XgLrsB4ew5eJZWzmGOFaIh0XBlK2tbnVH
-	oJ52NRVZ6dvVzXn7tlCKLPnozT+DqZ0vQSCDlxOIc4YbGKfuuQs30IxCqBPgdmeob65tnYq0K7oKg
-	11sshPgxK6RzM3u0hwmWtfJU/XaBVPUvEmETWdWL8ID3EEuV3CLO2ZvkUvAD+DeddtHwvrWTWzSLa
-	FOvZTgDmo/Re0n43rut+REYh8/al0vTopnjp2tRNiIb54PU+TC5RI4CaSppF3ZfjMV6aznhqMOcLN
-	+kYcFqZQ==;
+	bh=yg5i2cSyBFYL1pT+X+v4CZjo9EJCX1NOiRm9vUZLLC4=; b=nQHjy48+IZAk6f8sC5rY3n6ByT
+	6SJPrrseipXHGRicFDCidN59r6ODQxM6mBT4z/08Fax1SLxxDGib+RC84qTOGCAgy3xCB9Qprhsmz
+	JCwvKzJaYLQwYPpFeoHBmCQsvMrRA2Dq7XbwrF9xGI0gezIwKywkpm/5OO3jq+9JOAVKQmMR7fXev
+	THM6Cr1nfTquYnkgrUuG/QTvUn5JSSz6eSzGHqy5/QrO9ObzWYsKjxCQWdfSbaAfNGcEKC6Fl5Bh/
+	jcjo/oNEysYkKyp8c2dilAEc2eXR9ahAqCDZeb83FAsTmqZwCw72931JLpcflhiwV8qIDenpubGmN
+	0+flL6UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xK7wj-0000000FWj6-3aAR;
-	Fri, 23 Oct 2026 05:36:05 +0000
-Received: from mail-dy2-x0b.google.com ([2607:f8b0:4864:36::b])
+	id 1xK7wf-0000000FWhi-3Dr7;
+	Fri, 23 Oct 2026 05:36:01 +0000
+Received: from mail-dy2-x08.google.com ([2607:f8b0:4864:36::8])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xK7wg-0000000FWhu-3Utb
+	id 1xK7wc-0000000FWgc-37Xx
 	for linux-rockchip@lists.infradead.org;
-	Fri, 23 Oct 2026 05:36:04 +0000
-Received: by mail-dy2-x0b.google.com with SMTP id 5a478bee46e88-3535a54c09bso422916eec.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 22 Oct 2026 22:36:02 -0700 (PDT)
+	Fri, 23 Oct 2026 05:36:00 +0000
+Received: by mail-dy2-x08.google.com with SMTP id 5a478bee46e88-36758ba1f01so235431eec.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 22 Oct 2026 22:35:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792733762; x=1793338562; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=E+chekywn+zjR8qKfFmlr4rUPqe8P6DWzkjYSgfwJdo=;
-        b=BLDFD6WGjSaqkqX/aGIom4wVzz2aNgWO+pwm8fazjDLFYmvpS9oxKM/96lKc6z9qq3
-         Zahk8mJCRKd0Omt65mC101QDxcGXsrYHwW76PtxcNIjUP2CpN0HDpFMHuBHr+4zQVprb
-         X9FBQ4ScOwuBu/SzFKh1O0yE+z5VTqtIB1+i6nyK7GV0yrAtnE8tPmMDcJdLW6Un2/+k
-         BBWNLx/BeFE7uW/B9Svqco924Mvt6+F9dMpFqWGLZA62FNeqMz8la4p8aY2i8Ck0yw7C
-         5sTSpBl+1OL4JsUaGStmd92PLasHt435leSnwTFRcQ2KboAAFIAzibczgibPOJYynSrQ
-         M43w==
+        d=gmail.com; s=20251104; t=1792733757; x=1793338557; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=YFwipSmzwQ403tXXCr3sam0ZTKk4Mily0d72SzJOBxA=;
+        b=KfJtO4ynj5dH3QiNLWxmjMLNf6c/sh+IRBDvqDrg3oVuoVPqzcRYuIhXJEMPNG724C
+         R35rLiJBFHEltoiP2wCIa70lgXYg0jnKo9JYfw+cP1a1k61y6bANfc8cHc4GjmaQpqh+
+         2pMSc871VO6rwMfZtv700kkCvTJ9FiTvioX/SFdvLahGgHVknj/jhs0Qi5lk57KXsc6j
+         ddMQocWm1FUMGj8K/WSRJ6kLUygUGv5imS4MONsVn7ow/+vabSWNgObDP9qXZYZhgjHV
+         CPKwPbgSX+VdaYl85KmgbZ0D8K9tWgoGzSis3WnBvBwBDUALVy0gcl6OJMEYJWVV03W1
+         tfuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792733762; x=1793338562;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=E+chekywn+zjR8qKfFmlr4rUPqe8P6DWzkjYSgfwJdo=;
-        b=k8ttfR6u4p8Gkv+GVwDPr0yZewxTjoDoCNwIWp3TBIgE7hAoy0e1fCn2M4MhsDRIIz
-         02+NVOAwPoFVBq7ar6gDg2WMHcWcoj81uIs9O6Ot2AxbGcUce6AmTf64KZ5fvQSuTi9X
-         MVbM9pbEBvEUyRYZXP7S2eF+e/+exvh97ykawnVd5BieWKJ7srvKKlK10ruf5FiG3rRt
-         D3j2lrEn56ckARmsxHW4Rr6CVxFojtuBwzDsZs1r141lOT99s8BcZdXMScngzoUVmyrz
-         3NQnO5+X4UZ4xSgV930C1NF17bi6NOcHqm+/3ukGOUjAIT6twadUVC8pLFRTljsge371
-         RHvQ==
-X-Forwarded-Encrypted: i=1; AKwUvBx3qv2qmfzoP5Bnj1DyxqUGffX5mYvnCkQ5XUDwaqL2Flpqc4Sp9VgKRnq7fpxsdAcoowcqwoOhuEyGPyYweA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIiMv/naJm7HZdn4Bm8YbJY5dyWhWa+utXNbWpzIquhLTLot7pz
-	rkn1Kk/L5UAKeUVk3eyijYSAXjG5q6kgiHQCEyhufz1+JFGthkE0Skqk
-X-Gm-Gg: AYBFou31/xxvF9xumyqdFetn/QJV4oc3Y/Jyvy4H+Z6yVHa8C5BlrUD74MT4hTy2MBp
-	9gZPAUPeFzLjsSqhxwD/VCGnPWzdP2EVTC+png7eia9yrtzS3BmfpoEZr1Gvr+GnCM19pfkFa0f
-	euGYRmp58YX2opjTVJ7Qi5c9Vfg13Dbg5YlFAGPdT+H5MqBphN3AVgEArBbonEn4eFMlRAJfgYs
-	vP/+Qz/3wkb8e0QVFjF+5nbsvDcshsoqgSb4KMJuKGIUdjuDQU1zHdcJx8EC/GFPauvd6qIaUby
-	RDL6tXB5v3LOx7h1cJgNdE1E4+pNpUMCsjk5/CQ3G2dWYSuj9mzV5ig5/Ic2Ggh91k2uQuuqQzY
-	668A0nyo6lfNAsPKSvvF2OVd2/8zDS02Zrfk5X8oJ9UfTDKl5InWZ336cYlxIA8Td1ziVZuw4eL
-	D/nLRIrIn2dFxwwakqQ1XWmZAwb1432ROX46cAUOLqsucjX8A/+pcYldZf1RytUbaWVnMu2vE8t
-	JXzabD5gkRYvRamvxdKny8azememSiYy4l69GBFlcSGWWaY2mWaRw==
-X-Received: by 2002:a05:7300:f784:b0:366:7b5c:820e with SMTP id 5a478bee46e88-369d8f4e26cmr1801190eec.0.1792733761680;
-        Thu, 22 Oct 2026 22:36:01 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1792733757; x=1793338557;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=YFwipSmzwQ403tXXCr3sam0ZTKk4Mily0d72SzJOBxA=;
+        b=ox0BrfOomg/UJrP+YumETtjRQRMbMttoJnI+Ka1GdKTy/gP093byvOWm+nur+VkgNf
+         xtNGdTlpAd9LMDWoYEonUIhIr2zZDT5XI4eqUastfhkWnreEJcR8vXb9JC7xa+1WNxIQ
+         RPOJuEkFKX2nlF2zOlRy8Ulx+aO4tjcwgbddnYqBj0aKwtwU1wTVAGDRl7W3j6GxaU/X
+         JGrdC7H/OaO4eEzigGShCeC1yZrzYipLfikDJ1ilLTt2eFq0JWB2289c9VV0Q7Duc953
+         K9xSo59ByHwg7V3l7EzbZK1GvN84+bFFqk5cuaMLFEx/3oHyaGEe0ItC1voztpc2SuT4
+         poVA==
+X-Forwarded-Encrypted: i=1; AKwUvByBnYN3Rt8k7IR6Bzv+ZQ3OA8D5wWCCHl9TAe2tTOhTFtVwG0kfTlVk3Qpjnr4G03pjHFWYWg7BOQQgHWUbig==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJrPLaIyvsS1rJPMLCIP+g+ooUMimFYCU8TMx17+g2eRN6ZBoQ8
+	g2DHaR8EeTDny4fzsCfS0I5cuoKGEhvttN+a4txSY8sMx6qenI7fwOhVLa9KgwgNbyY=
+X-Gm-Gg: AYBFou32cevldyL2nf0gmNOkrw1dVc3aU19WQC81ytRaetm3f9iPmS6vBk4aE/J6/qt
+	cl95EeZZ0LoMLiZ5yOiQU+zTBvospBtP0mhIQcCm1DWFn1oHdifLgP+2qJ5SfHNtar+w40+YNJp
+	8mjqVGrtG0KDsrs4niogZkjQTFN4LuBCYZa1JgSG7/rGVeM2MZFraa1cWRGkjwgMRBBAQYFkAyS
+	n0XuWWRhO959aEo10Hf8dY1koIcFi23sYw6WfSNO8O9QJUKZ6sW1FuyZFtSebDv+JzAeqr6lp9u
+	S5kWKQAUC3DQNvOZm48a8vOx36mSv/QGpZUqB194LqprXxkjFt8zJpvcl0clTxm8WMj1JdG0Tfs
+	IVUFD0khFYr++WKXRaZ6/eXg17XpZZKtZV7OLvhgHI4eEYtH+EngyBxRnQiZ7FNVkzj1D0FlrOs
+	pCF5h5+RH3cIqTzOcy19aGfpNyIiBX43Wec0p9iyI4knvEVzjpe84qOG+UMJ63/154JadxbKm58
+	nCsxVwCpoCCDx4zkMC5BE3QbLE9NdP/nRaHfRQFYWRDF3PYe/O3+Q==
+X-Received: by 2002:a05:7300:c3a4:b0:34e:e7f4:cc78 with SMTP id 5a478bee46e88-369d954ad83mr1482862eec.5.1792733757137;
+        Thu, 22 Oct 2026 22:35:57 -0700 (PDT)
 Received: from server.lan ([168.138.199.194])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-369d9c15883sm3542480eec.3.2026.10.22.22.35.57
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-369d9c15883sm3542480eec.3.2026.10.22.22.35.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Oct 2026 22:36:01 -0700 (PDT)
+        Thu, 22 Oct 2026 22:35:56 -0700 (PDT)
 From: Coia Prant <coiaprant@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh@kernel.org>,
@@ -84,17 +83,15 @@ Cc: Rob Herring <robh@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Coia Prant <coiaprant@gmail.com>
-Subject: [PATCH v12 1/3] arm64: dts: rockchip: rk3568: add XPCS and fixed-clock nodes
-Date: Fri, 23 Oct 2026 13:35:46 +0800
-Message-ID: <20261023053548.1595033-2-coiaprant@gmail.com>
+Subject: [PATCH v12 0/3] arm64: dts: rockchip: add RK3568 XPCS nodes and enable SGMII on Photonicat
+Date: Fri, 23 Oct 2026 13:35:45 +0800
+Message-ID: <20261023053548.1595033-1-coiaprant@gmail.com>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261023053548.1595033-1-coiaprant@gmail.com>
-References: <20261023053548.1595033-1-coiaprant@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261022_223603_286346_EA06EE40 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20261022_223558_788984_35DD3479 
+X-CRM114-Status: GOOD (  10.00  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -111,85 +108,50 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
 	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The RK3568 SoC integrates a Synopsys DesignWare XPCS that provides
-the Physical Coding Sublayer for 1000BASE-X, SGMII, and QSGMII
-interfaces via its four MII ports.  Add the XPCS device node to the
-SoC device tree.
+This series adds the RK3568 XPCS and fixed-clock nodes, describes the
+RGMII PHY LEDs on the Ariaboard Photonicat, and enables the SGMII LAN
+port on the same board.
 
-The XPCS device is accessed via the APB3 bus at 0xfda00000 and
-requires the CSR clock (PCLK_XPCS) for register access and the EEE
-clock (CLK_XPCS_EEE) for Energy Efficient Ethernet operation.  The
-PD_PIPE power domain must be enabled before any register access.
+Changes since v11:
 
-Also add two fixed-clock nodes (clock-xpcs-gmac0 and clock-xpcs-gmac1,
-labelled clk_gmac0_xpcs_mii and clk_gmac1_xpcs_mii) providing the
-125 MHz reference clock for the GMACs when operating with XPCS.  Their
-clock-output-names match the CRU mux parent names in clk-rk3568.c, so
-boards can reparent SCLK_GMAC0_RX_TX / SCLK_GMAC1_RX_TX through
-assigned-clock-parents.
+- Drop max-speed = <1000> from the SGMII PHY node. SGMII is
+  1000Mbps-only, so the limit is redundant (Andrew).
+  
+Dependencies:
+- XPCS binding and driver (rockchip,rk3568-xpcs, XPCS glue, dwmac-rk
+  SGMII, pcs-handle binding): merged in net-next and present in
+  linux-next.
+  https://git.kernel.org/netdev/net-next/c/5e91edfb0e45
 
-The XPCS node is disabled by default and must be enabled at the board
-level when 1000BASE-X/SGMII/QSGMII is in use.  The fixed-clock nodes
-are always present and do not have a status property, as they are
+- PHY binding+driver (rockchip,sgmii-mac-sel): still in review on
+  linux-phy. Not required for this version to compile or pass
+  dtbs_check; only needed for the follow-up that sets the property
+  explicitly.
+
+- Generic PM domain (genpd) changes: runtime-only, not a DTS
+  dependency.
+
+The XPCS node is disabled by default and only enabled on boards that
+use SGMII. The fixed-clock nodes are always present, as they are
 static clock sources.
 
-The XPCS node requires a reference to the appropriate Naneng Combo PHY
-via the phys property.  dtbs_check only validates required properties
-for enabled nodes, so the SoC dtsi does not provide phys: boards that
-enable the XPCS must supply it, since the SerDes link is a board-level
-design choice (combphy1 on some boards, combphy2 on others).
-
-Signed-off-by: Coia Prant <coiaprant@gmail.com>
+dtbs_check passes with the current linux-next, since the XPCS binding
+is already merged.
 ---
- arch/arm64/boot/dts/rockchip/rk3568.dtsi | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+Coia Prant (3):
+  arm64: dts: rockchip: rk3568: add XPCS and fixed-clock nodes
+  arm64: dts: rockchip: rk3568-photonicat: add RGMII PHY LEDs
+  arm64: dts: rockchip: rk3568-photonicat: enable SGMII LAN port
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-index 3bc653f027f1f..20a72785adbc2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -8,6 +8,20 @@
- / {
- 	compatible = "rockchip,rk3568";
- 
-+	clk_gmac0_xpcs_mii: clock-xpcs-gmac0 {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "clk_gmac0_xpcs_mii";
-+		#clock-cells = <0>;
-+	};
-+
-+	clk_gmac1_xpcs_mii: clock-xpcs-gmac1 {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "clk_gmac1_xpcs_mii";
-+		#clock-cells = <0>;
-+	};
-+
- 	cpu0_opp_table: opp-table-0 {
- 		compatible = "operating-points-v2";
- 		opp-shared;
-@@ -110,6 +124,15 @@ sata0: sata@fc000000 {
- 		status = "disabled";
- 	};
- 
-+	xpcs: ethernet-pcs@fda00000 {
-+		compatible = "rockchip,rk3568-xpcs";
-+		reg = <0x0 0xfda00000 0x0 0x200000>;
-+		clocks = <&cru PCLK_XPCS>, <&cru CLK_XPCS_EEE>;
-+		clock-names = "csr", "eee";
-+		power-domains = <&power RK3568_PD_PIPE>;
-+		status = "disabled";
-+	};
-+
- 	pipe_phy_grf0: syscon@fdc70000 {
- 		compatible = "rockchip,rk3568-pipe-phy-grf", "syscon";
- 		reg = <0x0 0xfdc70000 0x0 0x1000>;
+ .../boot/dts/rockchip/rk3568-photonicat.dts   | 67 ++++++++++++++++++-
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 23 +++++++
+ 2 files changed, 88 insertions(+), 2 deletions(-)
+
 -- 
 2.47.3
 
