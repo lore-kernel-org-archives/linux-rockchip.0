@@ -2,47 +2,47 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 60FB9606A32C
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE491606A32E
 	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Oct 2026 00:00:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FhvrCyte;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=rojer.me header.i=@rojer.me header.a=rsa-sha256 header.s=main header.b=Q5iodtEY
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=yVBkK3R3;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=rojer.me header.i=@rojer.me header.a=rsa-sha256 header.s=main header.b=Ygem0n2Z
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=/mfVNpcAtH1b4eUGwnOB3NVCTT4q/FOWHyGIwPvlIhM=; b=FhvrCyteRUv8JHWXJ+Lxp1fVdg
-	eZsSMSYVDq52iH4eiUpjJCx5+iepxP4PpZYWCLZFWiF9Yz6nNvrz9vzWfn8ODhxxz3Idnv4x9WZzr
-	yPA6aVpJy1f4hgocF2rIM/U6yKhaqKsaYmtA4ykDa/EAGkY2mtiRu4OBFXqMtX3BanhoxZc2B16nr
-	1274vUPHM6bJWart7cjf9/OzWLKHEGtCfh+lYAgNhGs+osKsJWtx4XCv1foU+T8KtUaZG7fZixxC6
-	o7YyJBOpZZnI2UvD0D2RFxJTWZ6FXZ6Skvk+tQLDZY4D3WOMAB7jeM/1mtsuRf7WTO2vP+l9H3l1A
-	z1scWbxw==;
+	bh=GtxJzZqc6//HUF6HQmM5OTbwOhT1yzA3GzM89euYrzY=; b=yVBkK3R3W2HXuO1QjKEYsem2xB
+	ho6IQiFDoL8rYql/ZZiDhwXZCgc+cTn/GMFM7DLL2fCmVuK81jNa/7MSr5pf0lpUKZpw22v7caQqv
+	Qq3EYTyDgGM6Az/bSSOkaMmyVLyXrlQaElW0Y1BEA0+PnklJnnJq34O+KWd3oLDlsbeSlVqBAsrEe
+	L0gVBs8aCtLA7fiiZS5wB44KgZG4yIWrNdSwxNMEPVn0RvqZdbKi2zddQTmPF/n2SVGysV5AfMvKW
+	opVM6k5J88CKVfSswsox7oZtmgnJi06UrjNoGGmZChtDQFcVKo5RtLx3jWKtje1miXjoVnXzRQWpU
+	amweGwfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKPBC-0000000HDeE-0zwG;
+	id 1xKPBC-0000000HDeJ-1Jxf;
 	Sat, 24 Oct 2026 00:00:10 +0000
 Received: from mail1.rojer.cloud ([2a01:4f8:192:336a::3])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKPB8-0000000HDcY-3KeQ;
+	id 1xKPB8-0000000HDcS-3JqS;
 	Sat, 24 Oct 2026 00:00:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=rojer.me; s=main;
-	t=1792800002; bh=X6UhdmMXOtXV/Hzkqp1DtptslFwWC4nSvNqkAO2/h+Y=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Q5iodtEYB4CI5F6ReAOByUmCSX8U8GtFH+IingrFPmsum6f1vUMBdxTsvVHuW/GhZ
-	 WQeS9YkoLShMO83tAcIAIJgxqIeM1TknUzqn9LsuSfo7pll37ti71zBhuLYdu4bQrq
-	 ToM6X3F8DI971AhRNsh9l8iI/zgNku+u0nVQkic+92Q8qBKla1RV6jMqUtlx/yOfHc
-	 wQrp+j/gjrnXr6vfPCCDDIPoaVaOUzsLydT3tBxTolWP0L9AzVdVUOXEX30gqYSQga
-	 LllowSHwgYT/MFPjUvXrpd+VyPkuEdB7TFoYhsdiNOlU46f/41h8YKXvjg1o3v54C4
-	 J4SCHcu0JSRSg==
+	t=1792800001; bh=24i8uxMQ2lh0kY2DiQrLdhGZMhzYI8Atrmzz+mGcMaE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Ygem0n2ZzMUqld40o2ZRlrLB7/ZKZNS8DBgC4pbajoUFPxZY08qxQPZTbwFj7LNGg
+	 1dIk7PBfJ6S6gu0CuB/1aPgE1akWCUkd+igdQm09JEtDVbrYRI5SlV6aLUjplkDV0t
+	 wxFwAvDhQJHZ4Qjh6HIGMLl8lgL3XlLdUvDIZVhr7wbHuiCNDBMsPSgNBMxIK6bkWt
+	 B6EkFkxeVofYrrcVR6ECasu/c9SWzRcsXoLAsPqgo/GRh3FD7EOa7TsJb+iVjNb84P
+	 7U6J3ZWdBW7fOQ+OIBltSFfBME1cAEDWI972nLzHB2quwV2BCgk5Zb8FpCObDEGFD5
+	 HGvsttA1Fgfiw==
 Received: from nbf.lan (212-5-142-134.ip.btc-net.bg [212.5.142.134])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (P-256) server-digest SHA256)
 	(No client certificate requested)
-	by mail1.rojer.cloud (Postfix) with ESMTPSA id 17EF81271FF;
-	Sat, 24 Oct 2026 00:00:02 +0000 (UTC)
+	by mail1.rojer.cloud (Postfix) with ESMTPSA id D2623126B27;
+	Sat, 24 Oct 2026 00:00:00 +0000 (UTC)
 From: Deomid rojer Ryabkov <rojer@rojer.me>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh@kernel.org>,
@@ -55,17 +55,16 @@ Cc: Rob Herring <robh@kernel.org>,
 	Sergey Bostandzhyan <jin@mediatomb.cc>,
 	Jensen Huang <jensenhuang@friendlyarm.com>,
 	Deomid rojer Ryabkov <rojer@rojer.me>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Enable SDIO Wi-Fi on NanoPi R2S Plus
-Date: Sat, 24 Oct 2026 02:59:59 +0300
-Message-ID: <20261023235959.2988087-3-rojer@rojer.me>
+Subject: [PATCH 0/2] arm64: dts: rockchip: NanoPi R2S Plus: fix io-domains, enable SDIO Wi-Fi
+Date: Sat, 24 Oct 2026 02:59:57 +0300
+Message-ID: <20261023235959.2988087-1-rojer@rojer.me>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261023235959.2988087-1-rojer@rojer.me>
-References: <20261023235959.2988087-1-rojer@rojer.me>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261023_170007_105811_4E7C12A3 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20261023_170007_106406_C335EAB4 
+X-CRM114-Status: UNSURE (   7.57  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,111 +78,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-22.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The NanoPi R2S Plus has an M.2 E-key slot wired to the sdmmc_ext
-controller in 4-bit SDIO mode, where FriendlyElec fit an optional
-Fn-Link 6222B-SRC (Realtek RTL8822CS) module:
+Patch 1 fixes the VCCIO4/VCCIO6 supplies of the NanoPi R2S Plus, which
+were inherited from the NanoPi R2S but are wired differently (see the
+schematics referenced in the patch).
 
-  - SDIO signalling at a fixed 1.8V (VCC_18)
-  - WIFI_REG_ON on GPIO3_B0, 32kHz sleep clock from the RK805 CLKOUT2
+Patch 2 enables the M.2 E-key SDIO slot, which FriendlyElec populates
+with an optional RTL8822CS (Fn-Link 6222B-SRC) Wi-Fi module.
 
-Enable the controller and add the power sequence. The SDIO pins need
-8mA drive strength for SDR104 tuning to succeed, as in the vendor
-device tree [1]; with the SoC default of 4mA no sample phase works.
+With these the module works at 50 MHz high-speed. Reaching SDR104 needs
+an mmc core fix for the module's CMD11 handling, posted to linux-mmc:
+https://lore.kernel.org/linux-mmc/20261023232813.2983368-1-rojer@rojer.me/
 
-On boards without the module the controller gives up after about 0.2s
-("mmc2: Failed to initialize a non-removable card"); nothing else is
-affected.
+Tested on a NanoPi R2S Plus; dtbs_check reports no new warnings.
 
-With the mmc core change for the module's CMD11 handling at a fixed
-1.8V [2], the module is tuned to SDR104 at 150 MHz and works with the
-rtw88_8822cs driver; without it, it runs in high-speed mode at 50 MHz.
+Deomid rojer Ryabkov (2):
+  arm64: dts: rockchip: Fix VCCIO4/VCCIO6 supplies on NanoPi R2S Plus
+  arm64: dts: rockchip: Enable SDIO Wi-Fi on NanoPi R2S Plus
 
-[1] https://github.com/friendlyarm/kernel-rockchip/blob/9238df9d21e835bba35c8ba5248784387936cb2e/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2-rev24.dts#L144-L172
-[2] https://lore.kernel.org/linux-mmc/20261023232813.2983368-1-rojer@rojer.me/
-Signed-off-by: Deomid rojer Ryabkov <rojer@rojer.me>
----
- .../dts/rockchip/rk3328-nanopi-r2s-plus.dts   | 56 +++++++++++++++++++
- 1 file changed, 56 insertions(+)
+ .../dts/rockchip/rk3328-nanopi-r2s-plus.dts   | 61 +++++++++++++++++++
+ 1 file changed, 61 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
-index 6ba4a74cb1f..db19a18ae45 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
-@@ -17,6 +17,15 @@ / {
- 	aliases {
- 		mmc1 = &emmc;
- 	};
-+
-+	sdio_pwrseq: sdio-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		clocks = <&rk805 1>;
-+		clock-names = "ext_clock";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_reg_on_h>;
-+		reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
-+	};
- };
- 
- &emmc {
-@@ -34,3 +43,50 @@ &io_domains {
- 	vccio4-supply = <&vcc_io_33>;
- 	vccio6-supply = <&vcc_18>;
- };
-+
-+&pinctrl {
-+	wifi {
-+		wifi_reg_on_h: wifi-reg-on-h {
-+			rockchip,pins = <3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+/*
-+ * SDR104 tuning fails with the default 4mA drive strength, use 8mA like the
-+ * vendor device tree.
-+ */
-+&sdmmc0ext_bus4 {
-+	rockchip,pins =
-+		<3 RK_PA4 3 &pcfg_pull_up_8ma>,
-+		<3 RK_PA5 3 &pcfg_pull_up_8ma>,
-+		<3 RK_PA6 3 &pcfg_pull_up_8ma>,
-+		<3 RK_PA7 3 &pcfg_pull_up_8ma>;
-+};
-+
-+&sdmmc0ext_clk {
-+	rockchip,pins = <3 RK_PA2 3 &pcfg_pull_none_8ma>;
-+};
-+
-+&sdmmc0ext_cmd {
-+	rockchip,pins = <3 RK_PA0 3 &pcfg_pull_up_8ma>;
-+};
-+
-+/* Optional M.2 E-key SDIO Wi-Fi module (Fn-Link 6222B-SRC, RTL8822CS) */
-+&sdmmc_ext {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	disable-wp;
-+	keep-power-in-suspend;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	no-mmc;
-+	no-sd;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc0ext_clk &sdmmc0ext_cmd &sdmmc0ext_bus4>;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc_io_33>;
-+	vqmmc-supply = <&vcc_18>;
-+	status = "okay";
-+};
 -- 
 2.53.0
 
