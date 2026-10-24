@@ -2,122 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A0EC2606A31A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Oct 2026 08:40:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D5CC0606A31B
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Oct 2026 22:15:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PSncLVUe;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gahingwoo.com header.i=@gahingwoo.com header.a=rsa-sha256 header.s=fm1 header.b=d2oFM8mz;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm2 header.b=bz7bIU1+
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WQY7UWTZ;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=kcnNS8Tm
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=PLR/VBI13OdTjg1wGTrWGDkj/yC0UkPr4pMl8X9fp9I=; b=PSncLVUeCvmLO9/fiFYke28LAx
-	Ad9cyp3HVXU/1CjVcWh8MCZts506Y3QHHKIiYloMHuu0VUTx4e/+b4WN7RmLRNZLAehRw6DLd3uAO
-	UKvtBlV7PmWuWo2oZVVgUY4bbAL4/Sl6IxYXpykVSKSVMHf2BJor/Ui/h8VybaxdbiemxgPSrk5+P
-	XpwTQ5McRxivJ2mh7AOGtn7+lfDi+UTvBTjIfwQbp+0zlOxi14GauiwV53gUz1GdHz/QcjUZBcDk+
-	LyLD0kydPUgdPCwjAuA/BRL5eJ+ONVV89dSGIrlT+T1nOfoXG8Lrp1pN9kI0UW5XOy/7y7sRUfQMb
-	z3J2sz6Q==;
+	bh=LIqFywu2NtB0jtxeHcsO/96z4sMhD5Q4rDiBO6drwP8=; b=WQY7UWTZvdaicobTGVRpp1yaxh
+	3xk3SDN0d35dGTCDLyOjcQKpHrpflk+FfoydpfWhhzSrWKDChIBkuTv0Uxld/++bD6l1k5Mrzez5w
+	CoT4dMcIOeFRBM/NhLW1s/w7cSoohOcAuBuiCcbYhyTfRlbo2u/tszYxaTenPaLNLC9DhAICaBEn1
+	2KijU0KooXP2E5RwKsGPMJ1uUNkWpKJ6CJnmf6HSFjMv+0ZOjF+f2hfv7nLUF2S8y19lsDeDEoFNu
+	+BAVWSk0u6UHamb3L5EXBThS9dTtVM12YE9+FrXO9CEBTCYW8Ji6haFWsI88qvbNCnxT4yneMUnlp
+	P644qwBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKXI9-000000000dk-3hQd;
-	Sat, 24 Oct 2026 08:39:53 +0000
-Received: from fout-a2-smtp.messagingengine.com ([103.168.172.145])
+	id 1xKk19-00000000aHz-3Sqm;
+	Sat, 24 Oct 2026 22:15:11 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKXI7-000000000d6-0cNH
-	for linux-rockchip@lists.infradead.org;
-	Sat, 24 Oct 2026 08:39:52 +0000
-Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
-	by mailfout.phl.internal (Postfix) with ESMTP id 93283EC014C
-	for <linux-rockchip@lists.infradead.org>; Sat, 24 Oct 2026 04:39:47 -0400 (EDT)
-Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-05.internal (MEProxy); Sat, 24 Oct 2026 04:39:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:message-id:mime-version:reply-to:subject
-	:subject:to:to; s=fm1; t=1792831187; x=1792917587; bh=dk4e+eedEa
-	m13wGCRMmw9y+wJRNgv+ioxH1lvC55NVc=; b=d2oFM8mzMyYcif1eaPVo2jhsA7
-	WOwgW93frOdQJXWbBek6F/HwlA89fPCyZy1+CzKUICrNZUSLZuZCRPdZQt2svot1
-	PDRMmceHJa+FVQ+YV7iMWiE6bTWTpZMI5Cd+T1yb3pizlhTxsJwIwCAr40XHEmmm
-	D/Qo1xJlsO11fqA56nQ/vhzGCLiXQQ4JK6rKuSQ8YokFsqRiTP0Bc6kz6oj/9YfX
-	Qvc+f9dEc3S/0HzSfE7gSkIMTsS/YIFMrkM1oXLaaW+frijSi6nCv1RgeGPinXQk
-	wGJlf9JRC/NExOlpstg6J3c6Lw6Vnzyyzsd2WTylb7nQoQrns7o4iJW9DK+A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
-	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1792831187; x=1792917587; bh=dk4e+eedEam13wGCRMmw9y+wJRNgv+ioxH1
-	lvC55NVc=; b=bz7bIU1+txNPYxcw6Lf6y2182964hZRmqA3nEkHJ+0HuoLm/sIn
-	cXHYP8AIpOf6aFJDkKt6fQThYwLZmvC2bd2KLzkk0tSLt+MF5ev1YYJsIRrzHTID
-	OIHqSzw3Np3o72Wwi/hvWRSgNZUfDToPyCry10csGawEK76ZCc4LKLb4rMPtliWN
-	b6huJOGrdeIRimkS145EzjldJzRBNnsCB0vUtSlL0buL0j0bsf8Dxp9/sJy6KbAd
-	SQoNoLfRuA09s+ce7ZA6l33MYYhHKacqMZHWUIXUhVHfv4lzZoRaG/sHwPQZ/kxT
-	jkhUj5oYvXCS6huEfGe68QteHxznF9PJq5A==
-X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-07;
-	repo=github.com/dkim2wg/interop; date=2026-10-18; sw=lmtpprox;
-	action=sign d=gahingwoo.com a=rsa-sha256;
-DKIM2-Signature: i=1; m=1; t=1792831187; d=gahingwoo.com;
-	mf=PGdhaGluZ0BnYWhpbmd3b28uY29tPg==;
-	rt=PGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmc+;
-	s=fm1:rsa-sha256:ZTQntFxmMNnJrlw620Cb9goC0A1mMmlH2+IfNGufihE3G60
-	vMUStoMJfIzAQi2IR2MPyOP26I8Q/HFPPiMQQjN0C/3rLh90rcpladYwtR68+Fea
-	RGs/V6HaqcmEu0FvV7lI/npDZVtBlTYgRAIbZU7Uy1wYFGfS2K8t19uazKm9qQlL
-	NlcoDPzrxEis5rSmMS5PXTwA6Wqo05UAwDiDMoggdhRAaMNfB/MkEbuaqfhWKK1R
-	gnKTPg96cOaGmET/cf6x7Boa1S+4nL7zi41LjFr2n8NCLyXUlF2BapLMnddWqSOs
-	bt4s15nQ823k1/0KUn0l8epyMEE7fbTOPTuz23g==;
-X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-07;
-	repo=github.com/dkim2wg/interop; date=2026-10-18; sw=lmtpprox;
-	action=mi-m=1; hc=9;
-	hn=cc,content-transfer-encoding,date,feedback-id,from,
-	message-id,mime-version,subject,to;
-Message-Instance: m=1; h=sha256:PnvPF/K/NdvXhLu/i91FAf5qb4UUBnCMoCSJ9dKYvZA=:kWDPm/EXmOFJ312wfG/g9OlfSszOPhrx452WIAG2ZOM=;
-X-ME-Sender: <xms:027cao0QKnJgl2TuVdsLf4LzmCpdLG1R6iN8iEPsoW_ug6veKOAz_g>
-    <xme:027cavqgj2a9BTYILKyNs47uPoKU9Yz6y2s2yg10W3kN4WcuCZ-IPkg6Cyv_kXlYB
-    JSda3XXwht6M3f5UG9oHWKgGwJZwKj-V5idj2DUmittloA7OGlevKGM>
-X-ME-Received: <xmr:027calVf5lsVURzsm9eHjFP4bld6tI7ZO2nteb1O_Hu_lnwxL0I4rjnAT2sxqdxsULs0cz5D>
-X-ME-Proxy-Cause: dmFkZTEilkQ7QRTV3WCqk13zuvyPjR3rvfRKdMmJjP/0IUkSonux5v7d6YiFkowHCHQQMZ
-    UKTuka+etnp0I4pQi4LorcpHTgVejGL0wuRdrC+MGiY+0bYFfrp5Tml1fj2yv6N4JzjygW
-    ciLvzb9zDqU9LKMdU/KronOfZfUPAzti/iKqSp/9Ri+tI9S8gQEpchHvM4CzTKNRPKRrLq
-    fGuXpHBMMyPZae46Tawr8eZeG80mtkUkkmo9JDsT17WuJINe+UpplGjh9UY0mWBDvAjAfm
-    pxNJ1WZSmmsOnyEBqC8Z6C0pfXlBrw+DW0PdJtpX5VPHttAf97aVchdt8+K63vy7glvIkl
-    Yg33go8lQiWCw1mp1AzkNjfPFCf61tY8tRIAvu/+iI5dZca04qH/Xyly2C0tFbtD7X5lOn
-    0u1hJ2xngjMOqOgLIQ8KTDlltMJPvKmTwk0aAEiqNjIiBs8MvGkm0FLPm0iT/MU4j3vJbu
-    iTx/5qwURcN55LtColc3bzrXD3m7oQ6gxkMZJAF+tQ2jNoUbH4TyznDmnnx/stac2kALRJ
-    ZQ1HPB25/TBVyS10xcOvGf4c1Do9Ums1oV4VUw4Co+doLnuS+cGF5qqdF5px4D109sqZxH
-    aUB2lvdblTY5vbbmXjnGpVK7/oIWB6sk7z4hs2dr8VLUbJNmI5NZ+iVkaNqg
-X-ME-Proxy: <xmx:027caor2jeOv-FnZxvtoS_1nX56nfR-TxlOWlrSTlxLCJi7DU_eM5g>
-    <xmx:027casDMR76atB6V3gxHlB0PFBCUIeaG77wohXkh2IG4ZInIy-Zajw>
-    <xmx:027cakgliaDkw1uvOVvES9ms5Hfo3ervdV15hP7SLtfKA2xDSuWhsg>
-    <xmx:027caqb4A_RLixhzDX2E7MCHDs3GGzGJ8NrtjLwMpd6RPr00q8CxfQ>
-    <xmx:027caih8zVv4CLHufmo0XMD8YQU22aSF7R41Zo25Bh-l5WligFRn5A6Z>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 24 Oct 2026 04:39:44 -0400 (EDT)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Jiaxing Hu <gahing@gahingwoo.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH RESEND] arm64: dts: rockchip: let TCPM own the USB-C VBUS on CM5-IO
-Date: Sat, 24 Oct 2026 21:39:42 +1300
-Message-ID: <20261024083942.148860-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
+	id 1xKk17-00000000aHi-3nYr;
+	Sat, 24 Oct 2026 22:15:10 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id EE087600D4;
+	Sat, 24 Oct 2026 22:15:08 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1792880108;
+	b=TDnFzVEcvMWSZvffwloJwn0y6puG5QuzCfO2KhljkH0/r8P1tWaqjYmlk6pNuZWgSkr+
+	 gF0z3+SDj46Ntwj6iOrHrreWsXyFdWiPZGxdeNWgm+e/j0MGKX1wt2LIW/8uzaBWlK0cd
+	 G+xRRrdlMoaBeKpy2JaGfzr0hakzFogcZAUD0kEGki29SkKaP6/Hst1LXF3SItCP274bW
+	 o2KVfXUdft6OntHrad44Ic8kLc3QiOWNS/8nggoAHsLFrKzAY9/BABZoyZNuMUd/BtjDk
+	 4W8lqtpNPOZUBitKQ49vYF40bUqLt48LFVMZQsL55hmtzN7CtkW3Pdfe5BlhYrKjV5w==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1792880108;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
+	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=WrnBH/yj5xL+KVHbii79LvyK9OxW7IAvQMQuf3gi2zE=;
+	b=Nyz1muwitGrHqzS7D4q+U7Rsi1hNEHMMq444nVjnlKdlw4tq/BWBztiKGwA2hRlUSTn0
+	 BbwhtEJW0K4+1GC/sxUzVF1nQnYFGdVxdvyd33ZCG8FPNk4HL9HlhVMMSTzBQTxSLvWk7
+	 KC1BdnfLUIzbdpl5t273uc/9462DYmnI2hJ4fXT7+3X0kET4odMPgZfct5qeJ7Mgj8Dql
+	 p/FMQq5xqWD/KsMbJpQ0kH+g5cBHWRj+zsTe4xvwduIvV6+0ZCHZ+ZtfAbooew1NY6IQ0
+	 FJj3vxzQGh9bhIYB+etfjv92Wf0WAmKkr92wvuub6/qa7oa0Hh02WkGoZ2/4e81cPxA==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 31A281F01825;
+	Sat, 24 Oct 2026 22:15:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792880108;
+	bh=WrnBH/yj5xL+KVHbii79LvyK9OxW7IAvQMQuf3gi2zE=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=kcnNS8Tm3AaWdbwd4g+/0FXMBQHsyLeyhcO2rD36X/osf3HBJFWp6SqhgdyDvuNYo
+	 eSMKbzS0yM5Ck7t0ZhS4PpYhIgK3Di1R1pTEDXQ+jfw4O+V92bJezPfImzEeE0NGtC
+	 E/Rqa7k0u8MTmsrSl0/GDLavcg9JzJOXkYKNNzy19i5tR+sXCnx1Qn9BEGqwuuaZGf
+	 47pxiVT5pwPHXWvWnxYPYoDG4ZxaqlIlU5Nb2/hA9m0Pe3yjT7FoYHAP8J6e28GjZh
+	 bdHaMBi+Cdia9XAi5V4gkIdp4FtZkOLYQH7usBa+W0H9Lb0ZIJjbVX7d8J/WMMKO6l
+	 Jx2Vt7BX68K0A==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id BAA63448CC;
+	Sat, 24 Oct 2026 22:15:07 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Sat, 24 Oct 2026 22:15:04 +0000
+Subject: [PATCH v2] arm64: dts: rockchip: Add the GPIO expander to Kobol
+ Helios64
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261024_013951_467438_ABF73767 
-X-CRM114-Status: UNSURE (   8.29  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261024-helios64-pca9655-v2-1-97210e9aafb1@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAOgt3WoC/32NSwrCMBRFt1Le2Ej+EkfuQzoI6at5UJqSlKCU7
+ N3YBTg8B+65BxTMhAXuwwEZKxVKawd5GSBEv76Q0dQZJJdWcO5YxIVSsZptwTtrDFPOahWkD7O
+ eoM+2jDO9z+Rz7Byp7Cl/zocqfvZPrArGmb0pRK2VtIY/yNfrUmFsrX0BjMhYFK0AAAA=
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Rosen Penev <rosenp@gmail.com>, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2516; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=NxG+xHVeylkpzOnvEZLanDkLJTXNZz8dgrlgIaGTkKw=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFl3dV/d6TAQm7Npl2PW069avwLfBltsv2fFzcbnUztpR
+ deDGd8COkpZGMS4GGTFFFkmHNK4lbHk6l9/D/MHMHNYmUCGMHBxCsBEbi1gZFgQbsmwMNKU9xyb
+ bXLOMam4R1xHNzAl2y5cxxRXeUSqRIPhv3dFqTFXxhdWJSkTB/uIMt35/0uYZoWKbPqZlW43474
+ aGwA=
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,6 +109,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -137,37 +120,83 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-vcc_5v0_typec0 is the switched VBUS of the USB-C port. It is the
-vbus-supply of the FUSB302, but also the phy-supply of u2phy0_otg.
-The PHY enables it at boot and keeps it on, so TCPM never sees
-vSafe0V and a sink partner stays in SRC_ATTACH_WAIT. A USB-C dock is
-not detected.
+From: Igor Velkov <iav@iav.lv>
 
-Drop the phy-supply and leave VBUS to TCPM.
+Helios64 has an ON Semiconductor PCA9655E 16-bit GPIO expander at 0x20
+on I2C2, powered from VCC3V3_SYS_S3. Its 16 lines go to pins 4-19 of
+the P5 GPIO header, one line per pin in order, so name them after the
+pins. Its INT# output goes to GPIO0_B1 with an external pull-up (R59
+to 1V8_S3), so the pin has no internal bias. Schematic, sheets 34 and
+35:
+https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
 
-Fixes: 44a48a23974b ("arm64: dts: rockchip: Add ArmSoM CM5 and CM5-IO")
-Cc: stable@vger.kernel.org
-Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+Assisted-by: LLM
+Signed-off-by: Igor Velkov <iav@iav.lv>
 ---
-Resent with the lists on Cc. The first copy went to Heiko only.
+The node is the one tested on the board in v1; the line names are
+checked with dt-validate only.
+---
+Changes in v2:
+- Drop the binding patch, applied by Bartosz as 356cab616b6f.
+- Name the lines after the P5 header pins, label the node p5_gpio.
+- Rebase on for-next.
+- Link to v1: https://lore.kernel.org/r/20261009-helios64-pca9655-v1-0-673ee4432650@iav.lv
+---
+ .../boot/dts/rockchip/rk3399-kobol-helios64.dts    | 25 ++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
- arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts
-index 5958b391e..72ca49ec3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts
-@@ -306,7 +306,6 @@ &u2phy0 {
- };
- 
- &u2phy0_otg {
--	phy-supply = <&vcc_5v0_typec0>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+index 63ad79b4c8ac..df993cbb17c8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+@@ -461,6 +461,25 @@ &i2c2 {
+ 	i2c-scl-falling-time-ns = <30>;
  	status = "okay";
- };
  
++	p5_gpio: gpio@20 {
++		compatible = "onnn,pca9655", "nxp,pca9555";
++		reg = <0x20>;
++		gpio-controller;
++		#gpio-cells = <2>;
++		/* All 16 lines go to pins 4-19 of the P5 GPIO header */
++		gpio-line-names = "PIN_4", "PIN_5", "PIN_6", "PIN_7",
++				  "PIN_8", "PIN_9", "PIN_10", "PIN_11",
++				  "PIN_12", "PIN_13", "PIN_14", "PIN_15",
++				  "PIN_16", "PIN_17", "PIN_18", "PIN_19";
++		interrupt-controller;
++		#interrupt-cells = <2>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PB1 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&exp16_int_l>;
++		vcc-supply = <&vcc3v3_sys_s3>;
++	};
++
+ 	temp@4c {
+ 		compatible = "national,lm75";
+ 		reg = <0x4c>;
+@@ -501,6 +520,12 @@ user1_btn: user1-btn {
+ 		};
+ 	};
+ 
++	expander {
++		exp16_int_l: exp16-int-l {
++			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	fan {
+ 		fan1_sense: fan1-sense {
+ 			rockchip,pins = <4 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+
+---
+base-commit: d2abcbb905b0e4b2e06b257fa1e5bcf4faa6dbda
+change-id: 20261009-helios64-pca9655-39643c2acf4d
+
+Best regards,
 -- 
-2.43.0
+Igor Velkov <iav@iav.lv>
+
 
 
 _______________________________________________
