@@ -2,103 +2,78 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BF809606A321
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Oct 2026 15:24:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F3F56606A321
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Oct 2026 20:54:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TI0U0fAI;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=KtuE3vyS
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1nTgl2HR;
+	dkim=fail reason="signature verification failed" (4096-bit key, unprotected) header.d=lausen.nl header.i=@lausen.nl header.a=rsa-sha256 header.s=uberspace header.b=ph6/xYnr
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=1BvwSuPwdQ7NyYn/XhX1U+lEdNef174DlXRw7K5QLXo=; b=TI0U0fAIAAXAb73JeqmkoBMjzP
-	oQ/lnLLIgTBw3AvrnGshpGY/xjWAdxMhd/j5lp8Vlap50xFrGggWHTDvXMsi/+8yZvXmtKcT0W/FU
-	iwTqKBboCIYBX05icNNoh3DRxv3ecssvxQQo+SjJO1RFnHYaNu3YKMiAvP5YWsa8GSUTPQaBoN5TZ
-	YhqEH5JJzYFt2YXHiqk1+X+3ASzHisFyrVEpf31FDUOd+kunquh8bXflVEcQC319giETtfWLOnsYD
-	JchUaGHxovcmsmjoXG/UMD/DzzbVsKIU0QBYS9GDv4y3mkrldnJds5serAHI+42CaTN0RKQSIC4/e
-	6fMH5taQ==;
+	bh=It3Z3mDJbmv1FK0DIKGhmYUwCNRFEeBJYsq/IRoShu8=; b=1nTgl2HR4X1pPpYMGLzoZBOHpz
+	0LfRaq7uWA6vki0eobtGnpfRxOZGJWLyyDZ+LckyQqkttaIsH8kRUtu9YrDgMownKxbHLxQ7BmDS8
+	mGySZFSiYe1076Km7sws/Vv2WDznEzvI8MmBw0ksU+vi3alzbdmCBUaLzS9XadEySRB0s9huQxLVK
+	XLznWQjUtUcCmXAXfPFkFqqIBcwU+3njpONnMhGPjsrT92py8eazFhmCxUO3Jac7lWNak8Ao6ib9H
+	gpoIwzQ1Cj+2UhPnWASFxdzwHcODswgEwOnQKmxzJ7+OxwXRN9UgKMXoyDoif7NrRBHFmazYZ2sI3
+	wvnSPFgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xL05K-00000001APk-3Ifb;
-	Sun, 25 Oct 2026 15:24:34 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1xL5EU-00000001Rez-1tzw;
+	Sun, 25 Oct 2026 20:54:22 +0000
+Received: from mailgate01.uberspace.is ([95.143.172.20])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xL05I-00000001AOw-2yZb
+	id 1xL5ES-00000001Re0-03EA
 	for linux-rockchip@lists.infradead.org;
-	Sun, 25 Oct 2026 15:24:33 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4a210470b49so17595945e9.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 25 Oct 2026 08:24:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792941870; x=1793546670; darn=lists.infradead.org;
-        h=mime-version:content-transfer-encoding:content-type:references
-         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=gr7m8Jgx5qFfXx97jCHm/dv2wdINd/6dtVxf1769JNg=;
-        b=KtuE3vySV69aChNmXw1djZBCFUCD1EV8U8Ot/oDiQT020VEcod2NydyyaX0szmBq2b
-         YICcbin+Z03iLJzLv1pRtIgNHIWb6SmvD5lTy8wd1x1Y4R8xODb4J0mVxzq6bas6Bp1/
-         iQTnZr8Amrc5ypIZxroUJmd7eN4xnjUZpN1b8JSFeYBPRbiJ4dJciGVpOcXn9U08mXKR
-         OCMm0vTRZ7ukZ8sO3V01N3bw/F21z2vhVFzGM5FTAr0sxH1EELgehLdXMpQn7MoMTpCN
-         dtEwOx/IKUOUpamF0azANwMn15NiN3bK1b9chNnP+guytFjtm8H8zyQVidLT5M3tagsS
-         LxSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792941870; x=1793546670;
-        h=mime-version:content-transfer-encoding:content-type:references
-         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=gr7m8Jgx5qFfXx97jCHm/dv2wdINd/6dtVxf1769JNg=;
-        b=VJR8S2GyQQgTztDgVUFDxLA8Q4yN6y8u1KM+3taqqWRKLcdozXkR9/2XpepIucdAkj
-         f4dhN5T8DPLao9C27GHAkrIXPwk9THwSbkhacDk51vBNXd/6IRgG1EACeFsR4oTx6881
-         mb49+Rv9VeAz1EOlm6OX3ZBobrwKt+ODFb8h8fcA4jB9HKVKGmV58IZqugkhJ4LzbV56
-         /ktvk1/auasgMSwmsJ1UZ9k8YmJnI9BwUdV4lWDEEk37ICHidXeUw7PEhStCT3itRscb
-         WHHHIWGZj9xV3yx4WqAoPLCyfMYhg5NAlLG+PgDL/nSJgEPgTmsfZBBqBszMnFhVB8Wk
-         yqJQ==
-X-Forwarded-Encrypted: i=1; AKwUvBx27EezXa4gS9HemhgF0OnMPY/T85Tm0T0k9a1tmnZmSz4sHY/X/SJmxQoQZ7WT7oq5SllCYYCNg4+FQtAnYw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIRadEzV5jWBiKqNngEfPBOMY4X6XlNC5X931e4iiZDO45ceeLF
-	zfb7GaXNr03go/BNmzrXzHWQLkDlJPdvbCK1maLCLOF5vR6j/k49SMsKkRY9Byru
-X-Gm-Gg: AYBFou25+O+vU/y8WwpV91F2wM8vCJJzriJkVczIKK3TxtqIs2fOMRAsNRXfKJJmJ3u
-	YqzOgXX41pB5ceVrxoAoGq5IUWGjNmcQ+8DMkhNbr7AGg77JpfudbieCSqPGCVkTUo7PFZIlodX
-	LD4OR/yx5qpJm/hrN9mV9BQOR//ChJHSGbL5UgeeeK6KCrJVOz4CR+FGKXEbbLjPlG059zCmv2+
-	FYSo5nyaizKn0cfVX8NknVH7AxNX4kkuYIIGW7llEsDPHi005woWcWLs/1xY0MCQbAtkzQbw6O9
-	AFlpTP6VtLCoAXzPqycE0adJ0lseVGDpy2Q2fv+aWYP+IMl/wvFc+rhrtBINPCh7FQi/KBEFRAt
-	ylBCZoJGhJYwFfgSxa1Ix/khsdq4RFAyw9xH7uOcZnkoK+Z9KML4u9oywgcOOb9kZwd0e3gHjjN
-	GT3HGB7XXVWS8G4uAvhWfSO2sMZwa4tXrn8iJNtlJFGp9xnX6fSfMRs5zjyBC1DVaxNCM+K6CQH
-	7B4DzpSlh7x2hX9K0MUmkrBjEwrDJqVVwqdLQqAhRZPa+DNgcqII3cBNjb0qJXaQUZSqHVemzdt
-	iKa1+6yhkf6xsK33kyQX7r4NAU1cV7a6YbO9zd5tTFg=
-X-Received: by 2002:a05:600c:c0c9:b0:4a5:87b3:ddc1 with SMTP id 5b1f17b1804b1-4a587b3e000mr20792825e9.13.1792941870382;
-        Sun, 25 Oct 2026 08:24:30 -0700 (PDT)
-Received: from [127.0.1.1] ([2001:861:39c2:e340:4c3:3a00:d533:9d50])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a35a04ae28sm132982575e9.2.2026.10.25.08.24.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 25 Oct 2026 08:24:30 -0700 (PDT)
-From: Romain TISSERAND <romain.tisserand@gmail.com>
-To: sashiko-reviews@lists.linux.dev
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Heiko Stuebner <heiko@sntech.de>, Liu Ying <victor.liu@nxp.com>,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] drm/bridge: dw-mipi-dsi: use the lane rate for lbcc when
- lanes run faster
-Date: Sun, 25 Oct 2026 16:24:29 +0100
-Message-ID: <179294186960.4141843.10824416552753869438@gmail.com>
-In-Reply-To: <sashiko-outbox-184251@kernel.org>
-References: <20261025142639.3454322-1-romain.tisserand@gmail.com>
- <sashiko-outbox-184251@kernel.org>
+	Sun, 25 Oct 2026 20:54:21 +0000
+Received: from devico.uberspace.de (devico.uberspace.de [185.26.156.185])
+	by mailgate01.uberspace.is (Postfix) with ESMTPS id 13C2861078
+	for <linux-rockchip@lists.infradead.org>; Sun, 25 Oct 2026 21:54:09 +0100 (CET)
+Received: (qmail 25742 invoked by uid 990); 25 Oct 2026 20:54:08 -0000
+Authentication-Results: devico.uberspace.de;
+	auth=pass (plain)
+Received: from unknown (HELO unknown) (::1)
+	by devico.uberspace.de (Haraka/3.1.1) with ESMTPSA; Sun, 25 Oct 2026 21:54:08 +0100
+From: Leonard Lausen <leonard@lausen.nl>
+To: heiko@sntech.de
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Leonard Lausen <leonard@lausen.nl>
+Subject: [PATCH] arm64: dts: rockchip: Enable Wi-Fi on the NanoPi M5
+Date: Sun, 25 Oct 2026 20:52:48 +0000
+Message-ID: <20261025205339.14539-2-leonard@lausen.nl>
+X-Mailer: git-send-email 2.47.3
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+X-Rspamd-Bar: /
+X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-2.999799) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
+X-Rspamd-Score: -0.099799
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=lausen.nl; s=uberspace;
+	h=from:to:cc:subject:date;
+	bh=vZp7WOiFDniDGGPVB44BCfmjNLNKpcugqLlTg39BwmY=;
+	b=ph6/xYnrrUxOCAl6qoRBXpbH0JRaj0GL9p69gDqEDI9uZ2+N1Pk/Qp5rXwxKv75BLb+K+wUfHc
+	ttxdkc4ak71hq6vAdf1xp2R5T08BgrX0glv4CeV2jb0t2f1lm0I/4fmvP02wSc+OUdkucDW0gA6H
+	HeopSLDqOk+IAHX1IOT6ODedzzQ4dc3sjSIWHAjIbsgeoewnx41tbkTAICtBp2kNXM9zxBad2wxT
+	WV9Yvbpji2KSfrWcug4sTc65mEMra8Q7IunNLTpGfZ5UERBkqA05eGOYN6IPp3V16DFzc1x7uUtU
+	aknRUf8TkdpoowDJgmysVGbkJBIpKRCtFF7n8FHdRK7bg/tMKRa8wysHhJGRxKvLDo5cOYbwvXQM
+	kQUbewTE4MwAgvHSV2IVgfuhUAr5iOtq6T3TxJKAka1zVxb+sYkfaBhKbxL0yO43CNbkMk3vj6Kb
+	HAOnPJNwHwUjKTSoaHr2nhrNhoebOp2YQE1631GDhGgR96vLPLYlzEBPd0m6WB8pfcSQpWkxjUvf
+	duJcssmbBWWECTPTKSLqXikRAq02ksLD3LxW5eVbQmSTvJAqxY54rFBOXTGXzuMIYyh54sXk1owu
+	3Bz07OAOrwyK9ldMTmLyrCnmFB8XxbNkfsay/z6O4mxqN1P/SBifh5BVBPJU55SjjtEhobB1EtvB
+	k=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261025_082432_802020_83B19A9C 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20261025_135420_205666_7BC0372D 
+X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,39 +87,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sun, 25 Oct 2026 14:38:50 +0000, sashiko-bot@kernel.org wrote:
-> For a 4-lane non-burst panel using MIPI_DSI_FMT_RGB666_PACKED (bpp = 18),
-> (bpp / lanes) truncates from 4.5 to 4, giving a lane rate of 5 * mpclk Mbps.
-> That is only 11.1% (1/9) above the 4.5 * mode->clock pixel bandwidth, rather
-> than 25%.
-[...]
-> If the slack is only meant to ignore lane_mbps being rounded up to the next
-> MHz, should the check compare dsi->lane_mbps against
-> DIV_ROUND_UP_ULL(pixel_kbps, MSEC_PER_SEC) instead of adding pixel_kbps / 8?
+The NanoPi M5 has an M.2 E-key slot for SDIO Wi-Fi modules such as the
+RTL8822CS-based AC200. The SDIO controller is disabled and the module's
+power sequence is not described, preventing the card from enumerating.
 
-Right, the 1/8 slack misses that case. v2 will use the lane rate when
-lane_mbps is above the pixel bandwidth rounded up to the next MHz, which
-keeps i.MX93, Meson and STM in non-burst mode on the pixel clock formula.
+Enable the controller in four-bit SDR104 mode and connect its 3.3 V card
+and 1.8 V I/O supplies. Describe the active-low reset on GPIO1_C2, the
+200 ms power-on delay used by the vendor device tree, and the external
+32.768 kHz clock from the HYM8563 RTC. Keep the card powered during
+suspend as required by the rtw88 SDIO driver.
 
-> Should pixel_kbps and the pixel-clock lbcc calculation divide by
-> dw_mipi_dsi_get_lanes(dsi) instead of dsi->lanes to handle dual-DSI panels?
+Signed-off-by: Leonard Lausen <leonard@lausen.nl>
+---
+ .../boot/dts/rockchip/rk3576-nanopi-m5.dts    | 34 +++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-With dsi->lanes the patch doesn't change the timing of the dual-DSI Gru
-Scarlet panel: its lane rate stays below the per-link pixel bandwidth, so
-it keeps the current computation. Switching to the total lane count would
-change that timing, and I can't test it, so I'll keep dsi->lanes in this
-patch and leave the dual-DSI accounting to a separate one.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
+index 3a305408fa16c..bfa18de1ae1af 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
+@@ -23,6 +23,7 @@ aliases {
+ 		ethernet0 = &gmac0;
+ 		ethernet1 = &gmac1;
+ 		mmc0 = &sdmmc;
++		mmc1 = &sdio;
+ 	};
+ 
+ 	chosen {
+@@ -212,6 +213,16 @@ vcc_3v3_s0: regulator-vcc-3v3-s0 {
+ 		vin-supply = <&vcc_3v3_s3>;
+ 	};
+ 
++	sdio_pwrseq: sdio-pwrseq {
++		compatible = "mmc-pwrseq-simple";
++		clocks = <&hym8563>;
++		clock-names = "ext_clock";
++		pinctrl-0 = <&wifi_reg_on_h>;
++		pinctrl-names = "default";
++		post-power-on-delay-ms = <200>;
++		reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
++	};
++
+ 	sound {
+ 		compatible = "simple-audio-card";
+ 		pinctrl-names = "default";
+@@ -855,6 +866,12 @@ pcie0_perstn: pcie0-perstn {
+ 		};
+ 	};
+ 
++	sdio-pwrseq {
++		wifi_reg_on_h: wifi-reg-on-h {
++			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	sdmmc {
+ 		sdmmc0_pwren_h: sdmmc0-pwren-h {
+ 			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_up>;
+@@ -890,6 +907,23 @@ &saradc {
+ 	status = "okay";
+ };
+ 
++&sdio {
++	bus-width = <4>;
++	cap-sd-highspeed;
++	cap-sdio-irq;
++	disable-wp;
++	keep-power-in-suspend;
++	mmc-pwrseq = <&sdio_pwrseq>;
++	no-mmc;
++	no-sd;
++	non-removable;
++	sd-uhs-sdr104;
++	vmmc-supply = <&vcc_3v3_s3>;
++	vqmmc-supply = <&vcc_1v8_s3>;
++
++	status = "okay";
++};
++
+ &sdmmc {
+ 	bus-width = <4>;
+ 	cap-sd-highspeed;
+-- 
+2.47.3
 
-I'll send v2 in about a week.
-
-Romain
 
 _______________________________________________
 Linux-rockchip mailing list
