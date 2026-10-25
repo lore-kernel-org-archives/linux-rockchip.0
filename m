@@ -2,79 +2,105 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F3F56606A321
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Oct 2026 20:54:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E0740606A31A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Oct 2026 22:57:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1nTgl2HR;
-	dkim=fail reason="signature verification failed" (4096-bit key, unprotected) header.d=lausen.nl header.i=@lausen.nl header.a=rsa-sha256 header.s=uberspace header.b=ph6/xYnr
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rO98Rkkx;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=A/Zn+ncC
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=It3Z3mDJbmv1FK0DIKGhmYUwCNRFEeBJYsq/IRoShu8=; b=1nTgl2HR4X1pPpYMGLzoZBOHpz
-	0LfRaq7uWA6vki0eobtGnpfRxOZGJWLyyDZ+LckyQqkttaIsH8kRUtu9YrDgMownKxbHLxQ7BmDS8
-	mGySZFSiYe1076Km7sws/Vv2WDznEzvI8MmBw0ksU+vi3alzbdmCBUaLzS9XadEySRB0s9huQxLVK
-	XLznWQjUtUcCmXAXfPFkFqqIBcwU+3njpONnMhGPjsrT92py8eazFhmCxUO3Jac7lWNak8Ao6ib9H
-	gpoIwzQ1Cj+2UhPnWASFxdzwHcODswgEwOnQKmxzJ7+OxwXRN9UgKMXoyDoif7NrRBHFmazYZ2sI3
-	wvnSPFgA==;
+	bh=ButpVKHNLg9Lf6k4eaG+0EQ5sET/6Cdask8IuO8XLlw=; b=rO98Rkkx2yc5Q9WG9HwTeBI63x
+	Y6mi1v+PamV9QAK0DEEQcfUPi/XBupeOIvPHbXH1yNnQPp/uvD1E8NJKBYvlV4OWcGwjWn1uNzt6/
+	ibioa4FrUmX/F5VX24Km67istvmkAA5qUgf9euIBw1s/iQ/btL4KnRLobiZlJFChecIzNDeFFNuKr
+	/l7oYh0EEJbzIMOXUcCTRQQ2BdZbztwXhW+TdohVETVQJswQoeOy9TV3+M7x1fu7xj0mB8ITNMRsA
+	/Uqfv8zWmYWfRYm+vMQE2XTGtbycOuLNqoNvgP2HxTDYcaW6rCUozPYT/5wBbEr9lMf4pMvOYmVG2
+	VdkntzWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xL5EU-00000001Rez-1tzw;
-	Sun, 25 Oct 2026 20:54:22 +0000
-Received: from mailgate01.uberspace.is ([95.143.172.20])
+	id 1xL788-00000001UdD-050e;
+	Sun, 25 Oct 2026 22:55:56 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xL5ES-00000001Re0-03EA
-	for linux-rockchip@lists.infradead.org;
-	Sun, 25 Oct 2026 20:54:21 +0000
-Received: from devico.uberspace.de (devico.uberspace.de [185.26.156.185])
-	by mailgate01.uberspace.is (Postfix) with ESMTPS id 13C2861078
-	for <linux-rockchip@lists.infradead.org>; Sun, 25 Oct 2026 21:54:09 +0100 (CET)
-Received: (qmail 25742 invoked by uid 990); 25 Oct 2026 20:54:08 -0000
-Authentication-Results: devico.uberspace.de;
-	auth=pass (plain)
-Received: from unknown (HELO unknown) (::1)
-	by devico.uberspace.de (Haraka/3.1.1) with ESMTPSA; Sun, 25 Oct 2026 21:54:08 +0100
-From: Leonard Lausen <leonard@lausen.nl>
-To: heiko@sntech.de
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Leonard Lausen <leonard@lausen.nl>
-Subject: [PATCH] arm64: dts: rockchip: Enable Wi-Fi on the NanoPi M5
-Date: Sun, 25 Oct 2026 20:52:48 +0000
-Message-ID: <20261025205339.14539-2-leonard@lausen.nl>
-X-Mailer: git-send-email 2.47.3
+	id 1xL786-00000001Uck-2b5I;
+	Sun, 25 Oct 2026 22:55:54 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id C8518600AA;
+	Sun, 25 Oct 2026 22:55:53 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1792968953;
+	b=We/IzOgTgGdY8Ivf/0fs+nRQUgZlhlcC5TfTWNcpKb03Qqo3vUULcrR/Nu9XKRO4/Bhu
+	 i+Kn8EfilZkd5RPBSZiuPiJcoklJwnYCodHQwoxhirfY+orb6G7ETj9/HkNVsF3ZIYwEL
+	 eXPDotGJQwO25lNe+Xoh464VVHhrmJpuxh5OUPm3NYS9nXhy/RxbIwyk+aXmIHXW/Kh7+
+	 a1pJFuQfN+IMR+MQGQzjZ7b0fc2aRLJFJj18G9TcjshwzhdvB7EuD85zklxJvo6PDdhlg
+	 jMOtSzpJMsFSyQBlcQQ5uAVqklgq+FfLf2eFpAuoSRUqrJ86pm4AfiHjdSJjSHIkl1A==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1792968953;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
+	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=fVA9Px7sGwhBCvFM7n5uL7LpsIT0mOi13oe2+5aD5jQ=;
+	b=eJ4k3CNMngo00if3VNRPeTMtOxi7FFe6cENde8nDBHtLyalhKO7FM1jymj8ElsuaHyRr
+	 Tn9ImNyaOec2U42xhIZ/EyYxgtPgjjtBh2PeeO+zd4u3mtqMpQVNxsFm0RUNmjwztG42a
+	 2Pyj4c9HBaJy7JeOyzLSfGCk0P+ZMO0EaLY1enONvz3tMXp79tgb5ibm3O3CQO6cYIuqC
+	 SxJoY6cEcUjZJ0HkARGydYE+lndbeXwfgiVZniMATgRRh0MNDCWJIf3/mCsdfW2xPTXBB
+	 8Sjv6KmZU7Vl4Sd+ogrv8CwaSXUTy8YOwlX4pdYxbCynphoOpu1OztgFrsG6ACYbwZA==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 14AAA1F01825;
+	Sun, 25 Oct 2026 22:55:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792968953;
+	bh=fVA9Px7sGwhBCvFM7n5uL7LpsIT0mOi13oe2+5aD5jQ=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=A/Zn+ncCxnwDUhrdQwt8/kdI25iLeG6fcuEAfZzSCntM3flOGw9yRSK1Dw77af2LZ
+	 g0S1Q2kV7avA3+S8odi/jMlfVRSOY6FY2PvfUeDmpY2vSdZIQiY+vmI9v54nyvYptS
+	 on2Zy1pXmXmeqWA/4KzGWytTRmzvZxsklSnXWG5T6oEdkjTcQEOXV3ZUjNzccCEQYB
+	 iKjBdnzYhiMvCdPdTNSeBeSusxtR7uesukgyBtHhHsyVJ3c5uykfgCpGgXFytkT/Nx
+	 lZxhfkwiYjRdLpExBKreVBME6yCUO9swsBUqkGIZjOki/qmnuQdeK+wnAxB6SoFzXf
+	 EMwdHaKSIv+eQ==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 997CF44AE2;
+	Sun, 25 Oct 2026 22:55:52 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Sun, 25 Oct 2026 22:55:51 +0000
+Subject: [PATCH] arm64: dts: rockchip: Describe the Ethernet PHY on ROCK Pi
+ 4
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Rspamd-Bar: /
-X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-2.999799) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
-X-Rspamd-Score: -0.099799
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=lausen.nl; s=uberspace;
-	h=from:to:cc:subject:date;
-	bh=vZp7WOiFDniDGGPVB44BCfmjNLNKpcugqLlTg39BwmY=;
-	b=ph6/xYnrrUxOCAl6qoRBXpbH0JRaj0GL9p69gDqEDI9uZ2+N1Pk/Qp5rXwxKv75BLb+K+wUfHc
-	ttxdkc4ak71hq6vAdf1xp2R5T08BgrX0glv4CeV2jb0t2f1lm0I/4fmvP02wSc+OUdkucDW0gA6H
-	HeopSLDqOk+IAHX1IOT6ODedzzQ4dc3sjSIWHAjIbsgeoewnx41tbkTAICtBp2kNXM9zxBad2wxT
-	WV9Yvbpji2KSfrWcug4sTc65mEMra8Q7IunNLTpGfZ5UERBkqA05eGOYN6IPp3V16DFzc1x7uUtU
-	aknRUf8TkdpoowDJgmysVGbkJBIpKRCtFF7n8FHdRK7bg/tMKRa8wysHhJGRxKvLDo5cOYbwvXQM
-	kQUbewTE4MwAgvHSV2IVgfuhUAr5iOtq6T3TxJKAka1zVxb+sYkfaBhKbxL0yO43CNbkMk3vj6Kb
-	HAOnPJNwHwUjKTSoaHr2nhrNhoebOp2YQE1631GDhGgR96vLPLYlzEBPd0m6WB8pfcSQpWkxjUvf
-	duJcssmbBWWECTPTKSLqXikRAq02ksLD3LxW5eVbQmSTvJAqxY54rFBOXTGXzuMIYyh54sXk1owu
-	3Bz07OAOrwyK9ldMTmLyrCnmFB8XxbNkfsay/z6O4mxqN1P/SBifh5BVBPJU55SjjtEhobB1EtvB
-	k=
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261025_135420_205666_7BC0372D 
-X-CRM114-Status: UNSURE (   9.57  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261025-rockpi4-gmac-phy-v1-1-69ce4d677189@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAPaI3moC/x3MSwqAMAwA0atI1gZs/XsVcSExrUHU0oIo0rtbX
+ L7FzAuBvXCAIXvB8yVBziNB5RnQOh+WUZZk0IVuVKFr9CdtTiq0+0zo1gdVZ1RJPZWtIUiZ82z
+ k/pfjFOMHydgcumIAAAA=
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Pragnesh Patel <Pragnesh_Patel@mentor.com>, 
+ Akash Gajjar <Akash_Gajjar@mentor.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2295; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=ysO0nvScc///4x6g3QSeXnmC72DmKboxgyT6JKfyNes=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFn3Or7P1jZ6PnH/hIjcQx9E9L/axL654Hc84v6UypqD7
+ h8ei5+/21HKwiDGxSArpsgy4ZDGrYwlV//6e5g/gJnDygQyhIGLUwAm4t3GyPD1UHKXP8+0xPwD
+ z0Pfan3c2f+D/c9+nn9h7D5J4idOb1Zl+O9rLfT124GNCRlpRw+fmrKwPNPjypr+te7r7p0VShX
+ TZ+YBAA==
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,6 +110,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -94,89 +121,74 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The NanoPi M5 has an M.2 E-key slot for SDIO Wi-Fi modules such as the
-RTL8822CS-based AC200. The SDIO controller is disabled and the module's
-power sequence is not described, preventing the card from enumerating.
+From: Igor Velkov <iav@iav.lv>
 
-Enable the controller in four-bit SDR104 mode and connect its 3.3 V card
-and 1.8 V I/O supplies. Describe the active-low reset on GPIO1_C2, the
-200 ms power-on delay used by the vendor device tree, and the external
-32.768 kHz clock from the HYM8563 RTC. Keep the card powered during
-suspend as required by the rtw88 SDIO driver.
+The ROCK Pi 4 GMAC node has no mdio subnode and no phy-handle, so stmmac
+scans the whole MDIO bus. The RTL8211E answers at its strapped address 1
+and at the Realtek broadcast address 0, so two phy_devices are created
+for one chip, and the netdev attaches to the one at address 0.
 
-Signed-off-by: Leonard Lausen <leonard@lausen.nl>
+On system suspend mdio_bus_phy_suspend() leaves the attached PHY to the
+MAC (mac_managed_pm) but suspends the unattached one, which writes
+BMCR_PDOWN into the same chip. With s2idle and a MAC Wake-on-LAN magic
+packet, 17 of 40 cycles did not wake.
+
+Describe the PHY at address 1 and point phy-handle at it, so only one
+phy_device is created.
+
+Tested on ROCK Pi 4A (RTL8211E), s2idle: one PHY on the bus; 40 of 40
+cycles woke on a magic packet sent 15 s into sleep, and 35 of 35 more
+woke from the expected source with magic packets sent after 5 s to
+20 min, RTC alarms, and the two alternating. Later board revisions use
+an RTL8211F; their schematics strap it to address 1 as well.
+
+Fixes: 1b5715c602fd ("arm64: dts: rockchip: add ROCK Pi 4 DTS support")
+Signed-off-by: Igor Velkov <iav@iav.lv>
 ---
- .../boot/dts/rockchip/rk3576-nanopi-m5.dts    | 34 +++++++++++++++++++
- 1 file changed, 34 insertions(+)
+The deprecated snps,reset-* properties stay in the MAC node; moving the
+reset to the PHY node is a separate change.
+---
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-index 3a305408fa16c..bfa18de1ae1af 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-@@ -23,6 +23,7 @@ aliases {
- 		ethernet0 = &gmac0;
- 		ethernet1 = &gmac1;
- 		mmc0 = &sdmmc;
-+		mmc1 = &sdio;
- 	};
- 
- 	chosen {
-@@ -212,6 +213,16 @@ vcc_3v3_s0: regulator-vcc-3v3-s0 {
- 		vin-supply = <&vcc_3v3_s3>;
- 	};
- 
-+	sdio_pwrseq: sdio-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		clocks = <&hym8563>;
-+		clock-names = "ext_clock";
-+		pinctrl-0 = <&wifi_reg_on_h>;
-+		pinctrl-names = "default";
-+		post-power-on-delay-ms = <200>;
-+		reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
-+	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+index a8ab043e4062..52de4a79e2f4 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+@@ -202,6 +202,7 @@ &gmac {
+ 	clock_in_out = "input";
+ 	phy-supply = <&vcc3v3_lan>;
+ 	phy-mode = "rgmii";
++	phy-handle = <&rgmii_phy>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rgmii_pins>;
+ 	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
+@@ -210,6 +211,16 @@ &gmac {
+ 	tx_delay = <0x28>;
+ 	rx_delay = <0x11>;
+ 	status = "okay";
 +
- 	sound {
- 		compatible = "simple-audio-card";
- 		pinctrl-names = "default";
-@@ -855,6 +866,12 @@ pcie0_perstn: pcie0-perstn {
- 		};
- 	};
- 
-+	sdio-pwrseq {
-+		wifi_reg_on_h: wifi-reg-on-h {
-+			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
++	mdio {
++		compatible = "snps,dwmac-mdio";
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		rgmii_phy: ethernet-phy@1 {
++			reg = <1>;
 +		};
 +	};
-+
- 	sdmmc {
- 		sdmmc0_pwren_h: sdmmc0-pwren-h {
- 			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_up>;
-@@ -890,6 +907,23 @@ &saradc {
- 	status = "okay";
  };
  
-+&sdio {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	disable-wp;
-+	keep-power-in-suspend;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	no-mmc;
-+	no-sd;
-+	non-removable;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc_3v3_s3>;
-+	vqmmc-supply = <&vcc_1v8_s3>;
-+
-+	status = "okay";
-+};
-+
- &sdmmc {
- 	bus-width = <4>;
- 	cap-sd-highspeed;
+ &gpu {
+
+---
+base-commit: d2abcbb905b0e4b2e06b257fa1e5bcf4faa6dbda
+change-id: 20261025-rockpi4-gmac-phy-18f13c9c37fc
+
+Best regards,
 -- 
-2.47.3
+Igor Velkov <iav@iav.lv>
+
 
 
 _______________________________________________
