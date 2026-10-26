@@ -2,75 +2,93 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 39CE3606A31A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2026 14:56:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 02699606A31D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2026 15:27:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ceRPm2fJ;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=PppD0vWl
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kDC02pIV;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=NRvOEepR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
-	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=8pHPlWc6Msivq6z0zNBGAOKP/5uhFdKhrMCZ+82SQuc=; b=ceRPm2fJ+CEPv6f9zDAa10o0vr
-	A/rAF1SPXNN3x9Nk7u67/igtHBw9grzzEQZpRVKP7uc00K/LA1DR14TMJBNp7qNI7O8t/Hsvx99gL
-	+cm1P082QhHpT4nPVhAgKSEXum1p0WweNKkAq6X/JUibZpvoPEOzC6X9ixFHwoqjMU7neYAPyTANk
-	ips5PfO94WzoNK3V1Yothb5zKbYWxFB/QBy6j2k+0AxdNElNsSl5CWZknZxbCdTzCBiDlki+Tjvj1
-	mb3r+XZLsHvqVLN/I2UNfwIjHIiACn68N/tm8dMMvkVARVmP/GfOnL4k2zjOPPFT9+iNYd7QQ+ZQP
-	K3QPCpvQ==;
+	bh=LtAoblQQb4ng6q1J7GEUhrn/6Kctn9P3ACYr6klVCo8=; b=kDC02pIVx6nHZt/irR12izVEgl
+	/MwEvFkwfDOBoGib+tAwv+Ns/O1zoaOwi932LMWwhcBuY55Sng4LqDrzF4DAPoBqOQJKhsh61bsiN
+	DIRJl0pndksdnnj6I/MwAuG40/TUjbX4kh+OsS09CnxcdRkPgPmsmXpUWcjra8+oihH1tA/4O8gwu
+	DFqJAkpIheNJ3jTkYVuZNGrH4dk8tCl4kkJ2oK/r7LKa28TfNkjOdbiacGDo2eHT1WzS0TnHc8OFJ
+	iORJlgEG7h+bkthfTI0URHHDcD38LjIhnWjO9VPtmA5wjw7kSPSv6+qFvvcc0MNu+BbBpVwOh7XLC
+	LawN83qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLM7w-00000002iwc-07Ck;
-	Mon, 26 Oct 2026 14:56:44 +0000
-Received: from xmbghk7.mail.qq.com ([43.163.128.52])
+	id 1xLMbC-00000002l7a-3O9n;
+	Mon, 26 Oct 2026 15:26:58 +0000
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLM7U-00000002iRV-2cEY;
-	Mon, 26 Oct 2026 14:56:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1793026569; bh=RuotPnZdxuGHvCO6ci2amZgNLLfOtFoXm03Qr+Is18Y=;
-	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=PppD0vWlUeA4ARw8FHIXRROgGVyDk5jCbe+w12ek6wXZWsdNzRGR3EAxpda+W98hy
-	 9Sa2oXOWHY//uQSKLkmJO1f/kf2zPPskiDuMWQ9rIVqYgn+Tol+BobSe+ysFCJkxHe
-	 ejGgrUhmrZJuWqYdoa80ADnSknXjpsD3aUquEZKw=
-X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
-X-QQ-XMAILINFO: MQ+RLpP3ca9B9zFQFr8c37Afr8ztaUfPPDNMfVcY5KPNfYldBzuLMvpZy15GU2
-	 9Iq4E+qjujD5hoa+Oye155otpR5xOhdP5dkBUq/ruyNgvOOxSRsFNeYP5cICdldqrCgfd98yDhU9Z
-	 eb4ZmgwE6vDV53KUoKUx5Q+8FnzPNdJhPvV/50oIuMOK+2I5YtdN4gYiuVH8U9CaZXIUI7eC617B+
-	 YtaIgFG2oT8rru28r6dnZLw6/HBXG/5V4VSbA45f4EHIiA8OwjeS/NcapKdaK8LP8PYhjD0KIoTdO
-	 JMcgF2oFHrVjF13XFtSilGIGJOKsRW3F2lFDi5RZQf8nfZ5xmD+2Nnbcwn6YTRueswSYJn8F39Xjp
-	 pv8qCIhfSfTeQbd8G3oLX9hXQoFbsbinJq3gUUap83xyU0nNrHjIfvIAmQ99fLMSfuS+F4gUZHs3e
-	 BFMf0LkxW5YPi6ZDBNFJKBtVBDrfeL+XKqQ2T4aREK+KWS8YYS6CWxTttg+iqo3VNk36yxQSP3S71
-	 ojlUhEuo9Knf7aU7LbpkHuXzXRTDozl8LQDSn1do3r9zB/XBuVIsMNVCuufCahskxns6bj1SPwAUG
-	 KupriVTNprhqaPo646OyPIutu5X8PDePEh6W8n351qbL9KhTNGz9M5zAAkA3hg4I9InmlLcMldM2p
-	 IoZtoHR3wOMhRVqlIKNYsAsAlZK04tyFQCTm+/AQtgWD6iBa/513WbqwejeGOdhQ2WgmWzKbztnCD
-	 TzdYkKSyzMw/6/jrW1U6MkpF2mU5FLxVeeCab+OWV7ibLYYGHjRitZaGOaf3ihppsFwFzlodbO+DW
-	 PuNSz2/mIRsBCN0ILzuSOg/jk8T/IC1KO4HPRv3umIPzdTdckDdK3YRxkalaXSXx2Ct1elM4o0x1n
-	 4dT6R25EcqP+tdxbFYXcufJxNC9ZayTv81l7T8f0i5zLYPGn+YhHFKoHRlDBW/KjEn0vlhbFBU3YW
-	 1UzpfmkhPFqISBmTzNdhj+LABVGB3VbChpsrc4vOkUpdpFdNZVEsoaa+ERi/WBet2OLL5ys2Fpru2
-	 +yk86PC2wSO9+jMfYPrY8t+ysB472iILL3XDrSRN2vPUbCYpGDcAL1ICyCmleWvy2Da7n
-From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
-To: "=?utf-8?B?5byg5pm0?=" <zhangqing@rock-chips.com>, "=?utf-8?B?U3RlcGhlbiBCb3lk?=" <sboyd@kernel.org>, "=?utf-8?B?QnJpYW4gTWFzbmV5?=" <bmasney+clk@redhat.com>, "=?utf-8?B?SmVyb21lIEJydW5ldA==?=" <jbrunet+clk@baylibre.com>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?UGhpbGlwcCBaYWJlbA==?=" <p.zabel@pengutronix.de>, "=?utf-8?B?UmljaGFyZCBDb2NocmFu?=" <richardcochran@gmail.com>
-Cc: "=?utf-8?B?bGludXgtY2xr?=" <linux-clk@vger.kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bmV0ZGV2?=" <netdev@vger.kernel.org>
-Subject: Re: [PATCH v3 3/3] clk: rockchip: Add RK3572 clock and reset support
+	id 1xLMb9-00000002l66-3i9B
+	for linux-rockchip@lists.infradead.org;
+	Mon, 26 Oct 2026 15:26:57 +0000
+Received: by mail-oi1-x22a.google.com with SMTP id 5614622812f47-539a57a0b1fso1167146b6e.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 26 Oct 2026 08:26:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1793028414; x=1793633214; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=bME5B1SZGTcUgMRsuT3S3lxxmltA7QzLm9Ooi2WbeZg=;
+        b=NRvOEepRMBDZ6gJq545206GcznyiH33t99wfIoDefuTBMBRIPcPqT+RGZHARXOaBgS
+         sdfhpjVCniHGOe9H+2+ZAOgXorrKlubvkKuvRtkXTi+lTKUih6HrBJXf1EOHlGu+tqjh
+         xFnBF0QrK0YAxWFWyetZoQ/9AYRf+tO5PEWes3foBpwNWAoxN1KdevO08r+C2R7Ot9CH
+         X/siCkagzl0a+WCf6ePgs7s7SOH760XFqICqj0E6mOwVRYcYz36wElpWBUIhB6gPfWPx
+         j2tAT/6MaLGHkHtPfIcO+Mwq+sWU+TyPTZEoNxWmxZY+f2/kFOnbD3wEs3gt0a4xNapN
+         5uow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793028414; x=1793633214;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=bME5B1SZGTcUgMRsuT3S3lxxmltA7QzLm9Ooi2WbeZg=;
+        b=IRs0urw2GlRrzvZIXvHw+h7WARfqv1bIrqdRPy4JVvD9PzJ0YvCDmm9KfMYJCsq0dL
+         h0p0zLb+FUM/pU8sOLFE36Pv3FfMvqCyYjZtmY9gOdSsIkzvkNLpMiMsFUO+/g9PmWbz
+         KsVc9qPOPnInWdyVXxYBtFeJUp1Fy5PxJGpAO4bScv8WgjSdO63A/SPVzB22i51Y/YsC
+         bA24+ZmGJGXedceiTfSbeklM9F3AMb/f4YoFdXac3G/ty2wZB0xFWHxmq7+nn+5hgSP8
+         S/0CqI8nDDDNvJ76nptgWPSL3up/mpNrLpgk6muf/umyZrlsqm0xL7Ot4BdyZV1bozPK
+         TLHQ==
+X-Gm-Message-State: AFq9FYJptR8DcXF315QtViUfuyZwjUOlhm2xSmoxy1scttoyg5umCH0j
+	0MKGIhNvJj9TB/EXX5/jB1G7MMQlmNKzhn5OK/X3gqHz5mEJBAFE3IZk8PdYUw==
+X-Gm-Gg: AYBFou0JCAJ78xvbdl+oZQqjlJ4ctaOE8vxnbeMLjwbSonvc76FHIamt2TuStfd4lwR
+	XinCUyz3EXpz1OONZSxH/tOpMjEqaklWCROjslp/jlRHGbPkfiPrZoY/CtI3f2U/CY0DfF83Fl/
+	bqQh8h4eoYXnukDYkCK0jzX/ARhaH8E5ULPPnkA794wg/O324xHSvOmcUI00yT9QP6E4BuIu7PS
+	yPz9hyCACGfeKN8LV5RUxM+/PGcreSai6sdcVDtw6giJDnKsJsvwZFEiwhBlD8T028j5NcwvbiV
+	ZlmgmHMrjyP3ABfRKIqBeomXb1t86xts1izzObDgmtYADmt7OwTokFUaLL8Ykfrat47Tklmpsmc
+	a14G8hWIG+7ICQ1dXRrmQrvDavl7u5sofF6e8zOubuPyusxXTH8TCGNF8Uq/z6fw90q3uwnoEBl
+	e6cEtOwzFJI1A6tGeJdHwB90EHR4C4tid5gHRXi8NJXcKfYreUOs3rYl2TufZVyxUQiXkwzGhxF
+	t6XxT6gL3gt92YLFXj8zZoiSPf1AjPjtubpWs/BxtRedRUFZ+5nWMPNBVDR8BzvKCWHAHE6WAZ5
+	pZaQnph2RULb5BTrCAVlYneN7wIQ3A==
+X-Received: by 2002:a05:6808:c3ea:b0:4b9:e5fa:8a17 with SMTP id 5614622812f47-55c002f98efmr4375364b6e.28.1793028413958;
+        Mon, 26 Oct 2026 08:26:53 -0700 (PDT)
+Received: from neuromancer ([75.28.21.198])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-55c0424973bsm5788711b6e.6.2026.10.26.08.26.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Oct 2026 08:26:52 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Add icm42607p IMU for RG-Vita-Pro
+Date: Mon, 26 Oct 2026 10:26:49 -0500
+Message-ID: <20261026152649.1576867-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.53.0
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0
-Date: Mon, 26 Oct 2026 22:56:06 +0800
-X-Priority: 3
-Message-ID: <tencent_6876096D2306016F88487E0E4D78345B3208@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-References: <20261026-add-board-ok3572-c-clk-v3-0-dbabfa39d692@qq.com>
- <20261026-add-board-ok3572-c-clk-v3-3-dbabfa39d692@qq.com>
-	<0d5de6fd-3150-4898-a652-7f5b64dcaf07@rock-chips.com>
-In-Reply-To: <0d5de6fd-3150-4898-a652-7f5b64dcaf07@rock-chips.com>
-X-QQ-mid: xmsezb41-0t1793026566tx8hx42zl
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261026_075617_056921_4A1E6A30 
-X-CRM114-Status: GOOD (  16.04  )
-X-Spam-Score: -1.8 (-)
+X-CRM114-CacheID: sfid-20261026_082655_932789_ED118DF9 
+X-CRM114-Status: GOOD (  10.62  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,82 +101,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi zhangqing,
+From: Chris Morgan <macromorgan@hotmail.com>
 
-> This is in clk.h, please submit it separately.
+Add the Invensense ICM42607P IMU for the Anbernic RG-DS. Mount-matrix
+was tested with iio-sensor-proxy and reports correct orientation.
+Orientation is relative to panel physical hardware which is rotated 270
+degrees in software.
 
-Thanks for the review. I will move COMPOSITE_MUXTBL to clk.h and add it
-in a separate preparatory patch.
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../dts/rockchip/rk3576-anbernic-rg-vita-pro.dts    | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-> This is incorrect here; there should be no negative values. Two's
-> complement is used here, so a conversion is needed. For example,
-> -12955 should be 52581.
->
-> In clk-pll.c, cur.k & BIT(15) is used to determine the two's complement
-> conversion.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts b/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
+index 358dea43f9b6..15d724b72ba1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
+@@ -819,7 +819,18 @@ regulator-state-mem {
+ &i2c2 {
+ 	status = "okay";
+ 
+-	/* inv,icm42607 IMU at 0x68 */
++	/*
++	 * Mount matrix relative to panel physical hardware which is
++	 * rotated 270 degrees.
++	 */
++
++	icm42607p: imu@68 {
++		compatible = "invensense,icm42607p";
++		reg = <0x68>;
++		mount-matrix = "0", "1", "0",
++			       "1", "0", "0",
++			       "0", "0", "-1";
++	};
+ };
+ 
+ &i2c3 {
+-- 
+2.53.0
 
-I agree that the hardware expects a 16-bit two's complement encoding:
--12955 is encoded as 0xcd65, which is 52581 when read as unsigned. The
-difference here is how that coefficient is represented in the rate
-table on the kernel version this series targets.
 
-I found the cur.k & BIT(15) branch in Rockchip's downstream develop-6.12
-tree. There, k is unsigned int, so the driver explicitly checks bit 15
-and subtracts the magnitude of a negative fractional coefficient.
-
-This series uses the upstream implementation. Both v2 and v3 are based
-on a804c5742bff, which already contains commit
-581478883477 ("clk: rockchip: Fractional PLL coefficient on RK3588/RK3576
-is two's complement"). That commit changed the k member of
-struct rockchip_pll_rate_table to:
-
-        s16 k; /* fractional part, 16 bit two's complement */
-
-On this base, rockchip_rk3588_pll_recalc_rate() uses signed arithmetic:
-
-        s64 frac_rate64 = (s64)prate * cur.k;
-        postdiv = cur.p * 65536;
-        rate64 += div_s64(frac_rate64, postdiv);
-
-The signed type represents the negative coefficient directly, so this
-implementation does not need a separate cur.k & BIT(15) branch. For
-example, the mainline RK3576 rate table already contains:
-
-        RK3588_PLL_RATE(955520000, 3, 478, 2, -15730),
-        RK3588_PLL_RATE(785560000, 3, 393, 2, -14419),
-
-These are exactly the same entries as in this RK3572 patch, including
-p, m and s. Mainline RK3588 uses the same entries as well. Since RK3572
-uses this shared upstream PLL implementation, I will follow the
-mainline RK3576 convention for its rate table.
-
-Writing 52581 directly into an s16 initializer would require an
-out-of-range implicit conversion; a reduced compiler test reproduces
-Clang's constant-conversion diagnostic. An explicit cast such as
-(s16)52581 would produce the same signed coefficient, but would add a
-conversion that the existing mainline tables avoid. Using -12955
-directly makes the value used in the rate calculation clear and stays
-consistent with RK3576.
-
-The register encoding is preserved: the write path passes k through
-HIWORD_UPDATE() with a 0xffff mask, so -12955 still writes 0xcd65 into
-the coefficient field. The five initializer changes from v2 to v3 only
-make the signed values explicit; they do not change p, m, s or the
-16-bit coefficient encodings. In particular, no further adjustment of
-m is needed for these representation changes.
-
-I will therefore retain the signed coefficients, following mainline
-RK3576.
-
-Best regards,
-Cunhao
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
