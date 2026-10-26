@@ -2,172 +2,66 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B2F94606A31D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2026 16:39:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F3AD7606A32F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2026 17:25:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WdCfwVNA;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=NXP1.onmicrosoft.com header.i=@NXP1.onmicrosoft.com header.a=rsa-sha256 header.s=selector1-NXP1-onmicrosoft-com header.b=PhMPCZKC
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=j+RAZO06;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=EuQoFvcT
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=MdBkI6vNGAifY/IYvSwhpNufviQ0d5MhR0oZ3Tiu/hg=; b=WdCfwVNAhzhV3Gm4dpAkKwVQrz
-	Tm87Xq3PZW9A89o2I6SazxdRhc3PPG7cRpBej5j8dMdS/4jOpqnqlfuf7Ou8FlZdKPdMcnkxcCW1s
-	ZGVtDPSlfI5lawj3qyEDvomgVLK5nVLaKPRArILBXLBik6VnR8ff5Vc1vhxuEOMJIRRQ7Msa0dgBP
-	VANBosWKDuL3gNuxVjznTWKRuXdmUDr0Iv/HeQ3lC2K4v4q0LvcuWJBFGkd81wFluOy0G1wEF/eBJ
-	CsiNTJyP5mu7rPxwnzsh9zKZrru+MN3tXOJwop/id5olYiTEd+E8jYy7Oagb2AtlhSX/q8fSDiWGj
-	LYUBTgVw==;
+	bh=y1vFw8rWZjriKlgKhjVVx/jBLKmTmeo0AHQk5nixZ9g=; b=j+RAZO065EJfDyCFbo1BnTOcwc
+	trf8Iylz7GdRWnC8sg0Ks9euXDFjZ3bU38hMDAZBdaI6F4W7bjj6whJ8kNfFpO/+4H2t4Os8lvmiv
+	DyLh2qCOpBcjWwWL3IlGOhB0KOHhrwzX5X1iyFXX0uw3J2/CwYYyJ58wdW3folaLmCXIoXniINrUM
+	3CXWaEFjYol2jiJJ8Q1h4ofGdRrL1wLwG++NWObB2CX7aBXbfzjZDd0fq1DSZStC1Tq0ky9pulelW
+	JZi2s5owpYxywyQBPZi1jLjy2SUwDz2ZbjyCsL/MgdJwvO/bb9dw8eiEWkk6vyqV2jX5zuMWWQlpN
+	+0vVc2NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLNjD-00000002u23-32mE;
-	Mon, 26 Oct 2026 16:39:19 +0000
-Received: from mail-francecentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20a::7] helo=PA4PR04CU001.outbound.protection.outlook.com)
+	id 1xLOS3-00000002yuH-0dx3;
+	Mon, 26 Oct 2026 17:25:39 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLNjA-00000002u1G-3V7Q;
-	Mon, 26 Oct 2026 16:39:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=bnC5XS55QxBVUtdyD1OT/KgJyw9TppX3QWL9Ftwlx/N1JAwFysbaebzNGZ9WdQ8R2mHgzk0UDO7U+L4AnqBVX8QVolfU72N+Q0ad1GDs5jOqiayuW/kjh1QOqStNFJfrYaM1ImIPLVH5nXB6m7l5Q2SNS9KJJhbhqKe9m82XxZ9rAaDjV5wY8mrvvNhHCM1FnfaHPmaroTpyeprbFa3qXOHgiJX6hiC0SHg1FPIK1MHW4mq4Tq09F5g7DBGnKw0TGjpOoONgNu9YOu1MEXxnag5bfQzuZkL3JPWNOUcN3s+otjkzhPMx5dJajw0OU44NQs6J++TG84CviuZzdIvK8w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WxZSarhcF7uEiNtUsNT1QpnEdNvxeem7zxUA/WOdbWE=;
- b=rpc1nKvch8rcOjh1h2BcHMxJ4ZUcyu+k3kaMRb00VlhR3wL1URaQn+USzjkotm+9aI9A1Rp+JkkKjDckdox1GiV4IoRvbtSCvjVTbxXYOTtzRkWda7u0V7eihALDdNS33ldi+Rk0Io/oNKxVvEEdCL+ywESvZ5rjYCY5Q0fm50HV4HWd5iR0QFCOT1AhCrR4qoDaHA2zSBkZ2NTic8QFcGitNsRpJiuA6vdqW1lb8Kwkw8CdIxi997kKQS/uDY408OTUyjh7QO6aimCy68lVKkf6P1nQH0WqqqtCHYMV5yWlohPe3YDxWSSoyUHblTyDfQW9b2pGihHkew4YkyvIgA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WxZSarhcF7uEiNtUsNT1QpnEdNvxeem7zxUA/WOdbWE=;
- b=PhMPCZKCP6PZrQ17OMhfDwq7/A7gcsAP9FRIOn9wgzSIXgOanVxtjukfYvA5QHYYFbee8W+yA7un5erkdcMMzU5QZxy4/8wkQZsX5cYalrwHeJvfgXbJ8GaKerWd8ibRPxHNz2YuT75w14v+coBm0SIz/JqoDKlqBv2jZ0aBgBmBkNona1wKvmf0Kr/pm4zSyXItmDT+aXC3QBW2KIgSS9YRnPZJemXobo788GO3k1f5qRG/fY/7WHvtmqChdslRDU0JMfwfmve1HGOAWu6+hWBmRDkmlqJc/IdN8RRRvkwcNILgHW6GeKWNFL4x6uaXNgoAxNgb15BtPv1nHAGhdg==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com (2603:10a6:290:76::14)
- by VI0PR04MB10140.eurprd04.prod.outlook.com (2603:10a6:800:246::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.546.22; Mon, 26 Oct
- 2026 16:39:06 +0000
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b]) by MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b%6]) with mapi id 15.21.0546.021; Mon, 26 Oct 2026
- 16:39:06 +0000
-Date: Mon, 26 Oct 2026 11:38:49 -0500
-From: Frank Li <Frank.li@oss.nxp.com>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-Cc: Linus Walleij <linusw@kernel.org>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	Andy Shevchenko <andy@kernel.org>, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, Yang Shen <shenyang39@huawei.com>,
-	Lixu Zhang <lixu.zhang@intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
-	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, Imre Kaloz <kaloz@kernel.org>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Valentina Fernandez <valentina.fernandezalanis@microchip.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Daniel Palmer <daniel@thingy.jp>,
-	Romain Perier <romain.perier@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	Hoan Tran <hoan@os.amperecomputing.com>,
-	Alan Borzeszkowski <alan.borzeszkowski@linux.intel.com>,
-	Mika Westerberg <westeri@kernel.org>,
-	Israel Cepeda <israel.a.cepeda.lopez@intel.com>,
-	Hans de Goede <hansg@kernel.org>,
-	Matti Vaittinen <mazziesaccount@gmail.com>,
-	"Enrico Weigelt, metux IT consult" <info@metux.net>,
-	Viresh Kumar <vireshk@kernel.org>, virtualization@lists.linux.dev,
-	Yinbo Zhu <zhuyinbo@loongson.cn>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Srinivas Neeli <srinivas.neeli@amd.com>,
-	Michal Simek <michal.simek@amd.com>, linux-aspeed@lists.ozlabs.org,
-	asahi@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	openbmc@lists.ozlabs.org, linux-omap@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org, linux-unisoc@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Michael Buesch <m@bues.ch>, William Breathitt Gray <wbg@kernel.org>,
-	Robert Richter <rric@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	linux-acpi@vger.kernel.org
-Subject: Re: [PATCH v3 00/22] gpio: Improvements around device-id arrays
-Message-ID: <at-CGVq5jVsMQief@SMW015318>
-References: <cover.1793030820.git.u.kleine-koenig@baylibre.com>
-Content-Disposition: inline
-In-Reply-To: <cover.1793030820.git.u.kleine-koenig@baylibre.com>
-X-ClientProxiedBy: DS1PR03CA0015.namprd03.prod.outlook.com
- (2603:10b6:8:233::10) To MI3PR04MB12438.eurprd04.prod.outlook.com
- (2603:10a6:290:76::14)
+	id 1xLORz-00000002ys1-3J3z;
+	Mon, 26 Oct 2026 17:25:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=buxG7wzvUrhysQ03B60L3jHsDzOHP1rRWLo5WHGJFa8=; b=EuQoFvcTmdF1MqhFINMp9kW4jn
+	j4134NOWSe6VQzg3ql4+9o6rRcYSKwYYS+jPZIJDAJcUNXEAG79n6U7S60Ewwx/eKpabnRmMsKd95
+	Uox2Wg7cZpNtvz1ZLGryqszWJ55+zPphKeoxIpSvElwfFvPlct1yjlrQzZ00VsB5jIMbYhnPtvbvW
+	rbuGFvT9yBMLmTOYzxWtlcFUXZIes9qbDoSYCgPoenq9R+Mw7mNLwWuJ1Aspw1qme0grL2SmA8VJR
+	Slv8bT7AHy09dEp/4zcbR7u5Qak62kGVUiFeySL1koTWdBHd5D7RuoxGxLecrCkU8+2z2nceTcPDw
+	xB03/g7w==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: =?UTF-8?B?5byg5pm0?= <zhangqing@rock-chips.com>,
+ Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
+ Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Richard Cochran <richardcochran@gmail.com>, Cunhao Lu <1579567540@qq.com>
+Cc: linux-clk <linux-clk@vger.kernel.org>,
+ devicetree <devicetree@vger.kernel.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-rockchip <linux-rockchip@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>, netdev <netdev@vger.kernel.org>
+Subject: Re: [PATCH v3 3/3] clk: rockchip: Add RK3572 clock and reset support
+Date: Mon, 26 Oct 2026 18:25:14 +0100
+Message-ID: <3062797.SvYEEZNnvj@diego>
+In-Reply-To: <tencent_6876096D2306016F88487E0E4D78345B3208@qq.com>
+References: <20261026-add-board-ok3572-c-clk-v3-0-dbabfa39d692@qq.com>
+ <0d5de6fd-3150-4898-a652-7f5b64dcaf07@rock-chips.com>
+ <tencent_6876096D2306016F88487E0E4D78345B3208@qq.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MI3PR04MB12438:EE_|VI0PR04MB10140:EE_
-X-MS-Office365-Filtering-Correlation-Id: cc32ed66-1b3c-496b-47e1-08df337fa6df
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|23010399003|376014|1800799024|19092799006|366016|261026140227099003|260925022911599003|260925021911599003|260925021311599003|56012099006|11063799006|5023799004|261009223027099003|261022075727099003|261021121427099003|261022105027099003|10067099003|261026121527099003|18002099003|22082099003|41080700001;
-X-Microsoft-Antispam-Message-Info: TzsjTWC9ZLj+LVZmfIQKqr/h8gO8GiStteVQR5dMSF572EQcie+0+dkxU84Myl8P2ZEOSvfzB905POP9L7qs6y42KOMKNp1xAvfqJScgIyDlLSr/EZpaa9oywDXf38LsLoX8XxBO5FQ5bdco1XrhnMNfODeAXzmUIxfoHcSieUlhg4DkifiD7RSfOl0N0LTFM4EFt/q/eVDw4OV02DqVo9YyuvKLfaTg5ZhodOCJiGut5zxJ3ioAkwc8+En6KRG1sHIf0cr7g5bz82TC9ZsaorqlvTTG4obVs0JXpVfDgiWkFNSS3ezjFb++WrI3n8T37V6UaZdBZFm0ZvvStM5RLmF1p/JRcr2mr8EbTf7GnAe7UfDijfB7o1iuawpPAxDwqB86TAjrTDiRo5Y6f++g38S6Y/2y6tDrPHyKKWJ7NLncNy+fbykywyufoSyibicOU5JyhLy1lRRR2B8/LHH5QKYLoU3r6ljllXBXa3+MpzKFFaycB9QFtcnGJZ3cSxkt8gDR7uoZwJQZZ5WfCnsbpsiP18WQp0wtWBnvKmAuFzp88NSFSv3fQoswfeJdegBljE6MfhBlDyYxFu4SSAAnKzdPa4KqfNk243Al89wFMwW+CG/alF3X0ZH3KxWEkhksuXkuoT2rkg5xs7JFbAxSKxkt8vTNhZd6uqJhijf/KFM=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MI3PR04MB12438.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(23010399003)(376014)(1800799024)(19092799006)(366016)(261026140227099003)(260925022911599003)(260925021911599003)(260925021311599003)(56012099006)(11063799006)(5023799004)(261009223027099003)(261022075727099003)(261021121427099003)(261022105027099003)(10067099003)(261026121527099003)(18002099003)(22082099003)(41080700001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?kOxvwXleufIgI4BGstiJTXJoW7NhnFnGxjKALhwVd5w8ceBRLFqiAyEfy4?=
- =?iso-8859-1?Q?ZXi5r/f+v1+d7+sQUlkQYraFq4zBBxLaYjwgV0e1S4QtdAls4SnsADGX81?=
- =?iso-8859-1?Q?FV8G7Ylu+ODVWbkCHflkS/i6LZ5IoNuY3SeF88uC3H5EdezkW36tBMgNF0?=
- =?iso-8859-1?Q?TzKtPwel++0KIdTzH4Yzcew0sTaq3DwWxfT7doua+nQyWZ4iJzZAZw0BDy?=
- =?iso-8859-1?Q?5cxdxeOBjmDaYIWKSiuancWxofOPuKnor4skwYjFcI/vQRR2nSGIomoiJt?=
- =?iso-8859-1?Q?8mlOEITVC9N9t2C1nR7iPLIHJEI12mtuveYg0OOsBNPYwCPdaOvmmh5TDh?=
- =?iso-8859-1?Q?zp1eNAfX88IySSQTSOQ3Tt8PhoWnZXdbjcBEUejQnN6WgFKbUss0NoGI73?=
- =?iso-8859-1?Q?33TcJaPjgPdia6eyEzjYlI/pzW+F0Yen8oNq1TnBCdJZIXkZyTjU+bt1CM?=
- =?iso-8859-1?Q?Q3igtlMgnrz6z8DZjOiXL08W+gYZGfQzkN8S8aCzxPKpJoTYnkxlugSALG?=
- =?iso-8859-1?Q?BGPYjcAkwHO/dJqaAb0pOwqJQhUerKnfzmIC086LNIkD7Rap1cfsk+R7R9?=
- =?iso-8859-1?Q?mZwo+9zjB7/lTRd4ePKduwevLJvCaIc43MthnZvsbjbboiQWqGTfklJ//I?=
- =?iso-8859-1?Q?wecdzNgLaU94daPwLWOTj01KDvtJ2mUunpBO2Md+ZtyuryMBPL6/KOXF1e?=
- =?iso-8859-1?Q?oF1nSsDkJsA3Fr4D6AK9gAo7A+2LVpyI9Fc2aPpqo0oorkTRmXUXkO3iwb?=
- =?iso-8859-1?Q?23X4LW8wtX8KjxVw7tgIJ8dEYzL+4mg5dD82cdUS5STCvqgFzmEPwAYBM/?=
- =?iso-8859-1?Q?S/C1uvZmn6XKNcdgQBeBQZEOT1bcabb9KpQzFkJQETZbfchrxlvm99X/cZ?=
- =?iso-8859-1?Q?wwSnUhRo1TvD3Jqds0HVqfm1sDqVIheorLBAy/CwqtAJUv11q3NR5ufFYi?=
- =?iso-8859-1?Q?AgTKPtL8fF+nf3x+cRnAM10Cgdy6vjhUxvwHmWVKdz3zgJZgGAJFDURCFX?=
- =?iso-8859-1?Q?pdH5NTh2dkn7ztqePhlEs56Rf4dnh9ppluxc9fDDXa9bwJhlPXNf8vg8dp?=
- =?iso-8859-1?Q?M5s2LjTZ/kU+etUNXcqSh2+LYkWKJWowREJhVnugq1ATreJIOrkNhyYvo7?=
- =?iso-8859-1?Q?gWEHpi0cEcZ2Vrh7Zqvl/fa/lXDAF5CQQps5EZNJWLuzcTKR6Z+eo4R1us?=
- =?iso-8859-1?Q?mUzK5kA1dkVRz29aihUjxNFqgCCHeP0t7Yu6VCLACZS8fyAVMwnSMg/eOk?=
- =?iso-8859-1?Q?p19Nvn3DuNZrxixBw3VNk4Hx9IUcI3YagaYGx2tXQbilhZgsyz7FLOEwls?=
- =?iso-8859-1?Q?7vCAzW/Mqt6+5a4tjCGF+3Gsfy3PROC5GQ2DRi4aRwOJGaiQbFsCOAmJY2?=
- =?iso-8859-1?Q?D8YdS28x5GQD6g7N/+SQNDJTgOiR8NYXh24r+QQYC2I66oOXaNuGQDsU61?=
- =?iso-8859-1?Q?V//UNVD/u926Kp1F0tiobI3sjdYVr3yh/CvtVq1qdSd5gkTiHTNjgcqe0B?=
- =?iso-8859-1?Q?jzsAed7oCQI7hPZYgsCJcj/mFFYpEonh62VDtwAK25uF6nvIBnimMQM1Ht?=
- =?iso-8859-1?Q?hFSJpsuv4T73CoCCHB518q5xfVoBQLF2JyjHKzdCgMTP+UR+A2VEHo1W94?=
- =?iso-8859-1?Q?ZbnMVGtgKUd0FapU49yylpY48gmK/VeymrJfSQt/9d+zDIp85EJo8Q77fS?=
- =?iso-8859-1?Q?Et05YtXGiRkJ4QYCBfZHPr+panf9jYjJYht7lImY16F7nBEOYSz8/LNf4K?=
- =?iso-8859-1?Q?xcPRuuxNrHMXEtKg9DW+W+ys/NkiF56KezHwzM9CZm1MQbQYc+thlZGFme?=
- =?iso-8859-1?Q?0X3muI+J5uzt9XSVh6ZaRkekYLTGDgc7v07wSjKhFPZJi/TOwsn8?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cc32ed66-1b3c-496b-47e1-08df337fa6df
-X-MS-Exchange-CrossTenant-AuthSource: MI3PR04MB12438.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Oct 2026 16:39:06.5244
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 6sZRTz0pVhFlSF7EBVyQ+dtCHOlp//kUVETNITxzHc+vCv1CCg0ehPm3leCM5D+UYUddqkWOot6igMD9LV/kAZaFgwYP/nx3hhdmAbPYpJniEz6DJle+GpjlcQoTee3g
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR04MB10140
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261026_093917_041753_731EDC2C 
-X-CRM114-Status: GOOD (  23.00  )
-X-Spam-Score: 0.2 (/)
+X-CRM114-CacheID: sfid-20261026_102535_875294_EF2837E6 
+X-CRM114-Status: GOOD (  22.01  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -177,149 +71,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Oct 26, 2026 at 05:28:11PM +0100, Uwe Kleine-K=F6nig (The Capable H=
-ub) wrote:
-> Hello,
->
-> as with v1 and v2 the original motivation for this series are the
-> patches that convert the arrays to use named initializers, see
-> https://lore.kernel.org/all/cover.1780048925.git.u.kleine-koenig@baylibre=
-.com/
-> for the idea behind it. Then by not closing the eyes for small issues
-> spotted while working on that, this series grew a bit.
->
-> Changes since v2 (available at
-> https://lore.kernel.org/all/cover.1784133987.git.u.kleine-koenig@baylibre=
-.com/)
->
->  - Rebase to current next/master (new changes to
->    drivers/gpio/gpio-mlxbf.c, drivers/gpio/gpio-mlxbf2.c,
->    drivers/gpio/gpio-74x164.c)
->  - Fix a few commit logs to reference the right *_device_id names
->  - Drop all tags for Andy
->  - Drop a questionable MODULE_DEVICE_TABLE(acpi, ...) for drivers/gpio/gp=
-io-usbio.c
->
-> Checkpatch only reports two undocumented device-tree compatibles:
->
-> 	WARNING: DT compatible string "apm,xgene-gpio-v2" appears un-documented =
--- check ./Documentation/devicetree/bindings/
-> 	WARNING: DT compatible string "marvell,pxa1928-gpio" appears un-document=
-ed -- check ./Documentation/devicetree/bindings/
->
-> I felt free to ignore these as this is a pre-existing issue and
-> out-of-context for this series.
->
-> Andy didn't like how this series is split into patches before, I do. I
-> think it's not possible to please everyone's opinion regarding minimal
-> changes per patch vs grouping similar changes in patches and about what
-> is considered churn. I'm happy about every patch in this series that
-> goes in, so feel free to apply patches that you like and that don't get
-> resistance even if other's do. If patches don't apply, just drop them,
-> I'll catch up on them eventually.
->
-> Best regards
-> Uwe
->
-> Uwe Kleine-K=F6nig (The Capable Hub) (22):
->   gpio: Remove __maybe_unused annotations from acpi_device_id arrays
->   gpio: fxl6408: Remove __maybe_unused annotations from of_device_id
->     array
->   gpio: Drop unused assignment of acpi_device_id driver data
->   gpio: max7301: Drop unused assignment of spi_device_id driver data
->   gpio: mmio: Drop unused assignment of platform_device_id driver data
->   gpio: ljca: Drop unused assignment of auxiliary_device_id driver data
->   gpio: xgene: Add missing ACPI module annotation
->   gpio: sodaville: Add missing PCI module annotations
->   gpio: Add missing OF module annotations
->   gpio: pxa: Add missing platform module annotations
->   gpio: pl061: Use empty initializer for amba_id terminator
->   gpio: Use named initializers for acpi_device_id array
->   gpio: pcf857x: Use named initializers for of_device_id array
->   gpio: bd73800: Use named initializers for platform_device_id array
->   gpio: Use named initializers for spi_device_id array
->   gpio: virtio: Use a named initializer for virtio_device_id array
->   gpio: Unify style of acpi_device_id arrays
->   gpio: Unify style of of_device_id arrays
->   gpio: max77620: Unify style of platform_device_id array
->   gpio: Unify style of spi_device_id arrays
->   gpio: Unify style of pci_device_id arrays
->   gpio: Unify style of various *_device_id arrays
->
->  drivers/gpio/gpio-74x164.c          |  4 ++--
->  drivers/gpio/gpio-adnp.c            |  4 ++--
->  drivers/gpio/gpio-aggregator.c      |  2 +-
->  drivers/gpio/gpio-altera-a10sr.c    |  2 +-
->  drivers/gpio/gpio-altera.c          |  4 ++--
->  drivers/gpio/gpio-amd8111.c         |  2 +-
->  drivers/gpio/gpio-amdpt.c           |  8 ++++----
->  drivers/gpio/gpio-aspeed-sgpio.c    | 10 ++++-----
->  drivers/gpio/gpio-aspeed.c          | 10 ++++-----
->  drivers/gpio/gpio-ath79.c           |  2 +-
->  drivers/gpio/gpio-bcm-kona.c        |  1 +
->  drivers/gpio/gpio-bd73800.c         |  4 ++--
->  drivers/gpio/gpio-blzp1600.c        |  4 ++--
->  drivers/gpio/gpio-brcmstb.c         |  2 +-
->  drivers/gpio/gpio-bt8xx.c           |  2 +-
->  drivers/gpio/gpio-cadence.c         |  6 +++---
->  drivers/gpio/gpio-creg-snps.c       |  5 +++--
->  drivers/gpio/gpio-davinci.c         |  8 ++++----
->  drivers/gpio/gpio-dwapb.c           | 14 ++++++-------
->  drivers/gpio/gpio-em.c              |  4 ++--
->  drivers/gpio/gpio-ep93xx.c          |  1 +
->  drivers/gpio/gpio-ftgpio010.c       |  3 ++-
->  drivers/gpio/gpio-fxl6408.c         |  2 +-
->  drivers/gpio/gpio-graniterapids.c   |  4 ++--
->  drivers/gpio/gpio-grgpio.c          |  2 +-
->  drivers/gpio/gpio-gw-pld.c          |  4 ++--
->  drivers/gpio/gpio-hisi.c            |  6 +++---
->  drivers/gpio/gpio-hlwd.c            |  4 ++--
->  drivers/gpio/gpio-imx-scu.c         |  1 +
->  drivers/gpio/gpio-ixp4xx.c          |  4 ++--
->  drivers/gpio/gpio-ljca.c            |  4 ++--
->  drivers/gpio/gpio-loongson-64bit.c  |  4 ++--
->  drivers/gpio/gpio-lp3943.c          |  2 +-
->  drivers/gpio/gpio-lpc32xx.c         |  4 ++--
->  drivers/gpio/gpio-macsmc.c          |  4 ++--
->  drivers/gpio/gpio-max3191x.c        | 12 +++++------
->  drivers/gpio/gpio-max7301.c         |  2 +-
->  drivers/gpio/gpio-max7360.c         |  8 ++++----
->  drivers/gpio/gpio-max77620.c        |  4 ++--
->  drivers/gpio/gpio-max77759.c        |  2 +-
->  drivers/gpio/gpio-mb86s7x.c         |  2 +-
->  drivers/gpio/gpio-ml-ioh.c          |  2 +-
->  drivers/gpio/gpio-mlxbf.c           |  6 +++---
->  drivers/gpio/gpio-mlxbf2.c          |  6 +++---
->  drivers/gpio/gpio-mlxbf3.c          |  4 ++--
->  drivers/gpio/gpio-mm-lantiq.c       |  2 +-
->  drivers/gpio/gpio-mmio.c            |  3 +--
->  drivers/gpio/gpio-mockup.c          |  4 ++--
->  drivers/gpio/gpio-moxtet.c          |  4 ++--
->  drivers/gpio/gpio-mpc5200.c         |  9 ++++----
->  drivers/gpio/gpio-mpc8xxx.c         | 25 +++++++++++-----------
->  drivers/gpio/gpio-mpfs.c            |  1 +
->  drivers/gpio/gpio-mpsse.c           |  3 +--
->  drivers/gpio/gpio-msc313.c          |  1 +
->  drivers/gpio/gpio-mt7621.c          |  2 +-
->  drivers/gpio/gpio-mvebu.c           | 13 ++++++------
->  drivers/gpio/gpio-mxc.c             |  2 +-
->  drivers/gpio/gpio-mxs.c             |  4 ++--
-
-For all imx part:
-
-Acked-by: Frank Li <Frank.Li@nxp.com>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTW9udGFnLCAyNi4gT2t0b2JlciAyMDI2LCAxNTo1NjowNiBNaXR0ZWxldXJvcMOkaXNjaGUg
+Tm9ybWFsemVpdCBzY2hyaWViIEN1bmhhbyBMdToKPiBIaSB6aGFuZ3FpbmcsCj4gCj4gPiBUaGlz
+IGlzIGluIGNsay5oLCBwbGVhc2Ugc3VibWl0IGl0IHNlcGFyYXRlbHkuCj4gCj4gVGhhbmtzIGZv
+ciB0aGUgcmV2aWV3LiBJIHdpbGwgbW92ZSBDT01QT1NJVEVfTVVYVEJMIHRvIGNsay5oIGFuZCBh
+ZGQgaXQKPiBpbiBhIHNlcGFyYXRlIHByZXBhcmF0b3J5IHBhdGNoLgo+IAo+ID4gVGhpcyBpcyBp
+bmNvcnJlY3QgaGVyZTsgdGhlcmUgc2hvdWxkIGJlIG5vIG5lZ2F0aXZlIHZhbHVlcy4gVHdvJ3MK
+PiA+IGNvbXBsZW1lbnQgaXMgdXNlZCBoZXJlLCBzbyBhIGNvbnZlcnNpb24gaXMgbmVlZGVkLiBG
+b3IgZXhhbXBsZSwKPiA+IC0xMjk1NSBzaG91bGQgYmUgNTI1ODEuCj4gPgo+ID4gSW4gY2xrLXBs
+bC5jLCBjdXIuayAmIEJJVCgxNSkgaXMgdXNlZCB0byBkZXRlcm1pbmUgdGhlIHR3bydzIGNvbXBs
+ZW1lbnQKPiA+IGNvbnZlcnNpb24uCj4gCj4gSSBhZ3JlZSB0aGF0IHRoZSBoYXJkd2FyZSBleHBl
+Y3RzIGEgMTYtYml0IHR3bydzIGNvbXBsZW1lbnQgZW5jb2Rpbmc6Cj4gLTEyOTU1IGlzIGVuY29k
+ZWQgYXMgMHhjZDY1LCB3aGljaCBpcyA1MjU4MSB3aGVuIHJlYWQgYXMgdW5zaWduZWQuIFRoZQo+
+IGRpZmZlcmVuY2UgaGVyZSBpcyBob3cgdGhhdCBjb2VmZmljaWVudCBpcyByZXByZXNlbnRlZCBp
+biB0aGUgcmF0ZQo+IHRhYmxlIG9uIHRoZSBrZXJuZWwgdmVyc2lvbiB0aGlzIHNlcmllcyB0YXJn
+ZXRzLgo+IAo+IEkgZm91bmQgdGhlIGN1ci5rICYgQklUKDE1KSBicmFuY2ggaW4gUm9ja2NoaXAn
+cyBkb3duc3RyZWFtIGRldmVsb3AtNi4xMgo+IHRyZWUuIFRoZXJlLCBrIGlzIHVuc2lnbmVkIGlu
+dCwgc28gdGhlIGRyaXZlciBleHBsaWNpdGx5IGNoZWNrcyBiaXQgMTUKPiBhbmQgc3VidHJhY3Rz
+IHRoZSBtYWduaXR1ZGUgb2YgYSBuZWdhdGl2ZSBmcmFjdGlvbmFsIGNvZWZmaWNpZW50Lgo+IAo+
+IFRoaXMgc2VyaWVzIHVzZXMgdGhlIHVwc3RyZWFtIGltcGxlbWVudGF0aW9uLiBCb3RoIHYyIGFu
+ZCB2MyBhcmUgYmFzZWQKPiBvbiBhODA0YzU3NDJiZmYsIHdoaWNoIGFscmVhZHkgY29udGFpbnMg
+Y29tbWl0Cj4gNTgxNDc4ODgzNDc3ICgiY2xrOiByb2NrY2hpcDogRnJhY3Rpb25hbCBQTEwgY29l
+ZmZpY2llbnQgb24gUkszNTg4L1JLMzU3Ngo+IGlzIHR3bydzIGNvbXBsZW1lbnQiKS4gVGhhdCBj
+b21taXQgY2hhbmdlZCB0aGUgayBtZW1iZXIgb2YKPiBzdHJ1Y3Qgcm9ja2NoaXBfcGxsX3JhdGVf
+dGFibGUgdG86Cj4gCj4gICAgICAgICBzMTYgazsgLyogZnJhY3Rpb25hbCBwYXJ0LCAxNiBiaXQg
+dHdvJ3MgY29tcGxlbWVudCAqLwo+IAo+IE9uIHRoaXMgYmFzZSwgcm9ja2NoaXBfcmszNTg4X3Bs
+bF9yZWNhbGNfcmF0ZSgpIHVzZXMgc2lnbmVkIGFyaXRobWV0aWM6Cj4gCj4gICAgICAgICBzNjQg
+ZnJhY19yYXRlNjQgPSAoczY0KXByYXRlICogY3VyLms7Cj4gICAgICAgICBwb3N0ZGl2ID0gY3Vy
+LnAgKiA2NTUzNjsKPiAgICAgICAgIHJhdGU2NCArPSBkaXZfczY0KGZyYWNfcmF0ZTY0LCBwb3N0
+ZGl2KTsKPiAKPiBUaGUgc2lnbmVkIHR5cGUgcmVwcmVzZW50cyB0aGUgbmVnYXRpdmUgY29lZmZp
+Y2llbnQgZGlyZWN0bHksIHNvIHRoaXMKPiBpbXBsZW1lbnRhdGlvbiBkb2VzIG5vdCBuZWVkIGEg
+c2VwYXJhdGUgY3VyLmsgJiBCSVQoMTUpIGJyYW5jaC4gRm9yCj4gZXhhbXBsZSwgdGhlIG1haW5s
+aW5lIFJLMzU3NiByYXRlIHRhYmxlIGFscmVhZHkgY29udGFpbnM6Cj4gCj4gICAgICAgICBSSzM1
+ODhfUExMX1JBVEUoOTU1NTIwMDAwLCAzLCA0NzgsIDIsIC0xNTczMCksCj4gICAgICAgICBSSzM1
+ODhfUExMX1JBVEUoNzg1NTYwMDAwLCAzLCAzOTMsIDIsIC0xNDQxOSksCj4gCj4gVGhlc2UgYXJl
+IGV4YWN0bHkgdGhlIHNhbWUgZW50cmllcyBhcyBpbiB0aGlzIFJLMzU3MiBwYXRjaCwgaW5jbHVk
+aW5nCj4gcCwgbSBhbmQgcy4gTWFpbmxpbmUgUkszNTg4IHVzZXMgdGhlIHNhbWUgZW50cmllcyBh
+cyB3ZWxsLiBTaW5jZSBSSzM1NzIKPiB1c2VzIHRoaXMgc2hhcmVkIHVwc3RyZWFtIFBMTCBpbXBs
+ZW1lbnRhdGlvbiwgSSB3aWxsIGZvbGxvdyB0aGUKPiBtYWlubGluZSBSSzM1NzYgY29udmVudGlv
+biBmb3IgaXRzIHJhdGUgdGFibGUuCj4gCj4gV3JpdGluZyA1MjU4MSBkaXJlY3RseSBpbnRvIGFu
+IHMxNiBpbml0aWFsaXplciB3b3VsZCByZXF1aXJlIGFuCj4gb3V0LW9mLXJhbmdlIGltcGxpY2l0
+IGNvbnZlcnNpb247IGEgcmVkdWNlZCBjb21waWxlciB0ZXN0IHJlcHJvZHVjZXMKPiBDbGFuZydz
+IGNvbnN0YW50LWNvbnZlcnNpb24gZGlhZ25vc3RpYy4gQW4gZXhwbGljaXQgY2FzdCBzdWNoIGFz
+Cj4gKHMxNik1MjU4MSB3b3VsZCBwcm9kdWNlIHRoZSBzYW1lIHNpZ25lZCBjb2VmZmljaWVudCwg
+YnV0IHdvdWxkIGFkZCBhCj4gY29udmVyc2lvbiB0aGF0IHRoZSBleGlzdGluZyBtYWlubGluZSB0
+YWJsZXMgYXZvaWQuIFVzaW5nIC0xMjk1NQo+IGRpcmVjdGx5IG1ha2VzIHRoZSB2YWx1ZSB1c2Vk
+IGluIHRoZSByYXRlIGNhbGN1bGF0aW9uIGNsZWFyIGFuZCBzdGF5cwo+IGNvbnNpc3RlbnQgd2l0
+aCBSSzM1NzYuCj4gCj4gVGhlIHJlZ2lzdGVyIGVuY29kaW5nIGlzIHByZXNlcnZlZDogdGhlIHdy
+aXRlIHBhdGggcGFzc2VzIGsgdGhyb3VnaAo+IEhJV09SRF9VUERBVEUoKSB3aXRoIGEgMHhmZmZm
+IG1hc2ssIHNvIC0xMjk1NSBzdGlsbCB3cml0ZXMgMHhjZDY1IGludG8KPiB0aGUgY29lZmZpY2ll
+bnQgZmllbGQuIFRoZSBmaXZlIGluaXRpYWxpemVyIGNoYW5nZXMgZnJvbSB2MiB0byB2MyBvbmx5
+Cj4gbWFrZSB0aGUgc2lnbmVkIHZhbHVlcyBleHBsaWNpdDsgdGhleSBkbyBub3QgY2hhbmdlIHAs
+IG0sIHMgb3IgdGhlCj4gMTYtYml0IGNvZWZmaWNpZW50IGVuY29kaW5ncy4gSW4gcGFydGljdWxh
+ciwgbm8gZnVydGhlciBhZGp1c3RtZW50IG9mCj4gbSBpcyBuZWVkZWQgZm9yIHRoZXNlIHJlcHJl
+c2VudGF0aW9uIGNoYW5nZXMuCj4gCj4gSSB3aWxsIHRoZXJlZm9yZSByZXRhaW4gdGhlIHNpZ25l
+ZCBjb2VmZmljaWVudHMsIGZvbGxvd2luZyBtYWlubGluZQo+IFJLMzU3Ni4KCkkgZGVmaW5pdGx5
+IGFncmVlLiBGb3IgcmVmZXJlbmNlIHRoZSBjb21taXQgZml4aW5nIHJrMzU4OC9yazM1NzYgYW5k
+CmNvbnRhaW5pbmcgYWxsIHRoZSBkZXRhaWxzIGlzCmh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHVi
+L3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC9jb21taXQvP2lkPTU4MTQ3
+ODg4MzQ3NzRlZDZhZDFhMjdhZTkxYjQ0ZWVjYTgwY2QyN2YKCkhlaWtvCgoKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
