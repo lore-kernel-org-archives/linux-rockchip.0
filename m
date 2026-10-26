@@ -2,66 +2,106 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D6B6606A31B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2026 02:26:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EAFBB606A334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2026 03:22:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=w+3oxFHb;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=JcYUNmGU
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0V2tOOX2;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=HlHQLLWN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=6jfSmZ5o2VxL9YChPInZ2unzvLSR9c5pYjyUgUM1lm0=; b=w+3oxFHb6VvPplsnu8dKvhFJXc
-	kF2ODUVs3l+OyD1Jq2zcy1v99n4MZoUH1DR2iMDKbh4WlBo/y+cdjb7Ty6QCooayCAgiu2ELgVMi7
-	9PE/dVebpwZs2ywYLeSpgYfEXwJjUUZT90Z4OFmBAK0NzU6ukkYEIBNqNqnFlefzAex1ypKlQv8UM
-	+Wp2EtbflyXle6DoV6ecWMZKMfkNnZGwcfJAKLipZ7Geh/MVHDaVkDGzyUhLJi7BcLRc8MI1yd6zH
-	9KSsPMhAW8ENkhXw+CN4+9pWRRZBqyTnIaHObE33snpEgcBTKZyxd0p+05XSaKjuGwbsPfrCx3Y4v
-	Vj5T5uUg==;
+	bh=9hIPAA8qoyNQo7HKQmfkKL18GDQwZDkkbO+sxt4D9ek=; b=0V2tOOX2QDkRofArep3sW2rFqs
+	MjnbQAbAHtZhfzWJ8d0y4PxLOOt24SVUSiOdioNKfr/cnJ9KwK1H1WEjSjjF1iufqgBelIIa4AV/1
+	YUKmELPcWk/xvhgrzH1pvX4vuCOUNZgDSUAcN2oCpwwGu43Fi9NrPsfGseTD81P9clhGTq5O8oDBV
+	mQKj/6wIcsaLdXNIOWPHdW/PYcxr6wJXUxEh3te6QvkivRI96kkznrmt+P5pLWrm5TIOuS/rCom25
+	PjoEiBKFtpp3LOl0bSNVMha4PPhBCVdI5xdAyjdk2nnAXYiixwzPKikdO+0BxCmIhsTqvLaMjbTyS
+	OA/q+afg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLAPy-00000001c9V-0I4k;
-	Mon, 26 Oct 2026 02:26:34 +0000
-Received: from mail-m1063.netease.com ([154.81.10.63])
+	id 1xLBHl-00000001egf-1CUu;
+	Mon, 26 Oct 2026 03:22:09 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLAPv-00000001c8l-00k8;
-	Mon, 26 Oct 2026 02:26:32 +0000
-Received: from [172.16.12.48] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 524c7990e;
-	Mon, 26 Oct 2026 10:26:27 +0800 (GMT+08:00)
-Message-ID: <78564cbc-8faa-4392-ab66-2a1395fdca4e@rock-chips.com>
-Date: Mon, 26 Oct 2026 10:26:26 +0800
+	id 1xLBHf-00000001eds-0lLK;
+	Mon, 26 Oct 2026 03:22:03 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5061360136;
+	Mon, 26 Oct 2026 03:22:02 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1792984922;
+	b=xwgDwlf3GaaubyyW0zqGwGicPxlJJdLMbITTOJxyY3pcCgO2d0vOVCRW7KjmgRUg8wkN
+	 CBmzUR2f+QgR4GeckWG3+RTbGEFZoHEix9dMYjAijLLpV56W3Y7d9OvU5oC+pcHWw+cNT
+	 YMGb439KrTVjRaRg3GvI6rBWfU4iB8PcdcfAKL29WM+ncXWyw+//yXYCVQVCuH04Dn82y
+	 /FGF7b0oYukQA5Gr7E/hQXAnzw8bGBNDFj+mpDN7+s3HP/g9ltknBXLN0rv4Jc48PEu47
+	 5S/xsjlV9Hbv1EQIjJwVl1+sUg4kA+3SQjD9uIO0/4yIYcUYUBa/N1uHANskB3dUSaQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1792984922;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=NbE8+EkvU8qKTKBXp8MrzwQWpu9rEN62vlfyhAKPT8M=;
+	b=SvdTQP3cwPUG6hcQR4nAuXYG/e/H/Dgz1PRDjc3MLg9cLpRmmHJ/FhwGwNKbeIW3bl+7
+	 xzYWojKPoC+Kp16f2HBAURYx9QYZ5EXH1NE5ioBmYYQ+AeL59HTPPeapkxwM9raEUA+oU
+	 IeOxRR0koksBJqflb0LOnsSy2OeWXWf+jcEB9ooUQMTHF3e1XbAYXRUoy/vIGgvEj4Mt9
+	 eed8R3U7ddcQMSSHfC7yVu7Fv4YxNTd2VXmyrA5EmCxjtzF8HjstD0O1QNT5rvqq2+aY2
+	 5gBNCOA0yW7Y1y4Ll4BP1WRpS/DOQS4kjBxhpH1/EJDs/eEaDFJg0IY89WBxHftI/hg==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id DACE21F01825;
+	Mon, 26 Oct 2026 03:22:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792984922;
+	bh=NbE8+EkvU8qKTKBXp8MrzwQWpu9rEN62vlfyhAKPT8M=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=HlHQLLWN+eJAJZCUKCSfGnHNnMBGrFJpj0sZbjoiVdGCFWuRsG79pfb8GDXVprRtn
+	 bWqAwrW0/DOlg9X6Za2PgR69iVucvAf9eF+Aw1plsIYzuZ9FTgp+yFvoNbL3DpOBfP
+	 yqERxpd9PLnxhAVgHPDCl7Xtv9r3yG9Hx5IZC7rppM1jIR3v/Vq//0Qo5FM0q71jKE
+	 4Jqt+Azq+QNd3mi4F1EE0Z9PO3O2ECqeFhxChm+XK/KXGryErtSsQa5TnEfBSmm/g8
+	 ONv2D0LiFAUgfhOnrEj5az16fIh+a7LMp7d4Uu67l4hOmxCvEnMleqGRx7P2g4KUW7
+	 w+2J/sGfqUyEQ==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 542DC44BDD;
+	Mon, 26 Oct 2026 03:22:00 +0000 (UTC)
+From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
+Subject: [PATCH v3 0/2] pmdomain: rockchip: Add RK3572 boot peripheral
+ domains
+Date: Mon, 26 Oct 2026 11:21:37 +0800
+Message-Id: <20261026-add-board-ok3572-c-pmdomain-v3-0-70d614d3d921@qq.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, Rob Herring <robh@kernel.org>,
- linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] PCI: dw-rockchip: Remove redundant dev_err()
-To: Diederik de Haas <diederik@cknow-tech.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Bjorn Helgaas
- <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>
-References: <20261021101533.609118-1-diederik@cknow-tech.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20261021101533.609118-1-diederik@cknow-tech.com>
-X-HM-Tid: 0aa17607d42803a4kunm445aa2303d8aee
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGUhCS1YaQh9PHk5LQh
-	0YHxlWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
-	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=JcYUNmGUGamMX0H4edPTX5buUkXYPXtzWNZJzuHFd2cO8Zvt2/2GQlk2tcILYDNXTCofCO2xjK3aRQhgmlyWPSA+CVjG9pvEvwbP3R0qUDmNF7iOLfUaaigRZOrSbL2fVRjdZ4PAwHFI6XI/ULrph+sqGPCExHf1KWV2SXip0NM=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=urfEyyHn5kTPStI4ZHijB5qvt2eSMg21ywUW0EWxMho=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261025_192631_255403_7E4F6C2A 
-X-CRM114-Status: GOOD (  14.38  )
-X-Spam-Score: -2.1 (--)
+X-B4-Tracking: v=1; b=H4sIAEHH3moC/32OQQ6CMBBFr0K6dkw7FUVX3sO4KJ1Bq4Fqi42Gc
+ HcBo3FhXL7kz3vTicjBcRSbrBOBk4vONwPoWSbs0TQHBkcDC5S4VBI1GCIovQkE/qzzFYKFS02
+ +Nq4BrCSSUUoXSxaD4RK4cvfJvtu/ON7KE9t2VI6Lo4utD48pn9S4e5fwVykpkCBLWVGRG62Yt
+ 9fr3PpajPaE3/f/P004iFZrIlogr9Gqj6jv+yeBnQf9FQEAAA==
+X-Change-ID: 20261023-add-board-ok3572-c-pmdomain-2f02da11386e
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Elaine Zhang <zhangqing@rock-chips.com>, Ulf Hansson <ulfh@kernel.org>
+Cc: Cunhao Lu <1579567540@qq.com>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
+ Finley Xiao <finley.xiao@rock-chips.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792984919; l=5260;
+ i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
+ bh=AcZhQE2h3agPWP8/xjxv38mEgdS8HpR3PNxcZ2ZWylw=;
+ b=ibcpCH/0lvTn1T/jrYlbaE11ZcaSxH4CSYMvzvOanFPwW7EYWBaz2YcfIYbpzPiOP19liBy+2
+ 8OeSYy0uPwgBX+WVMc1x61I4EiOXHYiAQTR3MqsSO6QTQOPxi1vUvXm
+X-Developer-Key: i=1579567540@qq.com; a=ed25519;
+ pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
+X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
+ auth_id=1177
+X-Original-From: Cunhao Lu <1579567540@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,47 +111,153 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Reply-To: 1579567540@qq.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-5ZyoIDIwMjYvMTAvMjEg5pif5pyf5LiJIDE4OjE0LCBEaWVkZXJpayBkZSBIYWFzIOWGmemBkzoK
-PiBUaGUgZGV2bV9yZXF1ZXN0X3RocmVhZGVkX2lycSgpIGZ1bmN0aW9uIGFscmVhZHkgYXV0b21h
-dGljYWxseSBsb2dzCj4gZGV0YWlsZWQgZXJyb3IgbWVzc2FnZXMgb24gZmFpbHVyZSBzaW5jZSBj
-b21taXQKPiA1NWI0OGUyM2Y1YzQgKCJnZW5pcnEvZGV2cmVzOiBBZGQgZXJyb3IgaGFuZGxpbmcg
-aW4gZGV2bV9yZXF1ZXN0XypfaXJxKCkiKQo+IFNvIHJlbW92ZSB0aGUgbm93LXJlZHVuZGFudCBk
-cml2ZXItc3BlY2lmaWMgZGV2X2VycigpIGNhbGxzLgo+IAoKUmV2aWV3ZWQtYnk6IFNoYXduIExp
-biA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLgoKPiBTaWduZWQtb2ZmLWJ5OiBE
-aWVkZXJpayBkZSBIYWFzIDxkaWVkZXJpa0Bja25vdy10ZWNoLmNvbT4KPiAtLS0KPiAgIGRyaXZl
-cnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYyB8IDggKystLS0tLS0KPiAg
-IDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gCj4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYyBi
-L2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+IGluZGV4IDE0
-OTc2ODYxZjhlZi4uYTRkYmZjNTJjMmYxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRy
-b2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xs
-ZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+IEBAIC03MTgsMTAgKzcxOCw4IEBAIHN0YXRpYyBp
-bnQgcm9ja2NoaXBfcGNpZV9jb25maWd1cmVfcmMoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRl
-diwKPiAgIAlyZXQgPSBkZXZtX3JlcXVlc3RfdGhyZWFkZWRfaXJxKGRldiwgaXJxLCBOVUxMLAo+
-ICAgCQkJCQlyb2NrY2hpcF9wY2llX3JjX3N5c19pcnFfdGhyZWFkLAo+ICAgCQkJCQlJUlFGX09O
-RVNIT1QsICJwY2llLXN5cy1yYyIsIHJvY2tjaGlwKTsKPiAtCWlmIChyZXQpIHsKPiAtCQlkZXZf
-ZXJyKGRldiwgImZhaWxlZCB0byByZXF1ZXN0IFBDSWUgc3lzIElSUVxuIik7Cj4gKwlpZiAocmV0
-KQo+ICAgCQlyZXR1cm4gcmV0Owo+IC0JfQo+ICAgCj4gICAJLyogTFRTU00gZW5hYmxlIGNvbnRy
-b2wgbW9kZSAqLwo+ICAgCXZhbCA9IEZJRUxEX1BSRVBfV00xNihQQ0lFX0xUU1NNX0VOQUJMRV9F
-TkhBTkNFLCAxKTsKPiBAQCAtNzY0LDEwICs3NjIsOCBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3Bj
-aWVfY29uZmlndXJlX2VwKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4gICAJcmV0ID0g
-ZGV2bV9yZXF1ZXN0X3RocmVhZGVkX2lycShkZXYsIGlycSwgTlVMTCwKPiAgIAkJCQkJcm9ja2No
-aXBfcGNpZV9lcF9zeXNfaXJxX3RocmVhZCwKPiAgIAkJCQkJSVJRRl9PTkVTSE9ULCAicGNpZS1z
-eXMtZXAiLCByb2NrY2hpcCk7Cj4gLQlpZiAocmV0KSB7Cj4gLQkJZGV2X2VycihkZXYsICJmYWls
-ZWQgdG8gcmVxdWVzdCBQQ0llIHN5cyBJUlFcbiIpOwo+ICsJaWYgKHJldCkKPiAgIAkJcmV0dXJu
-IHJldDsKPiAtCX0KPiAgIAo+ICAgCS8qCj4gICAJICogTFRTU00gZW5hYmxlIGNvbnRyb2wgbW9k
-ZSwgYW5kIGF1dG9tYXRpY2FsbHkgZGVsYXkgbGluayB0cmFpbmluZyBvbgoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+This is one of the subsystem submissions for RK3572 support.
+
+This series adds the RK3572 power-controller binding and power IDs,
+followed by support for the NVM0, NVM1, PHP, and VOP power domains.
+The driver uses the system GRF to check firmware shift-ready status.
+
+The RK3572 SoC has eight CPU cores: two Cortex-A73 cores and six
+Cortex-A53 cores. It also integrates an Arm Mali-G310V2 MC1 GPU.
+The OK3572-C board provides two Gigabit Ethernet ports, three USB3 Type-A
+ports, a Type-C dual-role port, eMMC, microSD, and UART.
+
+Power-on progress and restoration are tracked separately so that a
+failed transition can be retried without losing pending memory resets or
+QoS state. The shared Rockchip power-domain code is updated to support
+the RK3572 register layout and retry behavior.
+
+Testing was performed with Debian 13 minimal and Linux 7.3 on the
+OK3572-C with the FET3572-C module. Shared peripheral tests were run with
+the system booted from SD, while eMMC validation covered the complete
+boot chain.
+
+Passed functionality:
+
+- SD and eMMC complete the firmware, kernel, and root filesystem
+  boot chain.
+- UART console works at 1500000 baud.
+- SD read/write and data persistence checks pass.
+- All eight CPUs start; CPU frequency scaling and hotplug checks pass.
+- Both Ethernet ports obtain IPv4 addresses and pass bidirectional file
+  transfers.
+- All three Type-A ports pass USB2 and USB3 enumeration, data transfers,
+  and reconnect persistence checks.
+- Type-C host and device modes pass in both plug orientations. Physical
+  reconnects correctly select the expected device, host, and device roles
+  in sequence.
+
+Stability:
+
+- Repeated cold and software reboots complete on SD and eMMC without
+  data integrity failures or power-domain transition failures.
+- A combined CPU, memory, network, SD, and USB3 stress test completes
+  without a crash, lockup, CPU offline event, or thermal shutdown.
+- Ethernet error and drop counters do not increase during bidirectional
+  network tests.
+
+Power-domain fault-path validation:
+
+- Host tests extracted the transition logic and memory operations from
+  the driver and simulated register failures during power-status checks,
+  memory chain/off/on operations, idle exit, and firmware shift-ready checks.
+- The tests also cover retries, shutdown after a failed power-on,
+  clock-enable failure, regulator loss, and domains without a firmware
+  shift-ready mask. QoS preservation and memory-reset counts were checked.
+- The simulated tests pass ASan and UBSan.
+
+Build and checks:
+
+- The kernel, modules, and board DTB build successfully.
+- The series passes checkpatch with --strict; only generic reminders about
+  new MAINTAINERS entries remain.
+
+Untested hardware and paths:
+
+- NPU
+- PCIe
+- GPU, video output, and audio
+- CPU rates above 1.2 GHz and voltage scaling
+- Other low-speed external interfaces
+
+Some files in this series are derived from the Forlinx OK3572-C BSP
+Alpha1. Thanks to Forlinx for their support.
+Thanks also to Rockchip's David Wu, Elaine Zhang, Finley Xiao, Frank
+Wang, William Wu, and Ye Zhang for providing the driver source files.
+
+AI assistance:
+
+- Codex / DeepSeek V4.1 Flash were used for:
+  - Reviewing and adjusting code style to follow community conventions
+  - Automating tests
+  - Collecting data
+
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
+---
+Changes in v3:
+- Track incomplete shutdowns to preserve QoS and complete firmware updates.
+- Preserve pending memory resets across shutdown and cancel unfinished
+  power-on requests.
+- Attempt to restore the domain after power-off errors, while preserving
+  the original error returned to genpd.
+- Link to v2:
+  https://patch.msgid.link/20261023-add-board-ok3572-c-pmdomain-v2-0-79ddd42e92c1@qq.com
+
+Changes in v2:
+- Split the original RK3572 support series by subsystem.
+- Track low-level power-on and restoration separately. Retain unfinished
+  memory resets across retries, avoid repeating completed resets, and
+  preserve QoS snapshots when shutting down after a failed power-on.
+- Link to v1:
+  https://patch.msgid.link/20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com
+
+---
+Raw dmesg: see v2 cover letter.
+
+To: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: Conor Dooley <conor+dt@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+To: Ulf Hansson <ulfh@kernel.org>
+Cc: devicetree@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-pm@vger.kernel.org
+
+---
+Finley Xiao (2):
+      dt-bindings: power: rockchip: Add RK3572 power domains
+      pmdomain: rockchip: Add RK3572 boot peripheral domains
+
+ .../bindings/power/rockchip,power-controller.yaml  |  17 ++
+ drivers/pmdomain/rockchip/pm-domains.c             | 187 ++++++++++++++++++---
+ .../power/rockchip,rk3572-power-controller.h       |  30 ++++
+ 3 files changed, 214 insertions(+), 20 deletions(-)
+---
+base-commit: a804c5742bff224d4cb4d25dd383554d598be32b
+change-id: 20261023-add-board-ok3572-c-pmdomain-2f02da11386e
+
+Best regards,
+--  
+Cunhao Lu <1579567540@qq.com>
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
