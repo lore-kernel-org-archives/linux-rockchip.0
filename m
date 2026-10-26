@@ -2,71 +2,65 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3695F606A31A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2026 02:18:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D6B6606A31B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2026 02:26:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MlIaIC7k;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=kVKDnGi7
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=w+3oxFHb;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=JcYUNmGU
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=KfTLYLkUgipDdFrBebtokXPTQMw+BTfzQicMtIXXiW8=; b=MlIaIC7kMOwTOhLNo9OQSY4wrs
-	1bLJftWOIEVV9P3Ed06cO84uaiukebd7BXaSNEwnPUoPc+HKm6qUNubymCzL+uMMrVMlzNRXnQClc
-	qx8I+7hVA5Y0BE/bKHPWBeaSE+Ion7AJVSxgP7Elf5r5mp2q1zefsAG5BRsW2kq85YbDCwJTd1hPs
-	19OGfJ1MiDtijW1oPuA7g3FsPUy37E6izlbSmGhVlWzXu96EK0KiAqJFGjgsfIcvSGB60q9s6spM6
-	mW+NPPfSDiuC00T6tqaP0YReG9derQ//vZQIYu/aPlRalKeYpdLwPUfENsa/wrgOenZIUwsSE38M2
-	Sp4lhyKQ==;
+	bh=6jfSmZ5o2VxL9YChPInZ2unzvLSR9c5pYjyUgUM1lm0=; b=w+3oxFHb6VvPplsnu8dKvhFJXc
+	kF2ODUVs3l+OyD1Jq2zcy1v99n4MZoUH1DR2iMDKbh4WlBo/y+cdjb7Ty6QCooayCAgiu2ELgVMi7
+	9PE/dVebpwZs2ywYLeSpgYfEXwJjUUZT90Z4OFmBAK0NzU6ukkYEIBNqNqnFlefzAex1ypKlQv8UM
+	+Wp2EtbflyXle6DoV6ecWMZKMfkNnZGwcfJAKLipZ7Geh/MVHDaVkDGzyUhLJi7BcLRc8MI1yd6zH
+	9KSsPMhAW8ENkhXw+CN4+9pWRRZBqyTnIaHObE33snpEgcBTKZyxd0p+05XSaKjuGwbsPfrCx3Y4v
+	Vj5T5uUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLAII-00000001bXn-24Pf;
-	Mon, 26 Oct 2026 02:18:38 +0000
-Received: from mail-m12818.netease.com ([103.209.128.18])
+	id 1xLAPy-00000001c9V-0I4k;
+	Mon, 26 Oct 2026 02:26:34 +0000
+Received: from mail-m1063.netease.com ([154.81.10.63])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLAIE-00000001bXD-2xGJ;
-	Mon, 26 Oct 2026 02:18:37 +0000
-Received: from [127.0.0.1] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 524c264ae;
-	Mon, 26 Oct 2026 10:18:21 +0800 (GMT+08:00)
-Message-ID: <9e3dc854-b2f5-459c-8267-55e88e87f5b5@rock-chips.com>
-Date: Mon, 26 Oct 2026 10:17:58 +0800
+	id 1xLAPv-00000001c8l-00k8;
+	Mon, 26 Oct 2026 02:26:32 +0000
+Received: from [172.16.12.48] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 524c7990e;
+	Mon, 26 Oct 2026 10:26:27 +0800 (GMT+08:00)
+Message-ID: <78564cbc-8faa-4392-ab66-2a1395fdca4e@rock-chips.com>
+Date: Mon, 26 Oct 2026 10:26:26 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/bridge: dw-mipi-dsi: use the lane rate for lbcc when
- lanes run faster
-To: Romain TISSERAND <romain.tisserand@gmail.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Heiko Stuebner <heiko@sntech.de>, Liu Ying <victor.liu@nxp.com>,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20261025142639.3454322-1-romain.tisserand@gmail.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20261025142639.3454322-1-romain.tisserand@gmail.com>
-X-HM-Tid: 0aa176006a1b03a7kunm3cd7cb0e672527
+Cc: shawn.lin@rock-chips.com, Rob Herring <robh@kernel.org>,
+ linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] PCI: dw-rockchip: Remove redundant dev_err()
+To: Diederik de Haas <diederik@cknow-tech.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Bjorn Helgaas
+ <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>
+References: <20261021101533.609118-1-diederik@cknow-tech.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <20261021101533.609118-1-diederik@cknow-tech.com>
+X-HM-Tid: 0aa17607d42803a4kunm445aa2303d8aee
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZTx9LVktJTRlOShlISUNJSFYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZGUhCS1YaQh9PHk5LQh
+	0YHxlWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=kVKDnGi7Vz6BTvdW8UtqvNNMudpYj9sKVhglzVFIrz/tElI5jE2PuHYdAiS+Em2/OikLiA5pArO5uVmdWbDcI+mM3aj9/vteKEmHJRrZIbQxdLJ1BBaBT/QeTSyTI3NC3vRa5R3bNlfuqSS6/sEpaAqq18JMAIiUnDrFscxw/Vg=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=85O98ibYQIY4tqJnX7KyBnA6NvI/h3LWUxQTLuidEQg=;
+	b=JcYUNmGUGamMX0H4edPTX5buUkXYPXtzWNZJzuHFd2cO8Zvt2/2GQlk2tcILYDNXTCofCO2xjK3aRQhgmlyWPSA+CVjG9pvEvwbP3R0qUDmNF7iOLfUaaigRZOrSbL2fVRjdZ4PAwHFI6XI/ULrph+sqGPCExHf1KWV2SXip0NM=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=urfEyyHn5kTPStI4ZHijB5qvt2eSMg21ywUW0EWxMho=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261025_191835_322320_E965D696 
-X-CRM114-Status: GOOD (  31.62  )
+X-CRM114-CacheID: sfid-20261025_192631_255403_7E4F6C2A 
+X-CRM114-Status: GOOD (  14.38  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,8 +71,8 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -88,115 +82,36 @@ X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Romain,
-
-On 10/25/2026 10:26 PM, Romain TISSERAND wrote:
-> Commit ac87d23694f4 ("drm/bridge: synopsys: dw-mipi-dsi: Use pixel clock
-> rate to calculate lbcc") counts HSA, HBP and HLINE from the pixel clock,
-> which is only right when the lanes run at the pixel bandwidth (pixel
-> clock * bpp / lanes). Commit 93e82bb4de01 ("drm/bridge: synopsys:
-> dw-mipi-dsi: Fix hcomponent lbcc for burst mode") went back to the lane
-> rate for burst mode, where the lanes are faster on purpose.
-> 
-> The Rockchip glue runs the lanes faster in every mode: it adds 25% to
-> the pixel bandwidth, or uses the rate the panel asks for. In non-burst
-> video mode the line programmed in lane byte clocks is then shorter than
-> the DPI line. On the GPD XD (RK3288, ILI9881C panel, 4 lanes at
-> 752 Mbps, 59.5 MHz pixel clock, htotal 747) HLINE was 561 lane byte
-> clocks (6.0 us) for a 12.55 us line: the DPI payload FIFO overflows
-> (dpi_pld_wr_err in DSI_INT_ST1) and the panel shows garbage as soon as
-> a client page-flips.
-> 
-> Use the lane rate when it is clearly above the pixel bandwidth (more
-> than 1/8), and keep the pixel clock formula when both match, as on
-> i.MX93, Meson and STM in non-burst mode, where lane_mbps is the pixel
-> bandwidth rounded up to the next MHz. On the GPD XD this gives HLINE
-> 1181, HSA 21 and HBP 7, and the picture is stable.
-> 
-> Fixes: ac87d23694f4 ("drm/bridge: synopsys: dw-mipi-dsi: Use pixel clock rate to calculate lbcc")
-> Signed-off-by: Romain TISSERAND <romain.tisserand@gmail.com>
-> ---
-> Notes for reviewers (not for the changelog):
-> - The 1/8 threshold separates glues that report the pixel bandwidth
->   rounded up to the next MHz (i.MX93, Meson; STM in non-burst mode) from
->   Rockchip, which adds 25% in every mode. If a per-glue flag is
->   preferred instead of a threshold, I can rework it that way.
-
-Adding different glue code for each implementation seems like a good
-idea.
-
-Maybe you should try to add a new callback in dw_mipi_dsi_plat_data ?
-
-> - Testing: built with W=1 for arm (multi_v7) and arm64 (defconfig),
->   DRM_DW_MIPI_DSI=y and =m, no warnings. Tested live on the GPD XD
->   (RK3288, ILI9881C, non-burst with sync pulses), 6.18.54 with this
->   exact change applied: HLINE 1181, HSA 21, HBP 7 read back from the
->   DSI host, no dpi_pld_wr_err in DSI_INT_ST1 while the UI page-flips,
->   and a clean picture in the UI and in games (before the change: garbage
->   as soon as a client page-flips).
->   Not tested on i.MX93, Meson or STM hardware; for them the computation
->   is unchanged unless the lane rate is more than 1/8 above the pixel
->   bandwidth.
-> - Tool disclosure: this patch was prepared with Claude Opus 5.5
->   (Anthropic) as a coding assistant, in an interactive session where I
->   asked it to bring up the GPD XD display and then to prepare the fix
->   for upstream. It located the cause from the DSI host registers, went
->   through the history of the lbcc computation (ac87d23694f4,
->   93e82bb4de01) and the lane rates of the other dw-mipi-dsi glues, and
->   drafted the code change and the changelog. I reviewed and understand
->   both, and tested the patch on the GPD XD as described above.
-> 
->  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 23 +++++++++++++------
->  1 file changed, 16 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> index 22d1b8cbe1..b026b602ab 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-> @@ -781,19 +781,28 @@ static u32 dw_mipi_dsi_get_hcomponent_lbcc(struct dw_mipi_dsi *dsi,
->  					   u32 hcomponent)
->  {
->  	u32 frac, lbcc, minimum_lbcc;
-> +	u64 pixel_kbps;
->  	int bpp;
->  
-> -	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
-> +	bpp = mipi_dsi_pixel_format_to_bpp(dsi->format);
-> +	if (bpp < 0) {
-> +		dev_err(dsi->dev, "failed to get bpp\n");
-> +		return 0;
-> +	}
-> +
-> +	/*
-> +	 * Use the lane rate when it is above the pixel bandwidth (burst, or
-> +	 * glues adding margin in all modes); the 1/8 slack ignores lane_mbps
-> +	 * being rounded up to the next MHz. Otherwise the pixel clock is more
-> +	 * precise.
-> +	 */
-> +	pixel_kbps = div_u64((u64)mode->clock * bpp, dsi->lanes);
-> +	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST ||
-> +	    (u64)dsi->lane_mbps * MSEC_PER_SEC > pixel_kbps + pixel_kbps / 8) {
->  		/* lbcc based on lane_mbps */
->  		lbcc = hcomponent * dsi->lane_mbps * MSEC_PER_SEC / 8;
->  	} else {
->  		/* lbcc based on pixel clock rate */
-> -		bpp = mipi_dsi_pixel_format_to_bpp(dsi->format);
-> -		if (bpp < 0) {
-> -			dev_err(dsi->dev, "failed to get bpp\n");
-> -			return 0;
-> -		}
-> -
->  		lbcc = div_u64((u64)hcomponent * mode->clock * bpp, dsi->lanes * 8);
->  	}
->  
-> 
-> base-commit: cf61bef3801c3c9d0d8c39026b7b2fb242898a3a
-
--- 
-Best, 
-Chaoyi
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+5ZyoIDIwMjYvMTAvMjEg5pif5pyf5LiJIDE4OjE0LCBEaWVkZXJpayBkZSBIYWFzIOWGmemBkzoK
+PiBUaGUgZGV2bV9yZXF1ZXN0X3RocmVhZGVkX2lycSgpIGZ1bmN0aW9uIGFscmVhZHkgYXV0b21h
+dGljYWxseSBsb2dzCj4gZGV0YWlsZWQgZXJyb3IgbWVzc2FnZXMgb24gZmFpbHVyZSBzaW5jZSBj
+b21taXQKPiA1NWI0OGUyM2Y1YzQgKCJnZW5pcnEvZGV2cmVzOiBBZGQgZXJyb3IgaGFuZGxpbmcg
+aW4gZGV2bV9yZXF1ZXN0XypfaXJxKCkiKQo+IFNvIHJlbW92ZSB0aGUgbm93LXJlZHVuZGFudCBk
+cml2ZXItc3BlY2lmaWMgZGV2X2VycigpIGNhbGxzLgo+IAoKUmV2aWV3ZWQtYnk6IFNoYXduIExp
+biA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLgoKPiBTaWduZWQtb2ZmLWJ5OiBE
+aWVkZXJpayBkZSBIYWFzIDxkaWVkZXJpa0Bja25vdy10ZWNoLmNvbT4KPiAtLS0KPiAgIGRyaXZl
+cnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYyB8IDggKystLS0tLS0KPiAg
+IDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gCj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYyBi
+L2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+IGluZGV4IDE0
+OTc2ODYxZjhlZi4uYTRkYmZjNTJjMmYxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRy
+b2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xs
+ZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+IEBAIC03MTgsMTAgKzcxOCw4IEBAIHN0YXRpYyBp
+bnQgcm9ja2NoaXBfcGNpZV9jb25maWd1cmVfcmMoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRl
+diwKPiAgIAlyZXQgPSBkZXZtX3JlcXVlc3RfdGhyZWFkZWRfaXJxKGRldiwgaXJxLCBOVUxMLAo+
+ICAgCQkJCQlyb2NrY2hpcF9wY2llX3JjX3N5c19pcnFfdGhyZWFkLAo+ICAgCQkJCQlJUlFGX09O
+RVNIT1QsICJwY2llLXN5cy1yYyIsIHJvY2tjaGlwKTsKPiAtCWlmIChyZXQpIHsKPiAtCQlkZXZf
+ZXJyKGRldiwgImZhaWxlZCB0byByZXF1ZXN0IFBDSWUgc3lzIElSUVxuIik7Cj4gKwlpZiAocmV0
+KQo+ICAgCQlyZXR1cm4gcmV0Owo+IC0JfQo+ICAgCj4gICAJLyogTFRTU00gZW5hYmxlIGNvbnRy
+b2wgbW9kZSAqLwo+ICAgCXZhbCA9IEZJRUxEX1BSRVBfV00xNihQQ0lFX0xUU1NNX0VOQUJMRV9F
+TkhBTkNFLCAxKTsKPiBAQCAtNzY0LDEwICs3NjIsOCBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3Bj
+aWVfY29uZmlndXJlX2VwKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4gICAJcmV0ID0g
+ZGV2bV9yZXF1ZXN0X3RocmVhZGVkX2lycShkZXYsIGlycSwgTlVMTCwKPiAgIAkJCQkJcm9ja2No
+aXBfcGNpZV9lcF9zeXNfaXJxX3RocmVhZCwKPiAgIAkJCQkJSVJRRl9PTkVTSE9ULCAicGNpZS1z
+eXMtZXAiLCByb2NrY2hpcCk7Cj4gLQlpZiAocmV0KSB7Cj4gLQkJZGV2X2VycihkZXYsICJmYWls
+ZWQgdG8gcmVxdWVzdCBQQ0llIHN5cyBJUlFcbiIpOwo+ICsJaWYgKHJldCkKPiAgIAkJcmV0dXJu
+IHJldDsKPiAtCX0KPiAgIAo+ICAgCS8qCj4gICAJICogTFRTU00gZW5hYmxlIGNvbnRyb2wgbW9k
+ZSwgYW5kIGF1dG9tYXRpY2FsbHkgZGVsYXkgbGluayB0cmFpbmluZyBvbgoKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
