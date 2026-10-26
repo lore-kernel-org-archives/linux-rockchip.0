@@ -2,71 +2,107 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 185CB606A31B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2026 07:41:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C415C606A323
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2026 07:59:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2kNLKtEl;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=NOYltmLX
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uztreAld;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=sfgDtCOL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=9b0RROcjam3XlHck24MZmkjwu1dOkyU9mUcBoXj3yjM=; b=2kNLKtEltfxA4LjM6ieQbyv2RR
-	SWkMJYegPDDAzyZH2eKCsfFj9G/v8nAsNG46hfBh+SzracHw4Wbkf0q59bvEPH/e4V06EmLR7zDY/
-	yqdBav1Hn63yHU2YTusObFrQ/HSw10eVEkHMboFKtcZMhR92HQb4gi8cF3I/jpH0aOjvSMob5mtFh
-	tuQEQeOnUPX7lDJhtcK3Xfl+iPHLsr62qcZEcCtelqUQMGasB1hF8C3WGJIHNEwcT1KIWhY3PSnfJ
-	scr+wu2g/26Q2qybRg3XM6eq5iXu9dwoRn6QHiSdgZLnjO8KvlrrAWtE600917YpHgTMsVeN5JnQk
-	s0NxlOjw==;
+	bh=E0w5Dyyi2vK/Y/Kfs1SmAOrCPwA5w9Ng566zSTXJytk=; b=uztreAldtQYn99tmoTdSVpWx+g
+	r9jM3Oxj+z+oQ2F3e1e54fWmNAzTYIqQ8psdsHqYl9aFyPFfwfem+YcLQIGKOSjdTs8pGKQfN/Xfd
+	/1d+FdKg3hszKA9+A2N1/kIDOcKwU2/PUeejGxUXJtqWB4qY7HB2YPgyAg+gOX53kzbAcEQk6J2+i
+	D1OlD3U9pbuLSm4BeHKm8hhB6kxWrxIbJyJAIOHpbk55p2PnlimeDbGqxjd5AYnOpH9xlbGEilTqb
+	77Zm+za9/H8aopBK9IHW4W/Kc7akZWHSzSVHdUN+nwSrulAg7DGeQcj09aBIm931RG8bHffbH40Oz
+	E+f9/chA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLFJi-00000001qzU-3tBL;
-	Mon, 26 Oct 2026 07:40:26 +0000
-Received: from mail-m8161.xmail.ntesmail.com ([156.224.81.61])
+	id 1xLFc7-00000001ukB-3hto;
+	Mon, 26 Oct 2026 07:59:27 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLFJf-00000001qwv-2Tib;
-	Mon, 26 Oct 2026 07:40:25 +0000
-Received: from localhost.localdomain (unknown [61.154.14.87])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5257abbce;
-	Mon, 26 Oct 2026 15:40:19 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Vinod Koul <vkoul@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
+	id 1xLFc5-00000001ujT-11Df
+	for linux-rockchip@lists.infradead.org;
+	Mon, 26 Oct 2026 07:59:26 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-3acb1224533so338856a91.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 26 Oct 2026 00:59:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1793001564; x=1793606364; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=5vbNRlDHh+WVWhm3sA999nt53xsF4EJNCqmMp50Sjyg=;
+        b=sfgDtCOLge0UN67kb2gfkxYpP27oZGxtTSNeis6tVC5VBl4Hsehfnzea5kNEl1CLd+
+         /UsZ3i9SRThmXpmdMXeziigDm+061lasK0rOT6oMfgSlfzUwf+kS1Cu4ClPWgWbcB035
+         /zDKvaR95kMS5PvJ5a1r1n8z97H83uLNRrs1WF8ZOlUy7V7ArTZepF9Qjxg8cPaEv8p2
+         6y2poWdRzPCG63paMzHnL7yDewe7wuKpbm8nHxzjyKdQWDQZu5TkbNgN+uY4ZcOGTR+D
+         PEMyrFAt/8hLfS3+ZsegWtbjm8+Kscn1H0r5qrEWwBWWnFnel7VBwMry4k5Kfm7TcM+N
+         qsWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793001564; x=1793606364;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=5vbNRlDHh+WVWhm3sA999nt53xsF4EJNCqmMp50Sjyg=;
+        b=iOwCE3XYprepTU8jlQdzQwANHG7IZItjxweIcfR8eRzLHBSm/ztfS40aXT8eFWmdQ2
+         ssjf6SiEUaUoGJcePHfLuSQDUGyLorMTd/jkvClGYYnUTiJIEyl/ZLaSkHuhy5Mq2Z+n
+         ZWfVw+GjSTH2IwNYi8IaSe/ZI6rFdeP8ZB3Xku4rmKUiav+1Ml+8sY0UwerhI7BMVIbm
+         Do/YBvTa5/YL6cornc5WqAWhjlGlymbjwKRJA14jIBOdhiOfqKf7q0svCrBF8+9JPx4y
+         msWWsejWUPmJmpxLZuWt57GOmml3ahLJW1O5uWsgvJXijFFD1Vr5opybvaiEVjSQGU5w
+         i7Zw==
+X-Forwarded-Encrypted: i=1; AKwUvBzbCgdRiO9INJ63IolKf3941l1QhA2nvYuX91MCMquDbc0O5h2eYbbyRk33xZFJU1dgC409M4FjCmF1N6UjOQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKAF/8n3IClhMPNYalC9+Ry7AuMtolkDV2eaWEe4qL3j3+v9x3c
+	tM5HqgK5y6FEzyjQ14x4bG9Gg8zdDxdjMqpBSCTYKDRC7Rl+vxZpmVvi
+X-Gm-Gg: AYBFou3rLAoPz2R5f563lK0pcTbMaLL4UjoemIc43Bzb8JINz7xGEP4NzgG+vJRtZcS
+	yQuGmyeg9QJ3v23kY7ElYbDjUgWpVTWNQ2Y7YseC+fAOwOYm9EObYBd28c88g7kzGSqpdsUsy40
+	BnGmVczndgecw5bX33epJfX9r+xzmqrKr1SJ3q5FKOOr9umaeWMWI5u3qt5hSQKvlH+O5F/wvKW
+	RU7K14T70Z3Jq0KT1TPvMzHIgZ9WIc8etI31gFQKSIl2TubQCIXAgJiw0rZifAHjIGCoA+HszK8
+	QNcZWKU6aBi91pv8H6ICyp0CtXGnmLF42mKJgczmyQW6/nCgVRDmG6i04Mo++YB6/kb/XdouGjh
+	hl2Q8IohUquJWioqgXOmsA7F/yvdTTGOlc8AmOC0EAu7buIGmd9gXL5OlnCWQi136Xt//r/+m65
+	Xuadgb0Em3wanrDYOfad/a6gzdXJ9+QNAA7OLZr4YgVnPKpj7N9Sdj2iKm7koAUjERXR5YYNSEd
+	PFNtM8l0pWd6FG17ZiludyN1xXOd97sOiHkGT98ipPQG53u5KtFqE4Mcau0OBBfqGTP9CyJu+A4
+	uqWo
+X-Received: by 2002:a17:90b:2d84:b0:3a8:736e:c19b with SMTP id 98e67ed59e1d1-3adeaf9ce48mr9020240a91.4.1793001563928;
+        Mon, 26 Oct 2026 00:59:23 -0700 (PDT)
+Received: from localhost.localdomain ([240e:36d:b08:2bc0::a60])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3adebfa4102sm7490258a91.12.2026.10.26.00.59.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Oct 2026 00:59:23 -0700 (PDT)
+From: Jianfeng Liu <liujianfeng1994@gmail.com>
+To: krzk@kernel.org
+Cc: HystericalDragons@proton.me,
+	amadeus@jmu.edu.cn,
+	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
-	Samuel Holland <samuel@sholland.org>,
-	Coia Prant <coiaprant@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2 2/2] phy: rockchip: snps-pcie3: Load updated PHY firmware on RK3568
-Date: Mon, 26 Oct 2026 15:40:03 +0800
-Message-Id: <20261026074003.1169669-3-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20261026074003.1169669-1-shawn.lin@rock-chips.com>
-References: <20261026074003.1169669-1-shawn.lin@rock-chips.com>
+	heiko@sntech.de,
+	hrushirajg23@gmail.com,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	liujianfeng1994@gmail.com,
+	macromorgan@hotmail.com,
+	michael.opdenacker@rootcommit.com,
+	naoki@radxa.com,
+	robh@kernel.org
+Subject: Re: [PATCH 1/3] dt-bindings: arm: rockchip: Add ArmSoM Sige7s
+Date: Mon, 26 Oct 2026 15:59:14 +0800
+Message-ID: <20261026075915.203854-1-liujianfeng1994@gmail.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20261026-luminous-traditional-gazelle-0e3bb3@quoll>
+References: <20261026-luminous-traditional-gazelle-0e3bb3@quoll>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa17727304703aakunmbf670e0d2f005f
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDGU9MVh9KS0waQhhJSE9CQ1YVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ0xZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=NOYltmLXq2ouEJ/CMy5zJpHdi85Jy8TvZ666Y4i+UdPJ3n8evKM6KvizOx4M3i/7gtkqF4dGK4Rn8elA9nBt15eUlOxd+hSt0Mfe4bXBar7QeCCENI0Oc9rhBap5mOaQY0APRYLi74GwhrotQ4fhcF6/d1VpZnwNDtzQpvDpx/0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=IsbEs4MSj4d8YazJXdhEcTTEY7fhkLBoKpl55zE4MMM=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261026_004023_938435_0D97C9B2 
-X-CRM114-Status: GOOD (  26.61  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261026_005925_309932_474B303E 
+X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,221 +115,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The RK3568 PCIe3 PHY can load an updated firmware into its internal
-SRAM during initialization. Without it the PHY may come up with a stale
-microcode and fail to establish a stable link.
+Hi Krzysztof,
 
-Load the firmware named by the optional firmware-name DT property during
-probe, so that it is available in the phy_init() context and is not read
-from the filesystem on every init. During initialization, clear SDRAM
-load done and bypass, wait for the SRAM to lock, map the SRAM into the
-register window, write the firmware and finally signal SDRAM load done.
+On 2026-10-26  7:08 UTC, Krzysztof Kozlowski wrote:
+>> The ArmSoM Sige7s is an RK3588S-based single-board computer which
+>> shares its hardware design with the CoolPi 4B.
+>
+>How different devices from different vendors can share design?
+>
+>
+>What is exactly is shared and how did you verify that?
 
-The firmware is optional: when firmware-name is absent (older DTBs) or
-the file cannot be loaded, the driver keeps the behaviour unchanged and
-uses the microcode already present in the PHY.
+I confirmed this with ArmSoM. They purchased the original CoolPi 4B
+hardware design from CoolPi and confirmed that no hardware design
+modifications were made for the Sige7s.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
-Changes-in-v2: None
+So the Sige7s uses the same hardware design as the CoolPi 4B, rather
+than being independently designed.
 
- .../phy/rockchip/phy-rockchip-snps-pcie3.c    | 101 +++++++++++++++++-
- 1 file changed, 99 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-index ce7d8db2a7c5..bc1b4d0adaff 100644
---- a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-+++ b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
-@@ -7,6 +7,7 @@
- 
- #include <linux/clk.h>
- #include <linux/delay.h>
-+#include <linux/firmware.h>
- #include <linux/io.h>
- #include <linux/iopoll.h>
- #include <linux/kernel.h>
-@@ -19,11 +20,13 @@
- #include <linux/regmap.h>
- #include <linux/reset.h>
- #include <linux/units.h>
-+#include <linux/unaligned.h>
- 
- #define RK_PCIE_SRAM_INIT_TIMEOUT_US		(20 * USEC_PER_MSEC)
- 
- /* Register for RK3568 */
- #define GRF_PCIE30PHY_CON1			0x4
-+#define GRF_PCIE30PHY_CON4			0x10
- #define GRF_PCIE30PHY_CON6			0x18
- #define GRF_PCIE30PHY_CON9			0x24
- #define GRF_PCIE30PHY_DA_OCM			(BIT(15) | BIT(31))
-@@ -31,6 +34,11 @@
- #define GRF_PCIE30PHY_WR_EN			(0xf << 16)
- #define SRAM_INIT_DONE(reg)			(reg & BIT(14))
- 
-+#define GRF_PCIE30PHY_CON4_SDRAM_LD_DONE	BIT(14)
-+#define GRF_PCIE30PHY_CON4_SDRAM_BYPASS		BIT(13)
-+#define GRF_PCIE30PHY_CON9_SRAM_MAP		(0x3 << 8)
-+#define GRF_PCIE30PHY_CON9_SRAM_MAP_WE		(0x3 << 24)
-+
- #define RK3568_BIFURCATION_LANE_0_1		BIT(0)
- 
- /* Register for RK3588 */
-@@ -56,6 +64,7 @@ struct rockchip_p3phy_ops;
- 
- struct rockchip_p3phy_priv {
- 	const struct rockchip_p3phy_ops *ops;
-+	struct device *dev;
- 	void __iomem *mmio;
- 	/* mode: RC, EP */
- 	int mode;
-@@ -70,6 +79,8 @@ struct rockchip_p3phy_priv {
- 	int num_lanes;
- 	u32 lanes[4];
- 	u32 rx_cmn_refclk_mode[4];
-+	const struct firmware *fw;
-+	const char *fw_name;
- };
- 
- struct rockchip_p3phy_ops {
-@@ -96,6 +107,34 @@ static int rockchip_p3phy_set_mode(struct phy *phy, enum phy_mode mode, int subm
- 	return 0;
- }
- 
-+static void rockchip_p3phy_release_fw(void *data)
-+{
-+	struct rockchip_p3phy_priv *priv = data;
-+
-+	release_firmware(priv->fw);
-+	priv->fw = NULL;
-+}
-+
-+static void rockchip_p3phy_rk3568_load_fw(struct rockchip_p3phy_priv *priv)
-+{
-+	const struct firmware *fw = priv->fw;
-+	int i;
-+
-+	/* Map the PHY SRAM into the register window to write the firmware. */
-+	regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON9,
-+		     GRF_PCIE30PHY_CON9_SRAM_MAP | GRF_PCIE30PHY_CON9_SRAM_MAP_WE);
-+
-+	for (i = 0; i < fw->size / sizeof(u16); i++)
-+		writel(get_unaligned_le16(fw->data + i * sizeof(u16)),
-+		       priv->mmio + (i << 2));
-+
-+	dev_dbg(priv->dev, "loaded PHY firmware %s, size %zu\n",
-+		priv->fw_name, fw->size);
-+
-+	/* Unmap: field back to 0 with the write-enable for bits[9:8] */
-+	regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON9, GRF_PCIE30PHY_CON9_SRAM_MAP_WE);
-+}
-+
- static int rockchip_p3phy_rk3568_init(struct rockchip_p3phy_priv *priv)
- {
- 	struct phy *phy = priv->phy;
-@@ -125,16 +164,41 @@ static int rockchip_p3phy_rk3568_init(struct rockchip_p3phy_priv *priv)
- 			     GRF_PCIE30PHY_WR_EN & ~RK3568_BIFURCATION_LANE_0_1);
- 	}
- 
-+	/* Clear SDRAM load done and bypass before loading the new firmware. */
-+	if (priv->fw) {
-+		regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON4,
-+			     GRF_PCIE30PHY_CON4_SDRAM_LD_DONE << 16);
-+		regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON4,
-+			     GRF_PCIE30PHY_CON4_SDRAM_BYPASS << 16);
-+	}
-+
- 	reset_control_deassert(priv->p30phy);
- 
- 	ret = regmap_read_poll_timeout(priv->phy_grf,
- 				       GRF_PCIE30PHY_STATUS0,
- 				       reg, SRAM_INIT_DONE(reg),
- 				       1000, RK_PCIE_SRAM_INIT_TIMEOUT_US);
--	if (ret)
-+	if (ret) {
- 		dev_err(&priv->phy->dev, "%s: lock failed 0x%x, check input refclk and power supply\n",
- 		       __func__, reg);
--	return ret;
-+		return ret;
-+	}
-+
-+	/*
-+	 * Load the updated PHY firmware into the internal SRAM and signal
-+	 * SDRAM load done once it has been written. The firmware update is
-+	 * optional: when no firmware-name is described in DT (older DTBs)
-+	 * the microcode already present in the PHY is used as-is.
-+	 */
-+	if (priv->fw) {
-+		rockchip_p3phy_rk3568_load_fw(priv);
-+
-+		regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON4,
-+			     (GRF_PCIE30PHY_CON4_SDRAM_LD_DONE << 16) |
-+			     GRF_PCIE30PHY_CON4_SDRAM_LD_DONE);
-+	}
-+
-+	return 0;
- }
- 
- static const struct rockchip_p3phy_ops rk3568_ops = {
-@@ -250,12 +314,14 @@ static int rockchip_p3phy_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct rockchip_p3phy_priv *priv;
- 	struct device_node *np = dev->of_node;
-+	const char *fw_name;
- 	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
- 		return -ENOMEM;
- 
-+	priv->dev = dev;
- 	priv->mmio = devm_platform_get_and_ioremap_resource(pdev, 0, NULL);
- 	if (IS_ERR(priv->mmio)) {
- 		ret = PTR_ERR(priv->mmio);
-@@ -268,6 +334,37 @@ static int rockchip_p3phy_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 	}
- 
-+	/*
-+	 * RK3568 can load an updated PHY firmware into its internal SRAM. The
-+	 * firmware file is named by the optional firmware-name property; when
-+	 * it is not described (older DTBs) or cannot be loaded, keep using the
-+	 * microcode already present in the PHY.
-+	 */
-+	if (priv->ops == &rk3568_ops && !of_property_read_string(np, "firmware-name",
-+								 &fw_name)) {
-+		ret = request_firmware(&priv->fw, fw_name, dev);
-+		if (ret) {
-+			dev_warn(dev, "PHY firmware %s not available: %d\n",
-+				 fw_name, ret);
-+			priv->fw = NULL;
-+		} else if (priv->fw->size % sizeof(u16)) {
-+			dev_warn(dev, "invalid PHY firmware size %zu, skip update\n",
-+				 priv->fw->size);
-+			release_firmware(priv->fw);
-+			priv->fw = NULL;
-+		} else {
-+			priv->fw_name = fw_name;
-+		}
-+
-+		if (priv->fw) {
-+			ret = devm_add_action_or_reset(dev,
-+						       rockchip_p3phy_release_fw,
-+						       priv);
-+			if (ret)
-+				return ret;
-+		}
-+	}
-+
- 	priv->phy_grf = syscon_regmap_lookup_by_phandle(np, "rockchip,phy-grf");
- 	if (IS_ERR(priv->phy_grf)) {
- 		dev_err(dev, "failed to find rockchip,phy_grf regmap\n");
+Best regards,
+Jianfeng
 
 _______________________________________________
 Linux-rockchip mailing list
