@@ -2,73 +2,64 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46BBE606A31B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 00:53:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7CBEA606A31A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 00:56:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mtWzi8rf;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=sebastian.reichel@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=RDkvC6IQ
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UULIymfv;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=PWL363Gd
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=E3SB2LFiSWBeNTNKbP+SBCtJRdpe2NNEnIAV1J9ALso=; b=mtWzi8rfM2mu6nG8Db7sRRgf56
-	1TVSrU/YrIDAdhqIe4jvNSnaEZXs+LHBv4uTTF4NYciotrlHK2JMfgu5A2FolO+fOz6OCvSV0p/Dz
-	MzVR7tqyHK00YdxKt8Un7+qUsIWvtAW8e1j3OKqIOZAamEvmFtZPVGY3wyd2daJMPnt3LP/nft0OA
-	wl/75CZBfaJ3vRJCIeihkm9XW/homp0vx5SpVgK67GYWsp4f881Ct2ejKlV0aD2cthIiA1Lj+r2aR
-	nQSrIu7BM6gWMYW9QSmy1KWTqKtgODTZQj4gBGgDxxI9CccyqOtfyM803pDF/fiJRcx+FfpfubWqS
-	iVwt3tUQ==;
+	bh=7D+6qQxukXXj7g26mn1BSqvxU+IL/nxob0XmP6QrMbs=; b=UULIymfvEWsWaeuuyO8dL/8fPe
+	SG2JcxlRRmdwg/O+0LYF0fdFk+wbs+8IuwtvQp5+33hIYuaFp/M0OmyAM0bu6X8VXMGdsbk5tzmo/
+	ViukSlv6lpK18hGHcyWwltv5oILeGG6EBiBYvVWRbU2webVLdiZcifdyXbT0r9sVbxLLBQuWKeZir
+	akZpwlavbc2NnDKeyLUwbhR+qehfooMoSiS7gQTMINWBVkKzHMOQigl/CcLcvwk/ds7nU763ZtYIE
+	rTotHjJwS1aCbrVGEz5e0MDt3X0kwd/z/mB+71/8sD5a1tRshGjSLkXunFw4UAhFBMPEMkBa5k0As
+	jDcW+tXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLVRd-00000003Ykb-2Dvf;
-	Tue, 27 Oct 2026 00:53:41 +0000
-Received: from sender5-op-o11.zoho.com ([165.173.182.11])
+	id 1xLVUP-00000003Z84-0eie;
+	Tue, 27 Oct 2026 00:56:33 +0000
+Received: from mail-m6034.netease.com ([210.79.60.34])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLVRa-00000003YjY-3QD3;
-	Tue, 27 Oct 2026 00:53:40 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1793062412; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=dFuocb8ycShV2gsV34w7258uQ0k75T0RaMI6aAP4Tbd6IF1AJuYMCpeGE1dfXN4OHD9+o2ekNutwCEpk/1oIT4pLiVIMM6j2leMpsxsonhU5/1EZ2s7EXZsAfjQvX258MYkftXDcUrWv4jCKL3vZvOpaA9pumPd+fQExAk79Ves=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1793062412; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=LV3nvll6ocea2pGpXpqxwrvIE5cHIXvRNjAOQNo/YIg=; 
-	b=DKod82D6tBqEcaTfeDeSwyoGDq35Ln6yZw2Sq3zOMtdPuQ/kvCPtQYTR0h5Ao/3XBbWE4D/58GcQHyZnTZxbCPrw6tC9oVAOLe8GcvN7YobVNQUI1jsKqRVe0WFeCPHVCZTtWq4U1j5cF15g0OBQ5uYos649kakx1b2A80Vuars=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1793062412;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=LV3nvll6ocea2pGpXpqxwrvIE5cHIXvRNjAOQNo/YIg=;
-	b=RDkvC6IQ07UUiLpy6XnwY3M3znvIF9a8+hBlf+JMzHy5J6C6/h6ylG+cQKbjV6fA
-	rpTL7v2LlSvfyeCXdng0Ev159CXq1EktSTOqKNBqhDgn8iVV7uG+/hy/F4ufRQ7EHWg
-	cqewg9YJFdnwvqFx6vlsb73S0vn+M2OZ8dNY87ps=
-Received: by smtp.zohomail.com with SMTPS id 1793062410582888.148462197187;
-	Mon, 26 Oct 2026 17:53:30 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 2CDC71806C8; Tue, 27 Oct 2026 01:53:27 +0100 (CET)
-Date: Tue, 27 Oct 2026 01:53:27 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Jiaxing Hu <gahing@gahingwoo.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH RESEND] arm64: dts: rockchip: let TCPM own the USB-C VBUS
- on CM5-IO
-Message-ID: <at_1n-ujVQIPUsMT@venus>
-References: <20261024083942.148860-1-gahing@gahingwoo.com>
+	id 1xLVUJ-00000003Z6J-2FDp;
+	Tue, 27 Oct 2026 00:56:32 +0000
+Received: from [172.16.12.48] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 526ea9e6d;
+	Tue, 27 Oct 2026 08:56:23 +0800 (GMT+08:00)
+Message-ID: <edacd4f1-1124-4439-9eda-633c7a4a6f8c@rock-chips.com>
+Date: Tue, 27 Oct 2026 08:56:19 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20261024083942.148860-1-gahing@gahingwoo.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/293.40.76
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, Artem Shimko <a.shimko.dev@gmail.com>,
+ Guenter Roeck <linux@roeck-us.net>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Simon Xue <xxm@rock-chips.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add the watchdog reset to RK3399
+To: iav@iav.lv, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>
+References: <20261027-rk3399-wdt-reset-v1-1-de9615abb0ec@iav.lv>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <20261027-rk3399-wdt-reset-v1-1-de9615abb0ec@iav.lv>
+X-HM-Tid: 0aa17adbbbac03a4kunma90a6e004743a1
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaTktOVkJNSR8ZHR9PSx9LGFYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=PWL363GdUjW1784OfG7j+YKI7o/gFsCMvKUsjaCHhA2WFslocJsNLRvCL1YreVxr+O45uyPM7Kq0juXgChueXnqPDFWX1pVeiw6ZNVXF4zq/pSJ9+Ny2sH198XWu9XqoxmnM6JNY43W0p0Djo4vSlFTdq3AGMa3oQifoaCUsM9c=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=FSAxfmic52ND3G8dQDz0tc2KBUjw/SYV9wPYI5DUcGg=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261026_175338_911998_0719F85E 
-X-CRM114-Status: GOOD (  19.41  )
+X-CRM114-CacheID: sfid-20261026_175628_117868_00101D9D 
+X-CRM114-Status: GOOD (  17.16  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,108 +70,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1232549570759350762=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-
---===============1232549570759350762==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="sjwqdswbfmk7owwp"
-Content-Disposition: inline
-
-
---sjwqdswbfmk7owwp
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH RESEND] arm64: dts: rockchip: let TCPM own the USB-C VBUS
- on CM5-IO
-MIME-Version: 1.0
-
-Hi,
-
-On Sat, Oct 24, 2026 at 09:39:42PM +1300, Jiaxing Hu wrote:
-> vcc_5v0_typec0 is the switched VBUS of the USB-C port. It is the
-> vbus-supply of the FUSB302, but also the phy-supply of u2phy0_otg.
-> The PHY enables it at boot and keeps it on, so TCPM never sees
-> vSafe0V and a sink partner stays in SRC_ATTACH_WAIT. A USB-C dock is
-> not detected.
->=20
-> Drop the phy-supply and leave VBUS to TCPM.
->=20
-> Fixes: 44a48a23974b ("arm64: dts: rockchip: Add ArmSoM CM5 and CM5-IO")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
-> ---
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-Greetings,
-
--- Sebastian
-
-> Resent with the lists on Cc. The first copy went to Heiko only.
->=20
->  arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts b/arch=
-/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts
-> index 5958b391e..72ca49ec3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts
-> @@ -306,7 +306,6 @@ &u2phy0 {
->  };
-> =20
->  &u2phy0_otg {
-> -	phy-supply =3D <&vcc_5v0_typec0>;
->  	status =3D "okay";
->  };
-> =20
-> --=20
-> 2.43.0
->=20
->=20
-
---sjwqdswbfmk7owwp
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmrf9f4ACgkQ2O7X88g7
-+prMhg/8Cs9QKPoOyCygjstmCc2nf2HUBu1Gbm7UZAQpVYzVWe4PPR8YaBQsUUCP
-GFHqoh1+1ODRX4cBXOzTa3ECuRYe7Ao05UnisBMTA2uvTF4eLDcjc1QG6MWJRDvy
-B/etdI5+gc2IAcnGaOcHatcT9rA8zv4dSU5db++NptI+X6mAezeIUhFVZGqfPe2K
-q59i2cK0kwUotfv7w2wzQXXqdZVfSqx18iLQnVzyB/CWnfynVpu9lmMk9o22ZVgd
-05yGPj6F9pHdHeGLB+EsUr/qi7ddJVbOez3s0h6BRLqaUt8bjYjKcy9IXGOPtkYt
-lWfL0z0f/e++u00ayMIYFpfvglX/fLuQygUqmJfwCF6fXXqnRi1kNbeH6QcuOVL0
-3tbvCutae/GL1LbVzMq0Zqe83fAgHdC3IVYKwut+EGXHXkjT9jcy/OHFPttaXntj
-NG041d99loG3M+xpPC11mZvGJQ7UfKXcSpHoTuJN4DBgceX0rzWXkFAv1yzo4f52
-GJpRTQJ4388LqsNSW5g8yo29AYjrw/bT08vzNgZHwQC/xYvsStq8zsBiiVnPR+/t
-TvXYzh4P+7JUjiGjT/EJulbd/gqzPzaqU7XlaarLutPjx55LQd6fgJYa2UJuM250
-+c3Uw/63NhXLlUUog31hU4Vw2tRRjrjXBlW7RBZWMj6BavFAfvw=
-=a9T6
------END PGP SIGNATURE-----
-
---sjwqdswbfmk7owwp--
-
-
---===============1232549570759350762==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1232549570759350762==--
-
+Q2M6IFNpbW9uCgrlnKggMjAyNi8xMC8yNyDmmJ/mnJ/kuowgODoyMCwgSWdvciBWZWxrb3Ygdmlh
+IEI0IFJlbGF5IOWGmemBkzoKPiBGcm9tOiBJZ29yIFZlbGtvdiA8aWF2QGlhdi5sdj4KPiAKPiBU
+aGUgUkszMzk5IHdhdGNoZG9nIGF0IDB4ZmY4NDgwMDAgaXMgcmVzZXQgYnkgU1JTVF9QX1dEVDAg
+KGJpdCA1IG9mCj4gQ1JVX1NPRlRSU1RfQ09OMjApLCBidXQgaXRzIG5vZGUgaGFzIG5vIHJlc2V0
+cyBwcm9wZXJ0eS4gSXRzIGNsb2NrIGlzCj4gZ2F0ZWQgZnJvbSBTRUNVUkVfR1JGX1NPQ19DT04z
+WzhdLCBvdXQgb2YgcmVhY2ggZm9yIExpbnV4LCBzbyB3aXRob3V0Cj4gdGhlIHJlc2V0IGR3X3dk
+dF9zdG9wKCkgY2FuIG9ubHkgc2V0IFdET0dfSFdfUlVOTklORyBhbmQgdGhlIHdhdGNoZG9nCj4g
+a2VlcHMgY291bnRpbmcgdGhyb3VnaCBzMmlkbGU6IG9uIGEgS29ib2wgSGVsaW9zNjQgYW5kIGEg
+Uk9DSyBQaSA0QSwKPiBzMmlkbGUgbG9uZ2VyIHRoYW4gdGhlIHdhdGNoZG9nIHRpbWVvdXQgZW5k
+cyBpbiBhIHdhdGNoZG9nIHJlc2V0Lgo+IAo+IFdpdGggdGhlIHJlc2V0IGxpbmUgZHdfd2R0X3N0
+b3AoKSBjYW4gc3RvcCB0aGUgd2F0Y2hkb2csIGFuZCB3aXRoCj4gIndhdGNoZG9nOiBkd193ZHQ6
+IG1hbmFnZSByZXNldCBsaW5lIGR1cmluZyBzeXN0ZW0gc3VzcGVuZC9yZXN1bWUiIHRoZQo+IGRy
+aXZlciBob2xkcyBpdCBpbiByZXNldCB3aGlsZSB0aGUgc3lzdGVtIHNsZWVwcy4KPiAKPiBTaWdu
+ZWQtb2ZmLWJ5OiBJZ29yIFZlbGtvdiA8aWF2QGlhdi5sdj4KPiAtLS0KPiBUaGUgZHdfd2R0IHNp
+ZGUgaXMgYXBwbGllZCBpbiB0aGUgd2F0Y2hkb2cgdHJlZToKPiBodHRwczovL2xvcmUua2VybmVs
+Lm9yZy9yLzIwMjYxMDI0MTQwODU0LjI1NjY0LTMtYS5zaGlta28uZGV2QGdtYWlsLmNvbQo+IC0t
+LQo+ICAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktYmFzZS5kdHNpIHwgMSAr
+Cj4gICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKykKPiAKPiBkaWZmIC0tZ2l0IGEvYXJj
+aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktYmFzZS5kdHNpIGIvYXJjaC9hcm02NC9i
+b290L2R0cy9yb2NrY2hpcC9yazMzOTktYmFzZS5kdHNpCj4gaW5kZXggYzQ2ZTU4ZDRhZjBkLi43
+YjcxYjI0YzFmNTEgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azMzOTktYmFzZS5kdHNpCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMz
+OTktYmFzZS5kdHNpCj4gQEAgLTE3NDgsNiArMTc0OCw3IEBAIHdhdGNoZG9nQGZmODQ4MDAwIHsK
+PiAgIAkJcmVnID0gPDB4MCAweGZmODQ4MDAwIDB4MCAweDEwMD47Cj4gICAJCWNsb2NrcyA9IDwm
+Y3J1IFBDTEtfV0RUPjsKPiAgIAkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDEyMCBJUlFfVFlQRV9M
+RVZFTF9ISUdIIDA+Owo+ICsJCXJlc2V0cyA9IDwmY3J1IFNSU1RfUF9XRFQwPjsKPiAgIAl9Owo+
+ICAgCj4gICAJcmt0aW1lcjogcmt0aW1lckBmZjg1MDAwMCB7Cj4gCj4gLS0tCj4gYmFzZS1jb21t
+aXQ6IGQyYWJjYmI5MDViMGU0YjJlMDZiMjU3ZmExZTViY2Y0ZmFhNmRiZGEKPiBjaGFuZ2UtaWQ6
+IDIwMjYxMDI3LXJrMzM5OS13ZHQtcmVzZXQtYzU4ZDIxMTE2MDlkCj4gCj4gQmVzdCByZWdhcmRz
+LAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
+aXAK
