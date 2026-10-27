@@ -2,36 +2,36 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9BBD3606A31F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 07:55:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 816D8606A32C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 07:55:48 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aZezfHxY;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=C9vlpw2a
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jseMN6cU;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=EAxR36c5
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=kLUAZNlfj7MvSHbWEaVxntUnlPJL4ybyKznoCUInFyY=; b=aZezfHxYk+E7RfYjxWHUwPGwTt
-	gOxbK91zuVTx4Rfo662/+ZIA9+nji2OV8qtWHtzIYrBj3RzYLsYMlBEH0nc/7jf32Xpi2ST+fCBRq
-	pSjpVCGeKPnLaA/+RyOxbytGIZtgpZbySk13ZOS8j336mhooFzMZQk2vA9w6EIpWEdGv0DPhyFJ/I
-	pqmzq9Vm29ApIR4oFEABnvn/K1I3+xVIAUKid7WoEegRH2r6iy69EmBDtTii+TcM8NxKhM2mpa3OH
-	G6XKkZnfYT80i5f5cgAWXRouaZFEsv5B+Is+09J657tWoMJiI6kya2z5OOq+BW/ozD1IwNISLZB4S
-	sNm+UP/g==;
+	bh=B+h7fmuNtmJCrkkAFDoABb62kaWXD2YboT4KvPcDGxU=; b=jseMN6cUFX0bScxL6yNGWJsfr7
+	F/8a7VgfJQjHbuXdLQdibGCKMhigRwbV4C+T4kaZXLd0bXTydqDxLHaYoEHscZ4CIfJc0faAaPw3R
+	5AunSLfleWIhEsLYGMhGu/lcsVci8YPcatUzbKUl5uOckl7YRiKioLH+yXZ+5fER/MRs+yj3UPeKU
+	btDd93PYOHQ0Smx6TDhZIXMxHVep+XkG9RKpMSlrGc3YzOTADqAZ4+SUysbcApSjEmx56QXrbA5bY
+	CgpcbwRGu8AsLsuJWpvJj0DD7wp+d/F33vhap41DMrFtDZKgVJNyGnlyZhseSTL+sljExK4liVSNr
+	B87vw+SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLc22-00000003xJ2-1ggn;
-	Tue, 27 Oct 2026 07:55:42 +0000
-Received: from mail-m8320.xmail.ntesmail.com ([156.224.83.20])
+	id 1xLc24-00000003xKk-2n5V;
+	Tue, 27 Oct 2026 07:55:44 +0000
+Received: from mail-m822136198.xmail.ntesmail.com ([8.221.36.198])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLc1y-00000003xH6-0aza
+	id 1xLc22-00000003xIF-2y4j
 	for linux-rockchip@lists.infradead.org;
-	Tue, 27 Oct 2026 07:55:41 +0000
+	Tue, 27 Oct 2026 07:55:44 +0000
 Received: from localhost.localdomain (unknown [61.154.14.87])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 527d681d1;
-	Tue, 27 Oct 2026 15:55:33 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 527d681f0;
+	Tue, 27 Oct 2026 15:55:37 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Bjorn Helgaas <bhelgaas@google.com>,
 	Manivannan Sadhasivam <mani@kernel.org>,
@@ -39,25 +39,28 @@ To: Bjorn Helgaas <bhelgaas@google.com>,
 Cc: linux-pci@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 0/2] Manage the PCIe supplies with pwrctrl
-Date: Tue, 27 Oct 2026 15:55:18 +0800
-Message-Id: <20261027075520.3591049-1-shawn.lin@rock-chips.com>
+Subject: [PATCH 2/2] arm64: dts: rockchip: rk3588-evb1: describe the PCIe3x4 slot supply
+Date: Tue, 27 Oct 2026 15:55:20 +0800
+Message-Id: <20261027075520.3591049-3-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20261027075520.3591049-1-shawn.lin@rock-chips.com>
+References: <20261027075520.3591049-1-shawn.lin@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa17c5b7cf003a4kunmefbf004c4b8273
+X-HM-Tid: 0aa17c5b901e03a4kunmefbf004c4b82ad
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDSEtOVkJCHRlCSkkYGRhCQlYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaSU5IVkpMTB9CSBoaHk0fH1YVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ0xZV1kWGg8SFR0UWUFZT0tIVUpLSU
 	9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=C9vlpw2ajSEUYZfntgIh45itrjseVYKzWGhYBVtKPodxZVz3HQVJbtg6p6v8MUzi5BLNMAENNwU5BY/kOJb4rTx+L2HgPm66vOI5SM6wuXY8EV3nwv83nPKIsQKZFrEZYXR8ASSX9+IV4tLAix9vhd7b3a9+kGog6FdndoJbdMY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=1fJwad9d4tyqt4SjrD99rAhUThoxvoAA2TOTT72jfPw=;
+	b=EAxR36c5LAmfymK1ywbtUfK1OHTeAsTDPHPYqMT4A71pUsB3A2RIUKd3OvrgamWC8eOL+RXpvhNhc3agSwZQyHZa/4rS1xvkyex+Y/lcxUZHIEfL8aNcwZN1QVo1Eo8Y/lXedkdoJN6oFw8gON8izygKyg4mQFuhwKHOWLHv7Ko=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=avlwFO4YaJ2loUf0K54UCcW3Kq7MdUM5DozbyuqnBWw=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_005538_747213_90E49260 
-X-CRM114-Status: GOOD (  10.09  )
+X-CRM114-CacheID: sfid-20261027_005543_128933_87B92B2A 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -71,42 +74,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Move the vpcie3v3 supply of the PCIe3x4 controller into a child node
+describing the slot, so that the PCI pwrctrl framework manages it.
 
-The Rockchip PCIe host controller describes a single vpcie3v3 supply on
-the controller node to power whatever is plugged into the slot. That is
-enough for a board that only ever has one device there, but it cannot
-express per-device supplies, and it does not fit boards where the slot
-power is owned by a separate power sequencing or switch device.
+The child node is modelled as a PCI bridge, which is what dtc expects
+for a node below a PCI host bridge, and carries the regulator that
+powers the devices in the slot.
 
-This series switches the pcie-dw-rockchip driver to the generic PCI
-pwrctrl framework, which lets the supplies of the devices below a host
-controller be described in their own DT nodes and be enabled before the
-PHY is initialized.
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Patch 1 makes the driver create and power on the pwrctrl devices below
-the controller ahead of the PHY init. The controller level vpcie3v3 supply
-is kept for backward compatibility, so existing boards keep working unchanged.
+---
 
-Patch 2 moves the supply of the RK3588 EVB1 slot into a child node that
-describes the slot as a PCI bridge.
+ arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
-
-
-Shawn Lin (2):
-  PCI: dw-rockchip: Power on devices below the RC using pwrctrl
-  arm64: dts: rockchip: rk3588-evb1: describe the PCIe3x4 slot supply
-
- .../boot/dts/rockchip/rk3588-evb1-v10.dts     | 14 ++++++++-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 30 ++++++++++++++++---
- 2 files changed, 39 insertions(+), 5 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+index 8969b56f3063..80eb36e783e0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+@@ -569,8 +569,20 @@ &pcie3x4 {
+ 	pinctrl-0 = <&pcie3_reset>, <&pcie30x4m1_clkreqn>;
+ 	supports-clkreq;
+ 	reset-gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
+-	vpcie3v3-supply = <&vcc3v3_pcie30>;
+ 	status = "okay";
++
++	pcie@0 {
++		device_type = "pci";
++		compatible = "pciclass,0604";
++		reg = <0x000000 0x0 0x0 0x0 0x0>;
++		bus-range = <0x00 0x0f>;
++
++		#address-cells = <3>;
++		#size-cells = <2>;
++		ranges;
++
++		vpcie3v3-supply = <&vcc3v3_pcie30>;
++	};
+ };
+ 
+ &pd_gpu {
 -- 
 2.25.1
 
