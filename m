@@ -2,144 +2,107 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B4EF9606A330
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 15:53:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 39586606A31F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 15:57:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZnpvkICr;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=hotmail.com header.i=@hotmail.com header.a=rsa-sha256 header.s=selector1 header.b=r+DckCIK
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EZZue4xn;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=dUsucV1b
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=S3McXy4/02WUSpzcqjzuvmaHGk3eOCzCqmn2KLIx71U=; b=ZnpvkICrvlS125JNC0QLaZRT27
-	YIiuOx0zawhG4UgiXyxvXlYxbJmNgnuQcbogM7BaKkyevFMZwbewETdRyqjBelGy2P9nifT2D8wcp
-	XIVmVkjGkO7emdWnOcAwWgtX1KDnuERe4sqTGMSYbypU8CBecLA7vgI311AH6z8cw9EEF6jUSupD2
-	fOq6dB650ZtaCKLrGwthFXX1kD3Q2/10/x/3Ahr09GcWjxgcFk7HG+NLKIYfvlisFv9Kr3tiymhed
-	t2ak9qjHLtjtc/jrUOKKQt4uUqPQcWs1kmEbn5In+OfETEYdqRlWn1UkfatC9v65rA8sc4beyTA8l
-	Pg2GDGBQ==;
+	bh=nABojyIia0iFpRIZRa3tFAQWZOyQurC4CxS5ESmEplY=; b=EZZue4xnrK+G0dxrQIlPsq7kh9
+	aHfCHDhgrUpQkDIWz+zNj4Uc2xo7HAbi6dHjz62RYRxKBQlB7D4Dy4Rq2zE6sR97243XkZzy4TKkE
+	DdJNxMtB+eBd/c1miJcFyjzurPMnNx7SfV5RyR4mb+JUFLoa1tvGCxVS+TZCMy2G3SlHszceoSjTW
+	2cdw+FV8G3xmT6T/djv8/GvSRMBbxNgo5bxSW8H7g3XpxibKy7+A5lbBbSyMBGHF5hqq3FCDQPblu
+	WThJI2FX9YYchAIlQN21Qldx9gGrrUyU4QABmC0na2Pyey5q2Qo/qhRJ/qszEACHkRUV4nEZE0clb
+	THnt2RWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLjUT-00000005HPp-0ghN;
-	Tue, 27 Oct 2026 15:53:33 +0000
-Received: from mail-northcentralusazolkn190100000.outbound.protection.outlook.com ([2a01:111:f403:d111::] helo=CH1PR05CU001.outbound.protection.outlook.com)
+	id 1xLjY7-00000005Hve-1Dyu;
+	Tue, 27 Oct 2026 15:57:19 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLjUR-00000005HPG-02RH
+	id 1xLjY5-00000005HvN-3dqa
 	for linux-rockchip@lists.infradead.org;
-	Tue, 27 Oct 2026 15:53:32 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=AiF7LuWhFKq3ts8lv7t4f2ugvokhl2A0sLTb387QOUmwKWGf9c5YlU8Fq8sewRNotzesiunkc+zMuK5ahQr2T1452jpqS9j31jmuG0+36S6xm1S2kHgtwGC6soXiZ3ClWvhr3OnpXQoqpxKeWqebbOXnf0nbDdsn4HO3mc70I/DvwS3dx2ulfv2PtoXUAEarejk8IQXwie8EcDNZSGwcqhGv/eUO4MHGmLyLIYh79R2OKEQIzSA/42m5r+V9z7A3s4rCDRLnsW9c+szVVm0a/0ZvOGIsMwO0TXC2/y9g90F2PZUrkltFxi3JxpH3vWCNoHjp8e+Ti7eHdOXBtAbTRw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=AZiHW65TeOd7AOKOoXpskmDgDhaZbDRcGSWXfItqLB4=;
- b=dtv7PtJCwcxBYYwnkha6EQvCK7PCih1smazpkVwsoLB39gOwmRZxTVR7L8Zpi0A8gSA1vjOOC2fc3YYo3VhdWjojrgAnyb26kfNhlmCKFehfY00oUnOWnE/MzlbWv/A2oESP8ZCCoalXgfzJNYeXKN/mOKreXmfywskM/Z2nXBUfm2Te62JUT7IqiGRan+WiNVOaP60sZdJazAlyFs5dhOt7Z1MIi3NRhqLro+lMHKiSUllUSW0BG61wIOVYY/AXI+pxm9qW0mTGqO2CTOON5Y09XYdwEOp/2IPmsFFx3jNYHt2s8YimYI2mG39psZ1dr4CH05BYQk0d/O4HGNYdVw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AZiHW65TeOd7AOKOoXpskmDgDhaZbDRcGSWXfItqLB4=;
- b=r+DckCIKpjbo1b2P+z8sr/oeGqTkxp2S6Mr1c+wl91IBvNPzT6ioB8BMwBZZhblYnPy54lmIf95J2XZGlVQTkeCp9LYhNEcmgIiqf1eanqQHJBUTZYOnE9OsKpcfmq9DQQEoE4Nz4vScvNuQA0l07kHFs9agLOcNq3Ls/VKEWYNAyI9CK/xe9sUcWjzNa4pxlLn3eWO/kX6AG/MLn7haXFAnyA8Za6vOrkniy8kBu7aHR1qn2q2v0EMZsfFhxkfcVs2Ht+JBOCpU82+sbsAiXSklet6nNWzhSwpQXlwj0Ii4s0h6ZNjaO2X2BL7ga2RpAMNgJqJmXAtDLdOQVB6yiA==
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18) by MN0PR19MB5825.namprd19.prod.outlook.com
- (2603:10b6:208:378::6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.546.21; Tue, 27 Oct
- 2026 15:53:16 +0000
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172]) by PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172%4]) with mapi id 15.21.0546.021; Tue, 27 Oct 2026
- 15:53:13 +0000
-Date: Tue, 27 Oct 2026 10:53:10 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: linux-pm@vger.kernel.org, Chris Morgan <macroalpha82@gmail.com>,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	maccraft123mc@gmail.com, zhangqing@rock-chips.com,
-	zyw@rock-chips.com, sre@kernel.org, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org, lee@kernel.org,
-	Zetarancio <zetarancio@users.noreply.github.com>
-Subject: Re: [PATCH 4/5] dt-bindings: power: supply: rk817-charger: Add
- rockchip,gate-function-disable
-Message-ID: <PH0PR19MB997338FA74EFF7CD338356EB88A5602@PH0PR19MB997338.namprd19.prod.outlook.com>
-References: <20261026174834.1652309-1-macroalpha82@gmail.com>
- <20261026174834.1652309-5-macroalpha82@gmail.com>
- <15875856.JCcGWNJJiE@diego>
-Content-Disposition: inline
-In-Reply-To: <15875856.JCcGWNJJiE@diego>
-X-ClientProxiedBy: SA1P222CA0075.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:806:2c1::22) To PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18)
-X-Microsoft-Original-Message-ID: <auDI5gkxXtt5mzK4@wintermute.localhost.fail>
+	Tue, 27 Oct 2026 15:57:17 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4E2E0423DB;
+	Tue, 27 Oct 2026 15:57:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5C771F01828;
+	Tue, 27 Oct 2026 15:57:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793116637;
+	bh=IT/YPbY1Zg8iM3T4dqpAupS8e72oCMI73jmy9cNsL14=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=dUsucV1b9FEgI1P9D6FHO5lE2BX2PFzxzoJSg7zad1WNJ2FyJvyiTyLD3SGNigjqx
+	 aDb4vPFLpRrjUyo8+abEqMncRWxIeIVSDDOXKEu8xZMgb/eprBewRSAvhZmMqynNGP
+	 MhSNipR0RiOYTWZlc5PxOUvnqvJ1y0avybG0RjcIkKNytNFrj3r3xsqZVVnjdKxqex
+	 X7apL6CiXEsY1vY5K+PgJpbf1zWKoScGHTFU4G5yWLHqGda3uRZB8OU3SZHviNYqA+
+	 DsBegKInjK3io7h8syDXRbmQfmSqW7mN17ZotSBzzbuYHG/3tcBR+qy2W+2aJAumSM
+	 KPE3XgWpKWX8w==
+Message-ID: <83695285-207e-4d0f-ada0-2273953e2eb9@kernel.org>
+Date: Tue, 27 Oct 2026 16:57:12 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|MN0PR19MB5825:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3cd21063-dc09-4080-9c1d-08df34426856
-X-MS-Exchange-SLBlob-MailProps: dx7TrgQSB6cUe9t9Fs5HiQGsDL5YS4QsptyKcqXRh+vuIcx4PlC0CpXHolmQjVX05kRmoOmwDQQO2zPq0knh2DZNiHr5hIVy3AXgkWiITE2PnprX7Wx1XgdNU+8kuZUxqyAIQXwNkW6VEVBSDj/tvFjpOGm8mI2igv/zr6sIdeBFCqGswsRDVGw4zhJEI0VmZDbK9cSdCf0UfCuHkvY68mtVKosKNt5bFamaRKN/Pqo/5URTGYwbYqrOqCFEC60Cm3mvkyGClbUh0OtGuLEB6RyWrj1SRzN+Kw30wqwnUI7EBM/mueuSyiBwPRx/rxdPPL0q+uFmC/6LP4H0TZHSdE1lRx94ietRoAJOSFiN+RXFdzGJhiW95jjy1dksRyPtf9oAdluOjv89rUfX2jyrx48M+5sFDv/OIxwCOVqTFvw3mxJjoBUqW5dTvtqohhBO8Xc0kpaC16bos01kvipOl4nYkBqloQ2f61uCoaJo9s/tyIgX6wDJiNvdoPWyjb9drv1TjC2TM/FGpVfa66Rd/fbnRf574fuEKmpJaMyMmEzKNbXxMTTt0KKYDPHTJ1ie3tExwbsgIGZZRt9krv8zrVUN/VNyUFhcm97T39o2ROWsJxPKIets0g+vKMr/mezrAzd03I1V0wwFHWTcXv13R65WfxWJ2dxIcEJS00n4WZ8SThGkhiRKRAf+emFHKRUTbNLoPXp6GqKZ8PDWE47hPh8L2mixoUKCnaz2rHvXpkCHagBqrKnqA9MCh84F3q6wGzRbFLJQCY4=
-X-Microsoft-Antispam: BCL:0;ARA:14566002|37011999003|25031999004|23021999003|5072599009|15080799012|6090799003|24021099003|19110799012|8060799015|55001999006|25010399006|4140399003|3412199025|440099028|40105399003|52005399003;
-X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?A/70FDamXKuShdiz7QDWtWv/XEOHPvfsWEWuGURqyYaZXhCOx/ST6hJyZO?=
- =?iso-8859-1?Q?mRcqbhsuTbfv8ExzeEBep44x7XaEdkQpfnZvuulMdBMN6u8ZBjfkV3gvf8?=
- =?iso-8859-1?Q?BVymrzvYIPcx07B654H9KbBbB7JclVQnjTllKhYBqIeFvq2LucCU/UH+YJ?=
- =?iso-8859-1?Q?7pQQm1KFyvffOTt7qyTNHd0kaAo4mIeRRoHILkUQ/9/iLSfJ/qkIoyo3Op?=
- =?iso-8859-1?Q?IJ4pyr4dFYDGHsK9J3funm6b67Pld7s+dcvurFpfLu6kLDNagJMPls9lnb?=
- =?iso-8859-1?Q?c5oQIBqv5ziDgaj/JH4AX97XPqvAiOvLu7iLFpRk1VxAqUK/MxqvM7a394?=
- =?iso-8859-1?Q?VsWwggc++QX6RZjr6mtlMPT17iZ4ULEnuOvLwuACclY3W/3ZUxKU7XpxQt?=
- =?iso-8859-1?Q?6retoTy9ODtnOZDEPRseEFkJfaggF1W9lGEhDwt2/QYPebAQ5KxMtNLQmH?=
- =?iso-8859-1?Q?hrKq8SR6zH6zywkozj9qQdDSD6Kz5Aybwvgk/7EYaXO4JTaj+CkFr9yAwF?=
- =?iso-8859-1?Q?OSGN0N5e1XAX+vxvGXUPzj4acXqE7jgEm/UVJ5cKntonE7tm7mFPxdLtCV?=
- =?iso-8859-1?Q?N3rqiRdvInGOXriTtrdVxS7InTdjb8oIDLt94ckz3L8FCVkGczIgF4P8Pb?=
- =?iso-8859-1?Q?m3XqO23d9Jp4ir31kLlsWlFwvGjW5nmsp34w1rIUS1BWqLJDTUnIhrBkdj?=
- =?iso-8859-1?Q?FIiI2DmwTtVBT7SCBGhnlylkcA5vEoe7FiOPLqX1Ntcpx7XjFAe8wxpSuR?=
- =?iso-8859-1?Q?lEeVLpza60pePcky9t74jJk7aBx36m9xg7aH95zOQFXIQoEp19PjfMNsCm?=
- =?iso-8859-1?Q?FSSpRnSMmU/1NV//U005Ik9kqvq/cVXIvxfUgDsUNMtvs+wEZXONSE/uzz?=
- =?iso-8859-1?Q?jv/68CrNZEXVbQHbnl8RIzUQE0N7DjhFzvMh7okB1mA7kFDOZscKR43zBh?=
- =?iso-8859-1?Q?Cy8Q75GZQ7X3R0pCtF8LHRsBviLTlD93iY4y6X0iMf5AyS8RuehsCXhlkr?=
- =?iso-8859-1?Q?5oAm9hK2GCsbXbH0aMGjwm2/Kc2+7dXHnPFnK2WcuBhJpKQPV5Uxy01my3?=
- =?iso-8859-1?Q?qEybR4OzViX8xSNceqkDwRydrhEqQCTTTyJWo68zR/sL?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?rbyzyM7u+O7ffTGsSMKRtdXRlNZp/0vI4Z4xTlSpegi1Q7f0mzyj7HGd7f?=
- =?iso-8859-1?Q?oTM+6yhYxyA7sK127UXKNH+TR52qvxabWzupBuFLtctDOGRQyA/gueJYKC?=
- =?iso-8859-1?Q?FgxSkfr4JZji/h4u/v0Yy1psD2Y1pHue+cMYf+M+xs1hhDXwZfh/3hU/kn?=
- =?iso-8859-1?Q?WOJMPc86CUKNNGUvT5L+SbFz4vNsAtq77F+Ke9g4UNttw2rpBfOWmPfT+7?=
- =?iso-8859-1?Q?lfM8s0m1Zfqyx9iCwYXhwBWNKXl2GPPYoCfcWuJmfnOZ+1uHU/b6b+Pd1R?=
- =?iso-8859-1?Q?boqiqXoFXkjWuO86GCsxB+CE0ejAGrjAPfKGtJTDxmS/8XLVlcFYhchmbv?=
- =?iso-8859-1?Q?KOJJbIIlgItPB57LRvPDjkXTDQ1xhCd2oCmPrkrHtITiFE472CEbnvUpPL?=
- =?iso-8859-1?Q?QVq/jiC+RNy7BXQi42/R1ofznxsitLehOnKTw/E9i14e2SqFFyHPRuWjNT?=
- =?iso-8859-1?Q?h2SBdC69UanouvD4l894mjAhxz3fcYyw9RdiGMUU5e9yX1vKoD8uFBpzxx?=
- =?iso-8859-1?Q?TgzYcWpfVwmu0FMvyFmUqKqdaKDOVMK6o62E0izTSfHQH9j03ktXRUR8u2?=
- =?iso-8859-1?Q?9FKf43dEaTvbCKWNxPMkRcUZchNNqGHH/r9pp4ZSoaXu3FZJ/u/YixSPsM?=
- =?iso-8859-1?Q?r2/dg/z+g9jxmQ0c+czfpOo9RUjgL0qP5QsVWIamMlxg9rBO7g/6WuNrl9?=
- =?iso-8859-1?Q?e3AL52yyAAr5nB98cZWPnbi/jlz+p2k95VM7M+Ky5z1iRDtcQknHxTMkuq?=
- =?iso-8859-1?Q?vXvgr29zYEFiVMO6+QnKf3EsE21J6kIeLCaaHWo2KGu7LhOR95Iux9e6Bx?=
- =?iso-8859-1?Q?2fHJv9LcOMM5WHYb/wOag1kCIHutWnlkH5goZ1CjQqX8803it3CLDbJbkA?=
- =?iso-8859-1?Q?albyERdM4otH5O6ICVr3WXWVGAx5HH1rHVGCTKwnCtflVc0sx91xxMy+iM?=
- =?iso-8859-1?Q?LIADpZqUMOjAOdymx0qKdEBrdYdBdS1wjKB/G3ot/el7cRmvvIepqmBCRz?=
- =?iso-8859-1?Q?bxOcB4S4IENmh2goWkYV/NTiKoRjQNBTBoPdOn4ZwEj3QjVBG0mgXKm7C/?=
- =?iso-8859-1?Q?7H97bYP6NAfV2NudKuIM/OL9mxrExRb/Hia9f84xhICrg45QypND4vkXRL?=
- =?iso-8859-1?Q?vGnI4HxtdqHfV4BbQcu+mh8Q6Fn+eB8AO8MMsZfXaPSp8Cms8n2c1okS6a?=
- =?iso-8859-1?Q?Zh+VhaYaf8pb0nhV88t/oIYHhcqJzjnKw0c7Rpze9G3ZCk4kFXCRkCmV7o?=
- =?iso-8859-1?Q?82nCKodOUwA9aEQ0PeC9rNvSyUndX0saVDRqxAVoVbNui0tWD0qKP2J2vM?=
- =?iso-8859-1?Q?K9luvReZISGEhJY1L3q7MSoy+SCrVi0EZ4CAipE+e0DH+Co0hL6UZkcbd2?=
- =?iso-8859-1?Q?BA9NAw64MoP2EPluFfu7BlLQmjJtrPGSefBVIfcXgrFgWKA4StxJZsOaq9?=
- =?iso-8859-1?Q?CzuQSo0z0FFB4fYH?=
-X-OriginatorOrg: sct-15-20-9412-4-msonline-outlook-990eb.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3cd21063-dc09-4080-9c1d-08df34426856
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR19MB997338.namprd19.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Oct 2026 15:53:13.6183
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR19MB5825
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_085331_074241_5639089D 
-X-CRM114-Status: GOOD (  25.95  )
-X-Spam-Score: -1.7 (-)
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] dt-bindings: power: cw2015: add cw2215, cw2217, and
+ cw2218
+To: Chris Morgan <macroalpha82@gmail.com>, linux-pm@vger.kernel.org
+Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
+ sre@kernel.org, t.schramm@manjaro.org, Chris Morgan <macromorgan@hotmail.com>
+References: <20261027131751.1724448-1-macroalpha82@gmail.com>
+ <20261027131751.1724448-2-macroalpha82@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <20261027131751.1724448-2-macroalpha82@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,110 +112,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Oct 26, 2026 at 08:23:40PM +0100, Heiko St=FCbner wrote:
-> Hi Chris,
-> =
+On 27/10/2026 14:17, Chris Morgan wrote:
+>  
+> -allOf:
+> -  - $ref: power-supply.yaml#
+> -
+>  properties:
+>    compatible:
+> -    const: cellwise,cw2015
+> +    enum:
+> +      - cellwise,cw2015
+> +      - cellwise,cw2215
+> +      - cellwise,cw2217
+> +      - cellwise,cw2218
+>  
+>    reg:
+>      maxItems: 1
+> @@ -31,8 +32,6 @@ properties:
+>        it is to mail two batteries to a test facility of CellWise and receive
+>        back a test report with the binary blob.
+>      $ref: /schemas/types.yaml#/definitions/uint8-array
+> -    minItems: 64
+> -    maxItems: 64
 
-> Am Montag, 26. Oktober 2026, 18:48:33 Mitteleurop=E4ische Normalzeit schr=
-ieb Chris Morgan:
-> > From: Chris Morgan <macromorgan@hotmail.com>
-> > =
+This needs min/maxItems constraints.
 
-> > Add a boolean attribute for the rk817-charger to control whether or not
-> > the system power is shutdown in battery off mode. The BSP kernel sets
-> > this value unless a device-tree attribute is present, and this attribute
-> > is to replicate that behavior.
-> =
+>  
+>    cellwise,monitor-interval-ms:
+>      description:
+> @@ -41,7 +40,14 @@ properties:
+>  
+>    power-supplies:
+>      minItems: 1
+> -    maxItems: 8 # Should be enough
+> +    maxItems: 8  # Should be enough
 
-> Devicetree is supposed to describe the hardware, so your description needs
-> to describe the per-board property this represents.
-> =
+Why changing? yamllint complained?
 
-> Just because it's in a vendor-BSP is generally not enough justification :=
--) .
-> =
+> +
+> +  shunt-resistor-micro-ohms:
+> +    description: |
 
-> This is especially true as you wrote in the cover-letter that no known
-> board actually needs this right now.
-> =
+Do not need '|' unless you need to preserve formatting.
 
-> =
+> +      The value, in micro-ohms, of the shunt resistor used for sampling
+> +      the battery current.
+> +    minimum: 1000000
+> +    maximum: 50000000
+>  
+>    monitored-battery: true
+>  
+> @@ -49,6 +55,28 @@ required:
+>    - compatible
+>    - reg
+>  
+> +allOf:
+> +  - $ref: power-supply.yaml#
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - cellwise,cw2015
+> +    then:
+> +      properties:
+> +        shunt-resistor-micro-ohms: false
+> +
+> +        cellwise,battery-profile:
+> +          minItems: 64
+> +          maxItems: 64
+> +
+> +    else:
+> +      properties:
+> +        cellwise,battery-profile:
+> +          minItems: 80
+> +          maxItems: 80
 
-> Heiko
+default for shunt-resistor-micro-ohms? or is it required for new devices?
 
-The datasheet describes this as "Whether the system voltage can be
-shutdown in Bat_off mode" and the register itself is described as
-SYS_CAN_SD. Maybe call it "rockchip,can-shutdown-bat-off"? Or given the
-fact that I'm not aware of any boards that would need it today, should
-I even bother with adding the devicetree override? The only reason I
-am adding it is in case this "fix" introduces a regression it will
-allow someone to set this flag, just like the BSP does.
 
-Thank you.
-
-> =
-
-> > Fixes: a592aa3a2a8c ("dt-bindings: mfd: Add Rockchip rk817 battery char=
-ger support")
-> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> > Suggested-by: Zetarancio <zetarancio@users.noreply.github.com>
-> > ---
-> >  Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml | 7 +++++++
-> >  1 file changed, 7 insertions(+)
-> > =
-
-> > diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml =
-b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
-> > index 2cb6d176a84c..4cf987fe763b 100644
-> > --- a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
-> > +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
-> > @@ -148,6 +148,12 @@ properties:
-> >            Value in microamps of the sleep filter current for the charg=
-er.
-> >            Value is used by the driver to derive the sleep sample curre=
-nt.
-> >  =
-
-> > +      rockchip,gate-function-disable:
-> > +        type: boolean
-> > +        description:
-> > +          Boolean value to prevent PMIC from turning off system voltag=
-e when
-> > +          battery voltage is shut down.
-> > +
-> >      required:
-> >        - monitored-battery
-> >        - rockchip,resistor-sense-micro-ohms
-> > @@ -381,6 +387,7 @@ examples:
-> >  =
-
-> >              rk817_charger: charger {
-> >                  monitored-battery =3D <&battery>;
-> > +                rockchip,gate-function-disable;
-> >                  rockchip,resistor-sense-micro-ohms =3D <10000>;
-> >                  rockchip,sleep-enter-current-microamp =3D <300000>;
-> >                  rockchip,sleep-filter-current-microamp =3D <100000>;
-> > =
-
-> =
-
-> =
-
-> =
-
-> =
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
