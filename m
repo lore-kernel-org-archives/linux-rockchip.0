@@ -2,62 +2,63 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 30715606A31A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 22:41:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B233606A33B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 23:15:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=P6CbOj4L;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=NsmCa2B1
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RKebohE/;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PVnQXRQw
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=gkMDwdiJmGXH17g98cPnMWEPvKIaXd8SVFZxn7JhNbc=; b=P6CbOj4LdLp+wH3sCe0+nsHwl/
-	g0RZ+jYbQipQogbrTq7fhXF8dF0rSZSC1nxllSRsg9v6bB9S5sP52GJ/aGFNt435cAZLSL0FMBQiO
-	9q/eNOhQ9PEIDIb5IrNP3z2U5K5iw6aeG0AyaZKA2iMsyunCgMX3tbZEmE/XqS5f2qTw1U/QI+8KU
-	7/BrBlEdDIhqKV3Kpg8hs1G2m4KPi4+rLWS5MDVPZQgncwomNUciKdvUmpg/yL/1iUMvqXyPUr6hE
-	02ITiUK3qyrbwbMFX/FTkv65kknntewJ9qnJSHgEH3Y+/ek7+oNgyvgSFpwrYz/dX7k5Fk7fziUpS
-	ouIgWncA==;
+	bh=3bevii02Ua931OSSkpF0ZtqEYSZkDNYdGpbiO4gbiDw=; b=RKebohE/Le4MN5Q24ELLuDPUGd
+	XGI0MilCEZbTqmgIBf1gJn63x52rtjpRRvNO9iaH733MOyiolqfjByEOtBebbRMo7CpB6VagAhhhk
+	XzIPIzY2DZoNWyRUO38ia1jSad+Jk3BoSitLI5skDBAB50DEbmiy19+cBtKhKLUackV7F9CzRQVbo
+	xAClObZemj90EkmDgf+5eMoEWNT7m+HQw7xxKSq/+zGE+sSILJSxpRXn9tj3prFDF9jNOiKSEzDKe
+	Hnw5zJVJO47EHxrUx0lzpjeRsN7+S94y7+VqMDkXrZePNgPZ5APGjWW2n/00OQk+lr8SySoc3c7mo
+	t1a04xfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLpqf-00000005ruw-3K8N;
-	Tue, 27 Oct 2026 22:40:53 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xLqOH-00000005uOP-1x0S;
+	Tue, 27 Oct 2026 23:15:37 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLpqd-00000005rtS-0g1E
-	for linux-rockchip@lists.infradead.org;
-	Tue, 27 Oct 2026 22:40:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=22Rzk6jQbC4L0N68Dcfos841pyMRoC1pkyU1FbZfLp4=; b=NsmCa2B1j0WdarKn94uha7zOPI
-	Tzv6VxzFHc9ogPPJqrRrgY4DOZJfpoXpLYU0xX2/B8jHvmfgVFDdSoXHiHtFm8RvHhG/3E2gQ29Vf
-	GOT0xvdNFc7aV5HrBPFYzM7VJdMw4LTdNMXxLC8Giu0GERV6hctYmHec4JZtG+yq4SXZzi8I41W+g
-	4hTHcmGVvA6BRdJaKIs6eAEz/PSAmJGDw3pjPnOHMWw08gSnzKPdF9tVQ0reWEq2Z6MQxq+OcRIOz
-	nG4yup/oL/GNnC8MhF7nItCK6jkUgEksxYd/WwQJaGYZVHR18kQ0MRxVhKKA8hDCiHwKDNeCFSiZF
-	agzxIH4w==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: linux-pm@vger.kernel.org, Chris Morgan <macroalpha82@gmail.com>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- maccraft123mc@gmail.com, zhangqing@rock-chips.com, zyw@rock-chips.com,
- sre@kernel.org, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
- lee@kernel.org, Zetarancio <zetarancio@users.noreply.github.com>
-Subject: Re: [PATCH 4/5] dt-bindings: power: supply: rk817-charger: Add
- rockchip,gate-function-disable
-Date: Tue, 27 Oct 2026 23:40:46 +0100
-Message-ID: <2849967.uZKlY2gecq@diego>
-In-Reply-To: <PH0PR19MB997338FA74EFF7CD338356EB88A5602@PH0PR19MB997338.namprd19.prod.outlook.com>
-References: <20261026174834.1652309-1-macroalpha82@gmail.com> <15875856.JCcGWNJJiE@diego>
- <PH0PR19MB997338FA74EFF7CD338356EB88A5602@PH0PR19MB997338.namprd19.prod.outlook.com>
+	id 1xLqOG-00000005uO0-1ptM;
+	Tue, 27 Oct 2026 23:15:36 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id D51FC43E67;
+	Tue, 27 Oct 2026 23:15:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 875A81F01825;
+	Tue, 27 Oct 2026 23:15:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793142935;
+	bh=CA/7Tox0t7EgvF7I3HnmzpFFxPiq5q1ElSMkzQot6VE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To;
+	b=PVnQXRQwjWsHVoayiNThshV99xcymU/V/pIZswtKDDmYMDJnOaOF0e4WQ7NFLyn2U
+	 hgbefSKUGrnKZ0wCwyAx6tS3q1iVEd2hqs5S1mvjxrh7pnqk7AkuDvh0wc0rFHGQZW
+	 CCI0r4bHaPu9ujtyJPNsRSPmR/5zGCIWHZHLXZ5Wp8LZlMpqX2Pd+u+Ay/HTGI+req
+	 r/99UDdROlN1XtaPaPQIWoAM1cKqtxREE8Szyk5HcNBzLT3i1yjFBRXX1sUwq8EkYr
+	 wrMun3XHkKgkbcRXvN7v9s6BDe1OKuYAOrghVqQXkizpkbbFOoNsm+SD4JzlS8ufzX
+	 6Z8j9YCxGv+ew==
+Date: Tue, 27 Oct 2026 18:15:34 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Hans Zhang <18255117159@163.com>
+Cc: bhelgaas@google.com, lpieralisi@kernel.org, kwilczynski@kernel.org,
+	mani@kernel.org, jingoohan1@gmail.com, imx@lists.linux.dev,
+	linuxppc-dev@lists.ozlabs.org, linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	sophgo@lists.linux.dev, linux-riscv@lists.infradead.org,
+	spacemit@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 00/16] PCI: dwc: Cache PCIe capability offset
+Message-ID: <20261027231534.GA520774@bhelgaas>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_154051_222957_4DAD7C3E 
-X-CRM114-Status: GOOD (  23.81  )
-X-Spam-Score: -2.1 (--)
+Content-Disposition: inline
+In-Reply-To: <20261027122827.2725643-1-18255117159@163.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,54 +68,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gRGllbnN0YWcsIDI3LiBPa3RvYmVyIDIwMjYsIDE2OjUzOjEwIE1pdHRlbGV1cm9ww6Rpc2No
-ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgQ2hyaXMgTW9yZ2FuOgo+IE9uIE1vbiwgT2N0IDI2LCAyMDI2
-IGF0IDA4OjIzOjQwUE0gKzAxMDAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+ID4gSGkgQ2hyaXMs
-Cj4gPiAKPiA+IEFtIE1vbnRhZywgMjYuIE9rdG9iZXIgMjAyNiwgMTg6NDg6MzMgTWl0dGVsZXVy
-b3DDpGlzY2hlIE5vcm1hbHplaXQgc2NocmllYiBDaHJpcyBNb3JnYW46Cj4gPiA+IEZyb206IENo
-cmlzIE1vcmdhbiA8bWFjcm9tb3JnYW5AaG90bWFpbC5jb20+Cj4gPiA+IAo+ID4gPiBBZGQgYSBi
-b29sZWFuIGF0dHJpYnV0ZSBmb3IgdGhlIHJrODE3LWNoYXJnZXIgdG8gY29udHJvbCB3aGV0aGVy
-IG9yIG5vdAo+ID4gPiB0aGUgc3lzdGVtIHBvd2VyIGlzIHNodXRkb3duIGluIGJhdHRlcnkgb2Zm
-IG1vZGUuIFRoZSBCU1Aga2VybmVsIHNldHMKPiA+ID4gdGhpcyB2YWx1ZSB1bmxlc3MgYSBkZXZp
-Y2UtdHJlZSBhdHRyaWJ1dGUgaXMgcHJlc2VudCwgYW5kIHRoaXMgYXR0cmlidXRlCj4gPiA+IGlz
-IHRvIHJlcGxpY2F0ZSB0aGF0IGJlaGF2aW9yLgo+ID4gCj4gPiBEZXZpY2V0cmVlIGlzIHN1cHBv
-c2VkIHRvIGRlc2NyaWJlIHRoZSBoYXJkd2FyZSwgc28geW91ciBkZXNjcmlwdGlvbiBuZWVkcwo+
-ID4gdG8gZGVzY3JpYmUgdGhlIHBlci1ib2FyZCBwcm9wZXJ0eSB0aGlzIHJlcHJlc2VudHMuCj4g
-PiAKPiA+IEp1c3QgYmVjYXVzZSBpdCdzIGluIGEgdmVuZG9yLUJTUCBpcyBnZW5lcmFsbHkgbm90
-IGVub3VnaCBqdXN0aWZpY2F0aW9uIDotKSAuCj4gPiAKPiA+IFRoaXMgaXMgZXNwZWNpYWxseSB0
-cnVlIGFzIHlvdSB3cm90ZSBpbiB0aGUgY292ZXItbGV0dGVyIHRoYXQgbm8ga25vd24KPiA+IGJv
-YXJkIGFjdHVhbGx5IG5lZWRzIHRoaXMgcmlnaHQgbm93Lgo+ID4gCj4gPiAKPiA+IEhlaWtvCj4g
-Cj4gVGhlIGRhdGFzaGVldCBkZXNjcmliZXMgdGhpcyBhcyAiV2hldGhlciB0aGUgc3lzdGVtIHZv
-bHRhZ2UgY2FuIGJlCj4gc2h1dGRvd24gaW4gQmF0X29mZiBtb2RlIiBhbmQgdGhlIHJlZ2lzdGVy
-IGl0c2VsZiBpcyBkZXNjcmliZWQgYXMKPiBTWVNfQ0FOX1NELiBNYXliZSBjYWxsIGl0ICJyb2Nr
-Y2hpcCxjYW4tc2h1dGRvd24tYmF0LW9mZiI/IE9yIGdpdmVuIHRoZQo+IGZhY3QgdGhhdCBJJ20g
-bm90IGF3YXJlIG9mIGFueSBib2FyZHMgdGhhdCB3b3VsZCBuZWVkIGl0IHRvZGF5LCBzaG91bGQK
-PiBJIGV2ZW4gYm90aGVyIHdpdGggYWRkaW5nIHRoZSBkZXZpY2V0cmVlIG92ZXJyaWRlPyBUaGUg
-b25seSByZWFzb24gSQo+IGFtIGFkZGluZyBpdCBpcyBpbiBjYXNlIHRoaXMgImZpeCIgaW50cm9k
-dWNlcyBhIHJlZ3Jlc3Npb24gaXQgd2lsbAo+IGFsbG93IHNvbWVvbmUgdG8gc2V0IHRoaXMgZmxh
-ZywganVzdCBsaWtlIHRoZSBCU1AgZG9lcy4KCkZpcnN0IG9mIGFsbCwgSSBndWVzcyBkZWZpbmlu
-ZyB0aGUgdGVybXMgYmV0dGVyIHdvdWxkIGJlIGhlbHBmdWwsIGkuZS4KSSBkb24ndCBrbm93IHdo
-YXQgdGhhdCAiYmF0dGVyeSBvZmYiIG1vZGUgaXMgcGx1cyB0aGUgd2hvbGUgZW52aXJvbWVudAp0
-aGlzIGhhcHBlbnMgaW4uCgpTZWNvbmRseSwgdGhpcyBuZXcgZmxhZyB3b3VsZCBjYXVzZSBhIHJl
-Z3Jlc3Npb24sIGJlY2F1c2UgYSBib2FyZCBuZWVkaW5nCnRoZSBvbGQgd2F5IHdvdWxkIG5lZWQg
-dG8gYWRkIHRoYXQgZmxhZy4gQnV0IHdoZW4gYSBib2FyZCBhY3R1YWxseQpyZXF1aXJpbmcgdGhp
-cyB0dXJucyB1cCB3aXRoIGFuIG9sZGVyIGRldmljZXRyZWUgd2l0aG91dCB0aGF0IG5ldyBmbGFn
-CnRoaXMgYnJlYWtzIGJhY2t3YXJkcyBjb21wYXRpYmxpdHkuCgpTbyBpZiB3ZSBoYXZlIGEgZnVu
-Y3Rpb24gZmxhZyBmb3IgdGhlIHBtaWMsIGl0IHdvdWxkIG5lZWQgdG8gYmUgdGhlIG90aGVyCndh
-eSBhcm91bmQuCgpBcyB5b3Ugc2FpZCB0aGlzIGlzIHNwZWNpZmljIHRvIGJhdHRlcnkgcG93ZXJl
-ZCBkZXZpY2VzLCBvZiB3aGljaCB3ZSBkb24ndApoYXZlIHRoYXQgbWFueSAtIGVzcGVjaWFsbHkg
-aW4tdHJlZS4gQ2FuIHlvdSBtYXliZSBsb29rIGluIHRoZSB2ZW5kb3ItdHJlZQppZiBhbnkgYm9h
-cmQgYWN0dWFsbHkgdXNlcyB0aGF0PwoKCkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Tue, Oct 27, 2026 at 08:28:11PM +0800, Hans Zhang wrote:
+> Hi,
+> 
+> The DWC PCIe core and its platform drivers repeatedly call
+> dw_pcie_find_capability(pci, PCI_CAP_ID_EXP) to obtain the offset of the
+> PCI Express Capability structure, including in paths that run more than
+> once such as link polling, suspend/resume and interrupt handlers.
+> 
+> Add a cached pcie_cap field to struct dw_pcie and a
+> dw_pcie_get_pcie_cap() helper that performs the lookup on first use and
+> caches the result, then convert the core and the 14 platform drivers
+> that use PCI_CAP_ID_EXP.
+> 
+> After this series, dw_pcie_find_capability(..., PCI_CAP_ID_EXP) no
+> longer appears in drivers/pci/controller/dwc/ outside of the helper
+> itself.
+> ...
+
+> base-commit: 4352b8aee98005853aa63f57d6377282de17a33f
+
+This does indeed apply cleanly on 4352b8aee980 ("Merge tag
+'i3c/for-7.3' of git://git.kernel.org/pub/scm/linux/kernel/git/i3c/linux"),
+but that's pretty old and not really useful any more.
+
+PCI topic branches are typically based on -rc1, but of course v7.4-rc1
+hasn't been tagged.  Until it is, you can use pci/main as a good base.
+It's currently 17bb0e2f6c80 ("Merge tag 'pci-v7.4-changes' of
+git://git.kernel.org/pub/scm/linux/kernel/git/pci/pci"), so
+drivers/pci/ in v7.4-rc1 will be pretty close to that.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
