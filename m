@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 96207606A323
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 13:29:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E6FD1606A323
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 13:29:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Lss5mTJF;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=NPirnYZl
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=AY9mvDho;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=cn5cnMUx
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,23 +14,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=fQ2iSecdvwt4dLsqHuE/+ifBnA3hpJWIdC5WNbPGru0=; b=Lss5mTJFcLvfG55wDVIkIN1haA
-	4O/XkYG+xsOFCeefRvjhASupkLwNfHFY7T5We5bdjKfYiWxokmDTaCzyFcLwH4Tdl8bUQRXlbZQ8s
-	KUSZHTqRM/mE0GlViqxGzRQxxfR1uJTiM1p5aCHY6qBrROvWryQ1vOZ5dTcZxrakVv+kvWzUBIOPk
-	q48egZGt3NKBitjbfC6fEQZG/YaGZ1GdtiaFf8KN1DuxQ8pIRCg1mugu77V2+E435A0qFxKyXUgV4
-	K6/MKBuZVvk+1ZSR7wasBmJ0AmxVOFdszJRfoE34jRFqv8HnsQI66w88Eo3dVze764BZuH73a6Hx3
-	2I41i45A==;
+	bh=XiPq5Nkrg93+8mgWjCBE7H4sm2WYeJr++ke0PGA4/SU=; b=AY9mvDhoi2SblVCup6zC3DXyuf
+	I5uPD5GGv3bEP6+0t5M6zCzc4Ka306XXaBz24i9r9YJ9/XfalC10EMBuLxOvspdbzT0B+x88K/PR5
+	6g6FKbo5DbCRuuV9OyPqN0eG2usMJjp5F4m//Te90vmAj1eU9IJJSVPTUNbPwT6/qakgH3hNnLTCR
+	UYVbwVQYyRhN/tn9BpSUiqxonvf6+0I2Q9bq/48rfhYhrQ+eA7LOOzIx/MehRIeIqa1t5Yv8Gpyl6
+	RI7jkzEe5N7Nn+3I7MKgQTVoL7EQg6jEVJm8KKkTHB6YgLyl+hx0VZwqnaMejCfz033g+lygwPibw
+	C9VhlW+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLhEZ-00000004rTv-1cSl;
-	Tue, 27 Oct 2026 13:28:59 +0000
-Received: from mail-m1076.netease.com ([154.81.10.76])
+	id 1xLhEk-00000004reD-2Qpa;
+	Tue, 27 Oct 2026 13:29:10 +0000
+Received: from mail-m83247.xmail.ntesmail.com ([156.224.83.247])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLhED-00000004qxb-1Bvh;
-	Tue, 27 Oct 2026 13:28:39 +0000
+	id 1xLhEF-00000004r0j-04yc;
+	Tue, 27 Oct 2026 13:28:40 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 528777a3c;
-	Tue, 27 Oct 2026 21:28:30 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 528777a45;
+	Tue, 27 Oct 2026 21:28:34 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -60,28 +60,27 @@ Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
 	linux-samsung-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v5 13/18] drm/exynos: exynos_dp: Unbind bridge when connector init fails
-Date: Tue, 27 Oct 2026 21:28:05 +0800
-Message-Id: <20261027132810.1746118-14-damon.ding@rock-chips.com>
+Subject: [PATCH v5 16/18] drm/bridge: analogix_dp: Declare DRM_BRIDGE_OP_HPD for hotplug reporting
+Date: Tue, 27 Oct 2026 21:28:08 +0800
+Message-Id: <20261027132810.1746118-17-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261027132810.1746118-1-damon.ding@rock-chips.com>
 References: <20261027132810.1746118-1-damon.ding@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa17d8c52f403a8kunm87c266213d5720
+X-HM-Tid: 0aa17d8c61a003a8kunm87c266213d573a
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDGkxPVkNPGR9PGR8YSEtOTFYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaThlNVktKGUxITElJTktIT1YVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
 	9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=NPirnYZlPG1sPdOJ5EysWzLUSSCEHtFIgB4DXt/ssBfk0at08VF3GnSiY76pbuE/rtTgcYFnf15hXLyPoBrmpnCHy9hF8hmFpJ/rg687Tg/cFw2qqsx14CD9OFFAbvH+O1NuKTejTQ8VeR5WTcUo279jB6ahUcdjy/qHBR8x0fg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=RUbnQZd01npFxSkYgQ+GOJK5rQ+b+UxFGoQp+0x6DuA=;
+	b=cn5cnMUxh+tZTsig1iD2lQuSkdIGiC0kgc/4tU5mfTr/mpDNBFkratkKfz9mtQDTVNwCpBE7VrlcRBgQFGW00WXH88y3yH/fqMA2+VvKOnztqoaS7JNVik65gW2OQofxUvXKWLDsqr3ngTaDqqvudLg/qv+p7ffQsS7NIG9rv/A=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=OZLecs9ULaW3R1e0H0Cp/hBp2cEn1xWlIbXGia1G9b8=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_062838_261020_831BFB01 
-X-CRM114-Status: UNSURE (   8.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261027_062839_388805_4AF3ADA9 
+X-CRM114-Status: GOOD (  13.68  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,30 +101,84 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The exynos_dp_bind() returns without unwinding analogix_dp_bind() when
-drm_bridge_connector_init() fails.  The aux device registered by
-analogix_dp_bind() is then left behind with a dangling drm_dev
-pointer, which could be accessed on later AUX transfers.
+The connector created by drm_bridge_connector_init() only gets
+DRM_CONNECTOR_POLL_HPD when a bridge in the chain declares
+DRM_BRIDGE_OP_HPD.  Without it, the HPD events reported from the IRQ
+thread were silently dropped and the connection state was only
+refreshed by the periodic poll worker.
 
-Call analogix_dp_unbind() in the error path to release the aux device.
+Declare DRM_BRIDGE_OP_HPD on the Analogix DP bridge, implement the
+no-op .hpd_enable/.hpd_disable callbacks, and report the hotplug
+events via drm_bridge_hpd_notify() with the status read from the
+hardware.
 
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 ---
- drivers/gpu/drm/exynos/exynos_dp.c | 1 +
- 1 file changed, 1 insertion(+)
+ .../drm/bridge/analogix/analogix_dp_core.c    | 22 +++++++++++++++----
+ 1 file changed, 18 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index b1e130278ecc..032c50d56179 100644
---- a/drivers/gpu/drm/exynos/exynos_dp.c
-+++ b/drivers/gpu/drm/exynos/exynos_dp.c
-@@ -121,6 +121,7 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
- 	if (IS_ERR(connector)) {
- 		ret = PTR_ERR(connector);
- 		dev_err(dp->dev, "Failed to initialize bridge_connector\n");
-+		analogix_dp_unbind(dp->adp);
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 009567da5f17..938c70dc8e15 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -31,7 +31,6 @@
+ #include <drm/drm_edid.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_print.h>
+-#include <drm/drm_probe_helper.h>
+ 
+ #include <video/of_display_timing.h>
+ 
+@@ -741,9 +740,13 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ 		hpd_detected = (irq_type & DP_IRQ_TYPE_HP_CABLE_IN) ||
+ 			       (irq_type & DP_IRQ_TYPE_HP_CABLE_OUT);
+ 	if (hpd_detected) {
++		enum drm_connector_status status;
++
+ 		dev_dbg(dp->dev, "Detected cable status changed!\n");
+-		if (dp->drm_dev)
+-			drm_helper_hpd_irq_event(dp->drm_dev);
++
++		status = analogix_dp_get_plug_in_status(dp) == 0 ? connector_status_connected :
++								   connector_status_disconnected;
++		drm_bridge_hpd_notify(&dp->bridge, status);
+ 	}
+ 
+ 	pm_runtime_mark_last_busy(dp->dev);
+@@ -1280,6 +1283,14 @@ static void analogix_dp_bridge_atomic_post_disable(struct drm_bridge *bridge,
+ 		DRM_ERROR("Failed to enable psr (%d)\n", ret);
+ }
+ 
++static void analogix_dp_bridge_hpd_enable(struct drm_bridge *bridge)
++{
++}
++
++static void analogix_dp_bridge_hpd_disable(struct drm_bridge *bridge)
++{
++}
++
+ static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
+ 	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
+ 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+@@ -1292,6 +1303,8 @@ static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
+ 	.attach = analogix_dp_bridge_attach,
+ 	.edid_read = analogix_dp_bridge_edid_read,
+ 	.detect = analogix_dp_bridge_detect,
++	.hpd_enable = analogix_dp_bridge_hpd_enable,
++	.hpd_disable = analogix_dp_bridge_hpd_disable,
+ };
+ 
+ static int analogix_dp_dt_parse_lanes_map(struct analogix_dp_device *dp)
+@@ -1612,7 +1625,8 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
  		return ret;
  	}
  
+-	bridge->ops = DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_DETECT;
++	bridge->ops = DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_DETECT |
++		      DRM_BRIDGE_OP_HPD;
+ 	bridge->of_node = dp->dev->of_node;
+ 	bridge->type = DRM_MODE_CONNECTOR_eDP;
+ 	ret = devm_drm_bridge_add(dp->dev, &dp->bridge);
 -- 
 2.34.1
 
