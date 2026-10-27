@@ -2,63 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B233606A33B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 23:15:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A2350606A323
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 23:30:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RKebohE/;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PVnQXRQw
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cKvpkKoR;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=michael.riesch@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=D5O1iFab
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=3bevii02Ua931OSSkpF0ZtqEYSZkDNYdGpbiO4gbiDw=; b=RKebohE/Le4MN5Q24ELLuDPUGd
-	XGI0MilCEZbTqmgIBf1gJn63x52rtjpRRvNO9iaH733MOyiolqfjByEOtBebbRMo7CpB6VagAhhhk
-	XzIPIzY2DZoNWyRUO38ia1jSad+Jk3BoSitLI5skDBAB50DEbmiy19+cBtKhKLUackV7F9CzRQVbo
-	xAClObZemj90EkmDgf+5eMoEWNT7m+HQw7xxKSq/+zGE+sSILJSxpRXn9tj3prFDF9jNOiKSEzDKe
-	Hnw5zJVJO47EHxrUx0lzpjeRsN7+S94y7+VqMDkXrZePNgPZ5APGjWW2n/00OQk+lr8SySoc3c7mo
-	t1a04xfw==;
+	bh=8Nae7czSaCJJZawX+0abNNAGQLEbWsBJh4C58CzAoHA=; b=cKvpkKoRpjiak95QXai2jGR3LM
+	2r2C7lRvZS5Cdkx7y8LZFSJO+wh7/0vheJoTuTA/sFAH52Wjuk+U9Es0UPb3aOzY5b0dOhtp6n1fB
+	uereWSOE5W/aGwBFJeJRMVFsBOJfPqL1Wh+3q+lxOTmwAjZq/nW7NugE1Q3KBGSQhYTpqKczgww2o
+	gcchLNmLxN8WXpvPnUZeIe6E7Jo9tC1AcbpNlwsY9FIjARRRKiIvT8b10/ZUwLseShKYe463pY6nr
+	7GLrx/c0xeH/j4cKPbaa8wgVkfFZgQEoBS4U6JKJptDF5iwLWaJZXsDLJ8vzAS29+RlZah310lS0s
+	akAEgj2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLqOH-00000005uOP-1x0S;
-	Tue, 27 Oct 2026 23:15:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xLqcd-00000005vCU-1Yht;
+	Tue, 27 Oct 2026 23:30:27 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLqOG-00000005uO0-1ptM;
-	Tue, 27 Oct 2026 23:15:36 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D51FC43E67;
-	Tue, 27 Oct 2026 23:15:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 875A81F01825;
-	Tue, 27 Oct 2026 23:15:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793142935;
-	bh=CA/7Tox0t7EgvF7I3HnmzpFFxPiq5q1ElSMkzQot6VE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To;
-	b=PVnQXRQwjWsHVoayiNThshV99xcymU/V/pIZswtKDDmYMDJnOaOF0e4WQ7NFLyn2U
-	 hgbefSKUGrnKZ0wCwyAx6tS3q1iVEd2hqs5S1mvjxrh7pnqk7AkuDvh0wc0rFHGQZW
-	 CCI0r4bHaPu9ujtyJPNsRSPmR/5zGCIWHZHLXZ5Wp8LZlMpqX2Pd+u+Ay/HTGI+req
-	 r/99UDdROlN1XtaPaPQIWoAM1cKqtxREE8Szyk5HcNBzLT3i1yjFBRXX1sUwq8EkYr
-	 wrMun3XHkKgkbcRXvN7v9s6BDe1OKuYAOrghVqQXkizpkbbFOoNsm+SD4JzlS8ufzX
-	 6Z8j9YCxGv+ew==
-Date: Tue, 27 Oct 2026 18:15:34 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: bhelgaas@google.com, lpieralisi@kernel.org, kwilczynski@kernel.org,
-	mani@kernel.org, jingoohan1@gmail.com, imx@lists.linux.dev,
-	linuxppc-dev@lists.ozlabs.org, linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	sophgo@lists.linux.dev, linux-riscv@lists.infradead.org,
-	spacemit@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 00/16] PCI: dwc: Cache PCIe capability offset
-Message-ID: <20261027231534.GA520774@bhelgaas>
+	id 1xLqca-00000005vBi-1qjD;
+	Tue, 27 Oct 2026 23:30:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1793143812; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=SbL7Z16pOFv18Hwvzx36QtOl68276uL5GKnFPZLgqBu01Oui/z1/7pM/yLjtUCxEKAXEbWRQuCRbnPfGUgs07qOR5WsgDaxEh4DQn3b9/4qA086PHTC3rnqrzMhTLVxno1FZa9GgvGPXApXVCQhjdSD/8vi0ncYhBwf6JarC5Kg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1793143812; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=4v/jJQwbsRSs6lwC4Nolc6758ol9hYYCgJeKIbFnn6g=; 
+	b=cH9W1iosI+m47d8phD8H5oXRPDRyVgmVq0beOpyoPUxoLxCblJNcvQPgDJ76OEdoVbUE48CDve1Xiq+aO73mVdA/Jmn3F4CflsaZdvO8MCz1Gpqoywr63DDascQuvG4vLEBCFWdD8w+ev2MeP1SkyXdQf4pj0bv9EbzS5dFDUJg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
+	dmarc=pass header.from=<michael.riesch@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1793143812;
+	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=4v/jJQwbsRSs6lwC4Nolc6758ol9hYYCgJeKIbFnn6g=;
+	b=D5O1iFabvUsZ5q0epzsXmnDjqu5JduqU8kpqkn3UIMkwpBmdhA2//uTMglg4tKHi
+	sTEZq+R+K8vfvPZr4cH/36hCm8/abo6a0FbF/XJZrDxPUyTrsm45o8K6/CXGu+kvzVJ
+	5KrOwPQE1WQ+UN7Tkl28A+ikpMlEhDSvcbbT7e5E=
+Received: by smtp.zohomail.com with SMTPS id 1793143809239396.72077942876126;
+	Tue, 27 Oct 2026 16:30:09 -0700 (PDT)
+Message-ID: <9e16930c-26fe-4bad-b120-2d4863b05e67@collabora.com>
+Date: Wed, 28 Oct 2026 00:30:03 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261027122827.2725643-1-18255117159@163.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 3/8] phy: rockchip-samsung-dcphy: Move block-level
+ setup to runtime resume
+To: Jason Yang <jason98166@gmail.com>, Vinod Koul <vkoul@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Guochun Huang <hero.huang@rock-chips.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20261016-dcphy-rx-v1-v5-0-e63b49eabe2d@gmail.com>
+ <20261016-dcphy-rx-v1-v5-3-e63b49eabe2d@gmail.com>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20261016-dcphy-rx-v1-v5-3-e63b49eabe2d@gmail.com>
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261027_163024_611776_CE7047C7 
+X-CRM114-Status: GOOD (  27.72  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,42 +89,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Oct 27, 2026 at 08:28:11PM +0800, Hans Zhang wrote:
-> Hi,
-> 
-> The DWC PCIe core and its platform drivers repeatedly call
-> dw_pcie_find_capability(pci, PCI_CAP_ID_EXP) to obtain the offset of the
-> PCI Express Capability structure, including in paths that run more than
-> once such as link polling, suspend/resume and interrupt handlers.
-> 
-> Add a cached pcie_cap field to struct dw_pcie and a
-> dw_pcie_get_pcie_cap() helper that performs the lookup on first use and
-> caches the result, then convert the core and the 14 platform drivers
-> that use PCI_CAP_ID_EXP.
-> 
-> After this series, dw_pcie_find_capability(..., PCI_CAP_ID_EXP) no
-> longer appears in drivers/pci/controller/dwc/ outside of the helper
-> itself.
-> ...
+Hi Jason,
 
-> base-commit: 4352b8aee98005853aa63f57d6377282de17a33f
+Thanks for the patch!
 
-This does indeed apply cleanly on 4352b8aee980 ("Merge tag
-'i3c/for-7.3' of git://git.kernel.org/pub/scm/linux/kernel/git/i3c/linux"),
-but that's pretty old and not really useful any more.
+On 10/16/26 10:56, Jason Yang wrote:
+> The APB reset and the BIAS references have to be treated as block-level
+> [1]: both the transmitter and the receiver need them, and they only have
+> to be programmed once. They are programmed from the transmitter's
+> power-on path today. A later change registers one struct phy for each of
+> them, and a second consumer coming up would then reset the block
+> underneath a PHY that is already running.
+> 
+> Program them from runtime resume instead, where whichever of the two
+> comes up first brings the block up and a second one no longer resets it.
+> This puts the BIAS writes ahead of the per-PHY reset assert, where the
+> TRM's worked example has them after [1]. That is safe: neither M_RESETN
+> nor S_RESETN covers the BIAS registers, and the values written are those
+> registers' reset defaults.
+> 
+> The output level select in BIAS_CON4 stays on the power-on path: it
+> selects 400mV for D-PHY and 530mV for C-PHY, and the driver core resumes
+> a runtime-PM supplier before the consumer's probe runs, so runtime resume
+> cannot yet know which of the two applies.
 
-PCI topic branches are typically based on -rc1, but of course v7.4-rc1
-hasn't been tagged.  Until it is, you can use pci/main as a good base.
-It's currently 17bb0e2f6c80 ("Merge tag 'pci-v7.4-changes' of
-git://git.kernel.org/pub/scm/linux/kernel/git/pci/pci"), so
-drivers/pci/ in v7.4-rc1 will be pretty close to that.
+This all is about to change. As discussed in the other thread, it is a
+HW specific decision whether D-PHY or C-PHY is used, and it holds for
+both PHYs at the same time. Thus, it is reflected in the device tree, e.g.,
+
+&mipidcphy0 {
+    phy-mode = <PHY_TYPE_CPHY>;
+};
+
+The value can be stored in samsung->type at provider probe time and
+shall be available at PM resume.
+
+> 
+> [1] RK3588 TRM: sections 22.4.1 (address map), 22.4.2 (reset values),
+>     22.6.1.2 (reset) and 22.6.4.1 (D-PHY transmitter start-up)
+> 
+> Signed-off-by: Jason Yang <jason98166@gmail.com>
+> ---
+>  drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 25 ++++++++++++-----------
+>  1 file changed, 13 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+> index 7382043e1f31..1471a1563d2a 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+> @@ -980,13 +980,6 @@ static void samsung_mipi_dcphy_bias_block_enable(struct samsung_mipi_dcphy *sams
+>  						 I_LADDER_1_00V);
+>  	regmap_write(samsung->regmap, BIAS_CON2, REG_325M_325MV | REG_LP_400M_400MV |
+>  						 REG_400M_400MV | REG_645M_645MV);
+> -
+> -	/* default output voltage select:
+> -	 * dphy: 400mv
+> -	 * cphy: 530mv
+> -	 */
+> -	regmap_update_bits(samsung->regmap, BIAS_CON4,
+> -			   I_MUX_SEL_MASK, I_MUX_400MV);
+
+This can stay here but will need some
+
+switch (samsung->type) {
+case PHY_TYPE_CPHY:
+	// write 530 mV
+	break;
+case PHY_TYPE_DPHY:
+	// write 400 mV
+	break;
+default:
+	//...
+};
+
+once there is support for CPHY.
+
+>  }
+>  
+>  static void samsung_mipi_dphy_lane_enable(struct samsung_mipi_dcphy *samsung)
+> @@ -1338,7 +1331,13 @@ static int samsung_mipi_dphy_power_on(struct samsung_mipi_dcphy *samsung)
+>  
+>  	reset_control_assert(samsung->m_phy_rst);
+>  
+> -	samsung_mipi_dcphy_bias_block_enable(samsung);
+> +	/* default output voltage select:
+> +	 * dphy: 400mv
+> +	 * cphy: 530mv
+> +	 */
+> +	regmap_update_bits(samsung->regmap, BIAS_CON4,
+> +			   I_MUX_SEL_MASK, I_MUX_400MV);
+> +
+
+No need for that change, then.
+
+>  	samsung_mipi_dcphy_pll_configure(samsung);
+>  	samsung_mipi_dphy_clk_lane_timing_init(samsung);
+>  	samsung_mipi_dphy_data_lane_timing_init(samsung);
+> @@ -1362,10 +1361,6 @@ static int samsung_mipi_dcphy_power_on(struct phy *phy)
+>  {
+>  	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
+>  
+> -	reset_control_assert(samsung->apb_rst);
+> -	udelay(1);
+> -	reset_control_deassert(samsung->apb_rst);
+> -
+>  	switch (samsung->type) {
+>  	case PHY_TYPE_DPHY:
+>  		return samsung_mipi_dphy_power_on(samsung);
+> @@ -1656,6 +1651,12 @@ static __maybe_unused int samsung_mipi_dcphy_runtime_resume(struct device *dev)
+>  		return ret;
+>  	}
+>  
+> +	reset_control_assert(samsung->apb_rst);
+> +	udelay(1);
+> +	reset_control_deassert(samsung->apb_rst);
+> +
+> +	samsung_mipi_dcphy_bias_block_enable(samsung);
+
+Adjust this accordingly. I guess it makes sense to reset from the PM
+resume method.
+
+Best regards,
+Michael
+
+> +
+>  	return 0;
+>  }
+>  
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
