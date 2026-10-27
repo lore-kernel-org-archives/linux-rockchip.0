@@ -2,66 +2,85 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4BB26606A326
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 13:58:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4DEC2606A31D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 13:59:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IxbCJI5Z;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=ejPHUn6R
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cDB96Pwj;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=bAg33LpD
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=C7Z9zJ5V43eGhWdTALHz4SBtPNSMQfSdQtEdxJP0AXg=; b=IxbCJI5ZiV5eaWfBjc0cOj8+Fm
-	jG48V5bTZqWXTyUNVogC1FT2zIzoCCJPPUnYNZa4icO1l2aBAHzatlR6k1pW68yEdbMTLngO1oxVQ
-	VYUTHq0pQJ3EiTTBIUH3Xckd7p5KmKND9ecIOMGapz7Vi179rvj63rfrzVdD32+96gI6NL0gk7Fo+
-	Acn8RDUaW5v8wgJzdVO2BB1NjDphsuKGixn3Ax1zqa+YUFCzBzWXr64wg50kQSSytbhviz7gWgMX6
-	F/eEVukMqd6QwaAGznCIZKF4/1Ss5BZiA6Yz8T7LR8I3Aog4/QZC0zbYvmmjZuiHUoLhq67Oo4N4s
-	kyt+VyUQ==;
+	bh=8TbJe2FiEh4+12eXTOG5Qi3yGfUPje/hFur6uayv0+o=; b=cDB96Pwj/5tmSAHlc48tkPO2Zy
+	tzoHliUngZeLGtQ3+eRGEQTaMSQoMm0W8ooeOlmTEk2VyG5UDHbkyMJFC7kQ3kNg0KeKp56hZZS4a
+	8Zr6GfuqSsxiPJIGfpk1U8rRjRmYNsQZuAjAQl7ElvOUgvbv8CTH1y4vKM+MYMWkyDD8Prk95XLex
+	LFSVviIKMtZgWlgBpvPpWsjXyBRjJ1HRPKrFmqWZFiNImTVZkYlggvPsZprhnZLgXhaXKGn0cLPP7
+	VTpgUgn5YkR2EAF9Uk9xFpAaZDi3GYtmqnfKyIS2n8YnkoixFN/B2MEV1Flgf5h5JKuIxHTMH+FwK
+	giz+KgxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLhgu-00000004y2f-40Kc;
-	Tue, 27 Oct 2026 13:58:16 +0000
-Received: from mail-m83249.xmail.ntesmail.com ([156.224.83.249])
+	id 1xLhE3-00000004qqr-0aJI;
+	Tue, 27 Oct 2026 13:28:27 +0000
+Received: from mail-m82188.xmail.ntesmail.com ([156.224.82.188])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLhgr-00000004y21-4AI1;
-	Tue, 27 Oct 2026 13:58:16 +0000
-Received: from [172.16.12.48] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5287e04b6;
-	Tue, 27 Oct 2026 21:58:09 +0800 (GMT+08:00)
-Message-ID: <38baaf87-4d5c-48bc-a11f-a5b6c04c20a8@rock-chips.com>
-Date: Tue, 27 Oct 2026 21:58:07 +0800
+	id 1xLhDz-00000004qpH-3zmD;
+	Tue, 27 Oct 2026 13:28:26 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 528777a29;
+	Tue, 27 Oct 2026 21:28:19 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sandy Huang <hjc@rock-chips.com>
+Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v5 04/18] drm/bridge: analogix_dp: Return bitmask from analogix_dp_get_irq_type()
+Date: Tue, 27 Oct 2026 21:27:56 +0800
+Message-Id: <20261027132810.1746118-5-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261027132810.1746118-1-damon.ding@rock-chips.com>
+References: <20261027132810.1746118-1-damon.ding@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Sergey Bostandzhyan <jin@mediatomb.cc>,
- Jensen Huang <jensenhuang@friendlyarm.com>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Enable SDIO Wi-Fi on NanoPi R2S
- Plus
-To: Deomid rojer Ryabkov <rojer@rojer.me>, Heiko Stuebner <heiko@sntech.de>
-References: <20261023235959.2988087-1-rojer@rojer.me>
- <20261023235959.2988087-3-rojer@rojer.me>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20261023235959.2988087-3-rojer@rojer.me>
-X-HM-Tid: 0aa17da7790103a4kunmcef2bd90e493
+X-HM-Tid: 0aa17d8c25f203a8kunm87c266213d56e7
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaQkpCVktPHk1NTksZTUNNH1YVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCTk4YVkMdS0pKHx0eGkpLGlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=ejPHUn6RV6C6gpkCiecTD0LdymLzVdtND/i7tW+egwUwmUnVzgwg1PuoPjdEnE2WzH7LaBj1GyIIUE4DDgWf3rNIFIKLdN6tvHEb3Z+LKLFSWVwyWiCt/civ7J17a+XQ7mdCOCGie+xdPZJ8Pzv6aMTpvJfEauBvYDDLli8VQyI=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=kgs6DMIElefIDmmG0Lqe7pZUKcoCtWm8n8LIAs8gWNY=;
+	b=bAg33LpDFYn3KE8maaNTh2wgt5U7Osc1aM3q6T4K9cq0VLsPx3cV9VtCswaxXvdFCwCsaaTpr68RTKMfVa9A96Z1Z1Kg7JyL8W/2uJjiOaIr5nRpQkFFnXEtBiKj3MjBT6MT8kGsjxyM4/BICY6S0z9Q3+o5bMHAr+k5Ai6TYBU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=at23V6Sm/XEj5AgVEMGbCOh2EcYhRO0VbXl1RJdkTdo=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_065814_326279_5B963267 
-X-CRM114-Status: GOOD (  19.08  )
+X-CRM114-CacheID: sfid-20261027_062824_553532_973269E5 
+X-CRM114-Status: GOOD (  14.69  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,76 +91,148 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-20.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgRGVvbWlkCgrlnKggMjAyNi8xMC8yNCDmmJ/mnJ/lha0gNzo1OSwgRGVvbWlkIHJvamVyIFJ5
-YWJrb3Yg5YaZ6YGTOgo+IFRoZSBOYW5vUGkgUjJTIFBsdXMgaGFzIGFuIE0uMiBFLWtleSBzbG90
-IHdpcmVkIHRvIHRoZSBzZG1tY19leHQKPiBjb250cm9sbGVyIGluIDQtYml0IFNESU8gbW9kZSwg
-d2hlcmUgRnJpZW5kbHlFbGVjIGZpdCBhbiBvcHRpb25hbAo+IEZuLUxpbmsgNjIyMkItU1JDIChS
-ZWFsdGVrIFJUTDg4MjJDUykgbW9kdWxlOgo+IAo+ICAgIC0gU0RJTyBzaWduYWxsaW5nIGF0IGEg
-Zml4ZWQgMS44ViAoVkNDXzE4KQo+ICAgIC0gV0lGSV9SRUdfT04gb24gR1BJTzNfQjAsIDMya0h6
-IHNsZWVwIGNsb2NrIGZyb20gdGhlIFJLODA1IENMS09VVDIKPiAKPiBFbmFibGUgdGhlIGNvbnRy
-b2xsZXIgYW5kIGFkZCB0aGUgcG93ZXIgc2VxdWVuY2UuIFRoZSBTRElPIHBpbnMgbmVlZAo+IDht
-QSBkcml2ZSBzdHJlbmd0aCBmb3IgU0RSMTA0IHR1bmluZyB0byBzdWNjZWVkLCBhcyBpbiB0aGUg
-dmVuZG9yCj4gZGV2aWNlIHRyZWUgWzFdOyB3aXRoIHRoZSBTb0MgZGVmYXVsdCBvZiA0bUEgbm8g
-c2FtcGxlIHBoYXNlIHdvcmtzLgo+IAo+IE9uIGJvYXJkcyB3aXRob3V0IHRoZSBtb2R1bGUgdGhl
-IGNvbnRyb2xsZXIgZ2l2ZXMgdXAgYWZ0ZXIgYWJvdXQgMC4ycwo+ICgibW1jMjogRmFpbGVkIHRv
-IGluaXRpYWxpemUgYSBub24tcmVtb3ZhYmxlIGNhcmQiKTsgbm90aGluZyBlbHNlIGlzCj4gYWZm
-ZWN0ZWQuCj4gCj4gV2l0aCB0aGUgbW1jIGNvcmUgY2hhbmdlIGZvciB0aGUgbW9kdWxlJ3MgQ01E
-MTEgaGFuZGxpbmcgYXQgYSBmaXhlZAo+IDEuOFYgWzJdLCB0aGUgbW9kdWxlIGlzIHR1bmVkIHRv
-IFNEUjEwNCBhdCAxNTAgTUh6IGFuZCB3b3JrcyB3aXRoIHRoZQo+IHJ0dzg4Xzg4MjJjcyBkcml2
-ZXI7IHdpdGhvdXQgaXQsIGl0IHJ1bnMgaW4gaGlnaC1zcGVlZCBtb2RlIGF0IDUwIE1Iei4KPiAK
-PiBbMV0gaHR0cHM6Ly9naXRodWIuY29tL2ZyaWVuZGx5YXJtL2tlcm5lbC1yb2NrY2hpcC9ibG9i
-LzkyMzhkZjlkMjFlODM1YmJhMzVjOGJhNTI0ODc4NDM4NzkzNmNiMmUvYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazMzMjgtbmFub3BpLXIyLXJldjI0LmR0cyNMMTQ0LUwxNzIKPiBbMl0g
-aHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbW1jLzIwMjYxMDIzMjMyODEzLjI5ODMzNjgt
-MS1yb2plckByb2plci5tZS8KPiBTaWduZWQtb2ZmLWJ5OiBEZW9taWQgcm9qZXIgUnlhYmtvdiA8
-cm9qZXJAcm9qZXIubWU+Cj4gLS0tCj4gICAuLi4vZHRzL3JvY2tjaGlwL3JrMzMyOC1uYW5vcGkt
-cjJzLXBsdXMuZHRzICAgfCA1NiArKysrKysrKysrKysrKysrKysrCj4gICAxIGZpbGUgY2hhbmdl
-ZCwgNTYgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzMyOC1uYW5vcGktcjJzLXBsdXMuZHRzIGIvYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazMzMjgtbmFub3BpLXIycy1wbHVzLmR0cwo+IGluZGV4IDZiYTRhNzRjYjFm
-Li5kYjE5YTE4YWU0NSAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzMyOC1uYW5vcGktcjJzLXBsdXMuZHRzCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazMzMjgtbmFub3BpLXIycy1wbHVzLmR0cwo+IEBAIC0xNyw2ICsxNywxNSBAQCAv
-IHsKPiAgIAlhbGlhc2VzIHsKPiAgIAkJbW1jMSA9ICZlbW1jOwo+ICAgCX07Cj4gKwo+ICsJc2Rp
-b19wd3JzZXE6IHNkaW8tcHdyc2VxIHsKPiArCQljb21wYXRpYmxlID0gIm1tYy1wd3JzZXEtc2lt
-cGxlIjsKPiArCQljbG9ja3MgPSA8JnJrODA1IDE+Owo+ICsJCWNsb2NrLW5hbWVzID0gImV4dF9j
-bG9jayI7Cj4gKwkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiArCQlwaW5jdHJsLTAgPSA8
-JndpZmlfcmVnX29uX2g+Owo+ICsJCXJlc2V0LWdwaW9zID0gPCZncGlvMyBSS19QQjAgR1BJT19B
-Q1RJVkVfTE9XPjsKPiArCX07Cj4gICB9Owo+ICAgCj4gICAmZW1tYyB7Cj4gQEAgLTM0LDMgKzQz
-LDUwIEBAICZpb19kb21haW5zIHsKPiAgIAl2Y2NpbzQtc3VwcGx5ID0gPCZ2Y2NfaW9fMzM+Owo+
-ICAgCXZjY2lvNi1zdXBwbHkgPSA8JnZjY18xOD47Cj4gICB9Owo+ICsKPiArJnBpbmN0cmwgewo+
-ICsJd2lmaSB7Cj4gKwkJd2lmaV9yZWdfb25faDogd2lmaS1yZWctb24taCB7Cj4gKwkJCXJvY2tj
-aGlwLHBpbnMgPSA8MyBSS19QQjAgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfbm9uZT47Cj4gKwkJ
-fTsKPiArCX07Cj4gK307Cj4gKwo+ICsvKgo+ICsgKiBTRFIxMDQgdHVuaW5nIGZhaWxzIHdpdGgg
-dGhlIGRlZmF1bHQgNG1BIGRyaXZlIHN0cmVuZ3RoLCB1c2UgOG1BIGxpa2UgdGhlCj4gKyAqIHZl
-bmRvciBkZXZpY2UgdHJlZS4KPiArICovCj4gKyZzZG1tYzBleHRfYnVzNCB7Cj4gKwlyb2NrY2hp
-cCxwaW5zID0KPiArCQk8MyBSS19QQTQgMyAmcGNmZ19wdWxsX3VwXzhtYT4sCj4gKwkJPDMgUktf
-UEE1IDMgJnBjZmdfcHVsbF91cF84bWE+LAo+ICsJCTwzIFJLX1BBNiAzICZwY2ZnX3B1bGxfdXBf
-OG1hPiwKPiArCQk8MyBSS19QQTcgMyAmcGNmZ19wdWxsX3VwXzhtYT47Cj4gK307Cj4gKwo+ICsm
-c2RtbWMwZXh0X2NsayB7Cj4gKwlyb2NrY2hpcCxwaW5zID0gPDMgUktfUEEyIDMgJnBjZmdfcHVs
-bF9ub25lXzhtYT47Cj4gK307Cj4gKwo+ICsmc2RtbWMwZXh0X2NtZCB7Cj4gKwlyb2NrY2hpcCxw
-aW5zID0gPDMgUktfUEEwIDMgJnBjZmdfcHVsbF91cF84bWE+Owo+ICt9Owo+ICsKPiArLyogT3B0
-aW9uYWwgTS4yIEUta2V5IFNESU8gV2ktRmkgbW9kdWxlIChGbi1MaW5rIDYyMjJCLVNSQywgUlRM
-ODgyMkNTKSAqLwo+ICsmc2RtbWNfZXh0IHsKPiArCWJ1cy13aWR0aCA9IDw0PjsKPiArCWNhcC1z
-ZC1oaWdoc3BlZWQ7Cj4gKwljYXAtc2Rpby1pcnE7Cj4gKwlkaXNhYmxlLXdwOwoKRHJvcCBkaXNh
-YmxlLXdwLgoKT3RoZXJ3aXNlLAoKUmV2aWV3ZWQtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJv
-Y2stY2hpcHMuY29tPgoKPiArCWtlZXAtcG93ZXItaW4tc3VzcGVuZDsKPiArCW1tYy1wd3JzZXEg
-PSA8JnNkaW9fcHdyc2VxPjsKPiArCW5vLW1tYzsKPiArCW5vLXNkOwo+ICsJbm9uLXJlbW92YWJs
-ZTsKPiArCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gKwlwaW5jdHJsLTAgPSA8JnNkbW1j
-MGV4dF9jbGsgJnNkbW1jMGV4dF9jbWQgJnNkbW1jMGV4dF9idXM0PjsKPiArCXNkLXVocy1zZHIx
-MDQ7Cj4gKwl2bW1jLXN1cHBseSA9IDwmdmNjX2lvXzMzPjsKPiArCXZxbW1jLXN1cHBseSA9IDwm
-dmNjXzE4PjsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiArfTsKCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Analogix DP controllers support two sets of interrupts for hotplug
+detection: HOTPLUG_CHG, and the pair PLUG / HPD_LOST.  The current
+driver logic relies on PLUG/HPD_LOST only, and
+analogix_dp_get_irq_type() returns on the first matched interrupt
+flag, so the hardirq handler unconditionally mutes all HPD
+interrupts, including HOTPLUG_CHG and INT_HPD.
+
+To prepare fine-grained interrupt handling, convert the return type
+from enum dp_irq_type to a u32 bitmask, accumulate all pending
+interrupt flags instead of returning early, add detection for
+DP_IRQ_TYPE_IRQ_HPD, and use zero instead of the DP_IRQ_TYPE_UNKNOWN
+sentinel to indicate no pending interrupts.
+
+Tested-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+
+---
+
+Changes in v4:
+- Add Tested-by tag.
+
+Changes in v5:
+- Simplify the commit msg.
+---
+ .../gpu/drm/bridge/analogix/analogix_dp_core.c |  8 ++++----
+ .../gpu/drm/bridge/analogix/analogix_dp_core.h |  4 ++--
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.c  | 18 ++++++++++--------
+ 3 files changed, 16 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 35b273a803a0..a3871f28b835 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -704,10 +704,10 @@ static irqreturn_t analogix_dp_hardirq(int irq, void *arg)
+ {
+ 	struct analogix_dp_device *dp = arg;
+ 	irqreturn_t ret = IRQ_NONE;
+-	enum dp_irq_type irq_type;
++	u32 irq_type;
+ 
+ 	irq_type = analogix_dp_get_irq_type(dp);
+-	if (irq_type != DP_IRQ_TYPE_UNKNOWN) {
++	if (irq_type) {
+ 		analogix_dp_mute_hpd_interrupt(dp);
+ 		ret = IRQ_WAKE_THREAD;
+ 	}
+@@ -718,7 +718,7 @@ static irqreturn_t analogix_dp_hardirq(int irq, void *arg)
+ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ {
+ 	struct analogix_dp_device *dp = arg;
+-	enum dp_irq_type irq_type;
++	u32 irq_type;
+ 
+ 	irq_type = analogix_dp_get_irq_type(dp);
+ 	if (irq_type & DP_IRQ_TYPE_HP_CABLE_IN ||
+@@ -728,7 +728,7 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ 			drm_helper_hpd_irq_event(dp->drm_dev);
+ 	}
+ 
+-	if (irq_type != DP_IRQ_TYPE_UNKNOWN) {
++	if (irq_type) {
+ 		analogix_dp_clear_hotplug_interrupts(dp);
+ 		analogix_dp_unmute_hpd_interrupt(dp);
+ 	}
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+index 64aaba67e669..dc189f0b7a19 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+@@ -120,7 +120,7 @@ enum dp_irq_type {
+ 	DP_IRQ_TYPE_HP_CABLE_IN  = BIT(0),
+ 	DP_IRQ_TYPE_HP_CABLE_OUT = BIT(1),
+ 	DP_IRQ_TYPE_HP_CHANGE    = BIT(2),
+-	DP_IRQ_TYPE_UNKNOWN      = BIT(3),
++	DP_IRQ_TYPE_IRQ_HPD      = BIT(3),
+ };
+ 
+ struct video_info {
+@@ -196,7 +196,7 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
+ int analogix_dp_init_analog_func(struct analogix_dp_device *dp);
+ void analogix_dp_init_hpd(struct analogix_dp_device *dp);
+ void analogix_dp_force_hpd(struct analogix_dp_device *dp);
+-enum dp_irq_type analogix_dp_get_irq_type(struct analogix_dp_device *dp);
++u32 analogix_dp_get_irq_type(struct analogix_dp_device *dp);
+ void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp);
+ void analogix_dp_reset_aux(struct analogix_dp_device *dp);
+ void analogix_dp_init_aux(struct analogix_dp_device *dp);
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+index c1344a3f013a..49c1961e4326 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+@@ -412,8 +412,9 @@ void analogix_dp_force_hpd(struct analogix_dp_device *dp)
+ 	writel(reg, dp->reg_base + ANALOGIX_DP_SYS_CTL_3);
+ }
+ 
+-enum dp_irq_type analogix_dp_get_irq_type(struct analogix_dp_device *dp)
++u32 analogix_dp_get_irq_type(struct analogix_dp_device *dp)
+ {
++	u32 irq_type = 0;
+ 	u32 reg;
+ 
+ 	if (dp->hpd_gpiod) {
+@@ -425,17 +426,18 @@ enum dp_irq_type analogix_dp_get_irq_type(struct analogix_dp_device *dp)
+ 	} else {
+ 		/* Parse hotplug interrupt status register */
+ 		reg = readl(dp->reg_base + ANALOGIX_DP_COMMON_INT_STA_4);
+-
+ 		if (reg & PLUG)
+-			return DP_IRQ_TYPE_HP_CABLE_IN;
+-
++			irq_type |= DP_IRQ_TYPE_HP_CABLE_IN;
+ 		if (reg & HPD_LOST)
+-			return DP_IRQ_TYPE_HP_CABLE_OUT;
+-
++			irq_type |= DP_IRQ_TYPE_HP_CABLE_OUT;
+ 		if (reg & HOTPLUG_CHG)
+-			return DP_IRQ_TYPE_HP_CHANGE;
++			irq_type |= DP_IRQ_TYPE_HP_CHANGE;
++
++		reg = readl(dp->reg_base + ANALOGIX_DP_INT_STA);
++		if (reg & INT_HPD)
++			irq_type |= DP_IRQ_TYPE_IRQ_HPD;
+ 
+-		return DP_IRQ_TYPE_UNKNOWN;
++		return irq_type;
+ 	}
+ }
+ 
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
