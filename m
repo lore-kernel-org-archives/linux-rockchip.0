@@ -2,65 +2,77 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DFE71606A32D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 10:17:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2DF17606A31B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 10:41:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lkiANwwL;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=VO7hBpsz
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=u5ZkxZ0q;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=Bp8TzZwa
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
+	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=hCOosF6mk3gOqoVRuRn7LBLVVm2I4jYs9tOu5dcqDcA=; b=lkiANwwLlX9cVcQ0Qmo2lh+/8Z
-	cH0gCtO1RlD5zMe92eKYMGsdqLdzRV2oE3rbfjAzaqZCbYPVBhRRa9LvJ9IKXEhH91Up0gmTUTQ8A
-	4rpZFiarOf1k5GWJ4LFiTdYkb8NVA88T2J3Ttyl/ypQYo2e4EGsOBShwTFAAHqMcMEBAegdwqyv/z
-	xC+f5u7ABbD60f5BeDL9Vbf2KRLxxpdPOVweyQaZdCE4mj+eQM5oVC+xHHjj/T17xxNsMqkPzGIQK
-	pCaw4yvI3qEpU7gT4n+EqwixSNg9T5JowAXVLE5zl4FrNGHt5UyREI+iRT+TIY6rTFMBf68E9vnON
-	Go6y2bfg==;
+	bh=SaUt/KeO3WEKz16WoSbdqoFdtT0ThWhlBRnT1TpL67M=; b=u5ZkxZ0q9YysTcexVNkwjblLAw
+	DlmdWWq1dbPC09LeuxWc7eIADDlk0pgXwjsPNOj683wFEvkXfZKMkTKwef6QlrQI7ejBK7e8tBEjI
+	/5dPTzccPp+7GTj5m6SzK/Er7uMnQ2z9+AcmayjqcroSXaA4D+DC3pICmWgs17eO/ibd7O85jFrq5
+	ipwNxkF9X1SSojmmE46puJb/PCJ6K5rJDW6gnRVp1H2YJjFzPcO4mYIlGICns5tYg22Y1pxXXHZlX
+	VoyIN3D+sIh8zhi29tNr1dyDRszuFAxBwmPYEMuBc8ks42vovkYi2spjoZWVCyWrayzWzasyIMfez
+	ATTsneDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLeF1-00000004HOE-0Jfw;
-	Tue, 27 Oct 2026 10:17:15 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xLecZ-00000004KA3-0IEa;
+	Tue, 27 Oct 2026 10:41:35 +0000
+Received: from out203-205-221-205.mail.qq.com ([203.205.221.205])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLeEy-00000004HN7-2vNM;
-	Tue, 27 Oct 2026 10:17:12 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E29C260052;
-	Tue, 27 Oct 2026 10:17:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91FA61F01825;
-	Tue, 27 Oct 2026 10:17:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793096231;
-	bh=350ox5QQqjyuw0S50o6SyzYoMNexUoMgbyvdSGfqoWE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=VO7hBpszikm9a8mzgYN7h9BuRv6QFbAY5Gkml1AKjTGSzjW/OELKbP39a35AI7KqO
-	 Ny/9CKi1Y3g2sDlCoO6wzK5jwCk58KwSysj90m4nhiC/RIUJ5dEulE7PQ4+pppEdY7
-	 3Bg7UbWe93ZS66AXGuDYkCxeJTmW8iPughSoKZAqx69gxyp188K/Vyedlt+QK7E1Bz
-	 kEKGsHruIEbfrfUXw4v8PSufIbJpYiv038zXLHiCSAM2bd/Wr1Ax2DWEZbkz0Cz+VN
-	 TVuXfEbyY1xAxKzLXmPr0qOd0qJJAYHOsl6yjTqRp5c8VeKBRWJtIrGNTpNDv864a7
-	 wPAOguRpG0tGg==
-Date: Tue, 27 Oct 2026 11:17:08 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Cunhao Lu <1579567540@qq.com>
-Cc: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
-	Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Elaine Zhang <zhangqing@rock-chips.com>, Richard Cochran <richardcochran@gmail.com>, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, netdev@vger.kernel.org
-Subject: Re: [PATCH v3 1/3] dt-bindings: clock: rockchip: Add RK3572 CRU
-Message-ID: <20261027-vagabond-gabby-caracara-4edabe@quoll>
-References: <20261026-add-board-ok3572-c-clk-v3-0-dbabfa39d692@qq.com>
- <20261026-add-board-ok3572-c-clk-v3-1-dbabfa39d692@qq.com>
+	id 1xLecW-00000004K9F-1h9o;
+	Tue, 27 Oct 2026 10:41:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1793097688; bh=ODqdDll0GzeBcm5id2YOWtXPK8sRGU89nkrBsWu4rGg=;
+	h=From:To:Cc:Subject:Date:References:In-Reply-To;
+	b=Bp8TzZwahKLRL/SddY2Sg0Z4EgXZhFRQLTen7N4HzWrkmRHPComRS++ga8FooxmU7
+	 1LC7SrAb6PmnKry6S1aQWCifa17/ZE0OKqj9XUDSzlUgOvj9SXDwvUj0NGmDURJGFl
+	 f2QZM1+wE6nVmwtcj+MnabNzHNCO5Viis1uiB1sY=
+X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
+X-QQ-XMAILINFO: M8rNKBZ4ITTu/T3HBktjzCSSpmd1v49tTIKVoHY4f8yo6KAyxeR/z8PauSRxY9
+	 OdcEgVFE5C6gG8fOIhtokmXv2YwzhxMs55TK8NTw6dJih0xDXHMmwoxERaCYOdz9Vzw47IjxXZMh2
+	 dOrvV4n5wLxxc5MXL3XcegqP/t0LfZ+LgW59i0fmyjDa4Yb2RX+7Pa7kO3h4GQBoQLvvnJFCjGYB0
+	 wMhqhpedsNpEoVTB6XjrpHAwig+k6vh00HtpQe8FoxfLgqMEhx7ECLOyEHZ/je7cvaP8FzLGSCrGo
+	 3JK2h5c3Fk/xf0riijVv/v7sG4SoXzHfLsSRdQunYLgUdiPVzLwN09HvoHS1sR8tvnD+fPrn1ql0T
+	 xZ79A6xIXH6muirtZah6s0NLu/1dXFzC0q2H/sliiCqeaX/Qj3xKrnndLvWrDshBfFz23Dksm1uqb
+	 UoEe0pYJSoSMpA70gV8Pvz7/PFSVpf5282wtBHXS8lR2t57XUylinUCa9bFIY6ZU5VPoOudeGZQc7
+	 wnmPhKE78tVPF+4GeQ8CkswPdfdXM6+dqQz8+7BLoZ7Vyf3aWIIySSbkvTBkiGcSyL2ae/RoHI2S8
+	 grDRhZQklHs/Ni+HLQFItuB36xHyVNDPaanqVKhNIuFkxNuzYBCPhdSsvYxAXTOSx725ETm/fTspt
+	 4pkvfJqLQgprVQMPNWOCMgQO356hvXIOJxEsBwMLaxGjifu+Ri0Vp1PQzvBk5r8mLO9eAiAdJowV/
+	 7yGSyBp/Tg6bG5CVnOA4vIBGQSYPpcoaZE8B61Z3wV2swOApepU1GWOdZPpRa23/8wF3uZyBhZ38c
+	 oO1SWTT1kdNMP8x1ECfqK0qxFI3rm45L55PUzFEUtl6GWO5SZOV7ujbd/hrkek3ze63PTFZuBF2OV
+	 JxUru6O5R33HUCrDYBwF5RqU+PSCyrpKbXOCXl0towbPCgPmlByb1V8gCnOUCr2mZZ5WInPYj1QFX
+	 rd9rqO8Pai4DufxU4w/hJub20OUgW3On7WrGGOg2AvAmcM6T7ElJ7vuElf0GL3TGRxG26HnYI/ZY+
+	 zwuS/0pcmQlnFtLy0uL3tK0vAG2EEZSI41+QmyWBXVc73WHlLBpr2wZEfuo1Xb09ZDaMvnJRG80Vx
+	 +Q4jOtACtzfNwPcY81qg8sQmOMKFogaCKAgGMiY5MpRm5w0rt7w+U6/9wYbj7CvBQmhmBwDZvDZHp
+	 USNbgmXMoQd
+From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
+To: "=?utf-8?B?U2hhd24gTGlu?=" <shawn.lin@rock-chips.com>, "=?utf-8?B?U3RlcGhlbiBCb3lk?=" <sboyd@kernel.org>, "=?utf-8?B?QnJpYW4gTWFzbmV5?=" <bmasney+clk@redhat.com>, "=?utf-8?B?SmVyb21lIEJydW5ldA==?=" <jbrunet+clk@baylibre.com>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?UGhpbGlwcCBaYWJlbA==?=" <p.zabel@pengutronix.de>, "=?utf-8?B?RWxhaW5lIFpoYW5n?=" <zhangqing@rock-chips.com>, "=?utf-8?B?UmljaGFyZCBDb2NocmFu?=" <richardcochran@gmail.com>
+Cc: "=?utf-8?B?c2hhd24ubGlu?=" <shawn.lin@rock-chips.com>, "=?utf-8?B?bGludXgtY2xr?=" <linux-clk@vger.kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bmV0ZGV2?=" <netdev@vger.kernel.org>
+Subject: Re: [PATCH v4 2/4] clk: rockchip: Add internal support for 24-bit fractional dividers
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261026-add-board-ok3572-c-clk-v3-1-dbabfa39d692@qq.com>
+Mime-Version: 1.0
+Date: Tue, 27 Oct 2026 18:41:25 +0800
+X-Priority: 3
+Message-ID: <tencent_AE0E51DA2FACC999E65D6631016044234005@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+References: <20261027-add-board-ok3572-c-clk-v4-0-d4152b4fedaa@qq.com>
+ <20261027-add-board-ok3572-c-clk-v4-2-d4152b4fedaa@qq.com>
+	<f9068153-0d6c-471f-a08b-41cff51ff748@rock-chips.com>
+In-Reply-To: <f9068153-0d6c-471f-a08b-41cff51ff748@rock-chips.com>
+X-QQ-mid: xmsezb41-0t1793097685t5ro03ncb
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261027_034132_771406_F3B74C51 
+X-CRM114-Status: GOOD (  11.34  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,38 +85,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Oct 26, 2026 at 02:56:47PM +0800, Cunhao Lu wrote:
-> From: Elaine Zhang <zhangqing@rock-chips.com>
-> 
-> The RK3572 CRU uses the PMU0 GRF for the AUPLL reference mux.
-> Describe the controller and define its clock and reset IDs.
-> 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> 
-> - Documented the xin24m input.
-> - Made the PMU0 GRF phandle required.
-> - Updated the example.
-> - Closed the reset ID gap while preserving each named reset's register
->   mapping.
-> - Removed CLK_NR_CLKS from the clock binding.
-> 
+Hi Shawn,
 
-All your patches seems to have odd commit msg.
+> I guess you are describing what you changed against the
+> original patch from Elaine. But this is not how it works.
 
-> Signed-off-by: Cunhao Lu <1579567540@qq.com>
+I'm very sorry for the mistake. After carefully reviewing the guidelines,
+I understand that my notes about changes to Elaine's original patch should
+have been enclosed in square brackets []. I will keep only the significant
+changes in those notes and place them within square brackets.
 
+Thank you again for pointing out my mistake. This reminds me that I still
+have much to learn.
 
 Best regards,
-Krzysztof
+Cunhao Lu
 
-
+pw-bot: cr
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
