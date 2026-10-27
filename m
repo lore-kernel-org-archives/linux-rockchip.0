@@ -2,72 +2,77 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 589DB606A31A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 11:53:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4D81D606A332
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Oct 2026 12:29:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=t914a6Ep;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Owm4O8Cg
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VQstZKmK;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=BS8ockxB
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=0hhTk5srHxLnsAIwk0of0CyWy3Rcon0LHBMzG99k1qo=; b=t914a6EpBwZmnL/pHL5affALVg
-	gDxbX6FcLkUFDnB38LPIvj1/J0QDpazWLAtWJIvXKJNHKFDyZJxpG+G3h4Ag+zGfY8C8/F+aR89zX
-	8zOVd2SI8kIUyGS+O5KqHwb8sT/nmJds10GqkS874OiCLKngLXUUzP8KhPUZ9Y1OInKR+5Ngy5udw
-	oOwcoPDGWx6PqKuc2BenB2DsByBqjEN/8Zh/aZYIS1QfjxUJNol0otsUfoZ1ItgbgfELDTPq4JK/q
-	yl0oRxo0CnZwmPx+XCkyU+zI4LTlsSYRUL/nd4d5tux2V1GCTLlHXM5UjxK3q+lCCLDUd/rZxTFLg
-	AKGJieoA==;
+	bh=83xwUaWhityo5lkW1n+juet9aY3uocID1LIDskkysYc=; b=VQstZKmK3e/oJ/BN/NcvNZbJ5+
+	bfPHycjGZasHm+0HRYsI1M4FhpOLMatkLc9K+ScGh2gjdimY9Ubbhxcc8yeBeSd78VNJ7EfjQ60dH
+	FauIoK3n5VKvte7p3z5AWAqv8bnLTAebqxUZThpp1gxFcs6SA6RglOyEDkkPd+x0s7qid2YjadAsR
+	EBIo1tiJ+y2y6AFyBIIoGOrdknlyGRjklDFmqRbg2Pvka9PpRvpuC0iRnWWuA3eZk/pQvJ/2dpQV0
+	3Stb8P7IMs8GJpKRIOB2zxYPAP0SEUf7Xn7ZKrT7FOjhVbgMh9HXWAJzLLnH07FxJuTSJwrJWUZt9
+	yxRCFNjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLfkS-00000004XBT-2Xmf;
-	Tue, 27 Oct 2026 11:53:48 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xLgIT-00000004cmR-3bSX;
+	Tue, 27 Oct 2026 12:28:57 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLfkR-00000004XB8-3FUB
-	for linux-rockchip@lists.infradead.org;
-	Tue, 27 Oct 2026 11:53:47 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C492860052;
-	Tue, 27 Oct 2026 11:53:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0280D1F01825;
-	Tue, 27 Oct 2026 11:53:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793102026;
-	bh=dJfiG1Iomn/Als90jreTRRE3FGx9BaAVSsyWgPeYmUk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=Owm4O8Cgxa5ntbnWs3OC+0Uad9JnU5pJ9bAWdGy5qekbPVqRtQldiO5DFNx7gsYGl
-	 zjzlBaYGJVodzBlxXUQtmZxxMFdW6GkJ/d5GR/Gbb4Of30AZQMirbe5jeTSJhFgv8m
-	 g08NIjrA2/O+ahXxwqpryy4wCMJ9wzYw0NHKQwO22zLWGS2T+5z71MB7ELlXLQm97m
-	 t/sIYgvnOXATlqSaxWQPfCUcF90hmMPGWpQluFpQPUXcUB2Z/AMefMdZawTT4lItd1
-	 pAWfx5sOudYoxDtuwFgi9aiV/uhEhizAj8skGLR0xmmexTQB7C4VnfKIeh1IQbL/T3
-	 WDxvpGJHhphRw==
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Bjorn Helgaas <bhelgaas@google.com>, 
- Shawn Lin <shawn.lin@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org
-In-Reply-To: <1790664898-207928-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1790664898-207928-1-git-send-email-shawn.lin@rock-chips.com>
-Subject: Re: [PATCH] PCI: dw-rockchip: Enable INTx affinity support
-Message-Id: <179310201852.16692.17318855369732407934.b4-ty@b4>
-Date: Tue, 27 Oct 2026 17:23:38 +0530
+	id 1xLgIQ-00000004cjY-2Yrj;
+	Tue, 27 Oct 2026 12:28:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=C8
+	BtL4WHZEYvTyOrvB3s5kHvzLx9kujDt8bs3NHTAwA=; b=BS8ockxBgj9gcy+xdB
+	S33DdiFaHGWtXwxynQe6OoE+d6YHUEHHmC14Syz6JvvInhcBO5+vBhSUlsrn0akI
+	JlrtBtBz3C+7zI3yxpE7GW5zXxM4R5XhbNefv/I2g3CrYF4b1il88bkSvXGWPD9o
+	WJaus/XNJtjpC1AVoLw8WuvGQ=
+Received: from Precision-7960.. (unknown [])
+	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wD3Dz_umOBqUsqlCw--.64541S3;
+	Tue, 27 Oct 2026 20:28:33 +0800 (CST)
+From: Hans Zhang <18255117159@163.com>
+To: bhelgaas@google.com,
+	lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	mani@kernel.org,
+	jingoohan1@gmail.com
+Cc: imx@lists.linux.dev,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	sophgo@lists.linux.dev,
+	linux-riscv@lists.infradead.org,
+	spacemit@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Hans Zhang <18255117159@163.com>
+Subject: [PATCH v4 01/16] PCI: dwc: Add pcie_cap field and caching helper
+Date: Tue, 27 Oct 2026 20:28:12 +0800
+Message-ID: <20261027122827.2725643-2-18255117159@163.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261027122827.2725643-1-18255117159@163.com>
+References: <20261027122827.2725643-1-18255117159@163.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=312;
- i=manivannan.sadhasivam@oss.qualcomm.com; h=from:subject:message-id;
- bh=Ln4DWbgUCH/2gfmwbpXsUFycVVdbQrpXj6f1Z3vneE8=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBq4JDHDBZec5crnF0BSQHWIdxBK8PZtqtj2kyXM
- qM2PwAvl2iJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCauCQxwAKCRBVnxHm/pHO
- 9ehIB/4tfu7NjWjmZ9W5XSIfDoj9uWXIUt3w8zQndV10pbutrnNj7mhqMlAJFNT8RhvHxp8hxK2
- sHSuycy7Tn36YRnImK/gzgUda1teP5L8J9uJuf6HO9hnrTOy4yH8S4gTvJ7E4UciWKMzOq1+aQj
- amtNorxvCa8AOog6xckB2CvG2JVpmWCVn1dv05OOFkAcMg+rb4NvZN8X76lvawtf/gncfqN1wGv
- /FooAYihOQ99CeUvIg4Ibz10/0xV/JBM1zk0Jdnei3/Vk5QsawLW6/tR2dd6D6G7iIEcy8rnAK5
- uSI+nvm7urGzS1fe3KYgc973nv4swWwjPfG/qUfwaxhQy+GP
-X-Developer-Key: i=manivannan.sadhasivam@oss.qualcomm.com; a=openpgp;
- fpr=C668AEC3C3188E4C611465E7488550E901166008
+X-CM-TRANSID: _____wD3Dz_umOBqUsqlCw--.64541S3
+X-Coremail-Antispam: 1Uf129KBjvJXoWxAF4xCr4UZFW3KFW7Zw17GFg_yoWrJF4xpa
+	y3JF1SyFs8JFWSva13Aa1SgFy3Aas5ArW7Ja93Gw1fZw13ur1UKF10yry5tF17Gr4Iqr12
+	gr45ta48CFn8JFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zEs2-8UUUUU=
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7BE12GrgmPEX2AAA38
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261027_052855_074927_B23B3C39 
+X-CRM114-Status: GOOD (  19.60  )
+X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,22 +82,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	FROM_LOCAL_DIGITS,FROM_LOCAL_HEX,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Ck9uIFR1ZSwgMjkgU2VwIDIwMjYgMTQ6NTQ6NTggKzA4MDAsIFNoYXduIExpbiB3cm90ZToKPiBQ
-Q0k6IGR3LXJvY2tjaGlwOiBFbmFibGUgSU5UeCBhZmZpbml0eSBzdXBwb3J0CgpBcHBsaWVkLCB0
-aGFua3MhCgpbMS8xXSBQQ0k6IGR3LXJvY2tjaGlwOiBFbmFibGUgSU5UeCBhZmZpbml0eSBzdXBw
-b3J0CiAgICAgIGNvbW1pdDogNzdkYWE0ZDBmNDdkYzM0YTQ0Y2Y5YjgxNDE0NzhjNGMyYTRlYWI3
-YgoKQmVzdCByZWdhcmRzLAotLSAK4K6u4K6j4K6/4K614K6j4K+N4K6j4K6p4K+NIOCumuCupOCu
-vuCumuCuv+CuteCuruCvjQoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+The DWC PCIe core and its platform drivers repeatedly call
+dw_pcie_find_capability(pci, PCI_CAP_ID_EXP) to obtain the offset of the
+PCI Express Capability structure. Besides being verbose, that performs a
+DBI read every time, including in paths that run repeatedly such as link
+up polling, suspend/resume and interrupt handlers.
+
+Add a pcie_cap field to struct dw_pcie and a helper
+dw_pcie_get_pcie_cap() that performs the lookup on first use and caches
+the result for the subsequent calls.
+
+The lookup is deliberately done lazily, at the first place that needs the
+offset, instead of at a fixed point during controller initialization.
+This guarantees that the DBI read happens exactly when the open coded
+dw_pcie_find_capability() call it replaces used to happen, so no DBI
+access can be made before the controller clocks, resets and power are
+enabled. This matters for endpoint controllers such as qcom-ep and
+tegra194, where DBI is only accessible after PERST# is deasserted, and it
+also means platform drivers do not have to call the helper from a
+specific callback at the right time.
+
+The cached value is accessed with READ_ONCE()/WRITE_ONCE(), because the
+first lookup may be triggered from different contexts, for example the
+qcom-ep global IRQ and PERST# IRQ handlers. A concurrent lookup stores
+the same value, so this race is benign.
+
+A return value of 0 means that the capability is not present. This
+cannot happen on real DWC hardware, where the PCI Express Capability is
+mandatory, so a negative result is not cached separately: it only causes
+the search to be repeated, which does not affect correctness.
+
+Signed-off-by: Hans Zhang <18255117159@163.com>
+---
+ drivers/pci/controller/dwc/pcie-designware.h | 34 ++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
+
+diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
+index 0735ae940924..fa31e8b763bc 100644
+--- a/drivers/pci/controller/dwc/pcie-designware.h
++++ b/drivers/pci/controller/dwc/pcie-designware.h
+@@ -592,6 +592,8 @@ struct dw_pcie {
+ 	 * use_parent_dt_ranges to true to avoid this warning.
+ 	 */
+ 	bool			use_parent_dt_ranges;
++
++	u8			pcie_cap;	/* Offset of PCI_CAP_ID_EXP */
+ };
+ 
+ #define to_dw_pcie_from_pp(port) container_of((port), struct dw_pcie, pp)
+@@ -830,6 +832,38 @@ static inline void dw_pcie_dbi_ro_wr_dis(struct dw_pcie *pci)
+ 	dw_pcie_writel_dbi(pci, reg, val);
+ }
+ 
++/**
++ * dw_pcie_get_pcie_cap() - Return the PCIe Capability offset
++ * @pci: DWC instance
++ *
++ * The offset of the PCI Express Capability structure is read once from
++ * the DBI configuration space on the first call and cached in
++ * @pci->pcie_cap for the subsequent ones.
++ *
++ * The lookup is done lazily at the first place that actually needs the
++ * offset, so the DBI read happens exactly when it used to happen before
++ * caching was introduced, i.e. never before the controller's clocks,
++ * resets and power are enabled.
++ *
++ * DWC PCIe controllers always implement the PCI Express Capability, so a
++ * return value of 0 means that the hardware is not usable. Callers that
++ * check the returned offset keep working, and the (never expected)
++ * lookup is simply repeated on the next call.
++ *
++ * Return: the cached offset, or 0 if the capability is not present.
++ */
++static inline u8 dw_pcie_get_pcie_cap(struct dw_pcie *pci)
++{
++	u8 cap = READ_ONCE(pci->pcie_cap);
++
++	if (!cap) {
++		cap = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
++		WRITE_ONCE(pci->pcie_cap, cap);
++	}
++
++	return cap;
++}
++
+ static inline int dw_pcie_start_link(struct dw_pcie *pci)
+ {
+ 	if (pci->ops && pci->ops->start_link)
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
