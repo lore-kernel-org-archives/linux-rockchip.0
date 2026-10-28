@@ -2,115 +2,80 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8E68606A323
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 19:54:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 635C1606A31D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 20:16:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gEAJAO51;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=YmEBP9WI
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CBySWdiA;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=acm.org header.i=@acm.org header.a=rsa-sha256 header.s=mr01 header.b=pqojwuKS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=4Kch8YawxR7oQmX302FlC7xL6Lmu+a6xXrcBAIugpKg=; b=gEAJAO5166IajvGfUO97pGG45Q
-	NZ+HWFGV0JNS16z/IYX/rgY3EBUR9+OpVLDSjeEAwuMQm0Wxc6o82KR+P/NHA7m6FKYPbyMJAQfDu
-	atIYTZPqxvCT8CY1PQOX9uDbc7P3Kxr4weSkYcau19CahXNQpYd+0Z8RA5eWbv1Ef1Kl1TVEvzaRT
-	ectvW1V0pXbHV+H9d7uscCyjwF7KB4orcDq8o6U62daLtEBUCPsbowL/5mNrLMYhbQuwddDKOfKC5
-	iGYxDoaLTdGuzacD7l4eaW8nSw9dgzOAyHHn+itZ4iiII4aeL2OCarh9Ah5ygQyfoVzY5abn8mant
-	7Lqpa8oA==;
+	bh=tDAKXmiTBB7gfyIHxjRU8ecBfA5dKc+V+VEVO0TAG0c=; b=CBySWdiAlvZa+FpS+ToWRINMEN
+	ger1THhH2GM8+d/gQT3O6MfPQB2GIjzsAzDftnsh6MDSkV+uws+qh/SJlykzyGazP+IsCE67beiRr
+	FZN+edWdop7XTMA3zc+mOoqgKNgU2DjcUknz7sqgc8sbVEDh2CPVqKTjUv/GmVFXRZyejUyTgCxqZ
+	YrO4LP3F603xiz/ijq4oXg52efQ2BhccAvasCX+AgpSrVWfzScNDG+ysTAfUC4f29b0qn1ypAbbNY
+	0sMnWsC/n7n6riRVj0oA93mmWY1vHDkMOHnPFe/BXsscyPNXwi1wEiyAx2lWtabXxCzzeWVDPu91h
+	YbGuhprA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM9im-00000007tB1-1YH0;
-	Wed, 28 Oct 2026 19:54:04 +0000
-Received: from mail-qk2-x01.google.com ([2607:f8b0:4864:34::1])
+	id 1xMA4F-00000007urJ-109r;
+	Wed, 28 Oct 2026 20:16:15 +0000
+Received: from 011.lax.mailroute.net ([199.89.1.14])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM9ii-00000007t9a-06Zu
+	id 1xMA4A-00000007uqS-0NNb
 	for linux-rockchip@lists.infradead.org;
-	Wed, 28 Oct 2026 19:54:02 +0000
-Received: by mail-qk2-x01.google.com with SMTP id d75a77b69052e-5332a0f6dbbso17566681cf.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 28 Oct 2026 12:53:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1793217238; x=1793822038; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-type:autocrypt:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=U4Z20M5yrzVdkZ8pUfnazTFG6IRUwC17SyWpCdk396M=;
-        b=YmEBP9WINha8yOXFCNYEsIPA4RIUzzIdBVxxVQtNattsso3qkUqPXdFYsB87g1J9qO
-         kCRHV7WM3WCE0AVpKI28A5Gk/8sjeuFSirE3bM/zMP6PNTPusfXEZvIBmy90h5QGHTN7
-         fernIXu4apF5t2Jow6O3+goMkSzwsrPLO//EgjF7f0mizVob/TI/16Cu29PqjcqQpaAp
-         xr0S48Mma7b3tbpOrahQpc/2R4ykpkmI9lDk6jfR3ozSu7PoZj9MQkHbb0dh3tuLs21i
-         wuDgig7PLqvy4q1+Td3ujdE6+9HqC6icUuSjQ6a4DJlO4jQ+jYxG1OBEGkiRMIvdwf4u
-         59rA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793217238; x=1793822038;
-        h=mime-version:user-agent:content-type:autocrypt:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=U4Z20M5yrzVdkZ8pUfnazTFG6IRUwC17SyWpCdk396M=;
-        b=t1bk6GKk9LzgaVgdD1uPl7QpIHAmPVAQ3jbtdLWNZxxZjS7ci/EwpejRDP3p7TmgJ+
-         4XkHh73OsM9vp+t2FUmEdscyC8y+kqF/W3RXBwu722NH0D8z3JByTjBQGjUGD2NxkVFD
-         A5J72wuJmXO89iAOx7d//mhmIon/JOPqJs5IEUlxqITy3SRryUb3Xzj4efx42prrnNra
-         yPMLBFrG4hMXEd0l48dSsCSmgz3bMqTfWrZNbByB4OgGkN/WNkC/2mrfUOXeiIhxz0s+
-         e/272CdYDjP+SwBSFSr70L0QZRLTIKdBhH3e3D3nYF5ldr+c1it1DP6qx2AxQqGIDzcz
-         Ls5A==
-X-Forwarded-Encrypted: i=1; AKwUvBxxA4dazCDHAeA9Vjhm/u5plXcmwqwntcNyHJasZ+viJG1aP5Mjgqs/z35tYJA/Ro3bAp712R4Fkxayu5FjyA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJsODdUlUrgiaYVYpkUusI9KBdCc0vu6I5mpHXAFan59gaV88eV
-	Sl0thWoEv5/4Tb6pixrPZdRDt3IbIL2Qg1scaHSPIp6Dgl+Hh4xMXkNR9LFAhlejw9s=
-X-Gm-Gg: AYBFou0ehVzHM7BmjIpIa5Th5P7muRFkwrYv7ZBO/TBDyJZoFL8Injn9kZqYmu3E/N4
-	k+Fwm/A0agu+quq9RMzSH4ReJ7NxFaV9J2skQDdrg9DTFKi+5hYmnCrI4UVs08jz4W1K+J/gqQC
-	TWbdgAf4ryVciOeh/Dvf+tmSEZOi4jp4RiPbweZRvud6rK0iHQ4VaKHYRAxdoDkLRFstMIC9t/O
-	Se3KGPwDcXs2gL/E66V9jIC+S55gJ1wTibkCbBiLLaYFipdMP5Q6XbQ968vTHyMDyMdco2q+pOU
-	n6kOK28yRg7teCddfmF+835k+1QIUXSY/+N5NilWARBRGZW/6FXn8uspIi8CnXqGq38eNv2/EvF
-	GSNmeCPq0pRBvX6EAf0Ihzx69+ic4oEiLHIqItmXORMR64IwK9GGnXgfBbkNTGzirlPkax5OaKT
-	rAzjziQvDUbwBOgKB+aelXzcfTvIgYkeWPM6edFqFdSDT+ANqxbX9ntRBAs5UHaydDEXVeInVqY
-	pemjSxfE8903Waij6aBTI8jZE75qUf8aZEuHwxazCgO3VEv6LiC0Q3GuRUYYgpXSWIj02PKqW1y
-	vSkllXCH+2cGwISk+14qxTIX3jXdDiPN4MAMjwzqPA99hfP/cTn+9mlSV1PdMTMJcM4tfmtRCbf
-	S
-X-Received: by 2002:ac8:5a50:0:b0:536:6abc:54b1 with SMTP id d75a77b69052e-53fcb509e99mr60729391cf.28.1793217237708;
-        Wed, 28 Oct 2026 12:53:57 -0700 (PDT)
-Received: from ?IPv6:2606:6d00:11:34bd::5ac? ([2606:6d00:11:34bd::5ac])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-53838cf49c9sm113417671cf.3.2026.10.28.12.53.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Oct 2026 12:53:56 -0700 (PDT)
-Message-ID: <bfc4481a817e761ed9ccc265484dfbdfc1e59490.camel@ndufresne.ca>
-Subject: Re: [PATCH v7 2/4] media: rockchip: Add JPEG decoder driver
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Torsten Duwe <duwe@lst.de>, Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Lucas Sinn <lucas.sinn@wolfvision.net>, Mauro Carvalho Chehab
-	 <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
-	 <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Date: Wed, 28 Oct 2026 15:53:53 -0400
-In-Reply-To: <20261022190026.6cb0a534@rocky.lan>
-References: <20261022-rockchip-jpegdec-v7-0-3fd7dd55f408@pengutronix.de>
-		<20261022-rockchip-jpegdec-v7-2-3fd7dd55f408@pengutronix.de>
-	 <20261022190026.6cb0a534@rocky.lan>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
+	Wed, 28 Oct 2026 20:16:11 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 011.lax.mailroute.net (Postfix) with ESMTP id 4jFJXR45Jsz1XM4Tn;
+	Wed, 28 Oct 2026 20:16:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1793218563; x=1795810564; bh=d1WzNJAb4UJ72QcrWGxBt/3D
+	PnxEO2/sr0xCE07N2bg=; b=pqojwuKSQXJu3eqU92Pdtlgg8v+dk/L7G72Qf41U
+	CUE0esFn2bKcc+0MFSXtLKz+g/e4obfwQ7VSMAAWuCTOYCLMKKZOIDkKTvBC6yb7
+	ip7yIbGNnuV3M6vpZQbfdgvGCda7we/r/pmguyDZklXkuPfl5RWdRHpxyY7ZW1yV
+	+gBjcLDvC+ErjZ0C1ttTBdvl7QPZfJK96OX74FVw/vArRYn/jz52TEqw64z2/45c
+	vexok5I2EBy94JNesuUk5vCByARMp2TAOWfd2OOIYvqDLjbb3SoPGoWVeT0R1HdV
+	Q0yoJdD5hUwRImMQXSAKdIKWKqV785ZlsGOiyOi6fM2NSA==
+X-Virus-Scanned: by MailRoute
+Received: from 011.lax.mailroute.net ([127.0.0.1])
+ by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id HMiw1daGfDo1; Wed, 28 Oct 2026 20:16:03 +0000 (UTC)
+Received: from [100.80.231.125] (unknown [104.135.182.41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4jFJXM2TCHz1XM4Tl;
+	Wed, 28 Oct 2026 20:16:03 +0000 (UTC)
+Message-ID: <c494f758-e3ad-4638-a17e-44d5f9234ef2@acm.org>
+Date: Wed, 28 Oct 2026 13:16:02 -0700
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] scsi: ufs: core: Retry the full device init on fatal link
+ loss
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+ "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K . Petersen" <mkp@kernel.org>
+Cc: Bean Huo <beanhuo@micron.com>, Heiko Stuebner <heiko@sntech.de>,
+ Stanley Jhu <stanleyjhu@google.com>, Alim Akhtar <alim.akhtar@samsung.com>,
+ linux-rockchip@lists.infradead.org, linux-scsi@vger.kernel.org
+References: <20261028073129.1661829-1-shawn.lin@rock-chips.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20261028073129.1661829-1-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_125400_338474_4F3E8DDE 
-X-CRM114-Status: GOOD (  24.19  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261028_131610_168147_780F8DF6 
+X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,157 +85,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3909006791092039150=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+On 10/28/26 12:31 AM, Shawn Lin wrote:
+> +retry_init:
+>   	hba->ufshcd_state = UFSHCD_STATE_RESET;
+>   
+>   	err = ufshcd_link_startup(hba);
+>   	if (err)
+> -		goto out_release;
+> +		goto retry_device_init;
 
---===============3909006791092039150==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-vP+iZzvr5GpVmxFar41J"
+Move the code that needs to be repeated into a new function in a first
+patch and add a loop around the call site of that new function in a
+second patch. Don't change ufshcd_init() into a goto-spaghetti.
 
+Bart.
 
---=-vP+iZzvr5GpVmxFar41J
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi Torsten,
-
-Le jeudi 22 octobre 2026 =C3=A0 19:00 +0200, Torsten Duwe a =C3=A9crit=C2=
-=A0:
-> Hi Sascha,
->=20
-> first: thank you for driving this :)
->=20
-> On Thu, 22 Oct 2026 13:06:40 +0200
-> Sascha Hauer <s.hauer@pengutronix.de> wrote:
->=20
-> > Add a driver for the JPEG hardware decoder Rockchip integrates into a
-> > number of its SoCs.=20
->=20
-> [...]
->=20
-> > +static int rkjpegd_enum_fmt_vid_out(struct file *file, void *priv,
-> > +				    struct v4l2_fmtdesc *f)
-> > +{
-> > +	if (f->index)
-> > +		return -EINVAL;
-> > +
-> > +	f->pixelformat =3D V4L2_PIX_FMT_JPEG;
-> > +	f->flags |=3D V4L2_FMT_FLAG_DYN_RESOLUTION;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int rkjpegd_enum_framesizes(struct file *file, void *priv,
-> > +				   struct v4l2_frmsizeenum *fsize)
-> > +{
-> > +	/* The decoded format follows the bitstream, nothing to enumerate. */
-> > +	if (fsize->pixel_format =3D=3D V4L2_PIX_FMT_NV12 ||
-> > +	    fsize->pixel_format =3D=3D V4L2_PIX_FMT_GREY)
-> > +		return -ENOTTY;
-> > +
-> > +	if (fsize->pixel_format !=3D V4L2_PIX_FMT_JPEG)
-> > +		return -EINVAL;
-> > +
-> > +	if (fsize->index)
-> > +		return -EINVAL;
-> > +
-> > +	fsize->type =3D V4L2_FRMSIZE_TYPE_STEPWISE;
-> > +	fsize->stepwise.min_width =3D RKJPEGD_MIN_WIDTH;
-> > +	fsize->stepwise.max_width =3D RKJPEGD_MAX_SIZE;
-> > +	fsize->stepwise.step_width =3D RKJPEGD_CODED_STEP;
-> > +	fsize->stepwise.min_height =3D RKJPEGD_MIN_HEIGHT;
-> > +	fsize->stepwise.max_height =3D RKJPEGD_MAX_SIZE;
-> > +	fsize->stepwise.step_height =3D RKJPEGD_CODED_STEP;
-> > +
-> > +	return 0;
-> > +}
->=20
-> Can it do JPEG, MJPEG or maybe both? AFAICT the difference is minimal,
-> so maybe try to be more permissive?
->=20
-> [...]
->=20
-> > +static const struct v4l2_ioctl_ops rkjpegd_ioctl_ops =3D {
-> > +	.vidioc_querycap =3D rkjpegd_querycap,
-> > +	.vidioc_enum_framesizes =3D rkjpegd_enum_framesizes,
-> > +
-> > +	.vidioc_enum_fmt_vid_cap =3D rkjpegd_enum_fmt_vid_cap,
-> > +	.vidioc_g_fmt_vid_cap_mplane =3D rkjpegd_g_fmt_vid_cap,
-> > +	.vidioc_try_fmt_vid_cap_mplane =3D rkjpegd_try_fmt_vid_cap,
-> > +	.vidioc_s_fmt_vid_cap_mplane =3D rkjpegd_s_fmt_vid_cap,
-> > +
-> > +	.vidioc_enum_fmt_vid_out =3D rkjpegd_enum_fmt_vid_out,
-> > +	.vidioc_g_fmt_vid_out_mplane =3D rkjpegd_g_fmt_vid_out,
-> > +	.vidioc_try_fmt_vid_out_mplane =3D rkjpegd_try_fmt_vid_out,
-> > +	.vidioc_s_fmt_vid_out_mplane =3D rkjpegd_s_fmt_vid_out,
-> >=20
->=20
-> You are populating only the *_out_mplane members and not the single
-> plane ones? So a greyscale JPEG needs to go _mplane with 1 plane?
-
-Drivers only implement one queue type, MPLANE is the recommended one. There=
- is
-pixel formats for single allocation and multi-allocation that userspace can=
- pick
-from. So a driver can do MPLANE and support both NV12 and NV12M formats as =
-an
-example.
-
->=20
-> And for color, the colorspace on the decoded side should be
-> V4L2_COLORSPACE_JPEG, not sRGB, I think.
-
-Should actually match what the JPEG header says, RGB jpeg exist.
-
->=20
-> Would you mind to give a hint about your test setup?
-
-I believe Sascha has been testing with GStreamer, the element is called
-v4l2jpegdec.
-
-Nicolas
-
->=20
-> Thanks,
-> 	Torsten
->=20
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---=-vP+iZzvr5GpVmxFar41J
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCauJS0QAKCRDZQZRRKWBy
-9FbtAQDQq1LHLIEYGFdpJt3hiBBdUv17DM2qsOM4AzolcnZ4QQD/ber/FxSYvItX
-/Z3gWh4nz808VmJqoajvRuATRpq4NQo=
-=niJB
------END PGP SIGNATURE-----
-
---=-vP+iZzvr5GpVmxFar41J--
-
-
---===============3909006791092039150==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3909006791092039150==--
-
