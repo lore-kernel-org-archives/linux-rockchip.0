@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 09643606A31A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 01:42:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0FA01606A31A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 01:51:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SyktJQzg;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=U5OsSv6c
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=U6OJkf+N;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=b3ojDiQL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,67 +14,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=E7GrVaHc8GUp7VfksnTcq8tQ+nfmyAzpkV8U/sK+Mzk=; b=SyktJQzgTj8hmBQV44oq3aqceX
-	OR1coGhvsHUd0Nd6LrH89gLYcHXFxfnseNPjqNuliTZCuFyk1dYm0pf2irIeEpqN0M8ewStivZKxR
-	36az6QBBgne/OHgPmJpGWT9I1kmzsSM763Bu2UfVWBch9X/eu9Fr72WAjNS+rLYNh7XlRxbdAV37t
-	ii5Vsd2GxJX3oiUJCcEy/TGkiid52t3raVCnjHolvBfHv/FKTqifuxsZYtGp4VdYZ4sqW3Yf5Z01W
-	GRYSt/TmJ23uScoI4XE8ixdaYAM48fOc52Vyb0ui/c2MLA0Y/p+AyeUku23pV1aHmHkdf77ajcQ23
-	7twvkz8Q==;
+	bh=XLWPfHI18yUiv4Td4+fmaIiYIfdmfABG3Tia8tlHZT8=; b=U6OJkf+NJpDmjpTjc+m1C/NV0k
+	LOVfQ5moOOiQ4KlQWyOBkf7Loyb26uh0sn4/u7/jvkyjhV9xHqdsB6sIzludE9klWbzcHz5dKwb6U
+	Sy9lHC/lhvo1Qzccv1vHu6JEtFcPnku65YqABvDU/dUEhfFcehAr7/zfDNEYmFo5TCIGJXJx+q6kK
+	kUoiOZR7gWpRiPSjmrJFBs4xnO7zZfzuX1WZrm/iw4784IA6SfYRZ3mGqD4o7rs5GwtU8uZGUxuTy
+	KupxPPETbi5ignuPgAuaPnzNaWdRvpoiqsbqYHzmsSUAUMd9I116/+f+8JUBGcsOuDaRyPwZzMcz/
+	+U+DGorQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLsgA-000000062p9-1Nrc;
-	Wed, 28 Oct 2026 01:42:14 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1xLsop-000000063ct-1TzW;
+	Wed, 28 Oct 2026 01:51:11 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLsg7-000000062oE-1eql
+	id 1xLsom-000000063c3-1Yoh
 	for linux-rockchip@lists.infradead.org;
-	Wed, 28 Oct 2026 01:42:12 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-2d01548ac96so747965ad.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 27 Oct 2026 18:42:11 -0700 (PDT)
+	Wed, 28 Oct 2026 01:51:09 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2e74a32a07fso562685ad.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 27 Oct 2026 18:51:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793151730; x=1793756530; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1793152267; x=1793757067; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=6qFiHf0tIbDLVDz6TOJvHxKdyUmXFvOVRG/rMFDPZq0=;
-        b=U5OsSv6cLUSUHLCsTjdjnHbmn5oaSn+Q6Kc9VAqhMLWu+s6IurkJ+6oWy3WKttHXT/
-         c8mEo7GujS5vqU4BXSHZtFY8uit0ftMD9V3CX5IwXeIKXaX1dMRfawyqdJr4suyvj0nE
-         716J+XN5aO+yb92Mh0/m/TExaSjWJ6DQCOmBzoocrg1kCHSZoLkTAnolCA8jlDkha2Oq
-         bokXCGPj9tR60s0mgtodr/yLiQqqgVFkKm+3Lj/fMkKRoR0bKKt0rPQ+yLHoQ740Qpd9
-         1DdoU9DEZ6VPa+muryh0YmQsnR5H4FLpSVC7JRCIJn9Dkzm+AU6PrayHr/N5eyCdkZmj
-         rR5w==
+        bh=MeEhGL9p74hRILnxnbLIZTyexKrQv0qHFAgQnNnxF4A=;
+        b=b3ojDiQLXYNYMBZMO0jCyRiJOoSj6QsK9ETXxKZAmHV3BD8iYMvUMKLWivTLnOaYjv
+         pXtYy/VX9q/W3iQQDa5jnKDygdcgZykqzVoU+CD0c5ogSQIGJyS3xpVHfwnNNjDc3wCN
+         DW7SwxOFogC27ddCyOGXyqZZ9ayJH00bqfHTzta+NkuMc05mG+VNCMLj+wykWc1yg2Ae
+         a21FQLtzM9FWivJFQh8dYj2syRXbDw8Ll8FIy1xncaxaP+ZmMVJMYdQgqQ3juPjcD167
+         pEeiZ5LY3JsDqz9p7d0s/5ZyG3lSFnp9lJ9DWs69scDqRESgcN/slTFI7PJdEQlW3AYT
+         Gt1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793151730; x=1793756530;
+        d=1e100.net; s=20260707; t=1793152267; x=1793757067;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=6qFiHf0tIbDLVDz6TOJvHxKdyUmXFvOVRG/rMFDPZq0=;
-        b=iRkTJrezVcS9mhqJJt4dlfTIL+z/WNLJZnRXHMFEj36NqU55DwRpxibamqLA6QFC2K
-         /qoyYxQ6AihfdsmFhZKrNLbD1xm+Z2ltWLKWDfGaONyWu2oV7cpyPaPULGwuPNKRvgr1
-         N5YgfVCbRuzac540bHw3v1Qlq85sSdPQ7SZfbDTDiwlrIvfkxf+VXGtwO0buvriwHZ+9
-         tsPB3yS3aVM51nYlT35DeKdIjoOOrTtUkrXuXj8RJ7EngQW3IGZ4T+CPNa2ymGZn9DL4
-         aaS0alzNT+zhctfYznRtWpKK0a2isUQrR/pAcIW32dpcto/avY6LX2YeZX7qR5sRawOy
-         Z1fA==
-X-Forwarded-Encrypted: i=1; AKwUvByaSh5furhzVYEyPMhKydVPNbfFv7wpxzePe7dqHcuHH+MiV+4z2qhfpGp/buqxSMPFtT4oi0ETKFw78Y5Axg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLGcDVoPdm1j1vlH0qlevuJLJOZLniZev+wmCR5kGGkodI8siQo
-	y71qNkKMCYx0Ht0lWQiAVUVQ/AKcAsocyrvhtrhNnwygNh1XfpgCyoLS
-X-Gm-Gg: AYBFou2ajzt2Y0Y0duY7g1Y1QT7/RPyrFG30aa5vEYjL283a4necZ/XeDwnReggKMkL
-	bmCkijj5+v5sq1nVCxuemL4VOM1stX8Fyi8Tk58VvKMXKTMR+tYSK6yTBeyZ8DcZ+gCQBzjiloR
-	Mq+VT4FcV68ewf3VJtqF+T57mXRSgz0vioouHXxcgZDrm5OfN6JMbLMbKZyD+M3GwLE9w6UHlBN
-	1aTFADWdQfzD8hleADo6NUuc/Skf/kYh7tEnOr1U8e2MdgpLUx9q+yH2nW4o6VQjCfCfvzDqWoP
-	lrV5VkbJTWiYgNICYOHfkp7Ap+IrIQZtJsUnbbMV0PTDy2O9O5gDxm+4lMw7zviKwH1G3oZi1fG
-	TlSi1OwjTKFKgwWayQTqW8j94GHLBjcr+tkpyoZEQmygLc7Msho3vMmh1kaHY5v9VyFvgpIGpej
-	navO+RBDfD7pnOKaSqmUDmfYY2Nn4nz5B03QPy0LsOyDF033DLukCh+votXiHLNn/9l+six7grb
-	e1iTikVlbgW5fHExWxYrLIu9lt9ZsbsD5PepaXH9V1AS8vEGOHgRKOhN+pJAOmqB/xoKaQPdUD1
-	8qgsfX/3388YmbvGVQJWuS+v0yHj6Yph
-X-Received: by 2002:a17:90b:3c8c:b0:3a8:736e:c19b with SMTP id 98e67ed59e1d1-3ae581811b1mr1020251a91.4.1793151730487;
-        Tue, 27 Oct 2026 18:42:10 -0700 (PDT)
+        bh=MeEhGL9p74hRILnxnbLIZTyexKrQv0qHFAgQnNnxF4A=;
+        b=SwEvC/6W+HW9N+S83uU9zQnAreBdbZ8CUQwXuCBgmdEOOoYXa/TJov3Vps57qc/7JU
+         Zt4yDJudRFJc0xJrE6agQ/9NByFoVJ61Lak142/EnHA4iAQmLD15NOrF7k6VNF8AqnnK
+         znodFuYA3Cbz2ARJ4kXJ96vnvUXSkeoSW9aTO5foqCMUmeO8s7rIy1/SRP5YuRPx4zD0
+         wPOSonP58m9HcT/pNqJ/mX79CPxSq7B0DcLzOhalYwuFbsQ8ws+BGV4lyppco5gQjzTt
+         WT80G8hV7V7VRAPJKyLijGr8jSZJ9/xc0Hkj3V9ofArmJzEfuDXB7eYr7MUBnIAvG+iK
+         jY5g==
+X-Forwarded-Encrypted: i=1; AKwUvByw63mTPCp7mM2dmJf07Li9DwAyC9y9aPiNVt7Sq1VVoVnRr8eaFSvT9P2iS9yUrWiESO3pTf2Ze2NwhTNYvg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJJ+2zp55Tp1HEIi8KPn7Fw9h0DvyL1cah+EAAbHC+Xezifyydv
+	SjAhSgg10l2xYC2W1AQDquPqxXqj39/U2YFIhqvPdSgd0YZ1ydcla5zX
+X-Gm-Gg: AYBFou1YLshCSW11kPCC6nTBUGNRjr3eiD5aS2RhOZSZEbTWWOnGgEM99joVlObFZho
+	aMJEfolEqcecwDvOyB1uxVu9NFJPksneWHffYeDidhw+RcZE+0o04C0Mo+MQsYVwggfsi1ofXfQ
+	wGChyYVopk9vg4TJzRfilMviBGMid8+dck2y6//mseWNZSjGT29F//gSh6qY2ioak2zTsFPBE/s
+	2DVs0OqCWiGuSJXs4Apm6uhQXvFnp8rrWttEgvVSE8/ehfA9sPV26pI2z4DMaLtQwy7OJvfBk+t
+	y6qBM/jYpTCCpc2GwvACFUq93zovF+k9kWKtbafTK332p3G8AEdLqAKRyL3lgw81oNiCvAA7Ayo
+	/y9696nmt/guaaIhX6kCgBc7y2Y/H/WEHVxw5iGp19lo0swJwT8EH9K0dV96QqMOKgP5hKUgVPx
+	BfzljaCBQlEQGOGRvFkg27mbgQf4MztvlsA5+IeoEjeB1iWZbWCKNOqTJQF6ehWuWEf5fJLsmVj
+	BVOib7bUCIcdXpR7S31lojM233Ip0yyySqcA2e/bQs7MdUdL8FN1M9QHqNnmvN8aadKr9rY4Vff
+	nFvQX70W56p1ia879sdfvTs1i5/IHLjUQQ==
+X-Received: by 2002:a17:902:cf10:b0:2e9:65bd:62c7 with SMTP id d9443c01a7336-2eaffb17f6emr16531855ad.0.1793152267434;
+        Tue, 27 Oct 2026 18:51:07 -0700 (PDT)
 Received: from localhost.localdomain ([240e:36d:b08:2bc0::a60])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3ae5a9a5e73sm544338a91.10.2026.10.27.18.42.05
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2eae6c33917sm16066835ad.48.2026.10.27.18.51.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 Oct 2026 18:42:10 -0700 (PDT)
+        Tue, 27 Oct 2026 18:51:06 -0700 (PDT)
 From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: krzk@kernel.org
+To: quentin.schulz@cherry.de
 Cc: HystericalDragons@proton.me,
 	amadeus@jmu.edu.cn,
 	conor+dt@kernel.org,
@@ -82,6 +82,7 @@ Cc: HystericalDragons@proton.me,
 	heiko@sntech.de,
 	hrushirajg23@gmail.com,
 	krzk+dt@kernel.org,
+	krzk@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
@@ -91,17 +92,16 @@ Cc: HystericalDragons@proton.me,
 	naoki@radxa.com,
 	robh@kernel.org
 Subject: Re: [PATCH 1/3] dt-bindings: arm: rockchip: Add ArmSoM Sige7s
-Date: Wed, 28 Oct 2026 09:42:01 +0800
-Message-ID: <20261028014201.11057-1-liujianfeng1994@gmail.com>
+Date: Wed, 28 Oct 2026 09:50:58 +0800
+Message-ID: <20261028015058.11163-1-liujianfeng1994@gmail.com>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <7b993a3e-d2b4-417b-90a3-a41d1f454cda@kernel.org>
-References: <7b993a3e-d2b4-417b-90a3-a41d1f454cda@kernel.org>
+In-Reply-To: <2a1c33c9-8971-4054-a463-60f3ceddd627@cherry.de>
+References: <2a1c33c9-8971-4054-a463-60f3ceddd627@cherry.de>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_184211_432620_0DAA88DA 
-X-CRM114-Status: UNSURE (   7.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261027_185108_416580_644F2A4A 
+X-CRM114-Status: GOOD (  11.32  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -123,15 +123,33 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+Hi Quentin,
 
-On Tue, 27 Oct 2026 10:56:44 +0100, Krzysztof Kozlowski wrote:
->Yes, just be sure to capture this in commit msg and maybe Sige7s DTS
->comments.
+On Tue, 27 Oct 2026 17:03:02 +0100, Quentin Schulz wrote:
+> From U-Boot's perspective, I would have preferred there be a simple 
+>difference we can detect at runtime and based on that decide which 
+>device tree to load between coolpi-4b and armsom-sige7s.
 
-Thanks, Krzysztof. I'll clarify the hardware design relationship and the
-reason for keeping a separate board identity in the v2 commit messages and
-Sige7s DTS comments.
+Maybe we can ask ArmSom to write some OEM strings into the OTP of SoC.
+So we can use one defconfig for two boards. I will check this method
+with ArmSoM and current OTP support in u-boot.
+
+>I don't know Heiko's or Krzysztof's opinion here, but I think it would 
+>better reflect the actual context to NOT use a dtsi and simply have 
+>arch/arm64/boot/dts/rockchip/rk3588s-armsom-sige7s.dts include 
+>arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts and update the model 
+>and compatible properties.
+
+Thanks for the suggestion. I checked the existing mainline DTS files and
+found similar examples, such as stm32mp157c-ev1.dts including
+stm32mp157c-ed1.dts directly, and the ARM Juno SCMI variants including
+their base board DTS files.
+
+I agree that directly including rk3588s-coolpi-4b.dts would better reflect
+the relationship between the two boards and avoid unnecessary changes to
+the existing CoolPi DTS.
+
+I'll use this approach in v2 unless Heiko prefers otherwise.
 
 Best regards,
 Jianfeng
