@@ -2,67 +2,120 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AEFBE606A31D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 07:32:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CCDCA606A322
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 08:56:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JVlkjQ1Z;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=TB+GQMii
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UlHLOehD;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Mkj5aPXg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=SiE3p2sqfGLmyg/ktPlEjoJqS5i0y2QTe8yK9lJA/0w=; b=JVlkjQ1ZM6/XRnogDJF/jZ7Np9
-	ZAIhgjJTUMVPJ16/nsAQGgunbttOv1R4vrvE377RonwpBb5q0uafWvHvOzOvgsrR/m+SkSVqZW+Kg
-	x8G5iVPcgfrtaLH9Ec8H5lJR3osgDmxrT/QeBSUIR3kkOfAWjHzG3clI1W8As1m8clBOGfHIkf2jE
-	6pEdoFGUg992kJK2nZoYho7Hd99TiXg6PrLG/NeEOffJoiX7ptYZ2MvTU3dXNOoLzfavI/3Po+9Vj
-	An4GQAjMlLV+iV+FbkqEwG/L9/R2inAf4ECqTTlqNj3UdDDsyyYMbXt7DCO2Z344rMUr7SOrrppsA
-	ZL3xjPpQ==;
+	bh=FnZk28uTpXXZJ2X3dcZZQUZRij4+E+BT1YcrvTF98WA=; b=UlHLOehDWy4PHyCJTsSVwbwyrp
+	E1P7ojmaSgK73qpvt7uOudI1V3Z+P6FaFOQhTikYkw5c6g+wfaFjC4AfRFYkP3kSZhCsfH4oBnNWI
+	1mMZHu2AX9RZSenDQgl1etYN3U1bzWufeam9ENVKg1ha5d5Li46esRrGuzKjnoAp6Xj6DIpGHOgzo
+	YBdoVv0qlmTxenns+OdEyAYfNkhBe1UTCcW1kEmmouGHMoWPwzWrenCI+QRhxNvo0y0eqUnoIKtdO
+	AIwjw4qHeNstuZ7a2C5LKYUdjOYyK1Mx6NN6zyPPX1hbApqB66Z5EkvojGmc1BgClD2Rt3eJGJZHg
+	SIIFwz8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLy8V-00000006TEB-00md;
-	Wed, 28 Oct 2026 07:31:51 +0000
-Received: from mail-m12843.netease.com ([103.209.128.43])
+	id 1xLzSK-00000006bFR-3HQx;
+	Wed, 28 Oct 2026 08:56:24 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLy8R-00000006TDO-0a44
+	id 1xLzSH-00000006bDe-3mRM
 	for linux-rockchip@lists.infradead.org;
-	Wed, 28 Oct 2026 07:31:49 +0000
-Received: from localhost.localdomain (unknown [61.154.14.87])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 52a1342f6;
-	Wed, 28 Oct 2026 15:31:39 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
-	"Martin K . Petersen" <mkp@kernel.org>
-Cc: Bart Van Assche <bvanassche@acm.org>,
-	Bean Huo <beanhuo@micron.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Stanley Jhu <stanleyjhu@google.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	linux-rockchip@lists.infradead.org,
-	linux-scsi@vger.kernel.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] scsi: ufs: core: Retry the full device init on fatal link loss
-Date: Wed, 28 Oct 2026 15:31:29 +0800
-Message-Id: <20261028073129.1661829-1-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
+	Wed, 28 Oct 2026 08:56:23 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-6b3e4764ebeso153808a12.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 28 Oct 2026 01:56:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1793177779; cv=none;
+        d=google.com; s=arc-20260327;
+        b=Kyj6zssEXYIjplO1bzVIfew0x3aJZasJHZ0GXJDDxNr9O9/nIKhVShVnKP2TQrePfx
+         rOYKXcvUJ2jo3aLw/mtyT9vayqiAaOaiI7auVekjZAmW0mG8wruxGfAc83cGZ/6djnGH
+         ki3oKiIA6u1GdWBJ5iZ1qpRo66nm2q0vKHXA1AxZD3AM/xP+ZKh8jYpNiNtnrIm5YPAm
+         bjXsEJx1F/eVPXz8UktWl/PJZqwd7fsXFJKTDzlJgmDdxUerMix4C2/NZXgk0FYpVe77
+         hFDzafAIcs6lysI7MiiYHNg6ODB4djGmU3VDeSAjwbOKakiehnBi18gFyJK1XYji3kC3
+         cEhQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ZZQo695rVLd/9P8OSYiw403iPH4b0i2xMXdXOpikEz8=;
+        fh=etjGItwBi1E7gb6Jk+tiQkgQRaKA3/aRN0H+Vy5Bmxg=;
+        b=b4sjyTJKSZyeT/V7VAnlt9tKIshImRsMpSNnlQPzItBuAUdLINB3h0hthXbbhvYFxW
+         KwlzCJDxUq8HWz25QRcp9CkYx4lIwiX5YNu8hrfUDUly4jdCaq/IlCmnTmTh6l897qT2
+         oGwZpGA3mMJtIMqqUKWLvE++421ksDnEHOo2NjTmXBRrWADP43EKhD01K2mWR1GO6P4r
+         2RMNkOMaKmvMUXg7M3dVuL9kAnpmlbthYQGzQCvF7LIinrQ5jH0uZNDhajXfRMhApH6s
+         7IR6iReD5EhSVRedXsIbp2EJXmkImMkTlqZo7gSr4qz5EsMglg2BZ+xqwMXLFuhDOs1W
+         bxMA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793177779; x=1793782579; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ZZQo695rVLd/9P8OSYiw403iPH4b0i2xMXdXOpikEz8=;
+        b=Mkj5aPXgzjw66OqCSVTFkzsH+Z7+iqcoCMrsK13OQwWQCydmGjEJw3QNFRIgY8VzgC
+         661+aFL5ucoZ296X/Wqs7+vJKCLqxMtcwiP6hpTgSYaeycA+cgOweD7ZVD1K47Le7Z80
+         /6sFXWRsy6HnR4BCn3w5WhNP2OowEBSJMUK9JBYBuvwJEJd/iFQTA/Y2DvLKJgutMpxM
+         oSppXy9Aa/ZqyoPDPpnBeLTjy3yDDhj3pffNY9vBi/X5PRTzx0x7sChCvvHf6gLS14KZ
+         624qWVSjhS8EMxgjVSn81Dmr5MVdoDDQuu2BEQO6/UQwge81jW+DkF79XM64VEU9iXKm
+         4+JQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793177779; x=1793782579;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=ZZQo695rVLd/9P8OSYiw403iPH4b0i2xMXdXOpikEz8=;
+        b=U7BpYEmIu8sj/wIS4siw6DoEKVC7+ifVWPW5uZo/iAynDU6emIANgyvEFV1UCDMaAy
+         B0H4C4Hxpgj//8A0DjGrURbQcuN5V+5cbOTTj80pZ8O7RoORzGRUdCFb/pnuWpxHwRvb
+         uohMc6kpNeY0eMbnPy0LiX3hd2oMj346NWqXQcXtpS7mnbrbgNEWCVDh78ty+UyAU8pK
+         Z4ZJrTv+a5BlbLC2RJfY32wbJC/PC9f2oSYXRfjAfwOMXtPrhJAJze1rriIsGMUg0mcc
+         zeHtioZKUmTrhmT1asdGXJ144kN3zK5gjrBiUzt+mGNYuf45d5ANXaQBqcwr/ehkVxRB
+         1siA==
+X-Forwarded-Encrypted: i=1; AKwUvByjwWzguV/1MdYgYy3AUCFtG7ImbwUs4THRfCAGqeVnaYAoGcf40BARht45wxM1oK6JTcC5dt65XyVsyjVsyw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKaCCX4WWNbOB/nb1oVA+1LwFdvhn+qH91jGHCWXhwdeT4GwTZJ
+	AwCnJbeuUBlGa3tCz2bpvUl2wxK2uxxgOniYSnEnQl630d0w5UYbvou4ecK5mqUXqHkaxjfAnhe
+	vp2tH73W8eYur4xWeUqjwoqSHEB6G9jo=
+X-Gm-Gg: AYBFou1yjnJRqZt8L3aJRtHWXD9K7V9suf5wiA6oA9S/WMcQ/yCe6MifD9kzW6p6bmC
+	//s3HhQpE6ddaI5u5+iS0UvKwhLXphUIYG6r6BMwtM6XiWJjhggWrTI+hkyCGt7wQMuh+OFAXnz
+	tIo+LsqNafYf08YB8hH9FqIOfJMDQwddFkjALnM7G70hKKqw8pakmHjA400UpIoUUShuG/C6BA/
+	seRSh+3o1YQacEX19cUJaF72taa/iNOszgsaXuSNOesN98weLsZUFUvz0zZO9UlyoDx1BhBZLpS
+	si5uHs7NNcErj+iap9xMxzmrJ6woSJDbVPk29g583imwl3CY9ay0qKQ/Tup7VNCgTSlNk3m/4zA
+	pwjmk6aSjt0yzKMOwW91YtREQSoaIjBCBUL6MFMqZ9ePCYMFBxHPkjaPmRQ==
+X-Received: by 2002:a05:6402:a6d2:10b0:6b1:da27:34cb with SMTP id
+ 4fb4d7f45d1cf-6b49cbce701mr976968a12.2.1793177778791; Wed, 28 Oct 2026
+ 01:56:18 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa1816bf8ef03a4kunm8a59feb98d47f
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaGk8ZVk5LTklJTkwfQ0oZTVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ0xZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=TB+GQMiiZFz6iEXGHZpLEHkhiImt1AHwh5JT9q9S7vFCqPvkeXGWlvbQ4EzrWzsPfAlklF7HWq39Veuzngx5G5mWDoTEwGa7A0V4UKZxWesattozxQs0Suzt1Lmx8FTZK2IpvpwICsusizal8qyEsPUT3iF89ck8wmMZmK9+Qd0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=d20iozcM94y1ynJJGzlYfaLHRuOSfOKuZNnqcN4LWBQ=;
-	h=date:mime-version:subject:message-id:from;
+References: <20261016-dcphy-rx-v1-v5-0-e63b49eabe2d@gmail.com>
+ <25254818.ouqheUzb2q@diego> <20261021024239.GA3667411-robh@kernel.org>
+ <3435698.oiGErgHkdL@diego> <850be915-d42b-427e-a036-907b9364f9d2@collabora.com>
+In-Reply-To: <850be915-d42b-427e-a036-907b9364f9d2@collabora.com>
+From: =?UTF-8?B?5qWK5pm65oiQ?= <jason98166@gmail.com>
+Date: Wed, 28 Oct 2026 16:56:06 +0800
+X-Gm-Features: AclHuK9Sjf7k3U-KBE-ExwCBQXl-_hQw7npOFvb6IJVRf4k6WS3oRrSiOtSkTyI
+Message-ID: <CAPwA33J1nud++bYV1JnPJqvA+ocz5H1=DnyJy3HGX4np6JxaEw@mail.gmail.com>
+Subject: Re: [PATCH v5 2/8] dt-bindings: phy: rockchip,rk3588-mipi-dcphy: Add
+ a cell to select TX or RX
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Vinod Koul <vkoul@kernel.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Manivannan Sadhasivam <mani@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Guochun Huang <hero.huang@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, 
+	"Bryan O'Donoghue" <bryan.odonoghue@linaro.org>, linux-phy@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_003147_752836_2738FA0E 
-X-CRM114-Status: GOOD (  15.89  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261028_015621_957503_26046ED4 
+X-CRM114-Status: UNSURE (   7.49  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,129 +128,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On an RK3576 board the UFS device is rarely reported dead during the
-initialization at boot: DEVICE_FATAL_ERROR | UIC_LINK_LOST is latched and
-the following UIC query fails with -EIO, leaving the device unusable.
+Hi Michael,
 
-Recover by resetting the device and the controller and redoing the whole
-initialization sequence, up to three times with a 100 ms settle delay in
-between. The retry covers the link startup, the device verification, the
-completion of the device initialization and the device parameters setup,
-since any of them can fail once the link has been lost.
+I have just started drafting the code changes and comments following
+the discussion above
+(including your comments on patches 3 and 5 in v6), so it will
+probably take one to two weeks.
 
-This is done in ufshcd_init() rather than in the platform driver's probe.
-A host driver only reaches its private data through ufshcd_get_variant(),
-which is set from the ->init callback that ufshcd_pltfrm_init() invokes
-on the caller's behalf, so the resources needed to reset the device are
-not available before or after that call. More importantly, retrying
-ufshcd_pltfrm_init() would request the interrupt, clocks and regulators a
-second time without any of the earlier registrations being rolled back:
-ufshcd_pltfrm_init() returns the error as-is, it does not undo what the
-previous attempt already set up. That leaves the controller with leaked
-resources and makes the retry fail on the interrupt registration.
+Best regards,
 
-Doing the retry inside ufshcd_init() avoids both problems: the host data
-is already reachable through hba->priv, and the interrupt, clocks and
-regulators are acquired only once.
-
-The failure looks like this on RK3576:
-
-  ufshcd-rockchip 29e00000.ufs: ufshcd_check_errors: saved_err 0x880 saved_uic_err 0x0
-  host_regs: 00000000: 0187011f 00000000 00000200 00000000
-  host_regs: 00000010: 00000000 000005e6 00000000 00000000
-  host_regs: 00000020: 00000000 00031ef5 00000000 00000000
-  host_regs: 00000030: 00000008 00000001 00000000 00000000
-  host_regs: 00000040: 00000000 00000000 00000000 00000000
-  host_regs: 00000050: 02dd3000 00000001 00000000 00000000
-  host_regs: 00000060: 00000000 00000000 00000000 00000000
-  host_regs: 00000070: 02dd4000 00000001 00000000 00000000
-  host_regs: 00000080: 00000000 00000000 00000000 00000000
-  host_regs: 00000090: 00000016 00000000 00000000 00000000
-  ufshcd-rockchip 29e00000.ufs: ufshcd_err_handler started; HBA state eh_fatal; powered 1; shutting down 0; saved_err = 2176; saved_uic_err = 0; force_reset = 0
-  ufshcd-rockchip 29e00000.ufs: ufshcd_query_flag: Sending flag query for idn 1 failed, err = 5
-
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
-
- drivers/ufs/core/ufshcd.c | 29 +++++++++++++++++++++++++----
- 1 file changed, 25 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index ee643830a57a..e75370d1b950 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -11419,12 +11419,14 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
- 
- 	/* Initialize hba, detect and initialize UFS device */
- 	ktime_t probe_start = ktime_get();
-+	int retries = 3;
- 
-+retry_init:
- 	hba->ufshcd_state = UFSHCD_STATE_RESET;
- 
- 	err = ufshcd_link_startup(hba);
- 	if (err)
--		goto out_release;
-+		goto retry_device_init;
- 
- 	if (hba->mcq_enabled)
- 		ufshcd_config_mcq(hba);
-@@ -11441,16 +11443,16 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
- 	/* Verify device initialization by sending NOP OUT UPIU */
- 	err = ufshcd_verify_dev_init(hba);
- 	if (err)
--		goto out_release;
-+		goto retry_device_init;
- 
- 	/* Initiate UFS initialization, and waiting until completion */
- 	err = ufshcd_complete_dev_init(hba);
- 	if (err)
--		goto out_release;
-+		goto retry_device_init;
- 
- 	err = ufshcd_device_params_init(hba);
- 	if (err)
--		goto out_release;
-+		goto retry_device_init;
- 
- 	err = ufshcd_post_device_init(hba);
- 
-@@ -11468,6 +11470,25 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
- 	ufshcd_pm_qos_init(hba);
- 	return 0;
- 
-+retry_device_init:
-+	if (retries--) {
-+		dev_warn(hba->dev, "UFS init failed %d, full retry (%d left)\n",
-+			 err, retries);
-+
-+		ufshcd_device_reset(hba);
-+		ufs_put_device_desc(hba);
-+		ufshcd_hba_stop(hba);
-+		if (ufshcd_hba_enable(hba)) {
-+			dev_err(hba->dev, "Host controller enable failed\n");
-+			ufshcd_print_evt_hist(hba);
-+			ufshcd_print_host_state(hba);
-+			goto out_release;
-+		}
-+
-+		msleep(100);
-+		goto retry_init;
-+	}
-+
- out_release:
- 	ufshcd_release(hba);
- out_disable:
--- 
-2.25.1
-
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
