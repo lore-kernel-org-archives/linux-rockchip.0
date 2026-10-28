@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 29FB660A262C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 03:07:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6107060731C6
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 03:07:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wSjMXZdl;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=c+gpwuqz
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KCSM17i2;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=ntWlrT6R
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,29 +14,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=1ZyM+fL4600lkPC9cTJFaKz0qaeXQPogo8res1tpipg=; b=wSjMXZdlVc2Z3OBCe1z8WyTQ6Z
-	/bsvtm0X8zBQQIE/p2jAa/1RuDNeRfNPtPVr8+/2KXmooX63JixpuFO8C7r5iKMY7IjWXAU+CeB9w
-	14//ew8ddpaOgF9Bpl7jdB3MGJE2hwBakOChOlLke1KmcBy4Buk8LM1Tc7Mxs1QQD6aQu/dnVVkfr
-	ZVz+LMG3cWRsO7jMksYhYU6dygZksZaZncMY7hx5HzvRkWTNGsfJwi/4SFmLtM11Xm+PnjfuyfQGh
-	ShpVLeSjd+PHWlvWOtftve4YCNmfp5lMquZtwbJc6kj7eGy7Fbx2VnBZlTMmWqzC8iXfzWhIDsQpg
-	CsDufmAQ==;
+	bh=Gkmvy+195Lf3rvqitA8kmLWRP4KBAp85sR4W9FOfSlQ=; b=KCSM17i2KZgUEc2ZSmWbKMwnLq
+	94095OuPxSU6wZNPixo44vKATSwAb9DSjnN0Z8GrwNI5hHcKABmQ3+a2HDtRA6KmZOQPbFDAAGfSw
+	2+mMEdXkxmpEiRi+JJwzbx8sAbePJjtfcGhIYyCuxvT0iK3nnvF/ve2s0TPEcKhU0KAr1ligtwUji
+	yPb4RL6emDdba/u1ouELVrbb9zcNbyxcDsiMClubP2fT0mmkcWXXRuUdnG371mULSAUndqUiNpD85
+	W9BdeuKmIdISP+a5uKctBnkCjCz8YcCGzrlyzg/+7SytKYS7Uu9fDD8ldoue8BBmv5CdDoPjKUwFg
+	3sQ2vXCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLu0y-000000069ZU-0FXl;
+	id 1xLu0y-000000069bu-3uQS;
 	Wed, 28 Oct 2026 03:07:48 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLu0d-000000068kN-2YFN;
-	Wed, 28 Oct 2026 03:07:29 +0000
+	id 1xLu0d-000000068m2-3LHa;
+	Wed, 28 Oct 2026 03:07:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=gv
-	Ygj8/VtDiXCuQH4R2FXsxKr1lVxn6Z5zkOXet1cl0=; b=c+gpwuqzqtT532VjV9
-	nrjYgYtKt+9aGWJ1k+EHtUXPiGCZ7WmfxNid/58TcqDyFhiNTjHn2hY7oEeO51rt
-	D1XC4G/eKZLUOKBjAkgQstQDrFInvB0eO9yAcFOVgqxvdENWegJoEAq4rvdGNADf
-	XPXpXW/64fglaQv6JxiHFdbT0=
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=tI
+	bcK9QjGE9c4lpPc7mfj5ekNF6tijyVodhkpLjG8sQ=; b=ntWlrT6RoX39yXz/iz
+	soOJfC3ZjqPIOY9BC7rCiihN+Sx0E8bdQeKbCipvfVhYucPlj5BKbE8uRXngQdxH
+	VrPPc4aAqWYvJBuslL+Q9zmHFU1XaHFhpMbSljPOwF8e5hWPyNLK3RWGkwU0XW/k
+	de8OUC/uSB085wBRFkveHKwKM=
 Received: from Precision-7960.. (unknown [])
-	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wDnVwncZuFqLzE4DA--.33198S3;
-	Wed, 28 Oct 2026 11:07:10 +0800 (CST)
+	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wDnVwncZuFqLzE4DA--.33198S5;
+	Wed, 28 Oct 2026 11:07:12 +0800 (CST)
 From: Hans Zhang <18255117159@163.com>
 To: bhelgaas@google.com,
 	lpieralisi@kernel.org,
@@ -55,24 +55,23 @@ Cc: imx@lists.linux.dev,
 	linux-pci@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v5 09/16] PCI: dwc: intel-gw: Use cached PCIe capability offset
-Date: Wed, 28 Oct 2026 11:06:45 +0800
-Message-ID: <20261028030652.2917756-10-18255117159@163.com>
+Subject: [PATCH v5 11/16] PCI: dwc: qcom: Use cached PCIe capability offset
+Date: Wed, 28 Oct 2026 11:06:47 +0800
+Message-ID: <20261028030652.2917756-12-18255117159@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261028030652.2917756-1-18255117159@163.com>
 References: <20261028030652.2917756-1-18255117159@163.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDnVwncZuFqLzE4DA--.33198S3
-X-Coremail-Antispam: 1Uf129KBjvdXoW7Wry8Zw4xKw15uw48KryrXrb_yoWDArbE9r
-	y5CrnrA3y5CFZ3CF12yw13AFy2ya42q3W09ayrtFZxZ3WxXw1vgws7ZFWDZ3W8Grs8Jr97
-	tr1DAF18J347JjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRNJPEtUUUUU==
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC6x7jh2rhZt7GZQAA3B
+X-CM-TRANSID: _____wDnVwncZuFqLzE4DA--.33198S5
+X-Coremail-Antispam: 1Uf129KBjvJXoWxZry3GrWfWr18CFW3ZFyxZrb_yoW5KFy5p3
+	yYvrn0kF4UJrZ7WFn2yFZ3Xr1avrn8ArW7CayxK34aqFy3tryUGa1jyrySyFn3CFZ2kFy7
+	Gr1Utr17Wan5Zr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0ziDPEhUUUUU=
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC6wDkiGrhZuDG+wAA33
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_200728_288256_692EE679 
-X-CRM114-Status: UNSURE (   8.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261027_200728_396486_853F7B44 
+X-CRM114-Status: GOOD (  10.92  )
 X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,28 +94,104 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-intel_pcie_link_setup() is called from intel_pcie_host_setup(), which
-runs from the .init callback after the controller resources have been
-enabled. Replace the capability search with dw_pcie_get_pcie_cap().
+Convert the dw_pcie_find_capability(pci, PCI_CAP_ID_EXP) users in the
+Qualcomm host driver to dw_pcie_get_pcie_cap():
+
+  qcom_pcie_clear_aspm_l0s()
+  qcom_pcie_set_slot_cap()
+  qcom_pcie_post_init_2_3_3()
+  qcom_pcie_post_init_2_9_0()
+  qcom_pcie_link_up()
+  qcom_pcie_icc_opp_update()
+
+Note that the .post_init callbacks of struct qcom_pcie_ops run from
+qcom_pcie_host_init() before qcom_pcie_clear_aspm_l0s(), so relying on
+that function to populate the cache would have left the offset
+uninitialized for them. Doing the lazy lookup inside each function
+makes the ordering irrelevant: the capability is searched exactly where
+the register is accessed, i.e. where the open coded
+dw_pcie_find_capability() call used to be, and every one of these paths
+runs after qcom_pcie_init_*() has enabled clocks, resets and power.
 
 Signed-off-by: Hans Zhang <18255117159@163.com>
 ---
- drivers/pci/controller/dwc/pcie-intel-gw.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/pci/controller/dwc/pcie-qcom.c | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-intel-gw.c b/drivers/pci/controller/dwc/pcie-intel-gw.c
-index 348e579e683fa..a891c3f8eb012 100644
---- a/drivers/pci/controller/dwc/pcie-intel-gw.c
-+++ b/drivers/pci/controller/dwc/pcie-intel-gw.c
-@@ -119,7 +119,7 @@ static void intel_pcie_ltssm_disable(struct intel_pcie *pcie)
- static void intel_pcie_link_setup(struct intel_pcie *pcie)
+diff --git a/drivers/pci/controller/dwc/pcie-qcom.c b/drivers/pci/controller/dwc/pcie-qcom.c
+index d903f10211c23..dfd2d10414ec9 100644
+--- a/drivers/pci/controller/dwc/pcie-qcom.c
++++ b/drivers/pci/controller/dwc/pcie-qcom.c
+@@ -379,13 +379,13 @@ static int qcom_pcie_start_link(struct dw_pcie *pci)
+ static void qcom_pcie_clear_aspm_l0s(struct dw_pcie *pci)
  {
+ 	struct qcom_pcie *pcie = to_qcom_pcie(pci);
+-	u16 offset;
++	u8 offset;
  	u32 val;
--	u8 offset = dw_pcie_find_capability(&pcie->pci, PCI_CAP_ID_EXP);
-+	u8 offset = dw_pcie_get_pcie_cap(&pcie->pci);
  
- 	val = pcie_rc_cfg_rd(pcie, offset + PCI_EXP_LNKCTL);
+ 	if (!pcie->cfg->no_l0s)
+ 		return;
  
+-	offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
++	offset = dw_pcie_get_pcie_cap(pci);
+ 
+ 	dw_pcie_dbi_ro_wr_en(pci);
+ 
+@@ -398,7 +398,7 @@ static void qcom_pcie_clear_aspm_l0s(struct dw_pcie *pci)
+ 
+ static void qcom_pcie_set_slot_cap(struct dw_pcie *pci)
+ {
+-	u16 offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
++	u8 offset = dw_pcie_get_pcie_cap(pci);
+ 	u32 val;
+ 
+ 	dw_pcie_dbi_ro_wr_en(pci);
+@@ -998,7 +998,7 @@ static int qcom_pcie_init_2_3_3(struct qcom_pcie *pcie)
+ static int qcom_pcie_post_init_2_3_3(struct qcom_pcie *pcie)
+ {
+ 	struct dw_pcie *pci = pcie->pci;
+-	u16 offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
++	u8 offset = dw_pcie_get_pcie_cap(pci);
+ 	u32 val;
+ 
+ 	/* Force PHY out of lowest power state */
+@@ -1362,7 +1362,7 @@ static int qcom_pcie_init_2_9_0(struct qcom_pcie *pcie)
+ static int qcom_pcie_post_init_2_9_0(struct qcom_pcie *pcie)
+ {
+ 	struct dw_pcie *pci = pcie->pci;
+-	u16 offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
++	u8 offset = dw_pcie_get_pcie_cap(pci);
+ 	u32 val;
+ 	int i;
+ 
+@@ -1410,7 +1410,7 @@ static int qcom_pcie_post_init_2_9_0(struct qcom_pcie *pcie)
+ 
+ static bool qcom_pcie_link_up(struct dw_pcie *pci)
+ {
+-	u16 offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
++	u8 offset = dw_pcie_get_pcie_cap(pci);
+ 	u16 val = readw(pci->dbi_base + offset + PCI_EXP_LNKSTA);
+ 
+ 	return val & PCI_EXP_LNKSTA_DLLLA;
+@@ -1785,14 +1785,15 @@ static int qcom_pcie_icc_init(struct qcom_pcie *pcie)
+ 
+ static void qcom_pcie_icc_opp_update(struct qcom_pcie *pcie)
+ {
+-	u32 offset, status, width, speed;
++	u8 offset;
++	u32 status, width, speed;
+ 	struct dw_pcie *pci = pcie->pci;
+ 	struct dev_pm_opp_key key = {};
+ 	unsigned long freq_kbps;
+ 	struct dev_pm_opp *opp;
+ 	int ret, freq_mbps;
+ 
+-	offset = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
++	offset = dw_pcie_get_pcie_cap(pci);
+ 	status = readw(pci->dbi_base + offset + PCI_EXP_LNKSTA);
+ 
+ 	/* Only update constraints if link is up. */
 -- 
 2.43.0
 
