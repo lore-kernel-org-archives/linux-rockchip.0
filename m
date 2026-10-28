@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8FA82606A321
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 20:27:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D2929606A31A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 21:03:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pKXs6hqb;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=O4TqPvgs
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Z2NKLe3j;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=ke+RHx2W
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,52 +14,79 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=9mC9qunrMxUFFBH3gwISmzq0c50TdiQNLky5Jqvmako=; b=pKXs6hqbgAvMIPcxys6lKcZmRY
-	/H6rVLspRocECA7gX52euWhZVW5IuSvOUgTnjfyiiQ3JvQU6ISnGHmCIaSftoX7RnbF3HrX8cU+3n
-	QlYN+CvzrHqo54v6DESqL7x89Mhpzcs8n4NOm02yVFyLk/MRH5qrBlD2nCxWKxQADsJcmGt8mx8pe
-	2KW3hEvd7FO5kDTc6wMeRhDaThwAYqewPwn02qYXI6bFppGriePzp0c7KFQCErSpmJmEmNgY6n1Qt
-	tzTtEmaDPqe6y8MmzXaJGucwBpkvQo+x+N+aSOlt3PWmnakuO95Tx7chX0HAwJJNg7wQd4VJ2tc3s
-	wtlQIanA==;
+	bh=MMRSV6WnKlh5tLYk+KYrOWR8OyCOCPSSsL54ousgoqI=; b=Z2NKLe3jYCBHiEdMWU0jbypIbM
+	/oOYvV2LC5h7GFJkXb/zLYTDaQlhc/wASe6yQlhnvJJ6ETkSBqH0vrg6sASuSvRArVmEkYgs186FP
+	KiwYZkEKFaRxBqhE/udRmU5r2a1AJMBBVABydJFt0c3J1gDuvS5aLpcIdqGjRfZRuYEjy13tNqhCl
+	DPbshP51+w/kTk9KN9jOYqimaXX/m8zpI6Eww4JIrfHrWvmO3wpCVYpU1Pt+7A4PzOtivNnOypLWF
+	FEU0egIWYcxawV7R9V5glP3Rd2N00iNsU0lPNR+gocrA4BZ8ITeNTmWNOxHdttuCDYEaprd69dhNl
+	pB2y9W/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMAEo-00000007vPs-1hDZ;
-	Wed, 28 Oct 2026 20:27:10 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xMAnU-00000007xxd-1Cxd;
+	Wed, 28 Oct 2026 21:03:00 +0000
+Received: from mail-qk2-x03.google.com ([2607:f8b0:4864:34::3])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMAEk-00000007vPF-3lQV;
-	Wed, 28 Oct 2026 20:27:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793219223;
-	bh=p1IE/DlZrAqu5FN95lXdgFSXQVz+G7vqZ67fMoLW+vQ=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=O4TqPvgsoxvDDpBs0O3rj3nK0nVYaHIqJd8W1c59A7tk95o5lUcx83zZTJRm8zSJV
-	 VYyODDH1udtlwCPzuxc6UZUZTUQWypocd7iR7eUjV7M1heWP5bbyX9ijxWZxVXSLam
-	 PXvGP1cqGLFZiGlPhrgyYKbMWgqIUN/xm8JR5FjTHvz/P8hbgYrC1OiP7XqAYm/1Fs
-	 I2dChoV31xjfhuvapgOpdhCXOGJlHC9ztiQUiDYbh1CDCxpzrYKWxlcVcpMrWVVn3H
-	 9n4b/l6uA90wSf8cpJBy9X4NTF8cWf8QorcX8ftRqMDz3SarNKWRuXb6bxi9zZqovv
-	 uIANKLvREUzAw==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 71EE117E03FF;
-	Wed, 28 Oct 2026 21:27:01 +0100 (CET)
-Message-ID: <b3e4f381bd1d4b921703f7b9e7452a49842d1176.camel@collabora.com>
-Subject: Re: [PATCH v2] media: rkvdec: Handle interrupts without a current
- context
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Alex Kazinsky <a.kazinsky@ideco.ru>, Detlev Casanova
-	 <detlev.casanova@collabora.com>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
-	 <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil
-	 <hverkuil+cisco@kernel.org>, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, lvc-project@linuxtesting.org
-Date: Wed, 28 Oct 2026 16:26:59 -0400
-In-Reply-To: <20261026124808.642373-1-a.kazinsky@ideco.ru>
-References: <20261026124808.642373-1-a.kazinsky@ideco.ru>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+	id 1xMAnQ-00000007xxI-3fjN
+	for linux-rockchip@lists.infradead.org;
+	Wed, 28 Oct 2026 21:02:59 +0000
+Received: by mail-qk2-x03.google.com with SMTP id af79cd13be357-93f21bc9a5eso130846085a.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 28 Oct 2026 14:02:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1793221374; x=1793826174; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=lcKDdY0PXyl1xPcW5E/fH1VRKcliX57O/IlRcrnPofo=;
+        b=ke+RHx2WBXEGyTJMj2aeSF3gxar9tHlzxzW1ooudVJSNsdfmP+skmZHQ+jyDyHLZcw
+         R0I77yex+JJqDLb7mjz9N7NXa//EKsr95VKUfeuNDsxcQOhW1jWn2RP36PAdXXqWCCGI
+         KXkm6F2ogwVN0o9CXBznD5YPjdUQB+9AtIXJ2/AmQtizIeOCz3HyjMM1aqARD1094aFE
+         hFB/meIBZrF3PxP7ZQL0QjPEfBmyxzSsjajsdm2Nw3HgWQKFLfMRngZAishLHcYeODNx
+         +k5EUFvIwDHMVZLfDDtbNavGqWiTrUfxJ55OH8vyJXf9rqVpJAPHoC6u2H8/DG4P94jm
+         tJDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793221374; x=1793826174;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=lcKDdY0PXyl1xPcW5E/fH1VRKcliX57O/IlRcrnPofo=;
+        b=rGQA8h2tIAzWP/mf8d5qE9TXaiZPehO2M9sn32mLT5yM6Qhl+w2v90LV3+mmjOsbcJ
+         /Ik1lEUlq1d5c7q+1AMRKYRAISZvLxvH77j9vKlf+EP0is/jVCjT4cJDbLUj+4vNIEsA
+         eOuevon3miuF0MqOZsv8nZf59rl/S8rP40Y7mkAenIa5SwXlXxUFZOLhfYQIm/K3K6Bc
+         XJeb0TZF3vbwG+zLnMNZ7Pg0ic4ULp11RzTPfwS6kdRkWibCdDGv4MrOd9EtJu2IQrex
+         7LxeXmcZNSdDggo/Gh+xltZt3n/fg7vgKSPFcQ7Fo2kwDAGSKTWHvXnscIYPzDVFX+AX
+         ZOiw==
+X-Forwarded-Encrypted: i=1; AKwUvBz7LbsZlG6h5u+HDjK5MLakhfWD6YahtpoQ7JnPCljoh1g+ElaInFG8QwEXtWRYUU9rwF9p1lcTVnpJ/PZ/LQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKqPbZ+jcoELv9Bg5eEQYAtxYdQyNEuu0dRDW+ld8C9ANoK3jq5
+	bFvRHOhqAWrUYSs/TGfT2BY1YI0CSc4IjyRrFdioiWpGDjnGJsbwWwEsMM6mJPQENGA=
+X-Gm-Gg: AYBFou1RQJTHNOUEP18IoV7CKma16/NkSEkcKxg9espV58os2X5sTt3NaMu+o6OUDrL
+	YGYaqgcRF6pUnwQJ8YOKlc87altzgD1pPavS2tQB3df+RWOxxB3uFF+pk4tDdmPnKxz2b1u00F1
+	rPoyuykTqaMl2XcY6o3jwQi45UwF0S3tGYGS7NyDqBoD7LUXnORLliMpRS8YybKwwj8NtNiyPc+
+	pyCDR7zDvQFXPV1TsjUghl/NTfQKUHNbssi4jYVeWUAxc2YF56BCgtkXTfdl94X/xZP9aq8vfyM
+	qYFH4QNFrJIzAB6hRMSzphyPb7O9YHPDNc7urh7jfW4gliEwVLjJyR9X7b7QCRyJmCqSGQsGnly
+	bxl5sCl8e4yu3xQe0unleqpsUnGxADbVulV4+fsk3BE8irs9GZ+3vdT+OrSN6lMAPy7q5g6uIxS
+	+JqGTpM2cU6MWIo9lqCLBcNLBrestp4pST67ccQj5mFZFG52Skr5HLCLfBJ+ogYIKk/j7k28Imd
+	lQ7seMWBySJZ1BxjBKjQWjwoSjejQlKkQoSu/ABeLY05B8zf654EjA9lo3DkjU+ILqfAMH4vrkN
+	nx2Ap5pHaeU2K9kXi6nG+fkYi/ccsXmWRjdIececlhFwaJBrLXKM3Y0=
+X-Received: by 2002:a05:620a:688f:b0:937:d6e8:59b0 with SMTP id af79cd13be357-944089438e7mr539240985a.10.1793221374326;
+        Wed, 28 Oct 2026 14:02:54 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:11:34bd::5ac? ([2606:6d00:11:34bd::5ac])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-91c47c54cbdsm141047106d6.26.2026.10.28.14.02.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 28 Oct 2026 14:02:53 -0700 (PDT)
+Message-ID: <0b3f80aa8522d1f1655c3696848456dba4edea22.camel@ndufresne.ca>
+Subject: Re: [BUG] rkvdec-vdpu383-h264: wrong pixels at horizontal
+ de-blocking edges y=4 and y=12
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: valery bokov <vlry.bkv@gmail.com>, linux-rockchip@lists.infradead.org, 
+ Detlev Casanova <detlev.casanova@collabora.com>
+Cc: linux-media@vger.kernel.org, Simon Wright <simon@symple.nz>, Detlev
+ Casanova <detlev.casanova@collabora.com>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>
+Date: Wed, 28 Oct 2026 17:02:51 -0400
+In-Reply-To: <CAN9BvpqAL_Hb2cR52EkYmkdm37ej2qKxFh2bj7F6Ei_bg-Sw0A@mail.gmail.com>
+References: <CAN9BvpqAL_Hb2cR52EkYmkdm37ej2qKxFh2bj7F6Ei_bg-Sw0A@mail.gmail.com>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
  cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
@@ -72,14 +99,13 @@ Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
  ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
 User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_132707_149551_50760E7A 
-X-CRM114-Status: GOOD (  29.92  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261028_140257_110689_443BEB3C 
+X-CRM114-Status: GOOD (  14.94  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,229 +115,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8827328392778992169=="
+Content-Type: multipart/mixed; boundary="===============8143143018486699035=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
---===============8827328392778992169==
+--===============8143143018486699035==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-U62r30hsm7WM+5WWV9F0"
+	protocol="application/pgp-signature"; boundary="=-ne9NdZ26iNQ9+DseWgfF"
 
 
---=-U62r30hsm7WM+5WWV9F0
+--=-ne9NdZ26iNQ9+DseWgfF
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Hi,
 
-Le lundi 26 octobre 2026 =C3=A0 16:48 +0400, Alex Kazinsky a =C3=A9crit=C2=
+Le mardi 27 octobre 2026 =C3=A0 16:20 +0100, valery bokov a =C3=A9crit=C2=
 =A0:
-> The watchdog can finish the current job before the threaded IRQ handler
-> retrieves its context. In that case, v4l2_m2m_get_curr_priv() returns NUL=
-L,
-> but the variant IRQ handlers unconditionally dereference ctx->dev.
+> Questions:
 >=20
-> Pass the device pointer to the variant IRQ handlers independently of the
-> context. Clear the interrupt status and, for VDPU383, disable interrupts
-> before returning if no current context exists. This avoids dereferencing
-> NULL while still acknowledging the interrupt.
+> - Does anyone know what 0x618 is? It=E2=80=99s outside the documented fun=
+ction
+> register range; I=E2=80=99d guess a cache, prefetch or bus-interface enab=
+le.
+> Does the BSP (mpp_rkvdec2 / rk3576 init) program it at power-up?
+> - Your FIX.md notes mainline throughput is well below the BSP=E2=80=99s (=
+=E2=80=9C4K
+> is ~30 fps vs the BSP=E2=80=99s ~112 fps=E2=80=9D). Some of that gap may =
+be this bit:
+> on our board, runs that come up with it clear are ~3x slower.
 >=20
-> Found by Linux Verification Center (linuxtesting.org) with SVACE.
->=20
-> Fixes: f9c7b7deeffd ("media: rkvdec: Support per-variant interrupt handle=
-r")
-> Signed-off-by: Alex Kazinsky <a.kazinsky@ideco.ru>
-> ---
-> Link to v1: https://lore.kernel.org/all/20261023131124.94116-1-a.kazinsky=
-@ideco.ru/
->=20
-> This issue has not been reproduced on hardware. The watchdog/IRQ race
-> described above is based on code analysis.
->=20
-> A possible test would be to submit a single decoding job and temporarily
-> delay the IRQ thread before v4l2_m2m_get_curr_priv() for longer than the
-> watchdog timeout. This would artificially widen the suspected race window=
-.
-> This experiment has not been performed.
+> A fix would presumably set bit 1 of 0x618 in rkvdec_runtime_resume,
+> next to the priming. That needs the register mapped, either by
+> extending the =E2=80=9Cfunction=E2=80=9D reg range in the DT or with a se=
+parate
+> mapping. I haven=E2=80=99t written that patch; I=E2=80=99d rather first h=
+ear whether
+> the bit is known and whether other bits in that area need setting too.
 
-Ack. I've studied Hantro and why it does not need all your suggested defens=
-ive
-coding, details delow.
+As you probably guessed by now, neither myself or Detlev have tested suspen=
+d
+yet. I did some search, as I don't have detailed registers description for =
+this
+SoC, only the MPP code as reference.
 
->=20
-> Changes in v2:
-> - Fix continuation-line alignment in the IRQ handler declarations.
-> - Clarify that the issue has not been reproduced on hardware and
->   describe a possible test.
->=20
->  .../media/platform/rockchip/rkvdec/rkvdec.c   | 23 +++++++++++++------
->  .../media/platform/rockchip/rkvdec/rkvdec.h   |  4 +++-
->  2 files changed, 19 insertions(+), 8 deletions(-)
->=20
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/me=
-dia/platform/rockchip/rkvdec/rkvdec.c
-> index 061281f903f3..da4ed7bde05c 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> @@ -1434,15 +1434,18 @@ static void rkvdec_iommu_restore(struct rkvdec_de=
-v *rkvdec)
->  	}
->  }
-> =20
-> -static irqreturn_t rk3399_irq_handler(struct rkvdec_ctx *ctx)
-> +static irqreturn_t rk3399_irq_handler(struct rkvdec_dev *rkvdec,
-> +				      struct rkvdec_ctx *ctx)
->  {
-> -	struct rkvdec_dev *rkvdec =3D ctx->dev;
->  	enum vb2_buffer_state state;
->  	u32 status;
-> =20
->  	status =3D readl(rkvdec->regs + RKVDEC_REG_INTERRUPT);
->  	writel(0, rkvdec->regs + RKVDEC_REG_INTERRUPT);
-> =20
-> +	if (!ctx)
-> +		return IRQ_HANDLED;
-> +
+You can certainly attempt some initial fix. The register block in question =
+is
+[0] Vdpu383RegLlp_t, and the register is called SWREG6_LINK_MODE_EN. That m=
+akes
+it quite surprising it did read the link table at all with such name, but t=
+his
+is what I found.
 
-The IRQ lifetime is bound to the dev, so it fine to continue further.
+So I think we should map the LLP completely, even if its mostly for future
+implementation. I was also checking the LLP driver downstream [1], and we s=
+eem=C2=A0
+to be missing a lot in fact. It seems like starting from RK3576, the LLP
+capabilities have got much close to a command buffer.
 
->  	if (status & RKVDEC_RDY_STA) {
->  		state =3D VB2_BUF_STATE_DONE;
->  	} else {
-
-What is not in the patch context here is:
-
-	if (cancel_delayed_work(&rkvdec->watchdog_work))
-		rkvdec_job_finish(ctx, state);
-
-ctx will exist if the watchdog was cancelled, this is pretty much guarantie=
-d, so
-the null-check-return is not needed. It does not invalidate your report tho=
-ugh,
-since we get the dev from the ctx, which can be dead. More instructions bel=
-ow
-....
-
-> @@ -1457,9 +1460,9 @@ static irqreturn_t rk3399_irq_handler(struct rkvdec=
-_ctx *ctx)
->  	return IRQ_HANDLED;
->  }
-> =20
-> -static irqreturn_t vdpu381_irq_handler(struct rkvdec_ctx *ctx)
-> +static irqreturn_t vdpu381_irq_handler(struct rkvdec_dev *rkvdec,
-> +				       struct rkvdec_ctx *ctx)
->  {
-> -	struct rkvdec_dev *rkvdec =3D ctx->dev;
->  	enum vb2_buffer_state state;
->  	bool need_reset =3D 0;
->  	u32 status;
-> @@ -1467,6 +1470,9 @@ static irqreturn_t vdpu381_irq_handler(struct rkvde=
-c_ctx *ctx)
->  	status =3D readl(rkvdec->regs + VDPU381_REG_STA_INT);
->  	writel(0, rkvdec->regs + VDPU381_REG_STA_INT);
-> =20
-> +	if (!ctx)
-> +		return IRQ_HANDLED;
-> +
->  	if (status & VDPU381_STA_INT_DEC_RDY_STA) {
->  		state =3D VB2_BUF_STATE_DONE;
->  	} else {
-> @@ -1486,9 +1492,9 @@ static irqreturn_t vdpu381_irq_handler(struct rkvde=
-c_ctx *ctx)
->  	return IRQ_HANDLED;
->  }
-> =20
-> -static irqreturn_t vdpu383_irq_handler(struct rkvdec_ctx *ctx)
-> +static irqreturn_t vdpu383_irq_handler(struct rkvdec_dev *rkvdec,
-> +				       struct rkvdec_ctx *ctx)
->  {
-> -	struct rkvdec_dev *rkvdec =3D ctx->dev;
->  	enum vb2_buffer_state state;
->  	bool need_reset =3D 0;
->  	u32 status;
-> @@ -1499,6 +1505,9 @@ static irqreturn_t vdpu383_irq_handler(struct rkvde=
-c_ctx *ctx)
->  	writel(FIELD_PREP_WM16(VDPU383_INT_EN_IRQ | VDPU383_INT_EN_LINE_IRQ, 0)=
-,
->  	       rkvdec->link + VDPU383_LINK_INT_EN);
-> =20
-> +	if (!ctx)
-> +		return IRQ_HANDLED;
-> +
->  	if (status & VDPU383_STA_INT_DEC_RDY_STA) {
->  		state =3D VB2_BUF_STATE_DONE;
->  	} else {
-> @@ -1521,7 +1530,7 @@ static irqreturn_t rkvdec_irq_handler(int irq, void=
- *priv)
->  	struct rkvdec_ctx *ctx =3D v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
->  	const struct rkvdec_variant *variant =3D rkvdec->variant;
-> =20
-> -	return variant->ops->irq_handler(ctx);
-> +	return variant->ops->irq_handler(rkvdec, ctx);
->  }
-> =20
->  /*
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/me=
-dia/platform/rockchip/rkvdec/rkvdec.h
-> index a24be6638b6b..8bcb51db5105 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-> @@ -30,6 +30,7 @@
->  #define RKVDEC_8K_PIXELS		(7680 * 4320)
-> =20
->  struct rkvdec_ctx;
-> +struct rkvdec_dev;
->  struct rkvdec_rcb_config;
-> =20
->  struct rkvdec_ctrl_desc {
-> @@ -72,7 +73,8 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
->  }
-> =20
->  struct rkvdec_variant_ops {
-> -	irqreturn_t (*irq_handler)(struct rkvdec_ctx *ctx);
-> +	irqreturn_t (*irq_handler)(struct rkvdec_dev *rkvdec,
-> +				   struct rkvdec_ctx *ctx);
-
-What I'd do is only pass rkvdec_dev, which has a lifetime bound to the IRQ
-handler. Then inside rkvdec_job_finish(), retrieve the CTX with:
-
-	struct rkvdec_ctx *ctx =3D v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
-
-This will match what we do in Hantro driver, and should be safe, with less
-defensive coding. In short, the ctx lifetime is bound to the m2m job, at le=
-ast
-it should, if not, we have another bug to fix.
-
+regards,
 Nicolas
 
->  	u32 (*colmv_size)(u16 width, u16 height);
->  	void (*flatten_matrices)(u8 *output, const u8 *input, int matrices, int=
- row_length);
->  };
+[0] https://github.com/rockchip-linux/mpp/blob/develop/mpp/hal/rkdec/inc/vd=
+pu383_com.h
+[1] https://github.com/rockchip-linux/kernel/blob/develop-6.1/drivers/video=
+/rockchip/mpp/mpp_rkvdec2_link.h
 
---=-U62r30hsm7WM+5WWV9F0
+--=-ne9NdZ26iNQ9+DseWgfF
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCauJakwAKCRDZQZRRKWBy
-9EjoAP41bNowZoEb/VnojODYDTIsxzEfvrOltzzab1mB9My5NwD/eeBBPWjY8orA
-PYnTpI7TaC9alCzPsSiV0l1Ss0hF2gY=
-=FyAF
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCauJi+wAKCRDZQZRRKWBy
+9OE5AP928iYgCtz2ebPDHhDrHaCfkRiPSTZkfbf2wqeQxJ0bYgD+NtlC6N5jiBGi
+U9Pew2K/ZEYw8f+Ct1kOo0gWRI1Vpw0=
+=1nkl
 -----END PGP SIGNATURE-----
 
---=-U62r30hsm7WM+5WWV9F0--
+--=-ne9NdZ26iNQ9+DseWgfF--
 
 
---===============8827328392778992169==
+--===============8143143018486699035==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -322,5 +213,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8827328392778992169==--
+--===============8143143018486699035==--
 
