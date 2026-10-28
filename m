@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8E1F3606A32E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 03:07:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8133E606A324
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 03:07:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KQyV8wfz;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=g6BGph+W
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cwDQDr+O;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=bIxsEJpf
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,29 +14,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=V1AMzYX85B5HQ+E75t1YXAibi8Y2VJqmaFaiAKMEXlM=; b=KQyV8wfzLR+cf3gkZCQMy1GNnZ
-	rnmGuxSkoQSsxGGU9S9ZjgooTwIf1g95+fAaPAF9V2aiBea41bksJ5EiZFyuCHZoYyk3v5IP+QHk+
-	H+6QR8cX/TfXH3ZY75FHf/IBoP5zB7bqHN+ahvzk2PSpIdyoe9/ooPTQgUXp8OXwy77T1J2HmnZ1G
-	O2AnDn+1jumR5dyV4hUUDF3uV4Kk7udRAh4pj3LfeZIfYn2FJL1O+SXvl+Zv8EwCN3DPmR5LR276n
-	uiAeyCPvz4SlmOaW8XCK2xZvSnQW+DQNWUwqkx0RBAluKh4yRYJGvLIqTFq4Iwzq864mpQCDX+bak
-	RmVDzl3g==;
+	bh=EMALojAqjcIrT0300c581TfYEoFTOvUApjI+P2Hmuso=; b=cwDQDr+Ob4w/l8KbEhH3OzgEq8
+	l2snE3i/yEK37oBMnkK0q6CUkVq5Pa2pkwyi0d5JPwD8yv3fuZ/1IgNkmzWn5vcPTn1RkBg1hQiet
+	Tuoi2/yGTul0aCytu4hjen9RFdMfrvdzQPKHQ+i4WyYZAvBP7WljpCEBDCfUXdlawKAhcOmySmjgp
+	8R7zE9sDIiXG7oObCKECx0uylknahVcdCcvroloiUFdvoCbbRncTcF1gkKb1oAWluwvgE2ZDkh5Rw
+	QGjIThMO0RKpoEKLodjKkJw7DI7NLoIc3uap5/yQi1IXGFnj6qmFg0a+WkvdcIQbfNJlcAFUlT3Ra
+	6kRZR5KQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLu0Z-000000068fa-07GX;
-	Wed, 28 Oct 2026 03:07:23 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
+	id 1xLu0a-000000068kX-41DF;
+	Wed, 28 Oct 2026 03:07:24 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLu0T-000000068WX-1dt8;
-	Wed, 28 Oct 2026 03:07:19 +0000
+	id 1xLu0X-000000068Yq-10Kh;
+	Wed, 28 Oct 2026 03:07:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=hF
-	LHtyAEUbucyklnv273Nmookz4wD3SmGr8qXgopcSE=; b=g6BGph+Whp9fOSqPrP
-	uV/PKq/RbpyX101MLm4jpxdDC3R5aRquWyjZvCUmy7eM3i7B8v/w+RYzHxn3c5OU
-	kAuBV45nPuzwJlYwq4TZFSEQhxg5S25F/dUjffZpbM3wpC3j+BNePDaw4d0nJt4V
-	HRihUeKzIwntnvAvOqFGnCGe4=
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=tn
+	of3xP7PItMivWd2BFSiA/M5yZlXFkryB98XPi7W/Q=; b=bIxsEJpfxRkV2FpHly
+	U0V/n13hcy4H+VcXsozQLSJscEqHzeRDNeppX+qjrcGJCbh7yI8KnZss+KFFvylM
+	9UYtdi51n0Ci6fj2DZqcQL0YOgtVJpeyaTOjoYSs37QnxdNq5wh3rIa9hrBiAOL6
+	soQ9hKHVWath5V5n830zknt6k=
 Received: from Precision-7960.. (unknown [])
-	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wDnD07QZuFqZiY4DA--.60713S3;
-	Wed, 28 Oct 2026 11:06:59 +0800 (CST)
+	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wDnD07QZuFqZiY4DA--.60713S8;
+	Wed, 28 Oct 2026 11:07:03 +0800 (CST)
 From: Hans Zhang <18255117159@163.com>
 To: bhelgaas@google.com,
 	lpieralisi@kernel.org,
@@ -54,24 +54,25 @@ Cc: imx@lists.linux.dev,
 	linux-tegra@vger.kernel.org,
 	linux-pci@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v5 01/16] PCI: dwc: Add pcie_cap field and caching helper
-Date: Wed, 28 Oct 2026 11:06:37 +0800
-Message-ID: <20261028030652.2917756-2-18255117159@163.com>
+	Hans Zhang <18255117159@163.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v5 06/16] PCI: dwc: rockchip: Use cached PCIe capability offset
+Date: Wed, 28 Oct 2026 11:06:42 +0800
+Message-ID: <20261028030652.2917756-7-18255117159@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261028030652.2917756-1-18255117159@163.com>
 References: <20261028030652.2917756-1-18255117159@163.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDnD07QZuFqZiY4DA--.60713S3
-X-Coremail-Antispam: 1Uf129KBjvJXoWxAF4xCr4UZFW3KFW7Zw17GFg_yoWrZr4rp3
-	9xJFWSyFs8Jr4SvFsxA3W09F13Aas3AFW7Ga93Gw1fZry3ur1UKFW0yFWjyF17Gr4Igr12
-	gr43ta48GFs8AFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zErgAOUUUUU=
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7BPghGrhZtPOwgAA3p
+X-CM-TRANSID: _____wDnD07QZuFqZiY4DA--.60713S8
+X-Coremail-Antispam: 1Uf129KBjvdXoW7GrWrXr4xGF4kKFyDXw47Arb_yoWkZrbE93
+	4UursrZrW8GrZYkan2y3yfXF98Za47ur1jga9YyF9xZFn2vr18Xr97X398AFn8GrnrZr97
+	Kr1qvr48GFW3JjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRNMa0PUUUUU==
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7BjihmrhZtjP5QAA3P
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_200717_798711_85FA72A0 
-X-CRM114-Status: GOOD (  22.24  )
+X-CRM114-CacheID: sfid-20261027_200721_651694_6FBCE4F1 
+X-CRM114-Status: GOOD (  10.55  )
 X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,104 +95,31 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The DWC PCIe core and its platform drivers repeatedly call
-dw_pcie_find_capability(pci, PCI_CAP_ID_EXP) to obtain the offset of the
-PCI Express Capability structure. Besides being verbose, that performs a
-DBI read every time, including in paths that run repeatedly such as link
-up polling, suspend/resume and interrupt handlers.
+rockchip_pcie_enable_l0s() is called from rockchip_pcie_host_init(),
+i.e. from the .init callback, which runs after the controller clocks and
+resets have been enabled. Replace the capability search with
+dw_pcie_get_pcie_cap(), which reads and caches the offset at this very
+point.
 
-Add a pcie_cap field to struct dw_pcie and a helper
-dw_pcie_get_pcie_cap() that performs the lookup on first use and caches
-the result for the subsequent calls.
-
-The lookup is deliberately done lazily, at the first place that needs the
-offset, instead of at a fixed point during controller initialization.
-This guarantees that the DBI read happens exactly when the open coded
-dw_pcie_find_capability() call it replaces used to happen, so the series
-does not introduce DBI accesses at points where the controller might not
-be accessible. This matters for endpoint controllers such as qcom-ep and
-tegra194, where DBI is only accessible after PERST# is deasserted, and it
-also means platform drivers do not have to call the helper from a
-specific callback at the right time.
-
-Reading DBI while the controller is inaccessible (clocks or power gated)
-is platform specific: some integrations hang, some return zero and some
-return garbage. dw_pcie_find_capability() already rejects offsets below
-the standard header, unaligned offsets and entries whose capability ID
-does not match, but a transient bogus read could still look valid. To
-prevent such a value from being cached for the rest of the lifetime of
-the controller, the offset is only cached after the capability ID has
-been read back at that offset. If it is not confirmed, the offset is
-still returned to the caller for this access but not cached, so the next
-call performs the lookup again, just like when the capability is not
-found.
-
-The cached value is accessed with READ_ONCE()/WRITE_ONCE(), because the
-first lookup may be triggered from different contexts, for example the
-qcom-ep global IRQ and PERST# IRQ handlers. A concurrent lookup stores
-the same value, so this race is benign.
-
+Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
 Signed-off-by: Hans Zhang <18255117159@163.com>
 ---
- drivers/pci/controller/dwc/pcie-designware.h | 38 ++++++++++++++++++++
- 1 file changed, 38 insertions(+)
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
-index 6d788aa000117..dede6b3966585 100644
---- a/drivers/pci/controller/dwc/pcie-designware.h
-+++ b/drivers/pci/controller/dwc/pcie-designware.h
-@@ -594,6 +594,8 @@ struct dw_pcie {
- 	 * use_parent_dt_ranges to true to avoid this warning.
- 	 */
- 	bool			use_parent_dt_ranges;
-+
-+	u8			pcie_cap;	/* Offset of PCI_CAP_ID_EXP */
- };
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index bd86e32cc2b15..6d87da43cd6f0 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -374,7 +374,7 @@ static void rockchip_pcie_enable_l0s(struct dw_pcie *pci)
+ 	u32 cap, lnkcap;
  
- #define to_dw_pcie_from_pp(port) container_of((port), struct dw_pcie, pp)
-@@ -832,6 +834,42 @@ static inline void dw_pcie_dbi_ro_wr_dis(struct dw_pcie *pci)
- 	dw_pcie_writel_dbi(pci, reg, val);
- }
- 
-+/**
-+ * dw_pcie_get_pcie_cap() - Return the PCIe Capability offset
-+ * @pci: DWC instance
-+ *
-+ * The offset of the PCI Express Capability structure is read from the
-+ * DBI configuration space on the first call and cached in
-+ * @pci->pcie_cap for the subsequent ones.
-+ *
-+ * The lookup is done lazily at the first place that actually needs the
-+ * offset, so the DBI read happens exactly when it used to happen before
-+ * caching was introduced, i.e. never before the controller's clocks,
-+ * resets and power are enabled.
-+ *
-+ * A DBI read issued while the controller is not accessible returns
-+ * platform specific data, and a transient bogus value must not stick in
-+ * the cache.  The offset is therefore only cached once the capability
-+ * ID has been read back at that offset.  Both the not-found and the
-+ * not-confirmed cases leave the cache empty, so the lookup is simply
-+ * repeated on the next call.
-+ *
-+ * Return: the offset of the PCIe Capability, or 0 if it could not be
-+ * found or has not been confirmed yet.
-+ */
-+static inline u8 dw_pcie_get_pcie_cap(struct dw_pcie *pci)
-+{
-+	u8 cap = READ_ONCE(pci->pcie_cap);
-+
-+	if (!cap) {
-+		cap = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
-+		if (cap && dw_pcie_readb_dbi(pci, cap) == PCI_CAP_ID_EXP)
-+			WRITE_ONCE(pci->pcie_cap, cap);
-+	}
-+
-+	return cap;
-+}
-+
- static inline int dw_pcie_start_link(struct dw_pcie *pci)
- {
- 	if (pci->ops && pci->ops->start_link)
+ 	/* Enable L0S capability for all SoCs */
+-	cap = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
++	cap = dw_pcie_get_pcie_cap(pci);
+ 	if (cap) {
+ 		lnkcap = dw_pcie_readl_dbi(pci, cap + PCI_EXP_LNKCAP);
+ 		lnkcap |= PCI_EXP_LNKCAP_ASPM_L0S;
 -- 
 2.43.0
 
