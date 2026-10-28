@@ -2,104 +2,115 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1547A606A31F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 17:31:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8E68606A323
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 19:54:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TeCJBPIN;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=wrRuukdP
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gEAJAO51;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=YmEBP9WI
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=xr7ZzbKi3Yqyp3yT/qReZ2d1lmjzqgOXS2kFbsuIlcA=; b=TeCJBPINt+yvIgmb8kshA4hyoa
-	yi5HY7D+DzTjy7Rlki7Dr5acVD8/p2N6XxvIXsjWHt07Oxha5bInevrQV23a+o6ZS59hSTBJ5EDaG
-	q0+8iQYEEQDCRbwM6KqS9xj8dGMzXK0wZPN322K1mA2LIwEofMWbQ81ajlfRKhNWPq9Z9Ub4ICLoq
-	m/mnPL/TWPeDyO0+aPbnwa45FY2XW6hZKTFn09jRZ72lSvvJL4KkTsiGe02Y0mjMV3/l3KAwctbBL
-	OJm8mZ/sesQ+uz3PdmKtnILKWlp0XI0MmXROQ3W++nbIqeJ730dc+HrjS/G4X12dgH27obONQ//ic
-	+WrQawLg==;
+	bh=4Kch8YawxR7oQmX302FlC7xL6Lmu+a6xXrcBAIugpKg=; b=gEAJAO5166IajvGfUO97pGG45Q
+	NZ+HWFGV0JNS16z/IYX/rgY3EBUR9+OpVLDSjeEAwuMQm0Wxc6o82KR+P/NHA7m6FKYPbyMJAQfDu
+	atIYTZPqxvCT8CY1PQOX9uDbc7P3Kxr4weSkYcau19CahXNQpYd+0Z8RA5eWbv1Ef1Kl1TVEvzaRT
+	ectvW1V0pXbHV+H9d7uscCyjwF7KB4orcDq8o6U62daLtEBUCPsbowL/5mNrLMYhbQuwddDKOfKC5
+	iGYxDoaLTdGuzacD7l4eaW8nSw9dgzOAyHHn+itZ4iiII4aeL2OCarh9Ah5ygQyfoVzY5abn8mant
+	7Lqpa8oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM7Us-00000007fSL-1zed;
-	Wed, 28 Oct 2026 17:31:34 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1xM9im-00000007tB1-1YH0;
+	Wed, 28 Oct 2026 19:54:04 +0000
+Received: from mail-qk2-x01.google.com ([2607:f8b0:4864:34::1])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM7Uh-00000007fJS-1Nor
+	id 1xM9ii-00000007t9a-06Zu
 	for linux-rockchip@lists.infradead.org;
-	Wed, 28 Oct 2026 17:31:24 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-4a549cd7fd2so12057185e9.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 28 Oct 2026 10:31:22 -0700 (PDT)
+	Wed, 28 Oct 2026 19:54:02 +0000
+Received: by mail-qk2-x01.google.com with SMTP id d75a77b69052e-5332a0f6dbbso17566681cf.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 28 Oct 2026 12:53:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793208681; x=1793813481; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=tTbN8QdJzbNFg7HFB2EoFWXNNo+FJ0ZvprR3p/0DA4Q=;
-        b=wrRuukdPOHhZ9ETo4kDnDH+fIvT6FpVWIiuZSs11rixaLuavFnjwC6Akx5ypLcT51N
-         Og0j6BgBIvpglWU3x/cqBWMjUFLK9fUHFNe+NqgeY3a4EGLbCWwqm3j6RRvXY9TNg0CK
-         uF7NH0Ri+imaKMDC/Xy1sm0rkCdI2Vjf1uC44Oz63JcN3ML7Wsg794uBG+EkZ2E6HuQX
-         1ZkBrqJ/7LMDTNJRChoigpKwfUCuIwpCIXr6L4Zp+ccphIBmYw6ntq+kHqg1H4ribmdI
-         hHAgpVAWgA9AZLBa8ozk7q+lEwRm55CPj1FVBJTFs4poHPVsbps8SPDgN6P2GjRPrIy1
-         vBRQ==
+        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1793217238; x=1793822038; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=U4Z20M5yrzVdkZ8pUfnazTFG6IRUwC17SyWpCdk396M=;
+        b=YmEBP9WINha8yOXFCNYEsIPA4RIUzzIdBVxxVQtNattsso3qkUqPXdFYsB87g1J9qO
+         kCRHV7WM3WCE0AVpKI28A5Gk/8sjeuFSirE3bM/zMP6PNTPusfXEZvIBmy90h5QGHTN7
+         fernIXu4apF5t2Jow6O3+goMkSzwsrPLO//EgjF7f0mizVob/TI/16Cu29PqjcqQpaAp
+         xr0S48Mma7b3tbpOrahQpc/2R4ykpkmI9lDk6jfR3ozSu7PoZj9MQkHbb0dh3tuLs21i
+         wuDgig7PLqvy4q1+Td3ujdE6+9HqC6icUuSjQ6a4DJlO4jQ+jYxG1OBEGkiRMIvdwf4u
+         59rA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793208681; x=1793813481;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=tTbN8QdJzbNFg7HFB2EoFWXNNo+FJ0ZvprR3p/0DA4Q=;
-        b=roDY0Ua4QrpM1AyPVfIH2B3Cx5qsCs9RU8d70/D0KMJ+S/TbJ4fOIF0iGKRMeYx7pq
-         05MtdXSBPrwmc3SXoMf0oRKCtgY8xr7avaQxi+VrSdh1w/Nypa9NTSccltyR3bBQvWEc
-         nMRMC8c+r9HG4nNSw/ZDxyeao2DXVPXLM3Y3Raco1b5XNcX5QVgFr+29eiQ69Cv+eVGV
-         dTyylEzhPzm1TsDONSEHL0kpEeFFZzgM5/2QnonEkYcrUplC4/tR4N4ERzgF53ChqVQH
-         sogBazylA5MIVjIdTg9bIG4k8x2BTCXodhjghnUbvmeR+vgRPy2Q9+DX5wSO0ccmUKKD
-         sTfw==
-X-Forwarded-Encrypted: i=1; AKwUvBx/BeunAk8OR18w+SVMwKGYE14FEHN1yAMNukLAqxkYBi8P+QLcUUwHHtVUl82DvedqzhrA1rSmXwG5w3BeRg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJ6pnPFT3W2rDKEPreCYNN4M9IaTtlls3esD11GlnpHcKpIoLrx
-	i+JLveOxj3xvISsJ7n6jqeq6mfgk6fgMGomDDw0oPLAIfwk018oEuadF
-X-Gm-Gg: AYBFou1vSJKgt3uYf5eyI5vckAz3Q9Z7stdSxU0WCZyyAOAOSn4crwgPUUZ4VZ7ty5M
-	qL4a3JzXj/4xDxthU/jH01275HiOX/gFqg7f5ZrCAOgKR6uAhB0p0qIohKutA6bCLopMoUsNuUc
-	uyoAllCWdOYz5Hj58SzkV8S+hCJNtOtZm/3HZO0/MYWIbmsVPYNeisaInIjf6Im8UL76lGbwXkD
-	AvEfJFxO9Sjk1nWSyV3vBRWXxugHxt1MadmoF00BhXxjEM1GwwfZY1SH3fw0qd9gQSbm5yN24FU
-	7w+zgysJ+z5UOklyDM2xUpW3P1zxIVnqVpzONkSzuGE58dQ59oI0CGwaIAgtZ4165FNrpeewtpF
-	gfDFEutkf/hgo6WzhG0oRhQoaXKLnJjb0Z4GaQIaaQrcy/2DwY5eazti2ogykorWybq88w0fJAz
-	2w1ONYLq1qNjbbm1eqtx7bunCaZmboi2xFyz2/aftQapO6p+Fh4bJLXFD/N8qNayChQP1zw/d5w
-	U/LjVhD0AQdM7vqEibPNsT3yvvhMTXf62cWOen25aycsBfj0kYxPlOPXvWbLSysiLaMyKwKEiXp
-	i8rKT40TxL3Ffy0lkefq8EeuynIEDG2HwQR9ZWiR9O/0zW9pSR7gAA7kl4I+T7XhEsLxRbMW2mc
-	m+f5MNqgAR+dQQfJCWYuxLKLY60fsdmf8A+QGlXNWwPkEKg==
-X-Received: by 2002:a05:600c:1546:b0:49e:6581:7baf with SMTP id 5b1f17b1804b1-4aa86a42518mr6057825e9.2.1793208680690;
-        Wed, 28 Oct 2026 10:31:20 -0700 (PDT)
-Received: from tachyon.internal (2.155.41.158.dyn.user.ono.com. [2.155.41.158])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4aa80285b2dsm6496175e9.13.2026.10.28.10.31.18
+        d=1e100.net; s=20260707; t=1793217238; x=1793822038;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=U4Z20M5yrzVdkZ8pUfnazTFG6IRUwC17SyWpCdk396M=;
+        b=t1bk6GKk9LzgaVgdD1uPl7QpIHAmPVAQ3jbtdLWNZxxZjS7ci/EwpejRDP3p7TmgJ+
+         4XkHh73OsM9vp+t2FUmEdscyC8y+kqF/W3RXBwu722NH0D8z3JByTjBQGjUGD2NxkVFD
+         A5J72wuJmXO89iAOx7d//mhmIon/JOPqJs5IEUlxqITy3SRryUb3Xzj4efx42prrnNra
+         yPMLBFrG4hMXEd0l48dSsCSmgz3bMqTfWrZNbByB4OgGkN/WNkC/2mrfUOXeiIhxz0s+
+         e/272CdYDjP+SwBSFSr70L0QZRLTIKdBhH3e3D3nYF5ldr+c1it1DP6qx2AxQqGIDzcz
+         Ls5A==
+X-Forwarded-Encrypted: i=1; AKwUvBxxA4dazCDHAeA9Vjhm/u5plXcmwqwntcNyHJasZ+viJG1aP5Mjgqs/z35tYJA/Ro3bAp712R4Fkxayu5FjyA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJsODdUlUrgiaYVYpkUusI9KBdCc0vu6I5mpHXAFan59gaV88eV
+	Sl0thWoEv5/4Tb6pixrPZdRDt3IbIL2Qg1scaHSPIp6Dgl+Hh4xMXkNR9LFAhlejw9s=
+X-Gm-Gg: AYBFou0ehVzHM7BmjIpIa5Th5P7muRFkwrYv7ZBO/TBDyJZoFL8Injn9kZqYmu3E/N4
+	k+Fwm/A0agu+quq9RMzSH4ReJ7NxFaV9J2skQDdrg9DTFKi+5hYmnCrI4UVs08jz4W1K+J/gqQC
+	TWbdgAf4ryVciOeh/Dvf+tmSEZOi4jp4RiPbweZRvud6rK0iHQ4VaKHYRAxdoDkLRFstMIC9t/O
+	Se3KGPwDcXs2gL/E66V9jIC+S55gJ1wTibkCbBiLLaYFipdMP5Q6XbQ968vTHyMDyMdco2q+pOU
+	n6kOK28yRg7teCddfmF+835k+1QIUXSY/+N5NilWARBRGZW/6FXn8uspIi8CnXqGq38eNv2/EvF
+	GSNmeCPq0pRBvX6EAf0Ihzx69+ic4oEiLHIqItmXORMR64IwK9GGnXgfBbkNTGzirlPkax5OaKT
+	rAzjziQvDUbwBOgKB+aelXzcfTvIgYkeWPM6edFqFdSDT+ANqxbX9ntRBAs5UHaydDEXVeInVqY
+	pemjSxfE8903Waij6aBTI8jZE75qUf8aZEuHwxazCgO3VEv6LiC0Q3GuRUYYgpXSWIj02PKqW1y
+	vSkllXCH+2cGwISk+14qxTIX3jXdDiPN4MAMjwzqPA99hfP/cTn+9mlSV1PdMTMJcM4tfmtRCbf
+	S
+X-Received: by 2002:ac8:5a50:0:b0:536:6abc:54b1 with SMTP id d75a77b69052e-53fcb509e99mr60729391cf.28.1793217237708;
+        Wed, 28 Oct 2026 12:53:57 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:11:34bd::5ac? ([2606:6d00:11:34bd::5ac])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-53838cf49c9sm113417671cf.3.2026.10.28.12.53.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Oct 2026 10:31:19 -0700 (PDT)
-From: =?UTF-8?q?Enrique=20Hern=C3=A1ndez=20Bello?= <ehbello@gmail.com>
-To: iav@iav.lv
-Cc: shawn.lin@rock-chips.com,
-	lpieralisi@kernel.org,
-	kwilczynski@kernel.org,
-	mani@kernel.org,
-	bhelgaas@google.com,
-	robh@kernel.org,
-	heiko@sntech.de,
-	linux-pci@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
+        Wed, 28 Oct 2026 12:53:56 -0700 (PDT)
+Message-ID: <bfc4481a817e761ed9ccc265484dfbdfc1e59490.camel@ndufresne.ca>
+Subject: Re: [PATCH v7 2/4] media: rockchip: Add JPEG decoder driver
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Torsten Duwe <duwe@lst.de>, Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Lucas Sinn <lucas.sinn@wolfvision.net>, Mauro Carvalho Chehab
+	 <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
+	 <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH RFC 0/2] PCI: rockchip-host: Retry training and hot-reset a JMB585 on RK3399
-Date: Wed, 28 Oct 2026 17:31:17 +0000
-Message-ID: <20261028173117.3457220-1-ehbello@gmail.com>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <ff204558-dc22-4d38-b0dc-2c727f983f9f@rock-chips.com>
-References: <20261024-rockchip-pcie-resume-v1-0-58e54a5cf5f1@iav.lv> <4316c1da-f7ff-4fa5-a330-512800474e45@rock-chips.com> <20261026-rockchip-pcie-shawn-reply-1@iav.lv> <ff204558-dc22-4d38-b0dc-2c727f983f9f@rock-chips.com>
+Date: Wed, 28 Oct 2026 15:53:53 -0400
+In-Reply-To: <20261022190026.6cb0a534@rocky.lan>
+References: <20261022-rockchip-jpegdec-v7-0-3fd7dd55f408@pengutronix.de>
+		<20261022-rockchip-jpegdec-v7-2-3fd7dd55f408@pengutronix.de>
+	 <20261022190026.6cb0a534@rocky.lan>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_103123_412418_A67C0BDC 
-X-CRM114-Status: UNSURE (   9.57  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261028_125400_338474_4F3E8DDE 
+X-CRM114-Status: GOOD (  24.19  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,46 +120,157 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3909006791092039150=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-You said both SErrors and synchronous external aborts occur. In my logs which
-of the two you get tracks the cluster the access runs on, which might be worth
-a look before you move the hook.
 
-Every asynchronous SError in rockchip_pcie_rd_conf landed on CPU4 or CPU5, the
-A72s, across six boots on two different kernels. The one time the same read
-aborted synchronously it was on CPU3, an A53. They also carry different ISS:
-0xbf000002 for these config-read aborts, against 0xbf000000 for the unrelated
-runtime SErrors on this board.
+--===============3909006791092039150==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-vP+iZzvr5GpVmxFar41J"
 
-That is one synchronous case, so not a law, but it is cheap for you to test:
-pin enumeration to an A53 and see whether your aborts all become synchronous.
 
-It matters because only the synchronous form can be repaired. When it arrives
-as an SError the load has retired and there is no destination register left to
-write all-ones into, so no fixup can help.
+--=-vP+iZzvr5GpVmxFar41J
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I prototyped the synchronous half in September: an exception-table entry
-consulted from do_sea(), with the driver substituting the all-ones the PCI core
-expects rather than only surviving. arm32 has had that for years --
-imx6q_pcie_abort_handler() in dwc/pci-imx6.c decodes the faulting instruction
-and makes a read look like all-ones, under #ifdef CONFIG_ARM -- and arm64 has
-no equivalent path. It only ever worked for me with enumeration pinned to an
-A53, which is what made me look at the cluster in the first place.
+Hi Torsten,
 
-Not proposing anything, and not reviving that prototype. Yours if any of it
-is useful.
+Le jeudi 22 octobre 2026 =C3=A0 19:00 +0200, Torsten Duwe a =C3=A9crit=C2=
+=A0:
+> Hi Sascha,
+>=20
+> first: thank you for driving this :)
+>=20
+> On Thu, 22 Oct 2026 13:06:40 +0200
+> Sascha Hauer <s.hauer@pengutronix.de> wrote:
+>=20
+> > Add a driver for the JPEG hardware decoder Rockchip integrates into a
+> > number of its SoCs.=20
+>=20
+> [...]
+>=20
+> > +static int rkjpegd_enum_fmt_vid_out(struct file *file, void *priv,
+> > +				    struct v4l2_fmtdesc *f)
+> > +{
+> > +	if (f->index)
+> > +		return -EINVAL;
+> > +
+> > +	f->pixelformat =3D V4L2_PIX_FMT_JPEG;
+> > +	f->flags |=3D V4L2_FMT_FLAG_DYN_RESOLUTION;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int rkjpegd_enum_framesizes(struct file *file, void *priv,
+> > +				   struct v4l2_frmsizeenum *fsize)
+> > +{
+> > +	/* The decoded format follows the bitstream, nothing to enumerate. */
+> > +	if (fsize->pixel_format =3D=3D V4L2_PIX_FMT_NV12 ||
+> > +	    fsize->pixel_format =3D=3D V4L2_PIX_FMT_GREY)
+> > +		return -ENOTTY;
+> > +
+> > +	if (fsize->pixel_format !=3D V4L2_PIX_FMT_JPEG)
+> > +		return -EINVAL;
+> > +
+> > +	if (fsize->index)
+> > +		return -EINVAL;
+> > +
+> > +	fsize->type =3D V4L2_FRMSIZE_TYPE_STEPWISE;
+> > +	fsize->stepwise.min_width =3D RKJPEGD_MIN_WIDTH;
+> > +	fsize->stepwise.max_width =3D RKJPEGD_MAX_SIZE;
+> > +	fsize->stepwise.step_width =3D RKJPEGD_CODED_STEP;
+> > +	fsize->stepwise.min_height =3D RKJPEGD_MIN_HEIGHT;
+> > +	fsize->stepwise.max_height =3D RKJPEGD_MAX_SIZE;
+> > +	fsize->stepwise.step_height =3D RKJPEGD_CODED_STEP;
+> > +
+> > +	return 0;
+> > +}
+>=20
+> Can it do JPEG, MJPEG or maybe both? AFAICT the difference is minimal,
+> so maybe try to be more permissive?
+>=20
+> [...]
+>=20
+> > +static const struct v4l2_ioctl_ops rkjpegd_ioctl_ops =3D {
+> > +	.vidioc_querycap =3D rkjpegd_querycap,
+> > +	.vidioc_enum_framesizes =3D rkjpegd_enum_framesizes,
+> > +
+> > +	.vidioc_enum_fmt_vid_cap =3D rkjpegd_enum_fmt_vid_cap,
+> > +	.vidioc_g_fmt_vid_cap_mplane =3D rkjpegd_g_fmt_vid_cap,
+> > +	.vidioc_try_fmt_vid_cap_mplane =3D rkjpegd_try_fmt_vid_cap,
+> > +	.vidioc_s_fmt_vid_cap_mplane =3D rkjpegd_s_fmt_vid_cap,
+> > +
+> > +	.vidioc_enum_fmt_vid_out =3D rkjpegd_enum_fmt_vid_out,
+> > +	.vidioc_g_fmt_vid_out_mplane =3D rkjpegd_g_fmt_vid_out,
+> > +	.vidioc_try_fmt_vid_out_mplane =3D rkjpegd_try_fmt_vid_out,
+> > +	.vidioc_s_fmt_vid_out_mplane =3D rkjpegd_s_fmt_vid_out,
+> >=20
+>=20
+> You are populating only the *_out_mplane members and not the single
+> plane ones? So a greyscale JPEG needs to go _mplane with 1 plane?
+
+Drivers only implement one queue type, MPLANE is the recommended one. There=
+ is
+pixel formats for single allocation and multi-allocation that userspace can=
+ pick
+from. So a driver can do MPLANE and support both NV12 and NV12M formats as =
+an
+example.
+
+>=20
+> And for color, the colorspace on the decoded side should be
+> V4L2_COLORSPACE_JPEG, not sRGB, I think.
+
+Should actually match what the JPEG header says, RGB jpeg exist.
+
+>=20
+> Would you mind to give a hint about your test setup?
+
+I believe Sascha has been testing with GStreamer, the element is called
+v4l2jpegdec.
+
+Nicolas
+
+>=20
+> Thanks,
+> 	Torsten
+>=20
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--=-vP+iZzvr5GpVmxFar41J
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCauJS0QAKCRDZQZRRKWBy
+9FbtAQDQq1LHLIEYGFdpJt3hiBBdUv17DM2qsOM4AzolcnZ4QQD/ber/FxSYvItX
+/Z3gWh4nz808VmJqoajvRuATRpq4NQo=
+=niJB
+-----END PGP SIGNATURE-----
+
+--=-vP+iZzvr5GpVmxFar41J--
+
+
+--===============3909006791092039150==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3909006791092039150==--
+
