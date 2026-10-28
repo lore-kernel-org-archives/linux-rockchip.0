@@ -2,120 +2,100 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CCDCA606A322
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 08:56:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 78D5D606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 09:13:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UlHLOehD;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Mkj5aPXg
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XFSWSmjx;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=samsung.com header.i=@samsung.com header.a=rsa-sha256 header.s=mail20170921 header.b=YD3seNv1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To:From:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FnZk28uTpXXZJ2X3dcZZQUZRij4+E+BT1YcrvTF98WA=; b=UlHLOehDWy4PHyCJTsSVwbwyrp
-	E1P7ojmaSgK73qpvt7uOudI1V3Z+P6FaFOQhTikYkw5c6g+wfaFjC4AfRFYkP3kSZhCsfH4oBnNWI
-	1mMZHu2AX9RZSenDQgl1etYN3U1bzWufeam9ENVKg1ha5d5Li46esRrGuzKjnoAp6Xj6DIpGHOgzo
-	YBdoVv0qlmTxenns+OdEyAYfNkhBe1UTCcW1kEmmouGHMoWPwzWrenCI+QRhxNvo0y0eqUnoIKtdO
-	AIwjw4qHeNstuZ7a2C5LKYUdjOYyK1Mx6NN6zyPPX1hbApqB66Z5EkvojGmc1BgClD2Rt3eJGJZHg
-	SIIFwz8w==;
+	bh=08vSv1V6jPFxzGKYQIcf0HjYOXXRI+lt3p/5OZXr52E=; b=XFSWSmjx1fRPLO1gTxpYmlpZtE
+	FxgzwBco+rVwVmMFsGkOHspJtcjMDXFAfWTaTZ74InTdpZ810xV9PwVLXVHrnKzHQIwp7BQHiHuAE
+	pXP8DtWTFankinveR+TCtat2lkfxJcsgkfrKyTjHXMcEKDDwnKz6r0TXsIHWs3KehNb3a+Blpyf5Q
+	IsBBgX9zlM7cpjmx1m1fFo4cPjn99iXep45UnctQ7L5JuBkKWZkBTpOPDmdndzHMFedgeTtpgAb6D
+	k9qaHXR3VccnqKYEjq+v62VLEgbBX5sUNUYf8/HmPqO866zBbhT7l8IpMpU2bzZOBFWznVQg+H8kj
+	SdEFEOZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLzSK-00000006bFR-3HQx;
-	Wed, 28 Oct 2026 08:56:24 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1xLzik-00000006dG0-0fFy;
+	Wed, 28 Oct 2026 09:13:22 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLzSH-00000006bDe-3mRM
-	for linux-rockchip@lists.infradead.org;
-	Wed, 28 Oct 2026 08:56:23 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-6b3e4764ebeso153808a12.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 28 Oct 2026 01:56:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793177779; cv=none;
-        d=google.com; s=arc-20260327;
-        b=Kyj6zssEXYIjplO1bzVIfew0x3aJZasJHZ0GXJDDxNr9O9/nIKhVShVnKP2TQrePfx
-         rOYKXcvUJ2jo3aLw/mtyT9vayqiAaOaiI7auVekjZAmW0mG8wruxGfAc83cGZ/6djnGH
-         ki3oKiIA6u1GdWBJ5iZ1qpRo66nm2q0vKHXA1AxZD3AM/xP+ZKh8jYpNiNtnrIm5YPAm
-         bjXsEJx1F/eVPXz8UktWl/PJZqwd7fsXFJKTDzlJgmDdxUerMix4C2/NZXgk0FYpVe77
-         hFDzafAIcs6lysI7MiiYHNg6ODB4djGmU3VDeSAjwbOKakiehnBi18gFyJK1XYji3kC3
-         cEhQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=ZZQo695rVLd/9P8OSYiw403iPH4b0i2xMXdXOpikEz8=;
-        fh=etjGItwBi1E7gb6Jk+tiQkgQRaKA3/aRN0H+Vy5Bmxg=;
-        b=b4sjyTJKSZyeT/V7VAnlt9tKIshImRsMpSNnlQPzItBuAUdLINB3h0hthXbbhvYFxW
-         KwlzCJDxUq8HWz25QRcp9CkYx4lIwiX5YNu8hrfUDUly4jdCaq/IlCmnTmTh6l897qT2
-         oGwZpGA3mMJtIMqqUKWLvE++421ksDnEHOo2NjTmXBRrWADP43EKhD01K2mWR1GO6P4r
-         2RMNkOMaKmvMUXg7M3dVuL9kAnpmlbthYQGzQCvF7LIinrQ5jH0uZNDhajXfRMhApH6s
-         7IR6iReD5EhSVRedXsIbp2EJXmkImMkTlqZo7gSr4qz5EsMglg2BZ+xqwMXLFuhDOs1W
-         bxMA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793177779; x=1793782579; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=ZZQo695rVLd/9P8OSYiw403iPH4b0i2xMXdXOpikEz8=;
-        b=Mkj5aPXgzjw66OqCSVTFkzsH+Z7+iqcoCMrsK13OQwWQCydmGjEJw3QNFRIgY8VzgC
-         661+aFL5ucoZ296X/Wqs7+vJKCLqxMtcwiP6hpTgSYaeycA+cgOweD7ZVD1K47Le7Z80
-         /6sFXWRsy6HnR4BCn3w5WhNP2OowEBSJMUK9JBYBuvwJEJd/iFQTA/Y2DvLKJgutMpxM
-         oSppXy9Aa/ZqyoPDPpnBeLTjy3yDDhj3pffNY9vBi/X5PRTzx0x7sChCvvHf6gLS14KZ
-         624qWVSjhS8EMxgjVSn81Dmr5MVdoDDQuu2BEQO6/UQwge81jW+DkF79XM64VEU9iXKm
-         4+JQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793177779; x=1793782579;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=ZZQo695rVLd/9P8OSYiw403iPH4b0i2xMXdXOpikEz8=;
-        b=U7BpYEmIu8sj/wIS4siw6DoEKVC7+ifVWPW5uZo/iAynDU6emIANgyvEFV1UCDMaAy
-         B0H4C4Hxpgj//8A0DjGrURbQcuN5V+5cbOTTj80pZ8O7RoORzGRUdCFb/pnuWpxHwRvb
-         uohMc6kpNeY0eMbnPy0LiX3hd2oMj346NWqXQcXtpS7mnbrbgNEWCVDh78ty+UyAU8pK
-         Z4ZJrTv+a5BlbLC2RJfY32wbJC/PC9f2oSYXRfjAfwOMXtPrhJAJze1rriIsGMUg0mcc
-         zeHtioZKUmTrhmT1asdGXJ144kN3zK5gjrBiUzt+mGNYuf45d5ANXaQBqcwr/ehkVxRB
-         1siA==
-X-Forwarded-Encrypted: i=1; AKwUvByjwWzguV/1MdYgYy3AUCFtG7ImbwUs4THRfCAGqeVnaYAoGcf40BARht45wxM1oK6JTcC5dt65XyVsyjVsyw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKaCCX4WWNbOB/nb1oVA+1LwFdvhn+qH91jGHCWXhwdeT4GwTZJ
-	AwCnJbeuUBlGa3tCz2bpvUl2wxK2uxxgOniYSnEnQl630d0w5UYbvou4ecK5mqUXqHkaxjfAnhe
-	vp2tH73W8eYur4xWeUqjwoqSHEB6G9jo=
-X-Gm-Gg: AYBFou1yjnJRqZt8L3aJRtHWXD9K7V9suf5wiA6oA9S/WMcQ/yCe6MifD9kzW6p6bmC
-	//s3HhQpE6ddaI5u5+iS0UvKwhLXphUIYG6r6BMwtM6XiWJjhggWrTI+hkyCGt7wQMuh+OFAXnz
-	tIo+LsqNafYf08YB8hH9FqIOfJMDQwddFkjALnM7G70hKKqw8pakmHjA400UpIoUUShuG/C6BA/
-	seRSh+3o1YQacEX19cUJaF72taa/iNOszgsaXuSNOesN98weLsZUFUvz0zZO9UlyoDx1BhBZLpS
-	si5uHs7NNcErj+iap9xMxzmrJ6woSJDbVPk29g583imwl3CY9ay0qKQ/Tup7VNCgTSlNk3m/4zA
-	pwjmk6aSjt0yzKMOwW91YtREQSoaIjBCBUL6MFMqZ9ePCYMFBxHPkjaPmRQ==
-X-Received: by 2002:a05:6402:a6d2:10b0:6b1:da27:34cb with SMTP id
- 4fb4d7f45d1cf-6b49cbce701mr976968a12.2.1793177778791; Wed, 28 Oct 2026
- 01:56:18 -0700 (PDT)
+	id 1xLzic-00000006dEZ-3oXp;
+	Wed, 28 Oct 2026 09:13:17 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20261028091311euoutp024819ef823fab2c20689b5890d7ddf5ae~ippwwUXVb2349923499euoutp02J;
+	Wed, 28 Oct 2026 09:13:11 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20261028091311euoutp024819ef823fab2c20689b5890d7ddf5ae~ippwwUXVb2349923499euoutp02J
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1793178791;
+	bh=3W2zW/ASI3Ufo+rdp+J+HzrLBLxCU9YgEhL1tFo9JN8=;
+	h=Date:Subject:From:To:Cc:In-Reply-To:References:From;
+	b=YD3seNv1lTl6lfYw3bfwIkC48J0uPe3B+5wKAZPK+XeWBwINFgBm5MPb9sVHecN7v
+	 XByNXwrD0JsSH1+jN75BcFsO8ELTz7OD2T7aTRqKuYUS05jwwSQTiJ5lwYNNLhOdCb
+	 QW+IPyyDcEgIBTrDIHHnlhBaaSr8YKqqFO/n8FO4=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20261028091310eucas1p1df77aa99909e0c12fcd259596f1f2163~ippv92h803159131591eucas1p1d;
+	Wed, 28 Oct 2026 09:13:10 +0000 (GMT)
+Received: from [192.168.1.44] (unknown [106.210.136.40]) by
+	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20261028091308eusmtip25984a31eb02ec800271e9985aaee42c8~ippuC0ldb0063200632eusmtip2x;
+	Wed, 28 Oct 2026 09:13:08 +0000 (GMT)
+Message-ID: <f6474690-adba-43ff-90f8-cdddf857286b@samsung.com>
+Date: Wed, 28 Oct 2026 10:13:07 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261016-dcphy-rx-v1-v5-0-e63b49eabe2d@gmail.com>
- <25254818.ouqheUzb2q@diego> <20261021024239.GA3667411-robh@kernel.org>
- <3435698.oiGErgHkdL@diego> <850be915-d42b-427e-a036-907b9364f9d2@collabora.com>
-In-Reply-To: <850be915-d42b-427e-a036-907b9364f9d2@collabora.com>
-From: =?UTF-8?B?5qWK5pm65oiQ?= <jason98166@gmail.com>
-Date: Wed, 28 Oct 2026 16:56:06 +0800
-X-Gm-Features: AclHuK9Sjf7k3U-KBE-ExwCBQXl-_hQw7npOFvb6IJVRf4k6WS3oRrSiOtSkTyI
-Message-ID: <CAPwA33J1nud++bYV1JnPJqvA+ocz5H1=DnyJy3HGX4np6JxaEw@mail.gmail.com>
-Subject: Re: [PATCH v5 2/8] dt-bindings: phy: rockchip,rk3588-mipi-dcphy: Add
- a cell to select TX or RX
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Guochun Huang <hero.huang@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>, 
-	"Bryan O'Donoghue" <bryan.odonoghue@linaro.org>, linux-phy@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 16/20] phy: Add common Innosilicon HDMI PHY helpers
+From: Michal Wilczynski <m.wilczynski@samsung.com>
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring
+	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss
+	<rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Lee Jones <lee@kernel.org>, Andy
+	Yan <andy.yan@rock-chips.com>, Philipp Zabel <p.zabel@pengutronix.de>, Emil
+	Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+	<sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Paul Walmsley
+	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
+	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
+	Belhachemi <db@domibel.de>, Brian Masney <bmasney+clk@redhat.com>, Jerome
+	Brunet <jbrunet+clk@baylibre.com>, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, mfd@lists.linux.dev,
+	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, Marek
+	Szyprowski <m.szyprowski@samsung.com>, Maud Spierings
+	<maud_spierings@murena.io>, Graham Markall <hello@big-grey.co.uk>, Icenowy
+	Zheng <zhengxingda@iscas.ac.cn>, Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Joshua Peisach <jpeisach@ubuntu.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
+	<u.kleine-koenig@baylibre.com>
+Content-Language: en-US
+In-Reply-To: <943aa2e7-3945-48f9-9a87-9c963f97099d@samsung.com>
+X-CMS-MailID: 20261028091310eucas1p1df77aa99909e0c12fcd259596f1f2163
+X-Msg-Generator: CA
+X-RootMTR: 20260915153242eucas1p1394a6a5e272f106b9cab2a0f709ddeb8
+X-EPHeader: CA
+X-CMS-RootMailID: 20260915153242eucas1p1394a6a5e272f106b9cab2a0f709ddeb8
+References: <20260915-jh7110-clean-send-v4-0-f0e4fd6f2cc8@samsung.com>
+	<CGME20260915153242eucas1p1394a6a5e272f106b9cab2a0f709ddeb8@eucas1p1.samsung.com>
+	<20260915-jh7110-clean-send-v4-16-f0e4fd6f2cc8@samsung.com>
+	<asEPmpQTwXYADwTk@parshuram>
+	<943aa2e7-3945-48f9-9a87-9c963f97099d@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_015621_957503_26046ED4 
-X-CRM114-Status: UNSURE (   7.49  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261028_021315_535589_83DFA5DA 
+X-CRM114-Status: GOOD (  12.68  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,23 +108,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Michael,
 
-I have just started drafting the code changes and comments following
-the discussion above
-(including your comments on patches 3 and 5 in v6), so it will
-probably take one to two weeks.
+
+On 10/26/26 10:13, Michal Wilczynski wrote:
+> Hi Vinod,
+> 
+> On 10/3/26 16:22, Vinod Koul wrote:
+>> On 15-09-26, 17:32, Michal Wilczynski wrote:
+>>> The Innosilicon HDMI PHY IP is used by several SoCs. They differ in
+>>> where the PHY register block sits in the register space and in which
+>>> pixel clocks they support, but the pre-PLL programming sequence and the
+>>> layout of its registers are the same.
+>>>
+>>> Add a small library holding that shared part: the pre-PLL configuration
+>>> table format, a lookup, clk_ops determine_rate and recalc_rate helpers,
+>>> and the pre-PLL register programming. Callers pass a regmap, a register
+>>> offset for the PHY block, and their own pixel clock table.
+>>>
+>>> No driver uses it yet; the users are converted separately.
+>>
+>> Is there anything in phy patches here that has dependency with rest? If
+>> not consider splitting it up...
+> 
+
+On second thought, I agree it will be easier for maintainers to merge,
+so I'll split it in v6. The PHY patches (the binding, the helpers, the
+Rockchip conversion and the JH7110 PHY driver) will go as a separate
+mini series.
 
 Best regards,
+-- 
+Michal Wilczynski <m.wilczynski@samsung.com>
 
-Jason
 
 _______________________________________________
 Linux-rockchip mailing list
