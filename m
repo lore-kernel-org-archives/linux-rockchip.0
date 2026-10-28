@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0FA01606A31A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 01:51:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4563B606A31A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 01:59:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=U6OJkf+N;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=b3ojDiQL
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Y/EKC7Z6;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=qkEja46x
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,95 +14,94 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=XLWPfHI18yUiv4Td4+fmaIiYIfdmfABG3Tia8tlHZT8=; b=U6OJkf+NJpDmjpTjc+m1C/NV0k
-	LOVfQ5moOOiQ4KlQWyOBkf7Loyb26uh0sn4/u7/jvkyjhV9xHqdsB6sIzludE9klWbzcHz5dKwb6U
-	Sy9lHC/lhvo1Qzccv1vHu6JEtFcPnku65YqABvDU/dUEhfFcehAr7/zfDNEYmFo5TCIGJXJx+q6kK
-	kUoiOZR7gWpRiPSjmrJFBs4xnO7zZfzuX1WZrm/iw4784IA6SfYRZ3mGqD4o7rs5GwtU8uZGUxuTy
-	KupxPPETbi5ignuPgAuaPnzNaWdRvpoiqsbqYHzmsSUAUMd9I116/+f+8JUBGcsOuDaRyPwZzMcz/
-	+U+DGorQ==;
+	bh=AdSIXmhQvUVgnjG86IHl56PvcjGNU6e1hxMsSYbrTMk=; b=Y/EKC7Z66TAMML1VRI0i+V3U7Q
+	xcgB3LjlGmhshnYwOgGqaDlYyEp+sWsjkgV1qW1wilKgCWoxit3NkgKwwYsu9dlo9X5uTDDpjy5Mp
+	/6ACR++OUyaFyuiEysMTpgu8q6WuMNXvXhd7kT0qp4XfA59RymTeWgAAcg9ykwJPs0iS2GIJxbKrG
+	jZVTM3AtP+u9rDvHZ377y0+k+AMTuLmTsTjxWt8lzRGz+7ZRJANztAgORxbSeOdN8EyN5BHIj97Ag
+	HE5rgBX6FNWs1MAj4nWcEuURLhtwq9CYZ1pvaQFu8eZKlHvB/xfY60rLg0cSyhs5dttUIi3uMdFy4
+	SL9BU4wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLsop-000000063ct-1TzW;
-	Wed, 28 Oct 2026 01:51:11 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1xLswt-000000063yz-1Hfc;
+	Wed, 28 Oct 2026 01:59:31 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLsom-000000063c3-1Yoh
+	id 1xLswq-000000063yI-2CCu
 	for linux-rockchip@lists.infradead.org;
-	Wed, 28 Oct 2026 01:51:09 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2e74a32a07fso562685ad.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 27 Oct 2026 18:51:08 -0700 (PDT)
+	Wed, 28 Oct 2026 01:59:30 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4a60f9474c4so5280545e9.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 27 Oct 2026 18:59:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793152267; x=1793757067; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1793152766; x=1793757566; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=MeEhGL9p74hRILnxnbLIZTyexKrQv0qHFAgQnNnxF4A=;
-        b=b3ojDiQLXYNYMBZMO0jCyRiJOoSj6QsK9ETXxKZAmHV3BD8iYMvUMKLWivTLnOaYjv
-         pXtYy/VX9q/W3iQQDa5jnKDygdcgZykqzVoU+CD0c5ogSQIGJyS3xpVHfwnNNjDc3wCN
-         DW7SwxOFogC27ddCyOGXyqZZ9ayJH00bqfHTzta+NkuMc05mG+VNCMLj+wykWc1yg2Ae
-         a21FQLtzM9FWivJFQh8dYj2syRXbDw8Ll8FIy1xncaxaP+ZmMVJMYdQgqQ3juPjcD167
-         pEeiZ5LY3JsDqz9p7d0s/5ZyG3lSFnp9lJ9DWs69scDqRESgcN/slTFI7PJdEQlW3AYT
-         Gt1Q==
+        bh=DHS4IRcRkeGwthYM+/zX9QaAvmyaBpkm4EoH1u9SNX0=;
+        b=qkEja46x2MxzbVfVp3yhf3hhNKI1g6R9mJlP3Fu3MQs8z48o5HHZLF4pQ+8hon2Nb7
+         T5HdtuOfraO3BSV2d+iUfmuZigVBMPtpbkFq90tZ7IgadHvE70thk2Tka+pGiGCDi6io
+         JE/Pb8VoF6AeOiye/mmYBuimTg4oeWvH4aeOrNy6fL9CaHe7G6VJXOKF0WvcHxML16wb
+         mhD9ydd4X259AbgkpvQQp2pycXs7qKa6u/MZ4kwJECG7Mps88NwWzGgVecpK4aagi2ho
+         RcBtYuc4MVen2mX+TQavrD1f56pEU4Do8E8x6d4JCl284p5qbrh9jM45ZNAaNNgl1ywm
+         OxKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793152267; x=1793757067;
+        d=1e100.net; s=20260707; t=1793152766; x=1793757566;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=MeEhGL9p74hRILnxnbLIZTyexKrQv0qHFAgQnNnxF4A=;
-        b=SwEvC/6W+HW9N+S83uU9zQnAreBdbZ8CUQwXuCBgmdEOOoYXa/TJov3Vps57qc/7JU
-         Zt4yDJudRFJc0xJrE6agQ/9NByFoVJ61Lak142/EnHA4iAQmLD15NOrF7k6VNF8AqnnK
-         znodFuYA3Cbz2ARJ4kXJ96vnvUXSkeoSW9aTO5foqCMUmeO8s7rIy1/SRP5YuRPx4zD0
-         wPOSonP58m9HcT/pNqJ/mX79CPxSq7B0DcLzOhalYwuFbsQ8ws+BGV4lyppco5gQjzTt
-         WT80G8hV7V7VRAPJKyLijGr8jSZJ9/xc0Hkj3V9ofArmJzEfuDXB7eYr7MUBnIAvG+iK
-         jY5g==
-X-Forwarded-Encrypted: i=1; AKwUvByw63mTPCp7mM2dmJf07Li9DwAyC9y9aPiNVt7Sq1VVoVnRr8eaFSvT9P2iS9yUrWiESO3pTf2Ze2NwhTNYvg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJJ+2zp55Tp1HEIi8KPn7Fw9h0DvyL1cah+EAAbHC+Xezifyydv
-	SjAhSgg10l2xYC2W1AQDquPqxXqj39/U2YFIhqvPdSgd0YZ1ydcla5zX
-X-Gm-Gg: AYBFou1YLshCSW11kPCC6nTBUGNRjr3eiD5aS2RhOZSZEbTWWOnGgEM99joVlObFZho
-	aMJEfolEqcecwDvOyB1uxVu9NFJPksneWHffYeDidhw+RcZE+0o04C0Mo+MQsYVwggfsi1ofXfQ
-	wGChyYVopk9vg4TJzRfilMviBGMid8+dck2y6//mseWNZSjGT29F//gSh6qY2ioak2zTsFPBE/s
-	2DVs0OqCWiGuSJXs4Apm6uhQXvFnp8rrWttEgvVSE8/ehfA9sPV26pI2z4DMaLtQwy7OJvfBk+t
-	y6qBM/jYpTCCpc2GwvACFUq93zovF+k9kWKtbafTK332p3G8AEdLqAKRyL3lgw81oNiCvAA7Ayo
-	/y9696nmt/guaaIhX6kCgBc7y2Y/H/WEHVxw5iGp19lo0swJwT8EH9K0dV96QqMOKgP5hKUgVPx
-	BfzljaCBQlEQGOGRvFkg27mbgQf4MztvlsA5+IeoEjeB1iWZbWCKNOqTJQF6ehWuWEf5fJLsmVj
-	BVOib7bUCIcdXpR7S31lojM233Ip0yyySqcA2e/bQs7MdUdL8FN1M9QHqNnmvN8aadKr9rY4Vff
-	nFvQX70W56p1ia879sdfvTs1i5/IHLjUQQ==
-X-Received: by 2002:a17:902:cf10:b0:2e9:65bd:62c7 with SMTP id d9443c01a7336-2eaffb17f6emr16531855ad.0.1793152267434;
-        Tue, 27 Oct 2026 18:51:07 -0700 (PDT)
-Received: from localhost.localdomain ([240e:36d:b08:2bc0::a60])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2eae6c33917sm16066835ad.48.2026.10.27.18.51.01
+        bh=DHS4IRcRkeGwthYM+/zX9QaAvmyaBpkm4EoH1u9SNX0=;
+        b=ugoPJEupro18C4jZzJwdqALwwa8F8+a37aVvCwDy/eK3kYysUjvDPjYOF74A18EI5p
+         JgNiTGJiyH5up6Y0ahBWi7agHujHhFlKXIICzMd3NG2OqC56nSHlKOolQvpjlgb8vZLb
+         60S925b7StflpA4PrUKhqlwIO3zz/Agh93ZJdwFYafjJDsDaWlBfxoSL24mYrx7QETad
+         03f3GhXnNcAuIYNBurD2tX7xQWHeACPH0zWHaK5zUT9D2So/rpYuqF3989cF5VjEgglj
+         J930UEF8KObkYx6A9BTm+qnacKvbVvFj1lhLD40BhkuaD4BAXMlMPXYdxFLlV0t829mf
+         9RmQ==
+X-Forwarded-Encrypted: i=1; AKwUvBzqY3e5zcZHTWXPIUCgLWHMlRi2Vmm6RLrfmuBXxEPytwMmp/4/tK81/eQ4mp1PmZIVqhAka0jxRBmUKw+zHw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYI/6o+cEUy1T59AuPfzTPlMTAZZrVU+wSGYo/Ao9fEF39iaGdlt
+	t3H5GhbHHSdwAsvUBNAZDxRd5vD27D+0dBHuiMoyMCuRQWrKlLbuME3XE4K34MdffsM=
+X-Gm-Gg: AYBFou39J10hEsP2nsa+uuYGw6hmdzMG6pKS6Eah7R/oevC6bynE37AyNDEnRYQqWgo
+	HrXLkPP5hHElDiKZYBt87v6PghQYmjy/p7QdI+rpmZhsYNelHEGOACaFAKqbNs6+WizLZI69v62
+	KAPtKtkHXprvN0OLw242jNs9L8KD2j3Qz1bDZkzf7FqnR0FR95F7dQjUGzortarupioIo+E2ylp
+	tJy+R16YYMFLjvM1voTEPseOafAyMIbaX3zhkt9vCVMISWeEcBv+xDTvBxpeVRi+qlDri8M4Zrw
+	XnWLUHVcF4z6LQEirZGKd6n+93Jhbzx1PeihxPbqhY6Hl+bBusjiY7shSFuCKE0jBI9F5g6KABU
+	cQA28wzEjQmLI1ZS4P1HFfIy4cc9qdxFMryG1aBltSDULf8jGrvXcMZAJxk67URFwUKrtAood7+
+	2JYPzZSITkJVZLt56x2C4ph7E0LtUYiSmgYk8kx3ljJbpKEgelX/zRXk/uUxbS/lwh3fynlegLx
+	Vdtyn9gjRSRy4bF3obAXPtb7UTNole4Gs1hij9a+kmtV4/JtifXDSNjhGmjTQUnke+WAZQIn/fY
+	F9Cbke3gCo3nNwssDM5c3Y07yViziSVd+WPOR5oPs9N2nRUAuLat1hEF/6tc9VGrrj3PDaUUVY4
+	B7tRq8pOA133Bydvk/F2JSyGJh3PozQWeYB9bsasC0+oxxaia+XuTpj2AP1CJj4oFpBI=
+X-Received: by 2002:a05:600c:19c8:b0:4a1:df52:3e36 with SMTP id 5b1f17b1804b1-4a967201e9dmr16334615e9.27.1793152766074;
+        Tue, 27 Oct 2026 18:59:26 -0700 (PDT)
+Received: from tachyon.internal (2.155.41.158.dyn.user.ono.com. [2.155.41.158])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a976010ca7sm10831475e9.1.2026.10.27.18.59.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 Oct 2026 18:51:06 -0700 (PDT)
-From: Jianfeng Liu <liujianfeng1994@gmail.com>
-To: quentin.schulz@cherry.de
-Cc: HystericalDragons@proton.me,
-	amadeus@jmu.edu.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
+        Tue, 27 Oct 2026 18:59:25 -0700 (PDT)
+From: =?UTF-8?q?Enrique=20Hern=C3=A1ndez=20Bello?= <ehbello@gmail.com>
+To: shawn.lin@rock-chips.com
+Cc: lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	mani@kernel.org,
+	manivannan.sadhasivam@oss.qualcomm.com,
+	bhelgaas@google.com,
+	robh@kernel.org,
 	heiko@sntech.de,
-	hrushirajg23@gmail.com,
-	krzk+dt@kernel.org,
-	krzk@kernel.org,
+	dlemoal@kernel.org,
+	linux-pci@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	liujianfeng1994@gmail.com,
-	macromorgan@hotmail.com,
-	michael.opdenacker@rootcommit.com,
-	naoki@radxa.com,
-	robh@kernel.org
-Subject: Re: [PATCH 1/3] dt-bindings: arm: rockchip: Add ArmSoM Sige7s
-Date: Wed, 28 Oct 2026 09:50:58 +0800
-Message-ID: <20261028015058.11163-1-liujianfeng1994@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <2a1c33c9-8971-4054-a463-60f3ceddd627@cherry.de>
-References: <2a1c33c9-8971-4054-a463-60f3ceddd627@cherry.de>
+	stable@vger.kernel.org,
+	iav@iav.lv
+Subject: Re: [PATCH v3] PCI: rockchip: Don't lengthen PERST# when power is already valid
+Date: Wed, 28 Oct 2026 01:59:23 +0000
+Message-ID: <20261028015923.2436122-1-ehbello@gmail.com>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <cf541723-eb4c-4ba6-92c5-33baafc20e7c@rock-chips.com>
+References: <20261028005603.2399220-1-ehbello@gmail.com> <cf541723-eb4c-4ba6-92c5-33baafc20e7c@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_185108_416580_644F2A4A 
-X-CRM114-Status: GOOD (  11.32  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261027_185928_609569_B23B035C 
+X-CRM114-Status: GOOD (  27.51  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,36 +122,90 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Quentin,
+On Wed, 28 Oct 2026 09:34:04 +0800, Shawn Lin wrote:
 
-On Tue, 27 Oct 2026 17:03:02 +0100, Quentin Schulz wrote:
-> From U-Boot's perspective, I would have preferred there be a simple 
->difference we can detect at runtime and based on that decide which 
->device tree to load between coolpi-4b and armsom-sige7s.
+First, an apology for the noise: a v4 went out seven minutes after your mail
+and crossed it. It answers an unrelated review comment about T_PERST-CLK and
+does nothing about the points you raise, so please do not spend time on it:
 
-Maybe we can ask ArmSom to write some OEM strings into the OTP of SoC.
-So we can use one defconfig for two boards. I will check this method
-with ArmSoM and current OTP support in u-boot.
+  https://lore.kernel.org/all/20261028014116.2432425-1-ehbello@gmail.com/
 
->I don't know Heiko's or Krzysztof's opinion here, but I think it would 
->better reflect the actual context to NOT use a dtsi and simply have 
->arch/arm64/boot/dts/rockchip/rk3588s-armsom-sige7s.dts include 
->arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts and update the model 
->and compatible properties.
+I was respinning too quickly. The next version will wait for this thread to
+settle rather than landing on top of it.
 
-Thanks for the suggestion. I checked the existing mainline DTS files and
-found similar examples, such as stm32mp157c-ev1.dts including
-stm32mp157c-ed1.dts directly, and the ARM Juno SCMI variants including
-their base board DTS files.
+> The assumptions here rely on a very weak constraint. If some designs
+> don't define the 12V and 3.3V regulators in the device tree, but those
+> rails actually do power down along with the rest of the system during
+> suspend, then upon resume the reset wait will be skipped entirely. I'm
+> worried this could cause regressions.
 
-I agree that directly including rk3588s-coolpi-4b.dts would better reflect
-the relationship between the two boards and avoid unnecessary changes to
-the existing CoolPi DTS.
+You are right, and it is worse than that. vpcie1v8 and vpcie0v9 come from
+devm_regulator_get(), not the _optional() variant, so when they are absent
+from DT the core substitutes a dummy rather than failing, and
+_regulator_is_enabled() returns 1 for a dummy:
 
-I'll use this approach in v2 unless Heiko prefers otherwise.
+	/* If we don't know then assume that the regulator is always on */
+	if (!rdev->desc->ops->is_enabled)
+		return 1;
 
-Best regards,
-Jianfeng
+Combined with my IS_ERR() checks treating an absent optional supply as
+satisfied, rockchip_pcie_supplies_enabled() is unconditionally true on a
+board that describes none of the four rails. The wait would then be skipped
+on every such board, on resume included. That is a regression and the patch
+should not go in as it stands.
+
+The underlying mistake is that regulator_is_enabled() reports the present
+state, not for how long it has held. Probe can bridge that gap: the system
+has been running for seconds by then and this driver has not touched the
+rails yet, so a rail that reads enabled has been enabled since boot -- and
+that holds for a dummy too, since a dummy means nobody is switching it.
+Resume cannot bridge it at all: the rail may have dropped and come back
+microseconds ago, possibly below the regulator core's visibility.
+
+So the next version drops the resume hunk and sets supplies_pre_enabled to
+false there explicitly, leaving the full wait in place on resume. The change
+then only touches probe, where the inference is sound. That also removes the
+one hunk I had no measurement for: it came out of an automated review of v1,
+not from hardware.
+
+> Intuitively, one would expect that a short reset period prevents the
+> endpoint from recovering fully, that seems more plausible than the
+> opposite. [...] Therefore, the actual observation that a longer reset
+> causes failure is highly counterintuitive.
+
+Agreed, it is counterintuitive, and I cannot explain the endpoint's
+internals -- only what it does. What I can rule out is the reading your "as
+long as the reset is clean" suggests, that something else happening during
+the wait is the real cause. Link training is enabled just before the sleep,
+so the root port spends those 100 ms training against a device held in
+reset, which looked like the obvious suspect. Moving the wait to before the
+link-training enable, keeping the pulse just as long, still failed 0 of 15
+boots. It is the duration, not what the controller does during it.
+
+The v3 table is one kernel with two module parameters, one sleeping before
+the PERST# assertion and one in place of the msleep, and the host driver
+rebound to re-run probe, so nothing varies between rows except where the
+delay sits. A rebind reproduces the cold-boot failure identically, which I
+checked before trusting it.
+
+> Furthermore, even with the same power supply design, different endpoints
+> may behave differently. What if a particular device requires a longer
+> reset pulse to work reliably? How would we handle that?
+
+The only floor the spec gives is T_PERST, 100 us of active PERST#, and v4
+started guaranteeing that explicitly with an fsleep() rather than relying on
+the 100 ms. Beyond that there is no required minimum to preserve.
+
+And the short pulse is not new behaviour: from the driver's introduction
+until c47f90be4c89 in v6.11-rc1 there was no wait before the de-assert at
+all, so the pulse was only as long as the register writes in between took.
+That is what every endpoint on this driver saw for years. The 100 ms pulse
+is the recent change, and it is what broke this one. If some device turns
+out to need longer, that seems like a quirk for that device rather than a
+reason to keep a default that regressed another.
+
+Thanks for the review -- the regulator point in particular is one I would
+not have found.
 
 _______________________________________________
 Linux-rockchip mailing list
