@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4447B60731F4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 03:07:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A7E0C60A2604
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2026 03:07:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TX4BO6e0;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=gtbwcafv
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MfQadOHF;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=IQAGmgt4
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,29 +14,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ThO4wa6JCHH4ROKaj4k9KHlTYuWNzt24mZzkP0irPDM=; b=TX4BO6e0wFE0lWJ3gHwQ91Faq0
-	SbDbBli4HtbFVIAqH6B0dIFZ2WzzHUqdoRVNo1wsxTaGKwQuy6EhfM31BZ2CAy59A4h7xBD8PyQA4
-	QyG7oYHcEKIVWJHoMuxFr9rNE7cpFm7OQILAMe9llnLviPLDsj4LyWm/taLg4wKpvKD9tL/NcJWNP
-	ScSJ6X6ux1BJ8pD5HOR6a2z3SrBuN4uOGNAQpFznJ64FMbTG68+mmKoT81loEwdW3dGZQAgXceKmp
-	ZkdXdZ1WpuLu8BcAYPsIVZIka5tKHj5zvdHJDv14BMeJtJvllHFHTds77xNGBGEoeyWvxMVX3m5wi
-	Ayaf/EDQ==;
+	bh=eUKzmNaYoMNvAiWS0V9d3QSYC+pebvhlKla54pDKtG0=; b=MfQadOHFYb6yfTgTll2ulNwWwA
+	BC8RZyV3mmxEdUyoYa3IfpapDoleORNefARf/OqHMn8FNQYSpZgA0FCXy4R5REzNSGSZ/kKQMFph+
+	kd5y1ms3lXr9+Uq9CNsDfta105o9caaD9QFOuYflIkkgkEK2KaoKTT1QdqypJ7/YI7nk84kJWvZmR
+	2x+Ik7jVAtbfz1LQN/ZVHvc5pe4MUPDnY9o6bjC6IBPMuE8XBeZ/sT/uQf2iu/1amKwp5mxJHNZqn
+	ZohsIOPDS2mTJHTTpaDIashSbAhvnbXtqsLjGJuRy7x4HzmxsNJ7cxUKVdiWwHIDoHldQ4NLNp/qw
+	PMEDdY6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLu11-000000069ia-2Zrx;
-	Wed, 28 Oct 2026 03:07:51 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
+	id 1xLu12-000000069k2-1J7b;
+	Wed, 28 Oct 2026 03:07:52 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLu0f-000000068q8-1iIE;
-	Wed, 28 Oct 2026 03:07:31 +0000
+	id 1xLu0e-000000068lN-1m02;
+	Wed, 28 Oct 2026 03:07:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=n4
-	jGWf/FWtMvLmpyVMZtbApsVdmVgjXDZdhxzRoPMwA=; b=gtbwcafvem1NRSUNV0
-	mgm8RE6uKOEJUTa2VO2GqaFjXsEQnWaUj6v5IT1Q7mXLnpZ1m5KQVRqFrILUwe3X
-	ZvJwkC3e9F2oCNAWnvHJcatHWEB9lb5V1TFrPusvFdw3NtsWhgAfpfhSVj0g//ku
-	pQW8iwlRKvrqlW8IcZrLVMkpQ=
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=lA
+	mxH5StbC92YG4VwJJRjtxwLxu+DmfhuOFV/GCQrHU=; b=IQAGmgt4PNZWbso6+V
+	pffK2rsO3R0sJtHr69fYShXhUdAZQYnX+4I+/tJXe36UNjjKRCZS8pASyZkOJqZw
+	5wAgwiIxCroZtGVTERPriDLYCOVguaN84E1UpII75b3Y/1GlQdZMPZiBlolV1mrd
+	meokRbdBJrzjJFIhQr1h7lQwk=
 Received: from Precision-7960.. (unknown [])
-	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wDnVwncZuFqLzE4DA--.33198S9;
-	Wed, 28 Oct 2026 11:07:16 +0800 (CST)
+	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wDnVwncZuFqLzE4DA--.33198S8;
+	Wed, 28 Oct 2026 11:07:15 +0800 (CST)
 From: Hans Zhang <18255117159@163.com>
 To: bhelgaas@google.com,
 	lpieralisi@kernel.org,
@@ -55,23 +55,23 @@ Cc: imx@lists.linux.dev,
 	linux-pci@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v5 15/16] PCI: dwc: tegra194: Use cached PCIe capability offset
-Date: Wed, 28 Oct 2026 11:06:51 +0800
-Message-ID: <20261028030652.2917756-16-18255117159@163.com>
+Subject: [PATCH v5 14/16] PCI: dwc: spear13xx: Use cached PCIe capability offset
+Date: Wed, 28 Oct 2026 11:06:50 +0800
+Message-ID: <20261028030652.2917756-15-18255117159@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261028030652.2917756-1-18255117159@163.com>
 References: <20261028030652.2917756-1-18255117159@163.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CM-TRANSID: _____wDnVwncZuFqLzE4DA--.33198S9
-X-Coremail-Antispam: 1Uf129KBjvJXoW7CFWruryUuF43Kw4rGrW3ZFb_yoW8CF4rp3
-	yrXr4Fkr1kJr4aqFsrAa1UZrnFyr9IyrW7WanYgwsIvF42ka42grZYkrW5tF17CFs7tryj
-	kr18tFy3Gr15JrUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0piGYLLUUUUU=
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7ATliWrhZuTTXAAA3C
+X-CM-TRANSID: _____wDnVwncZuFqLzE4DA--.33198S8
+X-Coremail-Antispam: 1Uf129KBjvdXoWruw17Zr17XFWkuFW5ZF47Jwb_yoWDCFXE93
+	s8WFnrAr4UGFy5GFnFyryrXryYva4fWw1jga9aqFZxAFn7Xw1kWr92qrZrAF95Cr1DXF97
+	Jr1qvF4rJ3y8KjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRM89NtUUUUU==
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7APkiGrhZuPTEwAA3N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_200729_850659_F5B118FB 
-X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-CacheID: sfid-20261027_200728_985500_D60CD872 
+X-CRM114-Status: UNSURE (   8.94  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -95,47 +95,28 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Replace the two dw_pcie_find_capability(&pcie->pci, PCI_CAP_ID_EXP)
-calls in tegra_pcie_dw_host_init() and pex_ep_event_pex_rst_deassert()
-with dw_pcie_get_pcie_cap() so that the driver-private pcie_cap_base is
-filled from the same cached value.
-
-tegra_pcie_dw_host_init() is called from .start_link, i.e. after the
-controller has been initialized, and the PERST# deassert handler runs
-after the endpoint has been brought out of reset with its clocks and
-power enabled. The helper therefore performs its single DBI read at the
-same point as the open coded search, and the private copy keeps working
-unchanged.
+spear13xx_pcie_host_init() runs from the .init callback with the
+controller already enabled. Replace the capability search with
+dw_pcie_get_pcie_cap() and store the offset in a u8.
 
 Signed-off-by: Hans Zhang <18255117159@163.com>
 ---
- drivers/pci/controller/dwc/pcie-tegra194.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/pci/controller/dwc/pcie-spear13xx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-tegra194.c b/drivers/pci/controller/dwc/pcie-tegra194.c
-index 26e2ac5c58695..9d7ac539aceae 100644
---- a/drivers/pci/controller/dwc/pcie-tegra194.c
-+++ b/drivers/pci/controller/dwc/pcie-tegra194.c
-@@ -906,8 +906,7 @@ static int tegra_pcie_dw_host_init(struct dw_pcie_rp *pp)
- 	pp->bridge->ops = &tegra_pci_ops;
+diff --git a/drivers/pci/controller/dwc/pcie-spear13xx.c b/drivers/pci/controller/dwc/pcie-spear13xx.c
+index 01794a9d3ad29..6e4c11b497d45 100644
+--- a/drivers/pci/controller/dwc/pcie-spear13xx.c
++++ b/drivers/pci/controller/dwc/pcie-spear13xx.c
+@@ -122,7 +122,7 @@ static int spear13xx_pcie_host_init(struct dw_pcie_rp *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+ 	struct spear13xx_pcie *spear13xx_pcie = to_spear13xx_pcie(pci);
+-	u32 exp_cap_off = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
++	u8 exp_cap_off = dw_pcie_get_pcie_cap(pci);
+ 	u32 val;
  
- 	if (!pcie->pcie_cap_base)
--		pcie->pcie_cap_base = dw_pcie_find_capability(&pcie->pci,
--							      PCI_CAP_ID_EXP);
-+		pcie->pcie_cap_base = dw_pcie_get_pcie_cap(pci);
- 
- 	val = dw_pcie_readl_dbi(pci, PCI_IO_BASE);
- 	val &= ~(IO_BASE_IO_DECODE | IO_BASE_IO_DECODE_BIT8);
-@@ -1890,8 +1889,7 @@ static void pex_ep_event_pex_rst_deassert(struct tegra_pcie_dw *pcie)
- 		dw_pcie_writel_dbi(pci, GEN3_CTRL, val);
- 	}
- 
--	pcie->pcie_cap_base = dw_pcie_find_capability(&pcie->pci,
--						      PCI_CAP_ID_EXP);
-+	pcie->pcie_cap_base = dw_pcie_get_pcie_cap(pci);
- 
- 	/* Clear Slot Clock Configuration bit if SRNS configuration */
- 	if (pcie->enable_srns) {
+ 	spear13xx_pcie->app_base = pci->dbi_base + 0x2000;
 -- 
 2.43.0
 
