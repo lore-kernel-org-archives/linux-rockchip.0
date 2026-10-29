@@ -2,84 +2,64 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DC8C606A321
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2026 06:25:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9F8A1606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2026 07:25:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KTGvubuV;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=nScnmFMC
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xn6BeoXH;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=WZ3cO+wW
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=9i83ElEB8D6LZT0q3M768bPLAB56kECb0Mrz1GzO2b8=; b=KTGvubuVPiexOTCeoEIiK+7yiS
-	5WhigQZRVsNlMGE/K/7LMVXhIUllhlkiupSX7Uh2ATTw1dFPb8JCrMmlwlMVuI27OKh44//JtmWJx
-	bsPjhxvtE1CdV4GR6DqX6zoUjTf1lzZjmUUeBP2s0Yk5GsCbE/EcJOHFXTz380VDxzz2hjpCscZrl
-	ArbrOsrB04lA4LZyaSzN+FSyP8krF3AnE/L5zcbBFDn3r8B+lHr/PsDTLk/maq1eazByRbMn0sHJh
-	zrHFdJz3/VTRuSUw59BX4GVCJWQXlLr/W4CRjnKGiAxDXsyORHZCRgo44XmKNDzvbGu10bxHLJNxg
-	pEoiX12Q==;
+	bh=u0YTvCqvsgvzawBSywHbF2sy/pn7j2zSzm0L1UetJV0=; b=xn6BeoXHXaQYbHjWqk9NX+e33A
+	OXWJ0TVv/arxVYN0c49HEzZFGOkqIWs604yGzorprc0SMCV1ycv5AoQyeE5Cr5x12/syyJmatbiDW
+	ZIUj3rziAhbCGTehYtB2CQbzfC1XCfoOxG8oRNjcZlCM+r+orct37DsVcCLUU5bmsbPMBtSjJx5NU
+	b3hC04fSjqMRXFMkDUBzBRnsmHL4bCSsphbOOh3/EpKAzDHUHHH0+468fWYJSvKBgpQfha0sEiXoC
+	/v1af7ZqMKaYP/5PglP9EYWQeQQKJkZD5Vn8ActAgIKhT6pdfK9lDVZ/RuHm5zlqhrlrYW8R+8KTW
+	2saQS9ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMJZJ-00000008TBd-2b8d;
-	Thu, 29 Oct 2026 06:24:57 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1xMKVe-00000008XG1-0mdG;
+	Thu, 29 Oct 2026 07:25:14 +0000
+Received: from mail-m19731116.qiye.163.com ([220.197.31.116])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMJZF-00000008TAy-0zQv
+	id 1xMKVa-00000008XFa-1TT6
 	for linux-rockchip@lists.infradead.org;
-	Thu, 29 Oct 2026 06:24:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1793255093; x=1824791093;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=iSIBsFr6RspUk/5LZrqwFhSWs4iU4YOkCBQI/UmN6tA=;
-  b=nScnmFMCF6UvkehtH3kp1qagJftoSK4R2/fSXkp9KNdNdQaC5qha5KFP
-   paUKALxFjYkOrThv4eCuCP1zUR5OQFk0nRgNQA/15gs4GCZUp9kmy3UTZ
-   KOcHPHq3Ce1699QfHdSPz9OWDZvBQfvoAa/50E1bo80tPD+oimIBF/nYO
-   3eibgyfYovJxGBWzlSiYZ8wBLSCf/CBl7gz8fcZd0FjSXYa2ZP1zbP0e4
-   Fo6XMgXzof2iKBQPAbr4KO5TSSFikwkRHkj7YDveaHYcJBVMm3MFErWVe
-   1x7JinFidTAmel6g7uJH4mZiXYfnP/wiU2zQo4IdIoErI3HxHWhxz8043
-   A==;
-X-CSE-ConnectionGUID: fm6E1xifQN6hyMVHAgv+sw==
-X-CSE-MsgGUID: 88QhrtuISmG96+KRezUfng==
-X-IronPort-AV: E=McAfee;i="6800,10657,11949"; a="1901725"
-X-IronPort-AV: E=Sophos;i="6.27,184,1787036400"; 
-   d="scan'208";a="1901725"
-Received: from fmviesa011.fm.intel.com ([10.60.135.151])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Oct 2026 23:24:52 -0700
-X-CSE-ConnectionGUID: CsEknmunREmuJ83o0a3MNw==
-X-CSE-MsgGUID: ObcGxGaXSb2D3wwGb1/fdA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,184,1787036400"; 
-   d="scan'208";a="6880887"
-Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
-  by fmviesa011.fm.intel.com with ESMTP; 28 Oct 2026 23:24:49 -0700
-Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1xMJZ8-00000000ZgW-1itp;
-	Thu, 29 Oct 2026 06:24:46 +0000
-Date: Thu, 29 Oct 2026 14:24:14 +0800
-From: kernel test robot <lkp@intel.com>
-To: Chris Morgan <macroalpha82@gmail.com>, linux-pm@vger.kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org,
-	robh@kernel.org, sre@kernel.org, t.schramm@manjaro.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH 2/3] power: supply: cw2217: Add support for Cellwise
- cw2217
-Message-ID: <202610291456.pByroJTe-lkp@intel.com>
-References: <20261027131751.1724448-3-macroalpha82@gmail.com>
+	Thu, 29 Oct 2026 07:25:12 +0000
+Received: from localhost.localdomain (unknown [61.154.14.87])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 52c491321;
+	Thu, 29 Oct 2026 15:25:04 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <mkp@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-scsi@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH] scsi: ufs: rockchip: Improve RX noise immunity
+Date: Thu, 29 Oct 2026 15:24:55 +0800
+Message-Id: <20261029151030.1.I61cd43e660b146e49d4380a754e936270e5fb6a1@changeid>
+X-Mailer: git-send-email 2.25.1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261027131751.1724448-3-macroalpha82@gmail.com>
+X-HM-Tid: 0aa1868c4fe003a4kunm83c5329213e600
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCH0oYVk8aGhpLSx0eTkJJQ1YVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ0xZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=WZ3cO+wWijVGbctlALLZvC47QgebXvXj9s93VX/EXQMVvX3GIOl7vDjxOxE9MyiqYpy80UvtAzJcYdRQ4XOwbYovhQHWrdKYa2Hz9Lgpc3qLiPratjKQ6Hz2AoSJHPj2Hl5OiLqEaQTsYOuaYdwusVbbuFpF8SWog0mgMIz0gYw=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=laRlzAtsKIRBcFs8iM4s6pQnI/rS0v1hGyELb/if4n8=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_232453_304631_B36D58DD 
-X-CRM114-Status: GOOD (  12.86  )
-X-Spam-Score: -4.4 (----)
+X-CRM114-CacheID: sfid-20261029_002510_911255_3E1B2B97 
+X-CRM114-Status: UNSURE (   7.29  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,106 +72,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Chris,
+Program VND_RX_SAVE_DET_CTRL for each RX lane to raise the receiver's
+tolerance against short transients on the incoming signal, as recommended
+by the Rockchip PHY team.
 
-kernel test robot noticed the following build errors:
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-[auto build test ERROR on sre-power-supply/for-next]
-[also build test ERROR on rockchip/for-next amd-pstate/linux-next amd-pstate/bleeding-edge linus/master v7.3 next-20261028]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+---
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Chris-Morgan/dt-bindings-power-cw2015-add-cw2215-cw2217-and-cw2218/20261027-081749
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/sre/linux-power-supply.git for-next
-patch link:    https://lore.kernel.org/r/20261027131751.1724448-3-macroalpha82%40gmail.com
-patch subject: [PATCH 2/3] power: supply: cw2217: Add support for Cellwise cw2217
-config: s390-allmodconfig (https://download.01.org/0day-ci/archive/20261029/202610291456.pByroJTe-lkp@intel.com/config)
-compiler: clang version 24.0.0git (https://github.com/llvm/llvm-project 1da436a23e613c425fc9b868fc8deb979ede47a4)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261029/202610291456.pByroJTe-lkp@intel.com/reproduce)
+ drivers/ufs/host/ufs-rockchip.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202610291456.pByroJTe-lkp@intel.com/
+diff --git a/drivers/ufs/host/ufs-rockchip.c b/drivers/ufs/host/ufs-rockchip.c
+index bac68f238e1c..87308c9b1070 100644
+--- a/drivers/ufs/host/ufs-rockchip.c
++++ b/drivers/ufs/host/ufs-rockchip.c
+@@ -82,6 +82,7 @@ static int ufs_rockchip_rk3576_phy_init(struct ufs_hba *hba)
+ 		ufshcd_dme_set(hba, UIC_ARG_MIB_SEL(VND_RX_LINERESET_PVALUE2, SEL_RX_LANE0 + i), 0x02);
+ 		ufshcd_dme_set(hba, UIC_ARG_MIB_SEL(VND_RX_LINERESET_OPTION, SEL_RX_LANE0 + i), 0xf6);
+ 		ufshcd_dme_set(hba, UIC_ARG_MIB_SEL(VND_RX_POWER_SAVING_CTRL, SEL_RX_LANE0 + i), 0x69);
++		ufshcd_dme_set(hba, UIC_ARG_MIB_SEL(VND_RX_SAVE_DET_CTRL, SEL_RX_LANE0 + i), 0x18);
+ 	}
+ 
+ 	/* disable the mphy DME_SET cfg */
+-- 
+2.25.1
 
-All errors (new ones prefixed by >>):
-
->> drivers/power/supply/cw2217_battery.c:261:11: error: call to undeclared function 'FIELD_GET'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     261 |         fw_ver = FIELD_GET(CW2217_ID_MASK, cw_bat->fw_version);
-         |                  ^
-   drivers/power/supply/cw2217_battery.c:465:12: error: call to undeclared function 'FIELD_GET'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     465 |                                        FIELD_GET(CW2217_IC_READY_MASK, reg) == CW2217_IC_READY,
-         |                                        ^
-   drivers/power/supply/cw2217_battery.c:491:6: error: call to undeclared function 'FIELD_GET'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-     491 |         if (FIELD_GET(CW2217_CONFIG_ACT_MSK, reg)) {
-         |             ^
-   3 errors generated.
-
-
-vim +/FIELD_GET +261 drivers/power/supply/cw2217_battery.c
-
-   231	
-   232	/*
-   233	 * Current is a signed 16bit register (0x0E 0x0F) that reports current A/D
-   234	 * converter result of the voltage across the current sense resistor,
-   235	 * 10mohm typical. The register value should be divided by the sense
-   236	 * resistance to convert to amperes. The value of the sense resistor
-   237	 * determines the resolution and the full-scale range of the current readings.
-   238	 * The LSB of 0x0F is (52.4/32768)uV for CW2215 and CW2217. The LSB of 0x0F is
-   239	 * (125/32768)uV for CW2218.
-   240	 */
-   241	static int cw2217_get_current(struct cw2217_battery *cw_bat)
-   242	{
-   243		s32 cw_current;
-   244		__be16 reg;
-   245		u8 fw_ver;
-   246		int ret;
-   247	
-   248		if (cw_bat->fw_version == 0) {
-   249			cw_bat->cw_current = 0;
-   250			dev_err(cw_bat->dev, "Error! CW2217 firmware read error!\n");
-   251			return -EIO;
-   252		}
-   253	
-   254		ret = regmap_bulk_read(cw_bat->regmap, CW2217_CURRENT_H,
-   255				       &reg, sizeof(reg));
-   256		if (ret)
-   257			return ret;
-   258	
-   259		cw_current = (s16)be16_to_cpu(reg);
-   260	
- > 261		fw_ver = FIELD_GET(CW2217_ID_MASK, cw_bat->fw_version);
-   262		switch (fw_ver) {
-   263		case CW2215_ID:
-   264		case CW2217_ID:
-   265			cw_current = (cw_current * 1600) / (cw_bat->user_rsense / 1000);
-   266			cw_bat->cw_current = cw_current * 1000;
-   267			break;
-   268		case CW2218_ID:
-   269			cw_current = (cw_current * 3815) / (cw_bat->user_rsense / 1000);
-   270			cw_bat->cw_current = cw_current * 1000;
-   271			break;
-   272		default:
-   273			cw_bat->cw_current = 0;
-   274			dev_err(cw_bat->dev, "Error! CW2217 firmware read error!\n");
-   275			return -EIO;
-   276		}
-   277	
-   278		return 0;
-   279	}
-   280	
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
