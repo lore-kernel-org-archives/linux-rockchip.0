@@ -2,12 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7271606A323
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2026 16:58:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B1B8E606A321
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2026 16:58:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Yuz65s/S;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=K9fxzteN;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=jy5TD4Y2
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dd4A1/qo;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=GXs86wpK;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=EYFrANb1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -15,83 +15,83 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=uuusnkmV0FnbSRWF7lDIiJGF1H6nWYITiE5PkuYBf1A=; b=Yuz65s/S1Ss6OczTN/jtZwDfJG
-	Rv2kGi/EJMnWIPcCGjvsD1nSLovl+UXl4k5lisDMTqyxZTvhfyTjbzwvzqAljt68TpTcaO+06Ln1V
-	ajgCFdjUHYR81+5TAOM2pB74Sk3FpB8EGf+EXu60wmAV2Z3EelQO4ZK/sC7AhCAnFAuimPU7SUOxH
-	m1ToghOnIXVbISI2dLtIMDfBGJASsRkFM9y1NLFuRKcm5WgvbjjU/vE68Z5hpe33saQUol9NnG0ER
-	HjN61dOzAJwI54CxBJpWdwPrI87QkGHqxZi2YN3xKTVYeV7nN5DjwrDv4NcztA8kMPN/1aitZSBN+
-	CvEJT2sQ==;
+	bh=FEOjU/FSq3GcyPSLmvS35CgWuF/JDcQ+Z0/F+VXMNX4=; b=dd4A1/qo4k4cAojhKuZXpO8eSX
+	D1sAl0XilsqHea5qtcSW2hlTtHKO7awZJ5mMD/RYsPBmvfLrqvwJfd/zBYAdawVCNPqlvLkq7El3x
+	wEV8g1+E1Sqhh7CoREviOndJXFaO/zWqO0APXvusOmbJAVyiiH+zCk4KydxCastpeBsZcaa8zWKi4
+	fl7wbVNC9i/Z8rtzw6FV6Mw9pbn+XQnkkEnFb363S/Gm4Q+fK/5Yqh9S7PrqE4hL2uFrNkp8uHreS
+	L1mZfjsWrkVAQqTFwytRP/At9jVTSY/tYRE2PJLTHe79iH+TiFKIirw+8pxNnZL5T71t4byrXW+iV
+	wbTh6STA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMTRk-00000009tW8-3eT7;
-	Thu, 29 Oct 2026 16:57:48 +0000
+	id 1xMTS3-00000009tsA-0hME;
+	Thu, 29 Oct 2026 16:58:07 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMTRd-00000009tNH-3iIO
+	id 1xMTRh-00000009tQQ-1rZi
 	for linux-rockchip@lists.infradead.org;
-	Thu, 29 Oct 2026 16:57:43 +0000
+	Thu, 29 Oct 2026 16:57:47 +0000
 Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69TGCxRB1619559
-	for <linux-rockchip@lists.infradead.org>; Thu, 29 Oct 2026 16:57:41 GMT
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69TGCxTk1619586
+	for <linux-rockchip@lists.infradead.org>; Thu, 29 Oct 2026 16:57:45 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=O3GMAYfHUSm
-	wxgmj+JvTBhDTCTV9/RDBGWMYy+RzK6c=; b=K9fxzteN5QFJfGrTHy2iUCD6f62
-	SCX/zoRY71i1jR07z3Vmc1dQBCO16btBZJIjlzdnWTwHeeoZPxNGYyE1U3zZiqUK
-	UY5uVdTGnSf7NrpvlR109isWBMO1psBqSHajlDsl7MIT+tWI+j3XC/qloZ6RILOX
-	gJm1+fcACYUo48lF2L2Bgekc3QYY1iY45a9/+S38gJQW45e9VNdl8NH9IqY3chfM
-	+RENBlODguQO56H14Ld1poC1obrElUYSSP7rLzl5U1Poq/ydmNZaEWMUI97g6mmv
-	0h6DSi41QZhKBea3oB5kaCnob9S3HPcR0FHZuNOArKuUjwo8DGdQ2LFHeMg==
-Received: from mail-ua1-f69.google.com (mail-ua1-f69.google.com [209.85.222.69])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hm44q9nue-1
+	:mime-version:references:subject:to; s=qcppdkim1; bh=hTV/3nn/Rkc
+	mn0hRyZbdsZoeAcUIyL6tsSbtRE9aXY0=; b=GXs86wpKTuJaEtB7IvbsrQaIJiD
+	Vzau5SA5Ip+Va4Mf7Yqhhf2vXf1VBswh8RUkDV6XmXP4UTiDz83JhUF+8vSeo+Fl
+	SIxDn4xWqgvL126WPyWvXV31hOW1RV9v3jnDpX/7UDRCeP7qR0c97qiVWXf5HEFc
+	tD/swatm7oFrd2gPzLbFoMU1FyoI9OTwCeprbTcqlsSzoiqUukoqjDDju6Q6CrpU
+	uLNUnGdd+69JCAh4/HgijN6/8kUn+oiYlhFekVGKj5hfMFiTK5vO3LLWUtD0fA6/
+	ymfcWcqp4hGlkl3kp1PsW9LTPKvtkyJiIm3nt3868LpR3rnGO/ombmT9hQg==
+Received: from mail-vs1-f71.google.com (mail-vs1-f71.google.com [209.85.217.71])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hm44q9nup-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Thu, 29 Oct 2026 16:57:41 +0000 (GMT)
-Received: by mail-ua1-f69.google.com with SMTP id a1e0cc1a2514c-9907539aff7so1995603241.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 29 Oct 2026 09:57:41 -0700 (PDT)
+	for <linux-rockchip@lists.infradead.org>; Thu, 29 Oct 2026 16:57:44 +0000 (GMT)
+Received: by mail-vs1-f71.google.com with SMTP id ada2fe7eead31-7cc37ee6562so412838137.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 29 Oct 2026 09:57:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1793293060; x=1793897860; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1793293064; x=1793897864; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=O3GMAYfHUSmwxgmj+JvTBhDTCTV9/RDBGWMYy+RzK6c=;
-        b=jy5TD4Y2DeFATRGh/rFeu/Y6qwZT51i9Vt1sClgmT0poI0PZBfkZvZ+nFgT+eJ0JjT
-         PoSPuPShrEVIShYXm2nz3TJ+8otQd5hODiqR1YXP3G6RmARrFHGDdASsnQZzYcbyhQPc
-         AosCEIH5WgRworRwhcJMQf8F+OmUYPdswddBZJqpTPtB8qop1r/OUnfVF5aveFdmbScZ
-         erKweQr0OtkROyLqm83WXhIS6q6tvOiRHUp8oLTZc3VgVf3lXvshd79qArfdwCnnrESf
-         S4enuNC0asWLGQVRuHDBdMkzY40arkZAM1YAZV8VvhtZy+rxKS/BylvaabNlAR3xJdLm
-         QO0w==
+        bh=hTV/3nn/Rkcmn0hRyZbdsZoeAcUIyL6tsSbtRE9aXY0=;
+        b=EYFrANb1VKBZzWZ2yikSLNwnlutT0zSb4RdgKkusg0O+eOjElV0QAMvil+X80rYwW+
+         AmBKDjK6Kc+ouD+Phl44mF5pIZcXdjykI8Is4s2D7rSElavzN5Ge3bJho9J7whiBZPLZ
+         EHPTpP5VIbFgGTr6boKap665ZDXWvmAyTlw9CHZgXhytiT8O1vs894rZjAFfBVGv7bE2
+         K9ajV5CsWRruDu8pN0QN74WLlzZBfsDpXx0nUpic9Cc2j7lXc/MOmCAh9VySgs2oF2j+
+         r3OEpj8de/NcMxZjKEGmmRk57tUkQNG2jOlpInD4ocqb2xIzqrEuXa7RVKb13di7uyna
+         /kCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793293060; x=1793897860;
+        d=1e100.net; s=20260707; t=1793293064; x=1793897864;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=O3GMAYfHUSmwxgmj+JvTBhDTCTV9/RDBGWMYy+RzK6c=;
-        b=PCyIvb1bUJrmJgHYd3FM64m9kj5RFOERYqI7+QHRQHoTD8sW9hxxIAaZN8M+hQWqs7
-         gFymjueU6WRHVuxSN8QQMpdGy2PtlzTY47ciJxiKetgBhJFc0EnK6ftKlG2b1QTUITjH
-         04XhSeO/e5yUUF0WLX5MDqiWnf1FsJdfNCnmbxmcSqQFfd2Y4w6hzCsI/xtgC3jTl4sb
-         KHydiEiSNOPtwJDYG4d3C0qOdWCN3QzQUtjvWI/8SnJuGeXgmaJmaz1w7mPgK0ZyDtTI
-         sUlwa/GJPXGgbZxmVcVUDBOzoDpaErTTMBMgrOWnMlzvBrumwIrC8Z71PXwopvKlTFho
-         0T9g==
-X-Forwarded-Encrypted: i=1; AKwUvBwJb+lHbA15eV9OlKp5Hn5uKGWEj1DCPAflan1vK9/ahtLmIaMrhCIy21oFmHluX1/i4vpXO5pLAzuMJG/AKA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKcxC2j/w42N3TUEfPziPvJ929M2PoJ+bE0aswjM03ar5p9JHqK
-	WhewREn3JD72bZbcnRgiZOV46q+RbeMVC5p5bP/b9VyGF+/oMLxGbqRH8UJjyo7T6dI31YQeFIL
-	c5T0CNo07YSgfaU6cemTk/RfLgrj75K9lOdVJhX84UzPPUfJM8Ri6JG7RTeAJjnPNUCuc3iNzrn
-	U=
-X-Gm-Gg: AYBFou0FA8MPRTFhIIviI70ifY0LqnsDPTx3T2O2jrNradaU7l1FIeznu90tkCe5g3q
-	6o3YaFH9Cumgi+StteKzf0d/EO6UFySlbm171Iek46AbwoCtBA8bg0UtK0y5E81ODInvJVo7V8p
-	cM2Sw5S42LbqWEErQwrHsx+C0opFmAuBm6Wai3LF1kSbBBoGoXi1G/OrwylTxTdqSRa8K1xQtaX
-	elK6F2hiNq7/wN+Li/fUZ7Zw5CLJpU1l98tTEsCFFLXuUuU0wWNc+GSJsyrQjpkKSYJUPoOT8R8
-	1JYOEgXl6QCsSoeQEzejOhey7GRUo891SFkjtw5Fi21bcjICfFr7oWQEWK5qQ49rp0L/FFu0Lun
-	72/cvvnlpyCBDQm2hxb6hFvAx/FTwtC15dJAeoecseLSKhacskAYjMbO1j2hrrvJZW0bDNbKlQT
-	E+
-X-Received: by 2002:a05:6102:4b03:b0:7a8:10eb:96ce with SMTP id ada2fe7eead31-7d03a1ed917mr3164898137.4.1793293059234;
-        Thu, 29 Oct 2026 09:57:39 -0700 (PDT)
-X-Received: by 2002:a05:6102:4b03:b0:7a8:10eb:96ce with SMTP id ada2fe7eead31-7d03a1ed917mr3164876137.4.1793293058630;
-        Thu, 29 Oct 2026 09:57:38 -0700 (PDT)
+        bh=hTV/3nn/Rkcmn0hRyZbdsZoeAcUIyL6tsSbtRE9aXY0=;
+        b=am2Wgv8t4gQTBa1wDIuL94lXPb4l343i/H4s+3+4kha3zwqcc9Tdzet7xsAtG2rrdU
+         Q9xTcQkoi3sKkVeeOzHB2R9v/pDcTX+Ki7GMi2GpIfap1OOorPf1qLUHcBLDMiLbS4HI
+         rFNNnrffdj607WLGOjUdr86ckzUCbszr6tk2H8WY1YotYOKXhIcv+/1F19P1q1NFVzYf
+         BgTz9sBRitsYWLPAkPks7ERRc8kZ5UD0qTNJf1Pxp0+GjES2pVKMd8HgZSyJL+wo3ufP
+         AM2TWFOvnLhVxaLbl3NNbntcrivFNGc0FTamN/2kQNwuZDskPADm35tCbwnMcYvIjsje
+         WZDA==
+X-Forwarded-Encrypted: i=1; AKwUvBwFeY5m868Qfuwe7gclaUw28EpYVbn13Z791I2ufKaK2NMwBYw5z7nvhsLL8CsxELrdK9P88XMZb88Uo2fSyQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLLK5DbVrwkAidl6ewOB72R15qa4AxlAdcBY5e0cqA0U05UZJSx
+	oY8pop49ImG7T9Bm58CksDJT+kukxP2nW1D2Ygl2jtUSF2TvYx/wxHBHvzeTJCmEebppmqKS8w7
+	JnxFZYpL72O5fntYHYO8CjhFQdM51Ti0oZk7lltYZ8+1kGalcn8FnK7dJotFFzERnHZlqhGKByk
+	A=
+X-Gm-Gg: AYBFou23hzxbKM1ZYbUHoha3hvDH8oD3HmxaV0S9ptzpsIf8UhJ2JXHyN1NvrULxmHF
+	bAC0Y5uk5OdKkf1kFje1f5Ld8pO8pjpEJMlS3X8zdvNxb5lHjJWvcQGt2DruTp/qR2dFCaQbi73
+	ASbArfmdAi1XGwOg+MRtOWfP7quSy/t5EZAukCoTB/T5HDDOHQTdxcdC4UAJ77kixaXl6e+EITk
+	SmIr9xs/GUIWUPegSs8VLQM1gznJXuwvBzbKncP7IBNoaf6Gwob/w2z++tBFTmNKKnbwOr6JGm7
+	MEVe7F4hVDuPlOKQBuPMYX8L5dLiTntV1GdcXWjZH+yqTwXfwIld3LUFB0H+gWdrB1lqnq0QLpb
+	Y4yA670tKmt7ECBB0qS43npMeklXIi8GB2BhL2uUtEb8DQWIl4vqSGgH/ggraOQHixMcxd2b2YN
+	Qi
+X-Received: by 2002:a05:6102:80a5:b0:7a7:19aa:f0d4 with SMTP id ada2fe7eead31-7d03a651783mr2367406137.33.1793293063913;
+        Thu, 29 Oct 2026 09:57:43 -0700 (PDT)
+X-Received: by 2002:a05:6102:80a5:b0:7a7:19aa:f0d4 with SMTP id ada2fe7eead31-7d03a651783mr2367399137.33.1793293063416;
+        Thu, 29 Oct 2026 09:57:43 -0700 (PDT)
 Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:7fbe:151a:486d:a2cc])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e6df961dasm325669f8f.23.2026.10.29.09.57.37
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e6df961dasm325669f8f.23.2026.10.29.09.57.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Oct 2026 09:57:37 -0700 (PDT)
+        Thu, 29 Oct 2026 09:57:42 -0700 (PDT)
 From: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
 To: rafael@kernel.org
 Cc: Daniel Lezcano <daniel.lezcano@kernel.org>,
@@ -100,32 +100,32 @@ Cc: Daniel Lezcano <daniel.lezcano@kernel.org>,
         linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
         linux-arm-kernel@lists.infradead.org,
         linux-rockchip@lists.infradead.org, linux-kselftest@vger.kernel.org
-Subject: [PATCH v4 4/6] powercap: dtpm: Use generic powercap hierarchy helpers
-Date: Thu, 29 Oct 2026 17:56:48 +0100
-Message-ID: <f34635d2ce1d5c741968708e6349f7f059b03173.1793288783.git.daniel.lezcano@oss.qualcomm.com>
+Subject: [PATCH v4 6/6] powercap: dtpm: Add RK3588 hierarchy
+Date: Thu, 29 Oct 2026 17:56:50 +0100
+Message-ID: <50f06fc06f0e83ee59ecf9037071e02344ecd15b.1793288783.git.daniel.lezcano@oss.qualcomm.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1793288783.git.daniel.lezcano@oss.qualcomm.com>
 References: <cover.1793288783.git.daniel.lezcano@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI5MDA2NiBTYWx0ZWRfX/erdDJVLYZgr
- H4gSJiON4w+Z2xHv0WnMGgH/Ri3/sXLK2yOAps7J9hr9cVwXUbMXjk/IXMS9OYvOxL9oR/sols2
- 3i+eo9V875IKBW0EZxgwbf7k7zSoqAI=
-X-Proofpoint-ORIG-GUID: 3c1928xf5g9TEORSL4lXS5P8bkyILYOz
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI5MDA2NiBTYWx0ZWRfX2qDTIAg/2Uuk
- DNucmxVSlWNAo1AnuO5/wJLyJVmYmzDqFVirnaRZUqZ8ovBeYOHJFaIwfoRAihLGZeIUNLd4+ej
- oGPUSbciZmmAOot205USZSAYZmqrq/a68H6smi566JbqiBDSLS4ZF6odmorY2D8pdt1uPyTX+ba
- SpMu1DspGh0kbcuyUEn8e6oMAZjKSrhCyDKlo7qxohhAB6Z6q3rc1wKDnKZITbyMpip8IjN0MFB
- +hCyLsbBMlnj/RtQQkzzXupY/bmYE0F2fmgLTFsIL3BBPjWCoy9ijGwOhHFpqeEIm8fg/t3Skgy
- A+zdpxdPig7X68PH2+9S04TCjkQeAwkvKDa/kSeO59meGZwQewZOas1jUtX1rdTdAJ5UB++5gNw
- O0lTlpLvQg2YEAHwtdenAQpQjs0ON6/YXyTCmdcDM80PXVkqIPbTkuBCl/M6vGVoNEY0dF9DIoM
- RJfEgQFIFDQPvk19dQA==
-X-Authority-Analysis: v=2.4 cv=CYmdd7rl c=1 sm=1 tr=0 ts=6ae37b05 cx=c_pps
- a=UbhLPJ621ZpgOD2l3yZY1w==:117 a=xqWC_Br6kY4A:10 a=660iZSQnnn4A:10
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI5MDA2NiBTYWx0ZWRfXxf9yy+yxGrFv
+ LulWh+WHse5c1yafFmsOi34DbkbR0BCzMPoK3XiSz/AOA76FXeDfkfQdJaYJ8+pusi6ZWLkAkI3
+ eSAi7IU5Zwa9cHXk2qU4BpOj6hGjnq0=
+X-Proofpoint-ORIG-GUID: 0HTMzyPmvtBSGviI19_OB5QSHBbTNS-G
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI5MDA2NiBTYWx0ZWRfX7sEVSkksKYvs
+ gFfnOkJkja70G2kERSGNml4maF7zBMZKYFC8KG+C9YM25xlBN7lY3UQyODmOeOuoAJG0s7qZlcT
+ vEqs1yfk40h5hBbvbqkG+Br0V4FEMB+7m/wFKMq5HM6Ny8wbF+rlyiImtg9eVSveWw83bfuk6nZ
+ /sYfMGQZYj36oaHKa7cFRZxsu2hTFag3AVNfnho6lYcan139jMDou/rdBZwo/L5w1s/JPcRNEoG
+ Q8w1uosDlKWa8uXvdkTyz/BxwHFLpn3couG/4s5h6iLf9OxAeY30RS7hKjtPh/M2CH2LUOICqMn
+ brtZjNGWjjuAed5+GZLLNJ45zV+Ga9BiVHf+Q0ZvZIwW0e2q67EedsM6K1paseJIqyxuReDTRve
+ f2cLQkqpTcT90NTOoJhA7uWnbGAOMTn4IJrHZYwQ3NJyy18nGvxoKmVtliDtBOdJRkTq/5RE1gJ
+ dVJbtuWXdArjZvSFBAw==
+X-Authority-Analysis: v=2.4 cv=CYmdd7rl c=1 sm=1 tr=0 ts=6ae37b09 cx=c_pps
+ a=P2rfLEam3zuxRRdjJWA2cw==:117 a=xqWC_Br6kY4A:10 a=660iZSQnnn4A:10
  a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=eoimf2acIAo5FJnRuUoq:22 a=EUspDBNiAAAA:8 a=PNS_9xEdTJF3v_BdtpwA:9
- a=TOPH6uDL9cOC6tEoww4z:22
-X-Proofpoint-GUID: 3c1928xf5g9TEORSL4lXS5P8bkyILYOz
+ a=eoimf2acIAo5FJnRuUoq:22 a=EUspDBNiAAAA:8 a=8Fys3Dm6xgAeGQ2jRPYA:9
+ a=ODZdjJIeia2B_SHc_B0f:22
+X-Proofpoint-GUID: 0HTMzyPmvtBSGviI19_OB5QSHBbTNS-G
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-10-29_05,2026-10-21_02,2025-10-01_01
@@ -135,8 +135,8 @@ X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610290066
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261029_095741_943208_EB647EC5 
-X-CRM114-Status: GOOD (  30.40  )
+X-CRM114-CacheID: sfid-20261029_095745_486792_CD7E62F2 
+X-CRM114-Status: GOOD (  15.54  )
 X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -157,35 +157,15 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-DTPM implements its own hierarchy creation and destruction logic while
-the powercap core now provides generic helpers for this purpose.
+The RK3588 has three CPU frequency domains, with CPUs grouped into
+three cpufreq policies.
 
-Convert DTPM to use the generic powercap hierarchy infrastructure.
-Duplicate the platform hierarchy before creating it, and use
-powercap_hierarchy_create() and powercap_hierarchy_destroy() to manage
-the DTPM zones.
+Add a DTPM hierarchy for the RK3588 with one CPU node per cpufreq
+policy, represented by cpu@0, cpu@400 and cpu@600. Group the three CPU
+domains under a virtual package node attached to the RK3588 root node.
 
-Add DTPM callbacks to create and destroy the zones associated with each
-powercap hierarchy node. Adapt the CPU and devfreq backends to return
-the created DTPM instance and use the node name provided by the
-hierarchy.
-
-Convert the Rockchip RK3399 description to struct powercap_hierarchy
-and keep the device tree path as DTPM-specific node data.
-
-This removes the DTPM-specific hierarchy traversal and destruction code
-and leaves the hierarchy management to the powercap core.
-
-Preserve best-effort creation: an unavailable backend returns NULL to
-skip its branch, and setup failures are warned about and skipped rather
-than rolling back independent zones. Invalid node descriptors remain
-fatal.
-
-When the representative CPU is offline, find an active policy through an
-online sibling whose related_cpus mask contains it. Hold the CPU hotplug
-read lock during selection and setup, and initialize the zone through the
-policy's active CPU while keeping the hierarchy-provided name. An entirely
-offline policy still has no active CPU to initialize through.
+Add the RK3588 compatible to the Rockchip DTPM match table to select
+the new hierarchy.
 
 Signed-off-by: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
 ---
@@ -194,617 +174,73 @@ Changes in v4 (since v3):
 
 Changes in v3 (since v2):
 - Rebase on v7.3-rc7.
-- Preserve best-effort branch creation using the generic NULL result.
-- Find an online policy sibling for offline CPU representatives and
-  protect policy selection and setup against CPU hotplug.
-- Keep generic API behavior and documentation in patch 1.
-- Fix __initdata placement; match-table indentation is handled in patch 3.
-- Name setup callback arguments and remove whitespace-only lines.
-- Update the description.
+- Fix __initdata placement and the RK3588 match-entry indentation.
+- No functional changes.
 
- drivers/powercap/dtpm.c         | 177 +++++++++++++++-----------------
- drivers/powercap/dtpm_cpu.c     |  62 ++++++++---
- drivers/powercap/dtpm_devfreq.c |  22 ++--
- drivers/soc/rockchip/dtpm.c     |  67 +++++++++---
- include/linux/dtpm.h            |   6 +-
- 5 files changed, 195 insertions(+), 139 deletions(-)
+ drivers/soc/rockchip/dtpm.c | 48 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
 
-diff --git a/drivers/powercap/dtpm.c b/drivers/powercap/dtpm.c
-index b7a65e543f19..09197fb4f740 100644
---- a/drivers/powercap/dtpm.c
-+++ b/drivers/powercap/dtpm.c
-@@ -35,6 +35,7 @@ static const char *constraint_name[] = {
- 
- static DEFINE_MUTEX(dtpm_lock);
- static struct powercap_control_type *pct;
-+static struct powercap_hierarchy *dtpm_hierarchy;
- static struct dtpm *root;
- 
- static int get_time_window_us(struct powercap_zone *pcz, int cid, u64 *window)
-@@ -191,7 +192,7 @@ static int get_power_limit_uw(struct powercap_zone *pcz,
- 			      int cid, u64 *power_limit)
- {
- 	*power_limit = to_dtpm(pcz)->power_limit;
--	
-+
- 	return 0;
- }
- 
-@@ -412,8 +413,7 @@ int dtpm_register(const char *name, struct dtpm *dtpm, struct dtpm *parent)
- 	return 0;
- }
- 
--static struct dtpm *dtpm_setup_virtual(const struct dtpm_node *hierarchy,
--				       struct dtpm *parent)
-+static struct dtpm *dtpm_setup_virtual(const char *name, struct dtpm *parent)
- {
- 	struct dtpm *dtpm;
- 	int ret;
-@@ -423,10 +423,9 @@ static struct dtpm *dtpm_setup_virtual(const struct dtpm_node *hierarchy,
- 		return ERR_PTR(-ENOMEM);
- 	dtpm_init(dtpm, NULL);
- 
--	ret = dtpm_register(hierarchy->name, dtpm, parent);
-+	ret = dtpm_register(name, dtpm, parent);
- 	if (ret) {
--		pr_err("Failed to register dtpm node '%s': %d\n",
--		       hierarchy->name, ret);
-+		pr_err("Failed to register dtpm node '%s': %d\n", name, ret);
- 		kfree(dtpm);
- 		return ERR_PTR(ret);
- 	}
-@@ -434,90 +433,88 @@ static struct dtpm *dtpm_setup_virtual(const struct dtpm_node *hierarchy,
- 	return dtpm;
- }
- 
--static struct dtpm *dtpm_setup_dt(const struct dtpm_node *hierarchy,
-+static struct dtpm *dtpm_setup_dt(const char *name, const char *path,
- 				  struct dtpm *parent)
- {
- 	struct device_node *np;
--	int i, ret;
-+	struct dtpm *dtpm = NULL;
-+	int i;
- 
--	np = of_find_node_by_path(hierarchy->name);
-+	np = of_find_node_by_path(path);
- 	if (!np) {
--		pr_err("Failed to find '%s'\n", hierarchy->name);
-+		pr_err("Failed to find '%s'\n", path);
- 		return ERR_PTR(-ENXIO);
- 	}
- 
- 	for (i = 0; i < ARRAY_SIZE(dtpm_subsys); i++) {
-+		struct dtpm *tmp;
- 
- 		if (!dtpm_subsys[i]->setup)
- 			continue;
- 
--		ret = dtpm_subsys[i]->setup(parent, np);
--		if (ret) {
--			pr_err("Failed to setup '%s': %d\n", dtpm_subsys[i]->name, ret);
--			of_node_put(np);
--			return ERR_PTR(ret);
-+		tmp = dtpm_subsys[i]->setup(parent, np, name);
-+		if (IS_ERR(tmp)) {
-+			pr_err("Failed to setup '%s': %ld\n",
-+			       dtpm_subsys[i]->name, PTR_ERR(tmp));
-+			dtpm = tmp;
-+			break;
-+		}
-+
-+		if (tmp) {
-+			dtpm = tmp;
-+			break;
- 		}
- 	}
- 
- 	of_node_put(np);
- 
--	/*
--	 * By returning a NULL pointer, we let know the caller there
--	 * is no child for us as we are a leaf of the tree
--	 */
--	return NULL;
-+	return dtpm;
- }
- 
--typedef struct dtpm * (*dtpm_node_callback_t)(const struct dtpm_node *, struct dtpm *);
--
--static dtpm_node_callback_t dtpm_node_callback[] = {
--	[DTPM_NODE_VIRTUAL] = dtpm_setup_virtual,
--	[DTPM_NODE_DT] = dtpm_setup_dt,
--};
--
--static int dtpm_for_each_child(const struct dtpm_node *hierarchy,
--			       const struct dtpm_node *it, struct dtpm *parent)
-+static struct powercap_zone *
-+dtpm_node_create(struct powercap_control_type *pct, const char *name,
-+		 void *data, struct powercap_zone *parent)
- {
-+	struct dtpm_node *node = data;
-+	struct dtpm *dtpm_parent = parent ? to_dtpm(parent) : NULL;
- 	struct dtpm *dtpm;
--	int i, ret;
- 
--	for (i = 0; hierarchy[i].name; i++) {
-+	if (!node)
-+		return ERR_PTR(-EINVAL);
-+
-+	switch (node->type) {
-+	case DTPM_NODE_VIRTUAL:
-+		dtpm = dtpm_setup_virtual(name, dtpm_parent);
-+		break;
-+	case DTPM_NODE_DT:
-+		dtpm = dtpm_setup_dt(name, node->path, dtpm_parent);
-+		break;
-+	default:
-+		return ERR_PTR(-EINVAL);
-+	}
- 
--		if (hierarchy[i].parent != it)
--			continue;
-+	/* An unavailable backend must not prevent independent branches. */
-+	if (IS_ERR(dtpm)) {
-+		pr_warn("Failed to create '%s' in the hierarchy: %ld\n",
-+			name, PTR_ERR(dtpm));
-+		return NULL;
-+	}
- 
--		dtpm = dtpm_node_callback[hierarchy[i].type](&hierarchy[i], parent);
-+	if (!dtpm)
-+		return NULL;
- 
--		/*
--		 * A NULL pointer means there is no children, hence we
--		 * continue without going deeper in the recursivity.
--		 */
--		if (!dtpm)
--			continue;
-+	return &dtpm->zone;
-+}
- 
--		/*
--		 * There are multiple reasons why the callback could
--		 * fail. The generic glue is abstracting the backend
--		 * and therefore it is not possible to report back or
--		 * take a decision based on the error.  In any case,
--		 * if this call fails, it is not critical in the
--		 * hierarchy creation, we can assume the underlying
--		 * service is not found, so we continue without this
--		 * branch in the tree but with a warning to log the
--		 * information the node was not created.
--		 */
--		if (IS_ERR(dtpm)) {
--			pr_warn("Failed to create '%s' in the hierarchy\n",
--				hierarchy[i].name);
--			continue;
--		}
-+static void dtpm_node_destroy(struct powercap_control_type *pct,
-+			      struct powercap_zone *zone, void *data)
-+{
-+	struct dtpm *dtpm = to_dtpm(zone);
- 
--		ret = dtpm_for_each_child(hierarchy, &hierarchy[i], dtpm);
--		if (ret)
--			return ret;
--	}
-+	if (dtpm == root)
-+		root = NULL;
- 
--	return 0;
-+	dtpm_unregister(dtpm);
- }
- 
- /**
-@@ -528,27 +525,16 @@ static int dtpm_for_each_child(const struct dtpm_node *hierarchy,
-  * description of the different node in the hierarchy. It creates the
-  * tree in the sysfs filesystem under the powercap dtpm entry.
-  *
-- * The expected tree has the format:
-- *
-- * struct dtpm_node hierarchy[] = {
-- *	[0] { .name = "topmost", type =  DTPM_NODE_VIRTUAL },
-- *	[1] { .name = "package", .type = DTPM_NODE_VIRTUAL, .parent = &hierarchy[0] },
-- *	[2] { .name = "/cpus/cpu0", .type = DTPM_NODE_DT, .parent = &hierarchy[1] },
-- *	[3] { .name = "/cpus/cpu1", .type = DTPM_NODE_DT, .parent = &hierarchy[1] },
-- *	[4] { .name = "/cpus/cpu2", .type = DTPM_NODE_DT, .parent = &hierarchy[1] },
-- *	[5] { .name = "/cpus/cpu3", .type = DTPM_NODE_DT, .parent = &hierarchy[1] },
-- *	[6] { }
-- * };
-- *
-- * The last element is always an empty one and marks the end of the
-- * array.
-+ * The platform description is a struct powercap_hierarchy. The private
-+ * data associated with each powercap node describes how DTPM creates the
-+ * corresponding zone.
-  *
-  * Return: zero on success, a negative value in case of error. Errors
-  * are reported back from the underlying functions.
-  */
- int dtpm_create_hierarchy(struct of_device_id *dtpm_match_table)
- {
--	const struct dtpm_node *hierarchy;
-+	const struct powercap_hierarchy *hierarchy;
- 	int i, ret;
- 
- 	mutex_lock(&dtpm_lock);
-@@ -571,10 +557,18 @@ int dtpm_create_hierarchy(struct of_device_id *dtpm_match_table)
- 		goto out_err;
- 	}
- 
--	ret = dtpm_for_each_child(hierarchy, NULL, NULL);
--	if (ret)
-+	dtpm_hierarchy = powercap_hierarchy_dup(hierarchy);
-+	if (IS_ERR(dtpm_hierarchy)) {
-+		ret = PTR_ERR(dtpm_hierarchy);
-+		dtpm_hierarchy = NULL;
- 		goto out_err;
--	
-+	}
-+
-+	ret = powercap_hierarchy_create(pct, dtpm_hierarchy,
-+				dtpm_node_create, dtpm_node_destroy);
-+	if (ret)
-+		goto out_free_hierarchy;
-+
- 	for (i = 0; i < ARRAY_SIZE(dtpm_subsys); i++) {
- 
- 		if (!dtpm_subsys[i]->init)
-@@ -590,31 +584,20 @@ int dtpm_create_hierarchy(struct of_device_id *dtpm_match_table)
- 
- 	return 0;
- 
-+out_free_hierarchy:
-+	powercap_hierarchy_free(dtpm_hierarchy);
-+	dtpm_hierarchy = NULL;
- out_err:
- 	powercap_unregister_control_type(pct);
- out_pct:
- 	pct = NULL;
- out_unlock:
- 	mutex_unlock(&dtpm_lock);
--	
-+
- 	return ret;
- }
- EXPORT_SYMBOL_GPL(dtpm_create_hierarchy);
- 
--static void __dtpm_destroy_hierarchy(struct dtpm *dtpm)
--{
--	struct dtpm *child, *aux;
--
--	list_for_each_entry_safe(child, aux, &dtpm->children, sibling)
--		__dtpm_destroy_hierarchy(child);
--
--	/*
--	 * At this point, we know all children were removed from the
--	 * recursive call before
--	 */
--	dtpm_unregister(dtpm);
--}
--
- void dtpm_destroy_hierarchy(void)
- {
- 	int i;
-@@ -624,8 +607,8 @@ void dtpm_destroy_hierarchy(void)
- 	if (!pct)
- 		goto out_unlock;
- 
--	__dtpm_destroy_hierarchy(root);
--	
-+	powercap_hierarchy_destroy(pct, dtpm_hierarchy, dtpm_node_destroy);
-+
- 
- 	for (i = 0; i < ARRAY_SIZE(dtpm_subsys); i++) {
- 
-@@ -635,8 +618,10 @@ void dtpm_destroy_hierarchy(void)
- 		dtpm_subsys[i]->exit();
- 	}
- 
-+	powercap_hierarchy_free(dtpm_hierarchy);
- 	powercap_unregister_control_type(pct);
- 
-+	dtpm_hierarchy = NULL;
- 	pct = NULL;
- 
- 	root = NULL;
-diff --git a/drivers/powercap/dtpm_cpu.c b/drivers/powercap/dtpm_cpu.c
-index 21355db6419d..ccfc97e96e66 100644
---- a/drivers/powercap/dtpm_cpu.c
-+++ b/drivers/powercap/dtpm_cpu.c
-@@ -16,6 +16,7 @@
-  */
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
- 
-+#include <linux/cpu.h>
- #include <linux/cpumask.h>
- #include <linux/cpufreq.h>
- #include <linux/cpuhotplug.h>
-@@ -189,22 +190,53 @@ static int cpuhp_dtpm_cpu_online(unsigned int cpu)
- 	return 0;
- }
- 
--static int __dtpm_cpu_setup(int cpu, struct dtpm *parent)
-+/*
-+ * A hierarchy node identifies a policy through one of its related CPUs,
-+ * which need not be online. Find an active policy through an online sibling
-+ * when necessary. The caller must hold cpus_read_lock() and release the
-+ * returned policy with cpufreq_cpu_put().
-+ */
-+static struct cpufreq_policy *dtpm_cpu_get_policy(unsigned int cpu)
-+{
-+	struct cpufreq_policy *policy;
-+	unsigned int sibling;
-+
-+	policy = cpufreq_cpu_get(cpu);
-+	if (policy)
-+		return policy;
-+
-+	/* The hierarchy's representative CPU may be offline. */
-+	for_each_online_cpu(sibling) {
-+		policy = cpufreq_cpu_get(sibling);
-+		if (!policy)
-+			continue;
-+
-+		if (cpumask_test_cpu(cpu, policy->related_cpus))
-+			return policy;
-+
-+		cpufreq_cpu_put(policy);
-+	}
-+
-+	return NULL;
-+}
-+
-+static struct dtpm *__dtpm_cpu_setup(int cpu, struct dtpm *parent, const char *name)
- {
- 	struct dtpm_cpu *dtpm_cpu;
- 	struct cpufreq_policy *policy;
- 	struct em_perf_state *table;
- 	struct em_perf_domain *pd;
--	char name[CPUFREQ_NAME_LEN];
--	int ret = -ENOMEM;
-+	int ret;
- 
- 	dtpm_cpu = per_cpu(dtpm_per_cpu, cpu);
- 	if (dtpm_cpu)
--		return 0;
-+		return NULL;
- 
--	policy = cpufreq_cpu_get(cpu);
-+	policy = dtpm_cpu_get_policy(cpu);
- 	if (!policy)
--		return 0;
-+		return NULL;
-+
-+	cpu = policy->cpu;
- 
- 	pd = em_cpu_get(cpu);
- 	if (!pd || em_is_artificial(pd)) {
-@@ -224,8 +256,6 @@ static int __dtpm_cpu_setup(int cpu, struct dtpm *parent)
- 	for_each_cpu(cpu, policy->related_cpus)
- 		per_cpu(dtpm_per_cpu, cpu) = dtpm_cpu;
- 
--	snprintf(name, sizeof(name), "cpu%d-cpufreq", dtpm_cpu->cpu);
--
- 	ret = dtpm_register(name, &dtpm_cpu->dtpm, parent);
- 	if (ret)
- 		goto out_kfree_dtpm_cpu;
-@@ -240,7 +270,7 @@ static int __dtpm_cpu_setup(int cpu, struct dtpm *parent)
- 		goto out_dtpm_unregister;
- 
- 	cpufreq_cpu_put(policy);
--	return 0;
-+	return &dtpm_cpu->dtpm;
- 
- out_dtpm_unregister:
- 	dtpm_unregister(&dtpm_cpu->dtpm);
-@@ -253,18 +283,24 @@ static int __dtpm_cpu_setup(int cpu, struct dtpm *parent)
- 
- release_policy:
- 	cpufreq_cpu_put(policy);
--	return ret;
-+	return ERR_PTR(ret);
- }
- 
--static int dtpm_cpu_setup(struct dtpm *dtpm, struct device_node *np)
-+static struct dtpm *dtpm_cpu_setup(struct dtpm *dtpm, struct device_node *np,
-+				   const char *name)
- {
-+	struct dtpm *node;
- 	int cpu;
- 
- 	cpu = of_cpu_node_to_id(np);
- 	if (cpu < 0)
--		return 0;
-+		return NULL;
-+
-+	cpus_read_lock();
-+	node = __dtpm_cpu_setup(cpu, dtpm, name);
-+	cpus_read_unlock();
- 
--	return __dtpm_cpu_setup(cpu, dtpm);
-+	return node;
- }
- 
- static int dtpm_cpu_init(void)
-diff --git a/drivers/powercap/dtpm_devfreq.c b/drivers/powercap/dtpm_devfreq.c
-index fa71285dee60..a783601fe74e 100644
---- a/drivers/powercap/dtpm_devfreq.c
-+++ b/drivers/powercap/dtpm_devfreq.c
-@@ -144,7 +144,8 @@ static struct dtpm_ops dtpm_ops = {
- 	.release = pd_release,
- };
- 
--static int __dtpm_devfreq_setup(struct devfreq *devfreq, struct dtpm *parent)
-+static struct dtpm *__dtpm_devfreq_setup(struct devfreq *devfreq,
-+					 struct dtpm *parent, const char *name)
- {
- 	struct device *dev = devfreq->dev.parent;
- 	struct dtpm_devfreq *dtpm_devfreq;
-@@ -156,23 +157,23 @@ static int __dtpm_devfreq_setup(struct devfreq *devfreq, struct dtpm *parent)
- 		ret = dev_pm_opp_of_register_em(dev, NULL);
- 		if (ret) {
- 			pr_err("No energy model available for '%s'\n", dev_name(dev));
--			return -EINVAL;
-+			return ERR_PTR(-EINVAL);
- 		}
- 	}
- 
- 	dtpm_devfreq = kzalloc_obj(*dtpm_devfreq);
- 	if (!dtpm_devfreq)
--		return -ENOMEM;
-+		return ERR_PTR(-ENOMEM);
- 
- 	dtpm_init(&dtpm_devfreq->dtpm, &dtpm_ops);
- 
- 	dtpm_devfreq->devfreq = devfreq;
- 
--	ret = dtpm_register(dev_name(dev), &dtpm_devfreq->dtpm, parent);
-+	ret = dtpm_register(name, &dtpm_devfreq->dtpm, parent);
- 	if (ret) {
- 		pr_err("Failed to register '%s': %d\n", dev_name(dev), ret);
- 		kfree(dtpm_devfreq);
--		return ret;
-+		return ERR_PTR(ret);
- 	}
- 
- 	ret = dev_pm_qos_add_request(dev, &dtpm_devfreq->qos_req,
-@@ -185,23 +186,24 @@ static int __dtpm_devfreq_setup(struct devfreq *devfreq, struct dtpm *parent)
- 
- 	dtpm_update_power(&dtpm_devfreq->dtpm);
- 
--	return 0;
-+	return &dtpm_devfreq->dtpm;
- 
- out_dtpm_unregister:
- 	dtpm_unregister(&dtpm_devfreq->dtpm);
- 
--	return ret;
-+	return ERR_PTR(ret);
- }
- 
--static int dtpm_devfreq_setup(struct dtpm *dtpm, struct device_node *np)
-+static struct dtpm *dtpm_devfreq_setup(struct dtpm *dtpm, struct device_node *np,
-+				       const char *name)
- {
- 	struct devfreq *devfreq;
- 
- 	devfreq = devfreq_get_devfreq_by_node(np);
- 	if (IS_ERR(devfreq))
--		return 0;
-+		return NULL;
- 
--	return __dtpm_devfreq_setup(devfreq, dtpm);
-+	return __dtpm_devfreq_setup(devfreq, dtpm, name);
- }
- 
- struct dtpm_subsys_ops dtpm_devfreq_ops = {
 diff --git a/drivers/soc/rockchip/dtpm.c b/drivers/soc/rockchip/dtpm.c
-index e71f315fbb6b..222d9098cc98 100644
+index 5ae00680602f..664764f4b460 100644
 --- a/drivers/soc/rockchip/dtpm.c
 +++ b/drivers/soc/rockchip/dtpm.c
-@@ -11,26 +11,59 @@
- #include <linux/of.h>
- #include <linux/platform_device.h>
+@@ -62,8 +62,56 @@ static struct powercap_hierarchy rk3399_hierarchy __initdata = {
+ 	.nr_nodes = ARRAY_SIZE(rk3399_nodes),
+ };
  
--static struct dtpm_node __initdata rk3399_hierarchy[] = {
--	[0] = { .name = "rk3399",
--		.type = DTPM_NODE_VIRTUAL },
--	[1] = { .name = "package",
--		.type = DTPM_NODE_VIRTUAL,
--		.parent = &rk3399_hierarchy[0] },
--	[2] = { .name = "/cpus/cpu@0",
--		.type = DTPM_NODE_DT,
--		.parent = &rk3399_hierarchy[1] },
--	[3] = { .name = "/cpus/cpu@100",
--		.type = DTPM_NODE_DT,
--		.parent = &rk3399_hierarchy[1] },
--	[4] = { .name = "/gpu@ff9a0000",
--		.type = DTPM_NODE_DT,
--		.parent = &rk3399_hierarchy[1] },
--	[5] = { /* sentinel */ }
-+static struct dtpm_node rk3399_virtual = {
-+	.type = DTPM_NODE_VIRTUAL,
-+};
-+
-+static struct dtpm_node rk3399_cpu0 = {
++static struct dtpm_node rk3588_cpu0 = {
 +	.type = DTPM_NODE_DT,
 +	.path = "/cpus/cpu@0",
 +};
 +
-+static struct dtpm_node rk3399_cpu4 = {
++static struct dtpm_node rk3588_cpu4 = {
 +	.type = DTPM_NODE_DT,
-+	.path = "/cpus/cpu@100",
++	.path = "/cpus/cpu@400",
 +};
 +
-+static struct dtpm_node rk3399_gpu = {
++static struct dtpm_node rk3588_cpu6 = {
 +	.type = DTPM_NODE_DT,
-+	.path = "/gpu@ff9a0000",
++	.path = "/cpus/cpu@600",
 +};
 +
-+static struct powercap_node rk3399_nodes[] __initdata = {
++static struct powercap_node rk3588_nodes[] __initdata = {
 +	[0] = {
-+		.name = "rk3399",
-+		.data = &rk3399_virtual,
++		.name = "rk3588",
++		.data = &rockchip_virtual,
 +	},
 +	[1] = {
 +		.name = "package",
-+		.parent = &rk3399_nodes[0],
-+		.data = &rk3399_virtual,
++		.parent = &rk3588_nodes[0],
++		.data = &rockchip_virtual,
 +	},
 +	[2] = {
 +		.name = "cpu0-cpufreq",
-+		.parent = &rk3399_nodes[1],
-+		.data = &rk3399_cpu0,
++		.parent = &rk3588_nodes[1],
++		.data = &rk3588_cpu0,
 +	},
 +	[3] = {
 +		.name = "cpu4-cpufreq",
-+		.parent = &rk3399_nodes[1],
-+		.data = &rk3399_cpu4,
++		.parent = &rk3588_nodes[1],
++		.data = &rk3588_cpu4,
 +	},
 +	[4] = {
-+		.name = "ff9a0000.gpu",
-+		.parent = &rk3399_nodes[1],
-+		.data = &rk3399_gpu,
++		.name = "cpu6-cpufreq",
++		.parent = &rk3588_nodes[1],
++		.data = &rk3588_cpu6,
 +	},
 +};
 +
-+static struct powercap_hierarchy rk3399_hierarchy __initdata = {
-+	.nodes = rk3399_nodes,
-+	.nr_nodes = ARRAY_SIZE(rk3399_nodes),
- };
- 
++static struct powercap_hierarchy rk3588_hierarchy __initdata = {
++	.nodes = rk3588_nodes,
++	.nr_nodes = ARRAY_SIZE(rk3588_nodes),
++};
++
  static struct of_device_id __initdata rockchip_dtpm_match_table[] = {
--	{ .compatible = "rockchip,rk3399", .data = rk3399_hierarchy },
-+	{ .compatible = "rockchip,rk3399", .data = &rk3399_hierarchy },
+ 	{ .compatible = "rockchip,rk3399", .data = &rk3399_hierarchy },
++	{ .compatible = "rockchip,rk3588", .data = &rk3588_hierarchy },
  	{},
  };
  
-diff --git a/include/linux/dtpm.h b/include/linux/dtpm.h
-index a4a13514b730..79a34d5923f4 100644
---- a/include/linux/dtpm.h
-+++ b/include/linux/dtpm.h
-@@ -38,7 +38,8 @@ struct dtpm_subsys_ops {
- 	const char *name;
- 	int (*init)(void);
- 	void (*exit)(void);
--	int (*setup)(struct dtpm *, struct device_node *);
-+	struct dtpm *(*setup)(struct dtpm *parent, struct device_node *np,
-+			      const char *name);
- };
- 
- enum DTPM_NODE_TYPE {
-@@ -48,8 +49,7 @@ enum DTPM_NODE_TYPE {
- 
- struct dtpm_node {
- 	enum DTPM_NODE_TYPE type;
--	const char *name;
--	struct dtpm_node *parent;
-+	const char *path;
- };
- 
- static inline struct dtpm *to_dtpm(struct powercap_zone *zone)
 -- 
 2.43.0
 
