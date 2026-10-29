@@ -2,147 +2,95 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 521DE606A31D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2026 19:31:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE5EF606A31A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2026 23:06:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tyoCQaKe;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=cherry.de header.i=@cherry.de header.a=rsa-sha256 header.s=selector1 header.b=KsnkjUjp
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Ec6CS7m1;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=f8au5m+k
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=lMSj7gR74NdwLM0NYQdbSTf89GjTwtLn/scLNn3HXMk=; b=tyoCQaKeRvmYZO/yroyX+osVQT
-	XFecqeyQtnRXftUuLZcp6WVLECGR3Qo1AhMVQIVKhKYvn5kBV3CfCG8c2S09zdftfXY//Pc6Kh+69
-	0E86cACnar6q00MoiuRKu7XY3R08ytLDpVG1YzOOa4aADeWoYuosp3Vj6urZH+hOBK3/UmLsp3Tno
-	87nCJYho6ycLjgdK0Jfo1EBEHS7CWlk5/B3y/e3aa9DJ/QL6+hG/dOl3CKfFnQg98etS7n4rBKVAt
-	2jx61744emargITjMa1A88gM2YJyI/hmVp1yzJlEjawOx82V8MIDJdRu6cKPlcVy8Hb4lMV1B3LKR
-	8ccTiFQQ==;
+	bh=HkwI37dc0tiLLN/y2MfsPNrJLTiECODIPvZzfbWpsxc=; b=Ec6CS7m1CBWcfmFUGTejobUxzq
+	U8FUTJzPT1aBQa2Pv12soThEz4lMWQRN/4FMgYo+Ec3e/COP3QRalru9Zlh0bPSmFwU9QHrWMDnQh
+	4Mf/EYefCjPwLPV6vYUOPhAGpHcGewD570NzicRPhzJo0MFNcv9eGKqa0fjsR8sff9XUSmJ8Wx7/K
+	gUJaFhrG4dGEM0aSbZhPHltqJ04Fq0UklhDO9AHesdSGpWwJ1GYihUN395zUzpnUChVO221G/OSJi
+	PfC5LMzZUERDvY6c2oQL091GLwAj3uuGgZI8aTcL2tO9Pjff33XPM2gB0URC5aBDZ8++pPs4EshWY
+	bvjBiTsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMVqo-0000000AFg0-0Zjx;
-	Thu, 29 Oct 2026 19:31:50 +0000
-Received: from mail-northeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c200::3] helo=DU2PR03CU002.outbound.protection.outlook.com)
+	id 1xMZCr-0000000AWKW-3Vfn;
+	Thu, 29 Oct 2026 23:06:49 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMVqk-0000000AFel-1NH9;
-	Thu, 29 Oct 2026 19:31:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ysnhl9WH+P2y3qf89fe9lbioq6Nc2Yn/NnJFG7zRHHDBUCpD8JgvfDraYfewq47VzWelcwwwkWPkOFLDd8s8du4/78/izutq9+qaTYcxJP7r5lt1OOTrAKCOpBzrTNL6eGjL4I8p6LBQPsnafLZXghGQE9mWtIPFVkbmlO23XdyGhMf/ju64ppUb22OCgI5BGPdz0bzJ14SU8X7FRTpEdXV4hyaasS8gAl4/loh611Ve1H9lb1tiSi6S3I6LnpbNDxT/ROe138QEdvNBkoo0L7qO2SaP0ERVx7blXcOLxWs6xT1bsCffk9vU1yAbMNr+mmlFkvjdxTNlkA6h/VuM5g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rXHdJ/PRgQ0OXwcLegs87BCYF8A2eLw0cDlzJtMRi14=;
- b=DBQkfSLI9uXkZhMCG+8RjxB4gNrGJb8GoG4OKnIXz2UhpaqsyVnmIXato5SRhQueEA1Cr+/0iWBpx4IJ0CdmixCNa1113PXY/9+TNtBFo0kzsYcjQslha0AG03b8x8dhjLGERTD7aRmrABeitl/G/iXE9fy+2ylEmB8lv9Wj4eT5DLF+I5QvOKje/oNB1IbR1o8m/QMdGcPhReM1b4HaHv3N+TnfxS9ohH2P713osIfeYLTS9zOq42IKOBM2Wn9g2nlsfqBEMsf95QSrH9ENKBI9g8gHwUXylOImxjqM9FALAZfr8MCPCf74NvCmA36+vVOVqnnnpFcQOmDhlQp1gQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rXHdJ/PRgQ0OXwcLegs87BCYF8A2eLw0cDlzJtMRi14=;
- b=KsnkjUjp3tSv0ZX5+rYg7NE1PPRE6f90XNPqHHteDQf7h2avltMLwwi+oZ6gomy/vrPYFtuq9j81uCfsETR7KSChwTK8YhvCZz7fFI4JL17ENo1zSd3PTc3xcDAygVpsasOIa3uzdqaTzbY8lGJjf2T4H0g1jfVRcf5o+kshr8A=
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from PA3PR04MB11153.eurprd04.prod.outlook.com (2603:10a6:102:4ab::7)
- by MA9PR04MB991951.eurprd04.prod.outlook.com (2603:10a6:250:102::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.569.8; Thu, 29 Oct
- 2026 19:31:36 +0000
-Received: from PA3PR04MB11153.eurprd04.prod.outlook.com
- ([fe80::6b02:c0eb:95a4:3c3d]) by PA3PR04MB11153.eurprd04.prod.outlook.com
- ([fe80::6b02:c0eb:95a4:3c3d%5]) with mapi id 15.21.0569.008; Thu, 29 Oct 2026
- 19:31:36 +0000
-Message-ID: <a220ebd0-a28d-44cc-9a80-62382018348c@cherry.de>
-Date: Thu, 29 Oct 2026 20:31:34 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/4] Suspend-to-RAM fixes for RK3588 + SPI-connected RK806
- PMIC, enable PMIC sleep on RK3588 Tiger
-To: Jakob Unterwurzacher <jakobunt@gmail.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Joseph Chen <chenjh@rock-chips.com>, Lee Jones <lee@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-input@vger.kernel.org,
- mfd@lists.linux.dev, devicetree@vger.kernel.org,
- Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
-References: <20261029-dev-tiger-v7-4-pre-20261028-tiger-suspend-b4-v1-0-cb12621c1fb4@cherry.de>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <20261029-dev-tiger-v7-4-pre-20261028-tiger-suspend-b4-v1-0-cb12621c1fb4@cherry.de>
-X-ClientProxiedBy: VIUP296CA0151.AUTP296.PROD.OUTLOOK.COM
- (2603:10a6:800:34c::15) To PA3PR04MB11153.eurprd04.prod.outlook.com
- (2603:10a6:102:4ab::7)
+	id 1xMZCp-0000000AWK8-3MI1;
+	Thu, 29 Oct 2026 23:06:47 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 32FAD437AB;
+	Thu, 29 Oct 2026 23:06:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D6191F01824;
+	Thu, 29 Oct 2026 23:06:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793315206;
+	bh=xy2U26Mne6M5YW3gXWwYO3+KzvxuP8VoL+G09hFdvhk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=f8au5m+kyaX+MsBYWeZmjmWrABpfpcSUO75UyTcFSkgugktEXglr2BfkxmILKQ0+f
+	 P5wqwuxpLHGn8FuTl3/LQbqQyS/FiVvYEGXQlkF4rpFwTvCPwJRltypcvPMKJDD6fK
+	 TBa+rvdM2/hpSgwDCSLMMuz3X8jUDg7KA8o/6kRRHD/yJdWFOK0ZYqp7GsleAnsU0X
+	 th0gqTn1s3aR859qD+mZiJECMuKlo7/DTaQdQft1fG7kihyicsSC+Raam4oNDDYVRz
+	 UsueypUmyVlI9zoRELsGj2sn0Q/9LFbjLI9RcqHfZSUBObA18dFfYVhBuMJWl+mbE+
+	 UTOdpdKfmZHRA==
+Date: Thu, 29 Oct 2026 23:06:36 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Michal Wilczynski <m.wilczynski@samsung.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Emil Renner Berthing <kernel@esmil.dk>,
+	Hal Feng <hal.feng@starfivetech.com>,
+	Heiko Stuebner <heiko@sntech.de>, Paul Walmsley <pjw@kernel.org>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,
+	Dominique Belhachemi <db@domibel.de>, Andy Yan <andyshrk@163.com>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Yakir Yang <kuankuan.y@gmail.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	William Qiu <william.qiu@starfivetech.com>,
+	Xingyu Wu <xingyu.wu@starfivetech.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Manivannan Sadhasivam <mani@kernel.org>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Maud Spierings <maud_spierings@murena.io>,
+	Graham Markall <hello@big-grey.co.uk>,
+	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Joshua Peisach <jpeisach@ubuntu.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>
+Subject: Re: [PATCH v6 04/18] dt-bindings: soc: starfive: Add
+ starfive,jh7110-hdmi-subsystem
+Message-ID: <20261029-flinch-header-bad94288c71b@spud>
+References: <20261029-jh7110-clean-send-v6-0-759594e43acf@samsung.com>
+ <CGME20261029075358eucas1p111293c602fc3aac9c6a044fc41488919@eucas1p1.samsung.com>
+ <20261029-jh7110-clean-send-v6-4-759594e43acf@samsung.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PA3PR04MB11153:EE_|MA9PR04MB991951:EE_
-X-MS-Office365-Filtering-Correlation-Id: 464ac9f0-6005-4aad-6eb8-08df35f33f19
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|23010399003|10070799003|376014|7416014|261028144727099003|11063799006|56012099006|261009223027099003|261026121527099003|261026140227099003|261022105027099003|261022075727099003|10067099003|261021135927099003|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: KYxlVY3KYvCKikhfcoLuaQXeHJkRAodEnwAqEKlGkx0LMzgEYZvv9fWPSq7mJxj3SU2mj3DcfOEs1b8QH99oBYgfYldQW7Y5c74iCqN6+BK4YcE/1qZiOEykxEQPaxj1MkyG6V3QhbqcXe2kr9HNnbZbuTP16KHB7L94+4UkgoOINxyU0dwhWmSH6gisJZals0vxZ0QW7/X5JSqtNxJb0pXEsUGQbGqAjjczB9wQT6g9NMRLtsHGSUyWOzC8JDfDICLu4Z2wi/pG6zNSP4DkxeVCsATxx1FPmu7//v1Nq1OYQhCxsPWhQOouwc7e5OQDJEvl851V4VHYDVb1q+PeuvcPkTdrUhKUdd6SPrSUfw+iV8wwcEDTvSi57gPtVOG2Ze5FSoTvuUyx1qjAqBqixYI3Z54Hsc6Oabx3w3NiqMbu+s211bPYABfaW7BYKUtX3AeusuTziLgqFxjH0ZlGISM86CSA2AEtT7r59isfuQCxVJg2iUXEQE81wWcMrXXhI58A2lTCz09eaopdVacMSPD9l4m8XExGVSJZyjWvn1jN2LOjVX9wewsDgYbt6jYExliAxUV9n5ch6jRkYvdr3UWmKogoNQ5wLz11YYFlIFqhLKMn/Tzny7r+BGXb5U2p
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA3PR04MB11153.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(23010399003)(10070799003)(376014)(7416014)(261028144727099003)(11063799006)(56012099006)(261009223027099003)(261026121527099003)(261026140227099003)(261022105027099003)(261022075727099003)(10067099003)(261021135927099003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TmUyQTNBSTc2bkV4UTdManl3SHZBU2ZwTUJGMUhtdUxEMnd0VXRyS2w2NTNw?=
- =?utf-8?B?TkMyV1pjeVp5TWVzWHZpUkVpVTE3R05DNW9RMDZpZURZVWYzZFdLQzZ1Zk9o?=
- =?utf-8?B?bnA0QVg4K1gyaEdNK1dYajE3cllEQ0dBQlNNQTVqREg0cXp2b2VxYUQ0SXhR?=
- =?utf-8?B?T1AvQlhXYXhHKzllUzVVclVYVW40bTMxNWpkamsxaW9hbENVeXRFK2J1ZDhC?=
- =?utf-8?B?V04reXZ0U1c3d3plYXJDRTQ2TjdzZDFSVkJ5MTdTQWlodmhSbk9ZOFltVFVn?=
- =?utf-8?B?RURLUnFNaWJjUFZ6YUJ0azJ1amFFMW94aHFJdWNhQ3NTdnNpWHp5cGRONzQz?=
- =?utf-8?B?ZWszNEd5bVJZVGhqZnZEdkFFU2xGeVR5YUwwWi9jUWlxRlg3N1RvSXE3UVUz?=
- =?utf-8?B?c1BRdUJIbTF0MERFL3QzVlUxb3U5WTB3S21kYjVFRzJBb0dBWThiUmFXTzhK?=
- =?utf-8?B?ZHhKLy9keXZESVR6L3cwc3pEZis4REZhNENVbHhpSU0xcGIvS2h6ZkhZRUdM?=
- =?utf-8?B?ZWdHSkhVYU53ZnVkZWVtUFdlb2VxU1BVc3JmaFVISDV2SExRcFlkaDFFMWcw?=
- =?utf-8?B?RUloTjlKNk9qalVkNFZrTHQxdWtiamJZQk8yVGJXSjF6UlVpS05KdTV3SHN5?=
- =?utf-8?B?Y1pRcWxhaldRa29CNE1ySldpNGQzcWZmblhoRDNJWU5PUTFOQVF5WWNmSlZo?=
- =?utf-8?B?bWxaa2VlaVBKeTI0ZzQ0N0grQTU4ZXljVGxkcGQrL2FGU2RBRUd4ek9nUnZ5?=
- =?utf-8?B?UnJuS2NCb1RxcnB2L2paeXdKMUkxUmdZUnNxbjBLa3Eya2sxcGhkTWQ4MTlm?=
- =?utf-8?B?ejAxQUtQdysvdkxORVNDenhyZVhtS1RjaWxTVzJ3SVJSQkx3NDVyeU8xOStz?=
- =?utf-8?B?Z3cxU2RHTXVsQVZkQys5cE1oamR4bkgrSHpkS1ZUVlRPelRWM0NHMzRIRzdp?=
- =?utf-8?B?VDd2YzlxVkM3MG9IYWFlYjdwOHc5bVpOQlRvc0ZMMFVIMGdnN0k3UkpKVGw2?=
- =?utf-8?B?c3hNKzYrb0NBMEd3VWNYcmcwcjNyOW1CU1ptMVdud3pMdHNGWUhtQmJ6VHEy?=
- =?utf-8?B?QnVMc1ZIakdvNFJTUHhzcGtnakNSbkRCdjd4K1NRRmtieEFVNklnWG5SOENy?=
- =?utf-8?B?TE5ZUkxjVExPZWk2YlRxSWJHRSt3RVR3Wm0yZnN1cDdjQUVHUkE0RFdqK0dk?=
- =?utf-8?B?V29VMUkvZmhRenNSZnlacitBWlJ4ZU1oVVZpM2tOZ1cwSEE4YWNta1FZYUxs?=
- =?utf-8?B?NDVOMjNnNHRGd3hYTGlFS3hUN210dnF3Y0ZpVDFJRlF4T2NaMnVDcktRVWdx?=
- =?utf-8?B?SkdFbC9wOFVvMTNPYXhpYWwwbUxqZHhOSEFmSS80V2lEdlQ2bHBKMjZNbGN3?=
- =?utf-8?B?MndaZXVoZXJ4ZDF2Zk1sekpUSzdjMnpySndqVDZmSm1SZWtpVmEzQnJvRXlR?=
- =?utf-8?B?a0pRZWszVG1tSlZBWG94S3VES1NVUTMyT1hkZjBGYmpwNkpBQ2d4NjJUQmlo?=
- =?utf-8?B?bnI0a1VLNVlWdVdWSXVONS9FVXpNdG1SellHaFREWkdRRTlDSlpKbkoydnN4?=
- =?utf-8?B?Z0svTUt0MWcybkFBNmdKSXdBUnU1VElZOGlmSUgvNmVXRVJjUE55NCthVFZF?=
- =?utf-8?B?RzZsdDhvdnorODVCcUtKK3NGd1IreVZKZXVXM0Z6eUdnMVMzUUs5anU5Sjl6?=
- =?utf-8?B?SWs3U0FFMlZobVUyOVZRRloxV3RHeFlXU2twZk5YSUQwcnFNOWxaQTRlaEto?=
- =?utf-8?B?VXovaVFwT0VuR1U2YktIK2QzbXZmS2dHaEh4YjR5Rm4wSnVzeStETmtSY2hV?=
- =?utf-8?B?aGZFN09CWmc4eUs0Q2R2NExyK2pqdmttVG9LRDBrSzZUWjIrckZwR0xFY0Rv?=
- =?utf-8?B?RlJnM0oreDRoVnVWKzEzSU1odE43L0wrcTZCODU4c1ZFWVdNMU1qRllUZDl1?=
- =?utf-8?B?TEVmcVZCbUlQQWhJOXFGNE10VEo0Z2tPMzBranJjUS80akRRNkkybVEwZGlh?=
- =?utf-8?B?Z1lReG1odHYySHZRd3FUaVpvNDNzTGx4T21UVm5hMndSMFNTdGkvWC9yY2dG?=
- =?utf-8?B?clVnWWdUQzVCOEJtN0FaeStnOWs0empHVVh6RkJpTTNpZkQraDlxR00xSGlO?=
- =?utf-8?B?eWljdGhKd0lSdWYxMVhnS0NmYkg0dTJYT3BPQStaRS9iL0dmL25vOU5yM2Qx?=
- =?utf-8?B?U2FZWnZ6U3RyQkE5RHdoV3l3UlFMRVk1T29oNUo3d2pmRDBPak9JNEk0Nm9H?=
- =?utf-8?B?UnlFS083UURUSnZ5SFltQmlXTE5WcTJjSE5hTFg2cGM4clllM2dwTEQ2SjRT?=
- =?utf-8?B?YUVEZE9XUWFROTV1Nng5ZmV2U0JBdmZvZFdGekhPdm13Z2cwQUlPSVU4WnhJ?=
- =?utf-8?Q?/Ljc7TUuLLR3hdZxzxEWFefKLBq1mnCsPPqQZp32QrUry?=
-X-MS-Exchange-AntiSpam-MessageData-1: N7eENv+o8uC0XnsHL/dJcMUMCrXeai2+7F4=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 464ac9f0-6005-4aad-6eb8-08df35f33f19
-X-MS-Exchange-CrossTenant-AuthSource: PA3PR04MB11153.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Oct 2026 19:31:36.3225
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: idYDF89jTOXDiP5vL7hnzt4LaOz8VBj+yOH8u+tV7I9kstu28uJM/J2BUuVJNg8+PwFjxGjjDPtBVGN1rUbZPdDLVvfc/9/52p7Zu1S2jGs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MA9PR04MB991951
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261029_123146_423130_4FADF107 
-X-CRM114-Status: GOOD (  29.99  )
-X-Spam-Score: -2.1 (--)
+In-Reply-To: <20261029-jh7110-clean-send-v6-4-759594e43acf@samsung.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,130 +100,190 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============0140957259884790593=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Jakob,
+--===============0140957259884790593==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="BltxCjlw5sIY5QTf"
+Content-Disposition: inline
 
-On 10/29/26 11:06 AM, Jakob Unterwurzacher wrote:
-> This series, together with a few out-of-tree patches (see below), makes
-> suspend-to-RAM on RK3588-Tiger work, down to a power consumption of
-> about 0.4 W. Patches 1-3 apply to all boards with an RK806 PMIC
-> connected via SPI, which includes most RK3588 boards.
-> 
-> Patch 1 ("Input: rk805-pwrkey - enable the wakeup interrupt during system suspend")
-> arms the power key interrupt as a wakeup source, so that the
-> power key can wake up the system. This is done in the regular suspend
-> phase, because the SPI bus to the PMIC can no longer be used in the
-> noirq phase.
-> 
-> Patch 2 ("mfd: rk8xx-core: keep the PMIC interrupt disabled during system suspend")
-> keeps the PMIC interrupt disabled across system suspend, so that its
-> handler does not run before the bus to the PMIC has resumed.
-> 
-> Patch 3 ("mfd: rk8xx-spi: add system sleep PM ops")
-> hooks up the existing rk8xx suspend/resume callbacks for the SPI
-> variant, which so far lacked them.
-> 
-> Patch 4 ("arm64: dts: rockchip: put the PMIC into sleep mode in suspend on RK3588 Tiger")
-> configures the RK806 PWRCTRL1 pin on RK3588 Tiger for its sleep
-> function, so that the regulator suspend states take effect. This lowers
-> the module's power consumption in suspend-to-RAM from 1.09 W to 0.43 W.
-> 
-> The patches do not depend on each other and can be applied through
-> their respective trees.
-> 
+--BltxCjlw5sIY5QTf
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Then have them in separate series. Series should be as small as 
-possible, down to a single commit if possible.
+On Thu, Oct 29, 2026 at 08:53:38AM +0100, Michal Wilczynski wrote:
+> Add the dt-binding for the StarFive JH7110 HDMI subsystem.
+>=20
+> The JH7110 HDMI IP is a monolithic block containing both the digital
+> controller and analog PHY in a single register space. This binding
+> defines the parent device, which holds the shared register map, and its
+> two children: the PHY and the controller.
+>=20
+> The two have separate resources. The PHY takes the 24 MHz reference
+> clock and provides both the pixel clock, which the VOUT clock generator
+> routes on to the display controller, and the phy the controller uses.
+> The controller takes its clocks from the VOUT clock generator. What
+> they share is the register space, which the parent maps.
+>=20
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+> ---
+>  .../starfive/starfive,jh7110-hdmi-subsystem.yaml   | 95 ++++++++++++++++=
+++++++
+>  1 file changed, 95 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/soc/starfive/starfive,jh71=
+10-hdmi-subsystem.yaml b/Documentation/devicetree/bindings/soc/starfive/sta=
+rfive,jh7110-hdmi-subsystem.yaml
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..2ff8b0b920aec41a83f0aeaa0=
+ed9c4249fe87f46
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/soc/starfive/starfive,jh7110-hdmi=
+-subsystem.yaml
 
-> Testing
-> -------
-> 
-> Tested on RK3588-Tiger on the Haikou baseboard, on top of the v7.4 merge
-> window (a8530b69fc4dd): 30 consecutive suspend-to-RAM cycles, each woken
-> up by the PMIC power key, all resumed without errors in the kernel log.
-> USB devices (a SuperSpeed hub with an Ethernet adapter, and its
-> High-Speed part) stayed connected across suspend.
-> 
-> Out-of-tree patches
-> -------------------
-> 
-> To test this series, out-of-tree patches were needed and used:
-> 
-> 1) Upstream TF-A does not complete suspend-to-RAM on this board yet, so the
-> tests used Rockchip's BL31 (rkbin v1.47), configured through a small
-> out-of-tree driver. The plan is to get suspend working in TF-A instead.
-> 
-
-I'm guessing you(r LLM) meant upstream TF-A here? Or what is it that you 
-mean?
-
-> 2) The inno-usb2 PHY has to be resumed when its 480 MHz clock is enabled,
-> otherwise EHCI/OHCI resume hangs. This is addressed by Sebastian
-> Reichel's inno-usb2 series [1].
-> 
-
-Having access to your downstream branch, you have a patch generated by 
-your LLM and not Sebastian's patch series. Either use what Sebastian 
-posted, or be more careful in your choice of words as I read the above 
-as implying you used his series.
-
-> 3) The GPU and NPU domain supplies were kept always-on. genpd powers
-> these domains on in the noirq resume phase, when their regulators (on
-> I2C/SPI) cannot be reached yet. I'm not sure what to do here, yet.
-> 
-> [1] https://lore.kernel.org/linux-phy/20261001-phy-rockchip-inno-usb2-clock-fix-v2-4-e01bf509359e@collabora.com/
-> 
-> Known issues
-> ------------
-> 
-> PCIe devices do not survive resume; this depends on system PM
-> support in pcie-dw-rockchip [2].
-> 
-> [2] https://lore.kernel.org/r/20260316-rockchip-pcie-system-suspend-v5-0-5bb5ad37d643@collabora.com
-> 
-
-There already is a v6 from almost two months ago. Did you actually test 
-with the v5 or are you just hinting at what could be helping resume PCIe 
-devices?
-
-I'm sure Sebastian would be happy to receive a nice Tested-by tag if you 
-did indeed test that. Link to v6: 
-https://lore.kernel.org/all/20260908-rockchip-pcie-system-suspend-v6-0-fbabcca9921b@collabora.com/
-
-> Tool use
-> --------
-> 
-> These patches were developed with an LLM-based coding assistant (Claude
-> Code). It ran the suspend/resume tests on the hardware, analysed the
-> kernel logs to find the causes of the failures, and drafted the code
-> changes and commit messages. I reviewed all changes and tested them as
-> described above.
-> 
-
-All your patches are missing the Signed-off-by, required to signify 
-DCO[1]. LLMs are forbidden to add it, so I guess you missed that when 
-reviewing the patches before sending. Please triple check that you agree 
-to all criteria listed in the documentation before adding the SoB to 
-patches generated by LLMs[2].
-
-[1] 
-https://www.kernel.org/doc/html/latest/process/submitting-patches.html#sign-your-work-the-developer-s-certificate-of-origin
-[2] 
-https://docs.kernel.org/process/coding-assistants.html#signed-off-by-and-developer-certificate-of-origin
+Why is this in bindings/soc? I feel like it should be in
+bindings/display or something along those lines, since it's the display
+subsystem of the device?
 
 Cheers,
-Quentin
+Conor.
+
+> @@ -0,0 +1,95 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/soc/starfive/starfive,jh7110-hdmi-sub=
+system.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: StarFive JH7110 HDMI subsystem
+> +
+> +maintainers:
+> +  - Michal Wilczynski <m.wilczynski@samsung.com>
+> +
+> +description:
+> +  The StarFive JH7110 HDMI block is a monolithic IP containing both
+> +  the digital controller logic and the analog PHY logic in a single
+> +  register space. It sits inside the video output subsystem, which owns
+> +  the NoC bus clock and reset gating this region and the power domain it
+> +  belongs to.
+> +
+> +properties:
+> +  compatible:
+> +    const: starfive,jh7110-hdmi-subsystem
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  phy:
+> +    $ref: /schemas/phy/starfive,jh7110-inno-hdmi-phy.yaml#
+> +
+> +  controller:
+> +    $ref: /schemas/display/bridge/starfive,jh7110-inno-hdmi-controller.y=
+aml#
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - phy
+> +  - controller
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/starfive,jh7110-crg.h>
+> +    #include <dt-bindings/reset/starfive,jh7110-crg.h>
+> +
+> +    soc {
+> +        #address-cells =3D <1>;
+> +        #size-cells =3D <1>;
+> +
+> +        hdmi@29590000 {
+> +            compatible =3D "starfive,jh7110-hdmi-subsystem";
+> +            reg =3D <0x29590000 0x4000>;
+> +
+> +            controller {
+> +                compatible =3D "starfive,jh7110-inno-hdmi-controller";
+> +                clocks =3D <&voutcrg JH7110_VOUTCLK_HDMI_TX_SYS>,
+> +                         <&voutcrg JH7110_VOUTCLK_HDMI_TX_MCLK>,
+> +                         <&voutcrg JH7110_VOUTCLK_HDMI_TX_BCLK>,
+> +                         <&hdmi_phy>;
+> +                clock-names =3D "pclk", "mclk", "bclk", "pixel";
+> +                interrupts =3D <99>;
+> +                phys =3D <&hdmi_phy>;
+> +                resets =3D <&voutcrg JH7110_VOUTRST_HDMI_TX_HDMI>;
+> +                starfive,vout-syscon =3D <&vout_syscon>;
+> +
+> +                ports {
+> +                    #address-cells =3D <1>;
+> +                    #size-cells =3D <0>;
+> +
+> +                    port@0 {
+> +                        reg =3D <0>;
+> +
+> +                        endpoint {
+> +                            remote-endpoint =3D <&dpu_out_dpi0>;
+> +                        };
+> +                    };
+> +
+> +                    port@1 {
+> +                        reg =3D <1>;
+> +
+> +                        endpoint {
+> +                            remote-endpoint =3D <&hdmi_con_in>;
+> +                        };
+> +                    };
+> +                };
+> +            };
+> +
+> +            hdmi_phy: phy {
+> +                compatible =3D "starfive,jh7110-inno-hdmi-phy";
+> +                #clock-cells =3D <0>;
+> +                clocks =3D <&xin24m>;
+> +                #phy-cells =3D <0>;
+> +            };
+> +        };
+> +    };
+> +...
+>=20
+> --=20
+> 2.34.1
+>=20
+
+--BltxCjlw5sIY5QTf
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCauPRfAAKCRB4tDGHoIJi
+0q9aAQDv07UymcETvBZlVghJCL8rpRoohfFFCoPKCAXQf1RVRAEAxilNjF3B0oMe
+r04GfPnJ8scs0S42SIRPrV01ClukYAM=
+=ziB+
+-----END PGP SIGNATURE-----
+
+--BltxCjlw5sIY5QTf--
+
+
+--===============0140957259884790593==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0140957259884790593==--
+
