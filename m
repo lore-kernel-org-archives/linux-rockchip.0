@@ -2,79 +2,65 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B1D00606A320
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2026 09:25:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6A166606A31D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2026 09:35:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Pyu8NiVD;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=blackstar.nl header.i=@blackstar.nl header.a=rsa-sha256 header.s=soverin header.b=brejh+2y
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=u0SZH+/v;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=FJT30TrN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=rpak64xvFiKjOWZBEaGOje8+t5GDIAaoe7WLhbNpojM=; b=Pyu8NiVDb0OK3azaHd9oqT5q2F
-	YS1lzfTVVaxt4KpwrI7lJse723q9Lvxo6FovdRe0LcTxNyzbJXbGREqc3Xr+7CWm4Jzxaz4nJ4xFE
-	JESpG2j7Zpr2cVLxbXUdE5j8JxOSQeZsj/n5YQhK2uxcy04B4U/TIPvC4V/D0I03Iina2vhRMxm5f
-	bbUKMEEUuy1R7h4coHq/opnbs7jk/lRVUY/iK/hFErxwa0U86C8hE4GFqKl0VULHbL8EBDSQiU206
-	qhYqYmkcz/kHcvIP+Q8IEj+EAJXxJ7Xf8pF/LzcgKFfamCPZbnEe0qn/5RxgBpf6EoCV3ydLhk+Kc
-	6WPbJD2g==;
+	bh=HJiF8CNGv+ErMlvG6XqVSoQZbloUri9iXhDyy8oQ7RA=; b=u0SZH+/vv+lKgOwnzVty1ji9ot
+	jRvDxco+QUfCjAzV/eOWEfLGV6rtV6SRI8LRz5Sw30R2xSpwDdDs3KLtX8T0XQAWQsB5vdd9cl8Il
+	c5Wr0h3+nDA/UbYUSEtgf+QHVM5Tl2oAsOh3Ww1nksJ0delXrxA/P8Ikd3DiAhGkGIG9weNp6XIN9
+	Ou03WSPY47WcOqNUql1vCtFnR4LWf1Ij7crVL0IiKVg5yxb94Y6jZXlNxaSNq24VPpLfNjqujts+K
+	N/u2hzkqhj11pH69tjwx00fyHwAFM7npfeHxen6aEhwKm4a2IffhXvRbgY0MMMfALAU1QuEKubyVY
+	J3Bf2IiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMMO1-00000008q0R-070B;
-	Thu, 29 Oct 2026 09:25:29 +0000
-Received: from outbound.soverin.net ([185.233.34.146])
+	id 1xMMXF-00000008rpS-3n4G;
+	Thu, 29 Oct 2026 09:35:01 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMMNy-00000008pzd-1Z5u;
-	Thu, 29 Oct 2026 09:25:27 +0000
-Received: from smtp.freedom.nl (unknown [10.102.10.153])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by outbound.soverin.net (Postfix) with ESMTPS id 4jFf374QNPzXTT;
-	Thu, 29 Oct 2026 09:25:23 +0000 (UTC)
-Received: from smtp.freedom.nl (smtp.freedom.nl [10.102.10.153]) by freedom.nl (Postfix) with ESMTPSA id 4jFf372mfvz1Fmh;
-	Thu, 29 Oct 2026 09:25:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=blackstar.nl;
-	s=soverin; t=1793265923;
-	bh=mPcH9yUJR8Lq6Viwwx8vM8rEwIePxRgjFV0ZYkyNql4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=brejh+2y6hqzLX63zDzi34bIaFMOoIaGxFxKN004YKZYe6T781WtXEBsBxzh4JngI
-	 vDrq7TrjL7vdRIrFGCovZEkLztHmXohw5vzR1n+bwKG+utErYgagnbsv9tlGubtPtY
-	 J+7wWtv857qeUglV2a6IIYvCvHn+c69ygv3ND2XwZZAKix09uB/2seIw54qIdlPE0N
-	 qnZv9GTksozeX2ZDezQFqOh6fk1rkj0ENXziA/EM+z6vG5QG6inwrgnkm5kDi/g2yb
-	 MXosi3dwDPlEcM3iqf0t+KR+qER4uvZis+qsmV4OPvqjbkwLUozWtTMqEC08Y8zQUc
-	 McDKK2REC/Ajg==
-X-CM-Envelope: MS4xfGhtgRHNjV/Y7PxulfcY31YnGRcDgXHoO4rsoQgcrPSH0vjkd497HF5N09wbnKa1pajdJ3yXRPC7uB2oXcwkwc10CtIJctelfMKsSxVM/nNRNfxsYsoE pEeYLSJO93yUjgo2RZCih2k8DQMD2FY2xMcuNVUIYccNxbSvUUp1RP3ilLye104ZS+eihWnyanA5MO1bXaxu9vNu/KZxXspU9kDs+UUd4P05h/eHJsjLRdHV Bja6idH+BZvVH6eUPq8ZvvY2Ykr3hfUMIF0S16WX48wkQjT4Mf4wddyGFv4x+HRbBbdbPmTnGSlBCPyMCtWe5+bTjGMEDJBxsD9JpliG83fD0r57n8mph5yM slIS+XHpu1mNzP3YRpA1zuLhrhw26aDCqBYtpTsU9rqX+hYcupADjws9aZQirCzNxPglggvWbypQkYn7SbU7pidrftqFRDg9LCigCoyPzr6gzKH6evQC73Vc lOrtnPG58TRoIkpN9MySt3/by57f0eJeZZ8oOBetOrTSlf1o3QqLmzvyFOztrbZl45fxBt3L2EV7Fgapnbe9nRXgs+ZBh4BQ9ASGdQ==
-X-Soverin-Id: 01a186fa-73b8-7625-910d-49e7a653716d
-Received: from blackstar.nl (m17r5.blackstar.nl [192.168.3.127])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mail.blackstar.nl (Postfix) with ESMTPS id CE5A63FA91;
-	Thu, 29 Oct 2026 10:25:22 +0100 (CET)
-Date: Thu, 29 Oct 2026 10:25:22 +0100
-From: Bas Vermeulen <bas.vermeulen@blackstar.nl>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
-	Lee Jones <lee@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com,
-	linux-pwm@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 3/6] pwm: Add rockchip PWMv4 driver
-Message-ID: <auMRAj9wGYmH6ZI1@blackstar.nl>
+	id 1xMMXE-00000008rp2-2BMM
+	for linux-rockchip@lists.infradead.org;
+	Thu, 29 Oct 2026 09:35:00 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 76BB06022E;
+	Thu, 29 Oct 2026 09:34:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 520AF1F01825;
+	Thu, 29 Oct 2026 09:34:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793266499;
+	bh=+TjDNOPo6DMIDlKla7hkMSGhTEEBp7kLHL7Cw5vY/pE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=FJT30TrNGS2cGa89z5LwoTlblLOBRgESndzUX+etbxZZIOsw8exsSk8b9dWFZBt18
+	 iwcZCGKGA41Ru66GRPUnQmN48Lzm2nn247D8IFiANAAi0qRNxx9gws5AcSo841PC5I
+	 wdQzhVf75jAaG32f/6NyCq+nGCbIxIsm+AZ0TWtD7boNPzjyo2Dtb1jNa2cO77drt6
+	 wJvA04Y6Q5D3pHL17VQDtThVHfUg1e/Vz7RgatUY7fSVSVnPISNdRt1NPbkDgkLUxY
+	 wviyrGpRP1j6e0Hwepf1XP0u8NyPhX88xnznLch3rllpTkmzJthoQJHAeiWlXqt/W/
+	 TyPU38JJWsNhw==
+Date: Thu, 29 Oct 2026 10:34:55 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, maccraft123mc@gmail.com, zhangqing@rock-chips.com, 
+	zyw@rock-chips.com, sre@kernel.org, heiko@sntech.de, conor+dt@kernel.org, 
+	krzk+dt@kernel.org, robh@kernel.org, lee@kernel.org, 
+	Chris Morgan <macromorgan@hotmail.com>, Zetarancio <zetarancio@users.noreply.github.com>
+Subject: Re: [PATCH 4/5] dt-bindings: power: supply: rk817-charger: Add
+ rockchip,gate-function-disable
+Message-ID: <20261029-intelligent-handsome-salamander-dffce5@quoll>
+References: <20261026174834.1652309-1-macroalpha82@gmail.com>
+ <20261026174834.1652309-5-macroalpha82@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260420-rk3576-pwm-v5-3-ae7cfbbe5427@collabora.com>
-References: <20260420-rk3576-pwm-v5-0-ae7cfbbe5427@collabora.com>
- <20260420-rk3576-pwm-v5-3-ae7cfbbe5427@collabora.com>
-X-Spampanel-Class: ham
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261029_022526_554253_293D8319 
-X-CRM114-Status: GOOD (  20.94  )
-X-Spam-Score: -2.8 (--)
+In-Reply-To: <20261026174834.1652309-5-macroalpha82@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,69 +73,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Nicolas,
+On Mon, Oct 26, 2026 at 12:48:33PM -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add a boolean attribute for the rk817-charger to control whether or not
+> the system power is shutdown in battery off mode. The BSP kernel sets
+> this value unless a device-tree attribute is present, and this attribute
+> is to replicate that behavior.
+> 
+> Fixes: a592aa3a2a8c ("dt-bindings: mfd: Add Rockchip rk817 battery charger support")
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> Suggested-by: Zetarancio <zetarancio@users.noreply.github.com>
 
-On Mon, Apr 20, 2026 at 06:52:40 PDT, Nicolas Frattaroli wrote:
-> The Rockchip RK3576 brings with it a new PWM IP, in downstream code
-> referred to as "v4". This new IP is different enough from the previous
-> Rockchip IP that I felt it necessary to add a new driver for it, instead
-> of shoehorning it in the old one.
+We do not need to credit non-real identities (like nicknames) without
+even pieces of known identity. Just drop the tag.
 
-The same IP block is in the RK3506 (Cortex-A7, arm32), where I am
-carrying this series on top of 7.3. It works there, driving a PWM
-backlight and a pwm-regulator for the core voltage, but two things in
-this patch need adjusting for it to build on a 32-bit kernel and on
-current mainline:
+Also, your SoB is the last one.
 
-> +	if (rate) {
-> +		wf->period_length_ns = DIV_ROUND_UP((u64)wfhw->period * NSEC_PER_SEC, rate);
-> +		wf->duty_length_ns = DIV_ROUND_UP((u64)wfhw->duty * NSEC_PER_SEC, rate);
-> +		wf->duty_offset_ns = DIV_ROUND_UP((u64)wfhw->offset * NSEC_PER_SEC, rate);
+Best regards,
+Krzysztof
 
-DIV_ROUND_UP() with a u64 numerator is a plain 64-bit division, which on
-arm32 becomes a call to __aeabi_uldivmod that the kernel does not
-provide:
-
-  pwm-rockchip-v4.o: undefined reference to `__aeabi_uldivmod'
-
-DIV_ROUND_UP_ULL() goes through div_u64() and works on both:
-
--		wf->period_length_ns = DIV_ROUND_UP((u64)wfhw->period * NSEC_PER_SEC, rate);
--		wf->duty_length_ns = DIV_ROUND_UP((u64)wfhw->duty * NSEC_PER_SEC, rate);
--		wf->duty_offset_ns = DIV_ROUND_UP((u64)wfhw->offset * NSEC_PER_SEC, rate);
-+		wf->period_length_ns = DIV_ROUND_UP_ULL((u64)wfhw->period * NSEC_PER_SEC, rate);
-+		wf->duty_length_ns = DIV_ROUND_UP_ULL((u64)wfhw->duty * NSEC_PER_SEC, rate);
-+		wf->duty_offset_ns = DIV_ROUND_UP_ULL((u64)wfhw->offset * NSEC_PER_SEC, rate);
-
-Since MFD_ROCKCHIP_MFPWM allows COMPILE_TEST this will also show up in
-32-bit allmodconfig builds.
-
-> +	/*
-> +	 * For referencing the PWM in the DT to work, we need the parent MFD
-> +	 * device's OF node.
-> +	 */
-> +	dev->of_node_reused = true;
-
-struct device no longer has that member: since 7.2 the flag lives in
-the device flag word (commit 4aca5e62f37d "driver core: Replace
-dev->of_node_reused with dev_of_node_reused()"), so this does not compile
-against current mainline. The accessor is:
-
--	dev->of_node_reused = true;
-+	dev_set_of_node_reused(dev);
-
-With those two changes the driver builds and runs on the RK3506 with
-7.3.y; happy to add a Tested-by for that if useful.
-
-Regards,
-Bas
 
 _______________________________________________
 Linux-rockchip mailing list
