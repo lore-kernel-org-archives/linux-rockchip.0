@@ -2,59 +2,59 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6C9ED606A31C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2026 09:22:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B1D00606A320
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2026 09:25:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MxJqZV+X;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=blackstar.nl header.i=@blackstar.nl header.a=rsa-sha256 header.s=soverin header.b=Xp9mItBp
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Pyu8NiVD;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=blackstar.nl header.i=@blackstar.nl header.a=rsa-sha256 header.s=soverin header.b=brejh+2y
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=rpak64xvFiKjOWZBEaGOje8+t5GDIAaoe7WLhbNpojM=; b=MxJqZV+XVpmw18KobzOKxXg5sZ
-	/M6KpoPp2mOnfPRvKCYyqfNtaNg+qn5FV0ag+YAVhAi90G1enYuDpPf1Apnf9oNX0gbjGMV+HYsbv
-	54Y+OqH2qQDZYqQr6G2qPOm13KcayIIIAY0MpDXmiVXlcVLN4r43bKlRAjDsYMqi91XPTVzl+kiz5
-	iPQdGfoyGSax/tYdnPkwUermGzeL8Ju/odhyrt4AcCI8RJtP+4bl/4Q4heOTbiXllt88S4eZ/w6JN
-	yFIlERYtFDJvh8xfgyizYDN827HiByCDRIMMuTry+WHWNrAdU9FCsRu1u47fm+xqWmB6XncpsrT4a
-	pHlllSIQ==;
+	bh=rpak64xvFiKjOWZBEaGOje8+t5GDIAaoe7WLhbNpojM=; b=Pyu8NiVDb0OK3azaHd9oqT5q2F
+	YS1lzfTVVaxt4KpwrI7lJse723q9Lvxo6FovdRe0LcTxNyzbJXbGREqc3Xr+7CWm4Jzxaz4nJ4xFE
+	JESpG2j7Zpr2cVLxbXUdE5j8JxOSQeZsj/n5YQhK2uxcy04B4U/TIPvC4V/D0I03Iina2vhRMxm5f
+	bbUKMEEUuy1R7h4coHq/opnbs7jk/lRVUY/iK/hFErxwa0U86C8hE4GFqKl0VULHbL8EBDSQiU206
+	qhYqYmkcz/kHcvIP+Q8IEj+EAJXxJ7Xf8pF/LzcgKFfamCPZbnEe0qn/5RxgBpf6EoCV3ydLhk+Kc
+	6WPbJD2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMMLK-00000008pU3-02xs;
-	Thu, 29 Oct 2026 09:22:42 +0000
-Received: from outbound.soverin.net ([185.233.34.18])
+	id 1xMMO1-00000008q0R-070B;
+	Thu, 29 Oct 2026 09:25:29 +0000
+Received: from outbound.soverin.net ([185.233.34.146])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMMLF-00000008pSt-3DJI;
-	Thu, 29 Oct 2026 09:22:40 +0000
-Received: from smtp.freedom.nl (unknown [10.103.10.152])
+	id 1xMMNy-00000008pzd-1Z5u;
+	Thu, 29 Oct 2026 09:25:27 +0000
+Received: from smtp.freedom.nl (unknown [10.102.10.153])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by outbound.soverin.net (Postfix) with ESMTPS id 4jFdzq0gk6z1NH0;
-	Thu, 29 Oct 2026 09:22:31 +0000 (UTC)
-Received: from smtp.freedom.nl (smtp.freedom.nl [10.103.10.152]) by freedom.nl (Postfix) with ESMTPSA id 4jFdzp5lKJz1DBX;
-	Thu, 29 Oct 2026 09:22:30 +0000 (UTC)
+	by outbound.soverin.net (Postfix) with ESMTPS id 4jFf374QNPzXTT;
+	Thu, 29 Oct 2026 09:25:23 +0000 (UTC)
+Received: from smtp.freedom.nl (smtp.freedom.nl [10.102.10.153]) by freedom.nl (Postfix) with ESMTPSA id 4jFf372mfvz1Fmh;
+	Thu, 29 Oct 2026 09:25:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=blackstar.nl;
-	s=soverin; t=1793265751;
+	s=soverin; t=1793265923;
 	bh=mPcH9yUJR8Lq6Viwwx8vM8rEwIePxRgjFV0ZYkyNql4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Xp9mItBpjh/pxgWpegBfAurtunamUF70aud0SJXY9Su4c+7JsT/e8y/cqUeqKd+WU
-	 p57x/IAFLS+azpdboKNGY0uxbYhS3pvlYBzWoKSspz7CS3xwAuh93FrsqhVj8suk9/
-	 sFFCD8XHHlFURy1WeXSGryw/gmpKvoiRiC15Icdy3SCl7BKmiROPBfRYd24bFpWzl0
-	 7x31PUXCncoy0PBd8k+G/BYabWRez5vORbqned7QVLs6NOOdEDJ0CNjWoOIlnC1e7G
-	 qgebL2cSyRgA3CZKbJofmA7zfYvRAVVbMHmSx1u1Ug/eHlXrO//HzQJHiNMW/8rdpq
-	 fSIDE0ig6Iu9A==
-X-CM-Envelope: MS4xfMVHYTJlhsrIp3dayFAJ3bdUU8/zYSur98eWcaQArq5n3dIy5cT3GmElwlcF0CZwaDmoiVrHOC4X7Y+eNno2nm2LxBbzj6+glBi0ALh20Iq1ZEPu4pnt aEtV9HJ39eO1tmeyKJ8cgSFehOjFn+FEfovV4DU9VF3bYnckXaDoavC0D4mcXAhTFSFK6JZL7tj3h5fKNiwNRwjwunif7636U3QX0oxMlRZuJSC0yCjYwWfS km3XEDhpGtRSBIpSewYboplHIPVQvYRv5kUfVck7EMjD4CYRxGOEyxkEZ6bj/Tx9F/BxMNlL+62KmsXwVvbSfVXJr9QNEb0+89tnVPtFmooP6tgLdTd8soJi YA4FZoSnlbxiH0U2BkmqMD++I5qQaGenpfi1/kxEVW8sHCQndU+urRLHzBFT/Xb7dvBf06jKNTi6jvGG3KfryjhaCsvyjwfNAKW2GZmnHex+ejxtPahMxE0e Cquv5lHigwcW2heGXACdzbe/mfSe7xO/8ymECn2X1Izf0kTcgA1fOE/6aYP9/undzFzE9Hw+Frk2B26n+13y3NLbh6ZenVmCrkcF7Q==
-X-Soverin-Id: 01a186f7-cff0-7f6d-b1a2-6ab1d5091462
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=brejh+2y6hqzLX63zDzi34bIaFMOoIaGxFxKN004YKZYe6T781WtXEBsBxzh4JngI
+	 vDrq7TrjL7vdRIrFGCovZEkLztHmXohw5vzR1n+bwKG+utErYgagnbsv9tlGubtPtY
+	 J+7wWtv857qeUglV2a6IIYvCvHn+c69ygv3ND2XwZZAKix09uB/2seIw54qIdlPE0N
+	 qnZv9GTksozeX2ZDezQFqOh6fk1rkj0ENXziA/EM+z6vG5QG6inwrgnkm5kDi/g2yb
+	 MXosi3dwDPlEcM3iqf0t+KR+qER4uvZis+qsmV4OPvqjbkwLUozWtTMqEC08Y8zQUc
+	 McDKK2REC/Ajg==
+X-CM-Envelope: MS4xfGhtgRHNjV/Y7PxulfcY31YnGRcDgXHoO4rsoQgcrPSH0vjkd497HF5N09wbnKa1pajdJ3yXRPC7uB2oXcwkwc10CtIJctelfMKsSxVM/nNRNfxsYsoE pEeYLSJO93yUjgo2RZCih2k8DQMD2FY2xMcuNVUIYccNxbSvUUp1RP3ilLye104ZS+eihWnyanA5MO1bXaxu9vNu/KZxXspU9kDs+UUd4P05h/eHJsjLRdHV Bja6idH+BZvVH6eUPq8ZvvY2Ykr3hfUMIF0S16WX48wkQjT4Mf4wddyGFv4x+HRbBbdbPmTnGSlBCPyMCtWe5+bTjGMEDJBxsD9JpliG83fD0r57n8mph5yM slIS+XHpu1mNzP3YRpA1zuLhrhw26aDCqBYtpTsU9rqX+hYcupADjws9aZQirCzNxPglggvWbypQkYn7SbU7pidrftqFRDg9LCigCoyPzr6gzKH6evQC73Vc lOrtnPG58TRoIkpN9MySt3/by57f0eJeZZ8oOBetOrTSlf1o3QqLmzvyFOztrbZl45fxBt3L2EV7Fgapnbe9nRXgs+ZBh4BQ9ASGdQ==
+X-Soverin-Id: 01a186fa-73b8-7625-910d-49e7a653716d
 Received: from blackstar.nl (m17r5.blackstar.nl [192.168.3.127])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mail.blackstar.nl (Postfix) with ESMTPS id 1C5CA3FA91;
-	Thu, 29 Oct 2026 10:22:30 +0100 (CET)
-Date: Thu, 29 Oct 2026 10:22:30 +0100
+	by mail.blackstar.nl (Postfix) with ESMTPS id CE5A63FA91;
+	Thu, 29 Oct 2026 10:25:22 +0100 (CET)
+Date: Thu, 29 Oct 2026 10:25:22 +0100
 From: Bas Vermeulen <bas.vermeulen@blackstar.nl>
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Cc: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
@@ -63,17 +63,17 @@ Cc: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <ukleinek@kernel.org>,
 	linux-pwm@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH v5 3/6] pwm: Add rockchip PWMv4 driver
-Message-ID: <auMQVkm3liY6C2GU@blackstar.nl>
-References: <20260420-rk3576-pwm-v5-0-ae7cfbbe5427@collabora.com>
- <20260420-rk3576-pwm-v5-3-ae7cfbbe5427@collabora.com>
+Message-ID: <auMRAj9wGYmH6ZI1@blackstar.nl>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20260420-rk3576-pwm-v5-3-ae7cfbbe5427@collabora.com>
+References: <20260420-rk3576-pwm-v5-0-ae7cfbbe5427@collabora.com>
+ <20260420-rk3576-pwm-v5-3-ae7cfbbe5427@collabora.com>
 X-Spampanel-Class: ham
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261029_022238_294412_C41FCEAE 
-X-CRM114-Status: GOOD (  21.08  )
+X-CRM114-CacheID: sfid-20261029_022526_554253_293D8319 
+X-CRM114-Status: GOOD (  20.94  )
 X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
