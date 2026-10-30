@@ -2,60 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B9A78606A322
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 11:56:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B0088606A31A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 12:13:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Y0qczOZ+;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=Npu08he3
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vDBnzgc+;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=fSGgWb0E
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=uE1Cs/rBiBlpNoh+/vpG8mPo595EJgPO3NkDxGCQZog=; b=Y0qczOZ+xMUDeI28VK/AQrHdjb
-	a/VnQ0pMYpQjOZ9ECdOA1De1xoVLvLs/kjrZvOk6/Gy4yGdBCC/oMDUgtgcSeVKoNxHS+LshXkT0g
-	MceORsrGYjD83oEqu5mZQWN8xEELyoh9PY9mbhH/WNMxxr+hTS0BnX7m8ZwKlOazhM35Ev7Yc6ZKj
-	bcHkU/Z3AYCxQxKatFxA8i4JOm7fPcLGNWnLcptV44Uy0YgMOjs1hpI0tJfFnTyYLw9IRaD94r1eT
-	WEarFzZ1IwV/oD17811SWbXWFpsGcLHfDUKWURdpyTvP8YxekJ03BrpJp81bazDcVzNBxo57ZsH34
-	pljkq80A==;
+	bh=XQ+eFqs5WyeDjPuehsbI7kbEVAt+ByqIeb/6NUzpMdM=; b=vDBnzgc+KbFIYjdvMyPX07WJky
+	26zGrXD5ooY6GNQ5XWgOl9AKFhe5GOdbQLBecD4VuX1dwF0GyShsy43Mb+yRboF+JtYINadYSSO7T
+	3Na9CQGpHN+wMxC2bh9KQJi5qOL9FObRxggzYs+fTo/plhUbKVbptdpsa0FsYUbCKTGEGTfA61c+h
+	0OETbLC+g2SjCTHjNqLxnI+3xDB9uu1/aBst5sv+Lu03x7r55BPdg4el68VoU4PU2fgXzgrhUpBaI
+	ClwW5cEFEetYmD6bQuuGZRmrzL6Z2NwBJmSEPljFybYtGJFRVy6g1MneehFlCQz8BlUSw6jV91mJq
+	jiIY0Q9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMlDG-0000000Bc4g-0ECy;
-	Fri, 30 Oct 2026 11:56:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xMlUF-0000000Bemx-2reO;
+	Fri, 30 Oct 2026 12:13:35 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMlDE-0000000Bc4H-1jcZ
-	for linux-rockchip@lists.infradead.org;
-	Fri, 30 Oct 2026 11:56:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Reply-To:Content-Type:In-Reply-To:References;
-	bh=LWulNEi7OnC7ab/AWpVRlKXxCTgfElN1f2n9XM4xApg=; b=Npu08he3rfSFuPQTQZVoSbVBzX
-	4zwwSs5VKNB4bLEGYG+nrMdxNfImqgujMZeA4sL5AM+IYJ8+789qh/u2xjg+7scbv0Mh8gFYhxIp2
-	WMEcDjP+iY+UIoZ/ZkuTWJdYdvsjtnoTRhOM7yK9EEA+zA8OS/EZz3U84RgOOJlVRgCT6jOpQbGUX
-	SWJmHu8ST5oQMO3nQKyv1B/yZm24kqlWm7G2ZAXNVb6CAxWI8rATod5dHLfY4WutTimw62tESxlRd
-	lnNAPsO98aYz37M9xiyCSZi6vL+rMC5+EuQQECq4DyfmNgAmW887H19DhYwIWFinyF0FriIfc9Yh/
-	xCYPOcuA==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: linusw@kernel.org
-Cc: heiko@sntech.de,
-	chenjh@rock-chips.com,
-	linux-gpio@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Heiko Stuebner <heiko.stuebner@cherry.de>,
-	stable@vger.kernel.org
-Subject: [PATCH] pinctrl: rk805: fix ordering of gpio and pinctrl registration
-Date: Fri, 30 Oct 2026 12:55:40 +0100
-Message-ID: <20261030115540.3660242-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.3
+	id 1xMlUE-0000000BemC-1UgY;
+	Fri, 30 Oct 2026 12:13:34 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 91B96402A3;
+	Fri, 30 Oct 2026 12:13:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F8BC1F00A02;
+	Fri, 30 Oct 2026 12:13:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793362413;
+	bh=W7iS3Fx6HV5ScNF/DvW83v1rNy7myS3fOAFqhJkCPu0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=fSGgWb0E6AmiP/tcFEtpjVO60QzF8LSXfigUs5Tg+3gQ73tVxAEcHeDIOxvDY3CPy
+	 vDuoJf5n0vop7GqdYjtCn/OFY/EAiIviQAEFNouIWp6clFimOSewk464KYx5JgMC45
+	 tX9K326gCKDyJSqBbx+aKuPMyDKdHWZHdumL+wYIg+w2eTgWIWjM0zZ7ic9iNkuwP0
+	 ALuFiHyZd7peiA1kB9BXyuWaszl0he+Ka32BkloZHcApkYCYFlzWy3QuvD/1/godz2
+	 hID0WwoyTGAN+KHtoDqC0hDlagNGndQ8b/pPXGHpqrI4HMBVoiGzzqYAQ9U/6Qa9uV
+	 HGN4BKvk0lSCA==
+Date: Fri, 30 Oct 2026 07:13:30 -0500
+From: Rob Herring <robh@kernel.org>
+To: Damon Ding <damon.ding@rock-chips.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Robert Foss <rfoss@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Dave Jones <s.dave.jones@gmail.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org
+Subject: Re: [PATCH v3 2/6] dt-bindings: phy: Add rockchip,rk3568-edp-phy
+Message-ID: <20261030121330.GC1232511-robh@kernel.org>
+References: <20261020030916.3223833-1-damon.ding@rock-chips.com>
+ <20261020030916.3223833-3-damon.ding@rock-chips.com>
+ <20261021133418.GA3889663-robh@kernel.org>
+ <5892f99c-68cd-4ff9-91f1-af5ee024e025@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_045600_504300_E2114A4B 
-X-CRM114-Status: GOOD (  12.98  )
-X-Spam-Score: -2.1 (--)
+Content-Disposition: inline
+In-Reply-To: <5892f99c-68cd-4ff9-91f1-af5ee024e025@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,89 +89,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+On Fri, Oct 23, 2026 at 11:56:10AM +0800, Damon Ding wrote:
+> Hi Rob,
+> 
+> On 10/21/2026 9:34 PM, Rob Herring wrote:
+> > On Tue, Oct 20, 2026 at 11:09:12AM +0800, Damon Ding wrote:
+> > > Document the eDP transmitter PHY with NaNeng IP block found on the
+> > > RK3568 SoC.  The PHY is controlled through the eDP PHY GRF registers,
+> > > so its node is modeled as a child of the eDP PHY GRF syscon.  Also
+> > > add the "rockchip,rk3568-edp-phy-grf" compatible and the "edp-phy"
+> > > child node reference to the Rockchip GRF schema.
+> > > 
+> > > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> > > ---
+> > >   .../bindings/phy/rockchip,rk3568-edp-phy.yaml | 59 +++++++++++++++++++
+> > >   .../devicetree/bindings/soc/rockchip/grf.yaml | 15 +++++
+> > >   2 files changed, 74 insertions(+)
+> > >   create mode 100644 Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
+> > > new file mode 100644
+> > > index 000000000000..afe7bc3d839e
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
+> > > @@ -0,0 +1,59 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/phy/rockchip,rk3568-edp-phy.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: Rockchip eDP Transmitter PHY with NaNeng IP block
+> > > +
+> > > +maintainers:
+> > > +  - Damon Ding <damon.ding@rock-chips.com>
+> > > +  - Heiko Stuebner <heiko@sntech.de>
+> > > +
+> > > +description:
+> > > +  On the RK3568 SoC the eDP PHY is controlled through the eDP PHY GRF
+> > > +  registers, therefore the PHY node is expected to be a child of the
+> > > +  eDP PHY GRF syscon node.
+> > 
+> >  From the driver, looks like there is a specific register range for the
+> > phy regs in the GRF, so please add a 'reg' entry (and 'ranges' in the
+> > parent).
+> > 
+> 
+> I see. For v4, I will add the reg entry for the PHY node and ranges in the
+> parent syscon node, as done in rk3399-emmc-phy.
+> 
+> The proposed eDP PHY DT layout looks like:
+> 
+> edp_phy_grf: syscon@fdcb0000 {
+>   compatible = "rockchip,rk3568-edp-phy-grf", "syscon", "simple-mfd";
+>   reg = <0x0 0xfdcb0000 0x0 0x100>;
+>   clocks = <&cru PCLK_EDPPHY_GRF>;
+>   #address-cells = <1>;
+>   #size-cells = <1>;
+>   ranges;
+> 
+>   edp_phy: phy@0 {
+> 	compatible = "rockchip,rk3568-edp-phy";
+> 	reg = <0x0 0x100>;
 
-The call to gpiochip_add_pin_range() binds the gpio-chip and pinctrl
-together. devm_gpiochip_add_data() sets up the devm action to tear it
-down again - and this includes removing the pin-range.
+The 0 address is not correct with empty 'ranges'.
 
-As devm teardown is running in opposite order, when
-pinctrl_remove_gpio_range() is reached from gpiochip_remove_pin_ranges()
-that pin-controller is already gone, leading to something like:
-
-[    9.703366] Unable to handle kernel paging request at virtual address dead000000000108
-[...]
-[    9.703553] [dead000000000108] address between user and kernel address ranges
-[    9.703573] Internal error: Oops: 0000000096000044 [#1]  SMP
-[...]
-[   23.237380] Call trace:
-[   23.240120]  pinctrl_remove_gpio_range+0x28/0x60 (P)
-[   23.245687]  gpiochip_remove_pin_ranges+0x5c/0x8c
-[   23.250955]  gpiochip_remove+0x144/0x1c0
-[   23.255350]  devm_gpio_chip_release+0x10/0x1c
-[   23.260239]  devm_action_release+0x14/0x20
-[   23.264834]  devres_release_all+0xb0/0x120
-[   23.269430]  device_unbind_cleanup+0x2c/0x84
-[   23.274221]  device_release_driver_internal+0x1ec/0x224
-[   23.280072]  device_release_driver+0x18/0x24
-[   23.284862]  bus_remove_device+0xe4/0x19c
-[   23.289359]  device_del+0x14c/0x40c
-[   23.293273]  platform_device_del+0x28/0x94
-[   23.297871]  platform_device_unregister+0x18/0x3c
-[   23.303149]  mfd_remove_devices_fn+0x130/0x14c
-[...]
-
-Fix this by reordering gpio and pinctrl addition.
-
-Fixes: ea479996c79b ("pinctrl: Add pinctrl driver for the RK805 PMIC")
-Cc: stable@vger.kernel.org
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
----
- drivers/pinctrl/pinctrl-rk805.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/pinctrl/pinctrl-rk805.c b/drivers/pinctrl/pinctrl-rk805.c
-index 22f576337faa..8e04da3ef0f3 100644
---- a/drivers/pinctrl/pinctrl-rk805.c
-+++ b/drivers/pinctrl/pinctrl-rk805.c
-@@ -663,13 +663,6 @@ static int rk805_pinctrl_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 	}
- 
--	/* Add gpio chip */
--	ret = devm_gpiochip_add_data(&pdev->dev, &pci->gpio_chip, pci);
--	if (ret < 0) {
--		dev_err(&pdev->dev, "Couldn't add gpiochip\n");
--		return ret;
--	}
--
- 	/* Add pinctrl */
- 	pci->pctl = devm_pinctrl_register(&pdev->dev, &pci->pinctrl_desc, pci);
- 	if (IS_ERR(pci->pctl)) {
-@@ -677,6 +670,13 @@ static int rk805_pinctrl_probe(struct platform_device *pdev)
- 		return PTR_ERR(pci->pctl);
- 	}
- 
-+	/* Add gpio chip */
-+	ret = devm_gpiochip_add_data(&pdev->dev, &pci->gpio_chip, pci);
-+	if (ret < 0) {
-+		dev_err(&pdev->dev, "Couldn't add gpiochip\n");
-+		return ret;
-+	}
-+
- 	/* Add pin range */
- 	ret = gpiochip_add_pin_range(&pci->gpio_chip, dev_name(&pdev->dev),
- 				     0, 0, pci->gpio_chip.ngpio);
--- 
-2.47.3
-
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
