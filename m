@@ -2,81 +2,84 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B0088606A31A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 12:13:39 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ACF5C606A31D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 12:49:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vDBnzgc+;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=fSGgWb0E
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KjM0UcvE;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=GoAtWKhI
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=XQ+eFqs5WyeDjPuehsbI7kbEVAt+ByqIeb/6NUzpMdM=; b=vDBnzgc+KbFIYjdvMyPX07WJky
-	26zGrXD5ooY6GNQ5XWgOl9AKFhe5GOdbQLBecD4VuX1dwF0GyShsy43Mb+yRboF+JtYINadYSSO7T
-	3Na9CQGpHN+wMxC2bh9KQJi5qOL9FObRxggzYs+fTo/plhUbKVbptdpsa0FsYUbCKTGEGTfA61c+h
-	0OETbLC+g2SjCTHjNqLxnI+3xDB9uu1/aBst5sv+Lu03x7r55BPdg4el68VoU4PU2fgXzgrhUpBaI
-	ClwW5cEFEetYmD6bQuuGZRmrzL6Z2NwBJmSEPljFybYtGJFRVy6g1MneehFlCQz8BlUSw6jV91mJq
-	jiIY0Q9g==;
+	bh=OC3GCUW41vmriN4ATJr+DI8+RMfkcxDk6Ok8qyx6fD8=; b=KjM0UcvE8Jt0fJRCLWxUAEkSO7
+	IwTcE/jKMHUhehzfISizlv3W0BS+re8d2eUyV6TQMLLLai43rC8TvGIbfrkoxvY+AP/DqowhxToGS
+	UBbPrbEbvxob86QWMhbZyL5WDu5Fu+inOTPo1PRBzveQDm1yaYfmyXuvIDAf8fFlVEsRxiJNGAocM
+	eas9CQp5O2nZ29psWVcuj9c/u/f9yNrLfx2ByrQa2A2mhp1YqnBqalPgZZcfh0b5TNbqZ/LgcC5rM
+	LLXlPCuANZMqqjJN4Mh1BpoY7/hDCniRn/DzH4ZUQ6gXK9nZ4THFgYuZER2X2xSWYa71K+ErnO1RX
+	xz2ISL0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMlUF-0000000Bemx-2reO;
-	Fri, 30 Oct 2026 12:13:35 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xMm2l-0000000BhZh-0ZXE;
+	Fri, 30 Oct 2026 12:49:15 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMlUE-0000000BemC-1UgY;
-	Fri, 30 Oct 2026 12:13:34 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 91B96402A3;
-	Fri, 30 Oct 2026 12:13:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F8BC1F00A02;
-	Fri, 30 Oct 2026 12:13:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793362413;
-	bh=W7iS3Fx6HV5ScNF/DvW83v1rNy7myS3fOAFqhJkCPu0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=fSGgWb0E6AmiP/tcFEtpjVO60QzF8LSXfigUs5Tg+3gQ73tVxAEcHeDIOxvDY3CPy
-	 vDuoJf5n0vop7GqdYjtCn/OFY/EAiIviQAEFNouIWp6clFimOSewk464KYx5JgMC45
-	 tX9K326gCKDyJSqBbx+aKuPMyDKdHWZHdumL+wYIg+w2eTgWIWjM0zZ7ic9iNkuwP0
-	 ALuFiHyZd7peiA1kB9BXyuWaszl0he+Ka32BkloZHcApkYCYFlzWy3QuvD/1/godz2
-	 hID0WwoyTGAN+KHtoDqC0hDlagNGndQ8b/pPXGHpqrI4HMBVoiGzzqYAQ9U/6Qa9uV
-	 HGN4BKvk0lSCA==
-Date: Fri, 30 Oct 2026 07:13:30 -0500
-From: Rob Herring <robh@kernel.org>
-To: Damon Ding <damon.ding@rock-chips.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Robert Foss <rfoss@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Dave Jones <s.dave.jones@gmail.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org
-Subject: Re: [PATCH v3 2/6] dt-bindings: phy: Add rockchip,rk3568-edp-phy
-Message-ID: <20261030121330.GC1232511-robh@kernel.org>
-References: <20261020030916.3223833-1-damon.ding@rock-chips.com>
- <20261020030916.3223833-3-damon.ding@rock-chips.com>
- <20261021133418.GA3889663-robh@kernel.org>
- <5892f99c-68cd-4ff9-91f1-af5ee024e025@rock-chips.com>
+	id 1xMm2h-0000000BhZ2-3CPA;
+	Fri, 30 Oct 2026 12:49:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1793364547;
+	bh=KlAsEMUoh8SqMK535dsRdRC/2BXgKedTejkSjok4NIg=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=GoAtWKhIvjsma323nTKdjX9UTokJbCgbQ7d9/UT5FOB/SFdzkpNgXp2n2f/d2p4lk
+	 oGcgZ66mcU5aQJEhRGToUuHU16bJwxF53mH176R0q9mKFWRI2FRbyknQ3ZIlXFl/kP
+	 AIi8buKDKTPluHT5GMgrObmLB6lYfrGffyIu/KixOTt6IakJtqT7M5uHlk6XdlkMTr
+	 myL7SY6Cd6LTPIw1vDQqIREACm5cUGhhu1L3KEOzNtL3bh2gjasTEo6IfuR3AKiO5g
+	 3C3Oh8bahCDoQjDcZoG24Rigzu3QeTRzWpv5dkqTedmki6Iid9ObxkczGlFFYBfXlj
+	 t7Oj80WlqF5Pg==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 884DB17E0053;
+	Fri, 30 Oct 2026 13:49:05 +0100 (CET)
+Message-ID: <76e2e993fa5a8fd054bad97505907d3c4e88e11c.camel@collabora.com>
+Subject: Re: [PATCH] media: rkvdec: Do not keep the clocks enabled from probe
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: iav@iav.lv, Detlev Casanova <detlev.casanova@collabora.com>, Ezequiel
+ Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: Hans Verkuil <hverkuil+cisco@kernel.org>, Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Diederik de Haas	
+ <diederik@cknow-tech.com>, Jonas Karlman <jonas@kwiboo.se>, Francesco
+ Saverio Pavone <pavone.lawyer@gmail.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, 	stable@vger.kernel.org
+Date: Fri, 30 Oct 2026 08:49:03 -0400
+In-Reply-To: <20261030-rkvdec-runtime-pm-clocks-v1-1-fb2c5b629e79@iav.lv>
+References: <20261030-rkvdec-runtime-pm-clocks-v1-1-fb2c5b629e79@iav.lv>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <5892f99c-68cd-4ff9-91f1-af5ee024e025@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261030_054911_968292_F71B5413 
+X-CRM114-Status: GOOD (  28.66  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,8 +89,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8749655422340748132=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -96,74 +98,125 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Oct 23, 2026 at 11:56:10AM +0800, Damon Ding wrote:
-> Hi Rob,
-> 
-> On 10/21/2026 9:34 PM, Rob Herring wrote:
-> > On Tue, Oct 20, 2026 at 11:09:12AM +0800, Damon Ding wrote:
-> > > Document the eDP transmitter PHY with NaNeng IP block found on the
-> > > RK3568 SoC.  The PHY is controlled through the eDP PHY GRF registers,
-> > > so its node is modeled as a child of the eDP PHY GRF syscon.  Also
-> > > add the "rockchip,rk3568-edp-phy-grf" compatible and the "edp-phy"
-> > > child node reference to the Rockchip GRF schema.
-> > > 
-> > > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> > > ---
-> > >   .../bindings/phy/rockchip,rk3568-edp-phy.yaml | 59 +++++++++++++++++++
-> > >   .../devicetree/bindings/soc/rockchip/grf.yaml | 15 +++++
-> > >   2 files changed, 74 insertions(+)
-> > >   create mode 100644 Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
-> > > 
-> > > diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
-> > > new file mode 100644
-> > > index 000000000000..afe7bc3d839e
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
-> > > @@ -0,0 +1,59 @@
-> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > > +%YAML 1.2
-> > > +---
-> > > +$id: http://devicetree.org/schemas/phy/rockchip,rk3568-edp-phy.yaml#
-> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > +
-> > > +title: Rockchip eDP Transmitter PHY with NaNeng IP block
-> > > +
-> > > +maintainers:
-> > > +  - Damon Ding <damon.ding@rock-chips.com>
-> > > +  - Heiko Stuebner <heiko@sntech.de>
-> > > +
-> > > +description:
-> > > +  On the RK3568 SoC the eDP PHY is controlled through the eDP PHY GRF
-> > > +  registers, therefore the PHY node is expected to be a child of the
-> > > +  eDP PHY GRF syscon node.
-> > 
-> >  From the driver, looks like there is a specific register range for the
-> > phy regs in the GRF, so please add a 'reg' entry (and 'ranges' in the
-> > parent).
-> > 
-> 
-> I see. For v4, I will add the reg entry for the PHY node and ranges in the
-> parent syscon node, as done in rk3399-emmc-phy.
-> 
-> The proposed eDP PHY DT layout looks like:
-> 
-> edp_phy_grf: syscon@fdcb0000 {
->   compatible = "rockchip,rk3568-edp-phy-grf", "syscon", "simple-mfd";
->   reg = <0x0 0xfdcb0000 0x0 0x100>;
->   clocks = <&cru PCLK_EDPPHY_GRF>;
->   #address-cells = <1>;
->   #size-cells = <1>;
->   ranges;
-> 
->   edp_phy: phy@0 {
-> 	compatible = "rockchip,rk3568-edp-phy";
-> 	reg = <0x0 0x100>;
 
-The 0 address is not correct with empty 'ranges'.
+--===============8749655422340748132==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-ruCLDIpENIOKgPK2wLA7"
 
-Rob
+
+--=-ruCLDIpENIOKgPK2wLA7
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Le vendredi 30 octobre 2026 =C3=A0 03:33 +0200, Igor Velkov via B4 Relay a =
+=C3=A9crit=C2=A0:
+> From: Igor Velkov <iav@iav.lv>
+>=20
+> Since commit 6a846f7d72c7 ("media: rkvdec: Enable all clocks without
+> naming them") the clocks are fetched with devm_clk_bulk_get_all_enabled()=
+,
+> which keeps them enabled from probe until unbind. rkvdec_runtime_suspend(=
+)
+> disables them on top of that, so their enable count never drops to zero
+> and the clock gates stay open while the decoder is idle.
+>=20
+> On RK3399 this also breaks restore from hibernation when the boot kernel
+> has not enabled these clocks, for example with rkvdec built as a module:
+> the gates are closed when the restored kernel takes over, while it still
+> counts the clocks as enabled. Powering on the vdu power domain then finds
+> the count at 1 and leaves the gates closed, and the first QoS register
+> write of the domain never returns.
+>=20
+> Get the clocks without enabling them and let runtime PM enable them while
+> the decoder is in use, as before that commit.
+>=20
+> Fixes: 6a846f7d72c7 ("media: rkvdec: Enable all clocks without naming the=
+m")
+> Cc: stable@vger.kernel.org # v7.0+
+> Signed-off-by: Igor Velkov <iav@iav.lv>
+> ---
+> Tested on ROCK Pi 4A (RK3399) with v7.3, rkvdec and panfrost built as
+> modules, panfrost not loaded:
+> - idle decoder: the vdu clocks have enable_count 0 (1 without the patch);
+> - hibernate, power cycle, restore: 3 of 3 (0 of 3 without the patch, the
+>   restored kernel stops after bringing the secondary CPUs up);
+> - H.264 decode with GStreamer v4l2slh264dec, 300 frames of 720p High
+>   profile: output identical to avdec_h264 (md5 of all frames).
+> The QoS hang was traced with debug prints in rockchip_pd_power() on a
+> 7.3-based kernel.
+>=20
+> This is separate from the unbind leak in Jonas's patch that Francesco
+> posted [1]: here the extra enable comes from probe.
+>=20
+> [1] https://lore.kernel.org/all/20260717154505.83935-1-pavone.lawyer@gmai=
+l.com/
+> ---
+>  drivers/media/platform/rockchip/rkvdec/rkvdec.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/me=
+dia/platform/rockchip/rkvdec/rkvdec.c
+> index 061281f903f3..45c541ae3029 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> @@ -1788,7 +1788,7 @@ static int rkvdec_probe(struct platform_device *pde=
+v)
+>  	if (ret)
+>  		return ret;
+> =20
+> -	ret =3D devm_clk_bulk_get_all_enabled(&pdev->dev, &rkvdec->clocks);
+> +	ret =3D devm_clk_bulk_get_all(&pdev->dev, &rkvdec->clocks);
+
+With the explanation above, it seems pretty clear we have an issue. Now, th=
+e
+problem with this is that PM ops are set with:
+
+  #define pm_ptr(_ptr) PTR_IF(IS_ENABLED(CONFIG_PM), (_ptr))
+
+So if CONFIG_PM is not set, the initial resume will never occur, and first =
+mmio
+access will likely hang the CPU. We need a clean pattern to handle this, an=
+d
+perhaps review other similar drivers while at it.
+
+Nicolas
+
+>  	if (ret < 0)
+>  		return ret;
+> =20
+>=20
+> ---
+> base-commit: c03c1a14507dfaf8b856c2608f9ac216021fc222
+> change-id: 20261030-rkvdec-runtime-pm-clocks-41adcf141271
+>=20
+> Best regards,
+
+--=-ruCLDIpENIOKgPK2wLA7
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCauSSPwAKCRDZQZRRKWBy
+9LLJAP9JGmJUIntmEuLPCbktfBqHUFX1/7ZfGaC/KbjrAiMyawEAo53JgFggAOMr
+y8Uub/MI2Wlho7axDbJbc7ZVrOuyVw0=
+=+8na
+-----END PGP SIGNATURE-----
+
+--=-ruCLDIpENIOKgPK2wLA7--
+
+
+--===============8749655422340748132==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8749655422340748132==--
+
