@@ -2,87 +2,96 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DFB29606A337
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 17:45:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B0951606A33C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 17:49:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=w6K8L4gb;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=McnVzDrA
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=j4LRixPt;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=JVXKBOye
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FU2gEexMnYT3JIxWn9BaVvIMNpl9Gd7xHZdExBA+bPs=; b=w6K8L4gblIEDMlKQdJh7sVu2zs
-	/Vq9NCtwmr51v6kx33ZTDL8584bsjwwD+OgPrydv32sIycKmElNCtD0lj50eUGzDtI4Hs91+hGPue
-	TwqcxWYgcCu8etnRD8ADgm7YXRA4TDHiEEhFWLkucO9359JFaXgTEGm0CGAHrdCUDpSuS5aKoSGEy
-	QRXzzqcthu4+t5smpem8IJyCjgMMaQPsO432Pb08+iM6Q5621FABv4TvfRzO1+IFCGqyvka3Xthls
-	VqXdqHMdtvdx7aK1yVKXR5RW4/Ab5QMP9F/L93ZbjkNzzSHaYmw/uwzEr8pDklwTTNPSrb+7Nsq4X
-	x8ZBGMfw==;
+	bh=MojRhVh0k0571/mJ6sHPhaoL0Tp9tHJqfucKsDOY3Tk=; b=j4LRixPtcdRaTIirWyHmOstJ+D
+	Nj2jaSCKW5JFL22AncptJ1N18ZC6HZCUQQukcsJic/WhmRflnD4npu02GyQ6st9AVDDaA0gWBWYUd
+	LzUvfstjUg6BPamKPMEY1NRQm+1+Wtz6ZE7e+jMHijSnbt950oiQH6FbVyuwQ1R1AA3Tf+2ST8Esq
+	BFsVaxd2lEf8ecSZ2Tn1baTZ790WOpAuNXv7brUHkwr6FLfyrhCAGGXrXr1U/23kwAXVsZmQ+KcqQ
+	cQ6r1HpwynDRy3kXhjgejTKD34HYWz4NtY4R8ldraE1XCkSP59u2mJwQAQNjVXKrFLQaIzT6B/o10
+	RoetxkXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMqf2-0000000CGsD-2wUH;
-	Fri, 30 Oct 2026 17:45:04 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xMqj9-0000000CIX7-00mQ;
+	Fri, 30 Oct 2026 17:49:19 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMqez-0000000CGql-39kT;
-	Fri, 30 Oct 2026 17:45:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=6g5elUdeGVozBVRB/uIpu9t+eT/QLwJb6+mCEOi3sU0=; b=McnVzDrABheU2AO7yOCTA46Wnj
-	OQAwr+mr7ut6IbkprUPAK3ZO73I8BNz6LgFRR0aLlWHWPdUxhqs+MyYI9QPusA0ppO9RpQAMByt+5
-	kyQi4QZP4qr+kz0nBCHCewJpFTEI6sDQeU3G5eEMsnuLEJk7VMmGugR6rq8fGrfIfJ9B3oBmvF6eP
-	zELkXz7C+gAmcKlmoUwpzrhgc3kqCPOPrd9WUA4jiFVAN+rZtcCsCMBRn7kzFI1SitdZDm4XVeYaz
-	1U/XNHSlGHiXrIKUKIzzBzY7SNDRlbZHnKrkm6fsARi4ILdgUjZcpjAMO3zBbK/YAQAl2gCTDFylv
-	RgxT8d+w==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Emil Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
- Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
- Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,
- Dominique Belhachemi <db@domibel.de>, Andy Yan <andyshrk@163.com>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Yakir Yang <kuankuan.y@gmail.com>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Michal Wilczynski <m.wilczynski@samsung.com>,
- Conor Dooley <conor@kernel.org>, William Qiu <william.qiu@starfivetech.com>,
- Xingyu Wu <xingyu.wu@starfivetech.com>, Sandy Huang <hjc@rock-chips.com>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Michal Wilczynski <m.wilczynski@samsung.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Maud Spierings <maud_spierings@murena.io>,
- Graham Markall <hello@big-grey.co.uk>,
- Icenowy Zheng <zhengxingda@iscas.ac.cn>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>,
- Joshua Peisach <jpeisach@ubuntu.com>,
- Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@baylibre.com>
-Subject: Re: [PATCH v6 02/18] drm/bridge: inno-hdmi: Don't dereference a NULL
- drm_device on hotplug
-Date: Fri, 30 Oct 2026 18:44:24 +0100
-Message-ID: <2261991.3Lj2Plt8kZ@phil>
-In-Reply-To: <1844578.vCJZsxu672@phil>
-References: <20261029-jh7110-clean-send-v6-0-759594e43acf@samsung.com>
- <20261029-jh7110-clean-send-v6-2-759594e43acf@samsung.com>
- <1844578.vCJZsxu672@phil>
+	id 1xMqj6-0000000CIVO-0aOS;
+	Fri, 30 Oct 2026 17:49:16 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1AAC4605D0;
+	Fri, 30 Oct 2026 17:49:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71B951F00A02;
+	Fri, 30 Oct 2026 17:49:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793382554;
+	bh=ZLx/b2ua4Zd1yUXxRK6Mux+7pE/jsjGxjCPHmBP7rM4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=JVXKBOyeacLReNNa2EEW3SAE8Ys5gImVRYowVR1gsFBt+Bu8DUy6D2cLOJw92crbf
+	 Ysrn4MNX4WGx5BqOWOxpn5RwmdiLabSOcqkXbiuvtw+bqLEek0rA6CcEE9WA0j7pr9
+	 cfiCvIP6eAb4H2GQyGhEd+qezjMDOFiUFpZ8cznscnZtVxfDLS+VziBqPeXe4lmq64
+	 S0n62bXlHRiBzJQDIF3dkXiq5EuS7j5k4qrg3XTvKLVl0TvbFf6ucpwBkrcrQdy8+C
+	 eNrGUxkyg+QCaevcoMKLTZ8QEcD8A9lL+yYUSOXKBU81us4OrwtgFUEUi+xD65uY8J
+	 hOTu58dWq2tGg==
+Date: Fri, 30 Oct 2026 12:49:11 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Cunhao Lu <1579567540@qq.com>
+Cc: Ulf Hansson <ulfh@kernel.org>, linux-clk@vger.kernel.org,
+	Andrew Lunn <andrew+netdev@lunn.ch>, linux-phy@lists.infradead.org,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Elaine Zhang <zhangqing@rock-chips.com>, Lee Jones <lee@kernel.org>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>, mfd@lists.linux.dev,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Paolo Abeni <pabeni@redhat.com>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Bartosz Golaszewski <brgl@kernel.org>, linux-pm@vger.kernel.org,
+	Jakub Kicinski <kuba@kernel.org>,
+	David Wu <david.wu@rock-chips.com>,
+	Thinh Nguyen <Thinh.Nguyen@synopsys.com>, linux-i2c@vger.kernel.org,
+	linux-mmc@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
+	Richard Cochran <richardcochran@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>, linux-gpio@vger.kernel.org,
+	linux-serial@vger.kernel.org, Zhang Rui <rui.zhang@intel.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jaehoon Chung <jh80.chung@samsung.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Linus Walleij <linusw@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	linux-usb@vger.kernel.org, netdev@vger.kernel.org,
+	Stephen Boyd <sboyd@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Jisheng Zhang <jszhang@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Eric Dumazet <edumazet@kernel.org>
+Subject: Re: [PATCH 03/27] dt-bindings: soc: rockchip: Add RK3572 PMU and GRF
+Message-ID: <179338255087.1001548.4507997389311414177.robh@kernel.org>
+References: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
+ <20261022-add-board-ok3572-c-v1-3-0b0fd85a31ee@qq.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_104501_802253_C6D75D58 
-X-CRM114-Status: GOOD (  24.81  )
-X-Spam-Score: -2.1 (--)
+Content-Disposition: inline
+In-Reply-To: <20261022-add-board-ok3572-c-v1-3-0b0fd85a31ee@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,8 +101,8 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -102,52 +111,22 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gRnJlaXRhZywgMzAuIE9rdG9iZXIgMjAyNiwgMTg6NDM6NDcgTWl0dGVsZXVyb3DDpGlzY2hl
-IE5vcm1hbHplaXQgc2NocmllYiBIZWlrbyBTdHVlYm5lcjoKPiBBbSBEb25uZXJzdGFnLCAyOS4g
-T2t0b2JlciAyMDI2LCAwODo1MzozNiBNaXR0ZWxldXJvcMOkaXNjaGUgTm9ybWFsemVpdCBzY2hy
-aWViIE1pY2hhbCBXaWxjenluc2tpOgo+ID4gaW5ub19oZG1pX2lycSgpIHBhc3NlcyBoZG1pLT5i
-cmlkZ2UuZGV2IHRvIGRybV9oZWxwZXJfaHBkX2lycV9ldmVudCgpLAo+ID4gd2hpY2ggZGVyZWZl
-cmVuY2VzIGl0IGluIGl0cyBmaXJzdCBzdGF0ZW1lbnQ6Cj4gPiAKPiA+IAlpZiAoIWRldi0+bW9k
-ZV9jb25maWcucG9sbF9lbmFibGVkKQo+ID4gCj4gPiBicmlkZ2UuZGV2IGlzIGFzc2lnbmVkIG9u
-bHkgYnkgZHJtX2JyaWRnZV9hdHRhY2goKSwgYnV0IGlubm9faGRtaV9iaW5kKCkKPiA+IHVubXV0
-ZXMgdGhlIGhvdHBsdWcgaW50ZXJydXB0IGluIGlubm9faGRtaV9pbml0X2h3KCkgYW5kIGluc3Rh
-bGxzIHRoZQo+ID4gaGFuZGxlciB3ZWxsIGJlZm9yZSBpdCBhdHRhY2hlcyB0aGUgYnJpZGdlOgo+
-ID4gCj4gPiAJaW5ub19oZG1pX2luaXRfaHcoaGRtaSk7CQkvKiB1bm11dGVzIGhvdHBsdWcgKi8K
-PiA+IAlkZXZtX3JlcXVlc3RfdGhyZWFkZWRfaXJxKC4uLik7CQkvKiBoYW5kbGVyIGdvZXMgbGl2
-ZSAqLwo+ID4gCS4uLgo+ID4gCWhkbWktPmJyaWRnZS5kZGMgPSBpbm5vX2hkbWlfaTJjX2FkYXB0
-ZXIoaGRtaSk7Cj4gPiAJZGV2bV9kcm1fYnJpZGdlX2FkZChkZXYsICZoZG1pLT5icmlkZ2UpOwo+
-ID4gCWRybV9icmlkZ2VfYXR0YWNoKC4uLik7CQkJLyogYnJpZGdlLmRldiBzZXQgaGVyZSAqLwo+
-ID4gCj4gPiBUaGUgYnJpZGdlIGlzIGFsbG9jYXRlZCBieSBkZXZtX2RybV9icmlkZ2VfYWxsb2Mo
-KSwgd2hpY2gga3phbGxvYygpcyBpdCwKPiA+IHNvIGJyaWRnZS5kZXYgaXMgTlVMTCBmb3IgYWxs
-IG9mIHRoYXQgd2luZG93LCBhbmQgYSBob3RwbHVnIGV2ZW50Cj4gPiBhcnJpdmluZyBpbiBpdCBl
-bnRlcnMgZHJtX2hlbHBlcl9ocGRfaXJxX2V2ZW50KE5VTEwpLgo+ID4gCj4gPiBCZWZvcmUgdGhl
-IGNvbnZlcnNpb24gdG8gYSBicmlkZ2UgdGhlIG9yZGVyaW5nIHdhcyBzYWZlOgo+ID4gaW5ub19o
-ZG1pX3JlZ2lzdGVyKCkgY2FsbGVkIGRybW1fY29ubmVjdG9yX2hkbWlfaW5pdCgpLCB3aGljaCBz
-ZXQKPiA+IGNvbm5lY3Rvci5kZXYsIGJlZm9yZSB0aGUgaW50ZXJydXB0IHdhcyByZXF1ZXN0ZWQu
-Cj4gPiAKPiA+IERyb3AgaG90cGx1ZyBldmVudHMgdGhhdCBhcnJpdmUgYmVmb3JlIHRoZSBicmlk
-Z2UgaXMgYXR0YWNoZWQuCj4gPiAKPiA+IEZpeGVzOiA5NjkzMjVhMjU5N2UgKCJkcm0vcm9ja2No
-aXA6IGlubm8taGRtaTogQ29udmVydCB0byBkcm0gYnJpZGdlIikKPiA+IFNpZ25lZC1vZmYtYnk6
-IE1pY2hhbCBXaWxjenluc2tpIDxtLndpbGN6eW5za2lAc2Ftc3VuZy5jb20+Cj4gPiAtLS0KPiA+
-ICBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2lubm8taGRtaS5jIHwgOCArKysrKysrLQo+ID4gIDEg
-ZmlsZSBjaGFuZ2VkLCA3IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiA+IAo+ID4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvaW5uby1oZG1pLmMgYi9kcml2ZXJzL2dw
-dS9kcm0vYnJpZGdlL2lubm8taGRtaS5jCj4gPiBpbmRleCBkN2MzM2I5MmUyZGRmNGNlZDg0ZDE3
-MzA0NDYzZjQ0YmU1MjI3MGI4Li5kMjk4MzIyNDliOTQyZGVjODRmYjlkMDdhMGIyMWVlNzUxZmMw
-NDg2IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9pbm5vLWhkbWkuYwo+
-ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9pbm5vLWhkbWkuYwo+ID4gQEAgLTkyOSw3
-ICs5MjksMTMgQEAgc3RhdGljIGlycXJldHVybl90IGlubm9faGRtaV9pcnEoaW50IGlycSwgdm9p
-ZCAqZGV2X2lkKQo+ID4gIHsKPiA+ICAJc3RydWN0IGlubm9faGRtaSAqaGRtaSA9IGRldl9pZDsK
-PiA+ICAKPiA+IC0JZHJtX2hlbHBlcl9ocGRfaXJxX2V2ZW50KGhkbWktPmJyaWRnZS5kZXYpOwo+
-ID4gKwkvKgo+ID4gKwkgKiBUaGUgaW50ZXJydXB0IGlzIHJlcXVlc3RlZCBiZWZvcmUgdGhlIGJy
-aWRnZSBpcyBhdHRhY2hlZCwgYW5kCj4gPiArCSAqIGJyaWRnZS5kZXYgaXMgb25seSBzZXQgYnkg
-ZHJtX2JyaWRnZV9hdHRhY2goKS4gRHJvcCBob3RwbHVnIGV2ZW50cwo+ID4gKwkgKiB0aGF0IGFy
-cml2ZSBiZWZvcmUgdGhlbiByYXRoZXIgdGhhbiBkZXJlZmVyZW5jZSBhIE5VTEwgZHJtX2Rldmlj
-ZS4KPiA+ICsJICovCgpuaXQ6IEkgZG9uJ3QgdGhpbmsgdGhhdCBodWdlIGNvbW1lbnQgaXMgbmVj
-ZXNzYXJ5IGZvciB0aGF0CgoKPiA+ICsJaWYgKGhkbWktPmJyaWRnZS5kZXYpCj4gPiArCQlkcm1f
-aGVscGVyX2hwZF9pcnFfZXZlbnQoaGRtaS0+YnJpZGdlLmRldik7Cj4gCj4gUmV2aWV3ZWQtYnk6
-IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gCj4gTW9zdCBvdGhlciBjYWxsZXJz
-IG9mIGRybV9oZWxwZXJfaHBkX2lycV9ldmVudCgpIGFsc28gZG8gZXhhY3RseSB0aGlzLgo+IAo+
-IAo+IEhlaWtvCj4gCgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+
+On Thu, 22 Oct 2026 00:11:00 +0800, Cunhao Lu wrote:
+> The RK3572 PMU and GRF blocks are system controllers shared with the
+> clock, power-domain, and USB PHY drivers.
+> 
+> Signed-off-by: Cunhao Lu <1579567540@qq.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip/pmu.yaml |  2 ++
+>  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 12 ++++++++++++
+>  2 files changed, 14 insertions(+)
+> 
+
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
