@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A7B34606A31E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 18:18:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46202606A31D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 18:19:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Dt22F8Vd;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=C2XEOoC4
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lO74yOMO;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=gDyaGAuh
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,86 +14,83 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=fiDWfrrkzV7rJpUIAPY0bHBKrcKMYgkaZG9XnhdnpxE=; b=Dt22F8Vd8VV0OpNPCieFXa0wRG
-	ZeCA1787vfdgdCS+LTIRyzRIm/fA2p0or/EpupY80ug+zWVZDA4ocXN2BvlFYc34a/yam1n3nqj4N
-	zIr9HZwb90XoO5igWy3J3hne9c3Uy7+HyDRckXBrHcOUiyXo5v7YXbNCPkD6rxfTtH3sR/sg8Bvm2
-	+nvaQnRXVucCdmLi7FJ/+DUTXvedW4w+tzrHaEwQ3UPdi8AnyZ9VbZ+20RVuJl79SqMxDmKti9kZc
-	bH1XN1wpO9F618J7Q5OAXbAHmt0cvw8zFcrgjixmlYf3zKg5ulbWacK5Rimfx7we9abSv7gWxTmtr
-	ZaomU27A==;
+	bh=KIazDOQjxNHjqiGKqgFqDd/62bZ2rNFpS9hOnqevcWU=; b=lO74yOMOhOBmWM7EToAPz05WLE
+	dqj4nw6SCXzF5xcyj5i1tq95AMv5gMDJcMFYq4kdXbf72U4XzTpoLcbNLxE6G15HWQAyw2xWpMOUQ
+	ZYPGRI5VzBzfcE9IdpOIRu25ulinWkTPrFatMK6XECSRVwdjMBs+ktzFJUGHxf5KMOo7RJZ0EZKSj
+	zJNengRZxb2QVAAM4IEGBvRvTjofXU3v9TnluZFMmsgAaZQBqV+ceI/2RhsgCV+GDwRFaX8e/e2Yb
+	EwUDv+c9WmdQse+yv9wrSQuks9RDpWKJCldXfg8GfC66QOz2TeWG9OyHbITDg2EA+axbjYWdSKr1Q
+	1VT9C4ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMrBT-0000000COHx-0hEB;
-	Fri, 30 Oct 2026 18:18:35 +0000
+	id 1xMrBu-0000000CONx-2j3z;
+	Fri, 30 Oct 2026 18:19:02 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMrBQ-0000000COHc-1W39;
-	Fri, 30 Oct 2026 18:18:32 +0000
+	id 1xMrBs-0000000CONG-3QCU;
+	Fri, 30 Oct 2026 18:19:00 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4909160202;
-	Fri, 30 Oct 2026 18:18:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A61031F000C1;
-	Fri, 30 Oct 2026 18:18:30 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 41523601EE;
+	Fri, 30 Oct 2026 18:19:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99E441F000C1;
+	Fri, 30 Oct 2026 18:18:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793384311;
-	bh=+TpGUdvhMV3H/GhPEjCy0KY1DV4UXmx7Z3C1Se8S5rI=;
+	s=k20260515; t=1793384339;
+	bh=/86/zTFvnDVScJqAiZwRttfyW+WaA8SdHKVirRpFfLg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=C2XEOoC4/BSj8bC2Vu8/6qSa2+3P6tl/x9wMN1O1BFLnunwIM+EChoHB16Q5MMtzG
-	 7l5AqUGD5cL52WYqeUPE8Utz4CzvFdVp1g/fG5vr5UzrPhlxo4d6lTVwMcd8FPtU65
-	 wdfJx5q3ZejJR+xHCzWqPg7nIFQ0Z7lSPFGQQyhHKNZXX/geWpMjVKZEXNmshKY5Cj
-	 8hu1BUDk1Lo1wYqkWA9mIkGmKp+LnIB23JdzAj4xkgO20ZzqC1qNSjrmIwlKVg+EAd
-	 03obfjx8NJ7MyYrWfyq0XFxAg0kecvPlRnmLA9U9Aspdo50AGXyNZTJUEzjTQzghVK
-	 DMRLa4VUCrxqg==
-Date: Fri, 30 Oct 2026 13:18:27 -0500
+	b=gDyaGAuhwSMS4Uxww8tbJ+uX2T6fAKbb2TWpaBEp8xgQ9d0Dj3LEEIRfjLIKGxyzc
+	 RG1zNn49EjcuRe4tPpTakD/KEHtV/orWfreE5HSZe/DDf9A2pu/OVgkZokmHfW2yH3
+	 Koj+5phapacpf6OzO+C325iOlqWc0gaWBccH/lFvANRz/Muo1++S8pY4cy2PCN/9Ze
+	 d+0xamfYGDaD91WF3Q0MnuGmlaFzWBt1M1DbBnWOOQHwPmN38xoOWbRegNHOpTIFD9
+	 ZXLayVjJnG/yATtVtf0GFnbQlu1LuFb2XSiGaR4fhOqsBdfOyZfTkqtsETfiOM4Bic
+	 dqhzRXZKdSrdw==
+Date: Fri, 30 Oct 2026 13:18:56 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Cunhao Lu <1579567540@qq.com>
-Cc: linux-mmc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
-	linux-clk@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
+Cc: netdev@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	"David S. Miller" <davem@davemloft.net>, linux-gpio@vger.kernel.org,
+	linux-pm@vger.kernel.org,
 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Jiri Slaby <jirislaby@kernel.org>,
-	David Wu <david.wu@rock-chips.com>, Paolo Abeni <pabeni@redhat.com>,
-	netdev@vger.kernel.org, Daniel Lezcano <daniel.lezcano@kernel.org>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Jaehoon Chung <jh80.chung@samsung.com>,
-	Lukasz Luba <lukasz.luba@arm.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>, linux-i2c@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
-	linux-serial@vger.kernel.org,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Manivannan Sadhasivam <mani@kernel.org>, linux-mmc@vger.kernel.org,
+	Jisheng Zhang <jszhang@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	linux-kernel@vger.kernel.org,
-	"David S. Miller" <davem@davemloft.net>,
-	Linus Walleij <linusw@kernel.org>, linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
-	linux-gpio@vger.kernel.org, mfd@lists.linux.dev,
-	Brian Masney <bmasney+clk@redhat.com>, linux-i2c@vger.kernel.org,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
 	Richard Cochran <richardcochran@gmail.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>, Andi Shyti <andi.shyti@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Paolo Abeni <pabeni@redhat.com>,
+	David Wu <david.wu@rock-chips.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>, Lee Jones <lee@kernel.org>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	linux-clk@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+	Ulf Hansson <ulfh@kernel.org>, linux-usb@vger.kernel.org,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
+	linux-kernel@vger.kernel.org, Jiri Slaby <jirislaby@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>, linux-serial@vger.kernel.org,
+	Eric Dumazet <edumazet@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	Jerome Brunet <jbrunet+clk@baylibre.com>, mfd@lists.linux.dev,
+	Lukasz Luba <lukasz.luba@arm.com>, Jakub Kicinski <kuba@kernel.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>, devicetree@vger.kernel.org,
+	Jaehoon Chung <jh80.chung@samsung.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
 	linux-phy@lists.infradead.org,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Linus Walleij <linusw@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Vinod Koul <vkoul@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Jisheng Zhang <jszhang@kernel.org>, Lee Jones <lee@kernel.org>,
-	Ulf Hansson <ulfh@kernel.org>
-Subject: Re: [PATCH 06/27] dt-bindings: gpio: rockchip: Add RK3572 GPIO banks
-Message-ID: <179338430620.1192537.10304827355794981405.robh@kernel.org>
+	Bartosz Golaszewski <brgl@kernel.org>
+Subject: Re: [PATCH 12/27] dt-bindings: serial: snps-dw-apb-uart: Add RK3572
+Message-ID: <179338433630.1195689.10561281082605142294.robh@kernel.org>
 References: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
- <20261022-add-board-ok3572-c-v1-6-0b0fd85a31ee@qq.com>
+ <20261022-add-board-ok3572-c-v1-12-0b0fd85a31ee@qq.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20261022-add-board-ok3572-c-v1-6-0b0fd85a31ee@qq.com>
+In-Reply-To: <20261022-add-board-ok3572-c-v1-12-0b0fd85a31ee@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,17 +111,16 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Thu, 22 Oct 2026 00:11:03 +0800, Cunhao Lu wrote:
-> RK3572 GPIO banks have four parent interrupts and a separate debounce
-> clock.
+On Thu, 22 Oct 2026 00:11:09 +0800, Cunhao Lu wrote:
+> Add the RK3572 UART compatible using the Synopsys fallback.
 > 
 > Signed-off-by: Cunhao Lu <1579567540@qq.com>
 > ---
->  .../bindings/gpio/rockchip,gpio-bank.yaml          | 24 +++++++++++++++++++++-
->  1 file changed, 23 insertions(+), 1 deletion(-)
+>  Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
