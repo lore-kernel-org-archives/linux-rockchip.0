@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 36D90606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 14:06:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 06C7D606A320
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 14:08:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NLomldIA;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=arm.com header.i=@arm.com header.a=rsa-sha256 header.s=foss header.b=oLwAGCkI
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=blLa6dMs;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=arm.com header.i=@arm.com header.a=rsa-sha256 header.s=foss header.b=Zhs8w9dy
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
@@ -14,39 +14,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=dZXLaotlA5GUHriEwsrHTWb1Om/nQ88okzrtBJg8AHQ=; b=NLomldIAjy9aWxrRhNnIu34N8M
-	Iw0senDHVu715o7VL8tTeQs/1aackRO1M8qPC6CDWnOkPsLMvGBGos/IyMHu8S3JSMKGlQyHpdz81
-	viamRNFuCP0JZjAuSinV9kGDi41GmofY1lykiwinDQlKLN7zql/x9C8O4QT4hkJyo6JxgRKfVMQuO
-	HVgppY+Af3ax54wjbHjV37H2w1yT7cXuNuwIZLIK+9nvOBEgO7AfM/BSYSH+lzrtMvZvnA4JaLgg6
-	Uw/o52jjOfNjI+BznRX1x8OlyqJ7Eka6Erli5iWbwZRzonG04ekKt6YDL/RQtWIXf8J5WIJvWBsbA
-	C3Eq1hnA==;
+	bh=HJeb2+HmD6R6M215kuo4A/sm2pe1F0qgrT0mKcxuNwI=; b=blLa6dMsM4fAw0KGRYnbji+BSW
+	ZJGhkJ+XSFRtNktPw+Jbezu9if76QnUfIKUrufGErxFEqOjbYxQW7lPktIhDTke8dQXT/UPdGudiP
+	SJTZtNEEPeO6ZawgLY26ohoOPVTNRQxBs+ZshS7S0GYhaaZtSwhGh8ElSib4f35xATPMZdhhyocNY
+	vjHlHyU+l1eYITOt//gq5Owz1F6iVFF/ST5s5e4UbMHuK9OuJBhtBRB9u2yfXc+qDyL0uxltB+Up/
+	yjzypDee/PyX6uJTUG3Xq/pMeZaKRiIp4IvdJWQFn2sO06GIPpKIN9DsWhg0dGt2lt1k4XcYQoHtx
+	y29q8fig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMnFe-0000000BpKI-3mQu;
-	Fri, 30 Oct 2026 14:06:38 +0000
+	id 1xMnHk-0000000BpaF-3z3y;
+	Fri, 30 Oct 2026 14:08:48 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMnFc-0000000BpJi-1ijk;
-	Fri, 30 Oct 2026 14:06:37 +0000
+	id 1xMnHd-0000000BpVS-3j4y;
+	Fri, 30 Oct 2026 14:08:43 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 33EE21CE0;
-	Fri, 30 Oct 2026 07:06:31 -0700 (PDT)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 54DEF1D13;
+	Fri, 30 Oct 2026 07:08:37 -0700 (PDT)
 Received: from [10.57.13.127] (unknown [10.57.13.127])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 52E613F673;
-	Fri, 30 Oct 2026 07:06:32 -0700 (PDT)
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5527C3F673;
+	Fri, 30 Oct 2026 07:08:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
-	t=1793369194; bh=nLI0d8mXJNn/1KyLy0u4f2Q9bqsXsorDpHIkyD1jVKA=;
+	t=1793369320; bh=DG8ml6HdWY7nXgpm84li/+TfZGx2R9DU1QknKf5wDmo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oLwAGCkIDoNHp61txC4fL7ZJCs4qQYngVcfJ2CSGI4ojTpNgZAprg/Rq1FXuLe42A
-	 05w9BZyMNji5KigDN4knB8DovlU0Zv3wssp/SDxbh9c+2S77mDiwpm0MRrK3f9hRoy
-	 3IEAoz0haSQbyjIIE0YciD3qITM9mqorpbHRvcKI=
-Message-ID: <825d47ed-9656-4467-bf37-39c65a7d4d79@arm.com>
-Date: Fri, 30 Oct 2026 14:07:02 +0000
+	b=Zhs8w9dyCcMJza+mmkrMI4zvEaQ9V7oMRNrr7YwDltZfpROxSUGA17E604tHMSqJ3
+	 S8wv3nm6jvkspvjvFqnQX8bFB/aHXRx29n+Aqujk5sVi7MCRBVLgPas/ASA8lUDUiV
+	 ANiHU03veXB7ves89JdMh512DiKVGunRkZX2aQss=
+Message-ID: <c614e414-0f9b-464f-90bb-dc1cd63b09d2@arm.com>
+Date: Fri, 30 Oct 2026 14:09:08 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 5/6] powercap: dtpm: Rename Rockchip virtual node
- descriptor
+Subject: Re: [PATCH v4 6/6] powercap: dtpm: Add RK3588 hierarchy
 To: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>, rafael@kernel.org
 Cc: Daniel Lezcano <daniel.lezcano@kernel.org>,
  Heiko Stuebner <heiko@sntech.de>, Shuah Khan <shuah@kernel.org>,
@@ -55,13 +54,13 @@ Cc: Daniel Lezcano <daniel.lezcano@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kselftest@vger.kernel.org
 References: <cover.1793288783.git.daniel.lezcano@oss.qualcomm.com>
- <063f0587a6c951ca57e941ebab39617a0d0a305c.1793288783.git.daniel.lezcano@oss.qualcomm.com>
+ <50f06fc06f0e83ee59ecf9037071e02344ecd15b.1793288783.git.daniel.lezcano@oss.qualcomm.com>
 Content-Language: en-US
 From: Lukasz Luba <lukasz.luba@arm.com>
-In-Reply-To: <063f0587a6c951ca57e941ebab39617a0d0a305c.1793288783.git.daniel.lezcano@oss.qualcomm.com>
+In-Reply-To: <50f06fc06f0e83ee59ecf9037071e02344ecd15b.1793288783.git.daniel.lezcano@oss.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_070636_521749_D68BA8CA 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20261030_070842_033692_22BDD204 
+X-CRM114-Status: GOOD (  17.66  )
 X-Spam-Score: -4.4 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,13 +85,15 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 
 On 10/29/26 16:56, Daniel Lezcano wrote:
-> The virtual DTPM node descriptor is named after the RK3399 even though
-> it does not contain any SoC-specific information.
+> The RK3588 has three CPU frequency domains, with CPUs grouped into
+> three cpufreq policies.
 > 
-> Rename it to rockchip_virtual so it can be reused by other Rockchip SoC
-> hierarchies.
+> Add a DTPM hierarchy for the RK3588 with one CPU node per cpufreq
+> policy, represented by cpu@0, cpu@400 and cpu@600. Group the three CPU
+> domains under a virtual package node attached to the RK3588 root node.
 > 
-> No functional change intended.
+> Add the RK3588 compatible to the Rockchip DTPM match table to select
+> the new hierarchy.
 > 
 > Signed-off-by: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
 > ---
@@ -100,41 +101,74 @@ On 10/29/26 16:56, Daniel Lezcano wrote:
 > - Rebase on v7.3; no code or commit-description changes.
 > 
 > Changes in v3 (since v2):
-> - Rebase on v7.3-rc7 and refresh context after patch 4 style cleanup.
+> - Rebase on v7.3-rc7.
+> - Fix __initdata placement and the RK3588 match-entry indentation.
 > - No functional changes.
 > 
->   drivers/soc/rockchip/dtpm.c | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
+>   drivers/soc/rockchip/dtpm.c | 48 +++++++++++++++++++++++++++++++++++++
+>   1 file changed, 48 insertions(+)
 > 
 > diff --git a/drivers/soc/rockchip/dtpm.c b/drivers/soc/rockchip/dtpm.c
-> index 222d9098cc98..5ae00680602f 100644
+> index 5ae00680602f..664764f4b460 100644
 > --- a/drivers/soc/rockchip/dtpm.c
 > +++ b/drivers/soc/rockchip/dtpm.c
-> @@ -11,7 +11,7 @@
->   #include <linux/of.h>
->   #include <linux/platform_device.h>
->   
-> -static struct dtpm_node rk3399_virtual = {
-> +static struct dtpm_node rockchip_virtual = {
->   	.type = DTPM_NODE_VIRTUAL,
+> @@ -62,8 +62,56 @@ static struct powercap_hierarchy rk3399_hierarchy __initdata = {
+>   	.nr_nodes = ARRAY_SIZE(rk3399_nodes),
 >   };
 >   
-> @@ -33,12 +33,12 @@ static struct dtpm_node rk3399_gpu = {
->   static struct powercap_node rk3399_nodes[] __initdata = {
->   	[0] = {
->   		.name = "rk3399",
-> -		.data = &rk3399_virtual,
+> +static struct dtpm_node rk3588_cpu0 = {
+> +	.type = DTPM_NODE_DT,
+> +	.path = "/cpus/cpu@0",
+> +};
+> +
+> +static struct dtpm_node rk3588_cpu4 = {
+> +	.type = DTPM_NODE_DT,
+> +	.path = "/cpus/cpu@400",
+> +};
+> +
+> +static struct dtpm_node rk3588_cpu6 = {
+> +	.type = DTPM_NODE_DT,
+> +	.path = "/cpus/cpu@600",
+> +};
+> +
+> +static struct powercap_node rk3588_nodes[] __initdata = {
+> +	[0] = {
+> +		.name = "rk3588",
 > +		.data = &rockchip_virtual,
->   	},
->   	[1] = {
->   		.name = "package",
->   		.parent = &rk3399_nodes[0],
-> -		.data = &rk3399_virtual,
+> +	},
+> +	[1] = {
+> +		.name = "package",
+> +		.parent = &rk3588_nodes[0],
 > +		.data = &rockchip_virtual,
->   	},
->   	[2] = {
->   		.name = "cpu0-cpufreq",
-
+> +	},
+> +	[2] = {
+> +		.name = "cpu0-cpufreq",
+> +		.parent = &rk3588_nodes[1],
+> +		.data = &rk3588_cpu0,
+> +	},
+> +	[3] = {
+> +		.name = "cpu4-cpufreq",
+> +		.parent = &rk3588_nodes[1],
+> +		.data = &rk3588_cpu4,
+> +	},
+> +	[4] = {
+> +		.name = "cpu6-cpufreq",
+> +		.parent = &rk3588_nodes[1],
+> +		.data = &rk3588_cpu6,
+> +	},
+> +};
+> +
+> +static struct powercap_hierarchy rk3588_hierarchy __initdata = {
+> +	.nodes = rk3588_nodes,
+> +	.nr_nodes = ARRAY_SIZE(rk3588_nodes),
+> +};
+> +
+>   static struct of_device_id __initdata rockchip_dtpm_match_table[] = {
+>   	{ .compatible = "rockchip,rk3399", .data = &rk3399_hierarchy },
+> +	{ .compatible = "rockchip,rk3588", .data = &rk3588_hierarchy },
+>   	{},
+>   };
+>   
 
 Reviewed-by: Lukasz Luba <lukasz.luba@arm.com>
 
