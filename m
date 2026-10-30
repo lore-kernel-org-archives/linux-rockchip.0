@@ -2,61 +2,98 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1AEAC606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 18:08:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 71A63606A31F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 18:15:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GJsO/gyy;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=Lposd8Qn
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gqbBvzzE;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=U+rTn4qL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=GZ7Ax1VNUv3DxlVjk/Z2pb2nord2AyOsqnVSY2zT0Mo=; b=GJsO/gyyfHO6rZW9uCiBbQG/d0
-	yCX8ij3oNexMWaKfVLBsVd3nui6vmZ6r9NQg4INkImcHvR9gKoUOWw8ch1eCIH2Xk+C741sHDd5Ms
-	pS1bWcm1rM5y/ewxogLwSXJZra5XhrFb/4VVIWMH3FQFHkz1A7EZe38Y5LJ7UW7qkMfZUK4H/5/gG
-	vILWQCZzbd3aWX6N/A09z1C9Fa+mu/pcbBEj0w5mvmP77bWGyzoYx56PgNK2yG6UWS8OGrTbua2br
-	GEED5j+PDcOX8RhJQNpUiQGwoeeRDDJkSjO9UL1JnyA3d3QKzVx+0fddAbI+Hp2VzG3GjRxaRMHO7
-	t3g58Muw==;
+	bh=3NrrdyCFJSMY/VwanDzktPVUj9bQENoWA8o7wyZDy6c=; b=gqbBvzzE4AXH1ZRs9qqtDw5qPs
+	MmjCEjE7tuIDIdOsJJBBUW3BL4v/6cUoh5kSQlUMzinT8tqw5xSGui5IHmckcgOJpAjxaDVANZPSd
+	7j1j0DFTWNZW1RYNhVtbfDiYoS+a4VrDKotaNE9T5nGo7RIRiA3PfXs4XB+xscMc5B/r+Xl7BIfip
+	+HEgKrTKG0/BUA9mXPmQbk1jBQQipTkvcUVC7F2DHT8Dmpma0dd4Ndau7zU6yazmsDZOS2bkeY6Yq
+	/SOyx9+JtiDyFHgMwvrHf9cyI6Qr6X7ll0+iuvcWzTjGBMbWa3evrve0SWmyItx1iJpuzpID22lUF
+	FcMl0eVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMr1K-0000000CMH0-3MGh;
-	Fri, 30 Oct 2026 18:08:06 +0000
-Received: from sender-op-o15.zoho.eu ([136.143.169.15])
+	id 1xMr84-0000000CNgV-1ZwF;
+	Fri, 30 Oct 2026 18:15:04 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMr1G-0000000CMFJ-2byh;
-	Fri, 30 Oct 2026 18:08:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1793383674; cv=none; 
-	d=zohomail.eu; s=zohoarc; 
-	b=D3MBAA2RV9JUP7T4/6JJ77ZbLpLnUGmQ/f9MrNVw4WNZBARPtkxqnAMycgC/xNDAPEDv2qTbNMxscTwgNBnxzAWVKMa5r8KKL0eGriVTorMspzOOFXwtkEGy0s7DPuMiMUjNlaegbLPAW5q4cAQ9H5GPugl3ZvVszL88FAdhKDo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
-	t=1793383674; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=QVKMydU/thLME4tk0hjz4sP1iIZCD+FNDdETjFTH1wc=; 
-	b=Vbi6DAafjCVdxAwf6rg5DHUhXcXD2xRYQxxnv19Rf9KxZmFgQZVzxm1Ne/DEnGzFeJY8elq7OmWBnjUVgFP9TD9lcPsOOvxX4Wcv4ifYBT0nkJ7MeFM6/XwRCgWGKD+rxkOB0HQvdbVNWrdsEw7M8ELvTf/qPsSQ7PLMboCBGm0=
-ARC-Authentication-Results: i=1; mx.zohomail.eu;
-	dkim=pass  header.i=iav.lv;
-	spf=pass  smtp.mailfrom=iav@iav.lv;
-	dmarc=pass header.from=<iav@iav.lv>
-DKIM-Signature: a=rsa-sha256; b=Lposd8Qn9kdkRC2sYlxa0WOlkAA0mdUn3f0TOBw4v4w4+IF365qd8Ir3d6eaXQ0+vDAC8JhV8+cWFCuguva1v/4S+OWFZvObVFblzFE2C9crKE8F3KHvtz30JTSYCjecrxq/b1CBY0wxs/CNFsEbuGj2wI9PXEN9fdWmR8kLEPE=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=QVKMydU/thLME4tk0hjz4sP1iIZCD+FNDdETjFTH1wc=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zoho.eu with SMTPS id 1793383672930887.0016081954384;
-	Fri, 30 Oct 2026 19:07:52 +0100 (CET)
-From: Igor Velkov <iav@iav.lv>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, Detlev Casanova <detlev.casanova@collabora.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: Hans Verkuil <hverkuil+cisco@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Diederik de Haas <diederik@cknow-tech.com>, Jonas Karlman <jonas@kwiboo.se>, Francesco Saverio Pavone <pavone.lawyer@gmail.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org, Igor Velkov <iav@iav.lv>
-Subject: Re: [PATCH] media: rkvdec: Do not keep the clocks enabled from probe
-Date: Fri, 30 Oct 2026 20:05:00 +0200
-Message-ID: <20261030-rkvdec-runtime-pm-clocks-nicolas-reply-1@iav.lv>
-In-Reply-To: <76e2e993fa5a8fd054bad97505907d3c4e88e11c.camel@collabora.com>
-References: <20261030-rkvdec-runtime-pm-clocks-v1-1-fb2c5b629e79@iav.lv> <76e2e993fa5a8fd054bad97505907d3c4e88e11c.camel@collabora.com>
+	id 1xMr81-0000000CNfj-2NqQ;
+	Fri, 30 Oct 2026 18:15:01 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id E1E0C43E4B;
+	Fri, 30 Oct 2026 18:15:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BB531F000C1;
+	Fri, 30 Oct 2026 18:15:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793384100;
+	bh=xX4+/ngw10imxtV7Qx0M5QC+PH9quwicLxr3n+FYyZc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=U+rTn4qL9aKfAqK24WGz11+2HZDRD7OcmjFhcTHsKLHulDk+qJB0jX6OIJTW5dqv5
+	 bhAyVUPKMK5g5OPQw6v67tHcs41p3Qz95LDNO30NKVSfbbZD3eI2o6lUAs/JOVicYD
+	 Jm0Z882bafmmMiLZkzflj4+qaNReXe8iCQ1DYeO0aFA02mNWCQWjQM4qUDOMCG/1Yc
+	 i4G5qRJBWOQ6Tw1D2duEbyG8JIHXPNE4NpMDtyiQ+5vL92riH/rmmdy7Aj9yoY7pcg
+	 1wcV0QkSPPYD2Ly9j0vwfbdlNEfnC5IKQFK7Np4Z5BtOmYmlRL2ViMFzgMbRwTJvRF
+	 UTUaSSI8/Gxxg==
+Date: Fri, 30 Oct 2026 13:14:56 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Cunhao Lu <1579567540@qq.com>
+Cc: Andi Shyti <andi.shyti@kernel.org>, linux-gpio@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	"David S. Miller" <davem@davemloft.net>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Jaehoon Chung <jh80.chung@samsung.com>,
+	Eric Dumazet <edumazet@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	Jisheng Zhang <jszhang@kernel.org>,
+	Richard Cochran <richardcochran@gmail.com>,
+	linux-clk@vger.kernel.org,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	linux-usb@vger.kernel.org, Lee Jones <lee@kernel.org>,
+	mfd@lists.linux.dev, Jiri Slaby <jirislaby@kernel.org>,
+	Stephen Boyd <sboyd@kernel.org>, devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>, netdev@vger.kernel.org,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	linux-i2c@vger.kernel.org, linux-pm@vger.kernel.org,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	David Wu <david.wu@rock-chips.com>, linux-kernel@vger.kernel.org,
+	Zhang Rui <rui.zhang@intel.com>, linux-serial@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Philipp Zabel <p.zabel@pengutronix.de>, linux-mmc@vger.kernel.org,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Ulf Hansson <ulfh@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-arm-kernel@lists.infradead.org,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linusw@kernel.org>
+Subject: Re: [PATCH 05/27] dt-bindings: pinctrl: rockchip: Add RK3572
+Message-ID: <179338409611.1169964.10654719461707272138.robh@kernel.org>
+References: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
+ <20261022-add-board-ok3572-c-v1-5-0b0fd85a31ee@qq.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_110802_932592_BB0623FE 
-X-CRM114-Status: UNSURE (   6.70  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Content-Disposition: inline
+In-Reply-To: <20261022-add-board-ok3572-c-v1-5-0b0fd85a31ee@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,23 +106,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, 30 Oct 2026 08:49:03 -0400, Nicolas Dufresne wrote:
-> So if CONFIG_PM is not set, the initial resume will never occur, and first mmio
-> access will likely hang the CPU. We need a clean pattern to handle this, and
-> perhaps review other similar drivers while at it.
 
-PM=n only happens with COMPILE_TEST: ARCH_ROCKCHIP selects PM on arm64 and
-arm. rkvdec had the same gap until 6a846f7d72c7; rga and rkisp1 have it today.
-v2 keeps the clocks enabled from probe when PM is off, as etnaviv and v3d do:
-https://lore.kernel.org/r/20261030-rkvdec-runtime-pm-clocks-v2-1-8ff510a231de@iav.lv
-rga and rkisp1 as separate patches?
+On Thu, 22 Oct 2026 00:11:02 +0800, Cunhao Lu wrote:
+> Add the RK3572 pinctrl compatible.
+> 
+> Signed-off-by: Cunhao Lu <1579567540@qq.com>
+> ---
+>  Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+
 
 _______________________________________________
 Linux-rockchip mailing list
