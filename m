@@ -2,66 +2,89 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 859B8606A31D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 15:38:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1AF01606A31D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 17:39:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xmdOgUc4;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=UQTAu7XD
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eQNsiUjt;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=NfR7dokS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=BYsQbe3KVE330Gz3aM3Vc3P0O+19AyUNzTqc3JjYNK0=; b=xmdOgUc43NB7twzzP5qMrQJx8S
-	WX9JcHtwvEg+iOK7OG0Tj+GDiM7TlT2tD+fYY1avTW4agGJN1UbDtq+/UodNBDEXk2ztT85J5jqOy
-	RqJof404lBnBKkgNN2gaZQOagLgGKfLcL0qLL3+0bWvwfF+zYHqsUma8BbX1XARzkSWXb0c6YEeAd
-	OBHsl13ekB5ZzAVLL+nd8+g4BhY9DAb7yF5dWdJ3DHCOdUJTIy+zeSqOthZ0EiCjidnrWd6fFFeAM
-	UngOaoj99atoL4Efz7AR+O4wZ0lL+4G/GzLC3kP4v5+GMQcugIFtcMEebQqzEb6fIyoo8+VaZn7MP
-	NDI3kUSA==;
+	bh=24GjB9DA8F04YElkEYjjQvuAL25Rb42yK32nFyFmqME=; b=eQNsiUjtudJBZzOOzThbrUc+/5
+	eP1QJMJXx6foIv2n4/DMl2wqZ2VKXL3IOULol61diz2JgQ0WnINd6+oTK33X1o50d2aWwunH4M/Oz
+	ACfih9+CntIkztZ1kOjCUbV0KwxOj7KWMflZU/UIVmiVVCMUy7dNepG6wpT9OGzr+OOjmhBpM3qjJ
+	eeAeY0yj0VE5wI57eJOlOvXYhaSc6zZdDAfAXtrvATpRkuORdpRthoaa0ra6x8K28sL/G8rsce+Mh
+	F8YAAG8iHLij231tsk3SDlMtx9GkRKctI6FMDf5wYl0GypPGqZ57G94XIwVo1OBD7aXByX+dINOoQ
+	pOLUD5Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMogm-0000000C1lD-36Is;
-	Fri, 30 Oct 2026 15:38:44 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xMqZp-0000000CG5U-3JJn;
+	Fri, 30 Oct 2026 17:39:41 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMogl-0000000C1jr-238A;
-	Fri, 30 Oct 2026 15:38:43 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E91DA601EE;
-	Fri, 30 Oct 2026 15:38:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BBC61F000C1;
-	Fri, 30 Oct 2026 15:38:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793374722;
-	bh=uEkdquko9VR4gRZhJYW+RWvIiAuc7lgxpha8X3M0roc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=UQTAu7XDwiexZUovqY842fH+4N6aw5pL0Xe5ubdGhxbFLYsR18H7uvEOJZ/RCxXC3
-	 ITRSlklkZIVUaOp5s+rF5lbb4y+SbmCTs2wnmg/Cg3XZ31zI9DuTq2pCn9lwVpx2o2
-	 Lv1Jb/BgwpWKSDLNAKcVyhaPlBUS8EZzMwNY3/JCR083DDhniQyeaKugadbKR83UZz
-	 d4V8khHCDck4p43mYLRcyV3iVFkIVoPAavAedeGvu0Ui51x7y1h8l2wCDWaNQFWhBO
-	 3+zD07/HLClTnjIsm4w9egQphEgdjOlGttSDnKamoJBVLZiLaecptRzdTkaBgJPvk0
-	 1fkM09l/K4ZmQ==
-Date: Fri, 30 Oct 2026 10:38:39 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Igor Velkov <iav@iav.lv>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-hwmon@vger.kernel.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Jean Delvare <jdelvare@suse.com>, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Guenter Roeck <linux@roeck-us.net>,
-	linux-arm-kernel@lists.infradead.org,
-	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: hwmon: pwm-fan: Reference the common
- fan schema
-Message-ID: <179337471871.91953.13659250524662558962.robh@kernel.org>
-References: <20261018-helios64-fan-label-v1-0-69a3f96d4efa@iav.lv>
- <20261018-helios64-fan-label-v1-1-69a3f96d4efa@iav.lv>
+	id 1xMqZm-0000000CG4l-1MdO;
+	Fri, 30 Oct 2026 17:39:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=rZQBVRZiCks/K/9Y1345LKLpm7rARRb46p5oLx1DJf0=; b=NfR7dokScM74IPFgp+YCYVEkyH
+	E17lWekv02wo93KiwQhxCLpnf3qg8nW5Zzm0O/mjE84ldTbqIpKSc/FzPcx9JMHJ4gOTLPNSpC1UJ
+	nYinkqL4eROOqDYCMpqKlm+Hrcxmfp3r6iJMajWmPfOChJsDQ+OongNNwE5U+ewunv8xwTVqHy+rC
+	iMHufZEkUf+CjkHd4Xz1aUPPII+HfxGfiGIs1Es7cge6Uy3+BIgL9C2NbqefLnrPQvgeLVMP+Ll0T
+	rcAtYyxJ1i1PH5LcdBa+OCShdGwv9kPMP4GpzpV/WwRXkPpkvEV9luefrRzpDTteyFG4Em1QkLXwT
+	6M7z9YHg==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Emil Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
+ Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,
+ Dominique Belhachemi <db@domibel.de>, Andy Yan <andyshrk@163.com>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Yakir Yang <kuankuan.y@gmail.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Michal Wilczynski <m.wilczynski@samsung.com>,
+ Conor Dooley <conor@kernel.org>, William Qiu <william.qiu@starfivetech.com>,
+ Xingyu Wu <xingyu.wu@starfivetech.com>, Sandy Huang <hjc@rock-chips.com>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Michal Wilczynski <m.wilczynski@samsung.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Maud Spierings <maud_spierings@murena.io>,
+ Graham Markall <hello@big-grey.co.uk>,
+ Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+ Joshua Peisach <jpeisach@ubuntu.com>,
+ Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@baylibre.com>,
+ Byron Stanoszek <gandalf@winds.org>, OOHehir <oo.hehir@gmail.com>
+Subject: Re: [PATCH v6 01/18] drm/bridge: inno-hdmi: fix swapped HSYNC and VSYNC
+ polarity
+Date: Fri, 30 Oct 2026 18:38:51 +0100
+Message-ID: <3007313.yaVYbkx8dN@phil>
+In-Reply-To: <20261029-jh7110-clean-send-v6-1-759594e43acf@samsung.com>
+References: <20261029-jh7110-clean-send-v6-0-759594e43acf@samsung.com>
+ <CGME20261029075353eucas1p2e700f30e833a17c676488f1427d3e565@eucas1p2.samsung.com>
+ <20261029-jh7110-clean-send-v6-1-759594e43acf@samsung.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261018-helios64-fan-label-v1-1-69a3f96d4efa@iav.lv>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261030_103938_403635_BAF1E136 
+X-CRM114-Status: UNSURE (   8.11  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,37 +94,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-
-On Sun, 18 Oct 2026 07:54:59 +0300, Igor Velkov wrote:
-> pwm-fan predates fan-common.yaml and repeats several of its properties.
-> Reference the common schema, drop the duplicated properties and keep
-> only the constraints specific to PWM fans.
-> 
-> This also allows label, which the hwmon core exposes as the label
-> attribute.
-> 
-> Link: https://lore.kernel.org/r/20250106173805.GA501301-robh@kernel.org
-> Assisted-by: LLM
-> Signed-off-by: Igor Velkov <iav@iav.lv>
-> ---
->  .../devicetree/bindings/hwmon/pwm-fan.yaml         | 22 +++++-----------------
->  1 file changed, 5 insertions(+), 17 deletions(-)
-> 
-
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRG9ubmVyc3RhZywgMjkuIE9rdG9iZXIgMjAyNiwgMDg6NTM6MzUgTWl0dGVsZXVyb3DDpGlz
+Y2hlIE5vcm1hbHplaXQgc2NocmllYiBNaWNoYWwgV2lsY3p5bnNraToKPiB2X0hTWU5DX1BPTEFS
+SVRZKCkgYW5kIHZfVlNZTkNfUE9MQVJJVFkoKSB3cml0ZSB0aGUgd3JvbmcgYml0czogdGhlCj4g
+aGFyZHdhcmUgcHV0cyBIU1lOQyBpbiBiaXQgMiBhbmQgVlNZTkMgaW4gYml0IDMsIHRoZSBtYWNy
+b3MgZG8gdGhlCj4gb3Bwb3NpdGUuIE1vc3QgQ0VBIG1vZGVzIGRyaXZlIGJvdGggc3luY3Mgd2l0
+aCB0aGUgc2FtZSBwb2xhcml0eSBzbyBpdAo+IGdvZXMgdW5ub3RpY2VkOyBpdCBvbmx5IHNob3dz
+IHVwIG9uIG1vZGVzIHdoZXJlIHRoZSB0d28gZGlmZmVyLgo+IAo+IEZpeGVzOiA0MTJkNGFlNmI3
+YTUgKCJkcm0vcm9ja2NoaXA6IGhkbWk6IGFkZCBJbm5vc2lsaWNvbiBIRE1JIHN1cHBvcnQiKQo+
+IFJlcG9ydGVkLWJ5OiBNYXVkIFNwaWVyaW5ncyA8bWF1ZF9zcGllcmluZ3NAbXVyZW5hLmlvPgo+
+IENsb3NlczogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsL2U3ODBlY2I4LTkxOGYtNDgxNi05
+OWM4LWI2OWIxMGIyNWExOEBtdXJlbmEuaW8vCj4gUmVwb3J0ZWQtYnk6IEJ5cm9uIFN0YW5vc3pl
+ayA8Z2FuZGFsZkB3aW5kcy5vcmc+Cj4gQ2xvc2VzOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9h
+bGwvYjhiMDQ2ZWUtYzU3NC0zZTE2LTYwNzktMmZjNDE1NjMzZGFlQHdpbmRzLm9yZy8KPiBTdWdn
+ZXN0ZWQtYnk6IERvbWluaXF1ZSBCZWxoYWNoZW1pIDxkYkBkb21pYmVsLmRlPgo+IFRlc3RlZC1i
+eTogTWF1ZCBTcGllcmluZ3MgPG1hdWRfc3BpZXJpbmdzQG11cmVuYS5pbz4KPiBUZXN0ZWQtYnk6
+IEJ5cm9uIFN0YW5vc3playA8Z2FuZGFsZkB3aW5kcy5vcmc+Cj4gVGVzdGVkLWJ5OiBPT0hlaGly
+IDxvby5oZWhpckBnbWFpbC5jb20+Cj4gU2lnbmVkLW9mZi1ieTogTWljaGFsIFdpbGN6eW5za2kg
+PG0ud2lsY3p5bnNraUBzYW1zdW5nLmNvbT4KCgpSSzMwMzYgVFJNIGFncmVlcyB3aXRoIHRoaXMg
+YXNzZXNtZW50IDotKQoKUmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2gu
+ZGU+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
