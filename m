@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 452B7606A31A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 11:34:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D4857606A31D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 11:35:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WrpOYFs/;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=fooishbar.org header.i=@fooishbar.org header.a=rsa-sha256 header.s=google header.b=X9YtF1t1
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kO9J0vQL;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=fooishbar.org header.i=@fooishbar.org header.a=rsa-sha256 header.s=google header.b=g3cb1ZJ+
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,91 +14,91 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Wy5yqfdI4FN0fYIi9l08Hg1iQmKuNXdv6NUvhPjSJDk=; b=WrpOYFs/9PUQ5/j9E15zYjSK/4
-	zIH/Bzx7OTmuVjlPrRd/Fg/pb+dWCSH6OeX/T1D5OwbtlKrxCeWeQH/5V8j5POxefhbZQDdUmCUxr
-	F/Mm/kMIbVz6fn+sDF3mbXvbKOv7teNz0sveXZMFYT4MVSqklG3fjEIJXDb6H6GpOhGxrB+oK0y1a
-	vdc12me6e1625jcFd3EZ+qSp0HdhCedBeiHfG95GcIgLHl/nvvwlV9rZFkGfOi5ettuEWrpal7I6B
-	EWBS1zlfKPwzfwfqcOsp097CCe6HG3XmcT7LD0RdJ0bHk5pNOCsombBoBnwP0V4lpRK55MyjBK+Zu
-	1RXAuASQ==;
+	bh=/XWF5+uFiUDs4mUvtWsCQ/gx0S0vo6MXanZeHqf8NKQ=; b=kO9J0vQLdM9sW3Nv/1jcM9NrJc
+	OyswE1LrBYXENzG8BJS/LlOHgUWynaOMdlxUejFaHsUjn9zRsA7npUqm4rNR6JxoLShwSFkjK8514
+	U+tbBwW1SMInCPCM2N41J1SNFyS3wyM8Uduo9dRo8OIuPsZvprZ/motVvlZGtGdbn26vmvoM8MVL/
+	wGqAj8b/MFjTRCQzysKOukErUIpcbfEY/jbBXUJrGMvPPMncG9X1nJtSZJ3kb35m9UTcEaoF4PInj
+	mokvRN6YMQ9sh6nNELjGmOzATzwdDYQYZgusuu5rlOtEPXNFmQvSZoUxus/BJxafqaJTQp+sMnOUY
+	IJBZZNgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMksi-0000000BYtd-3NSf;
-	Fri, 30 Oct 2026 11:34:48 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1xMkt5-0000000BYzO-3q5B;
+	Fri, 30 Oct 2026 11:35:11 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMksf-0000000BYst-22wC
+	id 1xMkt4-0000000BYyW-0fvP
 	for linux-rockchip@lists.infradead.org;
-	Fri, 30 Oct 2026 11:34:47 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2eac4877accso2022445ad.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 30 Oct 2026 04:34:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793360084; cv=none;
+	Fri, 30 Oct 2026 11:35:11 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-2e7e742a2c7so3909325ad.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 30 Oct 2026 04:35:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1793360109; cv=none;
         d=google.com; s=arc-20260327;
-        b=PiYLRDyOepBS5s9zkSFR/QuzKVl5T+H4bw+pKJKaFmohFcrkX9SmD9uNKrDt2GADr/
-         /z4Rwt4kCT+qEHTmNWAlENsbQJUV7amFqevtXhz9lovfZlh7Oq9Ri0TM/fJoGLiXFyR5
-         a3JMcDTzwTFpVzzSQy6kQauSTQkhVAFLBUwgYUSBJvRoWzGI1ALu1Q/6gKWM7XopswyQ
-         a8rdoy6nlXQtE+uEtNcR+HNEfVfB83kU2WS3YCVGuEg7rMXVsRrV88kEeuXlg8Vh+o8B
-         LK9eW67NdwipJ3EgntwJZiM+g6N2GiXU8J7G+XuqXpFPYo19ieDfQOKozgtPAdVEkRtO
-         HJoQ==
+        b=n1Po7U+7LQw+VHVg3EOgimSrpu6saz5BCVG/iT0jPBP1OTrGJE/rB+lfOJOs9l/xNS
+         YdhsPoaenruFCLn3WD3MM9YfWbPGN5+7BaO5xeVr6OKNRkh5stTrU02kYuXUKI5PdKyl
+         U14RGmjTRxxmSpsHhzIn+BqhbSXRVOcJPT5UnbHerVia6wRYuEXIMa6AgF1ak+otYA7v
+         XQSUBl5EXEXdzKmw8LIyqCLFOFST9iezsh170vOwMjgM/A/ZccLHASqEsLTmcxQmTIH3
+         B0idfgUrRKoLwub6BPO56gmnl3gug9A50qsNEE+UiXyw3bVLGksEOWGh4R5/RTthibJe
+         QR1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=c97+eBSw0JgaFK2XxPHQ2OocTE5xGkKfdIwT0n7EkqY=;
-        fh=oQNpnJB44yAYfs+lj/KxBt4pykxpRaxWWoiQAwV9UpU=;
-        b=StrzioHTfsl3fZZdBgDh6wX+id4SjfiTqDaN2kbPtBAq7B5Pv1mEnHb7Aqk/hXzHhO
-         OnTaHkrXa5a/pYVXfQYEqM/i4RaSMFdU/BihzCu33Kk7rHRi6ONckzys+ABaKx2f2GIh
-         1l35N7aBGNl+JwJX/7BQTnwvJiZdLRSyUqYAFEdr1iPyj6zjzL5B1hwctKKYts57fG7o
-         pntvmX8b4+9X+RTubPR7Le5cHq2Td80HxULNc0ZRxR/fGaTtmNa2Zn6N5yXF7bPErrrz
-         /Y+789/A5ZsVHdRu10pmXi4OxohuLpgsgt6Qm8z1MFjRgbdv4evWk+xm1HLG7GAWUmkq
-         GKpA==;
+        bh=1/uyCfgrexYOU1XKSxjmyAIj5YjfxeLRY3LwALyGTk8=;
+        fh=B+m21VvkL8r3rC/seg0AdvlWFC+JT03rCz3I2jmSAjY=;
+        b=RPziu3dY+vffn1EX/uJIfFP3lG+4frcic1G6QqHvy+lsvEgGQvJn3Gk+Dp9+WCHrP6
+         UrT5K8/0rThR8Q2L2KGzKjIDLr6wAv2de6u1mMr3u1P8BiNfZGFUu40H/rM9FrSVR0bH
+         dqXHe+Bbe8w69QHVXcu/GjOrWk/KcjacDDBZ+NKM3ckK/HlYHC0HA7xYbgd+Ex0uc6RN
+         UIuFRe2wcsGb89a0M02309gpzKrpO0iMavO2Ij7H3pYDnTprFm//wDXVHOQ7LM3kzE90
+         yngZy2Q4aODH4mM43qzA9pzdsSRSMlTguT4dtz2Qy+ZjOHrLrgEcAZMAhnjhCk80Mmaq
+         qLyQ==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1793360084; x=1793964884; darn=lists.infradead.org;
+        d=fooishbar.org; s=google; t=1793360109; x=1793964909; darn=lists.infradead.org;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=c97+eBSw0JgaFK2XxPHQ2OocTE5xGkKfdIwT0n7EkqY=;
-        b=X9YtF1t1NxJuxyn1q/iCYcz5bITsCAQ/7Vygleeghw8KOYLHwoElPTf4AC6OG+TRpY
-         d8k8FT2Y+wYtLtJ0XfXPLjsrv8aDdrXWmNS3tFowG+VbQgYp1oS/vLKOXzBKvd4rYHcB
-         QsIuLGW6g5aPL6e3lscf7MHWuDqmJZMlOu8zubOccvCI1CVrDVmhGZ6Y17YGRPHtCCWB
-         KAd+CrpPl+m0Jz0PtuhzgUH91tkqlXXCDTpiF42rrxEuUHp12PIW0bnE3t+oMkr6RtpW
-         lu/iY+7wxWh6X5qVKV7AShCKho92uZD11DZ/LtEc3ItxrUkEuzx5J+NmZL7owiD+H18t
-         7zIQ==
+        bh=1/uyCfgrexYOU1XKSxjmyAIj5YjfxeLRY3LwALyGTk8=;
+        b=g3cb1ZJ+TN2Zak63xVBXdxtjE/fDsNkyMZBKgfgUsaGPv6ARjfejrqjjZP8tpDtjRH
+         litUN7zR+DVnRz+6TsbfzSXVCKlC1HA2Km0iZVVbpcWC+N88JvYcWr21gu4583LEmE3b
+         tbKoJOBwfyOpxUfEyHGcUYMdEUFEJB6jRZtrGSQPNq3/BdX7hwNpNyZrQ2bNe5Lx/YTw
+         I2PMXT4aO6YQDWJr1bia2wqvxXHI7SJSSm5mFf6ivRYBrpit2nVDMSBTZexNJKI3+7NN
+         99G14BoWUg4idBOsKDSKL6OM1CVoz4r5EPDI/dLt/nTtbavW8A2MhFawvKGkPlG+O9+O
+         +NyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793360084; x=1793964884;
+        d=1e100.net; s=20260707; t=1793360109; x=1793964909;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=c97+eBSw0JgaFK2XxPHQ2OocTE5xGkKfdIwT0n7EkqY=;
-        b=F4bsCTlRsOwegoTOGNh0Kc8aCtQ78l9tlItiLn8/GYeqhW/VkoOKoQAQ0y5WGa+Ssn
-         W2+9jGisIGI6xSrM+lMjm6UwkW1DuVAOWoh4awrRcoyA7pKXb3x08NP0Wgy7HX3/F1em
-         y0Djd5yEoLdD/zMIunqNY1O9ytRJnnJlr89FV4VRlWByn/ERMHxDGGWeillvdPts/iNb
-         /uFCqtEDjLNm2csMEhnhXYSCgo+AHH77kFWFMi3HoNWKihAv7J5+7L3zoEzoUYTQBx1g
-         VzgikZt6KJ9SupuSA/9oBQx3ky4jdP6bfndI4HMN2H5u3uL16oDCaSGKei7EFTejHssT
-         Z9jg==
-X-Forwarded-Encrypted: i=1; AKwUvBwUqTBXt7pfsWOHtCHPck+RRqmb/7BxDkc3eoqwu8s5v9qq4RAESNoDYtwQ6zeol5ozQsyORBG3cZcZ43hjPA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJ/RzdVl11cBY8sMEiKuDsU5k/YCE9pUt4CwavXU/4ciEslcJX9
-	kwOiIZlQ/651GWRmHIjJMDPJIh/4c7aPBv7pCdLIMw6tEuKwJlTq2RjaEF2eD8PjAKSXYygYZ5o
-	z8kFF5g3VmhJ2pDqDt3drOwRXLx/n91MJPJgQN8XXDw==
-X-Gm-Gg: AYBFou3SD+YSJ4qutgcTC6VU7TPkr4IgJS8AUA1N7tD84umShiLYsy0E+xumxgO/o3l
-	/bFWTH8UMrAQOBGnLp4KypYOYjM+h8hyUrjLCZHREHSDDAbYsEvA4+6MHOKNHr79WOYdZlorI5h
-	gXZmpPrhjbcqIYYs3hGOD9chr/d1gE84HOF3TTOXGf4raKFjpTto9o8OPR2EkJ73BwjUjx6yESx
-	USBbzmZa2EdVbyWWI/qAz8oyQd6izT82M6CH7ckW+5im0n8dLAmIwKze3aBNw8lgRRGBq/2OwNf
-	eKLhD1w72at1vSslmziObvlehMYYpyvLnDglzpVseuq1+Rn7EDI453kQLtWmO+Trz6XxUIhB8e9
-	+G+xmwE3Yq/BrC2ksPqQiXSb0e/6Cov+mnigW
-X-Received: by 2002:a17:903:384d:b0:2e9:9bac:2e90 with SMTP id
- d9443c01a7336-2eb3650d23fmr19334835ad.65.1793360084151; Fri, 30 Oct 2026
- 04:34:44 -0700 (PDT)
+        bh=1/uyCfgrexYOU1XKSxjmyAIj5YjfxeLRY3LwALyGTk8=;
+        b=hJL31t2Q516bsp1xvdngKdswlMb7ISTuSSby3jXC7N0Bpo2yDlnPiTa2LyCd4uyK2O
+         IrO03hulaIBFE9f88cGTGSZDqk0Gzgr3hkDeqdPjb+a9lAaFh+bn8xXOY+Dcxtj6AOuN
+         zEAUf8WsTN/gYMTDLZzLTnKpHmyYCV11NDuKeT5/TD9cl7p0Gx9qUd2jnat+Uu+p+Lkr
+         J1Uga2HF7n7eskQ3e3vuYDImglpH2zZENUleSSlU+fJOEIL8w1ZUJlLrPYFs9t9LHNBa
+         SHl/226vmhGG1XG45JWcwNP5Kt36OqW+hx5899YQYtp4y6sefag9mLmAxw5IyJeXy2ut
+         pr2w==
+X-Forwarded-Encrypted: i=1; AKwUvBwZlrXrdxg2gSTBHsVYLNNTuyuAwe9T37b0vI1IOQ7uag/DmdYKDzOzypYfe9xYSRnJH3Ks7JDE5fdub1U6WQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKK2vzuc5XzDGey4ZyW7duI/mIFSqeAN2+WR45I90ZuFyroKpWh
+	jSKPMaO41zDwbJb+YOsvC6NsWbELuKkbKvV/9u3K5b4MZ61kDb8Ib1ylVUe1lDgshlL7PJtXHUr
+	xgDaDXgVCSkfTbQNHBdOI/ZPipxZfHTvj5sZkaI38Jg==
+X-Gm-Gg: AYBFou3MXeN/H8Bqbu14gHbhhJhHnrkf07osdAR1mjTXNzUOSxrWN2AASl2l+BEXFis
+	4tA9BSwiUvcx1NQBpHUvoOYr8IGnPveRx/gV4ZCtHXiKbfTfBPDCjFzYfa3n0xWNIvqMG/CJKA8
+	/Qq+gyCuNFLNOcYoGdMV7wL/VmAQKh4DxjGQ4aZAZuqTvD2004bbLI2pClLL9UDqXoR3JVsdkzA
+	o92Ooiafcu7EQEgR5Itx+DwtYjH5hZtuiHIArepnuw8ZHw+Z100ZSNWbYSI0AnMXZAYhBVQHQSf
+	StvkEgcS1Y5Y8IAqG/2RZSAyEVcU2AErw9iU4rK/rXkpkt0liX8+WwWS7VQCZxQ3c4bxBwKeWDj
+	vyCs1PJ2c7TkMKkNFdoSFv2jnaZX7+nPFlN2r
+X-Received: by 2002:a17:902:e549:b0:2e5:41d6:178c with SMTP id
+ d9443c01a7336-2eb364f8d9bmr16400675ad.33.1793360109306; Fri, 30 Oct 2026
+ 04:35:09 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com> <20261014-dw-hdmi-qp-yuv-v5-2-6fab0fe43a9b@collabora.com>
-In-Reply-To: <20261014-dw-hdmi-qp-yuv-v5-2-6fab0fe43a9b@collabora.com>
+References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com> <20261014-dw-hdmi-qp-yuv-v5-5-6fab0fe43a9b@collabora.com>
+In-Reply-To: <20261014-dw-hdmi-qp-yuv-v5-5-6fab0fe43a9b@collabora.com>
 From: Daniel Stone <daniel@fooishbar.org>
-Date: Fri, 30 Oct 2026 11:34:33 +0000
-X-Gm-Features: AclHuK_tphtpQ4KgZ6QBDW1MCkhoNuUykWSbAiahdSvtWRJxD3fhHMWk1DFCw5Q
-Message-ID: <CAPj87rMYHa6NmiwC3DJ30fSLukpyNJdgRa-Ri-TyZTpDu2NkrA@mail.gmail.com>
-Subject: Re: [PATCH v5 02/15] drm/rockchip: vop2: Fix resource leak on
- vop2_enable() error path
+Date: Fri, 30 Oct 2026 11:34:57 +0000
+X-Gm-Features: AclHuK9zIGd0T_kGXOKSuNwCM4dWmBNTN1uB9T4b5-OFaEClVCp9NkMOArmh8_E
+Message-ID: <CAPj87rMh7_Efefe3D7DyOFmMiFUtBYdC8e6EXfJYzhEu3DXDyg@mail.gmail.com>
+Subject: Re: [PATCH v5 05/15] drm/rockchip: vop2: Avoid division by zero when
+ computing max_dclk
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
 	Andy Yan <andy.yan@rock-chips.com>, 
@@ -116,8 +116,8 @@ Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@snte
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	Sashiko <sashiko-bot@kernel.org>, Igor Paunovic <royalnet026@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_043445_527411_1E32DDE3 
-X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-CacheID: sfid-20261030_043510_224248_70A97491 
+X-CRM114-Status: UNSURE (   7.70  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -141,16 +141,9 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 On Tue, 13 Oct 2026 at 23:51, Cristian Ciocaltea
 <cristian.ciocaltea@collabora.com> wrote:
-> vop2_enable() returns void, so callers cannot tell whether powering up
-> the VOP2 succeeded.
->
-> Additionally, if rockchip_drm_dma_attach_device() fails, vop2_enable()
-> returns without disabling the core clocks or dropping the runtime PM
-> reference taken earlier, leaking both.
->
-> Make vop2_enable() return int and unwind all resources on every failure
-> path.  As disabling the core clocks is also needed in vop2_disable(),
-> factor it out into a local helper used by both.
+> Default bpc to 8 when it would otherwise be 0.  The resulting max_dclk
+> value is a don't-care on the non-HDMI paths that trigger this, since the
+> encoder loop will not select the PHY PLL as the DCLK source there.
 
 Reviewed-by: Daniel Stone <daniels@collabora.com>
 
