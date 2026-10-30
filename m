@@ -2,97 +2,88 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AE148606A31E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 17:57:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A3473606A31E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 18:02:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JHdBIqIB;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=iRrrY2w2
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Wv7Jo+Ul;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=jCwZPf+Y
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Qo9KHp10QpIKapCV3EPJytWUBWli35nOV9UXs/vgks0=; b=JHdBIqIBW+uA/QUeX53jxPvqh0
-	5Pq2xA6XQlevWM7AhGkxt3UZ+ebejF2mpZMVzAcIOcd1afjRGHl3reicoxKd90O96c51ycsNgePDu
-	QumsxmchIj1PgIQ28wfLkeIQlQiiUr5loHqbLiuzQrfo2dumxHY0WXEZ1vSIKxnJrshoLAQRVWQkM
-	ImtJMdcYVOMXx/mJwPJFpPx1eb3lY65kLD0ZHJkqfiyr6e/prVvdGushzQB46ysBWlgwYjgHZyYjF
-	9b0d9mwCDhmdvkp3pIihBK9WhoAbFDuxBQ8yIQDmAq8Rsj5W870unTM2NrnjLoVYH/DNDm9yT5DGy
-	BOuLet0Q==;
+	bh=Gnf0gdCTCLjsmxHbedL6KYs1Elf2AeyCoGp0BdCshOw=; b=Wv7Jo+UlVjv8LhkrbRIQX5TxBm
+	Hc+L21gsYOrwJql4Z4xOfgCLbEDO7f9v31lJzMZ50LIOo3TPV6xW+HhyBQOqPDO+6gsxYqKfBFHK0
+	eaRndJ9zj/uFHWXxgvQccdk76+ZVaglzoy9SNxGCs2tTAdgjYN4ZPcczv1AjUoYZpGlQILtXqZDGb
+	RHcYsfVN/xMAQVxEI1iQmNtF6T9CxIXWDgdcvcJ4e319PvlgdOvi3f91iS3nLJLlzfkI4WyIbB2yM
+	pGLsn6fc3EZKfsaLcFXLuOe2fC478BiwJrnm2L0aGRtouEFZPOm6KT7p3divButr+ih2PmEtqjRHZ
+	nib0ja+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMqqn-0000000CKn7-2lzr;
-	Fri, 30 Oct 2026 17:57:13 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xMqvU-0000000CLPJ-49Qv;
+	Fri, 30 Oct 2026 18:02:04 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMqqm-0000000CKmj-14hE;
-	Fri, 30 Oct 2026 17:57:12 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5E3AE601F8;
-	Fri, 30 Oct 2026 17:57:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A51321F000C1;
-	Fri, 30 Oct 2026 17:57:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793383031;
-	bh=gFpY/CcR/0PfOj1nIommMYQjTVE3zadszE3CB4i7mAE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=iRrrY2w2Y9xtSge+L94oD6rgtPud3fBfQiMrTX+Al7/W8zTnhkfqM7RDC18GrIhox
-	 ewQIqX1WdvTOZ7Bnb8kEiJxB7vhfupJcXLrqJHfVJmQuVjhMMGXh4BltBQj2wnNR+f
-	 gHAKGwB4eULVAAtBRqGGT+UhCMdv1ulj+vFdkMfOiB/4G3wIYw5rBSpE4srr4r0CmW
-	 q76IDsn7CCP3CkEPo3n6bChvAruH3xBsEU7scFsGK7oWP5/Q9cRFt4v4aV25qfb1ak
-	 aJKqW1mvY/un9fp6I0lUH/lcAIhAvvtx3QVQGuyqUr+A1akCy+DS634oukVT0Fm81S
-	 JylpU6Y2OJtGg==
-Date: Fri, 30 Oct 2026 12:57:07 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Cunhao Lu <1579567540@qq.com>
-Cc: Vinod Koul <vkoul@kernel.org>, linux-kernel@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	devicetree@vger.kernel.org, Ulf Hansson <ulfh@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>,
-	linux-i2c@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
-	linux-mmc@vger.kernel.org, Jaehoon Chung <jh80.chung@samsung.com>,
-	linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	linux-gpio@vger.kernel.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	linux-serial@vger.kernel.org, linux-phy@lists.infradead.org,
-	David Wu <david.wu@rock-chips.com>,
-	Jisheng Zhang <jszhang@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Daniel Lezcano <daniel.lezcano@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Andi Shyti <andi.shyti@kernel.org>, netdev@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	Stephen Boyd <sboyd@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>, linux-clk@vger.kernel.org,
-	Lee Jones <lee@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
-	linux-pm@vger.kernel.org, Eric Dumazet <edumazet@kernel.org>,
-	Linus Walleij <linusw@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	Jiri Slaby <jirislaby@kernel.org>, mfd@lists.linux.dev,
-	Lukasz Luba <lukasz.luba@arm.com>
-Subject: Re: [PATCH 15/27] dt-bindings: thermal: rockchip: Add RK3572
-Message-ID: <179338302704.1052003.1217038556098024817.robh@kernel.org>
-References: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
- <20261022-add-board-ok3572-c-v1-15-0b0fd85a31ee@qq.com>
+	id 1xMqvR-0000000CLOB-0llM;
+	Fri, 30 Oct 2026 18:02:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=9gfQkCnTfkug6p4HXHCVXaX3Q+suBlhnBegGYXjv1IY=; b=jCwZPf+YIAUctffkKF7pw1WOTQ
+	CqyoI3bprXm02g6eVWMZAP2o9CQVig+ZDJuoNwBP1DxIkVbxMu2P/p4tXuxMKYc4Ct92k59PUjQcu
+	p9M0fxe+NKOPyBTiu4qZ2BMXCD5QeYqAOL4k5RyLDO01SzgGowPpWRasZrVz0wa/3JwDJ69OQ5HjO
+	4UM6+54lKVKYP6PTNYFyIhj0lDGZ7WeJFcJ+JWU2yRWfB/ufDvxDvH0vcmrgyj7hjhi7+KK0AishG
+	9nt0DMnXu14dtZMGcnL5n4WhtagwmsKlCTgUsCSliSuChpiCIPJYQEQsCDmoc4yHiNsX+FkeeXrRO
+	6c6ajRIw==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Emil Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
+ Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,
+ Dominique Belhachemi <db@domibel.de>, Andy Yan <andyshrk@163.com>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Yakir Yang <kuankuan.y@gmail.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Michal Wilczynski <m.wilczynski@samsung.com>,
+ Conor Dooley <conor@kernel.org>, William Qiu <william.qiu@starfivetech.com>,
+ Xingyu Wu <xingyu.wu@starfivetech.com>, Sandy Huang <hjc@rock-chips.com>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Michal Wilczynski <m.wilczynski@samsung.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Maud Spierings <maud_spierings@murena.io>,
+ Graham Markall <hello@big-grey.co.uk>,
+ Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+ Joshua Peisach <jpeisach@ubuntu.com>,
+ Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@baylibre.com>,
+ Byron Stanoszek <gandalf@winds.org>, OOHehir <oo.hehir@gmail.com>
+Subject: Re: [PATCH v6 09/18] drm/bridge: inno-hdmi: Allow the register map to come
+ from a parent
+Date: Fri, 30 Oct 2026 19:01:08 +0100
+Message-ID: <3194397.687JKscXgg@phil>
+In-Reply-To: <20261029-jh7110-clean-send-v6-9-759594e43acf@samsung.com>
+References: <20261029-jh7110-clean-send-v6-0-759594e43acf@samsung.com>
+ <CGME20261029075407eucas1p1c9b0d887cafa4c3c10bb34fa3ef3c4b7@eucas1p1.samsung.com>
+ <20261029-jh7110-clean-send-v6-9-759594e43acf@samsung.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261022-add-board-ok3572-c-v1-15-0b0fd85a31ee@qq.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261030_110201_230905_817BE213 
+X-CRM114-Status: GOOD (  23.76  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,8 +93,8 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -112,20 +103,58 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-
-On Thu, 22 Oct 2026 00:11:12 +0800, Cunhao Lu wrote:
-> Add the RK3572 thermal sensor compatible.
-> 
-> Signed-off-by: Cunhao Lu <1579567540@qq.com>
-> ---
->  Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRG9ubmVyc3RhZywgMjkuIE9rdG9iZXIgMjAyNiwgMDg6NTM6NDMgTWl0dGVsZXVyb3DDpGlz
+Y2hlIE5vcm1hbHplaXQgc2NocmllYiBNaWNoYWwgV2lsY3p5bnNraToKPiBPbiBzb21lIFNvQ3Mg
+dGhlIEhETUkgY29udHJvbGxlciBkb2VzIG5vdCBvd24gaXRzIHJlZ2lzdGVyIHdpbmRvdy4gVGhl
+Cj4gU3RhckZpdmUgSkg3MTEwIGRvY3VtZW50cyBvbmUgNjQgS0IgYmxvY2ssIHUwX2hkbWl0eCwg
+dGhhdCBob2xkcyBib3RoCj4gdGhlIGNvbnRyb2xsZXIgYW5kIHRoZSBQSFksIHNvIHRoZSBwYXJl
+bnQgZGV2aWNlIG1hcHMgaXQgYW5kIG93bnMgdGhlCj4gcmVnbWFwIHdoaWxlIHRoZSB0d28gY2hp
+bGRyZW4gc2hhcmUgaXQuCj4gCj4gVXNlIGEgcmVnbWFwIHN1cHBsaWVkIGJ5IHRoZSBwYXJlbnQg
+ZGV2aWNlIHdoZW4gdGhlcmUgaXMgb25lLCBhbmQga2VlcAo+IG1hcHBpbmcgb3VyIG93biByZXNv
+dXJjZSB3aGVuIHRoZXJlIGlzIG5vdCwgc28gcGxhdGZvcm1zIHRoYXQgb3duIHRoZWlyCj4gcmVn
+aXN0ZXIgd2luZG93IGFyZSB1bmFmZmVjdGVkLgo+IAo+IFJldmlld2VkLWJ5OiBKb3NodWEgUGVp
+c2FjaCA8anBlaXNhY2hAdWJ1bnR1LmNvbT4KPiBUZXN0ZWQtYnk6IEJ5cm9uIFN0YW5vc3playA8
+Z2FuZGFsZkB3aW5kcy5vcmc+Cj4gVGVzdGVkLWJ5OiBPT0hlaGlyIDxvby5oZWhpckBnbWFpbC5j
+b20+Cj4gU2lnbmVkLW9mZi1ieTogTWljaGFsIFdpbGN6eW5za2kgPG0ud2lsY3p5bnNraUBzYW1z
+dW5nLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9pbm5vLWhkbWkuYyB8IDMx
+ICsrKysrKysrKysrKysrKysrKysrKysrKysrKystLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDI4IGlu
+c2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9icmlkZ2UvaW5uby1oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2lubm8taGRt
+aS5jCj4gaW5kZXggMjIyZjY1MjI4NDRlZTYwYWU5YTA3YWIyZGNjYTc0OGRiZjc0MDNlNC4uYTg5
+MDViZjYyN2EyMjRkN2UzOTE4NTE0MTk1ZjE4MTAxNjRkYzI2ZiAxMDA2NDQKPiAtLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vYnJpZGdlL2lubm8taGRtaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2Jy
+aWRnZS9pbm5vLWhkbWkuYwo+IEBAIC0zOTcsNiArMzk3LDcgQEAgc3RydWN0IGlubm9faGRtaSB7
+Cj4gIAlzdHJ1Y3QgY2xrICpwY2xrOwo+ICAJc3RydWN0IGNsayAqcmVmY2xrOwo+ICAJdm9pZCBf
+X2lvbWVtICpyZWdzOwo+ICsJc3RydWN0IHJlZ21hcCAqcmVnbWFwOwo+ICAJc3RydWN0IHJlZ21h
+cCAqZ3JmOwo+ICAKPiAgCXN0cnVjdCBpbm5vX2hkbWlfaTJjICppMmM7Cj4gQEAgLTQ3MCwxMSAr
+NDcxLDI1IEBAIHN0YXRpYyBpbnQgaW5ub19oZG1pX2ZpbmRfcGh5X2NvbmZpZyhzdHJ1Y3QgaW5u
+b19oZG1pICpoZG1pLAo+ICAKPiAgc3RhdGljIGlubGluZSB1OCBoZG1pX3JlYWRiKHN0cnVjdCBp
+bm5vX2hkbWkgKmhkbWksIHUxNiBvZmZzZXQpCj4gIHsKPiArCXUzMiB2YWw7Cj4gKwo+ICsJaWYg
+KGhkbWktPnJlZ21hcCkgewo+ICsJCWlmIChyZWdtYXBfcmVhZChoZG1pLT5yZWdtYXAsIG9mZnNl
+dCAqIDQsICZ2YWwpKQo+ICsJCQlyZXR1cm4gMDsKPiArCj4gKwkJcmV0dXJuIHZhbDsKPiArCX0K
+PiArCj4gIAlyZXR1cm4gcmVhZGxfcmVsYXhlZChoZG1pLT5yZWdzICsgKG9mZnNldCkgKiAweDA0
+KTsKPiAgfQo+ICAKPiAgc3RhdGljIGlubGluZSB2b2lkIGhkbWlfd3JpdGViKHN0cnVjdCBpbm5v
+X2hkbWkgKmhkbWksIHUxNiBvZmZzZXQsIHUzMiB2YWwpCj4gIHsKPiArCWlmIChoZG1pLT5yZWdt
+YXApIHsKPiArCQlyZWdtYXBfd3JpdGUoaGRtaS0+cmVnbWFwLCBvZmZzZXQgKiA0LCB2YWwpOwo+
+ICsJCXJldHVybjsKPiArCX0KPiArCj4gIAl3cml0ZWxfcmVsYXhlZCh2YWwsIGhkbWktPnJlZ3Mg
+KyAob2Zmc2V0KSAqIDB4MDQpOwo+ICB9Cj4gIAo+IEBAIC0xMTAxLDkgKzExMTYsMTkgQEAgc3Ry
+dWN0IGlubm9faGRtaSAqaW5ub19oZG1pX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBk
+ZXYsCj4gIAloZG1pLT5kZXYgPSBkZXY7Cj4gIAloZG1pLT5wbGF0X2RhdGEgPSBwbGF0X2RhdGE7
+Cj4gIAo+IC0JaGRtaS0+cmVncyA9IGRldm1fcGxhdGZvcm1faW9yZW1hcF9yZXNvdXJjZShwZGV2
+LCAwKTsKPiAtCWlmIChJU19FUlIoaGRtaS0+cmVncykpCj4gLQkJcmV0dXJuIEVSUl9DQVNUKGhk
+bWktPnJlZ3MpOwo+ICsJLyoKPiArCSAqIE9uIHBsYXRmb3JtcyB3aGVyZSB0aGUgY29udHJvbGxl
+ciBzaGFyZXMgYSByZWdpc3RlciBzcGFjZSB3aXRoCj4gKwkgKiBvdGhlciBibG9ja3MsIHRoZSBw
+YXJlbnQgb3ducyB0aGUgcmVnbWFwLiBGYWxsIGJhY2sgdG8gbWFwcGluZwo+ICsJICogb3VyIG93
+biByZXNvdXJjZSB3aGVyZSBpdCBkb2VzIG5vdC4KPiArCSAqLwo+ICsJaWYgKGRldi0+cGFyZW50
+KQo+ICsJCWhkbWktPnJlZ21hcCA9IGRldl9nZXRfcmVnbWFwKGRldi0+cGFyZW50LCBOVUxMKTsK
+PiArCj4gKwlpZiAoIWhkbWktPnJlZ21hcCkgewo+ICsJCWhkbWktPnJlZ3MgPSBkZXZtX3BsYXRm
+b3JtX2lvcmVtYXBfcmVzb3VyY2UocGRldiwgMCk7Cj4gKwkJaWYgKElTX0VSUihoZG1pLT5yZWdz
+KSkKPiArCQkJcmV0dXJuIEVSUl9DQVNUKGhkbWktPnJlZ3MpOwo+ICsJfQoKd2h5IGNhbid0IHlv
+dSBqdXN0IGFsc28gdXNlIGEgbW1pbyByZWdtYXAgaGVyZT8gQmVjYXVzZSB3aXRoIHRoaXMgY2hh
+bmdlCnRoZSBkcml2ZXIgbm93IGhhcyAyIGNvbXBldGluZyByZWdpc3RlciBpbnRlcmZhY2VzIGFu
+ZCB5b3UgbmVlZCB0aG9zZQpjb25kaXRpb25hbHMgYWxsIHRoZSB0aW1lLgoKSnVzdCBjb252ZXJ0
+IHRoZSBleGlzdGluZyB1c2VyIHRvIGFsc28gdXNlIGEgcmVnbWFwIHBsZWFzZS4KCgpIZWlrbwoK
+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
