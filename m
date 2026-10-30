@@ -2,95 +2,110 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE5EF606A31A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2026 23:06:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 09826606A31A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 01:09:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Ec6CS7m1;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=f8au5m+k
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vga5tNlP;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=tvLlioWx
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=HkwI37dc0tiLLN/y2MfsPNrJLTiECODIPvZzfbWpsxc=; b=Ec6CS7m1CBWcfmFUGTejobUxzq
-	U8FUTJzPT1aBQa2Pv12soThEz4lMWQRN/4FMgYo+Ec3e/COP3QRalru9Zlh0bPSmFwU9QHrWMDnQh
-	4Mf/EYefCjPwLPV6vYUOPhAGpHcGewD570NzicRPhzJo0MFNcv9eGKqa0fjsR8sff9XUSmJ8Wx7/K
-	gUJaFhrG4dGEM0aSbZhPHltqJ04Fq0UklhDO9AHesdSGpWwJ1GYihUN395zUzpnUChVO221G/OSJi
-	PfC5LMzZUERDvY6c2oQL091GLwAj3uuGgZI8aTcL2tO9Pjff33XPM2gB0URC5aBDZ8++pPs4EshWY
-	bvjBiTsg==;
+	bh=U2+PSAlyPMoS/j+xcxO/WcK4Jwy+xidzVaKf88GWOTQ=; b=vga5tNlPzR9wj/W5w8TspefvOw
+	aJi5bjepldzAzv7dDzt46rKhMb6w0QnFRMdBrBe9tBwfBBtlUcoTg68cGswZ4k3U5/LjxFuypzplk
+	IXl2NRsK9i2bk/al9sFazUoG6PGTJY00Ks8IAa1JwU5JBd7F08SAjhiF24gyWCNnUfN+cgWem9mA4
+	6Sm19oPggiRfLSkvyQqF+zvVpLWDTlHksYQibyZX8Pm6jfN/wfhRZ4dBGeXYaVU5nB0+xOhhw7Sc7
+	AwfQ2nuCzfFXcIGs1Gzw7E6apmHD86Lo3JRtdniNsZATjEuZWCRrNa3eyUuTi5VhEYWb2n1gCtNKC
+	I0I46jDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMZCr-0000000AWKW-3Vfn;
-	Thu, 29 Oct 2026 23:06:49 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xMb7d-0000000AbHG-0uM1;
+	Fri, 30 Oct 2026 01:09:33 +0000
+Received: from mail-qk2-x04.google.com ([2607:f8b0:4864:34::4])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMZCp-0000000AWK8-3MI1;
-	Thu, 29 Oct 2026 23:06:47 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 32FAD437AB;
-	Thu, 29 Oct 2026 23:06:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D6191F01824;
-	Thu, 29 Oct 2026 23:06:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793315206;
-	bh=xy2U26Mne6M5YW3gXWwYO3+KzvxuP8VoL+G09hFdvhk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=f8au5m+kyaX+MsBYWeZmjmWrABpfpcSUO75UyTcFSkgugktEXglr2BfkxmILKQ0+f
-	 P5wqwuxpLHGn8FuTl3/LQbqQyS/FiVvYEGXQlkF4rpFwTvCPwJRltypcvPMKJDD6fK
-	 TBa+rvdM2/hpSgwDCSLMMuz3X8jUDg7KA8o/6kRRHD/yJdWFOK0ZYqp7GsleAnsU0X
-	 th0gqTn1s3aR859qD+mZiJECMuKlo7/DTaQdQft1fG7kihyicsSC+Raam4oNDDYVRz
-	 UsueypUmyVlI9zoRELsGj2sn0Q/9LFbjLI9RcqHfZSUBObA18dFfYVhBuMJWl+mbE+
-	 UTOdpdKfmZHRA==
-Date: Thu, 29 Oct 2026 23:06:36 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Michal Wilczynski <m.wilczynski@samsung.com>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Hal Feng <hal.feng@starfivetech.com>,
-	Heiko Stuebner <heiko@sntech.de>, Paul Walmsley <pjw@kernel.org>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>,
-	Dominique Belhachemi <db@domibel.de>, Andy Yan <andyshrk@163.com>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Yakir Yang <kuankuan.y@gmail.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	William Qiu <william.qiu@starfivetech.com>,
-	Xingyu Wu <xingyu.wu@starfivetech.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Manivannan Sadhasivam <mani@kernel.org>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Maud Spierings <maud_spierings@murena.io>,
-	Graham Markall <hello@big-grey.co.uk>,
-	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Joshua Peisach <jpeisach@ubuntu.com>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>
-Subject: Re: [PATCH v6 04/18] dt-bindings: soc: starfive: Add
- starfive,jh7110-hdmi-subsystem
-Message-ID: <20261029-flinch-header-bad94288c71b@spud>
-References: <20261029-jh7110-clean-send-v6-0-759594e43acf@samsung.com>
- <CGME20261029075358eucas1p111293c602fc3aac9c6a044fc41488919@eucas1p1.samsung.com>
- <20261029-jh7110-clean-send-v6-4-759594e43acf@samsung.com>
+	id 1xMb7X-0000000AbFx-0N4f
+	for linux-rockchip@lists.infradead.org;
+	Fri, 30 Oct 2026 01:09:30 +0000
+Received: by mail-qk2-x04.google.com with SMTP id af79cd13be357-93f38343369so9801285a.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 29 Oct 2026 18:09:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1793322564; x=1793927364; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=Kko4zjOXBRybFPzuRuUxh6d2fqu3VVvE60ZOuuaPtno=;
+        b=tvLlioWx7M6Afir4me5QQz9m4dujWNsfA2aIlEap/wEgBE6uIfJuijlrSq20CtLaSC
+         X+Dx2nUrmrMqwZpqoSIL/ugyWUKJguCOOZ9MXCwf9xrNouLgK/nfmPtXQJgTVSU+7dXs
+         qKxKUjbhs1H0BMZYKXwopPo22cEHE0zVhqBiaWcVkT/uVtZ/QyZiQLjqv98fbhbGs+SC
+         AJIseLTH8N0utkCGM43ReCn1iFvTqgd83Qb4PdZEJyvExjPFFF0AO/le0QaxrUI/rBSe
+         1WPWBR57KvxrOy0LJZfhVmEraBAlRul/0oY+vIPR/pivptWsHFi1LjLb3KbfhaFfPE54
+         iPVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793322564; x=1793927364;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=Kko4zjOXBRybFPzuRuUxh6d2fqu3VVvE60ZOuuaPtno=;
+        b=2XHhee8NSOHOD5/CO0VCRbbGDn7DwfkhlGPGFZpZE7oxVbyHhcKdagGAVIGTQ29ymd
+         mqvGq+0wBX7MQdmnAcX8FuyTQoztF9k6qJqDIMt5hDR8HArsAH3Ux/9x2cjrJ0ql/qXO
+         EHkehDVWEyWhYZ6Ez1QjG5ZsOLYtn8gJ3A4cjgNfgRXCmQeJQoltReSLYXk1glaGSnQ1
+         WtFu7kG4FcEZFUQ/TAoE6hY1oJSuzTgi3SGQNDA5lWE3LbjWHuaPDXEWS1rPct3kSwCC
+         5b5uzalnALQazUHsMVrqW8l/bTNzl0P1xz4M7wttk16wXSIx6M+vcclSmXCECYXuKCkr
+         FlJQ==
+X-Forwarded-Encrypted: i=1; AKwUvBzdH3Hc4zvwvIIcPDDKwBK6coAR/rOFLrrXThMCLw/vyjofF2SCZRMIq+MIhFSts/kARcB44FocLQdJ0dobsA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYICW2BYXpxfuHKsT7wbSDs1OHgVVucz1Ze3HcxaZMwlmUxQDEX+
+	oRWvR1v7xSPSGCEW+T1ThwtnszgcCXxf3CzrSwc9KevYFs0C+CtJP23kv9usY6XccVo=
+X-Gm-Gg: AYBFou1CmHwf63UUXsZraxIga5+/LNBgk0yCB8ytSMVF/yjx8rar3hcHnNimKOP79II
+	pV4Dx3K998ZaorcA5vVvzJTM10uS71tNrnlQlA6Z/K7fl/vhxejOGvo5vEu580u/8BuyZJkCAFC
+	nwVfaGry6s2AaOceW+dq0uS8o+5aRNGRLnFQABgMPaLYgcZOdU4oBYlqS3RygwRsqUV32DlowFA
+	qIwr+eyDY8IGOqFezU+B3NBFP5AJWUZNBAGWmZpYQPLPpieoUZY+JA26QgKtPtV49kTQDJLpkr6
+	HI7q5rC9aon73KHiDOp3r+3y+1YHsXHJDUft7kwSE/FcxwDr693YBQyKbWxEOYFKiUxzWd9dbjY
+	81Ic6oPFZOFBTHCy40txrL06GgG4dBhPUHzR+U8U0L8cwIrR2YgaMCb8+ySnJwTFTHfn6DAoa+N
+	OJRmXCU4MeOshRKWBuw+MmVpLcOLz0VW4m6IrzKexTFU5ow0tO8e7U+eIwfkLB0sXIsvNBanlW9
+	UJflc0wXpYYgaLrYu5HGMAeg6YYr7wDYL3uQMJHwMc+rCPnc0Fi9VqioapHWrWlR3q1i1wY+7Dc
+	zDh7ba0zWucKE+MxTtzBpZM6RhiXPaprFNr020TsC6wmWXBaJpHrmSI=
+X-Received: by 2002:a05:620a:618d:b0:93f:5ac:14a0 with SMTP id af79cd13be357-9442171a0cfmr155775385a.67.1793322564021;
+        Thu, 29 Oct 2026 18:09:24 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:11:34bd::5ac? ([2606:6d00:11:34bd::5ac])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-94425a63770sm9406185a.24.2026.10.29.18.09.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 29 Oct 2026 18:09:23 -0700 (PDT)
+Message-ID: <0662c55edd8623628717a17de93be3e79343d017.camel@ndufresne.ca>
+Subject: Re: [PATCH v2] media: rkvdec: vdpu383: configure the reference read
+ cache
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: vlry.bkv@gmail.com, Detlev Casanova <detlev.casanova@collabora.com>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Heiko Stuebner	 <heiko@sntech.de>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Date: Thu, 29 Oct 2026 21:09:21 -0400
+In-Reply-To: <20261029-rkvdec-vdpu383-cache-v2-1-859bb44e03a0@gmail.com>
+References: <20261029-rkvdec-vdpu383-cache-v2-1-859bb44e03a0@gmail.com>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20261029-jh7110-clean-send-v6-4-759594e43acf@samsung.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261029_180927_819680_387D902C 
+X-CRM114-Status: GOOD (  48.82  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,181 +115,334 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0140957259884790593=="
+Content-Type: multipart/mixed; boundary="===============8286670102931971833=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============0140957259884790593==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="BltxCjlw5sIY5QTf"
-Content-Disposition: inline
 
---BltxCjlw5sIY5QTf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--===============8286670102931971833==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-chB0utv8MYz8DSoKGRbr"
+
+
+--=-chB0utv8MYz8DSoKGRbr
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Oct 29, 2026 at 08:53:38AM +0100, Michal Wilczynski wrote:
-> Add the dt-binding for the StarFive JH7110 HDMI subsystem.
+Hi,
+
+Le jeudi 29 octobre 2026 =C3=A0 17:03 +0100, Valerii Bokov via B4 Relay a =
+=C3=A9crit=C2=A0:
+> From: Valerii Bokov <vlry.bkv@gmail.com>
 >=20
-> The JH7110 HDMI IP is a monolithic block containing both the digital
-> controller and analog PHY in a single register space. This binding
-> defines the parent device, which holds the shared register map, and its
-> two children: the PHY and the controller.
+> The VDPU383 has a reference read cache with its own register region,
+> "cache" in the device tree, which the driver does not map. Its
+> configuration and read limit are therefore left at their power-on
+> values, and those differ between power-ups. On RK3576 this makes H.264
+> decoding of a 2688x1520 stream take either 22.5 ms or 65.4 ms per
+> frame, depending on the power-up, while the values the vendor driver
+> programs bring it to 3.6 ms per frame.
 >=20
-> The two have separate resources. The PHY takes the 24 MHz reference
-> clock and provides both the pixel clock, which the VOUT clock generator
-> routes on to the display controller, and the phy the controller uses.
-> The controller takes its clocks from the VOUT clock generator. What
-> they share is the register space, which the parent maps.
+> Map the "cache" region and configure it statically: enable cacheable
+> read-allocate accesses with 64-byte lines and set the read limit
+> (MAX_READS in the vendor driver) to 0x1c. The registers lose their
+> configuration whenever the decoder is powered down, so they are
+> programmed from runtime resume, which also covers the first use after
+> probe. As the vendor driver does (rkvdec_vdpu38x_run() in
+> mpp_rkvdec2.c), the cache is still cleared before every frame, because
+> reference buffers are rewritten between frames.
 >=20
-> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-> Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+> The region is optional: on a device tree that does not describe it, the
+> driver probes as before and leaves the cache unconfigured.
+>=20
+> Decode time per frame for a 2688x1520 H.264 stream on RK3576, within
+> one decoder power-up, with the registers set between runs:
+>=20
+>   MAX_READS  CACHE0_CFG  ms/frame
+>   0x0        power-on        65.4  (slow power-up)
+>   0x2        power-on        22.5  (fast power-up)
+>   0x1c       power-on         7.2
+>   0x2        0x13             8.6
+>   0x1c       0x13             3.6
+>=20
+> The decoded output was bit-identical in all five cases. These numbers
+> were taken by setting the registers from user space through /dev/mem.
+>=20
+> The registers were identified with the help of an AI coding assistant
+> (Claude, model claude-opus-5-5), which diffed register dumps of fast
+> and slow power-ups and matched the result against the vendor driver.
+> It also drafted this patch and its changelog, which I reviewed. The
+> measurements and tests were run on an RK3576 board.
+>=20
+> Link: https://lore.kernel.org/r/20260619111810.564384-1-laszlo.fiat@tuta.=
+io
+> Signed-off-by: Valerii Bokov <vlry.bkv@gmail.com>
 > ---
->  .../starfive/starfive,jh7110-hdmi-subsystem.yaml   | 95 ++++++++++++++++=
-++++++
->  1 file changed, 95 insertions(+)
+> Testing on RK3576 (Smatek T10PE) with this patch applied, on top of
+> 6.18.34 with Simon's priming patch:
+> - The cache registers are programmed on every runtime resume: zeroed
+>   by hand while powered, then suspended and resumed without decoding,
+>   they read back 0x1c/0x13 (4/4).
+> - 2688x1520 H.264: 4.0-4.2 ms/frame on a 257-frame clip across 8
+>   separate power-ups, no fast/slow lottery left.
+> - Output is bit-exact against FFmpeg's software decoder (per-frame md5,
+>   all 257 frames) for that H.264 clip and for an HEVC Main clip with
+>   B-frames encoded from it.
+> - 10 minutes of a live 2688x1520 H.264 RTSP stream at the camera's
+>   25 fps: 24.4 fps average (23-25 fps in every 30 s window), 14% of
+>   one CPU core, no kernel or decoder errors.
 >=20
-> diff --git a/Documentation/devicetree/bindings/soc/starfive/starfive,jh71=
-10-hdmi-subsystem.yaml b/Documentation/devicetree/bindings/soc/starfive/sta=
-rfive,jh7110-hdmi-subsystem.yaml
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..2ff8b0b920aec41a83f0aeaa0=
-ed9c4249fe87f46
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/soc/starfive/starfive,jh7110-hdmi=
--subsystem.yaml
-
-Why is this in bindings/soc? I feel like it should be in
-bindings/display or something along those lines, since it's the display
-subsystem of the device?
-
-Cheers,
-Conor.
-
-> @@ -0,0 +1,95 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/soc/starfive/starfive,jh7110-hdmi-sub=
-system.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: StarFive JH7110 HDMI subsystem
-> +
-> +maintainers:
-> +  - Michal Wilczynski <m.wilczynski@samsung.com>
-> +
-> +description:
-> +  The StarFive JH7110 HDMI block is a monolithic IP containing both
-> +  the digital controller logic and the analog PHY logic in a single
-> +  register space. It sits inside the video output subsystem, which owns
-> +  the NoC bus clock and reset gating this region and the power domain it
-> +  belongs to.
-> +
-> +properties:
-> +  compatible:
-> +    const: starfive,jh7110-hdmi-subsystem
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  phy:
-> +    $ref: /schemas/phy/starfive,jh7110-inno-hdmi-phy.yaml#
-> +
-> +  controller:
-> +    $ref: /schemas/display/bridge/starfive,jh7110-inno-hdmi-controller.y=
-aml#
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - phy
-> +  - controller
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/starfive,jh7110-crg.h>
-> +    #include <dt-bindings/reset/starfive,jh7110-crg.h>
-> +
-> +    soc {
-> +        #address-cells =3D <1>;
-> +        #size-cells =3D <1>;
-> +
-> +        hdmi@29590000 {
-> +            compatible =3D "starfive,jh7110-hdmi-subsystem";
-> +            reg =3D <0x29590000 0x4000>;
-> +
-> +            controller {
-> +                compatible =3D "starfive,jh7110-inno-hdmi-controller";
-> +                clocks =3D <&voutcrg JH7110_VOUTCLK_HDMI_TX_SYS>,
-> +                         <&voutcrg JH7110_VOUTCLK_HDMI_TX_MCLK>,
-> +                         <&voutcrg JH7110_VOUTCLK_HDMI_TX_BCLK>,
-> +                         <&hdmi_phy>;
-> +                clock-names =3D "pclk", "mclk", "bclk", "pixel";
-> +                interrupts =3D <99>;
-> +                phys =3D <&hdmi_phy>;
-> +                resets =3D <&voutcrg JH7110_VOUTRST_HDMI_TX_HDMI>;
-> +                starfive,vout-syscon =3D <&vout_syscon>;
-> +
-> +                ports {
-> +                    #address-cells =3D <1>;
-> +                    #size-cells =3D <0>;
-> +
-> +                    port@0 {
-> +                        reg =3D <0>;
-> +
-> +                        endpoint {
-> +                            remote-endpoint =3D <&dpu_out_dpi0>;
-> +                        };
-> +                    };
-> +
-> +                    port@1 {
-> +                        reg =3D <1>;
-> +
-> +                        endpoint {
-> +                            remote-endpoint =3D <&hdmi_con_in>;
-> +                        };
-> +                    };
-> +                };
-> +            };
-> +
-> +            hdmi_phy: phy {
-> +                compatible =3D "starfive,jh7110-inno-hdmi-phy";
-> +                #clock-cells =3D <0>;
-> +                clocks =3D <&xin24m>;
-> +                #phy-cells =3D <0>;
-> +            };
-> +        };
-> +    };
-> +...
+> Open questions:
+> - I have not checked whether the decoder's soft reset (after a timeout
+>   or error) also resets the cache registers. If it does, they need to
+>   be reprogrammed after a reset as well.
+> - Simon's out-of-tree priming patch also modifies
+>   rkvdec_runtime_resume(), so the two will conflict textually there.
 >=20
-> --=20
-> 2.34.1
+> Possibly related, not part of this patch:
+> - VDPU381 (RK3588) may have the same problem. The vendor driver
+>   programs three caches there before every frame (CACHE0/1/2 in
+>   rkvdec2_run(): cacheable, read-allocate and 64-byte lines, plus a
+>   clear of each), and mainline programs none. I have no RK3588 board to
+>   check whether its decode speed also varies between power-ups.
+> ---
+> Changes in v2:
+> - Configure the cache statically from runtime resume instead of before
+>   every frame, as suggested in review. The values are constants, so
+>   "restore" is a plain rewrite; there is nothing to save.
+> - Keep clearing the cache before every frame, as the vendor driver
+>   does. Happy to drop it if that is preferred, but I have only shown
+>   bit-exactness with a single clear on one clip, which is not enough to
+>   rely on.
+> - Make the "cache" region optional. v1 returned an error from probe
+>   when it was missing, which would make the decoder disappear on any
+>   device tree that does not describe it.
+> - Map the region only for the VDPU383 variant, since the configured
+>   values are specific to it and are now applied from shared code.
+> - Link to v1: https://lore.kernel.org/r/20261028-rkvdec-vdpu383-cache-v1-=
+1-d3548d3b3586@gmail.com
+> ---
+>  .../platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c |  2 +
+>  .../platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c |  2 +
+>  .../platform/rockchip/rkvdec/rkvdec-vdpu383-regs.h |  9 +++++
+>  drivers/media/platform/rockchip/rkvdec/rkvdec.c    | 46 ++++++++++++++++=
++++++-
+>  drivers/media/platform/rockchip/rkvdec/rkvdec.h    |  2 +
+>  5 files changed, 60 insertions(+), 1 deletion(-)
 >=20
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c=
+ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+> index 5ec755733..efb1f6975 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+> @@ -441,6 +441,8 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
+>  	timeout_threshold =3D h264_ctx->regs.common.reg013_core_timeout_thresho=
+ld;
+>  	rkvdec_schedule_watchdog(rkvdec, timeout_threshold);
+> =20
+> +	rkvdec_vdpu383_clear_cache(rkvdec);
+> +
+>  	/* Start decoding! */
+>  	writel(timeout_threshold, rkvdec->link + VDPU383_LINK_TIMEOUT_THRESHOLD=
+);
+>  	writel(0, rkvdec->link + VDPU383_LINK_IP_ENABLE);
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c=
+ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
+> index 3462d995d..6223b89e2 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
+> @@ -568,6 +568,8 @@ static int rkvdec_hevc_run(struct rkvdec_ctx *ctx)
+>  	timeout_threshold =3D hevc_ctx->regs.common.reg013_core_timeout_thresho=
+ld;
+>  	rkvdec_schedule_watchdog(rkvdec, timeout_threshold);
+> =20
+> +	rkvdec_vdpu383_clear_cache(rkvdec);
+> +
+>  	/* Start decoding! */
+>  	writel(timeout_threshold, rkvdec->link + VDPU383_LINK_TIMEOUT_THRESHOLD=
+);
+>  	writel(VDPU383_IP_CRU_MODE, rkvdec->link + VDPU383_LINK_IP_ENABLE);
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-regs.h=
+ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-regs.h
+> index 04eb23297..f64d56a22 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-regs.h
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-regs.h
+> @@ -42,6 +42,15 @@
+>  #define VDPU383_STA_INT_SOFTRESET_RDY	(BIT(10) | BIT(11))
+>  #define VDPU383_STA_INT_ALL		0x3ff
+> =20
+> +/* Reference read cache, in the "cache" register region */
+> +#define VDPU383_CACHE_CLR_CACHE0	0x10
+> +#define VDPU383_CACHE_MAX_READS		0x18
+> +#define VDPU383_CACHE_CACHE0_CFG	0x1c
+> +#define VDPU383_CACHE_CFG_CACHEABLE	BIT(0)
+> +#define VDPU383_CACHE_CFG_READ_ALLOCATE	BIT(1)
+> +#define VDPU383_CACHE_CFG_LINE_64B	BIT(4)
+> +#define VDPU383_CACHE_MAX_READS_VAL	0x1c
 
---BltxCjlw5sIY5QTf
-Content-Type: application/pgp-signature; name=signature.asc
+nit: I tried to find better meaning and why 28 is better, but didn't. If yo=
+u do,
+perhaps document? They also call this "max outstanding reads". We could add=
+ a
+blank line to make it clear is just a default value we picked, we could eve=
+n
+call this _DEFAULT ? Just ideas.
+
+https://github.com/rockchip-linux/kernel/commit/b6a726b6cace3d7e6cfac109766=
+b14bed1e39d5e#diff-0f3228bbff65fb9bd56a2b9ed33cc9ee55565caed231da6076939ce3=
+97064835
+
+> +
+>  struct vdpu383_regs_common {
+>  	u32 reg008_dec_mode;
+> =20
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/me=
+dia/platform/rockchip/rkvdec/rkvdec.c
+> index fbcd0f175..405df54cc 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> @@ -1158,6 +1158,29 @@ void rkvdec_schedule_watchdog(struct rkvdec_dev *r=
+kvdec, u32 timeout_threshold)
+>  	schedule_delayed_work(&rkvdec->watchdog_work, msecs_to_jiffies(watchdog=
+_time));
+>  }
+> =20
+> +/*
+> + * The reference read cache and the read limit lose their configuration =
+at
+> + * every power-down and come up with values that vary between power-ups,
+> + * several times slower than the vendor driver's. Program them whenever =
+the
+> + * decoder is powered up.
+> + */
+> +static void rkvdec_vdpu383_config_cache(struct rkvdec_dev *rkvdec)
+> +{
+> +	writel(VDPU383_CACHE_CFG_CACHEABLE | VDPU383_CACHE_CFG_READ_ALLOCATE |
+> +	       VDPU383_CACHE_CFG_LINE_64B, rkvdec->cache + VDPU383_CACHE_CACHE0=
+_CFG);
+> +	writel(VDPU383_CACHE_MAX_READS_VAL, rkvdec->cache + VDPU383_CACHE_MAX_R=
+EADS);
+> +}
+> +
+> +/*
+> + * Reference buffers are rewritten between frames, so the cache is clear=
+ed
+> + * before every frame, as the vendor driver does.
+> + */
+> +void rkvdec_vdpu383_clear_cache(struct rkvdec_dev *rkvdec)
+> +{
+> +	if (rkvdec->cache)
+> +		writel(1, rkvdec->cache + VDPU383_CACHE_CLR_CACHE0);
+> +}
+> +
+>  static void rkvdec_device_run(void *priv)
+>  {
+>  	struct rkvdec_ctx *ctx =3D priv;
+> @@ -1807,6 +1830,19 @@ static int rkvdec_probe(struct platform_device *pd=
+ev)
+>  		rkvdec->link =3D devm_platform_ioremap_resource_byname(pdev, "link");
+>  		if (IS_ERR(rkvdec->link))
+>  			return PTR_ERR(rkvdec->link);
+> +
+> +		/* VDPU383 reference read cache; device trees may not describe it */
+> +		if (rkvdec->variant =3D=3D &vdpu383_variant) {
+> +			if (platform_get_resource_byname(pdev, IORESOURCE_MEM, "cache")) {
+> +				rkvdec->cache =3D
+> +					devm_platform_ioremap_resource_byname(pdev, "cache");
+> +				if (IS_ERR(rkvdec->cache))
+> +					return PTR_ERR(rkvdec->cache);
+> +			} else {
+> +				dev_info(&pdev->dev,
+> +					 "no \"cache\" region, reference read cache not configured\n");
+> +			}
+> +		}
+
+I'm wondering if this can be simplified, skipping manual vdpu383 hit, and j=
+ust
+go fet the cache. Though, I see that RK3566/68 might also have a cache, wit=
+h 3
+slots ?
+
+>  	}
+> =20
+>  	ret =3D dma_set_coherent_mask(&pdev->dev, DMA_BIT_MASK(32));
+> @@ -1875,8 +1911,16 @@ static void rkvdec_remove(struct platform_device *=
+pdev)
+>  static int rkvdec_runtime_resume(struct device *dev)
+>  {
+>  	struct rkvdec_dev *rkvdec =3D dev_get_drvdata(dev);
+> +	int ret;
+> =20
+> -	return clk_bulk_prepare_enable(rkvdec->num_clocks, rkvdec->clocks);
+> +	ret =3D clk_bulk_prepare_enable(rkvdec->num_clocks, rkvdec->clocks);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (rkvdec->cache)
+> +		rkvdec_vdpu383_config_cache(rkvdec);
+> +
+> +	return 0;
+>  }
+> =20
+>  static int rkvdec_runtime_suspend(struct device *dev)
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/me=
+dia/platform/rockchip/rkvdec/rkvdec.h
+> index a24be6638..ab13b880a 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+> @@ -136,6 +136,7 @@ struct rkvdec_dev {
+>  	struct clk *axi_clk;
+>  	void __iomem *regs;
+>  	void __iomem *link;
+> +	void __iomem *cache;
+>  	struct mutex vdev_lock; /* serializes ioctls */
+>  	struct delayed_work watchdog_work;
+>  	struct gen_pool *sram_pool;
+> @@ -180,6 +181,7 @@ void rkvdec_run_preamble(struct rkvdec_ctx *ctx, stru=
+ct rkvdec_run *run);
+>  void rkvdec_run_postamble(struct rkvdec_ctx *ctx, struct rkvdec_run *run=
+);
+>  void rkvdec_memcpy_toio(void __iomem *dst, void *src, size_t len);
+>  void rkvdec_schedule_watchdog(struct rkvdec_dev *rkvdec, u32 timeout_thr=
+eshold);
+> +void rkvdec_vdpu383_clear_cache(struct rkvdec_dev *rkvdec);
+
+Overall, looks good to me.
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+> =20
+>  void rkvdec_quirks_disable_qos(struct rkvdec_ctx *ctx);
+> =20
+>=20
+> ---
+> base-commit: 65ba8f34ec886ec72b2c07ddc8cf3d815c32869d
+> change-id: 20261028-rkvdec-vdpu383-cache-8fbbf8313da3
+>=20
+> Best regards,
+
+--=-chB0utv8MYz8DSoKGRbr
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCauPRfAAKCRB4tDGHoIJi
-0q9aAQDv07UymcETvBZlVghJCL8rpRoohfFFCoPKCAXQf1RVRAEAxilNjF3B0oMe
-r04GfPnJ8scs0S42SIRPrV01ClukYAM=
-=ziB+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCauPuQQAKCRDZQZRRKWBy
+9GQqAQDHLM5SlCbk/wJ0SRV0odUpbr3Lg/xoKBqKoUJVueFzQAEAiY+dzhDBjmpM
+bTzbyWcvpoUlskrmDn0slsq1fJ0cpgI=
+=Qz1r
 -----END PGP SIGNATURE-----
 
---BltxCjlw5sIY5QTf--
+--=-chB0utv8MYz8DSoKGRbr--
 
 
---===============0140957259884790593==
+--===============8286670102931971833==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -285,5 +453,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0140957259884790593==--
+--===============8286670102931971833==--
 
