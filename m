@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6D222606A321
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 11:21:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 452B7606A31A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 11:34:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fgngMC0W;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=fooishbar.org header.i=@fooishbar.org header.a=rsa-sha256 header.s=google header.b=oQ5w372D
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WrpOYFs/;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=fooishbar.org header.i=@fooishbar.org header.a=rsa-sha256 header.s=google header.b=X9YtF1t1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,91 +14,91 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=UYlWfvoGW5ASAMbvOhIaVwEbUvrRWlFz8q8DJi5LF7Y=; b=fgngMC0Wa+hlYP+j3fEO/V5YVq
-	VlL/nJA3TKSA7MDIYLY90rJehIGgdYBSNxbxdJ4zgrVtRedm2BgiTfmavFGdCROgTNPw0WEG1T15g
-	ZjqxLe5lv0gL551R4EoclNmO1DK4iZ0SSO4RKU/zriK2YZubBmvEUjc37SjO5xGSOLdE4DEVe7qZM
-	tbsq50c9Am+X5zub6aAx814VpDBdfdxr4MyB/gRWD3ks71rqCbnR1WMLCy/0tm/U/xhjlQ9uB3UOF
-	HkoC0Om9JLL1eP2ynq0jftdspHa7usqgW/EixRT8E4W56m5/XB54ft0rUEuWFrMEbbFSqUbMlHV6i
-	vQl/WUZw==;
+	bh=Wy5yqfdI4FN0fYIi9l08Hg1iQmKuNXdv6NUvhPjSJDk=; b=WrpOYFs/9PUQ5/j9E15zYjSK/4
+	zIH/Bzx7OTmuVjlPrRd/Fg/pb+dWCSH6OeX/T1D5OwbtlKrxCeWeQH/5V8j5POxefhbZQDdUmCUxr
+	F/Mm/kMIbVz6fn+sDF3mbXvbKOv7teNz0sveXZMFYT4MVSqklG3fjEIJXDb6H6GpOhGxrB+oK0y1a
+	vdc12me6e1625jcFd3EZ+qSp0HdhCedBeiHfG95GcIgLHl/nvvwlV9rZFkGfOi5ettuEWrpal7I6B
+	EWBS1zlfKPwzfwfqcOsp097CCe6HG3XmcT7LD0RdJ0bHk5pNOCsombBoBnwP0V4lpRK55MyjBK+Zu
+	1RXAuASQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMkg7-0000000BXih-2eQJ;
-	Fri, 30 Oct 2026 11:21:47 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1xMksi-0000000BYtd-3NSf;
+	Fri, 30 Oct 2026 11:34:48 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMkg5-0000000BXh8-1Ce1
+	id 1xMksf-0000000BYst-22wC
 	for linux-rockchip@lists.infradead.org;
-	Fri, 30 Oct 2026 11:21:46 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-8a0880a46e7so302841b3a.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 30 Oct 2026 04:21:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793359303; cv=none;
+	Fri, 30 Oct 2026 11:34:47 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2eac4877accso2022445ad.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 30 Oct 2026 04:34:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1793360084; cv=none;
         d=google.com; s=arc-20260327;
-        b=b746Kg3PIwbHL1j2ViT/N+75th4G/cHK+1emTz/BxStKgqJ0hg6B9MTGw6sQ7C3YhC
-         pkTJMiflDwZVyCia5tR0heF+ANEk8NETAy2WBBM0NQvqceu/YYL+nf1R/lbm2rR0Ghb0
-         BNuYjKTnfpK7NHhaNQBvRNHlWRAOXDuZOJYBo+b+o/n4ck7oS4v97Cl7KQbPUmNrzFl0
-         Ps2zxlcfHGHsT7hVhxQOxkMj2PuquoCsOn5uYbWVxlLQ7MuRo+2ZlyAsTN4sxtf54ZIf
-         1umszY+PKiYo9wHzdKzOBNthNRaMbzMYUu9UggmncaSkjB0tYWqNylKVOLcL7ql7DgxJ
-         fVGA==
+        b=PiYLRDyOepBS5s9zkSFR/QuzKVl5T+H4bw+pKJKaFmohFcrkX9SmD9uNKrDt2GADr/
+         /z4Rwt4kCT+qEHTmNWAlENsbQJUV7amFqevtXhz9lovfZlh7Oq9Ri0TM/fJoGLiXFyR5
+         a3JMcDTzwTFpVzzSQy6kQauSTQkhVAFLBUwgYUSBJvRoWzGI1ALu1Q/6gKWM7XopswyQ
+         a8rdoy6nlXQtE+uEtNcR+HNEfVfB83kU2WS3YCVGuEg7rMXVsRrV88kEeuXlg8Vh+o8B
+         LK9eW67NdwipJ3EgntwJZiM+g6N2GiXU8J7G+XuqXpFPYo19ieDfQOKozgtPAdVEkRtO
+         HJoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=IhotsZMujGgxWB8wogYX7M/QNYLtJDwXry3FOoC6GuE=;
-        fh=KgJ0Aj/7gyJEwN9WrUthWYzyiQ/G8e8lN4CSkJTMO4Y=;
-        b=X9WEk11F5mMG3qhFKSKje7Az9wfaK5b7z5s4BhUIfotEng0mjcwfVC4Q5tFG0gz5+T
-         L+A4+gwHi3ydei0iQPe4YZaQPVdt5v0iLOE1vOVUDxNnb2i/AKLq2UEf9yCcpWdEjz5X
-         qTEzTQ8alLvEZuY26IThrsyQ0GGrBR0s/toXzVJeH/yL6vUY3EDtlwpHtPGH27dZWrjv
-         RgO0XT3RDIut+EoTGzY6qxpQgqlTNj/4MQ/00RREK0Zc9muufQMLZaph68PqcvHWH/0z
-         FXYcg8ZR95sDhNvlja6CrMWc1btNUim8AIRY63LHYSlxGJHTMj5I4AXy4oRxm6dNlZ/1
-         hOzA==;
+        bh=c97+eBSw0JgaFK2XxPHQ2OocTE5xGkKfdIwT0n7EkqY=;
+        fh=oQNpnJB44yAYfs+lj/KxBt4pykxpRaxWWoiQAwV9UpU=;
+        b=StrzioHTfsl3fZZdBgDh6wX+id4SjfiTqDaN2kbPtBAq7B5Pv1mEnHb7Aqk/hXzHhO
+         OnTaHkrXa5a/pYVXfQYEqM/i4RaSMFdU/BihzCu33Kk7rHRi6ONckzys+ABaKx2f2GIh
+         1l35N7aBGNl+JwJX/7BQTnwvJiZdLRSyUqYAFEdr1iPyj6zjzL5B1hwctKKYts57fG7o
+         pntvmX8b4+9X+RTubPR7Le5cHq2Td80HxULNc0ZRxR/fGaTtmNa2Zn6N5yXF7bPErrrz
+         /Y+789/A5ZsVHdRu10pmXi4OxohuLpgsgt6Qm8z1MFjRgbdv4evWk+xm1HLG7GAWUmkq
+         GKpA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1793359303; x=1793964103; darn=lists.infradead.org;
+        d=fooishbar.org; s=google; t=1793360084; x=1793964884; darn=lists.infradead.org;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=IhotsZMujGgxWB8wogYX7M/QNYLtJDwXry3FOoC6GuE=;
-        b=oQ5w372DwLpKKyBUglzmgODmaoYNYVffCMU6JNA4jXMn8iwr5XmYbHtwfYPPh652//
-         5vsQ8+yXn4yjfWifVqf9B8nuSilDVHjR3ToT9TiQsCP+OFEY6/Z3d9pOMBB4aci1aEVN
-         W+Pk4PROdbYthFN7H6PFpUB8Azr/HRLFfFBav0MvxDSHLAa94Hy5ysAeJsWKaNBMyxxd
-         iXkZFDr/trA0IkqNjLJffPOyeAaSix0nSM3VEW88KbX2rZSG2b0dkQ7yv9iYmTYhFswi
-         qToROoquWlB+5UXVxePnYNgIkSOLYrJi91yOoac4Cje+Y14WkXWu8SyH0XUD/IJY1+OU
-         lCzQ==
+        bh=c97+eBSw0JgaFK2XxPHQ2OocTE5xGkKfdIwT0n7EkqY=;
+        b=X9YtF1t1NxJuxyn1q/iCYcz5bITsCAQ/7Vygleeghw8KOYLHwoElPTf4AC6OG+TRpY
+         d8k8FT2Y+wYtLtJ0XfXPLjsrv8aDdrXWmNS3tFowG+VbQgYp1oS/vLKOXzBKvd4rYHcB
+         QsIuLGW6g5aPL6e3lscf7MHWuDqmJZMlOu8zubOccvCI1CVrDVmhGZ6Y17YGRPHtCCWB
+         KAd+CrpPl+m0Jz0PtuhzgUH91tkqlXXCDTpiF42rrxEuUHp12PIW0bnE3t+oMkr6RtpW
+         lu/iY+7wxWh6X5qVKV7AShCKho92uZD11DZ/LtEc3ItxrUkEuzx5J+NmZL7owiD+H18t
+         7zIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793359303; x=1793964103;
+        d=1e100.net; s=20260707; t=1793360084; x=1793964884;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=IhotsZMujGgxWB8wogYX7M/QNYLtJDwXry3FOoC6GuE=;
-        b=MzZtUVRKnJi/3QmEPTLESIynem8CQ9x+OEJTjacESHlQcjVQgdgrpVUAqaLha+WQ8U
-         EA5B0ORTUQlDt/+g+nZksXcGXgswSZ7EJXSk8eVus7dUOQsbwfyt6zDqJ9HSp1eTxO+h
-         sPoohb2A0q+RIiQnCtlcSUSYsYCXJPbmJ8Vtn3JOfBhu3J29jDQ99jrQoTNU3/TyKDKM
-         zVC01VCa4VlGAty+igKZEM43XuIyULCCpPk2zdMwcZFDxb9lWVnhOuCMTMT8rxZOAHV8
-         YWYVC9F2mT3xlULMLBD88EXihjfwtEaMTUUtinJRP2KWEaJ47d14Aded8hjOMqr/a/ia
-         d/0Q==
-X-Forwarded-Encrypted: i=1; AKwUvBwcxMT+yetA5M4Yk9Kg2O1X9qTmeOAmx2csP1q8nurCGbuLyBe2dZSGX4jgRurBmLfAJCz+xDgW2OTni0NdbA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYI5n7oLyRMMbNvz3MPXFjGEfwxJY9NmYYZz6Cu+tHBUH5K/LHim
-	sA7SlnY1gn0nsKLQ5hdso/XbMtPPmMj2JvWuvY8w3IUq8HGXlCw7uVhnjYYliSsoihqAmxf5GMt
-	IFv/RS+3VEFZQjSJDudJ8M7q9g/9PhG1rbaqXuS3Enw==
-X-Gm-Gg: AYBFou3lzza+LIPHiJMx53qQmCsJuDsQvw1YwrhrHVv7fEuXk5nPEIwkuKiDL8lNThw
-	H3XU6+b90CHH5LhOI4cOTJAcVV4t2H2r1S5JGMEMiVUNkD8pl5sWrQ5P75IucYId76+22Ja88Yh
-	6uzz/Whf+Y+G3M4JhConxSXIeEB9TX5t6mPgKbpIH1UK76Y5IIVogeOshwoflSlNHwf/Zf/EXTh
-	2+4Ng4Xhf6d4vzPN3l9CuKgj2cDFxkR/q04/3o3m/dcH1RqVf1SR7+ZYpl0QTT/7JqW/DCh3Oni
-	l85cxQBRVBurRPUWCe/8ABgiPt6ycsINSOBLo5AJhIU1r+VuUzPZw0GUvAqNI727HIBFn6ebuCy
-	OTjLzdzJFhhGVpymu1QsLavtiQDHSS0BouaLB
-X-Received: by 2002:a05:6a00:12dc:b0:8a0:18bd:ddb0 with SMTP id
- d2e1a72fcca58-8a9bf71b34fmr1264612b3a.26.1793359302995; Fri, 30 Oct 2026
- 04:21:42 -0700 (PDT)
+        bh=c97+eBSw0JgaFK2XxPHQ2OocTE5xGkKfdIwT0n7EkqY=;
+        b=F4bsCTlRsOwegoTOGNh0Kc8aCtQ78l9tlItiLn8/GYeqhW/VkoOKoQAQ0y5WGa+Ssn
+         W2+9jGisIGI6xSrM+lMjm6UwkW1DuVAOWoh4awrRcoyA7pKXb3x08NP0Wgy7HX3/F1em
+         y0Djd5yEoLdD/zMIunqNY1O9ytRJnnJlr89FV4VRlWByn/ERMHxDGGWeillvdPts/iNb
+         /uFCqtEDjLNm2csMEhnhXYSCgo+AHH77kFWFMi3HoNWKihAv7J5+7L3zoEzoUYTQBx1g
+         VzgikZt6KJ9SupuSA/9oBQx3ky4jdP6bfndI4HMN2H5u3uL16oDCaSGKei7EFTejHssT
+         Z9jg==
+X-Forwarded-Encrypted: i=1; AKwUvBwUqTBXt7pfsWOHtCHPck+RRqmb/7BxDkc3eoqwu8s5v9qq4RAESNoDYtwQ6zeol5ozQsyORBG3cZcZ43hjPA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJ/RzdVl11cBY8sMEiKuDsU5k/YCE9pUt4CwavXU/4ciEslcJX9
+	kwOiIZlQ/651GWRmHIjJMDPJIh/4c7aPBv7pCdLIMw6tEuKwJlTq2RjaEF2eD8PjAKSXYygYZ5o
+	z8kFF5g3VmhJ2pDqDt3drOwRXLx/n91MJPJgQN8XXDw==
+X-Gm-Gg: AYBFou3SD+YSJ4qutgcTC6VU7TPkr4IgJS8AUA1N7tD84umShiLYsy0E+xumxgO/o3l
+	/bFWTH8UMrAQOBGnLp4KypYOYjM+h8hyUrjLCZHREHSDDAbYsEvA4+6MHOKNHr79WOYdZlorI5h
+	gXZmpPrhjbcqIYYs3hGOD9chr/d1gE84HOF3TTOXGf4raKFjpTto9o8OPR2EkJ73BwjUjx6yESx
+	USBbzmZa2EdVbyWWI/qAz8oyQd6izT82M6CH7ckW+5im0n8dLAmIwKze3aBNw8lgRRGBq/2OwNf
+	eKLhD1w72at1vSslmziObvlehMYYpyvLnDglzpVseuq1+Rn7EDI453kQLtWmO+Trz6XxUIhB8e9
+	+G+xmwE3Yq/BrC2ksPqQiXSb0e/6Cov+mnigW
+X-Received: by 2002:a17:903:384d:b0:2e9:9bac:2e90 with SMTP id
+ d9443c01a7336-2eb3650d23fmr19334835ad.65.1793360084151; Fri, 30 Oct 2026
+ 04:34:44 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com> <20261014-dw-hdmi-qp-yuv-v5-4-6fab0fe43a9b@collabora.com>
-In-Reply-To: <20261014-dw-hdmi-qp-yuv-v5-4-6fab0fe43a9b@collabora.com>
+References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com> <20261014-dw-hdmi-qp-yuv-v5-2-6fab0fe43a9b@collabora.com>
+In-Reply-To: <20261014-dw-hdmi-qp-yuv-v5-2-6fab0fe43a9b@collabora.com>
 From: Daniel Stone <daniel@fooishbar.org>
-Date: Fri, 30 Oct 2026 11:21:32 +0000
-X-Gm-Features: AclHuK_sZpu_OHKEsqb49igvHOjsFenvWY6XU2UJTZwHMq2AAjoVYXumXoLt9p0
-Message-ID: <CAPj87rN1rzjDMPvVJytwmvHGipCCuYOyX3abTRqYp4Vq5PyrYQ@mail.gmail.com>
-Subject: Re: [PATCH v5 04/15] drm/rockchip: vop2: Send pending event when
- atomic_enable() fails
+Date: Fri, 30 Oct 2026 11:34:33 +0000
+X-Gm-Features: AclHuK_tphtpQ4KgZ6QBDW1MCkhoNuUykWSbAiahdSvtWRJxD3fhHMWk1DFCw5Q
+Message-ID: <CAPj87rMYHa6NmiwC3DJ30fSLukpyNJdgRa-Ri-TyZTpDu2NkrA@mail.gmail.com>
+Subject: Re: [PATCH v5 02/15] drm/rockchip: vop2: Fix resource leak on
+ vop2_enable() error path
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
 	Andy Yan <andy.yan@rock-chips.com>, 
@@ -116,8 +116,9 @@ Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@snte
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	Sashiko <sashiko-bot@kernel.org>, Igor Paunovic <royalnet026@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_042145_432342_611B9C13 
-X-CRM114-Status: GOOD (  17.55  )
+X-CRM114-CacheID: sfid-20261030_043445_527411_1E32DDE3 
+X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -131,53 +132,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Cristian,
-
 On Tue, 13 Oct 2026 at 23:51, Cristian Ciocaltea
 <cristian.ciocaltea@collabora.com> wrote:
-> vop2_crtc_atomic_flush() stashes the CRTC completion event in vp->event
-> and relies on the frame start interrupt (VP_INT_FS_FIELD) to deliver it
-> later via drm_crtc_send_vblank_event().  Since atomic_enable() runs
-> before atomic_flush(), bailing on an error path makes it skip
-> drm_crtc_vblank_on() and leave the video port disabled.  atomic_flush()
-> still traps the event in vp->event, but since the port never scans out,
-> the frame start interrupt does not fire and the event is not delivered.
-> Userspace waiting for the flip completion then blocks indefinitely.
+> vop2_enable() returns void, so callers cannot tell whether powering up
+> the VOP2 succeeded.
 >
-> Note the event cannot be flushed from atomic_disable(), as userspace
-> waits for the completion before committing the next state, so the
-> disable does not arrive and draining it there would deadlock.
+> Additionally, if rockchip_drm_dma_attach_device() fails, vop2_enable()
+> returns without disabling the core clocks or dropping the runtime PM
+> reference taken earlier, leaking both.
 >
-> Use the newly added vp->enabled flag to detect this in atomic_flush()
-> and send the event immediately when the port did not come up, rather
-> than deferring it to an interrupt that will never occur.  This also
-> avoids the spurious drm_crtc_vblank_get() WARN previously hit on the
-> failed enable path, where the vblank is not on.
+> Make vop2_enable() return int and unwind all resources on every failure
+> path.  As disabling the core clocks is also needed in vop2_disable(),
+> factor it out into a local helper used by both.
 
-I really don't know how I feel about this one.
-
-atomic_enable() is not supposed to fail at all, hence returning void.
-(Obviously, there are scenarios where it will fail, which Sashiko
-keeps 'helpfully' pointing out ...)
-
-I don't like how this just papers over the issue. It turns an eventual
-WARN on vblank timeout - which surfaces the issue - into a silent
-false-success. Userspace just sees commit completion requests arrive
-as soon as it's posted the commit, so it keeps on going on and
-everyone's happy. Having the flips time out is a messy splat of WARNs,
-but at least that messy splat points at the exact issues, rather than
-the screen just going black and userspace blithely trying to continue
-on.
-
-Cheers,
-Daniel
+Reviewed-by: Daniel Stone <daniels@collabora.com>
 
 _______________________________________________
 Linux-rockchip mailing list
