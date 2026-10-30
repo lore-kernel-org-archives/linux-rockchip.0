@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A5D20606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 11:48:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 94B0D606A324
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 11:52:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cjURyNqP;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=fooishbar.org header.i=@fooishbar.org header.a=rsa-sha256 header.s=google header.b=NvTuasaA
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=oRbeyxkp;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=fooishbar.org header.i=@fooishbar.org header.a=rsa-sha256 header.s=google header.b=HZ5snsFi
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,91 +14,91 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=N2pr3E5Qlpxra8w+ib6h1FPS3SfnL69oRv6cKxuSTyM=; b=cjURyNqPQqNuyHhd4ijUmWLKjB
-	iLQlAPG3oWdsB0FvTCuRjaYm3BT/eSO2RUmlunI2gaqmxhaMzV8LUV8guaqWfsoTCoPZ4CB4NnIu1
-	TS4eUn/himRDAMkYkK6OiqxeUVL6e50GgJRqFBTxK3L3Ip7Rt17yPwtAYRCViyPtpMgOxS+LtK5L7
-	W0ghs7RjslJRebBBEfg8/mjjgfPkrTV3ztT4ghYfGbjz7sUVKMcWU/hYmUFy7UO88tgK2Yi1bP62e
-	9wAk/USH3G/2NxoZvOFVLCzHBdgFTnFDey6WbW9krlvUlg5YTZafLV0ppz3YEMr3TmWUB+PVyjX+w
-	8TzEG8nA==;
+	bh=im3AaTdvr5Wio6P5H5ejSHLOveIfyipw+A0Y3nAoVsM=; b=oRbeyxkpWaMEa05LEAZer7pfxO
+	wBXLDTftVnefgF+PbPzJTb1LQAuH3ZqA40vZ/jVa5I2Mbg0J1WDYy1Glwgt8iokeFUlktY0Av9+Zz
+	g+qbFd7rfeynF5IxTRzsIB5OMTyBvcBtchRG8rJKsQnYE7QUpg4QBExcG/TVk/fLIDee7jCBvfuNg
+	Eq+8RpcjiliKVgdN7YFp3lPw22fAvLQbCTmEwTR5efB5/kiCYUvrAIBu2eE5d1YQxsuoaNacPiqit
+	TCovfLkBCpErm+8ImCiBcwzAIYfez3NSNg6gqlfMutnj4+kh7ZBzqD4adbCvFdnWdn+5Yi3OXXcBJ
+	vNgUqcGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMl6C-0000000Bb2M-3Ua0;
-	Fri, 30 Oct 2026 11:48:44 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1xMlAC-0000000Bbbv-0Xuf;
+	Fri, 30 Oct 2026 11:52:52 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMl6A-0000000Bb1F-1Wrw
+	id 1xMlA9-0000000BbbA-3mK7
 	for linux-rockchip@lists.infradead.org;
-	Fri, 30 Oct 2026 11:48:43 +0000
-Received: by mail-pg1-x534.google.com with SMTP id 41be03b00d2f7-cd623dfe420so416420a12.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 30 Oct 2026 04:48:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793360921; cv=none;
+	Fri, 30 Oct 2026 11:52:51 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-3ac9f49b984so358343a91.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 30 Oct 2026 04:52:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1793361168; cv=none;
         d=google.com; s=arc-20260327;
-        b=D4R8tMEqfkR/LtzMt9hJ60CjKMjUiu+HCBu23Jo3zD64pUOZp/xGCClluEwp9FW9W0
-         qHrGnYIXX+tFP+zXlT1scU+yOJdr/7tjvVM5k9XTY/TKHxWMSxggcZWGjlCor5NyRhU2
-         xOPMoMKven9gzXMw36iiS/Nm8mqiNq/KpNUJvwHk3r3jFqtEtzmrtYmqbkGdCzJuP+FN
-         NfVaIUFoOFeFFdzVr7oA19QG26RvQeszFegLZrJV12kLobUpPBK8p+G7qtI4LaRVYsO7
-         AxEssLPLRn01imDuSjrqgu3f9FaLvGP88MuXBgy2Kt1o8r0rf12m6S8cYNM5Vej83dii
-         fagQ==
+        b=KY9OTwtLfbTDvT5ZHWNC2ElXalewJmXtqHaHdf3xP04DOPMb8pcn0qmGvFfyRgt2kz
+         +W0Dpi8RpQw1RHxhAzq9zHZRa7CJpLPiMWq58sgoikBLTnnAaa4TyNYv3JL92XiwJ3Ai
+         uNTtcfZ3+mffRNwhcTMimcuEngKrngaoK1aHzVJ3YP3hzMKaqmk+ji4HvGF4PBS2+DqR
+         jGzPdPxiSNOnKN0MpkmOSuUWgZ9dw6jZdDcvkpSNPt1HOYFeXzSv1iGRKKO7UxaL/PAq
+         JuSZu+pwxcPTYZNlq9/Z9ANSZ2iyN89PPy4Xd1oi4wB7/aWE2BMWTarPPOahSdXsh5wI
+         L3+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=rytTxuDwmZaxUvmFDOrr2QKEaKAyu/0j3T9Yur/Ie+Q=;
-        fh=CK52D+W4ARaqP83rSA+D3gGHAwCKSY4+BTq+SvhcE0Q=;
-        b=oA3XAGkX2QdjITcGQ6dA5tnqnQiIfyJpKseachzhTNW3x6GKJwPEG72iB1ifk6+hCg
-         GlVaI4ErlmiBUhrc9iBrqvYb58Mrjphes55Cl5MKygYrab9Oid1FMkrKdef4hZseTioS
-         XggWE7/OiXe/BbX5cK4euPVnTP4Ei+U4pZjZ6NS3C9FGJW5vtoJ3GW8UAFAYP8Pvn77r
-         Gzt5bc7A3F46Mjbkny6q2IMpDcFcxO2f/vd9QlwZyoj46Bo6e1ZPr42RTsCRtnEJEWJR
-         ouSMrVUPqbBg2yZSkXV6w/X2Ai+8RzJC+9Q/Zz/KaIL+RGJJM1pXaePmn3BfhJNpCmiw
-         9Wzg==;
+        bh=/PX9RtW2X0oN+uy2podVJ42Ja19q2gn1FASRjTAuuRE=;
+        fh=ydQWWlD7ev9m93Hrci/Z0FecXuoUVQ2nJFQe8I9JCpQ=;
+        b=sYtfROwSFJ2kf2pCPzv1UYxazC1As1HW7Y6CDU5hajwI2/CRT3+8y4YTm5YsNr+eaa
+         a1M3khF7OyNa7eBfkp0TgD3pHP5tc7e38Qoutr6H5Bxra+mjvF5tkuh0O628p/yynZ0o
+         ZXKZdEtSRt0DHJ9x5zHew0TVEKP/UIsquPqb3LngbpGziTo3YJcZKxJsCVBSFf7ve/wo
+         O8LMQ889lY0xvfWwZlhrVXxblWg0LxyHpycM4Y2GncHnxV1Bx2qJr7itgAOGo1tbX7y7
+         mvQFAFg5sFF58mCZ1AhcMOZqOGZb4vHQG5ZYRXDe+j/ABYugQ9YQkNQF08n04BLuk7pA
+         11GA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1793360921; x=1793965721; darn=lists.infradead.org;
+        d=fooishbar.org; s=google; t=1793361168; x=1793965968; darn=lists.infradead.org;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=rytTxuDwmZaxUvmFDOrr2QKEaKAyu/0j3T9Yur/Ie+Q=;
-        b=NvTuasaAonDswJbA8uKU81n5kMwiqfct0XPrURmBvw/FhMAxaV/2DTOyF/S7YZt2wo
-         +oR/twVG3F+W4RoDYrJZQQxnHd3N1bihuPe3WhwnM259p5igTDd2wGarF/9BANJv69Wo
-         MdHov4TnBlpvXzIf6nZKLqDRpiECLwROuSfrdyeCiX8496s8gIQep8E1M1nJTRpW3xn8
-         7yE6LHRFDHbgrYLTLpjlRPwBFeP0FSsjoJZiV/FoZ/uGo5fsOUTZi3FgJzUO7zb6i7l+
-         xdlyW1yLbjLyHIyAF7ERuto/KLzIPKixTL3jr8jgVjQ9qdxbdI/9qsCrxG9lvYBRcnZn
-         P9+g==
+        bh=/PX9RtW2X0oN+uy2podVJ42Ja19q2gn1FASRjTAuuRE=;
+        b=HZ5snsFiHPa+EmBhti1qsfsYmqR3s4j+HNOGWCm+vhJa2KtAeeJDNWmDYmgiPiw6E5
+         l4Dp6qiFK4I6maRp30GVcFDxDnBga7Gc1/eu6tPFjxuBYEPnQVfjmAqI3ij/4VTa2l+J
+         MEeW3gVCDp3SoIwAcjZ9PftUtU/puGeuwmA728POzC52Gj5jHZe3vu3IlC+s/+fJfhGx
+         pfGFk7HKYC+VVUm95x/0r7rYcKeNLMTYi1rRXSZDbNy2DTG7KdUFpvimJrhg4qRfMATm
+         62ij7D0zCFRNRJeOpHGd+F9fhX2OnOPv1cspxgclL+/pzgKKTqa8efVcDYtkfImerr3W
+         Iw5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793360921; x=1793965721;
+        d=1e100.net; s=20260707; t=1793361168; x=1793965968;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=rytTxuDwmZaxUvmFDOrr2QKEaKAyu/0j3T9Yur/Ie+Q=;
-        b=nN6OGmSHcgB7K9YMiVzAcMI51pK8bb3f3dCaDd+fSC1K22kqp1E6diaoGYbYboIBMQ
-         HpUx5MFnzdJmmujLKiqMVa/Jv/Wo7WnjsvjqSKc+vCxgSd9q9NGnx5zochmcIazdRrck
-         JdtXnDOK4YJqc7omMn0niZXy7MS1Nz4xnX9m0ApHdzgJxzDW1HEhyQYC7Cu8FrNI43GJ
-         l0rpMsxDC+LppEJiTIFw3dcdiYjl6j1bbtJ0LhTn5fhFQHVr/trijN0H57Py1hPSwthc
-         ryNYldbsfhGRk3uz9i81Ak9MPIZ+oBszmH3VZXXoU09F5ER+/V4bRdPLlLeHJzl9ewRW
-         BYZQ==
-X-Forwarded-Encrypted: i=1; AKwUvBxSMXrb2C5hLzQGE0qcwGcvqb2uBblj/Ofd8eXLyLfy9ydOCUihExiGytdsInvUQHH/lxsWjixWRh2zqV5j8g==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIFtDQXc4/k+800LWndynKymZL756I8W8ZxOn/O0vNBlx+oluAt
-	LYnVOyeWDorKX0k4ei2HFElbL+nl8DPKcyiRQ+9zrqks3LHMJAjz9td2iR4hoyVQar+aTTc9LJR
-	6VopbnbM9aHkzxugPfzBd7C2YpapxT0PTQe4HnkL7zQ==
-X-Gm-Gg: AYBFou0EsNOsVqnO6V20vDE/ylaPXnu0hS+45RhZIiQbMTywdRsoGDK4coYbaH/NWml
-	AJtRy2W4+k3hyyZ8YtxUvZOzvBBMrFWaR7oK9ZfOdQzwQ4lAywKBy1Uln1Hr6tdw11VCHkmQNd+
-	m5IqhOMUvksZDnmE3eFv9BgKyJqXLTtsVdCdBDJUE/+9WhZQh0xEnhDEoernMPKK6Jhnxw8o4Ne
-	ZudGfvry3oHUfPE+RFWPNGFUNsiFIwAaeNA74YTGVKsAQnuQ9sdDNuYYc2oUhj8svAcLuF8/5Dc
-	YYTy9HTPuB53cIvZhxzxBg2cbg10CX9eBWnIF/+gvC4tm+z5QEQvJz6+ML4AZIHZGJc9qzEusjr
-	35TM0ICoZWm6QZxnKIQJwiMWfSjkSAA++F+XF9ZDsZOqVBwR8uZhqLN9mXw==
-X-Received: by 2002:a05:6a20:d10f:b0:3cd:3e77:1dcd with SMTP id
- adf61e73a8af0-3e928a7e442mr2014372637.1.1793360921012; Fri, 30 Oct 2026
- 04:48:41 -0700 (PDT)
+        bh=/PX9RtW2X0oN+uy2podVJ42Ja19q2gn1FASRjTAuuRE=;
+        b=c/VPyVKoAJ4aKXGCdCNLFzJExcEY2PWaiZR6u68evEaCZd+2Q8/Ch8rQ41Z9jFpfuD
+         P6gfeXlKYfV9fk4yw/OjDtr9pjCWRUK/ZFHCLqSNBjSZoOuPE6SGeSr6ZZAUKhYzsnsG
+         ihtdli0XxAlpPUYITRpBTtZ596y6Ke7kJbnpXya39ga0spB2JVragrNEj0z+BaMUzKoG
+         cL9fHr36cFNf6Ot86ALZiBvrJP82ZjG28yaUy7SSG/juB0kV9AqW9xAU3w0a48eT8rK9
+         Oh27QhyZ7XEiojMh1chMr+poWxBbWXIJbOtS4Mar3sB1tfy6ay9vTkXYg+Nj+l2/9ZcB
+         obDQ==
+X-Forwarded-Encrypted: i=1; AKwUvBzFvUVR1gq413DispzPvF5YgppvfZVm1UE6hzpkt3MStTKqpoUdxfwx5oXMwJsSdHUIRirfAabtK8GIYJYoTw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKDvGaO/7YOQ1yUUpnM1zEg7B/WMC1RASFQ/p6KYHwUh9AOh02S
+	7ID7/AYSLzDbHupJkyFKYYU7S+i+ZMD4JRNaCZCmqjP5xBeTH2zTlfI/ZLO3WOrk0DgNQQK7aAB
+	mJbLEt1ujDiZDXcil4ZP/Wugau00esep0RZYmr5laL1pSK2a/1xE7vgI=
+X-Gm-Gg: AYBFou0w9isfOGLLvOZGkti56+HHhk17kysrsiHgYx6ZGz+tX6RYI9rYbIB48aFVbbJ
+	zpN0KgnqHIBbv8YDRBYuBLAh6Ea7ofaIluf1NPrqVYGpGx3/xkqG3BiGuE+2oZbLpvTQXSokqqQ
+	XQYRBSXZnOj20nf17J0dF7FyloqZeCE7NuN99ihXxYkBfUGscgAnQxNBcZLEP4ekvNkl7YKntvi
+	Z1p853FySdNB5DDrWMYnrDuru/JpIiEVhl/cCviq38LHgN9MJ2VaeBbTflShYL79Xi0T/heEeF6
+	rwx+DuF4rCmaPCmI8TyWfbM/jK3gLW0Sd1aaWeu3Xk/ygBnbVKRZoDecHQHWR6/yJFhrM/LeDAi
+	J59+dfRremO1Pcna78khdiJmiuQVIn4ga+jl0
+X-Received: by 2002:a17:90b:2f0f:b0:3a0:e568:ed63 with SMTP id
+ 98e67ed59e1d1-3ae896d7af2mr1070361a91.8.1793361168540; Fri, 30 Oct 2026
+ 04:52:48 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com> <20261014-dw-hdmi-qp-yuv-v5-11-6fab0fe43a9b@collabora.com>
-In-Reply-To: <20261014-dw-hdmi-qp-yuv-v5-11-6fab0fe43a9b@collabora.com>
+References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com> <20261014-dw-hdmi-qp-yuv-v5-13-6fab0fe43a9b@collabora.com>
+In-Reply-To: <20261014-dw-hdmi-qp-yuv-v5-13-6fab0fe43a9b@collabora.com>
 From: Daniel Stone <daniel@fooishbar.org>
-Date: Fri, 30 Oct 2026 11:48:28 +0000
-X-Gm-Features: AclHuK9bHaRXHNAR7u16We-RytuEmqtwRDDQT6RAcbrEMxFejcbNnPABR9ssHjo
-Message-ID: <CAPj87rN7RWfEa_YypQq+quER7V6pt2A3q4fYRuUXF3_Ch7yL8A@mail.gmail.com>
-Subject: Re: [PATCH v5 11/15] drm/bridge: dw-hdmi-qp: Log resolution and
- refresh rate in atomic_enable()
+Date: Fri, 30 Oct 2026 11:52:35 +0000
+X-Gm-Features: AclHuK-idMrAXuG27Lf8hdgtB5yVIMARZUjc-ne4rm8j_v5CZmkmZ5d54vPJbms
+Message-ID: <CAPj87rOMjFEjOQ9TVgbGWu3gTwVjmjuFNtnFiyxbWO+g_RPqeA@mail.gmail.com>
+Subject: Re: [PATCH v5 13/15] drm/rockchip: dw_hdmi_qp: Support 10-bit YUV422
+ output format
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
 	Andy Yan <andy.yan@rock-chips.com>, 
@@ -116,9 +116,8 @@ Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@snte
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	Igor Paunovic <royalnet026@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_044842_405135_CBAE730B 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261030_045249_942365_D6B2FDB4 
+X-CRM114-Status: GOOD (  10.50  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -134,27 +133,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, 13 Oct 2026 at 23:51, Cristian Ciocaltea
-<cristian.ciocaltea@collabora.com> wrote:
-> The debug entry in the HDMI branch of dw_hdmi_qp_bridge_atomic_enable()
-> previously printed the literal string 'HDMI' as the mode field, giving
-> no information about the actual display timing being configured.
->
-> Extend it to include the active resolution and refresh rate by
-> retrieving the CRTC mode from the incoming atomic state:
->
->   dw_hdmi_qp_bridge_atomic_enable mode=HDMI:1920x1080@50Hz fmt=RGB rate=185625000 bpc=10
->
-> This makes the log line self-contained and directly useful when
-> debugging mode-setting issues, format negotiation, or TMDS rate
-> mismatches without having to cross-reference a separate mode dump.
+Hi,
 
-Reviewed-by: Daniel Stone <daniels@collabora.com>
+On Tue, 13 Oct 2026 at 23:52, Cristian Ciocaltea
+<cristian.ciocaltea@collabora.com> wrote:
+> @@ -229,7 +230,14 @@ dw_hdmi_qp_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
+>         }
+>
+>         phy_cfg.hdmi.tmds_char_rate = conn_state->hdmi.tmds_char_rate;
+> -       phy_cfg.hdmi.bpc = conn_state->hdmi.output_bpc;
+> +       /*
+> +        * YUV422 always transmits two 12-bit components per clock cycle,
+> +        * regardless of the color depth, which from a rate perspective is
+> +        * equivalent to three 8-bit RGB components.  Force 8 bpc here to
+> +        * keep the PHY PLL output aligned with the TMDS character rate.
+> +        */
+> +       phy_cfg.hdmi.bpc = (s->output_mode == ROCKCHIP_OUT_MODE_YUV422 ?
+> +                               8 : conn_state->hdmi.output_bpc);
+
+Same question as for the VOP2: why only special-case YUV422 when
+YUV420 also needs special treatment? And presumably in a way which
+can't just be mashed into bpc, because the maths doesn't work. So
+would this be better off being handled as a separate output-mode
+adjustment?
+
+Cheers,
+Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
