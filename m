@@ -2,117 +2,84 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B4936606A31D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 05:01:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1434460A261D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 06:49:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ns/Eb2Oc;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=JlsCa+ic
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dnbTs3aa;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=Hrj5Xx5+
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Af4Hqrzhq8yuyoqTQxcRxPngKpxhKNGbmGHtcwh2P6E=; b=ns/Eb2Ocv/L7fU64b4Y5DyYT7e
-	QoUQ8NlwgZ2TEn8dA4KwiZFy1KFlqPEktUL9qM9aEwwoCoeNc9KTe5QSwnStUkTMHDJ/u5OPaaxeB
-	dikqDdLkyZTKpl77kdtxkiQoTgAS0hhojE6Q8aqMoIOn416ZmZuOUCxT/Cmg1uDvnj2OcxWmp6lhE
-	DMlt//UZ744iA20/dix931YfBavSsc0Az/FhinMvnuIq8ZSZbEKkYAGYYoCu0hejM3r8HxVyHWeuo
-	2aZ15xL4Hj0xR8+1hkV3AZtRRimj+Gtw3j+N8PqKoUbSo+qCvBOi+D2dQPMGxa4QMMZKCjIgtkTNN
-	CcAe1SEg==;
+	bh=TNWOqbOUd6RGXPDrBY2pA9Iv2mEu3a4gaFEu4JbIIVU=; b=dnbTs3aazISulO74+mSPuKdSnu
+	JyaB/e275219e3eDHR2NfG+F82VqWWK7RRUYgjZTb2/2vRtZP0iMh4m0N0Eb66ObDsPxSxBDzCyzo
+	T/vbSoKSFxx81K2Pompbt089XzhCNVKZbC3Cia+RhPSKFkQXXSEjVx9PmJhLMLBQzcz3GUSwUNAen
+	qJQwSmCOOYdvHb3CzVa9IADYSKkeP+9cq5/rqpwdnmeM18ozn45H1oghC36X3VolY+WMFkK1ACAkK
+	G+u8Z/3dJvfbHsoJjuObze2Ee13/rfF1bvkDQqHmO4Mb9VeUzAsXsdGLnITBxVSk8ZEtFogTe/+VB
+	EQUpa6Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMejk-0000000Aq4u-1zMW;
-	Fri, 30 Oct 2026 05:01:08 +0000
-Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
+	id 1xMgQk-0000000AvEp-3Jwl;
+	Fri, 30 Oct 2026 06:49:38 +0000
+Received: from mail-m1075.netease.com ([154.81.10.75])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMejg-0000000Aq31-3P9E
-	for linux-rockchip@lists.infradead.org;
-	Fri, 30 Oct 2026 05:01:06 +0000
-Received: by mail-oi1-x22d.google.com with SMTP id 5614622812f47-539a57a0b1fso100509b6e.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 29 Oct 2026 22:01:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793336463; cv=none;
-        d=google.com; s=arc-20260327;
-        b=bG7hJ6I88mI5Su5Scgwuu+rywSuwPCFV/bFeDqWm94BDudHAZi8wOY1EyAcOiK3H9Q
-         u3LX2PX0gtgvK0URc/XMr5dbB52Bvrwqp9RLMmd6Eg0TMgx0DYLmQ2PByRGDm/+AZVGN
-         WK9v5tpMiG/uo7b+0y9u3bkGSYXX0+d87W7ukGtw2pSVvjnDRsD6Sdi7sk8vQjlUpd3A
-         GUxDLgy5FEnVZ1W6iqidOR88TDC7dtY8DthThgfaxqQInlJPhfM7mJTMTYtCPWof0jTF
-         R1vknU3k6T+XDRHIhAzviA4RiMjYTrd/xd3wXXiXtA/vooAyW/SZBNn0LRSS0KxvLtql
-         bOhw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=jVHkdup9h6VAyVXa9WHVnyDXMjAy2tnvxXwmB5v5HJk=;
-        fh=z6+PL6QPlXI0ZAUjfcSk3flH8dRxiYvfJd0zfy5wnAk=;
-        b=lo2cuv26ILbVxGYEYsn3SSohizOcnCpQuz9h54sD8LuDK3YI1nAvSlTzqjUAH9VzQp
-         3+YYUDT0lFr6RQ6JtvStUF0re6SZ/fZfbyoTNYz3H2OfFpS8FhT6YwtcJWmVJ26GaP+R
-         FgDO9yfCLmw58DRBUrO7co0du05UErstkL0AaJPsbTlucf5q2FTZeLwYas13PTY0aP2s
-         /3RxzDqMfRzgXFilV5ABOQ7vocG+xa/MCFlECanYGRpfx20Gy3ZJe0pBVliTLy6S7lCO
-         7Sli9B1evokVNexOvPFr3AOWChveJ73vrpn+2Q5SW2CRk2eUvZ0XfgteI+uCAnWBfYbM
-         9SYg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793336463; x=1793941263; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=jVHkdup9h6VAyVXa9WHVnyDXMjAy2tnvxXwmB5v5HJk=;
-        b=JlsCa+ic4F4uxmDww8omLjar8vMLV9JTCA3LGu3dgJ5J8g5kWLsYMamBs3TbatQRIi
-         Fhjbx/Za7EfRA8y73kJydl9ofFmQ7KvM8sOibWOWq8quFbRXG9a1YTy9cz9eij/qlw2Y
-         +5gtRj3m1yWALPcL5oWIWdlGi8HETwEQdDkTVMOi2trQEcXKdjAg2HJ+HTcfN8dyfuTL
-         BkDdBNkn0AK0048+7tZJgGQLQb4o4Un14UnMjPu/9Ut1MiIQEF2aRnGL5kRUkMoF99QT
-         B7EoeghtAY4wj1EP8iutDVRuK0uUhpOP8PPLffCWparcwWqJY0Gl5ZVwjsF6R5OL7fn6
-         xDWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793336463; x=1793941263;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=jVHkdup9h6VAyVXa9WHVnyDXMjAy2tnvxXwmB5v5HJk=;
-        b=F7U32ZAbZLkE4C5ncWHv+Ea4xMdKX/jjEKInaz9lu9AsjeJbRCuKbDOEpcnVmw1jHg
-         Eyrhkis2dkj1ISfrwhPcsPuykRjxzM0FE8WGoHZMDizJkr5V82N5Odz5MvqDDSx7hs29
-         VOdfhtgqKkmPofGAEsv5+Om3P0ekANM+eZoXLCA+LJtrWFxnQgMQL8KcsDyb38UxqRKa
-         yqEk4iv9duEvd7dJb2R53I9amxoHiWj5dLy0/F9uPFxWTZ7/2uOq1bIypRCifB9axg0a
-         7AAZ8R8XUYHM2Osuab24xce9I5Ejjl/VVFCE9AD2R1Fxxj/rwG0hO4WtCoqRUY+AXzLV
-         tsjg==
-X-Forwarded-Encrypted: i=1; AKwUvBw8KD5K+oAghonOlDcO/wSI28GNg4kyE7kdeVmbUnwCF+451dTi2iiVAnHr4ItzlRDBRc2jk1SW/dDz6VoaLg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJ7eHXOBhHGvWN3WKcLrb2phXH0G5wPnWXxOROqMoXgQ91/4tS+
-	gWOTflAr/ExZ+LxMFzvHZGpnnb2Mx21pml1ydMIDH+lyDE5lGZX0UJ9yFnkBE6uhjpMMu8bz8ds
-	kA1+vtiKx728hgon6J2KsanGiRVKqHw0K/opI
-X-Gm-Gg: AYBFou3AjcwJ56qyNnr+T1F4Zb5nERtwzp2lK7VJxfRpCI4KDmQwZ4Y9Jm65nBlniNs
-	Tv8iXLIfol4ikWFZQaAWk5AlIfkE7Y2ki0AqoefaTKwbbsJOcYgTf/IgncRGVo4PgoIdXJhTJK1
-	OfLc8WSdEiUn4oIv5nDqUR0qcYI/47Z17V839ecjS34brj2a/yIs4OMscTuAHpB7Te3AFRlKkdZ
-	jjCSzhSNjkbTCn8M8FknwxV8k6WTWBBQBEfTKhCfqFTD6R2kmbKEWQgHoQCNveSnHZ6KRZak3uR
-	1FRtOePbrSq1y8flEvyLYhNYwZkKY8CR0+sAb1RakoXRsmGOx9QXzwFLldQHr/f9QfhRwuEWiJO
-	pM/mY3snbYtosMIv+N4tZ/oOUVRi9ah4o/cdPoFf1duxPsxmD5DrPYu8Yv0LUHCiYwjFQMA==
-X-Received: by 2002:a05:6808:c122:b0:55e:fa63:7001 with SMTP id
- 5614622812f47-5640ddca9edmr954504b6e.36.1793336462734; Thu, 29 Oct 2026
- 22:01:02 -0700 (PDT)
+	id 1xMgQf-0000000AvCk-0lKV;
+	Fri, 30 Oct 2026 06:49:36 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 52e79690c;
+	Fri, 30 Oct 2026 14:49:25 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Robert Foss <rfoss@kernel.org>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Dave Jones <s.dave.jones@gmail.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v4 0/6] Add eDP support for RK3568
+Date: Fri, 30 Oct 2026 14:48:59 +0800
+Message-Id: <20261030064905.2248999-1-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20260901234351.190506-1-anarsoul@gmail.com> <CAKTNdwFqSBt4QVCuYJxTyEDsxkW96JbUirFNAgJYWVLHzGpk4A@mail.gmail.com>
- <CA+E=qVcizyQZytw8M6DA72YGrRDDNx_cCvYj565zf9wjMWh8tg@mail.gmail.com>
- <CAKTNdwFQvKtHQA0JD-GAq3bgr5Brq2NyLfccenkHcrKcjeptwg@mail.gmail.com>
- <CA+E=qVcwtnU_Gg6_oFmWqMpCEF8vOvB_G+H-ihfbiAr0PpFUJw@mail.gmail.com> <CAKTNdwGTacFvn5BEN+iu0OBG2BUas7Vfj=YYF8OhAhNq-9kmyg@mail.gmail.com>
-In-Reply-To: <CAKTNdwGTacFvn5BEN+iu0OBG2BUas7Vfj=YYF8OhAhNq-9kmyg@mail.gmail.com>
-From: Vasily Khoruzhick <anarsoul@gmail.com>
-Date: Thu, 29 Oct 2026 22:00:36 -0700
-X-Gm-Features: AclHuK91Kq4AK7MRfCEoN-bxDWWEQLSESXtbozHlwJea6SWMh0uWvQ7bm47NBQ0
-Message-ID: <CA+E=qVf=oBf9a=nrN-F2gGGY60+Gfuj3NMvuW4pWAdbU6NKceA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] clk: rockchip: rk3399: add 85.5 MHz rate to PLL rate table
-To: Alexey Charkov <alchark@flipper.net>
-Cc: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
-	Jerome Brunet <jbrunet+clk@baylibre.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
+X-HM-Tid: 0aa18b92072d03a8kunme14bef99793ce
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZQxpPTFZNHkJISk1DSE
+	tDT0lWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tIVUpLSEpKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=Hrj5Xx5+UQt5ncE5dsfobj3S6xvum1MUlDrCc5N998ceT7FnyL8nhSGmUOTfFtWkytwwzRbnqc385T5RGKTBPyXQnoCqozAGstr9mGHYw6koxS+RfIATZiacYyS2eQ5SgfXcQaMquiqqb5KR3CwTgCQckU368CMjhu5EMUz4a18=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=pGnhy8KafHjhp0kxxKojoSMc1TwDhFu6AVtDINHFLK8=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261029_220104_851763_AC0CC22C 
-X-CRM114-Status: GOOD (  33.62  )
+X-CRM114-CacheID: sfid-20261029_234933_801649_BDE0C0A9 
+X-CRM114-Status: GOOD (  15.58  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -123,82 +90,126 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-T24gU2F0LCBTZXAgNSwgMjAyNiBhdCAxMTozMeKAr1BNIEFsZXhleSBDaGFya292IDxhbGNoYXJr
-QGZsaXBwZXIubmV0PiB3cm90ZToKPiA+ID4gSSBiZWxpZXZlIHNvbWV0aGluZyBpcyBoYXJkY29k
-aW5nIHRoZSBkaXZpc29yIChvciBsZWF2aW5nIGl0IGF0IHRoZQo+ID4gPiBwb3dlci1vbiBkZWZh
-dWx0KSBpbiB0aGUgYWN0dWFsIERDTEsgb2YgYSBWT1Agd2hpY2ggdGhlIEhETUkKPiA+ID4gY29u
-dHJvbGxlciB1c2VzLCBpbnN0ZWFkIG9mIG1vZGVsbGluZyBpdCBwcm9wZXJseSBhcyBhIG11eCAo
-ZnJhYy9kaXYpCj4gPiA+IGZlZWRpbmcgb2ZmIFZQTEwgdmlhIGFub3RoZXIgbXV4IC0gYm90aCBw
-ZXJmZWN0bHkgcmVwcmVzZW50YWJsZSBpbiB0aGUKPiA+ID4gY2xvY2sgZnJhbWV3b3JrIGFuZCBh
-bHJlYWR5IGVudmlzYWdlZCBpbiB0aGUgY2xvY2sgZHJpdmVyLCBtYWtpbmcgdGhlCj4gPiA+IFBM
-TCB0YWJsZSBwYXRjaGluZyB1bm5lY2Vzc2FyeS4KPiA+ID4KPiA+ID4gQ2FuIHlvdSBwbGVhc2Ug
-dHJ5IHJlLXBvaW50aW5nIHRoZSAicmVmIiBjbG9jayBhdCBEQ0xLX1ZPUDAgKG9yIDEsCj4gPiA+
-IGRlcGVuZGluZyBvbiB3aGljaCBvbmUgeW91ciBIRE1JIGNvbnRyb2xsZXIgdXNlcyk/IFlvdXIg
-Y2xvY2sgc3VtbWFyeQo+ID4gPiBhbHJlYWR5IHNob3dzIHRoYXQgc29tZXRoaW5nIGlzIGFzc2ln
-bmluZyBpdHMgcGFyZW50IHRvIERDTEtfVk9QeF9ESVYKPiA+ID4gYW5kIHRoZSBsYXR0ZXIncyBw
-YXJlbnQgdG8gUExMX1ZQTEwsIHNvIHJhdGUgY2hhbmdlcyB0aGUgY3VycmVudAo+ID4gPiBkcml2
-ZXIgY29kZSBkb2VzIG9uIFZQTEwgcHJvcGFnYXRlIHRvIHRoZSBtdXhlZCBhbmQgZGl2aWRlZCBk
-b3duc3RyZWFtCj4gPiA+IGNvbnN1bWVyIGFzIGEgc2lkZS1lZmZlY3QgcmF0aGVyIHRoYW4gYXMg
-YW4gYWN0dWFsIHJhdGUgcmVxdWVzdC4KPiA+Cj4gPiBJIGRvbid0IHRoaW5rIGl0IGlzIGEgcmVh
-c29uYWJsZSBhc2suIFdyb25nIGNsb2NrIGZvciB0aGUgSERNSSBlbmNvZGVyCj4gPiB3b3VsZCBq
-dXN0IHJlc3VsdCBpbiBub24td29ya2luZyBIRE1JIG91dHB1dCBhbmQgbm8gZmVhc2libGUgd2F5
-IGZvcgo+ID4gbWUgdG8gZGVidWcgd2hhdCBpcyB3cm9uZy4KPgo+IEhvcGUgeW91IGhhdmUgYSBz
-ZXJpYWwgY29uc29sZSBvciBzc2ggY29ubmVjdGlvbiB0byB0aGUgYm9hcmQuIElmIGl0Cj4gZG9l
-c24ndCB3b3JrIHlvdSdsbCBrbm93IHNvb24gZW5vdWdoLgo+Cj4gV2hhdCBJJ20gcG9pbnRpbmcg
-b3V0IGlzIHRoYXQgdGhlIGNsb2NrIHNldHVwIGltcGxpZWQgYnkgdGhlIGN1cnJlbnQKPiBkdHNp
-IGRvZXNuJ3QgbWFrZSBtdWNoIHNlbnNlOiBWT1AncyBkY2xrIGlzIGRyaXZlbiBvZmYgVlBMTCB2
-aWEgYSBtdXgKPiBhbmQgZGl2aXNvci4gSWYgdGhlIGVuY29kZXIncyBwaXhlbCBjbG9jayBpcyB0
-cnVseSBkcml2ZW4gZGlyZWN0bHkgb2ZmCj4gVlBMTCB0aGVuIFJvY2tjaGlwIGRlc2lnbmVkIHRo
-ZSBtdXhlcyBhbmQgZGl2aWRlcnMgZm9yIG5vdGhpbmcsIGFzCj4gdGhleSB3aWxsIGFsd2F5cyBi
-ZSBuby1vcHMuIFRoaXMgZG9lc24ndCBzcXVhcmUsIHNvIHNvbWV0aGluZyBtdXN0IGJlCj4gd3Jv
-bmcsIGFuZCBJIGJlbGlldmUgaXQncyB0aGUgZHRzaS4KPgo+IEknbGwgYmUgaGFwcHkgdG8gYmUg
-cHJvdmVuIHdyb25nIGhlcmUuCgpIZXkgQWxleGV5LAoKU29ycnkgZm9yIHRoZSBsb25nIGRlbGF5
-IC0gTlZNZSBpbiBteSBsYXB0b3AgZGllZCBhbmQgSSBoYWQgdG8gd2FpdApmb3IgYSB3YXJyYW50
-eSByZXBsYWNlbWVudCB0byBhcnJpdmUuIEkgd291bGQgaGF2ZSBib3VnaHQgYSBuZXcgb25lIGlm
-CnRoZSBwcmljZSB3YXNuJ3QgcmlkaWN1bG91cyA6KQoKVGhlIGR0c2kgZGVzY3JpYmVzIHRoZSBo
-YXJkd2FyZSBjb3JyZWN0bHkuIFRoZSBIRE1JIFBIWSdzIHJlZmVyZW5jZQpjbG9jayBpbnB1dCAo
-VFJNIFBhcnQgMSwgMS4xLjExOiAiMTMuNS02MDBNSHogaW5wdXQgcmVmZXJlbmNlIGNsb2NrIikK
-aXMgd2lyZWQgdG8gVlBMTCB3aXRoIG5vIG11eCBvciBkaXZpZGVyIGluIGJldHdlZW47IGl0IGlz
-IG5vdCBvbmUgb2YKdGhlIENSVSBjbG9ja3MgaW4gdGhlIFRSTSdzIGNsb2NrIHRyZWUgYXQgYWxs
-LgoKVGhhdCdzIGV4YWN0bHkgd2hhdCB0aGUgY29tbWl0IHRoYXQgaW50cm9kdWNlZCB0aGUgInZw
-bGwiIGNsb2NrIHNheXMsCmZyb20gUm9ja2NoaXAncyBvd24gZW5naW5lZXJzLCBzZWUgNWUzYmM2
-ZDFhYjQ4ICgiZHJtL3JvY2tjaGlwOgpkd19oZG1pOiBpbnRyb2R1Y2UgdGhlIFZQTEwgY2xvY2sg
-c2V0dGluZyIpCgpUaGlzIGJ1ZyByZXBvcnQgaXRzZWxmIGlzIGEgc29saWQgcHJvb2Ygb2YgdGhp
-cyB3aXJpbmcuIFdpdGggVlBMTCBsZWZ0CmF0IDc0LjI1IE1IeiBhbmQgdGhlIFZPUCBvbiBHUExM
-LzcgPSA4NC44NTcgTUh6LCB0aGUgbW9uaXRvciByZXBvcnRlZAp0aGUgbW9kZSBhcyAxMTk1eDc2
-OC4gNzQuMjUvODQuODU3ID0gMC44NzUsIGFuZCAxMzY2ICogMC44NzUgPSAxMTk1LgpUaGUgVE1E
-UyBjbG9jayBjYW1lIGZyb20gVlBMTCB3aGlsZSB0aGUgc3luYyB0aW1pbmcgY2FtZSBmcm9tIHRo
-ZSBWT1AuCklmIHRoZSBQSFkgd2VyZSBjbG9ja2VkIGZyb20gdGhlIGRjbGsgbXV4IG91dHB1dCwg
-dGhhdCBtaXNtYXRjaCBjb3VsZApub3QgZXhpc3QuCgpUaGUgbXV4IGFuZCBkaXZpZGVycyBhcmUg
-bm90IGZvciBub3RoaW5nOiB0aGVyZSBpcyBvbmUgVlBMTCBhbmQgdHdvClZPUHMsIGFuZCBlYWNo
-IFZPUCBjYW4gYWxzbyBkcml2ZSBlRFAsIE1JUEkgRFNJIGFuZCBEUCwgd2hvc2UgUEhZcwpoYXZl
-IHRoZWlyIG93biBQTExzLiBXaGVuIFZPUEIgZHJpdmVzIEhETUkgZnJvbSBWUExMLzEsIFZPUEwg
-aGFzIHRvCnJ1biBmcm9tIENQTEwgb3IgR1BMTCB0aHJvdWdoIHRoZSBkaXZpZGVyLCBhbmQgdGhl
-IGZyYWN0aW9uYWwgZGl2aWRlcgpleGlzdHMgZm9yIERTSSBwYW5lbHMgd2l0aCBvZGQgcGl4ZWwg
-Y2xvY2tzLiBGb3IgSERNSSB0aGUgZGl2aWRlciBpcwpsZWdpdGltYXRlbHkgMS4KClRoaXMgaXMg
-YWxzbyB3aHkgdGhlIFBMTCB0YWJsZSBwYXRjaCBpcyBuZWVkZWQgdW5kZXIgYW55IHNjaGVtZTog
-dGhlClJLMzM5OSBQTEwgZHJpdmVyIGlzIHRhYmxlLW9ubHkgKHJvY2tjaGlwX3BsbF9kZXRlcm1p
-bmVfcmF0ZSgpIHNuYXBzCnRvIHRoZSBuZWFyZXN0IGxvd2VyIHRhYmxlIGVudHJ5KSwgYW5kIHRo
-ZSBQSFkgcmVmZXJlbmNlIGhhcyB0byBiZQo4NS41IE1IeiBleGFjdGx5IGJlY2F1c2Ugbm90aGlu
-ZyBiZXR3ZWVuIFZQTEwgYW5kIHRoZSBQSFkgY2FuIGRpdmlkZQppdC4KCkFuZCB0aGUgVk9QIHBh
-dGNoIGRvZXNuJ3QgaGFyZGNvZGUgYSBkaXZpc29yLiBUaGUgVk9QIHN0aWxsIG1ha2VzIGEKcmVh
-bCBjbGtfc2V0X3JhdGUoKSBvbiBpdHMgZGNsayBhdCBlbmFibGUgdGltZS4gVGhlIGJ1ZyB3YXMg
-b3JkZXJpbmc6Cm1vZGVfZml4dXAoKSByb3VuZGVkIHRoZSBwaXhlbCBjbG9jayB0aHJvdWdoIHRo
-ZSBkY2xrIHdoaWxlIFZQTEwgd2FzCnN0aWxsIGF0IGl0cyBvbGQgcmF0ZSwgc28gdGhlIGNvbXBv
-c2l0ZSBjaG9zZSBHUExMLzcgYW5kIHRoZSBlbmNvZGVyCnRoZW4gYXNrZWQgVlBMTCBmb3IgODQu
-ODU3IE1Ieiwgd2hpY2ggdGhlIHRhYmxlIHNuYXBwZWQgdG8gNzQuMjUgTUh6LgpXaXRoIFZQTEwg
-cHJvZ3JhbW1lZCBmaXJzdCwgdGhlIGNvbXBvc2l0ZSBwaWNrcyBWUExMIHdpdGggZGl2aWRlciAx
-CmJlY2F1c2UgaXQgaXMgdGhlIGV4YWN0IG1hdGNoLgoKUmVnYXJkcywKVmFzaWx5CgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+PATCH 1 is to document the "rockchip,rk3568-edp" compatible in the
+        Rockchip Analogix DP binding.
+PATCH 2 is to add the binding for the RK3568 eDP PHY with NaNeng IP block.
+PATCH 3 is to add the RK3568 support for the Analogix DP bridge driver.
+PATCH 4 is to add the driver for the Rockchip eDP Transmitter PHY with
+        NaNeng IP block.
+PATCH 5 is to add the RK3568 support for the Rockchip Analogix DP driver.
+PATCH 6 is to add the eDP controller and eDP PHY nodes for the RK3568
+        SoCs.
+
+Tested on RK3568 EVB1 board with LG eDP panel LP079QX1-SP0V.
+
+&edp {
+  avdd-0v9-supply = <&vdda0v9_image>;
+  avdd-1v8-supply = <&vcca1v8_image>;
+  force-hpd;
+  status = "okay";
+
+  aux-bus {
+    panel {
+      compatible = "edp-panel";
+      backlight = <&backlight>;
+      power-supply = <&vcc3v3_lcd0_n>;
+      no-hpd;
+
+      port {
+        panel_in_edp: endpoint {
+          remote-endpoint = <&edp_out_panel>;
+        };
+      };
+    };
+  };
+};
+
+&edp_in {
+  edp_in_vp0: endpoint {
+    remote-endpoint = <&vp0_out_edp>;
+  };
+};
+
+&edp_out {
+  edp_out_panel: endpoint {
+    remote-endpoint = <&panel_in_edp>;
+  };
+};
+
+&edp_phy {
+  status = "okay";
+};
+
+&vp0 {
+  vp0_out_edp: endpoint@ROCKCHIP_VOP2_EP_EDP0 {
+    reg = <ROCKCHIP_VOP2_EP_EDP0>;
+    remote-endpoint = <&edp_in_vp0>;
+  };
+};
+
+Damon Ding (6):
+  dt-bindings: display: rockchip: analogix-dp: Add support for RK3568
+  dt-bindings: phy: Add rockchip,rk3568-edp-phy
+  drm/bridge: analogix_dp: Add support for RK3568
+  phy: rockchip: Add support for Naneng eDP phy
+  drm/rockchip: analogix_dp: Add support for RK3568
+  arm64: dts: rockchip: rk356x: Add eDP controller and phy nodes
+
+ .../rockchip/rockchip,analogix-dp.yaml        |  28 +-
+ .../bindings/phy/rockchip,rk3568-edp-phy.yaml |  68 +++
+ .../devicetree/bindings/soc/rockchip/grf.yaml |  20 +
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi |  45 ++
+ .../drm/bridge/analogix/analogix_dp_core.c    |   1 +
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  24 +-
+ drivers/phy/rockchip/Kconfig                  |  10 +
+ drivers/phy/rockchip/Makefile                 |   1 +
+ .../phy/rockchip/phy-rockchip-naneng-edp.c    | 466 ++++++++++++++++++
+ include/drm/bridge/analogix_dp.h              |   2 +
+ 10 files changed, 663 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
+ create mode 100644 drivers/phy/rockchip/phy-rockchip-naneng-edp.c
+
+---
+
+Changes in v2:
+- Apply the lane-dependent TX configurations in set_lanes() instead of
+  set_rate(), and store the lane count for set_voltages(), since the
+  Analogix DP core issues separate phy_configure() calls and the lane
+  count is only valid in the set_lanes/set_voltages calls. (Sashiko)
+- Initialize val to zero in rockchip_edp_phy_enabled() to avoid using
+  an uninitialized variable when regmap_read() fails. (Sashiko)
+- Fail the probe when the chip data requires GRF configurations while
+  the "rockchip,grf" property is missing. (Sashiko)
+- Rebase onto latest drm-misc-next tree.
+
+Changes in v3:
+- Restore the PHY related changes which were missing in v2 for
+  unexpected reasons.
+
+Changes in v4:
+- Restrict the avdd-0v9 and avdd-1v8 supplies to the RK3568 compatible
+  in the Rockchip Analogix DP binding.
+- Add the reg entry for the PHY node and the ranges/#address-cells/
+  #size-cells for the parent syscon node in the Rockchip GRF schema.
+- Map the PHY registers from its own reg property instead of accessing
+  them through the parent syscon regmap.
+- Model the PHY node with a reg property under the parent syscon in the
+  DT.
+
+-- 
+2.34.1
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
