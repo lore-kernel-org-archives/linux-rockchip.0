@@ -2,58 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7992606A31E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 19:30:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 97060606A31A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 19:52:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RqD3ocBj;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=vcu0mzRq
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=apQv2Pik;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=roeck-us.net header.i=@roeck-us.net header.a=rsa-sha256 header.s=default header.b=R34PI/7A
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=9SCC8hEfFYuHf/oWfHAY9Slgc05hIxlgkx1VdOMlCFQ=; b=RqD3ocBjRWK7hx8QgDgAhj0cVo
-	bWNEAO3HTAAlhx5yfX9gVYFcIte8HeYotxG23oijx6urdt/3lYpj+zqkzlAoWF/JOjDFdImhCZ7da
-	7aFIMKRdu0e9ykjl4iB61c/eaGsN2Hy/AG20DfY6w1D46oADtua2qoNjGFsClGBtlgKdCZcKsQSkh
-	rLf1HNKNvgD7CbcrCsN66OaU1caMUDeWoHU1zxL0Fx+C+VotJUPmhBfLmtCVMBFhRuxf65ldGhWig
-	Su+k5G19lJUkyNJp0cMW6xi+lIjmi6dVCaZ4V8XLUc1aH5Q0QA7yHnMy/R0ZYNb38Ua4YiYitMlWC
-	UQ1v+bqw==;
+	bh=S+ioudounRI7qy+u0scGHQuqUgKcWC6Z2D2Q7DecaVw=; b=apQv2PikzUu9mrhjLP/nJCalr0
+	gomQ1vqhliuE/u3Tp427f6ZbHH9ND7kCROSJOnB8B6equwdio58RMyLsbp3ri12EVj/7TOz1pOk2N
+	MGymk9rK3+RKQQIGY8D60ombtXa8suiblTgWao0pgWLQQ3IH426s2vWPB4A0gPE36F0HPGGAENTAp
+	bRNSbKVikgYOx4vLB21ktVz5tQGA5l2EqXuEXCILFqfsLePDmZr4XzTNCv77+8lMj1NWLZP/2nZsn
+	dKWiflTaHuMggMoRZGc4iD5yyJxAI5OpOdQ+g/CzxtZgJeGi5cet7hJMG5QhOdIssuVLd277FLSaG
+	pV04OrGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMsIY-0000000CUcs-1TDy;
-	Fri, 30 Oct 2026 19:29:58 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xMse5-0000000CWL2-01B8;
+	Fri, 30 Oct 2026 19:52:13 +0000
+Received: from omta40.uswest2.a.cloudfilter.net ([35.89.44.39])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMsIV-0000000CUcN-1KJJ;
-	Fri, 30 Oct 2026 19:29:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=vPaZTew6bHfge4tOyLNLySlYKC2rw8qbkKNVjP45eiQ=; b=vcu0mzRqxjxJVB7xA26R21VLOx
-	1XuofCcoDvKjYRmwM2obB+hnUCFpJkF2LJaei8BwSJBywSI21TReldCkGn+wUdrlpC7lnPOFPVhJQ
-	InLmBANLT+fRBAxuq/0hEXI/HTmcRD1WdeJyimQeu+GuZ+aIzaKMVUMW5u7kxr5NWsbEIeqO8r7eb
-	5z+MErXmfIQH1kwv44t0UWeM9iwm1+TY4B6nc5OszREoFiojcFy4mUbQ3rDmDMv1XLbd5qsr1tFQp
-	dgsq2+G4QhKtf2FimPUBNyCXhiEmCVykMTENu6eE6MY5CF20VntzbvgM9RbUsso6Sm919olW2kuYP
-	eLFI0hRQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: iav@iav.lv
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add the GPU to Kobol Helios64
-Date: Fri, 30 Oct 2026 20:29:47 +0100
-Message-ID: <1937939.QCnGb9OGeP@phil>
-In-Reply-To: <20261011-b4-helios64-gpu-v1-1-bd83c6ecd19e@iav.lv>
-References: <20261011-b4-helios64-gpu-v1-1-bd83c6ecd19e@iav.lv>
+	id 1xMse1-0000000CWKc-2oyi
+	for linux-rockchip@lists.infradead.org;
+	Fri, 30 Oct 2026 19:52:10 +0000
+Received: from eig-obgw-6004b.ext.cloudfilter.net ([10.0.30.210])
+	by cmsmtp with ESMTPS
+	id MrhhxW7fXc3XsMse0xEAw0; Fri, 30 Oct 2026 19:52:08 +0000
+Received: from 162-215-252-36.unifiedlayer.com ([208.91.199.152])
+	by cmsmtp with ESMTPS
+	id MsdyxgfZIe0duMsdyxJbBZ; Fri, 30 Oct 2026 19:52:06 +0000
+X-Authority-Analysis: v=2.4 cv=KINaDEFo c=1 sm=1 tr=0 ts=6ae4f566
+ a=QNED+QcLUkoL9qulTODnwA==:117 a=2cfIYNtKkjgZNaOwnGXpGw==:17
+ a=kj9zAlcOel0A:10 a=660iZSQnnn4A:10 a=M0FbrtG7MMAA:10 a=VwQbUJbxAAAA:8
+ a=eNXyHOXcY0__OJ8I6H8A:9 a=CjuIK1q_8ugA:10 a=KPbNTLLc3YvdawN95zVk:22
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=roeck-us.net; s=default; h=In-Reply-To:Content-Type:MIME-Version:References
+	:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
+	:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Unsubscribe-Post:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=30fXaKKbd46d8fP4eF3UV28bEpjvYYXr5FYuZ+bJRHs=; b=R34PI/7Atx76HYCV1ZaWWd775d
+	xBknMzcTAtvhoA4hqkHV21sbvXlb1TMqApg4ijC1Ib6w6AqLEM61/tmTS8TfL5g0Tj5W/s7QhtoWF
+	7aRSToLGG8afWvY+PgouG97FE8FjRAIYSc6Dx/aOPATSwz5iA0hrnP4Dt7SwAd+Ct3/DWnBSrBg80
+	o8p2uO5zlJGdtLE7L4V/UcS6K+2HJVxnS9l6eL3cxHJpT8nAjls2JA0WN6TAvtLRLlyAL7lZZON2a
+	buyKnCVFOc6q0fMnbIw9yV81Kzpa+fsmEbZLYWTwAApa0EoSfOWiZfNKLQUGD5etWBQVTD9skgYha
+	98sNnEgw==;
+Received: from 108-223-40-66.lightspeed.sntcca.sbcglobal.net ([108.223.40.66]:41222 helo=server.roeck-us.net)
+	by bh-25.webhostbox.net with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.100.1)
+	(envelope-from <linux@roeck-us.net>)
+	id 1xMsdx-00000003vdq-2kxc;
+	Sat, 31 Oct 2026 01:22:05 +0530
+Date: Fri, 30 Oct 2026 12:52:04 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Igor Velkov <iav@iav.lv>
+Cc: Jean Delvare <jdelvare@suse.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-hwmon@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: hwmon: pwm-fan: Reference the common
+ fan schema
+Message-ID: <d1fc3c7b-323a-4ad6-b770-4f3df02f5615@roeck-us.net>
+References: <20261018-helios64-fan-label-v1-0-69a3f96d4efa@iav.lv>
+ <20261018-helios64-fan-label-v1-1-69a3f96d4efa@iav.lv>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20261018-helios64-fan-label-v1-1-69a3f96d4efa@iav.lv>
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - bh-25.webhostbox.net
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - roeck-us.net
+X-BWhitelist: no
+X-Source-IP: 108.223.40.66
+X-Source-L: No
+X-Exim-ID: 1xMsdx-00000003vdq-2kxc
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: 108-223-40-66.lightspeed.sntcca.sbcglobal.net (server.roeck-us.net) [108.223.40.66]:41222
+X-Source-Auth: guenter@roeck-us.net
+X-Email-Count: 76
+X-Org: HG=direseller_whb_net_legacy;ORG=directi;
+X-Source-Cap: cm9lY2s7YWN0aXZzdG07YmgtMjUud2ViaG9zdGJveC5uZXQ=
+X-Local-Domain: yes
+X-CMAE-Envelope: MS4xfI+TnsJNMVtf/hc4ghD09Xifx2x57uYHCECCJzZD3t4DhbCWAfDisLruJVGCNiTFZhufh2nH88dcxZIBVsiKcJQ6OY0lcy2X2rhvn2X3SsQbbLr3RXDx
+ SP44eh39cvR2V+J5PsBUqWjI2dXYoq59EFaFygdfuGb98ZECEZk41x8aMwwSaeZvgV19uJflkwr6gv4AqSHfpG3MnLTW8vUS7/AUle4Ypc614rpfmqTzu7e+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_122955_360570_81F1C2D8 
-X-CRM114-Status: GOOD (  16.44  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261030_125209_734467_A9B3F57D 
+X-CRM114-Status: UNSURE (   5.74  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.4 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,51 +109,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGksCgpBbSBTYW1zdGFnLCAxMC4gT2t0b2JlciAyMDI2LCAyMzo1MzowMSBNaXR0ZWxldXJvcMOk
-aXNjaGUgTm9ybWFsemVpdCBzY2hyaWViIElnb3IgVmVsa292IHZpYSBCNCBSZWxheToKPiBGcm9t
-OiBJZ29yIFZlbGtvdiA8aWF2QGlhdi5sdj4KPiAKPiBUaGUgR1BVIGNvcmUgb2YgSGVsaW9zNjQg
-aXMgc3VwcGxpZWQgYnkgVTEyLCBhIFNpbGVyZ3kgU1lSODM4IG9uIGkyYzAKPiBhdCAweDQxLCB3
-aXRoIGl0cyBWU0VMIHBpbiBvbiBHUFVfU0xFRVBfSCAoR1BJTzFfQjYpLiBEZXNjcmliZSBpdCBh
-cwo+IHNpbGVyZ3ksc3lyODI4LCB0aGUgd2F5IHZkZF9jcHVfYiAoYSBTWVI4MzcpIGlzIGRlc2Ny
-aWJlZCBhcwo+IHNpbGVyZ3ksc3lyODI3LCBhbmQgZW5hYmxlIHRoZSBHUFUuCj4gCj4gQXNzaXN0
-ZWQtYnk6IExMTQo+IFNpZ25lZC1vZmYtYnk6IElnb3IgVmVsa292IDxpYXZAaWF2Lmx2Pgo+IC0t
-LQo+IFNjaGVtYXRpYywgc2hlZXQgNzoKPiBodHRwczovL3dpa2kua29ib2wuaW8vaGVsaW9zNjQv
-ZmlsZXMvc2NoZW1hdGljcy9IZWxpb3M2NF9TY2hlbWF0aWNzX1JldjEuMi5wZGYKPiAKPiBUZXN0
-ZWQgb24gbWFpbmxpbmU6IHBhbmZyb3N0IHByb2JlcywgZGV2ZnJlcSBtb3ZlcyB2ZGRfZ3B1IGZy
-b20gODI1IG1WCj4gYXQgMjAwIE1IeiB0byAxMTAwIG1WIGF0IDgwMCBNSHosIGdsbWFyazItZXMy
-LXdheWxhbmQgdW5kZXIgaGVhZGxlc3MKPiB3ZXN0b24gc2NvcmVzIDU0OC01NzcgaW4gdGhyZWUg
-cnVucy4gVHdvIG9mIHRoZW0gbG9nZ2VkIG9uZSBwYW5mcm9zdAo+IGpvYiB0aW1lb3V0IGVhY2g7
-IHRoZSBBcm1iaWFuIERUIGdhdmUgbm9uZSBpbiB0aHJlZSBydW5zLgo+IC0tLQo+ICAuLi4vYm9v
-dC9kdHMvcm9ja2NoaXAvcmszMzk5LWtvYm9sLWhlbGlvczY0LmR0cyAgICB8IDI4ICsrKysrKysr
-KysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDI4IGluc2VydGlvbnMoKykKPiAKPiBk
-aWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkta29ib2wtaGVs
-aW9zNjQuZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkta29ib2wtaGVs
-aW9zNjQuZHRzCj4gaW5kZXggNjNhZDc5YjRjOGFjLi4xZjUwOTgyMjkxYmYgMTAwNjQ0Cj4gLS0t
-IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkta29ib2wtaGVsaW9zNjQuZHRz
-Cj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkta29ib2wtaGVsaW9z
-NjQuZHRzCj4gQEAgLTMzOSw2ICszMzksMTEgQEAgJmdtYWMgewo+ICAJc3RhdHVzID0gIm9rYXki
-Owo+ICB9Owo+ICAKPiArJmdwdSB7Cj4gKwltYWxpLXN1cHBseSA9IDwmdmRkX2dwdT47Cj4gKwlz
-dGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwo+ICAmaTJjMCB7Cj4gIAljbG9jay1mcmVxdWVuY3kg
-PSA8NDAwMDAwPjsKPiAgCWkyYy1zY2wtcmlzaW5nLXRpbWUtbnMgPSA8MTY4PjsKPiBAQCAtNDUz
-LDYgKzQ1OCwyNSBAQCByZWd1bGF0b3Itc3RhdGUtbWVtIHsKPiAgCQkJcmVndWxhdG9yLW9mZi1p
-bi1zdXNwZW5kOwo+ICAJCX07Cj4gIAl9Owo+ICsKPiArCXZkZF9ncHU6IHJlZ3VsYXRvckA0MSB7
-Cj4gKwkJY29tcGF0aWJsZSA9ICJzaWxlcmd5LHN5cjgyOCI7Cj4gKwkJcmVnID0gPDB4NDE+Owo+
-ICsJCWZjcyxzdXNwZW5kLXZvbHRhZ2Utc2VsZWN0b3IgPSA8MT47Cj4gKwkJcGluY3RybC1uYW1l
-cyA9ICJkZWZhdWx0IjsKPiArCQlwaW5jdHJsLTAgPSA8JnZzZWwyX3Bpbj47Cj4gKwkJcmVndWxh
-dG9yLW5hbWUgPSAidmRkX2dwdSI7Cj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPiArCQlyZWd1
-bGF0b3ItYm9vdC1vbjsKCmJvdGggb2YgdGhlc2Ugc2hvdWxkIG5vdCBiZSBuZWVkZWQsIGFzIHRo
-ZSBHUFUgc2hvdWxkIGNvbnRyb2wgaXRzCnJlZ3VsYXRvci4gKGFsd2F5cy1vbiBhbmQgYm9vdC1v
-bikKCkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+On Sun, Oct 18, 2026 at 07:54:59AM +0300, Igor Velkov wrote:
+> From: Igor Velkov <iav@iav.lv>
+> 
+> pwm-fan predates fan-common.yaml and repeats several of its properties.
+> Reference the common schema, drop the duplicated properties and keep
+> only the constraints specific to PWM fans.
+> 
+> This also allows label, which the hwmon core exposes as the label
+> attribute.
+> 
+> Link: https://lore.kernel.org/r/20250106173805.GA501301-robh@kernel.org
+> Signed-off-by: Igor Velkov <iav@iav.lv>
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+
+Applied.
+
+Thanks,
+Guenter
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
