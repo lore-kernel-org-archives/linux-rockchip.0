@@ -2,83 +2,97 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ACF5C606A31D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 12:49:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 74BFB606A31D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2026 13:53:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KjM0UcvE;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=GoAtWKhI
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Blx4W/J3;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=FDCj1S8p
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=OC3GCUW41vmriN4ATJr+DI8+RMfkcxDk6Ok8qyx6fD8=; b=KjM0UcvE8Jt0fJRCLWxUAEkSO7
-	IwTcE/jKMHUhehzfISizlv3W0BS+re8d2eUyV6TQMLLLai43rC8TvGIbfrkoxvY+AP/DqowhxToGS
-	UBbPrbEbvxob86QWMhbZyL5WDu5Fu+inOTPo1PRBzveQDm1yaYfmyXuvIDAf8fFlVEsRxiJNGAocM
-	eas9CQp5O2nZ29psWVcuj9c/u/f9yNrLfx2ByrQa2A2mhp1YqnBqalPgZZcfh0b5TNbqZ/LgcC5rM
-	LLXlPCuANZMqqjJN4Mh1BpoY7/hDCniRn/DzH4ZUQ6gXK9nZ4THFgYuZER2X2xSWYa71K+ErnO1RX
-	xz2ISL0w==;
+	bh=4/vsnarik7lK5JL1W7QbQ76xJmJK4d3mheTo/NtKjBE=; b=Blx4W/J3zNxM3REcQhZEQw4l+u
+	6JIN+KE+JjC75pzV7j1LXEdXWUFR0RoIOhsBMhqVTyX+iVBFNjV/iEYxMJ1h2WpyVslCBUgT3/M0V
+	3Z5fH3TNwUZmTjQQlG1sK/lO7tgHEyRhdnTxaf5ocJpWnd+EKfrsM4G+3FwDoZC1PkpWYF/FuDaKc
+	QkPLUqA4im0cuF2O9IVQb5xzmgvMDSGkMm9I3zQCbHksfM3SH+Gby4A8J+tDqVFaOXzz2onMTBnRu
+	QXLYS0jV1SFSBgB+GS5jKOIQUR076tRXFmqgdknpLnErRjmzDSBAH+Ef3MZ4qlHLqIXkWdOJcfg8r
+	e755DI6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMm2l-0000000BhZh-0ZXE;
-	Fri, 30 Oct 2026 12:49:15 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xMn2Q-0000000Bn9D-0l7j;
+	Fri, 30 Oct 2026 13:52:58 +0000
+Received: from mail-pj2-x09.google.com ([2607:f8b0:4864:39::9])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMm2h-0000000BhZ2-3CPA;
-	Fri, 30 Oct 2026 12:49:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793364547;
-	bh=KlAsEMUoh8SqMK535dsRdRC/2BXgKedTejkSjok4NIg=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=GoAtWKhIvjsma323nTKdjX9UTokJbCgbQ7d9/UT5FOB/SFdzkpNgXp2n2f/d2p4lk
-	 oGcgZ66mcU5aQJEhRGToUuHU16bJwxF53mH176R0q9mKFWRI2FRbyknQ3ZIlXFl/kP
-	 AIi8buKDKTPluHT5GMgrObmLB6lYfrGffyIu/KixOTt6IakJtqT7M5uHlk6XdlkMTr
-	 myL7SY6Cd6LTPIw1vDQqIREACm5cUGhhu1L3KEOzNtL3bh2gjasTEo6IfuR3AKiO5g
-	 3C3Oh8bahCDoQjDcZoG24Rigzu3QeTRzWpv5dkqTedmki6Iid9ObxkczGlFFYBfXlj
-	 t7Oj80WlqF5Pg==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 884DB17E0053;
-	Fri, 30 Oct 2026 13:49:05 +0100 (CET)
-Message-ID: <76e2e993fa5a8fd054bad97505907d3c4e88e11c.camel@collabora.com>
-Subject: Re: [PATCH] media: rkvdec: Do not keep the clocks enabled from probe
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: iav@iav.lv, Detlev Casanova <detlev.casanova@collabora.com>, Ezequiel
- Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: Hans Verkuil <hverkuil+cisco@kernel.org>, Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Diederik de Haas	
- <diederik@cknow-tech.com>, Jonas Karlman <jonas@kwiboo.se>, Francesco
- Saverio Pavone <pavone.lawyer@gmail.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, 	stable@vger.kernel.org
-Date: Fri, 30 Oct 2026 08:49:03 -0400
-In-Reply-To: <20261030-rkvdec-runtime-pm-clocks-v1-1-fb2c5b629e79@iav.lv>
-References: <20261030-rkvdec-runtime-pm-clocks-v1-1-fb2c5b629e79@iav.lv>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
+	id 1xMn2O-0000000Bn8g-0teI
+	for linux-rockchip@lists.infradead.org;
+	Fri, 30 Oct 2026 13:52:57 +0000
+Received: by mail-pj2-x09.google.com with SMTP id d9443c01a7336-2e7c8213b09so2571875ad.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 30 Oct 2026 06:52:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793368374; x=1793973174; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:message-id
+         :references:in-reply-to:user-agent:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=ZjCkrPgZkmpcI6klO5ZNTUrNouiYanWFs0XqwffC5jg=;
+        b=FDCj1S8pwlffUfuys2piZ+a3/ctbMRLqXaQX6ro/fwZ0p8pnQ7ODH8cwM/FFbY0H4z
+         uAi9S3uc/xh1ajz79leu+evPKsKZ//N6S0gwkgGjy2JIsUQGQGXWKYZmAdMdv8tTvPRm
+         ylN1MDRf7GO2PNwq4jZliBOLolhjiOQZCEmALzP14TBGBSZJikfvJgKx2MRuYlzpJstI
+         NSB+p+jgxa77EAenzVjekMYT8r0GvndB8GT700SPUTtGcFX2NLbaydaBRI9+qFnN2+b5
+         ylnCQpWON/6/TJ6ontk9pphV4nJP95IukrBpeITD14TyyzlbyMZWlk/Q9l5hWGCVvZAk
+         tIpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793368374; x=1793973174;
+        h=content-transfer-encoding:content-type:mime-version:message-id
+         :references:in-reply-to:user-agent:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ZjCkrPgZkmpcI6klO5ZNTUrNouiYanWFs0XqwffC5jg=;
+        b=h5ZvXg7XPByGomx3FBiRUsEWzynM221TU20N/HMubSboxb/3imeOfnH2+1e5kRXQ8L
+         CqB9RfgQALFoSSfY8mqApxV5dpAtuKntKmTL9wj0bNDiPknpNfaGy+dmx3qXRthRSijS
+         BeAmeLsGCw7ntwiP7plZLZDu9kqMTHSiB4BYFcJLWB51jMQWU+xu0bz8gNicHOmU0hFR
+         L1gJVhHqSuM5K2siPDlHhCeDpU/pMHaNi70snrUEr9d/ttWGb/msfcYskcCoLr3QrJkX
+         vjMVqit+pWO8aIi0snI4zGpvLj0YiDTSNTgSZJgqntSlu/34Jr1vHSGw3F9jrJZhsl6/
+         uaTA==
+X-Forwarded-Encrypted: i=1; AKwUvByD6A3WSGyUiqlwHgzvIK2CJgFh66Y8aY1CSza2zR1x55vWnidR1c5j8l/0ITdpgpewB4tSL3wWLdrVU6WIXA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIEK9CbMS7jy/YIaYO3IgdetMBKZrGmvpqZjdVhy3aNIQcahRNs
+	HQxyau+kGkcCfdwCZpzPYXwD3uG9u9WqnwQUk8MevmxswwukYVsqlOmtwW1+cQM0N0A=
+X-Gm-Gg: AYBFou29pdn9hSE2QI8Jh+lJIGSSH0q7s3pi3+pbO3EBKy/bko34MwbsisnAIo1YxIN
+	gfDuYJU+knTnLqONOQ4qalzBKOzhcisC4q4Afx2SeS5acB9rqHR7gzidwg8PIrxB4Ap9md8WkpW
+	Cgyoal9saeBNRs40YL+y/wFu/HBoG3XqBJIG5EPYlL4tt6Pbnn+43/vagjak4noOpDVEMy+OvV5
+	5F0x25tx8ffr79xKKDOpb2Rw0IStzpcRzLCag8NSRkHkyXdmETWnGvQPcmTUp6e9vwsPYCBFThh
+	cPhZKlvG9U8kZNu645CyDIeSDxmu0lRdWpH/mqaV1fI3z4EKVDQ/AgF2SQsLfJtj1uGCUc/30dQ
+	OAMu1CW+7PdozK9H9Hb8a6SeG/9eDsuvgXh9ZMGdtKzyTOsw2ND6x38ueD+0t5kaXkoWCjtWY87
+	BkyPfKXCsLx8+xDiOHImkccyuhTpnXtBHCMVJpW30KReo1rE3eqIgBumL7ShykHIlxaECVU3TQB
+	m3u8vbms1HQ3uJOrZty5xi6ZK7+nqHblYs+36r8k+O7UcNN4z0KpxBhoSsmsxMVeAdwlXJNJEcc
+	23B0dIAud3ydoeOD9ET4aCCCpwbXP+SelMofd7E=
+X-Received: by 2002:a17:902:ffcf:b0:2e9:a782:bb82 with SMTP id d9443c01a7336-2eb364e93afmr22499015ad.54.1793368373608;
+        Fri, 30 Oct 2026 06:52:53 -0700 (PDT)
+Received: from ehlo.thunderbird.net ([168.138.199.194])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2eb38e9633fsm7600865ad.0.2026.10.30.06.52.51
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 30 Oct 2026 06:52:53 -0700 (PDT)
+Date: Fri, 30 Oct 2026 21:52:48 +0800
+From: Coia Prant <coiaprant@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
+CC: Jakub Kicinski <kuba@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>,
+ "David S . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, netdev@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_net_v2=5D_net=3A_pcs=3A_xpcs=3A_ma?=
+ =?US-ASCII?Q?ke_supported=5Finterfaces_authoritative?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20fb8d2d-a20e-472b-8f32-3fe2fec9a425@lunn.ch>
+References: <20261029102728.3189359-2-coiaprant@gmail.com> <20fb8d2d-a20e-472b-8f32-3fe2fec9a425@lunn.ch>
+Message-ID: <A049E9C1-CE52-4B04-8BD4-44962D008F6D@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_054911_968292_F71B5413 
-X-CRM114-Status: GOOD (  28.66  )
+X-CRM114-CacheID: sfid-20261030_065256_262062_92A3787B 
+X-CRM114-Status: GOOD (  21.11  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,134 +103,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8749655422340748132=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+On October 29, 2026 9:20:56 PM GMT+08:00, Andrew Lunn <andrew@lunn.ch> wrote:
+>On Thu, Oct 29, 2026 at 06:27:29PM +0800, Coia Prant wrote:
+>> pcs.supported_interfaces is the mask of interfaces a given xpcs
+>> instance actually supports. The compat table describes what the
+>> Synopsys IP can do in general, but a specific integration may support
+>> a different subset: the RK3568 XPCS supports 1000BASE-X, SGMII and
+>> QSGMII in hardware, but does not implement the C73 10G or 2500BASE-X
+>> modes that the Synopsys compat table advertises.
+>> 
+>> The Rockchip glue currently advertises only SGMII, since that is what
+>> the RK3568 MAC side supports today. 1000BASE-X and QSGMII can be added
+>> later when the MAC side gains support.
+>> 
+>> Without narrowing the mask, stmmac_phylink_setup() merges the PCS
+>> supported_interfaces into the MAC mask with phy_interface_or(), so the
+>> XPCS would contribute 1000BASE-X, 2500BASE-X, USXGMII and the 10G/25G
+>> modes to the combined set. The MAC side forces the phy modes and
+>> phylink start passes the mode explicitly, so this does not currently
+>> make phylink switch to an unsupported mode, but the combined mask still
+>> advertises interfaces the SoC cannot use.
+>
+>I don't know this code too well, but something does not feel right
+>here. It might be due to the way stmmac does PCS with phylink, which
+>is often considered broken.
+>
+>What i would expect to happen is that each piece of hardware indicates
+>what it can do, and then phylink finds the common modes.
+>
+>So maybe stmmac_phylink_setup() is wrong when it ORs them together?
+>
+>Maybe look at other MAC drivers using pcs and phylink.
+>
+>      Andrew
 
---===============8749655422340748132==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-ruCLDIpENIOKgPK2wLA7"
+Hi Andrew,
 
+Thanks for the review. The comment is too terse, let me clarify the
+scope of this patch.
 
---=-ruCLDIpENIOKgPK2wLA7
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The RK3568 XPCS supports 1000BASE-X, SGMII and QSGMII in hardware, but
+the Rockchip glue advertises only SGMII for now because that is what
+the RK3568 MAC side supports today. 1000BASE-X and QSGMII can be added
+later when the MAC side gains support.
 
-Le vendredi 30 octobre 2026 =C3=A0 03:33 +0200, Igor Velkov via B4 Relay a =
-=C3=A9crit=C2=A0:
-> From: Igor Velkov <iav@iav.lv>
->=20
-> Since commit 6a846f7d72c7 ("media: rkvdec: Enable all clocks without
-> naming them") the clocks are fetched with devm_clk_bulk_get_all_enabled()=
-,
-> which keeps them enabled from probe until unbind. rkvdec_runtime_suspend(=
-)
-> disables them on top of that, so their enable count never drops to zero
-> and the clock gates stay open while the decoder is idle.
->=20
-> On RK3399 this also breaks restore from hibernation when the boot kernel
-> has not enabled these clocks, for example with rkvdec built as a module:
-> the gates are closed when the restored kernel takes over, while it still
-> counts the clocks as enabled. Powering on the vdu power domain then finds
-> the count at 1 and leaves the gates closed, and the first QoS register
-> write of the domain never returns.
->=20
-> Get the clocks without enabling them and let runtime PM enable them while
-> the decoder is in use, as before that commit.
->=20
-> Fixes: 6a846f7d72c7 ("media: rkvdec: Enable all clocks without naming the=
-m")
-> Cc: stable@vger.kernel.org # v7.0+
-> Signed-off-by: Igor Velkov <iav@iav.lv>
-> ---
-> Tested on ROCK Pi 4A (RK3399) with v7.3, rkvdec and panfrost built as
-> modules, panfrost not loaded:
-> - idle decoder: the vdu clocks have enable_count 0 (1 without the patch);
-> - hibernate, power cycle, restore: 3 of 3 (0 of 3 without the patch, the
->   restored kernel stops after bringing the secondary CPUs up);
-> - H.264 decode with GStreamer v4l2slh264dec, 300 frames of 720p High
->   profile: output identical to avdec_h264 (md5 of all frames).
-> The QoS hang was traced with debug prints in rockchip_pd_power() on a
-> 7.3-based kernel.
->=20
-> This is separate from the unbind leak in Jonas's patch that Francesco
-> posted [1]: here the extra enable comes from probe.
->=20
-> [1] https://lore.kernel.org/all/20260717154505.83935-1-pavone.lawyer@gmai=
-l.com/
-> ---
->  drivers/media/platform/rockchip/rkvdec/rkvdec.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/me=
-dia/platform/rockchip/rkvdec/rkvdec.c
-> index 061281f903f3..45c541ae3029 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> @@ -1788,7 +1788,7 @@ static int rkvdec_probe(struct platform_device *pde=
-v)
->  	if (ret)
->  		return ret;
-> =20
-> -	ret =3D devm_clk_bulk_get_all_enabled(&pdev->dev, &rkvdec->clocks);
-> +	ret =3D devm_clk_bulk_get_all(&pdev->dev, &rkvdec->clocks);
+On the stmmac side: I agree the phy_interface_or() in
+stmmac_phylink_setup() is not the usual intersect model, and it is one
+of the reasons stmmac's PCS glue is often considered fragile. But the
+DWMAC binding requires phy-mode globally (snps,dwmac.yaml), so the
+dwmac-rk glue gets a fixed mode from DT and phylink start passes that
+mode explicitly. The OR-merged mask therefore does not currently make
+phylink switch to a mode the SoC cannot use.
 
-With the explanation above, it seems pretty clear we have an issue. Now, th=
-e
-problem with this is that PM ops are set with:
+I've only been touching this area for the last few months, so I'm
+guessing it may have been intentional. You might want to ask Russell
+King, who designed the original logic, for the rationale.
 
-  #define pm_ptr(_ptr) PTR_IF(IS_ENABLED(CONFIG_PM), (_ptr))
+This patch only touches the PCS side. It makes supported_interfaces
+authoritative on the PCS instance, so xpcs_find_compat() does not
+configure an interface the glue has marked as unsupported. Reworking
+stmmac's OR-merge into a proper intersect model is a separate, larger
+topic, and I'd rather not mix it into this fix.
 
-So if CONFIG_PM is not set, the initial resume will never occur, and first =
-mmio
-access will likely hang the CPU. We need a clean pattern to handle this, an=
-d
-perhaps review other similar drivers while at it.
-
-Nicolas
-
->  	if (ret < 0)
->  		return ret;
-> =20
->=20
-> ---
-> base-commit: c03c1a14507dfaf8b856c2608f9ac216021fc222
-> change-id: 20261030-rkvdec-runtime-pm-clocks-41adcf141271
->=20
-> Best regards,
-
---=-ruCLDIpENIOKgPK2wLA7
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCauSSPwAKCRDZQZRRKWBy
-9LLJAP9JGmJUIntmEuLPCbktfBqHUFX1/7ZfGaC/KbjrAiMyawEAo53JgFggAOMr
-y8Uub/MI2Wlho7axDbJbc7ZVrOuyVw0=
-=+8na
------END PGP SIGNATURE-----
-
---=-ruCLDIpENIOKgPK2wLA7--
-
-
---===============8749655422340748132==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Coia
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8749655422340748132==--
-
