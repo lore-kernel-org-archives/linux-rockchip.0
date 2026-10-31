@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0EEC8606A31E
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Oct 2026 08:05:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6ACCF606A31E
+	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Oct 2026 08:15:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xlw34p8z;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=k0ecfEyD
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VyXmyMMK;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=KMvX8Nkp
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,41 +14,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=EfClGnxLaleqTIVDq2CxLcUaduqPoc8Qn/3OUKaI1YQ=; b=xlw34p8zOlZnArDdDNEELh4Whi
-	HsAXVw9vOjySuCi+1QCcFsRQZoC+R5bCRZWnHYcVlld4rr+yJutvwcyksH4A+0kuhnm5SZZnzbsVw
-	lw0uC7g3stBZHDpLkAdZyt+23iOblTJgpNgiTAFdRowEnZNLUhr3kme0lXMfmRVxbUDaGeHnwnHJC
-	j6pZvIxTRD/6bDr5lRpqbxJqltkZpvLxweNVyh4+mcIVEhe0GS1nJpIF4w7tZxywre8/bFldKgDUx
-	cXo6rXEz6hiJIsTp9zQ+PRe1+L83SeR1/bKKC3YcRFs/Qk+tMr/fCgecsFFGUUzM+rdV8pxdWgP3p
-	PmRcWNkQ==;
+	bh=wpllhR8szQ10AeU0Ia0Mpm+4s8jKR8gxKTAbuYDVhFw=; b=VyXmyMMKbOKupa9uYpFQkEad9g
+	tIoSlMxaMXVftj2trYz56g5u4Kk7EzIDPJ6hMl+BP2GpvdvyLfOAmBacLI6oQX3V2xNQWF5LI5sI9
+	K1vjKJbCCOGWMi/KIctUjMt83k0leap26MTkjxn2I9Q/KMut0m+y3KpN3qdTItDEZQIYOCRLsIwp/
+	EDLZEMZrrfPNuK456WoA02tqoMpkaYBSoeIC6Y7/4Cf0FijFMAajzklpQn8eMfkncGUhWGnkllfkZ
+	eK65t7SyGTUqeahgWT+oiauUTu6H/8u/mw5adbrCTM6PGEQ4qy4VqdVSHWGMN9JyrTvbRZhP1XiXd
+	GjNHNAdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xN45H-0000000D2Vb-21Rw;
-	Sat, 31 Oct 2026 08:05:03 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xN4Et-0000000D2v9-40Ba;
+	Sat, 31 Oct 2026 08:14:59 +0000
+Received: from sender-op-o15.zoho.eu ([136.143.169.15])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xN45F-0000000D2VN-3pSg;
-	Sat, 31 Oct 2026 08:05:01 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 92E3F40A3D;
-	Sat, 31 Oct 2026 08:05:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 617E71F000C1;
-	Sat, 31 Oct 2026 08:05:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793433901;
-	bh=ZCAoLYZlSrLohEk+mBrzJi43HvKosm2TxiN/tMhp9/s=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=k0ecfEyDslk3OPxAdAna6unlZefnr/LSIYKvo4kar7IqKLLsf3yvlR0IuZ97gCV79
-	 t/fv2IGxGjaz6mfSd0xNgpGBONXUtlnisUH41brdoXR1yGN/Z8WD5Wv3zffFJ2t2G9
-	 OoERCMFJ1TwI2NqVa/C/nj0BYzxew+9cHHQfwyksbLzA0vkdquWShg1/RK5YprOUN5
-	 gC/wP+3E2bEWPi76yjhOitPIvGSWsYGWXG4yrGn68l7u0ecbKua29ubmmUISq69FcU
-	 Ym71YAmNkC1qunfsbohxe8Fm2HygfBNcjATBQAeMX6pVi22rnjQPK/+Y91eBqclG1Z
-	 yd9Chh25ADtBQ==
-From: netdev-bot+sinfo@kernel.org
-To: Igor Velkov <iav@iav.lv>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
+	id 1xN4Er-0000000D2uj-0YAL;
+	Sat, 31 Oct 2026 08:14:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1793434452; cv=none; 
+	d=zohomail.eu; s=zohoarc; 
+	b=Yify8tmgdYSbVopsJlydWtpeI2UXkOOfXuiazwE1AvrvVzXAFnRZj6gTSwZ5cUlnyC4GRDcnZ2iKJF53NHeN+1pDWW/oHjNk6XGJ9BRarminH1Haz/dYyl9rVvtGCUTvdHfMAxcbGVMse9Bm5G+dXjcc+HvMpHI84qEP+stJFMc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
+	t=1793434452; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=uT6v4Xn0ekRQ/dccyYyJtT8xDye8PelpFDuIVEmaRz0=; 
+	b=eDaI+n91ZLzQa3uHrnFlgx3omj5Ba1M6q4Tk9Ai5/y4nl+Wr7TzscOOvcfT6Q/RlKamKhCv1ZlxIs7kn+ZXWVmEDiwgXYNuOXU0FyaX+V53iyFg0b87Ob/4YWHODTBFTqlaP6jkpT+RQ1QycGiimdvo3612WG/HBu+56l9Dq5vQ=
+ARC-Authentication-Results: i=1; mx.zohomail.eu;
+	dkim=pass  header.i=iav.lv;
+	spf=pass  smtp.mailfrom=iav@iav.lv;
+	dmarc=pass header.from=<iav@iav.lv>
+DKIM-Signature: a=rsa-sha256; b=KMvX8NkpogJBvnAgF++pM8jAAuNhJUUBIYMvuBPLaVSzjLK2Kgbnk4WvjXszmUrbl7SFAU4ytlQjw9UzxncCFIoUOAUjZk0G2xETrbwZe/FkqTpE1pPw1rqbW3wRDTs6Z6AUjil6+wGc4xXUQ8lD1iyASjW4vsTG2v42onGy004=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=uT6v4Xn0ekRQ/dccyYyJtT8xDye8PelpFDuIVEmaRz0=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zoho.eu with SMTPS id 1793434451622317.1807577626872;
+	Sat, 31 Oct 2026 09:14:11 +0100 (CET)
+From: Igor Velkov <iav@iav.lv>
+To: netdev-bot+sinfo@kernel.org
+Cc: Igor Velkov <iav@iav.lv>, Andrew Lunn <andrew@lunn.ch>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  Maxime Chevallier <maxime.chevallier@bootlin.com>,
  Lukas Wunner <lukas@wunner.de>,
  "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, Wei Fang <wei.fang@nxp.com>,
@@ -62,13 +61,18 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
  linux-kernel@vger.kernel.org
 Subject: Re: [PATCH net v4 0/5] net: phy: postpone PHY interrupts during sleep
  with MAC-managed PM
-Date: Sat, 31 Oct 2026 08:04:59 +0000
-Message-ID: <179343389984.3286.809839136574794731@kernel.org>
-In-Reply-To: <20261031-b4-phylib-mac-pm-irq-v3-v4-0-5ba23b3ff9a4@iav.lv>
+Date: Sat, 31 Oct 2026 08:13:51 +0000
+Message-ID: <179343443172.2895107.13605713175307417010.phylib-v4-sinfo@iav.lv>
+In-Reply-To: <179343389984.3286.809839136574794731@kernel.org>
 References: <20261031-b4-phylib-mac-pm-irq-v3-v4-0-5ba23b3ff9a4@iav.lv>
-Auto-Submitted: auto-generated
+ <179343389984.3286.809839136574794731@kernel.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261031_011457_481462_BE82C797 
+X-CRM114-Status: UNSURE (   6.53  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,23 +92,18 @@ X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi!
+> - Whether the issue was actually triggered, or is only theoretical
 
-This is an automated message. This series looks like a fix, but its
-commit messages seem to be missing some information:
+Patch 5 fixes a hang seen on Helios64 (dwmac-rk, RTL8211F): in s2idle
+without WoL the board hung or reset 10 of 10 times without the series.
+The PHY IRQ thread stalls its CPU on an MDIO read while the GMAC clocks
+are off, so that CPU never answers the NMI:
 
- - Whether the issue was actually triggered, or is only theoretical
-   (e.g. found by code inspection). If it was triggered please include
-   the symptoms, like the stack trace or error messages.
+  watchdog: CPU0: Watchdog detected hard LOCKUP on cpu 1
+  After 10 seconds, these CPUS still haven't responded to the NMI: 1
 
-Please do not repost the series just to address the above. Instead,
-reply to this email with the missing information, so that reviewers
-can take it into account. If the series needs another revision for
-other reasons, please include the information in the commit messages
-then.
-
-The evaluation is done by an LLM so it may be wrong, if you think
-that is the case please reply and explain.
+Patches 1-4 fix defects found by code inspection and Sashiko review;
+they were not triggered.
 
 _______________________________________________
 Linux-rockchip mailing list
