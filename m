@@ -2,58 +2,62 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E33926072B04
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:16:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2617B607184F
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:16:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2Zj6o9Up;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=DFmTlMB+
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=W7vxkbxo;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=nf3L9ctJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=yXGuTLrxwgnQBkPUFMokkzAs1PYGJfuGRfyRjqbdjhY=; b=2Zj6o9Upd1YEOMOZXGX1DZRgQM
-	+1fWrOTsQUfYZYLPfNHL3qm+AVGjyrVssSj5iFNBtuWhAxj3bLTctC6T/Nb0SDYlXn/Hz8XYZTNE1
-	H+MZs027ATU8WpRQSyyTJKlFtiPPCN5iM21UN54zabxDtc7w1/DDe79VKqJ26Lg9NMBwR18PU/5+m
-	fF/ewbhZt9Jo5JcZzBGM6Haa31opzNvI9lOjgV9ca1Rqdib4XHeDs92G8rju8Uurk+lJuGzWacf8p
-	jYbmZmQuE9XuoH7bq31pNFs5U9bgNX2kNmpfjkxY4MVE3QNlG0M+SsCymFSCY/peAH7H9Kh9RW8xk
-	rc22Zs7g==;
+	bh=Y9ovop5hUhVhotNCLJmFLmYAivD2Mmg7g3y9J4SZiaY=; b=W7vxkbxowMfcEg9BbKdK+BLlMh
+	vd41PRlRATZ1uTk/aLS2AH/ex38372OyHxZKt0e+aOUXw2VBy4rGryObMhrptGrzORK1PpQQtK4y0
+	Wck2r62buEelLlGMujq+pN/ODLHXPeoWUsUFxXzMgjRJ29hM1Pt0YWfRPvHwMyRKCWfo+PYIuvjno
+	wM789ux1Xs7CjUBJ/QopzkW6+0oAJ0aKkrStmlKGMZVFTqgkB7SxHCDNLrvVujVXlH/2B5RFABxLB
+	6k18izoiHLrrADbRLDvImSxoe0rQ3UHV+xspMSA26+JFo3iAbCTZPxqXs5C3t+xTi1oRYn2k58W0q
+	BTS/a2SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdr8-0000000F1JT-1sgD;
-	Sun, 01 Nov 2026 22:16:50 +0000
+	id 1xNdrC-0000000F1Ze-30Q6;
+	Sun, 01 Nov 2026 22:16:54 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdqd-0000000Ezq9-1YV0;
-	Sun, 01 Nov 2026 22:16:31 +0000
+	id 1xNdqe-0000000Ezus-2EbV;
+	Sun, 01 Nov 2026 22:16:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=/5lqkhXjPOMaaYwItfh5U9VLYOPhSKVw3/zHayeWQek=; b=DFmTlMB+u5KACGAPOZfSN+xwXk
-	gvM5TbEwpGVgGhejDSm2o4DjxMmcMHL9x5/ou8jWCSCj8HqvUlIetE2ZaUlCjANI27A2MGi+OiqzN
-	VTX9gfXQtXBJZSCCqCS+snckWHSFt8YE+4k1oeQ6KaMOyNRzfVTIAIg3YOLQz1Xkxs+gBRj+3DIxF
-	FDeXoTMbqAxhksIaxc1A8kY13ZWwxNC3NGXgz8+nKAJbmyrkLUo28czjRzceeuFVNsuMuVeneEEp9
-	pxe5ZpMygdN0kQiB1eBSDGWJqPLoBt0gUhpxmOntg/24ATVD7OpcJ3q//EUWSrlZoBgF9ccN/6m3e
-	vp4/czgA==;
+	bh=gmi5uewuXMed4CloBbecG8Sst+u3j+UWzS8NSli01pM=; b=nf3L9ctJZheEiENewBWgF4O7d4
+	w0woJPQP2GTmpWl74VRcox9MjZ2Deb0eqUSRtStoHXGL9DhHxYq/zlQ0L1r4t9itNO+dCC0ZdsZ8n
+	W+9LJEcSSTVgssUnhNQiuK0NPTpjWQ4Nbv3mOzBC/MVuPYSf+pJvnH3bjamx7eHC6ePCrl6WXPiic
+	+lj8Zub9f/PBFK9xwwmUasaTIwJhyjq4gviI/ZIo2RtaslKRJ/ANY3i8hKlbIV47ivDGORK6jO5XC
+	ys8iroOQVCQIM2Wvc1Yj/kQFog6AZUqcQjtAQ623egtCoMp0dq8k7xjmlKYynPNJqpmIm3gT6/YAQ
+	OsCudwrA==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
+To: Igor Velkov <iav@iav.lv>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	devicetree@vger.kernel.org,
-	Dennis Gilmore <dennis@ausil.us>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix adc-keys wiring for Orange Pi 5 family
-Date: Sun,  1 Nov 2026 23:16:04 +0100
-Message-ID: <179357136490.4108155.2920979357901660151.b4-ty@b4>
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Add the GPU to Kobol Helios64
+Date: Sun,  1 Nov 2026 23:16:06 +0100
+Message-ID: <179357136494.4108155.12651749876898512929.b4-ty@b4>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261012033929.2317231-1-dennis@ausil.us>
-References: <20261012033929.2317231-1-dennis@ausil.us>
+In-Reply-To: <20261011-b4-helios64-gpu-v1-1-bd83c6ecd19e@iav.lv>
+References: <20261011-b4-helios64-gpu-v1-1-bd83c6ecd19e@iav.lv>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_141619_491921_3CACF1DD 
-X-CRM114-Status: GOOD (  12.82  )
+X-CRM114-CacheID: sfid-20261101_141620_632681_4BEA8122 
+X-CRM114-Status: GOOD (  10.27  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -64,7 +68,6 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Alexey Charkov <alchark@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -76,24 +79,16 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Sun, 11 Oct 2026 22:39:29 -0500, Dennis Gilmore wrote:
-> When working on u-boot for the Orange Pi 5 Pro it was called out that
-> the Pro does not have a recovery button and was missing the definition
-> for the maskrom button.
-> 
-> The shared rk3588s-orangepi-5.dtsi describes a "Recovery" adc-keys
-> button on SARADC channel 1. This is correct for the Orange Pi 5 and
-> 5B, but the Orange Pi 5 Pro schematic shows channel 1 is pulled up
-> with no button ever wired to it, so the key can never be pressed.
-> Each board's schematic also shows SARADC channel 0 is connected to
-> a real, populated Maskrom button, but no board described it.
-> 
-> [...]
+On Sun, 11 Oct 2026 00:53:01 +0300, Igor Velkov wrote:
+> The GPU core of Helios64 is supplied by U12, a Silergy SYR838 on i2c0
+> at 0x41, with its VSEL pin on GPU_SLEEP_H (GPIO1_B6). Describe it as
+> silergy,syr828, the way vdd_cpu_b (a SYR837) is described as
+> silergy,syr827, and enable the GPU.
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Fix adc-keys wiring for Orange Pi 5 family
-      commit: 591ff7dda0603cf21cfe3bfd7d9b1d10be8154c1
+[1/1] arm64: dts: rockchip: Add the GPU to Kobol Helios64
+      commit: fb33952897e8a998bf026fee7f184b474a8381f1
 
 Best regards,
 -- 
