@@ -2,108 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2F1D8606A32D
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 14:30:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 281DC606A330
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 15:41:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=oSxWdgKo;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=PDqqcrJv
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LiwWFr7P;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=l9vNgP/o
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=SFQv0+NOIjQ+xQBFjBZjCqWqKJrok6/KGEq2zTHh/p8=; b=oSxWdgKoxe09VtV3idCax+hVBv
-	RKe5lxmsgzXqKSowebv9lYcxkOxWQop4CZbKcU/3/XoVK2TMeb+u9Lxy5UqYE3Bl74/9FPSXKpx0x
-	IMAFgjrk86PMqclsi59fBXA1z5S/vpy05uQEmolDZdqefUxVsuZU0Q9vN47E9FgIVrai31HVEJLIj
-	xKObUFuXb79hmcQjL/oUpbREAiDoq2m8SNcrTVRExv194NWjDBkMKzmB7HPyHksf+UCz5NrMqkKqi
-	lTy58NsmvFMgEZ+LbmbtL1UuMNJDClGlIrItdeW4pf3bB3OtSX611lDkZuBu+9bUw9VC0APiaMZ+u
-	193EgOcw==;
+	bh=VjUlEogtPPRZRQ2mND2r6z/9VjqzLsjQMSjHUmQxn58=; b=LiwWFr7PTv61E1KKUWVZTh2eed
+	VXzRgIdBJAsg3eaVDqLCKvfgS9o7rQAAoST2T66VhatKf2mH8MWml/ucAqNxeW3Y1EOY0DYfZQeK9
+	KkybTpmIkXMvUsnqi/UjR41FdmMeThBPBwXf2T/NFvYeKSB62rtQ47mbN40jPouQkmykvpHoTj7VR
+	4+wbZXFDOXY0AGeWJCvAQiZ9j8qRsvdkJXn5j+unnvWqCWzrK/yCmA/jtbUeU78NpvR19cl6IWGET
+	l+VZFQDGD/i4SSw3EY7xVzsowYB5drtLKPcyPHmyzi6xoAkIwNyY0UGKuYT2gJBmnQeGDGYdDkc6Z
+	ERJyBj/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNWZz-0000000EaeO-3LPk;
-	Sun, 01 Nov 2026 14:30:39 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1xNXgP-0000000EcwW-2hTX;
+	Sun, 01 Nov 2026 15:41:21 +0000
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNWZw-0000000EadP-1DHJ
+	id 1xNXgI-0000000Ecu1-486r
 	for linux-rockchip@lists.infradead.org;
-	Sun, 01 Nov 2026 14:30:38 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4a20bde60a0so16483275e9.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 01 Nov 2026 06:30:34 -0800 (PST)
+	Sun, 01 Nov 2026 15:41:19 +0000
+Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-cc4aa18f9afso854016a12.3
+        for <linux-rockchip@lists.infradead.org>; Sun, 01 Nov 2026 07:41:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793543433; x=1794148233; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=VsDtHDQeo9yaAAGX90Le6/Q23q/oZg9HWR3FqkNaI5Q=;
-        b=PDqqcrJv4T7yRLr6t1DggggsypXjyHSmzicdOlbLiTKAKSzoxeoQuKbeEwjlRxkeOm
-         MSwnzYw+RVTfGyd6arU4XM/T4R2zFkq9p/aHebxsafRmIXiaoKVewAEUYQynPslebuYR
-         DHHtEc6cDP+ICq+EQq+VkWrjlZpW9Xwb3jZaOKmPxuUDEb4YWGsWpc2c+SNUaCJ2/avr
-         gsxm+eXS7wxlJEHXKZtT48ncc9EuW5GZVh9YSFOI5hrMJXKBZQ65aUZcDCNH0Hkq+w3A
-         NXPGlK3wUSDaQd648+l9E+0P9/wFGHJ4/yMjr7ir9IJFr8YCPkymhq75dXV62rqDQXr+
-         KWZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793543433; x=1794148233;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20260707; t=1793547674; x=1794152474; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=VsDtHDQeo9yaAAGX90Le6/Q23q/oZg9HWR3FqkNaI5Q=;
-        b=mIDl+BD9JDGX+ocOT6rGOTumgKG99VIV3CVSwdUhcz1nnd4anroMkC6JUhFsogVejQ
-         ihQJohvIqpGchswSY0kSwzImj3T7bzlNHcQptcV+0szd66MRz9UWNYKtQoel6Z1ghTsg
-         r4dhACLQLOnY/Gtt4toxRe/Sj+y7L575NA9Pb73mWb/288QHDlqF9Yps9Ivi17DnnniM
-         iwkimgEJWimgSD6yufbFrAQHOV2eQ0ZpP0cgHpKIkrsuCozMg5gKK+xGng/Bw77G9Mr4
-         YppBCD3BHUSujG8BjyeWw2RACCOaWpORFWcdloEGVeHHldR0l0jDl91MKBcOcaR3cT4N
-         zoAw==
-X-Forwarded-Encrypted: i=1; AKwUvBy3CTFF/tNr55risAvXAAOcI1mc40f8ndI9NLAGHaeEyaQj4hcXz3sS+8GPD2QptXhEoPunvIMGTkuvbqtXwA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYK+j8hf8ZP+5zNlbL+BgwB+glVgKqkktAjwchCccFKqZGz4OXk0
-	qyajZb6aZA4tm5jYIrUfow8Sf4KxMptLcOLV1olVZxKHY27D0ZwIacNc
-X-Gm-Gg: AYBFou3F8f9SdijNwZGac8yzDghfdMAGzelqHY/jrEOwqhP8XY3z6/8HdDGOUxnchU+
-	hIJ0lJ1ezeWeoJAU79HvhLiqL0i60uMAOhbLekx/vzP2YT+mXh2ksMFcPvLU6lw4RZUP4cnEoeW
-	l4BPKaAj4D2jO0mNHpCV3pBNrO5/Pu6UhtvG+o0HkfVkyQNhOT7HQR7J+QTSEYqi3bw3HtBV5or
-	P1Yah2JoKK8ExlYnCxOB+6NCzbSRsE044zPeMeZpNYa6ntKfI8eH7slgkOiG0UwAUSGCGPr86XV
-	1XraWFY+d3/mdjIoX8sNVmNl4z3u3zg7xwcD+J5MbGctDJC2bEGyjR1/TOg2Dl+DnsKJj6p1qHr
-	jcaqmQg1m/NQRjT1mKAzQl7slHHyxWw+y7i0vUqm8TONmUfGz0NO2mtxExLcSQ53nUTPzturmfc
-	po6V61UsCFfehQLk6xZvQ3twUQrrGCablV8Go2ARRTHFaXZ4r3Oaq3Fz5ePMs7+LSRZKe2wJu/l
-	gATVYWkqFeIvuIG0xPAo1I78a+d22e2lJVANpcGbq2HA41ynIlL5IaMoz5dEfmBgIuTKumUT674
-	sayK00R9EKiBYYqAWVuSlyE+cVeHhalyuzsTVYQRmVhcZsPsAyA1JrDU+MnNW8BtZXTwReZ66hx
-	B114EHDYIAxdKsTGtW6c4wnYdoqTgsY4qyJhqdcHhREMDoA==
-X-Received: by 2002:a05:600c:a30a:b0:4ac:b0b2:fa12 with SMTP id 5b1f17b1804b1-4acb0b2fac0mr117941165e9.1.1793543433238;
-        Sun, 01 Nov 2026 06:30:33 -0800 (PST)
-Received: from romain-ThinkPad-P14s-Gen-5-AMD.tail433d9c.ts.net ([2001:861:39c2:e340:849f:a468:4121:a85])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e71b8011csm16223169f8f.31.2026.11.01.06.30.32
+        bh=0lnaBOUQQ4XDI1nNodunw8QSDiqgsme6k9gqV20nFXM=;
+        b=l9vNgP/op+8WLSezfIiPlPIUJjZemTSvob26ZVdV+7PrajP2aTRehl2LtnLAemkNKN
+         CbkqRsJt8WugePWmvM3OnpDoNeg7aSa0e5ZzseykYiUQ1e6qJU9jWirJQ9O1UWSvSmWq
+         mgzsdOkNfWG3yezqGHQCu16JO46B7Bp9HGPVBXOnYfMh5sjo+cM5bUKjssQs99lIMnvz
+         sCvJ+8/ABQN543liJSg+4bGtEaPRgNGomxu9DQlt4nCnR43OL6a4sbYMRrOqrPTeZ7ql
+         j3mqI4BcmXZtmCT2VLB81zf7KwVH9CJ+qtKXUlPuxtz4njiWJ1rN9ZiRKpZSEUI/fQUg
+         hoZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793547674; x=1794152474;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=0lnaBOUQQ4XDI1nNodunw8QSDiqgsme6k9gqV20nFXM=;
+        b=R8WMKuFzQ+ai9Azejoj7FbiYTkCVtNy0zloYXdAvo/4cVzDl579y5lq099Bz84PmPA
+         lFDtknXmwLDVhit2OMif5Tn+R1Ol+dcD5jo5GX6yzmYUAZmu9FNPiHbr7YoUJVv0wjUb
+         iBN++4Sinhmctmga8k0FAsM0ynxbxzVUx36kAtIZ8ipX2U2Xk5T5A4sYnv9eAb8xENZK
+         D0j9HTBNCQeD7rzAlgCdLYOjOpwWcy7+M6jG/XjbpZDFe5cy9+oIQf/MsTNDLL2SIvlx
+         K3pqFCON/rdQKqNAsbFUIMQgUsmLqX+zJ/CyMQWKgvLxQ7lW6dW0rdertr/jOLDqjwCP
+         Y4iA==
+X-Forwarded-Encrypted: i=1; AKwUvBzNeyXbA4ULeoOe2faVJSAzPPbZVY13whr1btr7pmxOrU2up6iJGGgYYBT+Eg/2XobmBvTaQ1Y3P/afvw9oBw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+omZKsD/SDLA8Qaurr0lBRNy4vZo+/Ffre+kxUP+wwpzxcFaGk
+	l2/RarFL7i5OVuvYZo+VNYS0zx1PSvcrx6CufC1I7wBOd6UXkOlRlU5K
+X-Gm-Gg: AYBFou2F+l2lxW6B8w8vVtNWzfl4+9cDZqqRy26u06l6RSbFq49t5PPMst4KNRo6fTh
+	Rb70Ic/irTZUiaQv0RKQHmLmT0bRx3tbLInQjYrRaIKdOYv6CK/Tn2mLOMYWxMRQu8c5ypFHrAZ
+	/okVO2rTqpblUCgEhcz8dP/2Xp/ab3nCG7KBYaiLYorLGfXN7LKAKD0SC81bKFp2AxN5gFNlDlS
+	0PRm/kcoNUjFYRIJQy2FkRkfMq/Vziz1S3TMfiOzf+Z9MU1KgGY8AexxNxlZRRkxK9LylX3Tmd7
+	390VT9pbnNQVwTF16Bj9M18yvIumM7IH2oicEwsm5TO59gu5wLIj1FTkslqslGttZqtSxd9BjAn
+	gKipVtqHdK0dhJ/2zR8JnbcTv/ocy7o+zLEQ916pY/iG3DAVbKk83iR+BsRY6WbdugspwypyZe0
+	SlaiZLZla+NNwikFlCEf/Moi4gh5qfTNOXNHrQvb56ZfCEI+lvTVMt7XCJUG5Q/90FDGJalJCKN
+	nCdE22YIdGzKjUOPYrouw8NWVzn2E5HvbGwlLiEzHsHCtfXGFkLiHzJEQaTKsPvwQhSx+c+gNTO
+	TPSlflBK/6x3dXm96XxHlL5c8tfcRNbgd4vtQ1Wk+w==
+X-Received: by 2002:a17:90b:4c08:b0:3ac:8741:e2e8 with SMTP id 98e67ed59e1d1-3ae8957cb02mr6684585a91.8.1793547673934;
+        Sun, 01 Nov 2026 07:41:13 -0800 (PST)
+Received: from Aaron-M6 ([188.253.120.162])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3ae845984absm10776958a91.10.2026.11.01.07.41.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Nov 2026 06:30:32 -0800 (PST)
-From: Romain TISSERAND <romain.tisserand@gmail.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Liu Ying <victor.liu@nxp.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	dri-devel@lists.freedesktop.org,
+        Sun, 01 Nov 2026 07:41:13 -0800 (PST)
+From: Yaozhong Li <yaozhonguwl@gmail.com>
+To: Lee Jones <lee@kernel.org>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>,
+	Joseph Chen <chenjh@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Yaozhong Li <yaozhonguwl@gmail.com>,
+	mfd@lists.linux.dev,
+	devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	sashiko-reviews@lists.linux.dev
-Subject: [PATCH v2] drm/bridge: dw-mipi-dsi: let the glue compute the hcomponent lbcc
-Date: Sun,  1 Nov 2026 15:30:31 +0100
-Message-ID: <20261101143031.880389-1-romain.tisserand@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v6 1/3] dt-bindings: mfd: rk8xx: add board level power hold GPIOs
+Date: Sun,  1 Nov 2026 23:40:50 +0800
+Message-ID: <20261101154053.3874-2-yaozhonguwl@gmail.com>
+X-Mailer: git-send-email 2.55.0.windows.3
+In-Reply-To: <20261101154053.3874-1-yaozhonguwl@gmail.com>
+References: <20261101154053.3874-1-yaozhonguwl@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_063036_949243_E86504BC 
-X-CRM114-Status: GOOD (  25.34  )
+X-CRM114-CacheID: sfid-20261101_074117_246913_F6E81A12 
+X-CRM114-Status: GOOD (  20.01  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -125,195 +121,213 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Commit ac87d23694f4 ("drm/bridge: synopsys: dw-mipi-dsi: Use pixel clock
-rate to calculate lbcc") counts HSA, HBP and HLINE from the pixel clock,
-which is only right when the lanes run at the pixel bandwidth (pixel
-clock * bpp / lanes). Commit 93e82bb4de01 ("drm/bridge: synopsys:
-dw-mipi-dsi: Fix hcomponent lbcc for burst mode") went back to the lane
-rate for burst mode, where the lanes are faster on purpose.
+Some boards route "power hold" lines from the SoC into the board's power
+circuitry. Those lines have to be held asserted while the system is
+running and released before the PMIC shutdown request is written,
+otherwise the rails can drop and come back up instead of staying off.
 
-The Rockchip glue runs the lanes faster in every mode: at 1.25 times
-(bpp / lanes, rounded down) times the pixel clock, or 1000 Mbps, above
-the pixel bandwidth. In non-burst video mode the line programmed in lane
-byte clocks is then shorter than the DPI line. On the GPD XD (RK3288,
-ILI9881C panel, 4 lanes at 448 Mbps, 59.5 MHz pixel clock, htotal 747)
-HLINE was 561 lane byte clocks (10.0 us) for a 12.55 us line, and the
-panel shows garbage as soon as a client page-flips.
+Add power-hold-gpios to describe those lines and power-hold-delay-ms for
+the settle time. The driver reads them for every RK8xx variant that is
+the system power controller, so define them once, in a schema shared by
+the seven RK8xx bindings, and reference it from each. The bindings
+switch to unevaluatedProperties: false so that the shared properties are
+allowed, except rk817, which keeps additionalProperties: false and lists
+the two properties: it also references dai-common, of which it only
+allows a subset.
 
-The glue picks the lane rate, so let it compute the lane byte clock
-cycles too: add an optional get_hcomponent_lbcc() callback to
-dw_mipi_dsi_plat_data, and implement it in the Rockchip glue from the
-lane rate. Glues without it (i.MX93, Meson, STM) keep the current
-computation, and so does Rockchip dual-DSI, which this hasn't been
-tested on. On the GPD XD this gives HLINE 704, HSA 13 and HBP 4, and
-the picture is stable.
+The array is bounded at two entries. Firefly's vendor kernel handles
+exactly two such lines, pmic,hold-gpio and pmic,stby-gpio, and its board
+files use one or both of them, with an RK808 and with an RK818.
 
-Fixes: ac87d23694f4 ("drm/bridge: synopsys: dw-mipi-dsi: Use pixel clock rate to calculate lbcc")
-Signed-off-by: Romain TISSERAND <romain.tisserand@gmail.com>
+The lines are released from the PMIC's power-off path, so they are only
+meaningful when the PMIC is the system power controller. Require that.
+A board adding these lines is expected to switch to the generic
+system-power-controller property at the same time, so the deprecated
+rockchip,system-power-controller spelling is not accepted here.
+
+Assisted-by: LLM
+Signed-off-by: Yaozhong Li <yaozhonguwl@gmail.com>
 ---
-Changes in v2:
-- Drop the 1/8 threshold: the glue now computes the lane byte clock
-  cycles through a new optional get_hcomponent_lbcc() callback in
-  dw_mipi_dsi_plat_data, and the Rockchip glue implements it from its
-  lane rate (Chaoyi Chen). This also covers RGB666 packed on 4 lanes,
-  which the 1/8 slack missed (Sashiko).
-- Rockchip dual-DSI keeps the core computation: the lane rate would
-  change the timing of the dual-DSI Gru Scarlet panels (innolux,p097pfg,
-  non-burst, 4+4 lanes), which I can't test.
-- Commit message: the Rockchip glue doesn't follow a panel rate in
-  mainline, and the GPD XD numbers are now those of the rate it picks
-  (448 Mbps).
-- v1: https://lore.kernel.org/all/20261025142639.3454322-1-romain.tisserand@gmail.com/
+ .../bindings/mfd/rockchip,rk801.yaml          |  5 ++-
+ .../bindings/mfd/rockchip,rk805.yaml          |  3 +-
+ .../bindings/mfd/rockchip,rk806.yaml          |  1 +
+ .../bindings/mfd/rockchip,rk808.yaml          |  5 ++-
+ .../bindings/mfd/rockchip,rk816.yaml          |  5 ++-
+ .../bindings/mfd/rockchip,rk817.yaml          |  4 ++
+ .../bindings/mfd/rockchip,rk818.yaml          |  5 ++-
+ .../mfd/rockchip,rk8xx-power-hold.yaml        | 42 +++++++++++++++++++
+ 8 files changed, 65 insertions(+), 5 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk8xx-power-hold.yaml
 
-Notes for reviewers (not for the changelog):
-- The callback returns 0 to let the core compute the value, so a glue
-  can implement it for some configurations only (Rockchip: single DSI).
-- Testing: built with W=1 for arm (multi_v7) and arm64 (defconfig),
-  DRM_DW_MIPI_DSI=y and =m, together with the Meson and i.MX93 glues, no
-  warnings. Tested live on the GPD XD (RK3288, ILI9881C, non-burst with
-  sync pulses, 4 lanes at 448 Mbps) on 6.18.54 with this exact change:
-  without it HLINE 561, HSA 10, HBP 3 and garbage on screen as soon as
-  the UI page-flips; with it HLINE 704, HSA 13, HBP 4 and a clean, stable
-  picture in the UI and in games. Not tested on i.MX93, Meson, STM or
-  Rockchip dual-DSI hardware; their computation is unchanged.
-- Tool disclosure: this patch was prepared with Claude Opus 5.5
-  (Anthropic) as a coding assistant, in an interactive session where I
-  asked it to bring up the GPD XD display and then to prepare the fix
-  for upstream. It located the cause from the DSI host registers, went
-  through the history of the lbcc computation (ac87d23694f4,
-  93e82bb4de01) and the lane rates of the other dw-mipi-dsi glues, and
-  drafted the code change and the changelog; v2 follows the reviews of
-  Chaoyi Chen and Sashiko. I reviewed and understand both, and tested
-  the patch on the GPD XD as described above.
-
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 39 ++++++++++++-------
- .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 23 +++++++++++
- include/drm/bridge/dw_mipi_dsi.h              | 10 +++++
- 3 files changed, 57 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-index 22d1b8cbe1..b7578265ca 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-@@ -780,28 +780,37 @@ static u32 dw_mipi_dsi_get_hcomponent_lbcc(struct dw_mipi_dsi *dsi,
- 					   const struct drm_display_mode *mode,
- 					   u32 hcomponent)
- {
-+	const struct dw_mipi_dsi_plat_data *pdata = dsi->plat_data;
- 	u32 frac, lbcc, minimum_lbcc;
- 	int bpp;
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
+index 7c71447..38108fe 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk801.yaml
+@@ -76,7 +76,10 @@ required:
+   - reg
+   - interrupts
  
--	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
--		/* lbcc based on lane_mbps */
--		lbcc = hcomponent * dsi->lane_mbps * MSEC_PER_SEC / 8;
--	} else {
--		/* lbcc based on pixel clock rate */
--		bpp = mipi_dsi_pixel_format_to_bpp(dsi->format);
--		if (bpp < 0) {
--			dev_err(dsi->dev, "failed to get bpp\n");
--			return 0;
-+	lbcc = 0;
-+	if (pdata->get_hcomponent_lbcc)
-+		lbcc = pdata->get_hcomponent_lbcc(pdata->priv_data, mode,
-+						  hcomponent);
+-additionalProperties: false
++allOf:
++  - $ref: rockchip,rk8xx-power-hold.yaml#
 +
-+	if (!lbcc) {
-+		if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST) {
-+			/* lbcc based on lane_mbps */
-+			lbcc = hcomponent * dsi->lane_mbps * MSEC_PER_SEC / 8;
-+		} else {
-+			/* lbcc based on pixel clock rate */
-+			bpp = mipi_dsi_pixel_format_to_bpp(dsi->format);
-+			if (bpp < 0) {
-+				dev_err(dsi->dev, "failed to get bpp\n");
-+				return 0;
-+			}
-+
-+			lbcc = div_u64((u64)hcomponent * mode->clock * bpp,
-+				       dsi->lanes * 8);
- 		}
++unevaluatedProperties: false
  
--		lbcc = div_u64((u64)hcomponent * mode->clock * bpp, dsi->lanes * 8);
-+		frac = lbcc % mode->clock;
-+		lbcc = lbcc / mode->clock;
-+		if (frac)
-+			lbcc++;
- 	}
+ examples:
+   - |
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+index da23915..ddf2b2f 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+@@ -87,6 +87,7 @@ properties:
+     unevaluatedProperties: false
  
--	frac = lbcc % mode->clock;
--	lbcc = lbcc / mode->clock;
--	if (frac)
--		lbcc++;
--
- 	minimum_lbcc = dw_mipi_dsi_get_minimum_lbcc(dsi);
+ allOf:
++  - $ref: rockchip,rk8xx-power-hold.yaml#
+   - if:
+       properties:
+         '#clock-cells':
+@@ -108,7 +109,7 @@ required:
+   - interrupts
+   - "#clock-cells"
  
- 	if (lbcc < minimum_lbcc)
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index aab3353945..57ebb3a59f 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -771,6 +771,28 @@ dw_mipi_dsi_phy_get_timing(void *priv_data, unsigned int lane_mbps,
- 	return dw_mipi_dsi_phy_px30_get_timing(dsi, lane_mbps, timing);
- }
+-additionalProperties: false
++unevaluatedProperties: false
  
-+/*
-+ * dw_mipi_dsi_get_lane_mbps() runs the lanes faster than the pixel bandwidth
-+ * in every video mode, not only in burst mode: count the horizontal timings
-+ * from the lane rate, or the line is shorter than the DPI line.
-+ *
-+ * Dual-DSI keeps the core computation (return 0): the lane rate would change
-+ * the timing of the dual-DSI panels in use, and that hasn't been tested.
-+ */
-+static u32
-+dw_mipi_dsi_rockchip_get_hcomponent_lbcc(void *priv_data,
-+					 const struct drm_display_mode *mode,
-+					 u32 hcomponent)
-+{
-+	struct dw_mipi_dsi_rockchip *dsi = priv_data;
-+
-+	if (dsi->slave || dsi->is_slave)
-+		return 0;
-+
-+	return DIV_ROUND_UP_ULL((u64)hcomponent * dsi->lane_mbps *
-+				MSEC_PER_SEC / 8, mode->clock);
-+}
-+
- static const struct dw_mipi_dsi_phy_ops dw_mipi_dsi_rockchip_phy_ops = {
- 	.init = dw_mipi_dsi_phy_init,
- 	.power_on = dw_mipi_dsi_phy_power_on,
-@@ -1494,6 +1516,7 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
- 	dsi->dev = dev;
- 	dsi->pdata.base = dsi->base;
- 	dsi->pdata.max_data_lanes = dsi->cdata->max_data_lanes;
-+	dsi->pdata.get_hcomponent_lbcc = dw_mipi_dsi_rockchip_get_hcomponent_lbcc;
- 	dsi->pdata.phy_ops = &dw_mipi_dsi_rockchip_phy_ops;
- 	dsi->pdata.host_ops = &dw_mipi_dsi_rockchip_host_ops;
- 	dsi->pdata.priv_data = dsi;
-diff --git a/include/drm/bridge/dw_mipi_dsi.h b/include/drm/bridge/dw_mipi_dsi.h
-index 65d5e68065..6580c16d80 100644
---- a/include/drm/bridge/dw_mipi_dsi.h
-+++ b/include/drm/bridge/dw_mipi_dsi.h
-@@ -62,6 +62,16 @@ struct dw_mipi_dsi_plat_data {
- 	bool (*mode_fixup)(void *priv_data, const struct drm_display_mode *mode,
- 			   struct drm_display_mode *adjusted_mode);
+ examples:
+   - |
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+index eb5bca3..5ca76dd 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+@@ -136,6 +136,7 @@ patternProperties:
+         enum: [gpio_pwrctrl1, gpio_pwrctrl2, gpio_pwrctrl3]
  
-+	/*
-+	 * Optional: number of lane byte clock cycles for @hcomponent pixels
-+	 * of @mode, for glues whose lanes don't run at the pixel bandwidth.
-+	 * Without it, or when it returns 0, the core uses the lane rate in
-+	 * burst mode and the pixel clock otherwise.
-+	 */
-+	u32 (*get_hcomponent_lbcc)(void *priv_data,
-+				   const struct drm_display_mode *mode,
-+				   u32 hcomponent);
+ allOf:
++  - $ref: rockchip,rk8xx-power-hold.yaml#
+   - $ref: /schemas/spi/spi-peripheral-props.yaml
+ 
+ required:
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+index 50dfffa..d51f815 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+@@ -119,7 +119,10 @@ required:
+   - interrupts
+   - "#clock-cells"
+ 
+-additionalProperties: false
++allOf:
++  - $ref: rockchip,rk8xx-power-hold.yaml#
 +
- 	u32 *(*get_input_bus_fmts)(void *priv_data,
- 				   struct drm_bridge *bridge,
- 				   struct drm_bridge_state *bridge_state,
-
-base-commit: cf61bef3801c3c9d0d8c39026b7b2fb242898a3a
++unevaluatedProperties: false
+ 
+ examples:
+   - |
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml
+index a58d945..c0c8dec 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk816.yaml
+@@ -107,7 +107,10 @@ required:
+   - interrupts
+   - '#clock-cells'
+ 
+-additionalProperties: false
++allOf:
++  - $ref: rockchip,rk8xx-power-hold.yaml#
++
++unevaluatedProperties: false
+ 
+ examples:
+   - |
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+index 2cb6d17..6207c42 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+@@ -55,6 +55,9 @@ properties:
+ 
+   system-power-controller: true
+ 
++  power-hold-gpios: true
++  power-hold-delay-ms: true
++
+   wakeup-source:
+     type: boolean
+     description:
+@@ -157,6 +160,7 @@ properties:
+     additionalProperties: false
+ 
+ allOf:
++  - $ref: rockchip,rk8xx-power-hold.yaml#
+   - $ref: /schemas/sound/dai-common.yaml#
+   - if:
+       properties:
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+index 90d944c..c9b863a 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+@@ -111,7 +111,10 @@ required:
+   - interrupts
+   - "#clock-cells"
+ 
+-additionalProperties: false
++allOf:
++  - $ref: rockchip,rk8xx-power-hold.yaml#
++
++unevaluatedProperties: false
+ 
+ examples:
+   - |
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk8xx-power-hold.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk8xx-power-hold.yaml
+new file mode 100644
+index 0000000..6be3e1e
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk8xx-power-hold.yaml
+@@ -0,0 +1,42 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mfd/rockchip,rk8xx-power-hold.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip RK8xx PMIC board level power hold GPIOs
++
++maintainers:
++  - Yaozhong Li <yaozhonguwl@gmail.com>
++
++description:
++  Properties shared by the RK8xx PMIC bindings for boards that route power
++  hold lines from the SoC into the board's power circuitry, which have to
++  be released before the PMIC is asked to power the system off.
++
++properties:
++  power-hold-gpios:
++    minItems: 1
++    maxItems: 2
++    description: >
++      Board level power hold lines driven by the SoC. They have to be held
++      asserted while the system is running and released before the PMIC
++      shutdown request is written, otherwise the rails can drop and come
++      back up instead of staying off. Only meaningful when this PMIC is the
++      system power controller, as the lines are released as part of its
++      power-off path.
++
++      The lines are released in the order listed, and power-hold-delay-ms
++      elapses once, after the last of them.
++
++  power-hold-delay-ms:
++    default: 0
++    description:
++      Time to wait after releasing power-hold-gpios before the shutdown
++      request is written, to let the lines settle.
++
++dependentRequired:
++  power-hold-gpios: [ system-power-controller ]
++  power-hold-delay-ms: [ power-hold-gpios ]
++
++additionalProperties: true
 -- 
-2.43.0
+2.55.0.windows.3
 
 
 _______________________________________________
