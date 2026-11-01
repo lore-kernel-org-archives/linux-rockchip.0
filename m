@@ -2,60 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5801B606A32E
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:20:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07C86606A33E
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:45:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hf352Tzo;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=Im3G/s89
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ysSzfixh;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Wk+Rtdnl
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=YFAX1CPseBgs98SdVAOJMqWJbbVqm4leZ3CpsEOwIS8=; b=hf352TzoR6jhtGPJspRK02ZoBS
-	3j6JA7sis26rLc9UpgYYL/0EyGAinoLT4gDdnjIKYr7w/fQRLS+K2g4dlpyCdZr++qBX9+vYcKSdh
-	xzgnMl8mh064dcphA3wmXXDH2Kl1lBvRUD+4UxNZEjuImrsVHYTVlpbJZrrV65t+XfvOeAxUGml9Z
-	qMLnOfx7tGvJgvYVEEc9BJbaj9f5wI5z7ZzekAiquIFB+k9lFxATk+BPJnWczsvsaiLlbj2IP/oDW
-	0he7o//NAk4fJYS72qHm3+JuxkvS5lnwVhdRz2gM8MRGa2XeIOEfIkjyp9Q8OHZAGzlStDrTGWF9l
-	zYqyeSPQ==;
+	bh=OTBlc9tI58EzZeejRRrwmpNuAqe+uJoS9B508onf7VI=; b=ysSzfixhfVmmWDu9AEOwtVXmf2
+	ffhSTNJTrOaaAuT7APDW17YInLP2wLjjC3WTjX9S4hjKPuYi+TSOfwGcFPOhYnslOTePor8DW8Ttd
+	thQdDL9MmCkVhMBCIXcImQmqO0/rc1SSad2ZXDk0yH04E9xo/ynEqCgvvtziSmpIMdrL3fwue6eOu
+	Dja09SPKJ6sLt10M4T3vxvUtfNL17q5iiwm7ixaKPlNS78jXrXCpoaBlPsuVL8NRYGgrreDBsuHnu
+	vNiaisk4xRDqmJe3jQUQUq6wQ6usiDqHOgIGbm4xAHVZFtmBtsLl0KEVvIRsfTynpRMJW0Gs0JCPn
+	By+JPjZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNduE-0000000F7fn-1ux8;
-	Sun, 01 Nov 2026 22:20:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xNeIq-0000000FAkw-2s0r;
+	Sun, 01 Nov 2026 22:45:28 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdu5-0000000F7ah-3cJ2;
-	Sun, 01 Nov 2026 22:20:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=RlMmBJaoFVmxxA9FM3cQTpEG1wm1O3AcY8dpRqM2fYI=; b=Im3G/s89G/FO2EZ5tMahT52ktm
-	iOfGJMjkmb4qCWjJ/iIbvyijS1l5gGkKgcGml7frVALCyYLTuJX9BKVgbqhRcrhmSSr+1xE1CtfSN
-	2vK1HwKYYgbeyT9EPNEFGJaRVJ9+HZix+vpIfeqfjofs3bcqNlV8V0jeYMtH0L3RqFey4Jd5cGECw
-	zx2O9aUmmSYdGZOke4G633my6buU5BYfuN9cyOpDLbVJXsjhDamQ9MFaUL58VndidhbuZ8jL2AY5r
-	6R4DSx6Fa+0VvWKSmheX/8kNIxIy8sgI9g/D5aGlJLyj8mJlGm7JVK/kCtZ8LihwFU5lwDz0r1S4h
-	nzPvjJLg==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, joachim.eastwood@gmail.com
-Cc: Shawn Lin <Shawn.lin@rock-chips.com>,
- Diederik de Haas <diederik@cknow-tech.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Joachim Eastwood <joachim.eastwood@gmail.com>
-Subject: Re: [PATCH v2 0/9] arm64: dts: rockchip: NanoPi 6 series fixes and
- improvements
-Date: Sun, 01 Nov 2026 23:19:46 +0100
-Message-ID: <17766357.Ash8RoxBsO@diego>
-In-Reply-To: <20261101-nanopi-m6-improvements-v2-0-a24769efda23@gmail.com>
-References: <20261101-nanopi-m6-improvements-v2-0-a24769efda23@gmail.com>
+	id 1xNeIo-0000000FAkg-3kTq;
+	Sun, 01 Nov 2026 22:45:26 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 57358601FF;
+	Sun,  1 Nov 2026 22:45:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDF791F000C1;
+	Sun,  1 Nov 2026 22:45:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793573126;
+	bh=BzRuFBupQjQiDyoa/qXLe1S7CqDSM/Br1lwbCFNkGzY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Wk+RtdnlNfF0ZU1JG+cJnT6+Cm3sXxVjQsN6TARzsEQX378ayC2zgTKW6xx9AOEo5
+	 SyEx/0OuPrv7HTVQpfufdTXQOFuXF9JtHJ+qcYjlnl2TYByspxnxJr62180NhiVJVM
+	 LJ8JgSYfK85y4E8U6OCDDOmIgxlZuoKrVvo6gZ2vWv/WKihj2lOK/2EmYhYaiMzPU8
+	 CcJHn9A6ENzI11QIP4qI6TYpaiw0F3cO2j0Un0qjp46PzoQVVHMDc4E1l+9VkL9gVN
+	 7b1fB1JQBA+BnG5XpWcEWMPYuFlLm43xq1SAm3W4Tgzf/P+Ux3axqj7xkfrtmSAIJj
+	 ZS93vYt2DBpMw==
+Received: by traversing.sirena.org.uk (Postfix, from userid 1000)
+	id 50F102065139; Sun, 01 Nov 2026 22:45:23 +0000 (GMT)
+Date: Sun, 1 Nov 2026 22:45:23 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Xing Zheng <zhengxing@rock-chips.com>
+Cc: heiko@sntech.de, linux-sound@vger.kernel.org, luca.ceresoli@bootlin.com,
+	lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
+	linux-kernel@vger.kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, huangtao@rock-chips.com,
+	sugar.zhang@rock-chips.com, lxt@rock-chips.com,
+	xing.zheng@rock-chips.com
+Subject: Re: [PATCH v2 1/3] ASoC: dt-bindings: rk3308-codec: describe
+ detection and ADC routing
+Message-ID: <aufBA7-uC7udM0qa@sirena.org.uk>
+References: <20261101040125.1864141-1-zhengxing@rock-chips.com>
+ <20261101044149.2018744-1-zhengxing@rock-chips.com>
+ <20261101044149.2018744-2-zhengxing@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_141953_903238_D1626F29 
-X-CRM114-Status: GOOD (  16.13  )
-X-Spam-Score: -2.1 (--)
+In-Reply-To: <20261101044149.2018744-2-zhengxing@rock-chips.com>
+X-Cookie: Whoever dies with the most toys wins.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,43 +75,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============7534685747933843454=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgSm9hY2hpbQoKQW0gU29ubnRhZywgMS4gTm92ZW1iZXIgMjAyNiwgMjI6NTU6MTggTWl0dGVs
-ZXVyb3DDpGlzY2hlIE5vcm1hbHplaXQgc2NocmllYiBKb2FjaGltIEVhc3R3b29kIHZpYSBCNCBS
-ZWxheToKPiBUaGlzIHBhdGNoIHNlcmllcyBjb250YWlucyBhIGZldyBmaXhlcyBhbmQgbWlzY2Vs
-bGFuZW91cyBpbXByb3ZlbWVudHMKPiBmb3IgdGhlIE5hbm9QaSA2IHNlcmllcyBvZiBib2FyZHMu
-Cj4gCj4gUGF0Y2ggMSBmaXhlcyB0aGUgdm9sdGFnZSByYW5nZSBvbiB0aGUgU0RNTUMgcmVndWxh
-dG9yLgo+IFBhdGNoIDIgZW5hYmxlcyBIUzQwMCBtb2RlIG9uIGVNTUMuIFRlc3RlZCBvbiBteSBN
-NiBib2FyZC4KPiBQYXRjaCAzIGFkZHMgYW4gSUlPIEhXTU9OIGRldmljZSB0byBtb25pdG9yIHRo
-ZSBpbnB1dCB2b2x0YWdlLgo+IFBhdGNoIDQgbW92ZXMgYSByZWd1bGF0b3IgdGhhdCBvbmx5IGV4
-aXN0IFI2IGJvYXJkcyB0byB0aGUgY29ycmVjdCBkdHNpLgo+IFBhdGNoIDUtOSByZW5hbWVzIERU
-IG5hbWVzIHRvIG1hdGNoIHRoZSBzY2hlbWF0aWNzIHNpZ25hbHMvbmV0cy4KPiAKPiBJZiBwYXRj
-aCA1LTkgaXMganVzdCBjb25zaWRlcmVkIGNodXJuIEknbGwgZHJvcCB0aGVtLiBUaGVzZSBhcmUg
-bW9yZQo+IG5pY2UgdG8gaGF2ZSBhbmQganVzdCBtYWtlcyBpdCBlYXNpZXIgdG8gY3Jvc3MtcmVm
-ZXJlbmNlIERUIGFuZAo+IHNjaGVtYXRpY3MuCj4gCj4gU2NoZW1hdGljcyBmb3IgdGhlIGJvYXJk
-cyBjYW4gYmUgZm91bmQgaGVyZToKPiBNNjogaHR0cHM6Ly93aWtpLmZyaWVuZGx5ZWxlYy5jb20v
-d2lraS9pbWFnZXMvOC84NS9OYW5vUGlfTTZfMjQwNV9TQ0guUERGCj4gUjZDOiBodHRwczovL3dp
-a2kuZnJpZW5kbHllbGVjLmNvbS93aWtpL2ltYWdlcy9mL2Y3L05hbm9QaV9SNkNfMjMwMl9TQ0gu
-UERGCj4gUjZTOiBodHRwczovL3dpa2kuZnJpZW5kbHllbGVjLmNvbS93aWtpL2ltYWdlcy8yLzJm
-L05hbm9QaV9SNlNfMjIwOF9TQ0guUERGCj4gCj4gU2lnbmVkLW9mZi1ieTogSm9hY2hpbSBFYXN0
-d29vZCA8am9hY2hpbS5lYXN0d29vZEBnbWFpbC5jb20+Cj4gLS0tCj4gQ2hhbmdlcyBpbiB2MjoK
-PiAtIEFkZCBzY2hlbWF0aWMgbGlua3MgdG8gY292ZXIgbGV0dGVyIHRvIGVhc2UgcmV2aWV3Cj4g
-LSBSZW5hbWVkIHJ0bDgyMTFmIG5vZGUgdG8gZ21hYwo+IC0gQWRkIFItYiB0YWdzIGZyb20gU2hh
-d24gTGluCj4gLSBSZWJhc2VkIG9uIHY3LjQtcmMxCj4gLSBMaW5rIHRvIHYxOiBodHRwczovL3Bh
-dGNoLm1zZ2lkLmxpbmsvMjAyNjEwMTQtbmFub3BpLW02LWltcHJvdmVtZW50cy12MS0wLWU3MTNm
-NzFlYjRkM0BnbWFpbC5jb20KCmxvb2tzIGxpa2Ugd2Ugd29ya2VkIGF0IHRoZSBzYW1lIHRpbWUg
-Oi0pIC4KCkFzIHlvdSB3aWxsIGhhdmUgc2VlbiBqdXN0IG5vdywgSSBhcHBsaWVkIHlvdXIgdjEs
-IHNvIHBsZWFzZSBzZW5kIGFueQpuZWVkZWQgY2hhbmdlcyBhcyBmb2xsb3cgdXAgcGF0Y2hlcy4K
-CgpUaGFua3MKSGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+
+--===============7534685747933843454==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="bSSLOBRclnUyzkCZ"
+Content-Disposition: inline
+
+
+--bSSLOBRclnUyzkCZ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Sun, Nov 01, 2026 at 12:41:47PM +0800, Xing Zheng wrote:
+> Describe the optional detect-GRF phandle and named interrupt resources
+> used by the B/C headphone detector. Retain the legacy interrupt order
+> and index-based lookup when names are absent. Document the detector
+> disable and reversed-jack properties and their resource dependencies.
+
+Please don't send new patches in reply to old patches or serieses, this
+makes it harder for both people and tools to understand what is going
+on - it can bury things in mailboxes and make it difficult to keep track
+of what current patches are, both for the new patches and the old ones.
+
+--bSSLOBRclnUyzkCZ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQReagvpf3TrrA7BoYYv73Ows9A4iQUCaufBAwAKCRAv73Ows9A4
+iabwAP9Gmr6n9IX2ZB1GxaMa2+TbbQ+zn3trx0LRgC/h5052OgD9Gp6fMckCkXWu
+OhGm7TPU0nV/e3bw6I0v2x60AncDWA0=
+=ngH3
+-----END PGP SIGNATURE-----
+
+--bSSLOBRclnUyzkCZ--
+
+
+--===============7534685747933843454==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7534685747933843454==--
+
