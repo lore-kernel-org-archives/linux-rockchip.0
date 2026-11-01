@@ -2,12 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 31A43606A334
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:17:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 78B75606A334
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:17:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0ZjBAy0Y;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=LHHqXp9C;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=OUqoykoQ
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=U8eTtv8+;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=CzSGUltm
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -15,66 +14,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=HkNnNputxAsA98yCw0YiHB4a143B3w4BvWTksS5L4Xo=; b=0ZjBAy0YoJvEYG5GF5JdIzB/j9
-	aPAl125RjSV1iavgqJhzjIHKBFYk7o0Pm0yPgs1CnS4dA/JG++9HdEkW8dMHRgsm6JzKEcJ2yahPt
-	AYZFWjUrHWyIM6hEnJFrBmPFZlR+p+xng6NJa59I990IQ4ChRVCKd2rhpkfUWuv4N7oO7we6JfBLl
-	yKWRrWkWKw5ZbYwsX1pQ9zkGfPKutekpP2IDmxvmJSH8qsdhdltz+fEAxugRkhgIcI8E4ZSLLw0Ly
-	ANutgeB8aSJJEwB/7lKKLmMMrV/JspUREKz9oSKzGHnn2433JpT2wRXnV8RDdXqOJfup+nz5z+JvV
-	PfniZykQ==;
+	bh=84KaGtMdJ23OvE9Af5LURwfVslUpY1GuAsNv62XB0PU=; b=U8eTtv8+VnVBEYW8UoeSiahJH/
+	DOcdUp/ZvasFKPzhdG3Me3Epv862TJW//B24Iq0elm5p5UNsluxOWiSAG8HsdIZYYAHT9XhjT2ONj
+	p2cMGGoBQ+nAa9FH1Qz27K/FzLdDd494Ek8cWEtv47wmu18f9KfVtTAYeasL6GV+ReB4Iyw90Fh75
+	tm8+6nSsN9dX8U46fWyP0Iij7FDP5f7D9olgPLUMGDWXRt/xDlfKZrE7JxssVM4TTO88MlvqGD2on
+	jLKIkuP34DsrCoddfBYdUQuNWclQXksrxMUGorkA5bEgtMQJ6qOEF1XTtMfsOei5nbqGSSghy4qdS
+	AF4hPF8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdrz-0000000F4MA-0yck;
-	Sun, 01 Nov 2026 22:17:43 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdrS-0000000F2Iv-1kQ9;
-	Sun, 01 Nov 2026 22:17:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=+PSaaDmaOVWUQ+VHhuXHm+ChDICCzay6CedCYV9aBDQ=; b=LHHqXp9C9DxlEkEbaboWakgogq
-	zsBYcKa8Eke8baYUchcCNFgyhkyIBpcW0xmXRJx/cD6X3VEFuJciV+U0BbSd8ztHJ7TumbS2exSUW
-	QmTnihkCF7hNuKzPpeX1KOagW71W31RPJgSZjnXQPpitGWS30AGZaXKOiAIAay2krlK7gknDQWtuk
-	QEbFdAOtMQebcNmuhMPrsNdB3b9rR24BmA+swyKaNkNx9BQWbs+XGNWa+DX5FGvS7IullPks2aSJO
-	N7Fy5gLSQBz00BsTV0yO91h3jdWrhnTDDaWrXX1NC1o8MCuKgAfvWWgU2pRn1fSkI5W2CK/OTTdly
-	ZH3BrrSQ==;
+	id 1xNds4-0000000F4dt-0pSO;
+	Sun, 01 Nov 2026 22:17:48 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdqg-00000001seX-3A3c;
-	Sun, 01 Nov 2026 22:17:01 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xNdrL-0000000F0Xu-1CX8;
+	Sun, 01 Nov 2026 22:17:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=+PSaaDmaOVWUQ+VHhuXHm+ChDICCzay6CedCYV9aBDQ=; b=OUqoykoQw5+FEa9dg1IfaI3/Wb
-	A5+bkqs2+YGj018zeUKDS5sFoJlBQoHa+ogK/4vuKvUyqI4qWEM6hM6NDlz6CedUF4omAchCxXGP8
-	isENDwfaU6J66ZpRsyL0BuEiYeEkNhJeS4Ib7eBNJ1Z35l32RlHgb/uGcj/L4NDif9z0eaH4vPSsC
-	zd+jV+HV+wovty79e5z3Ku5GWBX1iOGXioMa616tDSW4hm3R/K66xZtP0Bs9ODV6FAtZgJttgMAbL
-	7pRmUjtcIoHKOqwTmGVgBepiuQoce1jZ/pPr5L9QF7N0iJT2dRTrfayAzYb95aXodqesT93/TVNB6
-	sll/CYMg==;
+	bh=Qn7fQ/WuImtrNrwAytucTquNZwzb54Hg+kTqL7gmoxA=; b=CzSGUltm5eVCpsFPFpmu2teIl3
+	pCCMuFhCNrt+jIs3tl/m6p6bsKexs5jU+KZXxFoHk+VMixs2F7PSs7ERSo0OdxI6mmcBihNNpszOA
+	eEnDAr+4TQQq6moGFkH+fiowTYy9fClKD5apbLYn1gAqKSei+2Nl4wXJn85Fsfeq8fJ34XQX//4L+
+	78dfJKDe9z03KVOuvYbaiolk9YeRGKInlvAjzyxnRPrk3LwYZoV00c8kzdXRg9GjohkCpUOea+OVu
+	gYAkoGEh9HzwVemNyAhhLVDq5U7WbD5onv1uAWhqz/l7t+AQaZwVnC4gad6Ctg/KGvU6vAVl3qxJY
+	HfyBLkHA==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Igor Velkov <iav@iav.lv>
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+	Leonard Lausen <leonard@lausen.nl>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Rosen Penev <rosenp@gmail.com>,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Add the GPIO expander to Kobol Helios64
-Date: Sun,  1 Nov 2026 23:16:08 +0100
-Message-ID: <179357136485.4108155.1255031928445083494.b4-ty@b4>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Enable Wi-Fi on the NanoPi M5
+Date: Sun,  1 Nov 2026 23:16:11 +0100
+Message-ID: <179357136492.4108155.17814114343295841881.b4-ty@b4>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261024-helios64-pca9655-v2-1-97210e9aafb1@iav.lv>
-References: <20261024-helios64-pca9655-v2-1-97210e9aafb1@iav.lv>
+In-Reply-To: <20261026070821.324094-1-leonard@lausen.nl>
+References: <20261026070821.324094-1-leonard@lausen.nl>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_221653_969574_4CB6D3DC 
-X-CRM114-Status: GOOD (  11.17  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20261101_141703_490890_ED406CA2 
+X-CRM114-Status: GOOD (  12.41  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,21 +80,23 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Sat, 24 Oct 2026 22:15:04 +0000, Igor Velkov wrote:
-> Helios64 has an ON Semiconductor PCA9655E 16-bit GPIO expander at 0x20
-> on I2C2, powered from VCC3V3_SYS_S3. Its 16 lines go to pins 4-19 of
-> the P5 GPIO header, one line per pin in order, so name them after the
-> pins. Its INT# output goes to GPIO0_B1 with an external pull-up (R59
-> to 1V8_S3), so the pin has no internal bias. Schematic, sheets 34 and
-> 35:
-> https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
+On Mon, 26 Oct 2026 07:06:50 +0000, Leonard Lausen wrote:
+> The NanoPi M5 has an M.2 E-key slot for SDIO Wi-Fi modules such as the
+> RTL8822CS-based AC200. The SDIO controller is disabled and the module's
+> power sequence is not described, preventing the card from enumerating.
+> 
+> Enable the controller in four-bit SDR104 mode and connect its 3.3 V card
+> and 1.8 V I/O supplies. Describe the active-low reset on GPIO1_C2, the
+> 200 ms power-on delay used by the vendor device tree, and the external
+> 32.768 kHz clock from the HYM8563 RTC. Keep the card powered during
+> suspend as required by the rtw88 SDIO driver.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Add the GPIO expander to Kobol Helios64
-      commit: 3e8f8468c1a9b42740db986ee07d829696a7b5db
+[1/1] arm64: dts: rockchip: Enable Wi-Fi on the NanoPi M5
+      commit: 2712e8fa4d1108b33ce3a49c9459d9b88489f639
 
 Best regards,
 -- 
