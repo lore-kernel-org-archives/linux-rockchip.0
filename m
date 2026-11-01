@@ -2,61 +2,100 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C19C8606A324
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 19:11:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5DA77606A33C
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 19:29:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FykWJ4JZ;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=VxAMb9Yk
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Ix5bnvxK;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=LWfNsQzA
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=bDrc9ZkPhP3o/dUXv8Pl3CVZBm1AdNoposTws9/F4DU=; b=FykWJ4JZphxBh19UJMPQJBILSm
-	i9n/BWpVjWTP+vf2DNVVC5/WhfS9eJl+pjC/po3k8PfL6OX8GWUgEvN/ihZJHv5crh9KI9RKGzj7K
-	DmrZDTe6CoCeaa8MVrgpOmgGF8u9s74kBt7RpBMvo3lX65JkUS9B06z9jbFH1862XtwxDdHEpT22k
-	UWqCDk/fMnfTc27/DfgjUeA56frH5S7hIcYUsUOwuInLsya6W5pl5yzgO0Qm99kwDfH02pWQmIRSF
-	lYaYCRQI0misDlyvB0hZ8k9OW5/11Z92pjfLzYqHs9ecRU/L55Hz5k8OUf7MXw72zzfoncZ05e3wa
-	OSphtJaw==;
+	bh=dfYNvgBlZL+0RHKZhSRAAYvzVOPWTZl/Xf92+2nb2mE=; b=Ix5bnvxK8v/Rnb3w7V+XYRueM3
+	uOMDSw8q40GDo6+y35WxT8SWTBhwnPAIvD49bp6XCtj1AyjmhasqoFWng4tL+64wJcHzegEoqH73g
+	Xfnwzi84yVwKOWktr9Dr61IQyTiojS5mMcv/ug9ycPBULUx+g4cPK7aOXhA9Fxb40P6IFoo7hDxOk
+	lQlpIB+5K9dRw4xNeqkSJdhz46MBPo8J4ElPudbfX6/kLC6UpXoMy/V7T3RUPl4pTEPBD7/7XIQsM
+	DgZlhr6DUa2I5SxqPOZHUNvXNhwjyO24JrKd/06LgyurWoE+WeKf5cshomzIl1PL6pd9KITI7Jr7G
+	6Tq7Hi+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNaxb-0000000Enen-2QDJ;
-	Sun, 01 Nov 2026 19:11:19 +0000
-Received: from sender-op-o15.zoho.eu ([136.143.169.15])
+	id 1xNbFI-0000000Eoc6-17gR;
+	Sun, 01 Nov 2026 19:29:36 +0000
+Received: from mail-dy2-x08.google.com ([2607:f8b0:4864:36::8])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNaxY-0000000EneI-0zC1;
-	Sun, 01 Nov 2026 19:11:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1793560235; cv=none; 
-	d=zohomail.eu; s=zohoarc; 
-	b=iRBtL5ZI127nRPDqqbTqjRcbsDS30mPeVHezXgaqcjUFMkQDqoK8sp0ijTBCmafp/flXvwvfocEKXG6gqj9RTAhrFG7X6e6PqPbMiPY+ZQKGq+3Uy6mFnYxWh9c6qf3xJwGMrnom/aDUk+LAwkjhpyQjzaWduNH2LiXxDDtZj1M=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
-	t=1793560235; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=mPcWOwuHmd2vb2lc/1veBqXCg/9uHVaMceIoosx5SG8=; 
-	b=V9p49xnybzD+e3S8j1KhS/QP1iZM8Qkb2xIwizMus9rJS4YRbKeP/jFbaZwVwRaiMzJaLTSKo6lT+f5izvfYny9BInMU6MJOsy2DIsWxpJxsnMgz1isgcTzmVyA5qte7msiZOtUB8Lj75msKPXTYRmW4veWRqcIbsM0jlbIomS4=
-ARC-Authentication-Results: i=1; mx.zohomail.eu;
-	dkim=pass  header.i=iav.lv;
-	spf=pass  smtp.mailfrom=iav@iav.lv;
-	dmarc=pass header.from=<iav@iav.lv>
-DKIM-Signature: a=rsa-sha256; b=VxAMb9YkFS0HWxIAL9v0QH3eV836oDrQf3tt3baPOt8693zNFZPNp1MlPM0j8dZAgVWcHVzmB2Eor+Q691r/iKGybzsFXRXVcPnGSLheFezn/xMsRaZHqLXZEDyQIiceVoSNrTionsswenYr487X/bcDE33WAf8HieHx4WNrtPQ=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=mPcWOwuHmd2vb2lc/1veBqXCg/9uHVaMceIoosx5SG8=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zoho.eu with SMTPS id 1793560234157386.45816168150634;
-	Sun, 1 Nov 2026 20:10:34 +0100 (CET)
-From: Igor Velkov <iav@iav.lv>
-To: netdev-bot+sashiko@kernel.org
-Cc: iav@iav.lv, andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk, davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com, maxime.chevallier@bootlin.com, lukas@wunner.de, rafael.j.wysocki@intel.com, wei.fang@nxp.com, niklas.soderlund@ragnatech.se, paul@pbarker.dev, florian.fainelli@broadcom.com, opendmb@gmail.com, Thangaraj.S@microchip.com, shenwei.wang@nxp.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net v4 5/5] net: phy: postpone PHY interrupts during sleep with MAC-managed PM
-Date: Sun, 01 Nov 2026 21:09:52 +0200
-Message-ID: <179356019298.3385307.17700170309730679223@iav.lv>
-In-Reply-To: <179352219781.3131.16504721138901563596@kernel.org>
-References: <20261031-b4-phylib-mac-pm-irq-v3-v4-5-5ba23b3ff9a4@iav.lv> <179352219781.3131.16504721138901563596@kernel.org>
+	id 1xNbFG-0000000EobY-2wPO
+	for linux-rockchip@lists.infradead.org;
+	Sun, 01 Nov 2026 19:29:35 +0000
+Received: by mail-dy2-x08.google.com with SMTP id 5a478bee46e88-36758ba1f01so1182911eec.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 01 Nov 2026 11:29:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793561373; x=1794166173; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=CGDnJpx3j3drQchpBAdAdBGb8yAOu+8mQ/5VXmFBbTQ=;
+        b=LWfNsQzAg9dAs8QV6V8QKlhJDgzZZPNcUmPJ5MKl4ewdifgSaVX1AUXCEIHdB2vNHQ
+         Q8nLUEQfAD0tnPFD8uZn8IcDDQyPEfeoh0ZfIbrouFY7g9VafMkCwLeOvb4aE0v+NtKj
+         yIwPS/kc0cl6CyMRV4SzoQgIIDgt84mfAlGBXADFZ/+We9yyHpN579YTC5hHvGddQq12
+         MAQjVUqoTS5Rx7LTsYKumm9b3BDSbg25WbmjvsxQabIRBOY0uPxSXBshEWVDFyfZTPHU
+         PovOu97VDFNatHBJX1GVZaAhxysW+QGmsgxOt7FM+vyqCHZ//VD7OcaIPDLcjdpoSmZ3
+         wHDw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793561373; x=1794166173;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=CGDnJpx3j3drQchpBAdAdBGb8yAOu+8mQ/5VXmFBbTQ=;
+        b=KdSryHmD5w75gKJ2cShhhmlXyVy/v4leW5TM8UDZbfRMEKjsePIpwYZuDWSujJVc6c
+         th0zx6Rp8/vTIOmfoRL/4Zmug/LI/i0msyIkFJQIVeew6zDnKAhpSo5463uiyVX45gpf
+         HD9vJ2xqye4NJ1I/j4VygVpVqpMLo4Tw1mctvZBDltWCMOrqkfS4rxNhWtFVXtT6A/WY
+         dRkqo1n3eIosNf6U2lGLKDJ07TjFIc84lJwumYm0ZsOD6L/Ls0TDE42Pvmftq6OweCb5
+         vJ5P1wAY8obeIZtXmUZwB3rWtc8iRG3u/a4l3Y9p4W08rCTzm4B4FERqpWrR6iRz5aVN
+         Yfww==
+X-Forwarded-Encrypted: i=1; AKwUvBxHQ9iG3WvPiO0cOOhxpRcvKq77xaQ2KiQxTig+tfQNtGcGTaXIG2siYbDyxtDui91ZQtnyJaKGmqrtWU8LRw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/KeUFgZMc8HvC1zxh3DlEYDT/0W4R02mR/jWlRhGTdfBlTiaZ6
+	lM4wMp7MizkQzfFuo0yK0zzvLkURrZE7ORJ2lbpA2H9OdKYOGJDgyRuj
+X-Gm-Gg: AYBFou04XOp1zk5aniBxSVm801GraFUzZO6LaDN/OzwRJZqz8MIYJf/doS/VD8jJkv0
+	DLo0cH068hj8Qj1sO0gzwlNBm0o8ewCtyuzYHdeam3vPffpDvocayDE+RrHZsSxlIGmVu7KZ9/B
+	7m5j+j++J0n1caf2jCwpYkeU5cOlp/mxNS3vqJntW22ygci5ElR3FOIxJXu13ybyUvvDzKCuYYF
+	idUc50VNZ2InGGp6hzw7aggJ0lBz0tdXXPQ3rXzueAaJ1nQSHIL6AGrDy8YfnBtpYrLk61P8bjf
+	fX4ilGICEKU7r9SJFJgUMLNHdRPxZHMjxu7Ex0uFMY3DJuIrEAkFQqjjyZfRyIt7mTiNaV/K6xy
+	LVTJZnas98p815T1CGk1vNBmoy5YFK6x6/0seIW2EVdNP00IjerhLp57OHlxLo4b1rCrqAI1AtV
+	sQ7RtdGf9qxOwxyvy3VaAEydoZyNWh9vc7I4+U9frtQjIEGRieZE/e2rMMj9dC2+GmEy7TwetpH
+	zNBM5msc0BJdIaAKTDrqfP5fim9YwGPnvj4c1U0+omHy3AfkGtAtnWgS/JmvkMGupmZE3o82gFE
+	VCbG2JIhg8en2nTOKUppSx6IzxP1PbuqyxCpAYSCOnLrHSc7
+X-Received: by 2002:a05:7300:8251:b0:36a:1a65:ebd3 with SMTP id 5a478bee46e88-36a4237d4a7mr11951653eec.18.1793561373232;
+        Sun, 01 Nov 2026 11:29:33 -0800 (PST)
+Received: from server.lan ([168.138.199.194])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36a428af1dfsm31471861eec.7.2026.11.01.11.29.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 01 Nov 2026 11:29:32 -0800 (PST)
+From: Coia Prant <coiaprant@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Junhao Xie <bigfoot@classfun.cn>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Coia Prant <coiaprant@gmail.com>
+Subject: [PATCH 0/5] arm64: dts: rockchip: fix GMAC clocks and USB OTG power on RK3568 boards
+Date: Mon,  2 Nov 2026 03:28:02 +0800
+Message-ID: <20261101192807.897562-1-coiaprant@gmail.com>
+X-Mailer: git-send-email 2.47.3
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_111116_570841_4F16AFF5 
-X-CRM114-Status: UNSURE (   4.76  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -3.1 (---)
+X-CRM114-CacheID: sfid-20261101_112934_731477_C6260CA8 
+X-CRM114-Status: GOOD (  12.07  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,28 +108,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Path 1 is real for a PHY that keeps its link interrupt enabled while
-armed for WoL. phylink_suspend() calls phylink_stop() before
-phylink_speed_down(), so the driver's suspend runs first. RTL8211F and
-AN8801R mask the link interrupt there; on Helios64 (stmmac + RTL8211F,
-wakeup-source) WoL suspend passed 4/4, though I did not log the link
-speed. Of the wakeup-capable PHYs in drivers/net/phy, BCM54210E leaves
-it enabled. Before this series, the link-up after the downshift could
-arrive after stmmac gated its clocks, and phy_interrupt() would read the
-PHY over a dead MDIO bus: the hang this series fixes. An aborted suspend
-is the safer failure.
+This series fixes two classes of board-level issues found while
+bringing up several RK3568 boards.
 
-Path 2: phy_stop() with wol_enabled leaves the copper link up
-(rtl821x_suspend() skips genphy_suspend()), so the MAC causes no link
-interrupt. Counting netdev->ethtool->wol_enabled as a system wakeup is
-what phy_interrupt() already does for PHYs without mac_managed_pm.
+The first four patches address GMAC clock parents. On these boards the
+DTS lists SCLK_GMACx in assigned-clocks but only provides a parent for
+SCLK_GMACx_RX_TX, so SCLK_GMACx keeps whatever parent the bootloader or
+the hardware reset left. Add CLK_MACx_2TOP explicitly so the GMAC main
+clock always comes from the internal source. BPI-R2 Pro additionally
+describes clock_in_out wrongly ("input" while the port is a fixed-link
+with no external 125 MHz clock); switch it to "output" to match the
+hardware. On RK3568 clock_in_out does not change the hardware clock
+routing today, so that part is a description fix.
+
+The last patch fixes USB OTG power on the Ariaboard Photonicat. On
+battery power the USB port is dead because usb2phy0_otg is fed from a
+regulator that only exists when the DC input is present. Add a boost
+regulator gated by the existing vcc5v0_usb30_otg0 rail and switch the
+PHY supply to it, restoring USB host functionality on battery.
+---
+Coia Prant (5):
+  arm64: dts: rockchip: fix GMAC clock parents on 9Tripod X3568 v4
+  arm64: dts: rockchip: fix GMAC clock parents on Graperain G3568 v2
+  arm64: dts: rockchip: fix GMAC clock setup on BPI-R2 Pro
+  arm64: dts: rockchip: fix GMAC clock parent on Photonicat
+  arm64: dts: rockchip: fix USB OTG power on Photonicat in battery mode
+
+ .../dts/rockchip/rk3568-9tripod-x3568-v4.dts  |  4 ++--
+ .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   |  4 +++-
+ .../rockchip/rk3568-graperain-g3568-v2.dts    |  4 ++--
+ .../boot/dts/rockchip/rk3568-photonicat.dts   | 21 +++++++++++++++++--
+ 4 files changed, 26 insertions(+), 7 deletions(-)
+
+-- 
+2.47.3
+
 
 _______________________________________________
 Linux-rockchip mailing list
