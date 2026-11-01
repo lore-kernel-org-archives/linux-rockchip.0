@@ -2,54 +2,58 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 10B5060A380B
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:16:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 716D260A6F41
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:16:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OCi7HXIf;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=i5d2cbhq
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=o4aih9qd;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=NufQ1HcX
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Bsq3+d3yL3djs2vDCAgttKgKl2hImDLev5qJq/ozwe4=; b=OCi7HXIf36zMbadqjgPMgykvsE
-	UGfY77DrWpIFZDY8s0m7+YVYBhHz6TtgrH/CbdbWdOJ9w0xjr1W8PEZIPIZrHpz88rc4lvYxB96nk
-	nL0nCaudu+C7NLSdIcrjizjSDTTiAiOuly1mP+BWzoXq9ATELs3lVR965xuThulQKrwDr93ixkYgj
-	18Kgi568uAV3bCagcxG5gPntJmVxT3XIOQYFbl6e43ct3z0bfBu1vu7lsPorpdZJAbArrohMD8nnq
-	rpE6o+oLnf+LE8uL4XOZ7UkAGUdFP7ZIX5yldhR4Swv0DsrgBIzFnh0bO8dscvNi+de3bgv4rsdeo
-	pSXtjLDA==;
+	bh=G3FoxqYRQRO2r755CpqVDmroQZjUS7zEyl2E2dQ5U1s=; b=o4aih9qdLjCoNeLQ9xst1SJIVz
+	q9SRIpYZmI5w00h60t4RBWVlBoolyxelrr3Qy20a9UCpTlygFaAn4gPCKweViAR0voisVi5OD7Hzx
+	W29BK7g8DvGAqKC8E1zp4GIyxVrtnA7PVx9hBTOT35f41mh6cIoQkjUbSwuFAdGvtdZMjKjL9JxAB
+	KCTOzVs31rc7jkX9aF/fmlaVjrGcp3+9XVuhkfXHLrU+4u3CiVJmrzluRuwb6R7yUgUsaiv2mq3ul
+	H+K9FwaAfJAhz6dZ+otuWIgoukUmRF84+SUaSgwPtMKN4CFOG8vGqI1sbaVAWAE4HUITOzKKxaqKe
+	Z4avvhwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdqd-0000000EzuF-0Wu7;
-	Sun, 01 Nov 2026 22:16:19 +0000
+	id 1xNdr8-0000000F1M2-47oP;
+	Sun, 01 Nov 2026 22:16:50 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdqB-0000000EyrO-1tGF;
-	Sun, 01 Nov 2026 22:15:58 +0000
+	id 1xNdqh-0000000F04B-3EkG;
+	Sun, 01 Nov 2026 22:16:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=dzHxCP/qlD9U2Pnz2CYx8W1+O2sBTItyxz8i84HwCSk=; b=i5d2cbhq02cEiFA3UdTTb0AY1q
-	0Llb1mDrR9x6zaFxdqunHTec4sA/W7RR35xBlTxiCxWNWNQUelPcrb1tLVsF3SeGx3X9bz2xNs1TZ
-	Zkdel6DtXGM7lZY2KHBfo6GFDnpL9g6BiGJowo3OpMVTkigQYTM7Adk/lUt+LfRNz1Ecp0bYTX5rp
-	7lDyco/nl2rP+NQ9+x6P+g5M+EtCyeiK9WFEJ5wHkMjsYG+ZDr0Trs4uFRtFt1tfItfZM5BlIii6w
-	NJvou2MDY7gErqc76cmtcrL5KTlHRWB6age/1B2K+E4fPisTdpNHTIU8pay0J8IDW8iX6s0QRbUkL
-	ZB3f15ag==;
+	bh=F/IyEYtIEFa/TSSICHUA6hake8dumxxKR9SArxaMuJA=; b=NufQ1HcXo+KRWDRaYcMIG/RT9p
+	9lRzNZzE7HQmPTuXKYoLqVtnecUNx1k0QugPc5BQ5N9tCEWnkoivCeEJpkxaEv0IPHUKxgXbyaolV
+	lGAXrgdLG9UBB8qSPDW8yJG9Ht3ilyx8UCAVMH9fIdlpk+s9MzNTg6+dft1rKj7uXBmq0qJAxdead
+	f1tc30c3YGsksoFKVOGgataIERHmtrP9zd3ka3NF8+bIyrd3kMK9SJ5GPdCK+t2qzYi5bQrLG/yyq
+	SZGeO/u4XR6OOBnPKlqaTAyISgnvvYjxunFFR82v5pt20AsJUQsDkDCDknc4gLWtL7mPhVGZabf8h
+	QIne0bZA==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Igor Paunovic <royalnet026@gmail.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: fix hym8563 interrupt pin on Orange Pi 5 Plus
-Date: Sun,  1 Nov 2026 23:15:29 +0100
-Message-ID: <179357131393.4107717.8550224711242554057.b4-ty@b4>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: rk3568-evb1: enable PCIe3x2
+Date: Sun,  1 Nov 2026 23:16:13 +0100
+Message-ID: <179357136502.4108155.14807945723272231784.b4-ty@b4>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260908111908.19371-1-royalnet026@gmail.com>
-References: <20260908111908.19371-1-royalnet026@gmail.com>
+In-Reply-To: <1792387349-86262-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1792387349-86262-1-git-send-email-shawn.lin@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_141551_560558_0E10D82E 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20261101_141623_861193_DC3E9D21 
+X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -60,7 +64,6 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org, linux-rockchip@lists.infradead.org, Ondrej Jirman <megi@xff.cz>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -72,21 +75,15 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Tue, 08 Sep 2026 13:19:08 +0200, Igor Paunovic wrote:
-> The interrupt line of the hym8563 RTC on the Orange Pi 5 Plus is routed
-> to GPIO0_C6, not GPIO0_B0. The vendor device tree uses RK_PC6 for this
-> pin; the mainline board file uses RK_PB0, which does not carry the RTC
-> interrupt on this board.
-> 
-> As a result the alarm interrupt never reaches the SoC, so the RTC alarm
-> cannot be used as a wakeup source on this board.
-> 
-> [...]
+On Mon, 19 Oct 2026 13:22:29 +0800, Shawn Lin wrote:
+> Enable the PCIe3x2 controller on the RK3568 EVB1 board: add the GPIO
+> controlled vcc3v3_pcie supply along with its pinctrl entry, and wire
+> the PERST# reset pin and the supply to the controller node.
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: fix hym8563 interrupt pin on Orange Pi 5 Plus
-      commit: dc963c9ec182ec24f0b10f11fe377db00528f7a8
+[1/1] arm64: dts: rockchip: rk3568-evb1: enable PCIe3x2
+      commit: fd485b0b11c86be0596c9b775d785c548714656a
 
 Best regards,
 -- 
