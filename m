@@ -2,12 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6AE69606A331
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 08:25:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9775C606A326
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 08:25:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=q9BA2Rv8;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gahingwoo.com header.i=@gahingwoo.com header.a=rsa-sha256 header.s=fm1 header.b=aSVbJWLq;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm2 header.b=SykK+h3b
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Fx0rF3rG;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gahingwoo.com header.i=@gahingwoo.com header.a=rsa-sha256 header.s=fm1 header.b=PqdJHAxW;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm2 header.b=d6h/j0Vq
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -15,90 +15,90 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=XUqpymYOsCU7qQbRAQ9wDboOffMUV3+klVP/Q3KtP6s=; b=q9BA2Rv8OgwWR96rXV5RQ9jjsd
-	KImOVGQd3klcVwh5DuyU0X0ZFECfqBQwfFKRy93Nqv2tHBpNi//BT3lk0YZeu9MvcyUmNZEeK0tq4
-	FzzTZi4BhnpOO0w9HiJawL8N28W0pQzRrkeQZq3N9hySB+bLZ22TNZPjaPNEdG3EZvhHluzUv8Ipy
-	NZbXm6oFmCaEZWWG8019+0VAvhwT2J1nYCmGAnurSgPZmuO86gu/4wIZbpm5mYut3+DxhVhUAr0XT
-	/A5tZaIelQxrcWkwf8Y8lJwavgIoSm8zj5CNLrSsUK/s/NQnYeqrKtxlIVOUDNc5DYg/deq1exDEZ
-	EMr/ZdKg==;
+	bh=KNvBYJVffqcZEmkWeTEH86uN01dKwAgbXr9QLg9Eyp8=; b=Fx0rF3rGk1USJqdLPfnjZRgZ6O
+	GTvA9dGIgpkxdiMMiDtcZ4+l99G+7DJrojuvPAmdDKpYrmNIU7m3FnqNFAKWB2qhHKOCu07E2/xWc
+	Roox1JbQJXCGIDq43U1OE3ei9qkg+xaB/UnaxNx511PeOxAfCMATbmf0bTIRhFf9+DHOt1KIOgQ1r
+	yGq8sw762jh+KZwa6iYYmbpE5OLeATqXgWtd9rs/czQzGLfNRiJujRS2EZxpsrYtxIyx3yoovy6HT
+	ElLJK6hJARN5eQDTNYPDTq+nc27nWIiMfKZmGauFjT9+lVOg2EVf8BNqKM0O2RFaOqdj3vleVBnB9
+	lUE9xEZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNQsN-0000000Dzxk-0Yjn;
-	Sun, 01 Nov 2026 08:25:15 +0000
+	id 1xNQsV-0000000E057-1Or3;
+	Sun, 01 Nov 2026 08:25:23 +0000
 Received: from fout-a2-smtp.messagingengine.com ([103.168.172.145])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNQsG-0000000Dzs3-03qd
+	id 1xNQsP-0000000E00f-3oHv
 	for linux-rockchip@lists.infradead.org;
-	Sun, 01 Nov 2026 08:25:13 +0000
+	Sun, 01 Nov 2026 08:25:22 +0000
 Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailfout.phl.internal (Postfix) with ESMTP id 2613EEC06A8
-	for <linux-rockchip@lists.infradead.org>; Sun,  1 Nov 2026 03:25:07 -0500 (EST)
+	by mailfout.phl.internal (Postfix) with ESMTP id 1CB84EC06A8
+	for <linux-rockchip@lists.infradead.org>; Sun,  1 Nov 2026 03:25:17 -0500 (EST)
 Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-02.internal (MEProxy); Sun, 01 Nov 2026 03:25:07 -0500
+  by phl-compute-02.internal (MEProxy); Sun, 01 Nov 2026 03:25:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
 	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
 	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm1; t=1793521507; x=
-	1793607907; bh=5TNd4kDZ6PxnC1nFHlM/gzXF2fKd3DLoroTgzKLXOEc=; b=a
-	SVbJWLqIBnjO3ZuxQU2HbdyB9ECwbFaOsudUPJ2trb0HJ3khIqop1jQ3DvmoHmZx
-	5ql/p98R2Gp5uSOZepnxgHFH5we8xq+qscIeFEr8HBBeGB1Ip5X5jCxFR2Adrk0A
-	XbC5/SGX57hI4zH4bBK8vPp5C5wGjpd+pCyoqDd2ETwNRfTGNrLKDI/o7MnVTZ8O
-	hxtKhBJsK8XH2wbLxVNqFmNnDuq7Wbufbxgro/Vo8oqqmE2AMGjTD1/RsAIzqhUj
-	1UbHNto0KW3DH1NpUVN4eeSOO3xJkX7Z/YuHpcca6F0RMf5ixLBRKYxYuGNl5GQL
-	9fdBEgVKVQrSERLijm0UQ==
+	:reply-to:subject:subject:to:to; s=fm1; t=1793521517; x=
+	1793607917; bh=Tv5fkRu09KXVRP9FVynrYKMqmVnc7aPAP0+T7s9cgJo=; b=P
+	qdJHAxWG0KXBX0L53PIi99HA/TCQBoO+m0Ojvi5daE8auRtzWWBpluHqi1YqwKBu
+	KqLnndaohdHTEnKKVNn0aovDkKcIn5NVMV1gfYnhOfv4NJZLcq5eO9uvtTUCnTTR
+	aw7C8eQk8FAw39tiLXg+ts+TnfYzGlfuCg/vGI78wF2FylK+Oh9g74U9LLbSd7Ga
+	rn8t0BbsoKPqmlry+I98t8Q6yr08x1C8Bxavk+BqI4+yJ4eghNuF5+9rCHlEo6Um
+	DU7cLbqKHiyVxjynR88lMWhxgx43JYMQR6vg8K2oj8BazCDv6ve0WxMbhiScGaL/
+	li6jgD6ovJ6Us+clcYbuw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
 	:in-reply-to:in-reply-to:message-id:mime-version:references
 	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm2; t=1793521507; x=1793607907; bh=5
-	TNd4kDZ6PxnC1nFHlM/gzXF2fKd3DLoroTgzKLXOEc=; b=SykK+h3bNF1vncyqN
-	7zPEwhi5lcek+WiRtcLhU/I8/4J2J3mJbXc8Ug95VSlcw01nKHZiUhI11vmEuVcC
-	tpllI0Dva0sCjluH11F213/p+W1J+NDaLjon+M6dWuCNGxRunUVdg6ONhv/BQD3o
-	fknnWLo/0uYQHvbAx89sPT1+0uww6g09w/OGaH5pB+ZhhbKHFN5V2t3nkBTFMWot
-	UWpcI38FQ7FDIGl4vxZ9C6V2BNyEQJO5SVYMJFmSxnykZgzQE26lQmCEFAtycgBh
-	3i66DAcDqOf2XilexmPQuQ6S0YWRl1oDug4xbMZcXQ18rIhspH5HSmanjH95tCKo
-	FEmKQ==
+	:x-me-sender:x-sasl-enc; s=fm2; t=1793521517; x=1793607917; bh=T
+	v5fkRu09KXVRP9FVynrYKMqmVnc7aPAP0+T7s9cgJo=; b=d6h/j0VqpZnswyxLe
+	TDxI5QSDpIa41yGjRXA6DuCxuULB6+nGXjbxVUE0nIudJvxrYKqgavWPTPalTEVo
+	6eSst6YR6hdo8cVQHHXcLskZ3haA36CGEvJHN4acKGOwxI1096OsC9pOb3K6XoWt
+	qwimKuBVOVJUl3NxHpokroaiU4VpIa8vEgu6tcZmGql60IVf2vWppr0F7V6CiQWi
+	Y4x0bI8UKgUpKjAI2hhXWe2u4Udb5j385V+Pw6GMUdPEhrg5NpmV7TA4nQHvANuP
+	p2Enba2xhoa6dORRwRVlZrkTmfAv6rVuOyDfGt4NhrbcPtf7HHeEfl+fXE20uUHG
+	7+T/A==
 X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-08;
 	repo=github.com/dkim2wg/interop; date=2026-10-28; sw=lmtpprox;
 	action=sign d=gahingwoo.com a=rsa-sha256;
-DKIM2-Signature: i=1; m=1; t=1793521507; d=gahingwoo.com;
+DKIM2-Signature: i=1; m=1; t=1793521517; d=gahingwoo.com;
 	mf=PGdhaGluZ0BnYWhpbmd3b28uY29tPg==;
 	rt=PGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmc+;
-	s=fm1:rsa-sha256:gDGxvmWMYaK0Nw8kVoFB98qrWoYLnyJigfuUw92GVBMoZtY
-	m0Jo+ftqsVZ+OnezgWJ14lRhbl0OvpKxNdTgsuAXxvA3mz98mdSoBvON6iwsK7C1
-	rmJecqV++7711QDWQBj3yENWb60t1VJ/uilWZqKL1z1KOffsTzocLWpNkGvCK3Aq
-	GbohgAGnkreQb1676C6TlpMJdPFPLo8U1V6aXj5EeC85Fq7JlCGhFSC0OKCu31Ap
-	23uphEqaFbNrjE0GHSFp1/HtENAQyQEKBzMvGMVAdW9WbizDuY5BPH8FqckT2lJm
-	8p58BQ6JUAW98y2/FlIjNtJW1IEYfmGKssk4eFg==;
+	s=fm1:rsa-sha256:mMjVn2WEGBAyYuhwCTJmdGLYdb0aLd+f4jQ9RYljLxoBSKH
+	rIYHasCeaZoxoWcQ1aDOfNEryPkkg7MEFDwfVMc9wIMArjWpj/AstAXRtuN9/ggf
+	q1UekUm0pkGVlqRh8ZQVm9rfAgDHfbyyqzsPRAAyqJPb9M3ip5oI7SFSVtCYdgTe
+	zdc3syKmKO4NHYDeHxnc51h0DzX3GH/OoVKoxBvcXSHRywioBuyU3SqVFp2zpQRY
+	ECEx01htGBWaWUVHKnjxnuntE6I/cYTAG24uqtMgNpgcPhRQYIwlicdwyn1CArh6
+	iA1x/m8lFYpvSJkrlaNSxbA9yq+iU+sb9Ql/2cw==;
 X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-08;
 	repo=github.com/dkim2wg/interop; date=2026-10-28; sw=lmtpprox;
 	action=mi-m=1; hc=11;
 	hn=cc,content-transfer-encoding,date,feedback-id,from,
 	in-reply-to,message-id,mime-version,references,subject,to;
-Message-Instance: m=1; h=sha256:11GbJ2AeV0PwLZsvOyp/vxEhYDc0sxthx+5tw1j8pVg=:ZQuFp5rsf4YNlNT28VSe2czptbzzSJotEN0es3Oo6Ys=;
-X-ME-Sender: <xms:Yvfmap14OfjTptZaEYcd1IBtQWcPHS9K7NhDWfBr7nx2XI2UPbwGDQ>
-    <xme:YvfmaiYNi0bdWhA69K-bZTbgyj7QJaY847CYmOGiMlVi-BHpo5cR-jFAfKCXgDgJ6
-    ZDSbEh4F-tjdL8c6vNdiwQE4vwTyb9xv2iMuCYodgdCcq005V9LlS7T>
-X-ME-Received: <xmr:Yvfmaoka4CbJUQV9zklWG_v5vtk0BjqyTRahoRayP5fSuTZw4FjvA9QnKSrFMwryFygWf7vr>
-X-ME-Proxy-Cause: dmFkZTFYmcEmotSNtM1fAUdxIlSGcOabWplbu44q2HzUtSxo5V/kInrI7pUnhg4GzUZfSm
-    vH8lUrDDtk6Bj8913JSzqvmqGfhb5Qy+CCYbpKNyZvf+JVxLvyAf7kk5BfkevtmJF9YYvf
-    nuCsRe/yo4NhxrQ61JNcUlaBafwz0GZweHDqO/ANkhiBG65cKeabQzD528kyvJ5EhjjTep
-    fJB+PLADZSMtuzvyNyIAyxi0nFOKW2WYNyU9zTM6zU8rVJIeIQI6zk0OIOD9QvDCL3suwU
-    W+8QiN1lnpQmgRfHmlA9ToEpye3nuMU2sjFOG4+7Z11tJ1F9VscM2qg8CTipN86u1uv3pr
-    8jdffYgo0j0R7H/QmW6hkUSUZj0kGE5szVSGykQOtAcu12IBMDg3P4L5+IFlMfHvzurvY+
-    Qj2nZyNzPxuOPZjcj/iUSSP7h67LspkMtAmedhsCpEzKD2p7gVgu6WwKA+0FPKQhGKf8f5
-    wahmGBQbZReLTSUXf7FXztzaKYxnoRAtXMERNgjc6XsybDLg5XOu/s+BeOCj2omLg/qXG3
-    aSu6Pa2c1J9vzY5zMHt7YIYifKGdmD+++gDzDoHPqDRKAjK6yciSXNbaAvEwtQ0T6sYKX/
-    GYFwXn8oMak1BfQVkuA7/351gFT0hUAs3aneohzYEteZgsCWusdGdJIcmYPg
-X-ME-Proxy: <xmx:Yvfmajx4u6LwougfzDOj3M5hbwdFygM7RfYPbOFiBWO5-DoceHEyUA>
-    <xmx:Yvfmaps2uTRkaUS6lQFPW4nQqFoBf39RfaxG72hCMezwIrd4YfahKg>
-    <xmx:Yvfmav8xn8rhx77pEnWFruXxFpzGEI4AkFMCDYiFbnR6XcW9djX0Pw>
-    <xmx:Yvfmao15PJCTQ1PpbUKJIV8Fag0EnnjyOWVVkK7KlvbqVMkrN5ClDA>
-    <xmx:Y_fmapzKUe6AcbgdWrBFSf3CRh7L4z_VirXYOgksltUCn4xJGRFi5Vsh>
+Message-Instance: m=1; h=sha256:TMI4G3FfRtfK153uLDGMotu82/dmE4aWDIt7Zf9oT5I=:dmv/SLJbJOjQbsE5cSp+knpjdeRLxcZfzZNGs5RdvS8=;
+X-ME-Sender: <xms:bPfmalYr88yq-SWwJC3prFbCvotwkWs-QxfD72YMIQmspo56Ke_bJA>
+    <xme:bPfmautbuuC4VDnNTW2rdI5YRRiyMogLJUYZjBYISOKktdGBNDXEJ00A8bjIZKh0f
+    oUzcvJEvk5i0irjRCS_q_NDVrkXSym04xtBluhTFELxRZ92uuI3QieW>
+X-ME-Received: <xmr:bPfmamqiZcFNywp2BsUMb4IjDuTv9s5ubCAuF2iI2szInPMkR0pm7Zetnzk6bEdA7aaI9RXn>
+X-ME-Proxy-Cause: dmFkZTFdrgDvVMB4r8CdkYfzi8HENt4ZniAaptnk32evqYdyDIUiN4u+qJPwmsM4JYUqec
+    v4rUc8qfApvAbNJ2Ra5MN0yu3ypyPORLkMOGtOh0XTohnIkhEZSu885LWalalXIttPYzbS
+    Uhv9ju2v9YW8dXNYmcdznMmIwtsq4G9/p/9pAJdo4PcRzp26MJH7eJVbVBQEQz64thDX9J
+    rIjgCk+/ALyTQntMJk4psITzNS/0cKtpyVdzy1WkbmXRFtUlCqvV4FYt4G2/QB1inevd/2
+    X+lu//RQBB1G2vupca1DP6ChIyyGmcAZj7jM/POQCR3PixoJogN0CISxEX6S2m7UerBIjq
+    GJAwyQEIbAyp9OKHYsN32TiZil4fqBPFsChN2M3LfcPV+jKsfFAYzoxuxy2xl5ru54j8cr
+    bglBbPy2si+ZYYWBNFUltSMoZtyB2AGKZg39hZi3hcgUD8ZL6CNPHshOjikxc3LmOlVlQ/
+    bTKWFoExw5TfPKCHPLAzXXLWROSfqLKrXMhpnDbw2tBKsyeE3G0UwmPwW3yQbdCSrFBzWd
+    LI2inVOR2elmETw0lLvG+ou2bI0X62/sh3c6nHxUcLTfa6xXmlV/CiE4WBH89v6/XH13/U
+    U34Om9Oh6e0P5ZT/lGyfkWpfEq51WsRDxhB7QjYEiwY8+yfzyZ2QCVge3bOQ
+X-ME-Proxy: <xmx:bPfmagl5FseJ76YKPYzusaeMe2qfUAL6tuPjy_5qQXl-XtTNnDEEeg>
+    <xmx:bPfmauS7LPXkhtF1Rd034SXQwvxTr4Z8vmcFBPS-a3ntrbQdXYWdzg>
+    <xmx:bPfmahSI2rL9H-COcHSOif0CzAN5L4qSq9nW_oJGCiUSpE5pT_7Zkw>
+    <xmx:bPfman7-MlLXAjZGe3gfGidScaPa-HNMukUTnm7TIaf5HdMoDd51UA>
+    <xmx:bffmamk08b_iHlxbZIGL1Vn_TIdngJmWyIK7-dCxGMb9DPNRTLw8eIX9>
 Feedback-ID: i7a5e4b5f:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 1 Nov 2026 03:24:59 -0500 (EST)
+ 1 Nov 2026 03:25:09 -0500 (EST)
 From: Jiaxing Hu <gahing@gahingwoo.com>
 To: tomeu@tomeuvizoso.net,
 	heiko@sntech.de,
@@ -131,17 +131,17 @@ Cc: royalnet026@gmail.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: [PATCH v15 10/15] pmdomain: rockchip: cycle an optional power-domain reset on power-on
-Date: Sun,  1 Nov 2026 21:23:02 +1300
-Message-ID: <20261101082307.151957-11-gahing@gahingwoo.com>
+Subject: [PATCH v15 11/15] accel/rocket: select the per-core clock and reset counts from match data
+Date: Sun,  1 Nov 2026 21:23:03 +1300
+Message-ID: <20261101082307.151957-12-gahing@gahingwoo.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261101082307.151957-1-gahing@gahingwoo.com>
 References: <20261101082307.151957-1-gahing@gahingwoo.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_012509_435654_B0A7EE2C 
-X-CRM114-Status: GOOD (  18.36  )
+X-CRM114-CacheID: sfid-20261101_012518_088297_4B266A80 
+X-CRM114-Status: GOOD (  17.85  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -162,109 +162,141 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Some Rockchip domains come out of power-on with their bus interface in an
-undefined state. On the RK3576 NPU this shows up as a hang on the first
-register access after the domain is switched on, and pulsing the domain's
-reset at this point clears it.
-
-Take the domain node's reset if it has one, and pulse it between
-releasing idle and restoring QoS. The reset is optional, so domains that
-do not list one are unaffected.
+The RK3576 has the same RKNN block with a different number of clocks and
+resets. Take the counts from soc_data in the match data; RK3588 keeps four
+and two. Check soc before anything is allocated, since a device bound by
+name has no match data.
 
 Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
-Reviewed-by: Abel Vesa <abel.vesa@oss.qualcomm.com>
 ---
- drivers/pmdomain/rockchip/pm-domains.c | 33 +++++++++++++++++++++++++-
- 1 file changed, 32 insertions(+), 1 deletion(-)
+ drivers/accel/rocket/rocket_core.c |  8 ++++----
+ drivers/accel/rocket/rocket_core.h |  7 +++++++
+ drivers/accel/rocket/rocket_drv.c  | 26 +++++++++++++++++++++++---
+ 3 files changed, 34 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index e3cc60fa2277..0f4ea5471792 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -19,6 +19,7 @@
- #include <linux/of_clk.h>
- #include <linux/clk.h>
- #include <linux/delay.h>
-+#include <linux/reset.h>
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
- #include <linux/mfd/syscon.h>
-@@ -103,6 +104,7 @@ struct rockchip_pm_domain {
- 	struct clk_bulk_data *clks;
- 	struct device_node *node;
- 	struct regulator *supply;
-+	struct reset_control *reset;
- };
+diff --git a/drivers/accel/rocket/rocket_core.c b/drivers/accel/rocket/rocket_core.c
+index 5dd260bacbff..b202d15816a3 100644
+--- a/drivers/accel/rocket/rocket_core.c
++++ b/drivers/accel/rocket/rocket_core.c
+@@ -23,7 +23,7 @@ int rocket_core_init(struct rocket_core *core)
  
- struct rockchip_pmu {
-@@ -688,6 +690,21 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
- 		if (ret < 0)
- 			goto out;
+ 	core->resets[0].id = "srst_a";
+ 	core->resets[1].id = "srst_h";
+-	err = devm_reset_control_bulk_get_exclusive(&pdev->dev, ARRAY_SIZE(core->resets),
++	err = devm_reset_control_bulk_get_exclusive(&pdev->dev, core->soc->num_resets,
+ 						    core->resets);
+ 	if (err)
+ 		return dev_err_probe(dev, err, "failed to get resets for core %d\n", core->index);
+@@ -32,7 +32,7 @@ int rocket_core_init(struct rocket_core *core)
+ 	core->clks[1].id = "hclk";
+ 	core->clks[2].id = "npu";
+ 	core->clks[3].id = "pclk";
+-	err = devm_clk_bulk_get(dev, ARRAY_SIZE(core->clks), core->clks);
++	err = devm_clk_bulk_get(dev, core->soc->num_clks, core->clks);
+ 	if (err)
+ 		return dev_err_probe(dev, err, "failed to get clocks for core %d\n", core->index);
  
-+		/*
-+		 * Optional: some domains need their reset cycled once power
-+		 * is on. This goes BEFORE the settle delay, not after: a
-+		 * domain that asks for both is asking to settle before the
-+		 * QoS registers answer, and a reset deasserted after the
-+		 * delay would leave nothing between it and the QoS writes.
-+		 * On RK3576 the reset being cycled is the NPU core's bus
-+		 * interface, which is what those writes go through.
-+		 */
-+		if (pd->reset) {
-+			reset_control_assert(pd->reset);
-+			usleep_range(10, 20);
-+			reset_control_deassert(pd->reset);
-+		}
-+
- 		/* Some domains need to settle before the QoS registers answer. */
- 		if (pd->info->delay_us)
- 			udelay(pd->info->delay_us);
-@@ -873,6 +890,14 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
- 	if (error)
- 		goto err_put_clocks;
+@@ -109,9 +109,9 @@ void rocket_core_fini(struct rocket_core *core)
  
-+	pd->reset = of_reset_control_get_optional_exclusive(node, NULL);
-+	if (IS_ERR(pd->reset)) {
-+		error = dev_err_probe(pmu->dev, PTR_ERR(pd->reset),
-+				      "%pOFn: failed to get reset\n", node);
-+		pd->reset = NULL;
-+		goto err_unprepare_clocks;
-+	}
-+
- 	pd->num_qos = of_count_phandle_with_args(node, "pm_qos",
- 						 NULL);
- 
-@@ -943,11 +968,13 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
- 	clk_bulk_unprepare(pd->num_clks, pd->clks);
- err_put_clocks:
- 	clk_bulk_put(pd->num_clks, pd->clks);
-+	reset_control_put(pd->reset);
- 	return error;
- }
- 
- static void rockchip_pm_remove_one_domain(struct rockchip_pm_domain *pd)
+ void rocket_core_reset(struct rocket_core *core)
  {
-+	struct reset_control *reset;
+-	reset_control_bulk_assert(ARRAY_SIZE(core->resets), core->resets);
++	reset_control_bulk_assert(core->soc->num_resets, core->resets);
+ 
+ 	udelay(10);
+ 
+-	reset_control_bulk_deassert(ARRAY_SIZE(core->resets), core->resets);
++	reset_control_bulk_deassert(core->soc->num_resets, core->resets);
+ }
+diff --git a/drivers/accel/rocket/rocket_core.h b/drivers/accel/rocket/rocket_core.h
+index f6d7382854ca..ba74c5339b94 100644
+--- a/drivers/accel/rocket/rocket_core.h
++++ b/drivers/accel/rocket/rocket_core.h
+@@ -27,9 +27,16 @@
+ #define rocket_core_writel(core, reg, value) \
+ 	writel(value, (core)->core_iomem + (REG_CORE_##reg) - REG_CORE_S_STATUS)
+ 
++/* Per-SoC differences, selected by the of_device_id match data. */
++struct rocket_soc_data {
++	unsigned int num_clks;		/* clk_bulk count */
++	unsigned int num_resets;	/* reset_bulk count */
++};
++
+ struct rocket_core {
+ 	struct device *dev;
+ 	struct rocket_device *rdev;
++	const struct rocket_soc_data *soc;
+ 	unsigned int index;
+ 
+ 	int irq;
+diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+index 5d7805c41dc3..284af027f398 100644
+--- a/drivers/accel/rocket/rocket_drv.c
++++ b/drivers/accel/rocket/rocket_drv.c
+@@ -159,8 +159,22 @@ static const struct drm_driver rocket_drm_driver = {
+ 
+ static int rocket_probe(struct platform_device *pdev)
+ {
++	const struct rocket_soc_data *soc = of_device_get_match_data(&pdev->dev);
  	int ret;
  
- 	/*
-@@ -962,11 +989,15 @@ static void rockchip_pm_remove_one_domain(struct rockchip_pm_domain *pd)
- 	clk_bulk_unprepare(pd->num_clks, pd->clks);
- 	clk_bulk_put(pd->num_clks, pd->clks);
- 
--	/* protect the zeroing of pm->num_clks */
-+	/* protect the zeroing of pd->num_clks and pd->reset */
- 	mutex_lock(&pd->pmu->mutex);
- 	pd->num_clks = 0;
-+	reset = pd->reset;
-+	pd->reset = NULL;
- 	mutex_unlock(&pd->pmu->mutex);
- 
-+	reset_control_put(reset);
++	/*
++	 * soc is dereferenced without a check by every one of its users, and
++	 * rocket_core_init() below is the first of them. A device that bound
++	 * by name rather than by compatible has no match data, so fail before
++	 * anything is allocated rather than at the first dereference: the
++	 * number of cores comes from a walk of matching DT nodes, and a device
++	 * with no of_node was never counted by it.
++	 */
++	if (!soc) {
++		dev_err(&pdev->dev, "no match data for this device\n");
++		return -ENODEV;
++	}
 +
- 	/* devm will free our memory */
+ 	if (rdev == NULL) {
+ 		/* First core probing, initialize DRM device. */
+ 		rdev = rocket_device_init(drm_dev, &rocket_drm_driver);
+@@ -179,6 +193,7 @@ static int rocket_probe(struct platform_device *pdev)
+ 
+ 	rdev->cores[core].rdev = rdev;
+ 	rdev->cores[core].dev = &pdev->dev;
++	rdev->cores[core].soc = soc;
+ 	rdev->cores[core].index = core;
+ 
+ 	rdev->num_cores++;
+@@ -216,8 +231,13 @@ static void rocket_remove(struct platform_device *pdev)
+ 	}
  }
  
++static const struct rocket_soc_data rk3588_soc_data = {
++	.num_clks = 4,
++	.num_resets = 2,
++};
++
+ static const struct of_device_id dt_match[] = {
+-	{ .compatible = "rockchip,rk3588-rknn-core" },
++	{ .compatible = "rockchip,rk3588-rknn-core", .data = &rk3588_soc_data },
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(of, dt_match);
+@@ -243,7 +263,7 @@ static int rocket_device_runtime_resume(struct device *dev)
+ 	if (core < 0)
+ 		return -ENODEV;
+ 
+-	err = clk_bulk_prepare_enable(ARRAY_SIZE(rdev->cores[core].clks), rdev->cores[core].clks);
++	err = clk_bulk_prepare_enable(rdev->cores[core].soc->num_clks, rdev->cores[core].clks);
+ 	if (err) {
+ 		dev_err(dev, "failed to enable (%d) clocks for core %d\n", err, core);
+ 		return err;
+@@ -263,7 +283,7 @@ static int rocket_device_runtime_suspend(struct device *dev)
+ 	if (!rocket_job_is_idle(&rdev->cores[core]))
+ 		return -EBUSY;
+ 
+-	clk_bulk_disable_unprepare(ARRAY_SIZE(rdev->cores[core].clks), rdev->cores[core].clks);
++	clk_bulk_disable_unprepare(rdev->cores[core].soc->num_clks, rdev->cores[core].clks);
+ 
+ 	return 0;
+ }
 -- 
 2.43.0
 
