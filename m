@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CCFE1606A326
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D4438606A327
 	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 21:55:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IEaVjBqe;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Y0iaEfEP
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aCM3h9KE;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=n8mx7koT
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=N3pDWU23O0ucbX/lIRgby2QZ5Do0AXZW55c8M6LZLmw=; b=IEaVjBqevc57VvctQCZReL9Eu6
-	RPS2kjy0fVh0iKBqmr0klA6cEPWL+FNDEo5dw+xvqR/RWO0AMROJAsOqV7qmVDcFfEpt6EA8Kox3w
-	pVZVq+PnKcRCkTg+9wIkZNMmfHoccFv7muXgDS9xDPnecLqx1wBBXBF9kqLnPI/5dinJI4DYxqjC5
-	ed6KNvsTovEghBnxZoQtjaSZibpUeLbh90mQykWReuCqnuDlb4svq4L8aJlz8v1WN1F6rGpVJOdr8
-	410jnkXSivcZLwlLCuYVRcLU2uMxBSGvBG3MTZ58tla9zMCx90xHMFBAxjl0GPPhxPoDpaqHdZaKK
-	6JOgI0Vg==;
+	bh=buNSmFHapRwfImiChM06eSkXwFVBQpcRAYrnAbLuWrE=; b=aCM3h9KExc7WuSXQm+j6KeHuH6
+	ULOIG14Nl+2Y9muiGmnDB+D2k2uCE3/1LbXQgozbE/GfHMT4h9/OkpAo+s/1tKD3pg6bmGgUuH2dW
+	efq2FeDJwp/iMqZVc7q403D6dzu9iyKex7eoWEXUo6KtgQSwn0p5oWPj9IPtJd3PfH7G18b8YDeqk
+	FFCyWMOuTEVuoiWWatr8GG4FKdL1VY9mMkTtqC+iAWrpNAYRLA9x2l1BEwuQ1oMBZFRgfOt6kPE4r
+	Q0QvTLC0gOMoLA+xznshwRXZhr10hx8bSXasXa+vZCWe6jQFxZEGtQsIsZttoJHzs2VKfl2tmF2+K
+	tIikikuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdWl-0000000EwAu-3MnB;
-	Sun, 01 Nov 2026 21:55:47 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdWg-0000000Evxl-2xZf;
+	id 1xNdWg-0000000EvxU-0ZqV;
 	Sun, 01 Nov 2026 21:55:42 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xNdWd-0000000Evvl-3Gmf;
+	Sun, 01 Nov 2026 21:55:39 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id AC6A443EA5;
-	Sun,  1 Nov 2026 21:55:40 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F087643FAA;
+	Sun,  1 Nov 2026 21:55:38 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1793570140;
-	b=dkgpCnTNyYuExxSxRQoO/iCOhRplMg46HvHUAqcpy1ueOuL94tVzeHFs2zXzCCG7Jsdh
-	 nHtTXEOuZbx13J2WaIzR4tjQMPIxZDnRhkScZy7ty8Lj0jQCg8QY74QPzR4ptLwJhSEBT
-	 99jJmOhQtiFgOjmVcVYdPnDm3xVRaSD+uFgkW3q6ezHx1iw0ppusVpSwHOpCQTTXLEcxI
-	 9UhGQo9COUek0J6YITq32kbSk5aGvNciOhKXhMn73IMjREvrF02EzMQpRYjAlCZ+6EoCI
-	 0iHMPYMDkdCU3rXyN0MUO9cIsi6XvYI/BP/hXoZ43ZMOwCCqq4yioEPfqQdOD9I23Jg==
+	t=1793570138;
+	b=P2xgdP7KitemlgWi4aQNMC730t8sgncTFBM0Z7vkuzhpR6NZjqU+5gdFGYaKLJB5sU4q
+	 lxG/ml7LP13FhIiWnCJyfQ+pFY60JN+xX6LQSGpvC3lCezBAzoR+Dan2XyPrjYLGyYVsl
+	 gCO2O3RUrJP1r7oqDHPF4jNayhELY3R1oaJAcbXK2rBUbI5ZvFJPuuAyCpsjIH5YtCxoL
+	 LUCv398LhZ0GteM4CbhVKfNUqhE5MrxsEyBlciwE2EzV7qAI2oYEsKQBjq/rlGuMCVp/B
+	 uSlB+mo47JIPLQtzKR/I3MMyxDVPPD8BLbKWmY4g0yPTYirzWXjCTvtLB44KoXcn3Ow==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1793570140;
+	c=relaxed/relaxed; t=1793570138;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=klsjSa3hT6s1eeHLn0xI4cZIJw2AGOWBnz+Rddcs6eo=;
-	b=ZYQcfKM4bMq1fYxBNrqLZT/p6C/Eeo3zwpxb/Uv6G4E/5zoR/BFNlFhu3kpD1GtbWtLd
-	 Q/RY4PmLjCpWq1f4VOe3zp79tIMwjZtj+xBVwk6Qgekejl6xl81GNtoXxvCthNCL5Lyc/
-	 R43cRnTvdb/yv91MBwmMR3W/ydMA9IslPyBriNNJxXeEqNB0K0SSMP8YhOD7GQiYAe37m
-	 34Oc7F51siZ7iws53ew+0kdzcoh2JyLVTNc8xZM02KdyoNqUxFXU5Iab9s/I2WZ2YlxHF
-	 ZuuDpoyfqiVCYkpNEIsKUTSGUP8raY6zIFRLbylJNqbGytstL5LizP1m2YfsIsef9DQ==
+	bh=KUhoy3RuqCBaQi5mrKmv2Xw4b/lvAotKYt6J3VE5Vhw=;
+	b=UKDblCne2Tk6DTOWfTpuxw/MLlORJNeDTL3IDIOfCtCCRpEoBAO0RfvMV6/jUtoLziPk
+	 yalhdC/JthMfgDjnXE5DqBB8ybHuTGx0yBPyx7Z3LYxr0X7Wk1KOCxXbIHnCpnWV1zGKf
+	 Afqm3b3W/TET5CFPlcbltmZSZ1xypOAAUMH9Rt/HKNlX1m5aZ0ZoSerkwst9TawRAPhcd
+	 3k5C9xE4d5xpowVb760AIcDCsy4NuOKCwbnemGF3x6NcnXuwnHuDGok9ZcAdrb6Z+Xdie
+	 tNR+orJjNTpO/L1lssC03MnFFRufWBmbc7OnqAdAT7yXpUqJs6tgSbLsFE00U3k2UEg==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 418071F00A20;
-	Sun,  1 Nov 2026 21:55:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793570140;
-	bh=klsjSa3hT6s1eeHLn0xI4cZIJw2AGOWBnz+Rddcs6eo=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=Y0iaEfEP/uNseSmQxjpGWekAdqg5TWBXdJre0InJLWilkadHerlhJtlKt0AJ8q8+M
-	 i+vkwLoy9N3QiaTzgv6tBq8XzOpAtLnME5+09d48ZhTbBMkKb74kv/7oMPUPbS7075
-	 FoAReozy/DY0pYRdmTlFX2CR8+B0ImAlK7K8YqLlpcwuSPJy8FcR8t5dFCMWyiwSlf
-	 aJgD8/i+qNj4jBTzo68jgOTjqDOJ9i+SZRXZem4VkCni7lv9vl7cdbDeeBw/z5vSqU
-	 wclkgYXF2TUZUsAtDz9/NCSv7Q7+saubYNdOOygFfrpTNx2BdBHK0ySk3JxjkLPBvo
-	 NQW1FCZrTtuSQ==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 4A28E462AC;
+	by smtp.kernel.org (Postfix) with ESMTPS id 7ED181F00919;
 	Sun,  1 Nov 2026 21:55:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793570138;
+	bh=KUhoy3RuqCBaQi5mrKmv2Xw4b/lvAotKYt6J3VE5Vhw=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=n8mx7koTHuVUDWORMaiOz3tIGt01gMny7ZoQwOSJS/TijNeDQ7ZsZQ5xpJBqcunow
+	 uY3kYmYPq2bdFiPnI63Ru6QpyyfV1VNPObI95ZF1+H6j+Od2lnZp0OU8bdYhRuMQP7
+	 /y/oiGtcm48aD8eT6bTNtNwoqWKGfzzAmBBRoAX6cVLNO+QD6wOK42oszZnSOVpue0
+	 m1nL3hovlHZAavgMtLcUy0aHx7h0gWrSMJGXUp3/I0+ofiSP2ZrlB8Qcl/xy7Zd7GN
+	 oBAcOfcv+Yvweoqray37IEIbkTf7lQonNjrX+L0xW6cYpAN19irvgIEJB9tw4BYXd7
+	 Vl/Y4XQXzh8eA==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id E28E046260;
+	Sun,  1 Nov 2026 21:55:36 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Sun, 01 Nov 2026 22:55:26 +0100
-Subject: [PATCH v2 8/9] arm64: dts: rockchip: rk3588s-nanopi-m6: rename
- pcie2 power pin
+Date: Sun, 01 Nov 2026 22:55:19 +0100
+Subject: [PATCH v2 1/9] arm64: dts: rockchip: rk3588s-nanopi: fix sd
+ min/max voltage
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261101-nanopi-m6-improvements-v2-8-a24769efda23@gmail.com>
+Message-Id: <20261101-nanopi-m6-improvements-v2-1-a24769efda23@gmail.com>
 References: <20261101-nanopi-m6-improvements-v2-0-a24769efda23@gmail.com>
 In-Reply-To: <20261101-nanopi-m6-improvements-v2-0-a24769efda23@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -88,11 +88,11 @@ Cc: Shawn Lin <Shawn.lin@rock-chips.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  Joachim Eastwood <joachim.eastwood@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793570136; l=1202;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793570136; l=1052;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=dFYNtM0NWa3tMPUuffDQ8B0o2G7+xC1fDr3vwPQxapw=;
- b=E25IOOPAfliZNBP+twp79Omgb8O1zXtjfZY/f7bFxC0j2cnfE45XS6q06E+lCpeRLAxe7sR0/
- 54vvDf21ldLDid/tjmcxF4yeXkhoirF84gm8zgutqdgbiRtvFMkVgvU
+ bh=httrn91OQ2U6CqTOahyrbkVOu5oMQXSvYoVE4WvhaW0=;
+ b=eY2gTPAhWjUmWCOb7jjfwjV+hp2i6v14P6f55coA02s3gfdh0sY9Tr7Kvbc0bxitA6gL5h5pv
+ TYtYCLvNb9XBj+RwjJy3+WzDttbRjS9hNooTKe211Zr0vr+rh+fa3/D
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -120,37 +120,31 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-pcie20x1_2_con_pwren matches the signal name in the schematics, which
-simplifies cross-referencing.
+This regulator is only a simple power switch and cannot change the
+output voltage.
 
+Fixes: c08257d642ac ("arm64: dts: rockchip: refactor rk3588s-nanopi-r6 to support M6 boards")
 Reviewed-by: Shawn Lin <Shawn.lin@rock-chips.com>
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi | 4 ++--
+ arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
-index 6205a542cd1ab..ca115d8e108a7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6.dtsi
-@@ -41,7 +41,7 @@ vcc_3v3_pcie: regulator-vcc-3v3-pcie {
- 		enable-active-high;
- 		gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
--		pinctrl-0 = <&pcie2_2_pwren>;
-+		pinctrl-0 = <&pcie20x1_2_con_pwren>;
- 		regulator-name = "vcc_3v3_pcie";
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
-@@ -116,7 +116,7 @@ hp_det: hp-det {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
+index 22b0cdee22b40..8c36268e98768 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi.dtsi
+@@ -79,8 +79,8 @@ vcc_3v3_sd_s0: regulator-vcc-3v3-sd-s0 {
+ 		pinctrl-0 = <&sd_s0_pwr>;
+ 		regulator-name = "vcc_3v3_sd_s0";
+ 		regulator-boot-on;
+-		regulator-max-microvolt = <3000000>;
+-		regulator-min-microvolt = <3000000>;
++		regulator-max-microvolt = <3300000>;
++		regulator-min-microvolt = <3300000>;
+ 		vin-supply = <&vcc_3v3_s3>;
  	};
  
- 	pcie {
--		pcie2_2_pwren: pcie2-2-pwren {
-+		pcie20x1_2_con_pwren: pcie20x1-2-con-pwren {
- 			rockchip,pins = <3 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
 
 -- 
 2.56.0
