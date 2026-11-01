@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA816606A330
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 04:02:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B76260A2600
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 04:42:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eGlTwWk+;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=NHPw5Z7R
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mB3is3JU;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=bqF6uGMh
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,23 +14,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=JIfus2I5YeiJUAjYyOXqVRnFnLVAvlRDaFi3j+KJwNo=; b=eGlTwWk+oEUF47giQCGi8+h4Jz
-	G5xlYW4xN+z+XihgRlNIF40CSGKm8a8UVomc72ESWpfd9KnQYciTPD2bpNHYOrWyRLDN/rqhdVdvV
-	I0ZMV97EuIELEmYtLirQqN1OLODeQ4q5hCrmqDDhtmeNQCARSVf0+3cYPQLFnbI0rqXvbM88CQwzx
-	f1gwk0Pefek7AniGsGkA7QXYxb6EF1lMRFSPFJn3kS4KSuanYGPt4ukOnjrHVPRvpmrD6iPqVgNEK
-	XOPVICL+haaOaou6M41eiot507PqnpEJRbk8Iajh9kEDaCdxU0BLvpu6W8C/F67tWpgNhCDoO+S+K
-	3mxzliEw==;
+	bh=ChrvJpGEuyE50DGxRpNZLhw3Sw0wZcsU20N5AAw/6J8=; b=mB3is3JUDSB7kGkqnLbjiXwwNw
+	YiA/ly/Ia4yql5ABz9VSvvuNqHUkBbPieTnG74DpCiG58LrbxrhUiohYwuQrPICh3YDjvTkbob8Ty
+	QVBN294BuUEYX8WqMx1uNe2OJ6HH0DIfqV+Xpuz+LVEgJ6iTGlrf8DjgtXahu/l613l0zsC939+GS
+	cv1CM5s92IsTonP49/1MElEyzCIAn8j3OpB9v4bTIFgGpVzeF0Ro07bUr9wVCYxHAhkCDMhdebXyV
+	QrXL8Kl9NMuMlJkX3J/h8APdSw8AQINLcDMRQiSf5fSGz4r6UH98TM+ipEjYde8xjC80At/DROimB
+	pkA+TQmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNMlh-0000000Dr4B-1UW6;
-	Sun, 01 Nov 2026 04:02:05 +0000
-Received: from mail-m160236537.xmail.ntesmail.com ([160.236.53.7])
+	id 1xNNOL-0000000DsrQ-1Xbr;
+	Sun, 01 Nov 2026 04:42:01 +0000
+Received: from mail-m1072.netease.com ([154.81.10.72])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNMld-0000000Dr1i-0aqQ;
-	Sun, 01 Nov 2026 04:02:03 +0000
+	id 1xNNOI-0000000DsqI-1l9r;
+	Sun, 01 Nov 2026 04:42:00 +0000
 Received: from 5950x.tail741d0a.ts.net (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 530d84150;
-	Sun, 1 Nov 2026 12:01:54 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 530dcc2c7;
+	Sun, 1 Nov 2026 12:41:54 +0800 (GMT+08:00)
 From: Xing Zheng <zhengxing@rock-chips.com>
 To: broonie@kernel.org,
 	heiko@sntech.de,
@@ -50,27 +50,28 @@ Cc: luca.ceresoli@bootlin.com,
 	sugar.zhang@rock-chips.com,
 	lxt@rock-chips.com,
 	xing.zheng@rock-chips.com
-Subject: [PATCH v1 5/6] ASoC: codecs: rk3308: report B/C headphone detection through set_jack
-Date: Sun,  1 Nov 2026 12:01:24 +0800
-Message-Id: <20261101040125.1864141-6-zhengxing@rock-chips.com>
+Subject: [PATCH v2 0/3] RK3308 codec audio sequencing and headphone support
+Date: Sun,  1 Nov 2026 12:41:46 +0800
+Message-Id: <20261101044149.2018744-1-zhengxing@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261101040125.1864141-1-zhengxing@rock-chips.com>
 References: <20261101040125.1864141-1-zhengxing@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa19545619803a8kunm8fccdc7416d2ba
+X-HM-Tid: 0aa19569ff8e03a8kunmda3ed7c8171604
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaHUNOVkhPSxkYGE5JSU8ZHVYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZTUtDVkNDQkxLThhPSUNISlYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=NHPw5Z7RebPCXUdJ2xKrdmkCBCtC1yEbsswERmuCkSAxQOHmfAS8TWKWHPzvWmT8/Tf5TjAYN2g9GOL/oAZNnkJcqsVZwBRiQ7SNZme+XnzQhqLN4XJD1S6G6ZgrIh2zxYTlNLfXmAX2A3U/5un/8GbQIvZ6/inJW5dTUqZs0ds=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=pPr5igdojHE5lpGhIA9Fw0wQHZy5xnlBY2dDWxpdXko=;
+	b=bqF6uGMhSTBFAbWN5IR16gHZGfMogg7UR6TuV1g89zqcdicAFAH+wfNaI5+fSBa/5I6PVqFNUeREaMS7a0CtofeWp89stdIH/7RrAEUTpnrWPcYqLXkew6gQI0h3JmQfQklt6MADUXOYmu5zGZi/hz6GRHKkuCFzmq/20E1bN5E=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=KoWImiShPPX64endYV2oF0Pegts01lrpoAaRhh6SIUI=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261031_210201_497053_CA68F614 
-X-CRM114-Status: GOOD (  20.50  )
+X-CRM114-CacheID: sfid-20261031_214159_029145_B0A78103 
+X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,305 +85,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Use the detection GRF interrupt to report headphone insertion and
-removal on codec revisions B and C. Keep detection optional for existing
-device trees and retain index-based IRQ lookup for trees without
-interrupt names.
+Restore the full RK3308 codec analog power sequencing and headphone
+support from the downstream 6.12 implementation, adapted to the current
+ASoC interfaces. Keep the complete codec source and register definitions
+in one patch, alongside the binding and SoC detection-resource changes.
 
-Enable the detector only while a machine driver has registered a jack.
-Cancel its work and disable its IRQ before releasing the jack. Keep the
-revision-C DAC clock running while monitoring, and restore normal DAPM
-clock ownership when monitoring stops.
+The codec change includes revision-specific ADC/DAC supply sequencing,
+reference-current and headphone gain ramps, A/B CIC fades, active ADC
+resynchronization, MICBIAS restoration, microphone boost controls, ADC
+stereo-group routing and B/C headphone detection. Machine drivers retain
+ownership of the external amplifier GPIOs.
 
-Report jack status without changing codec routes from the worker: jack
-pin associations and output policy belong to the machine driver.
+The SDK-only multicodecs shutdown fix and EVB/VAD routing patch are
+outside this series because their target drivers and board files are
+not present in the upstream tree.
 
-Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
----
- sound/soc/codecs/rk3308_codec.c | 225 ++++++++++++++++++++++++++++++++
- 1 file changed, 225 insertions(+)
+Patches 1-2 are for the ASoC tree; patch 3 is for the Rockchip DT tree.
+The detection resources remain optional for existing device trees.
 
-diff --git a/sound/soc/codecs/rk3308_codec.c b/sound/soc/codecs/rk3308_codec.c
-index 319b2391dd9b..4e3e38a8571f 100644
---- a/sound/soc/codecs/rk3308_codec.c
-+++ b/sound/soc/codecs/rk3308_codec.c
-@@ -10,15 +10,19 @@
- #include <linux/device.h>
- #include <linux/delay.h>
- #include <linux/init.h>
-+#include <linux/interrupt.h>
- #include <linux/io.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
-+#include <linux/mutex.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
- #include <linux/util_macros.h>
-+#include <linux/workqueue.h>
- #include <sound/core.h>
-+#include <sound/jack.h>
- #include <sound/pcm.h>
- #include <sound/pcm_params.h>
- #include <sound/soc.h>
-@@ -31,6 +35,14 @@
- #define GRF_SOC_CON1			0x304
- #define GRF_CHIP_ID			0x800
- 
-+#define RK3308_HPDET_COUNTER		0x0030
-+#define RK3308_HPDET_CON			0x0034
-+#define RK3308_HPDET_STATUS		0x0038
-+#define RK3308_HPDET_STATUS_CLR		0x003c
-+#define RK3308_HPDET_EDGES		(BIT(0) | BIT(1))
-+/* 200 ms at the detection block's 100 MHz clock. */
-+#define RK3308_HPDET_FILTER_CYCLES	20000000
-+
- enum {
- 	ACODEC_VERSION_A = 'A',
- 	ACODEC_VERSION_B,
-@@ -49,6 +61,17 @@ struct rk3308_codec_priv {
- 	unsigned char codec_ver;
- 	u32 micbias_level;
- 	u32 adc_grps[ADC_LR_GROUP_MAX];
-+	struct regmap *detect_grf;
-+	/* Serialize detector configuration and jack lifetime changes. */
-+	struct mutex hpdet_lock;
-+	struct snd_soc_jack *hpdet_jack;
-+	struct delayed_work hpdet_work;
-+	unsigned int hpdet_status;
-+	int hpdet_irq;
-+	bool hpdet_enabled;
-+	bool hpdet_seen_irq;
-+	bool hpdet_clock_forced;
-+	bool hp_jack_reversed;
- };
- 
- static struct clk_bulk_data rk3308_codec_clocks[] = {
-@@ -1015,7 +1038,205 @@ static int rk3308_codec_set_bias_level(struct snd_soc_component *component,
- 	return 0;
- }
- 
-+static bool rk3308_codec_hpdet_inserted(struct rk3308_codec_priv *rk3308,
-+					unsigned int status)
-+{
-+	status &= RK3308_HPDET_EDGES;
-+	if (rk3308->hp_jack_reversed)
-+		return status == 0 || status == BIT(1);
-+
-+	return status == BIT(0);
-+}
-+
-+static void rk3308_codec_hpdet_work(struct work_struct *work)
-+{
-+	struct rk3308_codec_priv *rk3308 =
-+		container_of(to_delayed_work(work), struct rk3308_codec_priv, hpdet_work);
-+	unsigned int status;
-+	int ret;
-+
-+	if (!rk3308->component->card->instantiated) {
-+		mod_delayed_work(system_power_efficient_wq, &rk3308->hpdet_work,
-+				 msecs_to_jiffies(100));
-+		return;
-+	}
-+
-+	if (READ_ONCE(rk3308->hpdet_seen_irq)) {
-+		status = READ_ONCE(rk3308->hpdet_status);
-+	} else {
-+		ret = regmap_read(rk3308->detect_grf, RK3308_HPDET_STATUS, &status);
-+		if (ret)
-+			return;
-+	}
-+
-+	/* The machine driver owns the jack pins and output-routing policy. */
-+	snd_soc_jack_report(rk3308->hpdet_jack,
-+			    rk3308_codec_hpdet_inserted(rk3308, status) ?
-+			    SND_JACK_HEADPHONE : 0, SND_JACK_HEADPHONE);
-+}
-+
-+static irqreturn_t rk3308_codec_hpdet_irq(int irq, void *data)
-+{
-+	struct rk3308_codec_priv *rk3308 = data;
-+	unsigned int status;
-+	int ret;
-+
-+	ret = regmap_read(rk3308->detect_grf, RK3308_HPDET_STATUS, &status);
-+	if (ret || !(status & RK3308_HPDET_EDGES))
-+		return IRQ_NONE;
-+
-+	ret = regmap_write(rk3308->detect_grf, RK3308_HPDET_STATUS_CLR,
-+			   status & RK3308_HPDET_EDGES);
-+	if (ret)
-+		return IRQ_HANDLED;
-+
-+	WRITE_ONCE(rk3308->hpdet_status, status);
-+	WRITE_ONCE(rk3308->hpdet_seen_irq, true);
-+	mod_delayed_work(system_power_efficient_wq, &rk3308->hpdet_work,
-+			 msecs_to_jiffies(10));
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static int rk3308_codec_hpdet_clock(struct rk3308_codec_priv *rk3308, bool on)
-+{
-+	struct snd_soc_dapm_context *dapm = snd_soc_component_to_dapm(rk3308->component);
-+	int ret;
-+
-+	if (rk3308->codec_ver != ACODEC_VERSION_C || on == rk3308->hpdet_clock_forced)
-+		return 0;
-+
-+	/* Revision C needs the DAC clock while the detector is monitoring. */
-+	snd_soc_dapm_mutex_lock(dapm);
-+	if (on) {
-+		ret = snd_soc_dapm_force_enable_pin_unlocked(dapm, "DAC_MCLK_GATE");
-+	} else {
-+		ret = snd_soc_dapm_disable_pin_unlocked(dapm, "DAC_MCLK_GATE");
-+		if (!ret)
-+			ret = snd_soc_dapm_enable_pin_unlocked(dapm, "DAC_MCLK_GATE");
-+	}
-+	if (!ret) {
-+		rk3308->hpdet_clock_forced = on;
-+		ret = snd_soc_dapm_sync_unlocked(dapm);
-+	}
-+	snd_soc_dapm_mutex_unlock(dapm);
-+
-+	return ret;
-+}
-+
-+static int rk3308_codec_set_jack(struct snd_soc_component *component,
-+				 struct snd_soc_jack *jack, void *data)
-+{
-+	struct rk3308_codec_priv *rk3308 = snd_soc_component_get_drvdata(component);
-+	int ret;
-+
-+	if (!rk3308->detect_grf)
-+		return jack ? -EOPNOTSUPP : 0;
-+
-+	mutex_lock(&rk3308->hpdet_lock);
-+	if (rk3308->hpdet_enabled) {
-+		disable_irq(rk3308->hpdet_irq);
-+		rk3308->hpdet_enabled = false;
-+	}
-+	cancel_delayed_work_sync(&rk3308->hpdet_work);
-+	rk3308->hpdet_jack = NULL;
-+
-+	ret = regmap_write(rk3308->detect_grf, RK3308_HPDET_CON,
-+			   RK3308_HPDET_EDGES << 16);
-+	if (ret)
-+		goto disable;
-+	ret = regmap_clear_bits(rk3308->regmap, RK3308_DAC_ANA_CON00,
-+				RK3308_DAC_HEADPHONE_DET_EN);
-+	if (ret || !jack)
-+		goto disable;
-+
-+	ret = rk3308_codec_hpdet_clock(rk3308, true);
-+	if (ret)
-+		goto disable;
-+	ret = regmap_write(rk3308->detect_grf, RK3308_HPDET_COUNTER,
-+			   RK3308_HPDET_FILTER_CYCLES);
-+	if (ret)
-+		goto disable;
-+	ret = regmap_write(rk3308->detect_grf, RK3308_HPDET_STATUS_CLR,
-+			   RK3308_HPDET_EDGES);
-+	if (ret)
-+		goto disable;
-+	ret = regmap_set_bits(rk3308->regmap, RK3308_DAC_ANA_CON00,
-+			      RK3308_DAC_HEADPHONE_DET_EN);
-+	if (ret)
-+		goto disable;
-+	ret = regmap_write(rk3308->detect_grf, RK3308_HPDET_CON,
-+			   (RK3308_HPDET_EDGES << 16) | RK3308_HPDET_EDGES);
-+	if (ret)
-+		goto disable;
-+
-+	rk3308->hpdet_jack = jack;
-+	WRITE_ONCE(rk3308->hpdet_seen_irq, false);
-+	rk3308->hpdet_enabled = true;
-+	/* Wait for the 200 ms hardware filter before the initial report. */
-+	mod_delayed_work(system_power_efficient_wq, &rk3308->hpdet_work,
-+			 msecs_to_jiffies(210));
-+	enable_irq(rk3308->hpdet_irq);
-+	mutex_unlock(&rk3308->hpdet_lock);
-+
-+	return 0;
-+
-+disable:
-+	regmap_write(rk3308->detect_grf, RK3308_HPDET_CON, RK3308_HPDET_EDGES << 16);
-+	regmap_clear_bits(rk3308->regmap, RK3308_DAC_ANA_CON00,
-+			  RK3308_DAC_HEADPHONE_DET_EN);
-+	if (ret)
-+		rk3308_codec_hpdet_clock(rk3308, false);
-+	else
-+		ret = rk3308_codec_hpdet_clock(rk3308, false);
-+	mutex_unlock(&rk3308->hpdet_lock);
-+
-+	return ret;
-+}
-+
-+static void rk3308_codec_remove(struct snd_soc_component *component)
-+{
-+	rk3308_codec_set_jack(component, NULL, NULL);
-+}
-+
-+static int rk3308_codec_hpdet_init(struct platform_device *pdev,
-+				   struct rk3308_codec_priv *rk3308)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device_node *np = dev->of_node;
-+	int ret;
-+
-+	if (rk3308->codec_ver == ACODEC_VERSION_A ||
-+	    of_property_read_bool(np, "rockchip,no-hp-det") ||
-+	    !of_find_property(np, "rockchip,detect-grf", NULL))
-+		return 0;
-+
-+	rk3308->detect_grf = syscon_regmap_lookup_by_phandle(np, "rockchip,detect-grf");
-+	if (IS_ERR(rk3308->detect_grf))
-+		return dev_err_probe(dev, PTR_ERR(rk3308->detect_grf),
-+				     "Failed to get detection GRF\n");
-+
-+	if (of_find_property(np, "interrupt-names", NULL))
-+		rk3308->hpdet_irq = platform_get_irq_byname(pdev, "hpdet");
-+	else
-+		rk3308->hpdet_irq = platform_get_irq(pdev, 1);
-+	if (rk3308->hpdet_irq < 0)
-+		return rk3308->hpdet_irq;
-+
-+	mutex_init(&rk3308->hpdet_lock);
-+	INIT_DELAYED_WORK(&rk3308->hpdet_work, rk3308_codec_hpdet_work);
-+	rk3308->hp_jack_reversed = of_property_read_bool(np, "rockchip,hp-jack-reversed");
-+	ret = devm_request_threaded_irq(dev, rk3308->hpdet_irq, NULL, rk3308_codec_hpdet_irq,
-+					IRQF_ONESHOT | IRQF_NO_AUTOEN, "rk3308-hpdet", rk3308);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "Failed to request headphone IRQ\n");
-+
-+	return 0;
-+}
-+
- static const struct snd_soc_component_driver rk3308_codec_component_driver = {
-+	.remove = rk3308_codec_remove,
-+	.set_jack = rk3308_codec_set_jack,
- 	.probe = rk3308_codec_probe,
- 	.set_bias_level = rk3308_codec_set_bias_level,
- 	.controls = rk3308_codec_controls,
-@@ -1175,6 +1396,10 @@ static int rk3308_codec_platform_probe(struct platform_device *pdev)
- 	if (err)
- 		return err;
- 
-+	err = rk3308_codec_hpdet_init(pdev, rk3308);
-+	if (err)
-+		return err;
-+
- 	err = devm_snd_soc_register_component(dev, &rk3308_codec_component_driver,
- 					      &rk3308_codec_dai_driver, 1);
- 	if (err)
+Changes since v1:
+- Restore the full analog sequencing omitted from the initial posting.
+- Consolidate all codec C/header changes into a single patch.
+- Use the original binding descriptions and legacy IRQ lookup rules.
+- Preserve upstream automatic DAI format selection and adapt accessors.
+- Use sleepable waits while preserving downstream minimum delay requests.
+- Keep the SDK-only machine-driver and EVB/VAD work deferred.
+
+Previous posting:
+https://lore.kernel.org/r/20261101040125.1864141-1-zhengxing@rock-chips.com
+
+Validation:
+- ARM64 defconfig plus built-in RK3308 codec, Image and all six RK3308
+  DTBs build on broonie/for-next and the Linus baseline with GCC 14.3.1.
+- Codec W=1 builds, binding/example validation and codec-schema checks
+  on the six DTBs pass; strict checkpatch reports no diagnostics.
+- The three patches apply to the Linus baseline without 3-way fallback;
+  range-diff reports all three patches unchanged.
+- Extracted SDK/upstream analog functions match across 11520 modeled
+  register traces, including operation order and minimum delay requests,
+  under ASan/UBSan. Parameter/error-path probes also pass.
+
+These host models do not verify actual hardware settling time.
+No new playback, capture, hotplug, suspend/resume or electrical timing
+measurements have been performed on hardware with this upstream series.
+
+Xing Zheng (3):
+  ASoC: dt-bindings: rk3308-codec: describe detection and ADC routing
+  ASoC: codecs: rk3308: restore audio and headphone support
+  arm64: dts: rockchip: restore RK3308 codec detection resources
+
+ .../bindings/sound/rockchip,rk3308-codec.yaml |   55 +
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi      |    4 +
+ sound/soc/codecs/rk3308_codec.c               | 1155 ++++++++++++++---
+ sound/soc/codecs/rk3308_codec.h               |   18 +-
+ 4 files changed, 1064 insertions(+), 168 deletions(-)
+
+
+base-commit: 11ae63bd9030349a0136fb2edd1622a4a029edc8
 
 _______________________________________________
 Linux-rockchip mailing list
