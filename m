@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 786FF606A326
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:01:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7209E606A324
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:01:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lF1XEcij;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PHl5hpS6
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IJ/FmLl/;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Sxe6zxs2
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=itDEmCwETvwO9/IESpTOM9VKaVeuogzGih/XI2Slfrk=; b=lF1XEcijr0Ca2GiyWuvT/Zg2vT
-	qTE3G0kyBvkRWSh+tRj2ep0Fq5LZEX4UUGydVnUfncHxld4VbCiig8A9zJLOD6pEcjmQCHsKAhYtl
-	CyhelTzIaIqssxgSPcOt03bFwZOddOSsCimh/0KolJolqJs4etcpc02mmcZF93EACiHrD1GOL/5Sp
-	Rkr4ZooOjn5HoO9AwzGDpIOciiowEeMjGVsbIKeZBspNV5094qZ1d8sHxOt/x8OCa/PGw7FO2gvJ6
-	SCToQjSX/EqqxLsSuHVO1heqkpTWWOoW0M5E8XzC9kQIsRj+UTrRfiBWLDV34hc+mIYz8a/hdcaym
-	3dlB/Izw==;
+	bh=D5DNs5mZToI7umDht9R53ftL5SEx97MxK0iTILKlhWg=; b=IJ/FmLl/kU1QBH97zTFzWdyYeG
+	hs4iBx0wxCmA2y8wAP25w3xnJQt2CvPjzpRs5bMEyKBOA6xHhwQcYO8Q8v9S4pVeoZkZlfTEevcos
+	F++ppNHm5F2JAKTTEIfkRCBA4HV+gy2udWvNrFi9xtBML+Ibs8yuETie3Ero9hiniZFzzIYOkWfXZ
+	J0B+Hw69NXExlwwD66Wyv+iNV9enOgdp5vl8rbAHOw6Bp7PisPl4rCbbqZFu6sHMIdxUy8p8GFRKk
+	sCnX9xionbACFihosqfvwBo5/Z3J8E4bKERWcdqdTWVgQwPIw19Pj6ru2UvZeKVGMrgDMwWNUQneK
+	ODtK2RfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdc7-0000000ExOH-2mAY;
-	Sun, 01 Nov 2026 22:01:19 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xNdc9-0000000ExSK-3yxS;
+	Sun, 01 Nov 2026 22:01:21 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdc7-0000000ExNu-04PK;
-	Sun, 01 Nov 2026 22:01:19 +0000
+	id 1xNdc8-0000000ExON-0Sr5;
+	Sun, 01 Nov 2026 22:01:20 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B112643940;
-	Sun,  1 Nov 2026 22:01:18 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8CE7D601F9;
+	Sun,  1 Nov 2026 22:01:19 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1793570478;
-	b=T+Zg0fZgKhAD0YNzvDB+FuV/sORhHGs7bPX56PADysXkbi1FekVgFkqr8z2DL/G1MUnc
-	 k+ktiKFIfG/xaOgOSBYVAm3vOKEZoqV41zjeUF5bnx2yGJSYlgn5/ih2IJMpweFiT7/f2
-	 WupsSXkkxUPxlwOtU83i1WqiRvXxHG/UL/KiZfwoO3fMNL70mrh6PBw6uSYDoJRTsoHew
-	 ttZabkRyPm6pWuWZJPQXalAtXTEyK6JN7PVgZb7KZ8gSj6E0k2FFQKvLHpkzERhYJEUiQ
-	 ds26rI4lW0IxUBImcJAe2EldOsxl/nA1732BZehjRwk7qmfrAppxO8BqV4x31kOB5Iw==
+	t=1793570479;
+	b=xXEevNybKcVbSj6MZSHaGW6XvgOCFu1ULhj7pLoy2QmcZyyGemThxCJQFxhlbktmBFmK
+	 dQGu6Rc9wj301bn+2cp3m1s7o4GuEI7CDo4ePqYHpI1M6/dE2Jxj0DSRJ8Wugr/rTbjl3
+	 9IQkvP8oo7Nc2TwndKATQt8MX1SwKCKDnc0cx5eu543E5TpavD5zjkD/s29NhE8qed9js
+	 3lqBLe1proYAbkLyYcv+DnAv60ErPA0xHtF/SYGsGV5KkO8vZ9qiyg5aiUR1NX4zWY4mZ
+	 2wdRMEemZKXrns98gC3upqUR0zeepVuxDjqNoKa3+LKVOXpzV7ckXDMoTA2zk5Avbwg==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1793570478;
+	c=relaxed/relaxed; t=1793570479;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=HACswfW0Z9/TjG+zGW7wcxyXlL/3YQoIO6MSbN1Js8E=;
-	b=j7nzdDrVzPJUzozFjdsvG4BGKwHDjjCIn4tel6uIhQlGHq+v1kewQ07KOyD8ZfaQTAdP
-	 Qkkv448jhq1ETEH2RVEdAh2zM+7TJiPlZItxcM6YG9qqArZQcULiQFSUEjJ6Z+lL6Rb0K
-	 zaSoaowzxaT/zo8kAIYlJPw2yiW/2G4YMzVcJqEFZNcpESGQ8ugC6b+I7/vcLUMvyGQMv
-	 j0g6IzaoeB95gZkBmDxJ1WnedoGTGlzUV+2EoYKUW/PPMsAT9g4I5IthpDkBrT8fNPiUU
-	 0HZcS3UH2siroJgK+F5MEoxmeyRs5o0HYBkd+sdecr2MqNIALwr0eAnJ3GtDnoUsQGQ==
+	bh=Ulo7n1omNefbM1CK/nDYuujYSj3ZIL41KL6TNMScnsQ=;
+	b=dB9p5sgMgzS+wpIzZPIOXgbZLEcIAbRQjyutsIR2/xlWdAFMrR+VI+IwSG9+PbWdhfb0
+	 voHA+27/PbWRSTF1qcfowv10uTld8Cc7iMyFjIHIRBMFEdsOumSDVulVGQU45kO2CPWUq
+	 /f8c3romaEeN/29ldM8cAdqnlAqHLv/lVoN/jCRh6vRBTxIqYbwdec2hx1AN98lw0FK/2
+	 RMzjLLFawyJKrRiW0l+LrfWxNS1RocyqjzTYlH0HQCTxdMWdUorNCUSLjy4PDIYRWYqwA
+	 AisWKybNWTmhyC/8OHDuQai9KiXHnn74+c0kK504gjV7dfALU8CICx1yPVShCE23zkg==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 9393C1F000C1;
-	Sun,  1 Nov 2026 22:01:17 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 9AB101F00A02;
+	Sun,  1 Nov 2026 22:01:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793570478;
-	bh=HACswfW0Z9/TjG+zGW7wcxyXlL/3YQoIO6MSbN1Js8E=;
+	s=k20260515; t=1793570479;
+	bh=Ulo7n1omNefbM1CK/nDYuujYSj3ZIL41KL6TNMScnsQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=PHl5hpS6MvkEQIRh9DqqKe070Tr6z2uGvg4oKOSTZs4JfSSD4XiTCB9DUlFYWh9D7
-	 GspZiULhBCklSGLbSXdN/ZzAYAGPnglC/Q+r5vfqWUKd7aJp5mTHDoCCKUYWHisTyJ
-	 MyRbTKqt6i95KbHS7GcoENLZXeI7Fj8eYGf88BXA2OM/YzsMmDxSPQdQdekuOMm8g+
-	 XvoXYx8nOrW39WklMmKEStUvDh3LTtj4zIknGOp98QJmVhursPiIzBKDiwR/1UOe5U
-	 +RPMtxjsXYoSlHROU2n3vNbRLefGykaPcDwpgZM+GKZC3VVvLhuRTzxpzJNcksvgAu
-	 z0pwfsQT9WOhQ==
+	b=Sxe6zxs21sqm+/7r7eEJkS6jVkiVIspVh/H5UzcIH/tdW6flUrI8AOu9BTzDrWR45
+	 VCO4LZ4HPr4pS84ZjvUXRkKi03r4h/QHKqev8XH2/JkLqYtj2i8NrcZycoNPrfiuuo
+	 9JzmIwbM0OUewxcp8UhS9n4gFB8AyUcfOHO4C3csCi9t5iO5SseMmFeYQ283JFidIN
+	 HHR9XwNrHrDX37OSe7Q4a4W54Vnb41tYLdrOjMxpEFqaHTdrOBSzl8xv713jzKR9ZJ
+	 82QomfTy237WzVuF3MHGtE3qOjIW7wmuc+wMJwq266INenEHqBTbs+D2nB1fT4/gPG
+	 c/nSVoAYWFkKQ==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 01EC3462A4;
+	by lkml.kernel.org (Postfix) with ESMTP id 1D604462B4;
 	Sun,  1 Nov 2026 22:01:17 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Sun, 01 Nov 2026 23:00:52 +0100
-Subject: [PATCH 1/3] dt-bindings: arm: rockchip: add FriendlyElec NanoPi
- M6V2
+Date: Sun, 01 Nov 2026 23:00:54 +0100
+Subject: [PATCH 3/3] arm64: dts: rockchip: add support for NanoPi M6 board
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261101-nanopi-m6v2-v1-1-e401ea64b394@gmail.com>
+Message-Id: <20261101-nanopi-m6v2-v1-3-e401ea64b394@gmail.com>
 References: <20261101-nanopi-m6v2-v1-0-e401ea64b394@gmail.com>
 In-Reply-To: <20261101-nanopi-m6v2-v1-0-e401ea64b394@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -87,11 +86,11 @@ Cc: Shawn Lin <Shawn.lin@rock-chips.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  Joachim Eastwood <joachim.eastwood@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793570476; l=940;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793570476; l=3626;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=xVk4B1jOv3LSCGkGw0hfHKz0UpvYSO+VAerlPGw1LtQ=;
- b=1mnT3U+SfryHw8PD6flAr0YpAYDOqd7y4ItNbI9+cvvhiUyPQZK96kHFiqFMeoXVdQK9JEEpV
- O6aDLzIO3pJAyoBzN5N41PkbDHBONZZomYLUf1G1aZVzNLZtb3pDxWJ
+ bh=260hii/GH2tEPdeW43MCVdatF4DRD18H7tiMSoy6AFE=;
+ b=CtLK83F15OJHnfsgFTbpf217tBe7dqJUdICO8o27nac58lTe6BHxs8PMXs9sfT5BlIUYqltFm
+ ci2JD6Nh9xcAzlhpY4a1MxJaRf1f051F4srQulmwDbzBev2iLw9wBg1
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -119,27 +118,132 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-Add device tree binding documentation for FriendlyElec NanoPi M6V2,
-a single-board computer based on the Rockchip RK3588S SoC. This board
-is an updated version of the original M6 board with a few changes.
+The NanoPi M6V2 board is an updated version of the original M6 board
+with the following changes.
+* New audio CODEC (Everest ES8389)
+* New Ethernet PHY (MotorComm YT8531C)
+* 1 extra user button
+* Misc connector changes on the board
+
+The codec_es_3v3 regulator enable pin is hardwired to the 5V input rail.
+
+See link below for detailed information:
+https://wiki.friendlyelec.com/wiki/index.php/NanoPi_M6V2
 
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/rockchip/Makefile              |  1 +
+ .../boot/dts/rockchip/rk3588s-nanopi-m6v2.dts      | 90 ++++++++++++++++++++++
+ 2 files changed, 91 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index a24949b163cff..70d78f7f8c559 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -392,6 +392,7 @@ properties:
-         items:
-           - enum:
-               - friendlyarm,nanopi-m6
-+              - friendlyarm,nanopi-m6v2
-               - friendlyarm,nanopi-r6c
-               - friendlyarm,nanopi-r6s
-           - const: rockchip,rk3588s
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 442d322a20cf7..46aa42d4c854b 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -238,6 +238,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-indiedroid-nova.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-khadas-edge2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-lubancat-4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-m6v1.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-m6v2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-nanopi-r6c.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588s-odroid-m2.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6v2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6v2.dts
+new file mode 100644
+index 0000000000000..2ac00f2de6844
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-m6v2.dts
+@@ -0,0 +1,90 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++/dts-v1/;
++
++#include "rk3588s-nanopi-m6.dtsi"
++
++/ {
++	model = "FriendlyElec NanoPi M6V2";
++	compatible = "friendlyarm,nanopi-m6v2", "rockchip,rk3588s";
++
++	analog-sound {
++		compatible = "audio-graph-card";
++		label = "rk3588s-es8389";
++
++		pinctrl-names = "default";
++		pinctrl-0 = <&hp_det>;
++		hp-det-gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_LOW>;
++
++		dais = <&i2s0_8ch_p0>;
++		routing =
++			"Headphones", "HPOL",
++			"Headphones", "HPOR",
++			"INPUT1", "Microphone Jack",
++			"INPUT2", "Microphone Jack";
++		widgets =
++			"Headphone", "Headphones",
++			"Microphone", "Microphone Jack";
++	};
++
++	codec_es_3v3: regulator-codec-es-3v3 {
++		compatible = "regulator-fixed";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		regulator-name = "codec_es_3v3";
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	gpio-keys {
++		compatible = "gpio-keys";
++		pinctrl-names = "default";
++		pinctrl-0 = <&user_btn>;
++
++		user-button {
++			label = "User";
++			linux,code = <BTN_1>;
++			gpios = <&gpio0 RK_PD3 GPIO_ACTIVE_LOW>;
++			debounce-interval = <50>;
++		};
++	};
++};
++
++&i2c7 {
++	audio-codec@10 {
++		compatible = "everest,es8389";
++		reg = <0x10>;
++		assigned-clocks = <&cru I2S1_8CH_MCLKOUT>;
++		assigned-clock-rates = <12288000>;
++		clocks = <&cru I2S1_8CH_MCLKOUT>;
++		clock-names = "mclk";
++		vddd-supply = <&vcc_1v8_s3>;
++		vdda-supply = <&codec_es_3v3>;
++		#sound-dai-cells = <0>;
++
++		port {
++			es8389_p0: endpoint {
++				remote-endpoint = <&i2s0_8ch_p0_0>;
++			};
++		};
++	};
++};
++
++&i2s0_8ch {
++	i2s0_8ch_p0: port {
++		i2s0_8ch_p0_0: endpoint {
++			dai-format = "i2s";
++			mclk-fs = <256>;
++			remote-endpoint = <&es8389_p0>;
++		};
++	};
++};
++
++&pinctrl {
++	buttons {
++		user_btn: user-btn {
++			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
 
 -- 
 2.56.0
