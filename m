@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 633B9606A324
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 10:16:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EDC82606A333
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 10:41:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Hrm59xaX;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=BIqx48gV
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zkdC5ejp;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=GiFyZkF3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,58 +14,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=7L80a78huAvPwKxkR2nvpm7nQE+fHnWRnKKIsG5b3pE=; b=Hrm59xaXmBzOmqoa5YVD8RTSN3
-	IG6i/r080qnmhc3f9FhvbVKYE9mbJSRY2C9h6wOQW/VtTZSRaddfeJ7q7IrLVkfxQiUhkQ/HzgKpS
-	IeebCeHrZwF6r/BSm1ZMdZvgQefPCnj2Om15g4b51D+JkF2kk5OJJ71ikXY4DZ3RZRDwE1SS/tXXb
-	3CDduMgNg43GAw9sIf52flr//koacI+LeB41n3FUUovBp17pODVv/Kmq865MjgnjISt//nq25VLsy
-	YmaBveYvDtVyAmvXEuGyg3Ncdczvt+ObNyuXFNIe4eO8f3aC5Ld/UlMcrwBp0LqgxYpCi9RgsZdLo
-	U5B9PhMQ==;
+	bh=htNJvw1SEYpympj6RKpCT7/kYz9V2cdBb2sLSOlPFRk=; b=zkdC5ejpuYzhiZQyfnvhj85QMd
+	lsGEGHfwwVjuGo0i5h6OCjvkZBPOlKuqYl+B6CG3vk2Zyw8ufzYQeaUmfNIsllY1qOvJw9qK6DYUG
+	LB1HSAGv5ESw8ZXJdOdEin6NSCMA1+85opAndk6N+g1GLBldlWP+R1F5xUZrSSZ896X+qXGTu793c
+	A3So1fh/9e6Fd7M6k5U2nWto7witw9N2eX2AfIZKhUgeTSwWrPq1p4PgGVt5Ceo6oIT0gjldBA5Ou
+	Y/DgtEubq6YcwGjYglMgfnQGPFje9diUjYQiCJCa2QFWZP/5XyMQ9u4A400k6qnNCkZoAx0EmCq43
+	/XIjDk5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNSbp-0000000E4zI-1FWo;
-	Sun, 01 Nov 2026 10:16:17 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xNT0R-0000000E5rB-2P4d;
+	Sun, 01 Nov 2026 10:41:43 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNSbo-0000000E4z2-0m1p;
-	Sun, 01 Nov 2026 10:16:16 +0000
+	id 1xNT0Q-0000000E5qy-1ele;
+	Sun, 01 Nov 2026 10:41:42 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E0945600E2;
-	Sun,  1 Nov 2026 10:16:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 490771F000C1;
-	Sun,  1 Nov 2026 10:16:13 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A90C4600E2;
+	Sun,  1 Nov 2026 10:41:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01B691F000C1;
+	Sun,  1 Nov 2026 10:41:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793528174;
-	bh=WlyZSmXqoNem4BYxWTM4LbiDAqtNAeNEfmW9zP2dGqI=;
+	s=k20260515; t=1793529701;
+	bh=brJuiyHDKGzoeRPH3jfus7MpLEHCC+gFd44P4Q3+zTc=;
 	h=Subject:From:To:Cc:In-Reply-To:References:Date;
-	b=BIqx48gVerpSZp3TIv7S9rEWVLbSgq//SFRMil1HVp3LOdwPLoPm9dYOn98MfqZYH
-	 6hcgUC8AdQ0MBYcIo8ec5E2onfidoy6PtYcIULNKgVCdSAVucUkuJ8nNc4KMq+Tzk4
-	 LVVveSF5mU8o2DETRIjUSfKVRRCj21qwlD845qB4vz27leJBkoRuxJvSgweiWZde92
-	 gOSyX4vvyGa3p28nO9gg260rWqL5n0nf9tVDKpB8K3VXWxa/oshQ5tX2z/3Vu5ZSez
-	 dPdUutjWDIkY8E4saqEmfqlvrd66kxszuENNHsKbBbJW/oFdT3PErvV3xs5Z0W9H2m
-	 mVDtZgVNEtf2w==
+	b=GiFyZkF3BcB+Lq/qGvsK6OxNQvs42Y0ea2XicCIzZ29xjGg1g+ts7OHFM62IcMx9b
+	 mT5JrJN4TT21BuDxjFquTXOVDOX2EEV2lxqo5czMkGawou681VAaaQ8u9VSF989pyN
+	 Lr3i3LM2zpKvzE6YJTHzRbFmZgPa0H2TsuQkYrnNh+V478X4Pub+mstjfyVYLACPCw
+	 V2xHpq9SBrhlbU6YwiARnoAROPNZj4sAZdJtNg0EM+ezZKmIAOndNKjc+281gAAVlE
+	 ybF55vUwOBybaI7bVs1kHsDPqZE1kpIHq4ssO61gTS/WrukTUrWKRtBJo4cFuZrF6j
+	 fwhAbigCTPFJA==
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH] phy: rockchip: naneng-combphy: Fix overwritten PLL SSC
- control bit
+Subject: Re: [PATCH v3] phy: rockchip: snps-pcie3: Raise the SRAM init
+ timeout
 From: Manivannan Sadhasivam <mani@kernel.org>
 To: Shawn Lin <shawn.lin@rock-chips.com>
 Cc: Neil Armstrong <neil.armstrong@linaro.org>, 
  Vinod Koul <vkoul@kernel.org>, linux-rockchip@lists.infradead.org, 
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <1792036787-37927-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1792036787-37927-1-git-send-email-shawn.lin@rock-chips.com>
-Date: Sun, 01 Nov 2026 15:46:10 +0530
-Message-Id: <179352817065.2955.12861358728899992039.b4-reply@b4>
+ linux-phy@lists.infradead.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+In-Reply-To: <1792286036-208067-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1792286036-208067-1-git-send-email-shawn.lin@rock-chips.com>
+Date: Sun, 01 Nov 2026 16:11:37 +0530
+Message-Id: <179352969724.2955.8020626916458747827.b4-reply@b4>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=819; i=mani@kernel.org;
- h=from:subject:message-id; bh=swTg6Ncr3SBC3tfOWyQgwR6RiQDdKAS9vN/fOLu60Cw=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBq5xFsyj+J03oXK/LW1Mh7hQdN0TRMcBq7xI7Y3
- f51oK4cR7KJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCaucRbAAKCRBVnxHm/pHO
- 9c4gB/0fVuDYxlRny1zg37lWWevofXo/uIoYcKZ7ruzT672dQejgZtSGIMdz1lrQivBQUY/fftn
- /Nab1sjiY5iVgQoiozItGAethezmNkJyuJgcTx6a0jT7RkrnSCXPzJAFWQLKjibFikSxb/TWTkZ
- Qh+omLlpDhyF/qjWiZgeKgcVqaD/oqAPiAX1LS45MjrFR+iqG7/0QM153+MBjcfXw5oqNdP+ooP
- fqUTduZQCto83QOBNuUFeS7XA9qMRJ3YOGRxVm/BteyveZvfguw3c2+tCzmIVNbIpDNCP/9pFCJ
- GfGEIu+JYYYnDT4/YkXsxbPwPmfIJiNYF09Gtsnk65EhFtdH
+X-Developer-Signature: v=1; a=openpgp-sha256; l=810; i=mani@kernel.org;
+ h=from:subject:message-id; bh=MumBt/6HSW2cCE+tFKc4UdGbhArG1ydOs7NghvYuKmE=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBq5xdjp0pFgfE8I+Q0Q5BVv17PFui36HjQZ6sFo
+ ckoUR2oZoKJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCaucXYwAKCRBVnxHm/pHO
+ 9TtACACdOsMPIXxM32WDOuNPtE8pEh00IiB0x02ALrQguuuECaxj+B6lXU4l0Nu4Kfm/S6WIdXY
+ HslAGgx4rvHJi02HRtHs2sppiIadJyv/2t4gJ4CenvnKWZHOYWiLutDvQALZ2TN3V/0eIR/kyyg
+ FcOdoiuu5ZXkS2J1oRKzBbV6vGlZok2wStf4Dqu7eJ024gGiYInUHyCRBcbTnQlLljvCRbGuxe5
+ lP/c5bPWZYlHvLhvQqeB83Tm+KZHl4stuciGc9CDcQ+3zNVohQavqeoDB2hrYJv8JPvJ7/uqoIa
+ pRI7agobEWmHHxDaMDcmL9rA3MJh+/Xydm2KN9lBhvNnAE4n
 X-Developer-Key: i=mani@kernel.org; a=openpgp;
  fpr=C668AEC3C3188E4C611465E7488550E901166008
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -87,21 +88,25 @@ X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 2026-10-15 11:59 +0800, Shawn Lin wrote:
-> rk_combphy_common_cfg_ssc() first sets RK3568_PHYREG33_PLL_SSC_CTRL on the
-> RK3588 and RK3576 SoCs, then, for PCIe at 24MHz, programs the PLL KVCO
-> adjust field. The latter used a plain writel() of the FIELD_PREP() value,
-> which cleared all the other bits of RK3568_PHYREG33, including the
-> PLL_SSC_CTRL bit that had just been set a few lines above.
+On 2026-10-18 09:13 +0800, Shawn Lin wrote:
+> The SRAM initialization of the PCIe3 PHY may take longer than the 500us
+> currently allowed, especially on a slow power-up such as at low
+> temperature. In that case the driver reports
 > 
-> Use rockchip_combphy_updatel() so that only the KVCO field is updated and
-> the SSC control bit is preserved, as the comment and the pre-consolidation
-> code intended.
+>   lock failed 0x..., check input refclk and power supply
 > 
-> Fixes: 0b31f297557f ("phy: rockchip: naneng-combphy: Consolidate SSC configuration")
+> even though the input refclk and power supply are fine.
+> 
+> Raise the timeout to 20ms and use a named constant for it, applied to
+> both the RK3568 and RK3588 paths.
+> 
+> A non-zero sleep interval (1ms) is passed to the polling helpers so the
+> CPU is yielded between reads. With sleep_us == 0 the helpers tight-loop,
+> which would otherwise burn the CPU during the now much longer wait.
+> 
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+Missing Fixes tag. With that added,
 
 - Mani
 
