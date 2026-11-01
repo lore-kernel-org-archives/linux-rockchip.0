@@ -2,11 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2617B607184F
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:16:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 640FB6074109
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:17:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=W7vxkbxo;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=nf3L9ctJ
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Qr7fsorA;
+	dkim=temperror header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=O8zRDlrz;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=waKZaezF
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,51 +15,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Y9ovop5hUhVhotNCLJmFLmYAivD2Mmg7g3y9J4SZiaY=; b=W7vxkbxowMfcEg9BbKdK+BLlMh
-	vd41PRlRATZ1uTk/aLS2AH/ex38372OyHxZKt0e+aOUXw2VBy4rGryObMhrptGrzORK1PpQQtK4y0
-	Wck2r62buEelLlGMujq+pN/ODLHXPeoWUsUFxXzMgjRJ29hM1Pt0YWfRPvHwMyRKCWfo+PYIuvjno
-	wM789ux1Xs7CjUBJ/QopzkW6+0oAJ0aKkrStmlKGMZVFTqgkB7SxHCDNLrvVujVXlH/2B5RFABxLB
-	6k18izoiHLrrADbRLDvImSxoe0rQ3UHV+xspMSA26+JFo3iAbCTZPxqXs5C3t+xTi1oRYn2k58W0q
-	BTS/a2SQ==;
+	bh=/u2qSwZvrU6yZ3Wn2gY+G9RxeodZiSDbOn0vHf7ExFs=; b=Qr7fsorAlh2lC7XrhorHOKXaAL
+	/uE+QEXXI3C9xUeF4IaJCxKbQ4gUP5Yhs7gWBMgUJ7Ihav4kkTF5XNoeR5K8m4nSictkAX1mvjsQy
+	drqb4yXfbTzOL+StT541Hgj1ut3Gh2aUQTDE9/UdH+JhMAi2qzzLyU/PZoWdmKO7oqQflZUcpT0V0
+	NpfYM0ziRiw8swClaooyNbjnLLwpkc2Dvo2Aa6v5hCGM91aqU7FewK32EmhQTf9rPWbGl4sFAfZ1e
+	pbVXl+XBPcouwmU9o4cCIk019wWHbpUHlW7ygkdkUNb3xO4N9I4YPgfXdXJcwiaNnPb1gOO8kb14i
+	yMzK5uAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdrC-0000000F1Ze-30Q6;
-	Sun, 01 Nov 2026 22:16:54 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xNdrH-0000000F1pb-1Zch;
+	Sun, 01 Nov 2026 22:16:59 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdqe-0000000Ezus-2EbV;
-	Sun, 01 Nov 2026 22:16:34 +0000
+	id 1xNdqu-0000000F0f5-0aYh;
+	Sun, 01 Nov 2026 22:16:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=LKx3D3L8i20KkgdM053WRZoZcyEWptAt+bunmlcQ35w=; b=O8zRDlrz2DGoJ8qPlaRkBDXsLH
+	Xpo1Ao0HKcjwMQjmhUYvqnp/W9HzZkrKxjmPg6vb/H7kttN7bsEVsncWU6yeQ0nJwXYjKFOm/gxl1
+	G/IU4nR2U3mz6IjwOZjSHANjw4IfglLHG7TXjKxBbCK0xke9FSKMfph3qdObdxL/PUFfCqVpaSOsw
+	AgyVd4EIdqiDlHJz6WHFMbIiqgE5Uv3oXw3hyU3adHH2KhC+a1sktSeVMyvFr0BYzR4Axaj4OWgQr
+	2jcyywPkgXONFvyyVm8aIQFaRi5oEmSOXcVOo6LNc0FXKBC5Px7JDzV6Lvt3ivZFXaUP3RG6/QQKh
+	V8obv05g==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xNdqg-00000001seo-46yT;
+	Sun, 01 Nov 2026 22:16:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=gmi5uewuXMed4CloBbecG8Sst+u3j+UWzS8NSli01pM=; b=nf3L9ctJZheEiENewBWgF4O7d4
-	w0woJPQP2GTmpWl74VRcox9MjZ2Deb0eqUSRtStoHXGL9DhHxYq/zlQ0L1r4t9itNO+dCC0ZdsZ8n
-	W+9LJEcSSTVgssUnhNQiuK0NPTpjWQ4Nbv3mOzBC/MVuPYSf+pJvnH3bjamx7eHC6ePCrl6WXPiic
-	+lj8Zub9f/PBFK9xwwmUasaTIwJhyjq4gviI/ZIo2RtaslKRJ/ANY3i8hKlbIV47ivDGORK6jO5XC
-	ys8iroOQVCQIM2Wvc1Yj/kQFog6AZUqcQjtAQ623egtCoMp0dq8k7xjmlKYynPNJqpmIm3gT6/YAQ
-	OsCudwrA==;
+	bh=LKx3D3L8i20KkgdM053WRZoZcyEWptAt+bunmlcQ35w=; b=waKZaezFft+W4+DVAkBekptegW
+	UnVtPxS4CWRmPMUfT3usNMXRPi8pgRhKiYrCC2qldwTF6kvbPud9Rv7dp711s66/Cn4JMTgHi4jE/
+	Dan6sZi23Dgp9BRiTCR7QsGIrt1bO0O/kbzrt5213L9azRmU/aVc4z29eJoGXc9mYP/AOEd2P5Hti
+	8HVpHlQ8NcnOSef9F2acRL0TLvgmxMqtbSeCZ2Nw5bKT7LAO1hk036BgG7raWsIcnEKJJVWnIefEE
+	cagbA2Zxzi5h0KO962bVDJQPnzq6Vpv5qsRfmX0xor0slj/x1u/uwVDKKkJaw262eKa9Xvs0FTML2
+	lMCkZ8Yw==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Igor Velkov <iav@iav.lv>
-Cc: Heiko Stuebner <heiko@sntech.de>,
+To: Guenter Roeck <linux@roeck-us.net>,
+	Jean Delvare <jdelvare@suse.com>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
+	Igor Velkov <iav@iav.lv>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-hwmon@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Add the GPU to Kobol Helios64
-Date: Sun,  1 Nov 2026 23:16:06 +0100
-Message-ID: <179357136494.4108155.12651749876898512929.b4-ty@b4>
+Subject: Re: (subset) [PATCH 0/2] Label the fans on Kobol Helios64
+Date: Sun,  1 Nov 2026 23:16:05 +0100
+Message-ID: <179357136496.4108155.6955639670454082907.b4-ty@b4>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261011-b4-helios64-gpu-v1-1-bd83c6ecd19e@iav.lv>
-References: <20261011-b4-helios64-gpu-v1-1-bd83c6ecd19e@iav.lv>
+In-Reply-To: <20261018-helios64-fan-label-v1-0-69a3f96d4efa@iav.lv>
+References: <20261018-helios64-fan-label-v1-0-69a3f96d4efa@iav.lv>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_141620_632681_4BEA8122 
-X-CRM114-Status: GOOD (  10.27  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261101_221624_717856_69D25D47 
+X-CRM114-Status: GOOD (  10.05  )
+X-Spam-Score: -0.2 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,16 +97,31 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Sun, 11 Oct 2026 00:53:01 +0300, Igor Velkov wrote:
-> The GPU core of Helios64 is supplied by U12, a Silergy SYR838 on i2c0
-> at 0x41, with its VSEL pin on GPU_SLEEP_H (GPIO1_B6). Describe it as
-> silergy,syr828, the way vdd_cpu_b (a SYR837) is described as
-> silergy,syr827, and enable the GPU.
+On Sun, 18 Oct 2026 07:54:58 +0300, Igor Velkov wrote:
+> Helios64 has two identical PWM fans, and userspace can tell them apart
+> only by their platform device names. Patch 1 makes pwm-fan.yaml
+> reference fan-common.yaml, as Rob suggested, which also allows label;
+> the hwmon core already exposes it as the label attribute. Patch 2 names
+> the fans after their headers, P6 and P7.
+> 
+> To: Guenter Roeck <linux@roeck-us.net>
+> To: Jean Delvare <jdelvare@suse.com>
+> To: Rob Herring <robh@kernel.org>
+> To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+> To: Conor Dooley <conor+dt@kernel.org>
+> To: Heiko Stuebner <heiko@sntech.de>
+> Cc: linux-hwmon@vger.kernel.org
+> Cc: devicetree@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-kernel@vger.kernel.org
+> 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Add the GPU to Kobol Helios64
-      commit: fb33952897e8a998bf026fee7f184b474a8381f1
+[2/2] arm64: dts: rockchip: Label the fans on Kobol Helios64
+      commit: f80a26e10a39dd51061513db96fb525244e5e890
 
 Best regards,
 -- 
