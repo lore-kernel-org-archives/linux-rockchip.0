@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E1983606A329
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 18:23:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C19C8606A324
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 19:11:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kzvr8oj4;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=R79qgKyT
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FykWJ4JZ;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=VxAMb9Yk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,47 +14,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=1SuL3s4QaCjdLdO6DY4H/43Q5M21KnXunp2sbxh7zVw=; b=kzvr8oj4l1SFKrru789jOCMuW4
-	CtYgG62JfyYqY6Q0iS4v/CbqNVVBZrS8Ywa5OGNWmuidWkGzu3eIzUVpP/Yxh+Gvalwd7MyDpoSUC
-	njX4WtH5LJUHZoRj28Jo44eYQCnd+12D334Oh2uesdOB/F8rRoabbBhOCxxniiDklUeQy3T/BgPgs
-	7+Od5UVSVOglehUMbFPVW2SN8SH9fjFjJzIkWQTusDeIF1TXUIkgeUAfnQ5cy5t0IjlzEuCVF0VPc
-	YYCPvNClDGiXyU5FCMtpKSL220bbAFWBgugwapGW4vAC5Tq40worBpLSt6yYa9UZ9RWQyBA7r/ysj
-	DOqgJQtQ==;
+	bh=bDrc9ZkPhP3o/dUXv8Pl3CVZBm1AdNoposTws9/F4DU=; b=FykWJ4JZphxBh19UJMPQJBILSm
+	i9n/BWpVjWTP+vf2DNVVC5/WhfS9eJl+pjC/po3k8PfL6OX8GWUgEvN/ihZJHv5crh9KI9RKGzj7K
+	DmrZDTe6CoCeaa8MVrgpOmgGF8u9s74kBt7RpBMvo3lX65JkUS9B06z9jbFH1862XtwxDdHEpT22k
+	UWqCDk/fMnfTc27/DfgjUeA56frH5S7hIcYUsUOwuInLsya6W5pl5yzgO0Qm99kwDfH02pWQmIRSF
+	lYaYCRQI0misDlyvB0hZ8k9OW5/11Z92pjfLzYqHs9ecRU/L55Hz5k8OUf7MXw72zzfoncZ05e3wa
+	OSphtJaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNaCs-0000000EknB-3yju;
-	Sun, 01 Nov 2026 18:23:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xNaxb-0000000Enen-2QDJ;
+	Sun, 01 Nov 2026 19:11:19 +0000
+Received: from sender-op-o15.zoho.eu ([136.143.169.15])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNaCq-0000000EkmM-2fVB;
-	Sun, 01 Nov 2026 18:23:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=tFhldmzZtrcUIX+IHzur5sfIp07vN9tRvmim7V5lDx4=; b=R79qgKyTpWDh/2r+KkK2V4mheb
-	qOSlYOoAbkSjs5lkPygzmKzgBr3ZVxFRQVQHZopx+84lD7lZXRQYF97a0ZdLv349IjUfFbMvo3+Tu
-	C6i5G9suQZDFGz60r9mkj7CPTnE/Bp8V52PaE6bAukRcWXjPEQYFqbSF5zYoMYLCqSyD8kwMR6ywu
-	UVRvi9up5Usq0r33eZFd864U5BzOClIIIf+E23mLfS0QaDYIQ//6lc9917fD7oODkzB9SuXLUhKgy
-	cq25YB9e7V7bUTTcnjoq9YF+Phjry/avVreKgoYD4JMQmT60DNa3ewLOII60tk6WyZzjCygmrEaBO
-	gLem3wmA==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Bob Hui <bg9oxa@163.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Bob Hui <bg9oxa@163.com>
-Subject: Re: [PATCH v10 2/2] arm64: dts: rockchip: Add ALIENTEK QuarkPi-CA2
-Date: Sun, 01 Nov 2026 19:22:54 +0100
-Message-ID: <2372620.HovnAMPojK@phil>
-In-Reply-To: <20261023-quarkpi-ca2-v10-2-9db904194e03@163.com>
-References: <20261023-quarkpi-ca2-v10-0-9db904194e03@163.com>
- <20261023-quarkpi-ca2-v10-2-9db904194e03@163.com>
+	id 1xNaxY-0000000EneI-0zC1;
+	Sun, 01 Nov 2026 19:11:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1793560235; cv=none; 
+	d=zohomail.eu; s=zohoarc; 
+	b=iRBtL5ZI127nRPDqqbTqjRcbsDS30mPeVHezXgaqcjUFMkQDqoK8sp0ijTBCmafp/flXvwvfocEKXG6gqj9RTAhrFG7X6e6PqPbMiPY+ZQKGq+3Uy6mFnYxWh9c6qf3xJwGMrnom/aDUk+LAwkjhpyQjzaWduNH2LiXxDDtZj1M=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
+	t=1793560235; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=mPcWOwuHmd2vb2lc/1veBqXCg/9uHVaMceIoosx5SG8=; 
+	b=V9p49xnybzD+e3S8j1KhS/QP1iZM8Qkb2xIwizMus9rJS4YRbKeP/jFbaZwVwRaiMzJaLTSKo6lT+f5izvfYny9BInMU6MJOsy2DIsWxpJxsnMgz1isgcTzmVyA5qte7msiZOtUB8Lj75msKPXTYRmW4veWRqcIbsM0jlbIomS4=
+ARC-Authentication-Results: i=1; mx.zohomail.eu;
+	dkim=pass  header.i=iav.lv;
+	spf=pass  smtp.mailfrom=iav@iav.lv;
+	dmarc=pass header.from=<iav@iav.lv>
+DKIM-Signature: a=rsa-sha256; b=VxAMb9YkFS0HWxIAL9v0QH3eV836oDrQf3tt3baPOt8693zNFZPNp1MlPM0j8dZAgVWcHVzmB2Eor+Q691r/iKGybzsFXRXVcPnGSLheFezn/xMsRaZHqLXZEDyQIiceVoSNrTionsswenYr487X/bcDE33WAf8HieHx4WNrtPQ=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=mPcWOwuHmd2vb2lc/1veBqXCg/9uHVaMceIoosx5SG8=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zoho.eu with SMTPS id 1793560234157386.45816168150634;
+	Sun, 1 Nov 2026 20:10:34 +0100 (CET)
+From: Igor Velkov <iav@iav.lv>
+To: netdev-bot+sashiko@kernel.org
+Cc: iav@iav.lv, andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk, davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com, maxime.chevallier@bootlin.com, lukas@wunner.de, rafael.j.wysocki@intel.com, wei.fang@nxp.com, niklas.soderlund@ragnatech.se, paul@pbarker.dev, florian.fainelli@broadcom.com, opendmb@gmail.com, Thangaraj.S@microchip.com, shenwei.wang@nxp.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net v4 5/5] net: phy: postpone PHY interrupts during sleep with MAC-managed PM
+Date: Sun, 01 Nov 2026 21:09:52 +0200
+Message-ID: <179356019298.3385307.17700170309730679223@iav.lv>
+In-Reply-To: <179352219781.3131.16504721138901563596@kernel.org>
+References: <20261031-b4-phylib-mac-pm-irq-v3-v4-5-5ba23b3ff9a4@iav.lv> <179352219781.3131.16504721138901563596@kernel.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_102300_674622_75401F27 
-X-CRM114-Status: GOOD (  20.41  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261101_111116_570841_4F16AFF5 
+X-CRM114-Status: UNSURE (   4.76  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -3.1 (---)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,83 +66,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gRG9ubmVyc3RhZywgMjIuIE9rdG9iZXIgMjAyNiwgMTg6MjY6MjEgTWl0dGVsZXVyb3DDpGlz
-Y2hlIE5vcm1hbHplaXQgc2NocmllYiBCb2IgSHVpOgo+IEFkZCBhIGRldmljZSB0cmVlIGZvciB0
-aGUgQUxJRU5URUsgUXVhcmtQaS1DQTIsIGFuIFJLMzU4OFMgYmFzZWQgY2FyZAo+IGNvbXB1dGVy
-LiBUaGUgYm9hcmQgY29tZXMgaW4gNCwgOCBhbmQgMTYgR2lCIExQRERSNFggdmFyaWFudHMgd2l0
-aAo+IDMyIEdCLCA2NCBHQiBvciAxMjggR0Igb2YgZU1NQzsgdGhpcyB3YXMgdGVzdGVkIG9uIHRo
-ZSAxNiBHaUIvMTI4IEdCCj4gb25lLgo+IAo+IFN1cHBvcnRlZCBwZXJpcGhlcmFsczoKPiAgIC0g
-MnggTFBERFI0WCBTRFJBTSBhbmQgZU1NQywgcGx1cyB0aGUgbWljcm9TRCBjYXJkIHNsb3QKPiAg
-IC0gUks4MDYtMSBQTUlDIHdpdGggdGhlIGZ1bGwgcmVndWxhdG9yIHRyZWUKPiAgIC0gSERNSSBv
-dXRwdXQgdXAgdG8gNEs2MCwgdGhyb3VnaCBoZHB0eHBoeTAgYW5kIFZPUDIKPiAgIC0gR2lnYWJp
-dCBFdGhlcm5ldCB3aXRoIHRoZSBZVDg1MzEgUkdNSUkgUEhZIG9uIE1ESU8xCj4gICAtIGZvdXIg
-VVNCIFR5cGUtQSBwb3J0cyAoMXggVVNCIDMuMCwgM3ggVVNCIDIuMCkKPiAgIC0gVVNCIFR5cGUt
-QyBwb3J0IHdpdGggVVNCIDMuMCBhbmQgRFAgb3V0cHV0LCBkZXNjcmliZWQgdGhyb3VnaCB0aGUK
-PiAgICAgVVNCRFAgUEhZIGFuZCBEUDAsIHdpdGggcm9sZSBzd2l0Y2ggYW5kIERQIGFsdG1vZGUK
-PiAgIC0gMy41IG1tIGhlYWRzZXQgamFjayAoaGVhZHBob25lcyArIG1pY3JvcGhvbmUpIHdpdGgg
-dGhlIEVTODM4OAo+ICAgICBjb2RlYywgdGhlIGhlYWRwaG9uZSBhbXBsaWZpZXIgYW5kIGphY2sg
-ZGV0ZWN0aW9uCj4gICAtIHRocmVlIGZ1bmN0aW9uIGtleXMgKHZvbHVtZSBkb3duLCB2b2x1bWUg
-dXAgYW5kIFBXUl9PTiBmcm9tIHRoZQo+ICAgICBQTUlDKSBhbmQgdGhlIGhlYWRzZXQgaG9vayBi
-dXR0b24KPiAgIC0gSVIgcmVjZWl2ZXIsIDQtcGluIFBXTSBmYW4gY29ubmVjdG9yIGFuZCB0d28g
-TEVEcwo+ICAgLSAzLXdpcmUgZGVidWcgVUFSVCAoVUFSVDIpCj4gICAtIDQwLXBpbiBleHBhbnNp
-b24gaGVhZGVyIHdpdGggVUFSVDUsIEkyQzMsIEkyQzUsIFNQSTAgYW5kIFBXTTE0Cj4gICAtIHR3
-byAyNi1waW4gTUlQSSBEU0kgYW5kIHRocmVlIDIyLXBpbiBNSVBJIENTSSBjb25uZWN0b3JzLCB3
-aXRoIHRoZQo+ICAgICBjb25uZWN0b3IgSTJDIGJ1c2VzIGVuYWJsZWQgKGkyYzQsIGkyYzcpOyBw
-YW5lbHMgYW5kIGNhbWVyYXMgYXJlCj4gICAgIGRlc2NyaWJlZCBieSBvdmVybGF5cwo+ICAgLSBN
-LjIgRS1rZXkgc29ja2V0IGZvciBhIFdpRmkvQlQgbW9kdWxlLCB3aXRoIHRoZSBQQ0llIDIuMCB4
-MSBsaW5rCj4gICAgIGVuYWJsZWQgKHBjaWUyeDFsMiwgY29tYnBoeTBfcHMpCj4gICAtIE1hbGkg
-R1BVIGFuZCB0aGUgdGhyZWUgTlBVIGNvcmVzCgpQbGVhc2UgdHJpbSB5b3VyIGNvbW1pdCBtZXNz
-YWdlIGRvd24gYSBsb3QsIHRoaXMgc2hvdWxkIGRlZmluaXRseQpub3QgYmUgdGhpcyBsb25nIGFu
-ZCBjb250YWluIHN0dWZmIG5vYm9keSBjYXJlcyBhYm91dCA7LSkKU28gSSBndWVzcyB0aGUgYWJv
-dmUgc2hvdWxkIGJlIGVub3VnaC4KCgo+IEFzc2lzdGVkLWJ5OiBIZXJtZXM6ZGVlcHNlZWstdjQt
-Zmxhc2gKCkFzc2lzdGVkLWJ5IGdvdCByZW1vdmVkIGFnYWluIGZyb20gdGhlIHByb2Nlc3MgZG9j
-dW1lbnRhdGlvbiB3aXRoIDcuNC1yYzEKc28gaXMgbm90IG5lY2Vzc2FyeSBhbnltb3JlLgoKCj4g
-U2lnbmVkLW9mZi1ieTogQm9iIEh1aSA8Ymc5b3hhQDE2My5jb20+Cj4gUmV2aWV3ZWQtYnk6IEFu
-ZHJldyBMdW5uIDxhbmRyZXdAbHVubi5jaD4KCkFuZHJldyBhbHdheXMganVzdCByZXZpZXdzIHBh
-cnQgb2YgdGhlIGJvYXJkLCBuYW1lbHkgdGhlIGdtYWMgYW5kIG1kaW8Kbm9kZXMgLSBhbmQgc3Rh
-dGVzIHRoYXQgaW4gaGlzIHJldmlldyBtYWlsLCBzbyBJIGd1ZXNzIGEgbmljZSB3YXkgdG8KZG8g
-dGhpcyB3b3VsZCBiZToKClJldmlld2VkLWJ5OiBBbmRyZXcgTHVubiA8YW5kcmV3QGx1bm4uY2g+
-ICNnbWFjMSArIG1kaW8xCgoKPiArCWFsaWFzZXMgewo+ICsJCW1tYzAgPSAmc2RoY2k7Cj4gKwkJ
-bW1jMSA9ICZzZG1tYzsKPiArCQlldGhlcm5ldDAgPSAmZ21hYzE7CgpwbGVhc2Ugc29ydCBwcm9w
-ZXJ0aWVzIGFjY29yZGluZyB0byB0aGUgZGV2aWNldHJlZSB3cml0aW5nIGd1aWRlLApuYW1lbHkg
-aGVyZSwgcHJvcGVydGllcyBhbHBoYWJldGljYWxseSwgImUiIGNvbWVzIGJlZm9yZSAibSIuCgo+
-ICsJCWJ1dHRvbi12b2wtdXAgewo+ICsJCQlsYWJlbCA9ICJ2b2x1bWUgdXAiOwo+ICsJCQlsaW51
-eCxjb2RlID0gPEtFWV9WT0xVTUVVUD47Cj4gKwkJCXByZXNzLXRocmVzaG9sZC1taWNyb3ZvbHQg
-PSA8MTcwMDA+Owo+ICsJCX07Cj4gKwo+ICsJCWJ1dHRvbi12b2wtZG93biB7Cj4gKwkJCWxhYmVs
-ID0gInZvbHVtZSBkb3duIjsKPiArCQkJbGludXgsY29kZSA9IDxLRVlfVk9MVU1FRE9XTj47Cj4g
-KwkJCXByZXNzLXRocmVzaG9sZC1taWNyb3ZvbHQgPSA8NDE3MDAwPjsKPiArCQl9OwoKc2ltaWxh
-cmx5IHBsZWFzZSBzb3J0IG5vZGVzIHdpdGhvdXQgYWRkcmVzc2VzIGFscGhhYmV0aWNhbGx5LAoi
-ZG93biIgYmVmb3JlICJ1cCIKCgo+ICsJdmNjXzF2MV9ubGRvX3MzOiByZWd1bGF0b3ItdmNjLTF2
-MS1ubGRvLXMzIHsKWy4uLl0KPiArCX07Cj4gKwo+ICsJY29tYm9waHlfYXZkZDB2ODU6IHJlZ3Vs
-YXRvci1jb21ib3BoeS1hdmRkMHY4NSB7ClsuLi5dCj4gKwl9Owo+ICsKPiArCWNvbWJvcGh5X2F2
-ZGQxdjg6IHJlZ3VsYXRvci1jb21ib3BoeS1hdmRkMXY4IHsKWy4uLl0KPiArCX07Cgphbm90aGVy
-IGV4YW1wbGUgb2YgdGhlIHNvcnRpbmcgaXNzdWUuClRoZSBwYXJ0cyBJIGhpZ2hsaWdodCBhcmUg
-bm90IGV4aGF1c3RpdmUsIHBsZWFzZSBtYWtlIHN1cmUgYWxsIGFyZQpzb3J0ZWQgY29ycmVjdGx5
-LgoKWy4uLl0KCj4gKwkJCQlyZWd1bGF0b3Itc3RhdGUtbWVtIHsKPiArCQkJCQlyZWd1bGF0b3It
-b2ZmLWluLXN1c3BlbmQ7Cj4gKwkJCQkJcmVndWxhdG9yLXN1c3BlbmQtbWljcm92b2x0ID0gPDc1
-MDAwMD47CgpyZWd1bGF0b3Itc3VzcGVuZC1taWNyb3ZvbHQgaXMgZGVwcmVjYXRlZCBpbiB0aGUg
-YmluZGluZywgcGxlYXNlIGRvbid0CmludHJvZHVjZSBuZXcgaW5zdGFuY2VzIG9mIGl0LiAoYXBw
-bGljYWJsZSB0byBhbGwgY2FzZXMpCgoKPiArJmkyYzIgewpbLi4uXQo+ICt9Owo+ICsKPiArJmNw
-dV9sMCB7CgpwbGVhc2Ugc29ydCBwaGFuZGxlIHJlZmVyZW5jZXMgYWxwaGFiZXRpY2FsbHksICZj
-cHUuLi4gYmVmb3JlICZpMmMKc2FtZSBmb3IgYWxsIG90aGVyIHBsYWNlcyBpbiB0aGUgZmlsZS4K
-Cj4gKy8gewoKeW91IGhhdmUgb25lIHJvb3QgYmxvY2sgYXQgdGhlIHRvcCwgeW91IHNob3VsZCBk
-ZWZpbml0bHkgbm90IG5lZWQgYW5vdGhlcgpvbmUgaGVyZS4KCgo+ICsvIHsKCm9yIGhlcmUKCj4g
-KwlhbmFsb2dfc291bmQ6IGFuYWxvZy1zb3VuZCB7Cj4gKwkJY29tcGF0aWJsZSA9ICJzaW1wbGUt
-YXVkaW8tY2FyZCI7CgoKPiArJnsvfSB7Cgp0aGlzIGlzIGdldGluZyBjcmF6eSBub3cKCj4gKwlp
-cl9yZWNlaXZlcjogaXItcmVjZWl2ZXIgewo+ICsJCWNvbXBhdGlibGUgPSAiZ3Bpby1pci1yZWNl
-aXZlciI7Cj4gKwkJZ3Bpb3MgPSA8JmdwaW8wIFJLX1BENCBHUElPX0FDVElWRV9MT1c+Owo+ICsJ
-CXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gKwkJcGluY3RybC0wID0gPCZpcl9yZWNlaXZl
-cl9waW4+Owo+ICsJfTsKPiArfTsKPiArCgoKSGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Path 1 is real for a PHY that keeps its link interrupt enabled while
+armed for WoL. phylink_suspend() calls phylink_stop() before
+phylink_speed_down(), so the driver's suspend runs first. RTL8211F and
+AN8801R mask the link interrupt there; on Helios64 (stmmac + RTL8211F,
+wakeup-source) WoL suspend passed 4/4, though I did not log the link
+speed. Of the wakeup-capable PHYs in drivers/net/phy, BCM54210E leaves
+it enabled. Before this series, the link-up after the downshift could
+arrive after stmmac gated its clocks, and phy_interrupt() would read the
+PHY over a dead MDIO bus: the hang this series fixes. An aborted suspend
+is the safer failure.
+
+Path 2: phy_stop() with wol_enabled leaves the copper link up
+(rtl821x_suspend() skips genphy_suspend()), so the MAC causes no link
+interrupt. Counting netdev->ethtool->wol_enabled as a system wakeup is
+what phy_interrupt() already does for PHYs without mac_managed_pm.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
