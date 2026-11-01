@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 555FC606A33B
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 04:42:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F845606A330
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 04:42:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jIIaoASt;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=DZYz7dae
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=afYkmOgy;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=Qo+QGKu9
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,23 +14,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=NesQGos3C7PiQ8jNc1xo93HR0m98QMTx0TBZKDmPye4=; b=jIIaoASttW9XAXnbSqPc64IFm7
-	Zhf++QsGWpe7ZoBq+A2XgQ7c4Zu5bRaN8XOFJ7pJm7OsKJ7gForfjKbcnbUqgCM+2vhrbKPyFsgGK
-	zY4OIMDppCWZ5fu2DFcREuZ7HvmVZaimuwcn7kTyX9hxIU5hdLOpH2KX2YFi/zxFpw1O7SKyO9fUM
-	vJTsvg9UREHEypdGLWe72Orb4Fen4Wl6SD8Z8OIqYwP+goDBeoz/m8ogF56qVH/n8xxzwxeuQn4rv
-	EE32GYoO2tqM4qW8CG53LKcvian1ygGVnGwyLoj7OnzpK+2fI6Mtjo45jtE53FIkXjRIN8AtZVHk3
-	h2Aox82g==;
+	bh=xc9eqFinMLkX3XBGOQEWeLNumRNEp0xy+PR42hKp4CM=; b=afYkmOgyTTkD4btH8jUabLzOca
+	gPOzcBIf+MVZVs/YuPON7k9o48Q+xuYuqk5RhaaxdXacH3nicqXB36m1dkZGnocMcD7Cv0m3IZv4c
+	cg1vDN1lvUtLk5eHrTFowoyB+e8sMziUaD7QpiHAGWQb+GcwT8+rUeXLuKrmDjj0Tpo0sDNjQA6g3
+	eNJbZyS7Jg0k75SwTE9mmpMwYWd4tVA2hlHOTIYOXAv9Ei1VcF2Q7EXa3fbADJyd+KST+e8/N+9+9
+	Et+eg+N0mrGeDe/E0MQsYlcvoJodTZRdKA3xmyzRFGQKhcAABDUsQAe1J0jgjSN1gfC9WHzTK03aD
+	eOz3uohg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNNOL-0000000DsrJ-1Djh;
-	Sun, 01 Nov 2026 04:42:01 +0000
-Received: from mail-m12852.netease.com ([103.209.128.52])
+	id 1xNNOZ-0000000Dt0N-0Pei;
+	Sun, 01 Nov 2026 04:42:15 +0000
+Received: from mail-m16023652234.xmail.ntesmail.com ([160.236.52.234])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNNOJ-0000000DsqL-05se;
-	Sun, 01 Nov 2026 04:42:00 +0000
+	id 1xNNOL-0000000DsqN-2acB;
+	Sun, 01 Nov 2026 04:42:03 +0000
 Received: from 5950x.tail741d0a.ts.net (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 530dcc2cb;
-	Sun, 1 Nov 2026 12:41:55 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 530dcc2d0;
+	Sun, 1 Nov 2026 12:41:57 +0800 (GMT+08:00)
 From: Xing Zheng <zhengxing@rock-chips.com>
 To: broonie@kernel.org,
 	heiko@sntech.de,
@@ -50,28 +50,29 @@ Cc: luca.ceresoli@bootlin.com,
 	sugar.zhang@rock-chips.com,
 	lxt@rock-chips.com,
 	xing.zheng@rock-chips.com
-Subject: [PATCH v2 1/3] ASoC: dt-bindings: rk3308-codec: describe detection and ADC routing
-Date: Sun,  1 Nov 2026 12:41:47 +0800
-Message-Id: <20261101044149.2018744-2-zhengxing@rock-chips.com>
+Subject: [PATCH v2 3/3] arm64: dts: rockchip: restore RK3308 codec detection resources
+Date: Sun,  1 Nov 2026 12:41:49 +0800
+Message-Id: <20261101044149.2018744-4-zhengxing@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261101044149.2018744-1-zhengxing@rock-chips.com>
 References: <20261101040125.1864141-1-zhengxing@rock-chips.com>
  <20261101044149.2018744-1-zhengxing@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa1956a037103a8kunmda3ed7c817160b
+X-HM-Tid: 0aa1956a0b3403a8kunmda3ed7c8171622
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZSkIdVkIZTRoeGRkfSkpDS1YVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCGU1PVhlIHx5LQh8eGh5PQlYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=DZYz7dae+TXlq1ldUaqpW2cEH5GfABvLiIGYNIy1MGEno4FbMWU1a0tJGI2pb/PSsI9hUx2r3OOU8cXxCATWLlHBnAAhVER2huRAHK5Oc9DXkR8b2OOSjvbAJuA7TNvoQjb2JVWImUb70GNE+zydg0X+Dee1WOOntiXZ8rYX3rA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=1mF7Lz7IBagatGyxODZlzpHu7wr/RsOzyw+BwhJT0/k=;
+	b=Qo+QGKu9H6ce+LFR1oU9QsQVhG3e74EJkjnpj8SIfDd1aEgZml/aDzLjjWdRdtGtglK+oW17Y9kyzAyI9oTUgA+u9ISEFlDGS33/nK3Bep7Z4NXnrzBL+bewQUbNZISLwu+0dMzd5LhCV5ykGbHDeMqt/eCzoospCyW6exO7cgo=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=1YdCZdKcu6jcPnOK3BGWqFQvI2/EckQ+hEW64XoLjBQ=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261031_214159_304197_4B12C1D2 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20261031_214201_927326_335F3C22 
+X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,114 +93,38 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Describe the optional detect-GRF phandle and named interrupt resources
-used by the B/C headphone detector. Retain the legacy interrupt order
-and index-based lookup when names are absent. Document the detector
-disable and reversed-jack properties and their resource dependencies.
+Provide the codec detect-GRF phandle and SPI 114/115 interrupt
+resources with the same trigger type and ordering as the vendor DTS.
+Name the interrupts codec and hpdet so the driver can request the
+B/C headphone detector by name while retaining the legacy index 1.
 
-Describe the ADC stereo-group routing consumed by the codec driver.
-Require four unique group IDs in the range 0-3, in I2S2 SDI order,
-matching the driver's validation. Leave GRF routing unchanged when
-the property is absent.
-
-Extend the example with headphone-detection resources and ADC routing.
-Keep machine-driver amplifier GPIOs and debug interfaces outside this
-codec binding.
+Keep these SoC resources separate from EVB sound-card routing and
+external amplifier GPIO configuration.
 
 Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
 ---
 Changes in v2:
-- Retain the original detection descriptions and legacy IRQ ordering.
-- Keep the binding change in its own patch before the codec change.
+- Retain the same SoC detection resources as v1; no functional change.
+- Renumber after consolidating the full codec implementation.
 
- .../bindings/sound/rockchip,rk3308-codec.yaml | 55 +++++++++++++++++++
- 1 file changed, 55 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml b/Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml
-index 2cf229a076f0..60c6140dc5df 100644
---- a/Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml
-+++ b/Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml
-@@ -36,6 +36,49 @@ properties:
-     description:
-       Phandle to the General Register Files (GRF)
- 
-+  rockchip,detect-grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to the detection GRF used for headphone insertion and
-+      removal interrupts on codec revisions B and C.
-+
-+  interrupts:
-+    description:
-+      Keep the legacy interrupt order. If interrupt-names is omitted,
-+      the driver uses the second interrupt for B/C headphone detection.
-+    items:
-+      - description: Legacy codec headphone detection interrupt
-+      - description: Detection GRF headphone interrupt for revisions B and C
-+
-+  interrupt-names:
-+    items:
-+      - const: codec
-+      - const: hpdet
-+
-+  rockchip,no-hp-det:
-+    type: boolean
-+    description: Disable the internal headphone detector.
-+
-+  rockchip,hp-jack-reversed:
-+    type: boolean
-+    description: Reverse the headphone detection polarity.
-+
-+  rockchip,adc-grps-route:
-+    $ref: /schemas/types.yaml#/definitions/uint32-array
-+    description: |
-+      ADC stereo-group mapping to the four I2S2 SDI inputs. Each entry
-+      selects the ADC group connected to the corresponding SDI input,
-+      in SDI0 through SDI3 order. Group IDs 0 through 3 represent
-+      MIC1/MIC2, MIC3/MIC4, MIC5/MIC6 and MIC7/MIC8 respectively.
-+      All four groups must appear exactly once. For example, <1 2 3 0>
-+      connects groups 1, 2, 3 and 0 to SDI0, SDI1, SDI2 and SDI3.
-+      If omitted, the GRF routing is left unchanged.
-+    minItems: 4
-+    maxItems: 4
-+    uniqueItems: true
-+    items:
-+      enum: [ 0, 1, 2, 3 ]
-+
-   clocks:
-     items:
-       - description: clock for TX
-@@ -72,6 +115,12 @@ properties:
- 
-     enum: [ 50, 55, 60, 65, 70, 75, 80, 85 ]
- 
-+dependentRequired:
-+  rockchip,detect-grf:
-+    - interrupts
-+  interrupt-names:
-+    - interrupts
-+
- required:
-   - compatible
-   - reg
-@@ -85,11 +134,17 @@ additionalProperties: false
- examples:
-   - |
-     #include <dt-bindings/clock/rk3308-cru.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
- 
-     audio_codec: audio-codec@ff560000 {
-         compatible = "rockchip,rk3308-codec";
-         reg = <0xff560000 0x10000>;
-         rockchip,grf = <&grf>;
-+        rockchip,detect-grf = <&detect_grf>;
-+        interrupts = <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH>,
-+                     <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>;
-+        interrupt-names = "codec", "hpdet";
-+        rockchip,adc-grps-route = <1 2 3 0>;
-         clock-names = "mclk_tx", "mclk_rx", "hclk";
-         clocks = <&cru SCLK_I2S2_8CH_TX_OUT>,
-                  <&cru SCLK_I2S2_8CH_RX_OUT>,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+index 31c25de2d689..fb4465eda574 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+@@ -836,6 +836,10 @@ codec: codec@ff560000 {
+ 		compatible = "rockchip,rk3308-codec";
+ 		reg = <0x0 0xff560000 0x0 0x10000>;
+ 		rockchip,grf = <&grf>;
++		rockchip,detect-grf = <&detect_grf>;
++		interrupts = <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH>,
++			     <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "codec", "hpdet";
+ 		clock-names = "mclk_tx", "mclk_rx", "hclk";
+ 		clocks = <&cru SCLK_I2S2_8CH_TX_OUT>,
+ 			 <&cru SCLK_I2S2_8CH_RX_OUT>,
 
 _______________________________________________
 Linux-rockchip mailing list
