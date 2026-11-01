@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0B9CC60A2621
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:16:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ADF1560A2605
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:16:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RmQfipgI;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=rqn+WFU6
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YjABKSW/;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=jGdv0HbM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,29 +14,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FuklZfrtRJAOcclkWuRWvVRLOxhndJU7TK16ywQh0qs=; b=RmQfipgIo+/oeDlGJaSgA9OEDD
-	ThXP3W8FcnC47ewiEBeiDU/1kxP0qMl9FlGCo7wnpNXJ+P1yA2rRhwb65oS47RhSoQiCN9OHmTvup
-	+UNgTORza/oKRWAe0yahn43IUWvtAqqn/GVMcTas5ECwa3qOrJKTkxCXwm2874YSpyDpIGdYmjvos
-	1kZEJi8oTwGdDM8aAYp4UIprEtu7GEOxUOyqKX39aXMSpHGbL1lFfgpdobudhzzPnLFqrub6Te8Ji
-	jlaQvUhTJWF5ILoWYkU8/Fx+Tz9my0qjrFXMNkF733fOY22LvdUujZFoyD7B5dzWtjDSn65TFJntT
-	AEL4/XSw==;
+	bh=FClTzL91ilcSc4ops9CVxOoLTk+74S3HKYwI/KEK/9U=; b=YjABKSW/uc+Dc+DzBz8fiQWSLy
+	yiP5tMeKNRN5NtiEAxqlahs4PyVvs+xDkgFsvU8mpjxPWwL8VtJV29ye5oyVZcQTvFxLpc4rS+IhJ
+	kgxQ0ruaI4mSBm+euKXzMImorw8knDFRvGTAveHC0lS/WYZGTyZFZYQWw+JVxarWGw5pSfX7N1Pri
+	m+og2NQ+47Mi111MpdMuED/iTL2ZqJAtgDFVI9dJ+Y5Wd/kDiH/oXrqlUJAfHeKCGp7kYBDM9IFsy
+	O3e0p6VrEZD2wgsi+2LbXKHAELGI66DJhJex4KcHpDdBzN2ubpYkS7/nI86Zta+W0SMijkwQ1g2cK
+	WdvqJcjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdqF-0000000Ez0H-3r2a;
-	Sun, 01 Nov 2026 22:15:55 +0000
+	id 1xNdqL-0000000EzCN-0epi;
+	Sun, 01 Nov 2026 22:16:01 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdq8-0000000Eyns-0aOa;
+	id 1xNdq6-0000000Eyn8-4BHP;
 	Sun, 01 Nov 2026 22:15:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=eYtcCAUAyxcdw2cmJ7zq1Yfe3NPneNfyPaYN6IdyrTM=; b=rqn+WFU6tfNopmG6DEe9s4Vi7k
-	u+bbYY+z1arpxea6QCsrzpUK07zRh+4MFM+agupOh2KmyxvtXRFdnUP1ebLzTcROrKT2ZXcR3hbWG
-	za+rdsQFZTNLuhvQ+6OoHRHGS0t+jECbxkwgEmsd0aamHVHWSXUCnMfgVSqelOcioCAbkKVG6RwF2
-	qhcBavqDqzWidieTXZzPYEOLzGKD4hpeuoPeHohujKTU/qzhosAB+gtu8aEP4vuw+bDhBwtD3Betu
-	jFvTlDXg78L0gRK84TtM89ZALXmtG2SHGEKGh82pVhYkW9JcR+WM07D4DucErQovLCgd9uoz/GVsx
-	IkvWHBmQ==;
+	bh=cX02P8ZnTabknV6WIxatZgPYI8Lrd5opy+28EBBQ4Ww=; b=jGdv0HbMp5Ar1mmZcemj62b3Bz
+	IqfKVoQq3Y7uOoh4nesoe0YPrEQ8KHBKnCfNpSVz5ieRPsZtJptJdEV4h2VGYfxtO9Edkz+xcmyfU
+	+M6Om0aXubmbUPOtvsbCcGt4ljvkq2uC0kMN2DDwCrJ67/kyV2jzBr6cs3116CJfvJJtrqrkrPD5i
+	lHt5grw/apXIEJQOOD3NmupJs3IetHJnXvhm8kVxsGsN7/EWtu/8CVAaE5xEFSLlpk4F3+0PFrOi+
+	3/Jq6G2F+7NeTrymp7vJggcYEC6MD5MVuc9O5FZBe3aJOA7FICmeTc5Aa8E+dQQn6CWwvNUdeQ8yf
+	R49CAPSA==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: Igor Velkov <iav@iav.lv>
 Cc: Heiko Stuebner <heiko@sntech.de>,
@@ -47,17 +47,17 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable HS400 enhanced strobe on Kobol Helios64 eMMC
-Date: Sun,  1 Nov 2026 23:15:26 +0100
-Message-ID: <179357131394.4107717.10877160497446825996.b4-ty@b4>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add the front panel LEDs to Kobol Helios64
+Date: Sun,  1 Nov 2026 23:15:24 +0100
+Message-ID: <179357131398.4107717.5871351415650721805.b4-ty@b4>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261011-b4-helios64-emmc-hs400-v1-1-36951d319229@iav.lv>
-References: <20261011-b4-helios64-emmc-hs400-v1-1-36951d319229@iav.lv>
+In-Reply-To: <20261009-helios64-leds-v1-1-6c58a66bf0c6@iav.lv>
+References: <20261009-helios64-leds-v1-1-6c58a66bf0c6@iav.lv>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_141548_207612_D70BB74E 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20261101_141547_067695_BE55CD8C 
+X-CRM114-Status: GOOD (  11.08  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,16 +79,22 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Sun, 11 Oct 2026 00:52:37 +0300, Igor Velkov wrote:
-> The eMMC of Helios64 runs in HS200. Run it in HS400 enhanced strobe at
-> 150 MHz, as on Gru. The strobe line goes straight from the SoC to the
-> DS pin of the eMMC with no pull-down on the board, so enable the one
-> in the eMMC PHY.
+On Fri, 09 Oct 2026 03:40:48 +0300, Igor Velkov wrote:
+> Besides the system LEDs, the front panel of Helios64 has a network, a
+> USB and five SATA error LEDs. Each is switched by a MOSFET from a GPIO,
+> active high: NETW_ACT_LED_ON on GPIO0_A4, USB3_ACT_LED_ON on GPIO0_B3
+> and SATA_ERR0 to SATA_ERR4 on GPIO2_A2 to GPIO2_A6. The Kobol wiki
+> gives the colours: activity LEDs are blue, error LEDs are red.
+> 
+> Describe them next to the system LEDs. The panel labels the disks
+> HDD 1 to HDD 5, so the error LEDs are numbered from 1.
+> 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Enable HS400 enhanced strobe on Kobol Helios64 eMMC
-      commit: 0b1be7859dc26611558e4bbb7f42e4a1238af59a
+[1/1] arm64: dts: rockchip: Add the front panel LEDs to Kobol Helios64
+      commit: f78fc7aca073241b9d477bc0190ac02f3242e45d
 
 Best regards,
 -- 
