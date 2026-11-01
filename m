@@ -2,104 +2,77 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 673B3606A31C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Oct 2026 14:16:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 58500606A32E
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 04:02:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=b3ZzQd2d;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=APVmy2O0
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UViw4rwz;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=PjO9korU
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=89jYuRlXzjdOIY51TXzOeFmH42f9pj9/zmNkIxsY7UI=; b=b3ZzQd2dXo6ghsOu2CcMNRKSyz
-	e+77t6V7QrkwqtyLvVoDRXlta12wGVjdVFQti2faW7xjfnfhrbLrXaGnV8yWB6vNyqVGf22/RbCNC
-	xejAAMxd9/NnW6YcrdrjJ3a6vpaiD/hC3X2KAuuNGHIKWki+9UQVdJb7FJrHzZjLYaGFCww1MfoXo
-	cOrUNa9cijI+XZkt9yEvQJZUPH4zgseLlOrDq67W/pXKzRkrDMKEDOV0268xin5axPHwLpSqZkxPv
-	QhCegHD7c/E8ofHDybx6KN8Jcch1IGFnrxemfA2Fpl3aFwOiasUOYXX9WFRy5tX8IpNhM+n9tn7Ji
-	0ZSTMqHQ==;
+	bh=ULCq1riRMaY7pwtv+0dfctemV2NGyLiFxlG/WPxOkSw=; b=UViw4rwzHBexzREiHp9dkWQt1u
+	j5Yc/Vv5fRXl1WD5mXdibwPz1V6zSJdOELycRt663xETSjzc17sWVONXFSMsAwV3OS7RGN7ZwgNFT
+	onm//Q/VYev90xpdPQAFAsK+r8JPjgxHaCBECDnQqOdgKFofmZ7cjohJyWhXRptU0j6h3+temTpon
+	qQlCF1/rROOzt+YPhOJ1g06quFrckWiOlzFFrCozt6r9q5mIyNlE5hpstTcwsPLmqTD2ndnNU0NSv
+	0PNVuXrPjo1+m53t+Qh1i3Q0/kJBmxY/yn1oiIoc9VYxQMYqIayL51h2PYrcUtQGHbuCkzj+kwdTj
+	atJDLq5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xN9sG-0000000DOfT-3Yum;
-	Sat, 31 Oct 2026 14:16:00 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1xNMln-0000000Dr6q-2FY0;
+	Sun, 01 Nov 2026 04:02:11 +0000
+Received: from mail-m93243.xmail.ntesmail.com ([103.126.93.243])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xN9sE-0000000DOei-1G5f
-	for linux-rockchip@lists.infradead.org;
-	Sat, 31 Oct 2026 14:15:59 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2e9d1114320so12693295ad.3
-        for <linux-rockchip@lists.infradead.org>; Sat, 31 Oct 2026 07:15:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793456157; x=1794060957; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=Wnbq5enmeXXMtrxXOCknlMCahlJdLBMQr0NRDI8YZbI=;
-        b=APVmy2O01XLrhhP1SFoXsxgYYlJ2IHurVH48ZHXe2lC7wNBDLXx+DUTDTuyP74DxY+
-         nOMUN5BN8N7UNoH1hjYE8CdU8OLXYX04MjayEF3Y0McAXrKQyP+WKMwtw5kbISVfcZHx
-         +3k5yonWti075YV5aQIqn8ko6f9ICTF2Elcp8K30N7rbT7KDjEpSPPHgIzz1D6u7adRc
-         /0iB1K3gF4+t3/VZrMvf3QMnKAoKYGF8m2ntm0II0HCOlxsg2ckIFVXExd5vN8jFyppW
-         t2yBjB4H3rTxOEp9/ToNqU8iRq1mM4FcqjTTw7AMRs50rA8QCSytXfoKEr01hlnI24RS
-         /+Pw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793456157; x=1794060957;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Wnbq5enmeXXMtrxXOCknlMCahlJdLBMQr0NRDI8YZbI=;
-        b=VqxNQbAGUjZhXfE2JM1oqpv3S8LCfj5URLdbMQUpx0gQmQSKm7OScytJvHSHppumMo
-         OEIZc+GZVelWKg13alX0xiGIOpHnslcIAZc9l77dkGVsMaYPGoTSSYTXnnY1jMNPXBdJ
-         j9UosFUubBx9yBKtsPeaJl2yRZgAbiyoJ8mEy/Rco5MdmFcU1iGF834/5or0JBpjoVv0
-         dOJLhd0IM3BxOSoVcN94Y59hEofksdV3GS9QM/EKsecg1LBH6V+Yzd9HLS60shWbDEPd
-         A3IrZk9B4aMZ+smZd7CTp4nhmBA2VpS6JTkti+ArZCKRuWmSNvA73BbkG6ZXGt4co8ir
-         Dx0g==
-X-Forwarded-Encrypted: i=1; AKwUvBxPQR/8VqLsOA8zdGlZZYGdNIIu8Nfnf1bZ1/N0azdMm3Mdk4+OCE736IN470DjDwvRZBVHnma+NqUfTLNjAg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKOmi12wSSRQMfLdX2f91kvxqdPKIdFtoHJOjCqWMebgKinZaPc
-	AXyG0t+RU1cCQdnGmjNBpsGxy9i6CDlPXGrgcQluGDhX6zS+ABGX5M+g
-X-Gm-Gg: AYBFou26hrU6ey6yuQ2yPfDwunGZFzN1jT4fU2a8QD0hzFKIxnt0YMLR8zFC0PUhvdT
-	D5N8Pjk9gnlft6JnXNmaiBbg8+fe5P6FqQ4PqB85gmV3bHUnF7g06egIjWEgwjvp360kXsg1iIW
-	5eYWB2t+2rrYO/1vF6pK+xvcTbqGY/5FwL7sPXPpxbmJAvuIz1nTKSnFtQiaLbDLXVP4iGgcz4d
-	0VQnAPTeXzEcgLtjSvtwgX31WQSIEZmnA2oYEhjHgIQk57HLjE/ZXUQcGg8pF6WI1k57kKCMr3F
-	7mNOUCrXRBKsT29IIJ8YBXHmje7JuFBxmD1ZXqZR87qTRq5eVxl8CSNiRrnZVwxwzMBINvZSKj+
-	KPYRDN1zih3tPtut8BVGOLELnLyBUnqca72nwpxTEZwC+aSF9J+uTlhtg9XNRircNN0K27MiM8U
-	hwRrwg4oMtUChAQ8B8rqhef5qHWt0bsl6u0aEOeHYGcEYZ0DtRS/XWl+hDnMuPdNiJBulQD4oEw
-	LIBQZSQkvQvEsYm4ngpEcrw+bBObgSyLk73kQmdHpwRsO5Eo0jJDYmHnK8ymLWgkNHgiYldf9Ic
-	yrnUNorqodaBerHR1S8Jtizl1OlyEoMKyrIwDcVh
-X-Received: by 2002:a17:902:f548:b0:2e9:572a:7da7 with SMTP id d9443c01a7336-2eb364f1979mr52661215ad.49.1793456156941;
-        Sat, 31 Oct 2026 07:15:56 -0700 (PDT)
-Received: from arch.localdomain ([152.175.67.103])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2eb38e9633fsm15743805ad.0.2026.10.31.07.15.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 31 Oct 2026 07:15:56 -0700 (PDT)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: broonie@kernel.org
-Cc: conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
+	id 1xNMld-0000000Dr1g-1RTz;
+	Sun, 01 Nov 2026 04:02:04 +0000
+Received: from 5950x.tail741d0a.ts.net (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 530d84144;
+	Sun, 1 Nov 2026 12:01:52 +0800 (GMT+08:00)
+From: Xing Zheng <zhengxing@rock-chips.com>
+To: broonie@kernel.org,
 	heiko@sntech.de,
-	jerrysteve1101@gmail.com,
-	krzk+dt@kernel.org,
+	linux-sound@vger.kernel.org
+Cc: luca.ceresoli@bootlin.com,
 	lgirdwood@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-sound@vger.kernel.org,
 	perex@perex.cz,
+	tiwai@suse.com,
+	linux-kernel@vger.kernel.org,
 	robh@kernel.org,
-	tiwai@suse.com
-Subject: Re: [PATCH v2 2/2] ASoC: codecs: add support for Everest ES7202 PDM ADC
-Date: Sat, 31 Oct 2026 22:15:46 +0800
-Message-ID: <20261031141546.153385-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <179330018771.62540.301527067818961107.b4-review@b4>
-References: <179330018771.62540.301527067818961107.b4-review@b4>
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	huangtao@rock-chips.com,
+	sugar.zhang@rock-chips.com,
+	lxt@rock-chips.com,
+	xing.zheng@rock-chips.com
+Subject: [PATCH v1 3/6] ASoC: dt-bindings: rk3308-codec: describe ADC routing and jack detection
+Date: Sun,  1 Nov 2026 12:01:22 +0800
+Message-Id: <20261101040125.1864141-4-zhengxing@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261101040125.1864141-1-zhengxing@rock-chips.com>
+References: <20261101040125.1864141-1-zhengxing@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+X-HM-Tid: 0aa195455a8603a8kunm8fccdc7416d2aa
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaQk5IVh9MTU1CQkhKTxhKTVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=PjO9korUbULQWdWwMJtqpHHF5S0BM6IRU4dLNro65Hf++GRScd+vgPOd0/cPrjqS6e9nbldhKRkElzgHmnIDMOCP81pw3Ty0RHmyw93Z4yFH+62bC/wag+wB+1IdaEddK0O3/1n28qfkbiysCgvLq6Yl/Fcfr85lzwQkgMCHYRE=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=5wKNpBs2J26ByKRc9aOZS7O7R2Kjv3Zvh9P1Rri0a20=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261031_071558_352565_5D9D1486 
-X-CRM114-Status: GOOD (  27.57  )
-X-Spam-Score: 0.6 (/)
+X-CRM114-CacheID: sfid-20261031_210201_625351_EEB36BD9 
+X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,134 +85,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+Describe the internal ADC stereo-group mapping to I2S2 SDI inputs and
+constrain it to a permutation of the four hardware groups.
 
-Thanks for your review.
+Document the detection GRF, codec and headphone interrupts, and the
+board-specific detection wiring for codec revisions B and C. Keep these
+resources optional for existing device trees.
 
-> > Add support for the Everest ES7202, a 2-channel PDM analog-to-digital
-> > converter controlled over I2C. The device outputs PDM data to the SoC
-> > PDM controller and is configured through registers for supply voltage,
-> > analog front-end and per-channel PGA gain.
-> 
-> This looks pretty good, a few relatively minor issues below but nothing
-> major.
-> 
-> > --- a/sound/soc/codecs/Kconfig
-> > +++ b/sound/soc/codecs/Kconfig
-> > @@ -1274,6 +1274,16 @@ config SND_SOC_HDMI_CODEC
-> >  config SND_SOC_ES7134
-> >  	tristate "Everest Semi ES7134 CODEC"
-> >  
-> > +config SND_SOC_ES7202
-> > +	tristate "Everest Semi ES7202 CODEC"
-> > +	depends on I2C
-> > +	select REGMAP_I2C
-> 
-> You should also add this to SND_SOC_ALL_CODECS.
+Signed-off-by: Xing Zheng <zhengxing@rock-chips.com>
+---
+ .../bindings/sound/rockchip,rk3308-codec.yaml | 54 +++++++++++++++++++
+ 1 file changed, 54 insertions(+)
 
-Added.
-
-> 
-> > --- /dev/null
-> > +++ b/sound/soc/codecs/es7202.c
-> > @@ -0,0 +1,367 @@
-> > +// SPDX-License-Identifier: GPL-2.0-only
-> > +/*
-> > + * Copyright (C) 2020 Everest Semiconductor Co Ltd.,
-> > + * Copyright (C) 2026 Jun Yan <jerrysteve1101@gmail.com>
-> > + */
-> 
-> Please make the whole comment block C++ so things look more intentional.
-
-Done.
-
-> 
-> > +#include <linux/bitfield.h>
-> > +#include <linux/delay.h>
-> > +#include <linux/device.h>
-> > +#include <linux/gpio/consumer.h>
-> > +#include <linux/i2c.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of.h>
-> > +#include <linux/regmap.h>
-> > +#include <linux/regulator/consumer.h>
-> > +#include <sound/pcm.h>
-> > +#include <sound/pcm_params.h>
-> 
-> linux/of.h and sound/pcm_params.h aren't needed I think.
-> 
-Right, both removed.
-
-> > +static bool es7202_volatile_reg(struct device *dev, unsigned int reg)
-> > +{
-> > +	/* status and device-id registers are read-only, never cached */
-> > +	return reg == ES7202_CHIP_STA ||
-> > +	       reg == ES7202_DEV_ID1 ||
-> > +	       reg == ES7202_DEV_ID0;
-> > +}
-> 
-> A switch statement would be neater and would probably generate
-> equivalent code.  Are you sure that the ID registers are actually
-> volatile, that's quite unusual?  If they've volatile the hardware is
-> accessed on each read, if you just omit the default then they will be
-> cached after the first read.
-> 
-
-Thanks for catching this. The ID registers are static and don't need
-volatile marking. I'll drop them from es7202_volatile_reg() and use
-.writeable_reg to make them read-only, so they are still cached after
-the first read but skipped by regcache_sync().
-
-> Also should the rest register be uncached so we don't try to write it
-> back out as part of a cache sync by mistake?
-> 
-
-Agreed, I missed this. I'll mark ES7202_RESET volatile so it can't be
-written back during a cache sync.
-
-> > +static const struct regmap_config es7202_regmap = {
-> > +	.reg_bits	= 8,
-> > +	.val_bits	= 8,
-> > +	.max_register	= ES7202_DEV_ID0,
-> > +	.reg_defaults	= es7202_reg_defaults,
-> > +	.num_reg_defaults = ARRAY_SIZE(es7202_reg_defaults),
-> > +	.volatile_reg	= es7202_volatile_reg,
-> > +	.cache_type	= REGCACHE_MAPLE,
-> 
-> I notice that other Everest devices set use_single_read and
-> use_single_write - especially for write we can easily trigger
-> multi-register write as part of a regcache sync so if the device lacks
-> support it'll create bugs.
-> 
-
-Thanks. The other Everest codecs are the only precedent here - the
-ES7202 datasheet does not document multi-register (auto-increment)
-writes, so I cannot rely on them. I'll set use_single_read and
-use_single_write so a regcache sync can never turn into a burst write.
-
-> > +	es7202->supply = devm_regulator_get_optional(dev, "vdd");
-> > +	if (IS_ERR(es7202->supply)) {
-> 
-> Unless the device can operate without power this should be a normal
-> regulator_get(), the core will substitude a dummy regulator if it's not
-> configurd by the firmware.
-> 
-
-Right, VDD supply is required. I'll use devm_regulator_get() instead.
-
-I'll send a v3 with these changes.
-
-> -- 
-> Mark Brown <broonie@kernel.org>
-
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml b/Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml
+index 2cf229a076f0..68859c64b72b 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml
++++ b/Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml
+@@ -36,6 +36,46 @@ properties:
+     description:
+       Phandle to the General Register Files (GRF)
+ 
++  rockchip,detect-grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the detection GRF used for headphone insertion and
++      removal interrupts on codec revisions B and C.
++
++  interrupts:
++    items:
++      - description: Codec interrupt
++      - description: Detection GRF headphone interrupt for revisions B and C
++
++  interrupt-names:
++    items:
++      - const: codec
++      - const: hpdet
++
++  rockchip,no-hp-det:
++    type: boolean
++    description: The internal headphone detection input is not connected.
++
++  rockchip,hp-jack-reversed:
++    type: boolean
++    description: The headphone detection input has inverted insertion polarity.
++
++  rockchip,adc-grps-route:
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++    description: |
++      ADC stereo-group mapping to the four I2S2 SDI inputs. Each entry
++      selects the ADC group connected to the corresponding SDI input,
++      in SDI0 through SDI3 order. Group IDs 0 through 3 represent
++      MIC1/MIC2, MIC3/MIC4, MIC5/MIC6 and MIC7/MIC8 respectively.
++      All four groups must appear exactly once. For example, <1 2 3 0>
++      connects groups 1, 2, 3 and 0 to SDI0, SDI1, SDI2 and SDI3.
++      If omitted, the GRF routing is left unchanged.
++    minItems: 4
++    maxItems: 4
++    uniqueItems: true
++    items:
++      enum: [ 0, 1, 2, 3 ]
++
+   clocks:
+     items:
+       - description: clock for TX
+@@ -72,6 +112,14 @@ properties:
+ 
+     enum: [ 50, 55, 60, 65, 70, 75, 80, 85 ]
+ 
++dependentRequired:
++  rockchip,detect-grf:
++    - interrupts
++  interrupt-names:
++    - interrupts
++  rockchip,hp-jack-reversed:
++    - rockchip,detect-grf
++
+ required:
+   - compatible
+   - reg
+@@ -85,11 +133,17 @@ additionalProperties: false
+ examples:
+   - |
+     #include <dt-bindings/clock/rk3308-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
+ 
+     audio_codec: audio-codec@ff560000 {
+         compatible = "rockchip,rk3308-codec";
+         reg = <0xff560000 0x10000>;
+         rockchip,grf = <&grf>;
++        rockchip,detect-grf = <&detect_grf>;
++        interrupts = <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH>,
++                     <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>;
++        interrupt-names = "codec", "hpdet";
++        rockchip,adc-grps-route = <1 2 3 0>;
+         clock-names = "mclk_tx", "mclk_rx", "hclk";
+         clocks = <&cru SCLK_I2S2_8CH_TX_OUT>,
+                  <&cru SCLK_I2S2_8CH_RX_OUT>,
 
 _______________________________________________
 Linux-rockchip mailing list
