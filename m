@@ -2,12 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6474B606F2DB
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:17:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C61726075752
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:17:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EPbUZ372;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=H0LyhZYG;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=uEV+UsRF
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2HMI7f6R;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=liG5gMK2;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=JtzFVbFA
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -15,65 +15,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=id1K4AkX6btCoNSqM5d+yUjTJWlsBkcVClDgYK1HRAM=; b=EPbUZ372iUCADDdhCoILt/JgiO
-	lNcabxg4P0nANJtjSsIdBY7YnIdFlGIJry2DJnE7QOgU0mwqaXQfRmyfnnR8EJWaES/qNTpzDhYEx
-	h7gy+ODVj1Zy6lPi7vilZv6efDn9sxsPLob/Uck7hiJ0p74sgTB2XQxs4ZFL8LAh0IARTLfwOZ+kB
-	Zc49OUeX09eLHNbHIXnpa9jkCoWlJWK8xwbfPnf3xiATx8VJHrnARFhHDbk/xJ+sMTfszEZ1nR2qR
-	ITZOBJSzvOU8ccsmE37+vhQnctvsL2Gc3xCDJSlBUMyzoepsAm5+pi5uSrU+Pz0Hjy3q57sZVHzpS
-	hLrlIrww==;
+	bh=mLRZPB1dQrW/x7caMDSrVY1ldPMvURNPNNsQycQbtpw=; b=2HMI7f6RLnARE7A2tJNO96cjmg
+	hxLrhB+XGlM1677cNyyVRu3gEvJPw4z551G25pruWNqLYeodazgHJ4/mctsVZtuyIXbdPYinqgJEr
+	pppmcS9bkvc9nAxfkNXKJkAyuP7/VNdVhtUaaq+IZjCD7nu1LqieIBOr8rHKDIl+6J6PVhpslQ2iw
+	vnbwc1Vb3WOXtYbe7UrDmRL2pwwJzFhxWZhP+3sZDPdsIVJgGj9sEoFl4D1GKyWFByVFPVqedMacM
+	AZSr7XDztOub00AP3rNyK3HueQV1jYviir6XuI2sPvTfZs2g+tfnVR3QWAvfX9M3ZfIgoKkmGUmXw
+	MHKCB81w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdrV-0000000F2cY-3ql2;
-	Sun, 01 Nov 2026 22:17:13 +0000
+	id 1xNdrR-0000000F2Qi-1tR8;
+	Sun, 01 Nov 2026 22:17:09 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdr2-0000000F10P-0UXl;
-	Sun, 01 Nov 2026 22:16:45 +0000
+	id 1xNdr0-0000000F0vm-0uaR;
+	Sun, 01 Nov 2026 22:16:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
 	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=jNvebCA3UqtmaXBwksfo8idH4tYB1vvNqeOjeRCYRLI=; b=H0LyhZYGF879dlzDOqxbNjzF3U
-	/+BnS3mWZ/IfRoE1fOgm/u684yAl15UqRGMx+rdqwWj2Kpcs4pItrRrL9Zfk3K9Eul/OBMvVEzOUm
-	qs5YYx7WvdOgZPmfdm5SUQQrFmMVRT/nlIMzKWnJlCfDlIV1gI+5VrwS+mTCcObWXm7HmUCyvYv3p
-	c5RIQakG8GriJcW3hrFBIZUrFeQvoaxQPZMkZQC/mlMT0KlMMKBbXAeAA5JuU3pKCNJw/GF0SfV6j
-	M51klgydnxhSTDJQuAZMCe9v27DOUR7cCrtaaXLJfKgBxb9KZu/B88EAjgeOxz8F3jyUWloA8Gos4
-	FwdDMayw==;
+	bh=D/8ujQZQqA3V4KDGStCwEnZN+ncI+5OkOUdViJ1Jw74=; b=liG5gMK2zloew0fPjD95F0yE9J
+	l6n/ZZ9vJTeGQPO7B7t15r54QcuWP1VcNFWGkdE9HeTy5gYUDSQZ8SiykWbiRhXiiH+Wtiy4eOL3l
+	8zqMyjyIvuQs8XQgLwYKgjRgLBzmu2Tag5IxQrJCpS0Xz3ny+HOKjHLWcNAdHHzRGURwsJ1J47OS3
+	014scoCCiEn2uppTin7Y9uJbOq7Uy+AAfWGPAcXWpVxRfzOGjcVFoxY9xo3Vh01VuEtrqFb8c5x6+
+	3G4+hJPO0fINtzsruyITYgTKY2P55TfN18N61X9NnoTL/6ndwQCVc3SLZebTYinIuOFc0MSclATzj
+	VVQcxBLA==;
 Received: from gloria.sntech.de ([185.11.138.130])
 	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdqi-00000001ses-0PnN;
-	Sun, 01 Nov 2026 22:16:33 +0000
+	id 1xNdqg-00000001sem-3dh9;
+	Sun, 01 Nov 2026 22:16:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=jNvebCA3UqtmaXBwksfo8idH4tYB1vvNqeOjeRCYRLI=; b=uEV+UsRFNWzPJQZRmavo5i76In
-	igSrs0bex1SvT62OPJ1IMUCWBWhTpjvsA5S7TQT88E6RhmTnAS0uY/x/8/j5wUDeZZqEUChNaPuCs
-	P0CyF4WStwddXCr2k56WyZqINmDrJnzdekvMMJAFAVWwhH06V1gYy2ppolsZ80LA+RdjfVsZw5KWh
-	BW3WtwCM2JcxdYqTC4TJp6KWyz8TUDLWtKpNOV14EqNglguptmAzvb50mFjlKZn41siQwx9DtqZj5
-	ogF650wsbfNJR+A9GfCCY34iQXdU5Xli7M6Y0UeS26B3eIo9ycbb+ypfrCBnCMd6uNMWW85PXMWsi
-	yCW3HNpg==;
+	bh=D/8ujQZQqA3V4KDGStCwEnZN+ncI+5OkOUdViJ1Jw74=; b=JtzFVbFAof+H3fhSP83ULkadMA
+	XFFLc/PIYLWHMwazH8l7OFZjRL7HWSgxDx1M6KYo4yyOxwvEeBmetFRJk45EQi3PDWeHa+akf3Gar
+	0fP7eQbP+4n/4sPeel1LSHGA8dVneA0OTVw/ksDHrJwKTl2pkWhI5170AXCldzLhL5Y2Frho12qZo
+	x90y4HdI+3c8aUZ85kIvK+8Dyrm9vfzWKabz95wIVdSMgkes3oNDsON19TwXooG93xXv0eKAyOecy
+	sDyqbGgbVtpmNSIfHNof3eFhWK7JZob89HlteTdCBhlbZZ9+vWEEsWRpCXM7XHXB2ds/i7fs/5HmZ
+	pZFkjhOg==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Miguel Jesus Seron Gonzalez <info@gluon.es>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
+To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Dongjin Kim <tobetter@gmail.com>,
+	Pragnesh Patel <Pragnesh_Patel@mentor.com>,
+	Akash Gajjar <Akash_Gajjar@mentor.com>,
+	Igor Velkov <iav@iav.lv>
+Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: odroid-m1: keep vcc3v3_pcie enabled from boot
-Date: Sun,  1 Nov 2026 23:16:09 +0100
-Message-ID: <179357136501.4108155.9270952989405440142.b4-ty@b4>
+Subject: Re: [PATCH] arm64: dts: rockchip: Describe the Ethernet PHY on ROCK Pi 4
+Date: Sun,  1 Nov 2026 23:16:07 +0100
+Message-ID: <179357136487.4108155.14582392361457902889.b4-ty@b4>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261019132458.855-1-info@gluon.es>
-References: <20261019132458.855-1-info@gluon.es>
+In-Reply-To: <20261025-rockpi4-gmac-phy-v1-1-69ce4d677189@iav.lv>
+References: <20261025-rockpi4-gmac-phy-v1-1-69ce4d677189@iav.lv>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_221625_494579_C8F83EC7 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20261101_221625_477430_F7575845 
+X-CRM114-Status: GOOD (  12.81  )
 X-Spam-Score: -0.2 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,21 +96,23 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Mon, 19 Oct 2026 15:24:58 +0200, Miguel Jesus Seron Gonzalez wrote:
-> The 3.3V supply of the M.2 slot is a GPIO-controlled fixed regulator
-> without regulator-boot-on. When the regulator driver probes, it
-> requests the enable GPIO as low, cutting power to an NVMe drive that
-> the bootloader has already powered up and used. When the PCIe
-> controller is built in, it probes a few milliseconds later and
-> re-enables the supply. The drive therefore sees a brief power glitch
-> without enough time to fully discharge.
+On Sun, 25 Oct 2026 22:55:51 +0000, Igor Velkov wrote:
+> The ROCK Pi 4 GMAC node has no mdio subnode and no phy-handle, so stmmac
+> scans the whole MDIO bus. The RTL8211E answers at its strapped address 1
+> and at the Realtek broadcast address 0, so two phy_devices are created
+> for one chip, and the netdev attaches to the one at address 0.
+> 
+> On system suspend mdio_bus_phy_suspend() leaves the attached PHY to the
+> MAC (mac_managed_pm) but suspends the unattached one, which writes
+> BMCR_PDOWN into the same chip. With s2idle and a MAC Wake-on-LAN magic
+> packet, 17 of 40 cycles did not wake.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: odroid-m1: keep vcc3v3_pcie enabled from boot
-      commit: ff9ff0e5e40dde8e7d769c86d8314b37b323cac7
+[1/1] arm64: dts: rockchip: Describe the Ethernet PHY on ROCK Pi 4
+      commit: f8d406e3435ca62299cab6975248e17eadc7166b
 
 Best regards,
 -- 
