@@ -2,81 +2,64 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 640FB6074109
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:17:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ACEF16074B4D
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:17:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Qr7fsorA;
-	dkim=temperror header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=O8zRDlrz;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=waKZaezF
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jSDgtxuV;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=XYeaF+lL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=/u2qSwZvrU6yZ3Wn2gY+G9RxeodZiSDbOn0vHf7ExFs=; b=Qr7fsorAlh2lC7XrhorHOKXaAL
-	/uE+QEXXI3C9xUeF4IaJCxKbQ4gUP5Yhs7gWBMgUJ7Ihav4kkTF5XNoeR5K8m4nSictkAX1mvjsQy
-	drqb4yXfbTzOL+StT541Hgj1ut3Gh2aUQTDE9/UdH+JhMAi2qzzLyU/PZoWdmKO7oqQflZUcpT0V0
-	NpfYM0ziRiw8swClaooyNbjnLLwpkc2Dvo2Aa6v5hCGM91aqU7FewK32EmhQTf9rPWbGl4sFAfZ1e
-	pbVXl+XBPcouwmU9o4cCIk019wWHbpUHlW7ygkdkUNb3xO4N9I4YPgfXdXJcwiaNnPb1gOO8kb14i
-	yMzK5uAA==;
+	bh=LV28Amoh2wytHOkiJviFuHRnT62NMY+yBGEP0+JSpQk=; b=jSDgtxuVUqUR6dfgnb8wFbOlpG
+	3ykkCj8P+Sz+FzbyPjgLtSdIWkFC1CZUJhsdptenF5x6hYMKwXqR/VKIV9rwNx+E9io1G4UZOf5gH
+	gKjlmdiP+b0dhJJcBuajtEl251vABugKzVf+fzg7CqMxIb+Ti+/xnhcocXl2MF4fywD2n2EjeFRUM
+	5sJ0HNNVHM64DsYwWympXXcRtL4aM/rqnwTl+Mtl/scSFIphp0CTVuvaZtY/c0EpctRkhkEsu0LN5
+	fESlU0Sc5MBF0vxi8FxjC/PVip49rhyJhWvZHYKidzgdVeHLqztL0QgryVrEM/0r7Jr+90SEoRR/k
+	v9NE0rrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdrH-0000000F1pb-1Zch;
-	Sun, 01 Nov 2026 22:16:59 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xNdrN-0000000F2B2-2Xr2;
+	Sun, 01 Nov 2026 22:17:05 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdqu-0000000F0f5-0aYh;
-	Sun, 01 Nov 2026 22:16:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=LKx3D3L8i20KkgdM053WRZoZcyEWptAt+bunmlcQ35w=; b=O8zRDlrz2DGoJ8qPlaRkBDXsLH
-	Xpo1Ao0HKcjwMQjmhUYvqnp/W9HzZkrKxjmPg6vb/H7kttN7bsEVsncWU6yeQ0nJwXYjKFOm/gxl1
-	G/IU4nR2U3mz6IjwOZjSHANjw4IfglLHG7TXjKxBbCK0xke9FSKMfph3qdObdxL/PUFfCqVpaSOsw
-	AgyVd4EIdqiDlHJz6WHFMbIiqgE5Uv3oXw3hyU3adHH2KhC+a1sktSeVMyvFr0BYzR4Axaj4OWgQr
-	2jcyywPkgXONFvyyVm8aIQFaRi5oEmSOXcVOo6LNc0FXKBC5Px7JDzV6Lvt3ivZFXaUP3RG6/QQKh
-	V8obv05g==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdqg-00000001seo-46yT;
-	Sun, 01 Nov 2026 22:16:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=LKx3D3L8i20KkgdM053WRZoZcyEWptAt+bunmlcQ35w=; b=waKZaezFft+W4+DVAkBekptegW
-	UnVtPxS4CWRmPMUfT3usNMXRPi8pgRhKiYrCC2qldwTF6kvbPud9Rv7dp711s66/Cn4JMTgHi4jE/
-	Dan6sZi23Dgp9BRiTCR7QsGIrt1bO0O/kbzrt5213L9azRmU/aVc4z29eJoGXc9mYP/AOEd2P5Hti
-	8HVpHlQ8NcnOSef9F2acRL0TLvgmxMqtbSeCZ2Nw5bKT7LAO1hk036BgG7raWsIcnEKJJVWnIefEE
-	cagbA2Zxzi5h0KO962bVDJQPnzq6Vpv5qsRfmX0xor0slj/x1u/uwVDKKkJaw262eKa9Xvs0FTML2
-	lMCkZ8Yw==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Guenter Roeck <linux@roeck-us.net>,
-	Jean Delvare <jdelvare@suse.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Igor Velkov <iav@iav.lv>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-hwmon@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: (subset) [PATCH 0/2] Label the fans on Kobol Helios64
-Date: Sun,  1 Nov 2026 23:16:05 +0100
-Message-ID: <179357136496.4108155.6955639670454082907.b4-ty@b4>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261018-helios64-fan-label-v1-0-69a3f96d4efa@iav.lv>
-References: <20261018-helios64-fan-label-v1-0-69a3f96d4efa@iav.lv>
+	id 1xNdqw-0000000F0o6-37bD;
+	Sun, 01 Nov 2026 22:16:38 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 667B544035;
+	Sun,  1 Nov 2026 22:16:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 495611F00919;
+	Sun,  1 Nov 2026 22:16:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793571398;
+	bh=jgMNL39llvWo9fpC9p/QMlWjuszkHAxcrG1aLPRLi8g=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=XYeaF+lLG+zcg+MoYoZlG0y/uk5q8MRTTDbq8BkdvkzUFl9Vun1ihD1SxAc2ECy16
+	 z4DWocwx1WWi47Oj9QiNtJ6jmhL7zmf5bxeoWHoY4yzM2kZQfolcuIAWxK+jS7cm07
+	 fmwAg/Ivw2hGS6A7TJkYkC3exTpBiM5aaokwLR9TjbsfP3pWR5EZZp804p7drBfMd8
+	 frNkLhYzNMl5ef+Cj82eXGRsRKL/A4gC1aPR37M48qabULeNXZFgqSenEBQ9QKLwWw
+	 Vzz4O5/hem3VSNyc/YuAn2p3V4AP0T1bhoNHZjIEalvXnARs3fwKPBkflkTi+V8isn
+	 Z38bORaSKlOQw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 4020238003B8;
+	Sun,  1 Nov 2026 22:16:38 +0000 (UTC)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_221624_717856_69D25D47 
-X-CRM114-Status: GOOD (  10.05  )
-X-Spam-Score: -0.2 (/)
+Subject: Re: [PATCH v9 0/3] PCI prerequisites for PHY consumer/provider split
+From: patchwork-bot+linux-riscv@kernel.org
+Message-Id: <179357139679.2624073.13873851750746305916.git-patchwork-notify@kernel.org>
+Date: Sun, 01 Nov 2026 22:16:36 +0000
+References: <20260810124315.433448-1-vladimir.oltean@nxp.com>
+In-Reply-To: <20260810124315.433448-1-vladimir.oltean@nxp.com>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: linux-riscv@lists.infradead.org, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, spacemit@lists.linux.dev,
+ linux-tegra@vger.kernel.org
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +72,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Hello:
 
-On Sun, 18 Oct 2026 07:54:58 +0300, Igor Velkov wrote:
-> Helios64 has two identical PWM fans, and userspace can tell them apart
-> only by their platform device names. Patch 1 makes pwm-fan.yaml
-> reference fan-common.yaml, as Rob suggested, which also allows label;
-> the hwmon core already exposes it as the label attribute. Patch 2 names
-> the fans after their headers, P6 and P7.
+This series was applied to riscv/linux.git (fixes)
+by Bjorn Helgaas <bhelgaas@google.com>:
+
+On Mon, 10 Aug 2026 15:43:12 +0300 you wrote:
+> "[PATCH v8 phy-next 00/31] Split Generic PHY consumer and provider API"
+> https://lore.kernel.org/linux-phy/20260505100523.1922388-1-vladimir.oltean@nxp.com/
+> became unmanageably large for a single patch series and needs to be
+> split per subsystem.
 > 
-> To: Guenter Roeck <linux@roeck-us.net>
-> To: Jean Delvare <jdelvare@suse.com>
-> To: Rob Herring <robh@kernel.org>
-> To: Krzysztof Kozlowski <krzk+dt@kernel.org>
-> To: Conor Dooley <conor+dt@kernel.org>
-> To: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-hwmon@vger.kernel.org
-> Cc: devicetree@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-kernel@vger.kernel.org
+> Here are the patches pertaining to PCI extracted out of the larger
+> series.
 > 
 > [...]
 
-Applied, thanks!
+Here is the summary with links:
+  - [v9,1/3] PCI: cadence: Preserve all error codes in cdns_plat_pcie_probe()
+    https://git.kernel.org/riscv/c/fe108800a865
+  - [v9,2/3] PCI: Add missing headers transitively included by <linux/phy/phy.h>
+    https://git.kernel.org/riscv/c/a685daa02d97
+  - [v9,3/3] PCI: Remove device links to PHY
+    (no matching commit)
 
-[2/2] arm64: dts: rockchip: Label the fans on Kobol Helios64
-      commit: f80a26e10a39dd51061513db96fb525244e5e890
-
-Best regards,
+You are awesome, thank you!
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
