@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1749560A2605
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD18F60A2617
 	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:16:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OyKgQBcy;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=v8151im3
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZJqX+1Lm;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=dJPZ4lf0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,29 +14,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=iZMQ1FrwyEk7QvyQCvRj5abx92LA3AF+jUzNkVImOgk=; b=OyKgQBcyuXm+q82RD1xQgMxfYj
-	qNa3PPvvt0P/i5nDQk8Z+k22EaHB6CchThyPTmTNngNhAXTtpfHoSTRnHiHXNBcboC+GEQpALzDFl
-	xm5wro4zsaiuL+XHlUALDpLO70VfHgnVK4w/jBQkazp0U6FREYw1oNskLnOpSOgKZjlizmo9v/tlM
-	qOEteEAQ6lbsUsPhWABzoZ26oD+XWrIUh486KQhNvMDxqd9THqTQFjWFrQmA/R2Ahe5XQSYnttah0
-	aXAWoVBL4fMCeNsIXec1xiYIVwZweww3GrOZ067RJXvfchMq6wlU0RSQPQcgiL/SALh1a5jINj+2z
-	MWxeWFgQ==;
+	bh=SLaT4Ja/kdDbD3Hf5fBXjVQb6K6jyF9KqHxHgqCW4XI=; b=ZJqX+1LmYXWJBOzAEOlja+FAqF
+	mtUxyIC6W+e6i1kNZhX72Sv29zTVbZSCfYOq1fPEwReGExgFIg1CuPt40eCdLdKaYhyC2KxE27nHM
+	Tp4yd175B3d//vjxryfGofFFBxR3KaExw1inZd1qipETTdmTL3R/w9S4vUg+g4ZP8823U4C0PpQQJ
+	xikrP6lKgeLeFJESlRUnq6UnsiqHdYm1ZjrVh3sCPXOxl5xRNXYiho4CPHdXodUkxTDfDbS2a1AA8
+	CIxYLgLI+UVZjwTufaB6/S7MOypOBHSM/cp3LlWNHFU3uErUbVhLavSV9bmRJV9mT09pCQiOw6OQa
+	wmrSrQXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdqM-0000000EzGp-36da;
-	Sun, 01 Nov 2026 22:16:02 +0000
+	id 1xNdqL-0000000EzEm-3xya;
+	Sun, 01 Nov 2026 22:16:01 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdq8-0000000Eynw-0g3t;
+	id 1xNdq8-0000000Eynt-0Ywb;
 	Sun, 01 Nov 2026 22:15:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=koqrDmmt4O2BTAa9AgtZ7rW5JtPwtmhVY/Dn2gUanrA=; b=v8151im32iqLSPZW/19OcA/UAT
-	kSapPEGiX/dUFAcVl9Tl+QnqsQDTPswcXwKBojtYS2LOPUQRf6zZ03XdqugWd/XWOScXLRWQ9godl
-	SaeO2YQ7i/8D7EqbaW18wEXN2ZJDRDGgU0uOoxUkv/Nfl8UvgUwqEajpLsvd6t2b2v0NdR/pSQGWU
-	NPvpmRCRpkmkiAncvX/Yjb55ZLpR2XXkYrLtb0DB/WKR9yLm25uGDyQjdCgCV+TE8SV+d7y8bytxQ
-	hOGkUP/O7O37rZjLlJYqR4Z1lqnI/rRcOqf2ysWEGpfNAxpSPhCa67g+M0lrRMP3G6AyoM/3AXKDi
-	6+sP7pbw==;
+	bh=mUcjaVQ7lyI1vitc+H9u1tzf0raKfI5LNSobORLeUkg=; b=dJPZ4lf0xCMO5WIF9dnHeRq0nE
+	QwMvkV4WnCbmPJF9dTEftjXGWXVgZSGwDjOulqBiaD6baRs4KFtJfyMBKYbnIi48Sfu2fIlLLOJpO
+	kQOgtx47BpY8Dx5T/TsBD92rH7sFi4LQeqnfrtaFEMtxhAywbvh3UD8F5l2PfM2VhERPDgX9wazT9
+	3vOWHD57MCwoo81GrMpA4CPjJYbFmUCi281qAU2GYvuU/lXMTX1jLvVwLgPXGkoxBRT7K0oz168LD
+	vfPVGZEfqTvkAaTFI8YiKvlhoAWZi72uPITpL5aR6xYBAsNSu42EQCaAirwzFJH36JwILxFzlhEnS
+	Gv6oxP/w==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: Igor Velkov <iav@iav.lv>
 Cc: Heiko Stuebner <heiko@sntech.de>,
@@ -47,17 +47,18 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Add vdd_log and vdd_center to Kobol Helios64
-Date: Sun,  1 Nov 2026 23:15:25 +0100
-Message-ID: <179357131387.4107717.12481039737139265735.b4-ty@b4>
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable USB host0 on Kobol Helios64
+Date: Sun,  1 Nov 2026 23:15:27 +0100
+Message-ID: <179357131396.4107717.3550186345621350857.b4-ty@b4>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261021-helios64-vdd-log-center-v1-1-4cafd110e0e5@iav.lv>
-References: <20261021-helios64-vdd-log-center-v1-1-4cafd110e0e5@iav.lv>
+In-Reply-To: <20261011-b4-helios64-usb-host0-v1-1-693fe316701b@iav.lv>
+References: <20261011-b4-helios64-usb-host0-v1-1-693fe316701b@iav.lv>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_141548_248669_A4323C46 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20261101_141548_223485_1E01F400 
+X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,21 +80,15 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Wed, 21 Oct 2026 02:02:29 +0000, Igor Velkov wrote:
-> The Helios64 feeds VDD_LOG from a PWM regulator driven by PWM2 and
-> VDD_CENTER from DCDC_REG1 of the RK808, but the device tree describes
-> neither of them.
-> 
-> Describe both. The vdd_log range comes from the schematic (sheet 8):
-> 0.83 V with 3.0 V on LOG_DVS_PWM and 1.4 V with 0 V, so the PWM is
-> inverted. vdd_center gets the same limits as vdd_cpu_l.
-> 
-> [...]
+On Sun, 11 Oct 2026 00:51:50 +0300, Igor Velkov wrote:
+> USB host0 of the RK3399 (USB0_DP/DN) is wired to the USB 2.0 pins of
+> the M.2 Key-B slot J2. Enable the host port of u2phy0 and the EHCI and
+> OHCI controllers behind it.
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Add vdd_log and vdd_center to Kobol Helios64
-      commit: 5397d554ac76f10737eb7b87c48c8c4bb26d2017
+[1/1] arm64: dts: rockchip: Enable USB host0 on Kobol Helios64
+      commit: 5d96282894c536c85259ce0f25780b48bf77b9b6
 
 Best regards,
 -- 
