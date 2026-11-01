@@ -2,11 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 368F6606A334
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:17:39 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 31A43606A334
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Nov 2026 22:17:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tIqi670K;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=p3eIOyeN
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0ZjBAy0Y;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=LHHqXp9C;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=OUqoykoQ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,53 +15,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=pErT5iIC6YXSZDQMfjLZOAlnFxdJ8LPLN2FF0eXWlQg=; b=tIqi670Kz6D0KKnyiezVUbRzZp
-	uX5FWr59WULmU1HSFolFVv1xYyUajPkIpXhKQ3TGSlwH2gpHnmtacPjC+/CMsYk4stCbZG/jkvdUK
-	1izC5X+aqUf0V/5tO2RjOIyYGvgbTTA7M80+p2S+upwph1kXS+f4VBGWXYJ0xBYHITokLJgE1OXYr
-	nZtyBflLRztmNBN/TsaZ4sPUwOo4Nhd0F0DdHBF6o2WF9yv0o7ogZhyLav0tSX7P62na98NZe48GE
-	KXrroZ7FYfKj+cDZ5ejW7Vah/55wSul6/44W6ZruyxGPaEYAxbZQs2hc0YBurU/y0552t8EY1EPGu
-	3MRcCnqg==;
+	bh=HkNnNputxAsA98yCw0YiHB4a143B3w4BvWTksS5L4Xo=; b=0ZjBAy0YoJvEYG5GF5JdIzB/j9
+	aPAl125RjSV1iavgqJhzjIHKBFYk7o0Pm0yPgs1CnS4dA/JG++9HdEkW8dMHRgsm6JzKEcJ2yahPt
+	AYZFWjUrHWyIM6hEnJFrBmPFZlR+p+xng6NJa59I990IQ4ChRVCKd2rhpkfUWuv4N7oO7we6JfBLl
+	yKWRrWkWKw5ZbYwsX1pQ9zkGfPKutekpP2IDmxvmJSH8qsdhdltz+fEAxugRkhgIcI8E4ZSLLw0Ly
+	ANutgeB8aSJJEwB/7lKKLmMMrV/JspUREKz9oSKzGHnn2433JpT2wRXnV8RDdXqOJfup+nz5z+JvV
+	PfniZykQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdrr-0000000F3x4-38So;
-	Sun, 01 Nov 2026 22:17:35 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xNdrz-0000000F4MA-0yck;
+	Sun, 01 Nov 2026 22:17:43 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdr5-0000000F0Xu-3YWW;
-	Sun, 01 Nov 2026 22:17:02 +0000
+	id 1xNdrS-0000000F2Iv-1kQ9;
+	Sun, 01 Nov 2026 22:17:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=+PSaaDmaOVWUQ+VHhuXHm+ChDICCzay6CedCYV9aBDQ=; b=LHHqXp9C9DxlEkEbaboWakgogq
+	zsBYcKa8Eke8baYUchcCNFgyhkyIBpcW0xmXRJx/cD6X3VEFuJciV+U0BbSd8ztHJ7TumbS2exSUW
+	QmTnihkCF7hNuKzPpeX1KOagW71W31RPJgSZjnXQPpitGWS30AGZaXKOiAIAay2krlK7gknDQWtuk
+	QEbFdAOtMQebcNmuhMPrsNdB3b9rR24BmA+swyKaNkNx9BQWbs+XGNWa+DX5FGvS7IullPks2aSJO
+	N7Fy5gLSQBz00BsTV0yO91h3jdWrhnTDDaWrXX1NC1o8MCuKgAfvWWgU2pRn1fSkI5W2CK/OTTdly
+	ZH3BrrSQ==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xNdqg-00000001seX-3A3c;
+	Sun, 01 Nov 2026 22:17:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=n3w1Fl6SJMp1kr9973CPt7D/UB+btgvPCLo7vh9GdrE=; b=p3eIOyeNLwKdvGgs0DrdVSQ8AN
-	pIrjanYCEEVzJtZkLgPuQekvVXx/BUa0ZfyE+6Z9T5DGD+P1gkPZoLHl/7w8blOWDd0HAiHdrSbKA
-	C07nlsh2JRBJ6gwFymecy1OJIpZVJLHwnV6Ov78hzlianq2McrvIBDlR7oazvu20VMT7esI7ZOYip
-	YYwScpE5Tf5tf4L/fcgXcMkGFcQ3q+0p2ea/DGT3NZyjGCxItglsSMJEYtNPkNScw2OEqIKyzE0+R
-	eNqyM5/iJGS/8dLRjMKoDfeTZBMxJih72F47iHoaJ95WOQ9Cuf8ppbd/IZK4Bag1wC3t+/plqYb7N
-	ZjnAyqyA==;
+	bh=+PSaaDmaOVWUQ+VHhuXHm+ChDICCzay6CedCYV9aBDQ=; b=OUqoykoQw5+FEa9dg1IfaI3/Wb
+	A5+bkqs2+YGj018zeUKDS5sFoJlBQoHa+ogK/4vuKvUyqI4qWEM6hM6NDlz6CedUF4omAchCxXGP8
+	isENDwfaU6J66ZpRsyL0BuEiYeEkNhJeS4Ib7eBNJ1Z35l32RlHgb/uGcj/L4NDif9z0eaH4vPSsC
+	zd+jV+HV+wovty79e5z3Ku5GWBX1iOGXioMa616tDSW4hm3R/K66xZtP0Bs9ODV6FAtZgJttgMAbL
+	7pRmUjtcIoHKOqwTmGVgBepiuQoce1jZ/pPr5L9QF7N0iJT2dRTrfayAzYb95aXodqesT93/TVNB6
+	sll/CYMg==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
+To: Igor Velkov <iav@iav.lv>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Dennis Gilmore <dennis@ausil.us>,
-	Alexey Charkov <alchark@gmail.com>,
-	Kel Modderman <kelvmod@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
+	Rosen Penev <rosenp@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 0/2] arm64: dts: rockchip: Fix Orange Pi 5 Pro headphone output
-Date: Sun,  1 Nov 2026 23:16:32 +0100
-Message-ID: <179357139327.4108484.4012953822270877213.b4-ty@b4>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Add the GPIO expander to Kobol Helios64
+Date: Sun,  1 Nov 2026 23:16:08 +0100
+Message-ID: <179357136485.4108155.1255031928445083494.b4-ty@b4>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261018-opi5pro-amp-v1-0-05c84e91bf6d@gmail.com>
-References: <20261018-opi5pro-amp-v1-0-05c84e91bf6d@gmail.com>
+In-Reply-To: <20261024-helios64-pca9655-v2-1-97210e9aafb1@iav.lv>
+References: <20261024-helios64-pca9655-v2-1-97210e9aafb1@iav.lv>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_141647_959356_7D1C3DF4 
-X-CRM114-Status: GOOD (  11.09  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261101_221653_969574_4CB6D3DC 
+X-CRM114-Status: GOOD (  11.17  )
+X-Spam-Score: -0.2 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,24 +95,21 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Sun, 18 Oct 2026 16:35:29 +1000, Kel Modderman wrote:
-> The Orange Pi 5 Pro inherits vcc_3v3_sd_s0 from the shared
-> rk3588s-orangepi-5.dtsi, but on the Pro GPIO4_B5 does not switch SD card
-> power: it enables the headphone amplifier. With the regulator claiming
-> the pin, the amplifier stays off and the headphone jack is silent.
-> 
-> Patch 1 moves the regulator and the sdmmc vmmc-supply into
-> rk3588s-orangepi-5-5b.dtsi, which only the 5 and 5B include. The
-> compiled 5 and 5B DTBs have the same nodes and properties as before.
+On Sat, 24 Oct 2026 22:15:04 +0000, Igor Velkov wrote:
+> Helios64 has an ON Semiconductor PCA9655E 16-bit GPIO expander at 0x20
+> on I2C2, powered from VCC3V3_SYS_S3. Its 16 lines go to pins 4-19 of
+> the P5 GPIO header, one line per pin in order, so name them after the
+> pins. Its INT# output goes to GPIO0_B1 with an external pull-up (R59
+> to 1V8_S3), so the pin has no internal bias. Schematic, sheets 34 and
+> 35:
+> https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: Move SD card regulator to Orange Pi 5/5B
-      commit: 7fad20ae8bf8e289cb6423d68ef4f0d67f4a33c5
-[2/2] arm64: dts: rockchip: Add headphone amplifier to Orange Pi 5 Pro
-      commit: f21e9ddb7415eb60a404297e2a44fa23243fd2d4
+[1/1] arm64: dts: rockchip: Add the GPIO expander to Kobol Helios64
+      commit: 3e8f8468c1a9b42740db986ee07d829696a7b5db
 
 Best regards,
 -- 
