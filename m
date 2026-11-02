@@ -2,69 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 42BC1606A337
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB2A8606A331
 	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 01:52:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rJMQjFtW;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=L8E//mnz
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wAoHXRmr;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=e9003h8k
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=H+fUdYDNCZJC0kHFaIB33ijLBeMrQjjur/jWc1BE10w=; b=rJMQjFtWpbP0MWda1H3CiOiwOQ
-	4SFl9MzHLwsbEgXvFEhMAzyaOTbX0fhD1H8mw1QqoP2N7Rq4TYpoOCAA0S4e+dDM/yD67FeE2Ds+x
-	5hX0V4PmzAJB+8sy5KuJKB5COn2UqAnFoDSFoL+J74GtAk4NcpAHn4JpG7++kR+E5i719qQ9tBPLz
-	S/QBOMpZWSeo2mE0/lQt3C7tbsTpfJsz9R5p+kMVTGCZIhaMkgbcE2EOiMo6NcHk0W8510wjSQPRL
-	TkTyUhnZyO7DKPJ7yG84F+kIcJDLjOnhthRZsaBA2Y6jTT6bmCBFM3aNbdI92OY2ebpdRjEa0/LJW
-	BFaAG5fA==;
+	bh=Pb+4IdSkVlXoxwIAxvdnrPMA9/UMjB7HiPsrm8gxdvE=; b=wAoHXRmr34H31LCF4rEPUkWE4/
+	EVZeBZ2X3WfTnSwjRwF2IIbX2v3HFLXpsHzrnm3ioVgb3UZMGXVtlCi5H1V91Naf/Aozu9E2AmTaU
+	9eWwBLzkHqdA+1F0Wznh0fbxjgffYqtRyKD1B1nJciAzRHl2rMCWg0/8vvSn5WVCFSBuiD1NLTeXj
+	ThCYJfb0R5SF0Lc9n35PEKPrnjp+U1BkYNzCRYRG3newTrsWFZ58E1l1q7d+WjhLbbAIH125wQsae
+	sVkaiGenCCXI3DCpMmUDZWby3AttaOspfhXCPW6AaFZaCzk9WDOrGjnd1rH4MzfRCfm0rVq48A4Zk
+	8Tsn0HbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNhEA-0000000FNO1-086U;
-	Mon, 02 Nov 2026 01:52:50 +0000
-Received: from mail-m25492.xmail.ntesmail.com ([103.129.254.92])
+	id 1xNhE9-0000000FNNp-41an;
+	Mon, 02 Nov 2026 01:52:49 +0000
+Received: from mail-m93231.xmail.ntesmail.com ([103.126.93.231])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNhE6-0000000FNM6-0BFF;
+	id 1xNhE6-0000000FNLo-1U0x;
 	Mon, 02 Nov 2026 01:52:48 +0000
-Received: from localhost.localdomain (unknown [61.154.14.87])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 531ad2652;
-	Mon, 2 Nov 2026 09:52:42 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Vinod Koul <vkoul@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	devicetree@vger.kernel.org,
-	Samuel Holland <samuel@sholland.org>,
-	Coia Prant <coiaprant@gmail.com>,
-	Diederik de Haas <diederik@cknow-tech.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v3 0/2] Support updating the PCIe3 PHY firmware on RK3568
-Date: Mon,  2 Nov 2026 09:52:34 +0800
-Message-Id: <20261102015236.3844843-1-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 531adef43;
+	Mon, 2 Nov 2026 09:52:34 +0800 (GMT+08:00)
+Message-ID: <e0244072-2ace-4971-b237-dfea5806f114@rock-chips.com>
+Date: Mon, 2 Nov 2026 09:52:32 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa199f5736803a4kunm2334e46e3a72b4
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v15 11/15] accel/rocket: select the per-core clock and
+ reset counts from match data
+To: Jiaxing Hu <gahing@gahingwoo.com>
+Cc: tomeu@tomeuvizoso.net, heiko@sntech.de, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, joro@8bytes.org, will@kernel.org,
+ robin.murphy@arm.com, ulfh@kernel.org, p.zabel@pengutronix.de,
+ ogabbay@kernel.org, zhangqing@rock-chips.com, royalnet026@gmail.com,
+ abel.vesa@oss.qualcomm.com, sebastian.reichel@collabora.com,
+ sidong.yang@furiosa.ai, u.kleine-koenig@baylibre.com,
+ diederik@cknow-tech.com, alchark@flipper.net, leonard@lausen.nl,
+ jeff.hugo@oss.qualcomm.com, rfoss@kernel.org,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ iommu@lists.linux.dev, linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20261101082307.151957-1-gahing@gahingwoo.com>
+ <20261101082307.151957-12-gahing@gahingwoo.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20261101082307.151957-12-gahing@gahingwoo.com>
+X-HM-Tid: 0aa199f5564903a7kunm28e33d1690928b
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaS04aVh9CThlJGU5JTB5LT1YVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ0xZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	JDQkpVSktLVUtZBg++
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDSRhCVklDSx9IHkhLH0sdTlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQkxVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=L8E//mnz6dmP5a7E30ZtaaWC5w1UHiM6YphIilYXKz7V57ft09HkKAGZw1QqtAKZj1ZpQBwf5efcBiI3mZ2re7vObL5pQmVnVp7+4lojvsiZHbo3KiRZ/QJ1XIA/iJZI6IfMDfaGzfe9yRPu5PCe55Pu0n6WTud0I8Pjg28PGKI=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=s/53fzjdKTL1p4UUbauTe1x56R+kaRU23WwKPdP7V0w=;
+	b=e9003h8knr8hseqDVAmZLDsKePFZJoUfy4L3orybLa4qb80JWSlH6QDDGnueDDOkdRJdQDJA7AR/5PI3bTwMd12iobJIxPDYCV8/N5LCZZBTGRPdrPoqnXuMAcgZq6eTy+ZmUilbvt63z+HCK4Ll2pnWDp2meOLrFBe0F/ElZA8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=tneePjoeL2yK6qrYSwwF6fPVIhSig+zNFAIr8myvBzw=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_175246_616423_51241BFF 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20261101_175246_636137_D841C268 
+X-CRM114-Status: GOOD (  24.64  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,69 +81,159 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Hi Jiaxing,
 
-The RK3568 PCIe3 PHY contains a small controller that runs microcode
-from an internal SRAM. The microcode present in the PHY is not always
-the latest one; with a stale version the PHY may fail to establish a
-stable link or come up with other issues that are otherwise very hard
-to diagnose from the host side.
+On 11/1/2026 4:23 PM, Jiaxing Hu wrote:
+> The RK3576 has the same RKNN block with a different number of clocks and
+> resets. Take the counts from soc_data in the match data; RK3588 keeps four
+> and two. Check soc before anything is allocated, since a device bound by
+> name has no match data.
+> 
+> Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+> ---
+>  drivers/accel/rocket/rocket_core.c |  8 ++++----
+>  drivers/accel/rocket/rocket_core.h |  7 +++++++
+>  drivers/accel/rocket/rocket_drv.c  | 26 +++++++++++++++++++++++---
+>  3 files changed, 34 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/accel/rocket/rocket_core.c b/drivers/accel/rocket/rocket_core.c
+> index 5dd260bacbff..b202d15816a3 100644
+> --- a/drivers/accel/rocket/rocket_core.c
+> +++ b/drivers/accel/rocket/rocket_core.c
+> @@ -23,7 +23,7 @@ int rocket_core_init(struct rocket_core *core)
+>  
+>  	core->resets[0].id = "srst_a";
+>  	core->resets[1].id = "srst_h";
+> -	err = devm_reset_control_bulk_get_exclusive(&pdev->dev, ARRAY_SIZE(core->resets),
+> +	err = devm_reset_control_bulk_get_exclusive(&pdev->dev, core->soc->num_resets,
+>  						    core->resets);
+>  	if (err)
+>  		return dev_err_probe(dev, err, "failed to get resets for core %d\n", core->index);
+> @@ -32,7 +32,7 @@ int rocket_core_init(struct rocket_core *core)
+>  	core->clks[1].id = "hclk";
+>  	core->clks[2].id = "npu";
+>  	core->clks[3].id = "pclk";
+> -	err = devm_clk_bulk_get(dev, ARRAY_SIZE(core->clks), core->clks);
+> +	err = devm_clk_bulk_get(dev, core->soc->num_clks, core->clks);
+>  	if (err)
+>  		return dev_err_probe(dev, err, "failed to get clocks for core %d\n", core->index);
+>  
+> @@ -109,9 +109,9 @@ void rocket_core_fini(struct rocket_core *core)
+>  
+>  void rocket_core_reset(struct rocket_core *core)
+>  {
+> -	reset_control_bulk_assert(ARRAY_SIZE(core->resets), core->resets);
+> +	reset_control_bulk_assert(core->soc->num_resets, core->resets);
+>  
+>  	udelay(10);
+>  
+> -	reset_control_bulk_deassert(ARRAY_SIZE(core->resets), core->resets);
+> +	reset_control_bulk_deassert(core->soc->num_resets, core->resets);
+>  }
+> diff --git a/drivers/accel/rocket/rocket_core.h b/drivers/accel/rocket/rocket_core.h
+> index f6d7382854ca..ba74c5339b94 100644
+> --- a/drivers/accel/rocket/rocket_core.h
+> +++ b/drivers/accel/rocket/rocket_core.h
+> @@ -27,9 +27,16 @@
+>  #define rocket_core_writel(core, reg, value) \
+>  	writel(value, (core)->core_iomem + (REG_CORE_##reg) - REG_CORE_S_STATUS)
+>  
+> +/* Per-SoC differences, selected by the of_device_id match data. */
+> +struct rocket_soc_data {
+> +	unsigned int num_clks;		/* clk_bulk count */
+> +	unsigned int num_resets;	/* reset_bulk count */
+> +};
+> +
+>  struct rocket_core {
+>  	struct device *dev;
+>  	struct rocket_device *rdev;
+> +	const struct rocket_soc_data *soc;
+>  	unsigned int index;
+>  
+>  	int irq;
+> diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+> index 5d7805c41dc3..284af027f398 100644
+> --- a/drivers/accel/rocket/rocket_drv.c
+> +++ b/drivers/accel/rocket/rocket_drv.c
+> @@ -159,8 +159,22 @@ static const struct drm_driver rocket_drm_driver = {
+>  
+>  static int rocket_probe(struct platform_device *pdev)
+>  {
+> +	const struct rocket_soc_data *soc = of_device_get_match_data(&pdev->dev);
+>  	int ret;
+>  
+> +	/*
+> +	 * soc is dereferenced without a check by every one of its users, and
+> +	 * rocket_core_init() below is the first of them. A device that bound
+> +	 * by name rather than by compatible has no match data, so fail before
+> +	 * anything is allocated rather than at the first dereference: the
+> +	 * number of cores comes from a walk of matching DT nodes, and a device
+> +	 * with no of_node was never counted by it.
+> +	 */
 
-The firmware stays optional: when firmware-name is not described in DT
-(older DTBs) or the file cannot be requested, the driver keeps the
-existing behaviour and runs with the microcode already present in the
-PHY, so there is no new hard dependency for existing boards.
+You don't need these comments because everyone already knows that.
 
-Patch 2 for the PHY driver depends on a pending patch that fixes another
-issue if anyone wants to apply this series for test:
-
-  https://lore.kernel.org/linux-rockchip/20261102005129.3745527-1-shawn.lin@rock-chips.com/
-
-The required firmware file is available in the rockchip directory of
-the linux-firmware repository:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
-
-Load firmware during kernel compilation using the extra firmware assignment for quick
-test, otherwise rebuilding initramfs or copying firmware into /lib/firmware:
-
-CONFIG_EXTRA_FIRMWARE="rockchip/pcie3-t22-c8g2-1.6.3-202a-p7.fw"
-CONFIG_EXTRA_FIRMWARE_DIR="/home/rockchip/linux-firmware"
-
-Tested on a RK3568 EVB1 with a PCIe3 x2 NVMe SSD, the firmware is loaded
-and the link comes up:
-
-  phy phy-fe8c0000.phy.0: lane number 0, val 1
-  rockchip-snps-pcie3-phy fe8c0000.phy: loaded PHY firmware rockchip/pcie3-t22-c8g2-1.6.3-202a-p7.fw, size 16384
-  rockchip-dw-pcie 3c0800000.pcie: host bridge /pcie@fe280000 ranges:
-  ...
-  pci 0002:21:00.0: [1e0f:0009] type 00 class 0x010802 PCIe Endpoint
-  pci 0002:21:00.0: BAR 0 [mem 0x00000000-0x00003fff 64bit]
-  pci 0002:21:00.0: 15.752 Gb/s available PCIe bandwidth, limited by 8.0 GT/s PCIe x2 link at 0002:20:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe x4 link)
-  pci 0002:21:00.0: ASPM: default states L1
-
-Link-to-v2:
-https://lore.kernel.org/linux-rockchip/20261026074003.1169669-1-shawn.lin@rock-chips.com/
-
-Link-to-v1:
-https://lore.kernel.org/linux-rockchip/1792466206-127946-1-git-send-email-shawn.lin@rock-chips.com/
-
-Shawn Lin (2):
-  dt-bindings: phy: rockchip,pcie3-phy: Document firmware-name
-  phy: rockchip: snps-pcie3: Load updated PHY firmware on RK3568
-
- .../bindings/phy/rockchip,pcie3-phy.yaml      |  7 ++
- .../phy/rockchip/phy-rockchip-snps-pcie3.c    | 90 ++++++++++++++++++-
- 2 files changed, 95 insertions(+), 2 deletions(-)
+> +	if (!soc) {
+> +		dev_err(&pdev->dev, "no match data for this device\n");
+> +		return -ENODEV;
+> +	}
+> +
+>  	if (rdev == NULL) {
+>  		/* First core probing, initialize DRM device. */
+>  		rdev = rocket_device_init(drm_dev, &rocket_drm_driver);
+> @@ -179,6 +193,7 @@ static int rocket_probe(struct platform_device *pdev)
+>  
+>  	rdev->cores[core].rdev = rdev;
+>  	rdev->cores[core].dev = &pdev->dev;
+> +	rdev->cores[core].soc = soc;
+>  	rdev->cores[core].index = core;
+>  
+>  	rdev->num_cores++;
+> @@ -216,8 +231,13 @@ static void rocket_remove(struct platform_device *pdev)
+>  	}
+>  }
+>  
+> +static const struct rocket_soc_data rk3588_soc_data = {
+> +	.num_clks = 4,
+> +	.num_resets = 2,
+> +};
+> +
+>  static const struct of_device_id dt_match[] = {
+> -	{ .compatible = "rockchip,rk3588-rknn-core" },
+> +	{ .compatible = "rockchip,rk3588-rknn-core", .data = &rk3588_soc_data },
+>  	{}
+>  };
+>  MODULE_DEVICE_TABLE(of, dt_match);
+> @@ -243,7 +263,7 @@ static int rocket_device_runtime_resume(struct device *dev)
+>  	if (core < 0)
+>  		return -ENODEV;
+>  
+> -	err = clk_bulk_prepare_enable(ARRAY_SIZE(rdev->cores[core].clks), rdev->cores[core].clks);
+> +	err = clk_bulk_prepare_enable(rdev->cores[core].soc->num_clks, rdev->cores[core].clks);
+>  	if (err) {
+>  		dev_err(dev, "failed to enable (%d) clocks for core %d\n", err, core);
+>  		return err;
+> @@ -263,7 +283,7 @@ static int rocket_device_runtime_suspend(struct device *dev)
+>  	if (!rocket_job_is_idle(&rdev->cores[core]))
+>  		return -EBUSY;
+>  
+> -	clk_bulk_disable_unprepare(ARRAY_SIZE(rdev->cores[core].clks), rdev->cores[core].clks);
+> +	clk_bulk_disable_unprepare(rdev->cores[core].soc->num_clks, rdev->cores[core].clks);
+>  
+>  	return 0;
+>  }
 
 -- 
-2.25.1
+Best, 
+Chaoyi
 
 
 _______________________________________________
