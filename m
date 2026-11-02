@@ -2,57 +2,60 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5AE17606D820
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B083F606D827
 	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 20:23:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fjjmD40t;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=0leil.net header.i=@0leil.net header.a=rsa-sha256 header.s=20231125 header.b=QpH/Wm8D
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=myT1nZzE;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=0leil.net header.i=@0leil.net header.a=rsa-sha256 header.s=20231125 header.b=gy4fXoxS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=PpmIiI9DgKy5M0o8Nj+PMHbGPUbxYwna7GYJsT7d0qI=; b=fjjmD40tOos7nDI+6zTha0Jhly
-	9+aY7L3Ix+yrFCPsdY67+mgiKMkfy0DE3mH+V4DN+lWkUsz/1eE07Qhqh5Y79b5LcTqTZVmI9ZytL
-	ckkjiGbB9AG+ssSi7Dy9lhJdTBp4fOy27m3+M76kbF5XL6mRfj05JiPFVEg5Hg6bPP5Do8L7akw7Q
-	CxucktSgtXWsE/uRkSWxsNZQrm/ylASZ+3stJri3kO2HgHhAQzfSWl17WxzcS4qS6xPVD8L5IZJ7H
-	aKeeowXYf+8RA/WutarEW49beyDslGeTfYBLC8YCPdBxse+X8p4sqF+dxVphmDzJjt0tIazdRoLvP
-	oUva5KNQ==;
+	bh=t18KsLERLOpBlmG7eYl7fyXJBWLZzmj66eUCLKvfTqE=; b=myT1nZzEPHXq27lKptusUd+5ca
+	HsGesk2HcXb8LJGP1YerGB/uX1j/yBwUPIMchEOhzoGkl2qybDcFStd4h4DkX1l0Z6XzgCI5fR36h
+	uiA8+G5wVnsRVLM2nZtFMbFaJLXNANe7nkiOHl0ERWLbL81QwY6PN6bz2a8Y657C+kRuAz3lP2+97
+	pJVg85hcgzZ5h1FBLeBqyteNK2S1UJ1vbjmj53gC9F6Ev101vvHEniiUMkMUDyZ9lPUO7ulSRl6ZM
+	W7HGHTUHv1Evf8dDZPU2Ojc6g8SxGji0b/Z9OwlPnbNDAQqthDTl6ipwqbVs2WhF6iLPprZNzn0Ke
+	Gi3KVTiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNyYa-00000000IxW-16Nl;
+	id 1xNyYa-00000000Ixk-1TPq;
 	Mon, 02 Nov 2026 20:23:04 +0000
-Received: from smtp-bc09.mail.infomaniak.ch ([45.157.188.9])
+Received: from smtp-8fab.mail.infomaniak.ch ([2001:1600:19:b8b8::8fab])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNyYS-00000000IrA-3DId
+	id 1xNyYS-00000000Ir9-3Bpx
 	for linux-rockchip@lists.infradead.org;
 	Mon, 02 Nov 2026 20:23:02 +0000
 Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4jJNRw24VmznLF;
-	Mon,  2 Nov 2026 21:22:52 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0leil.net;
-	s=20231125; t=1793650972;
-	bh=2kKJVl9DVcidPFu4iOOYmwpElNttoyoiGTDFs+dVMJo=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=QpH/Wm8D/EzZWot2xhnR9ipw9EqwqnRAzXbXg+Nn8g84mWiBKj6thjltCtODKxn+u
-	 HNi79ONsELnm6i1dk8bClBoaR3OMStdIcNjIAqe4adrh/PKWvUlVryOmPp+tXUbbkt
-	 xGaxrbHD5IBf/fGFlAmc7T8QRDg0SsGU8XrjL12sGvuicYcUCfVUfoxkMUwCKKO3G/
-	 oWYW0qu0KGRD5U+Mxs22k+pqLslNFPAYzQetpsT//t7caESYECc+hmkZa6CyWPCzka
-	 xXrt1fRgiUtOdAbhtI2REqhusLDFTbSEmPgJ/eHAGiLR+RZVOFG5LMStvbyYwbF2iH
-	 hYD9tfUY2dLmg==
-Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4jJNRv25g0zrH3;
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4jJNRv3KgwznQp;
 	Mon,  2 Nov 2026 21:22:51 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0leil.net;
+	s=20231125; t=1793650971;
+	bh=m9MTAoKRAQz3GJf2WRZ9ZD9bHKOwbRExdEqd+I+AA5w=;
+	h=From:Subject:Date:To:Cc:From;
+	b=gy4fXoxS7tWOGk1NJhl/stjM92AkcbvQxBivv6TLZwbtQ9+wKsVexZ5Xsf8K6Rexs
+	 sHwghnKxilkKONIgDVyxr6vunoEBYvBSzisNDBstd2FvKtn3UIdUqDnJP+CgjaVE3j
+	 rmFr9vHWjnrWXtc9hxrntNQM+gSN4gnKMsCVeBVRGYPKhp4XuF//MWXhMSh5ASLopB
+	 1k2yq5E2Hx4xgb5+w2I/+IOz0PpfdnGjCcjL0+xEFkF64VtvWmo7uV5xpcj4y2sYrM
+	 3FAX7bUGVky7i0y9pj/RxfD4LsDblJXSyb+jE1tPJSkfzljiatIt7NqCaCCAclQCK/
+	 VmNxwj4y1z+jg==
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4jJNRt1KW7znwS;
+	Mon,  2 Nov 2026 21:22:50 +0100 (CET)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Mon, 02 Nov 2026 21:22:42 +0100
-Subject: [PATCH v2 1/3] media: v4l2-common: add V4L2_PIX_FMT_Y10 to
- v4l2_format_info
+Subject: [PATCH v2 0/3] media: support Y8/GREY and Y10 bus/pixel formats
+ for Rockchip VICAP and Synopsys CSI2RX
+Date: Mon, 02 Nov 2026 21:22:41 +0100
+Message-Id: <20261102-v4l-y8-y10-csi-vicap-v2-0-0a4149d96dae@cherry.de>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261102-v4l-y8-y10-csi-vicap-v2-1-0a4149d96dae@cherry.de>
-References: <20261102-v4l-y8-y10-csi-vicap-v2-0-0a4149d96dae@cherry.de>
-In-Reply-To: <20261102-v4l-y8-y10-csi-vicap-v2-0-0a4149d96dae@cherry.de>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/22Nyw6CMBBFf4V07Zi2AVpc+R+GRR+DjDFAWmxsC
+ P8uYNy5PMm95ywsYiCM7FIsLGCiSOOwgTwVzPVmuCOQ35hJLmvBRQWpfELWkAUHFwkSOTOB7Xj
+ ZeGdUozXbrlPAjt6H9tZ+Ob7sA928u/ZFT3EeQz66Sey7X6L+n0gCOEhlrVbGqLLyV9djCPnsk
+ bXrun4AzlTx58oAAAA=
+X-Change-ID: 20261015-v4l-y8-y10-csi-vicap-bf049dca7988
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
  Mehdi Djait <mehdi.djait@linux.intel.com>, 
  Michael Riesch <michael.riesch@collabora.com>, 
@@ -63,9 +66,8 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 X-Mailer: b4 0.17-dev
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_122258_861929_A9FE8910 
-X-CRM114-Status: UNSURE (   9.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261102_122258_841791_695B27F1 
+X-CRM114-Status: GOOD (  15.90  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,32 +88,85 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Quentin Schulz <quentin.schulz@cherry.de>
+The Media CI robot will complain because the line is too long in patch 1
+but it matches all other lines in the same array, so that shouldn't be
+an issue. I'll answer the same as on v1, I'm fine doing it if a human
+requests it (because I believe the bot request is incorrect).
 
-Add Y10 format to the v4l2_format_info table.
+RK3588 Jaguar can support up to 4 2-lane cameras (two on the main PCBA,
+two exposed on the proprietary mezzanine connector). The only camera
+module available for this device is based on the OV9281 greyscale camera
+sensor.
 
-Co-developed-by: Michael Riesch <michael.riesch@collabora.com>
-Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+The OV9282 driver (which also supports the OV9281) allows two formats:
+- MEDIA_BUS_FMT_Y8_1X8
+- MEDIA_BUS_FMT_Y10_1X10
+
+but they both aren't listed as supported by the RK3588 CSI2RX controller
+and RK3588 VICAP drivers.
+
+Add support for those two bus formats to both drivers.
+
+Capturing a frame with yavta[1] for Y10 only works once
+struct v4l2_format_info formats also exposes V4L2_PIX_FMT_Y10, so do
+that. I couldn't make gstreamer work with Y10, I'm assuming for the same
+reasons explained in this issue[2].
+
+All those patches, suggested by Michael Riesch on IRC. Thanks to his
+support I now can capture shitty 720p greyscale pictures \o/
+
+I am not entirely sure whether V4L2_PIX_FMT_Y10 is the appropriate
+format as we pick MIPI_CSI2_DT_RAW10 as the CSI2 Data Type, which
+according to Documentation/userspace-api/media/v4l/pixfmt-yuv-luma.rst
+(very end):
+"""
+The 'P' variations of the Y10, Y12 and Y14 formats are packed according
+to the RAW10, RAW12 and RAW14 packing scheme as defined by the MIPI
+CSI-2 specification.
+"""
+
+so I would rather expect Y10P. After changing Y10 for Y10P in
+drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c and
+drivers/media/v4l2-core/v4l2-common.c, and patching yavta to support it,
+I also get an image. Other drivers seem to also be associating Y10 (and
+not Y10P) with the RAW10 format, so I guess that's fine?
+
+[1] https://git.ideasonboard.com/camera/yavta
+[2] https://gitlab.freedesktop.org/gstreamer/gstreamer/-/work_items/3738
+
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- drivers/media/v4l2-core/v4l2-common.c | 1 +
- 1 file changed, 1 insertion(+)
+Changes in v2:
+- rebased on current master to fix trivial conflict,
+- Link to v1: https://patch.msgid.link/20261016-v4l-y8-y10-csi-vicap-v1-0-27bb87aa745d@cherry.de
 
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index 11ab684024c54..8d5020e3d5e2a 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -333,6 +333,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
- 		{ .format = V4L2_PIX_FMT_YVU420,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
- 		{ .format = V4L2_PIX_FMT_YUV422P, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 1 },
- 		{ .format = V4L2_PIX_FMT_GREY,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 1, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
-+		{ .format = V4L2_PIX_FMT_Y10,     .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
- 		{ .format = V4L2_PIX_FMT_Y12,     .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
- 
- 		/* Tiled YUV formats */
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+To: Mehdi Djait <mehdi.djait@linux.intel.com>
+To: Michael Riesch <michael.riesch@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+To: Bryan O'Donoghue <bod@kernel.org>
+Cc: linux-media@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
 
--- 
-2.56.0
+---
+Quentin Schulz (3):
+      media: v4l2-common: add V4L2_PIX_FMT_Y10 to v4l2_format_info
+      media: rockchip: rkcif: add support for GREY and Y10 formats
+      media: synopsys: csi2rx: add support for Y8 and Y10 bus formats
+
+ .../platform/rockchip/rkcif/rkcif-capture-mipi.c   | 26 ++++++++++++++++++++++
+ drivers/media/platform/synopsys/dw-mipi-csi2rx.c   | 10 +++++++++
+ drivers/media/v4l2-core/v4l2-common.c              |  1 +
+ 3 files changed, 37 insertions(+)
+---
+base-commit: d89e1d186ec9271bf78e62771779e9fc03bf0fc3
+change-id: 20261015-v4l-y8-y10-csi-vicap-bf049dca7988
+
+Best regards,
+--  
+Quentin Schulz <quentin.schulz@cherry.de>
 
 
 _______________________________________________
