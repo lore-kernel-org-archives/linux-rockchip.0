@@ -2,68 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 16BDD606D829
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 20:31:24 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 85CD6606A324
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 21:25:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=w+1RTUd+;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=0leil.net header.i=@0leil.net header.a=rsa-sha256 header.s=20231125 header.b=faaHP7cK
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=K2ZatGhH;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=kTibpMUs
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=lgm2AE8EI3LNeP9MMRzEPvhdQZytjmdICi03Ms8SGRo=; b=w+1RTUd+pfWDis8zN6MFjI2n3U
-	xpvqHyA2VvaobJWjLT+AcqAYtyOvcw2Fh+MdulHz/gjMQkzQYcxcJLbFoS2Z28luAXPQR28sTV1bi
-	wTDizAd5DnkY4L2Yf32ANZqTv7+esYdRpLodgg9rZzV/lRvXOldoBu6ZhXA4EGGUinaQo92rSqbgO
-	/aQXTCM0QqcbIWMj8n6f0YpnVhu8DOjZt5iQgb6ytAwiZqf11y889X8rcGdp6Ap4/NRO2kCJe740s
-	U57/vl5RPiyJ+Pc9VWXmoi2Bosfk7b/KlftcOuPNa8di43z9Frb3IjNWVbWFNl1qA54FY+QiT47ON
-	qhiyf4+g==;
+	bh=xz8cgoyDr7Rko9RHhWi3vWAy4ihHHWVcr5DbkhuYpaY=; b=K2ZatGhHcNls/8wNEh9by1Q3nP
+	tadvaH2CA+mbLhptfqYB+lVemwLCABx0iN33P0RB4pc8id1S3dYC33crcnnDVJHcKvm/vOB6Vz2cD
+	Dq9IkDxADBFpKLg5OEXvPxnP7SSsLmNoVsi3MOIi/SfggNvxsCxVJlWLeEetk4qLrNZFvc1zO/1UY
+	VlQRHkJmLzdPzz7tPZyiEmG7NP7JcuytIoIFGYDYjuTxmzVC4yap5i+vX/wa2pgraloroe1PwPL5P
+	PJLVTrewFJ+Hs3XRUtnBMbNrVY2RQJ4DsUtxKUt6QHyT0d922MCnQ809wa2M9b5RcKeY+4jB0p1p5
+	gHJw1Lvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNygY-00000000KYJ-1dhz;
-	Mon, 02 Nov 2026 20:31:18 +0000
-Received: from smtp-bc0b.mail.infomaniak.ch ([2001:1600:19:b8b8::bc0b])
+	id 1xNzWw-00000000T9X-1FR8;
+	Mon, 02 Nov 2026 21:25:26 +0000
+Received: from mail-dl2-x08.google.com ([2607:f8b0:4864:38::8])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNygS-00000000KUe-0xcO
+	id 1xNzWp-00000000T7M-461x
 	for linux-rockchip@lists.infradead.org;
-	Mon, 02 Nov 2026 20:31:14 +0000
-Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4jJNdT4PrPzqh1;
-	Mon,  2 Nov 2026 21:31:09 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0leil.net;
-	s=20231125; t=1793651469;
-	bh=VG6hicc+0VfqQQZx1rVXD/wUDBIyLNCpFPB73SSluZs=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=faaHP7cKbmxJySGJcI9JMDPl5NdFj2+L+Ngn9AhDGXYibxGr0UgPEYNLMRrAsi29a
-	 YSglPwNaoSFC58ymOUrJacZxOXYhhek5xipoNU1Qf63vGnx00G0S4tX126MOAh+TlY
-	 H82ZRQW80ys+b6Ky21sndFvmHaHLSv+R4D36YhVu4c1L+u1zF7eAfGpEuAVr00JI9x
-	 y92tGalUuyY03sMESvnwk+cZ3FLBT0re1uAEaLusBa0L/EgPl1QurFYU8P3nHUN5pd
-	 TgLznOQJvSp3QtKH1PxQcgRQDoSCuC3E42DD1R0v8FatSgITfSxX/U4M5g6MmS7b8p
-	 SbSfT1PZ07lMQ==
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4jJNdS5y1nzwN;
-	Mon,  2 Nov 2026 21:31:08 +0100 (CET)
-From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Mon, 02 Nov 2026 21:30:50 +0100
-Subject: [PATCH 1/2] arm64: dts: rockchip: enable OV9281 CAM0 P14 on RK3588
- Jaguar
+	Mon, 02 Nov 2026 21:25:22 +0000
+Received: by mail-dl2-x08.google.com with SMTP id a92af1059eb24-1379d236149so1383812c88.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 02 Nov 2026 13:25:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793654719; x=1794259519; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=h4Pf0yuMbG7VmbL6qh5TPaycUsxMKNE4IhWYVqEHmlg=;
+        b=kTibpMUsV6/u5QBv1XHD4D85HemWR5g9QA4z8kswotmjLTss5PVhpwGK05PORDXJLp
+         QsT+AZy3lTi2Yn+ClCbbZTz2A0O9OldP+SO7jIAJT0Mkco0ZyJVZOxD9bPXk4XtcpNeH
+         gRMC6024YEjr3WZi4APYWhfvavaw4et6M/ueZejV2XKXK3WTZLNtjO1cnAEWFfqlDobk
+         TdICgSS7V9Wk/O9U+Zo3OE45hUQ2hfP3ygsXSzSY/3rDnmMQQtiRxwRAZVVG7PKuukDS
+         q8VM+kBQLA5pk9rmXZYf06PqoLQu6LB9AKl5IYzEbR49o4RZ/K8HS+F6ANcTguAsVlaw
+         TQCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793654719; x=1794259519;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=h4Pf0yuMbG7VmbL6qh5TPaycUsxMKNE4IhWYVqEHmlg=;
+        b=E/u7lC1BuZmJWkYNF5gW5ZYQsPmdMlPYIcOeP/DrIZu6pfIFdZEltlfBodfZq3AAFD
+         18meECJflfkXL50+wn3C8ER6Zc0D7pY5dBAMdZh6f+eU9SM5Sxcn5qqvR7wZ3vHc4Bsz
+         h+qBh57SvQ8ocdIMaZOPBNMtoPjXM95WiwQlUWSe2Ur1C50Mkyyq6v8bfvB0jJ9i4GkL
+         sYOPDOuzoKnqNatGTEs5eGsYrPcE6GA/aScT6tK2iDR4rCaI68OhrYqBsOz7/VoQRAW+
+         ZYTKMlEJoR4xumWcGOP53FqUj72nqd1Uy4aVoWf/2F+YKnhTVEQ4xz2lrGlVUIxlmm2y
+         ei6Q==
+X-Forwarded-Encrypted: i=1; AKwUvBzwl6k6czOp8gyWYtZRmJQ+TwowP+rV5VMxYFVIlM6W3n4HL5H3Xp8EQLMy6KblYUNIppJnqA8EHqa+nuxk+w==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLRNhEektrEfx2SCC88l5x9uwQTJDiwySEd2LOfVjkV7shhHDCI
+	uPcsecloXaQ3kg4dfNw7uf1vgeNKT2JFkK49VUPuDQyn858TXkOpW4el
+X-Gm-Gg: AYBFou1Cfdm/CjQWQ7YqknmMJge/gP5pbn9g4PJfY0j5OHeMY/OCxC2xmM2iCzP7JlN
+	DQhg+1Mj2GhVNdMdaDEenzKQNBXk15gmadJyySB6QxpoDt/fDcM8om2Qqd8XjC3ooKbDVpqUL+W
+	eKT9ukktHmAIIk6Ah6B3/XXi4sFnV8NpsUyoGztu1aDioGO2iPY3qmjPbhj6HZk87aNU24T2jxt
+	xypdgwIFM7ImlAhKrUwxGeWoqxPNkfNaHxPFwF09ia18p78wKLersA7Ws+ObAqiDGPvIV1XpiUg
+	QiOjDS4VoM6R9IzEHFj37wC2wHLv4Y1FSfRDJXS3lQQMBAbTS38YPbIS3cmxvSWUyWqzAWp1Iy7
+	AgLjZZH38w/6CbPddp26LPlSop2vKdrfd7AoKQ+ggK8dcO9APC29ioWLVgq3S9xIwsLGWA++hwE
+	j5bfpSLN3Es1RJcBc3SULwEbGstSi9caVQd/pEzNxe9YG5ltcv+/oJECpXkOeeH2VRrAAxd82rS
+	8YpaO5PaOi0mDLXEeNkvUD2bmkSHprwxCtXC1yD+L/T/wobWHXXHf9M/TKUaGBVs9cJZz/QPstM
+	daV4rrertUcEfi4GMdsXrVo27Os=
+X-Received: by 2002:a05:7022:3f04:b0:19f:527d:96da with SMTP id a92af1059eb24-1ac5da7b145mr16079436c88.33.1793654718619;
+        Mon, 02 Nov 2026 13:25:18 -0800 (PST)
+Received: from server.lan ([168.138.199.194])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36a428fa380sm37195851eec.12.2026.11.02.13.25.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Nov 2026 13:25:17 -0800 (PST)
+From: Coia Prant <coiaprant@gmail.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Jiawen Wu <jiawenwu@trustnetic.com>,
+	Mengyuan Lou <mengyuanlou@net-swift.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+	Fabio Baltieri <fabio.baltieri@gmail.com>,
+	netdev@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Coia Prant <coiaprant@gmail.com>
+Subject: [PATCH net v3 0/2] net: phy: fix PHY interface mask initialization and XPCS usage
+Date: Tue,  3 Nov 2026 05:25:04 +0800
+Message-ID: <20261102212506.3348537-1-coiaprant@gmail.com>
+X-Mailer: git-send-email 2.47.3
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261102-jaguar-cam0-cam1-v1-1-c3aafcdab5dd@cherry.de>
-References: <20261102-jaguar-cam0-cam1-v1-0-c3aafcdab5dd@cherry.de>
-In-Reply-To: <20261102-jaguar-cam0-cam1-v1-0-c3aafcdab5dd@cherry.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>
-X-Mailer: b4 0.17-dev
-X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_123112_418310_5112DFEE 
-X-CRM114-Status: GOOD (  14.74  )
-X-Spam-Score: -2.8 (--)
+X-CRM114-CacheID: sfid-20261102_132520_014915_2A72DA97 
+X-CRM114-Status: GOOD (  13.21  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,235 +112,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Quentin Schulz <quentin.schulz@cherry.de>
+Changes since v2:
+- Patch 1 (new): move DECLARE_PHY_INTERFACE_MASK_ZERO to core and fix
+  the array size calculation.
+- Patch 2: advertise 1000BASE-X, SGMII and QSGMII instead of only SGMII.
+  Intersect the platform mask with the core mask using
+  phy_interface_and().
+- Add Fixes tag for the XPCS patch.
 
-RK3588 Jaguar has two proprietary camera connectors, P14 and P15. This
-adds support for the only camera module we currently have for this
-connector, on P14.
+===
 
-The camera module has a 2-lane OV9281 camera sensor, an IMU, a
-magnetometer and an EEPROM.
+This series fixes issues related to the handling of the PHY interface mask
+(supported_interfaces) at the core level and in the XPCS driver.
 
-Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+Patch 1 fixes a hack in the txgbe driver. The local
+DECLARE_PHY_INTERFACE_MASK_ZERO() macro incorrectly used
+PHY_INTERFACE_MODE_MAX as the array length. Move it to
+include/linux/phy.h and base it on DECLARE_PHY_INTERFACE_MASK() so the
+bitmap is correctly sized while still being initialized to zero.
+
+Patch 2 makes the XPCS supported_interfaces mask authoritative. The
+generic compat table advertises modes that a specific integration may
+not support. The Rockchip glue now builds a platform mask (1000BASE-X,
+SGMII, QSGMII) and intersects it with the inherited core mask. In
+addition, xpcs_find_compat() now checks supported_interfaces before
+looking up the compat table, ensuring the core respects the narrowed
+mask.
+
+Note: checkpatch.pl reports "Macros with complex values should be
+enclosed in parentheses" for the new macro in Patch 1. This is a known
+false positive for declarative macros that expand to variable
+declarations; wrapping it would break compilation.
 ---
- arch/arm64/boot/dts/rockchip/Makefile              |   5 +
- .../dts/rockchip/rk3588-jaguar-p14-ov9281.dtso     | 113 +++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts     |  36 ++++++-
- 3 files changed, 153 insertions(+), 1 deletion(-)
+Coia Prant (2):
+  net: phy: move DECLARE_PHY_INTERFACE_MASK_ZERO to core
+  net: pcs: xpcs: make supported_interfaces authoritative
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 442d322a20cf7..cf977e883c374 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -204,6 +204,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-h96-max-v58.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-can1-can2-uart4.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-ethernet-switch.dtbo
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-p14-ov9281.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-pre-ict-tester.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-lubancat-5io.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-mnt-reform2.dtb
-@@ -336,6 +337,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-can1-can2-uart4.dtb
- rk3588-jaguar-can1-can2-uart4-dtbs := rk3588-jaguar.dtb \
- 	rk3588-jaguar-can1-can2-uart4.dtbo
- 
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-p14-ov9281-p15-ov9281.dtb
-+rk3588-jaguar-p14-ov9281-p15-ov9281-dtbs := rk3588-jaguar.dtb \
-+	rk3588-jaguar-p14-ov9281.dtbo
-+
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-ethernet-switch.dtb
- rk3588-jaguar-ethernet-switch-dtbs := rk3588-jaguar.dtb \
- 	rk3588-jaguar-ethernet-switch.dtbo
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar-p14-ov9281.dtso b/arch/arm64/boot/dts/rockchip/rk3588-jaguar-p14-ov9281.dtso
-new file mode 100644
-index 0000000000000..155101c8497de
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar-p14-ov9281.dtso
-@@ -0,0 +1,113 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2026 Cherry Embedded Solutions GmbH
-+ */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+#include <dt-bindings/clock/rockchip,rk3588-cru.h>
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/media/video-interfaces.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+
-+&csi_dphy0 {
-+	status = "okay";
-+};
-+
-+&csi2 {
-+	status = "okay";
-+};
-+
-+&csi2_in {
-+	csi2_input: endpoint {
-+		bus-type = <MEDIA_BUS_TYPE_CSI2_DPHY>;
-+		data-lanes = <1 2>;
-+		link-frequencies = /bits/ 64 <400000000>;
-+		remote-endpoint = <&cam0_output>;
-+	};
-+};
-+
-+&i2c2 {
-+	#address-cells = <1>;
-+	clock-frequency = <400000>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	magnetometer@1e {
-+		compatible = "st,lis2mdl";
-+		reg = <0x1e>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <RK_PC7 IRQ_TYPE_EDGE_RISING>;
-+		pinctrl-0 = <&cam0_imu_int3>;
-+		pinctrl-names = "default";
-+		vdd-supply = <&vcc_2v8_imu>;
-+		vddio-supply = <&vcc_1v8_s3>;
-+	};
-+
-+	eeprom@50 {
-+		compatible = "st,24c64", "atmel,24c64";
-+		reg = <0x50>;
-+		pagesize = <32>;
-+		vcc-supply = <&vcc_1v8_s3>;
-+	};
-+
-+	camera@60 {
-+		compatible = "ovti,ov9281";
-+		reg = <0x60>;
-+		assigned-clocks = <&cru CLK_MIPI_CAMARAOUT_M1>;
-+		assigned-clock-rates = <24000000>;
-+		avdd-supply = <&vcc_2v8_cam>;
-+		clocks = <&cru CLK_MIPI_CAMARAOUT_M1>;
-+		dovdd-supply = <&vcc_1v8_s3>;
-+		dvdd-supply = <&cam_vcc_1v2>;
-+		pinctrl-0 = <&cam0_rst &mipim0_camera1_clk>;
-+		pinctrl-names = "default";
-+		reset-gpios = <&gpio0 RK_PB0 GPIO_ACTIVE_HIGH>;
-+
-+		port {
-+			cam0_output: endpoint {
-+				bus-type = <MEDIA_BUS_TYPE_CSI2_DPHY>;
-+				data-lanes = <1 2>;
-+				link-frequencies = /bits/ 64 <400000000>;
-+				remote-endpoint = <&csi2_input>;
-+			};
-+		};
-+	};
-+
-+	imu@6a {
-+		compatible = "st,lsm6dsr";
-+		reg = <0x6a>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <RK_PC0 IRQ_TYPE_EDGE_RISING>;
-+		pinctrl-0 = <&csi0_imu_int1>;
-+		pinctrl-names = "default";
-+		vdd-supply = <&vcc_2v8_imu>;
-+		vddio-supply = <&vcc_1v8_s3>;
-+	};
-+};
-+
-+&pinctrl {
-+	cam0_p14 {
-+		cam0_imu_int3: cam0-imu-int3 {
-+			rockchip,pins = <1 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		cam0_rst: cam0-reset {
-+			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		csi0_imu_int1: csi0-imu-int1 {
-+			rockchip,pins = <1 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&vicap {
-+	status = "okay";
-+};
-+
-+&vicap_mmu {
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-index 0446834e84d5d..99baf89167d35 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
-@@ -40,6 +40,16 @@ aliases {
- 		rtc0 = &rtc_twi;
- 	};
- 
-+	cam_vcc_1v2: regulator-cam-vcc-1v2 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "cam_vcc_1v2";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1200000>;
-+		regulator-max-microvolt = <1200000>;
-+		vin-supply = <&vcc_1v2_s3>;
-+	};
-+
- 	chosen {
- 		stdout-path = "serial2:115200n8";
- 	};
-@@ -123,7 +133,26 @@ vcc_1v2_s3: regulator-vcc-1v2-s3 {
- 		vin-supply = <&vcc5v0_sys>;
- 	};
- 
--	/* Exposed on P14 and P15 */
-+	vcc_2v8_cam: regulator-vcc-2v8-cam {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_2v8_cam";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <2800000>;
-+		regulator-max-microvolt = <2800000>;
-+		vin-supply = <&vcc_2v8_s3>;
-+	};
-+
-+	vcc_2v8_imu: regulator-vcc-2v8-imu {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_2v8_imu";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <2800000>;
-+		regulator-max-microvolt = <2800000>;
-+		vin-supply = <&vcc_2v8_s3>;
-+	};
-+
- 	vcc_2v8_s3: regulator-vcc-2v8-s3 {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc_2v8_s3";
-@@ -437,6 +466,11 @@ &i2c1 {
- 	pinctrl-names = "default";
- };
- 
-+&i2c2 {
-+	pinctrl-0 = <&i2c2m3_xfer>;
-+	pinctrl-names = "default";
-+};
-+
- &i2c6 {
- 	pinctrl-0 = <&i2c6m4_xfer>;
- 	pinctrl-names = "default";
+ drivers/net/ethernet/wangxun/txgbe/txgbe_type.h |  3 ---
+ drivers/net/pcs/pcs-xpcs-rk.c                   | 10 ++++++++++
+ drivers/net/pcs/pcs-xpcs.c                      |  3 +++
+ include/linux/phy.h                             |  3 +++
+ 4 files changed, 16 insertions(+), 3 deletions(-)
 
 -- 
-2.56.0
+2.47.3
 
 
 _______________________________________________
