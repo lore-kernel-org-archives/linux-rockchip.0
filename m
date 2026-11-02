@@ -2,75 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DA72606A32D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 19:39:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 69F24606A336
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 20:23:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gGfHNTZk;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=e97rt7+f
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WUZ5fWq5;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=0leil.net header.i=@0leil.net header.a=rsa-sha256 header.s=20231125 header.b=l1IxLRPC
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=y5Xsz95CXu89y53Lcgy14fqS+YzrL0DeSV7nQ7H7caQ=; b=gGfHNTZk0umZGKGiAxSwzupOdg
-	5pRux7mRdH1jebThsCKTqeS5qbbzDPmER7QguNDpUXHWxFNLZeLJf8sH98BkQgI5q5tH+qJXH/VSl
-	GoDIsy8YnmzG6XcBrGsNVK22PB7jdCwkZGZB+KU4nqiOhoXhX2zADlfNFZfe9J4LcxU1n5XLLO6zK
-	c+VA54qdSKsOzNK7ikL3U0hlN+pWxmPrCFS0d4ISLG0+nmrhqZDIuDFMLDwpJSargZCV0N7+iavdu
-	s+xLXvVtBjq7PIJmjD/Q3GAqQw/xFV8K7bfFnWAB/MIX/PMfZJfZeyVrzA8cIIWxaypEJC/D6A3J9
-	lbsZzkVw==;
+	bh=PjDXv1zDcOcAB0ZINeli2tySizruKTUY8x4vQfSjUpw=; b=WUZ5fWq5LS6A6JWvC63OGKvuqU
+	3JxHqBr+j8oXcklVD8K05HjxxpdXqp0lb3TMaR4Ih4O4cqueFOIaeihQg1B3ssEiKfsSx1GuMma3S
+	ieHHPEkLJlK1Ro854ndc8EgyEb9+O33sxexQkAZjOwnWotaKqFGviUVl8qTET9KI9aFMB2FABb7FX
+	rc/Mu+t+IFvJPKj/vUJ6VMYxRulAaAkfgROwnVTHtQjFHdkufQgrP02No2Ep2GjfRhYQbi4DzKXvF
+	EsFSunN6M7cO/+G70hTtipBg36chxcfWXfK+ZGQYhiihVCrTHJjen//uhsiohGdJeRUk1AxmDQAgK
+	DMIWE6aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNxsH-000000007Ee-2Gvl;
-	Mon, 02 Nov 2026 19:39:21 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xNyYX-00000000IuU-2mFL;
+	Mon, 02 Nov 2026 20:23:01 +0000
+Received: from smtp-bc0c.mail.infomaniak.ch ([2001:1600:19:5550::bc0c])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNxsF-000000007Dy-3e6l;
-	Mon, 02 Nov 2026 19:39:19 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 56F27417BE;
-	Mon,  2 Nov 2026 19:39:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D78F1F00A16;
-	Mon,  2 Nov 2026 19:39:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793648359;
-	bh=JbMEaLInfJZTikyj6sTbndfICmjNer0efXBtfT3t/z4=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=e97rt7+fYVS06nnercX285Pb/2VysLZOY5Ijme2sohfOvFOKVsaY9E+Sj+gwD1ulJ
-	 MwHVa8aF8UjhGdwWt6QruaR9HA5g9wf+vblucB1NXg0ntlaPNV8pCKSbK7EKJZJbhj
-	 zRBjZk+PFYGFAopr5Qy267xd1sfVGJ47cnOoXhlvJ/l/z3cd/9vSaFncABJwO4cnjO
-	 CuNyvBrhvCCa4/+daiTyMDJtQb/QBXebIrXSPGThAUhSZbUAWdFqWPrVyI/W9+6Smt
-	 DVsFgeuwQY7sDdonzE79SifCG6LQ5fO/w1Jd/ABEy3AxivzLCla2acQvpmu2cPOg2F
-	 SCXiL5BaSRCqQ==
-Received: from traversing.sirena.org.uk (localhost [IPv6:::1])
-	by traversing.sirena.org.uk (Postfix) with ESMTP id AAFE323DFF18;
-	Mon, 02 Nov 2026 19:39:16 +0000 (GMT)
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
- Jun Yan <jerrysteve1101@gmail.com>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org
-In-Reply-To: <20261101080926.267041-1-jerrysteve1101@gmail.com>
-References: <20261101080926.267041-1-jerrysteve1101@gmail.com>
-Subject: Re: [PATCH v3 0/2] ASoC: codecs: Add Everest ES7202 support
-Message-Id: <179362860891.1990291.9978990707739127303.b4-ty@b4>
-Date: Mon, 02 Nov 2026 14:10:08 +0000
+	id 1xNyYU-00000000IrN-2W9i
+	for linux-rockchip@lists.infradead.org;
+	Mon, 02 Nov 2026 20:23:00 +0000
+Received: from smtp-4-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10::a6b])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4jJNRx0r5wz1YT;
+	Mon,  2 Nov 2026 21:22:53 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0leil.net;
+	s=20231125; t=1793650972;
+	bh=Gx4a5PtxLdTskMqbqHdRE6WcTaLjJR+RWT06hGvA3x4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=l1IxLRPC1tRvaf0Tmzj/t236kJyMBy8xSGm66UigBSImAQXRDIbyliNNfwCHvlXQe
+	 h0h2RA5b7L8sAaEteNbe1MeUMP5Id64lJUzDiSCVz/z7A3tz7uoj7dDq70Osf3FgVO
+	 gMLBzx/BH4EaLQsFbjz40gKtxlQjS3pfr11yqdbO6BjuqYHzaRBemC6DH8y7C8AOKR
+	 Od9k+WpA2H44+yjgTHWMGAHMjAvSeluFEVFfciENimowbLZO7ZLPsFI6v+vg/zek6H
+	 MH0kkS+iYVNqtyLuHA4RFXYE9k/UHBcYU/wW6JdG4Itf1S18KHlagHi3rEigW1asAA
+	 HoecJfIkQb5sQ==
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4jJNRw0t20zqRZ;
+	Mon,  2 Nov 2026 21:22:52 +0100 (CET)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Date: Mon, 02 Nov 2026 21:22:43 +0100
+Subject: [PATCH v2 2/3] media: rockchip: rkcif: add support for GREY and
+ Y10 formats
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Message-Id: <20261102-v4l-y8-y10-csi-vicap-v2-2-0a4149d96dae@cherry.de>
+References: <20261102-v4l-y8-y10-csi-vicap-v2-0-0a4149d96dae@cherry.de>
+In-Reply-To: <20261102-v4l-y8-y10-csi-vicap-v2-0-0a4149d96dae@cherry.de>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Michael Riesch <michael.riesch@collabora.com>, 
+ Heiko Stuebner <heiko@sntech.de>, Bryan O'Donoghue <bod@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>
 X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1593; i=broonie@kernel.org;
- h=from:subject:message-id; bh=57IEY5sLI0R//srJiFo6NAVqvbCrI7pKU9CTHZdofwo=;
- b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLJePHuyJNJxogH/crU1D3XeKQRMSdjfd0tpc0Gtj68L2
- ybVs9ULOkpZGMS4GGTFFFnisrhf1pe8XsN3cGEbzBxWJpAhDFycAjARW1tGhp4iDlnNYNNJTe6B
- KQyXPGNkilY2peq+PNW045HB5mUbJjH8LzePqJoYY9eeteDFyua0U0W8fHuPrnrbtfq9BZvMqnR
- 9RgA=
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+X-Infomaniak-Routing: alpha
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261102_122258_849049_90F90B50 
+X-CRM114-Status: GOOD (  10.55  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,56 +78,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
-	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sun, 01 Nov 2026 16:09:24 +0800, Jun Yan wrote:
-> ASoC: codecs: Add Everest ES7202 support
-> 
-> This series adds support for the Everest ES7202, a 2-channel PDM
-> analog-to-digital converter controlled over I2C.  Patch 1 adds the DT
-> bindings and patch 2 the ASoC codec driver.
-> 
-> The driver is based on the Rockchip BSP driver, reworked for mainline to
-> use regmap and devm_ helpers, probe the device ID, and report the actual
-> per-step PGA gain.
-> 
-> [...]
+From: Quentin Schulz <quentin.schulz@cherry.de>
 
-Applied to
+The OV9282 camera sensor driver can output in those two formats, but the
+VICAP didn't advertise support for them yet.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.5
+Suggested-by: Michael Riesch <michael.riesch@collabora.com>
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+---
+ .../platform/rockchip/rkcif/rkcif-capture-mipi.c   | 26 ++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-Thanks!
+diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
+index 53e62d0597648..4e172366f258c 100644
+--- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
++++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
+@@ -95,6 +95,26 @@ static const struct rkcif_output_fmt mipi_out_fmts[] = {
+ 			.type = RKCIF_MIPI_TYPE_RAW8,
+ 		},
+ 	},
++	{
++		.fourcc = V4L2_PIX_FMT_GREY,
++		.mbus_code = MEDIA_BUS_FMT_Y8_1X8,
++		.depth = 8,
++		.cplanes = 1,
++		.mipi = {
++			.dt = MIPI_CSI2_DT_RAW8,
++			.type = RKCIF_MIPI_TYPE_RAW8,
++		},
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_Y10,
++		.mbus_code = MEDIA_BUS_FMT_Y10_1X10,
++		.depth = 10,
++		.cplanes = 1,
++		.mipi = {
++			.dt = MIPI_CSI2_DT_RAW10,
++			.type = RKCIF_MIPI_TYPE_RAW10,
++		},
++	},
+ 	/* RGB formats */
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_RGB24,
+@@ -341,6 +361,12 @@ static const struct rkcif_input_fmt mipi_in_fmts[] = {
+ 	{
+ 		.mbus_code = MEDIA_BUS_FMT_VYUY8_1X16,
+ 	},
++	{
++		.mbus_code = MEDIA_BUS_FMT_Y8_1X8,
++	},
++	{
++		.mbus_code = MEDIA_BUS_FMT_Y10_1X10,
++	},
+ 	/* RGB formats */
+ 	{
+ 		.mbus_code = MEDIA_BUS_FMT_RGB888_1X24,
 
-[1/2] dt-bindings: sound: add Everest ES7202
-      https://git.kernel.org/broonie/sound/c/ded65056b6c9
-[2/2] ASoC: codecs: add support for Everest ES7202 PDM ADC
-      https://git.kernel.org/broonie/sound/c/063273b18195
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+-- 
+2.56.0
 
 
 _______________________________________________
