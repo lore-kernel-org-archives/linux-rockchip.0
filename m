@@ -2,103 +2,106 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 281B060A6F71
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 17:45:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6481A606A914
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 17:49:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=199WKwU5;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=G6bricYu
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=duUakz+I;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=fBEPXcMJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=CoXxwuau6xBJXwhiZzIaKMsAb3XmCRtM82jGPFenb1Y=; b=199WKwU568st/vWLYKbH/+KJds
-	B8P25v7smIOGeNNbXqj/Y0iDYhXwmhOSuRRHEgPg8dhGN/gRximoyh7+RYUr3hYrnEKeU8/G1dJhw
-	nnZvLMJMyjQwOn8euPtB/SD9PWuF92iVuNgM+XgiMMH8hNItDMkFN3V7nXCJ708f41dfLfKCVJpMP
-	uqphJMzkQ2BFCYW3MjtfDlPhVKhKBhiiPMMu62qFEl5huj7MV1fQ/ulpy1MOFKk7ZEeft1rfY/82Q
-	jyGIegMwCZikocR945OAn1Qq9TZLfymcumcVB+wQuJynz5PvXMvveOgumOLmGaqEliDo459LeiUDj
-	nnmCOp+A==;
+	bh=+ZyyfQcM7T3HZKmj+PxKuZPBzMDpsYjdPR0azex5HSQ=; b=duUakz+IHi5sWrgFOKJhuTxKdx
+	ztG2rDME/ZNFo963JWf+fLbaM0B96LQsrwjgD8LoLh3Rqn8Ont9E9nKsuyTtuSMVZl2D2PxKu9zSO
+	n+nWYk7VABJ3j274+qD7cB9gbnjnZj6LTqnIs2EJ2cUCibKQdZSTznJu+6Z3nWqL0pzfF0Rsfbu/Z
+	FRaSFQQVjifjijEPCXifAQu98dr8VRp/SK4ylX41fcJu1f/6TSE0zYOu379cgudVhF7asSwQDzPdf
+	vxX4U33K2AlYrWpAMvIsMK+4k2i82Oc0eWuULlKgwkodCbT3XPT6nGb065+f0hQRMVYoo/hBTvZhR
+	zq14sr9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNw63-0000000HVYu-2w2R;
-	Mon, 02 Nov 2026 17:45:27 +0000
-Received: from mail-dl2-x05.google.com ([2607:f8b0:4864:38::5])
+	id 1xNw9W-0000000HWnb-1tC4;
+	Mon, 02 Nov 2026 17:49:02 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNw61-0000000HVVF-2OyG
-	for linux-rockchip@lists.infradead.org;
-	Mon, 02 Nov 2026 17:45:26 +0000
-Received: by mail-dl2-x05.google.com with SMTP id a92af1059eb24-1ac216daf7dso1327030c88.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 02 Nov 2026 09:45:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793641525; x=1794246325; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=TM7SxuLHSkIokTfxUi5Ea/8G/1rov27xpyXAoGZkTRk=;
-        b=G6bricYuZ2PEZ+J8uuCRSp1TXjFhfa6V2CI8e1Rc7TjAFu6Lf3AgK4mcYf4/Pw/TXr
-         JHa3YS8SZRMbC5aa39mEeKxwVTZ3JPp8oCVpPpbmP8LHmFL3csbfdLQUtRq0ftZslghY
-         8AooGEwa4niZi8lD1exMLlmLCKCwqTldvR+sHNu5tpx30BSZsPTqlZ0UcZT832D8aIeF
-         RRbS9Mh8PsWYBakUlYtkb8D412/6ZOdp5H8YhRTW9JjKDRTrag7GvpdZIyR3lqZAS2TQ
-         cWmeuxPlEr7CYSJ3br+gQHoQCcR56E2kWx2axVM0QDQ85QrnFIzO+hFiCnllniEPio7W
-         8Ihw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793641525; x=1794246325;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=TM7SxuLHSkIokTfxUi5Ea/8G/1rov27xpyXAoGZkTRk=;
-        b=Y4K5rrFqT8TxMrTvysHOdohlJddC4JAqnhPhWwT4btMlJViDDFf3icaeXaJadK490Z
-         Luq/+1ObWllAUwBKtnZ8f8atXavApUQu+PDhq4E7+GIAkK+vcNMlwlgb4XHYo280QD5w
-         QFLFjfmVEDilX4fVWevEL/PaLkx9Nv9gKUMOp9du/DNSLqNuvA0M+bNx01FPtKOI+f+P
-         ggZkie+zwq9std6+U+gyCEzu9qZ0nDnpzYHjgHFtORB7uv7pXQFaM8Sys0Pi/Nw7rsnj
-         U/XDv/fKXz44u8vks3NGdVhj8VIZni07MOn4w+ThDRNm5ia4NyXh1I4El3Lxa0LFhevu
-         FqrQ==
-X-Forwarded-Encrypted: i=1; AKwUvByf2aE2vv6AvWgsY0LEoHsnvA90YjCFFE0baKq8/NGsPVKB85mpKMB6i2KgzN+5b4vxhy3L2UAQRNh2Cj9QEw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+WitpZ0JL+vxLeeAtVlaQhd69Xip6bXajDbzhO5+5gk3JJPnzF
-	mJ+fKlqEuDMlLBd0LW44WzuiYFXb1cpO6gSSBLzjHtMs103fUNraL1Sr
-X-Gm-Gg: AYBFou2gdInnxTeCMgbewS2IgonuV0ita0hhFAAvl7dvzAYux9AhOldeZuSCGgzvCp2
-	0IRtr5RQp43kCXIgZsEe5FEyIlY3CNGazr3dt3hDItwtScdicvpfmfL9gzYcbyWfEsyeNwF8iXF
-	TP6EvpTk68UZTFjnqPmSOsoGB2++cTG2AuH27NtxXvCJ5sGUTOmy1VgyodoHSMjMNkQnqb6fmwy
-	YVm52NE0/JVbBZ8g7dy9SyjuoZuXOcRPP7fvslao9gEVBSkb4uMJ/gHZ/tNA4lL/KuTKVBaR/tH
-	mwYB1cpkdWws5Oq5+WbKX432xKyMykWQNmn93aMq6IificaNRXIxyJq9nHDRdXcWwyaQn2OaFLW
-	ZeVIRKSaWdo1UcwfwwUMN1kBlIyySQrXrMbKYLySMNoePGXUEcNHd/IDKaU7+KLM/1PK0d1bXRI
-	8lGX8mmg/RWp9OtQEEz90o/UgBjaATpLU7i6Y5ZGxB8rd5nE76A1CNSZUCP+68joEGwiTCxq+qH
-	9sdallo7WoBCjyWqNTma/DILXez20SjgfwLvPzJP6jZ9BUIyUHX3YLXosEdWZm/vtpHZJmLiN1O
-	6jf+Q7BTVGje31YPLBzsBYQF0wU=
-X-Received: by 2002:a05:7301:4b10:b0:35c:85fa:5a61 with SMTP id 5a478bee46e88-36a424940d9mr16596225eec.38.1793641524327;
-        Mon, 02 Nov 2026 09:45:24 -0800 (PST)
-Received: from server.lan ([168.138.199.194])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36a42935b4asm53290803eec.16.2026.11.02.09.45.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Nov 2026 09:45:23 -0800 (PST)
-From: Coia Prant <coiaprant@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Frank Wunderlich <frank-w@public-files.de>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Junhao Xie <bigfoot@classfun.cn>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Coia Prant <coiaprant@gmail.com>
-Subject: [PATCH v3 6/6] arm64: dts: rockchip: fix modem power supply topology on Photonicat
-Date: Tue,  3 Nov 2026 01:44:50 +0800
-Message-ID: <20261102174450.3000397-7-coiaprant@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261102174450.3000397-1-coiaprant@gmail.com>
-References: <20261102174450.3000397-1-coiaprant@gmail.com>
+	id 1xNw9U-0000000HWmu-1wFP;
+	Mon, 02 Nov 2026 17:49:00 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id E31C060F15;
+	Mon,  2 Nov 2026 17:48:59 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1793641739;
+	b=bzYIm5iMChyJCwGOPSYri2vPvWFoC7Sy7XO7e+AYE3R0zf6Kvc6fVj/J3OS/ycxvMdrT
+	 /0PbRwLF+cQP2Kcwc4rALAnv5xd+hu+quhb5+dlRL2zWo/GoNW3LmcLIpmLmoBLBJ4kcd
+	 Wk0kgv/oofbyv8al65d+liK6h2aB4LvjYXbWSkV4HBHPNBXsc2121BdLkZeD3Ae5ySkiu
+	 7sZwEAuvuuY4FSb9C2bfaEMJkwWv7NOpGRIBP6w+hEcfb+Fq1Rlj+6MzEyLorGRNuzkZH
+	 DY6RRn53nMJ5Oyh4ELdXgJD8b99zrKKtYmo4BvAnkIzRrhtSLpp79jDtvzSpVVujw0w==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1793641739;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
+	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=eP0Y6oo6faclP+TA9E7YeDBqEgJ7r8KP1TNkcNSer+M=;
+	b=AUugk16JhTuqTarcAJ50qabVuDEU5pcYPjCrUhUi/9x2qKcG4ibcILokaae1ajmvDpaL
+	 38URAsstCynrVQCG16D1YKsZNK9KVvj2pdB8Z5sdTUQAEz6c8WJvAx9hrC3fhyTo0xMnD
+	 seqSTjyeHHkfL8nJNRkaxNA8vvAL0t49pXXIAHVrRt6OMnTDirPntEMnjm6yjkpvdTNGl
+	 Txsv/VH5m+/aKYK0HOQml2m4Z/vzmCbpkhmEfOTuqYEjtVgGuh6bYcX4VEOSOdvcpJJ/P
+	 +KEFbWvbQf0XyR6y68jHjC1LH13WpBBeRyobwrAJRLOntE36UKyzuxm0w7e3bmcaVeQ==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 215071F00A1A;
+	Mon,  2 Nov 2026 17:48:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793641739;
+	bh=eP0Y6oo6faclP+TA9E7YeDBqEgJ7r8KP1TNkcNSer+M=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=fBEPXcMJshrIU9NPc4PKaWd8Nxn7Pi5bJEwMOvFvBr5J8Tb5tuNbb1hsqOdj302EK
+	 sStRNqQhK1daUO8i1zgNOhBN03QZRXKh8W1loh+URg/uG3qRJt/RCns9VEuPD6w8NX
+	 5kLpdUfCvvuAjsFeQXJcGmDHHx1y7OpQLsULZF47CzKBmPIJyEyIwd/VFY3xsA3nlQ
+	 NEh7QuS/JlsV2Gz4ZZHzwj2df5CqGqK4Gk/S5vnQnrxZD3r/lRZwK3Cph7TpgXElpl
+	 i5YYtJkf+gGLRQp6N7xxYBMLT7Cqo8YL/rTBoqh67z3jTKTkkMbEfx4gBuXU7gdY04
+	 LNfZEeDiJkbYQ==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id A40D0465C7;
+	Mon,  2 Nov 2026 17:48:58 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Mon, 02 Nov 2026 17:48:57 +0000
+Subject: [PATCH] media: rockchip: rga: Keep the clocks enabled without
+ CONFIG_PM
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_094525_626094_CA97DD5E 
-X-CRM114-Status: GOOD (  13.21  )
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261102-rga-runtime-pm-clocks-v1-1-1bad7807f037@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAAjN6GoC/x3MMQqAMAxA0atIZgNtEUGvIg6hjRrUKqmKIN7d4
+ viG/x9IrMIJ2uIB5UuSbDHDlgX4ieLIKCEbnHG1tcahjoR6xkNWxn1Fv2x+TthQxfVA7AMZyO2
+ uPMj9f7v+fT9WzOPOZwAAAA==
+To: Jacob Chen <jacob-chen@iotwrt.com>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Hans Verkuil <hverkuil@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1515; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=2aAiFLoBlld6RgGQ0EoX3zPXerU1gatyiz1du1lqQ/o=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFkvznJuXqItWfLsVZbVh6suzL/lV89km7ZRp2PH05sit
+ 1eWKkY/6ihlYRDjYpAVU2SZcEjjVsaSq3/9PcwfwMxhZQIZwsDFKQAT4W9jZJjTcy61VDnn5Bze
+ xbPXt1cpLQl8znXX89rSD3lnBVTbA9wYfjEt5ojpX778SvpCg1zuTaftVnWsusl/dsJcuQtnvsb
+ K2jICAA==
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,55 +111,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The vcc3v4_rf regulator supplies the M.2 B-Key 5G modem. It was
-incorrectly modeled as being supplied by vccin_5v (the external DC
-input, before the main power switch).
+From: Igor Velkov <iav@iav.lv>
 
-Per the schematic, VCC3V4_RF is actually derived from VCC_SYSON (the
-main system power rail after the power switch Q5013) via a ferrite
-bead (B1).
+Only rga_runtime_resume() enables the clocks. Without CONFIG_PM the
+runtime PM callbacks are not registered, so rga_probe() reads the
+version register with the clocks disabled.
 
-Change the vin-supply of vcc3v4_rf to vcc_syson to accurately reflect
-the hardware topology. While both vccin_5v and vcc_syson are
-always-on fixed regulators without runtime GPIO control, this ensures
-the DT power tree matches the schematic and traces the modem's power
-path correctly. It also clarifies that the modem relies on the main
-system rail rather than the external DC input directly.
+Enable the clocks from probe in that case, as etnaviv and v3d do.
 
-Link: https://github.com/photonicat/photonicat-hardware/blob/main/Photonicat_rk3568_sch_20221116.pdf (Page 18)
-Fixes: ba124e06ce7b ("arm64: dts: rockchip: add dts for Ariaboard Photonicat RK3568")
-Signed-off-by: Coia Prant <coiaprant@gmail.com>
+Signed-off-by: Igor Velkov <iav@iav.lv>
 ---
- arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Split out of the rkvdec CONFIG_PM discussion, as Nicolas asked [1].
+Build-tested only (arm64, COMPILE_TEST, W=1, CONFIG_PM=n and =y):
+ARCH_ROCKCHIP selects PM, so no board runs this path.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts b/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
-index 290e3ee97c709..6ba70e5d9037e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
-@@ -177,7 +177,7 @@ vcc3v4_rf: regulator-vcc3v4-rf {
- 		regulator-name = "vcc3v4_rf";
- 		regulator-min-microvolt = <3400000>;
- 		regulator-max-microvolt = <3400000>;
--		vin-supply = <&vccin_5v>;
-+		vin-supply = <&vcc_syson>;
- 	};
+[1] https://lore.kernel.org/r/8aafdbbf04a0d939c6b4d7d5577d97bb58d1c439.camel@collabora.com
+---
+ drivers/media/platform/rockchip/rga/rga.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index 543a0da75572..c50141bb5654 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -701,7 +701,10 @@ static int rga_parse_dt(struct rockchip_rga *rga)
+ 	udelay(1);
+ 	reset_control_deassert(ahb_rst);
  
- 	vcc5v0_usb30_otg0: regulator-vcc5v0-usb30-otg0 {
+-	ret = devm_clk_bulk_get_all(rga->dev, &rga->clks);
++	if (IS_ENABLED(CONFIG_PM))
++		ret = devm_clk_bulk_get_all(rga->dev, &rga->clks);
++	else
++		ret = devm_clk_bulk_get_all_enabled(rga->dev, &rga->clks);
+ 	if (ret < 0) {
+ 		dev_err(rga->dev, "failed to get clocks\n");
+ 		return ret;
+
+---
+base-commit: 27285b099fbc5cb2ae3aef20f3bbd7b3c88b3005
+change-id: 20261102-rga-runtime-pm-clocks-9a4e6faecda0
+
+Best regards,
 -- 
-2.47.3
+Igor Velkov <iav@iav.lv>
+
 
 
 _______________________________________________
