@@ -2,86 +2,69 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DFC46080497
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 15:21:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 81E8D606C3FC
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 15:40:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aCAK5nK0;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=P6WLKQUF
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DGJi3qdY;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=m2pKbDXg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=2c2fS/Lb6VAaoW1MIwyD67Y3yNKo+rPsO35xrxQM/Mk=; b=aCAK5nK0Ulfmx59JFeYyxDgRbr
-	9onZYHXZDPT3Dem5Z7cZmBtl6/pehgcbA1JItG7SreT6foHPaRdnbI0OXuSc0aa4Xe0CII2Udrd+i
-	PXQH16W5AJfd+9uZCohVXWuVIuuRznTsIvc2ePmwid0kf8zgjvFNxV9Etq9HRY9kjOKXSMkpaTH4R
-	25LgJsYoyfLy3me8Mf76L7AE9SD0yECNk68lfXJ9JCZYy/QZQYEJ83CcYpGBfB9sTKU2XIr+vkpW9
-	tNRlPEvwhh9qc5MqoOGVy2Pc+dFFixm49DE/7QIebZEI/QTdQiufeQn5+qG1Riy0sTg/bUIcqADux
-	YJcP+7yg==;
+	bh=Q0jgIHMAfkcpd+Tci02yQGlRAogjfkUeziVQd3WVDWQ=; b=DGJi3qdYQ9Qz6JnYEJgMTLVaks
+	dtmAv5TIZXh6Q/xWINXmrKNuZClmg0dOR+facyU1gc6Ke30F1goWhezGJ1hMxuLuurFg1oa4xQPtA
+	FhNhtw0O9mdjDlrpu3sZ3jl0GtIHaYDoDLlldD4eK+6TuKP1bz/Q1BXYnFBRupcyvbcS+dgRvCXUx
+	BA+yR+vUpbbEEbuBf6dO9q4K+Kj9kqNnz2NPVjE36He4T5ypiU19lzi2qrutWyvIop6Nsgr4dNgZh
+	1G5/DnmAtTA6iz/Wuyz2OMzFan30MEDuOjoao30zVqrZUTzb9a2ROEf9ANT3z7XwntGKFYFgVyo2D
+	IJa+AMHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNtqk-0000000H3fZ-0jXh;
-	Mon, 02 Nov 2026 15:21:30 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xNu9Q-0000000HBAb-1zo5;
+	Mon, 02 Nov 2026 15:40:48 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNtqh-0000000H3eH-00mW;
-	Mon, 02 Nov 2026 15:21:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793632884;
-	bh=Ar1uWTj3IJ9tEnHxn97KponzoGGyMBUmz+xZ4dUR9+c=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=P6WLKQUFiubdMDE0OEw1poZ6yEA4wkfMqqhvYPHCAAmlMNL+ctJOISpnAkne2oTKe
-	 4AudCORZvnveIWShv5rOYfq1hG3s66mEc8ESXvREckIHK3RR6dxlnqpyrma43bfm6d
-	 KgWGXnIRg1479oYEq82uad35CqqRXQZKyaHujEoUnwZX/anoqcxlAHyX6DOuyPIINz
-	 /DZQr55svI9G9pmzFQfC3ruwNw+nPsW8cWVWe2dPVt+rHaRzx0GpEhtIz7lJqnVtzy
-	 50X/ewlusJVTQxlE3uiR/DwkC+5l0zTjIdkzCPQ3mhxVksz9koofPR7/wFaGzR1ggi
-	 SBPALVcGjeLSA==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5DCCA17E038E;
-	Mon, 02 Nov 2026 16:21:22 +0100 (CET)
-Message-ID: <8aafdbbf04a0d939c6b4d7d5577d97bb58d1c439.camel@collabora.com>
-Subject: Re: [PATCH] media: rkvdec: Do not keep the clocks enabled from probe
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Igor Velkov <iav@iav.lv>, Detlev Casanova
- <detlev.casanova@collabora.com>,  Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>
-Cc: Hans Verkuil <hverkuil+cisco@kernel.org>, Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Diederik de Haas	
- <diederik@cknow-tech.com>, Jonas Karlman <jonas@kwiboo.se>, Francesco
- Saverio Pavone <pavone.lawyer@gmail.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, 	stable@vger.kernel.org
-Date: Mon, 02 Nov 2026 10:21:20 -0500
-In-Reply-To: <20261030-rkvdec-runtime-pm-clocks-nicolas-reply-1@iav.lv>
-References: <20261030-rkvdec-runtime-pm-clocks-v1-1-fb2c5b629e79@iav.lv>
-	 <76e2e993fa5a8fd054bad97505907d3c4e88e11c.camel@collabora.com>
-	 <20261030-rkvdec-runtime-pm-clocks-nicolas-reply-1@iav.lv>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
+	id 1xNu9N-0000000HB9g-11gs;
+	Mon, 02 Nov 2026 15:40:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version:
+	Content-Type:To; bh=9HNEAr4lT8p39eVaiLtUhAY8ZzSREjueyplNX7G/Cwc=;
+	b=m2pKbDXgx9CFzvhcTiLxFuIi8TnE/+xm9S7JmVZUh5LrjU88bFuifpTMQVX229
+	0xKLx4m/5VTTy4jBig51luVhQHgxYfUWRwxGlcOjLMKtTyt7ttLi7hMeJqOoz6Rx
+	/Y/Cm6eRqJSKD+hAUdgW1Sq9/9+Cn3g9X0aKf9LPhFhYs=
+Received: from 4F-GAME.localdomain (unknown [])
+	by gzsmtp1 (Coremail) with SMTP id PCgvCgCn74XvruhqEea+DA--.56588S2;
+	Mon, 02 Nov 2026 23:40:32 +0800 (CST)
+From: Bob Hui <bg9oxa@163.com>
+Subject: [PATCH v12 0/2] arm64: dts: rockchip: Add ALIENTEK QuarkPi-CA2
+Date: Mon, 02 Nov 2026 23:40:12 +0800
+Message-Id: <20261102-quarkpi-ca2-v12-0-d749d9bb2bf9@163.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIANyu6GoC/33NS04DMQyA4atUWRNkO69JV9wDschraEB0yqQdg
+ aq5O0kRatMFUja2/P05s5LmnArbbs5sTksuedrXAelhw8LO7V8Tz7EuGAFpBJD88+Tm90PmwRE
+ njOSUDQqCYFUc5jTmr0vu+eV3Lif/lsKxJdrFLpfjNH9f/ltMu/srm668mPaAu0EGHVXUadRPq
+ MVjmD5YSy/DP3io0g8CLfkUwfhe2htJ2EvbpFEA2hP5oHqJcEtFTxGqtdFbkGhlAnFn8WorvrN
+ YbfIkNRjtBhqvdl3XH+nQPhCmAQAA
+X-Change-ID: 20261004-quarkpi-ca2-21d2a59c50c3
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Andrew Lunn <andrew@lunn.ch>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, 
+ Bob Hui <bg9oxa@163.com>
+X-Mailer: b4 0.15.2
+X-CM-TRANSID: PCgvCgCn74XvruhqEea+DA--.56588S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxCrWkAFW3uF1UZFW3CF48Zwb_yoWruFWfpF
+	ZxuFs8Grs7tryI9Fs2gw1xuFySvw4ktFWSqFn5J345Za1YvF18Zr1Syw4FvF98CrZYya4U
+	Cr15WFy8GF9rZF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pRiYFJUUUUU=
+X-CM-SenderInfo: lejz05rd6rljoofrz/xtbC3hG8KmrorvH9pQAA3c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_072127_197922_9D8932AA 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20261102_074045_949926_19D55D4F 
+X-CRM114-Status: GOOD (  17.60  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,85 +75,114 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2283354803638632269=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+This series adds support for the ALIENTEK QuarkPi-CA2, an RK3588S based
+single board computer. The binding patch documents the board, the DTS
+patch describes the hardware.
 
---===============2283354803638632269==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-Hy9+b3DoQgbhz4pK6YIj"
+The DTS was rebuilt from scratch against the vendor 5.10 BSP device tree
+and then translated to current mainline bindings, so that every node and
+property has a vendor-side or schematic origin instead of being carried
+over from the earlier revisions.
 
+Changes in v12, addressing the Sashiko bot's suggestions on v11:
+- Sort the PMIC regulator nodes in natural order, so that dcdc-reg1 comes
+  before dcdc-reg10.
+- Sort the phandle references in natural order, so that pwm7 comes before
+  pwm14.
+- Put simple-audio-card,codec before simple-audio-card,cpu.
+- Add the blank lines between sibling nodes that were missing.
+- Link to v11: https://patch.msgid.link/20261102-quarkpi-ca2-v11-0-eb246076a82f@163.com
 
---=-Hy9+b3DoQgbhz4pK6YIj
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Changes in v11:
+- Trim the commit message down to the board description and the list of
+  supported peripherals.
+- Drop the Assisted-by tag.
+- Note on the Reviewed-by line which nodes were reviewed.
+- Sort the properties in aliases alphabetically.
+- Sort the nodes without unit addresses alphabetically, everywhere.
+- Drop the deprecated regulator-suspend-microvolt properties.
+- Sort the phandle references alphabetically.
+- Keep a single root node and merge the extra root nodes and the &{/}
+  block into it.
+- Link to v10: https://patch.msgid.link/20261023-quarkpi-ca2-v10-0-9db904194e03@163.com
 
-Hi,
+Changes in v10:
+- Add the Acked-by tag from Conor Dooley, which I missed.
+- Add the missing domain-supply for the GPU and NPU power domains.  Without
+  it the power domain driver falls back to a dummy regulator for both.
+- Enable the three NPU IOMMUs the enabled NPU cores reference.  Without them
+  opening /dev/accel/accel0 fails with -ENODEV.
+- Link to v9: https://patch.msgid.link/20261021-quarkpi-ca2-v9-0-b75006b22bc5@163.com
 
-Le vendredi 30 octobre 2026 =C3=A0 20:05 +0200, Igor Velkov a =C3=A9crit=C2=
-=A0:
-> On Fri, 30 Oct 2026 08:49:03 -0400, Nicolas Dufresne wrote:
-> > So if CONFIG_PM is not set, the initial resume will never occur, and fi=
-rst mmio
-> > access will likely hang the CPU. We need a clean pattern to handle this=
-, and
-> > perhaps review other similar drivers while at it.
->=20
-> PM=3Dn only happens with COMPILE_TEST: ARCH_ROCKCHIP selects PM on arm64 =
-and
-> arm. rkvdec had the same gap until 6a846f7d72c7; rga and rkisp1 have it t=
-oday.
-> v2 keeps the clocks enabled from probe when PM is off, as etnaviv and v3d=
- do:
-> https://lore.kernel.org/r/20261030-rkvdec-runtime-pm-clocks-v2-1-8ff510a2=
-31de@iav.lv
-> rga and rkisp1 as separate patches?
+Testing: boots from microSD with this series on a v7.3 kernel, and the
+on-board hardware (microSD, eMMC, HDMI, USB-C DP altmode, USB 3.0 and
+USB 2.0, PCIe Wi-Fi, Bluetooth, GbE, ES8388 playback, PWM fan) works;
+"make CHECK_DTBS=y" is clean.  The NPU works on this revision (all three
+cores detected, IOMMUs attached, /dev/accel/accel0 opens, MNIST classifier
+95.00% correct on 200 images), and so do the H.264, HEVC, VP8 and AV1
+decode paths.
 
-Thanks for v2, and yes, best to send0 independent patches per driver assumi=
-ng
-you have time to do so.
+Note: there is no fiq_debugger node, so the debug console is ttyS2 and
+console=ttyS2,1500000 has to be added to the bootargs manually.  Capture
+from the headset microphone does not work with the in-tree es8328 driver;
+that is fixed by a separate ASoC patch series (sound/soc/codecs/es8328.c)
+and does not affect playback.
 
-regards,
-Nicolas
+Changes in v9:
+- SD card: drop enable-active-high again, the power switch of the card
+  slot (vcc_3v3_sd_s0) is active low.  The v8 conclusion that it was missing
+  came from a test run with the wrong DTB loaded; with the property present the
+  regulator core drives the enable pin high and the card's rail stays off.
+- Audio: the I2S0 MCLK pinmux moved from the I2S controller node to the codec node.
+Link to v8: https://lore.kernel.org/all/20261007-quarkpi-ca2-v8-0-b83192bed07b@163.com/
 
->=20
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Changes in v8:
+- SD card: add the missing enable-active-high to the SD card power switch
+  (vcc_3v3_sd_s0).  Without it of_gpio_quirk_polarity() forces
+  OF_GPIO_ACTIVE_LOW onto the GPIO descriptor, so enabling the regulator
+  switched the rail off instead of on and the card lost its power.
+  Reported by the sashiko review; verified on hardware, the board now
+  boots from an SD card:
+  https://lore.kernel.org/all/sashiko-outbox-162297@kernel.org/
+- SPI0: describe the two chip selects as GPIOs (cs-gpios) instead of
+  muxing the dedicated SPI0_CS0_M3 / SPI0_CS1_M3 pins, so that both chip
+  select lines stay usable from the 40-pin header.  Verified on hardware:
+  both lines are claimed by the SPI core.
+- Link to v7:
+  https://lore.kernel.org/all/20261007-quarkpi-ca2-v7-v7-0-a84c6d5d6ef6@163.com/
 
---=-Hy9+b3DoQgbhz4pK6YIj
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+Please review.
 
------BEGIN PGP SIGNATURE-----
+---
+Bob Hui (2):
+      dt-bindings: arm: rockchip: Add ALIENTEK QuarkPi-CA2
+      arm64: dts: rockchip: Add ALIENTEK QuarkPi-CA2
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCauiqcAAKCRDZQZRRKWBy
-9KSfAP9Nfn/3c2GIjb7SxlVxK+rFOQ/ctwy9o9h5pMp7BSlPvwEA8+Vc93Ax4Ube
-2Xd1IZcCaTchUxJf8yNfTlcW8z70FA4=
-=wPZr
------END PGP SIGNATURE-----
+ .../devicetree/bindings/arm/rockchip.yaml          |    5 +
+ arch/arm64/boot/dts/rockchip/Makefile              |    1 +
+ .../boot/dts/rockchip/rk3588s-quarkpi-ca2.dts      | 1209 ++++++++++++++++++++
+ 3 files changed, 1215 insertions(+)
+---
+base-commit: c03c1a14507dfaf8b856c2608f9ac216021fc222
+change-id: 20261004-quarkpi-ca2-21d2a59c50c3
 
---=-Hy9+b3DoQgbhz4pK6YIj--
+Best regards,
+--  
+Bob Hui <bg9oxa@163.com>
 
-
---===============2283354803638632269==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2283354803638632269==--
-
