@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 69F24606A336
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 20:23:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5AE17606D820
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 20:23:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WUZ5fWq5;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=0leil.net header.i=@0leil.net header.a=rsa-sha256 header.s=20231125 header.b=l1IxLRPC
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fjjmD40t;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=0leil.net header.i=@0leil.net header.a=rsa-sha256 header.s=20231125 header.b=QpH/Wm8D
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,43 +14,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=PjDXv1zDcOcAB0ZINeli2tySizruKTUY8x4vQfSjUpw=; b=WUZ5fWq5LS6A6JWvC63OGKvuqU
-	3JxHqBr+j8oXcklVD8K05HjxxpdXqp0lb3TMaR4Ih4O4cqueFOIaeihQg1B3ssEiKfsSx1GuMma3S
-	ieHHPEkLJlK1Ro854ndc8EgyEb9+O33sxexQkAZjOwnWotaKqFGviUVl8qTET9KI9aFMB2FABb7FX
-	rc/Mu+t+IFvJPKj/vUJ6VMYxRulAaAkfgROwnVTHtQjFHdkufQgrP02No2Ep2GjfRhYQbi4DzKXvF
-	EsFSunN6M7cO/+G70hTtipBg36chxcfWXfK+ZGQYhiihVCrTHJjen//uhsiohGdJeRUk1AxmDQAgK
-	DMIWE6aA==;
+	bh=PpmIiI9DgKy5M0o8Nj+PMHbGPUbxYwna7GYJsT7d0qI=; b=fjjmD40tOos7nDI+6zTha0Jhly
+	9+aY7L3Ix+yrFCPsdY67+mgiKMkfy0DE3mH+V4DN+lWkUsz/1eE07Qhqh5Y79b5LcTqTZVmI9ZytL
+	ckkjiGbB9AG+ssSi7Dy9lhJdTBp4fOy27m3+M76kbF5XL6mRfj05JiPFVEg5Hg6bPP5Do8L7akw7Q
+	CxucktSgtXWsE/uRkSWxsNZQrm/ylASZ+3stJri3kO2HgHhAQzfSWl17WxzcS4qS6xPVD8L5IZJ7H
+	aKeeowXYf+8RA/WutarEW49beyDslGeTfYBLC8YCPdBxse+X8p4sqF+dxVphmDzJjt0tIazdRoLvP
+	oUva5KNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNyYX-00000000IuU-2mFL;
-	Mon, 02 Nov 2026 20:23:01 +0000
-Received: from smtp-bc0c.mail.infomaniak.ch ([2001:1600:19:5550::bc0c])
+	id 1xNyYa-00000000IxW-16Nl;
+	Mon, 02 Nov 2026 20:23:04 +0000
+Received: from smtp-bc09.mail.infomaniak.ch ([45.157.188.9])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNyYU-00000000IrN-2W9i
+	id 1xNyYS-00000000IrA-3DId
 	for linux-rockchip@lists.infradead.org;
-	Mon, 02 Nov 2026 20:23:00 +0000
-Received: from smtp-4-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10::a6b])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4jJNRx0r5wz1YT;
-	Mon,  2 Nov 2026 21:22:53 +0100 (CET)
+	Mon, 02 Nov 2026 20:23:02 +0000
+Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4jJNRw24VmznLF;
+	Mon,  2 Nov 2026 21:22:52 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0leil.net;
 	s=20231125; t=1793650972;
-	bh=Gx4a5PtxLdTskMqbqHdRE6WcTaLjJR+RWT06hGvA3x4=;
+	bh=2kKJVl9DVcidPFu4iOOYmwpElNttoyoiGTDFs+dVMJo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=l1IxLRPC1tRvaf0Tmzj/t236kJyMBy8xSGm66UigBSImAQXRDIbyliNNfwCHvlXQe
-	 h0h2RA5b7L8sAaEteNbe1MeUMP5Id64lJUzDiSCVz/z7A3tz7uoj7dDq70Osf3FgVO
-	 gMLBzx/BH4EaLQsFbjz40gKtxlQjS3pfr11yqdbO6BjuqYHzaRBemC6DH8y7C8AOKR
-	 Od9k+WpA2H44+yjgTHWMGAHMjAvSeluFEVFfciENimowbLZO7ZLPsFI6v+vg/zek6H
-	 MH0kkS+iYVNqtyLuHA4RFXYE9k/UHBcYU/wW6JdG4Itf1S18KHlagHi3rEigW1asAA
-	 HoecJfIkQb5sQ==
-Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4jJNRw0t20zqRZ;
-	Mon,  2 Nov 2026 21:22:52 +0100 (CET)
+	b=QpH/Wm8D/EzZWot2xhnR9ipw9EqwqnRAzXbXg+Nn8g84mWiBKj6thjltCtODKxn+u
+	 HNi79ONsELnm6i1dk8bClBoaR3OMStdIcNjIAqe4adrh/PKWvUlVryOmPp+tXUbbkt
+	 xGaxrbHD5IBf/fGFlAmc7T8QRDg0SsGU8XrjL12sGvuicYcUCfVUfoxkMUwCKKO3G/
+	 oWYW0qu0KGRD5U+Mxs22k+pqLslNFPAYzQetpsT//t7caESYECc+hmkZa6CyWPCzka
+	 xXrt1fRgiUtOdAbhtI2REqhusLDFTbSEmPgJ/eHAGiLR+RZVOFG5LMStvbyYwbF2iH
+	 hYD9tfUY2dLmg==
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4jJNRv25g0zrH3;
+	Mon,  2 Nov 2026 21:22:51 +0100 (CET)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Mon, 02 Nov 2026 21:22:43 +0100
-Subject: [PATCH v2 2/3] media: rockchip: rkcif: add support for GREY and
- Y10 formats
+Date: Mon, 02 Nov 2026 21:22:42 +0100
+Subject: [PATCH v2 1/3] media: v4l2-common: add V4L2_PIX_FMT_Y10 to
+ v4l2_format_info
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261102-v4l-y8-y10-csi-vicap-v2-2-0a4149d96dae@cherry.de>
+Message-Id: <20261102-v4l-y8-y10-csi-vicap-v2-1-0a4149d96dae@cherry.de>
 References: <20261102-v4l-y8-y10-csi-vicap-v2-0-0a4149d96dae@cherry.de>
 In-Reply-To: <20261102-v4l-y8-y10-csi-vicap-v2-0-0a4149d96dae@cherry.de>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -63,8 +63,9 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
 X-Mailer: b4 0.17-dev
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_122258_849049_90F90B50 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20261102_122258_861929_A9FE8910 
+X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,59 +88,27 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Quentin Schulz <quentin.schulz@cherry.de>
 
-The OV9282 camera sensor driver can output in those two formats, but the
-VICAP didn't advertise support for them yet.
+Add Y10 format to the v4l2_format_info table.
 
-Suggested-by: Michael Riesch <michael.riesch@collabora.com>
+Co-developed-by: Michael Riesch <michael.riesch@collabora.com>
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- .../platform/rockchip/rkcif/rkcif-capture-mipi.c   | 26 ++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ drivers/media/v4l2-core/v4l2-common.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
-index 53e62d0597648..4e172366f258c 100644
---- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
-+++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
-@@ -95,6 +95,26 @@ static const struct rkcif_output_fmt mipi_out_fmts[] = {
- 			.type = RKCIF_MIPI_TYPE_RAW8,
- 		},
- 	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_GREY,
-+		.mbus_code = MEDIA_BUS_FMT_Y8_1X8,
-+		.depth = 8,
-+		.cplanes = 1,
-+		.mipi = {
-+			.dt = MIPI_CSI2_DT_RAW8,
-+			.type = RKCIF_MIPI_TYPE_RAW8,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_Y10,
-+		.mbus_code = MEDIA_BUS_FMT_Y10_1X10,
-+		.depth = 10,
-+		.cplanes = 1,
-+		.mipi = {
-+			.dt = MIPI_CSI2_DT_RAW10,
-+			.type = RKCIF_MIPI_TYPE_RAW10,
-+		},
-+	},
- 	/* RGB formats */
- 	{
- 		.fourcc = V4L2_PIX_FMT_RGB24,
-@@ -341,6 +361,12 @@ static const struct rkcif_input_fmt mipi_in_fmts[] = {
- 	{
- 		.mbus_code = MEDIA_BUS_FMT_VYUY8_1X16,
- 	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_Y8_1X8,
-+	},
-+	{
-+		.mbus_code = MEDIA_BUS_FMT_Y10_1X10,
-+	},
- 	/* RGB formats */
- 	{
- 		.mbus_code = MEDIA_BUS_FMT_RGB888_1X24,
+diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+index 11ab684024c54..8d5020e3d5e2a 100644
+--- a/drivers/media/v4l2-core/v4l2-common.c
++++ b/drivers/media/v4l2-core/v4l2-common.c
+@@ -333,6 +333,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
+ 		{ .format = V4L2_PIX_FMT_YVU420,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 2 },
+ 		{ .format = V4L2_PIX_FMT_YUV422P, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 2, .vdiv = 1 },
+ 		{ .format = V4L2_PIX_FMT_GREY,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 1, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
++		{ .format = V4L2_PIX_FMT_Y10,     .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
+ 		{ .format = V4L2_PIX_FMT_Y12,     .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .bpp_div = { 1, 1, 1, 1 }, .hdiv = 1, .vdiv = 1 },
+ 
+ 		/* Tiled YUV formats */
 
 -- 
 2.56.0
