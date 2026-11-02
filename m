@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3C244606A33F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 21:25:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 62BEC606A326
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 21:25:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QkufPptX;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=0lhCDbbB
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=HvHDqoNo;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=EjnRb23U
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,65 +14,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=B2L/mTMNeukRyIL7R5kfy6jYwW/EhX8oOA3DH7U1MrA=; b=QkufPptXHhG7+BtgX4RVdsu2yW
-	6gn4/5pOFrU4gtvKjB6/MOyUdXz7AhwefBTrbLM+I5x+uTlmXv3qwWWttYaANqcjY4yoIzlC8yOgN
-	y1PTn6Nc6P7GkqK5mbOBZSlUZBAu8FLQfS7i3R2QsyGAB1z4Gx2ZgLKiI6JPs8qKmm1GjBHM/WeiJ
-	w6IZl4IDjbxFLIYewZ0CS+dXWCAQuKygQg3QDpXWt0vxYGnXUYzEvpIRiGtf8CEV6GFvcokWFl/Mf
-	vlzRA8CWEdCnAI4JPyoLxUymBofndiF7fsiFI9GrygmlTLN0Eb97aUwnmEjDq0um5EP5fImUB/ika
-	UNEqAArg==;
+	bh=rcyx+z1aGLaQv3ACe/aKgC9kqV7OsR8biNtW5PmBkKg=; b=HvHDqoNoYWZL7zZg9hFv2lP+ez
+	RRB6L/QiF7Wp4pQnUA+U/GP61ont1dJfrQUin13LNmhsf0ywicGyT5C++V/U6rkBnymwBQDNVfra+
+	XT9BZccr8XgwcSX0C+AbZiqnVIbnHg5Cq2NTNeDAhCQAzxuknZlJfp+5SHv14hAeVysaa6uUMUbIX
+	LoIhyajBKYndOwIT18yvn7rGFkoH3nGNIFLkA1zht29WIvLHyidAq1LnA5Y1qlOksaLO3XFiDjxiT
+	d7eY7La0QT/EDq3goeyV3oocHO6IGk0qOVLCD+WMT/RvAl6/QqijwxlVBNv5t4N7Ct1UOiIX6Md9e
+	YAXX7HPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNzXC-00000000TEZ-1Yya;
-	Mon, 02 Nov 2026 21:25:42 +0000
-Received: from mail-dl2-x08.google.com ([2607:f8b0:4864:38::8])
+	id 1xNzXI-00000000TJ9-2uNb;
+	Mon, 02 Nov 2026 21:25:48 +0000
+Received: from mail-dy2-x0b.google.com ([2607:f8b0:4864:36::b])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNzX8-00000000TD2-1LDX
+	id 1xNzXE-00000000TGF-3H1y
 	for linux-rockchip@lists.infradead.org;
-	Mon, 02 Nov 2026 21:25:41 +0000
-Received: by mail-dl2-x08.google.com with SMTP id a92af1059eb24-1379d236149so1383919c88.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 02 Nov 2026 13:25:38 -0800 (PST)
+	Mon, 02 Nov 2026 21:25:45 +0000
+Received: by mail-dy2-x0b.google.com with SMTP id 5a478bee46e88-368c26de2e0so1025498eec.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 02 Nov 2026 13:25:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793654738; x=1794259538; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1793654744; x=1794259544; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=f2iHlmQM8BVjrAqEqrTQxQY1XsehcxpHrx5clmyJcPs=;
-        b=0lhCDbbBammdHJ+AFSV4yTtIUfgHjagOoTxtNJOubkOLoUU3nAZybNIpFSsceanLSm
-         wovWSxJgTG7PbWM39bwq3iDHO4Vg5dAzWwuuQIP3g8KMZcvYg6KFFGKtv3XdTSnEt4e3
-         P0pCT8n2mDFU5tW8bItdAKp9tfSuO6T22XDrbjgPY6ScJjhkMImJDC0prGXX2AVmqurK
-         TTC7RkZ1RcottqrBeu3N7t7Uq1XSIp6JznhBl6LZsYEdbT16F9L+HeyTBV+mBA/YMOnv
-         MvEOf1oVt5x0hN4VYQ47LlrseeEHYwZoCt7ou7CYq3/50S+AOx4kKNKpfIYSNsz4JMUA
-         oOXg==
+        bh=0W+v9PJYl7SX+fCzm/LD8ucD6kmU8nLYTAcfnRV/Egk=;
+        b=EjnRb23UyzJ7EQgLlJ4DdsrqiDGZJv96o74vDSs4gxO4qmP/ZqZ3YI5n0svD2qje9l
+         ahf2y/C24MoFoY2ld4KYrHB1fl9N66WjrxGuxyOhcLPsHSs8GlvwrMW519M1FcdQ4/+1
+         dJ9kIIr1npJe3OmZxVQDaVvJWwtvnbxZ5OGGj0BEuhkb9fDqzd1COPTs/E4eZZNVfRtg
+         XVIXOpgDtWIXWRdmszli4rduJMWWKHsBtaeAL/0qdwigVmyjmoUoGMobFGJbAgdETTUM
+         WqOnfckSgKRwTtUkbV8JxKM46ZezL2nlEoPa3CIDxy6bKL/m+2xnkEdOHUiXBWbwj3M8
+         XqoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793654738; x=1794259538;
+        d=1e100.net; s=20260707; t=1793654744; x=1794259544;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=f2iHlmQM8BVjrAqEqrTQxQY1XsehcxpHrx5clmyJcPs=;
-        b=LMu/Y4dCL3NMjLOAXEfRcx4Rbp0u2ivXAhHKHvl+FEq3j4H1OuFInNgQmxI/W/ph78
-         JZYhPlRSpomO+A+0rJGOMLF8Bk7jbXdN48GHlgQRiVEBYPJd01w20I2vGMgGmGI5QHUl
-         zOP8uvyL2QnzRqtUT7vSfVuZC2ZUYUyDNcNQ5AZrF9ga1YP4B9Sjja9/564WO1jcWNBy
-         52NRHf205IYPK5sY3WwYfKDn+hIUAyEAeMa+iN07KnDLdWISCNOwrKEbGxYXEL3Mzwz6
-         pklWkthGISs7dtUdKlY24hrzckRVM7JQNDcGNq5iYmEb4Zgu151p0Bj6+d4H2ssXnNhB
-         U2QQ==
-X-Forwarded-Encrypted: i=1; AKwUvByakhFxyn+fSY3tIgU2wgOeLFBiriDV2RwR46oKUMdFnmKv1GCuxK5hgL4qwjTbhqFc/DIASSD1+m9Klmm29w==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIO03lKt59OEHpNmUDt6Qrly7SKvFYKDZDK0PJUj0M6PvB1sbvl
-	9LondJDn/29vUHUhrZJBigHMGW8SfdRBFJeyMXTANQiKjf9BgNbGdTdN
-X-Gm-Gg: AYBFou1/DuMeVtdRrYLNXT4qurnDQ9E+IOZt6iS+YmhwAdTcPelm/LdwKtARZ9mZo08
-	U4RZi6sVux3K8L/1uYYEZZTOQuzysQkGSI33WG1N51IcatYts2m/BDWJhiEJeKlTwnfVX6d6GzY
-	KSRuWV/cPOS8MxhlRefDVBTszDAclr6A//JODXvDpOJ0O/RdN64ohKxLhU6isi9f/Og0tuoeN1C
-	mNU3/EVVwqZ4iWsk/UpzSu5kNSPNyr1aykb02Z5Qn+pbE6zIUukkrFEYaOusjv01M/5MXQ9yrVF
-	8/8HoiAerOjhKJqUpYXMlcSwSiF8fZoZoPp4KLbI8UPEDYKsN8H8EZE2E/9rze3jyCo6ljjtTqC
-	XjTR0A/SHLB3DLaakPQDWSoDNytgQK1aQZBI5ULtJBoKqOnlYa/TMyGF7xy49sQuAgiZScNlScy
-	r33k/MgmBw6xMrsY2KEzMJ2SOpeTNP1QX9BaPkIANx4+uNkxnDXw2EoCAfAc9pQXLs9YHb+8PMo
-	NQDUXviA3VVTDWm82r9QU4z+qqwkX0f1iKn7KgH/GdELx2arC4Ogtj7HFgDsoEnKoCCXqO+4mCk
-	629DlddGE1UK4y7WEPU94OHEn7s=
-X-Received: by 2002:a05:7022:b053:10b0:184:19ee:1fdd with SMTP id a92af1059eb24-1ac56302618mr17357629c88.5.1793654737507;
-        Mon, 02 Nov 2026 13:25:37 -0800 (PST)
+        bh=0W+v9PJYl7SX+fCzm/LD8ucD6kmU8nLYTAcfnRV/Egk=;
+        b=UY1r4aD8MM5ztTJ1BOk3iCTOzDZ2tXqP9iwWgK29AmJzeV/IXHxr/rDwwg8prLmUut
+         7LCHgevVGVpP2HleikZGLtjpptnRvoq9/95Twz/3MYAWElzOgx++WWvs0phQTlx97gZr
+         V2oelTIKOHaNfUFXRnG3ZFE/WoJrfWdOdskc50FkGiUt6XN+8La2qgClt2dA5arCflQq
+         MyQ3dW5vXnNYzRxSoOjLojlIt6d3u41SF21Ho8JWOwxple08Ree1m1z6QYYZXPIZ4Uiq
+         vGT0yxKj/28TrN89fgoy4d2cNNZtHGlS1s8bXcOrRhw683iEsCZF4erR9dvN1gselzmc
+         r8Cw==
+X-Forwarded-Encrypted: i=1; AKwUvBy04L+gTc0GBAu9uOimvTwQy5tS1x+isFmHwv81cTR768+3E+OG2XW3KrMdEWXhQ52IsRBBOTv1CjHoGk6AQg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/rKE4psyda8gQNOoVacmNZ4IBZbFePga3As0FkDnFn+CQwtfEz
+	bKjD3HbbjKQQZDzrGs50xDhXCUfINOaRnSYZTtBa4EpvelYsdF7r7qpM
+X-Gm-Gg: AYBFou31KzH+s+j2ckYW/Y0IKLxFp4Cx7aaDQsizHPBs0dhQtcar//doZAC3fiKLLuO
+	TwiivuKagQkVx2xNjbTtBwSOkI6rs5mOf1iCXBAkJn3o4DB0CwKG2xAc675rlzriWdFV1yzXQwe
+	jT9U1eFFfIreGMQR0DEy8izFk9d8DCuE0PQY/z2/zzFaGnXkreibnT6Bq6P6yxMhVa/C6PTno9/
+	8r6tfxLqiG3Of+QMWBLnRq/Gc1qMJBU+9sGGs5gWpcCSIEo6TnvqYX5gcOTkh6UJ/nAu/jKbJC9
+	wsMhFN70NX326Gc27UGkHCtHorHBWUb4rBPdr/a1nYmpRoWyJznDks4TVzO9wOdeXzLapuwwtWN
+	dDX2P0kIcoLi5XK+abIZYrXn+Fes0NAGR8cfbVscOh9bM5r+thKqGMlLg1yMvZTv5kYIChc9/p7
+	/tyXYRu0Ra1291APnzlkU4PWNdKr5WZKxnqr9y/eLaHxdGuvdqeuC8aldKnW8xveKKFT1LCosbH
+	qiXqpNpl49c1J0B11Pb9vJb7b8F07flherfZ3ZVrX++8ojlf6moZZGQ91q/SBMeDcKvlzsUkF7j
+	XN6/H7cbr7R3/tnzpl9WMlTsaL8=
+X-Received: by 2002:a05:7301:4b0a:b0:369:9af5:7bc9 with SMTP id 5a478bee46e88-36a424199eamr17269236eec.23.1793654743982;
+        Mon, 02 Nov 2026 13:25:43 -0800 (PST)
 Received: from server.lan ([168.138.199.194])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36a428fa380sm37195851eec.12.2026.11.02.13.25.32
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36a428fa380sm37195851eec.12.2026.11.02.13.25.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Nov 2026 13:25:37 -0800 (PST)
+        Mon, 02 Nov 2026 13:25:43 -0800 (PST)
 From: Coia Prant <coiaprant@gmail.com>
 To: Jakub Kicinski <kuba@kernel.org>
 Cc: Jiawen Wu <jiawenwu@trustnetic.com>,
@@ -91,17 +91,17 @@ Cc: Jiawen Wu <jiawenwu@trustnetic.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Coia Prant <coiaprant@gmail.com>
-Subject: [PATCH net v3 1/2] net: phy: move DECLARE_PHY_INTERFACE_MASK_ZERO to core
-Date: Tue,  3 Nov 2026 05:25:06 +0800
-Message-ID: <20261102212506.3348537-3-coiaprant@gmail.com>
+Subject: [PATCH net v3 2/2] net: pcs: xpcs: make supported_interfaces authoritative
+Date: Tue,  3 Nov 2026 05:25:07 +0800
+Message-ID: <20261102212506.3348537-4-coiaprant@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20261102212506.3348537-1-coiaprant@gmail.com>
 References: <20261102212506.3348537-1-coiaprant@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_132538_361833_C969473A 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20261102_132544_824863_6A421FA1 
+X-CRM114-Status: GOOD (  18.78  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -123,49 +123,85 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The txgbe driver currently defines DECLARE_PHY_INTERFACE_MASK_ZERO()
-locally, but incorrectly uses PHY_INTERFACE_MODE_MAX as the array
-length instead of BITS_TO_LONGS().
+pcs.supported_interfaces is the mask of interfaces a given xpcs
+instance actually supports. The compat table describes what the
+Synopsys IP can do in general, but a specific integration may support
+a different subset: the RK3568 XPCS supports 1000BASE-X, SGMII and
+QSGMII in hardware, but does not implement the C73, 10GBASE-R or 2500BASE-X
+modes that the Synopsys compat table advertises.
 
-Move the macro to include/linux/phy.h and use
-DECLARE_PHY_INTERFACE_MASK() to properly size the bitmap, while still
-zeroing the stack variable.
+However, xpcs_find_compat() only walks desc->compat[] and does not look
+at pcs.supported_interfaces. If a caller ever passes an interface
+outside the mask, the core would still find and configure a compat
+entry for it, contradicting the mask the glue already set. This was a
+known gap: the mask was written but never consulted by the core.
 
-Fixes: 47f848aac4e7 ("net: txgbe: initialize PHY interface to 0")
+Fix both sides:
+
+- In xpcs_find_compat(), return NULL when the interface is not in
+  pcs.supported_interfaces, so the mask is authoritative for what the
+  core will configure.
+- In the Rockchip glue, build a platform mask with the three modes
+  supported by RK3568 (1000BASE-X, SGMII, QSGMII) and intersect it
+  with the core's supported_interfaces using phy_interface_and().
+  This narrows the mask inherited from the generic compat table so it
+  reflects the actual SoC capabilities.
+
+This is a logical inconsistency rather than a user-visible bug in a
+released kernel: the affected Rockchip platform is not present in any
+released version, and the MAC side forces the phy mode, so phylink does
+not normally pass an interface outside the mask. The patch makes the
+mask the single source of truth for both the core and the glue.
+
+Fixes: b9e7cb89aac8 ("net: pcs: xpcs: add Rockchip RK3568 platform glue driver")
 Signed-off-by: Coia Prant <coiaprant@gmail.com>
 ---
- drivers/net/ethernet/wangxun/txgbe/txgbe_type.h | 3 ---
- include/linux/phy.h                             | 3 +++
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/net/pcs/pcs-xpcs-rk.c | 10 ++++++++++
+ drivers/net/pcs/pcs-xpcs.c    |  3 +++
+ 2 files changed, 13 insertions(+)
 
-diff --git a/drivers/net/ethernet/wangxun/txgbe/txgbe_type.h b/drivers/net/ethernet/wangxun/txgbe/txgbe_type.h
-index 757d1ce8d3ad..8071464c7b90 100644
---- a/drivers/net/ethernet/wangxun/txgbe/txgbe_type.h
-+++ b/drivers/net/ethernet/wangxun/txgbe/txgbe_type.h
-@@ -315,9 +315,6 @@ void txgbe_up(struct wx *wx);
- int txgbe_setup_tc(struct net_device *dev, u8 tc);
- void txgbe_do_reset(struct net_device *netdev, bool reinit);
+diff --git a/drivers/net/pcs/pcs-xpcs-rk.c b/drivers/net/pcs/pcs-xpcs-rk.c
+index 6f0a110e32d2..25fdc9c6b72c 100644
+--- a/drivers/net/pcs/pcs-xpcs-rk.c
++++ b/drivers/net/pcs/pcs-xpcs-rk.c
+@@ -483,6 +483,7 @@ struct dw_xpcs *xpcs_rk_create(struct device *dev, struct device_node *pcs, int
+ 	struct platform_device *pdev;
+ 	struct dw_xpcs_rk *pxpcs;
+ 	struct dw_xpcs *xpcs;
++	DECLARE_PHY_INTERFACE_MASK_ZERO(supported_interfaces);
  
--#define DECLARE_PHY_INTERFACE_MASK_ZERO(name) \
--	unsigned long name[PHY_INTERFACE_MODE_MAX] = { 0, }
--
- #define TXGBE_LINK_SPEED_UNKNOWN        0
- #define TXGBE_LINK_SPEED_10GB_FULL      4
- #define TXGBE_LINK_SPEED_25GB_FULL      0x10
-diff --git a/include/linux/phy.h b/include/linux/phy.h
-index 21afc2082b17..43aba23109fa 100644
---- a/include/linux/phy.h
-+++ b/include/linux/phy.h
-@@ -159,6 +159,9 @@ typedef enum {
- #define DECLARE_PHY_INTERFACE_MASK(name) \
- 	DECLARE_BITMAP(name, PHY_INTERFACE_MODE_MAX)
+ 	if (!of_device_is_available(pcs))
+ 		return ERR_PTR(-ENODEV);
+@@ -536,6 +537,15 @@ struct dw_xpcs *xpcs_rk_create(struct device *dev, struct device_node *pcs, int
+ 		return xpcs;
+ 	}
  
-+#define DECLARE_PHY_INTERFACE_MASK_ZERO(name) \
-+	DECLARE_PHY_INTERFACE_MASK(name) = { 0, }
++	/*
++	 * The RK3568 XPCS supports 1000BASE-X, SGMII and QSGMII.
++	 */
++	__set_bit(PHY_INTERFACE_MODE_1000BASEX, supported_interfaces);
++	__set_bit(PHY_INTERFACE_MODE_SGMII, supported_interfaces);
++	__set_bit(PHY_INTERFACE_MODE_QSGMII, supported_interfaces);
++	phy_interface_and(xpcs->pcs.supported_interfaces, xpcs->pcs.supported_interfaces,
++			  supported_interfaces);
 +
- static inline void phy_interface_zero(unsigned long *intf)
+ 	xpcs_config_eee_mult_fact(xpcs, pxpcs->eee_mult_fact);
+ 	put_device(&pdev->dev);
+ 	return xpcs;
+diff --git a/drivers/net/pcs/pcs-xpcs.c b/drivers/net/pcs/pcs-xpcs.c
+index 6466e0ff2a98..46878a66064e 100644
+--- a/drivers/net/pcs/pcs-xpcs.c
++++ b/drivers/net/pcs/pcs-xpcs.c
+@@ -169,6 +169,9 @@ xpcs_find_compat(struct dw_xpcs *xpcs, phy_interface_t interface)
  {
- 	bitmap_zero(intf, PHY_INTERFACE_MODE_MAX);
+ 	const struct dw_xpcs_compat *compat;
+ 
++	if (!test_bit(interface, xpcs->pcs.supported_interfaces))
++		return NULL;
++
+ 	for (compat = xpcs->desc->compat; compat->supported; compat++)
+ 		if (compat->interface == interface)
+ 			return compat;
 -- 
 2.47.3
 
