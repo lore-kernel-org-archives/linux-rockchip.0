@@ -2,105 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE9FB606A923
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 17:49:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DA72606A32D
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2026 19:39:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=r+wQsUGw;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=UzbIT5ys
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gGfHNTZk;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=e97rt7+f
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=UqsVy5HjPIRe6YoKfHx6AYNDV+m1ZeSFrcPcVbfgj34=; b=r+wQsUGwUrmDu9X5jxHKeOAmJT
-	qJzUCKmz6HQKMrP0QTb8+WxsqBSjI1y5T6+EKFkKJWK11XGvA2PDMqVic3FBOUBZsMOvaRTXeAzJH
-	sypUGRfSudaDMfrkVivINWpFkXoL/juSMf61wfZDBGSg/RSnlolY3XMAJsdcd+Pv6s8MJ1fcLFS0j
-	lXVaDIJyJB8M6WZhXnvgScA2K1zFzdPLEu96oRQnxOX/CE5dB2FvO7u+mWFBzeJTxVHmmDa5N6XPS
-	24yFrnDCJWpPCG0gYtMfJEuL0KTq9bM69n550G8p6CEQlZVxPG/DccWGU1j1G6FQyzdQ/d16fjybn
-	3VuGVCdg==;
+	bh=y5Xsz95CXu89y53Lcgy14fqS+YzrL0DeSV7nQ7H7caQ=; b=gGfHNTZk0umZGKGiAxSwzupOdg
+	5pRux7mRdH1jebThsCKTqeS5qbbzDPmER7QguNDpUXHWxFNLZeLJf8sH98BkQgI5q5tH+qJXH/VSl
+	GoDIsy8YnmzG6XcBrGsNVK22PB7jdCwkZGZB+KU4nqiOhoXhX2zADlfNFZfe9J4LcxU1n5XLLO6zK
+	c+VA54qdSKsOzNK7ikL3U0hlN+pWxmPrCFS0d4ISLG0+nmrhqZDIuDFMLDwpJSargZCV0N7+iavdu
+	s+xLXvVtBjq7PIJmjD/Q3GAqQw/xFV8K7bfFnWAB/MIX/PMfZJfZeyVrzA8cIIWxaypEJC/D6A3J9
+	lbsZzkVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNwAJ-0000000HX2V-3piJ;
-	Mon, 02 Nov 2026 17:49:51 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xNxsH-000000007Ee-2Gvl;
+	Mon, 02 Nov 2026 19:39:21 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNwAI-0000000HX26-1WQk;
-	Mon, 02 Nov 2026 17:49:50 +0000
+	id 1xNxsF-000000007Dy-3e6l;
+	Mon, 02 Nov 2026 19:39:19 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B0D3741684;
-	Mon,  2 Nov 2026 17:49:49 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1793641789;
-	b=hMUR1VswI5nhONCsranH5chc0kJdZ9R2CsDHp7W6K6mPBfQBX8wDCeg2K/GP9lHgKAsU
-	 w+A/29sHdEK4CK81UDqbhgIUG3KRFtaUotfR/pm+F3rdEnQdpDPk5qMAsMzISuVpsNhdJ
-	 CKRlimKofCg8b8zaH65HVre9YbDors7CX8OLooivPr0StdY4WQGZDXzgLq+Aj8utPSTdy
-	 uo5KNe46weTaONC5d6p5jvprA0aHuxuRpff2IwezKc7LWQkwpt9TkyEKJMOtffrHDn0li
-	 tld/vnRrXLKxE2rqQ0aMJ9fpdXMeaIkzi5qvFrmw+ZQ2q0Ve5Y8TIyr6sFRekAQAJoQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1793641789;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
-	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
-	 Content-Transfer-Encoding;
-	bh=SnX1aA2HT7Cbm61i2TXLxZiThPnfvq1ghiLIHpuO9ZI=;
-	b=pJTcmTt3vaqUbLtuNKDbhbM0GIFDflU0TRmPoy0k9uMNVaDZZe42nXZlAudbBPozi7cW
-	 /FIrDZnY5X6PBNUA1zCK6NqxO6rJR9z7tcwsBzkuQyQJ7SFH7nH53l9rM3lbDsCxmcovN
-	 ESEQcFDL+99/iDJJ2Kt9+rb4iB2j2aGzcyJjVYR4cNMALRIiFfiHtwQzEky0WosG2BgRS
-	 nsQAO/7hr7uw9pO/694xIIoX5FYelReG4KINp3Q16PMKZp/tBqDi47XNlDhGWKkKvbVmU
-	 uVaQKcWEPKAmZyE6S6FGMbNN4ZhZ3OwtIfeSjRPaea63Dmkiw09KObz/tUaiWcL2QAw==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 28A7E1F00A16;
-	Mon,  2 Nov 2026 17:49:49 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 56F27417BE;
+	Mon,  2 Nov 2026 19:39:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D78F1F00A16;
+	Mon,  2 Nov 2026 19:39:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793641789;
-	bh=SnX1aA2HT7Cbm61i2TXLxZiThPnfvq1ghiLIHpuO9ZI=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=UzbIT5ysOqmaEQwiAabE+RhW7d+yCygIKKGG1+eAcV/83aNtla8e/yZOYlp/EgZNq
-	 3jHuGsmjluldyUKZAWORUN7Narw/Fk4M20ihXjkDcKW2cygEZYElBxlWcVvTdYVpQH
-	 Y1/h6iLnmHx1yA3WIpyVBQkOJAnwiUAt5mUFZEcZ6y6/gVbyFyUr2pI40dJ+lj02Qm
-	 TkFydwIa9etko6aWPxGBkCvwpYKkBidRMqexsPkfYO+v/dja+Q6G35QTJZefGFvg2J
-	 78QTAniDMkBZvqO07xMxJEDBLFm9tREDruvBxrlGj4QYoxQCzAe/hzuQS7xGGErNuT
-	 B8wLo+OL58ABA==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id ADB24465BF;
-	Mon,  2 Nov 2026 17:49:48 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Mon, 02 Nov 2026 17:49:46 +0000
-Subject: [PATCH] media: rkisp1: Depend on PM
+	s=k20260515; t=1793648359;
+	bh=JbMEaLInfJZTikyj6sTbndfICmjNer0efXBtfT3t/z4=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=e97rt7+fYVS06nnercX285Pb/2VysLZOY5Ijme2sohfOvFOKVsaY9E+Sj+gwD1ulJ
+	 MwHVa8aF8UjhGdwWt6QruaR9HA5g9wf+vblucB1NXg0ntlaPNV8pCKSbK7EKJZJbhj
+	 zRBjZk+PFYGFAopr5Qy267xd1sfVGJ47cnOoXhlvJ/l/z3cd/9vSaFncABJwO4cnjO
+	 CuNyvBrhvCCa4/+daiTyMDJtQb/QBXebIrXSPGThAUhSZbUAWdFqWPrVyI/W9+6Smt
+	 DVsFgeuwQY7sDdonzE79SifCG6LQ5fO/w1Jd/ABEy3AxivzLCla2acQvpmu2cPOg2F
+	 SCXiL5BaSRCqQ==
+Received: from traversing.sirena.org.uk (localhost [IPv6:::1])
+	by traversing.sirena.org.uk (Postfix) with ESMTP id AAFE323DFF18;
+	Mon, 02 Nov 2026 19:39:16 +0000 (GMT)
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Jun Yan <jerrysteve1101@gmail.com>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+In-Reply-To: <20261101080926.267041-1-jerrysteve1101@gmail.com>
+References: <20261101080926.267041-1-jerrysteve1101@gmail.com>
+Subject: Re: [PATCH v3 0/2] ASoC: codecs: Add Everest ES7202 support
+Message-Id: <179362860891.1990291.9978990707739127303.b4-ty@b4>
+Date: Mon, 02 Nov 2026 14:10:08 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261102-rkisp1-depends-on-pm-v1-1-35a26cb2bbce@iav.lv>
-X-B4-Tracking: v=1; b=H4sIADnN6GoC/x3MQQqEMAxA0atI1gZMHIV6FXGh06hBrKWBQZDe3
- TLLt/j/AZOkYjBUDyT5qekVCqiu4LvPYRNUXwzccE/UMKZDLRJ6iRK84RUwnsjkvPtw65auh5L
- GJKve/+045fwCB8GFrmYAAAA=
-To: Dafna Hirschfeld <dafna@fastmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Hans Verkuil <hverkuil@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Igor Velkov <iav@iav.lv>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1497; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=jIOYNEwnZtImPbbvWDWM3rNp8UHpADnjrlqR/x0YeIY=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFkvzlorGesuDT/htuP9vsfeTXcsb6veX16Rckbs93YWB
- etfZReVOkpZGMS4GGTFFFkmHNK4lbHk6l9/D/MHMHNYmUCGMHBxCsBEIgoYGbruLmbNPF9mf728
- P7yRt8fjsK7pVedP5ca8/84EL5q76gLD/7qbqwve3p9/vZPr5dtJ2csqc0zvHO+qi8zZlHX2SLy
- hDTMA
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1593; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=57IEY5sLI0R//srJiFo6NAVqvbCrI7pKU9CTHZdofwo=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLJePHuyJNJxogH/crU1D3XeKQRMSdjfd0tpc0Gtj68L2
+ ybVs9ULOkpZGMS4GGTFFFnisrhf1pe8XsN3cGEbzBxWJpAhDFycAjARW1tGhp4iDlnNYNNJTe6B
+ KQyXPGNkilY2peq+PNW045HB5mUbJjH8LzePqJoYY9eeteDFyua0U0W8fHuPrnrbtfq9BZvMqnR
+ 9RgA=
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,60 +80,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
+	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Igor Velkov <iav@iav.lv>
+On Sun, 01 Nov 2026 16:09:24 +0800, Jun Yan wrote:
+> ASoC: codecs: Add Everest ES7202 support
+> 
+> This series adds support for the Everest ES7202, a 2-channel PDM
+> analog-to-digital converter controlled over I2C.  Patch 1 adds the DT
+> bindings and patch 2 the ASoC codec driver.
+> 
+> The driver is based on the Rockchip BSP driver, reworked for mainline to
+> use regmap and devm_ helpers, probe the device ID, and report the actual
+> per-step PGA gain.
+> 
+> [...]
 
-rkisp1_runtime_resume() enables the clocks and lets the interrupt
-handlers run. Without CONFIG_PM it is never called, so rkisp1_probe()
-reads RKISP1_CIF_VI_ID with the clocks disabled and every interrupt
-handler returns IRQ_NONE.
+Applied to
 
-ARCH_ROCKCHIP and arm64 ARCH_MXC select PM, and no arm32 i.MX has this
-ISP, so only COMPILE_TEST builds lose the driver. rkcif already depends
-on PM.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.5
 
-Signed-off-by: Igor Velkov <iav@iav.lv>
----
-Split out of the rkvdec CONFIG_PM discussion, as Nicolas asked [1].
-Without PM, olddefconfig on arm64 COMPILE_TEST now drops the driver;
-with PM it builds as before (W=1).
+Thanks!
 
-[1] https://lore.kernel.org/r/8aafdbbf04a0d939c6b4d7d5577d97bb58d1c439.camel@collabora.com
----
- drivers/media/platform/rockchip/rkisp1/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+[1/2] dt-bindings: sound: add Everest ES7202
+      https://git.kernel.org/broonie/sound/c/ded65056b6c9
+[2/2] ASoC: codecs: add support for Everest ES7202 PDM ADC
+      https://git.kernel.org/broonie/sound/c/063273b18195
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/Kconfig b/drivers/media/platform/rockchip/rkisp1/Kconfig
-index f53eb1f3f3e7..c825fbacee96 100644
---- a/drivers/media/platform/rockchip/rkisp1/Kconfig
-+++ b/drivers/media/platform/rockchip/rkisp1/Kconfig
-@@ -4,6 +4,7 @@ config VIDEO_ROCKCHIP_ISP1
- 	depends on V4L_PLATFORM_DRIVERS
- 	depends on VIDEO_DEV && OF
- 	depends on ARCH_ROCKCHIP || ARCH_MXC || COMPILE_TEST
-+	depends on PM
- 	select MEDIA_CONTROLLER
- 	select VIDEO_V4L2_SUBDEV_API
- 	select VIDEOBUF2_DMA_CONTIG
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
----
-base-commit: 27285b099fbc5cb2ae3aef20f3bbd7b3c88b3005
-change-id: 20261102-rkisp1-depends-on-pm-219d94239b56
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-Best regards,
--- 
-Igor Velkov <iav@iav.lv>
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
