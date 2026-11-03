@@ -2,83 +2,97 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D1523606A327
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 15:27:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 58E24606A324
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 15:31:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hEmKFjBk;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=w9d2uCJG
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=olx1/1LS;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=vuTjd/9s
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=0Qyk50PBGoL5UyBSILgYW8Cc4XMgrGVoF/y+QMycJ+8=; b=hEmKFjBk/Fox6kCuWDuDmbbIrV
-	zwsq/2BonPJoOrYTbUn6oXaxFmK3iZr2hm4Kiz0xlHTvnO5CrNghWoWUIuBw+FY22FDF2blDKNP7N
-	W5Lg/pDcgGmvHxOZk09fNtUd81Hw5mZy+XmDVA2yqNm4jCb5zH22gmt9oL81edU3/NsmFtslAHW2g
-	uOdYqzTXN1bAx5e39j1sfXl1UZl25XoxzZb/KLQ8htp20et7iqI7rnl1p43GNzBEYmULbnejxPecj
-	Sa4Ll6HlwY+OodgCX3pg2E7h1v1ucDhsS27ocau5QkWO0E3uLApub/criRBBXi3Gy+nlb9+uBnF6O
-	Z5e8clWA==;
+	bh=29PCWragHhMX298ffotLbxp48UNuhxLecFwxAJp5XZE=; b=olx1/1LSiQhpqbUg98AOZaSUhY
+	MI79948mhs+u+9aVdK58x6b58oxVgHfxdOzG6k7n5ynkykuwywhcfLcrOlRSQKX0dRKgZq6Myy7vH
+	amwSVmcpti54OqI7BBCylt37KRDOLPyt4xhkgK6PSdVxcb4rCEe74TYy3Hb1MIZ5xvrNWvNHUwV+H
+	O2pCUSXZXfAdUbhwoyJ6J0RVsRVsRY5kT0ldNXWNTW53cIpFFBYbVLy7q1QFEeyNVc4FYWRc6wH0r
+	SeZRtBHp+KVx28vpikxPcP0yJJCpnkvs2ZPLAorqMbV5w6jdkivbbqmDY+AnqU2xkF2177v37cnpp
+	hQFbLteQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOGQL-00000002xpZ-48GZ;
-	Tue, 03 Nov 2026 15:27:45 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xOGUK-00000002yZs-3tdS;
+	Tue, 03 Nov 2026 15:31:52 +0000
+Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOGQH-00000002xng-1z4d;
-	Tue, 03 Nov 2026 15:27:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=LAwEtERmohTe0gcgYdg8DRctC7b4UhWjXXjRQv+Gso4=; b=w9d2uCJGfN9U1oYi8t2na1b7jd
-	0+t+dIndUkjUy/ShDMVBFHwoR6yoBYhicS6+lFpwf0SbzMQzVds/7MRk5LuTgEZvY7pAPx7Yzooey
-	WVGrI7ourwQrhXbf5IIpxMIIxKzJPmIzjSfsqnuarfzLKtZGRmHxdSw5wMn5jy4TIg54WCIo+HtTy
-	/+F7fNSWhx9nk/kxZ7P4L/xHn2SzBS97Mk4B8xLKUNWX+RlIuvvWiSqRJRkKSn/hhVIx7kOKT2uU0
-	N3MRdik6InzA7gA1A0Czmi6xZ9VizQ+F3FW8SSVXGR/rorIJxO4GI//tqdHxaUwChij93Z8Y7JC9/
-	veXBUOMg==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Sandy Huang <hjc@rock-chips.com>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Robert Foss <rfoss@kernel.org>,
-	Andy Yan <andyshrk@163.com>,
-	Damon Ding <damon.ding@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Dave Jones <s.dave.jones@gmail.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-phy@lists.infradead.org
-Subject: Re: (subset) [PATCH v4 0/6] Add eDP support for RK3568
-Date: Tue,  3 Nov 2026 16:26:51 +0100
-Message-ID: <179371960186.385442.10929129839786622618.b4-ty@b4>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261030064905.2248999-1-damon.ding@rock-chips.com>
-References: <20261030064905.2248999-1-damon.ding@rock-chips.com>
+	id 1xOGUH-00000002yYU-0Tcl
+	for linux-rockchip@lists.infradead.org;
+	Tue, 03 Nov 2026 15:31:50 +0000
+Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-8479f46ecd8so1837589a34.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Nov 2026 07:31:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793719907; x=1794324707; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=CPNNCo+GFGu/9nal5nPw6bilsFuJkUchsPFZNI+iVXk=;
+        b=vuTjd/9sm1jDbp0rBcJLztpxR+eQ8a0m96Dvd33hq7v2P5wPlkYGXFpteItnNRpT7V
+         7rEhScTDQJKzwdPN39qgLf17N9lMEdXxLKgKCD0ZVKZFoFXn+jWyG2Q+wEk7sqWkN5+h
+         iQ/3XEbULE2z5GF2EBk4b8uvi27GWnJ+qoou34jXIQF9sJ038l1Gv7pIKfoHr8gU8RhH
+         YYQOReAHqypNEaC0NAZFlm6ksdV+CqJUF3mVH31kNY9pYcguVn6qMAT0BwoCgyZ0BZuE
+         uD5nTIR464hwEEfpiQBoNGfd//ZXWNj6HV16IBlvZEIweefYcMYUvFMJCtwqHFuFucQE
+         DClg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793719908; x=1794324708;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=CPNNCo+GFGu/9nal5nPw6bilsFuJkUchsPFZNI+iVXk=;
+        b=iEJBXxY7Pvu1QmXph55mzXUfO6Nq7kKMMsGwyHkmMZB3+0OedtxHzCjYsWj7m6Xfrf
+         zzFWAkZBvF6JveJRTIh3rnfNNredo1BqJ5Supsi4Y2pVOzJKly5nSczltCTHDoY03Ge2
+         4GENlRIvT43rTeUu3EjISAe6H9aX5ekxWv3+AmLjYUqvrNZCnKbHaLOQ/LUbnuLGgo12
+         LjC6LIyE0A7JxY91XXUGeNjNeu6/OL4/OXneXP5qSSBInfCsfmoxt/zFf+mwBmD1Qbdk
+         K+Yv52Ji7WgCTdw0R6BkgPC9GjEv5gAEn+Xz8tacql/AkLXObRViMsYPVBFSBVVtyOOc
+         8NGg==
+X-Gm-Message-State: APuU4Z/u3jX9FiZtajbJpPlSPJuGkRqwSD0JMbHTzXZfs3GCsoGoZKtZ
+	mFsJv8SvpdQQOWJTKS6frs6jNJsWOTO3tDJ2WLEAV7KieER0Bk1S+2WCnZm9EudO
+X-Gm-Gg: AYBFou3UZztu6sWcmtz1zal3rSa1bCBwStnnysTuuHqmCFH7NdODQDpAMCRqBBEOQi9
+	TTrKClIBxc8iseke+Gjgw1i4J/KxxkITWgI2ZRfhiVL8do2Zm2xUeLwMYdvJ5DZT+cDqcNTvxvZ
+	Jl9njzF2Zb9hpk80xWiTdMAm4KDRVr/P2+d/63P28opCbsZoCHrMFoHzKOIHgzgfFcdE43UD2Pf
+	oSvVcvTwZ8r52VKRj+krDDvnVuTdA1DT8apbg3pNxxSx3d3Kxe5py+pZeacixIol2Xva70tiffD
+	c3wm3NHARpoyxTlIqLCDJf6efz/TsMukekpjzrt9ZKZgOs6fP61krGIq6TGo+ezCxARZ9uX6hiu
+	IItYUSQqovsYosDFfUorNe+BItILXmEk4a0ParqZtq7paxOXsRGh09s6RZnKiFRNDXa4n28xVth
+	NZnQlu9rkLaYkUtZOqAfIMTDKjTMMlIpPFeamENSK0p5pNw4LnJtGsny82e1o8mRXh+zw2igsNJ
+	6PF+tov6RYvNLLkOUAYn9WL+V2jcmOTt4nawA/qhxeLsAzILauRhYD9bonSGJCM5XUYOkSlvm2l
+	xKU8I9zJ8IGUWAqH+CZeUXsMSMkY/w==
+X-Received: by 2002:a05:6808:2389:b0:4d3:6be7:c64a with SMTP id 5614622812f47-5640d62df3fmr8545899b6e.0.1793719907638;
+        Tue, 03 Nov 2026 07:31:47 -0800 (PST)
+Received: from neuromancer ([75.28.21.198])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-5640fd95dc0sm11599188b6e.6.2026.11.03.07.31.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Nov 2026 07:31:46 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	shawn.lin@rock-chips.com,
+	diederik@cknow-tech.com,
+	michael.riesch@collabora.com,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH 0/2] Add rockchip-timer for RK356X
+Date: Tue,  3 Nov 2026 09:31:42 -0600
+Message-ID: <20261103153144.343764-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.53.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_072741_569762_A973FD6C 
-X-CRM114-Status: GOOD (  11.42  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261103_073149_154507_23638975 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,39 +105,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+From: Chris Morgan <macromorgan@hotmail.com>
 
-On Fri, 30 Oct 2026 14:48:59 +0800, Damon Ding wrote:
-> PATCH 1 is to document the "rockchip,rk3568-edp" compatible in the
->         Rockchip Analogix DP binding.
-> PATCH 2 is to add the binding for the RK3568 eDP PHY with NaNeng IP block.
-> PATCH 3 is to add the RK3568 support for the Analogix DP bridge driver.
-> PATCH 4 is to add the driver for the Rockchip eDP Transmitter PHY with
->         NaNeng IP block.
-> PATCH 5 is to add the RK3568 support for the Rockchip Analogix DP driver.
-> PATCH 6 is to add the eDP controller and eDP PHY nodes for the RK3568
->         SoCs.
-> 
-> [...]
+Add the rockchip-timer to the RK356x SoC. The timer for the RK356x is
+register compatible with the rk3288. Address range taken from BSP
+device tree and confirmed with rk3568 technical reference manual.
 
-Applied, thanks!
+Chris Morgan (2):
+  dt-bindings: timer: rockchip: Add rk3568 compatible
+  arm64: dts: rockchip: Add timer node for rk356x
 
-[1/6] dt-bindings: display: rockchip: analogix-dp: Add support for RK3568
-      commit: 00e97ec0a614a0a2ee7792160bfa6bde0b6a8aa3
-[3/6] drm/bridge: analogix_dp: Add support for RK3568
-      commit: 05ebb8bf006df13e330e82d4f42cc225ca5ceb0d
-[5/6] drm/rockchip: analogix_dp: Add support for RK3568
-      commit: 2ebbeea89df4dae6a7d8a2a9b2d698d893beb283
+ .../devicetree/bindings/timer/rockchip,rk-timer.yaml      | 1 +
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi             | 8 ++++++++
+ 2 files changed, 9 insertions(+)
 
-Best regards,
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.53.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
