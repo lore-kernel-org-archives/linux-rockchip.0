@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C6B2B606A332
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 07:42:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E9FC3606A32D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 07:47:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=AxJai9UV;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ideasonboard.com header.i=@ideasonboard.com header.a=rsa-sha256 header.s=mail header.b=fLsxZiZM
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zJnVDjBu;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ideasonboard.com header.i=@ideasonboard.com header.a=rsa-sha256 header.s=mail header.b=EFNhL9f6
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,36 +14,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=x/6y+3sRYTfzEcEXBsKOrld8d3DS1VyUjuE1XR9uHAA=; b=AxJai9UVT9qF5LI0lNCiwsOtB+
-	wUI8euwqREXK2G2wI6W5/KeBy1qReH0O4pun39O7oSbZQLkL9TeS6SVeuRTv/qm8q72exXeJzL1qR
-	fS8uBhukBL0tTXRnRaZ4Cdmg8kvxvMR+h/n6lTSx1t42WTvBSIhV11ixdwvmU7OgsjUMIjoRSBaaG
-	mqegQAKaCHZwcnDCFWu3THQTBhr3Ge8nYO6A8Ir49sPk4MStt7ki/3Hl7wFuOBcygERGf90Smq3AJ
-	6sKZstINa+dyX+Af0Q2S2L64qU4YLa3OhLq2UrKoaBEztHugQNaN0EmQvFUJwH0+gSoPyp8Vk2YaE
-	9ADQhE4g==;
+	bh=poryCSodFgiXf61xCB0vRH5GALov4bHk9ivn/OAFNMY=; b=zJnVDjBu6KcRA91IXcy8sMaE09
+	SG7NajxoRpFSmewUMkdTt/DPAMiTHmKxiH+AGjyKnQovkwG9FEM2brzG3J+wqIOYSv176WwfNwLrr
+	7YQO3niZZJHxT6dHHwG1uUOgBpQFCcTvvHRCxdqdVqUclTZbJePSvKI4IkcJ+OsMRvv5N6oQdcV+I
+	Gur/EEjixGcCQ0W/iyeoHyEr7zkmDdbZN0fD++XCBdIWqDPhzA+D98Afo5pDv6brImGWly+wrnwVT
+	ZWAVxDu1e1Vjqmtvr8X2qXeppGjMF0zq7M/YPda5cnX3zJhUyupwTAnCZfB/3hAjWBiyN1taabQXR
+	ABRCPyjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO9AL-00000001OF3-41ZH;
-	Tue, 03 Nov 2026 07:42:45 +0000
+	id 1xO9FD-00000001QTW-0G6J;
+	Tue, 03 Nov 2026 07:47:47 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO993-00000001MVS-1Jzh;
-	Tue, 03 Nov 2026 07:41:48 +0000
+	id 1xO9FB-00000001QR5-08qm;
+	Tue, 03 Nov 2026 07:47:46 +0000
 Received: from [127.0.1.1] (chfd-03-b2-v4wan-176392-cust229.vm15.cable.virginm.net [82.19.20.230])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 63FC15211;
-	Tue,  3 Nov 2026 08:38:59 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CFFDB4FFC;
+	Tue,  3 Nov 2026 08:38:58 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
 	s=mail; t=1793691539;
-	bh=DouAP44a/xjibckQCvicq+7yx5PPwPBXllkSkwoGU2o=;
+	bh=4UM83WgUUmLXdUmJoKiyVW/Tt6ThP1bsffedn6enb1o=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fLsxZiZMpxrLkQsmwLZcMdTJa1BISAYiyNJXJgJ2X51UsdJEOEy8+kwk/6j5Aeb3m
-	 I4peTF0otNxB0EbeKSJG5cSFlq3xFcknQ/Jk+Hk+US72Y0mJGJtP51gvoGWXloJe9G
-	 nA5l9dQtHiS2nrEYcV9H6jTMUcuTrxGJb9uLKDNQ=
+	b=EFNhL9f6TQQ6m77Yh7/XVMHwAz7o/w/f6MxG0AoVEL2sM94ec4hBc84VWjYYuMcym
+	 xGYI7AcG4pGWMMP86yE8pyGjtRBgPVmGEAHlJ9Zk+8vaYfv4HwxALA69zPE/ZS7f7i
+	 Ltxk3VI1JJKghQdzpdSlC4OhsSEH+pCEjm1Xgg7w=
 From: Daniel Scally <dan.scally@ideasonboard.com>
-Date: Tue, 03 Nov 2026 07:40:51 +0000
-Subject: [PATCH 15/16] media: rkisp1: Expose startup and shutdown functions
+Date: Tue, 03 Nov 2026 07:40:50 +0000
+Subject: [PATCH 14/16] media: rkisp1: Disable resizer stream before capture
+ device
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261103-rkisp1-suspend-and-resume-v1-15-08f863b6fdc5@ideasonboard.com>
+Message-Id: <20261103-rkisp1-suspend-and-resume-v1-14-08f863b6fdc5@ideasonboard.com>
 References: <20261103-rkisp1-suspend-and-resume-v1-0-08f863b6fdc5@ideasonboard.com>
 In-Reply-To: <20261103-rkisp1-suspend-and-resume-v1-0-08f863b6fdc5@ideasonboard.com>
 To: Tomasz Figa <tfiga@chromium.org>, 
@@ -57,26 +58,26 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, 
  Daniel Scally <dan.scally@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6524;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1301;
  i=dan.scally@ideasonboard.com; h=from:subject:message-id;
- bh=DouAP44a/xjibckQCvicq+7yx5PPwPBXllkSkwoGU2o=;
- b=owEBbQKS/ZANAwAKAchJV3psRXUyAcsmYgBq6ZARpgUmCDOM+khdRQ/VsWiwUjbzVfmKaYkSG
- 2UPUGM6n42JAjMEAAEKAB0WIQQqyuwyDnZdb+mxmm/ISVd6bEV1MgUCaumQEQAKCRDISVd6bEV1
- MrFSD/oCYZ2DCfv1gx/oCLCKsyMHwLZ9w4U7O6MCYkI5QKCicPOKfpx6glxCSIa0UsvI2/RRSlG
- f5UNkd2NAZ78ujD3QmAamjmaWZpPj7U89pZ9eJ06fxrkPyb1Pke9gY6xHu8Wgah0Jcn2y6gHWfB
- F6s5/E+SMOu3lZcV/05FQIcHgGLBslok72+r4s3YEJwoPTfoPq/FM6wOAOmyZKfwhi+PcOG3kkO
- X5wdGHUaNP6lEJ7Q9kOEdJi2P1PgsBim/t8saL02AHLVvL2s1/BDdylAEdc3+m+89lX5S+jEHMH
- Yode3QMwxe2/mfz05P62WrUGaDuwDYqkoBXSbHWelKHIhRQfxjwI8bY1MmChFOcZm/F/XpiL7ZG
- qSedP9YmLqpRLrxehRpNVe7OGZDTc+jNaIGLhx7RGMgRcDVfVu/2HYJsQXLiWXbyLv7W9ZvrjgV
- rlPawwMwjIoMKImW6Z55fgofNAhrZi/dnWF/iutQicPNkTEPURotpn/c/J+n3YlTUhFj1azuMfT
- 2sIw3m62xGvZ9r6IgKY6bOcBE7QUpCj+VbmAHv+4ynwd5a6vgr+bqDLvcf+tbCHTjUyD6t9n/QC
- 84m5ZeLEF4zmWXCPclwpQyX+H8O3m7wjS29p7l4tkDLP7t3z7MVfFuNKgcjs+lP3DvHgcBGZots
- Xy4ee5GaaC9pMTg==
+ bh=4UM83WgUUmLXdUmJoKiyVW/Tt6ThP1bsffedn6enb1o=;
+ b=owEBbQKS/ZANAwAKAchJV3psRXUyAcsmYgBq6ZARU29b5O2lGgZCbTA7WMrBfcYKXkuVYKTgZ
+ jLzBR7PUomJAjMEAAEKAB0WIQQqyuwyDnZdb+mxmm/ISVd6bEV1MgUCaumQEQAKCRDISVd6bEV1
+ MiktD/sH70tz3ItYN/GwbHjvlnGrBMrBjAQPPYJFTL8pOLNc7v4U4roc6/YkoZxRQwHC3g5+Pv9
+ BkLdMmSmGKY0Vlj8oPxICBpAuWeVdZLKChgDund4yoOhYRDDumAnMEEHP7jW8CHRV24+wpvg4g8
+ XMtueUp2nquV+PmMAHyM5lTyHwyKjU+MsIz96Ej/PXQiF6R1K9HOo0nILqcRS7CfoGCW71V3Iy/
+ UhXyZob/PDXAKRQj4e9PTDrD5jdM+TdGv8iLON4AnqDt6p2gyxQfTzuq6ij4FCEqgwvCKBzftHs
+ uG8x7dUNCUoQRrUeQjhkvZUtktlglFsaeWymQ6GDUl23WuyKd07gqrgEncCkhfV04zMbe75jLgH
+ jlz730J2dtUAotZ4Pox9svg82Tqr+fXHC/wJwyIRNOp6vwSbwwN1/lrzmO+79ZNxtn9q/kn0JUu
+ RyF7dVGl08RfvRJZXGkB/c7WIY743UpO6q5rvrW+0D+Ss88JzqbViU0aYzHICQGHepyw2q1YLYx
+ mrDPr17/t+o2fFT9gNEenXb2+4roRshdNkg4hWarIdG/O3eNDk3ThWueQzggOHGp3B+X6zoFch7
+ pqWk8fGc9EoYV6aLYmaisfINMqi3Yn2MB8oQQsSxnBgFvOd7GufdZKdPxfGjFFIz29TWOjQTGwg
+ Zbj+M7mZOBS1J9w==
 X-Developer-Key: i=dan.scally@ideasonboard.com; a=openpgp;
  fpr=EEC699ACA1B7CB5D31330C0BBD501C2A3546CCF6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_234131_805783_1622D89E 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20261102_234745_248078_9C58B701 
+X-CRM114-Status: GOOD (  12.77  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,154 +98,34 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Expose the startup and shutdown functions throughout the module so
-that they can be called from different source files to the one that
-they are defined in - this is in preparation for the runtime resume
-and suspend operations being updated to accommodate hibernation and
-suspension with an active stream.
+In rkisp1_pipeline_stream_disable() the current implementation
+calls rkisp1_cap_stream_disable() before sending the stream off
+signal to the resizer subdevice, which will make its way down the
+chain of subdevices to the sensor. This means that much of the stop
+operation happens whilst data is still being sent to the ISP. Switch
+the ordering so that the stream-off call to the resizer subdevice is
+made first.
 
 Signed-off-by: Daniel Scally <dan.scally@ideasonboard.com>
 ---
- .../media/platform/rockchip/rkisp1/rkisp1-capture.c  | 14 ++++++++++----
- .../media/platform/rockchip/rkisp1/rkisp1-common.h   |  9 +++++++++
- .../media/platform/rockchip/rkisp1/rkisp1-params.c   |  9 +++++++--
- .../media/platform/rockchip/rkisp1/rkisp1-stats.c    | 20 +++++++++++---------
- 4 files changed, 37 insertions(+), 15 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index 3204f5afe3bbf1a5de88d57b50a120e716b1345b..3e199814a50f4042624393ee28bbf3b6485e5844 100644
+index 84d66da484df7cbc29700efc433b1271d594ff78..3204f5afe3bbf1a5de88d57b50a120e716b1345b 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -953,8 +953,8 @@ static int rkisp1_vb2_buf_prepare(struct vb2_buffer *vb)
- 	return 0;
- }
- 
--static void rkisp1_return_all_buffers(struct rkisp1_capture *cap,
--				      enum vb2_buffer_state state)
-+void rkisp1_return_all_buffers(struct rkisp1_capture *cap,
-+			       enum vb2_buffer_state state)
- {
- 	struct rkisp1_buffer *buf;
- 
-@@ -1061,7 +1061,7 @@ static void rkisp1_cap_stream_disable(struct rkisp1_capture *cap)
-  * rkisp1_pipeline_stream_enable() and disable the DMA engine.
-  * Should be called before video_device_pipeline_stop()
-  */
--static void rkisp1_pipeline_stream_disable(struct rkisp1_capture *cap)
-+void rkisp1_pipeline_stream_disable(struct rkisp1_capture *cap)
- 	__must_hold(&cap->rkisp1->stream_lock)
+@@ -1066,9 +1066,9 @@ static void rkisp1_pipeline_stream_disable(struct rkisp1_capture *cap)
  {
  	struct rkisp1_device *rkisp1 = cap->rkisp1;
-@@ -1077,7 +1077,7 @@ static void rkisp1_pipeline_stream_disable(struct rkisp1_capture *cap)
-  * Enable the DMA Engine and call s_stream(true) through the pipeline.
-  * Should be called after video_device_pipeline_start()
-  */
--static int rkisp1_pipeline_stream_enable(struct rkisp1_capture *cap)
-+int rkisp1_pipeline_stream_enable(struct rkisp1_capture *cap)
- 	__must_hold(&cap->rkisp1->stream_lock)
- {
- 	struct rkisp1_device *rkisp1 = cap->rkisp1;
-@@ -1173,6 +1173,12 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
- 	return ret;
+ 
+-	rkisp1_cap_stream_disable(cap);
+ 	v4l2_subdev_disable_streams(&rkisp1->resizer_devs[cap->id].sd,
+ 				    RKISP1_RSZ_PAD_SRC, BIT(0));
++	rkisp1_cap_stream_disable(cap);
  }
  
-+bool rkisp1_vb2_is_streaming(struct rkisp1_capture *cap)
-+{
-+	return vb2_is_streaming(&cap->vnode.buf_queue) &&
-+	       vb2_start_streaming_called(&cap->vnode.buf_queue);
-+}
-+
- static const struct vb2_ops rkisp1_vb2_ops = {
- 	.queue_setup = rkisp1_vb2_queue_setup,
- 	.buf_init = rkisp1_vb2_buf_init,
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 90942b22df313d83d9722cc550f01758cda9fa27..8f379a783da1fa97a330a7ec547354eb936cfadd 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -691,6 +691,15 @@ void rkisp1_stats_unregister(struct rkisp1_device *rkisp1);
- int rkisp1_params_register(struct rkisp1_device *rkisp1);
- void rkisp1_params_unregister(struct rkisp1_device *rkisp1);
- 
-+/* suspend / resume handling helpers */
-+bool rkisp1_vb2_is_streaming(struct rkisp1_capture *cap);
-+void rkisp1_stats_vb2_return_all_buffers(struct rkisp1_stats *stats);
-+void rkisp1_params_vb2_return_buffers(struct rkisp1_params *params);
-+void rkisp1_return_all_buffers(struct rkisp1_capture *cap,
-+			       enum vb2_buffer_state state);
-+int rkisp1_pipeline_stream_enable(struct rkisp1_capture *cap);
-+void rkisp1_pipeline_stream_disable(struct rkisp1_capture *cap);
-+
- #if IS_ENABLED(CONFIG_DEBUG_FS)
- void rkisp1_debug_init(struct rkisp1_device *rkisp1);
- void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1);
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-index cc42b5afbf65a9a992323c40cff1a6fe2d8b61e4..1f08b57e616159a389411e13f9217c4f4fcddd57 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-@@ -2761,9 +2761,8 @@ static int rkisp1_params_vb2_buf_prepare(struct vb2_buffer *vb)
- 	return 0;
- }
- 
--static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
-+void rkisp1_params_vb2_return_buffers(struct rkisp1_params *params)
- {
--	struct rkisp1_params *params = vq->drv_priv;
- 	struct rkisp1_params_buffer *buf;
- 	LIST_HEAD(tmp_list);
- 
-@@ -2778,7 +2777,13 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
- 
- 	list_for_each_entry(buf, &tmp_list, queue)
- 		vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
-+}
-+
-+static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
-+{
-+	struct rkisp1_params *params = vq->drv_priv;
- 
-+	rkisp1_params_vb2_return_buffers(params);
- 	params->enabled_blocks = 0;
- }
- 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-index fba95a1786be0d6782829a5604d41893dda8e826..c476310b401b39c3bf1784fcc6b521421192877f 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-@@ -128,23 +128,25 @@ static int rkisp1_stats_vb2_buf_prepare(struct vb2_buffer *vb)
- 	return 0;
- }
- 
--static void rkisp1_stats_vb2_stop_streaming(struct vb2_queue *vq)
-+void rkisp1_stats_vb2_return_all_buffers(struct rkisp1_stats *stats)
- {
--	struct rkisp1_stats *stats = vq->drv_priv;
--	struct rkisp1_buffer *buf;
--	unsigned int i;
-+	struct rkisp1_buffer *buf, *tmp;
- 
- 	guard(spinlock_irq)(&stats->lock);
--	for (i = 0; i < RKISP1_ISP_STATS_REQ_BUFS_MAX; i++) {
--		if (list_empty(&stats->stat))
--			break;
--		buf = list_first_entry(&stats->stat,
--				       struct rkisp1_buffer, queue);
-+
-+	list_for_each_entry_safe(buf, tmp, &stats->stat, queue) {
- 		list_del(&buf->queue);
- 		vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
- 	}
- }
- 
-+static void rkisp1_stats_vb2_stop_streaming(struct vb2_queue *vq)
-+{
-+	struct rkisp1_stats *stats = vq->drv_priv;
-+
-+	rkisp1_stats_vb2_return_all_buffers(stats);
-+}
-+
- static const struct vb2_ops rkisp1_stats_vb2_ops = {
- 	.queue_setup = rkisp1_stats_vb2_queue_setup,
- 	.buf_queue = rkisp1_stats_vb2_buf_queue,
+ /*
 
 -- 
 2.43.0
