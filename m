@@ -2,61 +2,203 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 932E3606D817
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 11:49:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3EEE4606D832
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 11:54:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YvPaHnQs;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=mainlining.org header.i=@mainlining.org header.a=rsa-sha256 header.s=202507r header.b=bDm2GHYu;
-	dkim=fail reason="signature verification failed" header.d=mainlining.org header.i=@mainlining.org header.a=ed25519-sha256 header.s=202507e header.b=LR8s8ZiP
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eJk+8RFo;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=MWWjy+ZV;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=I8Y1FRUD
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=WsMg1iWlxk3VNIZQbrdbAdPnUxd1nfFeVzgvHaaN1h0=; b=YvPaHnQso3YAQ80HBHGorXhuQU
-	2Ib9VqlAnszf279BFBEJZEtHT0I+QAfIBqhoDDY/ADvBDMKQ9sX+RUAxgnUZfyDudNOKUVKLpeM6W
-	CTLEJ0zt8NLIYc55Uk+BxCjuEkxTERNVtw9wLWQXOL1luM59XQw/g3nN76urfZNNiB+GXV4yo9mYU
-	N1xFYiNE9NDpvM/gobZpvxW6T3JDFNtrkrNqwwXMvR+IvXCZBZSUqAaLqlABDWGd7UvY5DcOVT536
-	PbMJANBzIR2RYIomnhSiv/ACTlFvzqYAwRXuViloufGiKeG2ik2/Ymb1SCPVmVWOff9KneY1ETscC
-	mXKLgGVg==;
+	bh=NrG9HymeNoQmE6uDB3ATX85fh5shzbpj6QANBMhB16Y=; b=eJk+8RFowinUo8lld7THsi2joc
+	UoBhNEGqDowaIiy4ap3gzQvkzESB9ajy+hOL57Qkcip4KfAkF0fFOYS3VTR+rDoLsbHL5xm8drCnv
+	PjdaRrwB/FXJ3lAkULAV3XMKCeb4/N5tYYZLIJPZsT4YOntb6X39XU3ncvXlwLitypPFxpiGVguq2
+	spAoWuv7eoG19wD1UKnQ5moGxqbJcxPP0jMW0M0DH8aKnsIki/4BoGpGDNttx2/dijQhtfv00bON7
+	Je1ZKy7LnOi+5R36WdQSYzsaPKsI7vw6M4TQVCUn/bLcVOC4HXfnw5g18gxVSDT7OOWSQZibI7Ujy
+	rY5eDjzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOD0g-00000002GfX-3Oqg;
-	Tue, 03 Nov 2026 11:49:02 +0000
-Received: from mail.mainlining.org ([5.75.144.95])
+	id 1xOD5T-00000002Hqu-2AJr;
+	Tue, 03 Nov 2026 11:53:59 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOD0b-00000002GdV-2EpO;
-	Tue, 03 Nov 2026 11:48:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; s=202507r; d=mainlining.org; c=relaxed/relaxed;
-	h=Message-ID:Subject:To:From:Date; t=1793706530; bh=W0ZUFOadJC6PrSKEwszh5ok
-	V1YbbWnVO0ckCp82sIZI=; b=bDm2GHYuLgJgsv1tigyfg8wCCz8luzpaITA7dtAo4ZROwJSouD
-	nMZI9HWXSMsQ4c1P+5HOOR1iHzumvla4XuY6Fs2SiuI+dY0Zeco7bfChDKQV3eLI0m9kfKS5CE6
-	YPuHBb2yT2+lMPX1xhzU1uuXQn4POUfWdswS7iH2WNd112Fo9CT+oASA36d8FtsZ00bxnmr5ljf
-	SNwZSd0W7tfbEJ2AcOwh0jVqbd9TXx6Rjvy1kncVjKsDlEK2orHsqx/+L1i208BzkwfpehnHXmh
-	R1uidw8LHtD37sqfT883lblwSaeKQGLFrEM3Q2zPTsBJ46QmSSxJXQFyBtsJk9uXioQ==;
-DKIM-Signature: v=1; a=ed25519-sha256; s=202507e; d=mainlining.org; c=relaxed/relaxed;
-	h=Message-ID:Subject:To:From:Date; t=1793706530; bh=W0ZUFOadJC6PrSKEwszh5ok
-	V1YbbWnVO0ckCp82sIZI=; b=LR8s8ZiPGOLCPF9tLMbTdiWec6+ioKJ1ftUMcZwrMpaw+aerQh
-	0OkZAtuGQEP4rj7GBl0l41ut2Fpidf/OlFCw==;
-Date: Tue, 03 Nov 2026 11:48:52 +0000
-From: Bradley Morgan <brads@mainlining.org>
-To: daniel.lezcano@oss.qualcomm.com
-CC: akpm@linux-foundation.org, heiko@sntech.de,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, peterz@infradead.org, rafael@kernel.org,
- tglx@kernel.org
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_1/2=5D_smpboot=3A_Allow_restr?=
- =?US-ASCII?Q?icting_per-CPU_threads_to_a_CPU_mask?=
-In-Reply-To: <af37c4e7811a86adafb2064e7cf4aa4f5090ab4b.1793660202.git.daniel.lezcano@oss.qualcomm.com>
-Message-ID: <79AC1B3F-F158-4808-AD7E-70AE659E8DB5@mainlining.org>
+	id 1xOD5Q-00000002HpR-0DJi
+	for linux-rockchip@lists.infradead.org;
+	Tue, 03 Nov 2026 11:53:57 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6A3AA3sv3577845
+	for <linux-rockchip@lists.infradead.org>; Tue, 3 Nov 2026 11:53:55 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	qgssI0xYpOMAH5iVIdleET+YzqyBmZcZ+a8GZf98ttY=; b=MWWjy+ZVi2QdM7hV
+	mqTyO4PsXxS1DeaTU7F0pAhk8eTinZvdhnDH3UY2nWUpcmotKOOoNSkfFYno6zvP
+	REV6ABDEPV1Mi6FxJu8o8aHXxbGZ4bqB5mDrgZsk6oUaMDz/uw8uPELXjz6h/pe9
+	XHsfsSXDnizijPjlIkO1rH/9HbhyfxvkHInASLwANmxINNEuUt1A8Iq3uXhv8gzD
+	jtrLtrSdpmgIjQyTpzH4p2jGLgzKVv405S9fxEOkSFBSK17afQ5ypntnmcE+zZde
+	OxDAZWtoPjUvNfQ/RumMUqU3vTm1o3B2J1r3WtcAYbHiubHCK8T8v5pdvCyKmcS2
+	dVepVA==
+Received: from mail-pf1-f199.google.com (mail-pf1-f199.google.com [209.85.210.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hq76d9ygs-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Tue, 03 Nov 2026 11:53:55 +0000 (GMT)
+Received: by mail-pf1-f199.google.com with SMTP id d2e1a72fcca58-8a0865e4282so1102473b3a.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Nov 2026 03:53:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1793706835; x=1794311635; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=qgssI0xYpOMAH5iVIdleET+YzqyBmZcZ+a8GZf98ttY=;
+        b=I8Y1FRUD4qiovavsoJnvCFs2CA827zI7s3jNHBpCexRAyRLauP5uxvRwmzefDyndOB
+         4rb0MLT+LxcDmBqKxOkonE0HLOax8Xg8D8SaMbBZIZWTxxCgt6hJA1lS1Kkz7co66Q7B
+         Nq0rKzQWL3eSmvJbQ7PDni972I+RnwLPuCBxmQVZeKSoNI5+dmziPnlNKO3pYK+TPCxE
+         DDCEUZ2jBQby7dD6nSSCOi9oYjnWPtnkpOyrdaHgp0MmAXSqLvZ6WrAN7atNifSOjC8d
+         AmZpywRgR/jPd0deCq4DJsrpd+nGPUE7h90ClvsbCfx/cWjVM0EyOw+RYpgESpDM+jpU
+         HKVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793706835; x=1794311635;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=qgssI0xYpOMAH5iVIdleET+YzqyBmZcZ+a8GZf98ttY=;
+        b=VlXasOZU5dQm3cmB9kdC/fc1NvT1sqE95L4o8AbkTBbaIqhJ9+V+D1xGxKGCib1OrZ
+         EsSHHVYjjEnS8yw2liibenbjAndfG6lLJj8qSRG6aQIDAOdDzvQNtGytqah2pSAZbeKt
+         cj9tgGaLGRg6kn/7vla35bvk6W9ILAkXZGj9Ilh/OqrfycCrSnuxPUMZmNhzlJG225mV
+         AC0pHP97+hYAMnXNE7Txo+O8Lftbc5RDCbnMlCuYgktN+MMEWSkNCp8BdgggFD294IA5
+         PXSUIwrS4MwyI2CWcMA53I2mhCp3OR9kaDwm8swCHZYd3rPrzoO7oeEVuLegw8kHmddd
+         UNgQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxfShYdIiMdRkG45bgSwKkdGbClq2UGFVyW9cS8mgXemhFmz5pVH4VQui51LSO0Y/U9P8mvs6alF14hk+yR1Q==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9f1RnjbJOTcxi4gUba/CYRKlQjwgvxN2Czl7iDIdMREabbiwra
+	lwyWKytN2ufIM0wPMrSXvRvU3WoNcza172j9VC62QW6N/6SkRjzvN0E/maV3Zijve/0EJxrJ6ta
+	P/fcDbGCH2F+oCCnWxwDX7p9L/EZb7kzjoo7lp4iff92/cXwJ/N9n8qJlbYrFF68Cxl1mfXjbw/
+	I=
+X-Gm-Gg: AYBFou1VZP4ZOQ6tz5BOAaVe6cXspYXh9KT/NCi4idHYifsj4v03yO33o8UT9E40reZ
+	+TfUjMtiIkQPFoCHbwysVZ7vorl2nE6TQdzeITjd5BoztnsPpAMBltXyVfC/hskd39DvWG/v2N3
+	gYjbkarLby3ucnwOuL1jkxBesNJwMTO45tgV2CiAKgJTcxyiwoheyLlXMPFYc6U577isd8uw1v/
+	X1HaleUWkrIIc/CzEzi0iz82vvau2DOYrxZiwaYBORp6SHzsbnAzR52ibqh26gQmiC1PGEIfb5e
+	BX37a024oj6hfgDzoSgdpE8DQ6yFwHVq7mZhtEuSSf6Gj/hibecu0TX4wh8uE+hlg+rwXqZaUHD
+	piPiUy2Nh9JZSW6l1MYZir0AT+f4wIYDWpjoH1tffxbvjehkPX61S7TYUn+DA+7TEa6t2PX54oC
+	PUhC6VBg==
+X-Received: by 2002:a05:6a20:1f28:b0:3e2:3392:5408 with SMTP id adf61e73a8af0-3e928ff2900mr10480920637.79.1793706834810;
+        Tue, 03 Nov 2026 03:53:54 -0800 (PST)
+X-Received: by 2002:a05:6a20:1f28:b0:3e2:3392:5408 with SMTP id adf61e73a8af0-3e928ff2900mr10480885637.79.1793706834326;
+        Tue, 03 Nov 2026 03:53:54 -0800 (PST)
+Received: from [10.217.219.98] ([202.46.22.19])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cdb364cb511sm1161045a12.28.2026.11.03.03.53.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 03 Nov 2026 03:53:53 -0800 (PST)
+Message-ID: <7a873a59-247f-4e4d-ad30-32bb504da40d@oss.qualcomm.com>
+Date: Tue, 3 Nov 2026 17:23:34 +0530
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/1] spi: use dmaengine_desc_set_callback()
+To: Frank.Li@oss.nxp.com, Mark Brown <broonie@kernel.org>,
+        Nicolas Ferre <nicolas.ferre@microchip.com>,
+        Alexandre Belloni <alexandre.belloni@bootlin.com>,
+        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+        Radu Pirea <radu_nicolae.pirea@upb.ro>, CL Wang <cl634@andestech.com>,
+        Ryan Wanner <ryan.wanner@microchip.com>,
+        Florian Fainelli <florian.fainelli@broadcom.com>,
+        Ray Jui
+ <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+        Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,
+        Vladimir Oltean
+ <olteanv@gmail.com>, Frank Li <Frank.Li@nxp.com>,
+        Sascha Hauer <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>, Han Xu <han.xu@nxp.com>,
+        Haibo Chen <haibo.chen@nxp.com>, Linus Walleij <linusw@kernel.org>,
+        Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+        Daniel Mack <daniel@zonque.org>,
+        Haojian Zhuang <haojian.zhuang@gmail.com>,
+        Robert Jarzmik <robert.jarzmik@free.fr>,
+        Heiko Stuebner <heiko@sntech.de>,
+        Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
+        Andi Shyti <andi.shyti@kernel.org>,
+        Tudor Ambarus
+ <tudor.ambarus@linaro.org>,
+        Krzysztof Kozlowski <krzk@kernel.org>,
+        Peter Griffin <peter.griffin@linaro.org>,
+        Alim Akhtar <alim.akhtar@samsung.com>, Yixun Lan <dlan@kernel.org>,
+        Troy Mitchell <troy.mitchell@linux.spacemit.com>,
+        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue <alexandre.torgue@foss.st.com>,
+        Alain Volmat <alain.volmat@foss.st.com>,
+        Chen-Yu Tsai <wens@kernel.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Laxman Dewangan
+ <ldewangan@nvidia.com>,
+        Thierry Reding <thierry.reding@kernel.org>,
+        Jonathan Hunter <jonathanh@nvidia.com>,
+        Sowjanya Komatineni <skomatineni@nvidia.com>,
+        Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+        Masami Hiramatsu <mhiramat@kernel.org>,
+        "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>,
+        "moderated list:ARM/Microchip (AT91) SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+        open list <linux-kernel@vger.kernel.org>,
+        "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
+ <linux-rpi-kernel@lists.infradead.org>,
+        "open list:FREESCALE DSPI DRIVER" <imx@lists.linux.dev>,
+        "open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
+        "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+        "open list:RENESAS RZ/V2H(P) RSPI DRIVER"
+ <linux-renesas-soc@vger.kernel.org>,
+        "open list:SAMSUNG SPI DRIVERS" <linux-samsung-soc@vger.kernel.org>,
+        "open list:RISC-V SPACEMIT SoC Support" <linux-riscv@lists.infradead.org>,
+        "open list:RISC-V SPACEMIT SoC Support" <spacemit@lists.linux.dev>,
+        "moderated list:ARM/STM32 ARCHITECTURE"
+ <linux-stm32@st-md-mailman.stormreply.com>,
+        "open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
+        "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>
+Cc: vkoul@kernel.org
+References: <20261102174005.3933649-1-Frank.Li@oss.nxp.com>
+Content-Language: en-US
+From: Mukesh Savaliya <mukesh.savaliya@oss.qualcomm.com>
+In-Reply-To: <20261102174005.3933649-1-Frank.Li@oss.nxp.com>
+X-Authority-Analysis: v=2.4 cv=KJTPn1Fo c=1 sm=1 tr=0 ts=6ae9cb53 cx=c_pps
+ a=WW5sKcV1LcKqjgzy2JUPuA==:117 a=fChuTYTh2wq5r3m49p7fHw==:17
+ a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=8AirrxEcAAAA:8 a=EUspDBNiAAAA:8 a=ibj56h0FkVxt_nO8038A:9 a=QEXdDO2ut3YA:10
+ a=OpyuDcXvxspvyRM73sMx:22 a=ST-jHhOKWsTCqRlWije3:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTAzMDA0NyBTYWx0ZWRfX8RjCmWr1OOPG
+ lx9MEJyL+TfQvUj6EKeMV0q947TDLeLauf+1o9g5Dzw25VuapVE6VTjwHcSNWf8tW6Nzzq4d8Bd
+ 8R+Ay1F6Su4CVRTG/FvFEWddpTIXUTs=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTAzMDA0NyBTYWx0ZWRfXxuTWNqQAGa/V
+ TAwECGMumrRhWZEeniI5aXlWTpx395zSdmEXXhlS/ACcIbB/UWncr0asDsSDXDXP2BCmXgpkcK0
+ myt8/W1I+0YeZlnKMFXK+jAbGoaWarapi8u7bqlNIdw1Gv+Ta2uiOTFnPtAb9leBO7H/KtF8LLA
+ 8Pu1uVF7EMOI40FMVokxiLT5+DTIB2Kestw0ylzwpn7H4w4jA92s4evZ7SH5tnQvj/m9M6nJsgJ
+ YLKVJbIsUyIBYofns/dKMFJFD7qLQDmfIb0vvQNBmq66KMmdn5Amp3ltEN8HktKu8bTsKjLj3Hw
+ 6O+ABZEpa22kz8G1xKCiCXoT/NmbexN0rgQW9SDDyvKk52B55ExmpaBQEUtp6UIm/aOlH9Rl6TK
+ 61aQpQSSwgjZUKtPDxOjI1YUdtxu4nV12N2Nl6004IbYKjr+rETmaAvE5o2q6Acv9dLLTN7Myo7
+ JphbQYNuURUstB4CtiA==
+X-Proofpoint-GUID: ZMHeuDDSRKl62WLlp5eMx08cMxX1ku15
+X-Proofpoint-ORIG-GUID: ZMHeuDDSRKl62WLlp5eMx08cMxX1ku15
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-11-03_02,2026-11-02_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 impostorscore=0 priorityscore=1501 bulkscore=0
+ lowpriorityscore=0 adultscore=0 malwarescore=0 phishscore=0 spamscore=0
+ suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610300000
+ definitions=main-2611030047
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_034857_746570_001F3C4E 
-X-CRM114-Status: GOOD (  15.51  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261103_035356_102060_1EE8AF05 
+X-CRM114-Status: GOOD (  11.94  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,157 +208,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 2 November 2026 23:09:40 GMT, Daniel Lezcano
-<daniel.lezcano@oss.qualcomm.com> wrote:
->smpboot_register_percpu_thread() creates a thread for every online CPU
->and registers the descriptor for subsequent CPU hotplug operations.
->There is currently no way to restrict these threads to a subset of
->CPUs, even when the user only needs work performed on that subset.
->
->For example, an idle injection device targets a specific CPU mask.
->Creating threads outside that mask consumes resources unnecessarily.
->Supporting multiple such devices also requires each descriptor to
->manage only the threads associated with its own CPUs.
->
->Add an optional CPU mask to struct smp_hotplug_thread and apply it
->throughout the thread lifecycle. Registration creates threads only for
->online CPUs in the mask. CPU bring-up creates threads for selected
->CPUs that were offline at registration, while parking and unparking
->are restricted to the same mask.
->
->Apply the restriction to thread destruction as well, both during
->unregistration and registration failure cleanup. This is necessary
->when descriptors with disjoint masks share the same per-CPU task
->storage: tearing down one descriptor must not stop or clear threads
->owned by another descriptor.
->
->The caller must keep the mask valid and unchanged until the descriptor
->is unregistered. Callers sharing per-CPU task storage must ensure their
->masks do not overlap and serialize ownership changes themselves.
->
->A NULL mask preserves the existing behavior, so current users continue
->to manage threads on all CPUs.
->
-
-This is simple as it gets, thanks.
-
-Reviewed-by: Bradley Morgan <brads@mainlining.org>
-
->Signed-off-by: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
->---
-> include/linux/smpboot.h |  4 ++++
-> kernel/smpboot.c        | 17 +++++++++++++++--
-> 2 files changed, 19 insertions(+), 2 deletions(-)
->
->diff --git a/include/linux/smpboot.h b/include/linux/smpboot.h
->index 9d1bc65d226c..98c072eeaf24 100644
->--- a/include/linux/smpboot.h
->+++ b/include/linux/smpboot.h
->@@ -5,6 +5,7 @@
-> #include <linux/types.h>
-> 
-> struct task_struct;
->+struct cpumask;
-> /* Cookie handed to the thread_fn*/
-> struct smpboot_thread_data;
-> 
->@@ -27,6 +28,8 @@ struct smpboot_thread_data;
->  *			unparked (cpu online)
->  * @selfparking:	Thread is not parked by the park function.
->  * @thread_comm:	The base name of the thread
->+ * @cpumask:		Optional mask of CPUs on which to create threads. Must remain
->+ *			valid and unchanged until the descriptor is unregistered.
->  */
-> struct smp_hotplug_thread {
-> 	struct task_struct		* __percpu *store;
->@@ -40,6 +43,7 @@ struct smp_hotplug_thread {
-> 	void				(*unpark)(unsigned int cpu);
-> 	bool				selfparking;
-> 	const char			*thread_comm;
->+	const struct cpumask		*cpumask;
-> };
-> 
-> int smpboot_register_percpu_thread(struct smp_hotplug_thread
-> *plug_thread);
->diff --git a/kernel/smpboot.c b/kernel/smpboot.c
->index 4503b60ce9bd..07857523a465 100644
->--- a/kernel/smpboot.c
->+++ b/kernel/smpboot.c
->@@ -168,6 +168,9 @@ __smpboot_create_thread(struct smp_hotplug_thread *ht, unsigned int cpu)
-> 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
-> 	struct smpboot_thread_data *td;
-> 
->+	if (ht->cpumask && !cpumask_test_cpu(cpu, ht->cpumask))
->+		return 0;
->+
-> 	if (tsk)
-> 		return 0;
-> 
->@@ -225,6 +228,9 @@ static void smpboot_unpark_thread(struct smp_hotplug_thread *ht, unsigned int cp
-> {
-> 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
-> 
->+	if (ht->cpumask && !cpumask_test_cpu(cpu, ht->cpumask))
->+		return;
->+
-> 	if (!ht->selfparking)
-> 		kthread_unpark(tsk);
-> }
->@@ -244,6 +250,9 @@ static void smpboot_park_thread(struct smp_hotplug_thread *ht, unsigned int cpu)
-> {
-> 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
-> 
->+	if (ht->cpumask && !cpumask_test_cpu(cpu, ht->cpumask))
->+		return;
->+
-> 	if (tsk && !ht->selfparking)
-> 		kthread_park(tsk);
-> }
->@@ -267,6 +276,9 @@ static void smpboot_destroy_threads(struct smp_hotplug_thread *ht)
-> 	for_each_possible_cpu(cpu) {
-> 		struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
-> 
->+		if (ht->cpumask && !cpumask_test_cpu(cpu, ht->cpumask))
->+			continue;
->+
-> 		if (tsk) {
-> 			kthread_stop_put(tsk);
-> 			*per_cpu_ptr(ht->store, cpu) = NULL;
->@@ -279,7 +291,8 @@ static void smpboot_destroy_threads(struct smp_hotplug_thread *ht)
->  * 					    to hotplug
->  * @plug_thread:	Hotplug thread descriptor
->  *
->- * Creates and starts the threads on all online cpus.
->+ * Creates and starts the threads on online CPUs selected by the descriptor's
->+ * cpumask, or all online CPUs if no mask is specified.
->  */
-> int smpboot_register_percpu_thread(struct smp_hotplug_thread
-> *plug_thread)
-> {
->@@ -308,7 +321,7 @@ EXPORT_SYMBOL_GPL(smpboot_register_percpu_thread);
->  * smpboot_unregister_percpu_thread - Unregister a per_cpu thread related to hotplug
->  * @plug_thread:	Hotplug thread descriptor
->  *
->- * Stops all threads on all possible cpus.
->+ * Stops all threads associated with the descriptor, including offline CPUs.
->  */
-> void smpboot_unregister_percpu_thread(struct smp_hotplug_thread
-> *plug_thread)
-> {
->
 
 
---- Thanks!
+On 11/2/2026 11:09 PM, Frank.Li@oss.nxp.com wrote:
+> From: Frank Li <Frank.Li@nxp.com>
+> 
+> Replace open-coded assignments to callback and callback_param fields
+> of struct dma_async_tx_descriptor with calls to the
+> dmaengine_desc_set_callback() helper across SPI bus drivers.
+> 
+> No functional change intended. Prepare make to struct
+> dma_async_tx_descriptor private to the DMA engine.
+> 
+> Signed-off-by: Frank Li <Frank.Li@nxp.com>
+> ---
+Reviewed-by: Mukesh Kumar Savaliya <mukesh.savaliya@oss.qualcomm.com>
 
 _______________________________________________
 Linux-rockchip mailing list
