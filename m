@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B3BE6606A32E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 07:41:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EE89D606D80D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 07:41:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=t4D/9Y5t;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ideasonboard.com header.i=@ideasonboard.com header.a=rsa-sha256 header.s=mail header.b=K7bI8rxv
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4ztuVXmo;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ideasonboard.com header.i=@ideasonboard.com header.a=rsa-sha256 header.s=mail header.b=GNCY00i6
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,37 +14,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=pfXiXii9yMceJCE8dWpOAnZXA8qkmeSzaxMtms+2T18=; b=t4D/9Y5t+wrvCzZ0xnCTvUBkRm
-	dNdSwCKhTNGtGYX7Y198UPRLpcqkooRlilBp9a5rBAxMdiccX1tjseuPIqCtBrfOXaSOxbs4wRUjI
-	cRXjurlzb10dDUTx4Fn+1aySw4TIQBmxJ/O70wDcK8Ds8ePAp6gs2Msi6QqUnfdtUyf28B5mBVALH
-	ashidRtNs8uB1S6muLBvwLyqV8gQ12JPjFh96FSAXSWo0CMTWzQNRkZIRf6vVjVfc1t6LNlWS+qGQ
-	mlMFgEjLeHE2JaLpge4iKICbXeLdonhTN23CxwVqbEjeSNjGLzdf1n3pDCPFNXr8XiAIFW0gmU0Vy
-	yMXtZWlQ==;
+	bh=zzVqkvUa2RpZUgNKYC4cbqBQ+jfyN5mk4FCjTHzwg3I=; b=4ztuVXmoVo5YbfzQ+6NLDC05Xt
+	H1KDQQGSi0oQ6UnQHbSMIkYjK6MAz07+qLVar0US8euaVeyGYJjrYCDDZNRccTpMUmftcKfrfnGDD
+	fZM7bf4u3SXxCVjC7veVWXu4o765UiLldiDSVbb4uIJwLkB22P02gjxMcNy5FFSywp17peJpTmi0e
+	2blH9C2yw1swKEgnMW30P6QPXcu6l8OTQG2CQQfH3tg0MdIJSIWnBEixf+Mizt8C7YmZSHYdNP6o/
+	epgoHCWdO485wP1AmmsajhnnqUia49vbzBXOCdX7pTabDFpOqK/7SHKVFjtFAXqbBlPxayKgjKqp7
+	qj4XNRWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO99P-00000001MwE-1AWM;
-	Tue, 03 Nov 2026 07:41:47 +0000
+	id 1xO99S-00000001N4I-2BKO;
+	Tue, 03 Nov 2026 07:41:50 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO98v-00000001MLG-3KiB;
-	Tue, 03 Nov 2026 07:41:23 +0000
+	id 1xO98v-00000001MKN-1vq7;
+	Tue, 03 Nov 2026 07:41:34 +0000
 Received: from [127.0.1.1] (chfd-03-b2-v4wan-176392-cust229.vm15.cable.virginm.net [82.19.20.230])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9E8224BB4;
-	Tue,  3 Nov 2026 08:38:56 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C5CE32805;
+	Tue,  3 Nov 2026 08:38:54 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1793691537;
-	bh=EEoGhl+w4b09JEf0yxWv+I36A1RkFDfU7O1BH/fGGRI=;
+	s=mail; t=1793691535;
+	bh=6Q9ze18PqHn248ojyQQszGM7rBEuyTl31r061SKya5g=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=K7bI8rxvwor0g74bYQfOXTT4K2u1uyKWpfNtGUcrSOxjkICFNOvYue+Do1lvRbkhc
-	 VUS6zxGaAOOv48vwY2YFLv3pi8piFcgDL/xMHoeBijTxAK8miWOd+08FzZL56SNXo4
-	 XPRGWCdDrvZHHT2Pg4SHRhekEetmCSVcXcRJhxH0=
+	b=GNCY00i6tFBKpRHwoaElC/BNx/mHQcHLatcF5sA2somBrLB3U5PUfx7KhBYozzf8G
+	 KTwXTjITFhe2DsAxT0wjQqllEP2Q4nJXABMxre+jXtREEtG4RVHBaDNuhsvFnEsGK8
+	 OTfQ2xg3O99JsIfd4lbozFIM/S6A5WfJUIs2BHsE=
 From: Daniel Scally <dan.scally@ideasonboard.com>
-Date: Tue, 03 Nov 2026 07:40:46 +0000
-Subject: [PATCH 10/16] media: rkisp1: Call .enable_streams() /
- .disable_streams()
+Date: Tue, 03 Nov 2026 07:40:43 +0000
+Subject: [PATCH 07/16] media: rkisp1: Power down after subdev
+ initialisation
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261103-rkisp1-suspend-and-resume-v1-10-08f863b6fdc5@ideasonboard.com>
+Message-Id: <20261103-rkisp1-suspend-and-resume-v1-7-08f863b6fdc5@ideasonboard.com>
 References: <20261103-rkisp1-suspend-and-resume-v1-0-08f863b6fdc5@ideasonboard.com>
 In-Reply-To: <20261103-rkisp1-suspend-and-resume-v1-0-08f863b6fdc5@ideasonboard.com>
 To: Tomasz Figa <tfiga@chromium.org>, 
@@ -58,26 +58,26 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, 
  Daniel Scally <dan.scally@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2350;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1424;
  i=dan.scally@ideasonboard.com; h=from:subject:message-id;
- bh=EEoGhl+w4b09JEf0yxWv+I36A1RkFDfU7O1BH/fGGRI=;
- b=owEBbQKS/ZANAwAKAchJV3psRXUyAcsmYgBq6ZAQDQAtiE5VGbSOjKowKzi4LuD72uIyNuONN
- aMPeh9H5heJAjMEAAEKAB0WIQQqyuwyDnZdb+mxmm/ISVd6bEV1MgUCaumQEAAKCRDISVd6bEV1
- MmLVD/9qyL//wcKIOjFuF6D/uKb+BdjVr+5W/CH65xTWuvMXt1aoiBGtJ0vbFgnBh6r+XefrH7B
- xRrEbQMwgfX/eVdIZhy8skB0mGCX+i/M1MYEP1gIEKiM1sRIbgtqxmfN0OcoWDjI0sMTznClZq9
- kwoLceGF1LfiCYZ/yc+lN3iW4QloPhsvwucfbXPP2f592DpXjkfWnh63My0aW09JGTZ9I9J+BfU
- 7S3R176D/p3SvuuZsP62khhhwDxEwoZ5MCbZREx8vf05bQ96IWx18ZjiQgE3RW3v+5qp9nsxgaw
- 0fK5jy0OpONkmqLTWs1I3k3w29FXF7mKvhaCPseWgob9J339bdFSPVT5vO4WOauUk20DQpXKr8E
- zxz4UD5jA2lBV78bOGepbXoA2ferO1PsuEDR+hBCCfWsRyt/mKrJSIK8lNXjwA3HYo4jLn9L7Gu
- 9L+INu2h1cC/0a8PN5o9fsR9m6jaGraR9+bqsW4SoVCl+kx8s4Oj3qvsouylE8i+10ppLFIjU1Z
- zq+UZ/OtV0b14QTzbDjoPxAj0USqUfMlSlC1TZDovGfdNGOWpteQX2IYW3l1z8VcffM0h4SxcT0
- dCI20ajNs9O+3Deu3YPTCCdCekeWhPFNz5Ejtv9PMsf+wPkjYgnuZUCaHmM5j9MsBrFaETSgTYW
- 2zclZywRl5xOu/Q==
+ bh=6Q9ze18PqHn248ojyQQszGM7rBEuyTl31r061SKya5g=;
+ b=owEBbQKS/ZANAwAKAchJV3psRXUyAcsmYgBq6ZAQsEz30yISu/ty86JMYqKVlaIhSKowTjLKq
+ OxO/5Dl/76JAjMEAAEKAB0WIQQqyuwyDnZdb+mxmm/ISVd6bEV1MgUCaumQEAAKCRDISVd6bEV1
+ MpqdD/9UIlQ0Z1KWJ43DKnhvwdh7TZAdi75TJBQH+hMli4XVXFcUVl7u7haiDn+RqH0A7ad2lEa
+ LNlqYpyMbuvYPRP8t3iB5ARzaA+yDO/PyjfPDKCWIXpfdFUcCR9mzrVY/fp1cugpZPld5l6FqGY
+ 29m1M+G54/6DBBLB/I2p+sYAHe1epUDm8L1FQRrXjBr1ADFqnldp7RMSiW1GMwEQHwwI9VNybt8
+ min/iFAXJiVFdhJmIu0MPWtpX7UbAk3aqn/RJaKupr4gtga4YTBpF6vPNOkIZAoR2Uysi9X9lHz
+ Q6wFTMoJyf9vV2CvXDbfcCouNYihS0HZTEk9GUyJBqoz0j722OStMOXFTTipqnjhtUzmFwnNCse
+ e23s99jMkvKw+VryxqWIZwP4PZfxOBHRotiakMRRqr2DiqThuk2q8xfY/FozGdAF8oLrMG9a2IR
+ TPYJwW26+SCC1pLk6o1v+G/mLzd3P8FIs7ONTUFBZDPQ97aL9R1/vk4XwOc2VGG4eIMD0UdXl0p
+ cPPVAIyNGpUCAHCbUp82eY6HPesoT5+NqMQCw2Idy9NkPXrpl2gJiF4IZsAvt/rpy8IjxK+zIzq
+ s+3mWHksUWvvaTDG9lsvVULcs0B/2X0NoqnQCvJms0AF5QjWRXrEmEBxzb9g+YMhwWVqCEMB6G4
+ KszVl8mCjDQrK1g==
 X-Developer-Key: i=dan.scally@ideasonboard.com; a=openpgp;
  fpr=EEC699ACA1B7CB5D31330C0BBD501C2A3546CCF6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_234119_773945_CE97D10F 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20261102_234119_962966_1CF98598 
+X-CRM114-Status: GOOD (  11.99  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,74 +91,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Call .enable_streams() and .disable_streams() for the ISP and resizer
-subdevices instead of the legacy .s_stream(). The subdevices don't
-actually support the new operations yet, but v4l2-core will auto
-translate them for now.
+We will shortly need to reference the ISP's subdevice in the PM
+.runtime_suspend() callback - make sure we don't call it until
+after the subdevice has been registered.
 
 Signed-off-by: Daniel Scally <dan.scally@ideasonboard.com>
 ---
- .../media/platform/rockchip/rkisp1/rkisp1-capture.c    | 18 ++++++++++--------
- 1 file changed, 10 insertions(+), 8 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index 757fd35e248a89ff3a6af4e07491239e14dda9c4..fcc6f06437e182c0510fab7df5a50dfe7d0cb48a 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -1073,10 +1073,11 @@ static void rkisp1_pipeline_stream_disable(struct rkisp1_capture *cap)
- 	 * be disabled, skip them.
- 	 */
- 	if (rkisp1->pipe.start_count < 2)
--		v4l2_subdev_call(&rkisp1->isp.sd, video, s_stream, false);
-+		v4l2_subdev_disable_streams(&rkisp1->isp.sd,
-+					    RKISP1_ISP_PAD_SOURCE_VIDEO, BIT(0));
- 
--	v4l2_subdev_call(&rkisp1->resizer_devs[cap->id].sd, video, s_stream,
--			 false);
-+	v4l2_subdev_disable_streams(&rkisp1->resizer_devs[cap->id].sd,
-+				    RKISP1_RSZ_PAD_SRC, BIT(0));
- }
- 
- /*
-@@ -1093,8 +1094,8 @@ static int rkisp1_pipeline_stream_enable(struct rkisp1_capture *cap)
- 
- 	rkisp1_cap_stream_enable(cap);
- 
--	ret = v4l2_subdev_call(&rkisp1->resizer_devs[cap->id].sd, video,
--			       s_stream, true);
-+	ret = v4l2_subdev_enable_streams(&rkisp1->resizer_devs[cap->id].sd,
-+					 RKISP1_RSZ_PAD_SRC, BIT(0));
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 2efbe6140da71a51077d7d4aa2352ef95497ebe2..9f1d0f72ee9bf4364c696d9fdd8febea80d2bcde 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -729,11 +729,6 @@ static int rkisp1_probe(struct platform_device *pdev)
  	if (ret)
- 		goto err_disable_cap;
+ 		goto err_pm_runtime_disable;
  
-@@ -1105,15 +1106,16 @@ static int rkisp1_pipeline_stream_enable(struct rkisp1_capture *cap)
- 	if (rkisp1->pipe.start_count > 1)
- 		return 0;
- 
--	ret = v4l2_subdev_call(&rkisp1->isp.sd, video, s_stream, true);
-+	ret = v4l2_subdev_enable_streams(&rkisp1->isp.sd,
-+					 RKISP1_ISP_PAD_SOURCE_VIDEO, BIT(0));
+-	cif_id = rkisp1_read(rkisp1, RKISP1_CIF_VI_ID);
+-	dev_dbg(rkisp1->dev, "CIF_ID 0x%08x\n", cif_id);
+-
+-	pm_runtime_put(&pdev->dev);
+-
+ 	rkisp1->media_dev.hw_revision = info->isp_ver;
+ 	strscpy(rkisp1->media_dev.model, RKISP1_DRIVER_NAME,
+ 		sizeof(rkisp1->media_dev.model));
+@@ -770,6 +765,11 @@ static int rkisp1_probe(struct platform_device *pdev)
  	if (ret)
- 		goto err_disable_rsz;
+ 		goto err_unreg_entities;
+ 
++	cif_id = rkisp1_read(rkisp1, RKISP1_CIF_VI_ID);
++	dev_dbg(rkisp1->dev, "CIF_ID 0x%08x\n", cif_id);
++
++	pm_runtime_put(&pdev->dev);
++
+ 	rkisp1_debug_init(rkisp1);
  
  	return 0;
- 
- err_disable_rsz:
--	v4l2_subdev_call(&rkisp1->resizer_devs[cap->id].sd, video, s_stream,
--			 false);
-+	v4l2_subdev_disable_streams(&rkisp1->resizer_devs[cap->id].sd,
-+				    RKISP1_RSZ_PAD_SRC, BIT(0));
- err_disable_cap:
- 	rkisp1_cap_stream_disable(cap);
- 
 
 -- 
 2.43.0
