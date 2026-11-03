@@ -2,103 +2,83 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C17A0606A32C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 06:12:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 724F1606A33D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 07:41:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xwzJwfk5;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jiuVi9kI
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2lLPSyBC;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ideasonboard.com header.i=@ideasonboard.com header.a=rsa-sha256 header.s=mail header.b=uyhcxzty
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FQbGkeMuAU7VvCr7I06fBdOKQJP5KykYOO1vCJMJJHI=; b=xwzJwfk5AH5KJZ3sUmjfbaeSdk
-	v7CPurWXxfPL0p5DpzW8RR5H/8bFUQj+W7w5kdrlTECECwf5BVzHK5zRIV+vcd1jvE9wk6o8MeK6l
-	y6pojeyGANaBnDt21/moL8xrfSNyciIiBCmYve2u8TaAJwDfEzJeBmH1GvURfCwwApRv4lmWMVaOD
-	DgrcD87NuxX4+fBpM9+rxCpa1gX+tqeU+Yg2o+gGDswH9jKlUOiKuo1mKsNJvuHwj0MF2MVNe6VMT
-	M+s8Mw4PtWuPi3otZI2Bup6YRKTgw/zOh2EmxODFp21mRfCKvCmOddm2PJtvOpcEmwxaNpauMNeD5
-	TIKENGiw==;
+	bh=pEZgZmIXWo5YKGES6FZdDIABZBNZSuxX63+6D6iUr/g=; b=2lLPSyBCbUonhMWLwKUlPdD/d3
+	pB/xCglXBqWqwIrSYIo/33yHJEmyuja46JFEi3eSXzS/V35pEzrOy8VXh+aZRzIY0deTZmLv9AQlH
+	w0MkqnhUdCNPrUv4Xb0wkheup0gocyn1RJtR1aXg12QsbGjCEsEe8ZeVpTaNqbXIwEKXYoMEVma9l
+	I1alJ3sK3a59CarR9zT4/9bTq5/kb15Kb9GerUnZZlGM74Nddmxbn5BGmLdTdk6uuRi3hkMNDueDw
+	haNBgduFm8l+PXJPpD/ly9ACirzufRnneYNQ+aXGpK6v8XEfiLRGxY5JCBlQS5dapxTW8bmmvvhCB
+	e4OTbNZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO7kp-00000001CLc-3J5e;
-	Tue, 03 Nov 2026 06:12:19 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xO991-00000001MUe-0cZo;
+	Tue, 03 Nov 2026 07:41:23 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO7kj-00000001CJW-29wJ;
-	Tue, 03 Nov 2026 06:12:13 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A7C4A60008;
-	Tue,  3 Nov 2026 06:12:12 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1793686332;
-	b=PlZ8Y9DzSVYyhTOS3L7ouyJUi+MGz0dtNkErafGNAlEL/0knMpgng/Rw6P6dutNpkwv4
-	 HfNb8vqfF2flan3ch6cDnlmWSv5Dj2EVrp2EqDYmfWctQZ0oS5gQ0FPp6oNj81fhVVMJo
-	 Qvdk4BTyMofXKZVF1NAONCHmn7FhugOpIJg1daXxD1aOi35ZS+oJYw6cNoN0Es33AXWZc
-	 oAhy0i6doR+yAVPejPaoCJWK8oTM7ctB1mp8eqRxRhvs/cTu4iQa3TNS/EoEbBdtXWREh
-	 NvUipoNPeRN4D1kJGQfIqHnuKV5MIe1k0pqHgjRuvG1Y/jrY4/UpQIilzMuuXGkfmnQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1793686332;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
-	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
-	 Content-Transfer-Encoding;
-	bh=Y1vJsLmhajtmtrGk3CEdEpHpsAWbMQetVNtaJwsiq4w=;
-	b=fkRTo4XgQ22LOkr0zMSZW/lBkr88gCuiC60YvYPra1HgxuK7EDqi4zJfgOFODZiUXYsf
-	 DkJ+2hsZDJrIk4pTWlgi8hOx3Lt9np1c87ddGDzR3drBKIevh/XQoweWH7BmzyDjowIjD
-	 j80l363qK3O6py25TtVjtrZMnDubUdJPiX8jUkFyGM1vup7gjysf/ZV0u+5f5OECr7WuQ
-	 LHKGhZHAJJe2IznKFj9G0jK7esJGm0XKqVP4sfxB+CX/AENxmPCNEsgiM1pb3wGlukZGr
-	 Pefy6N2gwBgE6zdhEaiSdWbpeWX5EdULZNNs7V4juBLeMwVaq7ktMK6ezGD1bIiXOuQ==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id E1A3B1F000C1;
-	Tue,  3 Nov 2026 06:12:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793686332;
-	bh=Y1vJsLmhajtmtrGk3CEdEpHpsAWbMQetVNtaJwsiq4w=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=jiuVi9kIa7kbUZeA1VekrmQrLF4/586Mvzg1vh0wY+gG83jf972IWGcmnID6RJbir
-	 VtzX8iLG80PnjC8qKAcl/DPVLbp2+sBg9AcFQZHUO1BTUVbMGfamZC5ReNjysTUZUZ
-	 3l9VTNkqBVzDp6HpyxNuzc4JUXLmFzN5Wljk8utPhK7G/tzrcglCloKJNZOqoaC07g
-	 D295hfwByKp+/kog7LURI/G3aQtIzRQuuZYSxKWKvziL1of0ZfM5cLaoRPSRaIlRUw
-	 gRPOznZZ6wVnQqo/My8H1uOxGs7eewU94KCBhhmcgxU/DBNxvroi914GdM1vw/vnBb
-	 6YjQFr1FbhrcA==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 6F259467C4;
-	Tue,  3 Nov 2026 06:12:11 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Tue, 03 Nov 2026 06:12:10 +0000
-Subject: [PATCH] arm64: dts: rockchip: Enable SD UHS-I modes on ROCK Pi 4
+	id 1xO98q-00000001MBs-1yvk;
+	Tue, 03 Nov 2026 07:41:15 +0000
+Received: from [127.0.1.1] (chfd-03-b2-v4wan-176392-cust229.vm15.cable.virginm.net [82.19.20.230])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 32DD7B2D;
+	Tue,  3 Nov 2026 08:38:51 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1793691531;
+	bh=2iD2OpFFxVgyeniQYanpyS5ujA1TBGPZtPUEu8qYJlk=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=uyhcxztyCOqtev49qyfmS+zxtgG8LC+w1bGCxNwDBgvV37iDXwvEpL9BClKKWQWf5
+	 9JoZiqmk+yuEy5OChiJJZrXFVS6GrtyK/aXKVKg2mgwoTDv78kx7fVgE7HKJZSaadA
+	 RL9T5VYoee3mXTYWnq9qiU4oL31Y1xp3BaIneFVM=
+From: Daniel Scally <dan.scally@ideasonboard.com>
+Date: Tue, 03 Nov 2026 07:40:37 +0000
+Subject: [PATCH 01/16] media: videobuf2: Set start_streaming_called after
+ it's called
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261103-rockpi4-sd-uhs-v1-1-fa394d2046e1@iav.lv>
-X-B4-Tracking: v=1; b=H4sIADl76WoC/x3MMQqAMAxA0auUzAZM1QpeRRykRhuEKg2KULy7x
- fEN/2dQTsIKg8mQ+BaVIxZQZcCHOW6MshSDra0jqhtMh99PaVEXvIJix448sV9d30KJzsSrPP9
- wnN73A0g3Bx1gAAAA
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Igor Velkov <iav@iav.lv>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2365; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=az5m2/WqrCJ/+LWcDbyXHuHBZoPgNzj0Wuk5JL5JV+Q=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFkvq61Wa6jZcBwxnsSReEeXM+R2AMdDY4XN5v1hgZP4W
- TtjJ7zqKGVhEONikBVTZJlwSONWxpKrf/09zB/AzGFlAhnCwMUpABPJ/8vwVyK5nP38C3nbF7cd
- g6OCWgqVjzNzuhZxqF6985JffvP8UEaGZqu9q/eGewl3cCT3PdWeLemz/F192n4lmduCdi93vsl
- iBwA=
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+Message-Id: <20261103-rkisp1-suspend-and-resume-v1-1-08f863b6fdc5@ideasonboard.com>
+References: <20261103-rkisp1-suspend-and-resume-v1-0-08f863b6fdc5@ideasonboard.com>
+In-Reply-To: <20261103-rkisp1-suspend-and-resume-v1-0-08f863b6fdc5@ideasonboard.com>
+To: Tomasz Figa <tfiga@chromium.org>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Dafna Hirschfeld <dafna@fastmail.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Daniel Scally <dan.scally@ideasonboard.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1516;
+ i=dan.scally@ideasonboard.com; h=from:subject:message-id;
+ bh=2iD2OpFFxVgyeniQYanpyS5ujA1TBGPZtPUEu8qYJlk=;
+ b=owEBbQKS/ZANAwAKAchJV3psRXUyAcsmYgBq6ZAOqeOuK8zS6V3SewhBjDn2A5tdxBAowBqhw
+ ZTTb0SYn7uJAjMEAAEKAB0WIQQqyuwyDnZdb+mxmm/ISVd6bEV1MgUCaumQDgAKCRDISVd6bEV1
+ Ms4UD/43vAH9nzPwZLX/ijN6oVIEIckGROVUrtaYS945uE6wswPQAVGtVX0viRtIxa5mpy3sqDK
+ 0BF9M4qrO7MHjvGVZXr6ckltne0F+qhCm06/uyVRWZLKe4ftg0YWbWUfX1wKUepakVIAzFP1LWi
+ M9ZoSuu61fD97Y8Fpb5241j2yL8v+VDKJjCW8ZgZVn8hGU6YSiUxbhKMVVPJ2Usdugwx52/P/2k
+ +5OsgcbNpkzWOZ/Dm1pcUZQneynvtpzY6wEXBzg/F6kW2WO6UCas/4PQuzlnoYaUWiKey9ZPZtt
+ LxEH/a6UHNX8rPN5S0KZ0lHknYuB/tmgbJYHCNuAT0pzjosLfcVJqtLmNrssjjjuo7qlv2SNk4E
+ 2SPrMCCRKOiFc+HiJREX+LgNxthgYXKpsTRDp1CursKRo+FJdNsS8xoznumF73y7fksGtb2iLOU
+ ivlqNru/MhV0l+/07LeMWxu1gpy953ukxELRlJmh82jUK61BIPJ8Q+yH+EYPWe/NF/6zV3Qo7yz
+ OoG0Q3jiabix+m7d/FLbjUwWCpLPhxS/JhVg0XPUUT6bI7suQQXELtvm7gaUT4dXr//9cylFIiZ
+ Hym0AZEilzBFgxyXuAEBMlrMxbm/UTG2vbR8NxyR13EM4PM6uAfUpW4IpnPndtKKVgCdL6/mWpX
+ wuW7vM39SHREB7A==
+X-Developer-Key: i=dan.scally@ideasonboard.com; a=openpgp;
+ fpr=EEC699ACA1B7CB5D31330C0BBD501C2A3546CCF6
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261102_234112_664899_4A135E78 
+X-CRM114-Status: GOOD (  13.99  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,7 +88,6 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -119,71 +98,45 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Igor Velkov <iav@iav.lv>
+Currently videobuf2 sets start_streaming_called immediately before it
+actually calls that operation in the queue's driver. We want to be
+able to check in a runtime_resume callback whether a queue is already
+streaming or not, but most .start_streaming() operations will call
+pm_runtime_resume() themselves to guarantee that the hardware is
+active. Setting start_streaming_called before it is actually called
+therefore means we can't use vb2_start_streaming_called() to make
+that check.
 
-The SD I/O supply vcc_sdio (RK808 LDO4) is pinned at 3.0 V, so the
-card stays in high-speed mode at 50 MHz. Let dw_mmc switch it to 1.8 V
-and enable SDR12 to SDR104.
+Instead, set start_streaming_called = 1 after actually calling the
+operation, and only if it's successful.
 
-The card supply is not switchable, so after a watchdog reset or a
-panic the card and vcc_sdio are still at 1.8 V. Linux and U-Boot proper
-boot from the card in that state; U-Boot SPL loading from it has to set
-the SD I/O domain from vcc_sdio, as it does on NanoPi 4 since U-Boot
-commit 210ab4f60df8.
-
-On ROCK Pi 4A with a SanDisk 256 GB U3 card: SDR104 at 148.5 MHz,
-direct read 64-67 MB/s instead of 23.5 MB/s.
-
-Signed-off-by: Igor Velkov <iav@iav.lv>
+Signed-off-by: Daniel Scally <dan.scally@ideasonboard.com>
 ---
-Tested on ROCK Pi 4A: v7.3.1 with this change, 3 cold boots in SDR104;
-the Armbian 7.3 kernel with the same change through reboot, panic,
-watchdog reset, s2idle and hibernate, SDR104 each time. Not tested on
-the other boards that include rk3399-rock-pi-4.dtsi (4A+, 4B, 4B+, 4C,
-4SE).
+ drivers/media/common/videobuf2/videobuf2-core.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-With PCIE_ROCKCHIP_HOST=y and an empty PCIe slot, tuning also needs
-https://lore.kernel.org/r/20261103-rockchip-pcie-async-v1-1-4dcadb94af64@iav.lv
-The SPL side for U-Boot on the SD card:
-https://lore.kernel.org/r/20261103-b4-rock-pi-4-spl-iodomain-v1-1-8dfc34a5e2e2@iav.lv
----
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index 52de4a79e2f4..3de1d14529c1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -356,7 +356,7 @@ vcc_sdio: LDO_REG4 {
- 				regulator-name = "vcc_sdio";
- 				regulator-always-on;
- 				regulator-boot-on;
--				regulator-min-microvolt = <3000000>;
-+				regulator-min-microvolt = <1800000>;
- 				regulator-max-microvolt = <3000000>;
- 				regulator-state-mem {
- 					regulator-on-in-suspend;
-@@ -696,6 +696,11 @@ &sdmmc {
- 	max-frequency = <150000000>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdmmc_clk &sdmmc_cd &sdmmc_cmd &sdmmc_bus4>;
-+	sd-uhs-sdr12;
-+	sd-uhs-sdr25;
-+	sd-uhs-sdr50;
-+	sd-uhs-sdr104;
-+	vqmmc-supply = <&vcc_sdio>;
- 	status = "okay";
- };
+diff --git a/drivers/media/common/videobuf2/videobuf2-core.c b/drivers/media/common/videobuf2/videobuf2-core.c
+index b0a6084f175733ddd0d8d399538f949266c8966d..cb4b5e818553a8007d000147843778e72d3753e7 100644
+--- a/drivers/media/common/videobuf2/videobuf2-core.c
++++ b/drivers/media/common/videobuf2/videobuf2-core.c
+@@ -1779,11 +1779,12 @@ static int vb2_start_streaming(struct vb2_queue *q)
+ 		__enqueue_in_driver(vb);
+ 
+ 	/* Tell the driver to start streaming */
+-	q->start_streaming_called = 1;
+ 	ret = call_qop(q, start_streaming, q,
+ 		       atomic_read(&q->owned_by_drv_count));
+-	if (!ret)
++	if (!ret) {
++		q->start_streaming_called = 1;
+ 		return 0;
++	}
+ 
+ 	q->start_streaming_called = 0;
  
 
----
-base-commit: 2974b78ee4302390eceb5f5983c00b3d66fc3c78
-change-id: 20261103-rockpi4-sd-uhs-5e61c1ecf674
-
-Best regards,
 -- 
-Igor Velkov <iav@iav.lv>
-
+2.43.0
 
 
 _______________________________________________
