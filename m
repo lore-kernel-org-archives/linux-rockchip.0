@@ -2,59 +2,60 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 74C3A606A32E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 19:09:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46CB6606A328
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 19:20:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hnpXkT0t;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=1QIv0Fjm
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vQor3kBh;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=LM3QOEpR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=NML1fHdD3KJSrw20iRDbFJur1m5TaUATHD84mHF0U5g=; b=hnpXkT0tugzdhEZ5DNNMxjoa2D
-	khOusRXkWRpenPbm6pPezesHOIVfXgISkhChBUn08w9QiHDmm8lYGsNR87n2rQFkikEOVMzwVifnC
-	bwro2DA0TKj7iS7P8cSGb3LEt5AfoC8lwQL8fPnO7DwYItGsqzFe8FhVSBQVYqFh/XgUik7ce6rlL
-	jqlJYdW5nu+8wqGXpN87w1iBsCxdhk/9SKcSCDRZHDvEpzUEJu2NsSjgeh1h2cMgfWCf6eYOu05lz
-	bUXXJDb7YA4XahsSEk8iLW4b4nItaemQXHC2PNX45rIM03bPnC/cxEHt3LgXLkvGaa/bATP4Cp5Bx
-	awvVNqPw==;
+	bh=TNPaKqij6CeNcaRNEv0Gp6eWA33F4rO7fAZY6yYffI8=; b=vQor3kBhkXUerpt9DHcUwM/uvP
+	XQCNTxyYs2L+uvK+rynBOUBen0+ew6IejG6lrxWJM+PHNZy9b7Z+UYoqyAW20nCBGDtsEEHm+TEmr
+	URpe3kr8DPQ9dpITiXhP9faxO3FA9Ky9YoVYc434mb9j5A7ZHbMc96qDEW0+5kf8gC5lKD2On+Cwd
+	ZpVN3R/ZVpwMZ1UppMDZOPkBIXDespQaSnOfCq/H/IUSwFXDjUpP9hbsEYWbDCEjSKwhDDcaQRecg
+	FHle7Yk9iy8dZMp28mVDeHLO9VgoMv6rGpd9+UwMqUsaDXWtXh4qFdq0ZPo+JLyTJ1xvz0iGrIoj8
+	Uu7GZHcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOJsW-00000003Uqe-1WIG;
-	Tue, 03 Nov 2026 19:09:04 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xOK3M-00000003Vfx-0CIw;
+	Tue, 03 Nov 2026 19:20:16 +0000
+Received: from sender-op-o17.zoho.eu ([136.143.169.17])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOJsU-00000003Uph-0AW7
-	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Nov 2026 19:09:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=R+P3IkoL4I5ZNgNuJJGHc28hYyVfwE/0EISTFVpNB28=; b=1QIv0FjmCBDhMcBIA6j2CeXlgG
-	X2AmJiqbdXSvExoFWs0UMYDqCg0UuC/ktXCfLwbeW6a4bHetxNrG9nR4rR/Xvk/n6qb2GndGr2VCB
-	YDqz0JQLwdZ2rwY039n5ZXwVPlcaovrUZe4ZTjWVotxnvFofUPkqGGqtrktC1wKG73oBSCqoDhGiS
-	hiQ5nyhBqvNWlyn1xtt37hRDJ+W8I1NZeTM+PwjRLGqHndrWQsmOcaO1Ey6CZEIk5XnQx+SiVRNkz
-	3ZNZf8ac20FVqPkQiTHKz9hBY5b/QK3wt+zy/Mlq1dm8dYjFFa9fvCFN8vuNPctnxOl8EuSmk0EsL
-	lyIzLQ0w==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: linux-rockchip@lists.infradead.org, Chris Morgan <macroalpha82@gmail.com>,
- devicetree@vger.kernel.org, shawn.lin@rock-chips.com,
- diederik@cknow-tech.com, michael.riesch@collabora.com, conor+dt@kernel.org,
- krzk+dt@kernel.org, robh@kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: timer: rockchip: Add rk3568 compatible
-Date: Tue, 03 Nov 2026 20:08:51 +0100
-Message-ID: <2607835.uoxibFcf9D@diego>
-In-Reply-To: <PH0PR19MB9973388CD960185681A4C3E16DA5692@PH0PR19MB997338.namprd19.prod.outlook.com>
-References: <20261103153144.343764-1-macroalpha82@gmail.com> <3661431.qSoW2BAyJ8@diego>
- <PH0PR19MB9973388CD960185681A4C3E16DA5692@PH0PR19MB997338.namprd19.prod.outlook.com>
+	id 1xOK3J-00000003VfW-2Wr9;
+	Tue, 03 Nov 2026 19:20:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1793733598; cv=none; 
+	d=zohomail.eu; s=zohoarc; 
+	b=YY2YI4CHmoRMtnhUzV0HUozrcEpzv4UjVwsf3eUGBEjF1mr8c6/9SEPQFcwjnCHEv4TfWWr5Q+k5PdWp5fGFSli/3jZ4nR55bAPVyCEr5SulybRau2CbP1ATn5pi6Lt9EW4nHsHkQNO0mSECNIWxuh6XyvMW9Qe/ibrGKs35+5s=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
+	t=1793733598; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=YhBfBa8Pny6kFuQ4E8aewbRLvPI4dlsdbD5dTiRQ7Gc=; 
+	b=iMVeAHL4jegNpWP9+3oSxp+pm9RSdirqX/5qs/hwWCDljo1Q9/jfO6aTyZb0BS71/P7usuA0Z0jWbmrCzJoRFgIObEzvOMwFXsO1+hNK/CB8ZXXDZTxuYiwMovUBhuaMOi/TwWu6A1wcEUX5TVWXArR4RkpJP8On0qG14k7saII=
+ARC-Authentication-Results: i=1; mx.zohomail.eu;
+	dkim=pass  header.i=iav.lv;
+	spf=pass  smtp.mailfrom=iav@iav.lv;
+	dmarc=pass header.from=<iav@iav.lv>
+DKIM-Signature: a=rsa-sha256; b=LM3QOEpRp5Djr2FLet4alvtrLgPm0FiOJsvXKm7AL+pq8Yr81TdtQo8eTLVF88zFqtRfLtMZEylMC4ZMZVMORG19cU+lmz+gp8kdlzqXbqJ6q5GIy9Jr8ZuEiUZZsPpCCcOxH4N4MwYoRrkurZLoHoJSxo1mIK2k3KTVvl6eDUw=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=YhBfBa8Pny6kFuQ4E8aewbRLvPI4dlsdbD5dTiRQ7Gc=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zoho.eu with SMTPS id 17937335969083.55780142088463;
+	Tue, 3 Nov 2026 20:19:56 +0100 (CET)
+Date: Tue, 03 Nov 2026 21:19:55 +0200
+From: Igor Velkov <iav@iav.lv>
+To: sashiko-reviews@lists.linux.dev
+Cc: iav@iav.lv, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable SD UHS-I modes on ROCK Pi 4
+Message-ID: <20261103-re-sashiko-rockpi4-sd-uhs-1@iav.lv>
+In-Reply-To: <sashiko-outbox-194667@kernel.org>
+References: <20261103-rockpi4-sd-uhs-v1-1-fa394d2046e1@iav.lv> <sashiko-outbox-194667@kernel.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_110902_106478_F2B5E34F 
-X-CRM114-Status: GOOD (  17.72  )
+X-CRM114-CacheID: sfid-20261103_112013_916189_43BC86F6 
+X-CRM114-Status: UNSURE (   6.93  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -65,47 +66,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gRGllbnN0YWcsIDMuIE5vdmVtYmVyIDIwMjYsIDE5OjA3OjE5IE1pdHRlbGV1cm9ww6Rpc2No
-ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgQ2hyaXMgTW9yZ2FuOgo+IE9uIFR1ZSwgTm92IDAzLCAyMDI2
-IGF0IDA2OjAxOjM3UE0gKzAxMDAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+ID4gSGkgQ2hyaXMs
-Cj4gPiAKPiA+IEFtIERpZW5zdGFnLCAzLiBOb3ZlbWJlciAyMDI2LCAxNjozMTo0MyBNaXR0ZWxl
-dXJvcMOkaXNjaGUgTm9ybWFsemVpdCBzY2hyaWViIENocmlzIE1vcmdhbjoKPiA+ID4gRnJvbTog
-Q2hyaXMgTW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNvbT4KPiA+ID4gCj4gPiA+IEFkZCBj
-b21wYXRpYmxlIHN0cmluZyBmb3IgUm9ja2NoaXAgUkszNTY4IHRpbWVyLgo+ID4gPiAKPiA+ID4g
-U2lnbmVkLW9mZi1ieTogQ2hyaXMgTW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNvbT4KPiA+
-ID4gLS0tCj4gPiA+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdGltZXIvcm9j
-a2NoaXAscmstdGltZXIueWFtbCB8IDEgKwo+ID4gCj4gPiBQbGVhc2UgbWFrZSBzdXJlIHRvIGNo
-ZWNrIGdldF9tYWludGFpbmVycyB0byBjYXRjaCBhbGwgbmVlZGVkIHJlY2lwaWVudHMuCj4gPiAK
-PiA+ICMgc2NyaXB0cy9nZXRfbWFpbnRhaW5lci5wbCAtZiBEb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvdGltZXIvcm9ja2NoaXAscmstdGltZXIueWFtbAo+ID4gCj4gPiB5b3UncmUg
-ZXNwZWNpYWxseSBtaXNzaW5nIHRoZSBjbG9ja3NvdXJjZSBtYWludGFpbmVyczoKPiA+ICAgICBE
-YW5pZWwgTGV6Y2FubyA8ZGFuaWVsLmxlemNhbm9Aa2VybmVsLm9yZz4gKG1haW50YWluZXI6Q0xP
-Q0tTT1VSQ0UsIENMT0NLRVZFTlQgRFJJVkVSUyxpbiBmaWxlKQo+ID4gICAgIFRob21hcyBHbGVp
-eG5lciA8dGdseEBrZXJuZWwub3JnPiAobWFpbnRhaW5lcjpDTE9DS1NPVVJDRSwgQ0xPQ0tFVkVO
-VCBEUklWRVJTKQo+ID4gCj4gPiBhbmQgc29tZSBhZGRpdGlvbmFsIGxpc3RzOgo+ID4gICAgIGxp
-bnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmcgKG9wZW4gbGlzdDpDTE9DS1NPVVJDRSwgQ0xPQ0tF
-VkVOVCBEUklWRVJTKQo+ID4gICAgIGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9y
-ZyAobW9kZXJhdGVkIGxpc3Q6QVJNL1JvY2tjaGlwIFNvQyBzdXBwb3J0KQo+ID4gCj4gPiB0aGUg
-Y2xvY2tzb3VyY2UgcGFydCBkb2VzIG5vdCBzZWVtIHRvIGhhdmUgYSBkZWRpY2F0ZWQgbGlzdCwg
-c28KPiA+IGxpbnV4LWtlcm5lbCBzaG91bGQgYmUgaW5jbHVkZWQuCj4gPiAKPiA+IAo+ID4gSGVp
-a28KPiA+IAo+ID4gCj4gCj4gSSBhcG9sb2dpemUsIHNvcnJ5IGFib3V0IHRoYXQuIEkgYXNzdW1l
-ZCBzaW5jZSBJIHdhcyBvbmx5IG1vZGlmeWluZyB0aGUKPiBkZXZpY2UtdHJlZSBhbmQgYmluZGlu
-Z3MgSSBkaWRuJ3QgbmVlZCB0byBjb3B5IHRoZSByZXN0IG9mIHRoZSB0ZWFtcy4KPiAKPiBTaG91
-bGQgSSByZXN1Ym1pdCB3aXRoIHRoZSBhZGRpdGlvbmFsIG5hbWVzPwoKdmVyeSBsaWtlbHkgLi4u
-IGkuZS4gdGhlIGJpbmRpbmcgaXMgZ2VuZXJhbGx5IGdvaW5nIHRocm91Z2ggdGhlIGRyaXZlci10
-cmVlCmhlcmUgdGhlIHRyZWUgaG9sZGluZyB0aGUgY2xvY2tzb3VyY2UgZHJpdmVycy4KCkZvciBt
-ZSB0byBhcHBseSB0aGUgYmluZGluZywgSSdkIGRlZmluaXRseSBuZWVkIGFuIEFjayBmcm9tIHRo
-ZSBjbG9ja3NvdXJjZQpwZW9wbGUuCgoKSGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+The RK808 sleep voltages do not take effect on ROCK Pi 4. Its SLEEP
+pin is wired to GPIO1_A5 (AP_PWROFF), and nothing muxes that pin to
+AP_PWROFF: the DT has no ap_pwroff pinctrl (NanoPi 4 has one), and
+U-Boot passes no suspend GPIOs to TF-A. Read back on a ROCK Pi 4A:
+GPIO1_A5 is a GPIO input, low. The vcc_sdio sleep state is also the
+same as on rockpro64, roc-pc and other RK3399 boards with SDR104.
+
+The io-domain race is what the PCI patch linked under the commit
+message fixes:
+https://lore.kernel.org/r/20261103-rockchip-pcie-async-v1-1-4dcadb94af64@iav.lv
+
+Igor
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
