@@ -2,72 +2,115 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CF730606A333
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 13:46:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BE8A660850B6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 13:51:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GSyQz14B;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=hT1uyxmX
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=djSdv7Ne;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=Pp0Y4E9n
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=IYXm886i8FWZVi3ZxJbVQc2EW8iOyeUz58dTJou2u+A=; b=GSyQz14BthEEMp5ZcQsB4x6Ilb
-	r1MgKD1QMsCsHw+DGJOYN9JMIkL+lC4CaKLkggk2aB+j4TnowHsd1DfInApchERUh7i4CnFQqrKuJ
-	7W+zKJdfsV950Vd6QKCee9us4ewRDCkKsH8zxkX8mgp5Z3FadjFIRGpMbi5qoj6fUs7TpA4tD/zfn
-	GvWmtMgOps0P1H6fM+GX6v6JAI1KdN79SwFWyrrTxONXzobF97MG38vU44z3eVoBnwtrHzX91q5eb
-	lEvYpjgRbVge4NxrVcFnl1t7V1vHIPbR+eWEx6XoKW9Mzo0Zav5DBV0f5Q9lpK3upIMB9ID5QTsNZ
-	eI/xUY/g==;
+	bh=s587U64jApfwBy0nzWdMXgBw4RMwLk1QSvTqUHEunrw=; b=djSdv7NeIKj/1CBKPAcitOXipE
+	Z0DdntqqwZm/x5kF9TYDkO1Ziy/jlpkIzIiTtJKrNkbaoLVni6puRFE+INLefH5cfrzm+OkMLcEib
+	hB2vXx+KZgIoc8o0aqgXyYWvNr3Sqk8sbe0RposDddWryClHBPC9hf0ZMb3AirgnvbpJCA+f/Gb6V
+	ArM4a5P9TipLEGhN4FuEH8D+X3UESJN82GZ8dYrS6Hbjp/mQrP4LmMAQvGmkbXPvfWWBm07ZiPj1P
+	MrQDz8RcDWSi2EK0byt7dh/aQWEmnmIT/V8nahgmPX4DbMjrtlXj5VarWZ97R5CHim5hjSeCfmXVD
+	kb+Ca22A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOEqF-00000002clj-0Cp2;
-	Tue, 03 Nov 2026 13:46:23 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xOEvM-00000002duN-1WT8;
+	Tue, 03 Nov 2026 13:51:40 +0000
+Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOEqB-00000002chb-2I4j;
-	Tue, 03 Nov 2026 13:46:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=QeBIzSBgbncOGqlM98hwD+JA9fUoC+6t2mWGJwt78Kw=; b=hT1uyxmXlGd35FvwuJi86gP5fh
-	jJrzYSLnWjbn9JrgM1rOrYootc4LL5NwR+NlFuitkSw7wZftZ9ZwVbceHpXJ0pgnmW1XFOVY0ebfQ
-	HV9g62vS9L6dqKIRX8jKqMSoGGM565N2LVqlrKtNU7HOV3PDrb+zQTwbBINLiM+UgUtsdlvAmiMYs
-	/l45+mUYAT1M5Ouw3p7oDCkLni+r+V3Cmegi7eI/tCgbZO5+9LMt2OVQXn7CpEv4my1az7GreJ5UW
-	0jJ/eKX19DRD/5u1dyjZGs9VcfS/rS4ZGNdRg3hTsY94ZlSJR0S+PkmqXA/pVzgcZ+ct0vyRID0d4
-	q96ujZmQ==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>,
- Seung-Woo Kim <sw0312.kim@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Peter Griffin <peter.griffin@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Sandy Huang <hjc@rock-chips.com>,
- Damon Ding <damon.ding@rock-chips.com>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v5 00/18] Add HPD support for Rockchip Analogix DP
-Date: Tue, 03 Nov 2026 14:45:41 +0100
-Message-ID: <6109289.1B3tZ46Xf9@diego>
-In-Reply-To: <20261027132810.1746118-1-damon.ding@rock-chips.com>
-References: <20261027132810.1746118-1-damon.ding@rock-chips.com>
+	id 1xOEvJ-00000002dtC-0kfd
+	for linux-rockchip@lists.infradead.org;
+	Tue, 03 Nov 2026 13:51:39 +0000
+Received: by mail-qv1-xf30.google.com with SMTP id 6a1803df08f44-91c76540d0bso48434526d6.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Nov 2026 05:51:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1793713896; x=1794318696; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=KCQH9pBfu/03JDVFZw+VQK2tSFgTeFnNL5J25b5rmB8=;
+        b=Pp0Y4E9nOvz4NhQkHVKpkT40acqFfVV+58xeuXDHU+FydJLXLKDFx6j26RG2PHgD17
+         t/ac1iI7Wv1J0Mle+J+LBnKLxVWBhoBQU9JY9dIWV1O7iNtFf0+Zt/OKhuP4arNkKoQD
+         FG/xx8K9waZdRoB6MyltmWZw2LTR5w4uLrfSkbYFZ4bUqgAc6NQGd4HYtYWS9SYA+y9P
+         I1onRA5Xho5r6LtQDn6ObpD+pddOgPDHVBJyJ5eZqD4WBWtkgQfc2g7narhvpqbT39xJ
+         rbfbfGiLsrVuKJKYtnFfU7mFEbeZ0l6yawNzhACoHPr8A1tBBZ4ghEHGpJRO3skAue9M
+         9jgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793713896; x=1794318696;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=KCQH9pBfu/03JDVFZw+VQK2tSFgTeFnNL5J25b5rmB8=;
+        b=bxfu19B96xoS0VtXPx3PmSO9I85rs3tE78iztW1EQeKR2VTYiInj370dBmy0odMziK
+         CvKHwFg0Ovrw3jOpGEyKqghf8yDAufThPGf5F9sjXRaQyI1yEtIkItRYdcMItb6xD6I4
+         /+DIdRuxOpSzb/clL49OEVB29XnejqKqF5P8LB86xKogqTLdegtwzlir/5cDE05BXtej
+         IrTxL4SUsldNyZ1T3TFlYxPNJiYdIbubEtrV8TbQsKvtVEILLHwJFI8TiFUc84iTYn7L
+         fdD5vqg4M3in1nyFir/k5CTaPBpd8duRqfS44oH3iiq/Fj5t0RNX+vges9O7xyCpIQRg
+         Myrg==
+X-Forwarded-Encrypted: i=1; AKwUvBxCDNq07KRMfG54Sllon5WzkFYPQDGGTg++ywumwli1p4qApewrQKfVjvio8fwhWli1wWKXkRE0j7weEUCm9w==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/vIFF+G2pOCEh4F0Pj7GeOkVSbC3Pvstpl7+Wo7c7cjhCRhEpu
+	42U7QMqPuhdvKy+R03ZXtTgQY9EaG3Swo5vX1IJSltoY39yJR5NRzPwrWcRfg4C/InA=
+X-Gm-Gg: AYBFou04bdiuf033GWQ8I2E7N0dwoBkSyqRCunZacSHfCTkw70Hfetot6Gf5JCXHafA
+	2jl/qClEK3WBLxCuFGgJ4gxCuxj97b7xLREZOUyU5hibF+vmV1xZ6xcsVMTPLO/CNS74foR3tUK
+	XRZQome88KN7loanZMj8s8Ukw+5kIKYnbYfUAuS7wLq9qupqu08GBS1V53gK8wFxw11nJ8e/8Zj
+	hYqOIKNFwPASoQBcoAJuC98bPz47Vlp1uDU7KG8l8rMWni+wJTAcrGqujHYzZfimxNUMNUtTFId
+	SKT+iQctURG8aLSe92A18sMw8yGC90jb01yBz33QslqNmmrDwMLIjIPpBjjo+9e3CnhMcmEPbs6
+	gRT29H3LB6p7D9oioE+rLmyf0sEbwmZUyySDpukOVlRqsZ7YCN5fcbC/aW1RkxAzP+BA0qnQBEm
+	MzE0d3ePAtJVBBCyBmSkl3jiWG9Pxss+yDHdS3SyXWRjN1fyrM/sbs2bFfPOhVv9s6IvkjnjzGv
+	xlAT7D1D1jPxGo0BuGWtcVbe4ciYtxCmLffHi5sS4RT3oeMBlNOHXL/LdjBhuQ86gN9phuYO5VR
+	NYMYQBQDNhVPIFA8PC1aG79BkaKmruf568H2h+mZDMuVV8gp3Zi2728=
+X-Received: by 2002:a05:6214:c67:b0:91c:914c:8a5 with SMTP id 6a1803df08f44-91ca4bae657mr223491536d6.36.1793713895531;
+        Tue, 03 Nov 2026 05:51:35 -0800 (PST)
+Received: from ?IPv6:2606:6d00:11:bf53::5ac? ([2606:6d00:11:bf53::5ac])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-91e7376f703sm8113986d6.16.2026.11.03.05.51.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Nov 2026 05:51:34 -0800 (PST)
+Message-ID: <3478043661b8d89ba5089f56383926785570b7b3.camel@ndufresne.ca>
+Subject: Re: [PATCH 02/16] media: v4l2-device: Add struct v4l2_device.flags
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: "Gjorgji Rosikopulos (Consultant)"
+ <gjorgji.rosikopulos@oss.qualcomm.com>,  Daniel Scally
+ <dan.scally@ideasonboard.com>, Tomasz Figa <tfiga@chromium.org>, Marek
+ Szyprowski	 <m.szyprowski@samsung.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>,  Dafna Hirschfeld <dafna@fastmail.com>, Laurent
+ Pinchart <laurent.pinchart@ideasonboard.com>, Heiko Stuebner	
+ <heiko@sntech.de>, Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Date: Tue, 03 Nov 2026 08:51:33 -0500
+In-Reply-To: <25952c4c-36db-4361-9ab6-0ca1b1f960bf@oss.qualcomm.com>
+References: <20261103-rkisp1-suspend-and-resume-v1-0-08f863b6fdc5@ideasonboard.com>
+	 <20261103-rkisp1-suspend-and-resume-v1-2-08f863b6fdc5@ideasonboard.com>
+	 <25952c4c-36db-4361-9ab6-0ca1b1f960bf@oss.qualcomm.com>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_054619_649280_391BD8BA 
-X-CRM114-Status: GOOD (  13.45  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261103_055137_568215_870F36C5 
+X-CRM114-Status: GOOD (  27.62  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,37 +120,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============7377157412642590450=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gRGllbnN0YWcsIDI3LiBPa3RvYmVyIDIwMjYsIDE0OjI3OjUyIE1pdHRlbGV1cm9ww6Rpc2No
-ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgRGFtb24gRGluZzoKPiBDaGFuZ2VzIGluIHY1Ogo+IC0gQWRk
-IGZvdXIgbmV3IHBhdGNoZXM6Cj4gICAtIFNlbGVjdCBWSURFT01PREVfSEVMUEVSUyBmb3IgRFJN
-X09GX0RJU1BMQVlfTU9ERV9CUklER0UgdG8gZml4Cj4gICAgIHRoZSB1bmRlZmluZWQgcmVmZXJl
-bmNlcyBmb3Igbm9uLUV4eW5vcyB1c2Vycy4KPiAgIC0gVW5iaW5kIHRoZSBicmlkZ2Ugd2hlbiBk
-cm1fYnJpZGdlX2Nvbm5lY3Rvcl9pbml0KCkgZmFpbHMgb24gdGhlCj4gICAgIFJvY2tjaGlwIGFu
-ZCBFeHlub3MgcGxhdGZvcm1zLgo+ICAgLSBEZWNsYXJlIERSTV9CUklER0VfT1BfSFBEIG9uIHRo
-ZSBBbmFsb2dpeCBEUCBicmlkZ2UgYW5kIHJlcG9ydAo+ICAgICB0aGUgaG90cGx1ZyBldmVudHMg
-dmlhIGRybV9icmlkZ2VfaHBkX25vdGlmeSgpLgo+IC0gTW92ZSB0aGUgbmV4dF9icmlkZ2UgcmVz
-b2x2aW5nIHBhdGNoIGFuZCB0aGUgZm9yY2VkIGNvbm5lY3RlZAo+ICAgc3RhdHVzIHJlc3RyaWN0
-aW9uIHRvIHRoZSBmcm9udCBvZiB0aGUgc2VyaWVzLgo+IC0gVXNlIGEgcHVyZSB0aHJlYWRlZCBJ
-UlEgaGFuZGxlciBhbmQgaG9sZCBydW50aW1lIFBNIHJlZmVyZW5jZXMgaW4KPiAgIHRoZSBJUlEg
-dGhyZWFkIGFuZCB0aGUgZGV0ZWN0IHBhdGhzLiAoU2FzaGlrbykKPiAtIExpbWl0IHRoZSBydW50
-aW1lIFBNIGhvbGRpbmcgdG8gdGhlIFJLMzU3Ni9SSzM1ODggcGxhdGZvcm1zIGFuZAo+ICAgZXhj
-bHVkZSB0aGUgYm9hcmRzIHdpdGggYSBmaXhlZCBwYW5lbC4gKFNhc2hpa28pCj4gLSBGaXggdGhl
-IGRpc3BsYXkgdGltaW5ncyBsZWFrIGluIGFuYWxvZ2l4X2RwX2F1eF9kb25lX3Byb2JpbmcoKS4K
-PiAgIChTYXNoaWtvKQo+IC0gQ2hhbmdlIHRoZSB0eXBlIG9mICZhbmFsb2dpeF9kcF9kZXZpY2Uu
-aXJxIHRvIGludCB0byBmaXggdGhlIGRlYWQKPiAgIGRwLT5pcnEgPCAwIGNoZWNrLiAoU2FzaGlr
-bykKPiAtIFJlYmFzZSBvbnRvIHRoZSBsYXRlc3QgZHJtLW1pc2MtbmV4dC4KCkV2ZXJ5dGhpbmcg
-c3RpbGwgd29ya3MsIHNvIGZvciB0aGUgbmV3IHBhdGNoZXMgYWxzbwpUZXN0ZWQtYnk6IEhlaWtv
-IFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============7377157412642590450==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-76jfQUMM/m0hKvtz6q36"
+
+
+--=-76jfQUMM/m0hKvtz6q36
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Le mardi 03 novembre 2026 =C3=A0 10:09 +0200, Gjorgji Rosikopulos (Consulta=
+nt) a
+=C3=A9crit=C2=A0:
+> Hi Daniel,
+>=20
+> On 11/3/2026 9:40 AM, Daniel Scally wrote:
+> > Add a flags field to struct v4l2_device, along with a single flag
+> > value that is designed to tell v4l2-async in which direction data
+> > flows for this v4l2 device so that it knows how to set up device
+> > links between subdevices connected using the async APIs.
+> >=20
+> > Signed-off-by: Daniel Scally <dan.scally@ideasonboard.com>
+> > ---
+> >  include/media/v4l2-device.h | 7 +++++++
+> >  1 file changed, 7 insertions(+)
+> >=20
+> > diff --git a/include/media/v4l2-device.h b/include/media/v4l2-device.h
+> > index 25f69b1b8db03d077f7570471d5c6910fcafe110..9b17916d63641ba637cf8c3=
+7aa925749bd4e2134 100644
+> > --- a/include/media/v4l2-device.h
+> > +++ b/include/media/v4l2-device.h
+> > @@ -15,6 +15,9 @@
+> > =20
+> >  struct v4l2_ctrl_handler;
+> > =20
+> > +/* Set this flag if this V4L2 device is an "output" rather than an "in=
+put". */
+> > +#define V4L2_DEVICE_FL_IS_OUTPUT			BIT(0)
+>=20
+> Just for the clarification do we change the meaning of output->capture to=
+ input->output?
+> I know that output is confusing for everyone including me but somehow i g=
+et used to it.
+> However to clarify what this means will be helpful :-)
+
+I agree this is confusing. To avoid all the legacy, we could use PRODUCER /
+CONSUMER, or does anyone has a better idea?
+
+Nicolas
+
+>=20
+> ~Gjorgji
+>=20
+> > +
+> >  /**
+> >   * struct v4l2_device - main struct to for V4L2 device drivers
+> >   *
+> > @@ -30,6 +33,9 @@ struct v4l2_ctrl_handler;
+> >   * @ref: Keep track of the references to this struct.
+> >   * @release: Release function that is called when the ref count
+> >   *	goes to 0.
+> > + * @flags: device flags. Can be:
+> > + *   %V4L2_DEVICE_FL_IS_OUTPUT - Set this flag if this V4L2 device is =
+an
+> > + *   "output" rather than an "input"
+> >   *
+> >   * Each instance of a V4L2 device should create the v4l2_device struct=
+,
+> >   * either stand-alone or embedded in a larger struct.
+> > @@ -54,6 +60,7 @@ struct v4l2_device {
+> >  	struct v4l2_prio_state prio;
+> >  	struct kref ref;
+> >  	void (*release)(struct v4l2_device *v4l2_dev);
+> > +	u32 flags;
+> >  };
+> > =20
+> >  /**
+> >=20
+>=20
+>=20
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--=-76jfQUMM/m0hKvtz6q36
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaunm5QAKCRDZQZRRKWBy
+9O0hAP0dfaZa5N9pPcTMgeBjbwcAE6/VonHJ3BzLUQ1GAOGwGAEA/GCL+sGEcnnV
+KMm1Iw/XizTAFH2FDtOYSIYlMgS6OgE=
+=/H6A
+-----END PGP SIGNATURE-----
+
+--=-76jfQUMM/m0hKvtz6q36--
+
+
+--===============7377157412642590450==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7377157412642590450==--
+
