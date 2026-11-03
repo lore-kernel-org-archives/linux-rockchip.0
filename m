@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5D446606A329
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5BBDA606A327
 	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 15:31:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=HeFPLPP3;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=J3qfIZnj
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QtL3rlLq;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=yObueSAa
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,64 +14,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=fLCL1KqMUt1pEd3e6gTO0UGeu1Wy0SP2lGXNR+d7480=; b=HeFPLPP3h2Aup/QMx4QZIBYThJ
-	ZkXbTaji+d7ZihUyF0Y7qtrrbXkc3iPzIk49iB+1bXkOXWp9Y2jgePT7Lc361RJD0J5ALctXmuyC/
-	MK7W6yjWZYsKzbE2ROShVm/On5dgLTVZsREr0Z6ZwX+TXnDB5zjx6FVTA6HDzm6p92hMMAPAV1Kmb
-	r+NzW7m9ui3w15O3Tq2/bfccMhXM7R266vN8g0UAGh0WEeqCGEpXf9eSWVeTDG/gDBeqJVyXzdX5u
-	owsnWU18QJuNyQVYB8nwBTQH4cQiewFJ7HWmvrBLNrpU3U9BwJMbFkDR24l9IAxXx+Ya3w/vyGnI5
-	fS8QQdIA==;
+	bh=qSea4LWgd491ouv8lHf9uuPl4/xfoXUF0E3vXKnyLNw=; b=QtL3rlLqheCVhMTqR4Ei7yq/Zw
+	BUVAGPIpJwrlTse+v1poLkyt+vMyXu/+CX0XmiBad4bknUEpMaMRvP3xh7oNWah32tl2lfNgWnSv6
+	5hiPwtasscnJ1faMslM+whagNgqu/VqMFzvK/K+GWoTZR0O9lhpYofIT4S4GUHbGpDAZnGdfd/zOs
+	61P6ZIsdMRHoRdsrrpZULDX4AMlF4h7Wlx+/7Q9p3jDbvALMNclshiZjD1o3qnKgnS3tnFm/KURB1
+	ZAKxU9AeMxHLo4O+3LTWzMxFJp9GVIxrTrJomCWRk+KkWoF7kbZtS9/Umk7htlzNAVYgNO0N7gbV/
+	XsqA9Qdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOGUM-00000002yb2-0LV9;
-	Tue, 03 Nov 2026 15:31:54 +0000
-Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
-	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOGUI-00000002yZ4-3ga5
-	for linux-rockchip@lists.infradead.org;
+	id 1xOGUK-00000002yZg-3WkZ;
 	Tue, 03 Nov 2026 15:31:52 +0000
-Received: by mail-oi1-x22d.google.com with SMTP id 5614622812f47-4af173320f9so3566689b6e.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 03 Nov 2026 07:31:50 -0800 (PST)
+Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xOGUH-00000002yYc-1H1l
+	for linux-rockchip@lists.infradead.org;
+	Tue, 03 Nov 2026 15:31:50 +0000
+Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-845f3fa7f38so1839976a34.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Nov 2026 07:31:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793719910; x=1794324710; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1793719908; x=1794324708; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=VTVjbTeG+iIcoknSp2y3rgvXBTLyVqZrj1BvDpiUQFE=;
-        b=J3qfIZnjrSc0VqzR7BvQpEq3zGLNdb4qc7gxklD5H7AdboS8m0/vAyGXRqH+LqyP0J
-         6w2kxVni/DkjLf7XC1F3QoVELmlNPS8xZZWgj6ogRonUegjhztfFhQUw2Q7pa5VkAs48
-         JuNCacyIn8vwy1pQZUfu0MhE0PY9A/SH0oroC+FNwoQ+cwfXdBYP8zW1L/bDbQEJ+Nfi
-         U6EI/OkA2YB7KJShR7hWwfVDo5vRa7sc8tW7dC0bpKsH5RWzEUdlxpXk0H+fWwiWUOEm
-         fF2wZteZaQDIM/U0FbqX/90Pfyv5l36IsplRyNPkqGgXsTfjl4e3dsh2gFKH5XmgHIfn
-         nDHg==
+        bh=px9zdgpwFS81LrmsDCxEPDim7SV/QUfj3I75ZxFvQQQ=;
+        b=yObueSAaQ3x+hyVByvI41AdBuQiYglAg6VYppzNfiM9Tw1+00Dch91iq2WQ4z0+a9d
+         /xs6VMymFzzWWHl9gh8gjqR9h1u+ElcpS+9ZPdBoAF6LJR0zLNHsLiB3Q55AZQrt0xYD
+         fsgZaS7IHqT4cdAjpKGrZLobvIV20QOa1P2A1cc+VlKswtaa4MZ58RLIeJdKOe89mlFe
+         72F7nuQTTzaGcxcXnUL1IV+/SUYVaxO4CpF8jbI3oS3q03Cv/NHFEZF+G3PK5YPzmMDl
+         NyhRgg9vf1f1rDjVxLXipJX6qoY67mHTbLlsdhhS8UQxWxObNdfCSYqUCnIi66XYo+er
+         DR/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793719910; x=1794324710;
+        d=1e100.net; s=20260707; t=1793719908; x=1794324708;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=VTVjbTeG+iIcoknSp2y3rgvXBTLyVqZrj1BvDpiUQFE=;
-        b=IHvuulr1MQTOzrtJVJJxYevraaZdfaHye8ccXuGrgYpAAyA7QW/EuvGjDQYX6RZ0AL
-         T9mVeEVPp/r/AEOmSBTXFkge3fiztkw+g7/A7W+Ygjamxv8zFOjwqGvKKjrnrClh60KK
-         z8l4R6noUvEFb3ySuHSrALzScwZpxn4xqGITdycTL6oJl8rF78+/gIKhNP6MMXfBw8lD
-         F0ELkMUoSOkw3Gc9LW/51OT1VtHRwCsQJ5b0QKSorIUu6eVE/c9PSeFqPbUNi7Q5fe+1
-         XRi6CJzrflz9YWO2QqkC6F2gmo0vgtSLPl9vTcGVhEdWcLhlkrI0EKbhdmLuJdGicsFn
-         l2LA==
-X-Gm-Message-State: APuU4Z+TTGQjcdTIfGRc4iJjJn9rAaLF6yUyeNXzUIHObKud0qS8IQTK
-	k5rTVc6yj2rYCSAoHrIyLlDPQnsUtums15jMmPaKhXQ4uoJIfMoAd9Dkj75ifdMo
-X-Gm-Gg: AYBFou01vlqOFDf2MFqHu3YylZI0qaR5eYHGUeHRm5v96eMU1OO2tX4nhXIZJRobdBz
-	9Zxy1J1DGAn8OWkBOAubsCLTEDPmuNGVkYgQMLaso+FiuHIcT1/9+T6jMck9dIWMmJAYUvszbID
-	B8RcGaau50a+igAy5VvBabvy2H+bkK9gscipbp8unTPZ9+keJU5fRiEE7JzzImnNnvighMr3TMa
-	kUwUspuNVKPVVfCmx6Zyd7k0dnbMKwFAM1uktk+/t/qLfOwaugIVcMwx35lMd7lrF5sAnDTSz+N
-	dknVjJv4ppWdBrZDzEyBR9StPXiRVXJ+IzU01mgFR8hMlAASP/klPKtWg/UAZx7LHZW+jPSWUHY
-	S9zm7cPQpaK5UbZ7skULtbLKLk/ztyer2jtdLcAFWc0Tw7dO3BOSPF4Pb64lrsJcj8Kw9duAmrw
-	lb9KicjodGnNJ8kE+2ttCX+orznMVNsHiUZyJVSdgHZqWKl/E+3orSwzdgSIIiHMJe7/mX2CYCT
-	YXk+lz+6HYlQ8Jpab+Wt3K81pAg3UANd+9A+Jx1KJ60NQDAF8kotDiImAKOaVUnTOweFpymABqw
-	qbFPuCYm1Lw5fk5hmQlK4GcxYAAERYFTPTzRItUzOLv064lzeZU=
-X-Received: by 2002:a05:6808:8896:b0:4bb:ac05:9ebf with SMTP id 5614622812f47-5640ddb2da3mr5827706b6e.14.1793719909728;
-        Tue, 03 Nov 2026 07:31:49 -0800 (PST)
+        bh=px9zdgpwFS81LrmsDCxEPDim7SV/QUfj3I75ZxFvQQQ=;
+        b=gLGBBiAk/hQQHKUoWlgdc9zc6444/upWshLXOvjPUFQ1CbKhgnxBkfVcuEItQuouPt
+         PFd+dzAAiOCRA5Lc+xrJnYznt+PMrbVsbMjCxhcAvnaDGHnsjeN8aEkvSBit+FrC1bgW
+         zKuFG+SDjVyMxHhuYujQsB71pPqmXRe5MsP12K00+sigcuvorqLFuWVnqDTqWOBnLD26
+         F82FCgcZBkveoaaZRzjX/gIEJOhynWiR2vrw3uLK8p6AuS0ngeG+Upw9VszJFa9juNtu
+         /f5M2O0+eCND4/yM1uJ1uKXwlg3yUw5qPnkEl+V1ZuReA6JCDWvdOFL1FCFvv/Hp23BS
+         eQCQ==
+X-Gm-Message-State: APuU4Z9iDZkrZfCSWEO1zW3C+zfqEGSl3vlC1pAihwKbRzPqidLKuMDj
+	TstUvAs5peUtqTUXqWgihgfVvmL7Sye/dFGoyEcy1yMW254NMsM2HVAP3tV1P0mU
+X-Gm-Gg: AYBFou16NslBwEAOocoH5a1VsBYY/QDc87jYUpwO1/Z1twE0F+IVIRiMJ0aOubK27ZC
+	DzHClicrZbiSqI+pcJnES/sIcfbPQow54J4n7HSIeXLjW60WSu0BNyLLleJzJKWMHtCLgF8gk1H
+	hxq2vSejZr/BvXhM6ZUtx1LnKIj/6Z3dc3qsoT8F9BvJ+G3HJJE6hRvABjMoqPxQ8qFl2qp8yDS
+	ozwcAvdRKyzTv4FP9c6FRBLuNf2KQMTYZvE7ve05gMVdwQUMAfGmeGf9p+/T0dpV6tP0sYKyBo6
+	Ny0aI4OiXpHWJvgcSnUVGfUDlC1KAMF+6dlH5IqQxh7v5IeFwq/i0+VfxhMejehaa65XyNZ2Nh2
+	bWGENP4k4wkk4fISqaNkE4MizVMU+qNPYaGLdYcBAJHcVmDhKIRgbzvETSUBy57QuPY5lPg2lIf
+	fY6E8lA+c7wk+nGHNKbe52wvpdNfRnuZdQPDJ1kCZZM4fAmIxlvQi22Q2Fcw9PaEXkN24f6QWcD
+	hCumO/pHPV5ylV8Rw62xZRNvXuNPmJUTvP7EyV2j/0FD03mp8rIDxmnnCs+1NSfKYarGhWtgBre
+	pZH8frfIZgOY6v7Ys/6rWFuhpcg1oE4CRvgpmpyhPYV89yxORxju
+X-Received: by 2002:a05:6808:1a02:b0:4f9:6348:cd3b with SMTP id 5614622812f47-5640dd6a370mr8851018b6e.41.1793719908538;
+        Tue, 03 Nov 2026 07:31:48 -0800 (PST)
 Received: from neuromancer ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-5640fd95dc0sm11599188b6e.6.2026.11.03.07.31.48
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-5640fd95dc0sm11599188b6e.6.2026.11.03.07.31.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Nov 2026 07:31:49 -0800 (PST)
+        Tue, 03 Nov 2026 07:31:48 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -83,17 +83,17 @@ Cc: devicetree@vger.kernel.org,
 	krzk+dt@kernel.org,
 	robh@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Add timer node for rk356x
-Date: Tue,  3 Nov 2026 09:31:44 -0600
-Message-ID: <20261103153144.343764-3-macroalpha82@gmail.com>
+Subject: [PATCH 1/2] dt-bindings: timer: rockchip: Add rk3568 compatible
+Date: Tue,  3 Nov 2026 09:31:43 -0600
+Message-ID: <20261103153144.343764-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261103153144.343764-1-macroalpha82@gmail.com>
 References: <20261103153144.343764-1-macroalpha82@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_073150_920703_CD021707 
-X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-CacheID: sfid-20261103_073149_343308_105160D7 
+X-CRM114-Status: UNSURE (   8.06  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -118,33 +118,25 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add the timer node for the rk356x. The timer is present at the SoC
-level and is register compatible with the rk3288 timer.
+Add compatible string for Rockchip RK3568 timer.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index 1a4562df20ee..cc3faeb9a86d 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -1373,6 +1373,14 @@ i2c5: i2c@fe5e0000 {
- 		status = "disabled";
- 	};
- 
-+	timer0: timer@fe5f0000 {
-+		compatible = "rockchip,rk3568-timer", "rockchip,rk3288-timer";
-+		reg = <0x0 0xfe5f0000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru PCLK_TIMER>, <&cru CLK_TIMER0>;
-+		clock-names = "pclk", "timer";
-+	};
-+
- 	wdt: watchdog@fe600000 {
- 		compatible = "rockchip,rk3568-wdt", "snps,dw-wdt";
- 		reg = <0x0 0xfe600000 0x0 0x100>;
+diff --git a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
+index 6d0eb0014eee..b245a3051d66 100644
+--- a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
++++ b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
+@@ -24,6 +24,7 @@ properties:
+               - rockchip,rk3228-timer
+               - rockchip,rk3229-timer
+               - rockchip,rk3368-timer
++              - rockchip,rk3568-timer
+               - rockchip,rk3576-timer
+               - rockchip,rk3588-timer
+               - rockchip,px30-timer
 -- 
 2.53.0
 
