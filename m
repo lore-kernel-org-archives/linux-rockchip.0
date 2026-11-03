@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54145606A335
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C4B91606A338
 	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 07:42:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1JoEF13M;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ideasonboard.com header.i=@ideasonboard.com header.a=rsa-sha256 header.s=mail header.b=OjD/kQep
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4Q2NYTCX;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ideasonboard.com header.i=@ideasonboard.com header.a=rsa-sha256 header.s=mail header.b=sKjh+tBJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,36 +14,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=6VujNVdttJn8LyFjRg+syvRNJe+0Y7CxiKlHAqa6QMA=; b=1JoEF13MJ0kSmXH4EKSkBL7NBH
-	o9/5YzQvj/mGF9aIy2RCiPKUttLVm+w2Hu+qkwfPtt6Jsa+MJns0pFajWfqs/ZRphcUfGxqAryZ8r
-	gT9X0Ad5pD/IE/32g9xvUn8wVGbD4RYC+Og9BfnYyZrmcLJn64M1vuB1DmLyf9a8dDhbg8qmpT7sy
-	m/XuG4KEUG1S+TR5x9RqafHYeZVTQsLLtZa1i03tvn0cyOTAltwAWqQD13wLEgSlg94N+Vkm89AtR
-	8GLDmKhGJKzGzBnH3pXyZ4Ra2a4e226N/MIoQsuEzZHDQk+wLhP8xGAub9bE3Xhj5hRGzaqKLeX9r
-	tb5Oq4Cw==;
+	bh=waRNmQD1hIAwdz8671kKEXT+keIJ9HjiHnZwemqMVtk=; b=4Q2NYTCXr0XWuUlwHkD+VRf5d2
+	vKonW8R/Em8k7hk2ZMDPzzzcIUvUa++thqzaDz9apM6jiEFuyg2nX0kL6V2ZRVH6nI5b/vXokfd5F
+	hPe1UwC1xseh8TC9Jw/Ex9ULU5uCtI0/i1SCMaBijzIVi8nugLARA4U5pi/cLayKrJKILc0q0HfGt
+	0qusM/gdWoV4HNBo9Q359j/joLxb4zgcnKtOrS/HiQWpAzN9uPAJgSTY7c5zlxRoXx8IqC3o5hIFP
+	4qm3ekbQ+Gp+RfHp58sItlpgrd45cDUm13Ow/pXqYsXQfxkLVJiRkOdMlO4gBTas+Br0yo954ieuu
+	mY4yBEfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO99i-00000001NJp-2f5k;
-	Tue, 03 Nov 2026 07:42:06 +0000
+	id 1xO99j-00000001NLO-1nkt;
+	Tue, 03 Nov 2026 07:42:07 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO98v-00000001MJp-0q7d;
-	Tue, 03 Nov 2026 07:41:35 +0000
+	id 1xO98v-00000001MKg-2OjG;
+	Tue, 03 Nov 2026 07:41:34 +0000
 Received: from [127.0.1.1] (chfd-03-b2-v4wan-176392-cust229.vm15.cable.virginm.net [82.19.20.230])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 68F6F2022;
-	Tue,  3 Nov 2026 08:38:53 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 72F7F287E;
+	Tue,  3 Nov 2026 08:38:55 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1793691533;
-	bh=1m0EI6jXYg3GPIBBBk0hCAb7W25j6BmYYaX2ojD4BAc=;
+	s=mail; t=1793691535;
+	bh=XDiOl4SIg1voG8HN0me3SLmpR1aSvPqTIfej/UlGQyE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OjD/kQepfKpl47L2j1vDuI5IdJhDJ0/Lmb5u9TmnRLoMZYmc0mw5hRDvaVJEXPMEg
-	 VP4DEHjJuNTFv+zecJKo9vlZRomQwcJ7JuLvimg8qij7meU10mSf8MuXalIZ7V+g8w
-	 WRNNO3a23qTgsNoyD5vX/fvi9jB/caKJOk7GH5B0=
+	b=sKjh+tBJWA0vDVKk6i0poxP4JJ/fk7NYesmhOzfVBX2JOBDmPvWHUgHsJqkXvAV76
+	 r4Ayc+2wuui1/9geuVP7Lry5TSot9GNYqKZWS7Qoqc3YMghm+RYcIlETDPzHNytcTT
+	 gzvTPdBEjfaQiDcuKu+yW5Qv24F1bI+d4CoAXP2o=
 From: Daniel Scally <dan.scally@ideasonboard.com>
-Date: Tue, 03 Nov 2026 07:40:41 +0000
-Subject: [PATCH 05/16] media: rkisp1: Store the current params buffer
+Date: Tue, 03 Nov 2026 07:40:44 +0000
+Subject: [PATCH 08/16] media: rkisp1: Switch to calling
+ .enable/disable_streams() in CSI subdev
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261103-rkisp1-suspend-and-resume-v1-5-08f863b6fdc5@ideasonboard.com>
+Message-Id: <20261103-rkisp1-suspend-and-resume-v1-8-08f863b6fdc5@ideasonboard.com>
 References: <20261103-rkisp1-suspend-and-resume-v1-0-08f863b6fdc5@ideasonboard.com>
 In-Reply-To: <20261103-rkisp1-suspend-and-resume-v1-0-08f863b6fdc5@ideasonboard.com>
 To: Tomasz Figa <tfiga@chromium.org>, 
@@ -57,26 +58,26 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, 
  Daniel Scally <dan.scally@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8386;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3040;
  i=dan.scally@ideasonboard.com; h=from:subject:message-id;
- bh=1m0EI6jXYg3GPIBBBk0hCAb7W25j6BmYYaX2ojD4BAc=;
- b=owEBbQKS/ZANAwAKAchJV3psRXUyAcsmYgBq6ZAPAY6xzACdc+xrrve+tvecz32ph6uRTA3U+
- 9+8FiEBaYaJAjMEAAEKAB0WIQQqyuwyDnZdb+mxmm/ISVd6bEV1MgUCaumQDwAKCRDISVd6bEV1
- Mv60D/9wnJ8lKUC69v7OoDiqToWhLcK1NoV/Fuc5TCK/gdEnbeGhUF8IxPcNgYxMj/etWs5BOve
- +KbvcoWHyN3U70GD4WiRnVwvp0bxn4wIORVRga/70/05kG8zdc2JUb1nfOA4yEGdhXdHAdFQKbr
- narsN0LomrvrttLC2/Re3IB243HM9Me3gBlgg5VkpGFW4LTfrbRLCa7naFDnUNFnc+7Uq/UTmFg
- TukkR0Xiqjn3WU21WNDTQhbHHpjqPk3GVbXBOiS6p/a1x0NUJDoGAtpvBRWyFmegDZcFg0yR1Z/
- s+Bi9jiVlICOQkybbhSoB3pV2zPUgjPs85jvmeUccYavzLtwFpJz96yM/zYzFZekoSsFxkBbdAH
- qoNKZIAohbczwI6tLDqxo+hTbCU52k474rAvUyGk4OuBW0C7k61lm0rxiVH83LPVqM8ShUJchVz
- pBIDvdOpOmEESec/ifwHiL/L+BtFzs9EmC+BICP4c7ZVpuH0NP3c+mX0Lxx67c1GIJYrI6mcFiW
- 27jwEOAkBDZ8t/yC9q1KL2tc6Ac1qcaKsoaz8X+MTWJdAUv79eBIt85/svgYc591qGt837e+hG3
- B/QEexVF3qX6DfUsBxL4JmmrY68ejp+MpseKDjF6DsEy/9Q8ewog81JuiK2nm0oCUVHQWQAOPvN
- +N/pqBVVmPt+hWA==
+ bh=XDiOl4SIg1voG8HN0me3SLmpR1aSvPqTIfej/UlGQyE=;
+ b=owEBbQKS/ZANAwAKAchJV3psRXUyAcsmYgBq6ZAQAd6xd3iNRylSmYnCTrRc6PElOb8mpiKJZ
+ UP4fctOU12JAjMEAAEKAB0WIQQqyuwyDnZdb+mxmm/ISVd6bEV1MgUCaumQEAAKCRDISVd6bEV1
+ MkxaD/94XgAuMBNtuFVwDl1wJphjJj3DwOZwEws2YKsYxwK8k6OfWF+Kk2NzZMM0fGeDmsM2z84
+ nmXe3J+iXZ5EqX88Wgz/sbvnna0sHx09TDrdhRAIEd72YzgY5MPU0pZi+2xxIBjxKAlRI84/VKI
+ tHxFFTFiCtlQ0KrNFNwUKQ8UuUbwRUSnHF94D4aQ44eVSzDi1wdUv5kkKKMhFyL1cufaLYkkQM7
+ qNy6+voPWFh+oeGMZUOEFzQGkap6is2aVqKm3KjlLYaJ6t3JN3QPvbjgbRR3pWkUFFnnrJh7EBl
+ RcJGQSfvcspVgu+u2VNyFtWgkuknMjpG8sel9/KEiby530r5S/4Q3owIkuYPZKhnDCrCR7S1x5K
+ K15Z3ZuCPOzUnsJexDoGMlvUc6dtqSt1C+tpkXAM2q4MjKn8QgpMPvm/Gv6O99B1rtHcjiRX4BP
+ FY7iFt0p3bKDctRwYeJXnzXjsO5FF+bltqyWOW8TQZXv/mGA66anluNrY9DAs+eOs6jjBHnqkQc
+ VAUJyn9DkaMLsdqblEqDwMqYXqLBa3D8gHROLMxxyg8rxVNw3U8K6tJJu6LxOcCliUTmoEV4+k9
+ /OTnhRX7U0JrCql8/Kq9wPobd/xecvYrZDnuNlXdAb7nKsOSklCwKdH3u7txFasuyJ6ZyCT84XM
+ uAkH90R27ay8FpQ==
 X-Developer-Key: i=dan.scally@ideasonboard.com; a=openpgp;
  fpr=EEC699ACA1B7CB5D31330C0BBD501C2A3546CCF6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_234119_915308_D6E6E305 
-X-CRM114-Status: GOOD (  19.32  )
+X-CRM114-CacheID: sfid-20261102_234119_993177_3C3B8624 
+X-CRM114-Status: GOOD (  14.67  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,218 +98,92 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-If we suspend the ISP during an active stream, we need to be able to
-re-apply the last-applied configuration when we re-start the stream
-on resume. Store a pointer to the current params buffer within a
-re-organised struct rkisp1_params.
+Switch to calling .enable_streams() and .disable_streams() for the
+downstream subdevice in the rkisp1 csi subdevice's .s_stream()
+operation.
 
 Signed-off-by: Daniel Scally <dan.scally@ideasonboard.com>
 ---
- .../media/platform/rockchip/rkisp1/rkisp1-common.h | 10 ++-
- .../media/platform/rockchip/rkisp1/rkisp1-params.c | 75 +++++++++++-----------
- 2 files changed, 45 insertions(+), 40 deletions(-)
+ .../media/platform/rockchip/rkisp1/rkisp1-common.h |  2 +-
+ .../media/platform/rockchip/rkisp1/rkisp1-csi.c    | 24 +++++++++++-----------
+ 2 files changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 5e6a4d5f6fd12baf45a0083eff75de1095162b2d..6a017a2077f6fdef3a3fd0998f182baa19bfc5b6 100644
+index 6a017a2077f6fdef3a3fd0998f182baa19bfc5b6..357a6bd8db7da4c881e4cba5b5f54e40fd21c38c 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -405,6 +405,9 @@ struct rkisp1_params_ops {
-  * @vnode:		video node
-  * @rkisp1:		pointer to the rkisp1 device
-  * @ops:		pointer to the variant-specific operations
-+ * @buf.lock:		locks the buffer list 'params'
-+ * @buf.queue:		queue of rkisp1_params_buffer
-+ * @buf.curr:		pointer to the current rkisp1_params_buffer
-  * @config_lock:	locks the buffer list 'params'
-  * @params:		queue of rkisp1_buffer
-  * @metafmt		the currently enabled metadata format
-@@ -418,8 +421,11 @@ struct rkisp1_params {
- 	struct rkisp1_device *rkisp1;
- 	const struct rkisp1_params_ops *ops;
- 
--	spinlock_t config_lock; /* locks the buffers list 'params' */
--	struct list_head params;
-+	struct {
-+		spinlock_t lock; /* locks the buffers list 'params' */
-+		struct list_head queue;
-+		struct rkisp1_params_buffer *curr;
-+	} buf;
- 
- 	struct v4l2_ctrl_handler ctrls;
- 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-index 042b759eba625e00c65d27710e9db3aa7f09ab7f..e5913f8b73726d16362e429960e251b48b62d9aa 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-@@ -2338,21 +2338,21 @@ static void rkisp1_params_complete_buffer(struct rkisp1_params *params,
- void rkisp1_params_isr(struct rkisp1_device *rkisp1)
- {
- 	struct rkisp1_params *params = &rkisp1->params;
--	struct rkisp1_params_buffer *cur_buf;
- 
--	spin_lock(&params->config_lock);
-+	spin_lock(&params->buf.lock);
- 
--	cur_buf = list_first_entry_or_null(&params->params,
--					   struct rkisp1_params_buffer, queue);
--	if (!cur_buf)
-+	params->buf.curr = list_first_entry_or_null(&params->buf.queue,
-+						    struct rkisp1_params_buffer,
-+						    queue);
-+	if (!params->buf.curr)
- 		goto unlock;
- 
- 	if (params->metafmt->dataformat == V4L2_META_FMT_RK_ISP1_PARAMS) {
--		rkisp1_isp_isr_other_config(params, cur_buf->cfg);
--		rkisp1_isp_isr_lsc_config(params, cur_buf->cfg);
--		rkisp1_isp_isr_meas_config(params, cur_buf->cfg);
-+		rkisp1_isp_isr_other_config(params, params->buf.curr->cfg);
-+		rkisp1_isp_isr_lsc_config(params, params->buf.curr->cfg);
-+		rkisp1_isp_isr_meas_config(params, params->buf.curr->cfg);
- 	} else {
--		rkisp1_ext_params_config(params, cur_buf->cfg,
-+		rkisp1_ext_params_config(params, params->buf.curr->cfg,
- 					 RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS |
- 					 RKISP1_EXT_PARAMS_BLOCK_GROUP_LSC);
- 	}
-@@ -2369,11 +2369,11 @@ void rkisp1_params_isr(struct rkisp1_device *rkisp1)
- 	 * indicate to userspace on which frame these parameters are being
- 	 * applied.
- 	 */
--	rkisp1_params_complete_buffer(params, cur_buf,
-+	rkisp1_params_complete_buffer(params, params->buf.curr,
- 				      rkisp1->isp.frame_sequence + 1);
- 
- unlock:
--	spin_unlock(&params->config_lock);
-+	spin_unlock(&params->buf.lock);
- }
- 
- static const struct rkisp1_cif_isp_awb_meas_config rkisp1_awb_params_default_config = {
-@@ -2421,7 +2421,6 @@ void rkisp1_params_pre_configure(struct rkisp1_params *params,
- 				 enum v4l2_ycbcr_encoding ycbcr_encoding)
- {
- 	struct rkisp1_cif_isp_hst_config hst = rkisp1_hst_params_default_config;
--	struct rkisp1_params_buffer *cur_buf;
- 
- 	params->quantization = quantization;
- 	params->ycbcr_encoding = ycbcr_encoding;
-@@ -2446,20 +2445,21 @@ void rkisp1_params_pre_configure(struct rkisp1_params *params,
- 
- 	rkisp1_csm_config(params);
- 
--	spin_lock_irq(&params->config_lock);
-+	spin_lock_irq(&params->buf.lock);
- 
- 	/* apply the first buffer if there is one already */
- 
--	cur_buf = list_first_entry_or_null(&params->params,
--					   struct rkisp1_params_buffer, queue);
--	if (!cur_buf)
-+	params->buf.curr = list_first_entry_or_null(&params->buf.queue,
-+						    struct rkisp1_params_buffer,
-+						    queue);
-+	if (!params->buf.curr)
- 		goto unlock;
- 
- 	if (params->metafmt->dataformat == V4L2_META_FMT_RK_ISP1_PARAMS) {
--		rkisp1_isp_isr_other_config(params, cur_buf->cfg);
--		rkisp1_isp_isr_meas_config(params, cur_buf->cfg);
-+		rkisp1_isp_isr_other_config(params, params->buf.curr->cfg);
-+		rkisp1_isp_isr_meas_config(params, params->buf.curr->cfg);
- 	} else {
--		rkisp1_ext_params_config(params, cur_buf->cfg,
-+		rkisp1_ext_params_config(params, params->buf.curr->cfg,
- 					 RKISP1_EXT_PARAMS_BLOCK_GROUP_OTHERS);
- 	}
- 
-@@ -2468,14 +2468,12 @@ void rkisp1_params_pre_configure(struct rkisp1_params *params,
- 			      RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD);
- 
- unlock:
--	spin_unlock_irq(&params->config_lock);
-+	spin_unlock_irq(&params->buf.lock);
- }
- 
- void rkisp1_params_post_configure(struct rkisp1_params *params)
- {
--	struct rkisp1_params_buffer *cur_buf;
--
--	spin_lock_irq(&params->config_lock);
-+	spin_lock_irq(&params->buf.lock);
- 
- 	/*
- 	 * Apply LSC parameters from the first buffer (if any is already
-@@ -2485,25 +2483,26 @@ void rkisp1_params_post_configure(struct rkisp1_params *params)
- 	 * ordering doesn't affect other ISP versions negatively, do so
- 	 * unconditionally.
- 	 */
--	cur_buf = list_first_entry_or_null(&params->params,
--					   struct rkisp1_params_buffer, queue);
--	if (!cur_buf)
-+	params->buf.curr = list_first_entry_or_null(&params->buf.queue,
-+						    struct rkisp1_params_buffer,
-+						    queue);
-+	if (!params->buf.curr)
- 		goto unlock;
- 
- 	if (params->metafmt->dataformat == V4L2_META_FMT_RK_ISP1_PARAMS)
--		rkisp1_isp_isr_lsc_config(params, cur_buf->cfg);
-+		rkisp1_isp_isr_lsc_config(params, params->buf.curr->cfg);
- 	else
--		rkisp1_ext_params_config(params, cur_buf->cfg,
-+		rkisp1_ext_params_config(params, params->buf.curr->cfg,
- 					 RKISP1_EXT_PARAMS_BLOCK_GROUP_LSC);
- 
- 	/* update shadow register immediately */
- 	rkisp1_param_set_bits(params, RKISP1_CIF_ISP_CTRL,
- 			      RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD);
- 
--	rkisp1_params_complete_buffer(params, cur_buf, 0);
-+	rkisp1_params_complete_buffer(params, params->buf.curr, 0);
- 
- unlock:
--	spin_unlock_irq(&params->config_lock);
-+	spin_unlock_irq(&params->buf.lock);
- }
+@@ -209,7 +209,7 @@ struct rkisp1_csi {
+ 	bool is_dphy_errctrl_disabled;
+ 	struct v4l2_subdev sd;
+ 	struct media_pad pads[RKISP1_CSI_PAD_NUM];
+-	struct v4l2_subdev *source;
++	struct media_pad *source;
+ };
  
  /*
-@@ -2711,9 +2710,9 @@ static void rkisp1_params_vb2_buf_queue(struct vb2_buffer *vb)
- 	struct vb2_queue *vq = vb->vb2_queue;
- 	struct rkisp1_params *params = vq->drv_priv;
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+index 9fa8a0407c90ec5e379a78da32315a0abf406ea4..1fd122f95f8ad0d6c34384ef647da0a3a57c811b 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+@@ -355,32 +355,34 @@ static int rkisp1_csi_s_stream(struct v4l2_subdev *sd, int enable)
+ 	struct rkisp1_sensor_async *source_asd;
+ 	struct v4l2_async_connection *asc;
+ 	struct v4l2_subdev_state *sd_state;
+-	struct media_pad *source_pad;
+-	struct v4l2_subdev *source;
++	struct v4l2_subdev *source_sd;
+ 	int ret;
  
--	spin_lock_irq(&params->config_lock);
--	list_add_tail(&params_buf->queue, &params->params);
--	spin_unlock_irq(&params->config_lock);
-+	spin_lock_irq(&params->buf.lock);
-+	list_add_tail(&params_buf->queue, &params->buf.queue);
-+	spin_unlock_irq(&params->buf.lock);
+ 	if (!enable) {
+-		v4l2_subdev_call(csi->source, video, s_stream, false);
++		source_sd = media_entity_to_v4l2_subdev(csi->source->entity);
++		if (!source_sd)
++			return -EPIPE;
+ 
++		v4l2_subdev_disable_streams(source_sd, csi->source->index, BIT(0));
+ 		rkisp1_csi_stop(csi);
+ 
+ 		return 0;
+ 	}
+ 
+-	source_pad = media_entity_remote_source_pad_unique(&sd->entity);
+-	if (IS_ERR(source_pad)) {
++	csi->source = media_entity_remote_source_pad_unique(&sd->entity);
++	if (IS_ERR(csi->source)) {
+ 		dev_dbg(rkisp1->dev, "Failed to get source for CSI: %pe\n",
+-			source_pad);
++			csi->source);
+ 		return -EPIPE;
+ 	}
+ 
+-	source = media_entity_to_v4l2_subdev(source_pad->entity);
+-	if (!source) {
++	source_sd = media_entity_to_v4l2_subdev(csi->source->entity);
++	if (!source_sd) {
+ 		/* This should really not happen, so is not worth a message. */
+ 		return -EPIPE;
+ 	}
+ 
+-	asc = v4l2_async_connection_unique(source);
++	asc = v4l2_async_connection_unique(source_sd);
+ 	if (!asc)
+ 		return -EPIPE;
+ 
+@@ -397,14 +399,12 @@ static int rkisp1_csi_s_stream(struct v4l2_subdev *sd, int enable)
+ 	if (ret)
+ 		return ret;
+ 
+-	ret = v4l2_subdev_call(source, video, s_stream, true);
++	ret = v4l2_subdev_enable_streams(source_sd, csi->source->index, BIT(0));
+ 	if (ret) {
+ 		rkisp1_csi_stop(csi);
+ 		return ret;
+ 	}
+ 
+-	csi->source = source;
+-
+ 	return 0;
  }
- 
- static int rkisp1_params_prepare_ext_params(struct rkisp1_params *params,
-@@ -2782,9 +2781,9 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
- 	 * and then we can iterate it and call vb2_buffer_done
- 	 * without holding the lock
- 	 */
--	spin_lock_irq(&params->config_lock);
--	list_splice_init(&params->params, &tmp_list);
--	spin_unlock_irq(&params->config_lock);
-+	spin_lock_irq(&params->buf.lock);
-+	list_splice_init(&params->buf.queue, &tmp_list);
-+	spin_unlock_irq(&params->buf.lock);
- 
- 	list_for_each_entry(buf, &tmp_list, queue)
- 		vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
-@@ -2875,8 +2874,8 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
- 
- 	params->rkisp1 = rkisp1;
- 	mutex_init(&node->vlock);
--	INIT_LIST_HEAD(&params->params);
--	spin_lock_init(&params->config_lock);
-+	INIT_LIST_HEAD(&params->buf.queue);
-+	spin_lock_init(&params->buf.lock);
- 
- 	strscpy(vdev->name, RKISP1_PARAMS_DEV_NAME, sizeof(vdev->name));
  
 
 -- 
