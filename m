@@ -2,98 +2,103 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CBEBC606A33F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 06:12:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C17A0606A32C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 06:12:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LL4lXfYR;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=bdMeXh9t
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xwzJwfk5;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jiuVi9kI
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=IBQsTB/rVG/3thOZ0T3I/KD6jVxQs8Lmv7ME0Drd+NI=; b=LL4lXfYRcMNE4VClyU0IjOZygd
-	K4DTX8rCaZRUXzg8R8pOq9omr8Bwmj+Cn3870UFRgWZjer50fR5JzN2se7tSO8KfXaLleHS+DouhA
-	n7X3wk1ZjfcykApBOWu1jBZlE6hrwZmpiNqPCXw4yxJbDcuDX6KwfLkRvc0fIdQCJM+YDe5ScwWN2
-	58pD4hwJheX5acn9SU0DL+ALTSGPsH8io1JDGpfHTe+sKfIvAIfZ9/U+2SPFPo7DdBqHx3Rck//2H
-	PVY6eM9t6RX4kvTjUMo3kiFVYEcPQ0WLO7ADosCayDCIJ9BIS8Exg9QQ/gAD9TdlTTvF2rE/kRTGE
-	MznPLSNA==;
+	bh=FQbGkeMuAU7VvCr7I06fBdOKQJP5KykYOO1vCJMJJHI=; b=xwzJwfk5AH5KJZ3sUmjfbaeSdk
+	v7CPurWXxfPL0p5DpzW8RR5H/8bFUQj+W7w5kdrlTECECwf5BVzHK5zRIV+vcd1jvE9wk6o8MeK6l
+	y6pojeyGANaBnDt21/moL8xrfSNyciIiBCmYve2u8TaAJwDfEzJeBmH1GvURfCwwApRv4lmWMVaOD
+	DgrcD87NuxX4+fBpM9+rxCpa1gX+tqeU+Yg2o+gGDswH9jKlUOiKuo1mKsNJvuHwj0MF2MVNe6VMT
+	M+s8Mw4PtWuPi3otZI2Bup6YRKTgw/zOh2EmxODFp21mRfCKvCmOddm2PJtvOpcEmwxaNpauMNeD5
+	TIKENGiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO7kk-00000001CJp-0QsK;
-	Tue, 03 Nov 2026 06:12:14 +0000
-Received: from mail-pj2-x04.google.com ([2607:f8b0:4864:39::4])
+	id 1xO7kp-00000001CLc-3J5e;
+	Tue, 03 Nov 2026 06:12:19 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO7kc-00000001CJ3-07iI
-	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Nov 2026 06:12:12 +0000
-Received: by mail-pj2-x04.google.com with SMTP id d9443c01a7336-2e831901331so29362535ad.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 02 Nov 2026 22:12:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793686325; x=1794291125; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:message-id
-         :references:in-reply-to:user-agent:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=kbCkmRLiacqgEr0yA1tZg4DGh3TnytEQLj8xoSVFM2w=;
-        b=bdMeXh9tC0Fbw3gMWb33fANaMO2/4iaQPKrDH1G0/EFzktSyc9pr+kiqT4iDajKfxL
-         2NoZuLSVDHZV/xnZYvnFNqGIPfyYxJ3N89ifOoXnXluIzn4AQFs6Sopmy7HklM9Tl3E1
-         qzc/Dw1y1Gd/3nCIptbc+Ke/uXEs22I9CvAgVGo2DqyQfbEpkncRQ7I458LjCUtFgixZ
-         Afr0/HAPIwhAC0DvKHMvl02tC8Id0xG5CoCkT35D/Bsw8UR+AMKrrtaV4EpZyMAli5tn
-         tRKerHCDOhs4we7XhnrNLvENEX1R7NhMRzTHTezMoXPNVu2SC/4khgSBhY6Px+jnZ9I9
-         OetA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793686325; x=1794291125;
-        h=content-transfer-encoding:content-type:mime-version:message-id
-         :references:in-reply-to:user-agent:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=kbCkmRLiacqgEr0yA1tZg4DGh3TnytEQLj8xoSVFM2w=;
-        b=VXMM/zYxFKEzkdGuqVGt2lK82vDDQYZWn3IfyszTzH+M57iUj4onRRkgqv1hxpEbW4
-         Fj4r0ydIcEuJ0VcBy9wikWe9asRed4E5N7Dc0qZKpuxJJHb2zOi7JJilQ3s7R1iz3BJF
-         pZAsXgsowvbECKISBa2ORl2pjmKuOMPacU7Yf0r2kFb/JVe4qeuJ2a1I63XlBGnKGTL1
-         TEz+NpyPd1G8kNjYhd6rTdrLBZVvAamSbc+bOwwyqzBgsvZzVZS+t/xUlyR0Wx5SUSGX
-         FtBv//V+1aAosrNuTyzBBB4zzCplCfG1Mc62yrVb4b6qXpOs0ttD9V4lqIqnN1NVSefz
-         hy9A==
-X-Forwarded-Encrypted: i=1; AKwUvBw0jBojWSZvC71QJUcRLwqTkPCCtY/dLpiU4nnkKHNhzwsf+cea/uhbpgVNhN73kq4OaRZs+1295YNPrk7mPQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9Wy1GdxSQVQLZ3y3WKKPIirVv+rIUPi/OXp2v+ep15Y+xpK9l2
-	q8NozDzyaleUK6Ai6fNuNxYu/R7adLDt0LPv4RgbfFx58Yl7kAOtF7EP
-X-Gm-Gg: AYBFou1o6pbUqyTJx/p3Is32Cm7hYC9Wavx3lTD18PJS3j8lM6irxOYgOzDXieavOkB
-	RDcgqGV9eLFUH/rq4NWub1TzcGnLvLRhyo8CMAsskHCGV0jvSdHqcIyKPWWxxYp0eyjASGRGqJi
-	KQM7xqV5SOaC9rzkh4ZoV0nQVNiQjpdS2jls18jMSXIqUHl4wy3aZINh+gMfT4jR3V0ud2H4MxL
-	aarE5qQFD8MEweeGvAbuNxWxVxXRJHIUxYG9YGed7cwWVG5zyUb6i+vYSh2mUTF0JI/T8VX+Cao
-	WteyvYVdtmymZCrTF61e75VQmw0eIuFI4LYNYzUWre+UKEIStZApxA4Qx39Z3ZtCJgPdKL8IfED
-	dtj2DYo+deLrsS+yqkIQb35sCyzpn7aPNbd1mvJoc4KPpm/cdJz+VnL4shWDKscgkHI1Qyw3TKO
-	wd1qZr09J63Z+4YJ6ys3v8O94OzpawrWjNYbLZPfbWmdtNjxaCCsAS2Zvh3aEPcMEX8D7iAfL2J
-	dgk4tJ3OpsAQwIdiD695Fs/KA9XrBfr2th9TW6K1kVX8QPlQW/c1BSbOQT3ZcNakNoTKlZhX9ba
-	+eykger3WPjElub2HdQX+kjUS5IHMkMA26k6GKs=
-X-Received: by 2002:a17:90b:534b:b0:3ab:4f1:4f76 with SMTP id 98e67ed59e1d1-3ae898127f4mr10100410a91.24.1793686325004;
-        Mon, 02 Nov 2026 22:12:05 -0800 (PST)
-Received: from ehlo.thunderbird.net ([168.138.199.194])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b07c627260sm2564063a91.8.2026.11.02.22.12.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Nov 2026 22:12:04 -0800 (PST)
-Date: Tue, 03 Nov 2026 14:11:59 +0800
-From: Coia Prant <coiaprant@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>
-CC: Maxime Chevallier <maxime.chevallier@bootlin.com>,
- Jakub Kicinski <kuba@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>,
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, netdev@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net] net: pcs: xpcs-rk: limit advertised interfaces
-User-Agent: K-9 Mail for Android
-In-Reply-To: <48cb8a9d-622f-497c-a13e-bc679c764ce0@lunn.ch>
-References: <20261029094916.3127193-2-coiaprant@gmail.com> <c5fc86f9-3c43-4aee-8d88-92e8f88c6d5d@bootlin.com> <1B8D463D-1295-4BF0-972D-859C342E49F5@gmail.com> <48cb8a9d-622f-497c-a13e-bc679c764ce0@lunn.ch>
-Message-ID: <27E466B0-72FD-47BA-B952-68BF4A817A04@gmail.com>
+	id 1xO7kj-00000001CJW-29wJ;
+	Tue, 03 Nov 2026 06:12:13 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id A7C4A60008;
+	Tue,  3 Nov 2026 06:12:12 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1793686332;
+	b=PlZ8Y9DzSVYyhTOS3L7ouyJUi+MGz0dtNkErafGNAlEL/0knMpgng/Rw6P6dutNpkwv4
+	 HfNb8vqfF2flan3ch6cDnlmWSv5Dj2EVrp2EqDYmfWctQZ0oS5gQ0FPp6oNj81fhVVMJo
+	 Qvdk4BTyMofXKZVF1NAONCHmn7FhugOpIJg1daXxD1aOi35ZS+oJYw6cNoN0Es33AXWZc
+	 oAhy0i6doR+yAVPejPaoCJWK8oTM7ctB1mp8eqRxRhvs/cTu4iQa3TNS/EoEbBdtXWREh
+	 NvUipoNPeRN4D1kJGQfIqHnuKV5MIe1k0pqHgjRuvG1Y/jrY4/UpQIilzMuuXGkfmnQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1793686332;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
+	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=Y1vJsLmhajtmtrGk3CEdEpHpsAWbMQetVNtaJwsiq4w=;
+	b=fkRTo4XgQ22LOkr0zMSZW/lBkr88gCuiC60YvYPra1HgxuK7EDqi4zJfgOFODZiUXYsf
+	 DkJ+2hsZDJrIk4pTWlgi8hOx3Lt9np1c87ddGDzR3drBKIevh/XQoweWH7BmzyDjowIjD
+	 j80l363qK3O6py25TtVjtrZMnDubUdJPiX8jUkFyGM1vup7gjysf/ZV0u+5f5OECr7WuQ
+	 LHKGhZHAJJe2IznKFj9G0jK7esJGm0XKqVP4sfxB+CX/AENxmPCNEsgiM1pb3wGlukZGr
+	 Pefy6N2gwBgE6zdhEaiSdWbpeWX5EdULZNNs7V4juBLeMwVaq7ktMK6ezGD1bIiXOuQ==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id E1A3B1F000C1;
+	Tue,  3 Nov 2026 06:12:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793686332;
+	bh=Y1vJsLmhajtmtrGk3CEdEpHpsAWbMQetVNtaJwsiq4w=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=jiuVi9kIa7kbUZeA1VekrmQrLF4/586Mvzg1vh0wY+gG83jf972IWGcmnID6RJbir
+	 VtzX8iLG80PnjC8qKAcl/DPVLbp2+sBg9AcFQZHUO1BTUVbMGfamZC5ReNjysTUZUZ
+	 3l9VTNkqBVzDp6HpyxNuzc4JUXLmFzN5Wljk8utPhK7G/tzrcglCloKJNZOqoaC07g
+	 D295hfwByKp+/kog7LURI/G3aQtIzRQuuZYSxKWKvziL1of0ZfM5cLaoRPSRaIlRUw
+	 gRPOznZZ6wVnQqo/My8H1uOxGs7eewU94KCBhhmcgxU/DBNxvroi914GdM1vw/vnBb
+	 6YjQFr1FbhrcA==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 6F259467C4;
+	Tue,  3 Nov 2026 06:12:11 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Tue, 03 Nov 2026 06:12:10 +0000
+Subject: [PATCH] arm64: dts: rockchip: Enable SD UHS-I modes on ROCK Pi 4
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_221206_406575_2CC8031B 
-X-CRM114-Status: GOOD (  18.38  )
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261103-rockpi4-sd-uhs-v1-1-fa394d2046e1@iav.lv>
+X-B4-Tracking: v=1; b=H4sIADl76WoC/x3MMQqAMAxA0auUzAZM1QpeRRykRhuEKg2KULy7x
+ fEN/2dQTsIKg8mQ+BaVIxZQZcCHOW6MshSDra0jqhtMh99PaVEXvIJix448sV9d30KJzsSrPP9
+ wnN73A0g3Bx1gAAAA
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2365; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=az5m2/WqrCJ/+LWcDbyXHuHBZoPgNzj0Wuk5JL5JV+Q=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFkvq61Wa6jZcBwxnsSReEeXM+R2AMdDY4XN5v1hgZP4W
+ TtjJ7zqKGVhEONikBVTZJlwSONWxpKrf/09zB/AzGFlAhnCwMUpABPJ/8vwVyK5nP38C3nbF7cd
+ g6OCWgqVjzNzuhZxqF6985JffvP8UEaGZqu9q/eGewl3cCT3PdWeLemz/F192n4lmduCdi93vsl
+ iBwA=
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,75 +108,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On November 3, 2026 10:54:57 AM GMT+08:00, Andrew Lunn <andrew@lunn.ch> wrote:
->> Hi Maxime,
->> 
->> You're right that for modes the PCS does implement, the limit belongs
->> on the MAC side. The complication is that the compat table describes
->> the whole Synopsys IP set, while a given XPCS instance only implements
->> a subset of it. That is a historical design issue in pcs-xpcs: the
->> table mixes C73, C37, 2500BASE-X and 10GBASE-X entries, but different
->> integrations implement different subsets.
->> 
->> On RK3568 the XPCS instance is wired up for the C37 SGMII path only.
->> 1000BASE-X is part of the same C37 core, but I don't have a PHY to test
->> it against. QSGMII is not implemented in this core. 2500BASE-X and
->> 10GBASE-X are separate modes the shared table carries, and neither is
->> implemented on this SoC. C73 is not wired up either.
->> 
->> Trimming the mask is not limiting the PCS, it is cutting the shared
->> table down to what this instance actually implements. A
->> platform-specific glue is the right place to do that.
->
->Are there any registers which describe how the PCS was configured at
->syntheses time?
->
->	Andrew
+From: Igor Velkov <iav@iav.lv>
 
-Hi Andrew,
+The SD I/O supply vcc_sdio (RK808 LDO4) is pinned at 3.0 V, so the
+card stays in high-speed mode at 50 MHz. Let dw_mmc switch it to 1.8 V
+and enable SDR12 to SDR104.
 
-Yes, looking at the `xpcs_identity` code, the core does probe different
-MMDs to get the rough type: PMA/PMD MMD for C73 and VEND2 MMD for C37.
+The card supply is not switchable, so after a watchdog reset or a
+panic the card and vcc_sdio are still at 1.8 V. Linux and U-Boot proper
+boot from the card in that state; U-Boot SPL loading from it has to set
+the SD I/O domain from vcc_sdio, as it does on NanoPi 4 since U-Boot
+commit 210ab4f60df8.
 
-However, even if we determine it's a C37 or C73 block, that only gives
-us the rough family, not the exact feature set. For example, a VEND2
-(C37) block might not implement 2500BASE-X, and a PMA/PMD (C73) block
-might not implement 10GBASE-R. The MMD ID itself doesn't tell us which
-of these sub-modes were actually synthesized and wired out.
+On ROCK Pi 4A with a SanDisk 256 GB U3 card: SDR104 at 148.5 MHz,
+direct read 64-67 MB/s instead of 23.5 MB/s.
 
-Since I only have the Rockchip RK3568 PCS documentation, I don't want
-to blindly touch the global compat[] table in the core, as it could
-easily break other platforms (Intel, NXP, etc.).
+Signed-off-by: Igor Velkov <iav@iav.lv>
+---
+Tested on ROCK Pi 4A: v7.3.1 with this change, 3 cold boots in SDR104;
+the Armbian 7.3 kernel with the same change through reboot, panic,
+watchdog reset, s2idle and hibernate, SDR104 each time. Not tested on
+the other boards that include rk3399-rock-pi-4.dtsi (4A+, 4B, 4B+, 4C,
+4SE).
 
-That's why intersecting the platform mask with the core mask in the
-Rockchip glue is the safest approach for now.
+With PCIE_ROCKCHIP_HOST=y and an empty PCIe slot, tuning also needs
+https://lore.kernel.org/r/20261103-rockchip-pcie-async-v1-1-4dcadb94af64@iav.lv
+The SPL side for U-Boot on the SD card:
+https://lore.kernel.org/r/20261103-b4-rock-pi-4-spl-iodomain-v1-1-8dfc34a5e2e2@iav.lv
+---
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-As a bit of context on where this is heading: currently, the PMA layers
-for wx, fbnic, and nxp are separate source files but are compiled into
-the generic core module, relying on a shared compat table. In a
-follow-up net-next series, I plan to split them into actual independent
-modules using an abstraction layer and their own xpcs_xxx_create()
-functions.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+index 52de4a79e2f4..3de1d14529c1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+@@ -356,7 +356,7 @@ vcc_sdio: LDO_REG4 {
+ 				regulator-name = "vcc_sdio";
+ 				regulator-always-on;
+ 				regulator-boot-on;
+-				regulator-min-microvolt = <3000000>;
++				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <3000000>;
+ 				regulator-state-mem {
+ 					regulator-on-in-suspend;
+@@ -696,6 +696,11 @@ &sdmmc {
+ 	max-frequency = <150000000>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdmmc_clk &sdmmc_cd &sdmmc_cmd &sdmmc_bus4>;
++	sd-uhs-sdr12;
++	sd-uhs-sdr25;
++	sd-uhs-sdr50;
++	sd-uhs-sdr104;
++	vqmmc-supply = <&vcc_sdio>;
+ 	status = "okay";
+ };
+ 
 
-This will allow other platforms (including Rockchip) to do the same
-mask intersection and PMA-specific setup without bloating the generic
-core with more and more platform quirks. Right now, dwmac-intel seems
-to be the only platform that completely relies on the generic core
-without a specific PMA module. So keeping the core generic and doing the
-narrowing in the glue is a safe, self-contained step that aligns with
-that future direction.
+---
+base-commit: 2974b78ee4302390eceb5f5983c00b3d66fc3c78
+change-id: 20261103-rockpi4-sd-uhs-5e61c1ecf674
 
-Coia
+Best regards,
+-- 
+Igor Velkov <iav@iav.lv>
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
