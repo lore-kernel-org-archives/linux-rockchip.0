@@ -2,71 +2,61 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 41223606A33B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 11:20:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 932E3606D817
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 11:49:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Fk1xtxf0;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=cvduDDQZ
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YvPaHnQs;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=mainlining.org header.i=@mainlining.org header.a=rsa-sha256 header.s=202507r header.b=bDm2GHYu;
+	dkim=fail reason="signature verification failed" header.d=mainlining.org header.i=@mainlining.org header.a=ed25519-sha256 header.s=202507e header.b=LR8s8ZiP
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Y8GMwq+uIhODx4lQXzTR++NVf9rSGIDNaGDi1BBdsqw=; b=Fk1xtxf08NJYpt6EHYepmk5+wX
-	asm/sn7QpE2EBUYhBzbuvDpyYZ6fB8rF9Gz/gWeN3Kf+N8jsJOaGZJhh1lxwbM+gBef9KTp+9c5kY
-	bYbLKdWxc2Ogf4+Y7BMut1s1UvL/rxX+qs385PToLlIvybkQYSngcQzS7Fe4twtdZadl4Bxwo0dpv
-	jfVCAeJ5b6BOFQCZoELMPVCxFUCehdPxx6VP13+lnEkNqhKebe8fUmwalxLqqwHVqbDVsU//E42Bk
-	/DRmCWvAjvoqiqQJCMwTPiFWcbYWRn9WdByRqWKuzj88JdHCvYbyqXDQkyA6IABbf/vhsZx8E3ST4
-	saQImcaA==;
+	bh=WsMg1iWlxk3VNIZQbrdbAdPnUxd1nfFeVzgvHaaN1h0=; b=YvPaHnQso3YAQ80HBHGorXhuQU
+	2Ib9VqlAnszf279BFBEJZEtHT0I+QAfIBqhoDDY/ADvBDMKQ9sX+RUAxgnUZfyDudNOKUVKLpeM6W
+	CTLEJ0zt8NLIYc55Uk+BxCjuEkxTERNVtw9wLWQXOL1luM59XQw/g3nN76urfZNNiB+GXV4yo9mYU
+	N1xFYiNE9NDpvM/gobZpvxW6T3JDFNtrkrNqwwXMvR+IvXCZBZSUqAaLqlABDWGd7UvY5DcOVT536
+	PbMJANBzIR2RYIomnhSiv/ACTlFvzqYAwRXuViloufGiKeG2ik2/Ymb1SCPVmVWOff9KneY1ETscC
+	mXKLgGVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOCZE-00000002AS3-2L2y;
-	Tue, 03 Nov 2026 11:20:40 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xOD0g-00000002GfX-3Oqg;
+	Tue, 03 Nov 2026 11:49:02 +0000
+Received: from mail.mainlining.org ([5.75.144.95])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOCZC-00000002ARf-1stL;
-	Tue, 03 Nov 2026 11:20:38 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id DC29C40DEC;
-	Tue,  3 Nov 2026 11:20:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 065261F000C1;
-	Tue,  3 Nov 2026 11:20:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793704837;
-	bh=df/ka3hamgjaUKhfYAOsJion0F8Ab0yDBy9+7Z4ounQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=cvduDDQZxZyJF2Qq6ztVTvOYgBgFer+hK8Q1ozeHu+XgPCP7Qz9v/n+tCUawdiICv
-	 6wSEfHFtkTTloMAjZT9Ec3j31MhEh1me0gnfj+qPlIo+MbXFsmpuzMWIObstYnzgDg
-	 MoTveK7XZtMkiPJbkI1Oth2WISYHsZJbKlFAwLMhVBkel52bO621CBpiuL/sd6IEGh
-	 AvFGOQtuZicVtsdhTSmN2uAjqz+Jgeadqt0bS/wIX9yBVtS5z7CJ6hWxjXQtTqiNxp
-	 ztNjJaEt93BPCWFhAHOmHm0GAWhWdCxrmGYQL8gVCSvym4Yg/H7nUIdgqkoaxT+ClP
-	 zGxO241skswPQ==
-Date: Tue, 3 Nov 2026 12:20:34 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Damon Ding <damon.ding@rock-chips.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, 
-	Dave Jones <s.dave.jones@gmail.com>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
-	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org
-Subject: Re: [PATCH v4 2/6] dt-bindings: phy: Add rockchip,rk3568-edp-phy
-Message-ID: <20261103-lemon-guillemot-of-economy-eefbbd@quoll>
-References: <20261030064905.2248999-1-damon.ding@rock-chips.com>
- <20261030064905.2248999-3-damon.ding@rock-chips.com>
+	id 1xOD0b-00000002GdV-2EpO;
+	Tue, 03 Nov 2026 11:48:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; s=202507r; d=mainlining.org; c=relaxed/relaxed;
+	h=Message-ID:Subject:To:From:Date; t=1793706530; bh=W0ZUFOadJC6PrSKEwszh5ok
+	V1YbbWnVO0ckCp82sIZI=; b=bDm2GHYuLgJgsv1tigyfg8wCCz8luzpaITA7dtAo4ZROwJSouD
+	nMZI9HWXSMsQ4c1P+5HOOR1iHzumvla4XuY6Fs2SiuI+dY0Zeco7bfChDKQV3eLI0m9kfKS5CE6
+	YPuHBb2yT2+lMPX1xhzU1uuXQn4POUfWdswS7iH2WNd112Fo9CT+oASA36d8FtsZ00bxnmr5ljf
+	SNwZSd0W7tfbEJ2AcOwh0jVqbd9TXx6Rjvy1kncVjKsDlEK2orHsqx/+L1i208BzkwfpehnHXmh
+	R1uidw8LHtD37sqfT883lblwSaeKQGLFrEM3Q2zPTsBJ46QmSSxJXQFyBtsJk9uXioQ==;
+DKIM-Signature: v=1; a=ed25519-sha256; s=202507e; d=mainlining.org; c=relaxed/relaxed;
+	h=Message-ID:Subject:To:From:Date; t=1793706530; bh=W0ZUFOadJC6PrSKEwszh5ok
+	V1YbbWnVO0ckCp82sIZI=; b=LR8s8ZiPGOLCPF9tLMbTdiWec6+ioKJ1ftUMcZwrMpaw+aerQh
+	0OkZAtuGQEP4rj7GBl0l41ut2Fpidf/OlFCw==;
+Date: Tue, 03 Nov 2026 11:48:52 +0000
+From: Bradley Morgan <brads@mainlining.org>
+To: daniel.lezcano@oss.qualcomm.com
+CC: akpm@linux-foundation.org, heiko@sntech.de,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, peterz@infradead.org, rafael@kernel.org,
+ tglx@kernel.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_1/2=5D_smpboot=3A_Allow_restr?=
+ =?US-ASCII?Q?icting_per-CPU_threads_to_a_CPU_mask?=
+In-Reply-To: <af37c4e7811a86adafb2064e7cf4aa4f5090ab4b.1793660202.git.daniel.lezcano@oss.qualcomm.com>
+Message-ID: <79AC1B3F-F158-4808-AD7E-70AE659E8DB5@mainlining.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261030064905.2248999-3-damon.ding@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261103_034857_746570_001F3C4E 
+X-CRM114-Status: GOOD (  15.51  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,156 +76,147 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Oct 30, 2026 at 02:49:01PM +0800, Damon Ding wrote:
-> Document the eDP transmitter PHY with NaNeng IP block found on the
-> RK3568 SoC.  The PHY has its own register window inside the eDP PHY
-> GRF, so its node is modeled as a child of the eDP PHY GRF syscon with
-> a reg property describing that window.  Also add the
-> "rockchip,rk3568-edp-phy-grf" compatible and the phy node reference to
-> the Rockchip GRF schema.
+On 2 November 2026 23:09:40 GMT, Daniel Lezcano
+<daniel.lezcano@oss.qualcomm.com> wrote:
+>smpboot_register_percpu_thread() creates a thread for every online CPU
+>and registers the descriptor for subsequent CPU hotplug operations.
+>There is currently no way to restrict these threads to a subset of
+>CPUs, even when the user only needs work performed on that subset.
+>
+>For example, an idle injection device targets a specific CPU mask.
+>Creating threads outside that mask consumes resources unnecessarily.
+>Supporting multiple such devices also requires each descriptor to
+>manage only the threads associated with its own CPUs.
+>
+>Add an optional CPU mask to struct smp_hotplug_thread and apply it
+>throughout the thread lifecycle. Registration creates threads only for
+>online CPUs in the mask. CPU bring-up creates threads for selected
+>CPUs that were offline at registration, while parking and unparking
+>are restricted to the same mask.
+>
+>Apply the restriction to thread destruction as well, both during
+>unregistration and registration failure cleanup. This is necessary
+>when descriptors with disjoint masks share the same per-CPU task
+>storage: tearing down one descriptor must not stop or clear threads
+>owned by another descriptor.
+>
+>The caller must keep the mask valid and unchanged until the descriptor
+>is unregistered. Callers sharing per-CPU task storage must ensure their
+>masks do not overlap and serialize ownership changes themselves.
+>
+>A NULL mask preserves the existing behavior, so current users continue
+>to manage threads on all CPUs.
+>
+
+This is simple as it gets, thanks.
+
+Reviewed-by: Bradley Morgan <brads@mainlining.org>
+
+>Signed-off-by: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
+>---
+> include/linux/smpboot.h |  4 ++++
+> kernel/smpboot.c        | 17 +++++++++++++++--
+> 2 files changed, 19 insertions(+), 2 deletions(-)
+>
+>diff --git a/include/linux/smpboot.h b/include/linux/smpboot.h
+>index 9d1bc65d226c..98c072eeaf24 100644
+>--- a/include/linux/smpboot.h
+>+++ b/include/linux/smpboot.h
+>@@ -5,6 +5,7 @@
+> #include <linux/types.h>
 > 
-> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> struct task_struct;
+>+struct cpumask;
+> /* Cookie handed to the thread_fn*/
+> struct smpboot_thread_data;
 > 
-> ---
+>@@ -27,6 +28,8 @@ struct smpboot_thread_data;
+>  *			unparked (cpu online)
+>  * @selfparking:	Thread is not parked by the park function.
+>  * @thread_comm:	The base name of the thread
+>+ * @cpumask:		Optional mask of CPUs on which to create threads. Must remain
+>+ *			valid and unchanged until the descriptor is unregistered.
+>  */
+> struct smp_hotplug_thread {
+> 	struct task_struct		* __percpu *store;
+>@@ -40,6 +43,7 @@ struct smp_hotplug_thread {
+> 	void				(*unpark)(unsigned int cpu);
+> 	bool				selfparking;
+> 	const char			*thread_comm;
+>+	const struct cpumask		*cpumask;
+> };
 > 
-> Changes in v4:
-> - Add the reg entry for the PHY node and the ranges/#address-cells/
->   #size-cells for the parent syscon node.
-> ---
->  .../bindings/phy/rockchip,rk3568-edp-phy.yaml | 68 +++++++++++++++++++
->  .../devicetree/bindings/soc/rockchip/grf.yaml | 20 ++++++
->  2 files changed, 88 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
+> int smpboot_register_percpu_thread(struct smp_hotplug_thread
+> *plug_thread);
+>diff --git a/kernel/smpboot.c b/kernel/smpboot.c
+>index 4503b60ce9bd..07857523a465 100644
+>--- a/kernel/smpboot.c
+>+++ b/kernel/smpboot.c
+>@@ -168,6 +168,9 @@ __smpboot_create_thread(struct smp_hotplug_thread *ht, unsigned int cpu)
+> 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
+> 	struct smpboot_thread_data *td;
 > 
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
-> new file mode 100644
-> index 000000000000..b78da00ffefd
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
-> @@ -0,0 +1,68 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/phy/rockchip,rk3568-edp-phy.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip eDP Transmitter PHY with NaNeng IP block
-> +
-> +maintainers:
-> +  - Damon Ding <damon.ding@rock-chips.com>
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +description:
-> +  On the RK3568 SoC the eDP PHY is controlled through the eDP PHY GRF
-> +  registers, therefore the PHY node is expected to be a child of the
-> +  eDP PHY GRF syscon node.
-> +
-> +properties:
-> +  compatible:
-> +    const: rockchip,rk3568-edp-phy
-> +
-> +  reg:
-> +    maxItems: 1
-> +    description: PHY registers within the eDP PHY GRF.
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  clock-names:
-> +    const: refclk
+>+	if (ht->cpumask && !cpumask_test_cpu(cpu, ht->cpumask))
+>+		return 0;
+>+
+> 	if (tsk)
+> 		return 0;
+> 
+>@@ -225,6 +228,9 @@ static void smpboot_unpark_thread(struct smp_hotplug_thread *ht, unsigned int cp
+> {
+> 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
+> 
+>+	if (ht->cpumask && !cpumask_test_cpu(cpu, ht->cpumask))
+>+		return;
+>+
+> 	if (!ht->selfparking)
+> 		kthread_unpark(tsk);
+> }
+>@@ -244,6 +250,9 @@ static void smpboot_park_thread(struct smp_hotplug_thread *ht, unsigned int cpu)
+> {
+> 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
+> 
+>+	if (ht->cpumask && !cpumask_test_cpu(cpu, ht->cpumask))
+>+		return;
+>+
+> 	if (tsk && !ht->selfparking)
+> 		kthread_park(tsk);
+> }
+>@@ -267,6 +276,9 @@ static void smpboot_destroy_threads(struct smp_hotplug_thread *ht)
+> 	for_each_possible_cpu(cpu) {
+> 		struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
+> 
+>+		if (ht->cpumask && !cpumask_test_cpu(cpu, ht->cpumask))
+>+			continue;
+>+
+> 		if (tsk) {
+> 			kthread_stop_put(tsk);
+> 			*per_cpu_ptr(ht->store, cpu) = NULL;
+>@@ -279,7 +291,8 @@ static void smpboot_destroy_threads(struct smp_hotplug_thread *ht)
+>  * 					    to hotplug
+>  * @plug_thread:	Hotplug thread descriptor
+>  *
+>- * Creates and starts the threads on all online cpus.
+>+ * Creates and starts the threads on online CPUs selected by the descriptor's
+>+ * cpumask, or all online CPUs if no mask is specified.
+>  */
+> int smpboot_register_percpu_thread(struct smp_hotplug_thread
+> *plug_thread)
+> {
+>@@ -308,7 +321,7 @@ EXPORT_SYMBOL_GPL(smpboot_register_percpu_thread);
+>  * smpboot_unregister_percpu_thread - Unregister a per_cpu thread related to hotplug
+>  * @plug_thread:	Hotplug thread descriptor
+>  *
+>- * Stops all threads on all possible cpus.
+>+ * Stops all threads associated with the descriptor, including offline CPUs.
+>  */
+> void smpboot_unregister_percpu_thread(struct smp_hotplug_thread
+> *plug_thread)
+> {
+>
 
-Just "ref"
 
-> +
-> +  "#phy-cells":
-> +    const: 0
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - clock-names
-> +  - "#phy-cells"
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/rk3568-cru.h>
-> +
-> +    soc {
-> +      #address-cells = <2>;
-> +      #size-cells = <2>;
-> +
-> +      edp_phy_grf: syscon@fdcb0000 {
-> +        compatible = "rockchip,rk3568-edp-phy-grf", "syscon", "simple-mfd";
-
-This is beyond the scope of this binding. Drop entire node.
-
-> +        reg = <0x0 0xfdcb0000 0x0 0x8000>;
-> +        clocks = <&cru PCLK_EDPPHY_GRF>;
-> +        ranges = <0x0 0x0 0xfdcb0000 0x100>;
-> +        #address-cells = <1>;
-> +        #size-cells = <1>;
-> +
-> +        edp_phy: phy@0 {
-> +          compatible = "rockchip,rk3568-edp-phy";
-> +          reg = <0x0 0x100>;
-> +          clocks = <&pmucru XIN_OSC0_EDPPHY_G>;
-> +          clock-names = "refclk";
-> +          #phy-cells = <0>;
-> +        };
-> +      };
-> +    };
-> diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> index 7bcb4e2f47ec..c089bd014003 100644
-> --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> @@ -93,6 +93,7 @@ properties:
->                - rockchip,rk3399-grf
->                - rockchip,rk3399-pmugrf
->                - rockchip,rk3562-pmu-grf
-> +              - rockchip,rk3568-edp-phy-grf
->                - rockchip,rk3568-grf
->                - rockchip,rk3568-pmugrf
->                - rockchip,rk3576-ioc-grf
-> @@ -119,6 +120,8 @@ properties:
->    "#size-cells":
->      const: 1
->  
-> +  ranges: true
-> +
->  required:
->    - compatible
->    - reg
-> @@ -156,6 +159,22 @@ allOf:
->            $ref: /schemas/phy/rockchip,rk3288-dp-phy.yaml#
->            unevaluatedProperties: false
->  
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3568-edp-phy-grf
-> +
-> +    then:
-> +      required:
-> +        - "#address-cells"
-> +        - "#size-cells"
-> +      patternProperties:
-> +        "^phy@[0-9a-f]+$":
-> +          type: object
-> +          $ref: /schemas/phy/rockchip,rk3568-edp-phy.yaml#
-> +          unevaluatedProperties: false
-
-Properties should be defined in top level. Here you only narrow them.
-
-This binding is getting close to unreadable/unmaintainable. Split new
-devices with children to their own binding.
-
-Best regards,
-Krzysztof
-
+--- Thanks!
 
 _______________________________________________
 Linux-rockchip mailing list
