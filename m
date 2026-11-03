@@ -2,70 +2,60 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DDAF9606D81A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 18:19:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 74C3A606A32E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2026 19:09:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bashXdXh;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=0leil.net header.i=@0leil.net header.a=rsa-sha256 header.s=20231125 header.b=DsXd0tFD
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hnpXkT0t;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=1QIv0Fjm
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=fPI6K92Q47w34Wg6WGJBAk3dCfQXLvsLNlIiqvcHr30=; b=bashXdXh50xCRE7DWEAUsz5eiS
-	nl39SriclutQgBk7KX8G52EZ+wr6aogaZTjdj8ee3JtLYKlADqmscIbNuA4eY+YEYUT0qbqv4F3ef
-	jSwRsLx22tKDlhIrud3mJx/68oUn1OSBWhqBrvl5658LTRj/t0Xi3rfVyXgE4TTCSZMjR5vffCkcB
-	ZzrJ4uH089lMZe1A3fWDZF6hfI+0k1U3qNQvUWRLk0mmM8P81gfzMA2IB887nKuV2jBastnqQwyr3
-	OGQuDeY3TzN1NPnWoGue0CZ8FaPrxzmqZo1aygwsMQd+tAXuGHanGGPU10UFvGKKW2YysHlHgxgbU
-	5y5H2K0g==;
+	bh=NML1fHdD3KJSrw20iRDbFJur1m5TaUATHD84mHF0U5g=; b=hnpXkT0tugzdhEZ5DNNMxjoa2D
+	khOusRXkWRpenPbm6pPezesHOIVfXgISkhChBUn08w9QiHDmm8lYGsNR87n2rQFkikEOVMzwVifnC
+	bwro2DA0TKj7iS7P8cSGb3LEt5AfoC8lwQL8fPnO7DwYItGsqzFe8FhVSBQVYqFh/XgUik7ce6rlL
+	jqlJYdW5nu+8wqGXpN87w1iBsCxdhk/9SKcSCDRZHDvEpzUEJu2NsSjgeh1h2cMgfWCf6eYOu05lz
+	bUXXJDb7YA4XahsSEk8iLW4b4nItaemQXHC2PNX45rIM03bPnC/cxEHt3LgXLkvGaa/bATP4Cp5Bx
+	awvVNqPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOJ6I-00000003Oo1-16DE;
-	Tue, 03 Nov 2026 18:19:14 +0000
-Received: from smtp-42ad.mail.infomaniak.ch ([84.16.66.173])
+	id 1xOJsW-00000003Uqe-1WIG;
+	Tue, 03 Nov 2026 19:09:04 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOJ6D-00000003OlI-3GAz
+	id 1xOJsU-00000003Uph-0AW7
 	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Nov 2026 18:19:13 +0000
-Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4jJxff68bgzkyT;
-	Tue,  3 Nov 2026 19:19:06 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0leil.net;
-	s=20231125; t=1793729946;
-	bh=MOf4jGoNjklui20b3tjGfAb5reyk40611yCdNTmL8YM=;
-	h=From:Date:Subject:To:Cc:From;
-	b=DsXd0tFDLTDRXX3RSqyLlcB1kW3IhvNccFTPnIAI9MNsLSqO9qNP0Vs4mUtBu/E5x
-	 fv/PF2FeyeNnamovPYIvlSII91vhuXpDLPSw8/XrlQ0MyTUd6pDcAFcX47FpKUX3p7
-	 fr+Sl/a5D+vQXNBQxC3OXLqKsvTWXcvNdKP9kpIbTA2IFW/3zPR7CFtZHUy+miu04S
-	 HPayaCPNIuz2g8Puj9gFKsi9Fu4qncciMG79Fuf7XCBpUgBsXP0Q/6XS98XwD49Wku
-	 /cyKq7brUT4mXjalsDI+jCHPRvXgq+XwEx9nAdpjxQuP8CCE0+1BOAT2M9PzG5Nhie
-	 0a6/TJtBedWQw==
-Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4jJxfd4ttrzfD0;
-	Tue,  3 Nov 2026 19:19:05 +0100 (CET)
-From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Tue, 03 Nov 2026 19:18:58 +0100
-Subject: [PATCH] arm64: dts: rockchip: support camera module on Haikou
- Video Demo on RK3399 Puma
+	Tue, 03 Nov 2026 19:09:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=R+P3IkoL4I5ZNgNuJJGHc28hYyVfwE/0EISTFVpNB28=; b=1QIv0FjmCBDhMcBIA6j2CeXlgG
+	X2AmJiqbdXSvExoFWs0UMYDqCg0UuC/ktXCfLwbeW6a4bHetxNrG9nR4rR/Xvk/n6qb2GndGr2VCB
+	YDqz0JQLwdZ2rwY039n5ZXwVPlcaovrUZe4ZTjWVotxnvFofUPkqGGqtrktC1wKG73oBSCqoDhGiS
+	hiQ5nyhBqvNWlyn1xtt37hRDJ+W8I1NZeTM+PwjRLGqHndrWQsmOcaO1Ey6CZEIk5XnQx+SiVRNkz
+	3ZNZf8ac20FVqPkQiTHKz9hBY5b/QK3wt+zy/Mlq1dm8dYjFFa9fvCFN8vuNPctnxOl8EuSmk0EsL
+	lyIzLQ0w==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: linux-rockchip@lists.infradead.org, Chris Morgan <macroalpha82@gmail.com>,
+ devicetree@vger.kernel.org, shawn.lin@rock-chips.com,
+ diederik@cknow-tech.com, michael.riesch@collabora.com, conor+dt@kernel.org,
+ krzk+dt@kernel.org, robh@kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: timer: rockchip: Add rk3568 compatible
+Date: Tue, 03 Nov 2026 20:08:51 +0100
+Message-ID: <2607835.uoxibFcf9D@diego>
+In-Reply-To: <PH0PR19MB9973388CD960185681A4C3E16DA5692@PH0PR19MB997338.namprd19.prod.outlook.com>
+References: <20261103153144.343764-1-macroalpha82@gmail.com> <3661431.qSoW2BAyJ8@diego>
+ <PH0PR19MB9973388CD960185681A4C3E16DA5692@PH0PR19MB997338.namprd19.prod.outlook.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261103-rk3399-puma-haikou-video-demo-cam-v1-1-9a49d97839b5@cherry.de>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXNQQ7CIBBG4as0s3aSUhIiXsW4oPBrx4bSgDQmT
- e8u6vLbvLdTQRYUunQ7ZWxSJC0N6tSRn9zyAEtopqEfjFK95jxrbS2vNTqenMyp8iYBiQNiYu8
- ih7MZYbR1VoFaZ824y/v3uN7+LnV8wr++YTqOD1jo+mCFAAAA
-X-Change-ID: 20261103-rk3399-puma-haikou-video-demo-cam-d86be639a91e
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>
-X-Mailer: b4 0.17-dev
-X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_101909_965959_F58EF441 
-X-CRM114-Status: GOOD (  13.08  )
-X-Spam-Score: -2.8 (--)
+X-CRM114-CacheID: sfid-20261103_110902_106478_F2B5E34F 
+X-CRM114-Status: GOOD (  17.72  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,139 +65,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Quentin Schulz <quentin.schulz@cherry.de>
-
-The Haikou Video Demo adapter has a proprietary connector for a camera
-module which has an OV5675 camera sensor and a companion DW9714 focus
-lens driver.
-
-This adds support for the camera module on RK3399 Puma module fitted on
-a Haikou devkit with the Haikou Video Demo adapter.
-
-Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
----
-Camera only works once the ov5675 driver is adapted[1] to work with
-24MHz MCLK. With the similar work done for RK3588 Tiger[2], we now have
-all our modules supporting the same set of features when used in
-conjunction with Haikou Video Demo.
-
-Same request as made in [2], please only merge this once the OV5675
-series[1] is merged.
-
-[1] https://lore.kernel.org/linux-media/20261026101646.2450051-1-heiko@sntech.de/
-[2] https://lore.kernel.org/linux-rockchip/20261026102027.2451025-1-heiko@sntech.de/
----
- .../rockchip/rk3399-puma-haikou-video-demo.dtso    | 55 ++++++++++++++++++++++
- 1 file changed, 55 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
-index 141a921a06e47..6c28e7e60ef28 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou-video-demo.dtso
-@@ -16,6 +16,7 @@
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/leds/common.h>
-+#include <dt-bindings/media/video-interface-devices.h>
- #include <dt-bindings/pinctrl/rockchip.h>
- 
- &{/} {
-@@ -100,6 +101,12 @@ &i2c1 {
- 	/* OV5675, GT911, DW9714 are limited to 400KHz */
- 	clock-frequency = <400000>;
- 
-+	focus: focus@c {
-+		compatible = "dongwoon,dw9714";
-+		reg = <0xc>;
-+		vcc-supply = <&cam_afvdd_2v8>;
-+	};
-+
- 	touchscreen@14 {
- 		compatible = "goodix,gt911";
- 		reg = <0x14>;
-@@ -122,6 +129,50 @@ pca9670: gpio@27 {
- 		pinctrl-names = "default";
- 		reset-gpios = <&gpio4 RK_PD6 GPIO_ACTIVE_LOW>;
- 	};
-+
-+	camera@36 {
-+		compatible = "ovti,ov5675";
-+		reg = <0x36>;
-+		assigned-clocks = <&cru SCLK_CIF_OUT>;
-+		assigned-clock-rates = <24000000>;
-+		clocks = <&cru SCLK_CIF_OUT>;
-+		avdd-supply = <&cam_avdd_2v8>;
-+		dvdd-supply = <&cam_dvdd_1v2>;
-+		dovdd-supply = <&cam_dovdd_1v8>;
-+		lens-focus = <&focus>;
-+		orientation = <MEDIA_ORIENTATION_FRONT>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&cif_clkouta>;
-+		reset-gpios = <&pca9670 6 GPIO_ACTIVE_LOW>;
-+		rotation = <180>;
-+
-+		port {
-+			cam_output: endpoint {
-+				data-lanes = <1 2>;
-+				link-frequencies = /bits/ 64 <450000000>;
-+				remote-endpoint = <&mipi_in_cam>;
-+			};
-+		};
-+	};
-+};
-+
-+&isp1 {
-+	status = "okay";
-+
-+	ports {
-+		port@0 {
-+			mipi_in_cam: endpoint@0 {
-+				reg = <0>;
-+				data-lanes = <1 2>;
-+				link-frequencies = /bits/ 64 <450000000>;
-+				remote-endpoint = <&cam_output>;
-+			};
-+		};
-+	};
-+};
-+
-+&isp1_mmu {
-+	status = "okay";
- };
- 
- &mipi_dsi {
-@@ -145,6 +196,10 @@ mipi_in_panel: endpoint {
- 	};
- };
- 
-+&mipi_dsi1 {
-+	status = "okay";
-+};
-+
- &mipi_out {
- 	mipi_out_panel: endpoint {
- 		remote-endpoint = <&mipi_in_panel>;
-
----
-base-commit: 05441d697f7f9a927264f4058cbbc6a03dfcac9d
-change-id: 20261103-rk3399-puma-haikou-video-demo-cam-d86be639a91e
-
-Best regards,
---  
-Quentin Schulz <quentin.schulz@cherry.de>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRGllbnN0YWcsIDMuIE5vdmVtYmVyIDIwMjYsIDE5OjA3OjE5IE1pdHRlbGV1cm9ww6Rpc2No
+ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgQ2hyaXMgTW9yZ2FuOgo+IE9uIFR1ZSwgTm92IDAzLCAyMDI2
+IGF0IDA2OjAxOjM3UE0gKzAxMDAsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+ID4gSGkgQ2hyaXMs
+Cj4gPiAKPiA+IEFtIERpZW5zdGFnLCAzLiBOb3ZlbWJlciAyMDI2LCAxNjozMTo0MyBNaXR0ZWxl
+dXJvcMOkaXNjaGUgTm9ybWFsemVpdCBzY2hyaWViIENocmlzIE1vcmdhbjoKPiA+ID4gRnJvbTog
+Q2hyaXMgTW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNvbT4KPiA+ID4gCj4gPiA+IEFkZCBj
+b21wYXRpYmxlIHN0cmluZyBmb3IgUm9ja2NoaXAgUkszNTY4IHRpbWVyLgo+ID4gPiAKPiA+ID4g
+U2lnbmVkLW9mZi1ieTogQ2hyaXMgTW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNvbT4KPiA+
+ID4gLS0tCj4gPiA+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdGltZXIvcm9j
+a2NoaXAscmstdGltZXIueWFtbCB8IDEgKwo+ID4gCj4gPiBQbGVhc2UgbWFrZSBzdXJlIHRvIGNo
+ZWNrIGdldF9tYWludGFpbmVycyB0byBjYXRjaCBhbGwgbmVlZGVkIHJlY2lwaWVudHMuCj4gPiAK
+PiA+ICMgc2NyaXB0cy9nZXRfbWFpbnRhaW5lci5wbCAtZiBEb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvdGltZXIvcm9ja2NoaXAscmstdGltZXIueWFtbAo+ID4gCj4gPiB5b3UncmUg
+ZXNwZWNpYWxseSBtaXNzaW5nIHRoZSBjbG9ja3NvdXJjZSBtYWludGFpbmVyczoKPiA+ICAgICBE
+YW5pZWwgTGV6Y2FubyA8ZGFuaWVsLmxlemNhbm9Aa2VybmVsLm9yZz4gKG1haW50YWluZXI6Q0xP
+Q0tTT1VSQ0UsIENMT0NLRVZFTlQgRFJJVkVSUyxpbiBmaWxlKQo+ID4gICAgIFRob21hcyBHbGVp
+eG5lciA8dGdseEBrZXJuZWwub3JnPiAobWFpbnRhaW5lcjpDTE9DS1NPVVJDRSwgQ0xPQ0tFVkVO
+VCBEUklWRVJTKQo+ID4gCj4gPiBhbmQgc29tZSBhZGRpdGlvbmFsIGxpc3RzOgo+ID4gICAgIGxp
+bnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmcgKG9wZW4gbGlzdDpDTE9DS1NPVVJDRSwgQ0xPQ0tF
+VkVOVCBEUklWRVJTKQo+ID4gICAgIGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9y
+ZyAobW9kZXJhdGVkIGxpc3Q6QVJNL1JvY2tjaGlwIFNvQyBzdXBwb3J0KQo+ID4gCj4gPiB0aGUg
+Y2xvY2tzb3VyY2UgcGFydCBkb2VzIG5vdCBzZWVtIHRvIGhhdmUgYSBkZWRpY2F0ZWQgbGlzdCwg
+c28KPiA+IGxpbnV4LWtlcm5lbCBzaG91bGQgYmUgaW5jbHVkZWQuCj4gPiAKPiA+IAo+ID4gSGVp
+a28KPiA+IAo+ID4gCj4gCj4gSSBhcG9sb2dpemUsIHNvcnJ5IGFib3V0IHRoYXQuIEkgYXNzdW1l
+ZCBzaW5jZSBJIHdhcyBvbmx5IG1vZGlmeWluZyB0aGUKPiBkZXZpY2UtdHJlZSBhbmQgYmluZGlu
+Z3MgSSBkaWRuJ3QgbmVlZCB0byBjb3B5IHRoZSByZXN0IG9mIHRoZSB0ZWFtcy4KPiAKPiBTaG91
+bGQgSSByZXN1Ym1pdCB3aXRoIHRoZSBhZGRpdGlvbmFsIG5hbWVzPwoKdmVyeSBsaWtlbHkgLi4u
+IGkuZS4gdGhlIGJpbmRpbmcgaXMgZ2VuZXJhbGx5IGdvaW5nIHRocm91Z2ggdGhlIGRyaXZlci10
+cmVlCmhlcmUgdGhlIHRyZWUgaG9sZGluZyB0aGUgY2xvY2tzb3VyY2UgZHJpdmVycy4KCkZvciBt
+ZSB0byBhcHBseSB0aGUgYmluZGluZywgSSdkIGRlZmluaXRseSBuZWVkIGFuIEFjayBmcm9tIHRo
+ZSBjbG9ja3NvdXJjZQpwZW9wbGUuCgoKSGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
