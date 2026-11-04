@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DEE4F60A2603
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 18:57:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57E3F60A2603
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 18:57:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ds8u+xdG;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=SFrBic4t
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=AKThQQns;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Kj23PAKK
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,45 +14,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=4gku/92QpgyR9tZCkL82CtPTY+lyjPUY3hAZ4MZqzGs=; b=ds8u+xdGexJd90YPckd2JJF2Xe
-	uTaa8yt2ueeA/wWREtjAkukxklemuzbB6h2tS4l+oU3YMuOgBO2Rh+jemYFpIT0nqVQacRlrWtZeX
-	FiwYsPCB7TmfnQGp1tiTi8VlwhMriGleZRsTOmXKFiY+j+x9Ov5u0tD4umW1sasHZfp/+UkDwk5rC
-	lS9q2Sc+C7adpd2yR1ijeaD2j5ToCESkcC0ohb7MAp19g93fMl8JwigQhkON0cjA4yj3MLbw9A+OB
-	IcPr4srudAodnAzxsOni69ai3a/wBZlw7k+Or33FaRoCttvlu83gMYH1MaSJKDwdQsuQHTBS0+/3a
-	P8B1Dzng==;
+	bh=8VMCr6fiUQexxdG82NKBeuhiHQCHj1pAe9l0tj3MXP0=; b=AKThQQns3YUKVeRlFuP+/+qBjX
+	AKzUNQg095BhA7ufDcGx11lLA8P+nKayyn/emWmu7wNvQTobC1zrwwzYGQx0pt/3BwqE1ryyHy6zq
+	89QY7Ttck8VADb1YWHHH/nkvhg24l7s/0u9olyQpgGeWRJ4ClaxHCO6TFEcPQCDnQjRBAXBzwj4Th
+	1xqktOkLWy6zcKV9rvH43dzH7uCnrQNpaDyoAswlJcfKknfZsqFj+K/Tl5UpNNu8xZxrBxWX3dnNT
+	pPHGDcw83MDVUu7cn1Cz8ysdZ1lAFMDDrEaalt9wzfmLYTE97NMBJse1DaHNObYDWslqxaSul0Jq4
+	n8JqXPNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOgAT-00000006Tbe-2Gwx;
-	Wed, 04 Nov 2026 18:57:05 +0000
+	id 1xOgAT-00000006TcH-47ez;
+	Wed, 04 Nov 2026 18:57:06 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOgAC-00000006TAV-3KvF;
+	id 1xOgAC-00000006TAa-43Bv;
 	Wed, 04 Nov 2026 18:56:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1793818601;
-	bh=GczlrlSFkHiqrrX9Y3QEUwY7ZHJWrJRujiffW61qc0U=;
+	bh=37OzYgJd/FguDZgdiGLTdbD5NRnqgBixtKnp3Gppbnw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=SFrBic4t1eXyGx+5C6OuUWS0cTNtTdxhuMiuef0fPcrf/A4aBCjSo7ohuNJHV5Oi7
-	 9PZ2VM51CgjZSd6BZ/RmMhnCDqLgjZdZOOUl75sVNaun7OJl8nH0LdzJAfime8ryQ8
-	 UMQX1RWSvTpsKSXAn2/DjnzlPqxATQVf7khhbcyzJeJZw7EHE0mwSP30KlJMrlMNpr
-	 N6QeTMXbIE82/2c6CfCxE/spYc0mZD+nd8DcxN9wtI9r9Wg90+wFXB6Qsg2LHj4SkW
-	 SG7eg4qgKZhj8EprrOdPxqA7th/Wsqsc5FYQ/PGhOVgVnvtAimQ8Ji1gNrhUp0tuSt
-	 F7dXL9Pgde7fg==
+	b=Kj23PAKKgxk8193z+Ad4Z6yH9BCbfv9UgOszvW5tL3E/0TMazt6llUK8iZqoksY1D
+	 3VXSnu4q2VkTqsQA+8L4e/6hqNCG0NNHJ20IExmonW7+D4a7EqazHnWspC6Ah+4hco
+	 tY+eq4kf7w9CdDjMrutG+ZC9FM9+LP24T20G71fjEUeGVZFNyfbhjKG7aAo68mrFrl
+	 7ZtKZ12/IeXzk3otksJ/+vdHe1jpo8GiUrkaPzP9p/AIJZ5bl4aL2AlNGTgm8wNiCG
+	 GnkJz7Disnmnf6F3sPuvmzhdKRo35o+y/iDiIaoo6k78QN5YmOm/tIVajsJ4IX/mfD
+	 eBV8QsrrXTK2Q==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 800C317E0D5D;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 811A917E0D69;
 	Wed, 04 Nov 2026 19:56:41 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id DE14E48003A; Wed, 04 Nov 2026 19:56:40 +0100 (CET)
+	id DFC5948003D; Wed, 04 Nov 2026 19:56:40 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Wed, 04 Nov 2026 19:56:45 +0100
-Subject: [PATCH v7 07/10] PCI: dw-rockchip: Add pme_turn_off support
+Date: Wed, 04 Nov 2026 19:56:46 +0100
+Subject: [PATCH v7 08/10] PCI: dw-rockchip: Set broken L1SS resume flag
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261104-rockchip-pcie-system-suspend-v7-7-6ae6875939a2@collabora.com>
+Message-Id: <20261104-rockchip-pcie-system-suspend-v7-8-6ae6875939a2@collabora.com>
 References: <20261104-rockchip-pcie-system-suspend-v7-0-6ae6875939a2@collabora.com>
 In-Reply-To: <20261104-rockchip-pcie-system-suspend-v7-0-6ae6875939a2@collabora.com>
 To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
@@ -69,26 +69,26 @@ Cc: Alexey Charkov <alchark@flipper.net>, linux-pci@vger.kernel.org,
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3089;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1696;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=GczlrlSFkHiqrrX9Y3QEUwY7ZHJWrJRujiffW61qc0U=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrrf+gDBSftcDt0P5H30RR+S7GTqENWYtMho
- ys28ohmI673VYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq63/oAAoJENju1/PI
- O/qaUjQP/A+Vxv1HvRzfFOQK4QrH+eydQJky/u71WFdEcC43tVCwZ34gtuqzeGKRKUijzBqYDzg
- QaEXuQ1LNhGLxH4FbS31EgeQVp//+hjQjX8IBfq6PncFTCI2uM2ttY9SxujYDQQkeYBr2IQaTdJ
- z6/uw6DcX4nbpifW8ZT1tBJO4pAtvy4soTiZJ4qXKGc1PDNdgrMtXfGKffstrtu9gf9iIZXGmsL
- xtaj7PJ7wm9xyvKkwJAtBlBN2iODpMB4bvHO4PYvD4GrKtOuPM1cfVXp7YoGCeb2QUY04oMAAQr
- 6efMCb3JqJyMlAWUQ87cUfIIkhZcx5YjJ3SNVKuA1O8AJJhx3sosEqYcE4ymJdxGAb7VPKrzFMx
- xcvk6/h9uCLAqhxR5UoGTxzosYbwgTWJyaFbvqf3iuPM30PZIiBd4sytgUHH2tVP66WSStV4Abl
- 4wL1tkph1DkhikKuV7OvJu8JFqe9o6nS42CTzq9tIerzcfc4wXidIeh5F9/T1yg4WkjBU3DWGeI
- aCy0cFsMdrXQCVdoSStp4ZmUZPUgoDJTKJsIODYxdUVjizR3TUx1Y7EagL5UWAmYt9/naprvY5I
- Y23Q6v6rnMd3sYR1T2iedxWAr25V8m/L2Z0qkf0LIlR3QMhWiMRNkPclxvUC3IOU/NvMtvimlqW
- +xLo1T8ZZcZLV3pwxy0Aujg==
+ bh=37OzYgJd/FguDZgdiGLTdbD5NRnqgBixtKnp3Gppbnw=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrrf+hwNqc6k5R8mkHwP5aYKZKop3SBXtEdB
+ dDcYAbGx2JqJ4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq63/oAAoJENju1/PI
+ O/qapYQP/0gRB0zlUGjyiF4uEm6a1cPbII10jJOjeenY5wZ21HQXW5aOXeMXQjs9S9yg4JKF9os
+ txLBugUNV2EogdYsHMh5EN+Pccrq45SuaFC++B8IlZ88b/2VwZAWDztmRH+9lHEg94mS6V1nMsv
+ 3kTdLyiqtIZZJij2tflipjrYWo4H+5YMTLJuexrPX/K2YizooBZ0TfM65w1sVkjG2ABaWGscj0R
+ 09Y9TpDVPRlRuenco5b7ujRysrkLpYkWdvD5Xmxf4qn8Sn1ZPWDbrmbs4NMRXQX4LSMmAacsUUD
+ utPAJv0Fct+XHzdy7eseXusS1bAolVCsdMJlh5Z7q64B2hFCZnz9us15kQ357Em0bBOtd+bFway
+ g0JFv3C+1VrgWPTBjBrua+XMZzvpzF40Aj/Vznt/lPUn1yQpjk6OL07jofo23wW9r+ujhFhxCPR
+ dntpTyhtUBrFhPRXbsWW/b+eXHtG5eyLXFLvBmMcsSGRlhn7DSJwXQO99oP/7/Ci/E7pjkJrW33
+ TrvdTPwjmoyqkFjqMOIJZBEF7qb7uOrh8vvm/UL4+VJTtQwKsb3gVD4Pwlt4ACjbFHYV+kzaByA
+ oWC4AFB7BONbg/hyGy0PaFiS3I6TUi47w+mHY2Fbdn+yu2Sz4qRX57Kf2LKbJduwhJvsHJgAPtA
+ BNOMs248okKMpJURi5TU8jw==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_105649_074581_43C07ADD 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20261104_105649_261092_9A6A2E83 
+X-CRM114-Status: GOOD (  12.52  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,88 +109,46 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Prepare Rockchip PCIe controller for system suspend support by
-adding the PME turn off operation.
+During system suspend, the Rockchip RC driver effectively powers off the
+controller. If the link is in L1SS and the endpoint asserts CLKREQ# to
+exit L1SS, the time required to wake the system and restore the
+PHY/REFCLK may exceed the L1SS exit timing (L10_REFCLK_ON +
+T_COMMONMODE), resulting in Link Down (LDn) and a reset of the endpoint.
+Set broken_l1ss_resume flag to indicate this limitation to the PCIe
+framework. This results in pci_suspend_retains_context() returning false
+and PCIe client can avoid relying on device state being preserved
+during system suspend.
 
+Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 47 +++++++++++++++++++++++++++
- 1 file changed, 47 insertions(+)
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index f089dab4acf0..417e6fbbfe09 100644
+index 417e6fbbfe09..2e759f92b5c6 100644
 --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
 +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -47,6 +47,10 @@
- #define  PCIE_CLIENT_ENABLE_LTSSM	FIELD_PREP_WM16(BIT(2), 1)
- #define  PCIE_CLIENT_DISABLE_LTSSM	FIELD_PREP_WM16(BIT(2), 0)
- 
-+/* Interrupt Status Register for Received Messages */
-+#define PCIE_CLIENT_INTR_STATUS_MSG_RX	0x04
-+#define  PME_TO_ACK			BIT(9)
-+
- /* Interrupt Status Register Related to Legacy Interrupt */
- #define PCIE_CLIENT_INTR_STATUS_LEGACY	0x8
- 
-@@ -71,6 +75,11 @@
- #define  PCIE_CLKREQ_READY		FIELD_PREP_WM16(BIT(0), 1)
- #define  PCIE_CLKREQ_NOT_READY		FIELD_PREP_WM16(BIT(0), 0)
- #define  PCIE_CLKREQ_PULL_DOWN		FIELD_PREP_WM16(GENMASK(13, 12), 1)
-+#define  PME_READY_ENTER_L23		BIT(3)
-+
-+/* Message Request Register */
-+#define PCIE_CLIENT_MSG_GEN		0x34
-+#define  PME_TURN_OFF			FIELD_PREP_WM16(BIT(4), 1)
- 
- /* RASDES TBA information */
- #define PCIE_CLIENT_CDM_RASDES_TBA_INFO_CMN	0x154
-@@ -439,8 +448,46 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
+@@ -448,6 +448,11 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
  	return 0;
  }
  
-+static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
++static void rockchip_pcie_host_post_init(struct dw_pcie_rp *pp)
 +{
-+	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
-+	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-+	struct device *dev = rockchip->pci.dev;
-+	u32 status;
-+	int ret;
-+
-+	/* 1. Broadcast PME_Turn_Off Message, bit 4 self-clear once done */
-+	rockchip_pcie_writel_apb(rockchip, PME_TURN_OFF, PCIE_CLIENT_MSG_GEN);
-+	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_MSG_GEN,
-+				 status, !(status & BIT(4)), PCIE_PME_TO_L2_TIMEOUT_US / 10,
-+				 PCIE_PME_TO_L2_TIMEOUT_US);
-+	if (ret) {
-+		dev_warn(dev, "Failed to send PME_Turn_Off\n");
-+		return;
-+	}
-+
-+	/* 2. Wait for PME_TO_Ack, bit 9 will be set once received */
-+	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_INTR_STATUS_MSG_RX,
-+				 status, status & BIT(9), PCIE_PME_TO_L2_TIMEOUT_US / 10,
-+				 PCIE_PME_TO_L2_TIMEOUT_US);
-+	if (ret) {
-+		dev_warn(dev, "Failed to receive PME_TO_Ack\n");
-+		return;
-+	}
-+
-+	/* 3. Clear PME_TO_Ack and Wait for ready to enter L23 message */
-+	rockchip_pcie_writel_apb(rockchip, PME_TO_ACK, PCIE_CLIENT_INTR_STATUS_MSG_RX);
-+	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_POWER_CON,
-+				 status, status & PME_READY_ENTER_L23,
-+				 PCIE_PME_TO_L2_TIMEOUT_US / 10,
-+				 PCIE_PME_TO_L2_TIMEOUT_US);
-+	if (ret)
-+		dev_err(dev, "Failed to get ready to enter L23 message\n");
++	pp->bridge->broken_l1ss_resume = true;
 +}
 +
+ static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+@@ -487,6 +492,7 @@ static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+ 
  static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
  	.init = rockchip_pcie_host_init,
-+	.pme_turn_off = rockchip_pcie_pme_turn_off,
++	.post_init = rockchip_pcie_host_post_init,
+ 	.pme_turn_off = rockchip_pcie_pme_turn_off,
  };
  
- /*
 
 -- 
 2.53.0
