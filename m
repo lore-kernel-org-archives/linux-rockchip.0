@@ -2,156 +2,92 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 937AE606EE91
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 23:02:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 40414606A329
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 23:08:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GkUZrE7u;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=AffaDmK1
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=M0Ykhauo;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=QcFwN6/k
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Km6J0tbuOghtRrlhRITw/ROInvq/cDWRB5X/a0POwWg=; b=GkUZrE7u/mXpJdoRdASEgUC5Zu
-	ONfwEppP6TFikvHJTCdrrFAeEopra/J/ez4j0TDGlIMBiSDDkwQcQ+IgTiUVc5lmJf13z21ynamUv
-	bp3AD1VUWe0tkbRF939Bsn7aUEOtPcYs1Ngztt/DxAsOCkCPUTexmL2G4Hl/A1liaShvRlUJUgGeQ
-	VkkioGdkyj3aN9c216izBUjnibuuN/5hcIh3Gxc1fFRPe/poM0c7lgsUcvIoiNPgc0LRQvMqVZnK+
-	4CtQ9T4pUxS94Y7yyrBP4jO/3UQ2+nDK+o2O3mOSqDq5gmOlM+Y0YLs2fPlRaLS0akp3vbz3y5i3g
-	bBIm2rDQ==;
+	bh=XqbmBwqI/G2aXTqNU+bOOCigRWd6UbEyC42ccC785i0=; b=M0YkhauoH9BBAJ+1NGz8GVgQY8
+	qrVcL4Oyy7Mq4FepMB5hsvDymgMYLvygpPItVPWor0c9rqLjRhuc3WNZ8NraAIQj/dUpsPkO7KEkF
+	F2CjsRO0Ng+UgcW3IDTiIpbEcPhJxbo5FmUnJlp+wx7xmfHdHnCsF4kBsYLHv5RVi1MzWHI48OwtD
+	0I3NEYz+jvxbGBHT1NNGfeOnKTB31pjcTBGfxWTBwseYsL6ibBhtlBievwXU+5H8PEK+nxOBXtnML
+	L2mQ3wOVEq9Up+nD02wZXuxUMr3+6W4tpUSfGRQryMxZbM1PaiR0nXVgXhAIWLkKcIN+03wsX7PHA
+	xYvWLWgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOk0E-00000007D3H-00Ta;
-	Wed, 04 Nov 2026 23:02:46 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xOk5U-00000007DYI-0aQa;
+	Wed, 04 Nov 2026 23:08:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOk0A-00000007D2M-0gxd;
-	Wed, 04 Nov 2026 23:02:42 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7516143B25;
-	Wed,  4 Nov 2026 23:02:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FCD91F00A18;
-	Wed,  4 Nov 2026 23:02:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793833361;
-	bh=faVYG+5p25QPZ5jO9MjUiu/Ltiks8UpOg4pXnPN3sY4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=AffaDmK1nAJFIZOcKFXhI7ch/PjsnP05KdrAgKQZEp0GZxvC8P8mAoNxhBYDNJjgU
-	 nCAIj5t25AYXI9KGygKBLo5baE4wkhhsoEha81JuexT/xyEi2Zr++TchPgoCymcDef
-	 r3ZZBRICCyliFRdQW/gb90PWic3BEY1oQQr7xnQqhaFHMccTlCBhFJcSbMeieg7HW9
-	 rk8I8oAhTJS7C6RFfg5PrRSiDryhmpg4zNj1rs6IbOuwVLoj/CSHbkdY+4dccrv5ti
-	 SeaN5K5vRzV5lM4KNj4VXdDQKev+Wqm+CphEC4lmHL3H+WC0SN/q5UFVSJBoIGqEPj
-	 WRW4500FxKHNg==
-Message-ID: <fbcb650d-0f60-468d-b1cc-255ea8a93db3@kernel.org>
-Date: Thu, 5 Nov 2026 00:02:21 +0100
+	id 1xOk5Q-00000007DUp-0IBK;
+	Wed, 04 Nov 2026 23:08:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1793833685;
+	bh=sBmcSlXO+5ghD+tdjwD3ULgEcdtciNYZ7X7GzWVXW4Q=;
+	h=From:Subject:Date:To:Cc:From;
+	b=QcFwN6/khmMWJFxJXIV4VLDmy6RdKzZcBa9R/a1OliI9WZOEsnceGWd4nsxGP3KbC
+	 mooAFqHLYT41Cfy6Q+6WkAwbiX/JrJ8JtLf3ILmmnQHaU5J5GyH/kYs0IgJZEIkzxj
+	 RCDYmKls6LlUxa3yvwlQMEKfuNa6CAmdCcxcnqCTL9sxwqGyFVge4WXAW6ulAp8V4P
+	 7Y/KiSZ5w12XSJvYXRTVcUAEhxwCEsdCJwX8qs9zlPW1LFi7abl55TYkXNfl+N+Auc
+	 y2gOhlTHqZewKn3WCeWlWPIrl2bsg/T21a1vCSlYzlOYowIBWjf8L/rR4BGmFklzfA
+	 INcizRHdPAFZQ==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 943AF17E05A6;
+	Thu, 05 Nov 2026 00:08:05 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 576B448002B; Thu, 05 Nov 2026 00:08:05 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH v3 0/4] phy: rockchip: inno-usb2: ensure PHY is running
+ when clock is requested
+Date: Thu, 05 Nov 2026 00:07:56 +0100
+Message-Id: <20261105-phy-rockchip-inno-usb2-clock-fix-v3-0-b20608c08b94@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/1] spi: use dmaengine_desc_set_callback()
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Frank.Li@oss.nxp.com, Mark Brown <broonie@kernel.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Radu Pirea <radu_nicolae.pirea@upb.ro>, CL Wang <cl634@andestech.com>,
- Ryan Wanner <ryan.wanner@microchip.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>, Ray Jui
- <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Vladimir Oltean
- <olteanv@gmail.com>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Han Xu <han.xu@nxp.com>,
- Haibo Chen <haibo.chen@nxp.com>, Linus Walleij <linusw@kernel.org>,
- Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>,
- Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>,
- Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
- Andi Shyti <andi.shyti@kernel.org>, Tudor Ambarus
- <tudor.ambarus@linaro.org>, Peter Griffin <peter.griffin@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Yixun Lan <dlan@kernel.org>,
- Troy Mitchell <troy.mitchell@linux.spacemit.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Alain Volmat <alain.volmat@foss.st.com>, Chen-Yu Tsai <wens@kernel.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Laxman Dewangan
- <ldewangan@nvidia.com>, Thierry Reding <thierry.reding@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Sowjanya Komatineni <skomatineni@nvidia.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>,
- "moderated list:ARM/Microchip (AT91) SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
- <linux-rpi-kernel@lists.infradead.org>,
- "open list:FREESCALE DSPI DRIVER" <imx@lists.linux.dev>,
- "open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- "open list:RENESAS RZ/V2H(P) RSPI DRIVER"
- <linux-renesas-soc@vger.kernel.org>,
- "open list:SAMSUNG SPI DRIVERS" <linux-samsung-soc@vger.kernel.org>,
- "open list:RISC-V SPACEMIT SoC Support" <linux-riscv@lists.infradead.org>,
- "open list:RISC-V SPACEMIT SoC Support" <spacemit@lists.linux.dev>,
- "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>,
- "open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
- "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
- Mukesh Kumar Savaliya <mukesh.savaliya@oss.qualcomm.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Thierry Reding <treding@nvidia.com>
-References: <20261104152253.3279052-1-Frank.Li@oss.nxp.com>
- <b656861c-a087-4087-952e-91fd15fadd52@kernel.org>
- <auuZHTvr5UI9Q9Q4@ashevche-desk.local>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <auuZHTvr5UI9Q9Q4@ashevche-desk.local>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/5WOyw6CMBBFf4V07Zi2WB6u/A/jgpapVJGSFhoJ4
+ d8tmLhwpctzc+fcmYlHZ9CTYzITh8F4Y7sI6S4hqqm6K4KpIxNOeUZLWkDfTOCsuqvG9GC6zsL
+ oJQfVxgy0eQLWdSakyHVRHEjU9A5jvE2cL2/2o7yhGlbv2miMH6ybth8CW3t/zAUGDHRei1KlT
+ MaTk7JtW0nrqr2yD7JOBv6RMkrZD1IOFJAyqQUtU1Hit3RZlhdw8rv0OwEAAA==
+X-Change-ID: 20260908-phy-rockchip-inno-usb2-clock-fix-edd65b57f884
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Igor Paunovic <royalnet026@gmail.com>, kernel@collabora.com, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2374;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=sBmcSlXO+5ghD+tdjwD3ULgEcdtciNYZ7X7GzWVXW4Q=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrrutXrIAHNh8u7a5iUg7BEu8xsZX/zLLidc
+ 8BCQa30eflbtokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq67rVAAoJENju1/PI
+ O/qavmoQAIQ8hE9uq5pgAFBAuXP8C2nGlE4UIcbWSEXrJqw5XkXhcF3M0gIu2F/4CBgWRz5uU9S
+ 3LOlYz9CWa76ZJxZQZD5fF0hxvIdZxhkxazgRt0IB/eVa+7luPruk+2Z6F67RzbGinWjlBQxpOS
+ dw28zNF3jwwDMbfcpO6cCM2G/YN7dXfSOlkN9dDBm+WlBPIGYWTDrGr8HMvgnJ0iWvRTagfWGYD
+ zG/DWyQ69LRlNRi39Y8I2nK55uQKwxK2qwxjc6pAJd3Nqr0iZPTlxoHb4z4D2jegCxO2xWIBHDu
+ phw/bYGV3ZtNoJ/liS5k5Y6Ni6SeTG7m5PL364rFSkfRfrzg817ltuD6lYLbPCC4wh2z5NaPh+S
+ 9Fl9FKfT0uuIPkYWPf6oj9TO1H1pcMhCQSq/hPPgH8J0LMhHFupodwWojX4sA/uyVPJd7knRSz4
+ L8k5oLMYbSqOcPxS+IVsPfOnniBfrce9cz1f4pRAeenKqWsBCD6B2NqgE4bRwA7LbG49ifSxm7F
+ nnt80t9i/WxV8PY746PdTsRdxeof0G//h7adZva8WhdAfNAVyD+0nW+RKiTbb9tFSwD/tIbAA+Z
+ a6uQMINd/nQ+zDlJQQISBe6BqWQux8HIx//cC20KFavQjJ/WhB+CxOy3ILt70nbJtm1lUjDwvrN
+ WAAqbYk+nj/saTUM+0DE1XQ==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261104_150808_286683_29C521EF 
+X-CRM114-Status: GOOD (  12.98  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -164,45 +100,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 04/11/2026 21:44, Andy Shevchenko wrote:
->> Andy,
->> These three lines look correct.
->>
->> LGTM:
->>
->> Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
-> 
-> As
-> 
->   Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org> # atmel-quadspi
-> 
-> Note, it's in your power to ask the author to split out what you maintain
-> to a separate change. So, it's your choice what to do, Ack the full patch,
-> give a partial Rb, ask for a split, ignore reviewing (often means silent
-> agreement when maintainer just applies that kind of a patch)
+This was noticed on RK3588 EVB1 when resuming from system suspend. This
+is technically a fix, but its unclear when the bug was introduced and
+system suspend is broken on RK3588 for quite a while and not just due
+to this problem. So I think this fix can be merged the normal way via
+linux-next.
 
-The "# note" after the tag solves the problem partially, if people were
-actually using it. Solves people looking at the Git commit and being
-mislead by partial review applying to entire commit. Does not solve
-credits, because Rb for three lines is not the same as for 100.
+Changes in v3:
+- Link to v2: https://patch.msgid.link/20261001-phy-rockchip-inno-usb2-clock-fix-v2-0-e01bf509359e@collabora.com
+- Fix do_suspend negation resulting in SError on RK3576 (Sashiko, CI testing)
+- Ensure PHY ports array is initialized in clock enable path (Sashiko)
+- Cleanup properly in clock enable error path (Sashiko)
 
-From v1 of this patch, four people (Alain, Lab, Troy, Kunihiko) did not
-use it even though reviewing only part. Only Wolfram, so 20% of partial
-reviews, used that syntax. Without that syntax, b4 will pick up Rb tag
-like it was for entire commit.
+Changes in v2:
+- Link to v1: https://patch.msgid.link/20260908-phy-rockchip-inno-usb2-clock-fix-v1-1-f7d59c31b908@collabora.com
+- Move suspend exit code from rockchip_usb2phy_power_on into a
+  separate patch and reuse it in the clock prepare function;
+  move is done in a separate patch
+- Updated commit messages with proper rationale
+- Added one more patch dropping useless assignment
+  of rport->suspended directly after calling
+  rockchip_usb2phy_power_on/off
+- Add one more patch unifying and simplifying the debug
+  messages for phy init/power_on/power_off/exit
 
-So I do repeat - if one does not want to use that syntax, then just Ack,
-instead of creating false impression of reviewing everything.
+---
+To: Vinod Koul <vkoul@kernel.org>
+To: Neil Armstrong <neil.armstrong@linaro.org>
+To: Manivannan Sadhasivam <mani@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-phy@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: Igor Paunovic <royalnet026@gmail.com>
+Cc: kernel@collabora.com
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+---
+Sebastian Reichel (4):
+      phy: rockchip: inno-usb2: simplify and unify PHY op debug messages
+      phy: rockchip: inno-usb2: drop duplicated update of rport->suspended
+      phy: rockchip: inno-usb2: move suspend handling into new function
+      phy: rockchip: inno-usb2: move suspend handling into clock prepare/unprepare for RK3588/RK3576
+
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 92 +++++++++++++++++++--------
+ 1 file changed, 66 insertions(+), 26 deletions(-)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20260908-phy-rockchip-inno-usb2-clock-fix-edd65b57f884
 
 Best regards,
-Krzysztof
+--  
+Sebastian Reichel <sebastian.reichel@collabora.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
