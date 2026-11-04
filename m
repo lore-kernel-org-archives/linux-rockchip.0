@@ -2,67 +2,84 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54E1C606E4CD
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 19:59:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D687A606D81E
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 20:13:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tZdm08FE;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=F/mPSDlc
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1aQAQiEA;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=W4XoIwFe
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=d2eLQe56oC7LMHa9g8FCiKmWaZY1Pk2q25jZeklV9/U=; b=tZdm08FECtCW49B39bVs84PWZl
-	JBNlp32tHJ/W5y25CeRKUd2UKyU5C5vgkubB8XnzFryYbfYpedgYZ4olzzYmlgUOVshBycrQJe1e2
-	QLwpg7q3N2IoTCSOQUUjr/nJQqYIw2QTmc7CW3JaW1N2vP2iO9gK72/bLwAlArI/+FdTxVf/K+sNm
-	XMik0at9+z+AwxPQlvK91oYk/tvcyCiBAEuPWNeQr2zeSlsytBzO4Em1ePSJzumRPu+NkSS4D+5Xf
-	SFGp6hBcIKBnVILpvcoK25/BgdaJhL0NC5D3UTHeV9/4eezX/k/j6bKLAwYCdjTXfCKxxSzTLN1DO
-	ENBBqu5g==;
+	bh=iGoyoA0Zos2ky1FUWKVPb82TFLwiS/uGlEHlB4cP/T0=; b=1aQAQiEABalUaJ+bgdo//wQugo
+	mm9oui9yoGHg0O0ZBPY/GdTlVYRBm9ypThUhdDSM/NfzNIuiJebo/k3dYR+YkJiV/Bfk3IDRMcXsh
+	uy0wwEiYsvVST1lK6oIgV8zxYV7MC8B3rY/e/7Gm9Xqm2e1PVU8GzAA+hdwaQ0gjiSef3ay2zYJBJ
+	y+PdIuolNNKbEzDgBe06USh//tcf6Xllh96mZ1VcGXPoXG/0tpLEFy6KJDOmU+yo9+XSBAi8bKw52
+	wnYqCaq3UySJPxRDkhWth3XDj73+XZyw9KXlvvRm+YADrNI/glp7+uV8Myk8huU2mF6SO86PM6wq2
+	n8YcDPtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOh8n-00000006pcP-0hFz;
-	Wed, 04 Nov 2026 19:59:25 +0000
-Received: from sender-op-o15.zoho.eu ([136.143.169.15])
+	id 1xOhMK-00000006rvg-3MxO;
+	Wed, 04 Nov 2026 20:13:24 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOh8k-00000006pa8-0rgU;
-	Wed, 04 Nov 2026 19:59:23 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1793822353; cv=none; 
-	d=zohomail.eu; s=zohoarc; 
-	b=dlV+Ny7hMOkt5HlZXhS26tgvbGlxQSLVURMm88dYkJMHWlULVV0zmrBO9gxBn7WMswHyq/aRkHk/hkyUyvQvScLFrcd8md0fionlD+5VJGGGlpae+fCFMb/iWwjsmTQeHrRisYXN+w2vbaABX7Rhqsco+EvwZnyT7xXZBsWUXTI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
-	t=1793822353; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ItJWBgurNWrKzbA3+9kWCtCIwN+CzwIffxyCOBCEeZ4=; 
-	b=PHRuyDioZ2UmrngLNTXv1sxpH7KF6ZBwgzXJgOwZ5rnw0a0Aq7NDbBfsyHjNUGBJwUnw7IxEoBUBo73S9YeWNC9D6cNo4Gpp2E3Y92HjLrV1SSKbUriY79tl6jBRoJ2xGgp54GzaX4L/+0woOci0HiY4/Iu0wyvaQGRKFob+b+4=
-ARC-Authentication-Results: i=1; mx.zohomail.eu;
-	dkim=pass  header.i=iav.lv;
-	spf=pass  smtp.mailfrom=iav@iav.lv;
-	dmarc=pass header.from=<iav@iav.lv>
-DKIM-Signature: a=rsa-sha256; b=F/mPSDlc4uIp6nAJHIOr/sNm8CuQcnOjV63n6wSvUpp1rZ03Ldkn+O6DHim38i2EcxTOGPx7aGWqjPccxvtEG+L0CnB5dOhByaaEYd6rxSYmXDvrFrB9l6yiwzpf2SdRkXldpUkcc/j9XVnviticvo6Y8DKw3tzzz0kxkrtonrM=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=ItJWBgurNWrKzbA3+9kWCtCIwN+CzwIffxyCOBCEeZ4=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zoho.eu with SMTPS id 1793822350815917.9354164021267;
-	Wed, 4 Nov 2026 20:59:10 +0100 (CET)
-Date: Wed, 04 Nov 2026 21:59:09 +0200
-From: Igor Velkov <iav@iav.lv>
-To: =?utf-8?Q?Adri=C3=A1n?= Larumbe <adrian.larumbe@collabora.com>
-Cc: iav@iav.lv, Boris Brezillon <boris.brezillon@collabora.com>,
- Rob Herring <robh@kernel.org>, Steven Price <steven.price@arm.com>,
+	id 1xOhMH-00000006ruM-2akP;
+	Wed, 04 Nov 2026 20:13:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1793823198;
+	bh=VkmYakpqpnhkFxx0QURjLD3tnwFfJeC8t9xnwmwTycw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=W4XoIwFepNaamhG5xYF0/u5N0OJgK0G+K/mAqwutqLaqz31z66kfhH5OujEswMwHh
+	 ynluuDIORHxCS86AXtgBwaoGfEoggXDdSwCt8G8Tr7lfUYhHgAnzEuBu31HCU5fkYe
+	 kW5ci2WohN3UZc4c2y2+ZRrKj0aynczuqEk0vkQ7Ugpbi0rWVVgt4xvy7zS9RwO9RX
+	 Aj0eQi5qzyZMvkyeX85Kdfq1QIEf/ISVrQl3fScd9/Uru7pighLN8AFdDqBqTgYdQY
+	 FydSS+GSvof9VqvZ6LHhGiyTPMXxpK6ABv2+87tWJek9PMzDOrXOKELMrm5aRBihSM
+	 GtTIquTMYWyew==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 169C017E0564;
+	Wed, 04 Nov 2026 21:13:17 +0100 (CET)
+Message-ID: <cd6321bf-9737-4949-9906-c0206e54bab6@collabora.com>
+Date: Wed, 4 Nov 2026 22:13:16 +0200
+X-Archived-By: <archiver.kernel.org>
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 04/15] drm/rockchip: vop2: Send pending event when
+ atomic_enable() fails
+To: Daniel Stone <daniel@fooishbar.org>
+Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
  David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] drm/panfrost: Gate the RK3399 GPU clock in runtime suspend
-Message-ID: <20261104-panfrost-rk3399-pm-rt-larumbe-reply-1@iav.lv>
-In-Reply-To: <autNWETrwrHbD2H9@sobremesa>
-References: <20261030-panfrost-rk3399-pm-rt-v1-1-e94437159a9d@iav.lv>
- <autNWETrwrHbD2H9@sobremesa>
-X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Daniel Stone <daniels@collabora.com>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, kernel@collabora.com,
+ Andy Yan <andyshrk@163.com>, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Sashiko <sashiko-bot@kernel.org>, Igor Paunovic <royalnet026@gmail.com>
+References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com>
+ <20261014-dw-hdmi-qp-yuv-v5-4-6fab0fe43a9b@collabora.com>
+ <CAPj87rN1rzjDMPvVJytwmvHGipCCuYOyX3abTRqYp4Vq5PyrYQ@mail.gmail.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <CAPj87rN1rzjDMPvVJytwmvHGipCCuYOyX3abTRqYp4Vq5PyrYQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_115922_383802_5F95F5A7 
-X-CRM114-Status: GOOD (  23.86  )
+X-CRM114-CacheID: sfid-20261104_121321_838334_92811DB8 
+X-CRM114-Status: GOOD (  22.23  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,78 +90,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgQWRyacOhbiwKCk9uIDA0LjExLjIwMjYsIEFkcmnDoW4gTGFydW1iZSB3cm90ZToKPj4gT24g
-Uk9DSyBQaSA0QSByZXN0b3JlIGZyb20gaGliZXJuYXRpb24gaGFuZ3MgaW4gZ2VucGRfcmVzdG9y
-ZV9ub2lycSgpCj4+IG9mIHRoZSBHUFUgd2hpbGUgcGFuZnJvc3QgaXMgYm91bmQuIFdpdGggdGhl
-IGNsb2NrIGdhdGVkIGluIHJ1bnRpbWUKPj4gc3VzcGVuZCwgYXMgb24gdGhlIEFsbHdpbm5lciBI
-NjE2IGFuZCB0aGUgUmVuZXNhcyBwYXJ0cywgaXQgcmVzdG9yZXMuCj4KPiBJIGZpbmQgdGhlIHdv
-cmRpbmcgaW4gdGhlIHByZWNlZGluZyBwYXJhZ3JhcGggYSBiaXQgY29uZnVzaW5nIC4gV291bGQK
-PiB5b3UgbWluZCBjbGFyaWZ5aW5nIHdoYXQgJ3BhcnRzJyBtZWFucyBoZXJlPyBJIGd1ZXNzIHlv
-dSByZWZlciB0bwo+IHNwZWNpZmljIFNvQ3MuCgpZZXMsIFNvQ3M6IGFsbHdpbm5lcixzdW41MGkt
-aDYxNi1tYWxpLCByZW5lc2FzLHI5YTA4ZzA0Ni1tYWxpIGFuZApyZW5lc2FzLHI5YTA5ZzA0Ny1t
-YWxpIGFscmVhZHkgdXNlIGRlZmF1bHRfcG1fcnRfZGF0YS4gdjIgd2lsbCBuYW1lCnRoZW0uCgo+
-IEFsc28sIEkgd29uZGVyIHdoeSBub3QgZGlzYWJsaW5nIHRoZSBjbG9ja3Mgd291bGQgZm9yZXN0
-YWxsIGNvbWluZyBiYWNrCj4gZnJvbSBhIHBvd2VyIHN1c3BlbnNpb24gc3RhdGUuIEhhdmUgeW91
-IHJhaXNlZCB0aGlzIG1hdHRlciB0byB0aGUKPiBtYWludGFpbmVycyBvZiB0aGUgUkszMzk5IFNv
-QyBzdWJzeXN0ZW0/CgpUaGUga2VybmVsIHRoYXQgcmVhZHMgdGhlIGltYWdlIG5ldmVyIGJpbmRz
-IHBhbmZyb3N0LCBzbyBhZnRlcgpjbGtfZGlzYWJsZV91bnVzZWQoKSBhY2xrX2dwdSBzdGF5cyBn
-YXRlZC4gVGhlIHJlc3RvcmVkIGltYWdlIHN0aWxsIGhhcwppdCBlbmFibGVkIGluIHNvZnR3YXJl
-IChlbmFibGUgY291bnQgMSBzaW5jZSBwcm9iZSksIHNvIHBvd2VyaW5nIHRoZSBHUFUKZG9tYWlu
-IGJhY2sgb24sIHdob3NlIGNsb2NrcyBpbmNsdWRlIGFjbGtfZ3B1LCBvbmx5IGJ1bXBzIHRoZSBj
-b3VudCwgYW5kCnRoZSBRb1Mgd3JpdGVzIHRoYXQgZm9sbG93IGluIHJvY2tjaGlwX3BkX3Bvd2Vy
-KCkgZ28gdG8gYSBnYXRlZCBibG9jawphbmQgaGFuZy4gSSB0cmFjZWQgdGhpcyBmb3Igcmt2ZGVj
-IFsxXTsgZm9yIHRoZSBHUFUgSSBzZWUgdGhlIGhhbmcgYXQKdGhlIHNhbWUgc3BvdCwgZ2VucGRf
-cmVzdG9yZV9ub2lycSgpLCBhbmQgZ2F0aW5nIGluIHJ1bnRpbWUgc3VzcGVuZApyZW1vdmVzIGl0
-LiBJIGhhdmVuJ3QgcmFpc2VkIGl0IHNlcGFyYXRlbHk7IEhlaWtvIGlzIG9uIFRvLgoKPiBXb3Vs
-ZCB5b3UgYWxzbyBtaW5kIGRlc2NyaWJpbmcgd2hhdCB5b3UgZGlkIHRvIHJlcHJvZHVjZSB0aGlz
-Cj4gcmVzdW1lLWZyb20tc3VzcGVuZCBpc3N1ZT8gTGF0ZWx5IHdlJ3ZlIGJlZW4gZ2V0dGluZyBz
-b21lIGZpeGVzIGZvcgo+IHNpbWlsYXIgU29DIGlzc3VlcyBhbmQgSSB3b25kZXIgd2hldGhlciBt
-aW5lIGFsc28gaGFzIGl0LgoKSXQgaXMgaGliZXJuYXRpb24gKHJlc3RvcmUgZnJvbSBkaXNrKSwg
-bm90IHN1c3BlbmQgdG8gUkFNLiBST0NLIFBpIDRBLApkcm0tbWlzYy1uZXh0IDMzZWQyNjIzNWRi
-OSBwbHVzIFsxXSwgcGFuZnJvc3QgYXMgYSBtb2R1bGUsIGJvdW5kLCBHUFUKaWRsZSwgc3dhcCBm
-aWxlIHdpdGggcmVzdW1lPSBhbmQgcmVzdW1lX29mZnNldD06IHN5c3RlbWN0bCBoaWJlcm5hdGUs
-CnBvd2VyIG9mZiBhbmQgb24uIFdpdGhvdXQgdGhlIHBhdGNoIHJlc3RvcmUgaGFuZ3MgYXQgInBh
-bmZyb3N0CmZmOWEwMDAwLmdwdTogY2FsbGluZyBnZW5wZF9yZXN0b3JlX25vaXJxIiAyIG9mIDIs
-IHdpdGggaXQgcmVzdG9yZXMKNiBvZiA2LiBBIHF1aWNrIGNoZWNrIG9uIGFub3RoZXIgYm9hcmQ6
-IHdpdGggcGFuZnJvc3QgYm91bmQgYW5kIHRoZSBHUFUKaWRsZSwgaXRzIGNvcmUgY2xvY2sga2Vl
-cHMgZW5hYmxlIGNvdW50IDEgaW4gY2xrX3N1bW1hcnkuCgo+IElmIHRoaXMgcGF0Y2ggZGVwZW5k
-cyBvbiBhbm90aGVyIGZpeCBiZWluZyBtZXJnZWQgZmlyc3QsIEkgdGhpbmsgaXQncwo+IGJlc3Qg
-eW91IGRlbGF5IHNlbmRpbmcgYSB2MiB1bnRpbCBpdCdzIGJlZW4gY29tbWl0dGVkIHRvIGl0cyBy
-ZWxldmFudAo+IHN1YnN5c3RlbSB0cmVlIGFuZCBjaGFuZ2VzIHB1bGxlZCBpbnRvIGRybS1taXNj
-LW5leHQuCgpJdCBhcHBsaWVzIGFuZCBidWlsZHMgd2l0aG91dCBbMV07IFsxXSBvbmx5IGdldHMg
-dGhpcyBib2FyZCB0aHJvdWdoCnJlc3RvcmUgdXAgdG8gdGhlIEdQVS4gWzFdIGdvZXMgdGhyb3Vn
-aCBsaW51eC1tZWRpYSwgc28gSSdkIHJhdGhlciBub3QKdGllIHYyIHRvIGl0LCBidXQgZmluZSBl
-aXRoZXIgd2F5LgoKPiBJJ20gbm90IGVudGlyZWx5IHN1cmUgYWJvdXQgd2hhdCBwYXRjaCBzdWJt
-aXNzaW9uIGd1aWRlbGluZXMgc2F5IGFib3V0Cj4gdGVzdGluZyBpbmZvcm1hdGlvbiwgYnV0IG5v
-cm1hbGx5IGNvbW1pdCB0cmFpbGVycyBtdXN0IGNvbWUgYWJvdXQKPiBsYXN0LiBXb3VsZCB5b3Ug
-bWluZCB0aGVuIG1vdmluZyB0aGlzIHRvIHJpZ2h0IGJlZm9yZSB0aGUgUy1vLWI/CgpUaGUgdGVz
-dCBub3RlcyBhcmUgYmVsb3cgdGhlICItLS0iIG9uIHB1cnBvc2UsIHNvIHRoZXkgc3RheSBvdXQg
-b2YgdGhlCmNvbW1pdC4KCj4+ICsJeyAuY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTktbWFs
-aSIsIC5kYXRhID0gJmRlZmF1bHRfcG1fcnRfZGF0YSB9LAo+Cj4gWW91J3JlIGVmZmVjdGl2ZWx5
-IGFkZGluZyBzdXBwb3J0IHRvIGEgd2hvbGUgbmV3IFNvQy4gVGhpcyBtYWRlIG1lCj4gd29uZGVy
-LCBhcmUgd2Ugc3VyZSBzdXNwZW5zaW9uIHJlc3VtcHRpb24gbm90IHdvcmtpbmcgaXMgb25seSBi
-ZWNhdXNlIG9mCj4gR1BVX1BNX1JUPyBTaG91bGRuJ3Qgd2Uga25vdyBmaXJzdCBhYm91dCBpdHMg
-c3VwcGxpZXMgYW5kIHBvd2VyIGRvbWFpbnMsCj4gYW5kIGFueSBwb3RlbnRpYWwgR1BVIHF1aXJr
-cz8gSSB0aGluayB0aGlzIGdvZXMgYmV5b25kIG15IGtub3dsZWRnZSwgc28KPiBtYXliZSBTdGV2
-ZW4gUHJpY2UgY2FuIHBpdGNoIGluLgoKVGhlIG5vZGUgYWxyZWFkeSBjYXJyaWVzICJyb2NrY2hp
-cCxyazMzOTktbWFsaSIsICJhcm0sbWFsaS10ODYwIiBhbmQKYmluZHMgdGhyb3VnaCB0aGUgZmFs
-bGJhY2sgdG9kYXkuIGRlZmF1bHRfcG1fcnRfZGF0YSBkaWZmZXJzIGZyb20KZGVmYXVsdF9kYXRh
-IG9ubHkgaW4gR1BVX1BNX1JUOyBzdXBwbGllcyBhbmQgdGhlIHBvd2VyIGRvbWFpbiBzdGF5IGFz
-CnRoZXkgYXJlLiBUaGUgUkszMzk5IEdQVSBub2RlIGhhcyBubyBidXMgY2xvY2tzIGFuZCBubyBy
-ZXNldHMsIHNvCkdQVV9QTV9SVCBjaGFuZ2VzIG9ubHkgYWNsa19ncHUgaGVyZS4gU3RldmVuJ3Mg
-dmlldyBpcyB3ZWxjb21lLgoKWzFdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvMjAyNjEwMzAt
-cmt2ZGVjLXJ1bnRpbWUtcG0tY2xvY2tzLXYyLTEtOGZmNTEwYTIzMWRlQGlhdi5sdgoKLS0KSWdv
-ciBWZWxrb3YKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+Hi Daniel,
+
+Thanks for reviewing the series!
+
+On 10/30/26 1:21 PM, Daniel Stone wrote:
+> Hi Cristian,
+> 
+> On Tue, 13 Oct 2026 at 23:51, Cristian Ciocaltea
+> <cristian.ciocaltea@collabora.com> wrote:
+>> vop2_crtc_atomic_flush() stashes the CRTC completion event in vp->event
+>> and relies on the frame start interrupt (VP_INT_FS_FIELD) to deliver it
+>> later via drm_crtc_send_vblank_event().  Since atomic_enable() runs
+>> before atomic_flush(), bailing on an error path makes it skip
+>> drm_crtc_vblank_on() and leave the video port disabled.  atomic_flush()
+>> still traps the event in vp->event, but since the port never scans out,
+>> the frame start interrupt does not fire and the event is not delivered.
+>> Userspace waiting for the flip completion then blocks indefinitely.
+>>
+>> Note the event cannot be flushed from atomic_disable(), as userspace
+>> waits for the completion before committing the next state, so the
+>> disable does not arrive and draining it there would deadlock.
+>>
+>> Use the newly added vp->enabled flag to detect this in atomic_flush()
+>> and send the event immediately when the port did not come up, rather
+>> than deferring it to an interrupt that will never occur.  This also
+>> avoids the spurious drm_crtc_vblank_get() WARN previously hit on the
+>> failed enable path, where the vblank is not on.
+> 
+> I really don't know how I feel about this one.
+> 
+> atomic_enable() is not supposed to fail at all, hence returning void.
+> (Obviously, there are scenarios where it will fail, which Sashiko
+> keeps 'helpfully' pointing out ...)
+> 
+> I don't like how this just papers over the issue. It turns an eventual
+> WARN on vblank timeout - which surfaces the issue - into a silent
+> false-success. Userspace just sees commit completion requests arrive
+> as soon as it's posted the commit, so it keeps on going on and
+> everyone's happy. Having the flips time out is a messy splat of WARNs,
+> but at least that messy splat points at the exact issues, rather than
+> the screen just going black and userspace blithely trying to continue
+> on.
+
+Ack. Let's drop the patch.
+
+Cristian
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
