@@ -2,64 +2,67 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 53462606A331
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 12:40:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 45045606A331
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 12:43:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ha+Ba53w
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JuSSGSSu;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=JQHpOO+m
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=jFdC0wKEukiqOJbk0OA234Klm+6WUWrjR6mwyEt6pSI=; b=ha+Ba53wAxRKzx05f5QQe51HBf
-	eUo3uZuLsSOgFCgJ9pt40AnDiIIclTJYCMSkpoja0n+XIdBk4JWMdgwhp2ob5wA07C/SEpO2ybYU6
-	GN76vBXvjfVglKWuYOBNxSk+i1vuyUkiQQV3rYK01SgggL9ObqYNVdNNY5LDjKyNu0QnBlSqvCa8e
-	ABlUbay/RbD4iN8OuAMbD+IghHuVonuhAWIsEBALDYilH9UVT+Gzz/E79xW7vr/EsfbDLt54MyMMv
-	j/ogTqvanpFmCH+S4kkaUrRadVWfUmkbG23rrThTXFcp+PNO3wZyDzrOB2Y+GJMPS4ACJoo+PaLvV
-	7cmrGnqw==;
+	bh=19qsYP4Eqtk8zDwTDV1n8bythj563Ah9qH/FDn6TjFE=; b=JuSSGSSue682jMkOMOzeZcranu
+	qaqgVkKG+PuJ9qOJIX7Os4TW1yDNWyDp9QYEZsLgeW3jc6FjslG4D8QYO7oQBdg5OQekzAroUK7aY
+	DkoUfUWtA1lYgGa+Rzj66gm5ChPQU1lgsp5ASvBqaTJVCEi+X5YtjVaO/Ci2co84adl7AX6b9v+cC
+	IKXWjchr5fmEJIlzUdbRvRX0AN6/mPEY8YJwFzuukMlXYvG6hN9rrGTz0Rdy6HrE5j1dN5kbRwn/K
+	Ls7BP0IT0q2LY/mSDYnlF3ObjuCOS4JJp4y5mzFd532oacFEEIooYOeqeY+hMsJE1A4Aa+6+fYUtk
+	ShvYjCVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOaIC-00000005Lxb-0nAj;
-	Wed, 04 Nov 2026 12:40:40 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1xOaLK-00000005MQa-2OGn;
+	Wed, 04 Nov 2026 12:43:54 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOaI8-00000005LwO-0ta3;
-	Wed, 04 Nov 2026 12:40:39 +0000
-Received: from Vostro-3710.. (unknown [14.220.232.26])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 537c3cf4f;
-	Wed, 4 Nov 2026 20:40:24 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: coiaprant@gmail.com
-Cc: bigfoot@classfun.cn,
-	conor+dt@kernel.org,
+	id 1xOaLG-00000005MPR-42zI;
+	Wed, 04 Nov 2026 12:43:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=DSZ44hi4g8RqJf7UpQMpYycq6ry0bT+HI5JoHAW8nqo=; b=JQHpOO+mmu/C3OWcDgsMN7CW9a
+	qFPWadM6RubfaSMPpyZB8qMxkT2kHHDSrYfvmI9y+lEO9Ip1pcqW7WdmNLh7dWFMUB6aQHf+SVHMf
+	8wwU4hpQ3vldAvFrN87IGp7n8oYZ3X4p1fgqGpMKseIy5HlNySMXf5/DH4HmEgZXjbvqa9e56fAgZ
+	S58Dujagf6ZIoEZLG/27WYfusdYLxLeV18uBxGTlVP4mLuoOKBw0qfULzD9zCqkCeEC/VnXh15lQ7
+	6F92X6tVCZk6Xk70J1BjW5SedXkmMSKUD/CTXoOTGccfolnw1rgJITXl2w+I2l+E5PnabmpPWm3Rg
+	eB4Twoyw==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org,
+	Cole Munz <Munzzyy1@proton.me>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Alexey Charkov <alchark@gmail.com>,
+	Alexey Charkov <alchark@flipper.net>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
 	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: [PATCH v3 5/6] arm64: dts: rockchip: fix USB OTG power on Photonicat in battery mode
-Date: Wed,  4 Nov 2026 20:40:20 +0800
-Message-Id: <20261104124020.3546166-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20261102174450.3000397-6-coiaprant@gmail.com>
-References: <20261102174450.3000397-6-coiaprant@gmail.com>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: rk3576: add cache hierarchy information to CPU nodes
+Date: Wed,  4 Nov 2026 13:43:38 +0100
+Message-ID: <179379621576.656939.2433506598756603100.b4-ty@b4>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <8a8f808a4c7b8325bc253add15e51b396a7d62d1.1785260742.git.Munzzyy1@proton.me>
+References: <8a8f808a4c7b8325bc253add15e51b396a7d62d1.1785260742.git.Munzzyy1@proton.me>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa1a693295003a2kunm0429b5521628f4
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZSR1PVkhITEtIShlOHRlPS1YeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKT1VJSUtVSUhJVUlNWVdZFhoPEhUdFFlBWU9LSFVKS0hKTE
-	xJVUpLS1VKQktLWQY+
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_044036_439969_5B9159C9 
-X-CRM114-Status: UNSURE (   7.70  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261104_044351_066016_08A60577 
+X-CRM114-Status: GOOD (  10.72  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,21 +82,25 @@ X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
 
-> regulator_5v_boost: regulator-5v-boost {
+On Tue, 28 Jul 2026 17:46:14 +0000, Cole Munz wrote:
+> The RK3576 CPU nodes carry no cache properties, so cache_setup_of_node()
+> fails with -ENOENT on the first CPU. That error propagates out of
+> cache_shared_cpu_map_setup(), which discards the topology arm64 had
+> already derived from CLIDR, and the boot log gets
+> 
+>   cacheinfo: Unable to detect cache hierarchy for CPU 0
+> 
+> [...]
 
-I prefer to use vcc as a prefix for consistency.
+Applied, thanks!
 
-> +	 * 5V_OUT is the OR-ed combination of the VBAT boost (via D5002)
-> +	 * and VCCIN_5V (via D16).
-> +	 * It has no enable pin of its own.
-> +	 * Model it as a fixed regulator depending on the boost converter,
-> +	 * so that VBAT is boosted when running on battery.
+[1/1] arm64: dts: rockchip: rk3576: add cache hierarchy information to CPU nodes
+      commit: 87fe687cc35a91d2798494791d40be4e00f119fa
 
-What are the benefits of doing this? This is not a real regulator.
-It is the same path as 5V_BOOST. D16 controls which channel the VIN
-of VCC5V0_USB30_OTG0 comes from. 
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
