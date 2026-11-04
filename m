@@ -2,85 +2,134 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6A6B2606B2F3
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 20:38:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B05EC606B2ED
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 20:42:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4vkPMDun;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Bg9GoV+Z
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=apZLy4hd;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=GOfbVRuN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=qCcrR3WALtna1+d0TRgv7muYD3aCL0P07TYBj0NThYE=; b=4vkPMDunVTtI5bE1AL55E6MyJk
-	ym+I+PveeL0PXQ69uTPy4MgTfpS2AW6LO0HjLGdz91l/RBVl++rhlHIhlDwtxxD5IGXVQNGFhytAt
-	clSKTDriLqOZ1vbFh1AxA6dO0D7baSiDEduO/3WSq7iWhq/SAPey/Ga+F4Pkr/S2Noy4pWi7eSbJA
-	4tHtXBnwZPqNZqMQTWRzpurW2kt8jaeZ7r5/jB8KL28dobweaphfINaLsic7vY1+G1k0DZ8UsV+KU
-	iZw3ieL2LdI+Y9SU3K8T3YoELLnbl1DWCIyJ0tacaUsS+GdcBGZJf5vo6z9tdndtOUtZXh/4Jo516
-	VkfeSTNA==;
+	bh=jVnws6eE1FV37QN+sKjjlTWR2VLgDOeGyuOuiuh0sk8=; b=apZLy4hdAwmJs7VedjTEM0z+cO
+	8h119XNIgKrHXaYQtA49leqi9VIxYYEDR0QUf82WSX8RkvjcpptsmZaAnPYoQNRP4KUFfl6vP9QQc
+	xX16MpReYn4sjUPzcAzj89OpehnBwk0yi1F3ldWa53KT0ZEk8fTOb4ElKSzgc7JHqzbmGPVoDOHHa
+	brmJPwGL1IxqG1qPmCE9lZLIyzhVRiIMcwimK5n+v05T+h8K23E82JTPDrhAaco5lSQsXZMHF94Ms
+	hWKzt+627zrECa6FyPwGXvs8o1TVPMVvLcn5ayG0Ohh5HE9e7IIlaVGnSuAzN8BvaF6T5dHFuldVy
+	4dZmD4Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOhkP-00000006ur9-3htX;
-	Wed, 04 Nov 2026 20:38:17 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xOho8-00000006vLz-1S8X;
+	Wed, 04 Nov 2026 20:42:08 +0000
+Received: from mgamail.intel.com ([192.198.163.18])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOhkM-00000006uoQ-0rJz;
-	Wed, 04 Nov 2026 20:38:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793824691;
-	bh=ZyQWW1wCUyxgX5lh8xj5l7gQjS6rGe83Ig2v6D8kRco=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Bg9GoV+ZPTgROm1ZJusnJY1kYsZvbhM+sKMBFfy3xgpe4rP+DGeHre8m1lwwQAC0i
-	 WWnjnjILknGW5VX4vv8B4DXAeG5DsbqPgHWBYEz9p0ffJmThorskM1KObk16V8z16t
-	 utNEtiEzwKBu6NgCPhWN+5NQbbRk8cVQ0bjYK1WmQAC3GyNmbx+Lum+WEXBJl2tXNN
-	 WOYjWTpf827xMUS8KxuHHsvVNJ9WWtK13OTWw1Ajg5KkbGa6c2G+vkpt64h0/rJ/Vy
-	 PwrMheYZy2Jhat0yZQYrpwQcjfO6dtf0+U6sCMGE00RuMIU46p3hVaPZ5I+nVbrp1X
-	 ccio0OVYj/FjA==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0687B17E066C;
-	Wed, 04 Nov 2026 21:38:09 +0100 (CET)
-Message-ID: <c823ced3-693a-4620-8a88-81cca7062c01@collabora.com>
-Date: Wed, 4 Nov 2026 22:38:09 +0200
+	id 1xOhnc-00000006vFT-0dM3;
+	Wed, 04 Nov 2026 20:42:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1793824897; x=1825360897;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=qy06o8rSwtIgsUFLykqayukx7m8Y35VeFGwAllplMWQ=;
+  b=GOfbVRuNbvFhJqnu4QVO0qp5PUuXriYWkWcvbcexI3JoqKv+KTjohMXI
+   NX6SdGn/kgLm7FX/4qntpHlkNLWgPmpcV5tV151acOyBW6GYqvQN6M9fe
+   cEe5wJif/Jb+sSqa715mefUmojt49RJs3m09d0rSOHUWXEHtjuVUUutfp
+   DWTxpzkZyb3oifGcmMgZyzXZ4OqmlBrfeoTXIPmZ1b/8mBLZ+XQUEKYiJ
+   bJfrfThZzhZbvuddA/fAPyzEk2cOtG8Lb8DYWm1O/pUzm1hPkzoqWACqY
+   LCW0L/FeP4QZj5wMem+ojg6wRB6rhDQcgY5P5O+HjHPyssSUnSsAmsUYT
+   g==;
+X-CSE-ConnectionGUID: zSRitFVGRzi78DouuSj9Qw==
+X-CSE-MsgGUID: XiHxIS6zToi+nduO+15EHw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11956"; a="2634935"
+X-IronPort-AV: E=Sophos;i="6.27,195,1787036400"; 
+   d="scan'208";a="2634935"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Nov 2026 12:41:36 -0800
+X-CSE-ConnectionGUID: knzF51FkR/mGB1dYlMjHAg==
+X-CSE-MsgGUID: PDZ5doidQvG2tEJnuVcvCw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,195,1787036400"; 
+   d="scan'208";a="7214061"
+Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.24])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Nov 2026 12:41:23 -0800
+Date: Wed, 4 Nov 2026 22:41:21 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Frank.Li@oss.nxp.com, Mark Brown <broonie@kernel.org>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Radu Pirea <radu_nicolae.pirea@upb.ro>,
+	CL Wang <cl634@andestech.com>,
+	Ryan Wanner <ryan.wanner@microchip.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Vladimir Oltean <olteanv@gmail.com>, Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>, Han Xu <han.xu@nxp.com>,
+	Haibo Chen <haibo.chen@nxp.com>, Linus Walleij <linusw@kernel.org>,
+	Daniel Mack <daniel@zonque.org>,
+	Haojian Zhuang <haojian.zhuang@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>, Yixun Lan <dlan@kernel.org>,
+	Troy Mitchell <troy.mitchell@linux.spacemit.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sowjanya Komatineni <skomatineni@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	"open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>,
+	"moderated list:ARM/Microchip (AT91) SoC support" <linux-arm-kernel@lists.infradead.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE" <linux-rpi-kernel@lists.infradead.org>,
+	"open list:FREESCALE DSPI DRIVER" <imx@lists.linux.dev>,
+	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+	"open list:RENESAS RZ/V2H(P) RSPI DRIVER" <linux-renesas-soc@vger.kernel.org>,
+	"open list:SAMSUNG SPI DRIVERS" <linux-samsung-soc@vger.kernel.org>,
+	"open list:RISC-V SPACEMIT SoC Support" <linux-riscv@lists.infradead.org>,
+	"open list:RISC-V SPACEMIT SoC Support" <spacemit@lists.linux.dev>,
+	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>,
+	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
+	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+	Mukesh Kumar Savaliya <mukesh.savaliya@oss.qualcomm.com>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v2 1/1] spi: use dmaengine_desc_set_callback()
+Message-ID: <auuYcS7-YqJKcUbE@ashevche-desk.local>
+References: <20261104152253.3279052-1-Frank.Li@oss.nxp.com>
+ <autj6pr_bPaul3w0@ashevche-desk.local>
+ <7f96599b-681d-4963-bdda-1274371ac84f@kernel.org>
+ <f1fa853d-1703-411d-b2d2-0fb0b176c2fa@kernel.org>
+ <autqC143h7Qf1R9H@ashevche-desk.local>
+ <9e39502a-dd17-4fa2-98a3-9019523cb5e8@kernel.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 08/15] drm/rockchip: vop2: Avoid DCLK source switch for
- 10-bit YUV422 output
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Daniel Stone <daniels@collabora.com>, Philipp Zabel
- <p.zabel@pengutronix.de>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, kernel@collabora.com,
- Andy Yan <andyshrk@163.com>, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Igor Paunovic <royalnet026@gmail.com>
-References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com>
- <20261014-dw-hdmi-qp-yuv-v5-8-6fab0fe43a9b@collabora.com>
- <CAPj87rPsh_cVQWtGEisDrXWiT+Zj6D6n5wXpmbuoFvMKtOi7TA@mail.gmail.com>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <CAPj87rPsh_cVQWtGEisDrXWiT+Zj6D6n5wXpmbuoFvMKtOi7TA@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <9e39502a-dd17-4fa2-98a3-9019523cb5e8@kernel.org>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_123814_412846_DF6976E9 
-X-CRM114-Status: GOOD (  15.74  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261104_124136_344552_20E51546 
+X-CRM114-Status: GOOD (  31.36  )
+X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,59 +142,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Daniel,
+On Wed, Nov 04, 2026 at 06:27:40PM +0100, Krzysztof Kozlowski wrote:
+> On 04/11/2026 18:23, Andy Shevchenko wrote:
+> > On Wed, Nov 04, 2026 at 06:08:39PM +0100, Krzysztof Kozlowski wrote:
+> >> On 04/11/2026 18:02, Krzysztof Kozlowski wrote:
+> >>> On 04/11/2026 17:57, Andy Shevchenko wrote:
+> >>>> On Wed, Nov 04, 2026 at 10:22:45AM -0500, Frank.Li@oss.nxp.com wrote:
+> >>>>>
+> >>>>> Replace open-coded assignments to callback and callback_param fields
+> >>>>> of struct dma_async_tx_descriptor with calls to the
+> >>>>> dmaengine_desc_set_callback() helper across SPI bus drivers.
+> >>>>>
+> >>>>> No functional change intended. Prepare make to struct
+> >>>>> dma_async_tx_descriptor private to the DMA engine.
+> >>>>
+> >>>> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com> # dw, pxa2xx, topcliff-pch
+> >>>>
+> >>>> (Note, you forgot to add the list of the drivers to the Rb trailers of other reviewers)
+> >>>
+> >>> These should be acks. RB creates false impression entire commit was
+> >>> reviewed. Our docs also clearly state entire commit:
+> >>>
+> >>> "Reviewed-by:, instead, indicates that the patch has been reviewed and
+> >>> found acceptable according to the Reviewer's Statemen"
+> >>>
+> >>> (not patch or part of patch)
+> >>>
+> >>> "By offering my Reviewed-by: tag, I state that
+> >>> I have carried out a technical review of this patch to
+> >>> "
+> >>>
+> >>> (not patch or part of patch)
 
-On 10/30/26 1:42 PM, Daniel Stone wrote:
-> Hi,
+Documentation doesn't cover partial reviews at all.
+
+> >>> When you accept only part of this code, you basically Ack. I really
+> >>> dislike these half-done reviews, which later appear in logs and tell you
+> >>> nothing. You could have clear security bug here, but 10 review tags. How
+> >>> useful tags...
+> >>
+> >> And let me even bring a better example. Imagine a patch, doing massive
+> >> refactoring of core SPI stuff, 1000 lines of code, complex locking and
+> >> also simultaneously updates drivers to new API changed in this core.
+> >>
+> >> Reviewing that 1000 lines of code in core SPI with complex locking takes
+> >> someone 30 minutes. He gives Rb tag, gets credit.
+> >>
+> >> Now you come, look at SINGLE line in a driver and give Rb tag. For 10
+> >> seconds job of looking at one changed call in one driver.
+> >>
+> >> You just Acked, you did not review "the patch" (quoting submitting patches).
+> > 
+> > Your example is doubtful because the patch is combined from independent pieces.
+> > The Rb fits very well the listed drivers. The problem is that some of the
+> > people combine changes into a bundle (and not proper per-driver series).
 > 
-> On Tue, 13 Oct 2026 at 23:51, Cristian Ciocaltea
-> <cristian.ciocaltea@collabora.com> wrote:
->>         if (vop2->pll_hdmiphy0 || vop2->pll_hdmiphy1) {
->> -               unsigned int bpc = vcstate->output_bpc ?: 8;
->> +               /*
->> +                * YUV422 always transmits two 12-bit components per clock
->> +                * cycle, regardless of the color depth, which from a rate
->> +                * perspective is equivalent to three 8-bit RGB components.
->> +                * Force 8 bpc here so the bandwidth check reflects the actual
->> +                * TMDS rate and avoids an unnecessary DCLK source switch.
->> +                */
->> +               unsigned int bpc = vcstate->output_mode == ROCKCHIP_OUT_MODE_YUV422 ?
->> +                                       8 : (vcstate->output_bpc ?: 8);
+> The example is actually real. There are many patches changing some core
+> subsystem API stuff + many drivers, and they are done correct as one patch.
 > 
-> The nested ternary is pretty violent; please write it out explicitly.
-> Either way, the equivalent clock adjustment for YUV420 is handled in
-> the setup_intf_mux() handler, so would it be better for YUV422 to also
-> live there, rather than mashed in with bpc here?
+> Looking at two lines out of 50, 100 or 1000 (here is 740!!!) is not
+> reviewing "this patch". Is acking it.
+> 
+> All of the Rbs here are half baked, meaning they did not review "this
+> patch" (quoting submitting patches document).
+> 
+> But sure, if we want to play such numbers game, I will be sending
+> reviews for single lines.
 
-Moving YUV422 into setup_intf_mux() wouldn't work, because that function returns
-the real DCLK rate.  The YUV420 halving there is justified, but for YUV422 the
-DCLK simply equals the pixel clock.
+I'm not playing anything. The problem is that the patch unites the files that
+have distinct maintainers and unrelated to each other code. That's why in the
+subsystems I maintain, I almost always require to split on per-driver basis.
+Yes, exceptions are possible, but has to be quite rare.
 
-What's actually not great here is the bandwidth check, as it tries to rebuild
-the TMDS rate from DCLK.
+-- 
+With Best Regards,
+Andy Shevchenko
 
-Apart from the YUV422 special handling, there's another complication: when vop2
-processes multiple pixels per clock cycle, DCLK is only a fraction of the pixel
-clock, e.g. RK3576 halves it for pixel clocks above 600 MHz.  This will
-interfere with upcoming HDMI 2.1 support - e.g. FRL mode such as 4K@120Hz 8-bit
-RGB, with a pixel clock of 1188 MHz, ends up with a 594 MHz DCLK, which slips
-under the limit and wrongly selects the HDMI PHY PLL as DCLK source.
 
-I've reworked the source switch logic to rely on the actual TMDS character rate
-computed by the HDMI connector state helpers, which already accounts for the
-output color format and depth.  It gives the same result as today for RGB and
-YUV420, corrects the behaviour for YUV422 and upcoming FRL, and removes the bpc
-handling entirely.
-
-Thanks,
-Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
