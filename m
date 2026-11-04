@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 91C27606D80C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 11:07:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BF586606A32F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 11:08:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LFRDnx5L;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=cknow-tech.com header.i=@cknow-tech.com header.a=rsa-sha256 header.s=key1 header.b=i9wmOrk7
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=va5kUBhf;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=Nza9K1RN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,57 +14,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Q8UXuk+ujWYLvCRSkNluKdi8bc76qe53tvcyBj1xw+E=; b=LFRDnx5LgSxkMAklXM7Ddy4MTA
-	z0kNV2yVjgoFbioWmovp+PwP0pJHisJBSS4Iize2We+yf+HckhHY0j5mn6K/mRDlIauynypnWNTFo
-	2rz3Jr2JvV6G4vegFLsW3avtP2j54eH/rTOFolCZxcNmERPqwmh2YliquHyr4+327Q0u85HjlSTK0
-	RUDD+ROklzYRQDXkKLe/JAwntFDrTexoIAReonONBMB06KDz+t4OYECNGfXvIlDUF/j+yGrj0NuEa
-	cX8l0jxmBR/I7NMMgtGb5h+6Pbx9D0rvoz9vowDLPMBwEQ8Z+WFlEEhyN4wDUrcbzi9e4OzIPUHxO
-	xMC48wog==;
+	bh=SLeVGjIY186w+4zIltRug45l1sHOByTEfd7M0YehbOI=; b=va5kUBhfRIg9z02/qJ/wyTJGxi
+	qGUus8b1zPTF5SL4QhJzmtpUdsaoiVrrvlXNbkPufuresaYdwGlpvgI9qHoekjLt0lYySD53wGBKv
+	7hAh2qXbKI4OO7lP65MokslK6kNkmlbXn8BuP7Y+qgv/xtQx6sfCozmA9dp238ndgYaRSs2yKWJqN
+	ZufdQ8XbcjkDgAryAwhhhkkE6g0p9Uzc51Q8M5ppMQoZoLEJvrVerb2ReipREg7yZyMUZs6GnTlIS
+	93YyZp59fnz8BPzNPse+x0Ff3k2qx3DwEQvdSmzvsqy0cT0tVCe0q5wgfoA96TFaEgkea3kWcTiT0
+	9UIebDmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOYpb-000000056AT-0gXQ;
-	Wed, 04 Nov 2026 11:07:03 +0000
-Received: from out-166.mta1.migadu.com ([95.215.58.166] helo=mta1.migadu.com)
+	id 1xOYqg-000000056om-0cT3;
+	Wed, 04 Nov 2026 11:08:10 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOYpY-0000000564B-3BbP
-	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Nov 2026 11:07:02 +0000
-X-Envelope-To: linux-rockchip@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=q5GZcZWMOQIvRaqa09yIq33VkC0yOqXCBT7tjMXSkZw=;
- c=simple/simple; d=cknow-tech.com;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1793790419; v=1; x=1794395219;
- b=i9wmOrk7S0bzmMdqlWDDqH7mKZDBEYModFLDCxormp2tBq47Z+SqWsplzwBAgFdE+gqxvops
- 4B2pki6BCHAztSWRmaCt197Y3KbEW0flCQNYbQe007tnoxAU08fpz2x7W/sIJnnTXVltLSnuERH
- 2xBdU+oEnylhXwBBfHob+ZTVsGeNqtsevSzR3Wk4vVOGGffaGgZD4gHyceLBPnj/LMtG5TOeiaz
- IWGqDSfD7cholz/mR2Vwv/nLf+emC+SBBpzE8So8KvYYnsQxDNVuLtft9iL2I6Rr2df3dSnGQxT
- 3/B6P2S0xPJucKfjEN8m0ACqSomXAf+FdKnauiAkfsQIA==
-X-Envelope-To: linux-rockchip@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 7eceafc41300d51d;
-	Wed, 04 Nov 2026 11:06:58 +0000
-X-Mizu-Trace-ID: 7eceafc41300d51d
-X-Migadu-Flow: FLOW_OUT
-From: Diederik de Haas <diederik@cknow-tech.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Diederik de Haas <diederik@cknow-tech.com>
-Subject: [PATCH RESEND 3/3] arm64: dts: rockchip: Add support for FriendlyElec NanoPC-T6 Plus
-Date: Wed,  4 Nov 2026 12:05:06 +0100
-Message-ID: <20261104110640.1132917-4-diederik@cknow-tech.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20261104110640.1132917-1-diederik@cknow-tech.com>
-References: <20261104110640.1132917-1-diederik@cknow-tech.com>
+	id 1xOYqb-000000056m6-3doQ;
+	Wed, 04 Nov 2026 11:08:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=ybk9PjsAKZvMCgCYSb/Xfuyw4DvYxnCaG7n+1bV4cp0=; b=Nza9K1RNNnmbGtzGs4dx3xHTcf
+	+usFhekww9t4ygED3ZXPcYdGBGR9+MpYqihUpejRUCQMesQ9wxOOzfYnGaC+o95mYmKU83XgriN+g
+	TuioynnpubfcdxJBjBh+azoeIeAa7nNa+LGPqgO99YyHthQNChyBvW37HrzOak2vS+vLY+Z99MjU4
+	aZsgHM4r1caPhZf/b+JOcR4VE0qMAjjAYfx1JXJZJHConsyTvWeExcK94JBEtYfh9ZDNeF3Pj03DN
+	CxmlNweHuoNKFDTjawuUazJV0gwWzQmxz8L/3xn+r5BWYygtaN4xnCqb87yJO0mkJXI2dZ7wh8h2o
+	D8HGfr/g==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Oded Gabbay <ogabbay@kernel.org>,
+ Igor Paunovic <royalnet026@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Jeff Hugo <jeff.hugo@oss.qualcomm.com>,
+ Robert Foss <rfoss@kernel.org>, Sidong Yang <sidong.yang@furiosa.ai>,
+ Diederik de Haas <diederik@cknow-tech.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Jiaxing Hu <gahing@gahingwoo.com>, Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Jonas Karlman <jonas@kwiboo.se>, Guangshuo Li <lgs201920130244@gmail.com>,
+ =?UTF-8?B?SMO8c2V5aW4=?= BIYIK <boogiepop@gmx.com>,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Igor Paunovic <royalnet026@gmail.com>
+Subject: Re: [PATCH v2 05/11] accel/rocket: request the core clocks by name
+Date: Wed, 04 Nov 2026 12:07:42 +0100
+Message-ID: <3117045.BaHzMo0RvP@diego>
+In-Reply-To: <20260922080114.44662-6-royalnet026@gmail.com>
+References: <20260922080114.44662-1-royalnet026@gmail.com>
+ <20260922080114.44662-6-royalnet026@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_030700_974983_81C54585 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20261104_030805_904325_A7108628 
+X-CRM114-Status: GOOD (  22.23  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,152 +72,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The FriendlyElec NanoPC-T6 Plus is a new board in the NanoPC-T6 series.
-
-The main differences between the NanoPC-T6 Plus and the NanoPC-T6 LTS are:
-- use of LPDDR5 RAM
-- addition of an M.2 B-key connector for a 4G LTE module and a companion
-  NanoSIM card slot.
-- 10 pin header with UART and 2x USB 2.0 host got replaced with a 3 pin
-  UART header.
-- different audio codec (Everest ES8389)
-
-Add basic support for it.
-
-Link: https://wiki.friendlyelec.com/wiki/index.php/NanoPC-T6_Plus
-Link: https://wiki.friendlyelec.com/wiki/images/a/ad/NanoPC-T6_Plus_2511_SCH.pdf
-Link: http://everest-semi.com/pdf/ES8389%20PB.pdf
-Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
----
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../dts/rockchip/rk3588-nanopc-t6-plus.dts    | 91 +++++++++++++++++++
- 2 files changed, 92 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6-plus.dts
-
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 442d322a20cf..8dfcfe16a400 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -209,6 +209,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-lubancat-5io.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-mnt-reform2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6-lts.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-nanopc-t6-plus.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-ok3588-c.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-orangepi-5-max.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-orangepi-5-plus.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6-plus.dts
-new file mode 100644
-index 000000000000..f23ac4bd9f16
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6-plus.dts
-@@ -0,0 +1,91 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
-+ * Copyright (c) 2023 Thomas McKahan
-+ * Copyright (c) 2024 Linaro Ltd.
-+ */
-+
-+/dts-v1/;
-+
-+#include "rk3588-nanopc-t6.dtsi"
-+
-+/ {
-+	model = "FriendlyElec NanoPC-T6 Plus";
-+	compatible = "friendlyarm,nanopc-t6-plus", "rockchip,rk3588";
-+
-+	codec_es_3v3: regulator-codec-es-3v3 {
-+		compatible = "regulator-fixed";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-name = "codec_es_3v3";
-+		vin-supply = <&vcc4v0_sys>;
-+	};
-+
-+	usb2_port_5v: regulator-usb2-port-5v {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio1 RK_PA4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&usb20_host_pwren_h_pin>;
-+		pinctrl-names = "default";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		regulator-name = "usb2_port_5v";
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+};
-+
-+&analog_sound {
-+	compatible = "audio-graph-card";
-+	hp-det-gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_LOW>;
-+	label = "rk3588-es8389";
-+
-+	dais = <&i2s0_8ch_p0>;
-+	routing = "Headphones", "HPOL",
-+		  "Headphones", "HPOR",
-+		  "INPUT1", "Microphones Connector",
-+		  "INPUT2", "Microphones Connector";
-+	widgets = "Headphone", "Headphones",
-+		  "Microphone", "Microphones Connector";
-+};
-+
-+&i2c7 {
-+	codec@10 {
-+		compatible = "everest,es8389";
-+		reg = <0x10>;
-+		assigned-clocks = <&cru I2S0_8CH_MCLKOUT_TO_IO>;
-+		assigned-clock-rates = <12288000>;
-+		clocks = <&cru I2S0_8CH_MCLKOUT_TO_IO>;
-+		clock-names = "mclk";
-+		#sound-dai-cells = <0>;
-+		vdda-supply = <&codec_es_3v3>;
-+		vddd-supply = <&vcc_1v8_s3>;
-+
-+		port {
-+			es8389_p0_0: endpoint {
-+				remote-endpoint = <&i2s0_8ch_p0_0>;
-+			};
-+		};
-+	};
-+};
-+
-+&i2s0_8ch {
-+	i2s0_8ch_p0: port {
-+		i2s0_8ch_p0_0: endpoint {
-+			dai-format = "i2s";
-+			mclk-fs = <256>;
-+			remote-endpoint = <&es8389_p0_0>;
-+		};
-+	};
-+};
-+
-+&pinctrl {
-+	usb {
-+		usb20_host_pwren_h_pin: usb20-host-pwren-h-pin {
-+			rockchip,pins = <1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&u2phy2_host {
-+	phy-supply = <&usb2_port_5v>;
-+};
--- 
-2.55.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRGllbnN0YWcsIDIyLiBTZXB0ZW1iZXIgMjAyNiwgMTA6MDE6MDggTWl0dGVsZXVyb3DDpGlz
+Y2hlIE5vcm1hbHplaXQgc2NocmllYiBJZ29yIFBhdW5vdmljOgo+IHJvY2tldF9jb3JlX2luaXQo
+KSBoYW5kcyBjb3JlLT5jbGtzIHRvIGRldm1fY2xrX2J1bGtfZ2V0KCkgd2l0aG91dCBldmVyCj4g
+c2V0dGluZyB0aGUgLmlkIG1lbWJlcnMuIFRoZSByb2NrZXRfY29yZSBhcnJheSBpcyBhbGxvY2F0
+ZWQgd2l0aAo+IGRldm1fa2NhbGxvYygpIGluIHJvY2tldF9kZXZpY2VfaW5pdCgpLCBhbmQgcm9j
+a2V0X3Byb2JlKCkgb25seSBmaWxscyBpbgo+IC5yZGV2LCAuZGV2IGFuZCAuaW5kZXgsIHNvIGFs
+bCBmb3VyIGNsa19idWxrX2RhdGEgZW50cmllcyBhcmUgcmVxdWVzdGVkCj4gd2l0aCBhIE5VTEwg
+Y29uX2lkICh1bmxpa2UgY29yZS0+cmVzZXRzLCB3aG9zZSBpZHMgYXJlIHNldCBhIGZldyBsaW5l
+cwo+IGFib3ZlKS4KPiAKPiBjbGtfZ2V0KGRldiwgTlVMTCkgZW5kcyB1cCBpbiBvZl9jbGtfZ2V0
+X2h3KG5wLCAwLCBOVUxMKSwgYW5kCj4gb2ZfcGFyc2VfY2xrc3BlYygpIG9ubHkgY29uc3VsdHMg
+ImNsb2NrLW5hbWVzIiB3aGVuIGEgbmFtZSB3YXMgcGFzc2VkLAo+IHNvIHRoZSBpbmRleCBzdGF5
+cyAwIGZvciBhbGwgZm91ciBlbnRyaWVzLiBFdmVyeSBlbnRyeSB0aGVyZWZvcmUgZW5kcyB1cAo+
+IGhvbGRpbmcgYSBoYW5kbGUgdG8gdGhlICpmaXJzdCogY2xvY2sgb2YgdGhlIERUICJjbG9ja3Mi
+IHByb3BlcnR5LCBpLmUuCj4gQUNMS19OUFVuLiBOb3RoaW5nIGZhaWxzOiBwcm9iZSBzdWNjZWVk
+cyBhbmQgdGhlIGRyaXZlciBiZWxpZXZlcyBpdCBvd25zCj4gZm91ciBkaWZmZXJlbnQgY2xvY2tz
+Lgo+IAo+IFRoZSBjb25zZXF1ZW5jZSBpcyB0aGF0IHJvY2tldF9kZXZpY2VfcnVudGltZV9yZXN1
+bWUoKSBwcmVwYXJlcyBhbmQKPiBlbmFibGVzIHRoZSBBWEkgY2xvY2sgZm91ciB0aW1lcywgd2hp
+bGUgaGNsaywgcGNsayBhbmQgLSBtb3N0Cj4gaW1wb3J0YW50bHkgLSB0aGUgTlBVIGNvbXB1dGUg
+Y2xvY2sgKCJucHUiLCBTQ01JX0NMS19OUFUgb24gUkszNTg4KSBhcmUKPiBuZXZlciBwcmVwYXJl
+ZCBvciBlbmFibGVkIGJ5IHRoaXMgZHJpdmVyIGF0IGFsbC4gVGhlIE5QVSBzdGlsbCB3b3Jrcwo+
+IG9ubHkgYmVjYXVzZSB0aGUgUm9ja2NoaXAgcG93ZXItZG9tYWluIGRyaXZlciBzZXRzIEdFTlBE
+X0ZMQUdfUE1fQ0xLIGFuZAo+IGl0cyBhdHRhY2hfZGV2KCkgY2FsbGJhY2sgd2Fsa3MgdGhlIGRl
+dmljZSBub2RlIHdpdGggb2ZfY2xrX2dldCgpIGFuZAo+IGFkZHMgZXZlcnkgY2xvY2sgdG8gdGhl
+IHBtX2NsayBsaXN0LCBzbyBnZW5wZCBoYXBwZW5zIHRvIGtlZXAgdGhlCj4gcmVtYWluaW5nIGNs
+b2NrcyBydW5uaW5nLiBUaGUgYnVnIGlzIHRoZXJlZm9yZSBsYXRlbnQgdG9kYXksIGJ1dCBpdAo+
+IG1lYW5zIHRoZSBkcml2ZXIgaG9sZHMgbm8gcmVmZXJlbmNlIHRvIHRoZSBjbG9jayB0aGF0IGFj
+dHVhbGx5IGZlZWRzIHRoZQo+IE5QVSwgd2hpY2ggc3RhbmRzIGluIHRoZSB3YXkgb2YgYW55IGZ1
+dHVyZSBmcmVxdWVuY3kgc2NhbGluZwo+IChPUFAvZGV2ZnJlcSkgd29yay4KPiAKPiBGb3VuZCBv
+biBhbiBPcmFuZ2UgUGkgNSBQbHVzIChSSzM1ODgpIGJ5IHJlYWRpbmcgdGhlIGxpdmUgY2xvY2sg
+dHJlZToKPiAvc3lzL2tlcm5lbC9kZWJ1Zy9jbGsvY2xrX3N1bW1hcnkgc2hvd3MgZm91ciAiZmRh
+YjAwMDAubnB1IiBjb25zdW1lcgo+IGhhbmRsZXMgb24gYWNsa19ucHUwIChhbmQgbGlrZXdpc2Ug
+b24gYWNsa19ucHUxL2FjbGtfbnB1MiBmb3IgdGhlIG90aGVyCj4gdHdvIGNvcmVzKSwgd2hpbGUg
+aGNsa19ucHUwLCBwY2xrX25wdV9yb290IGFuZCBzY21pX2Nsa19ucHUgaGF2ZSBubwo+ICJmZGFi
+MDAwMC5ucHUiIGNvbnN1bWVyIGF0IGFsbCAtIHRoZWlyIG9ubHkgY29uc3VtZXJzIGFyZSB0aGUK
+PiAibnB1QGZkYWIwMDAwIiBoYW5kbGVzIGNyZWF0ZWQgYnkgdGhlIHBvd2VyLWRvbWFpbiBkcml2
+ZXIgdmlhCj4gb2ZfY2xrX2dldCgpLgo+IAo+IFNldCB0aGUgaWRzIGV4cGxpY2l0bHksIGluIHRo
+ZSBvcmRlciBtYW5kYXRlZCBieSB0aGUgYmluZGluZwo+IChEb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvbnB1L3JvY2tjaGlwLHJrMzU4OC1ya25uLWNvcmUueWFtbCk6Cj4gYWNsaywg
+aGNsaywgbnB1LCBwY2xrLiBBZnRlciB0aGUgY2hhbmdlIHRoZSBkcml2ZXIgaG9sZHMgb25lIGhh
+bmRsZSBwZXIKPiBkaXN0aW5jdCBjbG9jayBhbmQgY2xrX2J1bGtfcHJlcGFyZV9lbmFibGUoKSBj
+b3ZlcnMgYWxsIGZvdXIuCj4gCj4gTm90ZSB0aGF0IHRoaXMgaXMgYSB1c2VyLXZpc2libGUgdGln
+aHRlbmluZyBmb3Igb3V0LW9mLXRyZWUgRFRzOiB0aGUKPiBvbGQgTlVMTC1pZCByZXF1ZXN0cyBy
+ZXNvbHZlZCBieSBpbmRleCBhbmQgc3VjY2VlZGVkIG5vIG1hdHRlciB3aGF0Cj4gImNsb2NrLW5h
+bWVzIiBjb250YWluZWQsIHdoaWxlIHRoZSBuYW1lZCByZXF1ZXN0cyBmYWlsIHByb2JlIHdpdGgK
+PiAtRU5PRU5UIHdoZW4gb25lIG9mIHRoZSBmb3VyIG5hbWVzIGlzIG1pc3NpbmcuIFRoYXQgaXMg
+dGhlIHJpZ2h0Cj4gb3V0Y29tZSBmb3IgaW4tdHJlZSB1c2VycyAtIHRoZSBiaW5kaW5nIHJlcXVp
+cmVzIGV4YWN0bHkgdGhlc2UgZm91cgo+IGNsb2NrLW5hbWVzIGFuZCByazM1ODgtYmFzZS5kdHNp
+IGNhcnJpZXMgdGhlbSBvbiBhbGwgdGhyZWUgY29yZXMgLSBidXQKPiBhIERUIHRoYXQgcmVsaWVk
+IG9uIHRoZSBwZXJtaXNzaXZlIGxvb2t1cCBnb2VzIGZyb20gc2lsZW50bHkgcnVubmluZyBvbgo+
+IHRoZSB3cm9uZyBjbG9jayBoYW5kbGVzIHRvIG5vdCBwcm9iaW5nIGF0IGFsbCwgc28gcmVjb3Jk
+IHRoZSBjaGFuZ2UKPiBoZXJlIHdoZXJlIGdpdCBsb2cgd2lsbCBmaW5kIGl0LgoKc2FtZSBjb21t
+ZW50IGFzIGluIHRoZSBSSzM1NzYgc2VyaWVzLCBwbGVhc2UgdHJpbSB0aGlzIGRvd24gYSBsb3Qu
+ClRoZSBjaGFuZ2UgaXMgbm90IHRoYXQgYmlnIDotKSAuCgoKSGVpa28KCgoKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
