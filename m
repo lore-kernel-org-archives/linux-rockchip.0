@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3892D606A31B
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7E616606A329
 	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 12:28:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=N+DHAT/Y;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ideasonboard.com header.i=@ideasonboard.com header.a=rsa-sha256 header.s=mail header.b=nuiDZfaT
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MI8Bxnpx;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ideasonboard.com header.i=@ideasonboard.com header.a=rsa-sha256 header.s=mail header.b=ZahJNV6Q
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,36 +14,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=DjQEgMXjKuIJ3/6rnLURcuqf43EDM6gjeYIGO8MkuNg=; b=N+DHAT/YlDu4/aPTeNJ+EavZoN
-	MuvJVOnXpgDBBd0Rku64JZtAPIl6/y2Vh5I4bDeP75G6dUYLX1DxL/+Bx1RZqhbpfe4U81vMjjDWs
-	z8KM5mdrI8w1445LWIvazpD1ZBS9gCS3zKGQ3BeUU86FfGxX99ebtKj+pwYfSOwWwxRXFfjy6nc3J
-	ivS4xHR9y+dK8IOOt364Vsa9T0q4yvb7H6TJrQgJyEDEy5Yz9LPcEUIGPalyVyC4Bx2OdsHbM/LeK
-	8wUjsonqWN4FV5X++lXsDb0ohcs/13nwyb4haoxkGWnF5rqwpViIKJGFHo4Iypq7y1sXY+OeWciq1
-	LWpFg/9Q==;
+	bh=Ja2N039ixguOGXKq191F8SZQCY1fREYOzscrZkfymRY=; b=MI8BxnpxqUxNZC8OaLaYpEDxDQ
+	8PzFEAjG1ALUDgzOdwoPSMteQ/1oUDBv6iZGbvbvMb87XPmmSw1xN908GwBD51PTUx6LaPAdW/89A
+	7JRY/SowRCsY32aCMZBRtb/IzFPLZx/UUnk9x3lxjjukYzqx+e7CZGhT14yp9LZnWI0fv1FHCXKgQ
+	HeZcd59p692CKYB6dm5fYlgZKfcjykPC46h5pesnLv0biS1UCSeOL5J12G6t8zcDac3IFqGiIUlrq
+	bKKfGQNgHyyxHG+8CXiSGhRQZwUL6h0pzRYCAvtU53KOs6eC8S9J1mHaUOcRv75LrbcASbOzokLCn
+	zzH037cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOa6j-00000005JfL-1YSl;
-	Wed, 04 Nov 2026 12:28:49 +0000
+	id 1xOa6k-00000005JiP-1DcZ;
+	Wed, 04 Nov 2026 12:28:50 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOa6Y-00000005JR2-0Q11;
-	Wed, 04 Nov 2026 12:28:39 +0000
+	id 1xOa6Z-00000005JSZ-47dz;
+	Wed, 04 Nov 2026 12:28:41 +0000
 Received: from [127.0.1.1] (chfd-03-b2-v4wan-176392-cust229.vm15.cable.virginm.net [82.19.20.230])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 21ACB21DD;
-	Wed,  4 Nov 2026 13:26:16 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0C34E232A;
+	Wed,  4 Nov 2026 13:26:19 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1793795176;
-	bh=ColIUmM7I3sT9uPmNQaPsLO56q+grpRm8G7iqR/OKGo=;
+	s=mail; t=1793795179;
+	bh=Ed8zH7eVXyshlepJ2a6VxF47jhQzEAoGKAtRybwj0yw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=nuiDZfaTalhaw3meF/FOIjfbzoUZkXLQZPjg29L5aHMet91nq4JQbzmBSBWXXzyiP
-	 P7PDo9/HGtOCq6bRRxokG7f4IoEc8OOMneWH2l9O5y+Rog6tF1l5RG4IUbOPrMaFmc
-	 uFBvVCe4Pz3ztKBIgnhmmK74ZIpTgJ6ph9DgYfzI=
+	b=ZahJNV6Qupejq0WQeykhHN85LlnxFqVSn4CJIGVD+NTy/ljqrddzfYHGF6LLFBOdf
+	 7WBUIkDIjxxcs8EiasfTSl4n8CW9ti79M7d4hvzk8zOXsejhrKAQbMvFALdY9JRjbJ
+	 izjqxCZcctwH66qACTBfEPZfKnqAEPd5EayPKcG4=
 From: Daniel Scally <dan.scally@ideasonboard.com>
-Date: Wed, 04 Nov 2026 12:28:17 +0000
-Subject: [PATCH 2/7] media: v4l2-isp: Hold v4l2-isp data in central struct
+Date: Wed, 04 Nov 2026 12:28:21 +0000
+Subject: [PATCH 6/7] media: v4l2-isp: Introduce "reset buffer" concept
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261104-v4l2-isp-resume-v1-2-06aeb8cf2940@ideasonboard.com>
+Message-Id: <20261104-v4l2-isp-resume-v1-6-06aeb8cf2940@ideasonboard.com>
 References: <20261104-v4l2-isp-resume-v1-0-06aeb8cf2940@ideasonboard.com>
 In-Reply-To: <20261104-v4l2-isp-resume-v1-0-06aeb8cf2940@ideasonboard.com>
 To: Jacopo Mondi <jacopo.mondi+renesas@ideasonboard.com>, 
@@ -60,26 +60,26 @@ Cc: linux-media@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
  Daniel Scally <dan.scally@ideasonboard.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6123;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=8462;
  i=dan.scally@ideasonboard.com; h=from:subject:message-id;
- bh=ColIUmM7I3sT9uPmNQaPsLO56q+grpRm8G7iqR/OKGo=;
- b=owEBbQKS/ZANAwAKAchJV3psRXUyAcsmYgBq6yTu9d6EUjNEym7soRx6mqhLCXzWYNHNI5nus
- odeox5+jm6JAjMEAAEKAB0WIQQqyuwyDnZdb+mxmm/ISVd6bEV1MgUCausk7gAKCRDISVd6bEV1
- MtL5D/4velDuSlPaF8gdXkdMwQkV1J5k+lyNQHW9HITYCgo2XpPOAWnY2tdHY5CUtQuDZSSgzii
- TSV6a2s2zjJeB11nVgeG9Epthsdd5wVVNQKJtzNY2GzYZeTqwf2LcZSzNPrmgAJxDMWqzGMbELD
- EJKUMjeCHncTyFcnmqoH1Hs7aESEBvCgSjN+y4wrC77ZQc+5LCbbxAplMMsDX36vG8x00sOwyPn
- u5vvwqce7pULSLRwmWu6GGY/gryNlemjDkHMkAP+MJbbhG+lpKrNBlFlJlKi1vCesLjg3Wd//LF
- k9hbOJOV1sgE5Qsd8JtlNyN61+m3ri1O/vDpdmKIZfFoyKr3CIImuZM9bQdmWN/cSf1jK1mTsty
- V9GNtk4KSzYAVg2Yz0yx37iloycFa+2UdlkGmund81jXAQoly5sX/OSARG6Bm+hdmwwb/uMcMpU
- M7eHz6cyP350CJcGZWvVJWDD0wANcQSKsoU/ui7M1dxfMkm6T+A6mrqLP3YhBgG47FXsUD5YQ/G
- 2scsD4Z2tGRlj+Odt+S0zbWUzAYEZ6DzFTpvx1RVQSQ2tOMOSmEKbscdf/XInOZOLtD67OgwvmA
- Bfn1Ut0CxoTiWzyv0XQmiMzOzfvqih8QhSiKmiIBRs+ucgDQicb+zYPJxsVAWu+X3/WxYHi5KHb
- cVElSH9jUbVfBvQ==
+ bh=Ed8zH7eVXyshlepJ2a6VxF47jhQzEAoGKAtRybwj0yw=;
+ b=owEBbQKS/ZANAwAKAchJV3psRXUyAcsmYgBq6yTvABSD/Ovufvg2xAspJQNRPQZLAHYJVpUjd
+ wQUuuQ/2buJAjMEAAEKAB0WIQQqyuwyDnZdb+mxmm/ISVd6bEV1MgUCausk7wAKCRDISVd6bEV1
+ MutZD/4k34mDvjjZfm9sg772I8vLH8hegDcOQTUPDfVzMNQO+dqTi326z7BKalEBz++nVP7Whqx
+ 7gZcOviUs6Ki5WGToCsRSdOg0gObSB7BFPOIniaCjZp7UXsKr5miwy9fE5I4YF7mkl6dfVaYTDI
+ JO7DvILZ+owE7oDNfNaa3ykG3nPKT8dkCb/GfM9VSb0fJp+iWCnGo+nMdQOT34FlakO0Kk4WmbE
+ BW8MO/gzCXpsB77vejkNM2+28gBMaOnLJNqg7ViverMCcYa7MX8uewKZjBj/dwa3H6wJbAcmOHl
+ Gc53TDxFQME9wkjGDiWFsk+V3nzkLYduvaM51O/B6j7iY+xxS62SUajPQARKQVwdvPh3cfKf8U/
+ mTEuzGcFhYO3FEkfVlumXJaWPCeXk+/nvsWeM43PYlgRH0w2eJCBIJA+7jq4Xav9Abk94YE6Kju
+ i9Jd8wxQ2ixVJcwLaxTLKyzj76vBfCRni6HXItf6v0z4ObGP57C2jvgxQ9BhFuzyV2e/gqgRueK
+ pu50onDSRYif+0zN63BPeQz+fCmWZZm/txLtP3XbTo3CmXSFHbKwuU3dcyC91JOiSZmpeGgj66+
+ BN6/WSeiZhUyZIq+4wc3akmmfe6biYgL8MEl1zpW89q3FRLc83L8Vbm35KbGQdBmo3L8ntG19im
+ /5aoiOjv8UWC5Yw==
 X-Developer-Key: i=dan.scally@ideasonboard.com; a=openpgp;
  fpr=EEC699ACA1B7CB5D31330C0BBD501C2A3546CCF6
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_042838_302485_AB394A28 
-X-CRM114-Status: GOOD (  23.77  )
+X-CRM114-CacheID: sfid-20261104_042840_375834_926C0FA0 
+X-CRM114-Status: GOOD (  31.23  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,166 +100,201 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hold v4l2-isp related data in a new struct v4l2_isp to facilitate the
-easier use of driver-defined data in v4l2-isp itself. Provide a
-function to validate the driver's definition of data to make sure that
-we have everything that we need.
+The extensible parameters format defined in the v4l2-isp framework
+is designed to allow userspace to pass a truncated buffer of params
+for an ISP, which need not include all of its available configuration
+settings. This allows heavy configuration like lens shading tables to
+be passed by userspace to the driver a single time, and subsequent
+per-frame buffers to be much lighter. This is problematic in the case
+of suspend or hibernate and resume, in which scenario the hardware
+will lose all settings, but userspace has no way of knowing that they
+need to be re-applied.
+
+Introduce the concept of a "reset buffer" to v4l2-isp. Userspace can
+pass a new flag that marks a parameter block as needing to be
+re-applied. Where the validation process finds that flag, the marked
+block is copied to a VB2Q-independent instance of a
+v4l2_isp_params_buffer. If that block has been written to the reset
+buffer before then the existing copy is overwritten.
+
+The intention with using the existing v4l2_isp_params_buffer is to
+facilitate a driver easily using the normal function to apply a
+params buffer to also apply the reset buffer on device reset.
 
 Signed-off-by: Daniel Scally <dan.scally@ideasonboard.com>
 ---
- drivers/media/v4l2-core/v4l2-isp.c | 41 ++++++++++++++++++++
- include/media/v4l2-isp.h           | 79 ++++++++++++++++++++++++++++----------
- 2 files changed, 99 insertions(+), 21 deletions(-)
+ Documentation/userspace-api/media/v4l/v4l2-isp.rst | 19 +++++++
+ drivers/media/v4l2-core/v4l2-isp.c                 | 66 ++++++++++++++++++++++
+ include/media/v4l2-isp.h                           | 15 +++++
+ include/uapi/linux/media/v4l2-isp.h                |  1 +
+ 4 files changed, 101 insertions(+)
 
+diff --git a/Documentation/userspace-api/media/v4l/v4l2-isp.rst b/Documentation/userspace-api/media/v4l/v4l2-isp.rst
+index 8a3f05b5e85fd335e68e349234e2cfe5e7e83099..6bd72c7741816676d22a3197ae72ae6796973a5f 100644
+--- a/Documentation/userspace-api/media/v4l/v4l2-isp.rst
++++ b/Documentation/userspace-api/media/v4l/v4l2-isp.rst
+@@ -56,6 +56,25 @@ returns an error.
+ Extension to the parameters format can be implemented by adding new blocks
+ definition without invalidating the existing ones.
+ 
++ISP Reset buffers
++-----------------
++The parameters buffer format described by :c:type:`v4l2_isp_params_buffer`
++allows intentionally for userspace to pass a truncated buffer of parameters for
++an ISP which does not need to include all of its available configuration
++settings. This allows heavy configuration like lens shading tables to be passed
++by userspace a single time, and subsequent per-frame buffers to be much lighter.
++
++In the case of a suspend or hibernate action followed by a system resume this
++presents a problem. The hardware will have lost all settings, but userspace has
++no way of knowing that they were lost and need to be re-applied.
++
++The V4L2 ISP framework includes the concept of a "reset buffer". As part of the
++validation process, the framework will store the "last-seen" instance of each
++configuration block type in an instance of v4l2_isp_params_buffer. Drivers can
++then simply re-apply that "reset buffer" using their normal configuration
++function when resuming from hibernation with an active stream
++
++
+ ISP statistics
+ ==============
+ 
 diff --git a/drivers/media/v4l2-core/v4l2-isp.c b/drivers/media/v4l2-core/v4l2-isp.c
-index 8e6c2ef326aaa63e00332bcdac8ebdf6da059f44..a979c0690d19d9956a45657561b510546b3aa8c2 100644
+index 925632e1037db18f0948ceb0ce7c652e167516c9..1420aa0f48194ff04a29fbbf83d0646d3b9d23d2 100644
 --- a/drivers/media/v4l2-core/v4l2-isp.c
 +++ b/drivers/media/v4l2-core/v4l2-isp.c
-@@ -13,6 +13,47 @@
+@@ -54,6 +54,69 @@ int v4l2_isp_validate(struct v4l2_isp *isp)
+ }
+ EXPORT_SYMBOL_GPL(v4l2_isp_validate);
  
- #include <media/videobuf2-core.h>
- 
-+int v4l2_isp_validate(struct v4l2_isp *isp)
++int v4l2_isp_params_init_reset_buf(struct v4l2_isp *isp)
 +{
-+	/* We require a device pointer for debugging purposes */
-+	if (!isp->dev)
-+		return -EINVAL;
++	isp->params.reset_buf = devm_kzalloc(isp->dev, isp->params.max_size,
++					     GFP_KERNEL);
++	if (!isp->params.reset_buf)
++		return -ENOMEM;
 +
-+	/*
-+	 * We need to know how big the data member of the params buffer can get
-+	 */
-+	if (!isp->params.max_size) {
-+		dev_err(isp->dev, "Missing parameters buffer size data\n");
-+		return -EINVAL;
-+	}
-+
-+	/* We need to know how many block types there are */
-+	if (!isp->params.num_block_types) {
-+		dev_err(isp->dev, "Missing number of block types\n");
-+		return -EINVAL;
-+	}
-+
-+	/* We need a pointer to some &struct v4l2_isp_params_block_type_info */
-+	if (!isp->params.types_info) {
-+		dev_err(isp->dev, "Missing block types info pointer\n");
-+		return -EINVAL;
-+	}
-+
-+	/*
-+	 * A block type with a size of zero is inherently invalid, so let's
-+	 * catch that early.
-+	 */
-+	for (unsigned int i = 0; i < isp->params.num_block_types; i++) {
-+		if (!isp->params.types_info[i].size) {
-+			dev_err(isp->dev, "Found block type info with 0 size\n");
-+			return -EINVAL;
-+		}
-+	}
++	isp->params.reset_buf->version = V4L2_ISP_PARAMS_VERSION_V0;
 +
 +	return 0;
 +}
-+EXPORT_SYMBOL_GPL(v4l2_isp_validate);
++EXPORT_SYMBOL_GPL(v4l2_isp_params_init_reset_buf);
 +
- int v4l2_isp_params_validate_buffer_size(struct device *dev,
- 					 struct vb2_buffer *vb,
- 					 size_t max_size)
++static void v4l2_isp_params_update_reset_buf(struct v4l2_isp *isp,
++					     const struct v4l2_isp_params_block_header *block,
++					     const struct v4l2_isp_params_block_type_info *info)
++{
++	struct v4l2_isp_params_buffer *buffer = isp->params.reset_buf;
++	struct v4l2_isp_params_block_header *new_block;
++	struct v4l2_isp_params_block_header *old_block;
++
++	/*
++	 * If the reset buffer was never initialised then the driver didn't ask
++	 * us to handle this and we can just do nothing.
++	 */
++	if (!buffer) {
++		dev_dbg(isp->dev, "Reset buffer is not initialised\n");
++		return;
++	}
++
++	v4l2_isp_params_for_each_block(buffer, old_block) {
++		if (old_block->type != block->type)
++			continue;
++
++		memcpy(old_block, block, block->size);
++		return;
++	}
++
++	/*
++	 * If we didn't find an existing stored copy for the given block type
++	 * then we simply add it to the end of the array.
++	 */
++	new_block = (struct v4l2_isp_params_block_header *)
++		&buffer->data[buffer->data_size];
++
++	/*
++	 * This looks awkward! We're memcpy()ing with block->size but setting
++	 * new_block->size with info->size. The reason is that the source buffer
++	 * might have only contained the block header rather than a full block.
++	 * In that case, we need to only memcpy() the amount of space that it
++	 * actually used in the source buffer.
++	 *
++	 * In future though userspace might queue a buffer with a full block for
++	 * the same block type. If we only reserved here enough space for the
++	 * header then things would need to be rearranged in the reset buffer.
++	 * Much easier to just reserve enough space for the full block right
++	 * away.
++	 */
++	memcpy(new_block, block, block->size);
++	new_block->size = info->size;
++	buffer->data_size += new_block->size;
++}
++
+ int v4l2_isp_params_validate_buffer_size(struct v4l2_isp *isp,
+ 					 struct vb2_buffer *vb)
+ {
+@@ -170,6 +233,9 @@ int v4l2_isp_params_validate_buffer(struct v4l2_isp *isp, struct vb2_buffer *vb,
+ 		if (info->block_validate && info->block_validate(dev, block))
+ 			return -EINVAL;
+ 
++		if (block->flags & V4L2_ISP_PARAMS_FL_BLOCK_REAPPLY)
++			v4l2_isp_params_update_reset_buf(isp, block, info);
++
+ 		block_offset += block->size;
+ 		buffer_size -= block->size;
+ 	}
 diff --git a/include/media/v4l2-isp.h b/include/media/v4l2-isp.h
-index 7a54cf98c79af7a621fdc1f7098690ec7ccaa267..dc3e612ef79ea510ec1535f483fc16c6ec3d4569 100644
+index 5f13651b53d3c06fc676b32826daa68ad77b5cf6..b2ad6d98a4c266c388db623ddd549307b7fd4b09 100644
 --- a/include/media/v4l2-isp.h
 +++ b/include/media/v4l2-isp.h
-@@ -31,27 +31,6 @@ struct vb2_buffer;
- #define v4l2_isp_buffer_size(max_size)			\
- 	(offsetof(struct v4l2_isp_buffer, data) + (max_size))
+@@ -72,6 +72,8 @@ struct v4l2_isp_params_block_type_info {
+  * @dev: pointer to the &struct device associated with the ISP
+  * @params: sub-struct holding data related to the V4L2 ISP parameters
+  * @params.types_info: pointer to array of params block information structs
++ * @params.reset_buf: pointer to a buffer containing a copy of any block
++ *		      flagged as needing re-application on device reset
+  * @params.num_block_types: number of possible params block types
+  * @params.max_size: maximum size in bytes of the data member of
+  *		     &struct v4l2_isp_params_buffer
+@@ -88,6 +90,7 @@ struct v4l2_isp {
  
--/**
-- * v4l2_isp_params_validate_buffer_size - Validate a V4L2 ISP buffer sizes
-- * @dev: the driver's device pointer
-- * @vb: the videobuf2 buffer
-- * @max_size: the maximum allowed buffer size
-- *
-- * This function performs validation of the size of a V4L2 ISP parameters buffer
-- * before the driver can access the actual data buffer content.
-- *
-- * After the sizes validation, drivers should copy the buffer content to a
-- * kernel-only memory area to prevent userspace from modifying it,
-- * before completing validation using v4l2_isp_params_validate_buffer().
-- *
-- * The @vb buffer as received from the vb2 .buf_prepare() operation is checked
-- * against @max_size and it's validated to be large enough to accommodate at
-- * least one ISP configuration block.
-- */
--int v4l2_isp_params_validate_buffer_size(struct device *dev,
--					 struct vb2_buffer *vb,
--					 size_t max_size);
--
- /**
-  * struct v4l2_isp_params_block_type_info - V4L2 ISP params per-block-type info
-  * @size: the block type expected size
-@@ -73,6 +52,64 @@ struct v4l2_isp_params_block_type_info {
- 			      const struct v4l2_isp_block_header *block);
- };
+ 	struct {
+ 		const struct v4l2_isp_params_block_type_info *types_info;
++		struct v4l2_isp_params_buffer *reset_buf;
+ 		size_t num_block_types;
+ 		size_t max_size;
+ 	} params;
+@@ -104,6 +107,18 @@ struct v4l2_isp {
+  */
+ int v4l2_isp_validate(struct v4l2_isp *isp);
  
 +/**
-+ * struct v4l2_isp - V4L2 ISP processing structure
-+ * @dev: pointer to the &struct device associated with the ISP
-+ * @params: sub-struct holding data related to the V4L2 ISP parameters
-+ * @params.types_info: pointer to array of params block information structs
-+ * @params.num_block_types: number of possible params block types
-+ * @params.max_size: maximum size in bytes of the data member of
-+ *		     &struct v4l2_isp_params_buffer
++ * v4l2_isp_params_init_reset_buf - Init a buffer to store device reset data
++ * @isp: pointer to the &struct v4l2_isp to allocate the buffer for
 + *
-+ * The V4L2 ISP framework is designed to ease validation of parameter and
-+ * statistic buffers queued to ISP device drivers. This struct holds references
-+ * to driver-defined information designed to facilitate easy validation in a
-+ * central source file. The intention is for an instance of the struct to be
-+ * embedded within a driver specific struct and populated before validation and
-+ * use through the v4l2-isp framework.
++ * This function allocates memory for &struct v4l2_isp.params.reset_buf, which
++ * is intended to be populated with parameter blocks that are flagged with
++ * %V4L2_ISP_PARAMS_FL_BLOCK_REAPPLY.
++ *
++ * @return 0 on success, -ENOMEM on failure
 + */
-+struct v4l2_isp {
-+	struct device *dev;
-+
-+	struct {
-+		const struct v4l2_isp_params_block_type_info *types_info;
-+		size_t num_block_types;
-+		size_t max_size;
-+	} params;
-+};
-+
-+/**
-+ * v4l2_isp_validate - Set up a &struct v4l2_isp properly
-+ * @isp: pointer to the &struct v4l2_isp to initialise
-+ *
-+ * This function validates that the members of @isp have been populated with
-+ * information sufficient to allow it to be used with the v4l2-isp framework.
-+ *
-+ * @return int
-+ */
-+int v4l2_isp_validate(struct v4l2_isp *isp);
-+
-+/**
-+ * v4l2_isp_params_validate_buffer_size - Validate a V4L2 ISP buffer sizes
-+ * @dev: the driver's device pointer
-+ * @vb: the videobuf2 buffer
-+ * @max_size: the maximum allowed buffer size
-+ *
-+ * This function performs validation of the size of a V4L2 ISP parameters buffer
-+ * before the driver can access the actual data buffer content.
-+ *
-+ * After the sizes validation, drivers should copy the buffer content to a
-+ * kernel-only memory area to prevent userspace from modifying it,
-+ * before completing validation using v4l2_isp_params_validate_buffer().
-+ *
-+ * The @vb buffer as received from the vb2 .buf_prepare() operation is checked
-+ * against @max_size and it's validated to be large enough to accommodate at
-+ * least one ISP configuration block.
-+ */
-+int v4l2_isp_params_validate_buffer_size(struct device *dev,
-+					 struct vb2_buffer *vb,
-+					 size_t max_size);
++int v4l2_isp_params_init_reset_buf(struct v4l2_isp *isp);
 +
  /**
-  * v4l2_isp_params_validate_buffer - Validate a V4L2 ISP parameters buffer
-  * @dev: the driver's device pointer
+  * v4l2_isp_params_validate_buffer_size - Validate a V4L2 ISP buffer sizes
+  * @isp: the driver's &struct v4l2_isp pointer
+diff --git a/include/uapi/linux/media/v4l2-isp.h b/include/uapi/linux/media/v4l2-isp.h
+index e4607e1217e1a720f8f0a180abf3c064a0d81bf7..43059940edf1a2cad9868a4bc049ee32211cc465 100644
+--- a/include/uapi/linux/media/v4l2-isp.h
++++ b/include/uapi/linux/media/v4l2-isp.h
+@@ -42,6 +42,7 @@ enum v4l2_isp_version {
+ 
+ #define V4L2_ISP_PARAMS_FL_BLOCK_DISABLE	(1U << 0)
+ #define V4L2_ISP_PARAMS_FL_BLOCK_ENABLE		(1U << 1)
++#define V4L2_ISP_PARAMS_FL_BLOCK_REAPPLY	(1U << 2)
+ 
+ /*
+  * Reserve the first 8 bits for V4L2_ISP_PARAMS_FL_* flag.
 
 -- 
 2.43.0
