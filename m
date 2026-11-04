@@ -2,93 +2,89 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 35FB1606D811
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 13:05:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AAC66606A329
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 13:06:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aaIGwx0l;
-	dkim=temperror header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=WLqSLvYw
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SKY1Pj7r;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=VzgC/Mj6
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=wjE+OGq6iywHtDdRrZRWLz27ktCtzpq01e/yjM7B8zY=; b=aaIGwx0lb0NbI/p7at5ChOciq4
-	TP9OwzeMykGrJyOosqee/z/Fb1OUoJejc5KiGVqhnSuGsULsnbVWtlIATGr4s1E4dCQj2wwjxWVEd
-	SgX6+98nkOioDfcvoJ5pNSS7vcb6+XcRxQ/kTbog9HrXQgn7oZo3O0tg4dZmaFoHf93/0IduxGoU6
-	Jv8UvXFTKLYK5hpGdgPkXCw6TsuBMiUmF02UGAmX/X+/rHcyRCTBhoxqjGjBqbTOGxrQtd+0Y1ssF
-	YSVzZmHAIccXjNro9ofXj6iH8784CGxMfA/+JNyYE4IC0O2FqO+ORaoKJ+JMdeL+Lmne7wZ2MqLGg
-	T0DgsFdA==;
+	bh=maNqE+R0b00l2vnAl/ub6XQCjLb5rjQ9kIHWhQWbJMo=; b=SKY1Pj7rmTJ61NESDvfFn/SeKp
+	SyRvQnf2Tnhe6vzHwZsDZcY4ySb+jRKwMt+SRQYYhA2Wrz7+OEOw4VLOio6012AU+pdowNZbWD8J5
+	2om3jxYsRQ04PaQsoJfSOt2Fkrc5x8fTTtTO2d11mGLjImteUulXiqkZHABvBYWObtAuOGKZ2ELJT
+	zZ+dNSjUt8fPFEOxcpCOAvDTGzuJDMYtVTrah8lYgM7Iy/T2fFposmjVmRhfktx6xOAgAzsR4+4W3
+	Cqv+Dksrg/DA5Unz2E0Lucyq0E3RkTL6kZRxXSzEO3Bqx09QetZcn0J1hxjdUqTfmTFp0o7ifAhQ9
+	C7fQz+jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOagD-00000005QtG-23Q8;
-	Wed, 04 Nov 2026 13:05:29 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xOagv-00000005R0V-3CIe;
+	Wed, 04 Nov 2026 13:06:13 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOagA-00000005QsV-3Mi1
-	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Nov 2026 13:05:26 +0000
+	id 1xOagt-00000005Qzr-3CwU;
+	Wed, 04 Nov 2026 13:06:11 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1951F62CCD
-	for <linux-rockchip@lists.infradead.org>; Wed,  4 Nov 2026 13:05:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C71C81F000C1
-	for <linux-rockchip@lists.infradead.org>; Wed,  4 Nov 2026 13:05:25 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 352E362CCD;
+	Wed,  4 Nov 2026 13:06:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B6D01F000C1;
+	Wed,  4 Nov 2026 13:06:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793797525;
-	bh=LPKBxmhyg89L22fIaf9IQyOx1ftYYGNVMEyFVHYOx+w=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=WLqSLvYwRuBRb2z2uy097jLLlVZenw1O0Ud3+HdLZPMW2W/yzMsw4PoGFqDOIDUwu
-	 bYeTnemOekwxxrWyrcu3N1/2zGODfTWspcTCv2AIYLDuBbLuQUV8lPQQYsoeeaXIZo
-	 s9pxZA4n1vrlJHdLmklh37T+D8AiUXYc4GVoPjPUCjjcMlonowAys/U2PRW90Kfnup
-	 tuf9hIDTCB7oNt5tvVL+asbU98CD4ARrQUGqF8Nf8SlgNeuq/Vl88CJ3YEo52TiM8A
-	 criMClDoEAWjWwpB9F04k/fO5WKv51xfXn5g8+JQfVgeQbC0d/BD2BPOItMFG3+Cjh
-	 JM4GUMBVSYcnA==
-Received: by mail-lf1-f46.google.com with SMTP id 2adb3069b0e04-5be416e603cso409523e87.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 04 Nov 2026 05:05:25 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AKwUvBwf4t9rQXxCF2REAA2f8xdFS0LHG3OuqaF5Hva4NG/k0RmUfALOL2spRdIop0MQw4cjYITaBH8ARjWQMXPIvA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9WWdE4MYjqWswTyAG1jw5f8nOpfRRGXodt1C3knTfdqTxpQMFk
-	xL3Hqb6buBLit4hTHVswxB0mrxPiq8qVKUZFTanLHgIbizlb3h963b63aURsW4rd15j9oKbmYvQ
-	+uXFX4liNqVh/ZFYg4T0dzuoMxuFjCQc=
-X-Received: by 2002:a05:6512:3a89:b0:5bc:c446:760c with SMTP id
- 2adb3069b0e04-5bfd956f3c7mr5830020e87.48.1793797524594; Wed, 04 Nov 2026
- 05:05:24 -0800 (PST)
+	s=k20260515; t=1793797570;
+	bh=ZzMEbYA4V1ijTINuiBxo7UEs4HRgu3cpEmg+6Wx8grI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=VzgC/Mj6YIWJ0AxGwvOLSwRfM1RU5vzmYnEGDOF8pLHyZ3jGCnImJI4c+DdSGVmTm
+	 uknm6xCaRZYeTPni+axDTJ1Zw52DIRZeNQ+SHcAdAoWtuv9VZW1uCRt/acpNoKtaLB
+	 qzZBje0sw7VHEs3bi+19VrwWDio0bQSVWQEr0pqx9mssqBK/xj0C3oJmACmarrFAfF
+	 KGdVnUe8n5xmRmUrqIUT/2QBbSBYOsqVPCmfVe7QMivCA6N5OMhEFa6MigPM99eHr4
+	 fZfh1y7rNvyNVW3AJSRPNdbj8UnSxnpa6AzzJLC2tKJS4Am01ekEgmm79nj4DvQ3zk
+	 XuX1HtX8+Hp6A==
+Date: Wed, 4 Nov 2026 14:06:08 +0100
+From: Thierry Reding <thierry.reding@kernel.org>
+To: Frank.Li@oss.nxp.com
+Cc: Mark Brown <broonie@kernel.org>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Radu Pirea <radu_nicolae.pirea@upb.ro>, 
+	CL Wang <cl634@andestech.com>, Ryan Wanner <ryan.wanner@microchip.com>, 
+	Florian Fainelli <florian.fainelli@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Vladimir Oltean <olteanv@gmail.com>, Frank Li <Frank.Li@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Han Xu <han.xu@nxp.com>, Haibo Chen <haibo.chen@nxp.com>, 
+	Linus Walleij <linusw@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, 
+	Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>, 
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>, Andi Shyti <andi.shyti@kernel.org>, 
+	Tudor Ambarus <tudor.ambarus@linaro.org>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Peter Griffin <peter.griffin@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Yixun Lan <dlan@kernel.org>, Troy Mitchell <troy.mitchell@linux.spacemit.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Alain Volmat <alain.volmat@foss.st.com>, Chen-Yu Tsai <wens@kernel.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Laxman Dewangan <ldewangan@nvidia.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Sowjanya Komatineni <skomatineni@nvidia.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>, 
+	"moderated list:ARM/Microchip (AT91) SoC support" <linux-arm-kernel@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>, 
+	"moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE" <linux-rpi-kernel@lists.infradead.org>, "open list:FREESCALE DSPI DRIVER" <imx@lists.linux.dev>, 
+	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>, 
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, 
+	"open list:RENESAS RZ/V2H(P) RSPI DRIVER" <linux-renesas-soc@vger.kernel.org>, 
+	"open list:SAMSUNG SPI DRIVERS" <linux-samsung-soc@vger.kernel.org>, 
+	"open list:RISC-V SPACEMIT SoC Support" <linux-riscv@lists.infradead.org>, 
+	"open list:RISC-V SPACEMIT SoC Support" <spacemit@lists.linux.dev>, 
+	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>, 
+	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>, 
+	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>, vkoul@kernel.org
+Subject: Re: [PATCH 1/1] spi: use dmaengine_desc_set_callback()
+Message-ID: <austohDT6sVqXjmi@orome>
+References: <20261102174005.3933649-1-Frank.Li@oss.nxp.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com> <20261022-add-board-ok3572-c-v1-6-0b0fd85a31ee@qq.com>
-In-Reply-To: <20261022-add-board-ok3572-c-v1-6-0b0fd85a31ee@qq.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Wed, 4 Nov 2026 14:05:11 +0100
-X-Gmail-Original-Message-ID: <CAD++jLkfnsnqr9DeJG1UY1BNPmXV=L1fh0o1fRgq2N70k3Aq2A@mail.gmail.com>
-X-Gm-Features: AclHuK_mv5t_ofBXXvFmTtsscxk8ZZZWMu9yfbYuWEEuKyuLUDpVdyNQz1Is1sQ
-Message-ID: <CAD++jLkfnsnqr9DeJG1UY1BNPmXV=L1fh0o1fRgq2N70k3Aq2A@mail.gmail.com>
-Subject: Re: [PATCH 06/27] dt-bindings: gpio: rockchip: Add RK3572 GPIO banks
-To: 1579567540@qq.com
-Cc: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
-	Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Elaine Zhang <zhangqing@rock-chips.com>, Lee Jones <lee@kernel.org>, 
-	Bartosz Golaszewski <brgl@kernel.org>, Richard Cochran <richardcochran@gmail.com>, 
-	Ulf Hansson <ulfh@kernel.org>, Andi Shyti <andi.shyti@kernel.org>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
-	Jisheng Zhang <jszhang@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, David Wu <david.wu@rock-chips.com>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@kernel.org>, 
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, 
-	Maxime Chevallier <maxime.chevallier@bootlin.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Thinh Nguyen <Thinh.Nguyen@synopsys.com>, Jaehoon Chung <jh80.chung@samsung.com>, 
-	Shawn Lin <shawn.lin@rock-chips.com>, linux-clk@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	mfd@lists.linux.dev, linux-gpio@vger.kernel.org, netdev@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-i2c@vger.kernel.org, 
-	linux-serial@vger.kernel.org, linux-mmc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-phy@lists.infradead.org, 
-	linux-usb@vger.kernel.org
+In-Reply-To: <20261102174005.3933649-1-Frank.Li@oss.nxp.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,24 +94,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0305581664948668186=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-T24gV2VkLCBPY3QgMjEsIDIwMjYgYXQgNjoxMuKAr1BNIEN1bmhhbyBMdSB2aWEgQjQgUmVsYXkK
-PGRldm51bGwrMTU3OTU2NzU0MC5xcS5jb21Aa2VybmVsLm9yZz4gd3JvdGU6Cgo+IEZyb206IEN1
-bmhhbyBMdSA8MTU3OTU2NzU0MEBxcS5jb20+Cj4KPiBSSzM1NzIgR1BJTyBiYW5rcyBoYXZlIGZv
-dXIgcGFyZW50IGludGVycnVwdHMgYW5kIGEgc2VwYXJhdGUgZGVib3VuY2UKPiBjbG9jay4KPgo+
-IFNpZ25lZC1vZmYtYnk6IEN1bmhhbyBMdSA8MTU3OTU2NzU0MEBxcS5jb20+CgpSZXZpZXdlZC1i
-eTogTGludXMgV2FsbGVpaiA8bGludXN3QGtlcm5lbC5vcmc+CgpQZXJoYXBzIEJhcnRvc3ogY2Fu
-IGp1c3QgYXBwbHkgdGhpcyBvbmUgcGF0Y2ggdG8gc2hyaW5rIHRoZSBzZXJpZXM/CgpZb3VycywK
-TGludXMgV2FsbGVpagoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+
+--===============0305581664948668186==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="r47ioco2lojtqtsf"
+Content-Disposition: inline
+
+
+--r47ioco2lojtqtsf
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 1/1] spi: use dmaengine_desc_set_callback()
+MIME-Version: 1.0
+
+On Mon, Nov 02, 2026 at 12:39:58PM -0500, Frank.Li@oss.nxp.com wrote:
+> From: Frank Li <Frank.Li@nxp.com>
+>=20
+> Replace open-coded assignments to callback and callback_param fields
+> of struct dma_async_tx_descriptor with calls to the
+> dmaengine_desc_set_callback() helper across SPI bus drivers.
+>=20
+> No functional change intended. Prepare make to struct
+> dma_async_tx_descriptor private to the DMA engine.
+>=20
+> Signed-off-by: Frank Li <Frank.Li@nxp.com>
+> ---
+[...]
+>  drivers/spi/spi-tegra114.c        | 6 ++----
+>  drivers/spi/spi-tegra20-slink.c   | 6 ++----
+>  drivers/spi/spi-tegra210-quad.c   | 6 ++----
+
+Acked-by: Thierry Reding <treding@nvidia.com>
+
+--r47ioco2lojtqtsf
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmrrLb0ACgkQ3SOs138+
+s6Fh4BAArZ9G0J40Sc0WR4narKlfZF1usKqwyjAubLvxVVm1ABcW7HLQy6ojuZU9
+2s3UgBP9rFk8ZULpe+cax4/U3dlMXS8SxfonI4imx86Xn1zGzt4Ge9Ho42p41YyV
+UaGejA2LtHz30dxEMI5SDt5yVg7k7oZLUIoZ7ssr0TAjuP6WPEuw+lx7UZy6OJ95
+VXqb/jpz1fW6OEa1TsacFqqEXIw+JLxeD2WQGm33OMH5tfv53MTgfWHoSP7KF71m
+xbANUfc2+OYcymeBLRMoCVIzv3WVyb5PSMrXrXY6U/mMfUUkC/IMILsDZvQ8wsua
+VWUsj7hLVZlZUjVr2vvSfaiY9tZ6JiocaEs/BiUTGFpPg7GPzgIOvmn9SDgwLN/w
+6nub3ObAvkU2ycqFWDypAOT43Yzqg17PR9L6LUyIB3hs8y8a8Uz74cpV7iMtg13o
+VQ2tjXMJ00/kk45niYAlW18EBsgm4K4OBgplzlHHRQyG8+6PSZi+MJsF2jvy83oI
+as7pTI6gPpNS0hB64ty/bSsQc6wZ1iOK1liQOAkpmV8pBuJzprxI+WCKmlBupJas
+PDZY349C/AVPrK1zF6kum20SrlNPq5fKu45sigiciRrq5bBglX3qLh4Si4/hDIKJ
+DIuO3rNQS6zjLAz1yotoAHOo1xNsr4igGGWmmmn5RGNxY0ZpgnU=
+=N9j3
+-----END PGP SIGNATURE-----
+
+--r47ioco2lojtqtsf--
+
+
+--===============0305581664948668186==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0305581664948668186==--
+
