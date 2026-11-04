@@ -2,10 +2,10 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9F9C0606A31B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 02:41:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 317D1606D812
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 02:53:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vdnpQbfq
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3Az86kwt
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,23 +13,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=T/YMeR2iLe91Qkvxe3mLlI226emJ86kD9E/I2gICig8=; b=vdnpQbfqB5llZWs1PjYDfKi3Ft
-	VbryRzxmIJaTHBlCnURX4B5hQsd/euH19vICf65yLntrL2ojVDB/VqqOpVaUbpeA4xugiQ2FIkD57
-	JZkTBg8XQiOT0U6hpOMJcm/GA5CQlnvS7jsLpGwKUQtBO7qLrwahTqkNW/LIoJ//roX3K9SvljZtA
-	/xrmYTrM880N2jhehYKciqBsSGedR0ehciu2gYn2+NnnwMvtpZY0eZgOVXbROWP7wz1YiVesdVDhP
-	SksoEpawwvTv3IczGfj+rzGyw2+YfQyNFk3MBh7udkwBsVbA5nqj6lKYFjS+ee+K6guQZXCdcQGAz
-	Ev7UvFYQ==;
+	bh=2b1REa0m2vYXDU8agjq/ybVJl/x9Ao1UMTpwD+QCVz8=; b=3Az86kwtZ9peVmsaeY6xJo3Al8
+	wNCZEq5kdoTDkX/Frrhavddmn096EyE5FFZZcSxFScz8oC50cOVZGR+qiOd3qaSmsFrr6bGxsgvAf
+	qpFmdUbbZKJW6yUx1WiIhl8tWtObtMvOR+B2rxWqIX02wOrs9nBsO0yeA9d9rfWmySER85v5yiP7e
+	1LfIyRhnK1GgdZAMid2YlDh8KChqzaS9S/nOjGnBV62hPus7zHXBnLXRCPYOJiYFL5nZ0JPUDQUjE
+	T7ywoHWeaV++S+K/bGzVaoQ4p1oMmruag3SXED/iQy0F/wdX018LP49+7fZGD7miQdPrAgwTs6fAC
+	rj4p8V5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOQvp-00000004BU3-2qLD;
-	Wed, 04 Nov 2026 02:40:57 +0000
+	id 1xOR8C-00000004DGM-3YdQ;
+	Wed, 04 Nov 2026 02:53:44 +0000
 Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOQvm-00000004BNe-3SZh;
-	Wed, 04 Nov 2026 02:40:56 +0000
+	id 1xOR8A-00000004DFI-2HRs;
+	Wed, 04 Nov 2026 02:53:43 +0000
 Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
-	by APP-01 (Coremail) with SMTP id qwCowAC35P4xm+pq8bk+AA--.9685S2;
-	Wed, 04 Nov 2026 10:40:49 +0800 (CST)
+	by APP-01 (Coremail) with SMTP id qwCowACXwvwxnupqFOU+AA--.5340S2;
+	Wed, 04 Nov 2026 10:53:37 +0800 (CST)
 From: Wentao Liang <vulab@iscas.ac.cn>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -42,34 +42,34 @@ To: Sandy Huang <hjc@rock-chips.com>,
 Cc: dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] drm/rockchip: rgb: fix panel bridge reference leak on setup error
-Date: Wed,  4 Nov 2026 02:40:58 +0000
-Message-Id: <20261104024058.1508856-1-vulab@iscas.ac.cn>
+Subject: [PATCH] drm/rockchip: use the safe iterator when removing device links
+Date: Wed,  4 Nov 2026 02:53:46 +0000
+Message-Id: <20261104025346.1527550-1-vulab@iscas.ac.cn>
 X-Mailer: git-send-email 2.34.1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CM-TRANSID: qwCowAC35P4xm+pq8bk+AA--.9685S2
-X-Coremail-Antispam: 1UD129KBjvJXoWrZry5Zr1DGF1xtrW8Ww1DGFg_yoW8Jr1Upr
-	4kZ34Y9rWUWrWIqwsrAFn8AFsYvwnFyFWfKrs2k3Z3uw1SgF1UW3srZryY9rsxAF48ZF43
-	ArsrJ348XF42vr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9Eb7Iv0xC_Kw4lb4IE77IF4wAFc2x0x2IEx4CE42xK8VAvwI8I
+X-CM-TRANSID: qwCowACXwvwxnupqFOU+AA--.5340S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7uFyfCrW5JryUGFy7uryrXrb_yoW8Xw15p3
+	y5AFyYkrWkGr47WF1DJrn3uFySq3ZrA3yfu39rK3WagF4avryfJ34fWw1FqrZxJrZ7uF4a
+	9rZrJ348ZrsrurJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUPab7Iv0xC_KF4lb4IE77IF4wAFc2x0x2IEx4CE42xK8VAvwI8I
 	cIk0rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2
 	AK021l84ACjcxK6xIIjxv20xvE14v26F1j6w1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v2
 	6r4UJVWxJr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjcxK6I8E87Iv6xkF7I0E14
 	v26rxl6s0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xf
 	McIj6xIIjxv20xvE14v26rWY6Fy7McIj6I8E87Iv67AKxVW8Jr0_Cr1UMcvjeVCFs4IE7x
-	kEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACI402YVCY1x02628vn2kIc2xKxwCY1x0262kK
-	e7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCF04k20xvE74AGY7Cv6cx26r48ZrWUJr1UMx
-	C20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAF
-	wI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20x
-	vE14v26ryj6F1UMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8Jr0_Cr1UMIIF0xvE42xK8VAv
-	wI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWxJVW8Jr1lIxAIcVC2z280aVCY1x0267
-	AKxVWxJr0_GcJvcSsGvfC2KfnxnUUI43ZEXa7IU5ENtDUUUUU==
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBgIBA2rqY4LZDgAAsw
+	kEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACjcxG6xCI17CEII8vrVW3JVW8Jr1lFIxGxcIE
+	c7CjxVA2Y2ka0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GFyl42xK82IYc2Ij64vIr41l42xK82
+	IY6x8ErcxFaVAv8VW8GFyrJr1UJwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E
+	14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_Jw0_GFylIx
+	kGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVW5JVW7JwCI42IY6xIIjxv20xvEc7CjxVAF
+	wI0_Gr1j6F4UJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Gr
+	1j6F4UJwCI42IY6I8E87Iv6xkF7I0E14v26F4UJVW0obIYCTnIWIevJa73UjIFyTuYvjxU
+	g75rDUUUU
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiDAIBA2rqY+TkSAAAsn
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_184055_348129_08FAB20A 
-X-CRM114-Status: UNSURE (   7.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261103_185342_982968_AE967D9C 
+X-CRM114-Status: GOOD (  10.48  )
 X-Spam-Score: -0.9 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,35 +90,40 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-rockchip_rgb_init() wraps the panel with drm_panel_bridge_add_typed(),
-which returns a counted reference on the panel's bridge. When
-drm_bridge_attach() or drm_bridge_connector_init() fails afterwards,
-the error path only cleans up the encoder, leaving that reference
-behind and leaking the bridge.
+rockchip_drm_match_remove() walks dev->links.consumers and calls
+device_link_del() for every entry.  That drops the link's reference and,
+once it reaches zero, __device_link_del() removes the link from the
+device link lists and schedules the release of the link object.
 
-Release the bridge in the error path, just like rockchip_rgb_fini()
-does on the success path.
+list_for_each_entry() still reads link->s_node after the loop body to
+find the next entry, so it accesses a link that has already been
+released.  Use list_for_each_entry_safe() so that the next entry is
+loaded before the current link is deleted.
 
-Fixes: b7797081ccfe ("drm/panel: embed a drm_bridge into every drm_panel")
+Fixes: 7d4e981d41e3 ("drm/rockchip: Add device links for master and components")
 Cc: stable@vger.kernel.org
 Assisted-by: DeepSeek-V4.1-Flash and OpenAI Codex
 Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
 ---
- drivers/gpu/drm/rockchip/rockchip_rgb.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-index 0e1830bc40ee..10219638c0a2 100644
---- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-@@ -172,6 +172,7 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
- 	return rgb;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 3099408e9d05..9edfe4db9393 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -356,9 +356,9 @@ int rockchip_drm_endpoint_is_subdriver(struct device_node *ep)
  
- err_free_encoder:
-+	drm_panel_bridge_remove(rgb->bridge);
- 	drm_encoder_cleanup(encoder);
- 	return ERR_PTR(ret);
+ static void rockchip_drm_match_remove(struct device *dev)
+ {
+-	struct device_link *link;
++	struct device_link *link, *tmp;
+ 
+-	list_for_each_entry(link, &dev->links.consumers, s_node)
++	list_for_each_entry_safe(link, tmp, &dev->links.consumers, s_node)
+ 		device_link_del(link);
  }
+ 
 -- 
 2.34.1
 
