@@ -2,102 +2,271 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 73AAC606A31B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 02:04:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 30ED4606A31B
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 02:10:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=M9l8lZYA;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=is+bqKdL
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Fh0UVIPI;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=synopsys.com header.i=@synopsys.com header.a=rsa-sha256 header.s=pfptdkimsnps header.b=h7e+aqNy;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=synopsys.com header.i=@synopsys.com header.a=rsa-sha256 header.s=mail header.b=PPN3OiD+;
+	dkim=neutral header.d=synopsys.com header.i=@synopsys.com header.a=rsa-sha256 header.s=selector1 header.b=kNMPEKN3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=mBWgY41HOzEsJd7uXoQuJ45hdv83+rH8k9VmjGHYJTI=; b=M9l8lZYAFvYjj7pOu86J+5Nydx
-	rvaI+OPkdblhvZuwrT/8/ouuwqOcRPub6qfjEkv0jIWgwRnKqyZ20DTfFkqm6XjCLj66+l+N1dowC
-	9Iu8T/f0ASevBbpY0aU8LEGyuosNfHcDX1M6u7jAX+el01D4KRCi83PvQ5ao30doorSUXjUrvlmxY
-	TBJge4elhICkmmNc9+NvtYbNYx+iEwIz006BtHs3BQVFt8J9d7NrRTozrNRBr2oBCoYXsLGGxXgVZ
-	EY2zhGzt/wI9/AEZH4VKY6a9RlhC3pzJpjs/j0iwRYwDXOUIUBAICM5tExjy5x79cZw+wqLkyecof
-	vVSjFAIA==;
+	bh=fGgMyNNsOEG067p9mX+qg3XB7VROpRfXdaFsQifBunA=; b=Fh0UVIPIMGScZnZUH3eyWamn00
+	gwFS3ZNaReX8ot/8WvYFBjuCpE0a/s8jN39lc7RqVnTGljSgKIRGhrpOsTCIvllHbwVZIRGd/gLD6
+	1AIo7Jyszbllx/t8OXaynrY1e9vR08e2KNRHbeCwrGrIX6WWe1wbOfCkLbMGBOpwOUk+O6g/l8/Rz
+	eelmr1bX0KknKTVOHvszCs34A6jqeBios7O9NfrJXf2y/18i3U80UgNy0WWacuvKav6aSZF3DVdll
+	JQ8Ym1uHBc30ghZEWIzor7WBeg606kiD9SZq8gdnN2eXQqx7yWkOsfwm/x8QnEOx9wsHuh2ZCblq8
+	NJvfdBaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOQM1-000000047J3-0azK;
-	Wed, 04 Nov 2026 02:03:57 +0000
-Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
+	id 1xOQSK-000000047iP-3gfa;
+	Wed, 04 Nov 2026 02:10:28 +0000
+Received: from mx0b-00230701.pphosted.com ([148.163.158.9])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOQLx-000000047IF-3RAK
-	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Nov 2026 02:03:55 +0000
-Received: by mail-qv1-xf35.google.com with SMTP id 6a1803df08f44-91c60e14328so74686d6.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 03 Nov 2026 18:03:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793757832; x=1794362632; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from:references
-         :cc:to:content-language:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=oQKfHxsoZ43jPXB8U56gZWLrwTl7ynffsjZhdvLk1nU=;
-        b=is+bqKdLqmyMcQPf4tBmdubP9W1/6PuvX9kokTZRAtUtjeRCA0T9F8RpIY8H6lr0f0
-         oW8XiLBDuSu/IcOlKSuHsjC2coDV16YR7vnyYXzGCcmyQHI4yVAfDNqsaWyoCdIRJSIB
-         4ZJRh4KIxFILaVz71ryWKaFtAT8YmtUYalc7HLSa4NQ9xyeCAu9AVBVQl027PiWDuNIh
-         L6P55CWGwsbXPlnxoqWW2HgZ5a9pjGZ57Re8JfNAptM0CaxBsr7DEprDBO70oXMOpPGs
-         ljE+zY69EQLTTBhJGwcj6PLmta2HAvGTRmqFqBF1PrhJb3+BIZhhZdNIN5RLd0SdYIpl
-         V60A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793757832; x=1794362632;
-        h=content-transfer-encoding:content-type:in-reply-to:from:references
-         :cc:to:content-language:subject:user-agent:mime-version:date
-         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=oQKfHxsoZ43jPXB8U56gZWLrwTl7ynffsjZhdvLk1nU=;
-        b=x0P2WCAfTndlC575KzimIiedJjNoK5DMxaMN1Il8KByVz594+Spl3JATUgRUa7vpFp
-         q6W6h/t6TSiD8e1CwZ2yjnkUb68vcHdm/T9COy5a3deQ4qc3h3NGT/iPIZ6gNQpSRUaz
-         hu68QTSuo+AmiStdP4ONCM2kjD54X+WN1CTdgJuyS3z07JBoSIT+k0g6O73/+m4iz/cc
-         Kr04TXnw8ZHz5P0G5G4+uoRmloPIFl+VLpkkfrDBRgWkFNqO/JREDQ9zaA4zx67Pvmfg
-         zrRmEXy66Q3uwp30ngS+CzJihKQFBTS5QiwEZufCp6zWbtPj1knsn0aQrACmxqEPOEbl
-         QPGg==
-X-Forwarded-Encrypted: i=1; AKwUvBw/1ny/vtL+BTMZtgxV8TpijLZDyAeSDMhBG+8OYK9MPBSeNQr7IBiN5pT4Z5kfch0RpUkizn7tkficxEQDYQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+kderbekZTo31qmBw5YuxczDm5WK/mnXfC8aoorW51Q0WFwhx9
-	qPu+3Snls7QgCCEqSf5fyFaROBfHcnZE/I8vuSb54GZ9qPICZIcrGOek
-X-Gm-Gg: AYBFou0UPwMogvX1KNODR0olMCK6XoMrFXLQCKzuFfK50FiNQe13wr+v3PaLH2CGnsB
-	sx+vAgNRXyFbxQngl5As2jJttGN5Xm3EOh8pe0Hcj7BAphFNlWAukhM/+DbMn1GoKzaqAztaqKT
-	RL5HMglBMJ3hXMYyBZruBxI6xDik9THYJcBkRSe/Sy1x2AIZONw5vrIZh5ORBBenpv+OW0MRL3+
-	MkjxAK1vxIN4RSPAKDkULSD4olJNVabUXeUfdcxcDcH0cs/ljHgI+w0TQTNhqMIFb71NoCwMse/
-	aJrmglPERR2/7I4MiuB69g5ZclW93mn9mHuPDu9bhIuKlwLb9gU5i44qHlQichKFIB76C9e7+LB
-	kLzUlw48FzNkhqGAiZfx68NoHjrYs308JCmZPLSHHb1LE8ki3ehqtzy0GUVHGmwuXQgbNnjz2MU
-	nIQ0OfvXH9z+hJo55B2fGcEs/D34aj8ID+BG+SQzbcPIg+xpB7nauiHIPso0Hlf63XfgFkwHezA
-	NCbyur4HIH38+orXNyCBIpBSvY1XIYZ2/bGL/hxhZfT4b8pOiiRgc8alXpJRW8IqXhgVNwxqObM
-	byXRlfWkUAbs7qh1rCSWTnjyFkE5ODXAHRcPq26XDTNV7g7Ywe7nWaqyb145QdpAilKBuPr3
-X-Received: by 2002:a05:6214:c6f:b0:91c:6ccb:4442 with SMTP id 6a1803df08f44-91ca4a4b1f1mr337650216d6.2.1793757831689;
-        Tue, 03 Nov 2026 18:03:51 -0800 (PST)
-Received: from ?IPV6:2600:4040:498b:e200:2d8:61ff:fe7c:5d59? ([2600:4040:498b:e200:2d8:61ff:fe7c:5d59])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-91e7e0139ccsm6107716d6.28.2026.11.03.18.03.50
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 03 Nov 2026 18:03:51 -0800 (PST)
-Message-ID: <3a7e331e-ed41-5ca5-192a-f7d1a88c4339@gmail.com>
-Date: Tue, 3 Nov 2026 21:03:50 -0500
+	id 1xOQSI-000000047hw-1W1z;
+	Wed, 04 Nov 2026 02:10:27 +0000
+Received: from pps.filterd (m0098572.ppops.net [127.0.0.1])
+	by mx0b-00230701.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6A40SMuF1377174;
+	Tue, 3 Nov 2026 18:10:09 -0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=synopsys.com; h=
+	cc:content-id:content-transfer-encoding:content-type:date:from
+	:in-reply-to:message-id:mime-version:references:subject:to; s=
+	pfptdkimsnps; bh=jha6mtadtnfuHe1nr25DRcktkJaYynwSK0zqMNl6IG0=; b=
+	h7e+aqNy4oxFYMZIt243b7YnHrXYDTQtWSwrlB/E+smNBny4eoG+eu9cEGTzeapL
+	v4KkCO2UCNopRx48uwOoSWwzP166f8EtgBl7qyS1d/nEoiqVdG5TTQe8Zvobq9PP
+	9BJZwJYxu+nlpyqgLUlyZyNlvizge+1M7woVr/cDZ3vQtpITL841dfKFgfj9yFM9
+	bTOXpbOA4aNJYurfDSHbqA6CrBNbf1mGe+Qdt/ZJEVtl3oDx+WbG9dV3taePIa2L
+	NjuxLJQ8oLMKWQ3YoV+wO7LGv+IzVzwfrdOBWd82uh67E/ilRAUTOJyAP30oVxpz
+	l5tdbvxXcRdepjtaufEaPQ==
+Received: from smtprelay-out1.synopsys.com (smtprelay-out1.synopsys.com [149.117.73.133])
+	by mx0b-00230701.pphosted.com (PPS) with ESMTPS id 4hqctw04cf-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+	Tue, 03 Nov 2026 18:10:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=synopsys.com; s=mail;
+	t=1793758207; bh=jha6mtadtnfuHe1nr25DRcktkJaYynwSK0zqMNl6IG0=;
+	h=From:To:CC:Subject:Date:References:In-Reply-To:From;
+	b=PPN3OiD+/RQD8VS9eWcnCUnBaPY1PlwBUzeA7SDx5n/tPkMMHE3EOBJyf17i3TOOy
+	 QXFlZ+LsCZaLzO5vj+bKDrPOgS3JKcyvC3mg1tzVlFkZ5ScRsvgA7/5TtLkFUM7bmu
+	 B1WtRT0hfFGtCPLLM6Mx6DJ71s+lm7hXqihRZd3wffx/MJnJRRpy2wvkqqQMFoPru6
+	 7z/Y+xWmtpzfQFt9lkedbFVqEfMNdh2KbKMUp/FW6HhL/FfCFaVFHR2rDmyVes815Z
+	 VJl3MRsRuvpNMZ/1cB1V92yPU0TBjV7EKx8ZHm803a2r/M0kwuEqAy+UXp/dkCL5Yb
+	 F6Tukjq4d6bHQ==
+Received: from mailhost.synopsys.com (sv1-mailhost2.synopsys.com [10.205.2.132])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits)
+	 client-signature RSA-PSS (2048 bits))
+	(Client CN "mailhost.synopsys.com", Issuer "SNPSica2" (verified OK))
+	by smtprelay-out1.synopsys.com (Postfix) with ESMTPS id A982440114;
+	Wed,  4 Nov 2026 02:10:04 +0000 (UTC)
+Received: from o365relay-in.synopsys.com (us03-o365relay3.synopsys.com [10.4.161.139])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits)
+	 client-signature RSA-PSS (2048 bits))
+	(Client CN "o365relay-in.synopsys.com", Issuer "Sectigo Public Server Authentication CA OV R36" (not verified))
+	by mailhost.synopsys.com (Postfix) with ESMTPS id ED3BBA0298;
+	Wed,  4 Nov 2026 02:10:02 +0000 (UTC)
+Authentication-Results: o365relay-in.synopsys.com; dmarc=pass (p=reject dis=none) header.from=synopsys.com
+Authentication-Results: o365relay-in.synopsys.com; spf=pass smtp.mailfrom=synopsys.com
+Authentication-Results: o365relay-in.synopsys.com;
+	dkim=pass (1024-bit key; unprotected) header.d=synopsys.com header.i=@synopsys.com header.a=rsa-sha256 header.s=selector1 header.b=kNMPEKN3;
+	dkim-atps=neutral
+Received: from CH4PR07CU001.outbound.protection.outlook.com (mail-ch4pr07cu00102.outbound.protection.outlook.com [40.93.20.98])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-384) server-signature RSA-PSS (2048 bits) server-digest SHA256
+	 client-signature RSA-PSS (2048 bits) client-digest SHA256)
+	(Client CN "mail.protection.outlook.com", Issuer "DigiCert SHA2 Secure Server CA" (not verified))
+	by o365relay-in.synopsys.com (Postfix) with ESMTPS id A05DF40212;
+	Wed,  4 Nov 2026 02:09:59 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=j4nKRGbMVqn6GwvNiBFtqsqRiz8TzuvI3LTmDJRa5xQ6nxg/E/FZLOMnP098CNORH0pDstfCMSjv+hhjwPivtpqMmsvp16qOWJqTu52351KGNYFlhr0Pz9oKa1vfLs/qbVOigBIwaMJ3fgTx8u/P7alUKXjZUkhZqKBXU8l8ZybysziRqCvWCHAFvVtoOVUUltY2IZcxEMXgoKhzAE/uownfvBqH9BYqQQ+OE3XTUZCXMm/4jMdL2qn50LxOvqy1GZ34AkChr3Yj5ng4srRTvTNHSdf8UjZeLUOKs6PXx03tjFZF6eLqTbTv88cczr0UIWi8XQPA5qdjARUGKcS/CA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=jha6mtadtnfuHe1nr25DRcktkJaYynwSK0zqMNl6IG0=;
+ b=qsGlat3UgSMlys1X4+TWF+vrPUFonaC3wjAt2RfeJQgNGps5RafJiEzcLKSwWUO67WKPsmluVeLj6P63J9ehfem6EEu7pepUh98uvgqgsdrFI9DJHPGbN3LzHmA4bDY9Fya2dn+vayGGzhkoX0asMrrGZHx5q3yURzLC0tUXS30YC1gVCAMCyl6xDOGc6VIV6fbx9xqYr3scGquFDUhmsvIkdWe7E6SXsI5IXU6xyhCWODgzwxpjMOP+lSe2SvmYtjC/p8zcRJUO6gFyJS7NHOwVh62gyOl7aE/7bHKoc8UnInSer3lIHVU4JoZ4BWJvyoKsJ6+2hPxBjBfk/ViNQA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=synopsys.com; dmarc=pass action=none header.from=synopsys.com;
+ dkim=pass header.d=synopsys.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=synopsys.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jha6mtadtnfuHe1nr25DRcktkJaYynwSK0zqMNl6IG0=;
+ b=kNMPEKN3oFfxxnNzmi5myHfMTHJfoTF4ROs3pDZsBcmIHmrYGblPAQQv9Z4VGLkZfeZU20cJNGey6aDCQ5Ge/EJj0mzJ+69VYul8iCnPMNcZ5SGMryYAsur2nYDhkuI0m/JZkaPWM6kLhYEVPrLv42aHHiw7oXJvpnenay2M9KU=
+Received: from PH0PR12MB7486.namprd12.prod.outlook.com (2603:10b6:510:1e9::6)
+ by BL1PR12MB5729.namprd12.prod.outlook.com (2603:10b6:208:384::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.8; Wed, 4 Nov 2026
+ 02:09:54 +0000
+Received: from PH0PR12MB7486.namprd12.prod.outlook.com
+ ([fe80::7df9:b25e:9216:f109]) by PH0PR12MB7486.namprd12.prod.outlook.com
+ ([fe80::7df9:b25e:9216:f109%5]) with mapi id 15.21.0592.007; Wed, 4 Nov 2026
+ 02:09:53 +0000
+X-SNPS-Relay: synopsys.com
+From: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
+To: "1579567540@qq.com" <1579567540@qq.com>
+CC: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
+        Jerome Brunet <jbrunet+clk@baylibre.com>,
+        Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+        Philipp Zabel <p.zabel@pengutronix.de>,
+        Elaine Zhang <zhangqing@rock-chips.com>, Lee Jones <lee@kernel.org>,
+        Linus Walleij <linusw@kernel.org>,
+        Bartosz Golaszewski <brgl@kernel.org>,
+        Richard Cochran <richardcochran@gmail.com>,
+        Ulf Hansson <ulfh@kernel.org>, Andi Shyti <andi.shyti@kernel.org>,
+        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        Jiri Slaby <jirislaby@kernel.org>, Jisheng Zhang <jszhang@kernel.org>,
+        Andrew Lunn <andrew+netdev@lunn.ch>,
+        "David S. Miller" <davem@davemloft.net>,
+        Eric Dumazet <edumazet@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+        Paolo Abeni <pabeni@redhat.com>, David Wu <david.wu@rock-chips.com>,
+        "Rafael J. Wysocki" <rafael@kernel.org>,
+        Daniel Lezcano <daniel.lezcano@kernel.org>,
+        Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
+        Maxime Chevallier <maxime.chevallier@bootlin.com>,
+        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue <alexandre.torgue@foss.st.com>,
+        Vinod Koul <vkoul@kernel.org>,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Manivannan Sadhasivam <mani@kernel.org>,
+        Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
+        Jaehoon Chung <jh80.chung@samsung.com>,
+        Shawn Lin <shawn.lin@rock-chips.com>,
+        "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+        "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+        "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+        "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+        "mfd@lists.linux.dev" <mfd@lists.linux.dev>,
+        "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
+        "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+        "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+        "linux-i2c@vger.kernel.org" <linux-i2c@vger.kernel.org>,
+        "linux-serial@vger.kernel.org" <linux-serial@vger.kernel.org>,
+        "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+        "linux-stm32@st-md-mailman.stormreply.com" <linux-stm32@st-md-mailman.stormreply.com>,
+        "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
+        "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>
+Subject: Re: [PATCH 23/27] usb: dwc3: Configure RK3572 PIPE port before
+ discovery
+Thread-Topic: [PATCH 23/27] usb: dwc3: Configure RK3572 PIPE port before
+ discovery
+Thread-Index: AQHdYXcJSpO7vFA2TkaQ6ybLG92ONrcdQCCA
+Date: Wed, 4 Nov 2026 02:09:53 +0000
+Message-ID: <auqRrz1kM-sfJEQ-@vbox>
+References: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
+ <20261022-add-board-ok3572-c-v1-23-0b0fd85a31ee@qq.com>
+In-Reply-To: <20261022-add-board-ok3572-c-v1-23-0b0fd85a31ee@qq.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=synopsys.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH0PR12MB7486:EE_|BL1PR12MB5729:EE_
+x-ms-office365-filtering-correlation-id: 6c73f557-111c-473b-4301-08df3a18b743
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|376014|7416014|366016|23010399003|1800799024|38070700021|56012099006|260925021911599003|260925022911599003|260925021311599003|11063799006|4143699003|261022105027099003|261009223027099003|261102123227099003|261026121527099003|261021121427099003|261028144727099003|261026140227099003|10067099003|6133799003|22082099003|18002099003;
+x-microsoft-antispam-message-info: SnGe0emwp/vH2ao4w5xg0LXks4JdZDGIxtjLPZzuNYfzT0Q3uQ/eLszndnZiA34TjRwueZMwj802BYE4UcmKjkVbVEGrZMcijXACqNl2uFrSv+5eECowWHhgcU+rssE5L/PMIjhujNzXWzSa3bbT5pFIKsbcN3eLL/qOTsEL7VZP5E5IEKbRp2TcTPx/kZ1KoP8E6mCZb4CHlc6LE2mtnLOPVVX/1/809IYdst1M++h/Zvrji4F+yOge6VOsPDqhiHd59P4oyn3Bh2gQM6oW84kVIJ1AKjX6ohSwuODbHvXQwp2FCdSmTk22bK3l6fKadaddEZQhJboQgVLi0LWB18MEHHMSL2yvDuJ6MD832nCF9U2mdYuU1/LumUswBBAI+DS4POBRlB5XQD8eJ4yEpEd1IdCb42SQPcoU059GFNYhyaGi4UpmNm0H3+3GBd8DLOpjcGW8Pe9+lPnTE7MVjg/zK+aqTKzPTkvyPISphzSdirHTVtLv6WTEKRl64R2+wlOyJIjtBvugUJRx1ncKDua9CZQpHCc/rjJvJaCQpFKAV0MKNDtmPFf+yuqtdRye0xYKoXgcwLp3N86BuiM4sOIELsC1b544340MgnONKCVE1JAYtBK/h8Q+Y4l45ccebIdBdHmCmu8qkSpyRX3nEj+vMuFv72TIEvXWVWLTKN/xZegyAxaEu6NuR18eMR1/Dr6XekMS3euWLHGm0ZEeCF02B351CcFwiccMvnmXohc=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR12MB7486.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(23010399003)(1800799024)(38070700021)(56012099006)(260925021911599003)(260925022911599003)(260925021311599003)(11063799006)(4143699003)(261022105027099003)(261009223027099003)(261102123227099003)(261026121527099003)(261021121427099003)(261028144727099003)(261026140227099003)(10067099003)(6133799003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZTR5UFg1NFdSVlR5UzRzUkl5eml5a2RTQjhQRmxjWUtETDg5bit6UUJMNk1l?=
+ =?utf-8?B?dHhtblpQRTRtRGRSRXAxWlQydm1rRFJucVFxNUtUeVlUK2Q4dGZVLzI4OHgw?=
+ =?utf-8?B?NEErdzBQaXBXN3JHZlBvY0RadHpsUVhwNjJnY0RKWTdjOVNkZUx1M1c3TXpU?=
+ =?utf-8?B?V0hQRFdIMDQrZ2szNC81c0gvZCtYWmt0WU9sNWhvMVNGK3djSlo3Z05JZnBt?=
+ =?utf-8?B?bms1VzNEclpaMEZ6ZlZycGRTVlQ0Z3E3WWltNEFGOWlEcEZLaFU5LzJ6a2M2?=
+ =?utf-8?B?cmlxaCtyV3M3dnFLK3lsNHEzNmxRV0NQcXdKbHA5czBOajJia3oybUhZSGFn?=
+ =?utf-8?B?OWYzVzk4ZngxaEhseEJkbmpPZlNXd2JqRjF1ZmVNenM1eXU0VFVWQXRodG54?=
+ =?utf-8?B?K29NUjlIQmplWStnRFpVSUVrekpSN00wek1rUU5aU3ViUzIrUE0rYnFZR1Rq?=
+ =?utf-8?B?TmtKajZIZTlaQkNQMjl0b0tQUDAwem1WZnpySTFNcUlHd0I4azhJbURtZktF?=
+ =?utf-8?B?WG9mSEpaT3hiYUx4dTVTRUs0VnNnT1FvTHZXOEtCWmpMV3ZudDdKMHVFSlVH?=
+ =?utf-8?B?Sys2R1JETXVOd1FpTzcrYjhKU2ZWREl4WlFQUWhOUFdnSUkzWlYrUnhxRDlp?=
+ =?utf-8?B?UWhzYjNZRmc1TjJsNHMweG1LREQwMVBscllldXNlZVVJbElldGlIL3g3cXVx?=
+ =?utf-8?B?YnZUT3cxV0thNDIrM2p4TU43NDFUQkE1eTdmdE05T2UrbTJaTmYzNHpZZzhl?=
+ =?utf-8?B?ZFBmKzBPMFRJR3lLenZiSkNZRGY0WHRWU0NXRWR0cTFMV2w2WUdDeWg2bkpQ?=
+ =?utf-8?B?M2hQRDhuRnppVlRPVjFGTW5EVExwakpjT0RIcDVGdkRiZUxQenN3R0Q5RW1h?=
+ =?utf-8?B?UUh1MnBEdW9RbDBCVUR3MW5Zdjl4TWFEeHN3a1loOXdiUTRuUFByK2l4MFk5?=
+ =?utf-8?B?TGhrcW8wUERQTTR0V3U5dzNBb0JkSzRHamlLKzNqaXMrelc1MUFwQ1hTaW1C?=
+ =?utf-8?B?eEswamFVZXoveVFDUEdwVXhMU1ZQSVE3b2xFUDZ2am1EbEcxSG4wenZqSXlF?=
+ =?utf-8?B?dEpESEtDbTRSQzZNWGFuUnpteTFiakpsUlZ0Y3dTRi9IMWZrelBNcFpRYUc2?=
+ =?utf-8?B?dFMranZFcUxHU2VUNlFIY2hNcEFRRVR6UlZnUkdBdjJaL1U1amlzdEtRaEM1?=
+ =?utf-8?B?Y09tZDNkaGQ2ejc5U2Fnb1BjQmcxYm90VHpuT0xNckNNTWNIa0FvbkNnbHpq?=
+ =?utf-8?B?R2JIT0I3dGdQay8zTzlwc29vSEdTajhhZStLa3hQVkdhOUxERUJzWDkyUlFS?=
+ =?utf-8?B?c0VSN1pvUkZwMlJUakdGSkhQYXU2U1d6Mk9HOG52UzRvQWV6a3ltV0hSYUsw?=
+ =?utf-8?B?S2VCSHlxbUZzTTczMkNVbWY0R3l0RWVoZ293UVFkbWZhaXZmS2xVZEdGQXR6?=
+ =?utf-8?B?K0phcXM0TGdOTDh1TWJ0aTZyVmtZSS9ub1N5Q003ci9USnNXS0w5dUViaEhn?=
+ =?utf-8?B?eHhEYmRQd1BRN3VDaWdiQm1oeVY4VFVWejRVU21CMHp3Mm1acWpHNHBvZzR1?=
+ =?utf-8?B?UG1tVnRqNUFhcXJOeDZ6VFI3WjRVMlNrMlVuKzdaK0NOa3RxWm9pV0xSZktk?=
+ =?utf-8?B?S3hDQkpYT250S0RaSEloNEJpemRTbkgxdGZNd2ZKa3VlUWJmWXROdVY4ZDJE?=
+ =?utf-8?B?V1VFN01CUjNSMzFaMTc5dG5sRnZFbGRHRUQ4dmJKU2t1ZGIzVWVpRFE1V3g5?=
+ =?utf-8?B?QnJ2OVVuVDEwMVpVVXZlaGY4UElyOHgyeWNiU1VGNFAwSHA3NHpBdTRoZjhQ?=
+ =?utf-8?B?aHdBZzZCY1o0ckNhUE1uNjBjK3pCQzM2WURhTDJJcG4zT1ZQTUFNM092aHBT?=
+ =?utf-8?B?VFdGeW50bkNBcW5WY2wzMUh1TGJQdlYzTEZEYkg1NFQvUWp3eEhnK1hlSkR2?=
+ =?utf-8?B?bkFLRTliOEIrU3UwVEhZaHA2U3VMbmQ2d0lEVzBCVE9kMWVreGxUYzZMWTRj?=
+ =?utf-8?B?cnVwbjZVbjJLVmg3TWhYdWR6cWU0Z0w3OFJFenIybTZvY2RST25WL1hnZjQ4?=
+ =?utf-8?B?QjZaQWVjY2V6MUNlTWlPZVZOSk50dlhKUDhwaHRNV0ZjUEVERXdJU01tVTkx?=
+ =?utf-8?B?ZG80WktrbTJBbTVFTG9pemV4RHRaUm1tbTRaWHlsUS9WZmpmd3JVUkMxK1pB?=
+ =?utf-8?B?TkJpYW9nbFpxQndqUHdQR0pjcmovdGhYSHU5Nk5BRHl0SDJzb2FkM0xQSzBk?=
+ =?utf-8?B?cXplRGU0N2xPTnYvZUl5ME5rYzZ2WXFkNXFWN1kwMCtaRnliMm4zdHRtZ1hr?=
+ =?utf-8?B?WGN5WnUwVzVwWFZJanQ1dGdRSkZ4aFd5djRZeUpqMFc2eEMrQ2NHZz09?=
+Content-ID: <589372F405E6B54A91E0DCD404123614@namprd12.prod.outlook.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] usb: dwc3: fix abort on invalid ref clock rate from
- clk_get_rate()
-Content-Language: en-US
-To: Frank Wang <frank.wang@rock-chips.com>,
- Peter Robinson <pbrobinson@gmail.com>
-Cc: marex@denx.de, trini@konsulko.com, mkorpershoek@kernel.org,
- balaji.selvanathan@oss.qualcomm.com, macromorgan@hotmail.com,
- heiko@sntech.de, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org,
- william.wu@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
-References: <20261103082732.18483-1-frank.wang@rock-chips.com>
- <CALeDE9PLaF7rB2RXn9G6ipWW+J5dentCtyNLgdwTUywgiTnooQ@mail.gmail.com>
- <95e91156-4ea3-4d1e-a0ed-ddd4de47be73@rock-chips.com>
-From: Sean Anderson <seanga2@gmail.com>
-In-Reply-To: <95e91156-4ea3-4d1e-a0ed-ddd4de47be73@rock-chips.com>
+X-Exchange-RoutingPolicyChecked: trxif2/ugGKdRHJVcAJBq/H4zSvDn8Wv0r82BIwSrc5DlErjJiRSIBtUuw7G/7o0rwqWPazPlSgf9jag4lphUxfRSIjsKLDOoH47TbRMslco+RhoEFsT6m4DbZgbzZfzuABDE1BMCLLZPSFdXl4X67Kl1qgaK67+Cr+OGik6PWrnzPWhge9CwfQix0ljmPQ2bPvLoZFP5/F6FwMXbTn8NhLMkP6NMZiuWpdTR1K2xUoeCoWtRCkOUrehtfpvv636sgHqiJu3rbxWftmxc127tivKiOVfAazTqK+3WF/B7aWo4eP/vu4WoU5fCWR1Pz3ir535E13tM/ABB4KNxUYQMw==
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: FCBE6QxTIDgK0v32/7EwXf2NqVyNCUmk8LvqP/malFmRO/3Ydjx7aAcZ99GTJw9/Famu2RJGG2rTg3FYg26YCr3lJVYtFMP7ieHYQpxZalhVONbyYhNaYiVD8afw+ZfyBs81DLW95tTWz9LnUN8ANpktrtsZ/en3K4aBpROYuOpaTe7U7qtxrZW1jE/LtPMtamxzvn6HTaXESNAKz/2mXpz1fi468vORC1jsWniOhErhlgzEbijA1Y5euR85Ra4/OP7JjLPTcsAe9I87g7LGPdyjAaD0sc4wDQTM9ztxWIpN756MvQ68AQi4BKTD44VMLBY+UZ9w5ZUkjnNn/fcvW83CQNGh9Qqd4pkErPQKX7zrt8qg9qtsJk47Qc8J8+ae1eGgZULAeAqfxXKGaDwzmST/n+XfZmjoKqoDfhxOfDUYzs6FJjQkaepV5qtZhc5kqiMSTT+87j/ABBG/xpLN+4DblLsDZ6nxEuk4Wvk1IG53EiwXTxmA2UgtAK7ZyiYaEmVVOf5Z5lJtJ7v47ZM+Or4Fscp0tazAGWsKbYCJw5zBb9CedB5fJPWphuwWDNMrJonAQts3lLclMHA069xHWGgBHuw8BhBgRIOXWg874ziN8evKxHEVw4U6R/xak+97gG0daoCyNwakI4mfydprPA==
+X-OriginatorOrg: synopsys.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR12MB7486.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6c73f557-111c-473b-4301-08df3a18b743
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Nov 2026 02:09:53.8038
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: c33c9f88-1eb7-4099-9700-16013fd9e8aa
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: BrCrUrCcSTsqQEFQzADnKfxGK/eTmBR8WXOw4t8kgeBDD+jhSpb+CU2P41pCkN023Vx0R4Yqv3MxmMneTsOMSQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5729
+X-Proofpoint-GUID: YjTBVnhLVmYoto4ISwF0VHqavZC3h6_5
+X-Proofpoint-ORIG-GUID: YjTBVnhLVmYoto4ISwF0VHqavZC3h6_5
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA0MDAwOCBTYWx0ZWRfX1TLKDMuaLWyW
+ 5iagMQ9JL+/g+KpweCqg5M7ykmqob7fKsMLvhdtIZM39hGgGn7uRNW8FLS5Tkwovfwo4lqu0skI
+ ZmIiqQ4BJ+dXdUgR6UNc2oYmblr8/ueYP6vMdjQAsXxwSNCo1YN8lVAGDo3XGXkEXrfoe3qRCPC
+ XzkNraFRKk77EsOByohTHKYlvVTy+xpPen7R3o3n6Hv7HSACwMUoudlajRmYVLc0mA0k0z2xMZs
+ 4RudsI8uL5zS19holeBSfUPBia9F5dsvTq9Ff4TJbw5m7u1e9JLQDzLFd+z86cIDnOx6Li62BG7
+ QB7GMzQUJ2YuXHUlDEttPPJBcIxu5H7g+O8GKIQgE0/zGpB/Sl1R8inXDj4xrCFjbMFiw94RWaQ
+ SEYah7jwjrRvzp2sZCylkeYXAw7SP2wzH5HaCdGL7y9s80xRk5ggqd1o3k75IYIfXL053GT7DA0
+ I+Q2gKRgRw6wtYFrs9g==
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTA0MDAwOCBTYWx0ZWRfX0860FXBWolIW
+ ZIWmafaPvmSflh8NsgtjNFI93vsneIyf2TYR5eWTc3SJ1X/PYk3Y9x1CCUxD9QpRARhkB30/wL1
+ 3VRxmOEXtH623QvrhP2KkDPDYnQ4ERk=
+X-Authority-Analysis: v=2.4 cv=ce5HPXDM c=1 sm=1 tr=0 ts=6aea9400 cx=c_pps
+ a=8EbXvwLXkpGsT4ql/pYRAw==:117 a=8EbXvwLXkpGsT4ql/pYRAw==:17
+ a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
+ a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=qPHU084jO2kA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=tU_645BZ7FZt8VqRJtHG:22 a=jSPayVjLy6xbsuKauFBc:22
+ a=dZbOZ2KzAAAA:8 a=zrXCNW9r6ifbuSaJk74A:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-11-04_01,2026-11-03_04,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_active_cloned_notspam
+ policy=outbound_active_cloned score=0 phishscore=0 bulkscore=0 clxscore=1011
+ impostorscore=0 suspectscore=0 adultscore=0 malwarescore=0 lowpriorityscore=0
+ priorityscore=1501 spamscore=0 classifier=typeunknown authscore=0 authtc=
+ authcc= route=outbound adjust=0 reason=mlx scancount=1
+ engine=8.22.0-2610300000 definitions=main-2611040008
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_180353_868799_E4BFFF77 
-X-CRM114-Status: GOOD (  22.90  )
-X-Spam-Score: -3.6 (---)
+X-CRM114-CacheID: sfid-20261103_181026_564737_F3504088 
+X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,88 +276,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/3/26 20:53, Frank Wang wrote:
-> Hi Peter,
+On Thu, Oct 22, 2026, Cunhao Lu via B4 Relay wrote:
+> From: Cunhao Lu <1579567540@qq.com>
 > 
-> On 2026/11/3 17:42, Peter Robinson wrote:
->> Hi Frank,
->>
->> There's a big rebase to sync with upstream Linux driver [1][2], I
->> think it's due to land shortly, does the issue still occur with that?
->>
->> It would be good to get the rockchips SoCs with the dwc3 controller
->> tested with that rebase.
->>
->> Peter
->>
->> [1] https://lists.u-boot-project.org/pipermail/u-boot/2026-October/637669.html
->> [2] https://lists.u-boot-project.org/pipermail/u-boot/2026-October/637734.html
+> Firmware may leave the USB3 PIPE port disabled, causing DWC3 to discover
+> only USB2. Configure the port before reading controller capabilities.
 > 
-> I checked the usb_dwc3_sync_v10 branch referenced in your email, and found no code changes related to this issue.
+> Signed-off-by: Cunhao Lu <1579567540@qq.com>
+> ---
+>  drivers/usb/dwc3/dwc3-generic-plat.c | 31 +++++++++++++++++++++++++++++++
+>  1 file changed, 31 insertions(+)
 > 
-> In the Linux kernel driver, getting the dwc->ref_clk rate is mandatory, so this issue does not surface. In U-Boot,
-> however, getting the clock rate is optional. Some platform vendor clock drivers do not implement clock rate retrieval
-> for all clock IDs. Therefore, adding a check for the -ENOENT return value can improve code robustness.
+> diff --git a/drivers/usb/dwc3/dwc3-generic-plat.c b/drivers/usb/dwc3/dwc3-generic-plat.c
+> index ca69ac0eb07ce..11e71fc76be1a 100644
+> --- a/drivers/usb/dwc3/dwc3-generic-plat.c
+> +++ b/drivers/usb/dwc3/dwc3-generic-plat.c
+> @@ -22,6 +22,10 @@
+>  #define EIC7700_HSP_AXI_LP_XM_CSYSREQ	BIT(0)
+>  #define EIC7700_HSP_AXI_LP_XS_CSYSREQ	BIT(16)
+>  
+> +#define RK3572_PIPE_USB3		0x1100
+> +#define RK3572_PIPE_USB2_ONLY		0x0189
+> +#define RK3572_PIPE_WRITE_MASK		GENMASK(31, 16)
+> +
+>  struct dwc3_generic {
+>  	struct device		*dev;
+>  	struct dwc3		dwc;
+> @@ -85,6 +89,27 @@ static int dwc3_spacemit_k1_init(struct dwc3_generic *dwc3g)
+>  	return 0;
+>  }
+>  
+> +static int dwc3_rk3572_init(struct dwc3_generic *dwc3g)
+> +{
+> +	struct device *dev = dwc3g->dev;
+> +	enum usb_device_speed speed = usb_get_maximum_speed(dev);
+> +	struct regmap *grf;
+> +	u32 offset, value = RK3572_PIPE_USB2_ONLY;
+> +
+> +	grf = syscon_regmap_lookup_by_phandle_args(dev->of_node, "rockchip,grf",
+> +						   1, &offset);
+> +	if (IS_ERR(grf))
+> +		return dev_err_probe(dev, PTR_ERR(grf), "failed to get PHP GRF\n");
+> +
+> +	if (device_property_match_string(dev, "phy-names", "usb3-phy") >= 0 &&
+> +	    speed != USB_SPEED_LOW && speed != USB_SPEED_FULL &&
+> +	    speed != USB_SPEED_HIGH)
 
-It would probably be better to return 0, but alas that ship has sailed.
+This can just be:
+	if (device_property_match_string(dev, "phy-names", "usb3-phy") >= 0 &&
+	    (speed == USB_SPEED_UNKNOWN || speed >= USB_SPEED_SUPER))
 
-> Additionally, mainline U-Boot codes do not yet include support for Rockchip 32-bit SoCs with dwc3 controllers.
-> 
-> 
-> Best regards,
-> Frank
-> 
->> On Tue, 3 Nov 2026 at 08:28, Frank Wang <frank.wang@rock-chips.com> wrote:
->>> On 32-bit platforms, "usb start" aborted with
->>> "### ERROR ### Please RESET the board ###". If the clock driver
->>> does not implement the "ref" clock, clk_get_rate() returns
->>> -ENOENT, which dwc3_ref_clk_period() treated as a valid rate.
->>> period became 0 and the fladj calculation divided by zero; the
->>> software 64-bit division on 32-bit ARM calls the
->>> division-by-zero handler __div0() and hangs (64-bit platforms
->>> survive silently since UDIV returns 0).
->>>
->>> Skip REFCLKPER/GFLADJ programming when clk_get_rate() returns an
->>> error code, as is already done for rate == 0.
->>>
->>> Fixes: 6bae0eb5b8bd ("usb: dwc3: Calculate REFCLKPER based on reference clock")
->>> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
->>> ---
->>>   drivers/usb/dwc3/core.c | 2 +-
->>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
->>> index be198041f08..9a84ec6a60e 100644
->>> --- a/drivers/usb/dwc3/core.c
->>> +++ b/drivers/usb/dwc3/core.c
->>> @@ -151,7 +151,7 @@ static void dwc3_ref_clk_period(struct dwc3 *dwc)
->>>
->>>          if (dwc->ref_clk) {
->>>                  rate = clk_get_rate(dwc->ref_clk);
->>> -               if (!rate)
->>> +               if (!rate || IS_ERR_VALUE(rate))
->>>                          return;
->>>                  period = NSEC_PER_SEC / rate;
->>>          } else {
->>> --
->>> 2.17.1
->>>
-> 
+> +		value = RK3572_PIPE_USB3;
+> +
+> +	/* Configure the PIPE port before the core reads its port count. */
+> +	return regmap_write(grf, offset, RK3572_PIPE_WRITE_MASK | value);
+> +}
+> +
 
-Reviewed-by: Sean Anderson <seanga2@gmail.com>
+This looks like something that can be done in the phy driver. The other
+Rockchip platforms such as RK3588 do this in the phy right? Why it must
+be here?
 
+BR,
+Thinh
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
