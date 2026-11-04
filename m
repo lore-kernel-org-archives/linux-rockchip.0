@@ -2,75 +2,103 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0D014606A32D
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 08:11:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E2544606A334
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 08:57:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=N+QjBD7a;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=TRqapx6v
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=X3ZMsi1H;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ZmTzG+gG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
-	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=7vjuOZ7K6oy80SpgHBUFm2bPyv7tsHNgylNvuwikwrQ=; b=N+QjBD7aZ0mXOj8lh6vud8JdD1
-	PB0046A4K6XcLB5DiKI3p/ZFiEvyO0dZEA7o7nR6Aqu+wvhay0l7gwv9iQttaLhlLlO73P7k3WsRM
-	rp1FRS0VczQtpcH81REZH21z2dSAR6fSSn9VYoESL8FboN8Cn5OYfzKj61+H4+CCMSeq/9r9JCmzn
-	61QLXV48RB2mwmOUAytgP/mU6njltwyQuhTbpWhB2v6Kt+F+9ALjcdXffBqvFCa9q7iZWtbwTAJMT
-	tXe0U6NtQh+4GFcWyKjg70p3aDQyB9SmUIiXAJWsZMkY9Fa+6xTxok8AwKMhwr1QOPoD9FjGid4oJ
-	1e4cyjjg==;
+	bh=fpBPDDmlvE9kG27+kqCreu+S8QFsl9xVppd+MNSM05g=; b=X3ZMsi1HTEdBiUbFGowUIZy0OV
+	sRYbm1efDoksIcjZue9qk7JE2jkYrpncDlzTt/dNzvj2KhAQ6soKFHZmvlbBnApWqgbZdF4Prqx+E
+	ddCK0sli3LBuGthOAjyehjd3+pCs6J6djcjpT/6/NsaH8/V2h5UhQ0TOJRMNPF8zpf+JmMvs9+1vF
+	ogBKZHgmB4WZfkJfhr6YCD9O/wDL7tZecVjRuHEwaLAvwtXUyV+1POcZCpZnkvYqd0REaENEIEkVB
+	mp2020ToTFk+zpJtQsGUuWU4Qhf5mZZZb7CrAUV5UspxCYVkv6CE/voJUrAPg2Ccr7hZ4QNStCucI
+	A/pB3+8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOW5T-00000004f6m-2Fk4;
-	Wed, 04 Nov 2026 08:11:15 +0000
-Received: from out203-205-221-173.mail.qq.com ([203.205.221.173])
+	id 1xOWoZ-00000004nb8-1PiZ;
+	Wed, 04 Nov 2026 08:57:51 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOW5P-00000004f2F-2EmH;
-	Wed, 04 Nov 2026 08:11:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1793779869; bh=gF29lVl8HY9M/hv2wsnrcjRNlNM9ZPm3tn3+eQc+KAo=;
-	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=TRqapx6vmU271M8ykSTL3r7nEcjuL/Xg2+At7cL2hGRnGY9dktAXdNk3Wf/nmDw1I
-	 O1vcaPWgebY8QNyzgV8ZkOLIUcjoDvM7GS30C9ufY/BuuZ699wBE5xDKDO5/CfDRHm
-	 Aiu3eRK8gZTagxuJHgC7TVjfVZp7J/SlPkSXBRIk=
-X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
-X-QQ-XMAILINFO: OBsY42vIixr9voHNmCSGxNYclsdG6Sal1N5wgHw975+B912JHF825Qw4JPgdgT
-	 BL7Ap/HQJUY9RvLbpyZBdsClTIdXYkTofIeyOoO/oXJU9HOsiq35MUo9jcpN5B3Ox/bcWYeAP0cxA
-	 MjvPlhgfRX0lmezpiDc0TnHSBhNSDJLMHgLotsTlYJ8L9CHU8+AhvXLscg/RYbe8sH3hJaJwMSwBT
-	 IcviMkBtmt46x1SLAkPTkauNbMXaDgj9Os2p6FqP7KAFuE+FPrz46LEzZJxiYA17CNEkeRbC8LjPW
-	 KDhumM29TAY0FH5wAWYDCCPxZscshbLus7f7+DexD6IeoB5rxUZXhYUOD4yV3oMrGqhbqPkK5VWdX
-	 5kiGRMWAJ2EmVYIE5mSkG3af5u9rHt2Yp9Eh9/bzkR4KlIDjjwNoMCxUiMxNbSdu5OzFEPv4eOGZs
-	 m2KD0f/JvEfD3ShdfMf9uhKTj4Oymny4ScVgb3WntnFFKq3UHBK9OSEI8x544jMnm7w+1+yqHFAFU
-	 oXmch/Zk29Q1oCawqXNnhzksAgDZcTuEAB3cciI6FvcI7eFtnQPHIBJEAAhwR+gCeIWqZfqHOb3RW
-	 UD7AFZgp5HyimOEAYZM0XreHls4bElj0pgA+zzKO8rpGkl611FboPBa2/dE9Vd7izhlC+FYdJM9XD
-	 qPsVbabYhPlOoYSH8cBjGQM+9Zk/Z8lLfHy3PMLEaXLIGUOhyf4d3q52FRxmO6/TTAM6jRShgL9SN
-	 oQwcFbpAvoAedltVZAVmKuKInn5CZ6JAt3vMBF44AwDRbYjAGhP5gT1MIpy3vD5OSsxRPLC+obwkX
-	 zmxLtVGR7HGSMGuiHMEuYFSMDsAOhPuRI5m0EJiy+iLtxkJX4N/nJAva76tPdE1BLjAelqsnrE4qZ
-	 GxSM82Y/bejBLqqUZ1h0gDfo++eA0GaLSwBEnDDjIoOezXUNk1PceiIIEEWtX79Kal1O/FBpZMI1M
-	 nyUN7PzsR1RGj/J6nHCwIVy3Nm6m38XCfVLshvi4aVqI6tSassNe0GkxGNGe7gljEl/oF1LIuuxCZ
-	 SF0jQ7WFkRFOEPv714u2/VLEhTxvKak7V89p5
-From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
-To: "=?utf-8?B?VGhpbmggTmd1eWVu?=" <Thinh.Nguyen@synopsys.com>
-Cc: "=?utf-8?B?bGludXgtY2xrQHZnZXIua2VybmVsLm9yZw==?=" <linux-clk@vger.kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZUB2Z2VyLmtlcm5lbC5vcmc=?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3Jn?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZw==?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZw==?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bGludXgtcGh5QGxpc3RzLmluZnJhZGVhZC5vcmc=?=" <linux-phy@lists.infradead.org>, "=?utf-8?B?bGludXgtdXNiQHZnZXIua2VybmVsLm9yZw==?=" <linux-usb@vger.kernel.org>
-Subject: Re: [PATCH 23/27] usb: dwc3: Configure RK3572 PIPE port before discovery
+	id 1xOWoX-00000004naM-49Z9;
+	Wed, 04 Nov 2026 08:57:50 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 623C34051D;
+	Wed,  4 Nov 2026 08:57:49 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1793782669;
+	b=pF25pVi15PUvV/N1uYk64uWWWbJ15808G6pOdzt+EeJWoSxarojJjQja6iunnLrR5D1v
+	 D5qb4iMQtlBbi4sciegpxeAyQq1nYOnEjP7C/y0bB0P/OZyVygIdC5bxHnPwClQHulnV0
+	 lb5qZB7SKXNjTLgSsgWwEDZEMpDFX3eFIft9bZi7tWTjXe7bl5On5PckD+2Aevv9Eq7/2
+	 P5QfJB2faFXvnrHvvPUyLdiSegL6WLr4KpWbQ7b1KmvbTST1MkSfSi4dLOAhpxU93rZtU
+	 xylK0FNYKBwFfC/ZPU2vqfSDNWlHfKti47qBDUjPhddnMrJzoZzzHXItiGjTUzyYBpw==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1793782669;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:Message-Id:References:In-Reply-To:To:Cc:
+	 X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=EsWY/yTZXFYVprtWvUf3XnhiSXDepU5aallNWHc59Og=;
+	b=QKfsJ+hZXfREJ8QUC6qf25bbxLgbx0BxPADKq9GWxPxdN46ZIQNFcr5JpVfP38Wyzm+b
+	 DW3XI3Fbl1mBhDTt50s/Ox9Dl6u8Oq5yz6UXJYlwGhIc+gg+3wF1sByNvepqefDver2lw
+	 29maVY8HFAAeWLvVyR/IpADBSB83WaC9eFSVf3ZwiS0INi/41pmC013QIh7PDWlej4DUF
+	 mk8kP/sZDRSK3/zKNmaiBbPSsI2kCqU17HEWXmdTBKe2imfUx07tlJNPsIUIE4ROs3UJn
+	 9iI0qGzXGRxB10+9bq4JC4cjHMLIJ7+8wx6bXaBl3dLFuZ+jmbC3MFsOsnUzMDZv6GA==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id AA13C1F000C1;
+	Wed,  4 Nov 2026 08:57:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793782669;
+	bh=EsWY/yTZXFYVprtWvUf3XnhiSXDepU5aallNWHc59Og=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=ZmTzG+gGRt63kk9MWzueKzLUU17ctl9W8ua5PjpxJKK8DdAz9xtMjSVHzHjANGPt0
+	 aepwr8IamHmADaJ2zhVojQiDuEE4AfgUk6FYsq9G2+4akJauvcHPWJx9Gd7g5BcFvB
+	 OSypO+k6ZBYxPY+rQ9xr6e4Jx1yqUoIxVfy8cETXL116nxZ4y/yOj6F4tH8jX7Z/Ia
+	 GNWplZk8f6JUyD20EknYYdIuSexTtWlQSuEWaqtOgFhuKB+A6TYJ/nWThznYLuHdHn
+	 5TTq4lUamziQES3BFEjhAEgmoOU31lTeeUeF2VLEcE4+Hs0thYaB0DbtDWEOSnheHU
+	 AOPfD8dTntSpw==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 18D0746D55;
+	Wed,  4 Nov 2026 08:57:48 +0000 (UTC)
+From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
+Date: Wed, 04 Nov 2026 16:56:03 +0800
+Subject: [PATCH v4 1/2] dt-bindings: power: rockchip: Add RK3572 power
+ domains
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0
-Date: Wed, 4 Nov 2026 16:11:07 +0800
-X-Priority: 3
-Message-ID: <tencent_B554CB5826E48E2405EC22E6FAED3721D10A@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-References: <20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com>
- <20261022-add-board-ok3572-c-v1-23-0b0fd85a31ee@qq.com>
-	<auqRrz1kM-sfJEQ-@vbox>
-In-Reply-To: <auqRrz1kM-sfJEQ-@vbox>
-X-QQ-mid: xmsezb41-0t1793779867tvkd8y3x2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_001111_920703_B76FE886 
-X-CRM114-Status: GOOD (  13.32  )
-X-Spam-Score: -1.9 (-)
+MIME-Version: 1.0
+Message-Id: <20261104-add-board-ok3572-c-pmdomain-v4-1-15cf8b5a6e59@qq.com>
+References: <20261104-add-board-ok3572-c-pmdomain-v4-0-15cf8b5a6e59@qq.com>
+In-Reply-To: <20261104-add-board-ok3572-c-pmdomain-v4-0-15cf8b5a6e59@qq.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Elaine Zhang <zhangqing@rock-chips.com>, Ulf Hansson <ulfh@kernel.org>
+Cc: Cunhao Lu <1579567540@qq.com>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
+ Finley Xiao <finley.xiao@rock-chips.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793782666; l=2834;
+ i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
+ bh=oyvMUU7R4CjKJ/p4yd/DxcdPfUMgGd3L5BZrnlpZr8A=;
+ b=QJ1uWl+F7GBiGoGGJ+woFdBVjA8OLhcGVy1YEOIXpoJqX/+/qBrkXK6SqOvk0bgcpYc8HWZHY
+ 0xT8khOcz40B93eyVSzKyNNqLh007MZTtht5ngy3HAw9FuuZPoli+1X
+X-Developer-Key: i=1579567540@qq.com; a=ed25519;
+ pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
+X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
+ auth_id=1177
+X-Original-From: Cunhao Lu <1579567540@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,40 +108,111 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+From: Finley Xiao <finley.xiao@rock-chips.com>
 
-> This can just be:
-> if (device_property_match_string(dev, "phy-names", "usb3-phy") >= 0 &&
->     (speed == USB_SPEED_UNKNOWN || speed >= USB_SPEED_SUPER))
+Describe the RK3572 power controller and define its 14 power-domain IDs.
+Require the system GRF phandle used to check firmware shift-ready status.
 
-Agreed. This glue-side check will be removed with the helper when the
-configuration moves to the PHY drivers.
+Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+---
+Changes in v4:
+- Describe the system GRF register as firmware shift-ready status.
+---
+ .../bindings/power/rockchip,power-controller.yaml  | 17 ++++++++++++
+ .../power/rockchip,rk3572-power-controller.h       | 30 ++++++++++++++++++++++
+ 2 files changed, 47 insertions(+)
 
-> This looks like something that can be done in the phy driver. The other
-> Rockchip platforms such as RK3588 do this in the phy right? Why it must
-> be here?
+diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+index b41db576f95d..fbf3e0ab4cd9 100644
+--- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
++++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+@@ -43,6 +43,7 @@ properties:
+       - rockchip,rk3528-power-controller
+       - rockchip,rk3562-power-controller
+       - rockchip,rk3568-power-controller
++      - rockchip,rk3572-power-controller
+       - rockchip,rk3576-power-controller
+       - rockchip,rk3588-power-controller
+       - rockchip,rv1126-power-controller
+@@ -57,6 +58,22 @@ properties:
+   "#size-cells":
+     const: 0
+ 
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: System GRF with firmware shift-ready status.
++
++allOf:
++  - if:
++      properties:
++        compatible:
++          const: rockchip,rk3572-power-controller
++    then:
++      required:
++        - rockchip,grf
++    else:
++      properties:
++        rockchip,grf: false
++
+ required:
+   - compatible
+   - "#power-domain-cells"
+diff --git a/include/dt-bindings/power/rockchip,rk3572-power-controller.h b/include/dt-bindings/power/rockchip,rk3572-power-controller.h
+new file mode 100644
+index 000000000000..c2316fa859df
+--- /dev/null
++++ b/include/dt-bindings/power/rockchip,rk3572-power-controller.h
+@@ -0,0 +1,30 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
++/*
++ * Copyright (c) 2026 Rockchip Electronics Co., Ltd.
++ * Author: Finley Xiao <finley.xiao@rock-chips.com>
++ */
++
++#ifndef __DT_BINDINGS_POWER_RK3572_POWER_CONTROLLER_H__
++#define __DT_BINDINGS_POWER_RK3572_POWER_CONTROLLER_H__
++
++/* VD_NPU */
++#define RK3572_PD_NPU		0
++
++/* VD_GPU */
++#define RK3572_PD_GPU		1
++
++/* VD_LOGIC */
++#define RK3572_PD_NVM0		2
++#define RK3572_PD_NVM1		3
++#define RK3572_PD_DSMC		4
++#define RK3572_PD_PHP		5
++#define RK3572_PD_AUDIO		6
++#define RK3572_PD_IMG		7
++#define RK3572_PD_VDEC		8
++#define RK3572_PD_VI		9
++#define RK3572_PD_VENC		10
++#define RK3572_PD_VO		11
++#define RK3572_PD_VOP		12
++#define RK3572_PD_VOP_PRE	13
++
++#endif
 
-You are right. I checked the RK3572 hardware capabilities and tested a
-PHY-based implementation on the OK3572-C. Both controllers report DRD
-capability, so DWC3 uses one USB2 and one USB3 port rather than taking the
-host-only port-discovery path. On USB1, USB3 PHY initialization is still
-called with the PIPE port disabled. My original reason for placing this
-before DWC3 core probe was incorrect.
+-- 
+2.34.1
 
-I will fix this issue in v2.
 
-Best regards,
-Cunhao Lu
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
