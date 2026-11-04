@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 685D3606A330
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 07:10:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5BDA2606A328
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 07:10:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fH4cx3e9;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=BTEEBTXH
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xxNFRCM6;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Q9hswSs9
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,51 +14,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=2ThVytJfxg3jtnBXAHTrGlLDlTQOm5V38vm1mvIrACM=; b=fH4cx3e9xsWHmABL2BVwQeg8wf
-	28/SJf8rdkz/Gd7vdNs00ssAlOJ9i2FG+xowytfkqBmrOxQAvk94M92tPsjumwB56F5SNUdPsTAce
-	vemGPN9zuTX7Y/nbOIfqaHwPzBxsmSr1SktjXSxNF5IY2O94oPw4A0moZ7WHD0VHv3amr/kPQS7qG
-	Euo9ZZdFaI339KjW47v9TtZc/5TR4go7u8QtnrC69LesAvxad9DY9/qE6aCJd8RzuXSbA8b8iy0QN
-	ndEW981sXkI0wuBcEOvvv7cu91M20ptLctAqwQO6IHFjHkXnSRIrlFr9IOQ80+yzNfVrV94UPIw4u
-	R8e3qfIQ==;
+	bh=tEFOFWsSIRG829xSQVXvAmApTraVJItxQykrPKWTLAo=; b=xxNFRCM6x3xXkmWssEFqWXfEXe
+	REJ3myHl2e4DBAOolxlv7wNttnn9uCIFDBS1GDMmU5EBZht34Odq+9QB1zRpiNWFKqhdmu3z4ucWP
+	gOQ9v+rxH0gruAWSjwRk8XzI6bRURLo1NcwyN+bgGtMCHB+6wSzDyJhtDPstfY/vw79ORNwnPw7hi
+	BZGheRsIpNRkKD3cydZInnzCkzMMrSeQSc/dhMWirdlD3CUrerckjvSDLp6B+84qToi/dR2tR2JLt
+	55Ssd3x27jDGhmGzljFsIQ2Say/lP4Mr+cSP3hYioRta52oq1BJgJJVpEcwC1jmXoWrNrLgHnuklZ
+	eMIvqjhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOV8X-00000004Swn-1XIC;
-	Wed, 04 Nov 2026 07:10:21 +0000
+	id 1xOV8k-00000004T3f-2pEl;
+	Wed, 04 Nov 2026 07:10:34 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOV8V-00000004Sw1-3pQ4;
-	Wed, 04 Nov 2026 07:10:20 +0000
+	id 1xOV8j-00000004T2n-32eV;
+	Wed, 04 Nov 2026 07:10:33 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 47B5960DAE;
-	Wed,  4 Nov 2026 07:10:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 379121F0093A;
-	Wed,  4 Nov 2026 07:10:17 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2EA0D60AAB;
+	Wed,  4 Nov 2026 07:10:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 526B91F000C1;
+	Wed,  4 Nov 2026 07:10:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793776219;
-	bh=x7na+hJXaQFri5minG/TsKB4aINthrdOp08XbAZdiBc=;
+	s=k20260515; t=1793776232;
+	bh=hKwZwLISlyrZRoSYe8UqN4PmHGGlaU0ArAeEDXc/U8I=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=BTEEBTXHHLHVrMMWodEXltqfsl2JEb7Aq23EaFWR+QiJkP4DYFzPTOQhWqAKP/5Pb
-	 zIsgyIUiNcOtM00r3oIHLg3RFf85n7wb2ptPDcunpgcUpJRrtXE89fWZnDXvlVbN7B
-	 mZ7ZGHOaQLkdYeI3XT75PFbmaBdudsqn5Gje2gyiqEBpH9CTMrxnAZL1DEYVeNtRhj
-	 tEVvqw9uT8tab7InG9WbJ8Chd3CheCOM8pPXtj/djLKkZf9sQcS8QYpkWrRVmm9Egg
-	 oG4pf2cHIjONQ1t62IvzwJnvxUOxIWzFujV+rZaE/P2oC7kSeSVlkNEST4qnB1CDBq
-	 sS6sAUZ5HUPVQ==
-Date: Wed, 4 Nov 2026 08:10:16 +0100
+	b=Q9hswSs9fAm6Kf513ogva/n6h6XPf4VLLcCoKgUfFdBy64lp78UD1lVZj6M76LUfm
+	 PssYbEp8JLXQ/2IOO6tSohW7inzGiSaVNW+zJYT/D8n1SNdf4WK8byHDKj0/rf2aT4
+	 +TATT9gF0cIuDQPqFOmmqzM22w7TpCj/Aualk6dix/Kpc+EdDtLna5KhoMaHvgFQUv
+	 kwiG2dlT/umvJtUrzrvFX+mrSbWVzva4YaHvp42UpJ8bIx16hUhZctGtYKacyr2tC5
+	 mdGjYsGOxOAceNE7hvOKK2vJ/8oc+LL6qPAI4QIqep4zsxAaf5oUE5fH+JrqAdIqMM
+	 9SNsphzhuNHyg==
+Date: Wed, 4 Nov 2026 08:10:30 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Wentao Liang <vulab@iscas.ac.cn>
-Cc: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, 
-	David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, Andy Yan <andyshrk@163.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Simona Vetter <simona@ffwll.ch>
-Subject: Re: [PATCH] drm/rockchip: rgb: fix panel bridge reference leak on
- setup error
-Message-ID: <20261104-daffy-advanced-booby-a51472@quoll>
-References: <20261104024058.1508856-1-vulab@iscas.ac.cn>
+Cc: Maxime Ripard <mripard@kernel.org>, Andy Yan <andyshrk@163.com>, 
+	David Airlie <airlied@gmail.com>, dri-devel@lists.freedesktop.org, 
+	linux-rockchip@lists.infradead.org, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Sandy Huang <hjc@rock-chips.com>, 
+	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] drm/rockchip: use the safe iterator when removing device
+ links
+Message-ID: <20261104-wombat-of-phenomenal-blizzard-93dcf0@quoll>
+References: <20261104025346.1527550-1-vulab@iscas.ac.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20261104024058.1508856-1-vulab@iscas.ac.cn>
+In-Reply-To: <20261104025346.1527550-1-vulab@iscas.ac.cn>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,23 +80,24 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Wed, 04 Nov 2026 02:40:58 +0000, Wentao Liang wrote:
-> rockchip_rgb_init() wraps the panel with drm_panel_bridge_add_typed(),
-> which returns a counted reference on the panel's bridge. When
-> drm_bridge_attach() or drm_bridge_connector_init() fails afterwards,
-> the error path only cleans up the encoder, leaving that reference
-> behind and leaking the bridge.
+On Wed, 04 Nov 2026 02:53:46 +0000, Wentao Liang wrote:
+> rockchip_drm_match_remove() walks dev->links.consumers and calls
+> device_link_del() for every entry.  That drops the link's reference and,
+> once it reaches zero, __device_link_del() removes the link from the
+> device link lists and schedules the release of the link object.
 > 
-> Release the bridge in the error path, just like rockchip_rgb_fini()
-> does on the success path.
+> list_for_each_entry() still reads link->s_node after the loop body to
+> find the next entry, so it accesses a link that has already been
+> released.  Use list_for_each_entry_safe() so that the next entry is
+> loaded before the current link is deleted.
 > 
-> Fixes: b7797081ccfe ("drm/panel: embed a drm_bridge into every drm_panel")
+> Fixes: 7d4e981d41e3 ("drm/rockchip: Add device links for master and components")
 > Cc: stable@vger.kernel.org
 > Assisted-by: DeepSeek-V4.1-Flash and OpenAI Codex
 > Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
 > ---
->  drivers/gpu/drm/rockchip/rockchip_rgb.c | 1 +
->  1 file changed, 1 insertion(+)
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
 
 Multiple things here:
