@@ -2,191 +2,97 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 73B88606A31B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 18:19:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5E653606D809
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 18:56:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cQDDt88C;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=broadcom.com header.i=@broadcom.com header.a=rsa-sha256 header.s=google header.b=SiY5K8Hp
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lPARrruH;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=mDzpexrS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Nx6L0l0ezU35b1vLtVh02yAPjNKf830sBPv61YLuTng=; b=cQDDt88CqEZxnd0fNSaqZe4j4c
-	MgWm72p5jxwSkg2yW8POQher8u/MTG+mQufYmrqISofs91/qa1dscICMyedj1uy5WC6zhdEPsq7u3
-	AODVcx+4TfT2k0B70VwYCrFlJvLx6qtnwOT2BUathOXmEYMBKoVPVmud+QBxkIjfvn4vCOnWHZt44
-	+ieuYrrVahDJ+dfCV63JDub/m4qvJepwSQy6/pH/KeRCjbdqNHguEPNmlh6+8rglxTxRAJIhic+Hv
-	u+5amA+dLCdEgbZ3n+oWz+e38KFAkMpiSpzPpty26NjqDkMF7LwhYrvTTkPoBMiQgQlsZHJvqVpXZ
-	l8/JJVGg==;
+	bh=qhAEdxV5qjXQq7kt8q/CLLsvFCSqKU3ct3d0+2XfXO0=; b=lPARrruHAWZZVXUMq3br4v23G+
+	n+Nk7hrB5bH6Dydb9x6Zkil+gte3d15C06bI5SWehsYsgtEnOGo8+Ovnk2jcrWSCAsRI1koxbBpPr
+	yhj68jrIHkIAzk4lFYFe0FQ1MLi0PgZPIAwEH36KsKNrnfW17/a52Kazp1E9z3Z3pfJaQ0n6KgWvI
+	e8G6He7Kv9znXyHAUnsCjNmpNkerQNKe94sYUx9Jgv0bgosb22ygzu/NNamnOfGZC7x1tU9mL3aJ9
+	OB5LqJZtsxjDuk/JeZXY+dK5r5M7Lt/x6sh7UcCXp9fe8qjrM+6nm3SxduvbuUDkiSV3fcgiapKbe
+	1tF6ctsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOfZr-00000006NQb-0ttY;
-	Wed, 04 Nov 2026 18:19:15 +0000
-Received: from mail-pj1-x1064.google.com ([2607:f8b0:4864:20::1064])
+	id 1xOgAC-00000006TC3-1nE0;
+	Wed, 04 Nov 2026 18:56:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOfZn-00000006NOX-3nvD
-	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Nov 2026 18:19:14 +0000
-Received: by mail-pj1-x1064.google.com with SMTP id 98e67ed59e1d1-3ae691283ecso492770a91.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 04 Nov 2026 10:19:11 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793816351; x=1794421151;
-        h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:dkim-signature:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=FlQwGt9vsgmEqVOXecfnOUjERz/PPFh4Xv6/vyt/054=;
-        b=0RVVg89RS584y57SMD6sHjGqm1tk2WPbXzDcwJ7qU7y8trO4ivnRSAkz63tJpq9dF3
-         XZhJfOp6xC+tcJ0YTvLm9HIyOLrilVyx1qv5ab9N2tFc9t3PhiiCe7tmpxgZeR5T+h0P
-         G7csQIJLmMJ8oPAQAA7PiCu01JMP0AOZ8t2z4lLDJo/kM+8AgI6kvLYf42sga/UH/Wnk
-         fvrC+Q2ReOiMBJq6lVR+LqVop1wnzqRxyPRmJXLxxVbiyr7rIXQHWZkirzYCNcsNfxOl
-         ZtMDYEnFJLnWSSz3olcJyrozerCxkZZOrawJDW73F1Hql5AAnMOi99j2+POCCI7g4Nx7
-         pvig==
-X-Forwarded-Encrypted: i=1; AKwUvBxbLM9LeogG4p8ErDTWMh5hQT7wjixKoZ8NGOAXdlml4dtBjjVeRubxxSBX/tOIsZ0036aQBsrnxmiEQB5vzw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/f42t9Ski0c7ykKN8feXAGi2jaiG4KYa8SktSDrIxP26blCYmT
-	SKlY8uXOCyFmhMLPABVlwD6RNY/hO+7u01GTcc47EzvcVC2pdzUl58J0cnBVbpBq3IXrkEVkiTC
-	6FXcc9t1+XVmZ1TgcaK+sn+ngD0r/D7dsXDIVtXBkE1TQuEsXciZhPvuP9xIN1dUyTmV+39SxPA
-	wSMJxa9t1lavq8/WJ9EKkA53oAgEcCHrKi38ZLxuPZyWSxcf292m70OsZHBFCZCY/kvCF1vvfyd
-	HClrwr5vJ4cwsaucjsRmeYG1T3zzsqEsRA=
-X-Gm-Gg: AYBFou2jOI4jXzsiVUpBMKtQOUEkKzCggoLRiWqlST4otTHPZ64Fz90UgB9LKvWZI4F
-	XckRX0NGTMELPsQCWUjpj4TqVbZfJiti24WZOB8h4u4t4xBlyl5fFQFkajjWTVS20c3Q00lQJA5
-	YGgaVA2XjfqHfueUiUi8T/Vv0TjiCFkEiEyYHpNcfdQK6SC+WBD1tEItk4l0ngkz0X004mzLl44
-	cwQcNAARPErZFPKFeHGJYXPReTCY/HzMwc7v6FelFdDHaVLvZDxnxoA/ywcg5TiEfNYsj3405e7
-	5FgQIMYbaHEqpeUxUx9hcj470Xg4vvmO4gStaYH6FvnmwOKut9RaKhLUcZLn1qlKNBvsVi/yPNG
-	NGV86zkJeK5nTQovqvb4lpS5TGSJLzHgnPtS4uk2M8GkGLmkAdTGUQ5bm4rR3zKrqUD7iGlM1Po
-	o09PQmASUNBKowipYRbMvePicDsa2rQXOyOpWXAQS5
-X-Received: by 2002:a17:90b:3911:b0:3ac:95d7:2f95 with SMTP id 98e67ed59e1d1-3b0afdeccedmr180817a91.20.1793816350872;
-        Wed, 04 Nov 2026 10:19:10 -0800 (PST)
-Received: from smtp-us-east1-p01-i01-si01.dlp.protect.broadcom.com (address-144-49-247-13.dlp.protect.broadcom.com. [144.49.247.13])
-        by smtp-relay.gmail.com with ESMTPS id 41be03b00d2f7-cdb46400cb3sm71245a12.14.2026.11.04.10.19.10
-        for <linux-rockchip@lists.infradead.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 04 Nov 2026 10:19:10 -0800 (PST)
-X-Relaying-Domain: broadcom.com
-X-CFilter-Loop: Reflected
-Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-91c7bf2d740so18179826d6.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 04 Nov 2026 10:19:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1793816349; x=1794421149; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=FlQwGt9vsgmEqVOXecfnOUjERz/PPFh4Xv6/vyt/054=;
-        b=SiY5K8HpxlWM1/goI+S/zOkxnrxA5phxNlTJHyHz2hHOVvurrGGLxFg+C/S15YqHk6
-         Vt9EqXrvvGYXwxp4ZOb6XGws0GdgTzRBeEuD5cCHNqPVjmt40teBRPFuxDk+Kal75CVy
-         YNujYyU+H78ZoTHXdM43aVSy/1eGrd4JNxUU8=
-X-Forwarded-Encrypted: i=1; AKwUvByjoIM12u1+C4hEe+r+6clgGUL8Y+mMssIyvt1z4SP9H7lKi9wtt7dMwtXf9CCdrU3wNEK2HO4ysQgIAzTkFg==@lists.infradead.org
-X-Received: by 2002:a05:6214:310f:b0:917:aad9:de05 with SMTP id 6a1803df08f44-91e9445105fmr6407316d6.12.1793816349467;
-        Wed, 04 Nov 2026 10:19:09 -0800 (PST)
-X-Received: by 2002:a05:6214:310f:b0:917:aad9:de05 with SMTP id 6a1803df08f44-91e9445105fmr6406096d6.12.1793816348885;
-        Wed, 04 Nov 2026 10:19:08 -0800 (PST)
-Received: from [10.14.197.69] ([192.19.161.248])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-91e7e013a5dsm25545756d6.27.2026.11.04.10.18.58
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 04 Nov 2026 10:19:08 -0800 (PST)
-Message-ID: <2388e81a-424d-4263-a111-75d0f87c9754@broadcom.com>
-Date: Wed, 4 Nov 2026 10:18:57 -0800
+	id 1xOgA8-00000006T8L-2FaE;
+	Wed, 04 Nov 2026 18:56:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1793818601;
+	bh=VB0xkskEXr7uqJo35Wl1R8zYHYMTLxuasxaQ51RUvEs=;
+	h=From:Subject:Date:To:Cc:From;
+	b=mDzpexrSowot73+Z/58SOaxzlhUwoo96xHMUX8Kb483vw9Rq4JU+a21VJgCS3Zk+K
+	 clT3sRXuVRbHo2rO3SAMoRtGA3wo4+IIwj6jWzhQ40ildDAtNGvt3SgLTF1sHFAi60
+	 zS6GkAXIJXW1iHKfWWnxgUMMCw5yz6oq5p8mXGi8BA/2UJsf0VOg4XCefJshd2SJlV
+	 +Z5p/fvnzUdYg4pC1ej7Cbh3pcoAErxTFdJgasf8z1/NpRAfyopCA4NWJHAc8Q6cr9
+	 JSK4BetmDt5wx6MV8dv7zrhu9Ds2UEsMan3w63iBpmz8LIRB0aV/1NX51lNRXUTzxa
+	 iJ+/R3gsxudrQ==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 24BDE17E066C;
+	Wed, 04 Nov 2026 19:56:41 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id D277748002B; Wed, 04 Nov 2026 19:56:40 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH v7 00/10] PCI: dw-rockchip: add system suspend support
+Date: Wed, 04 Nov 2026 19:56:38 +0100
+Message-Id: <20261104-rockchip-pcie-system-suspend-v7-0-6ae6875939a2@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/1] spi: use dmaengine_desc_set_callback()
-To: Frank.Li@oss.nxp.com, Mark Brown <broonie@kernel.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Radu Pirea <radu_nicolae.pirea@upb.ro>, CL Wang <cl634@andestech.com>,
- Ryan Wanner <ryan.wanner@microchip.com>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Vladimir Oltean
- <olteanv@gmail.com>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Han Xu <han.xu@nxp.com>,
- Haibo Chen <haibo.chen@nxp.com>, Linus Walleij <linusw@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>,
- Robert Jarzmik <robert.jarzmik@free.fr>, Heiko Stuebner <heiko@sntech.de>,
- Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
- Andi Shyti <andi.shyti@kernel.org>, Tudor Ambarus
- <tudor.ambarus@linaro.org>, Krzysztof Kozlowski <krzk@kernel.org>,
- Peter Griffin <peter.griffin@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Yixun Lan <dlan@kernel.org>,
- Troy Mitchell <troy.mitchell@linux.spacemit.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Alain Volmat <alain.volmat@foss.st.com>, Chen-Yu Tsai <wens@kernel.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Laxman Dewangan
- <ldewangan@nvidia.com>, Thierry Reding <thierry.reding@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Sowjanya Komatineni <skomatineni@nvidia.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>,
- "moderated list:ARM/Microchip (AT91) SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
- <linux-rpi-kernel@lists.infradead.org>,
- "open list:FREESCALE DSPI DRIVER" <imx@lists.linux.dev>,
- "open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- "open list:RENESAS RZ/V2H(P) RSPI DRIVER"
- <linux-renesas-soc@vger.kernel.org>,
- "open list:SAMSUNG SPI DRIVERS" <linux-samsung-soc@vger.kernel.org>,
- "open list:RISC-V SPACEMIT SoC Support" <linux-riscv@lists.infradead.org>,
- "open list:RISC-V SPACEMIT SoC Support" <spacemit@lists.linux.dev>,
- "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>,
- "open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
- "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>
-Cc: Mukesh Kumar Savaliya <mukesh.savaliya@oss.qualcomm.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Thierry Reding <treding@nvidia.com>
-References: <20261104152253.3279052-1-Frank.Li@oss.nxp.com>
-Content-Language: en-US
-From: Florian Fainelli <florian.fainelli@broadcom.com>
-Autocrypt: addr=florian.fainelli@broadcom.com; keydata=
- xsBNBFPAG8ABCAC3EO02urEwipgbUNJ1r6oI2Vr/+uE389lSEShN2PmL3MVnzhViSAtrYxeT
- M0Txqn1tOWoIc4QUl6Ggqf5KP6FoRkCrgMMTnUAINsINYXK+3OLe7HjP10h2jDRX4Ajs4Ghs
- JrZOBru6rH0YrgAhr6O5gG7NE1jhly+EsOa2MpwOiXO4DE/YKZGuVe6Bh87WqmILs9KvnNrQ
- PcycQnYKTVpqE95d4M824M5cuRB6D1GrYovCsjA9uxo22kPdOoQRAu5gBBn3AdtALFyQj9DQ
- KQuc39/i/Kt6XLZ/RsBc6qLs+p+JnEuPJngTSfWvzGjpx0nkwCMi4yBb+xk7Hki4kEslABEB
- AAHNMEZsb3JpYW4gRmFpbmVsbGkgPGZsb3JpYW4uZmFpbmVsbGlAYnJvYWRjb20uY29tPsLB
- IQQQAQgAywUCZWl41AUJI+Jo+hcKAAG/SMv+fS3xUQWa0NryPuoRGjsA3SAUAAAAAAAWAAFr
- ZXktdXNhZ2UtbWFza0BwZ3AuY29tjDAUgAAAAAAgAAdwcmVmZXJyZWQtZW1haWwtZW5jb2Rp
- bmdAcGdwLmNvbXBncG1pbWUICwkIBwMCAQoFF4AAAAAZGGxkYXA6Ly9rZXlzLmJyb2FkY29t
- Lm5ldAUbAwAAAAMWAgEFHgEAAAAEFQgJChYhBNXZKpfnkVze1+R8aIExtcQpvGagAAoJEIEx
- tcQpvGagWPEH/2l0DNr9QkTwJUxOoP9wgHfmVhqc0ZlDsBFv91I3BbhGKI5UATbipKNqG13Z
- TsBrJHcrnCqnTRS+8n9/myOF0ng2A4YT0EJnayzHugXm+hrkO5O9UEPJ8a+0553VqyoFhHqA
- zjxj8fUu1px5cbb4R9G4UAySqyeLLeqnYLCKb4+GklGSBGsLMYvLmIDNYlkhMdnnzsSUAS61
- WJYW6jjnzMwuKJ0ZHv7xZvSHyhIsFRiYiEs44kiYjbUUMcXor/uLEuTIazGrE3MahuGdjpT2
- IOjoMiTsbMc0yfhHp6G/2E769oDXMVxCCbMVpA+LUtVIQEA+8Zr6mX0Yk4nDS7OiBlvOwE0E
- U8AbwQEIAKxr71oqe+0+MYCc7WafWEcpQHFUwvYLcdBoOnmJPxDwDRpvU5LhqSPvk/yJdh9k
- 4xUDQu3rm1qIW2I9Puk5n/Jz/lZsqGw8T13DKyu8eMcvaA/irm9lX9El27DPHy/0qsxmxVmU
- pu9y9S+BmaMb2CM9IuyxMWEl9ruWFS2jAWh/R8CrdnL6+zLk60R7XGzmSJqF09vYNlJ6Bdbs
- MWDXkYWWP5Ub1ZJGNJQ4qT7g8IN0qXxzLQsmz6tbgLMEHYBGx80bBF8AkdThd6SLhreCN7Uh
- IR/5NXGqotAZao2xlDpJLuOMQtoH9WVNuuxQQZHVd8if+yp6yRJ5DAmIUt5CCPcAEQEAAcLB
- gQQYAQIBKwUCU8AbwgUbDAAAAMBdIAQZAQgABgUCU8AbwQAKCRCTYAaomC8PVQ0VCACWk3n+
- obFABEp5Rg6Qvspi9kWXcwCcfZV41OIYWhXMoc57ssjCand5noZi8bKg0bxw4qsg+9cNgZ3P
- N/DFWcNKcAT3Z2/4fTnJqdJS//YcEhlr8uGs+ZWFcqAPbteFCM4dGDRruo69IrHfyyQGx16s
- CcFlrN8vD066RKevFepb/ml7eYEdN5SRALyEdQMKeCSf3mectdoECEqdF/MWpfWIYQ1hEfdm
- C2Kztm+h3Nkt9ZQLqc3wsPJZmbD9T0c9Rphfypgw/SfTf2/CHoYVkKqwUIzI59itl5Lze+R5
- wDByhWHx2Ud2R7SudmT9XK1e0x7W7a5z11Q6vrzuED5nQvkhAAoJEIExtcQpvGagugcIAJd5
- EYe6KM6Y6RvI6TvHp+QgbU5dxvjqSiSvam0Ms3QrLidCtantcGT2Wz/2PlbZqkoJxMQc40rb
- fXa4xQSvJYj0GWpadrDJUvUu3LEsunDCxdWrmbmwGRKqZraV2oG7YEddmDqOe0Xm/NxeSobc
- MIlnaE6V0U8f5zNHB7Y46yJjjYT/Ds1TJo3pvwevDWPvv6rdBeV07D9s43frUS6xYd1uFxHC
- 7dZYWJjZmyUf5evr1W1gCgwLXG0PEi9n3qmz1lelQ8lSocmvxBKtMbX/OKhAfuP/iIwnTsww
- 95A2SaPiQZA51NywV8OFgsN0ITl2PlZ4Tp9hHERDe6nQCsNI/Us=
-In-Reply-To: <20261104152253.3279052-1-Frank.Li@oss.nxp.com>
-X-DetectorID-Processed: b00c1d49-9d2e-4205-b15f-d015386d3d5e
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4XPwarCMBCF4VeRrI2k0yZtXPke4iKZTG1Qm5JoU
+ KTvbhREuFx0+c/iO8ydJYqeElsv7ixS9smHsUS7XDAczLgn7l1pBgJkJaDjMeABBz/xCT3xdEt
+ nOvF0SRONjncKe9GZ1gJoVogpUu+vL367Kz34dA7x9lrLzfP6hvV3ODdccCSgygqlwcEGw/Fob
+ IhmheHEnniWb1CJulI/QFlAaa00rm6daur/QPUBtfjxelYF7K2xiEZrqOxfcJ7nByE+G41uAQA
+ A
+X-Change-ID: 20251028-rockchip-pcie-system-suspend-86cf08a7b229
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Jingoo Han <jingoohan1@gmail.com>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Mark Brown <broonie@kernel.org>, 
+ "Yury Norov (NVIDIA)" <yury.norov@gmail.com>, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Alexey Charkov <alchark@flipper.net>, linux-pci@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5866;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=VB0xkskEXr7uqJo35Wl1R8zYHYMTLxuasxaQ51RUvEs=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrrf+gry4GSGGdQFVkjBcsBc5CWAMrAimJKe
+ T0hGYpvy/WmGIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq63/oAAoJENju1/PI
+ O/qa/wsP/RxJbFRBWr6b93uiy+QRr2sviDM9pF86E9ZLEBi/POK8wCemmLSK/AKw1+z1N20xkXr
+ opXm4rPh1i2zFKf1PfraIYPuGiIW5EsHkRBlcsnCtUwpiLL9zNH2lLHedjE3zIcRYUMCCyxANKn
+ kwoRPckaLyVLjp3XjECOBN6DSBS/FPWxKCWyGRwLCX/PDdxuitT4KGz0hueMR5EEFg9o/EGHked
+ h9FKediJyC99sTDfnJ0dQhHsrirBBLWTFbeUuntDrANee2NHsF8bRVSGDNTu8f9N4j1CQOYvEpx
+ xETr0ubQ47gBvE4rYM6DAgQ0pQdhIl/PSSxZmOFPV3W26GLry/UqyINQEkm4/6Ofxu5Wkrty+E3
+ j3nckm3nmQW7L/oa2yJU2RnGCqca3tNCfmnapu4gQig+cIUy5Z3wmsiwT3ClrwdAt+LV5oMi/HG
+ 5JRAV3DOx+2lyKsylnESEjG6CguJktyG1z7tswG9j9LlPAg4Q0RkhEngeT0xQTsXzVGoJoRi693
+ t0D3o/rBCduXTw8klsTaJYIY+n7odPhqRE5xVWqqEdV1gepz297KO2d8If7xC2IkUqZcDva1Dhh
+ ziQ3migXc2t5JWr8+icylUg0A3Ch8GzpfFUeOqRQGjsGxz9Ygy99rTuF962/vh+YeVPLIe3eQpr
+ g8ENX4uXTJW6slgD+SiIuDQ==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_101911_959343_758D7E5C 
-X-CRM114-Status: GOOD (  12.19  )
+X-CRM114-CacheID: sfid-20261104_105644_740543_7434F186 
+X-CRM114-Status: GOOD (  22.93  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -197,54 +103,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+I've been working on fixing up at least basic system suspend support on
+the Rockchip RK3576 platform. The last open issue is missing support in
+the PCIe driver. This series is a follow-up for Shawn Lin's series with
+feedback from Niklas Cassel and Manivannan Sadhasivam being handled as
+well as some of my own changes fixing up things I noticed.
 
+I've tested this on multiple RK3576 and RK3588 boards and things look
+good to me on the PCIe side.
 
-On 11/4/2026 7:22 AM, Frank.Li@oss.nxp.com wrote:
-> From: Frank Li <Frank.Li@nxp.com>
-> 
-> Replace open-coded assignments to callback and callback_param fields
-> of struct dma_async_tx_descriptor with calls to the
-> dmaengine_desc_set_callback() helper across SPI bus drivers.
-> 
-> No functional change intended. Prepare make to struct
-> dma_async_tx_descriptor private to the DMA engine.
-> 
-> Reviewed-by: Linus Walleij <linusw@kernel.org>
-> Reviewed-by: Mukesh Kumar Savaliya <mukesh.savaliya@oss.qualcomm.com>
-> Acked-by: Alain Volmat <alain.volmat@foss.st.com>
-> Reviewed-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
-> Reviewed-by: Troy Mitchell <troy.mitchell@linux.spacemit.com>
-> Reviewed-by: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
-> Acked-by: Thierry Reding <treding@nvidia.com>
-> Signed-off-by: Frank Li <Frank.Li@nxp.com>
-> ---
-> change in v2
-> - add missed set_callback in rspi_dma_transfer() (sashiko
-> - collect review by tags
-> - drop void *
-> ---
->   drivers/spi/atmel-quadspi.c       | 3 +--
->   drivers/spi/spi-at91-usart.c      | 3 +--
->   drivers/spi/spi-atcspi200.c       | 3 +--
->   drivers/spi/spi-atmel.c           | 3 +--
->   drivers/spi/spi-bcm2835.c         | 6 ++----
+On RK3588, I also needed [0] to fix PCIe IOMMU issues after resume. I
+consider this an independent issue. Also on the Rockchip EVBs the
+brcmfmac driver fails to suspend. The WIFI card is connected via PCIe,
+but the problem is with the driver/firmware and unrelated to PCIe
+itself. I will send a separate workaround patch for that. Additionally
+on RK3588 the system will run into SError on resume due to a USB2
+problem. This problem is also independent and will be handled
+separately.
 
-For the above:
+[0] https://lore.kernel.org/all/20260728210928.1050849-1-praan@google.com/
 
-Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
--- 
-Florian
+Changes in v7:
+* Link to v6: https://patch.msgid.link/20260908-rockchip-pcie-system-suspend-v6-0-fbabcca9921b@collabora.com
+* Rebased to v7.4-rc1
+* Collect Reviewed-by tags from Shawn Lin to (mostly) unchanged patches;
+  I skipped some due to changes in v7
+* Keep dev_err_probe() message for rockchip_pcie_phy_init in patch
+  restoring vpcie3v3 regulator handling
+* Avoid dynamic mask for extra flags in "enhanced LTSSM control mode helper"
+  by just adding specific support for the extra flag needed. Apparently
+  some compiler configurations don't like it.
+* Avoid duplicated register define in In pme_turn_off patch
+* Move bit defines to the correct register defines in pme_turn_off patch
+* In broken L1SS resume flag patch move the explanation comment from the
+  code to the commit message (FWIW this comment is not AI generated by
+  me, but was copied from the Qcom implementation).
+* In system PM support patch, set pp->suspend_poweroff to fix the issue
+  identified by Igor
+* In system PM support patch, just return 0 for DW_PCIE_EP_TYPE (Mani)
+  to keep the status-quo (I've not tested this specifically).
+* In system PM support patch, use the same init order as probe (Sashiko)
+* In clear debug buffer patch, drop dw_pcie_dbi_ro_wr_dis(), which
+  is already done by the core nowadays (Sashiko, Mani)
+* In clear debug buffer patch, fix actual register write (Sashiko)
+* In clear debug buffer patch, update patch description with
+  better explanation about the register (Mani)
+
+Changes in v6:
+ * https://lore.kernel.org/r/20260316-rockchip-pcie-system-suspend-v5-0-5bb5ad37d643@collabora.com
+ * Rebase to pci/next
+ * Minor changes to make checkpatch happy
+ * Update patch description of the last patch and drop RFC tag
+   according to feedback from Shawn Lin
+ * Prepend new patch, which fixes Nicolas Frattaroli's conversion
+   to FIELD_PREP_WM16 accidently dropping a flag.
+ * Add another new patch, which sets .broken_l1ss_resume to tell the
+   PCI core that the controller is powered off during suspend following
+   the Qcom example
+
+Changes in v5:
+ * https://lore.kernel.org/r/20251029-rockchip-pcie-system-suspend-v4-0-ce2e1b0692d2@collabora.com
+ * rebase to v7.0-rc1
+ * Add an RFC patch at the end with some bits I found in the Rockchip vendor kernel;
+ * Made some tests on Rock 5B+ (RK3588); with this patch series suspending works
+   when setting pm_test to devices. A full system suspend fails in a later step,
+   but that is independent of PCIe.
+
+Changes in v4:
+ * https://lore.kernel.org/linux-pci/1744940759-23823-1-git-send-email-shawn.lin@rock-chips.com/
+ * rename rockchip_pcie_get_ltssm to rockchip_pcie_get_ltssm_status_reg
+   in a separate patch (Niklas Cassel)
+ * rename rockchip_pcie_get_pure_ltssm to rockchip_pcie_get_ltssm_state
+   in a separate patch (Niklas Cassel)
+ * Move devm_phy_get out of phy_init to probe in a separate patch
+   (Manivannan Sadhasivam)
+ * Add helper function for enhanced LTSSM control mode in a separate patch
+   (Niklas Cassel)
+ * Add helper function for controller mode in a separate patch
+   (Niklas Cassel)
+ * Add helper function for DDL indicator in a separate patch
+   (Niklas Cassel)
+ * Move rockchip_pcie_pme_turn_off implementation in a separate patch
+ * Rebase to v6.18-rc3 using new FIELD_PREP_WM16()
+ * Improve readability of PME_TURN_OFF/PME_TO_ACK defines (Manivannan Sadhasivam)
+ * Fix usage of reverse Xmas (Manivannan Sadhasivam)
+ * Assert PERST# before turning off other resources (Manivannan Sadhasivam)
+ * Improve some error messages (Manivannan Sadhasivam)
+ * Rename goto labels as per their purpose (Manivannan Sadhasivam)
+ * Add extra patch for dw_pcie_resume_noirq, since I've seen errors
+   during resume on boards not having anything plugged into their PCIe
+   port
+
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+Sebastian Reichel (10):
+      PCI: dw-rockchip: Fix LTSSM set functions
+      PCI: dw-rockchip: Restore vpcie3v3 regulator handle
+      PCI: dw-rockchip: Move devm_phy_get out of phy_init
+      PCI: dw-rockchip: Add helper function for enhanced LTSSM control mode
+      PCI: dw-rockchip: Add helper function for controller mode
+      PCI: dw-rockchip: Add helper function for DDL indicator
+      PCI: dw-rockchip: Add pme_turn_off support
+      PCI: dw-rockchip: Set broken L1SS resume flag
+      PCI: dw-rockchip: Add system PM support
+      PCI: dw-rockchip: Clear debug buffer before entering L2
+
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 272 ++++++++++++++++++++++----
+ 1 file changed, 232 insertions(+), 40 deletions(-)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20251028-rockchip-pcie-system-suspend-86cf08a7b229
+
+Best regards,
+--  
+Sebastian Reichel <sebastian.reichel@collabora.com>
 
 
 _______________________________________________
