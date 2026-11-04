@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 47E20606A32F
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4D388606A334
 	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 23:08:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qOZquDBg;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=YZT/nQ4v
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pKyt+XNP;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=oJhcIaBk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,46 +14,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=TvEjD7QY9aBh6t2rf3Xah+MVbqdTGxdvZc8IQDbJI/4=; b=qOZquDBgjZxfp7y2I2U42gmB2g
-	8Q6mKyY5zwTgL4SgM5PHav5ho3E/BDTn5Q+yqRfUp96THkeqc1MonIX0YDB1HzBrqhCJr0IHdkJ8h
-	0yS5JkzCve8g6qilwjusE7S6UrgN7tAwNmiYgW9sD5FXfYygwjsrpFThEHykFE2C/7uB5m+D917mA
-	NYpNN82HKLfzpmDk/31GGjHSuZAVWIm9NwcJgN/JXEuVE/KsWiWtXv2YXA985fMII3xaGYCzJ+qRH
-	x0Vmny/FdR8W+lDLphihulwkwnt9YUuBeUfVmzUpaWI6dKKCVbBPZw1l2JTFl75Gikz+TU86U/ncS
-	7Z9DkwrA==;
+	bh=M8ZlDzZJfbADgjvZTQWRKcG+RThauHOr5XjJs7xDWHY=; b=pKyt+XNPvA0cxwpb344warGGZA
+	razrz9Dc6zkVYNWU6VOZYg3Mn1sINwKdiIImsJbAIYU1lEjzcl4TurbsXtt0/EVBD9JOqpK3Idkyh
+	WXASyMnFu43mtxmxdTVBjguIcgfjc3qiiSsZKK1zFCISWU+YpIho0x++clMk3gwOghvXGcOPXrVEP
+	EB0akLGr09JXBuM1P+TUfqfUPY7raGqvxbD+gaGT9jeIK4LwdvXYxQDG5sFGWlnFXLhhK1OsqzAOJ
+	/5BGcFWEhmdLnO5rdFQD0FXLfdS5q49jHFWCEOWqFS7l3nJueWJTwlIxuRlZh+O1SjKBLi1Mzx34L
+	sX4k8Tfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOk5b-00000007DhV-2QPm;
+	id 1xOk5b-00000007DiE-3Qt6;
 	Wed, 04 Nov 2026 23:08:19 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOk5Q-00000007DUr-1fHH;
+	id 1xOk5Q-00000007DUs-1fNb;
 	Wed, 04 Nov 2026 23:08:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1793833685;
-	bh=8/fTd2v3WW8Lq1B62lCiA4Q4ly0FhC2re1oEGWAOBUQ=;
+	bh=rX9nu49yVHon/eoArd9zChZ1LRjZoDqVhWArx28DxU4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=YZT/nQ4v1gyi8Z6mtVBUmC3+KietQShgOVaVssbv5Yvue/oEaCsHUZpj5hzAgkfdp
-	 hoguJ/BBI2DHDIe+dKhV8QpNvOkKhKmFE9u+drrLFXJnhNWM92ew9X/8RfzCQREfP0
-	 BYb22g7f/FSZn45CVN49UeRSbD6EdGgOkuNCmTwT6l+4DbFnJH9iCLFGrm7X5d1r6S
-	 DjQ+dNURm8oM8+xWY5X4mBFmIvFSe+K11ab6ZCTc9R0EQafPNu4tq7V9x73GyM2nlk
-	 V2OqX7tlSYz4Bb8mY5ORN3G/9F3sm4vBYkePuLuuwQpwiEoroZky58VCZaQe2vzLBU
-	 S6dmqI6QDj4zA==
+	b=oJhcIaBkcH+r0p8sAeDaziN2EQV/IFXW0JY83ec8IXbVKaJPImGMYY6KHZrJyoo8z
+	 Tw63jYNyVT0sMYXprt3k7j2eDMr/JVntBQtck0lzwwy/h068khx6W1er02nj+yhvNJ
+	 E2xIT00xwx7tEo43kYsdyPrgaucPawviW3Ar1jz3teNAaeYsGVJNmzAW9TrX7+flVn
+	 AcaENKhrekC5O6gGadumv7hpJ7TwYwrmUidDDT07+HWzgrlLZrF/veXDzdxYqs+fbs
+	 U6SFRYfHeMNSrMcEmV0oCcyF3cnMiNiKYbyRoWpQwvIV0Uy0WSush+HWCbPLljJnIh
+	 GQaMHdNxGCoAQ==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 96BBE17E0CE8;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 97E6617E0D43;
 	Thu, 05 Nov 2026 00:08:05 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 5882D480029; Thu, 05 Nov 2026 00:08:05 +0100 (CET)
+	id 5BD92480030; Thu, 05 Nov 2026 00:08:05 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 05 Nov 2026 00:07:57 +0100
-Subject: [PATCH v3 1/4] phy: rockchip: inno-usb2: simplify and unify PHY op
- debug messages
+Date: Thu, 05 Nov 2026 00:07:59 +0100
+Subject: [PATCH v3 3/4] phy: rockchip: inno-usb2: move suspend handling
+ into new function
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261105-phy-rockchip-inno-usb2-clock-fix-v3-1-b20608c08b94@collabora.com>
+Message-Id: <20261105-phy-rockchip-inno-usb2-clock-fix-v3-3-b20608c08b94@collabora.com>
 References: <20261105-phy-rockchip-inno-usb2-clock-fix-v3-0-b20608c08b94@collabora.com>
 In-Reply-To: <20261105-phy-rockchip-inno-usb2-clock-fix-v3-0-b20608c08b94@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -64,26 +64,26 @@ Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  Igor Paunovic <royalnet026@gmail.com>, kernel@collabora.com, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1821;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2717;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=8/fTd2v3WW8Lq1B62lCiA4Q4ly0FhC2re1oEGWAOBUQ=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrrutUbh9IY5cnv682AX8XX0t3vUjOvK8LHq
- BDCNIU5Dap7pIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq67rVAAoJENju1/PI
- O/qa0PUP/0EfAg63VdePvgZE4PteYOgoRD/CUvjR/9lFi2uMH+FhWbHtAQJH9AUBOlbFfVj26ld
- Ksb+woS0FhgMDHmHpPZP22cPU7D8WlC1gwxPwbVY83HYn33XTAHsdIIlZ9zqVeiH52Ulg0nMn0O
- 05OSMTwHVzn3PUNeZtnp0s7DcX8369dfIEfnxuRAq4EaVo6OSHx77W8+EPgeXSQqh0xoj8AI2+b
- V8hsDRpGWgAC91h6dWcSfxbMTTYpRsHUXz6WB2h4cBoRhd4KSnTIwXTFDoGpXTPyyVKdmREKbBM
- Umt1H9de0PiJRuFCMU80HxvltaLrDRToPuTmAAJmlQbTp9G6NVSMfG+76Z6OlJHPuR/0Bh/Hf/j
- 5JA6sxPwRd+9pOTI4uG1iz4hHut8dCkF1XMK3manGF0+blHl0Rzx/1BBwywO4jHSE2V5EtjPVSc
- HSBHZEnifOR4TDjs7BJmZyLrCkIaYcYa/FPCw7r5oKRL2FsPs/31/4pZNNL5rtDGI1MWdMduS1V
- Qi9RNqlmlPlL87RMrqmLB1vOu3j8loBlnAXgenrabwh++PSO8ccwDuGsVyBpRSAbVPOQtZ2zcll
- m+LUihTXaNt4iszDZ72/Ddk9vgHJhkU3lS5iRz7G7c2r4JBRq4zHPZbwR1KudUMOi32mgl39Otj
- U924whOP6r2Wd1HfbL7o0Ug==
+ bh=rX9nu49yVHon/eoArd9zChZ1LRjZoDqVhWArx28DxU4=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrrutXgLb9DhtD6zxpWrnTdXUCySn85eBGll
+ yUpbCI9C/WcdIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq67rVAAoJENju1/PI
+ O/qaducP/1HoudOHIpkYPZuBpSk+JB3yjf2J/78yalMteoo6DXmXIcU9dLX+Rp6VVatu18uOlCn
+ hY9BDwcBVTi4X1g6I78ZP7sw427gIoc/w/91We3afdZL4sg/SQzQHO9S4DBMCzniy4f3cTk/tRK
+ 1iceILrYk2WjRnUncIydPSUxmbfqpMGQS+ZPX7aDIiM/ikIG+HGZB52azAEDpbY2NrUnOxhBcR+
+ sZtFyfnUN3x6C+5OCdZvkZR1YJGyyqLaO/+gJh8mPR4m+mtCVfyyMPtrfUVBBAgm79Cu9d+qU1K
+ o1dI/FkLaoWkDRkU0AMUbPrnfV9FEEtaaY8kDZK9ZqGY5m9xlJrrOZiPfIFZ2OyIBxGrZ4Bn1Er
+ hO81XdGGrM98bB9G3W8Nryp+2l+64CaSpJLD9Vkw2hJNAytMMPm8ekM4Hp6ORqFc3UXrHMWfqX2
+ cEOvBLtdLIfxvFgtFPXET19zLlnm3yMoePdQA7SosIWlGv1Sz3IwiJbe2nHAppbGyZTGTQVDJGJ
+ 0w3z9jhFJKoq67VG9D39av/uoVGJJsGoZger7yiRnu+sNBG7iL5HpenG4gBsAZ46QyarKxfBPKb
+ yBCgolS6Zulsbsv32QUPaM65j9zyLYDCMZpECMwWBw5WSajMFTGh2vjvruhMX+PRVHdBd+3w4dJ
+ 5DxP4roLm6U/C7Ee7UpwzZA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_150808_645786_397677AF 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20261104_150808_644898_AF3A6023 
+X-CRM114-Status: GOOD (  15.09  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,55 +104,92 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add debug message for init/exit in addition to power_on/power_off and
-avoid the useless extra dereference in the existing power_on/power_off
-to make the prints consistent.
+Move handling of the PHY suspend handling into its own dedicated
+function. No functional changes intended.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 48 +++++++++++++++++----------
+ 1 file changed, 31 insertions(+), 17 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index e47b89015586..0b61f152eb3f 100644
+index 51afbcc40c4e..2919c2e11968 100644
 --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
 +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -508,6 +508,8 @@ static int rockchip_usb2phy_init(struct phy *phy)
- 	struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
- 	int ret = 0;
+@@ -332,6 +332,35 @@ rockchip_usb2phy_clk480m_clkout_ctl(struct clk_hw *hw, struct regmap **base,
+ 	}
+ }
  
-+	dev_dbg(&phy->dev, "phy port init\n");
++static int rockchip_usb2phy_set_suspend(struct rockchip_usb2phy *rphy,
++					struct rockchip_usb2phy_port *rport,
++					bool do_suspend)
++{
++	int ret;
 +
- 	mutex_lock(&rport->mutex);
++	ret = property_enable(rphy->grf, &rport->port_cfg->phy_sus, do_suspend);
++	if (ret)
++		return ret;
++
++	if (!do_suspend) {
++		/*
++		 * For rk3588, it needs to reset phy when exit from suspend
++		 * mode with common_on_n 1'b1(aka REFCLK_LOGIC, Bias, and PLL
++		 * blocks are powered down) for lower power consumption. If you
++		 * don't want to reset phy, please keep the common_on_n 1'b0 to
++		 * set these blocks remain powered.
++		 */
++		ret = rockchip_usb2phy_reset(rphy);
++		if (ret)
++			return ret;
++
++		/* waiting for the utmi_clk to become stable */
++		usleep_range(1500, 2000);
++	}
++
++	return 0;
++}
++
+ static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
+ {
+ 	const struct usb2phy_reg *clkout_ctl;
+@@ -603,27 +632,12 @@ static int rockchip_usb2phy_power_on(struct phy *phy)
+ 	if (ret)
+ 		return ret;
  
- 	if (rport->port_id == USB2PHY_PORT_OTG) {
-@@ -592,7 +594,7 @@ static int rockchip_usb2phy_power_on(struct phy *phy)
- 	struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
- 	int ret;
+-	ret = property_enable(rphy->grf, &rport->port_cfg->phy_sus, false);
++	ret = rockchip_usb2phy_set_suspend(rphy, rport, false);
+ 	if (ret) {
+ 		clk_disable_unprepare(rphy->clk480m);
+ 		return ret;
+ 	}
  
--	dev_dbg(&rport->phy->dev, "port power on\n");
-+	dev_dbg(&phy->dev, "port power on\n");
- 
- 	if (!rport->suspended)
- 		return 0;
-@@ -632,7 +634,7 @@ static int rockchip_usb2phy_power_off(struct phy *phy)
- 	struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
- 	int ret;
- 
--	dev_dbg(&rport->phy->dev, "port power off\n");
-+	dev_dbg(&phy->dev, "port power off\n");
- 
+-	/*
+-	 * For rk3588, it needs to reset phy when exit from
+-	 * suspend mode with common_on_n 1'b1(aka REFCLK_LOGIC,
+-	 * Bias, and PLL blocks are powered down) for lower
+-	 * power consumption. If you don't want to reset phy,
+-	 * please keep the common_on_n 1'b0 to set these blocks
+-	 * remain powered.
+-	 */
+-	ret = rockchip_usb2phy_reset(rphy);
+-	if (ret)
+-		return ret;
+-
+-	/* waiting for the utmi_clk to become stable */
+-	usleep_range(1500, 2000);
+-
+ 	rport->suspended = false;
+ 	return 0;
+ }
+@@ -639,7 +653,7 @@ static int rockchip_usb2phy_power_off(struct phy *phy)
  	if (rport->suspended)
  		return 0;
-@@ -651,6 +653,8 @@ static int rockchip_usb2phy_exit(struct phy *phy)
- {
- 	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
  
-+	dev_dbg(&phy->dev, "phy port exit\n");
-+
- 	if (rport->port_id == USB2PHY_PORT_OTG &&
- 	    rport->mode != USB_DR_MODE_HOST &&
- 	    rport->mode != USB_DR_MODE_UNKNOWN) {
+-	ret = property_enable(rphy->grf, &rport->port_cfg->phy_sus, true);
++	ret = rockchip_usb2phy_set_suspend(rphy, rport, true);
+ 	if (ret)
+ 		return ret;
+ 
 
 -- 
 2.53.0
