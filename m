@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D687A606D81E
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 20:13:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6A6B2606B2F3
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 20:38:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1aQAQiEA;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=W4XoIwFe
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4vkPMDun;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Bg9GoV+Z
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,44 +14,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=iGoyoA0Zos2ky1FUWKVPb82TFLwiS/uGlEHlB4cP/T0=; b=1aQAQiEABalUaJ+bgdo//wQugo
-	mm9oui9yoGHg0O0ZBPY/GdTlVYRBm9ypThUhdDSM/NfzNIuiJebo/k3dYR+YkJiV/Bfk3IDRMcXsh
-	uy0wwEiYsvVST1lK6oIgV8zxYV7MC8B3rY/e/7Gm9Xqm2e1PVU8GzAA+hdwaQ0gjiSef3ay2zYJBJ
-	y+PdIuolNNKbEzDgBe06USh//tcf6Xllh96mZ1VcGXPoXG/0tpLEFy6KJDOmU+yo9+XSBAi8bKw52
-	wnYqCaq3UySJPxRDkhWth3XDj73+XZyw9KXlvvRm+YADrNI/glp7+uV8Myk8huU2mF6SO86PM6wq2
-	n8YcDPtQ==;
+	bh=qCcrR3WALtna1+d0TRgv7muYD3aCL0P07TYBj0NThYE=; b=4vkPMDunVTtI5bE1AL55E6MyJk
+	ym+I+PveeL0PXQ69uTPy4MgTfpS2AW6LO0HjLGdz91l/RBVl++rhlHIhlDwtxxD5IGXVQNGFhytAt
+	clSKTDriLqOZ1vbFh1AxA6dO0D7baSiDEduO/3WSq7iWhq/SAPey/Ga+F4Pkr/S2Noy4pWi7eSbJA
+	4tHtXBnwZPqNZqMQTWRzpurW2kt8jaeZ7r5/jB8KL28dobweaphfINaLsic7vY1+G1k0DZ8UsV+KU
+	iZw3ieL2LdI+Y9SU3K8T3YoELLnbl1DWCIyJ0tacaUsS+GdcBGZJf5vo6z9tdndtOUtZXh/4Jo516
+	VkfeSTNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOhMK-00000006rvg-3MxO;
-	Wed, 04 Nov 2026 20:13:24 +0000
+	id 1xOhkP-00000006ur9-3htX;
+	Wed, 04 Nov 2026 20:38:17 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOhMH-00000006ruM-2akP;
-	Wed, 04 Nov 2026 20:13:22 +0000
+	id 1xOhkM-00000006uoQ-0rJz;
+	Wed, 04 Nov 2026 20:38:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793823198;
-	bh=VkmYakpqpnhkFxx0QURjLD3tnwFfJeC8t9xnwmwTycw=;
+	s=mail; t=1793824691;
+	bh=ZyQWW1wCUyxgX5lh8xj5l7gQjS6rGe83Ig2v6D8kRco=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=W4XoIwFepNaamhG5xYF0/u5N0OJgK0G+K/mAqwutqLaqz31z66kfhH5OujEswMwHh
-	 ynluuDIORHxCS86AXtgBwaoGfEoggXDdSwCt8G8Tr7lfUYhHgAnzEuBu31HCU5fkYe
-	 kW5ci2WohN3UZc4c2y2+ZRrKj0aynczuqEk0vkQ7Ugpbi0rWVVgt4xvy7zS9RwO9RX
-	 Aj0eQi5qzyZMvkyeX85Kdfq1QIEf/ISVrQl3fScd9/Uru7pighLN8AFdDqBqTgYdQY
-	 FydSS+GSvof9VqvZ6LHhGiyTPMXxpK6ABv2+87tWJek9PMzDOrXOKELMrm5aRBihSM
-	 GtTIquTMYWyew==
+	b=Bg9GoV+ZPTgROm1ZJusnJY1kYsZvbhM+sKMBFfy3xgpe4rP+DGeHre8m1lwwQAC0i
+	 WWnjnjILknGW5VX4vv8B4DXAeG5DsbqPgHWBYEz9p0ffJmThorskM1KObk16V8z16t
+	 utNEtiEzwKBu6NgCPhWN+5NQbbRk8cVQ0bjYK1WmQAC3GyNmbx+Lum+WEXBJl2tXNN
+	 WOYjWTpf827xMUS8KxuHHsvVNJ9WWtK13OTWw1Ajg5KkbGa6c2G+vkpt64h0/rJ/Vy
+	 PwrMheYZy2Jhat0yZQYrpwQcjfO6dtf0+U6sCMGE00RuMIU46p3hVaPZ5I+nVbrp1X
+	 ccio0OVYj/FjA==
 Received: from [100.64.0.241] (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 169C017E0564;
-	Wed, 04 Nov 2026 21:13:17 +0100 (CET)
-Message-ID: <cd6321bf-9737-4949-9906-c0206e54bab6@collabora.com>
-Date: Wed, 4 Nov 2026 22:13:16 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0687B17E066C;
+	Wed, 04 Nov 2026 21:38:09 +0100 (CET)
+Message-ID: <c823ced3-693a-4620-8a88-81cca7062c01@collabora.com>
+Date: Wed, 4 Nov 2026 22:38:09 +0200
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 04/15] drm/rockchip: vop2: Send pending event when
- atomic_enable() fails
+Subject: Re: [PATCH v5 08/15] drm/rockchip: vop2: Avoid DCLK source switch for
+ 10-bit YUV422 output
 To: Daniel Stone <daniel@fooishbar.org>
 Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
  <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
@@ -70,16 +70,16 @@ Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
  Andy Yan <andyshrk@163.com>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Sashiko <sashiko-bot@kernel.org>, Igor Paunovic <royalnet026@gmail.com>
+ Igor Paunovic <royalnet026@gmail.com>
 References: <20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com>
- <20261014-dw-hdmi-qp-yuv-v5-4-6fab0fe43a9b@collabora.com>
- <CAPj87rN1rzjDMPvVJytwmvHGipCCuYOyX3abTRqYp4Vq5PyrYQ@mail.gmail.com>
+ <20261014-dw-hdmi-qp-yuv-v5-8-6fab0fe43a9b@collabora.com>
+ <CAPj87rPsh_cVQWtGEisDrXWiT+Zj6D6n5wXpmbuoFvMKtOi7TA@mail.gmail.com>
 Content-Language: en-US
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <CAPj87rN1rzjDMPvVJytwmvHGipCCuYOyX3abTRqYp4Vq5PyrYQ@mail.gmail.com>
+In-Reply-To: <CAPj87rPsh_cVQWtGEisDrXWiT+Zj6D6n5wXpmbuoFvMKtOi7TA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_121321_838334_92811DB8 
-X-CRM114-Status: GOOD (  22.23  )
+X-CRM114-CacheID: sfid-20261104_123814_412846_DF6976E9 
+X-CRM114-Status: GOOD (  15.74  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,49 +102,49 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 Hi Daniel,
 
-Thanks for reviewing the series!
-
-On 10/30/26 1:21 PM, Daniel Stone wrote:
-> Hi Cristian,
+On 10/30/26 1:42 PM, Daniel Stone wrote:
+> Hi,
 > 
 > On Tue, 13 Oct 2026 at 23:51, Cristian Ciocaltea
 > <cristian.ciocaltea@collabora.com> wrote:
->> vop2_crtc_atomic_flush() stashes the CRTC completion event in vp->event
->> and relies on the frame start interrupt (VP_INT_FS_FIELD) to deliver it
->> later via drm_crtc_send_vblank_event().  Since atomic_enable() runs
->> before atomic_flush(), bailing on an error path makes it skip
->> drm_crtc_vblank_on() and leave the video port disabled.  atomic_flush()
->> still traps the event in vp->event, but since the port never scans out,
->> the frame start interrupt does not fire and the event is not delivered.
->> Userspace waiting for the flip completion then blocks indefinitely.
->>
->> Note the event cannot be flushed from atomic_disable(), as userspace
->> waits for the completion before committing the next state, so the
->> disable does not arrive and draining it there would deadlock.
->>
->> Use the newly added vp->enabled flag to detect this in atomic_flush()
->> and send the event immediately when the port did not come up, rather
->> than deferring it to an interrupt that will never occur.  This also
->> avoids the spurious drm_crtc_vblank_get() WARN previously hit on the
->> failed enable path, where the vblank is not on.
+>>         if (vop2->pll_hdmiphy0 || vop2->pll_hdmiphy1) {
+>> -               unsigned int bpc = vcstate->output_bpc ?: 8;
+>> +               /*
+>> +                * YUV422 always transmits two 12-bit components per clock
+>> +                * cycle, regardless of the color depth, which from a rate
+>> +                * perspective is equivalent to three 8-bit RGB components.
+>> +                * Force 8 bpc here so the bandwidth check reflects the actual
+>> +                * TMDS rate and avoids an unnecessary DCLK source switch.
+>> +                */
+>> +               unsigned int bpc = vcstate->output_mode == ROCKCHIP_OUT_MODE_YUV422 ?
+>> +                                       8 : (vcstate->output_bpc ?: 8);
 > 
-> I really don't know how I feel about this one.
-> 
-> atomic_enable() is not supposed to fail at all, hence returning void.
-> (Obviously, there are scenarios where it will fail, which Sashiko
-> keeps 'helpfully' pointing out ...)
-> 
-> I don't like how this just papers over the issue. It turns an eventual
-> WARN on vblank timeout - which surfaces the issue - into a silent
-> false-success. Userspace just sees commit completion requests arrive
-> as soon as it's posted the commit, so it keeps on going on and
-> everyone's happy. Having the flips time out is a messy splat of WARNs,
-> but at least that messy splat points at the exact issues, rather than
-> the screen just going black and userspace blithely trying to continue
-> on.
+> The nested ternary is pretty violent; please write it out explicitly.
+> Either way, the equivalent clock adjustment for YUV420 is handled in
+> the setup_intf_mux() handler, so would it be better for YUV422 to also
+> live there, rather than mashed in with bpc here?
 
-Ack. Let's drop the patch.
+Moving YUV422 into setup_intf_mux() wouldn't work, because that function returns
+the real DCLK rate.  The YUV420 halving there is justified, but for YUV422 the
+DCLK simply equals the pixel clock.
 
+What's actually not great here is the bandwidth check, as it tries to rebuild
+the TMDS rate from DCLK.
+
+Apart from the YUV422 special handling, there's another complication: when vop2
+processes multiple pixels per clock cycle, DCLK is only a fraction of the pixel
+clock, e.g. RK3576 halves it for pixel clocks above 600 MHz.  This will
+interfere with upcoming HDMI 2.1 support - e.g. FRL mode such as 4K@120Hz 8-bit
+RGB, with a pixel clock of 1188 MHz, ends up with a 594 MHz DCLK, which slips
+under the limit and wrongly selects the HDMI PHY PLL as DCLK source.
+
+I've reworked the source switch logic to rely on the actual TMDS character rate
+computed by the HDMI connector state helpers, which already accounts for the
+output color format and depth.  It gives the same result as today for RGB and
+YUV420, corrects the behaviour for YUV422 and upcoming FRL, and removes the bpc
+handling entirely.
+
+Thanks,
 Cristian
 
 _______________________________________________
