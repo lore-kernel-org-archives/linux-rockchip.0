@@ -2,11 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5EC77606A61A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 15:58:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E5102606A610
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 15:58:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Lfxsi0Pc;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=jL3Toeob
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kVnmmlAL;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=Ewum7m4W;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=B8xpVXrr
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,41 +15,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=V57sQMbOS9M5m/hoVskbWTe0nYbLrL8rttopgJNZ4rM=; b=Lfxsi0PcCpeP9Zx9/VwFHak73Q
-	AchJ+P6GUsUA8rBWNMKpn1Ddq3Rw+Nx7i4g8l/gJwgPqIBRDqriUJ9QYFoSCKg3K4nS0cc6WmgCXU
-	utf/8wmcJ+ybtoPpt5PxLEmrKEyxCa2s2Rhu7uZQoLDEGCJ3wd26KAlIk9Iy5KI3EricXVbPK0hPr
-	tG4bWpb9lY76DRtS05EBquFoxY9cWlqRILWGeh64x6MWMuiW2LcdxkAcLvfQV8+hWv8I9Bk+wD+NB
-	566ZdCZ/ZEFNq+zsKGKa910gzBLfvYeKKagK3D4rkqzhyEP/jakKODsH/6BPTOVSlGJjjUkkMRdhh
-	xMLBeaWg==;
+	bh=CMKyKrBNAoWpbXNerPxRHrna1Py6O6ghT+kjZeh2L2k=; b=kVnmmlALtU/NAqxs2tkX9awISO
+	/JUHIvs03EHAxziqDak1ZRx7Ir4hJnqhYRD9Q9XeGxDIdBR5k6Hjv3fIyoOuJQX8oJOMCNTcppOP/
+	ZS4dGVkzajRvPKqsGM2MLMh4c4aRCyD2l3183U/5CKbTuElaindVdmFthm0R+8XP2cmMZanjjhFLz
+	J8KvXhq/bi/hmHYU70IWOT+h6Od+ZfzSmsVpF6J9U8MumYAlXsK6miCaWA8T5DmEVk8BcNIfz+C6H
+	6J5Ruw0qipY4CvMEAiMeaVVPzDXnVCiSOUxE+eQYfwuIjbF9+l8O2WJqfmRyiNgXTbgxMW9NVcOZ+
+	ZIHwOlaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzrN-00000009Vao-09kt;
-	Thu, 05 Nov 2026 15:58:41 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1xOzrP-00000009VeZ-0sf1;
+	Thu, 05 Nov 2026 15:58:43 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzoV-00000009UEg-40H9;
-	Thu, 05 Nov 2026 15:55:59 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1793894073; cv=none; 
+	id 1xOzor-00000009UNY-27w2;
+	Thu, 05 Nov 2026 15:56:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=tVNwYKMhk2/WnrIZ19upJetFcNs7CUL1Pr30OK/rV9s=; b=Ewum7m4WRPpIi5Zziru/+5jFlN
+	Q8ygjumiSctFy/6x+ZRTK3IKR/41hl0Dyf8YTfvQC410lowyJ5cZRx4sf19sTZJJPkMbs0eqqa5PX
+	VVX8pU7rLw4x1qwKwGqJYbBXGrPXegT/VKbcq/nI+IkgdS6gcKEWYjnA4VPq+g2wSvxGAHNZM5s2D
+	uZW0YyQMgbev/a+BYoLJgPF7ya43s5SNs4+9j2VTTtZGIolMwWnU5qFb9/COodVx3fPw5G6qOZXNM
+	GlwIAeGe085wLAcF713e/gBkB3SFgtu0vBnOFAzgXtsxxAHq7AcX49hxK2x9+Rtkbpqn210KZIGB8
+	f/NQzJAQ==;
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xOzon-00000003Cns-2jVr;
+	Thu, 05 Nov 2026 15:56:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1793894117; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=UBHvNICVd78MZ6AQL7EaAQSAk4/QV+rrP+NDDw5BFBZGjugMyhHF8bIAVEjbxaRJa8MypfDeZ+9Qt6+Ea20kmnpOHLTyRVtEziuM3o/AmrcRpQ1vkAL1dEjinsaM99Mm+3i5GvItASR+Wryf3AKMrP+GmZAU4ilCRvmMa1Dmo0Y=
+	b=CR2pennS5hSbWsFNmP77+NJWpOZsPJC0Uaj/YPAW2kmnuMLpFxNpTTH6KmvOyxKYUGxAkMEdf8zScqXRVRhdrnfaoBQuJL2NQ7TsWZO874UDtW+Ro2YqBs7tz2rsJaYL+OuYZ4syfJeyy0ReXS7oIrMt/JQYFr/rLs5NnJ3kjk4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1793894073; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ALE444eKJZ+NX+Ip1B2o36NSUHXVU+Yd9yBPLWJk7WU=; 
-	b=m8LtUlS68e9J4UbfJaDI8uofn+9lj5qCfKVnFbqvQuIO9X6+8b1/S+BvK1ErG9WOwdqJGhL/HTTMk0YA899SalmTBZcGDBSzVDFDKbZEKK+Zhm/DpAaQ6p9bF9UHgDKEKz+G7Jhj2SkXF0pLoi9JvJrzcJUMtNtQTT1g23ITeBw=
+	t=1793894117; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=tVNwYKMhk2/WnrIZ19upJetFcNs7CUL1Pr30OK/rV9s=; 
+	b=AJg3rcecPL1vPnfYJ0PawUJipTuMxvcOJLJH7RoshWzWPz+mLoREmsbs43PAWxVKj1IHiVwcj3pgH6RCv/P9EFXKeKp04LHbpa3atUkgPDSZH1XyImOIZo71CVOUQpx9iyPwcD7TbXJoEsI7gIAC3tgloDNTX6gfU24cZnih2eE=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=jL3ToeobaRmx6PiWKWksYL9GAG8+dc/g18VBNaDTzeHB3fKNgI03n+V6dTy+A/TrUGM87yI+kfK4msGryNel9z6M03imJmWGdGi8NW6lBJ+qDXqmUfIV6i8sI+19tfrekWI6oiD8ZiCUBAkWp5MGwRZAvU0FXcGoQisQluRH47Y=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=ALE444eKJZ+NX+Ip1B2o36NSUHXVU+Yd9yBPLWJk7WU=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1793894072590379.33672551637096;
-	Thu, 5 Nov 2026 07:54:32 -0800 (PST)
+DKIM-Signature: a=rsa-sha256; b=B8xpVXrrrydEK2W4qItNLZsmWHehtPHQN+tJwM9U4qG2heDbFs7i7woYk2Yet8XdDGgIoM7KWsGZUxBdl8sg9rk9Khy8v87trvQ8+8fDQMZsMrGITRsnAItDXAeD4jHvIryGuOKTE95+/Imq54Hd77b0G0vlcSklkUqn7KY3bzM=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=tVNwYKMhk2/WnrIZ19upJetFcNs7CUL1Pr30OK/rV9s=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1793894116497649.6985151835922;
+	Thu, 5 Nov 2026 07:55:16 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 05 Nov 2026 16:52:10 +0100
-Subject: [PATCH v2 19/27] drm/connector: hdmi: Add QMS to VTEM EMP
- generation
+Date: Thu, 05 Nov 2026 16:52:17 +0100
+Subject: [PATCH v2 26/27] drm/debugfs: Expose HDMI VRR in vrr_range debugfs
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261105-vrr-limiter-uapi-v2-19-55f4215be2c2@collabora.com>
+Message-Id: <20261105-vrr-limiter-uapi-v2-26-55f4215be2c2@collabora.com>
 References: <20261105-vrr-limiter-uapi-v2-0-55f4215be2c2@collabora.com>
 In-Reply-To: <20261105-vrr-limiter-uapi-v2-0-55f4215be2c2@collabora.com>
 To: Xaver Hugl <xaver.hugl@gmail.com>, Vidith Madhu <vmadhu@nvidia.com>, 
@@ -74,9 +88,9 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_075544_247912_71FEA843 
-X-CRM114-Status: GOOD (  10.11  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261105_155601_862330_616C30CC 
+X-CRM114-Status: GOOD (  12.86  )
+X-Spam-Score: -0.2 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,39 +110,59 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-If userspace indicates that VRR mode "Media" is desired and the
-connector supports QMS, set the QMS related fields in the VTEM EMP
-struct based on the connector state.
+IGT requires the vrr_range debugfs file for running the tests, for
+better or worse.
+
+Since Commit 014da1db5e64 ("drm/edid: parse HDMI 2.1 gaming (ALLM/VRR)
+capabilities from HF-VSDB") parses the HDMI VRR minimum and maximum
+numbers into separate members and not the display_info.monitor_range
+member, this debugfs entry needs to use those members when the display
+is HDMI and does HDMI VRR.
+
+Add this special casing, and also protect accesses to connector->status
+and connector->display_info interruptibly with the mode_config mutex.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/display/drm_hdmi_state_helper.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/drm_debugfs.c | 24 +++++++++++++++++++-----
+ 1 file changed, 19 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-index 846f7a72fddc..407ad28c649f 100644
---- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-+++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -890,11 +890,18 @@ static int hdmi_generate_emp_infoframe_vtem(const struct drm_connector *connecto
- 		break;
- 	case VRR_DISPLAY_MODE_OFF:
- 		break;
-+	case VRR_DISPLAY_MODE_MEDIA:
-+		if (!connector->hdmi.qms_supported)
-+			return -EOPNOTSUPP;
-+		vtem->qms_en = true;
-+		vtem->next_tfr = conn_state->hdmi.qms_tfr_byte;
-+		vtem->m_const = !vrr->dynamic;
-+		break;
- 	default:
- 		return -EINVAL;
- 	}
+diff --git a/drivers/gpu/drm/drm_debugfs.c b/drivers/gpu/drm/drm_debugfs.c
+index a72f9723d3a9..476f44642ac3 100644
+--- a/drivers/gpu/drm/drm_debugfs.c
++++ b/drivers/gpu/drm/drm_debugfs.c
+@@ -586,12 +586,26 @@ static ssize_t edid_write(struct file *file, const char __user *ubuf,
+ static int vrr_range_show(struct seq_file *m, void *data)
+ {
+ 	struct drm_connector *connector = m->private;
++	u16 min_vfreq, max_vfreq;
++
++	scoped_cond_guard(mutex_intr, return -EINTR,
++			  &connector->dev->mode_config.mutex) {
++		struct drm_display_info *info = &connector->display_info;
++
++		if (connector->status != connector_status_connected)
++			return -ENODEV;
++
++		if (info->is_hdmi && info->hdmi.vrr_cap.supported) {
++			min_vfreq = info->hdmi.vrr_cap.vrr_min;
++			max_vfreq = info->hdmi.vrr_cap.vrr_max;
++		} else {
++			min_vfreq = info->monitor_range.min_vfreq;
++			max_vfreq = info->monitor_range.max_vfreq;
++		}
++	}
  
--	if (vtem->game_vrr_en && !avi_vic) {
-+	if ((vtem->game_vrr_en || vtem->qms_en) && !avi_vic) {
- 		vtem->base_refresh_rate = drm_mode_vrefresh(&crtc_state->mode);
- 		vfront = crtc_state->adjusted_mode.crtc_vsync_start -
- 			 crtc_state->adjusted_mode.crtc_vdisplay;
+-	if (connector->status != connector_status_connected)
+-		return -ENODEV;
+-
+-	seq_printf(m, "Min: %u\n", connector->display_info.monitor_range.min_vfreq);
+-	seq_printf(m, "Max: %u\n", connector->display_info.monitor_range.max_vfreq);
++	seq_printf(m, "Min: %u\n", min_vfreq);
++	seq_printf(m, "Max: %u\n", max_vfreq);
+ 
+ 	return 0;
+ }
 
 -- 
 2.56.0
