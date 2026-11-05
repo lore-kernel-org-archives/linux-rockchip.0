@@ -2,75 +2,80 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2E292606A326
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 15:42:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BD843606A605
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 15:53:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4ktQC1N+;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=MX4JOnf+
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IcLeskkW;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=Koigd53D
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=XUYMu+UP5ovuKKcBObaDoK5hJV4L9ZOr++jGyn6Vqyk=; b=4ktQC1N+1o6G7oWffj9R9UN1za
-	iNI5g6kg7bJOZo/gS2TpcnEMbg8yn4Y3uCjeRl0w+XrLV1lemovK9Ea5t+Rud74yP5S2bzXPOcMt7
-	uVmckwaLDZ/vFo3sHlTAOacmNPy5fiK6K5bm2Lq0mxjPkrzJ4Md1fVyy+VUoSfa3aoyt/py59d4/j
-	41QYF8t//lqVbzRuiRlSf5hWfDiTBIHWqhjf2Rk759ynzQYWdM2uFgvw18JkMtI4v1wCJ2qYECimj
-	zVqSXopShiSAjfe0dD5zlxeOQG5D5d5VrfFJZIDqkTkbGT6Is5D2OCIU/FiKL+9gW7/YQ2Dfc0qB8
-	jNszso8A==;
+	bh=ziD3UHO6MEA6m4UEfUzX2whlchwS/3NnhUoyoeVPewY=; b=IcLeskkWaJOb23ziTxzqxhkiDv
+	Ihgg248ZRMs+gakj+xz/do14IWDGcFlKsKUfzYwo3HkMuHz3g48IqyEMPIZ8JyDRwAAGMjoutUstM
+	OHbqPDCr7z0O/CdwPTry5lwjzu4IlgTvb6BY33o1dV3JRF8bM79Wg3ifAKO7+hV48/FI3jGKV0Ej/
+	7K4j7CDilt4auTdP+93d4iQH9ULYG+lz8sEBxWjEB37kJAD27Z/H0haMrJIPFqFdVvk04BtLOAK5j
+	wRJVP6eWdshDV4k5C8xCu03Gz7Pxc/RjBUu7S8x7XaMsVZUNlX626K9dkdD/PjalgzTYf5jMRQopP
+	s9Dc0kng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzba-00000009Qkp-0VBV;
-	Thu, 05 Nov 2026 15:42:22 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xOzmd-00000009T0V-219u;
+	Thu, 05 Nov 2026 15:53:47 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzbX-00000009Qjl-3nns;
-	Thu, 05 Nov 2026 15:42:20 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2441B601DE;
-	Thu,  5 Nov 2026 15:42:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3CC601F000C1;
-	Thu,  5 Nov 2026 15:42:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793893338;
-	bh=1XoxhZQuWCpWR6i2ysnsmoZiQuV1dhOeh3iEX2MAi1I=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=MX4JOnf+Hwpy/aRs6nuA4WRva6s4PkvH4OvbOFLujC4MtleCBbI+uW4QEP/D750+p
-	 hK2cc3eNZSjTx/+8jXUvjNh1D+fuOOSbryjnYemuR/+l+79yBy15SUffVorif+vBmI
-	 wnrruQyJva4GS2eMnlWo5lReuGjGGmVVJk/4C82mqkmw/+dg0TZYB6ZNmPGrYbLEi9
-	 4CO3lHVaDaqgNgz+hao26qu+Qao8PaMzXCSpxDiASw1eLIm9gIaEt3KQOzWjZ7R6oq
-	 hL+mO1Ni88TLGQErQPxpt0uP1QeZIOP1zuw3Pdao5AUSsFrOSPIDs3Bm6lXTgoW+sd
-	 tw2ICX7E2Dojg==
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
- Diederik de Haas <diederik@cknow-tech.com>
-Cc: Rob Herring <robh@kernel.org>, linux-pci@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20261021101533.609118-1-diederik@cknow-tech.com>
-References: <20261021101533.609118-1-diederik@cknow-tech.com>
-Subject: Re: [PATCH] PCI: dw-rockchip: Remove redundant dev_err()
-Message-Id: <179389332686.20463.1542966785422218800.b4-ty@b4>
-Date: Thu, 05 Nov 2026 21:12:06 +0530
+	id 1xOzmb-00000009SyN-0TGd;
+	Thu, 05 Nov 2026 15:53:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1793893972; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=kaeCJsxGjwXK1eBIKyUfvVH3syby8WhVbqkdJIyrSD02U/hUvWlbHOP0Q5/8XUGc2aeu+9fJXzd77wBOl2rzPtGiLgANZEZEQd+dZVsiVBX+/hjJQj/8oMxuVy2hRxxRiWSyGTJgngaiZq7nKJZboRu/RvJz7EzP8pBbP9z44Ys=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1793893972; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=aFyxDfy6nq4JsCbeO+IwynELVljNeTVnd8XRS/Ay8pI=; 
+	b=PMhYumL3pBr/gB6JiB+zqQLdUP7RloJaSOqGHIepAzjxaj9txRG4xlrOuKKLvCpYADyYtF68xQKt04dPRPUEFoBrE5O7DwS0oY3k812kSXie973KMRIc921VDte1t6uN8FAoZPotLOtNi1Ep5pPdGWKOWV98ZWynJBvIlAPIvDc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=Koigd53DirSmCJztb08D1dYHSEQ3uhkYdqeFSNhR1c4zloIqxktVwSgj7oV9k/1/+vidcKUiXUUTEa4kjtsyvtRnmGFOUAVnGmDZNt1+5vYE5y7tVG7jNoNL7ogg10Rz/FMc3VQVP0NUsrZb1XEV7w6HBYix5xK10es/Z7FbJLM=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=aFyxDfy6nq4JsCbeO+IwynELVljNeTVnd8XRS/Ay8pI=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1793893970956976.0401364709152;
+	Thu, 5 Nov 2026 07:52:50 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Thu, 05 Nov 2026 16:51:54 +0100
+Subject: [PATCH v2 03/27] video/hdmi: Add VTEM EMP packing
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=315;
- i=manivannan.sadhasivam@oss.qualcomm.com; h=from:subject:message-id;
- bh=yDeRkgBLXRtw1UNPYCqbWGAbbL0ZJAQvlVqWUU6oUNw=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBq7KPZMKvYH9neUuYEjJ6Ov4o45k/neydHQumCV
- gVgO8yyEgeJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCauyj2QAKCRBVnxHm/pHO
- 9aN1B/452DI7Q5hk9krngeRYwL5+6KqtGh7eqd66KN7MAvp25vFwoXR/eDujdU4RvXYnaUjcvto
- 0EVJYXUEVO+FgzWdft+YTXpCGvGiGEtwo7uY9XJ2zucTHi29KFwgtJ5k9vjDF2WmzOBxgAtrYH5
- 22c/1uvuVQMl6rojgauP6WVCZTUU9S+KVbKanr6N93ncBS7RzAktJdOuuIabj6RabR96q3CG6ih
- JpeJ5FVzaaNS4gxYZYSMIXC1aB3HrzsRPoY9m6MswkuNcLRXoAugbLz1MBfPaJaCCawa6+RmLDR
- b4tyXfmLMrxkLTq3QqeUQJnkWXf6fsLA/gxk9EnLfL2tt12W
-X-Developer-Key: i=manivannan.sadhasivam@oss.qualcomm.com; a=openpgp;
- fpr=C668AEC3C3188E4C611465E7488550E901166008
+Message-Id: <20261105-vrr-limiter-uapi-v2-3-55f4215be2c2@collabora.com>
+References: <20261105-vrr-limiter-uapi-v2-0-55f4215be2c2@collabora.com>
+In-Reply-To: <20261105-vrr-limiter-uapi-v2-0-55f4215be2c2@collabora.com>
+To: Xaver Hugl <xaver.hugl@gmail.com>, Vidith Madhu <vmadhu@nvidia.com>, 
+ "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>, 
+ Leo Li <sunpeng.li@amd.com>, Harry Wentland <harry.wentland@amd.com>, 
+ Fangzhi Zuo <Jerry.Zuo@amd.com>, Daniel Stone <daniels@collabora.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Helge Deller <deller@gmx.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andyshrk@163.com>, 
+ =?utf-8?q?Michel_D=C3=A4nzer?= <michel.daenzer@mailbox.org>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-fbdev@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
+ Derek Foreman <derek.foreman@collabora.com>, 
+ wayland-devel@lists.freedesktop.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+X-Mailer: b4 0.15.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261105_075345_284971_484AF45A 
+X-CRM114-Status: GOOD (  18.49  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,22 +85,227 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Ck9uIFdlZCwgMjEgT2N0IDIwMjYgMTI6MTQ6NTcgKzAyMDAsIERpZWRlcmlrIGRlIEhhYXMgd3Jv
-dGU6Cj4gUENJOiBkdy1yb2NrY2hpcDogUmVtb3ZlIHJlZHVuZGFudCBkZXZfZXJyKCkKCkFwcGxp
-ZWQsIHRoYW5rcyEKClsxLzFdIFBDSTogZHctcm9ja2NoaXA6IFJlbW92ZSByZWR1bmRhbnQgZGV2
-X2VycigpCiAgICAgIGNvbW1pdDogMGRhMDc4YjRiZGM1NmJmZDQ4YmI1MmZhNjQ4MDk5NDJmNzcx
-YmIxMgoKQmVzdCByZWdhcmRzLAotLSAK4K6u4K6j4K6/4K614K6j4K+N4K6j4K6p4K+NIOCumuCu
-pOCuvuCumuCuv+CuteCuruCvjQoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Derek Foreman <derek.foreman@collabora.com>
+
+VTEM EMPs are a type of infoframe that is required for Variable Refresh
+Rate. Add code to pack them.
+
+Signed-off-by: Derek Foreman <derek.foreman@collabora.com>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+ drivers/video/hdmi.c | 97 +++++++++++++++++++++++++++++++++++++++++++++++++++-
+ include/linux/hdmi.h | 19 ++++++++++
+ 2 files changed, 115 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
+index 45b42f14a750..ed9abc7ad228 100644
+--- a/drivers/video/hdmi.c
++++ b/drivers/video/hdmi.c
+@@ -983,6 +983,10 @@ hdmi_infoframe_pack(union hdmi_infoframe *frame,
+ 		length = hdmi_vendor_any_infoframe_pack(&frame->vendor,
+ 							buffer, size);
+ 		break;
++	case HDMI_INFOFRAME_TYPE_EMP:
++		length = hdmi_emp_infoframe_vtem_pack(&frame->vtem,
++						      buffer, size);
++		break;
+ 	default:
+ 		WARN(1, "Bad infoframe type %d\n", frame->any.type);
+ 		length = -EINVAL;
+@@ -994,9 +998,11 @@ EXPORT_SYMBOL(hdmi_infoframe_pack);
+ 
+ static const char *hdmi_infoframe_type_get_name(enum hdmi_infoframe_type type)
+ {
+-	if (type < 0x80 || type > 0x9f)
++	if (type < 0x7F || type > 0x9f)
+ 		return "Invalid";
+ 	switch (type) {
++	case HDMI_INFOFRAME_TYPE_EMP:
++		return "EMP";
+ 	case HDMI_INFOFRAME_TYPE_VENDOR:
+ 		return "Vendor";
+ 	case HDMI_INFOFRAME_TYPE_AVI:
+@@ -1516,6 +1522,29 @@ hdmi_vendor_any_infoframe_log(const char *level,
+ 	}
+ }
+ 
++static void
++hdmi_emp_infoframe_vtem_log(const char *level,
++			    struct device *dev,
++			    const struct hdmi_emp_infoframe_vtem *frame)
++{
++	hdmi_infoframe_log_header(level, dev,
++				  (const struct hdmi_any_infoframe *)frame);
++
++	hdmi_log("    game vrr enabled: %u\n", frame->game_vrr_en);
++	hdmi_log("    fva factor minus 1: %u\n", frame->fva_factor_m1);
++	hdmi_log("    m_const: %u\n", frame->m_const);
++	hdmi_log("    base vertical front porch: %u\n", frame->base_vfront);
++	hdmi_log("    base refresh rate: %u\n", frame->base_refresh_rate);
++}
++
++static void
++hdmi_emp_infoframe_log(const char *level,
++		       struct device *dev,
++		       const union hdmi_infoframe *frame)
++{
++	/* Only support VTEM for now */
++	hdmi_emp_infoframe_vtem_log(level, dev, &frame->vtem);
++}
+ /**
+  * hdmi_infoframe_log() - log info of HDMI infoframe
+  * @level: logging level
+@@ -1542,6 +1571,9 @@ void hdmi_infoframe_log(const char *level,
+ 	case HDMI_INFOFRAME_TYPE_DRM:
+ 		hdmi_drm_infoframe_log(level, dev, &frame->drm);
+ 		break;
++	case HDMI_INFOFRAME_TYPE_EMP:
++		hdmi_emp_infoframe_log(level, dev, frame);
++		break;
+ 	}
+ }
+ EXPORT_SYMBOL(hdmi_infoframe_log);
+@@ -1919,3 +1951,66 @@ int hdmi_infoframe_unpack(union hdmi_infoframe *frame,
+ 	return ret;
+ }
+ EXPORT_SYMBOL(hdmi_infoframe_unpack);
++
++/**
++ * hdmi_emp_infoframe_vtem_init() - initialize an HDMI VTEM EMP
++ * @emp: HDMI VTEM EMP
++ */
++void hdmi_emp_infoframe_vtem_init(struct hdmi_emp_infoframe_vtem *emp)
++{
++	memset(emp, 0, sizeof(*emp));
++	emp->type = HDMI_INFOFRAME_TYPE_EMP;
++}
++EXPORT_SYMBOL(hdmi_emp_infoframe_vtem_init);
++
++/**
++ * hdmi_emp_infoframe_vtem_pack() - pack a vtem into a binary buffer
++ * @vtem: pointer to &struct hdmi_emp_infoframe_vtem to pack
++ * @buffer: pointer to pre-allocated output buffer
++ * @size: maximum size in bytes of @buffer
++ *
++ * Pack a VTEM infoframe struct into a binary buffer in a way that's suitable
++ * to be sent out over the wire.
++ *
++ * Returns the number of bytes packed into the binary buffer or a negative
++ * error code on failure.
++ */
++ssize_t hdmi_emp_infoframe_vtem_pack(struct hdmi_emp_infoframe_vtem *vtem,
++				     void *buffer, size_t size)
++{
++	u8 *ptr = buffer;
++
++	if (size < HDMI_INFOFRAME_SIZE(VTEM))
++		return -EINVAL;
++
++	/* 4 bits max */
++	if (vtem->fva_factor_m1 > 0xF)
++		return -EINVAL;
++
++	memset(buffer, 0, size);
++
++	/* Header Data */
++	ptr[0] = vtem->type;
++	ptr[1] = BIT(7) | BIT(6);
++	ptr[2] = 0;
++
++	ptr[3] = BIT(7) | BIT(2);
++
++	ptr[4] = 0;
++	ptr[5] = 1;
++	ptr[6] = 0;
++	ptr[7] = 1;
++	ptr[8] = 0;
++	ptr[9] = 4;
++
++	/* This is where the VTEM part starts */
++	ptr[10] = (vtem->fva_factor_m1 << 4) |
++		  (vtem->m_const ? BIT(1) : 0) |
++		  (vtem->game_vrr_en ? BIT(0) : 0);
++	ptr[11] = vtem->base_vfront;
++	ptr[12] = vtem->base_refresh_rate >> 8 & 0x3;
++	ptr[13] = vtem->base_refresh_rate & 0xFF;
++
++	return 14;
++}
++EXPORT_SYMBOL(hdmi_emp_infoframe_vtem_pack);
+diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
+index b80a5ee63bb2..71e2b36896af 100644
+--- a/include/linux/hdmi.h
++++ b/include/linux/hdmi.h
+@@ -55,6 +55,7 @@ enum hdmi_packet_type {
+ };
+ 
+ enum hdmi_infoframe_type {
++	HDMI_INFOFRAME_TYPE_EMP = 0x7F,
+ 	HDMI_INFOFRAME_TYPE_VENDOR = 0x81,
+ 	HDMI_INFOFRAME_TYPE_AVI = 0x82,
+ 	HDMI_INFOFRAME_TYPE_SPD = 0x83,
+@@ -76,6 +77,7 @@ enum hdmi_infoframe_type {
+ #define HDMI_AUDIO_INFOFRAME_SIZE  10
+ #define HDMI_DRM_INFOFRAME_SIZE    26
+ #define HDMI_VENDOR_INFOFRAME_SIZE  4
++#define HDMI_VTEM_INFOFRAME_SIZE   10
+ 
+ /*
+  * HDMI 1.3a table 5-14 states that the largest InfoFrame_length is 27,
+@@ -235,6 +237,18 @@ struct hdmi_drm_infoframe {
+ 	u16 max_fall;
+ };
+ 
++struct hdmi_emp_infoframe_vtem {
++	enum hdmi_infoframe_type type;
++	unsigned char version;
++	unsigned char length;
++
++	bool game_vrr_en;
++	bool m_const;
++	unsigned char fva_factor_m1;
++	unsigned char base_vfront;
++	u16 base_refresh_rate;
++};
++
+ void hdmi_avi_infoframe_init(struct hdmi_avi_infoframe *frame);
+ ssize_t hdmi_avi_infoframe_pack(struct hdmi_avi_infoframe *frame, void *buffer,
+ 				size_t size);
+@@ -249,6 +263,10 @@ ssize_t hdmi_drm_infoframe_pack_only(const struct hdmi_drm_infoframe *frame,
+ int hdmi_drm_infoframe_check(struct hdmi_drm_infoframe *frame);
+ int hdmi_drm_infoframe_unpack_only(struct hdmi_drm_infoframe *frame,
+ 				   const void *buffer, size_t size);
++void hdmi_emp_infoframe_vtem_init(struct hdmi_emp_infoframe_vtem *frame);
++ssize_t hdmi_emp_infoframe_vtem_pack(struct hdmi_emp_infoframe_vtem *frame,
++				     void *buffer,
++				     size_t size);
+ 
+ enum hdmi_spd_sdi {
+ 	HDMI_SPD_SDI_UNKNOWN,
+@@ -457,6 +475,7 @@ union hdmi_infoframe {
+ 	union hdmi_vendor_any_infoframe vendor;
+ 	struct hdmi_audio_infoframe audio;
+ 	struct hdmi_drm_infoframe drm;
++	struct hdmi_emp_infoframe_vtem vtem;
+ };
+ 
+ ssize_t hdmi_infoframe_pack(union hdmi_infoframe *frame, void *buffer,
+
+-- 
+2.56.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
