@@ -2,101 +2,96 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A16F4606A33B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 10:15:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 11106606A31B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 10:26:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rBO4lMQC;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=samsung.com header.i=@samsung.com header.a=rsa-sha256 header.s=mail20170921 header.b=Xr6t4hLT
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XzFVo8ra;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=OU96s+tr
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=dpcrnHL1JEqRBNEI5XV8MfjhhHapSkfRWclkLFkF8KI=; b=rBO4lMQCO3SzWYe68Pw9bk2pQm
-	Zd6Rw9qSHu9l8nog95MYHif+SUFBgQZgL/UI99rPvDVcbkvpWlzmHH6NC03721SttTEZmFUZgZrIg
-	Blu7zzS5Af12AYnlMWibq6UBvne0EglTKSaje9wgIT6ILwYUCEDGQ5FhJ9XJ+Oa8HBCU7IFwPxJZ/
-	mMQCiem5TEUA0HeYdz1QcMvQualDdbAb5yYONFBvM7Rn8UOHZjze9PuOSYOPI4AyrrCBquUXPJU3W
-	Ii7RVXhkJAPIfRsmh2DkC5ITvj5J8vXU+xWQytEtHdd06Dd8ImZzJWxQ4BJ8KhpYgqxGpLwUGZmnC
-	oafkDLRw==;
+	bh=9JzDUDvZ0/BcFPWItRLSCtCzZmPqGFzgXGJW2wLCXwQ=; b=XzFVo8raiM6I31a3j90w74Cmyh
+	GnfnlUcNJM9j2qO+4Ibk/IBU+igPWab3UDD12GLFgbBboeh9APQhRkcgPzccMCcPwWjggNPVFjx2m
+	dVydkwQcRToRh35zZHxe9Y+5D02lZh6z5bmKgZsQrrrxWvjYz29edeCvS7PHZZlzFk12emSEBUD4d
+	cvzpcfMcptI/AuTyMm3H1BCkl9LbD8yjQkOEJMuqrcTbd9uSBysYSdDZtITbqGYt+DN+kDQOKiRYH
+	SQJOLyv0RflECfBDsl4UgzvO+OuIpxN0BW1JyI82b/wHHCTrKHbk7KRW6VNPiE2z1dALtsWANrKDC
+	el1LTh8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOuUh-00000008QuA-3xyS;
-	Thu, 05 Nov 2026 10:14:55 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1xOufe-00000008SI9-3hAm;
+	Thu, 05 Nov 2026 10:26:14 +0000
+Received: from mail-dy1-x1329.google.com ([2607:f8b0:4864:20::1329])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOuUd-00000008QsV-2iaG;
-	Thu, 05 Nov 2026 10:14:54 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20261105101447euoutp026d2837d28c67271ae26c59370de1ce6d~lHp1gay492140621406euoutp027;
-	Thu,  5 Nov 2026 10:14:47 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20261105101447euoutp026d2837d28c67271ae26c59370de1ce6d~lHp1gay492140621406euoutp027
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1793873687;
-	bh=uvp6buPqQ+9eJjpFgvz/pyRHfAKlcp4kxy7ey2RpwfE=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=Xr6t4hLTbqTMbZ8PN1OE6SDstUWmsOEmpPSjX60geGvAGrv/LRouLb1HbkwZn83V5
-	 az6v0tEb4gaMAks1j4H41rjIdh03Nzty5faC5k62RJ80KH4iCvZbm88R7/1oxrUbKa
-	 FKtfbACftVQnRTRtDHQlCXTf2X6v/rKbHLx4ahDg=
-Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
-	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20261105101447eucas1p2079230483e67ab1c1aa521c508ccc3e2~lHp1LlepI0033600336eucas1p2k;
-	Thu,  5 Nov 2026 10:14:47 +0000 (GMT)
-Received: from [192.168.1.44] (unknown [106.210.136.40]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20261105101445eusmtip1619d691fa0ae0794db0ed24c9422d032~lHpzWgfYP0678006780eusmtip1M;
-	Thu,  5 Nov 2026 10:14:45 +0000 (GMT)
-Message-ID: <8638d230-1a12-491c-9608-3e94805addeb@samsung.com>
-Date: Thu, 5 Nov 2026 11:14:45 +0100
+	id 1xOufb-00000008SGN-14GP
+	for linux-rockchip@lists.infradead.org;
+	Thu, 05 Nov 2026 10:26:13 +0000
+Received: by mail-dy1-x1329.google.com with SMTP id 5a478bee46e88-36eb1cb7aabso278214eec.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 05 Nov 2026 02:26:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793874370; x=1794479170; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=ZfxbEV1+fg5DL4WByiUrgmxcxFW2ZGkGENp2uYMYyr8=;
+        b=OU96s+trVIS8CraKnblZDgm6P3tR2KRDx6zObF/F6oViDKtflex2StK5Jx3X+DyapZ
+         CCJty6cA6+yQ7eeLD7Yd9pSgeBCZ+Fx/jKtlnwSazP/ZeEYvmdiDTPPaM8LEgyG3NOoU
+         TTMIvtCCKGWjMWkQSRvkbyFnnU2dQ02IFy4TrmGwZbtQrcKw85hvhMe8+pLBhLDLcagc
+         yw5r7Qr0bSCpIVmHQlkx+LbuzrmVTdsh7GciGGnT21HZ0SH7lxHZcqqQcVFMuwvFuzRs
+         DHijpTwRXzcwnVBt6/tKSwinR6N2XrQS2XPhltfRf7dOuFAsjhLcj1OCLstvNiizrUju
+         l/ew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793874370; x=1794479170;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=ZfxbEV1+fg5DL4WByiUrgmxcxFW2ZGkGENp2uYMYyr8=;
+        b=EycPj6Bky5mzKBlTuClyqXj4y5blr+7o/IrtbHnPiOrljOr2JxwWlevClsPQqLp/MF
+         nXWtzZnATFn3/K1qRMMG28GgJIipxtf2f3cmM9qv0SDGqL2uGSNmh50kJZ3RpY6uqFY/
+         Uo8LnV7/o5aHmDbgSQ1DmkJOlaszZv8Raf/VdICufZnegb6YZsGzgwxZAkU0xwirLk87
+         h9EcKsm17b8HPI/BF781nBA0vUXhBOC4uuusWOXuZsKF0ffoPhCOMesfFzU4HF44/JL0
+         2RZZRfZMSRtizjDdfDVPdp8QVAo6X0NSurSrsYBb48La0fcvT/6OOp3bv7zUsbQUM8kl
+         7PMQ==
+X-Forwarded-Encrypted: i=1; AKwUvBzEzfKW24y4dcK79jgryP4HlPvA7/pXND3QazRgiiVis5+Z7mF8wLb4+ZJwNjWUbvIzp4RW59fQcFzGzBEqCg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+wKXp7beRY4ufli3aV3NqsnBO8XaS9Hs6gfpHmv8HuNBlGx7Sm
+	EFVchrthzsZzake0CZh4lZE3vMiMz/zOqJZ7WXWBl1XRi1ISHOW6SA0N
+X-Gm-Gg: AYBFou2R6u6phNcF+RZyM9qiDUrm7IG9QTqZeqCRfipMxxmN5q0Od2K/dTBfnMYQxEY
+	5xyTRzAedg4I0N+c6kMWBPAxgWAO5tdsHNu6siO53IhVBfqLnb9gXLt4NA+z3w7v4Tz3+Rs/aYu
+	t4sUxs4gu6tYR3xuGPjAIWYCN3F2HlpB0KPaSEtxRuWo7hoiJgF4ql4Ba474rC9hwkyJ2eXRyRC
+	2kDQtYEKtCUwCDZ576UjNh2wkXXIbgdXx5RTGjVIKqP8BGmdsHo8hi0OSvWRYLCaIMyY8CgrSEr
+	243efw3Xe+Q/aQXauXVRLz4v2jEpbeyK1CpnRAELWvFNUjNTItx1m8h8rOixw1icsSqW8nqDdSC
+	Yk+kXiETUx3L/ZRdMHIK07gA632LMwkAA/g6qyfKPle2fPDAnGjkq6dx/GcRdm8V3JseaVHJzLb
+	67+d3uUG36E4uNBSXEnBYORIKCPrKJYZA/NldgotGDn4gBPDjd7sPo7YaIkCQZaMsuzgzijLTyH
+	TRteN5CT/qcNpL50ZDjFnG7uV/1/+xGy1FzZmw1BCKF/pEpigOytc498ikUo9PP1IesmdloBZET
+	9pBi5Dpeem7OYN73jCFqwxuXZ9gO4s9nyyc4s08xq1yC
+X-Received: by 2002:a05:693c:41d9:20b0:368:4acb:f8a with SMTP id 5a478bee46e88-36a4242f5fdmr27765980eec.17.1793874369763;
+        Thu, 05 Nov 2026 02:26:09 -0800 (PST)
+Received: from aaron-m75q ([188.253.120.162])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36e194f4633sm6253335eec.11.2026.11.05.02.26.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Nov 2026 02:26:09 -0800 (PST)
+From: Yaozhong Li <yaozhonguwl@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Yaozhong Li <yaozhonguwl@gmail.com>
+Subject: [PATCH v2] arm64: dts: rockchip: enable SD UHS-I on Firefly-RK3399
+Date: Thu,  5 Nov 2026 18:25:56 +0800
+Message-ID: <20261105102556.1365-1-yaozhonguwl@gmail.com>
+X-Mailer: git-send-email 2.55.0.windows.3
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 04/18] dt-bindings: soc: starfive: Add
- starfive,jh7110-hdmi-subsystem
-To: Conor Dooley <conor@kernel.org>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring
-	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Andrzej Hajda
-	<andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, Laurent Pinchart
-	<Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej
-	Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
-	<luca.ceresoli@bootlin.com>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, Philipp Zabel
-	<p.zabel@pengutronix.de>, Emil Renner Berthing <kernel@esmil.dk>, Hal Feng
-	<hal.feng@starfivetech.com>, Heiko Stuebner <heiko@sntech.de>, Paul Walmsley
-	<pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou
-	<aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Dominique
-	Belhachemi <db@domibel.de>, Andy Yan <andyshrk@163.com>, David Airlie
-	<airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Yakir Yang
-	<kuankuan.y@gmail.com>, Dmitry Baryshkov
-	<dmitry.baryshkov@oss.qualcomm.com>, William Qiu
-	<william.qiu@starfivetech.com>, Xingyu Wu <xingyu.wu@starfivetech.com>,
-	Sandy Huang <hjc@rock-chips.com>, Manivannan Sadhasivam <mani@kernel.org>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, Marek
-	Szyprowski <m.szyprowski@samsung.com>, Maud Spierings
-	<maud_spierings@murena.io>, Graham Markall <hello@big-grey.co.uk>, Icenowy
-	Zheng <zhengxingda@iscas.ac.cn>, Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Joshua Peisach <jpeisach@ubuntu.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
-	<u.kleine-koenig@baylibre.com>
-Content-Language: en-US
-From: Michal Wilczynski <m.wilczynski@samsung.com>
-In-Reply-To: <20261029-flinch-header-bad94288c71b@spud>
-X-CMS-MailID: 20261105101447eucas1p2079230483e67ab1c1aa521c508ccc3e2
-X-Msg-Generator: CA
-X-RootMTR: 20261029075358eucas1p111293c602fc3aac9c6a044fc41488919
-X-EPHeader: CA
-X-CMS-RootMailID: 20261029075358eucas1p111293c602fc3aac9c6a044fc41488919
-References: <20261029-jh7110-clean-send-v6-0-759594e43acf@samsung.com>
-	<CGME20261029075358eucas1p111293c602fc3aac9c6a044fc41488919@eucas1p1.samsung.com>
-	<20261029-jh7110-clean-send-v6-4-759594e43acf@samsung.com>
-	<20261029-flinch-header-bad94288c71b@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_021452_282341_175771F3 
-X-CRM114-Status: GOOD (  17.04  )
-X-Spam-Score: -2.8 (--)
+X-CRM114-CacheID: sfid-20261105_022611_336677_5E2ED3FB 
+X-CRM114-Status: GOOD (  16.79  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,59 +104,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Contrary to its name, vcc_sdio is the IO supply of the SD card slot: the
+schematics route it to SDMMC0_VDD. It is listed as the vmmc-supply
+of the WiFi SDIO node instead, and that consumer keeps the rail from
+switching to 1.8V.
 
+The WiFi module's main VBAT input comes from vcc3v3_sys, and its IO
+supply stays vcc1v8_s3.
 
-On 10/30/26 00:06, Conor Dooley wrote:
-> On Thu, Oct 29, 2026 at 08:53:38AM +0100, Michal Wilczynski wrote:
->> Add the dt-binding for the StarFive JH7110 HDMI subsystem.
->>
->> The JH7110 HDMI IP is a monolithic block containing both the digital
->> controller and analog PHY in a single register space. This binding
->> defines the parent device, which holds the shared register map, and its
->> two children: the PHY and the controller.
->>
->> The two have separate resources. The PHY takes the 24 MHz reference
->> clock and provides both the pixel clock, which the VOUT clock generator
->> routes on to the display controller, and the phy the controller uses.
->> The controller takes its clocks from the VOUT clock generator. What
->> they share is the register space, which the parent maps.
->>
->> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
->> Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
->> ---
->>  .../starfive/starfive,jh7110-hdmi-subsystem.yaml   | 95 ++++++++++++++++++++++
->>  1 file changed, 95 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/soc/starfive/starfive,jh7110-hdmi-subsystem.yaml b/Documentation/devicetree/bindings/soc/starfive/starfive,jh7110-hdmi-subsystem.yaml
->> new file mode 100644
->> index 0000000000000000000000000000000000000000..2ff8b0b920aec41a83f0aeaa0ed9c4249fe87f46
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/soc/starfive/starfive,jh7110-hdmi-subsystem.yaml
-> 
-> Why is this in bindings/soc? I feel like it should be in
-> bindings/display or something along those lines, since it's the display
-> subsystem of the device?
-> 
-> Cheers,
-> Conor.
+Fix the supplies of sdio0 and sdmmc accordingly and enable SDR104, which
+now becomes possible.
 
-Fair point - soc/ is mirroring where the drivers sit. I can relocate it
-to bindings/display/starfive/ in v7, together with
-starfive,jh7110-vout-subsystem.yaml, which also belongs to the display
-subsystem.
+With UHS enabled, sequential read from a 64GB SDXC card inserted after
+boot goes from 22 MB/s to 60 MB/s. WiFi remained associated at 5 GHz,
+with no WiFi errors.
 
+Assisted-by: LLM
+Signed-off-by: Yaozhong Li <yaozhonguwl@gmail.com>
+---
+Changes in v2:
+- Point the sdio0 vmmc-supply at vcc3v3_sys, the WiFi module's VBAT input,
+  instead of dropping it (Heiko)
+- Rewrite the commit message (Heiko)
+- Link to v1: https://lore.kernel.org/all/20260922055011.14972-1-yaozhonguwl@gmail.com/
 
-Best regards,    
+A note on testing: with a card in the slot at boot, the first
+initialisation fails tuning ("All phases bad") and the card comes up in
+high speed mode, as it does without this patch. A card inserted after
+boot, or a rebind of the controller, comes up in SDR104; the numbers
+above were taken that way.
+
+The GRF io-domain device binds about 250 ms after fe320000.mmc here, so
+SDMMC0_VDD is still configured for 3.3V when the card switches to 1.8V.
+Forcing that GRF_IO_VSEL bit to 3.3V with the io-domain driver unbound
+reproduces the same failure on demand. This looks like the probe
+ordering issue Jonas described for the ROCK 3B [1]. It also happens with
+SDR50, with a second card, and with sdio0 left without a vmmc-supply as
+in v1.
+
+If you would rather not enable UHS until that is solved, I can send the
+supply changes on their own.
+
+[1] https://lore.kernel.org/all/e9ff5387-b3c1-41a7-b251-a12789d25a70@kwiboo.se/
+
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index 0568dfa..fe1f8d7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -777,7 +777,7 @@ &sdio0 {
+ 
+ 	/* Power supply */
+ 	vqmmc-supply = <&vcc1v8_s3>;	/* IO line */
+-	vmmc-supply = <&vcc_sdio>;	/* card's power */
++	vmmc-supply = <&vcc3v3_sys>;	/* card's power */
+ 
+ 	#address-cells = <1>;
+ 	#size-cells = <0>;
+@@ -804,6 +804,8 @@ &sdmmc {
+ 	max-frequency = <150000000>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_bus4>;
++	sd-uhs-sdr104;
++	vqmmc-supply = <&vcc_sdio>;
+ 	status = "okay";
+ };
+ 
+
+base-commit: 940de590b839f71d6dc846160534bf202401b8b7
 -- 
-Michal Wilczynski <m.wilczynski@samsung.com>
+2.55.0.windows.3
 
 
 _______________________________________________
