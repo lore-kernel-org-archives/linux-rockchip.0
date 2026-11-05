@@ -2,106 +2,138 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 45394606A33E
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 09:53:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0D24F60A6F62
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 10:06:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DCzTH5O/;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=0M+GuEew
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sAC3N1cL;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=feqhTnqA
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=SsowE9UeQGuywAj6Ba8h8XcXzrI8ITp8z+XwcPCKvbg=; b=DCzTH5O/i9gtYHhe9b6Z4HeaQt
-	hb13VOlkE36/byRB8MQZpzUFU+wK0QM189lLCJHIa7r0Gg/y6fQT7mOkdBg9DhnhYPPXrWHX5BZPg
-	/adhrCizF+X+nMS5Pwe33/y+LNmGfk0OTLsQ2rDmrVsdkOGM7tsalVwuwz6UUEqKG2jyEFphWapMS
-	8fPs6ffOY2geqqQKAuEIDaG9a9UhKA9YMwWqcMVdghwqfktui+c+URpngaoAKyrSX/JYaMs1RB1ru
-	5bPdVhDFXW786MjSBFk5V6DE7UHEtY3jqXW5FzEScjHv8cVihyAq0wZnVxHiQt/YMKAIMviJRVJdj
-	18gdKF5A==;
+	bh=OCvQnZjZm/6DHMBbCMpqDpdlz3rwdVGI68ZtimERrNo=; b=sAC3N1cLjTej7Pz3lOf//jRlup
+	f1zGAJMHvlbvLyt92bC/ua3xaBpAUJ/fwwpUbaSD/L22wwOsIZCWI1dB6F59bKY+ubelb1HthgXqz
+	C2hxkqHiwsRScZFMr4+uNi1ePdFFWzR7EObR/y7oKpQP16+NE5+n/xUTJxDdOnz/Z47XKl78noSPw
+	YKz8xcC7QWKjXN8dZDZ2ERQkA0kge9sJ1ZuVg1NEta5RGkkQVKszMxlX3s53RLrJqrMey2YtAyRyx
+	VaVP6zvCHfj7q8ayi30kqo3936LPhGe/6s1swQvEJ4fT7cvBan1nPgXPZlUvXY0ThEX5ddOSbIwJu
+	6YijhXaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOu9z-00000008N1a-3wRB;
-	Thu, 05 Nov 2026 09:53:31 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xOuMc-00000008PeS-0Ojm;
+	Thu, 05 Nov 2026 10:06:34 +0000
+Received: from mgamail.intel.com ([198.175.65.19])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOu9v-00000008N0A-0WjW;
-	Thu, 05 Nov 2026 09:53:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=MqP9VAl2M+HKyxx6eNykqH5O6VAgeEFbQ04dXIcL6Fo=; b=0M+GuEewUIj5GPHIXeBPBAoW3i
-	zXgPfn+4LRyxdrZX5AnFP0236jDmDcidoXjDIeK5la4bnSWlwP/aZUzh9u1vohdQc4sRqo5M9FiTZ
-	XsKFcdvzK7qt8QEdsQSylM11AZnu4iPDITkQcjUn4zfIfcds/OLMyweROsbCE3fQAk1jwgK8PO7GC
-	r/MMyfZXSnibjvKjuIl8o5UMF1xPT+WnfymrPAY8YvXlVRSPCk8iEnYhtKgHuTwij4n4Cfw4THGOi
-	/JXgecGtiDWVrFC7I7GPBbxIJf/5GkIcvvbxDrRFBoSJ0R4DwsK1IZQlgJFaEAyXpaPB2c3cJR+sS
-	7ddGpAsA==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Mark Brown <broonie@kernel.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Radu Pirea <radu_nicolae.pirea@upb.ro>, CL Wang <cl634@andestech.com>,
- Ryan Wanner <ryan.wanner@microchip.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
- Vladimir Oltean <olteanv@gmail.com>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Han Xu <han.xu@nxp.com>,
- Haibo Chen <haibo.chen@nxp.com>, Linus Walleij <linusw@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>,
- Robert Jarzmik <robert.jarzmik@free.fr>,
- Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
- Andi Shyti <andi.shyti@kernel.org>, Tudor Ambarus <tudor.ambarus@linaro.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Peter Griffin <peter.griffin@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Yixun Lan <dlan@kernel.org>,
- Troy Mitchell <troy.mitchell@linux.spacemit.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Alain Volmat <alain.volmat@foss.st.com>, Chen-Yu Tsai <wens@kernel.org>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Laxman Dewangan <ldewangan@nvidia.com>,
- Thierry Reding <thierry.reding@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Sowjanya Komatineni <skomatineni@nvidia.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>,
- "moderated list:ARM/Microchip (AT91) SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE"
- <linux-rpi-kernel@lists.infradead.org>,
- "open list:FREESCALE DSPI DRIVER" <imx@lists.linux.dev>,
- "open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- "open list:RENESAS RZ/V2H(P) RSPI DRIVER"
- <linux-renesas-soc@vger.kernel.org>,
- "open list:SAMSUNG SPI DRIVERS" <linux-samsung-soc@vger.kernel.org>,
- "open list:RISC-V SPACEMIT SoC Support" <linux-riscv@lists.infradead.org>,
- "open list:RISC-V SPACEMIT SoC Support" <spacemit@lists.linux.dev>,
- "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>,
- "open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
- "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
- Frank.Li@oss.nxp.com
-Cc: imx@lists.linux.dev, vkoul@kernel.org
-Subject: Re: [PATCH 1/1] spi: use dmaengine_desc_set_callback()
-Date: Thu, 05 Nov 2026 10:52:38 +0100
-Message-ID: <2154003.0S5aU1g85B@diego>
-In-Reply-To: <20261102174005.3933649-1-Frank.Li@oss.nxp.com>
-References: <20261102174005.3933649-1-Frank.Li@oss.nxp.com>
+	id 1xOuMY-00000008PdG-45UI;
+	Thu, 05 Nov 2026 10:06:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1793873191; x=1825409191;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=sHuju/foWw79h0Lx9lDW6+4gtj0ksiGlzl0r5P+LOfY=;
+  b=feqhTnqAld3zblKxUXhQOyJueNaYdf1WbWXxLWEQGOanoNg86qs1ukYs
+   h5GjyCPw3MuRrXcgEjmRHkP7yQfNij+nLQ3t2PR+DcklbFF2TsZco4oy7
+   z7dPm79yevji8bqDhwZpilDPGgimjrTj4jc3IREBc0WATAo3CHtbHjWTc
+   5D5NupCC73u7kMIEtzj0r5MeAxXmX+Nr/Mq9wngoDKgvPzY672sI4xeSV
+   FfDVmGPq5+tRz12S6MuEi/ViALyJQZep9ZP2PG5znTC549WGo8NJzYcNz
+   0xFW2ijjFlwqLz+ImwoOuDAPhnsO57UZ2+rZc5z/1vTbEtL+swQ58/NO0
+   w==;
+X-CSE-ConnectionGUID: hSjSV3HdSeKK4jhf4dyL6g==
+X-CSE-MsgGUID: YgE+H+C7SHumqMbUX29iLg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11956"; a="2687010"
+X-IronPort-AV: E=Sophos;i="6.27,197,1787036400"; 
+   d="scan'208";a="2687010"
+Received: from fmviesa011.fm.intel.com ([10.60.135.151])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 02:06:29 -0800
+X-CSE-ConnectionGUID: 96Aad4J6Td2JN0y4EunOKw==
+X-CSE-MsgGUID: fNrhP6vdSb+xZdaYz36idw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,197,1787036400"; 
+   d="scan'208";a="8733180"
+Received: from amilburn-desk.amilburn-desk (HELO localhost) ([10.245.244.144])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 02:06:17 -0800
+Date: Thu, 5 Nov 2026 12:06:14 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Frank.Li@oss.nxp.com,
+	Mark Brown <broonie@kernel.org>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Radu Pirea <radu_nicolae.pirea@upb.ro>,
+	CL Wang <cl634@andestech.com>,
+	Ryan Wanner <ryan.wanner@microchip.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Vladimir Oltean <olteanv@gmail.com>, Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>, Han Xu <han.xu@nxp.com>,
+	Haibo Chen <haibo.chen@nxp.com>, Linus Walleij <linusw@kernel.org>,
+	Daniel Mack <daniel@zonque.org>,
+	Haojian Zhuang <haojian.zhuang@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>, Yixun Lan <dlan@kernel.org>,
+	Troy Mitchell <troy.mitchell@linux.spacemit.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sowjanya Komatineni <skomatineni@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	"open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>,
+	"moderated list:ARM/Microchip (AT91) SoC support" <linux-arm-kernel@lists.infradead.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE" <linux-rpi-kernel@lists.infradead.org>,
+	"open list:FREESCALE DSPI DRIVER" <imx@lists.linux.dev>,
+	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+	"open list:RENESAS RZ/V2H(P) RSPI DRIVER" <linux-renesas-soc@vger.kernel.org>,
+	"open list:SAMSUNG SPI DRIVERS" <linux-samsung-soc@vger.kernel.org>,
+	"open list:RISC-V SPACEMIT SoC Support" <linux-riscv@lists.infradead.org>,
+	"open list:RISC-V SPACEMIT SoC Support" <spacemit@lists.linux.dev>,
+	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>,
+	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
+	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+	Mukesh Kumar Savaliya <mukesh.savaliya@oss.qualcomm.com>,
+	Thierry Reding <treding@nvidia.com>
+Subject: Re: [PATCH v2 1/1] spi: use dmaengine_desc_set_callback()
+Message-ID: <auxVFt8_vZKzYniK@ashevche-desk.local>
+References: <f1fa853d-1703-411d-b2d2-0fb0b176c2fa@kernel.org>
+ <autqC143h7Qf1R9H@ashevche-desk.local>
+ <9e39502a-dd17-4fa2-98a3-9019523cb5e8@kernel.org>
+ <auuYcS7-YqJKcUbE@ashevche-desk.local>
+ <63c24437-4261-4a51-be7e-31ac0759a095@kernel.org>
+ <auxGom0XR-Hax9b3@ashevche-desk.local>
+ <00390a20-7630-4066-9779-06c8f915a176@kernel.org>
+ <auxH_WzaOLsQ4-go@shikoro>
+ <auxOFGTRAKb5bLXD@ashevche-desk.local>
+ <auxQU_PU4bwLJUch@shikoro>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <auxQU_PU4bwLJUch@shikoro>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_015327_210705_897F26DB 
-X-CRM114-Status: GOOD (  13.53  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261105_020631_100638_E69BE4CF 
+X-CRM114-Status: GOOD (  11.09  )
+X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,41 +143,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gTW9udGFnLCAyLiBOb3ZlbWJlciAyMDI2LCAxODozOTo1OCBNaXR0ZWxldXJvcMOkaXNjaGUg
-Tm9ybWFsemVpdCBzY2hyaWViIEZyYW5rLkxpQG9zcy5ueHAuY29tOgo+IEZyb206IEZyYW5rIExp
-IDxGcmFuay5MaUBueHAuY29tPgo+IAo+IFJlcGxhY2Ugb3Blbi1jb2RlZCBhc3NpZ25tZW50cyB0
-byBjYWxsYmFjayBhbmQgY2FsbGJhY2tfcGFyYW0gZmllbGRzCj4gb2Ygc3RydWN0IGRtYV9hc3lu
-Y190eF9kZXNjcmlwdG9yIHdpdGggY2FsbHMgdG8gdGhlCj4gZG1hZW5naW5lX2Rlc2Nfc2V0X2Nh
-bGxiYWNrKCkgaGVscGVyIGFjcm9zcyBTUEkgYnVzIGRyaXZlcnMuCj4gCj4gTm8gZnVuY3Rpb25h
-bCBjaGFuZ2UgaW50ZW5kZWQuIFByZXBhcmUgbWFrZSB0byBzdHJ1Y3QKPiBkbWFfYXN5bmNfdHhf
-ZGVzY3JpcHRvciBwcml2YXRlIHRvIHRoZSBETUEgZW5naW5lLgo+IAo+IFNpZ25lZC1vZmYtYnk6
-IEZyYW5rIExpIDxGcmFuay5MaUBueHAuY29tPgoKWy4uLl0KCj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvc3BpL3NwaS1yb2NrY2hpcC5jIGIvZHJpdmVycy9zcGkvc3BpLXJvY2tjaGlwLmMKPiBpbmRl
-eCAxYTgxZmQ5NGI0Mzk2Li5mOGQ2Y2VhMmYzZGFkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvc3Bp
-L3NwaS1yb2NrY2hpcC5jCj4gKysrIGIvZHJpdmVycy9zcGkvc3BpLXJvY2tjaGlwLmMKPiBAQCAt
-NDc1LDggKzQ3NSw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfc3BpX3ByZXBhcmVfZG1hKHN0cnVj
-dCByb2NrY2hpcF9zcGkgKnJzLAo+ICAJCWlmICghcnhkZXNjKQo+ICAJCQlyZXR1cm4gLUVJTlZB
-TDsKPiAgCj4gLQkJcnhkZXNjLT5jYWxsYmFjayA9IHJvY2tjaGlwX3NwaV9kbWFfcnhjYjsKPiAt
-CQlyeGRlc2MtPmNhbGxiYWNrX3BhcmFtID0gY3RscjsKPiArCQlkbWFlbmdpbmVfZGVzY19zZXRf
-Y2FsbGJhY2socnhkZXNjLCByb2NrY2hpcF9zcGlfZG1hX3J4Y2IsIE5VTEwsIGN0bHIpOwo+ICAJ
-fQo+ICAKPiAgCXR4ZGVzYyA9IE5VTEw7Cj4gQEAgLTUwMCw4ICs0OTksNyBAQCBzdGF0aWMgaW50
-IHJvY2tjaGlwX3NwaV9wcmVwYXJlX2RtYShzdHJ1Y3Qgcm9ja2NoaXBfc3BpICpycywKPiAgCQkJ
-cmV0dXJuIC1FSU5WQUw7Cj4gIAkJfQo+ICAKPiAtCQl0eGRlc2MtPmNhbGxiYWNrID0gcm9ja2No
-aXBfc3BpX2RtYV90eGNiOwo+IC0JCXR4ZGVzYy0+Y2FsbGJhY2tfcGFyYW0gPSBjdGxyOwo+ICsJ
-CWRtYWVuZ2luZV9kZXNjX3NldF9jYWxsYmFjayh0eGRlc2MsIHJvY2tjaGlwX3NwaV9kbWFfdHhj
-YiwgTlVMTCwgY3Rscik7Cj4gIAl9Cj4gIAo+ICAJLyogcnggbXVzdCBiZSBzdGFydGVkIGJlZm9y
-ZSB0eCBkdWUgdG8gc3BpIGluc3RpbmN0ICovCgpSZXZpZXdlZC1ieTogSGVpa28gU3R1ZWJuZXIg
-PGhlaWtvQHNudGVjaC5kZT4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+On Thu, Nov 05, 2026 at 11:45:55AM +0200, Wolfram Sang wrote:
+> 
+> > Then I MUST started REQUIRING to split the patches in such cases to actually
+> > review them?
+> 
+> Okay, this is a solution, too. Or requiring "# subparts"
+
+TBH, I am flexible to both. Depending on the situation. I don't want to blame
+the author or require additional work when it's not really required. But on
+my side I still want to *review* the piece. So, "# subparts" is fine to me.
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
