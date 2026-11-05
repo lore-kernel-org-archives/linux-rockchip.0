@@ -2,11 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D30C3606A32E
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 09:02:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7B42D606A328
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 09:04:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ca4KxIjY;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=K05BMYAe
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2Qj8oDkL;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=h5ZXuuFo;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=NKcNwfvi
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,51 +15,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=BaTZg/Ea98Ibd3JHwGfv5m+Ls5Ud+WbSkf0BoLrglV8=; b=ca4KxIjYWzX6AaJxWnYxAiIuJp
-	CY+M9OrnFyGdkAikLXtzUuwhxfuF3a+EgDtmJ7olqlwA3xhNoB9TtpAn/l6w0xFcR2/4bcQTa6qxd
-	7Oc5OjNEKTue2BkOXVmnkn1HGAx5+U4+a236qoEuhwfP66DD6E5UcYu1NbvpvDIVieC9DLva5NhEA
-	Ta4myjPSlV5RwkDZ6Bt8bTRWF+K7z7NTuXJ3VJDyn+RHdv3SX7Vw02ZHlPuwqwfrGfeVUCjvVVzw+
-	FnDejNc2uEW6138ikAqwWOyGfdCTZyQhBWd73Onimj4NQvxizKR6PhGjnO8ifk4oh2QcqHAr8Wtv2
-	aGAUQaoQ==;
+	bh=GdK8KNfb5x35vLDgRRACUzX3KWz8QoA7FEvbcpahX5U=; b=2Qj8oDkL43sqPiMcctKUGSuT0p
+	MNnHb3OeYZWej/R7AOoqzKLWAB0eCKcnGfdYH0DeaG1AMktnBuXkH6cDHHt37NK4Hzkdg8U2lI9re
+	WPMCVBB56dPpHS3GW0vJV8mCCZnq/xbD28dzIGWR5mbEWZEBynDWsZ/grjwmv9qyleHTeC89DRemS
+	gAaA9I1+Nh9v2FrwbZBKefSdoME3ppPF9NgWFA9R05HD8+qKOjM9x3l/KshoMmqaVBwIWlBiNNuRG
+	+UACmfkiMgnlUEvqVx/rRKwr7C+PzMBfPWn4Thy9/o6K4OL78uJsVcL7E6IuMPjPvdPKbIYMmXKcZ
+	fBDR1nCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOtMB-00000008EUE-0Hbu;
-	Thu, 05 Nov 2026 09:02:03 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1xOtOJ-00000008Evc-3IvZ;
+	Thu, 05 Nov 2026 09:04:15 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOtM5-00000008ETT-46Fl;
-	Thu, 05 Nov 2026 09:02:00 +0000
+	id 1xOtOH-00000008Ev0-0kmx;
+	Thu, 05 Nov 2026 09:04:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=NTpZSYuqCJ8aVO/byr8U2ibpc76743xlphGgFkLrMEk=; b=h5ZXuuFoKzZyaqUgE52C6kIIrm
+	8KBP7LqbvICaFFKPZY3blwdP3h5WR51KHw54sShhlxDJSqBW5/0iydJWFtfk9Nur4Wq3bIfxk0DAJ
+	UzW592bFgjWnEXHMAhCQCY5P+3RJ+NEg6GMxPwcTyikj6AasOyiPwC//s3bOUmiriEkHHNPPMBAfw
+	Bjsm9dduEa1rD24OpDi7UmYDhYqg4Ef1yRSgbKDDjqIWFPuEkzsy/bzxvc9fEgmS1yuARrei7XvvI
+	jzfvXufgwX4iZyuG2vWNmB/qx4dvoUHnkDiaJQfeqq+2i2ry6JjI5Nlzv6dOjYxEGLzBuupefv/zX
+	uL5mEIow==;
+Received: from mgamail.intel.com ([192.198.163.15])
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xOtOE-00000002jDQ-0slS;
+	Thu, 05 Nov 2026 09:04:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1793869318; x=1825405318;
+  t=1793869450; x=1825405450;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=HsF2OB4+TAKcLaK6X2CbxWBe2H+bJw89o7MCcGnPEhE=;
-  b=K05BMYAelbS+royW6O0fgHM0T4Hm1XspALWWC/JhSgga9wNnrcXpgKmv
-   0kBZKhoQCe1S+5PZ5c67a6MuyFCi4LejhGvoflxiyObHsQjtDnQX7Gg5J
-   D6PSwol4RmwE7SrTpycOuOMbSYNTgKUN9HXKogez8K2dLyizifdgvwHCR
-   GOx1vHuKZUV3nJjM/GDO8f7u3MzepTe+7LXDGAB/twAjAhk6bHPYM3Lxx
-   m1vFZgQBDkISJKcOdxqBlexCykvyJC0u4eNf4JjUCq1XkMST1MMmPhwvt
-   EQCiZCUQMcErkmevIHADUFF6MUYZRvNpTOTS5V69rLiUxA6zQXT3MjvPS
-   A==;
-X-CSE-ConnectionGUID: PLPEKxIART2qn+ic+VpLdQ==
-X-CSE-MsgGUID: uvvvsP24Q1ekhiHtb1GKrw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11956"; a="2547913"
+  bh=e5Tih3iECPzUwOzRgFBLbWPwtT2A2aI6VTXhUtB9sIw=;
+  b=NKcNwfvipU3szRav3Oh2L8j3rieoPyO6Ib+eFg1w6io665d6fx/UVWlw
+   BxRs8bUAbY+WVNl430c9HO4P5FbqbS5/vIlKWrew0c/GGsM4JXwjUcB1Y
+   Eq0xeJlCwML5fs5JoppeiBDR/pwqHEq9TsQ+eK8Eu0wypRsnebrn8kyx+
+   k1fqmGO1K7U9v2BDlzawMCtAsebYgEQ8/x1K2zAeJP9kXOsrH4pfHzQt0
+   1D97riD3Xuw9CWYWJsPgHyGmXzx5azuwMiKaeVpIyXLYKpJ+FBV0iBvTx
+   WpS9QQC9v+iGCyY14HeAxhmWRlgaTG8KdIZKQ9XiefHohK4r4GWt80fYj
+   w==;
+X-CSE-ConnectionGUID: xU3qR8qBRXu+DX+/YhK+7Q==
+X-CSE-MsgGUID: H+ZVxHmWT4SQdyAa9NV2Cw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11956"; a="2642997"
 X-IronPort-AV: E=Sophos;i="6.27,196,1787036400"; 
-   d="scan'208";a="2547913"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 01:01:56 -0800
-X-CSE-ConnectionGUID: 73i/m+mbScKfalk02iBJcQ==
-X-CSE-MsgGUID: 7N01rw1qQ3OIr7PEIb3JjA==
+   d="scan'208";a="2642997"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 01:04:04 -0800
+X-CSE-ConnectionGUID: Yp/KC++fSmu4/jDprqD36g==
+X-CSE-MsgGUID: M7NuvQevTYKghPgW2RQ7fQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.27,196,1787036400"; 
-   d="scan'208";a="7121379"
+   d="scan'208";a="7366179"
 Received: from amilburn-desk.amilburn-desk (HELO localhost) ([10.245.244.144])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 01:01:43 -0800
-Date: Thu, 5 Nov 2026 11:01:41 +0200
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 01:03:51 -0800
+Date: Thu, 5 Nov 2026 11:03:49 +0200
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Krzysztof Kozlowski <krzk@kernel.org>,
-	Konstantin Ryabitsev <mricon@kernel.org>
+	Konstantin Ryabitsev <mricon@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>
 Cc: Frank.Li@oss.nxp.com, Mark Brown <broonie@kernel.org>,
 	Nicolas Ferre <nicolas.ferre@microchip.com>,
 	Alexandre Belloni <alexandre.belloni@bootlin.com>,
@@ -114,21 +130,22 @@ Cc: Frank.Li@oss.nxp.com, Mark Brown <broonie@kernel.org>,
 	Wolfram Sang <wsa+renesas@sang-engineering.com>,
 	Thierry Reding <treding@nvidia.com>
 Subject: Re: [PATCH v2 1/1] spi: use dmaengine_desc_set_callback()
-Message-ID: <auxF9RT5aljXkfh7@ashevche-desk.local>
+Message-ID: <auxGdYgJvjq9EBu6@ashevche-desk.local>
 References: <20261104152253.3279052-1-Frank.Li@oss.nxp.com>
  <b656861c-a087-4087-952e-91fd15fadd52@kernel.org>
  <auuZHTvr5UI9Q9Q4@ashevche-desk.local>
  <fbcb650d-0f60-468d-b1cc-255ea8a93db3@kernel.org>
+ <auxF9RT5aljXkfh7@ashevche-desk.local>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <fbcb650d-0f60-468d-b1cc-255ea8a93db3@kernel.org>
+In-Reply-To: <auxF9RT5aljXkfh7@ashevche-desk.local>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_010158_088856_C821D020 
-X-CRM114-Status: GOOD (  21.06  )
-X-Spam-Score: -4.2 (----)
+X-CRM114-CacheID: sfid-20261105_090410_477037_DBF2BA6A 
+X-CRM114-Status: GOOD (  26.16  )
+X-Spam-Score: -2.3 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,42 +165,48 @@ X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 05, 2026 at 12:02:21AM +0100, Krzysztof Kozlowski wrote:
-> On 04/11/2026 21:44, Andy Shevchenko wrote:
-> >> Andy,
-> >> These three lines look correct.
-> >>
-> >> LGTM:
-> >>
-> >> Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
+On Thu, Nov 05, 2026 at 11:01:55AM +0200, Andy Shevchenko wrote:
+> On Thu, Nov 05, 2026 at 12:02:21AM +0100, Krzysztof Kozlowski wrote:
+> > On 04/11/2026 21:44, Andy Shevchenko wrote:
+> > >> Andy,
+> > >> These three lines look correct.
+> > >>
+> > >> LGTM:
+> > >>
+> > >> Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
+> > > 
+> > > As
+> > > 
+> > >   Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org> # atmel-quadspi
+> > > 
+> > > Note, it's in your power to ask the author to split out what you maintain
+> > > to a separate change. So, it's your choice what to do, Ack the full patch,
+> > > give a partial Rb, ask for a split, ignore reviewing (often means silent
+> > > agreement when maintainer just applies that kind of a patch)
 > > 
-> > As
+> > The "# note" after the tag solves the problem partially, if people were
+> > actually using it. Solves people looking at the Git commit and being
+> > mislead by partial review applying to entire commit. Does not solve
+> > credits, because Rb for three lines is not the same as for 100.
 > > 
-> >   Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org> # atmel-quadspi
+> > From v1 of this patch, four people (Alain, Lab, Troy, Kunihiko) did not
+> > use it even though reviewing only part. Only Wolfram, so 20% of partial
+> > reviews, used that syntax. Without that syntax, b4 will pick up Rb tag
+> > like it was for entire commit.
 > > 
-> > Note, it's in your power to ask the author to split out what you maintain
-> > to a separate change. So, it's your choice what to do, Ack the full patch,
-> > give a partial Rb, ask for a split, ignore reviewing (often means silent
-> > agreement when maintainer just applies that kind of a patch)
+> > So I do repeat - if one does not want to use that syntax, then just Ack,
+> > instead of creating false impression of reviewing everything.
 > 
-> The "# note" after the tag solves the problem partially, if people were
-> actually using it. Solves people looking at the Git commit and being
-> mislead by partial review applying to entire commit. Does not solve
-> credits, because Rb for three lines is not the same as for 100.
+> +Konstantin, then we need to teach `b4` not to break that or convert it to
+> something like
 > 
-> From v1 of this patch, four people (Alain, Lab, Troy, Kunihiko) did not
-> use it even though reviewing only part. Only Wolfram, so 20% of partial
-> reviews, used that syntax. Without that syntax, b4 will pick up Rb tag
-> like it was for entire commit.
-> 
-> So I do repeat - if one does not want to use that syntax, then just Ack,
-> instead of creating false impression of reviewing everything.
+>   [FirstName: reviewed only ...]
+>   Reviewed-by: FirstName LastName <...>
 
-+Konstantin, then we need to teach `b4` not to break that or convert it to
-something like
+And Ack is not the same as Rb, when I *reviewed* patch, I have *reviewed* it,
+even if it was partial one.
 
-  [FirstName: reviewed only ...]
-  Reviewed-by: FirstName LastName <...>
+Also Jon Corbet might share his opinion from documentation point of view.
 
 -- 
 With Best Regards,
