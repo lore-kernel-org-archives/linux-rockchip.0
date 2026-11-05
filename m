@@ -2,12 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 51B8B606D808
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 15:58:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4F08F606A604
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 15:58:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pl41W/Jr;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=TDQ1I12L;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=IHa4UePH
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qyduSPBB;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=Dzb6nTlb
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -15,55 +14,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=KXks6pvgJnedRImidtyIVwx3Na1xvIvv1RUm+PUEJtk=; b=pl41W/JrDExy2ojFSYruXifVDh
-	14b54ryrgyAgc0HimrlRzCD5MOvPrBMn1k4RNAMfoQotcYce3qG/zR6Tquy2hoCYHNh0hxpvumlAW
-	gsjvoL2VltWhJS4wdvKa/QRKgDg4iRIXRkXmzyesFsimY3kNfzM6cDihfJPd3gum4OjuN4PKxGGg6
-	HbcIf4BUxoZ5izJDtMTPG+lo1ub9+w2YUq2/NALeEob+Zs1iQT54iK5fEytnSAJNvFYZ84VPSrLME
-	4pHAaNF92oCiDZIS3uhIUoh9aPfxLux5yqH8p7Lpkad87rbGEjnOkLciyeKTPPxYduB80nCbOHJb/
-	vMvAoOmQ==;
+	bh=Ks7BLC/DxzbhzsevgrfpaVp+Er/rKjqOnwF3KfiRdXc=; b=qyduSPBB9rIicbRyY6XjlN/qPs
+	ZbgPYOFbjCzw4P7Baf8rDk9Z9ZsI8dwfuiQWNbeQ0YQiGEAyffqyD0JoNfHhRA9qkWPjWkCadRXkP
+	ujanl/J24nYCkmM0a5yXzB7IvxHEpjp+5Ns9DKQX897lJa7Cg/UytKHCU/f72FZlKq+PG5k71yLnB
+	9o1akEE7fnG/28sjY55RRelvzIMjtkoW0yLmrtJIyRW4gTY5DVvX37ShBW6kGyG04IhLZeu1Woj7X
+	gQJEroGIT7jl51AQWI8recXYaxaWTY6lDtB5k2yXr1qQS8ahToKk9LcJLeZjAAfyUtRBRuuZsS3qh
+	i83xotQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzqc-00000009VGn-0yAp;
-	Thu, 05 Nov 2026 15:57:54 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzoV-00000009UDY-0Moq;
-	Thu, 05 Nov 2026 15:55:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=D9Q6ltPzRDAGZTP9KvplqGWiiX1MNDXa/TA4BfosyDU=; b=TDQ1I12LBnjEJM6ouaZyNABgn8
-	vbESVhgfyGSPO6MlvN4XDCLc+ijzy80cNK8sbev4PLPmpeLn1EMcNoxJ5X23xmVsNcU6qrhgo2YKy
-	lK3aCoG/NGqJFET9ZzYBaa/Qzw4Bf0XhQcaBslOz4SqglPY1xv2yNDJt84+pD2HOhKJyniaa8XpW0
-	GSwype6FfkS3LlGw9KU5hkX1ZjU8YpPt1Y14qUK6a52kf2Lk8YCtMFxGbl5wh/l6EHvDy1DLt1ENP
-	dSVD7TleJdYPoSG8zH8g8O2iH+pvu9+rZhpgmd6heAYz6LmmDOOM0vbkFMf4u35/Xn9u4EvNqvLsT
-	ITmi/Atg==;
+	id 1xOzrL-00000009VYG-0O8g;
+	Thu, 05 Nov 2026 15:58:39 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzoP-00000003Ciu-2FAJ;
-	Thu, 05 Nov 2026 15:55:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1793894055; cv=none; 
+	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xOzoO-00000009U6n-2a7J;
+	Thu, 05 Nov 2026 15:55:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1793894061; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=NFUXusQC27zP569hLgP0cdoh9f+qrlEtWyONZqM4Gw6pGB2LD5mkHdgot0OmJbrL+w2tTGQmmh1+HkJPNQ2Ox0Gr1FsZheEyCc3U17IQVtBcpExHmfrKBe/67O+gd5GWvo8Hnf+TCLNKug3e3F1+dqyev/OSd/b8ky5Bl+eYNqg=
+	b=EW0sBlhzbHJ+wcfTSf8BDGMsFkFf+lWXVIeMOyRMFwFc2OSKdkTST9inc7wDI62Gq85VJu6jLi/qHtz+isluoHauLmp1NnqTVvQP5cmzB7QWIDBPymI30JJlLPb0dUWUJ9oCijWBtW/NtzL+n/O9ptH9Ks88w+BXEr4KBx8cckY=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1793894055; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=D9Q6ltPzRDAGZTP9KvplqGWiiX1MNDXa/TA4BfosyDU=; 
-	b=bm4Ag9jHrBUOrFKjsWWXC+qMjQEmLLKcEm5olUwa8UmIh5L603ZcF4ZKqwgkcJTvkf2nESJcpj41tMrYSPymeQCxRK2Y0/gmL6CS1MosIml8US/6wJTqlfnXht+arSD3GePC0kpgeRX6Wl9kxFEndFjwjLTN0Jq1GQ3oTuSPWM0=
+	t=1793894061; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ukJa6i38H9O+0wEvhzaIwEJgt1m1SU43w7laRjQC3S0=; 
+	b=dzhJtMri+kRkSHDTwBhQwtHCy32MMfMIO60HvpLZykHDcnJBAH8P1GL+5Tj/UoARlgcaAZwC5Z4pWPboZXKnxuQJ6WZMBGOxv1OJfxSHcYK7ry2zJZWTkkpeedRosQ4/ywT4tzw6Gf+rFvCl8EdKVnqpllaGNG5/O+tyHwiHH64=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=IHa4UePH77lklrOObaKvOF/sEC5UoyvMJ+KdEaVG6EZ2Jq2tUgtQxXm6vA53+czMBs6hGIWcrqg4x5jsV7SEUDbqFiWwD6NR82OoyraR2lAIlkE6KMjO8MWCI+OPMXlZYloeFd594NtVqKltqzpB7rmxxfhLAn5C824Xc3xdhGo=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=D9Q6ltPzRDAGZTP9KvplqGWiiX1MNDXa/TA4BfosyDU=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1793894054250895.1994089470402;
-	Thu, 5 Nov 2026 07:54:14 -0800 (PST)
+DKIM-Signature: a=rsa-sha256; b=Dzb6nTlbY4hOx6m/14LuyGTVgvB8JkhEmmR3LYmttlRqn8z6QBJCxgc/T50AgC6+AjkDaDFwdClp/fb7MPPtKEabTobz7CE8PcJH433+QsBnozFVLl0bI8rODWFRogvBc5Aixrpw/PHdpsbPDMpvRaIiRKsFSqYjxnEAc5EWW/Y=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=ukJa6i38H9O+0wEvhzaIwEJgt1m1SU43w7laRjQC3S0=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1793894060390792.41475105125;
+	Thu, 5 Nov 2026 07:54:20 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 05 Nov 2026 16:52:07 +0100
-Subject: [PATCH v2 16/27] drm/edid: Parse QMS TFR min/max flags from HDMI
- SCDS
+Date: Thu, 05 Nov 2026 16:52:08 +0100
+Subject: [PATCH v2 17/27] drm/connector: Add "Media" VRR display mode for
+ QMS
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261105-vrr-limiter-uapi-v2-16-55f4215be2c2@collabora.com>
+Message-Id: <20261105-vrr-limiter-uapi-v2-17-55f4215be2c2@collabora.com>
 References: <20261105-vrr-limiter-uapi-v2-0-55f4215be2c2@collabora.com>
 In-Reply-To: <20261105-vrr-limiter-uapi-v2-0-55f4215be2c2@collabora.com>
 To: Xaver Hugl <xaver.hugl@gmail.com>, Vidith Madhu <vmadhu@nvidia.com>, 
@@ -89,9 +74,9 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_155537_743330_9C4B3F43 
-X-CRM114-Status: GOOD (  14.10  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20261105_075536_911987_A1D298FA 
+X-CRM114-Status: GOOD (  14.67  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,77 +96,87 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-HDMI has two flags in the SCDS EDID extension that signal which minimum
-and maximum refresh rate the sink wishes to use when doing QMS ("Quick
-Media Switching").
+HDMI includes a feature called "Quick Media Switching", or QMS for
+short, which builds upon the existing VRR to allow for quick switching
+between a select few common frame rates.
 
-How to parse these flags, and what they do, has been learned from the
-publicly available libdisplay-info source code.
+Add a new VRR display mode, "VRR_DISPLAY_MODE_MEDIA", to the
+vrr_display_mode connector property, in order to expose support for
+this.
 
-Add the definitions of where in the byte they are, the code for checking
-for them, as well as two new booleans in drm_hdmi_vrr_cap to store the
-result.
+Additionally, add a boolean flag to the connector's HDMI sub-struct with
+which source-side support for QMS can be indicated, as well as the QMS
+tfr byte to the HDMI state sub-struct.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/drm_edid.c  |  6 ++++++
- include/drm/drm_connector.h | 12 ++++++++++++
- include/drm/drm_edid.h      |  2 ++
- 3 files changed, 20 insertions(+)
+ drivers/gpu/drm/drm_connector.c |  6 ++++++
+ include/drm/drm_connector.h     | 14 ++++++++++++++
+ 2 files changed, 20 insertions(+)
 
-diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-index d439928caacc..39b5c01309e2 100644
---- a/drivers/gpu/drm/drm_edid.c
-+++ b/drivers/gpu/drm/drm_edid.c
-@@ -6237,6 +6237,12 @@ static void drm_parse_hdmi_gaming_info(struct drm_hdmi_info *hdmi, const u8 *db)
+diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+index 21222214a843..f7d619926e2d 100644
+--- a/drivers/gpu/drm/drm_connector.c
++++ b/drivers/gpu/drm/drm_connector.c
+@@ -1456,6 +1456,7 @@ DRM_ENUM_NAME_FN(drm_get_tv_mode_name, drm_tv_mode_enum_list)
+ static const struct drm_prop_enum_list drm_vrr_mode_enum_list[] = {
+ 	{ VRR_DISPLAY_MODE_GAME,   "Game" },
+ 	{ VRR_DISPLAY_MODE_OFF,    "Off" },
++	{ VRR_DISPLAY_MODE_MEDIA,  "Media" },
+ };
+ DRM_ENUM_NAME_FN(drm_get_vrr_mode_name, drm_vrr_mode_enum_list)
  
- 	vrr->vrr_max = (db[9] & DRM_EDID_VRR_MAX_UPPER_MASK) << 2 | db[10];
- 	vrr->supported &= (vrr->vrr_max == 0 || vrr->vrr_max >= 100);
-+
-+	if (cea_db_payload_len(db) < 11)
-+		return;
-+
-+	vrr->qms_tfr_min = db[11] & DRM_EDID_QMS_TFR_MIN;
-+	vrr->qms_tfr_max = db[11] & DRM_EDID_QMS_TFR_MAX;
- }
- 
- static void drm_parse_dsc_info(struct drm_hdmi_dsc_cap *hdmi_dsc,
+@@ -2593,6 +2594,11 @@ EXPORT_SYMBOL(drm_mode_create_scaling_mode_property);
+  *	    - Game - set display to game mode if display supports it,
+  *	      regardless of CRTC state
+  *	    - Off - set display to VRR disabled mode, regardless of CRTC state
++ *	    - Media - a "media" VRR mode that only supports a select number of
++ *	      common media refresh rates as fixed targets, but does so with
++ *	      possibly better display-side processing. In the HDMI display
++ *	      protocol, this is QMS (Quick Media Switching), though the mode
++ *	      enum itself is vendor-agnostic
+  *
+  * VRR Limiter/Target Properties
+  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-index 830a33fb5301..4801bb2769e1 100644
+index 4801bb2769e1..41f272afbb1e 100644
 --- a/include/drm/drm_connector.h
 +++ b/include/drm/drm_connector.h
-@@ -294,6 +294,18 @@ struct drm_hdmi_vrr_cap {
- 
- 	/** @qms_capable: The sink supports Quick Media Switching */
- 	bool qms_capable;
+@@ -829,6 +829,8 @@ enum vrr_display_mode {
+ 	VRR_DISPLAY_MODE_GAME = 0,
+ 	/** @VRR_DISPLAY_MODE_OFF: Turn off VRR on the display */
+ 	VRR_DISPLAY_MODE_OFF,
++	/** @VRR_DISPLAY_MODE_MEDIA: Protocol-agnostic fixed rate media mode */
++	VRR_DISPLAY_MODE_MEDIA,
+ 	/** @VRR_DISPLAY_MODE_COUNT: Sentinel, not a valid mode, keep last */
+ 	VRR_DISPLAY_MODE_COUNT
+ };
+@@ -1241,6 +1243,12 @@ struct drm_connector_hdmi_state {
+ 	 * deliberately not requested by the helper.
+ 	 */
+ 	bool scrambler_needed;
 +
 +	/**
-+	 * @qms_tfr_min: If set, the sink uses 24/1.001Hz as its minimum rate
-+	 * for QMS. If unset, @drm_display_info.monitor_range.min_vfreq is used.
++	 * @qms_tfr_byte: Target frame rate byte for HDMI QMS, or 0 if QMS is
++	 * not in use.
 +	 */
-+	bool qms_tfr_min;
-+
-+	/**
-+	 * @qms_tfr_max: If set, @drm_display_info.monitor_range.max_vfreq is
-+	 * used by the sink as its maximum rate for QMS. If unset, 60Hz is used.
-+	 */
-+	bool qms_tfr_max;
++	u8 qms_tfr_byte;
  };
  
  /**
-diff --git a/include/drm/drm_edid.h b/include/drm/drm_edid.h
-index f1e2052cb08b..d339acd9ee52 100644
---- a/include/drm/drm_edid.h
-+++ b/include/drm/drm_edid.h
-@@ -269,6 +269,8 @@ struct detailed_timing {
- #define DRM_EDID_VRR_MAX_UPPER_MASK		0xc0
- #define DRM_EDID_VRR_MAX_LOWER_MASK		0xff
- #define DRM_EDID_VRR_MIN_MASK			0x3f
-+#define DRM_EDID_QMS_TFR_MIN			(1 << 4)
-+#define DRM_EDID_QMS_TFR_MAX			(1 << 5)
+@@ -2270,6 +2278,12 @@ struct drm_connector_hdmi {
+ 	 */
+ 	bool scrambler_enabled;
  
- /* DSC specific */
- #define DRM_EDID_DSC_10BPC			(1 << 0)
++	/**
++	 * @qms_supported: Whether the connector supports HDMI Quick Media
++	 * Switching (QMS) on the source side, irrespective of display support.
++	 */
++	bool qms_supported;
++
+ 	/**
+ 	 * @scdc_work: Work item currently used to monitor sink-side scrambling
+ 	 * status and retry setup if the sink resets it.
 
 -- 
 2.56.0
