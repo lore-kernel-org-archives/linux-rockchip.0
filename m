@@ -2,94 +2,77 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0CA56606EE80
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2026 23:49:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 69467606A326
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 00:13:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3jEYctmE;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=q0SMfaL9
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RVthfRiX;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ziyao.cc header.i=@ziyao.cc header.a=rsa-sha256 header.s=zmail header.b=HdAPSFov
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=y2FIkpOw2Yl1WchNmCxHSFDT0ZJb5MBQjbiDyXzkkcU=; b=3jEYctmEIWozgGDAQIpmlOsjsT
-	xhvkLzWwo/xPHuWHLOnvYMQeq88Rv/mRpRn8qNBaL6dyLMcnkjYP8BzncqfJUJzo565rSs90nqImv
-	+eDRfA6f4ODYUULpXMkbX+kPgKCEEs8h4/TqtiBkHUaGAS8nDx10RR813bNzdApIJgRrAvtgV4VjR
-	ik27C0T8FRTAq/K8H0EBjrD4vLin9JehLjkVDmpmd2pLvEaJj50aFpGuwbM4tK18nP15nBXuUzkPt
-	3HCeQbsfHZT029EKPa/eZYxkV6Z64+96AH2o9fSRPNYa9ChS823COpEO6rmm7fdpt4RRdMM4FzQfX
-	0iLG0peQ==;
+	bh=H44DJpPJdGDnC6iq9a/m8adl1riP+O4gSrgdQjsZ0cw=; b=RVthfRiX0HRQpoYPJPSnqDxj7P
+	APJEDXwx365tEcbCNHneJ82X5C+agjhrXcMGa63zTkloj8Qd9xp8tLSEzIB8y7r1Sy8RKr8Nl3L3r
+	f85nBgPety1LbHKkWSNRiJ3OOugLUx8Bt0DIHEu2t75y70smSg8Uvo+q/SWta9lSnmQ1a7o3BqeOH
+	JLHj/UtUES0AvlXhi98khS94hh97zPViEp0tKiJ2svswR185zCjzWqfJj/VFX+rAoOUx5VhjjP3vf
+	nxPV0z4l5Veke7DbVxAz5rbN5qlghbCCXLMMwqkP7L5HC7pK/oy8YfD2/bGZhgJyDf6A9KDEtDwlg
+	W/RM23og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOkjN-00000007Hep-1uzh;
-	Wed, 04 Nov 2026 23:49:25 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xOl6d-00000007KZB-2YJG;
+	Thu, 05 Nov 2026 00:13:27 +0000
+Received: from sender5-pp-e107.zoho.com ([165.173.182.107])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOkj3-00000007H81-0BUu;
-	Wed, 04 Nov 2026 23:49:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793836139;
-	bh=LVP+Kp+zaGqKUkjgCRPI3zygD0dWAB8hTjJrI4ACTJ8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=q0SMfaL9+E3BlaTYleBCHiMMElo0TMGIFr4mNH20jCC/SuRl8BBsdSaa35RYZ1G84
-	 RKxOyxrw6YWMfYo0tFMDS5NnmHr1BN+VD8NcWfyUzIX/NChNJ5AQQ84vwmD/+GpFSX
-	 ZKcLRS9grqX+Y13zc3vykXlIDLHbMvZ6nfA1g3OumG04OuUXjILDy1Zk2EBkD1KSUp
-	 dlPGb5ZuItX3XuE3t86sKgv2bnlgGHf8OewOP+HB8Wh2mRGFqOE6HGd3SQnGEim9Zp
-	 CzdLZFyqsb3CkaJS8HFoljF8Vk7BaLiIZmTXRbISpXHOA8eWnCUZRZhthxiuhGvAPN
-	 kZ/bM7CpF4VcA==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7B22E17E0D58;
-	Thu, 05 Nov 2026 00:48:59 +0100 (CET)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id E4D0B480035; Thu, 05 Nov 2026 00:48:58 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 05 Nov 2026 00:47:06 +0100
-Subject: [PATCH v8 5/9] PCI: dw-rockchip: Add helper function for
- controller mode
+	id 1xOl6a-00000007KXz-3s1e;
+	Thu, 05 Nov 2026 00:13:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1793837597; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=DQ622xsHScW3Ad6bz6fv1d2xPqZQGJ/Dhm/Jc/AFkapPbUBCXsgj/iUJdXQMMk1eKXTMFbNS7Iai9ungUwuWB0KmGK+npgwQNdTTVrtqJC1cjh+qL90OFys6JhYCri0DY8kkt691dZ2ROsCOLuJqh2RajL2i8PGpZUSnF2g78j4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1793837597; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=fAbg06ow8H9QMQrvOxRXn8nTU+O0wuTG8Qx02cu++Jk=; 
+	b=nOpJnWVMboje3xbWS3M5AHr1Wl698euBo1vIPQq/aHlsoJ1ajMMPZILp4S/yVrVRVAWQPCa2Bdyvgu0caA3MRpygUFXXnAMXegeTeGdCYVl+HoRlb/iajt/LnBahi0ix3DNSrC4jkQu43zXzwmPEjHNezWNmJPziglMDWRPGJjQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=ziyao.cc;
+	spf=pass  smtp.mailfrom=me@ziyao.cc;
+	dmarc=pass header.from=<me@ziyao.cc>
+DKIM-Signature: a=rsa-sha256; b=HdAPSFovFwWtdTHK9ZmbCLVhAWpZPO0UWDZDjv2cWXNfcniGfG9oIixlWS6MgBRlUwPbvqR/HBUPfXzg4FT9OYynKNw7Ryyw7ivutwYO7jFMND8c1W/0z/rdhBVoyBLpA7H+F+EftEOn6QJEYM/0G98h6QE6TEhy0qZPI8X+kLM=; c=relaxed/relaxed; s=zmail; d=ziyao.cc; v=1; bh=fAbg06ow8H9QMQrvOxRXn8nTU+O0wuTG8Qx02cu++Jk=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1793837597451328.75738105930157;
+	Wed, 4 Nov 2026 16:13:17 -0800 (PST)
+From: Yao Zi <me@ziyao.cc>
+To: Ulf Hansson <ulfh@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Yao Zi <me@ziyao.cc>,
+	Sergey Shtylyov <s.shtylyov@auroraos.dev>,
+	Midgy BALON <midgy971@gmail.com>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Frank Zhang <rmxpzlb@gmail.com>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Kevin Hilman <khilman@linaro.org>,
+	Caesar Wang <wxt@rock-chips.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>
+Cc: linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH 2/2] pmdomain: rockchip: Don't log when of_clk_get() fails with -EPROBE_DEFER
+Date: Thu,  5 Nov 2026 00:12:57 +0000
+Message-ID: <20261105001257.1368266-3-me@ziyao.cc>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <20261105001257.1368266-1-me@ziyao.cc>
+References: <20261105001257.1368266-1-me@ziyao.cc>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261105-rockchip-pcie-system-suspend-v8-5-0434b4f373bc@collabora.com>
-References: <20261105-rockchip-pcie-system-suspend-v8-0-0434b4f373bc@collabora.com>
-In-Reply-To: <20261105-rockchip-pcie-system-suspend-v8-0-0434b4f373bc@collabora.com>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Jingoo Han <jingoohan1@gmail.com>, 
- Shawn Lin <shawn.lin@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, 
- Mark Brown <broonie@kernel.org>, 
- "Yury Norov (NVIDIA)" <yury.norov@gmail.com>, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Alexey Charkov <alchark@flipper.net>, linux-pci@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2004;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=LVP+Kp+zaGqKUkjgCRPI3zygD0dWAB8hTjJrI4ACTJ8=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrrxGrwUWHYd3YDVNiOz2oYmsgJ/bKJ/8289
- pRQg3Jko7MnaYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq68RqAAoJENju1/PI
- O/qaNAoQAI/N8XJIfPYYHEn4H/btJZM4VYRAy29n2wI95ciz91fLqxrWrIqzk2ZLlP/CzrAVa/v
- ApnRE7fuRVJlisy9wAfP/Hd6GLIXgHmTgUlIYV4S2d6FgrW9dcJJ4uzhXt5/W/D1OaEot44qAlU
- bc6RZP1jQx7TlLky30ZGvT/VLNcDpquo4lkaNhOi1ku7uyfQWKjsn/FwFzZBn7Pseiuej0TJKYg
- 8/WHBUJG8tjc2TFLFW7bf7+2AecH3qWZFW2Z4o5JOZwkZOOYM6mHBQD9MPpOwhDqkO+WXkOM0/e
- WTTFrWZtWdqCunvqlLA+FNKdCJiDdZvnN8lyZRvC5+Km4qt9KMsEHWCFsEgsVg/6FizeYdRQfre
- ab4F6xFZT6duukVYAaD+Wkoz6IozvbJwIZ8hDOzOTD8gVYEb15xM+fkstIWJdWMQb0G9FUzs3En
- rzIyy2jyEcWea+RIPN3A9VU24C35rmMKbYp12RxCAgSdNgq+75PBnEEB6UFvkpdVm6I99+7/h3J
- ccyB1AtUhlQqE3N0Bk8juceLoaZ8O8YQ1iJrMUzuP6B4hPyzpxVtJzEVk7klz/7ykktdfpvW3sX
- IcfXMGNGLT78FNufvlt9GjdfVO8clj6EMoal4OYunKva6JCoXdNESmAPrUEbLA77FVpu/qav5Jy
- kI5Pnxk/ppBL/ogipUrUvkQ==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_154908_255161_D5D14A9A 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20261104_161325_184004_1C5A81A8 
+X-CRM114-Status: GOOD (  11.60  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,58 +93,77 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Remove code duplication and improve readability by introducing a new
-function to setup the controller mode.
+Current error handling code considers -EPROBE_DEFER as hard errors,
+logs misleading dmesg like,
 
-Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+rockchip-pm-domain ff600000.power-management:power-controller: power-domain: failed to get clk at index 0: -517
+rockchip-pm-domain ff600000.power-management:power-controller: failed to handle node power-domain: -517
+
+Use dev_err_probe() at the callsite of of_clk_get(), and check for
+-EPROBE_DEFER in places where its return value could propagate to.
+
+Fixes: 7c696693a4f5 ("soc: rockchip: power-domain: Add power domain driver")
+Fixes: 6be05b5ec161 ("soc: rockchip: power-domain: add support for sub-power domains")
+Signed-off-by: Yao Zi <me@ziyao.cc>
+Cc: stable@vger.kernel.org
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+ drivers/pmdomain/rockchip/pm-domains.c | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 92154a790ac0..c6a4649dae2e 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -695,6 +695,11 @@ static void rockchip_pcie_enable_enhanced_ltssm_control_mode(struct rockchip_pci
- 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
- }
- 
-+static void rockchip_pcie_set_controller_mode(struct rockchip_pcie *rockchip, u32 mode)
-+{
-+	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_SET_MODE(mode), PCIE_CLIENT_GENERAL_CON);
-+}
-+
- static int rockchip_pcie_configure_rc(struct platform_device *pdev,
- 				      struct rockchip_pcie *rockchip)
- {
-@@ -719,10 +724,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 34c862e56aad..c147cc88edb1 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -851,9 +851,9 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 		pd->clks[i].clk = of_clk_get(node, i);
+ 		if (IS_ERR(pd->clks[i].clk)) {
+ 			error = PTR_ERR(pd->clks[i].clk);
+-			dev_err(pmu->dev,
+-				"%pOFn: failed to get clk at index %d: %d\n",
+-				node, i, error);
++			dev_err_probe(pmu->dev, error,
++				      "%pOFn: failed to get clk at index %d: %d\n",
++				      node, i, error);
+ 			goto err_put_clocks;
+ 		}
  	}
+@@ -1006,8 +1006,10 @@ static int rockchip_pm_add_subdomain(struct rockchip_pmu *pmu,
  
- 	rockchip_pcie_enable_enhanced_ltssm_control_mode(rockchip, false);
--
--	rockchip_pcie_writel_apb(rockchip,
--				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_RC),
--				 PCIE_CLIENT_GENERAL_CON);
-+	rockchip_pcie_set_controller_mode(rockchip, PCIE_CLIENT_MODE_RC);
+ 		error = rockchip_pm_add_one_domain(pmu, np);
+ 		if (error) {
+-			dev_err(pmu->dev, "failed to handle node %pOFn: %d\n",
+-				np, error);
++			if (error != -EPROBE_DEFER)
++				dev_err(pmu->dev,
++					"failed to handle node %pOFn: %d\n",
++					np, error);
+ 			return error;
+ 		}
  
- 	irq = of_irq_get_byname(dev->of_node, "legacy");
- 	if (irq < 0)
-@@ -776,10 +778,7 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+@@ -1102,15 +1104,17 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
+ 	for_each_available_child_of_node_scoped(np, node) {
+ 		error = rockchip_pm_add_one_domain(pmu, node);
+ 		if (error) {
+-			dev_err(dev, "failed to handle node %pOFn: %d\n",
+-				node, error);
++			if (error != -EPROBE_DEFER)
++				dev_err(dev, "failed to handle node %pOFn: %d\n",
++					node, error);
+ 			goto err_out;
+ 		}
+ 
+ 		error = rockchip_pm_add_subdomain(pmu, node);
+ 		if (error < 0) {
+-			dev_err(dev, "failed to handle subdomain node %pOFn: %d\n",
+-				node, error);
++			if (error != -EPROBE_DEFER)
++				dev_err(dev, "failed to handle subdomain node %pOFn: %d\n",
++					node, error);
+ 			goto err_out;
+ 		}
  	}
- 
- 	rockchip_pcie_enable_enhanced_ltssm_control_mode(rockchip, true);
--
--	rockchip_pcie_writel_apb(rockchip,
--				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_EP),
--				 PCIE_CLIENT_GENERAL_CON);
-+	rockchip_pcie_set_controller_mode(rockchip, PCIE_CLIENT_MODE_EP);
- 
- 	rockchip->pci.ep.ops = &rockchip_pcie_ep_ops;
- 	rockchip->pci.ep.page_size = SZ_64K;
-
 -- 
-2.53.0
+2.56.0
 
 
 _______________________________________________
