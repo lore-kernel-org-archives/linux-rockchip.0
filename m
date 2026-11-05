@@ -2,12 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E5102606A610
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 15:58:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE8CE606A60D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 15:58:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kVnmmlAL;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=Ewum7m4W;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=B8xpVXrr
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=abUzfxwX;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=oZX9uTlR;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=ZCRyGZHx
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -15,54 +15,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=CMKyKrBNAoWpbXNerPxRHrna1Py6O6ghT+kjZeh2L2k=; b=kVnmmlALtU/NAqxs2tkX9awISO
-	/JUHIvs03EHAxziqDak1ZRx7Ir4hJnqhYRD9Q9XeGxDIdBR5k6Hjv3fIyoOuJQX8oJOMCNTcppOP/
-	ZS4dGVkzajRvPKqsGM2MLMh4c4aRCyD2l3183U/5CKbTuElaindVdmFthm0R+8XP2cmMZanjjhFLz
-	J8KvXhq/bi/hmHYU70IWOT+h6Od+ZfzSmsVpF6J9U8MumYAlXsK6miCaWA8T5DmEVk8BcNIfz+C6H
-	6J5Ruw0qipY4CvMEAiMeaVVPzDXnVCiSOUxE+eQYfwuIjbF9+l8O2WJqfmRyiNgXTbgxMW9NVcOZ+
-	ZIHwOlaQ==;
+	bh=dX4uZt7ja7l4blW5nCkKZbmMWdZYkX4Dg4/NFwYbAN0=; b=abUzfxwXNXfX22Ctc/i9+1jwHT
+	UPkdhDeWSwvOnHZBYFUqSR0PDcLbU6hKcjie3uhmqVa1tmVFNAxGsflZHzbBjk2RGQvULpMutGJHW
+	IPqHcONglX15m1VpNimUwZAhTUGKGvcDttqaAPWDnaD+eAKtw+ir1SVXXEPfzvaJ42vy9DGH4FDmR
+	+GdImkseyygfcYr3K35XjGCe6Vol6d+u4ISyDGB+vO44sNjQcm+A5KeeEL/ZQurW2ADjFRwBrX3af
+	/f4jARF8fYSl14Bvv0wnzESly/Cqd0rYV2b6Ntv5FdqjAJ11jOJAfeMs/CYvG2Z3ToLvdeu3ee4Qi
+	DWq/5i6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzrP-00000009VeZ-0sf1;
+	id 1xOzrP-00000009VfH-1VzY;
 	Thu, 05 Nov 2026 15:58:43 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzor-00000009UNY-27w2;
+	id 1xOzoq-00000009UMt-2VBn;
 	Thu, 05 Nov 2026 15:56:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=tVNwYKMhk2/WnrIZ19upJetFcNs7CUL1Pr30OK/rV9s=; b=Ewum7m4WRPpIi5Zziru/+5jFlN
-	Q8ygjumiSctFy/6x+ZRTK3IKR/41hl0Dyf8YTfvQC410lowyJ5cZRx4sf19sTZJJPkMbs0eqqa5PX
-	VVX8pU7rLw4x1qwKwGqJYbBXGrPXegT/VKbcq/nI+IkgdS6gcKEWYjnA4VPq+g2wSvxGAHNZM5s2D
-	uZW0YyQMgbev/a+BYoLJgPF7ya43s5SNs4+9j2VTTtZGIolMwWnU5qFb9/COodVx3fPw5G6qOZXNM
-	GlwIAeGe085wLAcF713e/gBkB3SFgtu0vBnOFAzgXtsxxAHq7AcX49hxK2x9+Rtkbpqn210KZIGB8
-	f/NQzJAQ==;
+	bh=Uvc1syTMYMFSpAE/jbDqVyGXDVUt+Vo4SRVox0ytqLo=; b=oZX9uTlRFXF7C+ivTGgWsX5ClS
+	FVJfZd5GdUxTbY0mMOU/FkXUCtYLs+1KhWIrjm9ZjfbUcwCMjr5Q5rvHyFNTIOCiqIHwEGhEfvNhH
+	Mj+1+vbW+gn1h9qaxpwmvNh62t/PiBf5JeGcECkZO+NtIUvY1fW9eZpddHy2t5q0zWkOSJJ2AEmS8
+	GLA7OtndCscQ6b9PeE3e2Om8gdN2qeYtKxY5eGOz/sSvsJHEBHFPel2UfmlPzXIao4mYQQGEiSucZ
+	CscPK40CT73kt5rw97KJUKxxHb0G/OtwnoEfj7CMbEOj8xdSKM8Dp/40WFkxLaKRi9Ul6I+PAXzkS
+	jR40SiuA==;
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzon-00000003Cns-2jVr;
-	Thu, 05 Nov 2026 15:56:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1793894117; cv=none; 
+	id 1xOzon-00000003Cnr-2EE4;
+	Thu, 05 Nov 2026 15:56:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1793894111; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=CR2pennS5hSbWsFNmP77+NJWpOZsPJC0Uaj/YPAW2kmnuMLpFxNpTTH6KmvOyxKYUGxAkMEdf8zScqXRVRhdrnfaoBQuJL2NQ7TsWZO874UDtW+Ro2YqBs7tz2rsJaYL+OuYZ4syfJeyy0ReXS7oIrMt/JQYFr/rLs5NnJ3kjk4=
+	b=Ka1WdsZYDV7Nc8mJ45DMVednrFj/Ynh/2SabZ2ktijh2mdWr/y3rsvmrW+uvCuEbS3Kq8FKozSEf4eNMV9zPf3CVmGCM8oQI3ONhq+BCt4QjxoII6cjuOCxLjk+OgAOBJDST/gPxrfBsIQHYRM+gqikA3EOK5OdsAp1I2OGcYW0=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1793894117; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=tVNwYKMhk2/WnrIZ19upJetFcNs7CUL1Pr30OK/rV9s=; 
-	b=AJg3rcecPL1vPnfYJ0PawUJipTuMxvcOJLJH7RoshWzWPz+mLoREmsbs43PAWxVKj1IHiVwcj3pgH6RCv/P9EFXKeKp04LHbpa3atUkgPDSZH1XyImOIZo71CVOUQpx9iyPwcD7TbXJoEsI7gIAC3tgloDNTX6gfU24cZnih2eE=
+	t=1793894111; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Uvc1syTMYMFSpAE/jbDqVyGXDVUt+Vo4SRVox0ytqLo=; 
+	b=d6FAgzzB3SMiLTQgxUroXw1PHe7mS7Nq/0q+KmnjwsRw0Czt224TSb9jhrpb61whFy/Uv2yCgfZIWYNDGnG1MJp9VIqSyPxyayR0iV28pO4WBEHlsxZOCLurHod0sfQS+exRBKir/1CTtgAApn+DRaOpjkxKmjFCUX7fhFq3gyY=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=B8xpVXrrrydEK2W4qItNLZsmWHehtPHQN+tJwM9U4qG2heDbFs7i7woYk2Yet8XdDGgIoM7KWsGZUxBdl8sg9rk9Khy8v87trvQ8+8fDQMZsMrGITRsnAItDXAeD4jHvIryGuOKTE95+/Imq54Hd77b0G0vlcSklkUqn7KY3bzM=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=tVNwYKMhk2/WnrIZ19upJetFcNs7CUL1Pr30OK/rV9s=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1793894116497649.6985151835922;
-	Thu, 5 Nov 2026 07:55:16 -0800 (PST)
+DKIM-Signature: a=rsa-sha256; b=ZCRyGZHx9txJ5/f9hAPaNM9/ummNBIU4meVhihPTHbgDWQE+YQKJ7DsbsaNpSbtHg+I/9TuGds8z9FCPzQ9/A4KUfvF5xBsNAcyhSCVxMtWMgcjUHTUBrf3rLyGZQBzQ+e91Mn37K/Vp9WLY2Zc16iAlzdWx0/dEUhrYbypVYI0=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=Uvc1syTMYMFSpAE/jbDqVyGXDVUt+Vo4SRVox0ytqLo=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1793894110107971.9612430908318;
+	Thu, 5 Nov 2026 07:55:10 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 05 Nov 2026 16:52:17 +0100
-Subject: [PATCH v2 26/27] drm/debugfs: Expose HDMI VRR in vrr_range debugfs
+Date: Thu, 05 Nov 2026 16:52:16 +0100
+Subject: [PATCH v2 25/27] drm/connector: Fix docs for cnmvrr and cinemavrr
+ members
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261105-vrr-limiter-uapi-v2-26-55f4215be2c2@collabora.com>
+Message-Id: <20261105-vrr-limiter-uapi-v2-25-55f4215be2c2@collabora.com>
 References: <20261105-vrr-limiter-uapi-v2-0-55f4215be2c2@collabora.com>
 In-Reply-To: <20261105-vrr-limiter-uapi-v2-0-55f4215be2c2@collabora.com>
 To: Xaver Hugl <xaver.hugl@gmail.com>, Vidith Madhu <vmadhu@nvidia.com>, 
@@ -88,8 +89,8 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_155601_862330_616C30CC 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20261105_155601_696412_14A26974 
+X-CRM114-Status: GOOD (  11.38  )
 X-Spam-Score: -0.2 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,59 +111,34 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-IGT requires the vrr_range debugfs file for running the tests, for
-better or worse.
+The member names in the doc comments are inexplicably prefixed with an
+"m", which does not reflect the actual struct member's name.
 
-Since Commit 014da1db5e64 ("drm/edid: parse HDMI 2.1 gaming (ALLM/VRR)
-capabilities from HF-VSDB") parses the HDMI VRR minimum and maximum
-numbers into separate members and not the display_info.monitor_range
-member, this debugfs entry needs to use those members when the display
-is HDMI and does HDMI VRR.
+Drop the "m".
 
-Add this special casing, and also protect accesses to connector->status
-and connector->display_info interruptibly with the mode_config mutex.
-
+Fixes: 014da1db5e64 ("drm/edid: parse HDMI 2.1 gaming (ALLM/VRR) capabilities from HF-VSDB")
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/drm_debugfs.c | 24 +++++++++++++++++++-----
- 1 file changed, 19 insertions(+), 5 deletions(-)
+ include/drm/drm_connector.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_debugfs.c b/drivers/gpu/drm/drm_debugfs.c
-index a72f9723d3a9..476f44642ac3 100644
---- a/drivers/gpu/drm/drm_debugfs.c
-+++ b/drivers/gpu/drm/drm_debugfs.c
-@@ -586,12 +586,26 @@ static ssize_t edid_write(struct file *file, const char __user *ubuf,
- static int vrr_range_show(struct seq_file *m, void *data)
- {
- 	struct drm_connector *connector = m->private;
-+	u16 min_vfreq, max_vfreq;
-+
-+	scoped_cond_guard(mutex_intr, return -EINTR,
-+			  &connector->dev->mode_config.mutex) {
-+		struct drm_display_info *info = &connector->display_info;
-+
-+		if (connector->status != connector_status_connected)
-+			return -ENODEV;
-+
-+		if (info->is_hdmi && info->hdmi.vrr_cap.supported) {
-+			min_vfreq = info->hdmi.vrr_cap.vrr_min;
-+			max_vfreq = info->hdmi.vrr_cap.vrr_max;
-+		} else {
-+			min_vfreq = info->monitor_range.min_vfreq;
-+			max_vfreq = info->monitor_range.max_vfreq;
-+		}
-+	}
+diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+index 41f272afbb1e..021ab07a1d9b 100644
+--- a/include/drm/drm_connector.h
++++ b/include/drm/drm_connector.h
+@@ -265,10 +265,10 @@ struct drm_hdmi_vrr_cap {
+ 	/** @fva: flag for Fast VActive (Quick Frame Transport) support */
+ 	bool fva;
  
--	if (connector->status != connector_status_connected)
--		return -ENODEV;
--
--	seq_printf(m, "Min: %u\n", connector->display_info.monitor_range.min_vfreq);
--	seq_printf(m, "Max: %u\n", connector->display_info.monitor_range.max_vfreq);
-+	seq_printf(m, "Min: %u\n", min_vfreq);
-+	seq_printf(m, "Max: %u\n", max_vfreq);
+-	/** @mcnmvrr: flag for Negative M VRR support */
++	/** @cnmvrr: flag for Negative M VRR support */
+ 	bool cnmvrr;
  
- 	return 0;
- }
+-	/** @mcinema_vrr: flag for Cinema VRR support */
++	/** @cinema_vrr: flag for Cinema VRR support */
+ 	bool cinema_vrr;
+ 
+ 	/** @mdelta: flag for limited frame-to-frame compensation support */
 
 -- 
 2.56.0
