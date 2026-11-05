@@ -2,70 +2,120 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6BE61606EEA0
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 14:10:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 50154606A331
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 14:23:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EjPsAIB3;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=U6Y5ArE4
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KRqEhrty;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=kqUQNpzO
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=HVeCnac/cachuISmkn+4Yrv+u6eYC7GQmq+sAGgjhPM=; b=EjPsAIB3U+OI1p5vYm4ZRqt+eM
-	0LaLjE3Pk+0MaiV355elweAfO9nfhKUgTW/aUcczivHRQQVXIxUlVcAWEZ4ERszYTKDu+DHyIqX7V
-	3H/1EM+Kz9aL831vicqYcrJ6oM+728rs0HTpPAHT7FQKEnAQNfBfxeSGHlluY17fz15n0RFgsGYau
-	/fzpFtISCrkVzNzQNYHWM2PLOjtY4+9MW1mtAuXEiNCmAIG2SWuPiAlsotdeRNkPMIvR4KCOxbab7
-	jAxwKVWGbmfVfYOukDF2BiVT3iq7ddAzYlwuNC3nTTNEMrA/i09yd9+KhBJU06Ueg1uJgGqx1ElB8
-	cstSccoA==;
+	bh=kt3x+NgaqSWrZ9V5alSO4v0fnbANK9Ftld2EJomEcVw=; b=KRqEhrtyQdYJnRmCMjVKJ2HYlc
+	W4oz71h2gjgNHB9euBsabfApgtm9pWaIqCYvfja6Y8To6335vRX0+QD60yjtR4oyLqdy+TiHY/45S
+	YIWM/rSAyNKJPcG9AKY4WCQq8f05DqE02YIaZQ40RA7R/1S09NqRyEnxWTX8Xbs5/LGlD+6bihB70
+	HgCkyokrXnAUERFDI2BNK0H2uTiupLUclSgibUua9i2wZvnTnZ+cw6YFZ8TUUhNIHa4fdIqfhZ//l
+	f5CqEybgyHxi57yKbDCviIWstNyOiVCZ+3HtvCBtS6DjjkLxeQPakD152CKQO3uxvKuJXLbbrwCys
+	+nIF7dtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOyAZ-00000009DWy-2n4d;
-	Thu, 05 Nov 2026 14:10:23 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xOyMt-00000009FyV-1eFe;
+	Thu, 05 Nov 2026 14:23:07 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOyAY-00000009DWr-2POk
-	for linux-rockchip@lists.infradead.org;
-	Thu, 05 Nov 2026 14:10:22 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5772843E63;
-	Thu,  5 Nov 2026 14:10:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BAD741F00A1C;
-	Thu,  5 Nov 2026 14:10:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793887822;
-	bh=MTZqhm0aGJreZPGGbuUZEYlXZJP51jJf8Z0bzy30p1U=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=U6Y5ArE48X6AS0ezYl38zhQXOalEtjQsl88u/DU9nVwKUsw2md5g+NM5WaFSKn9DL
-	 ODSVF6ZtzOnyVDZiZ25+tPzCDwlAPLzMFfdkroTcYmCk/s1CbMjPgwYE6ccs0p4nMy
-	 gZWfOBlvZTQTIS7EEHviXZmAk3djdXjhjFQxuNsikrg17rVeSdKn43Ewnj6PdMDd8n
-	 wtV0QS1k1CB0JOLKnrgzqi/LxchYIULN558cwCrK90dfK/hYnRV6AJ5mmL3ocbw7sk
-	 bNsv/YjB7Lr7l0bm/PMG5iTg+Em6wJ2I48V2StQHpqQF29r6yt50KTghIJgOxZYLBR
-	 p5K+xBMC8afeA==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Thu, 05 Nov 2026 15:07:55 +0100
-Subject: [PATCH 38/83] drm/rockchip: Switch to
- drm_mode_config_create_initial_state
+	id 1xOyMl-00000009Fw1-3Pkd;
+	Thu, 05 Nov 2026 14:23:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1793888580; x=1825424580;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=8aE99+VJcMQQ2lFtFNMEVuo+WAHaGpOaIlVw0wUkjj8=;
+  b=kqUQNpzOAFCaYDSHcp8Wj4WmpoX3nJS4a+Kgf73h8jtx535iIXYYaWOe
+   K0Ea57swpZPo5j8bLuVT7bTDYB4F+f0tuwUQH4ZC99CXKTnfsFDX5TXY/
+   i6xUcn5URrVaHkYLilXDyz909mDABgqMSPSqwyt9RxltWwqH0JvaREGZX
+   Ofz5IGRm296N/vS+3rBNBIhX/rQ4IfGN4Uy7pR6YI8GSgrLaksPFXeES8
+   KU9Dr+YOg76ZZmPaFzwIFGav1dnKbeabAUU7RzNkIgXYEpEPxT85n/Ebe
+   bct31QF/JCTlCuG/1Mod9N6tbDgiVUZCYJf6T/+vjf7AaH8uVllOkmbT5
+   g==;
+X-CSE-ConnectionGUID: 3NnQ90yMTs66JXAeEg1Vgg==
+X-CSE-MsgGUID: 1M96ZIE8SYy6yW7CYqPwsg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11957"; a="2703077"
+X-IronPort-AV: E=Sophos;i="6.27,197,1787036400"; 
+   d="scan'208";a="2703077"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 06:22:59 -0800
+X-CSE-ConnectionGUID: /K275MsMS2iu65atWdhLvw==
+X-CSE-MsgGUID: RsKg5am+RfCPmB5pvRDPCQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,197,1787036400"; 
+   d="scan'208";a="7192371"
+Received: from amilburn-desk.amilburn-desk (HELO localhost) ([10.245.244.144])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 06:22:47 -0800
+Date: Thu, 5 Nov 2026 16:22:45 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Bartosz Golaszewski <brgl@kernel.org>
+Cc: Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Andy Shevchenko <andy@kernel.org>, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, Lixu Zhang <lixu.zhang@intel.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>, Imre Kaloz <kaloz@kernel.org>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Valentina Fernandez <valentina.fernandezalanis@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Daniel Palmer <daniel@thingy.jp>,
+	Romain Perier <romain.perier@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>, imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	Hoan Tran <hoan@os.amperecomputing.com>,
+	Alan Borzeszkowski <alan.borzeszkowski@linux.intel.com>,
+	Mika Westerberg <westeri@kernel.org>,
+	Hans de Goede <hansg@kernel.org>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	linux-hwmon@vger.kernel.org,
+	Matti Vaittinen <mazziesaccount@gmail.com>,
+	"Enrico Weigelt, metux IT consult" <info@metux.net>,
+	Viresh Kumar <vireshk@kernel.org>, virtualization@lists.linux.dev,
+	Yinbo Zhu <zhuyinbo@loongson.cn>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Srinivas Neeli <srinivas.neeli@amd.com>,
+	Michal Simek <michal.simek@amd.com>, linux-aspeed@lists.ozlabs.org,
+	asahi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org, linux-omap@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org, linux-unisoc@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Michael Buesch <m@bues.ch>, William Breathitt Gray <wbg@kernel.org>,
+	Robert Richter <rric@kernel.org>, linux-acpi@vger.kernel.org
+Subject: Re: [PATCH v4 00/23] gpio: Improvements around device-id arrays
+Message-ID: <auyRNagFOmxf_3nW@ashevche-desk.local>
+References: <cover.1793097104.git.u.kleine-koenig@baylibre.com>
+ <2hfpcbk6r56vvhkqyiex2apl3pinieybad5sd3vkvvabqs3uto@lydt3gin5kxe>
+ <auxh9PxpJScFO3i2@monoceros>
+ <le5gbua6s2mhhv32di4j77qr2we5z5ngzyzmiemhodmblvjiji@q4wf5tdgrbtv>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261105-drm-no-more-config-reset-v1-38-763560c2cc3f@kernel.org>
-References: <20261105-drm-no-more-config-reset-v1-0-763560c2cc3f@kernel.org>
-In-Reply-To: <20261105-drm-no-more-config-reset-v1-0-763560c2cc3f@kernel.org>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, 
- Andy Yan <andyshrk@163.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1324; i=mripard@kernel.org;
- h=from:subject:message-id; bh=u+F3Q/slyAJ4WB/81jUsRNlDARO7Uo/iUhGPQMLGiXk=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFlvetcYZBud+aioY72t/caG32wvol3/rLz/Ku1PmaaZG
- N+U2ii5jqksDMKcDLJiiixPZMJOL29fXOVgv/IHzBxWJpAhDFycAjARk2rGhkNyPc31ZmrFbxLc
- 2c6eEWp9UyO0g21fkuF881n7I8xqLXmUBN7qfa1NfzhrzRnlxtIDjPVeSsbc3iKrznLJ87ote5w
- own++aOnh6a8eCsVf13C68sycc+vSUuedLR/eCXcuWS/DUQcA
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+Content-Disposition: inline
+In-Reply-To: <le5gbua6s2mhhv32di4j77qr2we5z5ngzyzmiemhodmblvjiji@q4wf5tdgrbtv>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261105_062259_909589_ECFA267B 
+X-CRM114-Status: GOOD (  12.83  )
+X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,39 +125,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-ZHJtX21vZGVfY29uZmlnX3Jlc2V0KCkgaGFzIGEgZHVhbCByb2xlOiBpdCBjcmVhdGVzIHRoZSBp
-bml0aWFsIEtNUwpzdGF0ZSBhdCBwcm9iZSB0aW1lLCBhbmQgcmVzZXRzIGhhcmR3YXJlIGFuZCBz
-b2Z0d2FyZSBzdGF0ZSBkdXJpbmcKc3VzcGVuZC9yZXN1bWUgY3ljbGVzLgoKU2luY2UgdGhlIHR3
-byByb2xlcyBuZWVkIGRpZmZlcmVudCBiZWhhdmlvcnMgKG5vdGFibHkgZm9yIG9iamVjdHMgbGlr
-ZQpkcm1fcHJpdmF0ZV9vYmogdGhhdCBtdXN0IHBlcnNpc3QgYWNyb3NzIHN1c3BlbmQvcmVzdW1l
-KSwKZHJtX21vZGVfY29uZmlnX2NyZWF0ZV9pbml0aWFsX3N0YXRlKCkgd2FzIGludHJvZHVjZWQg
-dG8gaGFuZGxlIG9ubHkKdGhlIGluaXRpYWwgc3RhdGUgY3JlYXRpb24gYXQgcHJvYmUgdGltZS4K
-ClN3aXRjaCB0byBkcm1fbW9kZV9jb25maWdfY3JlYXRlX2luaXRpYWxfc3RhdGUoKS4KClNpZ25l
-ZC1vZmYtYnk6IE1heGltZSBSaXBhcmQgPG1yaXBhcmRAa2VybmVsLm9yZz4KLS0tCkNjOiAiSGVp
-a28gU3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+CkNjOiBBbmR5IFlhbiA8YW5keS55YW5Acm9j
-ay1jaGlwcy5jb20+CkNjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgpDYzogbGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCA0ICsrKy0KIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2Vy
-dGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9j
-a2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2RybV9kcnYuYwppbmRleCAzMDk5NDA4ZTlkMDUuLjFmYzYxMzRmNjkwMCAxMDA2NDQKLS0t
-IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYworKysgYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCkBAIC0xOTEsNSArMTkxLDcg
-QEAgc3RhdGljIGludCByb2NrY2hpcF9kcm1fYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYpCiAJCWdv
-dG8gZXJyX2lvbW11X2NsZWFudXA7CiAKLQlkcm1fbW9kZV9jb25maWdfcmVzZXQoZHJtX2Rldik7
-CisJcmV0ID0gZHJtX21vZGVfY29uZmlnX2NyZWF0ZV9pbml0aWFsX3N0YXRlKGRybV9kZXYpOwor
-CWlmIChyZXQpCisJCWdvdG8gZXJyX2lvbW11X2NsZWFudXA7CiAKIAkvKiBpbml0IGttcyBwb2xs
-IGZvciBoYW5kbGluZyBocGQgKi8KCi0tIAoyLjU1LjAKCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Thu, Nov 05, 2026 at 01:25:34PM +0100, Bartosz Golaszewski wrote:
+> On Thu, Nov 05, 2026 at 12:06:33PM +0100, Uwe Kleine-K=F6nig (The Capable=
+ Hub) wrote:
+> > =
+
+> > Maybe you just need to add `-3` to your workflow? ISTR this should be
+> > the default for b4, but it seems if failed to mention the -3 in the git
+> > am cmdline.
+> > =
+
+> > Should I still resend?
+> =
+
+> No, it's alright. I would have preferred a clean b4 shazam but that
+> works too, thanks.
+
+To make that one should really have a unbiased base with the gpio/for-next,
+say v7.4-rc1. Then with --base present `b4 shazam` should follow that.
+
+-- =
+
+With Best Regards,
+Andy Shevchenko
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
