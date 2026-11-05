@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5479A6082BD3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 13:33:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BAD61606D824
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 13:33:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cbrxCYfz;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=bvWQbDyq
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gfR1VIJY;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=kSj0tvAE
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,45 +14,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ReWM0/gi2iukeJSzezRKf7PA9PDqFtGZRkxk8xSe7PU=; b=cbrxCYfzSEn3cz56I8t1jq40CP
-	yDPBqULkiWhwdDyQjxB2rziQPO3He59zPWaX6nHgC0K3Q2ro4/46k0aNltwi0z550r+ymuLCVTRyz
-	ti6g2yi1ONtz7OcrKGlaeBzdoAUwhi23BtCKazqNwlodcdEDpSa6/7gEqZKH5x4z+AJT/UG0pkdGv
-	BvquWOvOfZ0rMPjzf9WnsEvNLpPL/VK+dJINbp/lQJZx96EAMqnvXH3K3stCZZX6x+K63OIkfSVT4
-	tkv0DmFm8spka+z7UabggqDp8uJCXbdUqM8hx0e67pMIAIOhXYon09mpthKpG4DbM+mzBMcsUqa/b
-	nCtZneSg==;
+	bh=eBfNyryQo9HIMAgi8xXhkXwZhmzQKFkzDD6Fcc4+ccI=; b=gfR1VIJYCu60a8U5pSnyW9wjuD
+	7k0uE75un7PRJya4uPtlUGf8LGqzxLPFJJz8jqwcyDCdhhbJjZFizxoWHG9AWkZObVML6nXnuRFw7
+	wdwUbSEkcu5yjfOtuK+fHyEPoeuLYhJW5vc87kwBjVpnhT3IbYmCZd1L19qKd/UVadmO03XxC/rhw
+	cprr1C2O+jg/OUikcH9N0MVL7/QS0rYkrOM4BCy2uxMhz1GScZbkQjcMInXNeYrVtq+bsuvhSrdyE
+	lSsdqY4ex5qTeLtt1bC/XiBsWftH+6058kfPZkTlm2SnQN4Fe85xFbbszC20xFQB8Fn1WNmN55OAS
+	+DMDLzow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOxai-000000098Fg-1u0c;
-	Thu, 05 Nov 2026 13:33:20 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xOxaj-000000098HD-0RQ4;
+	Thu, 05 Nov 2026 13:33:21 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOxac-0000000989I-1b7o;
-	Thu, 05 Nov 2026 13:33:16 +0000
+	id 1xOxab-0000000989H-3ieV;
+	Thu, 05 Nov 2026 13:33:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1793885591;
-	bh=GfAyb2KdZIf1ttG9EdRmi74euMuvmqM9ACQXbRgW0IQ=;
+	bh=8gAjDeFID8mO/dDQRifUwMLmNaFsmqSGIncrUFAKD1o=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=bvWQbDyqyU4FsNL7ZK0moUHArw/ZqOtZDbZCVLnJ2+nFPH5kWgaTjZkWRjLSZaUI9
-	 JzFgItAGgNs5P4UIbrVEPSmANSifWcQn2qdoAuw7wEsu9c2a4C7UpqHirnAbAMkN1F
-	 P7rjVJC7xC1Rf9RtlJHXbJKJ+0bp2MQvlkLizmzEXbbRaG9Vypa/anWBb8mUD7A12k
-	 kcgDUYTEb4mjnS/7jJku/YEaXc63xXMxkYVdfnOeOXOfF+z0O9lJ20uF4n9z+jTMUP
-	 wUc+o5L88aTiIOTuGY8IS8WAWzryohyTJGh9W2zS2+Ujxq2j3Jek+e+CiW1oMQq9bp
-	 KA69aiBcYHB3A==
+	b=kSj0tvAEuq41sJ9BhzXdIqIOwIuWI93aN2UD9pyjRLUBfU0VeHlZYo+ewLRC9Cgcn
+	 Hs5ZqMsaNTHoDMl8+AjpHoxKQ9Kxf/a+75OXN0q5c/Ufaqwz+BTgpr8vF+A3YDaR1z
+	 O9yaelsz6YfxmNGQt7DbDU6VXb7cnI4j0KOrnMxx7QK88FJdv1CmcxwvVTI0GejIUQ
+	 lZ8LaWPBPmU+z0wiKls7L0WQ/wRmmXtAfjhkde4ARrP6rBM0qhJKSeLXIBjkygJlRc
+	 WFHS57US/G2wCMy9WWqiJvN8nmGpYwVPrDuMluog36wAewNRzLQZ2XNqpdtb0zb3UD
+	 XDR6T9+VygGXg==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 42ADD17E0B10;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 416EA17E09FA;
 	Thu, 05 Nov 2026 14:33:11 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id E5C2D480030; Thu, 05 Nov 2026 14:33:10 +0100 (CET)
+	id E3C1F48002F; Thu, 05 Nov 2026 14:33:10 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 05 Nov 2026 14:33:11 +0100
-Subject: [PATCH v9 3/9] PCI: dw-rockchip: Move devm_phy_get out of phy_init
+Date: Thu, 05 Nov 2026 14:33:10 +0100
+Subject: [PATCH v9 2/9] PCI: dw-rockchip: Restore vpcie3v3 regulator handle
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261105-rockchip-pcie-system-suspend-v9-3-a2e55846649e@collabora.com>
+Message-Id: <20261105-rockchip-pcie-system-suspend-v9-2-a2e55846649e@collabora.com>
 References: <20261105-rockchip-pcie-system-suspend-v9-0-a2e55846649e@collabora.com>
 In-Reply-To: <20261105-rockchip-pcie-system-suspend-v9-0-a2e55846649e@collabora.com>
 To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
@@ -69,26 +69,26 @@ Cc: Alexey Charkov <alchark@flipper.net>, linux-pci@vger.kernel.org,
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1616;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2506;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=GfAyb2KdZIf1ttG9EdRmi74euMuvmqM9ACQXbRgW0IQ=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrshZaWKikzrWxxNOh06sMXTLUqlXAG1mapS
- VAdSXaq+TxED4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq7IWWAAoJENju1/PI
- O/qa0h4P/0AzSa+JdId14Z41L/1TvB3J8I16KekPIsh8Ew2QNvPwfhhWHliOkJrVp53NA9WPTcr
- gD8CeUCH8Pwe5FdhI8QHnaVKkwIA830dlCmjIvCMXU7XDhqKtwaFtKJalLriMbDwbfBRNsEQQX0
- DDoemxz3XSVlmgO4/dzg8yH5iLIkAWvHSxNZ5ctcreIVDgGNlrUWY6Z6RoU7F1oVuRrEfxOHMyT
- z3JadXoZnNADc0jzqHXXWHtvgacdAEp+FLnggqJA2EUEOW6P6DfsmObOpc0ZLeQA2P580Gg0BlL
- ZLcEkNOXscFt1uVHnSOPoAMmE1Yx44Bx/XbcG/pHV/ZG9/dhi3rvIGX4ZPa6d1SVlporbkN1aRY
- bkZ+kKREwGwKSaUVremx2E05nPzcITNjhgGFKAAKk05nFPHgB8QOmDrMhqNrYmWb7hjcnYIFoZh
- 7OC06u8VgaszzDzDsueziFGH5nf+BjsDdS+hJymg2JjQDED5h18VT03E8QI5ZfGiq8miuYEgaS4
- TqEjylGZJhPVF9+jmUl/5mi2FJIFDo+vBOOEBPRCDMWtAlrxsicUBOIIMCmvsSMTMGjB5xTc43B
- 0mZ5Yj/r0vlrvkZym15mZvzFXoRwTTAhWVHixfaSkH1hAoRERhsbKqYpe8TKijgVfkIK5yT/sgz
- Hj8bdc2jnfwh7khe7VZMdug==
+ bh=8gAjDeFID8mO/dDQRifUwMLmNaFsmqSGIncrUFAKD1o=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrshZaaFN74/4a1JqT1j4s/AeavAREvfMF84
+ ux7J010D30UrokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq7IWWAAoJENju1/PI
+ O/qaaqsQAJdzdyKe3Jk4MIaD1/dk+qZrCVFXk4CYaKghkrmBqLBiJSiHnbRVzk7E/X2QLpsVkcP
+ V0ZFWgSJNcmI7sNJcuVtcMqjN7aele1pBkjbjoCUhufNMRUc531M5k2K0wJIAfZ9AE5B2D/3QFx
+ pjKHcYqUbqieA3eNKamKH8FFOWZlIY2layRKQNyQvYeAYtmV+FZDULIrCFLPdmpIEpEgW7yUY+5
+ yDxovjp7hXZnTdzA5boJB1fd8/Y4dvGgGwzORTYPyiDihPaEDzRczoufPYKlZW8Z8SsrXQJLbMt
+ LqElqdGfINO6NDyezXq8DuCMh795BKa93O8MUquGZZOkz6i32N5GERbf7EXIducm4dM3Rl51N2H
+ Xh6zfSH/UVZWsrgCM9S985+JTKmSl3iS7imWFPRB0gmMcIfrXOrWxIqJxpTfuiBKlPWpEqU3xb/
+ fI48JPgIKinZ7gA1zqQ6sWOjuu8+DxzU2tQFB+FWpNnfehSUxsb5BfqGOcVqN247EKa2hRacUoZ
+ dpgTp4OBocbUowc52M03v0xgRzr21qF3Vd4CpYdwy2lXdZ58xd2xY6n5XIOHlzkCMR9JIK6ynWP
+ 46yCqmaYDGJ9VOO+aEzfgONKmDmdztx8WGQHKeNDqcDOQOI6TxPgDAQm0WMNc6p19PF/HGNk0dW
+ 3HU0IieibI7Etti/hHWstLA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_053314_605755_2FD73B9D 
-X-CRM114-Status: GOOD (  14.72  )
+X-CRM114-CacheID: sfid-20261105_053314_097990_D4B81EC7 
+X-CRM114-Status: GOOD (  16.01  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,49 +109,73 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-By moving devm_phy_get() to the probe routine, rockchip_pcie_phy_init()
-can be used to re-initialize the PCIe PHY, which is for example needed
-after a system suspend/resume cycle.
+This reverts commit c930b10f17c0 ("PCI: dw-rockchip: Simplify regulator
+setup with devm_regulator_get_enable_optional()"), which nicely cleaned
+up the code.
+
+The vpcie3v3 regulator handle is needed to disable the regulator during
+system suspend (to be added in its own patch).
 
 Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 27 ++++++++++++++++++++-------
+ 1 file changed, 20 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 574d3dcfcf8b..a3b0fb918479 100644
+index c35c5583c797..574d3dcfcf8b 100644
 --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
 +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -599,14 +599,8 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
- 
- static int rockchip_pcie_phy_init(struct rockchip_pcie *rockchip)
- {
--	struct device *dev = rockchip->pci.dev;
- 	int ret;
- 
--	rockchip->phy = devm_phy_get(dev, "pcie-phy");
--	if (IS_ERR(rockchip->phy))
--		return dev_err_probe(dev, PTR_ERR(rockchip->phy),
--				     "missing PHY\n");
--
- 	ret = phy_init(rockchip->phy);
- 	if (ret < 0)
+@@ -113,6 +113,7 @@ struct rockchip_pcie {
+ 	unsigned int clk_cnt;
+ 	struct reset_control *rst;
+ 	struct gpio_desc *rst_gpio;
++	struct regulator *vpcie3v3;
+ 	struct irq_domain *irq_domain;
+ 	const struct rockchip_pcie_of_data *data;
+ 	bool supports_clkreq;
+@@ -844,15 +845,24 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
  		return ret;
-@@ -858,6 +852,13 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 					     "failed to enable vpcie3v3 regulator\n");
- 	}
  
-+	rockchip->phy = devm_phy_get(dev, "pcie-phy");
-+	if (IS_ERR(rockchip->phy)) {
-+		ret = PTR_ERR(rockchip->phy);
-+		dev_err_probe(dev, ret, "missing PHY\n");
+ 	/* DON'T MOVE ME: must be enable before PHY init */
+-	ret = devm_regulator_get_enable_optional(dev, "vpcie3v3");
+-	if (ret < 0 && ret != -ENODEV)
+-		return dev_err_probe(dev, ret,
+-				     "failed to enable vpcie3v3 regulator\n");
++	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
++	if (IS_ERR(rockchip->vpcie3v3)) {
++		if (PTR_ERR(rockchip->vpcie3v3) != -ENODEV)
++			return dev_err_probe(dev, PTR_ERR(rockchip->vpcie3v3),
++					"failed to get vpcie3v3 regulator\n");
++		rockchip->vpcie3v3 = NULL;
++	} else {
++		ret = regulator_enable(rockchip->vpcie3v3);
++		if (ret)
++			return dev_err_probe(dev, ret,
++					     "failed to enable vpcie3v3 regulator\n");
++	}
+ 
+ 	ret = rockchip_pcie_phy_init(rockchip);
+-	if (ret)
+-		return dev_err_probe(dev, ret,
+-				     "failed to initialize the phy\n");
++	if (ret) {
++		dev_err_probe(dev, ret, "failed to initialize the phy\n");
 +		goto disable_regulator;
 +	}
-+
- 	ret = rockchip_pcie_phy_init(rockchip);
- 	if (ret) {
- 		dev_err_probe(dev, ret, "failed to initialize the phy\n");
+ 
+ 	ret = reset_control_deassert(rockchip->rst);
+ 	if (ret)
+@@ -885,6 +895,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
+ deinit_phy:
+ 	rockchip_pcie_phy_deinit(rockchip);
++disable_regulator:
++	if (rockchip->vpcie3v3)
++		regulator_disable(rockchip->vpcie3v3);
+ 
+ 	return ret;
+ }
 
 -- 
 2.53.0
