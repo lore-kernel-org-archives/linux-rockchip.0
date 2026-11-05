@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C6FE6606A332
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 01:01:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 89361606D828
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 01:01:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vrqvY7zY;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=KUfR5Obr
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zVHDb2iH;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=MDWWwlXC
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,44 +14,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=zOD3aRI3BWqTafIgrYjnAoSeifksiInbV9973rgcUhg=; b=vrqvY7zYfczvlVp/wFkCoVto7g
-	wS3bQKqN12CQP2iSCj7hWVbwsnYaWnOxMQk5BRr2mY7LaeKB8nBYeMkDnsG1j4gAWN8mTG7yFFyVU
-	hVsfQAb4PCMELNFPRbLNJB9zj0/y2eccLgRhqH1uKCn0OaqmFfKJEprnRn/c2NCarbZq1wy7wulrB
-	MXFtviS3K9RqqEVXwEnBy7fBQRcoHgDVCeExUnUEE5GR8pce245G/6qWATTpfbO+s6qve8nxl2FCs
-	uc7hWvigipqpPiSScdzlXiTeTQCDgI/xrzUz64eDpZAdbNMJo5q6RlaFNSqYT2MU8jP9GKNfZTanr
-	xzZ2FE2w==;
+	bh=lnRoiUCAC4kHcIh8gv970TzmcOcZqxUO3gEzRYVOf5c=; b=zVHDb2iHgT4H05ExzWZRjvp6pb
+	JXuRRpEZFK5gzqshRWKOlnwBGduTtD2/HeuK6FYdnuJ7hoW3+BK4EZRUq/x5xuyoWvafoRi9q17xE
+	mu/hEcaJO0mr8rrnIHmNrJOR7oYC6KYQMwd1DhKpY0b3wCmMI8za6DOoOGAo4/A9GU5I6myM05PD4
+	cXDQ41aaqFif1V+wUQRf0C7YFHcrMltPXoTsfc03QfpUr0c0z5esM8hg5EEKtvLjlPa4xoANjz/BW
+	wX8pO18ixUu6QLyhXeqn5auxfd6ZgDtJzcezFYH/3SjOU2loMTtG6Il0Ctwy3IbAJrpv//IgV0dyV
+	uLCquXpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOlr4-00000007OxH-3Tx1;
-	Thu, 05 Nov 2026 01:01:26 +0000
+	id 1xOlr5-00000007P1H-3SgX;
+	Thu, 05 Nov 2026 01:01:27 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOlqw-00000007OXQ-06ww;
-	Thu, 05 Nov 2026 01:01:20 +0000
+	id 1xOlqx-00000007OZw-2FaF;
+	Thu, 05 Nov 2026 01:01:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793840475;
-	bh=t4xm3scI4l7rWR2iBzxLstmE0RTUxpACdTblDz3oXNQ=;
+	s=mail; t=1793840477;
+	bh=JzGzUfuhfcfeEnoYFB9FfGGdw4SszHeIH0PSK2/hZUc=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KUfR5ObrP8jFka/2UPUUWjo5o+FDtK93b3osH2OAYgNva3uJp9kGslkH1OJPda5Zf
-	 15X8CZOFNP1JNd9dCYuNZEnWFFVWRV3JrpqciB3HKcITk1exygNn1GPePk2JiLZIqy
-	 6LiQEhNSQKDr4q5w8frc2zPmaLmytXKMtIYys4O7CaqzfsjbFZfi+PKeGal9ZXjTR8
-	 2aOHtllwVzPI6ymja4nt2se6eWSmqQrg96a6lqDvy0zSfwfzPdLW84D9dTz2l55iyb
-	 As6jY4tda6vDPVLhwlAfVOQybrhbMNzJC/cveKrTF6i433O+G7wby2GR2vUOTHaOmq
-	 KvkFfAhG1aXCw==
+	b=MDWWwlXCSlM0agj9tA9e8bWmz22nJlYyA7++e/F5OFCJeSxeCQ20bW8gFLiyn+KLF
+	 cgdWstVA7e4YNZ4Ph0OAHAqkF3illG7cXvSnxAeSGKcJxEdqRZ7LnlCmeC+K/B/koH
+	 /nG5ruGhKF9cSxRC+FasKNfRClJ0z+wnsmCioobILURMDIAgjKtD+Fb1CDcuvFOuuG
+	 9yff9O5ycWppvGl8xLaFwRsi6sZ1R+NSiaBDvFgmrGhSdlK2XMwGJprvYvaIHToB4O
+	 JtdftT+5VFwz//BUSU3KxDOG6F6u3bIvSDr/6hp7EFrtXQDai+5OcbImDmPHTceKHi
+	 sKd9iyGkkOtKg==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 038DD17E0CE8;
-	Thu, 05 Nov 2026 02:01:15 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 447E517E0D48;
+	Thu, 05 Nov 2026 02:01:17 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 05 Nov 2026 03:00:46 +0200
-Subject: [PATCH v6 12/15] drm/rockchip: dw_hdmi_qp: Do not mask error code
- in atomic_check()
+Date: Thu, 05 Nov 2026 03:00:49 +0200
+Subject: [PATCH v6 15/15] arm64: dts: rockchip: Add RK3588 VOP2 resets
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261105-dw-hdmi-qp-yuv-v6-12-1bb63ef5766e@collabora.com>
+Message-Id: <20261105-dw-hdmi-qp-yuv-v6-15-1bb63ef5766e@collabora.com>
 References: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com>
 In-Reply-To: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -74,11 +73,12 @@ To: Sandy Huang <hjc@rock-chips.com>,
 Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Sashiko <sashiko-bot@kernel.org>
+ Igor Paunovic <royalnet026@gmail.com>, Andy Yan <andyshrk@163.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_170118_869731_58A6DB24 
-X-CRM114-Status: GOOD (  12.38  )
+X-CRM114-CacheID: sfid-20261104_170119_836643_DC82CAD7 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,41 +99,39 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-dw_hdmi_qp_rockchip_get_vop_format() calls
-drm_atomic_get_bridge_state(), which takes the bridge private object
-lock through the atomic state's ww acquire context and may therefore
-fail with -EDEADLK when the lock is contended.
+Add the missing reset properties to VOP2 on RK3588.
 
-The DRM core expects -EDEADLK to be propagated up from atomic_check()
-so it can drop all held locks and restart the commit.  Replacing it
-with a hardcoded -EINVAL defeats this backoff mechanism, making
-otherwise valid commits fail spuriously when multiple threads perform
-atomic commits concurrently.
-
-Propagate the error code returned by the helper instead of
-unnecessarily overriding it.
-
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/all/20260902230603.AF5C61F000E9@smtp.kernel.org/
-Fixes: a18aa0dd7a0b ("drm/rockchip: dw_hdmi_qp: Implement "color format" DRM property")
+Co-developed-by: Andy Yan <andy.yan@rock-chips.com>
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Tested-by: Igor Paunovic <royalnet026@gmail.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index f2a1ea8dfefa..db1933d75ced 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -203,7 +203,7 @@ dw_hdmi_qp_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
- 
- 	ingest_fmt = dw_hdmi_qp_rockchip_get_vop_format(encoder, conn_state);
- 	if (ingest_fmt < 0)
--		return -EINVAL;
-+		return ingest_fmt;
- 
- 	if (hdmi->tmds_char_rate == conn_state->hdmi.tmds_char_rate &&
- 	    s->output_bpc == conn_state->hdmi.output_bpc &&
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index aa69fd3793fd..d0f364547ae5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -1651,6 +1651,18 @@ vop: vop@fdd90000 {
+ 			      "pll_hdmiphy0";
+ 		iommus = <&vop_mmu>;
+ 		power-domains = <&power RK3588_PD_VOP>;
++		resets = <&cru SRST_A_VOP>,
++			 <&cru SRST_H_VOP>,
++			 <&cru SRST_D_VOP0>,
++			 <&cru SRST_D_VOP1>,
++			 <&cru SRST_D_VOP2>,
++			 <&cru SRST_D_VOP3>;
++		reset-names = "axi",
++			      "ahb",
++			      "dclk_vp0",
++			      "dclk_vp1",
++			      "dclk_vp2",
++			      "dclk_vp3";
+ 		rockchip,grf = <&sys_grf>;
+ 		rockchip,vop-grf = <&vop_grf>;
+ 		rockchip,vo1-grf = <&vo1_grf>;
 
 -- 
 2.55.0
