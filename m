@@ -2,12 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0552606A32D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 15:57:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 44AA3606A33A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 15:58:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=I87ZjcY2;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=XZI6WoYA;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=kJ6f17vw
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=5CEWQRej;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=kQP8xFig
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -15,54 +14,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=NNAgrukoOJ/b/GgfIP437gWd2jbj/nOeOIx3YB/b34M=; b=I87ZjcY2OGLXoRwaRWGyOztwda
-	05I5MuTlQn6UAzOjBMu3q/fWMHl0ubFjavq6o+xnBIIzq2zT7F4AGbPxRy0d9AEXqfvoMdERhpYFB
-	k5vCFVQnMRtF/L1ceHfm+3w0PBgdvQA8RYkNRI2/E/Ps0HxibNpuJr1b4Ev99xRSmDmcNFVSPQtr2
-	wkRJb6yGE98K53DJfusA7LBPWkJuQ9IlEjBHh0ZDggJaBQb5d1Ddc8OPVT347/WyAFjaZ/ByHYZk+
-	+CYVVWQBGEdUt28Q9nujpSigkatknueumPkit044dHX2sswxNgD2UBGkCCzGBh3n53gReaZb/Q00Y
-	Gg5h84Ow==;
+	bh=m+jJEFfscgod3+XEyt9XK74Z+VHrCaVBJkl/nj1T5+w=; b=5CEWQRejG4dgF4vmp5qkdTHhyK
+	Ky1A0Maomr7SgFWPvnH4X0lfmYKFY7KpJV8nD4wb6Chn86WqElSy2Ycbr9eqMJoIbvfZV6CYWsnLX
+	NUVV6FsrYQQXneVmnAhQSMvbLifXV0ojpf4mujUm9YRQDlkxyzK1puVAORCKmesPAiJ5WVXqZX3gw
+	M6t4FT/JH6RPtvuVVy0/Jv3U9didrJlQK77q7Ea6vYHsC/5kHWasRag2p7bTSbygrO89eTrHIRMXV
+	Lrppb//EX3JYTeYCY0BYhRtCdzL66bt6W7BQpIBxuZFx8D5p6kunvtfeo2zALUKAmW0ySNqD4eH7V
+	7gNOBC6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzq5-00000009V4K-328N;
-	Thu, 05 Nov 2026 15:57:23 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzoH-00000009TxR-1FJF;
-	Thu, 05 Nov 2026 15:55:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=igQATVU1Yc1Mn+dz931w/tbusWSL5LcSoV79LRLrIvI=; b=XZI6WoYAG+mWZou85k53FzmXtn
-	mxovDzagHWRluWLlqPFGfWVmvd2IymjVUh2vOib2VKKbhMXUxt4uCnCz1yPJqSmHWsYwSB+Ah+2uS
-	s/IETq9SaJXalcHcOkJH+OnqZtInBSysjqt2UZ5Z6lXDXbVfaX2s2+MW9BJpuVUSWZVUJQX46N7IE
-	qO51l3aWeOZdDmCsybsW9l0FP5CCEf7KUCLDfhqaNxo4xFL6ypycXwwIfSxchvml4RMHOR1jLL+T5
-	+PHdJK4nFEcdoFZjKZgOnvlo8K3ckZ7TVKzqklLScF+Btr8iDQAU0gbzlSiIEZfWPvs0Wt+me2YhB
-	7p6ZCKEA==;
+	id 1xOzqa-00000009VE8-39r0;
+	Thu, 05 Nov 2026 15:57:53 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzoE-00000003Chd-0gs3;
-	Thu, 05 Nov 2026 15:55:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1793894085; cv=none; 
+	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xOzoK-00000009U2V-005P;
+	Thu, 05 Nov 2026 15:55:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1793894067; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=VhskGWTmhRP+s548VmCcgGW+MDFRplI3W1sF9BzPT0OBohPMTdFqEPjYnvB5TPTv741uWvGnYRMVAJCmU5K+9eYNdCvNSa/j0aahyGMcY7HRGIQBFvLzr9VjC72Febj93pHnBfADk852RstJlv6Y9T+juGJRdhY3wGcYzcJqtFU=
+	b=MFsFdQgnegm1B3xQ8huk7GZLc4TUC3KxCXfA9bIAiy9iBmjsxQJwnPFVYr1gkl1xMv0LywG3IAdwU6OY+GoEg6GIkmpM1y3yitE7mq4mDbyqpMkwvHhbK/VsppZIXQ4z7F5kHg8dmojkmPeWWyJPFpwMSgalzX8ecjE5U+WdUzw=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1793894085; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=igQATVU1Yc1Mn+dz931w/tbusWSL5LcSoV79LRLrIvI=; 
-	b=NGUgAw30ItGE+Kb7RWCydoVWwEgBxhxjdzLz5TUlW022cNoDK/OBPxKPG8OD+RPm+Eajey62DiR3bCLk/TWDvyShghb5SGKQTyGzEpJpFJ8jcFDwOelvu+aN2sP3/DI/Rj/mf00w3dHy1TRKR1STprfRPE4plrRAqsTIRaLvlsI=
+	t=1793894067; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=VSQNShoB0NRUJv6LH1J7WdPfdRWQNf3+ZOl8d69TG6Q=; 
+	b=enbBslQS4Hcyt8BocoexXCoAWDT6h1/pMBjf6NJAVKB2rKsJRS1BV4dj1uiAxYpMvPkTGtdMBmYSAlOVNLS4rEyueGPYpVSc59aY52CbBp/hLR7BU/XuYKYdEoybbqY8ofzaFAnY7Q5XtzCl5cU3yosdqIDWSTx2c5Co53nhqw8=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=kJ6f17vwJuXHaq/0T1adxJqc2OOuiy9DPWOKBi//vAoyjUQRSrp/wZEOFzoco3zytHJmmr4JMrNt4uRkltIjTzsH13FI6SkX3l3VCfgReumNM96fPFRemug4lGJ8Bw3PCjfayyeccPKwOmj249szHdkf4rmqVYxMUif2MB5RRoQ=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=igQATVU1Yc1Mn+dz931w/tbusWSL5LcSoV79LRLrIvI=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1793894084835140.54892489016675;
-	Thu, 5 Nov 2026 07:54:44 -0800 (PST)
+DKIM-Signature: a=rsa-sha256; b=kQP8xFig6aOPYeuyosbN72pQeWl5WEcYA53Fe34V8KiBDKpXwHHJGEzoTSxEkVM4mjSiw7mH/WKENojMGdmYDUkvL/KbrcYnK8eip/sK+bxCA5Jja7o5ZHi+x1296zjdGKVkhzmyL2gWjERVRK03I1oV9yhI+YOSr/wYmCTgOxo=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=VSQNShoB0NRUJv6LH1J7WdPfdRWQNf3+ZOl8d69TG6Q=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1793894066538358.0060003364383;
+	Thu, 5 Nov 2026 07:54:26 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 05 Nov 2026 16:52:12 +0100
-Subject: [PATCH v2 21/27] drm/rockchip: dw_hdmi_qp: Add QMS support
+Date: Thu, 05 Nov 2026 16:52:09 +0100
+Subject: [PATCH v2 18/27] video/hdmi: Add support for QMS in VTEM EMP
+ packing
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261105-vrr-limiter-uapi-v2-21-55f4215be2c2@collabora.com>
+Message-Id: <20261105-vrr-limiter-uapi-v2-18-55f4215be2c2@collabora.com>
 References: <20261105-vrr-limiter-uapi-v2-0-55f4215be2c2@collabora.com>
 In-Reply-To: <20261105-vrr-limiter-uapi-v2-0-55f4215be2c2@collabora.com>
 To: Xaver Hugl <xaver.hugl@gmail.com>, Vidith Madhu <vmadhu@nvidia.com>, 
@@ -88,9 +74,9 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_155526_615979_4D344ACA 
-X-CRM114-Status: GOOD (  13.00  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20261105_075535_668571_C37ACF57 
+X-CRM114-Status: GOOD (  12.66  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,39 +96,62 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add the "Media" VRR display mode to the set of VRR display modes being
-registered, and set the qms_supported flag in the connector's HDMI
-sub-struct. The actual QMS functionality itself is implemented in the
-common HDMI state helpers.
+Add the necessary struct members and packing code to allow the
+hdmi_emp_infoframe_vtem_pack function to write VTEM packets with HDMI
+Quick Media Switching (QMS) data.
 
+Co-developed-by: Derek Foreman <derek.foreman@collabora.com>
+Signed-off-by: Derek Foreman <derek.foreman@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/video/hdmi.c | 6 ++++--
+ include/linux/hdmi.h | 2 ++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index dcde50bca36b..215cf746dc41 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -90,7 +90,8 @@
- #define RK_COLOR_FMT_YUV420		0x3
+diff --git a/drivers/video/hdmi.c b/drivers/video/hdmi.c
+index ed9abc7ad228..c164f69a646a 100644
+--- a/drivers/video/hdmi.c
++++ b/drivers/video/hdmi.c
+@@ -1994,7 +1994,7 @@ ssize_t hdmi_emp_infoframe_vtem_pack(struct hdmi_emp_infoframe_vtem *vtem,
+ 	ptr[1] = BIT(7) | BIT(6);
+ 	ptr[2] = 0;
  
- #define RK_VRR_DISPLAY_MODES		(BIT(VRR_DISPLAY_MODE_GAME) | \
--					 BIT(VRR_DISPLAY_MODE_OFF))
-+					 BIT(VRR_DISPLAY_MODE_OFF) | \
-+					 BIT(VRR_DISPLAY_MODE_MEDIA))
+-	ptr[3] = BIT(7) | BIT(2);
++	ptr[3] = BIT(7) | BIT(2) | (vtem->qms_en ? BIT(1) : 0);
  
- struct rockchip_hdmi_qp {
- 	struct device *dev;
-@@ -753,6 +754,8 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 			return dev_err_probe(hdmi->dev, ret,
- 					     "Failed to attach 'vrr_display_mode' property\n");
+ 	ptr[4] = 0;
+ 	ptr[5] = 1;
+@@ -2005,10 +2005,12 @@ ssize_t hdmi_emp_infoframe_vtem_pack(struct hdmi_emp_infoframe_vtem *vtem,
  
-+		connector->hdmi.qms_supported = true;
-+
- 		ret = drm_connector_attach_vrr_display_limits_properties(connector);
- 		if (ret)
- 			return dev_err_probe(hdmi->dev, ret,
+ 	/* This is where the VTEM part starts */
+ 	ptr[10] = (vtem->fva_factor_m1 << 4) |
++		  (vtem->qms_en ? BIT(2) : 0) |
+ 		  (vtem->m_const ? BIT(1) : 0) |
+ 		  (vtem->game_vrr_en ? BIT(0) : 0);
+ 	ptr[11] = vtem->base_vfront;
+-	ptr[12] = vtem->base_refresh_rate >> 8 & 0x3;
++	ptr[12] = (vtem->next_tfr << 3) |
++		  (vtem->base_refresh_rate >> 8 & 0x3);
+ 	ptr[13] = vtem->base_refresh_rate & 0xFF;
+ 
+ 	return 14;
+diff --git a/include/linux/hdmi.h b/include/linux/hdmi.h
+index 71e2b36896af..8eaa127f0cb5 100644
+--- a/include/linux/hdmi.h
++++ b/include/linux/hdmi.h
+@@ -243,10 +243,12 @@ struct hdmi_emp_infoframe_vtem {
+ 	unsigned char length;
+ 
+ 	bool game_vrr_en;
++	bool qms_en;
+ 	bool m_const;
+ 	unsigned char fva_factor_m1;
+ 	unsigned char base_vfront;
+ 	u16 base_refresh_rate;
++	u8 next_tfr;
+ };
+ 
+ void hdmi_avi_infoframe_init(struct hdmi_avi_infoframe *frame);
 
 -- 
 2.56.0
