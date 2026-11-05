@@ -2,128 +2,102 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 03B5E606A32E
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 10:38:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 11C65606A31B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 10:54:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bRkjMPwv;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=A4rKjlRB
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=onamND9j;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=samsung.com header.i=@samsung.com header.a=rsa-sha256 header.s=mail20170921 header.b=NcjEQpYM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=7D5GUvADX9arh4COSSk/E3Qj28wyb24fe7bJWIMtv+0=; b=bRkjMPwvf5FsqKFdqjOrU2SmB9
-	qTwS43g0uaX7ZxCfV1Cmt5SqsKaUyAdFEOvD9bFWUO+cz4iackAwRAB0bSV1wsc4/KVhCRdHlTwKX
-	ja1VNOp/T15ty6KQNgySJZO4ILewFEcPLBw5AF3prDuCUK1cCut/TsBlj7I8z6rLHLNcgg+vvDmI0
-	MAMDj7xU1Vrd6kdws+ZYxrAqIfswDjbfYNHslC3NAtkXoEk53vv6z1uOyI5ElaxsFIy7mg+yUL6JN
-	TYxSS0dx1PwLgJ0GN/zHs5ISlvqBFqaSdP1hNbIyWmWCaFWwyEANplswul+xMSMOB4NZ4GiekC4/P
-	/5f9fUVA==;
+	bh=YX8C2SROoNAI+LYdXQvG9zYi51L4YQUYNR/tPnoXyLM=; b=onamND9jUM2tYULVo5Gdh1zd2W
+	9hyaNIfXYtXmMaw0hwqGy2Ek+yaYbTUrdB359muDvOLm24AyJnfT64sU6Q/p8bYzgdcbFtIEy+UeG
+	Cp2Mz1Btn3eEmqQi2QRKOvPQfFuXQXYbDL37T3D/pNyJnIw9RK7IwS924whcLQE3j4lM/IfrbxuLE
+	m6vdqgIqQbny0fhfARacQhG/PE04GWpF+VxpSTHNPtvHkTomFALjfncnsUKkcnXEw8HVsqmbx9ScX
+	drrwvk+8UncAKdpqDB7uZeTQT7TnxNMEmgM8QXY1hWGDKtZQqrvGolC7ecaDw0ZgsB/Sio3ZfSxhs
+	eBM6q6Fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOurB-00000008TnJ-2fgJ;
-	Thu, 05 Nov 2026 10:38:09 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1xOv6s-00000008VLO-4BuI;
+	Thu, 05 Nov 2026 10:54:23 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOur8-00000008TmQ-34lT;
-	Thu, 05 Nov 2026 10:38:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1793875087; x=1825411087;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=eqO4A+ClsqjEqfXPQ0TFlIOZ+1UsCC9oIYRbbnK4e7s=;
-  b=A4rKjlRBVFVKIEQC4EavgCR17/xSyjTrOEB2Tb84HNkL6B9y4XJRT1QM
-   iUwkaAxPJL3QUyzkBOA2luwvYVxfQEtYxAZEW+GgljOK2viemRDECySII
-   WP7y3aEe+2a85svsfCglP2dbIrcCrEpO3+UJsHfe9yqiygMRa6YlwWPEW
-   SH/E8Be2sTsitocPTdbj6RjtMQXjuD7nznitbEIfRXlPNJPABOF93RqS8
-   OPhcFvq5cMM3UjilmzE5ltY/OlPLJqNBytdS6Dli+9Pk356d8cgqYZwW5
-   whsC1IhkOREAn7phf37f1DlJwQbvCLs1O+8Yiwt+HbJIKiDSNPAN1i8lB
-   g==;
-X-CSE-ConnectionGUID: iXuTqYgBQ0GG0jAuBhZwtA==
-X-CSE-MsgGUID: qIHA4s5yTq26mhxigq7vnQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11956"; a="2560353"
-X-IronPort-AV: E=Sophos;i="6.27,197,1787036400"; 
-   d="scan'208";a="2560353"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 02:38:06 -0800
-X-CSE-ConnectionGUID: xIegnpX+Sr+k5gjNuD4pbQ==
-X-CSE-MsgGUID: Wcy7neyfQa2lUKLW6Cyinw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,197,1787036400"; 
-   d="scan'208";a="7281977"
-Received: from amilburn-desk.amilburn-desk (HELO localhost) ([10.245.244.144])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 02:37:54 -0800
-Date: Thu, 5 Nov 2026 12:37:51 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: Mark Brown <broonie@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Radu Pirea <radu_nicolae.pirea@upb.ro>,
-	CL Wang <cl634@andestech.com>,
-	Ryan Wanner <ryan.wanner@microchip.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Vladimir Oltean <olteanv@gmail.com>, Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, Han Xu <han.xu@nxp.com>,
-	Haibo Chen <haibo.chen@nxp.com>, Linus Walleij <linusw@kernel.org>,
-	Daniel Mack <daniel@zonque.org>,
-	Haojian Zhuang <haojian.zhuang@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>, Yixun Lan <dlan@kernel.org>,
-	Troy Mitchell <troy.mitchell@linux.spacemit.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sowjanya Komatineni <skomatineni@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	"open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>,
-	"moderated list:ARM/Microchip (AT91) SoC support" <linux-arm-kernel@lists.infradead.org>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE" <linux-rpi-kernel@lists.infradead.org>,
-	"open list:FREESCALE DSPI DRIVER" <imx@lists.linux.dev>,
-	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
-	"open list:RENESAS RZ/V2H(P) RSPI DRIVER" <linux-renesas-soc@vger.kernel.org>,
-	"open list:SAMSUNG SPI DRIVERS" <linux-samsung-soc@vger.kernel.org>,
-	"open list:RISC-V SPACEMIT SoC Support" <linux-riscv@lists.infradead.org>,
-	"open list:RISC-V SPACEMIT SoC Support" <spacemit@lists.linux.dev>,
-	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>,
-	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
-	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
-	Frank.Li@oss.nxp.com, vkoul@kernel.org
-Subject: Re: [PATCH 1/1] spi: use dmaengine_desc_set_callback()
-Message-ID: <auxcf206A1yMnHkX@ashevche-desk.local>
-References: <20261102174005.3933649-1-Frank.Li@oss.nxp.com>
- <2154003.0S5aU1g85B@diego>
+	id 1xOv6o-00000008VJe-1402;
+	Thu, 05 Nov 2026 10:54:20 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20261105105412euoutp0221de3a5b7a4048d78194fc0f7afe1c16~lIMP-HPlY3044430444euoutp02C;
+	Thu,  5 Nov 2026 10:54:12 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20261105105412euoutp0221de3a5b7a4048d78194fc0f7afe1c16~lIMP-HPlY3044430444euoutp02C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1793876052;
+	bh=8U+WQmu8jFLJh5cbm79ZPqM5GeKacWcEkDyhOz912oU=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=NcjEQpYMRbxhXBgzKnZDjzO9LLwfDGOaaIfPmI2qnt8v3BjyjGfN95aIsbRJ5WcAe
+	 pMYGKFT8Id4k/8Q0czZ/74nGUvslfN7Kw9FJOU7LmEuNez+Hz47vdPfnIMzS747B6m
+	 sW7Jr++9LwO+aS1wGDZxc4S00WHnS1MZnDI6ngsg=
+Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20261105105412eucas1p171b6bde174fb0b6700cc78deee9d7edf~lIMPucvWX2329723297eucas1p12;
+	Thu,  5 Nov 2026 10:54:12 +0000 (GMT)
+Received: from [192.168.1.44] (unknown [106.210.136.40]) by
+	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+	20261105105410eusmtip15133e9a84efd244fc2a8fcab25cfa49a~lIMOGw1ty2761527615eusmtip1a;
+	Thu,  5 Nov 2026 10:54:10 +0000 (GMT)
+Message-ID: <204d333a-6f09-4498-b776-b2daee8d94b8@samsung.com>
+Date: Thu, 5 Nov 2026 11:54:10 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2154003.0S5aU1g85B@diego>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 02/18] drm/bridge: inno-hdmi: Don't dereference a
+ NULL drm_device on hotplug
+To: Heiko Stuebner <heiko@sntech.de>, Neil Armstrong
+	<neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
+	Kozlowski <krzk+dt@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>,
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart
+	<Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej
+	Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
+	<luca.ceresoli@bootlin.com>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, Philipp Zabel
+	<p.zabel@pengutronix.de>, Emil Renner Berthing <kernel@esmil.dk>, Hal Feng
+	<hal.feng@starfivetech.com>, Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt
+	<palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti
+	<alex@ghiti.fr>, Dominique Belhachemi <db@domibel.de>, Andy Yan
+	<andyshrk@163.com>, David Airlie <airlied@gmail.com>, Simona Vetter
+	<simona@ffwll.ch>, Yakir Yang <kuankuan.y@gmail.com>, Dmitry Baryshkov
+	<dmitry.baryshkov@oss.qualcomm.com>, Conor Dooley <conor@kernel.org>,
+	William Qiu <william.qiu@starfivetech.com>, Xingyu Wu
+	<xingyu.wu@starfivetech.com>, Sandy Huang <hjc@rock-chips.com>, Manivannan
+	Sadhasivam <mani@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, Marek
+	Szyprowski <m.szyprowski@samsung.com>, Maud Spierings
+	<maud_spierings@murena.io>, Graham Markall <hello@big-grey.co.uk>, Icenowy
+	Zheng <zhengxingda@iscas.ac.cn>, Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Joshua Peisach <jpeisach@ubuntu.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
+	<u.kleine-koenig@baylibre.com>
+Content-Language: en-US
+From: Michal Wilczynski <m.wilczynski@samsung.com>
+In-Reply-To: <2261991.3Lj2Plt8kZ@phil>
+X-CMS-MailID: 20261105105412eucas1p171b6bde174fb0b6700cc78deee9d7edf
+X-Msg-Generator: CA
+X-RootMTR: 20261030174510eucas1p2f85c6d82738ce34b17bdcab27f914ac1
+X-EPHeader: CA
+X-CMS-RootMailID: 20261030174510eucas1p2f85c6d82738ce34b17bdcab27f914ac1
+References: <20261029-jh7110-clean-send-v6-0-759594e43acf@samsung.com>
+	<20261029-jh7110-clean-send-v6-2-759594e43acf@samsung.com>
+	<1844578.vCJZsxu672@phil>
+	<CGME20261030174510eucas1p2f85c6d82738ce34b17bdcab27f914ac1@eucas1p2.samsung.com>
+	<2261991.3Lj2Plt8kZ@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_023806_788243_056EC901 
-X-CRM114-Status: GOOD (  16.13  )
-X-Spam-Score: -4.2 (----)
+X-CRM114-CacheID: sfid-20261105_025418_928788_243A1D27 
+X-CRM114-Status: GOOD (  18.13  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,79 +107,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 05, 2026 at 10:52:38AM +0100, Heiko St=FCbner wrote:
-> Am Montag, 2. November 2026, 18:39:58 Mitteleurop=E4ische Normalzeit schr=
-ieb Frank.Li@oss.nxp.com:
-> > =
-
-> > Replace open-coded assignments to callback and callback_param fields
-> > of struct dma_async_tx_descriptor with calls to the
-> > dmaengine_desc_set_callback() helper across SPI bus drivers.
-> > =
-
-> > No functional change intended. Prepare make to struct
-> > dma_async_tx_descriptor private to the DMA engine.
-
-[...]
-
-> > diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-> > index 1a81fd94b4396..f8d6cea2f3dad 100644
-> > --- a/drivers/spi/spi-rockchip.c
-> > +++ b/drivers/spi/spi-rockchip.c
-> > @@ -475,8 +475,7 @@ static int rockchip_spi_prepare_dma(struct rockchip=
-_spi *rs,
-> >  		if (!rxdesc)
-> >  			return -EINVAL;
-> >  =
-
-> > -		rxdesc->callback =3D rockchip_spi_dma_rxcb;
-> > -		rxdesc->callback_param =3D ctlr;
-> > +		dmaengine_desc_set_callback(rxdesc, rockchip_spi_dma_rxcb, NULL, ctl=
-r);
-> >  	}
-> >  =
-
-> >  	txdesc =3D NULL;
-> > @@ -500,8 +499,7 @@ static int rockchip_spi_prepare_dma(struct rockchip=
-_spi *rs,
-> >  			return -EINVAL;
-> >  		}
-> >  =
-
-> > -		txdesc->callback =3D rockchip_spi_dma_txcb;
-> > -		txdesc->callback_param =3D ctlr;
-> > +		dmaengine_desc_set_callback(txdesc, rockchip_spi_dma_txcb, NULL, ctl=
-r);
-> >  	}
-> >  =
-
-> >  	/* rx must be started before tx due to spi instinct */
-> =
-
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-Please, use "# subpart(s)" syntax with this tag
-
-   Reviewed-by: Heiko Stuebner <heiko@sntech.de> # rockchip
-
--- =
-
-With Best Regards,
-Andy Shevchenko
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgpPbiAxMC8zMC8yNiAxODo0NCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gQW0gRnJlaXRhZywg
+MzAuIE9rdG9iZXIgMjAyNiwgMTg6NDM6NDcgTWl0dGVsZXVyb3DDpGlzY2hlIE5vcm1hbHplaXQg
+c2NocmllYiBIZWlrbyBTdHVlYm5lcjoKPj4gQW0gRG9ubmVyc3RhZywgMjkuIE9rdG9iZXIgMjAy
+NiwgMDg6NTM6MzYgTWl0dGVsZXVyb3DDpGlzY2hlIE5vcm1hbHplaXQgc2NocmllYiBNaWNoYWwg
+V2lsY3p5bnNraToKPj4+IGlubm9faGRtaV9pcnEoKSBwYXNzZXMgaGRtaS0+YnJpZGdlLmRldiB0
+byBkcm1faGVscGVyX2hwZF9pcnFfZXZlbnQoKSwKPj4+IHdoaWNoIGRlcmVmZXJlbmNlcyBpdCBp
+biBpdHMgZmlyc3Qgc3RhdGVtZW50Ogo+Pj4KPj4+IAlpZiAoIWRldi0+bW9kZV9jb25maWcucG9s
+bF9lbmFibGVkKQo+Pj4KPj4+IGJyaWRnZS5kZXYgaXMgYXNzaWduZWQgb25seSBieSBkcm1fYnJp
+ZGdlX2F0dGFjaCgpLCBidXQgaW5ub19oZG1pX2JpbmQoKQo+Pj4gdW5tdXRlcyB0aGUgaG90cGx1
+ZyBpbnRlcnJ1cHQgaW4gaW5ub19oZG1pX2luaXRfaHcoKSBhbmQgaW5zdGFsbHMgdGhlCj4+PiBo
+YW5kbGVyIHdlbGwgYmVmb3JlIGl0IGF0dGFjaGVzIHRoZSBicmlkZ2U6Cj4+Pgo+Pj4gCWlubm9f
+aGRtaV9pbml0X2h3KGhkbWkpOwkJLyogdW5tdXRlcyBob3RwbHVnICovCj4+PiAJZGV2bV9yZXF1
+ZXN0X3RocmVhZGVkX2lycSguLi4pOwkJLyogaGFuZGxlciBnb2VzIGxpdmUgKi8KPj4+IAkuLi4K
+Pj4+IAloZG1pLT5icmlkZ2UuZGRjID0gaW5ub19oZG1pX2kyY19hZGFwdGVyKGhkbWkpOwo+Pj4g
+CWRldm1fZHJtX2JyaWRnZV9hZGQoZGV2LCAmaGRtaS0+YnJpZGdlKTsKPj4+IAlkcm1fYnJpZGdl
+X2F0dGFjaCguLi4pOwkJCS8qIGJyaWRnZS5kZXYgc2V0IGhlcmUgKi8KPj4+Cj4+PiBUaGUgYnJp
+ZGdlIGlzIGFsbG9jYXRlZCBieSBkZXZtX2RybV9icmlkZ2VfYWxsb2MoKSwgd2hpY2gga3phbGxv
+YygpcyBpdCwKPj4+IHNvIGJyaWRnZS5kZXYgaXMgTlVMTCBmb3IgYWxsIG9mIHRoYXQgd2luZG93
+LCBhbmQgYSBob3RwbHVnIGV2ZW50Cj4+PiBhcnJpdmluZyBpbiBpdCBlbnRlcnMgZHJtX2hlbHBl
+cl9ocGRfaXJxX2V2ZW50KE5VTEwpLgo+Pj4KPj4+IEJlZm9yZSB0aGUgY29udmVyc2lvbiB0byBh
+IGJyaWRnZSB0aGUgb3JkZXJpbmcgd2FzIHNhZmU6Cj4+PiBpbm5vX2hkbWlfcmVnaXN0ZXIoKSBj
+YWxsZWQgZHJtbV9jb25uZWN0b3JfaGRtaV9pbml0KCksIHdoaWNoIHNldAo+Pj4gY29ubmVjdG9y
+LmRldiwgYmVmb3JlIHRoZSBpbnRlcnJ1cHQgd2FzIHJlcXVlc3RlZC4KPj4+Cj4+PiBEcm9wIGhv
+dHBsdWcgZXZlbnRzIHRoYXQgYXJyaXZlIGJlZm9yZSB0aGUgYnJpZGdlIGlzIGF0dGFjaGVkLgo+
+Pj4KPj4+IEZpeGVzOiA5NjkzMjVhMjU5N2UgKCJkcm0vcm9ja2NoaXA6IGlubm8taGRtaTogQ29u
+dmVydCB0byBkcm0gYnJpZGdlIikKPj4+IFNpZ25lZC1vZmYtYnk6IE1pY2hhbCBXaWxjenluc2tp
+IDxtLndpbGN6eW5za2lAc2Ftc3VuZy5jb20+Cj4+PiAtLS0KPj4+ICBkcml2ZXJzL2dwdS9kcm0v
+YnJpZGdlL2lubm8taGRtaS5jIHwgOCArKysrKysrLQo+Pj4gIDEgZmlsZSBjaGFuZ2VkLCA3IGlu
+c2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
+cHUvZHJtL2JyaWRnZS9pbm5vLWhkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2UvaW5uby1o
+ZG1pLmMKPj4+IGluZGV4IGQ3YzMzYjkyZTJkZGY0Y2VkODRkMTczMDQ0NjNmNDRiZTUyMjcwYjgu
+LmQyOTgzMjI0OWI5NDJkZWM4NGZiOWQwN2EwYjIxZWU3NTFmYzA0ODYgMTAwNjQ0Cj4+PiAtLS0g
+YS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2lubm8taGRtaS5jCj4+PiArKysgYi9kcml2ZXJzL2dw
+dS9kcm0vYnJpZGdlL2lubm8taGRtaS5jCj4+PiBAQCAtOTI5LDcgKzkyOSwxMyBAQCBzdGF0aWMg
+aXJxcmV0dXJuX3QgaW5ub19oZG1pX2lycShpbnQgaXJxLCB2b2lkICpkZXZfaWQpCj4+PiAgewo+
+Pj4gIAlzdHJ1Y3QgaW5ub19oZG1pICpoZG1pID0gZGV2X2lkOwo+Pj4gIAo+Pj4gLQlkcm1faGVs
+cGVyX2hwZF9pcnFfZXZlbnQoaGRtaS0+YnJpZGdlLmRldik7Cj4+PiArCS8qCj4+PiArCSAqIFRo
+ZSBpbnRlcnJ1cHQgaXMgcmVxdWVzdGVkIGJlZm9yZSB0aGUgYnJpZGdlIGlzIGF0dGFjaGVkLCBh
+bmQKPj4+ICsJICogYnJpZGdlLmRldiBpcyBvbmx5IHNldCBieSBkcm1fYnJpZGdlX2F0dGFjaCgp
+LiBEcm9wIGhvdHBsdWcgZXZlbnRzCj4+PiArCSAqIHRoYXQgYXJyaXZlIGJlZm9yZSB0aGVuIHJh
+dGhlciB0aGFuIGRlcmVmZXJlbmNlIGEgTlVMTCBkcm1fZGV2aWNlLgo+Pj4gKwkgKi8KPiAKPiBu
+aXQ6IEkgZG9uJ3QgdGhpbmsgdGhhdCBodWdlIGNvbW1lbnQgaXMgbmVjZXNzYXJ5IGZvciB0aGF0
+CgpUaGFua3MsIEknbGwgdHJpbSB0aGUgY29tbWVudCBpbiB2NwoKPiAKPiAKPj4+ICsJaWYgKGhk
+bWktPmJyaWRnZS5kZXYpCj4+PiArCQlkcm1faGVscGVyX2hwZF9pcnFfZXZlbnQoaGRtaS0+YnJp
+ZGdlLmRldik7Cj4+Cj4+IFJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNo
+LmRlPgo+Pgo+PiBNb3N0IG90aGVyIGNhbGxlcnMgb2YgZHJtX2hlbHBlcl9ocGRfaXJxX2V2ZW50
+KCkgYWxzbyBkbyBleGFjdGx5IHRoaXMuCj4+Cj4+Cj4+IEhlaWtvCj4+Cj4gCj4gCj4gCj4gCj4g
+CgpCZXN0IHJlZ2FyZHMsCi0tIApNaWNoYWwgV2lsY3p5bnNraSA8bS53aWxjenluc2tpQHNhbXN1
+bmcuY29tPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
