@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F1F1160A2601
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 01:01:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 13FA060A2603
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 01:01:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Ow5eelE0;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=P0NQ3y1E
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FZ/A3/cW;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=ms4BtTYS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,44 +14,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=lpfcLVcLrH3/w+F7i9piU4dUKSalBDKkJw27MEgsECg=; b=Ow5eelE0bOUeRTEipIUnHTV+J5
-	3q0Y1mUDMND3S9YBHzJvQud4MJJzf3ROHyv3qVKiMUULA6X9hwVdADIwbVYqrgaK9nHdAA+Yx7Mup
-	t8z6D663Mv2/KIzZzQJY2A15Dc3NHGKEDvCSZf33RSPkdSk4QLbhLOW9LSJYHeloM9PDt34KItjiU
-	xIK0y81ctVKHz26JPNglZa4jLGZmolG6sc5ceT54l0+nB/spr6wNOBLgvbRMT0tXJbun+QwTRdc5A
-	1Fzr3pP3MG+gkbWe2PvytGrTcWuF5PaVquSjPeeJM+wwn5UEPGG+tDJzLBQ4V9HYAd02L9TDtchIS
-	URNLQFcw==;
+	bh=DtpUsPY9liWVenO9vXD3GbN/sWZ2IfRrXVEeL4OWlfc=; b=FZ/A3/cW1p4LbHFcD02H8ikvGj
+	DH0Bz6lv/ElA3ZkB1heiXkLvEAj0W+fj5qchTuKYe2gnSzRhIgtwDnm/LfeTvBA1WerSTqK77X4pm
+	VXuJVXNAqTWD/1o7raKaLoTFgD5thOzd/2qyiGdsc0C5fjcdr/j5g7TpUwaU1fQw39XvDbWOTPAGj
+	KAm66ozYAe8b5+j/IWzbKP7sCFVFzkjHv+dGq7Nm3dLuBt2ZuFbnHsW0+Va7J/6P4LUaO2pPgEwsO
+	zuEp+YIyxwNqDqd49VOt4mdMBV9koIhEsFO07KHp3efELcTRunqdikbJ4ehpjg+SdEQyT5uUXz0ku
+	9LM8NBhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOlr0-00000007Oj8-1E1e;
-	Thu, 05 Nov 2026 01:01:22 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xOlr1-00000007Om5-0k3v;
+	Thu, 05 Nov 2026 01:01:23 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOlqr-00000007OT3-1xVs;
-	Thu, 05 Nov 2026 01:01:15 +0000
+	id 1xOlqt-00000007OWW-3vIo;
+	Thu, 05 Nov 2026 01:01:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793840470;
-	bh=Od3rHuNOHyA1VzcrsXhjpHEqrzqJe6mtaHS1vrkcfSQ=;
+	s=mail; t=1793840473;
+	bh=vuS3FEAJj1P3xuszyaL29cGUlOJnhPtoW5/yXO1sV3E=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=P0NQ3y1ETTRVFBuf4eHlaWxZP603ebKwmHg7hFJDiegwMGm+zCouSON71HjbUn1X0
-	 p7XFF/8mnEStFxRcSQehynWeHH9P1kO2BZDoJAGR0pcXfcGzGSplt7C3+UlGKcnBuA
-	 MelsNOJaUwEHmbm5IELWUtAiRp/ZvMiKvgSyqDeJcPIcD4oZmVpdTICgIiPzJEcS2I
-	 LVdWjeT0hsMwEfNS67a0W0G+xUKW5ox53o4prIGx7pLSmZtufJyYbuXe2wmTyvzqeW
-	 XafHGVSI4d/Nos4t949IDBo/9DVI7k8rXi5i1IPUaT4a7pB0hpX4YhCdF0VBdFbwMv
-	 vIfHZSY5p1N9Q==
+	b=ms4BtTYSMLPvuiY3i37yMpFnOH9p55vAwpxQi4ct3/CI780qUurtW9/lbfEPoBiz5
+	 cmo7dy+/BcVyCfHVjWMgBYxwAXPSGPFI42RFHafzUcV1tVN2G5CJAdLtIojR6yKWfp
+	 w7xr91sTfYz84F/Uy3k8r9c24a9dNhqOpLVkNjgQooHSJrpxJKt882gTZEb9sgY2D5
+	 B9ri0smz2XoSs3IZVFSbxKK52MF/VUaW43FKTnlE6EgWM2Yc8qLOg7cS8NBhqIEvcR
+	 N1SwmgXp+dbpCgaYhng9zvajJNg8kCXT0mZVGjFqk2uYMUQUTIoH4hzM1NDMFz1RCV
+	 a1JhCspPmPlDA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6FEDF17E0D4A;
-	Thu, 05 Nov 2026 02:01:10 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7AB4A17E0D7E;
+	Thu, 05 Nov 2026 02:01:13 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 05 Nov 2026 03:00:40 +0200
-Subject: [PATCH v6 06/15] drm/rockchip: vop2: Fix VOP2_MAX_DCLK_RATE
- overflow on 32-bit
+Date: Thu, 05 Nov 2026 03:00:44 +0200
+Subject: [PATCH v6 10/15] drm/rockchip: vop2: Switch to enum vop_csc_format
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261105-dw-hdmi-qp-yuv-v6-6-1bb63ef5766e@collabora.com>
+Message-Id: <20261105-dw-hdmi-qp-yuv-v6-10-1bb63ef5766e@collabora.com>
 References: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com>
 In-Reply-To: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -74,11 +73,11 @@ To: Sandy Huang <hjc@rock-chips.com>,
 Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Sashiko <sashiko-bot@kernel.org>, Igor Paunovic <royalnet026@gmail.com>
+ Igor Paunovic <royalnet026@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_170113_720088_1AFB0EFF 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20261104_170117_069434_D2ABD119 
+X-CRM114-Status: GOOD (  11.43  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,51 +98,53 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-VOP2_MAX_DCLK_RATE is defined as an unsigned long and is used scaled by
-the color-depth ratio when computing the maximum DCLK the HDMI PHY PLL
-can source.
+Improve code readability in vop2_setup_csc_mode() by using enum
+vop_csc_format for the csc_mode variable, as well as for the return type
+of the vop2_convert_csc_mode() helper, which already returns CSC_*
+enumerators.
 
-On architectures where unsigned long is 32-bit, VOP2_MAX_DCLK_RATE * 8
-is evaluated in 32-bit arithmetic and overflows: 4800000000 wraps to
-505032704 before it is promoted to the 64-bit argument of
-DIV_ROUND_CLOSEST_ULL().  At 8 bpc this collapses max_dclk from the
-intended 600 MHz down to roughly 63 MHz.
+While at it, replace the nonsensical 'csc_mode = false' assignment in
+the no-conversion branch with the equivalent CSC_BT601L, which carries
+the same value (0) but is type-correct.
 
-As a result, low-resolution modes (e.g. 640x480 or 720x480, whose pixel
-clocks are well under 30 MHz) still pass the clock <= max_dclk check and
-are reparented to the HDMI PHY PLL as expected, but higher-resolution
-modes such as 1280x720 (~74 MHz), 1920x1080 (~148 MHz) and above are
-wrongly rejected and fall back to the system CRU as the DCLK source.
-
-Define the constant as unsigned long long so that every expression using
-it is evaluated in 64-bit arithmetic, independent of the width of
-unsigned long.  This future-proofs any additional users of the macro as
-well.
-
-Fixes: b0362c45c401 ("drm/rockchip: vop2: Check bpc before switching DCLK source")
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/all/20260623203310.9F8C81F000E9@smtp.kernel.org/
-Link: https://lore.kernel.org/all/20260623203310.9F8C81F000E9@smtp.kernel.org/
 Tested-by: Igor Paunovic <royalnet026@gmail.com>
 Reviewed-by: Daniel Stone <daniels@collabora.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index d1329941d9f6..b85cd94d1e9d 100644
+index 7c35d73c82cb..76d151b8bc52 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -102,7 +102,7 @@ enum vop2_afbc_format {
- 	VOP2_AFBC_FMT_INVALID = -1,
- };
+@@ -647,7 +647,7 @@ static void vop2_setup_scale(struct vop2 *vop2, const struct vop2_win *win,
+ 	}
+ }
  
--#define VOP2_MAX_DCLK_RATE		600000000UL
-+#define VOP2_MAX_DCLK_RATE		600000000ULL
+-static int vop2_convert_csc_mode(int csc_mode)
++static enum vop_csc_format vop2_convert_csc_mode(int csc_mode)
+ {
+ 	switch (csc_mode) {
+ 	case V4L2_COLORSPACE_SMPTE170M:
+@@ -710,7 +710,7 @@ static void vop2_setup_csc_mode(struct vop2_video_port *vp,
+ 	int input_csc = V4L2_COLORSPACE_DEFAULT;
+ 	int output_csc = vcstate->color_space;
+ 	bool r2y_en, y2r_en;
+-	int csc_mode;
++	enum vop_csc_format csc_mode;
  
- /*
-  * bus-format types.
+ 	if (is_input_yuv && !is_output_yuv) {
+ 		y2r_en = true;
+@@ -723,7 +723,7 @@ static void vop2_setup_csc_mode(struct vop2_video_port *vp,
+ 	} else {
+ 		y2r_en = false;
+ 		r2y_en = false;
+-		csc_mode = false;
++		csc_mode = CSC_BT601L;
+ 	}
+ 
+ 	vop2_win_write(win, VOP2_WIN_Y2R_EN, y2r_en);
 
 -- 
 2.55.0
