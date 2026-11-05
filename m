@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A531B606A328
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 14:34:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0553606A328
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 14:35:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lqneyKyO;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=fooishbar.org header.i=@fooishbar.org header.a=rsa-sha256 header.s=google header.b=B/C4vLK5
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Z07naZuR;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=fooishbar.org header.i=@fooishbar.org header.a=rsa-sha256 header.s=google header.b=KgHXtfpZ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,93 +14,91 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=4gfX1DOW5iyg6DBOh1KUQ4i4txxFOpkiN/ewO+YnLP8=; b=lqneyKyOEN0+xFqGWq9mT/pZPz
-	ZQjDtSzNc9YYPtybKUuwA5G5AM8/UY/in35bexAxTkxoMEh/zVbqSMH4qna2XC5fIFaaGmFXtMwKZ
-	+i/KjBzVq1d5CxkzLbHjrQE1bgSGvr13b2YyUSSx4I88WIs5up26qFwnKzHwUMfKodhLMoutnVMiA
-	B89ldbfUqNuQ3ddaDGrfIG860U8D25putNbFecQ05eV9fN322ug9lghgar8Cg2EmqDW3HxS5toYNf
-	JrCO6Al7PO1sAO57HSzyyF+AiCs7jOadvMnj9hAvAs8LbKpLjr4kwcICTxrTHzFYsQVHealqS38vS
-	9EznFZhg==;
+	bh=Vc1rEoeFIHm3UogWu3DODOkog2LbQtG2XUyuZzGmAsw=; b=Z07naZuRAH3yDRntB8KBFKj74r
+	nhgZrE4rJsBUokGE/m1dSRrJ40Gs3hvR9n+oWrgghnaaOBj+1slAVEN7pJvX80kJPMMUcthntK+13
+	G/hubi3tQtghZuXgp6LUwYC2amgk3+s7lLD7VnAWlihyhSVmG4TpATtlvHyldz6LGftmHDB+46xmz
+	erFtZON7KBOTPJvD9o4PwJCxLPuOk/XMz+TDg5gPAzKXjhkLXGnLmy0bgguJeqittmTt7ct1pl92c
+	Tg3u7VxY6UA1d9W5QZpspwc4B39Qp/5wKYzDKFqYvAqCwCiaUB4a8glPrpTgQg+q39MQ/LtzV+2iT
+	ETaIr+PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOyXc-00000009IAt-2Su2;
-	Thu, 05 Nov 2026 14:34:12 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1xOyYw-00000009IVa-1pBc;
+	Thu, 05 Nov 2026 14:35:34 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOyXZ-00000009I9V-0seX
+	id 1xOyYp-00000009IRy-46pR
 	for linux-rockchip@lists.infradead.org;
-	Thu, 05 Nov 2026 14:34:11 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-3b0d0b80fb9so127768a91.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 05 Nov 2026 06:34:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1793889248; cv=none;
+	Thu, 05 Nov 2026 14:35:33 +0000
+Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-8b29b83fdf1so264415b3a.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 05 Nov 2026 06:35:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1793889327; cv=none;
         d=google.com; s=arc-20260327;
-        b=pPMBV65BmpMnohW4rYaIV4iEWDrBOuf4f+sMl934WqIYiOs/O2OKPmE07vpVFlJato
-         gVyVvp9HplNRhmO0XnPdK1LhrgRpZedPeygyYCazEAAprGo3iXm2laDvy5hGHBGkUfGm
-         A+26vpPdN9NErCq7fjnakePfN0TbM16vnqqjXnjU7bLRAb/GdimufLEq+T37LSgmMzJc
-         9AZ9Y0nxiGdwYoGIu8z4uxiucLZT8qCYa+rrohNvtvCVE8PiIpx2+1eA1rQS1bWkzSzr
-         +0ffV3iNmKShzAmrgL7emIslDKuEdbsBNxvRo42w3f9oDcAxjD4t+0SNb1lj3msfcSbD
-         SiCQ==
+        b=sKc+tBMm9Zf+3/hLw2gzGDvKRYhWiJ0UxyORgCezlwsZ3dckElCXfgT7vfRx+llC0M
+         wKZ7ztbHeaICNIirSGYCnukaix0+OtcDQrEeu9CqU54dYDjnN5mjjywJyZJr+LoeofWe
+         W06quJMurli6xkApB68lThCphK54AYgq/wYoN2rHSPaJn0lRfN9FsSDTlO+4GmIb9J1L
+         dHuTnn/82hZswmVKS0OKEecTK0lKG0lTw0vOrR4xTFzhFO3bnKH5jU0ICzR5UHPCuflV
+         nSLdM/WZjdwDlQqzYfTTg0lmx3IdfeHIYh2HDchXtmuBhVjxQ29OoML8BSslK5OChdEj
+         LDqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=1jZ8AIzpmZVSpEwlYYo7Zj/7Q72rSuq9gl+sxktWfs8=;
-        fh=XvTYymOhOLJGYIPmfxjYCGIeZWfGtwColKMqrkcRxxQ=;
-        b=g+Dv+jVL9r4nYpUBln+fn5MoXX9qpnhDW7tSH3MNWa3hB4QQr1hDqf5eDNB99jW2Lb
-         w1DiuXlVV3rsW19m27g0Ogb8bDHiJTpwJIWIJs78X3vclZvCEW2ZfoW6RDEGT54fR8Mb
-         poHFr9ytDonmyp3dibr+6wbpqHHxsR7DDsmWJd1xq+duXiEQ3WkiI+Lfqt+AklNOXGuB
-         ++8DeS8VyvOmqRjA4xYgMzs17MwWoWyeVQ+Jemj97gGmWJm4wYxGtFbilXQw9NPPY9Vx
-         gxSx2JmELLiKlVceJ6ibaEk7jYVtYP5HKqj/vBoDwOaa0hc3o6oH+z6ITWnSVVGrvngm
-         mqTg==;
+        bh=CKNrOVtQ7Tx/zqpAFEoFPOOWJYG2yTScVv26B8q6G5c=;
+        fh=UFDaebuoCZ7OLAwUxswIJvdGpxu//79xTeUUCkWZx0k=;
+        b=ooNTQ3uKdxgDV3pCubW1qjl/t4o7zL+evgXRr41E63MbF9DfTAIHyigyaboMwtuCtC
+         l7AYckHWS+fcSv8KK/K6EfLMzroC2oGSvFcHFyryG/znAlsTo1Dp9unKrY6hLRBXzq/t
+         Az/BcxaGGMq1WdQNR88yaVK4HjX9tWt+DwUyU/Y1aXU2DexXEi4ZmkbCIz2g6Db2PV4A
+         a3U6Q+G5bdWitwxdiNwdyTZUrGovA+ANYF3bqC8tzabY9gkPdAv190IX7nfL2GY/TrWe
+         /gsqqRYOmVihpd0pSHB/G0QOmu7Wm3GiSkpF2pudtFb3d97mvROveURH8uZnr6DZDZz1
+         qpJA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1793889248; x=1794494048; darn=lists.infradead.org;
+        d=fooishbar.org; s=google; t=1793889327; x=1794494127; darn=lists.infradead.org;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=1jZ8AIzpmZVSpEwlYYo7Zj/7Q72rSuq9gl+sxktWfs8=;
-        b=B/C4vLK57QGu2V2D4XS4A2SBh2Ir+07lKhYQRZGFnSK9EWSOz0IBCZtrPO8kTIOSWv
-         1oOgTQ9V8oJJah5FS3SCBI8E5Ajf62XUt0343h5CBcC8rYd/xvAMqNpJnSxK5sqCXf28
-         stUwrybFiEFDE+6ZqsuxMzUZYFQ2GpLudi8ttVBLrwbxXlX8ghl4arSxnyg4XGCMe7WD
-         cXu5LTlpybSP7o0doFMApkK4oo6P1vs6dTuAB+r5xNxK2ozlGlJyYfAh5DHWlrEe+l99
-         mVMnWjLeL9BCy+GLhlkBVt+ulD3AHpNaW/DhQArovXvAwwtn5UvO2ucF6K8X6Ptp3nzL
-         6vRg==
+        bh=CKNrOVtQ7Tx/zqpAFEoFPOOWJYG2yTScVv26B8q6G5c=;
+        b=KgHXtfpZXzLkfCgw9ZW34TmIWoP1VxMYdLgwvQ1PZcv3w8tHA/jNeoqoZ7VeprQTmW
+         OcwB/HaAmv8/w1sFhPFIQa1cZaDeM0DtdrFErE1863RgOMuyx/b+n4dAuYK7LWgph6js
+         I6H6KckBJraeaJOgr6DwalWyvSTwRClPm8qR/XX6rpd16KQy3LnL8RJwAPjSdccLaB0g
+         /nyeNCbKsbqU21QfrediRu9HWvd06WktUPtvmQtX0K3pMT+8yFtIoocXfiT1eAv5JhqK
+         Ss3+k8PnNP0hgds681BjRTFaw05/0zarEoKK70tMGEP51v0NYM48BDdZOaj6e7TXJiYX
+         MULQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793889248; x=1794494048;
+        d=1e100.net; s=20260707; t=1793889327; x=1794494127;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=1jZ8AIzpmZVSpEwlYYo7Zj/7Q72rSuq9gl+sxktWfs8=;
-        b=2prNOsfgQ8/lSRy/oAhJxuvhEblN7OqQ0rPZjgMd9rBK2MOBlHvwrZm9poM3MLn9kr
-         nmTum+f/yo8ePJyAkWVwBoCdif2NkrO8IjSqOQDABmgz/GKst9KXHThdJ1C96aINb55O
-         UbcZWJiCcQLT0WxWNltZG59l9oiCSvAlPzlOgkAphG+/kfS5DixpdAN1hzVBzcar5EVh
-         I33oLFNchLfiVUYZQuppna3yTL9/URTLQmKBUnwOG/B/wwSdfk3TOLz3xKMeT/xTHsE7
-         f/Xly5D5flI8XxVo6AZGbAIFMtCq1ttOmUYYujqoDD17UYNabgd2rkkcaTRJU7iFhzFs
-         rM4g==
-X-Forwarded-Encrypted: i=1; AKwUvBzhICWjEPNoMKi15tR11n8vyL5zH0WZolddglYIGDY0yMRLbE1wbdVATmPZBDxOowYAMzJCW7SUzdWAQlNAJA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8Znpu1JmsV6ig+cAxjImo2gqmVEi0I7/F6B+Z3u9Hx4LNB1ySF
-	SvzEIedHdEWEjrRDTVgnieyld1JoR4oO0Q/8T9qx21kBLQgyIWbCK93K1DodsOAjPrs4m4/0a/J
-	sDca1Etbh3We+YG4ylV8+40CjR+OXUN+ygGPmNAMMSQ==
-X-Gm-Gg: AYBFou1KmXqYKc80Wduad+L3BgkZcynD+dYRC65a+AZa/QIBI+Kf6Cys5aZGd9LAquZ
-	ye8nsYAWBQlUYz9Ue93ymKbeOqseFIDJu5I+bO/bU2vIjYKIB0aGUdRDL+Luhsd1/qIqFtqHCHD
-	Ys6twNIMoaK5Xw+TEiRF6pWaJLSlL4atsuckj8IvSk1u5aASsku2yZ7brMVQp9VN6IkRg2SNlfc
-	vbn2ifwB057GZefJL17QHeMbs0EElEXAXmVuRXgD87CjLkC6V1lSYmLpnnKHUEK0MlgytGvag63
-	74GqlVMlGNaEMPaBWEct1LVEQZqPxhXNVaLpa5CMbkgavcK7AO7T2Lqh0lZ8x50ajXly9vIdSI2
-	m3B+ixBXMPPiDKW4b6EcIZ5qr7yBldI8RQ+rzAwpHW8B25WqOL4JF8w5J/Q==
-X-Received: by 2002:a17:90b:4cd2:b0:3a8:a1f6:3b32 with SMTP id
- 98e67ed59e1d1-3ae89772b3dmr14182837a91.38.1793889248197; Thu, 05 Nov 2026
- 06:34:08 -0800 (PST)
+        bh=CKNrOVtQ7Tx/zqpAFEoFPOOWJYG2yTScVv26B8q6G5c=;
+        b=VZ+fQWZzROjsLCvCo5VvdiZvFyuaWxs7cMXk0+2fQMdvDOemi5oEtEXISJeK0FXROV
+         8hpxtN7n3wv7hvCE9ZWdGklOMsFT3+ZHz7WOAQ4H6j/rCd5Ia5bPypnaDDpeKcpMNQVu
+         malz5w1eJIMYj6CbGgsromdjz9a8cifxwzq3DD3PVtybSQCA3a5XfyWYnf3AKCOQb865
+         G3WWqENBeEbK90cYUlL+cULCsve128zMvYqm/bK4A6Ol/lnXRtzw/jAcj3h7dFAy9V6J
+         RHxCZ5nNT/Ufnxv/jQUU0FJ5sARzpCl4AAzbvOkNK2+OV6K90bZ/y/6J+MRfomw/WFMz
+         Dhdg==
+X-Forwarded-Encrypted: i=1; AKwUvBxmQLsd5znFLLsz+S/9sV6+h88TE5CXX5YaV8zJuHMcxn3mLPbhFduCTWA23CYpAbHd+391pwzfcUrCMoG4Cg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+K1WXw80rJjUwdIz06FVE+8rHOR54E8aV1PE+9orzp3kcEnscB
+	mQH3W0OVAyfkeXmqLZ8Yxw+la0bLDGz3TMVGz9RDew0HgIINy9/mANC0HHqAN4DirT2aDIlLm7T
+	GsB+2nhER3wMLSFTA9qVtl2kbJEPnzPFqflCMpFaCGA==
+X-Gm-Gg: AYBFou1WufHxgYDhupY4QXgy347EXK3NpVYq1kgH2piTkU9rJPmaJQQi59VE6bTzp8w
+	5QXEMn5yn8GreS99s9PYS34b3Hyli7SwzfwPje/4wRt65uDsF9Gvk1fnmhmtJvKobA6KbFl+ogi
+	p6CkvDQn8Dp94XjdggaLFpAf3aH1qe6T3QUBLbg51A1t0QSqP3a4L67ZjkThEGVtN9HfPC5NKKs
+	wZ8Ni4BQYrhTrmqNyXWqv/uNezCq0TKCjpOJTvsfHm5+srBIppchuGUPkMA9wjm1wmhbzKnkSiZ
+	YgzriU9omhgOiARCM9Zr7HiS3Rl3TW0qavoHkbMQLv8UN34mxLAPCGvLf4JA5AACsZlMgVM7jB5
+	UXZG7iFfJ0mrWYHtLiRluMOJu8PW3BK5Ss26ipot9NCV9PWAqQkGp6fW9Kg==
+X-Received: by 2002:a05:6a00:21cb:b0:8a0:6860:cb16 with SMTP id
+ d2e1a72fcca58-8a9ba806f4bmr13913523b3a.8.1793889327094; Thu, 05 Nov 2026
+ 06:35:27 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com>
- <20261105-dw-hdmi-qp-yuv-v6-8-1bb63ef5766e@collabora.com> <CAPj87rPk=girxTziKY5ROV3ZYqGhKRz471BLWpkCjtvNNseuog@mail.gmail.com>
- <7b86ca7f-fe7f-492a-bf88-0ac7afee3963@collabora.com>
-In-Reply-To: <7b86ca7f-fe7f-492a-bf88-0ac7afee3963@collabora.com>
+References: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com> <20261105-dw-hdmi-qp-yuv-v6-9-1bb63ef5766e@collabora.com>
+In-Reply-To: <20261105-dw-hdmi-qp-yuv-v6-9-1bb63ef5766e@collabora.com>
 From: Daniel Stone <daniel@fooishbar.org>
-Date: Thu, 5 Nov 2026 14:33:54 +0000
-X-Gm-Features: AclHuK_cuDuuWPdBNDPf4-o5prQpG_rTSQHgkH5hHnp_VrKYmgc4urnB9GsSVjA
-Message-ID: <CAPj87rMWa0wyopX6D2dUSYLXUYS9wvzVUFeKUh8coTxtF+Jf6w@mail.gmail.com>
-Subject: Re: [PATCH v6 08/15] drm/rockchip: vop2: Consolidate HDMI PHY PLL
- clock parent switch
+Date: Thu, 5 Nov 2026 14:35:16 +0000
+X-Gm-Features: AclHuK_n1-N1ApR-k6d2Ij0iknOGmj4ALZ4zRGpX5gsfuT0639_6holwqyNMTac
+Message-ID: <CAPj87rOutcy5VhtmqYg=YD4OB6dbRzxyaf1rG2kcASp477X6og@mail.gmail.com>
+Subject: Re: [PATCH v6 09/15] drm/rockchip: vop2: Use TMDS character rate to
+ select DCLK source
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
 	Andy Yan <andyshrk@163.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -115,10 +113,10 @@ Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@snte
 	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, kernel@collabora.com, 
 	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Igor Paunovic <royalnet026@gmail.com>
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_063409_256518_E6398EB6 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20261105_063532_060721_9FF3D55D 
+X-CRM114-Status: GOOD (  19.01  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -139,29 +137,45 @@ X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
-
-On Thu, 5 Nov 2026 at 12:56, Cristian Ciocaltea
+On Thu, 5 Nov 2026 at 01:01, Cristian Ciocaltea
 <cristian.ciocaltea@collabora.com> wrote:
-> On 11/5/26 2:18 PM, Daniel Stone wrote:
-> > I'm confused ... if we have switched to the PHY for dclk, then a mode
-> > switch wants us to come back to the CRU source, don't we need to
-> > reparent to dclk_src?
+> The HDMI PHY PLL can only be used as DCLK source while the HDMI link
+> operates in TMDS mode, i.e. for TMDS character rates up to 600 MHz.
+> Beyond that, HDMI 2.1 FRL is required, in which case the PLL would run
+> at the link rate and VOP2 must keep using the system CRU.
 >
-> This is actually done in vop2_crtc_atomic_disable():
+> Currently, this is decided by reconstructing the TMDS character rate
+> from the DCLK rate and the color depth, i.e. DCLK * bpc / 8, which does
+> not hold for all possible output configurations:
 >
->     if (vp->dclk_src)
->         clk_set_parent(vp->dclk, vp->dclk_src);
+> - YUV422 always transmits two 12-bit components per clock cycle,
+>   regardless of the color depth, which from a clock-rate perspective is
+>   equivalent to three 8-bit RGB components.  For example, 4K@60Hz 10-bit
+>   YUV422 requires the same bandwidth as 4K@60Hz 8-bit RGB, typically 594
+>   MHz.  However, VOP2 wrongly assumes it needs 742.5 MHz (594 * 10 / 8)
+>   and ends up switching the DCLK source.  As a consequence, modes
+>   requiring uncommon pixel clocks, such as those corresponding to
+>   fractional refresh rates, will fail.  An example is 3840x2160@59.94Hz,
+>   which would likely rely on a 593.407 MHz clock rate, unsupported by
+>   the system CRU.
 >
-> Mostly to ensure the PHY related resources are released when not in use, e.g.
-> after unplugging the display.
-
-Right you are, sorry I missed that one.
+> - When VOP2 processes multiple pixels per clock cycle, DCLK is only a
+>   fraction of the pixel clock, e.g. RK3576 halves it for pixel clocks
+>   above 600 MHz.  Hence, an FRL mode such as 4K@120Hz 8-bit RGB, with a
+>   pixel clock of 1188 MHz, ends up with a 594 MHz DCLK, which slips
+>   under the limit and wrongly selects the HDMI PHY PLL as DCLK source.
+>
+> In preparation for supporting the use cases above, rework the DCLK
+> source switch logic to check the TMDS character rate computed by the
+> HDMI connector state helpers, which already accounts for the output
+> color format and depth.  Keep using the system CRU when the rate is not
+> available.
+>
+> While at it, drop the VOP2_MAX_DCLK_RATE define in favor of the generic
+> HDMI_2_0_TMDS_CHAR_RATE_MAX_HZ, since the 600 MHz limit applies to the
+> TMDS character rate rather than to DCLK.
 
 Reviewed-by: Daniel Stone <daniels@collabora.com>
-
-Cheers,
-Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
