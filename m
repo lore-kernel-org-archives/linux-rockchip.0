@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8EA0D606D804
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 12:09:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2B51B606A338
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 12:10:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MDHmDFY6;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=fooishbar.org header.i=@fooishbar.org header.a=rsa-sha256 header.s=google header.b=H5DzTiBh
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=HvvM2Wmt;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=fooishbar.org header.i=@fooishbar.org header.a=rsa-sha256 header.s=google header.b=PAsSpj/g
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,91 +14,90 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=bus/d0pzsykREKVo/ylH/M/3hxZ7cKBYNgjeswGEPyE=; b=MDHmDFY659fJd++ZuMP/pFUP5U
-	3YdqWMF3bGrMYK6A6vhgOYkNWHs3i7w2knDCyFUBqsyBImm24yXTyw4KWTyQm6mEo0+JJX+kG6Hlx
-	jNcwD/A8aVM+XNU55SFiIGavAn+zxvRNxwJrTvooMWWoF10BpzGw3UAWk85HdmUiNeYtjzyEo16BU
-	ssEJgvnLX6WKlLhxzDoJCfeA2sMBTY199373iCRAY7Ar++SYV8gAn9Vj/jNSZzdpkUErDqdoNdI3Z
-	RNNPxVIrVKs0wzb4pF12kDfvpi/nlu2HXX7MLmr01hbGY1X5MhZQnlP8b7RZz2nObTCdr3zSDQS6x
-	3LHi6BGw==;
+	bh=pMkh4Lt3MujPfIttCzuXFxZTgBx2jfgohz0IKeqVUT8=; b=HvvM2Wmt+p7Ns2PSb5Dl1VDlIZ
+	x2kg/N5itOnFHeOIqEpqcuYXm/kg9mghUdf2B3oQTpKYISXSLIGjJZiiq+QGngmKg8wDp52TKh7k4
+	tD7W3avguKZ57qmkSxkPSWp3hv99VRF/DUsH5kiyHEp0MHmIC364EWoRZXQVSIq9/QJhlO05EYvRa
+	16kMEqHVtkTp3pPcS80cSA5D+urmV9EyW3GF3GN2MM/vJBFvZbdRT9MSe5Fn/PILczwPfuyUUTo2w
+	IPdQ/XPJ5zI93FymoaxAX5syrsNHdwSmRtrmE80OUYDfiesOuGsbzHcvBTWBF8PGXa24BoLcNTQfS
+	y7SYozxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOwH2-00000008qFc-2E67;
-	Thu, 05 Nov 2026 12:08:56 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1xOwI4-00000008qsM-2rPR;
+	Thu, 05 Nov 2026 12:10:00 +0000
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOwGw-00000008qB5-0Rk7
+	id 1xOwHt-00000008ql0-1p4K
 	for linux-rockchip@lists.infradead.org;
-	Thu, 05 Nov 2026 12:08:52 +0000
-Received: by mail-pg1-x534.google.com with SMTP id 41be03b00d2f7-cd61cef87f1so812441a12.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 05 Nov 2026 04:08:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1793880529; cv=none;
+	Thu, 05 Nov 2026 12:09:56 +0000
+Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-3adac5b29ebso1062717a91.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 05 Nov 2026 04:09:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1793880588; cv=none;
         d=google.com; s=arc-20260327;
-        b=OaQKt6ZBozBhu9uZWJ4R9aG6PFXY+mUp7Q4NLDSuKtVRbkWynckJ1II6g7P8F42EQO
-         BzJNfqUEvIFk+0j9ZOtFPDz354Q/DsQENPZv9W6uXrCxk2X+9IfrIvqBAqAC+NuXW4RO
-         rBqAda1PKsTl5wWJvSebgadruT86HBiIC0Vb0GO7Fyyd7sB9vEyUmBcAPpIyPykryXCv
-         ath6jBys48/JZ82qCQUkkvfI9sDJDfS35QNjxEH5MnD4IEtRgkm4jVTtGEBAR8jH9iN/
-         rWHsrKzVZk/9bFqWds/bNMRGHaHsxy39ooCCV8jp3SwdLmne6aaozbqgsluXmgaIETNM
-         3qAA==
+        b=NpB9OSVHGGUs9t54B2O/q4YmvhP8s9vKWos415XDI0YNzYuQDWMyWaQlBfnw61T9oe
+         fKYkn9kZ797aPlIOQDHBHrNGC3sezwtLzt7SbZDJtaT3yyfRDjT1LXOtwz5lUT3JhvS/
+         9Lr+HR/4shzXy6rubcN9itRIZRorSdySYBTLbAM/I/UxSrOUP1QqDsoLPuQckE7RAM/L
+         /VfVySS7E6s2UcPGzmcBZnAQGfVDypKvCxOzEyVULybQHDHVKICXoDLYd9WliwP+3vSc
+         T+e/lnh+vEyFBsOO40DwZNHk0K99hBDcjkSXuqdniglzI1VPXb9aj046CikDsZ1W5VAF
+         AKYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=/0iceX90IqV9oL5wqkzDxra2XjMzLEXwA9jTMie2zR4=;
-        fh=HRjLbYRhn0zwsm5gug8JM/orAuZDtmo73ZnlHhn3csE=;
-        b=U7A1FoNG2NoM497oLEz9SQu2GsiW/QrYNhQcqqJHQ1ntqsZrAILfUnzpKPR34YcK6P
-         hm35HWXkVOBRry4X8clOrA0HAsusrvKH2zrVt9CpZeIbvy0ttssxYaC5/uTyXOuy8KA0
-         M+VGSgjKsmq2NfzKjwjrOfxdHCJUh148V0zstOALzfyRJ+UjHy9UsoGBdu6OQPHdDmht
-         VQgljx59jNCE61Z4TDTLl9byti510U4poj9U6Pdk5nX2CFVH5n8m3nytYUqUFkKVmkwt
-         iysvSw3/AiYxqmy8fdav43IzaJZQlyXV7nOfM7Amp08Y9Zc1/JA65MM8gw9BP2x3xbir
-         XVVQ==;
+        bh=4fvBY9zhAaIiPkSg9Hq87qAnpt7MuwN0ORLvoKho5YI=;
+        fh=p+GZ346WSw1NzMs7ddJMUTatVIceF/bP6dYZBovQh7U=;
+        b=WtEZJpzX5btbmA4Oj313bHvKWw4V1gfVkX9ZLjCeR5LDvy1O8j0k249N9YnEFGnUGu
+         0xsB55CU/G/rJnnoYmU2gjFFDYShtj6nzE2509sO/3jo2yYEEpijmCqR3Gp6hKBvV4dy
+         ZnMqCj6qmUWo1j7ZPmYtjSZc09vmqbJESVuIE5Q8aVrJgeq7uQqi11qQAuJJPwFEKqDe
+         WB7NbdKvAa4UtlPRCCMtCFIdQ31Fq+dOzBAgkAkEY4baPBmZ8W6V3KD/wcbtB1HtvCRd
+         5nnDbA+O2FBPhhONxCN8Ht7WnFmDLKdzR+p3xBLyvusAgqTsuBmlRVG3Eg0+S3nSXkpf
+         xs2A==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1793880529; x=1794485329; darn=lists.infradead.org;
+        d=fooishbar.org; s=google; t=1793880588; x=1794485388; darn=lists.infradead.org;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=/0iceX90IqV9oL5wqkzDxra2XjMzLEXwA9jTMie2zR4=;
-        b=H5DzTiBhEcwjut3CA1Xa4+TQQ2hk5+UwvyF66Gw/buFSXF6ayoK+/81IeE2ZfWxN5K
-         lRp65opw71w06tPLkkj7FyoPKHE7fWDISbflvRi+F2mIpmrSq6hL9c6Z3uBIeqrNk6gb
-         +aq7fOwkDzgRv/ZnmtK1d+iiXaKZdvWe2h9guwtxsPNNBhsXI8532L9uoB0sz86QlaF6
-         c8/mftsoma6jY3CgsMkNc4pVQ1T+r6cjkj5qfc6+5lT4vqjkoBbCXF9Js/q1cjrsUB3c
-         okclcyYADBNxwsYYMOuDgq8QSyoor8xkxGi9vqZ0r9+f40GPw+AdJhMv5G7+k36e7CNE
-         aqTQ==
+        bh=4fvBY9zhAaIiPkSg9Hq87qAnpt7MuwN0ORLvoKho5YI=;
+        b=PAsSpj/g6EnUeBhHs9oRbCG5WiSP4tETK2MspemK0d6wOd4UaaordV+fNGXoTvF7Vg
+         /hdc+PDqO81fW3ZV76frgQSStzRWZmpS9TL1xVXYPrSKEwuU9zLOK7UEBSwJ4fTXx2C7
+         YJRRt0bw8o0lWvFlbYt+V4vHxAKUzUPwfYskrPgHYZbpFEh7fqqkD3tYgveCs3NvOiEF
+         mohglsWu1l3YQSUc5fgu66Z45FjhDbVcJgkD6R2LmmTw7UwQPtkgjWzo+mJol17Kia8x
+         mH7V6NnTc1kQoer5paHxsPBuT3RBXFR7pi0FOncpkOCQDSQANZe1V1qp70zEEuYGPqXQ
+         pSHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793880529; x=1794485329;
+        d=1e100.net; s=20260707; t=1793880588; x=1794485388;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=/0iceX90IqV9oL5wqkzDxra2XjMzLEXwA9jTMie2zR4=;
-        b=iqFwjaE3a2Qk8lbp1i3pNiisIuO4EwxOCC85MqWyutL9/b5cgiS93ArkDBBFwKhDBv
-         TRUGHfWFU7Dt626DQvxB46dfxbLn6L4lAYNupDyeYursQA2aUVlg8KOMUZzjcHUv5EyI
-         3LGfGqlABzPTsntcBNcMhWZb2Sm70YrlDVYjG41mk9wbOt+x//pmGciUDlccvNxz5VgT
-         VFngHYMDZ/g6QhV1p8+y2GlR7zsLDZMHotV8zn4KaEE3ZMryjIuo3ikNaB6HQvYIrfdK
-         yeX9CRf/VGHSjAWwj8F4QQ4xwy80+kmSDt0hJxwaY5e+ZschWDkmLy9xGBSJgwGxX5NM
-         Psww==
-X-Forwarded-Encrypted: i=1; AKwUvBxehmhrpUf6PUOo6GUlIdPbt3VEkexDAFjtvkO2kilBhaxS9DSi99v3yG5+LOwdITfoB+Svb90zGxyn6L5Djg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/IrxaH7fe2V/B1AD4c2GqLsP9mhJ58EM34es9EUZFZiEu29KHn
-	ROgfC3Cav5legkTor76AkPTeNwoKhLtA2teOeh9tH2wQYo0Cu2WSuFdfn9dilQzl/3YboYclKwZ
-	IalOsxGLNpbtEl6lvhmH1hUmtGUeTNdr/FLW3cnsp7g==
-X-Gm-Gg: AYBFou1Rf4IId9CZ29Fh87dHjkBrxxSePl6XadoGAMBlImQz5En2+dd0ZyL2gz9Or37
-	sm9zHvYmu68g2OkG+CtrGRU8xMTf8wY2C1bfLDtV4oNkkqPTLEG5fQGVRsAvQOQPXCh/qWKds0a
-	d+bwQVHVwlFLI+4TkiWSLQFtMXlIf6DApg3wjMrsE0jDmbQoDqzjB4M89kPIa/1rXa7qZrqhAJy
-	oPyXCwO0BbsyF3hw+hWwOfwruE9A9TQbcEtPhL5FNKVo3GQ0a9y5nkMAHNKjv1mbt2GnjUKbAcm
-	dgwHPFKz5zCfjEkaO7FD8i/vQdt0QXiprxHk4IvqUi1ArY5ia8rL5txeYiPu+H+nwz8YkT/SdaO
-	vwfMJPQJIle1Oq5+ihwaIFYBnuOUN2WuMdnyc
-X-Received: by 2002:a17:90a:ec90:b0:3b0:c11a:902d with SMTP id
- 98e67ed59e1d1-3b0c11a91c6mr1036738a91.10.1793880529265; Thu, 05 Nov 2026
- 04:08:49 -0800 (PST)
+        bh=4fvBY9zhAaIiPkSg9Hq87qAnpt7MuwN0ORLvoKho5YI=;
+        b=oT5hhuGhMomgyMRUKo/9mLkqfvFTxG7ZVeSvH4XeTR8OEgwRpJTn9cgZ9+5N3QM8rx
+         WBtgQgFnU7ZYpmlRHQYgc+0dknzXfruJRGNn1c/lJh5LYLlzQeZBFqncvKUN7uNmCeIy
+         sXruiTYQyAmSR6rqyxwpO/6omMU+czlVcv4X94vTEwyvmm+/bLM9UX2nhkcs4f6EACVs
+         FoWMzD7VyUwl9mLTJBVuNucgHxS5e5H6px1a30o+jMdUz39Od/RfF+GF6ejR13unLbp1
+         YcHfuso3vSpdyEdENdauPInNJNjIdlp+VSNuLLKuBpVVTvrhKqO7a9o0vy6SJcEJCR99
+         Jk3g==
+X-Forwarded-Encrypted: i=1; AKwUvBzFLUQKRXgRfkWFqIcX6Kh0WmL0Dntj3VJ46BtR1XFq/Vp10HMoQZvLW+2Um8NseG+SeRRc+6Zys2fdr4tHHA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9Uule4mw5BAudZAy1j+4UhgtVdR57kgoJHNcX/rsazkw3g97zW
+	8YJtlIILmgyyYlb53Uhq3KvQhAhYcTYrat68COZLg/CCJeQT2h8/4Bibg3Ep1toRhxwS51uQbB0
+	K5KlVIV+3d08SWFJ0vvQsRs5AuT7WYV8fmf3o2gPoEQ==
+X-Gm-Gg: AYBFou3+tnT7ZpVcLGFCqM7va10RJaHek6zR6wAVBYEpNmE4tY3encLTU2iTl0E9/Zk
+	AwTQdV8fvs5LirFpiOJIVM0eTdzUzOd+LmwoHAEpDdvvUfDQWRlxk6Gfe3qK/j+cP0uQYHkKWTn
+	uKyAfDWBw6JVi3P3j6lsoZG1KIyONqs9sjFeIWcB++q3xZqzyoUfyrhbA0aRhWog6Rjc4w/HvCk
+	nfBDicj3iue9mqa/mjC3h0Bv3snNrBhpsyHEvjyD9V/zUDPpov1mIeqHePmTKCR9IIewiSL7iOx
+	kc8XSPZqurL1tPfsVH6nTL+ZjMaH5vbuR/5hxfZzSRvAvyLkN9YyQz0X/QYnXSoKwhECVfSdqoe
+	1aLJRjXjiHfzBerb/am8ZfidUQCaFZt/lcs0hyLSq3F+mVq0t9khTTpO1vR4=
+X-Received: by 2002:a17:90a:e7cc:b0:3ab:2737:3395 with SMTP id
+ 98e67ed59e1d1-3ae8979d3c7mr16512224a91.42.1793880588558; Thu, 05 Nov 2026
+ 04:09:48 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com> <20261105-dw-hdmi-qp-yuv-v6-13-1bb63ef5766e@collabora.com>
-In-Reply-To: <20261105-dw-hdmi-qp-yuv-v6-13-1bb63ef5766e@collabora.com>
+References: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com> <20261105-dw-hdmi-qp-yuv-v6-14-1bb63ef5766e@collabora.com>
+In-Reply-To: <20261105-dw-hdmi-qp-yuv-v6-14-1bb63ef5766e@collabora.com>
 From: Daniel Stone <daniel@fooishbar.org>
-Date: Thu, 5 Nov 2026 12:08:38 +0000
-X-Gm-Features: AclHuK9SHkBLRSAoFwhG6L3qgKeNZAN0mhWE5mO5no7yjWFPSRU-9JZ6TzN2VOg
-Message-ID: <CAPj87rM=D4h-EfkTdqbumrM159M9Mb89nJt0K1AgcTrqwAqM6w@mail.gmail.com>
-Subject: Re: [PATCH v6 13/15] drm/rockchip: dw_hdmi_qp: Support 10-bit YUV422
- output format
+Date: Thu, 5 Nov 2026 12:09:36 +0000
+X-Gm-Features: AclHuK_MHMThyHgJMV5RxoSYYJYLTJBQMatbDWcZrO2pg9eAtUGM46fm6kw3Mdw
+Message-ID: <CAPj87rNp=Qen3CpxdBWHrKqmpDq=w=3fhbuJFM2uVLrwizWQRQ@mail.gmail.com>
+Subject: Re: [PATCH v6 14/15] drm/rockchip: dw_hdmi_qp: Enable YUV420 output format
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
 	Andy Yan <andyshrk@163.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -115,8 +114,9 @@ Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@snte
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-kernel@vger.kernel.org, Igor Paunovic <royalnet026@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_040850_178030_1BF71DD4 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20261105_040953_421705_18067CFC 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -139,19 +139,14 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 On Thu, 5 Nov 2026 at 01:01, Cristian Ciocaltea
 <cristian.ciocaltea@collabora.com> wrote:
-> Rockchip DW HDMI QP encoder supports YUV 4:2:2 output through
-> ROCKCHIP_OUT_MODE_YUV422, but was limited to 8-bit depth via
-> MEDIA_BUS_FMT_UYVY8_1X16.  Add support for its 10-bit counterpart
-> MEDIA_BUS_FMT_UYVY10_1X20, which carries two 10-bit components per clock
-> cycle on a 20-bit wide bus.
+> Both RK3576 and RK3588 SoCs are capable of driving the YUV420 output
+> color format, and the required bus-format handling and VOP2 support are
+> already in place.  Advertise it via the platform supported formats so
+> the HDMI core can select it.
 >
-> The HDMI PHY scales its PLL output by 8/bpc to undo the deep color
-> packing, such that it matches the DCLK rate expected by VOP2.  However,
-> YUV 4:2:2 is never deep color packed, as it always transmits two 12-bit
-> components per pixel, regardless of the color depth.  From a clock-rate
-> perspective this is equivalent to three 8-bit RGB components, so
-> configure the HDMI PHY with 8 bpc when YUV 4:2:2 is in use to keep its
-> output clock aligned with the TMDS character rate.
+> YUV420 halves the TMDS bandwidth compared to RGB/YUV444, which enables
+> high-resolution modes such as 4K@60Hz on links that cannot otherwise
+> carry the full-bandwidth signal.
 
 Reviewed-by: Daniel Stone <daniels@collabora.com>
 
