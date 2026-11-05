@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 361FC606A331
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 13:33:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6BE61606EEA0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 14:10:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BQN7blIN;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=cSh9vyw+
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EjPsAIB3;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=U6Y5ArE4
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,82 +14,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=3cSK6caEwtIzHroohnjl+qu6FOEpVrQXghbCo/yhN/Y=; b=BQN7blINMtjl9nOUXTSR8rEUos
-	OiZ2DLfMqfgLIaXgta5gtUWsJziHsiuaPvt+5CGa9nUkCLxGEtehQSq03vqz/qOqS07zwwAApzXzx
-	JXrLNsAnuG6jUcHtQARZ3LmnAZFVU6XUFeH7HGoB38PN9r4jH3TEUe66nCKHNywZgPOQXabfttX//
-	bdp+GuxjXDwgVS3LE+406CafD4FI//oMZoeJa/2X5NprZ/cRcBz6jFD2OSsi+C/2ld9YQt5fVTka1
-	Edd8XtY4dIhsFpLdCUYVG+CURgTAcUIfqlxuqDkOEx8uxcjcNnJ4FMLIwitWQDO6fmtclo0VlzTZh
-	ojPW6o3A==;
+	bh=HVeCnac/cachuISmkn+4Yrv+u6eYC7GQmq+sAGgjhPM=; b=EjPsAIB3U+OI1p5vYm4ZRqt+eM
+	0LaLjE3Pk+0MaiV355elweAfO9nfhKUgTW/aUcczivHRQQVXIxUlVcAWEZ4ERszYTKDu+DHyIqX7V
+	3H/1EM+Kz9aL831vicqYcrJ6oM+728rs0HTpPAHT7FQKEnAQNfBfxeSGHlluY17fz15n0RFgsGYau
+	/fzpFtISCrkVzNzQNYHWM2PLOjtY4+9MW1mtAuXEiNCmAIG2SWuPiAlsotdeRNkPMIvR4KCOxbab7
+	jAxwKVWGbmfVfYOukDF2BiVT3iq7ddAzYlwuNC3nTTNEMrA/i09yd9+KhBJU06Ueg1uJgGqx1ElB8
+	cstSccoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOxay-000000098iO-0T3k;
-	Thu, 05 Nov 2026 13:33:36 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xOyAZ-00000009DWy-2n4d;
+	Thu, 05 Nov 2026 14:10:23 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOxag-000000098Bd-2HkP;
-	Thu, 05 Nov 2026 13:33:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793885591;
-	bh=a03maraQoPJPOSS4qJMpaXsYfopSi59sHbEBuBxkyzk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=cSh9vyw+/WrkTy1uo97nSXi1VvuoXyudRP6l6Z/AaK/86m541UeEIEIEQBrMKRO+t
-	 2vkmmOOQGRKd7IemcpLwLyOlfgLmeLWsANI3ECBN2QZa9EVoLJZpAiBsF7QpBRlFon
-	 NAB/nuA8Hl9FxEWWR5WNS45uGxqCMyOi6N6LFq9uiI361xU8LRfFmKFduqwfxcvgVI
-	 fOZ8YJqnUEjksY2j8wF/0I02j5uS+lejDHgDkZAPpo8+P66xmXYYbvSDQgzo/yWkmR
-	 65h/DnteNeTajg69LcoCtgqBfF5TjbgRuIgXn0kr4ooo4a8lDmIF67rOO+Gs0mdhgr
-	 qZxodJgy3s0bA==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A045417E0C7E;
-	Thu, 05 Nov 2026 14:33:11 +0100 (CET)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id F0241480047; Thu, 05 Nov 2026 14:33:10 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 05 Nov 2026 14:33:17 +0100
-Subject: [PATCH v9 9/9] PCI: dw-rockchip: Add system PM support
+	id 1xOyAY-00000009DWr-2POk
+	for linux-rockchip@lists.infradead.org;
+	Thu, 05 Nov 2026 14:10:22 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5772843E63;
+	Thu,  5 Nov 2026 14:10:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BAD741F00A1C;
+	Thu,  5 Nov 2026 14:10:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793887822;
+	bh=MTZqhm0aGJreZPGGbuUZEYlXZJP51jJf8Z0bzy30p1U=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc;
+	b=U6Y5ArE48X6AS0ezYl38zhQXOalEtjQsl88u/DU9nVwKUsw2md5g+NM5WaFSKn9DL
+	 ODSVF6ZtzOnyVDZiZ25+tPzCDwlAPLzMFfdkroTcYmCk/s1CbMjPgwYE6ccs0p4nMy
+	 gZWfOBlvZTQTIS7EEHviXZmAk3djdXjhjFQxuNsikrg17rVeSdKn43Ewnj6PdMDd8n
+	 wtV0QS1k1CB0JOLKnrgzqi/LxchYIULN558cwCrK90dfK/hYnRV6AJ5mmL3ocbw7sk
+	 bNsv/YjB7Lr7l0bm/PMG5iTg+Em6wJ2I48V2StQHpqQF29r6yt50KTghIJgOxZYLBR
+	 p5K+xBMC8afeA==
+From: Maxime Ripard <mripard@kernel.org>
+Date: Thu, 05 Nov 2026 15:07:55 +0100
+Subject: [PATCH 38/83] drm/rockchip: Switch to
+ drm_mode_config_create_initial_state
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261105-rockchip-pcie-system-suspend-v9-9-a2e55846649e@collabora.com>
-References: <20261105-rockchip-pcie-system-suspend-v9-0-a2e55846649e@collabora.com>
-In-Reply-To: <20261105-rockchip-pcie-system-suspend-v9-0-a2e55846649e@collabora.com>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Jingoo Han <jingoohan1@gmail.com>, 
- Shawn Lin <shawn.lin@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, 
- Mark Brown <broonie@kernel.org>, 
- "Yury Norov (NVIDIA)" <yury.norov@gmail.com>, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Alexey Charkov <alchark@flipper.net>, linux-pci@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4897;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=a03maraQoPJPOSS4qJMpaXsYfopSi59sHbEBuBxkyzk=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrshZYb3BOu/8nm682Cgw0Um/Z9FM/+aUhUI
- i+U/8Y9YZ7A7okCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq7IWWAAoJENju1/PI
- O/qaNlIP/jN7gAEqv+U8MZsvoZ7/YnCQh4mqb4bXxILeneRRBtNCcSx5iJ05lZ46+DEby+NFqJY
- +iC8VKwwWhe9rLjW5XzG0Hfvmhu8k4tEfTLbI7zU8+Kgk9dXRfSSgzvDkLU+IsFjIfhu4DRKglg
- tZMS3+eV1xehTQfttdAmVRYbIAYWvXYYRy020vKIyzLaI5dcN96h7v+sehedV3CGAWQduIxXO3f
- p+mETp8NBs3Ljw++EdDa0PjBJ6EyUHEWd6x5GX/iZc887Pe0g+v5ShCplngVMPyNXdIHcqEAkb6
- moTFhvCtGIVPxLUS9V4ysT3vQ0YAz1mzl1/3Dow/xSUU04SdGs0qw14uAC+CHoV7c7NxjbXyYvH
- LwgxgmunC96tS8gaUB8NAY+lBdZxa6aMhVDuAywlJKvzXP7bw2KBtQ7f58P/mCBUv9B5o/LIQ0L
- Uu4w4dJRT8TBfc8PtX6T650s4GOQA+MEwOveEw9+2hCSDjDJh47DgEPd9SAgavmE55Ey05gENtg
- XEUEAP799/eNV/9eMHrKy+h7Z4/Q7zsebHr95WicGifChqTrL2Sf2s+wlTrQUXl5075H+qR/sTB
- X+BVg/Z6T2I7nfEg3rBmwiP7unQ1+BSfFsuv9FaVaqn62A0zH+3QAFQaCo4PdmsYAitTzL7xGuZ
- EGRWyKftN1Jm2xB1Zorkxcg==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_053318_954849_19491DAC 
-X-CRM114-Status: GOOD (  19.63  )
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261105-drm-no-more-config-reset-v1-38-763560c2cc3f@kernel.org>
+References: <20261105-drm-no-more-config-reset-v1-0-763560c2cc3f@kernel.org>
+In-Reply-To: <20261105-drm-no-more-config-reset-v1-0-763560c2cc3f@kernel.org>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, 
+ Andy Yan <andyshrk@163.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1324; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=u+F3Q/slyAJ4WB/81jUsRNlDARO7Uo/iUhGPQMLGiXk=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFlvetcYZBud+aioY72t/caG32wvol3/rLz/Ku1PmaaZG
+ N+U2ii5jqksDMKcDLJiiixPZMJOL29fXOVgv/IHzBxWJpAhDFycAjARk2rGhkNyPc31ZmrFbxLc
+ 2c6eEWp9UyO0g21fkuF881n7I8xqLXmUBN7qfa1NfzhrzRnlxtIDjPVeSsbc3iKrznLJ87ote5w
+ own++aOnh6a8eCsVf13C68sycc+vSUuedLR/eCXcuWS/DUQcA
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,8 +75,8 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -109,170 +85,29 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add system PM support for Rockchip PCIe Designware Controllers.
-
-I've tested this on the Rockchip RK3576 EVB1, the Radxa ROCK 4D
-and the ArmSom Sige5 boards.
-
-While I haven't experienced any issues, most of my tests have been done
-without any devices attached (i.e. default board without any extras), so
-there _might_ still be some problems. As system suspend does not work at
-all right now, I think it makes sense to get at least the basic
-configurations working as soon as possible as it will allow us to catch
-regressions by enabling system suspend in CI systems like KernelCI.
-
-Co-developed-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 102 ++++++++++++++++++++++++++
- 1 file changed, 102 insertions(+)
-
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index a603475d4450..39faefaf568d 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -124,6 +124,7 @@ struct rockchip_pcie {
- 	struct gpio_desc *rst_gpio;
- 	struct regulator *vpcie3v3;
- 	struct irq_domain *irq_domain;
-+	u32 intx;
- 	const struct rockchip_pcie_of_data *data;
- 	bool supports_clkreq;
- 	struct delayed_work trace_work;
-@@ -807,6 +808,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
- 
- 	pp = &rockchip->pci.pp;
- 	pp->ops = &rockchip_pcie_host_ops;
-+	pp->suspend_poweroff = true;
- 
- 	ret = dw_pcie_host_init(pp);
- 	if (ret) {
-@@ -1030,6 +1032,100 @@ static int rockchip_pcie_rc_reset_root_port(struct pci_host_bridge *bridge,
- 	return ret;
- }
- 
-+static int rockchip_pcie_suspend(struct device *dev)
-+{
-+	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-+	struct dw_pcie *pci = &rockchip->pci;
-+	int ret;
-+
-+	if (rockchip->data->mode == DW_PCIE_EP_TYPE)
-+		return 0;
-+
-+	if (pci->suspended)
-+		return 0;
-+
-+	ret = dw_pcie_suspend_noirq(pci);
-+	if (ret)
-+		return ret;
-+
-+	rockchip->intx = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_MASK_LEGACY);
-+	rockchip->intx &= PCIE_INTR_MASK;
-+
-+	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
-+	rockchip_pcie_phy_deinit(rockchip);
-+	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
-+	reset_control_assert(rockchip->rst);
-+	if (rockchip->vpcie3v3)
-+		regulator_disable(rockchip->vpcie3v3);
-+
-+	return 0;
-+}
-+
-+static int rockchip_pcie_resume(struct device *dev)
-+{
-+	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-+	struct dw_pcie *pci = &rockchip->pci;
-+	int ret;
-+
-+	if (rockchip->data->mode == DW_PCIE_EP_TYPE)
-+		return 0;
-+
-+	if (rockchip->vpcie3v3) {
-+		ret = regulator_enable(rockchip->vpcie3v3);
-+		if (ret) {
-+			dev_err(dev, "regulator enable failed: %d\n", ret);
-+			return ret;
-+		}
-+	}
-+
-+	ret = rockchip_pcie_phy_init(rockchip);
-+	if (ret) {
-+		dev_err(dev, "phy init failed: %d\n", ret);
-+		goto err_disable_regulator;
-+	}
-+
-+	ret = reset_control_deassert(rockchip->rst);
-+	if (ret) {
-+		dev_err(dev, "reset deassert failed: %d\n", ret);
-+		goto err_deinit_phy;
-+	}
-+
-+	ret = clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
-+	if (ret) {
-+		dev_err(dev, "clock init failed: %d\n", ret);
-+		goto err_assert_reset;
-+	}
-+
-+	rockchip_pcie_writel_apb(rockchip, FIELD_PREP_WM16(PCIE_INTR_MASK, rockchip->intx),
-+				 PCIE_CLIENT_INTR_MASK_LEGACY);
-+
-+	rockchip_pcie_enable_enhanced_ltssm_control_mode(rockchip, 0);
-+	rockchip_pcie_set_controller_mode(rockchip, PCIE_CLIENT_MODE_RC);
-+
-+	ret = dw_pcie_resume_noirq(pci);
-+	if (ret) {
-+		dev_err(dev, "failed to resume: %d\n", ret);
-+		goto err_reassert_rst;
-+	}
-+
-+	rockchip_pcie_unmask_dll_interrupts(rockchip, false);
-+
-+	return 0;
-+
-+err_reassert_rst:
-+	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
-+	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
-+err_assert_reset:
-+	reset_control_assert(rockchip->rst);
-+err_deinit_phy:
-+	rockchip_pcie_phy_deinit(rockchip);
-+err_disable_regulator:
-+	if (rockchip->vpcie3v3)
-+		regulator_disable(rockchip->vpcie3v3);
-+
-+	return ret;
-+}
-+
- static const struct rockchip_pcie_of_data rockchip_pcie_rc_of_data_rk3568 = {
- 	.mode = DW_PCIE_RC_TYPE,
- };
-@@ -1060,11 +1156,17 @@ static const struct of_device_id rockchip_pcie_of_match[] = {
- 	{},
- };
- 
-+static const struct dev_pm_ops rockchip_pcie_pm_ops = {
-+	NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend,
-+				  rockchip_pcie_resume)
-+};
-+
- static struct platform_driver rockchip_pcie_driver = {
- 	.driver = {
- 		.name	= "rockchip-dw-pcie",
- 		.of_match_table = rockchip_pcie_of_match,
- 		.suppress_bind_attrs = true,
-+		.pm = &rockchip_pcie_pm_ops,
- 	},
- 	.probe = rockchip_pcie_probe,
- };
-
--- 
-2.53.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+ZHJtX21vZGVfY29uZmlnX3Jlc2V0KCkgaGFzIGEgZHVhbCByb2xlOiBpdCBjcmVhdGVzIHRoZSBp
+bml0aWFsIEtNUwpzdGF0ZSBhdCBwcm9iZSB0aW1lLCBhbmQgcmVzZXRzIGhhcmR3YXJlIGFuZCBz
+b2Z0d2FyZSBzdGF0ZSBkdXJpbmcKc3VzcGVuZC9yZXN1bWUgY3ljbGVzLgoKU2luY2UgdGhlIHR3
+byByb2xlcyBuZWVkIGRpZmZlcmVudCBiZWhhdmlvcnMgKG5vdGFibHkgZm9yIG9iamVjdHMgbGlr
+ZQpkcm1fcHJpdmF0ZV9vYmogdGhhdCBtdXN0IHBlcnNpc3QgYWNyb3NzIHN1c3BlbmQvcmVzdW1l
+KSwKZHJtX21vZGVfY29uZmlnX2NyZWF0ZV9pbml0aWFsX3N0YXRlKCkgd2FzIGludHJvZHVjZWQg
+dG8gaGFuZGxlIG9ubHkKdGhlIGluaXRpYWwgc3RhdGUgY3JlYXRpb24gYXQgcHJvYmUgdGltZS4K
+ClN3aXRjaCB0byBkcm1fbW9kZV9jb25maWdfY3JlYXRlX2luaXRpYWxfc3RhdGUoKS4KClNpZ25l
+ZC1vZmYtYnk6IE1heGltZSBSaXBhcmQgPG1yaXBhcmRAa2VybmVsLm9yZz4KLS0tCkNjOiAiSGVp
+a28gU3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+CkNjOiBBbmR5IFlhbiA8YW5keS55YW5Acm9j
+ay1jaGlwcy5jb20+CkNjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgpDYzogbGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwotLS0KIGRyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgfCA0ICsrKy0KIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2Vy
+dGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
+aGlwX2RybV9kcnYuYwppbmRleCAzMDk5NDA4ZTlkMDUuLjFmYzYxMzRmNjkwMCAxMDA2NDQKLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYuYworKysgYi9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCkBAIC0xOTEsNSArMTkxLDcg
+QEAgc3RhdGljIGludCByb2NrY2hpcF9kcm1fYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYpCiAJCWdv
+dG8gZXJyX2lvbW11X2NsZWFudXA7CiAKLQlkcm1fbW9kZV9jb25maWdfcmVzZXQoZHJtX2Rldik7
+CisJcmV0ID0gZHJtX21vZGVfY29uZmlnX2NyZWF0ZV9pbml0aWFsX3N0YXRlKGRybV9kZXYpOwor
+CWlmIChyZXQpCisJCWdvdG8gZXJyX2lvbW11X2NsZWFudXA7CiAKIAkvKiBpbml0IGttcyBwb2xs
+IGZvciBoYW5kbGluZyBocGQgKi8KCi0tIAoyLjU1LjAKCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
