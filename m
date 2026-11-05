@@ -2,77 +2,77 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CCE14606D80F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 23:23:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 336D1606A326
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 23:23:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=V+Ek5BoO;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=rLV8emy3
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1pCLutid;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=lkpbX2s0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=4Fj4qKuuokcGmkkKDny6TMgoGIurUX/o4mEfFjXTuBE=; b=V+Ek5BoO033BiuaDaGumwaThUm
-	BAJj4PZxi3IucLWyye+WzWejwbaIoAdQKbBFMsoxQ7FLTrW52JQsws6lL7gyOkV9DT9fkaToopC4F
-	w9jjVHHF3UJeWJv8QO0ECSI0cav1fNZxn2NyrwMEteLAGbb5B97ltJPrjRpzM+9uiuNeWqBMnnryZ
-	wSwi1jeqry2X9Wlz1cG6TmbSQ9G/OQif9nykQTMhq/VseZtI5ovB3ljuy6DnzPIa29Jwp7F4IoSdk
-	ObDNC14HGhF8RHHwMYB8bOtnV6g0qCJQ0Acgr6JgZcIYXpd9hasGheH/gw6KsjPpAflIFhD+E7rmA
-	cP5VFLmQ==;
+	bh=/LLV1ZDOI1pouVgnIVOX3JbNHiZEtD8epGPLuV/Efp0=; b=1pCLutidYI5THBM2cBSR18SpHD
+	xEtd4HGJXzgLyITo2qmYxFrUN6CJ1SG4nQkYTwOqUt/lFYj/WO03h749xkB5EPoZJhteKLht5uEQU
+	1rRoBOS3zHOt99yMxBdP+3zgkS+xh4j5PJgB5UaHIxV2j/ltqZhsZvj4jXErELVlT5BqSUmfCRBge
+	JJVMCoPy0+0Cf1s/OOLQW/3VxFup9PNoIdBz+Ve/p+TfuNSnwFl0AaZlfNNVYy34WXcbxqC731D7k
+	JYCnXvC4Ue3yamg3zVKWXf0hiibQcRLBd718lSkZ+VvvEG3Xcn2zgIYomypY7X98lAr1GOKfv983E
+	/zZoP8qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xP6nz-0000000ArSQ-14Dm;
-	Thu, 05 Nov 2026 23:23:39 +0000
+	id 1xP6o3-0000000ArWb-2yxU;
+	Thu, 05 Nov 2026 23:23:43 +0000
 Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xP6nv-0000000ArRE-3IoC
+	id 1xP6o0-0000000ArTB-2MSl
 	for linux-rockchip@lists.infradead.org;
-	Thu, 05 Nov 2026 23:23:38 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-3b09cc7ed1aso17896a91.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 05 Nov 2026 15:23:35 -0800 (PST)
+	Thu, 05 Nov 2026 23:23:41 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-3b0b8b5d28cso11836a91.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 05 Nov 2026 15:23:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793921014; x=1794525814; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=++VDHdPlpTNkCnA4mn1+LWZP5PXeiA0pzKCa5Fy4gJ4=;
-        b=rLV8emy3gLOR5LFW5bcajQiw+ePUQC2tWpPzEo2mRgVs6AxJEGiQnpc+Ds/tAB8de7
-         hKtl8yVdWKw0FnSL/t+i+rD3f82t8ln6KHosQcilGupkv9+g4YCRy7p71CaFhBryKg1y
-         ZQV0E3OnHhgdfZoqfC7YcLBo668rVXpABgGuKuAiFkKX/sjcPM87pE3+bI7/a2EPBrCe
-         ERNj7LJlvxoD5e77tj1jwtvgfhTNcMJuGNq1F75nwbuzzB8JV7Moe720UOTM0UvCr2GG
-         YLV1zMelAev0q/M93xxzS3u86HlpFVFsqm+hY4+yXtojS/ekMQgQebZpxFfdwPISbBL3
-         39lQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793921014; x=1794525814;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20260707; t=1793921020; x=1794525820; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=++VDHdPlpTNkCnA4mn1+LWZP5PXeiA0pzKCa5Fy4gJ4=;
-        b=laYL/aQELQNvnuu3Wosf0EVnYZrpVmSm7B3pXDnHTw9hPWN1BWGIs1NZpZJHTCIHH8
-         wWYexFiGdBVJqIyW39rrW26dTKKIhnDAcKZK0esGeIpx3NNKxAUYV9BgRZuK0QIUXx2D
-         bdKM+G6Mr7UY3M2lDwdnfdcO4SBoIdlltd8rXDeb+JQEfC8rRfjjXTT0fUNW8HDKu4kZ
-         1HFg6XDCArqYDmuVDSaaNc42mpyigrfDt32HRjmKrmWFyhFBXym+jzkG4uWVwzztIFaA
-         IQEQtMrGtHhew4kh2F+zYkrTX8IowNUi5aQ0t3AvhzbpERYWXe9mMi39yUrUCIzaE7hj
-         fYsg==
-X-Forwarded-Encrypted: i=1; AKwUvByfiXqOq++WIDyIRUW0pcsEiPnet3NzWrJtIJ5FyiiPHnYC61yxvfs7qmT1h31Yoh4Rx8Gc5EGBjVo0me13hQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/HdVwBtpyGcJX/j3pwz+JiXBhUj0FRITgbbKrS5v6ptHiQTlWo
-	TWkiQqgodbhcBMqDgFs22w4Qt+7kdPgyPCY/SGxWEFSkbz9ZQtEfqEBxElIaQWfE
-X-Gm-Gg: AYBFou1O0G5QWloZYmZJ4UsSRnzh7wwOtUp73+knLtM3x1gxABcDZrxbBUEkEsxA2F/
-	aiZZjFNJcYQF7I9lGj7SQjM/JOMhqpGhJFPe1WCdjeCGIr/gjhgkHzycrMNYABz52c9T/riK0J7
-	tFxlNMPuXPX3emo1hfqXthfaJjteVO42/yQdDHB9p1GAxNGzXHS6Fsmapsn+gI/p3nwHqgvwRh3
-	94VJZxO220URKW+ech3o729uuwq4KKL2zJRhQTpxxi0JYTC09yMoZ1UaXeNiCVyVC1p7qONv/lo
-	B/L2aS5GEeRq6gYilb/gvWav4WqT6xpgAeZN3UT2mZn242KEgeFOQjE+L8T3WkZwH+j0bIJJZgs
-	ozt7zvJB1Jf7mzNSGEuJqk/H/eZO6eI+KKSjRMCGYC8n7RhsgER5vAyeRgUbUOsqPxAC1ZBCEX1
-	0c3AmqGN8rdYfq8JHqp4XXo12xgwz0rkGhbASoQBGvO8wui6pz+QKuzxbqYC2kQe7m7rEa++5jM
-	nUK+vEVBrqTbS3i2bC13kKzEdB8jzAy31CkgJdHKKvKWV4dT+wqAZ8OTPrgd8/FRcuq43oAWo3q
-	l56G0zCsLP4E0zm/8deU1zHnnADCWM6oqgQ7ukCsot4B/wrdcEkzYEqvdfZSjQoS6gEoJ6Q7kDb
-	0KA1MBF8=
-X-Received: by 2002:a17:90b:2590:b0:3a0:c1b1:45fb with SMTP id 98e67ed59e1d1-3b0db014274mr896768a91.0.1793921014532;
-        Thu, 05 Nov 2026 15:23:34 -0800 (PST)
+        bh=0qFTCorgq4hyV4vVhWj25+4lzr8cjg0FBjQeaIcgYqM=;
+        b=lkpbX2s0EVIflZ9Tvh8njs/SHvIwA46Aiu0ZDBk+WYhjz99Lw/WxZh/4zhfCHRjZSl
+         epFmnPGyvBm2eoHvUkq9yAvH0ymqgmsYy733BtfBc/dNgyBNsUOR+uVPplXadC3tiWSD
+         25zSKQtBx+Uv/EmgreOvR44WN7GoySinRjKKZhHi9Xo6KImkO2LGJH6gRgVYenoPlgey
+         cjre1dyuspUGd97UQwHVeGJ0ZrK1qTCpJOG50F9v8uc8+ihmCy/skge1iIw6xm1ATSO4
+         9o2PRivCyeeQr2kXmaiY+OB0jx/RZKFGAsJ/TPK05idxbKMz0Eo2ZuTWtzgD3pa+ckys
+         ktqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793921020; x=1794525820;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=0qFTCorgq4hyV4vVhWj25+4lzr8cjg0FBjQeaIcgYqM=;
+        b=p5itH4C/0yuGd1NSH1lR8FdlP08gpJAv6k3ebYNZD1MHWXjAysCPefVjilwL5dwVth
+         p76U1gSkfKyzaJROZaU3igjoMUfTwDeNpruEXEfwCogGZtS1B6Y6vgJL0KgDL6YsZWd/
+         DCSjwjkWCizcoFON+hOmn44zYXm5sNrFNZk8WJMAgy0uTMnpyGR52F6ptVSvwzF1Cqgx
+         Vca+Eknk0DiNQzZjVq/weNh52DXKNw4ESJOqHBW0ZO69t8p5QoSipQzFCLYAoOTrlcKb
+         9vjlwH1sEDZyNCmMcXJVYpHkrV2J0LHXqbcXvyc5ruIUt0uEBeNhyRXqKZpO0A2ApdlN
+         N4bg==
+X-Forwarded-Encrypted: i=1; AKwUvBxwYnlPLnMhPGxLmzyxty4xddJDvcHKiAVjchbWdYEfbKG4ACHA14F+g4wcE8oQ7Q4Do5RD5Y1YDO+1P64uBQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8zava2wiSd6uGAnFirOIuCUlZWco4cx5NQNg11w+GD9Jnfl4Xe
+	xCuc3CMrbyS/0kRo/2gTVGM5oC9q+a+9UsPvvzFeXJVjCfW0niaJA/yt
+X-Gm-Gg: AYBFou3+fobqW5c2SlyRgfOE6Gjxqj0M4eYwQNpl0HOd3A5D0uXS5Ub9w64dxXOyXcM
+	vcvcoQqVt8bDkGhXO9B1QYMDBHepaM8QCf2G66Y3WK7d5rSKmKDPV/kMbc14M2XN1bRQEk3+TEi
+	dUtikIBUk77zfdyezmxLZ5foIKN5rjGvqj8cUKcWpYPboGKulCSlnTLkJx/gwWQ9EQ5kXN6Hx1b
+	PRP001ztYgd5kld5JCjC94cd9pZo4lLufGNvEtnuqF6g7iaJl5gzEwl+I+g3neh+b/NsUjXwpsi
+	QnplsuZeHbTkCcVFzs9ams3Sqjr+EIplmlRKxbW6Q072fM4zXRurG63EDmqlRLONS06EZNmnfGE
+	WY6RjdaLMas4NpOyXCQLo0nDrSZHVHinp3ojF+ejo+cxypKfJW65sxXXcMueevalWdHwmE/FbGi
+	HlqdsWLCxbfqqXztL6iETOC7LhD/9H4F3nEBi3wimAU8LqsRA99aJRYhrebfbmPXhw+Sk2gx9Vt
+	TcQ4GW6XMDUSZFPR2e3rlT6dDsgc+JLqM/7APElQDxEKvFgVsiRHPa1WqBPCu4fnMnvH8pquTk5
+	xb5tVRC/Mq/lb8eWx5u/GpLIe0nYb/1yZy826PNONpPpl7zSBwrdIEpn1xfr3A==
+X-Received: by 2002:a17:90b:1e4f:b0:3ac:9c37:9422 with SMTP id 98e67ed59e1d1-3b0db62690dmr1018448a91.2.1793921019958;
+        Thu, 05 Nov 2026 15:23:39 -0800 (PST)
 Received: from FAIZEL-KB.. ([2001:569:5b64:e100:f564:53e0:ae9d:9600])
-        by smtp.googlemail.com with ESMTPSA id 98e67ed59e1d1-3b0b323cd3csm5317297a91.3.2026.11.05.15.23.33
+        by smtp.googlemail.com with ESMTPSA id 98e67ed59e1d1-3b0b323cd3csm5317297a91.3.2026.11.05.15.23.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Nov 2026 15:23:33 -0800 (PST)
+        Thu, 05 Nov 2026 15:23:39 -0800 (PST)
 From: Faizel K B <faizel.kb@gmail.com>
 To: Mehdi Djait <mehdi.djait@linux.intel.com>,
 	Michael Riesch <michael.riesch@collabora.com>
@@ -85,16 +85,17 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	libcamera-devel@lists.libcamera.org,
 	Robert Mader <robert.mader@collabora.com>,
 	Faizel K B <faizel.kb@gmail.com>
-Subject: [PATCH 0/2] media: rockchip: rkcif: ENUM_FMT and bytesperline fixes
-Date: Thu,  5 Nov 2026 16:23:08 -0700
-Message-ID: <20261105232310.385463-1-faizel.kb@gmail.com>
+Subject: [PATCH 2/2] media: rockchip: rkcif: Honour the requested bytesperline on MIPI
+Date: Thu,  5 Nov 2026 16:23:10 -0700
+Message-ID: <20261105232310.385463-3-faizel.kb@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261105232310.385463-1-faizel.kb@gmail.com>
+References: <20261105232310.385463-1-faizel.kb@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_152335_825972_A547E7C2 
-X-CRM114-Status: UNSURE (   8.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261105_152340_630030_3BE1844C 
+X-CRM114-Status: GOOD (  15.12  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,44 +109,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This series fixes two issues in the rkcif MIPI capture path, found while
-using the libcamera simple pipeline handler with a Sony IMX415 on a
-Radxa ROCK 5B+ (RK3588).
+The MIPI DMA uses bytesperline as the line stride, which must be a
+multiple of 8 bytes, but v4l2_fill_pixfmt_mp() doesn't align it.
+Any larger bytesperline requested by userspace is also replaced with
+the minimum.
 
-Patch 1 makes VIDIOC_ENUM_FMT honour the mbus_code field, as required
-for V4L2_CAP_IO_MC devices. Without it, userspace can select a pixel
-format that doesn't match the media bus format, e.g. a different Bayer
-order, and the captured images have wrong colours.
+Align bytesperline to 8 bytes and honour a larger requested value, up
+to the limit of the line width register. This allows DMA-BUF importers
+that need a larger stride alignment to use the buffers directly.
 
-Patch 2 aligns bytesperline to 8 bytes, as required by the MIPI DMA,
-and honours a larger value requested by userspace. This allows the
-capture buffers to be imported as DMA-BUFs by the libcamera GPU
-software ISP on Panfrost, which needs a 64-byte stride alignment,
-instead of copying every frame.
+Signed-off-by: Faizel K B <faizel.kb@gmail.com>
+---
+ .../platform/rockchip/rkcif/rkcif-stream.c    | 22 ++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
 
-Tested on ROCK 5B+ with IMX415 (SGBRG10, 3864x2192): correct colours
-without any userspace workaround, and a stride of 7936 bytes accepted
-and used for zero-copy import. The corresponding libcamera change is
-under review at:
-https://patchwork.libcamera.org/patch/28662/
-
-Faizel K B (2):
-  media: rockchip: rkcif: Filter enumerated formats by media bus code
-  media: rockchip: rkcif: Honour the requested bytesperline on MIPI
-
- .../platform/rockchip/rkcif/rkcif-stream.c    | 37 ++++++++++++++++---
- 1 file changed, 32 insertions(+), 5 deletions(-)
-
-
-base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+index f2a24832a8cf..e50f20e40f7a 100644
+--- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
++++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+@@ -23,6 +23,7 @@
+ #define CIF_MIN_HEIGHT	 64
+ #define CIF_MAX_WIDTH	 8192
+ #define CIF_MAX_HEIGHT	 8192
++#define CIF_MAX_BYTESPERLINE 0xffff8 /* VLW: 20 bits, 8-byte aligned */
+ 
+ static inline struct rkcif_buffer *to_rkcif_buffer(struct vb2_v4l2_buffer *vb)
+ {
+@@ -334,20 +335,39 @@ static const struct vb2_ops rkcif_stream_vb2_ops = {
+ 	.stop_streaming = rkcif_stream_stop_streaming,
+ };
+ 
++static void rkcif_stream_set_bytesperline(struct v4l2_pix_format_mplane *pix,
++					  u32 req_bpl)
++{
++	u32 min_bpl = ALIGN(pix->plane_fmt[0].bytesperline, 8);
++	u32 max_bpl = min_t(u32, CIF_MAX_BYTESPERLINE,
++			    ALIGN_DOWN(U32_MAX / pix->height, 8));
++	u32 bpl = min_bpl;
++
++	if (req_bpl > min_bpl && req_bpl <= max_bpl)
++		bpl = ALIGN(req_bpl, 8);
++
++	pix->plane_fmt[0].bytesperline = bpl;
++	pix->plane_fmt[0].sizeimage = bpl * pix->height;
++}
++
+ static int rkcif_stream_fill_format(struct rkcif_stream *stream,
+ 				    struct v4l2_pix_format_mplane *pix)
+ {
+ 	const struct rkcif_output_fmt *fmt;
+-	u32 height, width;
++	u32 height, width, req_bpl;
+ 	int ret;
+ 
+ 	fmt = rkcif_stream_find_output_fmt(stream, true, pix->pixelformat);
+ 	height = clamp_t(u32, pix->height, CIF_MIN_HEIGHT, CIF_MAX_HEIGHT);
+ 	width = clamp_t(u32, pix->width, CIF_MIN_WIDTH, CIF_MAX_WIDTH);
++	req_bpl = pix->plane_fmt[0].bytesperline;
+ 	ret = v4l2_fill_pixfmt_mp(pix, fmt->fourcc, width, height);
+ 	if (ret)
+ 		return ret;
+ 
++	if (stream->interface->type == RKCIF_IF_MIPI)
++		rkcif_stream_set_bytesperline(pix, req_bpl);
++
+ 	pix->field = V4L2_FIELD_NONE;
+ 
+ 	return 0;
 -- 
 2.43.0
 
