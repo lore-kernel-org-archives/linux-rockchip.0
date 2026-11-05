@@ -2,96 +2,128 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 11106606A31B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 10:26:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 03B5E606A32E
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 10:38:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XzFVo8ra;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=OU96s+tr
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bRkjMPwv;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=A4rKjlRB
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=9JzDUDvZ0/BcFPWItRLSCtCzZmPqGFzgXGJW2wLCXwQ=; b=XzFVo8raiM6I31a3j90w74Cmyh
-	GnfnlUcNJM9j2qO+4Ibk/IBU+igPWab3UDD12GLFgbBboeh9APQhRkcgPzccMCcPwWjggNPVFjx2m
-	dVydkwQcRToRh35zZHxe9Y+5D02lZh6z5bmKgZsQrrrxWvjYz29edeCvS7PHZZlzFk12emSEBUD4d
-	cvzpcfMcptI/AuTyMm3H1BCkl9LbD8yjQkOEJMuqrcTbd9uSBysYSdDZtITbqGYt+DN+kDQOKiRYH
-	SQJOLyv0RflECfBDsl4UgzvO+OuIpxN0BW1JyI82b/wHHCTrKHbk7KRW6VNPiE2z1dALtsWANrKDC
-	el1LTh8g==;
+	bh=7D5GUvADX9arh4COSSk/E3Qj28wyb24fe7bJWIMtv+0=; b=bRkjMPwvf5FsqKFdqjOrU2SmB9
+	qTwS43g0uaX7ZxCfV1Cmt5SqsKaUyAdFEOvD9bFWUO+cz4iackAwRAB0bSV1wsc4/KVhCRdHlTwKX
+	ja1VNOp/T15ty6KQNgySJZO4ILewFEcPLBw5AF3prDuCUK1cCut/TsBlj7I8z6rLHLNcgg+vvDmI0
+	MAMDj7xU1Vrd6kdws+ZYxrAqIfswDjbfYNHslC3NAtkXoEk53vv6z1uOyI5ElaxsFIy7mg+yUL6JN
+	TYxSS0dx1PwLgJ0GN/zHs5ISlvqBFqaSdP1hNbIyWmWCaFWwyEANplswul+xMSMOB4NZ4GiekC4/P
+	/5f9fUVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOufe-00000008SI9-3hAm;
-	Thu, 05 Nov 2026 10:26:14 +0000
-Received: from mail-dy1-x1329.google.com ([2607:f8b0:4864:20::1329])
+	id 1xOurB-00000008TnJ-2fgJ;
+	Thu, 05 Nov 2026 10:38:09 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOufb-00000008SGN-14GP
-	for linux-rockchip@lists.infradead.org;
-	Thu, 05 Nov 2026 10:26:13 +0000
-Received: by mail-dy1-x1329.google.com with SMTP id 5a478bee46e88-36eb1cb7aabso278214eec.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 05 Nov 2026 02:26:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793874370; x=1794479170; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=ZfxbEV1+fg5DL4WByiUrgmxcxFW2ZGkGENp2uYMYyr8=;
-        b=OU96s+trVIS8CraKnblZDgm6P3tR2KRDx6zObF/F6oViDKtflex2StK5Jx3X+DyapZ
-         CCJty6cA6+yQ7eeLD7Yd9pSgeBCZ+Fx/jKtlnwSazP/ZeEYvmdiDTPPaM8LEgyG3NOoU
-         TTMIvtCCKGWjMWkQSRvkbyFnnU2dQ02IFy4TrmGwZbtQrcKw85hvhMe8+pLBhLDLcagc
-         yw5r7Qr0bSCpIVmHQlkx+LbuzrmVTdsh7GciGGnT21HZ0SH7lxHZcqqQcVFMuwvFuzRs
-         DHijpTwRXzcwnVBt6/tKSwinR6N2XrQS2XPhltfRf7dOuFAsjhLcj1OCLstvNiizrUju
-         l/ew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793874370; x=1794479170;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=ZfxbEV1+fg5DL4WByiUrgmxcxFW2ZGkGENp2uYMYyr8=;
-        b=EycPj6Bky5mzKBlTuClyqXj4y5blr+7o/IrtbHnPiOrljOr2JxwWlevClsPQqLp/MF
-         nXWtzZnATFn3/K1qRMMG28GgJIipxtf2f3cmM9qv0SDGqL2uGSNmh50kJZ3RpY6uqFY/
-         Uo8LnV7/o5aHmDbgSQ1DmkJOlaszZv8Raf/VdICufZnegb6YZsGzgwxZAkU0xwirLk87
-         h9EcKsm17b8HPI/BF781nBA0vUXhBOC4uuusWOXuZsKF0ffoPhCOMesfFzU4HF44/JL0
-         2RZZRfZMSRtizjDdfDVPdp8QVAo6X0NSurSrsYBb48La0fcvT/6OOp3bv7zUsbQUM8kl
-         7PMQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzEzfKW24y4dcK79jgryP4HlPvA7/pXND3QazRgiiVis5+Z7mF8wLb4+ZJwNjWUbvIzp4RW59fQcFzGzBEqCg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+wKXp7beRY4ufli3aV3NqsnBO8XaS9Hs6gfpHmv8HuNBlGx7Sm
-	EFVchrthzsZzake0CZh4lZE3vMiMz/zOqJZ7WXWBl1XRi1ISHOW6SA0N
-X-Gm-Gg: AYBFou2R6u6phNcF+RZyM9qiDUrm7IG9QTqZeqCRfipMxxmN5q0Od2K/dTBfnMYQxEY
-	5xyTRzAedg4I0N+c6kMWBPAxgWAO5tdsHNu6siO53IhVBfqLnb9gXLt4NA+z3w7v4Tz3+Rs/aYu
-	t4sUxs4gu6tYR3xuGPjAIWYCN3F2HlpB0KPaSEtxRuWo7hoiJgF4ql4Ba474rC9hwkyJ2eXRyRC
-	2kDQtYEKtCUwCDZ576UjNh2wkXXIbgdXx5RTGjVIKqP8BGmdsHo8hi0OSvWRYLCaIMyY8CgrSEr
-	243efw3Xe+Q/aQXauXVRLz4v2jEpbeyK1CpnRAELWvFNUjNTItx1m8h8rOixw1icsSqW8nqDdSC
-	Yk+kXiETUx3L/ZRdMHIK07gA632LMwkAA/g6qyfKPle2fPDAnGjkq6dx/GcRdm8V3JseaVHJzLb
-	67+d3uUG36E4uNBSXEnBYORIKCPrKJYZA/NldgotGDn4gBPDjd7sPo7YaIkCQZaMsuzgzijLTyH
-	TRteN5CT/qcNpL50ZDjFnG7uV/1/+xGy1FzZmw1BCKF/pEpigOytc498ikUo9PP1IesmdloBZET
-	9pBi5Dpeem7OYN73jCFqwxuXZ9gO4s9nyyc4s08xq1yC
-X-Received: by 2002:a05:693c:41d9:20b0:368:4acb:f8a with SMTP id 5a478bee46e88-36a4242f5fdmr27765980eec.17.1793874369763;
-        Thu, 05 Nov 2026 02:26:09 -0800 (PST)
-Received: from aaron-m75q ([188.253.120.162])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36e194f4633sm6253335eec.11.2026.11.05.02.26.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Nov 2026 02:26:09 -0800 (PST)
-From: Yaozhong Li <yaozhonguwl@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Yaozhong Li <yaozhonguwl@gmail.com>
-Subject: [PATCH v2] arm64: dts: rockchip: enable SD UHS-I on Firefly-RK3399
-Date: Thu,  5 Nov 2026 18:25:56 +0800
-Message-ID: <20261105102556.1365-1-yaozhonguwl@gmail.com>
-X-Mailer: git-send-email 2.55.0.windows.3
+	id 1xOur8-00000008TmQ-34lT;
+	Thu, 05 Nov 2026 10:38:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1793875087; x=1825411087;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=eqO4A+ClsqjEqfXPQ0TFlIOZ+1UsCC9oIYRbbnK4e7s=;
+  b=A4rKjlRBVFVKIEQC4EavgCR17/xSyjTrOEB2Tb84HNkL6B9y4XJRT1QM
+   iUwkaAxPJL3QUyzkBOA2luwvYVxfQEtYxAZEW+GgljOK2viemRDECySII
+   WP7y3aEe+2a85svsfCglP2dbIrcCrEpO3+UJsHfe9yqiygMRa6YlwWPEW
+   SH/E8Be2sTsitocPTdbj6RjtMQXjuD7nznitbEIfRXlPNJPABOF93RqS8
+   OPhcFvq5cMM3UjilmzE5ltY/OlPLJqNBytdS6Dli+9Pk356d8cgqYZwW5
+   whsC1IhkOREAn7phf37f1DlJwQbvCLs1O+8Yiwt+HbJIKiDSNPAN1i8lB
+   g==;
+X-CSE-ConnectionGUID: iXuTqYgBQ0GG0jAuBhZwtA==
+X-CSE-MsgGUID: qIHA4s5yTq26mhxigq7vnQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11956"; a="2560353"
+X-IronPort-AV: E=Sophos;i="6.27,197,1787036400"; 
+   d="scan'208";a="2560353"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 02:38:06 -0800
+X-CSE-ConnectionGUID: xIegnpX+Sr+k5gjNuD4pbQ==
+X-CSE-MsgGUID: Wcy7neyfQa2lUKLW6Cyinw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,197,1787036400"; 
+   d="scan'208";a="7281977"
+Received: from amilburn-desk.amilburn-desk (HELO localhost) ([10.245.244.144])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 02:37:54 -0800
+Date: Thu, 5 Nov 2026 12:37:51 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Cc: Mark Brown <broonie@kernel.org>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Radu Pirea <radu_nicolae.pirea@upb.ro>,
+	CL Wang <cl634@andestech.com>,
+	Ryan Wanner <ryan.wanner@microchip.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Vladimir Oltean <olteanv@gmail.com>, Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>, Han Xu <han.xu@nxp.com>,
+	Haibo Chen <haibo.chen@nxp.com>, Linus Walleij <linusw@kernel.org>,
+	Daniel Mack <daniel@zonque.org>,
+	Haojian Zhuang <haojian.zhuang@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>, Yixun Lan <dlan@kernel.org>,
+	Troy Mitchell <troy.mitchell@linux.spacemit.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sowjanya Komatineni <skomatineni@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	"open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>,
+	"moderated list:ARM/Microchip (AT91) SoC support" <linux-arm-kernel@lists.infradead.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE" <linux-rpi-kernel@lists.infradead.org>,
+	"open list:FREESCALE DSPI DRIVER" <imx@lists.linux.dev>,
+	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+	"open list:RENESAS RZ/V2H(P) RSPI DRIVER" <linux-renesas-soc@vger.kernel.org>,
+	"open list:SAMSUNG SPI DRIVERS" <linux-samsung-soc@vger.kernel.org>,
+	"open list:RISC-V SPACEMIT SoC Support" <linux-riscv@lists.infradead.org>,
+	"open list:RISC-V SPACEMIT SoC Support" <spacemit@lists.linux.dev>,
+	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>,
+	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
+	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+	Frank.Li@oss.nxp.com, vkoul@kernel.org
+Subject: Re: [PATCH 1/1] spi: use dmaengine_desc_set_callback()
+Message-ID: <auxcf206A1yMnHkX@ashevche-desk.local>
+References: <20261102174005.3933649-1-Frank.Li@oss.nxp.com>
+ <2154003.0S5aU1g85B@diego>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <2154003.0S5aU1g85B@diego>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_022611_336677_5E2ED3FB 
-X-CRM114-Status: GOOD (  16.79  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261105_023806_788243_056EC901 
+X-CRM114-Status: GOOD (  16.13  )
+X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,89 +133,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Contrary to its name, vcc_sdio is the IO supply of the SD card slot: the
-schematics route it to SDMMC0_VDD. It is listed as the vmmc-supply
-of the WiFi SDIO node instead, and that consumer keeps the rail from
-switching to 1.8V.
+On Thu, Nov 05, 2026 at 10:52:38AM +0100, Heiko St=FCbner wrote:
+> Am Montag, 2. November 2026, 18:39:58 Mitteleurop=E4ische Normalzeit schr=
+ieb Frank.Li@oss.nxp.com:
+> > =
 
-The WiFi module's main VBAT input comes from vcc3v3_sys, and its IO
-supply stays vcc1v8_s3.
+> > Replace open-coded assignments to callback and callback_param fields
+> > of struct dma_async_tx_descriptor with calls to the
+> > dmaengine_desc_set_callback() helper across SPI bus drivers.
+> > =
 
-Fix the supplies of sdio0 and sdmmc accordingly and enable SDR104, which
-now becomes possible.
+> > No functional change intended. Prepare make to struct
+> > dma_async_tx_descriptor private to the DMA engine.
 
-With UHS enabled, sequential read from a 64GB SDXC card inserted after
-boot goes from 22 MB/s to 60 MB/s. WiFi remained associated at 5 GHz,
-with no WiFi errors.
+[...]
 
-Assisted-by: LLM
-Signed-off-by: Yaozhong Li <yaozhonguwl@gmail.com>
----
-Changes in v2:
-- Point the sdio0 vmmc-supply at vcc3v3_sys, the WiFi module's VBAT input,
-  instead of dropping it (Heiko)
-- Rewrite the commit message (Heiko)
-- Link to v1: https://lore.kernel.org/all/20260922055011.14972-1-yaozhonguwl@gmail.com/
+> > diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+> > index 1a81fd94b4396..f8d6cea2f3dad 100644
+> > --- a/drivers/spi/spi-rockchip.c
+> > +++ b/drivers/spi/spi-rockchip.c
+> > @@ -475,8 +475,7 @@ static int rockchip_spi_prepare_dma(struct rockchip=
+_spi *rs,
+> >  		if (!rxdesc)
+> >  			return -EINVAL;
+> >  =
 
-A note on testing: with a card in the slot at boot, the first
-initialisation fails tuning ("All phases bad") and the card comes up in
-high speed mode, as it does without this patch. A card inserted after
-boot, or a rebind of the controller, comes up in SDR104; the numbers
-above were taken that way.
+> > -		rxdesc->callback =3D rockchip_spi_dma_rxcb;
+> > -		rxdesc->callback_param =3D ctlr;
+> > +		dmaengine_desc_set_callback(rxdesc, rockchip_spi_dma_rxcb, NULL, ctl=
+r);
+> >  	}
+> >  =
 
-The GRF io-domain device binds about 250 ms after fe320000.mmc here, so
-SDMMC0_VDD is still configured for 3.3V when the card switches to 1.8V.
-Forcing that GRF_IO_VSEL bit to 3.3V with the io-domain driver unbound
-reproduces the same failure on demand. This looks like the probe
-ordering issue Jonas described for the ROCK 3B [1]. It also happens with
-SDR50, with a second card, and with sdio0 left without a vmmc-supply as
-in v1.
+> >  	txdesc =3D NULL;
+> > @@ -500,8 +499,7 @@ static int rockchip_spi_prepare_dma(struct rockchip=
+_spi *rs,
+> >  			return -EINVAL;
+> >  		}
+> >  =
 
-If you would rather not enable UHS until that is solved, I can send the
-supply changes on their own.
+> > -		txdesc->callback =3D rockchip_spi_dma_txcb;
+> > -		txdesc->callback_param =3D ctlr;
+> > +		dmaengine_desc_set_callback(txdesc, rockchip_spi_dma_txcb, NULL, ctl=
+r);
+> >  	}
+> >  =
 
-[1] https://lore.kernel.org/all/e9ff5387-b3c1-41a7-b251-a12789d25a70@kwiboo.se/
+> >  	/* rx must be started before tx due to spi instinct */
+> =
 
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-index 0568dfa..fe1f8d7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-@@ -777,7 +777,7 @@ &sdio0 {
- 
- 	/* Power supply */
- 	vqmmc-supply = <&vcc1v8_s3>;	/* IO line */
--	vmmc-supply = <&vcc_sdio>;	/* card's power */
-+	vmmc-supply = <&vcc3v3_sys>;	/* card's power */
- 
- 	#address-cells = <1>;
- 	#size-cells = <0>;
-@@ -804,6 +804,8 @@ &sdmmc {
- 	max-frequency = <150000000>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_bus4>;
-+	sd-uhs-sdr104;
-+	vqmmc-supply = <&vcc_sdio>;
- 	status = "okay";
- };
- 
+Please, use "# subpart(s)" syntax with this tag
 
-base-commit: 940de590b839f71d6dc846160534bf202401b8b7
--- 
-2.55.0.windows.3
+   Reviewed-by: Heiko Stuebner <heiko@sntech.de> # rockchip
+
+-- =
+
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
