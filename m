@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E2A6606A336
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 01:01:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C6FE6606A332
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 01:01:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0tp2mNrR;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=VR855FDp
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vrqvY7zY;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=KUfR5Obr
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,44 +14,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=b4rkDDZzsKlcEk4sk4Os22PTmlr6wohfacMALSfrSdw=; b=0tp2mNrRoNFXkLqm84XjG9jtJa
-	ojqPvQIODXBv6bRpJLPBVhZpF1zDmlx4DTVogIdNhlMFHvnuM3WNv7fu5c/c/+zxLpHsTZLXzBde6
-	D7JQusz/VJR7tU1I/yrTJ9n7B24RJ5NAtrx+ZeSvqX0mKHWD/zh4st9lkF6TOy7uXu4S9j0GMgbzK
-	CJV/PCCQcawLU/n4kweotGIWyerFwHIYBM1EchmQ7lZZfGTlPAqA+V8lvs0s3OoaCdSh0Qw8qrzLr
-	P6plUD9C/l+sB/xzfuUhmInKQgtU0Q8oCfrQgv1TjitXDq8wbTFoPmYvLqhY7DNNDkKaD2gDjK1Vu
-	3vsM7u/Q==;
+	bh=zOD3aRI3BWqTafIgrYjnAoSeifksiInbV9973rgcUhg=; b=vrqvY7zYfczvlVp/wFkCoVto7g
+	wS3bQKqN12CQP2iSCj7hWVbwsnYaWnOxMQk5BRr2mY7LaeKB8nBYeMkDnsG1j4gAWN8mTG7yFFyVU
+	hVsfQAb4PCMELNFPRbLNJB9zj0/y2eccLgRhqH1uKCn0OaqmFfKJEprnRn/c2NCarbZq1wy7wulrB
+	MXFtviS3K9RqqEVXwEnBy7fBQRcoHgDVCeExUnUEE5GR8pce245G/6qWATTpfbO+s6qve8nxl2FCs
+	uc7hWvigipqpPiSScdzlXiTeTQCDgI/xrzUz64eDpZAdbNMJo5q6RlaFNSqYT2MU8jP9GKNfZTanr
+	xzZ2FE2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOlr3-00000007OsG-2Fu6;
-	Thu, 05 Nov 2026 01:01:25 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xOlr4-00000007OxH-3Tx1;
+	Thu, 05 Nov 2026 01:01:26 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOlqw-00000007OXW-0ydE;
-	Thu, 05 Nov 2026 01:01:19 +0000
+	id 1xOlqw-00000007OXQ-06ww;
+	Thu, 05 Nov 2026 01:01:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1793840475;
-	bh=fYsBZY+jSikNub85K8e0+OdnyNo7wwxjd1+6YCys8OA=;
+	bh=t4xm3scI4l7rWR2iBzxLstmE0RTUxpACdTblDz3oXNQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=VR855FDpiojGQjntT7bGe/YYaibGfjJX7V2GMMa1wh0eDU9HRJWoEHKN6i4sLB/lb
-	 zGMzeRVnZWAZ/WAcP0279QRqq3Y1I6wJP24NTK688ZtIFiRPB43R+WKXAKsZtvbmui
-	 au6XKiWXwoPdyC7t1qswazUzjstRgBKySeboUzGwMh1JFEWJ00+jn6hN+ooledOunF
-	 G/3CQBu4nvEp4nBC6+Owet9wLXq1YalTwkcBqamBWhTzUFmr2hwuqesIEGTHfUJXeh
-	 xDv/HyJo2MwiwyJ39eGbPpCFKggTuDmyReErY+s1+HJkYwftoiiDdM9T0Mjmumtdf1
-	 cxBNyyW98SaQg==
+	b=KUfR5ObrP8jFka/2UPUUWjo5o+FDtK93b3osH2OAYgNva3uJp9kGslkH1OJPda5Zf
+	 15X8CZOFNP1JNd9dCYuNZEnWFFVWRV3JrpqciB3HKcITk1exygNn1GPePk2JiLZIqy
+	 6LiQEhNSQKDr4q5w8frc2zPmaLmytXKMtIYys4O7CaqzfsjbFZfi+PKeGal9ZXjTR8
+	 2aOHtllwVzPI6ymja4nt2se6eWSmqQrg96a6lqDvy0zSfwfzPdLW84D9dTz2l55iyb
+	 As6jY4tda6vDPVLhwlAfVOQybrhbMNzJC/cveKrTF6i433O+G7wby2GR2vUOTHaOmq
+	 KvkFfAhG1aXCw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B9B1A17E0CF7;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 038DD17E0CE8;
 	Thu, 05 Nov 2026 02:01:15 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 05 Nov 2026 03:00:47 +0200
-Subject: [PATCH v6 13/15] drm/rockchip: dw_hdmi_qp: Support 10-bit YUV422
- output format
+Date: Thu, 05 Nov 2026 03:00:46 +0200
+Subject: [PATCH v6 12/15] drm/rockchip: dw_hdmi_qp: Do not mask error code
+ in atomic_check()
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261105-dw-hdmi-qp-yuv-v6-13-1bb63ef5766e@collabora.com>
+Message-Id: <20261105-dw-hdmi-qp-yuv-v6-12-1bb63ef5766e@collabora.com>
 References: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com>
 In-Reply-To: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -74,11 +74,11 @@ To: Sandy Huang <hjc@rock-chips.com>,
 Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Igor Paunovic <royalnet026@gmail.com>
+ Sashiko <sashiko-bot@kernel.org>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_170118_468515_0816B590 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20261104_170118_869731_58A6DB24 
+X-CRM114-Status: GOOD (  12.38  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,73 +99,41 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Rockchip DW HDMI QP encoder supports YUV 4:2:2 output through
-ROCKCHIP_OUT_MODE_YUV422, but was limited to 8-bit depth via
-MEDIA_BUS_FMT_UYVY8_1X16.  Add support for its 10-bit counterpart
-MEDIA_BUS_FMT_UYVY10_1X20, which carries two 10-bit components per clock
-cycle on a 20-bit wide bus.
+dw_hdmi_qp_rockchip_get_vop_format() calls
+drm_atomic_get_bridge_state(), which takes the bridge private object
+lock through the atomic state's ww acquire context and may therefore
+fail with -EDEADLK when the lock is contended.
 
-The HDMI PHY scales its PLL output by 8/bpc to undo the deep color
-packing, such that it matches the DCLK rate expected by VOP2.  However,
-YUV 4:2:2 is never deep color packed, as it always transmits two 12-bit
-components per pixel, regardless of the color depth.  From a clock-rate
-perspective this is equivalent to three 8-bit RGB components, so
-configure the HDMI PHY with 8 bpc when YUV 4:2:2 is in use to keep its
-output clock aligned with the TMDS character rate.
+The DRM core expects -EDEADLK to be propagated up from atomic_check()
+so it can drop all held locks and restart the commit.  Replacing it
+with a hardcoded -EINVAL defeats this backoff mechanism, making
+otherwise valid commits fail spuriously when multiple threads perform
+atomic commits concurrently.
 
-Tested-by: Igor Paunovic <royalnet026@gmail.com>
+Propagate the error code returned by the helper instead of
+unnecessarily overriding it.
+
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Closes: https://lore.kernel.org/all/20260902230603.AF5C61F000E9@smtp.kernel.org/
+Fixes: a18aa0dd7a0b ("drm/rockchip: dw_hdmi_qp: Implement "color format" DRM property")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 22 +++++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index db1933d75ced..7f05d26f8d76 100644
+index f2a1ea8dfefa..db1933d75ced 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -190,6 +190,25 @@ static int dw_hdmi_qp_rockchip_get_vop_format(struct drm_encoder *encoder,
- 	return bstate->output_bus_cfg.format;
- }
+@@ -203,7 +203,7 @@ dw_hdmi_qp_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
  
-+/*
-+ * The HDMI PHY scales its PLL output by 8/bpc to undo the deep color packing,
-+ * such that it matches the DCLK rate expected by VOP2.
-+ *
-+ * YUV422 is never deep color packed, as it always transmits two 12-bit
-+ * components per clock cycle, regardless of the color depth.  Hence, as for
-+ * drm_hdmi_compute_mode_clock(), use 8 bpc to keep the PHY PLL output aligned
-+ * with the TMDS character rate.
-+ */
-+static unsigned int
-+dw_hdmi_qp_rockchip_phy_bpc(const struct rockchip_crtc_state *s,
-+			    const struct drm_connector_state *conn_state)
-+{
-+	if (s->output_mode == ROCKCHIP_OUT_MODE_YUV422)
-+		return 8;
-+
-+	return conn_state->hdmi.output_bpc;
-+}
-+
- static int
- dw_hdmi_qp_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
- 					 struct drm_crtc_state *crtc_state,
-@@ -218,6 +237,7 @@ dw_hdmi_qp_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
- 		s->output_mode = ROCKCHIP_OUT_MODE_AAAA;
- 		break;
- 	case MEDIA_BUS_FMT_UYVY8_1X16:
-+	case MEDIA_BUS_FMT_UYVY10_1X20:
- 		s->output_mode = ROCKCHIP_OUT_MODE_YUV422;
- 		break;
- 	case MEDIA_BUS_FMT_UYYVYY8_0_5X24:
-@@ -229,7 +249,7 @@ dw_hdmi_qp_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
- 	}
+ 	ingest_fmt = dw_hdmi_qp_rockchip_get_vop_format(encoder, conn_state);
+ 	if (ingest_fmt < 0)
+-		return -EINVAL;
++		return ingest_fmt;
  
- 	phy_cfg.hdmi.tmds_char_rate = conn_state->hdmi.tmds_char_rate;
--	phy_cfg.hdmi.bpc = conn_state->hdmi.output_bpc;
-+	phy_cfg.hdmi.bpc = dw_hdmi_qp_rockchip_phy_bpc(s, conn_state);
- 
- 	ret = phy_configure(hdmi->phy, &phy_cfg);
- 	if (!ret) {
+ 	if (hdmi->tmds_char_rate == conn_state->hdmi.tmds_char_rate &&
+ 	    s->output_bpc == conn_state->hdmi.output_bpc &&
 
 -- 
 2.55.0
