@@ -2,76 +2,94 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 68693606A326
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 13:23:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ECB146082BC6
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 13:33:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ODofDYFk;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=oxUxuzKw
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OVEJBs66;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=ECkNLWFZ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=IvYZVK1VrgX24Txh5v/ht0a3AVLrurxCVAYgAy/AP9k=; b=ODofDYFkCWgxEHMzLL6W2mKps5
-	MifwH3KxprdZYjhpQprcugaLLNag7sJMYSnQWppU8uO/33e7OpuhOPAtHt3OVmcnCkPof0i0esyAH
-	5Qk3hzHH6/AxapyevyR5AB6LoN7p5x/XiaR4+iHslXIwtrnEDrxLsY0F504aeEVHLMZiRcN+1y/Sr
-	4GO4Do0d/Dr7sK9OrJfeJhu9+SFA9amDlL+kM+pgcfqOmfpbXpK5mkSwqPolNVNJeNmbQjTk1xZlo
-	1ehjj0l3oKw8RPMNP4gaDhj1iKfkJUsUek/85zODwSMIaNsIWt10qdrPsaR+fBwjc8DiWvSVwd9ID
-	A6uKV4iA==;
+	bh=Rpk4j8L6uMUwX00hJJ9FzSagU+IRccimjNOgSxzPteY=; b=OVEJBs66rQ6Y6CbuQnD807+Cmu
+	vPc8C6BszeXffiEplEmD9NS4RY01ZEdC+tC4WVYUZD6QEJY0hoi7m5H7//NecN8qHRkiq9zrhZZz2
+	s9EVYePqMxuV79nAzCuVwl/PDUrxVF+eXIVDB4C2bPG8HzXK/sVzXaS2RScpZ9QUl2EIZUht9vo47
+	sA2ofiikL883ONI3hPSr2bM7qi3+TpY/xLMHRVOFWIMkJSE9JnAiVXi/k++RZZXZ2oG4K+frdcyq+
+	M2VbaePIcXRt0p3AK7qcF2QkcRsOwSWSX27bAr2uG8bgzLFOVhhpVyJ1FXOHT9sQsiZxtnMNOaPxE
+	o6cW4WaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOxR4-000000096sL-3h3S;
-	Thu, 05 Nov 2026 13:23:22 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xOxae-000000098B4-1TL3;
+	Thu, 05 Nov 2026 13:33:16 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOxR1-000000096pa-2XUu;
-	Thu, 05 Nov 2026 13:23:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=94WhvBOvLikVnBdkqmMS0BP1DzIOS0lU6UoyFCQ9OjM=; b=oxUxuzKwg9gT4g2DKyoFBl/WI5
-	AbuiwNJlmwsdPRj3bXD9gfgwsoZ/KN16pH4zRlWrtXehOIZVACMvZY4vYYNpwOyJXTy/i7QPukr+8
-	qlCNmtGYnlptdTzVZ+P6ag2rARROCx4HYiFeLDeDMolD+x+TNVJJZcQ2y2kTPwEhtJWfwmeT+U7x1
-	sIfgCZdmvz47620kQNc+znutAi4gJOakEtEurl3RH+kJTyVnIeC9NpAxAt7iEo6DHEqghkVUn+5pn
-	tEFLvsojd+1WSFwo8f0emOSYx9Y3khSJbYOIfZYsHejpiuAXM2FvaBEn0WYypGP18xmPsmsxFxDum
-	22wo2MHw==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Daniel Stone <daniel@fooishbar.org>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, Andy Yan <andyshrk@163.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Daniel Stone <daniels@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, kernel@collabora.com,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
- Sashiko <sashiko-bot@kernel.org>, Igor Paunovic <royalnet026@gmail.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH v6 00/15] Support 10-bit YUV422 and 8/10-bit YUV420 color format
- on DW HDMI QP
-Date: Thu, 05 Nov 2026 14:22:44 +0100
-Message-ID: <34506010.aRNtrjHk3s@diego>
-In-Reply-To: <81fbb960-abde-44ea-82ab-3adc054da836@collabora.com>
-References: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com>
- <CAPj87rMQdE3eeUxGSb4oQfB4Adry6UV8CvhGoTKtdKGQHdSo4Q@mail.gmail.com>
- <81fbb960-abde-44ea-82ab-3adc054da836@collabora.com>
+	id 1xOxab-0000000989F-35FT;
+	Thu, 05 Nov 2026 13:33:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1793885591;
+	bh=SUw4+10Lg2ZDAwZtr18eSAbgDCoszLb8eKffkbMHfiU=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=ECkNLWFZJCA5gVrr3psWKPc63U1t5/rE46792/8SFf/MwDC6cQ9+tCY0piXN7yrNh
+	 sfvJqjebm9T7v8eZ3spi+sLGP2xH6P1Q5gdHF6IHFfGgz4S/gXWx/tSpL0fLYinVOw
+	 gHwQfs3wGqsr088JZHX0BmveHpEQdJS41C9NpU2BLBFiQoKGJngR//nBBaYMvvEh1J
+	 E3KldPFDHNNmyt4C7lVsq4IYP8WGotoFkz73Ue0KfYR8aCvu2SLNtG464BoVTt6g/R
+	 WIU4jvPeTym8cgUIMe7JJikNT7T3u4oNTYKq12/mQVqkg/KYb7vD6al10gZQ6FEe2f
+	 NZG2nL9TuCTFQ==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 449BC17E0B36;
+	Thu, 05 Nov 2026 14:33:11 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id E754B480031; Thu, 05 Nov 2026 14:33:10 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Thu, 05 Nov 2026 14:33:12 +0100
+Subject: [PATCH v9 4/9] PCI: dw-rockchip: Add helper function for enhanced
+ LTSSM control mode
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Message-Id: <20261105-rockchip-pcie-system-suspend-v9-4-a2e55846649e@collabora.com>
+References: <20261105-rockchip-pcie-system-suspend-v9-0-a2e55846649e@collabora.com>
+In-Reply-To: <20261105-rockchip-pcie-system-suspend-v9-0-a2e55846649e@collabora.com>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Jingoo Han <jingoohan1@gmail.com>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Mark Brown <broonie@kernel.org>, 
+ "Yury Norov (NVIDIA)" <yury.norov@gmail.com>, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Alexey Charkov <alchark@flipper.net>, linux-pci@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2814;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=SUw4+10Lg2ZDAwZtr18eSAbgDCoszLb8eKffkbMHfiU=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrshZZHX1fso8CSlXsdPX5Wot4Rqt3hyBkqm
+ e+BUJxaE3aAgokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq7IWWAAoJENju1/PI
+ O/qa25IP/AnmzFH7BIEBRozskjOIUzAi2fB+sKjfW2cohgPpObSaPCzQPWczguR1eHyzPIGG/by
+ gTA2FBaGVFF6MHHfYXXRFw6IBd0yXPmdUuhISXwa4y3o8IIpm8NielIgMmOZcQ6gRSs6PUnkJLd
+ 3egh3iTOnYNH1Tcqw6LHXHvJBOFTmMWB4pCidLcKOhjujwHt6vJdXmbbkc3ijOO5oHXrk+F0DvJ
+ 5dEdO7eB+j1LmVnexFz6AaVJ5wOM1NELjr6M8d2rNlrEePesErZtwobpzMlmF9a23Onm7tUJgKn
+ nS2f32QuIcqsNisMv+hYfKvuamqaSQeZKTN95GDm8Xv7/n2jR8s7RdTR/21nBUXndqoLLkoEG0F
+ uhDEaD9dxiGFcNRV671RvsowUSHNhSPSUPXJeQgXSKqC/tWziaBeq4eXBUgM8Bv0wJbm0cCGFDq
+ R3jF/pBodrHE/i7SjOnNZiZHxl0yDbP+wJ1HWl/jbBwaGbm//WqYT6rrK9F25tO2lIq3Gullch5
+ YYwwse4r9Op8zIcGjieAZHc6NLbSimNJ4/6vxkVfHZDCAsqfDQJe/6DJ0BjeCrWJhkeq8RAjbLr
+ tJZoohuq11q/xT6cBUIwjU1uG/EOq6ZdOvr+ExLQZOSX/vO96CXZ1oebEXBUv8M4xfAh6d8Lz0y
+ +nWesW6GVgjR+IbR4388nGw==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_052319_876070_1B47EB31 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20261105_053313_996801_EA029663 
+X-CRM114-Status: GOOD (  13.30  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,48 +100,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gRG9ubmVyc3RhZywgNS4gTm92ZW1iZXIgMjAyNiwgMTQ6MDQ6MjUgTWl0dGVsZXVyb3DDpGlz
-Y2hlIE5vcm1hbHplaXQgc2NocmllYiBDcmlzdGlhbiBDaW9jYWx0ZWE6Cj4gSGkgRGFuaWVsLAo+
-IAo+IE9uIDExLzUvMjYgMjoyNSBQTSwgRGFuaWVsIFN0b25lIHdyb3RlOgo+ID4gSGkgQ3Jpc3Rp
-LAo+ID4gCj4gPiBPbiBUaHUsIDUgTm92IDIwMjYgYXQgMDE6MDEsIENyaXN0aWFuIENpb2NhbHRl
-YQo+ID4gPGNyaXN0aWFuLmNpb2NhbHRlYUBjb2xsYWJvcmEuY29tPiB3cm90ZToKPiA+PiBDaGFu
-Z2VzIGluIHY2Ogo+ID4+IC0gQWRkZWQgbmV3IHZvcDIgcGF0Y2ggIkRpc2FibGUgY29yZSBjbG9j
-a3MgYmVmb3JlIGRyb3BwaW5nIHJ1bnRpbWUgUE0KPiA+PiAgIHJlZmVyZW5jZSIgKFNhc2hpa28p
-Cj4gPj4KPiA+PiBDaGFuZ2VzIGluIHY1Ogo+ID4+IC0gQWRkZWQgbmV3IHBhdGNoICJkcm0vcm9j
-a2NoaXA6IGR3X2hkbWlfcXA6IERvIG5vdCBtYXNrIGVycm9yIGNvZGUgaW4KPiA+PiAgIGF0b21p
-Y19jaGVjaygpIiB0byBmaXggYSBwcmUtZXhpc3RpbmcgaXNzdWUgcmVwb3J0ZWQgYnkgU2FzaGlr
-bwo+ID4+Cj4gPj4gQ2hhbmdlcyBpbiB2MzoKPiA+PiAtIFVwZGF0ZWQgcGF0Y2ggMyB0byBza2lw
-IGFueSBoYXJkd2FyZSBwcm9ncmFtbWluZyBpbiB0aGUgY2FsbGJhY2tzCj4gPj4gICBnYXRlZCBi
-eSBkcm1fYXRvbWljX2hlbHBlcl9jb21taXRfcGxhbmVzKCkgYWZ0ZXIgcG93ZXJpbmcgZG93biBW
-T1AyIG9uCj4gPj4gICBhbiBhdG9taWNfZW5hYmxlKCkgZXJyb3IgKFNhc2hpa28pCj4gPj4gLSBF
-bnN1cmVkIFZCTEFOSyBldmVudHMgYXJlIHNlbnQgaW1tZWRpYXRlbHkgd2hlbiBhdG9taWNfZW5h
-YmxlKCkgZmFpbHMsCj4gPj4gICBoZW5jZSBwcmV2ZW50aW5nIHVzZXJzcGFjZSBwcm9jZXNzZXMg
-d2FpdGluZyBmb3IgdGhlIHBhZ2UgZmxpcAo+ID4+ICAgY29tcGxldGlvbiB0byBoYW5nIGluZGVm
-aW5pdGVseSAobmV3IHBhdGNoIDQsIFNhc2hpa28pCj4gPj4KPiA+PiBDaGFuZ2VzIGluIHYyOgo+
-ID4+IC0gQWRkcmVzc2VkIHNldmVyYWwgaXNzdWVzIHJlcG9ydGVkIGJ5IFNhc2hpa28KPiA+PiAg
-ICogUmVzZXQgQVhJIGJlZm9yZSBkZXRhY2hpbmcgdGhlIElPTU1VIGRvbWFpbiwgdG8gY2xvc2Ug
-YSB0aGVvcmV0aWNhbAo+ID4+ICAgICB3aW5kb3cgd2hlcmUgc3RhbGUgb3IgaW4tZmxpZ2h0IERN
-QSB0cmFuc2FjdGlvbnMgY291bGQgZmF1bHQgb3IKPiA+PiAgICAgYWNjZXNzIG1lbW9yeSB1bnRy
-YW5zbGF0ZWQgYWZ0ZXIgdGhlIGRvbWFpbiBpcyBkZXRhY2hlZCAocGF0Y2ggNikKPiA+PiAgICog
-Rml4ZWQgcmVzb3VyY2UgbGVhayBvbiB2b3AyX2VuYWJsZSgpIGVycm9yIHBhdGggKG5ldyBwYXRj
-aCAyKQo+ID4+ICAgKiBCYWxhbmNlIHN0YXRlIG9uIGF0b21pY19lbmFibGUgZXJyb3IgcGF0aHMg
-KG5ldyBwYXRjaCAzKQo+ID4+ICAgKiBBdm9pZGVkIGRpdmlzaW9uIGJ5IHplcm8gd2hlbiBjb21w
-dXRpbmcgbWF4X2RjbGsgKG5ldyBwYXRoIDQpCj4gPj4gICAqIEZpeGVkIFZPUDJfTUFYX0RDTEtf
-UkFURSBvdmVyZmxvdyBvbiAzMi1iaXQgKG5ldyBwYXRjaCA1KQo+ID4gCj4gPiBJIHRoaW5rIGV2
-ZXJ5dGhpbmcgaW4gaGVyZSBzaG91bGQgbm93IGJlIHNvbGlkbHkgcmV2aWV3ZWQuIAo+IAo+IFRo
-YW5rcyBhIGxvdCBmb3IgY2hlY2tpbmcgdGhpcyBvdXQhCgpleGNlcHQgcGF0Y2ggOSBvZiAxNSwg
-b3IgbWFpbCBoYXNuJ3QgdHVybmVkIHVwIHlldCA6LSkKCkl0IGRvZXMgbG9vayBmaW5lIHRvIG1l
-LCBidXQgaWYgc29tZW9uZSBoYXMgYW4gZXllIHRvIHNwYXJlIC4uLgoKCkhlaWtvCgoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Remove code duplication and improve readability by introducing a new
+function to setup the enhanced LTSSM mode.
+
+Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 28 ++++++++++++++-------------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index a3b0fb918479..92154a790ac0 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -683,6 +683,18 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+ 	return IRQ_HANDLED;
+ }
+ 
++static void rockchip_pcie_enable_enhanced_ltssm_control_mode(struct rockchip_pcie *rockchip,
++							     bool delay_link_training_after_reset)
++{
++	u32 val;
++
++	/* Enable the enhanced control mode of signal app_ltssm_enable */
++	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1);
++	if (delay_link_training_after_reset)
++		val |= FIELD_PREP_WM16(PCIE_LTSSM_APP_DLY2_EN, 1);
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
++}
++
+ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+ 				      struct rockchip_pcie *rockchip)
+ {
+@@ -706,9 +718,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+ 		return ret;
+ 	}
+ 
+-	/* LTSSM enable control mode */
+-	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1);
+-	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
++	rockchip_pcie_enable_enhanced_ltssm_control_mode(rockchip, false);
+ 
+ 	rockchip_pcie_writel_apb(rockchip,
+ 				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_RC),
+@@ -765,13 +775,7 @@ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+ 		return ret;
+ 	}
+ 
+-	/*
+-	 * LTSSM enable control mode, and automatically delay link training on
+-	 * hot reset/link-down reset.
+-	 */
+-	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1) |
+-	      FIELD_PREP_WM16(PCIE_LTSSM_APP_DLY2_EN, 1);
+-	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
++	rockchip_pcie_enable_enhanced_ltssm_control_mode(rockchip, true);
+ 
+ 	rockchip_pcie_writel_apb(rockchip,
+ 				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_EP),
+@@ -940,9 +944,7 @@ static int rockchip_pcie_rc_reset_root_port(struct pci_host_bridge *bridge,
+ 		goto deinit_clk;
+ 	}
+ 
+-	/* LTSSM enable control mode */
+-	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1);
+-	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
++	rockchip_pcie_enable_enhanced_ltssm_control_mode(rockchip, false);
+ 
+ 	rockchip_pcie_writel_apb(rockchip,
+ 				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_RC),
+
+-- 
+2.53.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
