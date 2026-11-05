@@ -2,71 +2,90 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DBD8F606A31B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 00:51:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 910236082BDD
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2026 01:01:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jDFEmFOz;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=ed/W9pMI
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RESZT4Q7;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=KXx2WsyE
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=qv+qQM2OomUOWHDHwnT7eH1A+JrZRxv1VXMeBzNoDlw=; b=jDFEmFOzTw9XpmxGUqz0vMluJu
-	4ESncETf6on/H9QtAb1vllccnNsnS1/dfpJ5gj9qHljdQWHF5h2zF7KXyR7Sne+3sIeLKM6AVzWcq
-	ecCbCzVjWqr5duuw1epNl1Hwc1++9cnw/LwoDGDWh/9yXqqEqiFW9aiBhqLpN5rJLtbKq+mkU4cEr
-	rEbmd7bsbzPy8turj1j//rA0tDepTBAceqwg26w5kLbWM/dlrFlJFhPlg6PVGo6eadKtDXzQC7Wip
-	LN0u5yPRC6kJNfrLL1+eAEIvBk1OODIalynWIHUgJWpNtVUt+rxHpcclV872h9k1OId+Qv42mlfVp
-	868WUasw==;
+	bh=ZhMfng8wDYTj63Lnb3cXe9y6TFAUnQ6mkrBfrbHv5T8=; b=RESZT4Q7/RwobuAPY8DZJtZAZb
+	6aNQNX/N8mlEMV5qwgAFEc83sGAgqAr3jILeDKCSzStBkoKPit3THw4hKGWQNgk2rvyNKDNv6ELtk
+	Hctkc2vxPEsWNRSgN0CAOkpcf9VOwT2v72rJs2m/ZQYk3YKRinfo/5P0wrJZlpXTtMb9i/aWQbtkA
+	gp+09seeTTVUTHoom9sbPEEWcm/FOfDqdoI/7zp1Wq/tIxx3Di0dZoehMM6cxWRo0qUOOu89PZp5N
+	lqFq17vXchYySIKoeVzEPR5buiQpowOHJQPzAHH7liJcdJole/JrAbhD1CkRUY213/7c4iBtJDf8+
+	KzpMUysA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOlhW-00000007NgH-3ekl;
-	Thu, 05 Nov 2026 00:51:34 +0000
-Received: from mail-m12853.netease.com ([103.209.128.53])
+	id 1xOlqq-00000007OTl-3pgQ;
+	Thu, 05 Nov 2026 01:01:12 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOlhT-00000007Nf9-1H8l;
-	Thu, 05 Nov 2026 00:51:33 +0000
-Received: from [172.16.12.48] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 53894dd57;
-	Thu, 5 Nov 2026 08:51:18 +0800 (GMT+08:00)
-Message-ID: <f047dcbe-efa2-4c60-8436-6d001c936467@rock-chips.com>
-Date: Thu, 5 Nov 2026 08:51:14 +0800
+	id 1xOlqn-00000007ORX-3YQL;
+	Thu, 05 Nov 2026 01:01:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1793840466;
+	bh=84a+IYBILuhpZX+k0ipvweU/l0G2TkLtg047ssnB/Xs=;
+	h=From:Subject:Date:To:Cc:From;
+	b=KXx2WsyE8VFTdzA8DG7qoZ53i6TECTZ+PcdmUZcE2tVtU0AFOaVrJWAmiV9BOsd86
+	 imGiywghPMfKV2/26+OtyZtE9DqXN1HdAUfU2wWPGPVEskXF/yCUOuaXSJwSdG5ILS
+	 43kjtHYmXM5EJXdkN7O+6QSKhKv/G+J3qPqMB/Zlk+Nk9lz73rsV+U5E18rx9EPMeh
+	 IEdxfHJk9/Lf3xymOpZF2KB17SnV8Fag3+05eQn/2gcoMGsymfrOJne7vzG2O5AY9S
+	 MkBiKHjoYMT+bh2hSLs5H/SJQ/jKYrAzgDidFXh8CmDuDOiQoNAUpqxjiNFvMv/UHe
+	 PEki4lEIx/nJg==
+Received: from localhost (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F27A217E02F2;
+	Thu, 05 Nov 2026 02:01:05 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH v6 00/15] Support 10-bit YUV422 and 8/10-bit YUV420 color
+ format on DW HDMI QP
+Date: Thu, 05 Nov 2026 03:00:34 +0200
+Message-Id: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, Alexey Charkov <alchark@flipper.net>,
- linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-Subject: Re: [PATCH v8 7/9] PCI: dw-rockchip: Add pme_turn_off support
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
- Philipp Zabel <p.zabel@pengutronix.de>, Jingoo Han <jingoohan1@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- "Yury Norov (NVIDIA)" <yury.norov@gmail.com>,
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3XQ3U4DIRAF4FdpuBbDP8Ur38N4wcDgYtpS2Xa1a
+ fbdZWtiTVgvTzLznclcyYg140ieNldSccpjLocWzMOGhMEf3pDm2DIRTBhmuKXxkw5xn+nHkV7
+ OExXAkgXQ4LectKVjxZS/buDL608ez/CO4bQoy8SQx1Opl1vjxJe5f/GJU0a9MTqkyEy08TmU3
+ c5Dqf4xlD1ZCiZxJywzHSEaAY4DgpQRY1oj5F/CdYRcrlDebYV3SaBdI9SdcEx2hGpEAqUhKa4
+ swhqhfwnOuOoI3QiTfPs3KuldR8zz/A2WH5kKzgEAAA==
+X-Change-ID: 20260617-dw-hdmi-qp-yuv-2b0f7bb5ba81
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andyshrk@163.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Daniel Stone <daniels@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Daniel Stone <daniel@fooishbar.org>, 
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-References: <20261105-rockchip-pcie-system-suspend-v8-0-0434b4f373bc@collabora.com>
- <20261105-rockchip-pcie-system-suspend-v8-7-0434b4f373bc@collabora.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20261105-rockchip-pcie-system-suspend-v8-7-0434b4f373bc@collabora.com>
-X-HM-Tid: 0aa1a930507d03a4kunm7b7b2c6111ce48
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDSBlJVkgaQkNKTR9MSR5CHlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=ed/W9pMIXtu5yRJRX83WEULDuzONtKh2KGDEcb97UklFlrvv5C3CMhCccjEFUhMlchyOLJAprM686mxfc7tWjHzWqBUhRRM8shTlsrCQnZUsxYIU1rtFwSDJojCUXPr6oPLLxEocusN0/jY3UmO7AmWWmEB0XONgEidRDNO+fjc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=+2E6dr27WqMqCaaLamwNn6gQm66M2Zv099gvqTnexrw=;
-	h=date:mime-version:subject:message-id:from;
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ Sashiko <sashiko-bot@kernel.org>, Igor Paunovic <royalnet026@gmail.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Andy Yan <andyshrk@163.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_165132_063978_D52C4275 
-X-CRM114-Status: GOOD (  21.86  )
+X-CRM114-CacheID: sfid-20261104_170110_069995_AC78F42E 
+X-CRM114-Status: GOOD (  15.13  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,86 +96,132 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-5ZyoIDIwMjYvMTEvMDUg5pif5pyf5ZubIDc6NDcsIFNlYmFzdGlhbiBSZWljaGVsIOWGmemBkzoK
-PiBQcmVwYXJlIFJvY2tjaGlwIFBDSWUgY29udHJvbGxlciBmb3Igc3lzdGVtIHN1c3BlbmQgc3Vw
-cG9ydCBieQo+IGFkZGluZyB0aGUgUE1FIHR1cm4gb2ZmIG9wZXJhdGlvbi4KPiAKPiBTaWduZWQt
-b2ZmLWJ5OiBTZWJhc3RpYW4gUmVpY2hlbCA8c2ViYXN0aWFuLnJlaWNoZWxAY29sbGFib3JhLmNv
-bT4KPiAtLS0KPiAgIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAu
-YyB8IDQ3ICsrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICAgMSBmaWxlIGNoYW5nZWQsIDQ3
-IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9k
-d2MvcGNpZS1kdy1yb2NrY2hpcC5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1k
-dy1yb2NrY2hpcC5jCj4gaW5kZXggMGUyNmFiYzUwOTIwLi43OTMzYzUwZGYzNDAgMTAwNjQ0Cj4g
-LS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jCj4gKysr
-IGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jCj4gQEAgLTQ3
-LDYgKzQ3LDEwIEBACj4gICAjZGVmaW5lICBQQ0lFX0NMSUVOVF9FTkFCTEVfTFRTU00JRklFTERf
-UFJFUF9XTTE2KEJJVCgyKSwgMSkKPiAgICNkZWZpbmUgIFBDSUVfQ0xJRU5UX0RJU0FCTEVfTFRT
-U00JRklFTERfUFJFUF9XTTE2KEJJVCgyKSwgMCkKPiAgIAo+ICsvKiBJbnRlcnJ1cHQgU3RhdHVz
-IFJlZ2lzdGVyIGZvciBSZWNlaXZlZCBNZXNzYWdlcyAqLwo+ICsjZGVmaW5lIFBDSUVfQ0xJRU5U
-X0lOVFJfU1RBVFVTX01TR19SWAkweDA0Cj4gKyNkZWZpbmUgIFBNRV9UT19BQ0sJCQlCSVQoOSkK
-PiArCj4gICAvKiBJbnRlcnJ1cHQgU3RhdHVzIFJlZ2lzdGVyIFJlbGF0ZWQgdG8gTGVnYWN5IElu
-dGVycnVwdCAqLwo+ICAgI2RlZmluZSBQQ0lFX0NMSUVOVF9JTlRSX1NUQVRVU19MRUdBQ1kJMHg4
-Cj4gICAKPiBAQCAtNzEsNiArNzUsMTEgQEAKPiAgICNkZWZpbmUgIFBDSUVfQ0xLUkVRX1JFQURZ
-CQlGSUVMRF9QUkVQX1dNMTYoQklUKDApLCAxKQo+ICAgI2RlZmluZSAgUENJRV9DTEtSRVFfTk9U
-X1JFQURZCQlGSUVMRF9QUkVQX1dNMTYoQklUKDApLCAwKQo+ICAgI2RlZmluZSAgUENJRV9DTEtS
-RVFfUFVMTF9ET1dOCQlGSUVMRF9QUkVQX1dNMTYoR0VOTUFTSygxMywgMTIpLCAxKQo+ICsjZGVm
-aW5lICBQTUVfUkVBRFlfRU5URVJfTDIzCQlCSVQoMykKPiArCj4gKy8qIE1lc3NhZ2UgUmVxdWVz
-dCBSZWdpc3RlciAqLwo+ICsjZGVmaW5lIFBDSUVfQ0xJRU5UX01TR19HRU4JCTB4MzQKPiArI2Rl
-ZmluZSAgUE1FX1RVUk5fT0ZGCQkJRklFTERfUFJFUF9XTTE2KEJJVCg0KSwgMSkKPiAgIAo+ICAg
-LyogUkFTREVTIFRCQSBpbmZvcm1hdGlvbiAqLwo+ICAgI2RlZmluZSBQQ0lFX0NMSUVOVF9DRE1f
-UkFTREVTX1RCQV9JTkZPX0NNTgkweDE1NAo+IEBAIC00MzksOCArNDQ4LDQ2IEBAIHN0YXRpYyBp
-bnQgcm9ja2NoaXBfcGNpZV9ob3N0X2luaXQoc3RydWN0IGR3X3BjaWVfcnAgKnBwKQo+ICAgCXJl
-dHVybiAwOwo+ICAgfQo+ICAgCj4gK3N0YXRpYyB2b2lkIHJvY2tjaGlwX3BjaWVfcG1lX3R1cm5f
-b2ZmKHN0cnVjdCBkd19wY2llX3JwICpwcCkKPiArewo+ICsJc3RydWN0IGR3X3BjaWUgKnBjaSA9
-IHRvX2R3X3BjaWVfZnJvbV9wcChwcCk7Cj4gKwlzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2No
-aXAgPSB0b19yb2NrY2hpcF9wY2llKHBjaSk7Cj4gKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSByb2Nr
-Y2hpcC0+cGNpLmRldjsKPiArCXUzMiBzdGF0dXM7Cj4gKwlpbnQgcmV0Owo+ICsKPiArCS8qIDEu
-IEJyb2FkY2FzdCBQTUVfVHVybl9PZmYgTWVzc2FnZSwgYml0IDQgc2VsZi1jbGVhciBvbmNlIGRv
-bmUgKi8KPiArCXJvY2tjaGlwX3BjaWVfd3JpdGVsX2FwYihyb2NrY2hpcCwgUE1FX1RVUk5fT0ZG
-LCBQQ0lFX0NMSUVOVF9NU0dfR0VOKTsKPiArCXJldCA9IHJlYWRsX3BvbGxfdGltZW91dChyb2Nr
-Y2hpcC0+YXBiX2Jhc2UgKyBQQ0lFX0NMSUVOVF9NU0dfR0VOLAo+ICsJCQkJIHN0YXR1cywgIShz
-dGF0dXMgJiBCSVQoNCkpLCBQQ0lFX1BNRV9UT19MMl9USU1FT1VUX1VTIC8gMTAsCj4gKwkJCQkg
-UENJRV9QTUVfVE9fTDJfVElNRU9VVF9VUyk7Cj4gKwlpZiAocmV0KSB7Cj4gKwkJZGV2X3dhcm4o
-ZGV2LCAiRmFpbGVkIHRvIHNlbmQgUE1FX1R1cm5fT2ZmXG4iKTsKPiArCQlyZXR1cm47Cj4gKwl9
-Cj4gKwo+ICsJLyogMi4gV2FpdCBmb3IgUE1FX1RPX0FjaywgYml0IDkgd2lsbCBiZSBzZXQgb25j
-ZSByZWNlaXZlZCAqLwo+ICsJcmV0ID0gcmVhZGxfcG9sbF90aW1lb3V0KHJvY2tjaGlwLT5hcGJf
-YmFzZSArIFBDSUVfQ0xJRU5UX0lOVFJfU1RBVFVTX01TR19SWCwKPiArCQkJCSBzdGF0dXMsIHN0
-YXR1cyAmIEJJVCg5KSwgUENJRV9QTUVfVE9fTDJfVElNRU9VVF9VUyAvIDEwLAo+ICsJCQkJIFBD
-SUVfUE1FX1RPX0wyX1RJTUVPVVRfVVMpOwo+ICsJaWYgKHJldCkgewo+ICsJCWRldl93YXJuKGRl
-diwgIkZhaWxlZCB0byByZWNlaXZlIFBNRV9UT19BY2tcbiIpOwo+ICsJCXJldHVybjsKPiArCX0K
-PiArCj4gKwkvKiAzLiBDbGVhciBQTUVfVE9fQWNrIGFuZCBXYWl0IGZvciByZWFkeSB0byBlbnRl
-ciBMMjMgbWVzc2FnZSAqLwo+ICsJcm9ja2NoaXBfcGNpZV93cml0ZWxfYXBiKHJvY2tjaGlwLCBQ
-TUVfVE9fQUNLLCBQQ0lFX0NMSUVOVF9JTlRSX1NUQVRVU19NU0dfUlgpOwo+ICsJcmV0ID0gcmVh
-ZGxfcG9sbF90aW1lb3V0KHJvY2tjaGlwLT5hcGJfYmFzZSArIFBDSUVfQ0xJRU5UX1BPV0VSX0NP
-TiwKPiArCQkJCSBzdGF0dXMsIHN0YXR1cyAmIFBNRV9SRUFEWV9FTlRFUl9MMjMsCj4gKwkJCQkg
-UENJRV9QTUVfVE9fTDJfVElNRU9VVF9VUyAvIDEwLAo+ICsJCQkJIFBDSUVfUE1FX1RPX0wyX1RJ
-TUVPVVRfVVMpOwo+ICsJaWYgKHJldCkKPiArCQlkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBnZXQg
-cmVhZHkgdG8gZW50ZXIgTDIzIG1lc3NhZ2VcbiIpOwo+ICt9CgoKVGhpcyBpcyBhIHF1ZXN0aW9u
-IGZvciB0aGUgRFdDIGNvcmU6IHNob3VsZCB3ZSBjaGFuZ2UKZHdfcGNpZV9ob3N0X29wczo6cG1l
-X3R1cm5fb2ZmKCkgdG8gcmV0dXJuIGEgdmFsdWUgaW5zdGVhZCBvZiBzaWxlbnRseQppZ25vcmlu
-ZyBhIGZhaWx1cmU/CgpMb29raW5nIGF0IHBjaWUtZGVzaWdud2FyZS1ob3N0LmMsIHdlIGhhdmU6
-CgppZiAocGNpLT5wcC5vcHMtPnBtZV90dXJuX29mZikgewogICAgIHBjaS0+cHAub3BzLT5wbWVf
-dHVybl9vZmYoJnBjaS0+cHApOwp9IGVsc2UgewogICAgIHJldCA9IGR3X3BjaWVfcG1lX3R1cm5f
-b2ZmKHBjaSk7CiAgICAgaWYgKHJldCkKICAgICAgICAgcmV0dXJuIHJldDsKfQoKVGhlIGhhbmRs
-aW5nIGZlZWxzIGFzeW1tZXRyaWMuIElmIC0+cG1lX3R1cm5fb2ZmIGZhaWxzLCBzaG91bGRuJ3Qg
-d2UgCmFib3J0IGR3X3BjaWVfc3VzcGVuZF9ub2lycSBhcyB3ZWxsPwoKT3RoZXIgdGhhbiB0aGF0
-LCB0aGlzIHBhdGNoIGxvb2tzIGdvb2QgdG8gbWUgaW4gY3VycmVudCBzaGFwZSwKUmV2aWV3ZWQt
-Ynk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgoKV2UgY2FuIGZ1cnRoZXIg
-ZGlzY3VzcyB0aGUgY2FsbGJhY2sncyByZXR1cm4gdmFsdWUgaXNzdWUgb24gdG9wLgoKPiArCj4g
-ICBzdGF0aWMgY29uc3Qgc3RydWN0IGR3X3BjaWVfaG9zdF9vcHMgcm9ja2NoaXBfcGNpZV9ob3N0
-X29wcyA9IHsKPiAgIAkuaW5pdCA9IHJvY2tjaGlwX3BjaWVfaG9zdF9pbml0LAo+ICsJLnBtZV90
-dXJuX29mZiA9IHJvY2tjaGlwX3BjaWVfcG1lX3R1cm5fb2ZmLAo+ICAgfTsKPiAgIAo+ICAgLyoK
-PiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+This series extends the output color format support of the Rockchip DW
+HDMI QP controller to cover 10-bit YUV 4:2:2 and 8/10-bit YUV 4:2:0.
+
+Patches 1, 7 & 15 improve VOP2 robustness on RK3588, helping recover
+from exceptions and preventing random display output glitches observed
+when switching modes that also change the color format, e.g. from RGB to
+YUV 4:2:0 and vice versa.
+
+Patch 8 avoids an incorrect DCLK source switch for 10-bit YUV 4:2:2 by
+forcing 8 bpc in the bandwidth check.
+
+Patches 2-6 address a few vop2 related issues reported by Sashiko, while
+9-12 are additional cleanups/improvements.
+
+Patch 13 adds MEDIA_BUS_FMT_UYVY10_1X20 for 10-bit YUV 4:2:2 output,
+configuring the PHY with 8 bpc.  YUV 4:2:2 always transmits two 12-bit
+components per pixel regardless of color depth, so from a clock-rate
+perspective it is equivalent to three 8-bit RGB components.
+
+Patch 14 advertises YUV 4:2:0 output, now that the bus-format and VOP2
+support are in place.
+
+Tested on Radxa's boards ROCK 5B (RK3588) and ROCK 4D (RK3576).
+
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+Changes in v6:
+- Dropped vop2 patch "Send pending event when atomic_enable()" since
+  atomic_enable() is not supposed to fail, and sending the event right
+  away turns the vblank/flip_done timeout WARNs into a silent false
+  success (Daniel)
+- Added new vop2 patch "Disable core clocks before dropping runtime PM
+  reference" (Sashiko)
+- Captured dclk_src at init in "drm/rockchip: vop2: Consolidate HDMI PHY
+  PLL clock parent switch" (Daniel)
+- Reworked "drm/rockchip: vop2: Avoid DCLK source switch for 10-bit
+  YUV422 output" into "drm/rockchip: vop2: Use TMDS character rate to
+  select DCLK source" and further improved DCLK source switch handling
+- Replaced the ternary with a helper in "drm/rockchip: dw_hdmi_qp:
+  Support 10-bit YUV422 output format"
+- Rebased series onto v7.4-rc1
+- Link to v5: https://patch.msgid.link/20261014-dw-hdmi-qp-yuv-v5-0-6fab0fe43a9b@collabora.com
+
+Changes in v5:
+- Rebased onto latest drm-misc-next and fixed the conflicts introduced
+  by the recent addition of HDMI 2.0 support to the DRM infrastructure
+- Updated patch "drm/rockchip: vop2: Reset AXI and DCLK to improve
+  robustness" to also assert the AXI reset in the bind path, fixing DSI
+  panel support on RK3588 EVB1 (Sebastian Reichel)
+- Added new patch "drm/rockchip: dw_hdmi_qp: Do not mask error code in
+  atomic_check()" to fix a pre-existing issue reported by Sashiko
+- Link to v4: https://patch.msgid.link/20260903-dw-hdmi-qp-yuv-v4-0-fb45bf4147eb@collabora.com
+
+Changes in v4:
+- Collected T-b tags from Igor
+- Rebased onto the latest drm-misc-next, which now contains the HDPTX
+  PHY driver fixes, so the runtime dependency has been dropped
+- Link to v3: https://patch.msgid.link/20260709-dw-hdmi-qp-yuv-v3-0-a4a982a9f2e7@collabora.com
+
+Changes in v3:
+- Updated patch 3 to skip any hardware programming in the callbacks
+  gated by drm_atomic_helper_commit_planes() after powering down VOP2 on
+  an atomic_enable() error (Sashiko)
+- Ensured VBLANK events are sent immediately when atomic_enable() fails,
+  hence preventing userspace processes waiting for the page flip
+  completion to hang indefinitely (new patch 4, Sashiko)
+- Rebased onto latest drm-misc-next
+- Link to v2: https://patch.msgid.link/20260706-dw-hdmi-qp-yuv-v2-0-b91beb33dedf@collabora.com
+
+Changes in v2:
+- Collected R-b from Krzysztof on the binding patch, while also fixed
+  the property ordering in the example
+- Renamed vop2_clk_reset() to vop2_reset_assert_deassert() and used to
+  devm_reset_control_get_optional_exclusive() in patch 6 (Philipp Zabel)
+- Addressed several issues reported by Sashiko
+  * Reset AXI before detaching the IOMMU domain, to close a theoretical
+    window where stale or in-flight DMA transactions could fault or
+    access memory untranslated after the domain is detached (patch 6)
+  * Fixed resource leak on vop2_enable() error path (new patch 2)
+  * Balance state on atomic_enable error paths (new patch 3)
+  * Avoided division by zero when computing max_dclk (new path 4)
+  * Fixed VOP2_MAX_DCLK_RATE overflow on 32-bit (new patch 5)
+- Rebased onto latest drm-misc-next
+- Link to v1: https://patch.msgid.link/20260617-dw-hdmi-qp-yuv-v1-0-a665cfd06d7d@collabora.com
+
+---
+Cristian Ciocaltea (15):
+      dt-bindings: display: vop2: Add missing reset properties
+      drm/rockchip: vop2: Fix resource leak on vop2_enable() error path
+      drm/rockchip: vop2: Disable core clocks before dropping runtime PM reference
+      drm/rockchip: vop2: Balance state on atomic_enable() error paths
+      drm/rockchip: vop2: Avoid division by zero when computing max_dclk
+      drm/rockchip: vop2: Fix VOP2_MAX_DCLK_RATE overflow on 32-bit
+      drm/rockchip: vop2: Reset AXI and DCLK to improve robustness
+      drm/rockchip: vop2: Consolidate HDMI PHY PLL clock parent switch
+      drm/rockchip: vop2: Use TMDS character rate to select DCLK source
+      drm/rockchip: vop2: Switch to enum vop_csc_format
+      drm/bridge: dw-hdmi-qp: Log resolution and refresh rate in atomic_enable()
+      drm/rockchip: dw_hdmi_qp: Do not mask error code in atomic_check()
+      drm/rockchip: dw_hdmi_qp: Support 10-bit YUV422 output format
+      drm/rockchip: dw_hdmi_qp: Enable YUV420 output format
+      arm64: dts: rockchip: Add RK3588 VOP2 resets
+
+ .../bindings/display/rockchip/rockchip-vop2.yaml   |  46 +++-
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |  12 ++
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c       |  10 +-
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c     |  27 ++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c       | 231 +++++++++++++++------
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h       |  10 +
+ 6 files changed, 263 insertions(+), 73 deletions(-)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20260617-dw-hdmi-qp-yuv-2b0f7bb5ba81
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
