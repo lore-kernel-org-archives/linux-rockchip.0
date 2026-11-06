@@ -2,11 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B56BC606D825
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 14:00:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46514606EE8A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 14:00:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OylYWv71;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=samsung.com header.i=@samsung.com header.a=rsa-sha256 header.s=mail20170921 header.b=AFl/ihZj
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3R7waALE;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=gWo4ae+B;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=samsung.com header.i=@samsung.com header.a=rsa-sha256 header.s=mail20170921 header.b=lxPWJUZa
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
@@ -14,46 +15,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=IC5wdMwWqbsiib5STlBjGrdOCb24sibgjeiUjNAsjxk=; b=OylYWv71jNzNndo9pvyXiYj4tk
-	yTKCh6Q+d7zBPxOyCPNHIQrBlQiHDL2T9zvGqZOHRm8Ejf5BlJXDxyu5FUsC8wIAs6lfnrVpq0CQx
-	o+Y+AffnNzg46Qi2ND/F/CIsTOktqQL2HOaF0NdffNCQN5wAeaG9EwdyV+S/Cn1MXUDeJ8lYw9UtY
-	3O2v7O0AS9slwlOTaMnsMfqkrb5WoavDwSF4dCeP84lcgSYZZHoC/c+L32usdpjBFV4374/I2oJSL
-	LFvc2xsziIRuaX6HlNxDs+T6ptoMPzDOW7AdDM41zu5aGGPnZA58k8TV+ZHUdSVnuK0V+A2pkOEqV
-	dcMjEYSg==;
+	bh=589p0yQjoKiaE/gNb7cSMku/PYx4gikxHwqNET6b1B4=; b=3R7waALEYzy65uQfIMlg+QOpbq
+	C7/7viqHOHsOjos2Z8WaI4QRlo5qdbn+/sio3dP6ZzjvMpythWmV9ulWlHlpFNAPX5R7SuednmtfO
+	wwO1Vf2mxJywj9hJl0XvVHMNeV1evC3W+1YAGFNHnFd3GlYt8c68ykYI/gD958xWI2Y3MVW+NbnCI
+	HcrX97bKuE7TgjHrmE8qUqKS8ZlJgnkwmR1w3YiUeIyPeEb448sGSrqpuI0fWc/rT3D2Ex5XS9jgW
+	fmWV83g6toI0rAcVeGOzMf1Zck2rpaaQxPGvsDmC/+c7mtnafRWZnxDS9q/xDIVqU7UewQv1/w0L3
+	L4SHC+Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPKU5-0000000CY92-1SAY;
-	Fri, 06 Nov 2026 14:00:01 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1xPKUG-0000000CYZJ-01Zj;
+	Fri, 06 Nov 2026 14:00:12 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPKTO-0000000CWix-0AwW;
-	Fri, 06 Nov 2026 13:59:29 +0000
+	id 1xPKTc-0000000CXEe-0vME;
+	Fri, 06 Nov 2026 13:59:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=References:Content-Type:Cc:To:
+	In-Reply-To:Message-Id:Content-Transfer-Encoding:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=FOINdvs6XWC1FSRub4vzOIG+tC83yBPDa+HTuiT3hm0=; b=gWo4ae+BBWXFjsCcCKDfyHSe5Z
+	nH6E5GLbUirGnpECl3L4nOI7fqqV9bGOfAKQMthXWv/x5srU7O6j/xOWXUQSKcnyhU1aYddA6EW/G
+	Zy/AssQwTwdKT9esv9SNHb0Mc7sAjwnFW0QoYRWILlvxHDVuJUOccfY471ebUHFPQTrXUfoiOtOVm
+	OKJOO0kc/BHqplvTYrDAITToNikdXSw1+sDYuauuq1jRijJ/rct4KetF/u0AHuhH3NPgCPfjnpbW9
+	+PXCo44Z2jQfahfeavnstQl5la8UMrQY1KVCzcWRzVlQXTRqyiDK7HIRNRkyCSV0aRkPgtcIrhwDQ
+	0+oPS7Ow==;
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xPKTY-00000004In0-3rNq;
+	Fri, 06 Nov 2026 13:59:30 +0000
 Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20261106135915euoutp02b65f7b9002df6d3964edaea318db1dbf~leXG85Ccq2692626926euoutp02C;
-	Fri,  6 Nov 2026 13:59:15 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20261106135915euoutp02b65f7b9002df6d3964edaea318db1dbf~leXG85Ccq2692626926euoutp02C
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20261106135927euoutp026f6745a09d9fbb393dbdbdee6743eb75~leXRq07Jh2695226952euoutp02A;
+	Fri,  6 Nov 2026 13:59:27 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20261106135927euoutp026f6745a09d9fbb393dbdbdee6743eb75~leXRq07Jh2695226952euoutp02A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1793973556;
-	bh=G7NEdkxRN3KpQHJ/gpj/uZSKEgPg9bL3K+UXBDVUEls=;
+	s=mail20170921; t=1793973567;
+	bh=FOINdvs6XWC1FSRub4vzOIG+tC83yBPDa+HTuiT3hm0=;
 	h=From:Date:Subject:In-Reply-To:To:Cc:References:From;
-	b=AFl/ihZj54pbEZdCQSDExemzX46g29voAo4VLUl8Ec1rpGCDMogiEpdYOYhDfR20X
-	 8JmJO7ZurNL07pVIuM+LpfIRGlVXLt/ZLNYBTObLBADqlcTUFTVQQ3SkG90QHCQ+9v
-	 5yTTGm5OoJ/64hk2g5snFkMfQOqKuaTQUAT5XLKs=
+	b=lxPWJUZaHqj5WcgomSfsSk9sX2hrLkmKX2PsVOietCm791+etLTUm7L6MpAA9+Ue+
+	 Uov+EgWc174w53280xbmLZsU/DAZGwS03cWKlLtgtbNp6m7y0VjxuHrIZQE+5KK5Nh
+	 ELew7b0L4RAa/L/tvE6SEotqzLPUHZezvP+W/HXk=
 Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
 	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
-	20261106135915eucas1p23a8fabb523d860d913831836c240837e~leXGp7LW61708617086eucas1p2I;
-	Fri,  6 Nov 2026 13:59:15 +0000 (GMT)
+	20261106135926eucas1p2de40819f5e8307219ae80a96341c90f5~leXQ6MDPi2505325053eucas1p2B;
+	Fri,  6 Nov 2026 13:59:26 +0000 (GMT)
 Received: from AMDC4942.eu.corp.samsungelectronics.net (unknown
 	[106.210.136.40]) by eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20261106135912eusmtip169b15b2b9ac489813a1f707dc3ca7b50~leXD3Gwt00573605736eusmtip1t;
-	Fri,  6 Nov 2026 13:59:12 +0000 (GMT)
+	20261106135924eusmtip1dfd8157573257655aad13b94a72d97f3~leXPNo2080076100761eusmtip1T;
+	Fri,  6 Nov 2026 13:59:24 +0000 (GMT)
 From: Michal Wilczynski <m.wilczynski@samsung.com>
-Date: Fri, 06 Nov 2026 14:58:47 +0100
-Subject: [PATCH v7 13/19] drm/bridge: inno-hdmi: Make the register clock
- source selectable
+Date: Fri, 06 Nov 2026 14:58:53 +0100
+Subject: [PATCH v7 19/19] MAINTAINERS: Add StarFive JH7110 display subsystem
+ entry
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261106-jh7110-clean-send-v7-13-68f7ea9913db@samsung.com>
+Message-Id: <20261106-jh7110-clean-send-v7-19-68f7ea9913db@samsung.com>
 In-Reply-To: <20261106-jh7110-clean-send-v7-0-68f7ea9913db@samsung.com>
 To: Neil Armstrong <neil.armstrong@linaro.org>,  Rob Herring
 	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,  Andrzej Hajda
@@ -75,26 +90,26 @@ To: Neil Armstrong <neil.armstrong@linaro.org>,  Rob Herring
 	<william.qiu@starfivetech.com>,  Xingyu Wu <xingyu.wu@starfivetech.com>,
 	Sandy Huang <hjc@rock-chips.com>,  Manivannan Sadhasivam <mani@kernel.org>
 X-Mailer: b4 0.15-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2568;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1569;
 	i=m.wilczynski@samsung.com; h=from:subject:message-id;
-	bh=d/i2gyls77m8F8lA4VJlxVhW0HvVLBDxUyRUpbBLHbE=;
-	b=owGbwMvMwCGWumv6zndzRCIZT6slMWS9vSsutPT19E8BMTcS+jXEw7a+tuZiKF1zwFHf6kp+Y
-	+DDLuXajlIWBjEOBlkxRZazG6ONJP8xPC0//vgXzBxWJpAhDFycAjCRXZyMDNv/bNHV23My13TT
-	o/ua0ad0Q+9c6zB9uFc46sf2OfNrf7cx/E+ct8Mm7n2i0psZy8QfP5EwMWWRdqt8rPE6uenizor
-	aVG4A
+	bh=jqCtlnNej838pW00ylqvCA2gn89yffRdOQ9M8LboPrU=;
+	b=owGbwMvMwCGWumv6zndzRCIZT6slMWS9vSteu/nuipZpmqUz9A+EFmy9Nue3onZxoLnVtLlMm
+	cwP2sy2dJSyMIhxMMiKKbKc3RhtJPmP4Wn58ce/YOawMoEMYeDiFICJBDkwMmz78U7YpbFjud3y
+	Zj73Oy9Ffn/zfZS26rLnB8M3lldn7zRiZFhae0z6uUJQ6OqQmk+7+h6XhB77v1/NV2hN2a4cv8a
+	v7kwA
 X-Developer-Key: i=m.wilczynski@samsung.com; a=openpgp;
 	fpr=CDB15B3219FE00E577C7E3FA65BA97B9EE9C1459
-X-CMS-MailID: 20261106135915eucas1p23a8fabb523d860d913831836c240837e
+X-CMS-MailID: 20261106135926eucas1p2de40819f5e8307219ae80a96341c90f5
 X-Msg-Generator: CA
-X-RootMTR: 20261106135915eucas1p23a8fabb523d860d913831836c240837e
+X-RootMTR: 20261106135926eucas1p2de40819f5e8307219ae80a96341c90f5
 X-EPHeader: CA
-X-CMS-RootMailID: 20261106135915eucas1p23a8fabb523d860d913831836c240837e
+X-CMS-RootMailID: 20261106135926eucas1p2de40819f5e8307219ae80a96341c90f5
 References: <20261106-jh7110-clean-send-v7-0-68f7ea9913db@samsung.com>
-	<CGME20261106135915eucas1p23a8fabb523d860d913831836c240837e@eucas1p2.samsung.com>
+	<CGME20261106135926eucas1p2de40819f5e8307219ae80a96341c90f5@eucas1p2.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261106_055918_686955_F604485C 
-X-CRM114-Status: GOOD (  16.88  )
-X-Spam-Score: -2.8 (--)
+X-CRM114-CacheID: sfid-20261106_135928_919157_B99FC7BF 
+X-CRM114-Status: GOOD (  11.31  )
+X-Spam-Score: -0.9 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,59 +130,41 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-inno_hdmi_init_hw() drives the register interface from the system clock
-on every platform, by setting v_REG_CLK_SOURCE_SYS unconditionally in
-HDMI_SYS_CTRL.
+The JH7110 display subsystem spans a PHY driver, a DRM bridge driver,
+a parent device and their bindings, and has no existing maintainer entry.
 
-That is not right everywhere. On the JH7110 a Framework 13 (fml13v01)
-panel flickers continuously with the system clock selected and behaves
-once the TMDS clock drives the register interface instead. Maud Spierings
-found this by diffing HDMI_SYS_CTRL against the StarFive vendor kernel,
-which leaves the bit clear.
+Add an entry covering them so patches reach someone who can review them.
 
-Add a plat_data flag for it rather than changing the bit for everyone.
-The Rockchip integrations keep the system clock, so this is a no-op for
-them; only a platform that asks for it gets the TMDS clock.
-
-Reported-by: Maud Spierings <maud_spierings@murena.io>
-Closes: https://lore.kernel.org/all/e780ecb8-918f-4816-99c8-b69b10b25a18@murena.io/
-Tested-by: Maud Spierings <maud_spierings@murena.io>
+Reviewed-by: Joshua Peisach <jpeisach@ubuntu.com>
 Tested-by: Byron Stanoszek <gandalf@winds.org>
 Tested-by: OOHehir <oo.hehir@gmail.com>
 Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
 ---
- drivers/gpu/drm/bridge/inno-hdmi.c | 4 +++-
- include/drm/bridge/inno_hdmi.h     | 2 ++
- 2 files changed, 5 insertions(+), 1 deletion(-)
+ MAINTAINERS | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/drivers/gpu/drm/bridge/inno-hdmi.c b/drivers/gpu/drm/bridge/inno-hdmi.c
-index 84d00ee52b732a9a06e55d8b21127df4c60f7143..9aa005ff65a23bf55672f97aa1ea6688cf1b7ba3 100644
---- a/drivers/gpu/drm/bridge/inno-hdmi.c
-+++ b/drivers/gpu/drm/bridge/inno-hdmi.c
-@@ -576,7 +576,9 @@ static void inno_hdmi_init_hw(struct inno_hdmi *hdmi)
- 	usleep_range(100, 150);
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 93abbb315065de00c29cc02de16c38eac58ac5a1..f56046284fc986f18704635425b7f61709e787ac 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -26718,6 +26718,17 @@ S:	Maintained
+ F:	Documentation/devicetree/bindings/net/starfive,jh7110-dwmac.yaml
+ F:	drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
  
- 	msk = m_REG_CLK_INV | m_REG_CLK_SOURCE | m_POWER | m_INT_POL;
--	val = v_REG_CLK_INV | v_REG_CLK_SOURCE_SYS | v_PWR_ON | v_INT_POL_HIGH;
-+	val = v_REG_CLK_INV | v_PWR_ON | v_INT_POL_HIGH;
-+	val |= hdmi->plat_data->reg_clk_source_tmds ? v_REG_CLK_SOURCE_TMDS :
-+						      v_REG_CLK_SOURCE_SYS;
- 	hdmi_modb(hdmi, HDMI_SYS_CTRL, msk, val);
- 
- 	inno_hdmi_standby(hdmi);
-diff --git a/include/drm/bridge/inno_hdmi.h b/include/drm/bridge/inno_hdmi.h
-index 790633fcea97a6b9840da7b19a0c0b0d7271fb83..cc5099d05f641eef5de91ed5becde7337c04b013 100644
---- a/include/drm/bridge/inno_hdmi.h
-+++ b/include/drm/bridge/inno_hdmi.h
-@@ -32,6 +32,8 @@ struct inno_hdmi_plat_data {
- 	const struct inno_hdmi_plat_ops *ops;
- 	struct inno_hdmi_phy_config *phy_configs;
- 	struct inno_hdmi_phy_config *default_phy_config;
-+	/* Clock the register interface from the TMDS clock, not the system clock. */
-+	bool reg_clk_source_tmds;
- };
- 
- struct inno_hdmi *inno_hdmi_bind(struct platform_device *pdev,
++STARFIVE JH7110 DISPLAY SUBSYSTEM
++M:	Michal Wilczynski <m.wilczynski@samsung.com>
++R:	Icenowy Zheng <zhengxingda@iscas.ac.cn>
++S:	Maintained
++F:	Documentation/devicetree/bindings/display/bridge/starfive,jh7110-inno-hdmi-controller.yaml
++F:	Documentation/devicetree/bindings/display/starfive/starfive,jh7110-hdmi-subsystem.yaml
++F:	Documentation/devicetree/bindings/display/starfive/starfive,jh7110-vout-subsystem.yaml
++F:	drivers/gpu/drm/bridge/jh7110-inno-hdmi.c
++F:	drivers/soc/starfive/jh7110-hdmi-subsystem.c
++F:	drivers/soc/starfive/jh7110-vout-subsystem.c
++
+ STARFIVE JH7110 DPHY RX DRIVER
+ M:	Jack Zhu <jack.zhu@starfivetech.com>
+ M:	Changhuang Liang <changhuang.liang@starfivetech.com>
 
 -- 
 2.34.1
