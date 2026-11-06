@@ -2,78 +2,107 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D8400606A32C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 08:50:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C6572606A329
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 09:05:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fDrY5YRU;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ziyao.cc header.i=@ziyao.cc header.a=rsa-sha256 header.s=zmail header.b=cg9wurH7
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QMMecBzE;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=UP6BVeMQ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=1XJf6x2VySUqEGtlUXxE8Bye/l8AxFOVKsAwQcIcih0=; b=fDrY5YRU5oDhHSMK4B9pU2RMFk
-	AaMdf54JDDoWeo7fETYdxL3nf3NOQQIC8Ti7bo/Yb5J+N7tqbJOQ/j9TxdFkxU7borqKk48OESY/T
-	ot6zMGtNcYxE4KaxAMNwtF2BephOGMcLsQFDllUa+5i1wqqQx49DfeklTAfcHMTO0dKSQsra8TPs1
-	Z2I8l2ck3kCokeGY0/bp4LsutohEkrWYsPMtBY/ia3gni7aNEz/ukvzwhc5cVfBkFSrNg6/U6hyqo
-	dSu4xgAqzPD9Kg26ESVmt06kmi/NqqGeLPDPs3JTSvmA5tJGHavdBHGbEssO8QzU47dfyTzopnqAd
-	9AycN1Dw==;
+	bh=fLkFI9kQA1rGkJ4zn0JzTL1Uwx6uBO4IB0SJU6AOMlk=; b=QMMecBzEjLJvoXdb23QEpKebXz
+	5Lc6cx33uTagD3AgTqtiBkv0Qh2ZTT5uV9Dg+8yb0bxXvtrXZZ+ES/Zi+CCc+iObfBxGILJIstmTL
+	6MnCWDKAhZG1twr1JCIreWUbeTHJ55qCvAmreSAM8QZ5Wxn15bpEbLeCB22vK6Bz0ZajE/d8jMqNT
+	SeiqsJnUrjwNkZRKySG80ck6N/gnu+qd/LcQu+O9409h7bNCFV1NZJlBx12NcRTzf8nN2RAHMhQmq
+	CALfWF472nEjduRI5ho6IBc76P9rMZr2SugA4XeqLEV+uj7H9MO+wUc58tt7WZ+KRAwsqWG8D+Mn9
+	2roDu9FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPFen-0000000Bd9y-0Hpj;
-	Fri, 06 Nov 2026 08:50:45 +0000
-Received: from sender6-op-o12.zoho.com ([165.173.180.12])
+	id 1xPFsc-0000000BedR-2QfD;
+	Fri, 06 Nov 2026 09:05:02 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPFej-0000000Bd8i-3rSI;
-	Fri, 06 Nov 2026 08:50:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1793955022; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=K1sEecgNybdmwlsQxMYevt5CmsQ5ihQPj0LcKrmw9V2q8WhI9b+mH/xemeAoCQRPgjJRtsNIdHcN63pXjW9bfDVn72Bv8De18Mqg1N++SbosmpbO1KruYapOnTjFX3CXXmN8i5Ux2rIQqEJZItqs9SPaLSy1INk6uRe3iPVMMiA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1793955022; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=u683Mp167vRRYMWqRckD1jVWMTr0O+F8yrVQZIo8ll8=; 
-	b=mg7xe9OEmaB0+oJUjp9z9dzXQ7E1/5tQ1TARRUpwNKr5rTRYfazlcZzgPgkwY4elXLDCreYF7TGw/r7M+EtFAfeTxRo1yAsUQnsZtBd4xxYbM/QC5IBLUdF2ysIh524fEGHSI6hQn7WnLrKxXJzQ8VaX0ojE92TnOet9TBCYWSY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=ziyao.cc;
-	spf=pass  smtp.mailfrom=me@ziyao.cc;
-	dmarc=pass header.from=<me@ziyao.cc>
-DKIM-Signature: a=rsa-sha256; b=cg9wurH7f+KD2WoCD5W+v4QLoDmjBS81b79BGy2k4WFlu3/10c0Vyb4upbEllly6vKmjc7iqXCzh+7w0yqnJsOU142b9iCig0GwgUov+B+Y2B8g7TIDGeMUbK9OjWviWi8TLCtXXQ39HfZ/wvnPrV/DrPMfubgQVH1X4qCO1LVo=; c=relaxed/relaxed; s=zmail; d=ziyao.cc; v=1; bh=u683Mp167vRRYMWqRckD1jVWMTr0O+F8yrVQZIo8ll8=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1793955019916373.169635391934;
-	Fri, 6 Nov 2026 00:50:19 -0800 (PST)
-Date: Fri, 6 Nov 2026 08:50:06 +0000
-From: Yao Zi <me@ziyao.cc>
-To: Sergey Shtylyov <s.shtylyov@auroraos.dev>, Yao Zi <me@ziyao.cc>,
-	Ulf Hansson <ulfh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Midgy BALON <midgy971@gmail.com>,
-	Finley Xiao <finley.xiao@rock-chips.com>,
-	Frank Zhang <rmxpzlb@gmail.com>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Kevin Hilman <khilman@linaro.org>, Caesar Wang <wxt@rock-chips.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>
-Cc: <linux-pm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <stable@vger.kernel.org>
-Subject: Re: [PATCH 2/2] pmdomain: rockchip: Don't log when of_clk_get()
- fails with -EPROBE_DEFER
-Message-ID: <au2UvnY0CdGTRnum@pie>
-References: <20261105001257.1368266-1-me@ziyao.cc>
- <20261105001257.1368266-3-me@ziyao.cc>
- <71b77625-8475-43da-a62b-983cf572229d@auroraos.dev>
+	id 1xPFsa-0000000Becf-1jec;
+	Fri, 06 Nov 2026 09:05:00 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id E92EE40507;
+	Fri,  6 Nov 2026 09:04:59 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1793955899;
+	b=oB/QY+Twf7ojXQIw1F874QykmP79dBheCUKaLOST4To+L+vBf98MTReTHVBnmMqSoJ3a
+	 AlSMCFAgsA9y84THnhSpGZ3ONJRxAsGziKsVs4GbVdkb8m8E3DFoIaznHWRz+hbcfPfgY
+	 wDPXyKJ/G7UJdppBI+HNOD5yAcp5ghzSalm9uJRQ32ngc/Dx/NovciVSwnPuwb9Joq1XU
+	 lAk4Y+2fL3xJSuT9pKaA4FPA36rspHDcBPwEC6jx60IEvAztfaZwQGduwZ1T5bQne2vSX
+	 tDhMdw9bT56kpvU+/fgFYC260qE1mklONsywaNd1pfO/+PdpazdIcNZZKOhHHMB4lBQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1793955899;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=qT+CO1ROEeD8xYhFaFdRagN6Eagy/YoQJaHT5lWNYnU=;
+	b=ejrZlZcLwgG7Vjl1Ib/D1X3KnZT4PjzvSDvXrjNp48063jliNQF6Vkrmp5efHIdwRwFS
+	 oqBLfD5eRxRCFkhmfsjpTQNdyJQLTp7ozk4c6PvxS+ekLyBiVugJSVNcLDwJeq5+KqPjf
+	 ondEKvvx6WYg55KQ8gFYmQGlQNMrrBUFc91fNNGo9Xvnc0qezadHWmALnAYujsqskyaDw
+	 RpSGZyZjux/u0QY2x+R+doRXhdWpEIgC6mDeJwp3fHgPLmersFVNSXfZ/fy/IxQGNNmV8
+	 QfKKF3qlqzAfVeCCCGz48e6FfuOfjpdYDSAFlJsD4c6UgjD6mXFiHVCmC2bmyyqT26g==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 3CFEB1F008A1;
+	Fri,  6 Nov 2026 09:04:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793955899;
+	bh=qT+CO1ROEeD8xYhFaFdRagN6Eagy/YoQJaHT5lWNYnU=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=UP6BVeMQrXnZ9e7n9eNiUOoZefgA7bnoSPeCticKzRkbs5qvWQ83UoUH/GoanCPr6
+	 Ggi+wtftll8RbBHZSZxJcgVr32Q0rMV3eGMcMJtjfXCwb8HNLbYVkxipUBf+50ABwy
+	 rcB+qR2Ao/TU0T5jci0iZYf6uUlknv8052eNkxQ0WjjAbQe3+fyJ4rBWqaehXGIcsV
+	 gtQZLQwS8vtJY/8MrCz0xh5+LYgghRJ9xbQzB5cNY+CaHhXAIp2kWfvhGeGAWWiAS7
+	 yEIJplzLU7tmTsTgq6s8xD1rB5necoWtW/4pT49ev+MY1YageVy6rX9AITL0C+EbMQ
+	 yOee1oD3ahcAg==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id C3A0145B3F;
+	Fri,  6 Nov 2026 09:04:58 +0000 (UTC)
+From: Sergei Khomenkov via B4 Relay <devnull+shomenkow.gmail.com@kernel.org>
+Date: Fri, 06 Nov 2026 12:04:56 +0300
+Subject: [PATCH] media: verisilicon: suspend the device before
+ unregistering it on remove
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <71b77625-8475-43da-a62b-983cf572229d@auroraos.dev>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/293.948.33
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261106_005042_159284_87B87622 
-X-CRM114-Status: GOOD (  26.79  )
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261106-hantro-remove-v1-1-d0a4678886d7@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqAIBAAvyJ7TlAPgn0lOqittYc01ohA/HvSc
+ QZmGlRkwgqzaMD4UKWSB+hJQDx83lHSNhiMMlZrZeWQNxfJeJYHpfMpRBes0snBaC7GRO//W9b
+ eP1YuNu9fAAAA
+X-Change-ID: 20261106-hantro-remove-9afbc9b601f9
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Hans Verkuil <hverkuil+cisco@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Frank Li <Frank.Li@nxp.com>, Tharit Tangkijwanichakul <tharitt97@gmail.com>, 
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ stable@vger.kernel.org, Sergei Khomenkov <shomenkow@gmail.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793955898; l=3507;
+ i=shomenkow@gmail.com; s=20261104; h=from:subject:message-id;
+ bh=xS7oIoyimsaMRzqUpXTDBfcEIedzp94Ticoi5FpW/N4=;
+ b=UveIQ1ueDQ9B30eFN2EHpuRf6itGbRtnVmhgM4utBXIjk1hHI0f0mylWYoYHySNVftCf9fxIi
+ JL/Cv/6DmByCniakqQ9eDo0+UfNchjMmlWUmP1CQB8cNP+9XSUhhTR4
+X-Developer-Key: i=shomenkow@gmail.com; a=ed25519;
+ pk=FwuHDVe7aiISDMLmQEcMC+RflEIJ6kEp/ekwznWXmI8=
+X-Endpoint-Received: by B4 Relay for shomenkow@gmail.com/20261104 with
+ auth_id=1409
+X-Original-From: Sergei Khomenkov <shomenkow@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,110 +112,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: shomenkow@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 05, 2026 at 11:47:13PM +0300, Sergey Shtylyov wrote:
-> Hello!
-> 
->    Please consider using --no-git-fallback with scripts/get_maintainer.pl --
-> I don't see what do I have to do with this patch (other than fixing another
-> bug in this driver earlier).
+From: Sergei Khomenkov <shomenkow@gmail.com>
 
-Thanks for the reminder, I usually enable it but forgot it this time, sorry
-for disturbing...
+The clocks are enabled and disabled by the runtime PM callbacks.
+hantro_remove() calls v4l2_device_unregister() and clk_bulk_unprepare()
+first and only then pm_runtime_dont_use_autosuspend(), which suspends
+an active device right away. By then v4l2_device_unregister() has
+cleared the driver data (it points to the v4l2_device, the first member
+of struct hantro_dev), so hantro_runtime_suspend() dereferences NULL.
 
-> On 11/5/26 3:12 AM, Yao Zi wrote:
-> 
-> > Current error handling code considers -EPROBE_DEFER as hard errors,
-> > logs misleading dmesg like,
-> > 
-> > rockchip-pm-domain ff600000.power-management:power-controller: power-domain: failed to get clk at index 0: -517
-> > rockchip-pm-domain ff600000.power-management:power-controller: failed to handle node power-domain: -517
-> > 
-> > Use dev_err_probe() at the callsite of of_clk_get(),
-> 
-> > and check for -EPROBE_DEFER in places> where its return value could propagate to.
-> 
->    To where?
+The device is always active at that point: the driver core resumes it
+before calling remove(), and its put only starts the 100 ms autosuspend
+timer. So every unbind and every module unload, with or without a
+decode before it, gives an "Unpreparing enabled" warning for each clock
+and then that oops.
 
-rockchip_pm_add_one_domain, rockchip_pm_add_subdomain, and
-rockchip_pm_domain_probe. I think it's obvious in the diff and too
-detailed to the commit message, so didn't add them here.
+Stop runtime PM before the unregister and the unprepare. If runtime PM
+is forbidden through sysfs (power/control set to "on"), the device is
+still active after that, so disable its clocks and mark it suspended by
+hand.
 
->    And I didn't understand why you couldn't just call dev_err_probe() everywhere --
-> the error code seems to always be propagated...
+The probe error path unwinds in the same order. It can only hit this if
+a job runs between the encoder node registration and a later probe
+failure, so it is left for a follow-up.
 
-This was what I originally wanted to do, but dev_err_probe() sets the
-deferred probe reason, and if we call it several times, the earlier and
-more specific messagess ("failed to get clk at index %d") get overridden
-by the later and less descriptive ones ("failed to handle subdomain node
-%pOFn"), which I think would make it harder to debug.
+Found with an LLM coding assistant while porting mainline Linux to a
+Rockchip RK3026 board (G1, ID 0x6731); the assistant also drafted this
+change. Tested on that board. Without this change, unloading the idle
+module (runtime status "suspended") gives the warnings and the oops.
+With it, the idle module unloads with no warning or oops, and so it does
+right after an H.264 or VP8 decode with the autosuspend delay raised to
+10 s through sysfs; the clock enable and prepare counts are back to
+their values before the load. The same holds with power/control set to
+"on", over three load, decode and unload cycles on one boot. kmemleak
+reports nothing after five load, decode and unload cycles. Built with
+W=1 with and without CONFIG_PM. Not tested on other SoCs or with a
+power domain.
 
-> > Fixes: 7c696693a4f5 ("soc: rockchip: power-domain: Add power domain driver")
-> > Fixes: 6be05b5ec161 ("soc: rockchip: power-domain: add support for sub-power domains")
-> > Signed-off-by: Yao Zi <me@ziyao.cc>
-> > Cc: stable@vger.kernel.org
-> > ---
-> >  drivers/pmdomain/rockchip/pm-domains.c | 22 +++++++++++++---------
-> >  1 file changed, 13 insertions(+), 9 deletions(-)
-> > 
-> > diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-> > index 34c862e56aad..c147cc88edb1 100644
-> > --- a/drivers/pmdomain/rockchip/pm-domains.c
-> > +++ b/drivers/pmdomain/rockchip/pm-domains.c
-> [...]> @@ -1006,8 +1006,10 @@ static int rockchip_pm_add_subdomain(struct rockchip_pmu *pmu,
-> > 
-> >                 error = rockchip_pm_add_one_domain(pmu, np);
-> >                 if (error) {
-> > -                       dev_err(pmu->dev, "failed to handle node %pOFn: %d\n",
-> > -                               np, error);
-> > +                       if (error != -EPROBE_DEFER)
-> 
->    Why not just call dev_err_probe() instead?
-> 
-> > +                               dev_err(pmu->dev,
-> > +                                       "failed to handle node %pOFn: %d\n",
-> > +                                       np, error);
-> >                         return error;
-> >                 }
-> > 
-> > @@ -1102,15 +1104,17 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
-> >         for_each_available_child_of_node_scoped(np, node) {
-> >                 error = rockchip_pm_add_one_domain(pmu, node);
-> >                 if (error) {
-> > -                       dev_err(dev, "failed to handle node %pOFn: %d\n",
-> > -                               node, error);
-> > +                       if (error != -EPROBE_DEFER)
-> > +                               dev_err(dev, "failed to handle node %pOFn: %d\n",
-> > +                                       node, error);
-> >                         goto err_out;
-> >                 }
-> > 
-> >                 error = rockchip_pm_add_subdomain(pmu, node);
-> >                 if (error < 0) {
-> > -                       dev_err(dev, "failed to handle subdomain node %pOFn: %d\n",
-> > -                               node, error);
-> > +                       if (error != -EPROBE_DEFER)
-> > +                               dev_err(dev, "failed to handle subdomain node %pOFn: %d\n",
-> > +                                       node, error);
-> >                         goto err_out;
-> >                 }
-> >         }
-> [...]
-> 
-> MBR, Sergey
-> 
+Fixes: 556ab0b2741d ("media: hantro: release runtime resources when device_run fails")
+Cc: stable@vger.kernel.org
+Signed-off-by: Sergei Khomenkov <shomenkow@gmail.com>
+---
+ drivers/media/platform/verisilicon/hantro_drv.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-Regards,
-Yao Zi
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 26e5d5547466..8af47375d471 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -1286,10 +1286,16 @@ static void hantro_remove(struct platform_device *pdev)
+ 	hantro_remove_enc_func(vpu);
+ 	media_device_cleanup(&vpu->mdev);
+ 	v4l2_m2m_put(vpu->m2m_dev);
+-	v4l2_device_unregister(&vpu->v4l2_dev);
+-	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
++	/* Suspend first: v4l2_device_unregister() clears the driver data. */
+ 	pm_runtime_dont_use_autosuspend(vpu->dev);
+ 	pm_runtime_disable(vpu->dev);
++	/* Runtime PM forbidden through sysfs: the device is still active. */
++	if (IS_ENABLED(CONFIG_PM) && !pm_runtime_status_suspended(vpu->dev)) {
++		clk_bulk_disable(vpu->variant->num_clocks, vpu->clocks);
++		pm_runtime_set_suspended(vpu->dev);
++	}
++	v4l2_device_unregister(&vpu->v4l2_dev);
++	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
+ 	reset_control_assert(vpu->resets);
+ }
+ 
+
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20261106-hantro-remove-9afbc9b601f9
+
+Best regards,
+-- 
+Sergei Khomenkov <shomenkow@gmail.com>
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
