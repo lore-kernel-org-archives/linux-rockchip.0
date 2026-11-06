@@ -2,62 +2,84 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D2A6B606A332
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 18:18:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D51BB606A326
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 18:47:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rWVkS/tk;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=wOJ45EzP
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qTEtgMyh;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=EHxxqxVH
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=8qW6T9nCAECpqcmGgyaChv2914nTjdC3Vh87i7g0b/U=; b=rWVkS/tktYLo8tcTfBzktr9l4s
-	C9vdFsBXjAMbqbOG0Br/Cyc4fEveY+q9r7ZLpqkXinpNZa8EBxJu2xfZoozIPUvGjSqPmaFjIqRv7
-	A19+TeIZEKkqrEqDsWoWYmn90i5i/KCD1OoSUtDtiKdx/cyLIQS6iX1P/lHSR7OjsnTLLzC2taNWE
-	/XUoU5eCVHOK9DeDeRk03cT5ZguSJUXSVUnAxLOTPjIw99tP7mhJtvrHEJY3XD+y++IK9QqmxzhmE
-	CwksLutgN3pjnmpmNOyPUbFpjFK9kT3uNm7j6Th/4AVa+nVx3PoNfYZJG+Bp/vj/Aa8Qh5e6G7jTd
-	3+DktULQ==;
+	bh=epelZgymY93DHtZiDnAJksU9CCAQvBF8OzdNde0wSAg=; b=qTEtgMyhF4K0SU9B0xgdH4K1xC
+	pxlXnD2Ujkow0rlxQ+X7vb4vlqHTn70g46h/vnp7TwWJY/cULfe0jJQHM7TK4Efc9OobjiOIuGvGp
+	lbjf8rNUrogadHOdImaTtlfsgS05QGurE3PJbKgTx9tJIw2sSy0XLLsS1YQuob1J3aCB3LqQVNFF2
+	THncl4cddtj7urm3uw9zoyW6dTqNrqNcGrzBAkwDSsQH+twdesYIlG7bNoy26Z4NnK8740hMDjPyY
+	xNPMeik840UYvBzgxxflI9Cn7mwrKgwYzJKVVl4aWJ2hHIudodiVbPajQdvjKVPe6TAbsMaTO4KcZ
+	ZuisO4Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPOWK-0000000DNh5-0lDr;
-	Fri, 06 Nov 2026 18:18:36 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xPOxu-0000000DRFj-0BQh;
+	Fri, 06 Nov 2026 18:47:06 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPOWE-0000000DNd1-3Bcd;
-	Fri, 06 Nov 2026 18:18:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=4qu676T13y6RrHMwRJER4rARZi5IpEx76wQQl48H/Lg=; b=wOJ45EzPH4TKBuxbrG2SxMVfBZ
-	HuraQyMYRtefiK+Y/kxaWLtSVhOtbYr070C4XU+gAK71isBez48dFuc3btrNQKR3S6SknVSetTthU
-	DgLw4v0BzyD+JjnFtkyDRSrItWcYohw6wWnbYciZV7Qd35qc0Vvi0ZypFrE343PYZNDMTUp5Tf0fk
-	O1TE3acBrA5K+pOzU8kJswcpEEYDGOgExjb1ZGLJF216LwKkDsMBB50L1JH342iOOx3wq1TRx2ksv
-	OtQf0DgN8wpfmzWFkUH2wjVjrpb5fK14ILUVU4pH+0nB1XJF+dHkTacI5z6hWJS5LdOr1wQtIAZZz
-	sCWbhAoQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: broonie@kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	quentin.schulz@cherry.de,
-	Lee Jones <lee@kernel.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH 1/2] spi: Add infrastructure for atomic sync transfers
-Date: Fri,  6 Nov 2026 19:18:22 +0100
-Message-ID: <20261106181824.1361235-2-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261106181824.1361235-1-heiko@sntech.de>
-References: <20261106181824.1361235-1-heiko@sntech.de>
+	id 1xPOxr-0000000DRE1-0Fam;
+	Fri, 06 Nov 2026 18:47:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1793990817;
+	bh=AXNSwoBw2GbAU/e+ejl9vrSOwtrW/+8L9JrQpY7FGwM=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=EHxxqxVHQ0EtHX+a2YfN1caR5z8H7FhejrVf/QyFlS7buHIK/BD7AM66/1lg43cCi
+	 9g3RJHOWMKMdMiHE1MRQbH9S3h7SkdxW3TxhDkyZ+4lHG+1xKth7H622qZCIV6A3Y9
+	 TWWTq2STKY27tjJe2pYmulSaV1E8deG9a3NLHFcD3XoHBmnHi5R0JpJtVhb+D7haPE
+	 KyC93i+76kZWBuIsqUBZlNvOAo7HAOwu9/XjVGa7OjfCoec976ntb/fDiIocNXA/hC
+	 8jWbL20j3b7yK7fUPvTBT/rs85CActjByxc3l4aPO+4lU6ujH2i81HCgvrLY7mUAMp
+	 2trNI0oQMpwmw==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 34B8E17E02E6;
+	Fri, 06 Nov 2026 19:46:56 +0100 (CET)
+Message-ID: <0597b71f39fd945d531d3e996d982d5d3a3b9a28.camel@collabora.com>
+Subject: Re: [PATCH] media: verisilicon: suspend the device before
+ unregistering it on remove
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: shomenkow@gmail.com, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>,  Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil
+	 <hverkuil+cisco@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Frank Li
+	 <Frank.Li@nxp.com>, Tharit Tangkijwanichakul <tharitt97@gmail.com>, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	stable@vger.kernel.org
+Date: Fri, 06 Nov 2026 13:46:54 -0500
+In-Reply-To: <20261106-hantro-remove-v1-1-d0a4678886d7@gmail.com>
+References: <20261106-hantro-remove-v1-1-d0a4678886d7@gmail.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261106_101830_889664_0A9CE772 
-X-CRM114-Status: GOOD (  25.10  )
+X-CRM114-CacheID: sfid-20261106_104703_402567_3B0CB9FE 
+X-CRM114-Status: GOOD (  30.10  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,179 +90,144 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0983595910611372368=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
+--===============0983595910611372368==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-D7LaB+tVG7NkjSos0gfW"
 
-There are cases where SPI transfers are needed during times without
-interrupts like shutdown when a PMIC should turn off the system.
+--=-D7LaB+tVG7NkjSos0gfW
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I2C already has atomic transfers for exactly that case, so introduce a
-similar concept for SPI. Similar to I2C, this is and should stay a
-corner-case, so is only allowed during the shutdown stages of the kernel,
-when interrupts are already turned off.
+Le vendredi 06 novembre 2026 =C3=A0 12:04 +0300, Sergei Khomenkov via B4 Re=
+lay a =C3=A9crit=C2=A0:
+> From: Sergei Khomenkov <shomenkow@gmail.com>
+>=20
+> The clocks are enabled and disabled by the runtime PM callbacks.
+> hantro_remove() calls v4l2_device_unregister() and clk_bulk_unprepare()
+> first and only then pm_runtime_dont_use_autosuspend(), which suspends
+> an active device right away. By then v4l2_device_unregister() has
+> cleared the driver data (it points to the v4l2_device, the first member
+> of struct hantro_dev), so hantro_runtime_suspend() dereferences NULL.
+>=20
+> The device is always active at that point: the driver core resumes it
+> before calling remove(), and its put only starts the 100 ms autosuspend
+> timer. So every unbind and every module unload, with or without a
+> decode before it, gives an "Unpreparing enabled" warning for each clock
+> and then that oops.
+>=20
+> Stop runtime PM before the unregister and the unprepare. If runtime PM
+> is forbidden through sysfs (power/control set to "on"), the device is
+> still active after that, so disable its clocks and mark it suspended by
+> hand.
+>=20
+> The probe error path unwinds in the same order. It can only hit this if
+> a job runs between the encoder node registration and a later probe
+> failure, so it is left for a follow-up.
+>=20
+> Found with an LLM coding assistant while porting mainline Linux to a
+> Rockchip RK3026 board (G1, ID 0x6731); the assistant also drafted this
+> change. Tested on that board. Without this change, unloading the idle
+> module (runtime status "suspended") gives the warnings and the oops.
+> With it, the idle module unloads with no warning or oops, and so it does
+> right after an H.264 or VP8 decode with the autosuspend delay raised to
+> 10 s through sysfs; the clock enable and prepare counts are back to
+> their values before the load. The same holds with power/control set to
+> "on", over three load, decode and unload cycles on one boot. kmemleak
+> reports nothing after five load, decode and unload cycles. Built with
+> W=3D1 with and without CONFIG_PM. Not tested on other SoCs or with a
+> power domain.
+>=20
+> Fixes: 556ab0b2741d ("media: hantro: release runtime resources when devic=
+e_run fails")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Sergei Khomenkov <shomenkow@gmail.com>
+> ---
+>  drivers/media/platform/verisilicon/hantro_drv.c | 10 ++++++++--
+>  1 file changed, 8 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/me=
+dia/platform/verisilicon/hantro_drv.c
+> index 26e5d5547466..8af47375d471 100644
+> --- a/drivers/media/platform/verisilicon/hantro_drv.c
+> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
+> @@ -1286,10 +1286,16 @@ static void hantro_remove(struct platform_device =
+*pdev)
+>  =09hantro_remove_enc_func(vpu);
+>  =09media_device_cleanup(&vpu->mdev);
+>  =09v4l2_m2m_put(vpu->m2m_dev);
+> -=09v4l2_device_unregister(&vpu->v4l2_dev);
+> -=09clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
+> +=09/* Suspend first: v4l2_device_unregister() clears the driver data. */
+>  =09pm_runtime_dont_use_autosuspend(vpu->dev);
+>  =09pm_runtime_disable(vpu->dev);
+> +=09/* Runtime PM forbidden through sysfs: the device is still active. */
+> +=09if (IS_ENABLED(CONFIG_PM) && !pm_runtime_status_suspended(vpu->dev)) =
+{
+> +=09=09clk_bulk_disable(vpu->variant->num_clocks, vpu->clocks);
+> +=09=09pm_runtime_set_suspended(vpu->dev);
+> +=09}
+> +=09v4l2_device_unregister(&vpu->v4l2_dev);
 
-So add a in-atomic check stolen from I2C and an optional transfer_atomic
-callback drivers can implement to do immediate uninterrupted transfers
-and let spi_sync() determine if the state is late enough to use it.
+To be verified, but its not entirely logical here. My impression was that y=
+ou
+want to unregister the dev entry sooner, so that it prevent newly open, and=
+ turn
+existing fh into a mode where all ioctl will fail.
 
-spi_async() does not require a sleeping context for itself, so while it
-could in theory also be included, its called waiting for the completion
-can sleep, so would still cause the splat about it.
+Can you do some extra code inspection and report why you strictly need to m=
+odify
+the clock states before you unregister the device?
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
----
- drivers/spi/spi.c       | 66 ++++++++++++++++++++++++++++++++++++++---
- include/linux/spi/spi.h | 11 +++++++
- 2 files changed, 73 insertions(+), 4 deletions(-)
+p.s. are you sure outside of test build, that PM can be disabled on any of =
+the
+platform hantro driver runs ?
 
-diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index 40cda0037ea5..b85ac20e63f6 100644
---- a/drivers/spi/spi.c
-+++ b/drivers/spi/spi.c
-@@ -5016,6 +5016,49 @@ static int __spi_sync(struct spi_device *spi, struct spi_message *message)
- 	return status;
- }
- 
-+static int __spi_sync_atomic(struct spi_device *spi, struct spi_message *message)
-+{
-+	struct spi_controller *ctlr = spi->controller;
-+	unsigned long flags;
-+	int status;
-+
-+	if (!ctlr->transfer_atomic) {
-+		dev_err(&ctlr->dev, "No atomic transfer handler defined\n");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	if (__spi_check_suspended(ctlr)) {
-+		dev_warn_once(&spi->dev, "Attempted to sync while suspend\n");
-+		return -ESHUTDOWN;
-+	}
-+
-+	status = spi_maybe_optimize_message(spi, message);
-+	if (status)
-+		return status;
-+
-+	spin_lock_irqsave(&ctlr->bus_lock_spinlock, flags);
-+	status = ctlr->transfer_atomic(spi, message);
-+	spin_unlock_irqrestore(&ctlr->bus_lock_spinlock, flags);
-+
-+	spi_maybe_unoptimize_message(message);
-+
-+	if (status == 0)
-+		status = message->status;
-+
-+	return status;
-+}
-+
-+/*
-+ * We only allow atomic transfers for very late communication, e.g. to access a
-+ * PMIC when powering down. Atomic transfers are a corner case and not for
-+ * generic use!
-+ */
-+static inline bool spi_in_atomic_sync_mode(void)
-+{
-+	return system_state > SYSTEM_RUNNING &&
-+	       (IS_ENABLED(CONFIG_PREEMPT_COUNT) ? !preemptible() : irqs_disabled());
-+}
-+
- /**
-  * spi_sync - blocking/synchronous SPI data transfers
-  * @spi: device with which data will be exchanged
-@@ -5026,6 +5069,10 @@ static int __spi_sync(struct spi_device *spi, struct spi_message *message)
-  * is non-interruptible, and has no timeout.  Low-overhead controller
-  * drivers may DMA directly into and out of the message buffers.
-  *
-+ * During the time when the system is being shutdown and a transfer_atomic
-+ * function is set, this call may also be used from a context that does
-+ * not allow sleeping, i.e. with disabled interrupts.
-+ *
-  * Note that the SPI device's chip select is active during the message,
-  * and then is normally disabled between messages.  Drivers for some
-  * frequently-used devices may want to minimize costs of selecting a chip,
-@@ -5041,9 +5088,13 @@ int spi_sync(struct spi_device *spi, struct spi_message *message)
- {
- 	int ret;
- 
--	mutex_lock(&spi->controller->bus_lock_mutex);
--	ret = __spi_sync(spi, message);
--	mutex_unlock(&spi->controller->bus_lock_mutex);
-+	if (spi_in_atomic_sync_mode()) {
-+		ret = __spi_sync_atomic(spi, message);
-+	} else {
-+		mutex_lock(&spi->controller->bus_lock_mutex);
-+		ret = __spi_sync(spi, message);
-+		mutex_unlock(&spi->controller->bus_lock_mutex);
-+	}
- 
- 	return ret;
- }
-@@ -5059,6 +5110,10 @@ EXPORT_SYMBOL_GPL(spi_sync);
-  * is non-interruptible, and has no timeout.  Low-overhead controller
-  * drivers may DMA directly into and out of the message buffers.
-  *
-+ * During the time when the system is being shutdown and a transfer_atomic
-+ * function is set, this call may also be used from a context that does
-+ * not allow sleeping, i.e. with disabled interrupts.
-+ *
-  * This call should be used by drivers that require exclusive access to the
-  * SPI bus. It has to be preceded by a spi_bus_lock call. The SPI bus must
-  * be released by a spi_bus_unlock call when the exclusive access is over.
-@@ -5067,7 +5122,10 @@ EXPORT_SYMBOL_GPL(spi_sync);
-  */
- int spi_sync_locked(struct spi_device *spi, struct spi_message *message)
- {
--	return __spi_sync(spi, message);
-+	if (spi_in_atomic_sync_mode())
-+		return __spi_sync_atomic(spi, message);
-+	else
-+		return __spi_sync(spi, message);
- }
- EXPORT_SYMBOL_GPL(spi_sync_locked);
- 
-diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
-index fb4baa0d3398..2b179b5d598c 100644
---- a/include/linux/spi/spi.h
-+++ b/include/linux/spi/spi.h
-@@ -459,6 +459,8 @@ extern struct spi_device *devm_spi_new_ancillary_device(struct spi_device *spi,
-  * controller for configuring specific CS setup time, hold time and inactive
-  * delay in terms of clock counts
-  * @transfer: adds a message to the controller's transfer queue.
-+ * @transfer_atomic: transfer a message immediately from a late-stage
-+ *	synchronous transfer
-  * @cleanup: frees controller-specific state
-  * @can_dma: determine whether this controller supports DMA
-  * @dma_map_dev: device which can be used for DMA mapping
-@@ -719,6 +721,15 @@ struct spi_controller {
- 	int			(*transfer)(struct spi_device *spi,
- 						struct spi_message *mesg);
- 
-+	/*
-+	 * Bidirectional bulk atomic transfers
-+	 *
-+	 * Special function that allows transfers in contexts where
-+	 * no interrupts nor DMA are available.
-+	 */
-+	int			(*transfer_atomic)(struct spi_device *spi,
-+						   struct spi_message *mesg);
-+
- 	/* Called on deregistration to free memory provided by spi_controller */
- 	void			(*cleanup)(struct spi_device *spi);
- 
--- 
-2.47.3
+> +=09clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
+>  =09reset_control_assert(vpu->resets);
+>  }
+> =20
+>=20
+> ---
+> base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+> change-id: 20261106-hantro-remove-9afbc9b601f9
+>=20
+> Best regards,
 
+--=-D7LaB+tVG7NkjSos0gfW
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCau4gngAKCRDZQZRRKWBy
+9A1zAP9MpJ+F0o5A79QzOhzIbsdNn7TU7y95lV+5Pb9oH23ggwD8D2oEfq81udRJ
+AuUaySnqy+2aQaaqKRwnykGec2GDBwg=
+=zRXU
+-----END PGP SIGNATURE-----
+
+--=-D7LaB+tVG7NkjSos0gfW--
+
+
+--===============0983595910611372368==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0983595910611372368==--
+
