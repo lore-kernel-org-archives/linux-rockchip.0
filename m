@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 041EF606D803
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 12:27:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C227F606A326
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 12:29:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=w9QVIpsM;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=EsMB1AEs
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nPmkYmpq;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=MvZy8n9x
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,29 +14,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=RWPIM2b40jBk0DGf5D2Mpx4PnHdk4sbF7fbafZD/c/c=; b=w9QVIpsMUl55aCcpn8EL9fR5qw
-	7j7mYfnaL2NsuaMxL7j9asPdEXkOsVNgBuHXhgcUjPpbKQC0lDdmmHEsabzaFnQL9gSh/g1yg6FWi
-	9VIq6EdYwS+9yJTuxKQVebFeO6L8eJvfpGovNvHwy0OVngWD5X2VlBi/j6FNZOFEHf3qKXOfLOhS8
-	kFvNktfuRsILNgEmrKldk5/TyBcCYKGZYPKuoeIwhtx+lX4BOWDChS91Ju2mNSIdQFwxoFKy7Yb5I
-	ugH+OQWI3SVpT/qP22Cg2pClErb80QfK9YrYn9fja0mf31OhoVO3OLcqkZ5nLw5GUZ1g9Jxk3XGzr
-	wwEVJdtg==;
+	bh=w5ubqwgX7iaLUCWTNDdEh0yy445HQopGLFfCTEMY0Ho=; b=nPmkYmpqdfVIiI6Tco/pCaiuIH
+	kiHlS7F2eIDhHdj6wpFiJmjKjOz8OEzu3a/hK1Rkt5i8oZYVv6/rVk0aaGrLnsASz1BDFRxnM6huA
+	rINQ1aozD0cjO9kjMFnDjKQW+9+F4UUy0eEXYrGvKsxftI6ENYC/Us51nhNQVHbtGPns4T0HQ+NGA
+	Fcm5K8arQxM5MwmLlLXIBFDn7vLJPWWOloIaTS5QS5PCuKzOnPQfL4JhHA3W99CXa2avIXoVqO0rj
+	BhQS8K/StXIw6Rl0RWrewFHYsaawFexlLPjUTJ29hHTuc+5bi3kuVFwZCjnTuiRxcBG3m20LLWVGT
+	0ZvTJqtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPJ2g-0000000CInW-3B6G;
-	Fri, 06 Nov 2026 12:27:38 +0000
+	id 1xPJ44-0000000CJ5U-0FG2;
+	Fri, 06 Nov 2026 12:29:04 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPJ2d-0000000CImZ-3QVp;
-	Fri, 06 Nov 2026 12:27:37 +0000
+	id 1xPJ40-0000000CJ4Y-0Fmx;
+	Fri, 06 Nov 2026 12:29:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=iC1G3JxUI9CHkJmI4Q8KQjR5+g3muYzWduWPCxUVDN8=; b=EsMB1AEsVbddRhEkNqtxR4Dku/
-	fCd8WF3c9UeC7SvcAmlG/+G5YdOXXAUvdsppn12hLTNUVaxiyhPP2elO38AJpkk28kZhJfjQzzgSs
-	AfwrA/Q3BBUQ8AQ9RK5Drp+P6yV/9tE3PIHdGJU0xdxFqcNoFHjbbPWqTpGrTrR8Z/ELyMnl0DlLd
-	Jua0m1uTJGsz3uIUAsrBVa4/u5Firs3XRnoyUiiKZdSluT2LLlf7NW3tLTANbAD6R/sAzqp+GbWmK
-	9oiEiVsHQ/IJWB41oycCsZX1vojJV6wZRy6RSeZdgNHokRv2kuk40u4H3se5kmXJ9grK4DAVSE8RA
-	QrUz+FuQ==;
+	bh=jVC/KGcJa8KGWOEH6o3QL+JqNyke1bKdIxAB7WhcXLM=; b=MvZy8n9xEqEqYJPTSiNa33GzYA
+	PRizDDcL7Eb6Xmc8IweGoWlaUFYeh01I+SXYW2j5tB+7YpQ7tM2IPjrICskL0KVL4ciytYsTehMEP
+	CvJtfT74M7ANKLOzW9s/oCLVCF3yvHMdPR4CmsEO5BGVPd9nQYW+JBtBNWyxYGfdDlT0O5znFAzKw
+	7LCD1LXSTFL449brmOdjKcNyrKaBOnaGOyVLFM1FnskypGfi0ibESYfyNSE1CUw3qeDTkpRh04uNd
+	0J4dsJYbI+lDOHWj9VCXFjlY42ExlibPxz81yvpNcgx96N/PT9orMHl10BHYbHjErvhDEUho2qPSM
+	wu/IeWlQ==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: Sandy Huang <hjc@rock-chips.com>,
 	Andy Yan <andyshrk@163.com>,
@@ -73,16 +73,16 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	Igor Paunovic <royalnet026@gmail.com>,
 	Sebastian Reichel <sebastian.reichel@collabora.com>
 Subject: Re: (subset) [PATCH v6 00/15] Support 10-bit YUV422 and 8/10-bit YUV420 color format on DW HDMI QP
-Date: Fri,  6 Nov 2026 13:27:00 +0100
-Message-ID: <179396799756.1259812.6287557543031614029.b4-ty@b4>
+Date: Fri,  6 Nov 2026 13:28:37 +0100
+Message-ID: <179396811444.1260748.9451141898652783370.b4-ty@b4>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com>
 References: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261106_042735_872405_A2CC1946 
-X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-CacheID: sfid-20261106_042900_103931_E44923F0 
+X-CRM114-Status: UNSURE (   9.96  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -118,34 +118,8 @@ On Thu, 05 Nov 2026 03:00:34 +0200, Cristian Ciocaltea wrote:
 
 Applied, thanks!
 
-[01/15] dt-bindings: display: vop2: Add missing reset properties
-        commit: be1734125b3e1c598c6ce35b4731d80e7acb7329
-[02/15] drm/rockchip: vop2: Fix resource leak on vop2_enable() error path
-        commit: b571f72ef923c31427f7058dd40a876023e75f32
-[03/15] drm/rockchip: vop2: Disable core clocks before dropping runtime PM reference
-        commit: ceb90f6ef6d5039189d4be7872eae33a8c635a0a
-[04/15] drm/rockchip: vop2: Balance state on atomic_enable() error paths
-        commit: b0e41d0609ce58e69ac43a2406bd3d6945454a8a
-[05/15] drm/rockchip: vop2: Avoid division by zero when computing max_dclk
-        commit: d0b0039a9a579dc4504a9af68e197c47187770dc
-[06/15] drm/rockchip: vop2: Fix VOP2_MAX_DCLK_RATE overflow on 32-bit
-        commit: 2cc46e2ca621923bd14fce6617000c218ea8b16f
-[07/15] drm/rockchip: vop2: Reset AXI and DCLK to improve robustness
-        commit: 67a391e50271e4e6cee833d31a7846de6a5717ab
-[08/15] drm/rockchip: vop2: Consolidate HDMI PHY PLL clock parent switch
-        commit: 99bd1f8ae90101f25c65f544a3dfed2ad01824d3
-[09/15] drm/rockchip: vop2: Use TMDS character rate to select DCLK source
-        commit: ae98bc626336af920ecaee18c3b1d962b4e40d3e
-[10/15] drm/rockchip: vop2: Switch to enum vop_csc_format
-        commit: 95642d0e806d2fb97a02daf6caa657009a76ca13
-[11/15] drm/bridge: dw-hdmi-qp: Log resolution and refresh rate in atomic_enable()
-        commit: c1681020b47bec265f8c5b06de7b321139f3f545
-[12/15] drm/rockchip: dw_hdmi_qp: Do not mask error code in atomic_check()
-        commit: a6cc582884f78f0fdd6345eba9bbad32ddb5734a
-[13/15] drm/rockchip: dw_hdmi_qp: Support 10-bit YUV422 output format
-        commit: 6352f4538ef03eda8346e79e4eb63bdead6c9a38
-[14/15] drm/rockchip: dw_hdmi_qp: Enable YUV420 output format
-        commit: 09b4318c0e8a3d27b1fe6a2765163c1c52e321fb
+[15/15] arm64: dts: rockchip: Add RK3588 VOP2 resets
+        commit: f245313cd545f58dbb777fcfc6aaf33376e25c0a
 
 Best regards,
 -- 
