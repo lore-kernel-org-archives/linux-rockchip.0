@@ -2,57 +2,77 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D2E82606A330
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 08:09:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D8400606A32C
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 08:50:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KZVQAFJd;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=nyKGNyB1
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fDrY5YRU;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ziyao.cc header.i=@ziyao.cc header.a=rsa-sha256 header.s=zmail header.b=cg9wurH7
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=00rQ/BIII73Ou6mD7ksYSMqfhzWD3B19YWhHQv8ACMY=; b=KZVQAFJd54PVqXHWpzNEeBSJTq
-	PBn99z2iOSfomAzBasyovbFJ22ShUAzTBizZcZTzOrLVpbmr3hoUYmOI9BEpSPLRlNc2XzVqJc+kG
-	JLXKReLSiWQw8ihEzAOM5w0rtvvME2WbAZSID0yxK/jP/oV8tiKMkKPt+FSQBTJpVTeKYhId/I4Dt
-	o4+/llS4mQGov9PP/lb+Y4QA5dGaBfXagjtS7oBUkkHo7lSQen5oeEAFaZcUQBRGoCfWM974xBrjp
-	vzmBeZYuhH2Q4ZEtAO0p+HWkNfTmFCmrl/Jow55Hc4iX2C6y4mpcqKjRX67kkUo0rzsQZv8y8V4iQ
-	gkYR2YUA==;
+	bh=1XJf6x2VySUqEGtlUXxE8Bye/l8AxFOVKsAwQcIcih0=; b=fDrY5YRU5oDhHSMK4B9pU2RMFk
+	AaMdf54JDDoWeo7fETYdxL3nf3NOQQIC8Ti7bo/Yb5J+N7tqbJOQ/j9TxdFkxU7borqKk48OESY/T
+	ot6zMGtNcYxE4KaxAMNwtF2BephOGMcLsQFDllUa+5i1wqqQx49DfeklTAfcHMTO0dKSQsra8TPs1
+	Z2I8l2ck3kCokeGY0/bp4LsutohEkrWYsPMtBY/ia3gni7aNEz/ukvzwhc5cVfBkFSrNg6/U6hyqo
+	dSu4xgAqzPD9Kg26ESVmt06kmi/NqqGeLPDPs3JTSvmA5tJGHavdBHGbEssO8QzU47dfyTzopnqAd
+	9AycN1Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPF12-0000000BWhJ-42i9;
-	Fri, 06 Nov 2026 08:09:40 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xPFen-0000000Bd9y-0Hpj;
+	Fri, 06 Nov 2026 08:50:45 +0000
+Received: from sender6-op-o12.zoho.com ([165.173.180.12])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPF10-0000000BWfw-0CNe;
-	Fri, 06 Nov 2026 08:09:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=CHrI1kjHp/5iGoHZkZHTx8sVaxFMZq6Cnqe7sXoFPl4=; b=nyKGNyB1GN6bxn4Vmwjn3rF3UC
-	+S8e/L/utkMkZDWQB31Si0I9y2MoS9aqjmU0uqp4avOKj855x9tM96oti7qTMCttyqW2YCf3oNTTQ
-	XtOiVdPRnJUSuPtzt3+81bNXLLSfJYw2oM69FTSKx1A1Mu2MK/Qud1sdG97DC7e+8dzaB7hKYSHQA
-	ZtK85bgLt0fQ46ldrAbI4dWVGfomHEYciJPMfriFCLE2SkMkuEZ3PJh+712CrwsWCKQsbnSH7Q2uz
-	IWQHV8KK4ncTo3QbYNe2guilYO+4veWMqUbly7fXO5B3W+rLAu7PvrBYp4xwqc4P5BbI4PMH8G63s
-	FFUKU4Qg==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Yaozhong Li <yaozhonguwl@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>,
- Jonas Karlman <jonas@kwiboo.se>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Yaozhong Li <yaozhonguwl@gmail.com>
-Subject: Re: [PATCH v3] arm64: dts: rockchip: enable SD UHS-I on Firefly-RK3399
-Date: Fri, 06 Nov 2026 09:09:30 +0100
-Message-ID: <6900453.LvFx2qVVIh@diego>
-In-Reply-To: <20261106061835.1316-1-yaozhonguwl@gmail.com>
-References: <20261106061835.1316-1-yaozhonguwl@gmail.com>
+	id 1xPFej-0000000Bd8i-3rSI;
+	Fri, 06 Nov 2026 08:50:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1793955022; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=K1sEecgNybdmwlsQxMYevt5CmsQ5ihQPj0LcKrmw9V2q8WhI9b+mH/xemeAoCQRPgjJRtsNIdHcN63pXjW9bfDVn72Bv8De18Mqg1N++SbosmpbO1KruYapOnTjFX3CXXmN8i5Ux2rIQqEJZItqs9SPaLSy1INk6uRe3iPVMMiA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1793955022; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=u683Mp167vRRYMWqRckD1jVWMTr0O+F8yrVQZIo8ll8=; 
+	b=mg7xe9OEmaB0+oJUjp9z9dzXQ7E1/5tQ1TARRUpwNKr5rTRYfazlcZzgPgkwY4elXLDCreYF7TGw/r7M+EtFAfeTxRo1yAsUQnsZtBd4xxYbM/QC5IBLUdF2ysIh524fEGHSI6hQn7WnLrKxXJzQ8VaX0ojE92TnOet9TBCYWSY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=ziyao.cc;
+	spf=pass  smtp.mailfrom=me@ziyao.cc;
+	dmarc=pass header.from=<me@ziyao.cc>
+DKIM-Signature: a=rsa-sha256; b=cg9wurH7f+KD2WoCD5W+v4QLoDmjBS81b79BGy2k4WFlu3/10c0Vyb4upbEllly6vKmjc7iqXCzh+7w0yqnJsOU142b9iCig0GwgUov+B+Y2B8g7TIDGeMUbK9OjWviWi8TLCtXXQ39HfZ/wvnPrV/DrPMfubgQVH1X4qCO1LVo=; c=relaxed/relaxed; s=zmail; d=ziyao.cc; v=1; bh=u683Mp167vRRYMWqRckD1jVWMTr0O+F8yrVQZIo8ll8=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1793955019916373.169635391934;
+	Fri, 6 Nov 2026 00:50:19 -0800 (PST)
+Date: Fri, 6 Nov 2026 08:50:06 +0000
+From: Yao Zi <me@ziyao.cc>
+To: Sergey Shtylyov <s.shtylyov@auroraos.dev>, Yao Zi <me@ziyao.cc>,
+	Ulf Hansson <ulfh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Midgy BALON <midgy971@gmail.com>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Frank Zhang <rmxpzlb@gmail.com>,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Kevin Hilman <khilman@linaro.org>, Caesar Wang <wxt@rock-chips.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>
+Cc: <linux-pm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <stable@vger.kernel.org>
+Subject: Re: [PATCH 2/2] pmdomain: rockchip: Don't log when of_clk_get()
+ fails with -EPROBE_DEFER
+Message-ID: <au2UvnY0CdGTRnum@pie>
+References: <20261105001257.1368266-1-me@ziyao.cc>
+ <20261105001257.1368266-3-me@ziyao.cc>
+ <71b77625-8475-43da-a62b-983cf572229d@auroraos.dev>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <71b77625-8475-43da-a62b-983cf572229d@auroraos.dev>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/293.948.33
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261106_000938_109344_8D4F1A8C 
-X-CRM114-Status: GOOD (  23.00  )
+X-CRM114-CacheID: sfid-20261106_005042_159284_87B87622 
+X-CRM114-Status: GOOD (  26.79  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -63,77 +83,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGksCgpBbSBGcmVpdGFnLCA2LiBOb3ZlbWJlciAyMDI2LCAwNzoxODozNSBNaXR0ZWxldXJvcMOk
-aXNjaGUgTm9ybWFsemVpdCBzY2hyaWViIFlhb3pob25nIExpOgpbLi4uXQo+IC0gRGVzY3JpYmUg
-dGhlIHNsb3QncyBvd24gc3VwcGx5LCB2Y2Nfc2QsIGFuZCB1c2UgaXQgYXMgdGhlIHNkbW1jCj4g
-ICB2bW1jLXN1cHBseSAoSGVpa28pLiBJdCBpcyBmZWQgZnJvbSB2Y2MzdjNfc3lzLCBhbmQgR1BJ
-TzRfRDYgY29udHJvbHMKPiAgIHRoZSBzbG90IHBvd2VyIHN3aXRjaDogaG9sZGluZyB0aGUgcGlu
-IGxvdyBsZWF2ZXMgdGhlIGNhcmQgdW5wb3dlcmVkLgo+ICAgVGhpcyBpcyB0aGUgc2FtZSBhcnJh
-bmdlbWVudCBhcyB2Y2MzdjBfc2Qgb24gdGhlIFJPQy1QQy4gVGhlIGV4aXN0aW5nLAo+ICAgdW5y
-ZWZlcmVuY2VkIGxjZF9wYW5lbF9yZXNldCBwaW5jdHJsIGVudHJ5IGFsc28gbmFtZXMgR1BJTzRf
-RDY7IHRoZQo+ICAgdmVuZG9yIHRyZWUgdXNlcyB0aGUgcGluIG9ubHkgZm9yIHZjY19zZC4KCkkg
-eW91J3JlIHJlYWRpbmcgdGhlIHNjaGVtYXRpY3MsIHRoaXMgaXMgd3JvbmcuCgpJbiB0aGUgc2No
-ZW1hdGljcyBmaWxlIFNoYXduIGxpbmtlZCB0byBlYXJsaWVyIChhbmQgYWxzbyB0aGUgb25lIEkg
-aGF2ZSksCkdQSU80X0Q2IGlzIGNvbm5lY3RlZCB0byB0aGUgcmVzZXQtcGluIG9mIGFuIEFUMTgu
-CgpXaGlsZSB0aGUgdmNjM3YwX3NkIGlzIGFuIGFsd2F5cyBvbiByZWd1bGF0b3IgY29taW5nIGZy
-b20gdmNjM3YzX3N5cy4KQXMgc3RhdGVkIGluIHYyLCBzZWUgcGFnZSAyMCBvZiB5b3VyIHNjaGVt
-YXRpY3MuCgpTbyB5b3UgZXNzZW50aWFsbHkganVzdCBzZXQgdm1tYy1zdXBwbHkgdG8gdmNjM3Yz
-X3N5cy4gQXMgSSBzYWlkIHRoYXQgaXMKbWVyZWx5IGRlc2NyaXB0aXZlLgoKCkhlaWtvCgo+IC0g
-TGluayB0byB2MjogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjYxMTA1MTAyNTU2LjEz
-NjUtMS15YW96aG9uZ3V3bEBnbWFpbC5jb20vCj4gCj4gQ2hhbmdlcyBpbiB2MjoKPiAtIFBvaW50
-IHRoZSBzZGlvMCB2bW1jLXN1cHBseSBhdCB2Y2MzdjNfc3lzLCB0aGUgV2lGaSBtb2R1bGUncyBW
-QkFUIGlucHV0LAo+ICAgaW5zdGVhZCBvZiBkcm9wcGluZyBpdCAoSGVpa28pCj4gLSBSZXdyaXRl
-IHRoZSBjb21taXQgbWVzc2FnZSAoSGVpa28pCj4gLSBMaW5rIHRvIHYxOiBodHRwczovL2xvcmUu
-a2VybmVsLm9yZy9hbGwvMjAyNjA5MjIwNTUwMTEuMTQ5NzItMS15YW96aG9uZ3V3bEBnbWFpbC5j
-b20vCj4gCj4gT24gdGhlIGJvb3QtdGltZSBpc3N1ZSBkZXNjcmliZWQgaW4gdjI6IHdpdGggdGhl
-IHZtbWMtc3VwcGx5IGluIHBsYWNlCj4gdGhlIHNkbW1jIGNvbnRyb2xsZXIgbm93IHByb2JlcyBh
-ZnRlciB0aGUgR1JGIGlvLWRvbWFpbiBoZXJlLCBhbmQgYSBjYXJkCj4gcHJlc2VudCBhdCBib290
-IGNhbWUgdXAgaW4gU0RSMTA0IGluIDUgb2YgNSB3YXJtIGJvb3RzLCBhZ2FpbnN0IDAgb2YgOAo+
-IGJlZm9yZS4gVGhhdCBpcyBhIGNoYW5nZSBpbiBwcm9iZSBvcmRlciByYXRoZXIgdGhhbiBhIGZp
-eCBmb3IgdGhlCj4gb3JkZXJpbmcgcHJvYmxlbSBpdHNlbGYuCj4gCj4gIC4uLi9ib290L2R0cy9y
-b2NrY2hpcC9yazMzOTktZmlyZWZseS5kdHMgICAgICB8IDI0ICsrKysrKysrKysrKysrKysrKy0K
-PiAgMSBmaWxlIGNoYW5nZWQsIDIzIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAKPiBk
-aWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktZmlyZWZseS5k
-dHMgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1maXJlZmx5LmR0cwo+IGlu
-ZGV4IDA1NjhkZmEuLjAzODU4YTQgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazMzOTktZmlyZWZseS5kdHMKPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzM5OS1maXJlZmx5LmR0cwo+IEBAIC0yMzMsNiArMjMzLDE5IEBAIHZjYzV2MF90
-eXBlYzogcmVndWxhdG9yLXZjYzV2MC10eXBlYyB7Cj4gIAkJdmluLXN1cHBseSA9IDwmdmNjX3N5
-cz47Cj4gIAl9Owo+ICAKPiArCXZjY19zZDogcmVndWxhdG9yLXZjYy1zZCB7Cj4gKwkJY29tcGF0
-aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+ICsJCWVuYWJsZS1hY3RpdmUtaGlnaDsKPiArCQln
-cGlvID0gPCZncGlvNCBSS19QRDYgR1BJT19BQ1RJVkVfSElHSD47Cj4gKwkJcGluY3RybC1uYW1l
-cyA9ICJkZWZhdWx0IjsKPiArCQlwaW5jdHJsLTAgPSA8JnZjY19zZF9lbj47Cj4gKwkJcmVndWxh
-dG9yLW5hbWUgPSAidmNjX3NkIjsKPiArCQlyZWd1bGF0b3ItYm9vdC1vbjsKPiArCQlyZWd1bGF0
-b3ItbWluLW1pY3Jvdm9sdCA9IDwzMzAwMDAwPjsKPiArCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9s
-dCA9IDwzMzAwMDAwPjsKPiArCQl2aW4tc3VwcGx5ID0gPCZ2Y2MzdjNfc3lzPjsKPiArCX07Cj4g
-Kwo+ICAJdmNjX3N5czogcmVndWxhdG9yLXZjYy1zeXMgewo+ICAJCWNvbXBhdGlibGUgPSAicmVn
-dWxhdG9yLWZpeGVkIjsKPiAgCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2Nfc3lzIjsKPiBAQCAtNzMx
-LDYgKzc0NCwxMiBAQCB3aWZpX2VuYWJsZV9oOiB3aWZpLWVuYWJsZS1oIHsKPiAgCQl9Owo+ICAJ
-fTsKPiAgCj4gKwlzZG1tYyB7Cj4gKwkJdmNjX3NkX2VuOiB2Y2Mtc2QtZW4gewo+ICsJCQlyb2Nr
-Y2hpcCxwaW5zID0gPDQgUktfUEQ2IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+Owo+ICsJ
-CX07Cj4gKwl9Owo+ICsKPiAgCXVzYi10eXBlYyB7Cj4gIAkJdmNjNXYwX3R5cGVjX2VuOiB2Y2M1
-djBfdHlwZWNfZW4gewo+ICAJCQlyb2NrY2hpcCxwaW5zID0gPDEgUktfUEEzIFJLX0ZVTkNfR1BJ
-TyAmcGNmZ19wdWxsX3VwPjsKPiBAQCAtNzc3LDcgKzc5Niw3IEBAICZzZGlvMCB7Cj4gIAo+ICAJ
-LyogUG93ZXIgc3VwcGx5ICovCj4gIAl2cW1tYy1zdXBwbHkgPSA8JnZjYzF2OF9zMz47CS8qIElP
-IGxpbmUgKi8KPiAtCXZtbWMtc3VwcGx5ID0gPCZ2Y2Nfc2Rpbz47CS8qIGNhcmQncyBwb3dlciAq
-Lwo+ICsJdm1tYy1zdXBwbHkgPSA8JnZjYzN2M19zeXM+OwkvKiBjYXJkJ3MgcG93ZXIgKi8KPiAg
-Cj4gIAkjYWRkcmVzcy1jZWxscyA9IDwxPjsKPiAgCSNzaXplLWNlbGxzID0gPDA+Owo+IEBAIC04
-MDQsNiArODIzLDkgQEAgJnNkbW1jIHsKPiAgCW1heC1mcmVxdWVuY3kgPSA8MTUwMDAwMDAwPjsK
-PiAgCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gIAlwaW5jdHJsLTAgPSA8JnNkbW1jX2Ns
-ayAmc2RtbWNfY21kICZzZG1tY19idXM0PjsKPiArCXNkLXVocy1zZHIxMDQ7Cj4gKwl2bW1jLXN1
-cHBseSA9IDwmdmNjX3NkPjsKPiArCXZxbW1jLXN1cHBseSA9IDwmdmNjX3NkaW8+Owo+ICAJc3Rh
-dHVzID0gIm9rYXkiOwo+ICB9Owo+ICAKPiAKPiBiYXNlLWNvbW1pdDogOTQwZGU1OTBiODM5Zjcx
-ZDZkYzg0NjE2MDUzNGJmMjAyNDAxYjhiNwo+IAoKCgoKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Thu, Nov 05, 2026 at 11:47:13PM +0300, Sergey Shtylyov wrote:
+> Hello!
+> 
+>    Please consider using --no-git-fallback with scripts/get_maintainer.pl --
+> I don't see what do I have to do with this patch (other than fixing another
+> bug in this driver earlier).
+
+Thanks for the reminder, I usually enable it but forgot it this time, sorry
+for disturbing...
+
+> On 11/5/26 3:12 AM, Yao Zi wrote:
+> 
+> > Current error handling code considers -EPROBE_DEFER as hard errors,
+> > logs misleading dmesg like,
+> > 
+> > rockchip-pm-domain ff600000.power-management:power-controller: power-domain: failed to get clk at index 0: -517
+> > rockchip-pm-domain ff600000.power-management:power-controller: failed to handle node power-domain: -517
+> > 
+> > Use dev_err_probe() at the callsite of of_clk_get(),
+> 
+> > and check for -EPROBE_DEFER in places> where its return value could propagate to.
+> 
+>    To where?
+
+rockchip_pm_add_one_domain, rockchip_pm_add_subdomain, and
+rockchip_pm_domain_probe. I think it's obvious in the diff and too
+detailed to the commit message, so didn't add them here.
+
+>    And I didn't understand why you couldn't just call dev_err_probe() everywhere --
+> the error code seems to always be propagated...
+
+This was what I originally wanted to do, but dev_err_probe() sets the
+deferred probe reason, and if we call it several times, the earlier and
+more specific messagess ("failed to get clk at index %d") get overridden
+by the later and less descriptive ones ("failed to handle subdomain node
+%pOFn"), which I think would make it harder to debug.
+
+> > Fixes: 7c696693a4f5 ("soc: rockchip: power-domain: Add power domain driver")
+> > Fixes: 6be05b5ec161 ("soc: rockchip: power-domain: add support for sub-power domains")
+> > Signed-off-by: Yao Zi <me@ziyao.cc>
+> > Cc: stable@vger.kernel.org
+> > ---
+> >  drivers/pmdomain/rockchip/pm-domains.c | 22 +++++++++++++---------
+> >  1 file changed, 13 insertions(+), 9 deletions(-)
+> > 
+> > diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+> > index 34c862e56aad..c147cc88edb1 100644
+> > --- a/drivers/pmdomain/rockchip/pm-domains.c
+> > +++ b/drivers/pmdomain/rockchip/pm-domains.c
+> [...]> @@ -1006,8 +1006,10 @@ static int rockchip_pm_add_subdomain(struct rockchip_pmu *pmu,
+> > 
+> >                 error = rockchip_pm_add_one_domain(pmu, np);
+> >                 if (error) {
+> > -                       dev_err(pmu->dev, "failed to handle node %pOFn: %d\n",
+> > -                               np, error);
+> > +                       if (error != -EPROBE_DEFER)
+> 
+>    Why not just call dev_err_probe() instead?
+> 
+> > +                               dev_err(pmu->dev,
+> > +                                       "failed to handle node %pOFn: %d\n",
+> > +                                       np, error);
+> >                         return error;
+> >                 }
+> > 
+> > @@ -1102,15 +1104,17 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
+> >         for_each_available_child_of_node_scoped(np, node) {
+> >                 error = rockchip_pm_add_one_domain(pmu, node);
+> >                 if (error) {
+> > -                       dev_err(dev, "failed to handle node %pOFn: %d\n",
+> > -                               node, error);
+> > +                       if (error != -EPROBE_DEFER)
+> > +                               dev_err(dev, "failed to handle node %pOFn: %d\n",
+> > +                                       node, error);
+> >                         goto err_out;
+> >                 }
+> > 
+> >                 error = rockchip_pm_add_subdomain(pmu, node);
+> >                 if (error < 0) {
+> > -                       dev_err(dev, "failed to handle subdomain node %pOFn: %d\n",
+> > -                               node, error);
+> > +                       if (error != -EPROBE_DEFER)
+> > +                               dev_err(dev, "failed to handle subdomain node %pOFn: %d\n",
+> > +                                       node, error);
+> >                         goto err_out;
+> >                 }
+> >         }
+> [...]
+> 
+> MBR, Sergey
+> 
+
+Regards,
+Yao Zi
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
