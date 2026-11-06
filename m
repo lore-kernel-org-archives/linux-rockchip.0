@@ -2,59 +2,63 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C157D606D809
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 13:55:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 87A4C606D839
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 13:55:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=b0cNS39+;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=samsung.com header.i=@samsung.com header.a=rsa-sha256 header.s=mail20170921 header.b=mHu46RB2
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=p52dqDDO;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=samsung.com header.i=@samsung.com header.a=rsa-sha256 header.s=mail20170921 header.b=KE4SEBQ2
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:Cc:To:In-Reply-To:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:Cc:To:MIME-Version:
+	Message-Id:Date:Subject:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=MpSuhjAaNLj3r8bSyGfEkl6IiII/KbQiGLA9aIbEaYM=; b=b0cNS39+W1OUJnP1u8FXQ91GHO
-	swDQfRCv9BRuBbvi55k3MfKPyNdD+CnZLpTc3wCXC9+twCjc/pVcrPV8rTKa5s+AyMjUnCUQPjqKf
-	gsWUKQ//z1Bau9fEPapR57XkFYnt3J4EuK9nJWUdjHuMFLns+X5xfulOP8PdTfonWz0pDa2u1h74m
-	AK9QVLeXhNRFfObWj9vUpSTg/vjD9dIpuNkvjaIJsRCeO6PSI6KedVQhH2w3LcHlQDvNZ6DxZdnkC
-	1fvLLAoVnpGQ2a4LRo1psyVDYW6PrDRw24JqdBcggPD4SrPuET0RaZ5f3MbIeyEtDUiR7BvwzNEAs
-	eOr+6dPg==;
+	In-Reply-To:List-Unsubscribe-Post:List-Owner;
+	bh=VliVHqbC03vioezDJzTVhT9x3i9eJPrimTijQ5BiUAo=; b=p52dqDDOjONFFsqukKfD12Eloi
+	oK8He0wZQsKDq18rBozGCxax79OUeckVk9khX9bJ+n4YqNDGntbQtB4POLZRFxOpCEbJzyPauL6xJ
+	xNz0AQD9VSzbKRW7bjvVVr6n9yCG6vyReeN0T0t1KG925rsdM/vdfc9bxDfH+VZJGX96GAi6aiOGY
+	50aoe2N9k9kIw44QZO0ys5zAuo1/GJYnNGe7RumqNi7IxSrknN+HsiXYT4OwNiO7ngKxDfIQCDy0R
+	RfgJw5fv3StWVh2n7eE8EeWsc1c4SKtMuqiDzpv+kvvhUTsdKiWqMS4koFCMBET3np7JmF3bIADsD
+	J48YcPBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPKPS-0000000CUoK-0MkV;
-	Fri, 06 Nov 2026 13:55:14 +0000
+	id 1xPKPY-0000000CUvO-3hWs;
+	Fri, 06 Nov 2026 13:55:20 +0000
 Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPKPN-0000000CUj7-0S11
+	id 1xPKPN-0000000CUj3-0RAz
 	for linux-rockchip@lists.infradead.org;
 	Fri, 06 Nov 2026 13:55:13 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20261106135506euoutp022771fbde9653f88ebc06e07020f8e234~leTeQVvJn2476524765euoutp02y
-	for <linux-rockchip@lists.infradead.org>; Fri,  6 Nov 2026 13:55:06 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20261106135506euoutp022771fbde9653f88ebc06e07020f8e234~leTeQVvJn2476524765euoutp02y
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20261106135505euoutp02afc7c5412be42bb8d85ff49c5995453a~leTd_hlaH2469924699euoutp02y
+	for <linux-rockchip@lists.infradead.org>; Fri,  6 Nov 2026 13:55:05 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20261106135505euoutp02afc7c5412be42bb8d85ff49c5995453a~leTd_hlaH2469924699euoutp02y
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1793973306;
-	bh=06AQXyihJq/OEvwcZMATqFb1XaBS16clhoCnTaBSROQ=;
-	h=From:Date:Subject:In-Reply-To:To:Cc:References:From;
-	b=mHu46RB2pVMXa2dRtn+nvmIeghwLok2WNcOR56UrmanK6wgT3xFLLPhzqtRIlyjvw
-	 I3d3CtfLsOYzra4/T5nOsgQ/Rj/ZdfLn013f7McHULk1fZKvgRozi+ET+N7rcF3tGG
-	 zwU0njiz5IbL6IIUCJxbid367nfPIEZZ2BbcKqQY=
+	s=mail20170921; t=1793973305;
+	bh=QWsQgLiwnkC/ulnhSGJ/u2XyKoE/N56d2d46C2Nra3g=;
+	h=From:Subject:Date:To:Cc:References:From;
+	b=KE4SEBQ26l6lxX381jqVk0oL+gySE9u77Wui03TMdem8UBwYWvzyU/dukgMGiGr5h
+	 ayqV4bmD7lwcvLyE5IGn7GOrS5QMvJyHZgzHm9aKtJOV2IxgsQddru8Aw2r2cQCLPU
+	 xdYnhkOQbMutJnmQlelaZUqY9YIXC+N5oY/N59oU=
 Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
 	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20261106135505eucas1p1d6f266a6f5c36359454745d176d7ed9b~leTd2VRT81758617586eucas1p1T;
-	Fri,  6 Nov 2026 13:55:05 +0000 (GMT)
+	20261106135504eucas1p14138c1ce829febb8bcd63c4de1f29ffb~leTc9VSqF0517605176eucas1p1d;
+	Fri,  6 Nov 2026 13:55:04 +0000 (GMT)
 Received: from AMDC4942.eu.corp.samsungelectronics.net (unknown
 	[106.210.136.40]) by eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20261106135504eusmtip293b7af368c9743379df5aae21a89c541~leTdBVRnc2294422944eusmtip21;
-	Fri,  6 Nov 2026 13:55:04 +0000 (GMT)
+	20261106135503eusmtip2ef623fe1ef475ee1b18554c6ad6b987c~leTcEUONE2093020930eusmtip2_;
+	Fri,  6 Nov 2026 13:55:03 +0000 (GMT)
 From: Michal Wilczynski <m.wilczynski@samsung.com>
-Date: Fri, 06 Nov 2026 14:52:59 +0100
-Subject: [PATCH v7 1/5] dt-bindings: phy: Add starfive,jh7110-inno-hdmi-phy
+Subject: [PATCH v7 0/5] phy: Add the StarFive JH7110 Innosilicon HDMI PHY
+Date: Fri, 06 Nov 2026 14:52:58 +0100
+Message-Id: <20261106-jh7110-inno-hdmi-phy-v7-0-d49368303800@samsung.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261106-jh7110-inno-hdmi-phy-v7-1-d49368303800@samsung.com>
-In-Reply-To: <20261106-jh7110-inno-hdmi-phy-v7-0-d49368303800@samsung.com>
+X-B4-Tracking: v=1; b=H4sIALrb7WoC/3XOwQ7CIAyA4VcxnK1hsAHz5HsYDxO6gXGwDCUuy
+	95dtkQTDx7/Jv3amUQcHUZy3M1kxOSiCz6H3O+Ito3vEJzJTRhloqBMwc3KoqDgvA9gTe9gsBM
+	ojpVuG1Fy5CSvDiO27rWx50tu6+IjjNN2JVXrdANpzeoPqO/YeIjoDaQKKCh2LY1CroWWp9j08
+	em7gw49Wb0kvsb/p5LITMu5rIUqTS3xl1mW5Q2WKpyw/gAAAA==
+X-Change-ID: 20261028-jh7110-inno-hdmi-phy-83e5cfa643e3
 To: Vinod Koul <vkoul@kernel.org>,  Neil Armstrong
 	<neil.armstrong@linaro.org>,  Manivannan Sadhasivam <mani@kernel.org>, Rob
 	Herring <robh@kernel.org>,  Krzysztof Kozlowski <krzk+dt@kernel.org>,  Conor
@@ -67,27 +71,27 @@ Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,  Marek
 	Szyprowski <m.szyprowski@samsung.com>,  Icenowy Zheng
 	<zhengxingda@iscas.ac.cn>,  Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
-	Joshua Peisach <jpeisach@ubuntu.com>
+	Joshua Peisach <jpeisach@ubuntu.com>, Byron Stanoszek <gandalf@winds.org>, 
+	OOHehir <oo.hehir@gmail.com>
 X-Mailer: b4 0.15-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2057;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3883;
 	i=m.wilczynski@samsung.com; h=from:subject:message-id;
-	bh=6AQm50xtAvbrSQTSn64RxXqfjCuQ7qgMNyPcGxB0fq8=;
-	b=owGbwMvMwCGWumv6zndzRCIZT6slMWS9vWM++9W9X858Z8RzhSeYuc7qsd/StZAzd+GqE04bK
-	1PuP9AU6ihlYRDjYJAVU2Q5uzHaSPIfw9Py449/wcxhZQIZwsDFKQATOb2YkeHI33vTH+Xobl2/
-	hEfWVvJelOJ0uf0H/lXw93s+D8i9Ku3B8Js1JmK70F4z/733vtTJKYopCZnc4TK2fH/I6dH9j6r
-	XD3MDAA==
+	bh=o256jFXr6zL1bPuxFl+13GnEJ0mu3QrvYdJuIVka6jY=;
+	b=owGbwMvMwCGWumv6zndzRCIZT6slMWS9vWPOLnuiU2bNPI1Dofp/3uuK2tQet5NvWtGb92D9h
+	21Ncwy/dZSyMIhxMMiKKbKc3RhtJPmP4Wn58ce/YOawMoEMYeDiFICJKE1lZFgVuve2wErlg7xr
+	z+ZmvBZYt0t5v/VqXRbxd9u3yBwW//iF4X/xmZ2/3u5yeVH6mn/BisSzEnY/gh8xbu5uFZq5c7f
+	Lq4vcAA==
 X-Developer-Key: i=m.wilczynski@samsung.com; a=openpgp;
 	fpr=CDB15B3219FE00E577C7E3FA65BA97B9EE9C1459
-X-CMS-MailID: 20261106135505eucas1p1d6f266a6f5c36359454745d176d7ed9b
+X-CMS-MailID: 20261106135504eucas1p14138c1ce829febb8bcd63c4de1f29ffb
 X-Msg-Generator: CA
-X-RootMTR: 20261106135505eucas1p1d6f266a6f5c36359454745d176d7ed9b
+X-RootMTR: 20261106135504eucas1p14138c1ce829febb8bcd63c4de1f29ffb
 X-EPHeader: CA
-X-CMS-RootMailID: 20261106135505eucas1p1d6f266a6f5c36359454745d176d7ed9b
-References: <20261106-jh7110-inno-hdmi-phy-v7-0-d49368303800@samsung.com>
-	<CGME20261106135505eucas1p1d6f266a6f5c36359454745d176d7ed9b@eucas1p1.samsung.com>
+X-CMS-RootMailID: 20261106135504eucas1p14138c1ce829febb8bcd63c4de1f29ffb
+References: <CGME20261106135504eucas1p14138c1ce829febb8bcd63c4de1f29ffb@eucas1p1.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261106_055509_768063_A72117CD 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20261106_055509_796074_A37E8CD6 
+X-CRM114-Status: GOOD (  18.07  )
 X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,84 +105,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add the dt-binding for the StarFive JH7110 Innosilicon HDMI PHY.
+This series adds the HDMI PHY driver for the StarFive JH7110 and shares
+the pre-PLL code it has in common with the Rockchip RK3328 Innosilicon
+HDMI PHY.
 
-This device is a child of the starfive,jh7110-hdmi-subsystem node. It
-functions as both a PHY provider for the controller and as a clock
-provider for the variable pixel clock (hdmi_pclk), which it generates
-from its refoclk.
+Up to v5 it was part of the JH7110 display series [1]. It is split out
+as Vinod suggested, so it can go through linux-phy on its own; the rest
+continues as v6 of "drm: starfive: jh7110: Enable display subsystem".
+Nothing here depends on the display series. The display series depends
+on this one: its HDMI subsystem binding references the PHY binding from
+patch 1, and it needs the PHY driver at runtime.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+[1] https://lore.kernel.org/all/20260929-jh7110-clean-send-v5-0-82b4d8e3c6c7@samsung.com/
+
+The JH7110 has the same Innosilicon PHY as the RK3328, offset by 0x100
+because it sits behind the HDMI controller in a shared register block.
+Patch 2 factors out the pre-PLL config format, table lookup,
+determine_rate, recalc_rate and the pre-PLL programming; patch 3 moves
+Rockchip onto it; patch 4 adds the JH7110 driver. Pixel clock tables,
+post-PLL and analog config stay SoC specific.
+
+Patch 3 should be a no-op for Rockchip - same writes, same order, same
+values - and RK3228, whose pre-PLL is at different addresses, keeps its
+own register code and shares only the lookup. I have no Rockchip
+hardware, so it is build tested only (arm and riscv). A Tested-by would
+help.
+
+Patch 5 adds a MAINTAINERS entry for the binding and the driver, as the
+other JH7110 PHY drivers have.
+
+Testing
+=======
+
+Tested on a VisionFive 2 v1.3B together with the display series, using
+modetest: all 42 modes the sink advertises work, with pixel clocks from
+25.175 MHz up to 297 MHz.
+
+Every commit builds for riscv and arm.
+
+Changes in v7:
+- Point the binding example comment at the hdmi-subsystem binding's new
+  location in bindings/display/starfive/, where the display series moved
+  it
+- Rebased onto v7.4-rc1
+- Link to v6: https://lore.kernel.org/r/20261028-jh7110-inno-hdmi-phy-v6-0-f3379684d97e@samsung.com
+
+Changes in v6:
+- Split out of the JH7110 display series (Vinod)
+- inno_read() returns the regmap_read() error and recalc_rate checks it,
+  instead of a failed read turning into a zero divisor (Vinod)
+- Bound the pre-PLL and post-PLL table walks with the table size instead
+  of relying on a sentinel (Vinod)
+- Lowercase hex in the JH7110 pixel clock table (Vinod)
+- New patch 5: a MAINTAINERS entry for the JH7110 HDMI PHY, moved out of
+  the display series' entry
+- Rebased onto v7.3, collected tags
+- Link to v5: https://lore.kernel.org/all/20260929-jh7110-clean-send-v5-0-82b4d8e3c6c7@samsung.com/
+
 ---
- .../phy/starfive,jh7110-inno-hdmi-phy.yaml         | 49 ++++++++++++++++++++++
- 1 file changed, 49 insertions(+)
+Michal Wilczynski (5):
+      dt-bindings: phy: Add starfive,jh7110-inno-hdmi-phy
+      phy: Add common Innosilicon HDMI PHY helpers
+      phy: rockchip: inno-hdmi: Use the common Innosilicon PHY helpers
+      phy: starfive: Add jh7110-inno-hdmi-phy driver
+      MAINTAINERS: Add StarFive JH7110 HDMI PHY entry
 
-diff --git a/Documentation/devicetree/bindings/phy/starfive,jh7110-inno-hdmi-phy.yaml b/Documentation/devicetree/bindings/phy/starfive,jh7110-inno-hdmi-phy.yaml
-new file mode 100644
-index 0000000000000000000000000000000000000000..8dbd113b1534a37d00dfd60454f300531a813b8b
---- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/starfive,jh7110-inno-hdmi-phy.yaml
-@@ -0,0 +1,49 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/phy/starfive,jh7110-inno-hdmi-phy.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: StarFive JH7110 Innosilicon INNO HDMI PHY
-+
-+maintainers:
-+  - Michal Wilczynski <m.wilczynski@samsung.com>
-+
-+description:
-+  The PHY portion of the StarFive JH7110 INNO HDMI IP.
-+
-+properties:
-+  compatible:
-+    const: starfive,jh7110-inno-hdmi-phy
-+
-+  clocks:
-+    maxItems: 1
-+    description: Reference oscillator.
-+
-+  '#clock-cells':
-+    const: 0
-+
-+  '#phy-cells':
-+    const: 0
-+
-+required:
-+  - compatible
-+  - clocks
-+  - '#clock-cells'
-+  - '#phy-cells'
-+
-+additionalProperties: false
-+
-+examples:
-+  # Shown as a child of the HDMI subsystem node; see
-+  # Documentation/devicetree/bindings/display/starfive/starfive,jh7110-hdmi-subsystem.yaml
-+  # for the full node.
-+  - |
-+    phy {
-+        compatible = "starfive,jh7110-inno-hdmi-phy";
-+        #clock-cells = <0>;
-+        clocks = <&xin24m>;
-+        #phy-cells = <0>;
-+    };
-+
-+...
+ .../phy/starfive,jh7110-inno-hdmi-phy.yaml         |  49 ++
+ MAINTAINERS                                        |   6 +
+ drivers/phy/Kconfig                                |   8 +
+ drivers/phy/Makefile                               |   1 +
+ drivers/phy/phy-inno-hdmi.c                        | 358 +++++++++++++
+ drivers/phy/rockchip/Kconfig                       |   1 +
+ drivers/phy/rockchip/phy-rockchip-inno-hdmi.c      | 169 +-----
+ drivers/phy/starfive/Kconfig                       |  20 +
+ drivers/phy/starfive/Makefile                      |   1 +
+ drivers/phy/starfive/phy-jh7110-inno-hdmi.c        | 587 +++++++++++++++++++++
+ include/linux/phy/inno-hdmi-phy.h                  |  88 +++
+ 11 files changed, 1144 insertions(+), 144 deletions(-)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20261028-jh7110-inno-hdmi-phy-83e5cfa643e3
 
+Best regards,
 -- 
-2.34.1
+Michal Wilczynski <m.wilczynski@samsung.com>
 
 
 _______________________________________________
