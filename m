@@ -2,65 +2,93 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 454FE606A32D
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 12:59:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C157D606D809
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2026 13:55:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0tll7Z7+;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jGEFleaZ
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=b0cNS39+;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=samsung.com header.i=@samsung.com header.a=rsa-sha256 header.s=mail20170921 header.b=mHu46RB2
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:Cc:To:In-Reply-To:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=gQa5w7x3QFV1KJAJIDtQ9w4OTqAlvP0y9ixlTjTmtOE=; b=0tll7Z7+ODYTCWb+EmJqFNtBYv
-	G9yCc1YMfU1LNB9tLJgKDx7Mflpk7FAb2K1hNnrxeb9qVQD0fjSWEfJ9To5wjEYM7OBnK0WK7ZvuK
-	2Xz7Nry1IgSMRqHo8c2EQXSrktsQfuaHiiTfIxINIKBBjx1qxqkXyV/0VlAF8VDWqTYGaQ7CbFI60
-	CBNZEABDDuYk7DlwE9C7+NrW/4BTYLI2t1axaAesY1eDepppCqo+mFIHXc6LZpvlLD+zUAL4IbgJ6
-	f7XJ7L1n42v6sBDquoB6WwQKFFgEwXpsZgK2KvjSAfec49/tr/u6w27hmxpURdPj/wcWq1vFq9223
-	Hoj8mseA==;
+	bh=MpSuhjAaNLj3r8bSyGfEkl6IiII/KbQiGLA9aIbEaYM=; b=b0cNS39+W1OUJnP1u8FXQ91GHO
+	swDQfRCv9BRuBbvi55k3MfKPyNdD+CnZLpTc3wCXC9+twCjc/pVcrPV8rTKa5s+AyMjUnCUQPjqKf
+	gsWUKQ//z1Bau9fEPapR57XkFYnt3J4EuK9nJWUdjHuMFLns+X5xfulOP8PdTfonWz0pDa2u1h74m
+	AK9QVLeXhNRFfObWj9vUpSTg/vjD9dIpuNkvjaIJsRCeO6PSI6KedVQhH2w3LcHlQDvNZ6DxZdnkC
+	1fvLLAoVnpGQ2a4LRo1psyVDYW6PrDRw24JqdBcggPD4SrPuET0RaZ5f3MbIeyEtDUiR7BvwzNEAs
+	eOr+6dPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPJXe-0000000CNI1-0pjo;
-	Fri, 06 Nov 2026 12:59:38 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xPKPS-0000000CUoK-0MkV;
+	Fri, 06 Nov 2026 13:55:14 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPJXc-0000000CNHm-2S9I;
-	Fri, 06 Nov 2026 12:59:36 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0502942273;
-	Fri,  6 Nov 2026 12:59:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2166D1F0089F;
-	Fri,  6 Nov 2026 12:59:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793969975;
-	bh=f1KVRO2gOA2koWtIFP5gpMRCIv0pNVNY2WRXRda16ag=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=jGEFleaZkmrSCWhXeFWTgO9l9HXsIwWoX1pgl4OWWUYGGL8Hj7XXkfGr+mbhWw26J
-	 xdVAveX3YScuWYNpiWkB9YHJDE2XPmvuo+R1O+XSrYysq5gi+IOXKQ43gWXsJMWu6U
-	 IrK5jH3HXWDdr+BEY5EhsXHQ52o63Au09CzNFeX22FsPG0Lp4aVaYCv2ZFvi7F4W3y
-	 Yw/fXLktbD2ZfP7/IdjeVREW65E0kUPk28Kd0UhKctMqroIHzo7gujLgPoqbMvSUEN
-	 xSrd6Z4+dotRHgEuXgbCp6nkoqIA1yuwIsyqDs1B6zdAMO1jWeNFOBlQaCNrfMeo9v
-	 jshzfgUMBcDBw==
-Date: Fri, 6 Nov 2026 13:59:32 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	david@ixit.cz, detlev.casanova@collabora.com, maz@kernel.org, 
-	michael.riesch@collabora.com, diederik@cknow-tech.com, shawn.lin@rock-chips.com, 
-	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org, 
-	tglx@kernel.org, daniel.lezcano@kernel.org, 
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: timer: rockchip: Add rk3568 compatible
-Message-ID: <20261106-obedient-daffy-seal-ca84cf@quoll>
-References: <20261103192331.394489-1-macroalpha82@gmail.com>
- <20261103192331.394489-2-macroalpha82@gmail.com>
+	id 1xPKPN-0000000CUj7-0S11
+	for linux-rockchip@lists.infradead.org;
+	Fri, 06 Nov 2026 13:55:13 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20261106135506euoutp022771fbde9653f88ebc06e07020f8e234~leTeQVvJn2476524765euoutp02y
+	for <linux-rockchip@lists.infradead.org>; Fri,  6 Nov 2026 13:55:06 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20261106135506euoutp022771fbde9653f88ebc06e07020f8e234~leTeQVvJn2476524765euoutp02y
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1793973306;
+	bh=06AQXyihJq/OEvwcZMATqFb1XaBS16clhoCnTaBSROQ=;
+	h=From:Date:Subject:In-Reply-To:To:Cc:References:From;
+	b=mHu46RB2pVMXa2dRtn+nvmIeghwLok2WNcOR56UrmanK6wgT3xFLLPhzqtRIlyjvw
+	 I3d3CtfLsOYzra4/T5nOsgQ/Rj/ZdfLn013f7McHULk1fZKvgRozi+ET+N7rcF3tGG
+	 zwU0njiz5IbL6IIUCJxbid367nfPIEZZ2BbcKqQY=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20261106135505eucas1p1d6f266a6f5c36359454745d176d7ed9b~leTd2VRT81758617586eucas1p1T;
+	Fri,  6 Nov 2026 13:55:05 +0000 (GMT)
+Received: from AMDC4942.eu.corp.samsungelectronics.net (unknown
+	[106.210.136.40]) by eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20261106135504eusmtip293b7af368c9743379df5aae21a89c541~leTdBVRnc2294422944eusmtip21;
+	Fri,  6 Nov 2026 13:55:04 +0000 (GMT)
+From: Michal Wilczynski <m.wilczynski@samsung.com>
+Date: Fri, 06 Nov 2026 14:52:59 +0100
+Subject: [PATCH v7 1/5] dt-bindings: phy: Add starfive,jh7110-inno-hdmi-phy
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261103192331.394489-2-macroalpha82@gmail.com>
+Message-Id: <20261106-jh7110-inno-hdmi-phy-v7-1-d49368303800@samsung.com>
+In-Reply-To: <20261106-jh7110-inno-hdmi-phy-v7-0-d49368303800@samsung.com>
+To: Vinod Koul <vkoul@kernel.org>,  Neil Armstrong
+	<neil.armstrong@linaro.org>,  Manivannan Sadhasivam <mani@kernel.org>, Rob
+	Herring <robh@kernel.org>,  Krzysztof Kozlowski <krzk+dt@kernel.org>,  Conor
+	Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,  Emil Renner
+	Berthing <kernel@esmil.dk>,  Hal Feng <hal.feng@starfivetech.com>, Dominique
+	Belhachemi <db@domibel.de>,  Michal Wilczynski <m.wilczynski@samsung.com>,
+	Andy Yan <andyshrk@163.com>
+Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,  Marek
+	Szyprowski <m.szyprowski@samsung.com>,  Icenowy Zheng
+	<zhengxingda@iscas.ac.cn>,  Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+	Joshua Peisach <jpeisach@ubuntu.com>
+X-Mailer: b4 0.15-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2057;
+	i=m.wilczynski@samsung.com; h=from:subject:message-id;
+	bh=6AQm50xtAvbrSQTSn64RxXqfjCuQ7qgMNyPcGxB0fq8=;
+	b=owGbwMvMwCGWumv6zndzRCIZT6slMWS9vWM++9W9X858Z8RzhSeYuc7qsd/StZAzd+GqE04bK
+	1PuP9AU6ihlYRDjYJAVU2Q5uzHaSPIfw9Py449/wcxhZQIZwsDFKQATOb2YkeHI33vTH+Xobl2/
+	hEfWVvJelOJ0uf0H/lXw93s+D8i9Ku3B8Js1JmK70F4z/733vtTJKYopCZnc4TK2fH/I6dH9j6r
+	XD3MDAA==
+X-Developer-Key: i=m.wilczynski@samsung.com; a=openpgp;
+	fpr=CDB15B3219FE00E577C7E3FA65BA97B9EE9C1459
+X-CMS-MailID: 20261106135505eucas1p1d6f266a6f5c36359454745d176d7ed9b
+X-Msg-Generator: CA
+X-RootMTR: 20261106135505eucas1p1d6f266a6f5c36359454745d176d7ed9b
+X-EPHeader: CA
+X-CMS-RootMailID: 20261106135505eucas1p1d6f266a6f5c36359454745d176d7ed9b
+References: <20261106-jh7110-inno-hdmi-phy-v7-0-d49368303800@samsung.com>
+	<CGME20261106135505eucas1p1d6f266a6f5c36359454745d176d7ed9b@eucas1p1.samsung.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261106_055509_768063_A72117CD 
+X-CRM114-Status: GOOD (  13.12  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,27 +101,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Nov 03, 2026 at 01:23:30PM -0600, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> Add compatible string for Rockchip RK3568 timer.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml | 1 +
->  1 file changed, 1 insertion(+)
+Add the dt-binding for the StarFive JH7110 Innosilicon HDMI PHY.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+This device is a child of the starfive,jh7110-hdmi-subsystem node. It
+functions as both a PHY provider for the controller and as a clock
+provider for the variable pixel clock (hdmi_pclk), which it generates
+from its refoclk.
 
-Best regards,
-Krzysztof
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+---
+ .../phy/starfive,jh7110-inno-hdmi-phy.yaml         | 49 ++++++++++++++++++++++
+ 1 file changed, 49 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/phy/starfive,jh7110-inno-hdmi-phy.yaml b/Documentation/devicetree/bindings/phy/starfive,jh7110-inno-hdmi-phy.yaml
+new file mode 100644
+index 0000000000000000000000000000000000000000..8dbd113b1534a37d00dfd60454f300531a813b8b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/starfive,jh7110-inno-hdmi-phy.yaml
+@@ -0,0 +1,49 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/starfive,jh7110-inno-hdmi-phy.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: StarFive JH7110 Innosilicon INNO HDMI PHY
++
++maintainers:
++  - Michal Wilczynski <m.wilczynski@samsung.com>
++
++description:
++  The PHY portion of the StarFive JH7110 INNO HDMI IP.
++
++properties:
++  compatible:
++    const: starfive,jh7110-inno-hdmi-phy
++
++  clocks:
++    maxItems: 1
++    description: Reference oscillator.
++
++  '#clock-cells':
++    const: 0
++
++  '#phy-cells':
++    const: 0
++
++required:
++  - compatible
++  - clocks
++  - '#clock-cells'
++  - '#phy-cells'
++
++additionalProperties: false
++
++examples:
++  # Shown as a child of the HDMI subsystem node; see
++  # Documentation/devicetree/bindings/display/starfive/starfive,jh7110-hdmi-subsystem.yaml
++  # for the full node.
++  - |
++    phy {
++        compatible = "starfive,jh7110-inno-hdmi-phy";
++        #clock-cells = <0>;
++        clocks = <&xin24m>;
++        #phy-cells = <0>;
++    };
++
++...
+
+-- 
+2.34.1
 
 
 _______________________________________________
