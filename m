@@ -2,69 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9460B606A32D
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2026 02:36:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8E152606A326
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2026 02:57:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Dc3QV5+i;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=ifU31Qgi
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=W8jbI3ta;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=MDRyLQRw
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
+	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=IUz88T7y1buznZxmDgEXxOoFLJHpD07OJcFApzhtc4Q=; b=Dc3QV5+ikU6tcuCbfRq8RKR3Po
-	lD1Gk83nP8W5MqdfGO0nFRbQyQHEH/itRBqKD2zrnWs8mxAHaIZrN67BwNiq+SEcceS5NrqwAPDSH
-	anfIMyIXjOTRj7Oh005REPB/QbyvhcyKiSJyzwd0NL9sWDVz7cTad3SepSSWBKl7PeXSjsyD206++
-	V0nm7wLAQ5A4kUeeknPeTYd0CPRx142gGyjT8b81oVONX+nhRECZKLYhuvn5jjISw0MyBeL8W4lpg
-	dCmw4iZHolA5FK/mcVeKhzY56zinWb2Mb4X4BkkFDHGU2WtFJNQem/UkYOb46QDpJYVm7MqBLB3xY
-	1M3xt3uA==;
+	bh=BolhOX5BdpRkJg76czZY8j/i8fcBf1BFbh1m9u8tbcc=; b=W8jbI3taurWA/d8K50fO4f2+OE
+	LDaI5ob2S/zWXfJUCrdmG0MOYAZVwpdPcTuxGuVnOmHSOkHkyIYq0glOW5K91WSdMgtn6MBhFc2Eg
+	naQcpQEnoUfEBoOKshlpUo2Y9UnMCLDilctnxKAPDMDh+cbfO2zsTh6SuSx7ydemUZov9qDRO59Z5
+	qfgqKBo2LfKerFSD/mmAGWtt2NxTbGcQbwfSNEyh1W/d9NoMkiJAUmnQ9kfwyOe3mj0pnbkm1sSRN
+	tFteYLmXCK05G+BbEF7SGomz6cb5v2iUn0MuheBEOhNe6u8epZst7WPI81EG/Mbma9RP1MBVRMXU+
+	2Ft0mF8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPWHr-0000000E5Db-1edL;
-	Sat, 07 Nov 2026 02:36:11 +0000
-Received: from sender5-op-o11.zoho.com ([165.173.182.11])
+	id 1xPWch-0000000E6oB-2nPL;
+	Sat, 07 Nov 2026 02:57:43 +0000
+Received: from out162-62-58-216.mail.qq.com ([162.62.58.216])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPWHi-0000000E5CX-2UQQ
-	for linux-rockchip@lists.infradead.org;
-	Sat, 07 Nov 2026 02:36:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794018955; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=MtPclBf6Oq00X7GJgLcyoqNjzMkXF+RPs8dNEViqwb3kWHkglMRvBofPGGVnH553GGDEry8yUQVJaPOy8Lr3gt2N10s5HENi0Bor1/yjz2gmNZKYAMzXCBoAUDhkotuPockGqdVgny2y4rQBZVjP+o5J6kJUKRmwZn3uo7NCI6k=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794018955; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=v712UGBT916bmhBnvp8NE4rFlnCTJxp0AJI2r2bH/p0=; 
-	b=AitNI4VBDs1jIkOAA+E/qaRLrI0+tdNbgiL8bPP22bdOmprcCLxfG/HbDTmRKhDQNExEh4lvr1MVgDXa1JRf1meBADEiKC90xtq6fm7BUik3oPViA8MSZlHAmx4/NpUu3ZVE1VVUvnDN8DuGsoEtOyNObpKE7i+3tfBtG/ZNBhI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=ifU31Qgix9ED1k9JqJjLhZtis7WD3n5gK5HApCN24ahGx/mA4YNN6WDAjw521c8HHdiWP5oOrjtrbdm+Uu22KBG//5Q/34Ys6d81jrEtr8qhXdRA8lkZVUObNDKxFkLy5KcFI4mKkYyi3C963KqDFSQDP9riezWXCmDadbpPObs=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=v712UGBT916bmhBnvp8NE4rFlnCTJxp0AJI2r2bH/p0=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1794018954405705.4847357899479;
-	Fri, 6 Nov 2026 18:35:54 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id A49FF180312; Sat, 07 Nov 2026 03:35:51 +0100 (CET)
-Date: Sat, 7 Nov 2026 03:35:51 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: Alexander Shiyan <eagle.alexander923@gmail.com>, 
-	linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] spi: rockchip: Fix runtime PM underflow on CS error paths
-Message-ID: <au6LMNctO1fx_Kcl@venus>
-References: <20260806191854.922530-1-eagle.alexander923@gmail.com>
- <179397711825.3231166.14531785924256368148.b4-review@b4>
+	id 1xPWcb-0000000E6n7-30Yn;
+	Sat, 07 Nov 2026 02:57:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1794020248; bh=+NfG3aoVVDYg320wMNuDSmqyNFEaM7V/GRWW/LuOKlc=;
+	h=From:To:Cc:Subject:Date:References:In-Reply-To;
+	b=MDRyLQRweWcf+xUdMyrRKSmQ4ym8LxPSKGEuTbq8sda/LnBrQsChWSTv29ATNeLl1
+	 5kWV0jo2YqJvU6DKgoUr+AJrGje3BPSoyvyrUwYRyCseF+TMcqFg43W8vPcKoVyG/T
+	 IgribdMGCx+0gdmxzvXarCy4BkxVGjuwgdB5/LrI=
+X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
+X-QQ-XMAILINFO: MdmyWVu0InhASiUkhb//VhxE+kD9CHxdhJTc2eGlkCfKL+hSZzxtKPiKVMWgqY
+	 Lv/UzTv+iDbo7dMZuvj8UN+79ox9/cI1AEMe33S2r7bt3E1M7gv8SGTY9I6pqBky60sk3/mm0O29D
+	 v0tNVj8tRScQbUZinQwt1KFWKmyu1mcSFjpMRKY99eqQ2XcKYoS2kJBZ4JXHIhrufiW9AK7duvXRg
+	 KsCUp8IMW+hWAen10Hz/NonxkHKmrw8902WefN6BT2pi5LZRVi6hT0uRjYwpmCFaBwOCVjazaFZkW
+	 wEvJ2oVheUjYu7K2SVD3dwVH3rg8F1Ym9357Bt5Beoc/RzPFu25LZVECBn5HSGTziBRNIiIuN0BYv
+	 dEY1lbfOgnkbsHmmhhBbM8zSlEo/FBbqBSFXTl0VIE558t1XIs5A0mDldpoYzntiRPQJhZW5ZJhQ+
+	 aXfkpv1h/TX3CVwZKdOX088TERlmDzC1alWuo2aXUMAqKmn5cyZEA2Wx1M+jtxE7XQ9k+lBvG+1l3
+	 Zq1Zh1i3lLMsxAXOGVv4s+FAEJn+M52EhPVreYm8frXOB6zR9f9VIq7AEjHL1lVVAPiG/jnSsdK8g
+	 gl2D5ZEXeGnzyuJvVRK3zNJas9038c4pPTfTWudT0QbHKHcaiCsMBWWtcjr37NAAuyBE3cDToy1Ye
+	 f/fPG5YwGmKcivHs3GSJKCOilYZAH/0NjqGLv3nOMYkIHgSrD4VBqR216mgFGUrYRlRoIglr8SnBX
+	 Vwd9JgaaP0nTboNq8nqGOxkpMXE3N/smmQPyKgVHltVRYPhEjlLCfRnQDg5ahGRRGyn5xfrQC8gxe
+	 1s2Xm/45nDEHVn54Il7wDgGZkucaaWxag1IMmsMYB5qNw+XLMaJV3txEO+bkf7nIXCmNSp5T74x47
+	 JWyeAwNoPjkPUyKjUhtMl566EFDTKOjES7UsQlzb9uxvGRMYCqArnqRcqrnsawcwhe1woh2u7iiVl
+	 juAaZyli3jPdvYY9zMs7UVjONkCX33DbPmQFGSBmrAvtZ92wlRp/O2VU0cnkVetSzWwX5d04zH20e
+	 1OGx3SKWYgTJfYdLdBm+X0RZ6S74lhVe/Wnze8B3OhuP+NB45fbHc/8kqfCjn4GsLlGU6WyVm2SDO
+	 tfRx5hWc/qYBDj4PUGmY2/bZ
+From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
+To: "=?utf-8?B?SGVpa28gU3TDvGJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?TWFyYyBLbGVpbmUtQnVkZGU=?=" <mkl@pengutronix.de>, "=?utf-8?B?VmluY2VudCBNYWlsaG9s?=" <mailhol@kernel.org>, "=?utf-8?B?RGF2aWQgUy4gTWlsbGVy?=" <davem@davemloft.net>, "=?utf-8?B?V29sZmdhbmcgR3JhbmRlZ2dlcg==?=" <wg@grandegger.com>, "=?utf-8?B?T2xpdmVyIEhhcnRrb3Bw?=" <socketcan@hartkopp.net>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?RXJpYyBEdW1hemV0?=" <edumazet@kernel.org>, "=?utf-8?B?SmFrdWIgS2ljaW5za2k=?=" <kuba@kernel.org>, "=?utf-8?B?UGFvbG8gQWJlbmk=?=" <pabeni@redhat.com>, "=?utf-8?B?U2ltb24gSG9ybWFu?=" <horms@kernel.org>, "=?utf-8?B?Sm9uYXRoYW4gQ29yYmV0?=" <corbet@lwn.net>, "=?utf-8?B?U2h1YWggS2hhbg==?=" <skhan@linuxfoundation.org>, "=?utf-8?B?UmFuZHkgRHVubGFw?=" <rdunlap@infradead.org>
+Cc: "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bmV0ZGV2?=" <netdev@vger.kernel.org>, "=?utf-8?B?bGludXgtZG9j?=" <linux-doc@vger.kernel.org>, "=?utf-8?B?c3RhYmxl?=" <stable@vger.kernel.org>
+Subject: Re: [PATCH net v7 0/7] can: fix bus-off restart and device close races
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-In-Reply-To: <179397711825.3231166.14531785924256368148.b4-review@b4>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/293.995.13
-X-ZohoMailClient: External
+Mime-Version: 1.0
+Date: Sat, 7 Nov 2026 10:57:26 +0800
+X-Priority: 3
+Message-ID: <tencent_B3369A1199D0849091BB8015C41BBFF0A607@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+References: <20261106-rockchip-canfd-restart-close-v7-0-accdb11bc845@qq.com>
+	<16255046.uLZWGnKmhe@diego>
+In-Reply-To: <16255046.uLZWGnKmhe@diego>
+X-QQ-mid: xmsezb41-0t1794020246tqmnr7ex0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261106_183602_934338_9AB925F9 
-X-CRM114-Status: GOOD (  23.59  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261106_185738_317039_748B0121 
+X-CRM114-Status: GOOD (  18.90  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,143 +80,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0006025272035256842=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-
---===============0006025272035256842==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="loz7exf7kqwri6c5"
-Content-Disposition: inline
-
-
---loz7exf7kqwri6c5
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH] spi: rockchip: Fix runtime PM underflow on CS error paths
-MIME-Version: 1.0
-
-Hi,
-
-On Fri, Nov 06, 2026 at 02:58:38PM +0000, Mark Brown wrote:
-> > The Rockchip SPI driver manages runtime PM reference counting around
-> > chip select (CS) assertion: pm_runtime_get_sync() is called when CS is
-> > asserted, and pm_runtime_put() when deasserted. This balanced pair is
-> > expected.
->=20
-> > @@ -256,6 +257,7 @@ static void rockchip_spi_set_cs(struct spi_device *=
-spi, bool enable)
-> >  	if (cs_asserted) {
-> >  		/* Keep things powered as long as CS is asserted */
-> >  		pm_runtime_get_sync(rs->dev);
-> > +		rs->cs_claimed =3D true;
->=20
-> This sort of boolean tracking of reference counts is extremely error
-> prone, and note that there are two chip selects on the device.  This
-> should probably at least be per chip select.
-
-I ran into the same symptom while working on RK3588 system suspend
-and came up with a way different root cause.
-
-I haven't found the time to investigate more closely, check for a
-proper Fixes references e.t.c., hence it has not yet been send. So
-take this with a grain of salt, but it seems to be not Rockchip
-specific:
-
------
-
-=46rom: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Sat, 5 Sep 2026 00:26:40 +0200
-Subject: [PATCH] spi: Fix runtime PM imbalance on pump transfer message err=
-or
-Cc: kernel@collabora.com
-
-The current SPI message pumping code may drop the runtime PM twice when
-an SPI message cannot be send:
-
-spi_master spi2: noqueue transfer failed
-rockchip-spi feb20000.spi: Runtime PM usage count underflow!
-
-Fix the problem by always keeping the runtime PM count increased when
-exiting __spi_pump_transfer_message(), as the caller handles decreasing
-it.
-
-Note, that the function already keeps the RPM usage counter increased
-for the error paths following after the prepare_transfer_hardware step.
-
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/spi/spi.c | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index 40cda0037ea5..9cd1cabfa0b3 100644
---- a/drivers/spi/spi.c
-+++ b/drivers/spi/spi.c
-@@ -1951,7 +1951,6 @@ static int __spi_pump_transfer_message(struct spi_con=
-troller *ctlr,
- 	if (!was_busy && ctlr->auto_runtime_pm) {
- 		ret =3D pm_runtime_get_sync(ctlr->dev.parent);
- 		if (ret < 0) {
--			pm_runtime_put_noidle(ctlr->dev.parent);
- 			dev_err(&ctlr->dev, "Failed to power device: %d\n",
- 				ret);
-=20
-@@ -1972,9 +1971,6 @@ static int __spi_pump_transfer_message(struct spi_con=
-troller *ctlr,
- 				"failed to prepare transfer hardware: %d\n",
- 				ret);
-=20
--			if (ctlr->auto_runtime_pm)
--				pm_runtime_put(ctlr->dev.parent);
--
- 			msg->status =3D ret;
- 			spi_finalize_current_message(ctlr);
-=20
---=20
-2.53.0
-
-
---loz7exf7kqwri6c5
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmrujoMACgkQ2O7X88g7
-+poXuw//e/AAKsrPGLc0TGTC0FEDRJWx2suSUGQbQhMTSKVm4mDU0ed3DHZU8lf4
-btu+nzbxqdX4I5Je2w3lbeLk5jJKj0zduPNG0qVKq4R8N9Z0qETKYxBPZjvHQBa6
-88Vbds8T25hRjOD3Icv3xjMhytvsAfhzkdRQeruzkUdCeiAxACPzeW2s38EPfklY
-BHW2UoufPdO/j2o93TQ+AMUMXS++7vcziulWt74nw64p3mbtv302rJG0lPKge2Xm
-SIvjZ03zYcUiLVALNOj3VvxRCbln7P0+WccawSdfS7mqZioKQ2eaHB6SGxz81gKb
-oTvgY2NufpbvYt/Q7AB5TFzhR1e6/rgtGesFSv8k+J03r59aZqzc0qU4A8xjP9mb
-VHUkDTroHdJSj0bdlOwezfNxJ568wDzEvUdOyIlrW3xcMSki3ODjEzZR7f8qAavD
-rahgjmg8JFnRyMi8xEERXQxHIFmbF0V7z0RtXpGMZpSvaDdBmkmIZqxcmNh8Ki8i
-ZDnQeoGJzoKh0PmMqrJdiHoLdSlVI4zUe9QDA4vEfapwXNHqXaoX/GXV40+GKNSQ
-hayP/UwHBRCrTJF4Af/R0VtGIDF/uSX3Ws/0j26TQj0hiUTXO757xLrzjZMiYtBq
-1aNpoFrnn/vHK4ETd9/3UP0rVZwfsuopY6scyn4LJnvIZDy9Y3Q=
-=Lhsf
------END PGP SIGNATURE-----
-
---loz7exf7kqwri6c5--
-
-
---===============0006025272035256842==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0006025272035256842==--
-
+SGksCgo+ID7CoFRoaXPCoHNlcmllc8KgZGVwZW5kc8Kgb27CoHRoZcKgdGhyZWXCoHBhdGNoZXPC
+oGluwqAiY2FuOsKgc2tiOsKgbWFrZcKgQ0FOwqBza2IKPiA+wqBmcmVlaW5nwqBzYWZlwqBpbsKg
+YW55wqBJUlHCoGNvbnRleHQiwqBbMV3CoGFuZMKgdGhlwqB0aHJlZcKgcGF0Y2hlc8KgaW7CoCJj
+YW46Cj4gPsKgcm9ja2NoaXBfY2FuZmQ6wqBmaXjCoFRYwqBzdGFsbHPCoGFuZMKgcmFjZXMiwqBb
+Ml0uCj4gPsKgCj4gPsKgWzFdwqBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1jYW4vdGVu
+Y2VudF9DRDA1RjAyMEJBRkIyNTM3RjVEMUY0Q0JCNDI1NTg4RUE4MEFAcXEuY29tLwo+ID7CoFsy
+XcKgaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtY2FuL3RlbmNlbnRfRTI1QzlCRTY2ODky
+NjRFNDEzOEE0NjQ4MDNCODEwRkRGRDA5QHFxLmNvbS8KPiAKPiBCb3RowqB0aGVzZcKgc2VyaWVz
+wqBhcmXCoGZyb23CoGp1bHnCoGFuZMKgc2VlbWluZ2x5wqBmcm9twqBiZWZvcmXCoHlvdcKgc3Rh
+cnRlZAo+IHVzaW5nwqB0aGXCoGI0LXJlbGF5LsKgU2/CoHRoZXnCoG1hecKgb3LCoG1hecKgbm90
+wqBoYXZlwqBzdXJ2aXZlZMKgdGhlwqBrZXJuZWwKPiByZWxlYXNlc8KgYW5kwqB0aGVpcsKgdGhy
+ZWFkaW5nwqBpc8KgYnJva2VuwqBib3RowqBvbsKgbG9yZcKgYW5kwqBpbsKgYW55wqBtYWlib3gK
+PiB0aGV5wqBhcnJpdmVkwqBpbi4KPiAKPiBBbmTCoGlmwqB0aGVyZcKgaGF2ZW4ndMKgYmVlbsKg
+YW55wqByZXNwb25zZXPCoHRvwqB0aGVtwqBzaW5jZcKgdGhlbizCoEknZMKgdGhpbmsKPiB0aGV5
+wqBoYXZlwqBiZWVuwqBsb3N0wqBvcsKgc28uCj4gCj4gU2/CoEknZMKgc3VnZ2VzdMKgcm9sbGlu
+Z8KgYm90aMKgeW91csKgZGVwZW5kZW5jaWVzwqBmb3J3YXJkwqBvbsKgdG9wwqBvZsKgdGhlwqBj
+YW4KPiB0cmVlwqBhbmTCoHNlbmRpbmfCoHRoZW3CoGFzwqBhwqBuZXfCoHZlcnNpb24swqBzb8Kg
+dGhhdMKgcmV2aWV3ZXJzwqBjYW7CoGZpbmTCoHRoZW0/CgpUaGFuayB5b3UgdmVyeSBtdWNoIGZv
+ciB0aGUgZ3VpZGFuY2UhIDotUAoKSSBqdXN0IGNoZWNrZWQ6IHRoZSAiY2FuOiBza2I6IG1ha2Ug
+Q0FOIHNrYiBmcmVlaW5nIHNhZmUgaW4gYW55IElSUQpjb250ZXh0IiBzZXJpZXMgd2FzIG1lcmdl
+ZCBpbnRvIG1haW5saW5lIHllc3RlcmRheSwgc28gSSB3b24ndCBzZW5kIGEKbmV3IHZlcnNpb24g
+b2YgaXQuIEknbGwgcmVtb3ZlIGl0cyBsaW5rIGZyb20gdGhlIGNvdmVyIGxldHRlci4KClRoZSAi
+Y2FuOiByb2NrY2hpcF9jYW5mZDogZml4IFRYIHN0YWxscyBhbmQgcmFjZXMiIHNlcmllcyBzdGls
+bCBoYXMgc29tZQppc3N1ZXMgcmVwb3J0ZWQgYnkgdGhlIGJvdHMgZHVyaW5nIHN1Ym1pc3Npb24g
+dG8gdGhlIG5ldCB0cmVlIHRoYXQgSQpuZWVkIHRvIGFkZHJlc3MuIFNpbmNlIHRob3NlIHBhdGNo
+ZXMgb3ZlcmxhcCB3aXRoIHRoaXMgc2VyaWVzLCBJIHBsYW4KdG8gZm9sZCB0aGVtIGludG8gdGhl
+IG5leHQgdmVyc2lvbiAodjgpIGFuZCBzZW5kIHRoZW0gdG9nZXRoZXIuCgpCZXN0IHJlZ2FyZHMs
+CkN1bmhhbyBMdQoKcHctYm90OiBjcgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
