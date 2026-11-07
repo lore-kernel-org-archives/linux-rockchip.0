@@ -2,75 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8E152606A326
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2026 02:57:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C3ECE606A332
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2026 05:55:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=W8jbI3ta;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=MDRyLQRw
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ccu0K7mR;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=NaYNtGBA
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
-	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=BolhOX5BdpRkJg76czZY8j/i8fcBf1BFbh1m9u8tbcc=; b=W8jbI3taurWA/d8K50fO4f2+OE
-	LDaI5ob2S/zWXfJUCrdmG0MOYAZVwpdPcTuxGuVnOmHSOkHkyIYq0glOW5K91WSdMgtn6MBhFc2Eg
-	naQcpQEnoUfEBoOKshlpUo2Y9UnMCLDilctnxKAPDMDh+cbfO2zsTh6SuSx7ydemUZov9qDRO59Z5
-	qfgqKBo2LfKerFSD/mmAGWtt2NxTbGcQbwfSNEyh1W/d9NoMkiJAUmnQ9kfwyOe3mj0pnbkm1sSRN
-	tFteYLmXCK05G+BbEF7SGomz6cb5v2iUn0MuheBEOhNe6u8epZst7WPI81EG/Mbma9RP1MBVRMXU+
-	2Ft0mF8w==;
+	bh=k4U78Xng9K3XHJzlixlhWh7c+M1fcrjV83JJw4d67+4=; b=ccu0K7mRhr8rCvSHgPqbBnL1+E
+	8KOilMU7gufpPfi8lDhaLbry6mpuLKLnAT88RAa0RVTxftXFwAkoqlWp9PXbqZsnhmkM95++WtVAw
+	PRk//oP6WV1Wzn2FZ3K4L/dlCr5SM3c/bFGs1+1zKW0UczdmmzlE3Ic6MqnoQvDthSFBSpLCHCpcG
+	s8RQL0yTJNQMBWjTc6ry+0UiX/5Rfwfj5mhPXaBYj6LSNm6m8KG1IU29iSe87FebxhlQcfPW+ylyi
+	VHitSTG+AqEkxvthk6uhS8dhlmbRxCReiTjs4mS4A5+fVNOoHa/G2/g+hIq0kjYYM0CkuupaOT5LZ
+	qBsMAs9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPWch-0000000E6oB-2nPL;
-	Sat, 07 Nov 2026 02:57:43 +0000
-Received: from out162-62-58-216.mail.qq.com ([162.62.58.216])
+	id 1xPZON-0000000EFck-11oZ;
+	Sat, 07 Nov 2026 05:55:07 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPWcb-0000000E6n7-30Yn;
-	Sat, 07 Nov 2026 02:57:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1794020248; bh=+NfG3aoVVDYg320wMNuDSmqyNFEaM7V/GRWW/LuOKlc=;
-	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=MDRyLQRweWcf+xUdMyrRKSmQ4ym8LxPSKGEuTbq8sda/LnBrQsChWSTv29ATNeLl1
-	 5kWV0jo2YqJvU6DKgoUr+AJrGje3BPSoyvyrUwYRyCseF+TMcqFg43W8vPcKoVyG/T
-	 IgribdMGCx+0gdmxzvXarCy4BkxVGjuwgdB5/LrI=
-X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
-X-QQ-XMAILINFO: MdmyWVu0InhASiUkhb//VhxE+kD9CHxdhJTc2eGlkCfKL+hSZzxtKPiKVMWgqY
-	 Lv/UzTv+iDbo7dMZuvj8UN+79ox9/cI1AEMe33S2r7bt3E1M7gv8SGTY9I6pqBky60sk3/mm0O29D
-	 v0tNVj8tRScQbUZinQwt1KFWKmyu1mcSFjpMRKY99eqQ2XcKYoS2kJBZ4JXHIhrufiW9AK7duvXRg
-	 KsCUp8IMW+hWAen10Hz/NonxkHKmrw8902WefN6BT2pi5LZRVi6hT0uRjYwpmCFaBwOCVjazaFZkW
-	 wEvJ2oVheUjYu7K2SVD3dwVH3rg8F1Ym9357Bt5Beoc/RzPFu25LZVECBn5HSGTziBRNIiIuN0BYv
-	 dEY1lbfOgnkbsHmmhhBbM8zSlEo/FBbqBSFXTl0VIE558t1XIs5A0mDldpoYzntiRPQJhZW5ZJhQ+
-	 aXfkpv1h/TX3CVwZKdOX088TERlmDzC1alWuo2aXUMAqKmn5cyZEA2Wx1M+jtxE7XQ9k+lBvG+1l3
-	 Zq1Zh1i3lLMsxAXOGVv4s+FAEJn+M52EhPVreYm8frXOB6zR9f9VIq7AEjHL1lVVAPiG/jnSsdK8g
-	 gl2D5ZEXeGnzyuJvVRK3zNJas9038c4pPTfTWudT0QbHKHcaiCsMBWWtcjr37NAAuyBE3cDToy1Ye
-	 f/fPG5YwGmKcivHs3GSJKCOilYZAH/0NjqGLv3nOMYkIHgSrD4VBqR216mgFGUrYRlRoIglr8SnBX
-	 Vwd9JgaaP0nTboNq8nqGOxkpMXE3N/smmQPyKgVHltVRYPhEjlLCfRnQDg5ahGRRGyn5xfrQC8gxe
-	 1s2Xm/45nDEHVn54Il7wDgGZkucaaWxag1IMmsMYB5qNw+XLMaJV3txEO+bkf7nIXCmNSp5T74x47
-	 JWyeAwNoPjkPUyKjUhtMl566EFDTKOjES7UsQlzb9uxvGRMYCqArnqRcqrnsawcwhe1woh2u7iiVl
-	 juAaZyli3jPdvYY9zMs7UVjONkCX33DbPmQFGSBmrAvtZ92wlRp/O2VU0cnkVetSzWwX5d04zH20e
-	 1OGx3SKWYgTJfYdLdBm+X0RZ6S74lhVe/Wnze8B3OhuP+NB45fbHc/8kqfCjn4GsLlGU6WyVm2SDO
-	 tfRx5hWc/qYBDj4PUGmY2/bZ
-From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
-To: "=?utf-8?B?SGVpa28gU3TDvGJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?TWFyYyBLbGVpbmUtQnVkZGU=?=" <mkl@pengutronix.de>, "=?utf-8?B?VmluY2VudCBNYWlsaG9s?=" <mailhol@kernel.org>, "=?utf-8?B?RGF2aWQgUy4gTWlsbGVy?=" <davem@davemloft.net>, "=?utf-8?B?V29sZmdhbmcgR3JhbmRlZ2dlcg==?=" <wg@grandegger.com>, "=?utf-8?B?T2xpdmVyIEhhcnRrb3Bw?=" <socketcan@hartkopp.net>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?RXJpYyBEdW1hemV0?=" <edumazet@kernel.org>, "=?utf-8?B?SmFrdWIgS2ljaW5za2k=?=" <kuba@kernel.org>, "=?utf-8?B?UGFvbG8gQWJlbmk=?=" <pabeni@redhat.com>, "=?utf-8?B?U2ltb24gSG9ybWFu?=" <horms@kernel.org>, "=?utf-8?B?Sm9uYXRoYW4gQ29yYmV0?=" <corbet@lwn.net>, "=?utf-8?B?U2h1YWggS2hhbg==?=" <skhan@linuxfoundation.org>, "=?utf-8?B?UmFuZHkgRHVubGFw?=" <rdunlap@infradead.org>
-Cc: "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bmV0ZGV2?=" <netdev@vger.kernel.org>, "=?utf-8?B?bGludXgtZG9j?=" <linux-doc@vger.kernel.org>, "=?utf-8?B?c3RhYmxl?=" <stable@vger.kernel.org>
-Subject: Re: [PATCH net v7 0/7] can: fix bus-off restart and device close races
+	id 1xPZOL-0000000EFcX-1iTG;
+	Sat, 07 Nov 2026 05:55:05 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 817A36062B;
+	Sat,  7 Nov 2026 05:55:04 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794030904;
+	b=MP0O/Vs0B2yUDJAjGJOgKZTbmGK8A4JuTEXfB61rJjr7FVBeAm1nn1myUYrqiRBI3Kfm
+	 0wXYfQXXSQoxCoxwZD5+89ncll599kFq6XYsH3xhoWgISbWKYYwA+oflRa7Cbcj0LMzJq
+	 8bkItnMwJdI4M5jBvfhS0/gj6SU3sRV1tBXB5BvzGdDacJmhJ1jba9AhRxGcuhSyrA0Px
+	 fZHSyMFBMlOKVyCsimwnKrIQeNWI69JT6lvpFLrPPTACZjAZDIYyhWFYYN6Xs4N9vp8Bw
+	 RVIeopHQ6DmGhRmY21T6FEr4sWGKxmGnmlBH8Dy8+8ectl5WZAke5x7TrRBzJjOO6DQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794030904;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
+	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=k6a9rw1NTm5jSqcWk0YZ2ZnFUj3olcprcB7my6xtpkM=;
+	b=f1n5EIamrd3n8ruGUK6PGOG48c+BcmJ4U7mcdjrB782Rgkv3a5hd8RJPIwY9PsLcRSaW
+	 tj+UKpwmNcPhIcXHMFdHuT+zMyinCdMIrAYFPoucJ40oVzn91A6KkuE9b5Xm2Ed3apzbo
+	 JGYIlNbx8mK1qQDC1jyCw0aEuQf1oT5ZIoKaaBDsIWQ1zaAF07qPiMkWPu/k3c7y4aFhE
+	 AoD8RNA6XyLf6uMO6HAwg7FA0b65XTv4xVMstvk7AKBTs/xe/tuizvd+lySXXVV1GKJuz
+	 HNbHwsVdqcYncc8NQcyOrcbu0FkbRaKp44mCJHIvdIaUT05H0JM9SsoSuiFGMznGllg==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 809231F0089F;
+	Sat,  7 Nov 2026 05:55:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794030904;
+	bh=k6a9rw1NTm5jSqcWk0YZ2ZnFUj3olcprcB7my6xtpkM=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=NaYNtGBAv5I2SirX8wR8g6hay9g4MBIGfkpy8p5UFaLn/VJMiPvIUPKcFpuNDRzv+
+	 oVAG7METzXFWc4o6zhxuhd0d6oT8hdfgL6gSHnvedR/CUUzWMEs3O8vUQMjIpCJwxu
+	 AgfomGIIFcZDDJwL+NKld6Y66vNkKn9R/+qkOZ2HU8CP8lCKIJ2CieK+/7662LRNu7
+	 JYLrvjjTjRiRLNG75kMm46cMbI4DAg3S41RS/gnrpDYXwXmuWrQhfM8XmZ62lZlL4s
+	 Tm29KqZzkPVVOzlpThDcWC9rXGACyU0eDZVTfZ+385E/ONxA/XBStGQfG4t4XpsBdO
+	 51fOzjHC8M0SA==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 10FF747AD0;
+	Sat,  7 Nov 2026 05:55:03 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Sat, 07 Nov 2026 07:55:00 +0200
+Subject: [PATCH] gpio: rockchip: restore interrupt settings after
+ hibernation
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0
-Date: Sat, 7 Nov 2026 10:57:26 +0800
-X-Priority: 3
-Message-ID: <tencent_B3369A1199D0849091BB8015C41BBFF0A607@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-References: <20261106-rockchip-canfd-restart-close-v7-0-accdb11bc845@qq.com>
-	<16255046.uLZWGnKmhe@diego>
-In-Reply-To: <16255046.uLZWGnKmhe@diego>
-X-QQ-mid: xmsezb41-0t1794020246tqmnr7ex0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261106_185738_317039_748B0121 
-X-CRM114-Status: GOOD (  18.90  )
-X-Spam-Score: -1.9 (-)
+MIME-Version: 1.0
+Message-Id: <20261107-b4-gpio-rockchip-hib-v1-1-19f4d163a55e@iav.lv>
+X-B4-Tracking: v=1; b=H4sIADS97moC/x3MQQqAIBBA0avErBtQy6KuEi1SpxyCFIUIpLsnL
+ d/i/wKZElOGuSmQ6ObM4aqQbQPWb9dByK4alFCDlGJE0+MROWAK9rSeI3o2OAptu91pZfoJaho
+ T7fz822V93w+7uc8zZgAAAA==
+To: Linus Walleij <linusw@kernel.org>, 
+ Bartosz Golaszewski <brgl@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Jianqun Xu <jay.xu@rock-chips.com>, 
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Igor Velkov <iav@iav.lv>, stable@vger.kernel.org
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4448; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=Dk4H/o+1eyRMlxB1wc6jS7hkgNHj7wT6TPN6Ut/qDU4=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFnv9po6dYmpXb28vvvIlp/mXtva1HY+EvnfE9X0OUCqO
+ fYz99KIjlIWBjEuBlkxRZYJhzRuZSy5+tffw/wBzBxWJpAhDFycAjCR8xGMDI8aXPqLJyzbVBVo
+ vm3T2zVfH91ZWvvCJtXQgP/k3vVctsEM/9P1/fnerJbZtzOyccbmzfME7BNft7Xl+gX92Kddv+A
+ 4ExMA
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,44 +109,127 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: iav@iav.lv
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGksCgo+ID7CoFRoaXPCoHNlcmllc8KgZGVwZW5kc8Kgb27CoHRoZcKgdGhyZWXCoHBhdGNoZXPC
-oGluwqAiY2FuOsKgc2tiOsKgbWFrZcKgQ0FOwqBza2IKPiA+wqBmcmVlaW5nwqBzYWZlwqBpbsKg
-YW55wqBJUlHCoGNvbnRleHQiwqBbMV3CoGFuZMKgdGhlwqB0aHJlZcKgcGF0Y2hlc8KgaW7CoCJj
-YW46Cj4gPsKgcm9ja2NoaXBfY2FuZmQ6wqBmaXjCoFRYwqBzdGFsbHPCoGFuZMKgcmFjZXMiwqBb
-Ml0uCj4gPsKgCj4gPsKgWzFdwqBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1jYW4vdGVu
-Y2VudF9DRDA1RjAyMEJBRkIyNTM3RjVEMUY0Q0JCNDI1NTg4RUE4MEFAcXEuY29tLwo+ID7CoFsy
-XcKgaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtY2FuL3RlbmNlbnRfRTI1QzlCRTY2ODky
-NjRFNDEzOEE0NjQ4MDNCODEwRkRGRDA5QHFxLmNvbS8KPiAKPiBCb3RowqB0aGVzZcKgc2VyaWVz
-wqBhcmXCoGZyb23CoGp1bHnCoGFuZMKgc2VlbWluZ2x5wqBmcm9twqBiZWZvcmXCoHlvdcKgc3Rh
-cnRlZAo+IHVzaW5nwqB0aGXCoGI0LXJlbGF5LsKgU2/CoHRoZXnCoG1hecKgb3LCoG1hecKgbm90
-wqBoYXZlwqBzdXJ2aXZlZMKgdGhlwqBrZXJuZWwKPiByZWxlYXNlc8KgYW5kwqB0aGVpcsKgdGhy
-ZWFkaW5nwqBpc8KgYnJva2VuwqBib3RowqBvbsKgbG9yZcKgYW5kwqBpbsKgYW55wqBtYWlib3gK
-PiB0aGV5wqBhcnJpdmVkwqBpbi4KPiAKPiBBbmTCoGlmwqB0aGVyZcKgaGF2ZW4ndMKgYmVlbsKg
-YW55wqByZXNwb25zZXPCoHRvwqB0aGVtwqBzaW5jZcKgdGhlbizCoEknZMKgdGhpbmsKPiB0aGV5
-wqBoYXZlwqBiZWVuwqBsb3N0wqBvcsKgc28uCj4gCj4gU2/CoEknZMKgc3VnZ2VzdMKgcm9sbGlu
-Z8KgYm90aMKgeW91csKgZGVwZW5kZW5jaWVzwqBmb3J3YXJkwqBvbsKgdG9wwqBvZsKgdGhlwqBj
-YW4KPiB0cmVlwqBhbmTCoHNlbmRpbmfCoHRoZW3CoGFzwqBhwqBuZXfCoHZlcnNpb24swqBzb8Kg
-dGhhdMKgcmV2aWV3ZXJzwqBjYW7CoGZpbmTCoHRoZW0/CgpUaGFuayB5b3UgdmVyeSBtdWNoIGZv
-ciB0aGUgZ3VpZGFuY2UhIDotUAoKSSBqdXN0IGNoZWNrZWQ6IHRoZSAiY2FuOiBza2I6IG1ha2Ug
-Q0FOIHNrYiBmcmVlaW5nIHNhZmUgaW4gYW55IElSUQpjb250ZXh0IiBzZXJpZXMgd2FzIG1lcmdl
-ZCBpbnRvIG1haW5saW5lIHllc3RlcmRheSwgc28gSSB3b24ndCBzZW5kIGEKbmV3IHZlcnNpb24g
-b2YgaXQuIEknbGwgcmVtb3ZlIGl0cyBsaW5rIGZyb20gdGhlIGNvdmVyIGxldHRlci4KClRoZSAi
-Y2FuOiByb2NrY2hpcF9jYW5mZDogZml4IFRYIHN0YWxscyBhbmQgcmFjZXMiIHNlcmllcyBzdGls
-bCBoYXMgc29tZQppc3N1ZXMgcmVwb3J0ZWQgYnkgdGhlIGJvdHMgZHVyaW5nIHN1Ym1pc3Npb24g
-dG8gdGhlIG5ldCB0cmVlIHRoYXQgSQpuZWVkIHRvIGFkZHJlc3MuIFNpbmNlIHRob3NlIHBhdGNo
-ZXMgb3ZlcmxhcCB3aXRoIHRoaXMgc2VyaWVzLCBJIHBsYW4KdG8gZm9sZCB0aGVtIGludG8gdGhl
-IG5leHQgdmVyc2lvbiAodjgpIGFuZCBzZW5kIHRoZW0gdG9nZXRoZXIuCgpCZXN0IHJlZ2FyZHMs
-CkN1bmhhbyBMdQoKcHctYm90OiBjcgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Igor Velkov <iav@iav.lv>
+
+Restore from hibernation follows a cold boot. The boot kernel probes
+the GPIO banks, sets every interrupt enable bit, leaves the trigger of
+each line it did not request at the reset value, and then hands over
+to the image. The image restores only the interrupt masks, so a line
+it had set up for both edges comes back with the reset trigger.
+
+On ODROID-M1 the headphone detect line (GPIO0_B0) is requested for
+both edges and is low with nothing plugged in. After a power loss in
+hybrid sleep its reset trigger fires again as soon as the edge handler
+acknowledges it, and the system does not come back. With this patch
+the board resumed 4 of 4 times, without it 0 of 5.
+
+Save the interrupt enable, type, polarity and both-edge registers with
+the masks and write them back before unmasking. In a normal suspend
+the bank keeps its registers, so this writes back what is already
+there. For lines that emulate both edges on GPIO v1, take the polarity
+from the current pin level.
+
+Fixes: 936ee2675eee ("gpio/rockchip: add driver for rockchip gpio")
+Cc: stable@vger.kernel.org
+Signed-off-by: Igor Velkov <iav@iav.lv>
+---
+Tested on ODROID-M1 (RK3568, GPIO v2): hybrid sleep with power removed
+during sleep 4/4, deep sleep 10/10. The GPIO v1 path was not tested on
+hardware.
+---
+ drivers/gpio/gpio-rockchip.c       | 21 +++++++++++++++++++++
+ drivers/pinctrl/pinctrl-rockchip.h |  8 ++++++++
+ 2 files changed, 29 insertions(+)
+
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index 0f46ff095a24..83a5cc8f3fe6 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -489,6 +489,11 @@ static void rockchip_irq_suspend(struct irq_data *d)
+ 	struct rockchip_pin_bank *bank = gc->private;
+ 
+ 	bank->saved_masks = irq_reg_readl(gc, bank->gpio_regs->int_mask);
++	bank->saved_en = rockchip_gpio_readl(bank, bank->gpio_regs->int_en);
++	bank->saved_type = rockchip_gpio_readl(bank, bank->gpio_regs->int_type);
++	bank->saved_polarity = rockchip_gpio_readl(bank, bank->gpio_regs->int_polarity);
++	if (bank->gpio_type == GPIO_TYPE_V2)
++		bank->saved_bothedge = rockchip_gpio_readl(bank, bank->gpio_regs->int_bothedge);
+ 	irq_reg_writel(gc, ~gc->wake_active, bank->gpio_regs->int_mask);
+ }
+ 
+@@ -496,7 +501,23 @@ static void rockchip_irq_resume(struct irq_data *d)
+ {
+ 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
+ 	struct rockchip_pin_bank *bank = gc->private;
++	u32 polarity = bank->saved_polarity;
++
++	/*
++	 * Restore from hibernation follows a cold boot: write the enables and
++	 * the trigger back before we unmask.
++	 */
++	if (bank->toggle_edge_mode) {
++		u32 data = readl(bank->reg_base + bank->gpio_regs->ext_port);
+ 
++		polarity &= ~bank->toggle_edge_mode;
++		polarity |= ~data & bank->toggle_edge_mode;
++	}
++	rockchip_gpio_writel(bank, bank->saved_en, bank->gpio_regs->int_en);
++	rockchip_gpio_writel(bank, bank->saved_type, bank->gpio_regs->int_type);
++	rockchip_gpio_writel(bank, polarity, bank->gpio_regs->int_polarity);
++	if (bank->gpio_type == GPIO_TYPE_V2)
++		rockchip_gpio_writel(bank, bank->saved_bothedge, bank->gpio_regs->int_bothedge);
+ 	irq_reg_writel(gc, bank->saved_masks, bank->gpio_regs->int_mask);
+ }
+ 
+diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
+index 950097699643..ea280843fcb9 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.h
++++ b/drivers/pinctrl/pinctrl-rockchip.h
+@@ -303,6 +303,10 @@ struct rockchip_drv {
+  * @db_clk: clock of the gpio debounce
+  * @irq: interrupt of the gpio bank
+  * @saved_masks: Saved content of GPIO_INTEN at suspend time.
++ * @saved_en: interrupt enables, saved at suspend time.
++ * @saved_type: interrupt level/edge type, saved at suspend time.
++ * @saved_polarity: interrupt polarity, saved at suspend time.
++ * @saved_bothedge: interrupt both-edge enables (GPIO v2), saved at suspend time.
+  * @pin_base: first pin number
+  * @nr_pins: number of pins in this bank
+  * @name: name of the bank
+@@ -332,6 +336,10 @@ struct rockchip_pin_bank {
+ 	struct clk			*db_clk;
+ 	int				irq;
+ 	u32				saved_masks;
++	u32				saved_en;
++	u32				saved_type;
++	u32				saved_polarity;
++	u32				saved_bothedge;
+ 	u32				pin_base;
+ 	u8				nr_pins;
+ 	char				*name;
+
+---
+base-commit: 0fa38ba784896f2fc32c9dacd33822f844b21906
+change-id: 20261107-b4-gpio-rockchip-hib-705c3fd52b49
+
+Best regards,
+-- 
+Igor Velkov <iav@iav.lv>
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
