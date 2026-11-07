@@ -2,104 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C3ECE606A332
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2026 05:55:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6585D606EE93
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2026 08:08:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ccu0K7mR;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=NaYNtGBA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uy+nxMZy
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Cc:To:From:Mime-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=k4U78Xng9K3XHJzlixlhWh7c+M1fcrjV83JJw4d67+4=; b=ccu0K7mRhr8rCvSHgPqbBnL1+E
-	8KOilMU7gufpPfi8lDhaLbry6mpuLKLnAT88RAa0RVTxftXFwAkoqlWp9PXbqZsnhmkM95++WtVAw
-	PRk//oP6WV1Wzn2FZ3K4L/dlCr5SM3c/bFGs1+1zKW0UczdmmzlE3Ic6MqnoQvDthSFBSpLCHCpcG
-	s8RQL0yTJNQMBWjTc6ry+0UiX/5Rfwfj5mhPXaBYj6LSNm6m8KG1IU29iSe87FebxhlQcfPW+ylyi
-	VHitSTG+AqEkxvthk6uhS8dhlmbRxCReiTjs4mS4A5+fVNOoHa/G2/g+hIq0kjYYM0CkuupaOT5LZ
-	qBsMAs9A==;
+	bh=euHgkzTeKUdQXIzNiP2MqHbxj0tg0ezpxQnvtYC3ZsE=; b=uy+nxMZyN+uJlBP6dpGt/I4RjQ
+	PxTgVJgG7yyYsxPhBhNHp928J4p9JDQ2xF2WQkVALvX5BLiaudM/EuaMNqdaaQCwvferkEqQpu/lQ
+	8gcZAptWtdZeDu0ofIDMEJj2/5OD4aYP+cVfKnTSxuSN4QGOEw+d+qBDMCKYhKJINW4OVHo+AwEUI
+	RtEuoG4xmzZmhKA7o4DWeW+nOBaPtKGSzg1uZGK2ulPiZHDSUJxjnUgOzIhNQLNjuB/+19/Lw+cmM
+	OvW8UULG9VakLFk3ySz9rAb4Kbk+VvPWXqhLOdqmdOVHFXXGYtrpIsgNJA8H0ckBAKKiNvYVRvGn6
+	RO+OtSSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPZON-0000000EFck-11oZ;
-	Sat, 07 Nov 2026 05:55:07 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xPbTV-0000000EMOo-0icj;
+	Sat, 07 Nov 2026 08:08:33 +0000
+Received: from mxhk.zte.com.cn ([160.30.148.35])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPZOL-0000000EFcX-1iTG;
-	Sat, 07 Nov 2026 05:55:05 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 817A36062B;
-	Sat,  7 Nov 2026 05:55:04 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794030904;
-	b=MP0O/Vs0B2yUDJAjGJOgKZTbmGK8A4JuTEXfB61rJjr7FVBeAm1nn1myUYrqiRBI3Kfm
-	 0wXYfQXXSQoxCoxwZD5+89ncll599kFq6XYsH3xhoWgISbWKYYwA+oflRa7Cbcj0LMzJq
-	 8bkItnMwJdI4M5jBvfhS0/gj6SU3sRV1tBXB5BvzGdDacJmhJ1jba9AhRxGcuhSyrA0Px
-	 fZHSyMFBMlOKVyCsimwnKrIQeNWI69JT6lvpFLrPPTACZjAZDIYyhWFYYN6Xs4N9vp8Bw
-	 RVIeopHQ6DmGhRmY21T6FEr4sWGKxmGnmlBH8Dy8+8ectl5WZAke5x7TrRBzJjOO6DQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794030904;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
-	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
-	 Content-Transfer-Encoding;
-	bh=k6a9rw1NTm5jSqcWk0YZ2ZnFUj3olcprcB7my6xtpkM=;
-	b=f1n5EIamrd3n8ruGUK6PGOG48c+BcmJ4U7mcdjrB782Rgkv3a5hd8RJPIwY9PsLcRSaW
-	 tj+UKpwmNcPhIcXHMFdHuT+zMyinCdMIrAYFPoucJ40oVzn91A6KkuE9b5Xm2Ed3apzbo
-	 JGYIlNbx8mK1qQDC1jyCw0aEuQf1oT5ZIoKaaBDsIWQ1zaAF07qPiMkWPu/k3c7y4aFhE
-	 AoD8RNA6XyLf6uMO6HAwg7FA0b65XTv4xVMstvk7AKBTs/xe/tuizvd+lySXXVV1GKJuz
-	 HNbHwsVdqcYncc8NQcyOrcbu0FkbRaKp44mCJHIvdIaUT05H0JM9SsoSuiFGMznGllg==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	id 1xPbTM-0000000EMLJ-2r3X;
+	Sat, 07 Nov 2026 08:08:29 +0000
+Received: from mse-fl1.zte.com.cn (unknown [10.5.228.132])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	 key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 809231F0089F;
-	Sat,  7 Nov 2026 05:55:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794030904;
-	bh=k6a9rw1NTm5jSqcWk0YZ2ZnFUj3olcprcB7my6xtpkM=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=NaYNtGBAv5I2SirX8wR8g6hay9g4MBIGfkpy8p5UFaLn/VJMiPvIUPKcFpuNDRzv+
-	 oVAG7METzXFWc4o6zhxuhd0d6oT8hdfgL6gSHnvedR/CUUzWMEs3O8vUQMjIpCJwxu
-	 AgfomGIIFcZDDJwL+NKld6Y66vNkKn9R/+qkOZ2HU8CP8lCKIJ2CieK+/7662LRNu7
-	 JYLrvjjTjRiRLNG75kMm46cMbI4DAg3S41RS/gnrpDYXwXmuWrQhfM8XmZ62lZlL4s
-	 Tm29KqZzkPVVOzlpThDcWC9rXGACyU0eDZVTfZ+385E/ONxA/XBStGQfG4t4XpsBdO
-	 51fOzjHC8M0SA==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 10FF747AD0;
-	Sat,  7 Nov 2026 05:55:03 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Sat, 07 Nov 2026 07:55:00 +0200
-Subject: [PATCH] gpio: rockchip: restore interrupt settings after
- hibernation
+	by mxhk.zte.com.cn (FangMail) with ESMTPS id 4jM7w265jZz8RVJk;
+	Sat, 07 Nov 2026 16:08:18 +0800 (CST)
+Received: from xaxapp01.zte.com.cn ([10.88.99.176])
+	by mse-fl1.zte.com.cn with SMTP id 6A788DXS022834;
+	Sat, 7 Nov 2026 16:08:13 +0800 (+08)
+	(envelope-from shao.mingyin@zte.com.cn)
+Received: from mapi (xaxapp04[null])
+	by mapi (Zmail) with MAPI id mid32;
+	Sat, 7 Nov 2026 16:08:15 +0800 (CST)
+X-Zmail-TransId: 2afb6aeedc6f415-84fc1
+X-Mailer: Zmail v1.0
+Message-ID: <20261107160815352Q4eO0zXOX0KF5AwEbOJ6f@zte.com.cn>
+Date: Sat, 7 Nov 2026 16:08:15 +0800 (CST)
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-Message-Id: <20261107-b4-gpio-rockchip-hib-v1-1-19f4d163a55e@iav.lv>
-X-B4-Tracking: v=1; b=H4sIADS97moC/x3MQQqAIBBA0avErBtQy6KuEi1SpxyCFIUIpLsnL
- d/i/wKZElOGuSmQ6ObM4aqQbQPWb9dByK4alFCDlGJE0+MROWAK9rSeI3o2OAptu91pZfoJaho
- T7fz822V93w+7uc8zZgAAAA==
-To: Linus Walleij <linusw@kernel.org>, 
- Bartosz Golaszewski <brgl@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Jianqun Xu <jay.xu@rock-chips.com>, 
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Igor Velkov <iav@iav.lv>, stable@vger.kernel.org
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4448; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=Dk4H/o+1eyRMlxB1wc6jS7hkgNHj7wT6TPN6Ut/qDU4=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFnv9po6dYmpXb28vvvIlp/mXtva1HY+EvnfE9X0OUCqO
- fYz99KIjlIWBjEuBlkxRZYJhzRuZSy5+tffw/wBzBxWJpAhDFycAjCR8xGMDI8aXPqLJyzbVBVo
- vm3T2zVfH91ZWvvCJtXQgP/k3vVctsEM/9P1/fnerJbZtzOyccbmzfME7BNft7Xl+gX92Kddv+A
- 4ExMA
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+Mime-Version: 1.0
+From: <shao.mingyin@zte.com.cn>
+To: <broonie@kernel.org>, <linux-sound@vger.kernel.org>
+Cc: <lgirdwood@gmail.com>, <heiko@sntech.de>,
+        <linux-rockchip@lists.infradead.org>,
+        <linux-arm-kernel@lists.infradead.org>, <wens@kernel.org>,
+        <jernej.skrabec@gmail.com>, <samuel@sholland.org>,
+        <linux-sunxi@lists.linux.dev>, <kuninori.morimoto.gx@renesas.com>,
+        <linux-renesas-soc@vger.kernel.org>, <srini@kernel.org>,
+        <linux-arm-msm@vger.kernel.org>, <linux-kernel@vger.kernel.org>
+Subject: =?UTF-8?B?W1BBVENIIDAvNV0gQVNvQzogZml4IGVycm9yLXBhdGggbGVha3MgYW5kIGEgTlVMTCBkZXJlZmVyZW5jZQ==?=
+X-MAIL: mse-fl1.zte.com.cn 6A788DXS022834
+X-TLS: YES
+X-ENVELOPE-SENDER: shao.mingyin@zte.com.cn
+X-SOURCE-IP: 10.5.228.132 unknown Sat, 07 Nov 2026 16:08:18 +0800
+X-CLEAN: YES
+X-Fangmail-Anti-Spam-Filtered: true
+X-Fangmail-MID-QID: 6AEEDC72.001/4jM7w265jZz8RVJk
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261107_000824_880807_3ED5DBE1 
+X-CRM114-Status: UNSURE (   7.24  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,125 +77,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Igor Velkov <iav@iav.lv>
+Five error-path defects in ASoC drivers, found while reviewing against
+linux-next next-20261030.  Four of them leak a reference or a clock, or
+drop one twice, on a path that is easy to miss; the fifth dereferences
+a NULL remote port while parsing an audio graph.  The patches are
+independent and can be reviewed, applied and backported separately.
 
-Restore from hibernation follows a cold boot. The boot kernel probes
-the GPIO banks, sets every interrupt enable bit, leaves the trigger of
-each line it did not request at the reset value, and then hands over
-to the image. The image restores only the interrupt masks, so a line
-it had set up for both edges comes back with the reset trigger.
+  1/5 ASoC: rsnd: fix NULL dereference when remote port has no endpoint
+  2/5 ASoC: wcd9335: fix SLIM interface device double-put on error paths
+  3/5 ASoC: rockchip: rk3399_gru_sound: fix codec node reference leak
+  4/5 ASoC: sun8i-codec: fix bus clock leak in runtime resume error path
+  5/5 ASoC: rsnd: fix SSIU node reference leak in rsnd_dma_of_path
 
-On ODROID-M1 the headphone detect line (GPIO0_B0) is requested for
-both edges and is low with nothing plugged in. After a power loss in
-hybrid sleep its reset trigger fires again as soon as the edge handler
-acknowledges it, and the system does not come back. With this patch
-the board resumed 4 of 4 times, without it 0 of 5.
+1/5 returns early when a graph endpoint has no remote port; 2/5 removes
+the four manual put_device() calls that duplicate the devm action; 3/5
+puts the codec node on the two skip paths of the Rockchip DAI-link
+parse; 4/5 disables the bus clock when the regmap sync fails; 5/5 puts
+the SSIU node after the DMA path lookup.
 
-Save the interrupt enable, type, polarity and both-edge registers with
-the masks and write them back before unmasking. In a normal suspend
-the bank keeps its registers, so this writes back what is already
-there. For lines that emulate both edges on GPIO v1, take the polarity
-from the current pin level.
+Patches 1/5 and 5/5 are R-Car (Kuninori Morimoto), 2/5 is the WCD9335
+codec (Srinivas Kandagatla), 3/5 is Rockchip (Heiko Stuebner) and 4/5
+is sunxi (Chen-Yu Tsai, Jernej Skrabec, Samuel Holland).  All go
+through the ASoC tree.
 
-Fixes: 936ee2675eee ("gpio/rockchip: add driver for rockchip gpio")
-Cc: stable@vger.kernel.org
-Signed-off-by: Igor Velkov <iav@iav.lv>
----
-Tested on ODROID-M1 (RK3568, GPIO v2): hybrid sleep with power removed
-during sleep 4/4, deep sleep 10/10. The GPIO v1 path was not tested on
-hardware.
----
- drivers/gpio/gpio-rockchip.c       | 21 +++++++++++++++++++++
- drivers/pinctrl/pinctrl-rockchip.h |  8 ++++++++
- 2 files changed, 29 insertions(+)
+3/5 was tested on 7.3.0-next-20261030 in a QEMU/TCG arm64 guest with a
+synthetic DT; the test section in that patch describes the setup and
+the observed reference counts.
 
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index 0f46ff095a24..83a5cc8f3fe6 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -489,6 +489,11 @@ static void rockchip_irq_suspend(struct irq_data *d)
- 	struct rockchip_pin_bank *bank = gc->private;
- 
- 	bank->saved_masks = irq_reg_readl(gc, bank->gpio_regs->int_mask);
-+	bank->saved_en = rockchip_gpio_readl(bank, bank->gpio_regs->int_en);
-+	bank->saved_type = rockchip_gpio_readl(bank, bank->gpio_regs->int_type);
-+	bank->saved_polarity = rockchip_gpio_readl(bank, bank->gpio_regs->int_polarity);
-+	if (bank->gpio_type == GPIO_TYPE_V2)
-+		bank->saved_bothedge = rockchip_gpio_readl(bank, bank->gpio_regs->int_bothedge);
- 	irq_reg_writel(gc, ~gc->wake_active, bank->gpio_regs->int_mask);
- }
- 
-@@ -496,7 +501,23 @@ static void rockchip_irq_resume(struct irq_data *d)
- {
- 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
- 	struct rockchip_pin_bank *bank = gc->private;
-+	u32 polarity = bank->saved_polarity;
-+
-+	/*
-+	 * Restore from hibernation follows a cold boot: write the enables and
-+	 * the trigger back before we unmask.
-+	 */
-+	if (bank->toggle_edge_mode) {
-+		u32 data = readl(bank->reg_base + bank->gpio_regs->ext_port);
- 
-+		polarity &= ~bank->toggle_edge_mode;
-+		polarity |= ~data & bank->toggle_edge_mode;
-+	}
-+	rockchip_gpio_writel(bank, bank->saved_en, bank->gpio_regs->int_en);
-+	rockchip_gpio_writel(bank, bank->saved_type, bank->gpio_regs->int_type);
-+	rockchip_gpio_writel(bank, polarity, bank->gpio_regs->int_polarity);
-+	if (bank->gpio_type == GPIO_TYPE_V2)
-+		rockchip_gpio_writel(bank, bank->saved_bothedge, bank->gpio_regs->int_bothedge);
- 	irq_reg_writel(gc, bank->saved_masks, bank->gpio_regs->int_mask);
- }
- 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-index 950097699643..ea280843fcb9 100644
---- a/drivers/pinctrl/pinctrl-rockchip.h
-+++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -303,6 +303,10 @@ struct rockchip_drv {
-  * @db_clk: clock of the gpio debounce
-  * @irq: interrupt of the gpio bank
-  * @saved_masks: Saved content of GPIO_INTEN at suspend time.
-+ * @saved_en: interrupt enables, saved at suspend time.
-+ * @saved_type: interrupt level/edge type, saved at suspend time.
-+ * @saved_polarity: interrupt polarity, saved at suspend time.
-+ * @saved_bothedge: interrupt both-edge enables (GPIO v2), saved at suspend time.
-  * @pin_base: first pin number
-  * @nr_pins: number of pins in this bank
-  * @name: name of the bank
-@@ -332,6 +336,10 @@ struct rockchip_pin_bank {
- 	struct clk			*db_clk;
- 	int				irq;
- 	u32				saved_masks;
-+	u32				saved_en;
-+	u32				saved_type;
-+	u32				saved_polarity;
-+	u32				saved_bothedge;
- 	u32				pin_base;
- 	u8				nr_pins;
- 	char				*name;
+Shao Mingyin (5):
+  ASoC: rsnd: fix NULL dereference when remote port has no endpoint
+  ASoC: wcd9335: fix SLIM interface device double-put on error paths
+  ASoC: rockchip: rk3399_gru_sound: fix codec node reference leak
+  ASoC: sun8i-codec: fix bus clock leak in runtime resume error path
+  ASoC: rsnd: fix SSIU node reference leak in rsnd_dma_of_path
+
+ sound/soc/codecs/wcd9335.c            | 4 ----
+ sound/soc/renesas/rcar/core.c         | 2 ++
+ sound/soc/renesas/rcar/dma.c          | 5 ++++-
+ sound/soc/rockchip/rk3399_gru_sound.c | 8 ++++++--
+ sound/soc/sunxi/sun8i-codec.c         | 1 +
+ 5 files changed, 13 insertions(+), 7 deletions(-)
 
 ---
-base-commit: 0fa38ba784896f2fc32c9dacd33822f844b21906
-change-id: 20261107-b4-gpio-rockchip-hib-705c3fd52b49
-
-Best regards,
--- 
-Igor Velkov <iav@iav.lv>
-
-
+base-commit: 7649ba73f9e7e1e04d0b46213e39c79ae09dd55c
 
 _______________________________________________
 Linux-rockchip mailing list
