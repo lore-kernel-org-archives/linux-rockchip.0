@@ -2,67 +2,64 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 45790606A32C
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2026 22:42:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98221606A335
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2026 22:45:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PKQUWatZ;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Lr6VX3aI
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Hu7Pzerf;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=WnnaW6MP
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=MwWmd7802RdbdmMdfwP3uPDAtPnm9rfMA6VzuqrIG+Q=; b=PKQUWatZroLZZfomzGNDPMWLg9
-	xwubsCWWm8aNOgjAW6KQuRa9E7dJSl5Mpknx6e+gY6Ex0Ojxjhbs1Kqr8hcmysWA6XUi5hRfs9nZM
-	/PAYw1j18eHOkH00qEFYYfR675jKxZ5vYgaqamF9+Z+zLd489nCUe+V4CIMNweNZyaxo89ML+yjh1
-	6f5T0k7wWCM2JO3vC8MxGkbG08CWqnv5CRwIbp4c0l07nMPopy8syGAEgxnYHe8w2+YPi0oxvSHZX
-	CD0OxY/FoaniPs/XMC8gPnzZY5jNbJ5mdUyUEad8v3rfNJz9G++xPf1XS2QHkbUa35x4O0suigedr
-	79W2uzlg==;
+	bh=t/UlantMaoMjF8u5YtedyyWycdzUQ7wJpc4LAMflDLk=; b=Hu7Pzerf4MIm05S7QYxOiQB1OW
+	kK0iPv9+NmRNGwafEkt4UUROBHEO2Fw3p3Y2RQX9ly/kIl90DFdcxTVT4iKWmuVddod7LPJqOb5+x
+	hDJeMD22l5gboihLQ6FPGZDtglPPQGInjgM8ZxCNT7DmK3mK0E4ZfJHEeVQ/jbS4sOSp8LA8dknp0
+	+YkxzzTK8deiQPpFq55PBJn6Xr5o6vV6jfV1KItnoTEY2WmXhbtfSkuQAcpWrshxpA+s8lU3diYQf
+	KbL9RczTcIhCfeq1f1fyuWBCimiJvuXUMoqXK82x/MLAPVxegrSlHy1YR9E7EFVBPTrvU6xzau5bZ
+	vns1BlHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPp7F-0000000FTkG-45qZ;
-	Sat, 07 Nov 2026 22:42:29 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xPp9z-0000000FTto-1lCJ;
+	Sat, 07 Nov 2026 22:45:19 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPp7E-0000000FTjw-29KT;
-	Sat, 07 Nov 2026 22:42:28 +0000
+	id 1xPp9x-0000000FTtR-1KFd;
+	Sat, 07 Nov 2026 22:45:17 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2131A61213;
-	Sat,  7 Nov 2026 22:42:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0904A1F0089F;
-	Sat,  7 Nov 2026 22:42:23 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B13D44466C;
+	Sat,  7 Nov 2026 22:45:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA4951F0089F;
+	Sat,  7 Nov 2026 22:45:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794091345;
-	bh=xFgpOeXIhWE4x1O0Mu4ZGy/Nw4WbClkm6HsJcdNwT+A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Lr6VX3aIKAkiZddAWqS8pV015LkPa8GXTxKUW7KAqMyOsjAauvuuoEijtfedO0dxi
-	 /G+QtmVoCH4tXfKy05k7PClFBhNKZgskEWrsrp5rlF9GMHEHsvVPKdCARiLcnzkloh
-	 ve7ys7z9J/3x9bHJluwP2bkqgFwSRsVIa5DBitC4IKl9fVb8B618op80Ka/POHwpqG
-	 6GCUsOdhl3sxt4sUzrylP1o5xzKVeMyFWCIQQhCwKsSHqO4GcOAZtuoXSA+XcsmYTt
-	 gY/vBVFy4Ri7SqLPXXDtZrEd/PaiqdO4gbhPIR1jSzLJdgjcqeegkdUiiqk5Lt7mnT
-	 Y2pTNJbks5bbA==
-Date: Sat, 7 Nov 2026 16:42:19 -0600
-From: Bjorn Andersson <andersson@kernel.org>
-To: Sebastian Reichel <sre@kernel.org>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Konrad Dybcio <konradybcio@kernel.org>, 
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, kernel@collabora.com, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Subject: Re: [PATCH v2 4/4] arm64: dts: qcom: Use DP AltMode defines
-Message-ID: <au-pMBoYrUn89Zhy@zenbook>
-References: <20261017-dp-altmode-dt-defines-v2-0-7ab3d93553dd@collabora.com>
- <20261017-dp-altmode-dt-defines-v2-4-7ab3d93553dd@collabora.com>
+	s=k20260515; t=1794091516;
+	bh=5Sg/QYc64KGsYlE8LxgBfqmE1GMl4mLlfKRfIL2XKbk=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=WnnaW6MPIQMe5PP2NqlUxaetG2uBm1miygWQ2RwaFHPcW743Qpf4SaYmS2T1W61ye
+	 WtdLYYA4E71F2MSu+qlnK1gs3ILHqyGdT0fIPskWakrOfWSf75OrgTnIPXrPPbnDod
+	 RcpTsR04TFbydLjDDwd7MPCIYTKMNw0PRvfh2SaPORn7p1LhhCmIWA1+NUUJlmZax0
+	 E8mF6dwI4qrxmJn4dvjOc2AJqdOH8WXq9NMbU1SD6QAYbX5EaDHjYAttWMTX9DFOwC
+	 dipLk31/oxxl8oL8kBrRhFzBxfDn15PRVa46dzLqpqkiTQAsjbCkyMrtEWMXA1h5cP
+	 2SIHlV9PuGYRA==
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: bhelgaas@google.com, lpieralisi@kernel.org, kwilczynski@kernel.org, 
+ jingoohan1@gmail.com, Hans Zhang <18255117159@163.com>
+Cc: imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org, 
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-msm@vger.kernel.org, sophgo@lists.linux.dev, 
+ linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
+ linux-tegra@vger.kernel.org, linux-pci@vger.kernel.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20261028030652.2917756-1-18255117159@163.com>
+References: <20261028030652.2917756-1-18255117159@163.com>
+Subject: Re: [PATCH v5 00/16] PCI: dwc: Cache PCIe capability offset
+Message-Id: <179409150473.143243.11323239293809371653.b4-ty@b4>
+Date: Sun, 08 Nov 2026 04:15:04 +0530
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261017-dp-altmode-dt-defines-v2-4-7ab3d93553dd@collabora.com>
+X-Mailer: b4 0.16.0
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,80 +69,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sat, Oct 17, 2026 at 09:59:33PM +0200, Sebastian Reichel wrote:
-> From: Sebastian Reichel <sebastian.reichel@collabora.com>
-> 
-> Use the new USB-C DP AltMode defines for the SVID and the capabilities
-> VDO to make the DTs more readable.
-> 
-> Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-Acked-by: Bjorn Andersson <andersson@kernel.org>
-
-Regards,
-Bjorn
-
-> ---
->  arch/arm64/boot/dts/qcom/qrb5165-rb5.dts | 8 ++++++--
->  arch/arm64/boot/dts/qcom/sm8150-hdk.dts  | 9 +++++++--
->  2 files changed, 13 insertions(+), 4 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts b/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts
-> index d6af679abe1a..d21b94e872ce 100644
-> --- a/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts
-> +++ b/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts
-> @@ -1508,8 +1508,12 @@ PDO_FIXED_USB_COMM |
->  
->  		altmodes {
->  			displayport {
-> -				svid = /bits/ 16 <0xff01>;
-> -				vdo = <0x00001c46>;
-> +				svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
-> +				vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
-> +					      DP_CAP_UHBR_13_5_UNSUPPORTED,
-> +					      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
-> +					      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
-> +					      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
->  			};
->  		};
->  
-> diff --git a/arch/arm64/boot/dts/qcom/sm8150-hdk.dts b/arch/arm64/boot/dts/qcom/sm8150-hdk.dts
-> index cdced5c848d3..3d83dd305954 100644
-> --- a/arch/arm64/boot/dts/qcom/sm8150-hdk.dts
-> +++ b/arch/arm64/boot/dts/qcom/sm8150-hdk.dts
-> @@ -581,8 +581,13 @@ PDO_FIXED_USB_COMM |
->  
->  		altmodes {
->  			displayport {
-> -				svid = /bits/ 16 <0xff01>;
-> -				vdo = <0x00001c46>;
-> +				svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
-> +				vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
-> +					      DP_CAP_UHBR_13_5_UNSUPPORTED,
-> +					      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
-> +					      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
-> +					      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
-> +
->  			};
->  		};
->  
-> 
-> -- 
-> 2.53.0
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Ck9uIFdlZCwgMjggT2N0IDIwMjYgMTE6MDY6MzYgKzA4MDAsIEhhbnMgWmhhbmcgd3JvdGU6Cj4g
+VGhlIERXQyBQQ0llIGNvcmUgYW5kIGl0cyBwbGF0Zm9ybSBkcml2ZXJzIHJlcGVhdGVkbHkgY2Fs
+bAo+IGR3X3BjaWVfZmluZF9jYXBhYmlsaXR5KHBjaSwgUENJX0NBUF9JRF9FWFApIHRvIG9idGFp
+biB0aGUgb2Zmc2V0IG9mIHRoZQo+IFBDSSBFeHByZXNzIENhcGFiaWxpdHkgc3RydWN0dXJlLCBp
+bmNsdWRpbmcgaW4gcGF0aHMgdGhhdCBydW4gbW9yZSB0aGFuCj4gb25jZSBzdWNoIGFzIGxpbmsg
+cG9sbGluZywgc3VzcGVuZC9yZXN1bWUgYW5kIGludGVycnVwdCBoYW5kbGVycy4KPiAKPiBBZGQg
+YSBjYWNoZWQgcGNpZV9jYXAgZmllbGQgdG8gc3RydWN0IGR3X3BjaWUgYW5kIGEKPiBkd19wY2ll
+X2dldF9wY2llX2NhcCgpIGhlbHBlciB0aGF0IHBlcmZvcm1zIHRoZSBsb29rdXAgb24gZmlyc3Qg
+dXNlIGFuZAo+IGNhY2hlcyB0aGUgcmVzdWx0LCB0aGVuIGNvbnZlcnQgdGhlIGNvcmUgYW5kIHRo
+ZSAxNCBwbGF0Zm9ybSBkcml2ZXJzCj4gdGhhdCB1c2UgUENJX0NBUF9JRF9FWFAuCj4gCj4gWy4u
+Ll0KCkFwcGxpZWQsIHRoYW5rcyEKClswMS8xNl0gUENJOiBkd2M6IEFkZCBwY2llX2NhcCBmaWVs
+ZCBhbmQgY2FjaGluZyBoZWxwZXIKICAgICAgICBjb21taXQ6IGQwMThmZjRiZTg5NjE5ODE4Mjhl
+NzVhZmQzNmVlZjkwY2M1MjRjZDgKWzAyLzE2XSBQQ0k6IGR3YzogVXNlIGNhY2hlZCBQQ0llIGNh
+cGFiaWxpdHkgb2Zmc2V0IGluIGNvcmUKICAgICAgICBjb21taXQ6IGY4M2E3YjU1NTE3MDEyNDk2
+YmQ5NTM5ZmJiZGVlZWNmMGQxZTlmZjkKWzAzLzE2XSBQQ0k6IGR3YzogaW14NjogVXNlIGNhY2hl
+ZCBQQ0llIGNhcGFiaWxpdHkgb2Zmc2V0CiAgICAgICAgY29tbWl0OiA4NDcyMzc0NTc2ZDMwMGQz
+NmRlMjBhZDU5MmZkMWYzOTE4MWI4NWE4ClswNC8xNl0gUENJOiBkd2M6IGxheWVyc2NhcGUtZXA6
+IFVzZSBjYWNoZWQgUENJZSBjYXBhYmlsaXR5IG9mZnNldAogICAgICAgIGNvbW1pdDogODc0Mjdj
+YzlkNzExNTA4OGU5MmU4YzkyYzI4MmUyODQ4MWM5YjI2YgpbMDUvMTZdIFBDSTogZHdjOiBtZXNv
+bjogVXNlIGNhY2hlZCBQQ0llIGNhcGFiaWxpdHkgb2Zmc2V0CiAgICAgICAgY29tbWl0OiA1M2Y5
+ZWQzZDY4MDdjNmFhNzk5NDRlZDQyYjMzNjJhYTg5MTkyOTU2ClswNi8xNl0gUENJOiBkd2M6IHJv
+Y2tjaGlwOiBVc2UgY2FjaGVkIFBDSWUgY2FwYWJpbGl0eSBvZmZzZXQKICAgICAgICBjb21taXQ6
+IGJmNWMzZjQ5NzUwMTA3NTBjNTM1YjEyN2NiM2FiODE5NTFjN2ZmZDAKWzA3LzE2XSBQQ0k6IGR3
+YzogZXN3aW46IFVzZSBjYWNoZWQgUENJZSBjYXBhYmlsaXR5IG9mZnNldAogICAgICAgIGNvbW1p
+dDogMzg2YjlmYTQ5ZTI2YWZiZDc2ZDkzNGYxMzZmNjhiYzM1NTc5MWNlOApbMDgvMTZdIFBDSTog
+ZHdjOiBmdTc0MDogVXNlIGNhY2hlZCBQQ0llIGNhcGFiaWxpdHkgb2Zmc2V0CiAgICAgICAgY29t
+bWl0OiA2ZmJhNTU3YjgyZjQ5OTY3ODZkMTI2NzZmNTU0YWQxMmU2N2U0NmQ5ClswOS8xNl0gUENJ
+OiBkd2M6IGludGVsLWd3OiBVc2UgY2FjaGVkIFBDSWUgY2FwYWJpbGl0eSBvZmZzZXQKICAgICAg
+ICBjb21taXQ6IDAyMzA1YWQzYWQyZjkxOGFjMDA5ZThhZTRjMmRmOGMyYjExZGMwYmMKWzEwLzE2
+XSBQQ0k6IGR3YzogcWNvbS1lcDogVXNlIGNhY2hlZCBQQ0llIGNhcGFiaWxpdHkgb2Zmc2V0CiAg
+ICAgICAgY29tbWl0OiBjNDg5ZTEwMDhkZjhhNzQ1NjY4NmFiNjM3NTkzNTgyYmU2M2YxNGM5Clsx
+MS8xNl0gUENJOiBkd2M6IHFjb206IFVzZSBjYWNoZWQgUENJZSBjYXBhYmlsaXR5IG9mZnNldAog
+ICAgICAgIGNvbW1pdDogMzhhZjllZGE0OTE5OGIwYjJlM2Q5MDMyNGFmNmM1YjAwMTIzZDRlYwpb
+MTIvMTZdIFBDSTogZHdjOiBzb3BoZ286IFVzZSBjYWNoZWQgUENJZSBjYXBhYmlsaXR5IG9mZnNl
+dAogICAgICAgIGNvbW1pdDogMzI4YzZkNTA3Njk2ZWIzYjA3NWVmYTYyMzZjZGMxYzEyYTJhODAw
+YwpbMTMvMTZdIFBDSTogZHdjOiBzcGFjZW1pdC1rMTogVXNlIGNhY2hlZCBQQ0llIGNhcGFiaWxp
+dHkgb2Zmc2V0CiAgICAgICAgY29tbWl0OiBlZjJiYzU2ZjA5N2FhZmRlZWU3ZmNlYjY4ZDJjYTll
+NGM2OTU2ZGJmClsxNC8xNl0gUENJOiBkd2M6IHNwZWFyMTN4eDogVXNlIGNhY2hlZCBQQ0llIGNh
+cGFiaWxpdHkgb2Zmc2V0CiAgICAgICAgY29tbWl0OiBlYmQ5NjhmMjBjNjFiM2Q4NjE2NWQ5ZTFi
+YzM4NzA0NGRjZjczNzA3ClsxNS8xNl0gUENJOiBkd2M6IHRlZ3JhMTk0OiBVc2UgY2FjaGVkIFBD
+SWUgY2FwYWJpbGl0eSBvZmZzZXQKICAgICAgICBjb21taXQ6IDgwNzg5MjdiZjI3ODY2ZWNjNTI1
+MTkxOWVjNmI0MTQ3OGFlNjIwYWMKWzE2LzE2XSBQQ0k6IGR3YzogdWx0cmFyaXNjOiBVc2UgY2Fj
+aGVkIFBDSWUgY2FwYWJpbGl0eSBvZmZzZXQKICAgICAgICBjb21taXQ6IDY0ZTJlNTQyMzhkYzFh
+NjNkNGM4YmQ4MjdkMTQwYmRmZmVmMDU0MDMKCkJlc3QgcmVnYXJkcywKLS0gCuCuruCuo+Cuv+Cu
+teCuo+CvjeCuo+CuqeCvjSDgrprgrqTgrr7grprgrr/grrXgrq7gr40KCgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
+ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
