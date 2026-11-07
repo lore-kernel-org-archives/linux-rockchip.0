@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9FA56606A326
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2026 20:31:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 45790606A32C
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2026 22:42:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zTKwiTdU;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=QVEjE+63
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PKQUWatZ;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Lr6VX3aI
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,92 +14,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=sqmUhXEtNGyiyyBjyigxz6CAXmJZ5Oad/8yShnLRyBs=; b=zTKwiTdUT6+NeUPVxStaHGRq/d
-	o/sPPy/vKngcF4c1lXCM6biEy04s37EOm4N9KNDZi+wyE34TIWdU+PeiFFu/e1NUF8viang3ENU+C
-	YMRnQiPXdbAJzlyWarLXOEv6qvTgWT9WWFRltHrNoZzr45hNdDKf0LY8hZCtxoLnoLokvR/Sk30wf
-	lCUqxy1ZYA1Xrvfxs3EV+Ra+byVcI9WEC3SAGCny8G1U9eIj0eKGMet1cZaXkgDQVdd3CqXCZbzgl
-	wSyAPhAS8EY6iBFlPCWj1TFMqa+accfQOKoVQ9vo5tlaAz/l6FrPKXQERL26taNU5DzqhqZ8au8D2
-	nwNtuxEw==;
+	bh=MwWmd7802RdbdmMdfwP3uPDAtPnm9rfMA6VzuqrIG+Q=; b=PKQUWatZroLZZfomzGNDPMWLg9
+	xwubsCWWm8aNOgjAW6KQuRa9E7dJSl5Mpknx6e+gY6Ex0Ojxjhbs1Kqr8hcmysWA6XUi5hRfs9nZM
+	/PAYw1j18eHOkH00qEFYYfR675jKxZ5vYgaqamF9+Z+zLd489nCUe+V4CIMNweNZyaxo89ML+yjh1
+	6f5T0k7wWCM2JO3vC8MxGkbG08CWqnv5CRwIbp4c0l07nMPopy8syGAEgxnYHe8w2+YPi0oxvSHZX
+	CD0OxY/FoaniPs/XMC8gPnzZY5jNbJ5mdUyUEad8v3rfNJz9G++xPf1XS2QHkbUa35x4O0suigedr
+	79W2uzlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPn4L-0000000FMQH-3x5C;
-	Sat, 07 Nov 2026 20:31:21 +0000
-Received: from mgamail.intel.com ([192.198.163.9])
+	id 1xPp7F-0000000FTkG-45qZ;
+	Sat, 07 Nov 2026 22:42:29 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPn4I-0000000FMP2-3dRh;
-	Sat, 07 Nov 2026 20:31:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1794083479; x=1825619479;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=OahVgGzTA/BbKK0ba5EuajCKzsBQJEMIYUqKxYPZyv0=;
-  b=QVEjE+63IMJ57BjjxDteVkY/7eyoIsrHLdA4f01nWQtVTVAcbZ1JEIF4
-   5cYgoELqtq2kwfyD7IpvvSvPZYygzr0V4J6ttq510/V4mfgD7Md3I636A
-   uwxXbmX/xE73K2I8+/VFR1OD8F5XgGAUVOghjF05aOFNpeSIn/cnGvcZ/
-   g6zxX83Hb6eNwO6irCVnr4KmCfyzN6hq6VDp/eU2WIlylhIQ46M2QT95t
-   swS28f0z2d+ERVyAzIl9xs4I+rfxcGKrHR9bRIZBxL8RmqEYAM6Dm31K0
-   sfxi9hCyWWg+YMFy+Ni/iJuySzTqDJPQKAHem45wsJN/fmtdTwM0EBXYG
-   A==;
-X-CSE-ConnectionGUID: hhq1W5mQSd+qOuX6LRhw3Q==
-X-CSE-MsgGUID: /XnKCjbvSqWjD1v3N9gcgQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11959"; a="2751104"
-X-IronPort-AV: E=Sophos;i="6.27,200,1787036400"; 
-   d="scan'208";a="2751104"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Nov 2026 12:31:18 -0800
-X-CSE-ConnectionGUID: o7l63MtfQnShQRRzlIJVWg==
-X-CSE-MsgGUID: Lctc+yuNQwKIuKfWJsyFdg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,200,1787036400"; 
-   d="scan'208";a="7876352"
-Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
-  by fmviesa001.fm.intel.com with ESMTP; 07 Nov 2026 12:31:12 -0800
-Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1xPn47-00000000rX5-3vnH;
-	Sat, 07 Nov 2026 20:31:07 +0000
-Date: Sun, 8 Nov 2026 04:30:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Xaver Hugl <xaver.hugl@gmail.com>, Vidith Madhu <vmadhu@nvidia.com>,
-	"Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>,
-	Leo Li <sunpeng.li@amd.com>,
-	Harry Wentland <harry.wentland@amd.com>,
-	Fangzhi Zuo <Jerry.Zuo@amd.com>,
-	Daniel Stone <daniels@collabora.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Helge Deller <deller@gmx.de>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andyshrk@163.com>,
-	Michel =?iso-8859-1?Q?D=E4nzer?= <michel.daenzer@mailbox.org>
-Cc: oe-kbuild-all@lists.linux.dev, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, linux-fbdev@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 20/27] drm/connector: hdmi: Add QMS state validation
- and computation
-Message-ID: <202611080413.OlzAJilt-lkp@intel.com>
-References: <20261105-vrr-limiter-uapi-v2-20-55f4215be2c2@collabora.com>
+	id 1xPp7E-0000000FTjw-29KT;
+	Sat, 07 Nov 2026 22:42:28 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2131A61213;
+	Sat,  7 Nov 2026 22:42:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0904A1F0089F;
+	Sat,  7 Nov 2026 22:42:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794091345;
+	bh=xFgpOeXIhWE4x1O0Mu4ZGy/Nw4WbClkm6HsJcdNwT+A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Lr6VX3aIKAkiZddAWqS8pV015LkPa8GXTxKUW7KAqMyOsjAauvuuoEijtfedO0dxi
+	 /G+QtmVoCH4tXfKy05k7PClFBhNKZgskEWrsrp5rlF9GMHEHsvVPKdCARiLcnzkloh
+	 ve7ys7z9J/3x9bHJluwP2bkqgFwSRsVIa5DBitC4IKl9fVb8B618op80Ka/POHwpqG
+	 6GCUsOdhl3sxt4sUzrylP1o5xzKVeMyFWCIQQhCwKsSHqO4GcOAZtuoXSA+XcsmYTt
+	 gY/vBVFy4Ri7SqLPXXDtZrEd/PaiqdO4gbhPIR1jSzLJdgjcqeegkdUiiqk5Lt7mnT
+	 Y2pTNJbks5bbA==
+Date: Sat, 7 Nov 2026 16:42:19 -0600
+From: Bjorn Andersson <andersson@kernel.org>
+To: Sebastian Reichel <sre@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Konrad Dybcio <konradybcio@kernel.org>, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, kernel@collabora.com, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Subject: Re: [PATCH v2 4/4] arm64: dts: qcom: Use DP AltMode defines
+Message-ID: <au-pMBoYrUn89Zhy@zenbook>
+References: <20261017-dp-altmode-dt-defines-v2-0-7ab3d93553dd@collabora.com>
+ <20261017-dp-altmode-dt-defines-v2-4-7ab3d93553dd@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20261105-vrr-limiter-uapi-v2-20-55f4215be2c2@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261107_123118_970744_8BC90FE3 
-X-CRM114-Status: GOOD (  11.17  )
-X-Spam-Score: -4.4 (----)
+In-Reply-To: <20261017-dp-altmode-dt-defines-v2-4-7ab3d93553dd@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,40 +75,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Nicolas,
+On Sat, Oct 17, 2026 at 09:59:33PM +0200, Sebastian Reichel wrote:
+> From: Sebastian Reichel <sebastian.reichel@collabora.com>
+> 
+> Use the new USB-C DP AltMode defines for the SVID and the capabilities
+> VDO to make the DTs more readable.
+> 
+> Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-kernel test robot noticed the following build warnings:
+Acked-by: Bjorn Andersson <andersson@kernel.org>
 
-[auto build test WARNING on 0e8b43b5a5ef2dd52c454158e7fd8a927d796eb4]
+Regards,
+Bjorn
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Nicolas-Frattaroli/drm-Add-VRR-state/20261105-165152
-base:   0e8b43b5a5ef2dd52c454158e7fd8a927d796eb4
-patch link:    https://lore.kernel.org/r/20261105-vrr-limiter-uapi-v2-20-55f4215be2c2%40collabora.com
-patch subject: [PATCH v2 20/27] drm/connector: hdmi: Add QMS state validation and computation
-config: loongarch-randconfig-1001-20261108 (https://download.01.org/0day-ci/archive/20261108/202611080413.OlzAJilt-lkp@intel.com/config)
-compiler: loongarch64-linux-gcc (GCC) 16.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261108/202611080413.OlzAJilt-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202611080413.OlzAJilt-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> Warning: drivers/gpu/drm/display/drm_hdmi_state_helper.c:1031 function parameter 'conn_state' not described in 'hdmi_validate_qms'
->> Warning: drivers/gpu/drm/display/drm_hdmi_state_helper.c:1031 function parameter 'conn_state' not described in 'hdmi_validate_qms'
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> ---
+>  arch/arm64/boot/dts/qcom/qrb5165-rb5.dts | 8 ++++++--
+>  arch/arm64/boot/dts/qcom/sm8150-hdk.dts  | 9 +++++++--
+>  2 files changed, 13 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts b/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts
+> index d6af679abe1a..d21b94e872ce 100644
+> --- a/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts
+> +++ b/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts
+> @@ -1508,8 +1508,12 @@ PDO_FIXED_USB_COMM |
+>  
+>  		altmodes {
+>  			displayport {
+> -				svid = /bits/ 16 <0xff01>;
+> -				vdo = <0x00001c46>;
+> +				svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
+> +				vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
+> +					      DP_CAP_UHBR_13_5_UNSUPPORTED,
+> +					      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
+> +					      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
+> +					      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
+>  			};
+>  		};
+>  
+> diff --git a/arch/arm64/boot/dts/qcom/sm8150-hdk.dts b/arch/arm64/boot/dts/qcom/sm8150-hdk.dts
+> index cdced5c848d3..3d83dd305954 100644
+> --- a/arch/arm64/boot/dts/qcom/sm8150-hdk.dts
+> +++ b/arch/arm64/boot/dts/qcom/sm8150-hdk.dts
+> @@ -581,8 +581,13 @@ PDO_FIXED_USB_COMM |
+>  
+>  		altmodes {
+>  			displayport {
+> -				svid = /bits/ 16 <0xff01>;
+> -				vdo = <0x00001c46>;
+> +				svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
+> +				vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
+> +					      DP_CAP_UHBR_13_5_UNSUPPORTED,
+> +					      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
+> +					      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
+> +					      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
+> +
+>  			};
+>  		};
+>  
+> 
+> -- 
+> 2.53.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
