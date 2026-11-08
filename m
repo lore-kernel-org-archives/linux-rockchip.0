@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C44FC606A320
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Nov 2026 22:03:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2234E606A326
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Nov 2026 23:00:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bIE5cqJb;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Pi7Vrb+1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gkY1Zcor;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=I6CvuqTS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,88 +14,87 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ZlDCcqC2uK3PqPp+EHrn+vt5imdFNIUlHr9TG8+dpGk=; b=bIE5cqJbloqDvtsdtDYpWOZ8g5
-	yq0C2lsWZwsMCRd9HtbJ98Q4bvhFBRNG9WZ6vV49pggl0B85dD2QW8xKeRVgaWMbiZhOmjLJnyXWZ
-	jQPjRlymTyOFiR8dF0/xyR4FPE6WIe4wTSJXVZtxk9fabvlDpfKVik79ra4Q/tFvntbEXgtqkxpyD
-	jzTssadYCYybsiCu8bH3YRbqAvLxH44PtAadOKeVjgbRp66mlWCTvusj19o3AUXuOqxVTc18WraE6
-	pD4OhYXkZl45ZYKZPcZgRNz0nzNfDIYK10Jo2ksFovhfAUKo+hw9KazhIuPJx4+0nNYzIEp5IrcVr
-	i25yaXTw==;
+	bh=+Q2tjbzjkEKQzVZs6ndNi0jtakrFeT20o1noJv7vwk8=; b=gkY1ZcoreqVGQA03yVdYLWXdfP
+	kgQdhgKdPWJI2QrBjx0cKnoHBknTwSRhJzikbSuT8oQZT74Jz3vl+vDwnG2qGZnbzXKCOjZAO1Lo5
+	MpJidWYtakG2YS1r6Yd6C9F3i72qQUFLBlaOX9COf0S37TEZhnLVp5vIgwAxBLjHpVelw8AbwwVx/
+	jxR0+hSdRqmcbex2FrACi+mwx1NkfQuG+K9gx7siQ0Ygral85SMhuY7Z9hdhSMwVTPCA8Q7BpoSJC
+	NJMWpsvZ85kh2foQSbZDWZpmzX8WZ9QA44AGwUr/HDKNlFlgYVfKGICQAZXfjcMibacZqH4A2vprO
+	CYs8qArA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQAyX-0000000GmQi-2Ngq;
-	Sun, 08 Nov 2026 22:02:57 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xQBs7-0000000Gs82-3UON;
+	Sun, 08 Nov 2026 23:00:23 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQAyV-0000000GmQM-0hoc;
-	Sun, 08 Nov 2026 22:02:55 +0000
+	id 1xQBs5-0000000Gs7p-4Bvz;
+	Sun, 08 Nov 2026 23:00:22 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5037D60F3A;
-	Sun,  8 Nov 2026 22:02:54 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6356344F25;
+	Sun,  8 Nov 2026 23:00:21 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794175374;
-	b=JttGF4kCf7/WOWCO1HBkZ9uEkoRnspOXug9VRSkqYNfzp01LUhGNsy8t///7k9A+Awe7
-	 YO/5ETHkoZRTp4HrqHUo3SLtWOdXmO9uWFyT3R7r8JQXYtIrbOJmNfhBSnDivR+3XLhgt
-	 xr3wTG0AUhij4f9vmRla6fs47ok8UDsHPbgVltEQYYjCGVEGRIuF/dxm9Sm73jILF8RXa
-	 spaNoUkLSvu8ZG3kbC7MPYuZVzxPI9Wz5bJ8aSNiWEaH3bm8BnKX5b+RIheviGZBdKEqK
-	 GAZNv00GCinkPnfWS7C3e3dUKdw48e+AyCIinPfjeuUjwHHz20tiPvYMaSYD9PVCL9w==
+	t=1794178821;
+	b=Orb8S4LW6ClGvzu6V0Clx+RcQWDe8/ElJeTs/gW0IU4dVbraV7G6b/QD71sCtNWvb5CU
+	 oSvQwnDVJ1Pp7V6kq2oX7ebc6ARnn4zb4KnlXFJDhA4ckx781BUCFDM0Ki/gv2Yv/Jy33
+	 ZPRoSaQ+6gxMjafBRiWrBCpNVCR7m0msCuHutxqJAFzVG3Ti9g2SUr+Kt06mQrqJS2QT4
+	 PU9m/K6aFxXgnmZP6IKACzyND03vZbZQ6RvW3IRpX//14siyK6r5Dx68w8oQOh72Wc4je
+	 Fo12w+MW2YOSzvDNCdnC9ufcnQ8SOGvuT7gPuGJL05aZ1tCIVAxJJjgVFggbwilraeg==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794175374;
+	c=relaxed/relaxed; t=1794178821;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
 	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
 	 Content-Transfer-Encoding;
-	bh=mimUxCXmRdRWf680HpItYRr1bGkMxj6FEoMyisnpVbg=;
-	b=fRErTDQxK6nhZMCXx4PAu9q2pJa+2o3+FUmLvWxQ0sNWq1VRXpS19ZevgLD4qh0v9X4O
-	 bik+Qwng+bUv33qOC5b236VQ/50xyOniAn0GFbUnd7Rp1+W59OkluPxB8KFM0cXkF0wdk
-	 iZA+um+SAZ9g7yN5Afbd/rDf3nL8DSXf37F/JPqYRxHeLvJ4eFmCraAMGmnoybAzGx6k0
-	 ahX0dTEhj5bok655xmh5l9Wp9cALUHworfxA655z7QkXscJ+zUrbDn6HhmAWltQCgJXcF
-	 g3JBi8FsF0absxvd67CffGA0hu/RAkDZd4+15MCkiN8KZgPbo1p23ZrKaVNaVt4H3Pw==
+	bh=yKK1iMirP9JBVABMoXQcasHTn/ArdnE6y45L4tRRNZk=;
+	b=QEOe6Bl5dGnQ6lZXLaUPORvoGbQkOLhSv2cTf8s7+qMEyf56NLtzx0CICMf/FZagJzMX
+	 t4nrChluXpOunw3uHhdAdQ7OVkL+80z9A5IQlrwXQbc0hCVBAiokXUw2abqdaCOIchcEw
+	 yMbMunnNPTXI3nQ5VJzk2yK/g/4Q9ALcrgdydaJK/p1u9ppelHoFCi6UFW4sIbEYhtuJL
+	 om8rCKJucAWyyrh+d8A3c3VCBmXGiIWDDETIUZ1Q8utm1xjnNTDV2omJCRDz+2WvgpeEC
+	 P34vOVkNxIXdhb7jl4uvnjdQH0ENV4cNlrAsb4RjNyo9JxnrX6YcB0q/mMlKyqR6SLw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 899801F0089F;
-	Sun,  8 Nov 2026 22:02:53 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 9D0471F008A3;
+	Sun,  8 Nov 2026 23:00:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794175374;
-	bh=mimUxCXmRdRWf680HpItYRr1bGkMxj6FEoMyisnpVbg=;
+	s=k20260515; t=1794178821;
+	bh=yKK1iMirP9JBVABMoXQcasHTn/ArdnE6y45L4tRRNZk=;
 	h=From:Date:Subject:To:Cc:Reply-To;
-	b=Pi7Vrb+1SmxCIbk2rv2+FLdua3Nu5/LTFXW7ezqn+iijXO31sccfK3LMugf0pDarO
-	 H0H0UnciBbL/v0iWs2X94XO+mr86V0pbTUxHBP6wAX1ZRMnzbzHbPj/FUN5kMLnNJ1
-	 I2Y3A1Xjiojxngd1LH+5K1clw7GkGyjMVX1UmwljyPYcc5iDpG3rOnmrmAYMPWZCNr
-	 fiEdoZGe+i2iJ/bnYd03NASi9NvO0JL4r7ZsmfWFwUf+CkkxyuObPaTuMzUYjW3KpG
-	 rmKRIHzY1a9YCg6DQsPoM23Q4GAwpqKpUVngewBpezwNb3hE6FFPb8vIdWs4lLU6+d
-	 9upV1/plj0Csg==
+	b=I6CvuqTSfn6c0ISdqAWhqvU7/I4f69ERBV6ndg8vbwtxyBCY4UopGZ+8tmKCze+f+
+	 DlqUXEqjlsvb02jSZWNs3oTSIej01h1AQo+cBTiz+oiPXrWK3C2F7JlIvKF0q7r+el
+	 DqtLtOZVif4sWxIWPBEjyvk0+9aa3noveEsmyWNxeFJFEYvAlvuTjjpJa7c+1Yt8x/
+	 zHN+WqEucyfIzWWnN6ly40Fz2i73PFbmILZjxXs8SvSlDAbIJP50eP9uqvapo2lOTM
+	 JT4TLxjwbBVFZsFj/eyLuBBUnYF6v5euHPSz1Q4SRiR7UZyGnHq6C56GI7y95oV1h3
+	 FnpKPPVjXEavQ==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 1539948120;
-	Sun,  8 Nov 2026 22:02:53 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 2D5AD48126;
+	Sun,  8 Nov 2026 23:00:20 +0000 (UTC)
 From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Sun, 08 Nov 2026 22:02:51 +0000
-Subject: [PATCH] arm64: dts: rockchip: Enable all CPU OPPs on Kobol
- Helios64
+Date: Sun, 08 Nov 2026 23:00:18 +0000
+Subject: [PATCH v2] arm64: dts: rockchip: Describe more of the power tree
+ on Kobol Helios64
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261108-helios64-cpu-opps-v1-1-31aa4afb7eb8@iav.lv>
-X-B4-Tracking: v=1; b=H4sIAIrx8GoC/x3MMQqAMAxA0atIZgONSBGvIg5aUxsQWxoUQXp3i
- +Mb/n9BOQsrjM0LmW9RiWcFtQ24sJw7o2zV0JnOEpkBAx8S1fbo0oUxJcVhWTfr2ZI3BLVLmb0
- 8/3OaS/kA9iWdAWMAAAA=
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Igor Velkov <iav@iav.lv>
+Message-Id: <20261108-helios64-power-tree-v2-1-639ac2fc5ad7@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAAH/8GoC/32NQQrCMBBFr1Jm7UgSm7G68h7SRUlGO1CakpSol
+ Nzd2AO4fA/++xskjsIJrs0GkbMkCXMFc2jAjcP8ZBRfGYwypJUmHHmSkKjFJbw44hqZ0Z5NR61
+ zTJagLpfID3nv1XtfeZS0hvjZT7L+2f+9rFHhSXtynXdWXcxNhnycMvSllC+R/i/yswAAAA==
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2693; i=iav@iav.lv;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4317; i=iav@iav.lv;
  h=from:subject:message-id;
- bh=edWxjml98aK3nfS7bKrBTOBhCYbn9/aBY4i4ZQTEi+w=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFkfPvbcO3oyY5n4PY38eIPUy4H8X5MyS+d79cz2eHWCP
- 17kCeOMjlIWBjEuBlkxRZYJhzRuZSy5+tffw/wBzBxWJpAhDFycAjCR4ixGhsaSmH//uleGmGUJ
- yaTNFvHkY1ad/Orxue5HHBKbHlU/TGT4X7nt5sT5M9OYOcROTH2ybdsZu3uB3Pb/jjlpVM2ZczD
- wKRsA
+ bh=q4DkBQaFCKCe8qKMF/toFq0OPupIRXkfyB7nLuL7qmg=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFkf/jNbv11+JHHf5IcVenLHrfkWbXvKM6fu6otn6re47
+ hhb7PZm7yhlYRDjYpAVU2SZcEjjVsaSq3/9PcwfwMxhZQIZwsDFKQATMXdmZLhp+/n4ZovfUQLr
+ S1jc1h1UMs2+E/CnvTLz+ns9MT8nOzOGf5rWPOxn5h2cZJ/hJfKn7fmXe+FnueI+vN9Zuck1eUr
+ aUwYA
 X-Developer-Key: i=iav@iav.lv; a=openpgp;
  fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
 X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
@@ -122,83 +121,148 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Igor Velkov <iav@iav.lv>
 
-The Helios64 device tree deletes the lower OPPs of both CPU clusters
-because the board was not stable with cpufreq.
+Add the regulators that the Helios64 schematic shows and the device
+tree does not describe yet:
 
-With all OPPs and regulator-ramp-delay = <1000> on vdd_cpu_b, the board
-hung about 9.5 s into boot both times we tried. With 40000 it ran 40
-boots and three one-hour DVFS runs under load without errors. We did not
-find out why the slower ramp hangs.
+- RK808 DCDC_REG3 vcc_ddr_s3, LDO_REG6 vcc1v5_s3 and SWITCH_REG1
+  vcc3v3_sys_s0 (sheet 6),
+- the fixed 0.9 V regulator vcc0v9_s3, fed from vcc3v3_sys_s3 (sheet 8),
+- the hard disk supplies vcc5v0_hdd and vcc12v_hdd, fed from
+  vcc12v_dcin_bkup (sheets 4 and 9).
 
-40000 selects the slew rate we read from the regulator in U-Boot after a
-cold start, 64 mV/us; 1000 slows it down.
+The hdd_a_power and hdd_b_power switches each take both vcc5v0_hdd and
+vcc12v_hdd (sheet 5). A regulator has one vin-supply, so the two disk
+supplies stay without a consumer. They feed the disks through those
+switches.
 
-Restore the OPPs and raise the ramp delay.
-
+Link: https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
 Signed-off-by: Igor Velkov <iav@iav.lv>
 ---
-Tested on Linux 7.3 and its device tree, with the U-Boot and the .config
-of Armbian. The PCIe host driver was not loaded: on this board it takes
-an external abort at probe on some boots, with or without this change
-(about 5% of boots with it, 1 of 4 without). One boot with it loaded
-brought the link up, without DVFS load.
-
-Besides the boots and runs above: one hour each of schedutil under
-bursty load and of switching only one cluster.
-
-Ramp delay scan with all OPPs: 2000 hung twice in 5 boots (once at boot,
-once on reboot after an hour under load), 8000 passed 13 of 13 boots,
-32000 passed 3 of 3.
+Tested on Helios64 with a 7.3-rc7 kernel, on v1 of this patch; the DTS
+hunks are unchanged in v2. All six regulators register, and the disks
+and Ethernet work.
 ---
- .../boot/dts/rockchip/rk3399-kobol-helios64.dts    | 24 +---------------------
- 1 file changed, 1 insertion(+), 23 deletions(-)
+Changes in v2:
+- Drop patch 2 (unused RK808 outputs) after Chen-Yu Tsai's remark.
+- Rebase on for-next.
+- Link to v1: https://lore.kernel.org/r/20261016-helios64-power-tree-v1-0-31d6c8dc5092@iav.lv
+---
+ .../boot/dts/rockchip/rk3399-kobol-helios64.dts    | 63 ++++++++++++++++++++++
+ 1 file changed, 63 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-index f13ea2df7a30..f2f900f576a0 100644
+index f13ea2df7a30..61e50c3e7ef2 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
-@@ -354,28 +354,6 @@ vdd_log: regulator-vdd-log {
+@@ -248,6 +248,16 @@ usblan_power: regulator-usblan-power {
+ 		vin-supply = <&vcc5v0_usb>;
  	};
- };
  
--/*
-- * The system doesn't run stable with cpu freq enabled, so disallow the lower
-- * frequencies until this problem is properly understood and resolved.
-- */
--&cluster0_opp {
--	/delete-node/ opp00;
--	/delete-node/ opp01;
--	/delete-node/ opp02;
--	/delete-node/ opp03;
--	/delete-node/ opp04;
--};
--
--&cluster1_opp {
--	/delete-node/ opp00;
--	/delete-node/ opp01;
--	/delete-node/ opp02;
--	/delete-node/ opp03;
--	/delete-node/ opp04;
--	/delete-node/ opp05;
--	/delete-node/ opp06;
--};
--
- &cpu_b0 {
- 	cpu-supply = <&vdd_cpu_b>;
- };
-@@ -542,7 +520,7 @@ vdd_cpu_b: regulator@40 {
- 		regulator-boot-on;
- 		regulator-min-microvolt = <712500>;
- 		regulator-max-microvolt = <1500000>;
--		regulator-ramp-delay = <1000>;
-+		regulator-ramp-delay = <40000>;
- 		vin-supply = <&vcc5v0_sys>;
++	vcc0v9_s3: regulator-vcc0v9-s3 {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc0v9_s3";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <900000>;
++		regulator-max-microvolt = <900000>;
++		vin-supply = <&vcc3v3_sys_s3>;
++	};
++
+ 	vcc1v8_sys_s0: regulator-vcc1v8-sys-s0 {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc1v8_sys_s0";
+@@ -285,6 +295,16 @@ regulator-state-mem {
+ 		};
+ 	};
  
- 		regulator-state-mem {
++	vcc5v0_hdd: regulator-vcc5v0-hdd {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_hdd";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&vcc12v_dcin_bkup>;
++	};
++
+ 	vcc5v0_perdev: regulator-vcc5v0-perdev {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc5v0_perdev";
+@@ -342,6 +362,16 @@ vcc12v_dcin_bkup: regulator-vcc12v-dcin-bkup {
+ 		vin-supply = <&vcc12v_dcin>;
+ 	};
+ 
++	vcc12v_hdd: regulator-vcc12v-hdd {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc12v_hdd";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <12000000>;
++		regulator-max-microvolt = <12000000>;
++		vin-supply = <&vcc12v_dcin_bkup>;
++	};
++
+ 	vdd_log: regulator-vdd-log {
+ 		compatible = "pwm-regulator";
+ 		pwms = <&pwm2 0 25000 1>;
+@@ -479,6 +509,16 @@ regulator-state-mem {
+ 				};
+ 			};
+ 
++			vcc_ddr_s3: DCDC_REG3 {
++				regulator-name = "vcc_ddr_s3";
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++				};
++			};
++
+ 			vcc1v8_sys_s3: DCDC_REG4 {
+ 				regulator-name = "vcc1v8_sys_s3";
+ 				regulator-always-on;
+@@ -518,6 +558,19 @@ regulator-state-mem {
+ 				};
+ 			};
+ 
++			vcc1v5_s3: LDO_REG6 {
++				regulator-name = "vcc1v5_s3";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1500000>;
++				regulator-max-microvolt = <1500000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1500000>;
++				};
++			};
++
+ 			vcc3v0_s3: LDO_REG8 {
+ 				regulator-name = "vcc3v0_s3";
+ 				regulator-always-on;
+@@ -530,6 +583,16 @@ regulator-state-mem {
+ 					regulator-suspend-microvolt = <3000000>;
+ 				};
+ 			};
++
++			vcc3v3_sys_s0: SWITCH_REG1 {
++				regulator-name = "vcc3v3_sys_s0";
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++				};
++			};
+ 		};
+ 	};
+ 
 
 ---
 base-commit: c3baae5f1a15645cddadcb2b9abddef5df291f59
-change-id: 20261108-helios64-cpu-opps-8abd6fe61f01
+change-id: 20261016-helios64-power-tree-572864cce656
 
 Best regards,
 -- 
