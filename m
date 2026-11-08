@@ -2,78 +2,86 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3156E606A321
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Nov 2026 11:49:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E9AEF606A32A
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Nov 2026 12:17:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TxKjEnas;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=WMz0X66j
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=126fd2sb;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=JZgmf/U4
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:In-Reply-To:
-	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Mq8l7iGOr0ITaRe+wG3tK8pDqRSw39Sla1ZPi3/ZijA=; b=TxKjEnas4DHFxK2xKImAiBNMlG
-	k6BYNv2uVsqxp/PZLi6IZgeET0nIr5hmBDXGeDKe7x2QcK9lDOX1dTAW03+Wye4OD+PoFKFV7qzxR
-	jALzLeQE63MkReZcuPp5KbeJYLn/ISJthf8XBtDS0X9XqxJJNwVZ8MMb4q2j0vSpkUUAsLAlMhc1j
-	xFtOZZrynpMzM9M0MD2nkATXWK2MGv5klM4qakIDBRgDtcVj7jU8X8lKg0+tVD5BYqTKZo2IULfDC
-	4Fb6D3Dk8ZtVsAiYFo8fkTEgedzXt9fK0bFuRy2FZm9DQP581vCPuQl9KmUCniOWbqzzOdIkiYs59
-	jLXZjreg==;
+	bh=CUsKk6zQnORq68VCir5Y/KWsIVzMzgLenNFJZRtUgLw=; b=126fd2sbl6mPUmvWzKucBwS1iv
+	7mIhLIa/0VO4Q1OEKD2k6I1rOEc+cNSFz7uTv8aZhsOtMrJUIEMvofLbsfCkBcIAhn+FSVyqJg3fi
+	Tclokt79w32UEAHkg1DSOmCcH8hcFvWqHioQZc8Su5b4923TnfmHRvScD7AkctOJhs4mWWhM0DKbF
+	rFqvOwWgjcACu0dqSEB1ujk9JWLWG1ZA751SrJOlaGyOaQC5l/7tsl0bbIm6guA1RISxtI0f+QANn
+	ycHWb0U1OgucmPVlc5/U/s8Dv2a3DULqerJdfeO8UzsQysdvlkalRWMsvdlVoQf/Hbxz/OTmdjWbz
+	nyKtkDtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQ1Ob-0000000G66X-0JqH;
-	Sun, 08 Nov 2026 11:49:13 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xQ1pY-0000000G7YG-247d;
+	Sun, 08 Nov 2026 12:17:04 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQ1OZ-0000000G65v-0HqZ;
-	Sun, 08 Nov 2026 11:49:11 +0000
+	id 1xQ1pW-0000000G7XL-1gYh;
+	Sun, 08 Nov 2026 12:17:02 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 94F8641772;
-	Sun,  8 Nov 2026 11:49:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53A8E1F0089F;
-	Sun,  8 Nov 2026 11:49:10 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C8B1740BAC;
+	Sun,  8 Nov 2026 12:17:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9394D1F0089F;
+	Sun,  8 Nov 2026 12:16:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794138550;
-	bh=DSWbuaX0SJuwDI4LQsCoGiLcfjjnNXDBy8qwE7KddlA=;
-	h=Subject:From:To:Cc:In-Reply-To:References:Date;
-	b=WMz0X66jbpOohzsjuh9vxcswu8HYEcikxFzY4dXmi1VM8IX8FrDwIjI7tvd/d85/G
-	 t5WPkKOgnDBMk7EesnJ1q3pISxPevscLytTJMTBfNyo7fS4+T/6glOsSRggAkZsOmo
-	 TaTl84edzchzGKPlrys2DoZ7Byu6/PMotPFE+oypk2gRy2M56iQvjagHW+1+Cpgf3e
-	 ZvipXoZyLGKpc+/FN7GgQmLBI4kJf0qsKxDaMe+eB+1V2wH+eRmIKK6FZoiRnwt0gG
-	 tYofxFgjId/uxbnTcW87RYa/uBvsLyFupyIpqJcbm6hJvqYjXW82LbH+xQtzD8tslb
-	 OaRa+9Qh9rUmw==
-Received: from traversing.sirena.org.uk (localhost [IPv6:::1])
-	by traversing.sirena.org.uk (Postfix) with ESMTP id F0C312BF95D0;
-	Sun, 08 Nov 2026 11:49:07 +0000 (GMT)
+	s=k20260515; t=1794140221;
+	bh=+QnPHIBmwdoJ1mg7wG97R78F4P6cWdZ4faiCfZ2d3bY=;
+	h=From:Subject:Date:To:Cc;
+	b=JZgmf/U4Z9wyKVlkorX0WlwOTO91gix93zMroEa6FXjVqmvIdO0rSRZr0fxVWcr1/
+	 MrKA2pu6TO7yhtHE9RxOdRTO5AL1OX0jZ2sKmj2jqVpNbVv1b43aOM06Y/DNSVBtO8
+	 Dm5xvAlS+YtWcI/EGhzzqlzzXpO5KjvwF//yolW87dMlkX903ueJqEUA4m3wHY6mNf
+	 vyTHlWOenWovV5E/sdhHUYGnOw+wCYC1SE6vaA5lIH8Ii70MBlacyyExYd3YfBeATX
+	 DRr07PUi7fAhGO8T+Yg3y4ggMSM60v2Vw4EEM5/dmzPywFmhoVGxr16F9bPQg2NBZv
+	 XmlK4BUNGNo6w==
+From: Joshua Crofts <crofts@kernel.org>
+Subject: [PATCH 00/11] spi: remove redundant
+ pm_runtime_dont_use_autosuspend() calls
+Date: Sun, 08 Nov 2026 13:16:47 +0100
+Message-Id: <20261108-spi-dont-use-autosuspend-v1-0-3587b0183cbe@kernel.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 2/3] ASoC: codecs: rk3308: restore audio and
- headphone support
-From: Mark Brown <broonie@kernel.org>
-To: Xing Zheng <zhengxing@rock-chips.com>
-Cc: broonie@kernel.org, heiko@sntech.de, linux-sound@vger.kernel.org, 
- luca.ceresoli@bootlin.com, lgirdwood@gmail.com, perex@perex.cz, 
- tiwai@suse.com, linux-kernel@vger.kernel.org, robh@kernel.org, 
- krzk+dt@kernel.org, conor+dt@kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- huangtao@rock-chips.com, sugar.zhang@rock-chips.com, lxt@rock-chips.com, 
- xing.zheng@rock-chips.com
-In-Reply-To: <20261101044149.2018744-3-zhengxing@rock-chips.com>
-References: <20261101040125.1864141-1-zhengxing@rock-chips.com>
- <20261101044149.2018744-1-zhengxing@rock-chips.com>
- <20261101044149.2018744-3-zhengxing@rock-chips.com>
-Date: Sun, 08 Nov 2026 11:49:06 +0000
-Message-Id: <179413854645.3630016.583220481348524508.b4-review@b4>
-X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5345; i=broonie@kernel.org;
- h=from:subject:message-id; bh=+YDT/dn4HPJjiVmxqxZl4zbdPOrhe2/fO2TYbbPmE6s=;
- b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLI+JG7OuXHtxJ6vy/a0HpcWWPnpTOEN098lq8UKmb80d
- STefN49oaOUhUGMi0FWTJElLov7ZX3J6zV8Bxe2wcxhZQIZwsDFKQATOS7DyHCjw7O+intRWv3l
- fQ+NQ2NKN+StFNvT+JRh26O0M1duFbsyMtz657SIkyEzQ8NnpTbP3NXcfXn7Fte92lr2Pc/Lunf
- XY34A
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MMQ6DMAxA0asgz7VEEE0JV6k6hNopXpIoJhUS4
+ u5EjG/4/wDlIqwwdwcU/otKig3m0cF39fHHKNQMQz9YY/oJNQtSihtWZfR1S1o1cyR0zr2WMdg
+ nE0HLc+Eg+71+f87zAl3CFTZqAAAA
+X-Change-ID: 20261108-spi-dont-use-autosuspend-9997b4f65edd
+To: Vladimir Moravcevic <vmoravcevic@axiado.com>, 
+ Tzu-Hao Wei <twei@axiado.com>, Swark Yang <syang@axiado.com>, 
+ Prasad Bolisetty <pbolisetty@axiado.com>, Mark Brown <broonie@kernel.org>, 
+ Karthikeyan Mitran <kmitran@axiado.com>, 
+ Alain Volmat <alain.volmat@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Michal Simek <michal.simek@amd.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Heiko Stuebner <heiko@sntech.de>, Jyan Chou <jyanchou@realtek.com>, 
+ Yu-Chun Lin <eleanor.lin@realtek.com>, 
+ Laxman Dewangan <ldewangan@nvidia.com>, 
+ Thierry Reding <thierry.reding@kernel.org>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, 
+ Sowjanya Komatineni <skomatineni@nvidia.com>
+Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-tegra@vger.kernel.org, Joshua Crofts <crofts@kernel.org>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794140215; l=2214;
+ i=crofts@kernel.org; s=20261015; h=from:subject:message-id;
+ bh=LE9JAEK3uf/fTYpkCMzFmTQWpH/6qGCGHtNgMH5qPu0=;
+ b=RPcJRMVGnrnJGMB1ZAmeSk2QRKr5GrfThl48m4h9ie56yEG6K6SvblDR3kPi5lJuxYr5MY0k6
+ eaAn83VEbErAaMkMcr6mKQsFWEP7GT0wIpUCogUOVfocctLvl6Rhq2D
+X-Developer-Key: i=crofts@kernel.org; a=ed25519;
+ pk=RTDOoVwgeL4oFdASj9U+cxJuIjXuXk73zkjnGOJKbEo=
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,132 +94,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> Restore the vendor analog enable and disable order and settling delays
-> through shared DAPM supply events for codec revisions A, B and C. Use
-> virtual intermediate widgets to prevent coalesced or repeated analog
-> writes without adding startup, shutdown or hw_free DAI operations.
+Since commit d1706f9da9f4 ("PM: runtime: call pm_runtime_dont_use_autosuspend() on reinit()"),
+driver core is now responsible for undoing any
+pm_runtime_use_autosuspend() calls on driver exit.
 
-This change is far too big and complex to be a single patch, doing a
-whole bunch of different things with limited overlap.  It's all really
-difficult to follow, please split it up into independent changes.  The
-jack detection should be split out at a minimum, and probably there
-should be multiple refactorings.
+Remove the redundant function calls.
 
-> +static int rk3308_codec_output_routes(struct rk3308_codec_priv *rk3308)
-> +{
-> +	static const struct snd_soc_dapm_route routes[][2] = {
-> +		{
-> +			{ "L_LINEOUT_EN", NULL, "DAC_L_HPMIX_SEL" },
-> +			{ "R_LINEOUT_EN", NULL, "DAC_R_HPMIX_SEL" },
-> +		}, {
-> +			{ "L_HPOUT_EN", NULL, "DAC_L_HPMIX_SEL" },
-> +			{ "R_HPOUT_EN", NULL, "DAC_R_HPMIX_SEL" },
-> +		},
-> +	};
-> +	struct snd_soc_dapm_context *dapm = snd_soc_component_to_dapm(rk3308->component);
-> +	u32 mask = rk3308->dac_output == 11 ? 3 :
-> +		rk3308->dac_output == 0 ? 1 : 2;
+NOTE: Some drivers in drivers/spi/ (fsl-lpspi, imx, nxp-fspi, omap2-mcspi,
+rpc-if) still keep their calls because they either rely on
+pm_runtime_dont_use_autosuspend() before pm_runtime_disable() to flush
+pending autosuspend delays and trigger synchronous runtime suspension,
+or operate on a parent device rather than the platform device itself.
 
-Magic numbers...  I have no idea what this is intended to mean.
+Signed-off-by: Joshua Crofts <crofts@kernel.org>
+---
+Joshua Crofts (11):
+      spi: axiado: remove redundant pm_runtime_dont_use_autosuspend() calls
+      spi: cadence-quadspi: remove redundant pm_runtime_dont_use_autosuspend() calls
+      spi: cadence: remove redundant pm_runtime_dont_use_autosuspend() calls
+      spi: stm32: remove redundant pm_runtime_dont_use_autosuspend() calls
+      spi: stm32-qspi: remove redundant pm_runtime_dont_use_autosuspend() calls
+      spi: zynqmp-gqspi: remove redundant pm_runtime_dont_use_autosuspend() calls
+      spi: mtk-nor: remove redundant pm_runtime_dont_use_autosuspend() calls
+      spi: orion: remove redundant pm_runtime_dont_use_autosuspend() calls
+      spi: rockchip-sfc: remove redundant pm_runtime_dont_use_autosuspend() calls
+      spi: rtk-nor: remove redundant pm_runtime_dont_use_autosuspend() calls
+      spi: tegra210-quad: remove redundant pm_runtime_dont_use_autosuspend() calls
 
-> +	int i, ret;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(routes); i++) {
-> +		if (!((mask ^ rk3308->output_routes_mask) & BIT(i)))
-> +			continue;
-> +		if (mask & BIT(i))
-> +			ret = snd_soc_dapm_add_routes(dapm, routes[i], ARRAY_SIZE(routes[i]));
-> +		else
-> +			ret = snd_soc_dapm_del_routes(dapm, routes[i], ARRAY_SIZE(routes[i]));
-> +		if (ret)
-> +			return ret;
-> +		rk3308->output_routes_mask ^= BIT(i);
-> +	}
+ drivers/spi/spi-axiado.c          | 2 --
+ drivers/spi/spi-cadence-quadspi.c | 2 --
+ drivers/spi/spi-cadence.c         | 2 --
+ drivers/spi/spi-mtk-nor.c         | 2 --
+ drivers/spi/spi-orion.c           | 2 --
+ drivers/spi/spi-rockchip-sfc.c    | 2 --
+ drivers/spi/spi-rtk-nor.c         | 2 --
+ drivers/spi/spi-stm32-qspi.c      | 2 --
+ drivers/spi/spi-stm32.c           | 2 --
+ drivers/spi/spi-tegra210-quad.c   | 2 --
+ drivers/spi/spi-zynqmp-gqspi.c    | 2 --
+ 11 files changed, 22 deletions(-)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20261108-spi-dont-use-autosuspend-9997b4f65edd
 
-This is dynamically hotpluggin DAPM routes at runtime which is a really
-weird way of doing things.  Why are you doing things this way?  Normally
-routing changes would done through DAPM routing changes in mux and mixer
-widgets.  Why are you doing things this way?  It's a lot of code, and
-the userspace impacts are likely to cause confusion.
-
-> +	if (!ret && rk3308->hpdet_jack)
-> +		snd_soc_jack_report(rk3308->hpdet_jack,
-> +				    output ? SND_JACK_HEADPHONE : 0, SND_JACK_HEADPHONE);
-
-This is going to report that the user has inserted or removed something
-physically based on a control write, this is obviously not something
-that should happen.  The user can physically see if something has been
-plugged and this is going to report something different...
-
-> +static int rk3308_codec_hpdet_init(struct platform_device *pdev,
-> +				   struct rk3308_codec_priv *rk3308)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct device_node *np = dev->of_node;
-> +	int ret;
-> +
-> +	if (rk3308->codec_ver == ACODEC_VERSION_A ||
-> +	    of_property_read_bool(np, "rockchip,no-hp-det") ||
-
-Why do we need this property, the machine driver sets up the jack?
-
-> +	    !of_find_property(np, "rockchip,detect-grf", NULL))
-
-of_property_present()
-
-> +		if (headphone)
-> +			for (gain = 0; gain <= max(gain_l, gain_r); gain++) {
-> +				regmap_update_bits(rk3308->regmap, RK3308_DAC_ANA_CON05,
-> +						   RK3308_DAC_x_HPOUT_GAIN_MSK,
-> +					min_t(unsigned int, gain, gain_l));
-> +				regmap_update_bits(rk3308->regmap, RK3308_DAC_ANA_CON06,
-> +						   RK3308_DAC_x_HPOUT_GAIN_MSK,
-> +					min_t(unsigned int, gain, gain_r));
-> +			}
-> +		rk3308_codec_resync_adcs(rk3308);
-> +	} else {
-> +		/* Vendor DAC disable steps 3-19, after the external amps are off. */
-> +		if (hp & (RK3308_DAC_L_HPOUT_EN | RK3308_DAC_R_HPOUT_EN))
-> +			for (gain = max(gain_l, gain_r); gain >= 0; gain--) {
-> +				regmap_update_bits(rk3308->regmap, RK3308_DAC_ANA_CON05,
-> +						   RK3308_DAC_x_HPOUT_GAIN_MSK,
-> +					min_t(unsigned int, gain, gain_l));
-> +				regmap_update_bits(rk3308->regmap, RK3308_DAC_ANA_CON06,
-> +						   RK3308_DAC_x_HPOUT_GAIN_MSK,
-> +					min_t(unsigned int, gain, gain_r));
-> +				usleep_range(200, 300);
-> +			}
-
-The ramp down has a delay but the ramp up doesn't, is that intentional?
-
-> -	SND_SOC_DAPM_ADC("ADC1_WORK", "Capture", RK3308_ADC_ANA_CON05(0), 2, 0),
-> -	SND_SOC_DAPM_ADC("ADC2_WORK", "Capture", RK3308_ADC_ANA_CON05(0), 6, 0),
-> -	SND_SOC_DAPM_ADC("ADC3_WORK", "Capture", RK3308_ADC_ANA_CON05(1), 2, 0),
-> -	SND_SOC_DAPM_ADC("ADC4_WORK", "Capture", RK3308_ADC_ANA_CON05(1), 6, 0),
-> -	SND_SOC_DAPM_ADC("ADC5_WORK", "Capture", RK3308_ADC_ANA_CON05(2), 2, 0),
-> -	SND_SOC_DAPM_ADC("ADC6_WORK", "Capture", RK3308_ADC_ANA_CON05(2), 6, 0),
-> -	SND_SOC_DAPM_ADC("ADC7_WORK", "Capture", RK3308_ADC_ANA_CON05(3), 2, 0),
-> -	SND_SOC_DAPM_ADC("ADC8_WORK", "Capture", RK3308_ADC_ANA_CON05(3), 6, 0),
-> +	SND_SOC_DAPM_ADC("ADC1_WORK", "HiFi Capture", RK3308_ADC_ANA_CON05(0), 2, 0),
-> +	SND_SOC_DAPM_ADC("ADC2_WORK", "HiFi Capture", RK3308_ADC_ANA_CON05(0), 6, 0),
-> +	SND_SOC_DAPM_ADC("ADC3_WORK", "HiFi Capture", RK3308_ADC_ANA_CON05(1), 2, 0),
-> +	SND_SOC_DAPM_ADC("ADC4_WORK", "HiFi Capture", RK3308_ADC_ANA_CON05(1), 6, 0),
-> +	SND_SOC_DAPM_ADC("ADC5_WORK", "HiFi Capture", RK3308_ADC_ANA_CON05(2), 2, 0),
-> +	SND_SOC_DAPM_ADC("ADC6_WORK", "HiFi Capture", RK3308_ADC_ANA_CON05(2), 6, 0),
-> +	SND_SOC_DAPM_ADC("ADC7_WORK", "HiFi Capture", RK3308_ADC_ANA_CON05(3), 2, 0),
-> +	SND_SOC_DAPM_ADC("ADC8_WORK", "HiFi Capture", RK3308_ADC_ANA_CON05(3), 6, 0),
-
-Why the rename?
-
+Best regards,
 -- 
-Mark Brown <broonie@kernel.org>
+Joshua Crofts
+
 
 _______________________________________________
 Linux-rockchip mailing list
