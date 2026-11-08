@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E7135606A322
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Nov 2026 02:03:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2695D606A323
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Nov 2026 03:15:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jN6mKQje;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=kkvwdeSA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=m5KQxQhD;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=P8WiBGr9
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,29 +14,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=YEI3VjhtQ2Y8qiQUnI7uPshL3KI1FRCHTsjfGo2kCyI=; b=jN6mKQjeh0qO/GmO69Gqd0SMaB
-	WIOISqRshbEBRgl5bImpZUuOsLH9jnqOlazIvgNhE5Z/80ZFSEUVG9Yj8ILQTh9mL1NJphRntVne/
-	jnYYeUQeWrzflrQTbUGbGix7EBEqMKX96uJ2iPPrCFypIeH6zJFBPxfUvQ312V4OzUqwYY2thZ58D
-	so3M5fkd21vP4DlnL5zBfEOxlDtkB1jnZnZ4yOvZxgpjCCJGhQG0OzBMq8sbh9gtRC3oXt6j8Nr9n
-	kxdgIKBvyIsGOXPxvGM+s/whRyQ877D0kbJiYeLWWKH7KB5A0f2HU80r4HtQgx6QSIz6lKuTCP33K
-	CDPLYNLg==;
+	bh=Wm9NyaSGpdNfw39EijABAl2XDZoIyjLLyTPmqP8pA1k=; b=m5KQxQhDwIcghPo/Rm3CERzDiU
+	N1hDpNK3f9m66k6m8vRjOEoNm2u7zikpR6nQrpcQCEb3N/SByFGXPBTTERcAeJHInoQ9EgTgRI7IF
+	m65hl3m1psUSI/n2n25ihJiSSC2Jx6xtdUxkI8PTixNMj4QK/sjlB6EjjOnTwxP0EcaHdmCgUuBSU
+	wuuHUCEsfgNgdRh0By6dQELvVJeUi7XDfy3Bui/9HFVwBo8LsxBH6XQc+soKSlRTvknATsEPPG22X
+	6SLeWCdCQgfrhDXeaVYguy2YR48osP4j0c953QVKtve/bC0uyNUX+lUvPKXmkg6qty9dol6wc+Oux
+	iU9J+2kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPsFe-0000000FaiP-0pYI;
-	Sun, 08 Nov 2026 02:03:22 +0000
-Received: from mail-m16023652234.xmail.ntesmail.com ([160.236.52.234])
+	id 1xPtNK-0000000FdMJ-3O0L;
+	Sun, 08 Nov 2026 03:15:22 +0000
+Received: from mail-m160236537.xmail.ntesmail.com ([160.236.53.7])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPsFa-0000000Fahp-2e3t;
-	Sun, 08 Nov 2026 02:03:20 +0000
+	id 1xPtNF-0000000FdLv-39x9;
+	Sun, 08 Nov 2026 03:15:21 +0000
 Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 53dfa8dee;
-	Sun, 8 Nov 2026 10:03:07 +0800 (GMT+08:00)
-Message-ID: <f5edf258-4b6d-416a-9b27-efa47be8d91a@rock-chips.com>
-Date: Sun, 8 Nov 2026 10:03:05 +0800
+	by smtp.qiye.163.com (Hmail) with ESMTP id 53e05798d;
+	Sun, 8 Nov 2026 11:15:11 +0800 (GMT+08:00)
+Message-ID: <f066ac3f-1720-479b-a2e9-198a96d03dd6@rock-chips.com>
+Date: Sun, 8 Nov 2026 11:15:09 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] arm64: dts: rockchip: Enable NPU on RK3588 EVB1
+Subject: Re: [PATCH 4/5] arm64: dts: rockchip: Add DSI panel to RK3588 EVB1
 To: Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
@@ -44,23 +44,23 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  kernel@collabora.com
 References: <20261106-rk3588-evb1-dt-updates-v1-0-bdbe16223589@collabora.com>
- <20261106-rk3588-evb1-dt-updates-v1-2-bdbe16223589@collabora.com>
+ <20261106-rk3588-evb1-dt-updates-v1-4-bdbe16223589@collabora.com>
 Content-Language: en-US
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20261106-rk3588-evb1-dt-updates-v1-2-bdbe16223589@collabora.com>
-X-HM-Tid: 0aa1b8e5269b03a7kunm53324d9a39fbb5
+In-Reply-To: <20261106-rk3588-evb1-dt-updates-v1-4-bdbe16223589@collabora.com>
+X-HM-Tid: 0aa1b9271f9d03a7kunm71851a523ae3dc
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDSR4eVk8ZQk4YTR8aGUtMGlYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCS0kYVh9OTxlIH0sYQh9PQ1YVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
 	9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=kkvwdeSA0JXJh94IWdoOSWnmeXYZ9RyQRqQBfDWgsti8LomJ+ryPfekPup1YK2zqCp32ezrhpwkXNcPo9NMfBs2c+x/+MOjst8p/1yt7jZEP8715nyJ1Tq02av39HeA2waphNRPwmGnFstec7rZdZfNzWes+86n1+K6ZFHurI3I=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=PuGzHsk/LIqXvaJ1IohwPD9m5fePFH4W4L4+Otr9oFg=;
+	b=P8WiBGr9wnTcvHB2H8l9sl8SKmN0k54UNOfHgSTjHwSZ13FvJWN3ot57OepT4gft0OATr3R288gLEOJE989yutl2wuvTLvA/8KHdc8pKGoQAx1kCBPrutFigfI0NXpdxjVjHQ9W/6CAj1AxtbWZIuYDnRia5x6m/+/Ghp15zQxk=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=lM3R06lN5RqvDRl/k2tH4ahMeiHYdM12iCHEJrgC6wk=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261107_180319_242852_00185529 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20261107_191518_970979_E752C5F6 
+X-CRM114-Status: GOOD (  14.20  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,73 +82,165 @@ X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Hi Sebastian,
+
 On 11/7/2026 5:57 AM, Sebastian Reichel wrote:
-> Also enable the NPU on the RK3588 EVB1, which is very similar to
-> the QuartzPro64.
+> The RK3588 EVB1 comes with a W552793DBA-V10 Touchscreen/Display
+> combination. It contains a Wanchanglong W552793BAA panel and a
+> Goodix GT1158 touchscreen. This adds the DT description of it.
 > 
 > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
-
-I remember there was already a similar patch before?
-Maybe I got something wrong.
-
-Reviewed-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-
->  arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 34 ++++++++++++++++++++++++
->  1 file changed, 34 insertions(+)
+>  arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 90 ++++++++++++++++++++++++
+>  1 file changed, 90 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-> index 87e624d1e094..6476d9e3be6f 100644
+> index 6a95a8bb6fb8..327ca13b60f0 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
 > +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-> @@ -578,6 +578,10 @@ &pd_gpu {
->  	domain-supply = <&vdd_gpu_s0>;
+> @@ -204,6 +204,15 @@ vcc12v_dcin: regulator-vcc12v-dcin {
+>  		regulator-max-microvolt = <12000000>;
+>  	};
+>  
+
+I seem unable to apply the patch to the latest linux-next tree.
+
+So I tried to resolve the conflict manually, but the actual
+test screen did not display. I will look into this further.
+
+
+> +	vcc3v3_lcd_mipi: regulator-vcc3v3-lcd-mipi {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc3v3_lcd_mipi";
+> +		regulator-boot-on;
+> +		enable-active-high;
+> +		gpio = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
+> +		vin-supply = <&vcc_3v3_s0>;
+> +	};
+> +
+>  	vcc3v3_pcie30: regulator-vcc3v3-pcie30 {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "vcc3v3_pcie30";
+> @@ -338,6 +347,43 @@ &cpu_l3 {
+>  	cpu-supply = <&vdd_cpu_lit_s0>;
 >  };
 >  
-> +&pd_npu {
-> +	domain-supply = <&vdd_npu_s0>;
+> +&dsi0 {
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +	status = "okay";
+> +
+> +	panel@0 {
+> +		compatible = "wanchanglong,w552793baa", "raydium,rm67200";
+> +		reg = <0>;
+> +		backlight = <&backlight>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&lcd_rst_gpio>;
+> +		vdd-supply = <&vcc3v3_lcd_mipi>;
+> +		iovcc-supply = <&vcc3v3_lcd_mipi>;
+> +		vsp-supply = <&vcc5v0_sys>;
+> +		vsn-supply = <&vcc5v0_sys>;
+> +		reset-gpios = <&gpio2 RK_PB4 GPIO_ACTIVE_LOW>;
+> +
+> +		port {
+> +			mipi_panel_in: endpoint {
+> +				remote-endpoint = <&dsi0_out_panel>;
+> +			};
+> +		};
+> +	};
 > +};
 > +
->  &pd_rkvdec0 {
->  	domain-supply = <&vdd_vdenc_s0>;
->  };
-> @@ -703,6 +707,36 @@ &pwm2 {
->  	status = "okay";
+> +&dsi0_in {
+> +	dsi0_in_vp3: endpoint {
+> +		remote-endpoint = <&vp3_out_dsi0>;
+> +	};
+> +};
+> +
+> +&dsi0_out {
+> +	dsi0_out_panel: endpoint {
+> +		remote-endpoint = <&mipi_panel_in>;
+> +	};
+> +};
+> +
+>  &gmac0 {
+>  	clock_in_out = "output";
+>  	phy-handle = <&rgmii_phy>;
+> @@ -495,6 +541,22 @@ hym8563: rtc@51 {
+>  	};
 >  };
 >  
-> +&rknn_core_0 {
-> +	npu-supply = <&vdd_npu_s0>;
-> +	sram-supply = <&vdd_npu_mem_s0>;
+> +&i2c6 {
 > +	status = "okay";
+> +
+> +	gt1x: touchscreen@14 {
+> +		compatible = "goodix,gt1158";
+> +		reg = <0x14>;
+> +		interrupt-parent = <&gpio0>;
+> +		interrupts = <RK_PD3 IRQ_TYPE_LEVEL_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&touchscreen_pins>;
+> +		reset-gpios = <&gpio0 RK_PD2 GPIO_ACTIVE_HIGH>;
+> +		AVDD28-supply = <&vcc3v3_lcd_mipi>;
+> +		VDDIO-supply = <&vcc3v3_lcd_mipi>;
+> +	};
 > +};
 > +
-> +&rknn_core_1 {
-> +	npu-supply = <&vdd_npu_s0>;
-> +	sram-supply = <&vdd_npu_mem_s0>;
-> +	status = "okay";
-> +};
-> +
-> +&rknn_core_2 {
-> +	npu-supply = <&vdd_npu_s0>;
-> +	sram-supply = <&vdd_npu_mem_s0>;
-> +	status = "okay";
-> +};
-> +
-> +&rknn_mmu_0 {
-> +	status = "okay";
-> +};
-> +
-> +&rknn_mmu_1 {
-> +	status = "okay";
-> +};
-> +
-> +&rknn_mmu_2 {
-> +	status = "okay";
-> +};
-> +
->  &saradc {
->  	vref-supply = <&vcc_1v8_s0>;
+>  &i2c7 {
 >  	status = "okay";
+>  
+> @@ -543,6 +605,10 @@ rgmii_phy: ethernet-phy@1 {
+>  	};
+>  };
+>  
+> +&mipidcphy0 {
+> +	status = "okay";
+> +};
+> +
+>  &pcie2x1l0 {
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&pcie2_0_rst>, <&pcie2_0_wake>, <&pcie2_0_clkreq>, <&wifi_host_wake_irq>;
+> @@ -664,6 +730,12 @@ hym8563_int: hym8563-int {
+>  		};
+>  	};
+>  
+> +	mipi_dsi {
+> +		lcd_rst_gpio: lcd-rst {
+> +			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
+> +		};
+> +	};
+> +
+>  	pcie2 {
+>  		pcie2_0_rst: pcie2-0-rst {
+>  			rockchip,pins = <4 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
+> @@ -692,6 +764,14 @@ vcc3v3_pcie30_en: vcc3v3-pcie30-en {
+>  		};
+>  	};
+>  
+> +	touchscreen {
+> +		touchscreen_pins: touchscreen-pins {
+> +			rockchip,pins =
+> +				<0 RK_PD2 RK_FUNC_GPIO &pcfg_pull_up>,
+> +				<0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
+> +		};
+> +	};
+> +
+>  	usb {
+>  		vcc5v0_host_en: vcc5v0-host-en {
+>  			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+> @@ -1534,3 +1614,13 @@ vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
+>  		remote-endpoint = <&hdmi1_in_vp1>;
+>  	};
+>  };
+> +
+> +&vp3 {
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +
+> +	vp3_out_dsi0: endpoint@ROCKCHIP_VOP2_EP_MIPI0 {
+> +		reg = <ROCKCHIP_VOP2_EP_MIPI0>;
+> +		remote-endpoint = <&dsi0_in_vp3>;
+> +	};
+> +};
 > 
 
 -- 
