@@ -2,65 +2,65 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2695D606A323
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Nov 2026 03:15:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1C252606A31A
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Nov 2026 05:28:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=m5KQxQhD;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=P8WiBGr9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=W1yYUQ8Q;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=LTSKy4jf
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Wm9NyaSGpdNfw39EijABAl2XDZoIyjLLyTPmqP8pA1k=; b=m5KQxQhDwIcghPo/Rm3CERzDiU
-	N1hDpNK3f9m66k6m8vRjOEoNm2u7zikpR6nQrpcQCEb3N/SByFGXPBTTERcAeJHInoQ9EgTgRI7IF
-	m65hl3m1psUSI/n2n25ihJiSSC2Jx6xtdUxkI8PTixNMj4QK/sjlB6EjjOnTwxP0EcaHdmCgUuBSU
-	wuuHUCEsfgNgdRh0By6dQELvVJeUi7XDfy3Bui/9HFVwBo8LsxBH6XQc+soKSlRTvknATsEPPG22X
-	6SLeWCdCQgfrhDXeaVYguy2YR48osP4j0c953QVKtve/bC0uyNUX+lUvPKXmkg6qty9dol6wc+Oux
-	iU9J+2kw==;
+	bh=ck9OIR/0SZtSxLJqR8E38zxg+Yo3IE9pzOQVEKikOww=; b=W1yYUQ8QVpjetq3wQQ8FlC9HQX
+	H/O3EgAOtes/F01yJGOvg7+hVpaGJqw0IDMIkXlE/db4ZRSzeH+mx+sScSVBkgOYG3HSxQs2rmiMl
+	JsoKfWZ0iPyZfAhjTAXoqvcpQ3etpYOfquih5WFsjVXTEbNnhJNx1NkuR8h3pYb9jB3QlmrZROM0C
+	6hB09XChmLT3hyVIMe5ViIYjcJtclAzuifQMtx1jCfrve9k31+7lzxAJXQIUgSxZ82dvaeH/5cHuP
+	EXKiyV9+UoC1Ud+VVNN+KxvP0R9yHcEsbnLSghhwyBvrIhmwt0GVTjLQMILcDtfsEURk73SMMDVJ4
+	RwVIYZvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPtNK-0000000FdMJ-3O0L;
-	Sun, 08 Nov 2026 03:15:22 +0000
-Received: from mail-m160236537.xmail.ntesmail.com ([160.236.53.7])
+	id 1xPvRm-0000000FhA5-3A7S;
+	Sun, 08 Nov 2026 05:28:06 +0000
+Received: from sender-op-o15.zoho.eu ([136.143.169.15])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPtNF-0000000FdLv-39x9;
-	Sun, 08 Nov 2026 03:15:21 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 53e05798d;
-	Sun, 8 Nov 2026 11:15:11 +0800 (GMT+08:00)
-Message-ID: <f066ac3f-1720-479b-a2e9-198a96d03dd6@rock-chips.com>
-Date: Sun, 8 Nov 2026 11:15:09 +0800
+	id 1xPvRj-0000000Fh9c-0h85;
+	Sun, 08 Nov 2026 05:28:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794115674; cv=none; 
+	d=zohomail.eu; s=zohoarc; 
+	b=XaDun2aI3VXKS8HtZd+yySF0ZLe3CF5r3ExAuLuPKKx0JPHbs0rTF+Ln4jKACVMfd3reZ0IYPK35VZSugyhKmQWCjzXRh+wi5Gyw8lePYkxmv8W1NnxYnKcbbv9KHogN1VvyarP70xjYDa4Ir/GQyAuGIfe4Z35CsUJHYe0Q8W4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
+	t=1794115674; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=jGfSOo4/qi2MGnClnBBICNQN29SKcOZpaXj2n0mUyuc=; 
+	b=ijKjBOhklnUbfI/HrWdXM411YhCL5/tHCAGJj/SaUHjxwrIxxsDCSQjjCWmNWyGBYwGTXQKg82pZe8Kb6e37h9mcULfHleof7sEqRs++6eMId7d7//j5ffogbtQpXNgyy9d2f3AgLHQtw1vu/yRIEioQlxxyGRHrH9SimmbpW20=
+ARC-Authentication-Results: i=1; mx.zohomail.eu;
+	dkim=pass  header.i=iav.lv;
+	spf=pass  smtp.mailfrom=iav@iav.lv;
+	dmarc=pass header.from=<iav@iav.lv>
+DKIM-Signature: a=rsa-sha256; b=LTSKy4jfnYXdYo5kn8T4282HmTTFRwKWUeXdGV5PjsEDWR/48r9Fz7lrQ4RSowu+ST8yPOEU5MeHHN3b3BGMxOj0pB+zdcv2D3moehXbfNkJ19XCNZR5KIXMGTa6+vvv0D4wldWwoPKzmiADT4fTuFJELS6raoZvLwBVecAAM40=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=jGfSOo4/qi2MGnClnBBICNQN29SKcOZpaXj2n0mUyuc=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zoho.eu with SMTPS id 17941156724621020.6302714073776;
+	Sun, 8 Nov 2026 06:27:52 +0100 (CET)
+Date: Sun, 08 Nov 2026 07:27:51 +0200
+From: Igor Velkov <iav@iav.lv>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>,
+ Jianqun Xu <jay.xu@rock-chips.com>, linux-gpio@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org,
+ Igor Velkov <iav@iav.lv>
+Subject: Re: [PATCH] gpio: rockchip: restore interrupt settings after hibernation
+Message-ID: <20261108-re-heiko-gpio-rockchip-hib-1@iav.lv>
+In-Reply-To: <9970336.2WqB4rESCP@phil>
+References: <20261107-b4-gpio-rockchip-hib-v1-1-19f4d163a55e@iav.lv>
+ <9970336.2WqB4rESCP@phil>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/5] arm64: dts: rockchip: Add DSI panel to RK3588 EVB1
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-References: <20261106-rk3588-evb1-dt-updates-v1-0-bdbe16223589@collabora.com>
- <20261106-rk3588-evb1-dt-updates-v1-4-bdbe16223589@collabora.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20261106-rk3588-evb1-dt-updates-v1-4-bdbe16223589@collabora.com>
-X-HM-Tid: 0aa1b9271f9d03a7kunm71851a523ae3dc
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCS0kYVh9OTxlIH0sYQh9PQ1YVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=P8WiBGr9wnTcvHB2H8l9sl8SKmN0k54UNOfHgSTjHwSZ13FvJWN3ot57OepT4gft0OATr3R288gLEOJE989yutl2wuvTLvA/8KHdc8pKGoQAx1kCBPrutFigfI0NXpdxjVjHQ9W/6CAj1AxtbWZIuYDnRia5x6m/+/Ghp15zQxk=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=lM3R06lN5RqvDRl/k2tH4ahMeiHYdM12iCHEJrgC6wk=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261107_191518_970979_E752C5F6 
-X-CRM114-Status: GOOD (  14.20  )
+X-CRM114-CacheID: sfid-20261107_212803_482393_80B22A69 
+X-CRM114-Status: UNSURE (   7.28  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,179 +74,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Sebastian,
+Heiko Stuebner wrote:
+> This looks sensible in general, but I wonder what happens with the other
+> registers of the gpio-controller here after hibernation?
+>
+> Like does the direction + output value, debounce get restored from
+> some other means?
 
-On 11/7/2026 5:57 AM, Sebastian Reichel wrote:
-> The RK3588 EVB1 comes with a W552793DBA-V10 Touchscreen/Display
-> combination. It contains a Wanchanglong W552793BAA panel and a
-> Goodix GT1158 touchscreen. This adds the DT description of it.
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 90 ++++++++++++++++++++++++
->  1 file changed, 90 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-> index 6a95a8bb6fb8..327ca13b60f0 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
-> @@ -204,6 +204,15 @@ vcc12v_dcin: regulator-vcc12v-dcin {
->  		regulator-max-microvolt = <12000000>;
->  	};
->  
+Hi Heiko,
 
-I seem unable to apply the patch to the latest linux-next tree.
+No, the driver restores nothing else: after a power loss the bank comes
+back as the boot kernel left it. Debounce requested on a line was lost on
+both ODROID-M1 (GPIO v2) and ROCK Pi 4A (GPIO v1); direction and output
+matched only because the boot kernel sets them the same way.
 
-So I tried to resolve the conflict manually, but the actual
-test screen did not display. I will look into this further.
+v2 will save and restore the output, direction and debounce registers
+too, as gpio-dwapb does.
 
-
-> +	vcc3v3_lcd_mipi: regulator-vcc3v3-lcd-mipi {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc3v3_lcd_mipi";
-> +		regulator-boot-on;
-> +		enable-active-high;
-> +		gpio = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
-> +		vin-supply = <&vcc_3v3_s0>;
-> +	};
-> +
->  	vcc3v3_pcie30: regulator-vcc3v3-pcie30 {
->  		compatible = "regulator-fixed";
->  		regulator-name = "vcc3v3_pcie30";
-> @@ -338,6 +347,43 @@ &cpu_l3 {
->  	cpu-supply = <&vdd_cpu_lit_s0>;
->  };
->  
-> +&dsi0 {
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-> +	status = "okay";
-> +
-> +	panel@0 {
-> +		compatible = "wanchanglong,w552793baa", "raydium,rm67200";
-> +		reg = <0>;
-> +		backlight = <&backlight>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&lcd_rst_gpio>;
-> +		vdd-supply = <&vcc3v3_lcd_mipi>;
-> +		iovcc-supply = <&vcc3v3_lcd_mipi>;
-> +		vsp-supply = <&vcc5v0_sys>;
-> +		vsn-supply = <&vcc5v0_sys>;
-> +		reset-gpios = <&gpio2 RK_PB4 GPIO_ACTIVE_LOW>;
-> +
-> +		port {
-> +			mipi_panel_in: endpoint {
-> +				remote-endpoint = <&dsi0_out_panel>;
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&dsi0_in {
-> +	dsi0_in_vp3: endpoint {
-> +		remote-endpoint = <&vp3_out_dsi0>;
-> +	};
-> +};
-> +
-> +&dsi0_out {
-> +	dsi0_out_panel: endpoint {
-> +		remote-endpoint = <&mipi_panel_in>;
-> +	};
-> +};
-> +
->  &gmac0 {
->  	clock_in_out = "output";
->  	phy-handle = <&rgmii_phy>;
-> @@ -495,6 +541,22 @@ hym8563: rtc@51 {
->  	};
->  };
->  
-> +&i2c6 {
-> +	status = "okay";
-> +
-> +	gt1x: touchscreen@14 {
-> +		compatible = "goodix,gt1158";
-> +		reg = <0x14>;
-> +		interrupt-parent = <&gpio0>;
-> +		interrupts = <RK_PD3 IRQ_TYPE_LEVEL_LOW>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&touchscreen_pins>;
-> +		reset-gpios = <&gpio0 RK_PD2 GPIO_ACTIVE_HIGH>;
-> +		AVDD28-supply = <&vcc3v3_lcd_mipi>;
-> +		VDDIO-supply = <&vcc3v3_lcd_mipi>;
-> +	};
-> +};
-> +
->  &i2c7 {
->  	status = "okay";
->  
-> @@ -543,6 +605,10 @@ rgmii_phy: ethernet-phy@1 {
->  	};
->  };
->  
-> +&mipidcphy0 {
-> +	status = "okay";
-> +};
-> +
->  &pcie2x1l0 {
->  	pinctrl-names = "default";
->  	pinctrl-0 = <&pcie2_0_rst>, <&pcie2_0_wake>, <&pcie2_0_clkreq>, <&wifi_host_wake_irq>;
-> @@ -664,6 +730,12 @@ hym8563_int: hym8563-int {
->  		};
->  	};
->  
-> +	mipi_dsi {
-> +		lcd_rst_gpio: lcd-rst {
-> +			rockchip,pins = <2 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +	};
-> +
->  	pcie2 {
->  		pcie2_0_rst: pcie2-0-rst {
->  			rockchip,pins = <4 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-> @@ -692,6 +764,14 @@ vcc3v3_pcie30_en: vcc3v3-pcie30-en {
->  		};
->  	};
->  
-> +	touchscreen {
-> +		touchscreen_pins: touchscreen-pins {
-> +			rockchip,pins =
-> +				<0 RK_PD2 RK_FUNC_GPIO &pcfg_pull_up>,
-> +				<0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +	};
-> +
->  	usb {
->  		vcc5v0_host_en: vcc5v0-host-en {
->  			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
-> @@ -1534,3 +1614,13 @@ vp1_out_hdmi1: endpoint@ROCKCHIP_VOP2_EP_HDMI1 {
->  		remote-endpoint = <&hdmi1_in_vp1>;
->  	};
->  };
-> +
-> +&vp3 {
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-> +
-> +	vp3_out_dsi0: endpoint@ROCKCHIP_VOP2_EP_MIPI0 {
-> +		reg = <ROCKCHIP_VOP2_EP_MIPI0>;
-> +		remote-endpoint = <&dsi0_in_vp3>;
-> +	};
-> +};
-> 
-
--- 
-Best, 
-Chaoyi
-
+Igor
 
 _______________________________________________
 Linux-rockchip mailing list
