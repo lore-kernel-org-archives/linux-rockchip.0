@@ -2,63 +2,65 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 858E7606A32E
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Nov 2026 00:36:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E7135606A322
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Nov 2026 02:03:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Z/6zpkyS;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=a4xwZt9G
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jN6mKQje;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=kkvwdeSA
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=wU5KZNYeZfI5OX9pKoUe8W30HtjANfeu21bXBYG2Xjg=; b=Z/6zpkySeKwdTGPFpW6ExvrgMs
-	ajFLaLI8ExGiFQn73bmQapIxVyEfdgQNVVGIWXU38t8qK5Z+4zpQQDte4AIcC6OjI4D9HkzQGVyDD
-	KWN4DhTLCMuDPvq+Udu14uawhnc7hLuoGDz8TPMSEuVqPBvbb/V8E0fKcWVbKW9fkyMCIG3XoKJ1X
-	NmaBiJswzT0mt5wgp4ufMJ7oTGe5qm4WrloejNu9pEUzdIJQUeuOjwg2C4z5ux1yrOeeSZZTHiUsb
-	FXYFIawVvC+/e9xI9XLOuGIsDKtPS/+vEw6nno9pGyS2bYuDez7gtQOIkh8PjY4J8j65FV2iT/Jqv
-	UVYFHQ7g==;
+	bh=YEI3VjhtQ2Y8qiQUnI7uPshL3KI1FRCHTsjfGo2kCyI=; b=jN6mKQjeh0qO/GmO69Gqd0SMaB
+	WIOISqRshbEBRgl5bImpZUuOsLH9jnqOlazIvgNhE5Z/80ZFSEUVG9Yj8ILQTh9mL1NJphRntVne/
+	jnYYeUQeWrzflrQTbUGbGix7EBEqMKX96uJ2iPPrCFypIeH6zJFBPxfUvQ312V4OzUqwYY2thZ58D
+	so3M5fkd21vP4DlnL5zBfEOxlDtkB1jnZnZ4yOvZxgpjCCJGhQG0OzBMq8sbh9gtRC3oXt6j8Nr9n
+	kxdgIKBvyIsGOXPxvGM+s/whRyQ877D0kbJiYeLWWKH7KB5A0f2HU80r4HtQgx6QSIz6lKuTCP33K
+	CDPLYNLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPqtc-0000000FY5B-00JK;
-	Sun, 08 Nov 2026 00:36:32 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xPsFe-0000000FaiP-0pYI;
+	Sun, 08 Nov 2026 02:03:22 +0000
+Received: from mail-m16023652234.xmail.ntesmail.com ([160.236.52.234])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPqtZ-0000000FY4e-0W67;
-	Sun, 08 Nov 2026 00:36:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=8Aw1hKcMo2UwPIo6N+A44TKGRiDCU4zKWVbhcVjBxj8=; b=a4xwZt9G3lGEKgscRRUMeAzU+y
-	B9z3VAlYitCLsr5CFHarADdE4jGjOekTu5k/EJ/txsvyOGhytNOKeb2Kd4MlyiXSb5GeeCfBvVomJ
-	C0yvJFOo1jaUUow/hYbt8htgqNklZkY6Ox8GEq30N9FwoWRVN1ny0/Wtpu3CDlvdvf8iWWQdHEF36
-	cT/Attoc9dgVr0eQPTbMYcTpoG9tI8LFIPOKIeOTnXm4I8urG94bYQ67Hb8IwqdxQwmgPgi3Nq8BQ
-	4CDGeOd+jyInB8RwpoO+hzlO2mSx5XlDpi646L7gpKk4jK6SnZyVkJQuTREJHAaFIS5Qoqp/6yNHj
-	UvZt6Gdg==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Joachim Eastwood <joachim.eastwood@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <Shawn.lin@rock-chips.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: Re: [PATCH v2 0/3] arm64: dts: rockchip: Add NanoPi M6V2 board
-Date: Sun,  8 Nov 2026 01:36:16 +0100
-Message-ID: <179409813362.1454120.2066114184347271123.b4-ty@b4>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261104-nanopi-m6v2-v2-0-dfcd8714f48a@gmail.com>
-References: <20261104-nanopi-m6v2-v2-0-dfcd8714f48a@gmail.com>
+	id 1xPsFa-0000000Fahp-2e3t;
+	Sun, 08 Nov 2026 02:03:20 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 53dfa8dee;
+	Sun, 8 Nov 2026 10:03:07 +0800 (GMT+08:00)
+Message-ID: <f5edf258-4b6d-416a-9b27-efa47be8d91a@rock-chips.com>
+Date: Sun, 8 Nov 2026 10:03:05 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/5] arm64: dts: rockchip: Enable NPU on RK3588 EVB1
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+References: <20261106-rk3588-evb1-dt-updates-v1-0-bdbe16223589@collabora.com>
+ <20261106-rk3588-evb1-dt-updates-v1-2-bdbe16223589@collabora.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20261106-rk3588-evb1-dt-updates-v1-2-bdbe16223589@collabora.com>
+X-HM-Tid: 0aa1b8e5269b03a7kunm53324d9a39fbb5
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDSR4eVk8ZQk4YTR8aGUtMGlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=kkvwdeSA0JXJh94IWdoOSWnmeXYZ9RyQRqQBfDWgsti8LomJ+ryPfekPup1YK2zqCp32ezrhpwkXNcPo9NMfBs2c+x/+MOjst8p/1yt7jZEP8715nyJ1Tq02av39HeA2waphNRPwmGnFstec7rZdZfNzWes+86n1+K6ZFHurI3I=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=PuGzHsk/LIqXvaJ1IohwPD9m5fePFH4W4L4+Otr9oFg=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261107_163629_209655_559C8857 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20261107_180319_242852_00185529 
+X-CRM114-Status: GOOD (  11.39  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,41 +74,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-
-On Wed, 04 Nov 2026 21:59:20 +0100, Joachim Eastwood wrote:
-> This short patch series add support for the NanoPi M6V2. The board is
-> very similar to the original M6 with only a few differences.
+On 11/7/2026 5:57 AM, Sebastian Reichel wrote:
+> Also enable the NPU on the RK3588 EVB1, which is very similar to
+> the QuartzPro64.
 > 
-> Differences:
-> * New audio CODEC (Everest ES8389)
-> * New Ethernet PHY (MotorComm YT8531C)
-> * 1 extra user button
-> * Misc connector changes on the board
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+
+I remember there was already a similar patch before?
+Maybe I got something wrong.
+
+Reviewed-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+
+>  arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 34 ++++++++++++++++++++++++
+>  1 file changed, 34 insertions(+)
 > 
-> [...]
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> index 87e624d1e094..6476d9e3be6f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> @@ -578,6 +578,10 @@ &pd_gpu {
+>  	domain-supply = <&vdd_gpu_s0>;
+>  };
+>  
+> +&pd_npu {
+> +	domain-supply = <&vdd_npu_s0>;
+> +};
+> +
+>  &pd_rkvdec0 {
+>  	domain-supply = <&vdd_vdenc_s0>;
+>  };
+> @@ -703,6 +707,36 @@ &pwm2 {
+>  	status = "okay";
+>  };
+>  
+> +&rknn_core_0 {
+> +	npu-supply = <&vdd_npu_s0>;
+> +	sram-supply = <&vdd_npu_mem_s0>;
+> +	status = "okay";
+> +};
+> +
+> +&rknn_core_1 {
+> +	npu-supply = <&vdd_npu_s0>;
+> +	sram-supply = <&vdd_npu_mem_s0>;
+> +	status = "okay";
+> +};
+> +
+> +&rknn_core_2 {
+> +	npu-supply = <&vdd_npu_s0>;
+> +	sram-supply = <&vdd_npu_mem_s0>;
+> +	status = "okay";
+> +};
+> +
+> +&rknn_mmu_0 {
+> +	status = "okay";
+> +};
+> +
+> +&rknn_mmu_1 {
+> +	status = "okay";
+> +};
+> +
+> +&rknn_mmu_2 {
+> +	status = "okay";
+> +};
+> +
+>  &saradc {
+>  	vref-supply = <&vcc_1v8_s0>;
+>  	status = "okay";
+> 
 
-Applied, thanks!
-
-[1/3] dt-bindings: arm: rockchip: add FriendlyElec NanoPi M6V2
-      commit: cfa6ea6d25f73595165482b2326805ecfb375533
-[2/3] arm64: dts: rockchip: rename rtl8211f node on rk3588s-nanopi
-      commit: b42a3f77ad0b9d672fa6228517442c9675d3caca
-[3/3] arm64: dts: rockchip: add support for NanoPi M6V2 board
-      commit: 37145821846cb01e1da93753d928e77c42b6bb59
-
-I've reordered some properties in the m6v2 board dts
-
-
-Best regards,
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Best, 
+Chaoyi
+
 
 _______________________________________________
 Linux-rockchip mailing list
