@@ -2,74 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F1A94606A31C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 18:03:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8DEC9606A32A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 18:48:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BYI4xmZP;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=E2/LHiXz
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RL3rikj2;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ZwBvG3Ku
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=44vaEWHTvGwNzBasTqa467YSrV50WsMg9KYnA1k5bPA=; b=BYI4xmZPA8+7nHZvygEghNxzxw
-	4V1B6zhpYQJjWNaIZLwXMW6oDqtKzfpI4z5nqAaVzpU2qlboHwfG55uCVZA1AALjOzmq7FEiTNpvW
-	876da3cnNFsOyxc3EnZ/Kb0qoiOt7viS/n6M9iuD8HPJtXSXvq7MOdwi0L19uzjMK/Xvaq9DGfMwj
-	TxyZAzwl5nZnDyx8PX0vBl9FWBXb5rO6L8jL3ZJy7Ujuqh9vW7wNCZ7aPsHlplL/CJgYiLlltoA8R
-	ALwxRABA2xOsROvCg0j2XjlnM+hEp3VRQRbvi83k1iMCAdzs+39FSsOMiwYfwSCzBSwLducFUF1mK
-	YnOonGhg==;
+	bh=3pQM/EWXqMxfGC7NXaCrELa876kmupVHy2JzAPsOhos=; b=RL3rikj2QK/rYQR6TOwDZTtRY0
+	l21WdtYa4n2ccbzbS+NKriYa4T7VhSrvtILXVlkLU1fRqPnCGqV3f8s/gKX4IO1PKkmREvz6BjTl8
+	5iNr0j3s8coGBbhHpY0uSKlj1mAF1m2Qtjo5B/7BqHEf2Blg5tkKdnFIdLB+rNoWHIMB58UqYda6z
+	515NvC6p2uHZVKinS7D6ZYagFQs8Wy/eL+9A3MtYc93vfn4VgBuusAUlbl9T9N5Y60lcLStoA5jf3
+	GnN31BxHbbpU2m+mQBOVc1m/bI1swnAlWDCnUPkumHztS1/N0pmriKCW9Uu5sMpOY0Z0wFN+P4CBM
+	wuG24xEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQTij-00000001Qvw-0bIe;
-	Mon, 09 Nov 2026 18:03:53 +0000
-Received: from sender6-op-o11.zoho.com ([165.173.180.11])
+	id 1xQUPe-00000001UaI-0vAc;
+	Mon, 09 Nov 2026 18:48:14 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQTig-00000001Quc-1sTC;
-	Mon, 09 Nov 2026 18:03:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794247409; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=LGXErlNc2MViOsg+sBbACIsfieOYbD6JAOs4hpGhyln8li2sF6cR8/yQ3WxjVdSVfoutIl0dYrrQHQSsxCF69mD9p6smkbFgh8sg1KnXevDHZY59WzA5pvmQEG5TgL455fiXdMuaWNgUtlwfoSPMK88R4HKwR1RmIIZkLA/3PK0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794247409; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=GEK25Zy3sFFqw428awFqsQCshEU6Oj5m/3/9wtN089s=; 
-	b=WTHobyn4+/b60WlNVuyJV+PSJaYi7JYwz2i8Q2XoSr012E+23nezqXHdoEECVcP0aFRQFmso8eUIf0zMefu7ihtDAc523LWOAhQ7PrZlvBdTg6laqyFwMNGFMETsoB9Ix6UFEq6pBxo29KWMQ8fPa0I04moV4eJlF5v1i8dG0qo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=E2/LHiXzQPa2l/fMj7c24x/7Ro5+6yGnkj6ucD8Ls63q69MFmjBOPafYwZ9AOLMLa27Ew22yZrw99ZwYbNy2GkNh7mVm8WXXhcvofz8id5lHnMNMiBPdLJHPKwEykhnk/svxT60SeC48X8DBKiOTRdAR9AXsHH/9SxRfC2ZfGx4=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=GEK25Zy3sFFqw428awFqsQCshEU6Oj5m/3/9wtN089s=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1794247406959126.89806918353611;
-	Mon, 9 Nov 2026 10:03:26 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id B0DA8180317; Mon, 09 Nov 2026 19:03:21 +0100 (CET)
-Date: Mon, 9 Nov 2026 19:03:21 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Jingoo Han <jingoohan1@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	"Yury Norov (NVIDIA)" <yury.norov@gmail.com>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
-	Alexey Charkov <alchark@flipper.net>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v9 1/9] PCI: dw-rockchip: Fix LTSSM set functions
-Message-ID: <avIIMccXQyJiGiH6@venus>
-References: <20261105-rockchip-pcie-system-suspend-v9-1-a2e55846649e@collabora.com>
- <20261109173329.GA252206@bhelgaas>
+	id 1xQUPc-00000001UZy-2C0q;
+	Mon, 09 Nov 2026 18:48:12 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9799061133;
+	Mon,  9 Nov 2026 18:48:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F39181F0089F;
+	Mon,  9 Nov 2026 18:48:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794250091;
+	bh=wzcq643kxqzm6dmiI//QkyvyRvgf5SDiG72cWiaVszc=;
+	h=From:To:Cc:Subject:Date;
+	b=ZwBvG3Ku4ZEwKSKey17VtGpJlOGR7qSBiroi5pBDv8Aw5R1tZ2MCU/eWgnF/33DS5
+	 h/zqFPVc3LQLug14ppeQv8CNu8NpLAY2BCrW4zPdB/CQ/0Bzs94BOHpadBvfwE+EU/
+	 SOcbuPHL3VQouyX0LpqkU8K3pTzhsrIbX3cNouXEzVs900C3ZbuzJUcGAbxZOUTULy
+	 tcOVZ8yYFL5Xu5yeijdEdnBtUBjsAulBNpkYv0OfITgqxP6nmRLYZmx07/j7w59dtp
+	 fVFxaE4Is5/s6PjIETaMJOSGL6/Z2v3G4eHnueTyipoMnLHhvtS3Za2Nuqty0uefsz
+	 2lsBotMH0L9Jw==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andyshrk@163.com>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Andy Yan <andy.yan@rock-chip.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] dt-bindings: display: rockchip: Allow single 'port' node for DP input port
+Date: Mon,  9 Nov 2026 12:47:58 -0600
+Message-ID: <20261109184759.467215-1-robh@kernel.org>
+X-Mailer: git-send-email 2.53.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20261109173329.GA252206@bhelgaas>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.7.7.1.5.4/291.452.71
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261109_100350_521482_5FB88FA8 
-X-CRM114-Status: GOOD (  25.97  )
-X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,130 +75,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5472735191171723740=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Existing RK3399 users have only a single 'port' node. This was common before
+connector nodes were defined. Allow for this since there are already stable
+users.
 
---===============5472735191171723740==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="paljnoslhkxoag7v"
-Content-Disposition: inline
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+ .../rockchip/rockchip,rk3399-cdn-dp.yaml      | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
 
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3399-cdn-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3399-cdn-dp.yaml
+index 195f665970bf..425b27346132 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3399-cdn-dp.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3399-cdn-dp.yaml
+@@ -63,7 +63,12 @@ properties:
+     $ref: /schemas/graph.yaml#/properties/ports
+ 
+     properties:
+-      port@0:
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Output of the CDN DP
++
++    patternProperties:
++      '^port(@0)?$':
+         $ref: /schemas/graph.yaml#/properties/port
+         description: Input of the CDN DP
+ 
+@@ -74,13 +79,11 @@ properties:
+           endpoint@1:
+             description: Connection to the VOPL
+ 
+-      port@1:
+-        $ref: /schemas/graph.yaml#/properties/port
+-        description: Output of the CDN DP
+-
+-    required:
+-      - port@0
+-      - port@1
++    oneOf:
++      - required:
++          - port@0
++      - required:
++          - port
+ 
+   power-domains:
+     maxItems: 1
+-- 
+2.53.0
 
---paljnoslhkxoag7v
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v9 1/9] PCI: dw-rockchip: Fix LTSSM set functions
-MIME-Version: 1.0
-
-Hi,
-
-On Mon, Nov 09, 2026 at 11:33:29AM -0600, Bjorn Helgaas wrote:
-> On Thu, Nov 05, 2026 at 02:33:09PM +0100, Sebastian Reichel wrote:
-> > Before the Rockchip PCIe driver has been switched over to the
-> > FIELD_PREP_WM16 macro, PCIE_CLIENT_ENABLE_LTSSM and
-> > PCIE_CLIENT_DISABLE_LTSSM were setting bits with a mask of 0xc =3D 0b11=
-00,
-> > which means BIT 2 and BIT 3. After the conversion it only sets bit 2,
-> > with bit 3 being handled by a separate define named
-> > PCIE_CLIENT_LD_RQ_RST_GRT. Apparently the conversion missed to make use
-> > of this new macros resulting in the third bit not being set.
-> >=20
-> > Fixes: 30e919570581 ("PCI: dw-rockchip: Switch to FIELD_PREP_WM16 macro=
-")
->=20
-> This commit appeared in v6.18, so this looks like it might be a
-> candidate for a stable tag?
-
-IDK if its worth backporting. I mainly did not add the tag, since I
-found this by chance while rebasing code around it. For my basic
-tests I didn't notice any problems even without the bit. Also nobody
-reported anything since v6.18. The bit was originally set since the
-driver had been introduced. Maybe Shawn can say if its worth backporting?
-
-Greetings,
-
--- Sebastian
-
->=20
-> > Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > ---
-> >  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 10 ++++++----
-> >  1 file changed, 6 insertions(+), 4 deletions(-)
-> >=20
-> > diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pc=
-i/controller/dwc/pcie-dw-rockchip.c
-> > index bd86e32cc2b1..c35c5583c797 100644
-> > --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> > +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> > @@ -322,14 +322,16 @@ static void rockchip_pcie_ltssm_trace(struct rock=
-chip_pcie *rockchip,
-> > =20
-> >  static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
-> >  {
-> > -	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
-> > -				 PCIE_CLIENT_GENERAL_CON);
-> > +	u32 val =3D PCIE_CLIENT_ENABLE_LTSSM | PCIE_CLIENT_LD_RQ_RST_GRT;
-> > +
-> > +	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_GENERAL_CON);
-> >  }
-> > =20
-> >  static void rockchip_pcie_disable_ltssm(struct rockchip_pcie *rockchip)
-> >  {
-> > -	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DISABLE_LTSSM,
-> > -				 PCIE_CLIENT_GENERAL_CON);
-> > +	u32 val =3D PCIE_CLIENT_DISABLE_LTSSM | PCIE_CLIENT_LD_RQ_RST_GRT;
-> > +
-> > +	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_GENERAL_CON);
-> >  }
-> > =20
-> >  static bool rockchip_pcie_link_up(struct dw_pcie *pci)
-> >=20
-> > --=20
-> > 2.53.0
-> >=20
-
---paljnoslhkxoag7v
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmryCuYACgkQ2O7X88g7
-+pogbxAAp7uNHMud1soRc7aXKsYq8Hhj71CnA/0igLKhPz2fe9QBAQVtTB89jIcU
-brCPZy3/1yY4VdnZkFZWxaCip+XoK2JzI5QKdzoT9YK5KQ5o28Qi0JeJEgi5BdPm
-CMTLEg6ctaPRBpKllRV3Bn+2WiYatx+CnDSsRyWvnE+4oXg2mqsIHpJaUTVfN+Tp
-JdAr1mSvTZVUw6MfOqk6Of8MFngTOB294cqYq7a65l27Snz+xG6kIGkGcYn04ffa
-saelnMsjj70mS+h3qYtLVo2MOiUMYqEabJXlN++qnt3eTIdfT0zRItDztDKEdE/x
-qsQ/Vo4hpfvBH2YjwCPPwt30iZwmCs8zOifkQz+Hb7FzyzRg39G7sMw69aO7qVit
-Y8U4b6GiAXGZC9+bQ7hcURgdpH3Aq+qJtsb2tPs2MGmPCWYlMMMcHdxYHLG9l1yd
-VVg1eSWEruxled/h6TU79ZuUWC5qO0asV6aookwlekGo2hgMrdLpIvTUr+3XygGI
-SGaPsuLhSAveEXkoqGGFO0gXWN3aY3aDnSxvksZEjiTygaw9pmF1bBvfeo4tso9V
-VCAVzrmkDsab86TF1qy89KOuaWAzXXNJ6lGMuGHCeEXPssT/cdA8vEIpbErYPaFi
-oZIXu8VaDL1jTPN3YxbyTPnLw15ijtb2W/Dhv2NGJx/y2PBXnGQ=
-=ATM0
------END PGP SIGNATURE-----
-
---paljnoslhkxoag7v--
-
-
---===============5472735191171723740==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5472735191171723740==--
-
