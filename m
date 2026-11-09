@@ -2,60 +2,69 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1340C606A31C
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Nov 2026 23:06:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B653C606A31C
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 00:54:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=McFaOs3I;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=U+xl+M8D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pM7gYJM1;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=ehQfQKga
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=H8tY263Dk7DtIkVH1Q9nVNEH4gvYQUdtKGgx5do0OLg=; b=McFaOs3IFtK1RXuiR4gQ2XOmHu
-	UBTAxZnxUY3gBOkl7P35GsEAG2acu6atcSRUzP2E5QHELX/+Ks/fJ9RptcuM529IWxhvQ/DeSTJJh
-	sJiCWLqUQ4rUvmNN2KDvfFk/6OaJBHuekv/KJM1khQINYg7FA2sOs6kbEp/8MmfhJuL6B8E1r5orY
-	8D3q8nwCylJJdqCIjU8RrXDj8l0pQhdbun+ZuDqXGGCPumEaBauwkMvKv1KljO+VysgTHNBU7WmBY
-	4KBdfJJoIoNM4gPOtggWxEyxKYguTUrSmAWtSDLmMdewZcVDFZsQHNxWmf+PHlnsXMsXZ9h9xM9ER
-	xnYVhZwA==;
+	bh=neHD9gjQM3kWb9CJDPWdYERmQUOxze7soLDQMkPqk8U=; b=pM7gYJM1CszDJFmcDCDPg9urUL
+	eFhMAIbKGbU3GPGaCZDjvO5MQWjP4Gh8OmZgfRDCj+c1iBC1GaspHdgrVhgOC9fJYqOEmfms94bw7
+	X1mMGDKiUej+7sAJ67xYp712FiszZoindWdWL6HVgoFM1MgHZdAQ9FZvVeYz3vXSDSFQisTi6MX/5
+	vR3w45cRHL4fnSzPW2yLa2xdoKTAe6wjoJgRQQVbQ2LAWuO8lNkqpY1/U00v90t69EPghx6mKcdjY
+	6OhQTr9WmzBGbZluQSyOZeaDeZ8JS5Nx74Np5qqIFrIkncVGpAcqoYOi+FyYQ5k0y+GeLWcOcOPo1
+	Kj1Yfosw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQBxj-0000000GsMD-2POn;
-	Sun, 08 Nov 2026 23:06:11 +0000
-Received: from sender-op-o17.zoho.eu ([136.143.169.17])
+	id 1xQDeU-0000000H0M4-22JR;
+	Mon, 09 Nov 2026 00:54:26 +0000
+Received: from sender5-op-o11.zoho.com ([165.173.182.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQBxg-0000000GsLo-3IEj;
-	Sun, 08 Nov 2026 23:06:10 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794179162; cv=none; 
-	d=zohomail.eu; s=zohoarc; 
-	b=U+XdoxztM7eUIcyKziLbVWP8OQzzFhPIlMFZhr4hdtPqgrf/9tt4ahY8NuVCXRZODMqUFgKNN1J74C2CY/Ebxl1rscXqEEgrxo/mfKlkj2NFt4gMcuHT5XFKdiPbpAlmV6i3ud6bwMeJic7KGRcIFc2d06qEOX4tKytxtgLvCaw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
-	t=1794179162; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=r+y8CQ+aNutDnqhoFEXjnp4bJTLJopAbpRetz6dHelc=; 
-	b=WCJkCA7y3/E+eXiLYiRkmsp/A7i7i3XYL+UE0CwJzk3uuBGugLiStR7W/xqD1xJbDpvq8kF0fTXmjv6ipimcYbyHJpVuSOOiOcC8toZ8k9TZXV1bqgZRICpK6dalakePHnQqOyyzEPCnhTuxhCq2nnKOTZnC0owig3AE2hWDrKA=
-ARC-Authentication-Results: i=1; mx.zohomail.eu;
-	dkim=pass  header.i=iav.lv;
-	spf=pass  smtp.mailfrom=iav@iav.lv;
-	dmarc=pass header.from=<iav@iav.lv>
-DKIM-Signature: a=rsa-sha256; b=U+xl+M8D5b6oVRqjnpVsocm0e+FbUMz3SZYXQ88EcUMnerg8h+e3ZrWFG0cxMLFG379cPDnWnUh+gz3gCoyy2/aXj0f9wC015pIgHjYOYnXCr2VXbm20LOzCV8SNSO6ipSFNsw+PmFIoUXA4FqQW9bV82AlJQxy5m5R2vJgMM8w=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=r+y8CQ+aNutDnqhoFEXjnp4bJTLJopAbpRetz6dHelc=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zoho.eu with SMTPS id 1794179160553615.2293146265968;
-	Mon, 9 Nov 2026 00:06:00 +0100 (CET)
-Date: Mon, 09 Nov 2026 01:05:59 +0200
-From: Igor Velkov <iav@iav.lv>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Enrique Hernández Bello <ehbello@gmail.com>, lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org, bhelgaas@google.com, robh@kernel.org, heiko@sntech.de, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
-Subject: Re: [PATCH RFC 0/2] PCI: rockchip-host: Retry training and hot-reset a JMB585 on RK3399
-Message-ID: <20261109-rockchip-pcie-deskew-result-1@iav.lv>
-In-Reply-To: <6c9adabe-d632-471e-8fc1-aafe62115167@rock-chips.com>
-References: <20261024-rockchip-pcie-resume-v1-0-58e54a5cf5f1@iav.lv> <20261106-rockchip-pcie-ltssm-trace-1@iav.lv> <6c9adabe-d632-471e-8fc1-aafe62115167@rock-chips.com>
+	id 1xQDeR-0000000H0Lh-0g4A
+	for linux-rockchip@lists.infradead.org;
+	Mon, 09 Nov 2026 00:54:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794185656; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=UXAqwZuIx4IdANb0Smdgc/E2DV2a0M7o0WAvJqUCfgSRhnFtrxsv6059yCzhSifYllSK0/Q4aYbIbLj59ARvnnzqoHDfffjQpbOCVW5ITX/bPRPP6b7ZtgQud6beMpzqE88MwyjKsek9oFfu/iQAmSm2LsQTX/PJx9ROg4+UP/s=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794185656; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=3dZwmpYqRDolaH+9+KlR5smyN4t767VKR23GyFVod3M=; 
+	b=ZxuneDOPbPHh0Ik7eSAcM0CY6HwXavF7DlZTm3rG6A4HaL7aayCzm/f6GBLPW/u6pGJON49XwIkFehVE/7LeS7VfzQrlYPonK+zwlSMZez1bQ6TpbgMdg3wnSHLJSi8+g7ECfi34hRicSb70G/ggHqGDBP4eCGuE/BXy3R4daro=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=ehQfQKgaLgBcXs8SZyO7VucozQtd405NhLM6acoaXKGpQioEEYcB5yUG6xfEPQNLe92qjmZAVC+ppCTydZ2RLxIrd5Zb8NEDsolg0VAh6K/YIYoUoB60TRd4lwyfKo22Qv3T95gqy6nln15eijLFL/gGNIR9FvH7AD/iFG/STgA=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=3dZwmpYqRDolaH+9+KlR5smyN4t767VKR23GyFVod3M=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794185654652199.25556237609146;
+	Sun, 8 Nov 2026 16:54:14 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 478591808E6; Mon, 09 Nov 2026 01:54:13 +0100 (CET)
+Date: Mon, 9 Nov 2026 01:54:13 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, 
+	maccraft123mc@gmail.com, heiko@sntech.de, lee@kernel.org, 
+	Chris Morgan <macromorgan@hotmail.com>, Jacob Cook <jacobmcook1984@gmail.com>
+Subject: Re: [PATCH V2 2/4] power: supply: rk817-charger: Resolve boot state
+ of charge from the coulomb counter
+Message-ID: <avEZBrZSAzJmqON_@venus>
+References: <20261102143942.305293-1-macroalpha82@gmail.com>
+ <20261102143942.305293-3-macroalpha82@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <20261102143942.305293-3-macroalpha82@gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.158.93
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261108_150609_126225_5AE9C0F0 
-X-CRM114-Status: UNSURE (   8.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261108_165423_279091_599BC7CA 
+X-CRM114-Status: GOOD (  54.68  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,47 +75,614 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4562278546722810405=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Shawn,
 
-Thanks. Deskew makes no difference. Helios64, x2, bind/unbind, variants
-alternating every cycle, bad link bring-ups:
+--===============4562278546722810405==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7qp4dc52vysprfju"
+Content-Disposition: inline
 
-  defaults 6/104, auto deskew off + trim 0xf: 5/104
-  defaults 6/104, magnitude off: 6/104
 
-Your mail has the magnitude at 0xb, but TRM V1.3 part 2, 17.6.10.1 has
-TX_TERMINATION_TRIM there and DESKEW_MAGNITUDE at 0xc, so I wrote 0xc.
+--7qp4dc52vysprfju
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH V2 2/4] power: supply: rk817-charger: Resolve boot state
+ of charge from the coulomb counter
+MIME-Version: 1.0
 
-DEBUG_DATA_OUT did show something. With Debug Mux Control (0x208) = 5,
-share of samples with in_dllp0_data_valid set, 100 ms window after hot reset:
+Hi,
 
-  good bring-ups 0.16% (99), bad bring-ups 51% (3, range 45-53)
+On Mon, Nov 02, 2026 at 08:39:40AM -0600, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+>=20
+> The boot state of charge comes from PWRON_VOL when OFF_CNT reads three
+> or more and from the coulomb counter otherwise, and both fail in the
+> field.
+>=20
+> PWRON_VOL is sampled at the power-on instant. A power-on caused by
+> plugging in a charger samples under charge current: on an RG353M it
+> read above the pack's maximum design voltage while the pack was at
+> 74%. An RG DS was seen holding 2.63V in the register while running.
+> Either becomes a wrong percentage on every boot that reaches it.
+>=20
+> A negative counter was clamped to zero and reported as 0%.
+>=20
+> The counter itself keeps counting while the system is off: the same
+> RG353M, saved at 74% and charged for 1.5 hours powered off, booted
+> with the counter at full. The BSP driver relies on this: it reads
+> OFF_CNT into a flag it never uses, consults PWRON_VOL only when
+> BAT_CON marks a new battery, and adopts the counter when it diverges
+> from the saved capacity ("system halt last time").
+>=20
+> Keep the PWRON_VOL lookup for the first boot, but "guess" the SoC on
+> boot based on available signals such as the stored NVRAM value, the
+> state of charge from the battery voltage (which would be high if
+> charging, or low if discharging, but based on testing within about
+> 10% of the actual value), and the value reported by the gauge. Then,
+> periodically read the OCV value reported when it is available and
+> use that to adjust the gauge if it differs too much from what the
+> OCV says the state of charge should be. This combined with calibrating
+> to full when the battery stops charging while plugged in should give
+> us a better way to report an accurate value of the battery's SOC.
+>=20
+> Expose PWRON_VOL as POWER_SUPPLY_PROP_VOLTAGE_BOOT and the current
+> rested pair as POWER_SUPPLY_PROP_VOLTAGE_OCV, -ENODATA while the
+> battery is not resting.
+>=20
+> Log the counter, saved soc and battery voltage at boot, as the BSP logs
+> its saved and present capacity, so a counter that diverged from the
+> saved soc is visible. Report it when debugging is enabled so as to not
+> spam the dmesg log otherwise.
+>=20
+> Fixes: 11cb8da0189b ("power: supply: Add charger driver for Rockchip RK81=
+7")
+> Co-developed-by: Jacob Cook <jacobmcook1984@gmail.com>
+> Signed-off-by: Jacob Cook <jacobmcook1984@gmail.com>
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> --
 
-The first training looks the same: 0.15% (97) against 47% (5). mgmt_dllp_error,
-crc32_error and in_tlp_error stay 0 in all of them. With the mux at 4,
-start_replay, replay timeout and dl_protocol_error stay 0 too.
+please split this to make it easier to review. I had a quick look
+and e.g. introducing rk817_initialize_coulumb_counter() to remove
+code duplocation can be its own change. Adding support for
+POWER_SUPPLY_PROP_VOLTAGE_BOOT and POWER_SUPPLY_PROP_VOLTAGE_OCV is
+not a fix and could be its own patch too.
 
-So in a bad bring-up the RC receives a constant error-free stream of DLLPs.
-I read that as the JMB585 repeating flow control init because it does not
-get what the RC sends, but this bus does not show the DLLP type. It would put
-the fault in the RC to JMB585 direction, on x2 only.
+Greetings,
 
-Is there an RC transmitter setting worth trying for that, such as swing or
-de-emphasis? If not, I will stop looking for the cause here.
+-- Sebastian
 
-Igor
+>  drivers/power/supply/rk817_charger.c | 295 ++++++++++++++++++++-------
+>  include/linux/mfd/rk808.h            |   2 +
+>  2 files changed, 223 insertions(+), 74 deletions(-)
+>=20
+> diff --git a/drivers/power/supply/rk817_charger.c b/drivers/power/supply/=
+rk817_charger.c
+> index 86da0462fb59..0c7287ad27c6 100644
+> --- a/drivers/power/supply/rk817_charger.c
+> +++ b/drivers/power/supply/rk817_charger.c
+> @@ -95,6 +95,15 @@ struct rk817_charger {
+>  	int bat_voltage_min_design_uv;
+>  	int bat_voltage_max_design_uv;
+> =20
+> +	/* Battery voltage the PMIC sampled when the system powered on. */
+> +	int boot_voltage_uv;
+> +
+> +	/* Rested voltage the gauge latched, 0 if it took no usable pair. */
+> +	int relax_voltage_uv;
+> +
+> +	/* Retained for the ocv-capacity table the recalibration needs. */
+> +	struct power_supply_battery_info *bat_info;
+> +
+>  	/* Values updated periodically by driver for display. */
+>  	int charge_now_uah;
+>  	int volt_avg_uv;
+> @@ -167,6 +176,20 @@ static int rk817_chg_cur_from_reg(u8 reg)
+>  	}
+>  }
+> =20
+> +static int rk817_initialize_coulumb_counter(struct rk817_charger *charge=
+r,
+> +					    u32 charge_ua)
+> +{
+> +	int tmp =3D CHARGE_TO_ADC(charge_ua, charger->res_div);
+> +	u8 bulk_reg[4];
+> +	int ret;
+> +
+> +	put_unaligned_be32(tmp, bulk_reg);
+> +	ret =3D regmap_bulk_write(charger->rk808->regmap, RK817_GAS_GAUGE_Q_INI=
+T_H3,
+> +				bulk_reg, 4);
+> +
+> +	return ret;
+> +}
+> +
+>  static void rk817_bat_calib_vol(struct rk817_charger *charger)
+>  {
+>  	uint32_t vcalib0 =3D 0;
+> @@ -242,6 +265,7 @@ static int rk817_bat_calib_cap(struct rk817_charger *=
+charger)
+>  	struct rk808 *rk808 =3D charger->rk808;
+>  	int charge_now, charge_now_adc;
+>  	u8 bulk_reg[4];
+> +	int ret;
+> =20
+>  	/* Don't do anything if there's no battery. */
+>  	if (!charger->battery_present)
+> @@ -281,11 +305,9 @@ static int rk817_bat_calib_cap(struct rk817_charger =
+*charger)
+>  		 */
+> =20
+>  		charger->soc =3D 100000;
+> -		charge_now_adc =3D CHARGE_TO_ADC(charger->fcc_mah,
+> -					       charger->res_div);
+> -		put_unaligned_be32(charge_now_adc, bulk_reg);
+> -		regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_Q_INIT_H3,
+> -				  bulk_reg, 4);
+> +		ret =3D rk817_initialize_coulumb_counter(charger, charger->fcc_mah);
+> +		if (ret)
+> +			return ret;
+> =20
+>  		charger->soc_cal =3D 1;
+>  		dev_dbg(charger->dev,
+> @@ -313,17 +335,9 @@ static int rk817_bat_calib_cap(struct rk817_charger =
+*charger)
+>  			dev_dbg(charger->dev,
+>  				"Recalibrating columb counter to %d uah\n",
+>  				charge_now);
+> -			/*
+> -			 * Order of operations matters here to ensure we keep
+> -			 * enough precision until the last step to keep from
+> -			 * making needless updates to columb counter.
+> -			 */
+> -			charge_now_adc =3D CHARGE_TO_ADC(charger->fcc_mah,
+> -					 charger->res_div);
+> -			put_unaligned_be32(charge_now_adc, bulk_reg);
+> -			regmap_bulk_write(rk808->regmap,
+> -					  RK817_GAS_GAUGE_Q_INIT_H3,
+> -					  bulk_reg, 4);
+> +			ret =3D rk817_initialize_coulumb_counter(charger, charger->fcc_mah);
+> +			if (ret)
+> +				return ret;
+>  		}
+>  	}
+> =20
+> @@ -332,6 +346,42 @@ static int rk817_bat_calib_cap(struct rk817_charger =
+*charger)
+>  	return 0;
+>  }
+> =20
+> +/* Calibrated microvolts from one of the gas gauge's 16 bit voltage regi=
+sters. */
+> +static int rk817_bat_voltage_uv(struct rk817_charger *charger, unsigned =
+int reg)
+> +{
+> +	u8 bulk_reg[2];
+> +
+> +	regmap_bulk_read(charger->rk808->regmap, reg, bulk_reg, 2);
+> +
+> +	return (charger->voltage_k * get_unaligned_be16(bulk_reg)) +
+> +		1000 * charger->voltage_b;
+> +}
+> +
+> +/*
+> + * Voltage the gauge latched while the battery was resting. Relax mode o=
+nly
+> + * samples below RELAX_THRE_CUR, so this is a true open circuit voltage =
+with
+> + * no resistance term. Returns 0 unless the battery is resting now and t=
+he
+> + * latched pair is inside the pack's design range.
+> + */
+> +static int rk817_bat_relax_voltage_uv(struct rk817_charger *charger)
+> +{
+> +	unsigned int need =3D RK817_RELAX_STS | RK817_RELAX_VOL_UPD;
+> +	int ret, sts, vol;
+> +
+> +	ret =3D regmap_read(charger->rk808->regmap, RK817_GAS_GAUGE_GG_STS, &st=
+s);
+> +	if (ret < 0 || (sts & need) !=3D need)
+> +		return 0;
+> +
+> +	vol =3D max(rk817_bat_voltage_uv(charger, RK817_GAS_GAUGE_RELAX_VOL1_H),
+> +		  rk817_bat_voltage_uv(charger, RK817_GAS_GAUGE_RELAX_VOL2_H));
+> +
+> +	if (vol < charger->bat_voltage_min_design_uv ||
+> +	    vol > charger->bat_voltage_max_design_uv)
+> +		return 0;
+> +
+> +	return vol;
+> +}
+> +
+>  static void rk817_read_props(struct rk817_charger *charger)
+>  {
+>  	int tmp, reg;
+> @@ -367,11 +417,8 @@ static void rk817_read_props(struct rk817_charger *c=
+harger)
+>  	charger->soc =3D charger->charge_now_uah * 100 / charger->fcc_mah;
+> =20
+>  	/* Update reported voltage. */
+> -	regmap_bulk_read(charger->rk808->regmap, RK817_GAS_GAUGE_BAT_VOL_H,
+> -			 bulk_reg, 2);
+> -	tmp =3D get_unaligned_be16(bulk_reg);
+> -	charger->volt_avg_uv =3D (charger->voltage_k * tmp) + 1000 *
+> -				charger->voltage_b;
+> +	charger->volt_avg_uv =3D rk817_bat_voltage_uv(charger,
+> +						    RK817_GAS_GAUGE_BAT_VOL_H);
+> =20
+>  	/*
+>  	 * Update reported current. Note value from registers is a signed 16
+> @@ -430,6 +477,8 @@ static void rk817_read_props(struct rk817_charger *ch=
+arger)
+>  		charger->charger_input_volt_avg_uv =3D 0;
+>  	}
+> =20
+> +	charger->relax_voltage_uv =3D rk817_bat_relax_voltage_uv(charger);
+> +
+>  	/* Calibrate battery capacity and soc. */
+>  	rk817_bat_calib_cap(charger);
+>  }
+> @@ -516,6 +565,14 @@ static int rk817_bat_get_prop(struct power_supply *p=
+s,
+>  	case POWER_SUPPLY_PROP_VOLTAGE_AVG:
+>  		val->intval =3D charger->volt_avg_uv;
+>  		break;
+> +	case POWER_SUPPLY_PROP_VOLTAGE_BOOT:
+> +		val->intval =3D charger->boot_voltage_uv;
+> +		break;
+> +	case POWER_SUPPLY_PROP_VOLTAGE_OCV:
+> +		if (!charger->relax_voltage_uv)
+> +			return -ENODATA;
+> +		val->intval =3D charger->relax_voltage_uv;
+> +		break;
+>  	case POWER_SUPPLY_PROP_CURRENT_AVG:
+>  		val->intval =3D charger->cur_avg_ua;
+>  		break;
+> @@ -654,6 +711,8 @@ static enum power_supply_property rk817_bat_props[] =
+=3D {
+>  	POWER_SUPPLY_PROP_CHARGE_NOW,
+>  	POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX,
+>  	POWER_SUPPLY_PROP_VOLTAGE_AVG,
+> +	POWER_SUPPLY_PROP_VOLTAGE_BOOT,
+> +	POWER_SUPPLY_PROP_VOLTAGE_OCV,
+>  	POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX,
+>  	POWER_SUPPLY_PROP_CURRENT_AVG,
+>  	POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN,
+> @@ -746,15 +805,88 @@ static int rk817_read_battery_nvram_values(struct r=
+k817_charger *charger)
+>  	return 0;
+>  }
+> =20
+> +/*
+> + * The relax pair is a true rested voltage: where it disagrees with the
+> + * tracked soc by more than 5% (chosen arbitrarily), re-init the counter
+> + * from it.
+> + */
+> +static void rk817_bat_ocv_recalibrate(struct rk817_charger *charger)
+> +{
+> +	int ocv_soc;
+> +
+> +	if (!charger->battery_present)
+> +		return;
+> +
+> +	if (!charger->relax_voltage_uv)
+> +		return;
+> +
+> +	ocv_soc =3D power_supply_batinfo_ocv2cap(charger->bat_info,
+> +					       charger->relax_voltage_uv,
+> +					       20) * 1000;
+> +	if (ocv_soc < 0 || abs(ocv_soc - charger->soc) <=3D 5000)
+> +		return;
+> +
+> +	dev_dbg(charger->dev,
+> +		"OCV %duV disagrees with soc, recalibrating (%d -> %d)\n",
+> +		charger->relax_voltage_uv, charger->soc, ocv_soc);
+> +	charger->soc =3D ocv_soc;
+> +	rk817_initialize_coulumb_counter(charger,
+> +					 (ocv_soc * charger->fcc_mah) / 100000);
+> +	rk817_record_battery_nvram_values(charger);
+> +}
+> +
+> +/*
+> + * Since we cannot perfectly control the bootloader, we cannot trust the
+> + * POWERON_VOL value. Instead, we have to guess with what we have availa=
+ble;
+> + * the state of charge saved to NVRAM, the SoC reported by the gauge, and
+> + * a lookup of the battery voltage against the OCV table. None of these =
+will
+> + * give us a true value of the state of charge, but it should ensure wha=
+t we
+> + * report to userspace is "slightly correct" until we can get an OCV val=
+ue or
+> + * we hit the charge_term_current_ua where we can stop guessing. If we h=
+ave
+> + * only the NVRAM value and the SoC from the gauge, use the NVRAM value =
+if
+> + * it's within 10% of the gauge SoC, otherwise use the gauge SoC. If we =
+have
+> + * all 3 values, sort them and keep the middle value. Then, drop the fir=
+st
+> + * or 3rd value (whichever is further away) and average the remaining 2 =
+values.
+> + */
+> +static int rk817_select_boot_soc(struct rk817_charger *charger, int gaug=
+e_soc,
+> +				 int table_soc, int nvram_soc)
+> +{
+> +	int soc[3];
+> +
+> +	if (table_soc <=3D 0) {
+> +		if (abs(gauge_soc - nvram_soc) >=3D 10000)
+> +			return gauge_soc;
+> +		return nvram_soc;
+> +	}
+> +
+> +	/* Sort the values so we can drop the outlier */
+> +	soc[0] =3D gauge_soc;
+> +	soc[1] =3D table_soc;
+> +	soc[2] =3D nvram_soc;
+> +
+> +	if (soc[0] > soc[1])
+> +		swap(soc[0], soc[1]);
+> +	if (soc[1] > soc[2])
+> +		swap(soc[1], soc[2]);
+> +	if (soc[0] > soc[1])
+> +		swap(soc[0], soc[1]);
+> +
+> +	/* Drop whichever end is further from the middle and average the rest. =
+*/
+> +	if (soc[1] - soc[0] > soc[2] - soc[1])
+> +		return (soc[1] + soc[2]) / 2;
+> +
+> +	return (soc[0] + soc[1]) / 2;
+> +}
+> +
+>  static int
+>  rk817_read_or_set_full_charge_on_boot(struct rk817_charger *charger,
+>  				struct power_supply_battery_info *bat_info)
+>  {
+> +	int ret, reg, tmp, off_cnt, bat_uv, boot_soc, table_soc;
+>  	struct rk808 *rk808 =3D charger->rk808;
+> -	u8 bulk_reg[4];
+> -	u32 boot_voltage, boot_charge_mah;
+> -	int ret, reg, off_time, tmp;
+> +	u32 boot_charge_mah;
+>  	bool first_boot;
+> +	u8 bulk_reg[4];
+> =20
+>  	/*
+>  	 * Check if the battery is uninitalized. If it is, the columb counter
+> @@ -764,25 +896,22 @@ rk817_read_or_set_full_charge_on_boot(struct rk817_=
+charger *charger,
+>  	if (ret < 0)
+>  		return ret;
+>  	first_boot =3D reg & RK817_BAT_CON;
+> -	/*
+> -	 * If the battery is uninitialized, use the poweron voltage and an ocv
+> -	 * lookup to guess our charge. The number won't be very accurate until
+> -	 * we hit either our minimum voltage (0%) or full charge (100%).
+> -	 */
+> +
+> +	/* PWRON_VOL only refreshes on a real power-on; bound it to the pack. */
+> +	charger->boot_voltage_uv =3D
+> +		clamp(rk817_bat_voltage_uv(charger, RK817_GAS_GAUGE_PWRON_VOL_H),
+> +		      bat_info->voltage_min_design_uv,
+> +		      bat_info->voltage_max_design_uv);
+> +
+>  	if (first_boot) {
+> -		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_PWRON_VOL_H,
+> -				 bulk_reg, 2);
+> -		tmp =3D get_unaligned_be16(bulk_reg);
+> -		boot_voltage =3D (charger->voltage_k * tmp) +
+> -				1000 * charger->voltage_b;
+>  		/*
+> -		 * Since only implementation has no working thermistor, assume
+> -		 * 20C for OCV lookup. If lookup fails, report error with OCV
+> -		 * table.
+> +		 * Nothing has been saved yet, so estimate from the boot
+> +		 * voltage with an ocv lookup. Since only implementation has
+> +		 * no working thermistor, assume 20C for that lookup.
+>  		 */
+>  		charger->soc =3D power_supply_batinfo_ocv2cap(bat_info,
+> -							    boot_voltage,
+> -							    20) * 1000;
+> +						charger->boot_voltage_uv,
+> +						20) * 1000;
+>  		if (charger->soc < 0)
+>  			charger->soc =3D 0;
+> =20
+> @@ -803,39 +932,45 @@ rk817_read_or_set_full_charge_on_boot(struct rk817_=
+charger *charger,
+>  		if (ret < 0)
+>  			return ret;
+> =20
+> +		/*
+> +		 * The coulomb counter keeps counting while the system is off,
+> +		 * so take it, capped at full, unless it reads invalid; the
+> +		 * saved soc is then at most one update interval old. A counter
+> +		 * that is merely wrong is corrected by the next rested relax
+> +		 * pair.
+> +		 */
+>  		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_Q_PRES_H3,
+>  				 bulk_reg, 4);
+>  		tmp =3D get_unaligned_be32(bulk_reg);
+> -		if (tmp < 0)
+> -			tmp =3D 0;
+> -		boot_charge_mah =3D ADC_TO_CHARGE_UAH(tmp,
+> -						    charger->res_div) / 1000;
+> -		/*
+> -		 * Check if the columb counter has been off for more than 30
+> -		 * minutes as it tends to drift downward. If so, re-init soc
+> -		 * with the boot voltage instead. Note the unit values for the
+> -		 * OFF_CNT register appear to be in decaminutes and stops
+> -		 * counting at 2550 (0xFF) minutes. BSP kernel used OCV, but
+> -		 * for me occasionally that would show invalid values. Boot
+> -		 * voltage is only accurate for me on first poweron (not
+> -		 * reboots), but we shouldn't ever encounter an OFF_CNT more
+> -		 * than 0 on a reboot anyway.
+> -		 */
+> -		regmap_read(rk808->regmap, RK817_GAS_GAUGE_OFF_CNT, &off_time);
+> -		if (off_time >=3D 3) {
+> -			regmap_bulk_read(rk808->regmap,
+> -					 RK817_GAS_GAUGE_PWRON_VOL_H,
+> -					 bulk_reg, 2);
+> -			tmp =3D get_unaligned_be16(bulk_reg);
+> -			boot_voltage =3D (charger->voltage_k * tmp) +
+> -					1000 * charger->voltage_b;
+> -			charger->soc =3D
+> -				power_supply_batinfo_ocv2cap(bat_info,
+> -							     boot_voltage,
+> -							     20) * 1000;
+> +		regmap_read(rk808->regmap, RK817_GAS_GAUGE_OFF_CNT, &off_cnt);
+> +		bat_uv =3D rk817_bat_voltage_uv(charger, RK817_GAS_GAUGE_BAT_VOL_H);
+> +		dev_dbg(charger->dev,
+> +			"boot: counter %d uAh, saved soc %d, fcc %d mAh, battery %d uV, off_c=
+nt %d\n",
+> +			tmp > 0 ? ADC_TO_CHARGE_UAH(tmp, charger->res_div) : 0,
+> +			charger->soc, charger->fcc_mah, bat_uv, off_cnt);
+> +		if (tmp > 0) {
+> +			boot_charge_mah =3D ADC_TO_CHARGE_UAH(tmp,
+> +							    charger->res_div) / 1000;
+> +			if (boot_charge_mah > charger->fcc_mah)
+> +				boot_charge_mah =3D charger->fcc_mah;
+> +			boot_soc =3D boot_charge_mah * 100000 / charger->fcc_mah;
+> +
+> +			/*
+> +			 * The gauge re-derives this count from its own ocv
+> +			 * model while the pack rests, so bound it with the ocv
+> +			 * table: under load the terminal voltage sits below the
+> +			 * open circuit voltage, making the table a floor, and
+> +			 * under charge above it, making it a ceiling on any
+> +			 * saved soc that would displace the counter.
+> +			 */
+> +			table_soc =3D power_supply_batinfo_ocv2cap(bat_info, bat_uv,
+> +								 20) * 1000;
+> +
+> +			charger->soc =3D rk817_select_boot_soc(charger, boot_soc,
+> +							     table_soc, charger->soc);
+>  		} else {
+> -			charger->soc =3D (boot_charge_mah * 1000 * 100 /
+> -					charger->fcc_mah);
+> +			dev_dbg(charger->dev,
+> +				"coulomb counter invalid, keeping saved soc\n");
+>  		}
+>  	}
+> =20
+> @@ -846,11 +981,8 @@ rk817_read_or_set_full_charge_on_boot(struct rk817_c=
+harger *charger,
+>  	boot_charge_mah =3D charger->soc * charger->fcc_mah / 100 / 1000;
+>  	if (boot_charge_mah > charger->fcc_mah)
+>  		boot_charge_mah =3D charger->fcc_mah;
+> -	tmp =3D CHARGE_TO_ADC(boot_charge_mah, charger->res_div);
+> -	put_unaligned_be32(tmp, bulk_reg);
+> -	ret =3D regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_Q_INIT_H3,
+> -			  bulk_reg, 4);
+> -	if (ret < 0)
+> +	ret =3D rk817_initialize_coulumb_counter(charger, boot_charge_mah);
+> +	if (ret)
+>  		return ret;
+> =20
+>  	/* Set QMAX value to max design capacity. */
+> @@ -1044,6 +1176,7 @@ static void rk817_charging_monitor(struct work_stru=
+ct *work)
+>  	charger =3D container_of(work, struct rk817_charger, work.work);
+> =20
+>  	rk817_read_props(charger);
+> +	rk817_bat_ocv_recalibrate(charger);
+> =20
+>  	/* Run every 8 seconds like the BSP driver did. */
+>  	queue_delayed_work(system_percpu_wq, &charger->work, msecs_to_jiffies(8=
+000));
+> @@ -1056,6 +1189,13 @@ static void rk817_cleanup_node(void *data)
+>  	of_node_put(node);
+>  }
+> =20
+> +static void rk817_put_battery_info(void *data)
+> +{
+> +	struct rk817_charger *charger =3D data;
+> +
+> +	power_supply_put_battery_info(charger->bat_ps, charger->bat_info);
+> +}
+> +
+>  static int rk817_charger_probe(struct platform_device *pdev)
+>  {
+>  	struct rk808 *rk808 =3D dev_get_drvdata(pdev->dev.parent);
+> @@ -1172,7 +1312,14 @@ static int rk817_charger_probe(struct platform_dev=
+ice *pdev)
+>  	if (ret)
+>  		return ret;
+> =20
+> -	power_supply_put_battery_info(charger->bat_ps, bat_info);
+> +	/*
+> +	 * Keep the battery info: the periodic recalibration needs its
+> +	 * ocv-capacity table for as long as the driver is bound.
+> +	 */
+> +	charger->bat_info =3D bat_info;
+> +	ret =3D devm_add_action_or_reset(dev, rk817_put_battery_info, charger);
+> +	if (ret)
+> +		return ret;
+> =20
+>  	plugin_irq =3D platform_get_irq(pdev, 0);
+>  	if (plugin_irq < 0)
+> diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+> index 7ffc904c864c..72419d311626 100644
+> --- a/include/linux/mfd/rk808.h
+> +++ b/include/linux/mfd/rk808.h
+> @@ -1211,6 +1211,8 @@ enum rk809_reg_id {
+> =20
+>  #define RK817_GAS_GAUGE_RELAX_THRE_H	0x58
+>  #define RK817_GAS_GAUGE_RELAX_THRE_L	0x59
+> +#define RK817_GAS_GAUGE_RELAX_VOL1_H	0x5a
+> +#define RK817_GAS_GAUGE_RELAX_VOL2_H	0x5c
+>  #define RK817_GAS_GAUGE_OCV_THRE_VOL	0x62
+>  #define RK817_GAS_GAUGE_OCV_VOL_H	0x63
+>  #define RK817_GAS_GAUGE_OCV_VOL_L	0x64
+> --=20
+> 2.53.0
+>=20
+>=20
+
+--7qp4dc52vysprfju
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmrxGbEACgkQ2O7X88g7
++pq9Dg//V2cySOQ5fxjfCoQAhQ5rRBkGJRsflCuxyCDRj8C0DvtrA6CZ9xCXjLMb
+orXEUpg+rndRrcnfNAZtKZ5BVjD9sU4pBlfCcYs5S2m8CWziD2IbwH6lj6z2Vb9/
+QVjQwJUWC+IxgjbwMeObvOFIkFdSTIuShY0jsh4mR3FKZmZez3q0SILXBeTr1v7l
+BbLx7XAeDnhmOlexId+AYN7OV/uldyBPAwIyDhZftmrD1tgrMR6klwWBNnCW2Q0n
+aC4YNQe/3qMinC/ndxUA7ynG6+fXJ7r5PDg05j8rkNc98o7KXMdwUYuPs9bq/5mA
+QIt7fxo3XgZ1hajEh9UQyRCtFwPzT2xkfdRfdaQCY1uWgupDSTxEPwFPFcehyWkZ
+gANnNcQMGbUXyZn+HD5OP8qKMU74YuPIpsZ9O5TrbXQhgs7hrZS14F4WZ6iLOrFW
+x5wkYQaPN/jwtfFWLwrTxiIjgVgtPR87gGVqrDDeGiGQWvYW7P6doh+gYvGExJc4
+N2D/0MxUe6RMSlgQ63zxi2LmpehiD0gQ24zAmT1OFjyLNSlA9AAStbrYpdISHU7c
+FeA9OmWne1u1T5+cpZdqFI3Jvgiyd5rkS815YwJ8IiBR1wckV/w5/bhNdek6Vgpv
+AzlmMDTzq/aqgUxTwHRzWUTi2XdAVlRY84MqBKqrOrMTLRDmF6s=
+=jgIu
+-----END PGP SIGNATURE-----
+
+--7qp4dc52vysprfju--
+
+
+--===============4562278546722810405==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4562278546722810405==--
+
