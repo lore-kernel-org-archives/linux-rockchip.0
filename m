@@ -2,80 +2,110 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BCA72606D81D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 12:27:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 52A16606EE87
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 12:32:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vSArkEn4;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=Etw0Vkb0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=s/CPHoRu;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=l4yDc+/L
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=q2qYswbxboZq0e3jKp3Bdq/oQXtruJ0tOg2Li8+O3XU=; b=vSArkEn4IbFJCiDdj1taBV22eA
-	YVvHcQFsD32VdrKOCEOlGRqubl/lI41cBlEMtiyqdpZcTHXP47czB4Qa9URN2WRD+DtOo8yeo4Oau
-	F2mQ8fmwhQAWFUZJT6AhYWgYTDRq4Vuw9C6mWP4igaPP7rYLPZInEAkgt35agcJPVp+b9jySJesep
-	Pww1h376YMOzClAkjapQChuVsi+8oxgc9QiI68D6y9bnu9Ov8RCa77/cjc2O3SSb1qmW0mOPjIWxv
-	9AsTNnWbCpALl1xcE2vY9zpvnV92I1zRlOaPO48opHfSjsiceUTVx7B2IpBGDIvRe+XJ6ooVTp83U
-	hEMf+4cA==;
+	bh=3IsjB382y2tVix+luXa/ldS3s9CbblH/FdlTIPRPzXA=; b=s/CPHoRuQWoUC5cPsUB/4liG8e
+	t2y+NdCG3VeR0WogFnUNQGu05Vs5PPDJICB9eUPuNnHcsi6DB2Zhj8z+K/RZovjQ3Zadv0A+FpglE
+	rmvjlC7F3Qd6BGOJlpvbyb7Q//t5MQBMdckcUrqPo2CKq+1vsb/rTU8c8GNI8wqIoGAljZ8TKlA4l
+	Bjz93tuXLqWbIUNK4eCEbiWR1nHSrE5zkTAoYTTy0JJKakuWbzL2erIExlYScy1qS3pMZh07e38NY
+	3Uv/ZZ5aWbftbIQnAl1yjIRayJqFZ+3x+sQYzYNKVWShN+oK8mVnP/GNlTM5ulredGVEbWOVqT76y
+	bfnc5x5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQOTU-00000000fyC-1jne;
-	Mon, 09 Nov 2026 12:27:48 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1xQOXv-00000000gmW-0WoC;
+	Mon, 09 Nov 2026 12:32:23 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQOTR-00000000fx6-1H9g;
-	Mon, 09 Nov 2026 12:27:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1794227265; x=1825763265;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=3Y8iBSvePD9F3+qWjIlNEwUQcsn2WT6jELLutndCvW8=;
-  b=Etw0Vkb0UeWUIK60nXH03UDeuja/TacbKZgjUSb1gO3IE1BjWy4gaQ4W
-   Y8xXctMf2NQza20J4m4YfBhLsB/X8bd2VdBbvIoJJFKazPT4zf2IpDLe3
-   x0+WtwrYSHRvUS9Cm733f7UyeaFy+9o0YCQp3q8utSnyyVoQbyZOSVrwq
-   wCsW/c0pmFNpLzbhJPtLBbosOznTZv/YnnHdYU7XB0PVHze8NU42+8c33
-   An0rKoCjOJZxuaxsJC5SlMUq6y5nE7omIM41FXETZ99kvBj1XPqN/cx3y
-   eZP4b7Cvas5acaB09R8p4ndTiIVI0PsoJpH+lEZVD5whFDoB54yGvlVzn
-   g==;
-X-CSE-ConnectionGUID: T7w8qbD4Q0GMdHcdnG+JIA==
-X-CSE-MsgGUID: SbcS2EKDTNONjhi6TcvWDg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11960"; a="2824404"
-X-IronPort-AV: E=Sophos;i="6.27,203,1787036400"; 
-   d="scan'208";a="2824404"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Nov 2026 04:27:44 -0800
-X-CSE-ConnectionGUID: UAcwG4PlRhuWVyFQQFvZDg==
-X-CSE-MsgGUID: 47AtnCsMQOK1eFz0IkzprA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,203,1787036400"; 
-   d="scan'208";a="8188661"
-Received: from abityuts-desk1.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.244.151])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Nov 2026 04:27:42 -0800
-Date: Mon, 9 Nov 2026 13:27:34 +0100
-From: Mehdi Djait <mehdi.djait@linux.intel.com>
-To: Faizel K B <faizel.kb@gmail.com>
-Cc: Michael Riesch <michael.riesch@collabora.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, libcamera-devel@lists.libcamera.org, 
-	Robert Mader <robert.mader@collabora.com>
-Subject: Re: [PATCH 1/2] media: rockchip: rkcif: Filter enumerated formats by
- media bus code
-Message-ID: <avG782VCMTWTNax0@mdjait-mobl>
-References: <20261105232310.385463-1-faizel.kb@gmail.com>
- <20261105232310.385463-2-faizel.kb@gmail.com>
+	id 1xQOXt-00000000gl2-3hO8;
+	Mon, 09 Nov 2026 12:32:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 723F2458C5;
+	Mon,  9 Nov 2026 12:32:21 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794227541;
+	b=kCS8m0Ch+rdRAohPuX4CegWRpLE8brcG4Orz9kK75Hus2ZJVCg6V/Db8qpFf6EvKHQEb
+	 Kpz8fi/c9HAZCS2Sb2qxhtLdd+ppzv3t4Xu8kQknIt/UO2FTUm4tkXzsFNXgpwzGy30Mx
+	 BHE+//+s3DbD3k01CJW3qOXEhb4pvXl6DAlIXsomzVQamDrl3z/B73QlWkvXKDCCFEYJM
+	 +VABNb8xJPVFBoekHEoduJGZxCpPXzRwXNaUJyumWBXXNXQCj7IG9OCdRjLI+52VHwsq6
+	 z3HdTGNLcKXVnJrOXjwhjWbwyddGwM+U0Jz7OH9ihlIMHQXD5E1frzujY9ZcrbgOJTQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794227541;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=WJq/L4Pgym9IuFiwyjztfQfgbK14PqJ5yqxkIfQZJ+E=;
+	b=KnEs1Hy2AKHuibhCeKHKAtqWvoJ6I1BHVZ/NfA/gNNtaKYsxHdrOPQnYUJQMCj93iQbv
+	 ERRpkQ3tQFItrMOezLCTzOpX7Xk6odoyY7OGjB/lzD8K1mSNgGZtUstBFrx2NUhLDPJPJ
+	 ZsOSmfRYsM+YTiYwqXUfhvzhl+tTbzWEP8bsdPxmTnq1D4wmodNT10AuGEYz9gUF1Jj+4
+	 n/5NJQH8+SpujWBz0VLyiKasneaNLRO8/A6sKRx0SQWIbTNcAF1dRw2a/I05PV3vrzNTt
+	 NP4vTv/sLo+deqKGfVcjXWlapLn/jSvNSzIYVOOjndcz4z6OCcitGf6fEbHxzXddxLA==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 784A21F008A5;
+	Mon,  9 Nov 2026 12:32:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794227541;
+	bh=WJq/L4Pgym9IuFiwyjztfQfgbK14PqJ5yqxkIfQZJ+E=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=l4yDc+/L/goKXDPf6E937d1kK8qULIOvJsUQMb/kmpLZ7jUZyyA5AnCOH1FvfFWmo
+	 1bVWoEdgN8yfRACq0WgxaLEoNZEt/TwFTxtQ75ar0l7UR8l6N/jGS1T/nszykYavOR
+	 leeXmeFJjF2UVTiBkA35fGvpfFteK9+5Pfqf+fgNIloMmtndW7TpwBulMSudUy0gRW
+	 ICyoPv0gghWQnK9lIl1Dwd2BB56p1oZuj78NbMkgjDZZiW88egGVTOj96Cgv6E3Sh0
+	 G+9ptub9lX5QS4Gn2SRSOnyG4I2lt/CVyYW341AFg/r078IrcDkAD9V5w83SLACKRI
+	 +DfkuMubrFRwA==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 08ED24848A;
+	Mon,  9 Nov 2026 12:32:20 +0000 (UTC)
+From: Ricardo Pardini via B4 Relay <devnull+ricardo.pardini.net@kernel.org>
+Subject: [PATCH v6 0/6] describe RTL8125 PCIe NICs on Rockchip boards
+Date: Mon, 09 Nov 2026 13:32:15 +0100
+Message-Id: <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-0-91f1efefba0b@pardini.net>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261105232310.385463-2-faizel.kb@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261109_042745_408262_9CC2FE2C 
-X-CRM114-Status: GOOD (  19.95  )
-X-Spam-Score: -4.2 (----)
+X-B4-Tracking: v=1; b=H4sIAE+98WoC/43Oy07DMBAF0F+pvGaQ34+u+A/Ewo8JMVRpZZsIV
+ OXfcYpQi8oiyzu6OnfOpGLJWMl+dyYF51zzcepBP+xIHP30ipBTz4RTrqniEsq7UNZCahVKOwC
+ 2ERLWWHLAfgR/yL5CZJiYNcFERUmnTgWH/HmZeX75yfUjvGFsq702xlzbsXxd/pjZ2vudVNsmZ
+ wYMvB5i8koLH83TyZeUp/w4YSPr6MxvWbeR5UBBOkMpl5ZJMdyz4sp2eCMrOmu9tcoE4ZL/h5U
+ 3LDMbWdlZHpKwjvPEuLtn1ZV1jG5kVWcjCw7VwGhM+i+7LMs3qS59DkgCAAA=
+X-Change-ID: 20260524-rk3588-dts-rtl-eth-describe-dt-alias-c1ed187b7c50
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Ricardo Pardini <ricardo@pardini.net>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5671;
+ i=ricardo@pardini.net; h=from:subject:message-id;
+ bh=SE+ulRJfxixyEy/C7Yk/ixDXQAH0gsNdOqLkBsMFHLU=;
+ b=owEBbQGS/pANAwAKATteP+Oex+3pAcsmYgBq8b1QkKbeReCVP3vLmzUDio/TNeYUoxxTEPpc9
+ 1svIbtRdOaJATMEAAEKAB0WIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCavG9UAAKCRA7Xj/jnsft
+ 6SVPB/4+GXlr+OKZbV8jwEKd11YzgQ8wTiVdVadBbGgtjCmXyMExxEeh1kTtiQYLwmrpJyPmRHw
+ U9jcFB3lZlqEekR/DWIl5pAseFwJS8qgdaqWp95TzysxoTF8IzUzqunQm0MP49iPsZC4ieXDBDe
+ WtTDaapgYmIOpR186lHOyNlnS/m4RfLvdMn59Dj+hj/rg1wZhi1iUxgkKDHUf0Wo0v+FM18+XT+
+ DJDhSHrYNFEGKAw/XeYqG3hf92Z+uJu+MBxcxduQ7mgNcIsmhY6tu99TbRpqp+DBH9sdqbGiyvu
+ nMKcKN4BhNevBzp/noteVQqysE20doL14NHIao7LisNgmo4a
+X-Developer-Key: i=ricardo@pardini.net; a=openpgp;
+ fpr=AC18230CF6AFEACADC4888933B5E3FE39EC7EDE9
+X-Endpoint-Received: by B4 Relay for ricardo@pardini.net/default with
+ auth_id=588
+X-Original-From: Ricardo Pardini <ricardo@pardini.net>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,56 +115,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: ricardo@pardini.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	NORMAL_HTTP_TO_IP,NUMERIC_HTTP_ADDR,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hello,
+Several Rockchip rk35xx boards carry on-board Realtek RTL8125 2.5GbE
+NICs whose PCI function nodes are not described in the DT. Describing
+them allows for stable ethernetN aliases (matching the GMAC alias
+convention on these boards) and lets U-Boot's fdt_fixup_ethernet()
+inject mac-address properties from its ethaddr/ethNaddr env, so MACs
+stay stable across boots and U-Boot and kernel MAC match.
 
-On Thu, Nov 05, 2026 at 04:23:09PM -0700, Faizel K B wrote:
-> VIDIOC_ENUM_FMT ignores the mbus_code field and returns all formats,
-> although the video devices set V4L2_CAP_IO_MC. Return only the formats
-> that match the requested media bus code.
-> 
-> Otherwise userspace can pick a pixel format that doesn't match the
-> media bus format, and then interprets the captured data in the wrong
-> format.
-> 
-> Signed-off-by: Faizel K B <faizel.kb@gmail.com>
-> ---
->  .../media/platform/rockchip/rkcif/rkcif-stream.c  | 15 +++++++++++----
->  1 file changed, 11 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-> index 3130d420ad55..f2a24832a8cf 100644
-> --- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-> @@ -395,13 +395,20 @@ static int rkcif_stream_enum_formats(struct file *file, void *priv,
->  				     struct v4l2_fmtdesc *f)
->  {
->  	struct rkcif_stream *stream = video_drvdata(file);
-> +	unsigned int i, n = 0;
->  
-> -	if (f->index >= stream->out_fmts_num)
-> -		return -EINVAL;
-> +	for (i = 0; i < stream->out_fmts_num; i++) {
-> +		if (f->mbus_code &&
-> +		    stream->out_fmts[i].mbus_code != f->mbus_code)
+The DT binding for the RTL8125 (patch 1/7 up to v5) is now sent
+separately via net-next, carrying Rob's Reviewed-by [1]. There is no
+direct dependency: "pci10ec,8125" is already covered by dtschema's
+pci-device.yaml, so these DTs apply and validate without it; the
+binding only adds validation of ethernet-controller properties on these
+nodes.
 
-what about dvp capture. The dvp_out_fmts[] does not have the mbus_code
-set.
+On these boards the RTL8125s are not pre-programmed with a unique MAC
+address, so without a DT node the kernel falls back to a random MAC on
+each boot.
 
-> +			continue;
+Tested on a NanoPC-T6: /sys/bus/pci/devices/0004:41:00.0/of_node ->
+/sys/firmware/devicetree/base/pcie@fe190000/pcie@0,0/ethernet@0,0 and
+u-boot correctly adds local-mac-address property there which is
+correctly picked up kernel-side:
 
---
-Kind Regards
-Mehdi Djait
+  => setenv eth1addr 8e:b4:90:66:66:66
+  => boot
+  ...
+  # readlink -f /sys/bus/pci/devices/0004:41:00.0/of_node
+  /sys/firmware/devicetree/base/pcie@fe190000/pcie@0,0/ethernet@0,0
+  # xxd /sys/bus/pci/devices/0004:41:00.0/of_node/local-mac-address
+  00000000: 8eb4 9066 6666                           ...fff
+  # ip link show dev end1 | grep ether
+       link/ether 8e:b4:90:66:66:66 brd ff:ff:ff:ff:ff:ff
+
+[1] https://patch.msgid.link/20261109-dt-bindings-net-realtek-rtl8125-v1-1-cff4b8a8be66@pardini.net
+
+Changes in v6:
+- binding split out and sent separately via net-next (ref Heiko).
+- rebased onto v7.4-rc1 (diff context changes only, eg. new NanoPC-T6
+  pinctrl names).
+- nanopc-t6: fix nomenclature according to schematics (ref Diederik).
+- cm3588-nas, nanopi-r5s, nanopi-r6c, rock-5-itx: fix the root port
+  bus-range to start at the secondary bus, as already done for the
+  others in v4 (ref Sashiko).
+- make commit messages and DT nodes consistent across boards (drop
+  the inline comments; move the EEPROM/MAC rationale to the cover).
+- cm3588: describe the RTL8125 in the SoM dtsi instead of the NAS
+  carrier .dts, as it sits on the SoM.
+- nanopi-r5s: note that mainline U-Boot only sets ethaddr/eth1addr
+  (ref Diederik).
+- Link to v5: https://patch.msgid.link/20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-0-c1b9e5f10cd6@pardini.net
+
+Changes in v5:
+- binding: reword commit message: pci10ec,8125 is already covered by
+  dtschema pci-device.yaml; the binding is added only to validate the
+  ethernet-controller properties on these nodes (local-mac-address,
+  nvmem-cells, et al) (ref Krzysztof, Heiner).
+- boards: add a few more Rockchip boards with RTL8125's.
+- Link to v4: https://patch.msgid.link/20260617-rk3588-dts-rtl-eth-describe-dt-alias-v4-0-2bd38922d129@pardini.net
+
+Changes in v4:
+- binding: simplify the binding YAML ref Sashiko's and Krzysztof's
+  reviews
+- binding: describe only the RTL8125 + rename to match ref Heiner's
+  review.
+- dt: fix the bus-range according to Sashiko's review.
+- Link to v3: https://patch.msgid.link/20260605-rk3588-dts-rtl-eth-describe-dt-alias-v3-0-8a8857b39daf@pardini.net
+
+Changes in v3:
+- new patch: add a DT binding for Realtek r8169 family PCIe Ethernet
+  controllers, per Sebastian Reichel's review (the "pciVVVV,DDDD" OF
+  spelling still needs a binding when used in a board DT).
+- new patch for Rock5 series, and include a brief rationale in each.
+- retitle the series, since it now covers a few boards and a binding
+  rather than just DeviceTree changes for the NanoPC-T6.
+- drop the v2 "rename vcc3v3_pcie2x1l0 regulator" patch from this
+  series; it will be sent separately as it is not relevant to this.
+- Link to v2: https://patch.msgid.link/20260529-rk3588-dts-rtl-eth-describe-dt-alias-v2-0-49700248143f@pardini.net
+
+Changes in v2:
+- fix: pcie2x1l0, not pcie2x1l1; indirectly caught by Sashiko's review [1]
+- while-at-it: rename regulator vcc3v3_pcie2x1l0 to l1
+- Link to v1: https://patch.msgid.link/20260525-rk3588-dts-rtl-eth-describe-dt-alias-v1-1-a6fcda563ac7@pardini.net
+
+[1] https://sashiko.dev/#/patchset/20260525-rk3588-dts-rtl-eth-describe-dt-alias-v1-1-a6fcda563ac7%40pardini.net
+
+Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
+---
+Ricardo Pardini (6):
+      arm64: dts: rockchip: describe PCIe RTL8125 Ethernet on NanoPC-T6
+      arm64: dts: rockchip: describe PCIe RTL8125 Ethernet on ROCK 5 family
+      arm64: dts: rockchip: describe PCIe RTL8125 Ethernet on CM3588
+      arm64: dts: rockchip: describe PCIe RTL8125 Ethernet on NanoPi R5S
+      arm64: dts: rockchip: describe PCIe RTL8125 Ethernet on NanoPi R6C
+      arm64: dts: rockchip: describe PCIe RTL8125 Ethernet on ROCK 5 ITX
+
+ arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts | 30 ++++++++++++++++++++++
+ .../dts/rockchip/rk3588-friendlyelec-cm3588.dtsi   | 15 +++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 30 ++++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts | 30 ++++++++++++++++++++++
+ .../boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi   | 15 +++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts    | 18 +++++++++++++
+ .../arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts | 20 +++++++++++++++
+ 7 files changed, 158 insertions(+)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20260524-rk3588-dts-rtl-eth-describe-dt-alias-c1ed187b7c50
+
+Best regards,
+--  
+Ricardo Pardini <ricardo@pardini.net>
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
