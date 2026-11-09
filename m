@@ -2,50 +2,49 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07961606A31C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 20:59:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 16211606A335
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 21:07:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UbQNeIjJ;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=EeDIV6bs
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PPJcyi7c;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=Fu4LFQih
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=gqB2wA6lZzwU30HdpAfDwrf1sf+CopajN/+H+ctEATg=; b=UbQNeIjJV71e52OdiMs/6sI2IU
-	44cwJPxGajCLDZdJzLnuDC6w/hIeMUZBd6KHx+ibUXS5mb62A7XqlHa2nvKhwCU+yPIMCTUKJb729
-	fK1bPawyMx6RrLJq8ZZZf9WdznN7p7fOu1RReJQUq9z9RsJcE9Ozw58hHRrhvBgNrwFNfGY64HmZy
-	xU0gLhdpKnqbpstnNYdnuZ8mjIr9xzxQz3AtxtJq4on4uhaDcJCYCb0VPLzQYtCp42ghBl15NA1oe
-	hots+356BIogFtMvALCotDeVYR6LuHrl5hGE5I00KC4YZ4BhtKQooZgA1oh0pSKOjRq1lMA1Bz2KI
-	7N8U9Ivg==;
+	bh=mwxQj+7k7AorhyuBdst7dvYMq3aOrMQxzJCUH8xxwWY=; b=PPJcyi7cbIkYgagvQho937zEgn
+	aVaG/1bKtmphdYx4hLHo7KHbp8jZGq2wxeBsow+xaVqdnwSKiEZV8i5ZmTKPjMh8NVyGfxHuuK1py
+	2VZPOJKSktN+qv9EnU6ZHKEs/1naA6tok/8oKKyF7Rby8u7OZnvH6T5CTaTDcMMHnfzez2A4z0hPZ
+	JbdxHOsdsTASFkKJFKJCQYXCZLHvs5H3uHN07BcAbXqKiMq8SC0Du+d8B4a1ySLzXTTH4ZXzazeTX
+	wn6t7kHq6Vx7khO16n+B2GZs2F+9xr5IRniioNRzgUxy+DYgiSUE55VAFgWwExD1XJCGEJeKkuJxV
+	HbnbE0tQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQWSR-00000001iEO-2CmT;
-	Mon, 09 Nov 2026 20:59:15 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xQWaZ-00000001jQ4-0iNo;
+	Mon, 09 Nov 2026 21:07:39 +0000
+Received: from sender-op-o17.zoho.eu ([136.143.169.17])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQWSP-00000001iDy-3ltK;
-	Mon, 09 Nov 2026 20:59:13 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0C47660F2F;
-	Mon,  9 Nov 2026 20:59:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 878741F0089F;
-	Mon,  9 Nov 2026 20:59:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794257952;
-	bh=OKIk6rnFZ6VmNTZhn1YkBpy13BJSr4y4E6v2+iMZxUI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To;
-	b=EeDIV6bseeGWOEYh7Znh4Kj8Zq8ivM4dw9jyixYC9Xos0t6GtWEMpY2uV6MzziW9s
-	 bIk/BUTpKRhLcRwesJmKQ8a9WrqxuoWL4kig82NAIqXZ/hPbAu5iQPzwlAcF5Fn/i0
-	 GjrMWYmyIy4Hddv0PSM0HVrqHfGV4MDg86b7KrT+we5f3LX+rfot199K5+eLwNdXKj
-	 ljDlYfOBgFYxiFM7GwouzusMmJz6eu4QZxN316/1fistBQhgNZa1YRWYobJMynxU02
-	 2JFIqLc7tSWBLm/b5lhmPEdEz7Vwtai3Pp2eysShu9dXkFo7+GExsCtyiVFU4PC8ch
-	 pq53+t1iZ99qw==
-Date: Mon, 9 Nov 2026 14:59:11 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Igor Velkov <iav@iav.lv>
+	id 1xQWaT-00000001jPO-48gz;
+	Mon, 09 Nov 2026 21:07:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794258449; cv=none; 
+	d=zohomail.eu; s=zohoarc; 
+	b=jz2EsnWewn02NaUWxMIIzv828qC5NmQF/a2pqF9dSuaxddqeIKD/4RwjQk1/dM4/VC0lJnVWV13dIoUXcnt3l5w7dSWKjJ0O0AsMFmXuw7IQoHl7RE8RkYK+FzuBRejjkX6hKR3Ho2UN4bPKKPVy411FJRJHZNnVcKJ/pyOBEtM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
+	t=1794258449; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=b9nkg0bUgrEInPraZfEB6T4z0np0Vi/eCDyRJD4LyDU=; 
+	b=G9aE4h3l/2wbrIFodBIzxz2en43ztWTrsGsATJTLYJfStp9Eb+yVqztWXk0X6M1RL2eaImEUXszjnHCjT25CCUsRv3zRwniR2nuLRBS8UqgSO4ZLewdROsXJMs7dCYKlslBcNTRAOpFG9VOyW2TueyFF54IJFJNfptKKc6QL6lA=
+ARC-Authentication-Results: i=1; mx.zohomail.eu;
+	dkim=pass  header.i=iav.lv;
+	spf=pass  smtp.mailfrom=iav@iav.lv;
+	dmarc=pass header.from=<iav@iav.lv>
+DKIM-Signature: a=rsa-sha256; b=Fu4LFQihBYem2cDlZ7W70Wp7j+nPLzwfZ/1NsdCJZtStypacGZSEjrXauIIvlMpdmXQax/DbjmAsokRpC2SPkDBpmn6hWmp9xWQXD32+DCxav/lVABVjXTaLar3ojHTNzndmPh091NJB1P2I5AE4+JXZPWcDE5X8xT2eriAKMHc=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=b9nkg0bUgrEInPraZfEB6T4z0np0Vi/eCDyRJD4LyDU=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zoho.eu with SMTPS id 1794258448226804.6244202787284;
+	Mon, 9 Nov 2026 22:07:28 +0100 (CET)
+Date: Mon, 09 Nov 2026 23:07:27 +0200
+From: Igor Velkov <iav@iav.lv>
+To: Bjorn Helgaas <helgaas@kernel.org>
 Cc: Shawn Lin <shawn.lin@rock-chips.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
@@ -53,13 +52,22 @@ Cc: Shawn Lin <shawn.lin@rock-chips.com>,
 	Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
 	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Igor Velkov <iav@iav.lv>
 Subject: Re: [PATCH] PCI: rockchip-host: Enable async probe by default
-Message-ID: <20261109205911.GA292554@bhelgaas>
+Message-ID: <20261109210800.async-probe-reply-2@iav.lv>
+In-Reply-To: <20261109205911.GA292554@bhelgaas>
+References: <20261103-rockchip-pcie-async-v1-1-4dcadb94af64@iav.lv>
+ <20261109202202.GA265423@bhelgaas>
+ <20261109204122.async-probe-reply@iav.lv>
+ <20261109205911.GA292554@bhelgaas>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261109204122.async-probe-reply@iav.lv>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261109_130734_683102_8782C0A6 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,33 +87,19 @@ X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Nov 09, 2026 at 10:47:39PM +0200, Igor Velkov wrote:
-> On Mon, Nov 09, 2026 at 02:22:02PM -0600, Bjorn Helgaas wrote:
-> > I don't know what the SD card has to do with PCIe.  Seems like there's
-> > some SD issue, and making PCIe async happens to avoid it?  Sounds
-> > fragile to me.
-> >
-> > Other changes like c0e1eb441b1d justify it by allowing other drivers
-> > to load in parallel to reduce boot time, which is a good reason.  But
-> > apparently here it makes a functional difference as well, which feels
-> > sketchy.  E.g., what other drivers need to use async probe to avoid
-> > similar issues?
-> 
-> You're right that the real problem is ordering: nothing makes dw_mmc wait
-> for the RK3399 io-domain driver, which sets the 1.8 V level of the SD
-> pins. [1] tried to add that dependency and was not merged. Async probe
-> only stops this driver from holding the deferred-probe worker for ~0.7 s;
-> any other slow probe in that window breaks UHS the same way.
-> 
-> Is there a way to express this dependency that you would accept?
-> 
-> [1] https://lore.kernel.org/all/20230904115816.1237684-1-s.hauer@pengutronix.de/
+On Mon, Nov 09, 2026 at 02:59:11PM -0600, Bjorn Helgaas wrote:
+> Mani's already applied it, so I think it's fine.  I'm just trying to
+> understand the commit message and figure out what the merge commit log
+> and the eventual pull request should say.  It sounds like "this makes
+> SD cards work better" is somehow part of it, but it just feels kind of
+> hand-wavey.
 
-Mani's already applied it, so I think it's fine.  I'm just trying to
-understand the commit message and figure out what the merge commit log
-and the eventual pull request should say.  It sounds like "this makes
-SD cards work better" is somehow part of it, but it just feels kind of
-hand-wavey.
+For the merge log, maybe: "Probe rockchip-host asynchronously so link
+training on an empty slot doesn't stall other drivers' probes for
+~0.7 s". The SD card is just where we noticed the stall.
+
+--
+Igor Velkov
 
 _______________________________________________
 Linux-rockchip mailing list
