@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B16B3606A321
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 20:12:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A34A960A2609
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 20:13:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=j0rJ5UWw;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=AE9EP2U3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PlUpotGJ;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=fYbpZIgn
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,40 +14,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=vY0ux74Z88tWXbw4SsUmyBQJG1v9Pp6yad5Jntl2TVk=; b=j0rJ5UWwb2zfWHMuDrmiNmnjNq
-	6ffvtekMwVaywXIw5rnkUE0gYXfYnxHr2B/IlXMhlN1GBAhlgcSMT/outaO8K4S6myTsJ1LIGDHkw
-	4bNAWL0zizshUz0xw472bul4f+x3BK5nNFl1AvV2LWNwvo/VAJfOxaUs+Zf85wyHE76iKW+HINU+f
-	NaUupDff/qRGGsoVzoDc0b9FSpahO7VpcMnfgT+L+LmhHFU7cIInYfdJnZzjHIOF0/rSpUth0fRfT
-	4c9yLN+jm/jK9hj6vXH2PW7B1TpbnnScFhszwSJVMhbAoFYm7M4T/2Yi217BdSL5jz/NoAaPMkOaJ
-	lrcRWUSw==;
+	bh=zKRZPE6dQF5kZOEbdPBXg6depRlogNXeEPzwSC5q3uQ=; b=PlUpotGJBIAl9yg7hPiFJaHsVz
+	UUfdv9lj1PiB10L5dVbmBa5Gg5lJej6wbJ6XU6NtWyQp4c/KhLgDdFiDlLnXOaEm5kmgVm/o1dduD
+	rkBiU1Kwbrue05hzdwqOyjLqs4Jgx4Ts3SPxm4JjRBtJF3/8Zk1Y2m66qSXF6zSlSg52pFya1Q3dO
+	I/3zrH3/Js0xc/SBmJanBL9UQd8vEEn8KmWjLsLsUQ5EwknP/f8UPQu+4Im8OnSft2si49dUaxgPW
+	CPOObVG2sh43dDvW/vA1wugiDll27PL8gpThXNdD0GNdRbX90RDH+e+EyUyWttgu7DcJrVmA1Uug6
+	wA/DaDEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQVjF-00000001chA-3K0d;
-	Mon, 09 Nov 2026 20:12:33 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xQVkR-00000001cpE-0L0k;
+	Mon, 09 Nov 2026 20:13:47 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQVjD-00000001cgT-0sDp;
-	Mon, 09 Nov 2026 20:12:32 +0000
+	id 1xQVkN-00000001co7-3ewg;
+	Mon, 09 Nov 2026 20:13:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794255147;
-	bh=NUdD8rmrEWF0Gtvg3tI1P9FxbEJolb3CZKqT5DxBjJU=;
+	s=mail; t=1794255221;
+	bh=O0vRUmNb98jIjHzllNWMnc9SLyEM2EEnJum+aKO5URQ=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=AE9EP2U3ZdwEKiCK6ShpVS/2z04RaqxFkbEk4mRkQjQqB8IoFXvNQcvnehXBS+YDi
-	 9DxXzBHGM2Gxpxu5tm5uR0VTZeHz15vyqXiYyRr/TWC8sEgDIloTrdCVwRK/W1KNCJ
-	 /A+dWhrF9SR6JHOPiAqmwhM/QCyZ2jjJ3cyVsO6jaZS2rgC9YoD8HIEv38XMa0Lr+/
-	 e+WHydNGnr96Qr6AwPcGYOsmZbshtBKArLAFY6sgxfaFKVt0ifmzdpmyP9OlmHEocS
-	 kSJ3yBlu9bWKCcMonqZqSCgoW04vpX3diPdQthJ8k1lHrDjfwug9wMbUj5xM9vIYRL
-	 wZM8ZPGkb9E8A==
+	b=fYbpZIgn5AbtaF5p0rOtPf2qh+psn0+RGOuZ4DbeFDe5EsyRjTpQ7vj19UuUHRh4t
+	 kO/RNsD6cc90lW/1uX4l9KPFul06G0klv1QYFbu3k3ObTLLYy1WphR/0BBmXTmK2uJ
+	 kMXIBwm41ibEfZDCvtxuSHfCDUVdpoxanys0h67Jpefoi+84u0moDg66hOvttg1AT+
+	 g0MOCbF4LCMz6YSafbQ+Dpvj4Z9MjmSqcG9v/mQXKl4jT6/bleBYkUkzs8anVkU5BL
+	 cSDdO7C6AUPH1rPUy5ddiyt16koYvhJKz0eJUgt9mI9W64iUb7oTZ7pZRyu+v5vB3Y
+	 umcbzMcx3SdJQ==
 Received: from [100.64.0.214] (unknown [100.64.0.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange secp256r1)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DDDDB17E0269;
-	Mon, 09 Nov 2026 21:12:25 +0100 (CET)
-Message-ID: <a605ddd72e629ac677c7b45d940fa7e7f7412ebd.camel@collabora.com>
-Subject: Re: [PATCH 1/3] media: verisilicon: stop the VEPU1 JPEG encoder
- after an unfinished frame
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9C1D017E0269;
+	Mon, 09 Nov 2026 21:13:39 +0100 (CET)
+Message-ID: <46826fd8fb3f346de07d63568a789840613d37cf.camel@collabora.com>
+Subject: Re: [PATCH 2/3] media: verisilicon: program the H1 JPEG stream
+ limit in 64-bit words
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: shomenkow@gmail.com, Benjamin Gaignard
  <benjamin.gaignard@collabora.com>,  Philipp Zabel <p.zabel@pengutronix.de>
@@ -58,10 +58,10 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil
 	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
 	linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org, 
 	stable@vger.kernel.org
-Date: Mon, 09 Nov 2026 15:12:23 -0500
-In-Reply-To: <20261109-hantro-buflimit-v1-1-f0b86ce61e66@gmail.com>
+Date: Mon, 09 Nov 2026 15:13:38 -0500
+In-Reply-To: <20261109-hantro-buflimit-v1-2-f0b86ce61e66@gmail.com>
 References: <20261109-hantro-buflimit-v1-0-f0b86ce61e66@gmail.com>
-	 <20261109-hantro-buflimit-v1-1-f0b86ce61e66@gmail.com>
+	 <20261109-hantro-buflimit-v1-2-f0b86ce61e66@gmail.com>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -80,8 +80,8 @@ User-Agent: Evolution 3.62.1 (3.62.1-1.fc45)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261109_121231_434256_70462EB4 
-X-CRM114-Status: GOOD (  29.07  )
+X-CRM114-CacheID: sfid-20261109_121344_084746_981F5A3F 
+X-CRM114-Status: GOOD (  33.84  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,7 +92,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8730549849333141706=="
+Content-Type: multipart/mixed; boundary="===============2280666339189000858=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -101,11 +101,11 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============8730549849333141706==
+--===============2280666339189000858==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-qVlDHU493oj7uu3cN6Fe"
+	protocol="application/pgp-signature"; boundary="=-o9hkqN2/RSZzwbWE3DSQ"
 
---=-qVlDHU493oj7uu3cN6Fe
+--=-o9hkqN2/RSZzwbWE3DSQ
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -113,106 +113,106 @@ Le lundi 09 novembre 2026 =C3=A0 16:43 +0300, Sergei Khomenkov via B4 Relay=
  a =C3=A9crit=C2=A0:
 > From: Sergei Khomenkov <shomenkow@gmail.com>
 >=20
-> When a JPEG stream does not fit the CAPTURE buffer, the H1 raises an
-> interrupt with BUFFER_FULL set and FRAME_RDY clear, and pauses with the
-> enable bit of H1_REG_ENC_CTRL still set, waiting for more output space.
-> rockchip_vpu1_vepu_irq() returns the buffer with the ERROR flag but
-> clears only the interrupt and AXI registers, so the next job is
-> programmed into the paused encoder: its ENC_CTRL write aborts the paused
-> frame, which raises a reset interrupt while the new job is being set up,
-> and that job times out. The watchdog then calls
-> rockchip_vpu1_enc_reset(), which sets H1_REG_INTERRUPT_DIS_BIT, and the
-> JPEG encoder path never clears that bit again, so every later job times
-> out as well. That second problem is not addressed here.
+> The H1 JPEG encoder takes the stream buffer limit in 64-bit words. The
+> same register reads back the stream size in bits when the frame is
+> done, which hantro_h1_jpeg_enc_done() already divides by 8. The driver
+> writes the room left in the CAPTURE plane in bytes, so the hardware may
+> write up to eight times the buffer size, and a stream that does not fit
+> runs past the end of the plane into whatever memory follows it.
 >=20
-> Write 0 to the enable register when an interrupt does not report a
-> finished frame. The write comes before the interrupt and AXI registers
-> are cleared, and before the next job is scheduled. On the RK3026 it
-> raises no interrupt of its own: in the test below the encoder raised one
-> interrupt per frame and no job timed out.
+> Userspace can get there. hantro_try_fmt() keeps any non-zero CAPTURE
+> sizeimage, and even the default of header_size + width * height * 2 is
+> not a bound: at quality 100 a high-entropy frame takes up to about 2.75
+> bytes per pixel. On a 640x480 frame the encoder wrote 230 KB past the
+> end of a default-sized buffer, on a 1920x1088 frame 1.6 MB. Without an
+> IOMMU in front of the encoder that is memory owned by someone else.
 >=20
-> The encoder rarely gets there today, because the stream limit it is
-> given is eight times too large; the next patch fixes that, and then
-> every frame that does not fit ends this way.
+> Write the limit in 64-bit words, rounded down to whole 64-byte bursts:
+> on the RK3026 the encoder writes the stream in 64-byte bursts and
+> finishes a burst it has started, so a limit that is not a multiple of 8
+> words lets it write up to 56 bytes past it. Rockchip's MPP library
+> programs this register the same way for H.264, in 64-bit words rounded
+> down to a multiple of 8 (mpp/hal/vpu/h264e/hal_h264e_vepu1_v2.c). The
+> stream starts header_size (624) bytes into the plane, so its address
+> stays 8-byte aligned. A stream that does not fit now stops at the limit
+> with a buffer-full interrupt, and the frame comes back with the ERROR
+> flag. A plane with less than one burst after the header is left to the
+> next patch.
 >=20
-> rockchip_vpu2_vepu_irq() and stm32mp25_venc_irq() do not stop the
-> encoder either. I cannot test the VEPU2 or the STM32MP25, so this patch
-> leaves them alone.
+> The STM32MP25 VENC uses the same code, so it gets this change too. I
+> cannot test it there, and its interrupt handler does not get the stop
+> of the previous patch. rockchip_vpu2_jpeg_enc_set_buffers() writes
+> VEPU_REG_STR_BUF_LIMIT in bytes the same way, and
+> rockchip_vpu2_jpeg_enc_done() divides the read-back by 8 as well; I
+> cannot test the VEPU2 either, so this patch leaves it alone.
 >=20
 > Found with an LLM coding assistant while porting mainline Linux to a
 > Rockchip RK3026 board (VEPU1); the assistant also drafted the code and
-> this message. Tested on that board with the stream limit fixed: without
-> this change the job after a buffer-full interrupt gets a reset interrupt
-> and every later job times out; with it the frame that does not fit comes
-> back with the ERROR flag and the following jobs, overflowing or not,
-> complete as before (10 alternating jobs, and four overflowing frames
-> queued back to back followed by fitting ones). Counted in
-> /proc/interrupts over 24 runs of the series (48 frames, 16 of them
-> ending in a buffer full), every frame raised exactly one interrupt, so
-> the stop write raises none. Only buffer full was exercised, not bus
-> errors or the hardware timeout. Not tested on other SoCs.
+> this message. Tested on that board, with CAPTURE buffers imported
+> through DMABUF from a larger buffer filled with a pattern: without this
+> change the encoder wrote the rest of the stream past the end of the
+> plane in each of 16 overflowing frames (640x480 to 1920x1088, quality
+> 100, 12 of them in default-sized planes). With this and the previous
+> patch, 14 overflowing frames (640x480 and 1920x1088, four of them queued
+> back to back) stopped exactly at the limit with BUFFER_FULL in the
+> status, nothing past the plane changed, and frames that fit are byte for
+> byte the same as before. With the limit in words but not rounded down to
+> a burst, the encoder wrote up to 56 bytes past it. Not tested on other
+> SoCs.
 
-Please trim this down to what is really needed.
+Trim this down, simple patch, simple explanation please.
+
+Nicolas
 
 >=20
 > Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
 > Cc: stable@vger.kernel.org
 > Signed-off-by: Sergei Khomenkov <shomenkow@gmail.com>
 > ---
->  drivers/media/platform/verisilicon/rockchip_vpu_hw.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
+>  drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
 >=20
-> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drive=
-rs/media/platform/verisilicon/rockchip_vpu_hw.c
-> index 02673be9878e..144d320302a1 100644
-> --- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-> +++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-> @@ -376,6 +376,15 @@ static irqreturn_t rockchip_vpu1_vepu_irq(int irq, v=
-oid *dev_id)
->  =09state =3D (status & H1_REG_INTERRUPT_FRAME_RDY) ?
->  =09=09VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
-> =20
+> diff --git a/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c b/dr=
+ivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c
+> index 86cc1a07026f..1e548e91612b 100644
+> --- a/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c
+> +++ b/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c
+> @@ -55,7 +55,15 @@ static void hantro_h1_jpeg_enc_set_buffers(struct hant=
+ro_dev *vpu,
+>  =09vepu_write_relaxed(vpu, vb2_dma_contig_plane_dma_addr(dst_buf, 0) +
+>  =09=09=09=09ctx->vpu_dst_fmt->header_size,
+>  =09=09=09   H1_REG_ADDR_OUTPUT_STREAM);
+> -=09vepu_write_relaxed(vpu, size_left, H1_REG_STR_BUF_LIMIT);
 > +=09/*
-> +=09 * An interrupt without FRAME_RDY does not end the frame: after a
-> +=09 * buffer full the encoder pauses with its enable bit still set,
-> +=09 * waiting for more output space. Stop it, so that the next job is
-> +=09 * not programmed into a paused encoder.
+> +=09 * The stream buffer limit is counted in 64-bit words, not in bytes
+> +=09 * (the register reads back the stream size in bits once the frame is
+> +=09 * done). On the RK3026 the encoder writes the stream in 64-byte
+> +=09 * bursts and finishes a burst it has started, so give it whole
+> +=09 * bursts only.
 > +=09 */
-> +=09if (!(status & H1_REG_INTERRUPT_FRAME_RDY))
-> +=09=09vepu_write(vpu, 0, H1_REG_ENC_CTRL);
-
-Can you follow other similar patches (G2), and add some rate limited debug =
-so we
-are ware when a fault occured, and what fault it is. Its also best practice=
- to
-only reset the bit you care about, Hantro IPs have all sort of side effect =
-per
-bits.
-
-Nicolas
-
-> +
->  =09vepu_write(vpu, 0, H1_REG_INTERRUPT);
->  =09vepu_write(vpu, 0, H1_REG_AXI_CTRL);
+> +=09vepu_write_relaxed(vpu, round_down(size_left, 64) / 8,
+> +=09=09=09   H1_REG_STR_BUF_LIMIT);
 > =20
+>  =09if (pix_fmt->num_planes =3D=3D 1) {
+>  =09=09src[0] =3D vb2_dma_contig_plane_dma_addr(src_buf, 0);
 
---=-qVlDHU493oj7uu3cN6Fe
+--=-o9hkqN2/RSZzwbWE3DSQ
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCavIpJwAKCRDZQZRRKWBy
-9Hk8AQDqkecJtNqrHJyWzsY47xf1Moj1ivtzo5zq3R0hSA87BwEA+RZEhGQ70w8c
-tLls+tZpnQtJ+rZDYw40pV7vcBIn/Qs=
-=nT8W
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCavIpcgAKCRDZQZRRKWBy
+9JuFAQCBSHD0DnlJcOBDiXGPg/dhjcYXwTNNZWmP3OEtJlmkTgEAyssYRGYjNnfH
+wU1G2QrfY/efG4Vnk4Um81kMeQFSkQI=
+=DqXL
 -----END PGP SIGNATURE-----
 
---=-qVlDHU493oj7uu3cN6Fe--
+--=-o9hkqN2/RSZzwbWE3DSQ--
 
 
---===============8730549849333141706==
+--===============2280666339189000858==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -223,5 +223,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8730549849333141706==--
+--===============2280666339189000858==--
 
