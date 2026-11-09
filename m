@@ -2,68 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 16615606A337
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 02:07:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1796C606A338
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 03:46:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fewAdH83;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=RSzMaBpz
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=oHPDYWFI;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Wm61kTRA
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=AdbpXx660UfDsPXocfjZyqvptDyyqAcw7IbYGdvHnH0=; b=fewAdH83qCq9fnmftx2eDabd/H
-	I+qt3VSzTta9rzwMDoWtMQ1q6TANvh6mraSyw2zd/No+eJyP/7kgqJLqatEv5KkGSHN4JrTKKGeI6
-	qvyc8k+A/xL4fP/XcenLNWBsIaX1/I9AQFoSJBn14bs4Gnclr49DpPxRco4SE+Jkk4z/LJGOex5XS
-	uhwQIteVc6PT9+x6rdYY5g+nb9Ynfxh0LZqS+CiZVjpej+C3NKjR0KRdkzECcBrF3Tbybk4AJE/tv
-	zz+96+KKfJamK8wM9z1NLn4c2QoEzpwBFyxp+sFtivX8GEHgxVkRiSIvsm5dqJ+OyJeao060z4TwJ
-	zpt0undQ==;
+	bh=bmm3JgbaAYK2SzjK54UvXO/s+6qg+U7cQz5mvhLGhBU=; b=oHPDYWFI9nnepPHqTapGzdfoiB
+	yzVPI0ADqUstCS8VlXX1eubP3FO9DsDu+CzbNJOdzM3cQwWRN7W5N9Z4Cze6RYnQbqXub2ETjP0lb
+	zuKktpnrg14jRTkL0v8PV+hciUcoq2XpgRTcWSsOtNN827HrOhNAsgMKZ+osgNm5vJ95En005yzeo
+	WPR7flOSr//BvJ+WPo/sWCi+jvgrk5fhgOrwLOFfwuqo8BEuXUTZulBkCCpMm0OxbdNg4jydSSla6
+	SjY60VzKtVfO1i5hyVpFDP32rUZROIgIVu8MMlaAcJUkyCIekJTfGDaAjHoiROeWQ+wKGGeujuiZz
+	O1Wq5h3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQEmr-0000000H6NJ-0Jpz;
-	Mon, 09 Nov 2026 02:07:09 +0000
-Received: from mail-m9352.xmail.ntesmail.com ([103.126.93.52])
+	id 1xQGKc-0000000HFlH-0tcl;
+	Mon, 09 Nov 2026 03:46:06 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQEmo-0000000H6Mv-01r6;
-	Mon, 09 Nov 2026 02:07:08 +0000
-Received: from [172.16.12.48] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 53eeadfd9;
-	Mon, 9 Nov 2026 10:06:57 +0800 (GMT+08:00)
-Message-ID: <60fbb95c-63cc-4d22-9e2b-51332a50054d@rock-chips.com>
-Date: Mon, 9 Nov 2026 10:06:55 +0800
+	id 1xQGKa-0000000HFkD-2C44;
+	Mon, 09 Nov 2026 03:46:04 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id F3306611E2;
+	Mon,  9 Nov 2026 03:46:02 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794195962;
+	b=JD/C/0ZoKT5fd9yma5QiqbU2D1fGGGhtXcy22Ru8/BTRF1mlDhxPAmwCUPAkcMdD2U4j
+	 Raq4m5QqyX/STkgywDZICZ17t/5UbYuchXuQLGQwRNjI4ALriASH8MXNnkTSKqQ664qum
+	 kHWQnHtwyfii1lxJ12qEkBcc+Gywgpvpa5xgfPmP8UowJ/YH94ssNIAsdtdoV9+u2UcG1
+	 STZ2RpTFpWjm8822xUR0sbHnhJLyToKz2U7TvtTnwLxDBuAHadedvg+D0c6JTA3GZJa+E
+	 rM3CNnRv7cxMAJWxzqRDzTEiwhPwl+ZA3lghQVKyEYV8z6kysInYXTS4EHWxok7kW9w==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794195962;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
+	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=pJzY35+Iq1WY5o8SwGQBlJsXXYfxvzqCFf4SStexuJ8=;
+	b=qoToWs05at8uPNKmmGuwO0luB77Ru1xEn6kEyDqBnyx8Llm65Byp5zT0jkQZW52x9MHb
+	 utix3dQdP9kJRNkq8iSFWXq16ornNg26prGXwAAtoejvoUrRXzU0qlNI8/1V0y4N9gumF
+	 e3bdjYc65w8S3YniQXBXZlK84gjieVvUFfwiEQFzVhsyjrIn6Y4Oapq4Cxp2t1Rq8Vlwh
+	 0KuHbQ1dIQu5asVhxqEhsvVcVg3DN0DvZ9i02Mmzu5uWNo1tYNBb2fMXD0p/NIXBuiRXp
+	 L0R0DXbSQ9e0pE5HOTic8ZX6ylKQtRGmk2H/xVj47J4Zd/XJLnqFK3617DmtP4ryTMg==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 1FF5E1F0089F;
+	Mon,  9 Nov 2026 03:46:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794195962;
+	bh=pJzY35+Iq1WY5o8SwGQBlJsXXYfxvzqCFf4SStexuJ8=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=Wm61kTRAVF0xchiB9hWNx6ek03/7njs5z7oVR5BooNuBXeNzMW6nQXa7KQTWHlC37
+	 AjJdcjHF25L/gpP8LnLPisRAf0rKNqard3T5cOtjUZ+mjhV9fkOQ4EXMvguYL7270g
+	 MmI2pPlhqqoQxNnE2tonekEoL3bhlYJ7COkm1eiv+s5PS+7oa2A80V2+vKbnvJdK8h
+	 2jh64skhy40G2NIRiYzmXrxWrW3A87BXSTAwKRvYCaVtaxcMwoBb+XykY6Evk8m7Wt
+	 SrP0QxuBAfHMeDH8Y3QxCf9XLNK/W13Y8NTwT40AA6R78nhqotnG50vR7TxWI9f8gb
+	 9u2YdY/R7RSow==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 9F7664826E;
+	Mon,  9 Nov 2026 03:46:01 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Mon, 09 Nov 2026 03:45:58 +0000
+Subject: [PATCH] arm64: dts: rockchip: Enable SDR104 on the Kobol Helios64
+ SD card
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, =?UTF-8?Q?Enrique_Hern=C3=A1ndez_Bello?=
- <ehbello@gmail.com>, lpieralisi@kernel.org, kwilczynski@kernel.org,
- mani@kernel.org, bhelgaas@google.com, robh@kernel.org, heiko@sntech.de,
- linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH RFC 0/2] PCI: rockchip-host: Retry training and hot-reset
- a JMB585 on RK3399
-To: Igor Velkov <iav@iav.lv>
-References: <20261024-rockchip-pcie-resume-v1-0-58e54a5cf5f1@iav.lv>
- <20261106-rockchip-pcie-ltssm-trace-1@iav.lv>
- <6c9adabe-d632-471e-8fc1-aafe62115167@rock-chips.com>
- <20261109-rockchip-pcie-deskew-result-1@iav.lv>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20261109-rockchip-pcie-deskew-result-1@iav.lv>
-X-HM-Tid: 0aa1be0f01f703a4kunm84dec09857da6c
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZQ0hKGlZIH01CGUNDTk
-	5MQk9WFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
-	tIVUJCSU5LVUpLS1VKQktCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=RSzMaBpzKBX5tqLpuWQ15ZQyFDH114v8q2IeBzHG+Vp+GQV3bxrhL7Kcukqj4D585i+sB7hqCNAmmV5+6/8cW1TRIEKMKs7Cvk18QPkUaOOQk3gusQTpcjDlblAIqw8/pktunXi45CRaK61wjrAV/kL9AvGg/8sY2nt5fnKVZUg=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=We4ESE2til4bSkM1vEMn0soL7vZrg8WY8DZ2Y26nFnk=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261108_180706_615483_3C16E329 
-X-CRM114-Status: GOOD (  15.11  )
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261109-helios64-sd-uhs-v1-1-ef8fc370d282@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAPVB8WoC/x3MQQqAIBBA0avErBtIk8iuEi1CxxwIC4cikO6et
+ HyL/wsIZSaBqSmQ6WbhI1WotgEX17QRsq8G3elBqc5ipJ0PGQyKxysKWqMNhV4F60ao1Zkp8PM
+ f5+V9P9MS6/thAAAA
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2313; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=dC7wpDaNbCjkiANOAYK+QKZwUz9weOXO+ehiRLkJWy0=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFkfHX9I/uZ4N0sia0uS55ILh0VNsmYbVFUmHvgnJ2pys
+ NVwqu3KjlIWBjEuBlkxRZYJhzRuZSy5+tffw/wBzBxWJpAhDFycAjCRywEM/+OEa00n7HvzzvxX
+ oMBxhck7s6OEUn5dXbKXy1lfkGv/tQcM/xRfRk9cMMnGicWyffGChzM+aQk0LZ1Q6dozrYBFImv
+ TfSYA
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,43 +109,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Reply-To: iav@iav.lv
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-5ZyoIDIwMjYvMTEvMDkg5pif5pyf5LiAIDc6MDUsIElnb3IgVmVsa292IOWGmemBkzoKPiBIaSBT
-aGF3biwKPiAKPiBUaGFua3MuIERlc2tldyBtYWtlcyBubyBkaWZmZXJlbmNlLiBIZWxpb3M2NCwg
-eDIsIGJpbmQvdW5iaW5kLCB2YXJpYW50cwo+IGFsdGVybmF0aW5nIGV2ZXJ5IGN5Y2xlLCBiYWQg
-bGluayBicmluZy11cHM6Cj4gCj4gICAgZGVmYXVsdHMgNi8xMDQsIGF1dG8gZGVza2V3IG9mZiAr
-IHRyaW0gMHhmOiA1LzEwNAo+ICAgIGRlZmF1bHRzIDYvMTA0LCBtYWduaXR1ZGUgb2ZmOiA2LzEw
-NAo+IAo+IFlvdXIgbWFpbCBoYXMgdGhlIG1hZ25pdHVkZSBhdCAweGIsIGJ1dCBUUk0gVjEuMyBw
-YXJ0IDIsIDE3LjYuMTAuMSBoYXMKPiBUWF9URVJNSU5BVElPTl9UUklNIHRoZXJlIGFuZCBERVNL
-RVdfTUFHTklUVURFIGF0IDB4Yywgc28gSSB3cm90ZSAweGMuCgpTb3JyeSwgbXkgdHlwby4KCj4g
-Cj4gREVCVUdfREFUQV9PVVQgZGlkIHNob3cgc29tZXRoaW5nLiBXaXRoIERlYnVnIE11eCBDb250
-cm9sICgweDIwOCkgPSA1LAo+IHNoYXJlIG9mIHNhbXBsZXMgd2l0aCBpbl9kbGxwMF9kYXRhX3Zh
-bGlkIHNldCwgMTAwIG1zIHdpbmRvdyBhZnRlciBob3QgcmVzZXQ6Cj4gCj4gICAgZ29vZCBicmlu
-Zy11cHMgMC4xNiUgKDk5KSwgYmFkIGJyaW5nLXVwcyA1MSUgKDMsIHJhbmdlIDQ1LTUzKQo+IAo+
-IFRoZSBmaXJzdCB0cmFpbmluZyBsb29rcyB0aGUgc2FtZTogMC4xNSUgKDk3KSBhZ2FpbnN0IDQ3
-JSAoNSkuIG1nbXRfZGxscF9lcnJvciwKPiBjcmMzMl9lcnJvciBhbmQgaW5fdGxwX2Vycm9yIHN0
-YXkgMCBpbiBhbGwgb2YgdGhlbS4gV2l0aCB0aGUgbXV4IGF0IDQsCj4gc3RhcnRfcmVwbGF5LCBy
-ZXBsYXkgdGltZW91dCBhbmQgZGxfcHJvdG9jb2xfZXJyb3Igc3RheSAwIHRvby4KPiAKPiBTbyBp
-biBhIGJhZCBicmluZy11cCB0aGUgUkMgcmVjZWl2ZXMgYSBjb25zdGFudCBlcnJvci1mcmVlIHN0
-cmVhbSBvZiBETExQcy4KPiBJIHJlYWQgdGhhdCBhcyB0aGUgSk1CNTg1IHJlcGVhdGluZyBmbG93
-IGNvbnRyb2wgaW5pdCBiZWNhdXNlIGl0IGRvZXMgbm90Cj4gZ2V0IHdoYXQgdGhlIFJDIHNlbmRz
-LCBidXQgdGhpcyBidXMgZG9lcyBub3Qgc2hvdyB0aGUgRExMUCB0eXBlLiBJdCB3b3VsZCBwdXQK
-PiB0aGUgZmF1bHQgaW4gdGhlIFJDIHRvIEpNQjU4NSBkaXJlY3Rpb24sIG9uIHgyIG9ubHkuCj4g
-Cj4gSXMgdGhlcmUgYW4gUkMgdHJhbnNtaXR0ZXIgc2V0dGluZyB3b3J0aCB0cnlpbmcgZm9yIHRo
-YXQsIHN1Y2ggYXMgc3dpbmcgb3IKPiBkZS1lbXBoYXNpcz8gSWYgbm90LCBJIHdpbGwgc3RvcCBs
-b29raW5nIGZvciB0aGUgY2F1c2UgaGVyZS4KPiAKClJlZyAweGEgaXMgZm9yIHN3aW5nLCBpdCBz
-YXlzOiAiVGhpcyB2YWx1ZSBzaG91bGQgYmUgc2V0IHRvICg2NC01NiowIC45LwpWREQwOSkgZGVw
-ZW5kaW5nIG9uIGFjdHVhbCB2b2x0YWdlIG9mIFZERDA5IgoKQnV0IGRlLWVtcGhhc2lzIGlzIGZp
-eGVkIGluIGVhY2gga2luZCBvZiBidXMgc3BlZWQuCgo+IElnb3IKPiAKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Igor Velkov <iav@iav.lv>
+
+The SD card I/O supply vcc_sdio_s0 can switch between 1.8 V and 3.0 V and
+is already described as vqmmc-supply and as the sdmmc I/O domain supply,
+but the card only runs in high speed mode.
+
+Allow SDR104. With a SanDisk 32 GB card it runs at 148.5 MHz, and direct
+read goes from 23 MB/s to 53-66 MB/s.
+
+Signed-off-by: Igor Velkov <iav@iav.lv>
+---
+Tested on Helios64 with Linux 7.3, its device tree plus this property,
+and the U-Boot and .config of Armbian, PCIe host driver not loaded: 15
+warm reboots and 3 cold starts, SDR104 at 148.5 MHz each time, no SD
+errors in dmesg, a written file read back with the same checksum. One
+card only. Writes stay at about 11 MB/s.
+
+Armbian kernels carry this property with PCIe enabled. In their console
+logs tuning sometimes fails when it coincides with the PCIe probe, as on
+ROCK Pi 4, and the retry reaches SDR104 every time. The cause is not
+confirmed on this board; async probe, applied as
+https://lore.kernel.org/r/20261103-rockchip-pcie-async-v1-1-4dcadb94af64@iav.lv
+is not tested in this combination.
+
+A normal reboot powers the card off, but after a watchdog reset or a
+panic the card stays at 1.8 V. An SPL that does not set the SD I/O domain
+from vcc_sdio_s0 then fails to read the card until a power cycle. Armbian's
+U-Boot does this (such resets 8 of 8, on Armbian's DTB). The board is not
+in mainline U-Boot yet; v2 of
+https://lore.kernel.org/r/20261021-b4-helios64-v1-1-74afe8aa6d72@iav.lv
+will carry it. Kobol's U-Boot is not checked.
+---
+ arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+index f13ea2df7a30..35153e84f206 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+@@ -781,6 +781,7 @@ &sdmmc {
+ 	disable-wp;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
++	sd-uhs-sdr104;
+ 	vmmc-supply = <&vcc3v0_sd>;
+ 	vqmmc-supply = <&vcc_sdio_s0>;
+ 	status = "okay";
+
+---
+base-commit: c3baae5f1a15645cddadcb2b9abddef5df291f59
+change-id: 20261109-helios64-sd-uhs-9424ef31f9c8
+
+Best regards,
+-- 
+Igor Velkov <iav@iav.lv>
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
