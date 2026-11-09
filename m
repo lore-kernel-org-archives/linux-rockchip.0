@@ -2,113 +2,139 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4AAAF606A335
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 01:54:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 45F9D606A320
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 02:02:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hzPpmUD5;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=h3bgj8+l
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=N77nAsjs;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=renesas.com header.i=@renesas.com header.a=rsa-sha256 header.s=selector1 header.b=gItERcug
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:In-Reply-To:Subject:
+	Cc:To:From:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=eqzYxNOjowPrupqCpmKAcvrVwjQFfu4f0UXfh8N3nfw=; b=hzPpmUD5QTBCPtk6BYuDiTo7Wg
-	SSUbpB8gPmercmXhkTDzVrU58KOFh8PKyr3D63gn7N0iqttxa3MemL4AwYpQj3yk9mSbzCdoUf7bI
-	kAFAXNeO8hrXOc4DIJaKlrqOdLwAP3ec6yhbWOGG2lvAzQ1ENZ3pZ/zXTGHCE87a65g3Pt2d5ty/e
-	qMQUAg/6KIXMXTQPAxQKnVNeoFtdL6Q0dEYOzwpFxG7JTzC1dtYZUCNg65FuWFs3wnaLp38lSmuEq
-	iycCtCa0A/JsmriN9XVZQDocQdBo5J/MTPk4dXXWQI68TM+dJFEtlDagy6kfvugV+o0TXWbFmYtVM
-	nTyM5JVg==;
+	bh=PZoVVcktkouJIPQZCqWfZPa/wA7DyZw/kxO5OSHDH/0=; b=N77nAsjs1KqEGPY9qjbpxsJ1iM
+	UwBaQtt5/D/Ea8hpAJf/iIRwyTzmjmJc3ObZ6kme96ozavwbRycpZmLknTiIZM0+B0fG9/nbSqphs
+	OkDP54z/fAySyUcz5g1Mjdo3J3aB9/e++fidydoGPh2pTySpQqB2fa5jmNZCLNLf6RFYVlHpVEjd9
+	YFnkoDiYFQkCrUqMAoi0dNKmoVHJRG+fOQmDdeGckU4mDYnADssUPTQao3Ge/F/97alhJgMSdbee2
+	VDip86ROMWRqOM1bhzmRuhIlXCRHtkwCa/pe1UjND1CmyqXIGV68yLdvRK616neoyqFkt3Hx+0y9K
+	HQ/BuiXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQEa3-0000000H5Px-0hqJ;
-	Mon, 09 Nov 2026 01:53:55 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xQEiL-0000000H5os-0wNy;
+	Mon, 09 Nov 2026 02:02:29 +0000
+Received: from mail-japaneastazlp170110002.outbound.protection.outlook.com ([2a01:111:f403:c405::2] helo=TYVP286CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQEa1-0000000H5PT-28QW;
-	Mon, 09 Nov 2026 01:53:53 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id CDFE24010E;
-	Mon,  9 Nov 2026 01:53:52 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794189232;
-	b=qQRSq+jSircbGwSPlFDPl1fHt0fjxF9Uh6hzBniUhJ+/Y7adzlnT2VIpLG0e4WofnySo
-	 wGqeV2A5M+8PUDiULT6EqHMWBVTeoNDsO7fZSqpgGX4nqGDMMm7Xz7RESfjvQQpziQMqK
-	 1S3qWpGTwyc7qhFTzIVHSQK07brJ5I08OZmailMpkSVaZM77fUh5VxbfngBrh4+sKZP6I
-	 DhV4Cs2t9XvP+OVvdSsBxaHhZKRKcUarQet8LOu0nne9BRioqBhhlzhl+ljbGKIjQT5Zk
-	 YFqcJoi/Wg5AO7DgFizH6q1Bkok9Lxb/COMFyTpE0NXPbcliZCrJT1h6b+H86f470eg==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794189232;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=V+SieL2nVGZvLEQKccUXIqqYkXNqZxAUIg9/rkL36Zk=;
-	b=fZ30g7G6H8NrkrIT14FECJGENuC7sJ+0W5LNvRFgimT1A/6h7NFwq8ynJjoxnJeTyHYX
-	 YrN6rhnomJWaFveLl4jl10atX5j7904QbR20AkGvLBXS454/nDCb1Ik2Zy33hkqlLZvZv
-	 emyP58ktUDt9kGypJsMgnsd6Qph5+3ntjbGB7a+/Okk0K9RdLQEeuVjAb3i5ylgXckgUB
-	 6EY5xgwvs94BzoH3f8Q/OrXIINyCWLIbCazncHo80FozTghL1cR1RjnysXNbrWLJinC3O
-	 wnthEljd6GvJWFbqbs4VP40f5oMIPc31gG8H2yAnaqwLSNW5gEwlu6pBo6q14UlYLVA==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 0D5731F0089F;
-	Mon,  9 Nov 2026 01:53:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794189232;
-	bh=V+SieL2nVGZvLEQKccUXIqqYkXNqZxAUIg9/rkL36Zk=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=h3bgj8+lBanCwdpmKvjlJr6ly2Xjzx0Q4MAe/BlDnTE8tnfTB9P9eDSZoaZOB8GS/
-	 S4ujNAsPMymzzmjrc7aFb3s8uo8ePhZ4ekP94h42X4PpdMfWDrHifgzm48rISU7HeI
-	 fO7GnmTKrLs21+QoPCf8jJmoTKnEdkmntsq+poM4q47BtgzhNsOUp0W7qJuZWt9gZ1
-	 Jh2AJvXFTXIdHEYio8ZgHfTuaU03Ldj6JTXaBmE/PP3O/QrH+e7kIfUQLjU+PB+8+1
-	 yCmuxJPcczbFIX82rf+mOB8Uq+5Ri6KeKOldJQEV0qXPZSHs/P590qJ6U8YKVEd8LK
-	 b061T1cRAIr3g==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 5F2A2481F8;
-	Mon,  9 Nov 2026 01:53:51 +0000 (UTC)
-From: Ricardo Pardini via B4 Relay <devnull+ricardo.pardini.net@kernel.org>
-Date: Mon, 09 Nov 2026 02:53:47 +0100
-Subject: [PATCH net-next] dt-bindings: net: add Realtek RTL8125 PCIe
- Ethernet
+	id 1xQEiH-0000000H5oJ-30uk;
+	Mon, 09 Nov 2026 02:02:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=SJ6O6qXqlZAzXyiBbHmxXisDRSscNTvQAfAwg6BWNvozUIR+DCjkam1Tr3Mfkah13DRSj0JtChLLyyezaecTowtpD/2BBHsoE3qEQ16ps4Ki58fxnW4/Q7EPfmgcxWtqw5ZHa2x5XwuWTV6Qqwir0UadK38fXyxWMZsUszyDQQimjFYk/7kUU6GxZfJmNF6asr69Rd/i5KETYgX9jxt51W/njNCUAIYRAmlmcdsbGxwg1L978Bbpaq6/utsfpChx25nt8aJxN6ip7l6sIx7Jw9bNvXVrWMW5HW9I9jHs5sCNU7QUah90mLd4A2Naqu74UvSVoegus3VexxWVa93new==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=S8Ua1ny9b0/+8kXkDUTlmQjSwULblBbZJ91rSikPLEc=;
+ b=sO4plmFME74BJMnRSOd7JJXwJZt9xdmWdTDpdFLhU0bYb9pdXKaj0DJoLuIQ/MTQneOEzsdqv0fff2QiB3PUBPJEIYVcejsaHPUr9WCRV/+u30wML8xl5ZJhkKN3ml//f/rjcYg4INkUTZN7nkZQVSBrvzUzt7gBAxRshD8oZmO5vSxTTYrGqEEEd66m9aU+0A+JlKmCnaPoCEOgtQ0bi67i0nDO2AAmrqoWzMaAUWWwpBGWmlMhZbuYkls2K7q4Bnzla1BoJXjRrZgFAiXzHiXMPAhjw5XR0SASqabvgm+z2kFL1fD6AqeS+zsvkxNrU5DvE5ikvxn+k07K57M86w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=renesas.com; dmarc=pass action=none header.from=renesas.com;
+ dkim=pass header.d=renesas.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=renesas.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=S8Ua1ny9b0/+8kXkDUTlmQjSwULblBbZJ91rSikPLEc=;
+ b=gItERcugRHE1hxf1H/3vpvci9XAXGNZUpP/Cfwu17OqZSumPE981XRi1fQsza+J08CaI/7upZ+krT6s1J/uFRnf9fVYGwdlQtNHy2UB+LYQ7eSRoZ9AUTfkgxxjgODs28m68rcPgBsSBRmy4uVLLGjehlqWwNkrZG6rxLSLpeTo=
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=renesas.com;
+Received: from TYYPR01MB15175.jpnprd01.prod.outlook.com (2603:1096:405:27d::8)
+ by TY4PR01MB13993.jpnprd01.prod.outlook.com (2603:1096:405:204::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.12; Mon, 9 Nov
+ 2026 02:02:12 +0000
+Received: from TYYPR01MB15175.jpnprd01.prod.outlook.com
+ ([fe80::9bfd:a110:68f1:134d]) by TYYPR01MB15175.jpnprd01.prod.outlook.com
+ ([fe80::9bfd:a110:68f1:134d%6]) with mapi id 15.21.0592.010; Mon, 9 Nov 2026
+ 02:02:12 +0000
+Message-ID: <87wlqmpxss.wl-kuninori.morimoto.gx@renesas.com>
+From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+To: <shao.mingyin@zte.com.cn>
+Cc: <broonie@kernel.org>,
+	<linux-sound@vger.kernel.org>,
+	<lgirdwood@gmail.com>,
+	<heiko@sntech.de>,
+	<linux-rockchip@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>,
+	<wens@kernel.org>,
+	<jernej.skrabec@gmail.com>,
+	<samuel@sholland.org>,
+	<linux-sunxi@lists.linux.dev>,
+	<linux-renesas-soc@vger.kernel.org>,
+	<srini@kernel.org>,
+	<linux-arm-msm@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 1/5] ASoC: rsnd: fix NULL dereference when remote port has no endpoint
+In-Reply-To: <20261107160821263n_tb5YdtJX-icNTWJbOW9@zte.com.cn>
+User-Agent: Wanderlust/2.15.9 Emacs/30.2 Mule/6.0
+Date: Mon, 9 Nov 2026 02:02:11 +0000
+X-ClientProxiedBy: OS7PR01CA0309.jpnprd01.prod.outlook.com
+ (2603:1096:604:26f::17) To TYYPR01MB15175.jpnprd01.prod.outlook.com
+ (2603:1096:405:27d::8)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261109-dt-bindings-net-realtek-rtl8125-v1-1-cff4b8a8be66@pardini.net>
-X-B4-Tracking: v=1; b=H4sIAKon8WoC/yWNQQ6CQAxFr0K6tgkdIoJXMS5gpmCVVDNTDQnh7
- gy4fPn57y2QOAonuBYLRP5JkrdmoFMB/tHpyCghM7jS1URlg8GwFw2iY0Jlw8jdZPzCaFND7ox
- tS87Vni5VNUC2fCIPMh+FG+wH5dng/l/St3+ytz0A67oBqUu5Do0AAAA=
-X-Change-ID: 20261108-dt-bindings-net-realtek-rtl8125-991226c1733f
-To: Heiner Kallweit <hkallweit1@gmail.com>, nic_swsd@realtek.com, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, 
- netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, Ricardo Pardini <ricardo@pardini.net>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4350;
- i=ricardo@pardini.net; h=from:subject:message-id;
- bh=7nlD6uY1u4F0mRBPPEUBKpIYrlmDUFHO6at2lmifh/s=;
- b=owEBbQGS/pANAwAKATteP+Oex+3pAcsmYgBq8SeuO6zb9eCJ6q8FtHOjt+bOOtHzf7xobZ4Yv
- OGicDy6heCJATMEAAEKAB0WIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCavEnrgAKCRA7Xj/jnsft
- 6XLNB/9Bw77ejpGM8LhzEykrl+tF+nUiOG35uGPYS4dZ8xPFx7G7xNQ2S0r2IIG3rj5RMbgcw5V
- vQvGZ9yBx/Ua1WVRrmQR4kEHWEr9xR6JdnUMZ6h6NLqof5GwES+wDjiodYS0M49rYgeiLDfjX9J
- tC5HcEYbyzBvBvVsv4bFdmHLACkeSC3mKh2DcLrcuH+/N1+ny7mvxjbn/YbZ9AlqWUdqj3v9Xlu
- 40lySG5btGdRNqZJyA8H4AP+m6R4U8eE/1mTUNSWt75dtCMtHgcY1lyr2Mrnu1Hen6dHaY0lSpL
- +6G+94wjy2dCIb1FeEcGETp6gTlsRo8FLwo3LXxOcb1fVe9S
-X-Developer-Key: i=ricardo@pardini.net; a=openpgp;
- fpr=AC18230CF6AFEACADC4888933B5E3FE39EC7EDE9
-X-Endpoint-Received: by B4 Relay for ricardo@pardini.net/default with
- auth_id=588
-X-Original-From: Ricardo Pardini <ricardo@pardini.net>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TYYPR01MB15175:EE_|TY4PR01MB13993:EE_
+X-MS-Office365-Filtering-Correlation-Id: f1584023-82b6-437b-7fe4-08df3e0577ee
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|23010399003|7416014|52116014|366016|18002099003|22082099003|6133799003|10067099003|11063799006|261102123227099003|261022075727099003|56012099006|261021121427099003|261026121527099003|261009223027099003|38350700014;
+X-Microsoft-Antispam-Message-Info: eBcdnyLwzA9cuQlpyybUuwB1YDIfoIdtizf2aEqLv2QHAi4QCfHBS2zBdfLyil95yLB+H3lB4cOFA6ydyFgJvaGCtucE5Z2pSHv4heE9cvj63ZSytRjN/6NI9VseeT5MhzHiPSLjoOlKksaiBlwLWCjmdO2qfBKsHID36L4YvvZ72OMf/AsaXfEwKS6x/B2ge4OdhisrlG61eXtCbxU7r1bELHrooiLHeCxhaxXS+VoF4ADxMDE9thtP9Uy8RNwAV2gwS/NR75Zat2szagN9WOCCPQa/J57sTVK3ZA2u3hb3dUR8sB8oEXPEaMoBXpQ0vuQFdxyeoJS8p0yQ7WdeDzGfCaQhEEtgwH7GmSC8mGUu8JaQn9EQNkBHJbLYTiH3t92I6uhzX7702Sheaijeir4jPQlw0kq0UpiV5h+nsyQ5zNJRsOcKUZyeumIckkRkzkrWnXxL4wNyqdnMWyIUo2xNrhi2WnJpSs+KK07zPi3M3WmIhdoON54hVLw5S+W9Eofk9I8HBCMrUp2rct9MqfnhIApogzw5ckeI7qMz92n8DTA0Ew0phiV+r9ZntLiKD2x+QDxdV9pcqncVpBjPPZW05Un2suGdCCFE80yFPe5g7EWQAEmC+CiZObf0GNE2UaLmmnhuHLMVdwqdqj0dRjC8U44+zHoXxGvLa46ndgRhqyYiY7b2HOyUoATrgQQv3OhuIHm6XudEtwuJA7R0/8eZcChx+QGLGvE2JpaswZQ=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYYPR01MB15175.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(23010399003)(7416014)(52116014)(366016)(18002099003)(22082099003)(6133799003)(10067099003)(11063799006)(261102123227099003)(261022075727099003)(56012099006)(261021121427099003)(261026121527099003)(261009223027099003)(38350700014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?9zxWd+j+ULKopfvpVfi3EHtRDx5rvJ7IX5xdkDdS28sjUBsEb0CY/gShqqWQ?=
+ =?us-ascii?Q?j2LS82qOkUqI7Xwcb8cp26MxM3zCbaA06oxWt+ZhSSKe9XNdkBJmvrOMEfyr?=
+ =?us-ascii?Q?I2ypWExwA/oApGZss2mHA8kHdvTrlpfaYBIm/Eww2q3aUp7PVcARBcDsHUXB?=
+ =?us-ascii?Q?VpAYjcfvcPJa5lilbZJ19QmTCCkiatmmgQ77jGh4W52Bv4BMdv1LxsyCEpcW?=
+ =?us-ascii?Q?j9JcKneC4oLCRwJpAnLakiiZCqIfkxPtqxCmgE783jvSjEL7/lS8DVY8LTv1?=
+ =?us-ascii?Q?oYOr/xCpMn8799DDrjAaUq8MJgoHJwAjsJ16zKwl4gyi7gC7h03ZCtVrZpTU?=
+ =?us-ascii?Q?2A1uO1DWvdK9YQA4l4K1L7jD2oNABlYbGwMqXJmIl1TSAD2cXz3ek2Z8JLZ2?=
+ =?us-ascii?Q?O3bFOqxuDf0NjkoIjcemPK3Pk+r/mqjT1OAf+0pxw83JpTU3boxZJULc0OES?=
+ =?us-ascii?Q?IGSlJUveQ5MNPzxoqB8x0o4hnz6QU0MdOxajWUEugdpMVZWeI0r9wkWRpi2b?=
+ =?us-ascii?Q?506m3Yk9NGZ9bdDu2ThVH459nSCqfuXJuvJq0/VkVjk1Xzo4+voWlwG+Snk6?=
+ =?us-ascii?Q?IdCqicNp1edW8QjwfkErlNTGKApWuS6+4QvHxar0UB7j0270Gt92hWByF+FL?=
+ =?us-ascii?Q?KNJGwiI59NjPmD7XLxLfa3sVxavq3jZtLZHtOdgn/hfHPYK6n5H4nmirTLnL?=
+ =?us-ascii?Q?XswoVLg1ze/YmwJknmSeC7TcC5FMc1ZdhfMSvl0hP4iHhlM73J5n9peMwrpg?=
+ =?us-ascii?Q?CKCtj4nI95MOFhw8RTPYcJ7YN/eJzlS1A5U18tvsLHBlPLRiV/FTZrkxXWWn?=
+ =?us-ascii?Q?Wqv3niqPZtzMF6K2fwAcRymtvhDSutPZSjDdDSTH4zqmweWkoO7ZssX+ely1?=
+ =?us-ascii?Q?HqWGACdyu+UaxIcA6bP3eP7Qmg11K4XQiUMGqIh0gPu9ZYBM4/Nm9OzNPvHE?=
+ =?us-ascii?Q?Ht8WsVOrFL72/m9D+nJXBrMLnURk+mBQ4H9KOGLjZW8ZPqOYSjs8FJSL7ovi?=
+ =?us-ascii?Q?BByTawXINmd+/dXzOtuSHC2VmHgXZUpfZQ3uJ3gUsEUeLfere/IfMXXfaliI?=
+ =?us-ascii?Q?kv1PudztQA31ftbOWhoPnWQco4ntvnjpteajM9MViCc78G5hBpPwtDeW05hV?=
+ =?us-ascii?Q?0UFrabK8bb3hs8kajneTzuaf4lFrwuw6ziKs5+helNQ7GHSd+jrby6cTIcZA?=
+ =?us-ascii?Q?ME4a8Ag2l+FOurGuzzZlgRhT2Z+NgqdMBqsoDbaN+K9PBRnzphH3oobCq4ZR?=
+ =?us-ascii?Q?zZC+7ug188vsPPs3jzDpcM8bBJf0oxbqWAbeNWojyFQnxgp4uoydCtD92Zmw?=
+ =?us-ascii?Q?o9DEvjdWJRMtbT2m+mlXZMz2r/bHF/IE+LKUgujGHfCQpkbAVRaUCUUveAqf?=
+ =?us-ascii?Q?d0ajJSuxmAgTp90jBEmrt0yJ+i25HMCQnp3EAXzVaDr0GalDaKQMfhNXSeA7?=
+ =?us-ascii?Q?THHSPWBiJXzmv2z+g/Kb+W6gxhtMFAg4ZIUjNCLfCQa8m8bN0H7F9NvlqMru?=
+ =?us-ascii?Q?t1OlzyuIWVPIRApjLoBfAqqbBx1i0dqzvxhYNIVeb81q/ohCjcyvUpFLqWGZ?=
+ =?us-ascii?Q?PYWaxD8z8VihP5DCcbNLq54+P2o/g077BVhVfFVazhaA5/53t7J2pZwJs7xd?=
+ =?us-ascii?Q?9balA8wF8IDOpzPo6sR4KBDqeP0ngi8XZIkzWhRw4joAs+MLaM9fy3sRhzmy?=
+ =?us-ascii?Q?LaxRBzV9+V1hEfxellS3IXomSpNuunSpsAXO4AvHgFv7OyacaYA8DH1MOofV?=
+ =?us-ascii?Q?xWCGfy6BJHkNbflflE+Iq4AElA3t/jY=3D?=
+X-OriginatorOrg: renesas.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f1584023-82b6-437b-7fe4-08df3e0577ee
+X-MS-Exchange-CrossTenant-AuthSource: TYYPR01MB15175.jpnprd01.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Nov 2026 02:02:11.9633
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 53d82571-da19-47e4-9cb4-625a166a4a2a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: c/TwwXf/8FMUZ+APuow/uIux8D+E4BUnXA8g7NrgqdntWvvP6Sk055OA8tdqC1oOSJ+FmUJA7azFPb8Hl3c0+smInP1/Eg5CTHJF2Zd4Nys8WznDECs5oNJ9JfvNKRUq
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY4PR01MB13993
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261108_180225_768166_79A48C76 
+X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,138 +144,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: ricardo@pardini.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Ricardo Pardini <ricardo@pardini.net>
 
-Add a binding for fixed/soldered Realtek RTL8125 PCIe Ethernet
-controller. As a PCIe device, its "pci10ec,8125" compatible is the
-Open Firmware spelling auto-derived from its PCI-SIG vendor/device IDs
-and is already covered by the generic dtschema pci-device.yaml. The
-compatible itself therefore needs no binding to be valid.
+Hi Shao
 
-A dedicated binding is needed because board DTs describe these
-soldered function nodes in order to attach ethernet-controller
-properties to them: a placeholder local-mac-address that the bootloader
-fills in today, and potentially nvmem-cells, phy-handle, etc. in the
-future. This binding references ethernet-controller.yaml so those
-properties are validated on the RTL8125 PCI function nodes.
+Thank you for your patch
 
-Suggested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> rsnd_parse_connect_graph() uses the node returned by
+> of_graph_get_remote_port_parent() without checking it for NULL.  An
+> endpoint node with no remote-endpoint phandle yields NULL, and the
+> following strstr() on remote_node->full_name dereferences it during
+> probe.
+> 
+> Return early when the remote node is absent, so a graph link that does
+> not lead anywhere is ignored instead of crashing the kernel.
+> 
+> Fixes: beed78aeeb10 ("ASoC: rsnd: move HDMI information from ssi.c to core.c")
+> Signed-off-by: Shao Mingyin <shao.mingyin@zte.com.cn>
+> ---
+
+Basically it shouldn't happen in of-graph case, but we shouldn't believe
+sane DT.
+
+Acked-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+
+Thank you for your help !!
+
+Best regards
 ---
-Add a DT binding for the Realtek RTL8125 2.5GbE PCIe Ethernet
-controller, so that board DTs describing soldered RTL8125 PCI function
-nodes get their ethernet-controller properties (local-mac-address,
-nvmem-cells, ...) validated.
-
-This was previously patch 1/7 of the series "describe RTL8125 PCIe
-NICs on Rockchip boards (and add DT binding)", up to v5 [1]. Per
-Heiko's review [2] it is now sent on its own via net-next; the board
-DT patches continue separately in that series (v6+). There is no
-build-time dependency between the two: "pci10ec,8125" is already
-covered by dtschema's pci-device.yaml, so the board DTs validate
-without this binding.
-
-The need for the binding (and for the compatible at all, since the
-kernel binds these nodes by their reg) was discussed with Heiner in
-v3 [3] and v4 [4]; the outcome, per Krzysztof, is reflected in the
-commit message.
-
-The patch is unchanged since v5 1/7, apart from the rebase onto
-net-next; Rob's Reviewed-by from v5 [5] is carried over.
-
-[1] https://patch.msgid.link/20260910-rk3588-dts-rtl-eth-describe-dt-alias-v5-0-c1b9e5f10cd6@pardini.net
-[2] https://lore.kernel.org/all/1971659.CQOukoFCf9@phil/
-[3] https://lore.kernel.org/all/b7cc8eba-ff6e-417d-8e74-b3bb24e08a26@gmail.com/T/#u
-[4] https://lore.kernel.org/all/876a38f8-75ea-4b32-bb65-216cb3adb436@gmail.com/T/#u
-[5] https://lore.kernel.org/all/178976078089.1640411.4176382061491076376.robh@kernel.org/
----
- .../devicetree/bindings/net/realtek,rtl8125.yaml   | 43 ++++++++++++++++++++++
- MAINTAINERS                                        |  1 +
- 2 files changed, 44 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/net/realtek,rtl8125.yaml b/Documentation/devicetree/bindings/net/realtek,rtl8125.yaml
-new file mode 100644
-index 000000000000..eee13fbc1e6a
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/realtek,rtl8125.yaml
-@@ -0,0 +1,43 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/realtek,rtl8125.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Realtek RTL8125 2.5 Gigabit PCIe Ethernet Controller
-+
-+maintainers:
-+  - Heiner Kallweit <hkallweit1@gmail.com>
-+
-+description:
-+  The Realtek RTL8125 is a 2.5GBASE-T Ethernet controller with a PCIe host
-+  interface.
-+
-+allOf:
-+  - $ref: ethernet-controller.yaml#
-+
-+properties:
-+  compatible:
-+    const: pci10ec,8125
-+
-+  reg:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    pcie {
-+        #address-cells = <3>;
-+        #size-cells = <2>;
-+
-+        ethernet@0,0 {
-+            compatible = "pci10ec,8125";
-+            reg = <0x10000 0 0 0 0>;
-+            local-mac-address = [00 00 00 00 00 00];
-+        };
-+    };
-diff --git a/MAINTAINERS b/MAINTAINERS
-index fe23913b1e43..afe9bff92936 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -134,6 +134,7 @@ M:	Heiner Kallweit <hkallweit1@gmail.com>
- M:	nic_swsd@realtek.com
- L:	netdev@vger.kernel.org
- S:	Maintained
-+F:	Documentation/devicetree/bindings/net/realtek,rtl8125.yaml
- F:	drivers/net/ethernet/realtek/r8169*
- 
- 8250/16?50 (AND CLONE UARTS) SERIAL DRIVER
-
----
-base-commit: fa5196392691051963726787944db872420dfa75
-change-id: 20261108-dt-bindings-net-realtek-rtl8125-991226c1733f
-
-Best regards,
---  
-Ricardo Pardini <ricardo@pardini.net>
-
-
+Kuninori Morimoto
 
 _______________________________________________
 Linux-rockchip mailing list
