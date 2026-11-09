@@ -2,67 +2,65 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6E718606A31C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 09:08:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5B69B606D810
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 11:37:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XycTJK0J;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=arm.com header.i=@arm.com header.a=rsa-sha256 header.s=foss header.b=Ozg8aZ+6
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PmlBya/m;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=BsNl7ZDe
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=3UwF6m/ipqwBPqEom2Anu+sKhxw/4AbwmU0YugaYY5o=; b=XycTJK0JV3A2US6PlayozExB+h
-	+/YEo/ANqyAVc87bQ1MVqYojibyLCUI8/hE4mp488vKIo1n4qPAU01IcCbzUPvkc721wUL9t9JEfu
-	q5LpP79InA5/HJcqKoIWOqNp8pH7wYemWwD2EC5YdPtJ69K1XTOW00xKGH5vAjmTei1sswpjKFed1
-	MARtW0ImLsE3M3xGbhn7mHoP2qRRcSCbyXtfEnGtTZtfQysCOA7e+AOj4e3/BnvmJmdz91B7usaw/
-	VAja0XVNrFMmyQI6uKTX/siJ5kMcdqCA/8Hc67egNH1xO7C5APvyv2pBKg/Vhpoh9o+YpPIFdktWP
-	/33Y+E1A==;
+	bh=7VURLCV8157RDTte+TrgenmyOK/5mTJNgrdykh4kGiY=; b=PmlBya/misI6tdDJxlyi6iBHYa
+	SCHL6ZFRQ1mRlzLPpagjUIM2DFCfK6wPuAnQXDd8VQgXqBwdLH5i/85SmOTte6WfwsNjwxs8rCglE
+	KbZwe8U1/g4Anqg5IboWZgG1TmmJf1+D0yq7GFJlRGkmlnadPp3poBvelWaSF88FGdS8Z+NPtt+kk
+	BjPmx8QKQm0yxtT4CYfrPVBS5UOgm8gGKjAz1vvKDxFSdjHS7Gjfx815TMXip+z5k7KkplV1iGmHA
+	HeTZRwhtGVCIhaM3Atxtf7ypzX9/ezGdjJGYO9SSknAI4fu4a2/Du5NRkC/9tzRZrb/ksox7dUCn7
+	ApOD8mPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQLMr-00000000ASh-01Ij;
-	Mon, 09 Nov 2026 09:08:45 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQLMo-00000000ARc-063z;
-	Mon, 09 Nov 2026 09:08:43 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 891F114BF;
-	Mon,  9 Nov 2026 01:08:35 -0800 (PST)
-Received: from [10.57.12.22] (unknown [10.57.12.22])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id ABB8E3F85F;
-	Mon,  9 Nov 2026 01:08:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
-	t=1794215318; bh=b/Z8FOQeGGjUmR5j+LUi8n9Jv3kX2zKWVa4aDbKzjXE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Ozg8aZ+6ju7WL3UUHR16QwAhksplV/ASDDZW3dQr9NmR9+OrjSnwnB/YOwK6Sn6eT
-	 +kIEQtT4khd5vClwnlxABv+rMZ8rWsoTdj93yBRbD6f4dn+ZaVIkqT/uh+26cpQaZ/
-	 O1NXsHR5Qj7I7BU7NBsc33Kqv2YFefS6QtncQW+8=
-Message-ID: <bcb0bfcb-e359-4710-aa6f-8de032327d03@arm.com>
-Date: Mon, 9 Nov 2026 09:09:09 +0000
+	id 1xQNh6-00000000Xk9-2Oco;
+	Mon, 09 Nov 2026 11:37:48 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
+	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xQNh5-00000000XjF-03In;
+	Mon, 09 Nov 2026 11:37:47 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2CE8361262;
+	Mon,  9 Nov 2026 11:37:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D21341F0089F;
+	Mon,  9 Nov 2026 11:37:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794224265;
+	bh=2ViT3Yo4M3SsUpvja1R5K7/sF1YFo5i6DucfxLblQBU=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=BsNl7ZDeGyPFQKK2Sj1fAO+4RkRF1uiZ6sP5hR44G7QzyBrQ44q9NwfvOW/fxL2n6
+	 1GgkdTCTfIHUWTTx+NhQtw/CVAybuER3+EHRhrGsmvVzn14YrIP9RG2aOMLXDapPfB
+	 FTcDrtf/1N9pKXuB+yw2ztzN8T96RVDxGQnnzftygYfPR6rhvkqUEyUgtq2PKSUkvR
+	 zkKXPatfQr+bwb57/ifJYEpOR9/QZqsHtrXWmEdCCHNZPT9JNCB6SY/bThhSbCYMbK
+	 i8P762UuS7STpaLKdWxNs40zTEM5U939heEyAKA/tqh6mf9b9LN5u7HKTI45OKXUFm
+	 CfMbFacbIj/wg==
+Subject: Re: [PATCH net v8 03/10] can: rockchip_canfd: retry the outstanding TX buffer
+From: netdev-bot+sashiko@kernel.org
+To: 1579567540@qq.com
+Cc: mkl@pengutronix.de, kernel@pengutronix.de, mailhol@kernel.org,
+ heiko@sntech.de, socketcan@hartkopp.net, davem@davemloft.net,
+ edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
+ corbet@lwn.net, skhan@linuxfoundation.org, rdunlap@infradead.org,
+ wg@grandegger.com, linux-can@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-doc@vger.kernel.org
+Date: Mon, 09 Nov 2026 11:37:44 +0000
+Message-ID: <179422426444.994134.7825659732864102594@kernel.org>
+In-Reply-To: <20261108-rockchip-canfd-restart-close-v8-3-3e7a23fd9eae@qq.com>
+References: <20261108-rockchip-canfd-restart-close-v8-3-3e7a23fd9eae@qq.com>
+X-sashiko-severity: Low
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 4/6] powercap: dtpm: Use generic powercap hierarchy
- helpers
-To: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
-Cc: Daniel Lezcano <daniel.lezcano@kernel.org>, rafael@kernel.org,
- Heiko Stuebner <heiko@sntech.de>, Shuah Khan <shuah@kernel.org>,
- Manaf Meethalavalappu Pallikunhi <manaf.pallikunhi@oss.qualcomm.com>,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kselftest@vger.kernel.org
-References: <cover.1793666444.git.daniel.lezcano@oss.qualcomm.com>
- <bded992091c92baa7246b939f266297f99c8942b.1793666444.git.daniel.lezcano@oss.qualcomm.com>
-Content-Language: en-US
-From: Lukasz Luba <lukasz.luba@arm.com>
-In-Reply-To: <bded992091c92baa7246b939f266297f99c8942b.1793666444.git.daniel.lezcano@oss.qualcomm.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261109_010842_223963_6BFE99C5 
-X-CRM114-Status: GOOD (  18.82  )
-X-Spam-Score: -4.4 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,85 +70,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-
-
-On 11/3/26 04:48, Daniel Lezcano wrote:
-> DTPM implements its own hierarchy creation and destruction logic while
-> the powercap core now provides generic helpers for this purpose.
-> 
-> Convert DTPM to use the generic powercap hierarchy infrastructure.
-> Duplicate the platform hierarchy before creating it, and use
-> powercap_hierarchy_create() and powercap_hierarchy_destroy() to manage
-> the DTPM zones.
-> 
-> Add DTPM callbacks to create and destroy the zones associated with each
-> powercap hierarchy node. Adapt the CPU and devfreq backends to return
-> the created DTPM instance and use the node name provided by the
-> hierarchy.
-> 
-> Convert the Rockchip RK3399 description to struct powercap_hierarchy
-> and keep the device tree path as DTPM-specific node data.
-> 
-> This removes the DTPM-specific hierarchy traversal and destruction code
-> and leaves the hierarchy management to the powercap core.
-> 
-> Preserve best-effort creation: an unavailable backend returns NULL to
-> skip its branch, and setup failures are warned about and skipped rather
-> than rolling back independent zones. Invalid node descriptors remain
-> fatal. Reject a DT node with a NULL path before calling
-> of_find_node_by_path(), treating it as an invalid descriptor rather
-> than an unavailable backend.
-> 
-> When the representative CPU is offline, find an active policy through an
-> online sibling whose related_cpus mask contains it. Hold the CPU hotplug
-> read lock during selection and setup, and initialize the zone through the
-> policy's active CPU while keeping the hierarchy-provided name. An entirely
-> offline policy still has no active CPU to initialize through.
-> 
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
-> ---
-> Changes in v5 (since v4):
-> - Reject a NULL DT node path with -EINVAL before invoking
->    dtpm_setup_dt(), as suggested by Lukasz Luba.
-> - Document that a missing path is an invalid hierarchy descriptor.
-> 
-> Changes in v4 (since v3):
-> - Rebase on v7.3; no code or commit-description changes.
-> 
-> Changes in v3 (since v2):
-> - Rebase on v7.3-rc7.
-> - Preserve best-effort branch creation using the generic NULL result.
-> - Find an online policy sibling for offline CPU representatives and
->    protect policy selection and setup against CPU hotplug.
-> - Keep generic API behavior and documentation in patch 1.
-> - Fix __initdata placement; match-table indentation is handled in patch 3.
-> - Name setup callback arguments and remove whitespace-only lines.
-> - Update the description.
-> 
->   drivers/powercap/dtpm.c         | 180 +++++++++++++++-----------------
->   drivers/powercap/dtpm_cpu.c     |  62 ++++++++---
->   drivers/powercap/dtpm_devfreq.c |  22 ++--
->   drivers/soc/rockchip/dtpm.c     |  67 +++++++++---
->   include/linux/dtpm.h            |   6 +-
->   5 files changed, 198 insertions(+), 139 deletions(-)
-> 
-
-Thank you Daniel for addressing that, LGTM
-
-Reviewed-by: Lukasz Luba <lukasz.luba@arm.com>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhhbmsgeW91IGZvciB5b3VyIGNvbnRyaWJ1dGlvbiEgU2FzaGlrbyBBSSByZXZpZXcgZm91bmQg
+bW9yZSBzZXZlcmUKaXNzdWUocykgaW4gb3RoZXIgcGF0Y2hlcyBvZiB0aGlzIHNlcmllcy4gVGhp
+cyBtYWlsIGlzIG9ubHkgYW4gRllJLCBpbiBjYXNlCnlvdSB3YW50IHRvIGFkZHJlc3MgdGhlIG5p
+dCBwaWNrcyBiZWxvdyB3aGVuIHlvdSByZXNwaW4uCgpMb3cgcHJpb3JpdHkgLyBuaXQgcGlja3Mg
+Zm9yIHlvdXIgY29uc2lkZXJhdGlvbjoKCi0gW0xvd10gVGhlIGNvbW1pdCBtZXNzYWdlIGZvciAi
+Y2FuOiByb2NrY2hpcF9jYW5mZDogcmV0cnkgdGhlCiAgb3V0c3RhbmRpbmcgVFggYnVmZmVyIiBz
+dGF0ZXMgdGhlIHVzZXItdmlzaWJsZSBmYWlsdXJlICgidGhlIHBlbmRpbmfigKYKCi0tCgpjYW46
+IHJvY2tjaGlwX2NhbmZkOiByZXRyeSB0aGUgb3V0c3RhbmRpbmcgVFggYnVmZmVyCgpUaGlzIHBh
+dGNoIGNoYW5nZXMgcmtjYW5mZF94bWl0X3JldHJ5KCkgc28gdGhlIGVycmF0dW0gNiByZXRyYW5z
+bWlzc2lvbgp1c2VzIHR4X3RhaWwgaW5zdGVhZCBvZiB0eF9oZWFkIHRvIHBpY2sgdGhlIFRYIGJ1
+ZmZlci4gVGhlIGdvYWwgaXMgdG8gcmV0cnkKdGhlIGZyYW1lIHRoYXQgaXMgc3RpbGwgcGVuZGlu
+ZyByYXRoZXIgdGhhbiB0aGUgbmV4dCBmcmVlIGJ1ZmZlci4gSXQgaXMKdGFnZ2VkIGZvciBzdGFi
+bGUgd2l0aCBhIEZpeGVzOiB0YWcgcG9pbnRpbmcgYXQgYTU2MDVkNjFjN2RkLgoKPiBVc2UgdHhf
+dGFpbCB0byByZXRyeSB0aGUgb3V0c3RhbmRpbmcgYnVmZmVyLiBPdGhlcndpc2UsIHRoZSBwZW5k
+aW5nIGVjaG8KPiBlbnRyeSBjYW4gcmVtYWluIGluY29tcGxldGUgYW5kIGxlYXZlIHRoZSBUWCBx
+dWV1ZSBzdG9wcGVkLgoKW1NldmVyaXR5OiBMb3ddClRoZSB0eF90YWlsIGluZGV4aW5nIGxvb2tz
+IGNvcnJlY3QuIFRoZSBzdGFibGUganVzdGlmaWNhdGlvbiBpcyBoYXJkZXIgdG8KY2hlY2ssIHRo
+b3VnaCwgYmVjYXVzZSB0aGUgc3RhbGwgZGVzY3JpYmVkIGhlcmUgZGVwZW5kcyBvbiBob3cgdGhl
+CmhhcmR3YXJlIGhhbmRsZXMgVFhfUkVRKG4pLCBhbmQgdGhlIGNvbW1pdCBtZXNzYWdlIGRvZXNu
+J3Qgc2F5LgoKVGhlIGNvbnRyb2xsZXIgaGFzIG9uZSBUWCBmcmFtZSByZWdpc3RlciB3aW5kb3cg
+KFJLQ0FORkRfUkVHX0ZEX1RYRlJBTUVJTkZPLApSS0NBTkZEX1JFR19GRF9UWElELCBSS0NBTkZE
+X1JFR19GRF9UWERBVEEwLi4pIGFuZCB0d28gcmVxdWVzdCBiaXRzLiBFdmVyeQpmcmFtZSBpcyB3
+cml0dGVuIGludG8gdGhhdCBzaGFyZWQgd2luZG93IGluIHJrY2FuZmRfc3RhcnRfeG1pdCgpIGJl
+Zm9yZQpUWF9SRVEodHhfaGVhZCkgaXMgaXNzdWVkLgoKcmtjYW5mZF94bWl0X3JldHJ5KCkgaGFz
+IG9uZSBjYWxsZXIsIHJrY2FuZmRfcnhzdHhfZmlsdGVyKCkuIFRoYXQgY2FsbGVyCm9ubHkgZ2V0
+cyB0aGF0IGZhciB3aGVuIHRoZSBub21pbmFsIGZyYW1lIGVjaG9fc2tiW3R4X3RhaWxdIGlzIEVG
+RjoKCmRyaXZlcnMvbmV0L2Nhbi9yb2NrY2hpcC9yb2NrY2hpcF9jYW5mZC1yeC5jOnJrY2FuZmRf
+cnhzdHhfZmlsdGVyKCkgewogICAgLi4uCglpZiAoIShjZmRfbm9taW5hbC0+Y2FuX2lkICYgQ0FO
+X0VGRl9GTEFHKSB8fAoJICAgIChjZmRfcngtPmNhbl9pZCAmIENBTl9FRkZfRkxBRykpCgkJcmV0
+dXJuIDA7CiAgICAuLi4KCXJrY2FuZmRfeG1pdF9yZXRyeShwcml2KTsKICAgIC4uLgp9CgpXaGls
+ZSB0aGUgdGFpbCBmcmFtZSBpcyBFRkYsIG5vIGZ1cnRoZXIgZnJhbWUgY2FuIGJlIHF1ZXVlZDoK
+CmRyaXZlcnMvbmV0L2Nhbi9yb2NrY2hpcC9yb2NrY2hpcF9jYW5mZC10eC5jOnJrY2FuZmRfZ2V0
+X2VmZmVjdGl2ZV90eF9mcmVlKCkgewogICAgLi4uCglpZiAocHJpdi0+ZGV2dHlwZV9kYXRhLnF1
+aXJrcyAmIFJLQ0FORkRfUVVJUktfUkszNTY4X0VSUkFUVU1fNiAmJgoJICAgIHJrY2FuZmRfdHhf
+dGFpbF9pc19lZmYocHJpdikpCgkJcmV0dXJuIDA7CiAgICAuLi4KfQoKU28gd2hlbmV2ZXIgdGhl
+IHJldHJ5IHJ1bnMsIGV4YWN0bHkgb25lIGZyYW1lIHNob3VsZCBiZSBwZW5kaW5nLCBhbmQgaXQK
+c2hvdWxkIGJlIHRoZSBsYXN0IGZyYW1lIHdyaXR0ZW4gaW50byB0aGUgc2hhcmVkIHdpbmRvdy4K
+CklmIHdyaXRpbmcgVFhfUkVRKG4pIGxhdGNoZXMgdGhlIGN1cnJlbnQgd2luZG93IGludG8gYnVm
+ZmVyIG4sIHdvdWxkbid0IHRoZQpvbGQgVFhfUkVRKHR4X2hlYWQpIGhhdmUgcmVzZW50IHRoZSBj
+b3JyZWN0IGZyYW1lPyBUaGUgZWNobyB3b3VsZCB0aGVuCm1hdGNoIGVjaG9fc2tiW3R4X3RhaWxd
+IGFuZCBjb21wbGV0aW9uIHdvdWxkIGdvIGFoZWFkIG5vcm1hbGx5LgoKQXMgZmFyIGFzIEkgY2Fu
+IHRlbGwsIHRoZSBzdGFsbCBvbmx5IGhhcHBlbnMgaWYgYnVmZmVyIG4ga2VlcHMgaXRzIG9sZApj
+b250ZW50cyBhbmQgVFhfUkVRKG4pIHJlc2VuZHMgdGhlbSB3aXRob3V0IHJlbG9hZGluZyBmcm9t
+IHRoZSB3aW5kb3cuCgpXYXMgdGhlIHN0YWxsIGFjdHVhbGx5IHNlZW4gb24gaGFyZHdhcmUsIG9y
+IGlzIHRoaXMgbWFpbmx5IG1ha2luZyB0aGUgc2xvdAppbmRleGluZyBjb25zaXN0ZW50IHdpdGgg
+dGhlIGVjaG9fc2tiW3R4X3RhaWxdIG1vZGVsPyBUaGUgRXJyYXR1bSA2IGNvbW1lbnQKaW4gcm9j
+a2NoaXBfY2FuZmQuaCBoYXMgYSBjYW5mZHRlc3QgcmVwcm9kdWNlciwgYW5kIGE1NjA1ZDYxYzdk
+ZCBjYXJyaWVzIGEKVGVzdGVkLWJ5IGZvciB0aGUgZGVwdGgtMiBjaGFuZ2UuCgpDb3VsZCB0aGUg
+Y29tbWl0IG1lc3NhZ2Ugc2F5IHdoaWNoIFRYX1JFUShuKSBiZWhhdmlvdXIgdGhlIGZpeCByZWxp
+ZXMgb24sCm9yIGFkZCBhIFRlc3RlZC1ieSBvciByZXByb2R1Y2VyLCBzbyBzdGFibGUgYmFja3Bv
+cnRlcnMgY2FuIGp1ZGdlIGl0PwoKLS0gClNhc2hpa28gQUkgcmV2aWV3IMK3IGh0dHBzOi8vbmV0
+ZGV2LWFpLmJvdHMubGludXguZGV2L3Nhc2hpa28vIy9wYXRjaHNldC8yMDI2MTEwOC1yb2NrY2hp
+cC1jYW5mZC1yZXN0YXJ0LWNsb3NlLXY4LTAtM2U3YTIzZmQ5ZWFlJTQwcXEuY29tCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
