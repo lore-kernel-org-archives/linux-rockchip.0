@@ -2,72 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A382A606A325
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 17:33:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B336F606A33D
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 17:51:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=v8quKk7H;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=djPySGxs
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=s/CBbrNy;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=D8F6Efrj
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Rf9Uxdyu738iUg/KONJz9nW+m2k7YPP76VtHW/WV+4U=; b=v8quKk7HPSN2YxHukFDDL5NNTQ
-	a70TfsEtV4UWb5T2muk4USE/c3ss54PLBg697+of/TItw7KnulmPoUTYXA3vMBPkMEDCKMX8wg22g
-	X2Nnk7zwST8Ept5C3VSM6urDuhtC8Flrj32dmQn/5Ik6vWyuPY4lot2I7Kv0tWD/YNhziOf7cg09m
-	IAug9yP81HrELXU9Hff/o01Vqt7dWgfvVHJbnGCn9hq3mTGO4+nqPnoqzCn/IGfQm5wO6E3Or0TWO
-	fumoAfvCwe0vRd1Jh4BlG2YhqMNMLaznmwJV4jbBLsq42WH3+SIBAigph0hIVk/iW6PHxX37GHqLg
-	bbiYU90g==;
+	bh=R/1ntkPXZv0IXD95VjSysqp8iaaYjpOg58zDPqE0fBY=; b=s/CBbrNyyLASQncyn0hgtoOLbz
+	w8e+36pB9xitfACi6LiRwNi7m6H206U3dIYutjy1Ik4QWRCGNz2Eia4XTK7H66u/Z+9PttncFyWdg
+	OjwCrwEz896itoO6/YphlC0kBQDpvbOBABjEJ6gh9OYKZRciSoZFGEgAC77SG1ho+a7zz0zGwzM+j
+	2zHwKksNee/054of4/cwWclJWGQ0ydYmlkDUKQI8DfAXbcovxrG3QIb6zSPwdizezylfILxxMIyWe
+	p0MCxCwp3B7eR5sf5LHMsyZE0NTjV7LMbosho8F6BwGepP9c9rwpFJimn6dskO8h7vj24tzPMVRmv
+	LLjTjgYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQTFY-00000001Lx9-1tbe;
-	Mon, 09 Nov 2026 17:33:44 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xQTX8-00000001P6q-11Zp;
+	Mon, 09 Nov 2026 17:51:54 +0000
+Received: from sender5-op-o11.zoho.com ([165.173.182.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQTFM-00000001Lvu-1lyL;
-	Mon, 09 Nov 2026 17:33:37 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E219D459E5;
-	Mon,  9 Nov 2026 17:33:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 974581F0089F;
-	Mon,  9 Nov 2026 17:33:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794245610;
-	bh=Inir2BaRnVMDhUyUoteKvoszf0OxlCPGv6CRErVG1DA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To;
-	b=djPySGxsZ6iEOQmv7jIjsonj7PjIFm4ls4iJ6JGTnv7gdAXiBEifz5ckdtKAk/DVC
-	 KlhALj0Ws8vGo8pJSMxiay/BLWFRS8fkhDwvwfhSsEMH14sCyvtgOQBXqnO1CrxoYq
-	 yrd2mNGvpHZZ2iklTgiBwq6WI/UxPeNteunEDnLMaP/nwIwg183acu1TsA3wg7GTrP
-	 5k4zBmog6niDLxHxVaRTT8nnQ3JbfyTJSamxZklnW5u7LeWf54WWioccQVqn+4U4RF
-	 varZMkequd4efC7MkflJx2hn0+nZaKADE9BNtQr/cyuJG+EuZhsoDRSf7XzulbiH0i
-	 xAEb5sMVY4LCA==
-Date: Mon, 9 Nov 2026 11:33:29 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	"Yury Norov (NVIDIA)" <yury.norov@gmail.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Alexey Charkov <alchark@flipper.net>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v9 1/9] PCI: dw-rockchip: Fix LTSSM set functions
-Message-ID: <20261109173329.GA252206@bhelgaas>
+	id 1xQTWr-00000001Oo5-3EyY;
+	Mon, 09 Nov 2026 17:51:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794246681; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=h7kpuxT8pWirPQ54VgpQtE9xL1PwEjNh19a0fQgoOmrEw+y5epd2g0IqZLkAYS3imi+RdSNW3ShNJpQJVvqpnVT0demBs89VLn44yLXUYQiZcbsXwsDveyxuoQ1hEIaMqDhy3XL3wdMzDxE26/GMlLPHsDQpiOAB1ZKNUf+X2mA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794246681; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=8wat53Psvud3JS3sFezrDUXTpsr4pX7AT/AN9ixBrd4=; 
+	b=Caa/WXxF1mB84C+AdYTUbscN/OshEYs/cpfRgpaQsqszd27WN0eKrWx1AUj02Oq4njov9oCGy0WB8h+hZNUK7jp5QXwug326f6TFdup8UyPbhwuApNfNDkUYjSyUJX17E3YofTZlEpb6Y63paRYI56WPp/vq9F6t19Sk3TKGe88=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=D8F6EfrjZCeUbWQJ9nYIIWJD7EzO9OQvAvbISMLaODm5ONzFKux3VuB5vr6aPTuXjFpL7hqsjus7GWxIMxfpm+8IFQPsyKm3mLSRL/t16qfdki/31bVSBjXZ2Z7JHKi+zoaNQNtZaP/yVPK0dLMjGFRVca2e8APfmqk1Elhbtmw=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=8wat53Psvud3JS3sFezrDUXTpsr4pX7AT/AN9ixBrd4=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794246680680202.33766214015657;
+	Mon, 9 Nov 2026 09:51:20 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id EC6BC180317; Mon, 09 Nov 2026 18:51:15 +0100 (CET)
+Date: Mon, 9 Nov 2026 18:51:15 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
+Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH 4/5] arm64: dts: rockchip: Add DSI panel to RK3588 EVB1
+Message-ID: <avIEPncVnojQBqpX@venus>
+References: <20261106-rk3588-evb1-dt-updates-v1-0-bdbe16223589@collabora.com>
+ <avDN3pPY5Qwt9B1p@venus>
+ <b60b7079-b7b6-4d83-8167-2e4fc6021aae@rock-chips.com>
+ <5573124.44csPzL39Z@diego>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261105-rockchip-pcie-system-suspend-v9-1-a2e55846649e@collabora.com>
+In-Reply-To: <5573124.44csPzL39Z@diego>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.236.36
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261109_095137_904954_9AF5E531 
+X-CRM114-Status: GOOD (  33.57  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,67 +76,144 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8502464106519939169=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 05, 2026 at 02:33:09PM +0100, Sebastian Reichel wrote:
-> Before the Rockchip PCIe driver has been switched over to the
-> FIELD_PREP_WM16 macro, PCIE_CLIENT_ENABLE_LTSSM and
-> PCIE_CLIENT_DISABLE_LTSSM were setting bits with a mask of 0xc = 0b1100,
-> which means BIT 2 and BIT 3. After the conversion it only sets bit 2,
-> with bit 3 being handled by a separate define named
-> PCIE_CLIENT_LD_RQ_RST_GRT. Apparently the conversion missed to make use
-> of this new macros resulting in the third bit not being set.
-> 
-> Fixes: 30e919570581 ("PCI: dw-rockchip: Switch to FIELD_PREP_WM16 macro")
 
-This commit appeared in v6.18, so this looks like it might be a
-candidate for a stable tag?
+--===============8502464106519939169==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="e6zrp2dlq4xzmy2v"
+Content-Disposition: inline
 
-> Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 10 ++++++----
->  1 file changed, 6 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index bd86e32cc2b1..c35c5583c797 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -322,14 +322,16 @@ static void rockchip_pcie_ltssm_trace(struct rockchip_pcie *rockchip,
->  
->  static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
->  {
-> -	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
-> -				 PCIE_CLIENT_GENERAL_CON);
-> +	u32 val = PCIE_CLIENT_ENABLE_LTSSM | PCIE_CLIENT_LD_RQ_RST_GRT;
-> +
-> +	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_GENERAL_CON);
->  }
->  
->  static void rockchip_pcie_disable_ltssm(struct rockchip_pcie *rockchip)
->  {
-> -	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DISABLE_LTSSM,
-> -				 PCIE_CLIENT_GENERAL_CON);
-> +	u32 val = PCIE_CLIENT_DISABLE_LTSSM | PCIE_CLIENT_LD_RQ_RST_GRT;
-> +
-> +	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_GENERAL_CON);
->  }
->  
->  static bool rockchip_pcie_link_up(struct dw_pcie *pci)
-> 
-> -- 
-> 2.53.0
-> 
+
+--e6zrp2dlq4xzmy2v
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 4/5] arm64: dts: rockchip: Add DSI panel to RK3588 EVB1
+MIME-Version: 1.0
+
+Hi,
+
+On Mon, Nov 09, 2026 at 02:26:44PM +0100, Heiko St=FCbner wrote:
+> Am Montag, 9. November 2026, 02:31:35 Mitteleurop=E4ische Normalzeit schr=
+ieb Chaoyi Chen:
+> > Hi Sebastian,
+> > On 11/9/2026 3:42 AM, Sebastian Reichel wrote:
+> > > Hello Chaoyi,
+> > >=20
+> > > On Sun, Nov 08, 2026 at 11:15:09AM +0800, Chaoyi Chen wrote:
+> > >> Hi Sebastian,
+> > >>
+> > >> On 11/7/2026 5:57 AM, Sebastian Reichel wrote:
+> > >>> The RK3588 EVB1 comes with a W552793DBA-V10 Touchscreen/Display
+> > >>> combination. It contains a Wanchanglong W552793BAA panel and a
+> > >>> Goodix GT1158 touchscreen. This adds the DT description of it.
+> > >>> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > >>> ---
+> > >>>  arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 90 ++++++++++++=
+++++++++++++
+> > >>>  1 file changed, 90 insertions(+)
+> > >>>
+> > >>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arc=
+h/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> > >>> index 6a95a8bb6fb8..327ca13b60f0 100644
+> > >>> --- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> > >>> +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> > >>> @@ -204,6 +204,15 @@ vcc12v_dcin: regulator-vcc12v-dcin {
+> > >>>  		regulator-max-microvolt =3D <12000000>;
+> > >>>  	};
+> > >>> =20
+> > >>
+> > >> I seem unable to apply the patch to the latest linux-next tree.
+> > >>
+> > >> So I tried to resolve the conflict manually, but the actual
+> > >> test screen did not display. I will look into this further.
+> > >=20
+> > > Strange. The base of this series was Heiko's for-next tree from
+> > > Friday. No RK3588 EVB1 patches landed since then:
+> > >=20
+> > > https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.=
+git/commit/?h=3Dfor-next&id=3Dcabb6811c38a46337d5f4252b4dc390f9296856c
+> > >=20
+> > > If your board uses the original Rockchip bootloader, which shows a
+> > > Rockchip logo on the panel, you also need Cristian's latest YUV420
+> > > patches that reset VOP2 at probe time avoiding some issues with the
+> > > pre-initialized panel as a side effect. Those were recently applied
+> > > by Heiko to the DRM tree, so testing on linux-next is indeed
+> > > sensible.
+> > >=20
+> >=20
+> > Hmm, the newest linux-next tag which I used is next-20261105, and Heiko=
+'s=20
+> > tree last updated date is1106. I'll give it a try on Heiko's tree.
+> >=20
+> > And I'm using mainline U-Boot, which obtained from the latest nightly b=
+uild:
+> > https://gitlab.collabora.com/hardware-enablement/rockchip-3588/debian-i=
+mage-recipes.
+> >=20
+> > The backlight working correctly, and the DCS command has been sent, but=
+ nothing display.
+> > Perhaps I should look elsewhere.
+>=20
+> I would assume it could be the SPLL (again).
+>=20
+> I.e. a recent u-boot change broke the SPL-based forced clock init and Jon=
+as
+> fixed that in [0]. Had the black display again recently too.
+>=20
+> And it seems it hasn't been merged yet.
+
+Sounds reasonable. FWIW I only tested with the pre-flashed Rockchip
+U-Boot (as described above). I intentionally keep that on my RK3588
+EVB1, so that I can test RK3588 with vendor TF-A/U-Boot and upstream
+or downstream kernel. All my other boards run upstream TF-A/U-Boot.
+
+Greetings,
+
+-- Sebastian
+
+--e6zrp2dlq4xzmy2v
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmryCAwACgkQ2O7X88g7
++prfaRAAmlmXmWHu8bIULwz9sG0Yd8KbbbbewcRNaoeu3IOYhrlR5wn84GcoPcoO
+cpdl+tlqxaQi3DMZf78qbZd1pn5Wf3rht7HJN8X6cYn2W17MKiTA1NDKZTM7Y10H
+88ArpSU4xEFeXFKNabi8S6KQoatb1W3oPvswck4M6sIkq9JyR3bUXmwuf+9gOguA
+pRQrsosvpKorzFJoxNiSvesfG27I3HlexIB532Xh8Rau1LZbor1d0qhBqbkLh7EJ
+ivYC74fvrEtSXB3LX6ngAoWvaH4wvf2Ety9iJR2zZntB//NfpHNQR5E5ZWsD9Isf
+pkmcSKFQwH8jPxZ0iECGdt2/HzccTz9/gCqGjxoxxMTqEqzZ667rlP6Du0yCJvjN
+36UGVlxF36N017d/PZYhEqw1MivtkNZtCK3WrOibY8rQs8x7ddHkPq6H5lhcTHci
+8jjlrKodpza3OjIXbiQmAhepZK4PMz5wX+bxpi9NUFvMgFo64zyGGr7cBUgtss9i
+DPEt76MM4zOcwzjIMBA6Zl1lltrxpclppy6nD5v3FbKnfFUBlMUlT9jqz88By/al
+NQJxK0RB2mCwyMUsZraj0sK1x/qaf1aHBuUtobIG0wwxIQp3Yx7M9jsiOjMt+QUZ
+US31lSvdzuTP6GX3euj7gMUNihfoUt/P9H0+z9hkCNJS2ubvRoQ=
+=gnl0
+-----END PGP SIGNATURE-----
+
+--e6zrp2dlq4xzmy2v--
+
+
+--===============8502464106519939169==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8502464106519939169==--
+
