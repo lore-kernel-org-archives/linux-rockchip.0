@@ -2,112 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 09045606A335
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 01:13:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5883B606A332
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 01:31:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nfNMfVYw;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jpvTyjk/
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xFd2cOeB;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=IUfk9EUC
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FOCYw4YeR3Vb8WyqYQCSoUYeSIT1dLQmJP9WCO9wkOY=; b=nfNMfVYwh279a4mteQX466uSOy
-	pxa/SI8v93b5+4r2J7wwNijcByyKO5ZIzsrXr1g5h5rDj2Gr9rucF0kousEHnFiJFpxTAqPSz4eHf
-	Kuz1+vUO3f1FYt7gbNwJ1y7RbwuCEq9zkjh+YEDzr9fUMxKoIQI2uZwQD1ElB6Wh+rDOUwSNdbDHq
-	Q52PCTqp1wQiCTcrCvMZzICV7qUKtxsrJOQc1YeIo7ShVTuEzXIWGVs+3LAYY3esPqElCWPuXdw+D
-	NYLlXdqhqCADOM92TVFy9Jx+ViraohjeAjxNY+4rdDxyu0M3LnW0C9eccC+Dj5g0qVWZ8rol/EgNL
-	hPk741OA==;
+	bh=TEHrBjJkD13ykZYDZvTzuXKlEplt2EM7r/LUNc8Xwxw=; b=xFd2cOeBWCk3ZOnrOed0ipyhpZ
+	/xrnyizNOXxyyHxOxyZK0fMQFW3lnXE4qvsoAWOTFbxpEN9WA5zpy4KBS/h/U8kRZHaHUtWUaUtpv
+	kHo3m7QEIXHzHUUfcG2kcW62bpNFKmPyV554ZDzs4VkFQN619NkczMBVaQ9NB1ecWih0pQYxCrC5f
+	CvAqCLvebUJMYIa4wwQtmwLpkajfUy8rxxytTKshQs+VJQfkJN3i0GlKfbQnTWnM2xkxAB8XCLK4Z
+	xu/GgkkeG/KIIDnzh3O+LYHckhW0O1eacwbSdFxcAtVlTfovvIjt4LGnOzHLnyJO5XM4pWkg0o1Gy
+	dfsPaSZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQDwe-0000000H11Z-33o1;
-	Mon, 09 Nov 2026 01:13:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xQEEc-0000000H3mT-1uFN;
+	Mon, 09 Nov 2026 01:31:46 +0000
+Received: from mail-m16023652235.xmail.ntesmail.com ([160.236.52.235])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQDwc-0000000H116-20Ac;
-	Mon, 09 Nov 2026 01:13:10 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9C3776111B;
-	Mon,  9 Nov 2026 01:13:09 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794186789;
-	b=HqkDk+o/mRP/jzqyr8a0kQjiVo2O0bzD3K+K297/YODfcHJ5FQMKWHDOZqpdiRaihCrH
-	 tRCX8JFAQKJxkujgV5UhOeCN4uDBShEHPxLrzv/5DHgiguJr1GEioElfqKSKh3fA2L2DN
-	 tDJf5cTcpYajht/2GJzNS0OQsIPjTU1KqxbpiX5mFOo7sVfD+BLKAQkW4NtpoIntXojFo
-	 UEtMAjHS+tcBWAZmBtC4mDo8GAowqJa99Fwp4Ld30JTzMGnQTR6x9HM+9yBN7nyXhgniN
-	 4OycmrkjfBoEGxJXUDP+4ZcCuppJxgpjTl4pnMMw9p2Ewf3ARVgEd02CxFgmkbCoBhw==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794186789;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=M4WCF4P9vPVA9cU7Tv+J0UseXV6GQroxb3gEfse06vk=;
-	b=VQo3GHlgP35LXmM7hBUfgV70W2wEUyNH0MnGolCflW0hlwFnQypfLh9uDHaymwYlOSjF
-	 86Rcr+rfRLDat7/4TZ5eWJMvrQKqWI1jJVK3adaPtH1ohwTC657hHto8hHJmk5gajCyOU
-	 58wnCeAYT6KogkXeWp0o/1pvQ6vfEpf8HG56iS3SxyBJgzM9JMl/IV9qS4C1pFj0+Zp5a
-	 Q+iTaHOGHF+xGo8CVT4xbglaIf3wW1tIKwpopn2zulJCzWl+DlcaEPLbOkeMn74ptPKR5
-	 4qr35BH4AbBWiz7SHa44Tx5KRo8lJcCE7lNwmWcjeOCZBHonA1vPlsiTV79cDntWTKw==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 9D2A21F0089F;
-	Mon,  9 Nov 2026 01:13:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794186789;
-	bh=M4WCF4P9vPVA9cU7Tv+J0UseXV6GQroxb3gEfse06vk=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=jpvTyjk/fb0I/liZiqB24WRLZW+AxBb1dpFfOqONpXGH+X2CdbOKBf0xtWf9c0aGz
-	 b2K84UT6bzyNB/ktSdNBIKpWpPNyQbz6iqYut730z+C4jLvdRhx7Qi6Kzi9HEqys8q
-	 GrLfFAXOYqStJD3owU6ZPLTLy/906+fHnFffpux3Za1T8RCZwwkTQMKbvvchD+JA3p
-	 IPkhPGeOWCng9JJw57TzSCUMJ5kiw5hTWRA/V9qmR1bvr/zDZTXQc82ZctC4D//WHw
-	 b785I1BBopf5RLI6i+/b5OQYS0mZp5INxPRcE8s6uOUmh4xPXoViy1x0RM5HQQXV8Q
-	 FvyW7af9dezPg==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id E5336481E7;
-	Mon,  9 Nov 2026 01:13:07 +0000 (UTC)
-From: Ricardo Pardini via B4 Relay <devnull+ricardo.pardini.net@kernel.org>
-Date: Mon, 09 Nov 2026 02:12:47 +0100
-Subject: [PATCH] phy: rockchip: naneng-combphy: fix RK3588 SATA pipe_con1
- register offset
+	id 1xQEEY-0000000H3le-3XRb;
+	Mon, 09 Nov 2026 01:31:45 +0000
+Received: from [127.0.0.1] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 53ed4167e;
+	Mon, 9 Nov 2026 09:31:37 +0800 (GMT+08:00)
+Message-ID: <b60b7079-b7b6-4d83-8167-2e4fc6021aae@rock-chips.com>
+Date: Mon, 9 Nov 2026 09:31:35 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261109-rk3588-combphy-sata2-6g-v1-1-e9135c91de6a@pardini.net>
-X-B4-Tracking: v=1; b=H4sIAA4e8WoC/yXMQQ6CMBBA0auQWTtJO7WEeBXjoq0jDEYgHTQQw
- t2tsnyL/zdQzsIKl2qDzB9RGYcCe6ogdWFoGeVeDGSotobOmJ/ONw2m8RWnbkUNcyCsWzQuRme
- st94TlHrK/JDlf77eDus79pzm3w72/QseLD3mewAAAA==
-X-Change-ID: 20261024-rk3588-combphy-sata2-6g-03bb30151552
-To: Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Andrew Powers-Holmes <aholmes@omnom.net>, 
- Lucas Tanure <lucas.tanure@collabora.com>
-Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- stable@vger.kernel.org, Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
- Ricardo Pardini <ricardo@pardini.net>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3342;
- i=ricardo@pardini.net; h=from:subject:message-id;
- bh=jlST7yEBtCPASzfQnAPw8q1ZkwqNOjqfjEA41xMvY/o=;
- b=owEBbQGS/pANAwAKATteP+Oex+3pAcsmYgBq8R4jm7OV4UEZAdR8JkXG5eZsGJPwj1sBnGC/K
- PdtxEN5/k2JATMEAAEKAB0WIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCavEeIwAKCRA7Xj/jnsft
- 6WQWCACpnX6vXbIOFFGIjGte8vXc9/ErH0o2XWlf2nqbLvgp3rSw6bTjqbhrhX2OuywVjojnqh/
- 6khuk8OfiBwqUFDKqwYmRTGWr4BoABoM87ivNn5mXU8R6p1EugVNX5uNqfvYHzXGp1kRDtZWEcG
- DHJ2gacTWr5D86YdFw3279g8y+yn1/hXblWc/9e8TR36+3deh/cODH5k8diskaURtUdcMgCseDP
- j4W0w21u2FWlsKGALXGoTfaHR/H0NgGohEW+dYv59PxHSvnCqUOXy/Fso9MjgvVaF/tfwXWeO2k
- dPzwqX2nK64jpCTrxJDlRrSJJ+FOFvHLR3KobzP7R+bVxTuv
-X-Developer-Key: i=ricardo@pardini.net; a=openpgp;
- fpr=AC18230CF6AFEACADC4888933B5E3FE39EC7EDE9
-X-Endpoint-Received: by B4 Relay for ricardo@pardini.net/default with
- auth_id=588
-X-Original-From: Ricardo Pardini <ricardo@pardini.net>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/5] arm64: dts: rockchip: Add DSI panel to RK3588 EVB1
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com
+References: <20261106-rk3588-evb1-dt-updates-v1-0-bdbe16223589@collabora.com>
+ <20261106-rk3588-evb1-dt-updates-v1-4-bdbe16223589@collabora.com>
+ <f066ac3f-1720-479b-a2e9-198a96d03dd6@rock-chips.com>
+ <avDN3pPY5Qwt9B1p@venus>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <avDN3pPY5Qwt9B1p@venus>
+X-HM-Tid: 0aa1bdeeaabf03a7kunmf2d328634ebabd
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCS01LVkIdQxkYTx9OGUhLGFYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUJCSU
+	5LVUpLS1VKQktCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=IUfk9EUC04Ij1avNZ2iP9izXA0sNWFMrwytbuHpkYydV2jEY0bB4dnCsK6Ae76E+cfDOLuAhvaP031e0C1PFsLLcbpYIZAvS9TNh63dXnqVYunA8iQdVUK8SUyrJiWIdApiYxOpIyR9N7ETyffilKiKJruYaXFyO7fPwPdoW2II=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=Kz1mIgE72+hP3r+p69xSMSWxQatJCU8VHnFXsjFvnWQ=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261108_173143_468272_C8B02534 
+X-CRM114-Status: GOOD (  18.50  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,95 +73,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: ricardo@pardini.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-21.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-20.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
 	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Ricardo Pardini <ricardo@pardini.net>
+Hi Sebastian,
+On 11/9/2026 3:42 AM, Sebastian Reichel wrote:
+> Hello Chaoyi,
+> 
+> On Sun, Nov 08, 2026 at 11:15:09AM +0800, Chaoyi Chen wrote:
+>> Hi Sebastian,
+>>
+>> On 11/7/2026 5:57 AM, Sebastian Reichel wrote:
+>>> The RK3588 EVB1 comes with a W552793DBA-V10 Touchscreen/Display
+>>> combination. It contains a Wanchanglong W552793BAA panel and a
+>>> Goodix GT1158 touchscreen. This adds the DT description of it.
+>>> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+>>> ---
+>>>  arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts | 90 ++++++++++++++++++++++++
+>>>  1 file changed, 90 insertions(+)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+>>> index 6a95a8bb6fb8..327ca13b60f0 100644
+>>> --- a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+>>> +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+>>> @@ -204,6 +204,15 @@ vcc12v_dcin: regulator-vcc12v-dcin {
+>>>  		regulator-max-microvolt = <12000000>;
+>>>  	};
+>>>  
+>>
+>> I seem unable to apply the patch to the latest linux-next tree.
+>>
+>> So I tried to resolve the conflict manually, but the actual
+>> test screen did not display. I will look into this further.
+> 
+> Strange. The base of this series was Heiko's for-next tree from
+> Friday. No RK3588 EVB1 patches landed since then:
+> 
+> https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=for-next&id=cabb6811c38a46337d5f4252b4dc390f9296856c
+> 
+> If your board uses the original Rockchip bootloader, which shows a
+> Rockchip logo on the panel, you also need Cristian's latest YUV420
+> patches that reset VOP2 at probe time avoiding some issues with the
+> pre-initialized panel as a side effect. Those were recently applied
+> by Heiko to the DRM tree, so testing on linux-next is indeed
+> sensible.
+> 
 
-On RK3588, the sata2 PHY speed is selected by sata2_phy_spdmode in
-PHP_GRF_PHP_CON1[1:0] (offset 0x0004), with sata2_phy_rx_err in bit 2.
-rk3588_combphy_grfcfgs has pipe_con1_for_sata at offset 0x0000 though,
-so the value 0x2 (6.0 Gb/s, rx_err cleared) ends up in PHP_GRF_PHP_CON0
-and CON1 is never written.
+Hmm, the newest linux-next tag which I used is next-20261105, and Heiko's 
+tree last updated date is1106. I'll give it a try on Heiko's tree.
 
-This leaves sata2 at its 1.5 Gb/s reset value, so the link only trains
-at 1.5 Gb/s, even with a 6 Gb/s capable disk and no SControl speed
-limit. sata0 and sata1 are not affected: their speed fields are in
-PHP_GRF_PHP_CON0 and are set by pipe_con0_for_sata.
+And I'm using mainline U-Boot, which obtained from the latest nightly build:
+https://gitlab.collabora.com/hardware-enablement/rockchip-3588/debian-image-recipes.
 
-The register layout is described in the RK3588 TRM V1.0 Part1, section
-6.17 "PHP_GRF Register Description". Rockchip fixed this in their BSP
-kernel in 2022 by moving pipe_con1_for_sata to offset 0x0004.
+The backlight working correctly, and the DCS command has been sent, but nothing display.
+Perhaps I should look elsewhere.
 
-Tested with an mSATA SSD on sata2 (combphy2_psu). Before:
+> Greetings,
+> 
+> -- Sebastian
 
-  ata2: SATA link up 1.5 Gbps (SStatus 113 SControl 300)
-  Timing O_DIRECT disk reads: 374 MB in 3.01 seconds = 124.45 MB/sec
-
-After:
-
-  ata2: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
-  Timing O_DIRECT disk reads: 1266 MB in 3.00 seconds = 421.78 MB/sec
-
-Fixes: a03c44277253 ("phy: rockchip: Add naneng combo phy support for RK3588")
-Cc: stable@vger.kernel.org
-Link: https://github.com/rockchip-linux/kernel/commit/2f5fe2c0bbd4fa95102aadd60da1100989103aa0
-Cc: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
----
-This fixes the pipe_con1 GRF offset for SATA in the RK3588 combphy
-table, so sata2 links train at 6 Gb/s instead of being stuck at
-1.5 Gb/s.
-
-I found it when an mSATA SSD on sata2 would only link at 1.5 Gb/s,
-and traced it to Rockchip's BSP kernel, which fixed the same offset in
-2022 in a commit titled "config sata2 rate to 6G for rk3588" (linked
-in the patch). The RK3588 TRM V1.0 Part1 (section 6.17) agrees:
-sata2_phy_spdmode is in PHP_GRF_PHP_CON1, while the sata0/sata1 speed
-fields are in PHP_GRF_PHP_CON0 and already set correctly.
-
-The misplaced write lands in PHP_GRF_PHP_CON0[2:0], which are the PCIe
-link reset grant bits, and turns on the one for pcie3x2 whenever a
-combphy is put in SATA mode. I don't know of any effect from that, but
-this patch stops it too.
-
-Only sata2 was tested. U-Boot has the same table and the same problem;
-a fix is being sent there separately.
----
- drivers/phy/rockchip/phy-rockchip-naneng-combphy.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-index 3102a99128f6..c469222dba8b 100644
---- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-+++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-@@ -1395,7 +1395,7 @@ static const struct rockchip_combphy_grfcfg rk3588_combphy_grfcfgs = {
- 	.con3_for_sata		= { 0x000c, 15, 0, 0x00, 0x0407 },
- 	/* pipe-grf */
- 	.pipe_con0_for_sata	= { 0x0000, 11, 5, 0x00, 0x22 },
--	.pipe_con1_for_sata	= { 0x0000, 2, 0, 0x00, 0x2 },
-+	.pipe_con1_for_sata	= { 0x0004, 2, 0, 0x00, 0x2 },
- 	.pipe_pcie1l0_sel	= { 0x0100, 0, 0, 0x01, 0x0 },
- 	.pipe_pcie1l1_sel	= { 0x0100, 1, 1, 0x01, 0x0 },
- };
-
----
-base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
-change-id: 20261024-rk3588-combphy-sata2-6g-03bb30151552
-
-Best regards,
---  
-Ricardo Pardini <ricardo@pardini.net>
-
+-- 
+Best, 
+Chaoyi
 
 
 _______________________________________________
