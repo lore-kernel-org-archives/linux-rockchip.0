@@ -2,107 +2,61 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 05B5A606D805
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 12:32:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 02895606D807
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 13:27:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=iFXeAq0C;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ks3HV+lP
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tTzCxaAF;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=vW+rWMbC
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=n0C3pI6dRBGq2L2m8inkeXPme1cp7KcIyEq65zIdrFg=; b=iFXeAq0ChzhAkIaB3Fue1r4MYZ
-	9nRjfoMswvC4x0CaS6vYAzuGhN+y0mHfMXG3aNVAiyxAZJkPk7waERG4x4VOnmc/bmeUgQglVHmW+
-	YnhIhkxU4MIo0CTRmrNPXnctCqd24McM67+51U6arJU0LFP68ueBAaBdgBVrDTtT9pEPxYFOU5qkP
-	CvcXiHrb78J3vtGrnLlh8jQX2X1TQzwMkc3Br51ksLA3F9JZklEgyCbJl4K5CEtkc+icsam/69JvN
-	l0yDSjKj19VlFbUCH+KsIJLqmtUkUItTyEJBePynYn9tQCNVGAn0/PQk2lpNkw6+Y3Buv4hBhwagC
-	9/089l0A==;
+	bh=KS2zm8HVDk2z+r61Ud4XnLvpTebwLn7Ixbw4dBwKllw=; b=tTzCxaAF133BrOXEXz+SfvMvIG
+	xpXxr9OwndkYyMiSFRe2A/Y7x+2/DtAHH4j9pni1PozC7CsvKHL4ahPwRnYEN+95r89koC1UfbEk6
+	zcJTJ1KRcj5xzrGPFGwfsjDQdp4VBFSwCIFg8MjFljTkaJrTnBHJbqbSw+ngDxnFZ0gLl34Y4QlKq
+	lLG2yDNgJlHutI/S6aM+kR7W6KNyHeR11gP6sdj4vrsQFbm97ONKY8YN/qFD8mPeM0WvKdtUkeVTb
+	8REH8hOjSm7PV1ndTxmq5B1Mr9rbAhQEX4Su1AsP0Tn2oKA4MJOhKmxUKl1xDmoJztiMrdNCwnXhr
+	4Dc30nkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQOY3-00000000gxG-3Uds;
-	Mon, 09 Nov 2026 12:32:31 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xQPOp-00000000nlG-2dgZ;
+	Mon, 09 Nov 2026 13:27:03 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQOXv-00000000gli-0fa5;
-	Mon, 09 Nov 2026 12:32:23 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9722A6320D;
-	Mon,  9 Nov 2026 12:32:22 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794227542;
-	b=B9WRVBTOZlxu1uGbYsrmIzGTF1KPMunaoWxwsEx8I6s0Y7Imjk7pM/qf/7b+5gau3f2/
-	 OzJr4LnjTkPypVQ19Bb2ad7ylBas0o1ZmDFYAqiSn3AGNAB+Pjg0Gajj4rGssO3XMm3Qp
-	 bmvnb6MPE7bAXEhIsPZmkpn33uuqGe1yvnJvBwrTAD13w++ey9gf/5HEKFNOmAZS2Czso
-	 k+0JIkgnJoxpwkEKgW4cJ+STn9x23NjJEE0WJJi2M4OU3aheHzqwKJmonNNasKMOwXeSI
-	 xNBXARDYPM4aPLFiKIvav3Pbv+HJCuYFNs0g2sAj3b+CxzJ+KavSxyJlc3JyZaS9p8Q==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794227542;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=SPHik1JiSrjEQWR2A1Dp/yVw2IW4Nu3YxvN6n6vFj/o=;
-	b=wgM7Xz0V+/o1Rfpbnzuad4cKzmoQ5RizKD4DlyK/e7jQL/E2csdv+qOgPorqGDEgBOD0
-	 IatCT3TD7WM4GmkNzQhVyDVG+KUNODgHH0HI67y/DL+wvyhzaKnxdgr0iGKK5dFIt1a7N
-	 acWc+K50NtAIKU6apt4UR2O2mZy0e94n80NVBaqZC8EL9JMLuH5bVopt/0rOql1SlkjfP
-	 Wn6klvLX6za4w6+KIucNWdNlUxbl6YHTVIOBlbI21sfT3vJuUV94AXZ3Jl3gb6oOKN3b8
-	 Sbfg4eqfQX+yZtcJoWJungFOHqEYNZGAkHeolFHY007wOssRApy+Stu+2L98IV1bIUw==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id A54601F008BE;
-	Mon,  9 Nov 2026 12:32:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794227542;
-	bh=SPHik1JiSrjEQWR2A1Dp/yVw2IW4Nu3YxvN6n6vFj/o=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=ks3HV+lPIEUvy44lHe6kp2tkbqv95oBP374kVy8T94WY6f9F74inIyDeipQijI8ny
-	 yXmiDwnwq2dxHy/Hsx7OXpkLNY1DsjmB7KruuqYjwwbhds10K3tzz/jue/s0eLaUHv
-	 McNoEnjTI38wklePeZip986NwJgrYF0OUCXz24P0OmjY2zncrhhT2z1BZXNe+w484g
-	 BujQGDuSDP4g7sDW6KKdNZHsKOF+Gd18Oo3tjzyMKMNCqtuDD2gms52ZQKlrDxfTSm
-	 ZyLc5eBhnW36qTbgmXg7sVD8FdLE7crI7fHvjtxZ19FI2w0tdtwwDL+JAWSJjY2HSC
-	 0apP3Oo+lydMw==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 70F214849E;
-	Mon,  9 Nov 2026 12:32:20 +0000 (UTC)
-From: Ricardo Pardini via B4 Relay <devnull+ricardo.pardini.net@kernel.org>
-Date: Mon, 09 Nov 2026 13:32:21 +0100
-Subject: [PATCH v6 6/6] arm64: dts: rockchip: describe PCIe RTL8125
- Ethernet on ROCK 5 ITX
+	id 1xQPOm-00000000ngp-2LMC;
+	Mon, 09 Nov 2026 13:27:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=//2W4dF8dRqMAfkwRAhImATI6D+c4FVFBxbhqBn9xzk=; b=vW+rWMbC+7d9RHvWCrWsBbFsUk
+	5idnG3Sd13NpxvsuTmz0VMYqvaK+w9Jjq3+bj8U2rNF+hdX5K9P1M7WmFg5SvIMIRaMxtc2ZFhr9w
+	ytwlggqCzUCrzwzrHd87GqnRYc0aE9k6zGwt7pjlOw44xerDF61PYznkQ5P6Z0HJlM54CB8yQ9lKR
+	zyzcQ2JdveVONjsLdyQ5toBWNi0wI4+SQ8sUKexxsMl9XN97ubqW1RZj83jTsAahKc1cl2yD/h3Qj
+	cFgsJWGF63ZWqoFHc5JZka+d4erYO0TJ+tOnU62kwgDdkG2h4/Qiuzie5IHW4EPRIOY3hCwkBKTVm
+	l08L/sdA==;
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH 4/5] arm64: dts: rockchip: Add DSI panel to RK3588 EVB1
+Date: Mon, 09 Nov 2026 14:26:44 +0100
+Message-ID: <5573124.44csPzL39Z@diego>
+In-Reply-To: <b60b7079-b7b6-4d83-8167-2e4fc6021aae@rock-chips.com>
+References: <20261106-rk3588-evb1-dt-updates-v1-0-bdbe16223589@collabora.com>
+ <avDN3pPY5Qwt9B1p@venus>
+ <b60b7079-b7b6-4d83-8167-2e4fc6021aae@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-6-91f1efefba0b@pardini.net>
-References: <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-0-91f1efefba0b@pardini.net>
-In-Reply-To: <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-0-91f1efefba0b@pardini.net>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Ricardo Pardini <ricardo@pardini.net>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1839;
- i=ricardo@pardini.net; h=from:subject:message-id;
- bh=wCLAexHdVkD0jpxkUE9ppJGf4g2Tzpw3hn/wf3LCfHA=;
- b=owEBbQGS/pANAwAKATteP+Oex+3pAcsmYgBq8b1TWy6Z8ypuZjA136KddZ2dUSBysSOVhFyWT
- 2MthJcSKISJATMEAAEKAB0WIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCavG9UwAKCRA7Xj/jnsft
- 6ZseB/9DPncY7tXNZ1Pc+fRxccZBkMS/xty8tA8bsrQ1Gm3LUiwmVVWcUVmuPmMUYx1XCF5VjkR
- oITtKrxpJlugGtCGHkScPy/X0WzmabA9Csz58gqrPhmi4NoK6InzzV9BRs9V+6+oa8rOLF6Rjp5
- Z2tvUE+oNWxzHzJz09o8Gdh/gNi3dAzHY7dgU6l12jKciOQyV4yu/ovK7I3DbuGY/ysQwcL8kih
- oC+rmL7i4eidMAkaspJKUqlBwc+11muQyBj29KidP/NxIk2AcKisGEN15e/VzehklW5S1ToOPnm
- 5cCMFjLK4OJwnyVzJJYxL2QHzlMDTQzi6QeuVISb2LSIf2QW
-X-Developer-Key: i=ricardo@pardini.net; a=openpgp;
- fpr=AC18230CF6AFEACADC4888933B5E3FE39EC7EDE9
-X-Endpoint-Received: by B4 Relay for ricardo@pardini.net/default with
- auth_id=588
-X-Original-From: Ricardo Pardini <ricardo@pardini.net>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261109_052700_730387_CA1B950F 
+X-CRM114-Status: GOOD (  25.30  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,93 +66,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: ricardo@pardini.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Ricardo Pardini <ricardo@pardini.net>
-
-The Radxa ROCK 5 ITX carries two on-board Realtek RTL8125 NICs behind
-pcie2x1l1 and pcie2x1l2.
-
-Describe the PCI function nodes and attach ethernet0/ethernet1
-aliases, so that U-Boot's fdt_fixup_ethernet() can fill in their MAC
-addresses from its ethaddr/eth1addr environment.
-
-Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
----
- arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts | 30 ++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-index 9d3d26d4600b..dd9767edd42c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-@@ -20,6 +20,8 @@ / {
- 	compatible = "radxa,rock-5-itx", "rockchip,rk3588";
- 
- 	aliases {
-+		ethernet0 = &rtl_eth0;
-+		ethernet1 = &rtl_eth1;
- 		mmc0 = &sdhci;
- 		mmc1 = &sdmmc;
- 		mmc2 = &sdio;
-@@ -631,6 +633,20 @@ &pcie2x1l1 {
- 	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc3v3_lan>;
- 	status = "okay";
-+
-+	pcie@0,0 {
-+		reg = <0x300000 0 0 0 0>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		ranges;
-+		device_type = "pci";
-+		bus-range = <0x31 0x3f>;
-+
-+		rtl_eth0: ethernet@0,0 {
-+			compatible = "pci10ec,8125";
-+			reg = <0x310000 0 0 0 0>;
-+		};
-+	};
- };
- 
- /* RTL8125B_2 */
-@@ -640,6 +656,20 @@ &pcie2x1l2 {
- 	reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc3v3_lan_phy2>;
- 	status = "okay";
-+
-+	pcie@0,0 {
-+		reg = <0x400000 0 0 0 0>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		ranges;
-+		device_type = "pci";
-+		bus-range = <0x41 0x4f>;
-+
-+		rtl_eth1: ethernet@0,0 {
-+			compatible = "pci10ec,8125";
-+			reg = <0x410000 0 0 0 0>;
-+		};
-+	};
- };
- 
- &pcie30phy {
-
--- 
-2.47.3
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTW9udGFnLCA5LiBOb3ZlbWJlciAyMDI2LCAwMjozMTozNSBNaXR0ZWxldXJvcMOkaXNjaGUg
+Tm9ybWFsemVpdCBzY2hyaWViIENoYW95aSBDaGVuOgo+IEhpIFNlYmFzdGlhbiwKPiBPbiAxMS85
+LzIwMjYgMzo0MiBBTSwgU2ViYXN0aWFuIFJlaWNoZWwgd3JvdGU6Cj4gPiBIZWxsbyBDaGFveWks
+Cj4gPiAKPiA+IE9uIFN1biwgTm92IDA4LCAyMDI2IGF0IDExOjE1OjA5QU0gKzA4MDAsIENoYW95
+aSBDaGVuIHdyb3RlOgo+ID4+IEhpIFNlYmFzdGlhbiwKPiA+Pgo+ID4+IE9uIDExLzcvMjAyNiA1
+OjU3IEFNLCBTZWJhc3RpYW4gUmVpY2hlbCB3cm90ZToKPiA+Pj4gVGhlIFJLMzU4OCBFVkIxIGNv
+bWVzIHdpdGggYSBXNTUyNzkzREJBLVYxMCBUb3VjaHNjcmVlbi9EaXNwbGF5Cj4gPj4+IGNvbWJp
+bmF0aW9uLiBJdCBjb250YWlucyBhIFdhbmNoYW5nbG9uZyBXNTUyNzkzQkFBIHBhbmVsIGFuZCBh
+Cj4gPj4+IEdvb2RpeCBHVDExNTggdG91Y2hzY3JlZW4uIFRoaXMgYWRkcyB0aGUgRFQgZGVzY3Jp
+cHRpb24gb2YgaXQuCj4gPj4+IFNpZ25lZC1vZmYtYnk6IFNlYmFzdGlhbiBSZWljaGVsIDxzZWJh
+c3RpYW4ucmVpY2hlbEBjb2xsYWJvcmEuY29tPgo+ID4+PiAtLS0KPiA+Pj4gIGFyY2gvYXJtNjQv
+Ym9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWV2YjEtdjEwLmR0cyB8IDkwICsrKysrKysrKysrKysr
+KysrKysrKysrKwo+ID4+PiAgMSBmaWxlIGNoYW5nZWQsIDkwIGluc2VydGlvbnMoKykKPiA+Pj4K
+PiA+Pj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWV2
+YjEtdjEwLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWV2YjEtdjEw
+LmR0cwo+ID4+PiBpbmRleCA2YTk1YThiYjZmYjguLjMyN2NhMTNiNjBmMCAxMDA2NDQKPiA+Pj4g
+LS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtZXZiMS12MTAuZHRzCj4g
+Pj4+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWV2YjEtdjEwLmR0
+cwo+ID4+PiBAQCAtMjA0LDYgKzIwNCwxNSBAQCB2Y2MxMnZfZGNpbjogcmVndWxhdG9yLXZjYzEy
+di1kY2luIHsKPiA+Pj4gIAkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTIwMDAwMDA+Owo+
+ID4+PiAgCX07Cj4gPj4+ICAKPiA+Pgo+ID4+IEkgc2VlbSB1bmFibGUgdG8gYXBwbHkgdGhlIHBh
+dGNoIHRvIHRoZSBsYXRlc3QgbGludXgtbmV4dCB0cmVlLgo+ID4+Cj4gPj4gU28gSSB0cmllZCB0
+byByZXNvbHZlIHRoZSBjb25mbGljdCBtYW51YWxseSwgYnV0IHRoZSBhY3R1YWwKPiA+PiB0ZXN0
+IHNjcmVlbiBkaWQgbm90IGRpc3BsYXkuIEkgd2lsbCBsb29rIGludG8gdGhpcyBmdXJ0aGVyLgo+
+ID4gCj4gPiBTdHJhbmdlLiBUaGUgYmFzZSBvZiB0aGlzIHNlcmllcyB3YXMgSGVpa28ncyBmb3It
+bmV4dCB0cmVlIGZyb20KPiA+IEZyaWRheS4gTm8gUkszNTg4IEVWQjEgcGF0Y2hlcyBsYW5kZWQg
+c2luY2UgdGhlbjoKPiA+IAo+ID4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4
+L2tlcm5lbC9naXQvbW1pbmQvbGludXgtcm9ja2NoaXAuZ2l0L2NvbW1pdC8/aD1mb3ItbmV4dCZp
+ZD1jYWJiNjgxMWMzOGE0NjMzN2Q1ZjQyNTJiNGRjMzkwZjkyOTY4NTZjCj4gPiAKPiA+IElmIHlv
+dXIgYm9hcmQgdXNlcyB0aGUgb3JpZ2luYWwgUm9ja2NoaXAgYm9vdGxvYWRlciwgd2hpY2ggc2hv
+d3MgYQo+ID4gUm9ja2NoaXAgbG9nbyBvbiB0aGUgcGFuZWwsIHlvdSBhbHNvIG5lZWQgQ3Jpc3Rp
+YW4ncyBsYXRlc3QgWVVWNDIwCj4gPiBwYXRjaGVzIHRoYXQgcmVzZXQgVk9QMiBhdCBwcm9iZSB0
+aW1lIGF2b2lkaW5nIHNvbWUgaXNzdWVzIHdpdGggdGhlCj4gPiBwcmUtaW5pdGlhbGl6ZWQgcGFu
+ZWwgYXMgYSBzaWRlIGVmZmVjdC4gVGhvc2Ugd2VyZSByZWNlbnRseSBhcHBsaWVkCj4gPiBieSBI
+ZWlrbyB0byB0aGUgRFJNIHRyZWUsIHNvIHRlc3Rpbmcgb24gbGludXgtbmV4dCBpcyBpbmRlZWQK
+PiA+IHNlbnNpYmxlLgo+ID4gCj4gCj4gSG1tLCB0aGUgbmV3ZXN0IGxpbnV4LW5leHQgdGFnIHdo
+aWNoIEkgdXNlZCBpcyBuZXh0LTIwMjYxMTA1LCBhbmQgSGVpa28ncyAKPiB0cmVlIGxhc3QgdXBk
+YXRlZCBkYXRlIGlzMTEwNi4gSSdsbCBnaXZlIGl0IGEgdHJ5IG9uIEhlaWtvJ3MgdHJlZS4KPiAK
+PiBBbmQgSSdtIHVzaW5nIG1haW5saW5lIFUtQm9vdCwgd2hpY2ggb2J0YWluZWQgZnJvbSB0aGUg
+bGF0ZXN0IG5pZ2h0bHkgYnVpbGQ6Cj4gaHR0cHM6Ly9naXRsYWIuY29sbGFib3JhLmNvbS9oYXJk
+d2FyZS1lbmFibGVtZW50L3JvY2tjaGlwLTM1ODgvZGViaWFuLWltYWdlLXJlY2lwZXMuCj4gCj4g
+VGhlIGJhY2tsaWdodCB3b3JraW5nIGNvcnJlY3RseSwgYW5kIHRoZSBEQ1MgY29tbWFuZCBoYXMg
+YmVlbiBzZW50LCBidXQgbm90aGluZyBkaXNwbGF5Lgo+IFBlcmhhcHMgSSBzaG91bGQgbG9vayBl
+bHNld2hlcmUuCgpJIHdvdWxkIGFzc3VtZSBpdCBjb3VsZCBiZSB0aGUgU1BMTCAoYWdhaW4pLgoK
+SS5lLiBhIHJlY2VudCB1LWJvb3QgY2hhbmdlIGJyb2tlIHRoZSBTUEwtYmFzZWQgZm9yY2VkIGNs
+b2NrIGluaXQgYW5kIEpvbmFzCmZpeGVkIHRoYXQgaW4gWzBdLiBIYWQgdGhlIGJsYWNrIGRpc3Bs
+YXkgYWdhaW4gcmVjZW50bHkgdG9vLgoKQW5kIGl0IHNlZW1zIGl0IGhhc24ndCBiZWVuIG1lcmdl
+ZCB5ZXQuCgoKSGVpa28KCgpbMF0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvdS1ib290LzIwMjYw
+ODA0MDAyNjQzLjIzMDg1MTUtMy1qb25hc0Brd2lib28uc2UvCgoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
