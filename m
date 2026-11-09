@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8DEC9606A32A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 18:48:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E7C9060A2602
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 18:50:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RL3rikj2;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ZwBvG3Ku
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IFdezocw;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=e9QTvSfJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,55 +14,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=3pQM/EWXqMxfGC7NXaCrELa876kmupVHy2JzAPsOhos=; b=RL3rikj2QK/rYQR6TOwDZTtRY0
-	l21WdtYa4n2ccbzbS+NKriYa4T7VhSrvtILXVlkLU1fRqPnCGqV3f8s/gKX4IO1PKkmREvz6BjTl8
-	5iNr0j3s8coGBbhHpY0uSKlj1mAF1m2Qtjo5B/7BqHEf2Blg5tkKdnFIdLB+rNoWHIMB58UqYda6z
-	515NvC6p2uHZVKinS7D6ZYagFQs8Wy/eL+9A3MtYc93vfn4VgBuusAUlbl9T9N5Y60lcLStoA5jf3
-	GnN31BxHbbpU2m+mQBOVc1m/bI1swnAlWDCnUPkumHztS1/N0pmriKCW9Uu5sMpOY0Z0wFN+P4CBM
-	wuG24xEg==;
+	bh=Sbx/uQTk1pmQ2UuXsDHjmFaxuefoBoiuSuTf7pssQSA=; b=IFdezocwicDIbMRX4nqeoInAsc
+	el8CQTFvsSff4bkT36LwqdNSaWypi3wo2XASiYg6Ct6Gc6sNEBtEr+CYHFecuCc3m6YxwWIPjRaV3
+	qOLhXcqQO6uIP7Hc7ekS0a4JPBa/G4gy4URkiZ5evtXsKbVw4Sy0rsJCTjS2iSLP2kiAOcvG787ig
+	TEbK/svpdhcvrFb3jyIydCpApHqQpfxNQOFnt0Mm+E11Ex7h6RZQVmVUCF/9h4d5PIwkzzGjbXfZv
+	wgOalx0/eCQ4FRd0lTu9m0gAQ+HJWW/M80SMUD+AnkrhwDdvczi7Og2+UrbTevd1g/6UJBLOp6vQq
+	H0/79mLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQUPe-00000001UaI-0vAc;
-	Mon, 09 Nov 2026 18:48:14 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xQURJ-00000001UxE-2t1N;
+	Mon, 09 Nov 2026 18:49:57 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQUPc-00000001UZy-2C0q;
-	Mon, 09 Nov 2026 18:48:12 +0000
+	id 1xQURI-00000001Uwf-3GnQ;
+	Mon, 09 Nov 2026 18:49:56 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9799061133;
-	Mon,  9 Nov 2026 18:48:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F39181F0089F;
-	Mon,  9 Nov 2026 18:48:10 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 2E1594088E;
+	Mon,  9 Nov 2026 18:49:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C419F1F0089F;
+	Mon,  9 Nov 2026 18:49:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794250091;
-	bh=wzcq643kxqzm6dmiI//QkyvyRvgf5SDiG72cWiaVszc=;
+	s=k20260515; t=1794250196;
+	bh=THGngqhatlE+u83536ffwHcOrp0mYpAierLo9Jo609U=;
 	h=From:To:Cc:Subject:Date;
-	b=ZwBvG3Ku4ZEwKSKey17VtGpJlOGR7qSBiroi5pBDv8Aw5R1tZ2MCU/eWgnF/33DS5
-	 h/zqFPVc3LQLug14ppeQv8CNu8NpLAY2BCrW4zPdB/CQ/0Bzs94BOHpadBvfwE+EU/
-	 SOcbuPHL3VQouyX0LpqkU8K3pTzhsrIbX3cNouXEzVs900C3ZbuzJUcGAbxZOUTULy
-	 tcOVZ8yYFL5Xu5yeijdEdnBtUBjsAulBNpkYv0OfITgqxP6nmRLYZmx07/j7w59dtp
-	 fVFxaE4Is5/s6PjIETaMJOSGL6/Z2v3G4eHnueTyipoMnLHhvtS3Za2Nuqty0uefsz
-	 2lsBotMH0L9Jw==
+	b=e9QTvSfJ5Hq1C2T0Q320b9VMbgB/lLDPTWchtqYQ/xpzulY47Z6/Nh7c/BEKh/Oxw
+	 xT5MhV4Q+SkJmDowxM1SdUJVilikxjkt9K+HY9KiI6sj77j7OzQm2+O20UZpLmPwtJ
+	 v5OB4pWcmrEmKtwlKApmYj0mctAEJmOM0RnkRSX56QWh8tA78CACUUvO0QydymGvio
+	 z5IWEJeuEyGd0M5vUG78PiIpoPNBMgMRsc7FE47j48HRt9Fv+CrZ6tQ1nJ4c9C/AZL
+	 G8pMjhVoNnYUdHEZV8xdSfbERCZpI146ViQlIAyTx9YgVIWZ/RDZFCqI+WT71Ha3+I
+	 k6GZQDSljZu0A==
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andyshrk@163.com>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: Andy Yan <andy.yan@rock-chip.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Niklas Cassel <cassel@kernel.org>
+Cc: linux-pci@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH] dt-bindings: display: rockchip: Allow single 'port' node for DP input port
-Date: Mon,  9 Nov 2026 12:47:58 -0600
-Message-ID: <20261109184759.467215-1-robh@kernel.org>
+Subject: [PATCH] dt-bindings: PCI: rockchip-dw: Allow endpoint supply
+Date: Mon,  9 Nov 2026 12:49:47 -0600
+Message-ID: <20261109184948.477095-1-robh@kernel.org>
 X-Mailer: git-send-email 2.53.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
@@ -85,52 +82,27 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Existing RK3399 users have only a single 'port' node. This was common before
-connector nodes were defined. Allow for this since there are already stable
-users.
+Rockchip PCIe endpoint DTs describe the 3.3V PCIe regulator with
+vpcie3v3-supply.
 
 Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- .../rockchip/rockchip,rk3399-cdn-dp.yaml      | 19 +++++++++++--------
- 1 file changed, 11 insertions(+), 8 deletions(-)
+ Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3399-cdn-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3399-cdn-dp.yaml
-index 195f665970bf..425b27346132 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3399-cdn-dp.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3399-cdn-dp.yaml
-@@ -63,7 +63,12 @@ properties:
-     $ref: /schemas/graph.yaml#/properties/ports
+diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.yaml
+index f2d1137aff50..8915ca3b9f0d 100644
+--- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.yaml
++++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie-ep.yaml
+@@ -40,6 +40,8 @@ properties:
+       - const: addr_space
+       - const: atu
  
-     properties:
--      port@0:
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Output of the CDN DP
++  vpcie3v3-supply: true
 +
-+    patternProperties:
-+      '^port(@0)?$':
-         $ref: /schemas/graph.yaml#/properties/port
-         description: Input of the CDN DP
- 
-@@ -74,13 +79,11 @@ properties:
-           endpoint@1:
-             description: Connection to the VOPL
- 
--      port@1:
--        $ref: /schemas/graph.yaml#/properties/port
--        description: Output of the CDN DP
--
--    required:
--      - port@0
--      - port@1
-+    oneOf:
-+      - required:
-+          - port@0
-+      - required:
-+          - port
- 
-   power-domains:
-     maxItems: 1
+ required:
+   - interrupts
+   - interrupt-names
 -- 
 2.53.0
 
