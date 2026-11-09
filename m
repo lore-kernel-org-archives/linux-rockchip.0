@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D24C96083600
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 12:32:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 23BE5608360B
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 12:32:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XaheSS7V;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=TSuCuoSA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=isY8vXtf;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=hwrWidVR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=CHiFdOmmXkhe83T3AYhgpGA8537j5qBIX3ThclV0GU8=; b=XaheSS7VVoCVMRp5qrP6ij3Frj
-	UkIDVtv2+Mo79kOvd3/T8mtqBzivikUnu/NbcgZcft+PNofa6Yb1sTpcgNi6qUgwR/jrEGkOwYuRI
-	QIq5y8AkUkSCaqsN0Qt0Sg56Il82Z6EDimycuNnPPJs2rqIt/AMvmCaKpmgaZn1XGDmTTiHFeD43k
-	DnKFZLVmRnn3ILa99bpQh4IPfTtRtqyc8+OAB0KsBygSo/yUzOeoRnj6BHe8Uu5/2KhxkQa/M7EE1
-	W3xQeM4ged2gQ/CeUqbn8Rfj2H2q0MCCpEzH7BN83gXGMDpq+4pf2UpnQQVWfvRc5zsZyW5aNQTOc
-	VvbDfOzw==;
+	bh=Sl/IO8RhGVnzUN+eykuTljBOAsoKSm6KIJ7HvEuZZ44=; b=isY8vXtf9CX0yJ4uVSiKINLXqr
+	MDqIEISFGPL9MBkEzVv0X+GeO5508gSKoJDqIqnZHJqSXYPgc6Y9ZCT/KBOT9ukQnKWqlfRz5ZMaj
+	ngbnMJES2ErNMV5XQ7m8B2hJYCwxixRf2bfaj+R3nCNwN/ALGhlUUGkPSQSFwP6Mbfb7KEUqm8NO+
+	xtW0mngJ/2Pyux2sUs3A/B8evPS9/neDVMkkpz82f9Ms13wnNqVV48nIXLRigEglYPVSJLEu2MjM6
+	bpwQYM1iv/8igyOZDqznDevelL5uxNvH6tTIkQ8+1Xa0zElA4Ic0dY38fwXRFM2Ve1S/d3JTFIvL3
+	J2XWHQJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQOY2-00000000gsj-1hre;
-	Mon, 09 Nov 2026 12:32:30 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xQOY3-00000000gvJ-0rlO;
+	Mon, 09 Nov 2026 12:32:31 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQOXu-00000000glf-3jqT;
-	Mon, 09 Nov 2026 12:32:22 +0000
+	id 1xQOXu-00000000glk-4Ajw;
+	Mon, 09 Nov 2026 12:32:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A46B7458FB;
+	by sea.source.kernel.org (Postfix) with ESMTP id B8A3745900;
 	Mon,  9 Nov 2026 12:32:22 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1794227542;
-	b=HaduDaU1VmQ5rUWATXf2EjfXvF4b1oSR0EF/gYxiH/8jYe65vumNGALmr7bB+59bcUlC
-	 mGC0XWN6rtFFhkeYJRv1ayFz8wpMYuSlAFNlhFfv6BgzN5l9sxxo0v26tZ03JSPBnh/Vm
-	 ck3A+3dtZ+fVVEuulfhRzlCcx7b25aAfuvndgPf372yE7r57bSQDWscntG+0ZPc5dwXoC
-	 fEUjcGagSHUruf2ytaGfWSVcFXFX0BieyA/pMhiG+uCsRsTsxXFQOB3V/vRjb080+ozsW
-	 l7izvKAusAT/0udXwtxnoI62jcQr/DD+VsvSFRcwBWhURk+lFNjNu84iaWwCpL4UpbQ==
+	b=eI0aQCureB5V+CEwlY3r8trgq1gp/umXsg51o8Dj19lqVLE3U9C+SrouMuBqapAV3r1N
+	 E3VKMuqV0oDYBrqBSDLdwlAP7TU6+QgBcUlpRdJYLeKNtPhGeXOsPBVJbr6ohWg8ZMDhr
+	 hMB+eMicFpvHiB3RpxJOzWeKXC3v8LrqQlRNYXa0HqUgXn3QpIu2YPH7OjdbEygmA4JCJ
+	 koUMFTid1P9LnTyfcGtRE2RY4zqBOWxUxOn3Kn84qEb4e9G9qY1n15fOgfeFmnxpPHUWh
+	 f/E8bdypIf7aqHC9NVEhEKVxSeR+tebwPnSf1a8J25DhvtbHIwrdCMUPCSr02yUk0OQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1794227542;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=dxn+6uDuz6ndoJKiaFtcZm94n3JA2PZg9wgDsgFvyfw=;
-	b=UTBaCL0gXZn4Y2fw3xWFKrRoZdeGWeAmpLcIXSZ2Uee6QaTL0bjeCvTlLU2m1xGzIoTc
-	 xA0iuy+Oe+9ZTbbYj8ko9zFGH5ruVaPFP4XAVVk1QpW/8/shTsczlAbTRc1gfHENka+0L
-	 brtapqM5wYosigBzx9wj2s4VUQRUJURj/BARgYBympNGTj8APuI7d5IedYqxXE/yRnyCs
-	 wWZFrwLHkEWATaDB3LCvOOCMSDCBQp8YxEZGAvPbo+tqTRg0njChfPC8UoN+joOCH2Llj
-	 V/PjIXB01Xw6g4rQgtAYOQSkbUPiQsMNUvNL+XHDbkKIRK0sES7gMFSoNkIx+e99jkQ==
+	bh=mTD9xwsI4QuKalePJYcU2wXXCm1Q2n9SxcuwakbGU80=;
+	b=qmDE4W37EkIEhu+jmBgHJnBl8KGi1rtY1Z0ThjMSSnEAFcAUAVG6QPSvRy1HIUZInfuu
+	 dRdPV0swcOF0ZxdBHrcLlbcwA1YLEtnwdaEFjr49GVCYX1xV6LRBW13rPw72w5GkdhAQI
+	 Y0ftbBpp1Y2sz/EGtcMwdJxtydOdW3pLXiS4w/X0RazKttGqsKTY4ro5nM/pSoAuBVq6i
+	 0UrMuQwptSSmgFvjM5UZsT3Asm6YeSWWiAN+/PpvUzTc0V7n7wFk8hl4aNLZP88Mlawf5
+	 zF5nKY2XuhVzOhnsbs62NSjIjuzSuoXI2hQxHPFrVR3FjhJkwVDi4h9bhQdX3uY3iGQ==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 9E4321F008A7;
-	Mon,  9 Nov 2026 12:32:20 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id A51E01F008A3;
+	Mon,  9 Nov 2026 12:32:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1794227542;
-	bh=dxn+6uDuz6ndoJKiaFtcZm94n3JA2PZg9wgDsgFvyfw=;
+	bh=mTD9xwsI4QuKalePJYcU2wXXCm1Q2n9SxcuwakbGU80=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=TSuCuoSA9DKf50OAYMmD/RggCkukek6tVSJfZlNKA2zAtffz6NlGvSOcPThg9xgOx
-	 nXYFbm8bj9xcnvfS3tqK/ynrEiJxt+GS98Iiu4OXPBCZ5Xt84V4ztW1/zQSeMOHC+1
-	 KhpO7BHgSebUcRGCK6Aw5s1zy+KtwHvbau/c+Lp8UFoceIx3tX7PIa8OsD1QCcQllP
-	 ZvPl8oHY6dwLwVwFjTlWkG+lf/wOOniFD4gF6RTno7b1uHkFaoaySgoxVNT3FQFhnr
-	 rlNCwMKsG72InIkCMO/e6ZZ2PxHJOIrhk+0uILZdCg3cIreCkghBQG2R0kZOZadI7C
-	 +3Y+9Q+7w7yzQ==
+	b=hwrWidVRF2CXse4C4L8PJ/1sjDY73hr5p56N91QIy93iY2Uaf5KjsHgSr+hPoIg+N
+	 vE8vqadpKdpDJMBT5OtI7ojErZE/KvllNwUPX1a4aDykR6yAZeawFuytUmdel7uXUE
+	 LNSvDRUEBP6TaP9yUj8WTD1m44+hII74v0b/gkLLSd/nMhdsydOATqBSeGhvfwI6kn
+	 8kMSsjpZO11b64kOoxD5ofF/tMaD17Dy1wzE1mqgYJGuemzaJyz2n07mK9pMzthzEW
+	 eJY6JA2FkvgsRPSdcTZ5wUu8q65epMC6NrRlE8HNW4eDRmWuGAI+BbLlIO9xRupuJX
+	 uU6SxtAFvewbA==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 304F04848E;
+	by lkml.kernel.org (Postfix) with ESMTP id 610674849A;
 	Mon,  9 Nov 2026 12:32:20 +0000 (UTC)
 From: Ricardo Pardini via B4 Relay <devnull+ricardo.pardini.net@kernel.org>
-Date: Mon, 09 Nov 2026 13:32:17 +0100
-Subject: [PATCH v6 2/6] arm64: dts: rockchip: describe PCIe RTL8125
- Ethernet on ROCK 5 family
+Date: Mon, 09 Nov 2026 13:32:20 +0100
+Subject: [PATCH v6 5/6] arm64: dts: rockchip: describe PCIe RTL8125
+ Ethernet on NanoPi R6C
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-2-91f1efefba0b@pardini.net>
+Message-Id: <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-5-91f1efefba0b@pardini.net>
 References: <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-0-91f1efefba0b@pardini.net>
 In-Reply-To: <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-0-91f1efefba0b@pardini.net>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -88,16 +88,16 @@ Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Ricardo Pardini <ricardo@pardini.net>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2524;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1480;
  i=ricardo@pardini.net; h=from:subject:message-id;
- bh=5FUQR0rfH+5npztwgihS2KzQbqIydyXcLzR1mZxE4zY=;
- b=owEBbQGS/pANAwAKATteP+Oex+3pAcsmYgBq8b1Rqz7/SAbQQrbe2CSUO+hzIC8QLvggk98+u
- ViJ9qqcmPCJATMEAAEKAB0WIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCavG9UQAKCRA7Xj/jnsft
- 6akgCACPf5E8p9CxpNI6k7h61C2X8pqJyIjbMbEgil14qH4Y6PD4y+iOQ10b0ZXhptGKo1hMiH5
- B4zpkjSDnl7FXeg5KC47PJkceMtW1py9xJVtvGLFLn8TIt9XuRLpn+sFZlPRln4GcRfMYJFHaTN
- rI9Uc3K/mPRqtXYNyGGp73dWRLscyYr3+vcB70l1MT0UVRNwEHwGahCVwkVAjxMGw2eXN4aN99o
- dRRr6D00wYnQj0anuovVoRLfsywaLaeghrDeRwbMTpw6RbTydFL01bAQlcx28s+cXaNOuORvZNE
- e15Orv1Kiyc3VDuNagGttKp2MjNfO7hbfRtoM31rHN4ZCfcr
+ bh=6l7amNejMT6z9WZmcw/pfLmctMDWO9DfRwNlH72+y/A=;
+ b=owEBbQGS/pANAwAKATteP+Oex+3pAcsmYgBq8b1SK64PYsE49HfauhMNNZc/Rxcke7TNSjqMa
+ TII3ZbM58uJATMEAAEKAB0WIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCavG9UgAKCRA7Xj/jnsft
+ 6cCKCACRRwgub/X++u8B6gmcSwy4+GoKdlmB7GLraOLHglCdCq5Pi3zLu0aGpkvold4AvL5Lb61
+ 7woCiP/8J1TBEOAVMiSD3bACaak4/TUy2S4rAEOVoacE2/Q/q2FJIiakZ8HALnO7gI/x1sJKSiZ
+ XrDOsP/AECbPAGxp3uKQzJFRfnBmV+elopaBK085c0ttELmcttRUD1FAwBYl6MGRux/LFfhyq06
+ oR1r7vZezWNEuluIRtSbi8S8+ZBwQc7NvBFxAStDplw0BNMWrR4VozASrdwFAXPZUHpede5v3wd
+ OvsGfIyQLWiGwvT5bWehpl4NCMo0919cfvWpVblmUy5liRQQ
 X-Developer-Key: i=ricardo@pardini.net; a=openpgp;
  fpr=AC18230CF6AFEACADC4888933B5E3FE39EC7EDE9
 X-Endpoint-Received: by B4 Relay for ricardo@pardini.net/default with
@@ -125,75 +125,42 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Ricardo Pardini <ricardo@pardini.net>
 
-The Radxa ROCK 5B, 5B+ and 5T carry an on-board Realtek RTL8125 NIC
-behind pcie2x1l2; the ROCK 5T has a second one behind pcie2x1l1.
+The FriendlyElec NanoPi R6C carries one on-board Realtek RTL8125 NIC
+(the LAN port) behind pcie2x1l1.
 
-Describe the PCI function nodes and attach ethernet0 (and, on the
-ROCK 5T, ethernet1) aliases, so that U-Boot's fdt_fixup_ethernet() can
-fill in their MAC addresses from its ethaddr/eth1addr environment.
+Describe the PCI function node and attach an ethernet1 alias, so that
+U-Boot's fdt_fixup_ethernet() can fill in its MAC address from its
+eth1addr environment.
 
-The shared NIC goes in rk3588-rock-5b-5bp-5t.dtsi, the ROCK 5T's second
-NIC in rk3588-rock-5t.dts.
+ethernet0 stays mapped to the on-SoC gmac1 (the WAN port). The node
+goes in this .dts rather than the shared rk3588s-nanopi-r6.dtsi, since
+on the R6C the dtsi's second RTL8125-capable lane is empty compared to
+the R6S.
 
 Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
 ---
- .../arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi | 15 +++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts        | 18 ++++++++++++++++++
- 2 files changed, 33 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-index b8d90936fc20..e8a3eb33e402 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-@@ -10,6 +10,7 @@
- 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
+index ccc5e4627517..48d87f7923db 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6c.dts
+@@ -7,8 +7,28 @@
  / {
- 	aliases {
-+		ethernet0 = &rtl_eth0;
- 		mmc0 = &sdhci;
- 		mmc1 = &sdmmc;
- 		mmc2 = &sdio;
-@@ -488,6 +489,20 @@ &pcie2x1l2 {
- 	reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc3v3_pcie2x1l2>;
- 	status = "okay";
+ 	model = "FriendlyElec NanoPi R6C";
+ 	compatible = "friendlyarm,nanopi-r6c", "rockchip,rk3588s";
 +
-+	pcie@0,0 {
-+		reg = <0x400000 0 0 0 0>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		ranges;
-+		device_type = "pci";
-+		bus-range = <0x41 0x4f>;
-+
-+		rtl_eth0: ethernet@0,0 {
-+			compatible = "pci10ec,8125";
-+			reg = <0x410000 0 0 0 0>;
-+		};
-+	};
- };
- 
- &pcie30phy {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-index 425036146b6d..b1a3e4b2165f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-@@ -8,6 +8,10 @@ / {
- 	model = "Radxa ROCK 5T";
- 	compatible = "radxa,rock-5t", "rockchip,rk3588";
- 
 +	aliases {
 +		ethernet1 = &rtl_eth1;
 +	};
+ };
+ 
+ &lan2_led {
+ 	label = "user_led";
+ };
 +
- 	analog-sound {
- 		compatible = "audio-graph-card";
- 		label = "rk3588-es8316";
-@@ -76,6 +80,20 @@ &pcie2x1l1 {
- 	reset-gpios = <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc3v3_pcie2x1l1>;
- 	status = "okay";
-+
++&pcie2x1l1 {
 +	pcie@0,0 {
 +		reg = <0x300000 0 0 0 0>;
 +		#address-cells = <3>;
@@ -207,9 +174,7 @@ index 425036146b6d..b1a3e4b2165f 100644
 +			reg = <0x310000 0 0 0 0>;
 +		};
 +	};
- };
- 
- &pcie30phy {
++};
 
 -- 
 2.47.3
