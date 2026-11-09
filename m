@@ -2,99 +2,61 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B5D17606A331
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 19:54:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 56A6F60A2606
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Nov 2026 19:55:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qpVQAeMX;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=wbqJePTV
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BrpzvgOU;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=B4raoCQN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Z6T1rpStyanIodVbqFfW7CbPmCwnjSs+sLi/V5HlRF0=; b=qpVQAeMXoii2SiEo6YF+bafeYv
-	SdD87pc6gt+uTXm9UojEmxVt35GRUp7eDDeHxAt0DviHUnt3y4n4H78pR2JpuEMBzaTD+EwiQPXIo
-	lYecUIs/e7N4gi0kDMsOvbaNHFapQrCihTvgII8oTJpy1gclBq5CgKFGH+kLrdK91bc5s9dLIvi8v
-	Lk0D8nnrk49H8f5L/ZaX54RrwDQ88hmu/WsBj/+cn96CF83ZOzf5Amya1RrmSFL8SbucuF8wvzwJO
-	o34P5YeaHP0pkLV9oN2nYdS0ZWxdEPezbRq3meEdzSTDWZ27D98pVB35hJLrhP7H2vDfJoyoq4fYp
-	EmLHeTog==;
+	bh=pZTeN7pV6/QkkEfFKBgvXGniJAhM+SI9hayyo/q/NeY=; b=BrpzvgOUeybLk2SEd7sRCNJzb8
+	WZ/l0/99jZNdigFR/3yUtYJw4SyKJH4y0sxEnhs6mC57uOrc6Mr0faVKzoOP2A7es/jvYOimlvthg
+	jxyWoUtGkcH0fqb4K8CXSjc6U3l+l4QneLWOfHmX2qAkk31iMbKJviGkAo+LHJ9gU1Xk0Hq2HQSEN
+	u/br5lwojcxUWCXBi7fFv2a+6VQjHedsjU3UsHNsWiaSDbPKmGPqYnu6k0/GEAxE/qBxq6/2fdYJl
+	i8R5CrSruZG9G1uTyqLnxCGvIDYibIDiC/W+NkVd+XMTYJQyaENLMEyaFtuYrE4WT8yYQhtVwNW4S
+	R2k4fLVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQVRQ-00000001aZB-0CvA;
-	Mon, 09 Nov 2026 19:54:08 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1xQVSY-00000001apc-2Qud;
+	Mon, 09 Nov 2026 19:55:18 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQVRN-00000001aYF-0op3
-	for linux-rockchip@lists.infradead.org;
-	Mon, 09 Nov 2026 19:54:06 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-3b094fb376cso96944a91.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 09 Nov 2026 11:54:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794254044; x=1794858844; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=LvIr1VbcR88AmSo6q8l/U1RONWTkl4N/HGRhgSELxqo=;
-        b=wbqJePTV96bxrZnnkS7kPNgD81BwQj9lVa+sdjtbbrbrYoKjzhox8Q6kFmhyP/drwj
-         Ni2mtD/pBiE5O4bO08P6Xp3DDJXN7EziSvxY7uoC1zq2VcU2JH5K6ZXWIvDqx38bNYMq
-         muE7GIdVtVaUMtIKlP0udIC1zKEv8PBM/7D4RsOgDzAXdmwJFGymBxslxdVzSD3yfbX+
-         D4+C0wFjgGvXZrHDccfs9/i1dgGbFbsW9KeXB7YdRS0p3LzYFyRuTwsn/oZmjDsoxIwB
-         LXa0fM148GBN/h3+jCR45lWW33aO8CsGYLmOHG97gqFjvcr+kYkofjh7YvRGD0RLngPl
-         eoVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794254044; x=1794858844;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=LvIr1VbcR88AmSo6q8l/U1RONWTkl4N/HGRhgSELxqo=;
-        b=nkzeiT1XogGqUSNIDZ8pXvmLS0lLOrYFCH4G/LDob2IaiyUB26jeMp/3tsKClKxniM
-         CgrE+snp0R1Ye+QQ1l8gjELvU8503AVQ3oU67P0JDYFEzMnAZO6T/9HldXzehUGSAQj9
-         Lfa26/eitZlMnOCXslgtjBQ/Bjsr/QP9AKw75wkpaH4ybZJ4mif0p18bAsqldjb0wEjj
-         UKtaYDCbP2lco2PooLBVTHEiupbp7Ii5Tec2QrSXUur0jLSjfRgDCFV7uJG8agUhPqrq
-         B2IZMbQcgmqMiA15CTeX83iHv4ef8325S/jnXxjuWVy0kErGoFQRKfUoQ0NWwQTdHyzS
-         Tpzw==
-X-Forwarded-Encrypted: i=1; AL+hErHKYHISdnbYqeXthliwyud5f7akiLgXiqVz1O+2M117IuyjYflIJV8Pvpg7G5pVXG7YbdRTxlbtQQZRwAZMNg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z82VMK9Ctgs35YcCbWrU/mOts6TGuTUPTc7gYd1FJo2b6XMHkSB
-	wFiTqzrsvRHhoI1lZ3+PF2kVoJ9D+7jOrVu4gq3CqjS6+US/RF7LJMGf
-X-Gm-Gg: AYBFou0orLbg/HwDFkjAlfM6vQIC5DqganUOUsOBf4zJt7QdoQxKpioWgO3Tn2laE2t
-	2Curanwub6d3zvhIpumi4AJclbAizbnVWjMdtUY/fTxPBySCm05f86JASvtqhaJnl0Tm8222iDW
-	B2IVAFe/7byzLMk878u5I1xvm7LRegustBVG8vlOnrKDnBaqylvaaE0Khbcq/63yQtInfM67TR7
-	fLebMvgGGry8/VqrtIVsSxdEAi9k4HnySPbpAAiQD4PPRfaMPg+CqOskOw8ISnck8ncez2zgrOC
-	pkskeauh8RPvJxxnlWpcDbvb/6FPj2SiEBHnszEhhznWEYhex9/SwxeNZsYaxL9pzXaB3qIQS02
-	cWia1j6y75DMg6A6xqhRdKz25t2KEMXtDlWaEQ91Hx+Z2MjMf9WvbQdxcbq/yjkrbrCOiLbIiQi
-	WT7CqNMYjXeFgoPEpSOHa0pIC5Md4PYJpdJr0KpVdldziYpcRJT+EXYUPH/GqlJcIhZ9skof7E9
-	WECWKhggN1ofwLYh0FN8cqr+ZvA8scUljhonNtf+uukvOHoeVqrrxIvcgX9iWHA8RKrFrVvVHVM
-	FilLgMJX3NGLPSHM5wGGS49PRKqzB2RuWEYxNMD/HMyxpAOdwHXq0AU0pQ==
-X-Received: by 2002:a17:90b:3c09:b0:3ac:73c7:9c07 with SMTP id 98e67ed59e1d1-3b166add45fmr1297126a91.0.1794254043528;
-        Mon, 09 Nov 2026 11:54:03 -0800 (PST)
-Received: from FAIZEL-KB ([2001:569:52f5:4b00:4b92:5a54:3d6f:1e5])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b1690f4733sm134974a91.3.2026.11.09.11.54.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Nov 2026 11:54:02 -0800 (PST)
-Date: Mon, 9 Nov 2026 12:54:00 -0700
-From: Faizel K B <faizel.kb@gmail.com>
-To: Mehdi Djait <mehdi.djait@linux.intel.com>
-Cc: Michael Riesch <michael.riesch@collabora.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, libcamera-devel@lists.libcamera.org, 
-	Robert Mader <robert.mader@collabora.com>
-Subject: Re: [PATCH 1/2] media: rockchip: rkcif: Filter enumerated formats by
- media bus code
-Message-ID: <7lkixkkeumy7l32usxweltclro5tqhgiio6xjyiyx45jnsq3lz@dx43ee4u6ffq>
-References: <20261105232310.385463-1-faizel.kb@gmail.com>
- <20261105232310.385463-2-faizel.kb@gmail.com>
- <avG782VCMTWTNax0@mdjait-mobl>
+	id 1xQVSW-00000001aoG-1NpZ;
+	Mon, 09 Nov 2026 19:55:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=BYHIJBcBzX4woTKDxJ+AvoVlmuTug2Ro1Y2L1Yciwrw=; b=B4raoCQN8gsvUex+Q8OePWBW7u
+	r5YhYneu+ii6Y+mO/SOP08HMZ2rhwY11TMJVcztNP32aNQf9Nwd8MbDynYHGNyUQkvDzmynieRU1M
+	JzrwsgEQt8iH5AsXqOXiWuVW/imtOxouUCyS74/XKA3JHH9T6nY/3otCIto+Ebw8R0g8=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1xQVSN-00FKho-06; Mon, 09 Nov 2026 20:55:07 +0100
+Date: Mon, 9 Nov 2026 20:55:06 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Pufan Jin <cyan2254650260@gmail.com>
+Cc: Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: use rgmii-id for LubanCat 4 gmac1
+Message-ID: <f2663951-aa1a-44de-87cc-8e7b105e1036@lunn.ch>
+References: <20261109191515.252449-1-cyan2254650260@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <avG782VCMTWTNax0@mdjait-mobl>
+In-Reply-To: <20261109191515.252449-1-cyan2254650260@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261109_115405_233351_EEA3A49C 
-X-CRM114-Status: GOOD (  15.27  )
+X-CRM114-CacheID: sfid-20261109_115516_369668_8E06607F 
+X-CRM114-Status: GOOD (  10.70  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,55 +67,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Mehdi,
+On Tue, Nov 10, 2026 at 03:15:15AM +0800, Pufan Jin wrote:
+> The LubanCat 4 PCB adds ~2ns of trace delay on both TXC and RXC, but
+> that alone is not sufficient for reliable RGMII operation.  With
+> phy-mode = "rgmii" and zero MAC delays the link comes up at 1Gbps but
+> drops ~90% of the packets; the PHY's internal TX/RX delay is required.
 
-On Mon, Nov 09, 2026 at 01:27:34PM +0100, Mehdi Djait wrote:
+Sorry, but this does not make sense. 4ns of delay is 2ns too many.
 
->> --- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
->> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
->> @@ -395,13 +395,20 @@ static int rkcif_stream_enum_formats(struct file *file, void *priv,
->>  				     struct v4l2_fmtdesc *f)
->>  {
->>  	struct rkcif_stream *stream = video_drvdata(file);
->> +	unsigned int i, n = 0;
->>
->> -	if (f->index >= stream->out_fmts_num)
->> -		return -EINVAL;
->> +	for (i = 0; i < stream->out_fmts_num; i++) {
->> +		if (f->mbus_code &&
->> +		    stream->out_fmts[i].mbus_code != f->mbus_code)
->
->what about dvp capture. The dvp_out_fmts[] does not have the mbus_code
->set.
->
+You need a proper explanation of what is going on here.
 
-Thanks for the review. Yes, the DVP case is missing. How about only   
-filtering the formats that have a media bus code, so DVP behaves as
-before (see the change).
-
-        const struct rkcif_output_fmt *fmt = &stream->out_fmts[i];
-
-        if (f->mbus_code && fmt->mbus_code &&
-            fmt->mbus_code != f->mbus_code)
-                continue;
-
-I don't have DVP hardware to test with. I can submit a v2 if that's ok.
-
-Regards,
-Faizel
-
-
+    Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
