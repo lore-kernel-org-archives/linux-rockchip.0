@@ -2,117 +2,79 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2CE43606A320
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 20:01:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CD5BE606B542
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 21:56:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mn2T9KXd;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=bauvin.com header.i=alexis@bauvin.com header.a=rsa-sha256 header.s=s1-ionos header.b=Gcu04qnJ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=oMNKLdB9;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=timsurber.de header.i=@timsurber.de header.a=rsa-sha256 header.s=MBO0001 header.b=lrBVtFU+
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=38KWo6JLxRyHIEYhMnBV6NTbCuEYhZSA1Dbr975oiHY=; b=mn2T9KXd7RLQAchkGXs7h+4wDD
-	M10K2W8zwt0c5BZsKems8mQPYQxaRN5Y/L45XJjcxs0t5WaIscbWkG4gZcON4EDGn6uWvqso5tugT
-	AfR38WqSNOVNyxlbfyxCvDFcK+bBkD52aX3/BoPHVUvlxgHhagwmz1wVX1gtaISTEFSq+A7rXlAgI
-	5E5to27VhOYC2+TJXqroanCLBPY5WvpejT9DE4I27gYpWw79Ui/JWqF3C8ywjmAU+/sotekszXhP2
-	W9r8bDTksXMXskXXZGphJuQ+D0HeSj0QMrpMgYLJ5aLh37VXo+aCv8hhidy8RZCl6QJJJgD4FL/s0
-	fOBsQrCg==;
+	bh=8zQwQnyIO10WiE08AQFGHGnW9jomQgmttdtAUer6yZ0=; b=oMNKLdB9v/3ePGiobTAQa3IP4S
+	4IEXyVw7sBp3tXV+EeQZNbjOdeS3i871YlzbrRANT2btjnv0zVt3A9tWWswvQK2wtXpTpl3ZZani6
+	mhTRuqojhS+CVF+w0uX3LhLqicak6i5Tex7IoV5UccEX38diZZGTRBJE/Qrr+YCqMo9F1FhSZW3Rh
+	v7sagMYiB2hODtvC7JrSKOmqwcOUROU/UjSUrMtwzv7ZYb/Y9aV+hzc7hPkF6JIAtMdVEq0j+OCk5
+	yU2jD3sGXnonCYD0qc4SiT39lsYYrShCAADSkgO+eYLFZATEcRYU5bIWgvCFiqoq2eIjZBpGmLP3S
+	VrbT59SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQs23-00000004x6B-23sP;
-	Tue, 10 Nov 2026 20:01:27 +0000
-Received: from mout.kundenserver.de ([212.227.17.10])
+	id 1xQtpN-000000056Cq-02Xt;
+	Tue, 10 Nov 2026 21:56:29 +0000
+Received: from mout-p-103.mailbox.org ([2001:67c:2050:0:465::103])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQs1z-00000004x5K-2J5V
+	id 1xQtpG-0000000567K-3B1B
 	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Nov 2026 20:01:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bauvin.com;
-	s=s1-ionos; t=1794340879; x=1794945679; i=alexis@bauvin.com;
-	bh=UaCMwsKF+tF0e7vEsMo7urmrW+a8tVcmg0zruf9RRDg=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:Message-ID:
-	 MIME-Version:Content-Transfer-Encoding:cc:
-	 content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=Gcu04qnJiU5lON90TZvrf6OF+P1fCoyZF6gEc2vLrDWyBDE0r57nc9JsSay4Ywsz
-	 8ELWict61CeYlUV3M4tiOA9tmBBz7rTfvqlFb5ffixmOF8ps5V/p5SKzX2IIIUP9J
-	 MeOTBrhXJoeFT295Fpgz1poFpU/Pj5381HJQlE8ghSb3DfuhtUFwgHb7iwjv40w/B
-	 7cc1frltMbyZK6t1P5KfMV6+0k3Zc7Hgh96FdH5tqxlqapDckGvPtQfc8+D6Prlek
-	 +tXZziwwbyVbtDvuAmjcYp8/opgjGkMmZWhuvaSTpRVl/+UOI47bG74MLvtr4cDQL
-	 iKTV5C8cjH7tSF3svw==
-X-UI-Sender-Class: 55c96926-9e95-11ee-ae09-1f7a4046a0f6
-Received: from client.hidden.invalid by mrelayeu.kundenserver.de (mreue109
- [213.165.67.119]) with ESMTPSA (Nemesis) id 1MhDEq-1wmqWC41JK-00cY17; Tue, 10
- Nov 2026 21:01:19 +0100
-From: Alexis Bauvin <alexis@bauvin.com>
-To: linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Alexis Bauvin <alexis@bauvin.com>
-Subject: [PATCH] mmc: dw_mmc-rockchip: fix training on devices with internal phases
-Date: Tue, 10 Nov 2026 21:00:46 +0100
-Message-ID: <20261110200050.2529828-1-alexis@bauvin.com>
-X-Mailer: git-send-email 2.56.0
+	Tue, 10 Nov 2026 21:56:25 +0000
+Received: from smtp1.mailbox.org (smtp1.mailbox.org [IPv6:2001:67c:2050:b231:465::1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519MLKEM768 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mout-p-103.mailbox.org (Postfix) with ESMTPS id 4jPL805YvnzKnVv;
+	Tue, 10 Nov 2026 22:56:16 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=timsurber.de;
+	s=MBO0001; t=1794347776;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5+84XRQja2nnqq3sHPcHJ7yp3gSL2eT4Yzx/gZRX0+E=;
+	b=lrBVtFU+Cj9Pv/IB6Ef6Poz7ib9MJfNEyjNdjRVyb3o+AMTYpgGVHLTp/nszPW6cN9xvRp
+	gMRXUmlLCY7FBbfHdxauKraBRprhgy7PnK+riLfe0OaI90HhbRpeHSSOlw1hk33HMpnaQt
+	xC2XzOsAsTIrboUBTJrVofG8M8cdBa/UcIYCzjINlZGefUzdMpFt1AdLU4eB8Ft98sTnDU
+	yZv21taC8qNONhJLu8FQwxfkMJsxAePzSwTMwC5xcT3n1GYkiNW7qHQNszxEb36s+BM3CE
+	NMczRqKwxRyta5Sna5pA+clBTKm7JnuSanZzPJ+YGVHO8q6kzJO7dRa8kWbOdQ==
+Authentication-Results: outgoing_mbo_mout;
+	dkim=none;
+	spf=pass (outgoing_mbo_mout: domain of me@timsurber.de designates 2001:67c:2050:b231:465::1 as permitted sender) smtp.mailfrom=me@timsurber.de
+From: Tim Surber <me@timsurber.de>
+To: Frank Zhang <rmxpzlb@gmail.com>
+Cc: Igor Paunovic <royalnet026@gmail.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andyshrk@163.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v6] drm/bridge: dw-hdmi-qp: serialize HDMI audio callbacks with PHY enable/disable
+Date: Tue, 10 Nov 2026 22:55:35 +0100
+Message-ID: <20261110215535.2658927-1-me@timsurber.de>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260915103433.13163-1-rmxpzlb@gmail.com>
+References: 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:rpYwODSSFFKhZl6mHGbb8vCgBKd+rzE3MRa9iTkVs0Y8mfQ2PaV
- K8oQL+oBmFqVwHfWt/FK+TFgXFSrjoi7qUvbr2NZC9fiwrUKM68TxnmmByS8YM42aHlvJbG
- YiKvxbSPDMm4bskhg3CtAkORnD/nV49CeQRh8RzcoZn5t+iAOvffd+dCJ8cnWtTPFXSgZXM
- vv2PdFDYu6L8ImGwlurVg==
-UI-OutboundReport: notjunk:1;M01:P0:MdFXAWOmCFc=;jaALaOziPN1PSstqif43maK/otK
- 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
- 0Q6XgOOoCPhXqhXhM56gSXFVmbD7A==
+X-Rspamd-Queue-Id: 4jPL805YvnzKnVv
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_120124_054680_D9AE09C4 
-X-CRM114-Status: GOOD (  14.03  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261110_135623_255266_68627B4F 
+X-CRM114-Status: GOOD (  14.95  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,47 +87,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Controllers with internal phases don't need the "ciu-drive" and
-"ciu-sample" clocks, and recent versions don't have them at all. Tuning
-expects those clocks to be filled when it is not necessary, and fails on
-devices which don't need them.
+Hi Frank,
 
-Fixes eMMC training on such device by not requiring the clocks when they
-are internal to the controller, as they are not populated anymore on
-devices using the RK3576 compatible strings.
+On Tue, Sep 15, 2026 at 06:34:33PM +0800, Frank Zhang wrote:
+> The crash occurs when HDMI audio callbacks access registers after DRM
+> atomic framework disabled the PHY.
 
-This has been tested on an RK3506 on the 6.12 branch from
-linux-rockchip.
+I reproduced this on a FriendlyElec CM3588 NAS (RK3588) and tested v6.
+The bug can be hit in more situations than the reboot case in the
+commit message. The details are below in case they help with the
+commit message or with the stable backport.
 
-Fixes: 73abb1f16e ("mmc: dw_mmc-rockchip: Add support for rk3576 SoCs")
-Signed-off-by: Alexis Bauvin <alexis@bauvin.com>
----
- drivers/mmc/host/dw_mmc-rockchip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Setup:
+- rockchip for-next at c3baae5f1 (7.4.0-rc1), arm64 defconfig
+- HDMI TX/RX audio DT enablement for CM3588 on top (HDMI-IN series)
+- Debian forky, GNOME 50 / Mutter 50.5
+- HDMI0 TX looped back into the RK3588 HDMI RX, so playback on HDMI0
+  can be captured on the HDMI-IN card for a functional check
+- netconsole to capture oopses
 
-diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-index a134be59601d..d3158ab05aa1 100644
---- a/drivers/mmc/host/dw_mmc-rockchip.c
-+++ b/drivers/mmc/host/dw_mmc-rockchip.c
-@@ -354,7 +354,7 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
- 	int middle_phase;
- 	int phase;
- 
--	if (IS_ERR(priv->sample_clk)) {
-+	if (IS_ERR(priv->sample_clk) && !priv->internal_phase) {
- 		dev_err(host->dev, "Tuning clock (sample_clk) not defined.\n");
- 		return -EIO;
- 	}
--- 
-2.56.0
+Without the patch:
 
+1) Display off, then open/close the PCM
+
+   Mutter switches the outputs off (CRTC fully disabled):
+
+     busctl --user set-property org.gnome.Mutter.DisplayConfig \
+         /org/gnome/Mutter/DisplayConfig \
+         org.gnome.Mutter.DisplayConfig PowerSaveMode i 3
+     cat /sys/class/drm/card0-HDMI-A-1/enabled   # -> disabled
+     speaker-test -D hw:HDMI0 -c2 -r 48000 -t sine -F S16_LE -l 1
+
+   hw_params fails with -ENODEV (prepare sees tmds_char_rate == 0).
+   The close that follows still reaches clear_audio_infoframe:
+
+     Internal error: synchronous external abort: 0000000096000010 [#1] SMP
+     pc : regmap_mmio_read32le+0xc/0x24
+     Call trace:
+      regmap_mmio_read32le+0xc/0x24 (P)
+      _regmap_bus_reg_read+0x68/0xac
+      _regmap_read+0x60/0xd8
+      _regmap_update_bits+0xfc/0x14c
+      regmap_update_bits_base+0x54/0x80
+      dw_hdmi_qp_bridge_clear_audio_infoframe+0x30/0x40 [dw_hdmi_qp]
+      drm_bridge_connector_clear_audio_infoframe+0x20/0x40 [drm_display_helper]
+      clear_infoframe+0x50/0xf4 [drm_display_helper]
+      drm_atomic_helper_connector_hdmi_clear_audio_infoframe+0x64/0xcc [drm_display_helper]
+      dw_hdmi_qp_audio_disable+0x1c/0xa4 [dw_hdmi_qp]
+      drm_bridge_connector_audio_shutdown+0x28/0x4c [drm_display_helper]
+      drm_connector_hdmi_audio_shutdown+0x1c/0x30 [drm_display_helper]
+      hdmi_codec_shutdown+0x58/0x7c [snd_soc_hdmi_codec]
+      snd_soc_dai_shutdown+0x54/0x80 [snd_soc_core]
+      soc_pcm_clean.isra.0+0x5c/0x1e0 [snd_soc_core]
+      soc_pcm_close+0x34/0x60 [snd_soc_core]
+      snd_pcm_release_substream.part.0+0x88/0xe0 [snd_pcm]
+      snd_pcm_release+0x58/0xc8 [snd_pcm]
+      __fput+0xd0/0x300
+      ...
+     note: speaker-test[1576] exited with irqs disabled
+     note: speaker-test[1576] exited with preempt_count 1
+
+   The task dies holding the ASoC PCM mutex. Afterwards the
+   close_delayed_work kworker stays in D state in
+   snd_soc_close_delayed_work(), so audio stays broken until reboot.
+   One of my runs ended in an SError panic instead of the
+   synchronous abort.
+
+2) Display turned off while a stream is running (the wider case)
+
+   Start playback on hw:HDMI0 with the display on, switch the display
+   off through Mutter as above, keep playing, then stop the stream.
+   Playback keeps running normally (state RUNNING, hw_ptr advancing)
+   and nothing is reported to user space. When the stream is closed,
+   the board dies: SSH drops, nothing reaches netconsole, and it
+   reboots only through kernel.panic. I reproduced this twice.
+
+   No application error is needed for this. Playing audio over HDMI
+   while the desktop blanks the screen, or while the sink is
+   unplugged, and then stopping playback is enough. I suspect this is
+   also what most users hit in practice, more than the reboot path.
+
+3) HDMI output never enabled (HDMI1, nothing connected)
+
+   Opening and closing hw:HDMI1 repeatedly fails with -ENODEV and does
+   not crash. The same holds for WirePlumber probing HDMI0 at boot,
+   before the compositor enables it. The register accesses only fault
+   after the PHY has been initialised once and then disabled, which
+   matches your analysis.
+
+With v6 applied:
+
+- Case 1: the open now fails cleanly ("Playback open error: -95,
+  Operation not supported" from the new startup check). No abort,
+  and the system stays healthy.
+- Case 2: playback continues after the display goes off, and the
+  close completes cleanly. No hang.
+- Case 3: unchanged, -ENODEV, no crash.
+- Functional check: after re-enabling the display, a 440 Hz sine played
+  on HDMI0 is captured correctly on the HDMI-IN card through the
+  loopback, so the prepare/infoframe path still works.
+- Stress test: for 2 minutes, HDMI0 was toggled on and off 114 times
+  (atomic commits disabling/enabling the CRTC at random 0.1-0.9 s
+  intervals), racing about 2950 open/play/close cycles on hw:HDMI0
+  with random lifetimes. No oops, no hung tasks, nothing new in
+  dmesg (lockdep was not enabled).
+
+It may be worth adding the "stream open while the output is disabled"
+case to the commit message. It is much easier to trigger than the
+reboot race and makes a stronger case for the stable backport.
+
+Tested-by: Tim Surber <me@timsurber.de> # FriendlyElec CM3588 NAS (RK3588)
+
+Thanks,
+Tim
 
 _______________________________________________
 Linux-rockchip mailing list
