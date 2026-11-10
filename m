@@ -2,107 +2,73 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 48786606A326
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 12:41:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 787AB606BFE3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 13:02:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fqvdtl+j;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=SDyFU37T
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=g3O6lGx3;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=OZH8i92z
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=QglyUSFjPoem30MB3Q2JIqmzNWiefPTeXWK5uskRjmU=; b=fqvdtl+jFvKUcdVnsutQm8ilzz
-	N6XOgkOhoR6mVQim46a0NX+tZWq5vs4D42F8hyUJsoxiYiCZZfPjpQe5VF/VlTe9leN0wf/rk856Z
-	JXY0qSQph9sicahQk4h5lYo6g35q2RXEf+JuFtRoH6bxMOC48+TcGgX8ZHs6Njt0gNDK53A1Soou5
-	0eSr6UZkRwdCOb2oHOAAtsaoG3HK0+YZXuPw7Y+aS/o/BxGcXX9WL+yo7aMK+/oUgp1wmTRgMpCqB
-	Uih5B413viE0UqjGg7Ha75DGUyY+xyK2H+T5K3dJNKsM7Y7rBLS8Tfp+dRxGtCX3une4D76xS/k6t
-	YoWZKf0g==;
+	bh=NAF2HXBf2KDwmyArZf+OeW2L8ANXD2agIn9Vc8u0dl4=; b=g3O6lGx3Bw7o/rS/8QiIQ77DvR
+	7U73Si+7UP8ZYe4KGun2BHWfNHMXiEr8byp8S/kumvW+hSkC5NpqEULgGg7KPtyAkfx5tS4kHWobi
+	FJzIPp75FVduYF9eGSf9I7RvPuywGyvb8AKqcaKZvdVXb7v2LIQU2jCdgDsJWrAoZQNL6FoUPwiyY
+	Gzw1c4B6HZuHi3v0WALouhYdX6PZA6gBSI1/Cce9niTuuDN/ouA+vaPgj6YfaBTb3Vcj+ulwXO89L
+	TBI28ypjowvT2wSqS0CIaKgDTi1bLfa6xx4uhXi6CIpwSSUCMVd42DWfFXZuTUoL0P6q4sohC6Hsv
+	RovEmDBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQlAh-00000003tI6-1Ndi;
-	Tue, 10 Nov 2026 12:41:55 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xQlUu-00000003xTc-0orW;
+	Tue, 10 Nov 2026 13:02:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQlAb-00000003tDL-49BQ;
-	Tue, 10 Nov 2026 12:41:50 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6F8DB6388A;
-	Tue, 10 Nov 2026 12:41:49 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794314509;
-	b=muh7HJWnwEHCQtN6+bRJxY6kr4XQx1ztXHmwNUTmG8/FVNzZmu7kceNVX8Qj4vr8eLeF
-	 eXB7U0cgfDdLQVmCNNYmmbqDjhDhg+xSHz+notGzkDtqSDhYvorg0mcTbAIdqXtIPJxjx
-	 Y3COrYyimlO5InHpd92zqWYmCQlBIyx7+wr+Z4yOawNwO8uYiwtw7I6D6gWplS/eQEkNR
-	 ++/1dFzt36Ka8LgYBt0B8UN93kXKdW6duIVUMnXfaUCmSR7RhH1GpfXpf1EXvOvjGnfiT
-	 iu77qoinJjDO2u3LQygGxmniSWowNlDrdthF2baE0sTOXZs9+nT7ozxp8vKU/8vSZzQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794314509;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=i09EVYkN3X8Qw7KV5e6VdKei58gZnsyVQwm1zc9UbTA=;
-	b=YMUMR7+YruH3rt9oMPvFhd3oqW+g3EGVMVhs4X91A6k/tRCBGCki9cLVGy2suNZcd+u9
-	 0J3pLLtXyD9OLXJgeHhJP3UuOpywuh9EzcyzuyJ6GMoK8WRlXd/oQcYKiS27oStOBZh4H
-	 s5e4hUtHEkS80nVkawjTTo14uyxZVb7leDNG4Hl528M2pj2EyDl8ycJznv61ifUEdalwH
-	 p8X5qJD2dMrRvAe6V7Hrz77SvZtYrx3OFqiRkved69yhDr/zv/eZQtA7K1V+3lK/sNrOY
-	 VpmMNbpBfBunFYf1uNabFg3dLO9LDR0aawcHdfqEf4KeUz8P/ZZcDfw05+o8+W5722A==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	id 1xQlUr-00000003xSG-1FpS;
+	Tue, 10 Nov 2026 13:02:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1794315761;
+	bh=lsfLnnAeFFIiJN/3WLIx+aewZN2Xynq+gqwio4jBfKc=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=OZH8i92z3ufcDkzTosplCkdMNnC+QCeCEK2E8+YRBIhCmlJ6mDQ8uQPi45sSieKKh
+	 PuTfJWd00xBldkkvI+AxCRFhvxT52lQE2k2OmlNd+lbr8nzO/psQp4kops4Th1khiI
+	 pP6oOlTN/3r2TcMerXASVrCDjX+4wavoedpXhbgZv6S2Nmnnrx0iGcUl+sbB6YGmih
+	 ik4J3X+zsL3wdywi0fmMnEDCf0ioaw7SUJSY4FXn3LIkHambhnYO7KjKCvi8HoucMy
+	 VyS6k0DoN5YF0KMlmVEg7khjH2RXPFvaJcemQVdDgnd2rB8JivgbZLlCW3qUX51t4w
+	 wN6idlspv3yiw==
+Received: from fedora1.home (unknown [100.64.0.11])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id D224B1F008A2;
-	Tue, 10 Nov 2026 12:41:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794314509;
-	bh=i09EVYkN3X8Qw7KV5e6VdKei58gZnsyVQwm1zc9UbTA=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=SDyFU37TscF0oD6Pm56C3Cks2z1TToStlWkcIzSiu7k2UZ5qt/gnl3Uld/JLtVE6P
-	 URHUpZ/SmLHENaRNFSL3XUGOQXUwieU9A4eM0Vr8cssMKLOgHjXZywpiu5bdIHkdAk
-	 aXcjDUQu+X/2C5K59AcT35qRaeKVhWbVSg7LXaH8YMfPSK+kHhiENZnks3nWnWTgB+
-	 8J5hHYvLt8L5m7Ey5neJIPRgTyFgsna/wIpCAHyW0SYnYZQR5DF3W7yumLqVox3LzP
-	 PBjKQg3fpvA7stNFm+2Xd93eDA0dPQqhdIHnQzYV+pw2zP+ih+t5rEF+ZN8zRlYynF
-	 ze1kEpr59lmWA==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 5D04748B52;
-	Tue, 10 Nov 2026 12:41:47 +0000 (UTC)
-From: Sergei Khomenkov via B4 Relay <devnull+shomenkow.gmail.com@kernel.org>
-Date: Tue, 10 Nov 2026 15:41:45 +0300
-Subject: [PATCH v2 2/3] media: verisilicon: program the H1 JPEG stream
- limit in 64-bit words
+	(Authenticated sender: bbrezillon)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CBB5B17E031D;
+	Tue, 10 Nov 2026 14:02:40 +0100 (CET)
+Date: Tue, 10 Nov 2026 14:02:32 +0100
+From: Boris Brezillon <boris.brezillon@collabora.com>
+To: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Cc: aiyengar1990@gmail.com, Steven Price <steven.price@arm.com>, Liviu Dudau
+ <liviu.dudau@arm.com>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Heiko Stuebner <heiko@sntech.de>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH] drm/panthor: Do not change the GPU clock rate while
+ suspended
+Message-ID: <20261110140232.061d6844@fedora1.home>
+In-Reply-To: <20261110-panthor-suspend-clk-v1-1-53457050e51e@gmail.com>
+References: <20261110-panthor-suspend-clk-v1-1-53457050e51e@gmail.com>
+Organization: Collabora
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261110-hantro-buflimit-v2-2-ff7790def9fc@gmail.com>
-References: <20261110-hantro-buflimit-v2-0-ff7790def9fc@gmail.com>
-In-Reply-To: <20261110-hantro-buflimit-v2-0-ff7790def9fc@gmail.com>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Hans Verkuil <hverkuil@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Chen-Yu Tsai <wenst@chromium.org>, 
- Hugues Fruchet <hugues.fruchet@foss.st.com>, linux-media@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org, 
- stable@vger.kernel.org, Sergei Khomenkov <shomenkow@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794314506; l=2059;
- i=shomenkow@gmail.com; s=20261104; h=from:subject:message-id;
- bh=rSixJW+4SIvnxSyMoeLcNv71TQPTVPSPPdIZPn8IhxE=;
- b=rZnn4NFdWljPtdenIbYFVQCzkOroyvKYlmdGUI5ooGa+U4zK58oD4WfY32zIqxq2Hfq4rWxuN
- 8s+/6csbyvVA6SX20juy4wkJtJWVLjQoFbNCblknsk6EKf4Mi32K267
-X-Developer-Key: i=shomenkow@gmail.com; a=ed25519;
- pk=FwuHDVe7aiISDMLmQEcMC+RflEIJ6kEp/ekwznWXmI8=
-X-Endpoint-Received: by B4 Relay for shomenkow@gmail.com/20261104 with
- auth_id=1409
-X-Original-From: Sergei Khomenkov <shomenkow@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261110_050245_504989_8F78A2FC 
+X-CRM114-Status: GOOD (  49.89  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,64 +78,188 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: shomenkow@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Sergei Khomenkov <shomenkow@gmail.com>
+On Tue, 10 Nov 2026 07:15:00 +0000
+Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+wrote:
 
-H1_REG_STR_BUF_LIMIT counts 64-bit words, but the driver writes the room
-left in the CAPTURE plane in bytes. A stream that does not fit, such as
-a quality 100 frame of noise in a default-sized buffer, is then written
-past the end of the plane, up to eight times its size.
+> From: Arun Iyengar <aiyengar1990@gmail.com>
+> 
+> From the start of panthor_device_suspend() until panthor_device_resume()
+> has enabled the clocks again, the GPU clocks are off or about to be, and
+> the GPU power domain may be down. devfreq can still call ->target() in
+> that window: a write to min_freq or max_freq in sysfs, a thermal cooling
+> state change or a PM QoS request all end up in update_devfreq() whatever
+> the device state.
+> 
+> With the RK3588 GPU core clock switched to the firmware-managed
+> SCMI_CLK_GPU (needed to reach the PVTPLL rates of the upper OPPs), such
+> a call is fatal. To set a PVTPLL rate TF-A programs registers in the GPU
+> GRF, which sit in the GPU power domain, and with the domain off that
+> access ends in an asynchronous SError and a kernel panic, for example
+> after
+> 
+>   echo 1000000000 > /sys/class/devfreq/fb000000.gpu/min_freq
+> 
+> while the GPU is runtime suspended.
+> 
+> Only apply a rate to the hardware while the device is resuming or
+> active, plus the suspend frequency that devfreq_suspend_device() applies
+> from the suspend path while the GPU is still powered. Other requests are
+> still accepted and recorded by devfreq, which applies them on resume or
+> at the next governor update.
+> 
+> The RFC this is based on (Jonas Karlman's panthor SCMI clock change,
+> carried in Armbian's linux-rockchip pull request 380) checked the
+> runtime PM status instead. That
+> status is still RPM_SUSPENDING after panthor_devfreq_suspend() has run,
+> which leaves a window where the rate can be raised again right before
+> the power domain goes down. The devfreq suspend count cannot be used
+> either: panthor's first runtime resume calls devfreq_resume_device()
+> without a matching suspend, so the count is -1 while the GPU is active
+> and 0 while it is suspended.
+> 
+> Suggested-by: Jonas Karlman <jonas@kwiboo.se>
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> ---
+> Tested on an Orange Pi 5 (RK3588S) with the GPU core clock switched to
+> SCMI_CLK_GPU and a 200 MHz opp-suspend (the configuration from the RFC,
+> not yet in mainline): writing min_freq while the GPU was runtime
+> suspended no longer ends in an SError, the request takes effect at the
+> next job (1 GHz measured), max_freq likewise; 200 suspend/resume cycles
+> with short GPU jobs and a 3 minute sustained load ran without faults.
+> With the mainline device tree (CRU clock, no suspend OPP) the SError is
+> not reachable and the guard only skips rate changes while the GPU is
+> powered down.
+> 
+> This patch was developed with Claude (Anthropic) as a coding assistant:
+> it wrote the code and the commit message, and I reviewed and tested it
+> as described above.
+> ---
+>  drivers/gpu/drm/panthor/panthor_devfreq.c | 42 ++++++++++++++++++++++++++++---
+>  1 file changed, 39 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panthor/panthor_devfreq.c b/drivers/gpu/drm/panthor/panthor_devfreq.c
+> index 2249b41ca4af..cab86e9c9d46 100644
+> --- a/drivers/gpu/drm/panthor/panthor_devfreq.c
+> +++ b/drivers/gpu/drm/panthor/panthor_devfreq.c
+> @@ -60,20 +60,56 @@ static void panthor_devfreq_update_utilization(struct panthor_devfreq *pdevfreq)
+>  	pdevfreq->time_last_update = now;
+>  }
+>  
+> +/*
+> + * Whether a new rate can be applied to the hardware now.
+> + *
+> + * From the start of panthor_device_suspend() until panthor_device_resume()
+> + * has enabled the clocks again, the GPU clocks are about to be disabled
+> + * or are off, and the GPU power domain may be down. devfreq can still
+> + * call ->target() in that window: sysfs
+> + * min_freq/max_freq writes, thermal cooling and PM QoS requests all end
+> + * up in update_devfreq() whatever the device state.
+> + *
+> + * Changing the rate then is pointless, and harmful where the core clock
+> + * is managed by firmware: on RK3588, setting SCMI_CLK_GPU to a PVTPLL
+> + * rate with the GPU power domain off makes TF-A access the powered-down
+> + * GPU GRF, which ends in an asynchronous SError. So while the device is
+> + * suspending only the suspend frequency, applied by
+> + * devfreq_suspend_device(), reaches the hardware, and nothing does
+> + * while it is suspended. devfreq records the other requests: they are
+> + * applied on resume or at the next governor update.
+> + */
+> +static bool panthor_devfreq_can_set_rate(struct panthor_device *ptdev,
+> +					 unsigned long freq)
+> +{
+> +	struct devfreq *devfreq = ptdev->devfreq ? ptdev->devfreq->devfreq : NULL;
 
-Write the limit in 64-bit words, rounded down to whole 64-byte bursts:
-the encoder finishes a burst it has started, so an unrounded limit lets
-it write up to 56 bytes past it.
+I'd rather use devfreq::suspend_count to detect if the devfreq
+component is suspended, since it gives us a better granularity than
+panthor_device::pm::state.
 
-Found with an LLM coding assistant while porting mainline Linux to a
-Rockchip RK3026 board; the assistant also drafted this change. Tested
-on that board: overflowing frames now stop at the programmed limit
-without writing past the plane, and frames that fit are byte for byte
-the same as before. Not tested on other SoCs, including the STM32MP25,
-which shares this code.
+> +
+> +	switch (atomic_read(&ptdev->pm.state)) {
+> +	case PANTHOR_DEVICE_PM_STATE_SUSPENDED:
+> +		return false;
+> +	case PANTHOR_DEVICE_PM_STATE_SUSPENDING:
+> +		return devfreq && devfreq->suspend_freq &&
+> +		       freq == devfreq->suspend_freq;
+> +	default:
 
-Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
-Cc: stable@vger.kernel.org
-Signed-off-by: Sergei Khomenkov <shomenkow@gmail.com>
----
- drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+When PANTHOR_DEVICE_PM_STATE_SUSPENDING is set, not all HW
+components have been clocked/put out of reset. It's probably okay
+for power domains, because those deps are described through device
+links, and the dependencies are resumed by PM core before the
+panthor PM hooks are called, but this is fragile, and that's another
+reason I think we shouldn't rely on panthor_device::pm::state for that,
+but on devfreq::suspend_count (or any other internal panthor_devfreq
+state that tracks the panthor_devfreq component status).
 
-diff --git a/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c b/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c
-index 86cc1a07026f..665a87e9fe92 100644
---- a/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c
-+++ b/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c
-@@ -55,7 +55,12 @@ static void hantro_h1_jpeg_enc_set_buffers(struct hantro_dev *vpu,
- 	vepu_write_relaxed(vpu, vb2_dma_contig_plane_dma_addr(dst_buf, 0) +
- 				ctx->vpu_dst_fmt->header_size,
- 			   H1_REG_ADDR_OUTPUT_STREAM);
--	vepu_write_relaxed(vpu, size_left, H1_REG_STR_BUF_LIMIT);
-+	/*
-+	 * The limit is in 64-bit words. The encoder finishes a 64-byte burst
-+	 * it has started (measured on the RK3026), so give it whole bursts.
-+	 */
-+	vepu_write_relaxed(vpu, round_down(size_left, 64) / 8,
-+			   H1_REG_STR_BUF_LIMIT);
- 
- 	if (pix_fmt->num_planes == 1) {
- 		src[0] = vb2_dma_contig_plane_dma_addr(src_buf, 0);
+> +		return true;
+> +	}
+> +}
+> +
+>  static int panthor_devfreq_target(struct device *dev, unsigned long *freq,
+>  				  u32 flags)
+>  {
+> +	struct panthor_device *ptdev = dev_get_drvdata(dev);
+>  	struct dev_pm_opp *opp;
+> -	int err;
+>  
+>  	opp = devfreq_recommended_opp(dev, freq, flags);
+>  	if (IS_ERR(opp))
+>  		return PTR_ERR(opp);
+>  	dev_pm_opp_put(opp);
+>  
+> -	err = dev_pm_opp_set_rate(dev, *freq);
+> +	if (!panthor_devfreq_can_set_rate(ptdev, *freq))
+> +		return 0;
 
--- 
-2.53.0
+If you return zero here, the new frequency is assumed to be applied,
+and it messes up with the devfreq state (::previous_freq for instance)
+that was set on devfreq_suspend_device(). If we assume that rate
+changes should be rejected while we're suspended, this should probably
+return an error.
 
+>  
+> -	return err;
+> +	return dev_pm_opp_set_rate(dev, *freq);
+
+There's another race between devfreq_suspend_device(), which will
+restore the ::resume_freq, and a concurrent devfreq_update_target() call
+that's here to set a new rate. Using devfreq::suspend_count won't help,
+because this atomic is decremented before the resume_freq is applied,
+and the devfreq lock is only taken around the devfreq_set_target() call.
+
+Honestly, it feels like we're trying to address the problem at the wrong
+level. I would expect governors to stop calling devfreq_update_target()
+between the DEVFREQ_GOV_SUSPEND and DEVFREQ_GOV_RESUME events (which
+should probably be sent before suspend_count is incremented and the
+suspend freq is applied). And I'd also expect some kind of
+locking/synchronization to prevent races between
+devfreq_update_target() and devfreq_{suspend,resume}_device().
+
+>  }
+>  
+>  static void panthor_devfreq_reset(struct panthor_devfreq *pdevfreq)
+> 
+> ---
+> base-commit: 8deaade4a5a4ff635df91e246e42139ab2b33f6d
+> change-id: 20261110-panthor-suspend-clk-11d5604fe5be
+> 
+> Best regards,
+> --  
+> Arun Iyengar <aiyengar1990@gmail.com>
+> 
+> 
 
 
 _______________________________________________
