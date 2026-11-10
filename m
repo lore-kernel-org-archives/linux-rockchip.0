@@ -2,91 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 250A2606A32A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 17:20:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E5EB606A323
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 18:02:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=n4lSKUHw;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=IAL2bxxV
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=N4Vpmf+I;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=JmwvKXdM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=pNDgfA2gTNLGhCskWHjeZBJqXBE6Zd7VOIRsvTpmI1E=; b=n4lSKUHwUNwMmg2SLroZkOndZ/
-	cuxFjNq4zZgkkcC6mGUu6yBrtfwkB4G+Xh2GPpQnZpK3JhZMc5zhI2KgFXyWjhhhfTRDT6N7hlJkZ
-	dvW+JklQjQfbKcXEFQY3dxMmKa1efc4z21KsEBGEOiEBgJ0LkzXEapc00oOu4bRX3m4z2K93rrjc8
-	8obnLu+ZQIrdqSkFJBy+L7xdA72b1Fa0U3eEySGY0QfYhcV+1MedC43+5sVBrW42m430bTHV2bVq/
-	FSQozVgraiHRM44+eHrfVto4YJlD3nWO1IEbgnmOFIXrzQ2uz/egDYps+YZsccmqOJcoX4KLmibmK
-	nykZ2qGQ==;
+	bh=MIhkluH7uKpuVLE+H6XaxlCg76jLVMzDZIWDyukmMwM=; b=N4Vpmf+IcCuOoMVgrydD0RZtpb
+	Aw74KrvP4jg0DXrqPKP3q40HcUJZb26StGC76JN/v1vrLAl87w4UDTChgx4uj8y01u+PDquoovgKC
+	s5flbJmc7CWd6Ia1tjkRNopZTugxyKE7h5zYNkS+IieXjuSoN5s+rGwWbrIQ8T2Egt+2lfAJTqjTh
+	N/qjKgvvG+VQMR9JMPlqKmNI+yNmYdkocBr2nxsK5eeZ6n5AvsN00PuE1W9CYds+WQ1xvXFlcMLmG
+	ItL5lTGbc0V/KC6P8zNDwDJIp55UwFEQVZYK1DA5xBZj2GlM5zRFIgs04t0iTcHLcV/aBt05Xbd3f
+	Lx9HNdzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQpW4-00000004esx-2F3O;
-	Tue, 10 Nov 2026 17:20:16 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xQqAd-00000004kcJ-0Wqn;
+	Tue, 10 Nov 2026 18:02:11 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQpVZ-00000004eDf-3SU7;
-	Tue, 10 Nov 2026 17:19:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794331179;
-	bh=J10wxRz8jVsNiG2URQvahFtGbMuwglI13tTx3pFQivE=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=IAL2bxxVciIcQm/N7ZPYxeFGocvptpdexQ67ujXkoibAKwYEJTRQLL0Cff3JOJOOG
-	 FOY7mC6sVwvCAqpv/2xRGxKKwzhiSVJUAcPVZmMFUcND52aLX9MkzfmO2rB0faWIeD
-	 /QnXH8kecb0lMaMXf2EA7HBh52neSvKEmeHFK5iQWKU+jHDP1wZmQ6PQLRAbFV+1V7
-	 6XDVsFx3ybB3ITq2ZGDqMcAhCyJ3PJLExqMLrpSv0VPyS1w8z5BEjpKedcqQrB/iJO
-	 DVNX3e3TKiVDWbIXattR/tPDz7cKgyjP5OIplps+lQjVBS0hvIkiGx6EWAOe/4cA6E
-	 PKBei2HQk5HTA==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A4B8417E1054;
-	Tue, 10 Nov 2026 18:19:39 +0100 (CET)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 11F53480038; Tue, 10 Nov 2026 18:19:39 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 10 Nov 2026 18:19:18 +0100
-Subject: [PATCH v5 5/6] phy: rockchip: inno-usb2: move suspend handling
- into new function
+	id 1xQqAb-00000004kbx-3TCD;
+	Tue, 10 Nov 2026 18:02:09 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 40D73405FE;
+	Tue, 10 Nov 2026 18:02:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E84F41F008BD;
+	Tue, 10 Nov 2026 18:02:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794333729;
+	bh=y6fbqcobCahuBm1XBPjTDEf+ag8w3TcHGc1/4po/nHM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=JmwvKXdMQq2NZIpNHAlm7z7TzpeSQ5L2ONEUAW9u641hXSuo0FN1b3QEqSW0N0Ud2
+	 Z1JFdfZ2ynyqLUSM0BsThP0LpHl3q9jrnUHWPGLN8N31rCaeJy3g+/BaN1TGnIMHVT
+	 WWX/IAs3fFqBac3F5kIGGrdlwz3yO05wr0WJHNWjTbfXB06/wkNCWrag5WJ30ufIUE
+	 L68y4NKtYnp0p2LgjchURDzV5PZ28mCQkz655wPbIb8xoGGPVqN2b2RybGAwc8eIaW
+	 QUKqJeiD+/WyN8r8WGaq9jApWSW3nPDiUv+yqYJxe5/rhcNji15ZwCC/tAontg/Ba2
+	 /QuovHZVxxxsQ==
+Date: Tue, 10 Nov 2026 12:02:05 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Jason Yang <jason98166@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Guochun Huang <hero.huang@rock-chips.com>,
+	Vinod Koul <vkoul@kernel.org>, devicetree@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, linux-phy@lists.infradead.org,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Michael Riesch <michael.riesch@collabora.com>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH v6 2/9] dt-bindings: phy: rockchip,rk3588-mipi-dcphy:
+ Select TX or RX, add phy-type
+Message-ID: <179433372468.928467.11546944638798684027.robh@kernel.org>
+References: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
+ <20261110-dcphy-rx-v1-v6-2-d681ba20b36a@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261110-phy-rockchip-inno-usb2-clock-fix-v5-5-d2e24582ab22@collabora.com>
-References: <20261110-phy-rockchip-inno-usb2-clock-fix-v5-0-d2e24582ab22@collabora.com>
-In-Reply-To: <20261110-phy-rockchip-inno-usb2-clock-fix-v5-0-d2e24582ab22@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- William Wu <william.wu@rock-chips.com>
-Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Igor Paunovic <royalnet026@gmail.com>, kernel@collabora.com, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2520;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=J10wxRz8jVsNiG2URQvahFtGbMuwglI13tTx3pFQivE=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrzUiornpGl3xGPeN/rN6wOXg51cdGxdbdN5
- 2NVQq+GDGxk5okCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq81IqAAoJENju1/PI
- O/qaU4EP/A0UpAXKloA2+nYEnHYjRZQrUOV/HS1dUABhV9U1yitTWEFv9vdinm8vsY3ToFam7wW
- qiX8CCeGv53JQuFdRJVbdjID9ghHbZ6u4ZtqtECpT+6O1dZLiugWl3AdKSS11RCt3zBFHHavO+A
- YjO2VeqRGXA2DJf0UUvNuIImoaJN0XPsbEiBziw7jUbEsFoGan374CmMf+w61v7P/rR/za5aAlE
- uVw5cLBchTkxrXSW2AH+GyxmzokBmmV/TchsTF0sMQtJNJTb6Bw24pC5Cn6K314/2QFgbLm5nnm
- TdRRwNAoB1ciwrdZwNsFaFLcmt+MF3muX/bNlteOSK3Rl2FmZL0t6PdL0+9PzS5V1sg+OLHbcTU
- qhxVBaMZNjuuqpA+a4F13V1fUHgkZOyxXqJX0nV2/UjsOQ4zlMsku9TUtN7Qf2ioSIUJT5RI8JG
- s/W5h+yv5G/fp+HEiBhzthP0wHVs6KXsQYipTHLapUNsupwnDcI8tr9kHXAYQqCTXnc8aAqP4J9
- q7xmK5HGRZ6x4VoG798dwQdkNc4YFkI54iVeD4AxUhQoSiwgfICCg4zo+oGyuyF0VDg3dUdq35h
- H7sX7zLZD0AzNUT3vv1Q+uyCPyLfa1Cf5UYCg3zdqE5GpfBzrsioOUM0OiPh09U/+axyxWlzZ5v
- iHUuI4fUzGny9HbJ4PworAQ==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_091946_137597_ADAF8C7E 
-X-CRM114-Status: GOOD (  13.37  )
-X-Spam-Score: -2.1 (--)
+Content-Disposition: inline
+In-Reply-To: <20261110-dcphy-rx-v1-v6-2-d681ba20b36a@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,87 +80,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Move handling of the PHY suspend handling into its own dedicated
-function. No functional changes intended.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 38 ++++++++++++++++-----------
- 1 file changed, 23 insertions(+), 15 deletions(-)
+On Tue, 10 Nov 2026 16:18:05 +0800, Jason Yang wrote:
+> The Samsung MIPI D-/C-PHY block on RK3588 and RK3576 has a transmitter
+> for DSI and a receiver for CSI-2, and the DSI host and the CSI-2 host
+> can use the transmitter and the receiver at the same time. The single
+> cell of this binding selects the mode and refers to the transmitter, so
+> the receiver cannot be described.
+> 
+> Change the cell to select the transmitter or the receiver. The
+> transmitter and the receiver cannot operate in different modes [1], so
+> the optional phy-type property of the PHY node sets the mode for the
+> whole block, D-PHY by default:
+> 
+> 	/* the MIPI DSI host, driving the transmitter */
+> 	phys = <&mipidcphy0 PHY_DIRECTION_TX>;
+> 
+> 	/* the MIPI CSI-2 host, driving the receiver */
+> 	phys = <&mipidcphy0 PHY_DIRECTION_RX>;
+> 
+> For C-PHY the consumers stay the same and the PHY node gets:
+> 
+> 	phy-type = <PHY_TYPE_CPHY>;
+> 
+> Existing DTs on a newer kernel: PHY_TYPE_DPHY and PHY_TYPE_CPHY remain
+> valid as deprecated values. They select the transmitter and imply
+> phy-type = <PHY_TYPE_DPHY> or <PHY_TYPE_CPHY> respectively, so nothing
+> changes for them.
+> 
+> New DTs on an older kernel: an ABI break. The older kernel ignores
+> phy-type and takes any cell value as the mode of the block. A DSI node
+> with PHY_DIRECTION_TX therefore gets no display, and a CSI-2 node with
+> PHY_DIRECTION_RX gets no camera.
+> 
+> [1] RK3588 TRM: section 22.1 (overview): "The TX and RX only support
+>     operate in the same PHY mode."
+> 
+> Suggested-by: Michael Riesch <michael.riesch@collabora.com>
+> Link: https://lore.kernel.org/r/94d47cab-10c6-4ec3-84a0-3bddc9d67f5f@collabora.com
+> Signed-off-by: Jason Yang <jason98166@gmail.com>
+> ---
+>  .../bindings/phy/rockchip,rk3588-mipi-dcphy.yaml       | 18 +++++++++++++++---
+>  1 file changed, 15 insertions(+), 3 deletions(-)
+> 
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 4c0feb6b20ad..99416f6ba1c4 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -321,6 +321,27 @@ rockchip_usb2phy_clk480m_clkout_ctl(struct clk_hw *hw, struct regmap **base,
- 	}
- }
- 
-+static void rockchip_usb2phy_set_suspend(struct rockchip_usb2phy *rphy,
-+					 struct rockchip_usb2phy_port *rport,
-+					 bool do_suspend)
-+{
-+	property_enable(rphy->grf, &rport->port_cfg->phy_sus, do_suspend);
-+
-+	if (!do_suspend) {
-+		/*
-+		 * For rk3588, it needs to reset phy when exit from suspend
-+		 * mode with common_on_n 1'b1(aka REFCLK_LOGIC, Bias, and PLL
-+		 * blocks are powered down) for lower power consumption. If you
-+		 * don't want to reset phy, please keep the common_on_n 1'b0 to
-+		 * set these blocks remain powered.
-+		 */
-+		rockchip_usb2phy_reset(rphy);
-+
-+		/* waiting for the utmi_clk to become stable */
-+		usleep_range(1500, 2000);
-+	}
-+}
-+
- static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
- {
- 	const struct usb2phy_reg *clkout_ctl;
-@@ -524,20 +545,7 @@ static int rockchip_usb2phy_power_on(struct phy *phy)
- 	if (ret)
- 		return ret;
- 
--	property_enable(rphy->grf, &rport->port_cfg->phy_sus, false);
--
--	/*
--	 * For rk3588, it needs to reset phy when exit from
--	 * suspend mode with common_on_n 1'b1(aka REFCLK_LOGIC,
--	 * Bias, and PLL blocks are powered down) for lower
--	 * power consumption. If you don't want to reset phy,
--	 * please keep the common_on_n 1'b0 to set these blocks
--	 * remain powered.
--	 */
--	rockchip_usb2phy_reset(rphy);
--
--	/* waiting for the utmi_clk to become stable */
--	usleep_range(1500, 2000);
-+	rockchip_usb2phy_set_suspend(rphy, rport, false);
- 
- 	rport->suspended = false;
- 	return 0;
-@@ -553,7 +561,7 @@ static int rockchip_usb2phy_power_off(struct phy *phy)
- 	if (rport->suspended)
- 		return 0;
- 
--	property_enable(rphy->grf, &rport->port_cfg->phy_sus, true);
-+	rockchip_usb2phy_set_suspend(rphy, rport, true);
- 
- 	rport->suspended = true;
- 	clk_disable_unprepare(rphy->clk480m);
-
--- 
-2.53.0
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
 _______________________________________________
