@@ -2,87 +2,85 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DB88160A262A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:17:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B762F606A331
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:17:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3unPx+s/;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=h7fWdCx1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Zq/Gtxzm;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=MUo6AlYA
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=tDxxZ+o8gmh+pdpLKIIbmG9sEMsQPFBn8c0KQc2pYjw=; b=3unPx+s/+5gCl1jW1byHqxATvz
-	S33D23HGaUR9vjB0X0fE4SRqQsydzuro7s4BsNk760IJc5V/DSyeTYjC5DWxT8aQVc4jNV/nynDua
-	DcWT8yeNWriiloFw07bc0UD1FcySppLSdMw0THE9Mj0edmn8SC+IqnOJbNo9DIrug9UtoZPQOnZmS
-	w4Ti1kXL+4DraNWyes9IGPr4Vs6cfbocoUfo6T44H43md6kU7FAR4f2xLFXpDdLLWgJJlCy4wN50o
-	T6C8loy+JbeUqgG2SqrgYrWDD0wFkuYyiQxGTyRWFrdN4PJi5xYLxdRbbidZFqpcR3vgyfphV+tj6
-	xuV312BQ==;
+	bh=IrAoXRSwfSHDNzU0Ilc52gbpH4pRvw4+FTlzY4oDMXM=; b=Zq/Gtxzm3JL06JKO3j0qYEIKv9
+	lMZZfucDgXJ6YxNE30aC22I6M1FBBAon5TqVVD63vCtQLEHgH2Cl37vfJaj7MjsE+sCOMeOthRoFy
+	aG7KEt1Z0aQtRO2G6qEJyLpeWYCOx0INOgdZyABYIBNG552m0Oqs7Y5R6RA8lZbxfRQajfiABkNTH
+	5O6noMJBWatlbRs9glpdBOR22+mN4oZ1xv2M3h5z5JxNAwaPJ2Ei8PyQxN9QaDGubR0kOjIQwSHN4
+	k4iz09b3CmItoiM7FhTGzKItx6EIA6BkZN5WTb6Exr5Cz2b1Ya/KA6ZoGVRP+8eqvTfBO72KGiHha
+	rZkB5cMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg6I-00000002oSY-395v;
-	Tue, 10 Nov 2026 07:17:02 +0000
+	id 1xQg6N-00000002oX5-2bPL;
+	Tue, 10 Nov 2026 07:17:07 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg6G-00000002oQx-2qdN;
-	Tue, 10 Nov 2026 07:17:00 +0000
+	id 1xQg6H-00000002oRT-2eD6;
+	Tue, 10 Nov 2026 07:17:02 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D051B63284;
-	Tue, 10 Nov 2026 07:16:59 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 6784463799;
+	Tue, 10 Nov 2026 07:17:00 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794295019;
-	b=wupRT88DsqM74MQ8sNnoIZ6T3rxVo824Lk2PO51Q8fden/Hf8mAc0HVI4/JsT8goG73w
-	 kLnRupvLqvnY4cGr394Ed6JIGokRQsBwsaYRUDieOnpDtGqkH7MKe925HvXGXiQp3MneR
-	 ntJagMJLVnqyTHgTpE9aTnPwqhWUHWhBEKKB2SQojaC6cOZT6YNAvxYNiz9sZDSzF0Rfm
-	 ktqewbKC2+sshZ4K3iTuieWehPZznR/9Xg974uvS3Yo+mV0ouofr/XuhotywEfCTp2NLo
-	 8XYid/yZrQe2Hd7BI+udWMtj3k2XR6QXEK6Jq/VY/KE5vVMaZ/GvoRkSeL14qqxHqdg==
+	t=1794295020;
+	b=vrbrI/rHDQ1T7krxW0O5ExyBptna2MLxZ/v7DRoOK73UZCrs62abC87i3fQBji2HrLMl
+	 bacVl6j66lJdjlGUpSuoZc4of85Yoc9RtmjIyOxplkxg6bjDKrg86DlYFKR6hfAorSBGf
+	 /g+mFzkyynKo+Xbsx0jC/lRPKU+iL7Ck6NTzLtHoA1cGneRbbE75SUExNa8BP3947m9u+
+	 HbwmBGzAZhfUD3mS3iFPTHS9XcHqOGgKD5L+HpHgz0lKUq0oRobUgIpIakyyVGTjARnKi
+	 ui62MQeMemHW1hC2J32s9MHG8PS3Zk+nRTAVlKdiB+LJW3U1gJbD+kdm9CPTzFHZxaw==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794295019;
-	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
-	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
-	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=4ftw/tqrcxx9i8NF1YbxSWaStdrbSjcLJBYRu56rtjU=;
-	b=crYNEzHcUDFFp2GnJVra2CSNwz5Hh5GMgHpNbXfpj0ikyrLJUA9XnQsbi9TGfbnW1rJK
-	 +uaU1gtKJBEAWSW9WdwRfyfLMnLkNmbyZ5LU0E2M/HZuSq+crZWsRnxwezB5TpjNibCYX
-	 hcIE2GTaet1/vuVuvAx7Z3h2AouZl9fFPEHy/MFts7rOo7LX6fNCFMKCafwwJnEddKGGA
-	 fngYzduZhgh/GRubH7Z4NHmHmPeG6UFtMGtsJXgPu5HSzl4Jw5AUNPcp6betbPRoruIT+
-	 vrSx7uPHP1OyNCICbREML4QrcBXVwB3x7yqOfItYpn3XGedfG4SrV5BJ8idGwTDYNLQ==
+	c=relaxed/relaxed; t=1794295020;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=Xm/hDezALdKgLZC6Xh1IsOS0PUBPGaKTPc3nHwBJQ/4=;
+	b=V/WwnkTC7vQwCT3y21GHDMtQV541zJMestfOvsQJibDkg5s7fk5gHtPGuqRJc8wotMM1
+	 EsFJDv96qkC/jLsw3yKD/78QsFbiYHcdRPW9irOfk0sNccrRyWfl+eLkABYgKv4Ul69P8
+	 SqjBKmiz48ZuEj136anhPgihMZief7FP7CKtA+2yX+21JaIvpxWMqZXvHtK65SUWizp40
+	 tM7bwF5GWJIoItgSQBd2ogSMdLO9d3lAQUdLBMyuLHwEpQUvnx+rpMKUx5G/IhuttaETG
+	 RJ/pHUENEYxUXE8VlK2JCu83vScQm55dmT7DmcYO2EM/AZHfUwrGxl5v/dk6s8bf18g==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id BED501F008A1;
+	by smtp.kernel.org (Postfix) with ESMTPS id E2D001F008A4;
 	Tue, 10 Nov 2026 07:16:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794295019;
-	bh=4ftw/tqrcxx9i8NF1YbxSWaStdrbSjcLJBYRu56rtjU=;
-	h=From:Subject:Date:To:Cc:Reply-To;
-	b=h7fWdCx1EeHpALn34KiekM8ArG5NzmVVxvIDz4XvyqlXbHo5TnNOKldOwveBpU2kS
-	 nPetamxERlGxs1fFCENMnebjb526sg7+5EVgvKm7t4A12beCAEVC2ANbNvgrrFDjAm
-	 W5/nr1dw+hb16Qn1Lw+Z4vABD2Qgpwmiwk4gNxKzCP3/cPdJq0BQbR3xlRdZoReXd3
-	 blM4YnmW2t483+oDrglaunF5mBOg8gwyJsF0ou5LE9FZegwRUPR9wdoakjdYy1GYD8
-	 3qU2vMsXJEzIoldM8WhjOy9YBYIwbnExPxRUlZ/rW9NI/H07cU4Kp8OoaeM0EAhHWO
-	 RE+xxMLGOhqLQ==
+	s=k20260515; t=1794295020;
+	bh=Xm/hDezALdKgLZC6Xh1IsOS0PUBPGaKTPc3nHwBJQ/4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=MUo6AlYAI+MyxMt8KCEB4MD4bflYgACIs06smMQeCtcrOsGQJqsCb7YvCI36F7K3p
+	 SBT3H0dsc5kfe0Ybxb9bj67PzQIzgZa9X4YLD4Ys47R1TOJaaxInOrpqd70HLcUIsy
+	 OVKSL/ku65KAoAs8B2r5XTQrcXhwUfHhmxSDPmfm0oZFALgA6296tJTVZQO+lqjE0Q
+	 k2a7qjxHLZ/KNHTri8LLup2UebaybPCAHjnKBgS3F5UNQlfIUVoVzH60rbEsMYOy8b
+	 f9lWQq0nSfVQkxYnYOqueb01N86ensMf9jMrWmvArjxycvjgvTG/B6GHEvm4dOrttj
+	 qGCQu6NRpDtsw==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 4EC71488E6;
+	by lkml.kernel.org (Postfix) with ESMTP id 74BBC4896C;
 	Tue, 10 Nov 2026 07:16:58 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Subject: [PATCH 0/2] ASoC: rockchip: i2s-tdm: register the PCM before the
- DAI
-Date: Tue, 10 Nov 2026 07:16:57 +0000
-Message-Id: <20261110-asoc-rockchip-i2s-tdm-v1-0-f32951b3c527@gmail.com>
+Date: Tue, 10 Nov 2026 07:16:59 +0000
+Subject: [PATCH 2/2] ASoC: rockchip: i2s-tdm: add the reset value of XFER
+ to the regmap defaults
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMMQ6DMAxA0asgz7WEM0TAVaoOqWPAVCUoBoSEu
- HvTdnzD/yeYZBWDrjohy66maS6gWwU8hnkQ1FgMrnaeiGoMlhhz4hePuqA6wzW+Mfrg+8ZLQ6G
- F0i5Zej1+3/vjb9uek/D6ncF1fQCxBFb3eQAAAA==
-X-Change-ID: 20261110-asoc-rockchip-i2s-tdm-d6a6f86e81a9
+Message-Id: <20261110-asoc-rockchip-i2s-tdm-v1-2-f32951b3c527@gmail.com>
+References: <20261110-asoc-rockchip-i2s-tdm-v1-0-f32951b3c527@gmail.com>
+In-Reply-To: <20261110-asoc-rockchip-i2s-tdm-v1-0-f32951b3c527@gmail.com>
 To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
  Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
@@ -90,11 +88,11 @@ To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
 Cc: linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295018; l=2133;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295018; l=1378;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=fwtymsovofR1O3F9W5rqYLeo/TK8Hr6MiEo7/hJuKEE=;
- b=Eoei1XstvuoctnMT5F4uX9OmuONHsAC3pwbJT55sfLRkBX/FP2npyYSgUi8pCG8GBa5ap4vSV
- tX2RMrltZWSAXGsWglSG6yXbav1QNF1YAW3u9vbBLrHe9ogyuLn3o5+
+ bh=tfT+jEvZfGZPAFf1LpE7sgBjWqRXKwyeQFTfBhDpaGw=;
+ b=YA1G5nxGLOCp90pxzz2hYjwcZlCjhLKo+suxmsn7T/GVXpGZfLXsiynDfnogWAhXP0lSCYmGE
+ t0A4QEnH8I6A19D8HzUVF2nvpDc/Trndk0VEaZToOuTFuXSLZQMgCw+
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -121,51 +119,43 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The Rockchip I2S-TDM driver registers its DAI component before the
-dmaengine PCM component. A sound card that was registered earlier and
-waits for the CPU DAI is bound by snd_soc_component_register() as soon
-as the DAI component appears, which also satisfies the DAI link's
-platform (it defaults to the CPU of_node), so the card binds without the
-PCM component. Every open of the PCM then fails with -EINVAL from
-snd_pcm_hw_constraints_complete(), silently. On RK3588 this happens to
-the HDMI sound card whenever the HDMI codec probes before the I2S
-controller. Patch 1 registers the PCM first, as rockchip_spdif already
-does.
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Patch 2 adds the missing regmap default for I2S_XFER, which otherwise
-warns "using zero-initialized flat cache" on its first cached access.
+I2S_XFER (0x1c) is writeable and not volatile, so it is cached, but it
+has no entry in rockchip_i2s_tdm_reg_defaults[]. The flat cache then
+treats it as uninitialised, and the first cached access of it -- the
+regmap_update_bits() in the trigger and stop paths, or regcache_sync()
+after a runtime suspend -- warns
 
-The non-TDM rockchip_i2s driver has the same registration order; the
-same change for it will follow once it is tested on a board that uses
-that controller (the RK3588 board here only has I2S-TDM instances).
+  rockchip-i2s-tdm fddf0000.i2s: using zero-initialized flat cache, this may cause unexpected behavior
 
-Tested on an Orange Pi 5 (RK3588S): with patch 1 the HDMI card has its
-dma:fddf0000.i2s component (debugfs asoc/hdmi0), speaker-test on
-plughw:CARD=hdmi0 plays, and "aplay -D hw:<hdmi>,0" no longer fails
-with "Invalid argument" (traced before the fix to
-snd_pcm_hw_constraint_mask returning -22 with no dmaengine component on
-the runtime). With patch 2 the flat-cache warning for fddf0000.i2s is
-gone and HDMI playback is unchanged.
+It is the only cached register without a default: TXFIFOLR, INTSR, CLR,
+TXDR, RXDR and RXFIFOLR are volatile and all other registers have one.
 
-This series was developed with Claude (Anthropic) as a coding assistant:
-it wrote the code and the commit messages, and I reviewed and tested
-every change as described above.
+Add XFER with its reset value of 0 (TX and RX stopped), which is also
+what the zero-initialised cache assumed so far, so no register value
+written to the hardware changes.
 
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
-Arun Iyengar (2):
-      ASoC: rockchip: i2s-tdm: Register the PCM before the DAI
-      ASoC: rockchip: i2s-tdm: add the reset value of XFER to the regmap defaults
+ sound/soc/rockchip/rockchip_i2s_tdm.c | 1 +
+ 1 file changed, 1 insertion(+)
 
- sound/soc/rockchip/rockchip_i2s_tdm.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
----
-base-commit: cde5523c75f1320a55ac1d55a717ccbb566557f0
-change-id: 20261110-asoc-rockchip-i2s-tdm-d6a6f86e81a9
+diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
+index 0abd200a4268..63ef7f676a75 100644
+--- a/sound/soc/rockchip/rockchip_i2s_tdm.c
++++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
+@@ -926,6 +926,7 @@ static const struct reg_default rockchip_i2s_tdm_reg_defaults[] = {
+ 	{0x08, 0x00001f1f},
+ 	{0x10, 0x001f0000},
+ 	{0x14, 0x01f00000},
++	{0x1c, 0x00000000},
+ 	{0x30, 0x00003eff},
+ 	{0x34, 0x00003eff},
+ 	{0x38, 0x00000707},
 
-Best regards,
---  
-Arun Iyengar <aiyengar1990@gmail.com>
+-- 
+2.55.0
 
 
 
