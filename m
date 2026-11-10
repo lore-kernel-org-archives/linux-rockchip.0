@@ -2,105 +2,105 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DFA8A60A261D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:17:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 427E9606A337
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:18:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1JGIMg+/;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Dj75bwQv
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qLgC9n5J;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=eil38Y9+
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=dgmOdveR7eM7B2ZujfWDyR2T0qPApmrEfrbFYOGfZ5E=; b=1JGIMg+/wriHoR+YU0/NDcAztx
-	juWVmJerLKHgbuBkuv/RvWOcS3xwj6lsbjdqg7pqg0fYdvq63Uu2Ru2r+XiKOPcwapaWLoCVkPJZN
-	dg62XBmRQMApiclNpFAj3QmTguagDmkZFZyjV/4qRhTuLRWLpj7iAgPb71n5V+sxdlysyJGaQ70WI
-	GAwDdamhrU/byJpgeAnzWwSzeOfHfBdNOz9foewM7HGBn6m4Tp+ynh/PUmHkY52FCPpu+yFcVTzd9
-	8IwKGs78NFbISPF6dzXECwcsZNROoKyyOc8ZW3m/hTTrm5/BLz8dk6jC/Njl+6Ry20GbPIZcjfA8w
-	HKXVEeJA==;
+	bh=7Cs9HvMnxeg44LgMhwMak0aQ8GdBSgZVqce3hbYRtxw=; b=qLgC9n5J3Ca6+5yiQM+wnK3Ujt
+	8ftoNbadecA7wz99IDD8IleVxQOkThL7aL3zVNgVZmYt9wYaTEr4rwVHJtJQPmZ3NKKSm5jrCKUZb
+	Z+cmF+f+HJm62mNJ3p1ozhC/lyvXFo9jLjmJESpFBBUD2M7cTR1rDQTUwLIq7Ypd3r9XXptqeoGOH
+	M1bRMhB+0vomnEpL1tM2az2hLr6O0aVMXGjZYcAyOSM2JmhqquawNHMAMpQkxhbn50XCIlSwP3jnc
+	WwcmUWRUzNQmeBQl+eCHrqu3OT4aJWPwkXRiysCgWfzzwVpi9lMRyOMg5FXsL2xsPva8a/nbkGzKx
+	cASmdqyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg6y-00000002p00-16KU;
-	Tue, 10 Nov 2026 07:17:44 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xQg7O-00000002pYR-2x7A;
+	Tue, 10 Nov 2026 07:18:10 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg6n-00000002onu-1wlO;
-	Tue, 10 Nov 2026 07:17:36 +0000
+	id 1xQg7B-00000002pKm-2Yrf;
+	Tue, 10 Nov 2026 07:17:57 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 29DA045A4B;
-	Tue, 10 Nov 2026 07:17:33 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 48DE943E80;
+	Tue, 10 Nov 2026 07:17:57 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794295053;
-	b=zf6ToK3nbaqIQY3YhOXq4eDfLM674YZUsrWmJjDYZb68nkVXaiXkVdgbB3Oa7i2Owktu
-	 Ig5XA3XytjqYdtxq2LBc5iwMEXBR5BE4At1XTToQjk5nriDZe0zkls9rednCmJoiCj2Yr
-	 aSK3xfeby/c5Gpefr3ibODhvLsw5irJTBbnsJFU6oQPLTD4v+jSHwzjx/eGncFpr/fg5r
-	 NmMfVTtayRaizyBPP4TX1Qq4yQTg1wsuKzHO6mYg2dyrv7+/hGIgNhcSp2KCnkjeHZ1Ls
-	 Q6OcLKYV6wT66qpdbQn8SmRk/DVBA5ZKIpFgdgd06y7OSoWwtHkzeUtVZMUMoViANqQ==
+	t=1794295077;
+	b=jxEk+a+bGQf28d6haf5zSPEZ1CgtB2E+7vFFvWjNK4h3Ilp2mtcTCE+Hw27Ou6fdCSMa
+	 sOkaBedb4Ozm+DNRzGabcyTGNJkmO26DA0tgOSyk3ueis/e3Ga+OC1FUHcLnJr7uB+UGX
+	 HbRrPcFm3i5xch3H1SBS51JKsQuL545fUty7S0+9HS13edFZNl8zssWpkmvedo1iUnWyC
+	 kqBdR2sEF/be4DfbDocxDdEijWwMxUh9/zGR50BChVHHlDGHsBP1PBb4mD7GBKUWflG54
+	 1LJg7FZ9gvCL+KoltBzxibp/Cyo6SutfU040MErr8LeS3PvPKTS/hOwLQX/m1X1CP1A==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794295053;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=CRzHgqSJ6wnWT7aGMz6+06OqkwIsCJsoPRU6TVLW0Ic=;
-	b=mWHQwrCU+Ya5XCNmEzq2D30eB5p22e+d0tVWkrD14xqTc4mVtaiR8VRZA3+pNt5n8NwO
-	 HlcsDQxkSPwbgoGAKYi1BOH92yvEu57iBPCsvhBIR6vq2hYHLjFVzGNJMSdjehWAdSrSI
-	 n0yLMRakZNWA5qDNY65FWfGPbEIIBiR7qzq9Z6yfI7rKvH1tm35hD1l2DNtiiFWde9r52
-	 o4x2T9MJKzj/rPbVQ4RgEaN1CcZv4kiGn8WGZDNMu/L300nP7Ggp4LOF9ExpJ68T8Ww96
-	 3o6hCFkzMuCAlH7LisKTe5ubFgOxXema93oE2n4k/qFGknvpjxuEsJOZ8GxUnk/tktQ==
+	c=relaxed/relaxed; t=1794295077;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=nbjokYsP/PPktFQVGK4/4wc40PIaNaNW8MewYjdMp20=;
+	b=a/9cnt2nisc40GX1jw5ZTGC/ZJusOTl/yxOo9XtUAf3vBWCW4llb1d6qfxxlaZX13f6W
+	 8VRiHZ7Ep+E2PBDbF49TNn/Lq5Sj/qE9qKUTyGHy71XLTHptPxnrD14DDF8xXtAr+yKK0
+	 B//zWmDWkPxdiX1UrF0gVk0c86f4lbSUVzxbDyZsLQvQVdXHYQAlshkpxDkxjZ/7DvSAc
+	 o5Wmx497HZCugvsv9LLR1zGA7HmTDRzvDJU1oZZMP0UmdYCjMMG7ne/drtoSG5qCMPx19
+	 w99qg+ZCeCJOspT+DujJT8eui+eJU9y29iBxMqqVjGRO4VwNvSSSRPTI+UALYB4rIew==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id CFF701F008A1;
-	Tue, 10 Nov 2026 07:17:31 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 70D2F1F008BC;
+	Tue, 10 Nov 2026 07:17:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794295053;
-	bh=CRzHgqSJ6wnWT7aGMz6+06OqkwIsCJsoPRU6TVLW0Ic=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=Dj75bwQvsSVgiDwgcG0P/1Vxm5fJKdifj1ppB3E+GqKJIJs6LJWPndJjod8FNXZP8
-	 hmdTpbemOCT8DFslAKgYpWqC98Z2QMaD1xi/7TkKpWogcDZdWaV6LVgCYPOu3Yiz0y
-	 f2FOG37aqOuniQoCNpvz/gmmaLA7g/G+SkKk0rhDBiUG2S0JxQzQHos8Hug3M4sBOW
-	 AEClr+kWistUSUEy6MLo8qCmU2Kn2ZCqHO57fJTrBIXYSNp24fNgkuzjJ0DKEyGNI0
-	 g61vR6sHKKuD88nL4boqt+ynzFMTvqcw0Rbey2XImaeFOX5a4Eji/ZU5E939lwY5Bf
-	 hFMJvkvCdM3sw==
+	s=k20260515; t=1794295077;
+	bh=nbjokYsP/PPktFQVGK4/4wc40PIaNaNW8MewYjdMp20=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=eil38Y9+30QF29BTbzBGmFogArMmWe+npbRIa83Ka6PT33SjLvQd74ja7qvC+Sqem
+	 m72N0nLvS2ZEBG1gZSYEeJNOjg3nRW2e4xSjlFpdvwHzfngHTDLonEee4gxIMU2tew
+	 jSk4C6FYHU2Gy6xi3/5k1XHFB5fD0fxLMX6hMIPW2tTviSUwuevK5PFdBdAaa5Nhaf
+	 Ko9S2427DUtpt9irG0iIAEGF7s6q2SvXmIs4dJJSXnKH/lZkjaAnK6OShzjZeQQhJk
+	 XXldjhXASO78rlK9lFcAhRQ1k69A0jTf13r6FB6ObW4b2FolNT6jzT7WWei4diTmQB
+	 UBaL/J7peLGsw==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 590E948978;
-	Tue, 10 Nov 2026 07:17:31 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 04F8E4896C;
+	Tue, 10 Nov 2026 07:17:56 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Tue, 10 Nov 2026 07:17:31 +0000
-Subject: [PATCH 1/5] dt-bindings: media: rockchip,rk3568-vepu: Add the
- reset lines
+Subject: [PATCH 0/6] media: verisilicon: Fix the JPEG encoder format
+ handling
+Date: Tue, 10 Nov 2026 07:17:55 +0000
+Message-Id: <20261110-hantro-jpeg-enc-fixes-v1-0-fc4dc7e985d2@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261110-hantro-robust-v1-1-6b6269c05bfa@gmail.com>
-References: <20261110-hantro-robust-v1-0-6b6269c05bfa@gmail.com>
-In-Reply-To: <20261110-hantro-robust-v1-0-6b6269c05bfa@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWMwQ6CUAwEf4X0bBNKDBF/xXiA5xbL4UFekZgQ/
+ t2qx5nN7E6OYnC6VjsVbOY25wA5VZSefR7B9gimpm5aEak55FpmnhaMjJxY7Q3nTvUyaNufO1G
+ Kdin4DZHe7n/21zAhrd8zOo4Pg5Gx2HkAAAA=
+X-Change-ID: 20261110-hantro-jpeg-enc-fixes-9ff8bf6a491f
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
  Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
- Andrzej Pietrasiewicz <andrzej.p@collabora.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
  Hans Verkuil <hverkuil@kernel.org>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>
+ Boris Brezillon <boris.brezillon@collabora.com>
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295050; l=1139;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295075; l=3705;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=ugbiMmzavaBp42/wsrF8NeFbBYCV92Ge5prcqLnmtpY=;
- b=+9fz2/3wGBnPFV8f0UkHTfdqh2NhGskFForb8xFWq6PP+8OsHBmC22wvyPsEXzicgB+a8locc
- r5PxOzmt8YzBcujcPrRYHo0lo2XyiDoJHlI5/rJQI0aTvshFNe/pdX5
+ bh=l9EdD9HrzhlWt2Mxz7G0VDbz8OEfjBCsYmrzJUDKy3g=;
+ b=pi/yod5JmjP0rOoxwnmNHQb0ZQ9V1eeK6lS4pqG836wIV8uK2VFJ0ld9b0TW9Sn74GkP4W7tE
+ RWNvxT+f1D5CsFH+e3+Jq+ye8xhJODewYuTAGrk7Fy1Bks++w55aSky
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -127,44 +127,74 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
+This series fixes the format handling of the Hantro JPEG encoders,
+found with v4l2-ctl, v4l2-compliance and GStreamer on the RK3588
+VEPU121.
 
-The VEPU121 encoder cores of the RK3588 each have their own AXI and AHB
-reset lines in the CRU (SRST_A_JPEG_ENCODERx and SRST_H_JPEG_ENCODERx).
-They are needed to recover a core that is stuck on the bus, which its
-registers can't stop.
+The encoder accepted a CAPTURE sizeimage far too small for the selected
+resolution, and setting the OUTPUT format never updated the coded size,
+so the sequence mandated by the stateful encoder specification (CAPTURE
+format first, then OUTPUT) left a 96x32 coded format under a 1920x1088
+raw one. The JPEG encoders program the hardware from the OUTPUT size
+and use the difference as the crop inside the last macroblock, so this
+ended in IOMMU page faults, a frame processing timeout and a wedged
+encoder. Patches 1 and 2 fix the two ioctl paths, patch 3 refuses a job
+whose geometry or CAPTURE buffer the hardware can't be programmed with,
+as a last line of defence, and patch 4 reports the fixed colorimetry of
+JPEG instead of propagating whatever the application set, which also
+fixes a v4l2-compliance failure on the encoder.
 
-Describe them as optional, so that existing device trees stay valid.
+Patch 5 fixes a CAPTURE S_FMT that v4l2-ctl --stream-mmap issues after
+the OUTPUT queue is set up: it failed with -EBUSY but left the raw
+format descriptor reset to the default (three planes) under a
+negotiated two-plane format, so the next job read a plane from IOVA 0.
+
+Patch 6 limits the advertised frame size to 8176x8176: both Rockchip
+encoder register layouts hold the size in 9-bit macroblock counts, so
+8192 was programmed as 0 macroblocks.
+
+Tested on an Orange Pi 5 (RK3588S, VEPU121): with patches 1-5, an
+explicit CAPTURE 1920x1080 JPEG plus OUTPUT NM12 stream gives 8
+decodable 1920x1088 frames, a requested sizeimage of 1000 is raised to
+4178544 and a larger one is kept, G_FMT on CAPTURE follows the OUTPUT
+format, v4l2-compliance passes 49/49 (58/58 with streaming) with sRGB /
+ITU-R 601 / full range on both queues, nine GStreamer v4l2jpegenc
+pipelines reach EOS, and v4l2-ctl --stream-mmap no longer faults. Patch
+3's checks are not reachable from userspace once patches 1 and 2 are
+applied; no run printed them. With patch 6, NV12, I420, YUYV and UYVY
+encodes from 96x96 up to 8176x8176 (including 8176x1080, 1920x8176 and
+a cropped 8168x8164) decode back at 53 dB PSNR, 8192 wide or high is
+refused at S_FMT, and a probe with the reserved bit above each field
+set showed the hardware does not take a 512 macroblock count.
+
+This series was developed with Claude (Anthropic) as a coding assistant:
+it wrote the code and the commit messages, and I reviewed and tested
+every change as described above.
 
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- .../devicetree/bindings/media/rockchip,rk3568-vepu.yaml        | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+Arun Iyengar (6):
+      media: verisilicon: Enforce a minimum CAPTURE sizeimage for the encoder
+      media: verisilicon: Keep the encoder coded size in sync with OUTPUT
+      media: verisilicon: Refuse JPEG encode jobs with inconsistent geometry
+      media: verisilicon: Report fixed JPEG colorimetry on the encoder
+      media: verisilicon: Don't reset the encoder raw format while OUTPUT buffers exist
+      media: verisilicon: rockchip: Limit the JPEG encoder to 8176x8176
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
-index d246f5d38427..e9fda4373f0f 100644
---- a/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
-@@ -32,6 +32,16 @@ properties:
-       - const: aclk
-       - const: hclk
- 
-+  resets:
-+    items:
-+      - description: AXI reset line
-+      - description: AHB reset line
-+
-+  reset-names:
-+    items:
-+      - const: axi
-+      - const: ahb
-+
-   power-domains:
-     maxItems: 1
- 
+ .../platform/verisilicon/hantro_h1_jpeg_enc.c      |  5 ++
+ drivers/media/platform/verisilicon/hantro_jpeg.c   | 37 +++++++++
+ drivers/media/platform/verisilicon/hantro_jpeg.h   |  5 ++
+ drivers/media/platform/verisilicon/hantro_v4l2.c   | 88 +++++++++++++++++++---
+ .../verisilicon/rockchip_vpu2_hw_jpeg_enc.c        |  5 ++
+ .../media/platform/verisilicon/rockchip_vpu_hw.c   | 11 ++-
+ 6 files changed, 139 insertions(+), 12 deletions(-)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20261110-hantro-jpeg-enc-fixes-9ff8bf6a491f
 
--- 
-2.55.0
+Best regards,
+--  
+Arun Iyengar <aiyengar1990@gmail.com>
 
 
 
