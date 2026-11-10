@@ -2,66 +2,64 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ADC64606AA67
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 10:13:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2EC0B606A339
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 10:16:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=y5UWjaug;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=R+nTugQx
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gn9mmwWI;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=0HwuzVzr
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=SgIXJd++L7ZeBVHGGot4qE4UVFpGdX4tJDGhRfQaOO8=; b=y5UWjaug7s+URzv6/AzER5oOOy
-	e2Ni7elFyhUJ9+aZtdu3mnOL4IPBl9ZiQRbqRa7jYBc905H2HlU6JNPq0mxoWNi2FmslT/s7H0wl4
-	qz84Qh8aYx0TwYxHkJA6isakKPboF8jwU7iup/DEUJBzTzFoiXz0sJxaV0EhroDZtb1rBmr/LWo42
-	Wy4FLfCTn71enKY5dYQVgixsLNrzMZGKMiSlRcIc5kKD8awlmqW302DaaZ8Vx5y5gOagUFnvvwCHK
-	bxMZ3MY2+OFOZeroPYRJgwAMbLXeTSH+2CQ89f7Vn9Cr1zpUEQh6iKKF/W15zNBJAhDMHRtD0ojyY
-	U6b1pWEA==;
+	bh=iIu4dxsozINZcvMNF50QxSG7kJOiX29Cq5VISfhXL/M=; b=gn9mmwWIyG56zJZy7LzFxHiIsO
+	brskR4xxX1QfWDy2PUcr9ec3d9AD4rDA62+1iCl2ho65s9EHDIw8wJ0n6yuTnMNuMJpa7s/Z15ulp
+	zS5zEtwtkLecuBhI/9fEeOChJePTqahNaNq/IW5aStnnMWlQst1RVz6yGFfee1lRwCZyoEokPpxma
+	edRScXbHZ/nbRERKwdis1q92OGaLHhMJO0BjP9QlsYLUZi5Fd5LH8Y1VALZKKnjT16f+lRoEkxERK
+	VxYvZYWdmZRWEAeJtMRvvjFjwL+zuI83IYWO4eVtteyCHEMdEt42R4UnMVqWQhoPylcVUKvSoNJKe
+	kOgpiVHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQiqv-00000003QXe-12B5;
-	Tue, 10 Nov 2026 10:13:21 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xQitp-00000003QlK-2jbZ;
+	Tue, 10 Nov 2026 10:16:21 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQiqu-00000003QXL-0Huf
-	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Nov 2026 10:13:20 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B8C4C40593;
-	Tue, 10 Nov 2026 10:13:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 484C91F008A1;
-	Tue, 10 Nov 2026 10:13:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794305599;
-	bh=7lZki/LBL0F86IwmD+ZREFy3qnWUNsldGDK/mcimVKo=;
-	h=Date:From:Subject:To:Cc:References:In-Reply-To;
-	b=R+nTugQx2Ko5IKMnMDEZYXzbne9QVOibmpJBeM4hwwgYeLhC+t8Qlw5vywGYKPCJj
-	 EkMrjwUrGHpJB0yS6BHTQUjcN5n/AvRetx5szQelim7Rr4nPzQAIoqNx+cCRT6FhmT
-	 qQcJo8rDDwq2nq9kxvwQjpoAEy5twIEZ4W4r1heQV3dpAa+EWJl+m+RaCRQD7naHMc
-	 G/OTsRMVT4DuG8vNbf9ZFYsAp5x/7PFPpINPOo3Z4cIkyCXaJsPsTBlxuqYlqKa7wA
-	 6PrTt2mfYw4eH5WDrvrHMob30PvH8bbUHYr4bFdfH2E1k4vyJ54qCLHqePZS2veXSB
-	 hpnbE70gWbP4A==
-Message-ID: <ed2a6a4e-f480-4b39-9684-0dbd2d55e261@kernel.org>
-Date: Tue, 10 Nov 2026 11:13:16 +0100
+	id 1xQite-00000003Qkj-0g8f;
+	Tue, 10 Nov 2026 10:16:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
+	bh=uRXUy8URMFJL42UsUUDEQakhlpG+sH9T+5dJoqYfuRs=; b=0HwuzVzrFlw4rhUtVs2kpNQEsL
+	Qz2R91yxGkmikYXIzlq3/uDopppNQzO+ovydO0aqepYs4IW+TGhaydKscis69hg8WLyV+qVBtXZpv
+	KOYsA+PqeciKzq1fseWzrPVaKgcvp27hTGOxsJ/8cddN/zzBSRvTc+dWvYv+Jz8qK2kZe6DjTq5u4
+	PwyeJ0lntyDwDtC+V+bHoh+CCfS5h3cV/nJ88rr4sZUIDnL2Gs2AjMpde+0WoKzcReDCEmiZ083SA
+	FtjMV5Edg9WVcxxXFh3EcBK7dGHzOyHkEUySfdv7bnoJjbxZrXkH2n8mjbwq+fy7t4719lX7rGEYA
+	+LrG2LeQ==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	hjc@rock-chips.com,
+	andyshrk@163.com,
+	chaoyi.chen@rock-chips.com,
+	damon.ding@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de
+Subject: [PATCH] MAINTAINERS: Add two reviewers to the Rockchip DRM entry
+Date: Tue, 10 Nov 2026 11:15:53 +0100
+Message-ID: <20261110101554.1809467-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.3
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Hans Verkuil <hverkuil+cisco@kernel.org>
-Subject: Re: [PATCH] media: verisilicon: Replace strlcat() with seq_buf
-To: David Laight <david.laight.linux@gmail.com>,
- Mariia Nikitash <nikitash.mariiaw@gmail.com>
-Cc: nicolas.dufresne@collabora.com, benjamin.gaignard@collabora.com,
- p.zabel@pengutronix.de, mchehab@kernel.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-hardening@vger.kernel.org, kees@kernel.org, justinstitt@google.com,
- morbo@google.com
-References: <20261105084518.386234-1-nikitash.mariiaw@gmail.com>
- <20261108200800.2b3b15cf@pumpkin>
-Content-Language: en-US, nl
-In-Reply-To: <20261108200800.2b3b15cf@pumpkin>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261110_021610_219902_F0E0B61C 
+X-CRM114-Status: UNSURE (   9.74  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,90 +69,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-20.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 08/11/2026 21:08, David Laight wrote:
-> On Thu,  5 Nov 2026 00:45:18 -0800
-> Mariia Nikitash <nikitash.mariiaw@gmail.com> wrote:
-> 
->> In preparation for removing the deprecated strlcat() API[1], replace
->> the strscpy() and strlcat() calls with seq_buf operations when
->> constructing Hantro video device names.
->>
->> This preserves the resulting strings, including truncation
->> when the compatible string and suffix exceed the destination
->> buffer's capacity.
-> 
-> This is just stupid...
-> 
-> David
-> 
->>
->> Link: https://github.com/KSPP/linux/issues/370 [1]
->> Signed-off-by: Mariia Nikitash <nikitash.mariiaw@gmail.com>
-
-Nacked-by: Hans Verkuil <hverkuil+cisco@kernel.org>
-
-Just use scnprintf.
-
-Regards,
-
-	Hans
-
->> ---
->>  drivers/media/platform/verisilicon/hantro_drv.c | 11 ++++++++---
->>  1 file changed, 8 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
->> index 26e5d5547466..2bfcd45cc55e 100644
->> --- a/drivers/media/platform/verisilicon/hantro_drv.c
->> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
->> @@ -17,6 +17,7 @@
->>  #include <linux/platform_device.h>
->>  #include <linux/pm.h>
->>  #include <linux/pm_runtime.h>
->> +#include <linux/seq_buf.h>
->>  #include <linux/slab.h>
->>  #include <linux/videodev2.h>
->>  #include <linux/workqueue.h>
->> @@ -883,6 +884,7 @@ static int hantro_add_func(struct hantro_dev *vpu, unsigned int funcid)
->>  	const struct of_device_id *match;
->>  	struct hantro_func *func;
->>  	struct video_device *vfd;
->> +	struct seq_buf s;
->>  	int ret;
->>  
->>  	match = of_match_node(of_hantro_match, vpu->dev->of_node);
->> @@ -902,9 +904,12 @@ static int hantro_add_func(struct hantro_dev *vpu, unsigned int funcid)
->>  	vfd->vfl_dir = VFL_DIR_M2M;
->>  	vfd->device_caps = V4L2_CAP_STREAMING | V4L2_CAP_VIDEO_M2M_MPLANE;
->>  	vfd->ioctl_ops = &hantro_ioctl_ops;
->> -	strscpy(vfd->name, match->compatible, sizeof(vfd->name));
->> -	strlcat(vfd->name, funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ?
->> -		"-enc" : "-dec", sizeof(vfd->name));
->> +
->> +	seq_buf_init(&s, vfd->name, sizeof(vfd->name));
->> +	seq_buf_puts(&s, match->compatible);
->> +	seq_buf_puts(&s, funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ?
->> +			"-enc" : "-dec");
->> +	seq_buf_terminate(&s);
->>  
->>  	if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER) {
->>  		vpu->encoder = func;
-> 
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Q2hhb3lpIENoZW4gYW5kIERhbW9uIERpbmcgdm9sdW50ZWVyZWQgdG8gYmVjb21lIHJldmlld2Vy
+cyBmb3IgdGhlClJvY2tjaGlwIERSTSBkcml2ZXJzLCBzbyBhZGQgdGhlbSB0byB0aGUgTUFJTlRB
+SU5FUlMgZW50cnkuCgpTaWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNo
+LmRlPgotLS0KIE1BSU5UQUlORVJTIHwgMiArKwogMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9u
+cygrKQoKZGlmZiAtLWdpdCBhL01BSU5UQUlORVJTIGIvTUFJTlRBSU5FUlMKaW5kZXggOTNhYmJi
+MzE1MDY1Li45OTE0MmE5MTEzNTAgMTAwNjQ0Ci0tLSBhL01BSU5UQUlORVJTCisrKyBiL01BSU5U
+QUlORVJTCkBAIC05MTM5LDYgKzkxMzksOCBAQCBEUk0gRFJJVkVSUyBGT1IgUk9DS0NISVAKIE06
+CVNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+CiBNOglIZWlrbyBTdMO8Ym5lciA8aGVp
+a29Ac250ZWNoLmRlPgogTToJQW5keSBZYW4gPGFuZHlzaHJrQDE2My5jb20+CitSOglDaGFveWkg
+Q2hlbiA8Y2hhb3lpLmNoZW5Acm9jay1jaGlwcy5jb20+CitSOglEYW1vbiBEaW5nIDxkYW1vbi5k
+aW5nQHJvY2stY2hpcHMuY29tPgogTDoJZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwog
+TDoJbGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwogUzoJTWFpbnRhaW5lZAotLSAK
+Mi40Ny4zCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
