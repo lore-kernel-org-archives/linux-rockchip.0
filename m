@@ -2,70 +2,97 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 245CD60A3802
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 10:55:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BA2E1606A31C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 11:28:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=r080CXZ/;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=cGlrPuje
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=s/dpNCa/
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=gTjb3M6VdiIaEHyfOJsljfOeJE5QFtxXUy6zfj7rh2U=; b=r080CXZ/qUZXTB6yMt+QUd9hjH
-	VhCXSDuIGDAum5oVDasJoWKwQxKa/Rtr7Tq3Jk+MKm81E8vH+XfQ4PmsgRtg2MuoSAGxnW2Kr6H4j
-	c5OVfzxRjSHbyTbGJb97Q9BTKhEk39zQ5Wy7th0uGOHNLuX6WGnkJGXflz4B0LhaoslNsP9p2isnh
-	S1HOYtGCNeiXKCi2wWVbHiiqlYyB5eAzedlJrjXXtPhxflStWGnYmWSp97/hQ/SBHELjZe3qRihI0
-	MQ7Z3A0kv11cy6axVnkDBTDt1J20hC8w5sCsO7nrHyjolfAsudHGEJULPzh28ra3vvvtMKuAVU7Lo
-	95P4jfBg==;
+	bh=xraCPyUuw1dPApMnI1yGOUhbX2Fg1Jvf4VGHgd0mC9A=; b=s/dpNCa/BqBDEqv8rMVDU7XQMB
+	X11GxyqzuruOp+EKeRlIgeOgSkXNJM/ShMu0iKt3KP+0K2+R8OkuBjPBgNXrvDi84gsIdfzR8Ie/k
+	Hzylr2onLbpXIlNO9jJVdqkzmmMNfaawvmRUV1X/U50bcopxE6utJOsrWD+2r9ET0jefp3vLxPDCN
+	J26VOpHpwp10L2wpe9BohwHjQOpdqCYPd2/ftquFULmTbPGopKpFKwwBC74ykEbOjZlLfGStDnAv7
+	qvny+jv4RqMrdkAiobceRSl+mtfyRSUCFYTLkH32KMSzpWbPRUvJYs4lWRkgy94/jRCaZFxOd+bHL
+	LNSQ64uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQjVS-00000003X2P-1gfR;
-	Tue, 10 Nov 2026 10:55:14 +0000
-Received: from mail-m1031.netease.com ([154.81.10.31])
+	id 1xQk1H-00000003dGX-400m;
+	Tue, 10 Nov 2026 11:28:07 +0000
+Received: from mail-wm1-f46.google.com ([209.85.128.46])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQjVK-00000003Wx3-2cuX;
-	Tue, 10 Nov 2026 10:55:08 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5428b394e;
-	Tue, 10 Nov 2026 18:55:02 +0800 (GMT+08:00)
-Message-ID: <2a2a1c1f-643e-4348-b4ae-503ed8ff54f4@rock-chips.com>
-Date: Tue, 10 Nov 2026 18:54:57 +0800
+	id 1xQk1F-00000003dF3-1OQZ
+	for linux-rockchip@lists.infradead.org;
+	Tue, 10 Nov 2026 11:28:06 +0000
+Received: by mail-wm1-f46.google.com with SMTP id 5b1f17b1804b1-4b7252a32c8so20101235e9.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 03:28:04 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794310083; x=1794914883;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:content-type:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=+8SmpKfanibtqfQvPi11fKmx/q2tro7mfSWNxssCkTI=;
+        b=SHujfCWv3s+FZhZ7JqWiuG32e+WcHa6JOlcwC25NUB93kEm77UZPEcH55dW3QM4mcX
+         XA0CUeHaqqs3JpjbeDsI6UQpGmk7/b1y5C79/QtKd82IIIVuqPqkMRrB0ZBlq6CWi7av
+         zalW4CFqh61O4gGKEnwlRhZd+V1vG+RTJdtQU9TnQF5Ut7NBAtXDQK0Nx6e1XO5VPxFL
+         tvTN40Na+lRg2IANJDEpj6wBEiXgNt9nFjIqYS8hihSZHwAy5PfO9QIGksSw3+Sg2JDQ
+         GcDyAhEjtBcGM1SfS2ZUUuN9QLyy0dNO2lGVe4wsq671DPq/wlqncUCUitSRCWhjwyXr
+         s+Jw==
+X-Forwarded-Encrypted: i=1; AL+hErGgRFn+QedIgdMhIrK6T8Kh1XRYKOJKwCZ7UlNoG9fI3XyYonQo4JQEL9F/YRBZEB4bPh+fTncRuG1WuMqcYQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8quvoNYgjmVKCQ5wEufMV0czI9hiCIyF3bYhjSdoxJPMgacypg
+	6S+NeNgY+RxMZZQHdedbdm0XIv1BZIQmZgJQQHFQj0ehfVczwnUurhkO
+X-Gm-Gg: AYBFou0XGZKvC8ReuvIFyZWXWMAfiJNlR1uK0LETj5WOkMjp51jrxqJIFSCdR6ne3Fj
+	2FfSNvEwTc6wPFAxtJPBc5g+EZINSxBfNFYLvTZY/6KOpJ6p3qquAwAtevIDTuY3GO87JF9BRr/
+	fkap/UFFPefuNISJi/ejd0K3MF52wkZVNPGEcFrbNEtOZFgE2+N+kMM6QUN+ZNLUL1MYn8JMG8Z
+	jufn2jeHxvOReuntZ9AF3MHO9gugjxAeYNADcUb7nWcpRRLDXAzae7as2yTSQUfk/xjgK1v+//Y
+	nt9vSARj9PKD2z7hh3qr/DeF31tGbOBtg6K+/Ld2oAi6uQUVMCsQXfW5eZFwnzjP5cMsDUY7Moq
+	dR/p9fJTOyAi5OnCwzwNVJ+qDoRfoV1rMbNBoeQRWLdGzZPWCd4p2XymmCzAvabkOn5Np2aU9sM
+	/zrIsl1Jq9ATHSrY3H+4GqrtV6IJ49D84quauDrJuP18Z3Cf/cB/c0sQigslhJ1mXqLxe+aqNV4
+	WHzPSnwp0JqSWyl0weGM/KOi4buZVntqVkS+zrBRDOx9nEbGuGu0v4s5mG7xWlARuehNk+NcPG3
+	jkhcBI9VMmZGE/qLq3nXGUyNQ/l9mWyeNHnalT1U/QxZkdqwLqFEWLWADePMXJkSvmUBD56W
+X-Received: by 2002:a05:600c:3b98:b0:4a7:462c:6b9e with SMTP id 5b1f17b1804b1-4ba02351506mr44181675e9.32.1794310082728;
+        Tue, 10 Nov 2026 03:28:02 -0800 (PST)
+Received: from smtpclient.apple ([194.64.145.190])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4ba0234a5dcsm58644735e9.2.2026.11.10.03.28.01
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 10 Nov 2026 03:28:02 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/8] drm/rockchip: vop2: Report POST_BUF_EMPTY at most
- once per frame
-To: aiyengar1990@gmail.com
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andyshrk@163.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20261110-vop2-fixes-v1-0-d336e9dd90d3@gmail.com>
- <20261110-vop2-fixes-v1-5-d336e9dd90d3@gmail.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20261110-vop2-fixes-v1-5-d336e9dd90d3@gmail.com>
-X-HM-Tid: 0aa1c518d91803a7kunmdf10dae7723114
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDHh1PVhhKSEofQktOGR5PTFYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=cGlrPujeT9H3vYmO1lQ0mRWVFHUy06oljfmhyU+3qWQtMrWnhJKxDmp8DbFWRrJ9oKM01euCWetTugulvb5ENE0c7phW5Y0QjQysusVhRXezIz0O43U3v8RwVILExb5Ad9otj+gxmizQ4yK2x/iMX12di2sc2jNIk4vA6HEI8sc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=WxMxVqCanhe7Ngs86MSptXojYhzvFxvRax2Dii2VAMI=;
-	h=date:mime-version:subject:message-id:from;
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.200.71.1.16\))
+Subject: Re: [PATCH 3/3] media: verisilicon: leave room for the JPEG header
+ and one stream burst
+From: Sergei X. <shomenkow@gmail.com>
+In-Reply-To: <d8ba9d67a9452bc44be219d5327aa9d7ad83275f.camel@collabora.com>
+Date: Tue, 10 Nov 2026 13:27:50 +0200
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Chen-Yu Tsai <wenst@chromium.org>,
+ Hugues Fruchet <hugues.fruchet@foss.st.com>,
+ linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org
+Message-Id: <46F3E2B2-AE47-46D9-BD41-6970B58763F3@gmail.com>
+References: <20261109-hantro-buflimit-v1-0-f0b86ce61e66@gmail.com>
+ <20261109-hantro-buflimit-v1-3-f0b86ce61e66@gmail.com>
+ <d8ba9d67a9452bc44be219d5327aa9d7ad83275f.camel@collabora.com>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+X-Mailer: Apple Mail (2.3901.200.71.1.16)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_025507_248168_F6EE795A 
-X-CRM114-Status: GOOD (  29.94  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261110_032805_370570_15E858DD 
+X-CRM114-Status: UNSURE (   8.52  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.0 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,211 +105,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Arun,
+> +                     max_t(u32, pix_mp->plane_fmt[0].sizeimage,
+> +                           fmt->header_size + 64);
+>
+> Did you mean to align to 64 instead ?
 
-On 11/10/2026 3:18 PM, Arun Iyengar via B4 Relay wrote:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
-> 
-> POST_BUF_EMPTY is raised for every line on which the post processing
-> stage of a video port finds no data. The interrupt handler only
-> rate-limits the error message and leaves the interrupt enabled, so an
-> underflowing video port keeps the CPU in the interrupt handler 50000 to
-> 300000 times per second, for as long as the configuration that causes
-> the underflow stays in place (e.g. 120000 interrupts per second for
-> 3840x2160@120 with two full screen layers on one AXI port).
-> 
-> Mask POST_BUF_EMPTY when it fires and unmask it at the next frame start.
-> The frame start (FS) interrupt is enabled for that frame even when
-> vblank reporting is off, and disabled again once POST_BUF_EMPTY is
-> re-armed. A new per video port lock serialises the interrupt enable
-> bookkeeping between the interrupt handler and the vblank callbacks.
-> The error is still reported, now at most once per frame and video port.
-> 
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 63 ++++++++++++++++++++++++++--
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 10 +++++
->  2 files changed, 70 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index 9aeb90c6aa4b..3323e50224c5 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -841,6 +841,48 @@ static void vop2_crtc_disable_irq(struct vop2_video_port *vp, u32 irq)
->  	vop2_writel(vop2, RK3568_VP_INT_EN(vp->id), irq << 16);
->  }
->  
-> +/*
-> + * POST_BUF_EMPTY is raised for every line the post processing stage finds
-> + * no data for, so an underflowing video port can raise it 100000 times per
-> + * second. Report it at most once per frame: mask it when it fires and
-> + * unmask it at the next frame start, using the FS interrupt even when
-> + * vblank reporting is off.
-> + */
-> +static void vop2_crtc_enable_post_buf_empty_irq(struct vop2_video_port *vp)
-> +{
-> +	unsigned long flags;
-> +
-> +	spin_lock_irqsave(&vp->irq_lock, flags);
-> +	vp->post_buf_empty_masked = false;
-> +	vop2_crtc_enable_irq(vp, VP_INT_POST_BUF_EMPTY);
-> +	spin_unlock_irqrestore(&vp->irq_lock, flags);
-> +}
-> +
-> +static void vop2_crtc_handle_post_buf_empty(struct vop2_video_port *vp)
-> +{
-> +	struct vop2 *vop2 = vp->vop2;
-> +
-> +	spin_lock(&vp->irq_lock);
-> +	vop2_crtc_disable_irq(vp, VP_INT_POST_BUF_EMPTY);
-> +	vp->post_buf_empty_masked = true;
-> +	/* don't clear a pending FS, it may carry a vblank event */
-> +	vop2_writel(vop2, RK3568_VP_INT_EN(vp->id),
-> +		    VP_INT_FS_FIELD << 16 | VP_INT_FS_FIELD);
-
-Do we really need this? Disabling the POST_BUF_EMPTY IRQ should not
-affect the FS_FIELD IRQ, because this register has write mask.
-
-
-> +	spin_unlock(&vp->irq_lock);
-> +}
-> +
-> +static void vop2_crtc_rearm_post_buf_empty(struct vop2_video_port *vp)
-> +{
-> +	spin_lock(&vp->irq_lock);
-> +	if (vp->post_buf_empty_masked) {
-> +		vp->post_buf_empty_masked = false;
-> +		vop2_crtc_enable_irq(vp, VP_INT_POST_BUF_EMPTY);
-> +		if (!vp->vblank_enabled)
-> +			vop2_crtc_disable_irq(vp, VP_INT_FS_FIELD);
-> +	}
-> +	spin_unlock(&vp->irq_lock);
-> +}
-> +
->  static int vop2_core_clks_prepare_enable(struct vop2 *vop2)
->  {
->  	int ret;
-> @@ -1668,8 +1710,12 @@ static const struct drm_plane_funcs vop2_plane_funcs = {
->  static int vop2_crtc_enable_vblank(struct drm_crtc *crtc)
->  {
->  	struct vop2_video_port *vp = to_vop2_video_port(crtc);
-> +	unsigned long flags;
->  
-> +	spin_lock_irqsave(&vp->irq_lock, flags);
-> +	vp->vblank_enabled = true;
->  	vop2_crtc_enable_irq(vp, VP_INT_FS_FIELD);
-> +	spin_unlock_irqrestore(&vp->irq_lock, flags);
->  
->  	return 0;
->  }
-> @@ -1677,8 +1723,13 @@ static int vop2_crtc_enable_vblank(struct drm_crtc *crtc)
->  static void vop2_crtc_disable_vblank(struct drm_crtc *crtc)
->  {
->  	struct vop2_video_port *vp = to_vop2_video_port(crtc);
-> +	unsigned long flags;
->  
-> -	vop2_crtc_disable_irq(vp, VP_INT_FS_FIELD);
-> +	spin_lock_irqsave(&vp->irq_lock, flags);
-> +	vp->vblank_enabled = false;
-> +	if (!vp->post_buf_empty_masked)
-> +		vop2_crtc_disable_irq(vp, VP_INT_FS_FIELD);
-> +	spin_unlock_irqrestore(&vp->irq_lock, flags);
->  }
->  
->  static enum drm_mode_status vop2_crtc_mode_valid(struct drm_crtc *crtc,
-> @@ -1977,7 +2028,7 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
->  
->  	vcstate->yuv_overlay = is_yuv_output(vcstate->bus_format);
->  
-> -	vop2_crtc_enable_irq(vp, VP_INT_POST_BUF_EMPTY);
-> +	vop2_crtc_enable_post_buf_empty_irq(vp);
->  
->  	polflags = 0;
->  	if (vcstate->bus_flags & DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE)
-> @@ -2535,6 +2586,7 @@ static irqreturn_t rk3576_vp_isr(int irq, void *data)
->  	}
->  
->  	if (irqs & VP_INT_FS_FIELD) {
-> +		vop2_crtc_rearm_post_buf_empty(vp);
->  		drm_crtc_handle_vblank(crtc);
->  		spin_lock(&crtc->dev->event_lock);
->  		if (vp->event) {
-> @@ -2552,6 +2604,7 @@ static irqreturn_t rk3576_vp_isr(int irq, void *data)
->  	}
->  
->  	if (irqs & VP_INT_POST_BUF_EMPTY) {
-> +		vop2_crtc_handle_post_buf_empty(vp);
->  		drm_err_ratelimited(vop2->drm, "POST_BUF_EMPTY irq err at vp%d\n", vp->id);
->  		ret = IRQ_HANDLED;
->  	}
-> @@ -2591,6 +2644,7 @@ static irqreturn_t vop2_isr(int irq, void *data)
->  			}
->  
->  			if (irqs & VP_INT_FS_FIELD) {
-> +				vop2_crtc_rearm_post_buf_empty(vp);
->  				drm_crtc_handle_vblank(crtc);
->  				spin_lock(&crtc->dev->event_lock);
->  				if (vp->event) {
-> @@ -2608,6 +2662,7 @@ static irqreturn_t vop2_isr(int irq, void *data)
->  			}
->  
->  			if (irqs & VP_INT_POST_BUF_EMPTY) {
-> +				vop2_crtc_handle_post_buf_empty(vp);
->  				drm_err_ratelimited(vop2->drm,
->  						    "POST_BUF_EMPTY irq err at vp%d\n",
->  						    vp->id);
-> @@ -2984,7 +3039,7 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
->  	struct vop2 *vop2;
->  	struct resource *res;
->  	size_t alloc_size;
-> -	int ret;
-> +	int ret, i;
->  
->  	vop2_data = of_device_get_match_data(dev);
->  	if (!vop2_data)
-> @@ -3102,6 +3157,8 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
->  	mutex_init(&vop2->vop2_lock);
->  	mutex_init(&vop2->ovl_lock);
->  	spin_lock_init(&vop2->axi_lock);
-> +	for (i = 0; i < ARRAY_SIZE(vop2->vps); i++)
-> +		spin_lock_init(&vop2->vps[i].irq_lock);
->  
->  	ret = devm_request_irq(dev, vop2->irq, vop2_isr, IRQF_SHARED, dev_name(dev), vop2);
->  	if (ret)
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-> index f1e35967e67f..7de32bef8d7b 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-> @@ -272,6 +272,16 @@ struct vop2_video_port {
->  	struct drm_pending_vblank_event *event;
->  
->  	unsigned int nlayers;
-> +
-> +	/** @irq_lock: protects @vblank_enabled and @post_buf_empty_masked */
-> +	spinlock_t irq_lock;
-> +	/** @vblank_enabled: the FS interrupt is enabled for vblank reporting */
-> +	bool vblank_enabled;
-> +	/**
-> +	 * @post_buf_empty_masked: POST_BUF_EMPTY is masked until the next
-> +	 * frame start
-> +	 */
-> +	bool post_buf_empty_masked;
->  };
->  
->  /**
-> 
-
--- 
-Best, 
-Chaoyi
+No, the max() is meant as a floor: the 624-byte header plus one 64-byte
+stream burst. Patch 2 already rounds the stream limit down to whole
+64-byte bursts. ALIGN(sizeimage, 64) would neither keep that floor nor
+align the stream part, which starts at offset 624.
 
 
 _______________________________________________
