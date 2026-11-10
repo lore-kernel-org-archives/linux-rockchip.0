@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9AD0A606A32E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 19:30:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E66B6606A323
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 19:30:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EnJTqneP;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=C0UnN1Xz
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NOcfC09N;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=lYP0n5Mp
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,65 +14,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=N7wx8anIEMqLipsh2H9YDsICmKWoYmTsHRzdiXSfcK0=; b=EnJTqnePt7fx1IHbQ9r0V7UlXx
-	if+8rPwpEdrYZEoIO8lgpJ8Hk+9QWsVHZF1oYQiR7AlnyKDeONkdBQ7jYynFbrjQgFtYF6E/w+YHi
-	pPzAHtCuzlT+E/0Dw1yQ6h8C+gEBjQq3dbO5pshwtxK2jzdzKf4YGKXYmXGVva6hJ7XTkopiWdR+K
-	j+MCjjzkjcwxrW6DuHIfCJ7aNb0xo+CR0DMx6DufznYwshaqYopOm0ma1AVqzDEtoxT6w48M2yBqK
-	kqeFP5oZe2Xp/6sffZuLhmePWy4T9+7GD8j5bv1kx+i427XH2VlCp3J6Loa9oTzgsWnjS+Aw9JN8R
-	KNK6QLLQ==;
+	bh=cdDOPg9kIn2MvLEsTvKOMkp6oyv8QW9Y4Z5dndXFZjM=; b=NOcfC09Nf7W+uZNrOUSRmS0zap
+	Z08chwR597JxhBAz4YeIF784Iflui7Fj71LpRDRwV9OzfOgDkZteCI1msI3fqRcl1ROBxQ53o6Da4
+	bZGnWXoHBaeFF1/llkx5PoKRD5JFNJRRlTbhK77Ax1X6d08AwdyUQRFkpQQOFLfRFNsjWOX84ilsN
+	wpiaSlOV2FXslqAlGQ3zB5tk2OltgaWcrK0iE9AjJfkANFyYh1QMCUrN/vkvJ2gQQXvP89t98quzT
+	eSfQvmvAvLi6OdsEO3yMiKPBr/omxqU4UQA910a9dP0ZhSEsmGeHXDKLVmtJhZhWlgPdGv8Gpv+Y8
+	jToVRphw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQrYN-00000004uYw-3KDf;
-	Tue, 10 Nov 2026 19:30:47 +0000
-Received: from mail-dy2-x08.google.com ([2607:f8b0:4864:36::8])
+	id 1xQrYS-00000004ucS-0FEL;
+	Tue, 10 Nov 2026 19:30:52 +0000
+Received: from mail-dy2-x09.google.com ([2607:f8b0:4864:36::9])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQrYL-00000004uXZ-1suP
+	id 1xQrYQ-00000004uaP-0lPc
 	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Nov 2026 19:30:46 +0000
-Received: by mail-dy2-x08.google.com with SMTP id 5a478bee46e88-3678f64d078so2933144eec.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 11:30:45 -0800 (PST)
+	Tue, 10 Nov 2026 19:30:51 +0000
+Received: by mail-dy2-x09.google.com with SMTP id 5a478bee46e88-36caa19b0ffso1636295eec.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 11:30:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794339044; x=1794943844; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1794339049; x=1794943849; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=YVXKXdmO5pc+cT527r2SrlA5H/eJKB4pSKsUd9huCKU=;
-        b=C0UnN1XzKAGElKckLpbXstSQNgH9I/0vSi3qqJET6dT1DurpXI/3AiJPLQbRJPoX+r
-         QvfaZqeTgFKdTeh4JbHNeeM/Pm1tD+gv4OEQ09BZQKOYXPYjjdIa/D3ookS84BVLfJEG
-         vW5h05icddIIXQ9Ilm7vn9T0Ue0kyKUWQ70n7/1og0n6HXn6jBH5NksxKLlc3FzgdNbq
-         e69Gk5qRFbxtbucqfx/6PQzzg7E8fCq3jljnXYVwxrNF6JhUpBjbkCn+H4Rk3S44Kq2t
-         IFVDzq0OUecz3cURAIbvVBgch4vo0kMKRN9bsBdFrWOk8OV2UmbvKaoYmt4cwlIVgdSA
-         +EqA==
+        bh=nvA1lxZEpIqjWhYL3aA6OSO2sYeOAGbwAuUAZj8n0+c=;
+        b=lYP0n5MphL+1oBcmBvXASyZNYSrZuL/+dGZbDVhqKEsnbTCq2G5mfXtr83LrvGkD8c
+         9ZabP+LlWfrGl1X/SbYd8t3Fu2Lo63tsWCMb3ilZkpdWlgf/Ox3A7h6QyE1/SSA49JIt
+         sN1w9HUaveBHbTsiAkw/SRRjgC7BlRN/H6rsUFrxSfDRXtTX1m3ZEsk8eaRhxxX+DKF9
+         /H1+oZw8fe7kK0KGGQUUmnuOpyqE596NCJrPL/5fWJAR7UbV8ku2X61IZ1g7Oh2EOr/y
+         uCCvAozVMS5DpyMOFKPYHCws2JU1cBE2R4vEmPGetTHiqLoEh2bD4kw0P8nPkaQmkg2f
+         C8IQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794339044; x=1794943844;
+        d=1e100.net; s=20260707; t=1794339049; x=1794943849;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=YVXKXdmO5pc+cT527r2SrlA5H/eJKB4pSKsUd9huCKU=;
-        b=ty0jPQ+OUQYiXpwnYbqhhg/bFivY+JDRdleY/VR/eBh2umSNq7u7NtE8DOqfB+5Tfn
-         fYNKwdK34IOz/uUrbMJvyStuWp502j0W9kDztxL41NXYyMpTc4Q/BEgHBDE8RmTC7uz8
-         neXv3I3F7c5VQnvKVk4YjJb2GvPQNNjAMIN5ClRZ0tb/xAwrLzc1eiBtJIQ0pbMn8i0p
-         r0j/hS4Q1MBUvsR3ubGAT9knMccPIohY+RYGkTxftXuiGSPK+WYdaV7N1ox4FeUg3tD3
-         gw4HJMjZzTfIaztZ7ehThLxFFaXue7b9m9DGH0YmWzP1pzE6O1WmqBgQuoQ7DuCAXWjs
-         G7jw==
-X-Forwarded-Encrypted: i=1; AL+hErFh0v20Ppu4PxDQL7E0tgw58Z5B8kJLg9bD8+PrKj9TnU4PYP/jDdadd1PZMPzMm1GO1qarMSg7hm8mwZ8w1Q==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/WT9Jk0ZZKXQQTeaHWgTFTIULkRpwCZm1or/HYtW1FugaSLXsF
-	CkixK6de92pHBy9c0DcHSTPdMhmgldnOKxU9L72Ll2n7Lpgva134Xd+G
-X-Gm-Gg: AYBFou2ioo5+Ky3jai8q789aOPS/z5A5Ed/6yxbnoR/a/rZeohv2zXs1bIu1rwsR4By
-	scx0xcqkZZklyhJxqkomIa+b0Wi3LGgsvR0jvkxaFgcBjWe8AYhwFymmLpmJ+oYuSwo53pD2QpH
-	PrrGqwKnuIa8ouji0hdZTwLStf61LQiAxbm/A5fZHanIWs8QV4P0NLPfx7qJzhTdj4hW4VBMFqF
-	xRbreZ5VAgh9CDb447gWh4HIcqkRxwrrQYpbfjabzQlnW0E6p5Sy8xGWx9jI3n4rikl2icxYhy5
-	O8O7B3qimE6OPf+FMt7ypsrfHbAvt60DU9Mko2CQS6LxAqcznOoaB8keBC8W9ipWyEC6vEekrS5
-	9WI5ocydqi0CGYtNM0QjBKMr3RRtULaDSqwK+n2B82Gl1u2JazDIqz/j2n+rVMEV5QB4QNH9sBT
-	SDkwHvFzknL+9XpgB8VCTGqOkFu7cnZ4naq/3/uxyg7L93fvPeWqPyQNYHLRhiHonGNmTS8gFtb
-	4fq//RTO07iLHJBAcbe48pkWbHZBFBytEAG0LXweiie1BCw8ndwzy9vmLoqYAvKxeRGRBMvB0ZT
-	lsHGuefZQYweuyU9/hL63aUsxuiWNJ3NmzCZGHQZkwLI0YQH8A==
-X-Received: by 2002:a05:7301:d80b:b0:375:370e:f1ff with SMTP id 5a478bee46e88-37687214128mr374176eec.35.1794339043899;
-        Tue, 10 Nov 2026 11:30:43 -0800 (PST)
+        bh=nvA1lxZEpIqjWhYL3aA6OSO2sYeOAGbwAuUAZj8n0+c=;
+        b=clZHKRo6sHjpHVwNnyGG8j8HXNEqqTVt/uSHFhgKZReh/nTFjmP9L34Fw7uWcQ3si4
+         AXg6NdeqpXyePJPqV84F9C4o2yo7QAisD0EkAqgZRawP/yiBrIZcKarFNXKQoeak3o78
+         PUBaae/a3Zk7fk5WgEjXaoM719QGK6HJe6TtugUROcalzO/7f73rW/KUFAGTZ6Ep0aAg
+         1fKprbGBSIkfpE5RE/e9eeiK4xPnmzCJi7J20eP5n2ScY+yd2MN473b3v2ezvNYjS2Os
+         +5Pd1He7UlPIiGuZzhWxnL01Csmf+6T6qJTY+kwo0S4OA3NVRx0f9W/G4+Wf5SdxKOzR
+         I9nw==
+X-Forwarded-Encrypted: i=1; AL+hErHSUOA6UIjceWu7sVRs0l5hRmfhL9ZZts8e8ytHmBbox3uoDk9CzEw9BVG71OD5FBXqKner8ZwCPiuZspC+iQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+GnOqSoC8MhitqBeRlmSIpqPZZtHSAdwzANOtyZ9zA6VmB1u2L
+	4ZE0E0wzPBAAiFp7dH0GSF+uVIA76HPQWufewbT+eq+Q1b/6sQSwAbEZ
+X-Gm-Gg: AYBFou1YXhMYdZA2d5mFTk3apO9EotfcqBkcNDkAdj7QIn370JdYG5rGevK7GAYrLah
+	SMSLugGmawSFqieE98oXxpgzcmnZGQPYr+yeaM9KJAqhT61Gq+LohYJrU5bEdnHZcsLIMDmW9N4
+	JuVzeMAw4nGRh7QGPqsmy+2mTOjAkihCUXjJGwddQeg0zoLBuH19CbKCYApH1OkmmBy/Qbtstrz
+	uy7QwcrixDsCCzShGDrfCDkYtIOnHr9fU4zKKhabIEyeGsqTsoeBMffnsmTAnSCcuQ/wn8an9Og
+	XnaeuHrUBCsZhpbb2uWaiszwU3mIszLFbWjptnd3odbLLX3ADdYmhCTWeRGh+STIBsRSGdjHiz7
+	0oKCzh8KoBkdf77oFAvM0BAUerIW2HV8tJhdN39uXzTZytUPR/J+GBSQPCmzj82u6jDxXT8KFZ6
+	ae/y0DzXvKk9ppDmrRLgQtTkxOrWHV29nf97fFtkwRIlAfDsaaBPNof9ierCPJ8Wyh+YeptrYgs
+	0SbqQNSUSDccY13xrL3IgQZNQgK/BtSjj10KGLUqILLoKTvbUQNd2bNmp6baWUGfk+VmXaUrH4M
+	F0BPzyOixnlypZ3ceNS+gi7d74d+CRalAYc4BB22zbiK4Pb1bg==
+X-Received: by 2002:a05:693c:8814:20b0:36f:4615:9747 with SMTP id 5a478bee46e88-37680a5d9e4mr395559eec.0.1794339049150;
+        Tue, 10 Nov 2026 11:30:49 -0800 (PST)
 Received: from AERO17.taila7786d.ts.net ([45.95.212.224])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3751ad6f11csm7730435eec.0.2026.11.10.11.30.38
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3751ad6f11csm7730435eec.0.2026.11.10.11.30.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Nov 2026 11:30:43 -0800 (PST)
+        Tue, 10 Nov 2026 11:30:48 -0800 (PST)
 From: Pufan Jin <cyan2254650260@gmail.com>
 To: Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
@@ -82,17 +82,17 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 1/2] arm64: dts: rockchip: add USB-C PD support to LubanCat 4
-Date: Wed, 11 Nov 2026 03:30:27 +0800
-Message-ID: <20261110193028.512456-2-cyan2254650260@gmail.com>
+Subject: [PATCH 2/2] arm64: dts: rockchip: add USB-C DP altmode support to LubanCat 4
+Date: Wed, 11 Nov 2026 03:30:28 +0800
+Message-ID: <20261110193028.512456-3-cyan2254650260@gmail.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261110193028.512456-1-cyan2254650260@gmail.com>
 References: <20261110193028.512456-1-cyan2254650260@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_113045_496713_8B6CA291 
-X-CRM114-Status: GOOD (  15.09  )
+X-CRM114-CacheID: sfid-20261110_113050_273639_1F167EDA 
+X-CRM114-Status: GOOD (  11.45  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,203 +114,123 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The EmbedFire LubanCat 4 has a Type-C port on the front panel backed by
-a Fairchild FUSB302 Type-C controller connected to I2C1 (at 0x22).
-VBUS 5V power is supplied through a fixed regulator enabled by
-GPIO1_C1 (active high), current-limited to 2A by an LPW5209 switch.
+The Type-C port on the EmbedFire LubanCat 4 supports DisplayPort
+alternate mode through the RK3588 usbdp combo PHY (usbdp_phy0).
+The sideband use (SBU1/SBU2) AUX signals are routed through two DC
+switches controlled by GPIO4_B3 and GPIO4_B4.
 
-Add the FUSB302 node, the fixed VBUS regulator, and the USB-C connector
-with dual-role power (source 5V/2A, sink 5V/1A) and dual-role data.
-Wire the HighSpeed data endpoint to usb_host0_xhci and the SuperSpeed
-data endpoint to usbdp_phy0.  Set usb_host0_xhci to OTG mode with
-usb-role-switch enabled, and add orientation-switch on usbdp_phy0.
+Add the DisplayPort alternate mode entry (SVID 0xff01) to the USB-C
+connector and connect connector port@2 (SBU) to usbdp_phy0 port@3.
+Configure usbdp_phy0 with mode-switch and sbu{1,2}-dc-gpios.  Enable
+dp0 and connect dp0_out to usbdp_phy0 port@2, with dp0_in fed from
+VOP2 VP1.
 
-DisplayPort alternate mode support is added in a subsequent patch.
-
-Tested on LubanCat 4 hardware:
-- fusb302 and tcpm probe cleanly;
-- USB host mode verified with USB 2.0 and USB 3.0 peripherals;
-- USB 2.0 devices enumerate and transfer data in both orientations;
-- USB 3.0 devices enumerate at SuperSpeed (5Gbps) in normal orientation;
-  reverse-orientation SuperSpeed is subject to the known upstream
-  phy-rockchip-usbdp driver reinit limitation;
-- USB device mode verified via ConfigFS CDC ACM serial gadget connected
-  to a host PC with successful high-speed enumeration and bidirectional
-  data communication;
-- VBUS switch (LPW5209) enables in source mode and remains disabled in
-  sink mode with reverse current blocked.
+Tested driver stack registration on LubanCat 4 hardware:
+- dw_dp bounds successfully to display-subsystem;
+- DRM DP connector card2-DP-1 is registered and reports disconnected;
+- typec_displayport registers the DisplayPort altmode driver;
+- usbdp_phy0 registers the phy-switch and phy-mux.
+Physical DisplayPort link training and monitor video output are pending
+verification with a physical USB-C to DP sink/cable.
 
 Signed-off-by: Pufan Jin <cyan2254650260@gmail.com>
 ---
- .../boot/dts/rockchip/rk3588s-lubancat-4.dts  | 115 +++++++++++++++++-
- 1 file changed, 114 insertions(+), 1 deletion(-)
+ .../boot/dts/rockchip/rk3588s-lubancat-4.dts  | 57 +++++++++++++++++++
+ 1 file changed, 57 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts b/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
-index 0d28c6165..a94aaddb2 100644
+index a94aaddb2..6c5a942df 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
-@@ -8,9 +8,11 @@
- /dts-v1/;
+@@ -323,6 +323,13 @@ usb_con: connector {
+ 			source-pdos =
+ 				<PDO_FIXED(5000, 2000, PDO_FIXED_USB_COMM)>;
  
- #include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/leds/common.h>
- #include <dt-bindings/pinctrl/rockchip.h>
- #include <dt-bindings/soc/rockchip,vop2.h>
-+#include <dt-bindings/usb/pd.h>
- #include "rk3588s.dtsi"
- 
- / {
-@@ -116,6 +118,18 @@ vcc5v0_usb30_host: regulator-vcc5v0-usb30-host {
- 		vin-supply = <&vcc5v0_sys>;
- 	};
- 
-+	vbus5v0_typec: regulator-vbus5v0-typec {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vbus5v0_typec";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		enable-active-high;
-+		gpio = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&typec_vbus_en>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
- 	fan: pwm-fan {
- 		compatible = "pwm-fan";
- 		cooling-levels = <0 100 150 200 255>;
-@@ -286,6 +300,51 @@ regulator-state-mem {
- 			regulator-off-in-suspend;
- 		};
- 	};
-+
-+	usbc0: usb-typec@22 {
-+		compatible = "fcs,fusb302";
-+		reg = <0x22>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PC6 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&fusb302_int>;
-+		vbus-supply = <&vbus5v0_typec>;
-+		status = "okay";
-+
-+		usb_con: connector {
-+			compatible = "usb-c-connector";
-+			label = "USB-C";
-+			data-role = "dual";
-+			power-role = "dual";
-+			try-power-role = "source";
-+			op-sink-microwatt = <1000000>;
-+			sink-pdos =
-+				<PDO_FIXED(5000, 1000, PDO_FIXED_USB_COMM)>;
-+			source-pdos =
-+				<PDO_FIXED(5000, 2000, PDO_FIXED_USB_COMM)>;
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+
-+					usbc0_hs: endpoint {
-+						remote-endpoint = <&usb_host0_xhci_hs>;
-+					};
-+				};
-+
-+				port@1 {
-+					reg = <1>;
-+
-+					usbc0_ss: endpoint {
-+						remote-endpoint = <&usbdp_phy0_ss_out>;
-+					};
++			altmodes {
++				displayport {
++					svid = /bits/ 16 <0xff01>;
++					vdo = <0xffffffff>;
 +				};
 +			};
-+		};
-+	};
- };
- 
- &mdio1 {
-@@ -346,6 +405,16 @@ usb30_host_pwr_en: usb30-host-pwr-en {
- 			rockchip,pins = <1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
++
+ 			ports {
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+@@ -342,6 +349,14 @@ usbc0_ss: endpoint {
+ 						remote-endpoint = <&usbdp_phy0_ss_out>;
+ 					};
+ 				};
++
++				port@2 {
++					reg = <2>;
++
++					usbc0_sbu: endpoint {
++						remote-endpoint = <&usbdp_phy0_dp_out>;
++					};
++				};
+ 			};
  		};
  	};
-+
-+	usb-typec {
-+		fusb302_int: fusb302-int {
-+			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+
-+		typec_vbus_en: typec-vbus-en {
-+			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
- };
- 
- &pwm0 {
-@@ -748,8 +817,30 @@ &usb_host0_ohci {
- };
- 
- &usb_host0_xhci {
--	dr_mode = "host";
-+	dr_mode = "otg";
-+	usb-role-switch;
- 	status = "okay";
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@0 {
-+			reg = <0>;
-+
-+			usb_host0_xhci_hs: endpoint {
-+				remote-endpoint = <&usbc0_hs>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+
-+			usb_host0_xhci_ss: endpoint {
-+				remote-endpoint = <&usbdp_phy0_ss_in>;
-+			};
-+		};
-+	};
- };
- 
- &usb_host1_ehci {
-@@ -765,7 +856,29 @@ &usb_host2_xhci {
- };
+@@ -857,6 +872,9 @@ &usb_host2_xhci {
  
  &usbdp_phy0 {
-+	orientation-switch;
+ 	orientation-switch;
++	mode-switch;
++	sbu1-dc-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
++	sbu2-dc-gpios = <&gpio4 RK_PB4 GPIO_ACTIVE_HIGH>;
  	status = "okay";
+ 
+ 	ports {
+@@ -878,6 +896,22 @@ usbdp_phy0_ss_in: endpoint {
+ 				remote-endpoint = <&usb_host0_xhci_ss>;
+ 			};
+ 		};
 +
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
++		port@2 {
++			reg = <2>;
 +
-+		port@0 {
-+			reg = <0>;
-+
-+			usbdp_phy0_ss_out: endpoint {
-+				remote-endpoint = <&usbc0_ss>;
++			usbdp_phy0_dp_in: endpoint {
++				remote-endpoint = <&dp0_out_con>;
 +			};
 +		};
 +
-+		port@1 {
-+			reg = <1>;
++		port@3 {
++			reg = <3>;
 +
-+			usbdp_phy0_ss_in: endpoint {
-+				remote-endpoint = <&usb_host0_xhci_ss>;
++			usbdp_phy0_dp_out: endpoint {
++				remote-endpoint = <&usbc0_sbu>;
 +			};
 +		};
-+	};
+ 	};
  };
  
- &vop {
+@@ -895,3 +929,26 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
+ 		remote-endpoint = <&hdmi0_in_vp0>;
+ 	};
+ };
++
++&dp0 {
++	status = "okay";
++};
++
++&dp0_in {
++	dp0_in_vp1: endpoint {
++		remote-endpoint = <&vp1_out_dp0>;
++	};
++};
++
++&dp0_out {
++	dp0_out_con: endpoint {
++		remote-endpoint = <&usbdp_phy0_dp_in>;
++	};
++};
++
++&vp1 {
++	vp1_out_dp0: endpoint@a {
++		reg = <ROCKCHIP_VOP2_EP_DP0>;
++		remote-endpoint = <&dp0_in_vp1>;
++	};
++};
 -- 
 2.56.0
 
