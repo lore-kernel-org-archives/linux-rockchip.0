@@ -2,106 +2,109 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19FEB60A2605
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 10:39:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 97E55606A333
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 10:41:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lI8WDYdO;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=LR6/L0Ll
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MBT6XQ9e;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=KKaAoDLQ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=5orPuNK9AX5npZq7hROpQ5RgTgze801kq8s4PR6XfG0=; b=lI8WDYdOSWzVVtRP9XMLbhmBxC
-	UUSV2W2W23D/MA027q9SAzIowsjmGmUnTX81+kqMfOkh2AWwVVBoNt21m+p+y1ZKTlF/SL4DoY1w6
-	Et5xipS8yWR1gjsxNKPUA04aIrifBqNW8Z2osPpWIve57taw3z2/JQSKgOeIqE0GwSpz5tU+rqQe0
-	4lOOjblpbl3ksRUjmPcDU4YvFTmrRpqyi5Ir+NPamH3FGIgqsyi2YwMPRRSNc6WTS2vhMZZOSKR2v
-	vf7VZTRj5QjNMVRMaOd4I7ocuS8Z+o3ugl2wFm54gTW7rtc0MX1HCrFd4YXlrKYDfBo5izsS2mbh2
-	y7PogzZw==;
+	bh=csFCQkHJGnjqHb72UDCVxINYzo9NpEV4NLacec1qfqk=; b=MBT6XQ9eAUVkRM0rkB0xl/Ycmq
+	ZV5mbubiCap79XlJM79MGVUtkpRxQ0ygpWTHfwu5c8hBlVbNR6fjuIwUzeRCfYxUPttjPY1caB+yO
+	znYNVxe6TOVX7npIgnhqdLTXSqumXIR/Pd6gSTbC7TaMCoTPF4xM5pAHeFUQIWHi7w6W0PXHMcBad
+	rDPnbgScP39JEC3u2V0vDqFJOAa771shP0Sq6spxoB/4feL96BOVJr8V0xkNFdCHh1E6VNdEdtorc
+	EpYG7pjGi4+cnIsFird/QxXYoVj85uBPHZ8AidJ8dBpnB/K6hepnNBiLcZOfr6E6YWpQWXCyyX/0B
+	uegAXeVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQjFv-00000003TXh-2kj5;
-	Tue, 10 Nov 2026 10:39:11 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xQjI9-00000003UGH-3ZTf;
+	Tue, 10 Nov 2026 10:41:29 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQjFq-00000003TUW-2Jdx;
-	Tue, 10 Nov 2026 10:39:06 +0000
+	id 1xQjI8-00000003UFo-1lVG;
+	Tue, 10 Nov 2026 10:41:28 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id AD3EC63873;
-	Tue, 10 Nov 2026 10:39:05 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794307145;
-	b=QwjuGWFFLm4q2/Idtsbnv2YOhs5FVfI4FJ7Ytj7Wbn9V6tAwVNFHrDXEjop+2Iv3dclx
-	 /o2BvnJnJEhPdHL9f3+GnNmuxWHYcRNAYK0/QvmvHfP4C5jYMJd496hGChFKuvcW4H/m+
-	 i4LhCpYLeAiMyACBLMCfSjT4fxW9YOLhRU8Cz2/VRjlfpQe54QmCCeLtMIWVCegltULFA
-	 6m1VH0+ECxXfnpbDiKgTLlzOGhd55t2sz6Zy1uh0ic1KuVIXo/Fbgtdovw0dizP6AEZRX
-	 A7qnVorosIUj+VQ5Goz/rl1BKbeztflbtCYJhx/Ut2G7ykfTx+XNvU0eVoLA8EYE2wQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794307145;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=u120nBzjSw85Ua4h2iZr2dC7vRzrh960a8a37kW/TOg=;
-	b=JdWhi2wil+tjQe6TR+7j0MBZ4mmcfSmhz7syvSjt7ZCpTZPgAIvCBqQPRQNj2jPNeYkK
-	 2kuiAjGn+m7ihyAwaUUKZsxJ2OdZbUqm6llMgIOhOXIQq98+C03vIGnkvr50KOYnUgFxI
-	 c2E1ez0ZG5HYUOpio2/4BrVgqIXBSRPTX7Oww+eSd1jaT9KSj8nuifDDCmk2N8AUfB74O
-	 yS4L5DGbqmmJcDBGUfxvqfwfl8LapuB8GmZzW0+incm/Q34mJq+YQUC22w3h+jiFZf/FE
-	 RLESi7X8XP9NfvKAH1d8YsiPBk+geXm21/1/HcMQpzITFPCECmcMNl+zU/9Xjl792Zg==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id C54981F008AB;
-	Tue, 10 Nov 2026 10:39:04 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 301AD40E14;
+	Tue, 10 Nov 2026 10:41:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD61E1F0089F;
+	Tue, 10 Nov 2026 10:41:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794307145;
-	bh=u120nBzjSw85Ua4h2iZr2dC7vRzrh960a8a37kW/TOg=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=LR6/L0LlSRZ6ct/+XZf7FawaPk4QMss/KOQeuov3Hb5VnXIpGau2DtTAZ6nteQoPo
-	 G2dKGjEi0KGmPXo4dzD0iXxZ0lK3IrnWu9YeAcAAeeoPOradl8Cj+k8Wei4vNdgj5A
-	 tq9NmSi1A2450PQZOdubEVLshicDRMVNwJiwYouYSennhrTfkO/hvY6+oq/hvugJkC
-	 3qdZHZ5TPDzVaHwLb9WGXnkoszsm+CQzEosF4Dwa3HJIMLWTtJ7t/sfQI8BsWfru9k
-	 pfQcUBzPYSm6gEALdISqE5umBQCNVj61AM9N8jGepQ0IEwut8W4SzXSEKiROx0jUeQ
-	 04uDv1QPYfEXg==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 3E35048AF3;
-	Tue, 10 Nov 2026 10:39:04 +0000 (UTC)
-From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Tue, 10 Nov 2026 10:39:04 +0000
-Subject: [PATCH 1/3] usb: typec: tcpm: Don't cut a pending state delay
- short on a re-queue
+	s=k20260515; t=1794307288;
+	bh=1JSKtyJeBKbXkGGW3NfSoidRzUvmtli6dOhv6QjYw5M=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=KKaAoDLQblsfg/eXiGJP3JUJ9YUD4F8xzGF+0WunmkTv+sjD2MOjUuWEcM0/0A0Mr
+	 5z1erOsZmE1vTY9P4QCJ1bIwii8UFYwT/1mBUONKGPFyctYMlLYczbyC23+2TtmRGW
+	 h92sF1r4sWebrF84u/4K4foJNDcqPbQs+81j+mbDHUhHH+fGmelGrQl7CwgKacBSD0
+	 fYWp9bzrmKmf9QMVkW1MAvHH2Z1HyzYM0ct3EIHF6qSGkPRqE1gZ0wB72raRFz/40G
+	 J6QHn6GqrqbGXTqVgxFzFVGhyzNAXGq66STt1QhUIk661wVHmQmG+r8MHUSTiN30RN
+	 Lh8enkyahzXfw==
+Message-ID: <b1ebdcbe-2f2f-4fcd-8567-13e77fc2311b@kernel.org>
+Date: Tue, 10 Nov 2026 11:41:22 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261110-tcpm-attach-reboot-v1-1-7657cc1e2dca@gmail.com>
-References: <20261110-tcpm-attach-reboot-v1-0-7657cc1e2dca@gmail.com>
-In-Reply-To: <20261110-tcpm-attach-reboot-v1-0-7657cc1e2dca@gmail.com>
-To: Badhri Jagan Sridharan <badhri@google.com>, 
- Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, Arun Iyengar <aiyengar1990@gmail.com>, 
- stable@vger.kernel.org
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794307143; l=2363;
- i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=f9cETtbmuMeuYvGKqDaJesYJ7nf3lLCpDNSETJ6OO1Q=;
- b=pFqVEKwOdwLR7mjXQTBH67eOjWQUk60Y4/7F27il8EHZKBd8oglAEuo/CHYM+JOtKvlZnKWlf
- 1ULxeKeRqrYBM2mYkZteQjBG3Ebe/QNqKpt1rikjzo7iA/TlROf/XRk
-X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
- pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
-X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
- auth_id=1480
-X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/4] arm64: dts: rockchip: Describe the USB3 Type-A
+ connector on Orange Pi 5/5B
+To: aiyengar1990@gmail.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Alan Stern <stern@rowland.harvard.edu>
+Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20261110-usb-port-pairing-v1-0-9307e29d2ed2@gmail.com>
+ <20261110-usb-port-pairing-v1-4-9307e29d2ed2@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <20261110-usb-port-pairing-v1-4-9307e29d2ed2@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,77 +114,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
+On 10/11/2026 08:20, Arun Iyengar via B4 Relay wrote:
+> From: Arun Iyengar <aiyengar1990@gmail.com>
+> 
+> The upper Type-A port of the Orange Pi 5 and 5B has its USB 2.0 lines
+> on USB 2.0 host 1 (EHCI/OHCI) and its SuperSpeed lanes on the
+> SuperSpeed-only USB 3.0 host 2 (xHCI). The lower Type-A port is USB 2.0
+> only, on host 0.
+> 
+> Describe the upper port as a usb-a-connector linked to both
+> controllers, so that the USB core pairs the EHCI root hub port with the
+> xHCI SuperSpeed port. Without that, a USB 3 device plugged in at boot
+> is enumerated by the EHCI before the xHCI is up and stays at high
+> speed.
+> 
+> VBUS of the port is not switched (the vendor DT has it on an always-on
+> 5 V rail), so it is described as coming from vcc5v0_sys.
+> 
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> ---
 
-tcpm_state_machine_work() applies port->delayed_state as soon as it
-runs, assuming it only runs when the state machine timer fired. The
-work can also run because it was queued for another reason while it was
-already running.
-
-This happens at every port registration: tcpm_init() runs with the port
-lock held and calls tcpm_set_state() twice with no delay (default state,
-then PORT_RESET). The first call queues the work, which starts and
-blocks on the lock; the second call queues it again. The first run
-handles PORT_RESET and schedules PORT_RESET_WAIT_OFF after
-PD_T_ERROR_RECOVERY; the second run then applies it at once. On an
-Orange Pi 5 (FUSB302) the log shows the 100 ms ErrorRecovery taking
-6 us:
-
-  pending state change PORT_RESET -> PORT_RESET_WAIT_OFF @ 100 ms
-  state change PORT_RESET -> PORT_RESET_WAIT_OFF [delayed 100 ms]
-
-so the "clean slate" that tcpm_init() asks for never happens.
-
-If the delay has not expired yet, re-arm the timer for the time left
-and return, as tcpm_send_queued_message() already does.
-
-Fixes: 3ed8e1c2ac99 ("usb: typec: tcpm: Migrate workqueue to RT priority for processing events")
-Cc: stable@vger.kernel.org
-Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
----
- drivers/usb/typec/tcpm/tcpm.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/tcpm.c
-index d721baef5210..0a19b7665555 100644
---- a/drivers/usb/typec/tcpm/tcpm.c
-+++ b/drivers/usb/typec/tcpm/tcpm.c
-@@ -6569,6 +6569,18 @@ static void tcpm_state_machine_work(struct kthread_work *work)
- 
- 	/* If we were queued due to a delayed state change, update it now */
- 	if (port->delayed_state) {
-+		/*
-+		 * The work may have been queued again for another reason
-+		 * while it was running, for instance by tcpm_init() at port
-+		 * registration, which sets two states in a row with the
-+		 * port lock held. Do not cut a pending delay short; re-arm
-+		 * the timer for the time that is left.
-+		 */
-+		if (ktime_after(port->delayed_runtime, ktime_get())) {
-+			hrtimer_start(&port->state_machine_timer,
-+				      port->delayed_runtime, HRTIMER_MODE_ABS);
-+			goto done;
-+		}
- 		tcpm_log(port, "state change %s -> %s [delayed %ld ms]",
- 			 tcpm_states[port->state],
- 			 tcpm_states[port->delayed_state], port->delay_ms);
-
--- 
-2.55.0
+DTS cannot be combined in this patchset and must be split. Don't mix
+patches from independent subsystems when you send something explicitly
+targeting only one subsystem.
+See also: Documentation/devicetree/bindings/submitting-patches.rst
 
 
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
