@@ -2,103 +2,117 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 291B1606A321
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:20:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3A1BB607199B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:45:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=laS4YdUC;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=aA12441A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cy6tRtdy;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=Y6zE3U4d;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=cBwN7iJR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=7xcedrV3fkyY0YENoPI/UzxU6s0ygPPr2hvy99NdH4g=; b=laS4YdUCYgubFQ6dYG+4f2Hmer
-	/C3zNvh21CQ0lu040/LKnWQJRBQSsAcRjmsQwlLCssZ/ppc+SdpeM2vV9TQ4dp34XxEf6wdquurSN
-	CG/iJ+JVKaoT8gZg4G0CSJ9bpTxZFtcFZcP/7y/uXxskKYsGseqQ4yr/Q2B2HSZg5cYMWTCZaj+F1
-	6LPehiX920GxvlOuO6WG2b8vCcngVLPcZNPf+ppknUjoi77jsUZX9mPKQcOi9npK5kLVjGy3+Y635
-	9nohJb3oaSBDAHJO9eYAuxyZ9KV54eUem8EWSOZ5u1R4m6UOep/stcuvbK9z3GeH9H4X/flqV7ltk
-	1Ksj1xuA==;
+	bh=FfpvYnJUyKVhOsRQpfkPL9yyQBP1nWX5WR3P1IPOfT8=; b=cy6tRtdyzXhynNgkZhYKTxBhhu
+	+4a5bsBwr74koYKnEe1NvfwLhOTJ1cfRqaKGarIt5XmdUZ6W5F5lp1kx6WIraW4G+WK8cHhDo59+r
+	JNBP/5qn5/N4Ib7scfDgZSmA/4Q0rnXKvNI/IRO7yAV9I2IgwW3vYBx2wLTZqARTRWTuuQini26c0
+	Un/T/JlRJEvHaN0Rhx1QZAgHq4gPqsXSlhGs4Gcs1qKlcsDKuPvPCZZ2XQTAiKJhxgQZo26vETuBm
+	Zxu5kr/HyjUEgj72/Ebrj2LP/2DTjt2lfURS/697X6PTkdsF9VO4nD4dEjxU1FR+RCFNgS99Aa8OS
+	PzzBZSRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg9y-00000002tF3-4BVD;
-	Tue, 10 Nov 2026 07:20:51 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xQgXL-00000002wqv-29rI;
+	Tue, 10 Nov 2026 07:44:59 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg9K-00000002sZp-1PIX;
-	Tue, 10 Nov 2026 07:20:12 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id BCD2342DA0;
-	Tue, 10 Nov 2026 07:20:09 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794295209;
-	b=2WLM+BHsjYMIPcL/7IGMURYnfR+Dq7DbTKh/vHnPiuvBgW0wKypzb1hkbt21FNpn0SgX
-	 ttd/mdiOD7Cb3jjZ1qRs6GR/cFi3YCy5/3yqJm9AVPKRHg2HeAytXgADDzo8rgp3gb6l4
-	 CjzN43ptfFyXWSf/IfPDWZBjL/Dm447cEtVTP6ZNCoBFEbGNYwvNj1943CqLvugwUcCew
-	 jGXfkPl4lNc+jCV42lvcMq+JD3snE5KTJMbLyVrGKYOPxTbT2KIODt0BlshVadzEXS7QU
-	 LLrzfPZ5oh8chXq0/5+oirGU16VFOc8EURMgY7Nl2Zyk4uxmwsb3ATd+vkY60RtZzMQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794295209;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=Y6cvwU/71HJ9+A3saeCHVFbXtx1kh4cOKRZ17+c2Hsk=;
-	b=P3THI6IPjeNUabsMc4kiwAvgBoa3FE6QDmI79v87utmRv6oNM9gqKnat5SfD0BlY0O9D
-	 ebl5nkpuc7Ra50BREsIusWcrHr7amtAWnzjp4jlHW5zCD9eLa65QFq9Qiv6Yy4NIiQfDS
-	 ADBzepcrwYDi2i2cUJeuBKD5FDE9FVthEJufZNkwvqZI0T99p/MPt8k8OCk33JDNSCBeS
-	 eM/EA0LNxxxEbAnG5kibYRpi3Nmxm1AbqNlhhuwugoF+b1Dbm1L/0dfQNxxAN5zxDgiBx
-	 Sd4K416ztDENIrkWWdcT6BrC5C2S4/cg8FWmcaHNLD650w1e5xvFbW9YWm+xefnX9bA==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 2B5DE1F008A1;
-	Tue, 10 Nov 2026 07:20:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794295209;
-	bh=Y6cvwU/71HJ9+A3saeCHVFbXtx1kh4cOKRZ17+c2Hsk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=aA12441A62FEUAtZHrUduR3TEW6eL0D9lmJmcrtIrTyLdrBg7R9Qh1ELrUn+9H8LK
-	 qEw8HPNPmLg667zKkmIuC4Di5LJRpV5ahCaN2DA+a9/Is7c+lDstNcT4Cy+jc4QWPz
-	 Q1GAb5+6QTQ8oth2mAaYzy6FlXUm7Mj0P3Gd+g/yR4kIv33buWSHVSUkfG0VPO3Y5L
-	 Saia+uGVJ4xlSHvZBwHrUYl3K6AW0gslGCRExdP8UBLYW4cBz2iYlgVWj8geD+iPQc
-	 JXHN2u4+COMH41lErAbu+ui9Ai7HvDXifFndGVE10+11AFmZyfQlggTFAZ81C/PWHf
-	 n9WMxj3cbmhPw==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id AF526489E4;
-	Tue, 10 Nov 2026 07:20:06 +0000 (UTC)
-From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Tue, 10 Nov 2026 07:20:07 +0000
-Subject: [PATCH 2/4] usb: core: Pair ports of different hubs through their
- connector
+	id 1xQgXI-00000002wh1-1xPq
+	for linux-rockchip@bombadil.infradead.org;
+	Tue, 10 Nov 2026 07:44:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=NnAS6WOgFuGwDjvtZJG6FbzuORG3Gs7qMjpBKDa9+4A=; b=Y6zE3U4d7T4ogZTehLZSy8CbAT
+	XFANt7+UjJisw905caMcz+vGL7Tsna9O5DNJ7zMGqdzrzGy7P8kCQa2pjEAZbrzgYfvw4Gyw7b8Cv
+	VsP1aLZmu9pUG2AQ01L0cja/8dlVQfbVa0WeJjNh/6GcJT/aKbyoM1K9Uk+UFR3daftINL+v2wqZ5
+	t/vcHBLpKeveTWwFJl/iMdraTxm5X/zqsFWDWCP9xHUgnykLEdHDdC7vtxdRoaMcUtWWemIMJySV1
+	oUMxUiJ/H7y6LSKMKGLTMGFaBQoi9GIq4599IwFTeW6HSCCgRJTZLDElo1k5+MyQQGfYT+weoRXY5
+	/6kUrAFQ==;
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xQgX4-00000007dzC-02Xb
+	for linux-rockchip@lists.infradead.org;
+	Tue, 10 Nov 2026 07:44:49 +0000
+Received: by mail-oi1-x22f.google.com with SMTP id 5614622812f47-53ec9237600so823186b6e.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 09 Nov 2026 23:44:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1794296680; x=1794901480; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=NnAS6WOgFuGwDjvtZJG6FbzuORG3Gs7qMjpBKDa9+4A=;
+        b=cBwN7iJRWdHNoYTytwGjePCD3rx7AkxTBuZGeQHAJxcVnEdwPK9GvTZDrt8eOQcV7u
+         JoxViNqKXeBumfvAq/h0IWLTrvP6Nvv+hRv8/MTbo4q5DMsnw+SElXiT0UrTRrYKgK6Y
+         fhePosh7RTE4e72OAu2p74UQ7pVXeAQzlLjJyH2lOOVr3AIyrNe2RE8c62gJzRlksiNZ
+         HNNXVy3j8meKJfYWYhBXeoiRQT+PUVMR2IAvCnhJeIMbyC9P/WO9Bl2ZNm1/p5LglIP8
+         IJZVfHNPZlHeg3CvV7bOZ4x6H/asgEyh2yRbLMCMlcssA4chqPYmgQXYGiRvsz2A0XM/
+         nfcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794296680; x=1794901480;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=NnAS6WOgFuGwDjvtZJG6FbzuORG3Gs7qMjpBKDa9+4A=;
+        b=Vp4C8GrUzzj/KTRK8W2tP9jgvBQssB20HFlE1KERFrxRnriOfdS7Vodr8KUz68oZ2n
+         21bz0fgWoy/Tf2lWEp06HSgXd3oZSeuWOjLbtYHc7T2Po3BKQfT+1yx6Um22uLhgoUEk
+         8lpP2ALUxUSPwtW/ynvll+xzZiEYUTve7C07ZrFapibaZII3ODiXOs1D6eJqxvNrC0KG
+         a3cjjXZLVa7ZpyZloOkLedCro75jhY+76tQvXREX9YbvYeELqDikx6nR+hrWZRW/0cai
+         RgFmUc3Sg9I+PsxHACykvr2zn2eLB1a6tZYcEzZgPfSOyomvf/IH8GYjUFW8hAmly8Qy
+         r8eQ==
+X-Forwarded-Encrypted: i=1; AL+hErG1wCSaSDfu7GU839KQnfVtx5aVjH2M89UeAb5mLjbinjXwSSxC0Q2zCZi/3tilt+2CSZgv6Mjq6jIYmu0/3g==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8D4zgJR/Yl0mo66UT0WjI+jWcGLlPZn1iATPhceQdLgdio+Ipd
+	vfcG2Oq1RnsHz3RU7Fpc0ZN+JVyk+87LTTpSk/v7vZfBR0LY/ZWgL1AJ/4AzbxMq
+X-Gm-Gg: AYBFou0KZwQUQ4fRm1vVAQS5U8H8akKT3/Ez6Eg2EFe39LBev2USLpbchD3XzgMA/eD
+	02WH+0vTilypNTjFx1JlLJL2XNRMuGitDZqIRTrsNFZxcbqdjWeURw2I7few4omXX3B5xQrqAIS
+	V98g69IDRVonXsNH5Hiyex//qT8UBI1f+gFi2udF82nEaomazXwNzpCSgEH4QgMGptULa39fVlS
+	Gk2foohOUR0drfGS7MY+QHHqTgxk87jkRe3SFW0aFuHVwXs8H++QMCW6Qc0CfDJk5I2knFYlgoe
+	tUj681CMVmt7jg2t+BOa9l/SWxsKT7hTM6nDdeTma8GO/+PAUVzRCXEkvwKHtK4Vx6CDsNh/JoF
+	YcEJN/W/6YDekKkRPMAe7SL+6jacbhtXAM4bYrTYpI6fAOY9tXwvQodz76z8hTkW2fZGuJp52aV
+	Z/9MxMBiBpkEmpdT/1SXtHF+Tn+KXLgomlQ3PQiAvPK4d9Q8t3lEBOyHt64TmHXAIkcSsMP8gxF
+	WMXr/48p6B31GpNM5c+0wE/XDv6K2ot9j2fgTTYpku7iXBmVLD5ZJhhMfwmpFHkQ+5VCa4b7Tjy
+	+FqsmxFqnJExuMWoBUIpkD44TXl+Joxg/ab1ZvDVWAapdMHbk8DGGJoNd6sGx1mOICTHDCgT5Ev
+	ofmN/4WfKoFz9FL/nRQlA4EZGmgaCjusLnQYspva6ORGhCjcy6AQlrWUp7pNtix4xcwobC4J00Y
+	XeSJ/XOosHu4NaKimKUlWYqQpGxc2p5ksk60yTlOVOEsCJ9ggE4mI=
+X-Received: by 2002:a05:6808:3505:b0:531:7f68:842e with SMTP id 5614622812f47-5683c73b48dmr1413961b6e.8.1794296679771;
+        Mon, 09 Nov 2026 23:44:39 -0800 (PST)
+Received: from [127.0.1.1] (174-29-1-49.hlrn.qwest.net. [174.29.1.49])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-5690504fdb5sm1522804b6e.3.2026.11.09.23.44.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Nov 2026 23:44:39 -0800 (PST)
+From: James Hilliard <james.hilliard1@gmail.com>
+Date: Tue, 10 Nov 2026 00:44:20 -0700
+Subject: [PATCH v2 17/58] mtd: rawnand: rockchip: retain chips across
+ controller removal
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261110-usb-port-pairing-v1-2-9307e29d2ed2@gmail.com>
-References: <20261110-usb-port-pairing-v1-0-9307e29d2ed2@gmail.com>
-In-Reply-To: <20261110-usb-port-pairing-v1-0-9307e29d2ed2@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Alan Stern <stern@rowland.harvard.edu>
-Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org
+Message-Id: <20261110-submit-rawnand-retained-handle-lifetime-v1-v2-17-9137d08f05df@gmail.com>
+References: <20261110-submit-rawnand-retained-handle-lifetime-v1-v2-0-9137d08f05df@gmail.com>
+In-Reply-To: <20261110-submit-rawnand-retained-handle-lifetime-v1-v2-0-9137d08f05df@gmail.com>
+To: Miquel Raynal <miquel.raynal@bootlin.com>, 
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>
+Cc: linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ James Hilliard <james.hilliard1@gmail.com>, 
+ Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295206; l=10006;
- i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=TKM1R1LcIumGh2H1LgAD/GVIXTtpjHSsuzoyd7DkBY8=;
- b=7AuXo8FvIUWJFnAvunMTOLcsZ/tJ6SjJ2wUz9QjDwjEtIPVETb751fme+2jY+3wcqh97eVEED
- 0NZiz2IPr9jB9HtDV1Ht4eTInkgCvJmjcON68l6DCgVrMD9tdM3ELFO
-X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
- pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
-X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
- auth_id=1480
-X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261110_074445_176032_A9654A66 
+X-CRM114-Status: GOOD (  17.18  )
+X-Spam-Score: 0.1 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,302 +122,180 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
+Keep chip metadata and controller storage alive for retained MTD
+handles. Disconnect each chip after unregistering it and before
+releasing transfer buffers or clocks. This also lets unregister
+notifiers finish using those buffers before hardware teardown. Free chip
+metadata on the final MTD put.
 
-A USB 3 port is two ports to the USB core, a USB 2.0 one and a
-SuperSpeed one, and the core pairs them as peers. Root hub ports are
-paired with the same port number of the other root hub of the same
-xHCI, unless ACPI gives their locations.
-
-Some SoCs route the two halves of a connector to different host
-controllers. On the Rockchip RK3588, USB 3.0 host 2 is SuperSpeed-only:
-its own USB 2.0 root hub port is not wired to a PHY, and the connector's
-USB 2.0 lines go to a separate EHCI instead. Default pairing then joins
-the SuperSpeed port to a dead USB 2.0 port, and nothing knows about the
-EHCI port that really shares the connector.
-
-A usb-connector node describes its USB 2.0 data lines as graph port 0
-and its SuperSpeed lanes as graph port 1. When a hub's or host
-controller's graph links one of its ports to a connector whose other
-half leads to a different hub or host controller, pair the port with
-that one instead, and keep it out of the default pairing. Connectors
-whose two halves end on the same node, like a Type-C connector on a
-DWC3, keep the default pairing.
-
-This lets the runtime PM rules for peers (keep the SuperSpeed port
-powered while its USB 2.0 peer is) apply to such connectors too.
-
-Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+Fixes: 058e0e847d54 ("mtd: rawnand: rockchip: NFC driver for RK3308, RK2928 and others")
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
 ---
- drivers/usb/core/hub.h  |   2 +
- drivers/usb/core/of.c   | 101 ++++++++++++++++++++++++++++++++++++++++++++++++
- drivers/usb/core/port.c |  54 ++++++++++++++++++++++++--
- include/linux/usb/of.h  |   9 +++++
- 4 files changed, 162 insertions(+), 4 deletions(-)
+ drivers/mtd/nand/raw/rockchip-nand-controller.c | 49 +++++++++++++++++++------
+ 1 file changed, 37 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/usb/core/hub.h b/drivers/usb/core/hub.h
-index 9ebc5ef54a32..78382839be48 100644
---- a/drivers/usb/core/hub.h
-+++ b/drivers/usb/core/hub.h
-@@ -97,6 +97,7 @@ struct usb_hub {
-  * @usb3_lpm_u2_permit: whether USB3 U2 LPM is permitted.
-  * @early_stop: whether port initialization will be stopped earlier.
-  * @ignore_event: whether events of the port are ignored.
-+ * @connector_peer: @peer is on another hub, paired through a connector.
-  */
- struct usb_port {
- 	struct usb_device *child;
-@@ -118,6 +119,7 @@ struct usb_port {
- 	unsigned int is_superspeed:1;
- 	unsigned int usb3_lpm_u1_permit:1;
- 	unsigned int usb3_lpm_u2_permit:1;
-+	unsigned int connector_peer:1;
+diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
+index 9444ba02696d..aa31457390cd 100644
+--- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
++++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
+@@ -1115,6 +1115,11 @@ static const struct nand_controller_ops rk_nfc_controller_ops = {
+ 	.setup_interface = rk_nfc_setup_interface,
  };
  
- #define to_usb_port(_dev) \
-diff --git a/drivers/usb/core/of.c b/drivers/usb/core/of.c
-index a6ee20d8774e..63cead74ae8e 100644
---- a/drivers/usb/core/of.c
-+++ b/drivers/usb/core/of.c
-@@ -145,6 +145,107 @@ enum usb_port_connect_type usb_of_get_connect_type(struct usb_device *hub, int p
- }
- EXPORT_SYMBOL_GPL(usb_of_get_connect_type);
++static void rk_nfc_nand_release(struct nand_chip *chip)
++{
++	kfree(container_of(chip, struct rk_nfc_nand_chip, chip));
++}
++
+ static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
+ 				 struct device_node *np)
+ {
+@@ -1134,8 +1139,7 @@ static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
+ 		return -EINVAL;
+ 	}
  
-+static bool usb_of_is_connector(const struct device_node *np)
-+{
-+	return of_device_is_compatible(np, "usb-a-connector") ||
-+	       of_device_is_compatible(np, "usb-b-connector") ||
-+	       of_device_is_compatible(np, "usb-c-connector");
-+}
-+
-+/*
-+ * Return the device node owning the far end of @con's endpoint on @con_port,
-+ * and in @port1 the number of the port that endpoint belongs to.
-+ */
-+static struct device_node *usb_of_connector_remote(struct device_node *con,
-+						   u32 con_port, u32 *port1)
-+{
-+	struct device_node *ep, *remote;
-+	struct of_endpoint endpoint;
-+
-+	ep = of_graph_get_endpoint_by_regs(con, con_port, -1);
-+	if (!ep)
-+		return NULL;
-+
-+	remote = of_graph_get_remote_endpoint(ep);
-+	of_node_put(ep);
-+	if (!remote)
-+		return NULL;
-+
-+	if (of_graph_parse_endpoint(remote, &endpoint)) {
-+		of_node_put(remote);
-+		return NULL;
+-	rknand = devm_kzalloc(dev, struct_size(rknand, sels, nsels),
+-			      GFP_KERNEL);
++	rknand = kzalloc(struct_size(rknand, sels, nsels), GFP_KERNEL);
+ 	if (!rknand)
+ 		return -ENOMEM;
+ 
+@@ -1144,17 +1148,19 @@ static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
+ 		ret = of_property_read_u32_index(np, "reg", i, &tmp);
+ 		if (ret) {
+ 			dev_err(dev, "reg property failure : %d\n", ret);
+-			return ret;
++			goto free_chip;
+ 		}
+ 
+ 		if (tmp >= NFC_MAX_NSELS) {
+ 			dev_err(dev, "invalid CS: %u\n", tmp);
+-			return -EINVAL;
++			ret = -EINVAL;
++			goto free_chip;
+ 		}
+ 
+ 		if (test_and_set_bit(tmp, &nfc->assigned_cs)) {
+ 			dev_err(dev, "CS %u already assigned\n", tmp);
+-			return -EINVAL;
++			ret = -EINVAL;
++			goto free_chip;
+ 		}
+ 
+ 		rknand->sels[i] = tmp;
+@@ -1179,14 +1185,15 @@ static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
+ 
+ 	if (!mtd->name) {
+ 		dev_err(nfc->dev, "NAND label property is mandatory\n");
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto free_chip;
+ 	}
+ 
+ 	mtd_set_ooblayout(mtd, &rk_nfc_ooblayout_ops);
+ 	rk_nfc_hw_init(nfc);
+ 	ret = nand_scan(chip, nsels);
+ 	if (ret)
+-		return ret;
++		goto free_chip;
+ 
+ 	if (chip->options & NAND_IS_BOOT_MEDIUM) {
+ 		ret = of_property_read_u32(np, "rockchip,boot-blks", &tmp);
+@@ -1197,16 +1204,26 @@ static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
+ 		rknand->boot_ecc = ret ? chip->ecc.strength : tmp;
+ 	}
+ 
++	ret = nand_set_release(chip, rk_nfc_nand_release);
++	if (ret) {
++		nand_cleanup(chip);
++		goto free_chip;
 +	}
-+	*port1 = endpoint.port;
-+
-+	ep = remote;
-+	remote = of_graph_get_port_parent(ep);
-+	of_node_put(ep);
-+
-+	return remote;
-+}
-+
-+/**
-+ * usb_of_get_connector_peer() - find a port's peer through its connector
-+ * @hub: hub to which the port @port1 belongs
-+ * @port1: one-based index of the port
-+ * @superspeed: whether @hub is a SuperSpeed hub
-+ * @peer_port1: returns the one-based index of the peer port
-+ *
-+ * A USB connector carries its USB 2.0 data lines on graph port 0 and its
-+ * SuperSpeed lanes on graph port 1. Usually both reach the same hub or host
-+ * controller, whose USB 2.0 and SuperSpeed ports are paired by default. Some
-+ * SoCs instead route the two halves of a connector to different host
-+ * controllers, for example a SuperSpeed-only xHCI paired with an EHCI. In that
-+ * case the two ports can only be paired through the connector.
-+ *
-+ * Return: the device node of the hub or host controller providing the peer
-+ * port, with its refcount incremented, if @port1 is the @superspeed half of a
-+ * connector whose other half leads to a different node. NULL otherwise.
-+ */
-+struct device_node *usb_of_get_connector_peer(struct usb_device *hub,
-+					      int port1, bool superspeed,
-+					      u32 *peer_port1)
-+{
-+	struct device_node *np = hub->dev.of_node;
-+	struct device_node *ep, *con, *remote, *peer = NULL;
-+	u32 remote_port1;
-+
-+	if (!np || !of_graph_is_present(np))
-+		return NULL;
-+
-+	ep = of_graph_get_endpoint_by_regs(np, port1, -1);
-+	if (!ep)
-+		return NULL;
-+
-+	con = of_graph_get_remote_port_parent(ep);
-+	of_node_put(ep);
-+	if (!con)
-+		return NULL;
-+
-+	if (!usb_of_is_connector(con) || !of_device_is_available(con))
-+		goto out;
-+
-+	/* The connector's half for our speed must lead back to this port */
-+	remote = usb_of_connector_remote(con, superspeed ? 1 : 0, &remote_port1);
-+	if (!remote)
-+		goto out;
-+	of_node_put(remote);
-+	if (remote != np || remote_port1 != port1)
-+		goto out;
-+
-+	/* Peers on the same node are paired without the connector's help */
-+	peer = usb_of_connector_remote(con, superspeed ? 0 : 1, peer_port1);
-+	if (peer && (peer == np || !*peer_port1 ||
-+		     !of_device_is_available(peer))) {
-+		of_node_put(peer);
-+		peer = NULL;
-+	}
-+out:
-+	of_node_put(con);
-+	return peer;
-+}
-+EXPORT_SYMBOL_GPL(usb_of_get_connector_peer);
-+
- /**
-  * usb_of_get_interface_node() - get a USB interface node
-  * @udev: USB device of interface
-diff --git a/drivers/usb/core/port.c b/drivers/usb/core/port.c
-index b4452b665f59..1677118ae043 100644
---- a/drivers/usb/core/port.c
-+++ b/drivers/usb/core/port.c
-@@ -649,10 +649,39 @@ static int match_location(struct usb_device *peer_hdev, void *p)
+ 	ret = mtd_device_register(mtd, NULL, 0);
+ 	if (ret) {
+ 		dev_err(dev, "MTD parse partition error\n");
+-		nand_cleanup(chip);
++		nand_disconnect(chip);
++		mtd_put_master(mtd);
+ 		return ret;
+ 	}
+ 
+ 	list_add_tail(&rknand->node, &nfc->chips);
+ 
  	return 0;
++
++free_chip:
++	kfree(rknand);
++	return ret;
  }
  
-+struct usb_connector_peer {
-+	struct usb_port *port_dev;
-+	struct device_node *np;
-+	u32 port1;
-+};
-+
-+/*
-+ * Check whether @peer_hdev is the hub that firmware describes as providing
-+ * the other half of the port's connector, and link the two ports if it is.
-+ */
-+static int match_connector_peer(struct usb_device *peer_hdev, void *p)
+ static void rk_nfc_chips_cleanup(struct rk_nfc *nfc)
+@@ -1219,8 +1236,9 @@ static void rk_nfc_chips_cleanup(struct rk_nfc *nfc)
+ 		chip = &rknand->chip;
+ 		ret = mtd_device_unregister(nand_to_mtd(chip));
+ 		WARN_ON(ret);
+-		nand_cleanup(chip);
++		nand_disconnect(chip);
+ 		list_del(&rknand->node);
++		mtd_put_master(nand_to_mtd(chip));
+ 	}
+ }
+ 
+@@ -1375,17 +1393,24 @@ static const struct of_device_id rk_nfc_id_table[] = {
+ };
+ MODULE_DEVICE_TABLE(of, rk_nfc_id_table);
+ 
++static void rk_nfc_release(struct nand_controller *controller)
 +{
-+	struct usb_connector_peer *cp = p;
-+	struct usb_hub *peer_hub = usb_hub_to_struct_hub(peer_hdev);
-+	struct usb_port *peer;
-+
-+	if (!peer_hub || peer_hdev->dev.of_node != cp->np ||
-+	    hub_is_superspeed(peer_hdev) == cp->port_dev->is_superspeed ||
-+	    cp->port1 > peer_hdev->maxchild)
-+		return 0;
-+
-+	peer = peer_hub->ports[cp->port1 - 1];
-+	if (!peer || peer->connect_type == USB_PORT_NOT_USED)
-+		return 0;
-+
-+	link_peers_report(cp->port_dev, peer);
-+	return 1; /* done */
++	kfree(container_of(controller, struct rk_nfc, controller));
 +}
 +
- /*
-  * Find the peer port either via explicit platform firmware "location"
-- * data, the peer hcd for root hubs, or the upstream peer relationship
-- * for all other hubs.
-+ * data, a connector described in the device tree, the peer hcd for root
-+ * hubs, or the upstream peer relationship for all other hubs.
-  */
- static void find_and_link_peer(struct usb_hub *hub, int port1)
+ static int rk_nfc_probe(struct platform_device *pdev)
  {
-@@ -660,6 +689,7 @@ static void find_and_link_peer(struct usb_hub *hub, int port1)
- 	struct usb_device *hdev = hub->hdev;
- 	struct usb_device *peer_hdev;
- 	struct usb_hub *peer_hub;
-+	struct usb_connector_peer cp;
+ 	struct device *dev = &pdev->dev;
+ 	struct rk_nfc *nfc;
+ 	int ret, irq;
  
- 	/*
- 	 * If location data is available then we can only peer this port
-@@ -671,7 +701,23 @@ static void find_and_link_peer(struct usb_hub *hub, int port1)
- 		/* we link the peer in match_location() if found */
- 		usb_for_each_dev(port_dev, match_location);
- 		return;
--	} else if (!hdev->parent) {
-+	}
-+
-+	/*
-+	 * If a connector routes the two halves of this port to different
-+	 * hubs or host controllers, the connector alone decides the peer.
-+	 */
-+	cp.np = usb_of_get_connector_peer(hdev, port1,
-+					  port_dev->is_superspeed, &cp.port1);
-+	if (cp.np) {
-+		cp.port_dev = port_dev;
-+		port_dev->connector_peer = 1;
-+		usb_for_each_dev(&cp, match_connector_peer);
-+		of_node_put(cp.np);
-+		return;
-+	}
-+
-+	if (!hdev->parent) {
- 		struct usb_hcd *hcd = bus_to_hcd(hdev->bus);
- 		struct usb_hcd *peer_hcd = hcd->shared_hcd;
+-	nfc = devm_kzalloc(dev, sizeof(*nfc), GFP_KERNEL);
++	nfc = kzalloc_obj(*nfc);
+ 	if (!nfc)
+ 		return -ENOMEM;
  
-@@ -703,7 +749,7 @@ static void find_and_link_peer(struct usb_hub *hub, int port1)
- 	 * does not have location data
- 	 */
- 	peer = peer_hub->ports[port1 - 1];
--	if (peer && peer->location == 0)
-+	if (peer && peer->location == 0 && !peer->connector_peer)
- 		link_peers_report(port_dev, peer);
+-	nand_controller_init(&nfc->controller);
++	ret = devm_nand_controller_init(dev, &nfc->controller, rk_nfc_release);
++	if (ret)
++		return ret;
+ 	INIT_LIST_HEAD(&nfc->chips);
+ 	nfc->controller.ops = &rk_nfc_controller_ops;
+ 
+@@ -1449,9 +1474,9 @@ static void rk_nfc_remove(struct platform_device *pdev)
+ {
+ 	struct rk_nfc *nfc = platform_get_drvdata(pdev);
+ 
++	rk_nfc_chips_cleanup(nfc);
+ 	kfree(nfc->page_buf);
+ 	kfree(nfc->oob_buf);
+-	rk_nfc_chips_cleanup(nfc);
+ 	rk_nfc_disable_clks(nfc);
  }
  
-diff --git a/include/linux/usb/of.h b/include/linux/usb/of.h
-index de42f14bd280..cfcfa26e7c69 100644
---- a/include/linux/usb/of.h
-+++ b/include/linux/usb/of.h
-@@ -20,6 +20,9 @@ int of_usb_update_otg_caps(struct device_node *np,
- 			struct usb_otg_caps *otg_caps);
- enum usb_port_connect_type usb_of_get_connect_type(struct usb_device *hub, int port1);
- struct device_node *usb_of_get_device_node(struct usb_device *hub, int port1);
-+struct device_node *usb_of_get_connector_peer(struct usb_device *hub,
-+					      int port1, bool superspeed,
-+					      u32 *peer_port1);
- bool usb_of_has_combined_node(struct usb_device *udev);
- struct device_node *usb_of_get_interface_node(struct usb_device *udev,
- 		u8 config, u8 ifnum);
-@@ -49,6 +52,12 @@ usb_of_get_device_node(struct usb_device *hub, int port1)
- {
- 	return NULL;
- }
-+static inline struct device_node *
-+usb_of_get_connector_peer(struct usb_device *hub, int port1, bool superspeed,
-+			  u32 *peer_port1)
-+{
-+	return NULL;
-+}
- static inline bool usb_of_has_combined_node(struct usb_device *udev)
- {
- 	return false;
 
 -- 
-2.55.0
-
+2.53.0
 
 
 _______________________________________________
