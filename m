@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F29EA606A333
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:12:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6D744606A325
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:14:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vVhk1t4X;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=YJIdZx0i
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=P2rLAp8z;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=BXckI2Sy
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,86 +14,91 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=nmdlXs9yuUSWjhPoFLQrV/T4JU4Nsp7nr2zPBmXsv7A=; b=vVhk1t4Xaxsg+QOg0HJy9rrZMe
-	L26naljal9xX80gkhl0NID4UGxoeu/skZ291jJ7/1Pd4P6k9Ow7V61/lc0ifmfEY2swzEwIf35kuM
-	6XLetQknJlpRdfhEXTeGNzPRgYlBFdhcvgAvuHoJ/B+Cjmr9GInXKuh9aIBzRz59ZodEFAU5rIF3y
-	8D3E+Kcx2F8wYaGJ7MSUkbSxqGcAM2adZUwcZiySwl1qtTK5IrIuFdCckKeEUfC7boeyFY8ILEjHj
-	t8OPWaizLq59GS7EAT33Tyd1IoG7tQqW9887GCi5HR+qaGY7hpiNAUFsoN1RtdPP83AY0iAgW+/W9
-	EaGWWKwQ==;
+	bh=eRVy14aCB22gowEo0bGvV3ST/JUv1mUXdqoHfuvbP0Y=; b=P2rLAp8zq43OqR3ZhSo04jlSbD
+	6EMP2NDCyg7/JghltetXmktCMIX8zRhD/GOdCRGNJfhQBVOKOw9JZ2raFav0O3v4w41q9VgZ7Je3I
+	gt6AEmj7UHau3GW9+Ncxl2/7LjyX99beo+k+0H92yBd3FW5f1MVWmXXHULm4M5pStvJSBVfzL72LL
+	SWNXnLUl9KJpnIqbwCZSH/DTmnULS2VDyYmhV4pGVXTPJ1jzS3i1s3p3uMauCN6y5W2ujFGWT11xa
+	Txxz24WZ+qwG1vbatChriIpHai3E8L2kWt2/lrJqOwVImw7BAxUr3CHA5fNXfGwswug/5MQ0P1O1d
+	yfWagm/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg1X-00000002mdl-2wb5;
-	Tue, 10 Nov 2026 07:12:07 +0000
+	id 1xQg3J-00000002noK-2bIS;
+	Tue, 10 Nov 2026 07:13:57 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg1R-00000002mPQ-472e;
-	Tue, 10 Nov 2026 07:12:02 +0000
+	id 1xQg3I-00000002nnN-2cKz;
+	Tue, 10 Nov 2026 07:13:56 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 921A346A0A;
-	Tue, 10 Nov 2026 07:12:01 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6167741658;
+	Tue, 10 Nov 2026 07:13:56 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794294721;
-	b=raj4a4ooXizr44OhoqD2Z/goUFVAICmeZqpo12fj+fCX+M4hzMxdJayu2PA0EETZ3M7V
-	 ojTbmNu6RrOwRyX/9HRYarQwBhs0bMieLBWiwwnjEmdkm08WcOUQXBhO0tUUpUQFSRBwZ
-	 kzSzVoTSmeA9NGlSH5gxUJCA+CVdtjgCXGdF8zmOU2g1SN67q78vl1Z52k5fy4Ppdcj60
-	 hmYtRPkPocuRRICvl+LFBGPxvsaPX7boyTDteS9jvqjPkJ4aABnsz4b7LzxxY9ktqah4L
-	 B0c9FHybWfpROUICWMVIy0ZOinjCX7lo1rvAhT9EfoHyRXKokDVF5URP4cSMP0dUVIg==
+	t=1794294836;
+	b=wDl+jtID3YoGa9o0sIOGcttFHx7Rhdwu3pZVw/RgPNuf8NyqkqeOUi+FevFm2xwFGjrw
+	 cMYtIIbGDO+AczECyJ4LLnOOcCycRC4MyMGeu+WpcSWU+ePaZNL45dasqc3NfPBnuAI6Q
+	 tAMccOFJ0OJxaMcNLd85sPAj4x275o1oAWY2QPUSS38D69Eup25vxbwNiOz1A+P+xfoKi
+	 JiTt35s9JtW6aMwcIzSF18UlFy66tYX8jXMZ+pjdTYb1z/jPqBAodEAgM+U1U96L3iuzj
+	 m/lsy/Fuz9nQgj9Qvcnu0FsfrEDMO1wKzrygjxtGGWh6YP7U6y4dm0Vg2ZvLgoshVOw==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794294721;
+	c=relaxed/relaxed; t=1794294836;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=H7fK2Woj0IQZx7iLg3FEGBdfVw3+fs6khAnVlrNRDdo=;
-	b=jIKtVi7QBdGfM+IjESPXQE1qS5WBgAsFUWpysSyBLb8bRCm6wPzV+rf3lS+nYRI91ByW
-	 VokdBouHsTbY2RtZ5JPPmmXgpOScGzYUAttarwligTvaw10sFl9/p0WZuDwjSYUcBriHW
-	 iG2X80qzPLceP3hEzJ6waEK2a5QvJQAJVYteMHKK5x3IavKr/HKoZUN2FRNJdq9dYgde/
-	 LCrofF3Ym3DgRXPaz4Qp5Ss7RqQqGZbsi8qXN4M2agzGUbpLX+6UwoTourglmh7f3JaVp
-	 JisSE12CyjVgMDzWSFXFq2N6WqErFTE6K2x603OBCCCwMgTyghD1JpMf7GSnuJNiydw==
+	bh=XM3iyYGns51wHTuIfoJe4NYI7OiUdPja2Tnl8gWGEoQ=;
+	b=jrDnAmlVz8W5UzpFBMfgtk4GiQtbUei9d4rU9Mo5kfpFBNgb8x8aYHLFzgdZAEIyzSbQ
+	 oJoKxU7JJFiLY4/XdeQHZJtCXISajbgYqD3UGYICrT8CDxH0fUDnIUSYhkmyicsw40ide
+	 4s4+631XxhysTyrUmWNsa/dYwdAWLtXMqZg+TuPPKAo+GchHCN0Qw+jT2+IsJBzzfJXFK
+	 9QBcTHY0qmA2y1w2jEKlmzyL6Xm8iJrG+0uA0NMVn6DOhmI/RXms2DfTRHUvnRIib/Qj7
+	 2c33L9KtgioWohpfxjK93ZcSzqHcBdzXdbPZb+lBegMPdwVIbw13CLqSMzxaMka82PA==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 76F571F008A1;
-	Tue, 10 Nov 2026 07:11:59 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id A737F1F0089F;
+	Tue, 10 Nov 2026 07:13:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794294721;
-	bh=H7fK2Woj0IQZx7iLg3FEGBdfVw3+fs6khAnVlrNRDdo=;
+	s=k20260515; t=1794294836;
+	bh=XM3iyYGns51wHTuIfoJe4NYI7OiUdPja2Tnl8gWGEoQ=;
 	h=From:Date:Subject:To:Cc:Reply-To;
-	b=YJIdZx0iPKh41hYHUYE4gRcq5h1FndL/qw1a5L6bi/cvW0Wsuzk1PW3PIQ4urY6KH
-	 PEn/9v8V/vs2sP7B76BJIemm6S8oTnge/QtZ3slRTqyYOwvz4emapYFWkKN9fSdKNl
-	 T6aUmsF2/ws9pTBOn9vSRhPj0Tut2tSBi714oXwTa0k2C8VhG4K7blJj3IYW2y17IX
-	 /CPmvWDrO1fm2bvGdOpzADtNfZveniESPXahAI0gmqfq2wRko5BbyPyLHIcb/FP6MW
-	 Zt6DEXRwovcFjc92fqwkdGpceYCyIaNnpfwqyCA/2EcCepuRmykljGjIByI33/gepe
-	 EgQGh92Fyko9Q==
+	b=BXckI2SyNPopOUTmH8eoNMzb5dE3gxSZCg2zel/DQT1akoxVddVcElmstirAh6u3y
+	 f0NGmJ7MT2Ig4UhkGLJGwYOGEoXL7hy2YIPPgHhprZAoHqB276FrddLxQP7VNCVzWd
+	 jwvvBZF3oq/AaujuuOxolpO/8e7uTL3qTbrUEHQ62INpI1ki3xBM31cXldQxK57E/G
+	 984UWc/8MTKhosh//M1EY2b+X8AkZqy1AkQnekSl8wFOL8QAEdU9/7x6zKSJkCMYNv
+	 fqI44YZH9F7avO1RNkOi7EBUhmG8owTBnjK8qWuQMaeRWzFf0sH9DVJrEkZJSx4TYY
+	 WnCaOk69waXoQ==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 0C0FB488E6;
-	Tue, 10 Nov 2026 07:11:59 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 3AE1A4891E;
+	Tue, 10 Nov 2026 07:13:55 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Tue, 10 Nov 2026 07:11:59 +0000
-Subject: [PATCH] driver core: fw_devlink: Don't report refused
- sync_state-only links as errors
+Date: Tue, 10 Nov 2026 07:13:55 +0000
+Subject: [PATCH net-next] net: stmmac: dwmac-rk: only read the delays the
+ MAC applies
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261110-fw-devlink-sync-state-v1-1-6385be961c2b@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMwQ6CMAyA4VchPduEcgDxVYyHdXRSNNOsEzWEd
- 2fK8Tv8/wImScXgVC2QZFbTRyygQwV+dPEqqEMxNHXTElGN4Y2DzHeNN7Rv9GjZZcHQETvm0Ld
- HhtI+kwT9/L/ny2578SQ+/2awrhuYv127eQAAAA==
-X-Change-ID: 20261110-fw-devlink-sync-state-f71babbf968b
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>, 
- Johan Hovold <johan@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: driver-core@lists.linux.dev, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Message-Id: <20261110-stmmac-dwmac-rk-delays-v1-1-87abb6592921@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWMSw7CMAwFr1J5jaU4VOVzFcQiJC4YaEBxoK2q3
+ r0pbJ40epqZQDkJKxyrCRJ/ReUVC9CmAn9z8coooTBYYxsiMqi565zH0K+bHhj46UbFmpzZ7ne
+ Nrf0BivxO3MrwC58gcsbIQ4bz/9HP5c4+r12Y5wWXMDVLhAAAAA==
+X-Change-ID: 20261110-stmmac-dwmac-rk-delays-41a0387624c9
+To: Heiko Stuebner <heiko@sntech.de>, 
+ Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, netdev@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794294718; l=2670;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794294835; l=4046;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=im/hNd0AVyCdDuE0XZG+ciJxIyRE1L2sv39Qoyr9F+k=;
- b=VlzWbbYyVi5WPSTZS/BfGJ70oOOrABy71NP7acb8J651n3NHp51NssB8U8cUA0L5Xh6DiflGJ
- B/3mufVOdNNBMn8grQFkm+tFxd/kXn7sjYrp7Tb6dvnIKEEMys5j2bx
+ bh=QQNrpXBNV3rRDNQu9MSMqZkKJ0F2a8WJAor/zaH4Dzs=;
+ b=/C7vRZ019UGX9xEoKZox6IV8k6tffQB9VzApV8qqosMVT1iLXR/1PDjegWS5Hdu7X7RjjaWaU
+ YUuaeZtNgpXD+xcNDzz7bUfPLAHBcBOQ1lGwJhWyMw7CR3dHdeNQqcn
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -122,63 +127,106 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-A SYNC_STATE_ONLY device link is refused by device_link_add() once the
-consumer has already probed, since such a link only orders sync_state()
-callbacks and would be useless. This legitimately happens when a consumer
-that probes early (for example the Rockchip power domain provider, whose
-domains reference a PMIC regulator through domain-supply) is inferred to
-depend on a supplier device that is added later, and results in boot-time
-"Failed to create device link (0x180)" errors for a harmless condition.
+The tx_delay and rx_delay properties are only used for the directions in
+which the MAC inserts the RGMII clock delay itself: both for "rgmii",
+TX for "rgmii-rxid" and RX for "rgmii-txid". For "rgmii-id" (the PHY
+adds both delays, the recommended setup) and for RMII they are ignored
+by rk_gmac_powerup().
 
-Log the refusal of a sync_state-only link at debug level and keep the error
-for links that matter for probe ordering.
+The driver nevertheless parses both properties unconditionally and logs
+an error, plus the default it picks, for each one that is missing. A
+correct device tree using "rgmii-rxid" therefore gets
+
+  Can not read property: rx_delay.
+  set rx_delay to 0x10
+
+and one using "rgmii-id" gets the same pair for tx_delay as well, for a
+value that is never programmed.
+
+Only parse the delay values that will actually be used, so the error is
+reserved for device trees that really lack a required delay. Behaviour
+for "rgmii", "rgmii-rxid" and "rgmii-txid" is unchanged.
 
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
-Tested on an Orange Pi 5 (RK3588S): the three "Failed to create device
-link (0x180)" lines that the Rockchip power controller logged on every
-boot (suppliers: the RK806 PMIC on SPI and an RK8602 on I2C, referenced
-through domain-supply of two of its power domains) are gone, and the
-regulators are still acquired and held by those domains.
+Tested on an Orange Pi 5 (RK3588S, Motorcomm YT8531C on gmac1) with its
+device tree using "rgmii-id": the probe log has "init for RGMII_ID" and
+no "Can not read property" lines any more, the link comes up at
+1000/Full and transfers run at line rate (940 Mbit/s receive, 0 errors).
+The "rgmii", "rgmii-rxid" and "rgmii-txid" paths are unchanged and were
+not re-tested.
 
 This patch was developed with Claude (Anthropic) as a coding assistant:
 it wrote the code and the commit message, and I reviewed and tested it
 as described above.
 ---
- drivers/base/core.c | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 47 ++++++++++++++++----------
+ 1 file changed, 29 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/base/core.c b/drivers/base/core.c
-index bf97b06337a1..4cdfc156ffbc 100644
---- a/drivers/base/core.c
-+++ b/drivers/base/core.c
-@@ -2241,8 +2241,20 @@ static int fw_devlink_create_devlink(struct device *con,
- 		}
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index c4db919ec164..f06428ce3cfc 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -1331,26 +1331,37 @@ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
+ 			bsp_priv->clock_input = false;
+ 	}
  
- 		if (con != sup_dev && !device_link_add(con, sup_dev, flags)) {
--			dev_err(con, "Failed to create device link (0x%x) with supplier %s for %pfwf\n",
--				flags, dev_name(sup_dev), link->consumer);
-+			/*
-+			 * A SYNC_STATE_ONLY link only orders sync_state() and
-+			 * is refused once the consumer has probed. That is
-+			 * expected when a consumer that probes early (e.g. a
-+			 * power domain provider referencing a regulator
-+			 * supplier that is added later) is linked to a late
-+			 * supplier, so don't report it as an error.
-+			 */
-+			if (device_link_flag_is_sync_state_only(flags))
-+				dev_dbg(con, "Not creating sync_state-only device link (0x%x) with supplier %s for %pfwf\n",
-+					flags, dev_name(sup_dev), link->consumer);
-+			else
-+				dev_err(con, "Failed to create device link (0x%x) with supplier %s for %pfwf\n",
-+					flags, dev_name(sup_dev), link->consumer);
- 			ret = -EINVAL;
- 		}
+-	ret = of_property_read_u32(dev->of_node, "tx_delay", &value);
+-	if (ret) {
+-		bsp_priv->tx_delay = 0x30;
+-		dev_err(dev, "Can not read property: tx_delay.");
+-		dev_err(dev, "set tx_delay to 0x%x\n",
+-			bsp_priv->tx_delay);
+-	} else {
+-		dev_info(dev, "TX delay(0x%x).\n", value);
+-		bsp_priv->tx_delay = value;
++	/*
++	 * The MAC only inserts the delays which neither the PCB nor the PHY
++	 * provide (see rk_gmac_powerup()), so only the delay values for
++	 * those directions are needed.
++	 */
++	if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII ||
++	    bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII_RXID) {
++		ret = of_property_read_u32(dev->of_node, "tx_delay", &value);
++		if (ret) {
++			bsp_priv->tx_delay = 0x30;
++			dev_err(dev, "Can not read property: tx_delay.");
++			dev_err(dev, "set tx_delay to 0x%x\n",
++				bsp_priv->tx_delay);
++		} else {
++			dev_info(dev, "TX delay(0x%x).\n", value);
++			bsp_priv->tx_delay = value;
++		}
+ 	}
  
+-	ret = of_property_read_u32(dev->of_node, "rx_delay", &value);
+-	if (ret) {
+-		bsp_priv->rx_delay = 0x10;
+-		dev_err(dev, "Can not read property: rx_delay.");
+-		dev_err(dev, "set rx_delay to 0x%x\n",
+-			bsp_priv->rx_delay);
+-	} else {
+-		dev_info(dev, "RX delay(0x%x).\n", value);
+-		bsp_priv->rx_delay = value;
++	if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII ||
++	    bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII_TXID) {
++		ret = of_property_read_u32(dev->of_node, "rx_delay", &value);
++		if (ret) {
++			bsp_priv->rx_delay = 0x10;
++			dev_err(dev, "Can not read property: rx_delay.");
++			dev_err(dev, "set rx_delay to 0x%x\n",
++				bsp_priv->rx_delay);
++		} else {
++			dev_info(dev, "RX delay(0x%x).\n", value);
++			bsp_priv->rx_delay = value;
++		}
+ 	}
+ 
+ 	bsp_priv->grf = syscon_regmap_lookup_by_phandle(dev->of_node,
 
 ---
-base-commit: ec1db86e7bb3ec13c90456efac43659a723ac068
-change-id: 20261110-fw-devlink-sync-state-f71babbf968b
+base-commit: d26955e57475434b59d43ba372b2a50d33d5e0ed
+change-id: 20261110-stmmac-dwmac-rk-delays-41a0387624c9
 
 Best regards,
 --  
