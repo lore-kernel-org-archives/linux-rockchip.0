@@ -2,63 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7B783606A325
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 08:49:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 22C5A606B158
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 09:39:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EpVmF7nq;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=KZ7GbPpj
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hDf120nW;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=VtJdMc6C
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=/FsanozF0VSTKOqc7AIu43lRs/ZwKXmNCwe/7Bg4fVo=; b=EpVmF7nq800AB6OO0H4uhVmjoV
-	gLlpSOp4P07jy/NIccpIn52SkWT9IWxzn5CnJ/KhZFy5Qt2kd677aox9+4vcWhx7f3K520zIW+CG2
-	tNg9hiK6tdgxpQrJz4AszVYmyusXUM+x4PvZZUcnkX8T5PQ7vMCKR9jyFlj3sASoFHfp0X3ddpgEE
-	J0z9kBs5cNEIMZZASSol/pwBpr+sEQ+9SJ45veW6td2tHLQPhPfy6eQyCHa2SYBJqo8Gh83t9p/cu
-	+hu/lsqQumYcDHxOzHmL6bzMN32p5vu4HrqHEniePUUKhmorO7Tl2HK9BrqDR6nxfPSy/V9p6qb9P
-	qXrsJh4w==;
+	bh=gU/s+/OafdGQMXiajJXoG84GxQryhCbtcAckJvmHKSs=; b=hDf120nW3nB2CWV0mLkD6fPjdm
+	/mNINQQMY+o2k+RS3R/6WyZrIaeoeYIBLiwQoehebVckDTzEYVhyzc56NhRvVF/ldaqW+EjO3Q+mH
+	axEPa7pjF/p2YxReCBhRGBif7SDa09X2WKPuKhdJJqF3u0yrN0SYJqInj2sEf8f6cwhEEOnQh0vmD
+	nWPGpcyztRu/QaYrlYLKVaOg8/UzBMqEFaNQr7tU5m66fpfvVzF4LDK286UNxZC43Mkoe8eS7EqBM
+	wGL75XgW6NivptHfzqE1AcEh91ZJe/0+hxdvodd1mQby4sVDzCRb661u8CDCfivT3++yQVkzoMOPj
+	4nItkiCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQhXw-00000003Af6-30WX;
-	Tue, 10 Nov 2026 08:49:40 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xQiKO-00000003IyZ-0S4h;
+	Tue, 10 Nov 2026 09:39:44 +0000
+Received: from mail-m1023.netease.com ([154.81.10.23])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQhXu-00000003AeI-1n8p;
-	Tue, 10 Nov 2026 08:49:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=aHn8KcgHhLcXL95P9INTAmVAeZpvAJPCq7Suu5pEHwk=; b=KZ7GbPpjr8rhjj9TeCSN3isJMo
-	4d122GgaAflfPr6ZO4ozp74l8SzqGjVsu5H6TFM2vMhzmL0KHht4wMTwld3FIKNZ8RCqHqHs4jcgV
-	v83dvQpMXC0J35H4CocMuWLe3GQWQip4RgxB9bd28fy1oU+bREnQbTP6s89Rxpecyd3teH+M5USVw
-	ZhnyQ/EhBeB8TNton7OX7iwnUvu+OQeTaHKe12xysLOnzjUoTwOovZI5eCPjfEW3Tjn10GDXQjiUk
-	sMmsr7Jx78SnG58k0FIX2G0gYSMFPfijeXJxkR4cFyERpEqF35KcnYXRp1JFGQaq61Ii8HYqvm/vU
-	7OtWoU3A==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: aiyengar1990@gmail.com, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, "Joerg Roedel (AMD)" <joro@8bytes.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Niklas Cassel <cassel@kernel.org>,
- Shawn Lin <shawn.lin@rock-chips.com>
-Cc: shawn.lin@rock-chips.com, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux.dev, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Simon Xue <xxm@rock-chips.com>, "finley.xiao" <finley.xiao@rock-chips.com>
-Subject: Re: [PATCH 0/5] iommu/arm-smmu-v3: power domain and clock of the RK3588 PCIe
- SMMU
-Date: Tue, 10 Nov 2026 09:49:29 +0100
-Message-ID: <10924894.NyiUUSuA9g@diego>
-In-Reply-To: <7e053777-31ee-4127-af53-0820e852d375@rock-chips.com>
-References: <20261110-smmu-v3-pcie-pd-v1-0-628819ca44b9@gmail.com>
- <7e053777-31ee-4127-af53-0820e852d375@rock-chips.com>
+	id 1xQiKK-00000003Iwb-2CIQ;
+	Tue, 10 Nov 2026 09:39:42 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 54265f641;
+	Tue, 10 Nov 2026 17:39:36 +0800 (GMT+08:00)
+Message-ID: <e273e7c7-1fce-4079-bd8f-dd2aca66aa90@rock-chips.com>
+Date: Tue, 10 Nov 2026 17:39:31 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/8] drm/rockchip: vop2: RK3588 clocking, sync polarity,
+ AXI port and window fixes
+To: aiyengar1990@gmail.com
+Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andyshrk@163.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20261110-vop2-fixes-v1-0-d336e9dd90d3@gmail.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20261110-vop2-fixes-v1-0-d336e9dd90d3@gmail.com>
+X-HM-Tid: 0aa1c4d3c7fd03a7kunm4d0e6b6e711669
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDHx9NVk1IGB0ZHUlJSRhITVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=VtJdMc6CdaxJQcjfXajoPmjCFrA2gOlY6F4VXoUV1KNNdx3jWkUroaMc1kRyaF4rATtK35P+7eEqeOTc1t+NvJ7cnK8ewDvybGzKCG/tY8WjMBcheT00SqiBL0JGD4YPNhqGxc83+vj3oZ2RVYUXVqyrN7aUKrGRi7jCl7OTwEk=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=hnD12FtXfPhLj7ywO2z/F7Du4Nry3+tvwvKHT+IXeJY=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_004938_491668_E73A44C2 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20261110_013941_188038_CE509E46 
+X-CRM114-Status: GOOD (  25.45  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,42 +74,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gRGllbnN0YWcsIDEwLiBOb3ZlbWJlciAyMDI2LCAwOTo0MDo0NCBNaXR0ZWxldXJvcMOkaXNj
-aGUgTm9ybWFsemVpdCBzY2hyaWViIFNoYXduIExpbjoKPiBDYzogU2ltb24gYW5kIEZpbmxleQo+
-IAo+IOWcqCAyMDI2LzExLzEwIOaYn+acn+S6jCAxNToxMSwgQXJ1biBJeWVuZ2FyIHZpYSBCNCBS
-ZWxheSDlhpnpgZM6Cj4gPiBUaGUgTU1VLTYwMCBpbiBmcm9udCBvZiB0aGUgUENJZSBjb250cm9s
-bGVycyBvZiB0aGUgUm9ja2NoaXAgUkszNTg4Cj4gPiAobW11NjAwX3BjaWUpIGlzIGVuYWJsZWQg
-Zm9yIGV2ZXJ5IFJLMzU4OCBib2FyZCwgYnV0IGl0cyBub2RlIGRlc2NyaWJlcwo+ID4gbmVpdGhl
-ciB0aGUgcG93ZXIgZG9tYWluIGl0IGxpdmVzIGluIChSSzM1ODhfUERfUENJRSkgbm9yIGl0cyBj
-bG9jawo+ID4gKEFDTEtfTU1VX1BDSUUpLiBCb3RoIGFyZSBoZWxkIGJ5IGFueSBlbmFibGVkIFBD
-SWUgY29udHJvbGxlciwgd2hpY2ggaXMKPiA+IHdoeSBub2JvZHkgbm90aWNlZDogb24gYSBib2Fy
-ZCB0aGF0IGVuYWJsZXMgbm8gUENJZSBjb250cm9sbGVyIGluIHRoYXQKPiA+IGRvbWFpbiAoYW4g
-T3JhbmdlIFBpIDUgd2l0aCBpdHMgTS4yIHNsb3QgaW4gU0FUQSBtb2RlLCBvciBhbnkgUkszNTg4
-Cj4gPiBib2FyZCB3aXRob3V0IFBDSWUpLCBnZW5wZCBwb3dlcnMgdGhlIGRvbWFpbiBvZmYgYW5k
-IHRoZSBjbG9jayBmcmFtZXdvcmsKPiA+IGdhdGVzIHRoZSBjbG9jayBhcyB1bnVzZWQgYWZ0ZXIg
-Ym9vdCwgd2hpbGUgYXJtLXNtbXUtdjMgc3RheXMgYm91bmQuCj4gPiBBdCByZWJvb3QsIGFybV9z
-bW11X2RldmljZV9zaHV0ZG93bigpIHRoZW4gd3JpdGVzIENSMCBhbmQgcG9sbHMgQ1IwQUNLIG9u
-Cj4gPiB0aGUgZGVhZCBibG9jaywgdGhlIGludGVyY29ubmVjdCBzdGFsbHMsICJyZWJvb3Q6IFJl
-c3RhcnRpbmcgc3lzdGVtIiBpcwo+ID4gbmV2ZXIgcmVhY2hlZCBhbmQgdGhlIGJvYXJkIG9ubHkg
-Y29tZXMgYmFjayB+OTAgcyBsYXRlciB3aGVuIHRoZQo+ID4gd2F0Y2hkb2cgZmlyZXMuCgpXZSBo
-YXZlIGEgd29yay1hcm91bmQgZm9yIHRoYXQgaW4gc29tZSBib2FyZHMsIG1hbnVhbGx5IGRpc2Fi
-bGluZyB0aGUKc21tdSB1bnRpbCBub3cuIEFzIHRoZSBTTU1VIGlzIHBhcnQgb2YgdGhlIFNvQyBh
-bmQgYWx3YXlzIHByZXNlbnQKdGhlIGdlbmVyYWwgRFQgcHJhY3RpY2UgaXMgdG8gaGF2ZSBpdCBh
-bHdheXMgZW5hYmxlZCwgYXMgaXQgZG9lcyBub3QKZGVwZW5kIG9uIHRoZSBhY3R1YWwgYm9hcmQg
-ZGVzaWduLgoKSGVuY2Ugd2UgZW5kIHVwIGluIHRoZSBzaXR1YXRpb24gZGVzY3JpYmVkIGFib3Zl
-LgoKU28gdGhpcyBzZXJpZXMgZml4ZXMgdGhlIGFjdHVhbCB1bmRlcmx5aW5nIHByb2JsZW0sIG1h
-a2luZyB0aGVzZQp3b3JrYXJvdW5kcyB1bm5lY2Vzc2FyeSBpbiB0aGUgZnV0dXJlIDotKQoKClNv
-IGRlZmluaXRseSB0aGFua3MgYSBsb3QKSGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Arun,
+
+On 11/10/2026 3:18 PM, Arun Iyengar via B4 Relay wrote:
+> This series collects fixes for the RK3588 VOP2 found while bringing up
+> HDMI and DisplayPort output on an Orange Pi 5 (RK3588S).
+> 
+> Patches 1 and 2 fix the RK3588 interface setup: rk3588_calc_cru_cfg()
+> leaves dividers it does not use uninitialised and the garbage ends up in
+> VP_CLK_CTRL, and rk3588_get_hdmi_pol() decodes the POLFLAG bits it is
+> handed as DRM mode flags, so the GRF sync polarity bits are wrong for
+> most modes.
+> 
+> Patch 3 stops the RK3588 Cluster windows from advertising AFBC with the
+> lossless colour transform (YTR) for RGB565/BGR565, which the decoder
+> cannot display (black picture plus POST_BUF_EMPTY).
+> 
+> Patches 4 and 5 deal with POST_BUF_EMPTY underflows. The VOP2 fetches
+> through two AXI read ports but the port of each window is fixed in the
+> window table, so the usual primary plane plus overlay configuration of
+> a video port puts both layers on one port while the other sits idle.
+> One port cannot sustain two full screen 4K@120Hz layers (measured: the
+> fetch rate collapses from ~6 GB/s to ~3 GB/s and about half of all
+> lines underflow). Patch 4 assigns the port when a window starts
+> fetching, balancing the estimated load; patch 5 rate-limits the
+> POST_BUF_EMPTY interrupt to once per frame, since an underflowing port
+> otherwise keeps the CPU in the interrupt handler 50000 to 300000 times
+> per second.
+> 
+
+Have you checked the aclk_vop rate?
+
+> Patches 6 to 8 are smaller fixes: the start mixer search skipped
+> Esmart3 (for_each_set_bit() was given the highest window id as the bit
+> count), a gamma LUT update cleared the other fields of LUT_PORT_SEL
+> (the VP0/VP2 dclk source selection and the VP0/VP1 merge enable), and
+> the AFBC tile count and transform offset were wrong for a source that
+> starts inside a 16 pixel superblock.
+> 
+> Tested on an Orange Pi 5 (RK3588S) with an HDMI 2.1 TV and a
+> DisplayPort monitor, pictures judged with a camera. Patches 1 and 2:
+> VP0_CLK_CTRL reads back without the garbage dclk_out divider, the sync
+> polarities seen by the HDMI controller (VIDEO_INTERFACE_STATUS0) match
+> the mode flags for +/+ (1080p, 2160p) and -/- (720x480, 640x480) modes,
+> and the picture is correct over TMDS and FRL modes from 27 to
+> 1188 MHz. Patch 3: RGB565 is offered on the Cluster windows only
+> without YTR, and those planes scan out correctly on three Cluster
+> windows. Patches 4 and 5: 3840x2160@120 with a full screen overlay
+> (previously ~120000 POST_BUF_EMPTY per second and a scrambled picture)
+> and a dual-display session (HDMI 4K@60 plus DP 4K@30, two video players,
+> ten minutes) run with zero underflows. Patches 6 to 8 were found while
+> driving Esmart3 and partial AFBC overlays: an AFBC overlay placed at
+> x=1001 shows correctly. All eight have been in the board's kernel for
+> the display test runs since.
+> 
+> This series was developed with Claude (Anthropic) as a coding assistant:
+> it wrote the code and the commit messages, and I reviewed and tested
+> every change as described above.
+> 
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> ---
+> Arun Iyengar (8):
+>       drm/rockchip: vop2: Don't use uninitialised dividers on RK3588
+>       drm/rockchip: vop2: Fix the HDMI sync polarity on RK3588
+>       drm/rockchip: vop2: Don't accept AFBC YTR for RGB565 on RK3588
+>       drm/rockchip: vop2: Balance window fetches across both AXI ports on RK3588
+>       drm/rockchip: vop2: Report POST_BUF_EMPTY at most once per frame
+>       drm/rockchip: vop2: Find the first mixer of a video port with Esmart3 too
+>       drm/rockchip: vop2: Keep the other LUT_PORT_SEL fields on gamma LUT updates
+>       drm/rockchip: vop2: Fix the AFBC offsets of a source that starts inside a superblock
+> 
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 186 +++++++++++++++++++++++++--
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  24 ++++
+>  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c |  27 +++-
+>  3 files changed, 223 insertions(+), 14 deletions(-)
+> ---
+> base-commit: 8deaade4a5a4ff635df91e246e42139ab2b33f6d
+> change-id: 20261110-vop2-fixes-fa45142799c1
+> 
+> Best regards,
+> --  
+> Arun Iyengar <aiyengar1990@gmail.com>
+
+-- 
+Best, 
+Chaoyi
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
