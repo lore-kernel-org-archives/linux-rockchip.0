@@ -2,87 +2,90 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4F65D60A2625
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8AAB160A2626
 	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 08:18:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=atBfcw4r;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=dYQ+q6Sz
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JS/PWcmA;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ujsXrEmK
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=BDfnk3fo4vLYkx4WXLrf1O5NS9I/5CFw/EpHW/KzQOo=; b=atBfcw4rkm1ZbnyQ3jU0lVGjpe
-	MaI4MG6Slr6q62OpCGHxUZ/P6/U8R+dY95NjhCui2IjbQzwenyrdcdrGiTYwJSNVk2lDyYJd42DzO
-	ZfrTCCO67SSmhSmSu7rDJDKBjmpm1fFeObWbc2dky5kYO7Qv7Ts0k0LT9Zqm+VqtMIodNez0/w4Zx
-	p0RCKFTBTwxoxtP0ITkJ+ujj8OWafy1pIf/E0kaDjL8WgNkXvX9JCJMqzVXhh+4HHoWkZHP7Tjb+W
-	lqPxJf+WXuDyOewz7LPwXMHOtHDURb6NhGOOqCn7QlgEE21eyoZqmT4SYg5mevOAYK+FrmM+brUFg
-	IHxDTj4A==;
+	bh=4MK1GzmerxNcCdQysKy+2tZ2SN2c4D0Nn+xUPcD4zWI=; b=JS/PWcmAt6AHJeiK3DdMtnImY/
+	adp7anu7onBTKzwb1f6HmL8YHf5ajsinlUmVAqe4Oh53xb8pNTh6dozGzZE5T1ZzjCce8qJoVrQny
+	xg9Rhu+g2tIx3vHsruf2gEF2LUMLriXDaEVi/hFJHM1q/NzHIb5zHp3crpac803fgWX8Qlspf8U4T
+	3ydcr3aV0rtGlerxeKdMP7pSBG4YBxu6Wc8h+xGQtc3ocgeS1BvMg/wbFRPGHY324QCBXx9+quOjS
+	YNjm+9dGwhaQlXS3BkA3qj4jPPYOQpSuJQKsYLzS+fRUMhW0Vy89ZS1yBPFmMIqVy1X1GFr3Nks9X
+	BwRO0RYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQh3i-000000034TK-2K5S;
-	Tue, 10 Nov 2026 08:18:26 +0000
-Received: from mail-dy1-x132e.google.com ([2607:f8b0:4864:20::132e])
+	id 1xQh3h-000000034Rt-0sJK;
+	Tue, 10 Nov 2026 08:18:25 +0000
+Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQh3e-000000034Q9-0kRt
+	id 1xQh3c-000000034PA-01sw
 	for linux-rockchip@lists.infradead.org;
 	Tue, 10 Nov 2026 08:18:24 +0000
-Received: by mail-dy1-x132e.google.com with SMTP id 5a478bee46e88-35159e0092aso171576eec.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 00:18:22 -0800 (PST)
+Received: by mail-dy1-x132b.google.com with SMTP id 5a478bee46e88-33bb5afa736so206917eec.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 00:18:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794298701; x=1794903501; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=3n/gmm5kxWB9YJHd7gfFf9nA3tSx3UHa8E6czMM6l7w=;
-        b=dYQ+q6SzYLDFnd3zrXj/Ukt9GtAcvN0vtZtAFK+BbRbzrW4YOLukLltocZ/afhgXIW
-         mlm69ylJ7Cf8ESTuUOyUkb+/EVXMmXU9zDnhXWDvkedE60HbzC797hLFI8jyT2Y88CvJ
-         Ip5bpO/X0uVXQcYGRXobhfO9a6+Q0/AfGfgTIRMndAgsbtsEzue5ibI8EPy+uDOCf95K
-         2pR/3a3puVaPXzOtReJmBr+Qh/eSOyBr3IY7Gv/d6Ykvj4q4O782A+glH14acEZ10l62
-         nHTJycVnARuB2Avp9BsyT6rgl5WLPgjhMv886Pi1vm5WoVKq6vOqjBL4jGWecJdzpK+v
-         joXw==
+        d=gmail.com; s=20260707; t=1794298697; x=1794903497; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=3Dle9Ow2yyzoJEd0CQy8kceBvIk0DIv22zbrH+jkbDg=;
+        b=ujsXrEmK2eiaiyUGeg4IfdNtOMJ0EMQ7/5Hk4hK1/MV771QrtS87yM5DJBwkD+AQ/A
+         Aw32Dw5kOxBhGvIPY8qFge/MSp+U3ks/kKACd4V88dFcV9RnZ01R40g5dS5bCs6ZnZqe
+         nQR14aqGKgaejck6agVvQLf6KqQIli6dPpn8vhzNd3YYwe58yZySRMlfKlGy9q5TfWqG
+         0Zm5fQDMJHSxuBbXOYomndRQH8h4ouG6cwY/dnFZ9sq0vxHG1x6m05dBSR3P4oh6gwms
+         mi95ZRqXkD6Pxabx20cApaMOtbOFuFwQvTuBn3D5J8iuvRVQ5wVpojrbXFeKT/uUriiM
+         C+Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794298701; x=1794903501;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=3n/gmm5kxWB9YJHd7gfFf9nA3tSx3UHa8E6czMM6l7w=;
-        b=C/zRoCRMIcX1konpBc0ekTkgXXQPNTfvmuNkORbm38wmqdhxoB0nBUjxO64IcqKd53
-         dq5ihYk25EmTEZMiO95gjejdr3UZ80K12hrjh9bi1MzmAVMNnFSz+qW/ROFWasPk3uXJ
-         cQ11ToxlL++YFaf7JM/2cxS2MoC3Cj2r7xOT41t/oJ0hc9kGNuoWQ32YF987qIeXnPzk
-         Fe1EngIE3I3s9717xhYDG2tTRPxPCEvmt5MwXMNcYkuCtTRjg+NpU+6zc96e00zCoMG0
-         pU8aXHRCWAd7SyAbhI8huSP5KdWkhX6iPgCN1SbR3XsGr2k/7k3jFv1P6Lr1vp9rLZbf
-         2W9Q==
-X-Forwarded-Encrypted: i=1; AL+hErEgGCsOwPMrkDM9jqROvFQZiXQHhbJtMmPYezI3/Sa9PCqyA2slHJq1HqPBPZrSYBbcKGMUMebpGGyOIKP2sg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+YEAzhl4Ka7pej5wVjduUdhzAne8PdllSALKqTNqXGNnYVhwKy
-	Oy77r08+Egxd2KBE22TC05SlwqWRSbba3V7ELvCGGgYiH1sl66M0e0T5
-X-Gm-Gg: AYBFou2zjxnDdU7+Oax6Z4E99Y4XF1rIER//JvcEm40r3/K/2Pk3uVeEiu83Mw/lsr7
-	sTUMO4llnmmFE8tgim/cxGgacV7DEPr966Q63pHZ6d/kj96o/CKMxYC1E1lRaIhqcn84RFJPlnV
-	tInHaWT8HWNOQxWD3Gbo2j2R2ZjARpUi+FsiTMOHvr2BpdNx9EEv7bIodvff6LrJcKiMN2/jd9c
-	iqCj53hPNSmpUnM15YrQ+qXg0oUlK1C5nO4zdRX/0yNn40UoYj7tSdvx4cATxizM2Oww2YIyog1
-	LEBoGsObyELQCD4Ms0Y7Pd6fVygjgyqso9zJok2UnbyXNZl+mItCtoLiuZPC+VUlHw6s9/k0/CP
-	x8RjUwAg88nEqswj34PRVmjTrS0P/UJEzVoXtFB/dlrSPgsS4CR07ExP6r6yVF6QkAdxTBtlxup
-	2I8PhTCrln0C4pVCcBmvhssXoV7xVmhHl3OKI2MfbIzF7xmzO7XKuzGLF2cjkgTEbkzj8ithil2
-	95WDkU4giGrKv3KixiY7dTxtTs04S9IpEI5LEvPo7BmEN1mGb8L/NkEBkkOCLVCtyuVxZxH7AE0
-	tm2trcQX/91JkWVfrjrOlkhclswSrxIg4QalYqeJZI2Bkqs+14qG/FsuIWo3
-X-Received: by 2002:a05:701b:21d3:20b0:144:fd17:3b21 with SMTP id a92af1059eb24-1b3b5bc50c3mr3885712c88.0.1794298700740;
-        Tue, 10 Nov 2026 00:18:20 -0800 (PST)
+        d=1e100.net; s=20260707; t=1794298697; x=1794903497;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=3Dle9Ow2yyzoJEd0CQy8kceBvIk0DIv22zbrH+jkbDg=;
+        b=Pp0F/gohV80srmlWAw6aDKBRIObWEC1PypIwO4Qd3Nb9Zehfx6FaMAoTjoT0i0ZWIi
+         apuakwV+Fj8gVFn9I+f4Maz+fae1L2gPLXvmyDN/2c3jKewu8FEMoZeQTlQIegk5oyY8
+         TJfT1F1ATuzHf+6t9lWRxeC7xWYl/w4uHQNa5oLOFUTdACQb63vC/upVdqBPm8YmEPPM
+         7RomIhIbJsfG5GHIzcSw3jU3MGwiU+rNw553SDqzhBjfjCXJ1ayFhU/BTuOC81gkRtzm
+         0XTjiHiLNfaykSD1/cHGOeEyF8v8QmD2qV/l9EoHlTGoNVLzru1hyqJPMN6QdTumhbYh
+         u2bw==
+X-Forwarded-Encrypted: i=1; AL+hErEy6QFsQ8HuoCDeWbaeIrkBRgoCEU3P8Bm+zRIpV6oQ6Du+fBSY0K/M+WeNvO9yfNIq62uQFmZrlRORx7b6LA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+x1c+ENtffXvFppio6OyO9muBW+qRBrmloUDEwZuk5pIcwEAU4
+	oQZxx10TKszu2HSRErra8ATTh89qnyD/B6odOg5uQmIRH+zQRp2Yj7B7
+X-Gm-Gg: AYBFou2N5g6pfd9XQU5yOD7U6DJx+ZesDWI1FPUOzbEEaK9tLW02rtmk8UOvF0oGMKa
+	IOweQb19ITNshIsTQ9GfPdhr88KMNw3SV22XKkeIB5neeC+wdiwxUPK+7tsSOAChyzjiRUU+9uB
+	G9lFPLBKW6H99HXOpalCpQMuLnRYN6OZ+oKIew0DbsAZzgfxGb6bUQqEHpw4HZHiu+BLT3xD3KL
+	iER8VcobKYt1w0+VVVk4obXAZuJQz+Aq9dSOFysLazQ3W5D7LC6qUamxQ1HBLAFmRlOqy0hH7rl
+	5zOrYVtlK20nm19gE1ygyNsAduKrnYXcF2pAljJSTSjDQkDPRX1RPhpO9lCgg4yzQ7/Ng64wd3z
+	AbSlZFeGhryi1myNmFPcvKZDWeWkGbKZZT9xwcU7goZrtNqYza6y0xBCDR9n78K/2bspDLHgq01
+	gqzUV30n1WjBixv9Is4vt5+61CO0RNGrzE/+0EEfNRd4K2ijha+XD6HKxCkJN8WCPAz7AOQlve+
+	wgNEN0ftgOhwETtX0d3gYVerhDhjDrrGhuoK9Lz89RpJUn2HweWD8ZF6paVVn5gbYG/caS9aLwH
+	V++7uR+qBslE79r79YxvE9DMZ1iOGV18p2B5kb0GR19lkooe/npkiFTGN06n
+X-Received: by 2002:a05:701b:451c:20b0:1b2:5884:a039 with SMTP id a92af1059eb24-1b3b5e0f414mr4045526c88.0.1794298696492;
+        Tue, 10 Nov 2026 00:18:16 -0800 (PST)
 Received: from [127.0.1.1] (211-23-39-77.hinet-ip.hinet.net. [211.23.39.77])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b3b5b2fc14sm5236759c88.12.2026.11.10.00.18.16
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b3b5b2fc14sm5236759c88.12.2026.11.10.00.18.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Nov 2026 00:18:20 -0800 (PST)
+        Tue, 10 Nov 2026 00:18:15 -0800 (PST)
 From: Jason Yang <jason98166@gmail.com>
-Date: Tue, 10 Nov 2026 16:18:04 +0800
-Subject: [PATCH v6 1/9] dt-bindings: phy: Add PHY_DIRECTION_TX/RX
- definitions
+Subject: [PATCH v6 0/9] phy: rockchip-samsung-dcphy: Add the MIPI D-PHY
+ receiver
+Date: Tue, 10 Nov 2026 16:18:03 +0800
+Message-Id: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261110-dcphy-rx-v1-v6-1-d681ba20b36a@gmail.com>
-References: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
-In-Reply-To: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
+X-B4-Tracking: v=1; b=H4sIADvT8moC/23OQWrDMBAF0KsErasizchy1FXvUbKYjKRY0MRBL
+ iYh+O6ZZNHGojCbP/A+/6amVEua1Mfmpmqay1TGkwT/tlE80OmQdImSFRjwpgerI5+Hq64XPVs
+ dKHd9xhRzDErEuaZcLs+2r53koUw/Y70+y2f7+P7fI2e0y7xFNszE4fNwpPL9zuNRPXpmeLV+b
+ UEs58CMjpwFai3+2a01a4tiCSJ0DIFi5ta6F9tudmKz7UPv0QFibG33a62xzeZObPK4dyHRPsH
+ KLstyB/MefiKWAQAA
+X-Change-ID: 20260721-dcphy-rx-v1-9af57f3edfd9
 To: Vinod Koul <vkoul@kernel.org>, 
  Neil Armstrong <neil.armstrong@linaro.org>, 
  Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
@@ -96,18 +99,19 @@ Cc: Michael Riesch <michael.riesch@collabora.com>,
  linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Jason Yang <jason98166@gmail.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ Sashiko <sashiko-bot@kernel.org>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794298691; l=1290;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794298691; l=9088;
  i=jason98166@gmail.com; s=20260721; h=from:subject:message-id;
- bh=boFp+ROAJs+hn528tIchPlOUGZl+pUW4spq3YalZAuQ=;
- b=2Om6akpYt4IeVtY/W3aZ9CiVBUWzCN2RjS/mjsi+pChJrq9agUeJiKjz+mS39Et2p8MKNQOFe
- a8COwdPb0ThCDXpwhBehkJTJFZtzG3JqdNkYva+Xa8x2FSzw82cXcnb
+ bh=Nl08n2T7bfHF/A7AyevV61ydPL+YGfUh9xTziIDBQCY=;
+ b=K5dINOMVvBq2AWGRxhK8Z8SxV4wj8Z34m87imYJznszHFt2P0+Vgk3gMOgW8/ZCUgDfNs0wO5
+ F5AyRtH7Gp/ADT7cmEaesFliIWtcDgX07l2FphaePHAxo26LMcRFfP+
 X-Developer-Key: i=jason98166@gmail.com; a=ed25519;
  pk=xQmD001Q/ooHl39PxyQtusbUQmgbOsSfpFryRVWZ/k4=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_001822_891479_6D96417D 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20261110_001820_063270_2A6806A2 
+X-CRM114-Status: GOOD (  26.62  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -121,49 +125,198 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-A MIPI D-PHY or C-PHY can be a transmitter or a receiver. Some PHY
-blocks have one of each and can use them at the same time, so one PHY
-node offers two PHYs. The existing cell, PHY_TYPE_DPHY or
-PHY_TYPE_CPHY, selects the mode of the whole block, not one of the two
-PHYs.
+The Samsung MIPI D-/C-PHY block on RK3588 and RK3576 has a transmitter
+for DSI and a receiver for CSI-2. Both can be used at the same time.
 
-Add PHY_DIRECTION_TX and PHY_DIRECTION_RX for a cell that selects the
-transmitter or the receiver. The first user is the Rockchip RK3588 MIPI
-DC-PHY, where the transmitter serves a DSI host and the receiver a CSI-2
-host.
+Mainline only supports the transmitter and models the block as a single
+struct phy. The PHY core refcounts power_on() per struct phy, so the
+receiver cannot be powered independently of it, and the single
+devicetree cell selects the mode, so the provider cannot tell which of
+the two a consumer refers to.
 
-Suggested-by: Michael Riesch <michael.riesch@collabora.com>
-Link: https://lore.kernel.org/r/7425ac83-f6d8-4443-a26e-a47f9306aa24@collabora.com
-Signed-off-by: Jason Yang <jason98166@gmail.com>
-Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+This series registers a struct phy for the PHY transmitter and one for
+the PHY receiver, and implements the D-PHY receiver. As suggested in
+the v5 review, the single cell of the binding now selects the PHY
+transmitter or the PHY receiver. The cell values are the new generic
+PHY_DIRECTION_TX and PHY_DIRECTION_RX constants. The PHY transmitter
+and the PHY receiver cannot run in different modes. A phy-type property
+of the PHY node therefore sets the mode of the whole block, D-PHY by
+default.
+
+  1/9  adds PHY_DIRECTION_TX and PHY_DIRECTION_RX to the generic header
+  2/9  changes the single cell of the rockchip,rk3588-mipi-dcphy binding
+       to select PHY_DIRECTION_TX or PHY_DIRECTION_RX, adds phy-type for
+       the mode of the whole block, and keeps PHY_TYPE_DPHY and
+       PHY_TYPE_CPHY as deprecated values
+  3/9  unwinds the PHY transmitter power-on when the PLL fails to lock
+  4/9  always writes the rate-dependent registers of the PHY transmitter
+  5/9  moves the block-level setup (APB reset, BIAS) to runtime resume
+  6/9  names the transmitter helpers and ops (no functional change)
+  7/9  takes the PHY mode from phy-type and the PHY from the cell, and
+       keeps the deprecated cell values on the PHY transmitter
+  8/9  registers the receiver's struct phy, takes PHY_DIRECTION_RX in
+       of_xlate() and implements the D-PHY receiver bring-up
+  9/9  adds the MIPI CSI-2 receiver nodes on RK3588 and connects them
+       to VICAP
+
+9/9 has to wait for 1/9 to 8/9. It uses PHY_DIRECTION_RX from 1/9,
+and the csi nodes need a PHY driver with receiver support.
+
+Compatibility
+=============
+
+In 2/9 and 7/9, the old cell values PHY_TYPE_DPHY and PHY_TYPE_CPHY
+remain valid as deprecated values. They select the PHY transmitter, so
+existing DTs keep working on a newer kernel.
+
+New DTs following 1/9 and 2/9 are an ABI break on an older kernel. The
+older kernel ignores phy-type and takes any cell value as the mode of
+the block. A DSI node with PHY_DIRECTION_TX therefore gets no display,
+and a CSI-2 node with PHY_DIRECTION_RX gets no camera.
+
+In 9/9, the dsi nodes keep PHY_TYPE_DPHY, which older and newer kernels
+both accept. With the csi nodes disabled, the display therefore keeps
+working on either kernel.
+
+The csi nodes in 9/9 have no older value to keep and have to use
+PHY_DIRECTION_RX. Enabling csi0 or csi1 therefore needs a PHY driver
+with receiver support. Since v7.0, a CSI-2 host driver probes the csi
+nodes. An older PHY driver then gives the CSI-2 host the PHY transmitter
+that drives the display. The camera gets no frames, and the display can
+stop working as well.
+
+Testing
+=======
+
+Tested on an RK3588 board, with a DSI panel and an IMX219 camera on
+DCPHY0, and an LVDS panel behind a DSI-to-LVDS bridge on DCPHY1.
+
+  - The PHY transmitter and the PHY receiver run at the same time: with
+    8/9 and 9/9, both panels light from boot, and the camera stream is
+    shown live on the DCPHY0 panel.
+  - The two can be powered independently: the DCPHY0 panel is turned
+    off and back on during a 1200-frame capture, and the capture
+    completes.
+  - The PHY receiver does not need the PHY transmitter: with dsi0
+    disabled, the camera alone brings the block up and streams, which
+    relies on 5/9 moving the block-level setup to runtime resume.
+  - Existing device trees keep working: with a single PHY_TYPE_DPHY
+    cell in dsi0 as before this series, the DCPHY0 panel lights.
+  - The DT of 9/9 keeps the display working on an older kernel: with
+    the csi nodes disabled and without this series, both panels light.
+  - The new cell works for the PHY transmitter: with PHY_DIRECTION_TX
+    in dsi0, with and without phy-type = <PHY_TYPE_DPHY>, the DCPHY0
+    panel lights.
+
+No WARNING, underflow, "Internal error" or Oops in dmesg in any of
+these.
+
+Not covered: the receiver of DCPHY1, the 3- and 4-lane receiver paths,
+and RK3576. 3/9 and 4/9 fix states found by reading the code. Those
+states were not reproduced on hardware.
+
+The DSI panels only light with the U-Boot SPLL fix [1] applied:
+without it the bootloader leaves the SPLL at its 351 MHz bootrom
+default while the devicetree describes it as a 702 MHz fixed clock,
+halving the rate of both DSI hosts. The receiver path is unaffected;
+the camera captures exercise it independently.
+
+[1] https://lore.kernel.org/u-boot/20260804002643.2308515-3-jonas@kwiboo.se/
+
+This series was prepared with Claude through Claude Code:
+
+  - It checked the driver against the vendor driver and the TRM.
+  - It drafted the code. I reviewed and reworked it before committing it
+    to my tree.
+  - It checked the wording and spelling of the commit messages and this
+    cover letter.
+  - After I ran the basic pipeline tests, it generated more test cases
+    and ran them on my board.
+
 ---
- include/dt-bindings/phy/phy.h | 3 +++
- 1 file changed, 3 insertions(+)
+Changes in v6:
+- Rebase onto phy/next (v7.4-rc1).
+- Collect the Reviewed-by tags on 1/9 and 6/9.
+- 2/9: move the mode from the first cell to a phy-type property.
+  (Michael, Heiko, Rob)
+- New 3/9: power_on relied on the APB reset, which 5/9 moves to
+  runtime resume, to clean up after a PLL lock failure. (Sashiko)
+- New 4/9: power_on also relied on that reset to clear the
+  rate-dependent registers, found while checking power_on for 3/9.
+- 5/9: keep BIAS_CON4 with the other BIAS writes. (Michael)
+- New 7/9: support the new phy-type and direction binding of 2/9.
+- 8/9: merge v5's 5/8 and 6/8. (Michael)
+- 8/9: trim the comments and name the magic numbers.
+- Drop v5's 7/8: the dsi nodes keep PHY_TYPE_DPHY. (Michael, Krzysztof)
+- 9/9: use a single PHY_DIRECTION_RX cell in the csi nodes.
+- Describe the ABI break of new DTs in 2/9, 9/9 and the cover letter.
+  (Rob, Krzysztof)
+- Drop the Assisted-by tags.
+- Link to v5: https://patch.msgid.link/20261016-dcphy-rx-v1-v5-0-e63b49eabe2d@gmail.com
 
-diff --git a/include/dt-bindings/phy/phy.h b/include/dt-bindings/phy/phy.h
-index 979b5dfd8353..9ead74d9a172 100644
---- a/include/dt-bindings/phy/phy.h
-+++ b/include/dt-bindings/phy/phy.h
-@@ -29,4 +29,7 @@
- #define PHY_POL_INVERT		1
- #define PHY_POL_AUTO		2
- 
-+#define PHY_DIRECTION_TX	0
-+#define PHY_DIRECTION_RX	1
-+
- #endif /* _DT_BINDINGS_PHY */
+Changes in v5:
+- Rebase onto phy/next. The runtime PM fix this series applied on top
+  of is now commit 261e84f9278f ("phy: rockchip-samsung-dcphy: Enable
+  runtime PM at PHY core level"), so it is no longer carried here.
+- 1/8: use PHY_DIRECTION_TX and PHY_DIRECTION_RX instead of
+  PHY_TYPE_DSI and PHY_TYPE_CSI. (Michael)
+- 2/8: use PHY_DIRECTION_* for the second cell and rewrite the
+  description.
+- Drop v4's 5/7: it has no benefit over the switch, and it moved a
+  DC-PHY shared function into a D-PHY helper. (Michael)
+- 5/8: rename protocol to direction in of_xlate() to follow 1/8.
+- 6/8: use a switch in the receiver's power_on() and power_off(), as
+  the transmitter does.
+- New patches 7/8 and 8/8: switch the RK3588 DC-PHYs to two cells and
+  add the MIPI CSI-2 receiver nodes.
+- Link to v4: https://lore.kernel.org/r/20260821-dcphy-rx-v1-v4-0-f1797634233d@gmail.com
 
--- 
-2.43.0
+Changes in v4:
+- Put the second cell back: the first cell selects the mode, the
+  second the transmitter or the receiver.
+- Drop the private use count and mutex; the runtime PM usage count
+  does the same job.
+- New patch 3/7: move the block-level setup to runtime resume.
+- Split v3's 3/5 into 4/7 and 5/7.
+- of_xlate() rejects a mix of D-PHY and C-PHY consumers.
+- The runtime PM probe-order fix is now a separate patch [1] that this
+  series applies on top of.
+- Bryan O'Donoghue's Reviewed-by from v2 is not carried over; that
+  patch was rewritten.
+- Link to v3: https://lore.kernel.org/r/20260810-dcphy-rx-v1-v3-0-a2d25c29adfc@gmail.com
+
+---
+Jason Yang (9):
+      dt-bindings: phy: Add PHY_DIRECTION_TX/RX definitions
+      dt-bindings: phy: rockchip,rk3588-mipi-dcphy: Select TX or RX, add phy-type
+      phy: rockchip-samsung-dcphy: Unwind power-on on PLL lock failure
+      phy: rockchip-samsung-dcphy: Always write the rate-dependent registers
+      phy: rockchip-samsung-dcphy: Move block-level setup to runtime resume
+      phy: rockchip-samsung-dcphy: Name the transmitter helpers and ops
+      phy: rockchip-samsung-dcphy: Support the new phy-type and direction binding
+      phy: rockchip-samsung-dcphy: Add MIPI D-PHY receiver support
+      arm64: dts: rockchip: add the dcphy mipi csi-2 receiver nodes to rk3588
+
+ .../bindings/phy/rockchip,rk3588-mipi-dcphy.yaml   |  18 +-
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |  68 +++
+ drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c  | 523 +++++++++++++++++++--
+ include/dt-bindings/phy/phy.h                      |   3 +
+ 4 files changed, 559 insertions(+), 53 deletions(-)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20260721-dcphy-rx-v1-9af57f3edfd9
+
+Best regards,
+--  
+Jason Yang <jason98166@gmail.com>
 
 
 _______________________________________________
