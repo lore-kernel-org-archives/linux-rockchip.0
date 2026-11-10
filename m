@@ -2,70 +2,108 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ED6AC60A2605
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 09:59:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8E10C606B52C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 10:08:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SlSy31Yi;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=NeQg5WF0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=a7b3Y0Df;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Ic5Lvv/r
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=57P90R13LXVk0Nr0PyO3mj4cBvtAvLE98izAu0zc5nQ=; b=SlSy31YiCBfhsw9PCcKtwGEBi0
-	gePc0Qt4NCay4ryMUbzRDA8k6SegiwqP8qcgXs2+Bt9Tg+qupuW1vNT54BXCvbN39wUO+FipF8HtR
-	Vp2+VvyXivFfGjlJLYS2B48NmkYifliU6DJFb+HwF5dkAaOogekgc726OQvmZDd5x+JV1G6PCQgF+
-	gZCf8jxaPTMAd0kDHArDYOiKy8Rgx2zMu7AZKtKecafdAC9T0hSDS/rIHJQHQdyIwFeVjiFzwOAmy
-	9w1HnpJw5zZD9SPRGEsagINLlA9FdYacwUs5oFr9sbEenS8uMETTFj+to7HimVkfVwS5GtpOoZ0eP
-	FZBru6Ow==;
+	bh=UL95rDoEtx7s/oV5T3IjYCjO+ZGs1gSXxGs6qXYAtxw=; b=a7b3Y0Dft8eaQgSJ/8KHC8igmF
+	ybtzQLgB+p9bDOz1hQpkIrJz+gqUYjRegZe5qWDmrNnyfajO15yfQzpHpziKqmRsYAefFLFhUWEyh
+	5WKDWO7ZrHVUj8sQGVaEzQY+kpjGGqfZAf3u1qKrs26N+zGZzdYgjvc3tL2i2q8DTHlDNO761ga2y
+	LQ1+sL7y3UuASNy/M100Y+aOpP8QyD0IIGON9h1vMNPU7Tbnfb+2IDiQFFqPnAwi2ilFSJCBtDEAO
+	80HrKgog9eDzZDKlqIBHBx1aecBPREiVBknBeWv8BBDqMaIGIELnCDG7VLVsjVN6u/RFj+Mt/fGZa
+	4qfcNqGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQidl-00000003NR2-3Q1L;
-	Tue, 10 Nov 2026 09:59:45 +0000
-Received: from mail-m128101.netease.com ([103.209.128.101])
+	id 1xQilr-00000003OIQ-3Sgo;
+	Tue, 10 Nov 2026 10:08:07 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQidj-00000003NQe-1Jav;
-	Tue, 10 Nov 2026 09:59:45 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 54272b12f;
-	Tue, 10 Nov 2026 17:59:39 +0800 (GMT+08:00)
-Message-ID: <4fe3809c-1243-4290-abb7-c2025cfffe55@rock-chips.com>
-Date: Tue, 10 Nov 2026 17:59:34 +0800
+	id 1xQilq-00000003OI0-0SoM;
+	Tue, 10 Nov 2026 10:08:06 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7B88D4334D;
+	Tue, 10 Nov 2026 10:08:05 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794305285;
+	b=igSDVUHZ1oMxCYbB6adbC20Q6mZuul4ciVbLSsNy09+/gRhcD0731gRD2RY1W4GGZ82T
+	 fTUZ2J0NDx2lI9vTKSQ4kTdcrzv7oY+/2NyO7GIKLbB5clqYvmK80I3brW/ItYKul2ceZ
+	 /UeIbtGxAA/B5nQUc8VQusI3ZXrsyGrbi7KVvsY6ZTOrsifLSJMXdvAO7mTfGHNSArBcj
+	 DbEiShPbX0GbfxdtgZTBSe07b+vythv9vP102mynN9GWDBXYhySa/Xs4p/f3t+0q57pUb
+	 UhlSuycihKiOdu0JqXUI8kcwa71DGu6RcCEwEeuHW7kdV+o0SoLeBJrhonN4XF/1L6g==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794305285;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=1v5MOvJRb0ZumFsnpO/7N7S2x7bW1RJdhbdwRNR3VDE=;
+	b=XVxMAOTY4L+WljYG4locFxnHVpVnpd/eTSmPwyLXnjV56dGo02LRRV8TI8ORqNF2qJnX
+	 RdVFcs01a/VmU44bs+U5rVSYLZr6VxAwsL+cvCBiNYvKZ4HfrlyUUJL2uJugn4RDLP6n9
+	 73X34gONmYO6cnX83Va+sqdQRA5ZPqzjQrK2mGte4DHfQ42bKEfTDeuNN9jeZKYVkBgkU
+	 g1yZNsMPC17NKgpwkNaOsgRg0utSM1q4uomNRKL6rdn3xv8KuJLf1mjM1CvErmDhwaNEj
+	 MVKeP7/d6wxa8r3LuC3rcKiTasQvfmkjwfYyHlT46cI8nxNmkPXYYCiOsTLWkPwHjDg==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id ADB091F008A3;
+	Tue, 10 Nov 2026 10:08:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794305285;
+	bh=1v5MOvJRb0ZumFsnpO/7N7S2x7bW1RJdhbdwRNR3VDE=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=Ic5Lvv/r6yv/QygkzefpHR1vASoSz/dCqM7iu1Zh9ObqVt0Wu67DBPCWwyVLprmql
+	 +jLGVY3jvSYU9WVc3anyrXnQBOJ73uEUF7RPnEpLYQ/4a+1QaxLPcs7XOr1atwfmQu
+	 bUwM0iWSrs8nNmjeIvQtelMVrFkKI73E1h3Fa3Eo4UhNgROrgTe127hzpi4KF9TqN5
+	 sopE3UissfzoGpDIMCBvefqjIdV98Z8MvzUzMBP+Sav/jNzy5oG6O8K0sdQeEgdkJf
+	 /eXjHMKH9MVngNfjQ/PHjIV28UTTAHpZHuqSfehyVRMqE07tGbqqVq6PxA39LRCQc7
+	 4gqNMsuBJ2++g==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 4198D48AB2;
+	Tue, 10 Nov 2026 10:08:04 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Date: Tue, 10 Nov 2026 10:08:03 +0000
+Subject: [PATCH RFC 01/12] dt-bindings: media: Add the Rockchip VEPU580
+ video encoder
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 7/8] drm/rockchip: vop2: Keep the other LUT_PORT_SEL
- fields on gamma LUT updates
-To: aiyengar1990@gmail.com
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andyshrk@163.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20261110-vop2-fixes-v1-0-d336e9dd90d3@gmail.com>
- <20261110-vop2-fixes-v1-7-d336e9dd90d3@gmail.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20261110-vop2-fixes-v1-7-d336e9dd90d3@gmail.com>
-X-HM-Tid: 0aa1c4e6230803a7kunm170f4cac71683e
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDT0lCVkhJGkIdGhlJTxgeH1YVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=NeQg5WF05QqwqNMEh/5PIv4tY08ihs/bAA0gQ9ZQ9b1HtYcrxvSNNVB3aFRXVWkgFWLUlRSbzJk7ESzhua4juivde+DQaRtroOjXb/jvRpla2nlxTgnra5jAFeTcGXusnSQgmxtQzSlyHpsjWe71Ev9+NUEjy1OWL/wPm1sNVco=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=B5FetUpkGwGLsikqm7LuzqYKP4h6EEv4RA9Kg5VS7Q4=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_015943_593791_52028D85 
-X-CRM114-Status: GOOD (  13.54  )
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261110-rkvenc-v1-1-ea8b47122d8c@gmail.com>
+References: <20261110-rkvenc-v1-0-ea8b47122d8c@gmail.com>
+In-Reply-To: <20261110-rkvenc-v1-0-ea8b47122d8c@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Paul Kocialkowski <paulk@sys-base.io>, 
+ =?utf-8?q?Sven_P=C3=BCschel?= <s.pueschel@pengutronix.de>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Detlev Casanova <detlev.casanova@collabora.com>, 
+ Hans Verkuil <hverkuil@kernel.org>, Jiaxing Hu <gahing@gahingwoo.com>, 
+ Arun Iyengar <aiyengar1990@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794305283; l=4162;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=Ts7pMXWf/I5T8ZMd/4JVnE7tMKOGl43GA03EZ8jGtCE=;
+ b=slS1xDOmb7x2dV8Ky2vEl4BO6JnpFvJGs8WnFNXv8Ue3qqE3ADlkIEU//HEdSPQ4V/S8GfyUI
+ cOlq1p3EPn7DzHGsqpNh9qy+2prvMs8j7jgP9nUz5sTvEKpa6asd/HH
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,57 +113,156 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/10/2026 3:18 PM, Arun Iyengar via B4 Relay wrote:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
-> 
-> On RK3588 the gamma LUT of a video port is written through a window that
-> GAMMA_AHB_WRITE_SEL in SYS_CTRL_LUT_PORT_SEL selects. The register also
-> holds the dclk source selection of video ports 0 and 2 and the enable of
-> the video port 0/1 merge for modes wider than 4096 pixels, which writing
-> the whole register clears.
-> 
-> Only update the write select field.
-> 
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Reviewed-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+The VEPU580 (RKVENC) is the H.264/HEVC video encoder of the RK3588. The SoC
+has two identical cores at 0xfdbd0000 and 0xfdbe0000, each with its own
+clocks, resets, power domain, interrupt and IOMMU.
 
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index 3323e50224c5..9ad138457204 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -1774,8 +1774,9 @@ static void vop2_crtc_atomic_set_gamma_seamless(struct vop2 *vop2,
->  						struct vop2_video_port *vp,
->  						struct drm_crtc *crtc)
->  {
-> -	vop2_writel(vop2, RK3568_LUT_PORT_SEL,
-> -		    FIELD_PREP(RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL, vp->id));
-> +	regmap_update_bits(vop2->map, RK3568_LUT_PORT_SEL,
-> +			   RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL,
-> +			   FIELD_PREP(RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL, vp->id));
->  	vop2_vp_dsp_lut_enable(vp);
->  	vop2_crtc_write_gamma_lut(vop2, crtc);
->  	vop2_vp_dsp_lut_update_enable(vp);
-> 
+Describe each core as an independent node. Unlike the vendor kernel, which
+groups the cores under software-only "mpp-service" and "ccu" nodes, nothing
+in the hardware ties the cores together, so how they are used (one job per
+core, or both cores on one stream) is left to the operating system.
+
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+---
+ .../bindings/media/rockchip,rk3588-vepu580.yaml    | 93 ++++++++++++++++++++++
+ MAINTAINERS                                        |  7 ++
+ 2 files changed, 100 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3588-vepu580.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3588-vepu580.yaml
+new file mode 100644
+index 000000000000..2b52b17de93d
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/rockchip,rk3588-vepu580.yaml
+@@ -0,0 +1,93 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/rockchip,rk3588-vepu580.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip VEPU580 video encoder
++
++maintainers:
++  - Heiko Stuebner <heiko@sntech.de>
++
++description:
++  The VEPU580 (also called RKVENC) is the H.264 and HEVC video encoder of the
++  Rockchip RK3588. The SoC has two identical encoder cores, each with its own
++  clocks, resets, power domain, interrupt and IOMMU. Every core is described
++  by its own node; the operating system may use the cores independently or
++  together.
++
++properties:
++  compatible:
++    const: rockchip,rk3588-vepu580
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: AXI bus clock
++      - description: AHB bus clock
++      - description: Encoder core clock
++
++  clock-names:
++    items:
++      - const: aclk
++      - const: hclk
++      - const: core
++
++  resets:
++    items:
++      - description: AXI bus reset
++      - description: AHB bus reset
++      - description: Encoder core reset
++
++  reset-names:
++    items:
++      - const: aclk
++      - const: hclk
++      - const: core
++
++  power-domains:
++    maxItems: 1
++
++  iommus:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/rk3588-power.h>
++    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
++
++    bus {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        video-codec@fdbd0000 {
++            compatible = "rockchip,rk3588-vepu580";
++            reg = <0x0 0xfdbd0000 0x0 0x6000>;
++            interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH 0>;
++            clocks = <&cru ACLK_RKVENC0>, <&cru HCLK_RKVENC0>,
++                     <&cru CLK_RKVENC0_CORE>;
++            clock-names = "aclk", "hclk", "core";
++            resets = <&cru SRST_A_RKVENC0>, <&cru SRST_H_RKVENC0>,
++                     <&cru SRST_RKVENC0_CORE>;
++            reset-names = "aclk", "hclk", "core";
++            power-domains = <&power RK3588_PD_VENC0>;
++            iommus = <&vepu580_0_mmu>;
++        };
++    };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 93abbb315065..57d899b1229f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -24322,6 +24322,13 @@ S:	Maintained
+ F:	Documentation/devicetree/bindings/sound/rockchip,rk3576-sai.yaml
+ F:	sound/soc/rockchip/rockchip_sai.*
+ 
++ROCKCHIP VEPU580 VIDEO ENCODER DRIVER
++M:	Arun Iyengar <aiyengar1990@gmail.com>
++L:	linux-media@vger.kernel.org
++L:	linux-rockchip@lists.infradead.org
++S:	Maintained
++F:	Documentation/devicetree/bindings/media/rockchip,rk3588-vepu580.yaml
++
+ ROCKCHIP XPCS DRIVER
+ M:	Coia Prant <coiaprant@gmail.com>
+ L:	netdev@vger.kernel.org
 
 -- 
-Best, 
-Chaoyi
+2.55.0
+
 
 
 _______________________________________________
