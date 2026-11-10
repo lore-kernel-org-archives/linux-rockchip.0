@@ -2,113 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 79D3E60A2619
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 14:41:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D0B560A2624
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 14:52:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MoQFnDRX;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=jOgLSzER
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fstPGuQS;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=aMZJcmnV
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=SL4c7VcGA1VcqKlrPdWLx+vu1kYbazlcYmUm/tamCNA=; b=MoQFnDRX0e4j5CwK4YiBwri21X
-	Vw5kKzaFBt/lzx5yOI+A3J2a2dN5R9mK94lilVVb1SZs4IjiR++YH9ItTq9Fg1Z9qiEH1p9yTwh2L
-	I/bugmcf1/jEW1oa9kyVr4z9dSGM0fr8NgVjDAtUPoKUtDzFXOSaw8xXsSY3/AmVw7u+c/MqSTgFj
-	etW12TFZZhdgm7XgNmhWyWlMyTZmW59xrwnDltCTeYWNYhjL9air5hRkNG7WlSuAiDhF7VdkF3Vdm
-	zoJR6h065BrOUzcQT4ozFGlOT0I1/VhK/MLYIBXLRw/lR4dmIe4jLqOVjHM/QiV8zjCJO/RYzhZ2P
-	/rO9yi2A==;
+	bh=Ko/1BiPOgNldurw/6XRZJWFzmtvamAVSeVYs2z7/H0s=; b=fstPGuQSkHmeO4jgTdVnNd3JNW
+	XJKuD39bgyWSWvYk8TOpbkXxl9PQFJkICvtuehRsnpyfL1/cKmXZNcSUbm1pZm4pA2S3RBexu1u/S
+	qSSH9rY47zPnJJHHXEt0ebKlKdDXxg443VlUUibLYcbR8WiYZ4DgfDXuKf9XZLV3nPJ9+REANoKMR
+	zR/Hnt3lvC7a0Y8Nf9QEdIspj7EPoW5wjC5UkgUpvv5FR1I0echHrQFFeYlJztBxdQkFLAcox+N+H
+	tZXKi1FgbGwAetVGm0DlvXQk5CBB95F4T0yuO2PRPbqA4X+p9WYn/x4xVWvh8fLZ/CHpIjqyoqAvj
+	pmjooUmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQn2I-00000004F4x-3UdQ;
-	Tue, 10 Nov 2026 14:41:22 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1xQnCk-00000004HGp-1L0P;
+	Tue, 10 Nov 2026 14:52:10 +0000
+Received: from sender6-op-o11.zoho.com ([165.173.180.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQn2F-00000004F2v-1Nnd
-	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Nov 2026 14:41:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1794321677;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=e6tmUSbTA8kI3wpkqOhoSuw/zjQHagh6vk2l/7Qyg7s=;
-	b=jOgLSzERd38dEI697TiSGkguueuN07KUmXgvFVSJ83v+g48ei1eHvUa+SiF/IrAlUj2sPI
-	rc1RnfGlgmG3ZIpnibqB4ULGp98moBl8J3Lo0ERgD8o2gzTa7bPCRXyhnAJaQEjNCN/jlr
-	A0ssqkWsXOawwx5uWa9yOokLHq1Drbs=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-609-gypikIHBNimHopcO6olgEQ-1; Tue, 10 Nov 2026 09:41:16 -0500
-X-MC-Unique: gypikIHBNimHopcO6olgEQ-1
-X-Mimecast-MFC-AGG-ID: gypikIHBNimHopcO6olgEQ_1794321675
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-4a214a5f8a1so21434665e9.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 06:41:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794321675; x=1794926475;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=e6tmUSbTA8kI3wpkqOhoSuw/zjQHagh6vk2l/7Qyg7s=;
-        b=ivr+NvYNiBnlWf5lprcL7L7hCt2IkfWb9/69X1l3UJh1kye63VnDHDI0uhuPlErBAS
-         z9V0vd01/XBaWJzLEB/VOfUIsM7pRhmxi7faa4947yqcjqVVm9aFXAynrmYSnVqVdY4j
-         D9mB2w5vCeaWAR9iB2qwhatoyUI3EV4PLA/y0C/22ZMCq5/5LdU6B4KjNsJYWNG25sUD
-         A2ep0Z29BuqAz/LmNY4s7T4Hme9qGcC6bBphlC2MiENrDdg2CPCvB57IV2A9IdytIJ56
-         yC8RniOjnDoyXMBU4jBkth4hnW3IqMfGFIMluLHMqPq33u/1285rei4nNbZiKFiC4kOO
-         pd+w==
-X-Forwarded-Encrypted: i=1; AL+hErGyLpcXPFSwXKNBiBsJUZ47+Z8ZcKmpBkc0ggPQaW6iG33nX7mIjdbKqbvzCk8hqpO3rLjfOfMDAKLnIg8UJg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9Y2mTEb5vqsN1OCb4cvtPGLTlqe/vikRDQxtzr4Je6B5QlqZ5V
-	AcXMQL00y4ryaUdZvDTjJyqBHzS89lX+fKxEUuo7F5CVvbzYzZq6vWc7gQWmg67NvLqAvrlfCeK
-	+WTi0sTKhmuy6Qtz3kz5rhxC1mVzkYpbqlbCswEyJB1H2jE96E9m9aQkZMFKBKzp7etkDlTu3+A
-	==
-X-Gm-Gg: AYBFou2JvDmZYFMwRHopvwWKa+el3vzjc5Kh34qLWyI47kBwqZfkc5sd9zJHlr7IPFY
-	tgHmJxupFQHTnFROOIfWYbtAO/0aQFl1mAD6h6/sgrscZk893KKa6tD9HlIAI+c+WxXjFMLIyE9
-	gNj0wreSc53l5dAjL3ww66JVLtwaBgTV2dR7hZKGLLzy8nx0+LP4vJ6Z8ExO9OjW6XkTxzmHXvr
-	I/sHYvzRPbMsZW1SDvkMv3lrYXXj43ENjiCRsVRlofhwj3C6mPWbbHbTIiJQ84nIeuBnCXqlUnO
-	Tgo3BIwUwwzBc3qKCBIfwg11VTiAkaUiFKgKWCVPcTSTMyqxU8hAZFrOfA34Yr7a4fskgvMAhe2
-	QrL44mHJmUmlrIPpgOQK23XQnEbfcHi2BYsPkquQouZiP+b4J2IjLFW+MxPVy/qs2D6gLCY410p
-	pEWDEpZjujeq2j0qGwg4jRHx5BnNzn9QSHSvKOyq5z+biw
-X-Received: by 2002:a05:600c:190f:b0:4a1:f99e:f22d with SMTP id 5b1f17b1804b1-4ba02336807mr53183205e9.6.1794321675174;
-        Tue, 10 Nov 2026 06:41:15 -0800 (PST)
-X-Received: by 2002:a05:600c:190f:b0:4a1:f99e:f22d with SMTP id 5b1f17b1804b1-4ba02336807mr53182425e9.6.1794321674505;
-        Tue, 10 Nov 2026 06:41:14 -0800 (PST)
-Received: from [192.168.88.30] (ip231-128-192-82.pool-bba.aruba.it. [82.192.128.231])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4ba01fe9357sm78127275e9.9.2026.11.10.06.41.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Nov 2026 06:41:14 -0800 (PST)
-Message-ID: <1754e4c8-3b6e-4983-a7fb-d3444c1156c1@redhat.com>
-Date: Tue, 10 Nov 2026 15:41:12 +0100
+	id 1xQnCi-00000004HGF-19Kp;
+	Tue, 10 Nov 2026 14:52:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794322317; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=IES5w9/rUmQUIOSvczKB958G9ik3/KHQOdqZIpBImeiL6/DiyiXey9VoKv7eSSR//k6c8Fw0ubhAX3eutKWdaQm+KuBtR00hvQuaDMCFAvgg+s4IAxKfAFIX20MW+yKqOBKVdgvqkTmOVaw2rB8WPPnH01qLjyN/0xQuh4lonLA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794322317; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=nIm3ALQw2CLFEdC+FIJT+UWO+XWiCkX3Jl5z6pz25Lw=; 
+	b=G9yyZtFQYlZJTLFV0v3bg3BtMw3vkmi3+Poehl2oVa7CSuYF8dGEw/a8aUIy0/4IKr1R0wdNDNCGA2GijuVP/LJrrBnmfKrXPim37YeqeG7MDroFOJ4CvPGazX4JZmOhi+8JsK59WZKRhcQVkDWdzuUedf6LuuFtz/a2OEFdBU8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=aMZJcmnVNEHIWb8uXyKM728ieo5RiRGM1+v6GUx2I12YzHcAOTMRGrUmWeIx092Qx2aaQKx4J0j3zaJJSCDbDa6Jm8SynPbnlTZonYnMYZL0QwpSQIbBqCbpHcIsUMGRAhvQdoQ8pNLIlLckmZBw1gyZRVnn/HDBlOkYnVM97Gs=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=nIm3ALQw2CLFEdC+FIJT+UWO+XWiCkX3Jl5z6pz25Lw=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794322316098419.50846392536164;
+	Tue, 10 Nov 2026 06:51:56 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id F1A01180354; Tue, 10 Nov 2026 15:51:46 +0100 (CET)
+Date: Tue, 10 Nov 2026 15:51:46 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: aiyengar1990@gmail.com
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, 
+	"Joerg Roedel (AMD)" <joro@8bytes.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Niklas Cassel <cassel@kernel.org>, 
+	linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/5] dt-bindings: iommu: arm,smmu-v3: allow a power domain
+Message-ID: <avMvRiHSp_7d8oD3@venus>
+References: <20261110-smmu-v3-pcie-pd-v1-0-628819ca44b9@gmail.com>
+ <20261110-smmu-v3-pcie-pd-v1-1-628819ca44b9@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net v3 2/2] net: pcs: xpcs: make supported_interfaces
- authoritative
-To: Coia Prant <coiaprant@gmail.com>, Jakub Kicinski <kuba@kernel.org>
-Cc: Jiawen Wu <jiawenwu@trustnetic.com>,
- Mengyuan Lou <mengyuanlou@net-swift.com>, Andrew Lunn
- <andrew+netdev@lunn.ch>, "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>, Heiko Stuebner <heiko@sntech.de>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Fabio Baltieri <fabio.baltieri@gmail.com>, netdev@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20261102212506.3348537-1-coiaprant@gmail.com>
- <20261102212506.3348537-4-coiaprant@gmail.com>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <20261102212506.3348537-4-coiaprant@gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: dM_myOiE7az1pstTdJUa5WcQmFjPKm4VYuiTtOLLU1E_1794321675
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+In-Reply-To: <20261110-smmu-v3-pcie-pd-v1-1-628819ca44b9@gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.310.16
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_064119_448714_66E0CE7A 
-X-CRM114-Status: GOOD (  11.72  )
-X-Spam-Score: -2.8 (--)
+X-CRM114-CacheID: sfid-20261110_065208_363725_4DA2BB39 
+X-CRM114-Status: GOOD (  18.83  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,54 +76,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============5411456435872998793=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/2/26 22:25, Coia Prant wrote:
-> diff --git a/drivers/net/pcs/pcs-xpcs-rk.c b/drivers/net/pcs/pcs-xpcs-rk.c
-> index 6f0a110e32d2..25fdc9c6b72c 100644
-> --- a/drivers/net/pcs/pcs-xpcs-rk.c
-> +++ b/drivers/net/pcs/pcs-xpcs-rk.c
-> @@ -483,6 +483,7 @@ struct dw_xpcs *xpcs_rk_create(struct device *dev, struct device_node *pcs, int
->   	struct platform_device *pdev;
->   	struct dw_xpcs_rk *pxpcs;
->   	struct dw_xpcs *xpcs;
-> +	DECLARE_PHY_INTERFACE_MASK_ZERO(supported_interfaces);
 
-Please respect the reverse christmas tree order above.
+--===============5411456435872998793==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="tfqghsv2wlsgx7bh"
+Content-Disposition: inline
 
->   
->   	if (!of_device_is_available(pcs))
->   		return ERR_PTR(-ENODEV);
-> @@ -536,6 +537,15 @@ struct dw_xpcs *xpcs_rk_create(struct device *dev, struct device_node *pcs, int
->   		return xpcs;
->   	}
->   
-> +	/*
-> +	 * The RK3568 XPCS supports 1000BASE-X, SGMII and QSGMII.
-> +	 */
-> +	__set_bit(PHY_INTERFACE_MODE_1000BASEX, supported_interfaces);
-> +	__set_bit(PHY_INTERFACE_MODE_SGMII, supported_interfaces);
-> +	__set_bit(PHY_INTERFACE_MODE_QSGMII, supported_interfaces);
 
-Sashiko thinks this last statement is a no op:
+--tfqghsv2wlsgx7bh
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 1/5] dt-bindings: iommu: arm,smmu-v3: allow a power domain
+MIME-Version: 1.0
 
-https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261102212506.3348537-1-coiaprant@gmail.com
+Hi,
 
-I don't think this is 'net' material, I suggest resubmitting for
-net-next.
+On Tue, Nov 10, 2026 at 07:11:48AM +0000, Arun Iyengar via B4 Relay wrote:
+> From: Arun Iyengar <aiyengar1990@gmail.com>
+>=20
+> An SMMUv3 instance can sit in a switchable power domain of the SoC, for
+> example the MMU-600 in front of the PCIe controllers on the Rockchip
+> RK3588, which is part of the PCIe power domain. If the domain is not
+> described, nothing keeps it powered while the SMMU is bound, and any
+> register access after it has been turned off as unused stalls the
+> interconnect.
+>=20
+> Allow a single power-domains entry, as arm,smmu.yaml already does for
+> the earlier SMMU architectures.
+>=20
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> ---
 
-/P
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
+Greetings,
+
+-- Sebastian
+
+>  Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml b/D=
+ocumentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
+> index 3c044e4f03d4..c8f22dfdb1db 100644
+> --- a/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
+> +++ b/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
+> @@ -63,6 +63,9 @@ properties:
+> =20
+>    msi-parent: true
+> =20
+> +  power-domains:
+> +    maxItems: 1
+> +
+>    nvidia,cmdqv:
+>      description: |
+>        A phandle to its pairing CMDQV extension for an implementation on =
+NVIDIA
+>=20
+> --=20
+> 2.55.0
+>=20
+>=20
+>=20
+
+--tfqghsv2wlsgx7bh
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmrzL34ACgkQ2O7X88g7
++pqJrw/+Ltixuq2mwS/7jblulvQQALfQna4bWRC1zreexGhF+leoXqP9JEMhCnkp
+Vr3wOBovLKA//DQokcLKXgDGqVS21CBMdTAEp2Gc+G0N0VHZzdSP7i3QCkr9qNZI
+vPm9hifWU277QF5SgT/YCR94Jt8m46KSkFNiaeq2dTUBi+/TpYO1y1UxvNnlBm8H
+ySl3PLGGBj909ezmEy12KLVHxYAPM3SKAbE6dr7Uyo3B2yuMp5uY1TPdYbJpNi4+
+s/qBdbgxBqPVWVhRspqwjcJKpc2jnv1aLQjZsHCulAxY6iOnGscDwHgCnerj7xw2
+XJOJ+cmGi2CvqRYloutaEx3DFDW0ANLaOvxLBe43c8jwuDP72eeM+Bl4JnNxQOZX
+uVu6498a/JQxBCXyo0IW/vEUQ/VhCo6bG7CaLHIWmuX/gVH0DNCuz43JFInaZaCz
+lHffjGUeQNGigfx+zlTTu1Ng0rqBA6qKnva8gOUE2AvFkWD3lYh7MWuZWy4Foz6i
+g2FEtxt2CfNYpzm6/XE5Sp5ayNqO0l3N2Y+m2W413Ae8Pe5dmtZmNekDmJOLKzYq
+PWNKmQ16cANFsiA0Zq8fL7p4EArT1cC7o37lWeKdJJdodL+edfTFWmee0YmmrTOA
+lsBVO1mkefW/Kf+L2CL8+DoN0EUu7+qa7rVBLxOlkPB+b3A8UsU=
+=xEf6
+-----END PGP SIGNATURE-----
+
+--tfqghsv2wlsgx7bh--
+
+
+--===============5411456435872998793==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5411456435872998793==--
+
