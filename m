@@ -2,101 +2,85 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4D17E606C5CA
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F3851606C5DD
 	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 10:08:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QkkfnaWb;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=fyK8TmzD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=x8RF22Pq;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=XAb59tv2
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=1gu5771val2pfZe09GLZYK21GuiCNpX47qSXksLVii8=; b=QkkfnaWb6Q3hdXSoXNtET4zZR8
-	MWW4inK2pv7Yz1bGYiFl8iP+GHwL3HiwSirIAz0+l+c+J1FMudCV/1lRF/MW5zXhCRP8J8Bl2l8zy
-	wOqmlSCX88gxUK9g9oEdNskGwS/wIeS47WXk/+fZlTLbUz9bAZ72A3QUpjApXPuc4PAK9mj0xigeD
-	B040kKQlGIs11VTRKrXGE3TBW59LB6fssP31u1/Ta0c7zOl13ghC0kRW4Cn4CMiWdnBEiipVtHui2
-	4cTnFX9X4kH0Cgx8is2qVq00zC8dHvhsSiXiSbfN4n3AhsPzevvDgwMkpoIecrZezn0/KUVIliZMY
-	4F4BxBKA==;
+	bh=ThqaqOvuJr3aImv7tcFP8tf+EzNVjWKxBr2QTim6Z+M=; b=x8RF22PqTn1wiFnYtcZTX0cyx0
+	geGB/1H9Hx24KUj+T0GsBvTto0eoF1IZiCTA8/mJJ9nbHOwOheLfZbJAVWj+X8BMYLh5hL6/s+3U2
+	4pCt5f+MgXga6ojXZ8fgrYBdLUzklTdeQ1efGhEr1KEKLogjJfbgAYsdH0C5k/cDOq1Oxw/AnFFMU
+	3Jp0YdT5xUrdMClE9VFiCT65pngyYOdoNITVighix/kH9WUItyRZV9M6b0SGX4KQtrdaTGBa5LcbM
+	P8umrm82OgkLPXSbL1ZcMvkxtfNCMd+Ltttc1uTC/VPPjD2ilr5oEM+SxU9JTUD8BGQS962fZdHqD
+	9YvwMswg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQilv-00000003OKl-0hqB;
-	Tue, 10 Nov 2026 10:08:11 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xQilx-00000003OPV-05YJ;
+	Tue, 10 Nov 2026 10:08:13 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQilq-00000003OI5-3sbK;
-	Tue, 10 Nov 2026 10:08:07 +0000
+	id 1xQilu-00000003OJo-2llJ;
+	Tue, 10 Nov 2026 10:08:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 006EC6385E;
-	Tue, 10 Nov 2026 10:08:06 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1AE9C6385E;
+	Tue, 10 Nov 2026 10:08:10 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794305285;
-	b=LlehauwcR8cuAOyPlPD3uxMA604JJqL6v84k8hILOuXnVZDDJTl5KsF/dFnaqwQDTpuh
-	 DSXv5AS+4tzrx3X3JDbC2m0C+iOzMtDMh4v354flEG6eCpLCLhlN4ShBDOw/J2gDbJc4F
-	 qpNlNhIDj4OzOKN67Nh4IZp8VDFdQ93U7og0ftR4exRYHWVtYK2VA6QpukSIVC4L1wyHI
-	 Fhy6eKXgcNLjEMi79hKD/j2lJBFHaEJzajRS4Jm/f/rV569BYqmgwW9bVS4Ri4JPBGEal
-	 UrhwV3gDUw75rYvTLeNbp9H+lumXCFew53aUSWgB3MKYqR4zKiUQ0Qxk+qmz9yZfFbg==
+	t=1794305289;
+	b=cu4S7iH/mu4Vy/cFSUE+jwOog/HZxRQyKPj1hnGBeFQTxHQRwxegzf3HwM36Z7MUjyJ4
+	 HoKGFFlCbi1w3ggIFgJB0nS1jkrfBl/iuT1/I4tEYeqh9Mydwjv5Bnqybr2pR5Q8WYO5X
+	 OE1yOtkTCjLlWI9hjX4H5e4JRQVBgBBXoKr+4W0HJWypRt4/ySxUr4Xnzq4rkFMiSnmWi
+	 s1u7qgZ8ZIi6wstN8mjS+HMRVwD1BsLGz/7bdcA774xTeXQUNAlfQLIr7AqwZ1pPrw35N
+	 0Mbb7A6GVNHglVjv1lDgHJZLY1vgEG3/VmRSl0LGS74cVibcXBnr6OSY4Qu39XARCpQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794305285;
-	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
-	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
-	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=eHagWRYIWscXSlSBPRRbd2cp5pUeWmSEqXoFxGRsFO4=;
-	b=PV7TiprlVYeWO6N73ZcLHsmkqkri9STqr/QoM0P81Rfp4PYLxHy5suGfpAGt+DyUVaAX
-	 kBVXnH7HGj6wzgGuRzDSTJ5aXnpI2AjhFe86NQCXAXDkOZlMvG9t5ggUBAqQDJY2rAbNT
-	 gkjSE8v/8JNO1UgcpM4feEMRA3n8SHoejC84UEJIhCNWr6Hgyc8VftXgC0soFFvu6Uprk
-	 3a7mJYB3UcL9+unDMuD2OZGYSI3bHM+gz5q+Zcc/H6sMYKGpKDFVxt/Q7MHhusDsOv4PC
-	 2BhM4MenUSzvPqmsQfqiawkbnaCO70Pu+1W28kShak7lYPC8IvBl5Fjr+Zay+3e9hjw==
+	c=relaxed/relaxed; t=1794305289;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=sAtO1ui35lKQKmmC9SSVGfb9Aw3vRzE4A4i1731weE0=;
+	b=2H3+ZFw6QRQgh+jshRG16p4cXweG/6h+F3g2lewU5HTb52aqZicG45bqYhP+bG9VLjfi
+	 FRQYNpVHQZ5+4pcYYt/doEGf+pGZ4gC4PW3ZYUn1YPWpGZF61e8JuCgjISojMTi/I95QO
+	 NMhF6NR1sDmWRARIUq7FXw5R62uUrx4DyAKbNkucp2pgdaxS90dLk3e0uCbpwqoxHGERL
+	 hz5MsT8eeQ5WMRyCiVi3V1dcAgJ6pO0syCaYy60nbYsNilIZLpB2Ane/9hIpdafbwqH5l
+	 iN5TaqWh+9n47xqsOPr5SwC/qKfFyrYOwUEU0sGJRObDPzuL6eaGx8vnlsGUu6TP/8Q==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 9BE301F0089F;
-	Tue, 10 Nov 2026 10:08:04 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 404D61F008BE;
+	Tue, 10 Nov 2026 10:08:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794305285;
-	bh=eHagWRYIWscXSlSBPRRbd2cp5pUeWmSEqXoFxGRsFO4=;
-	h=From:Subject:Date:To:Cc:Reply-To;
-	b=fyK8TmzDA8ShBZD86SWMzsiCNwXAJjyz6y42jHauYolG6ty0AAKvcKZewwKDIaQtj
-	 72sli78nstv+Vx9MFtgy5OSlKT3G7XZUo5rtKA4/HPjWdU7Pl47Y0KhORD7VBIDMJa
-	 cXLBOLW/UP/NoD1n/U4ekxEembIqSr1s+qcZNMbuDNvFbEdnmfpVyv85iJthJuhY8p
-	 XZrH1c+Y2PbMup0Clny3Dx0J/19JWqSD80CGx5PxLFKbZM18gtFDPWh6usHrYxNaGC
-	 Jp+0Q5reJHIQLmMpJteQbH+mX0x2kJ2ii0ubW1B7JL2hi9C19KB8KFbMUurLlUKosl
-	 +HpQtVpObROHA==
+	s=k20260515; t=1794305289;
+	bh=sAtO1ui35lKQKmmC9SSVGfb9Aw3vRzE4A4i1731weE0=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=XAb59tv2nYSBluZfBf12DR6+7jY+5OYJipxCX2reIjPZi0w4YsCzb3CUO47bQDlaW
+	 VLSFmokz0yggGo0WvtMPiwJ4cpk314QR84lH3TrijJ0X2izssVJXMNUoaQpaLMgwNc
+	 Xrb2CwWtjQL84L73f7TBkyY/6V4WADxuOWY1ns7vjYxIr200A+igFkMbhYmGeG+DXu
+	 okCs+HH5RPAKDkgL06szwRuQKF3zk6HJtOzDf68mQMtDVJ6EvOEmKlFB1iDcNBXPnH
+	 NLtz/XkIOxSukGX6eMSqD7YGOEwQkoITb++iQAgHzQYZzdjIjeAO1c5647hTBi66PE
+	 bcvoHoNWzRJJg==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 2EABC48A7C;
+	by lkml.kernel.org (Postfix) with ESMTP id B7FF748ADB;
 	Tue, 10 Nov 2026 10:08:04 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Subject: [PATCH RFC 00/12] media: rockchip: Add a VEPU580 stateless
- H.264/HEVC encoder driver for the RK3588
-Date: Tue, 10 Nov 2026 10:08:02 +0000
-Message-Id: <20261110-rkvenc-v1-0-ea8b47122d8c@gmail.com>
+Date: Tue, 10 Nov 2026 10:08:09 +0000
+Subject: [PATCH RFC 07/12] media: rockchip: rkvenc: Encode pictures wider
+ than 4096 pixels
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/11VSY5cNwy9ilHrNEBSFEl5GyAHyDbwQuIQdwIP6
- baNAIbvHpZtBOi/LH1x0Jvq6+05nx7z+fb61dfbU355fH788L5/4C+vbv52v/8zHx6jf98ISBA
- RHp7+/pLv/SGh0AUdYNOtL398ynr893ujP26///br7c2Pw+fP56/0T/cWP6895T+fe8ynn3c/7
- k/+toe8flWBWLhIRCcHnmA4JRgxA2MrbwjH4T/G/V+lrhmug3kti0mQtUsPD/AF1Qd9Adj1ZRW
- LrUhVyIPHu+8cISdjU45FAZ5S3TJeVsGucCe2RblddcCQgBlWEzin+xkzj1w2THfjdcYgCx5Lh
- kGBl4/RU8VRghKC7GWVS6/RkIiCOHetEC82g55AZaGHaOyEy6w1G60pMCpAAQYvgY1DKNlEnQq
- JQ9YFQ+mtOXQRRGNRJLZrS+GIQvZagWugXzaUyd4IbMmVvAeC5dq5jvraW63WPEYO/rJqSbFCD
- 7FDvm1UOd/PsN+qIxdN7DcCvqyqPZrR8iwAGXqOcS0GPGcBzwgWXEzrsmFsEYksy6AzaUlsi0w
- 8OazxM7Szh/u4oJFzkJvUaQL0RDMwt3PhZD4aGi2p4yQXbaxEG3KIBcQGn9U1u9vbxBirpjSQW
- Zeqau24KytPy0l3yZXeGdMjqNwN8dQ5FzTMRmZVbc2t0N1jTGVRNfDDRUeWW4zLrL0BzZfOWgc
- L5pzYpLMwN0b9LaSJMLqgERYyWmkTVUsOtjMEt0nmtNbHnKe5n3rRIU2f3ukgutoiA8chcDLt4
- mgqW1w+qeDilNB9ZiM8kHm23WWD7AGzACcIJOamfsXFldL0Dsi5o9+lAduKmyBzJjU/h7a1Xa/
- v6qZMP1fcULMF4SE0UlZojb2pjc2el9zIUXkMkTEXtKJo9kErdkV03TGPu1H5uiERnX3HkJo43
- CdOzxkJBAumnNXWiXmpCpGtnqTUDGOn7T0RwIys4a5Okv627Jps4Q1h+7md2ZoFXeyid1v2Yze
- jE1iDjJcEmONEAhscNUXMjohOzXvStO9OJ3L1xmCXWeIFnS8Ondveq87+g8Bl6kNltLOTkKH1d
- qlqouaEWrIzw9q2Olq50CFSLjnmSfKRF5aZaDaGk2K5zLtesXpJHGumwnLnUyX2HcOzn/PBP7x
- 79/ipxwlZalPZ3pxtC7TONZ45muEgNOq0Sk2+vfn27T9Xf+LODwcAAA==
-X-Change-ID: 20261110-rkvenc-e0f1c61c00a2
+Message-Id: <20261110-rkvenc-v1-7-ea8b47122d8c@gmail.com>
+References: <20261110-rkvenc-v1-0-ea8b47122d8c@gmail.com>
+In-Reply-To: <20261110-rkvenc-v1-0-ea8b47122d8c@gmail.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
@@ -110,11 +94,11 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  Hans Verkuil <hverkuil@kernel.org>, Jiaxing Hu <gahing@gahingwoo.com>, 
  Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794305283; l=9591;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794305283; l=7132;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=ZAT0wBXyyAUYNvuDNGERTIQu8xp4Lu6oc4UsNxSc1ZA=;
- b=dCUzZ1YoJi3kGTk14s7KuFvWLxUQnuzAXxm/cOHewA14+tyeJYYUlA34D0HBJUWbdK/M7MXfX
- 0sQJGZg4p9oCRmMKLlmjzAWxHbJiIiLNuQiOzCy9fv+c8cUk79gklnr
+ bh=56b7J5fUEmfLr8Fj+TP9yyNIRX3fqgMQpuiuYDuQe0k=;
+ b=YJG7IIZbn+1H7XmugCQJIpUWIBMUzPf7b49krYrJy0urWaN0yXq8LYI6DaUPP67KT3MVcgAeq
+ uE9PlWt7NEOCgM1xRnPHoKIdw9GWDg3ET8rmfAYlIJ6VcVHiz3PaIjg
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -130,8 +114,8 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Reply-To: aiyengar1990@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
@@ -141,172 +125,183 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGksCgpUaGlzIFJGQyBhZGRzIGEgVjRMMiBzdGF0ZWxlc3MgZW5jb2RlciBkcml2ZXIgZm9yIHRo
-ZSBWRVBVNTgwIChSS1ZFTkMpCm9mIHRoZSBSb2NrY2hpcCBSSzM1ODgsIHRoZSBILjI2NC9IRVZD
-IGVuY29kZXIgYmxvY2sgd2l0aCB0d28gY29yZXMKdGhhdCB0aGUgdmVuZG9yIGtlcm5lbCBkcml2
-ZXMgdGhyb3VnaCBpdHMgIm1wcCIgZnJhbWV3b3JrLiBJdCBpcyBhCm5vbi1IYW50cm8gdXNlciBv
-ZiBQYXVsIEtvY2lhbGtvd3NraSdzIEguMjY0IHN0YXRlbGVzcyBlbmNvZGUgdUFQSSwgYW5kCnRo
-ZSBmaXJzdCB1c2VyIG9mIHRoZSBIRVZDIHN0YXRlbGVzcyBlbmNvZGUgdUFQSSBJIGFtIHByb3Bv
-c2luZyBpbiBhCnNlcGFyYXRlIFJGQy4KCkl0IGRlcGVuZHMgb24gdW5tZXJnZWQgd29yayBhbmQg
-aXMgc2VudCBmb3IgcmV2aWV3IG9mIHRoZSBhcHByb2FjaC4gSXQKYXBwbGllcyBvbiBtZWRpYSBu
-ZXh0IDY2MjhlN2Q0YzZiMiAodjcuNC1yYzEpIHdpdGgsIGluIHRoaXMgb3JkZXI6Ci0gcGF0Y2hl
-cyAxLTcgb2YgIltQQVRDSCAwMC8xNF0gbWVkaWE6IEFkZCBWNEwyIEguMjY0IHN0YXRlbGVzcyBl
-bmNvZGUKICBhbmQgVkM4MDAwRSBzdXBwb3J0IiB2MSAoUGF1bCBLb2NpYWxrb3dza2ksIDIwMjYt
-MDUtMjIpOgogIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDI2MDUyMjEwMTY1My4yNTY1
-MTI1LTEtcGF1bGtAc3lzLWJhc2UuaW8vCiAgKGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcv
-cHJvamVjdC9saW51eC1tZWRpYS9saXN0Lz9zZXJpZXM9MTA5OTI4MSkKLSBteSAiW1BBVENIIFJG
-QyAwMC8xMV0gbWVkaWE6IGgyNjQ6IFN0YXRlbGVzcyBlbmNvZGUgY29yZSBmb2xsb3ctdXBzIgog
-ICh0aGUgU1BTL1BQUyBmaXgsIHRoZSBDQlIgcmV3b3JrIG9uIHY0bDItZW5jLWNiciBhbmQgVkJS
-KTsKLSBteSAiW1BBVENIIFJGQyAwMC8xMF0gbWVkaWE6IEFkZCBhIFY0TDIgSEVWQyBzdGF0ZWxl
-c3MgZW5jb2RlIHVBUEkKICBhbmQgaGVscGVycyIsIGZvciB0aGUgSEVWQyBwYXRjaGVzOwotIHBh
-dGNoZXMgNiBhbmQgNyBvZiAiW1BBVENIIHYyIDAwLzE3XSBtZWRpYTogcm9ja2NoaXA6IHJnYTog
-QWRkCiAgbXVsdGktY29yZSBzdXBwb3J0IiAoU3ZlbiBQw7xzY2hlbCwgMjAyNi0wOS0xNiksIGZv
-cgogIHY0bDJfbTJtX3NldF9tYXhfcGFyYWxsZWxfam9icygpOgogIGh0dHBzOi8vbG9yZS5rZXJu
-ZWwub3JnL2FsbC8yMDI2MDkxNi1zcHUtcmdhM211bHRpY29yZS12Mi0wLTIzYWEyY2I3NGU2MUBw
-ZW5ndXRyb25peC5kZS8KUGF1bCBoYXMgYW5ub3VuY2VkIGEgcmV3b3JrIG9mIHRoZSBILjI2NCBj
-b3JlIGhlbHBlcnMgZm9yIHYyOyB0aGUKZHJpdmVyIHdpbGwgZm9sbG93IGl0LgoKUGF0Y2hlcyAx
-LTQgYWRkIHRoZSBiaW5kaW5nLCB0aGUgZHJpdmVyIHdpdGggSC4yNjQsIGFuZCBIRVZDLiBCb3Ro
-CmNvcmVzIGFyZSBpbmRlcGVuZGVudCBEVCBub2RlcyAobm90aGluZyBpbiB0aGUgaGFyZHdhcmUg
-dGllcyB0aGVtCnRvZ2V0aGVyKSBib3VuZCBhcyBjb21wb25lbnRzIG9mIG9uZSBtMm0gZGV2aWNl
-LCBzaGFyaW5nIHRoZSBmaXJzdApjb3JlJ3MgSU9NTVUgZG9tYWluOyBqb2JzIG9mIGRpZmZlcmVu
-dCBjb250ZXh0cyBydW4gb24gYm90aCBjb3JlcyBpbgpwYXJhbGxlbC4gVGhlIG9uZS1zdHJlYW0t
-b24tdHdvLWNvcmVzIGhhbmRzaGFrZSBvZiB0aGUgdmVuZG9yIGRyaXZlciBpcwpub3QgdXNlZC4g
-UGF0Y2hlcyA1LTYgY2hhbmdlIHRoZSBkZWZhdWx0cyB0aGUgZHJpdmVyIHRvb2sgZnJvbSBNUFAK
-KG5vIHRleHR1cmUgYWRhcHRpdmUgUVAsIE1QUCdzIG1vdmluZy1zY2VuZSBILjI2NCB0dW5pbmcp
-LCB3aXRoIHRoZQptZWFzdXJlbWVudHMgaW4gdGhlIGNvbW1pdCBtZXNzYWdlcy4gUGF0Y2hlcyA3
-LTggZW5jb2RlIHBpY3R1cmVzIHdpZGVyCnRoYW4gNDA5NiBwaXhlbHMgKEhFVkMgaW4gdGlsZSBj
-b2x1bW5zLCBhcyBNUFAgZG9lcyksIHBhdGNoZXMgOS0xMCBhZGQKTVBQJ3MgSSBwaWN0dXJlIFFQ
-IGxpbWl0cyBhbmQgcmUtZW5jb2Rpbmcgb2Ygb3ZlcnNpemVkIHBpY3R1cmVzIGZvcgpIRVZDLCBw
-YXRjaCAxMSBvZmZlcnMgVkJSIGZvciBILjI2NC4gUGF0Y2ggMTIgYWRkcyB0aGUgZGV2aWNlIHRy
-ZWUKbm9kZXMgYW5kIGNhbiBnbyB0aHJvdWdoIHRoZSBSb2NrY2hpcCB0cmVlIG9uY2UgdGhlIGJp
-bmRpbmcgaXMKYWNjZXB0ZWQuCgpILjI2NDogQmFzZWxpbmUvTWFpbi9IaWdoLCBDQVZMQy9DQUJB
-QywgOHg4IHRyYW5zZm9ybSwgSSBhbmQgUCBwaWN0dXJlcwp3aXRoIG9uZSByZWZlcmVuY2UgKHRo
-ZSBoYXJkd2FyZSBoYXMgYSBzaW5nbGUgcmVmZXJlbmNlIHJlYWQgcG9ydCksCnNpbmdsZSBzbGlj
-ZS4gSEVWQzogTWFpbiBwcm9maWxlLCBJIGFuZCBQIHBpY3R1cmVzLCBpbmxpbmUgc2hvcnQtdGVy
-bQpSUFMgYW5kIGxvbmctdGVybSBwaWN0dXJlcyBhcyByZXNvbHZlZCBieSB0aGUgY29yZSwgVE1W
-UC4gQm90aCB1cCB0bwoxNjM4NHg4MTkyLiBGb3IgYm90aCwgdGhlIGNvcmUgd3JpdGVzIHRoZSBw
-YXJhbWV0ZXIgc2V0cyBhdCB0aGUgc3RhcnQKb2YgdGhlIENBUFRVUkUgYnVmZmVyIGFuZCB0aGUg
-aGFyZHdhcmUgd3JpdGVzIHRoZSBzbGljZSBoZWFkZXIgYW5kIGRhdGEKZnJvbSBpdHMgc3ludGF4
-IHJlZ2lzdGVycy4gUmVjb25zdHJ1Y3RlZC9yZWZlcmVuY2UgcGljdHVyZXMgYXJlCmRyaXZlci1p
-bnRlcm5hbCBGQkMgYnVmZmVycy4gRml4ZWQgUVAsIGNvbnN0YW50IHF1YWxpdHkgYW5kIGNvbnN0
-YW50CmJpdHJhdGUgY29tZSBmcm9tIHRoZSBjb3Jlcywgd2hvc2UgcGljdHVyZSBzaXplIHRhcmdl
-dCBkcml2ZXMgdGhlCmhhcmR3YXJlIHJvdyByYXRlIGNvbnRyb2w7IHRoZSBtZWFzdXJlZCBwZXIt
-cGljdHVyZSBzdGF0aXN0aWNzIGFyZQpyZXBvcnRlZCBiYWNrIChWNEwyX0NJRF9NUEVHX1ZJREVP
-X0FWRVJBR0VfUVAgZm9yIEguMjY0LCB0aGUgSEVWQwpmZWVkYmFjayBjb250cm9sIGZvciBIRVZD
-KS4KClRoZXJlIGlzIG5vIHB1YmxpYyBkb2N1bWVudGF0aW9uIG9mIHRoaXMgYmxvY2suIFRoZSBy
-ZWdpc3RlciBsYXlvdXQsCm1lYW5pbmdzIGFuZCBkZWZhdWx0IHR1bmluZyB2YWx1ZXMgd2VyZSBk
-ZXJpdmVkIGZyb20gdGhlIFJvY2tjaGlwIE1QUAp1c2Vyc3BhY2UgbGlicmFyeSAoQXBhY2hlLTIu
-MCksIHJlYWQgYXMgZG9jdW1lbnRhdGlvbiBhbmQgd3JpdHRlbiBhcwpuYW1lZCBmaWVsZHMgYW5k
-IGZvcm11bGFzOyB0aGUgcG93ZXIsIHdhdGNoZG9nIGFuZCByZXNldC9JT01NVSByZWNvdmVyeQpz
-ZXF1ZW5jZXMgZm9sbG93IHRoZSB2ZW5kb3Iga2VybmVsIGRyaXZlci4gTm8gY29kZSB3YXMgY29w
-aWVkLgoKUmVsYXRlZDogSmlheGluZyBIdSdzIFJGQyBmb3IgdGhlIFZFUFU1MTAgb2YgdGhlIFJL
-MzU3NiAoYSBzdGF0ZWZ1bApILjI2NCBkcml2ZXIpIGlzIGEgZGlmZmVyZW50IGdlbmVyYXRpb24g
-b2YgdGhpcyBibG9jazoKaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjYwNzIyMDczNDE3
-LjIwNjQ2NjctMS1nYWhpbmdAZ2FoaW5nd29vLmNvbS8KClRlc3RlZCBvbiBhbiBPcmFuZ2UgUGkg
-NSAoUkszNTg4UyksIG9uIGEgdjcuMy1iYXNlZCBrZXJuZWwgd2hvc2UKcmt2ZW5jIGZpbGVzIGFu
-ZCBiaW5kaW5nIGFyZSBieXRlLWlkZW50aWNhbCB0byB0aGlzIHNlcmllcywgd2l0aCBhCnJlcXVl
-c3QtQVBJIHRlc3QgY2xpZW50IGFuZCBHU3RyZWFtZXIgKGxvY2FsIHBhdGNoZXMpLCBkZWNvZGlu
-ZyBldmVyeQpzdHJlYW0gd2l0aCBGRm1wZWcgYW5kIG1lYXN1cmluZyBQU05SIGFnYWluc3QgdGhl
-IHNvdXJjZToKLSBILjI2NCwgMTA4MHA2MCwgMzAwIHBpY3R1cmVzIG9mIHR3byBjbGlwcyAoQmln
-IEJ1Y2sgQnVubnkgYW5kIGEKICBuYXR1cmFsIG9uZSk6IENCUiBhdCA0IE1iaXQvcyB3aXRoIGFu
-IElEUiBwZXJpb2Qgb2YgMTIwLCA4IE1iaXQvcwogIHdpdGggMTAgYW5kIDIwIE1iaXQvcyBhbGwt
-aW50cmEgd2l0aGluIDIuMiUgb2YgdGhlIHRhcmdldCwgdGhlCiAgbGFyZ2VzdCBvbmUgc2Vjb25k
-IHdpbmRvdyBhdCBtb3N0IDEuMzcgdGltZXMgdGhlIGJpdHJhdGUgKGEgc2NlbmUKICBjaGFuZ2Ug
-aW4gYSBQIHBpY3R1cmUpOyBWQlIgd2l0aCB0aGUgcGVhayBhdCAxLjUgdGltZXMgdGhlIGJpdHJh
-dGUKICBpbiB0aGUgc2FtZSBjYXNlcyBhbmQgYXQgOCBNYml0L3Mgd2l0aCBhbiBJRFIgcGVyaW9k
-IG9mIDEyMAogIHdpdGhpbiAzLjIlIG9mIHRoZSB0YXJnZXQsIGV2ZXJ5IG9uZSBzZWNvbmQgd2lu
-ZG93CiAgd2l0aGluIHRoZSBwZWFrIChhdCBtb3N0IDAuOTQgb2YgaXQpOwotIEhFVkMsIENCUiB3
-aXRoIGFuIElEUiBwZXJpb2Qgb2YgMTIwOiAxMDgwcDYwIGF0IDItMTYgTWJpdC9zIGFuZAogIDIx
-NjBwMzAgYXQgMjAgYW5kIDQwIE1iaXQvcyB3aXRoaW4gMy40JSBvZiB0aGUgdGFyZ2V0LCB0aGUg
-bGFyZ2VzdAogIG9uZSBzZWNvbmQgd2luZG93IGF0IG1vc3QgMS4zNSB0aW1lcyB0aGUgYml0cmF0
-ZTsgNDEwNHgyMTYwLAogIDUxMjB4Mjg4MCBhbmQgODE5Mng0MzIwIGluIHRpbGUgY29sdW1ucywg
-UFNOUi1ZIDQzLTUyIGRCLgpXaXRoIGVhcmxpZXIgcmV2aXNpb25zIG9mIHBhdGNoZXMgMi00OiBi
-b3RoIGNvcmVzIHByb2JlIGFuZCBiaW5kLAp2NGwyLWNvbXBsaWFuY2UgMS4zMiA0NC80OSB3aXRo
-IDAgd2FybmluZ3MgKHRoZSA1IGZhaWx1cmVzIGFyZSB0aGUKdG9vbCBub3Qga25vd2luZyBzdGF0
-ZWxlc3MgZW5jb2RlcnMpOyBILjI2NCBhbmQgSEVWQyBhdCAxMDgwcCBhbmQgNEssCmZpeGVkIFFQ
-IDIyLTM3IHdpdGggR09QIDEvMTAvMzAsIHRoZSB0aHJlZSBILjI2NCBwcm9maWxlcyB3aXRoIENB
-VkxDIGFuZApDQUJBQywgSEVWQyBUTVZQIG9uL29mZiwgU0FPIG9mZiwgbG9uZy10ZXJtIHJlZmVy
-ZW5jZXMsIENRIGFuZCBvZGQKc2l6ZXMgd2l0aCBhIGNvbmZvcm1hbmNlIHdpbmRvdywgZGVjb2Rl
-IHdpdGggMCBlcnJvcnMgYXQgMzgtNTkgZEIgUFNOUiwKYW5kIHRoZSBIRVZDIGZlZWRiYWNrIGNv
-bnRyb2wgbWF0Y2hlZCB0aGUgZXhwZWN0ZWQgTkFMIHR5cGUsIFBPQywgUVAKYW5kIHJlZmVyZW5j
-ZSBsaXN0IG9uIGV2ZXJ5IHBpY3R1cmU7IHR3byBwYXJhbGxlbCA0SyBzdHJlYW1zIHJ1biBvbmUK
-b24gZWFjaCBjb3JlIGF0IGFib3V0IHR3aWNlIHRoZSBzaW5nbGUtc3RyZWFtIHJhdGUgd2l0aCBv
-dXRwdXRzCmlkZW50aWNhbCB0byBzaW5nbGUtc3RyZWFtIHJ1bnM7IGJvdGggY29yZXMgcnVudGlt
-ZS1zdXNwZW5kIGFmdGVyIHRoZQpsYXN0IGpvYjsgSC4yNjQgdXAgdG8gMTYzODR4MjA0OCBhbmQg
-ODE5Mng0MzIwIHRocm91Z2ggdGhlIGV4dGVybmFsCmxpbmUgYnVmZmVyLiBUaGUgZXJyb3IsIHdh
-dGNoZG9nIGFuZCBJT01NVSByZWNvdmVyeSBwYXRocyBoYXZlIG5vdCBiZWVuCmV4ZXJjaXNlZCBv
-biBoYXJkd2FyZS4KClRoaXMgc2VyaWVzIHdhcyBkZXZlbG9wZWQgd2l0aCBDbGF1ZGUgKEFudGhy
-b3BpYykgYXMgYSBjb2RpbmcgYXNzaXN0YW50OgppdCB3cm90ZSB0aGUgY29kZSBhbmQgdGhlIGNv
-bW1pdCBtZXNzYWdlcywgYW5kIEkgcmV2aWV3ZWQgYW5kIHRlc3RlZApldmVyeSBjaGFuZ2UgYXMg
-ZGVzY3JpYmVkIGFib3ZlLgoKU2lnbmVkLW9mZi1ieTogQXJ1biBJeWVuZ2FyIDxhaXllbmdhcjE5
-OTBAZ21haWwuY29tPgotLS0KQXJ1biBJeWVuZ2FyICgxMik6CiAgICAgIGR0LWJpbmRpbmdzOiBt
-ZWRpYTogQWRkIHRoZSBSb2NrY2hpcCBWRVBVNTgwIHZpZGVvIGVuY29kZXIKICAgICAgbWVkaWE6
-IHJvY2tjaGlwOiBBZGQgYSBWRVBVNTgwIHN0YXRlbGVzcyB2aWRlbyBlbmNvZGVyIGRyaXZlcgog
-ICAgICBtZWRpYTogcm9ja2NoaXA6IHJrdmVuYzogUHJlcGFyZSB0aGUgVkVQVTU4MCBoZWxwZXJz
-IGZvciBhIHNlY29uZCBjb2RlYwogICAgICBtZWRpYTogcm9ja2NoaXA6IHJrdmVuYzogQWRkIEhF
-VkMgZW5jb2RpbmcKICAgICAgbWVkaWE6IHJvY2tjaGlwOiBya3ZlbmM6IERvbid0IGVuYWJsZSBh
-ZGFwdGl2ZSBRUCB3aXRoIHRoZSByb3cgcmF0ZSBjb250cm9sCiAgICAgIG1lZGlhOiByb2NrY2hp
-cDogcmt2ZW5jOiBVc2UgTVBQJ3MgbW92aW5nLXNjZW5lIEguMjY0IFJETyB0dW5pbmcKICAgICAg
-bWVkaWE6IHJvY2tjaGlwOiBya3ZlbmM6IEVuY29kZSBwaWN0dXJlcyB3aWRlciB0aGFuIDQwOTYg
-cGl4ZWxzCiAgICAgIG1lZGlhOiByb2NrY2hpcDogcmt2ZW5jOiBFbmNvZGUgSEVWQyB3aWRlciB0
-aGFuIDQwOTYgcGl4ZWxzIGluIHRpbGUgY29sdW1ucwogICAgICBtZWRpYTogcm9ja2NoaXA6IHJr
-dmVuYzogTGltaXQgdGhlIFFQIG9mIHRoZSBIRVZDIEkgcGljdHVyZXMgdG8gMTUuLjUxCiAgICAg
-IG1lZGlhOiByb2NrY2hpcDogcmt2ZW5jOiBSZS1lbmNvZGUgb3ZlcnNpemVkIEhFVkMgcGljdHVy
-ZXMKICAgICAgbWVkaWE6IHJvY2tjaGlwOiBya3ZlbmM6IE9mZmVyIFZCUiBmb3IgSC4yNjQgZW5j
-b2RpbmcKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFkZCB0aGUgVkVQVTU4MCBlbmNvZGVy
-IGNvcmVzIHRvIHRoZSBSSzM1ODgKCiAuLi4vYmluZGluZ3MvbWVkaWEvcm9ja2NoaXAscmszNTg4
-LXZlcHU1ODAueWFtbCAgICB8ICAgOTMgKysKIE1BSU5UQUlORVJTICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIHwgICAgOCArCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
-aGlwL3JrMzU4OC1iYXNlLmR0c2kgICAgICB8ICAgNTYgKwogZHJpdmVycy9tZWRpYS9wbGF0Zm9y
-bS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgfCAgICAxICsKIGRyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vcm9ja2NoaXAvTWFrZWZpbGUgICAgICAgICAgIHwgICAgMSArCiBkcml2ZXJzL21lZGlh
-L3BsYXRmb3JtL3JvY2tjaGlwL3JrdmVuYy9LY29uZmlnICAgICB8ICAgMTggKwogZHJpdmVycy9t
-ZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZlbmMvTWFrZWZpbGUgICAgfCAgICA4ICsKIC4uLi9t
-ZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZlbmMvcmt2ZW5jLWgyNjQuYyAgIHwgIDUxOSArKysr
-KysrCiAuLi4vbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZW5jL3JrdmVuYy1oZXZjLmMgICB8
-ICA4NjkgKysrKysrKysrKysKIC4uLi9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZlbmMvcmt2
-ZW5jLXJlZ3MuaCAgIHwgIDUzOSArKysrKysrCiAuLi4vcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZW5j
-L3JrdmVuYy12ZXB1NTgwLmMgICAgICB8ICA5OTkgKysrKysrKysrKysrKwogZHJpdmVycy9tZWRp
-YS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZlbmMvcmt2ZW5jLmMgICAgfCAxNTgxICsrKysrKysrKysr
-KysrKysrKysrCiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JrdmVuYy9ya3ZlbmMu
-aCAgICB8ICAzMjkgKysrKwogMTMgZmlsZXMgY2hhbmdlZCwgNTAyMSBpbnNlcnRpb25zKCspCi0t
-LQpiYXNlLWNvbW1pdDogNjYyOGU3ZDRjNmIyNWM4ZDE4ZjEzNDVlM2EyMGQyMTgyOWFhZTdlNApj
-aGFuZ2UtaWQ6IDIwMjYxMTEwLXJrdmVuYy1lMGYxYzYxYzAwYTIKcHJlcmVxdWlzaXRlLXBhdGNo
-LWlkOiBmZDExZjE5MjY2NzU0ZDFiZDQwYmY2MWRkNWQxZGE3NGEwZGMxM2MyCnByZXJlcXVpc2l0
-ZS1wYXRjaC1pZDogN2M3ZWRjNzM0NDk5OGQ1MjBlZmFmN2I0MzBjOTBmZDUyN2M3MDRjNwpwcmVy
-ZXF1aXNpdGUtcGF0Y2gtaWQ6IDQ2ODlkZTc3MGViMWJjZGMxNTNkNmJlZGEyZTM5MmQwY2U2ZjM0
-NGQKcHJlcmVxdWlzaXRlLXBhdGNoLWlkOiAwYWZkY2MyNDg5MmVhYzc3MzAzNmQwNWQ4ZjUwNGU1
-Y2NiMzVlYjYyCnByZXJlcXVpc2l0ZS1wYXRjaC1pZDogZWNjODQ5YjMzMjhkNDM5NjM4MGYwY2Zj
-MzMxNTM2YzE2ZDJlMGQyOApwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6IGM2MmQwZmQxNjcwNmM0MzI4
-NjI0OTQ4ODA1ZWIyZjhkN2IyMjNhZTAKcHJlcmVxdWlzaXRlLXBhdGNoLWlkOiBlOTU1ZDE1NjAz
-ZmQwNzAwMzQ5NjBhMTM2MmU0ODY3YzJmMTI0ZDY5CnByZXJlcXVpc2l0ZS1wYXRjaC1pZDogNzZl
-YjY0ZDc5MjBkZGMxZjI2OGFmYTZmMTNkZjE0Y2Y5ZDE5MzFjOApwcmVyZXF1aXNpdGUtcGF0Y2gt
-aWQ6IDY1NGMzMDNhNmU5ZTRhMzEwOGU5YWU5YjdjOWFhNzhmOTViODJjMGMKcHJlcmVxdWlzaXRl
-LXBhdGNoLWlkOiA5NmY0NzBjMWY4YjJjYTgzZmZjNDk2ZjQxZmQxNzNlOTI1MTgwNTAxCnByZXJl
-cXVpc2l0ZS1wYXRjaC1pZDogZmEzNDMwZmNlZjAwNjM3YmI4NGY5NDAxYmI5MDQ1ZGQ0NjE5NDI5
-OApwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6IGRhNjY2ZGVmOGVkMmI1Mjk2ZGE4ZGVlMWJlMzg3YjI4
-MThiYTNjYzMKcHJlcmVxdWlzaXRlLXBhdGNoLWlkOiA3ZTUzMmM4NmZiZDBmN2JkNjcwNWFjNGYx
-NTQ0YjdkN2QyN2NiYzI2CnByZXJlcXVpc2l0ZS1wYXRjaC1pZDogMDllMTgzNmIyNDYwNjgzNGI5
-YWM0YWEzYzg1MWQzOWY1NjRjZmVmNgpwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6IGZkOGZjYzc0NzQ1
-OGU1MjM0NGRmNzYwYTE3YjYxNzQ4MzYxYmZiYjEKcHJlcmVxdWlzaXRlLXBhdGNoLWlkOiA4ODNl
-ZWZmZmE3ZWE3MGQzOWQzNTc0Njc3ODBjYjRmMmI2OWM4ZDM2CnByZXJlcXVpc2l0ZS1wYXRjaC1p
-ZDogYWEwMThjOTc1ZjliMWYwNTU1MTY0ZDQ2NDQ2ZGVhMDFkNjQ5NjgyMwpwcmVyZXF1aXNpdGUt
-cGF0Y2gtaWQ6IGQ4ZDYzMjNhNTE3N2Y2YjFjZTY2MWE4NmVlNTgxM2Q1NWI0YTM1NzAKcHJlcmVx
-dWlzaXRlLXBhdGNoLWlkOiAyNWM1YzFjMDY3OTM2ZDMxM2IyMGMyODdlNjZkYTM0ZmE2YzUyZjAy
-CnByZXJlcXVpc2l0ZS1wYXRjaC1pZDogZDdhYjU3ZDczMTQ0NWEwZDZhMDZhMzA1ZjAxNTA2MGUx
-ZWEyYWEwZApwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6IDY4ZWQzMGU1YWQ5YjE3ZDBhOGY0Y2JjOGM0
-Mjc4Y2JiMmE4MmVhMjMKcHJlcmVxdWlzaXRlLXBhdGNoLWlkOiA1ZjA0MmMxYzA2NzlhMGY1ODdi
-Y2Q2MjNlNjlkN2YzYWEyMDVkNGNlCnByZXJlcXVpc2l0ZS1wYXRjaC1pZDogNGUzZmViODExNDFl
-OTAyOTYyNTNmZTE4MDlkZDlkN2I4Y2Q4NjI0NApwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6IDY4MjIy
-YmFhNTE3MmVlZjFhYmRiZTY5M2UwMjA5MDU2Yjk4ZTlkNTQKcHJlcmVxdWlzaXRlLXBhdGNoLWlk
-OiBkNjZhN2NlMjcyZDM5MTFjNjYyZDAwODgyODU3MGY0MzljZTI5OGM3CnByZXJlcXVpc2l0ZS1w
-YXRjaC1pZDogZGNiNTc2ZWIzMDNjNGYwNzk0YzY3YWU5YjJjMWE0MWMyMDhhYjUxOQpwcmVyZXF1
-aXNpdGUtcGF0Y2gtaWQ6IDUzYmRlMDQ4MGI3ODcxMWVkNjk3MDRlYjJmMzQzYjY2N2ZkYmUwODcK
-cHJlcmVxdWlzaXRlLXBhdGNoLWlkOiA2Y2YwOTYwYzAxZjFjN2NlNTExMDE5ODdjMzc2MzNmZmUy
-MTQwNzVmCnByZXJlcXVpc2l0ZS1wYXRjaC1pZDogNmFkOTU1MGY5NmFlZWQ4NDI5NzM3ODAwZTRh
-ZmM2ZTM1YmUyYzNlZApwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6IDQyMjUyYmE1MmQ5YzY1ZWEwMTFm
-Njk3MTM5NWU3MDljYzRiZmY2ODQKCkJlc3QgcmVnYXJkcywKLS0gIApBcnVuIEl5ZW5nYXIgPGFp
-eWVuZ2FyMTk5MEBnbWFpbC5jb20+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+From: Arun Iyengar <aiyengar1990@gmail.com>
+
+The internal line buffers of the VEPU580 cover pictures up to 4096
+pixels wide. Wider pictures need an external line buffer of 480 bytes per
+64-pixel column, given to the encoder by its bottom address and its
+(exclusive) top address in ADR_ELBB and ADR_ELBT. Both registers hold
+address bits 31:8.
+
+Allocate that buffer per context at stream start when the encoded width
+is above 4096, program it for every picture, and raise the frame size
+limits of both codecs to the 16384x8192 the encoder supports.
+
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+---
+ .../media/platform/rockchip/rkvenc/rkvenc-h264.c   |  6 ++--
+ .../media/platform/rockchip/rkvenc/rkvenc-hevc.c   |  6 ++--
+ .../media/platform/rockchip/rkvenc/rkvenc-regs.h   |  2 ++
+ .../platform/rockchip/rkvenc/rkvenc-vepu580.c      | 38 ++++++++++++++++++++--
+ drivers/media/platform/rockchip/rkvenc/rkvenc.c    |  8 ++++-
+ drivers/media/platform/rockchip/rkvenc/rkvenc.h    |  4 +++
+ 6 files changed, 54 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/media/platform/rockchip/rkvenc/rkvenc-h264.c b/drivers/media/platform/rockchip/rkvenc/rkvenc-h264.c
+index 665c54278029..11051aea43b4 100644
+--- a/drivers/media/platform/rockchip/rkvenc/rkvenc-h264.c
++++ b/drivers/media/platform/rockchip/rkvenc/rkvenc-h264.c
+@@ -501,11 +501,11 @@ const struct rkvenc_coded_fmt_desc rkvenc_h264_fmt_desc = {
+ 	.size_align = 16,
+ 	.frmsize = {
+ 		.min_width = 64,
+-		/* The external line buffer for wider pictures is not handled. */
+-		.max_width = 4096,
++		/* Wider than 4096 with the external line buffer. */
++		.max_width = 16384,
+ 		.step_width = 2,
+ 		.min_height = 64,
+-		.max_height = 4096,
++		.max_height = 8192,
+ 		.step_height = 2,
+ 	},
+ 	.ctrls = &rkvenc_h264_ctrls,
+diff --git a/drivers/media/platform/rockchip/rkvenc/rkvenc-hevc.c b/drivers/media/platform/rockchip/rkvenc/rkvenc-hevc.c
+index a3d35a7fdc3f..638b13d6642a 100644
+--- a/drivers/media/platform/rockchip/rkvenc/rkvenc-hevc.c
++++ b/drivers/media/platform/rockchip/rkvenc/rkvenc-hevc.c
+@@ -689,11 +689,11 @@ const struct rkvenc_coded_fmt_desc rkvenc_hevc_fmt_desc = {
+ 	.size_align = 8,
+ 	.frmsize = {
+ 		.min_width = 64,
+-		/* Wider pictures need tiles, which are not implemented. */
+-		.max_width = 4096,
++		/* Wider than 4096 with the external line buffer. */
++		.max_width = 16384,
+ 		.step_width = 2,
+ 		.min_height = 64,
+-		.max_height = 4096,
++		.max_height = 8192,
+ 		.step_height = 2,
+ 	},
+ 	.ctrls = &rkvenc_hevc_ctrls,
+diff --git a/drivers/media/platform/rockchip/rkvenc/rkvenc-regs.h b/drivers/media/platform/rockchip/rkvenc/rkvenc-regs.h
+index e8e7ce045f90..dd91004e31cf 100644
+--- a/drivers/media/platform/rockchip/rkvenc/rkvenc-regs.h
++++ b/drivers/media/platform/rockchip/rkvenc/rkvenc-regs.h
+@@ -82,6 +82,8 @@
+ #define VEPU580_LPFR_ADDR			0x02c4
+ #define VEPU580_EBUFT_ADDR			0x02d8
+ #define VEPU580_EBUFB_ADDR			0x02dc
++/* Widest picture the internal line buffers cover. */
++#define VEPU580_LINE_BUF_MAX_WIDTH		4096
+ 
+ /* Frame class: control */
+ #define VEPU580_ENC_PIC				0x0300
+diff --git a/drivers/media/platform/rockchip/rkvenc/rkvenc-vepu580.c b/drivers/media/platform/rockchip/rkvenc/rkvenc-vepu580.c
+index f14d5ae0b7f7..adb1372dff57 100644
+--- a/drivers/media/platform/rockchip/rkvenc/rkvenc-vepu580.c
++++ b/drivers/media/platform/rockchip/rkvenc/rkvenc-vepu580.c
+@@ -179,9 +179,41 @@ void vepu580_setup_common(struct rkvenc_ctx *ctx, struct rkvenc_core *core,
+ 	rkvenc_set(core, VEPU580_SLI_SPLT, 0);
+ 	rkvenc_set(core, VEPU580_SLI_CFG, VEPU580_SLI_CFG_SLI_CRS_EN);
+ 
+-	/* No external line buffer: widths above 4096 are rejected for now. */
+-	rkvenc_set(core, VEPU580_EBUFT_ADDR, 0);
+-	rkvenc_set(core, VEPU580_EBUFB_ADDR, 0);
++	/* The external line buffer: top is the exclusive end, 0 when unused. */
++	if (ctx->line_buf.cpu) {
++		rkvenc_set(core, VEPU580_EBUFT_ADDR,
++			   ctx->line_buf.dma + ctx->line_buf.size);
++		rkvenc_set(core, VEPU580_EBUFB_ADDR, ctx->line_buf.dma);
++	} else {
++		rkvenc_set(core, VEPU580_EBUFT_ADDR, 0);
++		rkvenc_set(core, VEPU580_EBUFB_ADDR, 0);
++	}
++}
++
++/*
++ * The internal line buffers cover pictures up to 4096 pixels wide. Wider
++ * pictures need an external one of 480 bytes per 64-pixel column. Its
++ * address registers hold bits 31:8 only, hence the 256-byte rounding (the
++ * DMA allocation itself is page aligned). The content does not outlive a
++ * picture, and a context runs one picture at a time, so one buffer per
++ * context is enough.
++ */
++int vepu580_alloc_line_buf(struct rkvenc_ctx *ctx)
++{
++	unsigned int width = ALIGN(ctx->coded_fmt.fmt.pix_mp.width,
++				   ctx->coded_fmt_desc->size_align);
++
++	if (width <= VEPU580_LINE_BUF_MAX_WIDTH)
++		return 0;
++
++	return rkvenc_alloc_aux(ctx->dev, &ctx->line_buf,
++				ALIGN(DIV_ROUND_UP(width, 64) * 480, 256),
++				false);
++}
++
++void vepu580_free_line_buf(struct rkvenc_ctx *ctx)
++{
++	rkvenc_free_aux(ctx->dev, &ctx->line_buf);
+ }
+ 
+ /*
+diff --git a/drivers/media/platform/rockchip/rkvenc/rkvenc.c b/drivers/media/platform/rockchip/rkvenc/rkvenc.c
+index 26bee08d4c2d..61c745994da9 100644
+--- a/drivers/media/platform/rockchip/rkvenc/rkvenc.c
++++ b/drivers/media/platform/rockchip/rkvenc/rkvenc.c
+@@ -505,7 +505,12 @@ static int rkvenc_start_streaming(struct vb2_queue *q, unsigned int count)
+ 	    ctx->src_fmt.fmt.pix_mp.height != ctx->coded_fmt.fmt.pix_mp.height)
+ 		ret = -EINVAL;
+ 	else
+-		ret = desc->ops->start ? desc->ops->start(ctx) : 0;
++		ret = vepu580_alloc_line_buf(ctx);
++	if (!ret && desc->ops->start) {
++		ret = desc->ops->start(ctx);
++		if (ret)
++			vepu580_free_line_buf(ctx);
++	}
+ 	if (ret) {
+ 		rkvenc_queue_cleanup(q, VB2_BUF_STATE_QUEUED);
+ 		return ret;
+@@ -524,6 +529,7 @@ static void rkvenc_stop_streaming(struct vb2_queue *q)
+ 	if (ctx->started) {
+ 		if (desc->ops->stop)
+ 			desc->ops->stop(ctx);
++		vepu580_free_line_buf(ctx);
+ 		ctx->started = false;
+ 	}
+ 
+diff --git a/drivers/media/platform/rockchip/rkvenc/rkvenc.h b/drivers/media/platform/rockchip/rkvenc/rkvenc.h
+index c2dd0bb91c51..ec6a955921b8 100644
+--- a/drivers/media/platform/rockchip/rkvenc/rkvenc.h
++++ b/drivers/media/platform/rockchip/rkvenc/rkvenc.h
+@@ -226,6 +226,8 @@ struct rkvenc_ctx {
+ 	struct v4l2_ctrl_handler ctrl_hdl;
+ 	struct rkvenc_core *core;
+ 	struct v4l2_ctrl *avg_qp_ctrl;
++	/* External line buffer, only for pictures wider than 4096 pixels. */
++	struct rkvenc_aux_buf line_buf;
+ 	void *priv;
+ 	bool started;
+ };
+@@ -249,6 +251,8 @@ static inline void rkvenc_or(struct rkvenc_core *core, u32 reg, u32 val)
+ int rkvenc_alloc_aux(struct rkvenc_dev *rkvenc, struct rkvenc_aux_buf *buf,
+ 		     size_t size, bool kernel_mapping);
+ void rkvenc_free_aux(struct rkvenc_dev *rkvenc, struct rkvenc_aux_buf *buf);
++int vepu580_alloc_line_buf(struct rkvenc_ctx *ctx);
++void vepu580_free_line_buf(struct rkvenc_ctx *ctx);
+ void vepu580_setup_common(struct rkvenc_ctx *ctx, struct rkvenc_core *core,
+ 			  struct rkvenc_run *run);
+ void vepu580_setup_me(struct rkvenc_core *core, unsigned int width_mbs,
+
+-- 
+2.55.0
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
