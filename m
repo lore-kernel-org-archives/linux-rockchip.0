@@ -2,60 +2,64 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 71534606A31C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 17:19:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EFDE8606A31C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 17:20:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=q/EtoaLg;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=hrnxB7v4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SAQd9IfU;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=HOlW6/Cj
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=awd0q7hmxeMZVFDgbo4IlEH4C8Tc80NuvF8OMimb3Nk=; b=q/EtoaLgy/imZFt18DPs3qiMwH
-	Z0SFp6P8ccTzTayR2n3Id8JSKVqqLSLpxxQcEJHPgBTIxT0SJVDXrrI+qvZrOlGn3bHsNijkQ4xlf
-	yLJUQTfSxG+eTQlzW65AFrEfzv2ieiOTOlTau2vd1pHV8LQVS1obW59q61nESawyfAfG2DDnWV0Bd
-	3BY0M3YGitq2w9RE9ZrDWBQ+lO6Ee4WlzOfXspHbjWK5g7oYfBxWxovOIO5G86kCDCduCPfFeQbiS
-	De70yHdIe9pPXIgAy5pcUS4Xa/3zgkXE+BlphBpglbLlka4rdM6RpChYWCZj93p678//C9B6AD+iq
-	4R3b0Yzg==;
+	bh=Sa3140SmLgM3gjSHfWuN6fPt1H5x+A6Ebjh1DHau/3M=; b=SAQd9IfUZgUzOxY/QflIGGEt0X
+	4VvtM1b2hJHkHC8uk/oDR4CQyOZXGUKQiYuBR1LCPM7slZTpLCT/Ry2JOBs8dUIBhcFSvV0LrKJ9w
+	iubs9YLbB2V9Y7kqXb2gcXad/xJ4xlr997AX8/MmfrI0CuI0e0hLMuGtDOqShqfcLlhqnH8pb9hiR
+	6v8A7ASNNiZL74xRzc9F6ar7XO3eqJUeJ3c27haXrT5NBPF51XbMLJ4CHkquVDK4i3Qla3z0ZIwlV
+	aAs1QDnz6aXAHhtwwuQTlVJE/+66WMMBXdyozkwemMM08JTwp82YR4fCbgJ1ogpUltaWywr8uQdXW
+	dRD+N2hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQpVh-00000004eNl-3MZ6;
-	Tue, 10 Nov 2026 17:19:53 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xQpVm-00000004eW4-1S9D;
+	Tue, 10 Nov 2026 17:19:58 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQpVW-00000004eBe-33MA;
-	Tue, 10 Nov 2026 17:19:44 +0000
+	id 1xQpVW-00000004eBf-0F5H;
+	Tue, 10 Nov 2026 17:19:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1794331179;
-	bh=GN4bmnoEDDAXDU5l7MQkDzQrhcRMkLzOepWx2peIp3g=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hrnxB7v4obdBQ8WxRJhH5C7r8Fte9MSBjveoD+RJgvxpTa3Jc26pPnKLgyNnGN9J6
-	 8dI9WNFKsLSCDT5RA/mCKE0v7WsexLNTUg/5HIZUgXdg2YuJUWztPBsCh+7dFdtPVI
-	 LP9rtIwstUGcM1hYGeVge3KFzHMyjaqHAOHWU6LEPjN10hc+vmIU+hEEarPlh/+SAS
-	 w4hh/h6qNzKTzyO30xPwlUGuGV2blp+sC0MHN/iiKAbb2hXpuO0drNR+3nFzSV2/Wk
-	 JwwsQRvN/kJa3Cts5SiLqeYEcsuYch5tNr3FD6XRQnyaje7E6GV9vv+RGWcyeW/H28
-	 v0Tz7YhQ8ObCg==
+	bh=PSYSBnjHJTGSOsFMN80hFo0M6LiB3h7DxQOb+h1dEFI=;
+	h=From:Subject:Date:To:Cc:From;
+	b=HOlW6/Cj7qGg7vmOIKMFsCqLrybu59yyLcduV+G9N7XIMYUMo4YKlBHPAJCMxUQsC
+	 RMYnqTFdJODx7SBnbYeAUJZZIm3BH1h2AA1OA6V9QMXLAvPhUkLSdpQ3Unn7LBLSI9
+	 3KpZLaFCD6zkpQYN0baNIsTcyQhDX8YO/iHsmUUVeJVOpfIERaMHGX3MXKqPippIG0
+	 6sAP+glG740OhRQG5+8EikJo7CDfrFx1V801bOzmvZAb7FBxQLrb/mOc/cj/VWzhq1
+	 ri7DDbkV2tmgUzAEguZvHcrY5Dj8NgCmoM+cKGTSH9QQZQmrv+nsBa+WkgttQ+M9Bc
+	 tv1F6sFVW5qug==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 544F917E093E;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 559C617E0A6C;
 	Tue, 10 Nov 2026 18:19:39 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 0C878480030; Tue, 10 Nov 2026 18:19:39 +0100 (CET)
+	id 09FEC48002C; Tue, 10 Nov 2026 18:19:39 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 10 Nov 2026 18:19:15 +0100
-Subject: [PATCH v5 2/6] phy: rockchip: inno-usb2: ignore regmap_write
- return codes
+Subject: [PATCH v5 0/6] phy: rockchip: inno-usb2: ensure PHY is running
+ when clock is requested
+Date: Tue, 10 Nov 2026 18:19:13 +0100
+Message-Id: <20261110-phy-rockchip-inno-usb2-clock-fix-v5-0-d2e24582ab22@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261110-phy-rockchip-inno-usb2-clock-fix-v5-2-d2e24582ab22@collabora.com>
-References: <20261110-phy-rockchip-inno-usb2-clock-fix-v5-0-d2e24582ab22@collabora.com>
-In-Reply-To: <20261110-phy-rockchip-inno-usb2-clock-fix-v5-0-d2e24582ab22@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/5XOy07EMAwF0F8ZZY2RnUcfrPgPxKJxExooTZXMV
+ IxG/XfSQQKEZlGW17LP9UVkl4LL4uFwEcktIYc4lWDuDoKHbnpxEPqShURZYYsNzMMZUuQ3HsI
+ MYZoinLKVwGOZgQ8f4Pq+MtbUvmm0KMycXBlfK56ev3I+2VfHx83dNoaQjzGdrz8stO39o24hI
+ PB1b1pWZMvJI8dx7GxM3T3Hd7FVLvIbJUTagUpAcEjWG2yVad0tVP2ghGYHqgpqJVbYMDa21bd
+ Q/Qsl3IHqghrqmLGmSmn/F13X9RMcFKbj5QEAAA==
+X-Change-ID: 20260908-phy-rockchip-inno-usb2-clock-fix-edd65b57f884
 To: Vinod Koul <vkoul@kernel.org>, 
  Neil Armstrong <neil.armstrong@linaro.org>, 
  Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
@@ -66,26 +70,26 @@ Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  Igor Paunovic <royalnet026@gmail.com>, kernel@collabora.com, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=10869;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4465;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=GN4bmnoEDDAXDU5l7MQkDzQrhcRMkLzOepWx2peIp3g=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrzUipCqZLcsh1PanqaZTQkW1FNe6XwLkFF0
- 7GBitxSKYgoz4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq81IqAAoJENju1/PI
- O/qaKC4P+gLp9Vq6njs87ApBJ/bsda2oyvQXyBlCOKqenY6r+h/dyk3v+fbm9wlK41KQM5BmVDg
- 5Q4gD2v4UsCOLXEzSfDOlBN9assKwms+ONaZaMQwKI6U4H/I/6zlCc1/FTxzTqFK+zHnFXPLqk7
- i3mN7utFBQljkXCo7tCkxTtp2wnsY7+Y5US68m6+tO8g8LRDRxGx0yeETjwLNGRCiNHZURQPYXY
- Cs4fQ6kTZkDI29yzkk+VjzRqD6117pjn4q3q0OpP6mQeu/Y95Ut4GVxBG11MaSX/PfCtIf8Y+fS
- UtrwbQ2RC/PS4EP9FAwL8WTqtJ3D96Ml6Z2BCH4fG3F4OvYWtfYMchgQaFuW4r5I+JIASESWCSH
- a3SYByPrPyhK7nTuJ29noDe09liXn4Qv6d+Yv/Zv+XpW17QM9wHleys++Gwk5/aYWmju1hx/HXY
- g1OAQYciveiyArZO8stY5djXuc3/ug6ulzfwmz29q9ZnVoWFVnaLiINTM+Y74Sv8Ft6lOQjnND9
- o/7b/v9SB6Fr2XLVmjQaUR7QxOcg8Df7jOZjVuuwfDczUmBxg8bcK6DOanU5dG7kNfl51M+KRb/
- tnQ+cNalYW1KpIclfzy6VTnIXxvJtsrzvPiCYUrIdXyCCR3/R0QueyAqiAnzO4WPDrD8NTGKTXD
- G2KTnP4VzpfFYRzABEY4ymA==
+ bh=PSYSBnjHJTGSOsFMN80hFo0M6LiB3h7DxQOb+h1dEFI=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrzUiaAsRwffl1O/xPPm9cFSja+Xnq626vWE
+ iNRZgVNTaZKcIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq81ImAAoJENju1/PI
+ O/qa56IP/3Sx3iJkPehsFus43aCVR94carRvjsg5BdyzY9o9/xYgEkgRfQckWXnzXpwLchi1vnr
+ aYupt8ZhMCrdXDdT/sT2DummRb29CztDqNZ3gPEAGSOJnd5K/p1gtWiDvP2ESVO9ftoecoMy2pp
+ AADCLvegSfRhL4h1yGSeGjUM5DbjRC8t5yGlUUP8TsLpiOfLT7jsOvlR6LNR+Bw5bzFq0OBp9H3
+ bPrIZjwyTRye8FgH7UY1uugUgwKNkMylLAdvj4ZSLqN0kx86EqySOLkJVggqZ921oo/oGkaL58r
+ fAcDshPsgkNyn9p/aHvEIZKs0g9+oBAc6ZcVMMXfYdiBSm62ImLTzL1WvfR7i8+AcezrDYgfpMr
+ FIgrEbKGO2HvXB1UNBmX847/aXjwRgq3YHgmnPz5b+AgPtxHzAJsZ/bB0UACuHYL/OqeHacH388
+ 2W0ENMkj5RM65bar/JHlNDyDiQzjzrcFodGQaTbqGQTVDtSpLgOCa5qitnbIJSwiv8PJQcbtdYL
+ BtvE+TPG+AHy3YmIZFlhJs/fD30xObju2RyF7QgsF8koA7hYwOhPALN+lXmQVUEFnBJ7hIRKGYy
+ KGvjRX789ggekoOmw8kHHJmtqSheUNuDNS22tK43hxAHigCU0O1hthO9oziN6wNTuzY0A4/UF4g
+ 3crYvo4WNcbCJzvlPqUwhjA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_091942_958780_38C82358 
-X-CRM114-Status: GOOD (  19.09  )
+X-CRM114-CacheID: sfid-20261110_091942_288271_19D5EA71 
+X-CRM114-Status: GOOD (  19.03  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,321 +110,95 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This driver only uses MMIO regmaps, which means regmap_write and
-regmap_write_bits() cannot fail (writing to unpowered/unclocked
-registers would result in an SError instead of a regmap_write failure).
-Thus drop the useless error handling for better code readability.
+This was noticed on RK3588 EVB1 when resuming from system suspend. This
+is technically a fix, but its unclear when the bug was introduced and
+system suspend is broken on RK3588 for quite a while and not just due
+to this problem. So I think this fix can be merged the normal way via
+linux-next.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Changes in v5:
+- Link to v4: https://patch.msgid.link/20261110-phy-rockchip-inno-usb2-clock-fix-v4-0-51acc071634f@collabora.com
+- Add new patch converting 480MHz clock registration to device maanged
+  clk_hw helpers instead of using legacy clock framework functions with
+  open coded device managed release handlers. This is a cleanup, which
+  also allows easy implementation of the next point.
+- Restore clock registration back to the original place, so that internal
+  users can access it early. The clock provider registration is kept at
+  the new place (after initializing the ports) to ensure the clock can
+  only be requested when either more than two ports are available or the
+  port already being initialized. (Sashiko)
+
+Changes in v4:
+- Link to v3: https://patch.msgid.link/20261105-phy-rockchip-inno-usb2-clock-fix-v3-0-b20608c08b94@collabora.com
+- Drop patch avoiding rport->suspended in rockchip_usb2phy_sm_work; it
+  was meant as a simple cleanup and Sashiko suggested it is more tricky
+- Add new patch removing error handling for regmap_write and
+  regmap_write_bits
+- Add new patch removing error handling for reset controller
+  assert/deassert
+- Simplify final two patches due to the dropped error handling
+- In the final patch move the 480M clock registration after the
+  port_cfg population to properly fix the race condition instead
+  of relying on -EAGAIN and the NULL check
+- In the final patch create a new helper function deciding between
+  handling the PHY suspend in the clock (un)prepare functions; we
+  keep the NULL check for port_cfg as this properly handles the
+  case of the port sub-node being disabled in DT. From functional
+  point of view this setup doesn't make sense (no need to enable
+  the PHY if all ports are disabled), but one extra NULL check is
+  cheap, so it's better to handle this gracefully.
+
+Changes in v3:
+- Link to v2: https://patch.msgid.link/20261001-phy-rockchip-inno-usb2-clock-fix-v2-0-e01bf509359e@collabora.com
+- Fix do_suspend negation resulting in SError on RK3576 (Sashiko, CI testing)
+- Ensure PHY ports array is initialized in clock enable path (Sashiko)
+- Cleanup properly in clock enable error path (Sashiko)
+
+Changes in v2:
+- Link to v1: https://patch.msgid.link/20260908-phy-rockchip-inno-usb2-clock-fix-v1-1-f7d59c31b908@collabora.com
+- Move suspend exit code from rockchip_usb2phy_power_on into a
+  separate patch and reuse it in the clock prepare function;
+  move is done in a separate patch
+- Updated commit messages with proper rationale
+- Added one more patch dropping useless assignment
+  of rport->suspended directly after calling
+  rockchip_usb2phy_power_on/off
+- Add one more patch unifying and simplifying the debug
+  messages for phy init/power_on/power_off/exit
+
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 161 +++++++-------------------
- 1 file changed, 43 insertions(+), 118 deletions(-)
+To: Vinod Koul <vkoul@kernel.org>
+To: Neil Armstrong <neil.armstrong@linaro.org>
+To: Manivannan Sadhasivam <mani@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+To: William Wu <william.wu@rock-chips.com>
+Cc: linux-phy@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: Igor Paunovic <royalnet026@gmail.com>
+Cc: kernel@collabora.com
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 0b61f152eb3f..a705c4b18bd4 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -263,8 +263,8 @@ struct rockchip_usb2phy {
- 	struct rockchip_usb2phy_port	ports[USB2PHY_NUM_PORTS];
- };
- 
--static inline int property_enable(struct regmap *base,
--				  const struct usb2phy_reg *reg, bool en)
-+static inline void property_enable(struct regmap *base,
-+				   const struct usb2phy_reg *reg, bool en)
- {
- 	unsigned int val, mask, tmp;
- 
-@@ -272,7 +272,7 @@ static inline int property_enable(struct regmap *base,
- 	mask = GENMASK(reg->bitend, reg->bitstart);
- 	val = (tmp << reg->bitstart) | (mask << BIT_WRITEABLE_SHIFT);
- 
--	return regmap_write(base, reg->offset, val);
-+	regmap_write(base, reg->offset, val);
- }
- 
- static inline bool property_enabled(struct regmap *base,
-@@ -336,15 +336,12 @@ static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
- {
- 	const struct usb2phy_reg *clkout_ctl;
- 	struct regmap *base;
--	int ret;
- 
- 	rockchip_usb2phy_clk480m_clkout_ctl(hw, &base, &clkout_ctl);
- 
- 	/* turn on 480m clk output if it is off */
- 	if (!property_enabled(base, clkout_ctl)) {
--		ret = property_enable(base, clkout_ctl, true);
--		if (ret)
--			return ret;
-+		property_enable(base, clkout_ctl, true);
- 
- 		/* waiting for the clk become stable */
- 		usleep_range(1200, 1300);
-@@ -481,25 +478,14 @@ static int rockchip_usb2phy_extcon_register(struct rockchip_usb2phy *rphy)
- 	return 0;
- }
- 
--static int rockchip_usb2phy_enable_host_disc_irq(struct rockchip_usb2phy *rphy,
--						 struct rockchip_usb2phy_port *rport,
--						 bool en)
-+static void rockchip_usb2phy_enable_host_disc_irq(struct rockchip_usb2phy *rphy,
-+						  struct rockchip_usb2phy_port *rport,
-+						  bool en)
- {
--	int ret;
--
--	ret = property_enable(rphy->grf, &rport->port_cfg->disfall_clr, true);
--	if (ret)
--		return ret;
--
--	ret = property_enable(rphy->grf, &rport->port_cfg->disfall_en, en);
--	if (ret)
--		return ret;
--
--	ret = property_enable(rphy->grf, &rport->port_cfg->disrise_clr, true);
--	if (ret)
--		return ret;
--
--	return property_enable(rphy->grf, &rport->port_cfg->disrise_en, en);
-+	property_enable(rphy->grf, &rport->port_cfg->disfall_clr, true);
-+	property_enable(rphy->grf, &rport->port_cfg->disfall_en, en);
-+	property_enable(rphy->grf, &rport->port_cfg->disrise_clr, true);
-+	property_enable(rphy->grf, &rport->port_cfg->disrise_en, en);
- }
- 
- static int rockchip_usb2phy_init(struct phy *phy)
-@@ -516,42 +502,14 @@ static int rockchip_usb2phy_init(struct phy *phy)
- 		if (rport->mode != USB_DR_MODE_HOST &&
- 		    rport->mode != USB_DR_MODE_UNKNOWN) {
- 			/* clear bvalid status and enable bvalid detect irq */
--			ret = property_enable(rphy->grf,
--					      &rport->port_cfg->bvalid_det_clr,
--					      true);
--			if (ret)
--				goto out;
--
--			ret = property_enable(rphy->grf,
--					      &rport->port_cfg->bvalid_det_en,
--					      true);
--			if (ret)
--				goto out;
-+			property_enable(rphy->grf, &rport->port_cfg->bvalid_det_clr, true);
-+			property_enable(rphy->grf, &rport->port_cfg->bvalid_det_en, true);
- 
- 			/* clear id status and enable id detect irqs */
--			ret = property_enable(rphy->grf,
--					      &rport->port_cfg->idfall_det_clr,
--					      true);
--			if (ret)
--				goto out;
--
--			ret = property_enable(rphy->grf,
--					      &rport->port_cfg->idrise_det_clr,
--					      true);
--			if (ret)
--				goto out;
--
--			ret = property_enable(rphy->grf,
--					      &rport->port_cfg->idfall_det_en,
--					      true);
--			if (ret)
--				goto out;
--
--			ret = property_enable(rphy->grf,
--					      &rport->port_cfg->idrise_det_en,
--					      true);
--			if (ret)
--				goto out;
-+			property_enable(rphy->grf, &rport->port_cfg->idfall_det_clr, true);
-+			property_enable(rphy->grf, &rport->port_cfg->idrise_det_clr, true);
-+			property_enable(rphy->grf, &rport->port_cfg->idfall_det_en, true);
-+			property_enable(rphy->grf, &rport->port_cfg->idrise_det_en, true);
- 
- 			schedule_delayed_work(&rport->otg_sm_work,
- 					      OTG_SCHEDULE_DELAY * 3);
-@@ -562,28 +520,16 @@ static int rockchip_usb2phy_init(struct phy *phy)
- 	} else if (rport->port_id == USB2PHY_PORT_HOST) {
- 		if (rport->port_cfg->disfall_en.offset) {
- 			rport->host_disconnect = true;
--			ret = rockchip_usb2phy_enable_host_disc_irq(rphy, rport, true);
--			if (ret) {
--				dev_err(rphy->dev, "failed to enable disconnect irq\n");
--				goto out;
--			}
-+			rockchip_usb2phy_enable_host_disc_irq(rphy, rport, true);
- 		}
- 
- 		/* clear linestate and enable linestate detect irq */
--		ret = property_enable(rphy->grf,
--				      &rport->port_cfg->ls_det_clr, true);
--		if (ret)
--			goto out;
--
--		ret = property_enable(rphy->grf,
--				      &rport->port_cfg->ls_det_en, true);
--		if (ret)
--			goto out;
-+		property_enable(rphy->grf, &rport->port_cfg->ls_det_clr, true);
-+		property_enable(rphy->grf, &rport->port_cfg->ls_det_en, true);
- 
- 		schedule_delayed_work(&rport->sm_work, SCHEDULE_DELAY);
- 	}
- 
--out:
- 	mutex_unlock(&rport->mutex);
- 	return ret;
- }
-@@ -603,11 +549,7 @@ static int rockchip_usb2phy_power_on(struct phy *phy)
- 	if (ret)
- 		return ret;
- 
--	ret = property_enable(rphy->grf, &rport->port_cfg->phy_sus, false);
--	if (ret) {
--		clk_disable_unprepare(rphy->clk480m);
--		return ret;
--	}
-+	property_enable(rphy->grf, &rport->port_cfg->phy_sus, false);
- 
- 	/*
- 	 * For rk3588, it needs to reset phy when exit from
-@@ -632,16 +574,13 @@ static int rockchip_usb2phy_power_off(struct phy *phy)
- {
- 	struct rockchip_usb2phy_port *rport = phy_get_drvdata(phy);
- 	struct rockchip_usb2phy *rphy = dev_get_drvdata(phy->dev.parent);
--	int ret;
- 
- 	dev_dbg(&phy->dev, "port power off\n");
- 
- 	if (rport->suspended)
- 		return 0;
- 
--	ret = property_enable(rphy->grf, &rport->port_cfg->phy_sus, true);
--	if (ret)
--		return ret;
-+	property_enable(rphy->grf, &rport->port_cfg->phy_sus, true);
- 
- 	rport->suspended = true;
- 	clk_disable_unprepare(rphy->clk480m);
-@@ -1511,39 +1450,29 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- static int rk3128_usb2phy_tuning(struct rockchip_usb2phy *rphy)
- {
- 	/* Turn off differential receiver in suspend mode */
--	return regmap_write_bits(rphy->grf, 0x298,
--				BIT(2) << BIT_WRITEABLE_SHIFT | BIT(2),
--				BIT(2) << BIT_WRITEABLE_SHIFT | 0);
-+	regmap_write_bits(rphy->grf, 0x298,
-+			  BIT(2) << BIT_WRITEABLE_SHIFT | BIT(2),
-+			  BIT(2) << BIT_WRITEABLE_SHIFT | 0);
-+
-+	return 0;
- }
- 
- static int rk3528_usb2phy_tuning(struct rockchip_usb2phy *rphy)
- {
--	int ret;
--
- 	/* Turn off otg port differential receiver in suspend mode */
--	ret = regmap_write(rphy->phy_base, 0x30, BIT(18) | 0x0000);
--	if (ret)
--		return ret;
-+	regmap_write(rphy->phy_base, 0x30, BIT(18) | 0x0000);
- 
- 	/* Turn off host port differential receiver in suspend mode */
--	ret = regmap_write(rphy->phy_base, 0x430, BIT(18) | 0x0000);
--	if (ret)
--		return ret;
-+	regmap_write(rphy->phy_base, 0x430, BIT(18) | 0x0000);
- 
- 	/* Set otg port HS eye height to 400mv (default is 450mv) */
--	ret = regmap_write(rphy->phy_base, 0x30, GENMASK(22, 20) | 0x0000);
--	if (ret)
--		return ret;
-+	regmap_write(rphy->phy_base, 0x30, GENMASK(22, 20) | 0x0000);
- 
- 	/* Set host port HS eye height to 400mv (default is 450mv) */
--	ret = regmap_write(rphy->phy_base, 0x430, GENMASK(22, 20) | 0x0000);
--	if (ret)
--		return ret;
-+	regmap_write(rphy->phy_base, 0x430, GENMASK(22, 20) | 0x0000);
- 
- 	/* Choose the Tx fs/ls data as linestate from TX driver for otg port */
--	ret = regmap_write(rphy->phy_base, 0x94, GENMASK(22, 19) | 0x0018);
--	if (ret)
--		return ret;
-+	regmap_write(rphy->phy_base, 0x94, GENMASK(22, 19) | 0x0018);
- 
- 	return 0;
- }
-@@ -1554,9 +1483,7 @@ static int rk3576_usb2phy_tuning(struct rockchip_usb2phy *rphy)
- 	u32 reg = rphy->phy_cfg->reg;
- 
- 	/* Deassert SIDDQ to power on analog block */
--	ret = regmap_write(rphy->grf, reg + 0x0010, GENMASK(29, 29) | 0x0000);
--	if (ret)
--		return ret;
-+	regmap_write(rphy->grf, reg + 0x0010, GENMASK(29, 29) | 0x0000);
- 
- 	/* Do reset after exit IDDQ mode */
- 	ret = rockchip_usb2phy_reset(rphy);
-@@ -1564,12 +1491,12 @@ static int rk3576_usb2phy_tuning(struct rockchip_usb2phy *rphy)
- 		return ret;
- 
- 	/* HS DC Voltage Level Adjustment 4'b1001 : +5.89% */
--	ret |= regmap_write(rphy->grf, reg + 0x000c, GENMASK(27, 24) | 0x0900);
-+	regmap_write(rphy->grf, reg + 0x000c, GENMASK(27, 24) | 0x0900);
- 
- 	/* HS Transmitter Pre-Emphasis Current Control 2'b10 : 2x */
--	ret |= regmap_write(rphy->grf, reg + 0x0010, GENMASK(20, 19) | 0x0010);
-+	regmap_write(rphy->grf, reg + 0x0010, GENMASK(20, 19) | 0x0010);
- 
--	return ret;
-+	return 0;
- }
- 
- static int rk3588_usb2phy_tuning(struct rockchip_usb2phy *rphy)
-@@ -1594,9 +1521,7 @@ static int rk3588_usb2phy_tuning(struct rockchip_usb2phy *rphy)
- 	}
- 
- 	/* Deassert SIDDQ to power on analog block */
--	ret = regmap_write(rphy->grf, 0x0008, GENMASK(29, 29) | 0x0000);
--	if (ret)
--		return ret;
-+	regmap_write(rphy->grf, 0x0008, GENMASK(29, 29) | 0x0000);
- 
- 	/* Do reset after exit IDDQ mode */
- 	ret = rockchip_usb2phy_reset(rphy);
-@@ -1604,21 +1529,21 @@ static int rk3588_usb2phy_tuning(struct rockchip_usb2phy *rphy)
- 		return ret;
- 
- 	/* suspend configuration */
--	ret |= regmap_write(rphy->grf, 0x000c, GENMASK(20, 16) | suspend_cfg);
-+	regmap_write(rphy->grf, 0x000c, GENMASK(20, 16) | suspend_cfg);
- 
- 	/* HS DC Voltage Level Adjustment 4'b1001 : +5.89% */
--	ret |= regmap_write(rphy->grf, 0x0004, GENMASK(27, 24) | 0x0900);
-+	regmap_write(rphy->grf, 0x0004, GENMASK(27, 24) | 0x0900);
- 
- 	/* HS Transmitter Pre-Emphasis Current Control 2'b10 : 2x */
--	ret |= regmap_write(rphy->grf, 0x0008, GENMASK(20, 19) | 0x0010);
-+	regmap_write(rphy->grf, 0x0008, GENMASK(20, 19) | 0x0010);
- 
- 	if (!usb3otg)
--		return ret;
-+		return 0;
- 
- 	/* Pullup iddig pin for USB3_0 OTG mode */
--	ret |= regmap_write(rphy->grf, 0x0010, GENMASK(17, 16) | 0x0003);
-+	regmap_write(rphy->grf, 0x0010, GENMASK(17, 16) | 0x0003);
- 
--	return ret;
-+	return 0;
- }
- 
- static const struct rockchip_usb2phy_cfg rk3036_phy_cfgs[] = {
+---
+Sebastian Reichel (6):
+      phy: rockchip: inno-usb2: simplify and unify PHY op debug messages
+      phy: rockchip: inno-usb2: ignore regmap_write return codes
+      phy: rockchip: inno-usb2: ignore reset_control return codes
+      phy: rockchip: inno-usb2: use devm for 480m clock registration
+      phy: rockchip: inno-usb2: move suspend handling into new function
+      phy: rockchip: inno-usb2: move suspend handling into clock prepare/unprepare for RK3588/RK3576
 
--- 
-2.53.0
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 284 ++++++++++----------------
+ 1 file changed, 103 insertions(+), 181 deletions(-)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20260908-phy-rockchip-inno-usb2-clock-fix-edd65b57f884
+
+Best regards,
+--  
+Sebastian Reichel <sebastian.reichel@collabora.com>
 
 
 _______________________________________________
