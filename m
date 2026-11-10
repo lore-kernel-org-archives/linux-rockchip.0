@@ -2,97 +2,107 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BD9E8606A333
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:17:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3C1AA606A339
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:17:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kpnvrBNs;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=cxKa6zJI
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vZOrCy6e;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=fHWoaG74
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=nLvWV/y3Yk5uwxu8nDYf1MDdBZzZ7XQVwS3evagPD1c=; b=kpnvrBNsqEZA7rWjVmQXgwbsbf
-	xfEdF0DL10YXa/V1WPLdVnLGbEt0fsBjFgHHkhcJjmoYWd4UBURJKxCAbVY7vtQnfYW3aMkC1+cXp
-	spgXo8rnxrO1DEzI/aKnTcfjNcQa+PNjgDuUDABVLwbExQ7g09bxQ52fdURAjW+vYw3WULThJXKL8
-	Qp4fghtQr4lAo+Rn18Ii00+A0xPZG+EH4oLfD361aO/Atlv09k/bedR+ULGoysEMTDqI6yP58COvB
-	DRRwYYm55y6uzBYFKS14BoYas671C2JCdP2HQgOqUp00EX1yumEMNQvr57+v+5ZK+67kCRjy6o4UQ
-	/BZ20XAA==;
+	bh=eIXqfYmwn6aYdKYkBLMHT79a9rTf48RIgXq0MJ8RrK0=; b=vZOrCy6eRl0zWNlI3ioUFyf0L6
+	UY1P2pWJuBPmDJOmb2k6LGYOD8jDBxoFdVDocgOKd8QH55tfwh5dYsYzTlsbE9mtkRAnszb164Qt7
+	AijfDER4a+7/qD6N1/TLDFWPNFnhLsy2IELAZ/sHKFuPiW0AQBZ4FhuM7hwvGmlCI9jzfyW1by+uM
+	uaUMGSyrs3r+DS7Z7H1uEy9tb44oEFPC1CxCsozRlXGsZJqzI48h3D05ni7gtyHT38VU0nLu8rugE
+	J/4RR8m0Zg/vgM4ypO8l1Bw0eFs9uP62oIGMSLIrUEFdhHj6R9AwdyS9QiWbf3GY8wLJ98egTLPsZ
+	Etp/BUXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg6N-00000002oWm-1jAA;
-	Tue, 10 Nov 2026 07:17:07 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xQg6v-00000002ovo-1rpU;
+	Tue, 10 Nov 2026 07:17:41 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg6H-00000002oRS-2dQZ;
-	Tue, 10 Nov 2026 07:17:02 +0000
+	id 1xQg6m-00000002ond-48yz;
+	Tue, 10 Nov 2026 07:17:36 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 917D8637A0;
-	Tue, 10 Nov 2026 07:17:00 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7D0414012C;
+	Tue, 10 Nov 2026 07:17:32 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794295020;
-	b=Kpw4hL1mOhB3R2T0I89A4U2Rql7RpeiVmlGsmYPgYue8wrvc8ip9HB6kVp8twnuwnt/e
-	 WagyQs29mzZpdZQWz30FZjErLekkR9lGl70dimiuYfWz1afxydDQ2G2IRwulW2cUFwNNw
-	 3p0E6Ow3xWu9Y/3t2VTPYsBv0/SWmGQLxx20ZUT5GHnavmpXghsnKeC8uU+O7DxTkz6+g
-	 wp3PnCuOzinR00rIFyo8tRosrDv6hTrkenVXhJsiFqSN/xyL6H11mxUtPnUmwt2OlkrzF
-	 bvjWbFM4152WbQATBgBI7A6Zg5HlxZdeZRSn4AL/orfrcIDCfRwaTK2VftzFQ79XbvA==
+	t=1794295052;
+	b=xJgNzm2AOdk6bpkMN8DptoFAglFV7s+CzPl2PoBB/b4EBt0vq1aAJISNunqeO0tJxjB+
+	 TgeOgSJogQh9qW9puHC/zB9Brk3mGFX6ZMKQ6VFMWAlLL2x4HFaqB++j5/yFtNfOB/TGR
+	 hxRrKpye74uGThKQgsM4Ln31VcdiQyvrd0u4wH3C0iIuZCXL3dx8furTjgPecWR9MJfgl
+	 wzU1nQQZI5DbGvZBC/dY40ch1oxxUs7Mdn8lvZcF6/+6o+yEJowwPzKvRb/eMyTh6udSC
+	 wNiG7Iu6MxUNa05pX2g8MUtd09mEd5o6u/rgHS7qHbSq/IJnUfO/gQrRXcXlwUU/pDw==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794295020;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=ulMPRdDVqUD3bn0qKBt2l3HbJhixA+Wy+sglqX1b+OU=;
-	b=fnDz2iAiArWsGvLp98mkylFJqw7CFoKVXrsX+1ZxwG1TYPKyeI34EULKIfx5CU4VJWFR
-	 2EjPZEtNKLEKuJQNjm3auOzng2HtmYkzmt8KXuYm+Shk7ShGYJwKSNABWD/I1MFIl5Ib5
-	 KEItmKPtzzrqU0sYvvx47wCVFX1ecdEQPdECjm78vVtWT7+glGgMPed1aADI2TYjUy+Mr
-	 o9Y5s4/Iq0IClRIDX4dBKi/GwWCpYSCGWeZC69rnlpA4JWIHcgtX9kw4YGtPrQZlYUSmM
-	 fPmIMwRY/Mrx2OBWjjwhVnOZyrJoT7VNNMCuhjU1EECL055Oor8Q8mXOBOmzw6W5UmA==
+	c=relaxed/relaxed; t=1794295052;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=t3KOisCqUVJUs+RV54kK7ue0orheXjsx8TJE3H/kvoE=;
+	b=aEnwmlrj6prNvisFsfcrBU+BmrC4gXuw0B4ZXYnO0ow7v7GZ+I5TE7LJlDPb6lN4EM1t
+	 OD90zKbDDxIkEoRRbpYrX1D46WHJjIVfApEvNIFRuMDTgWAF4U4H/SOpmTjvi9FolUXln
+	 bx/8/9Tg4xWoeRBXIeGJjgMJoTMljR8e72rvac7COpzYzcBnVez4lsAK4LYJR5SptMarK
+	 tYDT7/7eTx4g67niYGs5ruo7pqsLT1qs6LXjPhWNsYa2wPqbCoLaGWNSFqApV5bYmXXq6
+	 0BXa0G96Yy+PDGhA67f6m5XL17FZiYCQCTfDax8Fjfgu17bstxWzVsAllks12/0waBA==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id CFDA61F008A3;
-	Tue, 10 Nov 2026 07:16:58 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id B201A1F0089F;
+	Tue, 10 Nov 2026 07:17:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794295020;
-	bh=ulMPRdDVqUD3bn0qKBt2l3HbJhixA+Wy+sglqX1b+OU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=cxKa6zJIrLKWq3O9siKBkujX0EtlZfe4Whh1b4SCCmE80goZC2f6HXde40UDPG4/Y
-	 sk2+HAFSY6OWWykSCl0IBiwZbSLm764+pKL9OnbRxp0r/5Cr79nf8q4w1nnHixPMha
-	 oc2daqXGHWRecEPG4S3cmkxnvMOrUaIsKlHxtjd+xdHpP4EMmrVCu0D6ABWj6Fr+2Y
-	 9TSV24D0XUE+gqCF52NDQsyw0W8uIpil1ScFWUqM2qtG/20agpEqcFITNiZHTJtDGp
-	 QL7yCCGT8yZMmeNLa+obwATL5Pt4XQ/1HXU2cWyGW/CQgz2DCkfGGlMqIqj0W6oAjX
-	 zJqExXW5J5bJw==
+	s=k20260515; t=1794295052;
+	bh=t3KOisCqUVJUs+RV54kK7ue0orheXjsx8TJE3H/kvoE=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=fHWoaG74iYmcDbM4kCrJP9ayrphbEZVsE0rTu8t1hk6BY0rGzsQkt5wmSI28k6Q2g
+	 os+M7owV5tV2SKEMzNnQmEgeJ35007WzEK7sjO6GSKsWLMgE327ZD02rHgwtd+pzCk
+	 V+VXTG5slVrt4dk2oKFQ/aaNAkXca+Jz+PdVZxHPJSPXrD6j/aPP2qVSkWyLHTUlmp
+	 +Lbt5OJE8KVNlzvqPMpkm15o3aE8Oe2KjBaEgLV6z8T2QvXAt7upYRznUTb0FRTWjy
+	 cBtdrIEUNBfGFU8SKVZyt7kJtOuhHTzeieva0RIhjB1M/SY1bH3XTy1+H5WAanjbuH
+	 g3IHazBGaPtfQ==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 61CD848970;
-	Tue, 10 Nov 2026 07:16:58 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 3A6414896C;
+	Tue, 10 Nov 2026 07:17:31 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Tue, 10 Nov 2026 07:16:58 +0000
-Subject: [PATCH 1/2] ASoC: rockchip: i2s-tdm: Register the PCM before the
- DAI
+Subject: [PATCH 0/5] media: verisilicon: Recover the Rockchip VPUs from
+ faults and timeouts
+Date: Tue, 10 Nov 2026 07:17:30 +0000
+Message-Id: <20261110-hantro-robust-v1-0-6b6269c05bfa@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261110-asoc-rockchip-i2s-tdm-v1-1-f32951b3c527@gmail.com>
-References: <20261110-asoc-rockchip-i2s-tdm-v1-0-f32951b3c527@gmail.com>
-In-Reply-To: <20261110-asoc-rockchip-i2s-tdm-v1-0-f32951b3c527@gmail.com>
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQqAIBCF4avErBM0QqKrRIu0qaZFxoxFIN09q
+ +X34P0JBJlQoC0SMJ4kFLYMUxbgl2GbUdGYDZWurDFGqzxGDoqDOyQqO1jf1BM6py3kz8440fX
+ 1uv63HG5FH98I3PcD4e6x4nEAAAA=
+X-Change-ID: 20261110-hantro-robust-6a6c84febb06
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Hans Verkuil <hverkuil@kernel.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295018; l=2286;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295050; l=3200;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=18X4gDoDBalS2YNh4G/P0K7m7mnHS2iod12BwMjjV5A=;
- b=sOQmVjwZd4x1ZJ52gHSqxjkg+olv7zyeAxLb5RGz+5Kw1subi7A69KGH3veHzNI0V69UAsCPw
- bKN6z1fU26VDXVcLkifXLiwBYOdCGMIv3nhshlv+xOkEYy1reJ22w+3
+ bh=wAHE9TDB5EG/9Ciyb0qAJrepsYx4Tb9hG3yp7P255Ic=;
+ b=145Zthse/3N7R1g8+D/6hOlCSMrtdtj1ta8EQGhHIpXiRPZt2zdJm7WbMxu2+bgoy3WgIDM/E
+ gXyzQ9AKt+vCDIO+YXjJqRbZ980WvBuiiqR62ih0aZZnwqxaADOYfr1
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -119,61 +129,68 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
+This series makes the Hantro driver recover from a job that times out
+on the Rockchip VPUs, and fixes a panic on module unload on the RK3588.
 
-A card that was registered before its CPU DAI is put on the unbind list
-by snd_soc_bind_card(), and snd_soc_component_register() retries the
-bind as soon as any component is added. The DAI component of the I2S
-controller satisfies the DAI link's platform, which defaults to the CPU
-of_node, so the card binds right after the DAI is registered and before
-the dmaengine PCM component of the same device exists. The PCM component
-is then never added to the runtime, runtime->hw stays empty and every
-open of the PCM fails with -EINVAL from
-snd_pcm_hw_constraints_complete(), without any error being logged.
+On the RK3588, a VEPU121 JPEG encoder core that reads an unmapped IOVA
+faults in its IOMMU and never becomes idle again: the register-level
+stop in the encoder reset operation isn't enough, the IOMMU can't be
+stalled anymore ("Enable stall request timed out"), every later job
+times out and unbinding the driver can lock up the system. Patches 3
+and 4 pulse the reset lines of the core on a timeout and reinitialize
+the IOMMU afterwards, the way rkvdec does. Patches 1 and 5 describe the
+AXI/AHB reset lines of the four VEPU121 cores in the binding and in the
+RK3588 device tree; the driver already handles optional resets, so
+device trees without them keep working.
 
-This is seen on RK3588 when the HDMI codec probes before the I2S
-controller of the HDMI sound card: the card has no "dma:fddf0000.i2s"
-component and "aplay -D hw:0,0" fails with "Invalid argument".
+Patch 2 fixes a panic on module unload: the AV1 decoder resets of the
+RK3588 also cover the bus interface of its IOMMU, and holding them
+asserted after remove makes the IOMMU driver's runtime suspend hit
+registers in reset (SError).
 
-Register the dmaengine PCM first, as rockchip_spdif already does, so the
-card finds both components when the DAI appears.
+Patch 5 touches arch/arm64 only and can go through the Rockchip tree
+independently of the driver patches; it is only useful together with
+patch 3.
 
-Fixes: 081068fd6414 ("ASoC: rockchip: add support for i2s-tdm controller")
+Tested on an Orange Pi 5 (RK3588S). Patch 2 was verified by unloading
+and reloading the module with the AV1 decoder bound and a 1 s gap, which
+panicked before the change and is clean with it. Patches 3 and 4 ran on
+every encoder timeout since: a trace of a wedged VEPU121 job shows
+hantro_watchdog() -> rockchip_vpu2_enc_reset() -> the IOMMU re-attach
+with no stall or paging timeout, the next jobs on the same core succeed,
+and the IOMMU runtime-suspends cleanly afterwards; later, ten JPEG
+encode jobs with an unmapped input address were each reset by the
+timeout and the following jobs encoded normally. The reset lines of
+patches 1 and 5 are present on all four VEPU121 nodes of the live
+device tree, dt_binding_check and CHECK_DTBS are clean, and the encoder
+keeps working with them.
+
+This series was developed with Claude (Anthropic) as a coding assistant:
+it wrote the code and the commit messages, and I reviewed and tested
+every change as described above.
+
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- sound/soc/rockchip/rockchip_i2s_tdm.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+Arun Iyengar (5):
+      dt-bindings: media: rockchip,rk3568-vepu: Add the reset lines
+      media: verisilicon: Don't hold a VPU behind an IOMMU in reset after remove
+      media: verisilicon: Reset the Rockchip encoder cores on timeout
+      media: verisilicon: Reinitialize the IOMMU after a timeout
+      arm64: dts: rockchip: Add the reset lines of the RK3588 VEPU121 cores
 
-diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
-index 983319a538b1..0abd200a4268 100644
---- a/sound/soc/rockchip/rockchip_i2s_tdm.c
-+++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
-@@ -1371,13 +1371,18 @@ static int rockchip_i2s_tdm_probe(struct platform_device *pdev)
- 	if (i2s_tdm->soc_data && i2s_tdm->soc_data->init)
- 		i2s_tdm->soc_data->init(&pdev->dev, res->start);
- 
--	ret = devm_snd_soc_register_component(&pdev->dev,
--					      &rockchip_i2s_tdm_component,
--					      i2s_tdm->dai, 1);
-+	/*
-+	 * Register the PCM before the DAI: adding the DAI component can bind a
-+	 * waiting card right away, and the card must find the PCM component
-+	 * then or its DAI link ends up without one.
-+	 */
-+	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
- 	if (ret)
- 		goto err_suspend;
- 
--	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
-+	ret = devm_snd_soc_register_component(&pdev->dev,
-+					      &rockchip_i2s_tdm_component,
-+					      i2s_tdm->dai, 1);
- 	if (ret)
- 		goto err_suspend;
- 
+ .../bindings/media/rockchip,rk3568-vepu.yaml       | 10 +++
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |  8 +++
+ drivers/media/platform/verisilicon/hantro.h        |  3 +
+ drivers/media/platform/verisilicon/hantro_drv.c    | 77 +++++++++++++++++++++-
+ .../media/platform/verisilicon/rockchip_vpu_hw.c   | 30 +++++++++
+ 5 files changed, 126 insertions(+), 2 deletions(-)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20261110-hantro-robust-6a6c84febb06
 
--- 
-2.55.0
+Best regards,
+--  
+Arun Iyengar <aiyengar1990@gmail.com>
 
 
 
