@@ -2,87 +2,85 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B8D65606A33D
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD3CB606A33E
 	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:11:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FyTGwdx3;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Rs6YfbH2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jeYaDnyv;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=bARRQkrl
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=TDeXWzJ8XK1757aHSE2WbxxyRjzIEJjllZYPcM27uqg=; b=FyTGwdx34WXGGoWyC913Var3ah
-	yn7g08gBUu7DbgOv+BPdBDTMB6aXIO1h2g5j+Ij20ua8PSm8yQ7d8M1R04kGM5Fxk7eJFHI2i0kIU
-	/kXV/Z/Rk7OguPFuKS2YZ0hz2gDJQZhPcglclyQxglzP1wJsJPoq72tllOb7ar1cMt8j0OYya5PCb
-	h1BYHgfJ0Ba7effI9MQG02OzUH6kH6CpHEsJiRPqLrpDdlipwWDWLnZW2HbMhyqIOpQbwXxzu/XoO
-	LDW34T7PeF6nyM3cErGxUg07D/LUHdECYmqXzrx6W0GM0B0IdBVbYLfUf0KxJPzdgwV5gaK1c/VFL
-	kTcpEtwQ==;
+	bh=FIhtIeQ6+7ADrEYYqdeYHhSBJi8Y+oOB1lnwXpupiA4=; b=jeYaDnyv5GYTBAWrM9hBGsXdR0
+	bvqMvzd2Ob4zL1QhxBHtybNa+lbrc6hg7/C3HqhHl2b5QSGWxBWz94d8aCba/SQnXf7mk6Mo5Dd00
+	bnq/UToiQwyrgzHVBYxV8IumZrNeKP6z8yRUSYjqpgRfvyK0AKMFAOvlr3MJ4ov8eJC2qV+nareig
+	UNl+hhu/gWKYwfeMiBCjWersmyk2s/EIb4dXENnR8tZnPdWlgS8Wp+hmGImclfqpAiGvvL7VUlaiQ
+	pvdE7v7dXX8ogJGE/UyLw61g1Ad+Sr4lmGUIdFL3iW31Kcw7I8dW9QIxNCtptU1hxazoFChzQ3hgk
+	0OgUNbOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg0y-00000002lb2-2rwl;
-	Tue, 10 Nov 2026 07:11:32 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xQg0z-00000002lcU-0aIN;
+	Tue, 10 Nov 2026 07:11:33 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg0w-00000002lXV-0BG8;
+	id 1xQg0w-00000002lXu-1Ahp;
 	Tue, 10 Nov 2026 07:11:30 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 79EE563266;
-	Tue, 10 Nov 2026 07:11:29 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 0E31742D57;
+	Tue, 10 Nov 2026 07:11:30 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1794294689;
-	b=NHuvs0u4qfH+tv70or5oCqNBA/lkLXRc95FArjD/54RO2Ghox4i8Yojr8y3msfyCVgny
-	 3mbDffEQS2DE5Hj9ukQaN8wA7RN58PRQHWzJpp7jj/w5rbGnaJNhNbiSUJ8XXqNNMmQFE
-	 qcnccA16zu2iGGRXVQwQRRZzJwfv6we2pPhyBqaommqIiklGMTWoGJvoLP5q4+nDShzcT
-	 25LLczSc0EmtO+XWLjC9t3QUE5fBs50sZE+ElnDIPxgoWeAneHqJ0E25QBx3FdifTBWBD
-	 x151rPEEkficDkkOXsSrW9Me5P7U7pfepWBCaTI6Ej/RcddXsAnjKchig8nwGWWWckw==
+	b=Q2GNLilOqCbWQnrRLI3eHx4jDB6/YQ5ZqELYQOJounrS5L2Kg4oXpzBNcCB/qklyDnMC
+	 q5IkybGiJdznk+x5N2p8kq+6VzrNm7UE0vMG4I26r+2u15W00qTDuVY9CC0PpkwEr3mxv
+	 rxDdiT45d4oXkHnNdfVzXQFJdCD5TZQ58z85nomqEuHsMIs0qhw0V6GUXkF1yD9PJVMys
+	 ZaWEQUGXBGJLVyh4ax6/Lg0VXP6qzVtC1bACti1KjOPpsZQ2+jFOx6fCm41S0/MSp9TWQ
+	 vEkTd0Py7Dwddf8G4/qmj7oGszy0+N5HA9OVg+jJTQ8wNpWctJukdeWCTNB+egVCf2g==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1794294689;
-	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
-	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
-	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=wkTqur1hikVaY6/qIWQOAtbgg5P47n0a+yvq7Tm9TfU=;
-	b=Ug4EvJofkw0QJTpV7mCzjk3a+TM/E7Klugh8ZtjnfDDHWGjD0hHLN5F7noTuT2ENmtQk
-	 fIvi6+8wmkePE9jCTFt2T/kE8mGFnJwK8hFHqbKGUuv8eg9xDqouaFSBaINuTEM20xa02
-	 jxO33lOEvySMyW5/axbKZMVblZWRI+Cy/K9yLe252cgjzOtTlfbKQPKexmwmDvVbzj/+x
-	 JB1I0xqTDOo9S1JsyZ/90SeTMvtRekxORT4TmOsJBU4Flx90r46Ku/wlhEOwCKr/v6z9H
-	 jLFtcyohIcr3vC3kZuXmeC/RGsN4e4woZJ3U4vsPuzSLeAXirgna8zXzUKakR11yaLw==
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=631AX2w6OsOwTpnELkK8iHQCOmbo8GaA/UuM5ANzR4U=;
+	b=l3Z/sPQ3Kl0GUNLMU30sCw9vd4NiZ42AZ6sjifoX5Unwj9kHnneWw4k42s8ltWCOSo0F
+	 lFIxv3wGktK7j2L9O6TpRif96A3+/Hd4eaPnjkxFMbjQD3T2DsKNrCWv637lXTpx6QVsk
+	 PJxDSyaLEfl97yu5he0A48i0yF9BhL2/+uok+9LwXKP6Mqz8dCqnbvcPuXz8/bUN9qNWj
+	 xV/gRJ564dES+87/65OaXgKaV+bAY2v9zw/Xqlu0YGqsga6UAEtKc3Ly8GoU/I+OkyR5E
+	 sFr4rx17dHK0UZkopea2Fw6OS5J8aTFArmZ1z1cUPMstIr5zlXNZJuWx9meigpMuuiA==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 7F82D1F0089F;
+	by smtp.kernel.org (Postfix) with ESMTPS id A06AB1F008A2;
 	Tue, 10 Nov 2026 07:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1794294689;
-	bh=wkTqur1hikVaY6/qIWQOAtbgg5P47n0a+yvq7Tm9TfU=;
-	h=From:Subject:Date:To:Cc:Reply-To;
-	b=Rs6YfbH28mNJq2cO1k+/CQvPZzQxP9XJyScvSPC/m78lOXVIJ+BcW8gAjmCyXR0mO
-	 Dp9Se4McDraF0utY8Rk6AqBU8dNp3eF9SBxEiN7PTIrtun5GN8fmwIsSdVmfxptgzn
-	 dhuHQzTyZ4pUv1O6q27FWYlQC1a8zE8zhGK5QcnxFLX4SUpQSPbzDx1w4A76KYN6no
-	 hnLROI/Y5R3b3kDn6Xoic7YZNLC5g9GpvqMIZ9PzKCFy2/SAPAr5n8TrYn9gCvyiWT
-	 kjsHC5SKy4jRabABByUybFPu4CfLFDRwnDK6lmcnnkQqKCHDRpbozUWBby5ba0MesK
-	 +eCiqjkG6u5Yg==
+	bh=631AX2w6OsOwTpnELkK8iHQCOmbo8GaA/UuM5ANzR4U=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=bARRQkrlvwiaENd7GSVHKXnynrkX9oLXu/XCEoSTqRcHcodDuIAmZJ/cpK6rjCULm
+	 j0Ti8MhZJsdvaEdi3tAEG+LFshdycijnKuaqrRcpwWQS7mc0GH290yWl4S8xGDBpC3
+	 TyDg/xp5kQR0009Su/XK9j2Ewq8LYX4h5srCt0mU5QA230FqA0F8iz4QYX+S/pBDN1
+	 Z+7K8ubr0dB3b9vVvwZK55bhfALzw2LWkXVcHGZkzjHAmtaaahVvB7WecHKytykLku
+	 agappqpFILZ7rv6O9WBa3fI0gslalnnuko7MYbYCcO5j8eCgJb/n7oBjQTLGqtJEqd
+	 23otYV9AYLUZQ==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 1357F4891E;
+	by lkml.kernel.org (Postfix) with ESMTP id 3502748931;
 	Tue, 10 Nov 2026 07:11:28 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Subject: [PATCH 0/3] pmdomain: rockchip: fix the probe error and deferral
- paths
-Date: Tue, 10 Nov 2026 07:11:27 +0000
-Message-Id: <20261110-pmdomain-rockchip-v1-0-6b9fa6ebaa86@gmail.com>
+Date: Tue, 10 Nov 2026 07:11:29 +0000
+Subject: [PATCH 2/3] pmdomain: rockchip: remove subdomain links before the
+ domains on error
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMyw7CIBBA0V9pZl0SwAfRX2m6QBhkbHgE1JgQ/
- l2qy7O4t0HFQljhOjUo+KZKKQ6IeQLjdbwjIzsMksuzEIKzHGwKmiIryWzGU2aH40VpicpZd4L
- R5YKOPr/nsv5dX7cHmuc+gt6/gIeeoHUAAAA=
-X-Change-ID: 20261110-pmdomain-rockchip-3497a2e7fdf5
+Message-Id: <20261110-pmdomain-rockchip-v1-2-6b9fa6ebaa86@gmail.com>
+References: <20261110-pmdomain-rockchip-v1-0-6b9fa6ebaa86@gmail.com>
+In-Reply-To: <20261110-pmdomain-rockchip-v1-0-6b9fa6ebaa86@gmail.com>
 To: Ulf Hansson <ulfh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
  Shawn Lin <shawn.lin@rock-chips.com>, 
  Sebastian Reichel <sebastian.reichel@collabora.com>, 
@@ -90,13 +88,13 @@ To: Ulf Hansson <ulfh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Elaine Zhang <zhangqing@rock-chips.com>
 Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Igor Pecovnik <igor@armbian.com>, stable@vger.kernel.org
+ stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794294687; l=2416;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794294687; l=4093;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=QoAWdAEzgzL2QuwNz+wZsYoa/Z9SPuRCylTlgEE4RjA=;
- b=hCUZhEAiVVHPN/W3DReqR0LhracBQIiJ4fAnU+xZMyzjHjLbDahebbYCC/AKHaoQzU/BzHuRw
- ZlMANOkzg5rDQdFKewNmpFmG51NPTFrZVQtx0WuhpcE1gMJ81cTt/D8
+ bh=dHO39ZDWV/KiynPjCX8DIPyBCclsXy+H+T79g0o69nI=;
+ b=FFzN4q78FMlY70uZGAMhsLAd44pNMH5/Fp7RNwf+nYNlyKGSPKSu/By7MPSUvIquosiNFfIVv
+ eLAwEl1GuJqCDwK9Y6vYCfyPUevloLjeK0yPkHt6uxEvUgGCTNxZn24
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -123,55 +121,106 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Three fixes for what happens when a Rockchip power domain clock is not
-available yet and rockchip_pm_domain_probe() defers:
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-1. (Igor Pecovnik) Only the clocks that were obtained are put; the
-   ERR_PTR() of the failing one triggered the WARN_ON_ONCE() in
-   __clk_put(), and the deferral reason was not recorded.
-2. The error cleanup removes the parent/child links before the domains.
-   pm_genpd_remove() refuses a domain that is still a parent, and on
-   RK3588 (RKVDEC0/1 are children of both VDEC and VDPU) no ordering
-   avoids that, so devm freed domains that were still on gpd_list.
-3. A deferral is no longer printed as an error by the callers, once
-   per probe attempt and twice for a nested domain.
+When rockchip_pm_domain_probe() fails after some domains were
+registered, for example because a clock of a nested domain is not
+available yet and returns -EPROBE_DEFER, rockchip_pm_domain_cleanup()
+calls pm_genpd_remove() for every registered domain in domain id order.
 
-Tested on an Orange Pi 5 (RK3588S) with test device trees that give a
-power domain a clock which only appears about 26 s into boot, once on
-PD_NPU (a top level domain) and once on PD_FEC (nested under PD_VI,
-after 18 domains and their links were registered). With the series,
-devices_deferred shows "failed to get clk at index 5", there is no
-"failed to remove domain", list or slab corruption report (booted with
-page_poison=1 init_on_free=1), no "-517" error lines, and the controller
-binds later with each of the 26 domains listed once in
-pm_genpd_summary. A host-side model of the probe and cleanup on the
-board's DTB, deferring at each domain in turn, leaves freed domains on
-gpd_list at 24 of 26 failure points without patch 2 and at none with
-it. Normal boots are unchanged.
+pm_genpd_remove() refuses a domain that is still the parent of another
+domain and returns -EBUSY. The cleanup walks parents before their
+children in id order, and on RK3588 RKVDEC0/RKVDEC1 (ids 14 and 15) are
+also children of VDPU (id 21), so no ordering of the domain array lets
+every removal succeed. Each refused parent only gets the "state may be
+inconsistent" message, and on return devm frees its struct
+rockchip_pm_domain, the embedded generic_pm_domain included, while it
+is still linked on the global gpd_list. The next registration, the
+unused domain power off at late_initcall and the genpd debugfs files
+then walk freed memory.
 
-This series was developed with Claude (Anthropic) as a coding assistant:
-it wrote the code of patches 2 and 3 and the commit messages, and I
-reviewed and tested every change as described above. Patch 1 is Igor's
-change with a rewritten commit message.
+Remove the parent/child links first, walking the power domain nodes
+depth first in the same way rockchip_pm_add_subdomain() added them, so
+that each child no longer has subdomains of its own when its link is
+removed. With no links left, and no provider or devices attached in the
+probe error path, pm_genpd_remove() succeeds for every domain before
+devm frees it. pm_genpd_remove_subdomain() also drops the parent's
+subdomain count, which removing the child with pm_genpd_remove() alone
+does not.
 
+Fixes: 79d12b7a7f22 ("soc: rockchip: power-domain: use pm_genpd_remove in error cleanup")
+Cc: stable@vger.kernel.org
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
-Arun Iyengar (2):
-      pmdomain: rockchip: remove subdomain links before the domains on error
-      pmdomain: rockchip: do not report probe deferral of a domain as an error
+ drivers/pmdomain/rockchip/pm-domains.c | 46 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
 
-Igor Pecovnik (1):
-      pmdomain: rockchip: put only the clocks that were got on error
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 3b39b231ca0e..d7df19e10000 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -957,12 +957,58 @@ static void rockchip_pm_remove_one_domain(struct rockchip_pm_domain *pd)
+ 	/* devm will free our memory */
+ }
+ 
++static struct generic_pm_domain *
++rockchip_pm_node_to_genpd(struct rockchip_pmu *pmu, struct device_node *node)
++{
++	u32 id;
++
++	if (of_property_read_u32(node, "reg", &id) ||
++	    id >= pmu->genpd_data.num_domains)
++		return NULL;
++
++	return pmu->genpd_data.domains[id];
++}
++
++/*
++ * Undo the pm_genpd_add_subdomain() calls of rockchip_pm_add_subdomain().
++ * Links are only ever added between a DT node and its children, so walking
++ * the tree depth first and removing the links of the children before the
++ * link to their parent always finds the subdomain without subdomains of its
++ * own, as pm_genpd_remove_subdomain() requires. This also covers domains with
++ * more than one parent (RKVDEC0/RKVDEC1 on RK3588), which a walk in domain id
++ * or registration order does not.
++ */
++static void rockchip_pm_remove_subdomains(struct rockchip_pmu *pmu,
++					  struct device_node *parent)
++{
++	struct generic_pm_domain *parent_domain, *child_domain;
++
++	parent_domain = rockchip_pm_node_to_genpd(pmu, parent);
++
++	for_each_child_of_node_scoped(parent, np) {
++		rockchip_pm_remove_subdomains(pmu, np);
++
++		child_domain = rockchip_pm_node_to_genpd(pmu, np);
++		if (parent_domain && child_domain)
++			pm_genpd_remove_subdomain(parent_domain, child_domain);
++	}
++}
++
+ static void rockchip_pm_domain_cleanup(struct rockchip_pmu *pmu)
+ {
+ 	struct generic_pm_domain *genpd;
+ 	struct rockchip_pm_domain *pd;
+ 	int i;
+ 
++	/*
++	 * pm_genpd_remove() refuses a domain that still has subdomains, and
++	 * devm frees the domains on return whether or not they were removed,
++	 * which would leave freed memory on the global genpd list. Remove all
++	 * parent/child links first, so every domain can be removed.
++	 */
++	for_each_available_child_of_node_scoped(pmu->dev->of_node, np)
++		rockchip_pm_remove_subdomains(pmu, np);
++
+ 	for (i = 0; i < pmu->genpd_data.num_domains; i++) {
+ 		genpd = pmu->genpd_data.domains[i];
+ 		if (genpd) {
 
- drivers/pmdomain/rockchip/pm-domains.c | 73 +++++++++++++++++++++++++++++-----
- 1 file changed, 62 insertions(+), 11 deletions(-)
----
-base-commit: 7475ea8b58616b33c04afb976cf0fbaad9dd63fb
-change-id: 20261110-pmdomain-rockchip-3497a2e7fdf5
-
-Best regards,
---  
-Arun Iyengar <aiyengar1990@gmail.com>
+-- 
+2.55.0
 
 
 
