@@ -2,82 +2,76 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D29EE60A2628
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 02:52:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DC2D60A2605
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 03:05:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MSfnAmNH;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=Ns/2mPV9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=is2ofrVZ;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=fZUfxXVy
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
+	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=kEyB0ihXTw53Sb8Ei48UfgGY4AeXBaFWtF816l7LMAc=; b=MSfnAmNHl84oZ5/k4cvP11bC0r
-	BME76u+fwKsNVMpuA6NEtCZofQOCaw/VWTCr3A2bQZXMR5vGvg+KdoW7Zr7dt8RoNf0zzikCJd+Y1
-	/Wk1cG2X+Bo/o+ATCnAf9AUwGPWKgulDNYKOu5VZjZPs29lQabl3QVmRluPOvnjNLB0Ba5dSgdOyc
-	Xd1bWlYSK7OfELf3MI+dMO8fjVnSGZ12J8oXzopgGd+nE4tyQ1gMwVVAwMBpA6/+HLZ40KMuXmn/F
-	F22LK83E838bx6P9A5QQc02r0VorSmRO3AlSAhntPk81mKf8w+/Bpi/NJTD+41xRu4/i2Kx0K0GBg
-	HZxFXMIw==;
+	bh=5X1sKQI4eA6dH+jvJzWYg0j6Ytv6fjH1gtvWD4rpGf0=; b=is2ofrVZUMfQPLk5xifkpFiHoB
+	jYkdHQnZfT2xtTQLpwF6FOxXc2BXxdbmdEyKMewoAwgmFoaCbLS0dO0XIZwh6nTYK4NOKlXOBBQQP
+	1kJbf3QHwqJp9ChdKvFLMIH+z8ty0hTFns450QVDwWIR16BbnwgR/osg5aLzuqLAqHCjiyFcVyHUy
+	gziCkGiidBqdEIh/Rgof+DgqouaE9L5+2RFPvOGoKgUlzbndJ50IwQBuPIbEmRrlshoIhShr2LBeV
+	XKpczRYjfmNcq02TU5u5kghtJ790etFJR/iURMlEkaCtKxdlIh34BQsDUI5IL+gDYw8Z6kbaRy4YE
+	YCyHMxxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQbyX-00000002CwF-1HLS;
-	Tue, 10 Nov 2026 02:52:45 +0000
-Received: from mail-m1024.netease.com ([154.81.10.24])
+	id 1xQcB9-00000002Dwx-216Y;
+	Tue, 10 Nov 2026 03:05:47 +0000
+Received: from out203-205-221-239.mail.qq.com ([203.205.221.239])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQbyT-00000002CuL-2jNF;
-	Tue, 10 Nov 2026 02:52:44 +0000
-Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 541744873;
-	Tue, 10 Nov 2026 10:52:32 +0800 (GMT+08:00)
-Message-ID: <ab5694a1-2f10-4888-ad27-20715d3f98a6@rock-chips.com>
-Date: Tue, 10 Nov 2026 10:52:31 +0800
+	id 1xQcB6-00000002DwF-0vZL;
+	Tue, 10 Nov 2026 03:05:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1794279939; bh=q9XOYK7wX+00B6FBPgLD2vBKMAkmDiR49f/zui5qQz0=;
+	h=From:To:Cc:Subject:Date:References:In-Reply-To;
+	b=fZUfxXVyc6DAD15Sv5X4swqN9j/GmjL8dRnoagW1DhD+O/L6QRUMlsggANFnRQ0Bj
+	 D5veAtp3I1xww6mVMV1Tr+z5flqP62yg5Y/LzHau/FXDztMX9+63fkAMDnicnryiiA
+	 RfwgTnlQNClTOqf3FGIO1LhVf7JathlzAxx97xHI=
+X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
+X-QQ-XMAILINFO: MzHbHz6ky8ylxXRwvpD01xe5vfDxiM5d4sy1mzo5PARKG0efZTjt8CVhuRmRZB
+	 X916dvvbNf6mSP72RiWNcNkqCoNPOcxgBWOr5TCZcXnrUl9jCXlBL7sN0QJ4T5Y3UdWVhkCbnXnpG
+	 vdp9c5eNmkQygDx70y3v0fP7PLOER3IGW5zxJhXPUmUgyxGfqZwX2rtwe3Jtn8xzOde1dGcyuBCqu
+	 B3CmRyVm7R4LWQcm8jyBLfeacUa7dugB4ZvW+mqQuK17Ml+y8ub7YPpJctk25Nys2Mvv769EMSsdn
+	 gyFpV4NtYY5QzHMlFVwUMf61TfKrDif+QvN+eKFykf8fTRr4P6tUAMX8EjrmxtXe08M0wJY2zcUsV
+	 ZCbbeAv7i2dpy57uuj5FAmeBEfOhOs1aeSEH0H8cMnzrL5dxPYAS/1QrmLQ0Tnz/MFmRldWYiA+AG
+	 caiEA5CJiQ34zO8hIgYLPotpS0901vK+WlSahYTacdWKy7Xxs8wr9JFeu4ioN5jSZWUXuuGtEd6Cl
+	 CCMNpacI0piTaP6oj8dLwYr0Q9s2ZbZuL8q0lDeZOUh53rJLmlKt00fsxUCrOkTvd3utbbRA09EXR
+	 q22YlOFFUVDNvtHFy0LzEi6f3c9jZsOK34FYUDLWr2avoGfnlcSFvpxriZBvxtK3CsV2toP3ohc8y
+	 NMr0xO1FEC1hRQsL77+9TGn1IKzFmrjJJbkuQS4DIcFfsC5fXcYtBCnC/y355xwQqk95Ic+wvYhYN
+	 as5k0cJeG2my4Jt7nJ6eEx/rYbxpgRw5gK4DODp4ef2+JhCC1cgOW3at0NnbaX0f450vYnOJHZEBU
+	 HRoPJhcnehr04GJlF3dwm1u3UCTrR3iDsI5b57xBHS3Aw+ZocdVTg9dcE/M2hyvEV8Hc9ZGCS1eXg
+	 onxDMmUiVaEXvBtajFT5QG0P+nx0d2HHMnE7cURCbigcGOWiCt1GLo+jsbEua2PJZlr7qnaVKSEbf
+	 1i9qJJwVhsoLAP1jhHQzWj1nNX9WYsvWLk6T5wFS+mI9dsL6xI77tQvxdJFZ1pPERKAYtrirzDYJO
+	 fpiPE+5B/T4uxxl4WF2yiIWequDXJkDxKHdZr
+From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
+To: "=?utf-8?B?SmFrdWIgS2ljaW5za2k=?=" <kuba@kernel.org>
+Cc: "=?utf-8?B?TWFyYyBLbGVpbmUtQnVkZGU=?=" <mkl@pengutronix.de>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?VmluY2VudCBNYWlsaG9s?=" <mailhol@kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?T2xpdmVyIEhhcnRrb3Bw?=" <socketcan@hartkopp.net>, "=?utf-8?B?RGF2aWQgUy4gTWlsbGVy?=" <davem@davemloft.net>, "=?utf-8?B?RXJpYyBEdW1hemV0?=" <edumazet@kernel.org>, "=?utf-8?B?UGFvbG8gQWJlbmk=?=" <pabeni@redhat.com>, "=?utf-8?B?U2ltb24gSG9ybWFu?=" <horms@kernel.org>, "=?utf-8?B?Sm9uYXRoYW4gQ29yYmV0?=" <corbet@lwn.net>, "=?utf-8?B?U2h1YWggS2hhbg==?=" <skhan@linuxfoundation.org>, "=?utf-8?B?UmFuZHkgRHVubGFw?=" <rdunlap@infradead.org>, "=?utf-8?B?V29sZmdhbmcgR3JhbmRlZ2dlcg==?=" <wg@grandegger.com>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, 
+	"=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bmV0ZGV2?=" <netdev@vger.kernel.org>, "=?utf-8?B?bGludXgtZG9j?=" <linux-doc@vger.kernel.org>, "=?utf-8?B?c3RhYmxl?=" <stable@vger.kernel.org>
+Subject: Re: [PATCH net v8 00/10] can: fix Rockchip TX stalls and bus-off restart/close races
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/6] dt-bindings: phy: Add rockchip,rk3568-edp-phy
-To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
- Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Dave Jones <s.dave.jones@gmail.com>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org
-References: <20261030064905.2248999-1-damon.ding@rock-chips.com>
- <20261030064905.2248999-3-damon.ding@rock-chips.com>
- <20261103-lemon-guillemot-of-economy-eefbbd@quoll>
- <fd180b9c-de60-4718-b17f-319bf4339e13@rock-chips.com>
- <20261106152915.GA3406543-robh@kernel.org>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20261106152915.GA3406543-robh@kernel.org>
-X-HM-Tid: 0aa1c35f1cad03a8kunm4f8fb2772be325
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCHh1CVh1NGh1CTUxNTh4ZQ1YVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUJCSU
-	5KVUpLS1VKQktCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=Ns/2mPV9pH9bVvzBBCDzik0xz9kGzB25NEhWCgaJIvkA3av+MymfxdL510FRETs5vrsiCdISksI3CW1wh0tet9VEr08fX0Gv7MFLrFvI8AT3q6u9sMAphY8Oao2Ra1viV41VNtT+Z+VO25d7jt6OQBQja6J3O3lp6ZQ84Bc7Lus=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=1pznVwkEZpAe1hyxNb7ShpTi+47BEMmqvSU22FSDZfs=;
-	h=date:mime-version:subject:message-id:from;
+Mime-Version: 1.0
+Date: Tue, 10 Nov 2026 11:05:37 +0800
+X-Priority: 3
+Message-ID: <tencent_F59D327809C523BE014488357EEF4D163408@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+References: <20261108-rockchip-canfd-restart-close-v8-0-3e7a23fd9eae@qq.com>
+	<20261109112402.283c16a3@kernel.org>
+In-Reply-To: <20261109112402.283c16a3@kernel.org>
+X-QQ-mid: xmsezb41-0t1794279937tom1cqfol
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261109_185242_277044_B104011A 
-X-CRM114-Status: GOOD (  14.94  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261109_190544_578032_1EEEA530 
+X-CRM114-Status: UNSURE (   8.38  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,130 +81,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Rob,
-
-On 11/6/2026 11:29 PM, Rob Herring wrote:
-> On Wed, Nov 04, 2026 at 04:59:58PM +0800, Damon Ding wrote:
->> Hi Krzysztof,
->>
->> On 11/3/2026 7:20 PM, Krzysztof Kozlowski wrote:
->>> On Fri, Oct 30, 2026 at 02:49:01PM +0800, Damon Ding wrote:
->>>> Document the eDP transmitter PHY with NaNeng IP block found on the
->>>> RK3568 SoC.  The PHY has its own register window inside the eDP PHY
->>>> GRF, so its node is modeled as a child of the eDP PHY GRF syscon with
->>>> a reg property describing that window.  Also add the
->>>> "rockchip,rk3568-edp-phy-grf" compatible and the phy node reference to
->>>> the Rockchip GRF schema.
->>>>
->>>> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->>>>
->>>> ---
->>>>
->>>> Changes in v4:
->>>> - Add the reg entry for the PHY node and the ranges/#address-cells/
->>>>     #size-cells for the parent syscon node.
->>>> ---
->>>>    .../bindings/phy/rockchip,rk3568-edp-phy.yaml | 68 +++++++++++++++++++
->>>>    .../devicetree/bindings/soc/rockchip/grf.yaml | 20 ++++++
->>>>    2 files changed, 88 insertions(+)
->>>>    create mode 100644 Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
->>>> new file mode 100644
->>>> index 000000000000..b78da00ffefd
->>>> --- /dev/null
->>>> +++ b/Documentation/devicetree/bindings/phy/rockchip,rk3568-edp-phy.yaml
->>>> @@ -0,0 +1,68 @@
->>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->>>> +%YAML 1.2
->>>> +---
->>>> +$id: http://devicetree.org/schemas/phy/rockchip,rk3568-edp-phy.yaml#
->>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>>> +
->>>> +title: Rockchip eDP Transmitter PHY with NaNeng IP block
->>>> +
->>>> +maintainers:
->>>> +  - Damon Ding <damon.ding@rock-chips.com>
->>>> +  - Heiko Stuebner <heiko@sntech.de>
->>>> +
->>>> +description:
->>>> +  On the RK3568 SoC the eDP PHY is controlled through the eDP PHY GRF
->>>> +  registers, therefore the PHY node is expected to be a child of the
->>>> +  eDP PHY GRF syscon node.
->>>> +
->>>> +properties:
->>>> +  compatible:
->>>> +    const: rockchip,rk3568-edp-phy
->>>> +
->>>> +  reg:
->>>> +    maxItems: 1
->>>> +    description: PHY registers within the eDP PHY GRF.
->>>> +
->>>> +  clocks:
->>>> +    maxItems: 1
->>>> +
->>>> +  clock-names:
->>>> +    const: refclk
->>>
->>> Just "ref"
->>
->> Will fix in v5.
->>
->>>
->>>> +
->>>> +  "#phy-cells":
->>>> +    const: 0
->>>> +
->>>> +required:
->>>> +  - compatible
->>>> +  - reg
->>>> +  - clocks
->>>> +  - clock-names
->>>> +  - "#phy-cells"
->>>> +
->>>> +additionalProperties: false
->>>> +
->>>> +examples:
->>>> +  - |
->>>> +    #include <dt-bindings/clock/rk3568-cru.h>
->>>> +
->>>> +    soc {
->>>> +      #address-cells = <2>;
->>>> +      #size-cells = <2>;
->>>> +
->>>> +      edp_phy_grf: syscon@fdcb0000 {
->>>> +        compatible = "rockchip,rk3568-edp-phy-grf", "syscon", "simple-mfd";
->>>
->>> This is beyond the scope of this binding. Drop entire node.
->>
->> Will Drop in v5. The example should only show the PHY node itself.
-> 
-> Actually, drop the whole thing and put in GRF binding if you want an
-> example. MFD examples should be complete, not piecemeal with each
-> sub-device.
-> 
-> 
-
-Understood. For incoming v5, the example will be dropped from the PHY 
-binding schema entirely, and the complete MFD example will live only in 
-the GRF binding schema.
-
-Best regards,
-Damon
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgo+ID7CoFN1YmplY3Q6wqBbUEFUQ0jCoG5ldMKgdjjCoDAwLzEwXcKgY2FuOsKgZml4wqBS
+b2NrY2hpcMKgVFjCoHN0YWxsc8KgYW5kwqBidXMtb2ZmwqByZXN0YXJ0L2Nsb3NlwqByYWNlcwo+
+Cj4gcGxlYXNlwqB1c2XCoGdldF9tYWludGFpbmVyLnBsLMKgZG/CoG5vdMKgQ0PCoG5ldGRldsKg
+b27CoENBTsKgcGF0Y2hlc8KgZGlyZWN0bHkuCgpJIHVzZWQgYjQgcHJlcCAtLWF1dG8tdG8tY2Ms
+IHdoaWNoIGludm9rZXMgZ2V0X21haW50YWluZXIucGwuClRoZSBzZXJpZXMgbW9kaWZpZXMgRG9j
+dW1lbnRhdGlvbi9uZXR3b3JraW5nL2Nhbi5yc3QsIHdoaWNoIG1hdGNoZXMKRG9jdW1lbnRhdGlv
+bi9uZXR3b3JraW5nLyB1bmRlciBORVRXT1JLSU5HIFtHRU5FUkFMXSBhbmQgaXMgbm90CmV4Y2x1
+ZGVkIHRoZXJlLCBzbyBuZXRkZXZAdmdlci5rZXJuZWwub3JnIHdhcyBhZGRlZCBhdXRvbWF0aWNh
+bGx5LgoKSSB3aWxsIG1hbnVhbGx5IHJlbW92ZSBuZXRkZXZAdmdlci5rZXJuZWwub3JnIGZyb20g
+Q2MgZm9yIHRoZSBuZXh0CnJldmlzaW9uLgoKQmVzdCByZWdhcmRzLApDdW5oYW8gTHUKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
