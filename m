@@ -2,107 +2,113 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 82CE7606A332
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 16:06:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4839A606A326
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 16:11:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Q8cajn/r;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=sSPS03a4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VERb7Cer;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=pLXUjdyr
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=rKxoMWZkYoBD0Hpn9Lz9Mz9UatUSXWePYqLDBHk2bmQ=; b=Q8cajn/rfYBnvtFLR78MxH7sGB
-	Gf8JR/7n/s1O1XMBX5FufdmrBZmSHPPsXWAOUILbmsxTGRa+ZOTErFgWDXzq8b4cBI7YFEA5gYzOi
-	8uIr0ps+hSq9sJ4bgkEtPq9/vUDAwDzyzzXsiklqEXv3zNAg5Q11tkNl2/iqXn03gKAazNoyy0sIX
-	Jdfbmvao9net7dxEcbCouBNLvSvV41K0JE1u7BEcPT9Ux94EoQWkAyl/+KrK5rx6LqDMCK0lCbqNG
-	68KXu0FWA4ElprdLIhjQe067wF7AFWqV6WJxNr3ceH98jOc+L38Zvq01c6WXDAl7qZ2GVRWYZMt9A
-	8UhmIzRA==;
+	bh=CLoQYjGxdENl3gyel7yxpMkmv3GLyBiMi/Ud6zwwiLA=; b=VERb7CerT7b2vVOLoep1qNtxGQ
+	VXOCQBh247RmoaN6rZ9TQnhZ3xYaxazxu56rcPlY3ptpiK4X8SIDhLKR8Ao6QRxgPcvc+YuuQm9ph
+	wV2GCvk1aoCtgPfALSQPiUIpvzXYOTcQ2VykViSflzeHN9/BdpxXAMMQM1Ow1C/gSv0TUznhXurTc
+	cLq1ZtjoS+Y4NB5OK/DDCjX9tQuN0oTnrn3DHbUlluI3I+22EA9uMLOOxvmI9grymTvbvfJCOmIfX
+	VuQIAN5vEig9JeGHjt9NUOtkLlmNWaLr6hEbv/ou9XzYDcWAGXBSpUWoelto1pbulTm0uEXAHJ4vK
+	4y2XNpEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQoMx-00000004TuV-2sd4;
-	Tue, 10 Nov 2026 16:06:47 +0000
-Received: from mail-dl2-x06.google.com ([2607:f8b0:4864:38::6])
+	id 1xQoRt-00000004UTw-29xR;
+	Tue, 10 Nov 2026 16:11:53 +0000
+Received: from mail-ej2-x05.google.com ([2a00:1450:4864:34::5])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQoMu-00000004Ts6-3fXL
+	id 1xQoRr-00000004UTB-23tM
 	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Nov 2026 16:06:45 +0000
-Received: by mail-dl2-x06.google.com with SMTP id a92af1059eb24-1b3a6a69818so586857c88.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 08:06:44 -0800 (PST)
+	Tue, 10 Nov 2026 16:11:52 +0000
+Received: by mail-ej2-x05.google.com with SMTP id a640c23a62f3a-c50489cdf7eso48848466b.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 08:11:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794327109; cv=none;
+        d=google.com; s=arc-20260327;
+        b=Sdgue9bSfmbMIvmdVZVplRYhLjm/xSVf4pCTQbAHvKPTEYvePdIfGUasYIvX6fLS86
+         1yvTjHGwEJ1g8TM/XoxfU1kCJZqQLmub9qZkn1CyPUBG2wz/I74hAJztfjWRUHow0/7J
+         lIuU5M3J6xw7j8YiCPZPB2x+9emTChr8x89M+H/ixYT2lLZlCahYNT2lkFm6G2m46Nx2
+         Tx3cXOIShJH28qkSAXyNjtykh3jtJCg2xeGll3eI5F6wczTCwBRI2AsyicaPmI2JfSHd
+         /pMj+HLJ6nSt0bRJ9pLnpoZGPf1ZIkXAYiz07m/+c+6zrvMSNvnmE58P8Zarvu5PEYmD
+         NoCQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Bvu8fH1m1BZ2sQQoPyfnhre5VWvJqEOu2Sa0mYvTTis=;
+        fh=SwJZZuVFGiAcphMdhNy7lEo1xwkKfpZVobMG5oVBE9I=;
+        b=VPyxHuz5QD0PgjLee7yLKl6poBgh91204A0va/uppujX37yTisBCUTRd1KXOlj3x7X
+         WZOb547BqrNZmAXcMNLMY00v+QbDdX3rkw0OsurLZF6ZV0uOfAZ8uAfj00aSsqqadZqq
+         /FPx6hgglmtdRtU1KSN/NfB7vbDh7/y+7io/f2RfC+8hwtYaEl4BPs8KmUsCFCYE61n1
+         UX1R5CcINlxmAwRb96nb6EODjIx381mXeAOfSrflo8UihNlVzg9W2FL2mFUUkbBZeLup
+         PbCuIPn83NVEQ8Ze7SfD/0mLDI5qqs9gjWqygsczdysGzWCWSt2gDpCk9aUeQeaFZn0X
+         BDHg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794326804; x=1794931604; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=sVnxZNWX6ViUZL7bQPqGM+4jUAh9aQEpBFmSldUmrlQ=;
-        b=sSPS03a4JaSrcJekQR6iI+HNVFCSuatvi0LKd5j90wWvc99/HKB6xDClrlKUzWBL/O
-         NslD+0vs5O0npD4tyG4up8M2EFwFfzhnp2epDwenYdQPaeZvHiwQx2/MWmwGjolmiSvj
-         S66TMC33lUbKUPuOiLaqpPIK8tvCu+VbjFxVfioKskD1LuewyOGH7gRB4kT7ovBOIjTe
-         ulePWyw4wqVCt5LR1Rv6plaheY1s7wkhc4HBGIBcfvRDKf+n2eUMYXB5L00saNC5q4BS
-         wOZupXa99YN7rWjvr5JsccY+p6rXh8Fc6nMwGyOchPhwSi39NSZMdkbk/EZxFhI5b6Vp
-         bKBg==
+        d=gmail.com; s=20260707; t=1794327109; x=1794931909; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=Bvu8fH1m1BZ2sQQoPyfnhre5VWvJqEOu2Sa0mYvTTis=;
+        b=pLXUjdyrLWBEOqTha9DT5DqgD4SoJZe980qSASshUBRne4Ez8b5d71pTSQQjf1zcQ0
+         PWohAfmO52Xm0Fu3GM/4iC3svlG8AarprQwezpetXOyX1TLL2vAPZt1Jg1GxLiEwaLwh
+         mSQ+xOkLfMfiboUqjq2cnsMXgUb3QGC6ayFlEAi0F8KFM1mD+/iTQCgaGJhBRbfT3N0o
+         wRwHMoX4m4maDwtFvM2PQ18S5i0mVxnZhmJ0/Eg3fUDvXg2rrWQELo79Eub2w7/p22cV
+         lC4hFXTCI24lZ2JrBe2fTLsHf5pwBJSf5B4oiqt2vS0ZZBMnYqXS7aMY66Pq3y2gGNWk
+         QUBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794326804; x=1794931604;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=sVnxZNWX6ViUZL7bQPqGM+4jUAh9aQEpBFmSldUmrlQ=;
-        b=xMNk5OlqjcwVxGzL4gSq5eblQqXWfVEWWpI9gQbvqESFYMoH6N8EOH2IORaWoEQGan
-         m1gRJUtqF2CMODuZfTHPW2wjkpBIJ1fKYg5JKYk1Ba345mIvyE7Oo6p9ONhlau1hR7JQ
-         zvPrRPQ8OYzso9I2t/hrCrmAlqPXhS8rDwW4JMkjj6XZmy4ipIYy0sKNXV4tgArWGd2U
-         ZYtmJgcGn6PIl377ogLrnYm01M6YH+1RtNKIKjcFTqG3wLqq0xVrnah3HSbYYY9RglhF
-         asis1IvwK202BZT6uLgLc6ByPyeP8gA83BB+bu131Vrb02fhmkOnacrWlHbnUNtNj6+x
-         vqtw==
-X-Forwarded-Encrypted: i=1; AL+hErGP4gGiSY5P0vkIsXKhwsqEAvnf2LBy8AwxM4fC5QInAbtDffgNKPtE5pLfhE6aN2zpdKxcvZJR9PozbgHWaQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z91BUABr6lPnC1tL20P/HHHfmrPwOZmXGKx9P7UNiediKgx1tGy
-	1LzfrZcjc1Wd/JXbz8msTjy9PVSa5Vtgyidw7ivIKe0NQxIuvaysYX4B
-X-Gm-Gg: AYBFou2qdqqnLaVY6IXukm8G6ISv+rfD9qXC53aG3GA4EjjKzJeZbR21IryzWLureNR
-	rxobLb/Pp4Qs02fcd+o9Ao/d3aUyb/k7yPYk4FsxbT4aCMpIWpQdIiDeS33oNab/XKhuTfdcdHT
-	JvoHO/1uEIoiVwZPfd9g4sCMuNHvhlMiiSA9g9GmmWzClWs867i/huJvferVZGR6kJckT6YzEXh
-	8aY2kj7HdM8XiFx9xoxDUk0BGaUWz5/GbdQ2vej3XRjrlqcuQoMRl4LWrCdBVal9BYA2l0jGOlp
-	A2m0YkA0UxIe6+jxwXV86XiUdNAOao8znf7w8upYJ3hkW0/Hpqw9UqoTMf1alZueyQA6ROv2Rvu
-	bIja+uhWTPp3b/8sEjyUT1kvLynE9POzx2i3gZ2IlindRf48kmfIYoSz3VkAV96PqNmkbsZiQIn
-	uy1e8FvpSqkxCLnSVX2XUDz8dgrp8LqptdG095OO71rETyi6wJP5uaBSE7rXM92LW8mTauJFDWA
-	X/CrHqyQ1B3+BkguKOk7JNzftwBD6bE984g3q/ewb2Oa/3W+QabHy56cSqOg0NdTwPPEE7ss9qC
-	aocHZmhtdptd4/ifzd735a3/gQAAdx6CYY8QwNtc5iTRbjJw
-X-Received: by 2002:a05:7022:1505:b0:1b3:ac53:da84 with SMTP id a92af1059eb24-1b3b603ea3cmr4271960c88.32.1794326803608;
-        Tue, 10 Nov 2026 08:06:43 -0800 (PST)
-Received: from server.lan ([168.138.199.194])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3751fe306e3sm8453403eec.7.2026.11.10.08.06.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Nov 2026 08:06:42 -0800 (PST)
-From: Coia Prant <coiaprant@gmail.com>
-To: Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>
-Cc: Jiawen Wu <jiawenwu@trustnetic.com>,
-	Mengyuan Lou <mengyuanlou@net-swift.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
-	Fabio Baltieri <fabio.baltieri@gmail.com>,
-	netdev@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Coia Prant <coiaprant@gmail.com>
-Subject: [PATCH net-next v4 2/2] net: pcs: xpcs: make supported_interfaces authoritative
-Date: Wed, 11 Nov 2026 00:05:54 +0800
-Message-ID: <20261110160554.918652-3-coiaprant@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261110160554.918652-1-coiaprant@gmail.com>
-References: <20261110160554.918652-1-coiaprant@gmail.com>
+        d=1e100.net; s=20260707; t=1794327109; x=1794931909;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=Bvu8fH1m1BZ2sQQoPyfnhre5VWvJqEOu2Sa0mYvTTis=;
+        b=LGBqBUMVAiZjB7whcldzmSrtC6POeE6FCsTn+1i674YGQyLAtYcThs8R6rfd+oLhHv
+         fkynwor1pzQCc8t7mX+IrVHgmeNH+0cnxrDDCY48avvyU/yzRyouarc0uAXIxF6QzLYJ
+         ebc/t/UXTWp8s2Rk6quKTzjOHPtsdFpMKDPJUxGOMFmd+RBNrKDv3+cOGY8Liqp5/Me+
+         RNpVwaXnK+sWSN1v3kMYAlRCWYQB0ITaeO6DWgIABhyUK/Xu4cyfLFQNBLgU4Hr6KwSj
+         MDWaVWSqDXPr+cS8JoBi8PHfg7r3JxdObPRn8wyK7kNwf/pa5cQz6uDXc8/ugtBeuxHY
+         PWMw==
+X-Forwarded-Encrypted: i=1; AL+hErE2j2VXJH99a0wK5Y9UIf/ZHEs1jr2gdRtZr2yWhDGI5iWhouBHwzcsKd9j186qI9uJGpWEHrZNdeU80q6R9A==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+IxuwTDqR2s4SudoZApbki2RNTlw6LbaQoyCo7iCl0zCb4qLf1
+	MD8mucyG9tmeS3FCLtDaDjXnYC+SpwEJTOuTTUKpWCeYfRPtrcfmxSm37TLfoNvvkb0kFguHgQK
+	//qDX2HNmIsETzpS1KRyuWHKpA26WWuQ=
+X-Gm-Gg: AYBFou3j7WU6NeuOI0M0OrrCpo7sZ6YfmkwJ4cmvNjcgy0EbMs2Eq+hDZCpYT6LluTm
+	2IK6NetRwW01bt5VmFRuhkTs8ojmayjuzAoWkC8QYS9qK7kGoWGEBhyvVyvgd2KSb7hsVJFuiQY
+	Go5QAjNllko16wSdXpWK7qC74HTihxGHbSw1FDFvglHXqi8I2B/re4hlAAk2YF/ZI3RX+DMEWOM
+	cqOpzM3Fla5hPXDiUSmOla9XqLtwE+G48wkm7hAsJOQuWUaKgblmcRD7eKwNx1ffDR9umbBps2L
+	efi6xVqzLzIGme6kD3DuDlCSF/YR2/SaXP16ALUUNTDQj0FxlTHdRxEi3ggC7+7LpUVpy20YC+f
+	9hei3fUAZjM6ve2Emb8IgvtX0d3vt2l/HRWSHbqazodeKruAhyK8=
+X-Received: by 2002:a17:906:194a:b0:c41:266:68a7 with SMTP id
+ a640c23a62f3a-c504952c255mr192385866b.10.1794327109186; Tue, 10 Nov 2026
+ 08:11:49 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+References: <CALj3r0ijsuzadYoi0NPkSpT8smRyi607APfxLS8_u3JSH3+dPg@mail.gmail.com>
+ <20261106115040.1199269-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20261106115040.1199269-1-amadeus@jmu.edu.cn>
+From: Coia Prant <coiaprant@gmail.com>
+Date: Wed, 11 Nov 2026 00:11:35 +0800
+X-Gm-Features: AclHuK-W_aGhTciJcK2jT1mQzUOxx8a9MsoP2BEfAZfP7jfpZyRRqnBuAfsnq9g
+Message-ID: <CALj3r0hOjksUtYg+qLqPU9kz4w3SAqGvSmFFi9YBXNGiEPEZSw@mail.gmail.com>
+Subject: Re: [PATCH v3 5/6] arm64: dts: rockchip: fix USB OTG power on
+ Photonicat in battery mode
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: bigfoot@classfun.cn, conor+dt@kernel.org, devicetree@vger.kernel.org, 
+	heiko@sntech.de, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_080644_925304_8E690900 
-X-CRM114-Status: GOOD (  19.83  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261110_081151_551658_0934A743 
+X-CRM114-Status: GOOD (  17.43  )
+X-Spam-Score: 0.4 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,106 +118,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-pcs.supported_interfaces is the mask of interfaces a given xpcs
-instance actually supports. The compat table describes what the
-Synopsys IP can do in general, but a specific integration may support
-a different subset. For example, the RK3568 XPCS supports 1000BASE-X,
-SGMII and QSGMII in hardware, but does not implement the C73,
-10GBASE-R or 2500BASE-X modes that the Synopsys compat table
-advertises.
-
-However, xpcs_find_compat() only walks desc->compat[] and does not look
-at pcs.supported_interfaces. If a caller ever passes an interface
-outside the mask, the core would still find and configure a compat
-entry for it, contradicting the mask the glue already set. This was a
-known gap: the mask was written but never consulted by the core.
-
-Fix both sides:
-
-- In xpcs_find_compat(), return NULL when the interface is not in
-  pcs.supported_interfaces, so the mask is authoritative for what the
-  core will configure.
-- In the Rockchip glue, build a platform mask with the three modes
-  supported by RK3568 (1000BASE-X, SGMII, QSGMII) and intersect it
-  with the core's supported_interfaces using phy_interface_and().
-  This narrows the mask inherited from the generic compat table so it
-  reflects the actual SoC capabilities.
-
-Note that QSGMII is currently filtered out (a no-op) because the core's
-compat table does not support it yet, which demonstrates the intended
-filtering behavior of this intersection. If the core adds QSGMII
-support in the future, the glue will automatically pick it up.
-
-This is a logical inconsistency rather than a user-visible bug in a
-released kernel: the affected Rockchip platform is not present in any
-released version, and the MAC side forces the phy mode, so phylink does
-not normally pass an interface outside the mask. The patch makes the
-mask the single source of truth for both the core and the glue.
-
-Signed-off-by: Coia Prant <coiaprant@gmail.com>
----
- drivers/net/pcs/pcs-xpcs-rk.c | 10 ++++++++++
- drivers/net/pcs/pcs-xpcs.c    |  3 +++
- 2 files changed, 13 insertions(+)
-
-diff --git a/drivers/net/pcs/pcs-xpcs-rk.c b/drivers/net/pcs/pcs-xpcs-rk.c
-index ad187fba4e9d..e29f473776b2 100644
---- a/drivers/net/pcs/pcs-xpcs-rk.c
-+++ b/drivers/net/pcs/pcs-xpcs-rk.c
-@@ -480,6 +480,7 @@ MODULE_DEVICE_TABLE(of, xpcs_rk_of_ids);
- 
- struct dw_xpcs *xpcs_rk_create(struct device *dev, struct device_node *pcs, int port)
- {
-+	DECLARE_PHY_INTERFACE_MASK_ZERO(supported_interfaces);
- 	struct platform_device *pdev;
- 	struct dw_xpcs_rk *pxpcs;
- 	struct dw_xpcs *xpcs;
-@@ -536,6 +537,15 @@ struct dw_xpcs *xpcs_rk_create(struct device *dev, struct device_node *pcs, int
- 		return xpcs;
- 	}
- 
-+	/*
-+	 * The RK3568 XPCS supports 1000BASE-X, SGMII and QSGMII.
-+	 */
-+	__set_bit(PHY_INTERFACE_MODE_1000BASEX, supported_interfaces);
-+	__set_bit(PHY_INTERFACE_MODE_SGMII, supported_interfaces);
-+	__set_bit(PHY_INTERFACE_MODE_QSGMII, supported_interfaces);
-+	phy_interface_and(xpcs->pcs.supported_interfaces, xpcs->pcs.supported_interfaces,
-+			  supported_interfaces);
-+
- 	xpcs_config_eee_mult_fact(xpcs, pxpcs->eee_mult_fact);
- 	put_device(&pdev->dev);
- 	return xpcs;
-diff --git a/drivers/net/pcs/pcs-xpcs.c b/drivers/net/pcs/pcs-xpcs.c
-index 6466e0ff2a98..46878a66064e 100644
---- a/drivers/net/pcs/pcs-xpcs.c
-+++ b/drivers/net/pcs/pcs-xpcs.c
-@@ -169,6 +169,9 @@ xpcs_find_compat(struct dw_xpcs *xpcs, phy_interface_t interface)
- {
- 	const struct dw_xpcs_compat *compat;
- 
-+	if (!test_bit(interface, xpcs->pcs.supported_interfaces))
-+		return NULL;
-+
- 	for (compat = xpcs->desc->compat; compat->supported; compat++)
- 		if (compat->interface == interface)
- 			return compat;
--- 
-2.47.3
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Q2h1a3VuIFBhbiA8YW1hZGV1c0BqbXUuZWR1LmNuPiDkuo4yMDI25bm0MTHmnIg25pel5ZGo5LqU
+IDE5OjUx5YaZ6YGT77yaCj4KPiBIaSwKPgo+ID4gICAgKDVWX0JPT1NUIGFuZCA1Vl9PVVQpLiBB
+ZGRpbmcgYSBgdmNjYCBwcmVmaXggd291bGQgYnJlYWsgdGhlIDE6MQo+ID4gICAgbWFwcGluZyBi
+ZXR3ZWVuIHRoZSBEVFMgYW5kIHRoZSBzY2hlbWF0aWMsIG1ha2luZyBpdCBoYXJkZXIgZm9yCj4g
+PiAgICBhbnlvbmUgdHJhY2luZyB0aGUgYm9hcmQgcG93ZXIuCj4KPiBJIGRpZG4ndCBtZWFuIHRv
+IGNoYW5nZSB0aGUgbm9kZW5hbWUsIGJ1dCByYXRoZXIgYWxpYXNlcy4KPiBCVFcgbm9kZXMgc2hv
+dWxkIGJlIHNvcnRlZCBieSBub2RlbmFtZSAocGxhY2VkIGF0IHRoZSB0b3ApLgo+Cj4gPiAgLi4u
+IEhvd2V2ZXIsIDVWX09VVAo+ID4gIGlzIGEgZGlzdGluY3QgbmV0IGluIHRoZSBzY2hlbWF0aWMu
+IEtlZXBpbmcgdGhlIG5vZGUgbWFrZXMgdGhlIERUCj4gPiAgcG93ZXIgdHJlZSBhY2N1cmF0ZWx5
+IHJlZmxlY3QgdGhlIGhhcmR3YXJlIGFuZCBjbGVhcmx5IGRvY3VtZW50cwo+ID4gIHRoYXQgYm90
+aCB0aGUgVVNCIFZCVVMgYW5kIEhETUkgNVYgZG9tYWlucyBzaGFyZSB0aGlzIE9SLWVkIHNvdXJj
+ZS4KPgo+IEl0IGlzIG5vdCBhbiBpbmRlcGVuZGVudCBuZXR3b3JrLiA1Vl9CT09TVCBhbmQgNVZf
+T1VUIGFyZSBvbiB0aGUgc2FtZQo+IFZPVVQsIG9ubHkgc2VwYXJhdGVkIGJ5IGEgZGlvZGUuIFRo
+ZSBkZXZpY2UgdHJlZSBkZXNjcmliZXMgdGhlIGhhcmR3YXJlLgo+IDVWX09VVCBpcyBub3QgYSBy
+ZWd1bGF0b3IsIGl0IGhhcyBubyBlbmFibGUgY29udHJvbCwgc28gdHJlYXRpbmcgaXQgYXMKPiBh
+IHN0YW5kYWxvbmUgcmVndWxhdG9yIGlzIGluY29ycmVjdC4KPgo+ID4gIC4uLiAgRm9yIG5vdywg
+Y2hhaW5pbmcKPiA+ICAgIGB2Y2M1djBfdXNiMzBfb3RnMGAgLT4gYDV2X291dGAgLT4gYDV2X2Jv
+b3N0YCBpcyB0aGUgbW9zdCBhY2N1cmF0ZQo+ID4gICAgcmVwcmVzZW50YXRpb24uCj4KPiBBZGRp
+bmcgYSBmYWtlIHJlZ3VsYXRvciBpcyBqdXN0IGEgd2FzdGUgb2Ygc3RhcnR1cCB0aW1lLgoKSGks
+CgpUaGFua3MgZm9yIHRoZSBmZWVkYmFjay4KCkkgdW5kZXJzdGFuZCB5b3VyIGNvbmNlcm4gcmVn
+YXJkaW5nIDVWX09VVCBub3QgYmVpbmcgYSBzdGFuZGFsb25lCnBoeXNpY2FsIHJlZ3VsYXRvci4g
+SG93ZXZlciwgSSdkIHByZWZlciB0byBrZWVwIHRoZSBub2RlIGZvciB0d28KcmVhc29uczoKCjEu
+IENvbnNpc3RlbmN5OiBUaGUgRFRTIGFscmVhZHkgbW9kZWxzIG90aGVyIGFsd2F5cy1vbiBmaXhl
+ZCByYWlscwogICB3aXRob3V0IGFueSBlbmFibGUgY29udHJvbCAoZS5nLiwgdmNjaW5fNXYsIHZj
+Y19zeXNpbiwgdmNjX3N5c29uKS4KICAgS2VlcGluZyA1dl9vdXQgaXMgY29uc2lzdGVudCB3aXRo
+IHRoaXMgZXN0YWJsaXNoZWQgcGF0dGVybiBpbiB0aGUKICAgc2FtZSBmaWxlLgoKMi4gQWNjdXJh
+Y3kgdG8gdGhlIHNjaGVtYXRpYzogNVZfT1VUIGlzIGEgZGlzdGluY3QgbmV0IHdoZXJlIHRoZQog
+ICBleHRlcm5hbCBEQyBpbnB1dCBhbmQgdGhlIGJvb3N0IG91dHB1dCBhcmUgT1ItZWQgdG9nZXRo
+ZXIuIEtlZXBpbmcKICAgdGhpcyBub2RlIG1ha2VzIHRoZSBEVCBwb3dlciB0cmVlIGEgMToxIG1h
+cHBpbmcgdG8gdGhlIGhhcmR3YXJlCiAgIHNjaGVtYXRpYywgY2xlYXJseSBkb2N1bWVudGluZyB0
+aGF0IGJvdGggVVNCIFZCVVMgYW5kIEhETUkgNVYgc2hhcmUKICAgdGhpcyBPUi1lZCBzb3VyY2Uu
+CgpSZWdhcmRpbmcgdGhlIHN0YXJ0dXAgdGltZSwgYSBmaXhlZC1yZWd1bGF0b3Igd2l0aG91dCBH
+UElPIG9yIGNsb2NrCmNvbnRyb2xzIGRvZXMgbm8gaGFyZHdhcmUgSS9PIGR1cmluZyBwcm9iZSwg
+c28gdGhlIG92ZXJoZWFkIGlzCm5lZ2xpZ2libGUuCgpPbiB0aGUgbm9kZSBvcmRlcmluZzogdGhl
+IG5vZGUgaXMgbmFtZWQgYHJlZ3VsYXRvci01di1ib29zdGAgKHN0YXJ0aW5nCndpdGggJ3InKSwg
+c28gaXQgaXMgY29ycmVjdGx5IHNvcnRlZCBhZnRlciBgYmF0dGVyeWAgYW5kIGBjaG9zZW5gLgoK
+Q29pYQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
