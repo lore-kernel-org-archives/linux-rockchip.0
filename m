@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DC26606A320
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 19:31:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2CE43606A320
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 20:01:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xu+k2x6n;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ILLsqs4q
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mn2T9KXd;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=bauvin.com header.i=alexis@bauvin.com header.a=rsa-sha256 header.s=s1-ionos header.b=Gcu04qnJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,83 +14,105 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=WH8d+RW3uvViztK5vuHdD1fcXCji7sz+670C9mpFIeY=; b=xu+k2x6nQggeYWrO45byN8HTd6
-	2QC8LDKkwC479rl9lOfoQL/5pHrKqBcFyFEjjroPTt5jZa63eAT8O29r/c1X6NaeAFbghKG6CvCQ9
-	x3s7UImLdrCYHgNeWeykaWmLWMSHT9ndnSYXycaffqMLrraQNhl+zRhuGF+JUh0kecsB4zr+zR34J
-	sAS8krUV3ijuLDtkuZ1Enm4uMkY8gG72lfveCKVc+o4oXo9aRG/bmaFMSTMsBSOlBz8ha9Smxhnjr
-	UBs5EUlrgej4zlT6WKfbboc/WFJyVskIIQC4MnAAMpAOCIOsbFF8AQ/jLZPMtUwtTyCsrv5ZSsy19
-	0PccmUDQ==;
+	bh=38KWo6JLxRyHIEYhMnBV6NTbCuEYhZSA1Dbr975oiHY=; b=mn2T9KXd7RLQAchkGXs7h+4wDD
+	M10K2W8zwt0c5BZsKems8mQPYQxaRN5Y/L45XJjcxs0t5WaIscbWkG4gZcON4EDGn6uWvqso5tugT
+	AfR38WqSNOVNyxlbfyxCvDFcK+bBkD52aX3/BoPHVUvlxgHhagwmz1wVX1gtaISTEFSq+A7rXlAgI
+	5E5to27VhOYC2+TJXqroanCLBPY5WvpejT9DE4I27gYpWw79Ui/JWqF3C8ywjmAU+/sotekszXhP2
+	W9r8bDTksXMXskXXZGphJuQ+D0HeSj0QMrpMgYLJ5aLh37VXo+aCv8hhidy8RZCl6QJJJgD4FL/s0
+	fOBsQrCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQrYd-00000004umw-255C;
-	Tue, 10 Nov 2026 19:31:03 +0000
-Received: from mail-dy1-x1343.google.com ([2607:f8b0:4864:20::1343])
+	id 1xQs23-00000004x6B-23sP;
+	Tue, 10 Nov 2026 20:01:27 +0000
+Received: from mout.kundenserver.de ([212.227.17.10])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQrYb-00000004uWi-1v89
+	id 1xQs1z-00000004x5K-2J5V
 	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Nov 2026 19:31:02 +0000
-Received: by mail-dy1-x1343.google.com with SMTP id 5a478bee46e88-37198ed3727so3111730eec.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 11:30:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794339039; x=1794943839; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=NUDs1vdfcZBxBx3xJiXUGpUDlEHyuHjTI9fXY3QHrkc=;
-        b=ILLsqs4q+9laAmfwUF2Z1qzxpYldnYMvxDoYj8Cnr3VcZlA7rLB0J5jzMb6s/ttVWB
-         tr0mrJczgC3eJZKVOZ2E4e0RzyPbLhpLYClNJmI/TnB6yEG3L8jUEgUF2RKc494prFc1
-         9fuMkUPi1wkRBqB/2bHDHb1XuiWaR7G6kZt0WlYxTYeakpMPylEXzn5uyltRhF8qJxce
-         iT43cCFqunMmZbTggNWTYmhqObMpa2KNheGhGGUimnpzxou1wyLkRb3a6uFVgWQ559W6
-         II/4OZfUhCr28pZnc9+LD2L2/w3D65zAf7QXs+CZMHwyCuSe9gUlJBlHMI0ogC3ve2kp
-         kmOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794339039; x=1794943839;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=NUDs1vdfcZBxBx3xJiXUGpUDlEHyuHjTI9fXY3QHrkc=;
-        b=Slkd3DXmb+PLOXoskQAwVKzbfK3xSn10c0O9nWx42zHq+Rj1GDkZIEvc4JONxTJk6c
-         d5JsOdqbqH9MiIsSi/YiOeS9z6TUpiyOTiN71nhEmUUCQWTJqQEEZTh0ZhVvagDvJa3a
-         VAyhrCrEMwOPqWtxBptxb0/mvbGGigFLvsxu2SQZHejpyf2rbBqbcdqx2exSbpynxtga
-         cK3kZLqtrKevu8PoDtqKz3OgBVtqJoVs4Sq86UMBMPFvKBKI0uXWipOoMLEhxj8FPcZP
-         7gnCWteRJWY9UBIU/9u6S7/4GWjRxLUy4znWpeLE9Z3BReHwtYX/Cz65U/QGYru0MET8
-         06Hg==
-X-Forwarded-Encrypted: i=1; AL+hErGE/ZNHx/B/Z0b+vG2gpSGxscWM55cqahRQiYpDL+MDJlzCNtcuk+JjOlzMI+RE9EvEXXjJFu/JXtdyE8k/BA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+EBsTxQwXLXNa8u0HQA6my4ADfpx45jWVxYAlFW/WiM/UDgS6x
-	C/MXaLgtNpi1Sb84yjKXRSzDZ5T9xdvbsR9wyL6yfUVhhsLUS7c0ebczq/56xT0nP03Lgw==
-X-Gm-Gg: AYBFou0I1s5WDAesSRD1b3pXoRwBiyiWVfmPPetVjSXlgBsHmx4ZEQGa7MdjITrLc9Z
-	HLgZeObLSKrgg7uItuCGrziWsgJYqpJRcWFpxuCfwXtVdIGBYxGNBEao+BSCdv2U+WzRG0Gb0w5
-	O+mxWLl5liOem4vr8H8zRKsqStK24wsV3DK1r7Mm1ZA79GOjW9lHWsfP0Rr6lb3s4hWqeooEvoP
-	tLnjq4ZusItptgPYeRxxFperD6xOFF55Vr0gDM1NM9cQKrNCvg0FJwfiyimTo2i1fbjCY3DTJFU
-	NdjRA5p1DL8qjUdh72SboTx/cfP0GpO2y0NZ5PEM1IM7A6fWv4UNfHntHLGWkeHs02a8SsPL2qF
-	v0RKpystrVl6xF76oErQAz5IhEcySl9xAYVKYfq/j01y+cANNMynS9KCtJgY8mYksZqGSy/xF4g
-	GUirP6aFSsCkUbypqO8h176Wlp9mY1TfV3oaRDR6gSKblhEQy0qDOXkOdd2EX4M6EvJiC0mvFaA
-	5MtyLhA5HynhHQILG1dA2jt50iVtUfj1nwvD59xkwPWbBGWNykcV2fG7CbYc0HRgsaMaHYIAqeI
-	ZLEM4RvM6nqQCwXiVei6dKwNuOwXj1tMC0WCOpKkbtXFtmXDWQ==
-X-Received: by 2002:a05:7301:5f17:b0:375:85ac:d14f with SMTP id 5a478bee46e88-3766a1086f8mr574713eec.14.1794339038382;
-        Tue, 10 Nov 2026 11:30:38 -0800 (PST)
-Received: from AERO17.taila7786d.ts.net ([45.95.212.224])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3751ad6f11csm7730435eec.0.2026.11.10.11.30.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Nov 2026 11:30:37 -0800 (PST)
-From: Pufan Jin <cyan2254650260@gmail.com>
-To: Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH 0/2] arm64: dts: rockchip: add USB-C PD and DP altmode to LubanCat 4
-Date: Wed, 11 Nov 2026 03:30:26 +0800
-Message-ID: <20261110193028.512456-1-cyan2254650260@gmail.com>
+	Tue, 10 Nov 2026 20:01:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bauvin.com;
+	s=s1-ionos; t=1794340879; x=1794945679; i=alexis@bauvin.com;
+	bh=UaCMwsKF+tF0e7vEsMo7urmrW+a8tVcmg0zruf9RRDg=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:Message-ID:
+	 MIME-Version:Content-Transfer-Encoding:cc:
+	 content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=Gcu04qnJiU5lON90TZvrf6OF+P1fCoyZF6gEc2vLrDWyBDE0r57nc9JsSay4Ywsz
+	 8ELWict61CeYlUV3M4tiOA9tmBBz7rTfvqlFb5ffixmOF8ps5V/p5SKzX2IIIUP9J
+	 MeOTBrhXJoeFT295Fpgz1poFpU/Pj5381HJQlE8ghSb3DfuhtUFwgHb7iwjv40w/B
+	 7cc1frltMbyZK6t1P5KfMV6+0k3Zc7Hgh96FdH5tqxlqapDckGvPtQfc8+D6Prlek
+	 +tXZziwwbyVbtDvuAmjcYp8/opgjGkMmZWhuvaSTpRVl/+UOI47bG74MLvtr4cDQL
+	 iKTV5C8cjH7tSF3svw==
+X-UI-Sender-Class: 55c96926-9e95-11ee-ae09-1f7a4046a0f6
+Received: from client.hidden.invalid by mrelayeu.kundenserver.de (mreue109
+ [213.165.67.119]) with ESMTPSA (Nemesis) id 1MhDEq-1wmqWC41JK-00cY17; Tue, 10
+ Nov 2026 21:01:19 +0100
+From: Alexis Bauvin <alexis@bauvin.com>
+To: linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Alexis Bauvin <alexis@bauvin.com>
+Subject: [PATCH] mmc: dw_mmc-rockchip: fix training on devices with internal phases
+Date: Tue, 10 Nov 2026 21:00:46 +0100
+Message-ID: <20261110200050.2529828-1-alexis@bauvin.com>
 X-Mailer: git-send-email 2.56.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+X-Provags-ID: V03:K1:rpYwODSSFFKhZl6mHGbb8vCgBKd+rzE3MRa9iTkVs0Y8mfQ2PaV
+ K8oQL+oBmFqVwHfWt/FK+TFgXFSrjoi7qUvbr2NZC9fiwrUKM68TxnmmByS8YM42aHlvJbG
+ YiKvxbSPDMm4bskhg3CtAkORnD/nV49CeQRh8RzcoZn5t+iAOvffd+dCJ8cnWtTPFXSgZXM
+ vv2PdFDYu6L8ImGwlurVg==
+UI-OutboundReport: notjunk:1;M01:P0:MdFXAWOmCFc=;jaALaOziPN1PSstqif43maK/otK
+ 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
+ 0Q6XgOOoCPhXqhXhM56gSXFVmbD7A==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_113101_495095_47C2FB33 
-X-CRM114-Status: GOOD (  10.93  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261110_120124_054680_D9AE09C4 
+X-CRM114-Status: GOOD (  14.03  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,63 +125,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This series enables the front-panel USB Type-C port on the EmbedFire
-LubanCat 4 single-board computer, covering USB Power Delivery, dual-role
-data/power, and DisplayPort alternate mode.
+Controllers with internal phases don't need the "ciu-drive" and
+"ciu-sample" clocks, and recent versions don't have them at all. Tuning
+expects those clocks to be filled when it is not necessary, and fails on
+devices which don't need them.
 
-The port is backed by a Fairchild FUSB302 controller on I2C1 (0x22),
-a fixed 5V VBUS regulator enabled by GPIO1_C1 (limited to 2A by an
-LPW5209 switch), the RK3588 combo PHY usbdp_phy0, and two DC switches
-on GPIO4_B3/B4 for the SBU1/SBU2 lines.
+Fixes eMMC training on such device by not requiring the clocks when they
+are internal to the controller, as they are not populated anymore on
+devices using the RK3576 compatible strings.
 
-The series is organized into two steps:
+This has been tested on an RK3506 on the 6.12 branch from
+linux-rockchip.
 
-1. Basic Type-C and USB PD support:
-   Adds the FUSB302 node, VBUS regulator, dual-role power (source 5V/2A,
-   sink 5V/1A) and dual-role data connector.  Sets usb_host0_xhci to
-   OTG mode with usb-role-switch, wires HS data to the host controller
-   and SS data to usbdp_phy0, and adds orientation-switch on the PHY.
+Fixes: 73abb1f16e ("mmc: dw_mmc-rockchip: Add support for rk3576 SoCs")
+Signed-off-by: Alexis Bauvin <alexis@bauvin.com>
+---
+ drivers/mmc/host/dw_mmc-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-2. DisplayPort alternate mode:
-   Adds the DisplayPort altmode entry (SVID 0xff01) to the connector,
-   wires connector SBU (port@2) to usbdp_phy0 (port@3), and connects
-   the display pipeline: VOP2 VP1 -> dp0 -> usbdp_phy0 (port@2).
-
-Validation and hardware test status:
-- 'make dtbs' builds cleanly without warnings.
-- 'make dtbs_check' against usb-connector, phy-rockchip-usbdp,
-  rockchip,dw-dp, and fcs,fusb302 schemas passes with 0 warnings.
-- Patch 1 has been verified on a physical LubanCat 4 board:
-  * tcpm and fusb302 probe cleanly;
-  * Host mode: USB 2.0 and USB 3.0 peripherals enumerate; USB 3.0
-    operates at SuperSpeed in normal orientation (reverse-orientation
-    SuperSpeed is subject to the known upstream phy-rockchip-usbdp bug);
-  * Device mode: ConfigFS CDC ACM serial gadget successfully enumerates
-    on a host PC at high-speed with bidirectional data communication;
-  * VBUS power switch correctly enables in source mode and remains
-    disabled in sink mode with reverse current blocked.
-- Patch 2 driver stack registration has been verified on board:
-  dw_dp binds to the display subsystem, DRM connector card2-DP-1 is
-  registered, usbdp phy-mux and phy-switch are registered, and
-  typec_displayport binds to the altmode.  Display output / link
-  training is disclosed as pending physical verification due to lack
-  of a USB-C to DP monitor/cable at this time.
-
-Pufan Jin (2):
-  arm64: dts: rockchip: add USB-C PD support to LubanCat 4
-  arm64: dts: rockchip: add USB-C DP altmode support to LubanCat 4
-
- .../boot/dts/rockchip/rk3588s-lubancat-4.dts  | 172 +++++++++++++++++-
- 1 file changed, 171 insertions(+), 1 deletion(-)
-
+diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+index a134be59601d..d3158ab05aa1 100644
+--- a/drivers/mmc/host/dw_mmc-rockchip.c
++++ b/drivers/mmc/host/dw_mmc-rockchip.c
+@@ -354,7 +354,7 @@ static int dw_mci_rk3288_execute_tuning(struct dw_mci_slot *slot, u32 opcode)
+ 	int middle_phase;
+ 	int phase;
+ 
+-	if (IS_ERR(priv->sample_clk)) {
++	if (IS_ERR(priv->sample_clk) && !priv->internal_phase) {
+ 		dev_err(host->dev, "Tuning clock (sample_clk) not defined.\n");
+ 		return -EIO;
+ 	}
 -- 
 2.56.0
 
