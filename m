@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 39C61606A33A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:20:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 665B6606A33A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:20:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jz3M+p0k;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=iAi+wyB2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sos9pzFt;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=E7duKORq
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=PnxzbpenyR2BOAyrgcZovUI15oJlRBYDI9x+3aLpKeo=; b=jz3M+p0kYdVrcBcKLSXCkQbZSm
-	zB93XhCKyvaNyQ46BJKIFxf099wOqaExwt5mIbTWnBvPVyRVydLhY71Ada/bNlvUboxKHsyylxclD
-	Yg3qGvq/ziI/9axUMauznSvgmXsp1DFhwdDEnFB41kAtrVIH00M7pmLk2dtFETWgtY8HZt95o2sNh
-	u054THmumCmXjZ99LR0XY8y6zmNHlHhnfLKBsJPQdwC6grNaH4ETsFhpeYbNdX0KxPGpAiYzS+9ma
-	R2IcA5vyb9+EMmUCEPpGpueNgtmkBiAyujI2T1wXLmPzmEJTZCY2H6e9mBt5/BzYzdatyhGtI8a1S
-	Zrq/5SgA==;
+	bh=ceF6LICDpeXRNqrKCU3UQHzZoak//5zwSfqZ4/YMzpw=; b=sos9pzFtVJD/QoR9bEo7DMA4aY
+	I30N5N8jzArvyTnCND8KXSu2hzCrpwQjVuqU9ksn+hYBHQG0Vpb8r/V+k2AV0oYtDIBPRu+AfmQQu
+	7WZtgr+rZyf9R25vHYQKf28+9V/aw8Aq8ULcwSS5eTePHrO/DRROgwLNfClWdtHWQot5/rha5Qpcw
+	LpjwEsMq5L+ByqEwPnTMzLUtuHhPiK35n7c9m+LWr7QDC/K1Cdczb75jy+ZNXdap9/canFJeMSJj5
+	0y9gK544Ga3fiHVKa9EuFgG4ZRbKm+9TiwFUTwy8ITsyp1rIeiSzWgenQ73p1l94GbJnnbVl6VQ7I
+	H87r7Qbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg9B-00000002sFT-16cp;
-	Tue, 10 Nov 2026 07:20:01 +0000
+	id 1xQg9E-00000002sNc-1FQf;
+	Tue, 10 Nov 2026 07:20:04 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg8k-00000002rKm-1zuB;
-	Tue, 10 Nov 2026 07:19:34 +0000
+	id 1xQg8l-00000002rM8-0htf;
+	Tue, 10 Nov 2026 07:19:36 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3D3CE42AF8;
+	by sea.source.kernel.org (Postfix) with ESMTP id ADC8B4109C;
 	Tue, 10 Nov 2026 07:19:34 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1794295174;
-	b=stY7AnjsV5+hxqpQbFWhUAAiPtMkoU88acSi9uH3uhxbMNAYHvyYBUlPKFMyAsv83RmC
-	 yiRnCqZ2sUbzawz1xBW4MkoK8M0NOBg53JUm257DCANMNLrATFOKDHusSaEkbACe0vM0M
-	 fBBnJbTPveFr8QxVvT9WtrQ7GfbYGggHsoZSrySoNz0zy1tns+Z6DkhI+LaMT+fTX0CqL
-	 8DQHh9R3AqjCv0bbowRcOTeUYrTqooGG/o/cQQqnPXwrPJY/IWky4wJfi5RlowFd4B+ZC
-	 JZX755h5BPbXczupPGNhbo9gOUbBGSOHy/oFc2AB2+40M893e9gZxD40YKlje5fH20g==
+	b=JffNNjojs6AAzQv+Dkuo0oURZzZTCYpIDYi26bDDb1N+Q8QEFek8cfRij9mRzzzOvMwd
+	 pbX9D+YHJTUVXPPj0jmDckSOWaV7aeuD1gdohvM9S7XH8PPIU6t3kyNiy/enq4AJwyW88
+	 PC5aG0qAwmEtgT7URNursmh5lraPfB1Ihq8b2VWYIBoDlWgV7QE9eEXTehmT2ibmZaQSq
+	 TjAYKALHeDo298mZlWK8Sm4iAnrA+dOQS7998te1fPSKJ2HnyyBQfxQCgM+h6ihAPHrBs
+	 1dtQ3jfvGTuhamCo2LmNZDPNVieOzAyyQ37cRO5h8Y5WbgTurSRF/Jl3v1poYL0AztQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1794295174;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=9m1iAeouVAj4F1HOa9zNEIXietvCGZ4AUJji/MyAt+Q=;
-	b=NYTO4j0ktZ8/XNOR7vb6/YXcChT04T6EveseBcPlJhUs846t8zSkwuZcLVAJ2X269EOV
-	 SJw0FR0W8Lh/VbegY83DBGWThYS9JfsOGuY/8rOUphlX2CnBg3yDd8n4n9qVaVeEwerhL
-	 +j5Y0LKPq2sGSm84xH6IWZs0ruKsUKJecG5wTe5NAQzAiFyiKfoJ7zvifZF2JaUNewR0e
-	 ZhcCXxYyf1H32F3tmyupA0Je8Kwnzly9Wf9J9HivZCN7r9jAg6Q/EPwoifbgTLpYYFRLF
-	 gZnzt/PbnlBUGrLGuvB37n5P6zn9wPLorN6mSIsyrBZpw/oRvKs4cVTVio0HDV5gXuQ==
+	bh=l/MGsum1F0rKCDJOx0Lnm3h1ZbNpJlCrv461gxecIkM=;
+	b=DNd06CBrazH1OpRJiGvJjX1GwA78xUxB69TTp3do+8lzUkH4VDPhF40QTbeCpeBxw6LE
+	 V2cIiR1eiLSYfGqYUwBQy9W3bT2n3Tk2Bp3yls2pW1uGZGjb1rz5BSE+/hEcHPZpBfEth
+	 avmSsPqwDB6FtpX/FGWz6+7llEi1o+UHfZweF/UPSf3fNIhvHJ6+DdCyYTDoDllMkkOAU
+	 growSy828ipU+BEg9BWNyHJ93PlI1/wUOOafIcmp46YsBZ7yFCWafs3oerOdsfvqAcpoR
+	 yVU/0hIAtchXIuzV4ukjFul6+/VARc5obTWRcDcsHy951ob/t0KRt08ZfkZQAVRPfxw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 8AFFD1F008A1;
+	by smtp.kernel.org (Postfix) with ESMTPS id 9C1221F008A6;
 	Tue, 10 Nov 2026 07:19:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1794295174;
-	bh=9m1iAeouVAj4F1HOa9zNEIXietvCGZ4AUJji/MyAt+Q=;
+	bh=l/MGsum1F0rKCDJOx0Lnm3h1ZbNpJlCrv461gxecIkM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=iAi+wyB24SUzRN7Laxt3DST7CGzdlCsf+NpaLeF5Xsce6ksrlS1dpgft2E0vh1R3W
-	 lfGAqDds1Y+clTW/eCAR2ayIVPxORVhCq564P+A2FLX9rr88OOSqP54fv06fYvFr3D
-	 OcZXas+fqDGYgmydmc5x+Q2UT95SCzAIzOZjKvGyes7C6NFJcEIkdhhGg3gQ8rg8iP
-	 w4e6mw1ih5e8jvX1dVjzLVHKPqTmJNCEHJBz/KmhXoEZgG9heRLCiEWv4Xlcd6NZIv
-	 6mOeCAc8sJBxakSd+i6onllX/3tB09HWXcd28rrHYiaoxgtKhV7y17Ur6Eb/B9P5SB
-	 bLO818GHVfrJQ==
+	b=E7duKORqOOKx/1pINaZ1ddPsckJlu6/qUKibcDIjYKDBKDOzgVbV9m/oQM9WOJpKb
+	 /xe+PpxKJAI/ZdfKGpYrtsSRR60rcBOTkw+e02xzo4yKIRwowxbEropR8uH4NVzg3G
+	 chdm3nWxg41lFviMRc44OTGCqLATwR6NX1bpmvMaFHqVnVbEKiCbVXtyYCnhmUUu0X
+	 eZ75sxoJ4D/aXDASYuKnWDYEFhd/knrldwR2x89vLuO+UJi0wRRrW8eM7nU3FZ3AB7
+	 O9p2rA9Iih/s2kjz1tRZQhFP1Nyq9v46inSSpe+xPyk4QIalGdNOkKDvpabG5VohD2
+	 FnEeZpPWZXCoA==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 1FF46489BD;
+	by lkml.kernel.org (Postfix) with ESMTP id 314EF489D1;
 	Tue, 10 Nov 2026 07:19:33 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Tue, 10 Nov 2026 07:19:33 +0000
-Subject: [PATCH 1/3] arm64: dts: rockchip: use rgmii-id for the Orange Pi
- 5/5B ethernet PHY
+Date: Tue, 10 Nov 2026 07:19:34 +0000
+Subject: [PATCH 2/3] arm64: dts: rockchip: add the SPI NOR flash supply on
+ Orange Pi 5
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261110-opi5-dts-v1-1-582b63d074be@gmail.com>
+Message-Id: <20261110-opi5-dts-v1-2-582b63d074be@gmail.com>
 References: <20261110-opi5-dts-v1-0-582b63d074be@gmail.com>
 In-Reply-To: <20261110-opi5-dts-v1-0-582b63d074be@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -86,11 +86,11 @@ To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295172; l=1895;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295172; l=1366;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=tvDxnxzJS+qXTLT+S+2SEXSC6rLShYZjDQnh9IALLos=;
- b=KKWIzOxcaNMe8ftleSNYT2RAzatFYKNDsM0hJ+ZT9gzxNp9n6GiVSLnuWoGh6GB7QIT2+iaZ5
- WBWjPYSD2T4BbFAIEdJQJaG+N4pYaqM2vVK9II35mxoc0otEw4FLRuy
+ bh=mzXbVS79UzYXahnmbISsnP+6U3ALGoRgMaY2cMlZvTQ=;
+ b=+FPgB3ZEYjghW5Ml7ddBaHziBdOTRwx38KffnN1n/XyQYZlugjsRp1Tn8qSkcS7LlTNMbG5D3
+ sHX9GaaMPVFCq2uVbkcq5X5/X9aktgYP87pGOcMpRcawR8IDn+HxX9g
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -119,50 +119,41 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-The Orange Pi 5 and 5B have a Motorcomm YT8531C RGMII PHY on gmac1
-(the PHY driver binds as "YT8531 Gigabit Ethernet"). The board neither
-uses extra long clock traces for TX nor for RX, yet the device tree
-describes it as "rgmii-rxid", which according to ethernet-controller.yaml
-means that the PCB provides the TX delay, and then makes the MAC insert
-the TX delay with tx_delay = <0x42>. The setting was copied from the
-vendor kernel, which uses the MAC delay lines everywhere.
+The SPI NOR flash on the Orange Pi 5 has no vcc-supply, so spi-nor
+falls back to a dummy regulator:
 
-Describe the PCB correctly as "rgmii-id" and drop tx_delay, so that the
-MAC adds no delay and the PHY adds both: motorcomm.c programs its
-default 1950 ps for RX (as now) and for TX. This is the setup the
-binding recommends, and the one the same vendor's Orange Pi CM5
-(rk3588s-orangepi-cm5-base.dts), with a YT8531C on gmac1 of the same
-SoC, already uses in mainline.
+  spi-nor spi5.0: supply vcc not found, using dummy regulator
 
-Besides being the correct description, this removes the MAC from the
-timing path for both directions, so no board-specific delay-line value
-is needed any more.
+The flash reports JEDEC ID 20 41 18, an XMC XM25QU128C, which is a
+1.8 V part, and it is wired to FSPI M0, whose pins (GPIO2_A0,
+GPIO2_D0-D6) are in the 1.8 V eMMC I/O domain. That domain and the
+serial flash are fed from VCC_1V8_S3 (RK806 BUCK10), as in Rockchip's
+RK3588 reference design; it is also the rail other RK3588 boards with a
+1.8 V flash use (e.g. NanoPC-T6).
+
+Describe the supply. The rail is always-on, so nothing changes
+functionally; the flash just gets its real supply instead of a dummy
+one. Only the Orange Pi 5 enables the flash: on the 5B and 5 Pro the
+FSPI M0 pins are used by the eMMC.
 
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
-index c153e7248727..7c1fd5905553 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
-@@ -97,14 +97,13 @@ vcc_3v3_sd_s0: regulator-vcc-3v3-sd-s0 {
- &gmac1 {
- 	clock_in_out = "output";
- 	phy-handle = <&rgmii_phy1>;
--	phy-mode = "rgmii-rxid";
-+	phy-mode = "rgmii-id";
- 	pinctrl-0 = <&gmac1_miim
- 			&gmac1_tx_bus2
- 			&gmac1_rx_bus2
- 			&gmac1_rgmii_clk
- 			&gmac1_rgmii_bus>;
- 	pinctrl-names = "default";
--	tx_delay = <0x42>;
- 	status = "okay";
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+index d76bdf1b5e90..d67c876c8013 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts
+@@ -33,4 +33,8 @@ &pcie2x1l2 {
  
+ &sfc {
+ 	status = "okay";
++
++	flash@0 {
++		vcc-supply = <&vcc_1v8_s3>;
++	};
+ };
 
 -- 
 2.55.0
