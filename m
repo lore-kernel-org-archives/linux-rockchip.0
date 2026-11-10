@@ -2,106 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9EB65606A31C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 02:37:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1F1EE606A321
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 02:50:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=j0/dNY1I;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=FDXmRROp
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=G6dnTi3n;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=F5woi9aA
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=CdZn+Rn6kWoWSYz0NLzjfh2chFnwY+SaCHCCdoCCgF8=; b=j0/dNY1I8GzEXdc9LgqxJxIS+B
-	p8ILyFMdDsPGMDa48N1pnsGnRF2sNHSSuXvMROpHYD4zsPC5SDjIzqG4gXe95Rsw26TlLl5xWc8zU
-	lyBKwcqTpUYT8M1FE4kQ3iKbqvYlnqMlO0zTpoUi9fv9qOa6AyS9SEwujXdI5QzBJb47qPkL5VRyw
-	329zAvuOYqBSFhcw58PSLZiuf9J/xHtlzAk1DazLLT9xivhCnYKDs+O3TsajanVsq4mexZx5RoNlf
-	15pePp66MJDLXn6oX+1cbLIP0n6W362eOKD92x0nlibztUeN/By9/4yUUE/chOtm85cL4dDnxhcf2
-	UAVQ+brA==;
+	bh=Bd82jzjXgkqosqF8f/i7ZadyLq52t5TZBek7mEIAQ9Y=; b=G6dnTi3nzu3H8fUvAt66dh2LyK
+	tHSO1bqgLf1DU+6IyOEv54wxVDmM0P2nGB0JOKeTW8ajmfVmTtLq6lOMHbNbE69WSTbCdI/R8uwhC
+	S9SAY+eCswcFEY277pwnJaUzhkDwdcXMbtQH1xsfb4gAIKEn4WnnARCRHKSJEAEY3qMfmCCzBqvn1
+	LySJiJBGFUOwPQF+62Ugt1BkJcClyGW8YAUq8478zhZEH/3d0QB/v9gj/bByzneRN5ChH/sCPeJYx
+	23+orb7uBOy+5FJjgifh4BTfjCIzeEvmOf390SPqcTBJFRhlBv/0X/UYZ5w91Td8bs5IS/edaiV8s
+	zsEt4jYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQbjv-00000002BKu-00BZ;
-	Tue, 10 Nov 2026 02:37:39 +0000
-Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
+	id 1xQbvz-00000002Cde-3ZSk;
+	Tue, 10 Nov 2026 02:50:07 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQbjr-00000002BJu-26TF
-	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Nov 2026 02:37:37 +0000
-Received: by mail-dy1-x1330.google.com with SMTP id 5a478bee46e88-3720addb068so2574935eec.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 09 Nov 2026 18:37:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794278254; x=1794883054; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=m9wZvEuCDe3XvfF7/Jwj2zWHljA+DeJITddjwCddf8c=;
-        b=FDXmRROpMiIcGSX2P/GsRrWfzII05RDaczz5NbT/UlVimf22gVyFTbH4+doPsf0YAI
-         CZW8V9s9C+gQm5vqLZqhMGk7377Vtkvw5pvHRZLR+vsb4ZmvJu0TRNI+k52oL45HfYuI
-         K1DcSgdaXX5qCTGJKxArZOFIdQbg5swS+s1HJYy1F0IVN8fmAxzry1W8TgamHbRyYA8/
-         JljAW+Qp1aT4XH5JDnTZMNOZs5O2c9ZZJshTpy6rmRvhMZB8u9pY4ryWnMcnBuEQ0Ggg
-         PRBTiCMAvzF3q3IPW1NaNzTpcG8v6QOKaIqGUGeagOhM/RNN7Sofb5ffqPqnfDK8kZrM
-         3Rzg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794278254; x=1794883054;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=m9wZvEuCDe3XvfF7/Jwj2zWHljA+DeJITddjwCddf8c=;
-        b=iAE/e0maa7dQM/AbWppbzFJ+6Z560t2/dfQvFW1WFmNh+HepayjzQ1nF6phpoBnMuI
-         u2onoxY0YTlkAd+Y7kusMKqK1i+S8BSCMbUhjttEv7T+ZsR8T6zHxH9wHLV+NPvF9j7j
-         EXIMFZBTIX/zOSPdK5vjnz0S8LXq1Q6owFCs7WsOJKLfAm2DyBSKbD7KvOJ1CDlKoJqQ
-         VbwsT2tk9RgOI/QJu82Gf5QHq/FDyg/IHrd4Enq3G29bj0cOPn8bZLdyxf0yzCY5G+g1
-         SA3CWteNIwFCl0FV30NMgpM4ZM8K6PKvcjdsuaa0lRBO+/jMiA2QkeBKXvI4N/yPdlkz
-         iVlw==
-X-Forwarded-Encrypted: i=1; AL+hErE/S+AzgSVZAHHcQAtWx41Avd6BzNyumyUX5xdoofsUZwT/R8x7oqW9X8zj3+4vRQ4ro3dNtkv8SBi9/zzEcw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/4hMpQf0Y3wo1tD28BLVtBX7bwOFrJOSWw2pWBPraKO7AdZn7z
-	YmYU3+wJZbh+5CMoarfHrOjp0Hsi0jQ6jKS1AoOMxyUfiyKEkIYDYTiD
-X-Gm-Gg: AYBFou2m640IJ4+BZCj34NN/nP3wcKBH73eWkRBQiXrjLGR86TLAGzxgessiCikKxRH
-	P2D6Y7KMGBzYu11YqBbmUmhH/icDa2TVQ9pa0nlzG5AY9qjbdhvN3c4d++uMjdjTB9eu4YRnYdA
-	mBzINDuhUiVt2nOQA3sEdVbhGxnDkk2wqhFSNYUYwoTy/V1Z/7u+RxnfqbSVbHtfexkq2QtbOUL
-	gtKqKD1l0wLloJn1B00c71Ynjl4Zf9H9HODH1wUe5OmTVZ+9HB0mJFEoWi9l1CnZDDSsNQY9ybT
-	/8Ul3+rI7o9YrQJweXpHX52yq2+7L0r2ZpVyurHMIG7+JR+iGBo1PRtlH8zi0PUvK6G+0BpIYsZ
-	AIdeNRtIkTOYb3GLuA+QAMHW6USmTuQMIqWcQK20PoNlefUl4UfKZC6DGFfeAnP6zsiF49tPgJt
-	JTbIP0GmtXCjtggmxnLcov+HL7GWOuI3DmZQIuT7sPr+I8PgHGYDG+mei9V3JOGz5smVesXswSy
-	6TXOUNInuOPHyyRsVq8FBAEkP4zoOzVESYMFomHUEs0ylMr+HfkH05ZdpcvDdWBl4h2QmHglvt5
-	LI0Wk5MkFwYKphmmHU//Y5aKavjfna/zdmvfMc4=
-X-Received: by 2002:a05:701b:4354:b0:1ac:2f6d:e1c6 with SMTP id a92af1059eb24-1b3b5fa8f34mr1600581c88.6.1794278253866;
-        Mon, 09 Nov 2026 18:37:33 -0800 (PST)
-Received: from arch.localdomain ([152.175.35.61])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b3b5b54431sm2883025c88.17.2026.11.09.18.37.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Nov 2026 18:37:33 -0800 (PST)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Jun Yan <jerrysteve1101@gmail.com>,
-	Damon Ding <damon.ding@rock-chips.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH v3] drm/bridge: analogix_dp: use devm_phy_optional_get() for the DP PHY
-Date: Tue, 10 Nov 2026 10:37:19 +0800
-Message-ID: <20261110023721.2014061-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.56.0
+	id 1xQbvy-00000002CdF-0xAv;
+	Tue, 10 Nov 2026 02:50:06 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9E161403D0;
+	Tue, 10 Nov 2026 02:50:05 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794279005;
+	b=HkWJp3dN3bPcWkGcNa51GuPtkf3vveyOXqO542kEZK+7fpYVhjg3eJst6Gn55gdR0UEi
+	 7eqaWgW2AcuUc7KiyAXlZA0AUCSPbGLkDBdFPX9RYvv9G2o/4NcOWdgTUTflWGQRyhJKi
+	 Om+Hl4kWVtSWuCbOh6Dszdm+uodX6Hv6/aGiijOP7FMagGQOVWvsdiB6BTsuooidfr7tQ
+	 gz7k9aeXs5EuHNgMXe/n3v3Xm8qrgdU0NCanr+8EBILHOok89bEy7L82K+SO4n3UIvxud
+	 lKAD20n2whf5pm9idFrsw4kaEPbNtGqVstHX5WNE7udSsjJMukzkU/5KqL3uhUD1gLQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794279005;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
+	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=cvnXzh/efi9WtiQF53c/L1AOqMpNaz59Ad1/m2E/GHk=;
+	b=sx2o9zcNtPg9Ui4uVFqQI0Qha6ao2cUJCU52dHZnN637ENKBsAGFAzk0E/cyCzw+/mF0
+	 3voeXXR4LtjLYpTo1DKO/Qbra3yFYyY2BMsy4QSsgxr9W5tizaZir+8IPGgBKhn/opfx/
+	 4QkatUMTYyv1ouxLzqIy3hBxAEcomSd+rJVSyvlq6YAzNYqRzLZkO4qrcGToIKCdkLNSs
+	 JdzoJCjTYKPyS384ToroP8NcRU0kXuM5LMdCPiyx4dlXg2YujAFmJFuQFrC4OeJLg4FpA
+	 MpYem0wlK3eGBzaOFN9lxacxcNQZdquiMkRd7HMrmFPOMZ2PTDKZa6QPvgQtvPKxQkg==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 056431F008A2;
+	Tue, 10 Nov 2026 02:50:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794279005;
+	bh=cvnXzh/efi9WtiQF53c/L1AOqMpNaz59Ad1/m2E/GHk=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=F5woi9aAlFi8Llc0+haPwKizbAi19rFnofw2murvP3XYSUdD4VmWmbxeNu1KbBzCJ
+	 2yycd548ROFgSR2UsZhm/uEOmJPE8vipp56X5XgZFVeQY8bY0yHfZzCJlh1goiScUH
+	 Wn9Gh40AxG75dIXav6paHwsjYAfA9GtoqiFWlOX+QnnDam/FwcZjXjodpe2mqfecvE
+	 iTENfRQkH3HlQ2I3h7X3GnHwMS1QeUe7wH95vz/cYt9Qnvq5uEhboOqbV+wvrWyH+G
+	 Qv8oPZSmImXvTUkvrk5LMVogUmwxgB3Zk6hxS3Odo9/gHoeLG3hA0VQ9ZYhaV8aEGQ
+	 w/o07rSwk13WA==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 8557D4878A;
+	Tue, 10 Nov 2026 02:50:04 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Tue, 10 Nov 2026 02:50:01 +0000
+Subject: [PATCH] arm64: dts: rockchip: Enable SDR104 on the ODROID-M1 SD
+ card
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261109_183735_544060_CF40DF4B 
-X-CRM114-Status: GOOD (  13.54  )
-X-Spam-Score: -1.9 (-)
+Message-Id: <20261110-odroid-m1-sdr104-v1-1-8edc6d5c1bf6@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAFqG8moC/x3MPQqAMAxA4atIZgOJf6BXEYfSRs2glRREkN7d4
+ vgN772QxFQSTNULJrcmjWcB1xX43Z2boIZiaKgZmJkwBosa8GBMwZg6XAeh1pHvnR+hZJfJqs+
+ /nJecP7EZavRiAAAA
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1796; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=qnYQwjnRjrYCEMA3SHfY2+DFHlJaSH/TMsn5Af6nh14=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFmf2qInZi0x0TBUjGFZfEd0j8Vikydvzr+ZEWZx+0Daj
+ ReMh3+XdZSyMIhxMciKKbJMOKRxK2PJ1b/+HuYPYOawMoEMYeDiFICJtFgxMmwxtXqmcaHfyfmt
+ WtfeFasLt5424FNcwX/snvzEilnvvCwZGXb6Pb90ZsqCt+zXziwLDdVQdFlz76vypO9nOvoPOO1
+ IvcsHAA==
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,80 +109,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The DP PHY is optional: the Rockchip RK3399 eDP controller (used as the
-internal eDP port) has no separate PHY device and relies on its built-in
-PHY, which is programmed directly through the GRF registers, so its DT
-node carries no "phys"/"phy-names" property.
+From: Igor Velkov <iav@iav.lv>
 
-Requesting the PHY with devm_phy_get() therefore returns -ENODEV (or
--ENOSYS when CONFIG_GENERIC_PHY is disabled) and the driver logs a
-misleading "no DP phy configured" error at probe time before falling back
-to a NULL phy.
+The SD card already switches to 1.8 V, but only SDR50 is allowed, and
+clk_sdmmc0 on RK3568 is a mux without a divider: dw_mmc-rockchip asks
+it for twice the card clock, 200 MHz for SDR50, the mux rounds down to
+the 100 MHz parent and the card runs at 50 MHz.
 
-Use devm_phy_optional_get() instead, which returns NULL when the PHY is
-absent and otherwise behaves identically, and drop the manual -ENODEV/
--ENOSYS handling. This also removes the spurious error message.
+Allow SDR104 instead; the MMC core still falls back to SDR50 for cards
+without SDR104. With the 150 MHz max-frequency from rk356x-base.dtsi
+the clock comes from the 300 MHz parent and the card runs at 150 MHz.
+Hardkernel's vendor kernel already uses sd-uhs-sdr104 on this board.
+With a SanDisk 128 GB card, direct read goes from 22 MB/s to
+58-64 MB/s and direct write from 20 MB/s to 47-50 MB/s.
 
-Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
-Reviewed-by: Damon Ding <damon.ding@rock-chips.com>
+Signed-off-by: Igor Velkov <iav@iav.lv>
 ---
-Changes in v3:
-  - Add missing changelog entries and reference links
-  - Link to v2: https://lore.kernel.org/dri-devel/20261013134659.335829-1-jerrysteve1101@gmail.com/
+Tested with an Armbian 7.3.3 kernel (rockchip64), the property added to
+the DTB with fdtput: reboot, sysrq-b, watchdog reset, poweroff, s2idle,
+deep, hibernate, hybrid-sleep and suspend-then-hibernate; the card
+re-tuned and came back in SDR104 at 150 MHz in all 29 runs.
+---
+ arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Changes in v2:
-  - Added comments to explain the changes made.
-  - Link to v1: https://lore.kernel.org/dri-devel/20260924020417.868588-1-jerrysteve1101@gmail.com/
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
+index ec43dee18094..6f77e73abc8e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
+@@ -610,7 +610,7 @@ &sdmmc0 {
+ 	disable-wp;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd &sdmmc0_det>;
+-	sd-uhs-sdr50;
++	sd-uhs-sdr104;
+ 	vmmc-supply = <&vcc3v3_sd>;
+ 	vqmmc-supply = <&vccio_sd>;
+ 	status = "okay";
 
- .../drm/bridge/analogix/analogix_dp_core.c    | 22 ++++++-------------
- 1 file changed, 7 insertions(+), 15 deletions(-)
+---
+base-commit: c3baae5f1a15645cddadcb2b9abddef5df291f59
+change-id: 20261110-odroid-m1-sdr104-f6e03a0c5ac9
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 6df6963740d2..637b1bff0f6c 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1426,21 +1426,13 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
- 	if (ret)
- 		return ERR_PTR(ret);
- 
--	dp->phy = devm_phy_get(dp->dev, "dp");
--	if (IS_ERR(dp->phy)) {
--		dev_err(dp->dev, "no DP phy configured\n");
--		ret = PTR_ERR(dp->phy);
--		if (ret) {
--			/*
--			 * phy itself is not enabled, so we can move forward
--			 * assigning NULL to phy pointer.
--			 */
--			if (ret == -ENOSYS || ret == -ENODEV)
--				dp->phy = NULL;
--			else
--				return ERR_PTR(ret);
--		}
--	}
-+	/*
-+	 * RK3288/RK3399 use Analogix DP controller built-in PHY,
-+	 * no extra PHY configuration is required.
-+	 */
-+	dp->phy = devm_phy_optional_get(dp->dev, "dp");
-+	if (IS_ERR(dp->phy))
-+		return ERR_CAST(dp->phy);
- 
- 	dp->clock = devm_clk_get(&pdev->dev, "dp");
- 	if (IS_ERR(dp->clock)) {
+Best regards,
 -- 
-2.56.0
+Igor Velkov <iav@iav.lv>
+
 
 
 _______________________________________________
