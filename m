@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB51660A383B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 08:18:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 80A1260A2631
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 08:19:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0mR5HaJP;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=uoLzfvkO
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ORsmMw6v;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ymUUZJ/1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,73 +14,73 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=o3s9Bn5mVgmlvQX3nPOP1W1HaywP3gj7THPo9sC19Tk=; b=0mR5HaJPGmH90O+rlWzQtQ4sOf
-	VGuNWleN5FiQGFcW0BlCT5tbwbayoSyrf6wziAzLoWtdqSxim0fLIFq64S8H5ME9q9dYCE8vSAp7J
-	EEjTEO+Ho4s+5OFMm5i4KtO60K8jzSIpv1lxgz2DsdU09fBuW7EP3SBQzTL4bYwTHhdvz3Q1Qo89x
-	XwCt6ctf70gAmoEuUyOfLFIdO2n3BKFXB6lEbeXnGImxyyFRPrj6fxzIAvaFKAP0+AxIQM3ZJ3B5o
-	Izwy/u1Rh2MmxA2hzDOcv0NCLQsqd2HCNgEvFt4YwlIgDlH/W6VK6DwT0e+hLUTqIYUzxD3wRAYYZ
-	3SsJDIJQ==;
+	bh=vN4QgDC+XjH4eu5fvJJK5BJaQBp17XymsqJd+g+hwqQ=; b=ORsmMw6vPdxo40rGXtl0ePSjO2
+	b9OAgYjRaANEaB92z6stsvxOcSslE7QI/S/MpWGAgpR0cOCG0VjXMU4foAQ5lUZl7z4PMNo9qv6u7
+	3yLrFDQ2A9zAbGMxNrRvq5FQl/iyzN/wMQhQ2p4B1UtW4sdIBmg4HHTrEdIjckYz3wAUFIK2x50Yr
+	q8q7UUP8G2LjghqwIFbhyaCSufJsbRbCU14qCjDzGv9nzVwOIE+rPiwNGMVmgsNgqKGVhv5826Rd6
+	m/yWPW7/As3W/NtSjlmi6txseS0DZZfPqjcKn1qRzzwZFhME33q7ISbVJUmMRNcZkHHRImEJuhLq1
+	1sl3Y3Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQh44-000000034wo-2fVc;
-	Tue, 10 Nov 2026 08:18:48 +0000
-Received: from mail-dy1-x1331.google.com ([2607:f8b0:4864:20::1331])
+	id 1xQh4D-0000000359v-1HEP;
+	Tue, 10 Nov 2026 08:18:57 +0000
+Received: from mail-dy1-x1334.google.com ([2607:f8b0:4864:20::1334])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQh3z-000000034oU-4ALb
+	id 1xQh43-000000034uO-42gU
 	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Nov 2026 08:18:47 +0000
-Received: by mail-dy1-x1331.google.com with SMTP id 5a478bee46e88-36dc4797082so245384eec.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 00:18:43 -0800 (PST)
+	Tue, 10 Nov 2026 08:18:50 +0000
+Received: by mail-dy1-x1334.google.com with SMTP id 5a478bee46e88-36ca32a0faeso160700eec.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 00:18:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794298723; x=1794903523; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1794298727; x=1794903527; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=FXZxIYgjzzKBuaCqOKBWOfJFlYD92yilrBTGqn7KzOc=;
-        b=uoLzfvkOHxdLdDsAgixkZmGIQPkCUVBeS6YZobM8AtMBulgM6VXwn2ofsYVXfPQiel
-         MMu6n27ALxUlB9s1D7orJOIaIezPekn5psbUpHNqys/Tx6Gq3H2JoNL6BbN5QoRmVWmg
-         F1yA4dlpzsAylQVV8mB05aqUe4vntQTKYXhEWEMtNywEgmN+KcIaBj61E2uXAidpeMj3
-         FFp/PsodTxYioWKcHzGpI2WdX9DyUQHyTNYA6w7BDntb0XcD7PtX0W2JJYvnobXMsOpI
-         Kiv6fdrdHBn1gev+M4D3eqhq2BefQclTjUm8wneMklo/5yY6J+olAKXpq1X/lwzWKx0b
-         9EPg==
+        bh=jXCW++VVO806qSYM/VOtniyWY+nkvvMGcOGUW1ghuaM=;
+        b=ymUUZJ/10HrVioSE7W88pkILqdYa4KnMPdIP1vMk9bgj8Zz8dPrYxOAaqzWAmSrjVB
+         /tIHm9Bzdysz4wFodVORNNhOWlFd2s51R634EOFePHKdsFygdEFSy3hjJS5GS4lwMYmV
+         4DYCHjooK54/nxHKv/JP3HsvQ7SOCuJD6jH8OPhiq7GSHjfejPpn3t3baHlOFo0nErN4
+         QliJhJEm8DparDadA/XzPF88Xk6UnbQxlNFsxgEUDgZB/nHGMUOzDjXmqz72GQ8Zq25y
+         O0w3V2rUh5G6JV8UvRbHfuv4j7ahgTdxUr0Nj0fP5q5OOAwiS3Mk79R046QjjkYi3p5Y
+         UUAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794298723; x=1794903523;
+        d=1e100.net; s=20260707; t=1794298727; x=1794903527;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=FXZxIYgjzzKBuaCqOKBWOfJFlYD92yilrBTGqn7KzOc=;
-        b=DGnPb+tY9DcySJVC79iTwOvOYGJMzdJ0HpM8QsaCmm9fHik59ZJ4PU/Ah8JxXXPYjW
-         QLZiKsXKHn5UG7OcBhuj9IEyoxG92LrB4YFp4irAIRzjbBaRZuke+MUaiB+SpzLIcmn/
-         nXoxtQMwmmdFhj1QTw+huoZbaCMNqZXaoHbGtb6WqG6ZZUx3SMe9BZvaL12kd1OHxEZO
-         tNnbHGemmI8GeYjuL9pIC9+wYZK5r2snxZWY7q8Lua2Bzh3eju44pshYdEbPA8ZWjaQL
-         BSqFa15sUZRkMCFxI+zX4yU3B6YeC1jPQw9QL0Wzsapn3FUOfAbWZkJOMem1PuH3PjwY
-         iQIg==
-X-Forwarded-Encrypted: i=1; AL+hErFJCI4rv35hNvA01+2aUkf55lmuSGkZ0Q+Z2Q6o0yvGn1grGPKZNhI2ZXpuH5TaekKLQVMb47cpIi9TBrcuRg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+Sl4Kh+LIAYNwN5RDG1ytBveAPyXuRQNT6FmaRa6ZbQYQPiWMG
-	UVcxk9eCE1JVWfCKzGnDaFORatXa2gS3i89oMvayr3JzPXcDzDtsy4vz
-X-Gm-Gg: AYBFou0buE0ebrRWAi7S7gOfspy8fF1KVgxVGO2Dbwg5JixrMkxFBCLzVPF05r5lZiP
-	741IHWViww/dIjky/H5EIP5LJmwLHb117C9bQvtPz69+05GyDtJU7V8flxLMyiwbi980vAi1mBx
-	6ILHmpzOpzrzVDZ3MiB047YOHuNz5tW9p6oBHJ6/yXwz80/BTpV9sJs37fkSrtTWrw0oTqCPyPQ
-	x8WUwEQHuKczkVn7C8CHPZyIiwG44v65DZ9gI23c+xyUYmdcWDYxksCoUWHQ/upphGMzMj/7kjE
-	4CRrkEBMYAFG527YnYKsYLvyFQ/l8MYKsux0T1fO+TewkziI8UthVspLKkvrRpTP/QRdtzIO0Lq
-	ZUXYNF4ZHY1S7o8DoNaXyRUGSCeOOjaKPS+vQttdlYcL9MqfiA3MoyL56PWCAfroz4paOhpZoap
-	RmtBwLqPHyBFzPlqR+FLQ/3NzMDxRdA7ZJYBI1fiXyL/7EejCHc2Rccq83K42D02m4VajGs0yOw
-	TWrELM1Z0xmwwxqA640zM2VAPJuHn/fah5zchLdVu3PMvO9XzIIU3vvtjhnKrNtY+HI7YjotA56
-	d5jcsa8ZDK1maIURfCxYxG+oWbNmf+ppQ78/CmeQGonFwGJtDRI85HmT+g7u
-X-Received: by 2002:a05:701b:451c:20b0:1b2:5884:a039 with SMTP id a92af1059eb24-1b3b5e0f414mr4047319c88.0.1794298722660;
-        Tue, 10 Nov 2026 00:18:42 -0800 (PST)
+        bh=jXCW++VVO806qSYM/VOtniyWY+nkvvMGcOGUW1ghuaM=;
+        b=poobt03zWKxj5MwK1eo/GPXZTXqKcWW0HbM50LeZLnoCDHuiugqd0HynLFcDLPx7S3
+         U0XVbpIvTn/ZBEsVdae82LBbkYuRBFewLq59Gv9yGEnd71BdiGwMyGOXl0h4bGg2BKSM
+         MI6P2jqX1uv7oxuIVFlXLOcMty6cg4xkwfxVuZfPBV6cFI2U2047bbRKab+RmnsaajgS
+         /aLZZZmFIWiT/VmCLKxa3riLEhwERTGeUocTYBadYnsT5GDMC8kW0Jg/Od4DuV4BcVXV
+         n3+cDjxDqr7g+Sk0raetrnuw7X2YloYmmiXHMFZSia+0UtsGSRmqvGF+lYMby2tyfAHq
+         nvjw==
+X-Forwarded-Encrypted: i=1; AL+hErHa9PIgPrRTLmdX695X1ZNaxDlEtrcb9crzZ6tR70t/cRRSZpOn9OZa1hY7KqAjCH/gAd7HntYuVnbz9rgbOw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+9GAPzn+6vAeBgfbu347GSsgC2YIUXNbMKHfUbRso0CJEUzQiI
+	dVu3Te/zZ475ihMOhjs8JzcIgxcRsICPHAWarl5+FznfoPH3IaR5h77S
+X-Gm-Gg: AYBFou157qc+30Mj8Jc+yq3XpScTuzld9f7+5YArgMMZoRLZprq21syY44njVNYMG1Y
+	Fu550UIkdwlnaAUd+PXkWdR+zfAm0SnPlIkmEV/jUwBHypN7j+QoUjQShnmRjGbreO7PEXX53+U
+	2Jh0eLn1nUqWwEXNGFM/AQnBXt7iyfx4ld5clVue7HsZfvJPUTPevldxA+qRAht0k8vbMwOWFO6
+	UmiVoXjwEuWZIWOXpViDw9xq9SPhrpZZyWBhKe0yUCdYAdFglCkJiNkq8tXqG+6TS9Kk1Mp6Z+c
+	7VWj7VgpnE8UUMv4lERDi2q5bsOvKtQYKQmh/3pa3caZjgAIKCnKgwaHIzvza9bpAhc8dbQ/w9E
+	U+CvvjFiSQMqw/+Jh+6qt4jxYYwQuX0fiboBPpNRog9KDHj7jzyHbCXEgJ8EG5TbmFz1BpYYcT7
+	aYOs00tMj0EsNHwhmL+q/+anGHoQ5GS4WFx1UUOTMUUg8ex4LuOtljTTnxcbFucB59ZsADpWJ+x
+	LL0GpFroCKqVlqNfcY6tjg4f8+hy+COExxxbXrddCBjmI5rLmxZN9tO3xEIVvTCe1IDTiNaXLud
+	wJHxmWjSGqCnMT5CnWLLaVfFDPJGaNOaoCnK96xoKc2FAUZygpCqOvVkYyJN
+X-Received: by 2002:a05:7022:f502:b0:17f:641e:7f6b with SMTP id a92af1059eb24-1b3b5fbb37bmr3714465c88.1.1794298726441;
+        Tue, 10 Nov 2026 00:18:46 -0800 (PST)
 Received: from [127.0.1.1] (211-23-39-77.hinet-ip.hinet.net. [211.23.39.77])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b3b5b2fc14sm5236759c88.12.2026.11.10.00.18.38
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b3b5b2fc14sm5236759c88.12.2026.11.10.00.18.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Nov 2026 00:18:41 -0800 (PST)
+        Tue, 10 Nov 2026 00:18:45 -0800 (PST)
 From: Jason Yang <jason98166@gmail.com>
-Date: Tue, 10 Nov 2026 16:18:09 +0800
-Subject: [PATCH v6 6/9] phy: rockchip-samsung-dcphy: Name the transmitter
- helpers and ops
+Date: Tue, 10 Nov 2026 16:18:10 +0800
+Subject: [PATCH v6 7/9] phy: rockchip-samsung-dcphy: Support the new
+ phy-type and direction binding
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261110-dcphy-rx-v1-v6-6-d681ba20b36a@gmail.com>
+Message-Id: <20261110-dcphy-rx-v1-v6-7-d681ba20b36a@gmail.com>
 References: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
 In-Reply-To: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -97,16 +97,16 @@ Cc: Michael Riesch <michael.riesch@collabora.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Jason Yang <jason98166@gmail.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794298692; l=9009;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794298692; l=3244;
  i=jason98166@gmail.com; s=20260721; h=from:subject:message-id;
- bh=/a13r8uSs6LEfL9vbTFaB55dpyKEbhdnf/mU3FYmZFQ=;
- b=b2zgm9Kj4Fr7H2StjoxXa1PdDsGlw8WyWimdFlb86ZfZfolTtkXFdwaYStfq/eL1+nH/r+nLq
- B25L8+ulrBbDP2qn2bSmObXR6cOcwceQ2yTuJCfmpYV6YkQADPkQrvq
+ bh=MPlZcYdBOTjm8N+T+zD2aiKGVlTXPixFaSZAXRG0uQg=;
+ b=XVX/t4VGDXdsU4HAGnmDCJBr3P5Q0oy9IN4FMcahsrkLVyV+WADTyFODqoZvgPE50AThjSsY1
+ ikf+XRGvmjbDHUXbklTj1jfDUcwtwaj85cfRiGe8zNBMKCeJSDQxIOb
 X-Developer-Key: i=jason98166@gmail.com; a=ed25519;
  pk=xQmD001Q/ooHl39PxyQtusbUQmgbOsSfpFryRVWZ/k4=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_001844_074980_0E9B62AA 
-X-CRM114-Status: GOOD (  18.15  )
+X-CRM114-CacheID: sfid-20261110_001848_068817_B894E416 
+X-CRM114-Status: GOOD (  14.31  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -128,243 +128,94 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The block is a combo PHY: it exposes a transmitter and a receiver, and a
-later change registers one struct phy for each. Prepare for that. Give
-every helper that programs the master lanes a tx_ prefix, and move the
-phy pointer and the lane count, which only the transmitter uses, into a
-struct samsung_mipi_phy that the receiver can have one of too.
+The binding now selects the PHY with the cell and the mode of the block
+with the phy-type property of the provider. Read phy-type in probe,
+D-PHY by default.
 
-Name the phy_ops and its callbacks after the transmitter as well, so
-that the receiver can bring its own rather than share these.
+of_xlate() returns the transmitter for PHY_DIRECTION_TX. The deprecated
+PHY_TYPE_DPHY and PHY_TYPE_CPHY select the transmitter as today, so
+existing DTs are unaffected.
 
-The BIAS block and the PLL keep their names: the TRM puts both in the
-part common to the whole block [1], so neither belongs to one PHY even
-though only the transmitter drives the PLL.
-
-No functional change intended.
-
-[1] RK3588 TRM: sections 22.3.1 (bias generator), 22.3.2 (PLL) and
-    22.4.1 (address map)
+A phy-type other than D-PHY or C-PHY fails probe. A deprecated cell
+value that does not match phy-type gets a warning, and the transmitter
+then refuses to power on, as in C-PHY mode today.
 
 Signed-off-by: Jason Yang <jason98166@gmail.com>
-Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 67 ++++++++++++-----------
- 1 file changed, 36 insertions(+), 31 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 32 ++++++++++++++++++-----
+ 1 file changed, 25 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-index d6acc3e2d448..c40c84791eca 100644
+index c40c84791eca..e8e229fc4856 100644
 --- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
 +++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-@@ -280,6 +280,11 @@ struct samsung_mipi_dcphy_plat_data {
- 	u32 dphy_tx_max_lane_kbps;
- };
- 
-+struct samsung_mipi_phy {
-+	struct phy *phy;
-+	unsigned int lanes;
-+};
-+
- struct samsung_mipi_dcphy {
- 	struct device *dev;
- 	struct clk *ref_clk;
-@@ -290,8 +295,7 @@ struct samsung_mipi_dcphy {
- 	struct reset_control *s_phy_rst;
- 	struct reset_control *apb_rst;
+@@ -297,6 +297,7 @@ struct samsung_mipi_dcphy {
  	struct reset_control *grf_apb_rst;
--	unsigned int lanes;
--	struct phy *phy;
-+	struct samsung_mipi_phy tx;
+ 	struct samsung_mipi_phy tx;
  	u8 type;
++	bool legacy_mismatch;
  
  	const struct samsung_mipi_dcphy_plat_data *pdata;
-@@ -989,13 +993,13 @@ static void samsung_mipi_dcphy_bias_block_enable(struct samsung_mipi_dcphy *sams
- 			   I_MUX_SEL_MASK, I_MUX_400MV);
- }
- 
--static void samsung_mipi_dphy_lane_enable(struct samsung_mipi_dcphy *samsung)
-+static void samsung_mipi_dphy_tx_lane_enable(struct samsung_mipi_dcphy *samsung)
- {
- 	regmap_write(samsung->regmap, DPHY_MC_GNR_CON1, T_PHY_READY(0x2000));
- 	regmap_update_bits(samsung->regmap, DPHY_MC_GNR_CON0,
- 			   PHY_ENABLE, PHY_ENABLE);
- 
--	switch (samsung->lanes) {
-+	switch (samsung->tx.lanes) {
- 	case 4:
- 		regmap_write(samsung->regmap, DPHY_MD3_GNR_CON1,
- 			     T_PHY_READY(0x2000));
-@@ -1024,9 +1028,9 @@ static void samsung_mipi_dphy_lane_enable(struct samsung_mipi_dcphy *samsung)
- 	}
- }
- 
--static void samsung_mipi_dphy_lane_disable(struct samsung_mipi_dcphy *samsung)
-+static void samsung_mipi_dphy_tx_lane_disable(struct samsung_mipi_dcphy *samsung)
- {
--	switch (samsung->lanes) {
-+	switch (samsung->tx.lanes) {
- 	case 4:
- 		regmap_update_bits(samsung->regmap, DPHY_MD3_GNR_CON0,
- 				   PHY_ENABLE, 0);
-@@ -1101,7 +1105,7 @@ static void samsung_mipi_dcphy_pll_disable(struct samsung_mipi_dcphy *samsung)
- }
- 
- static const struct samsung_mipi_dphy_timing *
--samsung_mipi_dphy_get_timing(struct samsung_mipi_dcphy *samsung)
-+samsung_mipi_dphy_tx_get_timing(struct samsung_mipi_dcphy *samsung)
- {
- 	const struct samsung_mipi_dphy_timing *timings;
- 	unsigned int num_timings;
-@@ -1208,13 +1212,13 @@ samsung_mipi_dcphy_pll_round_rate(struct samsung_mipi_dcphy *samsung,
- }
- 
- static void
--samsung_mipi_dphy_clk_lane_timing_init(struct samsung_mipi_dcphy *samsung)
-+samsung_mipi_dphy_tx_clk_lane_timing_init(struct samsung_mipi_dcphy *samsung)
- {
- 	const struct samsung_mipi_dphy_timing *timing;
- 	unsigned int lane_hs_rate = div64_ul(samsung->pll.rate, USEC_PER_SEC);
- 	u32 val, res_up, res_down;
- 
--	timing = samsung_mipi_dphy_get_timing(samsung);
-+	timing = samsung_mipi_dphy_tx_get_timing(samsung);
- 	regmap_write(samsung->regmap, DPHY_MC_GNR_CON0, 0xf000);
- 
- 	/*
-@@ -1269,13 +1273,13 @@ samsung_mipi_dphy_clk_lane_timing_init(struct samsung_mipi_dcphy *samsung)
- }
- 
- static void
--samsung_mipi_dphy_data_lane_timing_init(struct samsung_mipi_dcphy *samsung)
-+samsung_mipi_dphy_tx_data_lane_timing_init(struct samsung_mipi_dcphy *samsung)
- {
- 	const struct samsung_mipi_dphy_timing *timing;
- 	unsigned int lane_hs_rate = div64_ul(samsung->pll.rate, USEC_PER_SEC);
- 	u32 val, res_up, res_down;
- 
--	timing = samsung_mipi_dphy_get_timing(samsung);
-+	timing = samsung_mipi_dphy_tx_get_timing(samsung);
- 
- 	/*
- 	 * The Drive-Strength / Voltage-Amplitude is adjusted by adjusting the
-@@ -1340,15 +1344,15 @@ samsung_mipi_dphy_data_lane_timing_init(struct samsung_mipi_dcphy *samsung)
- 	regmap_write(samsung->regmap, DPHY_MD3_TIME_CON4, 0x1f4);
- }
- 
--static int samsung_mipi_dphy_power_on(struct samsung_mipi_dcphy *samsung)
-+static int samsung_mipi_dphy_tx_power_on(struct samsung_mipi_dcphy *samsung)
- {
- 	int ret;
- 
- 	reset_control_assert(samsung->m_phy_rst);
- 
- 	samsung_mipi_dcphy_pll_configure(samsung);
--	samsung_mipi_dphy_clk_lane_timing_init(samsung);
--	samsung_mipi_dphy_data_lane_timing_init(samsung);
-+	samsung_mipi_dphy_tx_clk_lane_timing_init(samsung);
-+	samsung_mipi_dphy_tx_data_lane_timing_init(samsung);
- 	ret = samsung_mipi_dcphy_pll_enable(samsung);
- 	if (ret < 0) {
- 		samsung_mipi_dcphy_pll_disable(samsung);
-@@ -1356,7 +1360,7 @@ static int samsung_mipi_dphy_power_on(struct samsung_mipi_dcphy *samsung)
- 		return ret;
- 	}
- 
--	samsung_mipi_dphy_lane_enable(samsung);
-+	samsung_mipi_dphy_tx_lane_enable(samsung);
- 
- 	reset_control_deassert(samsung->m_phy_rst);
- 
-@@ -1368,13 +1372,13 @@ static int samsung_mipi_dphy_power_on(struct samsung_mipi_dcphy *samsung)
- 	return 0;
- }
- 
--static int samsung_mipi_dcphy_power_on(struct phy *phy)
-+static int samsung_mipi_dcphy_tx_power_on(struct phy *phy)
+ 	struct {
+@@ -1376,6 +1377,9 @@ static int samsung_mipi_dcphy_tx_power_on(struct phy *phy)
  {
  	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
  
++	if (samsung->legacy_mismatch)
++		return -EOPNOTSUPP;
++
  	switch (samsung->type) {
  	case PHY_TYPE_DPHY:
--		return samsung_mipi_dphy_power_on(samsung);
-+		return samsung_mipi_dphy_tx_power_on(samsung);
- 	default:
- 		/* CPHY part to be implemented later */
- 		return -EOPNOTSUPP;
-@@ -1383,13 +1387,13 @@ static int samsung_mipi_dcphy_power_on(struct phy *phy)
- 	return 0;
- }
- 
--static int samsung_mipi_dcphy_power_off(struct phy *phy)
-+static int samsung_mipi_dcphy_tx_power_off(struct phy *phy)
- {
- 	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
- 
- 	switch (samsung->type) {
- 	case PHY_TYPE_DPHY:
--		samsung_mipi_dphy_lane_disable(samsung);
-+		samsung_mipi_dphy_tx_lane_disable(samsung);
- 		break;
- 	default:
- 		/* CPHY part to be implemented later */
-@@ -1488,13 +1492,13 @@ samsung_mipi_dcphy_pll_calc_rate(struct samsung_mipi_dcphy *samsung,
+ 		return samsung_mipi_dphy_tx_power_on(samsung);
+@@ -1549,13 +1553,21 @@ static struct phy *samsung_mipi_dcphy_xlate(struct device *dev,
+ 		return ERR_PTR(-EINVAL);
  	}
- }
  
--static int samsung_mipi_dcphy_configure(struct phy *phy,
--					union phy_configure_opts *opts)
-+static int samsung_mipi_dcphy_tx_configure(struct phy *phy,
-+					   union phy_configure_opts *opts)
- {
- 	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
- 	unsigned long long target_rate = opts->mipi_dphy.hs_clk_rate;
- 
--	samsung->lanes = opts->mipi_dphy.lanes > 4 ? 4 : opts->mipi_dphy.lanes;
-+	samsung->tx.lanes = opts->mipi_dphy.lanes > 4 ? 4 : opts->mipi_dphy.lanes;
- 
- 	samsung_mipi_dcphy_pll_calc_rate(samsung, target_rate);
- 	opts->mipi_dphy.hs_clk_rate = samsung->pll.rate;
-@@ -1518,10 +1522,10 @@ static int samsung_mipi_dcphy_exit(struct phy *phy)
- 	return 0;
- }
- 
--static const struct phy_ops samsung_mipi_dcphy_ops = {
--	.configure = samsung_mipi_dcphy_configure,
--	.power_on  = samsung_mipi_dcphy_power_on,
--	.power_off = samsung_mipi_dcphy_power_off,
-+static const struct phy_ops samsung_mipi_dcphy_tx_ops = {
-+	.configure = samsung_mipi_dcphy_tx_configure,
-+	.power_on  = samsung_mipi_dcphy_tx_power_on,
-+	.power_off = samsung_mipi_dcphy_tx_power_off,
- 	.init = samsung_mipi_dcphy_init,
- 	.exit = samsung_mipi_dcphy_exit,
- 	.owner	   = THIS_MODULE,
-@@ -1551,7 +1555,7 @@ static struct phy *samsung_mipi_dcphy_xlate(struct device *dev,
- 
- 	samsung->type = args->args[0];
- 
--	return samsung->phy;
-+	return samsung->tx.phy;
+-	if (samsung->type != PHY_NONE && samsung->type != args->args[0])
+-		dev_warn(dev, "phy type select %d overwriting type %d\n",
+-			 args->args[0], samsung->type);
+-
+-	samsung->type = args->args[0];
+-
+-	return samsung->tx.phy;
++	switch (args->args[0]) {
++	case PHY_DIRECTION_TX:
++		return samsung->tx.phy;
++	case PHY_TYPE_DPHY:
++	case PHY_TYPE_CPHY:
++		if (args->args[0] != samsung->type) {
++			dev_warn(dev, "unsupported phy cell %u with phy-type %u\n",
++				 args->args[0], samsung->type);
++			samsung->legacy_mismatch = true;
++		}
++		return samsung->tx.phy;
++	default:
++		dev_err(dev, "invalid phy cell %u\n", args->args[0]);
++		return ERR_PTR(-EINVAL);
++	}
  }
  
  static int samsung_mipi_dcphy_probe(struct platform_device *pdev)
-@@ -1620,11 +1624,12 @@ static int samsung_mipi_dcphy_probe(struct platform_device *pdev)
+@@ -1566,6 +1578,7 @@ static int samsung_mipi_dcphy_probe(struct platform_device *pdev)
+ 	struct phy_provider *phy_provider;
+ 	struct resource *res;
+ 	void __iomem *regs;
++	u32 type = PHY_TYPE_DPHY;
+ 	int ret;
+ 
+ 	samsung = devm_kzalloc(dev, sizeof(*samsung), GFP_KERNEL);
+@@ -1620,6 +1633,11 @@ static int samsung_mipi_dcphy_probe(struct platform_device *pdev)
+ 		return dev_err_probe(dev, PTR_ERR(samsung->grf_apb_rst),
+ 				     "Failed to get system grf_apb_rst control\n");
+ 
++	of_property_read_u32(np, "phy-type", &type);
++	if (type != PHY_TYPE_DPHY && type != PHY_TYPE_CPHY)
++		return dev_err_probe(dev, -EINVAL, "unsupported phy-type %u\n", type);
++	samsung->type = type;
++
+ 	ret = devm_pm_runtime_enable(dev);
  	if (ret)
  		return dev_err_probe(dev, ret, "Failed to enable runtime PM\n");
- 
--	samsung->phy = devm_phy_create(dev, NULL, &samsung_mipi_dcphy_ops);
--	if (IS_ERR(samsung->phy))
--		return dev_err_probe(dev, PTR_ERR(samsung->phy), "Failed to create MIPI DC-PHY\n");
-+	samsung->tx.phy = devm_phy_create(dev, NULL, &samsung_mipi_dcphy_tx_ops);
-+	if (IS_ERR(samsung->tx.phy))
-+		return dev_err_probe(dev, PTR_ERR(samsung->tx.phy),
-+				     "Failed to create MIPI DC-PHY transmitter\n");
- 
--	phy_set_drvdata(samsung->phy, samsung);
-+	phy_set_drvdata(samsung->tx.phy, samsung);
- 
- 	phy_provider = devm_of_phy_provider_register(dev, samsung_mipi_dcphy_xlate);
- 	if (IS_ERR(phy_provider))
 
 -- 
 2.43.0
