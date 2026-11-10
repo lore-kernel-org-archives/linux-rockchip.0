@@ -2,73 +2,98 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BE047606A31C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 19:05:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9AD0A606A32E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 19:30:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pZS3kHPZ;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=LtFOMXuJ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EnJTqneP;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=C0UnN1Xz
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=AAzeSPBnHJ0dhvptP1R7Cf6sIVVCewXdbTnh5ekQE5k=; b=pZS3kHPZzHvzzbSW3FVBtfP07R
-	TKM/tL9Y4YNOuP0WWkzp8/8MUg3x9+9F7Pnc3MtB4PwtVRdmuE4l494tSmEzqV1fLwMKca3kcKsDU
-	RL/xGiXlr8jQLBXSPcsnyHPppkxD6PPjLmMQnpmR1/wCze5oTqeTCnVazhIqxLWUu4ni/rO9OY11E
-	HrrcAiYTsMJOscDJvZWiLVxpLKcV8eBrA8rurlLiwQKg0fAbJQQU61Xgq9q9li+BoWY7hVyNgRwwT
-	SdIVcEH4lmAONTuaHAvV8CoFnvVj8qMA3Z1aBFyjHfQ/xbxqGW8QTVckz5NKq2UevBEEK/Y92Fv6G
-	T4GBqOZA==;
+	bh=N7wx8anIEMqLipsh2H9YDsICmKWoYmTsHRzdiXSfcK0=; b=EnJTqnePt7fx1IHbQ9r0V7UlXx
+	if+8rPwpEdrYZEoIO8lgpJ8Hk+9QWsVHZF1oYQiR7AlnyKDeONkdBQ7jYynFbrjQgFtYF6E/w+YHi
+	pPzAHtCuzlT+E/0Dw1yQ6h8C+gEBjQq3dbO5pshwtxK2jzdzKf4YGKXYmXGVva6hJ7XTkopiWdR+K
+	j+MCjjzkjcwxrW6DuHIfCJ7aNb0xo+CR0DMx6DufznYwshaqYopOm0ma1AVqzDEtoxT6w48M2yBqK
+	kqeFP5oZe2Xp/6sffZuLhmePWy4T9+7GD8j5bv1kx+i427XH2VlCp3J6Loa9oTzgsWnjS+Aw9JN8R
+	KNK6QLLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQrA1-00000004ryF-13Ah;
-	Tue, 10 Nov 2026 19:05:37 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xQrYN-00000004uYw-3KDf;
+	Tue, 10 Nov 2026 19:30:47 +0000
+Received: from mail-dy2-x08.google.com ([2607:f8b0:4864:36::8])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQr9x-00000004rxC-45RX;
-	Tue, 10 Nov 2026 19:05:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794337531;
-	bh=Uz3BhBVImxItOoQKtHHtypAOcZNmLlMDT+UDThYXTEY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LtFOMXuJ9oY36UZepQyWbJGdaDUbedR9kzEldgu4NqYzeJltQNqahDZUmBHzomn9n
-	 n5hT+LMgDCW2Tv5fXbR/Fe535XqydT4G5iywkeZemeqRmSmEFEqOxK+b7lp1HOoOdq
-	 uGtUk2HMib6ufK+DtXvJAsdlFMOKxnsGtBKbTx327CXgufpLnhht0PQNtlCnMO5+cd
-	 0OoTTVhtM7NarFALOwW2rcn6XT0rpJt8PH6ZYzEajQy8j3CEKt4mOFHFfHz329hgcK
-	 v+/8QOD81fb/+iL3IFH75gxRxOTG+LJQMkXV6K3clMEd/J+zNQFUNSq+Roa31tbrC8
-	 UpISE9nB+D/LA==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 890EB17E0820;
-	Tue, 10 Nov 2026 20:05:30 +0100 (CET)
-Message-ID: <cd6ff4c0-cd5d-4c42-8f52-5f3893aec015@collabora.com>
-Date: Tue, 10 Nov 2026 21:05:30 +0200
+	id 1xQrYL-00000004uXZ-1suP
+	for linux-rockchip@lists.infradead.org;
+	Tue, 10 Nov 2026 19:30:46 +0000
+Received: by mail-dy2-x08.google.com with SMTP id 5a478bee46e88-3678f64d078so2933144eec.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 11:30:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1794339044; x=1794943844; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=YVXKXdmO5pc+cT527r2SrlA5H/eJKB4pSKsUd9huCKU=;
+        b=C0UnN1XzKAGElKckLpbXstSQNgH9I/0vSi3qqJET6dT1DurpXI/3AiJPLQbRJPoX+r
+         QvfaZqeTgFKdTeh4JbHNeeM/Pm1tD+gv4OEQ09BZQKOYXPYjjdIa/D3ookS84BVLfJEG
+         vW5h05icddIIXQ9Ilm7vn9T0Ue0kyKUWQ70n7/1og0n6HXn6jBH5NksxKLlc3FzgdNbq
+         e69Gk5qRFbxtbucqfx/6PQzzg7E8fCq3jljnXYVwxrNF6JhUpBjbkCn+H4Rk3S44Kq2t
+         IFVDzq0OUecz3cURAIbvVBgch4vo0kMKRN9bsBdFrWOk8OV2UmbvKaoYmt4cwlIVgdSA
+         +EqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794339044; x=1794943844;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=YVXKXdmO5pc+cT527r2SrlA5H/eJKB4pSKsUd9huCKU=;
+        b=ty0jPQ+OUQYiXpwnYbqhhg/bFivY+JDRdleY/VR/eBh2umSNq7u7NtE8DOqfB+5Tfn
+         fYNKwdK34IOz/uUrbMJvyStuWp502j0W9kDztxL41NXYyMpTc4Q/BEgHBDE8RmTC7uz8
+         neXv3I3F7c5VQnvKVk4YjJb2GvPQNNjAMIN5ClRZ0tb/xAwrLzc1eiBtJIQ0pbMn8i0p
+         r0j/hS4Q1MBUvsR3ubGAT9knMccPIohY+RYGkTxftXuiGSPK+WYdaV7N1ox4FeUg3tD3
+         gw4HJMjZzTfIaztZ7ehThLxFFaXue7b9m9DGH0YmWzP1pzE6O1WmqBgQuoQ7DuCAXWjs
+         G7jw==
+X-Forwarded-Encrypted: i=1; AL+hErFh0v20Ppu4PxDQL7E0tgw58Z5B8kJLg9bD8+PrKj9TnU4PYP/jDdadd1PZMPzMm1GO1qarMSg7hm8mwZ8w1Q==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/WT9Jk0ZZKXQQTeaHWgTFTIULkRpwCZm1or/HYtW1FugaSLXsF
+	CkixK6de92pHBy9c0DcHSTPdMhmgldnOKxU9L72Ll2n7Lpgva134Xd+G
+X-Gm-Gg: AYBFou2ioo5+Ky3jai8q789aOPS/z5A5Ed/6yxbnoR/a/rZeohv2zXs1bIu1rwsR4By
+	scx0xcqkZZklyhJxqkomIa+b0Wi3LGgsvR0jvkxaFgcBjWe8AYhwFymmLpmJ+oYuSwo53pD2QpH
+	PrrGqwKnuIa8ouji0hdZTwLStf61LQiAxbm/A5fZHanIWs8QV4P0NLPfx7qJzhTdj4hW4VBMFqF
+	xRbreZ5VAgh9CDb447gWh4HIcqkRxwrrQYpbfjabzQlnW0E6p5Sy8xGWx9jI3n4rikl2icxYhy5
+	O8O7B3qimE6OPf+FMt7ypsrfHbAvt60DU9Mko2CQS6LxAqcznOoaB8keBC8W9ipWyEC6vEekrS5
+	9WI5ocydqi0CGYtNM0QjBKMr3RRtULaDSqwK+n2B82Gl1u2JazDIqz/j2n+rVMEV5QB4QNH9sBT
+	SDkwHvFzknL+9XpgB8VCTGqOkFu7cnZ4naq/3/uxyg7L93fvPeWqPyQNYHLRhiHonGNmTS8gFtb
+	4fq//RTO07iLHJBAcbe48pkWbHZBFBytEAG0LXweiie1BCw8ndwzy9vmLoqYAvKxeRGRBMvB0ZT
+	lsHGuefZQYweuyU9/hL63aUsxuiWNJ3NmzCZGHQZkwLI0YQH8A==
+X-Received: by 2002:a05:7301:d80b:b0:375:370e:f1ff with SMTP id 5a478bee46e88-37687214128mr374176eec.35.1794339043899;
+        Tue, 10 Nov 2026 11:30:43 -0800 (PST)
+Received: from AERO17.taila7786d.ts.net ([45.95.212.224])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3751ad6f11csm7730435eec.0.2026.11.10.11.30.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Nov 2026 11:30:43 -0800 (PST)
+From: Pufan Jin <cyan2254650260@gmail.com>
+To: Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Rob Herring <robh@kernel.org>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH 1/2] arm64: dts: rockchip: add USB-C PD support to LubanCat 4
+Date: Wed, 11 Nov 2026 03:30:27 +0800
+Message-ID: <20261110193028.512456-2-cyan2254650260@gmail.com>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <20261110193028.512456-1-cyan2254650260@gmail.com>
+References: <20261110193028.512456-1-cyan2254650260@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 6/7] drm/rockchip: dw_hdmi_qp: Set the VOP2 color space
- from the connector
-To: =?UTF-8?Q?Jan_Clau=C3=9Fen?= <jan.claussen10@web.de>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20261018143135.5745-1-jan.claussen10@web.de>
- <20261018143135.5745-7-jan.claussen10@web.de>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20261018143135.5745-7-jan.claussen10@web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_110534_209413_33CCA823 
-X-CRM114-Status: GOOD (  18.69  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261110_113045_496713_8B6CA291 
+X-CRM114-Status: GOOD (  15.09  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,57 +103,219 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgSmFuLAoKT24gMTAvMTgvMjYgNTozMSBQTSwgSmFuIENsYXXDn2VuIHdyb3RlOgo+IFZPUDIg
-Y29udmVydHMgUkdCIHRvIFlDYkNyIHVzaW5nIHRoZSBtYXRyaXggc2VsZWN0ZWQgYnkgdGhlIENS
-VEMKPiBzdGF0ZSdzIGNvbG9yX3NwYWNlLCBidXQgdGhlIEhETUkgZW5jb2RlciBuZXZlciBzZXRz
-IGl0LCBzbyBWT1AyCj4gYWx3YXlzIGNvbnZlcnRzIHdpdGggQlQuNzA5LiBPbmNlIHRoZSBjb2xv
-cnNwYWNlIHByb3BlcnR5IGNhbgo+IHNpZ25hbCBCVC4yMDIwIGNvbG9yaW1ldHJ5IHRvIHRoZSBz
-aW5rLCBhIFlDYkNyIG91dHB1dCB3b3VsZCBiZQo+IGVuY29kZWQgd2l0aCBCVC43MDkgYW5kIGRl
-Y29kZWQgd2l0aCBCVC4yMDIwLgo+IAo+IERlcml2ZSBjb2xvcl9zcGFjZSBmcm9tIHRoZSBjb25u
-ZWN0b3IgY29sb3JzcGFjZSBiZWZvcmUgdGhlIGVhcmx5Cj4gcmV0dXJuLCBzbyB0aGF0IGEgY29s
-b3JzcGFjZSBjaGFuZ2UgYWxvbmUgaXMgYXBwbGllZC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKYW4g
-Q2xhdcOfZW4gPGphbi5jbGF1c3NlbjEwQHdlYi5kZT4KPiAtLS0KPiAgZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL2R3X2hkbWlfcXAtcm9ja2NoaXAuYyB8IDE2ICsrKysrKysrKysrKysrKysKPiAg
-MSBmaWxlIGNoYW5nZWQsIDE2IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWlfcXAtcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2Ry
-bS9yb2NrY2hpcC9kd19oZG1pX3FwLXJvY2tjaGlwLmMKPiBpbmRleCA5YzRjZjY4ZDc5ZDUuLjEw
-YzViNmQ2NDA2ZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRt
-aV9xcC1yb2NrY2hpcC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWlf
-cXAtcm9ja2NoaXAuYwo+IEBAIC0xNyw2ICsxNyw3IEBACj4gICNpbmNsdWRlIDxsaW51eC9waHkv
-cGh5Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9waHkvcGh5LWhkbWkuaD4KPiAgI2luY2x1ZGUgPGxp
-bnV4L3JlZ21hcC5oPgo+ICsjaW5jbHVkZSA8bGludXgvdmlkZW9kZXYyLmg+Cj4gICNpbmNsdWRl
-IDxsaW51eC93b3JrcXVldWUuaD4KPiAgCj4gICNpbmNsdWRlIDxkcm0vYnJpZGdlL2R3X2hkbWlf
-cXAuaD4KPiBAQCAtMTg3LDYgKzE4OCwxOSBAQCBzdGF0aWMgaW50IGR3X2hkbWlfcXBfcm9ja2No
-aXBfZ2V0X3ZvcF9mb3JtYXQoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAo+ICAJcmV0dXJu
-IGJzdGF0ZS0+b3V0cHV0X2J1c19jZmcuZm9ybWF0Owo+ICB9Cj4gIAo+ICtzdGF0aWMgdTMyCj4g
-K2R3X2hkbWlfcXBfcm9ja2NoaXBfY29sb3Jfc3BhY2UoY29uc3Qgc3RydWN0IGRybV9jb25uZWN0
-b3Jfc3RhdGUgKmNvbm5fc3RhdGUpCj4gK3sKPiArCXN3aXRjaCAoY29ubl9zdGF0ZS0+Y29sb3Jz
-cGFjZSkgewo+ICsJY2FzZSBEUk1fTU9ERV9DT0xPUklNRVRSWV9CVDIwMjBfUkdCOgo+ICsJY2Fz
-ZSBEUk1fTU9ERV9DT0xPUklNRVRSWV9CVDIwMjBfWUNDOgo+ICsJY2FzZSBEUk1fTU9ERV9DT0xP
-UklNRVRSWV9CVDIwMjBfQ1lDQzoKPiArCQlyZXR1cm4gVjRMMl9DT0xPUlNQQUNFX0JUMjAyMDsK
-PiArCWRlZmF1bHQ6Cj4gKwkJcmV0dXJuIFY0TDJfQ09MT1JTUEFDRV9ERUZBVUxUOwo+ICsJfQo+
-ICt9CgpNeSBtYWluIGNvbmNlcm4gaXMgaW50cm9kdWNpbmcgVjRMMl9DT0xPUlNQQUNFXyogbG9n
-aWMgaW50byBhIERSTSBicmlkZ2UgZHJpdmVyLAp3aGljaCBzaG91bGQgcmF0aGVyIHJlbHkgb24g
-ZW51bSBkcm1fY29sb3JzcGFjZSAvIERSTV9NT0RFX0NPTE9SSU1FVFJZXyouClRyYW5zbGF0aW5n
-IHRoZSBEUk0gY29sb3JpbWV0cnkgaW50byBWNEwyIHZhbHVlcyBvbmx5IGZvciBWT1AyIHRvIG1h
-cCB0aGVtIGJhY2sKdG8gYSBDU0MgbWF0cml4IGRvZXNuJ3Qgc2VlbSBmdWxseSBqdXN0aWZpZWQu
-CgpUaGUgcm9vdCBwcm9ibGVtIGlzIHJhdGhlciBvbiB0aGUgVk9QMiBzaWRlOiB0aGUgY29sb3Jf
-c3BhY2UgZmllbGQgaW4gc3RydWN0CnJvY2tjaGlwX2NydGNfc3RhdGUgYW5kIGl0cyBWNEwyLWJh
-c2VkIGhhbmRsaW5nIGluIHRoZSBDU0Mgc2VsZWN0aW9uIGxvb2sgbGlrZQpsZWZ0b3ZlcnMgaW5o
-ZXJpdGVkIGZyb20gdGhlIHZlbmRvciBrZXJuZWwsIGFuZCBJIHRoaW5rIHRoaXMgaXMgYSBnb29k
-IHRpbWUgdG8KY2xlYW4gdGhhdCB1cCBpbnN0ZWFkIG9mIGJ1aWxkaW5nIG9uIGl0LgoKQ3Jpc3Rp
-YW4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+The EmbedFire LubanCat 4 has a Type-C port on the front panel backed by
+a Fairchild FUSB302 Type-C controller connected to I2C1 (at 0x22).
+VBUS 5V power is supplied through a fixed regulator enabled by
+GPIO1_C1 (active high), current-limited to 2A by an LPW5209 switch.
+
+Add the FUSB302 node, the fixed VBUS regulator, and the USB-C connector
+with dual-role power (source 5V/2A, sink 5V/1A) and dual-role data.
+Wire the HighSpeed data endpoint to usb_host0_xhci and the SuperSpeed
+data endpoint to usbdp_phy0.  Set usb_host0_xhci to OTG mode with
+usb-role-switch enabled, and add orientation-switch on usbdp_phy0.
+
+DisplayPort alternate mode support is added in a subsequent patch.
+
+Tested on LubanCat 4 hardware:
+- fusb302 and tcpm probe cleanly;
+- USB host mode verified with USB 2.0 and USB 3.0 peripherals;
+- USB 2.0 devices enumerate and transfer data in both orientations;
+- USB 3.0 devices enumerate at SuperSpeed (5Gbps) in normal orientation;
+  reverse-orientation SuperSpeed is subject to the known upstream
+  phy-rockchip-usbdp driver reinit limitation;
+- USB device mode verified via ConfigFS CDC ACM serial gadget connected
+  to a host PC with successful high-speed enumeration and bidirectional
+  data communication;
+- VBUS switch (LPW5209) enables in source mode and remains disabled in
+  sink mode with reverse current blocked.
+
+Signed-off-by: Pufan Jin <cyan2254650260@gmail.com>
+---
+ .../boot/dts/rockchip/rk3588s-lubancat-4.dts  | 115 +++++++++++++++++-
+ 1 file changed, 114 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts b/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
+index 0d28c6165..a94aaddb2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-lubancat-4.dts
+@@ -8,9 +8,11 @@
+ /dts-v1/;
+ 
+ #include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/leds/common.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/soc/rockchip,vop2.h>
++#include <dt-bindings/usb/pd.h>
+ #include "rk3588s.dtsi"
+ 
+ / {
+@@ -116,6 +118,18 @@ vcc5v0_usb30_host: regulator-vcc5v0-usb30-host {
+ 		vin-supply = <&vcc5v0_sys>;
+ 	};
+ 
++	vbus5v0_typec: regulator-vbus5v0-typec {
++		compatible = "regulator-fixed";
++		regulator-name = "vbus5v0_typec";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		enable-active-high;
++		gpio = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&typec_vbus_en>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
+ 	fan: pwm-fan {
+ 		compatible = "pwm-fan";
+ 		cooling-levels = <0 100 150 200 255>;
+@@ -286,6 +300,51 @@ regulator-state-mem {
+ 			regulator-off-in-suspend;
+ 		};
+ 	};
++
++	usbc0: usb-typec@22 {
++		compatible = "fcs,fusb302";
++		reg = <0x22>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PC6 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&fusb302_int>;
++		vbus-supply = <&vbus5v0_typec>;
++		status = "okay";
++
++		usb_con: connector {
++			compatible = "usb-c-connector";
++			label = "USB-C";
++			data-role = "dual";
++			power-role = "dual";
++			try-power-role = "source";
++			op-sink-microwatt = <1000000>;
++			sink-pdos =
++				<PDO_FIXED(5000, 1000, PDO_FIXED_USB_COMM)>;
++			source-pdos =
++				<PDO_FIXED(5000, 2000, PDO_FIXED_USB_COMM)>;
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				port@0 {
++					reg = <0>;
++
++					usbc0_hs: endpoint {
++						remote-endpoint = <&usb_host0_xhci_hs>;
++					};
++				};
++
++				port@1 {
++					reg = <1>;
++
++					usbc0_ss: endpoint {
++						remote-endpoint = <&usbdp_phy0_ss_out>;
++					};
++				};
++			};
++		};
++	};
+ };
+ 
+ &mdio1 {
+@@ -346,6 +405,16 @@ usb30_host_pwr_en: usb30-host-pwr-en {
+ 			rockchip,pins = <1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	usb-typec {
++		fusb302_int: fusb302-int {
++			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		typec_vbus_en: typec-vbus-en {
++			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
+ };
+ 
+ &pwm0 {
+@@ -748,8 +817,30 @@ &usb_host0_ohci {
+ };
+ 
+ &usb_host0_xhci {
+-	dr_mode = "host";
++	dr_mode = "otg";
++	usb-role-switch;
+ 	status = "okay";
++
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			reg = <0>;
++
++			usb_host0_xhci_hs: endpoint {
++				remote-endpoint = <&usbc0_hs>;
++			};
++		};
++
++		port@1 {
++			reg = <1>;
++
++			usb_host0_xhci_ss: endpoint {
++				remote-endpoint = <&usbdp_phy0_ss_in>;
++			};
++		};
++	};
+ };
+ 
+ &usb_host1_ehci {
+@@ -765,7 +856,29 @@ &usb_host2_xhci {
+ };
+ 
+ &usbdp_phy0 {
++	orientation-switch;
+ 	status = "okay";
++
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@0 {
++			reg = <0>;
++
++			usbdp_phy0_ss_out: endpoint {
++				remote-endpoint = <&usbc0_ss>;
++			};
++		};
++
++		port@1 {
++			reg = <1>;
++
++			usbdp_phy0_ss_in: endpoint {
++				remote-endpoint = <&usb_host0_xhci_ss>;
++			};
++		};
++	};
+ };
+ 
+ &vop {
+-- 
+2.56.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
