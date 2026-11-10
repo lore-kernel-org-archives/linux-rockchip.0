@@ -2,113 +2,91 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4839A606A326
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 16:11:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 30EB660A3832
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 17:19:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VERb7Cer;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=pLXUjdyr
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=btG7v7et;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=mAYKqsm9
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=CLoQYjGxdENl3gyel7yxpMkmv3GLyBiMi/Ud6zwwiLA=; b=VERb7CerT7b2vVOLoep1qNtxGQ
-	VXOCQBh247RmoaN6rZ9TQnhZ3xYaxazxu56rcPlY3ptpiK4X8SIDhLKR8Ao6QRxgPcvc+YuuQm9ph
-	wV2GCvk1aoCtgPfALSQPiUIpvzXYOTcQ2VykViSflzeHN9/BdpxXAMMQM1Ow1C/gSv0TUznhXurTc
-	cLq1ZtjoS+Y4NB5OK/DDCjX9tQuN0oTnrn3DHbUlluI3I+22EA9uMLOOxvmI9grymTvbvfJCOmIfX
-	VuQIAN5vEig9JeGHjt9NUOtkLlmNWaLr6hEbv/ou9XzYDcWAGXBSpUWoelto1pbulTm0uEXAHJ4vK
-	4y2XNpEg==;
+	bh=pSp5yu/bZmlo/VHN6wbR6ZOlQTG4d4LK7vxSWBbytgI=; b=btG7v7ethxTQTbW3yjF0H2zt/o
+	hCE3TaYjY/EGRoRPzgjk2kynsZvifT9SbsNfvem8YCowunNKfabkBrc7i1Nas4O/jMoTgQpSExv69
+	Tw+D0RPLk72MGOHUbnnesOu26Ow+hIAEuY7b9GL/JfnvSu6fGjGFdaxcbKqmzZsGTh8xQrmnCyGzR
+	5hV4ivgdrFLVdq5H8s8pm91jdS9JWU0M59AB5Y7gGNAePsRQYh6BTlFEH3zTPtTHsKPqzZ8oW0NLj
+	xqZrPkHkok9cWHqzLhpV05AN6qL+q3v+KTfr164Kn090l/lP5FsLWOgwERyuyfGK0Sm17vqQY2f/B
+	dBBU89iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQoRt-00000004UTw-29xR;
-	Tue, 10 Nov 2026 16:11:53 +0000
-Received: from mail-ej2-x05.google.com ([2a00:1450:4864:34::5])
+	id 1xQpVZ-00000004eEc-1GSu;
+	Tue, 10 Nov 2026 17:19:45 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQoRr-00000004UTB-23tM
-	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Nov 2026 16:11:52 +0000
-Received: by mail-ej2-x05.google.com with SMTP id a640c23a62f3a-c50489cdf7eso48848466b.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 08:11:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794327109; cv=none;
-        d=google.com; s=arc-20260327;
-        b=Sdgue9bSfmbMIvmdVZVplRYhLjm/xSVf4pCTQbAHvKPTEYvePdIfGUasYIvX6fLS86
-         1yvTjHGwEJ1g8TM/XoxfU1kCJZqQLmub9qZkn1CyPUBG2wz/I74hAJztfjWRUHow0/7J
-         lIuU5M3J6xw7j8YiCPZPB2x+9emTChr8x89M+H/ixYT2lLZlCahYNT2lkFm6G2m46Nx2
-         Tx3cXOIShJH28qkSAXyNjtykh3jtJCg2xeGll3eI5F6wczTCwBRI2AsyicaPmI2JfSHd
-         /pMj+HLJ6nSt0bRJ9pLnpoZGPf1ZIkXAYiz07m/+c+6zrvMSNvnmE58P8Zarvu5PEYmD
-         NoCQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Bvu8fH1m1BZ2sQQoPyfnhre5VWvJqEOu2Sa0mYvTTis=;
-        fh=SwJZZuVFGiAcphMdhNy7lEo1xwkKfpZVobMG5oVBE9I=;
-        b=VPyxHuz5QD0PgjLee7yLKl6poBgh91204A0va/uppujX37yTisBCUTRd1KXOlj3x7X
-         WZOb547BqrNZmAXcMNLMY00v+QbDdX3rkw0OsurLZF6ZV0uOfAZ8uAfj00aSsqqadZqq
-         /FPx6hgglmtdRtU1KSN/NfB7vbDh7/y+7io/f2RfC+8hwtYaEl4BPs8KmUsCFCYE61n1
-         UX1R5CcINlxmAwRb96nb6EODjIx381mXeAOfSrflo8UihNlVzg9W2FL2mFUUkbBZeLup
-         PbCuIPn83NVEQ8Ze7SfD/0mLDI5qqs9gjWqygsczdysGzWCWSt2gDpCk9aUeQeaFZn0X
-         BDHg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794327109; x=1794931909; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=Bvu8fH1m1BZ2sQQoPyfnhre5VWvJqEOu2Sa0mYvTTis=;
-        b=pLXUjdyrLWBEOqTha9DT5DqgD4SoJZe980qSASshUBRne4Ez8b5d71pTSQQjf1zcQ0
-         PWohAfmO52Xm0Fu3GM/4iC3svlG8AarprQwezpetXOyX1TLL2vAPZt1Jg1GxLiEwaLwh
-         mSQ+xOkLfMfiboUqjq2cnsMXgUb3QGC6ayFlEAi0F8KFM1mD+/iTQCgaGJhBRbfT3N0o
-         wRwHMoX4m4maDwtFvM2PQ18S5i0mVxnZhmJ0/Eg3fUDvXg2rrWQELo79Eub2w7/p22cV
-         lC4hFXTCI24lZ2JrBe2fTLsHf5pwBJSf5B4oiqt2vS0ZZBMnYqXS7aMY66Pq3y2gGNWk
-         QUBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794327109; x=1794931909;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=Bvu8fH1m1BZ2sQQoPyfnhre5VWvJqEOu2Sa0mYvTTis=;
-        b=LGBqBUMVAiZjB7whcldzmSrtC6POeE6FCsTn+1i674YGQyLAtYcThs8R6rfd+oLhHv
-         fkynwor1pzQCc8t7mX+IrVHgmeNH+0cnxrDDCY48avvyU/yzRyouarc0uAXIxF6QzLYJ
-         ebc/t/UXTWp8s2Rk6quKTzjOHPtsdFpMKDPJUxGOMFmd+RBNrKDv3+cOGY8Liqp5/Me+
-         RNpVwaXnK+sWSN1v3kMYAlRCWYQB0ITaeO6DWgIABhyUK/Xu4cyfLFQNBLgU4Hr6KwSj
-         MDWaVWSqDXPr+cS8JoBi8PHfg7r3JxdObPRn8wyK7kNwf/pa5cQz6uDXc8/ugtBeuxHY
-         PWMw==
-X-Forwarded-Encrypted: i=1; AL+hErE2j2VXJH99a0wK5Y9UIf/ZHEs1jr2gdRtZr2yWhDGI5iWhouBHwzcsKd9j186qI9uJGpWEHrZNdeU80q6R9A==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+IxuwTDqR2s4SudoZApbki2RNTlw6LbaQoyCo7iCl0zCb4qLf1
-	MD8mucyG9tmeS3FCLtDaDjXnYC+SpwEJTOuTTUKpWCeYfRPtrcfmxSm37TLfoNvvkb0kFguHgQK
-	//qDX2HNmIsETzpS1KRyuWHKpA26WWuQ=
-X-Gm-Gg: AYBFou3j7WU6NeuOI0M0OrrCpo7sZ6YfmkwJ4cmvNjcgy0EbMs2Eq+hDZCpYT6LluTm
-	2IK6NetRwW01bt5VmFRuhkTs8ojmayjuzAoWkC8QYS9qK7kGoWGEBhyvVyvgd2KSb7hsVJFuiQY
-	Go5QAjNllko16wSdXpWK7qC74HTihxGHbSw1FDFvglHXqi8I2B/re4hlAAk2YF/ZI3RX+DMEWOM
-	cqOpzM3Fla5hPXDiUSmOla9XqLtwE+G48wkm7hAsJOQuWUaKgblmcRD7eKwNx1ffDR9umbBps2L
-	efi6xVqzLzIGme6kD3DuDlCSF/YR2/SaXP16ALUUNTDQj0FxlTHdRxEi3ggC7+7LpUVpy20YC+f
-	9hei3fUAZjM6ve2Emb8IgvtX0d3vt2l/HRWSHbqazodeKruAhyK8=
-X-Received: by 2002:a17:906:194a:b0:c41:266:68a7 with SMTP id
- a640c23a62f3a-c504952c255mr192385866b.10.1794327109186; Tue, 10 Nov 2026
- 08:11:49 -0800 (PST)
+	id 1xQpVW-00000004eBi-0F60;
+	Tue, 10 Nov 2026 17:19:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1794331179;
+	bh=cEdOypZJGYYFaGv+bcDJnJcN+5GsC8u8XziW0E9RE2s=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=mAYKqsm9ZOnzXlda1nPeTj2Ncisqjvl1U+P9t6ev7BkqUgqVqMP4DEG6xwc47tQwT
+	 IMLJWyZesRDqzoTdM3aD42GPQskf3bGy5KxyrFZgzNtHNe6SDXfEZbjChbJlh+fint
+	 nXPN88xEwsidV9G6u50EFeuxvpusnZw3y1wKbXyYrk3OjMSUn4IFYe7eENY1cTR/Cq
+	 hz23vehC89Jkq59apl5ebU4vyJkqdQmp/iYOY6B2rhWhJjbJ1bLkgmugvfC1xrv0pC
+	 LlUh2MEqxDTZ0A6rIsef0+HqzFOK9cwI96QJPE4txkfJaQnsYJBIWjPUlWC7KFrdZu
+	 W5AqpIXPgWljA==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 56CE117E0F7F;
+	Tue, 10 Nov 2026 18:19:39 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 0E4CC480031; Tue, 10 Nov 2026 18:19:39 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Tue, 10 Nov 2026 18:19:16 +0100
+Subject: [PATCH v5 3/6] phy: rockchip: inno-usb2: ignore reset_control
+ return codes
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <CALj3r0ijsuzadYoi0NPkSpT8smRyi607APfxLS8_u3JSH3+dPg@mail.gmail.com>
- <20261106115040.1199269-1-amadeus@jmu.edu.cn>
-In-Reply-To: <20261106115040.1199269-1-amadeus@jmu.edu.cn>
-From: Coia Prant <coiaprant@gmail.com>
-Date: Wed, 11 Nov 2026 00:11:35 +0800
-X-Gm-Features: AclHuK-W_aGhTciJcK2jT1mQzUOxx8a9MsoP2BEfAZfP7jfpZyRRqnBuAfsnq9g
-Message-ID: <CALj3r0hOjksUtYg+qLqPU9kz4w3SAqGvSmFFi9YBXNGiEPEZSw@mail.gmail.com>
-Subject: Re: [PATCH v3 5/6] arm64: dts: rockchip: fix USB OTG power on
- Photonicat in battery mode
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: bigfoot@classfun.cn, conor+dt@kernel.org, devicetree@vger.kernel.org, 
-	heiko@sntech.de, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Message-Id: <20261110-phy-rockchip-inno-usb2-clock-fix-v5-3-d2e24582ab22@collabora.com>
+References: <20261110-phy-rockchip-inno-usb2-clock-fix-v5-0-d2e24582ab22@collabora.com>
+In-Reply-To: <20261110-phy-rockchip-inno-usb2-clock-fix-v5-0-d2e24582ab22@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ William Wu <william.wu@rock-chips.com>
+Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Igor Paunovic <royalnet026@gmail.com>, kernel@collabora.com, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2877;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=cEdOypZJGYYFaGv+bcDJnJcN+5GsC8u8XziW0E9RE2s=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGrzUioU83y55RoTcW5M4EslBdwW6sK1ipqKr
+ dtG6ZQTX3KkjokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq81IqAAoJENju1/PI
+ O/qapDoP/i8/CpMikDpZoqzjI0sxHyT9WjX7mRUHxuokQDn0KhQ5GF0zcPJUmmR+FCVtLVyy5t+
+ mxuypXYJrmu1A2DQejqdpgKpjWy6KBTRRI+lXBI33uW0wMWafP+ZFhg63RUn16zRI+GR6XswxL3
+ uclKwZRgy3+iEcsGlQ5M1nTnUyjXnMTpwZhNsyF57JYKEpFFey7minYTVXjtRBMXVeG8KV4V/Gs
+ YtJ8inxOR8tyeYJZeFlrkqy9Aqpk7gMmobflFktUZJp5uncL2UaUPShU7xzFm3oNa6AZH/Hd4sp
+ 3SoDSyDs9RfIaqHhTENfkyCJeiASxe1PCd3Oha7hAK1Rr0yOaDMaF/BLRq3gm24vEFGlRZDbAxu
+ pP4wMqZZCd4JudlNUgCUufPigJBvkhSWvWM8WellnAXLnO2Rc5d9umtDMGKRQHkea9tyaCRNkF2
+ noqAVuQY+nbtpbBXLiONqOEAqw6o0jiBNZsMksD2HRXzuFECUbih4fBG816iL9YV/U+Ytd+jB9W
+ mQjjYHtIZ19rMtDkKxoXQdPjfZbMFbmu4ib+/tznc0uIhWGk2EQmvwEwt0ZKxjdFQpeQm0X0yP2
+ 5cumy1AbUAa6OTprXTWd5LQjLsLmj2YkPLgY4wgLnmzIIzaUPXjkMie4ccA03IUW4uGFEUd2LpH
+ dslJEkUf96da5jTH+tz8c0A==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_081151_551658_0934A743 
-X-CRM114-Status: GOOD (  17.43  )
-X-Spam-Score: 0.4 (/)
+X-CRM114-CacheID: sfid-20261110_091942_266655_EB0279C6 
+X-CRM114-Status: GOOD (  11.83  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,53 +96,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Q2h1a3VuIFBhbiA8YW1hZGV1c0BqbXUuZWR1LmNuPiDkuo4yMDI25bm0MTHmnIg25pel5ZGo5LqU
-IDE5OjUx5YaZ6YGT77yaCj4KPiBIaSwKPgo+ID4gICAgKDVWX0JPT1NUIGFuZCA1Vl9PVVQpLiBB
-ZGRpbmcgYSBgdmNjYCBwcmVmaXggd291bGQgYnJlYWsgdGhlIDE6MQo+ID4gICAgbWFwcGluZyBi
-ZXR3ZWVuIHRoZSBEVFMgYW5kIHRoZSBzY2hlbWF0aWMsIG1ha2luZyBpdCBoYXJkZXIgZm9yCj4g
-PiAgICBhbnlvbmUgdHJhY2luZyB0aGUgYm9hcmQgcG93ZXIuCj4KPiBJIGRpZG4ndCBtZWFuIHRv
-IGNoYW5nZSB0aGUgbm9kZW5hbWUsIGJ1dCByYXRoZXIgYWxpYXNlcy4KPiBCVFcgbm9kZXMgc2hv
-dWxkIGJlIHNvcnRlZCBieSBub2RlbmFtZSAocGxhY2VkIGF0IHRoZSB0b3ApLgo+Cj4gPiAgLi4u
-IEhvd2V2ZXIsIDVWX09VVAo+ID4gIGlzIGEgZGlzdGluY3QgbmV0IGluIHRoZSBzY2hlbWF0aWMu
-IEtlZXBpbmcgdGhlIG5vZGUgbWFrZXMgdGhlIERUCj4gPiAgcG93ZXIgdHJlZSBhY2N1cmF0ZWx5
-IHJlZmxlY3QgdGhlIGhhcmR3YXJlIGFuZCBjbGVhcmx5IGRvY3VtZW50cwo+ID4gIHRoYXQgYm90
-aCB0aGUgVVNCIFZCVVMgYW5kIEhETUkgNVYgZG9tYWlucyBzaGFyZSB0aGlzIE9SLWVkIHNvdXJj
-ZS4KPgo+IEl0IGlzIG5vdCBhbiBpbmRlcGVuZGVudCBuZXR3b3JrLiA1Vl9CT09TVCBhbmQgNVZf
-T1VUIGFyZSBvbiB0aGUgc2FtZQo+IFZPVVQsIG9ubHkgc2VwYXJhdGVkIGJ5IGEgZGlvZGUuIFRo
-ZSBkZXZpY2UgdHJlZSBkZXNjcmliZXMgdGhlIGhhcmR3YXJlLgo+IDVWX09VVCBpcyBub3QgYSBy
-ZWd1bGF0b3IsIGl0IGhhcyBubyBlbmFibGUgY29udHJvbCwgc28gdHJlYXRpbmcgaXQgYXMKPiBh
-IHN0YW5kYWxvbmUgcmVndWxhdG9yIGlzIGluY29ycmVjdC4KPgo+ID4gIC4uLiAgRm9yIG5vdywg
-Y2hhaW5pbmcKPiA+ICAgIGB2Y2M1djBfdXNiMzBfb3RnMGAgLT4gYDV2X291dGAgLT4gYDV2X2Jv
-b3N0YCBpcyB0aGUgbW9zdCBhY2N1cmF0ZQo+ID4gICAgcmVwcmVzZW50YXRpb24uCj4KPiBBZGRp
-bmcgYSBmYWtlIHJlZ3VsYXRvciBpcyBqdXN0IGEgd2FzdGUgb2Ygc3RhcnR1cCB0aW1lLgoKSGks
-CgpUaGFua3MgZm9yIHRoZSBmZWVkYmFjay4KCkkgdW5kZXJzdGFuZCB5b3VyIGNvbmNlcm4gcmVn
-YXJkaW5nIDVWX09VVCBub3QgYmVpbmcgYSBzdGFuZGFsb25lCnBoeXNpY2FsIHJlZ3VsYXRvci4g
-SG93ZXZlciwgSSdkIHByZWZlciB0byBrZWVwIHRoZSBub2RlIGZvciB0d28KcmVhc29uczoKCjEu
-IENvbnNpc3RlbmN5OiBUaGUgRFRTIGFscmVhZHkgbW9kZWxzIG90aGVyIGFsd2F5cy1vbiBmaXhl
-ZCByYWlscwogICB3aXRob3V0IGFueSBlbmFibGUgY29udHJvbCAoZS5nLiwgdmNjaW5fNXYsIHZj
-Y19zeXNpbiwgdmNjX3N5c29uKS4KICAgS2VlcGluZyA1dl9vdXQgaXMgY29uc2lzdGVudCB3aXRo
-IHRoaXMgZXN0YWJsaXNoZWQgcGF0dGVybiBpbiB0aGUKICAgc2FtZSBmaWxlLgoKMi4gQWNjdXJh
-Y3kgdG8gdGhlIHNjaGVtYXRpYzogNVZfT1VUIGlzIGEgZGlzdGluY3QgbmV0IHdoZXJlIHRoZQog
-ICBleHRlcm5hbCBEQyBpbnB1dCBhbmQgdGhlIGJvb3N0IG91dHB1dCBhcmUgT1ItZWQgdG9nZXRo
-ZXIuIEtlZXBpbmcKICAgdGhpcyBub2RlIG1ha2VzIHRoZSBEVCBwb3dlciB0cmVlIGEgMToxIG1h
-cHBpbmcgdG8gdGhlIGhhcmR3YXJlCiAgIHNjaGVtYXRpYywgY2xlYXJseSBkb2N1bWVudGluZyB0
-aGF0IGJvdGggVVNCIFZCVVMgYW5kIEhETUkgNVYgc2hhcmUKICAgdGhpcyBPUi1lZCBzb3VyY2Uu
-CgpSZWdhcmRpbmcgdGhlIHN0YXJ0dXAgdGltZSwgYSBmaXhlZC1yZWd1bGF0b3Igd2l0aG91dCBH
-UElPIG9yIGNsb2NrCmNvbnRyb2xzIGRvZXMgbm8gaGFyZHdhcmUgSS9PIGR1cmluZyBwcm9iZSwg
-c28gdGhlIG92ZXJoZWFkIGlzCm5lZ2xpZ2libGUuCgpPbiB0aGUgbm9kZSBvcmRlcmluZzogdGhl
-IG5vZGUgaXMgbmFtZWQgYHJlZ3VsYXRvci01di1ib29zdGAgKHN0YXJ0aW5nCndpdGggJ3InKSwg
-c28gaXQgaXMgY29ycmVjdGx5IHNvcnRlZCBhZnRlciBgYmF0dGVyeWAgYW5kIGBjaG9zZW5gLgoK
-Q29pYQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
-Y2hpcAo=
+Asserting or deasserting reset lines for the Rockchip MMIO based reset
+controller never fails. Drop error handling for it from the driver to
+simplify the logic.
+
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 31 ++++++---------------------
+ 1 file changed, 6 insertions(+), 25 deletions(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index a705c4b18bd4..6b3104901695 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -290,23 +290,12 @@ static inline bool property_enabled(struct regmap *base,
+ 	return tmp != reg->disable;
+ }
+ 
+-static int rockchip_usb2phy_reset(struct rockchip_usb2phy *rphy)
++static void rockchip_usb2phy_reset(struct rockchip_usb2phy *rphy)
+ {
+-	int ret;
+-
+-	ret = reset_control_assert(rphy->phy_reset);
+-	if (ret)
+-		return ret;
+-
++	reset_control_assert(rphy->phy_reset);
+ 	udelay(10);
+-
+-	ret = reset_control_deassert(rphy->phy_reset);
+-	if (ret)
+-		return ret;
+-
++	reset_control_deassert(rphy->phy_reset);
+ 	usleep_range(100, 200);
+-
+-	return 0;
+ }
+ 
+ static void rockchip_usb2phy_clk_bulk_disable(void *data)
+@@ -559,9 +548,7 @@ static int rockchip_usb2phy_power_on(struct phy *phy)
+ 	 * please keep the common_on_n 1'b0 to set these blocks
+ 	 * remain powered.
+ 	 */
+-	ret = rockchip_usb2phy_reset(rphy);
+-	if (ret)
+-		return ret;
++	rockchip_usb2phy_reset(rphy);
+ 
+ 	/* waiting for the utmi_clk to become stable */
+ 	usleep_range(1500, 2000);
+@@ -1479,16 +1466,13 @@ static int rk3528_usb2phy_tuning(struct rockchip_usb2phy *rphy)
+ 
+ static int rk3576_usb2phy_tuning(struct rockchip_usb2phy *rphy)
+ {
+-	int ret;
+ 	u32 reg = rphy->phy_cfg->reg;
+ 
+ 	/* Deassert SIDDQ to power on analog block */
+ 	regmap_write(rphy->grf, reg + 0x0010, GENMASK(29, 29) | 0x0000);
+ 
+ 	/* Do reset after exit IDDQ mode */
+-	ret = rockchip_usb2phy_reset(rphy);
+-	if (ret)
+-		return ret;
++	rockchip_usb2phy_reset(rphy);
+ 
+ 	/* HS DC Voltage Level Adjustment 4'b1001 : +5.89% */
+ 	regmap_write(rphy->grf, reg + 0x000c, GENMASK(27, 24) | 0x0900);
+@@ -1501,7 +1485,6 @@ static int rk3576_usb2phy_tuning(struct rockchip_usb2phy *rphy)
+ 
+ static int rk3588_usb2phy_tuning(struct rockchip_usb2phy *rphy)
+ {
+-	int ret;
+ 	bool usb3otg = false;
+ 	/*
+ 	 * utmi_termselect = 1'b1 (en FS terminations)
+@@ -1524,9 +1507,7 @@ static int rk3588_usb2phy_tuning(struct rockchip_usb2phy *rphy)
+ 	regmap_write(rphy->grf, 0x0008, GENMASK(29, 29) | 0x0000);
+ 
+ 	/* Do reset after exit IDDQ mode */
+-	ret = rockchip_usb2phy_reset(rphy);
+-	if (ret)
+-		return ret;
++	rockchip_usb2phy_reset(rphy);
+ 
+ 	/* suspend configuration */
+ 	regmap_write(rphy->grf, 0x000c, GENMASK(20, 16) | suspend_cfg);
+
+-- 
+2.53.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
