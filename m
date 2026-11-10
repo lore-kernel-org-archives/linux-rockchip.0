@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8E8B2606A92D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 09:57:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ED6AC60A2605
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 09:59:48 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qibQGjYv;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=FUPAm8N1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SlSy31Yi;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=NeQg5WF0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,30 +14,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=G2oi42ilZOqbGRl3D2lcvtxSGd+i7Bg+Yu1Eg2FkWHs=; b=qibQGjYvch5lD1CefFtIw6JaQ4
-	HJS18BlsWAwuxBe1xfXOafKdiVXg/GEJxwUHKQovp4tR0P705qGTiFkyLJWdiW1sx0TOZB92vAFTs
-	YMyHoPAfgWvltWSPqdBucnNTOuOQgxYTTvtXnwRy7VLOL45TTwljrxA5cOD/FEFR4kGabHIzM6wXB
-	pSx91LFpOCzlUwg82y5d2KqI6/HKnEd1yDssag+3WCNivEgdfnl5Oh/7Oogq1dN2906UtFOaSSoSv
-	C6vdj+6Das9vc/lLCP9XC4DVl8ZDAKXpCrXOcTBg0N+LfunbmeCK7GlBAF/GgQGnAceSaexB1Xox/
-	DX0mmI5Q==;
+	bh=57P90R13LXVk0Nr0PyO3mj4cBvtAvLE98izAu0zc5nQ=; b=SlSy31YiCBfhsw9PCcKtwGEBi0
+	gePc0Qt4NCay4ryMUbzRDA8k6SegiwqP8qcgXs2+Bt9Tg+qupuW1vNT54BXCvbN39wUO+FipF8HtR
+	Vp2+VvyXivFfGjlJLYS2B48NmkYifliU6DJFb+HwF5dkAaOogekgc726OQvmZDd5x+JV1G6PCQgF+
+	gZCf8jxaPTMAd0kDHArDYOiKy8Rgx2zMu7AZKtKecafdAC9T0hSDS/rIHJQHQdyIwFeVjiFzwOAmy
+	9w1HnpJw5zZD9SPRGEsagINLlA9FdYacwUs5oFr9sbEenS8uMETTFj+to7HimVkfVwS5GtpOoZ0eP
+	FZBru6Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQib9-00000003NA9-1Fst;
-	Tue, 10 Nov 2026 09:57:03 +0000
-Received: from mail-m81219.xmail.ntesmail.com ([156.224.81.219])
+	id 1xQidl-00000003NR2-3Q1L;
+	Tue, 10 Nov 2026 09:59:45 +0000
+Received: from mail-m128101.netease.com ([103.209.128.101])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQib5-00000003N9M-0kBQ;
-	Tue, 10 Nov 2026 09:57:01 +0000
+	id 1xQidj-00000003NQe-1Jav;
+	Tue, 10 Nov 2026 09:59:45 +0000
 Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 542714690;
-	Tue, 10 Nov 2026 17:56:54 +0800 (GMT+08:00)
-Message-ID: <d1e3a4a9-7cb2-4345-86d9-f8d1c0156b42@rock-chips.com>
-Date: Tue, 10 Nov 2026 17:56:50 +0800
+	by smtp.qiye.163.com (Hmail) with ESMTP id 54272b12f;
+	Tue, 10 Nov 2026 17:59:39 +0800 (GMT+08:00)
+Message-ID: <4fe3809c-1243-4290-abb7-c2025cfffe55@rock-chips.com>
+Date: Tue, 10 Nov 2026 17:59:34 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 6/8] drm/rockchip: vop2: Find the first mixer of a video
- port with Esmart3 too
+Subject: Re: [PATCH 7/8] drm/rockchip: vop2: Keep the other LUT_PORT_SEL
+ fields on gamma LUT updates
 To: aiyengar1990@gmail.com
 Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
  <heiko@sntech.de>, Andy Yan <andyshrk@163.com>,
@@ -48,23 +48,23 @@ Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20261110-vop2-fixes-v1-0-d336e9dd90d3@gmail.com>
- <20261110-vop2-fixes-v1-6-d336e9dd90d3@gmail.com>
+ <20261110-vop2-fixes-v1-7-d336e9dd90d3@gmail.com>
 Content-Language: en-US
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20261110-vop2-fixes-v1-6-d336e9dd90d3@gmail.com>
-X-HM-Tid: 0aa1c4e3a1d603a7kunm6c01c8eb715da2
+In-Reply-To: <20261110-vop2-fixes-v1-7-d336e9dd90d3@gmail.com>
+X-HM-Tid: 0aa1c4e6230803a7kunm170f4cac71683e
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCGR0fVkJOSE5LHhpPTBhDTlYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDT0lCVkhJGkIdGhlJTxgeH1YVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
 	9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=FUPAm8N1nOe1ZJvKxUl85v9FSy633IoHhaFi9+BagYYZlyk5Vkd1HjGqcf0KxVFMf6Gm+4uR17d1NKADyKNA1BHrHw+5P7lp4tmMVhQSo/JRnDHzmo/jDhCFTg1aWOd6RCwJr7GyfyQs+6TzIFou49nk5CaHU7+4nXwdYxtciqc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=XDw9TAxp8+PVmYmAoppiNo2R12oIkwagkMS4XyFHbSY=;
+	b=NeQg5WF05QqwqNMEh/5PIv4tY08ihs/bAA0gQ9ZQ9b1HtYcrxvSNNVB3aFRXVWkgFWLUlRSbzJk7ESzhua4juivde+DQaRtroOjXb/jvRpla2nlxTgnra5jAFeTcGXusnSQgmxtQzSlyHpsjWe71Ev9+NUEjy1OWL/wPm1sNVco=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=B5FetUpkGwGLsikqm7LuzqYKP4h6EEv4RA9Kg5VS7Q4=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_015659_809406_143F4696 
-X-CRM114-Status: GOOD (  16.19  )
+X-CRM114-CacheID: sfid-20261110_015943_593791_52028D85 
+X-CRM114-Status: GOOD (  13.54  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,41 +86,41 @@ X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Arun,
-
 On 11/10/2026 3:18 PM, Arun Iyengar via B4 Relay wrote:
 > From: Arun Iyengar <aiyengar1990@gmail.com>
 > 
-> vop2_find_start_mixer_id_for_vp() looks for the first layer that holds a
-> window of the video port, but for_each_set_bit() takes the number of bits
-> to search, and ROCKCHIP_VOP2_ESMART3 is the highest window id, so Esmart3
-> is never found. A video port whose bottom layer shows Esmart3 then starts
-> its alpha setup at the mixer of a higher layer, or, if Esmart3 is its
-> only window, past all layers, and programs mixers of other video ports.
+> On RK3588 the gamma LUT of a video port is written through a window that
+> GAMMA_AHB_WRITE_SEL in SYS_CTRL_LUT_PORT_SEL selects. The register also
+> holds the dclk source selection of video ports 0 and 2 and the enable of
+> the video port 0/1 merge for modes wider than 4096 pixels, which writing
+> the whole register clears.
 > 
-> Search all window ids.
+> Only update the write select field.
 > 
 > Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+
+Reviewed-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+
 > ---
->  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> index 83203d18865b..2843bfb36341 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> @@ -1889,7 +1889,7 @@ static int vop2_find_start_mixer_id_for_vp(struct vop2_video_port *vp)
->  
->  	for (i = 0; i < 31; i += 4) {
->  		match = false;
-> -		for_each_set_bit(phys_id, &win_mask, ROCKCHIP_VOP2_ESMART3) {
-> +		for_each_set_bit(phys_id, &win_mask, ROCKCHIP_VOP2_ESMART3 + 1) {
-
-It would be better to add `ROCKCHIP_VOP_MAX_LAYER_ID` after ROCKCHIP_VOP2_ESMART3.
-
->  			win = vop2_find_win_by_phys_id(vop2, phys_id);
->  			if (win->data->layer_sel_id[vp->id] == ((layer_sel >> i) & 0xf)) {
->  				match = true;
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> index 3323e50224c5..9ad138457204 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -1774,8 +1774,9 @@ static void vop2_crtc_atomic_set_gamma_seamless(struct vop2 *vop2,
+>  						struct vop2_video_port *vp,
+>  						struct drm_crtc *crtc)
+>  {
+> -	vop2_writel(vop2, RK3568_LUT_PORT_SEL,
+> -		    FIELD_PREP(RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL, vp->id));
+> +	regmap_update_bits(vop2->map, RK3568_LUT_PORT_SEL,
+> +			   RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL,
+> +			   FIELD_PREP(RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL, vp->id));
+>  	vop2_vp_dsp_lut_enable(vp);
+>  	vop2_crtc_write_gamma_lut(vop2, crtc);
+>  	vop2_vp_dsp_lut_update_enable(vp);
 > 
 
 -- 
