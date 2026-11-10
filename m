@@ -2,97 +2,98 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CD592606A861
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:20:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9FB8C606A321
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2026 07:20:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2GLMhf8O;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=kF0G66oQ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ClqDJb3n;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=UqZcLjUi
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=VXxlPKbmUndF7MMVNkpvYuSncAn11N1TaHFjT4174ck=; b=2GLMhf8OxDQMG1pl31jhVyDLpZ
-	5pxKtxp6M9svyeWOEXoMbUw7j/eGcsJfjSQudfj8TPDKLcGkBN3QjxkeBAhjTE3s0mslVwynX30nZ
-	JTqUg3g8hHWUoKVlZFQHAF0KhWZYW0BDel+ap38me8vUAVhY43RopF7TBm1I5WidLnfqzv6lmv/io
-	aX7/5mZNg/bggPrmaTjL+NnFmE6ypLt3N3fcxVpVvuNbeE1mcg0xRaOU9MwahJyvbMxJA4ir1ZKFW
-	W+NVht8gqa1QZHf51aBHeAzHHvVGLa6nF+2qvQ35W6Ggsz5BAPC97zwETofVpfCDyI44PRL4mXy8G
-	Ihuj1G/Q==;
+	bh=Q2cnqg8E44TR3aZ9i7/ZKV+bc3QojQATEAA61RtO8nU=; b=ClqDJb3nxFN9Uhh/pOFoskWp4L
+	jEgMCP9sk5Helx7RJdbAcP49wW0EwWgI9LyKsqPJ6Cs+iN01Lc0HRg/Aa+yxRqHLE8V3neT27R54e
+	V7hI/kRqkoV+TM2F4Mt/6yOkShmPLemevOznVeSuUyCPreVvc6/o7X0LGIb+gsd4RLYpHHF9MKf4M
+	oh72ssKItBTMEq5g44CsT7/Pw9SPhMt/KkFkEoLZsJe2j23RfweflrSZBu6xwnI4pwoR3P4ONCGhB
+	ztRi97gHB2lHX8c2dTA+zfZuHf0EuOLIKhnu8IbJ2Vl83NRcxtnKXH/brYKDFtOLETL3wDA0Y1CKb
+	nkL+l4FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg9G-00000002sSQ-1bcU;
-	Tue, 10 Nov 2026 07:20:06 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xQg9i-00000002syb-2v68;
+	Tue, 10 Nov 2026 07:20:34 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg8l-00000002rLa-0UQC;
-	Tue, 10 Nov 2026 07:19:35 +0000
+	id 1xQg9I-00000002sWQ-0zJx;
+	Tue, 10 Nov 2026 07:20:08 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 59665637CF;
-	Tue, 10 Nov 2026 07:19:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C80D1432D8;
+	Tue, 10 Nov 2026 07:20:07 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794295174;
-	b=rWCXspyB8kuxANajwMewEoJFIlhwl2V+QQEuvIIvhirJU/uwF06qflpjkaVAH3wtviWI
-	 T9IWjR0Lb7UIu4eC6YMoF0zeE1AV+TAKi7RKdh3I4F/5EfdemirWYX5JhpmtEqgg/1Oyx
-	 WeMt3wBJxMaBX4O3MmFfyQWN7gv0L4T3Rd6vhH414pYvIfXWCuyKHaE0CpMDtm0ScxjC4
-	 o6K0BE6ff9o5ryXfGZI7MVf3fqAlgG8zvERvHDcxVYBSfMgbQSvWXQ72DmstEl6CDBYd+
-	 ODbdYU2sniz3Hcb03P9q4G5RXQaj6XJoCrkJd7vNg33nyLzIltmtzS/6aDU8RfO59VA==
+	t=1794295207;
+	b=MMS0NZO+6shkKxT0/Z4AzrcufdCvVwLjvPpLlzauf++4tkr5E9MIyfxxT3GLzP6YQDWP
+	 FHM30yPIIX/VscYXOmCDxM8jzvD6y5VQmOc2gAGjBH2qfTRNLyV99TNx46cL7DfM3sE16
+	 I+Js8aLeVaUbtZEgSO6BtT4MJfA2gkGhmJa2M+UWwW+Skf6N37XBFqgfgl6qz8/c1iePS
+	 6EAtZdz+ig1AJT40qKblFPUM3X5Owlanwka9+LPT3A6lx21x/W8rl/D93zgj54WpLIgjr
+	 IO83mDORLglnvKmpz9mLyQPuJBz6rzClJu5ycmzb2LJCZFWw9r2VKK8ot6Ndnm+2Riw==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794295174;
-	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
-	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
-	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=JZNTZBIPPT6kWIhdlMy92xIlPbpJK1QIX3XpzzynkHk=;
-	b=BPgMC5BxU1oTemDFVtI9t92Q5nBYK4cvCjcGhVmBDKOh3dFF12PrfWDL116rOxsyiDeG
-	 MLDCUCJ0kkOvb6w0CTtswMCr5sEaAwvtVORBPejAZ1HZGP7uaXLRPoxUPg08eOKkk1U1d
-	 Y4aSwVoS3LTLnSerbs96TLqiIrZoaDItGzxHtzW+G1/vrO/W4TZlZ+mXg5bvTKzERrkl9
-	 ebx7QoA39Sq7szENDjmh9ommPt5vbYnlhlIEkV5nsjA+V0lyjWpZGbF0fIK0SNUwBqk4n
-	 nOym/sPwzhRQqowuHr0+OUYclXgZcLsjjgvxssvlCxT8PGhbYrcx+g9nQdRed2n7Kpg==
+	c=relaxed/relaxed; t=1794295207;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=DkaffjxzggLlMXpgZQepyL18nNM0osfja6I6IUMmRsY=;
+	b=YsoFqwNCiUPbI+YIRdGEKn7d4Odo1zjQT+qLvzMiuNmhT0wANWKVi28MOrKgdMsH7ZYX
+	 PzAGqsOSU/yXPryiwKbnWpbBq3QMfW4q32z9JWCWJ7seOAVj21MIMfuRAIfukDYLe+A/L
+	 FrpItq6uD7FCPyKG/l9/PNmNl+vQti6SMZo343ulMVp+lJ8hVqXLDr0nw+QZB16rZnltp
+	 RYRY7JmvEfy6DU3BpoOZi9W1U7BOl35kXOa6Gk3QUkLREKWY5Vng+VLSjVmn0TjkZ5mms
+	 ZN1zXpRBwWo0dOJqDVwVdAxueT4TWYj6W8Lcz8Rpqr9GK1ft62nREPgq5xk/6humdIQ==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 7CA931F0089F;
-	Tue, 10 Nov 2026 07:19:33 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 15EA11F008A2;
+	Tue, 10 Nov 2026 07:20:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794295174;
-	bh=JZNTZBIPPT6kWIhdlMy92xIlPbpJK1QIX3XpzzynkHk=;
-	h=From:Subject:Date:To:Cc:Reply-To;
-	b=kF0G66oQt1ZMoKA23Vj0H/GyHVXnz4lSJG3d3ZQcLO90DfI2CLZNAioKeP9erR19r
-	 5XbOO1m8dR1VWc24IX3kCEndDuQInVMUTdRePK2fj/HmPJsiV79RdJoIJMt4OkhLLf
-	 Zv/s2YXe2onOR15UyBtpt6lng1VIgfDuOFP/dm/Ww0uIHjadX3xK5FBrTIFdqn9MLC
-	 KbTBgoFtS6T5fwpnlgHrTDs092rXDSCOvUg6/CHY6BJKNYPGBhQvmQaBkrN2RF+CVN
-	 xaRi4+AfETIAoMBE5ACYsSuw/kYv5b37EyBEJx2vwCNkzektz/2cZCFa8TncVZan45
-	 bQTeDRROzMsAQ==
+	s=k20260515; t=1794295207;
+	bh=DkaffjxzggLlMXpgZQepyL18nNM0osfja6I6IUMmRsY=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=UqZcLjUiTc3ARHGFm43xcIoSePOF302bX7Jc0I8jrs/9F/YWlP1qAFvNRC4viosbH
+	 Ak3uLH9/NoB/Sbwa7swYfsOzboWbxFCmJKCGTmiZZN27N7Pt9l7yMDk+9iA7+ZQjfv
+	 M4Gtx3o+9VepifF/DSBCqjxtGWGHmokaloK2GpNM/ZggNA1VNRfV4O8+biQ6kvkZdd
+	 wPC2s9UpxQXCHKEgpmyIv6stwfxWxau1ViU3u3SeU6a41vrZ37OxTIOL6vzPNImaAy
+	 Be5Rkkc3Ly3qwAdCXcpyFepoUKoIrqWtX5lbTeD5VouPRwwGPqCvWb8AgJtUP1j2Rz
+	 ORtMKz5BuWd/A==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 0E98E489C1;
-	Tue, 10 Nov 2026 07:19:33 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 9ED2C489E3;
+	Tue, 10 Nov 2026 07:20:06 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Subject: [PATCH 0/3] arm64: dts: rockchip: Orange Pi 5/5B ethernet, SPI NOR
- supply and USB-C DP
-Date: Tue, 10 Nov 2026 07:19:32 +0000
-Message-Id: <20261110-opi5-dts-v1-0-582b63d074be@gmail.com>
+Date: Tue, 10 Nov 2026 07:20:06 +0000
+Subject: [PATCH 1/4] dt-bindings: usb: generic-ehci: Allow describing the
+ root hub ports
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMyw5AMBCF4VeRWWvScanLq4gFNRgLpINIxLsrl
- l/yn3OBkGMSKIMLHB0svMweGAZgx2YeSHHnDZGODCJqtaycqm4TlbR5nBRoTaYN+Hx11PP5XVX
- 1b9nbiez27uG+H2Knik1sAAAA
-X-Change-ID: 20261110-opi5-dts-4b83491c6706
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Message-Id: <20261110-usb-port-pairing-v1-1-9307e29d2ed2@gmail.com>
+References: <20261110-usb-port-pairing-v1-0-9307e29d2ed2@gmail.com>
+In-Reply-To: <20261110-usb-port-pairing-v1-0-9307e29d2ed2@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Alan Stern <stern@rowland.harvard.edu>
+Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295172; l=2440;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295206; l=1701;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=HJ/BXx7+tB60XtSCFZJWcugv6n2lOzZb7iZUXRqozfI=;
- b=5GcNHNcKvKaV4jXPqK/dC/4X9EZf9mooqT4NdHmNcxGE6rWJL8JNsJ1LYJ2mwbqcXZutICLzk
- uaFQaoDtRN0C4xMko4yb7z1nyJwqbpwA7vQAbg65oQhLOin5qMsBzgA
+ bh=XJm2p3cBaQH7CQW9BFwWeXyIaL1TnsEG5XYxo2DdPHY=;
+ b=Z49FAgk/mtw577IjyyCSPTGHpreFuxeB4B4vjpWfaQWB5Atdm9uqD8p9EESPkon+PAAAw5EcB
+ 3em7S98g/2ED+rXTPW9X7btWvyF4foVvaC0EaT/g/Za/sHFcj8Ps3Rj
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -119,55 +120,51 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Three device tree changes for the Orange Pi 5 and 5B:
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-1. The YT8531C PHY on gmac1 is described as "rgmii-rxid" with a MAC TX
-   delay copied from the vendor kernel; the PCB adds no delay, so the
-   correct description is "rgmii-id" (as the Orange Pi CM5 already
-   uses), with both delays in the PHY.
-2. The SPI NOR flash gets its real 1.8 V supply instead of a dummy
-   regulator.
-3. The USB-C port gets DP Alt Mode: the FUSB302 connector advertises
-   the DisplayPort alternate mode and the graph links the connector,
-   the USBDP PHY and the DP0 controller. It uses only bindings already
-   in mainline.
+The USB 2.0 lines and the SuperSpeed lanes of a USB 3 connector don't
+always reach the same host controller. On the Rockchip RK3588, the
+SuperSpeed-only USB 3.0 host 2 (xHCI) is paired on the board with one
+of the separate USB 2.0 hosts (EHCI/OHCI). Only the device tree knows
+which EHCI root hub port shares a connector with which SuperSpeed port.
 
-Tested on an Orange Pi 5 (RK3588S, PCB v1.2): with "rgmii-id" the link
-comes up at 1000/Full and receives at 940 Mbit/s with no errors (with
-"net: stmmac: dwmac-rk: only read the delays the MAC applies", sent
-separately, the "Can not read property" warnings are gone too); the
-regulator summary lists the flash supply under vcc_1v8_s3 and the dummy
-regulator message is gone. With patch 3, a USB-C dock (DP-to-HDMI
-converter, USB3 hub) enters DP Alt Mode in pin assignment D (2 lanes
-HBR2) and its monitor runs at 3840x2160@30 next to HDMI at 4K60, pin
-assignment D -> C -> D switches work, 100 of 100 attach cycles
-configured DP Alt Mode, and the dock's USB3 devices keep working. The
-driver stack used for that test carried the pending "USBDP PHY cleanup
-part 3" and dw-dp HPD/Alt Mode patches; the description itself does
-not depend on them. CHECK_DTBS is clean for both boards. The Orange
-Pi 5B was not tested (no board at hand); it shares the changed .dtsi.
-
-This series was developed with Claude (Anthropic) as a coding assistant:
-it wrote the code and the commit messages, and I reviewed and tested
-every change as described above.
+The USB core already reads a hub's OF graph, with one graph port per
+downstream port, and uses it for the port connect type. Allow the same
+"ports" node on EHCI controllers, so that a root hub port can be linked
+to its usb-connector node.
 
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
-Arun Iyengar (3):
-      arm64: dts: rockchip: use rgmii-id for the Orange Pi 5/5B ethernet PHY
-      arm64: dts: rockchip: add the SPI NOR flash supply on Orange Pi 5
-      arm64: dts: rockchip: Add USB-C DP AltMode for Orange Pi 5/5B
+ Documentation/devicetree/bindings/usb/generic-ehci.yaml | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
- .../boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi   | 92 +++++++++++++++++++---
- .../arm64/boot/dts/rockchip/rk3588s-orangepi-5.dts |  4 +
- 2 files changed, 83 insertions(+), 13 deletions(-)
----
-base-commit: c3baae5f1a15645cddadcb2b9abddef5df291f59
-change-id: 20261110-opi5-dts-4b83491c6706
+diff --git a/Documentation/devicetree/bindings/usb/generic-ehci.yaml b/Documentation/devicetree/bindings/usb/generic-ehci.yaml
+index 908b02d9175e..9dcba539d60d 100644
+--- a/Documentation/devicetree/bindings/usb/generic-ehci.yaml
++++ b/Documentation/devicetree/bindings/usb/generic-ehci.yaml
+@@ -160,6 +160,19 @@ properties:
+       - host
+       - otg
+ 
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++    description:
++      The root hub's downstream facing ports, linked to the connectors they
++      are wired to. Needed when a connector's SuperSpeed lanes go to a
++      different host controller, which then pairs with the root hub port
++      through the connector.
++
++    patternProperties:
++      "^port@[1-9a-f][0-9a-f]*$":
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Root hub port, numbered from 1.
++
+ required:
+   - compatible
+   - reg
 
-Best regards,
---  
-Arun Iyengar <aiyengar1990@gmail.com>
+-- 
+2.55.0
 
 
 
