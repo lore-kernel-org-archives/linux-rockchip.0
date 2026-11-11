@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19CAE606A321
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 12:33:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EE784606A332
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 13:02:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZPDpl6Ml;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=MyoCTRFh
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=W05cpSNN;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=Ea3iqC5S
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,41 +14,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Gy3RQZaM+Y8ktYk0//avK1a5Y5n65mqyqN+b0gnAP1M=; b=ZPDpl6Mlnu/cqn+WG/O+IEkJ9p
-	x1h89fcCOncibDEXJdiNNOorWgpM0UXD9Elq3H0g59imR20B585DwLFFEfcpNdk394n+8kKUn29Oc
-	K/WjdMMChd2FbZNVyamt2ejKrVHGfIxsOG9fZlXAu+S6p7zwESKfTrwHFjZzX/lic6av3SkzynhuL
-	dy30oz9sV8C9+Kh0WuYRofEDBXm5fHKCKz9eYJUZoCB9PUFArOfbCiOXSY0vFYNDX9oT3uIrnRGls
-	n8HEkTuTLF7x0btFdNfwFQdcQylltUomRyqO1MRylx8cPo0BkDC3eW8yI8fLVCLhu/x4Q9moSgmYu
-	FQnirA7Q==;
+	bh=WUxV6RyVCJ9pYelzC2FuOWmovp/pD1KkNgLSJNJCsns=; b=W05cpSNNbri/7ADCVTT7CB4EFy
+	zqMzALIVgPLussya20oW130pD8b1LtgZNiD6sZC4cXnkbF3AdWJ0PlHmNaHbZ4hS3LM2eQor9C0sY
+	BoBXn39KbkE7fuZyIKASAGPQw7Nf3CqHhIA2p/yMDSOaEyHb2K7HKYV5PNM0VvnCSiLcgQecCPgjQ
+	I4SuUKO14KcjbgFEkWqWu4tKyxqB/A9cqA/q+U4RsraesCdId+5Xdui5CK66qGcuvUTwb+TXFfl9d
+	Oh38czShdOdGP0ZJ7A8MvltwPU8iaDpBDBbFIHdsInZfnRIOVhU1Is61tfSzWbbN3jYSjwRzDuert
+	xkaBeAhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR7Ve-00000006gUo-15m7;
-	Wed, 11 Nov 2026 12:33:02 +0000
+	id 1xR7yX-00000006lV0-2LVQ;
+	Wed, 11 Nov 2026 13:02:53 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR7Vb-00000006gTs-3OZx;
-	Wed, 11 Nov 2026 12:33:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794400367; cv=none; 
+	id 1xR7yU-00000006lTk-1kd2;
+	Wed, 11 Nov 2026 13:02:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794402160; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=Q+/kXTvFvW8+6LUt5EGKXvW9TPMsc6/DJmfXPJOXdwOr+AJk4S4cdMzVu/2ngkfl47CYQ8gsSqEqMQyXVJ6Kl7+x4/xIRhFQzaMSk1NuiJ6wbOq0iqNKrVLYdfigDib0sY8aybqfAg57c1euVFEhRMaxkpQrOXcgimzhsh28PYA=
+	b=L8HEZ71KUMccAPwJPXHHfOiZLN3J2ti/R/h1ctJEI8xur9B1I2tKzj/DyOELXhWMG8sSrwmUNgsx4vxgYidSf5RHVHThWMsK5nVd+8DhzbD7iZQsR+gDrRit8Cc3UwRKWsiWPIwBZzNNtOgeBpaMib7dSu4XPZXlxp0ewDcPjWg=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794400367; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=9zO+640/KHWsaMaqBoO79/jSoXhkI8QCCTxXofbivUQ=; 
-	b=XloUxi06PsdEqOPrOlQR7VPh1f5atSlAimk44HiMMAkjm5loG7u85cLUz0YGa7tKj+thHZFJspLPV0PUhwuC+kTx4MkLt+0vnHXm7j4h59ralZ0We0qyvWJqwxhWVzzLqa3cyp2FsJvbQwzmeb3VKiiLovb3xTQfbbExJvj0ynU=
+	t=1794402160; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=tlK6hSec1f9jWqEAlhwK9sJn2gZXx81wvvOTkXnIgdE=; 
+	b=nYscZxxZwaOIgkFrYT/t1cicREyBpMxN2YbK7eCAxl3ITUPWeyGhpEKqe8oWc1Mspra1MXRazUh+EJ0NthCk5563oxUxPDvlVim3BXXZoOsuoSUXDOAvmeGCrFYj2tfvz8utypbs8NKq4CiL1wDn7pH4HhsIK8gMTuBE3HVJOKA=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
 	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=MyoCTRFhTyf8w/NUxmE8FnZuSjD2lwiy0FGPrX4bUQk92LBPvq/L72qvVISZoCVbjvKl4AJaMsqVWgREXSsYBRlp7upzTZ5VeeE3cdk7yNvSo9SkuHJ05hSBY0BCy3+/ySPK44w013FGJ3aXCxzvlej4rwZG/oOfdWWtvCAWEjc=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=9zO+640/KHWsaMaqBoO79/jSoXhkI8QCCTxXofbivUQ=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1794400365749801.6617129785609;
-	Wed, 11 Nov 2026 04:32:45 -0800 (PST)
-Message-ID: <cb2a2451-149f-44d5-aea3-e050673422e4@collabora.com>
-Date: Wed, 11 Nov 2026 13:32:40 +0100
+DKIM-Signature: a=rsa-sha256; b=Ea3iqC5SA+kLnbCPnCuvTHVE11jFgWxos297PfeM3irdB1DhWWQIjI5xV1fRw+U4Zb72FgD+kLBkV0J2x7OoDeTfVXMamuprjb8KH3vVNWnRrEOvB52B3UxGl99jiFFiMXnAJtPB/2xqMwWVYlTYyP1Oo9o98GBnyown9maOc8A=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=tlK6hSec1f9jWqEAlhwK9sJn2gZXx81wvvOTkXnIgdE=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794402159144738.3650032077535;
+	Wed, 11 Nov 2026 05:02:39 -0800 (PST)
+Message-ID: <3ab93996-7e37-4143-aa4c-b4b4b0e025d8@collabora.com>
+Date: Wed, 11 Nov 2026 14:02:33 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 9/9] arm64: dts: rockchip: add the dcphy mipi csi-2
- receiver nodes to rk3588
+Subject: Re: [PATCH v6 3/9] phy: rockchip-samsung-dcphy: Unwind power-on on
+ PLL lock failure
 To: Jason Yang <jason98166@gmail.com>, Vinod Koul <vkoul@kernel.org>,
  Neil Armstrong <neil.armstrong@linaro.org>,
  Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -60,16 +60,16 @@ Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
  Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
  linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
+ linux-kernel@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>
 References: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
- <20261110-dcphy-rx-v1-v6-9-d681ba20b36a@gmail.com>
+ <20261110-dcphy-rx-v1-v6-3-d681ba20b36a@gmail.com>
 Content-Language: en-US
 From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20261110-dcphy-rx-v1-v6-9-d681ba20b36a@gmail.com>
+In-Reply-To: <20261110-dcphy-rx-v1-v6-3-d681ba20b36a@gmail.com>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_043259_888868_B461F7FF 
-X-CRM114-Status: GOOD (  24.28  )
+X-CRM114-CacheID: sfid-20261111_050250_514615_F8793DFC 
+X-CRM114-Status: GOOD (  20.32  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,143 +94,63 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 Hi Jason,
 
 On 11/10/26 09:18, Jason Yang wrote:
-> The MIPI0 and MIPI1 receiver units are connected to MIPI DCPHY0 and
-> MIPI DCPHY1, whose receiver side is now supported. Add the two nodes and
-> wire them to the VICAP ports.
+> samsung_mipi_dphy_power_on() returns on a PLL lock timeout with PLL_EN
+> set and m_phy_rst still asserted, and the PHY core does not call
+> power_off after a failed power_on.
 > 
-> The dsi nodes keep <&mipidcphy0 PHY_TYPE_DPHY>, the only value the
-> binding had before the PHY receiver was added. PHY_TYPE_DPHY still
-> selects the PHY transmitter in D-PHY mode. The csi nodes use the new
-> PHY_DIRECTION_RX from the dt-bindings header. Neither phy node needs
-> phy-type: the DSI host and the CSI-2 host both run the block in D-PHY
-> mode, the default.
+> Today the APB reset at the start of the next power_on cleans this up.
 > 
-> There is an ABI break if the dsi and csi nodes use the new cell values:
-> an older kernel ignores phy-type and takes any cell value as the mode of
-> the block. A DSI node with PHY_DIRECTION_TX then gets no display, and a
-> CSI-2 node with PHY_DIRECTION_RX gets no camera.
+> A later change moves that reset to runtime resume, so the leftover
+> PLL_EN would stay set, and regmap_update_bits() would not even write
+> it again.
 > 
-> To keep the ABI break small, the dsi nodes keep PHY_TYPE_DPHY, which
-> older and newer kernels both accept. With the csi nodes disabled, the
-> display therefore keeps working on either kernel.
+> Unwind the power-on before returning the error.
 > 
-> The csi nodes have no older value to keep and have to use
-> PHY_DIRECTION_RX. Enabling csi0 or csi1 therefore needs a PHY driver
-> with receiver support. Since v7.0, a CSI-2 host driver probes the csi
-> nodes. An older PHY driver then gives the CSI-2 host the PHY transmitter
-> that drives the display. The camera gets no frames, and the display can
-> stop working as well.
-
-I think you can restrict the patch description to what the patch
-actually does.
-
-This patch modifies the device tree in a perfectly valid way as set out
-in the DT bindings. Any breakage or disadvantage of the approach therein
-should be discussed there.
-
+> Reported-by: Sashiko <sashiko-bot@kernel.org>
+> Closes: https://lore.kernel.org/linux-phy/sashiko-outbox-174059@kernel.org/
 > Signed-off-by: Jason Yang <jason98166@gmail.com>
+> ---
+>  drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+> index 7382043e1f31..ce1bc62497c5 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+> @@ -1343,8 +1343,11 @@ static int samsung_mipi_dphy_power_on(struct samsung_mipi_dcphy *samsung)
+>  	samsung_mipi_dphy_clk_lane_timing_init(samsung);
+>  	samsung_mipi_dphy_data_lane_timing_init(samsung);
+>  	ret = samsung_mipi_dcphy_pll_enable(samsung);
 
-But apart from that this LGTM!
+I wonder whether this should be here in the first place. Only judging by
+the name, samsung_mipi_dcphy_pll_enable is something that affects the
+complete logic block and probably should be kept in runtime resume to
+begin with.
 
-Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
+However, since _dphy_rx_power_on does not call this funcion, it seems to
+be something related only to the TX side of the logic block, but for
+D-PHY and C-PHY. In this case, it probably should go into
+samsung_mipi_dcphy_tx_power_on.
+
+On the off chance that this is actually for the D-PHY TX operation, the
+function should be renamed "*_dcphy_pll_*" -> "*_dphy_pll_*" or
+"*_dphy_tx_pll_*".
+
+What do you think?
 
 Best regards,
 Michael
 
-> ---
->  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 68 +++++++++++++++++++++++++++
->  1 file changed, 68 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-> index aa69fd3793fd..c7174c2f15c3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-> @@ -1516,10 +1516,18 @@ vicap_dvp: port@0 {
+
+> -	if (ret < 0)
+> +	if (ret < 0) {
+> +		samsung_mipi_dcphy_pll_disable(samsung);
+> +		reset_control_deassert(samsung->m_phy_rst);
+>  		return ret;
+> +	}
 >  
->  			vicap_mipi0: port@1 {
->  				reg = <0x1>;
-> +
-> +				vicap_mipi0_input: endpoint {
-> +					remote-endpoint = <&csi0_output>;
-> +				};
->  			};
+>  	samsung_mipi_dphy_lane_enable(samsung);
 >  
->  			vicap_mipi1: port@2 {
->  				reg = <0x2>;
-> +
-> +				vicap_mipi1_input: endpoint {
-> +					remote-endpoint = <&csi1_output>;
-> +				};
->  			};
->  
->  			vicap_mipi2: port@3 {
-> @@ -1568,6 +1576,66 @@ vicap_mmu: iommu@fdce0800 {
->  		status = "disabled";
->  	};
->  
-> +	csi0: csi@fdd10000 {
-> +		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
-> +		reg = <0x0 0xfdd10000 0x0 0x10000>;
-> +		interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 144 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names = "err1", "err2";
-> +		clocks = <&cru PCLK_CSI_HOST_0>;
-> +		phys = <&mipidcphy0 PHY_DIRECTION_RX>;
-> +		power-domains = <&power RK3588_PD_VI>;
-> +		resets = <&cru SRST_P_CSI_HOST_0>;
-> +		status = "disabled";
-> +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			csi0_in: port@0 {
-> +				reg = <0>;
-> +			};
-> +
-> +			csi0_out: port@1 {
-> +				reg = <1>;
-> +
-> +				csi0_output: endpoint {
-> +					remote-endpoint = <&vicap_mipi0_input>;
-> +				};
-> +			};
-> +		};
-> +	};
-> +
-> +	csi1: csi@fdd20000 {
-> +		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
-> +		reg = <0x0 0xfdd20000 0x0 0x10000>;
-> +		interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		interrupt-names = "err1", "err2";
-> +		clocks = <&cru PCLK_CSI_HOST_1>;
-> +		phys = <&mipidcphy1 PHY_DIRECTION_RX>;
-> +		power-domains = <&power RK3588_PD_VI>;
-> +		resets = <&cru SRST_P_CSI_HOST_1>;
-> +		status = "disabled";
-> +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			csi1_in: port@0 {
-> +				reg = <0>;
-> +			};
-> +
-> +			csi1_out: port@1 {
-> +				reg = <1>;
-> +
-> +				csi1_output: endpoint {
-> +					remote-endpoint = <&vicap_mipi1_input>;
-> +				};
-> +			};
-> +		};
-> +	};
-> +
->  	csi2: csi@fdd30000 {
->  		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
->  		reg = <0x0 0xfdd30000 0x0 0x10000>;
 > 
 
 
