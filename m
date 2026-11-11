@@ -2,75 +2,105 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 35B6A606A8A8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 18:00:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B2FA9606A324
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 18:42:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bF1pVQBd;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=DY/bh9cF
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wq8f+VBq;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=iokpp.de header.i=@iokpp.de header.a=rsa-sha256 header.s=strato-dkim-0002 header.b=jmYHQ7rQ;
+	dkim=fail reason="signature verification failed" header.d=iokpp.de header.i=@iokpp.de header.a=ed25519-sha256 header.s=strato-dkim-0003 header.b=OLEqGKP8
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=OMs+tkweFwI6rCNAJmiWtNuDtRStWD0q7d4TIGGJI/M=; b=bF1pVQBdDw3C80HlzdUtJ2ywQR
-	kxacCuh3hHresvzlbE0GIBavafgVb/t8dX8RrFg/HBZlElTTmeTzXsw3ZwanlicuzxNDir0YPaqRg
-	qNvTkf9lNHVZCK3/mGhaao2/YNIVtqvLbTXr2pUjz6k9Rjz7DxzVgATsU19SVHpw35sfy0Joi+RBD
-	n+tZUkoTZl3nM90a/SlwRlXJk8AAn5l+zwNmkLkp59JNBpgwI7WTL3G6Y8QrkrD0OBn2L1jn/5f3s
-	7tPlxJN1p03ThkKI6bRrCAPzpC5dvQd+I/hyi/JqiyXVLufMu4O7mGpNrcRvUhEuLUt+Aq20n5S9v
-	0uk9eFeg==;
+	bh=v/atgIC5xeOfA50sVKxfw/UF1sSOrhSSnrm/1xum+jc=; b=wq8f+VBqusNxug+jHn+GGqKmBR
+	nuaxufnwf5UaxeyUlAVY0fJ7lPnweycfuBXVmXUDPXZf1GWoX5ZQ97yiwoKaKHmDfY93LcwqSKZps
+	q5LmVzcmXd4o546Q465AI2pWcSReyymflNsd763zhIICG89QrWlYptWMGirB/sPg6SCLdQNzydZcx
+	aknGka0NHhfkU1aiArEsjWsAROSQgeXV0Kbl0TjSTmcOVaqnISZdwODX3XlOvmPj2yeHeFtdwEyqI
+	VwvT+ofwXO3SRSfJdmf85/mWv2Cftnw3pR0cgoXuGyxw6a4MfSpoO+e2nVfpRgQO3yA5DMuc15LLe
+	3VuNnVoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRCck-00000007MGt-0l6g;
-	Wed, 11 Nov 2026 18:00:42 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xRDHQ-00000007RfT-3jSb;
+	Wed, 11 Nov 2026 18:42:44 +0000
+Received: from mo4-p01-ob.smtp.rzone.de ([85.215.255.50])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRCci-00000007MGN-2Va1;
-	Wed, 11 Nov 2026 18:00:40 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1019A65515;
-	Wed, 11 Nov 2026 18:00:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA9B71F00A05;
-	Wed, 11 Nov 2026 18:00:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794420039;
-	bh=IfqxjrYK+5b6SwLDSCdGV5c3D1FWDwIXDLxmgwwKJjk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=DY/bh9cF3vhr8ka1oYjorFAP23L5hOTFCFuWyMSBy0jJ7Z3rTfHuQR477/xfLz05k
-	 7eGMM4/cO6H71FNh+yjBGPD0oEU6n4v4jVUvbZdD4iRsy7eXCf4wmq5hcapskZbJqy
-	 AlvGXeeQ8NT2/0U7lVOuiwQU9RbDs7JobTOmYh37LiXH8QnrPbUIg2Bp2iBdcyG0JE
-	 cdbsdXPLqri3hXiQBkNYrSnW5RBDObLSNSlmU7KGQQwpMY+X0joCLlw3OyG7hXMb63
-	 dEgTrqgkzVh7048xeWcHoTNaLMI78cJalP4lv3kwnWQX1OmMtp/0Z9NKM4wExOKWJt
-	 zoZ1VnC72ntzQ==
-Date: Wed, 11 Nov 2026 18:00:33 +0000
-From: Conor Dooley <conor@kernel.org>
-To: 1579567540@qq.com
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	David Wu <david.wu@rock-chips.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH net-next v2 1/2] dt-bindings: net: rockchip-dwmac: Add
- RK3572
-Message-ID: <20261111-sprinkled-kinswoman-9dae5d8040c6@spud>
-References: <20261111-add-board-ok3572-c-net-v2-0-304466394970@qq.com>
- <20261111-add-board-ok3572-c-net-v2-1-304466394970@qq.com>
+	id 1xRDHN-00000007Rdd-2cn2;
+	Wed, 11 Nov 2026 18:42:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794422555; cv=none;
+    d=strato.com; s=strato-dkim-0002;
+    b=k5S5Bl7FubLTqmU88nzo26Kl2dj3Ric2T9t/lXXPVJUSOGaBoOUTYNRvlCE0GXtENS
+    PwShzJgYoyYfbSyR6VFoAx9u4XFE+DovYYdUiB6hrZRzqP3RI5+bKhF2teMAeuBpiLiS
+    k3NtZX8EKFZvLC3znDEDmcgn9/2PBDDz/T+j9q+oK/gcgxWVZhN4qcNH35h7Aa1nPveE
+    Neczv3DZPTSkhi5HpalDUPZWM5itTf7iW4ktHFjvMdHN/a/20g1QUNlbJNtvZ1DBx7sq
+    I4JvbArqpqamUXBMTZ+cA9VFcDMEMAzEW0Szq6iTGi7i2hntIQio01++ib0i5IT+s4IR
+    2ndw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; t=1794422555;
+    s=strato-dkim-0002; d=strato.com;
+    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=UZdwgTcrfuIpSYM1gCDi0i+eUgKIG7RMooqWvyPgmb0=;
+    b=qqE4aNze18q/ZYxr8rJ/Tgv1m66+qNTukUW4Ov8qGQhl2NhLDGHXhul8NtChqMmkiU
+    4COoL1ZPB/u158J5k4xSDus0cqTnpB6soSAw+ZqS5P4PiFjikTxUvgOtXFoQqAhjxi4t
+    cGL92dIlj7u1QqOY2vHfP5ieyOdnJWkUD8DFBleW0tPQjGbEBsNysFtn7JVsjWgB5bH7
+    NJYQkdENiK74ZDZXK0mWmDgOXcVkBv6t5o7nWk+zHQsMpqMx/7/6EmbP8Stx+qERb/3/
+    Y8qgSUU46orLIub72I6lHe6olJxDEvM1Y5EEVyuU5FKWtBdt0L/y3KUvNrd8EVPxRu/t
+    p5eA==
+ARC-Authentication-Results: i=1; strato.com;
+    arc=none;
+    dkim=none
+X-RZG-CLASS-ID: mo01
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1794422555;
+    s=strato-dkim-0002; d=iokpp.de;
+    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=UZdwgTcrfuIpSYM1gCDi0i+eUgKIG7RMooqWvyPgmb0=;
+    b=jmYHQ7rQSB1Tzj6fEt10Cans6f1S2Z/WT60scHlWjF5u2f2zH7jv8TWFr9ZtT7MoiU
+    8jye9bGwCNT0aKKOcSr5Wg8XBzkEIzzI+8mmIwo1FZnJG6LZfOVDuZqFkkyUU/umHWIW
+    Xpbua6wg8Sd+8rOlpwtPGB6lHuUX083ldYTGJ/GHGT8Ch+6EWSue5iytdDGwrzfO2dXY
+    2QxmLvlAnuoimqjYiifzTl7hQxXKNaqtp7ggE7rGG69Hz40JgP6h0YzWe22Z7KCIEdNy
+    BqIzbI+c7na3DTUHzV/7c2+qDr3BxIeYhcR7YmMqLCFf0vj06pcjQf/5g7xMar7w2ZCF
+    smsQ==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; t=1794422555;
+    s=strato-dkim-0003; d=iokpp.de;
+    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=UZdwgTcrfuIpSYM1gCDi0i+eUgKIG7RMooqWvyPgmb0=;
+    b=OLEqGKP8rL1/Y5mfkMu8X03OwrUS8pT8L6GgGyaoLQtNjvsfYzZf72RksCFZEIXI/q
+    SMX59KF0dnEg5mSDbABg==
+X-RZG-AUTH: ":LmkFe0i9dN8c2t4QQyGBB/NDXvjDB6pBSe9tgBDSDt0V0zNriHg+YfT0rGaTpIu+r+eHzyBFvc/0mM2I80og9K0iXpLsCzk="
+Received: from p200300c5872329b218616a30d22a9174.dip0.t-ipconnect.de
+    by smtp.strato.de (RZmta 55.6.3 AUTH)
+    with ESMTPSA id z831ad2ABIgYiCS
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256 bits))
+	(Client did not present a certificate);
+    Wed, 11 Nov 2026 19:42:34 +0100 (CET)
+Message-ID: <b2338a8e84366980f648b0e321e9f8edaaf633a9.camel@iokpp.de>
+Subject: Re: [PATCH] scsi: ufs: core: Register the RPMB bus before adding
+ devices to it
+From: Bean Huo <beanhuo@iokpp.de>
+To: Alexey Charkov <alchark@flipper.net>, Alim Akhtar
+ <alim.akhtar@samsung.com>,  Bart Van Assche <bvanassche@acm.org>, Bean Huo
+ <beanhuo@micron.com>, Stanley Jhu <stanleyjhu@google.com>, "James E.J.
+ Bottomley" <James.Bottomley@HansenPartnership.com>, "Martin K. Petersen"
+ <mkp@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Avri Altman
+ <avri.altman@sandisk.com>, Can Guo <can.guo@oss.qualcomm.com>
+Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	stable@vger.kernel.org
+Date: Wed, 11 Nov 2026 19:42:32 +0100
+In-Reply-To: <20261111-ufs-rpmb-bus-v1-1-b07100e53f6c@flipper.net>
+References: <20261111-ufs-rpmb-bus-v1-1-b07100e53f6c@flipper.net>
+User-Agent: Evolution 3.44.4-0ubuntu2.1 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20261111-add-board-ok3572-c-net-v2-1-304466394970@qq.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261111_104241_921473_F09077BB 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,51 +110,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4088694130838649691=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============4088694130838649691==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="2kouTlog9XyxYE8J"
-Content-Disposition: inline
 
---2kouTlog9XyxYE8J
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Hi Alexey,
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+Thanks. The code is correct, but this exact failure is already fixed in
+Stanley's series, which has been on the list since September:
+https://lore.kernel.org/all/20260914144910.931518-1-stanleyjhu@google.com
 
---2kouTlog9XyxYE8J
-Content-Type: application/pgp-signature; name=signature.asc
+The order there matters. Once ufs_rpmb devices register again, which is what
+your patch does, two bugs come back: a use-after-free on host unbind, and
+concurrent RPMB requests that get each other's responses. Stanley measured both
+with KASAN. Patches 1/3 and 2/3 fix them, and 3/3 turns registration back on
+last. Taking this patch first would open that window again in mainline and in
+stable.
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCavStQQAKCRB4tDGHoIJi
-0sWOAQCtxEQyPEIYrZQIMO9/45cDtSBZcJdG7Pcx0xqdgKv9bQD7Bk7YHrFee3MG
-+kKbj7wQGVXcJV+Re8bAYp//6kEvzgI=
-=+Ani
------END PGP SIGNATURE-----
-
---2kouTlog9XyxYE8J--
+So I would prefer to drop this one in favour of the series. If you have a board
+where RPMB fails today, a Tested-by on v5 would help, please have a try
+Stanley's patches. thanks
 
 
---===============4088694130838649691==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Kind regards,
+Bean
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4088694130838649691==--
-
