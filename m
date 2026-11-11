@@ -2,94 +2,97 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1F4AA60A380F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 12:15:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4F1A260A3812
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 12:15:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dLJUU+td;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=LYrJQ9xT
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Wl1TdW/j;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=mbST1Coy
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=AFCwXpsewlbQmnjEc7YFn1D3ZYGFc41kzefJd+IrtLM=; b=dLJUU+tdBON+09G+P6gbiOVhYr
-	D5DY2KOc/brcZDieyHkO8xfS31buLzcIWZdOUT0/bKiqiGJyV/Xbu4grttgNQncat7npLCQccpFMz
-	b9O/AEK65I+G9oefv0yDP2SgGHCiclqUuUWc8aE4pqW+uSEg+yUzLGvxx9z8G8N3Zb4rT0e4T0ppp
-	EYUPv/sWaAKEDAIITCkmfyI+5g15tOvSEAMPHd5jsJqnZELQfybmify80m+6TlMP/U+2DbwqlV/Y1
-	AqREkPwccoAxSU/rhGZJ1S6nyuLNJDr6LOLP8X2TFusfZ/EPKqtCiU00uU6xvrW72iXH9DS2Ph5Du
-	e1vZjSYg==;
+	bh=vxNS5Ww+lh3r4GG9l+pTawzaVBl/OgC62l4U/YjN2Os=; b=Wl1TdW/jJDVYhgsPJR7/Wgs9oF
+	jdZR2AMr2RXbt2OdvR0ZGiwsf3PIRdD+4CZCk4VRzzJlK1jSmcETTj0DoBRkqG1alPcAbrGIXSMST
+	vi5FTdWmd749dcBJu8AgtZuv34BMTg8jvkl0Pm9M+7LEqmbZSy7TOA4HMd50nbI7lYT7xczWkJXIe
+	WKRxzcJKfnBN6N4cNe/LvXdJFiKxze4tmqv1AXz3cP1rXUPaM8kWD9i09nz4OHU5zVaeaaNtoH6qa
+	ewjbneu8/bIep3FiQ8i0iHJQ2SqLGY/IHXF16v4/TCXfIhnkPfw3C8DOz7uUC1Ai199oi9qgo9e+T
+	gzBPMSqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR7EM-00000006dgL-2sOJ;
-	Wed, 11 Nov 2026 12:15:10 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xR7EQ-00000006dlo-0WZo;
+	Wed, 11 Nov 2026 12:15:14 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR7EH-00000006ddr-3xeL;
+	id 1xR7EI-00000006deE-1IPw;
 	Wed, 11 Nov 2026 12:15:06 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 02785636F5;
-	Wed, 11 Nov 2026 12:15:05 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1763640DEB;
+	Wed, 11 Nov 2026 12:15:06 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794399304;
-	b=TMj9kJ+gxI87sb6s5IWrw85AaHkA8p931HS6965bJ23iAMtij8Jv+7Cbe6/K6avko4JS
-	 WkaWb2hyWkkQ5xS0Jg0twUpBTjgk3LsUuMYDgFDkCYOSoWfXbr7IQY1q8WGro8wvWTIFi
-	 oJqfqThOIHW/8fC5Mwuj7UzdCT6NrTmWBHNthQzGQqIX3N9nZNvDx3zDcDrJklyARbXL4
-	 MOeO9A1OlmLWmJV8JOPAQtWdqnYPcHwMyQlLaYDz7TEnRlQdhpCzKFjxt+IDU4+9pDTpM
-	 B9WHgF+VZyyp4oMEja+VAMje12ccHWz6/c2gyA2iRh5yMNaqgd6R+Ktrmz/lMieOBrg==
+	t=1794399306;
+	b=EkDoQJ11VksYqvqP5Q+83sAxwSIxttKcMN+L71XKyMlRsVqfpLDXEEu5V9cAGPHyxFzV
+	 2GQQg5p6imH3PiK3PCrrtfruDR7fgTMhSXaJI448rREwc/BuJbfeiLimJ0ls1QYAw59k5
+	 CpskZo9IXf+1s9xlHALS7a6VDh2lbcbjc4Rh2sN3bOeK/QFAwfZ2uV14pBzMM2ECRD6c1
+	 IjjFsI28sQ3izFzuIO1oOB0qQgHJknD6fW+gxMvoEFAo9NXJiqMCMBr6Ca/iVPi1GqPat
+	 Tez8XNg6LZe0rfb0j72SkWjVzHKhmZSp3qgZVS6TxiZpwI+Ksa7Pl46JJltk+/z2hMA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794399304;
+	c=relaxed/relaxed; t=1794399306;
 	h=DKIM-Signature:Received:From:To:Cc:Subject:Date:Message-ID:
-	 MIME-Version:Content-Transfer-Encoding:X-Mailer:Content-Type:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=hpjyt/s2QLGuYGj5afRjh1dUyaldroQS6rrCr7rFHZ4=;
-	b=2vy3O9QxBnxWprSCZZvYw7FJSW5bqlUMjxDmJYru28jT76QSNPrtxgAIkMhrOvrfD16R
-	 I7+qNUd7ktx4qWSmlxgjOw2/hyDSVYYHO2Ib1Dj9ahDzlpCCl0phitQ74Xh0DbXM13trK
-	 COInzMo6HmnNgzGAjS5qTJxnyz4fsv6DI837nv2Slr8Mp0mPWEAjJLcyQlZqX1WyUPiM7
-	 eEQsy2x+cl6nHzfG/9W5bRfgQLchPI/d02YulSHQFjOhssMY8UthyDWy2TBKvy89iExGU
-	 8C7ae28lCadltk8mchRmWAvc0lq+WUK1QPGdP1qD3elPeRTzMJUZAFYN/c8yxHmnKjw==
+	 In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:
+	 X-Mailer:Content-Type:X-Developer-Signature:X-Developer-Key:
+	 X-Endpoint-Received:X-Original-From:Reply-To;
+	bh=IkV87vPxNc1lgky1u5D0+AymN/pbZwvO+hBfvN04Pvg=;
+	b=exA3Vzs0VE/XKArjU53gQVGjfUNXM6E4FtATbyC3uuPg2Xj2yiA+p4rYiSCVaeZAlnCG
+	 eNiaw0wQ6P5eW+KPeE3Q6A/bEwLZq0zA3Gm/d+TBgUNc96ucGoqE98D1lK4sg2HdmdFWg
+	 SAIyfdgog99qKr5Z3rtO3IhpzPoQvWgMMLHafwo22tALkSfBsXmp4d38Cuhx82gFk29MR
+	 Ze6tE6GeLyY8K/4+qLUTh6I/HJGHpWtc7al2eNpbCxZUWZ2JrM/IroJgOxceb8u4b+B+N
+	 GJmhpeE+h8kN/yDaXITwRTWb4WCBqn0Rczp0hpTWHBY7nJ45HHok3xtKaVh+hncH5sA==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 208AE1F00A05;
+	by smtp.kernel.org (Postfix) with ESMTPS id 298CC1F00A06;
 	Wed, 11 Nov 2026 12:15:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794399304;
-	bh=hpjyt/s2QLGuYGj5afRjh1dUyaldroQS6rrCr7rFHZ4=;
-	h=From:To:Cc:Subject:Date:Reply-To;
-	b=LYrJQ9xTQLhEvP0OCZAQT3r4k5qPkoeRwQh2LlWpSB923tU/flhWrqiKJZxG7560O
-	 wyEmuXbc9FB8Nq+KthntyWPP9qXNvWxIxH0G8s8/wpgQVcdr3Hkf6ZP89nLVnqjtBK
-	 UZMG+ON22Kpic6RMWf/v/EQ9Ry1GAyP0gtR+yShMS6u/JDPoyZdJuM9vx0oxLUVtj2
-	 O3u8jnS8i642HY14njjaWTzR4JBzlNz6y7aYmN7a+CFW6KzPcf0EjWXRxoLTjRKqqb
-	 aZP77IAB1wJnvOg4K41S8BsjBvWZ8h2us4fiA7ASE32uSnYcnvx0jhyDPcAs/BMWtL
-	 8oDsTnXdjM1rg==
+	s=k20260515; t=1794399305;
+	bh=IkV87vPxNc1lgky1u5D0+AymN/pbZwvO+hBfvN04Pvg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:Reply-To;
+	b=mbST1CoycDwvjHF7e7aIDZQnBklcqUx//NUSY1WvLP52K6KhkoOcK4umE2T0ugSq7
+	 wvHOHN+LKSmGSy6zDN1PQ5bS3JZPHgtXvEF/g+zZxZ9SpNBbNXb2eGxgnw+mLH1nrn
+	 RgdNP19ip4KrPZDQfrTzgogAS4cWoShWLHNpwZuInK0lfskO6t7jEEgUKkQXVDlF99
+	 GmbUsLHd/Qc2X6NAJf3dg/wWd2Ba0n5EOw16fwVp62/znu6fV6E634zxOwqeDJWDv+
+	 36+QXw7YzefTOKo6QPvb1Fwt5aMyqLdo3zi7sOfLYhGyubhaSgwZNMeyHjRVTsU8bZ
+	 AH4raLsN2iDEQ==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 6AABE48F89;
+	by lkml.kernel.org (Postfix) with ESMTP id 9EF3848F60;
 	Wed, 11 Nov 2026 12:15:03 +0000 (UTC)
 From: Mizuno Miotsuki via B4 Relay <devnull+founder.crepuse.com@kernel.org>
 To: heiko@sntech.de
 Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, krzk+dt@kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
  linux-rockchip@lists.infradead.org, robh@kernel.org
-Subject: [PATCH v2 RESEND 0/1] Enable I2C2 on UNIHIKER M10 V1.2
+Subject: [PATCH v2 RESEND 1/1] arm64: dts: rockchip: Enable I2C2 on
+ UNIHIKER M10 V1.2
 Date: Wed, 11 Nov 2026 12:14:34 +0000
-Message-ID: <179439927405.86676.18160135777424812496.i2c2-v2-resend-0@crepuse.com>
+Message-ID: <179439927406.86676.11920437995901310527.i2c2-v2-resend-1@crepuse.com>
+In-Reply-To: <179439927405.86676.18160135777424812496.i2c2-v2-resend-0@crepuse.com>
+References: <179439927405.86676.18160135777424812496.i2c2-v2-resend-0@crepuse.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=609; i=founder@crepuse.com;
- s=20261012; h=from:subject:message-id;
- bh=skhAdHA3RZo/qHb7dMGwTpa8Pr/oRjo6b/TwlaWkzuo=;
- b=owGbwMvMwCUmds2G2fVJ/hLG02pJDFlfYrSefT21L5jBPV/5ytZ4lWcFp1qis9ve8fQK/5bZv
- rEzUzmrYwILgxgXg6WYIstsUfbyQ80rrs2d0GQHM4eVCWSItEgDAxCwMPDlJuaVGukY6ZlqG+oZ
- GukY6BgzcHEKwFTv4Gdk+LezzXSiBHd7yoc+3oteeUvlKvMSVLvvRqdZhvw8apv4geHHn9mPMuL
- 0lVYd/35aklMtpOZ9lcspzw+60e4SWwIiWbgB
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1123;
+ i=founder@crepuse.com; s=20261012; h=from:subject:message-id;
+ bh=ZUtHtXwG3cfnbIn8yg59s0s/+r9OqLaGzwAjtw4eQks=;
+ b=owGbwMvMwCUmds2G2fVJ/hLG02pJDFlfYrQ0J3SINtxUleIvMLlUMEeUafGP0Brbf5UrTitVT
+ L1jcuh5xwQWBjEuBksxRZbZouzlh5pXXJs7ockOZg4rE8gQaZEGBiBgYeDLTcwrNdIx0jPVNtQz
+ NNIx0DFm4OIUgKm242X4sZqvb7HRJqZmXcmA3ht7wiIfVmpIq+V+T85f9veLQ/I7hj+cLavPzN7
+ KURlzuLPiYqypb5faB12+7vCOAy1XV189sYIdAA==
 X-Developer-Key: i=founder@crepuse.com; a=openpgp;
  fpr=9B150777C283A8D69D90823E16D63C0345E46FA4
 X-Endpoint-Received: by B4 Relay for founder@crepuse.com/20261012 with
@@ -108,29 +111,45 @@ Reply-To: founder@crepuse.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Enable the onboard I2C2 controller at 400 kHz. The rk3308.dtsi pinmux
-provides GPIO2_A2/A3. This common board preparation is independent of
-the pending touchscreen device binding and driver.
+From: Mizuno Miotsuki <founder@crepuse.com>
 
-Changes since v1:
-- Normalize author/sender identity and preserve it in the patch body.
-- Recheck ordinary and strict checkpatch and the DTS schemas.
+The onboard resistive touchscreen controller is connected to I2C2.
+Enable the controller at the tested 400 kHz bus frequency. Its GPIO2_A2
+and GPIO2_A3 pinmux is provided by rk3308.dtsi.
 
-Mizuno Miotsuki (1):
-  arm64: dts: rockchip: Enable I2C2 on UNIHIKER M10 V1.2
+Keep the bus enablement separate from the touchscreen device node so
+it can be reviewed without depending on the pending NS2009 binding
+and driver. The controller-only configuration was booted on M10 V1.2
+with no NS2009 device instantiated.
 
+Signed-off-by: Mizuno Miotsuki <founder@crepuse.com>
+---
  arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts | 5 +++++
  1 file changed, 5 insertions(+)
 
-
-base-commit: ae965b9856f033145e292b0c29082a26bcc45efd
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts b/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
+index 270ea970c95a..0c03f118378a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
+@@ -131,6 +131,11 @@ &emmc {
+ 	status = "okay";
+ };
+ 
++&i2c2 {
++	clock-frequency = <400000>;
++	status = "okay";
++};
++
+ &io_domains {
+ 	vccio0-supply = <&vcc_io>;
+ 	vccio1-supply = <&vcc_io>;
 -- 
 2.56.0
 
