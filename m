@@ -2,75 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 338D9606A324
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 15:22:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 35B6A606A8A8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 18:00:48 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=e9ph/uRy;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=UrZMGIBQ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bF1pVQBd;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=DY/bh9cF
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=31UqGgJhfUIg5sbvoDC2NwzPyV9zFVrT5QRzdrPtRSU=; b=e9ph/uRy1fbO65DzyfksTMsd0m
-	Tfv6sTaliPH1htD9OjSg/VAbXgD9tdQ+Q1obidaO4llGj1mCLBzqt3naYJQvgVzSWT6BpE0llQ3hX
-	n3oXgi+j+h0k0LIL77toA7v7aAiGY92w7NN0rKcQesvW7BHjn/aHS6ECFSug6VyiDb0WwV4jUMZhS
-	H4ybSx7ZeZO4bFOJv3QbneusEdN7MQ9KDDmddgJx7K52BNO2P5ZiUIYz84LNmSuazhYq6bmPDaes/
-	uV4ln5BsIlyq3bQ+7EbH2ftuXb3+S5MslQhm1ZoUyAhAuqzYjQ71CsVENxmhpG0ouFVY4RWa9hV0Q
-	+gk62t8g==;
+	bh=OMs+tkweFwI6rCNAJmiWtNuDtRStWD0q7d4TIGGJI/M=; b=bF1pVQBdDw3C80HlzdUtJ2ywQR
+	kxacCuh3hHresvzlbE0GIBavafgVb/t8dX8RrFg/HBZlElTTmeTzXsw3ZwanlicuzxNDir0YPaqRg
+	qNvTkf9lNHVZCK3/mGhaao2/YNIVtqvLbTXr2pUjz6k9Rjz7DxzVgATsU19SVHpw35sfy0Joi+RBD
+	n+tZUkoTZl3nM90a/SlwRlXJk8AAn5l+zwNmkLkp59JNBpgwI7WTL3G6Y8QrkrD0OBn2L1jn/5f3s
+	7tPlxJN1p03ThkKI6bRrCAPzpC5dvQd+I/hyi/JqiyXVLufMu4O7mGpNrcRvUhEuLUt+Aq20n5S9v
+	0uk9eFeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRAA1-000000074m4-2YmC;
-	Wed, 11 Nov 2026 15:22:53 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1xRCck-00000007MGt-0l6g;
+	Wed, 11 Nov 2026 18:00:42 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRA9z-000000074ku-0PSB;
-	Wed, 11 Nov 2026 15:22:52 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794410565; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=gBXb74t8VyXcyhF2U34LZjd/IUJj3d2VeYmcQwcVmhDgqYdt0aA7l4BF2EycZCovx+aXjoATAiB02Y/M51ryalVmhjkrhC4vlttiGVF6uMyV5tqaNzNd0tQYBIbnVGCct+sk5t0+BYv4Wnj3bz9feMny92y9aE9Cjs8Trt1RtI0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794410565; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Y/MlMaKErObWTkJAP1O/f3fHFrVRzBGbOZAvu7H6yRc=; 
-	b=IPm3G8lZ0a0lC8SsV24HWlwwDfBP6W4rz4bY9DdjLaVpvnm8m/7sexyzQTTeVTLl3dqrCafCGvkxYiXnpi/i+XLIupHGqmIkzXY233oo6gQ5qkLZcbriw9xmfTnppHHlPHGaBhr3GyL+7fnAzYhhoAjhAb5ejKFlfWyg2GiFdp0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
-	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=UrZMGIBQEwNvdRSMeyfv8q9k6o61Ee2F1LiS1C2mRPoIalF2xvjnL21zkDzXGaEOv/z9paE0HJsU5voIWxvZllirKR4WSYdPG7hxv0PyK2iAhqxeg0897VsJnDLW6rSGNsEMQulXjuEamsOW+NPiqeARAiAy0qaYuXAKO14jK4U=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=Y/MlMaKErObWTkJAP1O/f3fHFrVRzBGbOZAvu7H6yRc=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1794410563762127.88540542025612;
-	Wed, 11 Nov 2026 07:22:43 -0800 (PST)
-Message-ID: <fd9615e5-bc5a-4ce0-a43b-081f3e9c14c2@collabora.com>
-Date: Wed, 11 Nov 2026 16:22:38 +0100
+	id 1xRCci-00000007MGN-2Va1;
+	Wed, 11 Nov 2026 18:00:40 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1019A65515;
+	Wed, 11 Nov 2026 18:00:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA9B71F00A05;
+	Wed, 11 Nov 2026 18:00:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794420039;
+	bh=IfqxjrYK+5b6SwLDSCdGV5c3D1FWDwIXDLxmgwwKJjk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=DY/bh9cF3vhr8ka1oYjorFAP23L5hOTFCFuWyMSBy0jJ7Z3rTfHuQR477/xfLz05k
+	 7eGMM4/cO6H71FNh+yjBGPD0oEU6n4v4jVUvbZdD4iRsy7eXCf4wmq5hcapskZbJqy
+	 AlvGXeeQ8NT2/0U7lVOuiwQU9RbDs7JobTOmYh37LiXH8QnrPbUIg2Bp2iBdcyG0JE
+	 cdbsdXPLqri3hXiQBkNYrSnW5RBDObLSNSlmU7KGQQwpMY+X0joCLlw3OyG7hXMb63
+	 dEgTrqgkzVh7048xeWcHoTNaLMI78cJalP4lv3kwnWQX1OmMtp/0Z9NKM4wExOKWJt
+	 zoZ1VnC72ntzQ==
+Date: Wed, 11 Nov 2026 18:00:33 +0000
+From: Conor Dooley <conor@kernel.org>
+To: 1579567540@qq.com
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@kernel.org>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	David Wu <david.wu@rock-chips.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Jose Abreu <joabreu@synopsys.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH net-next v2 1/2] dt-bindings: net: rockchip-dwmac: Add
+ RK3572
+Message-ID: <20261111-sprinkled-kinswoman-9dae5d8040c6@spud>
+References: <20261111-add-board-ok3572-c-net-v2-0-304466394970@qq.com>
+ <20261111-add-board-ok3572-c-net-v2-1-304466394970@qq.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 8/9] phy: rockchip-samsung-dcphy: Add MIPI D-PHY
- receiver support
-To: Jason Yang <jason98166@gmail.com>, Vinod Koul <vkoul@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Guochun Huang <hero.huang@rock-chips.com>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
- <20261110-dcphy-rx-v1-v6-8-d681ba20b36a@gmail.com>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20261110-dcphy-rx-v1-v6-8-d681ba20b36a@gmail.com>
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_072251_213438_54DF83BB 
-X-CRM114-Status: GOOD (  10.45  )
-X-Spam-Score: -2.1 (--)
+In-Reply-To: <20261111-add-board-ok3572-c-net-v2-1-304466394970@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,80 +80,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4088694130838649691=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Jason,
+--===============4088694130838649691==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="2kouTlog9XyxYE8J"
+Content-Disposition: inline
 
-Thanks for the patch!
+--2kouTlog9XyxYE8J
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On 11/10/26 09:18, Jason Yang wrote:
-> [...]
-> +static int samsung_mipi_dphy_rx_power_on(struct samsung_mipi_dcphy *samsung)
-> +{
-> +	struct samsung_mipi_phy *rx = &samsung->rx;
-> +	int ret;
-> +
-> +	if (!rx->hs_clk_rate || !rx->lanes)
-> +		return -EINVAL;
-> +
-> +	reset_control_assert(samsung->s_phy_rst);
-> +
-> +	samsung_mipi_dphy_rx_config_common(samsung);
-> +	samsung_mipi_dphy_rx_config_settle(samsung);
-> +
-> +	ret = samsung_mipi_dphy_rx_lane_enable(samsung);
-> +
-> +	reset_control_deassert(samsung->s_phy_rst);
-> +
-> +	return ret;
-> +}
-> +
-> +static int samsung_mipi_dphy_rx_power_off(struct samsung_mipi_dcphy *samsung)
-> +{
-> +	reset_control_assert(samsung->s_phy_rst);
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
 
-I wonder whether this is really a D-PHY specific thing. You can keep it
-as is for now, I'll try to bring up the C-PHY part on top of your
-series, and then we'll see.
+--2kouTlog9XyxYE8J
+Content-Type: application/pgp-signature; name=signature.asc
 
-> [...]
->  static const struct phy_ops samsung_mipi_dcphy_tx_ops = {
->  	.configure = samsung_mipi_dcphy_tx_configure,
->  	.power_on  = samsung_mipi_dcphy_tx_power_on,
-> @@ -1535,6 +1905,15 @@ static const struct phy_ops samsung_mipi_dcphy_tx_ops = {
->  	.owner	   = THIS_MODULE,
->  };
->  
-> +static const struct phy_ops samsung_mipi_dcphy_rx_ops = {
-> +	.configure = samsung_mipi_dcphy_rx_configure,
-> +	.power_on  = samsung_mipi_dcphy_rx_power_on,
-> +	.power_off = samsung_mipi_dcphy_rx_power_off,
-> +	.init = samsung_mipi_dcphy_init,
-> +	.exit = samsung_mipi_dcphy_exit,
-> +	.owner	   = THIS_MODULE,
+-----BEGIN PGP SIGNATURE-----
 
-Nit: either align all = or just use a single space (personally I would
-prefer the latter).
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCavStQQAKCRB4tDGHoIJi
+0sWOAQCtxEQyPEIYrZQIMO9/45cDtSBZcJdG7Pcx0xqdgKv9bQD7Bk7YHrFee3MG
++kKbj7wQGVXcJV+Re8bAYp//6kEvzgI=
+=+Ani
+-----END PGP SIGNATURE-----
 
-> [...]
-Looks all good to me!
+--2kouTlog9XyxYE8J--
 
-Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
 
-Best regards,
-Michael
-
+--===============4088694130838649691==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4088694130838649691==--
+
