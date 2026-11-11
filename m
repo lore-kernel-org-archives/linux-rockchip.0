@@ -2,102 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4F1A260A3812
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 12:15:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19CAE606A321
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 12:33:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Wl1TdW/j;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=mbST1Coy
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZPDpl6Ml;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=MyoCTRFh
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=vxNS5Ww+lh3r4GG9l+pTawzaVBl/OgC62l4U/YjN2Os=; b=Wl1TdW/jJDVYhgsPJR7/Wgs9oF
-	jdZR2AMr2RXbt2OdvR0ZGiwsf3PIRdD+4CZCk4VRzzJlK1jSmcETTj0DoBRkqG1alPcAbrGIXSMST
-	vi5FTdWmd749dcBJu8AgtZuv34BMTg8jvkl0Pm9M+7LEqmbZSy7TOA4HMd50nbI7lYT7xczWkJXIe
-	WKRxzcJKfnBN6N4cNe/LvXdJFiKxze4tmqv1AXz3cP1rXUPaM8kWD9i09nz4OHU5zVaeaaNtoH6qa
-	ewjbneu8/bIep3FiQ8i0iHJQ2SqLGY/IHXF16v4/TCXfIhnkPfw3C8DOz7uUC1Ai199oi9qgo9e+T
-	gzBPMSqw==;
+	bh=Gy3RQZaM+Y8ktYk0//avK1a5Y5n65mqyqN+b0gnAP1M=; b=ZPDpl6Mlnu/cqn+WG/O+IEkJ9p
+	x1h89fcCOncibDEXJdiNNOorWgpM0UXD9Elq3H0g59imR20B585DwLFFEfcpNdk394n+8kKUn29Oc
+	K/WjdMMChd2FbZNVyamt2ejKrVHGfIxsOG9fZlXAu+S6p7zwESKfTrwHFjZzX/lic6av3SkzynhuL
+	dy30oz9sV8C9+Kh0WuYRofEDBXm5fHKCKz9eYJUZoCB9PUFArOfbCiOXSY0vFYNDX9oT3uIrnRGls
+	n8HEkTuTLF7x0btFdNfwFQdcQylltUomRyqO1MRylx8cPo0BkDC3eW8yI8fLVCLhu/x4Q9moSgmYu
+	FQnirA7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR7EQ-00000006dlo-0WZo;
-	Wed, 11 Nov 2026 12:15:14 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xR7Ve-00000006gUo-15m7;
+	Wed, 11 Nov 2026 12:33:02 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR7EI-00000006deE-1IPw;
-	Wed, 11 Nov 2026 12:15:06 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1763640DEB;
-	Wed, 11 Nov 2026 12:15:06 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794399306;
-	b=EkDoQJ11VksYqvqP5Q+83sAxwSIxttKcMN+L71XKyMlRsVqfpLDXEEu5V9cAGPHyxFzV
-	 2GQQg5p6imH3PiK3PCrrtfruDR7fgTMhSXaJI448rREwc/BuJbfeiLimJ0ls1QYAw59k5
-	 CpskZo9IXf+1s9xlHALS7a6VDh2lbcbjc4Rh2sN3bOeK/QFAwfZ2uV14pBzMM2ECRD6c1
-	 IjjFsI28sQ3izFzuIO1oOB0qQgHJknD6fW+gxMvoEFAo9NXJiqMCMBr6Ca/iVPi1GqPat
-	 Tez8XNg6LZe0rfb0j72SkWjVzHKhmZSp3qgZVS6TxiZpwI+Ksa7Pl46JJltk+/z2hMA==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794399306;
-	h=DKIM-Signature:Received:From:To:Cc:Subject:Date:Message-ID:
-	 In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:
-	 X-Mailer:Content-Type:X-Developer-Signature:X-Developer-Key:
-	 X-Endpoint-Received:X-Original-From:Reply-To;
-	bh=IkV87vPxNc1lgky1u5D0+AymN/pbZwvO+hBfvN04Pvg=;
-	b=exA3Vzs0VE/XKArjU53gQVGjfUNXM6E4FtATbyC3uuPg2Xj2yiA+p4rYiSCVaeZAlnCG
-	 eNiaw0wQ6P5eW+KPeE3Q6A/bEwLZq0zA3Gm/d+TBgUNc96ucGoqE98D1lK4sg2HdmdFWg
-	 SAIyfdgog99qKr5Z3rtO3IhpzPoQvWgMMLHafwo22tALkSfBsXmp4d38Cuhx82gFk29MR
-	 Ze6tE6GeLyY8K/4+qLUTh6I/HJGHpWtc7al2eNpbCxZUWZ2JrM/IroJgOxceb8u4b+B+N
-	 GJmhpeE+h8kN/yDaXITwRTWb4WCBqn0Rczp0hpTWHBY7nJ45HHok3xtKaVh+hncH5sA==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 298CC1F00A06;
-	Wed, 11 Nov 2026 12:15:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794399305;
-	bh=IkV87vPxNc1lgky1u5D0+AymN/pbZwvO+hBfvN04Pvg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:Reply-To;
-	b=mbST1CoycDwvjHF7e7aIDZQnBklcqUx//NUSY1WvLP52K6KhkoOcK4umE2T0ugSq7
-	 wvHOHN+LKSmGSy6zDN1PQ5bS3JZPHgtXvEF/g+zZxZ9SpNBbNXb2eGxgnw+mLH1nrn
-	 RgdNP19ip4KrPZDQfrTzgogAS4cWoShWLHNpwZuInK0lfskO6t7jEEgUKkQXVDlF99
-	 GmbUsLHd/Qc2X6NAJf3dg/wWd2Ba0n5EOw16fwVp62/znu6fV6E634zxOwqeDJWDv+
-	 36+QXw7YzefTOKo6QPvb1Fwt5aMyqLdo3zi7sOfLYhGyubhaSgwZNMeyHjRVTsU8bZ
-	 AH4raLsN2iDEQ==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 9EF3848F60;
-	Wed, 11 Nov 2026 12:15:03 +0000 (UTC)
-From: Mizuno Miotsuki via B4 Relay <devnull+founder.crepuse.com@kernel.org>
-To: heiko@sntech.de
-Cc: conor+dt@kernel.org, devicetree@vger.kernel.org, krzk+dt@kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, robh@kernel.org
-Subject: [PATCH v2 RESEND 1/1] arm64: dts: rockchip: Enable I2C2 on
- UNIHIKER M10 V1.2
-Date: Wed, 11 Nov 2026 12:14:34 +0000
-Message-ID: <179439927406.86676.11920437995901310527.i2c2-v2-resend-1@crepuse.com>
-In-Reply-To: <179439927405.86676.18160135777424812496.i2c2-v2-resend-0@crepuse.com>
-References: <179439927405.86676.18160135777424812496.i2c2-v2-resend-0@crepuse.com>
+	id 1xR7Vb-00000006gTs-3OZx;
+	Wed, 11 Nov 2026 12:33:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794400367; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Q+/kXTvFvW8+6LUt5EGKXvW9TPMsc6/DJmfXPJOXdwOr+AJk4S4cdMzVu/2ngkfl47CYQ8gsSqEqMQyXVJ6Kl7+x4/xIRhFQzaMSk1NuiJ6wbOq0iqNKrVLYdfigDib0sY8aybqfAg57c1euVFEhRMaxkpQrOXcgimzhsh28PYA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794400367; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=9zO+640/KHWsaMaqBoO79/jSoXhkI8QCCTxXofbivUQ=; 
+	b=XloUxi06PsdEqOPrOlQR7VPh1f5atSlAimk44HiMMAkjm5loG7u85cLUz0YGa7tKj+thHZFJspLPV0PUhwuC+kTx4MkLt+0vnHXm7j4h59ralZ0We0qyvWJqwxhWVzzLqa3cyp2FsJvbQwzmeb3VKiiLovb3xTQfbbExJvj0ynU=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
+	dmarc=pass header.from=<michael.riesch@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=MyoCTRFhTyf8w/NUxmE8FnZuSjD2lwiy0FGPrX4bUQk92LBPvq/L72qvVISZoCVbjvKl4AJaMsqVWgREXSsYBRlp7upzTZ5VeeE3cdk7yNvSo9SkuHJ05hSBY0BCy3+/ySPK44w013FGJ3aXCxzvlej4rwZG/oOfdWWtvCAWEjc=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=9zO+640/KHWsaMaqBoO79/jSoXhkI8QCCTxXofbivUQ=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794400365749801.6617129785609;
+	Wed, 11 Nov 2026 04:32:45 -0800 (PST)
+Message-ID: <cb2a2451-149f-44d5-aea3-e050673422e4@collabora.com>
+Date: Wed, 11 Nov 2026 13:32:40 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1123;
- i=founder@crepuse.com; s=20261012; h=from:subject:message-id;
- bh=ZUtHtXwG3cfnbIn8yg59s0s/+r9OqLaGzwAjtw4eQks=;
- b=owGbwMvMwCUmds2G2fVJ/hLG02pJDFlfYrQ0J3SINtxUleIvMLlUMEeUafGP0Brbf5UrTitVT
- L1jcuh5xwQWBjEuBksxRZbZouzlh5pXXJs7ockOZg4rE8gQaZEGBiBgYeDLTcwrNdIx0jPVNtQz
- NNIx0DFm4OIUgKm242X4sZqvb7HRJqZmXcmA3ht7wiIfVmpIq+V+T85f9veLQ/I7hj+cLavPzN7
- KURlzuLPiYqypb5faB12+7vCOAy1XV189sYIdAA==
-X-Developer-Key: i=founder@crepuse.com; a=openpgp;
- fpr=9B150777C283A8D69D90823E16D63C0345E46FA4
-X-Endpoint-Received: by B4 Relay for founder@crepuse.com/20261012 with
- auth_id=1166
-X-Original-From: Mizuno Miotsuki <founder@crepuse.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 9/9] arm64: dts: rockchip: add the dcphy mipi csi-2
+ receiver nodes to rk3588
+To: Jason Yang <jason98166@gmail.com>, Vinod Koul <vkoul@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Guochun Huang <hero.huang@rock-chips.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
+ <20261110-dcphy-rx-v1-v6-9-d681ba20b36a@gmail.com>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20261110-dcphy-rx-v1-v6-9-d681ba20b36a@gmail.com>
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261111_043259_888868_B461F7FF 
+X-CRM114-Status: GOOD (  24.28  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,52 +80,158 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: founder@crepuse.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Mizuno Miotsuki <founder@crepuse.com>
+Hi Jason,
 
-The onboard resistive touchscreen controller is connected to I2C2.
-Enable the controller at the tested 400 kHz bus frequency. Its GPIO2_A2
-and GPIO2_A3 pinmux is provided by rk3308.dtsi.
+On 11/10/26 09:18, Jason Yang wrote:
+> The MIPI0 and MIPI1 receiver units are connected to MIPI DCPHY0 and
+> MIPI DCPHY1, whose receiver side is now supported. Add the two nodes and
+> wire them to the VICAP ports.
+> 
+> The dsi nodes keep <&mipidcphy0 PHY_TYPE_DPHY>, the only value the
+> binding had before the PHY receiver was added. PHY_TYPE_DPHY still
+> selects the PHY transmitter in D-PHY mode. The csi nodes use the new
+> PHY_DIRECTION_RX from the dt-bindings header. Neither phy node needs
+> phy-type: the DSI host and the CSI-2 host both run the block in D-PHY
+> mode, the default.
+> 
+> There is an ABI break if the dsi and csi nodes use the new cell values:
+> an older kernel ignores phy-type and takes any cell value as the mode of
+> the block. A DSI node with PHY_DIRECTION_TX then gets no display, and a
+> CSI-2 node with PHY_DIRECTION_RX gets no camera.
+> 
+> To keep the ABI break small, the dsi nodes keep PHY_TYPE_DPHY, which
+> older and newer kernels both accept. With the csi nodes disabled, the
+> display therefore keeps working on either kernel.
+> 
+> The csi nodes have no older value to keep and have to use
+> PHY_DIRECTION_RX. Enabling csi0 or csi1 therefore needs a PHY driver
+> with receiver support. Since v7.0, a CSI-2 host driver probes the csi
+> nodes. An older PHY driver then gives the CSI-2 host the PHY transmitter
+> that drives the display. The camera gets no frames, and the display can
+> stop working as well.
 
-Keep the bus enablement separate from the touchscreen device node so
-it can be reviewed without depending on the pending NS2009 binding
-and driver. The controller-only configuration was booted on M10 V1.2
-with no NS2009 device instantiated.
+I think you can restrict the patch description to what the patch
+actually does.
 
-Signed-off-by: Mizuno Miotsuki <founder@crepuse.com>
----
- arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts | 5 +++++
- 1 file changed, 5 insertions(+)
+This patch modifies the device tree in a perfectly valid way as set out
+in the DT bindings. Any breakage or disadvantage of the approach therein
+should be discussed there.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts b/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
-index 270ea970c95a..0c03f118378a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3308-unihiker-m10-v1.2.dts
-@@ -131,6 +131,11 @@ &emmc {
- 	status = "okay";
- };
- 
-+&i2c2 {
-+	clock-frequency = <400000>;
-+	status = "okay";
-+};
-+
- &io_domains {
- 	vccio0-supply = <&vcc_io>;
- 	vccio1-supply = <&vcc_io>;
--- 
-2.56.0
+> Signed-off-by: Jason Yang <jason98166@gmail.com>
 
+But apart from that this LGTM!
+
+Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
+
+Best regards,
+Michael
+
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 68 +++++++++++++++++++++++++++
+>  1 file changed, 68 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+> index aa69fd3793fd..c7174c2f15c3 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+> @@ -1516,10 +1516,18 @@ vicap_dvp: port@0 {
+>  
+>  			vicap_mipi0: port@1 {
+>  				reg = <0x1>;
+> +
+> +				vicap_mipi0_input: endpoint {
+> +					remote-endpoint = <&csi0_output>;
+> +				};
+>  			};
+>  
+>  			vicap_mipi1: port@2 {
+>  				reg = <0x2>;
+> +
+> +				vicap_mipi1_input: endpoint {
+> +					remote-endpoint = <&csi1_output>;
+> +				};
+>  			};
+>  
+>  			vicap_mipi2: port@3 {
+> @@ -1568,6 +1576,66 @@ vicap_mmu: iommu@fdce0800 {
+>  		status = "disabled";
+>  	};
+>  
+> +	csi0: csi@fdd10000 {
+> +		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
+> +		reg = <0x0 0xfdd10000 0x0 0x10000>;
+> +		interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 144 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		interrupt-names = "err1", "err2";
+> +		clocks = <&cru PCLK_CSI_HOST_0>;
+> +		phys = <&mipidcphy0 PHY_DIRECTION_RX>;
+> +		power-domains = <&power RK3588_PD_VI>;
+> +		resets = <&cru SRST_P_CSI_HOST_0>;
+> +		status = "disabled";
+> +
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			csi0_in: port@0 {
+> +				reg = <0>;
+> +			};
+> +
+> +			csi0_out: port@1 {
+> +				reg = <1>;
+> +
+> +				csi0_output: endpoint {
+> +					remote-endpoint = <&vicap_mipi0_input>;
+> +				};
+> +			};
+> +		};
+> +	};
+> +
+> +	csi1: csi@fdd20000 {
+> +		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
+> +		reg = <0x0 0xfdd20000 0x0 0x10000>;
+> +		interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_HIGH 0>,
+> +			     <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		interrupt-names = "err1", "err2";
+> +		clocks = <&cru PCLK_CSI_HOST_1>;
+> +		phys = <&mipidcphy1 PHY_DIRECTION_RX>;
+> +		power-domains = <&power RK3588_PD_VI>;
+> +		resets = <&cru SRST_P_CSI_HOST_1>;
+> +		status = "disabled";
+> +
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			csi1_in: port@0 {
+> +				reg = <0>;
+> +			};
+> +
+> +			csi1_out: port@1 {
+> +				reg = <1>;
+> +
+> +				csi1_output: endpoint {
+> +					remote-endpoint = <&vicap_mipi1_input>;
+> +				};
+> +			};
+> +		};
+> +	};
+> +
+>  	csi2: csi@fdd30000 {
+>  		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
+>  		reg = <0x0 0xfdd30000 0x0 0x10000>;
+> 
 
 
 _______________________________________________
