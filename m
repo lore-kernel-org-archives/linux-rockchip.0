@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EE784606A332
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 13:02:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 285BB606A88B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 13:05:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=W05cpSNN;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=Ea3iqC5S
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=yDE6GWEY;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=L5b5U28A
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,41 +14,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=WUxV6RyVCJ9pYelzC2FuOWmovp/pD1KkNgLSJNJCsns=; b=W05cpSNNbri/7ADCVTT7CB4EFy
-	zqMzALIVgPLussya20oW130pD8b1LtgZNiD6sZC4cXnkbF3AdWJ0PlHmNaHbZ4hS3LM2eQor9C0sY
-	BoBXn39KbkE7fuZyIKASAGPQw7Nf3CqHhIA2p/yMDSOaEyHb2K7HKYV5PNM0VvnCSiLcgQecCPgjQ
-	I4SuUKO14KcjbgFEkWqWu4tKyxqB/A9cqA/q+U4RsraesCdId+5Xdui5CK66qGcuvUTwb+TXFfl9d
-	Oh38czShdOdGP0ZJ7A8MvltwPU8iaDpBDBbFIHdsInZfnRIOVhU1Is61tfSzWbbN3jYSjwRzDuert
-	xkaBeAhw==;
+	bh=rd/lL518mdNGxr6W35RLW5gRr3V6Nud/T2ojg4rBy3E=; b=yDE6GWEY/0SIG/mu90AAbuej5U
+	VBlIfyzRwKDNJb19DHewlSbICJHejMOhod8kx4TGv6jYf4i2h/NHnANFuZcccHijKajcS5L+EPO26
+	ZGaWqDjpFA6Nwphwyh60yoTp/1asK1Bek3ZwTPkCFfOEr3P5ZHGAadE+YEEj+uFREY8YCh1Muw7Jb
+	oqgrEzmFHFs//w6zDBAIVtac0DLhCzoC8/72ReSif6ImxCVe2soqPvQ1uLpEpZl5owwa+hN3zUETs
+	pt31AXew5hwiY9fpm/V8MPQyvF7Wu/3bO365FOBQtYqXZlTrnS9K6xPI7ReL9xxoeS+YgKHTDu/qr
+	DZHXFz5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR7yX-00000006lV0-2LVQ;
-	Wed, 11 Nov 2026 13:02:53 +0000
+	id 1xR819-00000006lxw-1KNy;
+	Wed, 11 Nov 2026 13:05:35 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR7yU-00000006lTk-1kd2;
-	Wed, 11 Nov 2026 13:02:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794402160; cv=none; 
+	id 1xR814-00000006lvk-0BSd;
+	Wed, 11 Nov 2026 13:05:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794402324; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=L8HEZ71KUMccAPwJPXHHfOiZLN3J2ti/R/h1ctJEI8xur9B1I2tKzj/DyOELXhWMG8sSrwmUNgsx4vxgYidSf5RHVHThWMsK5nVd+8DhzbD7iZQsR+gDrRit8Cc3UwRKWsiWPIwBZzNNtOgeBpaMib7dSu4XPZXlxp0ewDcPjWg=
+	b=jdjmGwIHKro4sEJif9BOEN84OIIJnIpTUfWL4IgyG3hNZ9ynPIxp+PLHYNTd+eUvTiHpLU9jBXZJJYHBPskKp+LIErnN4QLikWo1e2HfTLerMdtdq6F/7HoHmxU7IkoL1/HmYUrJP3Syy0754XuDkkj9yV1VDk1dxTWTOh+T4YE=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794402160; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=tlK6hSec1f9jWqEAlhwK9sJn2gZXx81wvvOTkXnIgdE=; 
-	b=nYscZxxZwaOIgkFrYT/t1cicREyBpMxN2YbK7eCAxl3ITUPWeyGhpEKqe8oWc1Mspra1MXRazUh+EJ0NthCk5563oxUxPDvlVim3BXXZoOsuoSUXDOAvmeGCrFYj2tfvz8utypbs8NKq4CiL1wDn7pH4HhsIK8gMTuBE3HVJOKA=
+	t=1794402324; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=a6hsDgNTzykSL2abXXUyNJ0Ke8prVJlKInMZl5L7jgY=; 
+	b=avmH6+Mwod4rZA5f1Erj0TgAqFETT2e+UE9vz4F364NrRB7zmR1/Tk5rNF2wWsy0Bxgj1tdK+ZDlWjxLujjBeXUfEitdwgBxZglJ54M8LJtn3V7/DNVz4/s0zGgx2iwSauOuv8uOdrFQQQu5j5BaKt9lOp4VXoZROHQvlQcvvFE=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
 	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=Ea3iqC5SA+kLnbCPnCuvTHVE11jFgWxos297PfeM3irdB1DhWWQIjI5xV1fRw+U4Zb72FgD+kLBkV0J2x7OoDeTfVXMamuprjb8KH3vVNWnRrEOvB52B3UxGl99jiFFiMXnAJtPB/2xqMwWVYlTYyP1Oo9o98GBnyown9maOc8A=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=tlK6hSec1f9jWqEAlhwK9sJn2gZXx81wvvOTkXnIgdE=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1794402159144738.3650032077535;
-	Wed, 11 Nov 2026 05:02:39 -0800 (PST)
-Message-ID: <3ab93996-7e37-4143-aa4c-b4b4b0e025d8@collabora.com>
-Date: Wed, 11 Nov 2026 14:02:33 +0100
+DKIM-Signature: a=rsa-sha256; b=L5b5U28A4NnyzChU9vvcpDypOIl+HM5LVyHk00mWLK9GuK87Y+At9JjkgTd3+MSW9tE7QYSzcT6zrxDPeYUTT2WWzo4UDKwOxbv00R9RZYpSAqHBErqJbIXaLpaYwg06W1o30gksPepsiPLK6SARaTy6UdvNJEIaynl74O7nC6o=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=a6hsDgNTzykSL2abXXUyNJ0Ke8prVJlKInMZl5L7jgY=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794402322616938.5574111886522;
+	Wed, 11 Nov 2026 05:05:22 -0800 (PST)
+Message-ID: <9e8aaf6f-6899-4d60-a2f1-be11d3923dc7@collabora.com>
+Date: Wed, 11 Nov 2026 14:05:16 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 3/9] phy: rockchip-samsung-dcphy: Unwind power-on on
- PLL lock failure
+Subject: Re: [PATCH v6 4/9] phy: rockchip-samsung-dcphy: Always write the
+ rate-dependent registers
 To: Jason Yang <jason98166@gmail.com>, Vinod Koul <vkoul@kernel.org>,
  Neil Armstrong <neil.armstrong@linaro.org>,
  Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -60,16 +60,16 @@ Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
  Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
  linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Sashiko <sashiko-bot@kernel.org>
+ linux-kernel@vger.kernel.org
 References: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
- <20261110-dcphy-rx-v1-v6-3-d681ba20b36a@gmail.com>
+ <20261110-dcphy-rx-v1-v6-4-d681ba20b36a@gmail.com>
 Content-Language: en-US
 From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20261110-dcphy-rx-v1-v6-3-d681ba20b36a@gmail.com>
+In-Reply-To: <20261110-dcphy-rx-v1-v6-4-d681ba20b36a@gmail.com>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_050250_514615_F8793DFC 
-X-CRM114-Status: GOOD (  20.32  )
+X-CRM114-CacheID: sfid-20261111_050530_116026_F01ECA19 
+X-CRM114-Status: GOOD (  17.67  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,64 +93,83 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 Hi Jason,
 
+Thanks for the patch!
+
 On 11/10/26 09:18, Jason Yang wrote:
-> samsung_mipi_dphy_power_on() returns on a PLL lock timeout with PLL_EN
-> set and m_phy_rst still asserted, and the PHY core does not call
-> power_off after a failed power_on.
+> The lane timing init functions write DPHY_MC_ANA_CON1, the four data
+> lane ANA_CON1 registers and DPHY_MC_DESKEW_CON0 only above a data
+> rate threshold, and the registers have to be zero below it [1].
 > 
-> Today the APB reset at the start of the next power_on cleans this up.
+> Today the APB reset at the start of every power_on provides the zero.
 > 
-> A later change moves that reset to runtime resume, so the leftover
-> PLL_EN would stay set, and regmap_update_bits() would not even write
-> it again.
+> A later change moves that reset to runtime resume, so a power_on at a
+> lower rate after a higher one would keep the old values.
 > 
-> Unwind the power-on before returning the error.
+> Write the registers on every power_on, with zero below the threshold.
 > 
-> Reported-by: Sashiko <sashiko-bot@kernel.org>
-> Closes: https://lore.kernel.org/linux-phy/sashiko-outbox-174059@kernel.org/
+> [1] RK3588 TRM: sections 22.4.2 (reset values) and 22.4.3
+>     (DPHY_MC_ANA_CON1, DPHY_MC_DESKEW_CON0)
+> 
 > Signed-off-by: Jason Yang <jason98166@gmail.com>
-> ---
->  drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-> index 7382043e1f31..ce1bc62497c5 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-> @@ -1343,8 +1343,11 @@ static int samsung_mipi_dphy_power_on(struct samsung_mipi_dcphy *samsung)
->  	samsung_mipi_dphy_clk_lane_timing_init(samsung);
->  	samsung_mipi_dphy_data_lane_timing_init(samsung);
->  	ret = samsung_mipi_dcphy_pll_enable(samsung);
 
-I wonder whether this should be here in the first place. Only judging by
-the name, samsung_mipi_dcphy_pll_enable is something that affects the
-complete logic block and probably should be kept in runtime resume to
-begin with.
-
-However, since _dphy_rx_power_on does not call this funcion, it seems to
-be something related only to the TX side of the logic block, but for
-D-PHY and C-PHY. In this case, it probably should go into
-samsung_mipi_dcphy_tx_power_on.
-
-On the off chance that this is actually for the D-PHY TX operation, the
-function should be renamed "*_dcphy_pll_*" -> "*_dphy_pll_*" or
-"*_dphy_tx_pll_*".
-
-What do you think?
+Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
 
 Best regards,
 Michael
 
-
-> -	if (ret < 0)
-> +	if (ret < 0) {
-> +		samsung_mipi_dcphy_pll_disable(samsung);
-> +		reset_control_deassert(samsung->m_phy_rst);
->  		return ret;
-> +	}
+> ---
+>  drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 24 +++++++++++++++--------
+>  1 file changed, 16 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+> index ce1bc62497c5..7a009d87a665 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+> @@ -1228,7 +1228,10 @@ samsung_mipi_dphy_clk_lane_timing_init(struct samsung_mipi_dcphy *samsung)
+>  	regmap_write(samsung->regmap, DPHY_MC_ANA_CON0, val);
 >  
->  	samsung_mipi_dphy_lane_enable(samsung);
+>  	if (lane_hs_rate >= 4500)
+> -		regmap_write(samsung->regmap, DPHY_MC_ANA_CON1, 0x0001);
+> +		val = 0x0001;
+> +	else
+> +		val = 0;
+> +	regmap_write(samsung->regmap, DPHY_MC_ANA_CON1, val);
 >  
+>  	val = 0;
+>  	/*
+> @@ -1259,7 +1262,10 @@ samsung_mipi_dphy_clk_lane_timing_init(struct samsung_mipi_dcphy *samsung)
+>  	 * under 1.5Gbps or equal to 1.5Gbps.
+>  	 */
+>  	if (lane_hs_rate > 1500)
+> -		regmap_write(samsung->regmap, DPHY_MC_DESKEW_CON0, 0x9cb1);
+> +		val = 0x9cb1;
+> +	else
+> +		val = 0;
+> +	regmap_write(samsung->regmap, DPHY_MC_DESKEW_CON0, val);
+>  }
+>  
+>  static void
+> @@ -1284,12 +1290,14 @@ samsung_mipi_dphy_data_lane_timing_init(struct samsung_mipi_dcphy *samsung)
+>  	regmap_write(samsung->regmap, COMBO_MD2_ANA_CON0, val);
+>  	regmap_write(samsung->regmap, DPHY_MD3_ANA_CON0, val);
+>  
+> -	if (lane_hs_rate >= 4500) {
+> -		regmap_write(samsung->regmap, COMBO_MD0_ANA_CON1, 0x0001);
+> -		regmap_write(samsung->regmap, COMBO_MD1_ANA_CON1, 0x0001);
+> -		regmap_write(samsung->regmap, COMBO_MD2_ANA_CON1, 0x0001);
+> -		regmap_write(samsung->regmap, DPHY_MD3_ANA_CON1, 0x0001);
+> -	}
+> +	if (lane_hs_rate >= 4500)
+> +		val = 0x0001;
+> +	else
+> +		val = 0;
+> +	regmap_write(samsung->regmap, COMBO_MD0_ANA_CON1, val);
+> +	regmap_write(samsung->regmap, COMBO_MD1_ANA_CON1, val);
+> +	regmap_write(samsung->regmap, COMBO_MD2_ANA_CON1, val);
+> +	regmap_write(samsung->regmap, DPHY_MD3_ANA_CON1, val);
+>  
+>  	val = 0;
+>  	/*
 > 
 
 
