@@ -2,104 +2,64 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 636DC606A31C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 03:27:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D14A2606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 04:18:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GATVe9kF;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=rxxf3v7j
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Hr3nEnAm;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=Ql+iCI9s
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=h6yEt9/Kx4s5Ddt9n2GvOk1evcAjPc5rQclL2fXA/Do=; b=GATVe9kFtu3WfYM1lHZxsrf8eW
-	3eUoJzs+6svR0zUy/JxbeZ1g3qNCthVfhZZ9RhrwQNhHS9qDUiRcxwd6QmmZ6Ra6naQh5zhqT8RoQ
-	BCKMKZYDcYZHlulasbFAVoEKvZzZu4AHu5HKGK5cJ7AhNmmqPKvXL/lo+Cww6J6f+Aa4mbVkG9pQO
-	zhYwih97CqwTLrnjY7q9OAmxlfuFamkkSlh1zBQvY9L/A9HJpMK7/FjOKV11+sm56mLn/iP94mmtg
-	LmVTy8ieIzpEOOT0+KqxLg+GGQy9ZRiBktPQcFJ2cuwLagqFl0YyzM2L0eJImmUVykFn07aKpfmqq
-	HLoDAWuQ==;
+	bh=B6LXg2XJhnnLE9QuQNHDufPsoPJEyx+JqB5DpVMBXk4=; b=Hr3nEnAmyMR6nii1LkLmI2UIh8
+	JM7JDcfor5sGunAHAlUu4FLNvwZlVayb28I2mJYs/T40AZGSqw6q1uTc7BnNZcuD37jbGdwsDrOiM
+	rWZ/odUgVXrKJkeyKNQBSi792z3aG0Ujjxfh37ynaUgE+nPDxUqaaw3U/XQgMjXHYLAcaj8L/bYnW
+	c7pa1FMQm0FxBwJdLDxi4s73Tvb0klWgbNcyqjat2BMgVjqM0WqhzWxARbWqXpDiM1fnSb/Vqpv2Q
+	50Nnca103maiI77zMtMczZ02SEG8zXih8kTlipAD2ivJQ9k8LtLPsxRLzjhtClSN0XROGvvu1Fvo5
+	H3VE8aJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQyzL-00000005Y8Q-0cTI;
-	Wed, 11 Nov 2026 03:27:07 +0000
-Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
+	id 1xQznE-00000005bEZ-1CDP;
+	Wed, 11 Nov 2026 04:18:40 +0000
+Received: from mail-m128104.netease.com ([103.209.128.104])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQyzH-00000005Y7l-1zXg
+	id 1xQznB-00000005bDw-0Kk4
 	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Nov 2026 03:27:05 +0000
-Received: by mail-dy1-x1335.google.com with SMTP id 5a478bee46e88-37071c0f42aso4792622eec.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 19:27:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794367622; x=1794972422; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=QP9+Ctp3NviXfDVXP2gE2ILUUDfgBim84aqNH/sgLwY=;
-        b=rxxf3v7jQG14xuMVJiKA24A2WK8hhppzNYcHs8xT95ckAqTxDPFFxJ0i/67H896qrF
-         YV6AFDNsfAHZPExfy9BANUvvCveZzXB+a+vL2M5Ixt1yohPUoUTBNKJE6n90aLXI/etA
-         m4btNKylZNJgDNkeRgA9JnKJjc0NCq+cEIzxIphOsqwZju/PtD+sG3HE0T2lIXT30Cow
-         qxa0K/228P3oQjKufQIst4kN+Y2Up+rLEBE6wRdmQFsxRkc9w5qw0qZooV5bDJF2zA9I
-         iPofS3cIE+3TqDJuTC+vq9uTgqPnuSShxyA8blVUe8WmvCxoJy+/l3VxpBIUDy1/0PkO
-         2sBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794367622; x=1794972422;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=QP9+Ctp3NviXfDVXP2gE2ILUUDfgBim84aqNH/sgLwY=;
-        b=OShwSN2YvUNPAwGSf150/1lpD77MiNS0xHvAzSSPWXGxumDjvzuvaQ+fndMbMmRaUq
-         gMCd+PtTk6+mOS7MXzCq6KLxTEg8/v/+aBiEqCp1jIsGLqCQ7jI2+hJXw5N8V9i1fzwk
-         Jq8mgMFdCr+Fn810vjV1G0HTRDroliCk9RSEDfGi/IIsXDzXfMZetLf/YjOS5nhcXXM6
-         u+/KdpjUXIzqh5DJy+XeRqbwn+h0R+GB4TC2rdUNvKQEjtSYT1SFkMdWEcQOLwz5e7YI
-         Bz3P19sSum6c+vxiZBbsitcIB4OfjjO2rr6M+47uL7B0xPUAa5wuihwq6/05T0Ph8h6f
-         bT/w==
-X-Forwarded-Encrypted: i=1; AL+hErFrB5Jg1mnHeC6U5HR3G8qJEdXagTcS50W+a7gSVdEq+vNskeFbYqxoicehLXdo/faXwcX97n8E94PjmBLeeQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9Ov5OCR3H6fObLFlKhlTpLGsvNzaPXcvXi2zWCdx0J/rk6+/3p
-	gCysr425CAaLK/HEM26Bpx3ohzPO/dDrbLgW+x5SeyLwzEw8nQ1PI9oH
-X-Gm-Gg: AYBFou1+tptjj14rFkQhojtO6HPuyCRsK1qEfgdex1T9ee0gXEK3lSmcptlIr8LfVdH
-	OpZzyKWLmLbEIGWRKMu+HeZ/KNbNKV0n4p1noJhZiI5RpL4kkL63brBpWUL7mlBf1gMdrcq1Bke
-	xWQx4b5jmOCikluY27TZh1pnm57L1Wumb2jqZUxRfOzMRYexZr06cYhj0B7tRepT+NplS4561Ff
-	EfQbfCO6gh7w8bAOOB+uwHWF9jp+QMtaqXIem568DXZjUOj/PgO3GklE8W5OcfYOlOgnyg5tS/K
-	+DwWNvhwQiHQT1Y+bJRlvJXjRSDAhFJdWWOdnnOXtVlHwMk3UJUsawhms6wn49qtoKKoOwZnai2
-	SOruUedva+rbczq6OHGaOJXwEg1AuDBnQR1y4oS5iC65HaXjwSn2AhvyytC9er86Nis8MUVFTNF
-	We3GnY7sR6RzzzLw0QJ0jaNJlAoOXu3Eobjnmc4oCE0Z1BXu/AZkhgRafp9ZG5d/NzLnD5H1ocg
-	cO/XewXXInovtPoxd6LqbKcsIUdCTwQzpNp4HpoU1WQu36PGx9LqbV7gecPjGby+hV4Sqk/Q/jY
-	3G2dMebi20vj1i9aY9olRmGN0P9dSyYPnJAa9+7iMbWZSmrcfSj6xWKd3dys
-X-Received: by 2002:a05:7300:51c3:b0:36e:d060:8bad with SMTP id 5a478bee46e88-3768385dc4fmr1982303eec.5.1794367622326;
-        Tue, 10 Nov 2026 19:27:02 -0800 (PST)
-Received: from homik.search.charter.net ([2603:8002:ad40:56f0:521b:36dc:be93:10f2])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-37520512ec1sm10567569eec.12.2026.11.10.19.27.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Nov 2026 19:27:01 -0800 (PST)
-From: Mariia Nikitash <nikitash.mariiaw@gmail.com>
-To: nicolas.dufresne@collabora.com,
-	benjamin.gaignard@collabora.com,
-	p.zabel@pengutronix.de
-Cc: mchehab@kernel.org,
-	hverkuil+cisco@kernel.org,
-	linux-media@vger.kernel.org,
+	Wed, 11 Nov 2026 04:18:39 +0000
+Received: from localhost.localdomain (unknown [61.154.14.87])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 5440544dd;
+	Wed, 11 Nov 2026 12:18:30 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Bjorn Helgaas <bhelgaas@google.com>,
+	Manivannan Sadhasivam <mani@kernel.org>
+Cc: linux-pci@vger.kernel.org,
+	imx@lists.linux.dev,
+	linuxppc-dev@lists.ozlabs.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-hardening@vger.kernel.org,
-	kees@kernel.org,
-	justinstitt@google.com,
-	morbo@google.com,
-	david.laight.linux@gmail.com,
-	Mariia Nikitash <nikitash.mariiaw@gmail.com>
-Subject: [PATCH v2] media: verisilicon: Replace strlcat() with scnprintf()
-Date: Tue, 10 Nov 2026 19:24:46 -0800
-Message-ID: <20261111032446.29803-1-nikitash.mariiaw@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261105084518.386234-1-nikitash.mariiaw@gmail.com>
-References: <20261105084518.386234-1-nikitash.mariiaw@gmail.com>
+	linux-arm-msm@vger.kernel.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH] PCI: dwc: Check the pme_turn_off callback return value
+Date: Wed, 11 Nov 2026 12:18:21 +0800
+Message-Id: <20261111041821.2259326-1-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+X-HM-Tid: 0aa1c8d429d603a4kunm94b39dc87e521
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDHkwfVh4ZSUkYGE1KHh9KTlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ0xZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=Ql+iCI9shA9B280n8sAEN/nCTVjb/oMol5IJ0XkKDFICwIvhsHc9+tf+6EaWajWh7TjzBMZnGavUTa06Qss0H++qu88KJRnypylmXkXdO+5vP5Fo0HvrDbrqqOMZY2LDn5zO3yu6nJdFnu6StNORnMqdI9gwA8F58Tuug2TBDWo=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=9V2SAasYyMu6F4znYH6XJbSf3b8w7ZlDKHwO1aQZKs8=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_192703_540652_8414348F 
-X-CRM114-Status: UNSURE (   9.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261110_201837_806273_AD8C5617 
+X-CRM114-Status: GOOD (  18.86  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -113,50 +73,279 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-In preparation for removing the deprecated strlcat() API [1], replace the
-strscpy() and strlcat() calls in hantro_add_func() with a single
-scnprintf() call.
+dw_pcie_suspend_noirq() invokes the optional host ->pme_turn_off()
+callback but ignores its result, so a platform that fails to send
+PME_Turn_Off still has the link brought down as if the handshake had
+completed.
 
-This preserves the resulting string, including NUL termination
-and truncation behavior.
+Turn the callback into an int returning function and propagate its
+error from dw_pcie_suspend_noirq(), matching how the generic
+dw_pcie_pme_turn_off() path is already handled.
 
-Link: https://github.com/KSPP/linux/issues/370 [1]
-Signed-off-by: Mariia Nikitash <nikitash.mariiaw@gmail.com>
+All existing implementations return 0 except:
+  - the Layerscape PF LUT variant, which now returns -ETIMEDOUT when
+    the PME_Turn_Off handshake does not complete instead of only
+    logging it;
+  - the Rockchip host, which now returns an error only when
+    PME_Turn_Off could not be sent at all.  Its PME_TO_Ack and
+    L23-ready wait timeouts remain non-fatal and just log, consistent
+    with the generic path, which does not abort the suspend when an
+    endpoint fails to respond: such timeouts are an endpoint behaviour
+    and must not make the whole system suspend fail.
+
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
-Changes in v2:
-- Replace seq_buf with a single scnprintf() call, as suggested
-  by Hans Verkuil.
 
- drivers/media/platform/verisilicon/hantro_drv.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/pci/controller/dwc/pci-imx6.c         |  4 +++-
+ drivers/pci/controller/dwc/pci-layerscape.c   | 22 +++++++++++++------
+ .../pci/controller/dwc/pcie-designware-host.c |  4 +++-
+ drivers/pci/controller/dwc/pcie-designware.h  |  2 +-
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 16 ++++++++------
+ drivers/pci/controller/dwc/pcie-eswin.c       |  4 +++-
+ drivers/pci/controller/dwc/pcie-qcom.c        |  4 +++-
+ drivers/pci/controller/dwc/pcie-ultrarisc.c   |  3 ++-
+ 8 files changed, 39 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 26e5d5547466..d8854ceb4fed 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -902,9 +902,8 @@ static int hantro_add_func(struct hantro_dev *vpu, unsigned int funcid)
- 	vfd->vfl_dir = VFL_DIR_M2M;
- 	vfd->device_caps = V4L2_CAP_STREAMING | V4L2_CAP_VIDEO_M2M_MPLANE;
- 	vfd->ioctl_ops = &hantro_ioctl_ops;
--	strscpy(vfd->name, match->compatible, sizeof(vfd->name));
--	strlcat(vfd->name, funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ?
--		"-enc" : "-dec", sizeof(vfd->name));
-+	scnprintf(vfd->name, sizeof(vfd->name), "%s%s", match->compatible,
-+		  funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ? "-enc" : "-dec");
+diff --git a/drivers/pci/controller/dwc/pci-imx6.c b/drivers/pci/controller/dwc/pci-imx6.c
+index 38a59795f98f..643b591c789f 100644
+--- a/drivers/pci/controller/dwc/pci-imx6.c
++++ b/drivers/pci/controller/dwc/pci-imx6.c
+@@ -1575,7 +1575,7 @@ static void imx_pcie_host_post_init(struct dw_pcie_rp *pp)
+  * register is reserved, so the generic DWC implementation of sending the
+  * PME_Turn_Off message using a dummy MMIO write cannot be used.
+  */
+-static void imx_pcie_pme_turn_off(struct dw_pcie_rp *pp)
++static int imx_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+ 	struct imx_pcie *imx_pcie = to_imx_pcie(pci);
+@@ -1584,6 +1584,8 @@ static void imx_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+ 	regmap_clear_bits(imx_pcie->iomuxc_gpr, IOMUXC_GPR12, IMX6SX_GPR12_PCIE_PM_TURN_OFF);
  
- 	if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER) {
- 		vpu->encoder = func;
+ 	usleep_range(PCIE_PME_TO_L2_TIMEOUT_US/10, PCIE_PME_TO_L2_TIMEOUT_US);
++
++	return 0;
+ }
+ 
+ static const struct dw_pcie_host_ops imx_pcie_host_ops = {
+diff --git a/drivers/pci/controller/dwc/pci-layerscape.c b/drivers/pci/controller/dwc/pci-layerscape.c
+index 475aea3ef58a..8bd879226971 100644
+--- a/drivers/pci/controller/dwc/pci-layerscape.c
++++ b/drivers/pci/controller/dwc/pci-layerscape.c
+@@ -117,7 +117,7 @@ static void ls_pcie_pf_lut_writel(struct ls_pcie *pcie, u32 off, u32 val)
+ 		iowrite32(val, pcie->pf_lut_base + off);
+ }
+ 
+-static void ls_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
++static int ls_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+ 	struct ls_pcie *pcie = to_ls_pcie(pci);
+@@ -132,8 +132,12 @@ static void ls_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
+ 				 val, !(val & PF_MCR_PTOMR),
+ 				 PCIE_PME_TO_L2_TIMEOUT_US/10,
+ 				 PCIE_PME_TO_L2_TIMEOUT_US);
+-	if (ret)
++	if (ret) {
+ 		dev_err(pcie->pci->dev, "PME_Turn_off timeout\n");
++		return ret;
++	}
++
++	return 0;
+ }
+ 
+ static int ls_pcie_exit_from_l2(struct dw_pcie_rp *pp)
+@@ -179,7 +183,7 @@ static int ls_pcie_host_init(struct dw_pcie_rp *pp)
+ 	return 0;
+ }
+ 
+-static void scfg_pcie_send_turnoff_msg(struct regmap *scfg, u32 reg, u32 mask)
++static int scfg_pcie_send_turnoff_msg(struct regmap *scfg, u32 reg, u32 mask)
+ {
+ 	/* Send PME_Turn_Off message */
+ 	regmap_write_bits(scfg, reg, mask, mask);
+@@ -195,14 +199,17 @@ static void scfg_pcie_send_turnoff_msg(struct regmap *scfg, u32 reg, u32 mask)
+ 	 * to complete the PME_Turn_Off handshake.
+ 	 */
+ 	regmap_write_bits(scfg, reg, mask, 0);
++
++	return 0;
+ }
+ 
+-static void ls1021a_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
++static int ls1021a_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+ 	struct ls_pcie *pcie = to_ls_pcie(pci);
+ 
+-	scfg_pcie_send_turnoff_msg(pcie->scfg, SCFG_PEXPMWRCR(pcie->index), PMXMTTURNOFF);
++	return scfg_pcie_send_turnoff_msg(pcie->scfg, SCFG_PEXPMWRCR(pcie->index),
++					  PMXMTTURNOFF);
+ }
+ 
+ static int scfg_pcie_exit_from_l2(struct regmap *scfg, u32 reg, u32 mask)
+@@ -222,12 +229,13 @@ static int ls1021a_pcie_exit_from_l2(struct dw_pcie_rp *pp)
+ 	return scfg_pcie_exit_from_l2(pcie->scfg, SCFG_PEXSFTRSTCR, PEXSR(pcie->index));
+ }
+ 
+-static void ls1043a_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
++static int ls1043a_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+ 	struct ls_pcie *pcie = to_ls_pcie(pci);
+ 
+-	scfg_pcie_send_turnoff_msg(pcie->scfg, SCFG_PEXPMECR, PEXPME(pcie->index));
++	return scfg_pcie_send_turnoff_msg(pcie->scfg, SCFG_PEXPMECR,
++					  PEXPME(pcie->index));
+ }
+ 
+ static int ls1043a_pcie_exit_from_l2(struct dw_pcie_rp *pp)
+diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+index f531c5b51b3c..eb11556aca72 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-host.c
++++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+@@ -1249,7 +1249,9 @@ int dw_pcie_suspend_noirq(struct dw_pcie *pci)
+ 		return 0;
+ 
+ 	if (pci->pp.ops->pme_turn_off) {
+-		pci->pp.ops->pme_turn_off(&pci->pp);
++		ret = pci->pp.ops->pme_turn_off(&pci->pp);
++		if (ret)
++			return ret;
+ 	} else {
+ 		ret = dw_pcie_pme_turn_off(pci);
+ 		if (ret)
+diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
+index 0ece9c433229..9836ea9127bd 100644
+--- a/drivers/pci/controller/dwc/pcie-designware.h
++++ b/drivers/pci/controller/dwc/pcie-designware.h
+@@ -440,7 +440,7 @@ struct dw_pcie_host_ops {
+ 	void (*deinit)(struct dw_pcie_rp *pp);
+ 	void (*post_init)(struct dw_pcie_rp *pp);
+ 	int (*msi_init)(struct dw_pcie_rp *pp);
+-	void (*pme_turn_off)(struct dw_pcie_rp *pp);
++	int (*pme_turn_off)(struct dw_pcie_rp *pp);
+ };
+ 
+ struct dw_pcie_rp {
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 525a26ee1d07..ea7ef0be1214 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -464,7 +464,7 @@ static void rockchip_pcie_host_post_init(struct dw_pcie_rp *pp)
+ 	pp->bridge->broken_l1ss_resume = true;
+ }
+ 
+-static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
++static int rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+ 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
+@@ -478,18 +478,16 @@ static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+ 				 status, !(status & BIT(4)), PCIE_PME_TO_L2_TIMEOUT_US / 10,
+ 				 PCIE_PME_TO_L2_TIMEOUT_US);
+ 	if (ret) {
+-		dev_warn(dev, "Failed to send PME_Turn_Off\n");
+-		return;
++		dev_err(dev, "Failed to send PME_Turn_Off\n");
++		return ret;
+ 	}
+ 
+ 	/* 2. Wait for PME_TO_Ack, bit 9 will be set once received */
+ 	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_INTR_STATUS_MSG_RX,
+ 				 status, status & BIT(9), PCIE_PME_TO_L2_TIMEOUT_US / 10,
+ 				 PCIE_PME_TO_L2_TIMEOUT_US);
+-	if (ret) {
++	if (ret)
+ 		dev_warn(dev, "Failed to receive PME_TO_Ack\n");
+-		return;
+-	}
+ 
+ 	/* 3. Clear PME_TO_Ack and Wait for ready to enter L23 message */
+ 	rockchip_pcie_writel_apb(rockchip, PME_TO_ACK, PCIE_CLIENT_INTR_STATUS_MSG_RX);
+@@ -497,8 +495,12 @@ static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+ 				 status, status & PME_READY_ENTER_L23,
+ 				 PCIE_PME_TO_L2_TIMEOUT_US / 10,
+ 				 PCIE_PME_TO_L2_TIMEOUT_US);
+-	if (ret)
++	if (ret) {
+ 		dev_err(dev, "Failed to get ready to enter L23 message\n");
++		ret = 0;
++	}
++
++	return ret;
+ }
+ 
+ static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
+diff --git a/drivers/pci/controller/dwc/pcie-eswin.c b/drivers/pci/controller/dwc/pcie-eswin.c
+index 5639666d5148..ed498601312f 100644
+--- a/drivers/pci/controller/dwc/pcie-eswin.c
++++ b/drivers/pci/controller/dwc/pcie-eswin.c
+@@ -269,7 +269,7 @@ static void eswin_pcie_host_deinit(struct dw_pcie_rp *pp)
+ 	clk_bulk_disable_unprepare(pcie->num_clks, pcie->clks);
+ }
+ 
+-static void eswin_pcie_pme_turn_off(struct dw_pcie_rp *pp)
++static int eswin_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+ 	struct eswin_pcie *pcie = to_eswin_pcie(pci);
+@@ -281,6 +281,8 @@ static void eswin_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+ 	 * the skip_l23_ready has been set.
+ 	 */
+ 	pp->skip_l23_ready = pcie->data->skip_l23;
++
++	return 0;
+ }
+ 
+ static const struct dw_pcie_host_ops eswin_pcie_host_ops = {
+diff --git a/drivers/pci/controller/dwc/pcie-qcom.c b/drivers/pci/controller/dwc/pcie-qcom.c
+index eba1b2cb30f0..9548c6568c82 100644
+--- a/drivers/pci/controller/dwc/pcie-qcom.c
++++ b/drivers/pci/controller/dwc/pcie-qcom.c
+@@ -1594,11 +1594,13 @@ static void qcom_pcie_host_post_init(struct dw_pcie_rp *pp)
+ 		pcie->cfg->ops->host_post_init(pcie);
+ }
+ 
+-static void qcom_pcie_host_pme_turn_off(struct dw_pcie_rp *pp)
++static int qcom_pcie_host_pme_turn_off(struct dw_pcie_rp *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+ 
+ 	writel(ELBI_SYS_CTRL_PME_TURNOFF_MSG, pci->elbi_base + ELBI_SYS_CTRL);
++
++	return 0;
+ }
+ 
+ static const struct dw_pcie_host_ops qcom_pcie_dw_ops = {
+diff --git a/drivers/pci/controller/dwc/pcie-ultrarisc.c b/drivers/pci/controller/dwc/pcie-ultrarisc.c
+index ee844ff7ed55..493b6c68b42f 100644
+--- a/drivers/pci/controller/dwc/pcie-ultrarisc.c
++++ b/drivers/pci/controller/dwc/pcie-ultrarisc.c
+@@ -77,12 +77,13 @@ static int ultrarisc_pcie_host_init(struct dw_pcie_rp *pp)
+ 	return 0;
+ }
+ 
+-static void ultrarisc_pcie_pme_turn_off(struct dw_pcie_rp *pp)
++static int ultrarisc_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+ {
+ 	/*
+ 	 * DP1000 does not support sending PME_Turn_Off from the RC.
+ 	 * Keep this callback empty to skip the generic MSG TLP path.
+ 	 */
++	return 0;
+ }
+ 
+ static const struct dw_pcie_host_ops ultrarisc_pcie_host_ops = {
 -- 
-2.43.0
+2.25.1
 
 
 _______________________________________________
