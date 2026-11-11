@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0EC29606A33B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 07:19:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 10D7A606A320
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 07:20:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TGCR+3uB;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=k5aj7FjN
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0+NgI0M7;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=VB5QEXKs
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=4iNmCxX6ND6+1KsGWiVpt7SpJMgJ4aGMdhimrQ1EX9o=; b=TGCR+3uBhP+mR6JQQt5kbFHaqC
-	x1ehF1Faeb+0rcS19ZPsxy+uUPlUwWTjO06L5LG1PLtSB0kQynhSG70HBAxm8JaXpdCfKmPmJjAZr
-	rUEJYhdd5yfhEkeG50CJnaS/+YGK8hD8TB6eVMxywMg42AoKLKwTcHJrWt6Ez0hRsk43GB0itx6SU
-	8PNMep9kqSbLSgMIwZip8w5VA3EipS2w844e7Fpf8tf73f8KKdvfaJVIgn5yqzVzC4q64NWsbWHIJ
-	XaDc9bjmMXCoyTCD9suVQe2XmDAVmq3jhL14m9+5lhbRYkIA7CMIefdRBeBD7eOtWLKx33lmfAtn+
-	Cdzehtiw==;
+	bh=PnxzbpenyR2BOAyrgcZovUI15oJlRBYDI9x+3aLpKeo=; b=0+NgI0M7SMNIS/mW2t0qx1h5it
+	EzjqWYmCwDIuzbYJtp9yEJk0WX3jtDG7e7+kG0QtkDL0WQX1X1X/2LORpVPZsYfP2mfuW/KTT++HH
+	PexChVVphMb6NvpEuxI35io0/45eFcKSk0pmTR0Z6HRm7IZ+wlHZxZP5ni4S1ullLLgn11+IxY2bH
+	j5lUb0s0w3hQTW7Gl8RXZXptxtkY8qd6QneohCF97l/WDSHOoPbRL86Xr6KVmHao6c5tDit2RjlZD
+	qB0dHDdc3MF5WmdHFbytRv6Xn8BqRx0jK3rSTliBOBy1HfgsfPvU9HvlGcntgX2ui+SuzEbUsD6ED
+	mm/amyww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR2cb-00000005rtg-0SOv;
-	Wed, 11 Nov 2026 07:19:53 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xR2ch-00000005rxx-1Igl;
+	Wed, 11 Nov 2026 07:19:59 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR2cZ-00000005rs8-3ADf;
-	Wed, 11 Nov 2026 07:19:51 +0000
+	id 1xR2ca-00000005rsE-1dfb;
+	Wed, 11 Nov 2026 07:19:52 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 83EFF43C11;
+	by sea.source.kernel.org (Postfix) with ESMTP id C47C24593B;
 	Wed, 11 Nov 2026 07:19:51 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1794381591;
-	b=mZ6MrDTWd337PwTpxS10xVkVMMr2ivFdcbpnZCka9T1ROpFelngCsvmdMgZHgX2DSzPG
-	 wW6wOvt/W66a27NudQTmLlBgHBpJF77ES9WSSYy69gA7CmQaWc6dF1VQpXNeRG8qkWXf3
-	 n9SKsAhQzU0IExZIebAMdhHVSEYEpWOGnA6kkk0jqTmm5JeUT+A6OkOwfuaU9Wcf6z9sb
-	 ZWPNRO/iFbF9tMOsQvWtQVc5j0NUNSi5P+jf7ElUIMMZ7n+d/E64is2E4GH/X8WnokAJu
-	 Ir2n0lISTnYTIIVTXBTmDSnKtjg6flH/6vmC80guuTao0vpfvlHJ3XDdlVO5lvL20lg==
+	b=hTLOgfBKI+lj4I3/tcqoPDViJj50tI3XLTumhxgrXMC/0jIsGaGszHSPmYAGG7SDBSd4
+	 SUHGPMA4bLsWv8xGsfywivu1nVPjs9ibDbQOMlxUrG5oucUOa15jR5u0sJYFjPf/xB8DZ
+	 2C8HRCCEwYGlw9o69YHPFfYfHn/aUUJUrLwGPl9A+ZMcSjgOuJMSsYd66Jsqi43SrWJlk
+	 Nb/lIPGFDrzX063/sGukTGKEK4gW0mL3beO9toLSIA61YhTBsDzGWFak8oITcIUMBCSCy
+	 /DjTh3KtIIswKlsRhDUan5pYD/lYNzBpdL7SXWQ969g75GigkvzCaxfkwXy1u0zYvgQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1794381591;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=YwK7+1UqWk4ojkj/WS9d6dJgOXvbwrx78qaJQutBsIc=;
-	b=sI7mvGG7dAsLZn9nvRwGYbjfBYDvvxxHUxNiFIew9vA1qVGXfaZN9CPGzMBug0YGB9/l
-	 LaGc9dYV3yji0glU6QXtwkQrAEQ4IxoD7ICRHSczxcQXOaMkYqZqTPM9p99Xljrzsg/ZI
-	 5H+AN+/qWlKv8VBFMqhqp+7TLwVj64pGt+YeZf4ZDQD9edWTusOMTBbcm+f3hXFBTt95i
-	 2Vw86i6qZmJzvt7dSFId0XPkXh5JSNg8X/R7Pu2jtdBERDuO3ras/U5sEFOjkfTk+UhoV
-	 PBvM8FiAMiyYXb4CDEZGsECPxLeC8IRjQ8zFVOuj0p/ROSpZDlP4z2+ouusweZ/FhDg==
+	bh=9m1iAeouVAj4F1HOa9zNEIXietvCGZ4AUJji/MyAt+Q=;
+	b=N9aEP1wFYkCb6o/UxbSnoBzFFyYTPM+ee5WXCn23r1q0k+9uzOEbK5QKdAXojYbCi0Ms
+	 K0nWh6WTDdUUUfjCsqzphayZ8wP/YMRkB4ezqhhCPTU6aQWTGU+G4PYiKuYp0aEgOFQXs
+	 WxmkbGTvg+V9K5w3Vs9arGAdU9jjSYMQr27Jqkf6vDBe6cWQIp3uzKL13QYYI30VlHBbY
+	 c9HkKWrXEPz37PAupgM07aXg7qNArfv4bgBa3OhPTD+Nobs1M+GMG94L/dbR/EKPhyp5A
+	 FVSwkdIgTHCNCsrYAHvmalC5/xs4gQwGKkGLIrvaRJRodxm73R02EDpvp/Xn/2epp9A==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 57E781F00A0C;
+	by smtp.kernel.org (Postfix) with ESMTPS id 314E51F00A0A;
 	Wed, 11 Nov 2026 07:19:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1794381591;
-	bh=YwK7+1UqWk4ojkj/WS9d6dJgOXvbwrx78qaJQutBsIc=;
+	bh=9m1iAeouVAj4F1HOa9zNEIXietvCGZ4AUJji/MyAt+Q=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=k5aj7FjNHeJ4SA7Jiew/Ew2ULqBEIdOuc2rZOahGSqFAQhlXDOXB1n7DSS7fn3ttL
-	 ZJGPx+fYF/s05itnKv8AeVjfBMcpsTtqbKWafiMR2UW0AwipBe+6ac/p/RJqW4ASSv
-	 PFFjY4B0FGXIe9Vlva6Y7UZzOiXqGvWmzAdSKzEaY+fW8nyS/OCc0C58qwdBYy8UlP
-	 XzexNTAPgxrV2pP5t39Aah6RVRBTxbGISEAPUr0LkeC4Wn0pCN5gxbtFFv+3NjoJ79
-	 7E/m0vq6xXsV44fDqVjkXMo5+50nvKPusAfRgUEnTdneIax4mVzT2F6wtQZr1QCKLZ
-	 ahhPiByOf6PTQ==
+	b=VB5QEXKstkdY3oOhVT/0RkZEiw9g4doGvD4wKT5eQHUkG5ntpxX4QkYQ6z4BY5CbR
+	 oYPDYy9+JyXgQu9Mk+23bT5nrKUTDeXsDki4y76Ooq70kpsAvsYe7/Dxtc3z30jl4i
+	 kMdJIRulrcD1A4llznj2rAfI65XA22YHJ1lHee3NQfFG90p2KXafpo9FvPpwfuoXdh
+	 j/L8ME6R+ZgO7T3+7MrPcv1U9EXYXk1ezBLAa6btOYqh4TsUmkAZN7SnZzmVaISaJA
+	 HDLBFMZ3kEGwNK2L4uQPpVNWBLXiytV7xdh/nesNogv2ShZ/VhiX5Z/xdR0FwQaBdk
+	 HnjKbjKzfFU8A==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id D7F8D48E53;
+	by lkml.kernel.org (Postfix) with ESMTP id B370248E4B;
 	Wed, 11 Nov 2026 07:19:49 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Wed, 11 Nov 2026 07:19:51 +0000
-Subject: [PATCH v2 3/3] arm64: dts: rockchip: Add USB-C DP AltMode for
- Orange Pi 5/5B
+Date: Wed, 11 Nov 2026 07:19:49 +0000
+Subject: [PATCH v2 1/3] arm64: dts: rockchip: use rgmii-id for the Orange
+ Pi 5/5B ethernet PHY
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261111-opi5-dts-v2-3-821f666418a6@gmail.com>
+Message-Id: <20261111-opi5-dts-v2-1-821f666418a6@gmail.com>
 References: <20261111-opi5-dts-v2-0-821f666418a6@gmail.com>
 In-Reply-To: <20261111-opi5-dts-v2-0-821f666418a6@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -87,11 +87,11 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794381589; l=4241;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794381589; l=1895;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=+xmGbI4GlMgBmPGKtTKnBGXbYPlqe8bWAMPWV4cMo58=;
- b=pJSxnqXPHWE/DGEVq8RVNNqkQWtiza4re7OlmVFh8PI+rUYmBpLFpcD89rKOTN+cg37d8xfY8
- SbWHpGcldphCkjzI44nn39WNTgdmCP8F8ghkKREnWXLAnG6S3bso41W
+ bh=tvDxnxzJS+qXTLT+S+2SEXSC6rLShYZjDQnh9IALLos=;
+ b=lnyHB7N/nE5oteOdOo3aGqGL6oboZhpQwUp9nonKn8fssqXvBWA7+1eCQHDJhPHv/LrwnGOhS
+ 8BhiEf4sKmXCuVUzlTfp83d/CPMhehKxOMkRVKjdX8GmK7ljpdUS6OI
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -120,182 +120,50 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-The USB-C port of the Orange Pi 5 and 5B is connected to the RK3588S
-USBDP PHY0, which can mux two (pin assignment D) or all four (pin
-assignment C/E) of its SuperSpeed lanes to the DisplayPort controller
-DP0. The SBU lines are wired to the PHY's DP AUX channel through the
-sbu1/sbu2 DC control GPIOs that are already described.
+The Orange Pi 5 and 5B have a Motorcomm YT8531C RGMII PHY on gmac1
+(the PHY driver binds as "YT8531 Gigabit Ethernet"). The board neither
+uses extra long clock traces for TX nor for RX, yet the device tree
+describes it as "rgmii-rxid", which according to ethernet-controller.yaml
+means that the PCB provides the TX delay, and then makes the MAC insert
+the TX delay with tx_delay = <0x42>. The setting was copied from the
+vendor kernel, which uses the MAC delay lines everywhere.
 
-Enable DP0, route it from VOP2 video port 2 and describe the full
-USB-C graph using the USBDP PHY ports scheme:
+Describe the PCB correctly as "rgmii-id" and drop tx_delay, so that the
+MAC adds no delay and the PHY adds both: motorcomm.c programs its
+default 1950 ps for RX (as now) and for TX. This is the setup the
+binding recommends, and the one the same vendor's Orange Pi CM5
+(rk3588s-orangepi-cm5-base.dts), with a YT8531C on gmac1 of the same
+SoC, already uses in mainline.
 
-  port@0: SuperSpeed lanes to the USB-C connector
-  port@1: from the DWC3 controller (SuperSpeed)
-  port@2: from the DP controller
-  port@3: DP AUX to the connector's SBU port
-
-and advertise DisplayPort AltMode (DFP_D, HBR3, receptacle, pin
-assignments C/D/E) on the connector, so TCPM enters DP AltMode with
-DP capable sinks/adapters.
-
-VP2 is used as on the ROCK 5B family, leaving VP0 for HDMI0 and VP1
-free.
-
-Modelled on Sebastian Reichel's ROCK 5B family DP Alt Mode support in
-the Collabora rockchip-3588 tree.
+Besides being the correct description, this removes the MAC from the
+timing path for both directions, so no board-specific delay-line value
+is needed any more.
 
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- .../boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi   | 89 +++++++++++++++++++---
- 1 file changed, 78 insertions(+), 11 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
-index 7c1fd5905553..52f5005c738d 100644
+index c153e7248727..7c1fd5905553 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi
-@@ -94,6 +94,22 @@ vcc_3v3_sd_s0: regulator-vcc-3v3-sd-s0 {
- 	};
- };
- 
-+&dp0 {
-+	status = "okay";
-+};
-+
-+&dp0_in {
-+	dp0_in_vp2: endpoint {
-+		remote-endpoint = <&vp2_out_dp0>;
-+	};
-+};
-+
-+&dp0_out {
-+	dp0_out_con: endpoint {
-+		remote-endpoint = <&usbdp_phy0_dp_in>;
-+	};
-+};
-+
+@@ -97,14 +97,13 @@ vcc_3v3_sd_s0: regulator-vcc-3v3-sd-s0 {
  &gmac1 {
  	clock_in_out = "output";
  	phy-handle = <&rgmii_phy1>;
-@@ -143,6 +159,13 @@ usb_con: connector {
- 				<PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
- 			try-power-role = "source";
- 
-+			altmodes {
-+				displayport {
-+					svid = /bits/ 16 <0xff01>;
-+					vdo = <0x00001c46>;
-+				};
-+			};
-+
- 			ports {
- 				#address-cells = <1>;
- 				#size-cells = <0>;
-@@ -150,21 +173,21 @@ ports {
- 				port@0 {
- 					reg = <0>;
- 					usbc0_hs: endpoint {
--						remote-endpoint = <&usb_host0_xhci_drd_sw>;
-+						remote-endpoint = <&usb_host0_xhci_hs>;
- 					};
- 				};
- 
- 				port@1 {
- 					reg = <1>;
- 					usbc0_ss: endpoint {
--						remote-endpoint = <&usbdp_phy0_typec_ss>;
-+						remote-endpoint = <&usbdp_phy0_ss_out>;
- 					};
- 				};
- 
- 				port@2 {
- 					reg = <2>;
- 					usbc0_sbu: endpoint {
--						remote-endpoint = <&usbdp_phy0_typec_sbu>;
-+						remote-endpoint = <&usbdp_phy0_dp_out>;
- 					};
- 				};
- 			};
-@@ -250,9 +273,24 @@ &usb_host0_xhci {
- 	dr_mode = "otg";
- 	usb-role-switch;
- 
--	port {
--		usb_host0_xhci_drd_sw: endpoint {
--			remote-endpoint = <&usbc0_hs>;
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@0 {
-+			reg = <0>;
-+
-+			usb_host0_xhci_hs: endpoint {
-+				remote-endpoint = <&usbc0_hs>;
-+			};
-+		};
-+
-+		port@1 {
-+			reg = <1>;
-+
-+			usb_host0_xhci_ss: endpoint {
-+				remote-endpoint = <&usbdp_phy0_ss_in>;
-+			};
- 		};
- 	};
+-	phy-mode = "rgmii-rxid";
++	phy-mode = "rgmii-id";
+ 	pinctrl-0 = <&gmac1_miim
+ 			&gmac1_tx_bus2
+ 			&gmac1_rx_bus2
+ 			&gmac1_rgmii_clk
+ 			&gmac1_rgmii_bus>;
+ 	pinctrl-names = "default";
+-	tx_delay = <0x42>;
+ 	status = "okay";
  };
-@@ -267,18 +305,47 @@ &usbdp_phy0 {
- 	sbu1-dc-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
- 	sbu2-dc-gpios = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
  
--	port {
-+	ports {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
- 
--		usbdp_phy0_typec_ss: endpoint@0 {
-+		port@0 {
- 			reg = <0>;
--			remote-endpoint = <&usbc0_ss>;
-+
-+			usbdp_phy0_ss_out: endpoint {
-+				remote-endpoint = <&usbc0_ss>;
-+			};
- 		};
- 
--		usbdp_phy0_typec_sbu: endpoint@1 {
-+		port@1 {
- 			reg = <1>;
--			remote-endpoint = <&usbc0_sbu>;
-+
-+			usbdp_phy0_ss_in: endpoint {
-+				remote-endpoint = <&usb_host0_xhci_ss>;
-+			};
- 		};
-+
-+		port@2 {
-+			reg = <2>;
-+
-+			usbdp_phy0_dp_in: endpoint {
-+				remote-endpoint = <&dp0_out_con>;
-+			};
-+		};
-+
-+		port@3 {
-+			reg = <3>;
-+
-+			usbdp_phy0_dp_out: endpoint {
-+				remote-endpoint = <&usbc0_sbu>;
-+			};
-+		};
-+	};
-+};
-+
-+&vp2 {
-+	vp2_out_dp0: endpoint@a {
-+		reg = <ROCKCHIP_VOP2_EP_DP0>;
-+		remote-endpoint = <&dp0_in_vp2>;
- 	};
- };
 
 -- 
 2.55.0
