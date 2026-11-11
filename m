@@ -2,66 +2,102 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4F40F606A32D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 00:50:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A7C23606A321
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 02:05:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=H/KQ9SMF;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=aLsL/HDI
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Z0VhOwEO;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Ubiggs0y
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=nm8udqDIctOrb5u4MpliFs/1rcemk96d2blLfj4Ck3M=; b=H/KQ9SMF0ZshjxW8sCwCeUBUKM
-	Gayo/Ms+puh63+NBYZvMVsjVIXQygSbiVt0iflgcXfNfknBMGYyVqVbQAOeGLSKebgYFY0X387sgH
-	IzzsD8IV+rgOqHc58iB965ordZHJYihrAinM+8hbCTdXGRPP8rpiSPRvJ/MKNncnM9PscVNLtwGo4
-	Kzo68lSRy9Ay3VcIvSGpGvIJ5xhh4cjDPwHBiFb7ART6wYzq7cmstGaemhQecWVO2BdIddGDfnxu8
-	17U3jUzt5AB93uKcvi40AkNKE6WaTh8uEvgM70FlVHAtTPadOBbVWYdunSiq97u/4IbFjNkCjscKg
-	OcSLD4wA==;
+	bh=hgBpSb5gvFnqmxHNaAdjyRV15zxKw5PwTJS/zfdLPMU=; b=Z0VhOwEO4nz6x9AmNV6jpO76kH
+	pYGMzp2JhFfcxSIH2wbjsHTMZBBTbPRkXNGAvOTkC6Mayi/Bnyata4Y7bAtYcAvJBJptIIB0Yo2nK
+	UbR/wRYRN/DRTjHWnOW3CBwBk9btGmlfSLsKhqIsstlnawjYGGwMxDtlcZWcpRUwCr8qicEtdjc90
+	r2yJkGh1soFaPX8v2NMWk6Nk0QQfvqVSGxK6glE+ghZC9rwj/eX88w3MQ7DLAGDCMp6EPsRPCVjgq
+	m/Jy3UwKLFGr7elPqxybikEe9XB/TczS/IgBf0pX/xpzZZkOJBhh54Mm8VcSEGyzWGyxUxaLBgMiL
+	hr3bi4BQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQwXa-00000005LHX-2ENP;
-	Wed, 11 Nov 2026 00:50:18 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xQxiP-00000005PYJ-4A8I;
+	Wed, 11 Nov 2026 02:05:33 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQwXY-00000005LHI-1nF4;
-	Wed, 11 Nov 2026 00:50:16 +0000
+	id 1xQxiO-00000005PXh-2HQd;
+	Wed, 11 Nov 2026 02:05:32 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7B6AF639F5;
-	Wed, 11 Nov 2026 00:50:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C3141F0093C;
-	Wed, 11 Nov 2026 00:50:14 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 9DE71632FB;
+	Wed, 11 Nov 2026 02:05:31 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794362731;
+	b=n9NEM8HaDfVYSrM1CNZE2LWQNu2p/xSLeba8CE1SNexxVlUexhJwchLCPZ88of6ciDcT
+	 38A77nRjkfxWSNpt15tQZwXiNAy+PWqb+YRS9CpmmrVh6gNElxJo/x3kcdwnXUqGaPL1a
+	 6KBiUJP53liUcarz9zyz5vUzYPRmK8c/2ueub3MK68KGZ9x4MLLVvoLoQvIjRMVBnnuu0
+	 B/sNqEi2tDEnm3lbWRK22j0JyH7RzT9l68/Fc2ahEf+J5ZPCaFFDKaIDAeggLZIvWUNWi
+	 7SoT49OQFQg9VGeV/XdhF5wbREiJ9ckmAqu90knGpkLilWiiLy3Ye1650yQ24YiTBbQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794362731;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
+	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=KzN50YqFiwiu68kTHVRL6CYOokJvbanKQvbx9hoBfYA=;
+	b=cMBm/odqB9HvGH597R3ARkl4yhVCmj55RhLTN/ZvGRmHILBlK8Dwg1hmRLMYoC5+BvyN
+	 EYx8gaW+ps7NU+ry4EvIiYzvdRPyfhuO3QOq7q2ioREX9p89TeVFCMXm3fjxfjLxfjF2H
+	 ABA76H3EKQzAmJuJ09IosWYQypMj2XXij16/IMI6osxQ/ErOsp31oAXYZQzU+LJN8H5ij
+	 +lLfz/8pUoLC/1bLgMHKBqU9+CzXhFwsm1LsOrSegI17Q8VF/a2fs53lar+gVNdiJmgi5
+	 oGRdQ22ajMdC8kGWPGKYySuAT+NfqSUoz6cJgl1o7BQUrIhRGXDv0ckSRNHRe6EsCww==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id D12C71F0093C;
+	Wed, 11 Nov 2026 02:05:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794358214;
-	bh=TXETTPPRVF+HNiL1JDfhK3+Odg9X5L0s6YqExft/M58=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=aLsL/HDIZvha5C4UASbyS/8/oVMaiH7y+qfKFJsCXtFfgjRBqu3k2mhnpw7CSVusn
-	 DTLKMNvUdumkNdWSdIPTi19z3ZAdWJn8gnmMxSSzO+4tuHGlP6VnlMU92IQYtu8Wz4
-	 o5PRmVcXER7KBkqzTmNj8ZMUgxv5RXbL6NFLEhj8IWyg3FaMA5gBMU6F4QhTFHkgpo
-	 du8WqP2QFNMfCCzPxMFSFja8O3s/U4IsCxTJ0xLjd9I2KvTdZKWCEy0maVEaYMhcw2
-	 AxESCG0UX5+WvHOh1Ms2i8fjr2djtyyLYDiu3SZ+XUG7dnTZfdUuVumad1sLn+jJwP
-	 wjZY5as0LwZrg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 2108E39E8A55;
-	Wed, 11 Nov 2026 00:50:14 +0000 (UTC)
+	s=k20260515; t=1794362731;
+	bh=KzN50YqFiwiu68kTHVRL6CYOokJvbanKQvbx9hoBfYA=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=Ubiggs0yBMCSz4utkQ9rAQdDEqNW991M09htlgjLbex8vs4XaASKVj/5Dv6lVRyK8
+	 OLcyisIRO49qpWDLuUpV3zSvS1dyGVXaKvP+U4XXTVjBjDKcMNYVwTwI4pl3mKb520
+	 cXKGNkqBhFNbKD0t8ri+TWWvhVAcommCsx3wJJQnkPU7/ylGFtP3ADS86262Qxtqgw
+	 NTtApnAX2Jcony5YT60KEVhPPMVz4P/d1BvzoIqw6lWRoTwU15+fVqkXbC711lKZEo
+	 tFCIDhnR7Mh4FqUyhYWmXxPPoG2t0XJU9oBvukg5NuTTha3HJxk+qLmcAR3SMxucLL
+	 BIYWcQpmFedeA==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 5DFBA48D22;
+	Wed, 11 Nov 2026 02:05:30 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Wed, 11 Nov 2026 04:05:28 +0200
+Subject: [PATCH] pinctrl: rk805: Add the platform module alias
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next] dt-bindings: net: add Realtek RTL8125 PCIe
- Ethernet
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <179435821267.142717.8246984206000823163.git-patchwork-notify@kernel.org>
-Date: Wed, 11 Nov 2026 00:50:12 +0000
-References: <20261109-dt-bindings-net-realtek-rtl8125-v1-1-cff4b8a8be66@pardini.net>
-In-Reply-To: <20261109-dt-bindings-net-realtek-rtl8125-v1-1-cff4b8a8be66@pardini.net>
-To: Ricardo Pardini <ricardo@pardini.net>
-Cc: hkallweit1@gmail.com, nic_swsd@realtek.com, andrew+netdev@lunn.ch,
- davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
- sebastian.reichel@collabora.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Message-Id: <20261111-rk805-pinctrl-alias-v1-1-e0c6cdd5b823@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAGfN82oC/x2M0QpAQBAAf0X7bOtcHPkVeVhnsdHRnqTk313mb
+ R5mHoiswhHa7AHlS6LsIUmRZ+AXCjOjjMnBGuuKBOramAoPCf7UDWkTiliPpqHSOucHglQeypP
+ c/7Xr3/cDlZuxA2UAAAA=
+To: Linus Walleij <linusw@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>, 
+ stable@vger.kernel.org
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1626; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=Zndba/YdME6GY+mxEHq0lf95NjIbiNPv7gf3rw4Jcj4=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFmfz2Z2pj24epDrzR62HVc+Wr7yZ/Bw37x9jeT+b6/tH
+ TKT5a4zdpSyMIhxMciKKbJMOKRxK2PJ1b/+HuYPYOawMoEMYeDiFICJzBJh+MV86o3L96szfuwu
+ kg+7F35kY5XC8bgWv9bNs2O3cbddvL+HkWGJ14Zf3UsfTMkPuLS8LPP06eW2XMbas2c6H9Kf/m/
+ i4SAmAA==
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,40 +107,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hello:
+From: Igor Velkov <iav@iav.lv>
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+The rk8xx MFD core registers the pin controller of the RK805, RK806 and
+RK816 as a platform device named "rk805-pinctrl", but the driver has
+neither a MODULE_ALIAS nor a platform_device_id table. Built as a module
+it is never loaded on its own, and everything that uses the PMIC GPIOs
+waits for it: on the Pine64 ROCK64 the gpio-leds device with both
+LEDs stays in deferred probe.
 
-On Mon, 09 Nov 2026 02:53:47 +0100 you wrote:
-> From: Ricardo Pardini <ricardo@pardini.net>
-> 
-> Add a binding for fixed/soldered Realtek RTL8125 PCIe Ethernet
-> controller. As a PCIe device, its "pci10ec,8125" compatible is the
-> Open Firmware spelling auto-derived from its PCI-SIG vendor/device IDs
-> and is already covered by the generic dtschema pci-device.yaml. The
-> compatible itself therefore needs no binding to be valid.
-> 
-> [...]
+The other rk8xx cell drivers (rk805-pwrkey, rk808-regulator, rtc-rk808,
+clk-rk808) carry such an alias. Add one here as well.
 
-Here is the summary with links:
-  - [net-next] dt-bindings: net: add Realtek RTL8125 PCIe Ethernet
-    https://git.kernel.org/netdev/net-next/c/711c458f6f34
+Fixes: ea479996c79b ("pinctrl: Add pinctrl driver for the RK805 PMIC")
+Cc: stable@vger.kernel.org
+Signed-off-by: Igor Velkov <iav@iav.lv>
+---
+Tested on a Pine64 ROCK64 (RK805) with v7.3.4 and CONFIG_PINCTRL_RK805=m:
+without the alias the module is not loaded and both LEDs stay in
+deferred probe over three boots; with it the module loads at boot, both
+LEDs register and the deferred list is empty.
+---
+ drivers/pinctrl/pinctrl-rk805.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-You are awesome, thank you!
+diff --git a/drivers/pinctrl/pinctrl-rk805.c b/drivers/pinctrl/pinctrl-rk805.c
+index 22f576337faa..694a47d95e17 100644
+--- a/drivers/pinctrl/pinctrl-rk805.c
++++ b/drivers/pinctrl/pinctrl-rk805.c
+@@ -700,3 +700,4 @@ MODULE_DESCRIPTION("RK805 pin control and GPIO driver");
+ MODULE_AUTHOR("Xu Shengfei <xsf@rock-chips.com>");
+ MODULE_AUTHOR("Joseph Chen <chenjh@rock-chips.com>");
+ MODULE_LICENSE("GPL v2");
++MODULE_ALIAS("platform:rk805-pinctrl");
+
+---
+base-commit: 4bc88b10a232db13219667e69616f6d2250d5e5f
+change-id: 20261111-rk805-pinctrl-alias-7d08a4266cba
+
+Best regards,
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+Igor Velkov <iav@iav.lv>
 
 
 
