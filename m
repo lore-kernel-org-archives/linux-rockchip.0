@@ -2,65 +2,109 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D14A2606A31C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 04:18:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0421F60A6F76
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 06:18:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Hr3nEnAm;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=Ql+iCI9s
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gFRC57VG;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ZKdw/bpA
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=B6LXg2XJhnnLE9QuQNHDufPsoPJEyx+JqB5DpVMBXk4=; b=Hr3nEnAmyMR6nii1LkLmI2UIh8
-	JM7JDcfor5sGunAHAlUu4FLNvwZlVayb28I2mJYs/T40AZGSqw6q1uTc7BnNZcuD37jbGdwsDrOiM
-	rWZ/odUgVXrKJkeyKNQBSi792z3aG0Ujjxfh37ynaUgE+nPDxUqaaw3U/XQgMjXHYLAcaj8L/bYnW
-	c7pa1FMQm0FxBwJdLDxi4s73Tvb0klWgbNcyqjat2BMgVjqM0WqhzWxARbWqXpDiM1fnSb/Vqpv2Q
-	50Nnca103maiI77zMtMczZ02SEG8zXih8kTlipAD2ivJQ9k8LtLPsxRLzjhtClSN0XROGvvu1Fvo5
-	H3VE8aJg==;
+	bh=lCGzewXjc4cIVfzN7+hajiyMY4GlQVoXv0gLMskctkA=; b=gFRC57VGVX/G3M8gmpUyoIgGpG
+	tK8MMToPbw2kceRXPgo1fTGo1wLbge9PnYVONxKDyzNNI5b6G8vDQ5tyxZz2NNKYrOzSepKj10Zdd
+	eyOKWuzNw+kbMeanZXkmn7N+ALCG0hmN6L89qPp9dtDv7+eLRURk6kXdCjX0wOMvmul85EYdqbHpu
+	06y7aVJsZnqMzgdOX+WtLWT54UyeN4VgbglJnrDskDdDBoMGZLq1RVjJSAnGTRw8nH2iDYtwLy1yH
+	oR3iH5K9LryuVN1Q0CaWto4b9rPwsa3LeXo1mO4bA1eH3bKFlszBi/ybd+8cYzZBDExqRK2zymopR
+	IH3b4Mng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQznE-00000005bEZ-1CDP;
-	Wed, 11 Nov 2026 04:18:40 +0000
-Received: from mail-m128104.netease.com ([103.209.128.104])
+	id 1xR1fV-00000005jmG-2Bh9;
+	Wed, 11 Nov 2026 06:18:49 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQznB-00000005bDw-0Kk4
-	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Nov 2026 04:18:39 +0000
-Received: from localhost.localdomain (unknown [61.154.14.87])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5440544dd;
-	Wed, 11 Nov 2026 12:18:30 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Bjorn Helgaas <bhelgaas@google.com>,
-	Manivannan Sadhasivam <mani@kernel.org>
-Cc: linux-pci@vger.kernel.org,
-	imx@lists.linux.dev,
-	linuxppc-dev@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH] PCI: dwc: Check the pme_turn_off callback return value
-Date: Wed, 11 Nov 2026 12:18:21 +0800
-Message-Id: <20261111041821.2259326-1-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
+	id 1xR1fU-00000005jlr-34zE;
+	Wed, 11 Nov 2026 06:18:48 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7C96C455C4;
+	Wed, 11 Nov 2026 06:18:48 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794377928;
+	b=YaKniKK7QvwneqpRPsAxXDQeuu0jFK4JJjRuZYSjK5h9weiAkpSSyAqZ91EEVL0czo2i
+	 ElqsC/CGZBjjhOhSCgBdkw+zrqUjOU+WJluwxDM+TPhDlXCyCWyUxgknBbwYnyMoMmQFd
+	 6plfPRJ/47CcrJY4DH0H4t7+UEkKVqOGujakjyy7vFdHDt6ZHZWJ9lVuXJX7dO9oTrz9l
+	 3DhNS5mAzVTC9sLW5bbtHnOEIjkIOf2nltedImWZNXmll/LppVZiKGKEBDoviLnNkRQLW
+	 jh6yeQ1rHuRP/Gd61PBzBm9aNspi9K8WxAqqBEcMRS72nnuGY6WBWG/S0EWCHpdAwdQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794377928;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=FS9cTLPWTzG5VlJgMvzrerutyWELs26MqyaaIB9FhTA=;
+	b=X5GnzZO1jqe5d3TXtjCgHtdfl5SX2wsa9llUnD3VxTJEocX3IdLrBkL4uyexKuKmPd3+
+	 ZXbGcsj1+xdAe6BCjoS3AsrYFrRFXia+PkG2Kh4m/XYlv2oYu+RrzUA66xSMcLh4HPgH/
+	 j4FMHMSsH+gJr04q+NyFArlucOSaNREEkgQLtE+FM4tea+oXLAbwdkY0Cb6M/p8PJJFll
+	 F/4+86u8p4IOOulIgiVWjPZqpc7fuyM6Q4nXiMo3mws5iLgNwj/cbXrl5MTvv0/xQd//Z
+	 t1pN7WoRRtS3mlyS/6LbfnirpBtRqWJlxR49VD0frO2ddel4X1ppHOOj+F1vY0LeQrA==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 6149C1F00A05;
+	Wed, 11 Nov 2026 06:18:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794377928;
+	bh=FS9cTLPWTzG5VlJgMvzrerutyWELs26MqyaaIB9FhTA=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=ZKdw/bpAhPSbzxalqOhulgXUPa8FKL0utEHeEYI7rso9AqyvWmQP12tTJcMi5/X8v
+	 EqBPAwmjR4OaBlwVu/kl1YwydYavxA7OnL8PligVXBdNH6KATjzMLYOR3p9F7DAhDb
+	 bYDk6hK/+8npKo7igcJ7fscwAic697HQk7BqP0Le8Rsjery5v8xRbmZFQsZz8jGNxf
+	 MTAekGGauh7c+SHqzx8ZaQLJU0gPY38fNC7OeaTimeuqmBJ+AoN349NSeX8fMVIvmG
+	 jOBV4HlDvyQptWJqc2n6Nuu4Kg3ZFyyKO3STLWq3aD0OA6vw4RXRHOGRQN02ciXc/r
+	 YVKybnahx42gg==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id DD7E048E02;
+	Wed, 11 Nov 2026 06:18:46 +0000 (UTC)
+From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
+Date: Wed, 11 Nov 2026 14:17:56 +0800
+Subject: [PATCH net v9 02/10] can: rockchip_canfd: serialize TX state and
+ command writes
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa1c8d429d603a4kunm94b39dc87e521
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDHkwfVh4ZSUkYGE1KHh9KTlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ0xZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=Ql+iCI9shA9B280n8sAEN/nCTVjb/oMol5IJ0XkKDFICwIvhsHc9+tf+6EaWajWh7TjzBMZnGavUTa06Qss0H++qu88KJRnypylmXkXdO+5vP5Fo0HvrDbrqqOMZY2LDn5zO3yu6nJdFnu6StNORnMqdI9gwA8F58Tuug2TBDWo=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=9V2SAasYyMu6F4znYH6XJbSf3b8w7ZlDKHwO1aQZKs8=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_201837_806273_AD8C5617 
-X-CRM114-Status: GOOD (  18.86  )
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261111-rockchip-canfd-restart-close-v9-2-6643f3825ba3@qq.com>
+References: <20261111-rockchip-canfd-restart-close-v9-0-6643f3825ba3@qq.com>
+In-Reply-To: <20261111-rockchip-canfd-restart-close-v9-0-6643f3825ba3@qq.com>
+To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de, 
+ Vincent Mailhol <mailhol@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Oliver Hartkopp <socketcan@hartkopp.net>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
+ Shuah Khan <skhan@linuxfoundation.org>, 
+ Randy Dunlap <rdunlap@infradead.org>, 
+ Wolfgang Grandegger <wg@grandegger.com>
+Cc: linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-doc@vger.kernel.org, Cunhao Lu <1579567540@qq.com>, 
+ stable@vger.kernel.org
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794377925; l=9238;
+ i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
+ bh=M7C7wvfeDi16pR7qDUgTe/YI7u6jmKvXGHPuAlgnyvU=;
+ b=rEjjG8jTlSrBoQY6drBO2LxvqmyCPxJotWqYzzr3HW2w/aMYyANvd/DVssxsnbB2b78ORr7Jh
+ bikR0Wxr7IBBCD7AQP2VN3XUJlwAiCju5zV2MCdrl3YbmjJnp3Atrma
+X-Developer-Key: i=1579567540@qq.com; a=ed25519;
+ pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
+X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
+ auth_id=1177
+X-Original-From: Cunhao Lu <1579567540@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,282 +114,266 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-dw_pcie_suspend_noirq() invokes the optional host ->pme_turn_off()
-callback but ignores its result, so a platform that fails to send
-PME_Turn_Off still has the link brought down as if the handshake had
-completed.
+From: Cunhao Lu <1579567540@qq.com>
 
-Turn the callback into an int returning function and propagate its
-error from dw_pcie_suspend_noirq(), matching how the generic
-dw_pcie_pme_turn_off() path is already handled.
+rkcanfd_get_effective_tx_free() inspects the tail echo entry while the RX
+completion path removes it and advances tx_tail. Concurrent TX submission
+can observe inconsistent queue state or dereference an skb already queued
+for NAPI, where another CPU can free it. An inconsistent free-space check
+can also leave the TX queue stopped without a completion to wake it.
 
-All existing implementations return 0 except:
-  - the Layerscape PF LUT variant, which now returns -ETIMEDOUT when
-    the PME_Turn_Off handshake does not complete instead of only
-    logging it;
-  - the Rockchip host, which now returns an error only when
-    PME_Turn_Off could not be sent at all.  Its PME_TO_Ack and
-    L23-ready wait timeouts remain non-fatal and just log, consistent
-    with the generic path, which does not abort the suspend when an
-    endpoint fails to respond: such timeouts are an endpoint behaviour
-    and must not make the whole system suspend fail.
+TX submission and RX-side retry also share the MODE/CMD/MODE sequence
+used for erratum 12. Interleaving these sequences can restore the default
+mode before the other caller writes CMD, bypassing the workaround.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Serialize TX submission with RX completion and retry using tx_lock. Hold
+it across the TX space and RX pending checks, echo handling, head/tail
+updates, BQL accounting, queue stop/wake and command writes. Require
+caller-held locking in the shared helpers and keep TX diagnostics in
+the same critical section.
+
+Release the original skb retained by the preceding echo-failure fix after
+unlocking and restoring IRQs, so its socket destructor cannot run under
+tx_lock. Backports need that retained-reference handling and the CAN skb
+ownership fix, or equivalent handling.
+
+This lock covers running TX, completion and retry. Synchronization with
+bus-off and controller reinitialization is provided by the later
+lifecycle fix.
+
+Fixes: ae002cc32ec4 ("can: rockchip_canfd: prepare to use full TX-FIFO depth")
+Fixes: 83f9bd6bf39d ("can: rockchip_canfd: implement workaround for erratum 12")
+Cc: stable@vger.kernel.org
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
+
 ---
+Changes in v8:
+- Extend the TX/RX critical sections to cover space and pending checks,
+  queue updates and diagnostics; require caller-held helper locking and
+  assert it for command writes.
+- Release the retained original skb after unlocking.
+---
+ drivers/net/can/rockchip/rockchip_canfd-core.c |  1 +
+ drivers/net/can/rockchip/rockchip_canfd-rx.c   | 23 ++++++++++++++---------
+ drivers/net/can/rockchip/rockchip_canfd-tx.c   | 26 +++++++++++++++++++++++---
+ drivers/net/can/rockchip/rockchip_canfd.h      |  3 +++
+ 4 files changed, 41 insertions(+), 12 deletions(-)
 
- drivers/pci/controller/dwc/pci-imx6.c         |  4 +++-
- drivers/pci/controller/dwc/pci-layerscape.c   | 22 +++++++++++++------
- .../pci/controller/dwc/pcie-designware-host.c |  4 +++-
- drivers/pci/controller/dwc/pcie-designware.h  |  2 +-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 16 ++++++++------
- drivers/pci/controller/dwc/pcie-eswin.c       |  4 +++-
- drivers/pci/controller/dwc/pcie-qcom.c        |  4 +++-
- drivers/pci/controller/dwc/pcie-ultrarisc.c   |  3 ++-
- 8 files changed, 39 insertions(+), 20 deletions(-)
-
-diff --git a/drivers/pci/controller/dwc/pci-imx6.c b/drivers/pci/controller/dwc/pci-imx6.c
-index 38a59795f98f..643b591c789f 100644
---- a/drivers/pci/controller/dwc/pci-imx6.c
-+++ b/drivers/pci/controller/dwc/pci-imx6.c
-@@ -1575,7 +1575,7 @@ static void imx_pcie_host_post_init(struct dw_pcie_rp *pp)
-  * register is reserved, so the generic DWC implementation of sending the
-  * PME_Turn_Off message using a dummy MMIO write cannot be used.
-  */
--static void imx_pcie_pme_turn_off(struct dw_pcie_rp *pp)
-+static int imx_pcie_pme_turn_off(struct dw_pcie_rp *pp)
- {
- 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
- 	struct imx_pcie *imx_pcie = to_imx_pcie(pci);
-@@ -1584,6 +1584,8 @@ static void imx_pcie_pme_turn_off(struct dw_pcie_rp *pp)
- 	regmap_clear_bits(imx_pcie->iomuxc_gpr, IOMUXC_GPR12, IMX6SX_GPR12_PCIE_PM_TURN_OFF);
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
+index 37c1c22c40c9..1cae86973da5 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-core.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
+@@ -921,6 +921,7 @@ static int rkcanfd_probe(struct platform_device *pdev)
+ 	priv->can.do_set_mode = rkcanfd_set_mode;
+ 	priv->can.do_get_berr_counter = rkcanfd_get_berr_counter;
+ 	priv->ndev = ndev;
++	spin_lock_init(&priv->tx_lock);
  
- 	usleep_range(PCIE_PME_TO_L2_TIMEOUT_US/10, PCIE_PME_TO_L2_TIMEOUT_US);
+ 	match = device_get_match_data(&pdev->dev);
+ 	if (match) {
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-rx.c b/drivers/net/can/rockchip/rockchip_canfd-rx.c
+index 24e87daa1df0..23476a334d6c 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-rx.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-rx.c
+@@ -91,6 +91,7 @@ rkcanfd_fifo_header_to_cfd_header(const struct rkcanfd_priv *priv,
+ 	return len + cfd->len;
+ }
+ 
++/* Called with tx_lock held. */
+ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
+ 				const struct canfd_frame *cfd_rx, const u32 ts,
+ 				bool *tx_done)
+@@ -101,6 +102,8 @@ static int rkcanfd_rxstx_filter(struct rkcanfd_priv *priv,
+ 	const struct sk_buff *skb;
+ 	unsigned int tx_tail;
+ 
++	lockdep_assert_held(&priv->tx_lock);
 +
-+	return 0;
- }
- 
- static const struct dw_pcie_host_ops imx_pcie_host_ops = {
-diff --git a/drivers/pci/controller/dwc/pci-layerscape.c b/drivers/pci/controller/dwc/pci-layerscape.c
-index 475aea3ef58a..8bd879226971 100644
---- a/drivers/pci/controller/dwc/pci-layerscape.c
-+++ b/drivers/pci/controller/dwc/pci-layerscape.c
-@@ -117,7 +117,7 @@ static void ls_pcie_pf_lut_writel(struct ls_pcie *pcie, u32 off, u32 val)
- 		iowrite32(val, pcie->pf_lut_base + off);
- }
- 
--static void ls_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
-+static int ls_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
+ 	tx_tail = rkcanfd_get_tx_tail(priv);
+ 	skb = priv->can.echo_skb[tx_tail];
+ 	if (!skb) {
+@@ -201,9 +204,11 @@ rkcanfd_fifo_header_empty(const struct rkcanfd_fifo_header *header)
+ static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
  {
- 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
- 	struct ls_pcie *pcie = to_ls_pcie(pci);
-@@ -132,8 +132,12 @@ static void ls_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
- 				 val, !(val & PF_MCR_PTOMR),
- 				 PCIE_PME_TO_L2_TIMEOUT_US/10,
- 				 PCIE_PME_TO_L2_TIMEOUT_US);
--	if (ret)
-+	if (ret) {
- 		dev_err(pcie->pci->dev, "PME_Turn_off timeout\n");
-+		return ret;
-+	}
-+
-+	return 0;
- }
+ 	struct net_device_stats *stats = &priv->ndev->stats;
+-	struct canfd_frame cfd[1] = { }, *skb_cfd;
+ 	struct rkcanfd_fifo_header header[1] = { };
++	struct canfd_frame cfd[1] = { }, *skb_cfd;
++	bool tx_done = false;
+ 	struct sk_buff *skb;
++	unsigned long flags;
+ 	unsigned int len;
+ 	int err;
  
- static int ls_pcie_exit_from_l2(struct dw_pcie_rp *pp)
-@@ -179,7 +183,7 @@ static int ls_pcie_host_init(struct dw_pcie_rp *pp)
- 	return 0;
- }
- 
--static void scfg_pcie_send_turnoff_msg(struct regmap *scfg, u32 reg, u32 mask)
-+static int scfg_pcie_send_turnoff_msg(struct regmap *scfg, u32 reg, u32 mask)
- {
- 	/* Send PME_Turn_Off message */
- 	regmap_write_bits(scfg, reg, mask, mask);
-@@ -195,14 +199,17 @@ static void scfg_pcie_send_turnoff_msg(struct regmap *scfg, u32 reg, u32 mask)
- 	 * to complete the PME_Turn_Off handshake.
- 	 */
- 	regmap_write_bits(scfg, reg, mask, 0);
-+
-+	return 0;
- }
- 
--static void ls1021a_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
-+static int ls1021a_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
- {
- 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
- 	struct ls_pcie *pcie = to_ls_pcie(pci);
- 
--	scfg_pcie_send_turnoff_msg(pcie->scfg, SCFG_PEXPMWRCR(pcie->index), PMXMTTURNOFF);
-+	return scfg_pcie_send_turnoff_msg(pcie->scfg, SCFG_PEXPMWRCR(pcie->index),
-+					  PMXMTTURNOFF);
- }
- 
- static int scfg_pcie_exit_from_l2(struct regmap *scfg, u32 reg, u32 mask)
-@@ -222,12 +229,13 @@ static int ls1021a_pcie_exit_from_l2(struct dw_pcie_rp *pp)
- 	return scfg_pcie_exit_from_l2(pcie->scfg, SCFG_PEXSFTRSTCR, PEXSR(pcie->index));
- }
- 
--static void ls1043a_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
-+static int ls1043a_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
- {
- 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
- 	struct ls_pcie *pcie = to_ls_pcie(pci);
- 
--	scfg_pcie_send_turnoff_msg(pcie->scfg, SCFG_PEXPMECR, PEXPME(pcie->index));
-+	return scfg_pcie_send_turnoff_msg(pcie->scfg, SCFG_PEXPMECR,
-+					  PEXPME(pcie->index));
- }
- 
- static int ls1043a_pcie_exit_from_l2(struct dw_pcie_rp *pp)
-diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
-index f531c5b51b3c..eb11556aca72 100644
---- a/drivers/pci/controller/dwc/pcie-designware-host.c
-+++ b/drivers/pci/controller/dwc/pcie-designware-host.c
-@@ -1249,7 +1249,9 @@ int dw_pcie_suspend_noirq(struct dw_pcie *pci)
+@@ -237,15 +242,15 @@ static int rkcanfd_handle_rx_int_one(struct rkcanfd_priv *priv)
  		return 0;
- 
- 	if (pci->pp.ops->pme_turn_off) {
--		pci->pp.ops->pme_turn_off(&pci->pp);
-+		ret = pci->pp.ops->pme_turn_off(&pci->pp);
-+		if (ret)
-+			return ret;
- 	} else {
- 		ret = dw_pcie_pme_turn_off(pci);
- 		if (ret)
-diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
-index 0ece9c433229..9836ea9127bd 100644
---- a/drivers/pci/controller/dwc/pcie-designware.h
-+++ b/drivers/pci/controller/dwc/pcie-designware.h
-@@ -440,7 +440,7 @@ struct dw_pcie_host_ops {
- 	void (*deinit)(struct dw_pcie_rp *pp);
- 	void (*post_init)(struct dw_pcie_rp *pp);
- 	int (*msi_init)(struct dw_pcie_rp *pp);
--	void (*pme_turn_off)(struct dw_pcie_rp *pp);
-+	int (*pme_turn_off)(struct dw_pcie_rp *pp);
- };
- 
- struct dw_pcie_rp {
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 525a26ee1d07..ea7ef0be1214 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -464,7 +464,7 @@ static void rockchip_pcie_host_post_init(struct dw_pcie_rp *pp)
- 	pp->bridge->broken_l1ss_resume = true;
- }
- 
--static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
-+static int rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
- {
- 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
- 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-@@ -478,18 +478,16 @@ static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
- 				 status, !(status & BIT(4)), PCIE_PME_TO_L2_TIMEOUT_US / 10,
- 				 PCIE_PME_TO_L2_TIMEOUT_US);
- 	if (ret) {
--		dev_warn(dev, "Failed to send PME_Turn_Off\n");
--		return;
-+		dev_err(dev, "Failed to send PME_Turn_Off\n");
-+		return ret;
  	}
  
- 	/* 2. Wait for PME_TO_Ack, bit 9 will be set once received */
- 	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_INTR_STATUS_MSG_RX,
- 				 status, status & BIT(9), PCIE_PME_TO_L2_TIMEOUT_US / 10,
- 				 PCIE_PME_TO_L2_TIMEOUT_US);
--	if (ret) {
-+	if (ret)
- 		dev_warn(dev, "Failed to receive PME_TO_Ack\n");
--		return;
+-	if (rkcanfd_get_tx_pending(priv)) {
+-		bool tx_done = false;
+-
++	spin_lock_irqsave(&priv->tx_lock, flags);
++	err = 0;
++	if (rkcanfd_get_tx_pending(priv))
+ 		err = rkcanfd_rxstx_filter(priv, cfd, header->ts, &tx_done);
+-		if (err)
+-			return err;
+-		if (tx_done && !(priv->can.ctrlmode & CAN_CTRLMODE_LOOPBACK))
+-			return 0;
 -	}
++	spin_unlock_irqrestore(&priv->tx_lock, flags);
++	if (err)
++		return err;
++	if (tx_done && !(priv->can.ctrlmode & CAN_CTRLMODE_LOOPBACK))
++		return 0;
  
- 	/* 3. Clear PME_TO_Ack and Wait for ready to enter L23 message */
- 	rockchip_pcie_writel_apb(rockchip, PME_TO_ACK, PCIE_CLIENT_INTR_STATUS_MSG_RX);
-@@ -497,8 +495,12 @@ static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
- 				 status, status & PME_READY_ENTER_L23,
- 				 PCIE_PME_TO_L2_TIMEOUT_US / 10,
- 				 PCIE_PME_TO_L2_TIMEOUT_US);
--	if (ret)
-+	if (ret) {
- 		dev_err(dev, "Failed to get ready to enter L23 message\n");
-+		ret = 0;
-+	}
+ 	/* Manual handling of CAN Bus Error counters. See
+ 	 * rkcanfd_get_corrected_berr_counter() for detailed
+diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/can/rockchip/rockchip_canfd-tx.c
+index 420e59b41059..caa71cf8e39a 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
++++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
+@@ -14,6 +14,8 @@ static bool rkcanfd_tx_tail_is_eff(const struct rkcanfd_priv *priv)
+ 	const struct sk_buff *skb;
+ 	unsigned int tx_tail;
+ 
++	lockdep_assert_held(&priv->tx_lock);
 +
-+	return ret;
- }
+ 	if (!rkcanfd_get_tx_pending(priv))
+ 		return false;
  
- static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
-diff --git a/drivers/pci/controller/dwc/pcie-eswin.c b/drivers/pci/controller/dwc/pcie-eswin.c
-index 5639666d5148..ed498601312f 100644
---- a/drivers/pci/controller/dwc/pcie-eswin.c
-+++ b/drivers/pci/controller/dwc/pcie-eswin.c
-@@ -269,7 +269,7 @@ static void eswin_pcie_host_deinit(struct dw_pcie_rp *pp)
- 	clk_bulk_disable_unprepare(pcie->num_clks, pcie->clks);
- }
+@@ -35,6 +37,8 @@ static bool rkcanfd_tx_tail_is_eff(const struct rkcanfd_priv *priv)
  
--static void eswin_pcie_pme_turn_off(struct dw_pcie_rp *pp)
-+static int eswin_pcie_pme_turn_off(struct dw_pcie_rp *pp)
+ unsigned int rkcanfd_get_effective_tx_free(const struct rkcanfd_priv *priv)
  {
- 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
- 	struct eswin_pcie *pcie = to_eswin_pcie(pci);
-@@ -281,6 +281,8 @@ static void eswin_pcie_pme_turn_off(struct dw_pcie_rp *pp)
- 	 * the skip_l23_ready has been set.
++	lockdep_assert_held(&priv->tx_lock);
++
+ 	if (priv->devtype_data.quirks & RKCANFD_QUIRK_RK3568_ERRATUM_6 &&
+ 	    rkcanfd_tx_tail_is_eff(priv))
+ 		return 0;
+@@ -45,6 +49,8 @@ unsigned int rkcanfd_get_effective_tx_free(const struct rkcanfd_priv *priv)
+ static void rkcanfd_start_xmit_write_cmd(const struct rkcanfd_priv *priv,
+ 					 const u32 reg_cmd)
+ {
++	lockdep_assert_held(&priv->tx_lock);
++
+ 	if (priv->devtype_data.quirks & RKCANFD_QUIRK_RK3568_ERRATUM_12)
+ 		rkcanfd_write(priv, RKCANFD_REG_MODE, priv->reg_mode_default |
+ 			      RKCANFD_REG_MODE_SPACE_RX_MODE);
+@@ -60,6 +66,8 @@ void rkcanfd_xmit_retry(struct rkcanfd_priv *priv)
+ 	const unsigned int tx_head = rkcanfd_get_tx_head(priv);
+ 	const u32 reg_cmd = RKCANFD_REG_CMD_TX_REQ(tx_head);
+ 
++	lockdep_assert_held(&priv->tx_lock);
++
+ 	rkcanfd_start_xmit_write_cmd(priv, reg_cmd);
+ }
+ 
+@@ -69,12 +77,15 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
+ 	u32 reg_frameinfo, reg_id, reg_cmd;
+ 	unsigned int tx_head, frame_len;
+ 	const struct canfd_frame *cfd;
++	unsigned long flags;
+ 	int err;
+ 	u8 i;
+ 
+ 	if (can_dev_dropped_skb(ndev, skb))
+ 		return NETDEV_TX_OK;
+ 
++	spin_lock_irqsave(&priv->tx_lock, flags);
++
+ 	if (!netif_subqueue_maybe_stop(priv->ndev, 0,
+ 				       rkcanfd_get_effective_tx_free(priv),
+ 				       RKCANFD_TX_STOP_THRESHOLD,
+@@ -85,7 +96,7 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
+ 				    priv->tx_head, priv->tx_tail,
+ 				    rkcanfd_get_tx_pending(priv));
+ 
+-		return NETDEV_TX_BUSY;
++		goto out_busy;
+ 	}
+ 
+ 	cfd = (struct canfd_frame *)skb->data;
+@@ -117,8 +128,8 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
+ 	tx_head = rkcanfd_get_tx_head(priv);
+ 	reg_cmd = RKCANFD_REG_CMD_TX_REQ(tx_head);
+ 
+-	/* Retain the original skb as the frame-data source even if the
+-	 * echo skb is removed before submission finishes.
++	/* Keep the original skb alive until IRQs are restored so echo
++	 * preparation cannot invoke its socket destructor under tx_lock.
  	 */
- 	pp->skip_l23_ready = pcie->data->skip_l23;
+ 	frame_len = can_skb_get_frame_len(skb);
+ 	err = can_put_echo_skb(skb_get(skb), ndev, tx_head, frame_len);
+@@ -142,15 +153,22 @@ netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
+ 				  RKCANFD_TX_STOP_THRESHOLD,
+ 				  RKCANFD_TX_START_THRESHOLD);
+ 
++	spin_unlock_irqrestore(&priv->tx_lock, flags);
+ 	dev_consume_skb_any(skb);
+ 
+ 	return NETDEV_TX_OK;
+ 
+ out_drop:
+ 	ndev->stats.tx_dropped++;
++	spin_unlock_irqrestore(&priv->tx_lock, flags);
+ 	dev_kfree_skb_any(skb);
+ 
+ 	return NETDEV_TX_OK;
 +
-+	return 0;
- }
- 
- static const struct dw_pcie_host_ops eswin_pcie_host_ops = {
-diff --git a/drivers/pci/controller/dwc/pcie-qcom.c b/drivers/pci/controller/dwc/pcie-qcom.c
-index eba1b2cb30f0..9548c6568c82 100644
---- a/drivers/pci/controller/dwc/pcie-qcom.c
-+++ b/drivers/pci/controller/dwc/pcie-qcom.c
-@@ -1594,11 +1594,13 @@ static void qcom_pcie_host_post_init(struct dw_pcie_rp *pp)
- 		pcie->cfg->ops->host_post_init(pcie);
- }
- 
--static void qcom_pcie_host_pme_turn_off(struct dw_pcie_rp *pp)
-+static int qcom_pcie_host_pme_turn_off(struct dw_pcie_rp *pp)
- {
- 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
- 
- 	writel(ELBI_SYS_CTRL_PME_TURNOFF_MSG, pci->elbi_base + ELBI_SYS_CTRL);
++out_busy:
++	spin_unlock_irqrestore(&priv->tx_lock, flags);
 +
-+	return 0;
++	return NETDEV_TX_BUSY;
  }
  
- static const struct dw_pcie_host_ops qcom_pcie_dw_ops = {
-diff --git a/drivers/pci/controller/dwc/pcie-ultrarisc.c b/drivers/pci/controller/dwc/pcie-ultrarisc.c
-index ee844ff7ed55..493b6c68b42f 100644
---- a/drivers/pci/controller/dwc/pcie-ultrarisc.c
-+++ b/drivers/pci/controller/dwc/pcie-ultrarisc.c
-@@ -77,12 +77,13 @@ static int ultrarisc_pcie_host_init(struct dw_pcie_rp *pp)
- 	return 0;
- }
+ void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
+@@ -160,6 +178,8 @@ void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
+ 	unsigned int tx_tail;
+ 	struct sk_buff *skb;
  
--static void ultrarisc_pcie_pme_turn_off(struct dw_pcie_rp *pp)
-+static int ultrarisc_pcie_pme_turn_off(struct dw_pcie_rp *pp)
- {
- 	/*
- 	 * DP1000 does not support sending PME_Turn_Off from the RC.
- 	 * Keep this callback empty to skip the generic MSG TLP path.
- 	 */
-+	return 0;
- }
++	lockdep_assert_held(&priv->tx_lock);
++
+ 	tx_tail = rkcanfd_get_tx_tail(priv);
+ 	skb = priv->can.echo_skb[tx_tail];
  
- static const struct dw_pcie_host_ops ultrarisc_pcie_host_ops = {
+diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
+index 95bea9bfd8a2..077dd57d42de 100644
+--- a/drivers/net/can/rockchip/rockchip_canfd.h
++++ b/drivers/net/can/rockchip/rockchip_canfd.h
+@@ -15,6 +15,7 @@
+ #include <linux/netdevice.h>
+ #include <linux/reset.h>
+ #include <linux/skbuff.h>
++#include <linux/spinlock.h>
+ #include <linux/timecounter.h>
+ #include <linux/types.h>
+ #include <linux/u64_stats_sync.h>
+@@ -474,6 +475,8 @@ struct rkcanfd_priv {
+ 	struct can_rx_offload offload;
+ 	struct net_device *ndev;
+ 
++	/* Protect running TX/RX echo state, queue updates and TX commands. */
++	spinlock_t tx_lock;
+ 	void __iomem *regs;
+ 	unsigned int tx_head;
+ 	unsigned int tx_tail;
+
 -- 
-2.25.1
+2.34.1
+
 
 
 _______________________________________________
