@@ -2,63 +2,74 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B596606A31C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 13:06:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1EDC7606A336
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 13:15:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IH5/Kwbe;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=WuCc8pdz
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Z2x06Ugn;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=FMEwYNIu
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=8J6xd7/R/rybN6wGXuz7TrJD58EBLrYN2r0ZZyJU54s=; b=IH5/KwbejI0zoBDzYBlw6Tj3Wm
-	2f+bwVLNJv0CFg9SICx666TsyAeznJl8kPH0xYXVkGm4usw+VCLo3l1eskwXZ4pvMqfCIpMa1UJG7
-	sbcv8WJj8MdN4Y81bQ3rQDZP8bhB7fkR5YGLujLU21/zsELsVDBUyA7EcKM66mm2+wTcuzXMOGz4z
-	biyTeOU8OR5g1FvnVah2aXnI4hLIK00DTc5K5cOd6p+th8ZMq1w+y5MxCm+LX39LIpC6zN6pKq1eo
-	zeGfmYTh9TtA//nfJ53wrAA6DthrVBl3XgiTsMPuO6Zou2DR+egfD1JUSvP6/eQsmv8t7FJ1by5p1
-	2yRIq8Ww==;
+	bh=3hi4t7ko7v6ZoXr8RS4HCJr8lsn39AxxIaAdCcXGXXQ=; b=Z2x06UgnC5U2iGf4KXlTmbjNgE
+	np0d+b716OuMJ2hbZIQeFz8/keJM2cAMlxQelpMe32z8WACQcdpKBXbk8jHsZ9lRZAPvUUWyU9nQ2
+	qzCqOGBksn+sS0ApysCmFWoqDkfOI+ub19GiJ7pSqEcwHt2t7kkaLMY4+NYfXVOZKN0Um2E3gjYew
+	3G91l3LPK5zX1lVydWOpxcShBOsZJyoLkKEzJJ0wbiB/7WBjCR1oktW4MM8eqKJIj2CdtYszLs0TB
+	n/LvDSCF1+QP9kl03JsVoPByYHul39cvu36jtG4BXZu8PV/gArgx+zCZQEixeoUn2/MwWrYo86cvc
+	lCVYmArQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR82R-00000006mFk-2Uz1;
-	Wed, 11 Nov 2026 13:06:55 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1xR8AG-00000006n5X-3Iwz;
+	Wed, 11 Nov 2026 13:15:00 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR82O-00000006mEP-09zb;
-	Wed, 11 Nov 2026 13:06:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=TsavWsjShJJGBgdbg3MCd30tYdrc0p8AQysSwTzBos8=; b=WuCc8pdzkGjLD1lqWBww+P9lpe
-	devYGnPLiUvLgvjOBXhkamuh6TbLj9i/vU5SQiNA/6iZMVgtNBDUQ4dN1puyzBWlwCWrbaNnZ5NeL
-	XyDluwEU43rO/gt6EKbFAw8gV1UXaJTX0MnLHiemGEDoI0MVSwO05e4LLa9sp9Pvd06w=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1xR82J-00FkQI-On; Wed, 11 Nov 2026 14:06:47 +0100
-Date: Wed, 11 Nov 2026 14:06:47 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: aiyengar1990@gmail.com
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] arm64: dts: rockchip: use rgmii-id for the Orange
- Pi 5/5B ethernet PHY
-Message-ID: <fdb7836a-67f9-4db0-8820-d72f56beca3f@lunn.ch>
-References: <20261111-opi5-dts-v2-0-821f666418a6@gmail.com>
- <20261111-opi5-dts-v2-1-821f666418a6@gmail.com>
+	id 1xR8AE-00000006n4e-0QNl;
+	Wed, 11 Nov 2026 13:14:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794402893; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=JiuYMiq8RBihKialjLq+csYOnvm3N2aGmzrVaPUdaxvEAGDkPBxmVCOfFs6FTNdvs8DMSwCszTFIdhdlyLUUjeS26WRTtCiigVfvezJ7wMJznjlUe7a8t6wr1kPUUs015VeOrMosw9xKCVyMwUCPpIjkGCXqL2Ot9fUlRjdgWVc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794402893; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Xc10+7RwQyckt9OcmRiolWc/n8l2uHi554tCZyrtaaA=; 
+	b=WRC+mpP8UxmcLQ1/dFMf2anla6V/WKnVGXjxsW26lk3jCxzb2C2+RqLA9gctpu47GQRLxQLQx64tr2k7UMhLCDw9aylRuEcnuS5Xf4H1hsxe+ZxFTlpdVleg5//DbNRHXvPbN8PU8vt2EmyC2bcrIKl+W2RHLBh209w0PAZE5kM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
+	dmarc=pass header.from=<michael.riesch@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=FMEwYNIu/lXOWYXTUwtQ/tATog2J9nKcRKlIZJh9KEmvFKR2PTUyfW8pVrU6YcesQub3HJNv2LjrsIdGY69Xe230rVICykok7XU6GTYZlbnteedow490LMElkus7ZqD+P2Z4yAeFoUvm1KBK2XQEncus9AyCZTTzjp030n1C6X0=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=Xc10+7RwQyckt9OcmRiolWc/n8l2uHi554tCZyrtaaA=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 179440289194724.462775649189325;
+	Wed, 11 Nov 2026 05:14:51 -0800 (PST)
+Message-ID: <6fbe6fed-3ed4-4f87-a92b-dbd01e1674d3@collabora.com>
+Date: Wed, 11 Nov 2026 14:14:47 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261111-opi5-dts-v2-1-821f666418a6@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 5/9] phy: rockchip-samsung-dcphy: Move block-level
+ setup to runtime resume
+To: Jason Yang <jason98166@gmail.com>, Vinod Koul <vkoul@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Guochun Huang <hero.huang@rock-chips.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
+ <20261110-dcphy-rx-v1-v6-5-d681ba20b36a@gmail.com>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20261110-dcphy-rx-v1-v6-5-d681ba20b36a@gmail.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_050652_081056_0B3096D2 
-X-CRM114-Status: GOOD (  15.54  )
+X-CRM114-CacheID: sfid-20261111_051458_201192_69CE7B1D 
+X-CRM114-Status: GOOD (  19.09  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,40 +83,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Nov 11, 2026 at 07:19:49AM +0000, Arun Iyengar via B4 Relay wrote:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
-> 
-> The Orange Pi 5 and 5B have a Motorcomm YT8531C RGMII PHY on gmac1
-> (the PHY driver binds as "YT8531 Gigabit Ethernet"). The board neither
-> uses extra long clock traces for TX nor for RX, yet the device tree
-> describes it as "rgmii-rxid", which according to ethernet-controller.yaml
-> means that the PCB provides the TX delay, and then makes the MAC insert
-> the TX delay with tx_delay = <0x42>. The setting was copied from the
-> vendor kernel, which uses the MAC delay lines everywhere.
-> 
-> Describe the PCB correctly as "rgmii-id" and drop tx_delay, so that the
-> MAC adds no delay and the PHY adds both: motorcomm.c programs its
-> default 1950 ps for RX (as now) and for TX. This is the setup the
-> binding recommends, and the one the same vendor's Orange Pi CM5
-> (rk3588s-orangepi-cm5-base.dts), with a YT8531C on gmac1 of the same
-> SoC, already uses in mainline.
-> 
-> Besides being the correct description, this removes the MAC from the
-> timing path for both directions, so no board-specific delay-line value
-> is needed any more.
-> 
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+Hi Jason,
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Thanks for the patch!
 
-    Andrew
+On 11/10/26 09:18, Jason Yang wrote:
+> The APB reset and the BIAS references have to be treated as block-level
+> [1]: both the transmitter and the receiver need them, and they only have
+> to be programmed once. They are programmed from the transmitter's
+> power-on path today.
+> 
+> A later change registers one struct phy for each of them, and a second
+> consumer coming up would then reset the block underneath a PHY that is
+> already running.
+> 
+> Program them from runtime resume instead, where whichever of the two
+> comes up first brings the block up and a second one no longer resets it.
+> 
+> This puts the BIAS writes ahead of the per-PHY reset assert, where the
+> TRM's worked example has them after [1]. That is safe: neither M_RESETN
+> nor S_RESETN covers the BIAS registers, and the values written are those
+> registers' reset defaults.
+> 
+> [1] RK3588 TRM: sections 22.4.1 (address map), 22.4.2 (reset values),
+>     22.6.1.2 (reset) and 22.6.4.1 (D-PHY transmitter start-up)
+> 
+> Signed-off-by: Jason Yang <jason98166@gmail.com>
+
+Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
+
+Best regards,
+Michael
+
+> ---
+>  drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+> index 7a009d87a665..d6acc3e2d448 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+> @@ -1346,7 +1346,6 @@ static int samsung_mipi_dphy_power_on(struct samsung_mipi_dcphy *samsung)
+>  
+>  	reset_control_assert(samsung->m_phy_rst);
+>  
+> -	samsung_mipi_dcphy_bias_block_enable(samsung);
+>  	samsung_mipi_dcphy_pll_configure(samsung);
+>  	samsung_mipi_dphy_clk_lane_timing_init(samsung);
+>  	samsung_mipi_dphy_data_lane_timing_init(samsung);
+> @@ -1373,10 +1372,6 @@ static int samsung_mipi_dcphy_power_on(struct phy *phy)
+>  {
+>  	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
+>  
+> -	reset_control_assert(samsung->apb_rst);
+> -	udelay(1);
+> -	reset_control_deassert(samsung->apb_rst);
+> -
+>  	switch (samsung->type) {
+>  	case PHY_TYPE_DPHY:
+>  		return samsung_mipi_dphy_power_on(samsung);
+> @@ -1667,6 +1662,12 @@ static __maybe_unused int samsung_mipi_dcphy_runtime_resume(struct device *dev)
+>  		return ret;
+>  	}
+>  
+> +	reset_control_assert(samsung->apb_rst);
+> +	udelay(1);
+> +	reset_control_deassert(samsung->apb_rst);
+> +
+> +	samsung_mipi_dcphy_bias_block_enable(samsung);
+> +
+>  	return 0;
+>  }
+>  
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
