@@ -2,61 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 974FA606A31C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 22:18:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E589D606A324
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 22:44:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cco/x4Hw;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=Ocx7SLDW
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JAk65h+9;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=TvSQUbhN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FVSbo6za/xjFg8pVNmil6G7j6CL3FkZat9mmcuP8vgo=; b=cco/x4Hw+8TqXJXNmwfYGliLRu
-	CM+7isK8S+IXFMlqZUxkBzXH0Jq/G6O71f2UkeG+T047tbmWEAgsReFwmLHoILLS6NBC70N0c7036
-	+SVpd1u/mdXCU0EH+cDkKjXUHzV3H9baGyn+SwYBfUuAP2QUQ0g7OMMpmuUk0vBueymsrwldK56RH
-	dX0ZdgQ72c0QK1Ab2ptPyMT5PjFqSpMM0VK31bjQVRK1H9saz5bNHnwA/qoAsRQo43Zn/+jIszGg/
-	FLP4fkq225OoJTEmdbmjAf/OmJEEg8szerwkWts49O0Cdxu7MkTGQ20Ytvi/vRPkRcd8PNxJbludv
-	aqc9yVRg==;
+	bh=F+HLikghRNkm7gmBwuDy8efzqrw1TQLj0mbujZkX9hE=; b=JAk65h+9av2d39CpETS6SgYJW9
+	4PBTzcnai863CP87ilitzvjQF6j99dnNQk/x/G00vaeBflJNRht7OAJOsJTglQm1Cn3h3qbPgzPRq
+	86o61sPcgtlr3LZtHpNuqFydyPxM3SiHqANx1zCGmBluF6uoox5SbNYKULOsTKWXu1ckH4B7nx0Ez
+	ivQ0oFM4PHkiFiZKtZCdL/iHPIUbBZ5Hb/HRir6dliRY+tnLESlfy+z84+tYaPMOwz95VnbsVDRQm
+	ntHUPXJtoHohHhe9wq9cgdTnlY3Uf1qSu2ZbsvFmqrcyKh22/atrVgFTy7lozHv9zDEaQTReb/AR0
+	HFQNFpAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRGeG-00000007vsh-1xd3;
-	Wed, 11 Nov 2026 22:18:32 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xRH3E-0000000817Y-0Izv;
+	Wed, 11 Nov 2026 22:44:20 +0000
+Received: from sender5-op-o11.zoho.com ([165.173.182.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRGeD-00000007vrU-2NU5;
-	Wed, 11 Nov 2026 22:18:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=sJfEnrqje2dVxymNjQcwU7Gc+3OnffsH5DyqeXyDRnw=; b=Ocx7SLDWBioD5V+13ndERCvgBc
-	XYHPOYRDy+yiYBgCC8zsh4zisoDyEWjq5nTX13SAZiAeSqyTllUzVtgDj7ijNPGqmeySrNEJvL6Tb
-	OKDTCvTEW8CXLE6T+6JURg8KlF11qqbTmUe+gBe+IelA+vLGMU5InCs6z+uneuykj1ZA5pKQQw81V
-	ka1eAqjf7af5MRHOXr791ms1ndGmo2g+4liuVYplsOf58ETT+rTU93steN8uOGvWJc8xEpAVzxzxJ
-	JvX+NiF9xYIWWbv6GE7Le3HKzRVv9dJFUgKJlfOitpGfaHJ/orqZ1AWpYFUN7D3muEs4P9cDllmM8
-	Tv6GvjVg==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Stephen Boyd <sboyd@kernel.org>, Tim Surber <me@timsurber.de>
-Cc: Tim Surber <me@timsurber.de>, Brian Masney <bmasney+clk@redhat.com>,
- Jerome Brunet <jbrunet+clk@baylibre.com>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] clk: rockchip: rk3588: Allow I2S5 TX and I2S6 RX frac to set
- parent rate
-Date: Wed, 11 Nov 2026 23:18:11 +0100
-Message-ID: <MgdhBsb8T_eDWUTKP6B0VQ@sntech.de>
-In-Reply-To: <20261111220656.3603628-1-me@timsurber.de>
-References: <20261111220656.3603628-1-me@timsurber.de>
+	id 1xRH39-0000000810y-3Vrg;
+	Wed, 11 Nov 2026 22:44:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794437048; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=oE/D62gU21CYuAA6thLge+3tC8tzqVNRHD0rnDg2DHKoK5ciD0gQu2q51dhvVJfEHXE7PEsCapeZGbddM5Xp+NxqxXQ4pEDwBa/BKCkIp/BgzMAkwrsDTxYanjQnvBXTnf49XdyNc1QZ/xYsQCY9YMDFI1obEYnpjTANtBdG1Gg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794437048; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=r88vezn/zIBt4uU/LbYZSvwiy9RpMWU9N5UW0qDOzGI=; 
+	b=DAWMundu/4XamJL2Hg8G7HTMhvixY9zjH3SbEo7tpO8oLPbhTNXKs1k1sh4oYDiVgHrljVS6HkdPvMTZV+Qh6kmoTjDM5cyFMnvmjT9WJyf80Bw/w+mMsWMR3Li715OgTuS9qEqJtdXff7PwZxoJcZaUIwsiNCmy5tdWUw0w998=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=TvSQUbhN7THmVvFM7UQFg4p8WafvAU93wPQAdlXaN1sNavBsqlNUarL2+XuQ6RGPcBl83XiW5o5OjUWw3xegadecmqxCmwJ563QeBKNRkUxWcG1SdiWSBPVzBpnIPWNO62IsY3qHYQ7klB5jgTsng7IPOLAiruR65kUzHe6b23A=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=r88vezn/zIBt4uU/LbYZSvwiy9RpMWU9N5UW0qDOzGI=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794437047434579.4818392138392;
+	Wed, 11 Nov 2026 14:44:07 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 4BC3A180758; Wed, 11 Nov 2026 23:44:03 +0100 (CET)
+Date: Wed, 11 Nov 2026 23:44:03 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: ricardo@pardini.net
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v6 2/6] arm64: dts: rockchip: describe PCIe RTL8125
+ Ethernet on ROCK 5 family
+Message-ID: <avTuNC0STGUciyiI@venus>
+References: <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-0-91f1efefba0b@pardini.net>
+ <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-2-91f1efefba0b@pardini.net>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-2-91f1efefba0b@pardini.net>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.427.16
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_141829_624295_B3FC14F0 
-X-CRM114-Status: GOOD (  25.06  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261111_144415_974580_FC6C9B1C 
+X-CRM114-Status: GOOD (  16.73  )
+X-Spam-Score: -0.9 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,98 +75,181 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============5908188464354920543=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	NORMAL_HTTP_TO_IP,NUMERIC_HTTP_ADDR,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gTWl0dHdvY2gsIDExLiBOb3ZlbWJlciAyMDI2LCAyMzowNjo1MyBNaXR0ZWxldXJvcMOkaXNj
-aGUgTm9ybWFsemVpdCBzY2hyaWViIFRpbSBTdXJiZXI6Cj4gQWxsIFJLMzU4OCBhdWRpbyBmcmFj
-dGlvbmFsIGRpdmlkZXJzIGV4Y2VwdCBjbGtfaTJzNV84Y2hfdHhfZnJhYyBhbmQKPiBjbGtfaTJz
-Nl84Y2hfcnhfZnJhYyBhcmUgcmVnaXN0ZXJlZCB3aXRoIENMS19TRVRfUkFURV9QQVJFTlQuIFdp
-dGhvdXQgaXQKPiB0aGUgZGl2aWRlciBjYW5ub3QgcmFpc2UgdGhlIHJhdGUgb2YgaXRzICpfc3Jj
-IHBhcmVudCBhZ2FpbiBvbmNlIHRoZQo+IHBhcmVudCBoYXMgYmVlbiBsb3dlcmVkLgo+IAo+IFRo
-YXQgaGFwcGVucyBvbiBIRE1JMCAoaTJzNV84Y2gpIGFmdGVyIGEgMTkyIGtIeiBzdHJlYW0uIEl0
-cyBNQ0xLIG9mCj4gMjQuNTc2IE1IeiAoMTI4ICogZnMpIGlzIGFuIGludGVnZXIgZGl2aXNvciBv
-ZiBBVVBMTCAoNzg2LjQzMiBNSHogLyAzMiksCj4gc28gdGhlIG11eCBzZWxlY3RzIGNsa19pMnM1
-XzhjaF90eF9zcmMgZGlyZWN0bHkgYW5kIHNldHMgaXRzIGRpdmlkZXIgdG8KPiAzMi4gRm9yIGEg
-Zm9sbG93aW5nIDE3Ni40IGtIeiBzdHJlYW0gdGhlIG11eCBzZWxlY3RzIHRoZSBmcmFjdGlvbmFs
-Cj4gZGl2aWRlci4gcm9ja2NoaXBfZnJhY3Rpb25hbF9hcHByb3hpbWF0aW9uKCkgc2VlcyB0aGF0
-IHRoZSBwYXJlbnQgaXMKPiBsZXNzIHRoYW4gMjAgdGltZXMgdGhlIHJlcXVlc3RlZCByYXRlIGFu
-ZCBjb21wdXRlcyBtL24gYWdhaW5zdCB0aGUKPiBncmFuZHBhcmVudCAoQVVQTEwpIHJhdGUsIGJ1
-dCB0aGUgcGFyZW50IGlzIG5ldmVyIGNoYW5nZWQuIFRoZSBkaXZpZGVyCj4gaXMgdGhlbiBwcm9n
-cmFtbWVkIHdpdGggbS9uID0gMTQ3LzE2MCBmcm9tIDI0LjU3NiBNSHouIFRoZSBjbG9jawo+IGZy
-YW1ld29yayByZXBvcnRzIHRoZSByZXF1ZXN0ZWQgMjIuNTc5MiBNSHosIGJ1dCB0aGUgZnJhY3Rp
-b25hbCBkaXZpZGVyCj4gZG9lcyBub3Qgd29yayBhdCBzdWNoIGEgcmF0aW8gYW5kIHRoZSBJMlMg
-cnVucyBhdCBhYm91dCA1NCUgb2YgdGhlCj4gbm9taW5hbCByYXRlICg5NjAwMCBpbnN0ZWFkIG9m
-IDE3NjQwMCBmcmFtZXMvcykuCj4gCj4gQWRkIENMS19TRVRfUkFURV9QQVJFTlQgdG8gYm90aCBk
-aXZpZGVycywgYXMgb24gYWxsIG90aGVyIEkyUyBhbmQgU1BESUYKPiBmcmFjdGlvbmFsIGRpdmlk
-ZXJzIG9mIHRoZSBSSzM1ODggYW5kIGFzIGluIHRoZSB2ZW5kb3Iga2VybmVsOgo+IAo+ICAgaHR0
-cHM6Ly9naXRodWIuY29tL3JvY2tjaGlwLWxpbnV4L2tlcm5lbC9ibG9iLzQ3MGY5ZGNjYmRjNDJl
-N2I4YTgyNGQwYTVjNTY0MGExMGU5NDU3ZDIvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzU4
-OC5jI0wyMDM3Cj4gICBodHRwczovL2dpdGh1Yi5jb20vcm9ja2NoaXAtbGludXgva2VybmVsL2Js
-b2IvNDcwZjlkY2NiZGM0MmU3YjhhODI0ZDBhNWM1NjQwYTEwZTk0NTdkMi9kcml2ZXJzL2Nsay9y
-b2NrY2hpcC9jbGstcmszNTg4LmMjTDIwNTUKPiAKPiBUbyByZXByb2R1Y2UsIG9uIGFueSBSSzM1
-ODggYm9hcmQgd2l0aCBIRE1JMCBhdWRpbyBlbmFibGVkIGFuZCBhIHNpbmsKPiB0aGF0IGFjY2Vw
-dHMgMTkyIGFuZCAxNzYuNCBrSHogTFBDTTogcGxheSAxOTIga0h6LCB0aGVuIHRpbWUgdHdvCj4g
-c2Vjb25kcyBvZiAxNzYuNCBrSHo6Cj4gCj4gICBhcGxheSAtcSAtRCBodzpIRE1JMCAtdCByYXcg
-LWYgUzE2X0xFIC1jIDIgLXIgMTkyMDAwIC1kIDEgL2Rldi96ZXJvCj4gICB0aW1lIGFwbGF5IC1x
-IC1EIGh3OkhETUkwIC10IHJhdyAtZiBTMTZfTEUgLWMgMiAtciAxNzY0MDAgLWQgMiAvZGV2L3pl
-cm8KPiAKPiBPbiBsaW51eC1yb2NrY2hpcCBmb3ItbmV4dCB0aGUgc2Vjb25kIGNvbW1hbmQgdGFr
-ZXMgMy43IHMgaW5zdGVhZCBvZgo+IDIuMCBzLCBhbmQgY2xrX2kyczVfOGNoX3R4X3NyYyBzdGF5
-cyBhdCAyNC41NzYgTUh6Lgo+IAo+IFRlc3RlZCBvbiBhIEZyaWVuZGx5RWxlYyBDTTM1ODggTkFT
-IHdpdGggSERNSTAgY2FibGVkIGludG8gaXRzIEhETUkKPiByZWNlaXZlciwgdGhlIHJlY2VpdmVy
-J3MgRURJRCBhZHZlcnRpc2luZyAxOTIgYW5kIDE3Ni40IGtIeiwgYW5kIHRoZQo+IEhETUkgc291
-bmQgY2FyZHMgZW5hYmxlZCBpbiB0aGUgZGV2aWNlIHRyZWUuIFR3byAxNzYuNCBrSHogcnVucyBh
-ZnRlcgo+IGJvb3QsIHRoZW4gdGhyZWUgcnVucyBlYWNoIHByZWNlZGVkIGJ5IGEgMTkyIGtIeiBz
-dHJlYW06Cj4gCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAxNzYuNCBrSHogZnJhbWVzL3Mg
-ICBjbGtfaTJzNV84Y2hfdHhfc3JjCj4gICAgICAgICAgICAgICAgICAgICAgICAgICBhZnRlciBi
-b290IC8gYWZ0ZXIgICBhZnRlciB0aGUgMTc2LjQga0h6Cj4gICAgICAgICAgICAgICAgICAgICAg
-ICAgICAxOTIga0h6ICAgICAgICAgICAgICBzdHJlYW0gKEh6KQo+ICAgZm9yLW5leHQgICAgICAg
-ICAgICAgICAgMTc1NTAwIC8gOTU2MDAgKDN4KSAgMjQ1NzYwMDAKPiAgIGZvci1uZXh0ICsgdGhp
-cyBwYXRjaCAgIDE3NTUwMCAvIDE3NDgwMCAoM3gpIDc4NjQzMTk5MQo+IAo+IFdpdGggdGhpcyBw
-YXRjaCB0aGUgMzIgdG8gMTkyIGtIeiByYXRlcyBzdGlsbCBwbGF5IGF0IHRoZWlyIG5vbWluYWwK
-PiByYXRlLCBhbmQgYSBmcmFtZSBjb3VudGVyIHBsYXllZCBhdCAxNzYuNCBrSHogYWZ0ZXIgYSAx
-OTIga0h6IHN0cmVhbQo+IHdhcyBjYXB0dXJlZCBiaXQtZXhhY3QgYnkgdGhlIEhETUkgcmVjZWl2
-ZXIuIEkyUzYgUlggaXMgbm90IHVzZWQgb24KPiB0aGlzIGJvYXJkIGFuZCB3YXMgbm90IHRlc3Rl
-ZC4KPiAKPiBGaXhlczogZjFjNTA2ZDE1MmZmICgiY2xrOiByb2NrY2hpcDogYWRkIGNsb2NrIGNv
-bnRyb2xsZXIgZm9yIHRoZSBSSzM1ODgiKQo+IFNpZ25lZC1vZmYtYnk6IFRpbSBTdXJiZXIgPG1l
-QHRpbXN1cmJlci5kZT4KClRoaXMgaXMgd2FhYWF5IHRvbyBsb25nIGZvciBhIHNpb21wbGUgdHdv
-IGxpbmUgY2hhbmdlLiBQbGVhc2Ugc2hvcnRlbgp0aGlzIHRvIGEgc2FuZSBsZXZlbC4KCgpUaGFu
-a3MKSGVpa28KCj4gLS0tCj4gIGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazM1ODguYyB8IDYg
-KysrKy0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0p
-Cj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazM1ODguYyBiL2Ry
-aXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazM1ODguYwo+IGluZGV4IDI0YmFhMGVmOS4uNjNhZWVi
-NTAxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazM1ODguYwo+ICsr
-KyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazM1ODguYwo+IEBAIC0yMDI0LDcgKzIwMjQs
-OCBAQCBzdGF0aWMgc3RydWN0IHJvY2tjaGlwX2Nsa19icmFuY2ggcmszNTg4X2Vhcmx5X2Nsa19i
-cmFuY2hlc1tdIF9faW5pdGRhdGEgPSB7Cj4gIAlDT01QT1NJVEUoQ0xLX0kyUzVfOENIX1RYX1NS
-QywgImNsa19pMnM1XzhjaF90eF9zcmMiLCBncGxsX2F1cGxsX3AsIDAsCj4gIAkJCVJLMzU4OF9D
-TEtTRUxfQ09OKDE0MCksIDEwLCAxLCBNRkxBR1MsIDUsIDUsIERGTEFHUywKPiAgCQkJUkszNTg4
-X0NMS0dBVEVfQ09OKDYyKSwgNiwgR0ZMQUdTKSwKPiAtCUNPTVBPU0lURV9GUkFDTVVYKENMS19J
-MlM1XzhDSF9UWF9GUkFDLCAiY2xrX2kyczVfOGNoX3R4X2ZyYWMiLCAiY2xrX2kyczVfOGNoX3R4
-X3NyYyIsIDAsCj4gKwlDT01QT1NJVEVfRlJBQ01VWChDTEtfSTJTNV84Q0hfVFhfRlJBQywgImNs
-a19pMnM1XzhjaF90eF9mcmFjIiwgImNsa19pMnM1XzhjaF90eF9zcmMiLAo+ICsJCQlDTEtfU0VU
-X1JBVEVfUEFSRU5ULAo+ICAJCQlSSzM1ODhfQ0xLU0VMX0NPTigxNDEpLCAwLAo+ICAJCQlSSzM1
-ODhfQ0xLR0FURV9DT04oNjIpLCA3LCBHRkxBR1MsCj4gIAkJCSZyazM1ODhfaTJzNV84Y2hfdHhf
-ZnJhY211eCksCj4gQEAgLTIwNDMsNyArMjA0NCw4IEBAIHN0YXRpYyBzdHJ1Y3Qgcm9ja2NoaXBf
-Y2xrX2JyYW5jaCByazM1ODhfZWFybHlfY2xrX2JyYW5jaGVzW10gX19pbml0ZGF0YSA9IHsKPiAg
-CUNPTVBPU0lURShDTEtfSTJTNl84Q0hfUlhfU1JDLCAiY2xrX2kyczZfOGNoX3J4X3NyYyIsIGdw
-bGxfYXVwbGxfcCwgMCwKPiAgCQkJUkszNTg4X0NMS1NFTF9DT04oMTQ2KSwgNywgMSwgTUZMQUdT
-LCAyLCA1LCBERkxBR1MsCj4gIAkJCVJLMzU4OF9DTEtHQVRFX0NPTig2MyksIDAsIEdGTEFHUyks
-Cj4gLQlDT01QT1NJVEVfRlJBQ01VWChDTEtfSTJTNl84Q0hfUlhfRlJBQywgImNsa19pMnM2Xzhj
-aF9yeF9mcmFjIiwgImNsa19pMnM2XzhjaF9yeF9zcmMiLCAwLAo+ICsJQ09NUE9TSVRFX0ZSQUNN
-VVgoQ0xLX0kyUzZfOENIX1JYX0ZSQUMsICJjbGtfaTJzNl84Y2hfcnhfZnJhYyIsICJjbGtfaTJz
-Nl84Y2hfcnhfc3JjIiwKPiArCQkJQ0xLX1NFVF9SQVRFX1BBUkVOVCwKPiAgCQkJUkszNTg4X0NM
-S1NFTF9DT04oMTQ3KSwgMCwKPiAgCQkJUkszNTg4X0NMS0dBVEVfQ09OKDYzKSwgMSwgR0ZMQUdT
-LAo+ICAJCQkmcmszNTg4X2kyczZfOGNoX3J4X2ZyYWNtdXgpLAo+IAo+IGJhc2UtY29tbWl0OiBj
-M2JhYWU1ZjFhMTU2NDVjZGRhZGNiMmI5YWJkZGVmNWRmMjkxZjU5Cj4gCgoKCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+--===============5908188464354920543==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ipmlxrtzmokewoal"
+Content-Disposition: inline
+
+
+--ipmlxrtzmokewoal
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 2/6] arm64: dts: rockchip: describe PCIe RTL8125
+ Ethernet on ROCK 5 family
+MIME-Version: 1.0
+
+Hi,
+
+On Mon, Nov 09, 2026 at 01:32:17PM +0100, Ricardo Pardini via B4 Relay wrot=
+e:
+> From: Ricardo Pardini <ricardo@pardini.net>
+>=20
+> The Radxa ROCK 5B, 5B+ and 5T carry an on-board Realtek RTL8125 NIC
+> behind pcie2x1l2; the ROCK 5T has a second one behind pcie2x1l1.
+>=20
+> Describe the PCI function nodes and attach ethernet0 (and, on the
+> ROCK 5T, ethernet1) aliases, so that U-Boot's fdt_fixup_ethernet() can
+> fill in their MAC addresses from its ethaddr/eth1addr environment.
+>=20
+> The shared NIC goes in rk3588-rock-5b-5bp-5t.dtsi, the ROCK 5T's second
+> NIC in rk3588-rock-5t.dts.
+>=20
+> Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
+> ---
+
+root@rock5b+ ~# lspci -nv -d 10ec:8125
+0004:41:00.0 0200: 10ec:8125 (rev 05)
+	Subsystem: 10ec:0123
+	Device tree node: /sys/firmware/devicetree/base/pcie@fe190000/pcie@0,0/eth=
+ernet@0,0
+	...
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com> # Rock 5B+
+
+Greetings,
+
+-- Sebastian
+
+
+>  .../arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi | 15 ++++++++++++=
++++
+>  arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts        | 18 ++++++++++++=
+++++++
+>  2 files changed, 33 insertions(+)
+>=20
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi b/ar=
+ch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
+> index b8d90936fc20..e8a3eb33e402 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
+> @@ -10,6 +10,7 @@
+> =20
+>  / {
+>  	aliases {
+> +		ethernet0 =3D &rtl_eth0;
+>  		mmc0 =3D &sdhci;
+>  		mmc1 =3D &sdmmc;
+>  		mmc2 =3D &sdio;
+> @@ -488,6 +489,20 @@ &pcie2x1l2 {
+>  	reset-gpios =3D <&gpio3 RK_PB0 GPIO_ACTIVE_HIGH>;
+>  	vpcie3v3-supply =3D <&vcc3v3_pcie2x1l2>;
+>  	status =3D "okay";
+> +
+> +	pcie@0,0 {
+> +		reg =3D <0x400000 0 0 0 0>;
+> +		#address-cells =3D <3>;
+> +		#size-cells =3D <2>;
+> +		ranges;
+> +		device_type =3D "pci";
+> +		bus-range =3D <0x41 0x4f>;
+> +
+> +		rtl_eth0: ethernet@0,0 {
+> +			compatible =3D "pci10ec,8125";
+> +			reg =3D <0x410000 0 0 0 0>;
+> +		};
+> +	};
+>  };
+> =20
+>  &pcie30phy {
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts b/arch/arm64=
+/boot/dts/rockchip/rk3588-rock-5t.dts
+> index 425036146b6d..b1a3e4b2165f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
+> @@ -8,6 +8,10 @@ / {
+>  	model =3D "Radxa ROCK 5T";
+>  	compatible =3D "radxa,rock-5t", "rockchip,rk3588";
+> =20
+> +	aliases {
+> +		ethernet1 =3D &rtl_eth1;
+> +	};
+> +
+>  	analog-sound {
+>  		compatible =3D "audio-graph-card";
+>  		label =3D "rk3588-es8316";
+> @@ -76,6 +80,20 @@ &pcie2x1l1 {
+>  	reset-gpios =3D <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
+>  	vpcie3v3-supply =3D <&vcc3v3_pcie2x1l1>;
+>  	status =3D "okay";
+> +
+> +	pcie@0,0 {
+> +		reg =3D <0x300000 0 0 0 0>;
+> +		#address-cells =3D <3>;
+> +		#size-cells =3D <2>;
+> +		ranges;
+> +		device_type =3D "pci";
+> +		bus-range =3D <0x31 0x3f>;
+> +
+> +		rtl_eth1: ethernet@0,0 {
+> +			compatible =3D "pci10ec,8125";
+> +			reg =3D <0x310000 0 0 0 0>;
+> +		};
+> +	};
+>  };
+> =20
+>  &pcie30phy {
+>=20
+> --=20
+> 2.47.3
+>=20
+>=20
+
+--ipmlxrtzmokewoal
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmr076sACgkQ2O7X88g7
++ppRlA/7BZbFdW26Nysdh5hvnnHFucfXaReOSjRgpRCzlxg0xbcJycroKWkm+oNw
+umZsN7MOjOJt8B0po0zgb51sG5hxaOKbtz3jvuMuNALWnw4y/aDcuW0XbU9oLJCf
+Kl90Ng/+ETdZu8qagdlfHow5K5Ii9h2UgWJnSVdHlqeZmV6ixM2R+PX07A4WcvV/
+vCmPt+Xrq/Y1r8HtvRmNjwyEtzhv8RDF0VVXemXZk/JureDqVQW28/uTEPj3Ghhu
+/LMt1j9bD8YppxhtOvw8JfXe9maPFO1KpbIIhgt231EbiR4530IuSNMyc50mX1tG
+1cI1Nk318lueHeS2dNOr8wOd7o8wlt58E6emUS8WVYWmI1Cjhgrz4freweqjjxPM
+e8zrQMiS12PDmQ6aKW1r9R6GW6weGDqLO2LtHsypbShyPn3whR7QI6cyFnbT38ao
+MffKL9EXKiLiOZVyzT10oHbx0LvQ3Wkpj4PlwlZDX6uc+O/tJNsA2pmTSgDWoD7Y
+JiqBU2JK4KebPXO2E3GJswDSX5q6SiaUutOBPIIYBdAo6yj7AjfAED/1/29Lgn8O
+8fol+9AFY5F5o2sB6BjNT6idVmcomgMw0T8Ts33Nxe3Cm/gMkMQAU4w7Md0v87G1
+F8exRIEZvhCJQd88+Ug4Rav9SAsmzjIPd5PY45fl+NW+I2rNCf4=
+=jpKD
+-----END PGP SIGNATURE-----
+
+--ipmlxrtzmokewoal--
+
+
+--===============5908188464354920543==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5908188464354920543==--
+
