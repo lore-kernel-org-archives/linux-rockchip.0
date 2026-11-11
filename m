@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1EDC7606A336
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 13:15:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E6137606A32A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 13:32:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Z2x06Ugn;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=FMEwYNIu
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ppjw14rB;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=lWP+oOsk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,41 +14,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=3hi4t7ko7v6ZoXr8RS4HCJr8lsn39AxxIaAdCcXGXXQ=; b=Z2x06UgnC5U2iGf4KXlTmbjNgE
-	np0d+b716OuMJ2hbZIQeFz8/keJM2cAMlxQelpMe32z8WACQcdpKBXbk8jHsZ9lRZAPvUUWyU9nQ2
-	qzCqOGBksn+sS0ApysCmFWoqDkfOI+ub19GiJ7pSqEcwHt2t7kkaLMY4+NYfXVOZKN0Um2E3gjYew
-	3G91l3LPK5zX1lVydWOpxcShBOsZJyoLkKEzJJ0wbiB/7WBjCR1oktW4MM8eqKJIj2CdtYszLs0TB
-	n/LvDSCF1+QP9kl03JsVoPByYHul39cvu36jtG4BXZu8PV/gArgx+zCZQEixeoUn2/MwWrYo86cvc
-	lCVYmArQ==;
+	bh=StpfhFEaC/yJv5P+s8YcQXTn8cEbYhbsrHI8bbu+mHs=; b=ppjw14rBBsy+iwxKKmwuE6G1Jj
+	xeOG6kXH+sD60FRb8ycTnzuyKTailzfODKhGH2F3C0gRIPumzaSyXtdM4816gkjlHJUwnD0UWLSIC
+	//0GiNGaM0Q+BkAVp//lLNewLHC4ZLHUkxYNHKtosiSzHX6vSgJ3gQ3JL03sCUwANIFacY9QZTH5A
+	9uIa3y5qn0AWMD/sLFMak4m+87zdSk5SK/a8fJsMaEsCTUVjB818lQ+eq+qTq6Hy9ot/0IMYtRGyS
+	7X27P07IrNKatOb0H2Eq9vPPdcXFvoBICl3gxHpLkjnqUIdQnJ/RQzwa//UTYbOY76bsiGYFh+Get
+	bqruHQ2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR8AG-00000006n5X-3Iwz;
-	Wed, 11 Nov 2026 13:15:00 +0000
+	id 1xR8RW-00000006p7m-1Izn;
+	Wed, 11 Nov 2026 13:32:50 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR8AE-00000006n4e-0QNl;
-	Wed, 11 Nov 2026 13:14:59 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794402893; cv=none; 
+	id 1xR8RT-00000006p6d-1WKu;
+	Wed, 11 Nov 2026 13:32:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794403961; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=JiuYMiq8RBihKialjLq+csYOnvm3N2aGmzrVaPUdaxvEAGDkPBxmVCOfFs6FTNdvs8DMSwCszTFIdhdlyLUUjeS26WRTtCiigVfvezJ7wMJznjlUe7a8t6wr1kPUUs015VeOrMosw9xKCVyMwUCPpIjkGCXqL2Ot9fUlRjdgWVc=
+	b=mPlMZ4QBfCYhqRipVGIeZsOMwEbcb63/j0o01IhSP7fWxRYSo8DD/waCAOmx0issHPqj0W3ADT/2nVhLM/lhAjyDv8DiO8Q2R69I2QS/aKeWCI5JXJgLZqRK6IqDq71PXGyY/GZR75GiUJLYWjD9SbZF1HNQ03yi1a0ZhlPwsS8=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794402893; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Xc10+7RwQyckt9OcmRiolWc/n8l2uHi554tCZyrtaaA=; 
-	b=WRC+mpP8UxmcLQ1/dFMf2anla6V/WKnVGXjxsW26lk3jCxzb2C2+RqLA9gctpu47GQRLxQLQx64tr2k7UMhLCDw9aylRuEcnuS5Xf4H1hsxe+ZxFTlpdVleg5//DbNRHXvPbN8PU8vt2EmyC2bcrIKl+W2RHLBh209w0PAZE5kM=
+	t=1794403961; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=HgCEM27S7IbNhqq3jM19SR/jbOHjwjqAZf0wVe5KS5o=; 
+	b=I+/M9noVCAvGbkX6B4zoaMWUBvlGqe5lOu089fhVLuQZ6GsLbydsiJ/4TSp63wugMYmAd5HlVvvQIqg4D+tk6oRwF8DZG/FQLxqvleQS8ho9oIPMer8kc42Q8lXxed7ZGPwEmn2T+ysaATAHzMb4wEa/fKxifExLmuzFvScmm+Q=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
 	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=FMEwYNIu/lXOWYXTUwtQ/tATog2J9nKcRKlIZJh9KEmvFKR2PTUyfW8pVrU6YcesQub3HJNv2LjrsIdGY69Xe230rVICykok7XU6GTYZlbnteedow490LMElkus7ZqD+P2Z4yAeFoUvm1KBK2XQEncus9AyCZTTzjp030n1C6X0=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=Xc10+7RwQyckt9OcmRiolWc/n8l2uHi554tCZyrtaaA=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 179440289194724.462775649189325;
-	Wed, 11 Nov 2026 05:14:51 -0800 (PST)
-Message-ID: <6fbe6fed-3ed4-4f87-a92b-dbd01e1674d3@collabora.com>
-Date: Wed, 11 Nov 2026 14:14:47 +0100
+DKIM-Signature: a=rsa-sha256; b=lWP+oOskxefOGnze70OdGE2pkyOkOegIGhKXhiqLmhkEQ3mQVw5WxA3fq+sOuxJWCySeZvGid/i8QV2wxJalmYcbuonWWmc016tW6S0bMNIyuRluHPCNJ71xNVXJFf34AhQ6GOMhvKwvLY+RcWJ67LZBuY9qn6bOrkZV4SqdZg0=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=HgCEM27S7IbNhqq3jM19SR/jbOHjwjqAZf0wVe5KS5o=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794403959576103.49384226317557;
+	Wed, 11 Nov 2026 05:32:39 -0800 (PST)
+Message-ID: <a11909bf-01f4-4905-81d9-e5c295feb595@collabora.com>
+Date: Wed, 11 Nov 2026 14:32:34 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 5/9] phy: rockchip-samsung-dcphy: Move block-level
- setup to runtime resume
+Subject: Re: [PATCH v6 7/9] phy: rockchip-samsung-dcphy: Support the new
+ phy-type and direction binding
 To: Jason Yang <jason98166@gmail.com>, Vinod Koul <vkoul@kernel.org>,
  Neil Armstrong <neil.armstrong@linaro.org>,
  Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -62,14 +62,14 @@ Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
- <20261110-dcphy-rx-v1-v6-5-d681ba20b36a@gmail.com>
+ <20261110-dcphy-rx-v1-v6-7-d681ba20b36a@gmail.com>
 Content-Language: en-US
 From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20261110-dcphy-rx-v1-v6-5-d681ba20b36a@gmail.com>
+In-Reply-To: <20261110-dcphy-rx-v1-v6-7-d681ba20b36a@gmail.com>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_051458_201192_69CE7B1D 
-X-CRM114-Status: GOOD (  19.09  )
+X-CRM114-CacheID: sfid-20261111_053247_466817_553DC9D1 
+X-CRM114-Status: GOOD (  21.02  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,25 +96,17 @@ Hi Jason,
 Thanks for the patch!
 
 On 11/10/26 09:18, Jason Yang wrote:
-> The APB reset and the BIAS references have to be treated as block-level
-> [1]: both the transmitter and the receiver need them, and they only have
-> to be programmed once. They are programmed from the transmitter's
-> power-on path today.
+> The binding now selects the PHY with the cell and the mode of the block
+> with the phy-type property of the provider. Read phy-type in probe,
+> D-PHY by default.
 > 
-> A later change registers one struct phy for each of them, and a second
-> consumer coming up would then reset the block underneath a PHY that is
-> already running.
+> of_xlate() returns the transmitter for PHY_DIRECTION_TX. The deprecated
+> PHY_TYPE_DPHY and PHY_TYPE_CPHY select the transmitter as today, so
+> existing DTs are unaffected.
 > 
-> Program them from runtime resume instead, where whichever of the two
-> comes up first brings the block up and a second one no longer resets it.
-> 
-> This puts the BIAS writes ahead of the per-PHY reset assert, where the
-> TRM's worked example has them after [1]. That is safe: neither M_RESETN
-> nor S_RESETN covers the BIAS registers, and the values written are those
-> registers' reset defaults.
-> 
-> [1] RK3588 TRM: sections 22.4.1 (address map), 22.4.2 (reset values),
->     22.6.1.2 (reset) and 22.6.4.1 (D-PHY transmitter start-up)
+> A phy-type other than D-PHY or C-PHY fails probe. A deprecated cell
+> value that does not match phy-type gets a warning, and the transmitter
+> then refuses to power on, as in C-PHY mode today.
 > 
 > Signed-off-by: Jason Yang <jason98166@gmail.com>
 
@@ -124,45 +116,80 @@ Best regards,
 Michael
 
 > ---
->  drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 11 ++++++-----
->  1 file changed, 6 insertions(+), 5 deletions(-)
+>  drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 32 ++++++++++++++++++-----
+>  1 file changed, 25 insertions(+), 7 deletions(-)
 > 
 > diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-> index 7a009d87a665..d6acc3e2d448 100644
+> index c40c84791eca..e8e229fc4856 100644
 > --- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
 > +++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
-> @@ -1346,7 +1346,6 @@ static int samsung_mipi_dphy_power_on(struct samsung_mipi_dcphy *samsung)
+> @@ -297,6 +297,7 @@ struct samsung_mipi_dcphy {
+>  	struct reset_control *grf_apb_rst;
+>  	struct samsung_mipi_phy tx;
+>  	u8 type;
+> +	bool legacy_mismatch;
 >  
->  	reset_control_assert(samsung->m_phy_rst);
->  
-> -	samsung_mipi_dcphy_bias_block_enable(samsung);
->  	samsung_mipi_dcphy_pll_configure(samsung);
->  	samsung_mipi_dphy_clk_lane_timing_init(samsung);
->  	samsung_mipi_dphy_data_lane_timing_init(samsung);
-> @@ -1373,10 +1372,6 @@ static int samsung_mipi_dcphy_power_on(struct phy *phy)
+>  	const struct samsung_mipi_dcphy_plat_data *pdata;
+>  	struct {
+> @@ -1376,6 +1377,9 @@ static int samsung_mipi_dcphy_tx_power_on(struct phy *phy)
 >  {
 >  	struct samsung_mipi_dcphy *samsung = phy_get_drvdata(phy);
 >  
-> -	reset_control_assert(samsung->apb_rst);
-> -	udelay(1);
-> -	reset_control_deassert(samsung->apb_rst);
-> -
+> +	if (samsung->legacy_mismatch)
+> +		return -EOPNOTSUPP;
+> +
 >  	switch (samsung->type) {
 >  	case PHY_TYPE_DPHY:
->  		return samsung_mipi_dphy_power_on(samsung);
-> @@ -1667,6 +1662,12 @@ static __maybe_unused int samsung_mipi_dcphy_runtime_resume(struct device *dev)
->  		return ret;
+>  		return samsung_mipi_dphy_tx_power_on(samsung);
+> @@ -1549,13 +1553,21 @@ static struct phy *samsung_mipi_dcphy_xlate(struct device *dev,
+>  		return ERR_PTR(-EINVAL);
 >  	}
 >  
-> +	reset_control_assert(samsung->apb_rst);
-> +	udelay(1);
-> +	reset_control_deassert(samsung->apb_rst);
-> +
-> +	samsung_mipi_dcphy_bias_block_enable(samsung);
-> +
->  	return 0;
+> -	if (samsung->type != PHY_NONE && samsung->type != args->args[0])
+> -		dev_warn(dev, "phy type select %d overwriting type %d\n",
+> -			 args->args[0], samsung->type);
+> -
+> -	samsung->type = args->args[0];
+> -
+> -	return samsung->tx.phy;
+> +	switch (args->args[0]) {
+> +	case PHY_DIRECTION_TX:
+> +		return samsung->tx.phy;
+> +	case PHY_TYPE_DPHY:
+> +	case PHY_TYPE_CPHY:
+> +		if (args->args[0] != samsung->type) {
+> +			dev_warn(dev, "unsupported phy cell %u with phy-type %u\n",
+> +				 args->args[0], samsung->type);
+> +			samsung->legacy_mismatch = true;
+> +		}
+> +		return samsung->tx.phy;
+> +	default:
+> +		dev_err(dev, "invalid phy cell %u\n", args->args[0]);
+> +		return ERR_PTR(-EINVAL);
+> +	}
 >  }
 >  
+>  static int samsung_mipi_dcphy_probe(struct platform_device *pdev)
+> @@ -1566,6 +1578,7 @@ static int samsung_mipi_dcphy_probe(struct platform_device *pdev)
+>  	struct phy_provider *phy_provider;
+>  	struct resource *res;
+>  	void __iomem *regs;
+> +	u32 type = PHY_TYPE_DPHY;
+>  	int ret;
+>  
+>  	samsung = devm_kzalloc(dev, sizeof(*samsung), GFP_KERNEL);
+> @@ -1620,6 +1633,11 @@ static int samsung_mipi_dcphy_probe(struct platform_device *pdev)
+>  		return dev_err_probe(dev, PTR_ERR(samsung->grf_apb_rst),
+>  				     "Failed to get system grf_apb_rst control\n");
+>  
+> +	of_property_read_u32(np, "phy-type", &type);
+> +	if (type != PHY_TYPE_DPHY && type != PHY_TYPE_CPHY)
+> +		return dev_err_probe(dev, -EINVAL, "unsupported phy-type %u\n", type);
+> +	samsung->type = type;
+> +
+>  	ret = devm_pm_runtime_enable(dev);
+>  	if (ret)
+>  		return dev_err_probe(dev, ret, "Failed to enable runtime PM\n");
 > 
 
 
