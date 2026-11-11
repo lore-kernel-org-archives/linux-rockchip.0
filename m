@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E589D606A324
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 22:44:24 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 32A16606A32E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 22:58:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JAk65h+9;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=TvSQUbhN
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Y2E1TQ6L;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=MBefhUwu
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,58 +14,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=F+HLikghRNkm7gmBwuDy8efzqrw1TQLj0mbujZkX9hE=; b=JAk65h+9av2d39CpETS6SgYJW9
-	4PBTzcnai863CP87ilitzvjQF6j99dnNQk/x/G00vaeBflJNRht7OAJOsJTglQm1Cn3h3qbPgzPRq
-	86o61sPcgtlr3LZtHpNuqFydyPxM3SiHqANx1zCGmBluF6uoox5SbNYKULOsTKWXu1ckH4B7nx0Ez
-	ivQ0oFM4PHkiFiZKtZCdL/iHPIUbBZ5Hb/HRir6dliRY+tnLESlfy+z84+tYaPMOwz95VnbsVDRQm
-	ntHUPXJtoHohHhe9wq9cgdTnlY3Uf1qSu2ZbsvFmqrcyKh22/atrVgFTy7lozHv9zDEaQTReb/AR0
-	HFQNFpAg==;
+	bh=+u1OSSYniFdsWgaWBJcExKBfpGc7/3vI0zoPWYCGZ9M=; b=Y2E1TQ6LqedehgHraqTErwpj3T
+	5E5Vd7aAzpjmahyk05gcr6NjJVckaPRHkY8iAvMZ7NIsoNtgpPDcI83pYHuOF8oNC4tmwNSwmhuMr
+	KJPphdcqCwrS8SkK4ZreK+iyFi/Z55qyHCU+v0aqElML3Dhh1iq69RBcxT3hCl0RU081Ljs98uqTm
+	ji9DtsiL1PxYGMfGl45RpiEYGL4I3iWTj4/jeX5qd8hzJQEmAnDYzbzV0TKi5GnJ9kBNhSyFFFB9l
+	ZmHqGnlIUga0VtNRjpivVaAlWdNEunhW1VN1kDOZPMXlo36VHvtfsIORCeJJS1X6t9cPaMYUDiq90
+	fWFzTAVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRH3E-0000000817Y-0Izv;
-	Wed, 11 Nov 2026 22:44:20 +0000
+	id 1xRHGY-0000000851r-0FQa;
+	Wed, 11 Nov 2026 22:58:06 +0000
 Received: from sender5-op-o11.zoho.com ([165.173.182.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRH39-0000000810y-3Vrg;
-	Wed, 11 Nov 2026 22:44:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794437048; cv=none; 
+	id 1xRHGV-0000000850v-0hJA;
+	Wed, 11 Nov 2026 22:58:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794437877; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=oE/D62gU21CYuAA6thLge+3tC8tzqVNRHD0rnDg2DHKoK5ciD0gQu2q51dhvVJfEHXE7PEsCapeZGbddM5Xp+NxqxXQ4pEDwBa/BKCkIp/BgzMAkwrsDTxYanjQnvBXTnf49XdyNc1QZ/xYsQCY9YMDFI1obEYnpjTANtBdG1Gg=
+	b=PcClibU0ukI9g9mCDY9l6t4sjIeFRsG4jxmU2azHN95/6IHXvT7VZ0ftv7lu05O0gxPyTazGF5VPThpt8kYhfl/XdLUuKv+e7XnE+ZKnSWWegfGawMNHitYRLinpV36xU1zkmXIpWoA3DAm4yz3tKrlJf/QvLfUtSkUowvZWDb4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794437048; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=r88vezn/zIBt4uU/LbYZSvwiy9RpMWU9N5UW0qDOzGI=; 
-	b=DAWMundu/4XamJL2Hg8G7HTMhvixY9zjH3SbEo7tpO8oLPbhTNXKs1k1sh4oYDiVgHrljVS6HkdPvMTZV+Qh6kmoTjDM5cyFMnvmjT9WJyf80Bw/w+mMsWMR3Li715OgTuS9qEqJtdXff7PwZxoJcZaUIwsiNCmy5tdWUw0w998=
+	t=1794437877; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=c/v4QTdP0wFTr9RiVb4M9LTtOgChhD0w31JKBca0pxM=; 
+	b=NllP9KSA7uCEz5Buf+P5HpWky+kqVpTqoAHqyOYP6F1LJ8IaBTYxx/WmE1VztPskC6PgjoAfAnnHVlJ443MSCiImmFmThAmdRj77wXxiO8LHx9xqlPgI5DHyTiTP+aZHU8RreJdGcgk7cnpxaEKktr6BZcS62TRLGdr7215Lw8Y=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
 	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=TvSQUbhN7THmVvFM7UQFg4p8WafvAU93wPQAdlXaN1sNavBsqlNUarL2+XuQ6RGPcBl83XiW5o5OjUWw3xegadecmqxCmwJ563QeBKNRkUxWcG1SdiWSBPVzBpnIPWNO62IsY3qHYQ7klB5jgTsng7IPOLAiruR65kUzHe6b23A=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=r88vezn/zIBt4uU/LbYZSvwiy9RpMWU9N5UW0qDOzGI=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1794437047434579.4818392138392;
-	Wed, 11 Nov 2026 14:44:07 -0800 (PST)
+DKIM-Signature: a=rsa-sha256; b=MBefhUwutfEqxNQQQWLLqBWgtrPDUAdeMurRCQ2j7YWit8iXtGpVEaOloe48mNX5ZFu/DnKt0w+WEVVzWUEhZkXSYwqrAL9VmAlZ7yx+cTeg2uDugoe3Aa4xMCWgIwvTgaTxh3lnxKNKn7PFNN6R6dOKZPJeOCxH3FR9QcALATk=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=c/v4QTdP0wFTr9RiVb4M9LTtOgChhD0w31JKBca0pxM=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794437876453820.8198898258573;
+	Wed, 11 Nov 2026 14:57:56 -0800 (PST)
 Received: by venus (Postfix, from userid 1000)
-	id 4BC3A180758; Wed, 11 Nov 2026 23:44:03 +0100 (CET)
-Date: Wed, 11 Nov 2026 23:44:03 +0100
+	id 781C1180758; Wed, 11 Nov 2026 23:57:52 +0100 (CET)
+Date: Wed, 11 Nov 2026 23:57:52 +0100
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: ricardo@pardini.net
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+To: aiyengar1990@gmail.com
+Cc: Ulf Hansson <ulfh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Shawn Lin <shawn.lin@rock-chips.com>, Kevin Hilman <khilman@linaro.org>, 
+	Caesar Wang <wxt@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, 
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 2/6] arm64: dts: rockchip: describe PCIe RTL8125
- Ethernet on ROCK 5 family
-Message-ID: <avTuNC0STGUciyiI@venus>
-References: <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-0-91f1efefba0b@pardini.net>
- <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-2-91f1efefba0b@pardini.net>
+Subject: Re: [PATCH 3/3] pmdomain: rockchip: do not report probe deferral of
+ a domain as an error
+Message-ID: <avTxNzSvbWM673H5@venus>
+References: <20261110-pmdomain-rockchip-v1-0-6b9fa6ebaa86@gmail.com>
+ <20261110-pmdomain-rockchip-v1-3-6b9fa6ebaa86@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20261109-rk3588-dts-rtl-eth-describe-dt-alias-v6-2-91f1efefba0b@pardini.net>
+In-Reply-To: <20261110-pmdomain-rockchip-v1-3-6b9fa6ebaa86@gmail.com>
 X-Zoho-Virus-Status: 1
 X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.427.16
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_144415_974580_FC6C9B1C 
-X-CRM114-Status: GOOD (  16.73  )
-X-Spam-Score: -0.9 (/)
+X-CRM114-CacheID: sfid-20261111_145803_704234_C7E76E33 
+X-CRM114-Status: GOOD (  24.99  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,172 +76,135 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5908188464354920543=="
+Content-Type: multipart/mixed; boundary="===============1692530645119897705=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	NORMAL_HTTP_TO_IP,NUMERIC_HTTP_ADDR,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
---===============5908188464354920543==
+--===============1692530645119897705==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ipmlxrtzmokewoal"
+	protocol="application/pgp-signature"; boundary="c6h4l5bp3f35fdzy"
 Content-Disposition: inline
 
 
---ipmlxrtzmokewoal
+--c6h4l5bp3f35fdzy
 Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v6 2/6] arm64: dts: rockchip: describe PCIe RTL8125
- Ethernet on ROCK 5 family
+Subject: Re: [PATCH 3/3] pmdomain: rockchip: do not report probe deferral of
+ a domain as an error
 MIME-Version: 1.0
 
 Hi,
 
-On Mon, Nov 09, 2026 at 01:32:17PM +0100, Ricardo Pardini via B4 Relay wrot=
-e:
-> From: Ricardo Pardini <ricardo@pardini.net>
+On Tue, Nov 10, 2026 at 07:11:30AM +0000, Arun Iyengar via B4 Relay wrote:
+> From: Arun Iyengar <aiyengar1990@gmail.com>
 >=20
-> The Radxa ROCK 5B, 5B+ and 5T carry an on-board Realtek RTL8125 NIC
-> behind pcie2x1l2; the ROCK 5T has a second one behind pcie2x1l1.
+> When a power domain clock is not available yet,
+> rockchip_pm_add_one_domain() records the reason with dev_err_probe() and
+> returns -EPROBE_DEFER, but its callers rockchip_pm_domain_probe() and
+> rockchip_pm_add_subdomain() still print it with dev_err():
 >=20
-> Describe the PCI function nodes and attach ethernet0 (and, on the
-> ROCK 5T, ethernet1) aliases, so that U-Boot's fdt_fixup_ethernet() can
-> fill in their MAC addresses from its ethaddr/eth1addr environment.
+>   rockchip-pm-domain ...: failed to handle node power-domain: -517
 >=20
-> The shared NIC goes in rk3588-rock-5b-5bp-5t.dtsi, the ROCK 5T's second
-> NIC in rk3588-rock-5t.dts.
+> once per probe attempt, and twice for a nested domain. On an RK3588
+> board whose NPU domain clock appears late this is more than 20 error
+> lines before the domain finally probes.
 >=20
-> Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
+> Only rockchip_pm_add_one_domain() can return -EPROBE_DEFER here, and it
+> already records the deferral reason, so skip the message in the callers
+> for -EPROBE_DEFER and keep it for real errors. dev_err_probe() is not
+> used in the callers because it would replace the reason recorded for
+> /sys/kernel/debug/devices_deferred ("failed to get clk at index 1") with
+> the less specific "failed to handle node power-domain".
+>=20
+> Fixes: 7c696693a4f5 ("soc: rockchip: power-domain: Add power domain drive=
+r")
+> Fixes: 6be05b5ec161 ("soc: rockchip: power-domain: add support for sub-po=
+wer domains")
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 > ---
+>  drivers/pmdomain/rockchip/pm-domains.c | 15 +++++++++------
+>  1 file changed, 9 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/ro=
+ckchip/pm-domains.c
+> index d7df19e10000..70ebe5696b39 100644
+> --- a/drivers/pmdomain/rockchip/pm-domains.c
+> +++ b/drivers/pmdomain/rockchip/pm-domains.c
+> @@ -1050,8 +1050,9 @@ static int rockchip_pm_add_subdomain(struct rockchi=
+p_pmu *pmu,
+> =20
+>  		error =3D rockchip_pm_add_one_domain(pmu, np);
+>  		if (error) {
+> -			dev_err(pmu->dev, "failed to handle node %pOFn: %d\n",
+> -				np, error);
+> +			if (error !=3D -EPROBE_DEFER)
+> +				dev_err(pmu->dev, "failed to handle node %pOFn: %d\n",
+> +					np, error);
+>  			return error;
+>  		}
+> =20
+> @@ -1144,15 +1145,17 @@ static int rockchip_pm_domain_probe(struct platfo=
+rm_device *pdev)
+>  	for_each_available_child_of_node_scoped(np, node) {
+>  		error =3D rockchip_pm_add_one_domain(pmu, node);
+>  		if (error) {
+> -			dev_err(dev, "failed to handle node %pOFn: %d\n",
+> -				node, error);
+> +			if (error !=3D -EPROBE_DEFER)
+> +				dev_err(dev, "failed to handle node %pOFn: %d\n",
+> +					node, error);
+>  			goto err_out;
+>  		}
+> =20
+>  		error =3D rockchip_pm_add_subdomain(pmu, node);
+>  		if (error < 0) {
+> -			dev_err(dev, "failed to handle subdomain node %pOFn: %d\n",
+> -				node, error);
+> +			if (error !=3D -EPROBE_DEFER)
+> +				dev_err(dev, "failed to handle subdomain node %pOFn: %d\n",
+> +					node, error);
+>  			goto err_out;
+>  		}
+>  	}
 
-root@rock5b+ ~# lspci -nv -d 10ec:8125
-0004:41:00.0 0200: 10ec:8125 (rev 05)
-	Subsystem: 10ec:0123
-	Device tree node: /sys/firmware/devicetree/base/pcie@fe190000/pcie@0,0/eth=
-ernet@0,0
-	...
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com> # Rock 5B+
-
-Greetings,
+I suggest to fully drop those dev_err() and instead ensure that
+rockchip_pm_add_subdomain() has dev_err_probe() in all relevant
+error paths. Note that -ENOMEM should also be quiet, so its almost
+done already.
 
 -- Sebastian
 
-
->  .../arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi | 15 ++++++++++++=
-+++
->  arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts        | 18 ++++++++++++=
-++++++
->  2 files changed, 33 insertions(+)
->=20
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi b/ar=
-ch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-> index b8d90936fc20..e8a3eb33e402 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-> @@ -10,6 +10,7 @@
-> =20
->  / {
->  	aliases {
-> +		ethernet0 =3D &rtl_eth0;
->  		mmc0 =3D &sdhci;
->  		mmc1 =3D &sdmmc;
->  		mmc2 =3D &sdio;
-> @@ -488,6 +489,20 @@ &pcie2x1l2 {
->  	reset-gpios =3D <&gpio3 RK_PB0 GPIO_ACTIVE_HIGH>;
->  	vpcie3v3-supply =3D <&vcc3v3_pcie2x1l2>;
->  	status =3D "okay";
-> +
-> +	pcie@0,0 {
-> +		reg =3D <0x400000 0 0 0 0>;
-> +		#address-cells =3D <3>;
-> +		#size-cells =3D <2>;
-> +		ranges;
-> +		device_type =3D "pci";
-> +		bus-range =3D <0x41 0x4f>;
-> +
-> +		rtl_eth0: ethernet@0,0 {
-> +			compatible =3D "pci10ec,8125";
-> +			reg =3D <0x410000 0 0 0 0>;
-> +		};
-> +	};
->  };
-> =20
->  &pcie30phy {
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts b/arch/arm64=
-/boot/dts/rockchip/rk3588-rock-5t.dts
-> index 425036146b6d..b1a3e4b2165f 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts
-> @@ -8,6 +8,10 @@ / {
->  	model =3D "Radxa ROCK 5T";
->  	compatible =3D "radxa,rock-5t", "rockchip,rk3588";
-> =20
-> +	aliases {
-> +		ethernet1 =3D &rtl_eth1;
-> +	};
-> +
->  	analog-sound {
->  		compatible =3D "audio-graph-card";
->  		label =3D "rk3588-es8316";
-> @@ -76,6 +80,20 @@ &pcie2x1l1 {
->  	reset-gpios =3D <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
->  	vpcie3v3-supply =3D <&vcc3v3_pcie2x1l1>;
->  	status =3D "okay";
-> +
-> +	pcie@0,0 {
-> +		reg =3D <0x300000 0 0 0 0>;
-> +		#address-cells =3D <3>;
-> +		#size-cells =3D <2>;
-> +		ranges;
-> +		device_type =3D "pci";
-> +		bus-range =3D <0x31 0x3f>;
-> +
-> +		rtl_eth1: ethernet@0,0 {
-> +			compatible =3D "pci10ec,8125";
-> +			reg =3D <0x310000 0 0 0 0>;
-> +		};
-> +	};
->  };
-> =20
->  &pcie30phy {
->=20
-> --=20
-> 2.47.3
->=20
->=20
-
---ipmlxrtzmokewoal
+--c6h4l5bp3f35fdzy
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmr076sACgkQ2O7X88g7
-+ppRlA/7BZbFdW26Nysdh5hvnnHFucfXaReOSjRgpRCzlxg0xbcJycroKWkm+oNw
-umZsN7MOjOJt8B0po0zgb51sG5hxaOKbtz3jvuMuNALWnw4y/aDcuW0XbU9oLJCf
-Kl90Ng/+ETdZu8qagdlfHow5K5Ii9h2UgWJnSVdHlqeZmV6ixM2R+PX07A4WcvV/
-vCmPt+Xrq/Y1r8HtvRmNjwyEtzhv8RDF0VVXemXZk/JureDqVQW28/uTEPj3Ghhu
-/LMt1j9bD8YppxhtOvw8JfXe9maPFO1KpbIIhgt231EbiR4530IuSNMyc50mX1tG
-1cI1Nk318lueHeS2dNOr8wOd7o8wlt58E6emUS8WVYWmI1Cjhgrz4freweqjjxPM
-e8zrQMiS12PDmQ6aKW1r9R6GW6weGDqLO2LtHsypbShyPn3whR7QI6cyFnbT38ao
-MffKL9EXKiLiOZVyzT10oHbx0LvQ3Wkpj4PlwlZDX6uc+O/tJNsA2pmTSgDWoD7Y
-JiqBU2JK4KebPXO2E3GJswDSX5q6SiaUutOBPIIYBdAo6yj7AjfAED/1/29Lgn8O
-8fol+9AFY5F5o2sB6BjNT6idVmcomgMw0T8Ts33Nxe3Cm/gMkMQAU4w7Md0v87G1
-F8exRIEZvhCJQd88+Ug4Rav9SAsmzjIPd5PY45fl+NW+I2rNCf4=
-=jpKD
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmr08uwACgkQ2O7X88g7
++prQGQ/+MElFeHJshgEN+c9kS/KDR0NI6m/JOuiYp1kUZIXBDsjEAzMTWNpGFwIj
+46EAPO2ZZ//WIruRfH4hLCHFK14qvKRHlZCOcRuLvVUJmqysmXB5t5fYWVM8o9PC
+t21TAjZVCE4tkMpYwxmYq8zzIrFttOhf9BJFDO1GNXMHDjva4vMe8+6A2sTgrU2D
+WNZoGV+Zj+IkuE1nbKZQohxa48V9CahycI48mqAIjMcr+BndjykK1nX4PPonpWnl
+CybGa3E588YOgLhBY1n0yIUt5mWHkHOnoVv7YhZ8X4QADSqygiFaMfZAafZLYn2T
+3dYI7xkACo9kxHUZ5OmEuhEpBCHPYnjiRXn2+U+S6rYEkKYLI3hoAtr9RcAr3q/5
+nPVFjUxmnsvQkG3zstJ98ZPMyTrCQC6r+q1wX7TTx8JE7sbUWDbNLAp4h55P05AS
+Dlv2O4/ZSNAQ/5+xomkYxfthNzkU3YDNQQ9BGN8DSdShcj/zvLBbkczHkQYSUajg
+MOMBX+uHNGTcnfgdyl45HzYaKQF6i2/TuKAp6FBUPXZR0NR1toFKjpWVOj9G3d9I
+iGJIEOgLF25muVE6njnZmfk565q2nIMr+TyL19e+wh/2hlUTAbFIMtNXJOugQf0g
+7GGCtZUP1Ooj0GERn1axXnwkXa8Zn1HH2Eln96TXbWN6WiO/r3U=
+=Ul/T
 -----END PGP SIGNATURE-----
 
---ipmlxrtzmokewoal--
+--c6h4l5bp3f35fdzy--
 
 
---===============5908188464354920543==
+--===============1692530645119897705==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -251,5 +215,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============5908188464354920543==--
+--===============1692530645119897705==--
 
