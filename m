@@ -2,75 +2,76 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5DC96606A331
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 62837606A334
 	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 20:56:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ptNDqWqJ;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=bK2CvIZY
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PRAwZNnm;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=JdIh7GI4
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=QXnxVgSywrIc/8iPaHEmRF1/AeJQWJ3SD4p9yEKva/o=; b=ptNDqWqJorCi212DDYdVBtjSje
-	3TcG8wnf5RXLoFdA2o0lAVnj4e1Gura/4vc5VGcDoZg15+oLbnYzWZPqZUxQ0bFUm5+dXqNnG3HQs
-	W/f6Gi045x+fItfUZMdGo6T672WasnTjxJVJudTvQzFgyeDtygLkTzA3BgBr20bPsb1OSWa/P/ePy
-	DRZpbz3O4gnIW7e7VaaFMQ5yBNKxLDEf9O7TXDlmiUx9dPPfgMTbCSvk0ojkG3k1GYpNTT0CtMQUT
-	rwyYTFhZWisyaPWi3SGPAbj/uqZVZO+m/68xTHqqOYU6ymW10HVUn1dc2e043eQbNH7Q30fxwZ1L4
-	8NNbJWbA==;
+	bh=vIkxGDfvjZJ/nhvkvTcgJDYbwg/Xsmwcoi4pnpwPHVg=; b=PRAwZNnmNeVYkUKVS5/cCAivd7
+	Peo/vPNHUyctq1+PN6emg14hlO92T9WGA+j+QzFnf7W9z5/0wpch/azdjihWB8auH2M1gFbcurd1p
+	ldFVhLmA06SfealtYyZc6AfMpWBLtkVntSIxEK3oIR32WaJUAFHtiV/mk0P+2dbrCgKt0QbLAfJqX
+	Jat65h56DCGQ6qtZZJf1k5wxbS+1VPqfrtaTOVzMM1APPD3KkWesPI8PHSTha3UqAaNWeKpjr31mP
+	+/kYlKD0rbjtuAGRi5XunHr6qdRN3DhbOxshRda/c5czSym8Mf0mN2wQYvHp2eLjAxEB+d45mPCU5
+	6R1ACLhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRFMy-00000007hCi-2193;
+	id 1xRFMy-00000007hCn-2N5g;
 	Wed, 11 Nov 2026 20:56:36 +0000
 Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRFMv-00000007hBK-02qZ
+	id 1xRFMv-00000007hBZ-2k4R
 	for linux-rockchip@lists.infradead.org;
 	Wed, 11 Nov 2026 20:56:34 +0000
-Received: by mail-oi1-x230.google.com with SMTP id 5614622812f47-4f488ba6e90so1339422b6e.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 11 Nov 2026 12:56:32 -0800 (PST)
+Received: by mail-oi1-x230.google.com with SMTP id 5614622812f47-53c156ba662so1834199b6e.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 11 Nov 2026 12:56:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794430591; x=1795035391; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=T17Fr+e+17o1j7Dkt/Qb3JOQLQzRIyBH08kPjcz8Hbo=;
-        b=bK2CvIZY9lhrLdyWUdXNyzEvCzsDb9iLCNlXT4LY6lsnNJxaPZvU48zkxSrgl8CvFN
-         MhlSEHI7+9MInLq4m31LV2O7TTRDjJKDFlcfx6MjLvP5xi3P9AZLIII0SVp+iFcN6Wly
-         9hZ3mgR6okPoxlUt86R13A+e/UzQ75UglZwy87YGroNjmFrgB3i7YbuGfHtxMUI6riv+
-         C1IBxQM1KC7DSEwj2qUI2MVuZWjy3Kfa46K7ypDz+69CeoU3E67446aBmmIeMcQUL/zc
-         34jgOdmcoS7oKxdgTfRUEcTCf/eRJcpsxga2Ahg12zc8lVtIP+Z7Letk9/jLcU0Uq9uV
-         MNBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794430592; x=1795035392;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20260707; t=1794430593; x=1795035393; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=T17Fr+e+17o1j7Dkt/Qb3JOQLQzRIyBH08kPjcz8Hbo=;
-        b=QLviArDDuim5pi9eJnFYwJIrPY6m/uFNeM7ltCvAxLj2GC/lqUXBSCdNzPqS9pRaHL
-         /CU41Xw91dWhGaxudcasUsa+1uL10pFntzFZrmsVVN4Glmp+6qp6tQYFfUUj9gsE5oE4
-         832YVbnMzC0UtIl7WjEWGxX/GrFtBRj47Gpu/5w474WsdSQOAIcoNaaOeCpdnuCPFC0U
-         Q5IJuRF8/Hnz9XPPw2w5lnadgTdoJvXOAW1F+4XM2Ml5j0dowvTUC2L2m1dKMZ3KEWc5
-         8yU0KU53Vnf/6zAYHCcHf643byF3LgXvek6ExgbvqHdQfYg3NA1GVjRsFr1iqZyuE9SP
-         W1wQ==
-X-Gm-Message-State: APuU4Z9J5/0zdqZTTo2IVi8I8DFuPLdRlvsvybWV+iGWHYUIaSPJw4h9
-	WCkT96xjLIEuU2CvRNNWdeeAhzcn7InK7OUm9L1ZmPVhvzNLiWcV6zSR3T8LvhwG
-X-Gm-Gg: AYBFou1qNYv2AF3fArPSsC4W9UQBvDwOrA2T0nTcWmHzCJYBKk/nMhy9nP4H4fHuFjz
-	BrRuo4MipkIJPzXGkV95wL6aMYd9zOCNYRvN3F2LZQJc7/WwTaBFRFjaiXTKDoSRh65I56CDs9/
-	tb5Y0eQpDGjsUCrD8uKxDIAysvEOJ4xySA4RZbdMafhuh+eWwAs7DACZBoLyD03aWIZkZ0RToKC
-	/0ehtR6482Im9wEqrRsnIitDEuPuTRl4dbQEl5/b55jxQzGrdjdGGoGLPZ+KVzVOnrLpgNd8WtK
-	JyHpIq0XkV2ko+qOq7BmQMrGfiGy9Txr6up3Vqlx6+Qj1KFQj0pHF0eDXS0uSpD/5H8tWx9flIG
-	hdkgRJngMrSvwZ4B4xFQQ8bthTCBh+mAo7x6HkrRloDy+bGcUP2X8DsBt6SDFk6uzQD2kwnKUbh
-	H0n0IzSiwaEDjvlOcRlJFtz5orFTasEJtlAeKiRsWV33CdbmHYvl2yqr7oiGDL9r2BirUMidMZo
-	niTmUg64utv/y8B+I2pcuZxtTgTaWU+VoSVasHC09kPJNaIIzLs5xzz067zKxu8DcD3INryMFDi
-	t1A314WLa36hZIKJNniPfG+L6D2ddjZo8TXyODIh0F80QUCOLsGk
-X-Received: by 2002:a05:6808:4f06:b0:4e4:627a:e094 with SMTP id 5614622812f47-56b96194399mr3306216b6e.11.1794430591483;
-        Wed, 11 Nov 2026 12:56:31 -0800 (PST)
+        bh=RWGPS5KCwq3L9cW50zOJQer3a1hvbPza6g0viy0ickQ=;
+        b=JdIh7GI4n9LcYJ1igFbej6a3bxXKlGPh+mJamTbWdfQ0p3OPt4rk5sBu8xrOTWJw6W
+         gDRbXoh90Z1iHi5xtUan4CDmKANNH+QzikIWAD25tCkski52uTDqnli5vBtJ1mpdnHmn
+         8qS5RDM+OOFENsNJjci1BY+KAuF66GHBu8wNfd/pNmrUMfV6xOUln3eKn0szRIblIUWI
+         pDEli/+U5jpl6aHy3Ov3anhIHyCQ8akWYIrbwhJKFfFqZZLB/5iktTR9YBbVk4idAnVy
+         /RATQ6trGkG6aVg0/UQqy0Qmns2rHwQ3neoTiTmVm+qkv0fqAc5s0e9FIeAbNmG8t5D3
+         sq+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794430593; x=1795035393;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=RWGPS5KCwq3L9cW50zOJQer3a1hvbPza6g0viy0ickQ=;
+        b=bA/dFQyAtQbUAyQe6FzKHoUquIH9FLO04qLpzTqBn4Q5e1iOEy6K5Nxu5w5q76TWS8
+         a6HgdmMbp05WQFEFR5YaItJmNXwkxzFTIoetxkHArF9QQUP+n/ImfTt1XS9RNlRvd88H
+         IF8Ab8FsD6kkLJ64OSb5TeEfIdrUM4QuEZ5s8kzoLi3x11Z2b5QezIB+I8qvBcx66UoY
+         4a5ZdeT9Br6p8hwqv+3vG5vJqs72QtZCyB4fe8QV+80NnmF9/zZ5PyQirClqKRYYHcUR
+         ssto2BlYzxnbqEQCMRvlHltOPby8JVCtnt4+2l7c3qOxuicDp2SmEgV7ZSgEzdZm3N9W
+         gP/g==
+X-Gm-Message-State: APuU4Z9clPQv0YUuY5JbWceMZh0fFKi8JwURvw3BIsIAbAWtylHliqbj
+	hTrerdaQuhfC+BPpuYO2i4fbXERB2YPbOkiNcjGTOzw59v0Is8bT0uSAKy14ZfPm
+X-Gm-Gg: AYBFou222Wmtk3O021S2DH3Jyux5h3uGQkVzVJD41S8k2VipWq9lJJx2BC4hcDn8y7D
+	mLY7rhW/XM7Yz6VQj3qTkx4OaGRzEx8hGofm2syoCApPmwOJgFvFaSLp6ctokF4ZgocGIRNuguL
+	pvnYUxJsObES/jOnkXnuDHNLZPtKAJTklEE1mDRkbuGKUGnggW1+Nd6vKzOfbSSCgqWSBlcrppR
+	Tb83VQP51ZGaH3k8AXAJM3tjYY86AFcJ1zltqpDauW/+KxTxybe//6D9MIJqzvvqWRXM2qVbZdd
+	1lkOgYQmiBQvkb1rIyUG3cUIYpqwwgHciVkfO2HFYLdXVb35TzC9ml93Q7irqypL1OZtdPxkmdV
+	8P8iTPj7OzYbRpAeD10u7IWFLkIm2WoutrUfT/OouaijJNqT9RWVZTs8aFxZbQkxhGTpRJI21tg
+	CqjUDWA/DVCuSjD/2heAHt8F+AXE9c+TTSjR7PqDSwg+SPIcn+B1FptfAhotQDOGcEJkiKTKKKy
+	5EAsGowX1m1IR6leD9BJ5D4i54bO49m5yVMUQg850FitBieb7EOzobrAoQjDIYGhU1FP1VLpcdK
+	P0h/wfEUN00ALRy0I1VJLMod7P9rAQ==
+X-Received: by 2002:a05:6808:2507:b0:4f6:6041:f0a2 with SMTP id 5614622812f47-56b96def35emr3452223b6e.27.1794430592642;
+        Wed, 11 Nov 2026 12:56:32 -0800 (PST)
 Received: from neuromancer ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-56906036028sm6564231b6e.11.2026.11.11.12.56.30
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-56906036028sm6564231b6e.11.2026.11.11.12.56.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Nov 2026 12:56:30 -0800 (PST)
+        Wed, 11 Nov 2026 12:56:32 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: mfd@lists.linux.dev,
@@ -79,16 +80,19 @@ Cc: mfd@lists.linux.dev,
 	heiko@sntech.de,
 	lee@kernel.org,
 	sre@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V4 0/7] Fix Incorrect State of Charge for RK817
-Date: Wed, 11 Nov 2026 14:56:20 -0600
-Message-ID: <20261111205627.56652-1-macroalpha82@gmail.com>
+	Chris Morgan <macromorgan@hotmail.com>,
+	Jacob Cook <jacobmcook1984@gmail.com>
+Subject: [PATCH V4 1/7] power: supply: rk817-charger: correct spelling of coulomb
+Date: Wed, 11 Nov 2026 14:56:21 -0600
+Message-ID: <20261111205627.56652-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20261111205627.56652-1-macroalpha82@gmail.com>
+References: <20261111205627.56652-1-macroalpha82@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_125633_060495_E2A0B730 
-X-CRM114-Status: GOOD (  26.11  )
+X-CRM114-CacheID: sfid-20261111_125633_701752_FFD3F156 
+X-CRM114-Status: GOOD (  17.07  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,104 +106,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Users of the popular firmware RockNIX had identified a few bugs with
-accurately displaying the correct state of charge for RK817 battery
-devices. With the help of one user analyzing the code with Claude
-they were able to identify a few potential bugs along with potential
-solutions which I was then able to verify. These bugs are as follows:
+Correct the spelling of the word "coulomb" throughout the driver.
 
-1) Incorrectly clamping a value with a max of 10000 instead of 100000.
-This bug caused the state of charge to sometimes read as 10% instead
-of 100% as it should have.
+Fixes: 11cb8da0189b ("power: supply: Add charger driver for Rockchip RK817")
+Suggested-by: Jacob Cook <jacobmcook1984@gmail.com>
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ drivers/power/supply/rk817_charger.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-2) Using the boot_voltage value to calibrate the battery in scenarios
-where it could not be trusted. The boot_voltage register populates
-immediately at power-on, and the driver would check if this value
-was older than 30 minutes before using it. Unfortunately when combined
-with the default behavior of the bootloader to turn the device off
-when plugged in (requiring a user to explicitly power the device on)
-the boot_voltage and boot_timer values were wrong. The boot voltage
-would not account for any voltage added while the device was off,
-and the boot_counter that tracks the time the device was off would
-be reset. To fix this we changed the behavior to (outside of first-boot
-scenarios) use a value saved to NVRAM, the value from the coulomb
-counter directly, and an OCV lookup from the live battery voltage,
-and then using those values provide an initial "guess" of the state
-of charge and recalibrate with the OCV voltage once it is available.
-
-Included in this series is another fix that would cause the battery
-to drain while the system was shut down. This patch replicates the
-Rockchip BSP driver to clear a shutdown register. Unlike the BSP there
-is no behavior to bypass this since no boards have yet been observed
-using the SYS_CAN_SD bypass on the BSP kernel.
-
-Lastly, it has come to my attention that I misspelled "coulomb"
-throughout the driver, I have included a patch to fix that.
-
-Changes Since V3:
- - A few bugs pointed out by Sashiko bot were fixed.
- - Corrected spelling of coulomb in new function for resetting counter,
-   after Sashiko pointed out I made the same mistake I just fixed in a
-   prior series. Also corrected variable name to the right units.
- - Updated rk817_bat_voltage_uv() function to check for
-   regmap_bulk_read success. If it fails, we return the error and then
-   check later for voltage values less than 0 and treat them
-   appropriately.
- - Change logic so an SoC of 0 is handled correctly when looking up
-   values from the OCV table while selecting the boot SoC.
-
-Changes Since V2:
- - Added a patch to correct the spelling of "coulomb".
- - Split off creating a new coulomb counter function into another
-   patch.
- - Split off exposing the boot voltage and OCV values into another
-   patch.
- - The code should be identical for series v3 as it was for series v2,
-   all that changed was the spelling of coulomb and splitting one patch
-   into 3. I'm keeping the ack from v2 since the code has not changed.
-
-Changes Since V1:
- - Dropped the sleep fixes, as I would like to test them a bit more
-   extensively first.
- - Dropped the devicetree parameter, as since no boards have *yet*
-   needed to alter the default behavior there's no need for it.
- - Changed the behavior of how we select the initial SOC and made
-   it its own function to ease in code readibility. This new method
-   was tested with various boot scenarios. The average error was less
-   than 5%, and in a worst case scenario where the device was
-   discharged to 0%, then left to charge at the bootloader the device
-   over-reported its state of charge by about 10%. When this occurred
-   the device reported its SOC as 100% but that it was charging, which
-   was corrected by the new OCV logic that kicked in once charging
-   completed.
- - Scrapped the more complicated sleep fix in favor of simply telling
-   the battery to recalibrate at full after suspend, in case of a
-   counting anomaly.
-
-Chris Morgan (7):
-  power: supply: rk817-charger: correct spelling of coulomb
-  power: supply: rk817-charger: Fix NVRAM SoC value
-  power: supply: rk817-charger: simplify re-initializing coulomb counter
-  power: supply: rk817-charger: Resolve boot state of charge from
-    coulomb counter
-  power: supply: rk817-charger: Expose boot voltage and OCV values
-  power: supply: rk817-charger: Clear SYS_CAN_SD reg by default
-  power: supply: rk817-charger: Clear full charge cal on resume
-
- drivers/power/supply/rk817_charger.c | 350 ++++++++++++++++++++-------
- include/linux/mfd/rk808.h            |   3 +
- 2 files changed, 268 insertions(+), 85 deletions(-)
-
+diff --git a/drivers/power/supply/rk817_charger.c b/drivers/power/supply/rk817_charger.c
+index 5558b182a1a6..674622398efa 100644
+--- a/drivers/power/supply/rk817_charger.c
++++ b/drivers/power/supply/rk817_charger.c
+@@ -83,7 +83,7 @@ struct rk817_charger {
+ 
+ 	/*
+ 	 * Calibrate the SOC on a fully charged battery, this way we can use
+-	 * the calibrated SOC value to correct for columb counter drift.
++	 * the calibrated SOC value to correct for coulomb counter drift.
+ 	 */
+ 	bool soc_cal;
+ 
+@@ -270,9 +270,9 @@ static int rk817_bat_calib_cap(struct rk817_charger *charger)
+ 
+ 	if (charger->charge_status == CHARGE_FINISH && (!charger->soc_cal)) {
+ 		/*
+-		 * soc should be 100000 and columb counter should show the full
++		 * soc should be 100000 and coulomb counter should show the full
+ 		 * charge capacity. Note that if the device is unplugged for a
+-		 * period of several days the columb counter will have a large
++		 * period of several days the coulomb counter will have a large
+ 		 * margin of error, so setting it back to the full charge on
+ 		 * a completed charge cycle should correct this (my device was
+ 		 * showing 33% battery after 3 days unplugged when it should
+@@ -294,7 +294,7 @@ static int rk817_bat_calib_cap(struct rk817_charger *charger)
+ 	}
+ 
+ 	/*
+-	 * The columb counter can drift up slightly, so we should correct for
++	 * The coulomb counter can drift up slightly, so we should correct for
+ 	 * it. But don't correct it until we're at 100% soc.
+ 	 */
+ 	if (charger->charge_status == CHARGE_FINISH && charger->soc_cal) {
+@@ -307,16 +307,16 @@ static int rk817_bat_calib_cap(struct rk817_charger *charger)
+ 					       charger->res_div);
+ 
+ 		/*
+-		 * Re-init columb counter with updated values to correct drift.
++		 * Re-init coulomb counter with updated values to correct drift.
+ 		 */
+ 		if (charge_now / 1000 > charger->fcc_mah) {
+ 			dev_dbg(charger->dev,
+-				"Recalibrating columb counter to %d uah\n",
++				"Recalibrating coulomb counter to %d uah\n",
+ 				charge_now);
+ 			/*
+ 			 * Order of operations matters here to ensure we keep
+ 			 * enough precision until the last step to keep from
+-			 * making needless updates to columb counter.
++			 * making needless updates to coulomb counter.
+ 			 */
+ 			charge_now_adc = CHARGE_TO_ADC(charger->fcc_mah,
+ 					 charger->res_div);
+@@ -757,7 +757,7 @@ rk817_read_or_set_full_charge_on_boot(struct rk817_charger *charger,
+ 	bool first_boot;
+ 
+ 	/*
+-	 * Check if the battery is uninitalized. If it is, the columb counter
++	 * Check if the battery is uninitalized. If it is, the coulomb counter
+ 	 * needs to be set up.
+ 	 */
+ 	ret = regmap_read(rk808->regmap, RK817_GAS_GAUGE_GG_STS, &reg);
+@@ -811,7 +811,7 @@ rk817_read_or_set_full_charge_on_boot(struct rk817_charger *charger,
+ 		boot_charge_mah = ADC_TO_CHARGE_UAH(tmp,
+ 						    charger->res_div) / 1000;
+ 		/*
+-		 * Check if the columb counter has been off for more than 30
++		 * Check if the coulomb counter has been off for more than 30
+ 		 * minutes as it tends to drift downward. If so, re-init soc
+ 		 * with the boot voltage instead. Note the unit values for the
+ 		 * OFF_CNT register appear to be in decaminutes and stops
+@@ -840,7 +840,7 @@ rk817_read_or_set_full_charge_on_boot(struct rk817_charger *charger,
+ 	}
+ 
+ 	/*
+-	 * Now we have our full charge capacity and soc, init the columb
++	 * Now we have our full charge capacity and soc, init the coulomb
+ 	 * counter.
+ 	 */
+ 	boot_charge_mah = charger->soc * charger->fcc_mah / 100 / 1000;
 -- 
 2.53.0
 
