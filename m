@@ -2,69 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 58077606A32E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 06:54:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F2EBA606A337
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 07:19:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=J7vaI4Oj;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=ZXmX7RJK
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Fw51+5nX;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jkz/8PfU
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=eEKdCadcSKGYJ8g1WU3X+ECrsWoeMQgi3zrWSWRR50M=; b=J7vaI4OjkxqAYKNWsOChfqoEwV
-	G+GbW0ROAQbehhXcfS1xzPIOj9jIm/MO9UVxG+uxMseIxtRvt8W1J89MdJMla53VpI16oKYozTKbW
-	n9ficDsEaQT76OhXQ4IheSMhcgqjF5nzAOXkV/wXcNJOWvBbk42vHx1OAISTdtX5NS709DP/3B1qE
-	2ZtDqOC36t/Tx/LVoFMuNFbqGyANcZE1Jjp/mqlrdWAVRKGwH0TjFk09RL4656igvQ6pw+JI9xvAU
-	y6mpO9rFFeoPV4mfGHc2unFsZCVtK+RlEDFYlgiJG+4zPUxV3vWhCDZmAeou8sELsEwM3xQnLP3OS
-	Fh5+q02A==;
+	bh=BEufBBWpdJcmNk1eG9Ck2XsL54ht9WVzpOyNnZ37hz4=; b=Fw51+5nXYjrkHGzCJ/lQUour36
+	zrEXbgwuxfMeOulebbjIKyjckLv7LUIij7yRu70w7WnZe30xuJQlxyIBBHHGOPGEcOd5eDPrFQDJQ
+	B+aHGiTkiKnRe/hlRmADq7iNGIgEWC4p4HMzFX/6BeQ97QYkFY3Y5IkGmn8VOE66DSX/19hntPZlQ
+	UjFOThOJiswfTxMnJ/eIqp2F6xO4rkeb6zaWeQkwYjsr+EuvgBpjHLoDidahRufNb+OUzCqueO9kq
+	bbCvMweV2MdNOgtTWOLRhoyxd7RPOYKdAV6dBWcJGvD4OGrqq7jDC+QN7PCgXhE1NSeV5TW9z5w6E
+	C9a4BnQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR2Db-00000005pSE-3dwh;
-	Wed, 11 Nov 2026 06:54:03 +0000
-Received: from mail-m6050.netease.com ([210.79.60.50])
+	id 1xR2ca-00000005rtF-3zfJ;
+	Wed, 11 Nov 2026 07:19:52 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR2DY-00000005pQl-2xDj;
-	Wed, 11 Nov 2026 06:54:02 +0000
-Received: from [172.16.12.48] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 544548e9e;
-	Wed, 11 Nov 2026 14:53:54 +0800 (GMT+08:00)
-Message-ID: <21a44f7b-e33c-4feb-a6ba-6d08bc796606@rock-chips.com>
-Date: Wed, 11 Nov 2026 14:53:52 +0800
+	id 1xR2cZ-00000005rrv-1A9K;
+	Wed, 11 Nov 2026 07:19:51 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id B86F541873;
+	Wed, 11 Nov 2026 07:19:50 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794381590;
+	b=MskO5wm2d+unnpuCo1t2NtJ3i6dnhp7qyrrX0pvTy/9H4EBJRbWPsqPAYaVCAkJxwks2
+	 VlUtiBJla+T8TZsRtb+fqB/5yrFyb2Beps9sWr642L4WIwg4bAgHnG7sikkv73ZebkKvU
+	 tiWa/HiuqQ5I6CkdTvOftgOs/VmAEn5yUKronmOLPAwmQ5pTbYeI7OO99LyySHqquRGRN
+	 3z4KfiXDEZodGxspTzY07YQBRN6bE2c/cQOCaZHPVyZOOiikbWWHGuB607Vb3mqfOjMs3
+	 r2qXtSQgClr/Yg0dED0S8oI1VM/uS6WT3Z6z4uxknO7Nm9UP8Yx+hXyUNPJlvxr/Bkw==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794381590;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=ovE7yiffLIIhAIa4LY1tvnEiiCJ92mbc38eNtWd4DjM=;
+	b=RsTc1DDPF84lFFC9hTnTllPdJPUhnryAXeh95QpvgKX5uyj4LuaXehRY/rnS0266kfJe
+	 APAQ9XfRv4PIOqifAycdJSd3ZGugPIMZOBkXNiUMbvbQ5I134zBpqw1bwdyCDk1LAm25U
+	 SesSi2jx21WX/xgaGX/IJxhxDktu8VgQ7L9uChsJQf1xSdrl2CGmnmWJO5vkv0xB6PDNZ
+	 jKHiwCeuqffPSYFz7gDUEjP3AY5X/x7hFRVHfk2HQdmN8FfuvuT2GCs17D9Z5P1/56Gc+
+	 GWObiUauevUxiRBh5UWeMpVOIbDA8tG28r0nHG2WpyC+BwhAEDQripG0S+dXMW0oaqw==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 1A3B11F00A09;
+	Wed, 11 Nov 2026 07:19:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794381590;
+	bh=ovE7yiffLIIhAIa4LY1tvnEiiCJ92mbc38eNtWd4DjM=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=jkz/8PfUgw1Xc8bVk8d26XbU64nM3X8cBelmRJC3sS23kr2ngurKcrMao+tjSDgGb
+	 Ertv7NKLdKy9B3Ss3AoIdaYburJt72f6f9yW1do1O8ctfOo+ngmOXfKfvCmDYksx9C
+	 RZZoAK1WsZoBHsxsQ+JDAvF6u41DUPxxgmauMQDhPiO5Ua0IM5tVzMqhHorWLHK7cK
+	 zNXcsj5XjaSuLao1dat5PNvAZ/+Hr40kHXCdlrLc7K9u2/zT2iL6cZHY2zVcCbySrQ
+	 y1jcHz0opTOVYncIxu/jGrGj6+bcvO1QnkUQ5pKFWMx3YLMVIFCj9Z992P2Kb89Ucy
+	 k8NRhelU5fbgA==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id A0B6F48E45;
+	Wed, 11 Nov 2026 07:19:49 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Subject: [PATCH v2 0/3] arm64: dts: rockchip: Orange Pi 5/5B ethernet, SPI
+ NOR supply and USB-C DP
+Date: Wed, 11 Nov 2026 07:19:48 +0000
+Message-Id: <20261111-opi5-dts-v2-0-821f666418a6@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux.dev, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- "finley.xiao" <finley.xiao@rock-chips.com>
-Subject: Re: [PATCH 4/5] arm64: dts: rockchip: add the PCIe power domain to
- the RK3588 PCIe SMMU
-To: aiyengar1990@gmail.com, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, "Joerg Roedel (AMD)" <joro@8bytes.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Niklas Cassel <cassel@kernel.org>
-References: <20261110-smmu-v3-pcie-pd-v1-0-628819ca44b9@gmail.com>
- <20261110-smmu-v3-pcie-pd-v1-4-628819ca44b9@gmail.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20261110-smmu-v3-pcie-pd-v1-4-628819ca44b9@gmail.com>
-X-HM-Tid: 0aa1c962725603a4kunmb3379dd7965f5
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCT0pJVh0aGUJMSE5CQk5OHlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=ZXmX7RJKYwKpIGWxpcLGSdUNUfljyXvYiUtUbnsd6Phb8U97ZPSlESLvBbJzV8hWLtqOLLINOhn9P6waG42+wYWblD1kQZXqhbC50WlpggnfPocO8Xuj/NTbo3b2d0qqYsy7f9rFLq9MUTPEl7lBAdF+V7UrJIHQskw2aZytPko=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=GkcCvQ0Cm1Qyej4YW35+cOV6C99poT4s5onAksaynHE=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_225401_371683_A5171BA5 
-X-CRM114-Status: GOOD (  17.29  )
-X-Spam-Score: -2.1 (--)
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/22NwQ6CMBAFf4Xs2Zq2lIKc/A/DgZYV1gglbSUaw
+ r9L8epxknnzVgjoCQPU2QoeFwrkph3kKQM7tFOPjLqdQXKphRCcuZkK1sXAlKlydRFWl1zDrs8
+ e7/Q+Urfmx+FlHmhj2idjoBCd/xxfi0jen+wiGGdFJY3OO14qg9d+bOl5tm6EZtu2L2ThTmOyA
+ AAA
+X-Change-ID: 20261110-opi5-dts-4b83491c6706
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Arun Iyengar <aiyengar1990@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794381589; l=2877;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=415eeljqGNLq4ZK/3uBjgk+J8UfR3jvxbnBfmkS6B8c=;
+ b=X9l+smzA8X4BIIIaehsCojbXz6seaLG1tWy8KFhT27mk89+u17gqsRsneWwk08F7iAOv0OXJA
+ xSXciD+gSVCCB+X5NTwnXJ8RyC41Cla3+TmrNOqHj7orVD3Y/0Z5+yF
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,50 +109,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Reply-To: aiyengar1990@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgQXJ1bgoK5ZyoIDIwMjYvMTEvMTAg5pif5pyf5LqMIDE1OjExLCBBcnVuIEl5ZW5nYXIgdmlh
-IEI0IFJlbGF5IOWGmemBkzoKPiBGcm9tOiBBcnVuIEl5ZW5nYXIgPGFpeWVuZ2FyMTk5MEBnbWFp
-bC5jb20+Cj4gCj4gVGhlIE1NVS02MDAgZm9yIHRoZSBQQ0llIGNvbnRyb2xsZXJzIChtbXU2MDBf
-cGNpZSkgaXMgZW5hYmxlZCBmb3IgZXZlcnkKPiBSSzM1ODggYm9hcmQsIGJ1dCBpdHMgbm9kZSBk
-b2VzIG5vdCBkZXNjcmliZSB0aGF0IGl0IGxpdmVzIGluCj4gUkszNTg4X1BEX1BDSUUuIEl0IG9u
-bHkgd29ya3MgdG9kYXkgYmVjYXVzZSBURi1BIGxlYXZlcyB0aGUgZG9tYWluIG9uIGF0Cj4gYm9v
-dCBhbmQsIG9uIG1vc3QgYm9hcmRzLCBhbiBlbmFibGVkIFBDSWUgY29udHJvbGxlciBob2xkcyBp
-dCBvbiBsYXRlci4KPiAKPiBPbiBhIGJvYXJkIHRoYXQgZGlzYWJsZXMgYWxsIFBDSWUgY29udHJv
-bGxlcnMgdXNpbmcgdGhhdCBkb21haW4gKHRoZQo+IE9yYW5nZSBQaSA1IHdpdGggaXRzIE0uMiBz
-bG90IGluIFNBVEEgbW9kZSBpcyBvbmUpLCBnZW5wZCBwb3dlcnMKPiBQRF9QQ0lFIG9mZiBhcyB1
-bnVzZWQgYWZ0ZXIgYm9vdCB3aGlsZSBhcm0tc21tdS12MyBpcyBzdGlsbCBib3VuZC4gVGhlbgo+
-IGF0IHJlYm9vdCBhcm1fc21tdV9kZXZpY2Vfc2h1dGRvd24oKSB3cml0ZXMgQ1IwIGFuZCBwb2xs
-cyBDUjBBQ0sgb24gdGhlCj4gdW5wb3dlcmVkIGJsb2NrLCB3aGljaCBzdGFsbHMgdGhlIGJ1czog
-dGhlIGtlcm5lbCBuZXZlciByZWFjaGVzCj4gInJlYm9vdDogUmVzdGFydGluZyBzeXN0ZW0iIGFu
-ZCB0aGUgYm9hcmQgb25seSBjb21lcyBiYWNrIG9uY2UgdGhlCj4gd2F0Y2hkb2cgZmlyZXMuCj4g
-Cj4gRGVzY3JpYmUgdGhlIHBvd2VyIGRvbWFpbiwgc28gZ2VucGQga2VlcHMgaXQgb24gZm9yIGFz
-IGxvbmcgYXMgdGhlIFNNTVUKPiBpcyBib3VuZC4KPiAKPiBGaXhlczogZGE5MmQzZGZjODcxICgi
-YXJtNjQ6IGR0czogcm9ja2NoaXA6IGVuYWJsZSB0aGUgbW11NjAwX3BjaWUgSU9NTVUgb24gdGhl
-IHJrMzU4OCBTb0MiKQo+IFNpZ25lZC1vZmYtYnk6IEFydW4gSXllbmdhciA8YWl5ZW5nYXIxOTkw
-QGdtYWlsLmNvbT4KPiAtLS0KPiAgIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4
-LWJhc2UuZHRzaSB8IDEgKwo+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspCj4gCj4g
-ZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWJhc2UuZHRz
-aSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWJhc2UuZHRzaQo+IGluZGV4
-IGFhNjlmZDM3OTNmZC4uYmNkMzQyYzAyNWM5IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszNTg4LWJhc2UuZHRzaQo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9k
-dHMvcm9ja2NoaXAvcmszNTg4LWJhc2UuZHRzaQo+IEBAIC01NjAsNiArNTYwLDcgQEAgbW11NjAw
-X3BjaWU6IGlvbW11QGZjOTAwMDAwIHsKPiAgIAkJCSAgICAgPEdJQ19TUEkgMzY3IElSUV9UWVBF
-X0VER0VfUklTSU5HIDA+Owo+ICAgCQlpbnRlcnJ1cHQtbmFtZXMgPSAiZXZlbnRxIiwgImdlcnJv
-ciIsICJwcmlxIiwgImNtZHEtc3luYyI7Cj4gICAJCSNpb21tdS1jZWxscyA9IDwxPjsKPiArCQlw
-b3dlci1kb21haW5zID0gPCZwb3dlciBSSzM1ODhfUERfUENJRT47CgpBcyBSSzM1ODggVFJNIFRh
-YmxlIDcuMSBkZXNyaWJlcywgYm90aCBvZiBtbXU2MDBfcGNpZSBhbmQKbW11NjAwX3BocCBsaXZl
-IHVuZGVyIFBEX1BIUC4KCj4gICAJfTsKPiAgIAo+ICAgCW1tdTYwMF9waHA6IGlvbW11QGZjYjAw
-MDAwIHsKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+Three device tree changes for the Orange Pi 5 and 5B:
+
+1. The YT8531C PHY on gmac1 is described as "rgmii-rxid" with a MAC TX
+   delay copied from the vendor kernel; the PCB adds no delay, so the
+   correct description is "rgmii-id" (as the Orange Pi CM5 already
+   uses), with both delays in the PHY.
+2. The SPI NOR flash gets its real 1.8 V supply instead of a dummy
+   regulator.
+3. The USB-C port gets DP Alt Mode: the FUSB302 connector advertises
+   the DisplayPort alternate mode and the graph links the connector,
+   the USBDP PHY and the DP0 controller. It uses only bindings already
+   in mainline.
+
+Tested on an Orange Pi 5 (RK3588S, PCB v1.2): with "rgmii-id" the link
+comes up at 1000/Full and receives at 940 Mbit/s with no errors (with
+"net: stmmac: dwmac-rk: only read the delays the MAC applies", sent
+separately, the "Can not read property" warnings are gone too); the
+regulator summary lists the flash supply under vcc_1v8_s3 and the dummy
+regulator message is gone. With patch 3, a USB-C dock (DP-to-HDMI
+converter, USB3 hub) enters DP Alt Mode in pin assignment D (2 lanes
+HBR2) and its monitor runs at 3840x2160@30 next to HDMI at 4K60, pin
+assignment D -> C -> D switches work, 100 of 100 attach cycles
+configured DP Alt Mode, and the dock's USB3 devices keep working. The
+driver stack used for that test carried the pending "USBDP PHY cleanup
+part 3" and dw-dp HPD/Alt Mode patches; the description itself does
+not depend on them. CHECK_DTBS is clean for both boards. The Orange
+Pi 5B was not tested (no board at hand); it shares the changed .dtsi.
+
+This series was developed with Claude (Anthropic) as a coding assistant:
+it wrote the code and the commit messages, and I reviewed and tested
+every change as described above.
+
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+---
+Changes in v2:
+- Patch 2: put vcc-supply on the existing flash@0 node in
+  rk3588s-orangepi-5.dtsi instead of splitting the node across the .dtsi
+  and the Orange Pi 5 .dts (found by the Sashiko AI review). The Orange
+  Pi 5 DTB is unchanged from v1; on the 5B and 5 Pro the controller stays
+  disabled.
+- Patches 1 and 3 are unchanged.
+- Link to v1: https://patch.msgid.link/20261110-opi5-dts-v1-0-582b63d074be@gmail.com
+
+---
+Arun Iyengar (3):
+      arm64: dts: rockchip: use rgmii-id for the Orange Pi 5/5B ethernet PHY
+      arm64: dts: rockchip: add the SPI NOR flash supply on Orange Pi 5
+      arm64: dts: rockchip: Add USB-C DP AltMode for Orange Pi 5/5B
+
+ .../boot/dts/rockchip/rk3588s-orangepi-5-5b.dtsi   | 92 +++++++++++++++++++---
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi      |  1 +
+ 2 files changed, 80 insertions(+), 13 deletions(-)
+---
+base-commit: c3baae5f1a15645cddadcb2b9abddef5df291f59
+change-id: 20261110-opi5-dts-4b83491c6706
+
+Best regards,
+--  
+Arun Iyengar <aiyengar1990@gmail.com>
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
