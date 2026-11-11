@@ -2,76 +2,74 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE5EB606A326
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 21:01:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 30869606A880
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 21:51:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=y1/1rJJk;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=timsurber.de header.i=@timsurber.de header.a=rsa-sha256 header.s=MBO0001 header.b=Tn968xXV
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tn2CsIca;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=timsurber.de header.i=@timsurber.de header.a=rsa-sha256 header.s=MBO0001 header.b=Hdw94Y5y
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=WqMXKLjT8e+DALnMPFO75GjjCQUGs1Q0Iwq7jd1vcnA=; b=y1/1rJJkcUvcbTzVgDtDon0Njz
-	1h8sTsz5sA6+cC1IpnDcUbkV6p7VGJ4VHjp+m8FOVcmUR6ujdiCt0ZT4pFhoyP6J1z9PZlULH+L/W
-	lLH8CFZKaUljHfot0dptZKqKCdCT1uwMm9szGrmVKQlZ3ROGQerkpYENWIogPrsjKHnHISBrOZnOM
-	KZZJdfUYq6XExwvVAZC9dylespGyXvyEkNCEqli4LaLqpw1KPGvdAK3BrD171a+pPx8zjMlffScPC
-	60TukeQY8lIwjpyUKgDPovSWzTRFF4IPnvZHzmnQszbQr2vy38WOQRjjqSTJqOSwy7Zl+379giMRn
-	qIJdM0FQ==;
+	bh=ecyv5ZLg4uUCt4lRTfKIiXx2Ifp+UIb8Xb7+uuEe3os=; b=tn2CsIcaceKB4NBb9XKUWst7pU
+	GAsWXaMYGxyt7TasHTMVdnAfiqW1m+Ry7HvDnie5uxEXvbZthA/0RCpTS8M2tPcc9x/rYtps7pwEu
+	MYcQJ8U7XZJXqqJgRmcpPGoY/UYnSovp6bQfCjZus1eQCOMdFrXMuz4RVfNmFExTk1A0ZV0RhcyI/
+	QVFy5PY37ryzhXrEOGJ+rH0JfoIf2f8S7kYsMpXFR8hpsKIPLVUEqm6/+PUv3zYM9PjEIS+KWr6+3
+	B3+RRxDSw3bEsgWDuoTHRtg7ZBHRYOkn8kfEvmEf9vDXFvcft0JoID3q43GywSTXh6XloAWz1muQB
+	Jnee9aWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRFRx-00000007ho1-3aKV;
-	Wed, 11 Nov 2026 21:01:45 +0000
-Received: from mout-p-202.mailbox.org ([2001:67c:2050:0:465::202])
+	id 1xRGES-00000007qjI-28WK;
+	Wed, 11 Nov 2026 21:51:52 +0000
+Received: from mout-p-101.mailbox.org ([80.241.56.151])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRFRs-00000007hlE-1UQN;
-	Wed, 11 Nov 2026 21:01:41 +0000
-Received: from smtp2.mailbox.org (smtp2.mailbox.org [IPv6:2001:67c:2050:b231:465::2])
+	id 1xRGEP-00000007qij-3I1M;
+	Wed, 11 Nov 2026 21:51:51 +0000
+Received: from smtp1.mailbox.org (smtp1.mailbox.org [IPv6:2001:67c:2050:b231:465::1])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519MLKEM768 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mout-p-202.mailbox.org (Postfix) with ESMTPS id 4jPwtS4K9FzMltJ;
-	Wed, 11 Nov 2026 22:01:36 +0100 (CET)
+	by mout-p-101.mailbox.org (Postfix) with ESMTPS id 4jPy0L0Bj7z8t5W;
+	Wed, 11 Nov 2026 22:51:46 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=timsurber.de;
-	s=MBO0001; t=1794430896;
+	s=MBO0001; t=1794433906;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=phA4+CyUoxbHyvL+wVGw21rFfYJHlyNvvy1aIyXcZcQ=;
-	b=Tn968xXVlYzLor7lhnO8lOrnrfj6E34WPUDS7qe52XfNv0TO7dyqCsbOhysif9yRlZ8yyp
-	XmvTQiDN1ezNsZSJ1kEvkl5WoU5SefjwlG7Hc28xQm6QoI5g8VaXWPON1s0FdTMPO9YXwv
-	rPl+prqWhfXG2gSrr60kWnSqTJ5hLdPaGBblqhvx9A5g1YHpN6GjnUrZh+cVn6LOKVM2uU
-	rzXZ0YZU8UJP+bczfpjgCweDU0mRYCbBHZ7o/Zat+h1r4Zviw8J8HsySn4P/FPLZdeuxnt
-	gnuh7O0XkM19zaKRT8zRIQbEb3KAZVVeCyeDRKz0VCWTG5dqZJAsxJ8vLTyXHg==
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=bOMs9r9bb2Qs+k0KgYJ5LWcL/rkBzdXpmurPB/Dt3Es=;
+	b=Hdw94Y5yNetO4DQZ/7z4vwENCPk9dMos7MbW48KuekuOSDo0+uV7iCfsv60I8QLPo2oQMh
+	B5+I3sP1w0dIBSR3RfoJibZ/drsw4hIjVNRfs9jdausKyJy+iMTjr2nFyzgm768v/cI5tI
+	sEFs1E+4+WO1MlegszHg40LfPM1WVTH3LEmXAms9NabakUFcTC57VcMvENojtixnFYUbyJ
+	8jetOZl6RFd/xx69lFAzYjftO2/Ui+skOwMv+/z/DPbIYKQDucNR7//hiwwVI0M+lC7xWs
+	sDrJZKunOWrIEqYNMsS8X6AMfZw1Stlg5lMYlsf23bZj+2VuUCrb8g4iqiXNEA==
 Authentication-Results: outgoing_mbo_mout;
 	dkim=none;
-	spf=pass (outgoing_mbo_mout: domain of me@timsurber.de designates 2001:67c:2050:b231:465::2 as permitted sender) smtp.mailfrom=me@timsurber.de
+	spf=pass (outgoing_mbo_mout: domain of me@timsurber.de designates 2001:67c:2050:b231:465::1 as permitted sender) smtp.mailfrom=me@timsurber.de
 From: Tim Surber <me@timsurber.de>
-To: Heiko Stuebner <heiko@sntech.de>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>
 Cc: Tim Surber <me@timsurber.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	=?UTF-8?q?Valentin=20H=C4=83loiu?= <valentin.haloiu@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-sound@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/1] arm64: dts: rockchip: fix HDMI RX 5V detection pin on CM3588 NAS
-Date: Wed, 11 Nov 2026 22:00:27 +0100
-Message-ID: <20261111210059.3489502-2-me@timsurber.de>
+Subject: [PATCH] ASoC: rockchip: i2s-tdm: Don't reset a pending clear in consumer mode
+Date: Wed, 11 Nov 2026 22:51:20 +0100
+Message-ID: <20261111215125.3560398-1-me@timsurber.de>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20261111210059.3489502-1-me@timsurber.de>
-References: <20261111210059.3489502-1-me@timsurber.de>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Rspamd-Queue-Id: 4jPwtS4K9FzMltJ
+X-Rspamd-Queue-Id: 4jPy0L0Bj7z8t5W
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_130140_542826_C7BCB593 
-X-CRM114-Status: GOOD (  19.12  )
+X-CRM114-CacheID: sfid-20261111_135149_971283_A8F6E68F 
+X-CRM114-Status: GOOD (  23.82  )
 X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,69 +90,143 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The HDMI receiver node uses GPIO3_D4 both as the receiver's HPD output
-(hdmim1_rx_hpdin) and as its 5V detection input (hpd-gpios and the
-hdmirx_hpd pin group). Both pin groups are in the same pinctrl state and
-the later one wins, so the pin ends up as a GPIO input with pull-up.
-The controller can then never drive HPD: the source sees HPD asserted
-all the time, and the 5V detection reads back the HPD line instead of
-the source's 5V.
+When a stream stops, rockchip_snd_xfer_clear() sets the TXC/RXC bits in
+I2S_CLR and waits for the controller to clear them. The clear only
+completes while the bit clock runs. In consumer mode the provider may
+already have stopped the clock, e.g. the RK3588 HDMI receiver while its
+source sends no audio. The wait then times out, the driver logs "clear
+failed, reset rx" and pulses the M reset of the direction.
 
-The driver relies on HPD being low while it writes the EDID, at probe
-and on VIDIOC_S_EDID. With HPD stuck high, a source may read the EDID
-while it is being written. A source that does so at boot keeps the
-damaged copy, as it never sees the HPD pulse that should make it read
-the EDID again. On a CM3588 NAS with HDMI0 looped back into HDMI RX
-this happened on 3 of 10 boots: HDMI0 logged "EDID has corrupt header",
-found no valid EDID and fell back to 1024x768. Changing the EDID with
-VIDIOC_S_EDID was not noticed by the source at all.
+The M reset does not cancel the clear; I2S_CLR keeps reading 0x2. The
+clear still completes once the provider restarts the clock, but on
+some occasions the reset leaves the controller in a state where it
+never does. Every later stream then reads no data, its own stop fails
+the same way, and only a reboot recovers.
 
-FriendlyElec's vendor device tree for the CM3588 uses GPIO1_D5, active
-low with pull-up, for the 5V detection. The NanoPC-T6 uses the same pin
-upstream. Use that pin and leave GPIO3_D4 to the HPD function.
+Don't reset in consumer mode and leave the clear pending instead, and
+add a prepare callback that waits for a pending clear before the stream
+is started. On the board below the clear completes about 11 ms after
+the HDMI receiver has re-enabled its audio output in its hw_params. If
+the clock does not come back within 100 ms, fail the prepare with
+-ETIMEDOUT rather than start the transfer with the clear pending.
 
-With this change the pin multiplexing shows GPIO3_D4 in the HPD
-function, the source's HPD interrupt fires on every EDID update, and a
-changed EDID reaches the source within 0.5 s. In 10 boots (5 power
-cycles, 5 reboots) the EDID read by HDMI0 always matched the one
-written by the receiver, and HDMI0 came up at its native mode every
-time. The receiver still detects the source's 5V and locks to its
-signal.
+Provider mode is unchanged: the clock is generated from mclk, so a
+pending clear completes right away.
 
-Using the pin in two groups also made pinctrl warn on every unbind of
-the receiver ("not freeing pin 124 (gpio3-28) as part of deactivating
-group hdmim1-rx-hpdin - it is already used for some other setting"),
-and in earlier testing the following bind sometimes failed with
--EINVAL. With this change the warning is gone.
+To reproduce, on a FriendlyElec CM3588 NAS (RK3588) with HDMI0 cabled
+into its HDMI receiver and the HDMI sound cards enabled in the device
+tree: capture from the receiver a few times while nothing plays, then
+capture while a tone plays on HDMI0:
 
-Fixes: f9f45293f0d8 ("arm64: dts: rockchip: Enable HDMI receiver on CM3588")
+  for i in 1 2 3; do
+    arecord -q -D hw:HDMIIN -f S16_LE -r 48000 -c 2 -d 1 /dev/null
+  done
+  speaker-test -D hw:HDMI0 -c 2 -r 48000 -t sine >/dev/null &
+  sleep 1
+  arecord -q -D hw:HDMIIN -f S16_LE -r 48000 -c 2 -d 1 /dev/null
+  echo "rc=$?"; kill $!
+
+On linux-rockchip for-next the last capture fails:
+
+  arecord: pcm_read:2285: read error: Input/output error
+  rc=1
+  rockchip-i2s-tdm fddf8000.i2s: clear failed, reset rx
+
+Once this has happened a few times, every capture fails until reboot.
+
+The test ran 9 such sequences in a row after a fresh boot: 1, 3, 6
+and 10 captures without source audio at 48 kHz, 3 at 32 and 44.1 kHz,
+and two runs that also stop the source during a capture. Each sequence
+was followed by two captures with source audio, and the runs that stop
+the source by two more after that:
+
+                          captures with source audio that returned
+                          the tone
+  for-next                1 of 22, stuck from the 2nd sequence on
+  for-next + this patch   22 of 22
+
+With this patch, captures without source audio still return no data,
+but they now fail in prepare with -ETIMEDOUT and leave the controller
+usable.
+
+Fixes: 081068fd6414 ("ASoC: rockchip: add support for i2s-tdm controller")
 Signed-off-by: Tim Surber <me@timsurber.de>
 ---
- .../boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts      | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ sound/soc/rockchip/rockchip_i2s_tdm.c | 47 +++++++++++++++++++++++++++
+ 1 file changed, 47 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts b/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
-index f4c34da61..b2df36113 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-friendlyelec-cm3588-nas.dts
-@@ -376,7 +376,7 @@ &hdmi_receiver_cma {
- };
+diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
+index 983319a53..1b893dbb7 100644
+--- a/sound/soc/rockchip/rockchip_i2s_tdm.c
++++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
+@@ -243,6 +243,21 @@ static void rockchip_snd_xfer_clear(struct rk_i2s_tdm_dev *i2s_tdm,
+ 		regmap_read(i2s_tdm->regmap, I2S_CLR, &val);
+ 		retry--;
+ 		if (!retry) {
++			/*
++			 * In consumer mode the clear only completes while the
++			 * provider runs the bit clock, which it may have
++			 * stopped, e.g. an HDMI receiver whose source sends
++			 * no audio. Resetting the controller while the clear
++			 * is pending can leave it unable to transfer data
++			 * until the next reboot, so leave the clear pending.
++			 * rockchip_i2s_tdm_prepare() waits for it to complete
++			 * before the next start.
++			 */
++			if (!i2s_tdm->is_master_mode) {
++				dev_dbg(i2s_tdm->dev,
++					"clear pending, no bit clock\n");
++				break;
++			}
+ 			dev_warn(i2s_tdm->dev, "clear failed, reset %s%s\n",
+ 				 tx ? "tx" : "", rx ? "rx" : "");
+ 			if (rx && tx)
+@@ -781,6 +796,37 @@ static int rockchip_i2s_tdm_trigger(struct snd_pcm_substream *substream,
+ 	return 0;
+ }
  
- &hdmi_receiver {
--	hpd-gpios = <&gpio3 RK_PD4 GPIO_ACTIVE_HIGH>;
-+	hpd-gpios = <&gpio1 RK_PD5 GPIO_ACTIVE_LOW>;
- 	pinctrl-0 = <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl &hdmim1_rx_sda &hdmirx_hpd>;
- 	pinctrl-names = "default";
- 	status = "okay";
-@@ -571,7 +571,7 @@ hdmi1_tx_on_h: hdmi1-tx-on-h {
- 
- 	hdmirx {
- 		hdmirx_hpd: hdmirx-5v-detection {
--			rockchip,pins = <3 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
-+			rockchip,pins = <1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
++static int rockchip_i2s_tdm_prepare(struct snd_pcm_substream *substream,
++				    struct snd_soc_dai *dai)
++{
++	struct rk_i2s_tdm_dev *i2s_tdm = to_info(dai);
++	unsigned int clr, val;
++	int ret;
++
++	if (i2s_tdm->clk_trcm)
++		clr = I2S_CLR_TXC | I2S_CLR_RXC;
++	else if (substream->stream == SNDRV_PCM_STREAM_CAPTURE)
++		clr = I2S_CLR_RXC;
++	else
++		clr = I2S_CLR_TXC;
++
++	/*
++	 * A clear left pending by rockchip_snd_xfer_clear() completes once
++	 * the provider runs the bit clock again, usually within a few ms
++	 * of its own hw_params. Wait for it rather than starting the
++	 * transfer while it is pending, and fail if the clock does not
++	 * come back.
++	 */
++	ret = regmap_read_poll_timeout(i2s_tdm->regmap, I2S_CLR, val,
++				       !(val & clr), 1000, 100000);
++	if (ret)
++		dev_err_ratelimited(i2s_tdm->dev,
++				    "clear still pending (%#x), no bit clock?\n",
++				    val);
++
++	return ret;
++}
++
+ static int rockchip_i2s_tdm_dai_probe(struct snd_soc_dai *dai)
+ {
+ 	struct rk_i2s_tdm_dev *i2s_tdm = snd_soc_dai_get_drvdata(dai);
+@@ -840,6 +886,7 @@ static const u64 rockchip_dai_selectable_formats =
+ static const struct snd_soc_dai_ops rockchip_i2s_tdm_dai_ops = {
+ 	.probe				= rockchip_i2s_tdm_dai_probe,
+ 	.hw_params			= rockchip_i2s_tdm_hw_params,
++	.prepare			= rockchip_i2s_tdm_prepare,
+ 	.set_bclk_ratio			= rockchip_i2s_tdm_set_bclk_ratio,
+ 	.set_fmt			= rockchip_i2s_tdm_set_fmt,
+ 	.set_sysclk			= rockchip_i2s_tdm_set_sysclk,
 -- 
 2.55.0
 
