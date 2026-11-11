@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B714606A33D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 09:41:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8345460A3820
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 09:47:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jIKmQ60E;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=PZO5l/Ej
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=clO6L6/Z;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=JXBRqsR8
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,63 +14,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=JhjkqimDCfiTCBAqW5bjAKkByGL9FDG4zbCoZbDE9dw=; b=jIKmQ60EITyIYaErvsMzzJh8hw
-	c+hbOlPsY3G1e781pOUhtVbS6QiaBukKvmkOLmjhuOtKXcoaL3f0wPPyRMsv29bLct98+B6ZzIN8r
-	pc3RPWWVsqIUWbtufh9epShhUkx2JnBoAe95pQBgRcFEYs+AimUr0TeJiER5Y6eXdXjM5uSShORMX
-	wvGznyLuV88WPMil6Bnl1FqUwpGwiYmx2NCGxfyP/j2Xmlnr47SSPG6jq+u8Vp9iDCvWmsgG+RfnL
-	0MJzSOnShcdBPEEAJGQf6zBqoQhy4QGjvtY4rhN/+ce59sZqFTMKIFB++W9LFfV5tPzJMuTw6MuzC
-	bwH5mvNg==;
+	bh=ZsWnY51l3t35mcKhZxGrF8sJ+yyM0PxGKqXYMWiv0ew=; b=clO6L6/ZcMKJ8yIJL5TuKZQRFH
+	V6ZvW+ehUUJMYQu1U9BubZRNRC0ok6aiUVwxh+d8NeqfokPc5xkQB0GH/uC9mz06i61B7icAcH5iU
+	DfKhJ7uIVo6qHYu1th0KASA2U8oUNLJDx2THsECWnFOvD6IRsINLXQnivrXU+hbU6rvr4MIlNVouM
+	E0qg5F2aX0yn2ho+Iu3mRpvPeAHs/pG2uMqVMC5xMxOaCUwDF2kvi4b4PjUpabV8dnOCA4hhCeCBO
+	+8e9ec76ytb/y9H/aMQ5cBgO2up/nJlk8GrNbdwQdljfmg7ykXzYuzDZri0tcXupl+kobdCACO901
+	QVAekiEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR4pt-00000006DvG-2DM9;
-	Wed, 11 Nov 2026 09:41:45 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xR4v0-00000006Enj-1Ttz;
+	Wed, 11 Nov 2026 09:47:02 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR4pr-00000006DuR-1BJd;
-	Wed, 11 Nov 2026 09:41:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794390100;
-	bh=7bKfGK/qfrm5C2JrxSXmO8PZzjTGFJi/TFX3XJ6m2pw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PZO5l/Ejq89WXSLT0iNZzGbyMuSbknvtJVfebh0uGdhvmGRJVnrNAECtWICrY9xE8
-	 fswm8tEuSBwZju0QcuZ1vJuzu6I6rzFDi/lG4sEYEqyAjJC89tZiOt2it9ip0R4k/y
-	 K8WVytv8j7VTBgf3x6SDMRZ+MRIBYMoShLvcx/YbCsXtbzXjtMVs3JhYGjKWbN1ALc
-	 Ddu6DWUFA1l8L4eCL54xMipncsJx8E/2rk9OTFh6g2TW/rXBGwNP0WiaV+7UExvcUT
-	 t8pIgFRko+26XxFrq9UZiE9vBZRUcCjYDGWZp77jTgMyy+m1SoJGtrx9CKKPeA19Uu
-	 7q6xKwXCc8ZfA==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3F74017E05D6;
-	Wed, 11 Nov 2026 10:41:40 +0100 (CET)
-Message-ID: <7f4c2132-bb73-4698-ab68-902fada398b6@collabora.com>
-Date: Wed, 11 Nov 2026 11:41:39 +0200
+	id 1xR4uy-00000006Emq-0hvd;
+	Wed, 11 Nov 2026 09:47:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794390409; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Zova7S+4VoUlY0Zd9ItVIFVeGKZs4+fz6hdRSIiIM+PM8qgLpQll0rFvUH45cx24OIhaJkkJZ9Esoxm/3I9xIcLW+oxtjnM7AbV/3jDtcJyZo2HJxpGKJoGEuvl80DYktsZ+dhrBK7dhmawDFx2dPrsByrO2fuEbrjsinKd12io=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794390409; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=dDFMBYQOa4uJE7PzeKyrrGP8ivAyLwocI64qk9V7SoQ=; 
+	b=e4/2iRZ6OnHxulopSPGTWhuj64Le5Ki3NdOgMAB8ipfQQfOPZdAJsBLrUlZRe1UWkZuZEfJp2z7NoKbR4ibFD9SLbxneTBiZvMM7XW5FByX9NKdh/MfSLtWVkB5hr3kiiSb3EO03gd6XgosjjYG/anTBzemIqAwM6ntOkrmWrHE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
+	dmarc=pass header.from=<michael.riesch@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=JXBRqsR8ousycN+AeIqhe6tHpIhFzn0QMfond1bqheK7uEsFspseCpTB34+RHZMrY1LwF8HXocIlmaBxGy8GdtSvscUYaRCMUrQbuG9xCiBn9DYwnFOu2borWiFcyWKhByEyfLepxBDOPvVIZRkMPOisTjgQOYmbFPkD+BFI494=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=dDFMBYQOa4uJE7PzeKyrrGP8ivAyLwocI64qk9V7SoQ=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 17943904075303.476694908820832;
+	Wed, 11 Nov 2026 01:46:47 -0800 (PST)
+Message-ID: <51b09428-9d10-4f36-a811-a681e479e45e@collabora.com>
+Date: Wed, 11 Nov 2026 10:46:43 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 6/7] drm/rockchip: dw_hdmi_qp: Set the VOP2 color space
- from the connector
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
- =?UTF-8?Q?Jan_Clau=C3=9Fen?= <jan.claussen10@web.de>
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20261018143135.5745-1-jan.claussen10@web.de>
- <20261018143135.5745-7-jan.claussen10@web.de>
- <cd6ff4c0-cd5d-4c42-8f52-5f3893aec015@collabora.com>
- <704571ba-af39-441f-9eb9-09d4a2c9feb3@rock-chips.com>
+Subject: Re: [PATCH 2/2] media: rockchip: rkcif: Honour the requested
+ bytesperline on MIPI
+To: Faizel K B <faizel.kb@gmail.com>,
+ Mehdi Djait <mehdi.djait@linux.intel.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, libcamera-devel@lists.libcamera.org,
+ Robert Mader <robert.mader@collabora.com>
+References: <20261105232310.385463-1-faizel.kb@gmail.com>
+ <20261105232310.385463-3-faizel.kb@gmail.com>
 Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <704571ba-af39-441f-9eb9-09d4a2c9feb3@rock-chips.com>
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20261105232310.385463-3-faizel.kb@gmail.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_014143_502207_8F1E1D13 
-X-CRM114-Status: GOOD (  19.00  )
+X-CRM114-CacheID: sfid-20261111_014700_272783_E4DDEB75 
+X-CRM114-Status: GOOD (  23.09  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,8 +75,8 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -92,54 +86,100 @@ X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgQ2hhb3lpLAoKT24gMTEvMTEvMjYgODoxOSBBTSwgQ2hhb3lpIENoZW4gd3JvdGU6Cj4gSGkg
-Q3Jpc3RpYW4gYW5kIEphbiwKPiAKPiBPbiAxMS8xMS8yMDI2IDM6MDUgQU0sIENyaXN0aWFuIENp
-b2NhbHRlYSB3cm90ZToKPj4gSGkgSmFuLAo+Pgo+PiBPbiAxMC8xOC8yNiA1OjMxIFBNLCBKYW4g
-Q2xhdcOfZW4gd3JvdGU6Cj4+PiBWT1AyIGNvbnZlcnRzIFJHQiB0byBZQ2JDciB1c2luZyB0aGUg
-bWF0cml4IHNlbGVjdGVkIGJ5IHRoZSBDUlRDCj4+PiBzdGF0ZSdzIGNvbG9yX3NwYWNlLCBidXQg
-dGhlIEhETUkgZW5jb2RlciBuZXZlciBzZXRzIGl0LCBzbyBWT1AyCj4+PiBhbHdheXMgY29udmVy
-dHMgd2l0aCBCVC43MDkuIE9uY2UgdGhlIGNvbG9yc3BhY2UgcHJvcGVydHkgY2FuCj4+PiBzaWdu
-YWwgQlQuMjAyMCBjb2xvcmltZXRyeSB0byB0aGUgc2luaywgYSBZQ2JDciBvdXRwdXQgd291bGQg
-YmUKPj4+IGVuY29kZWQgd2l0aCBCVC43MDkgYW5kIGRlY29kZWQgd2l0aCBCVC4yMDIwLgo+Pj4K
-Pj4+IERlcml2ZSBjb2xvcl9zcGFjZSBmcm9tIHRoZSBjb25uZWN0b3IgY29sb3JzcGFjZSBiZWZv
-cmUgdGhlIGVhcmx5Cj4+PiByZXR1cm4sIHNvIHRoYXQgYSBjb2xvcnNwYWNlIGNoYW5nZSBhbG9u
-ZSBpcyBhcHBsaWVkLgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IEphbiBDbGF1w59lbiA8amFuLmNs
-YXVzc2VuMTBAd2ViLmRlPgo+Pj4gLS0tCj4+PiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3
-X2hkbWlfcXAtcm9ja2NoaXAuYyB8IDE2ICsrKysrKysrKysrKysrKysKPj4+ICAxIGZpbGUgY2hh
-bmdlZCwgMTYgaW5zZXJ0aW9ucygrKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvZHdfaGRtaV9xcC1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL2R3X2hkbWlfcXAtcm9ja2NoaXAuYwo+Pj4gaW5kZXggOWM0Y2Y2OGQ3OWQ1Li4xMGM1YjZk
-NjQwNmUgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaV9x
-cC1yb2NrY2hpcC5jCj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaV9x
-cC1yb2NrY2hpcC5jCj4+PiBAQCAtMTcsNiArMTcsNyBAQAo+Pj4gICNpbmNsdWRlIDxsaW51eC9w
-aHkvcGh5Lmg+Cj4+PiAgI2luY2x1ZGUgPGxpbnV4L3BoeS9waHktaGRtaS5oPgo+Pj4gICNpbmNs
-dWRlIDxsaW51eC9yZWdtYXAuaD4KPj4+ICsjaW5jbHVkZSA8bGludXgvdmlkZW9kZXYyLmg+Cj4+
-PiAgI2luY2x1ZGUgPGxpbnV4L3dvcmtxdWV1ZS5oPgo+Pj4gIAo+Pj4gICNpbmNsdWRlIDxkcm0v
-YnJpZGdlL2R3X2hkbWlfcXAuaD4KPj4+IEBAIC0xODcsNiArMTg4LDE5IEBAIHN0YXRpYyBpbnQg
-ZHdfaGRtaV9xcF9yb2NrY2hpcF9nZXRfdm9wX2Zvcm1hdChzdHJ1Y3QgZHJtX2VuY29kZXIgKmVu
-Y29kZXIsCj4+PiAgCXJldHVybiBic3RhdGUtPm91dHB1dF9idXNfY2ZnLmZvcm1hdDsKPj4+ICB9
-Cj4+PiAgCj4+PiArc3RhdGljIHUzMgo+Pj4gK2R3X2hkbWlfcXBfcm9ja2NoaXBfY29sb3Jfc3Bh
-Y2UoY29uc3Qgc3RydWN0IGRybV9jb25uZWN0b3Jfc3RhdGUgKmNvbm5fc3RhdGUpCj4+PiArewo+
-Pj4gKwlzd2l0Y2ggKGNvbm5fc3RhdGUtPmNvbG9yc3BhY2UpIHsKPj4+ICsJY2FzZSBEUk1fTU9E
-RV9DT0xPUklNRVRSWV9CVDIwMjBfUkdCOgo+Pj4gKwljYXNlIERSTV9NT0RFX0NPTE9SSU1FVFJZ
-X0JUMjAyMF9ZQ0M6Cj4+PiArCWNhc2UgRFJNX01PREVfQ09MT1JJTUVUUllfQlQyMDIwX0NZQ0M6
-Cj4+PiArCQlyZXR1cm4gVjRMMl9DT0xPUlNQQUNFX0JUMjAyMDsKPj4+ICsJZGVmYXVsdDoKPj4+
-ICsJCXJldHVybiBWNEwyX0NPTE9SU1BBQ0VfREVGQVVMVDsKPj4+ICsJfQo+Pj4gK30KPj4KPj4g
-TXkgbWFpbiBjb25jZXJuIGlzIGludHJvZHVjaW5nIFY0TDJfQ09MT1JTUEFDRV8qIGxvZ2ljIGlu
-dG8gYSBEUk0gYnJpZGdlIGRyaXZlciwKPj4gd2hpY2ggc2hvdWxkIHJhdGhlciByZWx5IG9uIGVu
-dW0gZHJtX2NvbG9yc3BhY2UgLyBEUk1fTU9ERV9DT0xPUklNRVRSWV8qLgo+PiBUcmFuc2xhdGlu
-ZyB0aGUgRFJNIGNvbG9yaW1ldHJ5IGludG8gVjRMMiB2YWx1ZXMgb25seSBmb3IgVk9QMiB0byBt
-YXAgdGhlbSBiYWNrCj4+IHRvIGEgQ1NDIG1hdHJpeCBkb2Vzbid0IHNlZW0gZnVsbHkganVzdGlm
-aWVkLgo+Pgo+PiBUaGUgcm9vdCBwcm9ibGVtIGlzIHJhdGhlciBvbiB0aGUgVk9QMiBzaWRlOiB0
-aGUgY29sb3Jfc3BhY2UgZmllbGQgaW4gc3RydWN0Cj4+IHJvY2tjaGlwX2NydGNfc3RhdGUgYW5k
-IGl0cyBWNEwyLWJhc2VkIGhhbmRsaW5nIGluIHRoZSBDU0Mgc2VsZWN0aW9uIGxvb2sgbGlrZQo+
-PiBsZWZ0b3ZlcnMgaW5oZXJpdGVkIGZyb20gdGhlIHZlbmRvciBrZXJuZWwsIGFuZCBJIHRoaW5r
-IHRoaXMgaXMgYSBnb29kIHRpbWUgdG8KPj4gY2xlYW4gdGhhdCB1cCBpbnN0ZWFkIG9mIGJ1aWxk
-aW5nIG9uIGl0Lgo+Pgo+IAo+IFllcC4gQW5kIGlmIHlvdSBsb29rIGF0IHRoZSBsYXRlc3QgdmVu
-ZG9yIGtlcm5lbCBjb2RlLCB3ZSBoYXZlIGFsc28KPiByZW1vdmVkIHRoZSBWNEwyX0NPTE9SU1BB
-Q0VfKiByZWxhdGVkIGNvbnRlbnQgYW5kIHN3aXRjaGVkIHRvIERSTS4KClRoYW5rcyBmb3IgdGhl
-IGhlYWRzLXVwOyBJIGhhdmVuJ3QgY2hlY2tlZCB0aGUgcmVjZW50IHZlbmRvciBrZXJuZWwgY2hh
-bmdlcy4KClJlZ2FyZHMsCkNyaXN0aWFuCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi there,
+
+Thanks for the patch!
+
+On 11/6/26 00:23, Faizel K B wrote:
+> The MIPI DMA uses bytesperline as the line stride, which must be a
+> multiple of 8 bytes, but v4l2_fill_pixfmt_mp() doesn't align it.
+
+Come to think of it, TRM p. 2111 says for e.g. VICAP_MIPI0_VLW_ID0:
+"Virtual line width of even frame for ID0 path(must be aligned to double
+word)." which I would interpret as "it must be a multiple of four
+bytes". What do you think?
+
+> Any larger bytesperline requested by userspace is also replaced with
+> the minimum.
+> 
+> Align bytesperline to 8 bytes and honour a larger requested value, up
+> to the limit of the line width register. This allows DMA-BUF importers
+> that need a larger stride alignment to use the buffers directly.
+> 
+> Signed-off-by: Faizel K B <faizel.kb@gmail.com>
+> ---
+>  .../platform/rockchip/rkcif/rkcif-stream.c    | 22 ++++++++++++++++++-
+>  1 file changed, 21 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+> index f2a24832a8cf..e50f20e40f7a 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+> @@ -23,6 +23,7 @@
+>  #define CIF_MIN_HEIGHT	 64
+>  #define CIF_MAX_WIDTH	 8192
+>  #define CIF_MAX_HEIGHT	 8192
+> +#define CIF_MAX_BYTESPERLINE 0xffff8 /* VLW: 20 bits, 8-byte aligned */
+>  
+>  static inline struct rkcif_buffer *to_rkcif_buffer(struct vb2_v4l2_buffer *vb)
+>  {
+> @@ -334,20 +335,39 @@ static const struct vb2_ops rkcif_stream_vb2_ops = {
+>  	.stop_streaming = rkcif_stream_stop_streaming,
+>  };
+>  
+> +static void rkcif_stream_set_bytesperline(struct v4l2_pix_format_mplane *pix,
+> +					  u32 req_bpl)
+> +{
+> +	u32 min_bpl = ALIGN(pix->plane_fmt[0].bytesperline, 8);
+
+Please add support for the bytesperline field in all the plane_fmt
+entries here...
+
+> +	u32 max_bpl = min_t(u32, CIF_MAX_BYTESPERLINE,
+> +			    ALIGN_DOWN(U32_MAX / pix->height, 8));
+> +	u32 bpl = min_bpl;
+> +
+> +	if (req_bpl > min_bpl && req_bpl <= max_bpl)
+> +		bpl = ALIGN(req_bpl, 8);
+> +
+> +	pix->plane_fmt[0].bytesperline = bpl;
+> +	pix->plane_fmt[0].sizeimage = bpl * pix->height;
+> +}
+> +
+>  static int rkcif_stream_fill_format(struct rkcif_stream *stream,
+>  				    struct v4l2_pix_format_mplane *pix)
+>  {
+>  	const struct rkcif_output_fmt *fmt;
+> -	u32 height, width;
+> +	u32 height, width, req_bpl;
+>  	int ret;
+>  
+>  	fmt = rkcif_stream_find_output_fmt(stream, true, pix->pixelformat);
+>  	height = clamp_t(u32, pix->height, CIF_MIN_HEIGHT, CIF_MAX_HEIGHT);
+>  	width = clamp_t(u32, pix->width, CIF_MIN_WIDTH, CIF_MAX_WIDTH);
+> +	req_bpl = pix->plane_fmt[0].bytesperline;
+
+... and here.
+
+>  	ret = v4l2_fill_pixfmt_mp(pix, fmt->fourcc, width, height);
+>  	if (ret)
+>  		return ret;
+>  
+> +	if (stream->interface->type == RKCIF_IF_MIPI)
+> +		rkcif_stream_set_bytesperline(pix, req_bpl);
+
+Why is this restricted to the MIPI interfaces?
+
+Best regards,
+Michael
+
+> +
+>  	pix->field = V4L2_FIELD_NONE;
+>  
+>  	return 0;
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
