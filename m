@@ -2,74 +2,105 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B2CCE606A31C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 02:35:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 636DC606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 03:27:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DNnNCcZD;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=KjpTvGb/
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GATVe9kF;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=rxxf3v7j
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date
-	:From:In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=uhsTHtuIjgce2DqLAph5pnRNqddfr3iCPyAUaKEfu14=; b=DNnNCcZD+0H52BuAF2CrR/HVig
-	kdrFGgTA2MtryWo7WhNPXWxIrioG6PHJ9njE8qWw46YTLGm3MIY2JmBk2sHdYgriW8+G8pQX9kADS
-	4JlrSGOfrHlbebaj4zSCmBcntnE2cdd5UZLR6tO31P5NDg6N+UPY+P/vutbCNnFAa2WKnPuRj5Iu2
-	SxunQGAHwAN09Iclvy3lYuY9dhapRXHveunubx4N7W3hp5XzhQDDCab9dwKq1r/osEtJg8o2Vd90t
-	jeeIBj6yLiuBVzVwW6EugZ9smut9WCNw36zuRxb50EksxR+eqVPBppQ6W3VDFBuVDruqNros9dsdO
-	fJyo/RXg==;
+	bh=h6yEt9/Kx4s5Ddt9n2GvOk1evcAjPc5rQclL2fXA/Do=; b=GATVe9kFtu3WfYM1lHZxsrf8eW
+	3eUoJzs+6svR0zUy/JxbeZ1g3qNCthVfhZZ9RhrwQNhHS9qDUiRcxwd6QmmZ6Ra6naQh5zhqT8RoQ
+	BCKMKZYDcYZHlulasbFAVoEKvZzZu4AHu5HKGK5cJ7AhNmmqPKvXL/lo+Cww6J6f+Aa4mbVkG9pQO
+	zhYwih97CqwTLrnjY7q9OAmxlfuFamkkSlh1zBQvY9L/A9HJpMK7/FjOKV11+sm56mLn/iP94mmtg
+	LmVTy8ieIzpEOOT0+KqxLg+GGQy9ZRiBktPQcFJ2cuwLagqFl0YyzM2L0eJImmUVykFn07aKpfmqq
+	HLoDAWuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQyBQ-00000005Sv6-1tYQ;
-	Wed, 11 Nov 2026 02:35:32 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xQyzL-00000005Y8Q-0cTI;
+	Wed, 11 Nov 2026 03:27:07 +0000
+Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQyBO-00000005Suk-1glw
+	id 1xQyzH-00000005Y7l-1zXg
 	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Nov 2026 02:35:30 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id CE50941FE3
-	for <linux-rockchip@lists.infradead.org>; Wed, 11 Nov 2026 02:35:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1FC71F00A03
-	for <linux-rockchip@lists.infradead.org>; Wed, 11 Nov 2026 02:35:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794364529;
-	bh=/TGkmkl5EXAQoGi2DbHL8eyxYqMYYgybSMdpzQ49ATc=;
-	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc;
-	b=KjpTvGb/4X9mKEH810dOhhaUHOo5iLr8WVxnxqmWYRpJuVVJU2ofYZVL93GJ5cgju
-	 saSlTXA5okLlbwFk3Vx248sug+H1celxydL/n8VJ3zCmI6R1kESsERdAVMYN6P9/cq
-	 im7CyIwzgDfu/3dZnhOlNWeBR6DVpOANkbo4m+ePKATjzCXWAgUTKachbkzbU/+OoL
-	 bOrf4m24aoleTvqhKcsuJRDPbarAzEIKLzm3bkPj3ljzAtlxdUz/fvkF2Qdl3Tikb4
-	 wHT23gf6FnFbm94HxmTH1LKmXDLJZvs0qMgaqrT6K+hY5Od4/rNrPoCp/NCo+/U/bZ
-	 YjnjAbs9w8euA==
-Received: by mail-lj1-f181.google.com with SMTP id 38308e7fff4ca-3acd239776cso19978541fa.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 18:35:29 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AL+hErGW/XsRkV+KCW4uE7xvKo888U69u2LtxItpT0ycrA4ctmkiMzh7a3JqyRllgxLrRcG3InGFT5zufPEVAfCXMw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/xmRerUKCuNUivqei2FRKvXHIdv0WzocOvdFgAWl0xxDlaIaJK
-	OUb1aMFftGkSHYX1WBAVRpWokJPNbGX7kgZJ7At7gMxX4+Fm6ho406dkFghTNP02+T9oD43owu6
-	L8+fWem4neDrWc/U6PTQxFjf78tJ7LEI=
-X-Received: by 2002:a2e:bc03:0:b0:3a9:9a60:2c47 with SMTP id
- 38308e7fff4ca-3ae126ed0f1mr1190701fa.29.1794364528033; Tue, 10 Nov 2026
- 18:35:28 -0800 (PST)
+	Wed, 11 Nov 2026 03:27:05 +0000
+Received: by mail-dy1-x1335.google.com with SMTP id 5a478bee46e88-37071c0f42aso4792622eec.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 19:27:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1794367622; x=1794972422; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=QP9+Ctp3NviXfDVXP2gE2ILUUDfgBim84aqNH/sgLwY=;
+        b=rxxf3v7jQG14xuMVJiKA24A2WK8hhppzNYcHs8xT95ckAqTxDPFFxJ0i/67H896qrF
+         YV6AFDNsfAHZPExfy9BANUvvCveZzXB+a+vL2M5Ixt1yohPUoUTBNKJE6n90aLXI/etA
+         m4btNKylZNJgDNkeRgA9JnKJjc0NCq+cEIzxIphOsqwZju/PtD+sG3HE0T2lIXT30Cow
+         qxa0K/228P3oQjKufQIst4kN+Y2Up+rLEBE6wRdmQFsxRkc9w5qw0qZooV5bDJF2zA9I
+         iPofS3cIE+3TqDJuTC+vq9uTgqPnuSShxyA8blVUe8WmvCxoJy+/l3VxpBIUDy1/0PkO
+         2sBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794367622; x=1794972422;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=QP9+Ctp3NviXfDVXP2gE2ILUUDfgBim84aqNH/sgLwY=;
+        b=OShwSN2YvUNPAwGSf150/1lpD77MiNS0xHvAzSSPWXGxumDjvzuvaQ+fndMbMmRaUq
+         gMCd+PtTk6+mOS7MXzCq6KLxTEg8/v/+aBiEqCp1jIsGLqCQ7jI2+hJXw5N8V9i1fzwk
+         Jq8mgMFdCr+Fn810vjV1G0HTRDroliCk9RSEDfGi/IIsXDzXfMZetLf/YjOS5nhcXXM6
+         u+/KdpjUXIzqh5DJy+XeRqbwn+h0R+GB4TC2rdUNvKQEjtSYT1SFkMdWEcQOLwz5e7YI
+         Bz3P19sSum6c+vxiZBbsitcIB4OfjjO2rr6M+47uL7B0xPUAa5wuihwq6/05T0Ph8h6f
+         bT/w==
+X-Forwarded-Encrypted: i=1; AL+hErFrB5Jg1mnHeC6U5HR3G8qJEdXagTcS50W+a7gSVdEq+vNskeFbYqxoicehLXdo/faXwcX97n8E94PjmBLeeQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9Ov5OCR3H6fObLFlKhlTpLGsvNzaPXcvXi2zWCdx0J/rk6+/3p
+	gCysr425CAaLK/HEM26Bpx3ohzPO/dDrbLgW+x5SeyLwzEw8nQ1PI9oH
+X-Gm-Gg: AYBFou1+tptjj14rFkQhojtO6HPuyCRsK1qEfgdex1T9ee0gXEK3lSmcptlIr8LfVdH
+	OpZzyKWLmLbEIGWRKMu+HeZ/KNbNKV0n4p1noJhZiI5RpL4kkL63brBpWUL7mlBf1gMdrcq1Bke
+	xWQx4b5jmOCikluY27TZh1pnm57L1Wumb2jqZUxRfOzMRYexZr06cYhj0B7tRepT+NplS4561Ff
+	EfQbfCO6gh7w8bAOOB+uwHWF9jp+QMtaqXIem568DXZjUOj/PgO3GklE8W5OcfYOlOgnyg5tS/K
+	+DwWNvhwQiHQT1Y+bJRlvJXjRSDAhFJdWWOdnnOXtVlHwMk3UJUsawhms6wn49qtoKKoOwZnai2
+	SOruUedva+rbczq6OHGaOJXwEg1AuDBnQR1y4oS5iC65HaXjwSn2AhvyytC9er86Nis8MUVFTNF
+	We3GnY7sR6RzzzLw0QJ0jaNJlAoOXu3Eobjnmc4oCE0Z1BXu/AZkhgRafp9ZG5d/NzLnD5H1ocg
+	cO/XewXXInovtPoxd6LqbKcsIUdCTwQzpNp4HpoU1WQu36PGx9LqbV7gecPjGby+hV4Sqk/Q/jY
+	3G2dMebi20vj1i9aY9olRmGN0P9dSyYPnJAa9+7iMbWZSmrcfSj6xWKd3dys
+X-Received: by 2002:a05:7300:51c3:b0:36e:d060:8bad with SMTP id 5a478bee46e88-3768385dc4fmr1982303eec.5.1794367622326;
+        Tue, 10 Nov 2026 19:27:02 -0800 (PST)
+Received: from homik.search.charter.net ([2603:8002:ad40:56f0:521b:36dc:be93:10f2])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-37520512ec1sm10567569eec.12.2026.11.10.19.27.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Nov 2026 19:27:01 -0800 (PST)
+From: Mariia Nikitash <nikitash.mariiaw@gmail.com>
+To: nicolas.dufresne@collabora.com,
+	benjamin.gaignard@collabora.com,
+	p.zabel@pengutronix.de
+Cc: mchehab@kernel.org,
+	hverkuil+cisco@kernel.org,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-hardening@vger.kernel.org,
+	kees@kernel.org,
+	justinstitt@google.com,
+	morbo@google.com,
+	david.laight.linux@gmail.com,
+	Mariia Nikitash <nikitash.mariiaw@gmail.com>
+Subject: [PATCH v2] media: verisilicon: Replace strlcat() with scnprintf()
+Date: Tue, 10 Nov 2026 19:24:46 -0800
+Message-ID: <20261111032446.29803-1-nikitash.mariiaw@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261105084518.386234-1-nikitash.mariiaw@gmail.com>
+References: <20261105084518.386234-1-nikitash.mariiaw@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261110-usb-port-pairing-v1-0-9307e29d2ed2@gmail.com> <20261110-usb-port-pairing-v1-1-9307e29d2ed2@gmail.com>
-In-Reply-To: <20261110-usb-port-pairing-v1-1-9307e29d2ed2@gmail.com>
-From: Chen-Yu Tsai <wens@kernel.org>
-Date: Wed, 11 Nov 2026 11:35:15 +0900
-X-Gmail-Original-Message-ID: <CAGb2v65goAuKgYu-849171FGeCxZ8Cq3GUxQLDLaHLbhRTMmqA@mail.gmail.com>
-X-Gm-Features: AclHuK9N0O7U9-W_pxCYXlT-RQ5jch4QkX4b2hO5JJ4vf-cajfPSp8p0sSn_nO4
-Message-ID: <CAGb2v65goAuKgYu-849171FGeCxZ8Cq3GUxQLDLaHLbhRTMmqA@mail.gmail.com>
-Subject: Re: [PATCH 1/4] dt-bindings: usb: generic-ehci: Allow describing the
- root hub ports
-To: aiyengar1990@gmail.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Alan Stern <stern@rowland.harvard.edu>, linux-usb@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261110_192703_540652_8414348F 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,54 +110,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: wens@kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-T24gVHVlLCBOb3YgMTAsIDIwMjYgYXQgNDoyMOKAr1BNIEFydW4gSXllbmdhciB2aWEgQjQgUmVs
-YXkKPGRldm51bGwrYWl5ZW5nYXIxOTkwLmdtYWlsLmNvbUBrZXJuZWwub3JnPiB3cm90ZToKPgo+
-IEZyb206IEFydW4gSXllbmdhciA8YWl5ZW5nYXIxOTkwQGdtYWlsLmNvbT4KPgo+IFRoZSBVU0Ig
-Mi4wIGxpbmVzIGFuZCB0aGUgU3VwZXJTcGVlZCBsYW5lcyBvZiBhIFVTQiAzIGNvbm5lY3RvciBk
-b24ndAo+IGFsd2F5cyByZWFjaCB0aGUgc2FtZSBob3N0IGNvbnRyb2xsZXIuIE9uIHRoZSBSb2Nr
-Y2hpcCBSSzM1ODgsIHRoZQo+IFN1cGVyU3BlZWQtb25seSBVU0IgMy4wIGhvc3QgMiAoeEhDSSkg
-aXMgcGFpcmVkIG9uIHRoZSBib2FyZCB3aXRoIG9uZQo+IG9mIHRoZSBzZXBhcmF0ZSBVU0IgMi4w
-IGhvc3RzIChFSENJL09IQ0kpLiBPbmx5IHRoZSBkZXZpY2UgdHJlZSBrbm93cwo+IHdoaWNoIEVI
-Q0kgcm9vdCBodWIgcG9ydCBzaGFyZXMgYSBjb25uZWN0b3Igd2l0aCB3aGljaCBTdXBlclNwZWVk
-IHBvcnQuCj4KPiBUaGUgVVNCIGNvcmUgYWxyZWFkeSByZWFkcyBhIGh1YidzIE9GIGdyYXBoLCB3
-aXRoIG9uZSBncmFwaCBwb3J0IHBlcgo+IGRvd25zdHJlYW0gcG9ydCwgYW5kIHVzZXMgaXQgZm9y
-IHRoZSBwb3J0IGNvbm5lY3QgdHlwZS4gQWxsb3cgdGhlIHNhbWUKPiAicG9ydHMiIG5vZGUgb24g
-RUhDSSBjb250cm9sbGVycywgc28gdGhhdCBhIHJvb3QgaHViIHBvcnQgY2FuIGJlIGxpbmtlZAo+
-IHRvIGl0cyB1c2ItY29ubmVjdG9yIG5vZGUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBBcnVuIEl5ZW5n
-YXIgPGFpeWVuZ2FyMTk5MEBnbWFpbC5jb20+Cj4gLS0tCj4gIERvY3VtZW50YXRpb24vZGV2aWNl
-dHJlZS9iaW5kaW5ncy91c2IvZ2VuZXJpYy1laGNpLnlhbWwgfCAxMyArKysrKysrKysrKysrCj4g
-IDEgZmlsZSBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9nZW5lcmljLWVoY2kueWFtbCBiL0RvY3Vt
-ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2IvZ2VuZXJpYy1laGNpLnlhbWwKPiBpbmRl
-eCA5MDhiMDJkOTE3NWUuLjlkY2JhNTM5ZDYwZCAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9u
-L2RldmljZXRyZWUvYmluZGluZ3MvdXNiL2dlbmVyaWMtZWhjaS55YW1sCj4gKysrIGIvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9nZW5lcmljLWVoY2kueWFtbAo+IEBAIC0x
-NjAsNiArMTYwLDE5IEBAIHByb3BlcnRpZXM6Cj4gICAgICAgIC0gaG9zdAo+ICAgICAgICAtIG90
-Zwo+Cj4gKyAgcG9ydHM6Cj4gKyAgICAkcmVmOiAvc2NoZW1hcy9ncmFwaC55YW1sIy9wcm9wZXJ0
-aWVzL3BvcnRzCj4gKyAgICBkZXNjcmlwdGlvbjoKPiArICAgICAgVGhlIHJvb3QgaHViJ3MgZG93
-bnN0cmVhbSBmYWNpbmcgcG9ydHMsIGxpbmtlZCB0byB0aGUgY29ubmVjdG9ycyB0aGV5Cj4gKyAg
-ICAgIGFyZSB3aXJlZCB0by4gTmVlZGVkIHdoZW4gYSBjb25uZWN0b3IncyBTdXBlclNwZWVkIGxh
-bmVzIGdvIHRvIGEKPiArICAgICAgZGlmZmVyZW50IGhvc3QgY29udHJvbGxlciwgd2hpY2ggdGhl
-biBwYWlycyB3aXRoIHRoZSByb290IGh1YiBwb3J0Cj4gKyAgICAgIHRocm91Z2ggdGhlIGNvbm5l
-Y3Rvci4KPiArCj4gKyAgICBwYXR0ZXJuUHJvcGVydGllczoKPiArICAgICAgIl5wb3J0QFsxLTlh
-LWZdWzAtOWEtZl0qJCI6Cj4gKyAgICAgICAgJHJlZjogL3NjaGVtYXMvZ3JhcGgueWFtbCMvcHJv
-cGVydGllcy9wb3J0Cj4gKyAgICAgICAgZGVzY3JpcHRpb246IFJvb3QgaHViIHBvcnQsIG51bWJl
-cmVkIGZyb20gMS4KPiArCgpXb3VsZCB0aGlzIHBhdGNoIGNvdmVyaW5nIGFsbCBIQ0RzIGJlIGJl
-dHRlcj8KCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDI2MTAxNDA4MjAzNy4xNzc0Njcy
-LTItd2Vuc3RAY2hyb21pdW0ub3JnLwoKQWxzbyBzZWUgUm9iJ3MgY29tbWVudCBhYm91dCBjb3Zl
-cmluZyB0aGUgcG9ydCBudW1iZXJzLgoKQ2hlbll1Cgo+ICByZXF1aXJlZDoKPiAgICAtIGNvbXBh
-dGlibGUKPiAgICAtIHJlZwo+Cj4gLS0KPiAyLjU1LjAKPgo+Cj4KCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+In preparation for removing the deprecated strlcat() API [1], replace the
+strscpy() and strlcat() calls in hantro_add_func() with a single
+scnprintf() call.
+
+This preserves the resulting string, including NUL termination
+and truncation behavior.
+
+Link: https://github.com/KSPP/linux/issues/370 [1]
+Signed-off-by: Mariia Nikitash <nikitash.mariiaw@gmail.com>
+---
+Changes in v2:
+- Replace seq_buf with a single scnprintf() call, as suggested
+  by Hans Verkuil.
+
+ drivers/media/platform/verisilicon/hantro_drv.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 26e5d5547466..d8854ceb4fed 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -902,9 +902,8 @@ static int hantro_add_func(struct hantro_dev *vpu, unsigned int funcid)
+ 	vfd->vfl_dir = VFL_DIR_M2M;
+ 	vfd->device_caps = V4L2_CAP_STREAMING | V4L2_CAP_VIDEO_M2M_MPLANE;
+ 	vfd->ioctl_ops = &hantro_ioctl_ops;
+-	strscpy(vfd->name, match->compatible, sizeof(vfd->name));
+-	strlcat(vfd->name, funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ?
+-		"-enc" : "-dec", sizeof(vfd->name));
++	scnprintf(vfd->name, sizeof(vfd->name), "%s%s", match->compatible,
++		  funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ? "-enc" : "-dec");
+ 
+ 	if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER) {
+ 		vpu->encoder = func;
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
