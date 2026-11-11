@@ -2,84 +2,87 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B181760A3806
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D26B960A2603
 	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 10:00:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Dr6JwqYk;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Drd0BjnY
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gwUJqXiv;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=YlETi7LG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=sONhUz4NiLZh7pbPQVOmV66O/3TaDPdrsvhe8r8KnZo=; b=Dr6JwqYkao8xH3wKFuZlSRtzeE
-	gKtpcCMPZEGjSCKuP5rG+pVkPm2o2bRIEsGluShjHc7uM4v6+CYxycjvMjRi+4X4qS9rTanExsxG2
-	Gjv4txdVKmWquaa5FaoONbbMTbx0P8OaiKnxjgSrfDL89Sx16I51tF1Mh+lItyRT/iQ+JjZQr+w9y
-	jBdmDUwhQGiu2XfyFkygt2lEICJMw+uAr56pTwRUsLBkfML7mWMfzVkZcpTg0tC7AP1IYyjL7kQ/M
-	Wc+QEB2me2sLUbV8z7HPLxlpFMTWiXa41mPX9+8RZyFF/1NSndl74TPqpEg1i28uGsu4RSWSWqj+8
-	dzm9DTog==;
+	bh=n1HASeCB7vivx3kl5OLk6gIc5vRk3XsiOJOHL+9W/js=; b=gwUJqXiv5zJ0ZhkBiSUCJsth/m
+	kBcN7cgsRa4U9GEj4f1xhLxoCvCUfM3Jov7RvoFI37onr4rgsRrHgv+jLpC7XRRpoXiCHWovNgqSs
+	RR7TkFcMbYN9JOPSOjQ6MH+tWmuZv6iqjyjkaQ1xfzCbVSmA2u+u20eUji2TsIax9zzO/5nMSPW4w
+	9SKZZvqmJotzBrp853UXDOL1oO78jXZgfD9wSWZBiLhdpbyIGCCVcWDZinXAWSDzk8crUTHY9oTIY
+	Eh04uAE0K7R4KfONJprCbCHFcFNO5yt3CJGXdK+y69Ev+1SoqL1t6ukfdjZDxOzFpYYPeP+JZLybZ
+	avQfhDnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR57j-00000006H0d-1EUJ;
+	id 1xR57j-00000006H0R-0PA5;
 	Wed, 11 Nov 2026 10:00:11 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR57h-00000006Gzv-4A5y;
-	Wed, 11 Nov 2026 10:00:10 +0000
+	id 1xR57h-00000006Gzu-3d7x;
+	Wed, 11 Nov 2026 10:00:09 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id BB04E458EE;
+	by sea.source.kernel.org (Postfix) with ESMTP id 44EAD4566F;
 	Wed, 11 Nov 2026 10:00:09 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1794391209;
-	b=CND2mgUa4lC8QTmyxQB2T+ogvDAPnJ2BUDno4Zr7nzJKfiN0e8uVGJ9IXZ62QIGxccEF
-	 RNW2d/hmbHuUEVdq9MlbkZC75zKsNZjAhtMX1YFf8Hr6E0xt1rTmYXYom1wDZZMjZYEgV
-	 Gr3B7k1E4I3h16KLRn6tfPVVS/ldquCUXHRthcfyanPu6FP7GTYYvGMwKsSrrJg+YRT2w
-	 4UGNQMSA44hGi3fyn9ryM45av91GIP6x1/fuBD8kLyAUqV1VIHoMUvGah2/wVQUFzk9Hq
-	 MybW+SD/jJlEes+PuWMGyRbOEPPFTJQ+HEqelt6lqhgzDYxkJliIniKLyDYL7E3B0aw==
+	b=A768J8fS7FUtav5cOht9VtSxQAkbJI2MfmBaNHwU60FYgs44KZ+qALSPfvDwDdHb41OH
+	 oj6MnPJxdaUUE0WJwFOl7wAf6r03Ao2TTviZeuP73mfHSJk7h6NOsSUp5r1KE8uTB1y2z
+	 d78Zeo0YaPxn3hwbl7egdIC9oOx8q6apEpu+ro4KPR+xd9fb9ZWsCEihKQFGJY69skNcK
+	 wPneVe+a0NjZ5i6wVkD7Vxar5oIInHLjWVDR84ZBUDQmWGXZ0f2iFi62hBZybqgb+Pxdx
+	 kGcFrn6+cFcZ2S862jVs0XD2NonPHH7PpcCAox5QA7o6EmZJ+7tOS/rrkPi+Zm/3/tg==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1794391209;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=0inTc72tNtgjCZaCWeW8u0+OSffO1GI14ZtqPEL3d8g=;
-	b=LCnzQ+3df6b9gb0/J99qSlyXFt4cKfGffebcvXzmL4969bZEw4gjvD9jJuAco0x3FRTp
-	 TpiOi9sGeiNZczPkVuJ1QsBUR6UWpcvQWE2JFwfCJpL/oaa49l9JlgxUiIARjeDVlslLs
-	 rVN3/ifOVUVy8gmlkCbKX9h2JjJLZRrZsp/BWyjVN6l98YYQDp7S8dBB0FXzb8B8etS4o
-	 SgGl3cfe9zD2UUBL/FZT0lNRWxM19cLQcqrFw7wzU9RlTOVKOcXv8ZkLSzL+/texOG3n9
-	 cXUGiIcBzj93Nl0OM+ZXvW/I47cek0nJ46vehEND/Ip3MRmXOicnYMwH54J2w9dsW4Q==
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=tfQEiEpyUG9H1Q6bEwLdcxfuZJ7yClGMga9Onbudq/Q=;
+	b=G9LTSAFYOTr0UPUQCkC3HX8WnMG6JNouo2Zww9dmLTX6OP0hDngbsy2S0M1sDs71JRjq
+	 nBhlHFPg9Czg94Qkcz1CAl2FSoI9VTsWnUcEqH/DO/vYLl0jgk74e+EH5mj+gMZwiJouT
+	 MB/KS8mQk5x+J/W6Xm39ce/jiS0MNUMgsOrh8nB+Q+UN3SFlCNUoA16bXSMUEz8H1stq/
+	 VcEEy6KXa06c1ByXRscj+x6ZsASEAPuqd2vbIBCtJCvN0Qett1B9vTmEKk90wKCUU0430
+	 2o0aBOmYCGZFUBlu9LHbXRolIr2m9MgzZ1i+6mqTtWxy8+vwNyoBI+wTccd7EwwBT4w==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 910611F00A08;
+	by smtp.kernel.org (Postfix) with ESMTPS id 7AF841F00A05;
 	Wed, 11 Nov 2026 10:00:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1794391209;
-	bh=0inTc72tNtgjCZaCWeW8u0+OSffO1GI14ZtqPEL3d8g=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=Drd0BjnYiSrO4SK7ZAE6NfOVa2EjNChOu1CpWL44/USqgngfq6L9dChZCDkbAanFt
-	 uGB86e46mXAxR7bfY9sIxRAa1o6OvLm2HjMMvOcXaD8rOLXELlQ8CsY1I5FB5B3st0
-	 LqfCdz/e7Y7dtdLhDGCuVo0b6VTqjw++FGWTy4d4SHQk+PMa2tHAXc7XhJAcI6BZxR
-	 ou8RZfYXQQKjH+Ftn2E6Ig4goREPv7DW2qed1qS8fqKtrNUDoW0RW1dCrZdMrc4bg0
-	 hOdQMkU7nlNzy+GpFexsJMTXV4VfSUTbcDOZiQcAtqaE4ZISjkXMkP0VW8ms5kv4H2
-	 pXqt4rt1G4NKQ==
+	bh=tfQEiEpyUG9H1Q6bEwLdcxfuZJ7yClGMga9Onbudq/Q=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=YlETi7LGoakdQd7iAKfwDNkvgSeEvm39zkaOXSazUbU120ty9lpisxqzHy7QIbWrs
+	 t3hXJaFg6CjsR+gMBEE59TKUAcbKln2wCrMttBmJSf4SrNWgPzP0VynhTbVVDuS9vh
+	 xY/9UicLYF9Ab0ZVb02Kq5Y2/MgKIk9Dlfet/WkFp6KAydFwCZQaspeqkDFj5zZEGw
+	 zGY7I9NmhCqegYcvYZur0EB8MIP9w0yOBE+kioE6ocQnmnLIhV4HvGilNo3iSAW+Bp
+	 PLMTl9hnU1OB1+yvP21x6h8Mqw7ZerEs7KOwuu+22ivc79Xo6lOGMkhL4CT6EyVI4a
+	 B4/446bKbDYnw==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 17B8048F25;
-	Wed, 11 Nov 2026 10:00:08 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id C5CD548F21;
+	Wed, 11 Nov 2026 10:00:07 +0000 (UTC)
 From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
-Date: Wed, 11 Nov 2026 17:56:29 +0800
-Subject: [PATCH net-next v2 2/2] net: stmmac: dwmac-rk: Add RK3572 support
+Subject: [PATCH net-next v2 0/2] net: stmmac: Add RK3572 support
+Date: Wed, 11 Nov 2026 17:56:27 +0800
+Message-Id: <20261111-add-board-ok3572-c-net-v2-0-304466394970@qq.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261111-add-board-ok3572-c-net-v2-2-304466394970@qq.com>
-References: <20261111-add-board-ok3572-c-net-v2-0-304466394970@qq.com>
-In-Reply-To: <20261111-add-board-ok3572-c-net-v2-0-304466394970@qq.com>
+X-B4-Tracking: v=1; b=H4sIAMs79GoC/21OSw6CMBS8Cnlrn2kLFeLKexgWpX1INVJpK8EQ7
+ m6pW2c3me8KgbylAOdiBU+zDdaNiYhDAXpQ443QmsRBMHHiCaiMwc4pb9A9SlkL1DhSxMpUsml
+ qLWvZQwq/PPV2ycVX2A0jLRHanxLe3Z103Ht372BDdP6TP8w8J/IcE+Lf3MyRIetYbxqpSk50m
+ aajdk9ot237AhfmFtvRAAAA
+X-Change-ID: 20261111-add-board-ok3572-c-net-4d45887c575f
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -96,11 +99,11 @@ Cc: Cunhao Lu <1579567540@qq.com>, netdev@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  linux-stm32@st-md-mailman.stormreply.com
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794391206; l=3142;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794391206; l=3935;
  i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
- bh=bJZr2jTjg4023AjgAd/Zj2CWJraJeUFEaOgI88A3Cbk=;
- b=jEQpmIjRN58KDsmIItARMWGBR9/tQFG9sLJdgCnv3tiEkLj98mJUEUUC9c0t/JiC7ZJXHDEJN
- se60OOE7HDgBwGvEfdETUlLxU6Ep4JJ/F8R1aNpxxWA3irkjAbFxbXR
+ bh=K69TUjKEVvwLt+A2dEQmzVRxyynd7Q6ASArcWjYZ8Ow=;
+ b=iWMCDziMHq9PHDs9pkj3AGsiac09NXX9JxnXzzIDdd6jJFbdxLqH/t0+I9u25cqMGcFrOO3TR
+ tXm+7pKJlSaB0dRB0j+gOdK8j+2sPX3HnuVXhu5UnDCkKDVnpnJ208y
 X-Developer-Key: i=1579567540@qq.com; a=ed25519;
  pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
 X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
@@ -127,95 +130,116 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Cunhao Lu <1579567540@qq.com>
+This is one of the subsystem submissions for RK3572 support.
 
-The RK3572 has two GMAC controllers with separate mode and clock control
-registers in the PHP and NVM0 GRFs. RGMII delay lines are configured
-through the IOC.
+This series adds the RK3572 GMAC bindings and support for both Ethernet
+controllers in the Rockchip stmmac glue driver. It provides RGMII and
+RMII mode and clock control, together with RGMII delay configuration.
 
-Add the register layout and delay callback for both controllers so the
-Rockchip glue driver can configure their RGMII and RMII interfaces and
-select the appropriate clocks for each link speed.
+The RK3572 SoC has eight CPU cores: two Cortex-A73 cores and six
+Cortex-A53 cores. It also integrates an Arm Mali-G310V2 MC1 GPU.
+The OK3572-C board provides two Gigabit Ethernet ports, three USB3 Type-A
+ports, a Type-C dual-role port, eMMC, microSD, and UART.
+
+Testing was performed with Debian 13 minimal and Linux 7.3 on the
+OK3572-C with the FET3572-C module.
+
+Passed functionality:
+
+- SD and eMMC complete the firmware, kernel, and root filesystem
+  boot chain.
+- UART console works at 1500000 baud.
+- SD read/write and data persistence checks pass.
+- All eight CPUs start; CPU frequency scaling and hotplug checks pass.
+- Both Ethernet ports obtain IPv4 addresses and pass bidirectional file
+  transfers.
+- All three Type-A ports pass USB2 and USB3 enumeration, data transfers,
+  and reconnect persistence checks.
+- Type-C host and device modes pass in both plug orientations. Physical
+  reconnects correctly select the expected device, host, and device roles
+  in sequence.
+
+Stability:
+
+- Repeated cold and software reboots complete on SD and eMMC without data
+  integrity failures.
+- A combined CPU, memory, network, SD, and USB3 stress test completes
+  without a crash, lockup, CPU offline event, or thermal shutdown.
+- Ethernet error and drop counters do not increase during bidirectional
+  network tests.
+
+Build and checks:
+
+- The kernel, modules, and board DTB build successfully.
+- The series passes checkpatch with --strict.
+
+Untested hardware and paths:
+
+- NPU
+- PCIe
+- GPU, video output, and audio
+- Other low-speed external interfaces
+
+Some files in this series are derived from the Forlinx OK3572-C BSP
+Alpha1. Thanks to Forlinx for their support.
+
+AI assistance:
+
+- Codex / DeepSeek V4.1 Flash were used for:
+  - Reviewing and adjusting code style to follow community conventions
+  - Automating tests
+  - Collecting data
 
 Signed-off-by: Cunhao Lu <1579567540@qq.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 53 ++++++++++++++++++++++++++
- 1 file changed, 53 insertions(+)
+Changes in v2:
+- Split the original RK3572 support series by subsystem.
+- Add rockchip,rk3572-gmac to the shared Synopsys compatible list in
+  snps,dwmac.yaml.
+- Link to v1:
+  https://patch.msgid.link/20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index a37df5767d84..c9d8d8bf51f7 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -900,6 +900,58 @@ static const struct rk_gmac_ops rk3568_ops = {
- 	},
- };
- 
-+#define RK3572_VCCIO0_3_VO_IOC_CON1		0x10608
-+#define RK3572_VCCIO1_2_4_VI_IOC_CON1		0x12604
-+#define RK3572_VCCIO5_6_IOC_MISC0		0x14630
-+#define RK3572_PHP_GRF_GMAC0_CON		0x0070
-+#define RK3572_NVM0_GRF_GMAC1_CON		0x0020
-+
-+static int rk3572_init(struct rk_priv_data *bsp_priv)
-+{
-+	switch (bsp_priv->id) {
-+	case 0:
-+		bsp_priv->gmac_grf_reg = RK3572_PHP_GRF_GMAC0_CON;
-+		break;
-+	case 1:
-+		bsp_priv->gmac_grf_reg = RK3572_NVM0_GRF_GMAC1_CON;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	bsp_priv->clock_grf_reg = bsp_priv->gmac_grf_reg;
-+	return 0;
-+}
-+
-+static void rk3572_set_to_rgmii(struct rk_priv_data *bsp_priv,
-+				int tx_delay, int rx_delay)
-+{
-+	u32 val = GRF_FIELD(14, 8, rx_delay) | GRF_FIELD(6, 0, tx_delay) |
-+		  GRF_FIELD(15, 15, !!rx_delay) | GRF_FIELD(7, 7, !!tx_delay);
-+
-+	if (bsp_priv->id == 1) {
-+		regmap_write(bsp_priv->php_grf, RK3572_VCCIO0_3_VO_IOC_CON1, val);
-+		regmap_write(bsp_priv->php_grf, RK3572_VCCIO5_6_IOC_MISC0, val);
-+	} else {
-+		regmap_write(bsp_priv->php_grf, RK3572_VCCIO1_2_4_VI_IOC_CON1, val);
-+	}
-+}
-+
-+static const struct rk_gmac_ops rk3572_ops = {
-+	.init = rk3572_init,
-+	.set_to_rgmii = rk3572_set_to_rgmii,
-+	.gmac_phy_intf_sel_mask = GENMASK_U16(11, 9),
-+	.gmac_rmii_mode_mask = BIT_U16(3),
-+	.clock.io_clksel_io_mask = BIT_U16(7),
-+	.clock.gmii_clk_sel_mask = GENMASK_U16(6, 5),
-+	.clock.rmii_clk_sel_mask = BIT_U16(5),
-+	.clock.rmii_gate_en_mask = BIT_U16(4),
-+	.supports_rmii = true,
-+	.php_grf_required = true,
-+	.regs_valid = true,
-+	.regs = { 0x29d20000, 0x2a040000, 0 },
-+};
-+
- /* VCCIO0_1_3_IOC */
- #define RK3576_VCCIO0_1_3_IOC_CON2		0X6408
- #define RK3576_VCCIO0_1_3_IOC_CON3		0X640c
-@@ -1720,6 +1772,7 @@ static const struct of_device_id rk_gmac_dwmac_match[] = {
- 	{ .compatible = "rockchip,rk3506-gmac", .data = &rk3506_ops },
- 	{ .compatible = "rockchip,rk3528-gmac", .data = &rk3528_ops },
- 	{ .compatible = "rockchip,rk3568-gmac", .data = &rk3568_ops },
-+	{ .compatible = "rockchip,rk3572-gmac", .data = &rk3572_ops },
- 	{ .compatible = "rockchip,rk3576-gmac", .data = &rk3576_ops },
- 	{ .compatible = "rockchip,rk3588-gmac", .data = &rk3588_ops },
- 	{ .compatible = "rockchip,rv1108-gmac", .data = &rv1108_ops },
+---
+Raw dmesg: see the v1 cover letter.
 
--- 
-2.34.1
+To: Andrew Lunn <andrew+netdev@lunn.ch>
+To: "David S. Miller" <davem@davemloft.net>
+To: Eric Dumazet <edumazet@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>
+To: Paolo Abeni <pabeni@redhat.com>
+To: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: Conor Dooley <conor+dt@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+To: David Wu <david.wu@rock-chips.com>
+To: Alexandre Torgue <alexandre.torgue@foss.st.com>
+To: Giuseppe Cavallaro <peppe.cavallaro@st.com>
+To: Jose Abreu <joabreu@synopsys.com>
+To: Maxime Chevallier <maxime.chevallier@bootlin.com>
+To: Maxime Coquelin <mcoquelin.stm32@gmail.com>
+Cc: netdev@vger.kernel.org
+Cc: devicetree@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-stm32@st-md-mailman.stormreply.com
+
+---
+Cunhao Lu (2):
+      dt-bindings: net: rockchip-dwmac: Add RK3572
+      net: stmmac: dwmac-rk: Add RK3572 support
+
+ .../devicetree/bindings/net/rockchip-dwmac.yaml    |  3 ++
+ .../devicetree/bindings/net/snps,dwmac.yaml        |  1 +
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c     | 53 ++++++++++++++++++++++
+ 3 files changed, 57 insertions(+)
+---
+base-commit: 067c5c24cef23d913b67eaaf71ae67e7169a6620
+change-id: 20261111-add-board-ok3572-c-net-4d45887c575f
+
+Best regards,
+--  
+Cunhao Lu <1579567540@qq.com>
 
 
 
