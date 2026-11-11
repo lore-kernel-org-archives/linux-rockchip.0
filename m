@@ -2,102 +2,74 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A7C23606A321
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 02:05:39 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B2CCE606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2026 02:35:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Z0VhOwEO;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Ubiggs0y
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DNnNCcZD;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=KjpTvGb/
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date
+	:From:In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=hgBpSb5gvFnqmxHNaAdjyRV15zxKw5PwTJS/zfdLPMU=; b=Z0VhOwEO4nz6x9AmNV6jpO76kH
-	pYGMzp2JhFfcxSIH2wbjsHTMZBBTbPRkXNGAvOTkC6Mayi/Bnyata4Y7bAtYcAvJBJptIIB0Yo2nK
-	UbR/wRYRN/DRTjHWnOW3CBwBk9btGmlfSLsKhqIsstlnawjYGGwMxDtlcZWcpRUwCr8qicEtdjc90
-	r2yJkGh1soFaPX8v2NMWk6Nk0QQfvqVSGxK6glE+ghZC9rwj/eX88w3MQ7DLAGDCMp6EPsRPCVjgq
-	m/Jy3UwKLFGr7elPqxybikEe9XB/TczS/IgBf0pX/xpzZZkOJBhh54Mm8VcSEGyzWGyxUxaLBgMiL
-	hr3bi4BQ==;
+	bh=uhsTHtuIjgce2DqLAph5pnRNqddfr3iCPyAUaKEfu14=; b=DNnNCcZD+0H52BuAF2CrR/HVig
+	kdrFGgTA2MtryWo7WhNPXWxIrioG6PHJ9njE8qWw46YTLGm3MIY2JmBk2sHdYgriW8+G8pQX9kADS
+	4JlrSGOfrHlbebaj4zSCmBcntnE2cdd5UZLR6tO31P5NDg6N+UPY+P/vutbCNnFAa2WKnPuRj5Iu2
+	SxunQGAHwAN09Iclvy3lYuY9dhapRXHveunubx4N7W3hp5XzhQDDCab9dwKq1r/osEtJg8o2Vd90t
+	jeeIBj6yLiuBVzVwW6EugZ9smut9WCNw36zuRxb50EksxR+eqVPBppQ6W3VDFBuVDruqNros9dsdO
+	fJyo/RXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQxiP-00000005PYJ-4A8I;
-	Wed, 11 Nov 2026 02:05:33 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xQyBQ-00000005Sv6-1tYQ;
+	Wed, 11 Nov 2026 02:35:32 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQxiO-00000005PXh-2HQd;
-	Wed, 11 Nov 2026 02:05:32 +0000
+	id 1xQyBO-00000005Suk-1glw
+	for linux-rockchip@lists.infradead.org;
+	Wed, 11 Nov 2026 02:35:30 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9DE71632FB;
-	Wed, 11 Nov 2026 02:05:31 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794362731;
-	b=n9NEM8HaDfVYSrM1CNZE2LWQNu2p/xSLeba8CE1SNexxVlUexhJwchLCPZ88of6ciDcT
-	 38A77nRjkfxWSNpt15tQZwXiNAy+PWqb+YRS9CpmmrVh6gNElxJo/x3kcdwnXUqGaPL1a
-	 6KBiUJP53liUcarz9zyz5vUzYPRmK8c/2ueub3MK68KGZ9x4MLLVvoLoQvIjRMVBnnuu0
-	 B/sNqEi2tDEnm3lbWRK22j0JyH7RzT9l68/Fc2ahEf+J5ZPCaFFDKaIDAeggLZIvWUNWi
-	 7SoT49OQFQg9VGeV/XdhF5wbREiJ9ckmAqu90knGpkLilWiiLy3Ye1650yQ24YiTBbQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794362731;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
-	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
-	 Content-Transfer-Encoding;
-	bh=KzN50YqFiwiu68kTHVRL6CYOokJvbanKQvbx9hoBfYA=;
-	b=cMBm/odqB9HvGH597R3ARkl4yhVCmj55RhLTN/ZvGRmHILBlK8Dwg1hmRLMYoC5+BvyN
-	 EYx8gaW+ps7NU+ry4EvIiYzvdRPyfhuO3QOq7q2ioREX9p89TeVFCMXm3fjxfjLxfjF2H
-	 ABA76H3EKQzAmJuJ09IosWYQypMj2XXij16/IMI6osxQ/ErOsp31oAXYZQzU+LJN8H5ij
-	 +lLfz/8pUoLC/1bLgMHKBqU9+CzXhFwsm1LsOrSegI17Q8VF/a2fs53lar+gVNdiJmgi5
-	 oGRdQ22ajMdC8kGWPGKYySuAT+NfqSUoz6cJgl1o7BQUrIhRGXDv0ckSRNHRe6EsCww==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id D12C71F0093C;
-	Wed, 11 Nov 2026 02:05:30 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id CE50941FE3
+	for <linux-rockchip@lists.infradead.org>; Wed, 11 Nov 2026 02:35:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1FC71F00A03
+	for <linux-rockchip@lists.infradead.org>; Wed, 11 Nov 2026 02:35:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794362731;
-	bh=KzN50YqFiwiu68kTHVRL6CYOokJvbanKQvbx9hoBfYA=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=Ubiggs0yBMCSz4utkQ9rAQdDEqNW991M09htlgjLbex8vs4XaASKVj/5Dv6lVRyK8
-	 OLcyisIRO49qpWDLuUpV3zSvS1dyGVXaKvP+U4XXTVjBjDKcMNYVwTwI4pl3mKb520
-	 cXKGNkqBhFNbKD0t8ri+TWWvhVAcommCsx3wJJQnkPU7/ylGFtP3ADS86262Qxtqgw
-	 NTtApnAX2Jcony5YT60KEVhPPMVz4P/d1BvzoIqw6lWRoTwU15+fVqkXbC711lKZEo
-	 tFCIDhnR7Mh4FqUyhYWmXxPPoG2t0XJU9oBvukg5NuTTha3HJxk+qLmcAR3SMxucLL
-	 BIYWcQpmFedeA==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 5DFBA48D22;
-	Wed, 11 Nov 2026 02:05:30 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Wed, 11 Nov 2026 04:05:28 +0200
-Subject: [PATCH] pinctrl: rk805: Add the platform module alias
+	s=k20260515; t=1794364529;
+	bh=/TGkmkl5EXAQoGi2DbHL8eyxYqMYYgybSMdpzQ49ATc=;
+	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc;
+	b=KjpTvGb/4X9mKEH810dOhhaUHOo5iLr8WVxnxqmWYRpJuVVJU2ofYZVL93GJ5cgju
+	 saSlTXA5okLlbwFk3Vx248sug+H1celxydL/n8VJ3zCmI6R1kESsERdAVMYN6P9/cq
+	 im7CyIwzgDfu/3dZnhOlNWeBR6DVpOANkbo4m+ePKATjzCXWAgUTKachbkzbU/+OoL
+	 bOrf4m24aoleTvqhKcsuJRDPbarAzEIKLzm3bkPj3ljzAtlxdUz/fvkF2Qdl3Tikb4
+	 wHT23gf6FnFbm94HxmTH1LKmXDLJZvs0qMgaqrT6K+hY5Od4/rNrPoCp/NCo+/U/bZ
+	 YjnjAbs9w8euA==
+Received: by mail-lj1-f181.google.com with SMTP id 38308e7fff4ca-3acd239776cso19978541fa.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2026 18:35:29 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AL+hErGW/XsRkV+KCW4uE7xvKo888U69u2LtxItpT0ycrA4ctmkiMzh7a3JqyRllgxLrRcG3InGFT5zufPEVAfCXMw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/xmRerUKCuNUivqei2FRKvXHIdv0WzocOvdFgAWl0xxDlaIaJK
+	OUb1aMFftGkSHYX1WBAVRpWokJPNbGX7kgZJ7At7gMxX4+Fm6ho406dkFghTNP02+T9oD43owu6
+	L8+fWem4neDrWc/U6PTQxFjf78tJ7LEI=
+X-Received: by 2002:a2e:bc03:0:b0:3a9:9a60:2c47 with SMTP id
+ 38308e7fff4ca-3ae126ed0f1mr1190701fa.29.1794364528033; Tue, 10 Nov 2026
+ 18:35:28 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261111-rk805-pinctrl-alias-v1-1-e0c6cdd5b823@iav.lv>
-X-B4-Tracking: v=1; b=H4sIAGfN82oC/x2M0QpAQBAAf0X7bOtcHPkVeVhnsdHRnqTk313mb
- R5mHoiswhHa7AHlS6LsIUmRZ+AXCjOjjMnBGuuKBOramAoPCf7UDWkTiliPpqHSOucHglQeypP
- c/7Xr3/cDlZuxA2UAAAA=
-To: Linus Walleij <linusw@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>, 
- stable@vger.kernel.org
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1626; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=Zndba/YdME6GY+mxEHq0lf95NjIbiNPv7gf3rw4Jcj4=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFmfz2Z2pj24epDrzR62HVc+Wr7yZ/Bw37x9jeT+b6/tH
- TKT5a4zdpSyMIhxMciKKbJMOKRxK2PJ1b/+HuYPYOawMoEMYeDiFICJzBJh+MV86o3L96szfuwu
- kg+7F35kY5XC8bgWv9bNs2O3cbddvL+HkWGJ14Zf3UsfTMkPuLS8LPP06eW2XMbas2c6H9Kf/m/
- i4SAmAA==
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+References: <20261110-usb-port-pairing-v1-0-9307e29d2ed2@gmail.com> <20261110-usb-port-pairing-v1-1-9307e29d2ed2@gmail.com>
+In-Reply-To: <20261110-usb-port-pairing-v1-1-9307e29d2ed2@gmail.com>
+From: Chen-Yu Tsai <wens@kernel.org>
+Date: Wed, 11 Nov 2026 11:35:15 +0900
+X-Gmail-Original-Message-ID: <CAGb2v65goAuKgYu-849171FGeCxZ8Cq3GUxQLDLaHLbhRTMmqA@mail.gmail.com>
+X-Gm-Features: AclHuK9N0O7U9-W_pxCYXlT-RQ5jch4QkX4b2hO5JJ4vf-cajfPSp8p0sSn_nO4
+Message-ID: <CAGb2v65goAuKgYu-849171FGeCxZ8Cq3GUxQLDLaHLbhRTMmqA@mail.gmail.com>
+Subject: Re: [PATCH 1/4] dt-bindings: usb: generic-ehci: Allow describing the
+ root hub ports
+To: aiyengar1990@gmail.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Alan Stern <stern@rowland.harvard.edu>, linux-usb@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,62 +79,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: wens@kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Igor Velkov <iav@iav.lv>
-
-The rk8xx MFD core registers the pin controller of the RK805, RK806 and
-RK816 as a platform device named "rk805-pinctrl", but the driver has
-neither a MODULE_ALIAS nor a platform_device_id table. Built as a module
-it is never loaded on its own, and everything that uses the PMIC GPIOs
-waits for it: on the Pine64 ROCK64 the gpio-leds device with both
-LEDs stays in deferred probe.
-
-The other rk8xx cell drivers (rk805-pwrkey, rk808-regulator, rtc-rk808,
-clk-rk808) carry such an alias. Add one here as well.
-
-Fixes: ea479996c79b ("pinctrl: Add pinctrl driver for the RK805 PMIC")
-Cc: stable@vger.kernel.org
-Signed-off-by: Igor Velkov <iav@iav.lv>
----
-Tested on a Pine64 ROCK64 (RK805) with v7.3.4 and CONFIG_PINCTRL_RK805=m:
-without the alias the module is not loaded and both LEDs stay in
-deferred probe over three boots; with it the module loads at boot, both
-LEDs register and the deferred list is empty.
----
- drivers/pinctrl/pinctrl-rk805.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/pinctrl/pinctrl-rk805.c b/drivers/pinctrl/pinctrl-rk805.c
-index 22f576337faa..694a47d95e17 100644
---- a/drivers/pinctrl/pinctrl-rk805.c
-+++ b/drivers/pinctrl/pinctrl-rk805.c
-@@ -700,3 +700,4 @@ MODULE_DESCRIPTION("RK805 pin control and GPIO driver");
- MODULE_AUTHOR("Xu Shengfei <xsf@rock-chips.com>");
- MODULE_AUTHOR("Joseph Chen <chenjh@rock-chips.com>");
- MODULE_LICENSE("GPL v2");
-+MODULE_ALIAS("platform:rk805-pinctrl");
-
----
-base-commit: 4bc88b10a232db13219667e69616f6d2250d5e5f
-change-id: 20261111-rk805-pinctrl-alias-7d08a4266cba
-
-Best regards,
--- 
-Igor Velkov <iav@iav.lv>
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBOb3YgMTAsIDIwMjYgYXQgNDoyMOKAr1BNIEFydW4gSXllbmdhciB2aWEgQjQgUmVs
+YXkKPGRldm51bGwrYWl5ZW5nYXIxOTkwLmdtYWlsLmNvbUBrZXJuZWwub3JnPiB3cm90ZToKPgo+
+IEZyb206IEFydW4gSXllbmdhciA8YWl5ZW5nYXIxOTkwQGdtYWlsLmNvbT4KPgo+IFRoZSBVU0Ig
+Mi4wIGxpbmVzIGFuZCB0aGUgU3VwZXJTcGVlZCBsYW5lcyBvZiBhIFVTQiAzIGNvbm5lY3RvciBk
+b24ndAo+IGFsd2F5cyByZWFjaCB0aGUgc2FtZSBob3N0IGNvbnRyb2xsZXIuIE9uIHRoZSBSb2Nr
+Y2hpcCBSSzM1ODgsIHRoZQo+IFN1cGVyU3BlZWQtb25seSBVU0IgMy4wIGhvc3QgMiAoeEhDSSkg
+aXMgcGFpcmVkIG9uIHRoZSBib2FyZCB3aXRoIG9uZQo+IG9mIHRoZSBzZXBhcmF0ZSBVU0IgMi4w
+IGhvc3RzIChFSENJL09IQ0kpLiBPbmx5IHRoZSBkZXZpY2UgdHJlZSBrbm93cwo+IHdoaWNoIEVI
+Q0kgcm9vdCBodWIgcG9ydCBzaGFyZXMgYSBjb25uZWN0b3Igd2l0aCB3aGljaCBTdXBlclNwZWVk
+IHBvcnQuCj4KPiBUaGUgVVNCIGNvcmUgYWxyZWFkeSByZWFkcyBhIGh1YidzIE9GIGdyYXBoLCB3
+aXRoIG9uZSBncmFwaCBwb3J0IHBlcgo+IGRvd25zdHJlYW0gcG9ydCwgYW5kIHVzZXMgaXQgZm9y
+IHRoZSBwb3J0IGNvbm5lY3QgdHlwZS4gQWxsb3cgdGhlIHNhbWUKPiAicG9ydHMiIG5vZGUgb24g
+RUhDSSBjb250cm9sbGVycywgc28gdGhhdCBhIHJvb3QgaHViIHBvcnQgY2FuIGJlIGxpbmtlZAo+
+IHRvIGl0cyB1c2ItY29ubmVjdG9yIG5vZGUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBBcnVuIEl5ZW5n
+YXIgPGFpeWVuZ2FyMTk5MEBnbWFpbC5jb20+Cj4gLS0tCj4gIERvY3VtZW50YXRpb24vZGV2aWNl
+dHJlZS9iaW5kaW5ncy91c2IvZ2VuZXJpYy1laGNpLnlhbWwgfCAxMyArKysrKysrKysrKysrCj4g
+IDEgZmlsZSBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9nZW5lcmljLWVoY2kueWFtbCBiL0RvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2IvZ2VuZXJpYy1laGNpLnlhbWwKPiBpbmRl
+eCA5MDhiMDJkOTE3NWUuLjlkY2JhNTM5ZDYwZCAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9u
+L2RldmljZXRyZWUvYmluZGluZ3MvdXNiL2dlbmVyaWMtZWhjaS55YW1sCj4gKysrIGIvRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3VzYi9nZW5lcmljLWVoY2kueWFtbAo+IEBAIC0x
+NjAsNiArMTYwLDE5IEBAIHByb3BlcnRpZXM6Cj4gICAgICAgIC0gaG9zdAo+ICAgICAgICAtIG90
+Zwo+Cj4gKyAgcG9ydHM6Cj4gKyAgICAkcmVmOiAvc2NoZW1hcy9ncmFwaC55YW1sIy9wcm9wZXJ0
+aWVzL3BvcnRzCj4gKyAgICBkZXNjcmlwdGlvbjoKPiArICAgICAgVGhlIHJvb3QgaHViJ3MgZG93
+bnN0cmVhbSBmYWNpbmcgcG9ydHMsIGxpbmtlZCB0byB0aGUgY29ubmVjdG9ycyB0aGV5Cj4gKyAg
+ICAgIGFyZSB3aXJlZCB0by4gTmVlZGVkIHdoZW4gYSBjb25uZWN0b3IncyBTdXBlclNwZWVkIGxh
+bmVzIGdvIHRvIGEKPiArICAgICAgZGlmZmVyZW50IGhvc3QgY29udHJvbGxlciwgd2hpY2ggdGhl
+biBwYWlycyB3aXRoIHRoZSByb290IGh1YiBwb3J0Cj4gKyAgICAgIHRocm91Z2ggdGhlIGNvbm5l
+Y3Rvci4KPiArCj4gKyAgICBwYXR0ZXJuUHJvcGVydGllczoKPiArICAgICAgIl5wb3J0QFsxLTlh
+LWZdWzAtOWEtZl0qJCI6Cj4gKyAgICAgICAgJHJlZjogL3NjaGVtYXMvZ3JhcGgueWFtbCMvcHJv
+cGVydGllcy9wb3J0Cj4gKyAgICAgICAgZGVzY3JpcHRpb246IFJvb3QgaHViIHBvcnQsIG51bWJl
+cmVkIGZyb20gMS4KPiArCgpXb3VsZCB0aGlzIHBhdGNoIGNvdmVyaW5nIGFsbCBIQ0RzIGJlIGJl
+dHRlcj8KCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDI2MTAxNDA4MjAzNy4xNzc0Njcy
+LTItd2Vuc3RAY2hyb21pdW0ub3JnLwoKQWxzbyBzZWUgUm9iJ3MgY29tbWVudCBhYm91dCBjb3Zl
+cmluZyB0aGUgcG9ydCBudW1iZXJzLgoKQ2hlbll1Cgo+ICByZXF1aXJlZDoKPiAgICAtIGNvbXBh
+dGlibGUKPiAgICAtIHJlZwo+Cj4gLS0KPiAyLjU1LjAKPgo+Cj4KCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
