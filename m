@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 833E860A380B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:31:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A9777606A897
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:31:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jmTok0Oz;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ZgJjH+DT
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3yB/34bS;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=gw+r7B9d
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=h0FVKW/xdy/5lAlP260p5FuogC4J3JWLC3CkHBU3Zp4=; b=jmTok0OzIRFXA7emO0Ig9NmD6b
-	LBJwmdfCV0WquKpzPU1UNIC1sYLBDL5oowHHVvGk9qKWDcOM6YKEgS7+Narxz2nlZmfBCq2Vw8380
-	SkaWdrmrzr9eiN/oURxw7Ee4AlNM1C0bIwSAY1mkbhypt/Xq49O1/cFQQydzrNK4FF41D2bNEaJpa
-	UNt7o3neudM32XMCVcTJME/YOWv1lD6Eixmrz3Np3Dvukz2tnyK+Y3QQXp9Tw2pSI729tdX8xqSKC
-	wu8E+zLUJR88geAjG0rZ6hy+EI0iRmdaXyE9DmJmDJ9zzqpbuSTxAqoBqINHbHhfufDymx8I0en6Z
-	N1UMWBpQ==;
+	bh=3dw71YhzdQdzptPWKbvoy/nT0FheX6Bc04lE48nCSEY=; b=3yB/34bSzVAqCNaEFDAHwLN4ox
+	pDELhBti20pL6EnpeKjLIfpbQdyWjv/McYktMsdC8u7csafbhF5aDISgbv1bO5vCA+QfEZKzsP53/
+	in+wprfeP4CXu+A+wKPOlSQ4Ee5ECNnUKerp7xOSRF5oFNytRCqnpfpsRAdND9bVgQAqNGaWj4y8g
+	q4/Ox3FU2+TUCAOpHxwr5/o3f6cttxy2czosAMwxWfn0ifb4X/dqxbo2WZ1lhvhu25hVT/mq0bx6i
+	cZw9KEqDS80WfYgJCqZrm+E4QoULhoLbI02a0a8YU2+z5hDHmAOk0yo/m72YWwUkVQMnmDdqB5doo
+	t8Ir2ZTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQCr-0000000972z-34zf;
-	Thu, 12 Nov 2026 08:30:53 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xRQCq-0000000971E-2etu;
+	Thu, 12 Nov 2026 08:30:52 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQCp-000000096zt-1CQ5;
-	Thu, 12 Nov 2026 08:30:51 +0000
+	id 1xRQCo-000000096zQ-2mUR;
+	Thu, 12 Nov 2026 08:30:50 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 11EDE4697D;
-	Thu, 12 Nov 2026 08:30:51 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3BF3C47357;
+	Thu, 12 Nov 2026 08:30:50 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794472251;
-	b=zkMNiwCpJyaTTEDbqI/5ugpkjnLRi7SMFgG79O20HDzSyQx3CDyIqL+Nre/DMnvsY9ed
-	 Kzp14xXKHG/t1lrrZ8mgvkTIXFfa42Bqr8Kclc+g2u8hbbm9W4vrKLXx0NEZXhHTDqxts
-	 2MFKg+AdX/zf6QURfCeGHWfrIcyuBNaT1wfUGMgItBofD/5/qM9S6SNvws55x1ae0yBEY
-	 gHPterDrI/gA0Q/ZtrISia4F8RtT/M9lYR6gMm101FePeuGVrYh4Vt1NrCN9nky8/kabs
-	 /fgiWx38SSv7kH9r4lmZKyezxoXZvDhLfbmjFoxlZsW8YTZLwq6sOWhKhWD9ES0R6ow==
+	t=1794472250;
+	b=ELgYtB9NMQv2Dw6gmLeOGxT/8to5mkGwRCzM20yNcifoJn7642iavtnONY/LkUy5A+WR
+	 mOAc9nlMQ2um7zNb544n4Emn3/6dTqBSaW3QwG6gcSPe+DkH9or12EnLLsb0w7zhT7WkU
+	 nEOlug3ZvDG4y/KTflXs7AfaGbexTMTTXkNjgLNO9wZhjyd77BeNa9wXtHt4uWEXiWuGn
+	 QOE3uGis8+TKXvw1UkEjQqm7cMq7zDJB+jct+SsRBQn2fEWieV/6Vg2h+RuRh/YZhsxGQ
+	 noPHtLbNyNXeYLJEyrfDonl2Udhy8ouczrgXO8UxZ/5/6y+Jj+sa78HTDrG2CSj/U9A==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794472251;
+	c=relaxed/relaxed; t=1794472250;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=Ea52I2vnQCe6Ni6efkUTjPrh+GmNSqV3kj5+yTLJAXI=;
-	b=s0PRz1zIbh3GlebPo029b6mMbQoIWyitL3H4jhGAsu9sBz/ntrvB1uveYWDA4F25vAGi
-	 i4rXxBqwJO7L4rXoKMbEaZabvHBHoHzMrBJH+9Qt2J9XDLGsp2RHZLjcYXNPjJksCVErl
-	 08z4ZE9uRe6ukZ/OeidMkmAMxIrYft08Cm60x36FjJyOgls8Yj/DDdQOKa37DtNyXjeTy
-	 Lpr0IIVBsl/5vMz35VS7uyiHrxt17tkk9+/5QvhiwTsQnc3b/0QgsTCbqyzRzrtP5cnCI
-	 U6VgSZBofs5lO7Q3S4FB3SopGWGqDEt1LZJMiMoLBMGh7nUU07Nf/Zv+vUnofglJbfw==
+	bh=ASyAY8bq55NxrF7Uq8dDNoQgFuT+3SFZsxEh9sLLHJU=;
+	b=o4vzJJ1iavfj1JbfDvRGNHDTxNPHvjihaoORPy9jnyL15QgL8CVLBfuNk8guW7FaWw7Z
+	 +plSxY7tzt2rzwTg0hNRox3mTnMUJkiU6OchJIKO28MkGypXuoP0PWMc12syONVEmP+nV
+	 A7i5cM8jT3qmCvrCRk6Ux0TktBN+2Fa1pbG/Kg/ptjMruzyp/d+z9X+qrd88eXfRAJWR9
+	 E12/LpCmxJNl7VxxGQDiI50JCASMZM4pdtGlzJ0e3WkCmUXUK5iHdTMSXT0ipt0L2oAKz
+	 Dtr7f4igrrqmYsD7LQeGr+A4yGhZEwz+TVx+J1EleagKC85xlVWjW+hzWuVYQuGgvNw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id E4A8D1F00A07;
-	Thu, 12 Nov 2026 08:30:49 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 97D741F00A09;
+	Thu, 12 Nov 2026 08:30:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1794472250;
-	bh=Ea52I2vnQCe6Ni6efkUTjPrh+GmNSqV3kj5+yTLJAXI=;
+	bh=ASyAY8bq55NxrF7Uq8dDNoQgFuT+3SFZsxEh9sLLHJU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=ZgJjH+DTPl91izgxYPqTRx1QSsWfRWKPT6Hq7zKhsUu8M/Wm0mR0o/JonzkAwGCZx
-	 XXKvTo22FjnJC0G2NIh9sfkS9qXvfZ3u4rkHbnp3iBY53ESkxTBsWu7M0GX3Li3eHk
-	 Be9jcoV/O8xOf7LmXKVFg8UWREfUBGbl5lbCXge5a/0157VOU3+84hVd6+L6eW933k
-	 eIgdol9dmgJm1bGEZtbtr42KkznnhjoXETrdQE74/5z/DSa0k9J+IoGJL8aPjXqAzw
-	 bosFZVKY1SBsqnxpais3/Y7OvuU+tbJXSMCozOSJxgA27RKl5XWVJLO7fweDyxes1P
-	 QkXDvrTBRyM/A==
+	b=gw+r7B9d+uGfx2+SWHJPBSpjGRD/RWGoAP3Pi8peqQuIaYONEgHcC5NgUWEw0G/mt
+	 YR8miGCueGY6VUf/bNvBJ30rEntrQhNptY5LmSM/32VKDarnWeg8ayquHIYtfN3iDE
+	 gkDEbE7MfvgKYFeMtexJeQ2G8ay8wIxSHJPU6OvbeEyKQoADLzqEP9vkJGV4JN5Sh/
+	 ox63LQk6ZCX3Wtnujn1BREPMk2x3VyUSQEm3upF3Jgqzp0w2Fv8okIifZWisH8X/ti
+	 dbUb1chbjz6DVwgnDx8rbNEbWyst/zuy1kFQEAkBKRvj9SclUgFdDfsvoNEZaIMqMa
+	 Mj+AQWad+v8hw==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 5F5724938D;
+	by lkml.kernel.org (Postfix) with ESMTP id 2104449381;
 	Thu, 12 Nov 2026 08:30:48 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 12 Nov 2026 08:30:52 +0000
-Subject: [PATCH v2 6/6] arm64: dts: rockchip: Add the reset lines of the
- RK3588 VEPU121 cores
+Date: Thu, 12 Nov 2026 08:30:49 +0000
+Subject: [PATCH v2 3/6] media: verisilicon: Enable the Rockchip encoder
+ interrupt again after a reset
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261112-hantro-robust-v2-6-18561fd48838@gmail.com>
+Message-Id: <20261112-hantro-robust-v2-3-18561fd48838@gmail.com>
 References: <20261112-hantro-robust-v2-0-18561fd48838@gmail.com>
 In-Reply-To: <20261112-hantro-robust-v2-0-18561fd48838@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
@@ -96,13 +96,13 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Sergei Khomenkov <shomenkow@gmail.com>, 
  Tharit Tangkijwanichakul <tharitt97@gmail.com>, 
- Arun Iyengar <aiyengar1990@gmail.com>
+ Arun Iyengar <aiyengar1990@gmail.com>, stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472247; l=2128;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472247; l=2118;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=pWGgDNReqboxSyr5VfPbRCUDYTeDvzJsJNZ3jQadXZk=;
- b=e2NIaxKRjQf4kOE2R7y4mzRTGkpfzmZbVEw4CbPSSUUhDvutW0BQz/hLqFUihJHoYOohZ+nD5
- UEHZIihvePxDxy1t8UR/I5gVoWZ3V4esf8vtdLEHxrpKaGX4dBY898T
+ bh=/pdV5Ao1nfGJCAVq9CfIzOPUMn8hmIXBimy2UnM/Qpk=;
+ b=ft5+zd+VMM7oNCjDiVVEWeZlc3SSoAWnTT6gIEqUHrWWoRnoY+fjjX7uOstpMkkQs3JCHDa2w
+ y0Ch1+HeEICDFvreFFH8syfHKBG6uUPEluWPx/0eyl9oBMCcxhBMFAn
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -131,60 +131,53 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Describe the AXI and AHB reset lines of the four VEPU121 JPEG encoder
-cores, so that the driver can reset a core that is stuck after a fault
-of its IOMMU.
+The reset operations of the Rockchip VEPU1 and VEPU2 encoders, which
+hantro_watchdog() calls when a job times out, disable the encoder
+interrupt before stopping the encoder. Nothing enables it again: the
+encoder run functions don't write the interrupt register, only the
+interrupt handler does, and it no longer runs. Every later job on the
+encoder then times out as well.
 
-The IOMMU of each core sits in the same register block and is clocked
-by the same clocks, so these resets likely cover its bus interface as
-well. This relies on the driver not leaving the VPU in reset after
-remove ("media: verisilicon: Don't hold the VPU in reset after remove").
+Clear the interrupt register at the end of the reset, as the interrupt
+handler does after each frame.
 
+Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
+Cc: stable@vger.kernel.org
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/media/platform/verisilicon/rockchip_vpu_hw.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index aa69fd3793fd..227465d446a2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1325,6 +1325,8 @@ vepu121_0: video-codec@fdba0000 {
- 		clock-names = "aclk", "hclk";
- 		iommus = <&vepu121_0_mmu>;
- 		power-domains = <&power RK3588_PD_VDPU>;
-+		resets = <&cru SRST_A_JPEG_ENCODER0>, <&cru SRST_H_JPEG_ENCODER0>;
-+		reset-names = "axi", "ahb";
- 	};
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+index 02673be9878e..5d4e46bd9cd6 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+@@ -475,6 +475,12 @@ static void rockchip_vpu1_enc_reset(struct hantro_ctx *ctx)
+ 	vepu_write(vpu, H1_REG_INTERRUPT_DIS_BIT, H1_REG_INTERRUPT);
+ 	vepu_write(vpu, 0, H1_REG_ENC_CTRL);
+ 	vepu_write(vpu, 0, H1_REG_AXI_CTRL);
++	/*
++	 * The encoder runs don't write the interrupt register, only the
++	 * interrupt handler clears it after each frame. Clear it here too,
++	 * or the interrupt stays disabled and all later jobs time out.
++	 */
++	vepu_write(vpu, 0, H1_REG_INTERRUPT);
+ }
  
- 	vepu121_0_mmu: iommu@fdba0800 {
-@@ -1345,6 +1347,8 @@ vepu121_1: video-codec@fdba4000 {
- 		clock-names = "aclk", "hclk";
- 		iommus = <&vepu121_1_mmu>;
- 		power-domains = <&power RK3588_PD_VDPU>;
-+		resets = <&cru SRST_A_JPEG_ENCODER1>, <&cru SRST_H_JPEG_ENCODER1>;
-+		reset-names = "axi", "ahb";
- 	};
+ static void rockchip_vpu2_dec_reset(struct hantro_ctx *ctx)
+@@ -493,6 +499,12 @@ static void rockchip_vpu2_enc_reset(struct hantro_ctx *ctx)
+ 	vepu_write(vpu, VEPU_REG_INTERRUPT_DIS_BIT, VEPU_REG_INTERRUPT);
+ 	vepu_write(vpu, 0, VEPU_REG_ENCODE_START);
+ 	vepu_write(vpu, 0, VEPU_REG_AXI_CTRL);
++	/*
++	 * The encoder runs don't write the interrupt register, only the
++	 * interrupt handler clears it after each frame. Clear it here too,
++	 * or the interrupt stays disabled and all later jobs time out.
++	 */
++	vepu_write(vpu, 0, VEPU_REG_INTERRUPT);
+ }
  
- 	vepu121_1_mmu: iommu@fdba4800 {
-@@ -1365,6 +1369,8 @@ vepu121_2: video-codec@fdba8000 {
- 		clock-names = "aclk", "hclk";
- 		iommus = <&vepu121_2_mmu>;
- 		power-domains = <&power RK3588_PD_VDPU>;
-+		resets = <&cru SRST_A_JPEG_ENCODER2>, <&cru SRST_H_JPEG_ENCODER2>;
-+		reset-names = "axi", "ahb";
- 	};
- 
- 	vepu121_2_mmu: iommu@fdba8800 {
-@@ -1385,6 +1391,8 @@ vepu121_3: video-codec@fdbac000 {
- 		clock-names = "aclk", "hclk";
- 		iommus = <&vepu121_3_mmu>;
- 		power-domains = <&power RK3588_PD_VDPU>;
-+		resets = <&cru SRST_A_JPEG_ENCODER3>, <&cru SRST_H_JPEG_ENCODER3>;
-+		reset-names = "axi", "ahb";
- 	};
- 
- 	vepu121_3_mmu: iommu@fdbac800 {
+ /*
 
 -- 
 2.55.0
