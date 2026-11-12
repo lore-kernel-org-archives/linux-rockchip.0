@@ -2,85 +2,88 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D65E606B241
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9487F606B242
 	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:38:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NPS+necC;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=nM2p2EIy
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=C/wIpts1;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=dEa6SWT3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=7ezRQ3FHdACXE9ZQEtns4W3Q1mTS752iqmKTo5rnj88=; b=NPS+necCxTBN6plewav+/BjR/y
-	hY7DfrCHLWDppv/hbVVgDK4vWN4ClB3f0PW4sFyyNSX6h11Fu6tP5qfGJAoYshXyJn6zGSE6LeUIE
-	u0CJVcHVyM49A6mndzoFo9Wp7/x5hL/3+/tKaenQH03w/Wk46lXv+OHl8kSB5ik204oDwsaPE1Zqd
-	emkDRl4QiF/6QLJxXPoFxjt0fPKt8ts0mxHiEVPiJGVZTnJ8pZvgBWX3PJEt2yvlScecjocrg5fs0
-	3Y/A4nXDvzJBOIev05jaDNlpd4ARrlyrwUZn1hHvgZ5yUWIgpmeAv2esmwLbAcXdyVFYg4Qs+W+wz
-	7NrcHaLw==;
+	bh=im8giEFtWkZWZqke6ubieshGTHWYQlTAHA9mpcMX24c=; b=C/wIpts1SgNNonpnk3au6g4shd
+	3K7/YX6fMkFllhQB9OsJi0QxRX/BCaKv/NF2qkEXgO3RzY9rzuPcWIhnaii6XQSOilOePOWcgU+vT
+	uxGUjEDtsa2gUZUUHhl8rEKPgXSbL3NLGq++lV4VGqpia24qW/U5eZWb2AFTZ5Skw+XB3E2TmhBdF
+	/JHPzXlICx/I9GeTBbIDKxA1B+g3plge7Xq8xAchDjtjbvSq5s2tYYWFFM+/5DHGmtiNsyYOZa1xV
+	dCHSeKICvPuVUFAHhzGnQLAzOKRfxrio+UmNaa+MndSO25CX5X2akT1pH9reSrOLrXjnkHTbubqv8
+	hMblds8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQKa-00000009B0u-02DM;
-	Thu, 12 Nov 2026 08:38:52 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xRQKY-00000009AxW-1SQ4;
+	Thu, 12 Nov 2026 08:38:51 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQF6-000000098QV-0veU;
+	id 1xRQF3-000000098Q6-1UB1;
 	Thu, 12 Nov 2026 08:33:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A78B863E00;
-	Thu, 12 Nov 2026 08:33:11 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1DFA34792D;
+	Thu, 12 Nov 2026 08:33:09 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794472391;
-	b=Cl/+97nCA1h8i8VgsOOtbvbtjUdvJKYOEU+semB1YK9rtFKEG9wWFA47/kk4uFcMh5Ar
-	 6kRLHnREcuntx8sC6836pfdp/S/PF6iO+W+lquF4v2EWHg7LeQbij6Uo6Dfh5fEjSl2az
-	 Ro0NT/6TdyQQUm3PA6kqcZb0yWcJfgjB2kCmmszLWeM3hE8bmsEDMvsKIe4eD3Tkv5Ji1
-	 T8c3dix4e3OUyhm6TQxVWiRi31nZY75KPEyXvhulyw3ru1mX8i8NEfgxboroAXp231wbT
-	 i1ayAWanM4wJ/g50tvsVNRLPpX+HTyxmuCbhQ9kv4LqiEoGZiGvp8ow7F/fVaikhN9g==
+	t=1794472389;
+	b=WIC3dsBtyaclCZzocfN4W1AjgOTkgdYo2srfIUcg+ZsJ/95vavV4zEchllFl/Ic3G06B
+	 kB+XjEXzNR4boHr0oDlAFerDrQNthFNcy/T3pgNgq5iUsWtwPbPm27KReUW7CxvUWpX/O
+	 fdMimwaKwqvZqzx0jVpOiyKyTOQ1vXEhx2XM3ASx42cxK/d6Y9fZ9fV8fGi7RoLWn+m3V
+	 KjcgipHVcmv5HdfZIUdSx9QBKZ60/jg/eoEiAD7Cr48XTMv0Ew9rSV/DBDXIM3LEB7d63
+	 RwdGYYjGtxHKTHiKXY1xHtUSfBsgwgqqCzShRiyehWS3vBTiGazuKYclpTiz6socBuQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794472391;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=dHj51gMQ8uQhwkQpY2b4D9/D/MpMtRNQyvnnTdQLIJ0=;
-	b=AIIio3y2Zt9DH8Nk/uXDrXKSP9660sNgQXYAg8OGKYISVyq6QP9KnBQ/2DPiHUy2BOrb
-	 lEhdbFA5qI2W2sgyD6M76P/G4R6mD0MhT0F++Rn3UgnKoAVVoN1dE62uq5xo+CNCOZ/w8
-	 CcXuflHqnC3nojH/TC3z8FWWUd1js3b8Tw/0lai7K9Ku6ReljggdqRMXzGOoEm/sPcecm
-	 zF7zsN2xRTkjiKrwP1e/pqqhC8s7gdi2puejyCA3u8GKZhpaetJ9e8VSSYdttnYdMNXkc
-	 AqpaE6BLFeKbBB9uMrjHjKKuMUfWA6dQWyuTeu+5GGWp2aF3RMaju23CILfVNS1nd1Q==
+	c=relaxed/relaxed; t=1794472389;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=VpQ/+iowHyrQjEkYL9X0OjJSOe5lvW4ubEUDr7PhZ0s=;
+	b=Sooh/lK6BBJQ/bn/hF9+ALmIxIXq8pNigcVf+yS6tOFn1fOWApDMW8RkHr0kd0ilvxhg
+	 FL6lOIbQD/OByLQnho4WQahnjwEMu3LqJGYUCoHENAsLxovdlghsN79OF3JUpsVL0kjKk
+	 sNnnF1biu7bmXudjGm9OeIMY8mOjC3D4+Ppl35XWdQsQY1VQA/YyghFnEUeEvjy6VjbPz
+	 K27cW8I6M5+x1YjBFnOo4DIiu0pN2aWZoyYlM3InNHBOtvxM/EPU3ypDbY2LedcA50dLb
+	 WuJeFs8l8ok5BMkski+KCunsOoYQSH29GxROnAyr7nc3XuiID//5ymyUzXxYMwJDU0g==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 180051F00A0D;
-	Thu, 12 Nov 2026 08:33:09 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id BE5CC1F00A09;
+	Thu, 12 Nov 2026 08:33:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794472391;
-	bh=dHj51gMQ8uQhwkQpY2b4D9/D/MpMtRNQyvnnTdQLIJ0=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=nM2p2EIyQbYw6w4tzyFZccWyqHZsgK07vS+589h3zb8usjVHBhwhVs16rEC1zzuCt
-	 U4v/FVMkMlpTClna8YVsuSPk89I0foVAKkjvNIiARh0tnLdEy4ZkBExlCglLTqWyeu
-	 7+Bx0RBTXdlV5D8d8sZfvrbptE0EeUJoHfUOgP6h4nE9PUjkTB/Xuoqt+c5Po+Z7ur
-	 /p3GSgFPNwj/Pz4DzjXUAT4zWSH4GxlB1ypI6tPpixHjvPKGCPwohrYUQ3Vp4bbUNX
-	 SI5Aw30k2dM12/ZzEP3Xe2Pk9+P0dzDUnLKx/ck5NGz39UjZ5s1sdXUs5vwpHJN3Bw
-	 qruPCeXWeC4yg==
+	s=k20260515; t=1794472389;
+	bh=VpQ/+iowHyrQjEkYL9X0OjJSOe5lvW4ubEUDr7PhZ0s=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=dEa6SWT3OPZIp2VS8jdoI7aKgYQcl6rXstbL28lY2aAww7+bKfOFC/5rdZ9FU3c8o
+	 FdIRRS252854E7Ep3D9gNydgv090u4m8MAN5QeNsHuBW2R5vxJALV2q6jhsJgdcWpg
+	 CeSv+B7917r59cYkpNG8mLQPIycUBJBhnDFREeWmJCfs36l/jmQIHbByvneFuvA+iO
+	 0iAeffNgrNdBNxQDJvvEfjZAf6pR/UF5BVtuorPounWnX6rVpk388siU5QWAHhHEja
+	 M5bxQxgz5ghMJ8/gu5coAjt7TEeTHU5qOI5miMm77mhCbu4CBkCv0lSQ3HCnLWCXia
+	 pyxhx2Jgv9rDg==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id EEDB5493C6;
+	by lkml.kernel.org (Postfix) with ESMTP id 376BA49378;
 	Thu, 12 Nov 2026 08:33:06 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 12 Nov 2026 08:33:13 +0000
-Subject: [PATCH v2 9/9] drm/rockchip: vop2: Fix the AFBC offsets of a
- source that starts inside a superblock
+Subject: [PATCH v2 0/9] drm/rockchip: vop2: RK3588 clocking, sync polarity,
+ AXI port and window fixes
+Date: Thu, 12 Nov 2026 08:33:04 +0000
+Message-Id: <20261112-vop2-fixes-v2-0-8218c1cf8ac8@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261112-vop2-fixes-v2-9-8218c1cf8ac8@gmail.com>
-References: <20261112-vop2-fixes-v2-0-8218c1cf8ac8@gmail.com>
-In-Reply-To: <20261112-vop2-fixes-v2-0-8218c1cf8ac8@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/22NwQ6CMBBEf4Xs2Zpui5h68j8MB2wXWCOUtNhoC
+ P9uwavHl3kzs0CkwBThUiwQKHFkP2ZQhwJs34wdCXaZQUlVIaIUyU9KtPymKNqmPGGpzsZYhFy
+ YAu1B9m/1j+Pr/iA7bwub0XOcffjsbwk37+9wQiGF07oi45yRTl+7oeHn0foB6nVdv4x7vQG2A
+ AAA
+X-Change-ID: 20261110-vop2-fixes-fa45142799c1
 To: Sandy Huang <hjc@rock-chips.com>, 
  =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
  Andy Yan <andyshrk@163.com>, 
@@ -91,13 +94,14 @@ To: Sandy Huang <hjc@rock-chips.com>,
 Cc: Piotr Zalewski <pZ010001011111@proton.me>, 
  Chaoyi Chen <chaoyi.chen@rock-chips.com>, dri-devel@lists.freedesktop.org, 
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Arun Iyengar <aiyengar1990@gmail.com>
+ linux-kernel@vger.kernel.org, Arun Iyengar <aiyengar1990@gmail.com>, 
+ stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472385; l=3183;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472385; l=8125;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=NK+8Rm2INnnfeJa9OAQjLE/uLIeTJ3MOciFQGunaOiA=;
- b=ERQHyJ9mru3JgMuiW7seaQd/zSoJEeU3ViTogqMI2QQLi0rUy54OLXDZSEIQ/RqSjPOhLxEmA
- yG5JhwK2z2kBoOBkPrDdinC+TBgqvztb+0jd9F6+GD56YpmsQWYkMBI
+ bh=BjFRBbEQB8leGzKTbYhxTpTTCIReMNAR0rDWrzczLYI=;
+ b=pVqilutBPBcBjnQREXu7s4yo8H2Fwtll/ftNxDI/v53Wkhd04vbCzyqcqoVLNnc1S/0VvvDFh
+ lPUaRUejKYzCRllQ1XZmeB2axOHXlKb9BJCRU4pgem/IBgf39ZaqItp
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -124,84 +128,150 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
+This series collects fixes for the RK3588 VOP2 found while bringing up
+HDMI and DisplayPort output on an Orange Pi 5 (RK3588S).
 
-The AFBC decoder of a window takes the position of the source in the
-framebuffer (AFBC_PIC_OFFSET), the number of superblock columns to
-decode (AFBC_TILE_NUM) and the offset of the first pixel inside its
-superblock (the transform offset). For a source that doesn't start at
-x = 0:
+Patch 1 is new in v2 and fixes a bug that is as old as the driver:
+the chroma plane of a multi-planar YUV framebuffer is fetched from the
+GEM object of the luma plane, which is wrong when the planes are in
+different objects (two handles in ADDFB2).
 
-- The tile number only counts the superblocks of the source width, one
-  short when the source starts inside a superblock and ends inside
-  another one.
-- The transform offset is the whole x position, truncated to the 8 bit
-  field, instead of the position in the superblock (16 pixels wide, or
-  32 with AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 on RK3576).
+Patches 2 and 3 fix the RK3588 interface setup: rk3588_calc_cru_cfg()
+leaves dividers it does not use uninitialised and the garbage ends up in
+VP_CLK_CTRL, and rk3588_get_hdmi_pol() decodes the POLFLAG bits it is
+handed as DRM mode flags, so the GRF sync polarity bits are wrong for
+most modes.
 
-Count the superblock columns from the first one the source touches, and
-take the x offset in the superblock, like the vendor kernel does for the
-not mirrored cases. The X mirrored and rotated cases are left as they are.
+Patch 4 stops the RK3588 Cluster windows from advertising AFBC with the
+lossless colour transform (YTR) for RGB565/BGR565, which the decoder
+cannot display (black picture plus POST_BUF_EMPTY).
 
-Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+Patches 5 and 6 deal with POST_BUF_EMPTY underflows. The VOP2 fetches
+through two AXI read ports but the port of each window is fixed in the
+window table, so the usual primary plane plus overlay configuration of
+a video port puts both layers on one port while the other sits idle.
+One port cannot sustain two full screen 4K@120Hz layers (measured: the
+fetch rate collapses from ~6 GB/s to ~3 GB/s and about half of all
+lines underflow). ACLK_VOP was 750 MHz in the 4K@120Hz measurements
+(the HDMI FRL patches on the test kernel raise it from the default
+500 MHz for these modes), and raising it to 850 MHz changes nothing,
+while moving one of the two windows to the other port removes the
+underflows. Patch 5 assigns the port of a window when it starts
+fetching, balancing the estimated load, in the atomic check from the
+whole new state; patch 6 limits the POST_BUF_EMPTY interrupt to once
+per frame, since an underflowing port otherwise keeps the CPU in the
+interrupt handler 50000 to 300000 times per second.
+
+Patches 7 to 9 are smaller fixes: the start mixer search skipped
+Esmart3 (for_each_set_bit() was given the highest window id as the bit
+count), a gamma LUT update cleared the other fields of LUT_PORT_SEL
+(the VP0/VP2 dclk source selection and the VP0/VP1 merge enable), and
+the AFBC tile count and transform offset were wrong for a source that
+starts inside a 16 pixel superblock.
+
+Tested on an Orange Pi 5 (RK3588S) with an HDMI 2.1 TV and a
+DisplayPort monitor, pictures judged with a camera. Patches 2 and 3:
+VP0_CLK_CTRL reads back without the garbage dclk_out divider, the sync
+polarities seen by the HDMI controller (VIDEO_INTERFACE_STATUS0) match
+the mode flags for +/+ (1080p, 2160p) and -/- (720x480, 640x480) modes,
+and the picture is correct over TMDS and FRL modes from 27 to
+1188 MHz. Patch 4: RGB565 is offered on the Cluster windows only
+without YTR, and those planes scan out correctly on three Cluster
+windows. Patches 7 to 9 were found while driving Esmart3 and partial
+AFBC overlays: an AFBC overlay placed at x=1001 shows correctly.
+v1 of patches 5 and 6: 3840x2160@120 with a full screen overlay
+(previously ~120000 POST_BUF_EMPTY per second and a scrambled picture)
+and a dual-display session (HDMI 4K@60 plus DP 4K@30, two video players,
+ten minutes) ran with zero underflows.
+v2 of patches 1, 5 and 6 on the same board: an NV12 overlay with luma
+and chroma in two GEM objects shows correctly; at 3840x2160@120 the
+overlay is assigned the port the primary plane is not on, also when
+another overlay is switched off in the same commit, with zero
+POST_BUF_EMPTY; a window started on the DisplayPort video port avoids
+the port of a window with the same read IDs that is switched off on
+HDMI in the same commit; after a forced underflow and an HDMI off/on
+cycle the video port raises no frame start interrupts while vblank
+reporting is off.
+The DRM KUnit tests pass (they don't cover this driver), and every patch
+builds with W=1 on arm64.
+
+This series was developed with Claude (Anthropic) as a coding assistant:
+it wrote the code and the commit messages, and I reviewed and tested
+every change as described above.
+
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+Changes in v2:
+- New patch 1: take the UV plane address from fb->obj[1] (pre-existing
+  bug reported by the Sashiko review of v1 patch 4).
+- Patch 5 (AXI ports), after the Sashiko review:
+  - The ports are assigned in the CRTC atomic check from the whole new
+    state and kept in a private object; the plane update only programs
+    them. v1 chose the port in the plane update, in plane order, so a
+    window saw the stale state of windows switched off later in the
+    same commit (Sashiko: commit order skews vop2_win_get_axi_bus()).
+  - The load counts all planes of the framebuffer, e.g. 12 bpp for NV12
+    instead of 8 (Sashiko: UV plane AXI load omitted).
+  - A switched off window keeps its read IDs in use until the frame
+    start of its own video port, or until the commit that switched it
+    off is done, instead of releasing them in atomic_disable (Sashiko:
+    premature AXI bus release).
+  - The windows that start fetching are assigned busiest first.
+  - The plane update takes the port from the plane state (new struct
+    vop2_plane_state), not from the private state: commits on
+    different video ports aren't ordered against each other, so a
+    later one may have freed the private state by then.
+- Patch 6 (POST_BUF_EMPTY), after the v1 reviews:
+  - Clear the stale FS status before enabling FS while vblank reporting
+    is off, so it doesn't fire mid-frame (Sashiko).
+  - Disable POST_BUF_EMPTY and a pending FS re-arm when the CRTC is
+    switched off and on the atomic_enable error path (Sashiko).
+  - enable_vblank() doesn't clear a pending FS while POST_BUF_EMPTY
+    waits to be re-armed (Sashiko).
+  - Fixes: tag added (Sashiko).
+  - The comment above the FS enable says why it is there: masking
+    POST_BUF_EMPTY does not touch FS, since VP_INT_EN is
+    write-masked, but POST_BUF_EMPTY is unmasked again from the FS
+    interrupt at the next frame start, so FS has to be on. It is
+    only enabled here when vblank reporting has it off; v1 wrote it
+    unconditionally and its comment hid the reason (Chaoyi Chen).
+- Patches 7 and 8: Fixes: tags added (Sashiko).
+- Patch 7: ROCKCHIP_VOP2_MAX_LAYER_ID added after the last window id and
+  used as the bound of the search instead of ROCKCHIP_VOP2_ESMART3 + 1
+  (Chaoyi Chen).
+- Patch 8: Reviewed-by added (Chaoyi Chen).
+- Cover letter: says what ACLK_VOP was during the measurements and that
+  raising it doesn't help (Chaoyi Chen asked; the details are in the
+  commit message of patch 5).
+- Patch 9: the x offset in the superblock is taken modulo the
+  superblock width, 32 with AFBC_FORMAT_MOD_BLOCK_SIZE_32x8 (Sashiko),
+  and a Fixes: tag added (Sashiko).
+- Cc Piotr Zalewski (author of the commit patch 8 fixes).
+- Link to v1: https://patch.msgid.link/20261110-vop2-fixes-v1-0-d336e9dd90d3@gmail.com
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 259e30ebb9cb..0e16b665ccac 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -439,7 +439,7 @@ static bool vop2_half_block_enable(struct drm_plane_state *pstate)
- }
- 
- static u32 vop2_afbc_transform_offset(struct drm_plane_state *pstate,
--				      bool afbc_half_block_en)
-+				      bool afbc_half_block_en, u32 block_w)
- {
- 	struct drm_rect *src = &pstate->src;
- 	struct drm_framebuffer *fb = pstate->fb;
-@@ -487,7 +487,7 @@ static u32 vop2_afbc_transform_offset(struct drm_plane_state *pstate,
- 		ty = act_yoffset;
- 		break;
- 	case DRM_MODE_REFLECT_Y:
--		tx = act_xoffset;
-+		tx = act_xoffset % block_w;
- 		ty = bottom_crop_line_num - act_yoffset;
- 		break;
- 	case DRM_MODE_ROTATE_90:
-@@ -499,7 +499,7 @@ static u32 vop2_afbc_transform_offset(struct drm_plane_state *pstate,
- 		ty = vir_width - width - act_xoffset;
- 		break;
- 	case 0:
--		tx = act_xoffset;
-+		tx = act_xoffset % block_w;
- 		ty = act_yoffset;
- 		break;
- 	}
-@@ -1816,7 +1816,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 		if (fb->modifier & AFBC_FORMAT_MOD_YTR)
- 			afbc_format |= (1 << 4);
- 
--		afbc_tile_num = ALIGN(src_w, block_w) / block_w;
-+		/* Superblock columns the source covers, the first one partly */
-+		afbc_tile_num = ALIGN(src_w + (src->x1 >> 16) % block_w, block_w) / block_w;
- 
- 		/*
- 		 * AFBC pic_vir_width is count by pixel, this is different
-@@ -1867,7 +1868,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 			vop2_win_write(win, VOP2_WIN_AFBC_PLD_OFFSET, yrgb_mst);
- 		}
- 
--		transform_offset = vop2_afbc_transform_offset(pstate, half_block_en);
-+		transform_offset = vop2_afbc_transform_offset(pstate, half_block_en, block_w);
- 		vop2_win_write(win, VOP2_WIN_AFBC_HDR_PTR, yrgb_mst);
- 		vop2_win_write(win, VOP2_WIN_AFBC_PIC_SIZE, act_info);
- 		vop2_win_write(win, VOP2_WIN_TRANSFORM_OFFSET, transform_offset);
+---
+Arun Iyengar (9):
+      drm/rockchip: vop2: Take the UV plane address from the second GEM object
+      drm/rockchip: vop2: Don't use uninitialised dividers on RK3588
+      drm/rockchip: vop2: Fix the HDMI sync polarity on RK3588
+      drm/rockchip: vop2: Don't accept AFBC YTR for RGB565 on RK3588
+      drm/rockchip: vop2: Balance window fetches across both AXI ports on RK3588
+      drm/rockchip: vop2: Report POST_BUF_EMPTY at most once per frame
+      drm/rockchip: vop2: Find the first mixer of a video port with Esmart3 too
+      drm/rockchip: vop2: Keep the other LUT_PORT_SEL fields on gamma LUT updates
+      drm/rockchip: vop2: Fix the AFBC offsets of a source that starts inside a superblock
 
--- 
-2.55.0
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 453 ++++++++++++++++++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  53 ++++
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c |  27 +-
+ 3 files changed, 512 insertions(+), 21 deletions(-)
+---
+base-commit: 8deaade4a5a4ff635df91e246e42139ab2b33f6d
+change-id: 20261110-vop2-fixes-fa45142799c1
+
+Best regards,
+--  
+Arun Iyengar <aiyengar1990@gmail.com>
 
 
 
