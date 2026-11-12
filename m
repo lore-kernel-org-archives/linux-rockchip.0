@@ -2,85 +2,88 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0A42860A2631
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:55:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 585E3606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:56:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nPY/rMv2;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=nDSfzTzj
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=D3Ns9R9X;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=DXbphCkR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=spZFUMxegwAz1+kSRS8tRZnQD4ImYiYahEbwVIGOzPc=; b=nPY/rMv2qbd2vlkuPedkgR+A2Q
-	YUPn74LjDl2vION4HB/jpiBnS01XPF3uivR8pftJf1pZ7lqjQ6jf1K5IJTzmBIXq1iRs2Ea3LJFvO
-	iQu6p9RsgNstRFqR3t+Qgzdjq26abQY8qeJlhwFhb9PG8kcb33J0Yyg0Hsf9KOMe667dyKNmkLX1n
-	+evFYQGSNSSARtz+8soO3r4q8I/Hv4uzQMj0GZf/efueus/bbx0b8Ry/BgEs4tZCWSv2cG65jQgzB
-	H00vua9cQ4siSUnwI1izbhFmPG/3lg7eGlfoSkRn79vQErl12Rx1+7hBuqXj6oCUjhL0sxcD4d3om
-	SXFD6jDQ==;
+	bh=rVx7s6CnvZP7oGhAtR2CHIFDpRfhZJyf9z6oaLjAUZQ=; b=D3Ns9R9XRNeSEKJN4mibI0J4q7
+	/8DXaN9XASW6mIPXaWFrVqQMqsULeXQqxfJCrsrbUXNb5REK9+g6d3LzuNAl6I78IMdFiguALtqhw
+	VtRwV0ZS5AEhzRc/YVcNC5b37Ly9p9MwDZ9GqCN8Dqe+66vxjDBomQnGJqpnBem4eqKODKaDlA3SI
+	Zy0LZkMj9tAqbHipGfZMA4Ki/EIwSrWxtuGKq4c4AHdPyTYBCTC88MSlS94nAdRyWaRce43ojl/oy
+	bO5co0SPZQD5QSwwfzFEDXc5TrLXH3RXUH/wmPmMKkBUhZ6BLCu2KK1KwEf7SNcHTOZaBKwETsI+/
+	Y9lch5TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQap-00000009FYi-1bTb;
-	Thu, 12 Nov 2026 08:55:39 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xRQb4-00000009Fhb-1gxh;
+	Thu, 12 Nov 2026 08:55:54 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQaA-00000009FIt-0e2C;
-	Thu, 12 Nov 2026 08:54:58 +0000
+	id 1xRQaC-00000009FJA-1Zeu;
+	Thu, 12 Nov 2026 08:55:01 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E386E44F74;
-	Thu, 12 Nov 2026 08:54:57 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D24AA63B78;
+	Thu, 12 Nov 2026 08:54:58 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794473697;
-	b=z3/yb4ESfk5EPtIp4XaSvCiqod4jXUqYUVV926y8mcAR2myqXFtehxhBZk0Y9m2NlOFJ
-	 ljV5f5mtT+/Et45C8/Qtjog5xCm7wqtItjw56z3KnjjP4QRnKovZtYxkdpRIVruDRIodC
-	 z6AfxVkjZCgOpSsUVGU1BzzfhKpH9C9EQgmMDTBO7SNH9F9qxBzTDleS9h431zFDh+uee
-	 2EBMfU7K83J3xPU17bl+Dz1f2UyI6XDj28EaDWX/KdkClkN8Eks98KIBQ9zXcj3qsv57g
-	 mIxJlCkSVc8E7t8ZN2k2ZRGpNoIsIH/KP81v9vfO2HD5bggaOFnOamd1MUuSD/bOJ4g==
+	t=1794473698;
+	b=OVTXgwgrO3QdmGJbT6nqDEUNcNWF+nwfPDRWY2ltwmLDzwa6oHgmycBxdWQ0xtUCAbeM
+	 ZbuwDJQcM81dE9OoUYi4zklJrKKEASMRjFgFGi/x0b8JmLYEGZ30wUqx1UP0gUF6uaW6T
+	 yNe9C6go2LJQaL+nwpD9c7XAgxKiLBM19XWvr1Pm6lY8e7gGm41fbo72mWIGeku+bhHmC
+	 w5epbPyyaDXO1DIfE1nxKwL/sSpepXgAtuUSsW7QndiXiS4hIL6fB0YFaocyw36j+oa6c
+	 ZqAyY8/vOD7lbwNd7io/28Qtm0pAQCwm3DpFUYkCB8+sr7Qk8WMu0ws2G6EKuxKx8uA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794473697;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=GSMh+74fPK0ymy278CPAuF9fN6B/X3Bftnl6WSY5S7E=;
-	b=V9W0OvOh4QEFjk9mx4kW+tPoxROwmwDjmf6obUqeGRMUFSJicbus6JRAY4zq6+ewzz8o
-	 Ts9puIiwKaulAWunv6m4fn36Ny7pKwgfwPthryTDv6cLem+OIOFpoVghWbiF0kPIolY3Z
-	 ajyNMaMTKJviMi7rc6TIL71XhqIM7tpM86SNaoGNMrmGuBtReGDKLxHeiaHjnLw69cQ+n
-	 i+rp332/HWrZfCY0VnKQewDyJAZwI77quF7dzVYksx3stCIfa3pYztUBiLiAnLFnXrbua
-	 WhHcVMSHkVEj8yHYLe1K4DLAOWwDLCWCH9WJOab4kTt9c5yUD31xIq1Cu9iR5TUOhgg==
+	c=relaxed/relaxed; t=1794473698;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=pi3ws6GnqNcs7b16BSYAZjzx8UNNweD913b2Lj2IYrM=;
+	b=OzyvTS0p2iuvZXLp/mUg6i9lUo5fpucpJqXoQPwdsSIq/A23G+WcZkXbv9T/LKJUWWYw
+	 Gu/W25LEc+6dI/lifRzRB8EDU8850MrVEjK7SV9xfoDBR7V7For3gRFd+7ocXwIE0p8m4
+	 ecaJY56IgO1OtwRMvoq7VVw90qefBtDMmraxYHws8+SZxPlHZH9fkDqkycNF+hUTZ4l9X
+	 dmarDR4XoFFeFB0AlXat/yVzhtuMN1XRE+PgtFTwV0ZyEAuj4a4XrJUijNvKrmgVYrEJ4
+	 2nSJs7/iBoUr1JVGOuPglYRyGQV4780BJ8v27qHQwtYeZFTSjtajDHmdEoilb4dFd6A==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 824351F00A0B;
+	by smtp.kernel.org (Postfix) with ESMTPS id 7168C1F00A09;
 	Thu, 12 Nov 2026 08:54:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794473697;
-	bh=GSMh+74fPK0ymy278CPAuF9fN6B/X3Bftnl6WSY5S7E=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=nDSfzTzju93g0o6Ob9x9rFDLSrkyy+MUjhO0nW9Gl4to+IKVMJL0VOA28m/4WVPrj
-	 kCChHZ53WgShWQBetBB9ZLc27yJlKWRlqHwT8ON74NUxNXVuRt7UUEX/b1xvuug6W4
-	 M5i0F1MgNB3SYL84jlK78W3Twp/ddr/axBdhpiL9FZVOA7PFEGZfQZOBLo4+4pA+4s
-	 nQEYiVxxWNOU9cdehYATTWEQ8vvv7UIktOp8t+AmJimR/s5EgGB6Ce8FTw316rp2AU
-	 9zlaaI2MHMc9xWjZu2BM9jNGPUhs2TL0Iv5onywNmkYCk7pQB6B6Oo4F6g9eSKcbet
-	 OpdsBDOU5rmDg==
+	s=k20260515; t=1794473698;
+	bh=pi3ws6GnqNcs7b16BSYAZjzx8UNNweD913b2Lj2IYrM=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=DXbphCkRY5BdfIlSo9Z6ov2CpEXsHkkglg14VVdUYjaQnbvvshgf+FgmrYi4LrEwd
+	 U4l/haBLD5LyOQPnGstIya5hVCqAa+Q/A1yq4H9Ib3LAEV17uqG18Cyt2ou0yokLS1
+	 3fPRabtOi7Hs68fp/d2kmktnJmP9hLmbZpNO3jVAgm5gmkSrGz3sO35LuW6Z3In0Yd
+	 ZEL/PM5opBwJn5NM+Cyxn7StJGxJrkIuARxLOOJBprOEwOdTrUXzxpHz3DSUE/Z+Za
+	 0Me72ZT1GUTSnp5y/lOo+eEr5npwWjbmUESPCnmzPAXHfDzSMJ4otM8unL/tLgcRN0
+	 1a4pbZcoYi/uA==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 1254E4940F;
-	Thu, 12 Nov 2026 08:54:56 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id C9874493F1;
+	Thu, 12 Nov 2026 08:54:55 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 12 Nov 2026 08:54:57 +0000
-Subject: [PATCH v2 3/6] media: verisilicon: Don't offer VP8 above 1080p on
- the Rockchip VDPU2
+Subject: [PATCH v2 0/6] media: verisilicon: Fix MPEG-2 field pictures, 4K
+ VP8 and the AV1 tile buffers
+Date: Thu, 12 Nov 2026 08:54:54 +0000
+Message-Id: <20261112-hantro-codec-fixes-v2-0-f44424df585b@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261112-hantro-codec-fixes-v2-3-f44424df585b@gmail.com>
-References: <20261112-hantro-codec-fixes-v2-0-f44424df585b@gmail.com>
-In-Reply-To: <20261112-hantro-codec-fixes-v2-0-f44424df585b@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/32NSw6CMBCGr0Jm7Zi2PBRX3sOwgOkAY4SaFomGc
+ HcL7l1+/3OBwF44wCVZwPMsQdwYwRwSoL4eO0axkcEoU2itFUZx8g7JWSZs5c0B89JmpskLVVI
+ Gsfj0vBuxd6t+HF7NnWnalrZEL2Fy/rO/znrL/T2YNSpUrc3TkyE+p/raDbU8juQGqNZ1/QJi/
+ bxLxgAAAA==
+X-Change-ID: 20261110-hantro-codec-fixes-59d42b5609c4
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
  Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>, 
@@ -93,13 +96,13 @@ To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
  Jeffy Chen <jeffy.chen@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Arun Iyengar <aiyengar1990@gmail.com>
+ Arun Iyengar <aiyengar1990@gmail.com>, stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794473695; l=2123;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794473695; l=5709;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=EXI8QBEeHs1R1u0NRn+cDDndC1H6YMS5/uVvMAcEFAg=;
- b=byQz4GYiQ/6r0/WJ5LPGX55naEJ393h9T1l5gHuaK5OuRo6RtWYZrlSRhz6YOZrGDiFC/xWOf
- MshdVJCvzlEDYYPq9i3nJ18rnSX1E++DEDDC4aOJbvgshWW7NRDDiRS
+ bh=14/Usk3FROrX4ekaBxCq2un3fe3l8v6T1pUSFIb3wbU=;
+ b=I8FCbKxmDlXAbZTZczzBATxWUVvHQmGp4VI0DT5ZEhNxCJ4YuU/yy8ZU5s447PCqx6ts3oD/S
+ aC/QOYxxEz5BLLGSQmeL/RRi0jNz4t2pmf0j91/5WXrgTZG1Evte4Gi
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -126,61 +129,110 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
+Fixes for the Hantro decoders on Rockchip SoCs, found while running
+conformance streams and v4l2-compliance on the RK3588.
 
-The VDPU2 decoder format tables (RK3328, RK3568, RK3588 VPU121) and the
-RK3399 one let the VP8 OUTPUT format go up to 3840x2160, but their only
-CAPTURE format, NV12, stops at 1920x1088, and the CAPTURE size is
-clamped to it. A 4K VP8 stream is therefore accepted on OUTPUT and then
-decoded into a 1920x1088 buffer: on RK3588 GStreamer v4l2slvp8dec runs
-into "gst_video_frame_map_id: assertion 'info->width <= meta->width'
-failed" for every frame of a 3840x2160 stream and none of the frames
-match FFmpeg.
+Patches 1 and 2 make field-coded MPEG-2 decode on the G1 and VPU2: the
+driver refused V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF for MPEG-2, so the
+second field of a frame could not land in the same CAPTURE buffer as the
+first one, and once it can, the second field was identified with
+top_field_first, which is always 0 in field pictures, so it predicted
+from the wrong field. None of the field-picture streams of the ISO/IEC
+13818-4 main-profile suite decoded before; they decode now.
 
-Nothing above 1080p can be decoded with these tables, so don't
-advertise it: limit VP8 to the 1920x1088 of the other codecs and of the
-CAPTURE format. Userspace that checks VIDIOC_ENUM_FRAMESIZES, and the
-S_FMT clamping, then know that a 4K VP8 stream needs another decoder.
+Patch 3 stops advertising VP8 above 1080p on the VDPU2 and RK3399
+tables, whose only CAPTURE format stops at 1920x1088, so that a 4K VP8
+stream is refused instead of mis-decoded.
 
-Fixes: 73fb5bfa53e9 ("media: hantro: Support RK3399 VP8 decoding")
+Patch 4 fixes the reuse check of the VPU981 AV1 tile column buffers,
+which only compared the deblocking data buffer although the five buffers
+scale differently with the frame height, bit depth and number of tile
+columns, and clears the sizes when the buffers are freed.
+
+Patches 5 and 6 reject malformed AV1 frames before the decoder is
+programmed with them. With no tile columns the tile column buffers are
+sized to zero and the decoder runs without them (patch 5). A frame that
+is larger than the CAPTURE format does not fit in the buffer the decoder
+writes it to, whose size and layout come from the format, and a frame
+height beyond the limit of the decoder also wraps the 32-bit size
+computation of the tile column buffers, which leaves them too small for
+the height programmed into the hardware (patch 6). Both are rejected at
+prepare time.
+
+Tested on an Orange Pi 5 (RK3588S). Patches 1 and 2 were verified with
+the ISO/IEC 13818-4 main-profile conformance streams through GStreamer's
+v4l2slmpeg2dec on the VPU121, compared with FFmpeg: the field-picture
+streams (sony-ct1..4, tcela-8/9/10, hhi_burst_short/long) went from
+rejected to 53-67 dB PSNR, and the 26 frame-picture streams are
+unchanged. Patch 3: the VPU121 decoder lists VP8F frame sizes from 48x48
+to 1920x1088, S_FMT of a 3840x2160 VP8 OUTPUT format is clamped to
+1920x1088, a 1080p VP8 clip still decodes bit-exact against libvpx, and
+the 4K clip is now refused instead of decoded into 1920x1088 buffers.
+Patch 4: one v4l2slav1dec context decoding a 1920x1080 10-bit
+4-tile-column stream and then an 8-bit 5-column one (and 2048x128 with 4
+then 8 columns) is bit-exact against libdav1d, 32/32 frames each, and a
+kprobe trace of the DMA allocations shows the tile buffers reallocated
+when the second stream needs larger ones.
+
+The new rejects of patches 5 and 6 were tested on the board with v2:
+requests with a no-tile AV1 frame, with a frame height that wraps, and
+with a frame that is wider, taller or, through superres, upscaled wider
+than the 1920x1088 CAPTURE format (3840x2160 among them) are each not
+decoded and both of their buffers come back with V4L2_BUF_FLAG_ERROR,
+and a frame of the format size and a smaller one after them are still
+accepted. Four runs of the fluster AV1 conformance suite give 203/242
+each, failing the same 39 vectors as an earlier run on the same board;
+the streams that change the frame size and the ones with spatial layers
+still decode. In a fifth run av1-1-b8-06-mfmv also failed, with one
+decoder timeout and no reject; it passed in the other four runs. The
+board kernel is 7.3-based and also carries a fix for the ->run() error
+paths (the AV1 one finishes a refused job twice), which Sascha Hauer's
+series "media: verisilicon: Fix error paths in hantro drivers" addresses
+upstream [1].
+
+[1] https://lore.kernel.org/all/20260824-rk3588-jpegdec-v1-0-180a30a2852d@pengutronix.de/
+
+This series was developed with Claude (Anthropic) as a coding assistant:
+it wrote the code and the commit messages, and I reviewed and tested
+every change as described above.
+
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- drivers/media/platform/verisilicon/rockchip_vpu_hw.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Changes in v2:
+- New patch 5: reject an AV1 frame with no tile columns, which would
+  otherwise size the tile column buffers to zero (Sashiko: AV1
+  tile_cols == 0)
+- New patch 6: reject an AV1 frame larger than the CAPTURE format, which
+  does not fit in the buffers of the decoder and whose height can
+  otherwise wrap the 32-bit size computation of the tile column buffers
+  (Sashiko: u32 overflow from frame_height_minus_1)
+- Patches 1-4 unchanged
+- Link to v1: https://patch.msgid.link/20261110-hantro-codec-fixes-v1-0-0fd5372ce831@gmail.com
 
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index 02673be9878e..2b6242c1fb86 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -274,10 +274,10 @@ static const struct hantro_fmt rockchip_vdpu2_dec_fmts[] = {
- 		.max_depth = 2,
- 		.frmsize = {
- 			.min_width = FMT_MIN_WIDTH,
--			.max_width = FMT_UHD_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
- 			.step_width = MB_DIM,
- 			.min_height = FMT_MIN_HEIGHT,
--			.max_height = FMT_UHD_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -315,10 +315,10 @@ static const struct hantro_fmt rk3399_vpu_dec_fmts[] = {
- 		.max_depth = 2,
- 		.frmsize = {
- 			.min_width = FMT_MIN_WIDTH,
--			.max_width = FMT_UHD_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
- 			.step_width = MB_DIM,
- 			.min_height = FMT_MIN_HEIGHT,
--			.max_height = FMT_UHD_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
+---
+Arun Iyengar (6):
+      media: verisilicon: Support holding the CAPTURE buffer for MPEG-2
+      media: verisilicon: Find the second MPEG-2 field without top_field_first
+      media: verisilicon: Don't offer VP8 above 1080p on the Rockchip VDPU2
+      media: verisilicon: Check every VPU981 AV1 tile column buffer before reusing them
+      media: verisilicon: Reject AV1 frames without tiles
+      media: verisilicon: Reject AV1 frames larger than the CAPTURE format
 
--- 
-2.55.0
+ .../platform/verisilicon/hantro_g1_mpeg2_dec.c     |  8 ++--
+ drivers/media/platform/verisilicon/hantro_hw.h     |  8 ++++
+ drivers/media/platform/verisilicon/hantro_mpeg2.c  | 31 +++++++++++++
+ drivers/media/platform/verisilicon/hantro_v4l2.c   |  2 +-
+ .../verisilicon/rockchip_vpu2_hw_mpeg2_dec.c       |  8 ++--
+ .../verisilicon/rockchip_vpu981_hw_av1_dec.c       | 53 +++++++++++++++++++---
+ .../media/platform/verisilicon/rockchip_vpu_hw.c   |  8 ++--
+ 7 files changed, 98 insertions(+), 20 deletions(-)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20261110-hantro-codec-fixes-59d42b5609c4
+
+Best regards,
+--  
+Arun Iyengar <aiyengar1990@gmail.com>
 
 
 
