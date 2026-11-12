@@ -2,98 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 156D6606A333
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 10:19:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A18C3606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 10:28:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bHm6GlQK;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=pengutronix.de header.i=@pengutronix.de header.a=rsa-sha256 header.s=20260414 header.b=O2obj9vK
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IjDmxY/u;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=PSUhd3ik
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Hcuj9htPXr+u7PLkl/ZSEIo3yxu9dglL1S0nwSwulaM=; b=bHm6GlQKDVCkh9PKAwjTUwG6+D
-	D9DSuWQi5ci0rwN4dq8ARA3lsqVvapteTiGiJQAOHG6Q4zklo5ydwDR9yoq0O+GcVUEi3omaR42BJ
-	k+0fSC1G9yahH9LIY1OEsV5mk5lcN6vq+B1epcqIQXBmNYGUqHka/ABxJztKdmcc5V+WIj+MGO7+v
-	Y9QsgJE/2xVIt6MJ8bAtbovt9GJugL4eRi79Sm/AaUmVAtfFq7RqOVOT04IY1C7IjnY110BXY3rgP
-	IYO00KT2+7KjrNEJoc3uRCiuzbJzHrtk2meSJWSnl/R2hirUZy6VdTsPHjzPHbZQ8MpIAoI+xRIwo
-	O3HJOg1Q==;
+	bh=BkDIsVJiijsbUcyCbCoxtkNlCuAHf9dcTTg9q2EKkio=; b=IjDmxY/u0Dgt/8wXUOhToTF3qg
+	4nolJux+y7OugoQrotK0ScTO+XVLygla8p5sW/3UMOfsr/HFp61vpnLClY/dykH3RkQAaH8KtpWKw
+	HzZunZM/0TqGxK4V/N/YKNNREU2WY9sr6DXxmChldMDzdgY3vuKv/pLrT3h0WmOlemf4MDBkPZ5Qs
+	t3pVvhODQsX7p69OZfLNeHDayo5SrG5XYcf2uM/gCc8W9c0/j2cw/5FlEiqQKEMDXL1suA943fHNT
+	gaPZOPSM4sn3hQRNdyAjkJK3PNd3I0JiRIVty3fjFwChUURnBNHM/eBqwwqNo1VCYC+eo9mzsaQ+f
+	zwTzS9zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRRtj-00000009Uub-3MbT;
-	Thu, 12 Nov 2026 10:19:15 +0000
-Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
+	id 1xRS2N-00000009Wm0-2h8e;
+	Thu, 12 Nov 2026 10:28:11 +0000
+Received: from mail-m1602365315.xmail.ntesmail.com ([160.236.53.15])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRRtg-00000009UtU-286g;
-	Thu, 12 Nov 2026 10:19:14 +0000
-Received: from [IPv6:2a0a:edc0:0:900:1d::4e] (lupine.office.stw.pengutronix.de [IPv6:2a0a:edc0:0:900:1d::4e])
-	(Authenticated sender: pza@pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id AB9A52004B4;
-	Thu, 12 Nov 2026 11:19:08 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
-	s=20260414; t=1794478748;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=4VYAg36bzRQtNXdY1YRHBQr5BBzsOdbEIoK2oKxUoYs=;
-	b=O2obj9vKiy8RAL651Nw17SsNvscVe5NWLWrqBbtOf9f80E051DzurxZ5OQYThZs3dXJ2k4
-	/ebUywrJhNmQfBlHi+sb3M05tnDQhOhljmDvzHvo1WO6hdc1U7OVG2Gk/v5TRevHcdH0LK
-	nJI/UveHe++PxIq4gA6ZNuW7bRITk5ZHKI0oJd3q0px1QQ4TxHrUVt0R+HY+nz+Hqxx917
-	LA0cD7I2mO3svbqPN0u4p/A9zs1QzmBvfucPyq14aUkjq4aisup+MfhHNmMg+4pxP49474
-	J3HyUe9VApmCLPvRzpoB28CB27qwsfeZqjLvZzIC3t1dEF6Xo9jnIW2m89W2Yg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
-	s=20260414; t=1794478748;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=4VYAg36bzRQtNXdY1YRHBQr5BBzsOdbEIoK2oKxUoYs=;
-	b=I8gkf2050xIArn/XEyvo/83XwaJRBj6azNQtTxCIY/yHi1zw5BMzwmu2qnZZy1X7mQ5VGh
-	V1P0QqzSsNmUbXj9tlqnz8IZQPft8lZorV1UfB97uNQsZ93nEnFjvx4mP51dkut4P0X3xT
-	Ol74lUP3wYXUYjIVHAvPEhgubRqHz1eaycsHlgqIfIopSZDDM224iHY0mCcRIq9Msn49gP
-	4cLLl2D5M7jyh2RScnIqkV4BXnZEPcIbQiyH2DI9r3tdYqd3hIfso3AN/o1yc1DyW0mu/b
-	NX82H8D0tkR16DHyUOyXubWYHS1PWtZJI+kSBhng9Fcr0ytHIAFwRff9Ht+3Ng==
-ARC-Seal: i=1; s=20260414; d=pengutronix.de; t=1794478748; a=rsa-sha256;
-	cv=none;
-	b=W+c+029ZeAryrNgfB9iWvxS2lleQ2C711z4nB4g3GeDXtMKxKc7ELfNYPFWYjZupXyKggP
-	tl6Nz/nc7FLu+lPISIGmTRveYzBb1eOkXI9C/x+2ygShAMTY9TXnTxMTB70MkC490pRe4j
-	ALNoS9ncXsgUd3XvPtsR4rZqPnyiC59vBeWrpYLZDlNgUxS9KPzx2jN+Hs7A8TMNSYJz35
-	GEmyDVJzc53dZGlSWpw/XdhKEwcnySj/IHE6FsbBlrE8roZADzuLSigBOxOxEoGppeY3Ru
-	la9EADd/9144U70sk+XDQX1hvWa2270oiXD99nIr35CCDerYr4IukA9uHM0VzA==
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=pza@pengutronix.de smtp.mailfrom=p.zabel@pengutronix.de
-Message-ID: <c97eef1ba88daf83d231d2ecc78b47fcf524385c.camel@pengutronix.de>
-Subject: Re: [PATCH v2 2/6] media: verisilicon: Don't hold the VPU in reset
- after remove
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: aiyengar1990@gmail.com, Nicolas Dufresne
- <nicolas.dufresne@collabora.com>,  Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring	 <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley	 <conor+dt@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Nicolas Frattaroli	 <frattaroli.nicolas@gmail.com>,
- Andrzej Pietrasiewicz <andrzej.p@collabora.com>,  Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>, Hans Verkuil <hverkuil@kernel.org>, Jernej
- Skrabec	 <jernej.skrabec@gmail.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Sergei Khomenkov <shomenkow@gmail.com>,
- Tharit Tangkijwanichakul <tharitt97@gmail.com>, stable@vger.kernel.org
-Date: Thu, 12 Nov 2026 11:19:08 +0100
-In-Reply-To: <20261112-hantro-robust-v2-2-18561fd48838@gmail.com>
-References: <20261112-hantro-robust-v2-0-18561fd48838@gmail.com>
-	 <20261112-hantro-robust-v2-2-18561fd48838@gmail.com>
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	id 1xRS2I-00000009WlH-2JwF;
+	Thu, 12 Nov 2026 10:28:09 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 5472ffebd;
+	Thu, 12 Nov 2026 18:28:01 +0800 (GMT+08:00)
+Message-ID: <17a08dd7-819c-4598-94cd-f8ed208646d8@rock-chips.com>
+Date: Thu, 12 Nov 2026 18:28:00 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/9] drm/rockchip: vop2: Take the UV plane address from
+ the second GEM object
+To: aiyengar1990@gmail.com
+Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andyshrk@163.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Piotr Zalewski <pZ010001011111@proton.me>, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org
+References: <20261112-vop2-fixes-v2-0-8218c1cf8ac8@gmail.com>
+ <20261112-vop2-fixes-v2-1-8218c1cf8ac8@gmail.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20261112-vop2-fixes-v2-1-8218c1cf8ac8@gmail.com>
+X-HM-Tid: 0aa1cf4cd70803a7kunm7a1f598398933d
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDS0hJVkkdSRhMTRkaTE0fGVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQkxVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=PSUhd3ik9cmURLl7TV8DlHTNFhsrQMTPF6B4XoguWBNzygr61uUmH1Q27gyZ4iPwMbmPmxZjuL3C/YdW4X5IK1ccRVgjkFvVQ9LsVJmoz9MCwzuMe8tPVLKQpA1K3w002rLAg1tSZrAkjpQ6J5cUW2xX2RLN6aGN/eMe447vr6Q=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=nK9CXykOQdpoKKSKUEUW4Y0a7OU0zuqfF4zOk5eKRjM=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_021912_706334_90B45F05 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261112_022807_454122_5DCFF5F5 
+X-CRM114-Status: GOOD (  17.69  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,34 +79,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Do, 2026-11-12 at 08:30 +0000, Arun Iyengar via B4 Relay wrote:
+Hi Arun, 
+
+On 11/12/2026 4:33 PM, Arun Iyengar via B4 Relay wrote:
 > From: Arun Iyengar <aiyengar1990@gmail.com>
 > 
-> On the RK3588, the resets of the AV1 decoder include the AXI and APB
-> bus interface resets (SRST_A_AV1_BIU, SRST_P_AV1_BIU), which also cover
-> the Verisilicon IOMMU of the decoder. When the driver is unbound, the
-> driver core runtime resumes the device and, through the runtime PM
-> device link, its IOMMU. hantro_remove() then asserts the resets, and
-> when the IOMMU autosuspends 100 ms later, vsi_iommu_suspend() writes to
-> its registers while they are held in reset, which raises an SError and
-> panics the system:
+> vop2_plane_atomic_update() computes the address of the chroma plane of a
+> multi-planar YUV framebuffer from fb->obj[0], the object of the luma
+> plane, plus the offset of the chroma plane. A framebuffer may have its
+> planes in different GEM objects though (DRM_IOCTL_MODE_ADDFB2 with two
+> handles, as with an NV12M buffer from a V4L2 decoder imported as two
+> DMA-BUFs). The window then fetches the chroma plane from the luma buffer,
+> at an offset meant for another buffer, which shows a wrong picture or
+> reads past the end of the luma buffer.
+> 
+> Use fb->obj[1] for the chroma plane. Single plane YUV formats like
+> DRM_FORMAT_YUV420_8BIT have no second object and keep using fb->obj[0].
+> This is also what the vendor kernel does.
+> 
+> Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+> Reported-by: Sashiko <sashiko-bot@kernel.org>
+> Closes: https://lore.kernel.org/all/sashiko-outbox-206550@kernel.org/
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> index 76d151b8bc52..ea8d837d661f 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -1369,7 +1369,9 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+>  		if ((pstate->rotation & DRM_MODE_REFLECT_Y) && !afbc_en)
+>  			offset += fb->pitches[1] * ((pstate->src_h >> 16) - 2) / vsub;
+>  
+> -		rk_obj = to_rockchip_obj(fb->obj[0]);
+> +		/* Single plane formats like YUV420_8BIT have no second object */
 
-If vsi-iommu accesses require these bus interface resets to be
-deasserted at certain points, why doesn't it request its own reset
-controls?
+Drop this comment.
 
-Depending on implicit assumptions like another driver not asserting its
-exclusively controlled resets seems fragile.
 
-regards
-Philipp
+> +		if (fb->format->num_planes > 1)
+> +			rk_obj = to_rockchip_obj(fb->obj[1]);
+>  		uv_mst = rk_obj->dma_addr + offset + fb->offsets[1];
+>  	}
+>  
+> 
+
+-- 
+Best, 
+Chaoyi
+
 
 _______________________________________________
 Linux-rockchip mailing list
