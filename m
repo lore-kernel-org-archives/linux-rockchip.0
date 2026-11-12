@@ -2,70 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A18C3606A31C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 10:28:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B6CAA606A323
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 10:53:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IjDmxY/u;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=PSUhd3ik
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aIamNqbn;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=ziyao.cc header.i=@ziyao.cc header.a=rsa-sha256 header.s=zmail header.b=gTIN1Kf1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=BkDIsVJiijsbUcyCbCoxtkNlCuAHf9dcTTg9q2EKkio=; b=IjDmxY/u0Dgt/8wXUOhToTF3qg
-	4nolJux+y7OugoQrotK0ScTO+XVLygla8p5sW/3UMOfsr/HFp61vpnLClY/dykH3RkQAaH8KtpWKw
-	HzZunZM/0TqGxK4V/N/YKNNREU2WY9sr6DXxmChldMDzdgY3vuKv/pLrT3h0WmOlemf4MDBkPZ5Qs
-	t3pVvhODQsX7p69OZfLNeHDayo5SrG5XYcf2uM/gCc8W9c0/j2cw/5FlEiqQKEMDXL1suA943fHNT
-	gaPZOPSM4sn3hQRNdyAjkJK3PNd3I0JiRIVty3fjFwChUURnBNHM/eBqwwqNo1VCYC+eo9mzsaQ+f
-	zwTzS9zg==;
+	bh=BvAZiSLWdxwFRGQt+7nRbFmTS7zS07wdGADTPyBtCWI=; b=aIamNqbniMfuJufJ66L1dJgpFo
+	XeDvdY4N8jfmCTf+23fYerYRpayp+jxoUT9JwbtLSwnR5TohkF7DB6eMJqgOx3okRbQBnt+dU9sDu
+	f+LzoarMnpd6cRMmvfoJPbKqn8G40pL0MoOYj7+Ks+w9fOp0clFP/bIyWsm34bF/oS44/JuysLBt5
+	rvnkBelhDdmnHxIN1TXfXUKPuEHef1/2yhQrl4xGVxceiqai9iN8FCWTKHsqFf9MyuUIV1gUv+7E4
+	5tQQ/g7m9YZ+eJl6gaVUT5RhVjo72XIHZ1hnQEHPQr6hJU9cE0EsWEH170oU9dVzN7MzNLk1+TILQ
+	2k4J1Q8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRS2N-00000009Wm0-2h8e;
-	Thu, 12 Nov 2026 10:28:11 +0000
-Received: from mail-m1602365315.xmail.ntesmail.com ([160.236.53.15])
+	id 1xRSQX-00000009and-3aek;
+	Thu, 12 Nov 2026 10:53:09 +0000
+Received: from sender6-op-o12.zoho.com ([165.173.180.12])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRS2I-00000009WlH-2JwF;
-	Thu, 12 Nov 2026 10:28:09 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5472ffebd;
-	Thu, 12 Nov 2026 18:28:01 +0800 (GMT+08:00)
-Message-ID: <17a08dd7-819c-4598-94cd-f8ed208646d8@rock-chips.com>
-Date: Thu, 12 Nov 2026 18:28:00 +0800
+	id 1xRSQV-00000009an7-1paH;
+	Thu, 12 Nov 2026 10:53:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794480779; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=BTHypljfRAlk3PgTfQxskdtuHNyT2eHhwDSiPxWGcIxxpp5EKRnJ9l+nwrKju1zF32gR5z4S+iYv6e0UOFFOJVukfdb78fs5wDpiizkF3aMI9YuQIHDRiOUHu1oYn4wFVQnzBD0whvsnuWpeVq2kHHZ9mEQOh1x+KGICvTM65bk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794480779; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=tLqa2FMlsnasCoo7Flq+ndrdNn8MeKqOwSnsMbw1pOY=; 
+	b=CH5rP2keafftl/e1MuUB8BRJ33woDqE+wNT/OnRtWXmlfi0E5Gt6anyAJ6nxg0Pe62OJ1t3oTh+JITovKbcfT3eeIQ8BnYkBps3ThTSFFnNzdFJ/lqE1rf6w7Ex/JT7PWP1aGzNJCIweSHxFLYC62xkN/gXRllCOXFyHQxBK+sg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=ziyao.cc;
+	spf=pass  smtp.mailfrom=me@ziyao.cc;
+	dmarc=pass header.from=<me@ziyao.cc>
+DKIM-Signature: a=rsa-sha256; b=gTIN1Kf1OSDmSisFgXIGp5nzx0VF2FjdVAGWgze/GM97/5ObZWtXtixYOhOLTr5oOTMCHDXorlaH4phnj1Ijw0LsTX2uCTBCgF0TGLh3mNdZJPOpthgOr3pRIIJpI9Y9+OzZrIUx0AlL3cHOa6dmeFr8HOhPr59+d/J2v/9qirE=; c=relaxed/relaxed; s=zmail; d=ziyao.cc; v=1; bh=tLqa2FMlsnasCoo7Flq+ndrdNn8MeKqOwSnsMbw1pOY=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794480778136240.92925563025153;
+	Thu, 12 Nov 2026 02:52:58 -0800 (PST)
+Date: Thu, 12 Nov 2026 10:52:43 +0000
+From: Yao Zi <me@ziyao.cc>
+To: aiyengar1990@gmail.com, Ulf Hansson <ulfh@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Kevin Hilman <khilman@linaro.org>, Caesar Wang <wxt@rock-chips.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>
+Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Yao Zi <me@ziyao.cc>, Igor Pecovnik <igor@armbian.com>
+Subject: Re: [PATCH v2 2/2] pmdomain: rockchip: report domain errors once,
+ with dev_err_probe()
+Message-ID: <avWae91pfLv9vyUv@pie>
+References: <20261112-pmdomain-rockchip-v2-0-5cd942a23df7@gmail.com>
+ <20261112-pmdomain-rockchip-v2-2-5cd942a23df7@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/9] drm/rockchip: vop2: Take the UV plane address from
- the second GEM object
-To: aiyengar1990@gmail.com
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andyshrk@163.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Piotr Zalewski <pZ010001011111@proton.me>, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org
-References: <20261112-vop2-fixes-v2-0-8218c1cf8ac8@gmail.com>
- <20261112-vop2-fixes-v2-1-8218c1cf8ac8@gmail.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20261112-vop2-fixes-v2-1-8218c1cf8ac8@gmail.com>
-X-HM-Tid: 0aa1cf4cd70803a7kunm7a1f598398933d
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDS0hJVkkdSRhMTRkaTE0fGVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQkxVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=PSUhd3ik9cmURLl7TV8DlHTNFhsrQMTPF6B4XoguWBNzygr61uUmH1Q27gyZ4iPwMbmPmxZjuL3C/YdW4X5IK1ccRVgjkFvVQ9LsVJmoz9MCwzuMe8tPVLKQpA1K3w002rLAg1tSZrAkjpQ6J5cUW2xX2RLN6aGN/eMe447vr6Q=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=nK9CXykOQdpoKKSKUEUW4Y0a7OU0zuqfF4zOk5eKRjM=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <20261112-pmdomain-rockchip-v2-2-5cd942a23df7@gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.473.96
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_022807_454122_5DCFF5F5 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20261112_025307_731723_C9FB7B2F 
+X-CRM114-Status: GOOD (  28.82  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,66 +81,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Arun, 
-
-On 11/12/2026 4:33 PM, Arun Iyengar via B4 Relay wrote:
+On Thu, Nov 12, 2026 at 08:23:30AM +0000, Arun Iyengar via B4 Relay wrote:
 > From: Arun Iyengar <aiyengar1990@gmail.com>
 > 
-> vop2_plane_atomic_update() computes the address of the chroma plane of a
-> multi-planar YUV framebuffer from fb->obj[0], the object of the luma
-> plane, plus the offset of the chroma plane. A framebuffer may have its
-> planes in different GEM objects though (DRM_IOCTL_MODE_ADDFB2 with two
-> handles, as with an NV12M buffer from a V4L2 decoder imported as two
-> DMA-BUFs). The window then fetches the chroma plane from the luma buffer,
-> at an offset meant for another buffer, which shows a wrong picture or
-> reads past the end of the luma buffer.
+> When a power domain clock is not available yet,
+> rockchip_pm_add_one_domain() returns -EPROBE_DEFER, and both it and its
+> callers rockchip_pm_domain_probe() and rockchip_pm_add_subdomain() print
+> that with dev_err():
 > 
-> Use fb->obj[1] for the chroma plane. Single plane YUV formats like
-> DRM_FORMAT_YUV420_8BIT have no second object and keep using fb->obj[0].
-> This is also what the vendor kernel does.
+>   rockchip-pm-domain ...: power-domain: failed to get clk at index 1: -517
+>   rockchip-pm-domain ...: failed to handle node power-domain: -517
 > 
-> Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-> Reported-by: Sashiko <sashiko-bot@kernel.org>
-> Closes: https://lore.kernel.org/all/sashiko-outbox-206550@kernel.org/
-> Cc: stable@vger.kernel.org
+> once per probe attempt, and the second line twice for a nested domain.
+> On an RK3588 board whose NPU domain clock appears late this is more than
+> 20 error lines before the domain finally probes, and the reason of the
+> deferral is not recorded. Other failures are reported twice (once where
+> they happen and once by the callers), or only by the callers, which name
+> the node but not what failed: a missing pm_qos phandle and a pm_qos node
+> without a regmap print nothing in rockchip_pm_add_one_domain(), and a
+> failed clk_bulk_prepare() only has the message of the clk core, which
+> names neither the device nor the domain.
+> 
+> Report every error once, where it happens, with dev_err_probe(), and
+> drop the "failed to handle (subdomain) node" messages from the callers.
+> A deferral is then quiet and keeps its specific reason in
+> /sys/kernel/debug/devices_deferred, such as "failed to get clk at index
+> 1", and -ENOMEM, which the callers used to print, is quiet as well. The
+> return values are unchanged, except that a failed
+> syscon_node_to_regmap() for a pm_qos node now returns its own error
+> instead of -ENODEV: it can be -EPROBE_DEFER (a syscon regmap that is
+> not registered yet, or a syscon clock or hwlock that is not available
+> yet), which must not turn into a probe failure.
+> 
+> Fixes: 7c696693a4f5 ("soc: rockchip: power-domain: Add power domain driver")
+> Fixes: 6be05b5ec161 ("soc: rockchip: power-domain: add support for sub-power domains")
+> Suggested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 > ---
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+>  drivers/pmdomain/rockchip/pm-domains.c | 98 +++++++++++++++-------------------
+>  1 file changed, 43 insertions(+), 55 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index 76d151b8bc52..ea8d837d661f 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -1369,7 +1369,9 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
->  		if ((pstate->rotation & DRM_MODE_REFLECT_Y) && !afbc_en)
->  			offset += fb->pitches[1] * ((pstate->src_h >> 16) - 2) / vsub;
+> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+> index 00c7e78f89b5..be077fb52f40 100644
+> --- a/drivers/pmdomain/rockchip/pm-domains.c
+> +++ b/drivers/pmdomain/rockchip/pm-domains.c
+> @@ -804,28 +804,22 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+>  	int error;
 >  
-> -		rk_obj = to_rockchip_obj(fb->obj[0]);
-> +		/* Single plane formats like YUV420_8BIT have no second object */
-
-Drop this comment.
-
-
-> +		if (fb->format->num_planes > 1)
-> +			rk_obj = to_rockchip_obj(fb->obj[1]);
->  		uv_mst = rk_obj->dma_addr + offset + fb->offsets[1];
->  	}
+>  	error = of_property_read_u32(node, "reg", &id);
+> -	if (error) {
+> -		dev_err(pmu->dev,
+> -			"%pOFn: failed to retrieve domain id (reg): %d\n",
+> -			node, error);
+> -		return -EINVAL;
+> -	}
+> +	if (error)
+> +		return dev_err_probe(pmu->dev, -EINVAL,
+> +				     "%pOFn: failed to retrieve domain id (reg)\n",
+> +				     node);
 >  
-> 
+> -	if (id >= pmu->info->num_domains) {
+> -		dev_err(pmu->dev, "%pOFn: invalid domain id %d\n",
+> -			node, id);
+> -		return -EINVAL;
+> -	}
+> +	if (id >= pmu->info->num_domains)
+> +		return dev_err_probe(pmu->dev, -EINVAL,
+> +				     "%pOFn: invalid domain id %d\n", node, id);
+
+These look like code clean-up instead of fixes, thus should be split
+into a separate patch, especially when we probably want to backport the
+real fixes. This applies for many places below.
+
+Aside these unnecessary code changes, this patch seems in a better shape
+than the very first version[1] I submitted a week ago, which seems,
+unfortunately, being ignored.
+
+I'll drop the second patch in my series and use yours instead. But
+please search before sending patches next time to avoid duplicated work.
 
 -- 
-Best, 
-Chaoyi
+Thanks,
+Yao Zi
 
+Meow-mrrp-mrow, I'm a cat.
+
+[1]: https://lore.kernel.org/linux-rockchip/20261105001257.1368266-1-me@ziyao.cc/
 
 _______________________________________________
 Linux-rockchip mailing list
