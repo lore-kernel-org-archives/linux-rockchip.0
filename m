@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A9777606A897
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:31:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6FE59606A32A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:31:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3yB/34bS;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=gw+r7B9d
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DBEvajgW;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=WYkpzBLe
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=3dw71YhzdQdzptPWKbvoy/nT0FheX6Bc04lE48nCSEY=; b=3yB/34bSzVAqCNaEFDAHwLN4ox
-	pDELhBti20pL6EnpeKjLIfpbQdyWjv/McYktMsdC8u7csafbhF5aDISgbv1bO5vCA+QfEZKzsP53/
-	in+wprfeP4CXu+A+wKPOlSQ4Ee5ECNnUKerp7xOSRF5oFNytRCqnpfpsRAdND9bVgQAqNGaWj4y8g
-	q4/Ox3FU2+TUCAOpHxwr5/o3f6cttxy2czosAMwxWfn0ifb4X/dqxbo2WZ1lhvhu25hVT/mq0bx6i
-	cZw9KEqDS80WfYgJCqZrm+E4QoULhoLbI02a0a8YU2+z5hDHmAOk0yo/m72YWwUkVQMnmDdqB5doo
-	t8Ir2ZTQ==;
+	bh=vW5KX10VhDxqgCPEuqXxM7eUfgAItRsZbcw8iEKXO6M=; b=DBEvajgWvJocOq0x+w0FD1BpZ1
+	g8sOtrGrZnCLzHrvIowVJK0qRy038W/PcBnqGql+W9z7WIDVgY7u0gQts+fTOtUJ1spW17JNNg4Iq
+	zb1LnjEQ8/oH53zXvmfiVadsAgFxdIp2nivPrKgJrWpceozXJTxm19Vm4UU+TOcJ22YaqTYOlR9J7
+	9sk67opGf/GTdEUXN73s25kGHoUwUdWO5bpZ1zGrI2IHL5l4ooVmKf20xbQOtYEVJ28Weo052y5Aw
+	LSpj+02IPYvCmpUBIUWA9CWcKDHZ26H+2aaTMO46By/V2IEg3aHqRezhHPsMbaI6pA9Zuwfvay/QR
+	IkF9u8rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQCq-0000000971E-2etu;
+	id 1xRQCq-0000000971U-3ArB;
 	Thu, 12 Nov 2026 08:30:52 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQCo-000000096zQ-2mUR;
+	id 1xRQCo-000000096zN-2hJI;
 	Thu, 12 Nov 2026 08:30:50 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3BF3C47357;
+	by sea.source.kernel.org (Postfix) with ESMTP id 1DBD545021;
 	Thu, 12 Nov 2026 08:30:50 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1794472250;
-	b=ELgYtB9NMQv2Dw6gmLeOGxT/8to5mkGwRCzM20yNcifoJn7642iavtnONY/LkUy5A+WR
-	 mOAc9nlMQ2um7zNb544n4Emn3/6dTqBSaW3QwG6gcSPe+DkH9or12EnLLsb0w7zhT7WkU
-	 nEOlug3ZvDG4y/KTflXs7AfaGbexTMTTXkNjgLNO9wZhjyd77BeNa9wXtHt4uWEXiWuGn
-	 QOE3uGis8+TKXvw1UkEjQqm7cMq7zDJB+jct+SsRBQn2fEWieV/6Vg2h+RuRh/YZhsxGQ
-	 noPHtLbNyNXeYLJEyrfDonl2Udhy8ouczrgXO8UxZ/5/6y+Jj+sa78HTDrG2CSj/U9A==
+	b=KtfNqADoq81K3tziX8Ra6eFlkF/d8Bkjj8/A5zShulhyYH2LXgui2TenBv7XXl0bvmCc
+	 IJ7YWBjNEnDvjJx6xKEciyVIKvfzIbqiS5FG9wYMBuH0VoD/0xfFzj2k4bX5HsnJDwpOq
+	 H5dSZ66k7iV0jKMEGcqUj51VyWJLmAo+dim5ejIAQgrcmi8/2ppz2ENaoTALAlT/Wz/7Y
+	 IKqPfHAk6CMXDmwLgrJWEoOGvenEOdNJK/g126ARRisMEJtCj6bcCfW45pMXAWFggdtjz
+	 n8eOpJiEt0psAFUbUYCMXBpnflDTHQkXiEp0dLdwF6geepckIsQCkJ1l0bFKK2uShgw==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1794472250;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=ASyAY8bq55NxrF7Uq8dDNoQgFuT+3SFZsxEh9sLLHJU=;
-	b=o4vzJJ1iavfj1JbfDvRGNHDTxNPHvjihaoORPy9jnyL15QgL8CVLBfuNk8guW7FaWw7Z
-	 +plSxY7tzt2rzwTg0hNRox3mTnMUJkiU6OchJIKO28MkGypXuoP0PWMc12syONVEmP+nV
-	 A7i5cM8jT3qmCvrCRk6Ux0TktBN+2Fa1pbG/Kg/ptjMruzyp/d+z9X+qrd88eXfRAJWR9
-	 E12/LpCmxJNl7VxxGQDiI50JCASMZM4pdtGlzJ0e3WkCmUXUK5iHdTMSXT0ipt0L2oAKz
-	 Dtr7f4igrrqmYsD7LQeGr+A4yGhZEwz+TVx+J1EleagKC85xlVWjW+hzWuVYQuGgvNw==
+	bh=hKuahGHQ0APnWIJaFL6RA1DFujLrUACycNekn7BglGU=;
+	b=ZsV/tbq2tqWLsXNL038JVbaFfsUU2i0+ekwxJe/PL1xFO7nqoFp40cVIe20r54yqUEax
+	 CxltctBCkP4PsbcPGVVugVdoMw6Nke+uHnOL4mNdxPS4Ghwg232SNr29NErBxQujG5b/x
+	 x+TWtCLSGYuLB7J26wZ+/RUPeCCJGImip3jm75xe4GzWreGT4vxwLLXh7bDTxh5RHC1Kp
+	 tldqkxI9Fu01BPsffcXFiVj8YZODPZGdmdSDnvZhs0M52uBhfmAKA8c+j+n6FwnxPi4uI
+	 za5EiMjhwRePsJDi3RBT4X0AGifTKQqNDZ4KwdQp6Vh8jP2AfxvJZkqIKkI3k8uHeyg==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 97D741F00A09;
+	by smtp.kernel.org (Postfix) with ESMTPS id 8579D1F00A08;
 	Thu, 12 Nov 2026 08:30:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794472250;
-	bh=ASyAY8bq55NxrF7Uq8dDNoQgFuT+3SFZsxEh9sLLHJU=;
+	s=k20260515; t=1794472249;
+	bh=hKuahGHQ0APnWIJaFL6RA1DFujLrUACycNekn7BglGU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=gw+r7B9d+uGfx2+SWHJPBSpjGRD/RWGoAP3Pi8peqQuIaYONEgHcC5NgUWEw0G/mt
-	 YR8miGCueGY6VUf/bNvBJ30rEntrQhNptY5LmSM/32VKDarnWeg8ayquHIYtfN3iDE
-	 gkDEbE7MfvgKYFeMtexJeQ2G8ay8wIxSHJPU6OvbeEyKQoADLzqEP9vkJGV4JN5Sh/
-	 ox63LQk6ZCX3Wtnujn1BREPMk2x3VyUSQEm3upF3Jgqzp0w2Fv8okIifZWisH8X/ti
-	 dbUb1chbjz6DVwgnDx8rbNEbWyst/zuy1kFQEAkBKRvj9SclUgFdDfsvoNEZaIMqMa
-	 Mj+AQWad+v8hw==
+	b=WYkpzBLenmwUPf2zd3uq1njx4uMjWtSAQCgvaijuZCh9CJhVV3UA1SFOq1Ntlyo3w
+	 Bhe3c/JklCRAUyQghlVbMfoLHpIjEnDnAxwgx1zPO4ZAGnh+V8M34IF1DsGDhbgoU0
+	 zReUijHlJVAKHw2PP7mF8jfI5kq6CiTPjH+f8fjts1cfv6cAQVPyX847mrwgoYrv2I
+	 FD7R7bdA8nzM7T1mcOB3hMtoskktPe89RhkrF51Ra5YzDiCyy8fD0z2DG53lV1nvKS
+	 l/3WZx92gzEogZ7wpiVK3QLmQjb5y4OdP5guRfRKE7sOR70fWcEYq/IgsaMNWFz5dr
+	 eOKwaUHxzB0gw==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 2104449381;
+	by lkml.kernel.org (Postfix) with ESMTP id 0C7964937D;
 	Thu, 12 Nov 2026 08:30:48 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 12 Nov 2026 08:30:49 +0000
-Subject: [PATCH v2 3/6] media: verisilicon: Enable the Rockchip encoder
- interrupt again after a reset
+Date: Thu, 12 Nov 2026 08:30:48 +0000
+Subject: [PATCH v2 2/6] media: verisilicon: Don't hold the VPU in reset
+ after remove
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261112-hantro-robust-v2-3-18561fd48838@gmail.com>
+Message-Id: <20261112-hantro-robust-v2-2-18561fd48838@gmail.com>
 References: <20261112-hantro-robust-v2-0-18561fd48838@gmail.com>
 In-Reply-To: <20261112-hantro-robust-v2-0-18561fd48838@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
@@ -98,11 +98,11 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  Tharit Tangkijwanichakul <tharitt97@gmail.com>, 
  Arun Iyengar <aiyengar1990@gmail.com>, stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472247; l=2118;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472247; l=3396;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=/pdV5Ao1nfGJCAVq9CfIzOPUMn8hmIXBimy2UnM/Qpk=;
- b=ft5+zd+VMM7oNCjDiVVEWeZlc3SSoAWnTT6gIEqUHrWWoRnoY+fjjX7uOstpMkkQs3JCHDa2w
- y0Ch1+HeEICDFvreFFH8syfHKBG6uUPEluWPx/0eyl9oBMCcxhBMFAn
+ bh=anNmhGiL7WByI9+zM577XJx5bZa3C8k/V1V7McF0Fl4=;
+ b=2EFkfYTDn6pLkeZxwuRwLY45wAj10XzVKpR2UnGp21Z3SBiwzuU8sYxnpb0Ga7wuPijpxXsKJ
+ 45neb9AXVThCQHWvnSPHT3H7YpXL4Dd+4YAW875XWa2VkLpO4PxprBi
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -131,53 +131,81 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-The reset operations of the Rockchip VEPU1 and VEPU2 encoders, which
-hantro_watchdog() calls when a job times out, disable the encoder
-interrupt before stopping the encoder. Nothing enables it again: the
-encoder run functions don't write the interrupt register, only the
-interrupt handler does, and it no longer runs. Every later job on the
-encoder then times out as well.
+On the RK3588, the resets of the AV1 decoder include the AXI and APB
+bus interface resets (SRST_A_AV1_BIU, SRST_P_AV1_BIU), which also cover
+the Verisilicon IOMMU of the decoder. When the driver is unbound, the
+driver core runtime resumes the device and, through the runtime PM
+device link, its IOMMU. hantro_remove() then asserts the resets, and
+when the IOMMU autosuspends 100 ms later, vsi_iommu_suspend() writes to
+its registers while they are held in reset, which raises an SError and
+panics the system:
 
-Clear the interrupt register at the end of the reset, as the interrupt
-handler does after each frame.
+  SError Interrupt on CPU4, code 0x00000000be000411 -- SError
+  Workqueue: pm pm_runtime_work
+  Call trace:
+   clk_disable+0x30/0x90 (P)
+   clk_bulk_disable+0x44/0x90
+   vsi_iommu_suspend+0x4c/0xc8 [vsi_iommu]
+   pm_generic_runtime_suspend+0x38/0x80
+   genpd_runtime_suspend+0xc4/0x348
+   ...
+  Kernel panic - not syncing: Asynchronous SError Interrupt
 
-Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
+This was hit when reloading the module, unless the decoder happened to
+be probed again within the autosuspend delay of its IOMMU.
+
+The IOMMU is not the only one to access the bus interface after remove.
+Commit 8e26d4c20ed2 ("media: hantro: disable runtime PM before hardware
+teardown") moved the assert after the runtime PM teardown because the
+power domain code faulted on it when powering the domain off. With the
+resets left asserted, the same domain code runs again when the domain
+is powered on for the next bind, before hantro_probe() deasserts the
+resets, and when the domain is powered off after a failed probe.
+
+A runtime suspended VPU has its resets deasserted and its clocks off.
+Leave it in that state on remove and on the probe error path instead of
+asserting the resets; hantro_probe() deasserts them anyway.
+
+Fixes: ea71631b7129 ("media: hantro: add support for reset lines")
 Cc: stable@vger.kernel.org
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- drivers/media/platform/verisilicon/rockchip_vpu_hw.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ drivers/media/platform/verisilicon/hantro_drv.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index 02673be9878e..5d4e46bd9cd6 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -475,6 +475,12 @@ static void rockchip_vpu1_enc_reset(struct hantro_ctx *ctx)
- 	vepu_write(vpu, H1_REG_INTERRUPT_DIS_BIT, H1_REG_INTERRUPT);
- 	vepu_write(vpu, 0, H1_REG_ENC_CTRL);
- 	vepu_write(vpu, 0, H1_REG_AXI_CTRL);
-+	/*
-+	 * The encoder runs don't write the interrupt register, only the
-+	 * interrupt handler clears it after each frame. Clear it here too,
-+	 * or the interrupt stays disabled and all later jobs time out.
-+	 */
-+	vepu_write(vpu, 0, H1_REG_INTERRUPT);
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 26e5d5547466..4542322dba71 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -1210,7 +1210,7 @@ static int hantro_probe(struct platform_device *pdev)
+ 	ret = clk_bulk_prepare(vpu->variant->num_clocks, vpu->clocks);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to prepare clocks\n");
+-		goto err_pm_disable_assert_reset;
++		goto err_pm_disable;
+ 	}
+ 
+ 	ret = v4l2_device_register(&pdev->dev, &vpu->v4l2_dev);
+@@ -1264,11 +1264,6 @@ static int hantro_probe(struct platform_device *pdev)
+ 	v4l2_device_unregister(&vpu->v4l2_dev);
+ err_clk_unprepare:
+ 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
+-err_pm_disable_assert_reset:
+-	pm_runtime_dont_use_autosuspend(vpu->dev);
+-	pm_runtime_disable(vpu->dev);
+-	reset_control_assert(vpu->resets);
+-	return ret;
+ err_pm_disable:
+ 	pm_runtime_dont_use_autosuspend(vpu->dev);
+ 	pm_runtime_disable(vpu->dev);
+@@ -1290,7 +1285,6 @@ static void hantro_remove(struct platform_device *pdev)
+ 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
+ 	pm_runtime_dont_use_autosuspend(vpu->dev);
+ 	pm_runtime_disable(vpu->dev);
+-	reset_control_assert(vpu->resets);
  }
  
- static void rockchip_vpu2_dec_reset(struct hantro_ctx *ctx)
-@@ -493,6 +499,12 @@ static void rockchip_vpu2_enc_reset(struct hantro_ctx *ctx)
- 	vepu_write(vpu, VEPU_REG_INTERRUPT_DIS_BIT, VEPU_REG_INTERRUPT);
- 	vepu_write(vpu, 0, VEPU_REG_ENCODE_START);
- 	vepu_write(vpu, 0, VEPU_REG_AXI_CTRL);
-+	/*
-+	 * The encoder runs don't write the interrupt register, only the
-+	 * interrupt handler clears it after each frame. Clear it here too,
-+	 * or the interrupt stays disabled and all later jobs time out.
-+	 */
-+	vepu_write(vpu, 0, VEPU_REG_INTERRUPT);
- }
- 
- /*
+ static int hantro_runtime_resume(struct device *dev)
 
 -- 
 2.55.0
