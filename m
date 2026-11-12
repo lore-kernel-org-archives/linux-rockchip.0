@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 396B3606A31C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:41:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DB179606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:41:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=doY3J/Ww;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=JeuSwk5S
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=evSylorO;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Y7Gm4b6M
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,90 +14,87 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ZvohVblMrXMkhwNQO+s2jMEg4uEzp27htOJv9T6jqgw=; b=doY3J/Ww2vvMdtk4CSGwZyM2AR
-	VY0eS/2oeNCcDEHJ1oHgS0k8f379RAOYzQFW7grtj4dwmZTixKaqRrbZ7K87Pszef/KJvyKf7oX51
-	F4k8Kr9MbJuZkipH48AzbiKIWx/NHEzsayL6UgnTWRyXlF+WYL/xRqsYew8RrBhQafeMG7tjHSbs4
-	cmlmR8X5gAXkcahPqUYU+qJ7kCI+17zP+F43o6VcOsrQDiSRGRjKl9S49TETmk/7kQbpZzJePohvf
-	moR5cA9nBkpANqfS2MCnTN0/K6m1sTJW/U1tLmEwbea4E6hNLIKK7nW969xPUAOhMSwN8BjMqYy8S
-	HdiRVbrw==;
+	bh=BzsopYnr93gcxXmDzyaREPlXg53m51dHn1KWX65LXbQ=; b=evSylorO2m0uDx/Itjwji8D4D8
+	QegGLCoBN+2STpA5Q4yNeE6yNIxnTqlwBlzvOfT3o5Ev6mKMBV+/WUFlVJFROEgXQmQtZl/OqhYEj
+	vP6mOApRhk5J3Y8cf3N+8jEXaVgIaWAkyY0YbjvB3R3MqB5hLuu8NvKOnswc4uKMbcFjPAh0h0Mnd
+	MxDV/b+x4/R3q/3s9m+2DiKJ6YltBSUQe8Nfg0sT8zdLObwoPEKHvnjcKyUirwTRXzdQTwRKEnTN7
+	Q6Ip5Cn5OBjzhItTANq8vbD+OdNmkYiWn+1X3XhXhWabje44DFB5F+KMLyE31Ev+xqIAfZBDNCTqb
+	y3N0qFBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQMf-00000009Btt-3ZHR;
-	Thu, 12 Nov 2026 08:41:01 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xRQMv-00000009C9I-3cf4;
+	Thu, 12 Nov 2026 08:41:17 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQF3-000000098QA-49F8;
-	Thu, 12 Nov 2026 08:33:23 +0000
+	id 1xRQHk-000000099lH-3URt;
+	Thu, 12 Nov 2026 08:35:58 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id BC3424792E;
-	Thu, 12 Nov 2026 08:33:09 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6FDA240195;
+	Thu, 12 Nov 2026 08:35:56 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794472389;
-	b=MS9d1oOl2/EiUmeQ3BhehXnFUvcQDxa0B4rFYeYUMONptKbwR4+8oNjLHzDtRlJOGQQK
-	 DFrA2TPHvi64MaAttRtz3bhos2wRT6OOgUmYmGMSvwU2CK5Y1ISAjRn8eddljdc/kZqDD
-	 P+SVZn6x4yTZ6hp8NucOVGmVJ9mafmV+crpT8xficDI9bX5StMg9hc1UX++b5sGnPMMex
-	 EWtH1uKe1ZBFmP6Yt/4yr3Oznfs2wz5AB+cUJWUPusoPSajGHjeOWXC2UXxy5bWWkuoQV
-	 ctHzzJLFiO6gFiKwUvVn5Za/I0s747SA6wJqKqMtVLhuwwJiYK9nEZCJGNMrDDlxR9A==
+	t=1794472556;
+	b=to9ZEQpDr5uprJ/Cu6WH/VQBnGi5MJ8t53/MD2SOkJvpgx7GkzMriOoQDLDYEmfkpqCb
+	 zeBjV/X1GLkd2EtYmSLhMovq9wre3yoX+zBVcxw814qY5/2a/HZr+1BYB8WxvUoiGhMhz
+	 7bUv6Vo2ScDlIcRgJcrBogjsNNrbjkBjMXLn3+04oU5HJPpadv1b6K+Lklh/iyCqTdfU+
+	 cRV/BCotq8yHqB8IaEJGQJIZcPMQR7g+4rdJGgFkwpNTPXNTdJGJsxbEAFt/goGmJjUR5
+	 1it0laOBiRJBaOUYvkhyE4btRYYzSTIdLqyiDPfu9ytjdsSYwRdTzW07YSxIQ+bb4AA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794472389;
+	c=relaxed/relaxed; t=1794472556;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=Zw+frS1U/oJIoV7oqdbavUJYx/5VdFVnuw73RpCkb6s=;
-	b=anJfB9wVYHgmOA6RFPFUVwFrkGz+/MHxG54oQjf1syuNuLu+vCR3yc0XOfLylJW1/gr0
-	 YpMgqA3UZMhSnGOB7NqiedZwsGJzOuphGh14Kq0rMj39R4v76E7n51y1qvk0BE+W+dNQH
-	 cXYG5xqiisQSxSVc64a6K8Rs31GkkX4fi9objpnx/t2evFskjnwm7nJQC94kZ7QDnlPLE
-	 loAPSfdl/fhYKqcUyObpBAuyh9eRTygaugBt/wOxWDPwRga47h9UJhSfCOwxXAppcCz/G
-	 T8UdOaKWueeey+v7crau1XXMIvz6/dMP3pA2Bdz5o4s6s9VfAKEjhf3DKR4o41A0wTw==
+	bh=t/PywoMm6l1Gfhj2HKLXgo1apHGTq2Bh+BPaoER8O/o=;
+	b=EPlHUtBtznnpNKEwLNKiuvQniEYa4aXTb1+tae/Fr8C2iXSNaJcgRA+2Gv9PWnhFuHJV
+	 8GVdQPszuCLHRB0RE0PfvJLfTy2hDsebDbyhaIsUA1qHJ8srXBg1qNjD3IhdpPplE64ct
+	 QwjR4hop6twONuDgi7JG00lmSSZj/JC8Ri38C9CWj8cLKB9C+RP9V7ASqMG/30Hi6nAoN
+	 V+ostrmWuq/l/jgJXPfW9W7RrJ0nZSQdVIlipDA4I0jGw1Kw+zFM15Dinang5mAtERmab
+	 OJiZqyvmvI4X+EB3JLB6q3izJuIt1sijPZ4v1ZNZIiPmCz01uYfpuwWd4qov0YpTKQg==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id EF0341F00A07;
-	Thu, 12 Nov 2026 08:33:08 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id C89221F00A07;
+	Thu, 12 Nov 2026 08:35:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794472389;
-	bh=Zw+frS1U/oJIoV7oqdbavUJYx/5VdFVnuw73RpCkb6s=;
+	s=k20260515; t=1794472556;
+	bh=t/PywoMm6l1Gfhj2HKLXgo1apHGTq2Bh+BPaoER8O/o=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=JeuSwk5SWgOzigEFivYix4K0wtojE88ZB294yBnzs02Xuh8UpJPjFYinOZnThp3Ys
-	 sCI+rAqBedXxSOAWS91T4AsSWYFREm4WM8HDl8zo7IZp3cUFfNhmJvR0QpjITnQqcW
-	 Ub9yIhA+uY85Hq4lVlu8XhyG1U2n3765usIj2cskwDvQtivkCj0uWaFsGvHGwWyyG3
-	 wAqkoJBpS87F/HCg7LfiKjFIYbQuyB/sLmjHRKKNdAmILRLRqXj71QT+H4b+pZ+eu4
-	 TdXBwWv7Xz6YEy4PKxpoS0ZCvgNI9zDtSseAzCDP9l3a14o4LyZVTAjQ1IS6k7vxdz
-	 HZ5MNVk1CEfsw==
+	b=Y7Gm4b6MqR4fcFGaKW6n+R0y+gdxKrY9KDfvUHGWB4JS5QLvBNchTPtCcghNjhjMm
+	 cE6LdsXhFu8zUgbknv8ZI/p9mfMDdaYHAsR3wjfSxno1vQRGaCqoKlwScUzQMzhRa7
+	 o24hxVU/1uefYbaWiHCB+4i5uJJMgTpwS+B0wav/CDW2Q2zLmFPEizciaDdzosdYc5
+	 iyx6f4dYjeiA775ndE5q6SSORYg/k47APj6aggvVkKrRHUauLhT7TmrmfllpenwG1N
+	 KnUl9OHyithIclDI0njtQ0WXj8dEq1bzuYwUtJjdkt04tCaWleORARYVdDXONxU8h1
+	 XfQpLYn+CEuvQ==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id C7057493BE;
-	Thu, 12 Nov 2026 08:33:06 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 53423493BA;
+	Thu, 12 Nov 2026 08:35:55 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 12 Nov 2026 08:33:11 +0000
-Subject: [PATCH v2 7/9] drm/rockchip: vop2: Find the first mixer of a video
- port with Esmart3 too
+Date: Thu, 12 Nov 2026 08:35:56 +0000
+Subject: [PATCH RFC 2/2] usb: dwc3: rockchip: Keep the host bus across
+ suspend-to-idle on RK3588
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261112-vop2-fixes-v2-7-8218c1cf8ac8@gmail.com>
-References: <20261112-vop2-fixes-v2-0-8218c1cf8ac8@gmail.com>
-In-Reply-To: <20261112-vop2-fixes-v2-0-8218c1cf8ac8@gmail.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andyshrk@163.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Piotr Zalewski <pZ010001011111@proton.me>, 
- Chaoyi Chen <chaoyi.chen@rock-chips.com>, dri-devel@lists.freedesktop.org, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Arun Iyengar <aiyengar1990@gmail.com>
+Message-Id: <20261112-dwc3-s2idle-optin-v1-2-842e3f8413d0@gmail.com>
+References: <20261112-dwc3-s2idle-optin-v1-0-842e3f8413d0@gmail.com>
+In-Reply-To: <20261112-dwc3-s2idle-optin-v1-0-842e3f8413d0@gmail.com>
+To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Joonhoe Kim <26rote@gmail.com>, Vladyslav Tymoshchuk <tvlad744@gmail.com>, 
+ Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472385; l=2016;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472554; l=1952;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=XuhTBwXc6OuQQ9kwuxgdwauJ6jcO4D6ro+WdnRqi4fQ=;
- b=18nBynrhRwhtGRC6mxBqGiMn2xlhq/tEdUkOMoV9Rv7z5FSChLqmiNez7wtf+BZIPo37LbFKO
- z2y4vYhk9o4BVKCOejcIHO/Ziq6t6xRgVO3EG6lnE9/VXe6qWMBIU7p
+ bh=4m0AQqWpGKPZoBJEUVc5orPxlJLCumo8flIRD0Jhzsg=;
+ b=1Rei5oJ+08YlofUig3fWgdtvOgiGxs4NW+SWHbbWBF2YWA5RUY2o/c/uuwbP54D2cn4Agdcu9
+ 3QSGOtXzFlTAWSd5UjP6SG8QkQzPfFOfk5MYpaFOdFQP6HgWvwdCMYE
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -126,48 +123,52 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-vop2_find_start_mixer_id_for_vp() looks for the first layer that holds a
-window of the video port, but for_each_set_bit() takes the number of bits
-to search, and ROCKCHIP_VOP2_ESMART3 is the highest window id, so Esmart3
-is never found. A video port whose bottom layer shows Esmart3 then starts
-its alpha setup at the mixer of a higher layer, or, if Esmart3 is its
-only window, past all layers, and programs mixers of other video ports.
+On RK3588 nothing powers the USB3 controllers down in suspend-to-idle:
+this glue has no system sleep work of its own, the controllers are
+either in PD_USB, which has GENPD_FLAG_ACTIVE_WAKEUP and so stays on for
+a device on the awake path, or (USB3OTG2) in no power domain at all.
+Tearing the core down there only ends the power sessions of the
+suspended devices: on an Orange Pi 5 a SanDisk Extreme drive and a card
+reader behind a USB3 hub are disconnected and enumerated again after
+every resume, which kills a filesystem mounted on them.
 
-Add ROCKCHIP_VOP2_MAX_LAYER_ID after the last window id and search up to
-it.
+Set keep_host_bus_in_s2idle for RK3588, so the core keeps the suspended
+bus in suspend-to-idle. RK3576 is left as it is: its second controller
+is in PD_PHP, which is switched off in suspend-to-idle.
 
-Fixes: d3fe9aa49585 ("drm/rockchip: vop2: Use OVL_LAYER_SEL configuration instead of use win_mask calculate used layers")
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 1 +
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ drivers/usb/dwc3/dwc3-rockchip.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index ccbfbdb8d246..290990632388 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -857,6 +857,7 @@ enum vop2_layer_phy_id {
- 	ROCKCHIP_VOP2_CLUSTER3,
- 	ROCKCHIP_VOP2_ESMART2,
- 	ROCKCHIP_VOP2_ESMART3,
-+	ROCKCHIP_VOP2_MAX_LAYER_ID,
- 	ROCKCHIP_VOP2_PHY_ID_INVALID = -1,
- };
+diff --git a/drivers/usb/dwc3/dwc3-rockchip.c b/drivers/usb/dwc3/dwc3-rockchip.c
+index 65d17536af14..c96b2ac1a62d 100644
+--- a/drivers/usb/dwc3/dwc3-rockchip.c
++++ b/drivers/usb/dwc3/dwc3-rockchip.c
+@@ -4,6 +4,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/phy/rockchip-usbdp.h>
+ #include <linux/pm_runtime.h>
++#include <linux/property.h>
+ #include "glue.h"
+ #include "io.h"
  
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index 83203d18865b..088c1f3a972f 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -1889,7 +1889,7 @@ static int vop2_find_start_mixer_id_for_vp(struct vop2_video_port *vp)
+@@ -153,6 +154,15 @@ static int dwc3_rockchip_probe(struct platform_device *pdev)
+ 	probe_data.res = res;
+ 	probe_data.properties = DWC3_DEFAULT_PROPERTIES;
  
- 	for (i = 0; i < 31; i += 4) {
- 		match = false;
--		for_each_set_bit(phys_id, &win_mask, ROCKCHIP_VOP2_ESMART3) {
-+		for_each_set_bit(phys_id, &win_mask, ROCKCHIP_VOP2_MAX_LAYER_ID) {
- 			win = vop2_find_win_by_phys_id(vop2, phys_id);
- 			if (win->data->layer_sel_id[vp->id] == ((layer_sel >> i) & 0xf)) {
- 				match = true;
++	/*
++	 * On RK3588 nothing powers the controllers down in suspend-to-idle:
++	 * this glue does not touch them, and they are either in PD_USB, which
++	 * stays on for a device on the awake path, or in no power domain.
++	 * (On RK3576 the second controller is in PD_PHP, which does not.)
++	 */
++	if (device_is_compatible(&pdev->dev, "rockchip,rk3588-dwc3"))
++		probe_data.properties.keep_host_bus_in_s2idle = true;
++
+ 	return dwc3_core_probe(&probe_data);
+ }
+ 
 
 -- 
 2.55.0
