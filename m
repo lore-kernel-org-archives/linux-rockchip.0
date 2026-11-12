@@ -2,80 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C1748606A89C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 18:32:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5DFDC606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 18:35:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GuNpgUEU;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=V1TBVy4H
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EnW692EY;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=I3hy8zCE
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=2odeOdo5Oasp0o/n5iOZWv+YhTQVZvHzXuCN3IKFZcs=; b=GuNpgUEU4DYvSkkFDBdTx6ppPw
-	bWVI9lIxNt8TVxXH+Bblc8UdgiqmKLqK42faUM3pKga43U96WRd3vbt28XzrKog/DUh5Ft5/XAX3C
-	uu7dCTvkAn0RHqKrpzGvW/Bt/R/W4BYlQvY+vwILEYcelFOEpdmCloCop9/F5pRW7CxMuI/f6oCf9
-	S5VcuVURVX3L9a1tlIxI3CF6ljkCdXddgjFeop/cVqOGbd+nmrcPe/Wf0mtfuCSaaALejdC8yVmBF
-	eIdAOoNpdLz7vafEXWLbQ/gmsUS56lwnZCXOqJeepCfMKlZ/luzBCUOFBPwxw66l4Kvcclc09qL+x
-	BR25M3VA==;
+	bh=JldPYzIsy8gyCa8uUd5ENnTh9bQNqpTudBGVJYAfNig=; b=EnW692EY4VrR0Cyi83zk/QGY12
+	0t8x6+9WB/cmgfPJzxBVAUAWaZ3xc/XIarAiqMkkjFfheb298fLqchmaFLKT09VcDYgSx6n+Iy9OU
+	GUkEtDoVVwxKkWKMdhA28zsZ2FNLcHmanNnX3GU5DoyHUf+ponZuO3PmRMy09O5SYuv98hWjvvtMo
+	Rpz3kksgSAiDhW+b8oCv+1yOHjfd6WbJUB0iRt9nq+dFR8gVArxQmFvTGtuxpEIzH7nSmr2r4Ei83
+	8QmMzJP323wjdwUAacks5u1nak4YgG5vZ8nboMCVgnXMNWD02fRmMbltuVTbSecIwvNPaW/68sNfC
+	jgAZ3YkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRZaz-0000000AsAr-33Rg;
-	Thu, 12 Nov 2026 18:32:25 +0000
-Received: from mgamail.intel.com ([198.175.65.19])
+	id 1xRZdv-0000000AsY4-2VWa;
+	Thu, 12 Nov 2026 18:35:27 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRZav-0000000As90-2Eov
-	for linux-rockchip@lists.infradead.org;
-	Thu, 12 Nov 2026 18:32:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1794508342; x=1826044342;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=IGBhMtrRjJl0n4esDMpqx2bbeKyzIv4/AzvkzeFD/eE=;
-  b=V1TBVy4HRu6CEG1Zo/tDoS/wcIO+ev7M4uC89+zJTWwtuUO4J5CcB9hL
-   c80uRbxWJIGvdC/VfJ3Q6A2LdNaNrr5N3jEIt4BbclQDQYngPW0eea5Zo
-   s9kOLgF90JAxxUoXZVV+OPgBFMNVf35oe5zF6zvkbdsqOMj+LhKYnc/0X
-   VAm/Gv3v+1+mf3w60dzXfJ4U3FyK2fjSFP8wC9iJ4XbEwuDZASvUqqZGn
-   yetzbMUulODOAV27jA/aSE+wP+UHq6M6ic2cSsS1RKgW0/P3++bi5ZtEy
-   U7zfEYZluuSvhwh6/QVG4OawiiXOG1enkLNlWS9XJIu8k9oh0t5nRU/jJ
-   A==;
-X-CSE-ConnectionGUID: wcg15rLMSYqB/t749E+djw==
-X-CSE-MsgGUID: yL1CcPt7SCCyxmQrBu/93w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11964"; a="3347791"
-X-IronPort-AV: E=Sophos;i="6.27,210,1787036400"; 
-   d="scan'208";a="3347791"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Nov 2026 10:32:22 -0800
-X-CSE-ConnectionGUID: mrtK/zTLT2+59ewYre5AsA==
-X-CSE-MsgGUID: isn7RK4RRPW5xFvUSVRnEw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,210,1787036400"; 
-   d="scan'208";a="8618135"
-Received: from ncintean-mobl1.ger.corp.intel.com (HELO mdjait-mobl.intel.com) ([10.245.244.103])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Nov 2026 10:32:20 -0800
-From: Mehdi Djait <mehdi.djait@linux.intel.com>
-To: michael.riesch@collabora.com
-Cc: linux-media@vger.kernel.org,
-	paul.elder@ideasonboard.com,
-	daniel@makrotopia.org,
-	linux-rockchip@lists.infradead.org,
-	Mehdi Djait <mehdi.djait@linux.intel.com>
-Subject: [PATCH v1 2/2] media: rockchip: rkcif: Validate the pixel format against the media bus code
-Date: Thu, 12 Nov 2026 19:32:08 +0100
-Message-ID: <20261112183208.2688580-3-mehdi.djait@linux.intel.com>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <20261112183208.2688580-1-mehdi.djait@linux.intel.com>
-References: <20261112183208.2688580-1-mehdi.djait@linux.intel.com>
+	id 1xRZdt-0000000AsXq-1cIA;
+	Thu, 12 Nov 2026 18:35:25 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 01696405F6;
+	Thu, 12 Nov 2026 18:35:25 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794508524;
+	b=LSWvLnya06BKnKU4VBF3eLI1jKg3XjMqrqNxbB5dYEkNuGyVFvTQTARs2Ou4blT/q1AL
+	 Fo1fdjh6sjIWyrnf6ehsfN00oxE9JyLdoh8FwyyROFjzx2r4tikMQsQWseSTrCU6Cmmsp
+	 lGR232q6CsYLvxXLyA/NIGMyv1BHwiAWwcXQf4uzLEatSj6tu7C59klNKyYEKGGxbNdCa
+	 E+ywxHwQcz/DGMR2Ful978TnnyjULHRgb93y+AssNj/g6taLkIa5wWVIgE7lepENgHr4U
+	 oFOer8cLOmBB3fih9qemcSHjC92ehVtk3QxP1l2SeFx9vcO1GStMiVgTL1zoPsKFNsQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794508524;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=GgK64frVD9K5IVuLbjzzliKVcQ7pvJjIHqZw9D+YTzE=;
+	b=WcHgpUMKPlCr0dx8kU5y/ytHt/qOH6+Hb+NLcP/pCC0FBW7Q11Oog9TM5H7VddBbATms
+	 3EdxrD/0bSaADoIIa68DwszdmR1QZeoOXYnB78TgjqG6nwZ/gR290jf+FUMzIQUkQvvHp
+	 /80Gossw7MgSpv5I3T2qRePKRmhSTfrpTjG/4MMg2a7nhmqIY+QYDyqK9/HjBQqvF0ywl
+	 wo50EmQaXcbm7NPaBcHLBSAqJsXM6CVITCwyoJmfm7T2v1MFMGJ/XfqHWceKs8pc5LRBJ
+	 IUlvWlf1K9ajcIGSnSAfaEn2mzgnNG18RdzLzFg7VvyGXNENwAdnh4aklnVnlxxfA2Q==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 540621F000C4;
+	Thu, 12 Nov 2026 18:35:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794508524;
+	bh=GgK64frVD9K5IVuLbjzzliKVcQ7pvJjIHqZw9D+YTzE=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=I3hy8zCE+Zm5kBAY/dZJ7/p3Cx7Yq8zGuE9fOQUXJhYdnUmIo7zp7W6OczVsv/aDM
+	 AH6zmmgpcjDXxes6MyRSqIoVlz847YIe/sRC4i3xoIsTw2lYnxrXCYhX9Ces6BPr2l
+	 yQ985T+leHLgFwM8aWRAcyiUCuxZwtlO7U5M8jRoGcrhcIy0jG6HIrbuVdsFkPA6Qm
+	 v/9IiY8YIjciE0eRHUQ9xlZdT3GH2w7gqpM0NPUWofBfns0GZgZZc04LK/OeN/MeX8
+	 9vo0juBNeDLHyyMpPYZgZebECsgx8DuPMt9GuFkOymUlhsdWeMk04y+dEIRNAgBNm/
+	 NnphsqlmsnDwg==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id A04394748A;
+	Thu, 12 Nov 2026 18:35:23 +0000 (UTC)
+From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
+Date: Thu, 12 Nov 2026 19:34:56 +0100
+Subject: [PATCH] arm64: dts: rockchip: fix pcie wlan chip on
+ rk3588-h96-max-v58
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_103221_716316_370AD847 
-X-CRM114-Status: UNSURE (   9.23  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -4.2 (----)
+Message-Id: <20261112-b4-fix-h96-max-v58-wlan-v1-1-7e918fc85b88@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQ6CMBCF4auQWTsJMwKhXsW4KGUKY7SaVoGEc
+ HeqLL/kvX+FJFElwaVYIcqkSV8hg04FuNGGQVD7bOCSGyJi7Cr0uuBoGnzaBae6xflhA3LNZ1e
+ RL43xkN/vKHn3L19vh9O3u4v7/HKwbTvC0Tj4ewAAAA==
+X-Change-ID: 20261112-b4-fix-h96-max-v58-wlan-2523c41f099f
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Alexey Charkov <alchark@gmail.com>, Alexey Charkov <alchark@flipper.net>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Joachim Eastwood <joachim.eastwood@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794508523; l=1890;
+ i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
+ bh=ls/b1TaJr55nJIaXg9urdpu9Pz+PccgRCIwOKYKwuzY=;
+ b=l3ZyBULPRW1p+jSeI4lEhokzzAiNlGuxxpGKDusbTYb0Khn8w05MIb1mv2VuShv1r2Qr/5UqA
+ XsVJy3jpg9VD1L3xa/Jbje78bpPdpYYqcqj3eWgWgyF4IUDfsxeiUUZ
+X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
+ pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
+X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
+ with auth_id=846
+X-Original-From: Joachim Eastwood <joachim.eastwood@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,6 +109,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: joachim.eastwood@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -95,48 +120,61 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The link validation only checks the frame size, so a pixel format that
-does not match the media bus code on the source pad is accepted.
+From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-Reject such pipelines with -EPIPE.
+Correct the gpio used for regulator-3v3-pcie. This pin was found digging
+through the vendor dts. Also add the this regulator to the pcie port so
+it will actually be enabled.
 
-Signed-off-by: Mehdi Djait <mehdi.djait@linux.intel.com>
+After this fix the BCM43752 shows up in lspci and WiFi works with the
+correct firmware.
+0002:21:00.0 Network controller: BCM43752 802.11ax Dual Band Wireless LAN Controller (rev 02)
+
+Fixes: b53864811b35 ("arm64: dts: rockchip: Add H96 Max V58 TV Box based on RK3588 SoC")
+Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- drivers/media/platform/rockchip/rkcif/rkcif-stream.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-index 3130d420ad55..66726f654674 100644
---- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-+++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-@@ -460,6 +460,7 @@ static int rkcif_stream_link_validate(struct media_link *link)
- {
- 	struct video_device *vdev =
- 		media_entity_to_video_device(link->sink->entity);
-+	const struct rkcif_output_fmt *fmt;
- 	struct v4l2_mbus_framefmt *source_fmt;
- 	struct v4l2_subdev *sd;
- 	struct v4l2_subdev_state *state;
-@@ -489,6 +490,17 @@ static int rkcif_stream_link_validate(struct media_link *link)
- 		goto out;
- 	}
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts b/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
+index 3811f9a73bb6c..e869f7ecf93ce 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
+@@ -79,7 +79,7 @@ vcc_1v1_nldo_s3: regulator-1v1 {
+ 	pcie_3v3: regulator-3v3-pcie {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+-		gpios = <&gpio4 RK_PA1 GPIO_ACTIVE_HIGH>;
++		gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-0 = <&pcie2_0_pow>;
+ 		pinctrl-names = "default";
+ 		regulator-name = "pcie_3v3";
+@@ -319,6 +319,7 @@ &pcie2x1l0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie2_0_rst>;
+ 	reset-gpios = <&gpio4 RK_PA5 GPIO_ACTIVE_HIGH>;
++	vpcie3v3-supply = <&pcie_3v3>;
+ 	status = "okay";
  
-+	fmt = rkcif_stream_find_output_fmt(stream, false,
-+					   stream->pix.pixelformat);
-+	if (!fmt || (fmt->mbus_code && fmt->mbus_code != source_fmt->code)) {
-+		dev_dbg(stream->rkcif->dev,
-+			"link '%s':%u -> '%s':%u not valid: Format mismatch\n",
-+			link->source->entity->name, link->source->index,
-+			link->sink->entity->name, link->sink->index);
-+		ret = -EPIPE;
-+		goto out;
-+	}
-+
- 	ret = 0;
+ 	pcie@0,0 {
+@@ -373,7 +374,7 @@ pcie2_0_rst: pcie2-0-rst {
+ 		};
  
- out:
--- 
-2.56.0
+ 		pcie2_0_pow: pcie2-0-pow {
+-			rockchip,pins = <4 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+ 
+
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20261112-b4-fix-h96-max-v58-wlan-2523c41f099f
+
+Best regards,
+--  
+Joachim Eastwood <joachim.eastwood@gmail.com>
+
 
 
 _______________________________________________
