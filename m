@@ -2,75 +2,87 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 23CEE606A337
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 14:14:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B31E8606A75A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 14:31:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=U0wN/ZwY;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=NAA3skTk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VwtTuuIU;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=fTfEwMbH
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=g8bV/0W63oBTau+7YvWouV3ipgmP15eYZWR8ZeGIh/k=; b=U0wN/ZwYOweqHYfriG9mZGXx2H
-	Gz1xgUyJ+XE6/KsQs5zc2HFXB25AUo5VnddhXUTtpx2vQnSSoTL3f+jV9xvZRapFQre2qGEmtAMvh
-	9Rg+oJ/Q0WDcbI21+blWnVD13kGmIg0V8K2WMdRI8GaVX+9yEsTeyvDIk2kKSEWLSG20imXMVFr75
-	HrM1OjoVO67DUVsHrv2zshyoSzp1fxv1laZUxpqTn7uJBfM8bttIRyQsDkgU49krwHmypIkZNlObg
-	HzPftd3bS9cdg2cfnMZs+/4HgnFyDZ3n2mGA943MUYolFBKR+J7Gnmgjn5hPpLGBZzwdfno0jRM/y
-	2liobzUg==;
+	bh=qNA7JPIV5IzFOdsy/0bT6dvnwoXgoJPZ9HKI2fQ1E28=; b=VwtTuuIU8V0eCqHAs+AK1avU68
+	uszcHHubvS0CUQvJN/6fysGK+Y+G/y0wWwz6vs4pobTdw0EfpEBCb/Vle7y4s0hhMd4ZggTpFuLkG
+	n1vMfmvGuNt5/wHt0jYt0sCybO/1uxLetCJmPn638WPfep00o5W+uBgVHjegBNbRX/KOwo9qwvsii
+	G56FBlhrm433yYTzP13v4nIC0badg2iDOx5JUuqFHeN76UFfLY2PZ3he26QmN0MxMyVzgmslvgg3a
+	dXgQvfS8COiS7pRV5PtMWpuTJBLy0XXdzb3tz7U6jwqQ2Fi1u2X8cv52vSwE+ZeuxC5g4dfKTH2GP
+	CEYsSsPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRVZ7-0000000ADQX-3QJ6;
-	Thu, 12 Nov 2026 14:14:13 +0000
-Received: from sender6-op-o11.zoho.com ([165.173.180.11])
+	id 1xRVq6-0000000AH2I-1RpG;
+	Thu, 12 Nov 2026 14:31:46 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRVZ4-0000000ADPp-4AGb;
-	Thu, 12 Nov 2026 14:14:12 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794492841; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=LuyQY12bW/Z83IwfAOxYJxZ41E4wry34UxveT0D7p1+KeG7vuh/g3/Z4PL/QiweY1cAObHPOqdNN/ST9ovLVoulqLB6bQcsSTjpu6+AM2Ic610a4k2B4uTEqtRfchqN3tPwu9RVXJDXtLkU6M0IGvzogik9csYMt7ietj2/S8js=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794492841; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=b/4UOiXvF4Fr1l92XLmjcr1eg7nNlBSU5NS1Fo/IyFE=; 
-	b=Jh3Jwp/xcKr3QKgJDQDf4E73hZu+wtI6ebEk8TbtrWlJP3CZ3MCU6v+pPsoAksowh2AxTMeOVC88QvUJRBWyiUjmn39z10Wfj6SFAwyNTbQsd4y688beAE9MMxDrreNbjzLFt1UAHYle0tb/I2Nc2jHyyiRzD5tU14dDYcElZ2U=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=benjamin.gaignard@collabora.com;
-	dmarc=pass header.from=<benjamin.gaignard@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=NAA3skTkaOCGS4WxaR16OMOYO4CU8JVVcpLMtoI7vIovt4Dfwq56POyv8ssffi5G2sLrZk5OMqH5Z9I5dqeVZXLfMkODQj1dVWmhQg9vXsc96zy1cvmu6WHRHj/Gvwhr50LP6e9o0juz27pfKKS/2LPFjTjLzkGAov5QTWIWmCM=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=b/4UOiXvF4Fr1l92XLmjcr1eg7nNlBSU5NS1Fo/IyFE=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1794492839836438.0202804362593;
-	Thu, 12 Nov 2026 06:13:59 -0800 (PST)
-Message-ID: <f212840b-92fd-4d97-a6a7-2768a55483f7@collabora.com>
-Date: Thu, 12 Nov 2026 15:13:54 +0100
+	id 1xRVpw-0000000AH07-1Vyl;
+	Thu, 12 Nov 2026 14:31:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1794493893;
+	bh=FYjRkCqyGsRzmWdDWrbZF9LJoHsBc2QeonGafSKs3io=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=fTfEwMbHp4+4B3IGdyreGHL9lOXdgsebWLpWKAiUE742su8X68AaK/BPdQmsnhTkK
+	 DBnXjsxusfs94dmGLvo5Qgdn3k54wbgzeH343gzr4S9msanrDzznWUh2Gy9HIN8XM1
+	 la+aOdBXDCBP8pNLmx1xh6hkFOIo8KTriFHEQjOyuzjcvFq1cxGBA3zl19JjQAYQAW
+	 OdXv3cHUqRrRseYTJxrY/TmusEA5W4LLtCIwB1U4pIwSXNoc2sukEArT1phd0Iz//N
+	 /b+ZSPUqz/wwtrm00eIZuzddIggUTzkvPpXAtTdvSCLal4Dq9aQjzmzIUdcL+8z81o
+	 HXMnY56/VdrKg==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DBC5817E0564;
+	Thu, 12 Nov 2026 15:31:31 +0100 (CET)
+Message-ID: <f041c5d87698ab3be8283ecc71ead0679327238e.camel@collabora.com>
+Subject: Re: [PATCH v2 3/6] media: verisilicon: Don't offer VP8 above 1080p
+ on the Rockchip VDPU2
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: aiyengar1990@gmail.com, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>,  Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Sebastian Fricke	
+ <sebastian.fricke@collabora.com>, Hans Verkuil <hverkuil@kernel.org>, Heiko
+ Stuebner <heiko@sntech.de>, Boris Brezillon
+ <boris.brezillon@collabora.com>, Jonas Karlman	 <jonas@kwiboo.se>, Ezequiel
+ Garcia <ezequiel@vanguardiasur.com.ar>, Jeffy Chen	
+ <jeffy.chen@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Date: Thu, 12 Nov 2026 09:31:30 -0500
+In-Reply-To: <20261112-hantro-codec-fixes-v2-3-f44424df585b@gmail.com>
+References: <20261112-hantro-codec-fixes-v2-0-f44424df585b@gmail.com>
+	 <20261112-hantro-codec-fixes-v2-3-f44424df585b@gmail.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/6] media: verisilicon: Don't hold the VPU in reset
- after remove
-To: Philipp Zabel <p.zabel@pengutronix.de>, aiyengar1990@gmail.com,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Hans Verkuil <hverkuil@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Sergei Khomenkov <shomenkow@gmail.com>,
- Tharit Tangkijwanichakul <tharitt97@gmail.com>, stable@vger.kernel.org
-References: <20261112-hantro-robust-v2-0-18561fd48838@gmail.com>
- <20261112-hantro-robust-v2-2-18561fd48838@gmail.com>
- <c97eef1ba88daf83d231d2ecc78b47fcf524385c.camel@pengutronix.de>
-Content-Language: en-US
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <c97eef1ba88daf83d231d2ecc78b47fcf524385c.camel@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_061411_163012_FC622B49 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20261112_063136_703126_8864F72D 
+X-CRM114-Status: GOOD (  21.67  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,39 +93,128 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============5586474389571105688=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-CkxlIDEyLzExLzIwMjYgw6AgMTE6MTksIFBoaWxpcHAgWmFiZWwgYSDDqWNyaXTCoDoKPiBPbiBE
-bywgMjAyNi0xMS0xMiBhdCAwODozMCArMDAwMCwgQXJ1biBJeWVuZ2FyIHZpYSBCNCBSZWxheSB3
-cm90ZToKPj4gRnJvbTogQXJ1biBJeWVuZ2FyIDxhaXllbmdhcjE5OTBAZ21haWwuY29tPgo+Pgo+
-PiBPbiB0aGUgUkszNTg4LCB0aGUgcmVzZXRzIG9mIHRoZSBBVjEgZGVjb2RlciBpbmNsdWRlIHRo
-ZSBBWEkgYW5kIEFQQgo+PiBidXMgaW50ZXJmYWNlIHJlc2V0cyAoU1JTVF9BX0FWMV9CSVUsIFNS
-U1RfUF9BVjFfQklVKSwgd2hpY2ggYWxzbyBjb3Zlcgo+PiB0aGUgVmVyaXNpbGljb24gSU9NTVUg
-b2YgdGhlIGRlY29kZXIuIFdoZW4gdGhlIGRyaXZlciBpcyB1bmJvdW5kLCB0aGUKPj4gZHJpdmVy
-IGNvcmUgcnVudGltZSByZXN1bWVzIHRoZSBkZXZpY2UgYW5kLCB0aHJvdWdoIHRoZSBydW50aW1l
-IFBNCj4+IGRldmljZSBsaW5rLCBpdHMgSU9NTVUuIGhhbnRyb19yZW1vdmUoKSB0aGVuIGFzc2Vy
-dHMgdGhlIHJlc2V0cywgYW5kCj4+IHdoZW4gdGhlIElPTU1VIGF1dG9zdXNwZW5kcyAxMDAgbXMg
-bGF0ZXIsIHZzaV9pb21tdV9zdXNwZW5kKCkgd3JpdGVzIHRvCj4+IGl0cyByZWdpc3RlcnMgd2hp
-bGUgdGhleSBhcmUgaGVsZCBpbiByZXNldCwgd2hpY2ggcmFpc2VzIGFuIFNFcnJvciBhbmQKPj4g
-cGFuaWNzIHRoZSBzeXN0ZW06Cj4gSWYgdnNpLWlvbW11IGFjY2Vzc2VzIHJlcXVpcmUgdGhlc2Ug
-YnVzIGludGVyZmFjZSByZXNldHMgdG8gYmUKPiBkZWFzc2VydGVkIGF0IGNlcnRhaW4gcG9pbnRz
-LCB3aHkgZG9lc24ndCBpdCByZXF1ZXN0IGl0cyBvd24gcmVzZXQKPiBjb250cm9scz8KPgo+IERl
-cGVuZGluZyBvbiBpbXBsaWNpdCBhc3N1bXB0aW9ucyBsaWtlIGFub3RoZXIgZHJpdmVyIG5vdCBh
-c3NlcnRpbmcgaXRzCj4gZXhjbHVzaXZlbHkgY29udHJvbGxlZCByZXNldHMgc2VlbXMgZnJhZ2ls
-ZS4KClRoZXJlIGlzIGEgc2lkZSBub3RlIG9uIElPTU1VIGRvYyBzYXlpbmcgdGhhdCBvbmNlIHRo
-ZSBJT01NVSBoYXMgYmVlbgplbmFibGVkIGl0IGNhbid0IGJlIGRpc2FibGVkIGZvciBzZWN1cml0
-eSByZWFzb25zLgpUaGF0IG1lYW5zIHRoYXQgd3JpdGluZyAwIG9uIFZTSV9NTVVfQUhCX0NPTlRS
-T0xfQkFTRSByZWdpc3RlciBpbiB2c2lfaW9tbXVfZGlzYWJsZSgpCmNvdWxkIHJhaXNlIGFuIFNF
-cnJvciBzbyBJIHdvdWxkIHN1Z2dlc3QgdG8gcmVtb3ZlIHRoaXMgbGluZSBmcm9tIElPTU1VIGRy
-aXZlci4KClJlZ2FyZHMsCkJlbmphbWluCgo+Cj4gcmVnYXJkcwo+IFBoaWxpcHAKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+--===============5586474389571105688==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-UsVvDKz6sEPhCdtGodXv"
+
+--=-UsVvDKz6sEPhCdtGodXv
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le jeudi 12 novembre 2026 =C3=A0 08:54 +0000, Arun Iyengar via B4 Relay a =
+=C3=A9crit=C2=A0:
+> From: Arun Iyengar <aiyengar1990@gmail.com>
+>=20
+> The VDPU2 decoder format tables (RK3328, RK3568, RK3588 VPU121) and the
+> RK3399 one let the VP8 OUTPUT format go up to 3840x2160, but their only
+> CAPTURE format, NV12, stops at 1920x1088, and the CAPTURE size is
+> clamped to it. A 4K VP8 stream is therefore accepted on OUTPUT and then
+> decoded into a 1920x1088 buffer: on RK3588 GStreamer v4l2slvp8dec runs
+> into "gst_video_frame_map_id: assertion 'info->width <=3D meta->width'
+> failed" for every frame of a 3840x2160 stream and none of the frames
+> match FFmpeg.
+
+Just to bring to your attention, the IP does support up to 65Kx65k, but the=
+n you
+can't do referencing (its the WebP mode, key frame only). Hughes Fruchet fr=
+om ST
+started looking into this but his work was not completed. The general idea
+though was to perhaps introduce a V4L2_PIX_FMT_WEBP_VP8 (or VP8_INTRA, nami=
+ng is
+hard) format to signal this to the decoder, and limit to 1080 the FMT_VP8 (=
+what
+you are fixing I suppose).
+
+>=20
+> Nothing above 1080p can be decoded with these tables, so don't
+> advertise it: limit VP8 to the 1920x1088 of the other codecs and of the
+> CAPTURE format. Userspace that checks VIDIOC_ENUM_FRAMESIZES, and the
+> S_FMT clamping, then know that a 4K VP8 stream needs another decoder.
+>=20
+> Fixes: 73fb5bfa53e9 ("media: hantro: Support RK3399 VP8 decoding")
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> ---
+>  drivers/media/platform/verisilicon/rockchip_vpu_hw.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drive=
+rs/media/platform/verisilicon/rockchip_vpu_hw.c
+> index 02673be9878e..2b6242c1fb86 100644
+> --- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+> +++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+> @@ -274,10 +274,10 @@ static const struct hantro_fmt rockchip_vdpu2_dec_f=
+mts[] =3D {
+>  =09=09.max_depth =3D 2,
+>  =09=09.frmsize =3D {
+>  =09=09=09.min_width =3D FMT_MIN_WIDTH,
+> -=09=09=09.max_width =3D FMT_UHD_WIDTH,
+> +=09=09=09.max_width =3D FMT_FHD_WIDTH,
+>  =09=09=09.step_width =3D MB_DIM,
+>  =09=09=09.min_height =3D FMT_MIN_HEIGHT,
+> -=09=09=09.max_height =3D FMT_UHD_HEIGHT,
+> +=09=09=09.max_height =3D FMT_FHD_HEIGHT,
+>  =09=09=09.step_height =3D MB_DIM,
+>  =09=09},
+>  =09},
+> @@ -315,10 +315,10 @@ static const struct hantro_fmt rk3399_vpu_dec_fmts[=
+] =3D {
+>  =09=09.max_depth =3D 2,
+>  =09=09.frmsize =3D {
+>  =09=09=09.min_width =3D FMT_MIN_WIDTH,
+> -=09=09=09.max_width =3D FMT_UHD_WIDTH,
+> +=09=09=09.max_width =3D FMT_FHD_WIDTH,
+>  =09=09=09.step_width =3D MB_DIM,
+>  =09=09=09.min_height =3D FMT_MIN_HEIGHT,
+> -=09=09=09.max_height =3D FMT_UHD_HEIGHT,
+> +=09=09=09.max_height =3D FMT_FHD_HEIGHT,
+
+If you have time, it is also miss-configured on the imx8mm, the combo-core
+(G1/H1 combined, like RK modified version). While the imx8mq has 4k h264, I
+don't know if the VP8 core actually is capable of 4k, so perhaps both soc n=
+eed
+fixing.
+
+>  =09=09=09.step_height =3D MB_DIM,
+>  =09=09},
+>  =09},
+
+--=-UsVvDKz6sEPhCdtGodXv
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCavXNwgAKCRDZQZRRKWBy
+9DkyAP0Q5qttBFa47Zyj/PIBd6D//4pj/GszbWh3XhcsCqWbxgD/XOK6P1s53OLa
+N6GX9/CmC99j1N3UZYLbYnUuHv9tlQI=
+=VOqM
+-----END PGP SIGNATURE-----
+
+--=-UsVvDKz6sEPhCdtGodXv--
+
+
+--===============5586474389571105688==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5586474389571105688==--
+
