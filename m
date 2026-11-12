@@ -2,80 +2,188 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D640606A327
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 15:39:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E0035606A323
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 15:47:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jSWXGTrd;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=TMZvkvEz
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=iowICHDL;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=cherry.de header.i=@cherry.de header.a=rsa-sha256 header.s=selector1 header.b=J17DgXVJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=2dXc8WlOWh4uyusxT+EUauDsp4ahYdANe6dUguNpyvE=; b=jSWXGTrdGn+C8dnCAQa0CiOpuh
-	r2oRMp5aC7MW0TiK1DblTuIpuCfTkEIsZ+cIxwTjwzCkgiAdy8qPSNNx33eItMNR7YcdbDrVxwdiI
-	iIWmFlMU62ETC7TWd1O8XGdOol8yCCPiL4BhRpXgjq+bR9vMQP8VlXjqs0Rmh2gDvoRZR0Zo90pMQ
-	wS+cyCV7A6BeZ2uYNp1OhxO4PQgWCFFWfnOugxycMHGlluyXZShZgRbPb1BXf9uEQ3M44MVbKfluy
-	+pvx+u4Hzo0YbCuw5GRAFflVXb8eeUDJFLXqj9FQFAa9O0f4aBybmH6MX4Sk8NzVZLVi+PQyYcuXI
-	i8x2d3YQ==;
+	bh=B6iljyKzJ7MRwUZKfxUgalQTfRJPyk+bgD+VReRXsuk=; b=iowICHDLlQetCTBbOm6fP7TnpB
+	QqLm+UAp4oLkDGR6mbmxYopVj+Ec5Tm0glLFvz3t7WI5WNgW7AHmumamRJBK0DKtDGL1hjeB+hGcr
+	BdFvtR9jqt26W359YGOfFpHP6/Rkl4YIgp5rFMrcNGtKWV1yKlsdCV7KIJ24wEaFyaPInfqp1+bpW
+	WthXXLnPRrl14fi6tmg8Cvv+NQU8ALfzFgIiGBRFEeeDuOWJfFCKeGtgYRvKjQLRUrBFUCO7zu+e3
+	9yKoWDSIuj7FApQU8SxqMpMIsEzq1HMKZpcVJCdPq3IvsdlLftLNkHPup9old0OyPqcCeRIOHGicm
+	EKHHzujg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRWtd-0000000AUId-3yGt;
-	Thu, 12 Nov 2026 15:39:29 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1xRX10-0000000AVVj-2Utc;
+	Thu, 12 Nov 2026 15:47:06 +0000
+Received: from mail-northeuropeazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c200::1] helo=DB3PR0202CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRWtZ-0000000AUFn-2uGb;
-	Thu, 12 Nov 2026 15:39:27 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794497921; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=e/RhxOn5ZE0GIfqtyMkE4SA323oUNLcLNsDzDC0bxw5Lmw+u7YS8ekFpYwSu0BY8ELnQ87/3WcamBHwEuBBKBE4oBtHcH5q4mt2speMuOCVQRejjbbngwtu/pE1DmEHPhxyrXB9ofArKer3hr4vbfxw3Gq+BYOkz9bseOVlp2M4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794497921; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=ZxYoe/p2LIG1FpzD841r8W7HIaR163eDCLpsGJEmtz4=; 
-	b=K+ItBK/Xmnb5dfc2IGUa7D0pRLFGS6GE2q9hag7rI9bKFhfHv6yR1GxwBK1VqPAHKQE8+Ro/DSgFXZwcCuZSEFx0kjBtEvSYh+7twKi3GlcWJ5wYGliCERGm9fVc9DFNqPw7RE99ZhFUoigXW43z8OjZklumOQ8i0whT2c+1gfY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=TMZvkvEz9E7Hwt+AShVd/pvqYCuNkFiAApgjem2APnmeAPfce8adjZ10vxZF0XPekund8Jjy1qJ6LJwVPH8Xjr7NES/NSXYdY2Gn3TDDkleaozIxJ1NDVSEOZskU2S28Fhy0J/JLOUAfYPTtVFEDmoXqcnnQ5NhKNCKNKNf95JM=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=ZxYoe/p2LIG1FpzD841r8W7HIaR163eDCLpsGJEmtz4=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1794497919967991.7552714395808;
-	Thu, 12 Nov 2026 07:38:39 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Vidith Madhu <vmadhu@nvidia.com>
-Cc: Xaver Hugl <xaver.hugl@gmail.com>,
- "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>,
- Leo Li <sunpeng.li@amd.com>, Harry Wentland <harry.wentland@amd.com>,
- Fangzhi Zuo <Jerry.Zuo@amd.com>, Daniel Stone <daniels@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Helge Deller <deller@gmx.de>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Andy Yan <andyshrk@163.com>,
- Michel =?UTF-8?B?RMOkbnplcg==?= <michel.daenzer@mailbox.org>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-fbdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- Derek Foreman <derek.foreman@collabora.com>,
- wayland-devel@lists.freedesktop.org
-Subject: Re: [PATCH v2 11/27] drm: Implement VRR rate limiting
-Date: Thu, 12 Nov 2026 16:38:30 +0100
-Message-ID: <c17LZzRKRUiGxCCOaF_S9w@collabora.com>
-In-Reply-To: <ebaad99a-ef6e-3829-2c27-5ccd5dc1b498@nvidia.com>
-References: <20261105-vrr-limiter-uapi-v2-0-55f4215be2c2@collabora.com>
- <20261105-vrr-limiter-uapi-v2-11-55f4215be2c2@collabora.com>
- <ebaad99a-ef6e-3829-2c27-5ccd5dc1b498@nvidia.com>
+	id 1xRX0r-0000000AVU7-08bE;
+	Thu, 12 Nov 2026 15:46:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Lt//TMAKQUjh9gc9h++PsfJTBw5m14WyECrnKzvFQz3BBTZ+EABf4Fkgi6wFtpGIsfQ6sgBDEJ33gckMp4ECRxlVzCsm4v3eo1z2ZQAXqqppaezyT9s+ccUXFRQc0bqhaRF/UzMz6zbsoTx2YNnZq5a3TAQ/Jf0MuMf94EsbqM5xmbDu2b2b9FQKnRO4I8wzfJRHriY/HwePdH911XWGP8cwwM29HIsr4k37rh4PzTYplpK1FxBc2I6KH9V2BmS02F3fwyQMvtwJEfIlDQ/0g7BjRQTOTbKxxFUnPTXcgSt8GR3cCRqOz37GOUNxCnHAODjpqPeeQ7t907KMXsjWhg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=G+xi2zq4wifTL3Z27TNx1a7rrb9h+NPDP51Jed5Yo1c=;
+ b=ib5vKHICxMlHcx2tZDzrZO2WGiD47cSlw9FH6KGcL/mL4ssQKuDhp+NtbHu+SZco+lnSGTj1EAC2MDjXZ7JU34mVa0ICQUIFnyTlO456GlJZBcWqu46H9E/dnPZFKka2Ma+bGcl0ebVovvGxNBBqwUEZRkNThBACZiWHe6dgaG5MpEny/5jyFq+9/Yi5SFyarAEdPwmLV7sA+Hf3iSCQJ153e8bCQvLmU54zywL1FCzuYbcW01i0estqK8YaFTHVnBsB+tuwbA0+pQ5QSOusWrSwRbhsu6gKiEAbYRAWH0XSGkrLr0gydzrAKvtNkxkIpm02Eq0bx0bYxZhmHOQcTw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=G+xi2zq4wifTL3Z27TNx1a7rrb9h+NPDP51Jed5Yo1c=;
+ b=J17DgXVJ46diOks99a7YycBjQTm/p/f4h7dgWMr0ROIvUu5q4tkRuKKYoe29JyR6cefZS0fw0y1ZJQITrbJPX8jQf6IboVXgR/8oaIzYmYzIyLKrv0xv+VTB8hNlmdTYQh3IJ0KHkcy80Z2sfAK7AhDzxvxgBAmNreZAUH73xuU=
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from GVXPR04MB12016.eurprd04.prod.outlook.com (2603:10a6:150:335::6)
+ by AM0PR04MB6962.eurprd04.prod.outlook.com (2603:10a6:208:188::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.615.10; Thu, 12 Nov
+ 2026 15:46:49 +0000
+Received: from GVXPR04MB12016.eurprd04.prod.outlook.com
+ ([fe80::f2d4:9db8:9a4e:b0bd]) by GVXPR04MB12016.eurprd04.prod.outlook.com
+ ([fe80::f2d4:9db8:9a4e:b0bd%4]) with mapi id 15.21.0615.009; Thu, 12 Nov 2026
+ 15:46:49 +0000
+Message-ID: <ae532396-557b-4a0b-b13c-920a971962b8@cherry.de>
+Date: Thu, 12 Nov 2026 16:46:47 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 0/6] phy: rockchip: inno-usb2: ensure PHY is running
+ when clock is requested
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ William Wu <william.wu@rock-chips.com>
+Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Igor Paunovic <royalnet026@gmail.com>, kernel@collabora.com
+References: <20261110-phy-rockchip-inno-usb2-clock-fix-v5-0-d2e24582ab22@collabora.com>
+Content-Language: en-US
+From: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
+Autocrypt: addr=jakob.unterwurzacher@cherry.de; keydata=
+ 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
+ ldPHIqbIwpfecQ==
+In-Reply-To: <20261110-phy-rockchip-inno-usb2-clock-fix-v5-0-d2e24582ab22@collabora.com>
+X-ClientProxiedBy: VI1PR06CA0225.eurprd06.prod.outlook.com
+ (2603:10a6:802:2c::46) To GVXPR04MB12016.eurprd04.prod.outlook.com
+ (2603:10a6:150:335::6)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GVXPR04MB12016:EE_|AM0PR04MB6962:EE_
+X-MS-Office365-Filtering-Correlation-Id: 75097006-3097-4068-5c27-08df40d429fd
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|23010399003|376014|22082099003|18002099003|261009223027099003|11063799006|56012099006|261022075727099003|261021135927099003|10067099003;
+X-Microsoft-Antispam-Message-Info: 8jlaGJNI9aequ0mpbH3O637UyMufKy55a6kPxqp30PNAbmvcR++ydOkHEPLVNRbIOSwDfnor8iUPhSO86vPtIr0wJz+d2BLpANEzVVNVa9ZYaLNWo6CLCgRpMVdgHXHTPWopSyxt8QIkA6baQ8fdQWpv/s6RXKDYT7BjxHlIvDPejtMELlZqzyH7eSiqJFRBRCWCyWadUI0E6qclq1sAtN/jW2fOgY0EJkRnwLQb5IGzz7YX++io8mSr4lM0SBUJQU7Uoase/F52l/T7MW3WtPVKvHDiKOO3vbLlX1DdJf0ax8ZcMeebZh09vcHW6gDb9hbgaLid9iXPY3YMPXvVKTTjLVxHXL/B78H1jOpNnJWg5r/cBRWAqJzhOAGz4sq5YyzPp+kglIKW6seHv1k3G7gI0gfGidGuBp8xDbdNU91KgD4Dmvw6+vXu5Gt7xQ7OYmwxNX7O8tX0xCGRLv6LbXno7FXUuTboSmP6B9KWrbdcX5tPZAM87uad5GuP4JDUK0Oy7SHoC1+q+NEk/ezgYqNwj8qVfSyYQmZz6LESp+5mgRG0CFPgxqUkRS7EH1+dJzN0XFxyuVejhHhiHWFsIbGszPGYweEggMnvL4HmVb0=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GVXPR04MB12016.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(23010399003)(376014)(22082099003)(18002099003)(261009223027099003)(11063799006)(56012099006)(261022075727099003)(261021135927099003)(10067099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?L2xmb0dMc0dNUFNyTHRXUWFPTElOZzM2KzErYnprWWkzTmtUcjRNaXlPbHZ0?=
+ =?utf-8?B?TTJtRm00V0tCL3I3YWhTQ093c1IvUDM0WEcvRnVGdXprSnZLK0JqS251Rm1B?=
+ =?utf-8?B?b2dBU1FueDFSd1pVdGNMcElWZVY1Y0Z5Z24xeXpkeDdvbkRQSWkyMmpXQ2tZ?=
+ =?utf-8?B?OHU2ODNQQmJXdDBFQUZ5YWNoMS9IUTIwTWUxVVZQTVB4aHVweWJDM2QzZmE5?=
+ =?utf-8?B?OHNDRXJ1aVlqZGEyK0tjRDFrSFVteEFpcXhWTmtibjBkMUFqTFV5RjRsZS9Y?=
+ =?utf-8?B?d3JnQWJsNVNvUlFjWDcvUHJ5M1NOQzhFK1d0cmlGUXRDUTVCWml6dDNUdytI?=
+ =?utf-8?B?VXlsVVhnTWpIZWMrNkxIMGQ0NWdPUy8wSE56cFVxbFlRcGtCVnE4V3JBZTd0?=
+ =?utf-8?B?WWFXQkdiTTVRK0NmaU9tYUNxcFhiTlZ5WFVicVVNV253Q1VnSzFIb3dVVkpq?=
+ =?utf-8?B?NGtWd1pqQlJjSVlYZVZmZlNEdnJ6NVhheDRhVTdtQlI0RDVtQWljRlUraU9Q?=
+ =?utf-8?B?Q0tvcTkyWmhGWW9xY2lOMnBjZldWd0xQK1pUM1JEcGY4N0RmckpNamx4Qjdm?=
+ =?utf-8?B?WjZoUmp6QkRySmRLR0FoZWFGRFFQb0wxZE84aGxnd2dxRWIxVWpzTDRKVW8z?=
+ =?utf-8?B?TXNKbHMzak40VWJmYStEMklINEhSZDNlbDZmbFBEUkQvZnd1Ty90ZzR4SEN5?=
+ =?utf-8?B?dWIrTmZoNHNrMUVxZElONXVGeTVsT0ZxWVNSeGZYNEpPdVJZTE5wQjJ3ZHlm?=
+ =?utf-8?B?QzViZi9XQlNJcjlMVXdYYlF3QlN3Z0VJVWlHTzJzaDgzZUMvTVBKelhxODVp?=
+ =?utf-8?B?ZnlNdTZpOXo3ODlnNFBRZlV2Q0F2dWdNZ2hNVjB1MzRWRGFMQ0FJMXB0alpl?=
+ =?utf-8?B?WVdlUHMvMjBSTVZuVEZjbjY5cTY4V3huMEhRT2NEVFBUR2NtbENRd1hpSCt3?=
+ =?utf-8?B?Mm1oTG9KSG9yT243bUM4NjVmQWNmODZsL2FoTmMxMG50bDhINHVDYnhPMzhH?=
+ =?utf-8?B?WjY2WFhPQXgyb042MklQWndQTTBRc0QvM1AvUWZZejQzZWhGTSt3ZXpZcTcz?=
+ =?utf-8?B?R1VDZUZ6TnRkWFA4M3g3alJrdURPVnJqc04wbjlZK2wxU3BlL1BxMDN2RFJY?=
+ =?utf-8?B?VTQyRk1maUlITVpTZTdGczdHM1d0M2ZIMHRuaTIrWDdVSHQ3WDBqSUJYOTlY?=
+ =?utf-8?B?cUpEWmp5Wi90eFN5SDZlYlNrVndlTUExV2xwZGxYYWVUanNUVTA2OFg1QUhj?=
+ =?utf-8?B?cUtMbXlPampBTVFHYWQ0SHJETE9Kb3FTNDdGTk9TdTRYL0VwSWRjYjNoeFBz?=
+ =?utf-8?B?dDNudy9zWlIvNFBMK2svdVgwTzc2UlNKZVlFWXVtcHBWN29rRFQrN2hITkti?=
+ =?utf-8?B?U01WdXVYSC9HZnc5a0c4K3dPOXZDRjk1bW5YQnp3VExnSC8yODQzQ0kvL21J?=
+ =?utf-8?B?YVhIWXhQZGpPVnRncHM5dTdHM1VsM1ZPcUl5L3VUTHBiY1RXa0pMWDgzTlBp?=
+ =?utf-8?B?UWpwVTAxK2VnSHhNZCtkZG1xc09Fa2J1VEJSb0NrejA0V05aNnhxaW9WTVlU?=
+ =?utf-8?B?VHR3MG1yYVIwRmhGMm1YMXNoRm1sZ1VXMnBJaW1jdkVoV0ZOUzdhOVV0dHpH?=
+ =?utf-8?B?amRsV2pQZlh5K2NYMzc5MXowVnhaaWk5RFZhZE1jeWVyR3BIdWxFVmkrYUNl?=
+ =?utf-8?B?Z3RVQzduVm5lZTlVS0NLdHFlVjdDdzNQZVgyYjlKVFVGcjFNOVhobmNPZ0JI?=
+ =?utf-8?B?bWRDU0RXcHNQZUVVZXlMRjhzV3crUG9ISnd0WWpPaFpNbi8wYktXZnprL2dm?=
+ =?utf-8?B?aldQT0ZBR1lVMjBDNXRYdEQwVFZETGhqVmJOV25DZHliallqUlhZRW9sbjRG?=
+ =?utf-8?B?eklLQ0dNQ21LMGRPd0podTluSmhoVnlwZDdZY2V5emc1NUVEa2owZ2Q3TmZ2?=
+ =?utf-8?B?TzlKNnNzb3VuYm9EdHFRVHJGQkZkdFlZS3lOSnE0a0JKa0J3SE91Qlh4d0RK?=
+ =?utf-8?B?TkJGYlEwOE1pbG0ySVVrc3o5eWdTbXM0ZmFsa0h5YVlEU3R2VUZBVVJOelhS?=
+ =?utf-8?B?YnZuTDBFcnpuM3p0UlBvTXZMVVFVUFVvT3U2MGlBRFJna25tN2Z6djV4VHRB?=
+ =?utf-8?B?cE41eUppcm5kMWZFcXY4MmFsUXlNTzkxa2NsdHVPLy94RnN2V2dhcWFkNWw0?=
+ =?utf-8?B?UVd0ZGFVN1c3OHRQd3dsSFBhS0FIQUsxaFl4ZGxwdlBreXNTRlI4MHVSeHpl?=
+ =?utf-8?B?R055Rjg5WG5TRDRUWFRnTWUxMHlhRGt3WnVZRWlzc1ZnRUdMbmVDbDFmMzI5?=
+ =?utf-8?B?cFJvSTRDZzJVNUs2bDlOZC9tazZGRDRpTGVmL3VLZzhFaXBqYVo5eUg1bWo0?=
+ =?utf-8?Q?t3bROUd9ukSI0Ue8=3D?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 75097006-3097-4068-5c27-08df40d429fd
+X-MS-Exchange-CrossTenant-AuthSource: GVXPR04MB12016.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Nov 2026 15:46:49.3301
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 5xxh3BUPFM70a4M6PscSWbswdZmdIZv04kDVjyrVmVY6xlSh94phNnXI3tJrxK6cw8qgc/DgnCEghhoFpKWlM603NPMXOCxG0Dymv9CdRTQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR04MB6962
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_073925_775578_4A78C3CB 
-X-CRM114-Status: GOOD (  31.61  )
+X-CRM114-CacheID: sfid-20261112_074657_120665_4F298543 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,145 +194,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thursday, 12 November 2026 06:35:44 Central European Standard Time Vidith Madhu wrote:
-> 
-> On Thu, 5 Nov 2026, Nicolas Frattaroli wrote:
-> 
-> > Currently, VRR is allowed to use the entire range advertised by the
-> > sink's EDID. Userspace may find it desirable, however, to limit this
-> > range, or set a fixed target rate entirely. The latter is mainly useful
-> > for multimedia playback applications, where judder can be avoided by
-> > matching the content's frame rate precisely.
-> > 
-> > With the new VRR target frame rate properties, the necessary
-> > infrastructure is in place to allow implementing this.
-> > 
-> > Add the necessary logic to hdmi_validate_vrr, as well as the VRR
-> > helpers. Since not every target rate can be reached precisely, the
-> > per-frame error is calculated, and dithered one row at a time across
-> > subsequent frames. This means some frames are one vtotal larger than
-> > others, so that averaged over the frames, the desired target rate is
-> > achieved. Such dithering is explicitly permitted by HDMI, and is still
-> > considered a constant target frame rate.
-> > 
-> > Co-developed-by: Derek Foreman <derek.foreman@collabora.com>
-> > Signed-off-by: Derek Foreman <derek.foreman@collabora.com>
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 134 +++++++++++++++++++++---
-> >  drivers/gpu/drm/drm_crtc_helper.c               |  34 +++++-
-> >  include/drm/drm_crtc.h                          |   3 +
-> >  include/drm/drm_crtc_helper.h                   |   2 +
-> >  4 files changed, 156 insertions(+), 17 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > index ce680eaa5047..846f7a72fddc 100644
-> > --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > @@ -5,6 +5,7 @@
-> >  
-> >  #include <drm/drm_atomic.h>
-> >  #include <drm/drm_connector.h>
-> > +#include <drm/drm_crtc_helper.h>
-> >  #include <drm/drm_edid.h>
-> >  #include <drm/drm_modes.h>
-> >  #include <drm/drm_print.h>
-> > @@ -1051,15 +1052,60 @@ static int hdmi_calculate_vtotal(const struct drm_display_mode *mode,
-> >  	return 0;
-> >  }
-> >  
-> > +static int hdmi_validate_vrr_limits(struct drm_crtc_state *crtc_state, u16 vrr_min)
-> > +{
-> > +	struct drm_crtc_vrr_state *vrr_state = &crtc_state->vrr_state;
-> > +	const struct drm_display_mode *mode = &crtc_state->mode;
-> > +	u32 limit_d;
-> > +	u8 round;
-> > +	int ret;
-> > +
-> > +	/* No limiter, don't need to validate, but reset the error */
-> > +	if (!drm_crtc_helper_vrr_is_fixed_rate(vrr_state)) {
-> > +		vrr_state->per_frame_err = 0;
-> > +		vrr_state->cur_err = 0;
-> > +		return 0;
-> > +	}
-> > +
-> > +	/* Don't allow rates equal to or below the minimum VRR rate / 1.001 */
-> > +	if (cmp_fraction(vrr_state->vrr_min_n, vrr_state->vrr_min_d,
-> > +			 vrr_min * 1000, 1001) < 0)
-> > +		return -EINVAL;
-> > +
-> > +	if (check_mul_overflow(mode->crtc_htotal, vrr_state->vrr_min_n, &limit_d))
-> > +		return -ERANGE;
-> > +
-> > +	ret = hdmi_calculate_vtotal(&crtc_state->mode, vrr_state->vrr_min_n,
-> > +				    vrr_state->vrr_min_d, &vrr_state->base_vtotal,
-> > +				    &vrr_state->denom, &vrr_state->per_frame_err);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	/* Allow rounding up for the vtotal check below */
-> > +	if (vrr_state->per_frame_err >= vrr_state->denom / 2)
-> > +		round = 1;
-> > +	else
-> > +		round = 0;
-> > +
-> > +	if (vrr_state->base_vtotal + round < mode->crtc_vtotal)
-> > +		return -EINVAL;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> I believe in the previous revision we discussed factoring out the 
-> protocol-agnostic validation of the CRTC frame limit ranges properties
-> (e.g. checking against min/max_vfreq, checking for a degenerate range)
-> to the main CRTC atomic check path. Is that still the intention?
+On 11/10/26 18:19, Sebastian Reichel wrote:
+> This was noticed on RK3588 EVB1 when resuming from system suspend. This
+> is technically a fix, but its unclear when the bug was introduced and
+> system suspend is broken on RK3588 for quite a while and not just due
+> to this problem. So I think this fix can be merged the normal way via
+> linux-next.
+I tested this on a rk3588-tiger and it fixed the usb-related hang I saw 
+in suspend/resume!
 
-I think the validate limit function could be moved to the CRTC helpers.
-I did try to move the whole hdmi_validate_vrr logic to CRTC, but that
-doesn't work because a lot of it requires the connector.
+Thank you!
 
-I'll move the limit validation to the protocol-agnostic CRTC helpers then
-and have the passed-in params be whatever the CRTC doesn't know of itself,
-so that it's at least reusable for non-HDMI-state-helper drivers.
+Just for posterity, this was the hack I had in place before, which I 
+could now drop:
+https://git.embedded.cherry.de/tiger-linux.git/commit/?id=c6467bf3bec2c70d563e712ac9bd0efe81fe8941
 
-> 
-> >  static int hdmi_validate_vrr(struct drm_connector *connector,
-> >  			     struct drm_atomic_commit *state)
-> >  {
-> >  	struct drm_connector_state *new_conn_state =
-> >  		drm_atomic_get_new_connector_state(state, connector);
-> > +	struct drm_connector_state *old_conn_state =
-> > +		drm_atomic_get_old_connector_state(state, connector);
-> >  	struct drm_crtc_state *new_crtc_state =
-> >  		drm_atomic_get_new_crtc_state(state, new_conn_state->crtc);
-> >  	struct drm_crtc_vrr_state *vrr_state =
-> >  		&new_crtc_state->vrr_state;
-> > +	struct drm_crtc_vrr_state *old_vrr_state;
-> > +	struct drm_crtc_state *old_crtc_state = NULL;
-> >  	struct drm_display_info *info = &connector->display_info;
-> >  	const struct drm_display_mode *mode = &new_crtc_state->mode;
-> >  	struct drm_device *dev = connector->dev;
-> > @@ -1068,10 +1114,14 @@ static int hdmi_validate_vrr(struct drm_connector *connector,
-> >  	u32 min_vfreq_d = 1;
-> >  	u32 max_vfreq_n = info->hdmi.vrr_cap.vrr_max;
-> >  	u32 max_vfreq_d = 1;
-> > +	bool is_fixed;
-> >  
-> [snip]
+Tested-by: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
 
-
-
-
+Best regards,
+Jakob
 
 _______________________________________________
 Linux-rockchip mailing list
