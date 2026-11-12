@@ -2,73 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 33213606A31C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 00:04:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ED093606A336
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 00:15:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lEuvAKpT;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=QD/0BeVb
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mJvOa6zG;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Rpmtyci8
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=sQndRthMzdRkfWsj2FEDfzd1o84a1PBMlqixX/BV8rA=; b=lEuvAKpTu5P5P5a9+PyVOUUD2t
-	HnTVt9moUq6+6Lqv2YA3ItkNc4knrABnPJSH+i06B0zgxnT8P3U3d7hDGitDEgUkv7tFtDHjjtEG3
-	87YA6ZfW/i25cDZ8+S5Y8oQ8Q4DBWsrbVXpQLh/pWEg8gEboejeJOYTHX7Wp5sRfKftvLIRi4NDV2
-	45BZQ3ByvTtwXs0eWe073ltWLLo4DEDsuu2pgj+QGHQFjZR47ZFlzXp0XSp6gm0EfLp9IRVf2ixGN
-	x7M77fkaT11eWzFn+H5EXXl6XPn7jDmMV9gR4HxUfHOn99ZRb9YDhwukac/z0Uei3Dz/9/sjO+rur
-	6Oci5g/Q==;
+	bh=YaVPO/YZff3SnrvDDcuE75YQqXwVZhsoe/B3wUnPzW0=; b=mJvOa6zGPY6+qnLLw8Y3k20XtH
+	wrCqxCAXMxtwnxMWD1SWXafG6eAduMMQqFOqL6CQ8/Fx6cO8jXQU41eXxW00XkJgHhhtxnC4K4ewR
+	FXr/cvPfQ1iT3z8YC0hjajCbI92HEhdVCbjlCSbEnV1aDZJsbJyw9Dd9zqJB4IN+dNpbVJaJSWyn4
+	/VWcFmE49yHBioTrBqPa72NovLYiapr/PQ9IFbzSe+W+3nWwHF7pPyuk2VCJBBHaAsQWH7azTvHYu
+	WoCwq7la+9TxG8B9ensPa4y3b/JoXPfUOIyz7KkLxkIw+opE2SZ6To4pr0BTDduPSKdNmUbvheKQC
+	G1GT89dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRIIb-00000008CmI-0t5x;
-	Thu, 12 Nov 2026 00:04:17 +0000
-Received: from sender6-op-o11.zoho.com ([165.173.180.11])
+	id 1xRIT1-00000008DN2-1mZF;
+	Thu, 12 Nov 2026 00:15:03 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRIIW-00000008Cld-36Az;
-	Thu, 12 Nov 2026 00:04:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794441845; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=aa5pKgBgtF3YvKaxURcjakErlRZffT1r6rh5Yy2HmRX0tVrxBZ+U85ZNDHcwrM++uk0PvGsoroZUbg3ZahPPF0WQbUGPwXX7GrJ9sjdXQKxKpkVHozWARQ/KreGDxT3CVf4L5mLWnWuH/fVNJpDYOSuZH8t4ZhhC7G3ucDsbWOM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794441845; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=nAHXTkUeJszFD3bMe/ZXPxoCJDorXuNQxO0quJ6FIgI=; 
-	b=ieJY4RQTY+q2jP5F3rDnkz4qyrZsJN5l7u6vKC0BNqGPUGzBIiAOhONWBnQAOMFgHcEPa1tcTl9ycZJCYJcNoTDL1I/+Jwr9/cXfBd1SmQUmqHcG7VoJL0RmDy3K4/meSMGy9RF7DCxRLQAXPQqsBGTjOTu1eNN0gNpWqeUNWqY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=QD/0BeVbLdH1S9K/p2x1AdIMiiPAoEjgcUQtGsAAkGMjoHPTpJyLt0fn/qdwoqKnf1T+exeloUdIfJ9QIBHJvqCZwFDDHbwCvKwdn0N4Rlk1e/SAEaqVkPFOU0eZVNMu/XdGLPKvRMEkBmxkhHxjYi0QxpXEr3eRvhbkCGzLFzk=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=nAHXTkUeJszFD3bMe/ZXPxoCJDorXuNQxO0quJ6FIgI=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1794441843642472.6185322036207;
-	Wed, 11 Nov 2026 16:04:03 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id 0C86D180BC0; Thu, 12 Nov 2026 01:03:59 +0100 (CET)
-Date: Thu, 12 Nov 2026 01:03:59 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Quentin Schulz <quentin.schulz@cherry.de>
-Cc: Jakob Unterwurzacher <jakobunt@gmail.com>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Joseph Chen <chenjh@rock-chips.com>, Lee Jones <lee@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-input@vger.kernel.org, mfd@lists.linux.dev, devicetree@vger.kernel.org, 
-	Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
-Subject: Re: [PATCH 0/4] Suspend-to-RAM fixes for RK3588 + SPI-connected
- RK806 PMIC, enable PMIC sleep on RK3588 Tiger
-Message-ID: <avT_xrrgeThffbpc@venus>
-References: <20261029-dev-tiger-v7-4-pre-20261028-tiger-suspend-b4-v1-0-cb12621c1fb4@cherry.de>
- <a220ebd0-a28d-44cc-9a80-62382018348c@cherry.de>
+	id 1xRISz-00000008DMf-37qO;
+	Thu, 12 Nov 2026 00:15:01 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 28E2941074;
+	Thu, 12 Nov 2026 00:15:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A60B1F00A07;
+	Thu, 12 Nov 2026 00:15:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794442501;
+	bh=Q/EartPOy717CuQdv8ANaMlETa+4mCRy7I4dcWtZtrE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=Rpmtyci8aux5sP02UwuMM0SFs1Ay4fZueM4bTxiZAvf1FG/XV2+1zNXsE0Ri3aVxE
+	 Lz7/V3FoZmXtls4ENNgK9ebqPtTIRCtEU4crfR8jfASyOwESqRTsg7ya9r6PVP7S00
+	 SZ8YJs7qh8OYlbn40nmcbXWzrbNOYP09/iyhqD1tmGeYo63rlR/fxHE/Nj9F3WC5Lr
+	 OhFR4Uj6c9TYSDpb3YvcNoq7SEjOvTiIHveNLHnyOqa/0m+IJo2jL5QGackjbXUkw/
+	 GdC47yH+vK84qfngcuCWhkwqYDju3eVgJ/b5uwF7VHmevhk1sMJX5YPRdOCpaIzQf0
+	 m7DsfPn1Thx3A==
+Date: Wed, 11 Nov 2026 16:14:59 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: "Cunhao Lu" <1579567540@qq.com>
+Cc: "Marc Kleine-Budde" <mkl@pengutronix.de>, "kernel"
+ <kernel@pengutronix.de>, "Vincent Mailhol" <mailhol@kernel.org>, "Heiko
+ Stuebner" <heiko@sntech.de>, "Oliver Hartkopp" <socketcan@hartkopp.net>,
+ "David S. Miller" <davem@davemloft.net>, "Eric Dumazet"
+ <edumazet@kernel.org>, "Paolo Abeni" <pabeni@redhat.com>, "Simon Horman"
+ <horms@kernel.org>, "Jonathan Corbet" <corbet@lwn.net>, "Shuah Khan"
+ <skhan@linuxfoundation.org>, "Randy Dunlap" <rdunlap@infradead.org>,
+ "Wolfgang Grandegger" <wg@grandegger.com>, "linux-can"
+ <linux-can@vger.kernel.org>, "linux-arm-kernel"
+ <linux-arm-kernel@lists.infradead.org>, "linux-rockchip"
+ <linux-rockchip@lists.infradead.org>, "linux-kernel"
+ <linux-kernel@vger.kernel.org>, "netdev" <netdev@vger.kernel.org>,
+ "linux-doc" <linux-doc@vger.kernel.org>, "stable" <stable@vger.kernel.org>
+Subject: Re: [PATCH net v8 00/10] can: fix Rockchip TX stalls and bus-off
+ restart/close races
+Message-ID: <20261111161459.4879a82d@kernel.org>
+In-Reply-To: <tencent_F59D327809C523BE014488357EEF4D163408@qq.com>
+References: <20261108-rockchip-canfd-restart-close-v8-0-3e7a23fd9eae@qq.com>
+	<20261109112402.283c16a3@kernel.org>
+	<tencent_F59D327809C523BE014488357EEF4D163408@qq.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <a220ebd0-a28d-44cc-9a80-62382018348c@cherry.de>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.427.16
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_160412_868720_39D59A2A 
-X-CRM114-Status: GOOD (  39.63  )
-X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,7 +77,8 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4968130671074704034=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -87,203 +87,18 @@ X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-
---===============4968130671074704034==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xvrq2tdjbjck7db4"
-Content-Disposition: inline
-
-
---xvrq2tdjbjck7db4
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 0/4] Suspend-to-RAM fixes for RK3588 + SPI-connected
- RK806 PMIC, enable PMIC sleep on RK3588 Tiger
-MIME-Version: 1.0
-
-Hi,
-
-On Thu, Oct 29, 2026 at 08:31:34PM +0100, Quentin Schulz wrote:
-> Hi Jakob,
->=20
-> On 10/29/26 11:06 AM, Jakob Unterwurzacher wrote:
-> > This series, together with a few out-of-tree patches (see below), makes
-> > suspend-to-RAM on RK3588-Tiger work, down to a power consumption of
-> > about 0.4 W. Patches 1-3 apply to all boards with an RK806 PMIC
-> > connected via SPI, which includes most RK3588 boards.
-> >=20
-> > Patch 1 ("Input: rk805-pwrkey - enable the wakeup interrupt during syst=
-em suspend")
-> > arms the power key interrupt as a wakeup source, so that the
-> > power key can wake up the system. This is done in the regular suspend
-> > phase, because the SPI bus to the PMIC can no longer be used in the
-> > noirq phase.
-> >=20
-> > Patch 2 ("mfd: rk8xx-core: keep the PMIC interrupt disabled during syst=
-em suspend")
-> > keeps the PMIC interrupt disabled across system suspend, so that its
-> > handler does not run before the bus to the PMIC has resumed.
-> >=20
-> > Patch 3 ("mfd: rk8xx-spi: add system sleep PM ops")
-> > hooks up the existing rk8xx suspend/resume callbacks for the SPI
-> > variant, which so far lacked them.
-> >=20
-> > Patch 4 ("arm64: dts: rockchip: put the PMIC into sleep mode in suspend=
- on RK3588 Tiger")
-> > configures the RK806 PWRCTRL1 pin on RK3588 Tiger for its sleep
-> > function, so that the regulator suspend states take effect. This lowers
-> > the module's power consumption in suspend-to-RAM from 1.09 W to 0.43 W.
-> >=20
-> > The patches do not depend on each other and can be applied through
-> > their respective trees.
-> >=20
->=20
-> Then have them in separate series. Series should be as small as possible,
-> down to a single commit if possible.
-
-I suggest to send patch 2+3 as one series considering patch 3 does
-not make much sense without patch 2.
-
-> > Testing
-> > -------
-> >=20
-> > Tested on RK3588-Tiger on the Haikou baseboard, on top of the v7.4 merge
-> > window (a8530b69fc4dd): 30 consecutive suspend-to-RAM cycles, each woken
-> > up by the PMIC power key, all resumed without errors in the kernel log.
-> > USB devices (a SuperSpeed hub with an Ethernet adapter, and its
-> > High-Speed part) stayed connected across suspend.
-> >=20
-> > Out-of-tree patches
-> > -------------------
-> >=20
-> > To test this series, out-of-tree patches were needed and used:
-> >=20
-> > 1) Upstream TF-A does not complete suspend-to-RAM on this board yet, so=
- the
-> > tests used Rockchip's BL31 (rkbin v1.47), configured through a small
-> > out-of-tree driver. The plan is to get suspend working in TF-A instead.
-> >=20
->=20
-> I'm guessing you(r LLM) meant upstream TF-A here? Or what is it that you
-> mean?
->=20
-> > 2) The inno-usb2 PHY has to be resumed when its 480 MHz clock is enable=
-d,
-> > otherwise EHCI/OHCI resume hangs. This is addressed by Sebastian
-> > Reichel's inno-usb2 series [1].
->=20
-> Having access to your downstream branch, you have a patch generated by yo=
-ur
-> LLM and not Sebastian's patch series. Either use what Sebastian posted, or
-> be more careful in your choice of words as I read the above as implying y=
-ou
-> used his series.
->
-> > [1] https://lore.kernel.org/linux-phy/20261001-phy-rockchip-inno-usb2-c=
-lock-fix-v2-4-e01bf509359e@collabora.com/
-
-Getting a Tested-by on v5, which finally tamed Sashiko would be
-nice:
-
-https://lore.kernel.org/linux-phy/20261110-phy-rockchip-inno-usb2-clock-fix=
--v5-0-d2e24582ab22@collabora.com/
-
-> > 3) The GPU and NPU domain supplies were kept always-on. genpd powers
-> > these domains on in the noirq resume phase, when their regulators (on
-> > I2C/SPI) cannot be reached yet. I'm not sure what to do here, yet.
->
-> > Known issues
-> > ------------
-> >=20
-> > PCIe devices do not survive resume; this depends on system PM
-> > support in pcie-dw-rockchip [2].
-> >=20
-> > [2] https://lore.kernel.org/r/20260316-rockchip-pcie-system-suspend-v5-=
-0-5bb5ad37d643@collabora.com
-> >=20
->=20
-> There already is a v6 from almost two months ago. Did you actually test w=
-ith
-> the v5 or are you just hinting at what could be helping resume PCIe devic=
-es?
->=20
-> I'm sure Sebastian would be happy to receive a nice Tested-by tag if you =
-did
-> indeed test that. Link to v6: https://lore.kernel.org/all/20260908-rockch=
-ip-pcie-system-suspend-v6-0-fbabcca9921b@collabora.com/
-
-FWIW v9 got merged:
-
-https://lore.kernel.org/linux-pci/179407115382.87267.12160393716568806842.b=
-4-ty@b4/
-
-> > Tool use
-> > --------
-> >=20
-> > These patches were developed with an LLM-based coding assistant (Claude
-> > Code). It ran the suspend/resume tests on the hardware, analysed the
-> > kernel logs to find the causes of the failures, and drafted the code
-> > changes and commit messages. I reviewed all changes and tested them as
-> > described above.
-> >=20
->=20
-> All your patches are missing the Signed-off-by, required to signify DCO[1=
-].
-> LLMs are forbidden to add it, so I guess you missed that when reviewing t=
-he
-> patches before sending. Please triple check that you agree to all criteria
-> listed in the documentation before adding the SoB to patches generated by
-> LLMs[2].
-
-I had a look at the patches and they all look sensible to me, but
-not much worth without the SoB.
-
-Greetings,
-
--- Sebastian
-
-> [1] https://www.kernel.org/doc/html/latest/process/submitting-patches.htm=
-l#sign-your-work-the-developer-s-certificate-of-origin
-> [2] https://docs.kernel.org/process/coding-assistants.html#signed-off-by-=
-and-developer-certificate-of-origin
->=20
-> Cheers,
-> Quentin
-
---xvrq2tdjbjck7db4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmr1AmsACgkQ2O7X88g7
-+prPMQ//e8rSq/n61dw8XPE9I9S3MpHkhlKNw1vgdWy1Dfay3e0vBVXK4Ym8rpsB
-HBQ8Ecj+e5jHnMjCDSvOU+xfHvXT5ZeBTdZ/cQuVcH+HiW/n2MD9X/JpKaQMPyDS
-C7YLuOemqZ8NvgyBbpRvxt7NXo3mgFQ8GXSpCm2bTevDrk2Rhc4v3yXIzL2u1RWY
-+JSiVXyIJ4ouZlyTFSX+pbwgMZGu923UVsplQMhuwhK/M+KhGYy5sjeHGkX44eTt
-OEyBl5qPZbMQDAMgrpvaRKIe1gHdLYZhveMdq4zBdklXCptjOXQmEnRUtsh+Fovq
-4s8hy+zA7KwQKZUY8gRNzcgzVF8XQUvCwPmBbwNs3BCthJ0AxucWDF/dlOYrpWu4
-jupe+R4AcAV70pss5jGNIu6UyZ7inHkgYer/BlYu0RCW9jBuhc3FeNqFlM8UERbn
-2asOcckSqu/014t6/TvVhtLUlTkqZ3axbHiURuBOdPhOy86BP1KCR8uWAtj2DXCT
-g1VVhlcHyUJUtyKzJEiWwycCcVb8dFjjDQMLU3Dj4+mE5puoP3W7hzEUbAgNdYJ+
-a3IvENnIJS4+ZEiR8m32LUZjo08DdkW81ONSz7FuEUxQ8KmY6f8Y/l5oHsiVHssy
-PCfz05ee3JARTPzu9ghAK8tyzaldlg3ofobMZhYtrscwEqHaYrg=
-=loQp
------END PGP SIGNATURE-----
-
---xvrq2tdjbjck7db4--
-
-
---===============4968130671074704034==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4968130671074704034==--
-
+T24gVHVlLCAxMCBOb3YgMjAyNiAxMTowNTozNyArMDgwMCBDdW5oYW8gTHUgd3JvdGU6Cj4gPiA+
+wqBTdWJqZWN0OsKgW1BBVENIwqBuZXTCoHY4wqAwMC8xMF3CoGNhbjrCoGZpeMKgUm9ja2NoaXDC
+oFRYwqBzdGFsbHPCoGFuZMKgYnVzLW9mZsKgcmVzdGFydC9jbG9zZcKgcmFjZXMgIAo+ID4KPiA+
+IHBsZWFzZcKgdXNlwqBnZXRfbWFpbnRhaW5lci5wbCzCoGRvwqBub3TCoENDwqBuZXRkZXbCoG9u
+wqBDQU7CoHBhdGNoZXPCoGRpcmVjdGx5LiAgCj4gCj4gSSB1c2VkIGI0IHByZXAgLS1hdXRvLXRv
+LWNjLCB3aGljaCBpbnZva2VzIGdldF9tYWludGFpbmVyLnBsLgo+IFRoZSBzZXJpZXMgbW9kaWZp
+ZXMgRG9jdW1lbnRhdGlvbi9uZXR3b3JraW5nL2Nhbi5yc3QsIHdoaWNoIG1hdGNoZXMKPiBEb2N1
+bWVudGF0aW9uL25ldHdvcmtpbmcvIHVuZGVyIE5FVFdPUktJTkcgW0dFTkVSQUxdIGFuZCBpcyBu
+b3QKPiBleGNsdWRlZCB0aGVyZSwgc28gbmV0ZGV2QHZnZXIua2VybmVsLm9yZyB3YXMgYWRkZWQg
+YXV0b21hdGljYWxseS4KPiAKPiBJIHdpbGwgbWFudWFsbHkgcmVtb3ZlIG5ldGRldkB2Z2VyLmtl
+cm5lbC5vcmcgZnJvbSBDYyBmb3IgdGhlIG5leHQKPiByZXZpc2lvbi4KCk9yIGJldHRlciBzdGls
+bCBzZW5kIGEgcGF0Y2ggdG8gZXhjbHVkZSBpdCBsaWtlIHRoZSByZXN0IG9mIENBTgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
