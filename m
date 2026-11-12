@@ -2,67 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8261606A32D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 01:01:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 37EA8606A324
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 01:18:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Djb1dM4K;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=RwvIkZTV
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vO7DPbEM;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PkXImLPd
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=q0BeevwFv3EssZiETKrCulkupPaPrtiRxHf54lpFCxE=; b=Djb1dM4KukBDVFZCNMbx30gjsm
-	zWPBqmaRJpzh7tLR7xtGKVAKPjKCIN6DbvNaaX0VMQBGo3hF6KzsShRq0msiIcxIPxIxpjs9fuNJa
-	P9JjBVu1LHSHsmIPpFjHf8vfo4qvDu4VjwvPhlIv23Q9yplGc8pxlwlFXgFYXN7YRycZP0kg0RbWf
-	/8zmYTgXYwAETxUrqy7p+FH5XWX7r6zi/PYwxdIR9mCzaAFQzbNIQAjMRY4xnxsF2bvisMjsxns8w
-	UG95LbFW3VSNJzZ8wRvpQ+Z9mzVNyt2kIV70PT1GOUWjLe2aJ4y6G1uHasOB3/F4r+TQwx7Nwuohp
-	VN+M9TgA==;
+	bh=dg+WdKfWzr+gGtcpC9yhnquHwLw5h5cqRODITRX+pug=; b=vO7DPbEMWwZL3fU/YF9s8aub+S
+	Azr12ixPXgBTkb/O00h5I4jAlWWKidQP9BNQ0RcXWqTfbVw6HDPGyX1G1hyQLvieuJ+mh6R0AOLYw
+	xW8eLASPxN8Lm/mmW+BX2R5sNa8Cwm+eDmAadPsbLu8tqxshwng9s2yIpku0PjT6mqrMiql3KVDii
+	H4EAnvqrt7gulzWAQk/x+tNiEqsV4yY4LsTOVoerBLt9COy+PAu6tDPDjzmEv488UFq6CD4rmVCBZ
+	aP6zmR9xThhfVBkrbFJAkYk5e/xebXrnkCN4V6+l4KgN+SUPgc0CMBGc9i3mZ4DI3lurZGRr6eGba
+	HuR/CvNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRJC7-00000008IlL-0mZu;
-	Thu, 12 Nov 2026 01:01:39 +0000
-Received: from mail-m12859.netease.com ([103.209.128.59])
+	id 1xRJSG-00000008KCf-16Yo;
+	Thu, 12 Nov 2026 01:18:20 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRJC3-00000008Ika-2ob1;
-	Thu, 12 Nov 2026 01:01:38 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 545e00560;
-	Thu, 12 Nov 2026 09:01:30 +0800 (GMT+08:00)
-Message-ID: <dd25880e-be2d-4adc-8384-fa4a7160a4df@rock-chips.com>
-Date: Thu, 12 Nov 2026 09:01:29 +0800
+	id 1xRJSE-00000008KCR-1s6d;
+	Thu, 12 Nov 2026 01:18:18 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id CFAD340C28;
+	Thu, 12 Nov 2026 01:18:17 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794446297;
+	b=mqFDIgPyD64w/jounPZJvg1RMgEoPNK/KT2rUpladn7VRFKI5OKlD+oNitpepIj5GpsI
+	 Ciqn4oc3DH544l0jBNQ0NvO1KEwYYfrNKDoik6e3tN3D/NJrBO65iNFOZnjEb1S/H7uIG
+	 xsvXMgx65gqbmWlE00oHx/Ks/JUZAMiVCzvgCCaItPie3OFefQ3B8csl2b6nFb4HPgG29
+	 /uDKJeqq+Vc8frplKT5lTowmZaBgesZ7sQEDGZrsLBk20zE9SjMKbFkd0IsxWzcqVppEn
+	 2ZKhnW2hCjd2Tkn6Pi6xBMCPKYXNY5b+UKD96N252kHORXKmV58myCEFzYYZyQBi/RQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794446297;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
+	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=giOynWrj1p05vkyeYCyHdpu2lu3LEmA+NcfUzFVBsw8=;
+	b=t3KTQ03rfxlud+5fHcHXXm8QYtzXxIRJe+NyIYrbpV6oYucbql+jOtD5bCiGO2302Jor
+	 LzwWbmIfl7mMOMKDsFD4KmKf0WSBtCJYIGDz57ajiGNL+g621N8e3Of8ik3mttcIEW0BS
+	 IWffr7d7HYUOZ74Shg95PTEOyKZm9iX3UW9+BUSkBVqXv7y+XmUAdTgef6UYuCAoxqeXb
+	 UQ60pVGfSYl7IowWtO64QhhCheMqrd1xFSuTTFNiDQ/0COVMB4lQdS9tvCjjhAbDLljlq
+	 K2GUV4OFGwH4s/K9vezVtxKI7TOJ8GLm2NyYsCnf60A5eGQMhIa6EUop0izmAnoCRxg==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 1B4AC1F00A05;
+	Thu, 12 Nov 2026 01:18:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794446297;
+	bh=giOynWrj1p05vkyeYCyHdpu2lu3LEmA+NcfUzFVBsw8=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=PkXImLPdE+XOnRYLkukGVZzArbr3fLPccyriXx3W5y9dg5ZYo8EHPfJN5Yngw3eYz
+	 QB61jmbaAHOz1bDIWUSV6/8tNW+vBMOuirNWAsGPaLT6oHy02+GCPNjwVD2OopQ/Pl
+	 WWN4w9I2Y1KH3TavxJbM6/HvEK/o3KyZ17wBsiXDca5ug8sIW1hUiKkRFn9wYTROB5
+	 0UVjgZVp4x5ypXb4iPDJzTcfIEH8X638t0g0mfdLhYIPRmI0Ga6xRw9c4KkhGfg7ei
+	 8y3RFPq0mU8vtLGJaogvZlCUzCetrc5vDyoTuv2ZjXIowhKWQ0w8ieIl7Li5O4n2Sa
+	 MxjkuRyL8Jyaw==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id A206B491AB;
+	Thu, 12 Nov 2026 01:18:16 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Thu, 12 Nov 2026 01:18:15 +0000
+Subject: [PATCH] arm64: dts: rockchip: Name the GPIO lines on Kobol
+ Helios64
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: Describe the Type-C port on RK3576
- EVB1
-To: Alexey Charkov <alchark@flipper.net>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20261106-rk3576-evb1-husb311-v1-1-99c2f57ea2a5@flipper.net>
- <dd59d491-82b0-4047-ae98-f8070f6be112@rock-chips.com>
- <CAKTNdwHbxnknob9NdjqWUcGU2fURO5B7V4kTTK+fvEYjNDOLCA@mail.gmail.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <CAKTNdwHbxnknob9NdjqWUcGU2fURO5B7V4kTTK+fvEYjNDOLCA@mail.gmail.com>
-X-HM-Tid: 0aa1cd462be103a7kunmad3109128fdea8
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCSEIaVktMTUpKTEkeSEkZGVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUJCSU
-	5LVUpLS1VKQktCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=RwvIkZTV3jQpd5yHEhMQAJE6+49uXKgn5dUqP2jzosXCm8+6dUU5dw4KqqX/DoivJuUINoenbcsTAmcpB6BTQ+CWfDl9iRrua0VavXKaDAXLL/UcF9IXvO/F/f/XVsAi6kHyZHe2zbWlOQwtfMsVnRU16rPU1itMv9XWPFY5810=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=fY4d6y47CamDA7G44TSptxryAErHvm+2SddM192y+64=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_170136_348781_2EACF711 
-X-CRM114-Status: GOOD (  15.78  )
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261112-helios64-gpio-line-names-v1-1-2ce53756753f@iav.lv>
+X-B4-Tracking: v=1; b=H4sIANYT9WoC/x3MQQqEMAxG4atI1hMwRUS8irjo1F8NaCsNiCC9+
+ 5RZfov3XjJkhdHYvJRxq2mKFfJpKOw+bmBdqsm1rhcRxzsOTdZ3vF2a+NAIjv6EcfDfYZAOi7h
+ ANb8yVn3+62ku5QfPO7juagAAAA==
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4082; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=mxfTsSDkWYOFNeIUFLUD6qD7wTrjLsl+OXjto3i0uRA=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFlfha9nyr0qPrqV6fH2LaHnvsw23ecXeWbZ+g/idxaU6
+ l1qWKYd1lHKwiDGxSArpsgy4ZDGrYwlV//6e5g/gJnDygQyhIGLUwAm8k2akWHuGimJPXIajY/3
+ V8ZZFcnOlUrrv8uXbLLgjcrNhbcXnGJh+Cvaw9JhWs+yWfG4UOyJSaKyKz06z909X+u8p6PS5bE
+ 0KzcA
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,51 +109,140 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: iav@iav.lv
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgQWxleGV5LAoKT24gMTEvMTEvMjAyNiA2OjQ1IFBNLCBBbGV4ZXkgQ2hhcmtvdiB3cm90ZToK
-PiBIaSBDaGFveWksCj4gCj4gT24gV2VkLCBOb3YgMTEsIDIwMjYgYXQgMTozMeKAr1BNIENoYW95
-aSBDaGVuIDxjaGFveWkuY2hlbkByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+Cj4+IEhpIEFsZXhl
-eSwKPj4KPj4gT24gMTEvNy8yMDI2IDE6NTIgQU0sIEFsZXhleSBDaGFya292IHdyb3RlOgo+Pj4g
-UkszNTc2IEVWQjEgaGFzIGl0cyBVU0JEUCBQSFkgcm91dGVkIHRvIGEgVHlwZS1DIHBvcnQgd2l0
-aCBhIEhVU0IzMTEgQ0MKPj4+IGNvbnRyb2xsZXIgYW5kIGEgZml4ZWQtdm9sdGFnZSBWQlVTIHN1
-cHBseS4KPj4+Cj4+PiBEZXNjcmliZSBpdCBpbiB0aGUgZGV2aWNlIHRyZWUsIGluY2x1ZGluZyB0
-aGUgd2lyaW5nIGZvciBib3RoIHRoZSBVU0IgYW5kCj4+PiB0aGUgRFAgc2lkZS4KPj4+Cj4+PiBU
-aGlzIG1ha2VzIHRoZSBkYXRhIHJvbGVzIGZvbGxvdyB0aGUgVHlwZS1DIHBvcnQncyBuZWdvdGlh
-dGlvbiwgc28gdGhlCj4+PiBwb3J0IHN0b3BzIGJlaW5nIGhvc3Qgb25seS4gSXQgYWxzbyBsZWF2
-ZXMgdGhlIFZCVVMgcmVndWxhdG9yIHRvIGJlCj4+PiBtYW5hZ2VkIGJ5IFRDUE0gaW5zdGVhZCBv
-ZiBiZWluZyBoYXJkd2lyZWQgdmlhIHRoZSB0YW5nZW50aWFsbHkgcmVsYXRlZAo+Pj4gcGh5LXN1
-cHBseSBvbiBhIFVTQiBjb250cm9sbGVyLiBEUCBsYW5lcyBhcmUgYWxzbyBtdXhlZCBkeW5hbWlj
-YWxseSBieQo+Pj4gdGhlIFVTQkRQIFBIWSBiYXNlZCBvbiB0aGUgVHlwZS1DIHBvcnQncyBuZWdv
-dGlhdGlvbiwgc28gdGhlIGhhY2t5IGZpeGVkCj4+PiBsYW5lIG11eGluZyBhbHNvIGdvZXMgYXdh
-eS4KPj4+Cj4+Cj4+IEhhdmUgeW91IHRlc3RlZCB0aGlzPyBBcyBmYXIgYXMgSSBrbm93LCBkdy1k
-cCBkcml2ZXIgZG9lcyBub3Qgc3VwcG9ydAo+PiBUeXBlLUMgSFBEIHlldC4KPiAKPiBJIGRpZCAt
-IGl0IHdvcmtzIGZpbmUgZm9yIG1lIHVuZGVyIExpbnV4IHdpdGggU2ViYXN0aWFuJ3MgcGF0Y2hl
-cy4gTXkKPiBwcmltYXJ5IG1vdGl2YXRpb24sIGhvd2V2ZXIsIHdhcyBVLUJvb3QsIHdoZXJlIHRo
-ZSBjdXJyZW50IHBoeS1zdXBwbHkKPiBoYWNrIGJyZWFrcyBVU0IgZGF0YSByb2xlIHN3aXRjaGlu
-ZywgZHVlIHRvIFZCVVMgYmVpbmcgZm9yY2VkCj4gYWx3YXlzLW9uLiBXaXRoIHRoaXMgcGF0Y2gg
-aXQgd29ya3MsIGFuZCBub3cgdGhlIERUIGFjdHVhbGx5IGRlc2NyaWJlcwo+IHRoZSBoYXJkd2Fy
-ZSwgYXMgaXQgaXMgc3VwcG9zZWQgdG8uCj4gCgpPaCwgSSBhbG1vc3QgZm9yZ290IGFib3V0IHRo
-YXQuIEkgdGhpbmsgaXQgc2hvdWxkIGJlIHRoaXMgcGF0Y2ggc2VyaWVzWzBdLCByaWdodD8KCkJ1
-dCBJIHRoaW5rIHdlIHByb2JhYmx5IG5lZWQgbW9yZSB0aGFuIGp1c3QgdGhpcyBzZXJpZXMsIGJl
-Y2F1c2UKcmljaHRlayxydDE3MTFoIGRvZXMgbm90IHJlZ2lzdGVyIHRoZSBIUEQgYnJpZGdlLCBz
-byB3ZSB3aWxsIGdldCB0aGlzOgoKWyAgIDE0LjgyODk4M10gYXV4aWxpYXJ5IGF1eF9icmlkZ2Uu
-YXV4X2JyaWRnZS4wOiBkZWZlcnJlZCBwcm9iZSBwZW5kaW5nOiBhdXhfYnJpZGdlLmF1eF9icmlk
-Z2U6IGZhaWxlZCB0byBhY3F1aXJlIGRybV9icmlkZ2UKCk1heWJlIHlvdSBoYXZlIGFscmVhZHkg
-YWRkZWQgdGhlIGNvcnJlc3BvbmRpbmcgcGF0Y2ggeW91cnNlbGY/CkFub3RoZXIgb3B0aW9uIGlz
-IHRvIHVzZSB0aGUgZ2VuZXJpYyBBVVggSFBEIHBhdGNoWzFdLiA6KQoKWzBdOiBodHRwczovL2xv
-cmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC8yMDI2MDgwNi1zeW5vcHN5cy1kdy1kcC1pbXBy
-b3ZlbWVudHMtdjExLTAtMGQ1MDg1MDVmMzgzQGNvbGxhYm9yYS5jb20vClsxXTogaHR0cHM6Ly9s
-b3JlLmtlcm5lbC5vcmcvYWxsLzIwMjYxMDIwMDcyODE2LjE4MC0xLWtlcm5lbEBhaXJreWkuY29t
-LwoKLS0gCkJlc3QsIApDaGFveWkKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+From: Igor Velkov <iav@iav.lv>
+
+Name the SoC GPIO lines after the nets on the Helios64 Rev1.2
+schematic, so that user space can find a line by name. The auto
+power-on latch (U23, an SN74LVC1G79 flip-flop), for one, has no kernel
+driver: user space sets it at shutdown through AUTO_ON_EN_D and
+AUTO_ON_EN_CLK.
+
+A line that reaches a named net through a series resistor takes that
+net's name. The SD card lines, whose nets are not named, take the SoC
+pin function, and the two board revision straps are named after the
+schematic's "Board Revision ID" block. Lines that go only to a test
+point or are not connected stay unnamed.
+
+Link: https://wiki.kobol.io/helios64/files/schematics/Helios64_Schematics_Rev1.2.pdf
+Signed-off-by: Igor Velkov <iav@iav.lv>
+---
+Tested on Helios64 with the names added by fdtput to the DTB of an
+Armbian 7.3.4 kernel: gpioinfo lists them, and every line it shows as
+requested by a driver (LEDs, buttons, regulators, beeper, charger, SD
+card detect, Ethernet PHY reset) carries the name of the net it drives
+or reads.
+---
+ .../boot/dts/rockchip/rk3399-kobol-helios64.dts    | 74 ++++++++++++++++++++++
+ 1 file changed, 74 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+index f13ea2df7a30..329116e2074b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+@@ -421,6 +421,80 @@ &gmac {
+ 	status = "okay";
+ };
+ 
++/* Line names follow the Helios64 Rev1.2 schematic */
++&gpio0 {
++	gpio-line-names =
++		/* GPIO0 A0-A7 */
++		"RTC_CLK0_SOC", "SDMMC0_PWR_H", "VCC12V_DCIN_GOOD", "USR1_SWITCH#",
++		"NETW_ACT_LED_ON", "PWR_KEY_L", "PWR_LED_OFF", "SDMMC0_DET_L",
++		/* GPIO0 B0-B5 */
++		"LAN_WAKE#", "EXP16_INT#", "PMIC_INT#", "USB3_ACT_LED_ON",
++		"SYS_GRN_LED_ON", "SYS_RED_LED_ON";
++};
++
++&gpio1 {
++	gpio-line-names =
++		/* GPIO1 A0-A7 */
++		"HDD_A_ON", "HDD_B_ON", "TYPEC0_CC_INT_L", "VCC5V0_TYPEC0_EN",
++		"USB_MUX_HS", "PMIC_SLEEP_H", "OTP_OUT_H", "SOC_SO",
++		/* GPIO1 B0-B7 */
++		"SOC_SI", "SOC_CK", "SOC_CE#", "I2C4_SDA_TYPEC",
++		"I2C4_SCL_TYPEC", "USB_MUX_OE", "GPU_SLEEP_H", "I2C0_SDA_PMIC",
++		/* GPIO1 C0-C7 */
++		"I2C0_SCL_PMIC", "CPU_SLEEP_B_H", "SOC_WP#", "LOG_DVS_PWM",
++		"I2C8_SDA", "I2C8_SCL", "USB3_EN", "USB3LAN_PWR",
++		/* GPIO1 D0 */
++		"PCIE_PWR";
++};
++
++&gpio2 {
++	gpio-line-names =
++		/* GPIO2 A0-A7 */
++		"I2C2_SDA_TEMP_EXP", "I2C2_SCL_TEMP_EXP", "SATA_ERR0", "SATA_ERR1",
++		"SATA_ERR2", "SATA_ERR3", "SATA_ERR4", "I2C7_SDA",
++		/* GPIO2 B0-B7 */
++		"I2C7_SCL", "SPI2_RXD", "SPI2_TXD", "SPI2_CLK",
++		"SPI2_CSN0", "", "", "",
++		/* GPIO2 C0-C7 */
++		"UART0_RX", "UART0_TX", "", "",
++		"SATA_SO_LV", "SATA_SI_LV", "SATA_CK_LV", "SATA_CE#_LV",
++		/* GPIO2 D0-D4 */
++		"SATA_WP#_LV", "PCIE_CLKREQ_L", "", "CHARGER_STATUS#",
++		"PCIE_PERST_L";
++};
++
++&gpio3 {
++	gpio-line-names =
++		/* GPIO3 A0-A7 */
++		"RGMII_TXD2", "RGMII_TXD3", "RGMII_RXD2", "RGMII_RXD3",
++		"RGMII_TXD0", "RGMII_TXD1", "RGMII_RXD0", "RGMII_RXD1",
++		/* GPIO3 B0-B7 */
++		"GMAC_MDC", "RGMII_RXCTL", "", "GMAC_CLK",
++		"RGMII_TXCTL", "GMAC_MDIO", "RGMII_RXC", "GPHY_RST#",
++		/* GPIO3 C0-C7 */
++		"", "RGMII_TXC", "", "",
++		"", "", "", "",
++		/* GPIO3 D0-D7 */
++		"", "", "", "",
++		"", "", "ERR1_B", "ERR1_A";
++};
++
++&gpio4 {
++	gpio-line-names =
++		/* GPIO4 A0-A7 */
++		"", "ERR0_B", "", "",
++		"", "ERR0_A", "", "",
++		/* GPIO4 B0-B7 */
++		"SDMMC0_D0", "SDMMC0_D1", "SDMMC0_D2", "SDMMC0_D3",
++		"SDMMC0_CLKOUT", "SDMMC0_CMD", "", "",
++		/* GPIO4 C0-C7 */
++		"", "", "FAN1_PWM", "UART2DBG_RX",
++		"UART2DBG_TX", "FAN1_SENSE", "FAN2_PWM", "FAN2_SENSE",
++		/* GPIO4 D0-D6 */
++		"SATA_SPI_FLSH", "AUTO_ON_EN_D", "AUTO_ON_EN_CLK", "BUZZER_ON",
++		"SATA_ACT_LED", "BOARD_REV_ID0", "BOARD_REV_ID1";
++};
++
+ &gpu {
+ 	mali-supply = <&vdd_gpu>;
+ 	status = "okay";
+
+---
+base-commit: c3baae5f1a15645cddadcb2b9abddef5df291f59
+change-id: 20261112-helios64-gpio-line-names-cab8814ed12c
+
+Best regards,
+-- 
+Igor Velkov <iav@iav.lv>
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
