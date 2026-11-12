@@ -2,107 +2,107 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CF7DF60A2606
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:10:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 61431606A32E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:20:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=InYAXdHK;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=GURFOUjJ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=35sq8DON;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=anfNTHdN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=WGULVlevXWN86UOhHD58KcHcMjzeiNh2WFSV/KalRas=; b=InYAXdHKO3el12W7KiOACpdyCV
-	kEIlsJeJhRWB0CJIQHbXQCsaIHhwH55yMCfbgWrnep5jj77o2MLkVK79cc429sF0SY4bqV7yA3VTq
-	1fargZSl5xuLG7jMsD+mCPtYUzeqDhN3eDuVnQeXeZRjKEwt9s1vzNwM/RfFdh/BiNTgGwTDaZLLW
-	/PdkeN7c2lmeiV8FDaZWzB+1gMG+XPvoqA63TnP9+Bllsvwyq03VCN7tDF1VVo1CNHIOrvbpF6fuM
-	PVVdNbmYzc1IydLjXWcMWNRrn7zM4fuQE966o5ChQJBLOQ16WX2D3yYOrOC70XTGJLxazL12L+139
-	MzNsJJTA==;
+	bh=VegYILTQvxoJTDo4JkeRJGvhlthEIn3Wm2H2Ti9o5CM=; b=35sq8DONlkdl7lF8/8v3Oc4Dqq
+	TJRKNzHFWIhWX8IBqArh6dBRkVEvcEjgunnXCfSMKyi7kMXJ2MT4h38grHo/tv3B3OOFmIp4Nt4qG
+	i5srSK56eYdSACPuTqiPyQYNHSoOu3guTGiq5U+EzemtvKm/ka8tuyPaa7MlDL5GyV3Jtb0GWN5FW
+	QaGyuA63Pu3+06ue0IsYI2iCyt1YLreWz++CeAIndujKmWN60uCxhJO9KNJJyJVU5GAwNZonjk379
+	IZuvhL6WUlHNIJrvQF8pUUbPArJ9KgGxJhNpB63uLPpTRURpWgkritqSDoj3PybVMnsjqSSwzN15e
+	T9zBnabQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRPtL-000000092HY-1dHq;
-	Thu, 12 Nov 2026 08:10:43 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xRQ37-0000000949Q-3PlA;
+	Thu, 12 Nov 2026 08:20:49 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRPtI-000000092HE-1YiD;
-	Thu, 12 Nov 2026 08:10:41 +0000
+	id 1xRQ2i-0000000944t-30xI;
+	Thu, 12 Nov 2026 08:20:24 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 21FF4455C4;
-	Thu, 12 Nov 2026 08:10:40 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2390F63B8E;
+	Thu, 12 Nov 2026 08:20:24 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794471040;
-	b=S0jVKuIo0ChZACKK9/TNnPGxPgY0vHLyaLkSkloANHxJOKtSp4b4t5solTn97epf+2Tf
-	 kfQdG5qKhqmCty3uTRHr1E2qaS3oI/u8WDfZcwVSgrpvoTWNr5OeXB1Jnp91YaSM6T+4v
-	 2PO7DYVXBsNzKk3SqeHDdsP0owwidDV/qohfLEiZtmdtJ5gNtu+5bu/9ktnkj31DpDlQv
-	 JJNAOJjE0sIBj89IaeZ6rHsaHxiyLwTC3lV46Po8yMMQrtEtMyHca6fuUw6J1M5/m/4Lt
-	 EQplCgaXMGKDZUVitV138Ybae1nUN5KsVFzUrfy6bR5+rwlh3OqhGsC6Th95gFRFoTg==
+	t=1794471623;
+	b=KW4G0IE2gRi8W8KRymy9+IqceXSVDHx4b+qDnZkTiq/CgSsASjLMMgOFYTPdkTBDOkda
+	 Sbb2U8q4KUYczS2PjoOK7+otLzIIdn2YMhP6KgEV4WHXe3ZfXGN49z9KkUPgPrfEs2Dc+
+	 0r0RMhmr2Yvfiiy4u+Cf2Qggo7x0r4TF/KSIqUvW42QpY89HwXqIteUc+LGqZInBN8lzP
+	 DmtGkcsYFGlaNtXrQA7vOczK+HqybCtwBLR7yykhN+7nXyGz1ncG8tuoOib1TZrlWAIk7
+	 EwcsSABbZUrm3xUl8lSfr+9FOMYy6VNENsr1kpFolPCB9znqjQj06AdhwQwYrNgTQkA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794471040;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=BycxkJDEkQrYGACgnxRcwOpm358ZLLzx9eK5XW7KLlA=;
-	b=VhWbUzoXc4JGeEF2mxidvF6/gjSPn1UL5/3OR0TVgxUwiFiRjQnXcmHEJACjYCS9oaEn
-	 HKvuh+BIu+TMDKYR7/go2S+u2wugSpvKfxfIORTaR1kU/72wWLjyWnw94l2HPlsGlBpQa
-	 6x2KttNDxTMEOr7mX/u9brUpsDr7XCslf9X7PTQU/3+FxeV8L+A63GQMKhr3/NpWo1S7a
-	 FF6ENm9enqnZO3UPs6c6XG5mOhtpwRf/Z/d/CI9/3q3z8qFSWNgC1KYvNcGXaacrMbmoZ
-	 T6586fivu3sX+2QWKwbRHSjciEu38opnMthKJ9R+mBuNwhWbpuMlNhwpeMp+TqZaR3w==
+	c=relaxed/relaxed; t=1794471623;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=ecJOhMtckVs+eDoYzRxG0i8XtHYcYnv7fysapUUGyQQ=;
+	b=L/oCXfZDSqODutPuLWxY/8DbUR5TFaBThrVaoPgiQLsPfUdAUAcYqzpYYDxkD/rNkTg1
+	 pRbjDCJfMdmO8jjt7tu/9951Sl5R8tTGav8GC7hunMkKmfIpgsoiwF4I+lkT3Pjha/85S
+	 m04h4KKeSzWfRadnL5rEIPTAPDIYF4wUYp1/vYGOXno66+wIwF0HsAwmyA+59qiXVbFNz
+	 Aee/ymuBpOZtxzTMbTqB/X5YDvIb5NwJz2RV0Ck/xaQrsINKJaLBf7NpDG2ct3yxLyNM8
+	 ex5zIoMf3uGmcD9V8kDcgGQpBJxtOphqO1Hsru6xA2qWOu8DocifTBDViC6yMnm9TgQ==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 5F1DE1F00A05;
-	Thu, 12 Nov 2026 08:10:39 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id B297B1F00A0D;
+	Thu, 12 Nov 2026 08:20:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794471040;
-	bh=BycxkJDEkQrYGACgnxRcwOpm358ZLLzx9eK5XW7KLlA=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=GURFOUjJE8jzpEJuv/bXoOyr81p/2Uw4s9ZtUZuiVKULqMKyuOpkqlccwcdNL1LjD
-	 G4vtZfOIHM33g+pfWRnKEQN27TAyX3iz2jm1X2WeKz+1nKDybDLjlC3ubmbCf5yiSz
-	 4VkRWokLzBaS8yWLwEMJcMgr09HLwK6xUQVgHOWZ1UmQ7et5mYOHHuSHAH2nBzbguM
-	 QV1UlHZWyaMNckcIn7QwIhqPIBjrnUDzSP0H69yo/4LxRmxQihjEa6zIUumqh3hbjA
-	 czbGpC1lzv7nWqYseGLS6IBhfQHrCOdjEf7YTmH4fPebr+1VmT3A51ugFh68CK0Grb
-	 vAGo1s/f4ECAQ==
+	s=k20260515; t=1794471623;
+	bh=ecJOhMtckVs+eDoYzRxG0i8XtHYcYnv7fysapUUGyQQ=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=anfNTHdN+vwJh80ie0fpt+1kytwAdvwFZHr+R4vPvazrfjL0b3tnrZHqYG2CE2xnp
+	 Pnu6x3ENO/JMrw4HE6UW2eQizJRYpsqGAjJWxYDFnVubKfYfwHjRFf22taQMpv3gTl
+	 IhsNscYvVv9YPWsQJ+o5JUXpPPcqGN5ryCUJE6x3X1BWOHgAPVc1gpjA+0ljJCKpbL
+	 ioYCre5geD/Fxo1PLcZwOkcDyKU2yBgfpJBvnPJEJdpF1hgVRpgFGRRiCWU3sgN4um
+	 XjTzdfFN6SMl6TZfKmr6uq7GsSSCWvYluemYr30Vse3EunGB/12NTwHCY6rSsgncm5
+	 hLxNwFAUIMV0Q==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id B44534932C;
-	Thu, 12 Nov 2026 08:10:38 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 41F6E4933E;
+	Thu, 12 Nov 2026 08:20:22 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 12 Nov 2026 08:10:39 +0000
-Subject: [PATCH v2] drm/panthor: Suspend devfreq until the GPU is first
- resumed
+Subject: [PATCH v2 0/4] iommu/arm-smmu-v3: Keep the clock of the RK3588
+ PCIe SMMU running
+Date: Thu, 12 Nov 2026 08:20:21 +0000
+Message-Id: <20261112-smmu-v3-pcie-pd-v2-0-3a77bbb6b2c4@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261112-panthor-suspend-clk-v2-1-62e1b168052d@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/32OS47CMBBErxJ5jUfdSZyMWXGPEQu70yYeyAfbi
- QYh7o5D9rN86qp6/RSRg+cojsVTBF599NOYoTwUgnozXlj6LrMooWwQEeRsxtRPQcYlzjx2km5
- XidipBmrHyrLIzTmw83+f1Z/zznGxv0xpm9oSvY9pCo+PdsUt979hRYlSVbVqQQEr5NNlMP72R
- dMgzq9dEfi+5P/T7hXWRJb5Pvh0LMiCaSoHpBv+ZrIaUGtmqzVRaVpHzrRQdXUee70BaxZKHhQ
- BAAA=
-X-Change-ID: 20261110-panthor-suspend-clk-11d5604fe5be
-To: Boris Brezillon <boris.brezillon@collabora.com>, 
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
- Akash Goel <akash.goel@arm.com>, Karunika Choo <karunika.choo@arm.com>, 
- Lukas Zapolskas <lukas.zapolskas@arm.com>, 
- Chris Diamand <chris.diamand@arm.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- Jonas Karlman <jonas@kwiboo.se>, Arun Iyengar <aiyengar1990@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNQQ6CMBBFr0Jm7RimEiyuvIdhUcoAYyyQFhoN4
+ e4Crl2+5P33FwjshQPckgU8Rwky9BuoUwK2M33LKPXGoFKVE1GKwbkZ4wVHK4xjjUY1pK6Vplo
+ 3sK1Gz428j+Kj/HGYqyfbac/sRidhGvznuIy0e//rkTDFXGlNhTVZVhX31hl5ne3goFzX9QtxP
+ uE9wAAAAA==
+X-Change-ID: 20261110-smmu-v3-pcie-pd-a2f127b81d8f
+To: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, 
+ "Joerg Roedel (AMD)" <joro@8bytes.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Niklas Cassel <cassel@kernel.org>
+Cc: Pranjal Shrivastava <praan@google.com>, 
+ linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev, 
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, 
+ Finley Xiao <finley.xiao@rock-chips.com>, 
+ Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794471038; l=6121;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794471621; l=5863;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=uiwyQooI2QqdHVVbIj2tbEKcTWRM+G3FzfbhcKof+kg=;
- b=wivOOwJ/7GTvbZBbl834segCag1oFnqKSy2+v8GXNHok6K8gnpd49EQDjqRZ2Ifr4AEJT7Xg3
- pSZ8BrJXh9wBSgatVc/kYmttND3QH/F7PLPS1qxGYtybmlz9/HqCGC5
+ bh=DkGzQiw1cBGS69FGdw2AcOqjm+Tug1xqo0D7+l5vEX8=;
+ b=IyHe8/KO76DpK5zSytR2RN9mGIzx3+58yWoQYkcN4ujMiTSnyvnKAY+QW3ksZcCcMbAeGnwC6
+ MtvSmkHnoCWAJNRQIlfxWg4rMd53iDSSl9y2ZpGRU1B7OTw7tzaedDc
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -129,118 +129,109 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
+The MMU-600 in front of the PCIe controllers of the Rockchip RK3588
+(mmu600_pcie) is enabled for every RK3588 board, but its node does not
+describe its clock (ACLK_MMU_PCIE). Any enabled PCIe controller holds
+that clock, which is why nobody noticed: on a board that enables none
+of them (an Orange Pi 5 with its M.2 slot in SATA mode, or any RK3588
+board without PCIe), the clock framework gates the clock as unused
+after boot, while arm-smmu-v3 stays bound. The SMMU registers then stop
+responding: at reboot, arm_smmu_device_shutdown() writes CR0 and polls
+CR0ACK, "reboot: Restarting system" is never reached and the board only
+comes back ~90 s later when the watchdog fires.
 
-panthor_devfreq_init() adds the devfreq device while the GPU is still
-suspended, and the first panthor_device_resume() then calls
-devfreq_resume_device() without a matching devfreq_suspend_device(). The
-devfreq suspend count stays off by one for the lifetime of the device:
--1 while the GPU is active, 0 while it is runtime suspended.
+Patch 1 allows a single clock and a single reset in the arm,smmu-v3
+binding (arm,smmu.yaml already allows clocks for the earlier SMMUs).
+Patch 2 makes the driver get and enable the optional clock of its
+firmware node first in probe, before any register access, for as long
+as it is bound; nodes without a clock (and ACPI/IORT systems) are
+unaffected. Patch 3 describes the clock in rk3588-base.dtsi, and patch
+4 the reset (SRST_A_MMU_PCIE). Patches 1 and 2 are for the iommu tree,
+patches 3 and 4 for the Rockchip tree once the binding is accepted.
 
-devfreq_suspend() and devfreq_resume() around a system suspend therefore
-treat a runtime suspended GPU as an active one: devfreq_suspend()
-applies the suspend OPP, if there is one, and devfreq_resume() restarts
-the polling of the simple_ondemand governor, which then sets GPU rates
-while the GPU is still runtime suspended, until its next runtime resume
-and suspend. With the devfreq core keeping a suspended device's
-frequency alone ("PM / devfreq: Do not change the frequency of a
-suspended device"), the unbalanced devfreq_resume() also marks the
-device resumed while the GPU is powered down.
+This series is related to Pranjal Shrivastava's "iommu/arm-smmu-v3:
+Implement Runtime/System Sleep ops" v11 (2026-09-29,
+20260929034510.2023173-1-praan@google.com, not merged), which adds
+pm_domain-based runtime PM and resumes the SMMU around shutdown, but has
+no clock handling. The two are compatible: once it lands, the clock from
+patch 2 should move into its runtime suspend/resume callbacks.
 
-Suspend devfreq right after adding it, as msm_devfreq_init() does, so
-that the devfreq suspend and resume calls pair up.
+The second MMU-600 of the RK3588 (mmu600_php), which Shawn Lin asked
+about, is disabled in rk3588-base.dtsi and is not changed here. Giving
+it the same handling, as Heiko Stuebner suggested, needs a test with
+that SMMU enabled and is left for a separate series.
 
-Fixes: fac9b22df4b1 ("drm/panthor: Add the devfreq logical block")
+Tested on an Orange Pi 5 (RK3588S) with the M.2 slot in SATA mode and
+the root filesystem on the SATA SSD, where every reboot used to hang.
+v1 (clock and PD_PCIE power domain): three consecutive reboots printed
+"reboot: Restarting system" and the boot loader started 0.6 s later
+(previously ~89 s, from the watchdog); clk_summary showed aclk_mmu_pcie
+enabled with iommu@fc900000 as consumer; the SMMU probed as before and
+SATA kept running at 6.0 Gbps without errors. With the power domain
+alone (clock still gated) the reboot still hung at "arm-smmu-v3
+fc900000.iommu: shutdown" on the serial console. Boards with PCIe
+enabled are already in the state this series describes.
+
+v2 (clock only, no power domain; patches 2 and 3, together with the
+separately sent CMDQV fix, on a 7.3 kernel):
+again three consecutive reboots printed "reboot: Restarting system" and
+the boot loader started 0.59 s later each time; clk_summary showed
+aclk_mmu_pcie enabled with fc900000.iommu as consumer; arm-smmu-v3
+probed without errors or deferrals in all four boots; the root
+filesystem stayed on the SATA SSD at 6.0 Gbps with no ATA errors, and
+the kernel log had no warnings.
+
+Patch 4 only completes the hardware description: the driver does not
+use the reset, which is already deasserted at boot, so the board test of
+the clock change covers all functional changes of this series.
+
+This series was developed with Claude (Anthropic) as a coding assistant:
+it wrote the code and the commit messages, and I reviewed and tested
+every change as described above.
+
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
-v1 kept devfreq from changing the GPU clock rate while the GPU is
-suspended by filtering the calls in panthor_devfreq_target(). As Boris
-pointed out, that cannot be done race-free in the driver, so v2 moves it
-to the devfreq core: "PM / devfreq: Do not change the frequency of a
-suspended device" (linux-pm [1]) keeps devfreq from calling
-->target() between devfreq_suspend_device() and devfreq_resume_device()
-and applies the requests made in between on resume. The SError fix
-needs that patch. What is left for panthor is this patch, which makes
-panthor's devfreq suspend and resume calls pair up; it does not depend
-on the devfreq patch to build or to be correct.
-
-Tested on an Orange Pi 5 (RK3588S) running a v7.3-based kernel with
-this patch and the devfreq patch, with the GPU core clock on the
-firmware-managed SCMI_CLK_GPU and a 200 MHz opp-suspend (the
-configuration of Jonas Karlman's RFC, not in mainline): min_freq,
-max_freq, the userspace governor's set_freq and the devfreq cooling
-state written while the GPU was runtime suspended, also right after a
-suspend-to-idle cycle, no longer end in an SError and take effect on
-the next GPU job; 200 runtime suspend/resume cycles with max_freq
-toggling every ~35 ms and a 3 minute sustained load ran without an
-SError, WARN or panthor fault.
-
-This patch was developed with Claude (Anthropic) as a coding assistant:
-it wrote the code and the commit message, and I reviewed it and tested
-it as described above.
-
-[1] https://lore.kernel.org/r/20261112-devfreq-suspend-sync-v1-1-af64603ef43e@gmail.com
----
 Changes in v2:
-- Dropped the check in panthor_devfreq_target() (Boris): neither
-  pm.state nor devfreq::suspend_count can be read there without racing
-  with devfreq_suspend_device() and devfreq_resume_device(), which only
-  take devfreq->lock around the suspend and resume frequency changes.
-  The devfreq core now tracks the suspended state under devfreq->lock
-  and does not call ->target() while it is set, as Boris suggested.
-- New patch: start with devfreq suspended. The first runtime resume
-  called devfreq_resume_device() without a matching suspend, so the
-  suspend count was -1 while the GPU was active and 0 while it was
-  suspended (the reason v1 did not use it). Without this, the devfreq
-  core change would not hold across a system suspend taken while the
-  GPU is runtime suspended.
-- Liviu, on returning 0 instead of -EINVAL: returning 0 was wrong, devfreq
-  then records a rate the GPU does not run at (Boris). An error is
-  better than 0, but -EINVAL reports a valid request as invalid (-EBUSY
-  fits better), and either way nothing retries the request on resume:
-  the userspace and performance governors never re-evaluate, and
-  simple_ondemand only at its next poll. With the core change panthor
-  never gets these calls, so there is nothing left to reject.
-- Liviu, on disabling the clock when the power domain goes down: the
-  clocks are already disabled in panthor_device_suspend() before the
-  domain goes down, and the SError happens in that state. On RK3588 a
-  rate change on the disabled SCMI clock still goes to TF-A, which
-  programs the PVTPLL through the GPU GRF in the powered-down domain.
-  So the rate change itself has to be held back while suspended.
-- Liviu, on the comment length: the remaining comment is two lines.
-- Sashiko's findings on v1 (a rate requested while suspended was lost
-  without a suspend OPP or with a non-polling governor; the lockless
-  state check could race with the clocks going off; Fixes: tag) are
-  covered by the devfreq core change, which applies deferred requests on
-  resume and keeps the state under devfreq->lock. Thanks to Sashiko for
-  them. The new patch has Fixes: fac9b22df4b1, the commit Sashiko named:
-  the unbalanced count is a mainline bug, independent of the SCMI clock.
-- Link to v1: https://patch.msgid.link/20261110-panthor-suspend-clk-v1-1-53457050e51e@gmail.com
----
- drivers/gpu/drm/panthor/panthor_devfreq.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/drivers/gpu/drm/panthor/panthor_devfreq.c b/drivers/gpu/drm/panthor/panthor_devfreq.c
-index 2249b41ca4af..45ae42dacdcb 100644
---- a/drivers/gpu/drm/panthor/panthor_devfreq.c
-+++ b/drivers/gpu/drm/panthor/panthor_devfreq.c
-@@ -256,6 +256,12 @@ int panthor_devfreq_init(struct panthor_device *ptdev)
- 		return ret;
- 	}
- 
-+	/*
-+	 * The GPU stays suspended until the first panthor_device_resume(),
-+	 * which resumes devfreq. Suspend devfreq to match.
-+	 */
-+	panthor_devfreq_suspend(ptdev);
-+
- 	cooling = devfreq_cooling_em_register(pdevfreq->devfreq, NULL);
- 	if (IS_ERR(cooling))
- 		DRM_DEV_INFO(dev, "Failed to register cooling device\n");
+- The existing Tegra CMDQV reference leak on a bad #iommu-cells that
+  the Sashiko AI review of v1 found is fixed in a separate patch,
+  "iommu/arm-smmu-v3: Don't leak the CMDQV device on a bad
+  #iommu-cells", as it is not related to this series.
+- Dropped the v1 patches that allowed power-domains in the binding and
+  put the SMMU in RK3588_PD_PCIE: the TRM puts MMU600_PCIE in PD_PHP,
+  which Linux does not control (rk3588-base.dtsi has no PD_PHP node), so
+  no power domain is needed (Sebastian Reichel, Shawn Lin). The hang was
+  the clock alone, now tested on its own.
+- Binding: allow a single clock with a description instead of up to
+  four unconstrained clocks, and say why in the commit message (Sashiko
+  AI review, Sebastian Reichel).
+- Driver: get one optional clock to match the binding, and get it
+  before the firmware probe, so that a failure or -EPROBE_DEFER cannot
+  leak the CMDQV device reference (Sashiko AI review). Its comment now
+  only says why the clock is got first (Sebastian Reichel). Sebastian's
+  Reviewed-by of v1 is not carried over, as the patch changed.
+- DTS: the clock patch's commit message now gives the whole cause on
+  its own (clock gated as unused, SMMU registers no longer respond, hang
+  in arm_smmu_device_shutdown()). Its diff is the same as in v1, so
+  Sebastian's Reviewed-by is kept.
+- Added the reset line to the binding and the PCIe SMMU node (new
+  patch 4) (Sebastian Reichel).
+- Capitalized the patch subjects.
+- Link to v1: https://patch.msgid.link/20261110-smmu-v3-pcie-pd-v1-0-628819ca44b9@gmail.com
 
 ---
-base-commit: cb0a63f0c96e8ecb90199eeb99cc2a7fcfa703d4
-change-id: 20261110-panthor-suspend-clk-11d5604fe5be
+Arun Iyengar (4):
+      dt-bindings: iommu: arm,smmu-v3: Allow a clock and a reset
+      iommu/arm-smmu-v3: Enable an optional clock
+      arm64: dts: rockchip: Add the clock of the RK3588 PCIe SMMU
+      arm64: dts: rockchip: Add the reset of the RK3588 PCIe SMMU
+
+ Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml | 11 +++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi            |  2 ++
+ drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c              | 11 +++++++++++
+ 3 files changed, 24 insertions(+)
+---
+base-commit: 2cf4be57b301ed2d7af82e70cff5dfd96894d8de
+change-id: 20261110-smmu-v3-pcie-pd-a2f127b81d8f
 
 Best regards,
 --  
