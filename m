@@ -2,130 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 49689606A321
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 03:00:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2953E606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 03:51:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MWdiRniV;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=NXP1.onmicrosoft.com header.i=@NXP1.onmicrosoft.com header.a=rsa-sha256 header.s=selector1-NXP1-onmicrosoft-com header.b=JkjJUxMe
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YUpCpAB9;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=Pyois4i7
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=YYFaq4t36OP1UAV3K8MzHR4b8rXZ/Tljh4SBNwXmWKo=; b=MWdiRniVlOk2VhrDradyy1lrvQ
-	92dZ/+X//uVNuzroI0lq6FZstLaGmquZTmJfZL6UVrpb8rKBvlMR5DUjn/qhOxIgFfsmUXoTDHKKb
-	PncKn3krZHvNxpcL/mjHgEI0s9xZVTk8Ps/ORCyLb+uFtlK95Sjxgl8UrcSVaeMH+LUKZcIcpbp2J
-	pPOkayjum5uZGw+hNRRgRVrdmbbHxYiUYdYGs6B9p0WfT6cAv2EES44wX68iwcB6NOpddn/jviO93
-	oG23RitDAV92c860ntwHnZ6+OopLw64bnmD9d4jU4uRhuFX6vCYhzuV22SfNpz3CM/MFU92hlFDrV
-	Je2G69ew==;
+	bh=7CM9rw/AeNbqF91QlEzOFXyYzswsx9JQQrrMrZxX0Fc=; b=YUpCpAB9y9pC5VyhAxTzxrUJdN
+	VjOQ4G9uC7iKQPXITXzVUX4HsZHbEjjdpYvZck1Tm7v2wI3m2FAjrOd6nbBEKNGIVVm8m/89H6yF3
+	WDQJbKJ27LswQPTVKtmG0oKMKfTBgBirIbHIrYRq3Wp9rg6RGOXO4Y3Hbw9TcY6YhP6c0/Eq4QFMs
+	3AyFqJZ28ne0X74vEn3cZEBZ3puo9BpaeWUSBjH4UC5ox8nAnW4J81UjytTUmll7UEat9IXLRMLIY
+	Ujw7U26KmDNn1UIPxExEPXBeRJHjKzed25SLiSXW4bJ5rOmie4e8guu0G7PRzdnIa26eJuG9f77s9
+	VFvLpm+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRL3Q-00000008ZvJ-3Qju;
-	Thu, 12 Nov 2026 03:00:48 +0000
-Received: from mail-westeuropeazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c201::6] helo=AM0PR02CU008.outbound.protection.outlook.com)
+	id 1xRLqD-00000008eVq-2KOl;
+	Thu, 12 Nov 2026 03:51:13 +0000
+Received: from sender6-op-o11.zoho.com ([165.173.180.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRL3O-00000008Zuu-0zXx
-	for linux-rockchip@lists.infradead.org;
-	Thu, 12 Nov 2026 03:00:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Q3yyUO6oIIpoNDoNOw0WI+h38NoAp9GBlChwYHapFyDCE9IWAJF/EdiAdNZlo9O7/hTgHueZvSMKRYBt341izyARW6abBdozjR8rK6jQ7NvS0oKjNC1Ln9Y40516IHT7W5O90qFAdG406nGdMaQSbmsKJhChlq25DAbfMyRz81t2ePEOxLo2E0WCJfT+QlQB2AblGZW+9zF5Adv3kB92XST3oLNQdDv+UBjdFEzy6bmzhJe+Ai4GHHhF5DUHKmCcO2nGFO7rb3cGRYgxIGa1Rr6AgInIlUOTQ2U0UnM4IAEz/Dz66mzdtFdlSfL+4+ms84ntaIktEXe8CbhFm78FiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=n5C/jtSJ4hNFqVai0fu6OYmHh1O8vcx2s7ZB3WwXtq4=;
- b=jNQD6dqTsyHLVn2QQTEmQwwW7jsSJXu4yB3RJar+j8BUCembPRxQ0L0EyBFQC/THIV1IYKJFEFwErVmuY7I8MSg6oRd4f079m7ZZwEQZGvQFhQnyPi9T331CE2ZCLg3EtT4x5jmL8U3KpEBP25VFfTFMAnGHoa+UwYKx/PAgZgIUCR2dNdzBz/jyc0B1HMLBoNwcT3cJ8RKp2giVmKoHcJIGChZsOaqWfMkZ/1hREGUuEDHjAC+BlGkZNCX0oEL9a4PdKCxroyYsx+/X6iAoXp3uHeZjHqgPwyeyl6j4lfyw0i20uCT9LiPYOa8gqKQlNX36u2/8Tle3ieh4CpDH9Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=n5C/jtSJ4hNFqVai0fu6OYmHh1O8vcx2s7ZB3WwXtq4=;
- b=JkjJUxMeg3pmjb1dOOZuq2pAz00nsgjH0oPlPoavLQtmaBV4tehe9o8naTL66uYrF7NWyBw4zlae6NRx2t1ZGo4DgjZxNzYxiHldpLY7GPbJaRLS5fZ9/sZ0XtimLss11dFNC0cHWKdLiIY57L596Ep8ucewHMTqLgXyyN1TfDgHAb3QKlGrQGaDdPzOkeALct0vfRNf3d32sPw8JjVGDRa/Yme2STuKx+R+gXvjKLbJfIEAewK2aGNY6pOwUyi640rMu82qvksKJPw+ip28Gf2H7mdrbVRmD/ZLhZ61l6vn6CeIwN9GclZUMdl+lIHx3B1pLA5McUYhd75sB6rvWQ==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com (2603:10a6:290:76::14)
- by AM9PR04MB8954.eurprd04.prod.outlook.com (2603:10a6:20b:409::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.8; Thu, 12 Nov
- 2026 03:00:41 +0000
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b]) by MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b%4]) with mapi id 15.21.0615.007; Thu, 12 Nov 2026
- 03:00:41 +0000
-Date: Wed, 11 Nov 2026 21:00:30 -0600
-From: Frank Li <Frank.li@oss.nxp.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Manivannan Sadhasivam <mani@kernel.org>, linux-pci@vger.kernel.org,
-	imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH] PCI: dwc: Check the pme_turn_off callback return value
-Message-ID: <avUrzss_VTn5m3I3@SMW015318>
-References: <20261111041821.2259326-1-shawn.lin@rock-chips.com>
-Content-Disposition: inline
-In-Reply-To: <20261111041821.2259326-1-shawn.lin@rock-chips.com>
-X-ClientProxiedBy: DS7P220CA0039.NAMP220.PROD.OUTLOOK.COM
- (2603:10b6:8:223::33) To MI3PR04MB12438.eurprd04.prod.outlook.com
- (2603:10a6:290:76::14)
+	id 1xRLqA-00000008eVK-3Hce;
+	Thu, 12 Nov 2026 03:51:12 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794455460; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=miLEUgmPqEBpcIUKRBbHJcTMV73hdJYQRlNyUHE0BMSpiI6fmHAvyb8adXuq5UAVbQ5AowDfkohUjSyVu+k9TIoCaCCOZe1uLoN5joY5e+7CbIxAzfia9iiro8XAF6cqusXOVcSrvTqq1m2g8N17KFFLZT5Wz6HoyGFUnqhIrU0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794455460; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=od2MTFJr2n07GulawypdnHc+XDeU/CQF54c7+qeGSkg=; 
+	b=YcBfySgNNac/Gr2W4Mj6FBzx3G6IXTcAbeQ0ey3pTxW0C+MjtgJlD504YjKtwwJ3WnKu8aUXWIvxgqSth5Ey4Ez9fr1BITAPSqG2aPvNL3PdwrvsBBZKQxsbnSFNLzSlNjXpBZWHm7torfuRhaGA7MuoDfFKTbqkGblF/uGopVo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=Pyois4i7O2HfzlPfTxnQqjrvraZ4PYa2L7WfF+E+HQyBKTQl1iq2FfSYXWJNNSv/XN0XEVfp0220gEvkOq8QdQrVA+7X7K6mJMUNvwZCRfqOCFy0/RRFwnoEXHvyO080ZDeXpVD175i3pUubojIrbLnxpghFq8X4nPmn7OFsZDE=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=od2MTFJr2n07GulawypdnHc+XDeU/CQF54c7+qeGSkg=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794455458780967.2624418168582;
+	Wed, 11 Nov 2026 19:50:58 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 9CDA2180BC0; Thu, 12 Nov 2026 04:50:53 +0100 (CET)
+Date: Thu, 12 Nov 2026 04:50:53 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
+Cc: aiyengar1990@gmail.com, Will Deacon <will@kernel.org>, 
+	Robin Murphy <robin.murphy@arm.com>, "Joerg Roedel (AMD)" <joro@8bytes.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Niklas Cassel <cassel@kernel.org>, 
+	Shawn Lin <shawn.lin@rock-chips.com>, linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	Simon Xue <xxm@rock-chips.com>, "finley.xiao" <finley.xiao@rock-chips.com>
+Subject: Re: [PATCH 0/5] iommu/arm-smmu-v3: power domain and clock of the
+ RK3588 PCIe SMMU
+Message-ID: <avU2I_QzCiBPVTDC@venus>
+References: <20261110-smmu-v3-pcie-pd-v1-0-628819ca44b9@gmail.com>
+ <10924894.NyiUUSuA9g@diego>
+ <ea8fa04c-4a8c-4c55-b4fa-f37d74267e93@rock-chips.com>
+ <9_7qTfdNSViwtNUGq9D13w@sntech.de>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MI3PR04MB12438:EE_|AM9PR04MB8954:EE_
-X-MS-Office365-Filtering-Correlation-Id: cae4ca29-d5ff-4898-30cb-08df406922ee
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|23010399003|1800799024|19092799006|261022105027099003|261021121427099003|261021123027099003|5023799004|11063799006|261009223027099003|261102123227099003|56012099006|261028144727099003|261026140227099003|261022075727099003|22082099003|18002099003|261026121527099003|6133799003|10067099003;
-X-Microsoft-Antispam-Message-Info: EaWZb4yRTbDR3qHmls18aAS3dlnbr8nDZsjYz3ocOuwNBl7arSPoBwY5oni+tHdkWLXFiEAQJTJFTvCbGm4i0VOSjCAs9KAp+6sexEhHa4ZOuQyVvJIPCI0NUxHhkg1nLu9S4iATkx2ojMhzkbu5CFAUok+VYmITZDnZkGYOFbLaf+gu66mqJCiyL820v1NKhMbB18V0JGW4YVba/mGX458eperFua9OTVHXJH+MJBhVRAV97Z5pDoi0SU+IvtU1XBAWjFBcBH22xotcCyC8Z1Ze7vESroVH2/il+87HTKKQB82lk0OCSwWU9ojROynTLgElXdbHtJR4c42ATAeoenawaYwyrXjk9Gy4HlwT4XhqU+8HyDaZsFRO1SldYHqEhBd9TLRjrnHt3q/Bcta3IurtkeSTz9lC56VxsrSRZmoxYPh+BoLlFzw3izV5Yyf7hWcu+nJjW8g2NhwyKJkUsXp0rNetAgxMrXp+TPuwKpYjZlcXISHG08eUrBMvFTAoKMlUVTeexy/xppe2RKPZDGp6tkMZ+lX80zFPG6TMkbvT3JUmv7JAMc+mdF9oRADzqrCM5ITFZrMNJhVZMe9JPS5ISRyPLmysMXqVMbRPG/MdtR0hRNSzk2k03wabTLb8VGxcB5pReKLOK31ukzR2vamowoPlY/pldn/5QFTAcvc=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MI3PR04MB12438.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(23010399003)(1800799024)(19092799006)(261022105027099003)(261021121427099003)(261021123027099003)(5023799004)(11063799006)(261009223027099003)(261102123227099003)(56012099006)(261028144727099003)(261026140227099003)(261022075727099003)(22082099003)(18002099003)(261026121527099003)(6133799003)(10067099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?JQEf3ogBgmZbaoaFON28Kde/EWryKjO3cFxjl21aO1fKGjjZU7G6ZLtyqaw0?=
- =?us-ascii?Q?HVcNVV9CvG4mtYxuGnEeCWe/+m4+npRH/r55Qy8vBg/TWmyjIsEyKPA1OCve?=
- =?us-ascii?Q?40zFj6TcUvAOm4WlcPc4ZtFGlHs0+6IDw8OekoedNHrjQnaFioeTrhwa1wzI?=
- =?us-ascii?Q?lLSPb5zRUEPbYBVBXZg1ljHgO/GBj3GEe4e+8AMo3BPd4UB14C4KH8+jCJ6m?=
- =?us-ascii?Q?mlsBSXT/n9qLlPK6X6YhkjrXmRkLc0NiBjySSmIVHRIeEYxxAwPzIQALe6jn?=
- =?us-ascii?Q?iCHp0cDngVgESqyxKFnpR6vkoXVgs2EgcUS9OuwR1IqUpzWqqL8cOG+0Tjey?=
- =?us-ascii?Q?MM7dN8vkmLzAPZMV+ua6XVOrX4h+NMN52FIM6UR6A/UML3cqEMB73rdQhE7k?=
- =?us-ascii?Q?uhsLBhR/23Cck5GgxhsPsk+B4ev2ENTjJ1iFG5CtWuk+ttJkOssgk+g6F4fH?=
- =?us-ascii?Q?4bMr0ryU7wCKEil2NECukjQj8Nk7yobsnWPQlJ8mrodu7I440qL7bgjh1bco?=
- =?us-ascii?Q?p0SCcRmhD4WCTpY2BTcztM9FrjQntQxtVFaJJPj3eaXMsElgzrgWAQikAJxZ?=
- =?us-ascii?Q?HMheSoB6Nb/NxpCv+60niawLlWVNuB+Ysr/GupBPE3RR67K3VIF6u2N79wYo?=
- =?us-ascii?Q?jEWU5Ht7cgjTQgcSnCoA/zWbrDkGyD0A/VCbXWKx6e7/25NFKU5aaqEfHyYJ?=
- =?us-ascii?Q?kBepnoEGMN9xmjg0kz4sYGNBm+XO7ukmRRtwGwnYWW6bG8hBcr4N5O1ump87?=
- =?us-ascii?Q?7xYb9HleBs/hd6dmXa7f6Ez1RW5GO+HeKfY/ME4Qmoylj/+/MWJgEUtpCbjD?=
- =?us-ascii?Q?fZU1f/pxwveKMwn0tzTehWOg3A8GzfxKcs798Y9wOTlltXoP6g0wp8DtjgyD?=
- =?us-ascii?Q?tt6iaUjiI7uG+awQyLIRPf8qtgjRDo9f2/zTquK3/J9RAoPK0IZ96JPAc7Iz?=
- =?us-ascii?Q?D/lwlujOmF70Z9Srsx4BIZxBxDNslmhGrFyy8DhyyJBkMYexhMd3W2YybiZo?=
- =?us-ascii?Q?OpEDcRH9dM9OcUUGVg+jelYEdRRD68oCiUeZwNolJcNoCcQ+YkWBQJAcWOaX?=
- =?us-ascii?Q?mBspLa0Gvooc6gWdKiCk/WE2cU6u8SxyCjXhzA4A8mKnV+bTW8vpn5euMcue?=
- =?us-ascii?Q?W8NwH+4fkKpCNZ8mEqZ89AcEf2kJbO5wEubV4yHJ/q3z8BMLiWpfLRhEBVnF?=
- =?us-ascii?Q?IqkVbK69hGMspGwsiV1NQNyl7aUvg2N079j0U07QLmhyDzfBCRr9tYHNXz2Y?=
- =?us-ascii?Q?Zk+H54WYIBkAOCy5392Bmb0V3p+Ruc4oHN0W0o1Crryo27zdzNaOZOKlwU5T?=
- =?us-ascii?Q?suYFq5gUoQTvl/2Bc7BrdaniEa1Aue2JCNheGKDafL6cJmcQuwsDBKf2Zz6w?=
- =?us-ascii?Q?Hx5JMniTwNK9IYmLeWCOdbrqVeYx91Sqwm8Sf/0tvncpQMNgiSqqOjfMb+DQ?=
- =?us-ascii?Q?/fXp0ZwGwwT2twwkJ/uO9ufwwT7fnf3Z30eZ32Lm5QEJk1JARmdEGrKzUQ5P?=
- =?us-ascii?Q?Tku+yAeISQ720yQcDcSZR+VF8pLzUlo08mMg1lGl2Mh7xpG49PG7cRbav1pY?=
- =?us-ascii?Q?1T4B35Tchh1l/yKtIqoBQocq0wW1wuZ+qE+pnHLM2B+Z4XuVfdE+B1wf0sPZ?=
- =?us-ascii?Q?FoNZ9BR1pvqaWM608UAX2L9hAxOUYPgo4yGvJm/e+Lq2wN4i3B9JUMBq6+B5?=
- =?us-ascii?Q?0jBPSCRZyd2U+9rKJ6VA0SszTfAI83r4Ki+Jc/ohqO9ua9WVGhxVJMvYUlwE?=
- =?us-ascii?Q?aPcSzn2UgzNBc8Nuf3mLQ7dAHmQ9X+cK5Vlhu0YyuNqwEtXzcxRR?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cae4ca29-d5ff-4898-30cb-08df406922ee
-X-MS-Exchange-CrossTenant-AuthSource: MI3PR04MB12438.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Nov 2026 03:00:41.3493
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: gVCFwLZMwlIEVy4jbAlfTgfyj2ndVezoHxfmla4XyicYX4gidmO5KTAcZa4DnhAKxaPToxSsVG7vChTTstRec5spMfdzr+Y967Olzgd1MNlFKAPKKqQEdv1tEW4PGRFH
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR04MB8954
+In-Reply-To: <9_7qTfdNSViwtNUGq9D13w@sntech.de>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.450.56
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_190046_758841_40AC8F58 
-X-CRM114-Status: GOOD (  26.92  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20261111_195110_888861_795BE048 
+X-CRM114-Status: GOOD (  36.70  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,296 +80,146 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6982103895913404284=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Nov 11, 2026 at 12:18:21PM +0800, Shawn Lin wrote:
-> dw_pcie_suspend_noirq() invokes the optional host ->pme_turn_off()
-> callback but ignores its result, so a platform that fails to send
-> PME_Turn_Off still has the link brought down as if the handshake had
-> completed.
->
-> Turn the callback into an int returning function and propagate its
-> error from dw_pcie_suspend_noirq(), matching how the generic
-> dw_pcie_pme_turn_off() path is already handled.
->
-> All existing implementations return 0 except:
->   - the Layerscape PF LUT variant, which now returns -ETIMEDOUT when
->     the PME_Turn_Off handshake does not complete instead of only
->     logging it;
->   - the Rockchip host, which now returns an error only when
->     PME_Turn_Off could not be sent at all.
 
-I remember first version it is return int.
+--===============6982103895913404284==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="x7tmavbsaviu3rdb"
+Content-Disposition: inline
 
-How do you know PME_Turn_off have not sent out at all?  I remember spec
-require continue after timeout.
 
-Frank
+--x7tmavbsaviu3rdb
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 0/5] iommu/arm-smmu-v3: power domain and clock of the
+ RK3588 PCIe SMMU
+MIME-Version: 1.0
 
->  Its PME_TO_Ack and
->     L23-ready wait timeouts remain non-fatal and just log, consistent
->     with the generic path, which does not abort the suspend when an
->     endpoint fails to respond: such timeouts are an endpoint behaviour
->     and must not make the whole system suspend fail.
->
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
->
->  drivers/pci/controller/dwc/pci-imx6.c         |  4 +++-
->  drivers/pci/controller/dwc/pci-layerscape.c   | 22 +++++++++++++------
->  .../pci/controller/dwc/pcie-designware-host.c |  4 +++-
->  drivers/pci/controller/dwc/pcie-designware.h  |  2 +-
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 16 ++++++++------
->  drivers/pci/controller/dwc/pcie-eswin.c       |  4 +++-
->  drivers/pci/controller/dwc/pcie-qcom.c        |  4 +++-
->  drivers/pci/controller/dwc/pcie-ultrarisc.c   |  3 ++-
->  8 files changed, 39 insertions(+), 20 deletions(-)
->
-> diff --git a/drivers/pci/controller/dwc/pci-imx6.c b/drivers/pci/controller/dwc/pci-imx6.c
-> index 38a59795f98f..643b591c789f 100644
-> --- a/drivers/pci/controller/dwc/pci-imx6.c
-> +++ b/drivers/pci/controller/dwc/pci-imx6.c
-> @@ -1575,7 +1575,7 @@ static void imx_pcie_host_post_init(struct dw_pcie_rp *pp)
->   * register is reserved, so the generic DWC implementation of sending the
->   * PME_Turn_Off message using a dummy MMIO write cannot be used.
->   */
-> -static void imx_pcie_pme_turn_off(struct dw_pcie_rp *pp)
-> +static int imx_pcie_pme_turn_off(struct dw_pcie_rp *pp)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
->  	struct imx_pcie *imx_pcie = to_imx_pcie(pci);
-> @@ -1584,6 +1584,8 @@ static void imx_pcie_pme_turn_off(struct dw_pcie_rp *pp)
->  	regmap_clear_bits(imx_pcie->iomuxc_gpr, IOMUXC_GPR12, IMX6SX_GPR12_PCIE_PM_TURN_OFF);
->
->  	usleep_range(PCIE_PME_TO_L2_TIMEOUT_US/10, PCIE_PME_TO_L2_TIMEOUT_US);
-> +
-> +	return 0;
->  }
->
->  static const struct dw_pcie_host_ops imx_pcie_host_ops = {
-> diff --git a/drivers/pci/controller/dwc/pci-layerscape.c b/drivers/pci/controller/dwc/pci-layerscape.c
-> index 475aea3ef58a..8bd879226971 100644
-> --- a/drivers/pci/controller/dwc/pci-layerscape.c
-> +++ b/drivers/pci/controller/dwc/pci-layerscape.c
-> @@ -117,7 +117,7 @@ static void ls_pcie_pf_lut_writel(struct ls_pcie *pcie, u32 off, u32 val)
->  		iowrite32(val, pcie->pf_lut_base + off);
->  }
->
-> -static void ls_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
-> +static int ls_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
->  	struct ls_pcie *pcie = to_ls_pcie(pci);
-> @@ -132,8 +132,12 @@ static void ls_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
->  				 val, !(val & PF_MCR_PTOMR),
->  				 PCIE_PME_TO_L2_TIMEOUT_US/10,
->  				 PCIE_PME_TO_L2_TIMEOUT_US);
-> -	if (ret)
-> +	if (ret) {
->  		dev_err(pcie->pci->dev, "PME_Turn_off timeout\n");
-> +		return ret;
-> +	}
-> +
-> +	return 0;
->  }
->
->  static int ls_pcie_exit_from_l2(struct dw_pcie_rp *pp)
-> @@ -179,7 +183,7 @@ static int ls_pcie_host_init(struct dw_pcie_rp *pp)
->  	return 0;
->  }
->
-> -static void scfg_pcie_send_turnoff_msg(struct regmap *scfg, u32 reg, u32 mask)
-> +static int scfg_pcie_send_turnoff_msg(struct regmap *scfg, u32 reg, u32 mask)
->  {
->  	/* Send PME_Turn_Off message */
->  	regmap_write_bits(scfg, reg, mask, mask);
-> @@ -195,14 +199,17 @@ static void scfg_pcie_send_turnoff_msg(struct regmap *scfg, u32 reg, u32 mask)
->  	 * to complete the PME_Turn_Off handshake.
->  	 */
->  	regmap_write_bits(scfg, reg, mask, 0);
-> +
-> +	return 0;
->  }
->
-> -static void ls1021a_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
-> +static int ls1021a_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
->  	struct ls_pcie *pcie = to_ls_pcie(pci);
->
-> -	scfg_pcie_send_turnoff_msg(pcie->scfg, SCFG_PEXPMWRCR(pcie->index), PMXMTTURNOFF);
-> +	return scfg_pcie_send_turnoff_msg(pcie->scfg, SCFG_PEXPMWRCR(pcie->index),
-> +					  PMXMTTURNOFF);
->  }
->
->  static int scfg_pcie_exit_from_l2(struct regmap *scfg, u32 reg, u32 mask)
-> @@ -222,12 +229,13 @@ static int ls1021a_pcie_exit_from_l2(struct dw_pcie_rp *pp)
->  	return scfg_pcie_exit_from_l2(pcie->scfg, SCFG_PEXSFTRSTCR, PEXSR(pcie->index));
->  }
->
-> -static void ls1043a_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
-> +static int ls1043a_pcie_send_turnoff_msg(struct dw_pcie_rp *pp)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
->  	struct ls_pcie *pcie = to_ls_pcie(pci);
->
-> -	scfg_pcie_send_turnoff_msg(pcie->scfg, SCFG_PEXPMECR, PEXPME(pcie->index));
-> +	return scfg_pcie_send_turnoff_msg(pcie->scfg, SCFG_PEXPMECR,
-> +					  PEXPME(pcie->index));
->  }
->
->  static int ls1043a_pcie_exit_from_l2(struct dw_pcie_rp *pp)
-> diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
-> index f531c5b51b3c..eb11556aca72 100644
-> --- a/drivers/pci/controller/dwc/pcie-designware-host.c
-> +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
-> @@ -1249,7 +1249,9 @@ int dw_pcie_suspend_noirq(struct dw_pcie *pci)
->  		return 0;
->
->  	if (pci->pp.ops->pme_turn_off) {
-> -		pci->pp.ops->pme_turn_off(&pci->pp);
-> +		ret = pci->pp.ops->pme_turn_off(&pci->pp);
-> +		if (ret)
-> +			return ret;
->  	} else {
->  		ret = dw_pcie_pme_turn_off(pci);
->  		if (ret)
-> diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
-> index 0ece9c433229..9836ea9127bd 100644
-> --- a/drivers/pci/controller/dwc/pcie-designware.h
-> +++ b/drivers/pci/controller/dwc/pcie-designware.h
-> @@ -440,7 +440,7 @@ struct dw_pcie_host_ops {
->  	void (*deinit)(struct dw_pcie_rp *pp);
->  	void (*post_init)(struct dw_pcie_rp *pp);
->  	int (*msi_init)(struct dw_pcie_rp *pp);
-> -	void (*pme_turn_off)(struct dw_pcie_rp *pp);
-> +	int (*pme_turn_off)(struct dw_pcie_rp *pp);
->  };
->
->  struct dw_pcie_rp {
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index 525a26ee1d07..ea7ef0be1214 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -464,7 +464,7 @@ static void rockchip_pcie_host_post_init(struct dw_pcie_rp *pp)
->  	pp->bridge->broken_l1ss_resume = true;
->  }
->
-> -static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
-> +static int rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
->  	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-> @@ -478,18 +478,16 @@ static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
->  				 status, !(status & BIT(4)), PCIE_PME_TO_L2_TIMEOUT_US / 10,
->  				 PCIE_PME_TO_L2_TIMEOUT_US);
->  	if (ret) {
-> -		dev_warn(dev, "Failed to send PME_Turn_Off\n");
-> -		return;
-> +		dev_err(dev, "Failed to send PME_Turn_Off\n");
-> +		return ret;
->  	}
->
->  	/* 2. Wait for PME_TO_Ack, bit 9 will be set once received */
->  	ret = readl_poll_timeout(rockchip->apb_base + PCIE_CLIENT_INTR_STATUS_MSG_RX,
->  				 status, status & BIT(9), PCIE_PME_TO_L2_TIMEOUT_US / 10,
->  				 PCIE_PME_TO_L2_TIMEOUT_US);
-> -	if (ret) {
-> +	if (ret)
->  		dev_warn(dev, "Failed to receive PME_TO_Ack\n");
-> -		return;
-> -	}
->
->  	/* 3. Clear PME_TO_Ack and Wait for ready to enter L23 message */
->  	rockchip_pcie_writel_apb(rockchip, PME_TO_ACK, PCIE_CLIENT_INTR_STATUS_MSG_RX);
-> @@ -497,8 +495,12 @@ static void rockchip_pcie_pme_turn_off(struct dw_pcie_rp *pp)
->  				 status, status & PME_READY_ENTER_L23,
->  				 PCIE_PME_TO_L2_TIMEOUT_US / 10,
->  				 PCIE_PME_TO_L2_TIMEOUT_US);
-> -	if (ret)
-> +	if (ret) {
->  		dev_err(dev, "Failed to get ready to enter L23 message\n");
-> +		ret = 0;
-> +	}
-> +
-> +	return ret;
->  }
->
->  static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
-> diff --git a/drivers/pci/controller/dwc/pcie-eswin.c b/drivers/pci/controller/dwc/pcie-eswin.c
-> index 5639666d5148..ed498601312f 100644
-> --- a/drivers/pci/controller/dwc/pcie-eswin.c
-> +++ b/drivers/pci/controller/dwc/pcie-eswin.c
-> @@ -269,7 +269,7 @@ static void eswin_pcie_host_deinit(struct dw_pcie_rp *pp)
->  	clk_bulk_disable_unprepare(pcie->num_clks, pcie->clks);
->  }
->
-> -static void eswin_pcie_pme_turn_off(struct dw_pcie_rp *pp)
-> +static int eswin_pcie_pme_turn_off(struct dw_pcie_rp *pp)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
->  	struct eswin_pcie *pcie = to_eswin_pcie(pci);
-> @@ -281,6 +281,8 @@ static void eswin_pcie_pme_turn_off(struct dw_pcie_rp *pp)
->  	 * the skip_l23_ready has been set.
->  	 */
->  	pp->skip_l23_ready = pcie->data->skip_l23;
-> +
-> +	return 0;
->  }
->
->  static const struct dw_pcie_host_ops eswin_pcie_host_ops = {
-> diff --git a/drivers/pci/controller/dwc/pcie-qcom.c b/drivers/pci/controller/dwc/pcie-qcom.c
-> index eba1b2cb30f0..9548c6568c82 100644
-> --- a/drivers/pci/controller/dwc/pcie-qcom.c
-> +++ b/drivers/pci/controller/dwc/pcie-qcom.c
-> @@ -1594,11 +1594,13 @@ static void qcom_pcie_host_post_init(struct dw_pcie_rp *pp)
->  		pcie->cfg->ops->host_post_init(pcie);
->  }
->
-> -static void qcom_pcie_host_pme_turn_off(struct dw_pcie_rp *pp)
-> +static int qcom_pcie_host_pme_turn_off(struct dw_pcie_rp *pp)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
->
->  	writel(ELBI_SYS_CTRL_PME_TURNOFF_MSG, pci->elbi_base + ELBI_SYS_CTRL);
-> +
-> +	return 0;
->  }
->
->  static const struct dw_pcie_host_ops qcom_pcie_dw_ops = {
-> diff --git a/drivers/pci/controller/dwc/pcie-ultrarisc.c b/drivers/pci/controller/dwc/pcie-ultrarisc.c
-> index ee844ff7ed55..493b6c68b42f 100644
-> --- a/drivers/pci/controller/dwc/pcie-ultrarisc.c
-> +++ b/drivers/pci/controller/dwc/pcie-ultrarisc.c
-> @@ -77,12 +77,13 @@ static int ultrarisc_pcie_host_init(struct dw_pcie_rp *pp)
->  	return 0;
->  }
->
-> -static void ultrarisc_pcie_pme_turn_off(struct dw_pcie_rp *pp)
-> +static int ultrarisc_pcie_pme_turn_off(struct dw_pcie_rp *pp)
->  {
->  	/*
->  	 * DP1000 does not support sending PME_Turn_Off from the RC.
->  	 * Keep this callback empty to skip the generic MSG TLP path.
->  	 */
-> +	return 0;
->  }
->
->  static const struct dw_pcie_host_ops ultrarisc_pcie_host_ops = {
-> --
-> 2.25.1
->
->
+Hi,
+
+On Wed, Nov 11, 2026 at 10:53:28AM +0100, Heiko St=C3=BCbner wrote:
+> Am Mittwoch, 11. November 2026, 09:02:30 Mitteleurop=C3=A4ische Normalzei=
+t schrieb Shawn Lin:
+> > Hi Heiko
+> >=20
+> > =E5=9C=A8 2026/11/10 =E6=98=9F=E6=9C=9F=E4=BA=8C 16:49, Heiko St=C3=BCb=
+ner =E5=86=99=E9=81=93:
+> > > Am Dienstag, 10. November 2026, 09:40:44 Mitteleurop=C3=A4ische Norma=
+lzeit schrieb Shawn Lin:
+> > >> Cc: Simon and Finley
+> > >>
+> > >> =E5=9C=A8 2026/11/10 =E6=98=9F=E6=9C=9F=E4=BA=8C 15:11, Arun Iyengar=
+ via B4 Relay =E5=86=99=E9=81=93:
+> > >>> The MMU-600 in front of the PCIe controllers of the Rockchip RK3588
+> > >>> (mmu600_pcie) is enabled for every RK3588 board, but its node descr=
+ibes
+> > >>> neither the power domain it lives in (RK3588_PD_PCIE) nor its clock
+> > >>> (ACLK_MMU_PCIE). Both are held by any enabled PCIe controller, whic=
+h is
+> > >>> why nobody noticed: on a board that enables no PCIe controller in t=
+hat
+> > >>> domain (an Orange Pi 5 with its M.2 slot in SATA mode, or any RK3588
+> > >>> board without PCIe), genpd powers the domain off and the clock fram=
+ework
+> > >>> gates the clock as unused after boot, while arm-smmu-v3 stays bound.
+> > >>> At reboot, arm_smmu_device_shutdown() then writes CR0 and polls CR0=
+ACK on
+> > >>> the dead block, the interconnect stalls, "reboot: Restarting system=
+" is
+> > >>> never reached and the board only comes back ~90 s later when the
+> > >>> watchdog fires.
+> > >=20
+> > > We have a work-around for that in some boards, manually disabling the
+> > > smmu until now. As the SMMU is part of the SoC and always present
+> > > the general DT practice is to have it always enabled, as it does not
+> > > depend on the actual board design.
+> > >=20
+> > > Hence we end up in the situation described above.
+> > >=20
+> >=20
+> > I notice that mmu600_php is disabled in rk3588-base.dtsi. If describing
+> > the SMMU that way is incorrect, should we enable mmu600_php as well? I'm
+> > asking because I see a different picture in the RK3588 TRM: both
+> > mmu600_php and mmu600_pcie reside under PD_PHP, not PD_PCIE. Therefore,
+> > even without any PCIe controller enabled, PD_PHP should remain powered
+> > on (it is never added in rk3588-base.dtsi, so it should be outside the
+> > kernel=E2=80=99s scope). How does the original problem occur in that ca=
+se?
+>=20
+> The original problem is the smmu probing (probably during boot when
+> everything is still powered), not doing anything with it and on shutdown
+> the smmu driver wanting to access the smmu registers and thus ending
+> in a hang.
+>=20
+> So the problem is not necessarily the power-domain, but can also be
+> the clocks getting turned off during clk_disable_unused.
+>=20
+>=20
+> As for not disabling it, the case is also the some for things like the
+> video-encoders - they are also present all the time, so we don't have
+> devicetree wiggling for them.
+>=20
+> The fully correct thing would be, power-domain + clock handling
+> and adding runtime-pm to the smmu for when it is not in use.
+> So this would then not require any special thinking
+>=20
+> And yes, I think the other smmu should also use the same handling.
+>=20
+> @Arun care to also add a runtime-pm patch? :-)
+
+Adding runtime PM support is already WIP:
+
+https://lore.kernel.org/all/20260929034510.2023173-1-praan@google.com/
+
+(this is also needed to avoid potential crashes with system
+suspend/resume on RK3588, since we enable PCIe IOMMU by default)
+
+Greetings,
+
+-- Sebastian
+
+--x7tmavbsaviu3rdb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmr1N5oACgkQ2O7X88g7
++poq8Q/+P0pOInRktOpa7ipZqr7ZZw0Ry5Z09iTXZlgJa5ImtfUKuwho88ecAs+Y
+AijE7yqpKPfi/a0xBUyWWdrGYWhEBZo97uvlxNlLT1I5TnPXz/8xY6fP8iW09TpN
+TssTFHUZH1jwpkMZx56idljsFwIwDkhbxjApqnW0CjQi9He8qx88w6AXzHC603VH
+zSxHgSpyTCkNigp7txnzxrt9x1/5PZool+9mt/ougKDtOZHaQP4r8PRqvJPcMBWr
+Qmn5WjkMUSaiOGv+E7WKuBO3gz5RoymMqwGdQFG6s+TnyRxvmy7ZiJZBOZcGiR8a
+NdN9Ow2Q3Mh+XrSJZj5De+LWjBRbSB5urw149w07xE/1HxOFlbpR/V8nNDlBIgXT
+JoUcNTKo/NMlkj8KauGJXcQUNsaNFCIQGSngnn+FyKG5rRyiGXPuaP9cDplZcVv3
+WYYMtYOxLnT3ouNJ+wq6kF8N2sVzx+ezZw1ipCXVXVu2Gl49GlAIGknuBwZLVwd7
+ZoM+PwQEy/AyNQY8Maefctg5zh49lZhzA7fMV5Lcg1ErLnhuBG6qBsY8N/snDPwi
+EFANmXjlRCRQ8Yot+LigovbQuOZBLfUGF5Ql0u+/t8L4eyO1I53JvsRfG0k+NoZ1
+aYj+apKKbcr0SFiobCOTeHLNM9DhA132MPfpMR3sVmc7aDqDq/s=
+=RkWx
+-----END PGP SIGNATURE-----
+
+--x7tmavbsaviu3rdb--
+
+
+--===============6982103895913404284==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6982103895913404284==--
+
