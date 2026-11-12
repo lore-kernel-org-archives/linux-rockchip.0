@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2064F606A335
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:31:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20FB5606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:32:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=C3E0TQa2;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=NOQw7D6L
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fZlMrLcY;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=GiPXbOf3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,95 +14,92 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ukxnWs27dEsS4ZcQAfCd/WjKJ/4u/LscPgxlEjBknJw=; b=C3E0TQa2f28th9OUQI7Fm5iYgh
-	a0tH67bZs0qpAdKNfnXIxkciHH9uwQDRriqt3nDxF6VNe99+mOnYiqhcPWabLhxH966hXEFQw+dW9
-	TjqBBtwUI+ncoh2U3Og2OXSY16WJ/oVkyE6mF9FnwT9eRi4bJ7Q40UAk0pBUBEbQcbvTVZox/hjuw
-	3AqXoVCCOJ9gTyvCOttv5y6DC8QzNO3N49Iyq8Be6gB2iNW1uNwDCPuRo9UqjnZoAyF0WeiaTGGeN
-	YkiFNk/xydjCObgxaTwoSoy8tpBCf2/WEYeQ84B9mwtoVvQ+qpEigjdspRYQwaq+80k9RAbcpvsTM
-	Rravp/Zg==;
+	bh=NivhglZR0LJA6+ibnNNMw9g9l2l2HDvGKHOsDxbgbvA=; b=fZlMrLcY+KEfaGCcZgD3V/Eloe
+	xBZJZlG3FpvDgmZ0yl5b3HGKJqRGR0OcwvulHu72jEa9KYku9ru3UIDyGJKkW8KJwXlozngIKNgfQ
+	0BqPxkRakzYUNHSuF0TbwzJvbMaqr9nYQ6/siujszmmk6VJ5Rr8QbLdd1kQhEXgDqhdZorxm9FPXu
+	q5/ZBIyibB6agxMS87FJIUhLmhy/safSfU1y995leqzKGMyFBkoG7HuDJofdxI5S5gVdSZyKqs+16
+	MOdpVtStLU1mSX8KPlo1HCd5W5SenZY74uks40m7bMnBmWwlBEhzG7gEznnL2jZU2F/59EgLfoTll
+	cgeu3xaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQDc-000000097fY-1Hv4;
-	Thu, 12 Nov 2026 08:31:40 +0000
+	id 1xRQDl-000000097rS-0wSd;
+	Thu, 12 Nov 2026 08:31:49 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQCq-0000000970U-1oup;
-	Thu, 12 Nov 2026 08:30:52 +0000
+	id 1xRQDO-000000097Zq-0J1j;
+	Thu, 12 Nov 2026 08:31:30 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2F48D47115;
-	Thu, 12 Nov 2026 08:30:52 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D098547918;
+	Thu, 12 Nov 2026 08:31:25 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794472252;
-	b=sh1ldbMQ7c2XWkkZ8nNVcnfQSbJ7nKAKmjx6j8yvIUTt6EfTIE9yaUo8+3VC/6bWrKcT
-	 vZJ9R3ZsWXObY6r/o0szw+Nvx5nJ7wS4Ng1FFGIxF96Gwaip+/DnbHW8HsPlNNyUJbiyD
-	 Y9C1B/YzuzzFBkBT6E75AeWuWFcWKfbokavUJfGZfxa0T+FVQnG9460SYEgrC3zwL2q/K
-	 5I1g6/+M9q8F4YPk2YytCUhCTMut+pBSFn2nK+ghS3c7FG/WxHuCESGfX9SOrtoRHdmAd
-	 G1CxyCIuluYGn6tPLlut3F5JL8oWh1/Bhj+VaBpHFrAbSVIRyPwrhHZREQj+td8grlw==
+	t=1794472285;
+	b=mozy9MFUKBeXv7rtd1RN9HRo4eImCcvT0wHiOOQZlt7F1WRprLA6F6wy5CtXC0VS1rcm
+	 e4zlBOS7uPVcFWdAME4Fc4I2tlzuRGzr8fOy7f4Y4z6OGcQP3OKDnG2KrX1gdUlZP1kMH
+	 FITd8Jbj342eNIvV8kDUISx0vtuGZSVzpRo6hSmxkahxJR6RtfyMHpSuJWP4pf37Ulomn
+	 nSV2eiZuoy4icRVr0sA2DcY0R+DagG/PpJUYXO+kfqXXfrOM0xyQbmThV4mW95KQgGH8I
+	 Vk1eO3coj1GZ2XS6ML/uXCl1hKm71g4/XBesH6T8EASZgzvBL2Uyshlq6QkTIwhy93Q==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794472252;
+	c=relaxed/relaxed; t=1794472285;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=/0/KMUceZYkpX3iI5TTZHsnLt8eSuwicqZLxVh4MxS4=;
-	b=PHABhSqGpvnVTGpF2tN4G7WQrX/uI4jGZzJ5F4xERyJ2L3zETR9Z+WLI3ZCTH+U5ALbR
-	 8oBnA5jSb/cvvYON3lUxHi9XiccQUPSm4ufYnKg9PxlXoYU4Zdh4DxH/Ru3fl+9HEG6+b
-	 n0UGj26HuFto2nekhEdDNv1KA2RuHc366HoT7YIuEZCrO+nMbWkq7bLyrNriZbhd/etLF
-	 KAnYEI4iEJEx6uE+Oaz7xQmvUv8kTP+L2KL7VBaxyZ/hu0ZyiUD8kUydr5x072/zDguim
-	 LXD9Xs8KdAZg8r9BzFh2z82e4qoy+VJ35sLDcUEMRg/qtm43DI1qoS+FVqd/5cwmkTQ==
+	bh=Ivo6GnxvqcFQsSb7RQ/t+gYL/Oay5ELWVtPEYnpBqSc=;
+	b=N5OYLUYsCbAFghc2ygR+Dn8pHid6XPClKkQ7QA2/y6orAeCYbmBaelugjxlCz9rL0tOn
+	 1X9DX4A7y6C9D180gOiDg3EZ8+bfgZPRRi7LmbgmXLJcaQ2Z39QCovWEFYVTj+HJ70Hzm
+	 gitvSpeRqJXa+8tKoFZf1Vm1DNEF+07lkE04emgqdG2rPnCQrKmj70KFnnn6GOUBikmAO
+	 bhnqZIvSTagTCCyqC53INBtDI3LATNPgpaR+GC2KIvSl9CQoLR7zZcX7TjURDSzFDO8rc
+	 njHX2+EtGlptuUafT32RGxqVRJQrslANei2jGF3LtyKC+A52jwopHqUYUGcV2ilZCBw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id ACD5C1F00A0A;
-	Thu, 12 Nov 2026 08:30:48 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 2587B1F00A08;
+	Thu, 12 Nov 2026 08:31:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794472252;
-	bh=/0/KMUceZYkpX3iI5TTZHsnLt8eSuwicqZLxVh4MxS4=;
+	s=k20260515; t=1794472285;
+	bh=Ivo6GnxvqcFQsSb7RQ/t+gYL/Oay5ELWVtPEYnpBqSc=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=NOQw7D6LgmVQJIROcuj5se+45+BEG1g8d0du3oyNT0DTTYvAnciEdTUx0JqL5dF41
-	 /C9HhjihaodxidivlEELhbqVfiio1jNBq/mdDOXiDMi1hwxeEuFagqSpPiV+rwXw87
-	 jHy/4AOjJWy76EiuzU1sBP1GofdCDHgvZACGphZ8yohqyeU90BCcTSM0n2RZdHc6nH
-	 H6wOEYnwlADcrWAeefpRg3Zlqt6xPLJ6JX9W1HeBEMg4sXFQWM92bH9wua/5Bul2EQ
-	 tNTHETTsJslFL2k4sy1vmanMuRVXqtc4129Bki877H/T2J/BjeXREJqKrIYiOSeLut
-	 w+nEfaCNgWNsg==
+	b=GiPXbOf3Y2VptxLyD6JqYp6/0z+0n/zZTknmFA9uN7fYxnbRH9m6VhkQbAwVPmTqQ
+	 DV5HxbonsqJIufrXV1BdvAHY7A42bxn7DjnHPCTfiiU3nBqljE6So/gq+CI5z7oFcM
+	 gCqO+yMYT0pdqk+6UIrfJ+vduNRqmd/WKH8cRQwIcN8hJEzMk4jmNRgWfoRIzkveh7
+	 RcOoepNZvfKnbg3PGi6jtG5f3K1d7fhcpfJXuWTxy7c05HEISsI1FAFfgXIP1Ctsbi
+	 7FxjVO2ejAqfpkV1KgQbtSG2zMEQHSaDl9Kl3DjPQSTdG1y7mf0OSAnorZ1161EhLd
+	 rChCGv9t9j+Pw==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 3571D49385;
-	Thu, 12 Nov 2026 08:30:48 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id A53C049396;
+	Thu, 12 Nov 2026 08:31:23 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 12 Nov 2026 08:30:50 +0000
-Subject: [PATCH v2 4/6] media: verisilicon: Reset the Rockchip encoder
- cores on timeout
+Date: Thu, 12 Nov 2026 08:31:25 +0000
+Subject: [PATCH v2 3/7] media: verisilicon: Keep the encoder coded size in
+ sync with OUTPUT
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261112-hantro-robust-v2-4-18561fd48838@gmail.com>
-References: <20261112-hantro-robust-v2-0-18561fd48838@gmail.com>
-In-Reply-To: <20261112-hantro-robust-v2-0-18561fd48838@gmail.com>
+Message-Id: <20261112-hantro-jpeg-enc-fixes-v2-3-de03e643c75d@gmail.com>
+References: <20261112-hantro-jpeg-enc-fixes-v2-0-de03e643c75d@gmail.com>
+In-Reply-To: <20261112-hantro-jpeg-enc-fixes-v2-0-de03e643c75d@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
  Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
- Andrzej Pietrasiewicz <andrzej.p@collabora.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, 
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
  Hans Verkuil <hverkuil@kernel.org>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>
+ Boris Brezillon <boris.brezillon@collabora.com>, 
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Sergei Khomenkov <shomenkow@gmail.com>, 
- Tharit Tangkijwanichakul <tharitt97@gmail.com>, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Sergei Khomenkov <shomenkow@gmail.com>, 
  Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472247; l=3574;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472282; l=3589;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=sjPXc3bh+wQfDnjkY+OSXFCX37DqawhQ7n2w7c2kMeI=;
- b=X9JO4sS2hnPO5AlElG30bo+AuIkk+YdlWqzzR6TgWIaYh3W4kX3RfhK1An5Hn7XdWa+zhO63t
- DNeTs8qlFkoDgel6eN+fQZkrni2wMDv5a+axTloX71BHl9cCItMiz//
+ bh=OJEFqjdZC2EJLo/FyCqrvkQ+A2FOxXjkcSLl5BADKq4=;
+ b=3mR9MSso6c0lCPdo4Pm1XntRNu/w47veV1nzKGxRCeSVTaIrZCaTkXVGh8v0BXujR3b5NTRWK
+ SwD7iMBGyhmAuiQj7iJIe2l8Id92B6LUIy1q25J9Iy5KtB5q9XQtXIA
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -131,93 +128,96 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-On a job timeout, the Rockchip VEPU1 and VEPU2 reset operations mask the
-interrupt and clear the encode enable and AXI control registers. That
-only stops a core that is still responsive. On RK3588, when a VEPU121
-core reads an IOVA that isn't mapped, the IOMMU reports a page fault and
-the core never becomes idle again: its AXI transactions stay
-outstanding, the IOMMU can't be stalled anymore ("Enable stall request
-timed out", then "Disable paging request timed out" on runtime
-suspend), every later job times out as well, and unbinding the driver
-can lock up the system.
+On the encoder, setting the CAPTURE (coded) format resets the OUTPUT
+(raw) format to the same size, but setting the OUTPUT format never
+updates the CAPTURE format. Following the order mandated by the
+stateful encoder specification (CAPTURE first, then OUTPUT) therefore
+leaves the coded size at whatever it was before, e.g. the 96x32
+default:
 
-The driver already gets the optional reset lines of the device and
-deasserts them at probe. Pulse them in the encoder reset operations,
-after stopping the core through its registers, to return it to a clean
-idle state. The clocks are still enabled at that point, as the job that
-timed out holds them. This is a no-op on device trees that don't
-describe the resets, which is the case for all of them so far.
+  v4l2-ctl --set-fmt-video-out=width=1920,height=1080,pixelformat=NM12 \
+           --set-fmt-video=pixelformat=JPEG --stream-out-mmap ...
 
-The Rockchip BSP MPP driver resets these cores the same way, through
-their AXI and AHB reset lines.
+ends up with a 1920x1088 OUTPUT format and a 96x32 CAPTURE format with
+a 96x32 sized buffer. The JPEG encoders treat the difference between
+the two as the crop inside the last macroblock, which is expected to be
+below 16 pixels, and program the hardware with the full OUTPUT frame
+size. On RK3588 this results in IOMMU page faults, a frame processing
+timeout and a wedged encoder.
 
+The specification says that the CAPTURE width and height are set by the
+encoder from the OUTPUT format and selection rectangles, and that
+setting the OUTPUT format resets the crop rectangle to the full frame.
+Do that in hantro_set_fmt_out(): derive the coded format from the new
+OUTPUT size, re-applying the CAPTURE constraints, including the minimum
+sizeimage. As the coded format can now change from an OUTPUT S_FMT,
+return -EBUSY if this would require bigger CAPTURE buffers than the
+ones already allocated.
+
+With this, the coded size can only differ from the OUTPUT size by the
+crop set through VIDIOC_S_SELECTION, which is restricted to the last
+macroblock.
+
+Fixes: 953aaa1492c5 ("media: rockchip/vpu: Prepare things to support decoders")
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- .../media/platform/verisilicon/rockchip_vpu_hw.c   | 30 ++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ drivers/media/platform/verisilicon/hantro_v4l2.c | 26 ++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index 5d4e46bd9cd6..114010d6a5c9 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -7,6 +7,7 @@
-  */
- 
- #include <linux/clk.h>
-+#include <linux/delay.h>
- 
- #include "hantro.h"
- #include "hantro_jpeg.h"
-@@ -468,6 +469,33 @@ static void rk3066_vpu_dec_reset(struct hantro_ctx *ctx)
- 	vdpu_write(vpu, G1_REG_CONFIG_DEC_CLK_GATE_E, G1_REG_CONFIG);
- }
- 
-+/*
-+ * Stopping the encoder through its registers isn't enough when it is stuck
-+ * on the bus, for instance after a translation fault in its IOMMU: it keeps
-+ * AXI transactions outstanding and never becomes idle, which also prevents
-+ * the IOMMU from stalling. Pulse the reset lines of the core, if the device
-+ * tree describes them, to return it to its idle state.
-+ */
-+static void rockchip_vpu_enc_hw_reset(struct hantro_dev *vpu)
-+{
-+	int ret;
-+
-+	if (!vpu->resets)
-+		return;
-+
-+	ret = reset_control_assert(vpu->resets);
-+	if (ret) {
-+		dev_warn(vpu->dev, "Failed to assert resets: %d\n", ret);
-+		return;
-+	}
-+
-+	udelay(5);
-+
-+	ret = reset_control_deassert(vpu->resets);
-+	if (ret)
-+		dev_err(vpu->dev, "Failed to deassert resets: %d\n", ret);
-+}
-+
- static void rockchip_vpu1_enc_reset(struct hantro_ctx *ctx)
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index c4e36a79eecc..e9d91504fab2 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -542,6 +542,7 @@ static int hantro_set_fmt_out(struct hantro_ctx *ctx,
+ 			      struct v4l2_pix_format_mplane *pix_mp,
+ 			      bool need_postproc)
  {
- 	struct hantro_dev *vpu = ctx->dev;
-@@ -475,6 +503,7 @@ static void rockchip_vpu1_enc_reset(struct hantro_ctx *ctx)
- 	vepu_write(vpu, H1_REG_INTERRUPT_DIS_BIT, H1_REG_INTERRUPT);
- 	vepu_write(vpu, 0, H1_REG_ENC_CTRL);
- 	vepu_write(vpu, 0, H1_REG_AXI_CTRL);
-+	rockchip_vpu_enc_hw_reset(vpu);
++	struct v4l2_pix_format_mplane coded_fmt;
+ 	struct vb2_queue *vq;
+ 	int ret;
+ 
+@@ -561,16 +562,41 @@ static int hantro_set_fmt_out(struct hantro_ctx *ctx,
+ 			return -EBUSY;
+ 		}
+ 	} else {
++		struct vb2_queue *peer_vq;
++
+ 		/*
+ 		 * The encoder doesn't admit a format change if
+ 		 * there are OUTPUT buffers allocated.
+ 		 */
+ 		if (vb2_is_busy(vq))
+ 			return -EBUSY;
++
++		/*
++		 * Setting the OUTPUT format resets the crop rectangle to
++		 * the full frame, so the coded size becomes the OUTPUT
++		 * size. Refuse the change if it would need bigger
++		 * CAPTURE buffers than the ones already allocated.
++		 */
++		coded_fmt = ctx->dst_fmt;
++		coded_fmt.width = pix_mp->width;
++		coded_fmt.height = pix_mp->height;
++		ret = hantro_try_fmt(ctx, &coded_fmt,
++				     V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
++		if (ret)
++			return ret;
++
++		peer_vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
++					  V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
++		if (vb2_is_busy(peer_vq) &&
++		    coded_fmt.plane_fmt[0].sizeimage >
++		    ctx->dst_fmt.plane_fmt[0].sizeimage)
++			return -EBUSY;
+ 	}
+ 
+ 	ctx->vpu_src_fmt = hantro_find_format(ctx, pix_mp->pixelformat);
+ 	ctx->src_fmt = *pix_mp;
++	if (ctx->is_encoder)
++		ctx->dst_fmt = coded_fmt;
+ 
  	/*
- 	 * The encoder runs don't write the interrupt register, only the
- 	 * interrupt handler clears it after each frame. Clear it here too,
-@@ -499,6 +528,7 @@ static void rockchip_vpu2_enc_reset(struct hantro_ctx *ctx)
- 	vepu_write(vpu, VEPU_REG_INTERRUPT_DIS_BIT, VEPU_REG_INTERRUPT);
- 	vepu_write(vpu, 0, VEPU_REG_ENCODE_START);
- 	vepu_write(vpu, 0, VEPU_REG_AXI_CTRL);
-+	rockchip_vpu_enc_hw_reset(vpu);
- 	/*
- 	 * The encoder runs don't write the interrupt register, only the
- 	 * interrupt handler clears it after each frame. Clear it here too,
+ 	 * Current raw format might have become invalid with newly
 
 -- 
 2.55.0
