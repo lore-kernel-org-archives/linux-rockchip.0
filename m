@@ -2,104 +2,115 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BCF18606A32E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:41:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE583606B58C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:43:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eUoaNSCp;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=bYzSwcK6
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CN4Q9odE;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=VeMnwYi3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=kmBDTG8YUtj3aysEWyI0qH4QIgFj44cud4VDTE0egN8=; b=eUoaNSCpmlnCdXdjgC2QgJzj9G
-	Szzijh6iHgPqe7pV7g1Q9dH2JwpkEodKlUUQfmMbD6tnFQjGOKfLdvmsBahYK5vtKYJO7HCXuTPCv
-	7hPynN1UeeVB7poUDZtGWPougsriBYIFGbvN77tzdBawvTMi3LMrwY1lgnhDeyMzM+n1xGQEXH4pT
-	a7tlVq8Df9HYZ+DeYyG86CFA91HJMFmpX2pqTQd9TuuPCu3M8y/sBQAb3Z/8hMklzzU1++8x59PyK
-	D2GUHBgg79tjDEp2wt9N6gYmdyTgstevH+D8a505S9sC6lJq8c74/RcrRGBPV6LHYBVPuh7tS3uHi
-	ZwYAjZxA==;
+	bh=BttOLsAFDu5WwRaU3m6TE1kpPpchAQBkbyqQOTKiaQw=; b=CN4Q9odEAtRd0MPiN+TRh8Dvdg
+	NW6FALmjE9YzXe/EZtjW6VdbxXhTMwcAR9wPQZcMcvJ8yTZBkgtSXHrUCYJNnVU3nVdGvbGsLt9c1
+	qc98Su9gS/fJQ7drrpLyDA/6mlsLW5I+OJZ/s6F/ipMJl6V+bZkeEmDPCMVlTVoQeEPxU/y4w+lhm
+	FPGtkX4WMs+jbSCLxpt88Ev7rhdxspKPLzR78qxAztj+7oX5OmEBEe9iplbGQ/eS2gKd5VkpwwAZi
+	woGjanSW/jPeUhZSvEZmNNwcrFBJpq45OJ4h6TNcl2mThvlpxQ2PzUWyUWqx86YYuHFjbT5hE4J9T
+	r4e3yVyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQMy-00000009CCh-3fVk;
-	Thu, 12 Nov 2026 08:41:20 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xRQOg-00000009CsD-3s9A;
+	Thu, 12 Nov 2026 08:43:07 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQHl-000000099lP-1IyO;
-	Thu, 12 Nov 2026 08:35:58 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 15AE6447F3;
-	Thu, 12 Nov 2026 08:35:57 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794472557;
-	b=H6ma+6q5qaYRTPN1bQ3l+qFrPfgACDo/ILZ6OaNvHFvTRt9kK599euf7ZSKwAE2KIoLB
-	 A24icgZSuilbuZT5xNPjjQKZ8i68QGkraXYROWHvKx0hPMilVgUqr6MDTfUvt7aLU4b4J
-	 fPCZ5STkZAviMboBy1JO5fHTXZKrErbW9dnGPXiyuJ0RqQBRHaDIa7M8/NhT00XjTCVML
-	 RmwSE7pJHuNca6OQu/HRdAZfcMoc4WMFf6bcHXWmvBiulqCP5Y8Hy5mKwFW1kUJZ6VAGp
-	 +xhSnUBFselHF3P8e4Q47NPe/jbVQCZEoPP6DFm+3cut2AA5CM4/AuhP593aHrlls2w==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794472557;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=o9Sb7j8unYocUYyfUbeIl2vU4wtbZrpzJhLkOGZjRmY=;
-	b=fXWhPmal4AolzrXa+AMXONcwOW1lksh6ToqZXFcOGzFmQAxAO9xNCYbY2ZemkOTn6Hsp
-	 nr2IiOdPVcUeEgTABDYxUPHUx4CD1kb0neYSroPZutnrTwd6GwRKzRwV3aXSGfDUGswUO
-	 9x4Gs1Jgp4Ir6hdZxD0RXp+kQcC5xA6aFhjbF/dmhwEoUXOl5m77VSvwu90omh5ekYXyq
-	 y8MEPHjDWQc+7Z09T5qkVSJdiasVYHOQt8LFcCZ4w8FogqvCx0m4vR/Ij4lAC82v2RRc1
-	 HLU8BcScQ3oJm7krpAgC219OOdhscD6umMCf8nJUh02ZZVTbdWp1zxihgDfjE6+bjAA==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id BB5201F00A06;
-	Thu, 12 Nov 2026 08:35:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794472556;
-	bh=o9Sb7j8unYocUYyfUbeIl2vU4wtbZrpzJhLkOGZjRmY=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=bYzSwcK6PfPirOFSoz4XSOX647eHePJSZSn9Ff0/KdIngYIQSHxzBk6woVGnBM/FB
-	 YWTv1ejT6t0aNvY15rFAC2XHSZnrvqyJSk/4V0fevG9hXM6U/xOTUGBbjKB5+mhS4Q
-	 WYbcJd81un5tcYIOe6RVrVvHOfrAakUznmmNh48WJ9bR5tq+7fOaIXxu+XZcF2xYp+
-	 OkIsKphfTTcnq/SFI1f3DZwfTYeHerdAnBY2yFmN9UaQgkikCR5fcMGm2ENFlTl116
-	 4JB38eVqVrmnY5x5fowr362WQ9FZnzscv974FRv0omEmjtrL5E068n5GiD+EBM90/k
-	 9cwIJH7w3Q1Dg==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 3ED82493BE;
-	Thu, 12 Nov 2026 08:35:55 +0000 (UTC)
-From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 12 Nov 2026 08:35:55 +0000
-Subject: [PATCH RFC 1/2] usb: dwc3: Let the glue keep the host bus
- suspended across suspend-to-idle
+	id 1xRQL4-00000009BK6-2RNv
+	for linux-rockchip@lists.infradead.org;
+	Thu, 12 Nov 2026 08:39:44 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-5be4716d76fso163331e87.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 12 Nov 2026 00:39:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794472760; cv=none;
+        d=google.com; s=arc-20260327;
+        b=svlbDvl1x9A/6kEAD4YLcHvkiltdDTsX0Yo+/XhaEgfK2wPVW2+UFS9+AHLH2eUoQq
+         iUaHb47pGIDG3ohA0DIRnJSRV2/63eBaC8/xr3XiQJzeLcGES2LjKrxWjQ0MWO/Zflpn
+         +v5WIkda+EWMKNqqcuTJNyW/HtwgUvMT/LWA5+e/Z3QtPUPekSsFCc8+bBDXpuIGvW3J
+         aVGC52ixQa2Cr1NNBjIbyZHIEHdFrEdUJuB8CDN1h6/6ufY0Tjr+n+bVQec9XNxYNOo+
+         fyZKOGSzCk+Xzk4iq02VNRjBMIsr7LW2lT2A6AMKZJkQU13iTUtIY4vSOIUSrhYu34mc
+         nh9w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ig8TOwEwu93oj/vlPs1jDWfcC/HjbbLnhomiuGEjcu0=;
+        fh=6tPk2giyjdTDHpktr11Nu//itDcELulCX5SFzqFHx50=;
+        b=rOtwFGnuWg+UQSiDNdwOUROjvzVEXLATIGN2XG/fdkdsKUhTph8ycFFxCbjfJB910l
+         ifzbMZVYI1OF62/XPRVonciGAZA3xvw0iRyCLT8SekCKznjFgOGFw36tL3q+ZNAQqjgn
+         m9XIEJZSjTqjmg27MX0D3P0fMbUsBkjv5IJGZPwU4MBzPdg39FLhwTHQLV0L4hmsmxMc
+         S9P7VqGk4o65xBEg6bvfKcLCo1JJLObJ64bDN+H8PGl1+X3ookvXkk2itbxFBVaZ3Vkl
+         GL4b4nyyOyyL+qS/Yn4f5XlN5WcaKqDzTgvPHhqmQTUNDzcUYTblln5+f6MDwZNA0IA0
+         hXow==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1794472760; x=1795077560; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=ig8TOwEwu93oj/vlPs1jDWfcC/HjbbLnhomiuGEjcu0=;
+        b=VeMnwYi38fFtKuUe0bVv9fEoYygDo6yaLkGc9Kbg0g6DnFixnAiV8ZJcZpYOAptC0O
+         4MXNqIUct9GKvzbI4HQHxc9xRyBIf5azaZwgKyQ2sDX6MjaT6aOoBNoXdmM30rCP5fT+
+         Uf3jhIVXhgJu80BOduiEr0v3hZ8BwZA9+jG6L7AVPgva9ucf8YxdrNju9vrRNefmV94w
+         u85TAEageYJgsz7/OJjJwi1M175GLFfjxbnHu0VrINziSZJWz4P4pXfUEfGI5NAvr6VG
+         +aMzVeqJL5yDM2PhLe5BxSItmKv01G+PVle4ZUq3ClQzHULmJktgGVxCm05Mq7WPAiJM
+         IBFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794472760; x=1795077560;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ig8TOwEwu93oj/vlPs1jDWfcC/HjbbLnhomiuGEjcu0=;
+        b=Oy34SiUTYc3A2OqJHXPYMfA2W4/jD5Ai6JRDsKMqYNr+dJ4hE5J5LdiKE3FTSGapQB
+         S5iTRdZvSc28UY2Nik/VsgdCQfTzPckHV39Lu2AP2ucW+L74VEYeHeGKH8DmTrbKoue3
+         3W6t2NmwZ+etsveQBEZ2hpn44jPhojE88lphG+L1g54+2IfXzR6dxCrbEhiWXHeBrsTq
+         9qb03wp0rJPrb+PNGiBtJBUjwmvhraXN8o+ZujLqkSftRM/CjPWu8wQVcsxVqPRMcHQy
+         pN8zBqhrMJy/LJl9ZNjveEIIS/3uzdbID18h8oX2UmiaPnrwmsIOrD9SEP+HUCedzyPh
+         scBQ==
+X-Forwarded-Encrypted: i=1; AL+hErE062YD0d3xTU20HY3n+Hs1xr986wEH9hd8jVESYyTNdtj8dQQO6TQfoL2YdwL1an2giZlhCg1uKPCLCdHTbQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8yvUOnu7Tqg3Z44K0P9Ov7YNSz9j+bRRi3bSJBD0Uh04e5PI+6
+	+u+QyP4KzmJIJuqHWaYumuFqvOvJ7H45WBf+rBBvxc1NkVujveVJaO8mVgwbpB4qoE6GALXdHUK
+	5AW/GQV8iQcZUNgIXZVGxvTReNkOWDIM=
+X-Gm-Gg: AYBFou0c5eJWEpu5VEC9v6GOdjOnIZPyTeyVZJ3P7fGS7J1tZgXcDW9y/GoviCyI7hh
+	kDLQEAC4FyUwfNJbm52iohwp9Rc5wnMW6MlyyJowiIHL9vnGJBV6xy65NyHfXFvpSjHl1Q814XO
+	UkpDZlNO/lMqmezGC8nFThcaJjqkhqbBZYhusguI8ZB2ysmrTeUG211KtNfCjtwqG5LKz8Bg0Gx
+	UR3z+f1hhMmo1O/mm3cXbvIzdG3ATIfmnTfSiiGJCId/O4aRxaoJbwXnJFg+jOhx1BihaERw/Y/
+	Uyut6YCzwV3vEGhGTiKCVVh2RwLP45iz25T6mAW7hAPqojAYEK6ZMw1TKKptEKMfFuzpFgXMgUy
+	WJD9qnU96huG3732HIeU79AFb3y6C/oz9dgShCHvNjhnArYP6zl9RSapEN7fWrYtQEdfzwIc=
+X-Received: by 2002:ac2:51c8:0:b0:5c1:57ce:d4b4 with SMTP id
+ 2adb3069b0e04-5c15d5f7848mr1986848e87.2.1794472760172; Thu, 12 Nov 2026
+ 00:39:20 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261112-dwc3-s2idle-optin-v1-1-842e3f8413d0@gmail.com>
 References: <20261112-dwc3-s2idle-optin-v1-0-842e3f8413d0@gmail.com>
 In-Reply-To: <20261112-dwc3-s2idle-optin-v1-0-842e3f8413d0@gmail.com>
-To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Joonhoe Kim <26rote@gmail.com>, Vladyslav Tymoshchuk <tvlad744@gmail.com>, 
- Arun Iyengar <aiyengar1990@gmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472554; l=7514;
- i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=GXZ6XCGRtnZ3mkCt6txb5zlLxRttrEmogA32LTQM6WQ=;
- b=MnPB2888GGLp8MeAl5mL2ZlPMYVRBJgpgv7aySIUB27BN1YAjsNTBOmVBqo6ncfyw40e9xeW9
- VyVxZSwg72mCsXUPGz26tO+ZZ7NWJfRZKo4rjTONRIqWARyZQX7Fkxc
-X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
- pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
-X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
- auth_id=1480
-X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
+From: Arun Iyengar <aiyengar1990@gmail.com>
+Date: Thu, 12 Nov 2026 00:39:08 -0800
+X-Gm-Features: AclHuK-LsUOtbUqqsSLc1VRlkuatKOgx5pOiztBW2KXQJW8AeA8OYEhVHHOWdbc
+Message-ID: <CAEy9hNXag+0ssyuc9U9vSLqUS3jv=xKAaPkegR3W3Lyqma=1TA@mail.gmail.com>
+Subject: Re: [PATCH RFC 0/2] usb: dwc3: Let the Rockchip glue keep the host
+ bus across suspend-to-idle
+To: aiyengar1990@gmail.com
+Cc: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, linux-usb@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, Joonhoe Kim <26rote@gmail.com>, 
+	Vladyslav Tymoshchuk <tvlad744@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261112_003924_542066_E4F7BDAF 
+X-CRM114-Status: GOOD (  35.84  )
+X-Spam-Score: -0.8 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,198 +120,133 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: aiyengar1990@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FORGED_GMAIL_RCVD,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
-
-In host mode, dwc3_suspend_common() tears the core down for system
-suspend (dwc3_core_exit(): PHYs off, core reset) unless the controller
-is a wakeup source. By then xhci-plat has already suspended the bus:
-the root ports and every device behind them are in U3/suspend and
-expect to keep their power session (Documentation/driver-api/usb/
-persist.rst). Resetting the core ends all of them. On resume xhci-plat
-finds a reset controller ("root hub lost power or was reset") and the
-USB core has to reset-resume every device, which only works for devices
-that come back within the 2 s that usb_port_resume() waits for a
-connection.
-
-Devices that are cut off in U3 do not necessarily come back that fast.
-On an Orange Pi 5 (RK3588S) a SanDisk Extreme drive on the Type-A USB3
-port only connects again ~3 s after resume, and a card reader behind a
-USB3 hub loses VBUS when the hub is reset and needs ~2.35 s. Both are
-disconnected and enumerated again on every resume, which kills a
-filesystem mounted on them. With the bus kept suspended they resume
-from U3 in milliseconds.
-
-Whether the bus can be kept is a property of the platform, not of the
-dwc3 core: in suspend-to-idle some glue drivers still assert resets or
-switch off PHY supplies in their own suspend callbacks, some power
-domains are switched off, and some platforms rely on the PHYs being
-powered off to reach their low-power state (c4a5153e87fd ("usb: dwc3:
-core: Power-off core/PHYs on system_suspend in host mode")). So make it
-an opt-in: a glue driver whose platform keeps the controller, its PHYs
-and its power domain powered across suspend-to-idle sets
-keep_host_bus_in_s2idle in dwc3_properties, and only then does the core
-keep the suspended bus in suspend-to-idle, as it does for wakeup. It
-also marks the device as being on the awake path so that a power domain
-with GENPD_FLAG_ACTIVE_WAKEUP stays on. Resume re-initialises the core
-exactly when suspend tore it down, which xhci_power_lost now records.
-Nothing changes for platforms that do not set the flag, nor for
-suspend-to-RAM, hibernation and needs_full_reinit controllers.
-
-Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
----
- drivers/usb/dwc3/core.c | 41 +++++++++++++++++++++++++++++++++++++----
- drivers/usb/dwc3/core.h |  3 +++
- drivers/usb/dwc3/glue.h |  7 +++++++
- 3 files changed, 47 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index bc9ce8dce0c6..21746fc8624a 100644
---- a/drivers/usb/dwc3/core.c
-+++ b/drivers/usb/dwc3/core.c
-@@ -16,6 +16,7 @@
- #include <linux/spinlock.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-+#include <linux/suspend.h>
- #include <linux/interrupt.h>
- #include <linux/ioport.h>
- #include <linux/io.h>
-@@ -1694,6 +1695,9 @@ static void dwc3_get_software_properties(struct dwc3 *dwc,
- 	if (properties->needs_full_reinit)
- 		dwc->needs_full_reinit = true;
- 
-+	if (properties->keep_host_bus_in_s2idle)
-+		dwc->keep_host_bus_in_s2idle = true;
-+
- 	dwc->gsbuscfg0_reqinfo = DWC3_GSBUSCFG0_REQINFO_UNSPECIFIED;
- 
- 	if (properties->gsbuscfg0_reqinfo !=
-@@ -2554,6 +2558,30 @@ static int dwc3_core_init_for_resume(struct dwc3 *dwc)
- 	return ret;
- }
- 
-+/*
-+ * In host mode, system suspend suspends the bus: xhci-plat puts the root ports
-+ * and with them every attached device into U3/suspend, and the USB core
-+ * expects them to keep that power session (see
-+ * Documentation/driver-api/usb/persist.rst). Tearing the core down ends all of
-+ * them: the devices then have to go through a reset-resume, and one that takes
-+ * longer to come back than the USB core waits for is disconnected, e.g. with a
-+ * mounted filesystem.
-+ *
-+ * The core is kept when it is a wakeup source, and in suspend-to-idle on
-+ * platforms whose glue says that the controller, its PHYs and its power domain
-+ * stay powered then (keep_host_bus_in_s2idle). Everywhere else it is torn down
-+ * so the PHYs can be powered off.
-+ */
-+static bool dwc3_host_keep_core(struct dwc3 *dwc)
-+{
-+	if (dwc->needs_full_reinit)
-+		return false;
-+	if (device_may_wakeup(dwc->dev))
-+		return true;
-+	return dwc->keep_host_bus_in_s2idle &&
-+	       pm_suspend_target_state == PM_SUSPEND_TO_IDLE;
-+}
-+
- static int dwc3_suspend_common(struct dwc3 *dwc, pm_message_t msg)
- {
- 	u32 reg;
-@@ -2584,14 +2612,20 @@ static int dwc3_suspend_common(struct dwc3 *dwc, pm_message_t msg)
- 		dwc3_core_exit(dwc);
- 		break;
- 	case DWC3_GCTL_PRTCAP_HOST:
--		if (!PMSG_IS_AUTO(msg) &&
--		    (!device_may_wakeup(dwc->dev) || dwc->needs_full_reinit)) {
-+		if (!PMSG_IS_AUTO(msg) && !dwc3_host_keep_core(dwc)) {
- 			dwc3_core_exit(dwc);
- 			dwc->xhci_power_lost = 1;
- 			break;
- 		}
- 		dwc->xhci_power_lost = 0;
- 
-+		/*
-+		 * The core and its PHYs stay powered to keep the suspended bus:
-+		 * keep the power domain on as well.
-+		 */
-+		if (!PMSG_IS_AUTO(msg))
-+			device_set_awake_path(dwc->dev);
-+
- 		/* Let controller to suspend HSPHY before PHY driver suspends */
- 		if (dwc->dis_u2_susphy_quirk ||
- 		    dwc->dis_enblslpm_quirk) {
-@@ -2650,8 +2684,7 @@ static int dwc3_resume_common(struct dwc3 *dwc, pm_message_t msg)
- 		dwc3_gadget_resume(dwc);
- 		break;
- 	case DWC3_GCTL_PRTCAP_HOST:
--		if (!PMSG_IS_AUTO(msg) &&
--		    (!device_may_wakeup(dwc->dev) || dwc->needs_full_reinit)) {
-+		if (!PMSG_IS_AUTO(msg) && dwc->xhci_power_lost) {
- 			ret = dwc3_core_init_for_resume(dwc);
- 			if (ret)
- 				return ret;
-diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-index 94408958e9a1..ee1afa0d106a 100644
---- a/drivers/usb/dwc3/core.h
-+++ b/drivers/usb/dwc3/core.h
-@@ -1137,6 +1137,8 @@ struct dwc3_glue_ops {
-  * @usb2_gadget_lpm_disable: set to disable usb2 lpm for gadget
-  * @needs_full_reinit: set to indicate the core may lose power and need full
-  *			initialization during system pm
-+ * @keep_host_bus_in_s2idle: set if the platform keeps the controller powered
-+ *			across suspend-to-idle, so the host bus stays suspended
-  * @disable_scramble_quirk: set if we enable the disable scramble quirk
-  * @u2exit_lfps_quirk: set if we enable u2exit lfps quirk
-  * @u2ss_inp3_quirk: set if we enable P3 OK for U2/SS Inactive quirk
-@@ -1407,6 +1409,7 @@ struct dwc3 {
- 	unsigned		usb2_lpm_disable:1;
- 	unsigned		usb2_gadget_lpm_disable:1;
- 	unsigned		needs_full_reinit:1;
-+	unsigned		keep_host_bus_in_s2idle:1;
- 
- 	unsigned		disable_scramble_quirk:1;
- 	unsigned		u2exit_lfps_quirk:1;
-diff --git a/drivers/usb/dwc3/glue.h b/drivers/usb/dwc3/glue.h
-index d738e1739ae0..130c455d9c4e 100644
---- a/drivers/usb/dwc3/glue.h
-+++ b/drivers/usb/dwc3/glue.h
-@@ -14,10 +14,17 @@
-  * @gsbuscfg0_reqinfo: Value to be programmed in the GSBUSCFG0.REQINFO field
-  * @needs_full_reinit: indicate the controller may not remain power during system
-  *			pm and need full initialization
-+ * @keep_host_bus_in_s2idle: indicate the controller, its PHYs and its power
-+ *			domain stay powered across suspend-to-idle when the core
-+ *			keeps them on, so a suspended host bus can be kept
-+ *			instead of being torn down. Set it only if the USB power
-+ *			domain, if there is one, stays on in suspend-to-idle for
-+ *			a device on the awake path (GENPD_FLAG_ACTIVE_WAKEUP)
-  */
- struct dwc3_properties {
- 	u32 gsbuscfg0_reqinfo;
- 	unsigned needs_full_reinit:1;
-+	unsigned keep_host_bus_in_s2idle:1;
- };
- 
- #define DWC3_DEFAULT_PROPERTIES ((struct dwc3_properties){		\
-
--- 
-2.55.0
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+UGxlYXNlIGRyb3AgdGhpcyBzZXJpZXMuCgpJbiBob3N0IG1vZGUsIHBhdGNoIDEgZHVwbGljYXRl
+cyBKb29uaG9lIEtpbSdzIGVhcmxpZXIgInVzYjogZHdjMzoKdGVsbCB4SENJIHRoYXQgaXQgbG9z
+dCBpdHMgc3RhdGUgd2hlbiB0aGUgY29yZSBpcyBwb3dlcmVkIG9mZiIgWzFdLAp3aGljaCBJIG9u
+bHkgZm91bmQgYWZ0ZXIgc2VuZGluZy4gSSBoYXZlIHRlc3RlZCBpdCBvbiBhbiBPcmFuZ2UgUGkg
+NQooUkszNTg4UyksIHdpdGggdGhlIGNvcmUgdGVhcmRvd24gZm9yY2VkIHNvIHRoYXQgaXQgdGFr
+ZXMgdGhlIHNhbWUKcGF0aCBhcyB0aGF0IHBhdGNoIGFsb25lOiAxMCBvZiAxMCBzdXNwZW5kLXRv
+LWlkbGUgY3ljbGVzIHdpdGggdGhlCmNvcmUgcG93ZXJlZCBvZmYgcmVjb3ZlciB3aXRob3V0ICJ4
+SEMgZXJyb3IgaW4gcmVzdW1lIi4gUGxlYXNlIHRha2UKaXQgaW5zdGVhZC4KClBhdGNoIDIgaXMg
+bm90IHNhZmUgYXMgYSBkZWZhdWx0IGZvciBldmVyeSBkd2MzIGhvc3QgKFNhc2hpa28ncyByZXZp
+ZXcKb2YgaXQgaG9sZHMpLiBJIGhhdmUgcmV3b3JrZWQgaXQgYXMgYW4gb3B0LWluIHRoYXQgYSBn
+bHVlIGRyaXZlciBzZXRzLAp1c2VkIGJ5IHRoZSBSb2NrY2hpcCBnbHVlIGZvciBSSzM1ODggb25s
+eSwgYW5kIHBvc3RlZCBpdCBhcyBhbiBSRkMgb24KdG9wIG9mIFNlYmFzdGlhbiBSZWljaGVsJ3Mg
+Um9ja2NoaXAgZ2x1ZSBzZXJpZXMgYW5kIEpvb25ob2UncyBwYXRjaDoKaHR0cHM6Ly9sb3JlLmtl
+cm5lbC5vcmcvci8yMDI2MTExMi1kd2MzLXMyaWRsZS1vcHRpbi12MS0wLTg0MmUzZjg0MTNkMEBn
+bWFpbC5jb20KClsxXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIwMjYwOTI5MTMwMjUyLjg2
+OS0xLTI2cm90ZUBnbWFpbC5jb20KCkFydW4KCk9uIFRodSwgTm92IDEyLCAyMDI2IGF0IDEyOjM1
+4oCvQU0gQXJ1biBJeWVuZ2FyIHZpYSBCNCBSZWxheQo8ZGV2bnVsbCthaXllbmdhcjE5OTAuZ21h
+aWwuY29tQGtlcm5lbC5vcmc+IHdyb3RlOgo+Cj4gSW4gaG9zdCBtb2RlLCBkd2MzIHRlYXJzIHRo
+ZSBjb3JlIGRvd24gZm9yIHN5c3RlbSBzdXNwZW5kIHVubGVzcyB0aGUKPiBjb250cm9sbGVyIGlz
+IGEgd2FrZXVwIHNvdXJjZS4gT24gUkszNTg4IHRoYXQgZW5kcyB0aGUgcG93ZXIgc2Vzc2lvbiBv
+Zgo+IGV2ZXJ5IHN1c3BlbmRlZCBVU0IgZGV2aWNlIGluIHN1c3BlbmQtdG8taWRsZTogb24gYW4g
+T3JhbmdlIFBpIDUgYQo+IFNhbkRpc2sgRXh0cmVtZSBkcml2ZSBvbiB0aGUgVHlwZS1BIFVTQjMg
+cG9ydCBhbmQgYSBjYXJkIHJlYWRlciBiZWhpbmQgYQo+IFVTQjMgaHViIGFyZSBkaXNjb25uZWN0
+ZWQgYW5kIGVudW1lcmF0ZWQgYWdhaW4gYWZ0ZXIgZXZlcnkgcmVzdW1lLCB3aGljaAo+IGtpbGxz
+IGEgZmlsZXN5c3RlbSBtb3VudGVkIG9uIHRoZW0uIFdpdGggdGhlIGJ1cyBrZXB0IHN1c3BlbmRl
+ZCB0aGV5Cj4gcmVzdW1lIGZyb20gVTMgaW4gbWlsbGlzZWNvbmRzLgo+Cj4gUGF0Y2ggMiBvZiB2
+MSBbMV0ga2VwdCB0aGUgaG9zdCBjb3JlIGluIHN1c3BlbmQtdG8taWRsZSBmb3IgZXZlcnkgZHdj
+Mwo+IGhvc3QuIFNhc2hpa28gZm91bmQgdGhyZWUgd2F5cyBpbiB3aGljaCB0aGF0IGJyZWFrcyBv
+dGhlciBwbGF0Zm9ybXMsIGFuZAo+IGFsbCB0aHJlZSBob2xkIG9uIHVzYi1uZXh0Ogo+IC0gbGVn
+YWN5IGdsdWUgZHJpdmVycyBzdGlsbCBhY3QgaW4gdGhlaXIgb3duIHN1c3BlbmQgY2FsbGJhY2tz
+IGluCj4gICBzdXNwZW5kLXRvLWlkbGUgKGR3YzMtb2Ytc2ltcGxlIGFzc2VydHMgaXRzIHJlc2V0
+cyBvbiByazMzOTksCj4gICBkd2MzLW1lc29uLWcxMmEgcG93ZXJzIHRoZSBQSFlzIG9mZiwgZHdj
+My1leHlub3Mgc3dpdGNoZXMgaXRzIHN1cHBsaWVzCj4gICBvZmYpLCBzbyB0aGUgY29yZSB3b3Vs
+ZCBza2lwIHRoZSByZS1pbml0IG9uIGEgcmVzZXQgY29udHJvbGxlcjsKPiAtIGR3YzMtZ29vZ2xl
+IGFzc2VydHMgaXRzIHJlc2V0cyB1bmxlc3Mgd2FrZXVwIGlzIGVuYWJsZWQ7Cj4gLSBnZW5wZCBr
+ZWVwcyBhIGRvbWFpbiBvbiBmb3IgYSBkZXZpY2Ugb24gdGhlIGF3YWtlIHBhdGggb25seSB3aXRo
+Cj4gICBHRU5QRF9GTEFHX0FDVElWRV9XQUtFVVAsIHdoaWNoIGUuZy4gUkszNTY4IFBEX1BJUEUg
+ZG9lcyBub3Qgc2V0Lgo+ICAgVmxhZHlzbGF2IFR5bW9zaGNodWsgaGFzIHNpbmNlIHNlZW4gdGhp
+cyBvbmUgb24gaGFyZHdhcmUgWzJdOiBvbgo+ICAgU004NzUwIHRoZSBVU0IgR0RTQ3MgbGFjayB0
+aGUgZmxhZywgZ2VucGQgcG93ZXJzIHRoZW0gb2ZmIGluCj4gICBzdXNwZW5kLXRvLWlkbGUgYW5k
+IHRoZSB4SENJIGRpZXMgb24gcmVzdW1lLCBhbHJlYWR5IG9uIHRoZSBleGlzdGluZwo+ICAgd2Fr
+ZXVwIHBhdGguCj4gQ29tbWl0IGM0YTUxNTNlODdmZCAoInVzYjogZHdjMzogY29yZTogUG93ZXIt
+b2ZmIGNvcmUvUEhZcyBvbgo+IHN5c3RlbV9zdXNwZW5kIGluIGhvc3QgbW9kZSIpIGFsc28gbWFk
+ZSB0aGUgdGVhcmRvd24gZGVsaWJlcmF0ZSwgc28KPiB0aGF0IHRoZSBQSFlzIGNhbiBiZSBwb3dl
+cmVkIG9mZi4gVGhhbmtzIHRvIFNhc2hpa28gZm9yIHRoZSByZXZpZXcgYW5kCj4gdG8gVmxhZHlz
+bGF2IGZvciB0aGUgdGVzdCBvbiBTTTg3NTAuCj4KPiBUaGlzIHZlcnNpb24gbWFrZXMgaXQgYW4g
+b3B0LWluIGluc3RlYWQ6IHBhdGNoIDEgYWRkcwo+IGtlZXBfaG9zdF9idXNfaW5fczJpZGxlIHRv
+IGR3YzNfcHJvcGVydGllcyBmb3IgdGhlIGdsdWUgdG8gc2V0LCBhbmQKPiBwYXRjaCAyIHNldHMg
+aXQgaW4gdGhlIFJvY2tjaGlwIGdsdWUgZm9yIFJLMzU4OCBvbmx5LCB3aG9zZSBQRF9VU0IgaGFz
+Cj4gR0VOUERfRkxBR19BQ1RJVkVfV0FLRVVQLiBOb3RoaW5nIGNoYW5nZXMgZm9yIGFueSBvdGhl
+ciBwbGF0Zm9ybSwgbm9yCj4gZm9yIHN1c3BlbmQtdG8tUkFNIGFuZCBoaWJlcm5hdGlvbi4KPgo+
+IEl0IGlzIGFuIFJGQyBiZWNhdXNlIGl0IGRlcGVuZHMgb24gdHdvIHBvc3RpbmdzIHRoYXQgYXJl
+IG5vdCBtZXJnZWQ6Cj4gLSBTZWJhc3RpYW4gUmVpY2hlbCdzIFJvY2tjaGlwIGR3YzMgZ2x1ZSBk
+cml2ZXIsIHYxOCBbM107IHBhdGNoIDIgaXMgb24KPiAgIHRvcCBvZiBpdC4KPiAtIEpvb25ob2Ug
+S2ltJ3MgInVzYjogZHdjMzogdGVsbCB4SENJIHRoYXQgaXQgbG9zdCBpdHMgc3RhdGUgd2hlbiB0
+aGUKPiAgIGNvcmUgaXMgcG93ZXJlZCBvZmYiIFs0XTsgcGF0Y2ggMSB1c2VzIGl0cyB4aGNpX3Bv
+d2VyX2xvc3QgZmxhZyB0bwo+ICAgcmUtaW5pdGlhbGlzZSB0aGUgY29yZSBvbiByZXN1bWUgZXhh
+Y3RseSB3aGVuIHN1c3BlbmQgdG9yZSBpdCBkb3duLgo+ICAgSW4gaG9zdCBtb2RlIGl0IGRvZXMg
+dGhlIHNhbWUgYXMgcGF0Y2ggMSBvZiB2MSBbMV0sIHdoaWNoIEkgd2l0aGRyZXcKPiAgIGluIGl0
+cyBmYXZvdXIuCj4gVGhlIGJhc2UgaXMgdXNiLW5leHQgKHY3LjQtcmMxKSB3aXRoIFszXSBhbmQg
+WzRdIGFwcGxpZWQuCj4KPiBUZXN0ZWQgb24gYW4gT3JhbmdlIFBpIDUgKFJLMzU4OFMsIG5vIHdh
+a2V1cCBzb3VyY2UpIHdpdGggdGhlIGNvZGUgb2YKPiB0aGlzIHNlcmllcyBvbiB0b3Agb2YgWzNd
+IGFuZCBbNF0gaW4gYSB2Ny4zLWJhc2VkIGtlcm5lbCwgNTAKPiBzdXNwZW5kLXRvLWlkbGUgY3lj
+bGVzIHRocm91Z2ggcnRjd2FrZS4gQm90aCBkd2MzIGNvbnRyb2xsZXJzIG9mIHRoZQo+IGJvYXJk
+IHJ1biBvbiB0aGUgUm9ja2NoaXAgZ2x1ZTogVVNCM09URzIgKG5vIHBvd2VyIGRvbWFpbikgd2l0
+aCBhCj4gU2FuRGlzayBFeHRyZW1lIGRyaXZlIG9uIHRoZSBUeXBlLUEgcG9ydCwgYW5kIFVTQjNP
+VEcwIChpbiBQRF9VU0IpIHdpdGgKPiB0aGUgVVNCIDIuMCBiaWxsYm9hcmQgZGV2aWNlIGJlaGlu
+ZCB0aGUgVHlwZS1DIHBvcnQuCj4gLSBCdXMga2VwdCAodGhpcyBzZXJpZXMpLCA0MCBvZiA0MCBj
+eWNsZXM6IHRoZSBzYW1lIFVTQiBidXMgYW5kIGRldmljZQo+ICAgbnVtYmVycyBiZWZvcmUgYW5k
+IGFmdGVyIHJlc3VtZTsgbm8gInJvb3QgaHViIGxvc3QgcG93ZXIiLCBubyAieEhDCj4gICBlcnJv
+ciBpbiByZXN1bWUiLCBubyBkaXNjb25uZWN0LCByZS1lbnVtZXJhdGlvbiBvciAicmVzZXQKPiAg
+IFN1cGVyU3BlZWQiLCBubyBXQVJOSU5HL0JVRy9Pb3BzOyB0aGUgZHJpdmUgd2FzIHJlYWRhYmxl
+IGFmdGVyIGV2ZXJ5Cj4gICByZXN1bWUgKDY0IE1pQiBkaXJlY3QgcmVhZCkuCj4gLSBDb3JlIHRv
+cm4gZG93biBhcyB3aXRob3V0IHRoZSBvcHQtaW4gKGZvcmNlZCB3aXRoIGEgdGVzdC1vbmx5IG1v
+ZHVsZQo+ICAgcGFyYW1ldGVyIHRoYXQgaXMgbm90IHBhcnQgb2YgdGhpcyBzZXJpZXMpLCAxMCBv
+ZiAxMCBjeWNsZXM6IGFsbAo+ICAgcm9vdCBodWJzIHJlcG9ydGVkICJyb290IGh1YiBsb3N0IHBv
+d2VyIG9yIHdhcyByZXNldCIgKDgwIGxpbmVzKSwgbm8KPiAgICJ4SEMgZXJyb3IgaW4gcmVzdW1l
+IiB0aGFua3MgdG8gWzRdLCBubyBXQVJOSU5HL0JVRy9Pb3BzOyB0aGUgZHJpdmUKPiAgIHdhcyBk
+aXNjb25uZWN0ZWQgYW5kIGVudW1lcmF0ZWQgYWdhaW4gb24gZXZlcnkgcmVzdW1lLCB3aGljaCBp
+cyB3aGF0Cj4gICB0aGlzIHNlcmllcyBhdm9pZHMuCj4gTm90IHRlc3RlZDogUkszNTc2IChsZWZ0
+IHVuY2hhbmdlZCksIFVTQjNPVEcxIChub3Qgb24gdGhlIFJLMzU4OFMpLAo+IHN1c3BlbmQtdG8t
+UkFNIChub3QgcnVuIHdpdGggdGhpcyBzZXJpZXM7IHRoZSBvcHQtaW4gZG9lcyBub3QgYXBwbHkK
+PiB0aGVyZSkuCj4KPiBbMV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDI2MTExMC1kd2Mz
+LXMyaWRsZS12MS0wLTJlZjRjYzNmODEzMEBnbWFpbC5jb20KPiBbMl0gaHR0cHM6Ly9sb3JlLmtl
+cm5lbC5vcmcvci8yMDI2MTExMTEyMTU1Ni4xODcxLTEtdHZsYWQ3NDRAZ21haWwuY29tCj4gWzNd
+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvMjAyNjEwMjEtYjQtcm9ja2NoaXAtZHdjMy1yb2Nr
+Y2hpcC1nbHVlLXYxOC0wLTYwMDAwZDAzZmNhMkBjb2xsYWJvcmEuY29tCj4gWzRdIGh0dHBzOi8v
+bG9yZS5rZXJuZWwub3JnL3IvMjAyNjA5MjkxMzAyNTIuODY5LTEtMjZyb3RlQGdtYWlsLmNvbQo+
+Cj4gVGhpcyBzZXJpZXMgd2FzIGRldmVsb3BlZCB3aXRoIENsYXVkZSAoQW50aHJvcGljKSBhcyBh
+IGNvZGluZyBhc3Npc3RhbnQ6Cj4gaXQgd3JvdGUgdGhlIGNvZGUgYW5kIHRoZSBjb21taXQgbWVz
+c2FnZXMsIGFuZCBJIHJldmlld2VkIGFuZCB0ZXN0ZWQgaXQKPiBhcyBkZXNjcmliZWQgYWJvdmUu
+Cj4KPiBTaWduZWQtb2ZmLWJ5OiBBcnVuIEl5ZW5nYXIgPGFpeWVuZ2FyMTk5MEBnbWFpbC5jb20+
+Cj4gLS0tCj4gQXJ1biBJeWVuZ2FyICgyKToKPiAgICAgICB1c2I6IGR3YzM6IExldCB0aGUgZ2x1
+ZSBrZWVwIHRoZSBob3N0IGJ1cyBzdXNwZW5kZWQgYWNyb3NzIHN1c3BlbmQtdG8taWRsZQo+ICAg
+ICAgIHVzYjogZHdjMzogcm9ja2NoaXA6IEtlZXAgdGhlIGhvc3QgYnVzIGFjcm9zcyBzdXNwZW5k
+LXRvLWlkbGUgb24gUkszNTg4Cj4KPiAgZHJpdmVycy91c2IvZHdjMy9jb3JlLmMgICAgICAgICAg
+fCA0MSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKystLS0tCj4gIGRyaXZlcnMv
+dXNiL2R3YzMvY29yZS5oICAgICAgICAgIHwgIDMgKysrCj4gIGRyaXZlcnMvdXNiL2R3YzMvZHdj
+My1yb2NrY2hpcC5jIHwgMTAgKysrKysrKysrKwo+ICBkcml2ZXJzL3VzYi9kd2MzL2dsdWUuaCAg
+ICAgICAgICB8ICA3ICsrKysrKysKPiAgNCBmaWxlcyBjaGFuZ2VkLCA1NyBpbnNlcnRpb25zKCsp
+LCA0IGRlbGV0aW9ucygtKQo+IC0tLQo+IGJhc2UtY29tbWl0OiA2NjI4ZTdkNGM2YjI1YzhkMThm
+MTM0NWUzYTIwZDIxODI5YWFlN2U0Cj4gY2hhbmdlLWlkOiAyMDI2MTExMC1kd2MzLXMyaWRsZS1v
+cHRpbi0xZTMwMjFhZGI2NTAKPiBwcmVyZXF1aXNpdGUtbWVzc2FnZS1pZDogPDIwMjYxMDIxLWI0
+LXJvY2tjaGlwLWR3YzMtcm9ja2NoaXAtZ2x1ZS12MTgtMC02MDAwMGQwM2ZjYTJAY29sbGFib3Jh
+LmNvbT4KPiBwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6IDRmYTNhYWU4Y2NmYTUzODM1MjIwNzAxNzlj
+ODc3NzMwMjQxMTA4MmMKPiBwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6IGRiMDliNGY1YjBjZmZjMWQ1
+YmYwOThmYmRlYmIwNmI4YmU0NDhmYjcKPiBwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6IGMyZTFjNDUz
+NDU0YTc1ODlhNjkxZmUzOTFkYzc5ZTg2ZjA5Y2E3YjcKPiBwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6
+IGRhZGVhZjllMzY5ZTA0ZDhiMzMyOTQ5M2ExYTA3NTZkZGQ2MTQwZjAKPiBwcmVyZXF1aXNpdGUt
+cGF0Y2gtaWQ6IGFhMDEyNWVkYjYwNGVjZjcwNGE2OTI1MGNjMGQ2OTMwMTNhOTc3YzkKPiBwcmVy
+ZXF1aXNpdGUtcGF0Y2gtaWQ6IDYyYjQ5MmI3YjZlOTk1NzI4MmYxMDI5YTAyYWFmMjU4YjYzZTk5
+MGYKPiBwcmVyZXF1aXNpdGUtcGF0Y2gtaWQ6IGZjYzdkZDVkY2Q1ODM5MTNmOTFiZjk5ODZiMDEz
+N2MyOTMwZDIyMDAKPiBwcmVyZXF1aXNpdGUtbWVzc2FnZS1pZDogPDIwMjYwOTI5MTMwMjUyLjg2
+OS0xLTI2cm90ZUBnbWFpbC5jb20+Cj4gcHJlcmVxdWlzaXRlLXBhdGNoLWlkOiAzNGE1YTJjNjM4
+YTcyOWJkZTQ5YzA2YTMzMGJmMDg0N2JmMTdlNWU5Cj4KPiBCZXN0IHJlZ2FyZHMsCj4gLS0KPiBB
+cnVuIEl5ZW5nYXIgPGFpeWVuZ2FyMTk5MEBnbWFpbC5jb20+Cj4KPgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
