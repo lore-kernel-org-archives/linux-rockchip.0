@@ -2,149 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ABC73606A323
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 18:03:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E7380606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 18:13:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wJ7mIISp;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=IpV8/bXk;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=TStF3xdk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VODn4VXu;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=IJMMHEtB
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=hOu5tsR0zECSIPOWBIzlbnci4ffaEn6giQVs+ObhGtg=; b=wJ7mIISpMdtpboAoQZYB7cakhA
-	qBTIF8WLuzlrqOZszuaOEYmm1CeIwb54HWsa/IuGhLc1RRP7oN0l66hbXu2CairSMFP0o1Jeg+Xrg
-	Njaxgdzm88qKCSmmo0WxX5V5xfl/hHklSP++TZOYfrmsYheBN80tbugUmlDwpax+XQgmnSNuU8S6o
-	iMEwnmalpBeFejNIrUwj9i5T7eqooTzR6XzrY1ACBReT9wxM3DWQNEfzZVcXpM2joEllSx12uz6aV
-	iZGdP+3tDt3y7/TFUwkR/EWm6rZHhyHhBzC78gzEL8EQ2fAHRvd5Q0O2c4LVK4Y/YwETfrNjo4PjR
-	zcmCIYww==;
+	bh=obn157ZM0bz+uHzZU6rOAoKVqlRWcAR1eycUKdghZ7Y=; b=VODn4VXu3hQkQ5yZZT+bO6xlKZ
+	h6Ofj/U5cWeHdRYxxVZirzAH0I0gwUlbfA0nZzhTYKlaE+oiAOgKIE4+KSay/UpEV52eDxcxDSILr
+	xhbokUoL93R4v0cO9WRIjrDzhzPNpyigybB32jR2PpBOQQ7DRqNzgN0YLHY11ShV9uHQGIiBK/uit
+	dgSIBc1ixlUYYgZvLuFJVk77fU/bmI3HZJUqxoZn7VTN8pzt4Z5BNgyyhM/RqhnI2PLTKz+GBCHcc
+	fgfYYiMGqOfmk/SgVvjLOpk5zHKVY3EPQij/24BBn7Xx1mNpBkpvFszXS9GLQi9yXh2A8UOM00ot2
+	hXAxwE4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRZ9A-0000000Apvj-0AYb;
-	Thu, 12 Nov 2026 18:03:40 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1xRZIQ-0000000Aquw-3ql8;
+	Thu, 12 Nov 2026 18:13:14 +0000
+Received: from sender6-op-o11.zoho.com ([165.173.180.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRZ97-0000000Aput-2IFB
-	for linux-rockchip@lists.infradead.org;
-	Thu, 12 Nov 2026 18:03:38 +0000
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6ACFZO8P2593688
-	for <linux-rockchip@lists.infradead.org>; Thu, 12 Nov 2026 18:03:37 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	is1IjOBk13wV8pAnUUZXWALQm5FmYZmf98T0QXm6I/k=; b=IpV8/bXkpYXuHKVf
-	kdWRRPY9OgvhYkjJ9MVBevP/Md7oek15QRAzpgkKf6CHE1OCUKr19RE/4q+x532M
-	2Ic/9mkFsJWPZIKBqrbIP0w8fv5tkqveh/hZIyy2EtfZsa4+9Oas4kRJB164knVa
-	MhJ6VK1S576kZjFjLSxjcfYD3ot+JTaY8Ojpjdhne7Oy4qaTjBKwU203HqTpXH53
-	W4jdkp0kMzDJXwkt4Z/w2XTg+WzfskLVhG96XXTA8+1HBP56Bz6aOgO8YDD9iZkG
-	NEOBRQIBENPXEKUZ7+6EfvuhZFhGPuTuO/EWfq8vvOL35D+V+RDButzh2h6Kaxom
-	d7TN9Q==
-Received: from mail-vk1-f197.google.com (mail-vk1-f197.google.com [209.85.221.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hwbx31nup-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Thu, 12 Nov 2026 18:03:36 +0000 (GMT)
-Received: by mail-vk1-f197.google.com with SMTP id 71dfb90a1353d-5ec3e192929so42545e0c.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 12 Nov 2026 10:03:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1794506616; x=1795111416; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=is1IjOBk13wV8pAnUUZXWALQm5FmYZmf98T0QXm6I/k=;
-        b=TStF3xdk1EejuR2vNogEqFtv9klQYbsWnxWZ9kL3p5e5YnECKINlkck3kqjxxEv0d7
-         mfFdBSHhEqtcriS1mUOrjNqJTOtyMLpDkOQtwY1mlHQs94auuPaakHHckLVzzLkMcV2G
-         cJ+e02F7RuJaRA29hah63YJ9V7IxyTvb1kmzFoXnGZU3F+s0JFLOHvZHd0TVVwqFFBAR
-         t/JUi7IlgcEL5b5dec0CC7IgqJtCj1PCLiKYgK8QNsOudc8VDGmswdFZyePk2haOnuo6
-         nTXimiZ4vGeiQmjNZloj9vRXSwdwsEBocAo8//PLERjTmx+8BciJ8UHKUyKpb5AaIhew
-         vH0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794506616; x=1795111416;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=is1IjOBk13wV8pAnUUZXWALQm5FmYZmf98T0QXm6I/k=;
-        b=OqtCuAxN1Xffo4RqkXTENi/wV9jHoV0fqyzMUy87ef8+3rjk0AcXagitSHcPsG9Ts7
-         zeh0iHQ24D5ZbdC84S1GXV4GzyzZlscXdLMRAKDVX7kytYojYMStI7qTyU7AvTciJBVX
-         jFwRHA/jCc67CrQDMvBXKwW0yzwMycSCw4WBasZ/ZC4pe9cbObq/S/I1z2KrompAr8Pa
-         Qa3q2rp4rMT/wz5PlLTqCgym0FUwwY5PD50v7jYbCfXkI00cJdIFzQoG9Cz8wHtYrSMp
-         nOZCpbyu3nmONyJyJ49wfwJc/84Kx12ZJCAsxVW6s4MJdIX9jyoqHwcUEqjZoDK2kHls
-         ZzGg==
-X-Forwarded-Encrypted: i=1; AL+hErHq4CPImPnEE/VYZEq86jfWSeVdfmZoegudQI440rAcrWAZN6e1fYQXX3zwxYusk+CSxLIbRudQy3f3VfpvGA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+GI9PaslHpTAU5ADrBICNCvPZBT3PemJ8MvksptXbAetYhUSqf
-	CSgw5s+hAWg2oOQZWwPicAWjhzqc0ICW3WHofEUvixsBErhqMC1SmSwZJZSom3a8g3zKE6Vx3NT
-	md8Xa41XUN4PsvbLZFMp9riG8IgWtY/5xi2y+BZ3fXK2ipL5Eq8Jbl/3Dz7irdhIU3h4gZ8pBWF
-	I=
-X-Gm-Gg: AYBFou2aVbqky9K5zViBDPtfcVKx8JrO00V9iffEBfHKUsBvxd4ktEN55AkQuWwXtKz
-	YCD246QrEPS1vgPwP/fD2n+6zkMx975LoBfcerh1EO/Ik4YnbkfQFBwEydS2xCmyUzNOp0zDjht
-	Tq9MCOTjyjLRMgYNtby5PQafSBkGXVY0QZYDLK41H0wyLa8HS9GOhF1g8KVBXqI902/v/6nFaA+
-	MF5GpgYc0jNeohDAOSwUib/pykPO+ZWNhu/oHAX6pPoCwSN/HTeZtktQew6FizaXCVC4jO0/eFp
-	1z3CPUfdA0WokjiqWJuPd4xxJ2hIcOZo092WUJFLUevwtfzlE98JcraOzEklHzohI5VpAh2GF17
-	IfeS0mqy1z/sp7Ai+4mXDx7UEg4/f9HlhtcXGAA3Y+iLUBPQieV1T2qPirqokUDyYdC6CpKL0qk
-	7+OlI1mlkUfip8vgDKqxrscVdCnUSpe6KRYSQ=
-X-Received: by 2002:a05:6122:3d06:b0:5ec:3e18:a912 with SMTP id 71dfb90a1353d-5ee1c41a938mr2612954e0c.14.1794506615451;
-        Thu, 12 Nov 2026 10:03:35 -0800 (PST)
-X-Received: by 2002:a05:6122:3d06:b0:5ec:3e18:a912 with SMTP id 71dfb90a1353d-5ee1c41a938mr2612929e0c.14.1794506614860;
-        Thu, 12 Nov 2026 10:03:34 -0800 (PST)
-Received: from ?IPV6:2a05:6e02:1041:c10:7d20:e20f:a77f:4ef7? ([2a05:6e02:1041:c10:7d20:e20f:a77f:4ef7])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb4e2acf81sm80058415e9.14.2026.11.12.10.03.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Nov 2026 10:03:32 -0800 (PST)
-Message-ID: <d30df23c-c1f4-4a7d-a56d-33c1f9e1a6f7@oss.qualcomm.com>
-Date: Thu, 12 Nov 2026 19:03:31 +0100
+	id 1xRZIH-0000000Aqtd-2Onm;
+	Thu, 12 Nov 2026 18:13:12 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794507177; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=eizwPx8KVqV00PIVxZYvQsUep5t+8EKtabRxDIND0DYEhcTdqV0HEincZbZl4jMyBnWDjO57rBEGXvoYXfpbg3HkTs4y6MU3iU0lLetS7vbVCPntMyD2UUnEizAg/ai7VU+CeA0Cqf2SLFUnxSipoL8EBA0OITGlE+9p3F9t/eg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794507177; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=clfRlB1cKPI2P2RGkED2YiH8vFJqIWTsVXpS+apuAnA=; 
+	b=bb9NyM7Tl3qbVtWnGf6FW9HK1Qtn8fHMDmZktlw7AIiEOfmj67YsqR05Tk6oJZVJMnQyES9D69i4aEwPQAqcoeFvB1EQOh0wvZMUwo7NxvPCDbcvaxLqAZVMooYsBd/a05gvLdxRnD9kWK0VxBzP792EHRgzR2oqwK6Rp/lJ/oQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=IJMMHEtBUP+0yvSM2V2o1j1rmnCiI/A+0L+4VpnDZwkTRKGalkVUCBiFKXdmQBKo4DAvnpjhvfH77y584ccLS81lzuwjDkLqc64lOxFnGQ8Qg0c5W2dgVjU4mDnlASBqpHcgFxs6A16dMZ92lGcF5xKxtxssqeTgu4ywXByRD3s=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=clfRlB1cKPI2P2RGkED2YiH8vFJqIWTsVXpS+apuAnA=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794507176475603.4857356077931;
+	Thu, 12 Nov 2026 10:12:56 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 97ADA180570; Thu, 12 Nov 2026 19:12:51 +0100 (CET)
+Date: Thu, 12 Nov 2026 19:12:51 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Leonard Lausen <leonard@lausen.nl>
+Cc: ulfh@kernel.org, heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, detlev.casanova@collabora.com, finley.xiao@rock-chips.com, 
+	zhangqing@rock-chips.com, inindev@gmail.com, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-pm@vger.kernel.org, gahing@gahingwoo.com
+Subject: Re: [PATCH 1/2] pmdomain: rockchip: Manage the RK3576 GPU domain
+ supply
+Message-ID: <avYBfa10mzLxG0Xe@venus>
+References: <20261019092417.391522-1-leonard@lausen.nl>
+ <20261019092417.391522-2-leonard@lausen.nl>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] smpboot: Allow restricting per-CPU threads to a CPU
- mask
-To: Thomas Gleixner <tglx@kernel.org>, akpm@linux-foundation.org,
-        rafael@kernel.org, peterz@infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
-        "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>,
-        "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
-        "open list:CPU HOTPLUG" <linux-kernel@vger.kernel.org>
-References: <cover.1793660202.git.daniel.lezcano@oss.qualcomm.com>
- <af37c4e7811a86adafb2064e7cf4aa4f5090ab4b.1793660202.git.daniel.lezcano@oss.qualcomm.com>
- <87zeverlrs.ffs@fw13>
-Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
-In-Reply-To: <87zeverlrs.ffs@fw13>
-X-Authority-Analysis: v=2.4 cv=S+5MU4sP c=1 sm=1 tr=0 ts=6af5ff78 cx=c_pps
- a=JIY1xp/sjQ9K5JH4t62bdg==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
- a=zJRp6_cAMcgA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22 a=A-cxFYNZenKyrZAO6n4A:9
- a=QEXdDO2ut3YA:10 a=tNoRWFLymzeba-QzToBc:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEyMDA3MSBTYWx0ZWRfXxgt2l00ZGPqP
- CIuii0J4f9dQCRE7ueAnsv7+stf3cRBCVpwoTxvXQk370vAsnohyBkxOF6Xt2nYyytQSa/5WSfy
- ilgm8PeIBjHTforElNdftnwkbYnqhPD4eeFE4Xqiclec5xlpB27ojGEvRqOm+Psmj8QqSe/V52j
- lnVgNam5Rkq5Jal6SwwkSbBCSQfYZ4JmOo5PUuOE0YxOHQG0MYHl6nQUBxp38mkDFO6Zfx2IBsS
- oPQcptUeuXEOOmKNfpZ/Cg+IN3vxLYEqYd/Bnf0NWy/kx6uih6/SvdGoCumbjum301SE5owRwh3
- bimwcs6zI9K/aEqrYvjkKMa7RPvVjLoeJbKOn62mtobpzPQ9BIJxVgIvXfjA58DVCpq4+tEJUuv
- ucrY+eBYHpX9yqCnH9okEgs4zmpMryL3PxrV0obGl4V8Z1Is6/ZeXisRnsfXoPMUDOd5dFftSQc
- 9oznUXxqBd7llI3TlKA==
-X-Proofpoint-ORIG-GUID: QaZfcSH1vZTqzGSlrQA1uKKEiLmBj7co
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEyMDA3MSBTYWx0ZWRfX4OyOMBMnV5jU
- g9flK6zQgDsk4Pxvv3+0i50uThYsXNz7OnAjGohPk7wMp7RVZ6RR548/UnHhCGpABUpDNyWXaMK
- A33ORyIkrW6YIpl/vR7L+KYi3Dth8mg=
-X-Proofpoint-GUID: QaZfcSH1vZTqzGSlrQA1uKKEiLmBj7co
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-12_02,2026-11-11_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 bulkscore=0 clxscore=1015 phishscore=0 malwarescore=0
- adultscore=0 spamscore=0 suspectscore=0 impostorscore=0 lowpriorityscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611120071
+In-Reply-To: <20261019092417.391522-2-leonard@lausen.nl>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.497.36
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_100337_594325_FA7530B2 
-X-CRM114-Status: GOOD (  16.30  )
-X-Spam-Score: -2.8 (--)
+X-CRM114-CacheID: sfid-20261112_101305_680278_4E8D493D 
+X-CRM114-Status: GOOD (  21.72  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,74 +76,242 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============6374166821482768750=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-Hi Thomas,
+--===============6374166821482768750==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="3g4i4kdgz6zmtb4d"
+Content-Disposition: inline
 
-thanks for reviewing the patch
 
-On 11/12/26 18:40, Thomas Gleixner wrote:
-> On Tue, Nov 03 2026 at 00:09, Daniel Lezcano wrote:
->> smpboot_register_percpu_thread() creates a thread for every online CPU
->> and registers the descriptor for subsequent CPU hotplug operations.
->> There is currently no way to restrict these threads to a subset of
->> CPUs, even when the user only needs work performed on that subset.
->>
->> For example, an idle injection device targets a specific CPU mask.
->> Creating threads outside that mask consumes resources unnecessarily.
->> Supporting multiple such devices also requires each descriptor to
->> manage only the threads associated with its own CPUs.
->>
->> Add an optional CPU mask to struct smp_hotplug_thread and apply it
->> throughout the thread lifecycle. Registration creates threads only for
->> online CPUs in the mask. CPU bring-up creates threads for selected
->> CPUs that were offline at registration, while parking and unparking
->> are restricted to the same mask.
->>
->> Apply the restriction to thread destruction as well, both during
->> unregistration and registration failure cleanup. This is necessary
->> when descriptors with disjoint masks share the same per-CPU task
->> storage: tearing down one descriptor must not stop or clear threads
->> owned by another descriptor.
->>
->> The caller must keep the mask valid and unchanged until the descriptor
->> is unregistered. Callers sharing per-CPU task storage must ensure their
->> masks do not overlap and serialize ownership changes themselves.
-> 
-> This really wants a built-in check which prevents overlapping
-> registrations for the same thread storage. It's easy enough to do:
-> 
-> smpboot_register_percpu_thread()
-> 
-> 	if (!pt->cpumask)
-> 		pt->cpu_mask = cpu_possible_mask;
-> 
-> 	guard(cpus_read_lock)();
->          guard(mutex)(&smpboot_threads_lock);
->          list_for_each_entry(ht, &hotplug_threads, list) {
-> 		if (ht->store != pt->store)
->                  	continue;
->                  if (WARN_ON_ONCE(cpumask_intersects(ht->cpumask, pt->cpumask)))
->                  	return -EBUSY;
->          }
->                  
-> Hmm?
-Yes, I agree it will prevent strange things happening
+--3g4i4kdgz6zmtb4d
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 1/2] pmdomain: rockchip: Manage the RK3576 GPU domain
+ supply
+MIME-Version: 1.0
 
-Thanks for the suggestion
+Hi,
 
-   -- Daniel
+On Mon, Oct 19, 2026 at 09:24:15AM +0000, Leonard Lausen wrote:
+> On the NanoPi M5, boot hangs during Panfrost initialization. Before this
+> fix, booting required blacklisting Panfrost on the kernel command line.
+> Loading Panfrost after boot reports a GPU power-domain acknowledgment
+> timeout:
+>=20
+>   failed to get ack on domain 'gpu', val=3D0x113ff
+>=20
+> Add regulator support to the RK3576 domain descriptors and mark the GPU
+> domain as regulator-dependent. This lets the existing Rockchip
+> power-domain regulator handling manage the GPU domain supply.
+>=20
+> A corresponding domain-supply property is needed in the board DT.
+>=20
+> The regulator-capable descriptors are based on the regulator support in
+> Jiaxing Hu's pending RK3576 NPU enablement series, without its NPU settle
+> delay changes.
+>=20
+> Link: https://lore.kernel.org/all/20260924102135.92217-10-gahing@gahingwo=
+o.com/
+> Fixes: cfee1b507758 ("pmdomain: rockchip: Add support for RK3576 SoC")
+> Signed-off-by: Leonard Lausen <leonard@lausen.nl>
+> ---
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+Greetings,
+
+-- Sebastian
+
+>  drivers/pmdomain/rockchip/pm-domains.c | 10 +++++++---
+>  1 file changed, 7 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/ro=
+ckchip/pm-domains.c
+> index e193f978d5f35..b41f9fcb62bfe 100644
+> --- a/drivers/pmdomain/rockchip/pm-domains.c
+> +++ b/drivers/pmdomain/rockchip/pm-domains.c
+> @@ -176,41 +176,42 @@ struct rockchip_pmu {
+>  	.mem_offset =3D m_offset,				\
+>  	.mem_status_mask =3D (m_status),			\
+>  	.repair_status_mask =3D (r_status),		\
+>  	.req_offset =3D r_offset,				\
+>  	.req_w_mask =3D (req) << 16,			\
+>  	.req_mask =3D (req),				\
+>  	.idle_mask =3D (idle),				\
+>  	.ack_mask =3D (ack),				\
+>  	.active_wakeup =3D wakeup,			\
+>  	.need_regulator =3D regulator,			\
+>  }
+> =20
+> -#define DOMAIN_M_O_R_G(_name, p_offset, pwr, status, m_offset, m_status,=
+ r_status, r_offset, req, idle, ack, g_mask, wakeup)	\
+> +#define DOMAIN_M_O_R_G(_name, p_offset, pwr, status, m_offset, m_status,=
+ r_status, r_offset, req, idle, ack, g_mask, wakeup, regulator)	\
+>  {							\
+>  	.name =3D _name,					\
+>  	.pwr_offset =3D p_offset,				\
+>  	.pwr_w_mask =3D (pwr) << 16,			\
+>  	.pwr_mask =3D (pwr),				\
+>  	.status_mask =3D (status),			\
+>  	.mem_offset =3D m_offset,				\
+>  	.mem_status_mask =3D (m_status),			\
+>  	.repair_status_mask =3D (r_status),		\
+>  	.req_offset =3D r_offset,				\
+>  	.req_w_mask =3D (req) << 16,			\
+>  	.req_mask =3D (req),				\
+>  	.idle_mask =3D (idle),				\
+>  	.clk_ungate_mask =3D (g_mask),			\
+>  	.ack_mask =3D (ack),				\
+>  	.active_wakeup =3D wakeup,			\
+> +	.need_regulator =3D regulator,			\
+>  }
+> =20
+>  #define DOMAIN_M_R(_name, pwr, status, req, idle, ack, wakeup, regulator=
+)	\
+>  {							\
+>  	.name =3D _name,				\
+>  	.pwr_w_mask =3D (pwr) << 16,			\
+>  	.pwr_mask =3D (pwr),				\
+>  	.status_mask =3D (status),			\
+>  	.req_w_mask =3D (req) << 16,			\
+>  	.req_mask =3D (req),				\
+>  	.idle_mask =3D (idle),				\
+>  	.ack_mask =3D (ack),				\
+> @@ -250,25 +251,28 @@ struct rockchip_pmu {
+>  	DOMAIN(name, pwr, status, req, req, req, wakeup)
+> =20
+>  #define DOMAIN_RK3528(name, pwr, req)		\
+>  	DOMAIN_M(name, pwr, pwr, req, req, req, false)
+> =20
+>  #define DOMAIN_RK3562(name, pwr, req, g_mask, mem, wakeup)		\
+>  	DOMAIN_M_G_SD(name, pwr, pwr, req, req, req, g_mask, mem, wakeup, false)
+> =20
+>  #define DOMAIN_RK3568(name, pwr, req, wakeup, regulator)		\
+>  	DOMAIN_M_R(name, pwr, pwr, req, req, req, wakeup, regulator)
+> =20
+>  #define DOMAIN_RK3576(name, p_offset, pwr, status, r_status, r_offset, r=
+eq, idle, g_mask, wakeup)	\
+> -	DOMAIN_M_O_R_G(name, p_offset, pwr, status, 0, r_status, r_status, r_of=
+fset, req, idle, idle, g_mask, wakeup)
+> +	DOMAIN_M_O_R_G(name, p_offset, pwr, status, 0, r_status, r_status, r_of=
+fset, req, idle, idle, g_mask, wakeup, false)
+> +
+> +#define DOMAIN_RK3576_R(name, p_offset, pwr, status, r_status, r_offset,=
+ req, idle, g_mask, wakeup)	\
+> +	DOMAIN_M_O_R_G(name, p_offset, pwr, status, 0, r_status, r_status, r_of=
+fset, req, idle, idle, g_mask, wakeup, true)
+> =20
+>  /*
+>   * Dynamic Memory Controller may need to coordinate with us -- see
+>   * rockchip_pmu_block().
+>   *
+>   * dmc_pmu_mutex protects registration-time races, so DMC driver doesn't=
+ try to
+>   * block() while we're initializing the PMU.
+>   */
+>  static DEFINE_MUTEX(dmc_pmu_mutex);
+>  static struct rockchip_pmu *dmc_pmu;
+> =20
+>  /*
+> @@ -1323,25 +1327,25 @@ static const struct rockchip_domain_info rk3576_p=
+m_domains[] =3D {
+>  	[RK3576_PD_VOP]		=3D DOMAIN_RK3576("vop",    0x0, BIT(11), 0,      BIT(=
+11), 0x0, 0x6000,  0x6000,  0x6000,  false),
+>  	[RK3576_PD_VO1]		=3D DOMAIN_RK3576("vo1",    0x0, BIT(14), 0,      BIT(=
+14), 0x0, BIT(12), BIT(12), 0x7000,  false),
+>  	[RK3576_PD_VO0]		=3D DOMAIN_RK3576("vo0",    0x0, BIT(15), 0,      BIT(=
+15), 0x0, BIT(11), BIT(11), 0x6800,  false),
+>  	[RK3576_PD_USB]		=3D DOMAIN_RK3576("usb",    0x4, BIT(0),  0,      BIT(=
+16), 0x0, BIT(10), BIT(10), 0x6400,  true),
+>  	[RK3576_PD_VI]		=3D DOMAIN_RK3576("vi",     0x4, BIT(1),  0,      BIT(1=
+7), 0x0, BIT(9),  BIT(9),  BIT(9),  false),
+>  	[RK3576_PD_VEPU0]	=3D DOMAIN_RK3576("vepu0",  0x4, BIT(2),  0,      BIT=
+(18), 0x0, BIT(7),  BIT(7),  0x280,   false),
+>  	[RK3576_PD_VEPU1]	=3D DOMAIN_RK3576("vepu1",  0x4, BIT(3),  0,      BIT=
+(19), 0x0, BIT(8),  BIT(8),  BIT(8),  false),
+>  	[RK3576_PD_VDEC]	=3D DOMAIN_RK3576("vdec",   0x4, BIT(4),  0,      BIT(=
+20), 0x0, BIT(6),  BIT(6),  BIT(6),  false),
+>  	[RK3576_PD_VPU]		=3D DOMAIN_RK3576("vpu",    0x4, BIT(5),  0,      BIT(=
+21), 0x0, BIT(5),  BIT(5),  BIT(5),  false),
+>  	[RK3576_PD_NPUTOP]	=3D DOMAIN_RK3576("nputop", 0x4, BIT(6),  0,      BI=
+T(22), 0x0, 0x18,    0x18,    0x18,    false),
+>  	[RK3576_PD_NPU0]	=3D DOMAIN_RK3576("npu0",   0x4, BIT(7),  0,      BIT(=
+23), 0x0, BIT(1),  BIT(1),  0x1a,    false),
+>  	[RK3576_PD_NPU1]	=3D DOMAIN_RK3576("npu1",   0x4, BIT(8),  0,      BIT(=
+24), 0x0, BIT(2),  BIT(2),  0x1c,    false),
+> -	[RK3576_PD_GPU]		=3D DOMAIN_RK3576("gpu",    0x4, BIT(9),  0,      BIT(=
+25), 0x0, BIT(0),  BIT(0),  BIT(0),  false),
+> +	[RK3576_PD_GPU]		=3D DOMAIN_RK3576_R("gpu",  0x4, BIT(9),  0,      BIT(=
+25), 0x0, BIT(0),  BIT(0),  BIT(0),  false),
+>  };
+> =20
+>  static const struct rockchip_domain_info rk3588_pm_domains[] =3D {
+>  	[RK3588_PD_GPU]		=3D DOMAIN_RK3588("gpu",     0x0, BIT(0),  0,       0x=
+0, 0,       BIT(1),  0x0, BIT(0),  BIT(0),  false, true),
+>  	[RK3588_PD_NPU]		=3D DOMAIN_RK3588("npu",     0x0, BIT(1),  BIT(1),  0x=
+0, 0,       0,       0x0, 0,       0,       false, true),
+>  	[RK3588_PD_VCODEC]	=3D DOMAIN_RK3588("vcodec",  0x0, BIT(2),  BIT(2),  =
+0x0, 0,       0,       0x0, 0,       0,       false, true),
+>  	[RK3588_PD_NPUTOP]	=3D DOMAIN_RK3588("nputop",  0x0, BIT(3),  0,       =
+0x0, BIT(11), BIT(2),  0x0, BIT(1),  BIT(1),  false, false),
+>  	[RK3588_PD_NPU1]	=3D DOMAIN_RK3588("npu1",    0x0, BIT(4),  0,       0x=
+0, BIT(12), BIT(3),  0x0, BIT(2),  BIT(2),  false, false),
+>  	[RK3588_PD_NPU2]	=3D DOMAIN_RK3588("npu2",    0x0, BIT(5),  0,       0x=
+0, BIT(13), BIT(4),  0x0, BIT(3),  BIT(3),  false, false),
+>  	[RK3588_PD_VENC0]	=3D DOMAIN_RK3588("venc0",   0x0, BIT(6),  0,       0=
+x0, BIT(14), BIT(5),  0x0, BIT(4),  BIT(4),  false, false),
+>  	[RK3588_PD_VENC1]	=3D DOMAIN_RK3588("venc1",   0x0, BIT(7),  0,       0=
+x0, BIT(15), BIT(6),  0x0, BIT(5),  BIT(5),  false, false),
+>  	[RK3588_PD_RKVDEC0]	=3D DOMAIN_RK3588("rkvdec0", 0x0, BIT(8),  0,      =
+ 0x0, BIT(16), BIT(7),  0x0, BIT(6),  BIT(6),  false, false),
+> --=20
+> 2.47.3
+>=20
+>=20
+
+--3g4i4kdgz6zmtb4d
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmr2AZ8ACgkQ2O7X88g7
++pqTGg/+IA/3t+nqg2axgiSAxUzY6beCjQNBUt8Uqeat0ODWUyGsy0oj/YRLr1WY
+cb1ByCT+vYvwI4TARthWw9G4F51pdEndZ92BKDE3Nk79a+YIcNnfyWHpUkG8mi+1
+N91UDLzcJGjpp+jkkpOeVsoqQdpmdioXAjVW/bYrAEg4ee4Mbr/xe+jwxl+Sr+dt
+0lRY0zDTnFVZiepgumS99iyBMNnon3vtyQAZzi/CoQ6I0F0vwN6GQYm9PdOiOxtj
+nLLnRSNIuT2S0DpcK1Jev0ABWRbbXRR1fieyKLbHDpHLXiQ6yk+8XHPM9f/zLVgq
+z7CPhHCkIGGX25J4TRxcrtXffezrfMcexe8yFLnV1UWStl7GLvTdgTPt96Eol44U
+wZ6DJxRhohwK07cj+Q6t0X5KSDuGLkjh2SAKd5KfbqJaJpkKKNYN7YU1tDRkhUDT
+2ZyKJNxI8Osbnv8QiE45SIVGTKEjsbna2aWWyJc0VgFDyX2vog4gf1bDy0k8Bygc
+SlkNyfck39DpLwO/xJ7YJPAVsSv8c+YJJxOBLeRuzsxpX2R63sOaVN5ji07j2gME
+nLuuVb7x7HL1kJUqISSvj6e9bb3L5daMS6K2f+kbXenoYI8MMV3rkPsCmB9wLDG0
+V90g8tcYmGmi5Eu9olMlkYkMNVD2DD5ULjbJ//qZK+bako4VG4o=
+=Ajkk
+-----END PGP SIGNATURE-----
+
+--3g4i4kdgz6zmtb4d--
+
+
+--===============6374166821482768750==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6374166821482768750==--
+
