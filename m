@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A9DA9606A32A
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C118B606A333
 	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:24:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=p2v9ogx3;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=fHuju1yo
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uKN4aM4R;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=dXtlBwGX
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,86 +14,88 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=5orPuNK9AX5npZq7hROpQ5RgTgze801kq8s4PR6XfG0=; b=p2v9ogx35eoLs0xt8k5DO7VEHp
-	H42+nxxAsTUL4N8Lqe9D1Rf3jnI8fU+YrobBiCAkBHBUQVG1muKEFw9nKN1HzD5xATO0/muKKGbJY
-	FwueEIJpKEg2JfmMO21/WE+7hEUJI/0M5Voa8rj+KF2chL4wWgL1pKxMJ43o8rIKhXHhXndCg/Qt8
-	F6tjcMGD2hcco8iS2/gYRtgYLUOgopWwTDuWiNtbXhiZlN1rgVgtLFI2xnl9O9KdoJjH3uccX1d2+
-	J+56qpppCePPZqL6go2pQnr7nG5qDyc9dajd3e5HwL39+RI4c83sKxb1v1HRIXZenz82lGLKWOB4+
-	k5ZpvYhw==;
+	bh=s8bNyeZFOJS7r3Wv0wswZX6pOChfbU1fU1JGGQoA9VQ=; b=uKN4aM4Rzv/ZPLab+JmoL5EDgd
+	XfoxH4y5X/ie39v5YsGvuDnYeMvZhouAhL/CR1L1sAnkJaO4TIsiMmJAYU4q4e6gTsAk2u/SO/hR1
+	H7cGR/Jg0yOaBqP61QQJDUcYql5TfUGdTF47pi0kcAqrIiIrJHFnO5ApFHs/O01eVI9JFUBbB+yf7
+	7kamMC5scpkGon4ZmPslgKdPnuXlUdmqPMOF1aCL5lrAL3RYPULS6OIOcCfyVaa/sBohLk2PGxdRD
+	GFi7bUXxiBt1CK+4DumXMXdC7PIXp7/PAjsxfiZRcDmo3rNy1bxQGlpo2fe8OwXHGZAikU89Uwlzn
+	H8wpxB8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQ64-000000095Qz-1m8v;
-	Thu, 12 Nov 2026 08:23:52 +0000
+	id 1xRQ65-000000095UA-2tBx;
+	Thu, 12 Nov 2026 08:23:53 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQ5m-000000095HS-3R2N;
+	id 1xRQ5k-000000095HN-0UZL;
 	Thu, 12 Nov 2026 08:23:37 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 91A6641874;
-	Thu, 12 Nov 2026 08:23:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C78BB413B6;
+	Thu, 12 Nov 2026 08:23:31 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794471814;
-	b=B17NsFhy7xxMD9nOKAx46/g5NP3k5697f/lmpSCd7e5DkyfNIqEF1aHXq9sqWxUDYTvD
-	 y70DF+xvaVIZ1CCoz+TJlEyZEBOVo3nS8lmP45yEN/6QWAfu6I5RE4gX41wAeKL0c5gQI
-	 4Wd2Ldl5zzj4eiRynVmioBJqKhRF76hJYFG24g85nY7hytAgqizu/wNItqhlZkQa3uzyL
-	 gAdc0+LdbmWjnRwTehEoSeE/B19wVo4iB+4dvi1PuKCf56C6BBTREM6DMXbKb20fTQf17
-	 5ZBC+snIFRjzgrwnh2fsCH0/Du3DuFS7AIVj8nBHllMOxX6DN6fv9hheumPaOOcxP3w==
+	t=1794471811;
+	b=wcMMBd1Hb2Ilk71pww10XRgNP3WD1G/YNlzMfYbNkdrUlkP13BpHvjQsI5DqM51z+0XV
+	 X9eE8vvhcByIYDmJUxz285uzUJoq9yXo8AIQieKSIjj1U/Dc8TxaFa8SgL2+LL8FA9sDu
+	 9O2QFLUUyXQixaaEEzG+biRMuZ0CLFbG+gtmGj4XuP342Dp8rK7+IxDXIFniHP9t03rMb
+	 3wnpsygwWkdg5MtFfG0p2c+HJgmgLv2ImLW5/oIMJfly7I/O3iq5qQ50AjQdNLGygesL/
+	 DEYi20WCpPpl00+NenZVcJck4aCV2qMrxSQIq+P+Q+7eCEZvNcI+LPZfh/lU58YbCVQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794471814;
+	c=relaxed/relaxed; t=1794471811;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=u120nBzjSw85Ua4h2iZr2dC7vRzrh960a8a37kW/TOg=;
-	b=XNiUTKlj+VcJG2TaY5g0vUTiT5FFaIWkueJPWxeXMEXdMwjzoxcR1YRRIDUMuKNTREiV
-	 B5t0q/YjwyvrFiqFFuVbxK5kNMsQyXhRD/FyvG99rqB9nlpiQBv0pBp7bUGzDA6RQfbDI
-	 ymuOrLj3mOcKxi5pyc4Hj9wRXX3JnJFdN4DmL3PRhymEf20gSJB0kPc0a8YKjqjpaZ6Jv
-	 EUx9ZPU8FxUn3knGXFAy2CbL6qx4Xs30RzTcMm3iVV/j0JknvOk+KpoOOLn1gdBVyDK0o
-	 SNUzvjSe0SF+HEnMf4w5Sw3nViQErN4rodxUYYMKBx8VgJAQQrc16/VQQwb+dnYyYPA==
+	bh=BUIoOdvM/LleNE9vPU9m5wgslnjsbtxMHIyToWC6kpw=;
+	b=q9TMJc96QipZfMQ4mRqoBlVs1iupL2g4WhmVmkTwAs/5NTxF0Y0NRNiy+Qp0vRrPqwMf
+	 /lqcw6kIwKQUWfqOeOB1nDKOvtvJp3w7JgD1OH06y4b5omKMXpIPouj4Q/XUXtPQxnpCT
+	 0baHKSOu18HxE3Ss1xywmIuXig7OsiNbQKAUOsLx2qnSGsjCEDLTek2hlTCrvISeqEo4z
+	 nPp44vMXnFQZICCTsHsaVOtgbztgZc4pEDvlh5+eijPTsTUsWhThKnUAzXvSFag7Y/5ex
+	 Bf3Y2XHTKOvP6UCb2bQ8HPqPKteiz46h8K/UH8SuM3o2tHsGZwT3Hk8trzXUXgtVMiw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 50FE61F00AC7;
-	Thu, 12 Nov 2026 08:23:33 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 41FDD1F00A07;
+	Thu, 12 Nov 2026 08:23:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794471814;
-	bh=u120nBzjSw85Ua4h2iZr2dC7vRzrh960a8a37kW/TOg=;
+	s=k20260515; t=1794471811;
+	bh=BUIoOdvM/LleNE9vPU9m5wgslnjsbtxMHIyToWC6kpw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=fHuju1yofLcm+DkrzDe5jxxSB3FZtaZdhyu/vcxW+SntVc8byG/Zjz8SCkWcVw41O
-	 DidKV9m6+7o9wXPOFt1mxLq/RIWbY81dTBcAkM+qb3grwddDi7RQsj3MbBnWyPQStY
-	 YbbbmDX95sFFxAc3duMqNEOF3cC2UqZsQzsxqQJk4jteXSUzHYJvDFg+vdsC7uw69/
-	 dTR4abeWqSKdqqlkPtsBlfwAlrhUJihxJhsT1ztu3Eu0Ev7b89Nh88ADc/07Cl6TyO
-	 3aAZ4cGi8LvyBspy8IvF8+UtXSRjRZttRpPm/gccccWCY4FGI9X3hlmwgVkhFdKA3G
-	 KMGOvawRFJjZw==
+	b=dXtlBwGX4QADCtFzVbZ8yyIqPyzhEXRUX7iHsRKOzKOKZjA8q8GKblSkCbdgXO4a8
+	 VrgkFCCjp2j0trxNjoYBTX3ybW2yqldayBLDoTboAiR1fdD38E0Blia4gVVSqYIo2s
+	 9UwcKThVYrK428dwTZaV1OdqqEtP5ZwjIxtD0AnIzB4VKZHBV5guO1QU+xc7ef42tK
+	 U0b7xA4yZrFmw2EPxkoTxb++rcXfk+MJojYFgHUed2ThHPSmJJ8Xo/jjx5cEBfxDD9
+	 rQZ7cjyEZUQw80Afo16Zl3WGGBBWlS/QqniEtypVGbb+K/kSVGaO3zo+f2Sd8VJ9dt
+	 pESMySoVPn3VQ==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id D995349360;
-	Thu, 12 Nov 2026 08:23:32 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id AA7E249355;
+	Thu, 12 Nov 2026 08:23:29 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 12 Nov 2026 08:23:33 +0000
-Subject: [PATCH v2 1/2] usb: typec: tcpm: Don't cut a pending state delay
- short on a re-queue
+Date: Thu, 12 Nov 2026 08:23:29 +0000
+Subject: [PATCH v2 1/2] pmdomain: rockchip: remove subdomain links before
+ the domains on error
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261112-tcpm-attach-reboot-v2-1-b4bc6ca83490@gmail.com>
-References: <20261112-tcpm-attach-reboot-v2-0-b4bc6ca83490@gmail.com>
-In-Reply-To: <20261112-tcpm-attach-reboot-v2-0-b4bc6ca83490@gmail.com>
-To: Badhri Jagan Sridharan <badhri@google.com>, 
- Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Guenter Roeck <linux@roeck-us.net>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+Message-Id: <20261112-pmdomain-rockchip-v2-1-5cd942a23df7@gmail.com>
+References: <20261112-pmdomain-rockchip-v2-0-5cd942a23df7@gmail.com>
+In-Reply-To: <20261112-pmdomain-rockchip-v2-0-5cd942a23df7@gmail.com>
+To: Ulf Hansson <ulfh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Kevin Hilman <khilman@linaro.org>, Caesar Wang <wxt@rock-chips.com>, 
+ Elaine Zhang <zhangqing@rock-chips.com>
+Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Yao Zi <me@ziyao.cc>, Igor Pecovnik <igor@armbian.com>, 
  Arun Iyengar <aiyengar1990@gmail.com>, stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794471812; l=2363;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794471809; l=4093;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=f9cETtbmuMeuYvGKqDaJesYJ7nf3lLCpDNSETJ6OO1Q=;
- b=8LeYYkVSV9H3DvqyT645JP9izzuqYaWIgQ1uDLbfjiBRX8POMf/uQ34dp9ygJq6VmUe61ARjI
- B8WrR2TZDkLClcHrFvxrxbeZrGee24mdnZzilLL+3t+VslFG/oqOok8
+ bh=HmcyW0DxnBVZSZC6Y5OzDTxCaMmgNoXvaW5puYHZHjI=;
+ b=0b42T8GqnJyvy8hetveu/oq6O8tsqKdECKifJLTziXUw4t270sGclByhcSTABlQkPpD9faKz2
+ Gx0FUsBgqlmAeBHvtYsN5WD0Ui2jogtMiHD8S1H/WBA4Tq3i1Et/K39
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -122,58 +124,101 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-tcpm_state_machine_work() applies port->delayed_state as soon as it
-runs, assuming it only runs when the state machine timer fired. The
-work can also run because it was queued for another reason while it was
-already running.
+When rockchip_pm_domain_probe() fails after some domains were
+registered, for example because a clock of a nested domain is not
+available yet and returns -EPROBE_DEFER, rockchip_pm_domain_cleanup()
+calls pm_genpd_remove() for every registered domain in domain id order.
 
-This happens at every port registration: tcpm_init() runs with the port
-lock held and calls tcpm_set_state() twice with no delay (default state,
-then PORT_RESET). The first call queues the work, which starts and
-blocks on the lock; the second call queues it again. The first run
-handles PORT_RESET and schedules PORT_RESET_WAIT_OFF after
-PD_T_ERROR_RECOVERY; the second run then applies it at once. On an
-Orange Pi 5 (FUSB302) the log shows the 100 ms ErrorRecovery taking
-6 us:
+pm_genpd_remove() refuses a domain that is still the parent of another
+domain and returns -EBUSY. The cleanup walks parents before their
+children in id order, and on RK3588 RKVDEC0/RKVDEC1 (ids 14 and 15) are
+also children of VDPU (id 21), so no ordering of the domain array lets
+every removal succeed. Each refused parent only gets the "state may be
+inconsistent" message, and on return devm frees its struct
+rockchip_pm_domain, the embedded generic_pm_domain included, while it
+is still linked on the global gpd_list. The next registration, the
+unused domain power off at late_initcall and the genpd debugfs files
+then walk freed memory.
 
-  pending state change PORT_RESET -> PORT_RESET_WAIT_OFF @ 100 ms
-  state change PORT_RESET -> PORT_RESET_WAIT_OFF [delayed 100 ms]
+Remove the parent/child links first, walking the power domain nodes
+depth first in the same way rockchip_pm_add_subdomain() added them, so
+that each child no longer has subdomains of its own when its link is
+removed. With no links left, and no provider or devices attached in the
+probe error path, pm_genpd_remove() succeeds for every domain before
+devm frees it. pm_genpd_remove_subdomain() also drops the parent's
+subdomain count, which removing the child with pm_genpd_remove() alone
+does not.
 
-so the "clean slate" that tcpm_init() asks for never happens.
-
-If the delay has not expired yet, re-arm the timer for the time left
-and return, as tcpm_send_queued_message() already does.
-
-Fixes: 3ed8e1c2ac99 ("usb: typec: tcpm: Migrate workqueue to RT priority for processing events")
+Fixes: 79d12b7a7f22 ("soc: rockchip: power-domain: use pm_genpd_remove in error cleanup")
 Cc: stable@vger.kernel.org
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- drivers/usb/typec/tcpm/tcpm.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ drivers/pmdomain/rockchip/pm-domains.c | 46 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
 
-diff --git a/drivers/usb/typec/tcpm/tcpm.c b/drivers/usb/typec/tcpm/tcpm.c
-index d721baef5210..0a19b7665555 100644
---- a/drivers/usb/typec/tcpm/tcpm.c
-+++ b/drivers/usb/typec/tcpm/tcpm.c
-@@ -6569,6 +6569,18 @@ static void tcpm_state_machine_work(struct kthread_work *work)
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 86b5074b0469..00c7e78f89b5 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -955,12 +955,58 @@ static void rockchip_pm_remove_one_domain(struct rockchip_pm_domain *pd)
+ 	/* devm will free our memory */
+ }
  
- 	/* If we were queued due to a delayed state change, update it now */
- 	if (port->delayed_state) {
-+		/*
-+		 * The work may have been queued again for another reason
-+		 * while it was running, for instance by tcpm_init() at port
-+		 * registration, which sets two states in a row with the
-+		 * port lock held. Do not cut a pending delay short; re-arm
-+		 * the timer for the time that is left.
-+		 */
-+		if (ktime_after(port->delayed_runtime, ktime_get())) {
-+			hrtimer_start(&port->state_machine_timer,
-+				      port->delayed_runtime, HRTIMER_MODE_ABS);
-+			goto done;
-+		}
- 		tcpm_log(port, "state change %s -> %s [delayed %ld ms]",
- 			 tcpm_states[port->state],
- 			 tcpm_states[port->delayed_state], port->delay_ms);
++static struct generic_pm_domain *
++rockchip_pm_node_to_genpd(struct rockchip_pmu *pmu, struct device_node *node)
++{
++	u32 id;
++
++	if (of_property_read_u32(node, "reg", &id) ||
++	    id >= pmu->genpd_data.num_domains)
++		return NULL;
++
++	return pmu->genpd_data.domains[id];
++}
++
++/*
++ * Undo the pm_genpd_add_subdomain() calls of rockchip_pm_add_subdomain().
++ * Links are only ever added between a DT node and its children, so walking
++ * the tree depth first and removing the links of the children before the
++ * link to their parent always finds the subdomain without subdomains of its
++ * own, as pm_genpd_remove_subdomain() requires. This also covers domains with
++ * more than one parent (RKVDEC0/RKVDEC1 on RK3588), which a walk in domain id
++ * or registration order does not.
++ */
++static void rockchip_pm_remove_subdomains(struct rockchip_pmu *pmu,
++					  struct device_node *parent)
++{
++	struct generic_pm_domain *parent_domain, *child_domain;
++
++	parent_domain = rockchip_pm_node_to_genpd(pmu, parent);
++
++	for_each_child_of_node_scoped(parent, np) {
++		rockchip_pm_remove_subdomains(pmu, np);
++
++		child_domain = rockchip_pm_node_to_genpd(pmu, np);
++		if (parent_domain && child_domain)
++			pm_genpd_remove_subdomain(parent_domain, child_domain);
++	}
++}
++
+ static void rockchip_pm_domain_cleanup(struct rockchip_pmu *pmu)
+ {
+ 	struct generic_pm_domain *genpd;
+ 	struct rockchip_pm_domain *pd;
+ 	int i;
+ 
++	/*
++	 * pm_genpd_remove() refuses a domain that still has subdomains, and
++	 * devm frees the domains on return whether or not they were removed,
++	 * which would leave freed memory on the global genpd list. Remove all
++	 * parent/child links first, so every domain can be removed.
++	 */
++	for_each_available_child_of_node_scoped(pmu->dev->of_node, np)
++		rockchip_pm_remove_subdomains(pmu, np);
++
+ 	for (i = 0; i < pmu->genpd_data.num_domains; i++) {
+ 		genpd = pmu->genpd_data.domains[i];
+ 		if (genpd) {
 
 -- 
 2.55.0
