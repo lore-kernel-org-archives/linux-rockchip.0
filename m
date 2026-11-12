@@ -2,69 +2,109 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9002A606B59D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:48:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A3973606A8A6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:55:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Okpvz/Qx;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=HTjyU8HA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=x18AD8pT;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=dv+oEpyB
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=41oZsD45eVSfi9dtQfgY/qHIWll0wa9+5N0D2DkBllE=; b=Okpvz/QxGNos8GzQ/AvEzVh0X4
-	mtupS1h/ETYg1tiPiVweN89hAW6EtZ4yBQOoyM5Yn03UKPbGK684DkaY94kNd0iYZanCxEy/S1hAm
-	K0FxikWdClemE6Rctvuy2VQLrpvkWeWBHQxwdnWwGLB6j/haO8tVW2Vi3QuF3QIhPhnr4MDvwf+Yy
-	i2R5Xo9GPPQ/TRBQct9F+H00FCecvxBs6rcp0wPXZeQRBY/46v+TJrAumws5r59GYxF8mXX80LdJl
-	dzW7DXcTV8deb9k174C+XqmSDpSRpPKVToOwKzHpkFuz0sMob/YArR/eGIatFekOF+1i8BU1Qhzj3
-	qu2HGsxQ==;
+	bh=ym0q0jWplgQoJlTDwOQwhd4AtZRx/gxI1LD0sSeox7s=; b=x18AD8pTiByB5mlv5+q5CHSjKI
+	9DLkppSyyLRZN/p3KNoMdEF7hJvpPXsfHOMt/OSCGxSwbBlCvUOidg8MdeO8UzJ71dA5xnTTTUzae
+	gOR5IUMlTqWQjOQYMnrUjEMXdEA8Go6kUtJeu+GubkxaQQ6VswIloEvGPez4gUpj9dvv+IUs9QpbU
+	+Q4H3IM+EN+ohJ7hKu+d+BozpzLOIPkPWqjMPPKxLc/UCDKGJ1kWXZOu/G53F1YCVWLbHylk/L7ve
+	2xS4cUUQMwkFEv6PW/kWNtQW4jWuF2r5iWTrdmTYqKfvqxa8nBTUn1ETAESPk0q6xUxSDbVWKdAjj
+	kSc8nfFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQU4-00000009EO4-1eNV;
-	Thu, 12 Nov 2026 08:48:40 +0000
-Received: from mail-m81151.netease.com ([47.88.81.151])
+	id 1xRQaM-00000009FNn-0nEd;
+	Thu, 12 Nov 2026 08:55:10 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQTn-00000009EI3-3ZK9;
-	Thu, 12 Nov 2026 08:48:37 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 546f2be92;
-	Thu, 12 Nov 2026 16:48:08 +0800 (GMT+08:00)
-Message-ID: <051621ab-a8b5-4120-afde-fbeeae48690d@rock-chips.com>
-Date: Thu, 12 Nov 2026 16:48:06 +0800
+	id 1xRQaA-00000009FIr-0e9z;
+	Thu, 12 Nov 2026 08:54:58 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8F4BB401AF;
+	Thu, 12 Nov 2026 08:54:57 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794473697;
+	b=1jMiWImKTb71EJAGeqPxSXJjuneNfPn+yAz4xJuNuB4IYwiiJNqGKII1nqINqt0Oc78x
+	 mJkMqLrYa2zAVRLfIJobATa3SpeqBoOTR1OAxjpeAaUYPDapVC0biooesv7WqabtvlhZ+
+	 X/Mo6HHIF6Wrk4soYjsepCad5/fvm/d+cXjOO7bzamBYSsAuJQSAeuMFBN5nVLHnb3SvJ
+	 Gy/NcGTyzmidgOkvlbxCPC954z8Y/Jm5oBGcP5wyQfheh7BJEE/UtwnEYxBYyZNfW7vZF
+	 VBnUplw0ZOErV1nKqcvngwJdC75OCjbFBg9Ppqn2WGVKJanfUHzMG2WxlcyQ+p7qx7A==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794473697;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=GAmODtzajJ/vJ0gUPo7wNiXWbv7xMaGq87L/wvHWZBA=;
+	b=BDRxuCpGDs2p2XP19locKxVyIA0ac/wnTKoH/BUSFqAWj3ZRVsUBGOmQvvsFq96sj9BO
+	 XB3WFq4EN97B2HfYOJd0GXLLZdF7KVFDbMOV7EG9uWkjhyXz5Kzi3O3dtBzpRmFxdlIf7
+	 3lwulH8z9BisBXVrqEdhjATsddAmoWYQ9iGMAjgiB+zH56tpHqh3OPoE+JPXY1xodh53M
+	 NbJOB3Ys/iPNjUX6nEqcWwzeS50rX1zwjA6lzWr5TqF2vTYppLNrKfc1QAccQ5mK7q+Yz
+	 8ONYxdbs3cn0Qdm//tsuLsmt7e67b0Sh0Jy1KEMgwhKbPKGLjLzMz4GHRUtJ6hKGUFQ==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 716BF1F00A0A;
+	Thu, 12 Nov 2026 08:54:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794473697;
+	bh=GAmODtzajJ/vJ0gUPo7wNiXWbv7xMaGq87L/wvHWZBA=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=dv+oEpyBu36hcaVZLgIjIUXVHVb63sxVL3l+JXdFIaJAAtfKQFusrFhGRWegSSTAs
+	 hUxXiMcs0bbfd8bcO3Waz7srQj1Dh7EsB241ibuni/cj2vYDOzgU3y8ERCfr6GNfiI
+	 uoS7LILQ2mBMXeiNfgLPT4zsrZiYhVgl9c9rf0cYqN6HNS1wjdz7a2WTZrK/OTRkH1
+	 PUE2Kq4DrDQBDNWX8EDtpdntevcPi1CHn803p45S478f8Q+/EWlK8tWX/e+TBhXoDM
+	 llismTpRAF1nQ6CByQOv7oklJuiG5+exGOtTcGEvWn52ka9EQNcYfLGP2ZF7a5u0F0
+	 NxBMZ9mBKDOfA==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id F30DF49401;
+	Thu, 12 Nov 2026 08:54:55 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Date: Thu, 12 Nov 2026 08:54:56 +0000
+Subject: [PATCH v2 2/6] media: verisilicon: Find the second MPEG-2 field
+ without top_field_first
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v18 0/7] usb: dwc3: introduce Rockchip glue driver
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Igor Paunovic <royalnet026@gmail.com>, linux-kernel@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org,
- kernel@collabora.com, Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>
-References: <20261021-b4-rockchip-dwc3-rockchip-glue-v18-0-60000d03fca2@collabora.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20261021-b4-rockchip-dwc3-rockchip-glue-v18-0-60000d03fca2@collabora.com>
-X-HM-Tid: 0aa1cef161e603a7kunm25f03da89714c0
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaSBofVkIeGUgfSEJJQx9KHVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=HTjyU8HAzlfGIH2zaWksvL0FatkZsBVvluGDZ0gXv7vdsLYvXtsI1AWIvGnpoKDX4/o3OOAfMNjPJk2bzP/cP7pzvx9KI8SL489WjcGeQL4HNW+4jNEWl43izC+LKg0zo4Ip/zGfA514bSOwoCB604D0QANS08DlCPVPFi8nZk4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=YW52iYa3PS22kVrKBhZRqo+7XMDGvxdxdBLom1iDW5U=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_004827_294825_D7B35FE9 
-X-CRM114-Status: GOOD (  12.38  )
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261112-hantro-codec-fixes-v2-2-f44424df585b@gmail.com>
+References: <20261112-hantro-codec-fixes-v2-0-f44424df585b@gmail.com>
+In-Reply-To: <20261112-hantro-codec-fixes-v2-0-f44424df585b@gmail.com>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Sebastian Fricke <sebastian.fricke@collabora.com>, 
+ Hans Verkuil <hverkuil@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Boris Brezillon <boris.brezillon@collabora.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Jeffy Chen <jeffy.chen@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Arun Iyengar <aiyengar1990@gmail.com>, stable@vger.kernel.org
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794473695; l=7659;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=I7zmqlMx+hMV7YYngac8E4NYGa6wp3wrWqDQDzG0598=;
+ b=8zWuHzBhK8C/RIbWo+La0lT/QW9BYfD5Jk2ivTx9bRyIyjvFON77S9mhy0xZx57bAzpPE11tn
+ wOIRdlYLSr7Af7x0m5LR+cdKTCrK3VvdKlL7fuxAA3hQruWIDC7OPjg
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,37 +114,189 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: aiyengar1990@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgU2ViYXN0aWFuLAoKT24gMTAvMjIvMjAyNiAyOjA1IEFNLCBTZWJhc3RpYW4gUmVpY2hlbCB3
-cm90ZToKPiBUaGUgcmVjZW50IFJvY2tjaGlwIHBsYXRmb3JtIGhhdmUgYSBjb21iaW5lZCBQSFks
-IHdoaWNoIGRvZXMgVVNCMyBhbmQKPiBEaXNwbGF5UG9ydCBhcyB3ZWxsIGFzIG11eGluZyB0aGUg
-bGluZXMgaW4gYXJiaXRyYXJ5IG9yZGVyLiBDaGFuZ2luZyBpdHMKPiBlbmFibGVkIGZ1bmN0aW9u
-YWxpdHkgcmVxdWlyZXMgYSBQSFkgcmVzZXQgYW5kIGFzIHRoZSBQSFkgcHJvdmlkZXMgYQo+IGNs
-b2NrIHRvIHRoZSBEV0MzIGNvbnRyb2xsZXIsIHRoaXMgY2FuIHJlc3VsdCBpbiBhbiBTRXJyb3Iu
-IEFwYXJ0IGZyb20KPiB0aGF0IHRoZSBQSFkgbWlnaHQgbm90IHN0YXJ0IHVwIGNvcnJlY3RseSB3
-aGVuIHRoZSBEV0MzIFBJUEUgaW50ZXJmYWNlCj4gaXMgcnVubmluZy4gVGhpcyBzZXJpZXMgcHJl
-cGFyZXMgYSBSb2NrY2hpcCBzcGVjaWZpYyBEV0MzIGdsdWUgZHJpdmVyIHRvCj4gaGVscCBvdXQg
-d2l0aCB0aGVzZSBwcm9ibGVtcy4gVG8gYmVjb21lIHVzZWZ1bCBtb3JlIHBhdGNoZXMgYXJlIG5l
-ZWRlZAo+IG9uIHRoZSBSb2NrY2hpcCBVU0JEUCBQSFkgc2lkZSwgd2hpY2ggYXJlIHNlbmQgc2Vw
-YXJhdGVseS4KPiAKPiBUaGlzIHdhcyBzcGxpdCBmcm9tIHRoZSBVU0JEUCBjbGVhbnVwIHNlcmll
-cy4gdjE3IGhhcyBhIGRlcGVuZGVuY3kgb24KPiB0aGUgcGF0Y2hlcyB0aGF0IGhhdmUgYmVlbiBt
-ZXJnZWQgdG8gcGh5J3MgZm9yLW5leHQgYnJhbmNoLiBUaGVyZSBhcmUKPiBzb21lIGFkZGl0aW9u
-YWwgUm9ja2NoaXAgVVNCRFAgcGh5IGZpeGVzLCB3aGljaCBkZXBlbmQgb24gdGhpcyBzZXJpZXMK
-PiAod2hpY2ggaXMgZWZmZWN0aXZlbHkgYWxzbyBhIGZpeCkuCj4gCgpJJ20gbm90IHN1cmUgd2hl
-dGhlciB0aGlzIGlzIHRoZSByaWdodCB0aGluZyB0byBkbywgYnV0IEkgdHJpZWQgYXBwbHlpbmcK
-YWxsIHRoZSB2MTggcGF0Y2hlcyBvbiB0b3Agb2YgdjE0IHBhdGNoMeKAk3BhdGNoMjcsIGFuZCB0
-ZXN0ZWQgVHlwZS1DIERQCm9uIHRoZSBSSzM1NzYgRVZCMSBib2FyZC4gQW5kIGl0IHNlZW1zIHRv
-IHdvcmsgZmluZS4KClRlc3RlZC1ieTogQ2hhb3lpIENoZW4gPGNoYW95aS5jaGVuQHJvY2stY2hp
-cHMuY29tPgoKLS0gCkJlc3QsIApDaGFveWkKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+From: Arun Iyengar <aiyengar1990@gmail.com>
+
+The second field of a field-coded P frame can predict from the first
+field of the same frame, which is already in the destination buffer. The
+G1 and VPU2 back-ends then point the reference of that parity at the
+current buffer, and both back-ends tell the first field from the second
+one with V4L2_MPEG2_PIC_FLAG_TOP_FIELD_FIRST: a top field is the first
+field if the flag is set, a bottom field if it is not.
+
+But top_field_first is always 0 in a field picture (ISO/IEC 13818-2,
+6.3.10: "In a field picture top_field_first shall have the value '0'").
+So the top field of every top-field-first frame is taken as a second
+field, and predicts from the not-yet-decoded bottom field of the buffer,
+while the bottom field is taken as a first field and loses its
+reference to the top field. The error grows over the GOP: the field
+picture conformance streams of ISO/IEC 13818-4 decoded at 6-25 dB
+against FFmpeg (tcela-8, tcela-9, tcela-10, and sony-ct1/2/4 once they
+switch to field pictures).
+
+The uAPI has no flag for this, but the second field is the one of
+opposite parity that follows the first with the same OUTPUT timestamp,
+the two fields being decoded into one CAPTURE buffer held with
+V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF. Track that in the context and use
+it in both back-ends. This also replaces the VPU2 back-end's test of
+V4L2_MPEG2_PIC_TOP_FIELD, a picture_structure value, against the flags.
+
+Fixes: ceaac6dc5b7a ("media: rockchip/vpu: Add support for MPEG-2 decoding on RK3288")
+Fixes: 879dee56a40c ("media: rockchip/vpu: Add MPEG2 decoding support to RK3399")
+Cc: stable@vger.kernel.org
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+---
+ .../platform/verisilicon/hantro_g1_mpeg2_dec.c     |  8 +++---
+ drivers/media/platform/verisilicon/hantro_hw.h     |  8 ++++++
+ drivers/media/platform/verisilicon/hantro_mpeg2.c  | 31 ++++++++++++++++++++++
+ .../verisilicon/rockchip_vpu2_hw_mpeg2_dec.c       |  8 +++---
+ 4 files changed, 47 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/media/platform/verisilicon/hantro_g1_mpeg2_dec.c b/drivers/media/platform/verisilicon/hantro_g1_mpeg2_dec.c
+index 6a942f4b8a2d..5f1ce21fa6e3 100644
+--- a/drivers/media/platform/verisilicon/hantro_g1_mpeg2_dec.c
++++ b/drivers/media/platform/verisilicon/hantro_g1_mpeg2_dec.c
+@@ -97,6 +97,9 @@ hantro_g1_mpeg2_dec_set_buffers(struct hantro_dev *vpu, struct hantro_ctx *ctx,
+ {
+ 	dma_addr_t forward_addr = 0, backward_addr = 0;
+ 	dma_addr_t current_addr, addr;
++	bool second_field;
++
++	second_field = hantro_mpeg2_dec_second_field(ctx, pic, src_buf->timestamp);
+ 
+ 	switch (pic->picture_coding_type) {
+ 	case V4L2_MPEG2_PIC_CODING_TYPE_B:
+@@ -126,10 +129,7 @@ hantro_g1_mpeg2_dec_set_buffers(struct hantro_dev *vpu, struct hantro_ctx *ctx,
+ 	/* Set forward ref frame (top/bottom field) */
+ 	if (pic->picture_structure == V4L2_MPEG2_PIC_FRAME ||
+ 	    pic->picture_coding_type == V4L2_MPEG2_PIC_CODING_TYPE_B ||
+-	    (pic->picture_structure == V4L2_MPEG2_PIC_TOP_FIELD &&
+-	     pic->flags & V4L2_MPEG2_PIC_FLAG_TOP_FIELD_FIRST) ||
+-	    (pic->picture_structure == V4L2_MPEG2_PIC_BOTTOM_FIELD &&
+-	     !(pic->flags & V4L2_MPEG2_PIC_FLAG_TOP_FIELD_FIRST))) {
++	    !second_field) {
+ 		vdpu_write_relaxed(vpu, forward_addr, G1_REG_REFER0_BASE);
+ 		vdpu_write_relaxed(vpu, forward_addr, G1_REG_REFER1_BASE);
+ 	} else if (pic->picture_structure == V4L2_MPEG2_PIC_TOP_FIELD) {
+diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
+index 13e573f1f19d..303e42b08c40 100644
+--- a/drivers/media/platform/verisilicon/hantro_hw.h
++++ b/drivers/media/platform/verisilicon/hantro_hw.h
+@@ -171,9 +171,14 @@ struct hantro_hevc_dec_hw_ctx {
+  * struct hantro_mpeg2_dec_hw_ctx
+  *
+  * @qtable:		Quantization table
++ * @field_ts:		OUTPUT timestamp of the last field picture decoded, if it
++ *			was the first field of a frame
++ * @field_structure:	picture_structure of that field, 0 if there is none
+  */
+ struct hantro_mpeg2_dec_hw_ctx {
+ 	struct hantro_aux_buf qtable;
++	u64 field_ts;
++	u8 field_structure;
+ };
+ 
+ /**
+@@ -567,6 +572,9 @@ int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx);
+ int rockchip_vpu2_mpeg2_dec_run(struct hantro_ctx *ctx);
+ void hantro_mpeg2_dec_copy_qtable(u8 *qtable,
+ 				  const struct v4l2_ctrl_mpeg2_quantisation *ctrl);
++bool hantro_mpeg2_dec_second_field(struct hantro_ctx *ctx,
++				   const struct v4l2_ctrl_mpeg2_picture *pic,
++				   u64 timestamp);
+ int hantro_mpeg2_dec_init(struct hantro_ctx *ctx);
+ void hantro_mpeg2_dec_exit(struct hantro_ctx *ctx);
+ 
+diff --git a/drivers/media/platform/verisilicon/hantro_mpeg2.c b/drivers/media/platform/verisilicon/hantro_mpeg2.c
+index 04e545eb0a83..e5d70c64d7a7 100644
+--- a/drivers/media/platform/verisilicon/hantro_mpeg2.c
++++ b/drivers/media/platform/verisilicon/hantro_mpeg2.c
+@@ -35,10 +35,41 @@ void hantro_mpeg2_dec_copy_qtable(u8 *qtable,
+ 	}
+ }
+ 
++/*
++ * Tell whether a field picture is the second field of its frame, which
++ * decides where its references are: the second field can predict from the
++ * first one, already decoded into the same buffer. top_field_first can't
++ * tell, it is always 0 in field pictures (ISO/IEC 13818-2, 6.3.10). The
++ * second field is the field of opposite parity decoded right after the
++ * first one, with the same OUTPUT timestamp.
++ */
++bool hantro_mpeg2_dec_second_field(struct hantro_ctx *ctx,
++				   const struct v4l2_ctrl_mpeg2_picture *pic,
++				   u64 timestamp)
++{
++	struct hantro_mpeg2_dec_hw_ctx *mpeg2 = &ctx->mpeg2_dec;
++	bool second;
++
++	if (pic->picture_structure == V4L2_MPEG2_PIC_FRAME) {
++		mpeg2->field_structure = 0;
++		return false;
++	}
++
++	second = mpeg2->field_structure &&
++		 mpeg2->field_structure != pic->picture_structure &&
++		 mpeg2->field_ts == timestamp;
++
++	mpeg2->field_structure = second ? 0 : pic->picture_structure;
++	mpeg2->field_ts = timestamp;
++
++	return second;
++}
++
+ int hantro_mpeg2_dec_init(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+ 
++	ctx->mpeg2_dec.field_structure = 0;
+ 	ctx->mpeg2_dec.qtable.size = ARRAY_SIZE(zigzag) * 4;
+ 	ctx->mpeg2_dec.qtable.cpu =
+ 		dma_alloc_coherent(vpu->dev,
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_mpeg2_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_mpeg2_dec.c
+index 50a3a3eeaa00..57907dd5ea9c 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_mpeg2_dec.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_mpeg2_dec.c
+@@ -100,6 +100,9 @@ rockchip_vpu2_mpeg2_dec_set_buffers(struct hantro_dev *vpu,
+ {
+ 	dma_addr_t forward_addr = 0, backward_addr = 0;
+ 	dma_addr_t current_addr, addr;
++	bool second_field;
++
++	second_field = hantro_mpeg2_dec_second_field(ctx, pic, src_buf->timestamp);
+ 
+ 	switch (pic->picture_coding_type) {
+ 	case V4L2_MPEG2_PIC_CODING_TYPE_B:
+@@ -129,10 +132,7 @@ rockchip_vpu2_mpeg2_dec_set_buffers(struct hantro_dev *vpu,
+ 	/* Set forward ref frame (top/bottom field) */
+ 	if (pic->picture_structure == V4L2_MPEG2_PIC_FRAME ||
+ 	    pic->picture_coding_type == V4L2_MPEG2_PIC_CODING_TYPE_B ||
+-	    (pic->picture_structure == V4L2_MPEG2_PIC_TOP_FIELD &&
+-	     pic->flags & V4L2_MPEG2_PIC_TOP_FIELD) ||
+-	    (pic->picture_structure == V4L2_MPEG2_PIC_BOTTOM_FIELD &&
+-	     !(pic->flags & V4L2_MPEG2_PIC_TOP_FIELD))) {
++	    !second_field) {
+ 		vdpu_write_relaxed(vpu, forward_addr, VDPU_REG_REFER0_BASE);
+ 		vdpu_write_relaxed(vpu, forward_addr, VDPU_REG_REFER1_BASE);
+ 	} else if (pic->picture_structure == V4L2_MPEG2_PIC_TOP_FIELD) {
+
+-- 
+2.55.0
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
