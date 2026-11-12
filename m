@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 205B3606C833
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:33:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 31D9F60734A5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:33:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=H9OyrF3G;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=hYCVeqap
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=iTmkK/kZ;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=HKkoO7el
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Nmraj+958N6/n+Gej3JHtlrKvNkmhBv6rk3olxwo9l0=; b=H9OyrF3G++3Mua2lMiI0pVni+w
-	aQ5tty53uFhw4Ov2yJDKobfsaS/bqvc2bLEUnuvjMTo9ai736LDttk0z0+mhT2s+1zdwA2+0ZZTcj
-	9sJ6o7m8vBrZYsA3oRb8W8XtE4yTYv8NmdOavUHWI1+3/hFnC8zkXXCbH0PRep6VomJ0gw5zz9oaq
-	F/8gmQ/OMJqU4ZgTdRmav5XrZX+fLhJ+WOEO6lYTSjzl2S7gGHU2H/76O2iv8Sx5UXwWb19tYGGVT
-	QXfWnpQlswXuokCGSN6xoRddMneJf3M7oxFX80Kd/re1N8N66a5LXynCbtoBQhnrzMvEL3Tk7EDqL
-	iTTaKjTg==;
+	bh=k3+X1KUAjalQBE8fnY7UQY0p9o+nvEW8/SSmLXxGOa4=; b=iTmkK/kZcQsNCUsPuFHnqaPgXa
+	TwNdjjCFhrfPM9eaAl+IdNZn6Jr4S3CQkdfqanSTtopyW6LWKSIiKSqt8q4df8ItqjSfqyPf6V7GY
+	6hXtsZiuvgZlgS9EfpRv+f1GwlsSpWtLid+Hll4UOvcOKC83OXeiRvg+Snf1JzX1GNuQfH61KbMPe
+	gpD1XW6sJQiIhjbm45x+qwGON0LvvTE8sHYKV1WsesOMYnf1sZ3q0AzOVc2sFIJP2SeZH5UqeOCZX
+	lEXBabFFRHu7npzwORyKWiOq8gbhjqvoq6XIRNlPvAzmH0WDySqTe/G+iRDHzYwf5okNh/NMiV6MH
+	SlxnN3RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQEb-000000098DC-3aUK;
-	Thu, 12 Nov 2026 08:32:45 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xRQFP-000000098Zh-07jx;
+	Thu, 12 Nov 2026 08:33:31 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQDN-000000097Zj-0g1n;
-	Thu, 12 Nov 2026 08:31:34 +0000
+	id 1xRQDO-000000097Zv-404t;
+	Thu, 12 Nov 2026 08:31:30 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E5DC6459D1;
-	Thu, 12 Nov 2026 08:31:24 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B4F3E4790E;
+	Thu, 12 Nov 2026 08:31:26 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794472284;
-	b=K2XqMwKdRb1cDFWMNnKsXIK5kWOSbY9fQKeZw8HU//fOeuvxcuJel/e6CuXPt1jK9fUY
-	 hTdCSVQc2nS34uUQFqtPSvVXF6OHWVLbeekIVu8N+JUv7sBow0rarc40IhmI61+shX45p
-	 gZVJ3kNDYhFLhxGjUNiDes8/vU+dGSHLpy9Xi2FRYb2vvlwv0BkKYNXaJqrjplD7JMqV/
-	 cvJqlH8YJs2N73fwi/aULZTHfiHY3Sh1cCTQ5eqa+lXQKnduu0rjMUnbvJ07+T+lOGTUP
-	 BlT5Jn5LqWA6daGv1PfM7B5Tfy9ZVi1vzuhIwYKhLsU/plgWBdFxA/NeIGMLmpR2ABg==
+	t=1794472286;
+	b=sykIP7xz/xF4w91CA3j7wofCv9cPGilY3JxYY79C6vZNI7mYkh+u5TDHY4qIMrJhLwfz
+	 YGyG2TR6EhIFmBLpzXOsscwyGUE1z3RKJknmkfhUD/emEqD0psCxt6g+kD3BC50WlLjbY
+	 E242StBUfzvzHsmwjdZPzueL7b2oXpVbuvTMMC91UXePg3OX6RyxcNPucB+0f/zPegg9c
+	 Hsix7Xh62gogfB5f/VI5kAqfhYAIB9MvmAfyjdLpNb1HfRWquz+j/b7dVnQ0ivn2dPEfM
+	 bwsGlmGHlnJvq+0YQUjwWNNGaVfBZC/mDGKCy/NTd9nJTn5DpMlDj8u1TwpJc72ozcQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794472284;
+	c=relaxed/relaxed; t=1794472286;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=fOPM3hh4LBz83e4Z7YTPZTeWTsOtBzW6zMBgimSztBI=;
-	b=20r3iKn0C9qpG5zhyl50RdWF17DF7aGm9rwME2oEv6dwoosWe25iQuTleZPoOIauklLO
-	 /W8EgTWyayTrsXBeR9YTFN+eUT9Bq7+LwhVTtaXIvdNqtQcXm0UvZwJl5nGg/g7jK+SU5
-	 rRARlZeN6gNxAvfyuxtVIJCqQaFnNeOLIvGxIca1mXHNOP6QliHErfpOPibfjLA2/7G2+
-	 3hVsWL/bg9LD3kE2efyMwKCRcBKwT6Lw9/8cVe9DrXF83ZKLWSgvJe1s/FhABhl1bMrIQ
-	 DKjg+HAkUySz9dlW7T2hA54nSDelIIKiO2lIeuRwJCjGU322wZ9AHOdyzTEUu3oS2OQ==
+	bh=T8BMjQzOIvYi6coC6cfEQ/w65JHYug0nfsYJkwPuKxI=;
+	b=xVbxy98W1K035EfCJ79qa1AY1N5kIcCbWGYiooHUQ/q44kS69UE/VEKfAch8+Jy+aL49
+	 kg6T8bqH1wd2UKwB15Fd3IrAJ/Rd9tqq51m7HbCy0XwujrvrDFMhzTOHP7UHfPhma00gn
+	 NrpemFZ335pzIOOzEigVqV4nazTvWG6QBF/7PeR5FHjVXDtwi1TUiM+/5utCn0V3zm1/I
+	 XkooTBp4r1lKWaofRXq7ceDyMJfATuz/SsbGzhSGM0RkIgGhjS0uH4nhqdx1ZkXSdf9/i
+	 1XtorptmPudhuJ3xCMQFIVjcy8vMb5C6bEWfwJEYljNU1VuQOfqzL83OOQ1itFcMkrg==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 0E7101F00A07;
-	Thu, 12 Nov 2026 08:31:24 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 5F1F01F00A0C;
+	Thu, 12 Nov 2026 08:31:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794472284;
-	bh=fOPM3hh4LBz83e4Z7YTPZTeWTsOtBzW6zMBgimSztBI=;
+	s=k20260515; t=1794472286;
+	bh=T8BMjQzOIvYi6coC6cfEQ/w65JHYug0nfsYJkwPuKxI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=hYCVeqaputOPHq1bAedt4CpHmKQlWY2iN0yj1cqPMNQinvkGeYPmzuG2rzRhiVACu
-	 DdT6J6PioBzvyBeqJZtwZ8ecGXWV0vsgP4vSMEtk+ILiEm4eD7ETr2ar4mXZ8tpRWf
-	 3ARFw2J1k7OxP7BtQMLSNIGMt0lMmV7tQBsfJCg4sdfnK7LNpxWCrSrAEPGljQJm9J
-	 s7zWJcapt/kBZnYmLTQxa9+JsJcjRhiuop5ugoMCzW1i34STx3VlIhmvp5agnhyU1j
-	 z8BXoSxO2s9Wr28VIAoRZHdikSgDniPMJEewPRew5TJ5E87dPMDwv4bXAXFl9XJwae
-	 H4ikhmnB5KA+g==
+	b=HKkoO7elsB94ZGQCYRjco3GYvB1q65UQs/Rl1ywIB9mVO4XFejFJPYhp3qjJ1uB1l
+	 YRFAch1cH31SrWK/kuYsZ2Ti7LguoAEmW8bR6PrddBYZGIazXw+KIoHiLTeKLrmgHW
+	 y0ln7TwgIWL/1oL22f00NVAyYiy6PyaoYYigtGEJg7G6z7xzwxeLxAHJ0W52xvm8xh
+	 V15U2J2ddU2mQwE6WimnmCNwuKKF0C3dMz0yYlrYlzmBUFVN0qkic6um7QCSxg0mcL
+	 lHx2BL1Nkbk/xEfUHGUVz8SXBIE2mUBHtmguRIpWaB7JkVh486Bl2In0MBPn2IfMce
+	 2KX08+9sHde3A==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 90CE549385;
+	by lkml.kernel.org (Postfix) with ESMTP id F0BFA493A6;
 	Thu, 12 Nov 2026 08:31:23 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 12 Nov 2026 08:31:24 +0000
-Subject: [PATCH v2 2/7] media: verisilicon: Enforce a minimum CAPTURE
- sizeimage for the encoder
+Date: Thu, 12 Nov 2026 08:31:29 +0000
+Subject: [PATCH v2 7/7] media: verisilicon: rockchip: Limit the JPEG
+ encoder to 8176x8176
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261112-hantro-jpeg-enc-fixes-v2-2-de03e643c75d@gmail.com>
+Message-Id: <20261112-hantro-jpeg-enc-fixes-v2-7-de03e643c75d@gmail.com>
 References: <20261112-hantro-jpeg-enc-fixes-v2-0-de03e643c75d@gmail.com>
 In-Reply-To: <20261112-hantro-jpeg-enc-fixes-v2-0-de03e643c75d@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
@@ -95,11 +95,11 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  Sergei Khomenkov <shomenkow@gmail.com>, 
  Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472282; l=2439;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794472283; l=2124;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=YQ5ecCRUVeVgOkI6N/CRbGwzdtVVxR9e29iInCuRPn8=;
- b=DkBGBOuCHyV4Q9kcGGxhfFctCWJWujliWLY1tlsvqCTAWl/NgbBA4xFiJNhh42o61ZSQZb2IM
- ddR4yNNre0BDrCvUPL2CmBJzW3PAQcLJ96AuYR7L/kpWKTsfwggoCTm
+ bh=YcQepcs/kiqGO0VYJKSScKTM3/q57290AfxfFBFuGJE=;
+ b=4+pgFAUagU+KX+Vx6sSRS8NEXGm0nyaHI5g/Q8ItH258bV5gY+qzCZoiXColwnKG9bJZ5b+Fj
+ WOVflPpuviJBdv73Rij/K3V/U/S4YTCb9BoIHvdyNlyiUjwPjUye+YA
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -128,62 +128,58 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-For coded formats hantro_try_fmt() only computes sizeimage when the
-application passes 0, and otherwise accepts any value. On the encoder
-that lets the CAPTURE buffers be far too small for the selected
-resolution.
+The Rockchip JPEG encoders advertise frame sizes up to 8192x8192, but
+both register layouts take the picture size in 9-bit macroblock counts:
 
-This is easy to hit: "v4l2-ctl --set-fmt-video=width=1920,height=1080,
-pixelformat=JPEG" does G_FMT, modifies the size and calls S_FMT, so it
-passes back the 6768 byte sizeimage of the 96x32 default format. The
-driver accepts it for 1920x1088, the hardware runs out of stream buffer
-on every frame and the encoder only produces empty buffers.
+ - VEPU2 (RK3399, RK3568, PX30, RK3588 VEPU121): enc_width is bits 16:8
+   and enc_height bits 28:20 of the encoder start register.
+   rockchip_vpu2_jpeg_enc_run() masks the counts with 0x1ff, so an 8192
+   pixel (512 macroblock) dimension is programmed as 0 macroblocks.
+   Setting the bit above each field on an RK3588 VEPU121 did not give a
+   512 macroblock picture either, so the fields really are 9 bits wide.
+ - H1 (RK3066, RK3288): the height count starts at bit 10 and the width
+   count at bit 19, so a 512 macroblock height runs into the width field.
 
-The stateful encoder specification lets the encoder adjust sizeimage to
-match hardware requirements. For the encoder, clamp the requested
-sizeimage up to the size already used as the default, while still
-allowing applications to ask for larger buffers. The decoder behaviour
-is unchanged.
+Limit the shared format table to 511 macroblocks, 8176 pixels, so
+userspace gets the largest size the hardware can encode instead of a
+corrupt or timed out frame.
 
-Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- drivers/media/platform/verisilicon/hantro_v4l2.c | 17 ++++++++++++++---
- 1 file changed, 14 insertions(+), 3 deletions(-)
+ drivers/media/platform/verisilicon/rockchip_vpu_hw.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index d033fe0ecef6..c4e36a79eecc 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -386,14 +386,25 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
- 			pix_mp->plane_fmt[0].sizeimage +=
- 				hantro_av1_mv_size(pix_mp->width,
- 						   pix_mp->height);
--	} else if (!pix_mp->plane_fmt[0].sizeimage) {
-+	} else {
-+		u32 max_size = fmt->header_size +
-+			pix_mp->width * pix_mp->height * fmt->max_depth;
-+		u32 *sizeimage = &pix_mp->plane_fmt[0].sizeimage;
-+
- 		/*
- 		 * For coded formats the application can specify
- 		 * sizeimage. If the application passes a zero sizeimage,
- 		 * let's default to the maximum frame size.
-+		 *
-+		 * On the encoder, a buffer that is too small for the
-+		 * current resolution only gives failed frames, so never
-+		 * let the application go below that default. Larger
-+		 * values are kept.
- 		 */
--		pix_mp->plane_fmt[0].sizeimage = fmt->header_size +
--			pix_mp->width * pix_mp->height * fmt->max_depth;
-+		if (ctx->is_encoder)
-+			*sizeimage = max(*sizeimage, max_size);
-+		else if (!*sizeimage)
-+			*sizeimage = max_size;
- 	}
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+index 02673be9878e..f8079f96c398 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+@@ -20,6 +20,13 @@
  
- 	return 0;
+ #define ROCKCHIP_VPU981_MIN_SIZE 64
+ 
++/*
++ * The H1 and VEPU2 JPEG encoders take the picture size in macroblocks in
++ * 9-bit register fields, so 511 macroblocks (8176 pixels) is the largest
++ * width and height they can encode.
++ */
++#define ROCKCHIP_VPU_JPEG_ENC_MAX_SIZE (511 * MB_DIM)
++
+ /*
+  * Supported formats.
+  */
+@@ -52,10 +59,10 @@ static const struct hantro_fmt rockchip_vpu_enc_fmts[] = {
+ 		.header_size = JPEG_HEADER_SIZE,
+ 		.frmsize = {
+ 			.min_width = 96,
+-			.max_width = 8192,
++			.max_width = ROCKCHIP_VPU_JPEG_ENC_MAX_SIZE,
+ 			.step_width = MB_DIM,
+ 			.min_height = 32,
+-			.max_height = 8192,
++			.max_height = ROCKCHIP_VPU_JPEG_ENC_MAX_SIZE,
+ 			.step_height = MB_DIM,
+ 		},
+ 	},
 
 -- 
 2.55.0
