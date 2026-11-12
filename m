@@ -2,63 +2,65 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 524DC606A220
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 17:41:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F2474606A33B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 17:42:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0qBZvUHO;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=IsLbuBBM
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qZyP3ZmI;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Mjj/CXab
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=e8i4TGj9+ph9cRbWY+ctiEopsSowW8SfnPgFMj5Dp+A=; b=0qBZvUHOF2WaHUflf5NTti/v7W
-	KWhPK/HZobuCmJ9sRJwtGKJo862wtI84A71iby+Q0XerFKri21vS7aS0A184M9oCKZS4C2MNoeYMB
-	9lG06pJmIOKlcopNWJUdOJNErsjzSRevz3nJqJyyTet4ZuMzZt3aiIqQGc3ytGOvSC00/Ysu4xfzP
-	90+W6TzKRpwrMmp8oyC3kR0TFlqDyijppbHY+Hxqlq9NolgzzwQtXW7NqROiNoTaHkDMVfqSAiioW
-	HUePqk7MylP0LN/q3DQV0PmvTElVnfbHmrorWDt52pp9s4mVYUH3XdfZGmOSSazloaEyC4cAfw52M
-	CxotonnQ==;
+	bh=afvSLC2RMnfZfHMet2N+BQ6JTFqN2zkwp5wtDh60DDw=; b=qZyP3ZmIO22WlvSWqQ7P9cJJr/
+	6Tq7TtH/9dzgXJTO4arT35h/9GPqE90Iz2V3vRqq2//piPfXHhX+R2sgo4Y5PzTcSIGU9bSjoRYDb
+	PcIryWEmhFAhPkkh5C3cQnXHdg6FVRAcXWTPeOJjfN0uQbWpY4k5SMzw2QQ+HnEGly0Qx8gIuyach
+	82L1zU3Hm/m6mEhExi0cWZO5pLDJk55n8bbjlTPOj10bwp89r3jmKpmc0/8uW9dXHJyAW01+bHAQl
+	v623jw9ppcWOtRmP0gxG9idiUyZ2e/wS/lBEfUSmgd8uZTOxFzRsQZVZPFUqtagvJN+T7e2HVibjr
+	8tVDpgdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRYn5-0000000AmhF-2wtY;
-	Thu, 12 Nov 2026 17:40:51 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xRYoR-0000000An0H-28lw;
+	Thu, 12 Nov 2026 17:42:15 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRYmi-0000000Ambs-11MD;
-	Thu, 12 Nov 2026 17:40:28 +0000
+	id 1xRYoG-0000000AmyT-2GQ0
+	for linux-rockchip@lists.infradead.org;
+	Thu, 12 Nov 2026 17:42:09 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id ACF796237D;
-	Thu, 12 Nov 2026 17:40:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8EE2D1F000C4;
-	Thu, 12 Nov 2026 17:40:26 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1A8234086A;
+	Thu, 12 Nov 2026 17:42:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EED2A1F000C5;
+	Thu, 12 Nov 2026 17:42:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794505227;
-	bh=trto5Eq27UU3dCClttunJSNZcea48dqgIyqJACy3Yh4=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date;
-	b=IsLbuBBMQPojG5WcDrbDLgdx+I/5Jj+Edv7SQlc6tZdHJDYJcQvQlva+jFn4XfHu0
-	 IKIPgSbW2VDNjKwhTCbFptAyGUp5q9po5UWfF/pI9Af4AXO7FTFx8gM2Bih/o0aqFv
-	 yrYEh3PPMchsU1Wy9l/5rXkgegLYgeGybZ+yhaEfEEdM1POu+YLGqf+yOvj8KKLv9U
-	 i4LUtDlD4PnfxHlCt83TlFxwj3tcdSZf5jyJfaLtFFagT+n/TB7jSyW0Pi960DXTPJ
-	 ShrnPawduQrwb5ANFcBgEmU3yFLnNX2hMzzWB+QqW4wOyBf/z7MLMSXPhqvg8gcvd6
-	 N3OkfMeBn+dzg==
-From: Thomas Gleixner <tglx@kernel.org>
-To: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>,
- akpm@linux-foundation.org, rafael@kernel.org, peterz@infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>, "moderated list:ARM/Rockchip SoC
- support" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC
- support" <linux-rockchip@lists.infradead.org>, "open list:CPU HOTPLUG"
- <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH 1/2] smpboot: Allow restricting per-CPU threads to a CPU
- mask
-In-Reply-To: <af37c4e7811a86adafb2064e7cf4aa4f5090ab4b.1793660202.git.daniel.lezcano@oss.qualcomm.com>
-References: <cover.1793660202.git.daniel.lezcano@oss.qualcomm.com>
- <af37c4e7811a86adafb2064e7cf4aa4f5090ab4b.1793660202.git.daniel.lezcano@oss.qualcomm.com>
-Date: Thu, 12 Nov 2026 18:40:23 +0100
-Message-ID: <87zeverlrs.ffs@fw13>
+	s=k20260515; t=1794505324;
+	bh=J59odrFLjjANLwNFolGOP3Zia626TnXoqhdFI5QxRqY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Mjj/CXabPYjuvMnmr9l3z/qKw+asC7/DPMmIIb4xBArs+BJuJBVg2Ne86h9OFXpEo
+	 T+ZDF0ac5EWu3tLKl/nD3cSX+NpBAKeCZaSTrO+1b3iA46E6ubrgikBEFXy6Shm4r1
+	 z5NbnBKQ3MYuJUo5ArVhG5UKajsWYaPsvVuI+JPGtVE4LWzqRf7VhUJq2kdTwrGRTp
+	 7PNOB/EX+Tf1/krteAcmzHXRw6u4/RKyewwUhTngPhfFYKmQZkfLQEtNysJUe8pJ8T
+	 4HAqINaHARWIWQ4OEVrjixRRxnIabFiWiVhCaQALhACgs58xLLsAAp9exNsW9ey0aL
+	 noFVZCAe/kGkA==
+Date: Thu, 12 Nov 2026 09:42:03 -0800
+From: Kees Cook <kees@kernel.org>
+To: Mariia Nikitash <nikitash.mariiaw@gmail.com>
+Cc: nicolas.dufresne@collabora.com, benjamin.gaignard@collabora.com,
+	p.zabel@pengutronix.de, mchehab@kernel.org,
+	hverkuil+cisco@kernel.org, linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-hardening@vger.kernel.org, justinstitt@google.com,
+	morbo@google.com, david.laight.linux@gmail.com
+Subject: Re: [PATCH v2] media: verisilicon: Replace strlcat() with scnprintf()
+Message-ID: <202611120937.C289DA9C4D@keescook>
+References: <20261105084518.386234-1-nikitash.mariiaw@gmail.com>
+ <20261111032446.29803-1-nikitash.mariiaw@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20261111032446.29803-1-nikitash.mariiaw@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,62 +73,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Nov 03 2026 at 00:09, Daniel Lezcano wrote:
-> smpboot_register_percpu_thread() creates a thread for every online CPU
-> and registers the descriptor for subsequent CPU hotplug operations.
-> There is currently no way to restrict these threads to a subset of
-> CPUs, even when the user only needs work performed on that subset.
->
-> For example, an idle injection device targets a specific CPU mask.
-> Creating threads outside that mask consumes resources unnecessarily.
-> Supporting multiple such devices also requires each descriptor to
-> manage only the threads associated with its own CPUs.
->
-> Add an optional CPU mask to struct smp_hotplug_thread and apply it
-> throughout the thread lifecycle. Registration creates threads only for
-> online CPUs in the mask. CPU bring-up creates threads for selected
-> CPUs that were offline at registration, while parking and unparking
-> are restricted to the same mask.
->
-> Apply the restriction to thread destruction as well, both during
-> unregistration and registration failure cleanup. This is necessary
-> when descriptors with disjoint masks share the same per-CPU task
-> storage: tearing down one descriptor must not stop or clear threads
-> owned by another descriptor.
->
-> The caller must keep the mask valid and unchanged until the descriptor
-> is unregistered. Callers sharing per-CPU task storage must ensure their
-> masks do not overlap and serialize ownership changes themselves.
+On Tue, Nov 10, 2026 at 07:24:46PM -0800, Mariia Nikitash wrote:
+> In preparation for removing the deprecated strlcat() API [1], replace the
+> strscpy() and strlcat() calls in hantro_add_func() with a single
+> scnprintf() call.
+> 
+> This preserves the resulting string, including NUL termination
+> and truncation behavior.
+> 
+> Link: https://github.com/KSPP/linux/issues/370 [1]
+> Signed-off-by: Mariia Nikitash <nikitash.mariiaw@gmail.com>
+> ---
+> Changes in v2:
+> - Replace seq_buf with a single scnprintf() call, as suggested
+>   by Hans Verkuil.
 
-This really wants a built-in check which prevents overlapping
-registrations for the same thread storage. It's easy enough to do:
+Reviewed-by: Kees Cook <kees@kernel.org>
 
-smpboot_register_percpu_thread()
+I think the Subject prefix is fine, it matches the prior poking of this
+area:
 
-	if (!pt->cpumask)
-		pt->cpu_mask = cpu_possible_mask;
+b66215e7b780 ("media: verisilicon: replace snprintf with strscpy+strlcat")
 
-	guard(cpus_read_lock)();
-        guard(mutex)(&smpboot_threads_lock);
-        list_for_each_entry(ht, &hotplug_threads, list) {
-		if (ht->store != pt->store)
-                	continue;
-                if (WARN_ON_ONCE(cpumask_intersects(ht->cpumask, pt->cpumask)))
-                	return -EBUSY;
-        }
-                
-Hmm?
+For vfd->name,
 
-Thanks,
+	struct video_device {
+		...
+		        char name[64];
 
-        tglx
+Does this need to be raised?
+
+Because match->compatible is quite large:
+
+struct of_device_id {
+...
+        char    compatible[128];
+
+The real question remains: how should truncation of vfd->name (by
+anything that constructs it) be handled?
+
+-Kees
+
+> 
+>  drivers/media/platform/verisilicon/hantro_drv.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+> index 26e5d5547466..d8854ceb4fed 100644
+> --- a/drivers/media/platform/verisilicon/hantro_drv.c
+> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
+> @@ -902,9 +902,8 @@ static int hantro_add_func(struct hantro_dev *vpu, unsigned int funcid)
+>  	vfd->vfl_dir = VFL_DIR_M2M;
+>  	vfd->device_caps = V4L2_CAP_STREAMING | V4L2_CAP_VIDEO_M2M_MPLANE;
+>  	vfd->ioctl_ops = &hantro_ioctl_ops;
+> -	strscpy(vfd->name, match->compatible, sizeof(vfd->name));
+> -	strlcat(vfd->name, funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ?
+> -		"-enc" : "-dec", sizeof(vfd->name));
+> +	scnprintf(vfd->name, sizeof(vfd->name), "%s%s", match->compatible,
+> +		  funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ? "-enc" : "-dec");
+>  
+>  	if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER) {
+>  		vpu->encoder = func;
+> -- 
+> 2.43.0
+> 
+
+-- 
+Kees Cook
 
 _______________________________________________
 Linux-rockchip mailing list
