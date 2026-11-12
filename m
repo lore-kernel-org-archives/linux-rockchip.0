@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 49C3F606A31C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:56:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F164606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 08:56:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=v+KTrUCR;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=CysUp71n
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=yWSFIxm/;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=nbnrx6CT
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=m8kuWQ2U2kBQg/5ZsxqN/Pp1Iwq/o3gybScAcTsWUxE=; b=v+KTrUCR1iO/AWUCpSqBJVf5WV
-	Oq+oCuxbZguHlV7E8QQ8y+Th9Lsg6wZ2SUVnOcTJ+iItjViJ6IDyLCbJDLB+rDtoJLk+pNS5ceizK
-	hiOlVtEEMylJA2K7LvX4iwvqZvU593LBh+5IGss/qwAB4WvW1EE54BjYg2HCnDnqxIA0dludHpXok
-	x8kW3Wn7tvPJjz2gvAGbBOyATKCeQ66wWuyFVvx6HrgJDv3rKCsIyMzb7RCARYW4cRd6OkIWRRMwe
-	HFyOMV7w5c3eJ6MZ2inYfXCV/Dky4T54feFVXbtalQy2pNP69bveh/GJeRJ13w5XDaWNCummx2zJF
-	78QEURoA==;
+	bh=oGug+c5w2ztdg8/piaLlUoSgKTrHL+R1eZUT456k1Us=; b=yWSFIxm/3AHwG/vBwIy2vyF2G9
+	GpqJgmm65ZINcJH7EOneTpZi80j3UpwTSOk1M6geav1OCn5aI4V1jFe25W9el4VZEriFwpfKzBdKs
+	vNtNZ+hVakSWHuA4fi4zLon9SxMM4msvYuLEtLvtqquewB5wUaSIZbPcsyZHH8JepZw85mg19BWwK
+	Q/TmQrpyEQGwfF5TmdToOglGl/Yvfuhb51kFcsf9AfvcIaeaPIy18gG2yS3v1DFZvI/hJd92BXFNc
+	g6usTXfQToQjxO5E+LP4sPTNaanDAP8O8iedpvyNdkEjXOZKm6M0ULl0ySclpYQoZmk/QLEUnuJHP
+	uBIvUTLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQb5-00000009FiH-01Ds;
-	Thu, 12 Nov 2026 08:55:55 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xRQbJ-00000009Foz-2K1H;
+	Thu, 12 Nov 2026 08:56:09 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQaA-00000009FJ3-3c2D;
+	id 1xRQaB-00000009FJ7-1pPH;
 	Thu, 12 Nov 2026 08:55:01 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5EE20476BB;
-	Thu, 12 Nov 2026 08:54:58 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 358024796E;
+	Thu, 12 Nov 2026 08:54:59 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794473698;
-	b=V7eCl9BpGOaVSsEELOA3D23mt1ALcuYSVOAXlwaBu4kBtYg+Zd20xwbpoEEDH5ARMkZX
-	 HRoiWc9Vg5ZGZmDPWugqLu8AYznv9xldNj4qEjLcInf9e/0w+JH+2l9nB2GxzpRHgYA0F
-	 NeM7rrrJlzgiuXM8aMk5rULnxJgDpU1fxeiI2V45vyFuqfgB4Io73KXhPjGby7+oQXzYq
-	 p3b5SjowvXyUDWsVlNkx8pBQsOe3fDHsUVXTDDNm7WI0aAEPXLzcay1TXsBtmbBd7MkwM
-	 9Gzx1DIpkdZjCCprh7SEGJF4n8B1vyUqJQaChzmPoNctsZhS9lo2FgMT/2ApMOevnfA==
+	t=1794473699;
+	b=xb/7LUbDP5s0StwdpBo5eMEng1SidoGDh5qQHD4OVNSlMn31dHyLIG53eZRem/S3lYaO
+	 E+mqSIV+GVYzJJ5YXoO5sx2KFtuAqHtXyxbNPYkQ1Riisz7kQ7CVsGBimLEZmlZamW8KK
+	 Gffsk1FZpRnYXCAOWw7GeARzrmWFI7GPONFEes1iICm1uktW9zS5pBxlhru+tUFZxuoTQ
+	 NnpTS4F6910/Q/4vrjzZ4lx5q9oUNiwq5Sdl4wz95Zs6JvHQVMU4S8Id4loRQtQbbJbuY
+	 UdpDTDPReEk6R+pqbLrjvWxWmpAf5mu8VlINVDOL8VJ3hjYMHbGQdj2C7Kz60L1TmSg==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794473698;
+	c=relaxed/relaxed; t=1794473699;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=4i3GS29HPtypyjBy6AOepteHi17VRcJiMUzTuDJd0IQ=;
-	b=ceM+G+QRsBGpV0cLSoXRpNS/Kx2/WY3tf6+Exf7Ek7s3ZC526Qf7wWgOObuwi6Wwjk6i
-	 XBnrrLtvxllH0dQf5+8uzef+dp4oGXcH8vKZhcHo25VwpHoNixktUfNZQb3HW1NsN/hK9
-	 okLHy5wlgFEvSbc4k2y29nFD1V2FNZyBZmLFhzuRmb5kKJBR1xhxVxIPDlGyVjCPZWIF4
-	 oqFxJpjmVq52BIEhxRYgQVsyoLndK0kPlM5vWbGaExF+P9ntb6AM3iw8I46vObMgIGt29
-	 o2pfQHsg3zDB2Z8eOlu/mpbfQM2hDgLz+mfFXdzkF4PQGA4hQtokFaX3A2CKHpeULvg==
+	bh=WECNd7JSglyenV0IG4TXcEc5kXGA7Avlj46c3tWdFVk=;
+	b=Z4c1zxpyRneG8dmkLKsX6IcxbeyvZdySnXOe9i6sOCQwlnh65Dq5o4a7uZj+jeesnUs/
+	 mDsy+0q8S6Msr7KDph9BG09sArKT430wjeE/UC/y3jJ3y89xVG+/s4g6XIcVYUN15gZMi
+	 kJGd4elr1Gpf8J35ys+0h4tutMLfuapHyP2jqXYlWKUd9cC7YmGe3AMuCs18AqOxjZyhV
+	 DphmcQucKb+bSp6/+fhSLJFGvOZHcjuob8+2pCbFX+xnnDWR796FiiVNO8Q9ixL2g6cfR
+	 52K2xgoOsP1H6H8ZWqAqnpjO8dePUBFusrj8pR4Z59VduncDVZZj7T9HRX45ANShK2w==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 96A931F00A0C;
-	Thu, 12 Nov 2026 08:54:56 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 9128C1F00A13;
+	Thu, 12 Nov 2026 08:54:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794473698;
-	bh=4i3GS29HPtypyjBy6AOepteHi17VRcJiMUzTuDJd0IQ=;
+	s=k20260515; t=1794473699;
+	bh=WECNd7JSglyenV0IG4TXcEc5kXGA7Avlj46c3tWdFVk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=CysUp71nZSVVPeXoDqR0iybVvwQ4zgRYGFnjFd+s0ufVHEhCdBZ/CMznMBiQ7eebm
-	 MWJbrIcp4IDF/qY46N8qBvgNhv2Cey0G+3XLNhhWhOgrnqZu7pcUVlhFi2EAuV//ws
-	 8M4Lt60hIBF7aigN50U7BogwwKj10z3K7GmMyXMI+02/9Gzf0SY34xkY7C9eU8mZu0
-	 68BimmL3YRWn8SRUSu2kLEbUYHeI5Hy+1BI81EBDA6zdO9bklNRrT8q2SpTJ+4KlQW
-	 cI04DUfl/poXfj9HAEKOaBiYh0ktY6c2XDmnUcLQoxQIsf/eiyLk3amV70iZb22Xg5
-	 DDOTFOaUbNSZA==
+	b=nbnrx6CTIrWvDKeKz1jpAw/wnu0Bw/J5lLM1J0CNGx1MWjlWt17nLc9BLDXKf+Vnu
+	 NyC2SghZP0yTb0sXIbRhqF7B/rDdTzcMjViIuSi7FMYsyUEyrPKERtbqYG/XyeIwHT
+	 ZYTwGAdA/enyGMU+S8dfwzlcAiBVt345gneAfg34YuNRrjAWqC037YcTKhqcR1n+lm
+	 lO3m7BnTb0IM2jEE+VmHYCE3Jslc+SxfyRvakeMK9g6BNypj+nqFbCcLzy4yVQePvS
+	 OdJCuJtGqfla40PppjyGHRcUgGCoEcJbK6gDsDDxe6mdsJHZXb8p8czA30Z589jwmT
+	 FOKiYtSxd1UAQ==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 26EB049413;
+	by lkml.kernel.org (Postfix) with ESMTP id 4F1904941B;
 	Thu, 12 Nov 2026 08:54:56 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 12 Nov 2026 08:54:58 +0000
-Subject: [PATCH v2 4/6] media: verisilicon: Check every VPU981 AV1 tile
- column buffer before reusing them
+Date: Thu, 12 Nov 2026 08:55:00 +0000
+Subject: [PATCH v2 6/6] media: verisilicon: Reject AV1 frames larger than
+ the CAPTURE format
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261112-hantro-codec-fixes-v2-4-f44424df585b@gmail.com>
+Message-Id: <20261112-hantro-codec-fixes-v2-6-f44424df585b@gmail.com>
 References: <20261112-hantro-codec-fixes-v2-0-f44424df585b@gmail.com>
 In-Reply-To: <20261112-hantro-codec-fixes-v2-0-f44424df585b@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
@@ -95,11 +95,11 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  Arun Iyengar <aiyengar1990@gmail.com>, stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794473695; l=6292;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794473695; l=2755;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=BT2F0TOczjHLd2TsiRpWYPl5wVI3/1gtJ6eyqTMB414=;
- b=5qAFPZ2X7x/mB4guhj/l6YFbtBJPsa29419lVc0kEuJGe/lecc39ZEHCozNBUXAl4Jl+HfG1K
- bXUwkGJjYUxChMrY+tO3fYSj9CFPo1M/SlTsyFUszqNQ/4Gbz/ZVWBb
+ bh=F0sBvLxC1b6DWpic9ac/w+3lxIegpPEHIfh/PZ7x1mA=;
+ b=fZk80umJ9nhQFUKVcYAIaAf4QJ5vg4VBbgr3VYDUCzayQiz8NtBQ48aAKvoBnkUWy5eGamjKK
+ /fGPWQavH7vBh6ZyfY8TNUDzW8N+a6EJaOMlTxeuQpjzcV+W+aCA9YH
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -128,143 +128,60 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-rockchip_vpu981_av1_dec_tiles_reallocate() keeps the five tile column
-buffers (deblocking data and control, CDEF, super-res, loop restoration)
-when the deblocking data buffer is big enough for the current frame. The
-buffers don't scale the same way: the deblocking data one grows with the
-frame height and the bit depth, the super-res one only with the number of
-64 pixel rows, and the loop restoration one with the number of
-restoration stripes, which is one more than the number of superblock
-rows. A frame can therefore fit in the old deblocking data buffer and
-still need a larger buffer of another kind. For example, after a 10-bit
-1088 line frame with 4 tile columns, an 8-bit frame of the same height
-with 5 tile columns needs 65280 bytes of deblocking data (65536
-allocated) but 367360 bytes of super-res column data (293888 allocated);
-an 8-bit 128 line frame with 4 columns followed by a 64 line frame with 8
-columns has the same problem with the loop restoration buffer. The
-decoder then writes past the end of the smaller buffer.
+frame_width_minus_1, frame_height_minus_1 and upscaled_width of the AV1
+frame control are not validated against anything, and the decoder is
+programmed with them.
 
-The sizes are also not reset when the buffers are freed, so after a
-failed allocation the stale size of the deblocking data buffer lets the
-next frame skip the allocation and run with NULL buffers.
+The decoder writes the luma, the chroma and the motion vectors of a
+frame into one buffer. The size of that buffer and the offsets of the
+chroma and of the motion vectors in it are computed from the width and
+height of the CAPTURE format, so a frame that is larger than the format
+does not fit in the buffer the decoder is given.
 
-Compare each buffer with the size the current frame needs and clear the
-sizes together with the buffers.
+rockchip_vpu981_av1_dec_tiles_reallocate() also sizes the tile column
+buffers from the frame height in 32-bit arithmetic, which wraps around
+for large heights, while the hardware is given the height as a 13-bit
+number of 8-pixel blocks. The buffers can then be smaller than the
+programmed height needs. For instance, frame_height_minus_1 = 0xffffffc0
+rounds up to a height of 0, so the buffers of the previous frame are
+found big enough and kept, and the decoder is started with a picture
+height of 8185 blocks, 65480 lines.
+
+Reject frames that are wider or taller than the CAPTURE format. The
+format is never larger than the decoder supports, 4096x2304, so this
+covers the heights that wrap as well. Frames that are smaller than the
+format, as streams with spatial layers have, are still accepted.
 
 Fixes: 727a400686a2 ("media: verisilicon: Add Rockchip AV1 decoder")
 Cc: stable@vger.kernel.org
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- .../verisilicon/rockchip_vpu981_hw_av1_dec.c       | 34 +++++++++++++++++-----
- 1 file changed, 27 insertions(+), 7 deletions(-)
+ .../media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c  | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
 diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-index 2a145433e6d1..e817c91224d3 100644
+index 8154b405ca63..016f11f04a80 100644
 --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
 +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-@@ -236,27 +236,32 @@ static void rockchip_vpu981_av1_dec_tiles_free(struct hantro_ctx *ctx)
- 				  av1_dec->db_data_col.cpu,
- 				  av1_dec->db_data_col.dma);
- 	av1_dec->db_data_col.cpu = NULL;
-+	av1_dec->db_data_col.size = 0;
+@@ -533,6 +533,18 @@ static int rockchip_vpu981_av1_dec_prepare_run(struct hantro_ctx *ctx)
+ 	if (!num_tiles)
+ 		return -EINVAL;
  
- 	if (av1_dec->db_ctrl_col.cpu)
- 		dma_free_coherent(vpu->dev, av1_dec->db_ctrl_col.size,
- 				  av1_dec->db_ctrl_col.cpu,
- 				  av1_dec->db_ctrl_col.dma);
- 	av1_dec->db_ctrl_col.cpu = NULL;
-+	av1_dec->db_ctrl_col.size = 0;
- 
- 	if (av1_dec->cdef_col.cpu)
- 		dma_free_coherent(vpu->dev, av1_dec->cdef_col.size,
- 				  av1_dec->cdef_col.cpu, av1_dec->cdef_col.dma);
- 	av1_dec->cdef_col.cpu = NULL;
-+	av1_dec->cdef_col.size = 0;
- 
- 	if (av1_dec->sr_col.cpu)
- 		dma_free_coherent(vpu->dev, av1_dec->sr_col.size,
- 				  av1_dec->sr_col.cpu, av1_dec->sr_col.dma);
- 	av1_dec->sr_col.cpu = NULL;
-+	av1_dec->sr_col.size = 0;
- 
- 	if (av1_dec->lr_col.cpu)
- 		dma_free_coherent(vpu->dev, av1_dec->lr_col.size,
- 				  av1_dec->lr_col.cpu, av1_dec->lr_col.dma);
- 	av1_dec->lr_col.cpu = NULL;
-+	av1_dec->lr_col.size = 0;
- }
- 
- static int rockchip_vpu981_av1_dec_tiles_reallocate(struct hantro_ctx *ctx)
-@@ -269,15 +274,30 @@ static int rockchip_vpu981_av1_dec_tiles_reallocate(struct hantro_ctx *ctx)
- 	unsigned int height = ALIGN(ctrls->frame->frame_height_minus_1 + 1, 64);
- 	unsigned int height_in_sb = height / 64;
- 	unsigned int stripe_num = ((height + 8) + 63) / 64;
-+	size_t db_data_size, db_ctrl_size, cdef_size, sr_size, lr_size;
- 	size_t size;
- 
--	if (av1_dec->db_data_col.size >=
--	    ALIGN(height * 12 * ctx->bit_depth / 8, 128) * num_tile_cols)
-+	db_data_size = ALIGN(height * 12 * ctx->bit_depth / 8, 128) * num_tile_cols;
-+	db_ctrl_size = ALIGN(height * 2 * 16 / 4, 128) * num_tile_cols;
-+	cdef_size = ALIGN(height_in_sb * 44 * ctx->bit_depth * 16 / 8, 128) * num_tile_cols;
-+	sr_size = ALIGN(height_in_sb * (3040 + 1280), 128) * num_tile_cols;
-+	lr_size = ALIGN(stripe_num * 1536 * ctx->bit_depth / 8, 128) * num_tile_cols;
-+
 +	/*
-+	 * The five buffers scale differently with the frame height, the
-+	 * number of tile columns and the bit depth, so each of them has to be
-+	 * big enough for the current frame, not only the deblocking data one.
++	 * The frame size comes from userspace. The decoder writes a frame of
++	 * that size, upscaled to upscaled_width, into buffers that are made
++	 * for the CAPTURE format, so the frame has to fit in that format. As
++	 * the format is within the limits of the decoder, this also keeps the
++	 * frame height in the range the tile column buffers can be sized for.
 +	 */
-+	if (av1_dec->db_data_col.size >= db_data_size &&
-+	    av1_dec->db_ctrl_col.size >= db_ctrl_size &&
-+	    av1_dec->cdef_col.size >= cdef_size &&
-+	    av1_dec->sr_col.size >= sr_size &&
-+	    av1_dec->lr_col.size >= lr_size)
- 		return 0;
++	if (ctrls->frame->frame_width_minus_1 >= ctx->dst_fmt.width ||
++	    ctrls->frame->frame_height_minus_1 >= ctx->dst_fmt.height ||
++	    ctrls->frame->upscaled_width > ctx->dst_fmt.width)
++		return -EINVAL;
++
+ 	ctrls->film_grain =
+ 	    hantro_get_ctrl(ctx, V4L2_CID_STATELESS_AV1_FILM_GRAIN);
  
- 	rockchip_vpu981_av1_dec_tiles_free(ctx);
- 
--	size = ALIGN(height * 12 * ctx->bit_depth / 8, 128) * num_tile_cols;
-+	size = db_data_size;
- 	av1_dec->db_data_col.cpu = dma_alloc_coherent(vpu->dev, size,
- 						      &av1_dec->db_data_col.dma,
- 						      GFP_KERNEL);
-@@ -285,7 +305,7 @@ static int rockchip_vpu981_av1_dec_tiles_reallocate(struct hantro_ctx *ctx)
- 		goto buffer_allocation_error;
- 	av1_dec->db_data_col.size = size;
- 
--	size = ALIGN(height * 2 * 16 / 4, 128) * num_tile_cols;
-+	size = db_ctrl_size;
- 	av1_dec->db_ctrl_col.cpu = dma_alloc_coherent(vpu->dev, size,
- 						      &av1_dec->db_ctrl_col.dma,
- 						      GFP_KERNEL);
-@@ -293,7 +313,7 @@ static int rockchip_vpu981_av1_dec_tiles_reallocate(struct hantro_ctx *ctx)
- 		goto buffer_allocation_error;
- 	av1_dec->db_ctrl_col.size = size;
- 
--	size = ALIGN(height_in_sb * 44 * ctx->bit_depth * 16 / 8, 128) * num_tile_cols;
-+	size = cdef_size;
- 	av1_dec->cdef_col.cpu = dma_alloc_coherent(vpu->dev, size,
- 						   &av1_dec->cdef_col.dma,
- 						   GFP_KERNEL);
-@@ -301,7 +321,7 @@ static int rockchip_vpu981_av1_dec_tiles_reallocate(struct hantro_ctx *ctx)
- 		goto buffer_allocation_error;
- 	av1_dec->cdef_col.size = size;
- 
--	size = ALIGN(height_in_sb * (3040 + 1280), 128) * num_tile_cols;
-+	size = sr_size;
- 	av1_dec->sr_col.cpu = dma_alloc_coherent(vpu->dev, size,
- 						 &av1_dec->sr_col.dma,
- 						 GFP_KERNEL);
-@@ -309,7 +329,7 @@ static int rockchip_vpu981_av1_dec_tiles_reallocate(struct hantro_ctx *ctx)
- 		goto buffer_allocation_error;
- 	av1_dec->sr_col.size = size;
- 
--	size = ALIGN(stripe_num * 1536 * ctx->bit_depth / 8, 128) * num_tile_cols;
-+	size = lr_size;
- 	av1_dec->lr_col.cpu = dma_alloc_coherent(vpu->dev, size,
- 						 &av1_dec->lr_col.dma,
- 						 GFP_KERNEL);
 
 -- 
 2.55.0
