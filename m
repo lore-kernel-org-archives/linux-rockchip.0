@@ -2,89 +2,63 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1DEE0606A321
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 16:39:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 524DC606A220
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2026 17:41:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=q+oEVBc4;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=bgzVQwsr;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=kw8Rxbyb
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0qBZvUHO;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=IsLbuBBM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=mIfiCXN5VGVdLsbfc2Uvn9oHEPwWPvFO6pK961yfzS8=; b=q+oEVBc45UWRn3tBIUs/s6rqsS
-	jOZ7fjT+OsrRNidNVB90QbxVlTEZuBdn/Vnl0xFwd8oKUVTC3tvw7h/cpCNoaYf0GouhS24qjnnU7
-	n66Lkj5y3MJhwvrHJ4KSFUSudJTBHI+yxfs+xJeQzISuLmF4Fh8lrTOmGExuVL526S8NoMgbu2UkU
-	JDwTqRRYOqmZdYYY5o5OpIC4Myp2MUEVRfy15+vEAnqrRYIdtWm2+J0dJmUZXxNuVq9+Ccm1BPTLC
-	pjnuLOvhGPiFiDSXw1kcyANpBZyKgy0xUrtIfulshmL16xwpmBArvdVwRlu1/KFDISrRKfI9pWMdS
-	9R7JN7Gw==;
+	bh=e8i4TGj9+ph9cRbWY+ctiEopsSowW8SfnPgFMj5Dp+A=; b=0qBZvUHOF2WaHUflf5NTti/v7W
+	KWhPK/HZobuCmJ9sRJwtGKJo862wtI84A71iby+Q0XerFKri21vS7aS0A184M9oCKZS4C2MNoeYMB
+	9lG06pJmIOKlcopNWJUdOJNErsjzSRevz3nJqJyyTet4ZuMzZt3aiIqQGc3ytGOvSC00/Ysu4xfzP
+	90+W6TzKRpwrMmp8oyC3kR0TFlqDyijppbHY+Hxqlq9NolgzzwQtXW7NqROiNoTaHkDMVfqSAiioW
+	HUePqk7MylP0LN/q3DQV0PmvTElVnfbHmrorWDt52pp9s4mVYUH3XdfZGmOSSazloaEyC4cAfw52M
+	CxotonnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRXpf-0000000AdOj-2fnp;
-	Thu, 12 Nov 2026 16:39:28 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xRYn5-0000000AmhF-2wtY;
+	Thu, 12 Nov 2026 17:40:51 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRXof-0000000Acll-0tCv;
-	Thu, 12 Nov 2026 16:38:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=mX5XJiOggtCU2h3cbhrU4EW9IR9MqjeUg5nelCtC63g=; b=bgzVQwsrqaoizlJxFUkYGJU1Hw
-	T0PmeoeueZPDmwsSMIvrh2aNp7ibgrSleFiQLEdY9K1RV0v8/FzSLHgrbS5cwr++1F7E8tUDGRiyu
-	XuYuqgkstNdhpwhdTDX1BzNVNjKd9KdTjVJixD72VbBoBirYhRl1YjBvpwOG/SHMhWBo0OjiAE+pC
-	Y0ysltvl6zEeEowMf8GpcJ35qp16RcNOgbuN3kB4rAHwu5/jqscInBcqNQagYgHjOITwK2BWiKP4R
-	KRhilnhOX/xFDtzZ7B/UUSBRBaovTm4sTu13aAJQCvn+3Y/5uOqiuhv1pr/ut79tUC3lwHLonaM0o
-	ukExgkTA==;
-Received: from sender6-op-o11.zoho.com ([165.173.180.11])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRXoZ-0000000AYw9-1cU9;
-	Thu, 12 Nov 2026 16:38:23 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794501488; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=aSu/hFLbuCH20PxHrtQGMjLUcLKDgWItFuL1RiCjtSRoel8xKiFBwg+BOoAddlsDEG5Rc0wlOCMihwvzoqtbuMsd46s5FHRwXKc38/saXVQn/tEsWkvaVPTevkVxhHicHh1fe1vmIwzWNUEXBeSsaOFg0+mCqg0HlOJQgeMtfgE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794501488; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=mX5XJiOggtCU2h3cbhrU4EW9IR9MqjeUg5nelCtC63g=; 
-	b=GIlOxFCKPlQayYMyEGzFg+GRISBCqbD54tDLuAz33adJXwXOVMbvamPgm8svNJZlJkE6W4JFbeAY5y8hU4bycqoqOsmF3bCc8omd7mpq3pGI6sy0HQAc6WwUsvIVhlG1l9ar1t+zw9ljsqNJcivTdcWWdDbWAxaZAzI92d7XhfM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=kw8RxbybnuvWjvJvdKn+53IYxRjna1/UrcEoJ7O2oEPIMTfrjj54FEdK7lHqGaMh6HsVPS0pTiDW5wllRlKhQZelxh6A4A2u/LJt8eL5tSmr4IlG6vJh5Ch3y/E1lI/rfZFXGx9Uj3zWRbBzNaOTn+JUWhiL/0pGXboLMqEORAY=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=mX5XJiOggtCU2h3cbhrU4EW9IR9MqjeUg5nelCtC63g=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1794501486774956.4551935908814;
-	Thu, 12 Nov 2026 08:38:06 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id CBC96180570; Thu, 12 Nov 2026 17:38:01 +0100 (CET)
-Date: Thu, 12 Nov 2026 17:38:01 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: aiyengar1990@gmail.com
-Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, 
-	"Joerg Roedel (AMD)" <joro@8bytes.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Niklas Cassel <cassel@kernel.org>, 
-	Pranjal Shrivastava <praan@google.com>, linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev, 
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	Shawn Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, 
-	Finley Xiao <finley.xiao@rock-chips.com>
-Subject: Re: [PATCH v2 1/4] dt-bindings: iommu: arm,smmu-v3: Allow a clock
- and a reset
-Message-ID: <avXqeBBO_osbgdgU@venus>
-References: <20261112-smmu-v3-pcie-pd-v2-0-3a77bbb6b2c4@gmail.com>
- <20261112-smmu-v3-pcie-pd-v2-1-3a77bbb6b2c4@gmail.com>
+	id 1xRYmi-0000000Ambs-11MD;
+	Thu, 12 Nov 2026 17:40:28 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id ACF796237D;
+	Thu, 12 Nov 2026 17:40:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8EE2D1F000C4;
+	Thu, 12 Nov 2026 17:40:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794505227;
+	bh=trto5Eq27UU3dCClttunJSNZcea48dqgIyqJACy3Yh4=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date;
+	b=IsLbuBBMQPojG5WcDrbDLgdx+I/5Jj+Edv7SQlc6tZdHJDYJcQvQlva+jFn4XfHu0
+	 IKIPgSbW2VDNjKwhTCbFptAyGUp5q9po5UWfF/pI9Af4AXO7FTFx8gM2Bih/o0aqFv
+	 yrYEh3PPMchsU1Wy9l/5rXkgegLYgeGybZ+yhaEfEEdM1POu+YLGqf+yOvj8KKLv9U
+	 i4LUtDlD4PnfxHlCt83TlFxwj3tcdSZf5jyJfaLtFFagT+n/TB7jSyW0Pi960DXTPJ
+	 ShrnPawduQrwb5ANFcBgEmU3yFLnNX2hMzzWB+QqW4wOyBf/z7MLMSXPhqvg8gcvd6
+	 N3OkfMeBn+dzg==
+From: Thomas Gleixner <tglx@kernel.org>
+To: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>,
+ akpm@linux-foundation.org, rafael@kernel.org, peterz@infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, "moderated list:ARM/Rockchip SoC
+ support" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC
+ support" <linux-rockchip@lists.infradead.org>, "open list:CPU HOTPLUG"
+ <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 1/2] smpboot: Allow restricting per-CPU threads to a CPU
+ mask
+In-Reply-To: <af37c4e7811a86adafb2064e7cf4aa4f5090ab4b.1793660202.git.daniel.lezcano@oss.qualcomm.com>
+References: <cover.1793660202.git.daniel.lezcano@oss.qualcomm.com>
+ <af37c4e7811a86adafb2064e7cf4aa4f5090ab4b.1793660202.git.daniel.lezcano@oss.qualcomm.com>
+Date: Thu, 12 Nov 2026 18:40:23 +0100
+Message-ID: <87zeverlrs.ffs@fw13>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20261112-smmu-v3-pcie-pd-v2-1-3a77bbb6b2c4@gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.497.36
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_163819_439535_9ADC2E44 
-X-CRM114-Status: GOOD (  23.54  )
-X-Spam-Score: -0.2 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,126 +68,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7996425645949215044=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+On Tue, Nov 03 2026 at 00:09, Daniel Lezcano wrote:
+> smpboot_register_percpu_thread() creates a thread for every online CPU
+> and registers the descriptor for subsequent CPU hotplug operations.
+> There is currently no way to restrict these threads to a subset of
+> CPUs, even when the user only needs work performed on that subset.
+>
+> For example, an idle injection device targets a specific CPU mask.
+> Creating threads outside that mask consumes resources unnecessarily.
+> Supporting multiple such devices also requires each descriptor to
+> manage only the threads associated with its own CPUs.
+>
+> Add an optional CPU mask to struct smp_hotplug_thread and apply it
+> throughout the thread lifecycle. Registration creates threads only for
+> online CPUs in the mask. CPU bring-up creates threads for selected
+> CPUs that were offline at registration, while parking and unparking
+> are restricted to the same mask.
+>
+> Apply the restriction to thread destruction as well, both during
+> unregistration and registration failure cleanup. This is necessary
+> when descriptors with disjoint masks share the same per-CPU task
+> storage: tearing down one descriptor must not stop or clear threads
+> owned by another descriptor.
+>
+> The caller must keep the mask valid and unchanged until the descriptor
+> is unregistered. Callers sharing per-CPU task storage must ensure their
+> masks do not overlap and serialize ownership changes themselves.
 
---===============7996425645949215044==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="axwnauw6ygxsatcc"
-Content-Disposition: inline
+This really wants a built-in check which prevents overlapping
+registrations for the same thread storage. It's easy enough to do:
 
+smpboot_register_percpu_thread()
 
---axwnauw6ygxsatcc
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 1/4] dt-bindings: iommu: arm,smmu-v3: Allow a clock
- and a reset
-MIME-Version: 1.0
+	if (!pt->cpumask)
+		pt->cpu_mask = cpu_possible_mask;
 
-Hi,
+	guard(cpus_read_lock)();
+        guard(mutex)(&smpboot_threads_lock);
+        list_for_each_entry(ht, &hotplug_threads, list) {
+		if (ht->store != pt->store)
+                	continue;
+                if (WARN_ON_ONCE(cpumask_intersects(ht->cpumask, pt->cpumask)))
+                	return -EBUSY;
+        }
+                
+Hmm?
 
-On Thu, Nov 12, 2026 at 08:20:22AM +0000, Arun Iyengar via B4 Relay wrote:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
->=20
-> Some SoCs feed the SMMUv3 from a clock that the OS controls. On the
-> Rockchip RK3588 the MMU-600 for PCIe runs from ACLK_MMU_PCIE, whose only
-> other consumers are the PCIe controllers. When no PCIe controller is
-> enabled, the clock framework gates it as unused, and the SMMU can no
-> longer be accessed. The same SMMU also has a reset line in the CRU,
-> SRST_A_MMU_PCIE.
->=20
-> Allow a single clock and a single reset, so that both can be described.
-> The architecture defines no clock or reset inputs; the MMU-600 TRM lists
-> one clock and one reset signal, and the one integration that needs this
-> has one of each. An implementation with more clocks or resets can add
-> them with names and a specific compatible.
+Thanks,
 
-You can trim that down quite a bit. Don't take over AI text 1:1.
-
->=20
-> Link: https://support.arm.com/documentation/100310/0202/Signal-descriptio=
-ns/Clock-and-reset-signals
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
-> ---
->  Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml | 11 +++++++++++
->  1 file changed, 11 insertions(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml b/D=
-ocumentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
-> index 3c044e4f03d4..29b81b4fb650 100644
-> --- a/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml
-> @@ -63,6 +63,17 @@ properties:
-> =20
->    msi-parent: true
-> =20
-> +  clocks:
-> +    maxItems: 1
-> +    description:
-> +      Clock of the SMMU's register and memory interfaces, on SoCs where =
-the
-> +      OS has to keep it running.
-> +
-> +  resets:
-> +    maxItems: 1
-> +    description:
-> +      Reset of the SMMU, on SoCs where it is controlled by the OS.
-
-The ', on SoCs where it is controlled by the OS.' is completley
-useless for both. You need to review your AI output and not take
-it over without doing any thinking yourself.
-
-Greetings,
-
--- Sebastian
-
->    nvidia,cmdqv:
->      description: |
->        A phandle to its pairing CMDQV extension for an implementation on =
-NVIDIA
->=20
-
---axwnauw6ygxsatcc
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmr162kACgkQ2O7X88g7
-+pp8TA/6AvacCvvFrtEJ9uEds7WG2pqKKql3tDgbixgwWbdt4jb9Uno84nloIhoH
-j3vlNNjCs1I7sfA9KxDhGSbqZM1Q3EPis3hoktky7vefI8Gk/g6hzxilqwOmKrKK
-GJRIRdKDCb5osCgwrqpENYPD8XweBOFu6DKigsdQG/Y+14WfJM2q9DF5mqhwleZL
-KTU2j7l0uIeDzrXVhCCQR10zMOJBo1iRL6JZmkvGEv2ph4CsdB3NjV0eG01CVK86
-TRnfdKSvT3+L6IPOu7XlCoHQ4BP7wtWOB4Dpb13SxjNXGBSWu0QV6XbZp5lulmdU
-d2mNUCrU7P42tdgIVSwGVBwYYyymCvqEnukqAEucWjrvGFD8eSZM2wSANBlbnijS
-A5qcPBVfoTjTIUVZg2/bK7yf6mU1oY6kLSZ3w5vIlJ2pNFemTYAv1ZWfs2QPOGqw
-6Cro+Q2DTCuU8eSqOVEmzP4BibPeDdNz3M91VvdzW5AD1WXHz4ZWrpueYE4ZtvZi
-BOKFfh5QakYt1YXvQU1iw1Nzg8CMyoaLPiZS4vaZg9eK5Z972fm1QAwoMs9jsbNH
-hkL/pRIO+517K3U8QHdFJtJevY0ta1vna0itB7GH8IsR0ntE6E6vpRaUA74VsRr4
-hD977z7kgv3TjVM1pGp0P4VybhXtvwcU7M4hJXMTRuEsOzwbx6A=
-=Wdr0
------END PGP SIGNATURE-----
-
---axwnauw6ygxsatcc--
-
-
---===============7996425645949215044==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+        tglx
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7996425645949215044==--
-
