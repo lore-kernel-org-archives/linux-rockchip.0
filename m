@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4E6ED606A331
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 20:31:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0B488606A88E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 20:33:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gJ8S9Flw;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=LYvWahyu
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=u+d0RPgq;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=iz909RmF
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,87 +14,90 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ANQlTNiFFCsSQFXy5hXfyPN89F+aodbZ2bSTEoHByT8=; b=gJ8S9Flw3YP++R74tt6ogdooki
-	79UeuLIEgQfv5XSK7oBee0qXnJaiRbKhQ5X4giKnxQoSJ+1u4mCKO2xhWOo+WOVn0F1gtZD05HohW
-	tS8iBavVP2mvb/LDJxVbaiSOUsPJOoTWRryLbf525mEcASgIbUC/aET3E5XXM3prC8f0vOOGejGBz
-	F50VBaGoIo+kd85gRSITK0XCJjA5vVQutwQjzZbJ5DrqpV34C+aJ3kspCoHjBUKm/GX/oqYm1lN5Z
-	lgLtDAEOcw9EU+9HDWgutN3BNq/Dk6LD7L3AvVbJ+sZ19ZaN8VHIvEsUSFrwlqWTRSzj4cNd8mWiv
-	NARd3hYw==;
+	bh=E9ldTqeFsqtpiXZ+tH71A4uwlaogjWg1MA4nXUTI8lM=; b=u+d0RPgqcMAy9tJQiDT74TigtV
+	P+29PVSQSnjr2axkIG7lLJHk0ECb58BiiGGProZ3FyU4Ms6E6/oUjLGHw8ciYJ5J+lrw5b6YYZmEi
+	4FsjQMl/iNSaCaZovl2uoLgt6/ke4zn6WWTb7xnb1Gfnpoj6JPfluuDV4ZO5X+UZv+f9rKc4nfuIP
+	sm1OfTDpRz0cyHCHWJrzNr2Krto/jTXga+8ZZl2OACLTIk82iXqfv1+vzGa+XfCtbjW7K3KK3onfB
+	Rrb24RxM0ygw0Rnt63W0vtM4ISdIcJC59kDAKmitdsoVjpqXiI4QspEYSAVJS4d0KgvJR3zLBGQsr
+	CNsxOfBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRxw1-0000000EQ8o-3ZhB;
-	Fri, 13 Nov 2026 20:31:45 +0000
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+	id 1xRxxR-0000000EQTz-0qsk;
+	Fri, 13 Nov 2026 20:33:13 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRxvy-0000000EQ7g-1LOs
+	id 1xRxxO-0000000EQST-3GGs
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Nov 2026 20:31:44 +0000
-Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-3ad0c2e71ebso193339a91.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 12:31:41 -0800 (PST)
+	Fri, 13 Nov 2026 20:33:12 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-3ad47c246f8so187977a91.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 12:33:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794601901; x=1795206701; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1794601990; x=1795206790; darn=lists.infradead.org;
         h=mime-version:content-transfer-encoding:content-type:message-id:date
          :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=YiZ77gIfuRvrG4OhaqVJrXWfgW4P+h0z/eTCC1VVgzo=;
-        b=LYvWahyuWfibwq+wIg7FggSGoFzy4sfRCg34zf15fCJEwEnbOrX3LZsFEqaimaSdll
-         HneuCLTSp6o+Q/PHkN2M41LUM7iH/JLlbmtsTXh3/nJNyWsZAcUp7Eq1dd2ksu22WNWg
-         reKlTH1BJ4cch3GhvYCFZBLIEcQpYH5P2IvNhcScqc5sYaW2KcAU3QNJDdOz2yIKy6cm
-         PrJmk48IlmnsALXFSZx7rP+hAMt87bImwZFmSKdRxMpCNdcQCu8zPsRJBueVQLAi0bcI
-         xRt3thJlbyN4fYZdwVn0HF7s1S0KlGjjJHvA0WpkO8HkMu8HYdRG1la2kR4em7S2OKEh
-         ZQQg==
+        bh=9nMyN0VEnSPNDMOw40qCksgSnlqSB2G4sRnpFPXnQgk=;
+        b=iz909RmFsce1uJieMK4Tr6fCBnkBE+iXNecd76EPNXs1xLsws5yqdqh4jngYjVVWmd
+         0d+gB0Iorhu9f000vTBhDqCM2lr6aONHQ/xzdBXs6BI+3Pe1AoUtSpCQrxpbOU7WLDqW
+         hu4qGs/TW8dLn3kPdHAW+EtiyPaCMfvDvrmnLsqn6F1fgPeQHl/UyfEtzPGTy8DQ4Qqh
+         AscBd6F6OzXOXy+WXF4CmCGwvu9QIKiN0kimDSFBfPnc6M3qaywzg4ynHnBBQTN/yk9/
+         4EEjE2kjGoO+DRX07BquM2zi+Eelnm5HWAimXzZeSSKHAkN9SoL8AuhmBLgWIj7hc+qq
+         O7CQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794601901; x=1795206701;
+        d=1e100.net; s=20260707; t=1794601990; x=1795206790;
         h=mime-version:content-transfer-encoding:content-type:message-id:date
          :references:in-reply-to:subject:cc:to:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=YiZ77gIfuRvrG4OhaqVJrXWfgW4P+h0z/eTCC1VVgzo=;
-        b=uKvXUiT5Nqdw+RgvSGBuFMY7DGC/urNtXJ/zc8dwIWUSmW7t69mfJiYirfpHA/EeKs
-         a72jJceagdAcxW8OgS7tE5f9pSUE4LgQVBocBQE1Pl1y310DTpxxsDg4lMsoIBogSoJv
-         53OL7oDxdLBZ4fNbCEVp0nl7jmkYDUw0RmhG5eO2V4QB598NzcZh2ODR9kty1RTvFocd
-         C/m1BDn5QSaX0HfERPyWKeOCfWNx5xFBuSdyfLPPkka7lJ2HB0+ofqZMS7lLyEkmCJm6
-         FJM7oxcfOmI/79DzPCCVCZ68NMco/9LuXUfwi0KL9D8wVkfNb0kNAddExBYBBQB+z5hX
-         3nDA==
-X-Forwarded-Encrypted: i=1; AL+hErFmMi+OoXQisAP+7STAa5ZDJUJ2ELk2hnLigCnnFQSLX625B5l61VlT2i8vdbwjaKNwmyUUvzVYMB5p72G73g==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8R6RDP4gIS5lzt2vDmIGTk4WkmCM56P5zl+vfZ678PHHqy9FSg
-	ould1yg+o/FfJ1I0hn1LWnbIhWiekfQZwa2bq5z5sBkcvkujJBru6nlc
-X-Gm-Gg: AYBFou2bEWmmQn89D+2laYE7SSOJKxBxwde+AQr2/0LWZ98rwrHvK6yobR0MDwbl+bq
-	qTrha+SuKXMAjvy7quURXzSt12lGh0hzQE8DXpNzqhg2AkTHHbExoSXiKRIkCneFejc54eqC5oN
-	sA80JXXq95ydDTnGVi74F2w+uduwSj/ouCy3uTYWjAxuXrjqStauWGbRGZPU2NLqr/PmxuRU4Bs
-	NWGo2qgInxGDziuhdTK+elADjWANC/xf31Bi8vKc/RiFmXYcmFJfO9W5Dth1b1kcVZ1weocysLO
-	ktjCduANsnxYgzT0zY7HyBlU01rWcnlvzG7tbVkrU31hWOEMG0oN4OGLo27IQmYTIBexCxejnu1
-	KZX2zwq2D2mRTgNd9HXP8OFumrdRJeIZ+dssi04/hkhjJ20mGmLVrKRfWAdgQLEI450Tj9CR2tg
-	T2zfbe4cYVtGPgf1Ka04IuU+j7sGSVcdvLd5oc+OhoV3muZYQj7lVT3Q1dNWVJZHZrUPJHHHwrz
-	oeJJei9Jyoc4w4YYQfIdwoYysJsWhGv5aPZVMox48iJr5M8gLzPyFkKAlS4++hi5YRO/SlPzYqH
-	z1Kickg0DHRpduE4/oEQM/nDoR58pFeg9tpxLTo81c3h95tzKwgYApTaquHzMBP1Bd1ejg6nro3
-	iWalkKA==
-X-Received: by 2002:a17:90b:590e:b0:3a6:e1d1:e511 with SMTP id 98e67ed59e1d1-3b1b0b85d16mr5379769a91.4.1794601901202;
-        Fri, 13 Nov 2026 12:31:41 -0800 (PST)
+        bh=9nMyN0VEnSPNDMOw40qCksgSnlqSB2G4sRnpFPXnQgk=;
+        b=sW+VdWQGW2xU/g/MENnhldm0z4K6S/hbnLpl5VNpxhZnAGIxcnUazYhZmf3sxB6M2j
+         C+sH+K0pIQZ5/wj7c+6eLLFmwkwk9G+Acd75QHul1LPPGDY0OLt22G7Vix4dF9mCuaR7
+         F8SWHZ7GA/+qL628FhMJ44oCNCC/DxjwZslhhvOszOq/y5FnkQN8XyoQUGENdvn1rcav
+         VWwBW4/5fBuXdbGM2FxISj+LR0DOAOgE7W99PzGj+c/zncXYQgChi820zo+wRIgrLfFz
+         /UcuYfakErK/4HZ/zMH7sPxli8djcBlpB5NSORmnlybzzlgxLpKrZw126kor6NZu2Hlu
+         j1sg==
+X-Forwarded-Encrypted: i=1; AL+hErFMcZraJap3VL94w3xXVxLxO9YlDahsZjUSqDy7OzYazPqH/6tv/b3qr3m6Q31EvdqngT6O7WicrihxzcspWQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/POPcaFuDv7tJSJcZMGVH3dgF9ko8IpRd78Yxzeq4qnS2miKn3
+	aCReGA13BSPQf7DUYF0/03mAz+SooQV5imwmYLf1yxBDnAz8/HP10s5Q
+X-Gm-Gg: AYBFou3FBSrbWol5+6y7gO6ljp+xYNsPYGp2qZYyGu3Ul35taervYbpBaazIXjDazOu
+	mGNgfcwsE5nyY69e5FrChXEz6fcYeAePd6jDCrIhbz72LWUw3+SfWl1fe9MF3z+jpoOPUEQhVmC
+	ROOGAchBRi7GdIFriQ4ymTmwcVlHlXE//PCu2b9Fvrlr0t5jbAZPNe5HoYSDeM2yFqJP64+qCrV
+	PxIJ9T/ynwBn9pf3eu7QnSKyfW8hLVXMplCAPMJH2483MFrw6tX6HsC9YYjY0qB3exhJ/s7zmHN
+	rHfY5Zu8253QycxyioLBm6INBTIBUqRZjggyeE4jWbeN0HuytyN1mLYWWG8qbFRs7s3Bi/dWK+V
+	afCTq48w1C/YR+KRSTbYXxm4HMCp/mHeBAruv9VUnt4Q/OL1UwXmnqYEhGqKNSnO4GbslKXzQbL
+	C5CTO4KjjSjrLROOsmtOhhYA/rQMXDX83EYC4Eo0QJMl+lNjN6/FC7LF48PX/Me348Nvqq4TJ4T
+	kdf8FbS77Q3CZjGnR7C/axgSNn5p7jPdDpWCvbhERNV3ES3zdb5jt2r7rntE78Zf0Mn7igaWSy7
+	6xNfdjNAiTa90OLswir2YfO9DF/qD6sWLN69wbaSvq0PoWh64rggIDhRhdVsIhrr/pwj44KEPRp
+	gELLiS6gpdRIEsLAKsjN6l6qxloU=
+X-Received: by 2002:a17:90b:4d05:b0:3a0:c1b1:45fb with SMTP id 98e67ed59e1d1-3b1b05aabb5mr4604273a91.0.1794601989766;
+        Fri, 13 Nov 2026 12:33:09 -0800 (PST)
 Received: from claudebox.iyengar.cloud ([50.39.139.68])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b197d35525sm11051461a91.16.2026.11.13.12.31.40
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b197d0f6e0sm11168256a91.9.2026.11.13.12.33.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Nov 2026 12:31:40 -0800 (PST)
+        Fri, 13 Nov 2026 12:33:09 -0800 (PST)
 From: Arun Iyengar <aiyengar1990@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>,
- Johan Hovold <johan@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: driver-core@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Saravana Kannan <saravanak@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Ulf Hansson <ulfh@kernel.org>, linux-pm@vger.kernel.org
-Subject: Re: [PATCH] driver core: fw_devlink: Don't report refused
- sync_state-only links as errors
-In-Reply-To: <20261110-fw-devlink-sync-state-v1-1-6385be961c2b@gmail.com>
-References: <20261110-fw-devlink-sync-state-v1-1-6385be961c2b@gmail.com>
-Date: Fri, 13 Nov 2026 20:31:39 -0000
-Message-ID: <179460189995.183918.12921536578133287930@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Paul Kocialkowski <paulk@sys-base.io>,
+ Sven =?utf-8?q?P=C3=BCschel?= <s.pueschel@pengutronix.de>,
+ Hans Verkuil <hverkuil@kernel.org>, Jiaxing Hu <gahing@gahingwoo.com>,
+ Daniel Almeida <daniel.almeida@collabora.com>
+Subject: Re: [PATCH RFC 00/12] media: rockchip: Add a VEPU580 stateless
+ H.264/HEVC encoder driver for the RK3588
+In-Reply-To: <20261110-rkvenc-v1-0-ea8b47122d8c@gmail.com>
+References: <20261110-rkvenc-v1-0-ea8b47122d8c@gmail.com>
+Date: Fri, 13 Nov 2026 20:33:08 -0000
+Message-ID: <179460198852.187691.10732168634380090377@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_123142_367900_9438A030 
-X-CRM114-Status: UNSURE (   7.05  )
+X-CRM114-CacheID: sfid-20261113_123310_826926_E73BE438 
+X-CRM114-Status: UNSURE (   9.12  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -116,22 +119,24 @@ X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-+Cc Saravana, Sebastian, Ulf, linux-pm.
+I'm withdrawing this RFC; please don't review it. It depends on my
+H.264 follow-ups RFC, which I have dropped. The cover also should have
+said that Detlev is already writing a driver for this block, as Nicolas
+explained in the VEPU510 thread it links; I don't want to push a second
+uAPI for the same hardware.
 
-This message was explained before, and I should have cited it:
-https://lore.kernel.org/all/aixze8zFboY3huSf@venus/
-Sebastian writes there that it comes from one power-controller device
-providing all Rockchip power domains, and that it is not harmless: the
-kernel misses dependency information. So "harmless" in my commit
-message is wrong; the patch does not fix that, it only lowers the log
-level. It also lowers it for every other failure to create a
-sync_state-only link (found by the Sashiko review), which it should
-not. One such case is being fixed at its cause: on RK3576, Sebastian's
-"clk: rockchip: rk3576: create proper platform device" removes the
-lines for power domains with a clock phandle:
-https://lore.kernel.org/all/20261112-rk3576-clk-platform-device-v1-1-2f3ac9f09403@collabora.com/
+Detlev, three things from the bring-up on an Orange Pi 5, in case they
+save you time:
 
-Please drop this patch.
+- HEVC wider than 4096 came out corrupted with the external line buffer
+  (H.264 is fine with it, tested to 16384x2048). Tile columns of at most
+  4096, one hardware pass each, as MPP does, work (tested to 16384x2048
+  and 8192x4320).
+- MPP's "TU depth 1" is max_transform_hierarchy_depth_inter/intra = 0
+  in the SPS. With 1, decoders misparse the residual.
+- Two streams, one per core, with both cores in one IOMMU domain and no
+  dual-core handshake, ran at about twice the single-stream rate with
+  the same output as single-stream runs.
 
 Arun
 
