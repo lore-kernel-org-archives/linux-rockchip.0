@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7CBA2606A890
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 90087606A327
 	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 08:24:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WWeH6rh7;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=krs7HqU9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0rG8nO/5;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=aPPqErKI
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,23 +14,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=crMLwkQRyXh9eAOgEFOcbGhqgt8IfTsTAAnuI/L3ey0=; b=WWeH6rh7AwXGUciAZVFupGodhv
-	Nu287qvWTiH0Ru6IFvAnx6pt8H4PqIQ54OTM77xTDiL2GMFl4HgnU5Dh/ACKjZS9RwjIb42a7DXnU
-	JUas2jzjJhu/gkgZ1qJIlAP+l2ocEz+d4xrlpVi3EVu1tPS7KRYj5lb6ZVW25uiiscNlpu0o+s3sX
-	gG1cMLe5e9PjR9JjzCpg/plgZSYqDnxK+T1XQovYD7sYLXhH6j7L185Axm5diWqrDzF2X1wffncS+
-	4vwssogHBZjQdeia4YgqJ/gzYKkcVhpDcMv2Y1U6yxTqrwTuN7qbrRPliKWoylSgUu/yia9ujVxST
-	dznKnMpg==;
+	bh=Se8vXA7QV91Dr/7FjpL/krlFlurh1DeSUAgxT8XBz3E=; b=0rG8nO/5N2dVdOjLhCm8e4cNGC
+	/LfYczJuhOuCnr8+gtt3GuwZHud02W9ricgreNQzaQYoOqAj/ix1fssWaWoVuTIzWRGBTKv2skX8e
+	KkgBxIbfQsjvsSZ8GU91sd1hnQ8uHnILfXM5BVl+QRA8FMAbuPfx7nhPOuIYw73VP+bIz/NZ9oBru
+	Qn/ROhgng3ot442R7r2Y7RG6CiV1PaKbvpkRqvKg3A1ZvKGAznvMNjtYdW5XPSjZJFGiTWBOLzOp0
+	F7kGJEyuOW15oQumbXfXE/p25hH2OwfNCfhOqppP85Q2B7Tym698oNJcwicpED4dyh/avdYPH0m0U
+	ujqdJ9eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRmaB-0000000C1f8-0YB5;
-	Fri, 13 Nov 2026 08:24:27 +0000
-Received: from mail-m6080.netease.com ([210.79.60.80])
+	id 1xRmaC-0000000C1hf-0N8q;
+	Fri, 13 Nov 2026 08:24:28 +0000
+Received: from mail-m12894.netease.com ([103.209.128.94])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRmZK-0000000C1Cb-3xzn;
-	Fri, 13 Nov 2026 08:23:37 +0000
+	id 1xRmZQ-0000000C1Gi-1gSy;
+	Fri, 13 Nov 2026 08:23:47 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 54921be5f;
-	Fri, 13 Nov 2026 16:23:30 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 54921be7d;
+	Fri, 13 Nov 2026 16:23:36 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -62,27 +62,27 @@ Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
 	linux-samsung-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v6 11/18] drm/bridge: analogix_dp: Skip native HPD interrupt ops for GPIO HPD
-Date: Fri, 13 Nov 2026 16:22:58 +0800
-Message-Id: <20261113082305.541652-12-damon.ding@rock-chips.com>
+Subject: [PATCH v6 15/18] drm/bridge: analogix_dp: Manage pm runtime and IRQ for native HPD pin detection
+Date: Fri, 13 Nov 2026 16:23:02 +0800
+Message-Id: <20261113082305.541652-16-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261113082305.541652-1-damon.ding@rock-chips.com>
 References: <20261113082305.541652-1-damon.ding@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa1d40132b403a8kunm073aab0481ab7
+X-HM-Tid: 0aa1d401477303a8kunm073aab0481aec
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZHhpLVhpJHUtDTEtNSRlKQ1YVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCHh9KVk0dQkoeTxgZS0JNQlYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=krs7HqU98dvw+83Hrezy4KFEVXAahYl8uLWYSaJF/drLyS27ajBFQ3+OVymEpbrDIrAsltOEeFaxEK991E/C1W+SLNx8xP74XVln9q9mi6OerqIUdeQ7k7JACyz91ng06H1Y46XU9FwIxH5l4qsnSNRSl+SsSdkah78e+GDLg2U=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=NpSdJF7uqr29I40DlGvfphIx7cVw5m7rMDFUgKXR+ps=;
+	b=aPPqErKIV5RJOsN048uFAydEnZFPMQQb4eTa0zWxE6qaphHY1+QzBk7vamu+5+p2aBBWaQL5KmWyLKn0I+T4GnEXTDIMeDJfRqc2cAkSW+W0pZhr+mZMdLwJPQ4jI/XE0CTTJqs5SsYXnrySntmWidOijy7qqiFuaySfNyKx210=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=mw9lxkRBxKj9JE5m3ARV7nh2815fsUNpafnX9+FKPq0=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_002335_663528_1325CEA1 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20261113_002345_370862_A71358A4 
+X-CRM114-Status: GOOD (  17.38  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,11 +103,16 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-GPIO HPD does not rely on DP controller internal native HPD interrupts.
-Skip native HPD register manipulations to avoid irrelevant operations.
+This commit holds the runtime PM reference across the bind/unbind
+lifecycle on the RK3576 and RK3588 platforms, which rely on the native
+controller interrupt for hotplug detection. The hotplug IRQ is enabled
+only for the platforms which support hotplug detection, i.e., the GPIO
+HPD mode or the native HPD mode on RK3576 and RK3588, so that the IRQ
+thread is not run on the platforms without hotplug support.
 
-Move the hpd_gpiod guard to its caller so the helper operates purely on
-the given bitmask, and mute all native HPD interrupts for GPIO mode.
+The force-connected and force-HPD modes are excluded from the hotplug
+detection support, since the HPD events shall not be reported for the
+fixed panels.
 
 Tested-by: Heiko Stuebner <heiko@sntech.de>
 Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
@@ -116,61 +121,109 @@ Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 ---
 
 Changes in v2:
-- Adapt to the newly added IRQF_ONESHOT related commit and expand the
-  commit msg.
+- Split IRQ enable/disable logic, handle native HPD pin and
+  GPIO/force-HPD modes separately to avoid unbalanced enable_irq()
+  calls. (Sashiko)
 
 Changes in v3:
-- Reorganize the branch layout for hpd_gpiod check.
-- Simplify the commit msg.
+- Modify the commit msg according to the previous commit for moving IRQ
+  enabling/disabling.
 
 Changes in v4:
 - Add Tested-by tag.
 
+Changes in v5:
+- Limit the runtime PM holding to the RK3576/RK3588 platforms, which
+  are the only ones confirmed to support the DP mode hotplug
+  detection, and exclude the boards with a fixed panel, so that the
+  runtime suspend still works when the screen is blanked. (Sashiko)
+- Add a new commit declaring DRM_BRIDGE_OP_HPD on the Analogix DP
+  bridge and reporting the hotplug events via drm_bridge_hpd_notify().
+  (Sashiko)
+
 Changes in v6:
+- Enable the hotplug IRQ only for the platforms which support hotplug
+  detection (the GPIO HPD mode, or the native HPD mode on RK3576 and
+  RK3588). (Sashiko)
+- Exclude the force-connected and force-HPD modes from the hotplug
+  detection support check. (Sashiko)
+- Simplify the commit msg.
 - Add Tested-by tag.
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 2 +-
- drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c  | 7 ++++++-
- 2 files changed, 7 insertions(+), 2 deletions(-)
+ .../drm/bridge/analogix/analogix_dp_core.c    | 46 ++++++++++++++++++-
+ 1 file changed, 44 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index db0aefaf6754..b14a8aa12394 100644
+index 7f6346d45a01..d72b66be6874 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -720,7 +720,7 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
- 	bool hpd_detected;
+@@ -42,6 +42,36 @@
  
- 	irq_type = analogix_dp_get_irq_type(dp);
--	if (irq_type)
-+	if (!dp->hpd_gpiod && irq_type)
- 		analogix_dp_clear_hotplug_interrupts(dp, irq_type);
+ static const bool verify_fast_training;
  
- 	if (!dp->hpd_gpiod && analogix_dp_is_rockchip(dp->plat_data->dev_type))
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index 025da25463a8..af5e5a8ec88d 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -193,6 +193,11 @@ void analogix_dp_config_interrupt(struct analogix_dp_device *dp)
- 	writel(0, dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_2);
- 	writel(0, dp->reg_base + ANALOGIX_DP_COMMON_INT_MASK_3);
++/*
++ * Only the RK3576 and RK3588 platforms are confirmed to support the
++ * DP mode hotplug detection for now, which relies on their HDPTX PHY
++ * and requires the controller to stay powered and clocked.  So the
++ * runtime PM reference is held only for them, and not for the GPIO
++ * HPD mode, the force HPD mode or the fixed panels, which need no
++ * such detection.
++ */
++static bool analogix_dp_require_pm_for_hpd_irq(struct analogix_dp_device *dp)
++{
++	return (dp->plat_data->dev_type == RK3576_EDP || dp->plat_data->dev_type == RK3588_EDP) &&
++	       !dp->hpd_gpiod && !dp->force_hpd && !dp->force_connected_mode;
++}
++
++/*
++ * The hotplug events are reported either through the optional GPIO HPD
++ * pin or through the native controller interrupt, which is confirmed
++ * to work only on the RK3576 and RK3588 platforms.
++ */
++static bool analogix_dp_supports_hpd(struct analogix_dp_device *dp)
++{
++	if (dp->force_connected_mode || dp->force_hpd)
++		return false;
++
++	if (dp->hpd_gpiod)
++		return true;
++
++	return dp->plat_data->dev_type == RK3576_EDP || dp->plat_data->dev_type == RK3588_EDP;
++}
++
+ static void analogix_dp_init_dp(struct analogix_dp_device *dp)
+ {
+ 	analogix_dp_reset(dp);
+@@ -1616,7 +1646,14 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
+ 		goto err_unregister_aux;
+ 	}
  
-+	if (dp->hpd_gpiod) {
-+		analogix_dp_mute_hpd_interrupt(dp, HPD_IRQ_ALL);
-+		return;
+-	enable_irq(dp->irq);
++	if (analogix_dp_require_pm_for_hpd_irq(dp)) {
++		ret = pm_runtime_resume_and_get(dp->dev);
++		if (ret)
++			goto err_unregister_aux;
 +	}
 +
- 	/*
- 	 * Either HOTPLUG_CHG interrupt or PLUG + HPD_LOST interrupt
- 	 * pair can be used to implement hotplug detection.
-@@ -415,7 +420,7 @@ void analogix_dp_clear_hotplug_interrupts(struct analogix_dp_device *dp, u32 irq
++	if (analogix_dp_supports_hpd(dp))
++		enable_irq(dp->irq);
+ 
+ 	return 0;
+ 
+@@ -1629,7 +1666,12 @@ EXPORT_SYMBOL_GPL(analogix_dp_bind);
+ 
+ void analogix_dp_unbind(struct analogix_dp_device *dp)
  {
- 	u32 reg;
- 
--	if (dp->hpd_gpiod || !irq_type)
-+	if (!irq_type)
- 		return;
- 
- 	reg = analogix_dp_irq_type_to_common_int_sta4(irq_type);
+-	disable_irq(dp->irq);
++	if (analogix_dp_supports_hpd(dp))
++		disable_irq(dp->irq);
++
++	if (analogix_dp_require_pm_for_hpd_irq(dp))
++		pm_runtime_put_sync(dp->dev);
++
+ 	drm_dp_aux_unregister(&dp->aux);
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_unbind);
 -- 
 2.34.1
 
