@@ -2,109 +2,103 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 15E3D60A2616
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:39:24 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 29BF0606D605
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:39:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JmAfJE+L;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ZRwcOVz1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TQRoFwdr;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=edbGmpe5
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=w84joUbJ9ev+Rl4Htk0ED/byHBKg6o+YL0csh/EnBMA=; b=JmAfJE+LQb45j3YHMD1/B2uYrk
-	A6cDecC0xQnYfEHbcBKruq/YWiAbK5cTn/3AgIWKOjBifz9n13uMgNwhCeFCnm1fFDZ2RS/6cgeU1
-	Wa1BawI63T3MJPYx7ek9BehqE6Ww1dTZVwfpKIPdr/haJ197VwM1Sagea1GuYu8K94xTEn2wWWxEf
-	m2axAIeslFwSFtvWD7+4mxB/xHAnb7qL4GJ2L9DY2axiVZyjIo6hkQN578VdGI4Gq6VfCg9CQ1Cnd
-	or1M60ZUq0DmTumD/K0xmGa3JTIXmV4DAlAz+JbfG6QTspTS96M354/6zcNNHCMSk6VAL0bI09SQg
-	+hZ3oqSw==;
+	bh=boTnxYw0X2iXKV75jk/fWqL6z4PxQkQK1w3cTVfdL6E=; b=TQRoFwdr97D+WDT1oV5SMuhzcP
+	pRcQDA1pjcz3tEhpZ08b37S4DKJmHsnqNfQQgdgt0+pBL8PttDe2WZcdYnczV8fiVy6skcoPuStu3
+	qegdiXLTDm9fWjHqxQYhodR1jrRxD03HqovdLgOYAuS6urdX7Ae+TRL6+cvz1avnWbdY2T85gVPDW
+	eUSJc/aD/ybDphNtPQkxM8Ix1UaXyO3XkG2vf6XdxSZYUKYOyJmOaqi0mdi6YcUqEd4rNObnZFg9M
+	qMIzvhxEbkn2eAEB//y9htry0R1bff3zcbASqwT5zTbb5lfXSOs1RAQ7tM/e3Y+r7KPCTqeGXXApg
+	d0BWsplg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuJ5-0000000DZao-2GTX;
-	Fri, 13 Nov 2026 16:39:19 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xRuJX-0000000Da3x-1YVF;
+	Fri, 13 Nov 2026 16:39:47 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuId-0000000DZ9g-1O0d;
-	Fri, 13 Nov 2026 16:38:52 +0000
+	id 1xRuJ6-0000000DZdG-3Fyx;
+	Fri, 13 Nov 2026 16:39:20 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E319744734;
-	Fri, 13 Nov 2026 16:38:49 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 279F262451;
+	Fri, 13 Nov 2026 16:39:20 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794587929;
-	b=vIFO0eZ54QPWGfaNZhX33Toxy3+hzM9n425eI5fZ+YKcwyRdMDgCVFTVbMZxW90VvC/9
-	 pS6XJZHWboZQpYTpncBs1Zueg9pDJ8Z44zFn7alHHeqiMD0AleGQ91sfPDNjX8vqhdpA7
-	 v8iMcbnDMtd717Sc+TrWWLEyGPzIRJODtM6qgfgwXgToCR9m+VTlXqv0ESrOprfNU1tS8
-	 OQCXDuR8ablSpTwGzB9E7veNq7dGtgPdv0CsL3XbjPWGS5F1WTQ81o6fimTi/Jeis3tuk
-	 /f6VTKJKequYDw2OiuRbvfXeiwE+unx070ns02p7q18ovtmatufhAeFbht/B8iqA2/Q==
+	t=1794587960;
+	b=QBzcu6yXBZSZpqIfMPoz8DPpj2fMKkGXa4INLmo8ffURM4peZqd0kBh38m8HhNb+alj2
+	 fl5s2F2e+0VSyTUhnRskw5p8zMvK5PIgpAwpVGiDK2HGpp3Dv0PBARKNmk5sVhoAR7bTp
+	 7dlXvLf9bfqtwrAakc5PTuI7UcC5cj4fXuuy5L9P1cF5hPn8oX40L5hK6o8jWlaA/sjcN
+	 GjEn59ZyAor75w1ROafUNOeEg9RoAUhLT1+jKZBT4Q64rx8X5ltDK0NsB8W4wOvLrd6uv
+	 wRSliB+1St7y1NRbguCr28MLVPIzlrpHurHhugyDwlAg6CJW5iR8hlx7LyTNPzSnGug==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794587929;
-	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
-	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
-	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=GLd3QVwK7lA3DRraSPd91wrloby7B/AUObiRFqJYDz8=;
-	b=yUdc6Oqd8oiXL+Wc37Xg5B71J4/xILt6aH3ZRvUOZf05uBjDUzREqWFOFhzN1ym3t7vZ
-	 BX0AGOhZRcgjrF94AAn3vTFaGey53kAdstaGn3srCwlwnDsYhOHJJmQvx043HYA8cZ3Aa
-	 qrE7hW6YFT5G4hFC9otjCzKEV3TBqeGET9MZdJiawInBUKKIWCLv6YeXFgpc+8a35xiqn
-	 m0mTQTJ0GcdnxFZpBaBxw7P72HqHbEdnwwUuI69V/7nAXLXOz0o4ujilsumMsVIXfW/Rc
-	 dDcwMAb58HVbCn6ZzZ1cKlTCsEeAKYOOorh01Y+yHVkFTufmkRkwzGfRd8wQkwSSyJA==
+	c=relaxed/relaxed; t=1794587960;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=YsJoT5vV2LhXiRt6uTgKvwX6IT1pNPlfM93Jnxpg4QA=;
+	b=S8Yj/9JCKLkRodfWrr5cO2icA5irQy2gtIzrmZP780uRWDfGJvQcu2iUNyjpt+7sdAvo
+	 tmwB1Q+4+xB8enQHJYuNNl5gaN8NPfI5dRDGeEd9RHbpNtib1G1fFZSAdrED2aSfo+MO1
+	 Xm1WgTY4WKq9VROnuXlMuuYVJxeeB4ViXPtR2tBJ26E2LkQTJUSAJhPe4LGnDtBUnZUji
+	 wItJSRJyFB08D9PPHnQeEW9dLrYdOAeo5bxms6FoEXzLyE3TibGcc7QGfi9wXmKWpyuS3
+	 tIOUJxvsJIgAQCXiNt64Iaj0t2EsrUQ1dZbVkxHNTmE2iRaRiDCVsOhzAlc3+XgGvLw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id C77C91F000C4;
-	Fri, 13 Nov 2026 16:38:48 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 078AA1F000C4;
+	Fri, 13 Nov 2026 16:39:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794587929;
-	bh=GLd3QVwK7lA3DRraSPd91wrloby7B/AUObiRFqJYDz8=;
-	h=From:Subject:Date:To:Cc:Reply-To;
-	b=ZRwcOVz1fTopoSdNnFEhZoXufHagEPWvoDZv5OZ/sLPhIqApJHa25I0VL/FCYKGpp
-	 Q3wmUdk8AygRE+nlYBJ9M9ROcQsHnwuvdZuGhzD8N8bM7rTpOrD2W5gQWb4TjQy5P1
-	 2ZsKQsCW7S9xDd2nJ7U7rgJJWeyP3YrWfTPx5gVWSDUNtF/iSHm6Ob47iEWhOonZm0
-	 KYr/lYx0l3DZMOyvOV7iBvO03tEUOpynq+cGyBCVa6g3o00FIkjENy6nXuOWuLJuId
-	 zd6xgJ8F8CzbQcP4ZZeKEcf9CTrRXRklPp+MlJNd7xXz47P7HNCtRN0Bu3jNStbxPH
-	 f9JDXBQtD7qSA==
+	s=k20260515; t=1794587959;
+	bh=YsJoT5vV2LhXiRt6uTgKvwX6IT1pNPlfM93Jnxpg4QA=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=edbGmpe5Pwi+R0Phxga94HCKttQilyaVEkobep0dGphkf4wzEXa/8D0snKxVbC0Ej
+	 7ZTCKoumGouzc7Of0OP1qb+Fi89Ijx+L4CsqW0QTy8wRoej/TOqzglhl0WFp9O8zsr
+	 ZLlyk2E+h2UzUMGsspfZuDCLo4dgmg2KI7MqB196QK9a5Hn7VzH1d79n5As2qxzPEY
+	 AGMPfahtCYiyHdmrfhE9gzlRkoxJBbFJ6URqmx6RNRhAkLNAgM6OequsHFvJKQT1IJ
+	 m3cVh7aFhxq+SWvMQyKkcy/CI+dsHSUgg8D26tGiRhVXpBrjZK13IW2zdCI9u9ppy3
+	 1Blu56RJV0wVw==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 223A949992;
-	Fri, 13 Nov 2026 16:38:48 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 8E094499A6;
+	Fri, 13 Nov 2026 16:39:18 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Subject: [PATCH 0/9] RK3588: Enable the PHP SMMU
-Date: Fri, 13 Nov 2026 16:38:46 +0000
-Message-Id: <20261113-mmu600-php-v1-0-231196049a3b@gmail.com>
+Date: Fri, 13 Nov 2026 16:39:19 +0000
+Subject: [PATCH v3 2/8] drm/rockchip: vop2: Don't use uninitialised
+ dividers on RK3588
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/z2N0W4CIRBFf2XDc6dhQDBsTON/GB8GGJSmKF12T
- RPjv5fVpm9zkjvn3EXjKXMT43AXE99yy9dLB3wbRDjT5cSQY2ehpLKIqKGUxUoJ9VxBartNvE1
- opRP9oU6c8s9Tdji+uC3+k8O8Gv4WE38vvTK/ZqJwa/SsjMPuP9J6BW4aasgMNa6nBO3Yb5JDZ
- 5Tbnwrlr/dwLR+r11Nj6FDyPA5BeyI2CQmN3ZgQI8XglXfkY+RkYlIOk3Hi+Hj8Aj6BXwAAAQA
- A
-X-Change-ID: 20261113-mmu600-php-0367fe7f1609
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- David Wu <david.wu@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>, 
- Niklas Cassel <cassel@kernel.org>, Serge Semin <fancer.lancer@gmail.com>, 
- netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, 
- Pranjal Shrivastava <praan@google.com>, Will Deacon <will@kernel.org>, 
- Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev, 
- Shawn Lin <shawn.lin@rock-chips.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Arun Iyengar <aiyengar1990@gmail.com>
+Message-Id: <20261113-vop2-fixes-v3-2-08ae37e83b5c@gmail.com>
+References: <20261113-vop2-fixes-v3-0-08ae37e83b5c@gmail.com>
+In-Reply-To: <20261113-vop2-fixes-v3-0-08ae37e83b5c@gmail.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andyshrk@163.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Piotr Zalewski <pZ010001011111@proton.me>, 
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+ Damon Ding <damon.ding@rock-chips.com>, dri-devel@lists.freedesktop.org, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794587927; l=2938;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794587957; l=2183;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=Jmo5oZh4/PhZlA1l9HdDGiyc/oiQRtE0uFFYTpbR1r8=;
- b=LclplOwvlOIHkFOlOW5OQnvIF078toyrzCc0cl4+5/NgniHUdg1bY9c9ymu8UBH1xAs51lm01
- A+/isLOIibdBFDd0lHBhlsHMVBXeTuzftGlgXghFJ5QxBCWx6E4SoAH
+ bh=Lc7BUM364hkyo1nY0cQj9eSkLiB7Dn5RbOTOJc1X7j0=;
+ b=jSag1E1DXsleRCrlZtdOXT6hQo3zaRqaKCsaluyVcAUyhAGK1/1lOYxMWFvOI7y9rQiLuN6vg
+ kqup9p+yrgaAyUPTysWEKwZ8YB+zznIJaLEWiFVnyZA2ZCtS6N9ADxt
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -131,66 +125,68 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The RK3588 PHP SMMU (MMU600_PHP) is disabled because nothing programs
-the StreamIDs of its masters (GMAC0/1, SATA0-2, USB3OTG_2) in the PHP
-GRF. Program them, attach the masters and enable the SMMU.
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Shawn Lin asked whether mmu600_php should be enabled too; Heiko asked
-for the same handling as the PCIe SMMU [3].
+rk3588_calc_cru_cfg() converts all four dividers with ilog2(), but every
+interface only sets the ones it uses: dclk_out_div is left uninitialised
+for HDMI, eDP and DPI, if_dclk_div for DP, MIPI and DPI, and
+if_pixclk_div for DP and DPI. For HDMI and eDP the uninitialised
+dclk_out_div is then written to RK3588_VP_CLK_CTRL.
 
-Patch 7 needs [1]. Please hold the last patch until [2] is merged:
-PD_PHP is off in deep suspend and the SMMU resumes in bypass (GBPA read
-as 0).
+Set the dividers an interface doesn't use to 1.
 
-Tested on an Orange Pi 5 (RK3588S), 7.3-based with [2] (my Tested-by
-is [4]):
-- SATA0 root, GMAC1 and a USB3 disk translated: 1 GiB sha256-checked
-  on each; three reboots; no SMMU events or bus errors;
-- deep suspend 3/3 with all three translated; s2idle 3/3 with USB3OTG_2
-  and GMAC1. TF-A v2.15 kept the StreamIDs; patch 6 restored six zeroed
-  for the test (pm_test=core).
-Not tested: GMAC0, SATA1/2, the series without [2], the reset (no
-driver uses it).
-
-Developed with Claude (Anthropic), which wrote the code and the commit
-messages. I reviewed every change.
-
-[1] https://lore.kernel.org/r/20261113-smmu-v3-pcie-pd-v3-0-39eb4f919529@gmail.com
-[2] https://lore.kernel.org/r/20260929034510.2023173-1-praan@google.com
-[3] https://lore.kernel.org/r/9_7qTfdNSViwtNUGq9D13w@sntech.de
-[4] https://lore.kernel.org/r/179455903885.2418534.14656921897583011972@gmail.com
-
+Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
+Suggested-by: Damon Ding <damon.ding@rock-chips.com>
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
-Arun Iyengar (9):
-      dt-bindings: net: rockchip-dwmac: Allow iommus
-      dt-bindings: ata: rockchip,dwc-ahci: Allow iommus
-      dt-bindings: soc: rockchip: grf: Allow a clock for the RK3588 PHP GRF
-      soc: rockchip: grf: Assign the StreamIDs of the RK3588 PHP SMMU masters
-      arm64: dts: rockchip: Add the PHP GRF clock on RK3588
-      soc: rockchip: grf: Restore the RK3588 PHP StreamIDs after system suspend
-      arm64: dts: rockchip: Add the clock and reset of the RK3588 PHP SMMU
-      arm64: dts: rockchip: Attach the masters of the RK3588 PHP SMMU
-      arm64: dts: rockchip: Enable the RK3588 PHP SMMU
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
- .../devicetree/bindings/ata/rockchip,dwc-ahci.yaml |   3 +
- .../devicetree/bindings/net/rockchip-dwmac.yaml    |   3 +
- .../devicetree/bindings/soc/rockchip/grf.yaml      |  12 ++-
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   8 +-
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi     |   2 +
- drivers/soc/rockchip/grf.c                         | 103 +++++++++++++++++++++
- 6 files changed, 128 insertions(+), 3 deletions(-)
----
-base-commit: c3baae5f1a15645cddadcb2b9abddef5df291f59
-change-id: 20261113-mmu600-php-0367fe7f1609
-prerequisite-message-id: <20261113-smmu-v3-pcie-pd-v3-0-39eb4f919529@gmail.com>
-prerequisite-patch-id: 51134fb38514fa92f20d3831e7905b02c7fbaae6
-prerequisite-patch-id: c59ab0be12ec964dc1698dfa3e0d5bfae82d0c54
-prerequisite-patch-id: 845e9980a7e0de45c746b7d8b6fd439033e08fdd
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index c44648e1bc0d..f340aba5bfd1 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -1597,6 +1597,7 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
+ 		 */
+ 		*if_pixclk_div = 2;
+ 		*if_dclk_div = 4;
++		*dclk_out_div = 1;
+ 	} else if (vop2_output_if_is_edp(id)) {
+ 		/*
+ 		 * edp_pixclk = edp_dclk > dclk_core
+@@ -1609,6 +1610,7 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
+ 		 */
+ 		*if_pixclk_div = K;
+ 		*if_dclk_div = K;
++		*dclk_out_div = 1;
+ 	} else if (vop2_output_if_is_dp(id)) {
+ 		if (output_mode == ROCKCHIP_OUT_MODE_YUV420)
+ 			dclk_out_rate = v_pixclk >> 3;
+@@ -1622,6 +1624,8 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
+ 			return 0;
+ 		}
+ 		*dclk_out_div = dclk_rate / dclk_out_rate;
++		*if_pixclk_div = 1;
++		*if_dclk_div = 1;
+ 	} else if (vop2_output_if_is_mipi(id)) {
+ 		if_pixclk_rate = dclk_core_rate / K;
+ 		/*
+@@ -1643,8 +1647,12 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
+ 		 * mipi pixclk == dclk_out
+ 		 */
+ 		*if_pixclk_div = 1;
++		*if_dclk_div = 1;
+ 	} else if (vop2_output_if_is_dpi(id)) {
+ 		dclk_rate = v_pixclk;
++		*dclk_out_div = 1;
++		*if_pixclk_div = 1;
++		*if_dclk_div = 1;
+ 	}
+ 
+ 	*dclk_core_div = dclk_rate / dclk_core_rate;
 
-Best regards,
---  
-Arun Iyengar <aiyengar1990@gmail.com>
+-- 
+2.55.0
 
 
 
