@@ -2,75 +2,66 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD1B3606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 05:15:39 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3BF32606A88C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 05:51:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=iBxlp7b5;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=cw2pXXDf
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BVfgNIqT;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=lkNi0WJe
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
-	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=GOF3MU0jlu/Xg3KfCzCdP0ZJqwFhHSRs2gbYdGvMHE0=; b=iBxlp7b565q27RREiD7rKrTYOQ
-	cDNpOOqlAkAsshPwAO9pP3zYTcd91J+58aUS8cN5sPIESoPCPObKgITmBlfeVFy/Ww2cizFcfJDgk
-	RCN52ODC3N+PxsxaetIY05h2VppfaFrRUBc0kwH0mTrkmaaXYryCkXvsE+t1I7bRNFgyqEQVpzgFx
-	NWve1OrEF4+NVM+hxxneivjV1XBeNVk1nVxPAxSP+zQjJIgRu45hYWKJmzzrh+FedHEnnnI7I17Ac
-	XJSKgp0UrSDSo9Vz0CZ37kxhCI5u4MN8XoqyRXaEnZf1W4WbvupM1frVn3lcyQx7f3It9Z4pXisxS
-	yE3o9y3g==;
+	bh=f8WdvARV0Dr3JQV3KIfOdIymonRTwUTEillIZivNZ/0=; b=BVfgNIqTQDiB6VwU5h6RI9S9J1
+	yip6JeXERwYKMPVZf5l8YfaoUEZOnUsqkhcc1obVEe0xzughSRMkvl3HJYGZZ7zGY1oaf9FT1oi3R
+	absTfrEz7ghaiOAHUTPn06zV/O3PTBNFbGuxy0u0FGd1jkcOZ5u74KF3axRjo4zWZu4M0Yk0DmcPA
+	n1bGu75KfpUmUKqPEhQ6TaXbfZslWxaSlknSWIYIVeVrJRJ4kCp8cTPslDKQF6vPRvw0D4RXW0v/x
+	j5rewYH/gm9momc8f7leo4cHhZPAkALCfsMHNd8vxQqRIoEJb+xTWulcrDVsexoYANJJrkZIxt7zf
+	vY2Hve8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRjdQ-0000000Bfo3-0tRu;
-	Fri, 13 Nov 2026 05:15:36 +0000
-Received: from out203-205-221-192.mail.qq.com ([203.205.221.192])
+	id 1xRkC9-0000000Bisr-1GU0;
+	Fri, 13 Nov 2026 05:51:29 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRjdL-0000000BfnG-1fte;
-	Fri, 13 Nov 2026 05:15:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1794546927; bh=S3xHepTTAVm9e0c+I4Yy1yIlpEnalfmaWL87RSx29sU=;
-	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=cw2pXXDfPczqzqVVe33/PTlkp7nwEh2+sdrjXfoN7g0xXGYK5emLGT6XiwYwDLCFM
-	 MSoW+UvB0yvYeGIfS7kqJPpJ6weINYDr6mEZC+TuxGpA040y4Gl14Mma3GwphW3N57
-	 COp+QGP22fihX+SruyKFyhl2e2isrChHnwNoYAr0=
-X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
-X-QQ-XMAILINFO: OQac6g2KrvnW2iSWwmf6ohc8qhiL9C3TsNqbroi2fdR0HWZzFA1ovpBO7LEtZX
-	 rsB/1LC5019MdcWDKoCznAOiL4XGKRih3rL1/iE5Q58GB4A9v2Jg4fgbWBnCMQwqDYvfdzPMrTKcC
-	 5DAMkCWrIx/aDkJLX4sBT+r0FWckcT88xnMpoR4C/69Zr6e7p/mf3zWxGbSYQHOpD+TM7e31L/uYv
-	 PksXX6RJYJOsuMOqZ06ykjngEsWzGk3oDxghGjtE8X2jVdRubINKXs5ONZSK64XQk5NfFpyypgPU5
-	 kouGL2bGdXWArC2BhVo+z0C4y5JMtVeavBZhJ8gKNXQgArSGWA/+oXHNWy/n71jDT6mX7JuRtWMun
-	 r9S3WrobTIE7NPGG08zB9LBkyAAJ7NkHtnSL404vmXarFa1LgVmxL/tdC12Y+xfL9hL3g0Z4xZcYU
-	 c9cBqNpSQkm0TyypeieJ8zYlTA7OsZfuHWLyUlWiargVvqvzXxwsRc7x8i0PTbkRCOZQWmmpXpLH8
-	 8nMl9W/v6uftxZCf0gMpQSYmJgClt/eEhWyou2ePCvjPYBK6Blw+i6seyQVvKfcyKoAKoyWclyDma
-	 M3Ar2Ql55jPSBGg+9HvN/aLcgmX6pbilMnAosZIGo7zmBdwFYJwBEW30XdBly4sbXmIZCWMSN9Jjm
-	 vu/+icjnDSKoz6p56zYeio10SmJHOzMrERw+sBg5AhWgoJm324II8qNaQ2DnncwLi5EfAFN89EIS9
-	 DsC5O3HW9E2FpfcZjmYCgcTg1C9URXl92MFoM39HKnKLeWZymSG25CUl5F/RifMc10yyEZl5LPdPD
-	 HXo7/lZEM6P1kVfmU7skxUEy/6Znq/cSmEai4DYL0+60b/Kxqa1HHDC1795g9XgZBhL1M6huXHlsg
-	 CjTay+JkuCfB4J5ClevHRmWJILvZaoCa+75uW+NTRK+WKwBEKNUmWu2KcJC++vmM/cQWAIvRciwLL
-	 DtlwqNZSa6gzlS+CMjj7CTAgr7z6aO/hJidESPpAHzhlR23Elods0f/LcOKtl2PegD4NSIzUR+lJf
-	 5lwX+/NDXTLZtod7DlmzFMRu8sjxrCpFBHhNI
-From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
-To: "=?utf-8?B?bmV0ZGV2LWJvdCtzYXNoaWtv?=" <netdev-bot+sashiko@kernel.org>
-Cc: "=?utf-8?B?bWts?=" <mkl@pengutronix.de>, "=?utf-8?B?a2VybmVs?=" <kernel@pengutronix.de>, "=?utf-8?B?bWFpbGhvbA==?=" <mailhol@kernel.org>, "=?utf-8?B?aGVpa28=?=" <heiko@sntech.de>, "=?utf-8?B?c29ja2V0Y2Fu?=" <socketcan@hartkopp.net>, "=?utf-8?B?ZGF2ZW0=?=" <davem@davemloft.net>, "=?utf-8?B?ZWR1bWF6ZXQ=?=" <edumazet@kernel.org>, "=?utf-8?B?a3ViYQ==?=" <kuba@kernel.org>, "=?utf-8?B?cGFiZW5p?=" <pabeni@redhat.com>, "=?utf-8?B?aG9ybXM=?=" <horms@kernel.org>, "=?utf-8?B?Y29yYmV0?=" <corbet@lwn.net>, "=?utf-8?B?c2toYW4=?=" <skhan@linuxfoundation.org>, "=?utf-8?B?cmR1bmxhcA==?=" <rdunlap@infradead.org>, "=?utf-8?B?d2c=?=" <wg@grandegger.com>, "=?utf-8?B?bGludXgtY2Fu?=" <linux-can@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, 
-	"=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bGludXgtZG9j?=" <linux-doc@vger.kernel.org>, "=?utf-8?B?c3RhYmxl?=" <stable@vger.kernel.org>
-Subject: Re: [PATCH net v9 08/10] can: rockchip_canfd: serialize TX with bus-off and restart
+	id 1xRkC7-0000000BisE-3NWg;
+	Fri, 13 Nov 2026 05:51:27 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 8DB6D61404;
+	Fri, 13 Nov 2026 05:51:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 117941F000C8;
+	Fri, 13 Nov 2026 05:51:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794549086;
+	bh=GjFNdrxT3EZFR3J6YnNd1f/Z2k934t/npf1oL+Xxd74=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=lkNi0WJeOwuHsOONt4kswun2pDApIBs0KFMSAwcGgXveBRLLWwsWzxZiBA+wmzVRm
+	 aDXJz5A/WG+ht+rX6gAiKuUcIys5pvIHz/8YRLkgVnR+d3vXeNdO9ly1lcAzmvoUgL
+	 750MWv3GfoMcL1A8aFvgbMO35MyG+jKdssBcJW0K2XqbPyWTYPVtro3PedEkB7txfa
+	 S+csPzK/tfaFktsR9fkycsF0Zo3imP1STx+9L4YL1z22Jib8n8p1qrSdWZ3MRr2KBU
+	 qjsVvgzJnMahByMt1sTaQD+OGz89baO2mADlxNS28Fg8/Mx5bQzrvn+ATWEROOYk/V
+	 QT4rDzwwq0AbQ==
+Subject: Re: [PATCH net v5 1/4] net: phy: move irq_suspended and irq_rerun out
+ of the bitfield
+From: netdev-bot+sashiko@kernel.org
+To: iav@iav.lv
+Cc: andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
+ davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com,
+ maxime.chevallier@bootlin.com, lukas@wunner.de, rafael.j.wysocki@intel.com,
+ wei.fang@nxp.com, niklas.soderlund@ragnatech.se, paul@pbarker.dev,
+ florian.fainelli@broadcom.com, opendmb@gmail.com, Thangaraj.S@microchip.com,
+ shenwei.wang@nxp.com, Haoning.CHENG@cn.bosch.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Date: Fri, 13 Nov 2026 05:51:24 +0000
+Message-ID: <179454908461.2199510.508928890759611464@kernel.org>
+In-Reply-To: <20261111-b4-phylib-mac-pm-irq-v3-v5-1-bbfdb5afb7d3@iav.lv>
+References: <20261111-b4-phylib-mac-pm-irq-v3-v5-1-bbfdb5afb7d3@iav.lv>
+X-sashiko-severity: Low
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0
-Date: Fri, 13 Nov 2026 13:15:24 +0800
-X-Priority: 3
-Message-ID: <tencent_AD03F810B3FDBC9A3A69DA65641264469409@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-References: <20261111-rockchip-canfd-restart-close-v9-8-6643f3825ba3@qq.com>
-	<179452273462.488853.12444870521885218967@kernel.org>
-In-Reply-To: <179452273462.488853.12444870521885218967@kernel.org>
-X-QQ-mid: xmsezb41-0t1794546924twb3yiq29
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_211531_768273_A35A5D62 
-X-CRM114-Status: GOOD (  12.79  )
-X-Spam-Score: -1.9 (-)
+MIME-Version: 1.0
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,56 +71,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
-
-> [Severity: Medium]
-> Is irq_suspended working as a lock here?
-
-The flag is an IRQ entry gate used with device interrupt masking and
-synchronize_irq(). During restart, the driver masks and flushes device
-interrupts, sets the flag, then drains handlers before reinitialization.
-In this tree, the IRQ descriptor lock used by synchronization and
-dispatch orders the flag store against later handler entry. The
-release-clear publishes the initialized state to the handler's
-acquire-load.
-
-Open sets the gate before request_irq(), when no previous handler is
-registered, so there is no old handler to drain there. TX and timecounter
-state have their own locks. The BEC getter is outside this IRQ protocol;
-its cache synchronization issue predates the patch. I have not found a
-concrete new race in this sequence that warrants replacing the gate with
-another lock.
-
-> [Severity: Low]
-> Is the CAN core known to be out of reset when this INT_MASK write
-> arrives?
-> ...
-> Should there be a short settle delay after deassertion, or a check of the
-> read-back value?
-
-On RK3588 rev2.2, I tested 300 reset samples per controller, 600 in total,
-covering open, close and direct restart callbacks while idle. The tests
-preserved the production order: deassert, write 0x7fff, then first
-readback, with no extra MMIO, logging or delay before that write. Every
-first readback was 0x3fff; bit 14 consistently read as zero and was not
-mistaken for a lost write.
-
-These tests found no lost first mask write or evidence that this change
-introduces or worsens the suspected problem.
-
-Best regards,
-Cunhao Lu
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhhbmsgeW91IGZvciB5b3VyIGNvbnRyaWJ1dGlvbiEgU2FzaGlrbyBBSSByZXZpZXcgZm91bmQg
+bW9yZSBzZXZlcmUKaXNzdWUocykgaW4gb3RoZXIgcGF0Y2hlcyBvZiB0aGlzIHNlcmllcy4gVGhp
+cyBtYWlsIGlzIG9ubHkgYW4gRllJLCBpbiBjYXNlCnlvdSB3YW50IHRvIGFkZHJlc3MgdGhlIG5p
+dCBwaWNrcyBiZWxvdyB3aGVuIHlvdSByZXNwaW4uCgpMb3cgcHJpb3JpdHkgLyBuaXQgcGlja3Mg
+Zm9yIHlvdXIgY29uc2lkZXJhdGlvbjoKCi0gW0xvd10gVGhlIHBhdGNoIGFkZHMgdGhlIGNvbW1l
+bnQgIi8qIFdyaXR0ZW4gd2l0aG91dCBwaHlkZXYtPmxvY2ssIHNvCiAgbm90IGJpdGZpZWxkcyAq
+LyIgYWJvdmUgaXJxX3N1c3BlbmRlZCBhbmQgaXJxX3JlcnVuIGluIHN0cnVjdOKApgoKLS0KCm5l
+dDogcGh5OiBtb3ZlIGlycV9zdXNwZW5kZWQgYW5kIGlycV9yZXJ1biBvdXQgb2YgdGhlIGJpdGZp
+ZWxkCgpUaGlzIGNvbW1pdCB0dXJucyBpcnFfc3VzcGVuZGVkIGFuZCBpcnFfcmVydW4gaW4gc3Ry
+dWN0IHBoeV9kZXZpY2UgZnJvbQoxLWJpdCBiaXRmaWVsZHMgaW50byBib29scy4gcGh5X2ludGVy
+cnVwdCgpIHNldHMgaXJxX3JlcnVuIHdpdGhvdXQKcGh5ZGV2LT5sb2NrLCBhbmQgdGhhdCB3cml0
+ZSBjb3VsZCBsb3NlIGFuIHVwZGF0ZSB0byBsaW5rIGFuZAphdXRvbmVnX2NvbXBsZXRlLCB3aGlj
+aCBzaGFyZSB0aGUgc2FtZSB3b3JkLiBBZnRlciB0aGlzIGNoYW5nZSB0aGUgdHdvCmZsYWdzIGFy
+ZSBzZXBhcmF0ZSBtZW1vcnkgbG9jYXRpb25zLgoKPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9saW51
+eC9waHkuaCBiL2luY2x1ZGUvbGludXgvcGh5LmgKPiBpbmRleCAyMWFmYzIwODJiMTc0Li5iYmUy
+OGZmOTdlNTFjIDEwMDY0NAo+IC0tLSBhL2luY2x1ZGUvbGludXgvcGh5LmgKPiArKysgYi9pbmNs
+dWRlL2xpbnV4L3BoeS5oCj4gQEAgLTcyNiw4ICs3MjYsOSBAQCBzdHJ1Y3QgcGh5X2RldmljZSB7
+Cj4gIAo+ICAJLyogSW50ZXJydXB0cyBhcmUgZW5hYmxlZCAqLwo+ICAJdW5zaWduZWQgaW50ZXJy
+dXB0czoxOwo+IC0JdW5zaWduZWQgaXJxX3N1c3BlbmRlZDoxOwo+IC0JdW5zaWduZWQgaXJxX3Jl
+cnVuOjE7Cj4gKwkvKiBXcml0dGVuIHdpdGhvdXQgcGh5ZGV2LT5sb2NrLCBzbyBub3QgYml0Zmll
+bGRzICovCgpbU2V2ZXJpdHk6IExvd10KVGhpcyBpc24ndCBhIGJ1ZywgYnV0IHRoZSBuZXcgY29t
+bWVudCBzdGF0ZXMgYSBydWxlIHRoYXQgdGhlCm5laWdoYm91cmluZyBmaWVsZHMgZG9uJ3QgZm9s
+bG93LiBTZXZlcmFsIG9mIHRoZW0gYXJlIHdyaXR0ZW4gd2l0aG91dApwaHlkZXYtPmxvY2suIFRo
+ZXkgYXJlIHN0aWxsIDEtYml0IGJpdGZpZWxkcyBpbiB0aGUgc2FtZSBydW4gYXMgbGluawphbmQg
+YXV0b25lZ19jb21wbGV0ZSwgYW5kIHRoZSBzdGF0ZSBtYWNoaW5lIHdyaXRlcyB0aG9zZSB0d28g
+dW5kZXIgdGhlCmxvY2suCgppbnRlcnJ1cHRzLCB0aGUgZmllbGQganVzdCBhYm92ZSwgaXMgd3Jp
+dHRlbiBpbiBwaHlfY29uZmlnX2ludGVycnVwdCgpOgoKZHJpdmVycy9uZXQvcGh5L3BoeS5jOnBo
+eV9jb25maWdfaW50ZXJydXB0KCkgewogICAgLi4uCglwaHlkZXYtPmludGVycnVwdHMgPSBpbnRl
+cnJ1cHRzID8gMSA6IDA7CiAgICAuLi4KfQoKVGhpcyBpcyByZWFjaGVkIGZyb20gcGh5X3JlcXVl
+c3RfaW50ZXJydXB0KCkvcGh5X2ZyZWVfaW50ZXJydXB0KCkuIFNvbWUKUEhZIGRyaXZlcnMgYWxz
+byBzZXQgaXQgaW4gdGhlaXIgc3VzcGVuZC9yZXN1bWUgcGF0aHMgKGRwODM4NjcsIG1pY3JlbCwK
+bWFydmVsbC04OHEyeHh4KS4KCnBoeV9zdXNwZW5kKCkgd3JpdGVzIHdvbF9lbmFibGVkIGFuZCBz
+dXNwZW5kZWQ6Cgpkcml2ZXJzL25ldC9waHkvcGh5X2RldmljZS5jOnBoeV9zdXNwZW5kKCkgewog
+ICAgLi4uCglwaHlkZXYtPndvbF9lbmFibGVkID0gcGh5X21heV93YWtldXAocGh5ZGV2KSB8fAog
+ICAgLi4uCgkJcGh5ZGV2LT5zdXNwZW5kZWQgPSB0cnVlOwogICAgLi4uCn0KCm1kaW9fYnVzX3Bo
+eV9zdXNwZW5kKCkgYW5kIG1kaW9fYnVzX3BoeV9yZXN1bWUoKSB3cml0ZQpzdXNwZW5kZWRfYnlf
+bWRpb19idXM6CgoJcGh5ZGV2LT5zdXNwZW5kZWRfYnlfbWRpb19idXMgPSAxOwoKVGhlIGNvbW1p
+dCBtZXNzYWdlIGl0c2VsZiBuYW1lcyB0aGVzZSB1bmxvY2tlZCB3cml0ZXJzIG9mIHRoZSBzYW1l
+IHdvcmQuCgpMYXRlciBpbiB0aGUgc2VyaWVzLCAibmV0OiBwaHk6IHBvc3Rwb25lIFBIWSBpbnRl
+cnJ1cHRzIGR1cmluZyBzbGVlcAp3aXRoIE1BQy1tYW5hZ2VkIFBNIiBhZGRzIGFub3RoZXIgYml0
+ZmllbGQgdG8gdGhpcyB3b3JkLCB3b2xfcGh5OjEuCnBoeV9zdXNwZW5kKCkgd3JpdGVzIGl0IHdp
+dGhvdXQgcGh5ZGV2LT5sb2NrLCBhbmQgcGh5X2lycV93YWtlX3NvdXJjZSgpCnJlYWRzIGl0LgoK
+Q291bGQgdGhlIGNvbW1lbnQgc2F5IHRoYXQgdGhlc2UgdHdvIGZpZWxkcyBhcmUgc3BsaXQgb3V0
+IGJlY2F1c2UKcGh5X2ludGVycnVwdCgpIHdyaXRlcyB0aGVtIGZyb20gdGhlIElSUSB0aHJlYWQ/
+IEFzIHdyaXR0ZW4sIGEgcmVhZGVyCmNvdWxkIGFzc3VtZSB0aGUgcmVtYWluaW5nIGJpdGZpZWxk
+cyBhcmUgYWxsIGxvY2stcHJvdGVjdGVkLgoKSWYgYW55IG9mIHRob3NlIHVubG9ja2VkIHdyaXRl
+cnMgY2FuIHJ1biBhdCB0aGUgc2FtZSB0aW1lIGFzIGVhY2gKb3RoZXIsIG9yIGFzIHRoZSBsb2Nr
+ZWQgbGluay9hdXRvbmVnX2NvbXBsZXRlIHdyaXRlcnMsIHRoZSBsb3N0LXVwZGF0ZQpwcm9ibGVt
+IHRoaXMgY29tbWl0IGRlc2NyaWJlcyB3b3VsZCBzdGlsbCBhcHBseSB0byB0aGVtLiBJIGhhdmVu
+J3QKc2hvd24gdGhhdCBjb25jdXJyZW5jeSBoZXJlLgoKPiArCWJvb2wgaXJxX3N1c3BlbmRlZDsK
+PiArCWJvb2wgaXJxX3JlcnVuOwo+ICAKPiAgCXVuc2lnbmVkIGRlZmF1bHRfdGltZXN0YW1wOjE7
+Cj4KCi0tIApTYXNoaWtvIEFJIHJldmlldyDCtyBodHRwczovL25ldGRldi1haS5ib3RzLmxpbnV4
+LmRldi9zYXNoaWtvLyMvcGF0Y2hzZXQvMjAyNjExMTEtYjQtcGh5bGliLW1hYy1wbS1pcnEtdjMt
+djUtMC1iYmZkYjVhZmI3ZDMlNDBpYXYubHYKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
