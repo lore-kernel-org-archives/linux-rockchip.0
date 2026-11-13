@@ -2,69 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EAE0A606A8BD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 08:37:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D5290606B1DB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 08:39:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FVEcHFaO;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PBzV4Wsp
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DHqzkYiV;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=IhrZGzHH
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=OJQhsqD6Cx6qaHhXkqoh2eVE9GGtkme4OeFCprv94d8=; b=FVEcHFaOqm9VAbFS3UZCFosb9s
-	zqTfZ/FLZfEWbo5CXxGUWMTYDzi5Wyjnz7nzIMf0Bm5xhdRVjHpRH0vJUQD6uS0ebAkx63GE+uVUb
-	ByR3NWGW0//syFEaEzhrM10qlO7hjMc9QObM2zrKbsoS/jkFymuVmgPqw0FhSIpqfhDKtu4Cmdie8
-	XktgueK01c9MIx/k5Ll2sgnHaXIRpp/Xw8nfA+W/3LzpW6yQMF0+4JpmMs6ui46WVhCPacqASJD+m
-	cpJQLYQri+DOZ2QjxBKLDg05Lng64s6T5W4gqLcc4cUyVqQf2zL0DlsCGoNL+aFRDyjrh3JAEOp5r
-	rxlapdbA==;
+	bh=TCQt2gF9sd673cgJ5Jb+K7nqTTL9JYf5CBZ6Jduu5k8=; b=DHqzkYiVF3Zm+4Mzi/2ezyZc3V
+	SLdlgCmrSv1iwetenuXSwf9FmgGhuvkGSZYKadkA1VWMNFCjco67NRQDSrKbeJp3AJbyTgqw+NMc+
+	QQ0HXPtGL6D7cz4vlOVGgWbCk8ggtMxcyrtszoMYEyHPlREFOEzNk+UenoTUnW6HPoZl/DktORUh8
+	nCkRi8ADwyTJy5aAYHsVKTYLAvIcXTS0D+U6YOYHwErC2WKMcMHhFHctACzjyFEvVHK3KL7N+LMF/
+	nsvxOv/V0xisBVgBgnRoGxvPcQURXP1Z2UXBkOqnp4diRRH5gs3E1NgId/byFI2enscldaNC6EHCi
+	LwJUYWpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRmmJ-0000000C5Ag-3MmT;
-	Fri, 13 Nov 2026 08:36:59 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xRmoS-0000000C66Y-19vk;
+	Fri, 13 Nov 2026 08:39:12 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRmmG-0000000C59q-2p7l;
-	Fri, 13 Nov 2026 08:36:56 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C664F625CE;
-	Fri, 13 Nov 2026 08:36:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D5641F000C4;
-	Fri, 13 Nov 2026 08:36:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794559015;
-	bh=WcbMZkXCoDF1VinxpXAJnqvIlxoOmrzgyATGNwq43+A=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=PBzV4WsppZXw4ka2DOy1kwykexWL4bAIMtz3UGqpszC8BjXZOqibQVEak+Kq8c2AD
-	 E9MoBORWZjLCTHwkZw2yNrZpnDZYomFvPvujDxPrnlTKZhareQb8KW03DjiHggPsVD
-	 tKHuFgUA1YCBXSlUCpujHQPA63MU1r4pjl7ydLipOTatGwpsKnG2FqYBuSZz0w9Qcy
-	 8VYFjAuReeAASmkWQEv7vtyws10AHAFWupq+Efm/0Pcw3uODhzFFTmxZQW9IbZ64c9
-	 Buwdmzq1v2xC4k+hKLTIiIQ1FoKFwnZTNDkNRnOtkRClPBEcafGl1qVLk+RzZWSyaX
-	 PHmF4rAz+hHjQ==
-Date: Fri, 13 Nov 2026 09:36:49 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Arun Iyengar <aiyengar1990@gmail.com>
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
-	Andrzej Pietrasiewicz <andrzej.p@collabora.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
-	Hans Verkuil <hverkuil@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Sergei Khomenkov <shomenkow@gmail.com>, Tharit Tangkijwanichakul <tharitt97@gmail.com>
-Subject: Re: [PATCH v2 1/6] dt-bindings: media: rockchip,rk3568-vepu: Add the
- reset lines
-Message-ID: <20261113-eminent-vociferous-walrus-2d63df@quoll>
-References: <20261112-hantro-robust-v2-0-18561fd48838@gmail.com>
- <20261112-hantro-robust-v2-1-18561fd48838@gmail.com>
+	id 1xRmoF-0000000C61X-0tFy
+	for linux-rockchip@lists.infradead.org;
+	Fri, 13 Nov 2026 08:39:03 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 893454E415A4;
+	Fri, 13 Nov 2026 08:38:56 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 339D9601D5;
+	Fri, 13 Nov 2026 08:38:56 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4206B11BC06F0;
+	Fri, 13 Nov 2026 09:38:42 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1794559134; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=8t4QuEM/UAFTQif1padG43+4xJsVO798G1x6veCOSgw=;
+	b=IhrZGzHHEal3ZdOVMwhzsvbm5iuwEnp5xHC0dulEJ8kc2vnVnVCp+mqGoO1a8XACcjFo3L
+	CemyoCGSjPFSqj+xVQN1dhltZ0iVnQmkCOSBvXU15Dmbd2Ahmr83mLPMw8X+qgICiJrJrp
+	SjwpXfrk0UcG4L72AZvp4eSvVUTv7Ve1b/Nd6cfIkkTIyTnqxwY1wg/q+RN66hpFjGpzXa
+	nK3gkzC44IvPJpC97sGgzIcepYInwd3pCKGgdYMEZqPIcGqMsC1oOfuloeDHhED46S3COf
+	CUuazr2dgS4G//37WSqK+pD/JNz35R1ayU9FGStfzCq/CZMKpQ3u3/D+P6Wh6Q==
+Message-ID: <85370a77-e2ef-4eae-96f0-7f591625f47d@bootlin.com>
+Date: Fri, 13 Nov 2026 09:38:41 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261112-hantro-robust-v2-1-18561fd48838@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v2 1/2] dt-bindings: net: rockchip-dwmac: Add
+ RK3572
+To: 1579567540@qq.com, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ David Wu <david.wu@rock-chips.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
+References: <20261111-add-board-ok3572-c-net-v2-0-304466394970@qq.com>
+ <20261111-add-board-ok3572-c-net-v2-1-304466394970@qq.com>
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Content-Language: en-US
+In-Reply-To: <20261111-add-board-ok3572-c-net-v2-1-304466394970@qq.com>
+X-Last-TLS-Session-Version: TLSv1.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261113_003859_923764_75598530 
+X-CRM114-Status: UNSURE (   8.25  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,31 +89,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 12, 2026 at 08:30:47AM +0000, Arun Iyengar wrote:
-> The VEPU121 encoder cores of the RK3588 each have their own AXI and AHB
-> reset lines in the CRU (SRST_A_JPEG_ENCODERx and SRST_H_JPEG_ENCODERx).
-> They are needed to recover a core that is stuck on the bus, which its
-> registers can't stop.
+Hi,
+
+On 11/11/26 10:56, Cunhao Lu via B4 Relay wrote:
+> From: Cunhao Lu <1579567540@qq.com>
 > 
-> Describe them as optional, so that existing device trees stay valid.
+> Add the rockchip,rk3572-gmac compatible with the snps,dwmac-4.20a
+> fallback and require rockchip,php-grf.
 > 
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> Signed-off-by: Cunhao Lu <1579567540@qq.com>
 > ---
->  .../devicetree/bindings/media/rockchip,rk3568-vepu.yaml        | 10 ++++++++++
->  1 file changed, 10 insertions(+)
+> Changes in v2:
+> - Add RK3572 to the shared Synopsys compatible list for consistency.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+This doesn't address Andrew's request to deprecate the tx_delay and
+rx_delay properties for that new SoC. Even if the board you're using
+doesn't need them, we need to make sure new designs will use the
+generic properties for RGMII delays :)
 
-Best regards,
-Krzysztof
+The older rockchip glues have no choice but to keep accepting these for
+compat reasons.
 
+Maxime
+
+pw-bot: cr
 
 _______________________________________________
 Linux-rockchip mailing list
