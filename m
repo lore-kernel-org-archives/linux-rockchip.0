@@ -2,115 +2,99 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F07C5606A331
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 20:26:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4E6ED606A331
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 20:31:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zR5RoQ3L;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=TVMglc2G
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gJ8S9Flw;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=LYvWahyu
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=UELb/zIx31I0eKuUW8DwABbUs26lDi0jK6u0T/pcbtc=; b=zR5RoQ3L9jv0mJm+AOPGMVouir
-	ACRufQ+9CwdTVUO1QSzgDvW3DKuU0eOT/sZ3+sKGwws5vYyM5OWRH+W2+UCXb74VaVtWWmYO3Agnv
-	0W60/hnlMtAaG0FcqXwcYwxdnVzTooCfazeCrDIktQ73r1QKd3qBdlR0W3664SFCttzUAqOpvdHK6
-	1U2mTyf+h5LXccWA91Wtw1fpHXTy1fy48Gc1QvMVXsolXvj1/HzHx3ozdBXm+jFLGDAqM8ercBQcD
-	qX9iYDdVKLVHAB5U6Hn9EkZTK4JQ71XuXwqcmfyqZu/H6Sq7mZqugR99GG3VfNWwSi+nmWBJXV3PC
-	R28LCQCg==;
+	bh=ANQlTNiFFCsSQFXy5hXfyPN89F+aodbZ2bSTEoHByT8=; b=gJ8S9Flw3YP++R74tt6ogdooki
+	79UeuLIEgQfv5XSK7oBee0qXnJaiRbKhQ5X4giKnxQoSJ+1u4mCKO2xhWOo+WOVn0F1gtZD05HohW
+	tS8iBavVP2mvb/LDJxVbaiSOUsPJOoTWRryLbf525mEcASgIbUC/aET3E5XXM3prC8f0vOOGejGBz
+	F50VBaGoIo+kd85gRSITK0XCJjA5vVQutwQjzZbJ5DrqpV34C+aJ3kspCoHjBUKm/GX/oqYm1lN5Z
+	lgLtDAEOcw9EU+9HDWgutN3BNq/Dk6LD7L3AvVbJ+sZ19ZaN8VHIvEsUSFrwlqWTRSzj4cNd8mWiv
+	NARd3hYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRxqW-0000000EOzX-1601;
-	Fri, 13 Nov 2026 20:26:04 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1xRxw1-0000000EQ8o-3ZhB;
+	Fri, 13 Nov 2026 20:31:45 +0000
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRxqR-0000000EOxc-1h9V
+	id 1xRxvy-0000000EQ7g-1LOs
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Nov 2026 20:26:02 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-5c09dbe96b1so133706e87.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 12:25:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794601557; cv=none;
-        d=google.com; s=arc-20260327;
-        b=fBxJgckZH8YionsCd7XGWr5ZNQFmiyyxjL1SbfEl/lKtCfx4EdrfHr8SiVHknbTsct
-         LSpZa/84h5Nk2Yl3LLzPfL7DgxZJDjYW0zzTxyKTQtmNGhMUFj1VF8qNwN/KiHsePBsR
-         vcN+3zl2m3rbRq+4jFjW5sKzSRL/hHxR9gYOAw4+MddquBIsWazvOzvwv3vXK7EYzLqR
-         l9YHIDit8qqHIvQU3xVY7rl9n6wIwhTqnNQDINwz6iSjvX6uYuZpHKpf1lzdhkV3javi
-         X4vPSiqvpj/rdlQYLd7I1f2qfH6LbvnmYpqekZ4TkbvftqZkEd+EeMXwXPa+BxCOVut5
-         iiFA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=YavfHroeJbmr+VHcPmcN/QbM0vDy2kwirUjQA6La55g=;
-        fh=VYMaZae3kvDsMj/i8wM/ZIRRdGQ5EdoXKIB7/Yc87r8=;
-        b=rhJLMwndBi3o6mgDG6Ye44fKeaB/FDORK9Is3kB3R3fLCvEWQiDoUnLWU+EiLLljgA
-         IPd5DipNr7zQNpnvqhw0NBurUxqpGHgkzhgzpNw8vOPcQ0JaocmF5p1J7g6u533d2SMA
-         6c3w/jQ1KGmYuAxWrAOdyovifrjrDkDKz7VzZUYr4t766H28SIfFWsd03dWaePBWdqX8
-         suRkNColm1N+Qy31zBfpn3lM59mtX+mqT33d2ftsw2QRVHIkY3ihH8jGCdCFkFaJnGE3
-         JuLbPutzArMzJdq/KFicwFE2J7EiMk7N+QFy6ozVTmypLdNzVd5eJUnHmTs6gc/EWsSJ
-         kFeQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Fri, 13 Nov 2026 20:31:44 +0000
+Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-3ad0c2e71ebso193339a91.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 12:31:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794601557; x=1795206357; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=YavfHroeJbmr+VHcPmcN/QbM0vDy2kwirUjQA6La55g=;
-        b=TVMglc2GfJY+rrEND6EBGUHWYZbdjCgdrhxg6/bzvplDe9O3PoUrS6+Tm+5r8ISH8y
-         HYiQmYvUzsm8+Iaq2Dx/EW7G92Wz00znb1av7vg+qsHuYwJNTr1498WsHnQrMoLlhvRP
-         qRnvZhZy6A+Al+KPK6eY7WRa2mpW8Nw1pmOtDX1whin/O7EQZraMrzopTouXNCuazcFw
-         ZQDjJDDjiDQLIxaHr2Cxw3Ci28qC50HE9hDS43dOC7C6vqWxPVTHXuE74xy4op+dA0I5
-         ircSmFHdHtGg9sGIfGPCizTIEBHK5Rq0V9nzbl2p9CUTOEc11dvEQPAfe7+uSNLZw/GZ
-         ufaw==
+        d=gmail.com; s=20260707; t=1794601901; x=1795206701; darn=lists.infradead.org;
+        h=mime-version:content-transfer-encoding:content-type:message-id:date
+         :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=YiZ77gIfuRvrG4OhaqVJrXWfgW4P+h0z/eTCC1VVgzo=;
+        b=LYvWahyuWfibwq+wIg7FggSGoFzy4sfRCg34zf15fCJEwEnbOrX3LZsFEqaimaSdll
+         HneuCLTSp6o+Q/PHkN2M41LUM7iH/JLlbmtsTXh3/nJNyWsZAcUp7Eq1dd2ksu22WNWg
+         reKlTH1BJ4cch3GhvYCFZBLIEcQpYH5P2IvNhcScqc5sYaW2KcAU3QNJDdOz2yIKy6cm
+         PrJmk48IlmnsALXFSZx7rP+hAMt87bImwZFmSKdRxMpCNdcQCu8zPsRJBueVQLAi0bcI
+         xRt3thJlbyN4fYZdwVn0HF7s1S0KlGjjJHvA0WpkO8HkMu8HYdRG1la2kR4em7S2OKEh
+         ZQQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794601557; x=1795206357;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=YavfHroeJbmr+VHcPmcN/QbM0vDy2kwirUjQA6La55g=;
-        b=kgRBEjrIvEuAFUoiO0n3a6v/uBhDcNL7tkITOhdYSjJBJnCOExnQmJHikT49Xr9W9L
-         jd7eHiniHSXVFDR+IVoyu8cyMFw1JUkbnvWmcr3Ws0CW0Fv87ykjjvaO13b7QGp7Bn4r
-         cJUZAlRhAmE4CVCuPRYotSfOSxrZGzXxL/mAgdyx0iUrSnOYbp4N5xzh9E8b9UYDEgbF
-         8di2TYYibJttPjU0rfIDhA11Sv+vCfOKycAc7GHy/6+uIYR0QFlNy1iIdD7RX9ID8Mi8
-         +edsD2ajNd25shm9zAPgR7DHL0PkI8C7C3YoC/qKwVo9UkfHoaD1x7ngdvAp7Le3qxPR
-         Rk/w==
-X-Forwarded-Encrypted: i=1; AL+hErG0HgMSPzmM6c2AXhtyw4f95zi+vyC8n1cnuAPV+RVD7pTmjSIXQip3k2aQad0F0dz7AQxT62vGcvL8BiKMqw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9+OZzRsIEdoJCmFobuerT/iqmqx8fe9HNJZIMm+xgBGVyQ0prf
-	Kmfh7J9hOlXUWGwYaQfAtbCMctHtjp2f7DnpCym8jfvnEwUjcOLXfVKx6vVluTX1Gk4FBQ2SzV3
-	zyEU6KIOd+BVvkyrfXKBTPEyEySWFM84=
-X-Gm-Gg: AYBFou02uTVbMx88CrWL5UxKDfJVRft564cA2z+qHulHlsiAWyeiY3HgYCs3DAR4sSy
-	FewJFXLh7paKiCyz2g9/8/VeFxEVoQ8n7jc1VoL3cRB3tcEVvURnvaAIu9Y8jcmXKtVZLcJgTn3
-	GR7p4UvjyLUGGq7JzVV11AtlIRGndlPujEabI7l81Y0fenZVS/M9iEZiEYTxjxq4iM+uBI1gwfJ
-	vMlZtJpjZW/U6rFLKcos1PD/3FVPLXInwmaxQ/s5nQIqgJ+oK07NNXdvr5rYSwwtxZRZZ5wVfwC
-	Xyz95/zXFniVWgl2LjRk5g6S4pGoquqy/bqTM8LSCx6OBSRXpwCaNsvY/bXZMBXqhoOMYNYZXhl
-	Oc+jE2jtazVyermvjtSTrqdp2+aTsTbenVB0HfgvkIoaDXNYZcpx/3dobS0zw+D1BC2SMC1k4
-X-Received: by 2002:a05:6512:1326:b0:5bf:d00a:b6c0 with SMTP id
- 2adb3069b0e04-5c17076e20cmr1778621e87.3.1794601556720; Fri, 13 Nov 2026
- 12:25:56 -0800 (PST)
+        d=1e100.net; s=20260707; t=1794601901; x=1795206701;
+        h=mime-version:content-transfer-encoding:content-type:message-id:date
+         :references:in-reply-to:subject:cc:to:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=YiZ77gIfuRvrG4OhaqVJrXWfgW4P+h0z/eTCC1VVgzo=;
+        b=uKvXUiT5Nqdw+RgvSGBuFMY7DGC/urNtXJ/zc8dwIWUSmW7t69mfJiYirfpHA/EeKs
+         a72jJceagdAcxW8OgS7tE5f9pSUE4LgQVBocBQE1Pl1y310DTpxxsDg4lMsoIBogSoJv
+         53OL7oDxdLBZ4fNbCEVp0nl7jmkYDUw0RmhG5eO2V4QB598NzcZh2ODR9kty1RTvFocd
+         C/m1BDn5QSaX0HfERPyWKeOCfWNx5xFBuSdyfLPPkka7lJ2HB0+ofqZMS7lLyEkmCJm6
+         FJM7oxcfOmI/79DzPCCVCZ68NMco/9LuXUfwi0KL9D8wVkfNb0kNAddExBYBBQB+z5hX
+         3nDA==
+X-Forwarded-Encrypted: i=1; AL+hErFmMi+OoXQisAP+7STAa5ZDJUJ2ELk2hnLigCnnFQSLX625B5l61VlT2i8vdbwjaKNwmyUUvzVYMB5p72G73g==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8R6RDP4gIS5lzt2vDmIGTk4WkmCM56P5zl+vfZ678PHHqy9FSg
+	ould1yg+o/FfJ1I0hn1LWnbIhWiekfQZwa2bq5z5sBkcvkujJBru6nlc
+X-Gm-Gg: AYBFou2bEWmmQn89D+2laYE7SSOJKxBxwde+AQr2/0LWZ98rwrHvK6yobR0MDwbl+bq
+	qTrha+SuKXMAjvy7quURXzSt12lGh0hzQE8DXpNzqhg2AkTHHbExoSXiKRIkCneFejc54eqC5oN
+	sA80JXXq95ydDTnGVi74F2w+uduwSj/ouCy3uTYWjAxuXrjqStauWGbRGZPU2NLqr/PmxuRU4Bs
+	NWGo2qgInxGDziuhdTK+elADjWANC/xf31Bi8vKc/RiFmXYcmFJfO9W5Dth1b1kcVZ1weocysLO
+	ktjCduANsnxYgzT0zY7HyBlU01rWcnlvzG7tbVkrU31hWOEMG0oN4OGLo27IQmYTIBexCxejnu1
+	KZX2zwq2D2mRTgNd9HXP8OFumrdRJeIZ+dssi04/hkhjJ20mGmLVrKRfWAdgQLEI450Tj9CR2tg
+	T2zfbe4cYVtGPgf1Ka04IuU+j7sGSVcdvLd5oc+OhoV3muZYQj7lVT3Q1dNWVJZHZrUPJHHHwrz
+	oeJJei9Jyoc4w4YYQfIdwoYysJsWhGv5aPZVMox48iJr5M8gLzPyFkKAlS4++hi5YRO/SlPzYqH
+	z1Kickg0DHRpduE4/oEQM/nDoR58pFeg9tpxLTo81c3h95tzKwgYApTaquHzMBP1Bd1ejg6nro3
+	iWalkKA==
+X-Received: by 2002:a17:90b:590e:b0:3a6:e1d1:e511 with SMTP id 98e67ed59e1d1-3b1b0b85d16mr5379769a91.4.1794601901202;
+        Fri, 13 Nov 2026 12:31:41 -0800 (PST)
+Received: from claudebox.iyengar.cloud ([50.39.139.68])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b197d35525sm11051461a91.16.2026.11.13.12.31.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Nov 2026 12:31:40 -0800 (PST)
+From: Arun Iyengar <aiyengar1990@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>,
+ Johan Hovold <johan@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: driver-core@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Saravana Kannan <saravanak@kernel.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Ulf Hansson <ulfh@kernel.org>, linux-pm@vger.kernel.org
+Subject: Re: [PATCH] driver core: fw_devlink: Don't report refused
+ sync_state-only links as errors
+In-Reply-To: <20261110-fw-devlink-sync-state-v1-1-6385be961c2b@gmail.com>
+References: <20261110-fw-devlink-sync-state-v1-1-6385be961c2b@gmail.com>
+Date: Fri, 13 Nov 2026 20:31:39 -0000
+Message-ID: <179460189995.183918.12921536578133287930@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261112-vop2-fixes-v2-0-8218c1cf8ac8@gmail.com>
- <20261112-vop2-fixes-v2-4-8218c1cf8ac8@gmail.com> <380996af-b987-4854-8b52-a3a214b19e79@rock-chips.com>
-In-Reply-To: <380996af-b987-4854-8b52-a3a214b19e79@rock-chips.com>
-From: Arun Iyengar <aiyengar1990@gmail.com>
-Date: Fri, 13 Nov 2026 12:25:44 -0800
-X-Gm-Features: AclHuK9Z0XxZveIpcBwbR-1StXFvWIPfHqJtynCF1BYTTbRYTOBUF4wn1ddT13s
-Message-ID: <CAEy9hNUnZkqyg95DsShdr7UF6CiQvKhpvJxrx0TSoq3do2nyEw@mail.gmail.com>
-Subject: Re: [PATCH v2 4/9] drm/rockchip: vop2: Don't accept AFBC YTR for
- RGB565 on RK3588
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andyshrk@163.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Piotr Zalewski <pZ010001011111@proton.me>, 
-	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_122600_603211_E29DAA96 
-X-CRM114-Status: UNSURE (   6.17  )
+X-CRM114-CacheID: sfid-20261113_123142_367900_9438A030 
+X-CRM114-Status: UNSURE (   7.05  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -132,20 +116,23 @@ X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Chaoyi,
++Cc Saravana, Sebastian, Ulf, linux-pm.
 
-> That' true. The TRM says RK3588 only support XRGB888/RGB888 AFBC YTR format.
+This message was explained before, and I should have cited it:
+https://lore.kernel.org/all/aixze8zFboY3huSf@venus/
+Sebastian writes there that it comes from one power-controller device
+providing all Rockchip power domains, and that it is not harmless: the
+kernel misses dependency information. So "harmless" in my commit
+message is wrong; the patch does not fix that, it only lowers the log
+level. It also lowers it for every other failure to create a
+sync_state-only link (found by the Sashiko review), which it should
+not. One such case is being fixed at its cause: on RK3576, Sebastian's
+"clk: rockchip: rk3576: create proper platform device" removes the
+lines for power domains with a clock phandle:
+https://lore.kernel.org/all/20261112-rk3576-clk-platform-device-v1-1-2f3ac9f09403@collabora.com/
 
-v3 follows the TRM: YTR is only accepted for the 8 bit RGB formats, and
-the comment is gone.
+Please drop this patch.
 
-That also refuses XRGB2101010 with YTR, which displays correctly on my
-board (AFBC 16x16 | SPARSE | YTR from the Mali-G610, HDMI and DP). May
-the 10 bit formats keep YTR?
-
-v3 5/8: https://lore.kernel.org/r/20261113-vop2-fixes-v3-5-08ae37e83b5c@gmail.com
-
-Best regards,
 Arun
 
 _______________________________________________
