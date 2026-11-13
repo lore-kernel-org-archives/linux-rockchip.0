@@ -2,104 +2,105 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0B488606A88E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 20:33:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 26002606A333
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 20:38:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=u+d0RPgq;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=iz909RmF
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DLq94Alf;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=DGBrgu2V
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=E9ldTqeFsqtpiXZ+tH71A4uwlaogjWg1MA4nXUTI8lM=; b=u+d0RPgqcMAy9tJQiDT74TigtV
-	P+29PVSQSnjr2axkIG7lLJHk0ECb58BiiGGProZ3FyU4Ms6E6/oUjLGHw8ciYJ5J+lrw5b6YYZmEi
-	4FsjQMl/iNSaCaZovl2uoLgt6/ke4zn6WWTb7xnb1Gfnpoj6JPfluuDV4ZO5X+UZv+f9rKc4nfuIP
-	sm1OfTDpRz0cyHCHWJrzNr2Krto/jTXga+8ZZl2OACLTIk82iXqfv1+vzGa+XfCtbjW7K3KK3onfB
-	Rrb24RxM0ygw0Rnt63W0vtM4ISdIcJC59kDAKmitdsoVjpqXiI4QspEYSAVJS4d0KgvJR3zLBGQsr
-	CNsxOfBg==;
+	bh=SZAIZlq3xUtvEtWtTY6zrKyuQP2KBmmiJBrBp+VbZ3w=; b=DLq94Alfv5Agy4GKOSo2PemBBg
+	NNoZz9F5dUYHP3aHV6nOXadOjeaWqOXjEhoBgcngbnBGe8+M6S+NoNM1GZdp4fxHCDubntEMJvcCN
+	+0EwqkzdCuPRfZdxAXgPfvk2hod8AOrSEFsS7g2auLRz5r56S7zDWvKrvd8FozBZ8KsH2nNunxzct
+	fNDT/ndLtJteIsdZxP+3+vrOtjJDCVejPprNyUzTUjHl3+g8KXGpuZpxLWcYxulw2yf5nT+WyT/80
+	SbadOpU+dzttoAaGASZ2tCo4SaMAUN9KkBm8i2zZD6N2oMqDN4EBnCmz5OYC/B6uNTcKY5Wjg/XwR
+	Nv5NrIaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRxxR-0000000EQTz-0qsk;
-	Fri, 13 Nov 2026 20:33:13 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1xRy27-0000000ERp0-1oUE;
+	Fri, 13 Nov 2026 20:38:03 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRxxO-0000000EQST-3GGs
-	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Nov 2026 20:33:12 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-3ad47c246f8so187977a91.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 12:33:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794601990; x=1795206790; darn=lists.infradead.org;
-        h=mime-version:content-transfer-encoding:content-type:message-id:date
-         :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=9nMyN0VEnSPNDMOw40qCksgSnlqSB2G4sRnpFPXnQgk=;
-        b=iz909RmFsce1uJieMK4Tr6fCBnkBE+iXNecd76EPNXs1xLsws5yqdqh4jngYjVVWmd
-         0d+gB0Iorhu9f000vTBhDqCM2lr6aONHQ/xzdBXs6BI+3Pe1AoUtSpCQrxpbOU7WLDqW
-         hu4qGs/TW8dLn3kPdHAW+EtiyPaCMfvDvrmnLsqn6F1fgPeQHl/UyfEtzPGTy8DQ4Qqh
-         AscBd6F6OzXOXy+WXF4CmCGwvu9QIKiN0kimDSFBfPnc6M3qaywzg4ynHnBBQTN/yk9/
-         4EEjE2kjGoO+DRX07BquM2zi+Eelnm5HWAimXzZeSSKHAkN9SoL8AuhmBLgWIj7hc+qq
-         O7CQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794601990; x=1795206790;
-        h=mime-version:content-transfer-encoding:content-type:message-id:date
-         :references:in-reply-to:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=9nMyN0VEnSPNDMOw40qCksgSnlqSB2G4sRnpFPXnQgk=;
-        b=sW+VdWQGW2xU/g/MENnhldm0z4K6S/hbnLpl5VNpxhZnAGIxcnUazYhZmf3sxB6M2j
-         C+sH+K0pIQZ5/wj7c+6eLLFmwkwk9G+Acd75QHul1LPPGDY0OLt22G7Vix4dF9mCuaR7
-         F8SWHZ7GA/+qL628FhMJ44oCNCC/DxjwZslhhvOszOq/y5FnkQN8XyoQUGENdvn1rcav
-         VWwBW4/5fBuXdbGM2FxISj+LR0DOAOgE7W99PzGj+c/zncXYQgChi820zo+wRIgrLfFz
-         /UcuYfakErK/4HZ/zMH7sPxli8djcBlpB5NSORmnlybzzlgxLpKrZw126kor6NZu2Hlu
-         j1sg==
-X-Forwarded-Encrypted: i=1; AL+hErFMcZraJap3VL94w3xXVxLxO9YlDahsZjUSqDy7OzYazPqH/6tv/b3qr3m6Q31EvdqngT6O7WicrihxzcspWQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/POPcaFuDv7tJSJcZMGVH3dgF9ko8IpRd78Yxzeq4qnS2miKn3
-	aCReGA13BSPQf7DUYF0/03mAz+SooQV5imwmYLf1yxBDnAz8/HP10s5Q
-X-Gm-Gg: AYBFou3FBSrbWol5+6y7gO6ljp+xYNsPYGp2qZYyGu3Ul35taervYbpBaazIXjDazOu
-	mGNgfcwsE5nyY69e5FrChXEz6fcYeAePd6jDCrIhbz72LWUw3+SfWl1fe9MF3z+jpoOPUEQhVmC
-	ROOGAchBRi7GdIFriQ4ymTmwcVlHlXE//PCu2b9Fvrlr0t5jbAZPNe5HoYSDeM2yFqJP64+qCrV
-	PxIJ9T/ynwBn9pf3eu7QnSKyfW8hLVXMplCAPMJH2483MFrw6tX6HsC9YYjY0qB3exhJ/s7zmHN
-	rHfY5Zu8253QycxyioLBm6INBTIBUqRZjggyeE4jWbeN0HuytyN1mLYWWG8qbFRs7s3Bi/dWK+V
-	afCTq48w1C/YR+KRSTbYXxm4HMCp/mHeBAruv9VUnt4Q/OL1UwXmnqYEhGqKNSnO4GbslKXzQbL
-	C5CTO4KjjSjrLROOsmtOhhYA/rQMXDX83EYC4Eo0QJMl+lNjN6/FC7LF48PX/Me348Nvqq4TJ4T
-	kdf8FbS77Q3CZjGnR7C/axgSNn5p7jPdDpWCvbhERNV3ES3zdb5jt2r7rntE78Zf0Mn7igaWSy7
-	6xNfdjNAiTa90OLswir2YfO9DF/qD6sWLN69wbaSvq0PoWh64rggIDhRhdVsIhrr/pwj44KEPRp
-	gELLiS6gpdRIEsLAKsjN6l6qxloU=
-X-Received: by 2002:a17:90b:4d05:b0:3a0:c1b1:45fb with SMTP id 98e67ed59e1d1-3b1b05aabb5mr4604273a91.0.1794601989766;
-        Fri, 13 Nov 2026 12:33:09 -0800 (PST)
-Received: from claudebox.iyengar.cloud ([50.39.139.68])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b197d0f6e0sm11168256a91.9.2026.11.13.12.33.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Nov 2026 12:33:09 -0800 (PST)
-From: Arun Iyengar <aiyengar1990@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Paul Kocialkowski <paulk@sys-base.io>,
- Sven =?utf-8?q?P=C3=BCschel?= <s.pueschel@pengutronix.de>,
- Hans Verkuil <hverkuil@kernel.org>, Jiaxing Hu <gahing@gahingwoo.com>,
- Daniel Almeida <daniel.almeida@collabora.com>
-Subject: Re: [PATCH RFC 00/12] media: rockchip: Add a VEPU580 stateless
- H.264/HEVC encoder driver for the RK3588
-In-Reply-To: <20261110-rkvenc-v1-0-ea8b47122d8c@gmail.com>
-References: <20261110-rkvenc-v1-0-ea8b47122d8c@gmail.com>
-Date: Fri, 13 Nov 2026 20:33:08 -0000
-Message-ID: <179460198852.187691.10732168634380090377@gmail.com>
+	id 1xRy21-0000000ERlX-42PX;
+	Fri, 13 Nov 2026 20:37:58 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id B5BD746EA2;
+	Fri, 13 Nov 2026 20:37:57 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794602277;
+	b=v5BYhPzNZkRqAgpV0tgR3NYA9zY712vFNSIjr1vcgGzs/FfA+/wTJ9XoJMlm9wZuNMIJ
+	 Woop4HL3uE+jTYrhTOMtZfBebkZTw7HOKafeCpCQG+fjognYg2iGVulrCBx2Bk5NeJx0N
+	 cNjSChLc6s4NUR2LWz35VEhqdbtfe4rY7RcMirR15bPw/8pfkPLv0lAf6eu47FkKHcSKH
+	 3hKzq3qgTOlSK9FOx00i7HQEFwDsGwYFIRzeoZkrIRoj6/0buFc0lJVw0PNcqn4jLXODI
+	 p7zLOw12uQ9M1/MF3IdRswb6sYX4NwDgM795ymSeUN4fI3KxMiQ9ACtqt53UGYGy9VA==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794602277;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=zcbGexqUs6AyY6rvNjsjQJWCSAAYmXVOXmh3IdhOCBM=;
+	b=1KBXuMvz+W9nyPwHc91KN1255Heq09pcKu0z2uiU0tqAQtFenc4aF4MUi4KZ5vvOqGI3
+	 WgF+qXYViPzsCQ107/noPqByuVG44oaWp3jAvoaWsvERCVtHBstFvzunOfZKGlcKqR0u3
+	 Q62EpMnp8114GJXA6M2DmXexRUQjOW9EeOMl1rjL/susk8kEhtdP1pN8Uy/00/nuehu+V
+	 9I+9I3XZ/YIUdMtmFgo6AL03LW9lOPqFOKIFrI1rcjGhtP8otgTcGKlX32oZhK2bgqIRR
+	 h+lydXXxUPNMYfPhmAN9Y1PWKInnesG/10/1I9z7nbzFsv2JByemuhdYaw8D4/qmmdA==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 2629B1F000C5;
+	Fri, 13 Nov 2026 20:37:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794602277;
+	bh=zcbGexqUs6AyY6rvNjsjQJWCSAAYmXVOXmh3IdhOCBM=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=DGBrgu2V0TLeGXO57K3WHeHX2F5btUEhAsCWTruq06By8FEhHvvbN+D3bcP/cLffV
+	 aIJTWEltyJMpkPIdGeP42pQ+FXwMbLbViG5/0Esvzotav9h9qanrGu9Zufz/texXqt
+	 sCD+qRv9tyHgbVb/ycM2LjSAmBma81RXnZcPdmaziL8B4iNeNEVCFPHJKQBXNj2ZrF
+	 qGp6XPOTKhneJCNPuKbKZeTWU03h28cjnsR1Ccj+2IYIn3OuOh5HCLPrx9wmNqGd5f
+	 Vtn7g66g9wNEH/yk0ua671FVkY/Dzw5RBqLDREOn7x9IUmKlv2eVC0/GVM+MAPdR+V
+	 e9vipkOnNOeaQ==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 7B09D49ABD;
+	Fri, 13 Nov 2026 20:37:56 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Date: Fri, 13 Nov 2026 20:37:56 +0000
+Subject: [PATCH] arm64: dts: rockchip: Fix the order of the RK3588 AV1
+ decoder resets
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_123310_826926_E73BE438 
-X-CRM114-Status: UNSURE (   9.12  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+Message-Id: <20261113-rk3588-av1-reset-order-v1-1-d73f60222ff9@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXM0QqCQBCF4VeRuW6gcTW0VwkvdvVUU6AxYxKI7
+ +5Wlx+H86/kMIXTuVjJsKjrNGbIoaD+HscbWIdsKo/lSUQC2zPUTcNxETY4Zp5sgHGq8h7bOqY
+ 2UD6/DFf9/MKX7m9/pwf6+VujbdsBhO9S/noAAAA=
+X-Change-ID: 20261113-rk3588-av1-reset-order-b4261a95ab93
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Arun Iyengar <aiyengar1990@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794602276; l=1508;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=YP+Ju9QjQfuU0YGwfWBljQdLr0V0QHLGHZyAd+cCC3w=;
+ b=h2Y6s+lUrSYGVaonyq4DMPUpiqk68iJw40e55HnQ6t7RM1x9PLBQhBMoWYd4m+8wB0YLKqp18
+ ZScq/59KbGvCoQqS2b+yERSYY7jGHr4Gf+2ESpKOOVfHH4VqwHLBUul
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,36 +110,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-I'm withdrawing this RFC; please don't review it. It depends on my
-H.264 follow-ups RFC, which I have dropped. The cover also should have
-said that Detlev is already writing a driver for this block, as Nicolas
-explained in the VEPU510 thread it links; I don't want to push a second
-uAPI for the same hardware.
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Detlev, three things from the bring-up on an Orange Pi 5, in case they
-save you time:
+The binding lists the AV1 resets as AXI, AXI BIU, APB, APB BIU. Use that
+order. The driver gets them as an array, so only the order in which they
+are toggled changes.
 
-- HEVC wider than 4096 came out corrupted with the external line buffer
-  (H.264 is fine with it, tested to 16384x2048). Tile columns of at most
-  4096, one hardware pass each, as MPP does, work (tested to 16384x2048
-  and 8192x4320).
-- MPP's "TU depth 1" is max_transform_hierarchy_depth_inter/intra = 0
-  in the SPS. With 1, decoders misparse the residual.
-- Two streams, one per core, with both cores in one IOMMU domain and no
-  dual-core handshake, ran at about twice the single-stream rate with
-  the same output as single-stream runs.
+Fixes: dd6dc0c4c126 ("arm64: dts: rockchip: Add AV1 decoder node to rk3588s")
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+---
+Found while describing the same resets on the AV1 IOMMU (hantro-robust
+v3). AV1 fluster on RK3588S (Orange Pi 5) is unchanged (203/242).
 
-Arun
+Developed with Claude (Anthropic), which wrote the code and the commit
+message. I reviewed it.
+---
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index d0f364547ae5..3d1e4369578b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -1471,7 +1471,8 @@ av1d: video-codec@fdc70000 {
+ 		clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
+ 		clock-names = "aclk", "hclk";
+ 		power-domains = <&power RK3588_PD_AV1>;
+-		resets = <&cru SRST_A_AV1>, <&cru SRST_P_AV1>, <&cru SRST_A_AV1_BIU>, <&cru SRST_P_AV1_BIU>;
++		resets = <&cru SRST_A_AV1>, <&cru SRST_A_AV1_BIU>,
++			 <&cru SRST_P_AV1>, <&cru SRST_P_AV1_BIU>;
+ 		iommus = <&av1d_mmu>;
+ 	};
+ 
+
+---
+base-commit: c3baae5f1a15645cddadcb2b9abddef5df291f59
+change-id: 20261113-rk3588-av1-reset-order-b4261a95ab93
+
+Best regards,
+--  
+Arun Iyengar <aiyengar1990@gmail.com>
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
