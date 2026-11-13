@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C660C606AFF5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:39:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2156960A2618
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:39:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=n8pU/yQ/;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=XMrCe3lG
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=efWuXl4g;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=cPzVMMHC
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,70 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=N3re7QMiJ9ikMda4qhxkVJMO73ELKS7IBPf9tOp1Q04=; b=n8pU/yQ/fOyg40NfSLJaYvFOZY
-	AmiOUkRPzyh0vYkuIHjXbVXZl1/yFG8zNer458zAlN6sf/Op0POEAZHlroJn+j/Zdw8lnEvHa+FCb
-	JFfajZgnaCOSMvp+CvFrOooE3tQWxej4vSzDYsMMWeCDk9HaJ/KoLeiZxOhdRx4RsSzYAqtJBOrmC
-	f4DInuY0iaAcbis8N9fi+qYZ5UQ3I8qrjqmvmTyVrvJReFspbK1/RLtGwZwCOWSa4Hod/aydhcrW7
-	0SZakV2qDk0dQIs6tWeDft/bKiGekBynt0qHIBYD5BOo981TCTuJynMrRRLl+AnO0E1m310JIl6zi
-	/keQ2nJQ==;
+	bh=lZ7e85me5+bWbhvGsyhMlFAd7806jPfJbLZlu0FKECg=; b=efWuXl4gr3wxdhTAXxiUzdIAAB
+	FxkfySKbI/whFi3R/cTiQRk9NLddIxFW5cQI44L2zyZhD3bAyKcOoDcRGlIslKQ7KeD+kOTg6bHRp
+	Ctc3FduvPAIj91u+RIjSIY7/vWLfLq0noGk7xjU4+SNzNrowj2NOnqxcq5l2LuJ2qOzjOHVkbolQx
+	GjYRd5g6SEU0bds1XOxmHTAKXj6DtHS32IwsvZh/0eOS1jLBwphoRw/o6wGepatiqRHvxbsELxf9I
+	A8jCt0NQVKTrXu7JY06D2vggGTvJNaq86Iz3TTpQCPOyeaGv5My0pCPw6GfFDtltRrib406XIfuF9
+	dLp355lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuJ5-0000000DZbw-43Uy;
-	Fri, 13 Nov 2026 16:39:20 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xRuJ5-0000000DZay-2gQb;
+	Fri, 13 Nov 2026 16:39:19 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuIe-0000000DZAE-0udp;
-	Fri, 13 Nov 2026 16:38:52 +0000
+	id 1xRuId-0000000DZA5-1NtY;
+	Fri, 13 Nov 2026 16:38:51 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1EAE1466A3;
-	Fri, 13 Nov 2026 16:38:52 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D0425467B3;
+	Fri, 13 Nov 2026 16:38:50 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794587932;
-	b=xxXCvVGUT9OdBi1vsNPhR0wklQZO4lW3iDAkfQb05eMQsNxg4j8P+5t7RaTbew2uFok/
-	 LABAsoujTZLYMvDtir8ImSZj1o1nQnjFKi0KXtzve/NqajTu89AdXFm982SJBNDTCDUt1
-	 LK/w4hm8ZP4tOXnl7m1zzseSxHd9BZPkJciIe90KFUzRGmIdSRZ1FJT/jDk1t6bQBeCT+
-	 s3ntixmXMde2IhTrV0zqE0sWELGkmWObmb4M4QpdgU4RV0h0gYV0B2CI2u/AHMbdIjLHh
-	 VRlppsEb7UXlRcw3C8HrEL+GsvuDc3PTQTZg3THqZMZyRFlSzUOYYECvBN2CPnxZ5lw==
+	t=1794587930;
+	b=eCYk3kRts2hW0rqi5yY2hpCbcLTG5nvM096uMPAI9Ci3XgC0haaMYQ5eMK5R3Hi5xrX1
+	 TnZA5uXxjrYC6v73dBryKGovSCAkj2QdVLOaLAZrAMTk77SIE9yF0YuUNz9kXT5m/czW9
+	 +O7t2CWodgxLGBVxp2g8DGmvtrJY+pWFNu8iXAPiAGLZ0D86R0AqG1M9LJqZVm7GpvtKD
+	 r0xxcR5FztZO3zZUOACcQXckCV8X0sm2exwCmLXpMaN8yX0yTxj6WHPbKdppJ+mntO7xW
+	 ZEvOo1gQ7pVNbYghM7C6dCn5qsa7TvSaLWmuOvmkiqhQhszGl2mPLJ0SqtAzSh8EXcg==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794587932;
+	c=relaxed/relaxed; t=1794587930;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=2LPQB+GAGQcPlLlWJwVhJDSba8lCqXwa15hdG+xLrLE=;
-	b=pSYl2SYEhTtF3v9xQ0Hd7xS4QvDtAfsS17rb34NOGLziliqf6DLY4k7zA/gOaISzuTV6
-	 7Hs2ITc9Bvm0mRfU6/YS3gDQJJENkZnu5KB2CM2+k6813j1yUHoMcmpiF+//Pns17a1bH
-	 h/ScFwdXm5SkwTRjpxPjoFOzd39wPXNQze1G1VsuO0bYjaHW+AzVKOTzCrlIlej3rgkKG
-	 LjD/81Spjd0wzl9GXC1W+XqP+mqSMygisxCcN0MV9FPN7TPB2DenhMNsWizZGgeOEbyOn
-	 sF3qvLar+pXXskEjd5rEAxtqQ81kh4WoHPjH5WuEhgKaVP8vVOUawiOJ890wfOvthGg==
+	bh=ElhyKJTPLC9sa0kKw8UjgPt6BJk/sHWMBZUKNWMIGmY=;
+	b=u2vsrZeiTDfp4MBXxadgC9c6swTVf559ctO5UmpH6cepz/XxNKnnFP3kc6yYADt8hh7J
+	 KN/gWe3KBvrFvQGRUVr4FPoqzbWyiTgDKSiV5Pn2Bi7BFCdwmykYzqa/KJMvQ/UcFFCu0
+	 qK3g9Gr7j03WFE32gRgZX5wP25Q5M7nvgThCkmKmwf9reTYoZZiNWPGo8vJvZVWjq52z6
+	 SKJ8mxSXCpqT3EbRBPXm6FJ2O7otGXJ7M6pJJW6qpUgyXzvDh2gf8NellZ4S9tQcNb8lV
+	 JvCoeb3WEM25kNm1myaRhnFFbsuWlRJNjTkbqMkgHr24ewHxcOR0mkQMXfhydK9as8A==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 9196C1F000CC;
-	Fri, 13 Nov 2026 16:38:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794587931;
-	bh=2LPQB+GAGQcPlLlWJwVhJDSba8lCqXwa15hdG+xLrLE=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=XMrCe3lGZYZPfoqs4BB8ISp3Fc+ZjgN38SJ4DkYM8hjAOjwYRS92OPDyE1t7EnVBf
-	 V7QEl6qMgbfgdvHHKxgbILy/dzWv/pCqVpaPZaaZxJHa9nKzsGtLqZzXzOw56teKlo
-	 Ll2NH30gGs3YslYqwIwJoaG64Rv84t1Bjc7DCob5OaKztogxyrs8Dc0TzBVimdOzSN
-	 NLFuK8ToLOgxat8b2uqv1omdYgNRE9kq7eOxRNTCPF4gPNeI/9G7ykKEbdQiVrtLoj
-	 NHIrEpYzslqHpvd8sAfhOquqIfFXRl2DULcCDmWutndrCJ6Oif0OIAH+xUZBaoMduo
-	 Z/weLjfnUFNlA==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 1F23E499B2;
+	by smtp.kernel.org (Postfix) with ESMTPS id 0D29F1F000C7;
 	Fri, 13 Nov 2026 16:38:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794587930;
+	bh=ElhyKJTPLC9sa0kKw8UjgPt6BJk/sHWMBZUKNWMIGmY=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=cPzVMMHCyn+OFwhkw9aBWgxP3MJW3ucNQ66BKerP0uCRbp17X5SsigzIRb7P+o12E
+	 0VfqfHb0et6Hy0XooG3qhN93pMse1dOxerVVBO4ObkRl31Oy5aYuTnw1dZyOeneYo/
+	 Qe3/g1jTwEk+HPyDOGvyL43r8CmTbUiUplVI/goHU5uI8A5qBccbq+p12V0MRsPkE1
+	 iWfjhONG45Uy6mDOfYkDaHagFH/p3YR/bCjwMVfplATrahGzzcJE3ENojwQMjsxPJh
+	 O6rjTOI/4L2tPBW7o65813zDf+wAjBJEfYT0SQIY0tEHSkjXTTlDVVlvjUsUeW6gWJ
+	 rt3r4wu9LB9hg==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 8CD6A4999A;
+	Fri, 13 Nov 2026 16:38:48 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Fri, 13 Nov 2026 16:38:55 +0000
-Subject: [PATCH 9/9] arm64: dts: rockchip: Enable the RK3588 PHP SMMU
+Date: Fri, 13 Nov 2026 16:38:49 +0000
+Subject: [PATCH 3/9] dt-bindings: soc: rockchip: grf: Allow a clock for the
+ RK3588 PHP GRF
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261113-mmu600-php-v1-9-231196049a3b@gmail.com>
+Message-Id: <20261113-mmu600-php-v1-3-231196049a3b@gmail.com>
 References: <20261113-mmu600-php-v1-0-231196049a3b@gmail.com>
 In-Reply-To: <20261113-mmu600-php-v1-0-231196049a3b@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -96,11 +97,11 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
  Sebastian Reichel <sebastian.reichel@collabora.com>, 
  Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794587927; l=915;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794587927; l=998;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=4ZmzBM5N9jnNuYTiHIYDASnKZmkuELiFGEfiQed/VEM=;
- b=9nRVvarFiIbiga3zvvB8t4RnRG95GwOLtsETdu1rIreww2yx1869NX4XiuZ4gNhq3OMMnZUwR
- k6gzh4xD/bGCyX8cwf/QisIjRmWfOWJBKa8+I4+NG5xwYSODUKSGQpz
+ bh=B5gD6Ma73MQyMzaxyEvJStUcX9v8sHv/gtVo98dAf/c=;
+ b=YT0aXhYrbKWY8wlrkZK/hEcyepwr4yg+gW6WEGC5ZSfHukSI3V4Bwa9sgPmHU73BoKkP5Tvm5
+ /1hLXK4TftNA5gYYm+6NtnDIiiU7hbtYOagZcGdymdVu2rJRlg28B67
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -129,29 +130,38 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Its masters now have StreamIDs and iommus, and the SMMU has its clock.
+The RK3588 PHP GRF is clocked from pclk_php_root, which is gated when
+no PHP peripheral holds it. Allow the clock, so the syscon regmap
+enables it.
 
-PD_PHP is powered off in deep suspend and the SMMU resumes from reset
-in bypass, so this needs arm-smmu-v3 system sleep support [1].
-
-Link: https://lore.kernel.org/r/20260929034510.2023173-1-praan@google.com [1]
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index cb0a39f63788..0c3d59a39182 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -574,7 +574,6 @@ mmu600_php: iommu@fcb00000 {
- 		clocks = <&cru ACLK_MMU_PHP>;
- 		resets = <&cru SRST_A_MMU_PHP>;
- 		#iommu-cells = <1>;
--		status = "disabled";
- 	};
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index e94c83d7c138..2525eb51f13b 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -321,8 +321,16 @@ allOf:
+         - clocks
  
- 	pmu1grf: syscon@fd58a000 {
+     else:
+-      properties:
+-        clocks: false
++      if:
++        not:
++          properties:
++            compatible:
++              contains:
++                const: rockchip,rk3588-php-grf
++
++      then:
++        properties:
++          clocks: false
+ 
+ examples:
+   - |
 
 -- 
 2.55.0
