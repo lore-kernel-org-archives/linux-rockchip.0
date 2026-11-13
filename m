@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 724F560A3801
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:40:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5106560A382D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:40:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OagXwNor;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Oolv3h7g
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mwEr/qIA;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=OQsol5aN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=PjyH/PcIfjXmy6M7LnuiMVAITwG/Y+wS3Rs1Uk+raN0=; b=OagXwNor2DOejEbkyTt7iaAfOU
-	txT1Vs3q4+S5ik6yL58uoyv/N2EHyR+7s7+r5zC2RV1nTevpLPn3bnUpbnyUIfFI75YAtnnbu4fc5
-	tiwfTQNtEjDD0tcrNOoTrfnuxbgbb04DTievoOPxirOnB6xKZz4iHpjO5V36wYaG2p44ZniLPS6wc
-	fGzyT0h7SuYvAbOOgkwpHzaE92ehqpfcwReTqqS5g73SMrrV5ZUnaPzB6b24fT6C8rYy+v4Ny6mfs
-	1pcFY69YrG2Bxuv86sn/ss1hdnMaNqS0nOHhmFoxS6IMrRBU6VLD+LN3pU8g08JIClkQ0sy6+MwuM
-	0Y1xXORg==;
+	bh=z2dl+VJxOtM/9qHnMQq1ibBEwNZiRn8GgAfWMdcq77M=; b=mwEr/qIAdfomC3qWlvRBqveYBI
+	Zlkog65C9WY7RwT1WuQyAUuhuVuPXVUvyATt8c4ZK+7x6a9YBMue6Ll7hhicFIpwXp9V3MiDw50ih
+	fwh3+8A6tJCaRiga4/YmbctBsn2yW0jG95vxrJuc1DRaqTd3g24fUU40EMo8wtCp74CbeDhr2oq2O
+	UAdoGdOLiA7xu+8rC+65txMXmVwG8ieoxPQUyZ6+/s9x/EZGfgbQFQ5qMD1Y5O3Q6XNkDsMHnmuub
+	T8NUcxUUIJs5FGKaR1DfcmRzCbaAlANMq73CKMARw37I9eznX4Ywpl4pp3XRLVnrHwuRXeNVsMgso
+	F1V3D3Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuK2-0000000DacB-411Z;
-	Fri, 13 Nov 2026 16:40:18 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xRuK1-0000000DaaM-429F;
+	Fri, 13 Nov 2026 16:40:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuJ8-0000000DZgQ-2nV1;
-	Fri, 13 Nov 2026 16:39:23 +0000
+	id 1xRuJ8-0000000DZgE-1xW2;
+	Fri, 13 Nov 2026 16:39:22 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 00D8962930;
-	Fri, 13 Nov 2026 16:39:22 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id DA87C6291E;
+	Fri, 13 Nov 2026 16:39:21 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1794587961;
-	b=UHwFHmtOd5zLefTRJb8a/qsFvlPMT38ef58+KomC4oa49I0ghrQ0Lm5jEsK1dFNaWUfq
-	 qiYQR5KPVujz8of3t7VVqXvBaTpLJbZfmmH098rYuVpS34wEfd+WPTgHvvYatEEO5uwGV
-	 uvzx7Y0SlZtxKkYylZ6W/kFkwQVLUhCLwnc2b854Is9NxjPpUDbFo2NXDnhm26ajZ9B1r
-	 Tb2vc4MDmEE2vS4KXimbEpZN6IpH+j1Do1wBAAd9sNl8fY5OHrTL2aQvVsrOnhb0l/XgI
-	 LNFbzooxi55l4PCTKAruV02MoXQup0prX9DXeLuViMAFPBOs9epq4lvKopMoI5JceZA==
+	b=s86bV+Cac68hQ5HU3g3kkJogOc9ApZxwIKaNr/TfCCOdel8LVUfx9xklEvUk3aS/kv28
+	 qS/28upT6juVQsja8Q4HlsYwITN9CEcSbNBiubWrOwxybC6AiGPxeTxyZnmbfLVvFfRip
+	 rZgkTJoe2oQUr18H1jHyayyxY7Z4FH/54PMQMz0fXfbt/90+LsL54DzMduv0jqLTl0axs
+	 Q7UNCOZ9GBp6xTx/5YK8icm7KIbLBDPzps3bnk4TVn77udqpx0XqMdzcrZCE32x3gESkM
+	 6jJvOvhxi2EHX3hO+uCGEMxSDAvc/qWflKjudT2TnAwvDNQwuA332vxFb3Y5y0D8icw==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1794587961;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=VRoae0uJKg41x4H1sHQuO0swuZqkwOjr8m8nkdoCDdk=;
-	b=PU9LJfhg7JL4v7yqrQfVL4n9evdrLaRdOzxDevOcB3a6GvhGUvW8q6tCDZXtjbAO192I
-	 KinUqzGwvevrJ48nmpVNQpKFx7zSemUC8FYd1oavu0LvoHjehynHiyLB7PQBXWOxq+EL9
-	 08HS3JV60+/xmlwhAO8l3nhlwJ7STAhmyVBDk9wieODyZOmidbW3BKEUkdj9P/cA9y6Kh
-	 jfikb8ib869ZEQxc+froaX68E/7ShHvDa5x6UeO9elNKH0Kv9qLZcLFdNhQTirQKhM2Dg
-	 ZyBe1/VldzTacKb29ilxh0Jp1ebzbcydpRCSMhXaEkryURxAz74XXKc/Ze+gtfrY6OQ==
+	bh=RxSPduDOiaRwH24FYN3D1kk/0l8Fy9fc2Bjq8nF2JJA=;
+	b=nrgiCt5cWIRULFpL7k0JynE/7dvmviMV1gSFZlKgpBMFgf80k8IrVlVLmc0vdt59q/j4
+	 bMOpOB6C3h0BgBphhne7WbOEwMkpETe89toteaRKqntDpChxhuTw8IGTXok2p88jlO9YI
+	 ZICRWLcv8azxler3muGcQN/CxT4bFHM6vkMvA2YuRAap5xcJTqkI59+rJZkUXZhRYAk/m
+	 QSIDSD/3e5qMVhWBC1jjuyCb1Ie9oOxSu6GA7yGZS84cL1ejeeB0jfJIkAM/tnjhRzJKi
+	 M81HYgfEmXzMP6TFb++iJvN8KbXXdopFSFcvJwyU6VgnA8LDrXu/qX5vmcn3atgLj4g==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 760CA1F000C7;
+	by smtp.kernel.org (Postfix) with ESMTPS id 76FC11F000CB;
 	Fri, 13 Nov 2026 16:39:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1794587961;
-	bh=VRoae0uJKg41x4H1sHQuO0swuZqkwOjr8m8nkdoCDdk=;
+	bh=RxSPduDOiaRwH24FYN3D1kk/0l8Fy9fc2Bjq8nF2JJA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=Oolv3h7gcMuRIK/vG2UrAJ3EQ5Ivr/Gx90tSJmUWJxQVpGs5xdzV7OiIOH0t7rATn
-	 Whk20mbEVbhq4eSmSViv0XDckjEGSsRdSHZd8MMoZ5HITIl0O7IU9lE1I1SILHiCFI
-	 uCD32NzhKn7uuF55dd+fk9o986AILoX+VJInHc7KKv5IOOVFVd0y/bSM3dK5pi5tWh
-	 lsMPEa1dPiKZigV7uSn0kp/mIx9vb8IHSgg41M34JNXZJyPVWWSH5v4vQbWC06+SNo
-	 AUXf0HnZizy16DeIxjLN/h8ybl1QFQ637IFj/od/crflSS0npp34m2sexB9HlS5dJY
-	 pJKswW7Bhoftg==
+	b=OQsol5aNf1uXX2dUm8oO4jIhguMpZgV7cjjtG/1G505aWLHoqCVH2b5zJ3PT9jxPf
+	 4wEPe5NoIZcgZxOfRUdRb8uptBHi0AGAKSACICX9GVrRLE4mLXtFwrAhaJo8HFwroH
+	 rthyGICias9U/oFZ3J2Cok3d014ZNQjfBX6xZ1CBa++nQPuKFyS06b0PxWLfOWv8xI
+	 bW970A9iHrPRGf4q7fNNLDbjbOM1Y7f0FU4WhB/HNNdyFD9Ive6zrIxJNFtCSc0VI1
+	 5v062EnVuY+tKdDWtkQqzVL8JlB+17hnJgGcnCPvN+6qfv54d0QZl/1RWZYC3lGEkn
+	 KjPx8ZDAP0Kag==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 2AA9A499CD;
+	by lkml.kernel.org (Postfix) with ESMTP id 15606499C9;
 	Fri, 13 Nov 2026 16:39:19 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Fri, 13 Nov 2026 16:39:25 +0000
-Subject: [PATCH v3 8/8] drm/rockchip: vop2: Fix the AFBC offsets of a
- source that starts inside a superblock
+Date: Fri, 13 Nov 2026 16:39:24 +0000
+Subject: [PATCH v3 7/8] drm/rockchip: vop2: Keep the other LUT_PORT_SEL
+ fields on gamma LUT updates
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261113-vop2-fixes-v3-8-08ae37e83b5c@gmail.com>
+Message-Id: <20261113-vop2-fixes-v3-7-08ae37e83b5c@gmail.com>
 References: <20261113-vop2-fixes-v3-0-08ae37e83b5c@gmail.com>
 In-Reply-To: <20261113-vop2-fixes-v3-0-08ae37e83b5c@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -94,11 +94,11 @@ Cc: Piotr Zalewski <pZ010001011111@proton.me>,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794587957; l=2614;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794587957; l=1431;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=OP4jKFakkLyQ4QcI6idmiNeI2E8izD1vnV+qArtL82k=;
- b=c7CMcHGVoAgMCU6gBh2rcDJRL6AsU5CYld1bsphqTY42r8d+LqBbiEn+80XBNC8prbB3OW/kO
- fzTR8Rlok8ICOlSnxoCzPtL0qgkepW9BP5E6uaJg35x+0uRreo5Xa50
+ bh=SkwWlNjcbiIUimcs4iIv+zOxIFtUHq1H2Qpz0WkqgFg=;
+ b=AlThRHuxtJ9AiM2MPRZ+nBKGtidmigRvebqlaSPq5n1dGKgsE42ZiGxgJl2H9b6Hrc7i4+swD
+ IMiRbZMjpl1Cnxa7fWQBbBXWWE3QuOPZ9fwYGe7VBsAWdq8lYqTo5ee
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -127,69 +127,36 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-For an AFBC source that starts inside a superblock, AFBC_TILE_NUM misses
-the first, partial superblock column, and the transform offset is the
-whole x position (truncated to 8 bits) instead of the offset inside the
-superblock.
+On RK3588 the gamma LUT update writes the whole LUT_PORT_SEL register to
+select the write port, which clears the dclk source selection of video
+ports 0 and 2 and the VP0/VP1 merge enable held in the same register.
 
-Count the columns from the first one the source touches and take the x
-offset modulo the superblock width, as the vendor kernel does.
+Only update the write select field.
 
-Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+Fixes: 4f537776340d ("rockchip/drm: vop2: add support for gamma LUT")
+Reviewed-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Reviewed-by: Damon Ding <damon.ding@rock-chips.com>
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 0c300279399a..fc36edfe79d8 100644
+index de3da292b05a..0c300279399a 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -431,7 +431,7 @@ static bool vop2_half_block_enable(struct drm_plane_state *pstate)
- }
- 
- static u32 vop2_afbc_transform_offset(struct drm_plane_state *pstate,
--				      bool afbc_half_block_en)
-+				      bool afbc_half_block_en, u32 block_w)
+@@ -1621,8 +1621,9 @@ static void vop2_crtc_atomic_set_gamma_seamless(struct vop2 *vop2,
+ 						struct vop2_video_port *vp,
+ 						struct drm_crtc *crtc)
  {
- 	struct drm_rect *src = &pstate->src;
- 	struct drm_framebuffer *fb = pstate->fb;
-@@ -479,7 +479,7 @@ static u32 vop2_afbc_transform_offset(struct drm_plane_state *pstate,
- 		ty = act_yoffset;
- 		break;
- 	case DRM_MODE_REFLECT_Y:
--		tx = act_xoffset;
-+		tx = act_xoffset % block_w;
- 		ty = bottom_crop_line_num - act_yoffset;
- 		break;
- 	case DRM_MODE_ROTATE_90:
-@@ -491,7 +491,7 @@ static u32 vop2_afbc_transform_offset(struct drm_plane_state *pstate,
- 		ty = vir_width - width - act_xoffset;
- 		break;
- 	case 0:
--		tx = act_xoffset;
-+		tx = act_xoffset % block_w;
- 		ty = act_yoffset;
- 		break;
- 	}
-@@ -1433,7 +1433,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 		if (fb->modifier & AFBC_FORMAT_MOD_YTR)
- 			afbc_format |= (1 << 4);
- 
--		afbc_tile_num = ALIGN(src_w, block_w) / block_w;
-+		afbc_tile_num = ALIGN(src_w + (src->x1 >> 16) % block_w, block_w) / block_w;
- 
- 		/*
- 		 * AFBC pic_vir_width is count by pixel, this is different
-@@ -1484,7 +1484,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
- 			vop2_win_write(win, VOP2_WIN_AFBC_PLD_OFFSET, yrgb_mst);
- 		}
- 
--		transform_offset = vop2_afbc_transform_offset(pstate, half_block_en);
-+		transform_offset = vop2_afbc_transform_offset(pstate, half_block_en, block_w);
- 		vop2_win_write(win, VOP2_WIN_AFBC_HDR_PTR, yrgb_mst);
- 		vop2_win_write(win, VOP2_WIN_AFBC_PIC_SIZE, act_info);
- 		vop2_win_write(win, VOP2_WIN_TRANSFORM_OFFSET, transform_offset);
+-	vop2_writel(vop2, RK3568_LUT_PORT_SEL,
+-		    FIELD_PREP(RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL, vp->id));
++	regmap_update_bits(vop2->map, RK3568_LUT_PORT_SEL,
++			   RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL,
++			   FIELD_PREP(RK3588_LUT_PORT_SEL__GAMMA_AHB_WRITE_SEL, vp->id));
+ 	vop2_vp_dsp_lut_enable(vp);
+ 	vop2_crtc_write_gamma_lut(vop2, crtc);
+ 	vop2_vp_dsp_lut_update_enable(vp);
 
 -- 
 2.55.0
