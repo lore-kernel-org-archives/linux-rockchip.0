@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A707E606A333
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 19:33:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C1334606A331
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 19:34:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=emYTh1p2;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=fVZBrCXJ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nSbDpQsc;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=cC9HmsG+
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,48 +14,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=GDgWkIKeFFSPTsd1aLRNnI6I+MOuGleetoZiH+7xMiQ=; b=emYTh1p2QTWyFsb0rXTt4f5y6k
-	odFnVe63MXvCdPWj7uDHGUtuew+Pav7JMJfChreRjhKfyjFw9z1UpZ7IjhjCboW8fn0orwVbQYAKK
-	AjlHq/uqKiRe23ndAZUX5O9kTNRhWPaek2CLxPSdKhQhVGlvgeaEUTJoShsMBKVY6nM/QYywARZFB
-	J73CXHgpfCtbbnSVQ7rK0TCNR5lt3E9f3eWsYhdTQS+WtlAftGkBBOETsqapBNTPmhVmM/EgzXL52
-	uEVQXZ9wgU588omi0+4aDNr8YjqkOFa013NC3zXQ95X4I6NFxUjIZRBe9ALJGSCtVcwtL1Us0BJVu
-	JZV9ebOA==;
+	bh=tO8PA9pPuTntWo7GdUCNPd0JdAz97Ypnn3ZIsa66j8Y=; b=nSbDpQscnIrXbT8EnLx4wT9rQx
+	XfuDRbUm5mHYU1YZNmMjyEbLj9ta90L8Vcorpvwq+qwMkK/Ol7+Y+hV5BEqiBLUB5xFfrkG6nYi0n
+	Rrgg3faleMV9/Cl2SJUDisPAJ1zkkI/VmbhwbqGy1S4izFIryLDUtzeY6aJ/DTfTIuHgjUtgFzQSU
+	FS1aSwnwTsZS6gdy5ZV+RTvtEmAri4RDOfMZSmROhFaLJJjCtWRWgOtQNYbMk+foJMwWSlpdXcsT5
+	VTROKXlz8p4CT1/SiHo2Tsj7flbUEHcpstSvMYJOfmYj7IWypxkj0yzJEMOkAthy7pYtOwv/UVP8h
+	CvjBLyWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRx1T-0000000EC9u-1nDS;
-	Fri, 13 Nov 2026 19:33:19 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xRx2H-0000000ECPf-2nqT;
+	Fri, 13 Nov 2026 19:34:09 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRx1O-0000000EC82-3Yxh;
-	Fri, 13 Nov 2026 19:33:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=3cvVB8oLNqlQFPwFKMUuhi1X/vDmZWiN//JjPAVvjJ0=; b=fVZBrCXJTi5Hl1cAhnGXFJnaRu
-	uMXsLtdE1sDHiPTxTusPdRssUAoUOYtakcLkZ/LWCPzewerEA1H1XO/EZ/1+lY8yrLmMxmnww+xHq
-	TZhwZ4BjqUxm8JjFT1Hh3b49h1JZt9p7NQ94uXiguQuVByGvEoGY5VDTSNns4d+IwCt+VW1ca3SkI
-	Axbdal++FeVlMIzagivufXUhlzcz4hKODHuTW4TjeORRK2WMgIdicX2nI4vrJdtK/sV4UNs1YY+sV
-	7FFhJSFN9utZgqJg85ShL++yfXstm5Vo43AtuVyoyAEbPQkr2OLkSFMbocetyE+yxZ1lBA1TNVFRW
-	w48brsbA==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Tim Surber <me@timsurber.de>
-Cc: Tim Surber <me@timsurber.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Valentin =?UTF-8?B?SMSDbG9pdQ==?= <valentin.haloiu@gmail.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: fix HDMI RX 5V detection pin on CM3588
- NAS
-Date: Fri, 13 Nov 2026 20:33:09 +0100
-Message-ID: <7ONBekS7Tj-N3VFFry-6aA@sntech.de>
-In-Reply-To: <20261111210059.3489502-2-me@timsurber.de>
-References: <20261111210059.3489502-1-me@timsurber.de>
- <20261111210059.3489502-2-me@timsurber.de>
+	id 1xRx2F-0000000ECP0-029a;
+	Fri, 13 Nov 2026 19:34:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794598387; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=YHAIiaFipjPi82NCsEtPDvtmUSu4qoez7H+T7u+7MD7NH+PODbSCUEWk1yksDR9zfGzxtUIlW1ht8iMdxc7iaRg4kY772kEXE2JuUf+DXZxfSPUoJmTTXogBm6IVvVWeuEocbPfbRbpbYDMfr8S9SeWCG5BLLdy5EUCZ7rYw58U=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794598387; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=yaNg0A4qZyJmLSbHE3kEHVsrAEPsGCCK5VNcyYGHU9c=; 
+	b=Vuy/PJriChFIc2JkznTBF37ZEI8/BIQd6ch2eBcB5F4NwXj9X90t4V3YMq2JUKxG/Y5tZctAoKutyRErZOjpfHVAwn7njbwakn0D2WPavAJFrpm3ArBdB+60wGJknSooQMpwtsTNegXW9R09rPM8GImAgpvWpxoz7ci559mSKJ4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=cC9HmsG+wxnrtwY1/kmwkPERwTZiUiNrcOpQuzsNvzX3qCDA63tPxpNDYivzALUxtwniSDPH5KT/SDPwh0jjjA6UIQ4ThFnJhcbzGFOaZZi9SPmxu6Y9zm1x3JhEVfOnDKauit/F6a8wdbqQyNmhfI/I0bH2xFOEHhweXPyUb/E=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=yaNg0A4qZyJmLSbHE3kEHVsrAEPsGCCK5VNcyYGHU9c=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794598386584198.56420054419993;
+	Fri, 13 Nov 2026 11:33:06 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Vidith Madhu <vmadhu@nvidia.com>
+Cc: Xaver Hugl <xaver.hugl@gmail.com>,
+ "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>,
+ Leo Li <sunpeng.li@amd.com>, Harry Wentland <harry.wentland@amd.com>,
+ Fangzhi Zuo <Jerry.Zuo@amd.com>, Daniel Stone <daniels@collabora.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Helge Deller <deller@gmx.de>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Andy Yan <andyshrk@163.com>,
+ Michel =?UTF-8?B?RMOkbnplcg==?= <michel.daenzer@mailbox.org>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-fbdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ Derek Foreman <derek.foreman@collabora.com>,
+ wayland-devel@lists.freedesktop.org
+Subject: Re: [PATCH v2 17/27] drm/connector: Add "Media" VRR display mode for QMS
+Date: Fri, 13 Nov 2026 20:32:57 +0100
+Message-ID: <J8t71gP7QKWKTygTYwJB2Q@collabora.com>
+In-Reply-To: <3e4c8552-5dc0-f189-dee8-2ca0ebe01629@nvidia.com>
+References: <20261105-vrr-limiter-uapi-v2-0-55f4215be2c2@collabora.com>
+ <20261105-vrr-limiter-uapi-v2-17-55f4215be2c2@collabora.com>
+ <3e4c8552-5dc0-f189-dee8-2ca0ebe01629@nvidia.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_113314_890303_91144E20 
-X-CRM114-Status: GOOD (  20.54  )
+X-CRM114-CacheID: sfid-20261113_113407_110263_E071F345 
+X-CRM114-Status: GOOD (  31.50  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,56 +86,132 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgVGltLAoKQW0gTWl0dHdvY2gsIDExLiBOb3ZlbWJlciAyMDI2LCAyMjowMDoyNyBNaXR0ZWxl
-dXJvcMOkaXNjaGUgTm9ybWFsemVpdCBzY2hyaWViIFRpbSBTdXJiZXI6Cj4gVGhlIEhETUkgcmVj
-ZWl2ZXIgbm9kZSB1c2VzIEdQSU8zX0Q0IGJvdGggYXMgdGhlIHJlY2VpdmVyJ3MgSFBEIG91dHB1
-dAo+IChoZG1pbTFfcnhfaHBkaW4pIGFuZCBhcyBpdHMgNVYgZGV0ZWN0aW9uIGlucHV0IChocGQt
-Z3Bpb3MgYW5kIHRoZQo+IGhkbWlyeF9ocGQgcGluIGdyb3VwKS4gQm90aCBwaW4gZ3JvdXBzIGFy
-ZSBpbiB0aGUgc2FtZSBwaW5jdHJsIHN0YXRlIGFuZAo+IHRoZSBsYXRlciBvbmUgd2lucywgc28g
-dGhlIHBpbiBlbmRzIHVwIGFzIGEgR1BJTyBpbnB1dCB3aXRoIHB1bGwtdXAuCj4gVGhlIGNvbnRy
-b2xsZXIgY2FuIHRoZW4gbmV2ZXIgZHJpdmUgSFBEOiB0aGUgc291cmNlIHNlZXMgSFBEIGFzc2Vy
-dGVkCj4gYWxsIHRoZSB0aW1lLCBhbmQgdGhlIDVWIGRldGVjdGlvbiByZWFkcyBiYWNrIHRoZSBI
-UEQgbGluZSBpbnN0ZWFkIG9mCj4gdGhlIHNvdXJjZSdzIDVWLgo+IAo+IFRoZSBkcml2ZXIgcmVs
-aWVzIG9uIEhQRCBiZWluZyBsb3cgd2hpbGUgaXQgd3JpdGVzIHRoZSBFRElELCBhdCBwcm9iZQo+
-IGFuZCBvbiBWSURJT0NfU19FRElELiBXaXRoIEhQRCBzdHVjayBoaWdoLCBhIHNvdXJjZSBtYXkg
-cmVhZCB0aGUgRURJRAo+IHdoaWxlIGl0IGlzIGJlaW5nIHdyaXR0ZW4uIEEgc291cmNlIHRoYXQg
-ZG9lcyBzbyBhdCBib290IGtlZXBzIHRoZQo+IGRhbWFnZWQgY29weSwgYXMgaXQgbmV2ZXIgc2Vl
-cyB0aGUgSFBEIHB1bHNlIHRoYXQgc2hvdWxkIG1ha2UgaXQgcmVhZAo+IHRoZSBFRElEIGFnYWlu
-LiBPbiBhIENNMzU4OCBOQVMgd2l0aCBIRE1JMCBsb29wZWQgYmFjayBpbnRvIEhETUkgUlgKPiB0
-aGlzIGhhcHBlbmVkIG9uIDMgb2YgMTAgYm9vdHM6IEhETUkwIGxvZ2dlZCAiRURJRCBoYXMgY29y
-cnVwdCBoZWFkZXIiLAo+IGZvdW5kIG5vIHZhbGlkIEVESUQgYW5kIGZlbGwgYmFjayB0byAxMDI0
-eDc2OC4gQ2hhbmdpbmcgdGhlIEVESUQgd2l0aAo+IFZJRElPQ19TX0VESUQgd2FzIG5vdCBub3Rp
-Y2VkIGJ5IHRoZSBzb3VyY2UgYXQgYWxsLgo+IAo+IEZyaWVuZGx5RWxlYydzIHZlbmRvciBkZXZp
-Y2UgdHJlZSBmb3IgdGhlIENNMzU4OCB1c2VzIEdQSU8xX0Q1LCBhY3RpdmUKPiBsb3cgd2l0aCBw
-dWxsLXVwLCBmb3IgdGhlIDVWIGRldGVjdGlvbi4gVGhlIE5hbm9QQy1UNiB1c2VzIHRoZSBzYW1l
-IHBpbgo+IHVwc3RyZWFtLiBVc2UgdGhhdCBwaW4gYW5kIGxlYXZlIEdQSU8zX0Q0IHRvIHRoZSBI
-UEQgZnVuY3Rpb24uCj4gCj4gV2l0aCB0aGlzIGNoYW5nZSB0aGUgcGluIG11bHRpcGxleGluZyBz
-aG93cyBHUElPM19ENCBpbiB0aGUgSFBECj4gZnVuY3Rpb24sIHRoZSBzb3VyY2UncyBIUEQgaW50
-ZXJydXB0IGZpcmVzIG9uIGV2ZXJ5IEVESUQgdXBkYXRlLCBhbmQgYQo+IGNoYW5nZWQgRURJRCBy
-ZWFjaGVzIHRoZSBzb3VyY2Ugd2l0aGluIDAuNSBzLiBJbiAxMCBib290cyAoNSBwb3dlcgo+IGN5
-Y2xlcywgNSByZWJvb3RzKSB0aGUgRURJRCByZWFkIGJ5IEhETUkwIGFsd2F5cyBtYXRjaGVkIHRo
-ZSBvbmUKPiB3cml0dGVuIGJ5IHRoZSByZWNlaXZlciwgYW5kIEhETUkwIGNhbWUgdXAgYXQgaXRz
-IG5hdGl2ZSBtb2RlIGV2ZXJ5Cj4gdGltZS4gVGhlIHJlY2VpdmVyIHN0aWxsIGRldGVjdHMgdGhl
-IHNvdXJjZSdzIDVWIGFuZCBsb2NrcyB0byBpdHMKPiBzaWduYWwuCj4gCj4gVXNpbmcgdGhlIHBp
-biBpbiB0d28gZ3JvdXBzIGFsc28gbWFkZSBwaW5jdHJsIHdhcm4gb24gZXZlcnkgdW5iaW5kIG9m
-Cj4gdGhlIHJlY2VpdmVyICgibm90IGZyZWVpbmcgcGluIDEyNCAoZ3BpbzMtMjgpIGFzIHBhcnQg
-b2YgZGVhY3RpdmF0aW5nCj4gZ3JvdXAgaGRtaW0xLXJ4LWhwZGluIC0gaXQgaXMgYWxyZWFkeSB1
-c2VkIGZvciBzb21lIG90aGVyIHNldHRpbmciKSwKPiBhbmQgaW4gZWFybGllciB0ZXN0aW5nIHRo
-ZSBmb2xsb3dpbmcgYmluZCBzb21ldGltZXMgZmFpbGVkIHdpdGgKPiAtRUlOVkFMLiBXaXRoIHRo
-aXMgY2hhbmdlIHRoZSB3YXJuaW5nIGlzIGdvbmUuCgp5b3UncmUgZml4aW5nIF9vbmVfIGdwaW8s
-IHRoaXMgZG9lcyBub3QgbmVlZCBhIG5vdmVsIHNpemUgZXhwbGFuYXRpb24uClBsZWFzZSBtYWtl
-IHN1cmUgeW91J3JlIHdyaXRpbmcgY29tbWl0IGRlc2NyaXB0aW9ucyB5b3Vyc2VsZiBhbmQgbm90
-CmxldCBhbiBMTE0gcnVuIGFtb2sgb24gaXQgcGxlYXNlLgoKClRoYW5rcwpIZWlrbwoKCgoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
-aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Thursday, 12 November 2026 07:18:21 Central European Standard Time Vidith Madhu wrote:
+> 
+> On Thu, 5 Nov 2026, Nicolas Frattaroli wrote:
+> 
+> > HDMI includes a feature called "Quick Media Switching", or QMS for
+> > short, which builds upon the existing VRR to allow for quick switching
+> > between a select few common frame rates.
+> > 
+> > Add a new VRR display mode, "VRR_DISPLAY_MODE_MEDIA", to the
+> > vrr_display_mode connector property, in order to expose support for
+> > this.
+> > 
+> > Additionally, add a boolean flag to the connector's HDMI sub-struct with
+> > which source-side support for QMS can be indicated, as well as the QMS
+> > tfr byte to the HDMI state sub-struct.
+> > 
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  drivers/gpu/drm/drm_connector.c |  6 ++++++
+> >  include/drm/drm_connector.h     | 14 ++++++++++++++
+> >  2 files changed, 20 insertions(+)
+> > 
+> > diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+> > index 21222214a843..f7d619926e2d 100644
+> > --- a/drivers/gpu/drm/drm_connector.c
+> > +++ b/drivers/gpu/drm/drm_connector.c
+> > @@ -1456,6 +1456,7 @@ DRM_ENUM_NAME_FN(drm_get_tv_mode_name, drm_tv_mode_enum_list)
+> >  static const struct drm_prop_enum_list drm_vrr_mode_enum_list[] = {
+> >  	{ VRR_DISPLAY_MODE_GAME,   "Game" },
+> >  	{ VRR_DISPLAY_MODE_OFF,    "Off" },
+> > +	{ VRR_DISPLAY_MODE_MEDIA,  "Media" },
+> >  };
+> >  DRM_ENUM_NAME_FN(drm_get_vrr_mode_name, drm_vrr_mode_enum_list)
+> >  
+> > @@ -2593,6 +2594,11 @@ EXPORT_SYMBOL(drm_mode_create_scaling_mode_property);
+> >   *	    - Game - set display to game mode if display supports it,
+> >   *	      regardless of CRTC state
+> >   *	    - Off - set display to VRR disabled mode, regardless of CRTC state
+> > + *	    - Media - a "media" VRR mode that only supports a select number of
+> > + *	      common media refresh rates as fixed targets, but does so with
+> > + *	      possibly better display-side processing. In the HDMI display
+> > + *	      protocol, this is QMS (Quick Media Switching), though the mode
+> > + *	      enum itself is vendor-agnostic
+> >   *
+> >   * VRR Limiter/Target Properties
+> >   * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> > diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+> > index 4801bb2769e1..41f272afbb1e 100644
+> > --- a/include/drm/drm_connector.h
+> > +++ b/include/drm/drm_connector.h
+> > @@ -829,6 +829,8 @@ enum vrr_display_mode {
+> >  	VRR_DISPLAY_MODE_GAME = 0,
+> >  	/** @VRR_DISPLAY_MODE_OFF: Turn off VRR on the display */
+> >  	VRR_DISPLAY_MODE_OFF,
+> > +	/** @VRR_DISPLAY_MODE_MEDIA: Protocol-agnostic fixed rate media mode */
+> > +	VRR_DISPLAY_MODE_MEDIA,
+> >  	/** @VRR_DISPLAY_MODE_COUNT: Sentinel, not a valid mode, keep last */
+> >  	VRR_DISPLAY_MODE_COUNT
+> >  };
+> > @@ -1241,6 +1243,12 @@ struct drm_connector_hdmi_state {
+> >  	 * deliberately not requested by the helper.
+> >  	 */
+> >  	bool scrambler_needed;
+> > +
+> > +	/**
+> > +	 * @qms_tfr_byte: Target frame rate byte for HDMI QMS, or 0 if QMS is
+> > +	 * not in use.
+> > +	 */
+> > +	u8 qms_tfr_byte;
+> >  };
+> >  
+> >  /**
+> > @@ -2270,6 +2278,12 @@ struct drm_connector_hdmi {
+> >  	 */
+> >  	bool scrambler_enabled;
+> >  
+> > +	/**
+> > +	 * @qms_supported: Whether the connector supports HDMI Quick Media
+> > +	 * Switching (QMS) on the source side, irrespective of display support.
+> > +	 */
+> > +	bool qms_supported;
+> I'm not really understanding why a source-side capability is being 
+> captured at the connector level. The way I envisioned this is that
+> source-side Media-VRR support can be determined by whether the driver
+> attaches the CRTC frame limit properties. The ability to maintain an
+> arbitrary fixed refresh rate (implied by attaching the properties) should
+> be the only QMS-specific requirement the source needs to support.
+
+Is this the case? I have little information about the QMS specification
+or the hardware implementations, so I was basically hedging for an odd
+case where an HDMI implementation is abstracted enough to where we can
+get it to send VTEM EMP packets through some interface, but not with
+QMS TFR bytes.
+
+If that's something so far out there it probably won't ever exist, I'm
+happy to remove this and make QMS checks just a check for the limiter
+properties.
+
+Kind regards,
+Nicolas Frattaroli
+
+> 
+> Thanks,
+> Vidith 
+> > +
+> >  	/**
+> >  	 * @scdc_work: Work item currently used to monitor sink-side scrambling
+> >  	 * status and retry setup if the sink resets it.
+> > 
+> 
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
