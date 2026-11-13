@@ -2,74 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 416D2606A880
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 14:44:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1BB24606A32E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 14:53:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Wwf7rX5c;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=chBHvI6M
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=S9B77pf5;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=0leil.net header.i=@0leil.net header.a=rsa-sha256 header.s=20231125 header.b=ZQuENgGV
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=F1I+Bwg3M4kwSPkOMbhGntbo2B0KxcEmT6KrAq7ypYU=; b=Wwf7rX5cIJFsVntQJoqPecTSiY
-	J4QlG4tPVhh/Ma0Nr3beyJsOgiBc6Io4KSt4LA0ReW80NTZbFTKisOWuDYvCFK7nOmuqOr5Zl5FvJ
-	FHU/XiUMl2GE7+6YwdGGet50Xe0sBdYnKGQRy/xTNHQmhu5zVehG0L4diXx423HhiLNPOnCq1M6Yf
-	GcVfufVw9cOy7ujf72DnO1BwmS3QwQ3W1CnvQbLyVUThTb8XFKLHmmz/QcxpXgJrM5entQt315/K/
-	XUpaBVt3y+8fJdcU9INpnRsAtp6YwaGgJHM8aWChbHoY0V7+DegDoaBDySk+s3m33c2BHUBu6gINb
-	PLnZeTrg==;
+	bh=JrKwPrkP59hEp0wS5vAjFP6OlzCfqZlWE62vUsk/JvI=; b=S9B77pf5w5kjzW7IKtZnz6z3yU
+	SpHiu4ForpOz5wqGUwN3i2uUqX9MwpnFxDc/SZM/5/IcFKlbqcR3Stb1S93LdkVXXqVgQawe/K8Qk
+	F3AHpS+toNwqy3mllhux8UQus7WRYVS+JIFt4a97yonPYz5LncEZGnk0jZ8Iov4pVzn8B6cKpTrN4
+	cKMkPG/yKIjQyPBK2W3DfI7vwGUhbHcu+ewQmb4KkCRkvCvZargtTedwZROgG05kcX6ZLqX53ml/y
+	conY4hutkk6ZXyg+Hf4ExMMACSTr2Ku50wzrk8AkNnfKey90hdZRi67YDEBaZna+G0DmRCR7oaWcl
+	9phEl2OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRsVR-0000000DCqo-1Xwv;
-	Fri, 13 Nov 2026 14:43:57 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xRseC-0000000DFVR-0Zwx;
+	Fri, 13 Nov 2026 14:53:00 +0000
+Received: from smtp-1909.mail.infomaniak.ch ([2001:1600:19:8e30::1909])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRsVF-0000000DCnQ-3sfn
+	id 1xRse4-0000000DFLw-2n4h
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Nov 2026 14:43:46 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 62CC061E10
-	for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 14:43:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D13B1F000CB
-	for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 14:43:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794581025;
-	bh=aIJ1R3I3zY6nNLuEgbZL5CCKuVIRDzNDPBPjyXpoCSI=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=chBHvI6McXSDpHb0EWEVc33PGomMAQ7sDtEdoNdx/Cu0Rbq/W/hRuM5cj8zLXytEY
-	 3qEHRKcnBJour5iQixW57eDGNTvp22S/nugBuaewf20w504Ll1F0Giffoqu/D0/zDP
-	 qUFjAZWP/otiqb5GLUAbqaVLV7/9MouBJgprqbWw5sfErJK69E0bISjPhbFRyEH8eS
-	 IhYe5soo/trQszfwsezegv1bJp6YQjeYbApIe3GAd97d5UNE2pIW0jQQWNZqgG2gha
-	 JLMUOV75nxrYW/iL3i2aqoUQC0b6CcmEtGBt6XJ1Mc6IICkt253ArfEeQ0upo9rQjW
-	 0FPOyWuMXd4jA==
-Received: by mail-vk1-f180.google.com with SMTP id 71dfb90a1353d-5ee2ad94713so1508405e0c.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 06:43:45 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AL+hErG7pICIsIUm3GTc27r6QUKg8x1/SdEzZe9oSSO7NP6yrQNHCU/OfnOK9Rv768xrRQ6VgXXHL1r0muaBFte0MA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9yGjMs2YNWBguyJobXVKd9VpE9HAWS3c+qcseH6wgARkG3iTfn
-	AhNNLSCig47uVKIZh0arq3BiXsgQbWXkqV934OSmAUJHrtDD4PvxkTABecA/Hyu6SR7N9K2/hRO
-	m19TLTc9Sk6tyEC2QSLKxYYjONJcRfIc=
-X-Received: by 2002:a05:6122:2490:b0:5c9:c60e:3a48 with SMTP id
- 71dfb90a1353d-5ee34ae1ca8mr943708e0c.20.1794581024275; Fri, 13 Nov 2026
- 06:43:44 -0800 (PST)
+	Fri, 13 Nov 2026 14:52:58 +0000
+Received: from smtp-3-0001.mail.infomaniak.ch (smtp-3-0001.mail.infomaniak.ch [10.4.36.108])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4jR0c11v7TzFgH;
+	Fri, 13 Nov 2026 15:52:49 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0leil.net;
+	s=20231125; t=1794581568;
+	bh=x15c4RWQyZd3P3XWS5iWIOHM9youpfWPrHBtj/xpwJs=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=ZQuENgGVmSOmWaut1R7uWdqbIQ6qVS/7CNF/69Uy4+rkSNiDf2doV3KumepG6sRNO
+	 euH0vFObNVUPQCsnp3UWGH9hZbXgqEtylrFFsgvE9uEkT8LFS4RL4c+H6OV1EHiGyp
+	 lj2TEyD1N9tKiB+/KFd6MqRc50FvEghF8t6FFOJ4Gg3vrDQa4j8/VJVoIVJd8/IQ7E
+	 k3CQZD3tKyxAysjRcbukO8pwVsRlxUwa07MC9jjcUpDzOQdkL7v2vkQVLwOB8bJSQn
+	 KLE/lzBsd6hw42SLXZOjVPWeM+aiQvWx0UmHnDk89OscoyS1LcRh+SfLj0GquTl4Vg
+	 m5G0tDvaxRE/g==
+Received: from unknown by smtp-3-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4jR0bz6QKHzmtk;
+	Fri, 13 Nov 2026 15:52:47 +0100 (CET)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Date: Fri, 13 Nov 2026 15:52:24 +0100
+Subject: [PATCH v2 2/2] arm64: dts: rockchip: enable OV9281 CAM1 P15 on
+ RK3588 Jaguar
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <b9ff4d03-61f7-4e17-b048-3cecee70f3ca@oss.qualcomm.com>
-In-Reply-To: <b9ff4d03-61f7-4e17-b048-3cecee70f3ca@oss.qualcomm.com>
-From: "Rafael J. Wysocki (Intel)" <rafael@kernel.org>
-Date: Fri, 13 Nov 2026 15:43:30 +0100
-X-Gmail-Original-Message-ID: <CAJZ5v0g5TFTknAZwmhuLvJuaim7WwqBVDmuPHan6ChTmQgu-Pw@mail.gmail.com>
-X-Gm-Features: AclHuK8tWwNVIZk0uuz_ClJI2W7oD2KMYUmtoOxf6YQnxiXSC-VHM7u3YXnKAUc
-Message-ID: <CAJZ5v0g5TFTknAZwmhuLvJuaim7WwqBVDmuPHan6ChTmQgu-Pw@mail.gmail.com>
-Subject: Re: [GIT PULL] powercap: Add generic hierarchy support and convert DTPM
-To: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, "Heiko St??bner" <heiko@sntech.de>, Shuah Khan <shuah@kernel.org>, 
-	Manaf Meethalavalappu Pallikunhi <manaf.pallikunhi@oss.qualcomm.com>, Lukasz Luba <Lukasz.Luba@arm.com>, 
-	Linux PM mailing list <linux-pm@vger.kernel.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kselftest@vger.kernel.org
+Message-Id: <20261113-jaguar-cam0-cam1-v2-2-3e9377e3c882@cherry.de>
+References: <20261113-jaguar-cam0-cam1-v2-0-3e9377e3c882@cherry.de>
+In-Reply-To: <20261113-jaguar-cam0-cam1-v2-0-3e9377e3c882@cherry.de>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Quentin Schulz <quentin.schulz@cherry.de>
+X-Mailer: b4 0.17-dev
+X-Infomaniak-Routing: alpha
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261113_065253_090851_A2C12E06 
+X-CRM114-Status: GOOD (  13.15  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,112 +73,184 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgRGFuaWVsLAoKT24gVHVlLCBOb3YgMTAsIDIwMjYgYXQgMjoyMeKAr1BNIERhbmllbCBMZXpj
-YW5vCjxkYW5pZWwubGV6Y2Fub0Bvc3MucXVhbGNvbW0uY29tPiB3cm90ZToKPgo+Cj4gSGkgUmFm
-YWVsLAo+Cj4gYXMgcmVxdWVzdGVkIHBsZWFzZSBjb25zaWRlciB0aGUgZm9sbG93aW5nIGNoYW5n
-ZXMgc2luY2UgY29tbWl0Cj4gNjYyOGU3ZDRjNmIyNWM4ZDE4ZjEzNDVlM2EyMGQyMTgyOWFhZTdl
-NDoKPgo+ICAgIExpbnV4IDcuNC1yYzEgKDIwMjYtMTEtMDEgMTM6MjY6MzEgLTA4MDApCj4KPiBh
-cmUgYXZhaWxhYmxlIGluIHRoZSBHaXQgcmVwb3NpdG9yeSBhdDoKPgo+ICAgIGdpdDovL2dpdC5r
-ZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90aGVybWFsL2xpbnV4LmdpdAo+IHRh
-Z3MvcG93ZXJjYXAtaGllcmFyY2h5Cj4KPiBmb3IgeW91IHRvIGZldGNoIGNoYW5nZXMgdXAgdG8g
-NmJhNDFhMTUxOWZmMWY5MWY5NmQ5MGE2YmY0ZjcwMTMxYThmN2M3MzoKPgo+ICAgIHBvd2VyY2Fw
-OiBkdHBtOiBBZGQgUkszNTg4IGhpZXJhcmNoeSAoMjAyNi0xMS0wOSAxNzozMzo0MCArMDEwMCkK
-Pgo+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0KPiBQb3dlcmNhcCBjb250cm9sbGVycyBtYXkgZXhwb3NlIHRyZWVzIG9mIHBv
-d2VyIHpvbmVzLCBzdWNoIGFzIHBhY2thZ2VzLAo+IGNsdXN0ZXJzIGFuZCBDUFVzLiBUaGlzIHNl
-cmllcyBhZGRzIGdlbmVyaWMgaGVscGVycyB0byBkdXBsaWNhdGUgYSBzdGF0aWMKPiBoaWVyYXJj
-aHkgZGVzY3JpcHRpb24sIGNyZWF0ZSBpdHMgem9uZXMgdGhyb3VnaCBiYWNrZW5kIGNhbGxiYWNr
-cywgYW5kCj4gZGVzdHJveSB0aGVtIGluIHJldmVyc2Ugb3JkZXIuIFBhcmVudHMgbXVzdCBwcmVj
-ZWRlIHRoZWlyIGNoaWxkcmVuIGluIHRoZQo+IG5vZGUgYXJyYXk7IHRoZSBoZWxwZXJzIHZhbGlk
-YXRlIHRoYXQgb3JkZXJpbmcgcmF0aGVyIHRoYW4gc29ydGluZyBub2Rlcy4KPgo+IERyaXZlcnMg
-c3VwcG9ydGluZyBtdWx0aXBsZSBwbGF0Zm9ybXMgY2FuIHBsYWNlIGVhY2ggcGxhdGZvcm0ncyBo
-aWVyYXJjaHkKPiBkZXNjcmlwdGlvbiBhbmQgbm9kZSBhcnJheSBpbiBpbml0ZGF0YS4gcG93ZXJj
-YXBfaGllcmFyY2h5X2R1cCgpIGNyZWF0ZXMgYQo+IHdvcmtpbmcgY29weSBvZiB0aGUgc2VsZWN0
-ZWQgaGllcmFyY2h5IGFuZCByZWJhc2VzIGl0cyBwYXJlbnQgcG9pbnRlcnMuCj4gQWxsIG9yaWdp
-bmFsIGRlc2NyaXB0aW9ucywgaW5jbHVkaW5nIHRob3NlIGZvciB1bnVzZWQgcGxhdGZvcm1zLCBj
-YW4gdGhlbgo+IGJlIHJlY2xhaW1lZCBhdXRvbWF0aWNhbGx5IHdpdGggaW5pdCBtZW1vcnkuIE5h
-bWVzIGFuZCBiYWNrZW5kLXByaXZhdGUKPiBkYXRhIGFyZSBub3QgZHVwbGljYXRlZCBhbmQgbXVz
-dCByZW1haW4gdmFsaWQgZm9yIHRoZSB3b3JraW5nIGhpZXJhcmNoeS4KPgo+IFRoZSBjb250cm9s
-bGVyIHN1cHBsaWVzIGNyZWF0aW9uIGFuZCBkZXN0cnVjdGlvbiBjYWxsYmFja3MgdG8gY29ubmVj
-dCB0aGUKPiBnZW5lcmljIGhpZXJhcmNoeSB0cmF2ZXJzYWwgdG8gaXRzIGJhY2tlbmQuIFRoZSBj
-cmVhdGlvbiBjYWxsYmFjayByZWNlaXZlcwo+IHRoZSBjb250cm9sIHR5cGUsIG5vZGUgbmFtZSwg
-cHJpdmF0ZSBkYXRhIGFuZCBwYXJlbnQgem9uZSwgcmVnaXN0ZXJzIHRoZQo+IHpvbmUgd2l0aCBp
-dHMgb3BlcmF0aW9ucyBhbmQgY29uc3RyYWludHMsIGFuZCByZXR1cm5zIGl0IHRvIHRoZSBoZWxw
-ZXIuCj4gVGhlIGRlc3RydWN0aW9uIGNhbGxiYWNrIHVucmVnaXN0ZXJzIGl0IGR1cmluZyByb2xs
-YmFjayBvciB0ZWFyZG93bi4KPgo+IFRoZSBBUEkgc3VwcG9ydHMgYm90aCBmYXRhbCBjcmVhdGlv
-biBlcnJvcnMsIHdoaWNoIHJvbGwgYmFjayBwcmV2aW91c2x5Cj4gY3JlYXRlZCB6b25lcywgYW5k
-IG9wdGlvbmFsIG5vZGVzOiBhIE5VTEwgY2FsbGJhY2sgcmVzdWx0IHNraXBzIGEgbm9kZSBhbmQK
-PiBpdHMgZGVzY2VuZGFudHMgd2hpbGUgYWxsb3dpbmcgaW5kZXBlbmRlbnQgYnJhbmNoZXMgdG8g
-YmUgY3JlYXRlZC4KPgo+IFRoZSBoZWxwZXJzIHdlcmUgbW90aXZhdGVkIGJ5IHRoZSBTUEVMIHdv
-cmsgYW5kIGFsc28gbGV0IERUUE0gc2hhcmUgdGhlCj4gc2FtZSBoaWVyYXJjaHkgaW5mcmFzdHJ1
-Y3R1cmU6Cj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGttbC8yMDI2MDcwMi1xY29tX3NwZWxf
-ZHJpdmVyX3Vwc3RyZWFtLXYzLTAtNDM0ZDUwZjBjNWIwQG9zcy5xdWFsY29tbS5jb20vCj4KPiBB
-IGtzZWxmdGVzdCBleGVyY2lzZXMgc3RhdGljIGFuZCBkdXBsaWNhdGVkIGhpZXJhcmNoaWVzLCBz
-a2lwcGVkIGJyYW5jaGVzLAo+IHJldXNlIGFmdGVyIHBhcnRpYWwgZGVzdHJ1Y3Rpb24sIGFuZCBy
-ZWplY3Rpb24gb2YgcmVwZWF0ZWQgY3JlYXRpb24uIEl0cwo+IHVzZXJzcGFjZSBzY3JpcHQgY2hl
-Y2tzIHRoZSAxNiBleHBvcnRlZCB6b25lcyBhbmQgc2VsZWN0ZWQgYXR0cmlidXRlCj4gdmFsdWVz
-LCB0aGVuIHJlbW92ZXMgdGhlIG1vZHVsZSB3aXRoIGEgc3lzZnMgYXR0cmlidXRlIGRlc2NyaXB0
-b3Igb3Blbi4KPgo+IERUUE0gaXMgY29udmVydGVkIHRvIHRoZSBnZW5lcmljIGhlbHBlcnMgd2hp
-bGUgcHJlc2VydmluZyBiZXN0LWVmZm9ydAo+IGNyZWF0aW9uIHdoZW4gaW5kaXZpZHVhbCBiYWNr
-ZW5kcyBhcmUgdW5hdmFpbGFibGUuIFRoZSBDUFUgYmFja2VuZCBmaW5kcwo+IGFuIG9ubGluZSBz
-aWJsaW5nIHdoZW4gYSBoaWVyYXJjaHkncyByZXByZXNlbnRhdGl2ZSBDUFUgaXMgb2ZmbGluZS4K
-PiBFbnRpcmVseSBvZmZsaW5lIHBvbGljaWVzIHJlbWFpbiB1bmF2YWlsYWJsZSBkdXJpbmcgaW5p
-dGlhbGl6YXRpb24uCj4KPiBUaGUgUkszMzk5IGRlc2NyaXB0aW9uIGlzIHJlZHVjZWQgdG8gb25l
-IENQVSBlbnRyeSBwZXIgY3B1ZnJlcSBwb2xpY3kuCj4gVGhlIG9sZCBiYWNrZW5kIGFscmVhZHkg
-c3VwcHJlc3NlZCBkdXBsaWNhdGUgcmVnaXN0cmF0aW9uOyB0aGUgZXh0cmEKPiBlbnRyaWVzIHdl
-cmUgcmVkdW5kYW50IGRlc2NyaXB0aW9ucywgbm90IGFkZGl0aW9uYWwgcmVnaXN0ZXJlZCB6b25l
-cy4KPiBGaW5hbGx5LCBhIHNoYXJlZCBSb2NrY2hpcCB2aXJ0dWFsIGRlc2NyaXB0b3IgYW5kIGFu
-IFJLMzU4OCBDUFUgaGllcmFyY2h5Cj4gYXJlIGFkZGVkLiBSSzM1ODgncyB0aHJlZSBmcmVxdWVu
-Y3kgZG9tYWlucyBhcmUgcmVwcmVzZW50ZWQgYnkgY3B1QDAsCj4gY3B1QDQwMCBhbmQgY3B1QDYw
-MCBiZWxvdyBhIHZpcnR1YWwgcGFja2FnZSBub2RlOyBubyBHUFUgem9uZSBpcyBhZGRlZAo+IGZv
-ciBSSzM1ODggaW4gdGhpcyBzZXJpZXMuCj4KPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4gRGFuaWVsIExlemNhbm8gKDYp
-Ogo+ICAgICAgICBwb3dlcmNhcDogQWRkIGdlbmVyaWMgem9uZSBoaWVyYXJjaHkgY3JlYXRpb24g
-aGVscGVycwo+ICAgICAgICBzZWxmdGVzdHMvcG93ZXJjYXA6IEFkZCBwb3dlcmNhcCBoaWVyYXJj
-aHkgY3JlYXRpb24gQVBJIHRlc3RzCj4gICAgICAgIHBvd2VyY2FwOiBkdHBtOiBSZW1vdmUgZHVw
-bGljYXRlIFJLMzM5OSBDUFUgaGllcmFyY2h5IG5vZGVzCj4gICAgICAgIHBvd2VyY2FwOiBkdHBt
-OiBVc2UgZ2VuZXJpYyBwb3dlcmNhcCBoaWVyYXJjaHkgaGVscGVycwo+ICAgICAgICBwb3dlcmNh
-cDogZHRwbTogUmVuYW1lIFJvY2tjaGlwIHZpcnR1YWwgbm9kZSBkZXNjcmlwdG9yCj4gICAgICAg
-IHBvd2VyY2FwOiBkdHBtOiBBZGQgUkszNTg4IGhpZXJhcmNoeQo+Cj4gICBkcml2ZXJzL3Bvd2Vy
-Y2FwL2R0cG0uYyAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IDE4MCArKysrKystLS0tLS0K
-PiAgIGRyaXZlcnMvcG93ZXJjYXAvZHRwbV9jcHUuYyAgICAgICAgICAgICAgICAgICAgICAgIHwg
-IDYyICsrKy0KPiAgIGRyaXZlcnMvcG93ZXJjYXAvZHRwbV9kZXZmcmVxLmMgICAgICAgICAgICAg
-ICAgICAgIHwgIDIyICstCj4gICBkcml2ZXJzL3Bvd2VyY2FwL3Bvd2VyY2FwX3N5cy5jICAgICAg
-ICAgICAgICAgICAgICB8IDIwNCArKysrKysrKysrKysrCj4gICBkcml2ZXJzL3NvYy9yb2NrY2hp
-cC9kdHBtLmMgICAgICAgICAgICAgICAgICAgICAgICB8IDEyOSArKysrKysrLS0KPiAgIGluY2x1
-ZGUvbGludXgvZHRwbS5oICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA2ICstCj4g
-ICBpbmNsdWRlL2xpbnV4L3Bvd2VyY2FwLmggICAgICAgICAgICAgICAgICAgICAgICAgICB8IDIw
-NSArKysrKysrKysrKysrKwo+ICAgdG9vbHMvdGVzdGluZy9zZWxmdGVzdHMvTWFrZWZpbGUgICAg
-ICAgICAgICAgICAgICAgfCAgIDEgKwo+ICAgdG9vbHMvdGVzdGluZy9zZWxmdGVzdHMvcG93ZXJj
-YXAvS2J1aWxkICAgICAgICAgICAgfCAgIDUgKwo+ICAgdG9vbHMvdGVzdGluZy9zZWxmdGVzdHMv
-cG93ZXJjYXAvTWFrZWZpbGUgICAgICAgICAgfCAgNDYgKysrCj4gICB0b29scy90ZXN0aW5nL3Nl
-bGZ0ZXN0cy9wb3dlcmNhcC9jb25maWcgICAgICAgICAgICB8ICAgMyArCj4gICAuLi4vc2VsZnRl
-c3RzL3Bvd2VyY2FwL3Bvd2VyY2FwX2hpZXJhcmNoeS5jICAgICAgICB8IDMxNAo+ICsrKysrKysr
-KysrKysrKysrKysrKwo+ICAgLi4uL3NlbGZ0ZXN0cy9wb3dlcmNhcC9wb3dlcmNhcF9oaWVyYXJj
-aHkuc2ggICAgICAgfCAxMjggKysrKysrKysrCj4gICAxMyBmaWxlcyBjaGFuZ2VkLCAxMTUzIGlu
-c2VydGlvbnMoKyksIDE1MiBkZWxldGlvbnMoLSkKPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCB0b29s
-cy90ZXN0aW5nL3NlbGZ0ZXN0cy9wb3dlcmNhcC9LYnVpbGQKPiAgIGNyZWF0ZSBtb2RlIDEwMDY0
-NCB0b29scy90ZXN0aW5nL3NlbGZ0ZXN0cy9wb3dlcmNhcC9NYWtlZmlsZQo+ICAgY3JlYXRlIG1v
-ZGUgMTAwNjQ0IHRvb2xzL3Rlc3Rpbmcvc2VsZnRlc3RzL3Bvd2VyY2FwL2NvbmZpZwo+ICAgY3Jl
-YXRlIG1vZGUgMTAwNjQ0IHRvb2xzL3Rlc3Rpbmcvc2VsZnRlc3RzL3Bvd2VyY2FwL3Bvd2VyY2Fw
-X2hpZXJhcmNoeS5jCj4gICBjcmVhdGUgbW9kZSAxMDA3NTUgdG9vbHMvdGVzdGluZy9zZWxmdGVz
-dHMvcG93ZXJjYXAvcG93ZXJjYXBfaGllcmFyY2h5LnNoCgpQdWxsZWQsIGJ1dCBpdCBoYWQgYSBz
-bWFsbCBtZXJnZSBjb25mbGljdCB3aXRoIGEgcHJldmlvdXMgY2xlYW51cC4KUGxlYXNlIHNlZSBt
-eSByZXNvbHV0aW9uOgoKaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5l
-bC9naXQvcmFmYWVsL2xpbnV4LXBtLmdpdC9jb21taXQvP2g9YmxlZWRpbmctZWRnZSZpZD05NWE5
-ZTg4MmY1Y2IzZWM4OTFkMWMwMjFkZjM5ODMzNThkZDliOWU0CgphbmQgbGV0IG1lIGtub3cgaW4g
-Y2FzZSBzb21ldGhpbmcgaXMgbWlzc2luZy4KClRoYW5rcyEKCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
-aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+From: Quentin Schulz <quentin.schulz@cherry.de>
+
+RK3588 Jaguar has two proprietary camera connectors, P14 and P15. This
+adds support for the only camera module we currently have for this
+connector, on P15.
+
+The camera module has a 2-lane OV9281 camera sensor, an IMU, a
+magnetometer and an EEPROM.
+
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
+---
+ arch/arm64/boot/dts/rockchip/Makefile              |   4 +-
+ .../dts/rockchip/rk3588-jaguar-p15-ov9281.dtso     | 119 +++++++++++++++++++++
+ 2 files changed, 122 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index cf977e883c374..e89e3123cb719 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -205,6 +205,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-can1-can2-uart4.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-ethernet-switch.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-p14-ov9281.dtbo
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-p15-ov9281.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-pre-ict-tester.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-lubancat-5io.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-mnt-reform2.dtb
+@@ -339,7 +340,8 @@ rk3588-jaguar-can1-can2-uart4-dtbs := rk3588-jaguar.dtb \
+ 
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-p14-ov9281-p15-ov9281.dtb
+ rk3588-jaguar-p14-ov9281-p15-ov9281-dtbs := rk3588-jaguar.dtb \
+-	rk3588-jaguar-p14-ov9281.dtbo
++	rk3588-jaguar-p14-ov9281.dtbo \
++	rk3588-jaguar-p15-ov9281.dtbo
+ 
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-jaguar-ethernet-switch.dtb
+ rk3588-jaguar-ethernet-switch-dtbs := rk3588-jaguar.dtb \
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar-p15-ov9281.dtso b/arch/arm64/boot/dts/rockchip/rk3588-jaguar-p15-ov9281.dtso
+new file mode 100644
+index 0000000000000..507fca0948243
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar-p15-ov9281.dtso
+@@ -0,0 +1,119 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2026 Cherry Embedded Solutions GmbH
++ */
++
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/clock/rockchip,rk3588-cru.h>
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/media/video-interfaces.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++
++&csi_dphy1 {
++	status = "okay";
++};
++
++&csi4 {
++	status = "okay";
++};
++
++&csi4_in {
++	csi4_input: endpoint {
++		bus-type = <MEDIA_BUS_TYPE_CSI2_DPHY>;
++		data-lanes = <1 2>;
++		link-frequencies = /bits/ 64 <400000000>;
++		remote-endpoint = <&cam1_output>;
++	};
++};
++
++&i2c7 {
++	#address-cells = <1>;
++	clock-frequency = <400000>;
++	#size-cells = <0>;
++
++	magnetometer@1e {
++		compatible = "st,lis2mdl";
++		reg = <0x1e>;
++		interrupt-parent = <&gpio1>;
++		interrupts = <RK_PB0 IRQ_TYPE_EDGE_RISING>;
++		pinctrl-0 = <&cam1_imu_int3>;
++		pinctrl-names = "default";
++		vdd-supply = <&vcc_2v8_imu>;
++		vddio-supply = <&vcc_1v8_s3>;
++	};
++
++	eeprom@50 {
++		compatible = "st,24c64", "atmel,24c64";
++		reg = <0x50>;
++		pagesize = <32>;
++		vcc-supply = <&vcc_1v8_s3>;
++	};
++
++	camera@60 {
++		compatible = "ovti,ov9281";
++		reg = <0x60>;
++		assigned-clocks = <&cru CLK_MIPI_CAMARAOUT_M2>;
++		assigned-clock-rates = <24000000>;
++		avdd-supply = <&vcc_2v8_cam>;
++		clocks = <&cru CLK_MIPI_CAMARAOUT_M2>;
++		dovdd-supply = <&vcc_1v8_s3>;
++		dvdd-supply = <&cam_vcc_1v2>;
++		pinctrl-0 = <&cam1_rst &mipim0_camera2_clk>;
++		pinctrl-names = "default";
++		reset-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
++
++		port {
++			cam1_output: endpoint {
++				data-lanes = <1 2>;
++				link-frequencies = /bits/ 64 <400000000>;
++				remote-endpoint = <&csi4_input>;
++			};
++		};
++	};
++
++	imu@6a {
++		compatible = "st,lsm6dsr";
++		reg = <0x6a>;
++		interrupt-parent = <&gpio2>;
++		interrupts = <RK_PC4 IRQ_TYPE_EDGE_RISING>;
++		pinctrl-0 = <&csi1_imu_int1 &cam1_imu_cs &cam1_imu_sa0>;
++		pinctrl-names = "default";
++		vdd-supply = <&vcc_2v8_imu>;
++		vddio-supply = <&vcc_1v8_s3>;
++	};
++};
++
++&pinctrl {
++	cam1-p15 {
++		cam1_imu_cs: cam1-imu-cs {
++			rockchip,pins = <4 RK_PB1 RK_FUNC_GPIO &pcfg_output_high>;
++		};
++
++		cam1_imu_int3: cam1-imu-int3 {
++			rockchip,pins = <1 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		cam1_imu_sa0: cam1-imu-sa0 {
++			rockchip,pins = <2 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		cam1_rst: cam1-reset {
++			rockchip,pins = <4 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		csi1_imu_int1: csi1-imu-int1 {
++			rockchip,pins = <2 RK_PC4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&vicap {
++	status = "okay";
++};
++
++&vicap_mmu {
++	status = "okay";
++};
+
+-- 
+2.56.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
