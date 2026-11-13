@@ -2,89 +2,85 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 26CF260A2627
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 22:21:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0A364606A88E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 22:21:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MZPxe4cb;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=KEXo0D4L
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BrrVM5RR;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=A4rV2/pT
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FVgnz8McvTjt8/se8guNF1IAssMX0e0tCf4wPwdM87s=; b=MZPxe4cbcJ1irzXTN1Qv4aI1m6
-	Or1yahvOfhsodEFTXtoESepWlgjHVHkcE8MADz7kQ6DMcQ7I6Ic3Yd5XGInOdbqNA7l2r3lvE7fah
-	+FsnnnvwbRbKGXuXZMAwpPrkcxg6SDJtkt3I3xCtFZrap1hK78Tm2CkuQUgr9c9+UzHtZ1ApIXNfA
-	XeyLYc7Lj8G/G96yEJbUKKwqPULBJg+VJPwbnpu4+HF8qiRCgLHQT2nYyhDsacSr+DCwuOfZBjWaN
-	CEonEnSEFYwgvFWOmplkfItPONrOoX+97IPYvdHjWoYrAFg3cSrLcrQeNtllJ5Bqj4T14w/lHpdAb
-	thgvSg2A==;
+	bh=ejhc4aDmbcXP9mZhwfF9DDELDIq/wBMT38U/o6mMIp4=; b=BrrVM5RRQJS4Ww6ZjiXrjfy5Za
+	kLy+eYVrbNwUiySyJE6VUUMGt8VcEyvziv9a7vLDeO/bz09OQsYu7PYKQDZdXbmEMqmCnaTv4zFhG
+	P9CGe0m69gF+hgq9bJGVIrOu5ekkNHnIqbIftu7iAMQw0yJDLzVy65TfINUXfBtRf7YtRcHI/R3Ko
+	kcGRF9FxlH4uEdT2RLG9EUhhW3BY9OoWwiop/QKB/QRNcb1DsVtdxBIywCxyPcqRSuQFmd3AL0ZIH
+	rRN94CZHdx+Pr1kpT5R87k7Ly6Yduzvg5tYJSiqviOway/EJ6d3qSfj6nncRgTWpxPw6Ni6JajIzR
+	GnpwCa1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRzeL-0000000Efx2-2PYc;
-	Fri, 13 Nov 2026 22:21:37 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xRzeY-0000000Eg68-11xx;
+	Fri, 13 Nov 2026 22:21:50 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRzeJ-0000000EfwB-3hg6;
-	Fri, 13 Nov 2026 22:21:36 +0000
+	id 1xRzeL-0000000Efwa-0HLG;
+	Fri, 13 Nov 2026 22:21:37 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 63C2145097;
-	Fri, 13 Nov 2026 22:21:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 56CB462DA5;
+	Fri, 13 Nov 2026 22:21:36 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794608495;
-	b=vZeZfmrQWEgCVfEuEPhX9fgsAZU36ok18CsLVGNTP0EkAZ8GHoZoWxgUgixklSavg/SM
-	 PWGkM/vFG5JssW5sJKuJwYZAPjJmbx8vqjAcsZOBD3SdUgxVySs/CzEQI3J0SP2nArEdb
-	 RjD7/yQwDNk9ejpFN4hvub81U9J3XsjdhrlktPXZIbFC6sDg0wKb0g/DZ1FpFGWWY9idT
-	 dIGnhpTCsy9q4l/8ge1k2aemGkcIzXZC0I+/pjrfHKh3pFyINvIEJjcBHwVfo3USwxzl0
-	 No4MXvt26Ki2yRyj/wDGng+aimg7Alcu9UgRFQsOrtHNJujU9BvDIP0cCeQjM3ZJttQ==
+	t=1794608496;
+	b=ewN0ntKT5lh0ACT6bDPfXguDsi65MwLDsFP/6fWkF/DIHwIOnix4b+PrjPJTnRIFf9dq
+	 wmUCtzsOUmmetGVg6zf/dQtnf7jrM7lI7lQy/bwyZZRxLWJfhjecH2w8UJBUu171m9frl
+	 GLk2wHFMFMZSAJWMyr9KRJ6SWQxuTUsrnlAAKNO8IT9jS+y4mNTg5NwAlx1IFTrgP3ytj
+	 AD4Anwl8XYvnqvKy6r2FDUTH9d95qr1v2xF+AL/EPMeDUhKR/8EkmjBZynHb+FFJNSyka
+	 6o8B7hPFbekdRLcbjih4AdrtcyAdYxpaOwzkvkaz4iOp4SZf8X90ZaIYL0RTsKj/siQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794608495;
-	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
-	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
-	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=hKpqk6HLacU1LAteKJMU4Ufg/Oj/R3Wdsba8hrvmBjY=;
-	b=Il3SsAopXrNC7NwDNxeXeQfpujg3cuyjOwp2aCoTCA9byOfTeDWRdLz0UZXJPYZch31u
-	 0wj1vQwo5j+LzuU0pHCONQPJyM0uYIEMrbmvO/bBH/4Lm3OLTKbn5WgUMid9DrLpt93qi
-	 EgZ3rFnVNIKd3stbMxwrvEkT3IbV4SXBYi34GK6eYPuPy8sqmO9sut5mU1tgiEt82KFSP
-	 ad/v5kgLjfa/LX6ZGCTh0Vha0ybAEALkg6ZLJ6U3KFjm4Gr+5IyPeLQdCaaf84k25Irl7
-	 UrARNYp2Q23YzS+Yrj1AcTiQITYsKgapLkka1CbEvOjnOdvNRP7xvc6sGcR3qjhYEeA==
+	c=relaxed/relaxed; t=1794608496;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=NM+WHKCC3xvJM0QYhS9cDObbL+6VtF3LXo9nejQ5V1k=;
+	b=PeA9HeKT3rt76RzRT28OneCUeNM0o0NryeOphAhSk6gf6JdF9nI2X1e9/CZRZ+zMBAQ6
+	 5mnR9K1X1x1T3UfM+Cy90ebh6wOBzFA9MotUgR52+2Iv5/77kZjOMDVXXc9ppF1exEJfk
+	 pNpdEcp78jYKjwhEsnC9eeDQG1YFqHahI80cX36F4JEPDuyflMHxqtoaEfs9BfZFVl0Li
+	 GmA+hV4PZs7To5U3Unk5/HwczFXVbdYoVzXc/9G600Etct470BwirYDPvbIK7BcHL4t76
+	 HDr8kXnNFATS506XTzfxvKWNnClIqomEj3tYXCm5upV/v8FaDxNWQ+UCZF38RrZ4Omw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id E73731F000C6;
+	by smtp.kernel.org (Postfix) with ESMTPS id E719B1F000C4;
 	Fri, 13 Nov 2026 22:21:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794608495;
-	bh=hKpqk6HLacU1LAteKJMU4Ufg/Oj/R3Wdsba8hrvmBjY=;
-	h=From:Subject:Date:To:Cc:Reply-To;
-	b=KEXo0D4LZ7R5Fzg2pik/tMcjkomMmNGWMqj/8sfh2rsHACM5aSq3FdqxYCM5rsUMO
-	 UDpTZWhkWgQ8NIg8HPKIAnCJxTUDCtKv6TvIuzXPy5o6oMT4zUuv61w87ncTlyXFcp
-	 v50tP0eGjtW1B5q1hJqboLZJgkLn7xblh7MscohYbMzFQjMyxIaY0mrXaZZXi0xfR3
-	 wkIcJOm1atokrkdfUeN5Vsay3sNlQ81GNEpkYKcSaLOLUvfRopO4R/en4frwJVqa/G
-	 rFj+lECffHGGIjmq0eJ1HOH5iT6C4he97o6ZzkcCPm/4TQwb8pdb3QYba7QiRUY8hl
-	 Vz0HQ2xc524Zw==
+	s=k20260515; t=1794608496;
+	bh=NM+WHKCC3xvJM0QYhS9cDObbL+6VtF3LXo9nejQ5V1k=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=A4rV2/pTR/o5tj8tgDPX2mFhjhe2p0JhsYavPoqUhvTCuQG0DYl9DBZ/kaKFdhXM8
+	 vsLJKgPWZerJVniKaynFPfRQlwZr2uoefBiBTRAfK8igRKUdtofDLo6wWA7FDAcBv9
+	 EM1fhX/B2gHPv0l6DvzPOojxuUcojMZgqhbH56SbOcidcCN1zUrqJxpHgnM7gxZvS0
+	 Y3bYH0PLtq9xvrhLpMtIU7sdtYrIgmn1pCVGC5kx1aSRgBYyhhJYuhCWgFvUGNOFvH
+	 lFWbZ4eJZ3jTM7UgfBHuujzLv8EYtA7pKErHbOjAowiRTp+PASs3OZGtyVQWP/Zplp
+	 K3K3lR9k2ZBow==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 293E249B48;
+	by lkml.kernel.org (Postfix) with ESMTP id 56DBD49B4C;
 	Fri, 13 Nov 2026 22:21:33 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Subject: [PATCH RFC 0/3] media: verisilicon: Multi-core support for the
- RK3588 VEPU121 JPEG encoders
-Date: Fri, 13 Nov 2026 22:21:31 +0000
-Message-Id: <20261113-hantro-multicore-v1-0-43811eea14c4@gmail.com>
+Date: Fri, 13 Nov 2026 22:21:33 +0000
+Subject: [PATCH RFC 2/3] media: verisilicon: Pick the hardware core for
+ each job
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/z2NS04DMRBErzLyGkv+tT+zReIAbFEWdrtNjJhM8
- HgQUpS744SIZZXqvbqwjVqljc3ThTX6rltdTyPIp4nhMZ7eidc8MlNCWSml4KPsbeXL/tkrro1
- 4ygokau8SBTawc6NSf+7KN/b68swOf+W2pw/CfpM9Zo2+9nHYH9tz7Hgcd/NkYw4AogQbibI3K
- jjtvBBkYkFLGhIp1JTvnn/KKAUqRVA5oAWKQspig5M6ADkREE0qxXpzo1LciOO6LLXPU8wWTIj
- GOuOzEF5643UCDQSYVXTCWA8YPDtcr79WMxcjMQEAAA==
-X-Change-ID: 20261110-hantro-multicore-bd251c387be9
+Message-Id: <20261113-hantro-multicore-v1-2-43811eea14c4@gmail.com>
+References: <20261113-hantro-multicore-v1-0-43811eea14c4@gmail.com>
+In-Reply-To: <20261113-hantro-multicore-v1-0-43811eea14c4@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
  Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>, 
@@ -98,11 +94,11 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  Sergei Khomenkov <shomenkow@gmail.com>, 
  Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794608492; l=5572;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794608492; l=9150;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=Cv/EUDQj2tIl7BGTLv3WK2CnVloA8B8AeCHDaWxtbMc=;
- b=Cjv498CCL6jnQ0cAYOFvAR8oJ892okual6pS2C9nmBZcHZpoy38t0gdyspPIbK+WmdaTIIc/i
- UYTyd0qdXcZDDSwodE1G06NIKxixEK0kCu0vG0WZTDkjMEhOzAQHshQ
+ bh=9jWn2Gigd2wOwask/FFepVbUYfj7D/TpLOUOJvXCMTw=;
+ b=r5PrlOXvvc8lwpCY2Qqeq30CFBTVyIZ+JOpHn8bsD5t0SNYqAEvdz505CHX/2u8wcphsXES8m
+ A1IfiGTY7wZBowJpTao3uOYhSzPU1ByHClzcbvqqrgGrsaPsFW8/iHq
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -118,8 +114,8 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Reply-To: aiyengar1990@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
@@ -129,103 +125,272 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-VGhlIFJLMzU4OCBoYXMgZm91ciBpZGVudGljYWwgVkVQVTEyMSBKUEVHIGVuY29kZXIgY29yZXMs
-IGVhY2ggd2l0aCBpdHMKb3duIElPTU1VIGFuZCBwb3dlciBkb21haW4uIFRoZSBkcml2ZXIgY3Vy
-cmVudGx5IHByb2JlcyB0aGUgZmlyc3Qgb25lCmFuZCBpZ25vcmVzIHRoZSBvdGhlcnMsIHNvIHBh
-cmFsbGVsIGVuY29kZXMgYXJlIHNlcmlhbGlzZWQgb24gYSBzaW5nbGUKY29yZS4KClRoaXMgc2Vy
-aWVzIGRyaXZlcyBhbGwgZm91ciBjb3JlcyBhcyBhIHNpbmdsZSB2aWRlbyBkZXZpY2UuIFBhdGNo
-IDEKc3BsaXRzIHByb2JlIGludG8gdGhlIHBlci1pbnN0YW5jZSBoYXJkd2FyZSBzZXR1cCBhbmQg
-dGhlIHJlZ2lzdHJhdGlvbgpvZiB0aGUgZGV2aWNlcyBleHBvc2VkIHRvIHVzZXJzcGFjZSwgd2l0
-aCBubyBmdW5jdGlvbmFsIGNoYW5nZS4gUGF0Y2ggMgptYWtlcyB0aGUgZHJpdmVyIHBpY2sgdGhl
-IGNvcmUgYSBqb2IgcnVucyBvbiwgYW5kIGxvb2sgdXAgdGhlIHJ1bm5pbmcKam9iIGZyb20gdGhl
-IGNvcmUgaW5zdGVhZCBvZiB2NGwyX20ybV9nZXRfY3Vycl9wcml2KCksIHN0aWxsIHdpdGggYQpz
-aW5nbGUgY29yZS4gUGF0Y2ggMyBiaW5kcyB0aGUgb3RoZXIgY29yZXMgdG8gdGhlIGZpcnN0IG9u
-ZSB3aXRoIHRoZQpjb21wb25lbnQgZnJhbWV3b3JrLCBhdHRhY2hlcyB0aGVtIHRvIHRoZSBJT01N
-VSBkb21haW4gb2YgdGhlIG1haW4gY29yZQpzbyB0aGF0IHRoZXkgc2hhcmUgaXRzIG1hcHBpbmdz
-LCBhbmQgbGV0cyB0aGUgbWVtMm1lbSBmcmFtZXdvcmsgcnVuIG9uZQpqb2IgcGVyIGNvcmUuCgpJ
-dCBpcyBhbiBSRkMgYmVjYXVzZSBpdCBkZXBlbmRzIG9uIFN2ZW4gUMO8c2NoZWwncyAibWVkaWE6
-IHY0bDItbWVtMm1lbToKZHJvcCBjdXJyX2N0eCBtZW1iZXIgZnJvbSB2NGwyX20ybV9kZXYgc3Ry
-dWN0IiBhbmQgIm1lZGlhOiB2NGwyLW1lbTJtZW06CnN1cHBvcnQgcnVubmluZyBtdWx0aXBsZSBq
-b2JzIGluIHBhcmFsbGVsIiwgcGF0Y2hlcyA2IGFuZCA3IG9mIGhpcyBSR0EKbXVsdGktY29yZSB2
-MiBbMV0sIHdoaWNoIGFyZSBub3QgbWVyZ2VkIHlldC4gVGhlIHNlcmllcyBpcyBiYXNlZCBvbiB0
-aGUKbWVkaWEgdHJlZSdzIG5leHQgYnJhbmNoIHdpdGggdGhvc2UgdHdvIHBhdGNoZXMgYXBwbGll
-ZAooYmFzZS1jb21taXQgYW5kIHByZXJlcXVpc2l0ZS1wYXRjaC1pZHMgYmVsb3cpLiBUaGUgY29y
-ZSBzZWxlY3Rpb24KZm9sbG93cyB0aGUgc2FtZSBtb2RlbCBhcyBEZXRsZXYncyBya3ZkZWMgbXVs
-dGktY29yZSBzZXJpZXMgWzJdLCBzbwpjb21tZW50cyBvbiBzaGFyaW5nIG1vcmUgb2YgaXQgYXJl
-IHdlbGNvbWUuCgpBIHNpbmdsZSBzdHJlYW0gc3RpbGwgcnVucyBvbmUgam9iIGF0IGEgdGltZSwg
-c28gdGhpcyByYWlzZXMgdGhlCnRocm91Z2hwdXQgb2YgcGFyYWxsZWwgc3RyZWFtcywgbm90IG9m
-IGEgc2luZ2xlIG9uZS4gVmFyaWFudHMgd2l0aG91dAp0aGUgbmV3IG11bHRpX2NvcmUgZmxhZyBr
-ZWVwIHVzaW5nIG9ubHkgdGhlIGZpcnN0IGNvcmUuCgpUd28gcG9zdGluZ3MgdG91Y2ggdGhlIHBy
-b2JlL3JlbW92ZSBjb2RlIHRoYXQgcGF0Y2ggMSBzcGxpdHMsIGFuZCBJCndpbGwgcmViYXNlIG9u
-IHRoZW0gaWYgdGhleSBsYW5kIGZpcnN0OiBCZW5qYW1pbidzICJtZWRpYTogdmVyaXNpbGljb246
-CnJlbW92ZSB1bnVzZWQgdmFyaWFudCBhbmQgY29kZSBjbGVhbiB1cCIgdjYgWzNdICh0ZXh0dWFs
-IGNvbmZsaWN0cykgYW5kClNlcmdlaSBLaG9tZW5rb3YncyAibWVkaWE6IHZlcmlzaWxpY29uOiBz
-dXNwZW5kIHRoZSBkZXZpY2UgYmVmb3JlCnVucmVnaXN0ZXJpbmcgaXQgb24gcmVtb3ZlIiBbNF0u
-IFBhdGNoIDEga2VlcHMgdGhlIGN1cnJlbnQgdGVhcmRvd24Kb3JkZXIgaW4gaGFudHJvX2h3X2Ns
-ZWFudXAoKSwgc28gaXQgY2FycmllcyB0aGUgcnVudGltZS1zdXNwZW5kLWFmdGVyLQp1bnJlZ2lz
-dGVyIHByb2JsZW0gWzRdIGZpeGVzLiBNeSByZWNvdmVyeSBzZXJpZXMgIm1lZGlhOiB2ZXJpc2ls
-aWNvbjoKUmVjb3ZlciB0aGUgUm9ja2NoaXAgVlBVcyBmcm9tIGZhdWx0cyBhbmQgdGltZW91dHMi
-IHYzIFs1XSB0b3VjaGVzIHRoZQpzYW1lIHByb2JlLCByZW1vdmUgYW5kIGRldmljZV9ydW4oKSBj
-b2RlICh0ZXh0dWFsIGNvbmZsaWN0cyksIGFuZCBJIHdpbGwKcmViYXNlIG9uIGl0IGlmIGl0IGxh
-bmRzIGZpcnN0LiBPbmNlIGJvdGggYXJlIGluLCBpdHMgSU9NTVUgcmVzdG9yZSBoYXMKdG8gZGV0
-YWNoIGEgc2Vjb25kYXJ5IGNvcmUgZnJvbSB0aGUgbWFpbiBjb3JlJ3MgZG9tYWluIGZpcnN0LCB3
-aGljaCBJCndpbGwgYWRkIGluIHdoaWNoZXZlciBnb2VzIHNlY29uZC4KCktub3duIGxpbWl0czog
-dGhlIHZpZGVvIGRldmljZSBhbmQgdGhlIG0ybSBkZXZpY2UgYXJlIGFsbG9jYXRlZCBpbnNpZGUK
-dGhlIGNvbXBvbmVudCBiaW5kLCBzbyB1bmJpbmRpbmcgb25lIHNlY29uZGFyeSBjb3JlIGZyZWVz
-IHRoZW0gd2hpbGUKdGhlIG1haW4gY29yZSBzdGF5cyBib3VuZC4gSWYgb25lIGF2YWlsYWJsZSBz
-ZWNvbmRhcnkKY29yZSBmYWlscyB0byBwcm9iZSwgbm8gdmlkZW8gZGV2aWNlIGFwcGVhcnMgYXQg
-YWxsLCB3aGVyZSB0aGUgZmlyc3QKY29yZSBhbG9uZSB3b3VsZCB3b3JrIHRvZGF5OyB0aGUgUkdB
-IGFuZCBya3ZkZWMgbXVsdGktY29yZSBzZXJpZXMgdXNlCnRoZSBzYW1lIG1vZGVsLiBDb21tZW50
-cyBvbiBib3RoIGFyZSB3ZWxjb21lLgoKVGVzdGVkIG9uIGFuIE9yYW5nZSBQaSA1IChSSzM1ODhT
-KSB3aXRoIDEwODBwIE5WMTIgSlBFRyBlbmNvZGVzIHRocm91Z2gKR1N0cmVhbWVyIHY0bDJqcGVn
-ZW5jLCA2MDAgZnJhbWVzIHBlciBzdHJlYW06IDEsIDIsIDQgYW5kIDggcGFyYWxsZWwKc3RyZWFt
-cyByZWFjaCA2MiwgMTIwLCAyMTYgYW5kIDIyMyBmcHMgYWdhaW5zdCA2Mi02OCBmcHMgd2l0aCBh
-IHNpbmdsZQpjb3JlLCB3aXRoIHRoZSBpbnRlcnJ1cHRzIHNwcmVhZCBvdmVyIHRoZSBmb3VyIGNv
-cmVzLCBhbmQgdGhlIGVuY29kZWQKb3V0cHV0IGlzIGlkZW50aWNhbCB0byB0aGUgc2luZ2xlLWNv
-cmUgZHJpdmVyIGZvciBOVjEyLCBJNDIwIGFuZCBZVVkyCmF0IDEwODBwIGFuZCBOVjEyIGF0IDRL
-LCBhbHNvIHdoZW4gNCBvciA4IGVuY29kZXMgcnVuIGluIHBhcmFsbGVsLiBUaGUKVkRQVTEyMSBW
-UDggYW5kIFZQVTk4MSBBVjEgZGVjb2RlcnMgb2YgdGhlIHNhbWUgU29DIGFyZSB1bmFmZmVjdGVk
-LiBXaXRoCnBhdGNoIDQgb2YgWzVdIHRoZSBtb2R1bGUgY2FuIGJlIHVubG9hZGVkIGFuZCByZWxv
-YWRlZCB3aXRoIGFsbCBjb3JlcwpyZWJpbmRpbmc7IHdpdGhvdXQgaXQgdGhlIHJlbG9hZCBoaXRz
-IHRoZSBTRXJyb3IgdGhhdCBwYXRjaCBmaXhlcywgd2hpY2gKaXMgbm90IG5ldyBidXQgZWFzaWVy
-IHRvIGhpdCB3aXRoIHRoZSBsb25nZXIgdGVhcmRvd24uCkEgbGF0ZXIgcnVuIHRvZ2V0aGVyIHdp
-dGggbXkgdGhyZWUgcmt2ZGVjIFJGQyBzZXJpZXM6IEpQRUcgZW5jb2RpbmcgYXQgNjMuMQpmcmFt
-ZXMvcyB3aXRoIG9uZSBzdHJlYW0gYW5kIDIxNS4wIHdpdGggZm91ciwgYWxsIGZvdXIgVkVQVTEy
-MSBjb3Jlcwp0YWtpbmcgaW50ZXJydXB0czsgdGhlIGZvdXIgcGFyYWxsZWwgZW5jb2RlcyBnaXZl
-IHRoZSBzYW1lIGJpdHN0cmVhbSBhcwpvbmUuIEZsdXN0ZXIgb24gdGhlIHNhbWUga2VybmVsOiBI
-YW50cm8gSC4yNjQgSlZULUFWQ19WMSAxMjkvMTM1IGFuZApKVlQtRlItRVhUIDQ0LzY5LCBWUDgg
-NjEvNjEsIEFWMSAyMDMvMjQyLgpUaGVzZSBoYXJkd2FyZSB0ZXN0cyByYW4gb24gdjcuMy1iYXNl
-ZCBrZXJuZWxzLCB3aGVyZSB0aGUgY2xvY2tzIGFyZQpzdGlsbCBlbmFibGVkIGluIGRldmljZV9y
-dW4oKTsgdGhpcyByZWJhc2Ugb250byB0aGUgbWVkaWEgdHJlZSwgd2hpY2gKbW92ZWQgdGhlIGNs
-b2NrIGhhbmRsaW5nIGludG8gcnVudGltZSBQTSBpbiB0aGUgbWVhbnRpbWUsIGlzCmNvbXBpbGUt
-dGVzdGVkIG9ubHkuCgpEZXZlbG9wZWQgd2l0aCBDbGF1ZGUgKEFudGhyb3BpYyksIHdoaWNoIHdy
-b3RlIHRoZSBjb2RlIGFuZCB0aGUgY29tbWl0Cm1lc3NhZ2VzLiBJIHJldmlld2VkIGV2ZXJ5IGNo
-YW5nZS4KClsxXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1tZWRpYS8yMDI2MDkxNi1z
-cHUtcmdhM211bHRpY29yZS12Mi0wLTIzYWEyY2I3NGU2MUBwZW5ndXRyb25peC5kZS8KWzJdIGh0
-dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhLzIwMjYwODEwLXJrdmRlYy1tdWx0aWNv
-cmUtdjItMC05ODZmODlkMjJjZGNAY29sbGFib3JhLmNvbS8KWzNdIGh0dHBzOi8vbG9yZS5rZXJu
-ZWwub3JnL2xpbnV4LW1lZGlhLzIwMjYwOTMwMTUxMjQxLjU4MjMzLTEtYmVuamFtaW4uZ2FpZ25h
-cmRAY29sbGFib3JhLmNvbS8KWzRdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlh
-LzIwMjYxMTA2LWhhbnRyby1yZW1vdmUtdjEtMS1kMGE0Njc4ODg2ZDdAZ21haWwuY29tLwpbNV0g
-aHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWEvMjAyNjExMTMtaGFudHJvLXJvYnVz
-dC12My0wLTgyMzgzYzcyMmFkMkBnbWFpbC5jb20vCgpTaWduZWQtb2ZmLWJ5OiBBcnVuIEl5ZW5n
-YXIgPGFpeWVuZ2FyMTk5MEBnbWFpbC5jb20+Ci0tLQpBcnVuIEl5ZW5nYXIgKDMpOgogICAgICBt
-ZWRpYTogdmVyaXNpbGljb246IFNwbGl0IHByb2JlIGludG8gaGFyZHdhcmUgaW5pdCBhbmQgZGV2
-aWNlIHJlZ2lzdHJhdGlvbgogICAgICBtZWRpYTogdmVyaXNpbGljb246IFBpY2sgdGhlIGhhcmR3
-YXJlIGNvcmUgZm9yIGVhY2ggam9iCiAgICAgIG1lZGlhOiB2ZXJpc2lsaWNvbjogQWRkIG11bHRp
-LWNvcmUgc3VwcG9ydAoKIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJv
-LmggICAgICAgIHwgIDQxICsrCiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hh
-bnRyb19kcnYuYyAgICB8IDQ1MSArKysrKysrKysrKysrKysrKy0tLS0KIGRyaXZlcnMvbWVkaWEv
-cGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2h3LmggICAgIHwgICAxICsKIC4uLi92ZXJpc2ls
-aWNvbi9yb2NrY2hpcF92cHUyX2h3X2pwZWdfZW5jLmMgICAgICAgIHwgICA0ICstCiAuLi4vbWVk
-aWEvcGxhdGZvcm0vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1X2h3LmMgICB8ICAyMCArLQogNSBm
-aWxlcyBjaGFuZ2VkLCA0MjQgaW5zZXJ0aW9ucygrKSwgOTMgZGVsZXRpb25zKC0pCi0tLQpiYXNl
-LWNvbW1pdDogYWQ2NTQ5YTQ2NzQ4ZDAwODE4NDgzYjUzNWU1Y2QyYTcwNDY4NWM5OApjaGFuZ2Ut
-aWQ6IDIwMjYxMTEwLWhhbnRyby1tdWx0aWNvcmUtYmQyNTFjMzg3YmU5CnByZXJlcXVpc2l0ZS1w
-YXRjaC1pZDogNmFkOTU1MGY5NmFlZWQ4NDI5NzM3ODAwZTRhZmM2ZTM1YmUyYzNlZApwcmVyZXF1
-aXNpdGUtcGF0Y2gtaWQ6IDQyMjUyYmE1MmQ5YzY1ZWEwMTFmNjk3MTM5NWU3MDljYzRiZmY2ODQK
-CkJlc3QgcmVnYXJkcywKLS0gIApBcnVuIEl5ZW5nYXIgPGFpeWVuZ2FyMTk5MEBnbWFpbC5jb20+
-CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+From: Arun Iyengar <aiyengar1990@gmail.com>
+
+The driver assumes that the hardware instance running a job is the one
+that owns the mem2mem device, and finds the context of the running job
+with v4l2_m2m_get_curr_priv(). Neither holds once jobs can run on
+several identical cores in parallel.
+
+Give each hantro_dev a list of cores its jobs can run on, and pick an
+idle one in device_run(). The chosen core is stored in the context for
+the duration of the job, and the context in the core, so that the
+interrupt handler and the watchdog of a core find the job they belong
+to. The JPEG encoder of the VEPU2 now accesses the registers of the core
+running the job.
+
+For now the core list only contains the device itself, so no functional
+change intended.
+
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+---
+ drivers/media/platform/verisilicon/hantro.h        | 18 ++++++
+ drivers/media/platform/verisilicon/hantro_drv.c    | 73 +++++++++++++++++++---
+ .../verisilicon/rockchip_vpu2_hw_jpeg_enc.c        |  4 +-
+ .../media/platform/verisilicon/rockchip_vpu_hw.c   |  2 +-
+ 4 files changed, 86 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index 0353de154a1e..eceaa74a634b 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -193,6 +193,14 @@ hantro_vdev_to_func(struct video_device *vdev)
+  *			shared with interrupt handlers.
+  * @variant:		Hardware variant-specific parameters.
+  * @watchdog_work:	Delayed work for hardware timeout handling.
++ * @curr_ctx:		Context whose job is running on this instance, or NULL
++ *			if the instance is idle. Protected by @cores_lock of
++ *			the device the job was scheduled on.
++ * @cores:		Hardware instances the jobs of this device can be
++ *			scheduled on. The first entry is the device itself.
++ * @num_cores:		Number of entries in @cores.
++ * @cores_lock:		Spinlock protecting @cores, @num_cores and @curr_ctx
++ *			of each core.
+  */
+ struct hantro_dev {
+ 	struct v4l2_device v4l2_dev;
+@@ -213,12 +221,21 @@ struct hantro_dev {
+ 	spinlock_t irqlock;
+ 	const struct hantro_variant *variant;
+ 	struct delayed_work watchdog_work;
++
++	struct hantro_ctx *curr_ctx;
++	struct hantro_dev **cores;
++	unsigned int num_cores;
++	spinlock_t cores_lock; /* protects the core list and curr_ctx */
+ };
+ 
+ /**
+  * struct hantro_ctx - Context (instance) private data.
+  *
+  * @dev:		VPU driver data to which the context belongs.
++ * @core:		VPU instance running the current job of this context,
++ *			only valid while a job is running. Codec operations
++ *			must access the hardware through it. It is the same
++ *			as @dev unless the variant has multiple cores.
+  * @fh:			V4L2 file handler.
+  * @is_encoder:		Decoder or encoder context?
+  *
+@@ -248,6 +265,7 @@ struct hantro_dev {
+  */
+ struct hantro_ctx {
+ 	struct hantro_dev *dev;
++	struct hantro_dev *core;
+ 	struct v4l2_fh fh;
+ 	bool is_encoder;
+ 
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index d02988fc19ae..ab76251627fb 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -59,11 +59,51 @@ static const struct v4l2_event hantro_eos_event = {
+ 	.type = V4L2_EVENT_EOS
+ };
+ 
++/*
++ * Pick an idle core for the job of @ctx. The mem2mem framework never runs
++ * more jobs in parallel than there are cores, so this only fails if the
++ * core accounting is broken.
++ */
++static struct hantro_dev *hantro_acquire_core(struct hantro_ctx *ctx)
++{
++	struct hantro_dev *vpu = ctx->dev;
++	unsigned int i;
++
++	guard(spinlock_irqsave)(&vpu->cores_lock);
++
++	for (i = 0; i < vpu->num_cores; i++) {
++		struct hantro_dev *core = vpu->cores[i];
++
++		if (!core->curr_ctx) {
++			core->curr_ctx = ctx;
++			ctx->core = core;
++			return core;
++		}
++	}
++
++	return NULL;
++}
++
++static void hantro_release_core(struct hantro_ctx *ctx)
++{
++	struct hantro_dev *vpu = ctx->dev;
++
++	guard(spinlock_irqsave)(&vpu->cores_lock);
++
++	if (ctx->core) {
++		ctx->core->curr_ctx = NULL;
++		ctx->core = NULL;
++	}
++}
++
+ static void hantro_job_finish_no_pm(struct hantro_ctx *ctx,
+ 				    enum vb2_buffer_state result)
+ {
+ 	struct vb2_v4l2_buffer *src, *dst;
+ 
++	/* Make the core available to the next job before scheduling it. */
++	hantro_release_core(ctx);
++
+ 	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+ 	dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+ 
+@@ -88,17 +128,20 @@ static void hantro_job_finish_no_pm(struct hantro_ctx *ctx,
+ static void hantro_job_finish(struct hantro_ctx *ctx,
+ 			      enum vb2_buffer_state result)
+ {
+-	struct hantro_dev *vpu = ctx->dev;
++	struct hantro_dev *core = ctx->core;
+ 
+-	pm_runtime_put_autosuspend(vpu->dev);
++	pm_runtime_put_autosuspend(core->dev);
+ 	hantro_job_finish_no_pm(ctx, result);
+ }
+ 
++/*
++ * Called from the interrupt handler of the VPU instance @vpu, which is the
++ * core the job was running on.
++ */
+ void hantro_irq_done(struct hantro_dev *vpu,
+ 		     enum vb2_buffer_state result)
+ {
+-	struct hantro_ctx *ctx =
+-		v4l2_m2m_get_curr_priv(vpu->m2m_dev);
++	struct hantro_ctx *ctx;
+ 
+ 	/*
+ 	 * If cancel_delayed_work returns false
+@@ -106,6 +149,7 @@ void hantro_irq_done(struct hantro_dev *vpu,
+ 	 * and will take care of finishing the job.
+ 	 */
+ 	if (cancel_delayed_work(&vpu->watchdog_work)) {
++		ctx = vpu->curr_ctx;
+ 		if (result == VB2_BUF_STATE_DONE && ctx->codec_ops->done)
+ 			ctx->codec_ops->done(ctx);
+ 		hantro_job_finish(ctx, result);
+@@ -119,7 +163,7 @@ void hantro_watchdog(struct work_struct *work)
+ 
+ 	vpu = container_of(to_delayed_work(work),
+ 			   struct hantro_dev, watchdog_work);
+-	ctx = v4l2_m2m_get_curr_priv(vpu->m2m_dev);
++	ctx = vpu->curr_ctx;
+ 	if (ctx) {
+ 		vpu_err("frame processing timed out!\n");
+ 		if (ctx->codec_ops->reset)
+@@ -160,21 +204,27 @@ void hantro_end_prepare_run(struct hantro_ctx *ctx)
+ 				   &ctx->ctrl_handler);
+ 
+ 	/* Kick the watchdog. */
+-	schedule_delayed_work(&ctx->dev->watchdog_work,
++	schedule_delayed_work(&ctx->core->watchdog_work,
+ 			      msecs_to_jiffies(2000));
+ }
+ 
+ static void device_run(void *priv)
+ {
+ 	struct hantro_ctx *ctx = priv;
+-	struct hantro_dev *vpu = ctx->dev;
+ 	struct vb2_v4l2_buffer *src, *dst;
++	struct hantro_dev *core;
+ 	int ret;
+ 
+ 	src = hantro_get_src_buf(ctx);
+ 	dst = hantro_get_dst_buf(ctx);
+ 
+-	ret = pm_runtime_resume_and_get(vpu->dev);
++	core = hantro_acquire_core(ctx);
++	if (WARN_ON_ONCE(!core)) {
++		hantro_job_finish_no_pm(ctx, VB2_BUF_STATE_ERROR);
++		return;
++	}
++
++	ret = pm_runtime_resume_and_get(core->dev);
+ 	if (ret < 0) {
+ 		hantro_job_finish_no_pm(ctx, VB2_BUF_STATE_ERROR);
+ 		return;
+@@ -1285,6 +1335,7 @@ static int hantro_probe(struct platform_device *pdev)
+ 	vpu->pdev = pdev;
+ 	mutex_init(&vpu->vpu_mutex);
+ 	spin_lock_init(&vpu->irqlock);
++	spin_lock_init(&vpu->cores_lock);
+ 
+ 	match = of_match_node(of_hantro_match, pdev->dev.of_node);
+ 	vpu->variant = match->data;
+@@ -1302,6 +1353,12 @@ static int hantro_probe(struct platform_device *pdev)
+ 		dev_warn(&pdev->dev, "%s compatible is deprecated\n",
+ 			 match->compatible);
+ 
++	vpu->cores = devm_kcalloc(&pdev->dev, 1, sizeof(*vpu->cores),
++				  GFP_KERNEL);
++	if (!vpu->cores)
++		return -ENOMEM;
++	vpu->cores[vpu->num_cores++] = vpu;
++
+ 	ret = hantro_hw_init(vpu);
+ 	if (ret)
+ 		return ret;
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
+index 61621b1be8a2..f7550470b43d 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
+@@ -131,7 +131,7 @@ rockchip_vpu2_jpeg_enc_set_qtable(struct hantro_dev *vpu,
+ 
+ int rockchip_vpu2_jpeg_enc_run(struct hantro_ctx *ctx)
+ {
+-	struct hantro_dev *vpu = ctx->dev;
++	struct hantro_dev *vpu = ctx->core;
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+ 	struct hantro_jpeg_ctx jpeg_ctx;
+ 	u32 reg;
+@@ -188,7 +188,7 @@ int rockchip_vpu2_jpeg_enc_run(struct hantro_ctx *ctx)
+ 
+ void rockchip_vpu2_jpeg_enc_done(struct hantro_ctx *ctx)
+ {
+-	struct hantro_dev *vpu = ctx->dev;
++	struct hantro_dev *vpu = ctx->core;
+ 	u32 bytesused = vepu_read(vpu, VEPU_REG_STR_BUF_LIMIT) / 8;
+ 	struct vb2_v4l2_buffer *dst_buf = hantro_get_dst_buf(ctx);
+ 
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+index 02673be9878e..f1f7f95b2652 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+@@ -488,7 +488,7 @@ static void rockchip_vpu2_dec_reset(struct hantro_ctx *ctx)
+ 
+ static void rockchip_vpu2_enc_reset(struct hantro_ctx *ctx)
+ {
+-	struct hantro_dev *vpu = ctx->dev;
++	struct hantro_dev *vpu = ctx->core;
+ 
+ 	vepu_write(vpu, VEPU_REG_INTERRUPT_DIS_BIT, VEPU_REG_INTERRUPT);
+ 	vepu_write(vpu, 0, VEPU_REG_ENCODE_START);
+
+-- 
+2.55.0
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
