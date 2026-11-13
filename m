@@ -2,85 +2,88 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1F43F606A88A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:40:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EAEA06071ABB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:41:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=421F88Wk;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=U/AySg0i
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Gn5ZUHfY;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Tj5eNSjU
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ML3dDC4AVulTr/CZXXBaVAecSeSMQUQiM+VQNVFc5fw=; b=421F88WkUGU1lM3KWpGeTYNXhX
-	WmxnnMQXHZt1wqR1r8P0cVdiICVxHU9bE7e5u8qhl7+p7lyGWdVXj+ARcpN12Hj4GRDIlUOw/0CKb
-	0yrzWSGUoEUqSKqKgkqECiZt7b9MAqbxNEe4wopgHquxKUiAJXrM3srGNm4DByH9KVrvUGcJFcMWZ
-	cZcFeT+4ZcdcWLo+b7m/t244VSKKiGbJ8eHAoKlimD4FZilteiz6fbilSKYkjr+Su0o/VOGK7nSJm
-	jhHkHqYV6O1CRkArZ6T559Q8S6A3uj0UdjOFYBvSqWCsK8DQTvIdyfyEAqlYgNlKeXIKBcTUZVJkF
-	+Y2MI7Hg==;
+	bh=DQUt9kbau+gyzTKA03h1o3ruBu56PV0baIRrE9HyKeQ=; b=Gn5ZUHfYuho8bxv3irvSfV0eeu
+	LGmVWZa1hlrsWnL1bh4kGTIPDjO4NXtA0zZaeEJUMu7c/oi3oelF/CN8xCWZL64pods3JHk5q/vvy
+	zQiHTPaFbRudIA9otrQ+Sx7mS34NjaBnHpnhGdp+xKklyGdtYD3oeHdoy5BAfUd8/e3SqffKSsyGs
+	UyMkylgOujnxTJZLBb5p+l+vhIoZZa3Q1QaSijfk7kVJi0Yl9dRcFtFG70pb70BAtdOIN+pdZ1BJT
+	zmUmjGEVWINzsSWDRe1VXJevfL9i4C6HTvGkizPxaByXPFZzE7MkJfjIPC7Cq6ZpCcn5nflDg5K7p
+	b3wKcH7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuKW-0000000Db62-1fFZ;
-	Fri, 13 Nov 2026 16:40:48 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xRuKh-0000000DbEC-22Yz;
+	Fri, 13 Nov 2026 16:40:59 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuKI-0000000DavS-2LrC;
+	id 1xRuKI-0000000Davg-3SLU;
 	Fri, 13 Nov 2026 16:40:34 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 07CAC6281B;
+	by sea.source.kernel.org (Postfix) with ESMTP id 9197842287;
 	Fri, 13 Nov 2026 16:40:34 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794588033;
-	b=e4krojrIfADKXhPKH5Dp/MMFgG3OB7ha+VrO/gbewD0C39mHMPTksFwLgv4zTmpbPOMm
-	 oasc7664Ccq9p7cRv8ziIx8U0TJD+WsRm2jCyGYFX15QP81qnHNP2j01O8k05KRsN2h5H
-	 INwQX4b6OHB2bGqW1gKMsmDMJUACg50LYaP0pJtu9VjbcS/ToQ2/CRqfRp/Kf3I56v1yu
-	 KEuVZbMWYq1iTkTzIc4d13s/9ifsbtJrZcemCuPoteoGwohqcjPHO+T9D5RfcDTcW4+1k
-	 Q4vi/0dZNb/M5wZHKKlphQR1/eUFfN5AKhZVS/abre6lkWg9CEMPYCqDW6AK0jzDtnQ==
+	t=1794588034;
+	b=hE0uZF0VHxiW8sU53GfquPPg2Th3aVnC4qAdMYeiKNv1c1PMa//0A6bVu815kSJhhcq6
+	 vKndoVIUGe+FyUwdMfj1P0eZI6W7Bomj9RRJzzteyJcgWUtJLzc2oa5vNVRCQwiKJtAW/
+	 Sjfr8JjRWaCDA5vDQcH0ZJEaho3HYdsA4HPVsqipeS8zYnXYs16+deD9mBOG03z7W7aVL
+	 wz2vtFDcAK64JjfwBm6TxDHle242fLtwiPXOpNjG5wYyqLi8/2Q8BH3oChp0znStPjlkX
+	 r/tNXskZegTGG+Km8lWp0V+WqEjFCDkfcrq6jLKxPb9Xuj5GwN4ZjPVhTrNE2IJpO/w==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794588033;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=Yz/8g0n4NRMp1v0RG/mbf9AW0/DPBjADn4ea0vIBins=;
-	b=sKEq3nzpQ9r3nPZ26bvrGefLTc+YwLWJSMfBm2VgNlQTJWLJ6lANOzFvXAiS/mjQ1o3S
-	 c7F2mZpB3N21Th0AYOuUSgrghwoyeUFYiC75PQT4hLRXJCrQcNGBk3C1NJTCNgzw+NRer
-	 yBYhoxLJPLLQfM4JjD6wKu0UgbNRmkOnBg1y0DampSTMaQopKFpH+6E/eiQTqnjlVX5YT
-	 QP+uA4H+GZG5UXC3UZ2JveXunjLLPZazyNa1DTRSz1gAJJK6Esd2LfqVnpkGNyRvyPHY0
-	 93Ej4futhPVG/gGV4EdMY5PxtTMYO4hn5GJUy4ajRVyEuqflDoJHK3EjpjhkgQjaDOQ==
+	c=relaxed/relaxed; t=1794588034;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=WVd4kSEPcUDB7qokuhjA49SJwxaGFhZI6Dzv7ZInj+U=;
+	b=fBKqG/xP82hcWT0oLr7Qhv3M4DXGubK7EZ7yKgK8rNuRVlYxPco8ZaBe1c4xBDlI017b
+	 D+eueRK+nnPHRp2RmaUIL8msRaqvwM7I+pGklYG7eqAs5ThJuqjQHanNlrj5PtAKBzCEX
+	 6uvpo5bqQ5TltUiwDgDevYTsdLNUiZFU/4QovKAG7sueAIdjMetMZ41cLFr8X9D1E9hCf
+	 6Hg+QYV9mM+EeScdspu9ZaJJXbLM5YaT+RpgXnuSOdBuEzL3MDxZ2HVaAuCB/4x2zEdGC
+	 OLUlxOWrFiG1Q+eW1bbNTwvhtPYse4lXuk9yqV+/dPmQYPGsGJaGZIXUVnUYDv32GCw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 2D89A1F000C5;
+	by smtp.kernel.org (Postfix) with ESMTPS id 124721F000C4;
 	Fri, 13 Nov 2026 16:40:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794588033;
-	bh=Yz/8g0n4NRMp1v0RG/mbf9AW0/DPBjADn4ea0vIBins=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=U/AySg0iu0kEu2OduIZVmFTEmM/NqFdg+EqvUudwgH87BXKMhMuueVRzKx/z7WBdD
-	 Wmp/FGgSmXDYfBj4t4YBV7ZOWmCjIhCeyflvYGYVIqdJqHpBzp11Uh9ndFF0UkUjlj
-	 IYRiQfJMQ4l3IUlLPez76bR4UvBI8mNCMsc2e5rcOCpO9MS0YLqPSvPg8f2Doz/Phk
-	 L3vgtOKEkByuNkbjCgLADygZ3liQBmqIb9NRatp7FMbPRuRzVVmh8cIj3QUEXXeJp+
-	 k1ftiZ3OkoLGUU5A8btdopZrGRIkoeQWB2KnwyYHrBZTOeMoUMFTEMqFmsfUdtFHNS
-	 T5KRnC/KIbt1A==
+	s=k20260515; t=1794588034;
+	bh=WVd4kSEPcUDB7qokuhjA49SJwxaGFhZI6Dzv7ZInj+U=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=Tj5eNSjU1eqEV/+NFQNxQ7GKd764TeISHj/fhOXD2mNkfWqHSlSUrQWXiLfynYPbJ
+	 GiI/U67X3xlkOEi++Iwp9Vwk0/H0ImKllxM99+N103t3/MFXm8tdjhlJwnW8Zms3QR
+	 VKqvc7O5JiwpuAbfw+k7kOXnEK2Cmx3nv+zCDmWS7pVz13hJVV1KLVJ30/tXl82QZT
+	 nwl4YsVDwwvAOEhUn9Kqofzyi7gK2/1gYlWxJ085EXhlyOJT+EJsOmJxpE9D7w2b7y
+	 smHJ105rjhZInJDNObsTNjixLCd7cO/BH0fkUcKbOrSqzJVCBiuY7MIO3Ll+UKE5gm
+	 r+BoN20ftiiTw==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id B3967499D8;
+	by lkml.kernel.org (Postfix) with ESMTP id 96061499BD;
 	Fri, 13 Nov 2026 16:40:32 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Fri, 13 Nov 2026 16:40:32 +0000
-Subject: [PATCH v3 01/12] dt-bindings: media: rockchip,rk3568-vepu: Add the
- reset lines
+Subject: [PATCH v3 00/12] media: verisilicon: Recover the Rockchip VPUs
+ from faults and timeouts
+Date: Fri, 13 Nov 2026 16:40:31 +0000
+Message-Id: <20261113-hantro-robust-v3-0-82383c722ad2@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261113-hantro-robust-v3-1-82383c722ad2@gmail.com>
-References: <20261113-hantro-robust-v3-0-82383c722ad2@gmail.com>
-In-Reply-To: <20261113-hantro-robust-v3-0-82383c722ad2@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNwQ7CIBAFf6XhLAZou0FP/ofxABRajC0GKNE0/
+ XehXhoTj7N5M7ugoL3VAZ2rBXmdbLBuylAfKqQGMfUa2y4zYoQBpZTgfIzeYe/kHCIGAYo3Rkt
+ JAGXn6bWxr613vX05zPKuVSyRshhsiM6/t4eJlt2/dqKYYJDA4KRIK4249KOwj6NyIyrtxPY2+
+ 7VZtilvgZqu4bzme3td1w/AVxFU+gAAAA==
+X-Change-ID: 20261110-hantro-robust-6a6c84febb06
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
  Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>, 
@@ -101,13 +104,14 @@ Cc: linux-media@vger.kernel.org, iommu@lists.linux.dev,
  Tharit Tangkijwanichakul <tharitt97@gmail.com>, 
  Sascha Hauer <s.hauer@pengutronix.de>, 
  Arun Iyengar <aiyengar1990@gmail.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794588031; l=1209;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794588031; l=4890;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=MRydKxLJI0KA7GKlYnR04VTSaxTd+BLkO918wvLJV3w=;
- b=K8uB0c2XX7c4uheBnmnxsvmBT8na1dLiaxSRrgYZIJRv/zoj3/EzCXkIBHOM+LliMraOSG6G/
- 0nFRXNg4AqPDR6pJOzw0CCwcXGiBnhEysj4HUWFoPe4mTog3Xj2/sxD
+ bh=AkkpZ+LzE3TI1DSPHQD95rroQvGeE01mP9oQsvvu9Z8=;
+ b=Kb/N48draMY3CGgfyjmit/qt8xxtPSYAF59vR/1Q6hrsglNElhsPerE2qwinJw62QJxWRLYHX
+ rJvWMwqphWhC8Fp/eeQQutkZ6NlXXq3wL+jZ3A8Q6Ch5hOMWVf2XXvH
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -134,45 +138,101 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
+On the RK3588, a VEPU121 encoder core that faults on an unmapped IOVA
+never becomes idle again, and every later job times out. Patch 6
+pulses the reset lines of the core on a timeout, and patch 7 then
+reinitializes its IOMMU like rkvdec does. Patch 5 re-enables the
+encoder interrupt after a reset. Patches 1 and 11 describe the optional
+reset lines; patch 11 can go through the Rockchip tree.
 
-The VEPU121 encoder cores of the RK3588 each have their own AXI and AHB
-reset lines in the CRU (SRST_A_JPEG_ENCODERx and SRST_H_JPEG_ENCODERx).
-They are needed to recover a core that is stuck on the bus, which its
-registers can't stop.
+Patch 4 stops asserting the resets on remove: the RK3588 AV1 resets
+also cover its IOMMU, which then faults (SError) on runtime suspend.
+It touches the same lines as Sergei Khomenkov's remove fix [1]; the
+one applied second needs a trivial rebase.
 
-Describe them as optional, so that existing device trees stay valid.
+Patches 8 to 10 and 12 describe the AV1 resets on its IOMMU too
+(Philipp Zabel): vsi-iommu deasserts them on probe, and both drivers
+acquire them only while using them. Patches 9 and 10 can go through
+the iommu tree; patch 12 needs patch 8.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Patches 2 and 3 fix older bugs found by Sashiko: a NULL match in probe,
+and a request left queued when the VPU can't resume. The ->run() error
+paths are left to Sascha Hauer's series [2].
+
+Tested on an Orange Pi 5 (RK3588S) on a v7.3 based kernel with other
+out-of-tree Hantro patches (no 556ab0b2741d or 8e26d4c20ed2); v7.4-rc1
+is build-tested only. AV1 unbind/rebind hit the SError before patch 4
+and is clean with it. Provoked encoder timeouts and unmapped-IOVA
+faults are reset and the next jobs encode.
+All VPU cores still probe, H.264 fluster is unchanged, v4l2-compliance
+-s passes on the JPEG encoder, and a job refused after a failed IOMMU
+restore completes its request. Patch 3: code reading only.
+With patches 8 to 10 and 12: AV1 unbind/rebind 20/20, AV1 fluster
+unchanged (203/242), s2idle 3/3, encoder timeout recovery unchanged.
+
+Developed with Claude (Anthropic), which wrote the code and the commit
+messages. I reviewed every change.
+
+[1] https://lore.kernel.org/r/20261106-hantro-remove-v1-1-d0a4678886d7@gmail.com
+[2] https://lore.kernel.org/r/20260824-rk3588-jpegdec-v1-0-180a30a2852d@pengutronix.de
+
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+
 ---
- .../devicetree/bindings/media/rockchip,rk3568-vepu.yaml        | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+Changes in v3:
+- New patch 2: check the match data in hantro_probe() (Sashiko, v1)
+- New patch 3: complete the request when the VPU can't resume
+- Patch 7 (was 5): complete the request of a job refused after a failed
+  IOMMU restore (Sashiko); fail the probe if the empty domain can't be
+  allocated
+- Patches 4 to 7 (were 2 to 5): shorter commit messages and comments
+- New patches 8 to 10, 12: the AV1 resets on its IOMMU, released
+  reset controls (Philipp Zabel)
+- Patch 11 was 6
+- Patch 1: Acked-by from Krzysztof
+- Link to v2: https://patch.msgid.link/20261112-hantro-robust-v2-0-18561fd48838@gmail.com
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
-index d246f5d38427..e9fda4373f0f 100644
---- a/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
-@@ -32,6 +32,16 @@ properties:
-       - const: aclk
-       - const: hclk
- 
-+  resets:
-+    items:
-+      - description: AXI reset line
-+      - description: AHB reset line
-+
-+  reset-names:
-+    items:
-+      - const: axi
-+      - const: ahb
-+
-   power-domains:
-     maxItems: 1
- 
+Changes in v2:
+- Patch 2: never assert the resets on remove or on the probe error path
+- New patch 3: re-enable the encoder interrupt after a VEPU1/VEPU2 reset
+- Patch 5 (was 4): restore the IOMMU only from the Rockchip encoder
+  reset, only with reset lines and a DMA domain; refuse later jobs if
+  the attach fails
+- Link to v1: https://patch.msgid.link/20261110-hantro-robust-v1-0-6b6269c05bfa@gmail.com
 
--- 
-2.55.0
+---
+Arun Iyengar (12):
+      dt-bindings: media: rockchip,rk3568-vepu: Add the reset lines
+      media: verisilicon: Check the match data in hantro_probe()
+      media: verisilicon: Complete the request when the VPU can't resume
+      media: verisilicon: Don't hold the VPU in reset after remove
+      media: verisilicon: Enable the Rockchip encoder interrupt again after a reset
+      media: verisilicon: Reset the Rockchip encoder cores on timeout
+      media: verisilicon: Reinitialize the IOMMU after resetting an encoder core
+      media: verisilicon: Acquire the reset lines only while using them
+      dt-bindings: iommu: verisilicon: Add the reset lines
+      iommu/vsi: Deassert the reset lines on probe
+      arm64: dts: rockchip: Add the reset lines of the RK3588 VEPU121 cores
+      arm64: dts: rockchip: Add the reset lines of the RK3588 AV1 IOMMU
+
+ .../bindings/iommu/verisilicon,iommu.yaml          |  10 ++
+ .../bindings/media/rockchip,rk3568-vepu.yaml       |  10 ++
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |  10 ++
+ drivers/iommu/vsi-iommu.c                          |  16 ++++
+ drivers/media/platform/verisilicon/hantro.h        |   5 +
+ drivers/media/platform/verisilicon/hantro_drv.c    | 102 +++++++++++++++++----
+ drivers/media/platform/verisilicon/hantro_hw.h     |   1 +
+ .../media/platform/verisilicon/rockchip_vpu_hw.c   |  44 +++++++++
+ .../media/platform/verisilicon/stm32mp25_vpu_hw.c  |   4 +
+ drivers/media/platform/verisilicon/sunxi_vpu_hw.c  |   4 +
+ 10 files changed, 188 insertions(+), 18 deletions(-)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20261110-hantro-robust-6a6c84febb06
+
+Best regards,
+--  
+Arun Iyengar <aiyengar1990@gmail.com>
 
 
 
