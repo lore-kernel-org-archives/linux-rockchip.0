@@ -2,89 +2,69 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 623F3606E0C5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 08:29:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EAE0A606A8BD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 08:37:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rrLElZnn;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=djj0o+aR
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FVEcHFaO;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PBzV4Wsp
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=XwjBMsWD7r6macpgM4MxSFs4irKj/6eXSaMraR/PVxA=; b=rrLElZnnFBpp2I6kVpq2ME8dPu
-	i4+AjzaF6x32TJpgsB4/htNYk+Awwa0IYEF/4DMjyx0mPurPSRzs5R7yjY4yvVVMwk6A3bVWCqg+m
-	Hj/gw6WOghZI9ZyFrzL6YZ+5kW4w8xdeHgJx/X4AXbIL8q6T4j5hzCN7EYG4SNtrRJ1NIT+Q7zJTp
-	pwWQapAGMqqo2KqKKD/vRtqQHPqImnuyLJn3wYHRaWDcbtgnIfv13uFvMBQCQRS60cHDDc7/Cw1TO
-	dgpEx5NI4IBnVJ3We1HFtvOZhGFcEdXxgC8JOLrvmeFusjyva/ks1c9AzIW0v0pvr/Xg7pYQm/2Ij
-	8JexpLTw==;
+	bh=OJQhsqD6Cx6qaHhXkqoh2eVE9GGtkme4OeFCprv94d8=; b=FVEcHFaOqm9VAbFS3UZCFosb9s
+	zqTfZ/FLZfEWbo5CXxGUWMTYDzi5Wyjnz7nzIMf0Bm5xhdRVjHpRH0vJUQD6uS0ebAkx63GE+uVUb
+	ByR3NWGW0//syFEaEzhrM10qlO7hjMc9QObM2zrKbsoS/jkFymuVmgPqw0FhSIpqfhDKtu4Cmdie8
+	XktgueK01c9MIx/k5Ll2sgnHaXIRpp/Xw8nfA+W/3LzpW6yQMF0+4JpmMs6ui46WVhCPacqASJD+m
+	cpJQLYQri+DOZ2QjxBKLDg05Lng64s6T5W4gqLcc4cUyVqQf2zL0DlsCGoNL+aFRDyjrh3JAEOp5r
+	rxlapdbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRmeZ-0000000C3Ms-2FHf;
-	Fri, 13 Nov 2026 08:28:59 +0000
-Received: from mail-m127101.qiye.163.com ([115.236.127.101])
+	id 1xRmmJ-0000000C5Ag-3MmT;
+	Fri, 13 Nov 2026 08:36:59 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRmeL-0000000C3FV-180V;
-	Fri, 13 Nov 2026 08:28:50 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 54921be9a;
-	Fri, 13 Nov 2026 16:23:40 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andyshrk@163.com>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v6 18/18] MAINTAINERS: Add entry for Analogix DP controller bridge
-Date: Fri, 13 Nov 2026 16:23:05 +0800
-Message-Id: <20261113082305.541652-19-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20261113082305.541652-1-damon.ding@rock-chips.com>
-References: <20261113082305.541652-1-damon.ding@rock-chips.com>
+	id 1xRmmG-0000000C59q-2p7l;
+	Fri, 13 Nov 2026 08:36:56 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id C664F625CE;
+	Fri, 13 Nov 2026 08:36:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D5641F000C4;
+	Fri, 13 Nov 2026 08:36:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794559015;
+	bh=WcbMZkXCoDF1VinxpXAJnqvIlxoOmrzgyATGNwq43+A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=PBzV4WsppZXw4ka2DOy1kwykexWL4bAIMtz3UGqpszC8BjXZOqibQVEak+Kq8c2AD
+	 E9MoBORWZjLCTHwkZw2yNrZpnDZYomFvPvujDxPrnlTKZhareQb8KW03DjiHggPsVD
+	 tKHuFgUA1YCBXSlUCpujHQPA63MU1r4pjl7ydLipOTatGwpsKnG2FqYBuSZz0w9Qcy
+	 8VYFjAuReeAASmkWQEv7vtyws10AHAFWupq+Efm/0Pcw3uODhzFFTmxZQW9IbZ64c9
+	 Buwdmzq1v2xC4k+hKLTIiIQ1FoKFwnZTNDkNRnOtkRClPBEcafGl1qVLk+RzZWSyaX
+	 PHmF4rAz+hHjQ==
+Date: Fri, 13 Nov 2026 09:36:49 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Arun Iyengar <aiyengar1990@gmail.com>
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+	Andrzej Pietrasiewicz <andrzej.p@collabora.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+	Hans Verkuil <hverkuil@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Sergei Khomenkov <shomenkow@gmail.com>, Tharit Tangkijwanichakul <tharitt97@gmail.com>
+Subject: Re: [PATCH v2 1/6] dt-bindings: media: rockchip,rk3568-vepu: Add the
+ reset lines
+Message-ID: <20261113-eminent-vociferous-walrus-2d63df@quoll>
+References: <20261112-hantro-robust-v2-0-18561fd48838@gmail.com>
+ <20261112-hantro-robust-v2-1-18561fd48838@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa1d40156e303a8kunm073aab0481b15
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaSUJPVklDSEwYSUkdQk4aQlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQk1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=djj0o+aRo4G14XCLhZ/EuBRTd4zvl9MexsxiTtDO8Ja7dZBo2iWhAWWirjNmYkDZ1SteR6NkxTKDiCagfHJsLSZxEUteqh0p4S7uQ+ropWa8s3gbyboff1wKQ/nYQ+Df5cuLCd95blaa5aNW0uQl2CRy5cJLtWeirXb+Osg+pg0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=AA+a4AqBKVz6oTbXNI6y+nYVwdd7pC27rIG5UDZFMk0=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_002847_515908_22B62D9E 
-X-CRM114-Status: UNSURE (   7.54  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Content-Disposition: inline
+In-Reply-To: <20261112-hantro-robust-v2-1-18561fd48838@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,46 +77,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add a MAINTAINERS entry for the Analogix DP controller bridge, covering
-the core bridge driver, its register helpers, the public header and the
-DT binding, so that get_maintainer.pl routes related patches correctly.
+On Thu, Nov 12, 2026 at 08:30:47AM +0000, Arun Iyengar wrote:
+> The VEPU121 encoder cores of the RK3588 each have their own AXI and AHB
+> reset lines in the CRU (SRST_A_JPEG_ENCODERx and SRST_H_JPEG_ENCODERx).
+> They are needed to recover a core that is stuck on the bus, which its
+> registers can't stop.
+> 
+> Describe them as optional, so that existing device trees stay valid.
+> 
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> ---
+>  .../devicetree/bindings/media/rockchip,rk3568-vepu.yaml        | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
----
- MAINTAINERS | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c4f4e48774d0..8f014ec3a185 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -8235,6 +8235,17 @@ S:	Supported
- T:	git https://gitlab.freedesktop.org/drm/misc/kernel.git
- F:	drivers/gpu/drm/sun4i/sun8i*
- 
-+DRM DRIVER FOR ANALOGIX DISPLAYPORT BRIDGE
-+M:	Damon Ding <damon.ding@rock-chips.com>
-+L:	dri-devel@lists.freedesktop.org
-+S:	Maintained
-+T:	git https://gitlab.freedesktop.org/drm/misc/kernel.git
-+F:	Documentation/devicetree/bindings/display/bridge/analogix,dp.yaml
-+F:	drivers/gpu/drm/bridge/analogix/Kconfig
-+F:	drivers/gpu/drm/bridge/analogix/Makefile
-+F:	drivers/gpu/drm/bridge/analogix/analogix_dp_*
-+F:	include/drm/bridge/analogix_dp.h
-+
- DRM DRIVER FOR APPLE TOUCH BARS
- M:	Aun-Ali Zaidi <admin@kodeit.net>
- M:	Aditya Garg <aditya.garg@linux.dev>
--- 
-2.34.1
+Best regards,
+Krzysztof
 
 
 _______________________________________________
