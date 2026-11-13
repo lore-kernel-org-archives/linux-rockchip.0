@@ -2,71 +2,151 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 79E25606A338
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 23:20:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C0107606A32E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 23:49:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ul9oUmwR;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=bSMnCDyQ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lSrC4sJM;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gahingwoo.com header.i=@gahingwoo.com header.a=rsa-sha256 header.s=fm1 header.b=UlYMm/Fs;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=Kbv6hEsY
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=eHaanboKJdsB8/C8pF+S2so1xph+I2do7y0WZ8nVWjI=; b=ul9oUmwRmA9dbIJInqHVCFuIlJ
-	yB3utQCfvug7EoR3XH6gq5YPdfE8kC4icUr6oGV1i7BbVSUzZn5wijtcUuaecROPoPqCp3DtQE6ZV
-	k9K3rd8RnJf7NGfAeL3dZjt00oErpda2UsqAWPBK2e8YDWDw0KXdFiDIOopMebCap1SucwnYpf7AR
-	g0qBu4/Q3G/bnLnZGxWfRjFYOsND+NbFu3Czb35i5Wb6TCn4PDBA7XExpOmqOfjblHu4d7/Upke+e
-	+rOwGA6MDwfZKbzQ+pY/az32O6SOkooZ1paTxtho9eIUOLPFUgegai6DZGttWU+GkC8LeFpbDRUwI
-	b53QAXig==;
+	bh=W1EQpzjuDajr/iwazTjte0BG8c509YCBql6tVa+BwxM=; b=lSrC4sJMQ0ZVyY0JitfMnb7lK9
+	5cu9yrmrpwkJiaJ8TD6UKTMNKD1fGwEooBHdpDm6yyfMj2YSozYJrOUEmQQcJoWlm1JLJHU6Ee/qT
+	dWL1pHrbkdV2r7hDhgVQvTmfK/ehs/TsAFFj2QjDYuY2CR/c0Epre3bSboFaW7Uh0PF3J/3+gdLV4
+	UDW6WbeZ6tgDnKzM2zUt29iMtGJK2nd23HP6uWGn5pZQ9f/z/shcqE1Jd4mZ9vR9ibqy60rR2GuwY
+	njJxVvkIpNdJwkd7lv2Yi8oaRZwfsctn1Ua9LI7/7ukyBr+TSWKiijaUh+RqJ4hH/AdhIalMUz+Z8
+	yPr2DFgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS0Yy-0000000EnJL-0of7;
-	Fri, 13 Nov 2026 23:20:08 +0000
-Received: from sender5-op-o11.zoho.com ([165.173.182.11])
+	id 1xS11K-0000000EpOP-1GxS;
+	Fri, 13 Nov 2026 23:49:26 +0000
+Received: from flow-b1-smtp.messagingengine.com ([202.12.124.136])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS0Yu-0000000EnHs-18qL;
-	Fri, 13 Nov 2026 23:20:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794611993; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=aAQBU41mKIkR/itcVu2Jv0cVvvszPNuNWnrIe9/92kwK+ALxQhz2zn/7tcaXccdy5HNgZsdJf0obqrHI+EEkyUBPHrTFk+FeGXlx54e4BvP1wNyvdMIBIOEtHaPUxZHcf8sVo1WIil7exWta+ni65qVWi4lv9U8tscGGcTzu9gw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794611993; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=396mrwK6+J7I5FsFadAXxxySHp8JW5xQvIYTLzX9T0E=; 
-	b=IJBe7MdfGVPOznTUBuKTJCUrJ21JGjks/7jg9VPY2aMH7df8EPIab9PHw3jzdfNNs9VEnNgYu/qlViHA/2/hZKC6vnQXm2NfCS/D+uQMlVNJMVqgOjgkYykj328Za6/Y1o7M0zo7DOSiZy+tOTb7xY5HhJvctJS0no8DlBFz7XI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=bSMnCDyQNSUHmc+xnbyHDkeLBa7V8jCscjNLWHTT0KDuZvJvy1VttKXIKr9zzc8RqqsVFqiu4EA8ticrBYzNHQr/I1APuyoE3yRzYLoVTvYCwCp3JMh7w+539DzeuJAyvp7k4oiNB0GZc5LiZIoTykf2oLb7owMKkZTgyx8Ozyw=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=396mrwK6+J7I5FsFadAXxxySHp8JW5xQvIYTLzX9T0E=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 179461199111667.75435217143877;
-	Fri, 13 Nov 2026 15:19:51 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id 4148B1803FC; Sat, 14 Nov 2026 00:19:46 +0100 (CET)
-Date: Sat, 14 Nov 2026 00:19:46 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Peter Chen <peter.chen@oss.qualcomm.com>
-Cc: Vinod Koul <vkoul@kernel.org>, 
-	Thinh Nguyen <Thinh.Nguyen@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Igor Paunovic <royalnet026@gmail.com>, 
-	linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, kernel@collabora.com, 
-	Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>
-Subject: Re: [PATCH v18 0/7] usb: dwc3: introduce Rockchip glue driver
-Message-ID: <aveY4hjCgstjkmy7@venus>
-References: <20261021-b4-rockchip-dwc3-rockchip-glue-v18-0-60000d03fca2@collabora.com>
- <avZvYlYyL3Doc8qt@hu-petche-lv.qualcomm.com>
+	id 1xS11G-0000000EpNO-22OE
+	for linux-rockchip@lists.infradead.org;
+	Fri, 13 Nov 2026 23:49:24 +0000
+Received: from phl-compute-11.internal (phl-compute-11.internal [10.202.2.51])
+	by mailflow.stl.internal (Postfix) with ESMTP id 2C34B1302A42
+	for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 18:49:19 -0500 (EST)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-11.internal (MEProxy); Fri, 13 Nov 2026 18:49:19 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm1; t=1794613754; x=
+	1794620954; bh=/o9hLhdBPn8cdi1Wxj/gbuT8hiPvUs8r+uSoRMeCvTs=; b=U
+	lYMm/Fsoj+r8geFJv0LOqWv1MpvzDQTc1MqmCUAl2LOGZIHC+Fga3cCXVyeFtSdi
+	bYjE3RRDqE7efhzw+hiZSEilb81PpG7/2T9R3Zk37AGE4Hrls18xn/8YeiPNWu4U
+	9xPCHeGgFAo2VzfFgRTP9ceWNVQ2Oird/Uxb6lhpS1D3heWSqh2n8q2rRQW5Nxvf
+	xycvQaRXjpLgfTuDcpzOlJohY2tnltTfuACTl2+DYLbTLLZhlfNWwYKEky0LwqoU
+	meWzhpnk/bJtdWa5UahJFchqCoqMkVerMfrqjQkXXULGBwwIHEi9cT2ureGZT7nI
+	tNWu4xIgjs3qO7CKUGW2A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm3; t=1794613754; x=1794620954; bh=/
+	o9hLhdBPn8cdi1Wxj/gbuT8hiPvUs8r+uSoRMeCvTs=; b=Kbv6hEsYJB/5FYcc7
+	o+36gAzaudVzx1OVRXQcOZFWXZBDdr+FPlNt6B0CDEA9xnCwFir29Kl1Ux08ZsSR
+	OJyOUuSwPuRI/9+aHkK5MSMww3iWR1ZbiucID2mbzK8Krs0bujCxmr0jTUFHTMyU
+	O8pb35YSxRMbHERZ9H6tlwl3uE77gYJ2uaTRT6Pelqmj9bHXhuu32FXG8pKlr6KD
+	hmXUquJRZ0ON4uHFQSEMHVM/Xxr/XR9Shvh2Adj1TkVg1zJ+RhEwBW5vs6tnRClP
+	TqwEXmBCC16/t+Te8cAx49AP7Kykb7kjG57CtFSbvbVUCHCT9pyqDi0WEg9Kpa9O
+	xldsQ==
+X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
+	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
+	action=sign d=gahingwoo.com a=rsa-sha256;
+DKIM2-Signature: i=1; m=1; t=1794613754; d=gahingwoo.com;
+	mf=PGdhaGluZ0BnYWhpbmd3b28uY29tPg==;
+	rt=PGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmc+;
+	s=fm1:rsa-sha256:Knmj+qYJjbkK5ZH3sWp/3nY8bVwtlkpJwgwCas64pJY/1yu
+	i5WWB22yY5u0AZztPnCilosmC9Pncmdv4WuQDGBfR6VLnyxwrIx+42iNP5aD5yd1
+	VBXI1N3mg3D01JNvDkjhWTMOXYRY8+Oi7W/4HluD4sQ2JXbubkYS4tOUhe4vOe/y
+	19hdUqEOzQYVYIn7DD0zzanoMkjjAea3saaUdPSTZTN+stkHGylOndTrXxQmZ092
+	o+c8Qr0mR0BhwEZrUwoqnhqtN8E5uYG9Bu36gxYC+ZPzjNHzo13NB6qnIxgRV20J
+	qJOE2lqahiRH75myv02HShJDlx6f3P5ro0w+Kzg==;
+X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
+	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
+	action=mi-m=1; hc=11;
+	hn=cc,content-transfer-encoding,date,feedback-id,from,
+	in-reply-to,message-id,mime-version,references,subject,to;
+Message-Instance: m=1; h=sha256:rp3Is3ckG8hz2zrJbdiFe7omtKF0PxAQ8ym9SeM2Qzk=:/o9hLhdBPn8cdi1Wxj/gbuT8hiPvUs8r+uSoRMeCvTs=;
+X-ME-Sender: <xms:-KH3aueYucPAN-8SqiNgFZCNiCj6jx5DIKLhFukwwra09vGDSsTtkA>
+    <xme:-KH3aujswu_X8kk2LnjSP1Rq4X9Bgm0wL3l-5Wb4hdXJQ_VYYgQBt5AgmSzOa26rZ
+    -gJccF6ImqI16DTFxBjYnyd1Y38UvBpjWdPmoqxocMekqfNYlUDwso>
+X-ME-Received: <xmr:-KH3aljEQ776igM0Rpj4R0m8h3YUEEhmdoGNKafcAUp2sXlDAVMT4iGZ7QoFCQPtkDrYFpxX>
+X-ME-Proxy-Cause: dmFkZTFS60ybEwlxxb4K3SeK8mTCMIe/J7SGIQZYhTY37qjBx5CZtBVvuXRCD//zEzv8CQ
+    +kZsvg7kGYLuSkWXyPscs4Ic9CYpH9tvjtBM/I3P0n0odWrIB0N3f9wNlXf7iY84Vr0wuN
+    /OkvJ5GwImBrRKfcXCNhp41KWqX6wlztjkqyXvwGNiLchaun23so7vCnQJb45q4NPV2bar
+    JSd3SPHKZp5+r50cI5C2Cnupo9v8z4qiDDMnjpwrZNthjLhcTTntOPyEaEv5uflorcthJq
+    hHEEH5C78LNxi1tFpExUwGX5Qn5V6TTB4Q0mhCZEyd9xxCMFb62EO4KC/k2ENcFelMvrN2
+    batNi9or+TWUf/rgJ2hnMVW64QlO8XsLqhEiN8OnVQWrZgRCQvaBXHppTLxuixNARxd8fH
+    QtsTWKUrgWPWy2/x8+UTito3XyVIfiE+4zESbSse8qb3T8LtWM9SvrQ7lG9l3N9ZNL0sSl
+    TgQ+AuWkeUyWGG/L40JLFb5Ptb0qcmvRfo75jmDFd3/l5Hh7gtSCRyY5v+5+Pcw0fAiQiG
+    l6dVQsY6ZST7H6Piukjbld0gDmFHnzTldJ2I2s9WAt8RLfj+fI4o4Cz2BG7GTW/LZ4DNrV
+    mGb6D7byXBAWuQggjbgK5xuPQq98govt++BwmseJ7y/H/df5/jYs4MsJ0xHA
+X-ME-Proxy: <xmx:-KH3apRKXpXdx17IJ6LDSkjaUAobNZ0-oiERE7FhaBarxZs6vSVRwA>
+    <xmx:-KH3ahRO96YCYAifWNHsqwZxtzY84BbMH0F9X3v1M4WVbJsL6cQVLA>
+    <xmx:-KH3alBv0zVEUAKvADA03bTmhMmVEXZGTond7zy3ueTflcI2-ytWcg>
+    <xmx:-KH3alzxDNwuPQJYtUbeM31NmEU7iFJzQ5-WRY6qlRJUfZfivAN2Mg>
+    <xmx:-qH3as7O6p0S5CopMVSKIooPCpr92uJ29WmqYO-U8LVMRBp7Jfejl2_i>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 13 Nov 2026 18:49:02 -0500 (EST)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: vlwwwwww@gmail.com,
+	ulf.hansson@oss.qualcomm.com,
+	heiko@sntech.de,
+	finley.xiao@rock-chips.com,
+	tomeu@tomeuvizoso.net,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	ulfh@kernel.org,
+	p.zabel@pengutronix.de,
+	ogabbay@kernel.org,
+	zhangqing@rock-chips.com
+Cc: shawn.lin@rock-chips.com,
+	royalnet026@gmail.com,
+	abel.vesa@oss.qualcomm.com,
+	sebastian.reichel@collabora.com,
+	sidong.yang@furiosa.ai,
+	u.kleine-koenig@baylibre.com,
+	chaoyi.chen@rock-chips.com,
+	diederik@cknow-tech.com,
+	alchark@flipper.net,
+	leonard@lausen.nl,
+	jeff.hugo@oss.qualcomm.com,
+	rfoss@kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	iommu@lists.linux.dev,
+	linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiaxing Hu <gahing@gahingwoo.com>
+Subject: Re: [PATCH v16 09/16] pmdomain: rockchip: add optional per-domain power-on settle delay
+Date: Sat, 14 Nov 2026 12:48:59 +1300
+Message-ID: <20261113234859.658218-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261113132323.159015-1-vlwwwwww@gmail.com>
+References: <20261108065917.135194-1-gahing@gahingwoo.com> <20261108065917.135194-10-gahing@gahingwoo.com> <20261113132323.159015-1-vlwwwwww@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <avZvYlYyL3Doc8qt@hu-petche-lv.qualcomm.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.590.96
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_152004_414487_3F44477C 
-X-CRM114-Status: GOOD (  40.77  )
+X-CRM114-CacheID: sfid-20261113_154922_649230_E9EFC251 
+X-CRM114-Status: UNSURE (   8.49  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,184 +157,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6830441817353893310=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Hi Vladimir,
 
---===============6830441817353893310==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="y273ql62b2nj3j4n"
-Content-Disposition: inline
+Thanks for pointing this out. Your analysis is right, and I have
+reproduced it on a ROCK 4D.
 
+The problem is that a power domain marked need_regulator is switched off
+as soon as add_one_domain() adds it, and its subdomains are added only
+after that.
 
---y273ql62b2nj3j4n
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v18 0/7] usb: dwc3: introduce Rockchip glue driver
-MIME-Version: 1.0
+NPUTOP, NPU0 and NPU1, which U-Boot left on, are neither idled nor really
+powered off, but genpd treats them as off. So when the regulator core
+disables vdd_npu_s0 because it has no users, the system hangs.
 
-Hi,
+I reproduced it on the ROCK 4D with a DT that has the NPU disabled. All
+14 boots showed the same wrong state (0x214 = 0x23e, 0x110 = 0x13e1),
+and 1 of them hung. The ROCK 4D hangs less often than your R76S, but the
+underlying state is the same.
 
-On Thu, Nov 12, 2026 at 06:01:06PM -0800, Peter Chen wrote:
-> On 26-10-21 20:05:25, Sebastian Reichel wrote:
-> > - drop generic PHY reset notifier API; I discussed this series at Linux
-> >   Plumbers Conference with Vinod Koul and he prefers a local driver
-> >   hack/quirk instead
->=20
-> Hi Sebastian and Vinod,
->=20
-> Sorry to jump out late, do we really decide to use private callback betwe=
-en
-> USB controller and USB Combo PHY, and notify PHY's reset events for
-> controller? Many platforms which support USB/DP altmode feature need this
-> requirement, besides Rockchip, Qualcomm and the platforms use Cadence USB
-> controller and PHY also need this.
->=20
-> For this scenario, USB controller works at USB3 mode (also configures PHY=
- for
-> USB3) first. Later, Type-C/DP event tells PHY that it needs to work for D=
-P(4lane),
-> since this event doesn't go to controller now, sudden switch PHY from USB3
-> to DP (4lane) will turn off PIPE clock, and cause all controller's event =
-which
-> needs PHY (PIPE) clock abnormal, that's the reason why controller needs
-> this PHY switch (reset) notification and let the controller know it needs
-> to work at USB2 mode from now on.
+The fix: when the power domains are added, a domain that needs a
+regulator and all of its subdomains are marked as off from the start.
+Once the whole subtree has been added, the domains are switched off in
+order, from the leaves up to the root.
 
-This is similar to the Rockchip requirements. But the issue is
-partially covered within the PHY by muxing the clock differently
-(which is also somewhat of a hack, as common clock framework is not
-aware of this). FWIW I expected more platforms to run into this over
-time. Having combined PHYs for USB-C handling makes a lot of sense.
+With the fix, all 10 boots showed the correct state (0x214 = 0x3fe) and
+none hung. I also tested it on the board with the NPU enabled, and all
+30 power-ups were fine.
 
-But I think it makes sense to proceed with this considering it is a
-Fix. It has been going on for a very long time already and meanwhile
-the problem is already there right now. Moving this from the
-internal custom API to an official API is always possible as a
-follow-up - it's all within the kernel, neither DT nor userspace ABI
-is involved. Also having some users makes it easy to figure out how
-the common API should look like.
+If you have time, could you test the patch on the R76S as well? 10 boots
+are enough, without any workaround. That would show whether the fix
+works on your board.
 
-Greetings,
+Patch:
+https://github.com/gahingwoo/build/blob/rk3576-pmdomain-probe-off/patch/kernel/archive/rockchip64-7.3/rk3576-pmdomain-power-off-npu-subtree-at-probe.patch
 
--- Sebastian
+Thanks again, this really helped find the root cause.
 
->=20
-> So, it is more like a general requirement, but not quirk for special plat=
-form.
->=20
-> Peter
->=20
-> > - rework USBDP and DWC3 rockchip glue for the local driver quirk
-> >   using direct function calls
-> > - Ensure that the reset handler in DWC3 is only called when the PHY is
-> >   initialized (and thus DWC3 is running)
-> > - Also set vbus in the last patch when dwc3 is configured to device only
-> >   mode (in contrast to dual-role mode being in device mode).
-> >=20
-> > Changes in v16:
-> > - Link to v15 (sorry, I missed force setting the revision for this
-> >   part in the series split, so the series says v1 in the patch subject):
-> >   https://patch.msgid.link/20260915-b4-rockchip-dwc3-rockchip-glue-v1-0=
--763bb546824e@collabora.com
-> > - Update first patch to also build the PM functions even when
-> >   PM is disabled
-> > - Add new patch for defining an empty usb_udc_vbus_handler stub
-> >   when USB_GADGET is disabled
-> > - Add dependency to Rockchip DWC3 glue, which disallows the
-> >   configuration with USB_DWC3_ROCKCHIP=3Dy and USB_GADGET=3Dm
-> > - Collect tags
-> >=20
-> > Changes in v15:
-> >  - Link to v14: https://patch.msgid.link/20260813-rockchip-usbdp-cleanu=
-p-v14-0-b5ad9c68fa11@collabora.com
-> >  - Avoid #ifdef for CONFIG_PM in the new glue driver (Thinh Nguyen)
-> >  - Do not add #if IS_ENABLED around the DT compatible blacklist in the
-> >    generic driver, using the glue driver should be mandatory as the
-> >    generic driver results in arbitrary system hangs. Thinh Nguyen sugge=
-sted
-> >    updating Kconfig for this, but did not clarify what that means.
-> >    Current Kconfig works the same way as the other mandatory glue
-> >    drivers.
-> >  - Split series to simplify review
-> >=20
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > ---
-> > Sebastian Reichel (7):
-> >       phy: rockchip: usbdp: Track PHY power state
-> >       phy: rockchip: usbdp: Add reset hook support for dwc3
-> >       usb: dwc3: rockchip: introduce glue driver
-> >       usb: dwc3: core: add post PHY registration hook for platform glue
-> >       usb: dwc3: rockchip: add USBDP PHY reset quirk
-> >       usb: gadget: define stub for usb_udc_vbus_handler
-> >       usb: dwc3: rockchip: fix USB-C reconnect in gadget mode
-> >=20
-> >  drivers/phy/rockchip/phy-rockchip-usbdp.c |  82 ++++++++++-
-> >  drivers/usb/dwc3/Kconfig                  |  13 ++
-> >  drivers/usb/dwc3/Makefile                 |   1 +
-> >  drivers/usb/dwc3/core.c                   |  17 ++-
-> >  drivers/usb/dwc3/core.h                   |   9 ++
-> >  drivers/usb/dwc3/dwc3-rockchip.c          | 227 ++++++++++++++++++++++=
-++++++++
-> >  drivers/usb/dwc3/trace.c                  |   3 +
-> >  include/linux/phy/rockchip-usbdp.h        |  31 ++++
-> >  include/linux/usb/gadget.h                |   5 +
-> >  9 files changed, 383 insertions(+), 5 deletions(-)
-> > ---
-> > base-commit: 8f56fdf3d8cb9f1dbdc93bf9ac816698aa6f70b7
-> > change-id: 20260914-b4-rockchip-dwc3-rockchip-glue-979ea3735d43
-> >=20
-> > Best regards,
-> > -- =20
-> > Sebastian Reichel <sebastian.reichel@collabora.com>
-> >=20
-> >=20
->=20
-> --=20
->=20
-> Thanks,
-> Peter Chen
-
---y273ql62b2nj3j4n
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmr3mwoACgkQ2O7X88g7
-+pragA/9FzXXAxsGqNAe5lp4EQDO7Y3egVEb59vzkimcTXPurGE/l4kePSGKJAg4
-MWxXZ1F9OXKrbef+ruuzAE0SpV0QedcA+VFhgxMsB68j37twnkngzmpEiESkyNHR
-/QPiUk0KYTqZyYDSeGmmvUiJWSyOLouIKKPs+hSxJ9CuLdF2+agbPuL7aNRcRK3t
-6HQX6nM1QlcCXoLXhUo57rtplRGngj3l4HAGxrcptCTY6mRAt4gyiFg7cBUB6BNS
-noUZ+GL1sW1wdFB9BMtRoR+ghTir5i+PQpy0TKx/TeEY4WVriTI0j4DCDnIFbpGw
-PxRph0W+C6x+Am65L/LC4wBcL5yhlgNJCJeg+RXK7YJPGZTn5vX1VHUhiRa6wXCJ
-3h8lHZJigfiiGEPbMUvgB+hHCdJBRVCiR7lu8GMS1thwcpcN87x+x7immvgG+sk/
-62Z6mrGVy1ANECRBuNicQ68Nge0HKv6Ea2j1a3Ql1k5ZO8OSe9SZi3qutYUKtGtG
-vk/w+ANGpGKbD3nnHQFLTywivg1ygndoOPVqrTGGWsRFY6yglkm4EvEndMe2khFe
-zaTBuIg63ivrqZ0EQ9kV1vmSHWxgRRgxLK44pjzxCWeoOX3B6ilfEsDSLHoKtAac
-gAUXovjWlFWb6IRTtUtoQsbY5C6HraVIwxniPSO1cuoZx0QFmk8=
-=xdRH
------END PGP SIGNATURE-----
-
---y273ql62b2nj3j4n--
-
-
---===============6830441817353893310==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6830441817353893310==--
-
