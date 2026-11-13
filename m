@@ -2,108 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 09180606A882
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 22:21:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 79E25606A338
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 23:20:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ptsDlwlt;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=E291gQyL
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ul9oUmwR;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=bSMnCDyQ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Ap1Teq50MOD6jLjrG88AMeOgHbJrvL9B7q7byPkSHoo=; b=ptsDlwltELyLMJYDElSI0cQfqS
-	+mxPd1LWnuiH03Yc6e8M3Uz0foyJpOUDQbbq8hIPowEpfGpaGVYj8/qGFITlGZhUydlDpxeMH8PME
-	Fqa2SVWFg7wns6u+zxh7CtQrBtZblCIVBRW+mdHcHPgMfQLkujA4TUZ42YlfdS0qVZTcJw3K8clvS
-	ivZVPA4t9ZJ6724dK5thARx2a+hO5g6mQp3qYSFGkfdH7VLNWGFwaueDr9/Zwp2dvc3zHjlKfIxGg
-	K3NcySSNtiXYNDyDs2/0vLl6SilUjsOZ2UIiiPlul9aZsii/i+F60pzs8kCuiik77hQmgZLZ/x99b
-	zrxsMD6w==;
+	bh=eHaanboKJdsB8/C8pF+S2so1xph+I2do7y0WZ8nVWjI=; b=ul9oUmwRmA9dbIJInqHVCFuIlJ
+	yB3utQCfvug7EoR3XH6gq5YPdfE8kC4icUr6oGV1i7BbVSUzZn5wijtcUuaecROPoPqCp3DtQE6ZV
+	k9K3rd8RnJf7NGfAeL3dZjt00oErpda2UsqAWPBK2e8YDWDw0KXdFiDIOopMebCap1SucwnYpf7AR
+	g0qBu4/Q3G/bnLnZGxWfRjFYOsND+NbFu3Czb35i5Wb6TCn4PDBA7XExpOmqOfjblHu4d7/Upke+e
+	+rOwGA6MDwfZKbzQ+pY/az32O6SOkooZ1paTxtho9eIUOLPFUgegai6DZGttWU+GkC8LeFpbDRUwI
+	b53QAXig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRzeY-0000000Eg5q-0GjL;
-	Fri, 13 Nov 2026 22:21:50 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xS0Yy-0000000EnJL-0of7;
+	Fri, 13 Nov 2026 23:20:08 +0000
+Received: from sender5-op-o11.zoho.com ([165.173.182.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRzeL-0000000EfwM-0HLA;
-	Fri, 13 Nov 2026 22:21:37 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 362DB62910;
-	Fri, 13 Nov 2026 22:21:36 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794608495;
-	b=TL1/vAUYG2ExfX5S9RYJW//jRYC4g+v7s705qhJEVNRNef3QqiltRHq4Z3A9X+ml3FT3
-	 YA6NUsK3taFPB90Saurr+9AxCnUHFvp1Si32dHHETNJG1DvX2ihc5RUl2zL/1YHbEcd8D
-	 Cdjxj/f4kpf+vfuQMTHxWe5RbDCOQjcTx+o19kfNbXOm1PtT5OuHTNp5UhBy3CmiV2YXi
-	 Zhds9ZJM5I06eyU3q3r2QCwyIvCTMyzJsCTJ7enlgg1zWakjf/QfT88zUKfpwy3nRbSUX
-	 tWacJ/2l85/RMsARgDyTi5lrm7KpLDOLMrwe2IfM4F3ZtWHEUkpicfl4Jiyq+IbHtdA==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794608495;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=U8LstPPrHCW3ctEClTfo7NSAD6yF6+iQLjvIIR3H+/Q=;
-	b=2ucIC5o7ifZuTxzUyDTZ6QprxgFOGcGI77mnF9NtFRVFNbnewFZfQ1pvkQ8zzRX5d6zQ
-	 LX30Q8U28kt/qJn0CmYkyYuTEz4UpwgLMFa/VxVYJNCtge/kNnfMR/MulBQnX7m3lCMwi
-	 b9KNoe71OHSOg3/6YNm8tdoXsCeI9WrSJ+NIaZZkyZnbQOfNE7VQkZBDzRxuqzG4BXH+L
-	 0MeRMKsrjDKB5Q8akgNkwKnF86RR5w7tjYO9zSdM+CItnngOxJ5ITit+7Le1D+/i76gAa
-	 3SxvEp0J4M3zahdjsv892vchhtvxLnSFz4eEkzU8ey87sBM60EV7lsH8eT3BTvWy6NQ==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id E726F1F000C5;
-	Fri, 13 Nov 2026 22:21:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794608495;
-	bh=U8LstPPrHCW3ctEClTfo7NSAD6yF6+iQLjvIIR3H+/Q=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=E291gQyLy6PootibV+pUePNMnGhLV9TOYkcA43DvtOQ1RHgTWi4Oo02R0DX6gT52A
-	 VOdZ6hK0rV3rTgoBBt5EMzupdYfWiaN6KELLaYt8zhFgEOPhSUCMFXFrxZ91sEydLd
-	 SbWJFC37KbkhlE/hj72I9OLVr6HXZIvX4N3vadik+EB46QAQ3ybNjH5SQYk02FKOc8
-	 V/7k2zQQbqnCEdJhYYzxAFEPMhjy84PvPVWEzVFv9jESbNgVO6DywoHvRMY8/54MdE
-	 kGnnMgKlVI47gjTrtO1tPumrqw5I2c6FNRsBeuJQotZPeqI3RRL8SBtU7o40c8/O/b
-	 pDELIA3d4+TlQ==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 4267349B22;
-	Fri, 13 Nov 2026 22:21:33 +0000 (UTC)
-From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Fri, 13 Nov 2026 22:21:32 +0000
-Subject: [PATCH RFC 1/3] media: verisilicon: Split probe into hardware init
- and device registration
+	id 1xS0Yu-0000000EnHs-18qL;
+	Fri, 13 Nov 2026 23:20:05 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794611993; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=aAQBU41mKIkR/itcVu2Jv0cVvvszPNuNWnrIe9/92kwK+ALxQhz2zn/7tcaXccdy5HNgZsdJf0obqrHI+EEkyUBPHrTFk+FeGXlx54e4BvP1wNyvdMIBIOEtHaPUxZHcf8sVo1WIil7exWta+ni65qVWi4lv9U8tscGGcTzu9gw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794611993; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=396mrwK6+J7I5FsFadAXxxySHp8JW5xQvIYTLzX9T0E=; 
+	b=IJBe7MdfGVPOznTUBuKTJCUrJ21JGjks/7jg9VPY2aMH7df8EPIab9PHw3jzdfNNs9VEnNgYu/qlViHA/2/hZKC6vnQXm2NfCS/D+uQMlVNJMVqgOjgkYykj328Za6/Y1o7M0zo7DOSiZy+tOTb7xY5HhJvctJS0no8DlBFz7XI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=bSMnCDyQNSUHmc+xnbyHDkeLBa7V8jCscjNLWHTT0KDuZvJvy1VttKXIKr9zzc8RqqsVFqiu4EA8ticrBYzNHQr/I1APuyoE3yRzYLoVTvYCwCp3JMh7w+539DzeuJAyvp7k4oiNB0GZc5LiZIoTykf2oLb7owMKkZTgyx8Ozyw=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=396mrwK6+J7I5FsFadAXxxySHp8JW5xQvIYTLzX9T0E=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 179461199111667.75435217143877;
+	Fri, 13 Nov 2026 15:19:51 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 4148B1803FC; Sat, 14 Nov 2026 00:19:46 +0100 (CET)
+Date: Sat, 14 Nov 2026 00:19:46 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Peter Chen <peter.chen@oss.qualcomm.com>
+Cc: Vinod Koul <vkoul@kernel.org>, 
+	Thinh Nguyen <Thinh.Nguyen@synopsys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Igor Paunovic <royalnet026@gmail.com>, 
+	linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org, kernel@collabora.com, 
+	Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>
+Subject: Re: [PATCH v18 0/7] usb: dwc3: introduce Rockchip glue driver
+Message-ID: <aveY4hjCgstjkmy7@venus>
+References: <20261021-b4-rockchip-dwc3-rockchip-glue-v18-0-60000d03fca2@collabora.com>
+ <avZvYlYyL3Doc8qt@hu-petche-lv.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261113-hantro-multicore-v1-1-43811eea14c4@gmail.com>
-References: <20261113-hantro-multicore-v1-0-43811eea14c4@gmail.com>
-In-Reply-To: <20261113-hantro-multicore-v1-0-43811eea14c4@gmail.com>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- iommu@lists.linux.dev, 
- =?utf-8?q?Sven_P=C3=BCschel?= <s.pueschel@pengutronix.de>, 
- Detlev Casanova <detlev.casanova@collabora.com>, 
- Sergei Khomenkov <shomenkow@gmail.com>, 
- Arun Iyengar <aiyengar1990@gmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794608492; l=7068;
- i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=w6qJkiLCLbyhDjp75hGrho7FBAJ1tiuNlQsSG9pOWtI=;
- b=rYwXShfgTY/VH8fB0R1BuB/+cbigqnJMUZkaZ08g0Lt7UmROosTg5UQ5qv9WHrKpHlgc1OvVi
- 4DBeO39m2FmDCrGxq6OvY0bSM6zP6dZFqUppTlbzJ+NfgdDX1Cdjmt3
-X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
- pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
-X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
- auth_id=1480
-X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
+In-Reply-To: <avZvYlYyL3Doc8qt@hu-petche-lv.qualcomm.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.590.96
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261113_152004_414487_3F44477C 
+X-CRM114-Status: GOOD (  40.77  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,257 +77,184 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: aiyengar1990@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6830441817353893310=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Move the acquisition of the per-instance hardware resources (clocks,
-resets, registers, interrupts, runtime PM) out of hantro_probe() into
-hantro_hw_init()/hantro_hw_cleanup(), and the creation of the mem2mem,
-video and media devices into hantro_register_devices() and
-hantro_unregister_devices().
-
-This prepares for multi-core support, where every core needs its
-hardware set up, but only the main core registers the devices exposed to
-userspace, and only once all cores are known.
-
-No functional change intended.
-
-Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
----
- drivers/media/platform/verisilicon/hantro_drv.c | 158 +++++++++++++++---------
- 1 file changed, 101 insertions(+), 57 deletions(-)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 26e5d5547466..d02988fc19ae 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -1069,38 +1069,16 @@ static struct v4l2_m2m_dev *hantro_get_v4l2_m2m_dev(struct hantro_dev *vpu)
- 	return v4l2_m2m_init(&vpu_m2m_ops);
- }
- 
--static int hantro_probe(struct platform_device *pdev)
-+/*
-+ * Acquire and initialize the hardware resources of one VPU instance:
-+ * clocks, resets, registers, interrupts and runtime PM.
-+ */
-+static int hantro_hw_init(struct hantro_dev *vpu)
- {
--	const struct of_device_id *match;
--	struct hantro_dev *vpu;
-+	struct platform_device *pdev = vpu->pdev;
- 	int num_bases;
- 	int i, ret;
- 
--	vpu = devm_kzalloc(&pdev->dev, sizeof(*vpu), GFP_KERNEL);
--	if (!vpu)
--		return -ENOMEM;
--
--	vpu->dev = &pdev->dev;
--	vpu->pdev = pdev;
--	mutex_init(&vpu->vpu_mutex);
--	spin_lock_init(&vpu->irqlock);
--
--	match = of_match_node(of_hantro_match, pdev->dev.of_node);
--	vpu->variant = match->data;
--
--	ret = hantro_disable_multicore(vpu);
--	if (ret)
--		return ret;
--
--	/*
--	 * Support for nxp,imx8mq-vpu is kept for backwards compatibility
--	 * but it's deprecated. Please update your DTS file to use
--	 * nxp,imx8mq-vpu-g1 or nxp,imx8mq-vpu-g2 instead.
--	 */
--	if (of_device_is_compatible(pdev->dev.of_node, "nxp,imx8mq-vpu"))
--		dev_warn(&pdev->dev, "%s compatible is deprecated\n",
--			 match->compatible);
--
- 	INIT_DELAYED_WORK(&vpu->watchdog_work, hantro_watchdog);
- 
- 	vpu->clocks = devm_kcalloc(&pdev->dev, vpu->variant->num_clocks,
-@@ -1213,18 +1191,39 @@ static int hantro_probe(struct platform_device *pdev)
- 		goto err_pm_disable_assert_reset;
- 	}
- 
--	ret = v4l2_device_register(&pdev->dev, &vpu->v4l2_dev);
--	if (ret) {
--		dev_err(&pdev->dev, "Failed to register v4l2 device\n");
--		goto err_clk_unprepare;
--	}
--	platform_set_drvdata(pdev, vpu);
-+	return 0;
-+
-+err_pm_disable_assert_reset:
-+	pm_runtime_dont_use_autosuspend(vpu->dev);
-+	pm_runtime_disable(vpu->dev);
-+	reset_control_assert(vpu->resets);
-+	return ret;
-+err_pm_disable:
-+	pm_runtime_dont_use_autosuspend(vpu->dev);
-+	pm_runtime_disable(vpu->dev);
-+	return ret;
-+}
-+
-+static void hantro_hw_cleanup(struct hantro_dev *vpu)
-+{
-+	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
-+	pm_runtime_dont_use_autosuspend(vpu->dev);
-+	pm_runtime_disable(vpu->dev);
-+	reset_control_assert(vpu->resets);
-+}
-+
-+/*
-+ * Create the mem2mem device and register the video and media devices that
-+ * expose the VPU to userspace. The v4l2_device must already be registered.
-+ */
-+static int hantro_register_devices(struct hantro_dev *vpu)
-+{
-+	int ret;
- 
- 	vpu->m2m_dev = hantro_get_v4l2_m2m_dev(vpu);
- 	if (IS_ERR(vpu->m2m_dev)) {
- 		v4l2_err(&vpu->v4l2_dev, "Failed to init mem2mem device\n");
--		ret = PTR_ERR(vpu->m2m_dev);
--		goto err_v4l2_unreg;
-+		return PTR_ERR(vpu->m2m_dev);
- 	}
- 
- 	vpu->mdev.dev = vpu->dev;
-@@ -1235,13 +1234,13 @@ static int hantro_probe(struct platform_device *pdev)
- 
- 	ret = hantro_add_enc_func(vpu);
- 	if (ret) {
--		dev_err(&pdev->dev, "Failed to register encoder\n");
-+		dev_err(vpu->dev, "Failed to register encoder\n");
- 		goto err_m2m_rel;
- 	}
- 
- 	ret = hantro_add_dec_func(vpu);
- 	if (ret) {
--		dev_err(&pdev->dev, "Failed to register decoder\n");
-+		dev_err(vpu->dev, "Failed to register decoder\n");
- 		goto err_rm_enc_func;
- 	}
- 
-@@ -1260,18 +1259,70 @@ static int hantro_probe(struct platform_device *pdev)
- err_m2m_rel:
- 	media_device_cleanup(&vpu->mdev);
- 	v4l2_m2m_put(vpu->m2m_dev);
-+	return ret;
-+}
-+
-+static void hantro_unregister_devices(struct hantro_dev *vpu)
-+{
-+	media_device_unregister(&vpu->mdev);
-+	hantro_remove_dec_func(vpu);
-+	hantro_remove_enc_func(vpu);
-+	media_device_cleanup(&vpu->mdev);
-+	v4l2_m2m_put(vpu->m2m_dev);
-+}
-+
-+static int hantro_probe(struct platform_device *pdev)
-+{
-+	const struct of_device_id *match;
-+	struct hantro_dev *vpu;
-+	int ret;
-+
-+	vpu = devm_kzalloc(&pdev->dev, sizeof(*vpu), GFP_KERNEL);
-+	if (!vpu)
-+		return -ENOMEM;
-+
-+	vpu->dev = &pdev->dev;
-+	vpu->pdev = pdev;
-+	mutex_init(&vpu->vpu_mutex);
-+	spin_lock_init(&vpu->irqlock);
-+
-+	match = of_match_node(of_hantro_match, pdev->dev.of_node);
-+	vpu->variant = match->data;
-+
-+	ret = hantro_disable_multicore(vpu);
-+	if (ret)
-+		return ret;
-+
-+	/*
-+	 * Support for nxp,imx8mq-vpu is kept for backwards compatibility
-+	 * but it's deprecated. Please update your DTS file to use
-+	 * nxp,imx8mq-vpu-g1 or nxp,imx8mq-vpu-g2 instead.
-+	 */
-+	if (of_device_is_compatible(pdev->dev.of_node, "nxp,imx8mq-vpu"))
-+		dev_warn(&pdev->dev, "%s compatible is deprecated\n",
-+			 match->compatible);
-+
-+	ret = hantro_hw_init(vpu);
-+	if (ret)
-+		return ret;
-+
-+	ret = v4l2_device_register(&pdev->dev, &vpu->v4l2_dev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to register v4l2 device\n");
-+		goto err_hw_cleanup;
-+	}
-+	platform_set_drvdata(pdev, vpu);
-+
-+	ret = hantro_register_devices(vpu);
-+	if (ret)
-+		goto err_v4l2_unreg;
-+
-+	return 0;
-+
- err_v4l2_unreg:
- 	v4l2_device_unregister(&vpu->v4l2_dev);
--err_clk_unprepare:
--	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
--err_pm_disable_assert_reset:
--	pm_runtime_dont_use_autosuspend(vpu->dev);
--	pm_runtime_disable(vpu->dev);
--	reset_control_assert(vpu->resets);
--	return ret;
--err_pm_disable:
--	pm_runtime_dont_use_autosuspend(vpu->dev);
--	pm_runtime_disable(vpu->dev);
-+err_hw_cleanup:
-+	hantro_hw_cleanup(vpu);
- 	return ret;
- }
- 
-@@ -1281,16 +1332,9 @@ static void hantro_remove(struct platform_device *pdev)
- 
- 	v4l2_info(&vpu->v4l2_dev, "Removing %s\n", pdev->name);
- 
--	media_device_unregister(&vpu->mdev);
--	hantro_remove_dec_func(vpu);
--	hantro_remove_enc_func(vpu);
--	media_device_cleanup(&vpu->mdev);
--	v4l2_m2m_put(vpu->m2m_dev);
-+	hantro_unregister_devices(vpu);
- 	v4l2_device_unregister(&vpu->v4l2_dev);
--	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
--	pm_runtime_dont_use_autosuspend(vpu->dev);
--	pm_runtime_disable(vpu->dev);
--	reset_control_assert(vpu->resets);
-+	hantro_hw_cleanup(vpu);
- }
- 
- static int hantro_runtime_resume(struct device *dev)
-
--- 
-2.55.0
+--===============6830441817353893310==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="y273ql62b2nj3j4n"
+Content-Disposition: inline
 
 
+--y273ql62b2nj3j4n
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v18 0/7] usb: dwc3: introduce Rockchip glue driver
+MIME-Version: 1.0
+
+Hi,
+
+On Thu, Nov 12, 2026 at 06:01:06PM -0800, Peter Chen wrote:
+> On 26-10-21 20:05:25, Sebastian Reichel wrote:
+> > - drop generic PHY reset notifier API; I discussed this series at Linux
+> >   Plumbers Conference with Vinod Koul and he prefers a local driver
+> >   hack/quirk instead
+>=20
+> Hi Sebastian and Vinod,
+>=20
+> Sorry to jump out late, do we really decide to use private callback betwe=
+en
+> USB controller and USB Combo PHY, and notify PHY's reset events for
+> controller? Many platforms which support USB/DP altmode feature need this
+> requirement, besides Rockchip, Qualcomm and the platforms use Cadence USB
+> controller and PHY also need this.
+>=20
+> For this scenario, USB controller works at USB3 mode (also configures PHY=
+ for
+> USB3) first. Later, Type-C/DP event tells PHY that it needs to work for D=
+P(4lane),
+> since this event doesn't go to controller now, sudden switch PHY from USB3
+> to DP (4lane) will turn off PIPE clock, and cause all controller's event =
+which
+> needs PHY (PIPE) clock abnormal, that's the reason why controller needs
+> this PHY switch (reset) notification and let the controller know it needs
+> to work at USB2 mode from now on.
+
+This is similar to the Rockchip requirements. But the issue is
+partially covered within the PHY by muxing the clock differently
+(which is also somewhat of a hack, as common clock framework is not
+aware of this). FWIW I expected more platforms to run into this over
+time. Having combined PHYs for USB-C handling makes a lot of sense.
+
+But I think it makes sense to proceed with this considering it is a
+Fix. It has been going on for a very long time already and meanwhile
+the problem is already there right now. Moving this from the
+internal custom API to an official API is always possible as a
+follow-up - it's all within the kernel, neither DT nor userspace ABI
+is involved. Also having some users makes it easy to figure out how
+the common API should look like.
+
+Greetings,
+
+-- Sebastian
+
+>=20
+> So, it is more like a general requirement, but not quirk for special plat=
+form.
+>=20
+> Peter
+>=20
+> > - rework USBDP and DWC3 rockchip glue for the local driver quirk
+> >   using direct function calls
+> > - Ensure that the reset handler in DWC3 is only called when the PHY is
+> >   initialized (and thus DWC3 is running)
+> > - Also set vbus in the last patch when dwc3 is configured to device only
+> >   mode (in contrast to dual-role mode being in device mode).
+> >=20
+> > Changes in v16:
+> > - Link to v15 (sorry, I missed force setting the revision for this
+> >   part in the series split, so the series says v1 in the patch subject):
+> >   https://patch.msgid.link/20260915-b4-rockchip-dwc3-rockchip-glue-v1-0=
+-763bb546824e@collabora.com
+> > - Update first patch to also build the PM functions even when
+> >   PM is disabled
+> > - Add new patch for defining an empty usb_udc_vbus_handler stub
+> >   when USB_GADGET is disabled
+> > - Add dependency to Rockchip DWC3 glue, which disallows the
+> >   configuration with USB_DWC3_ROCKCHIP=3Dy and USB_GADGET=3Dm
+> > - Collect tags
+> >=20
+> > Changes in v15:
+> >  - Link to v14: https://patch.msgid.link/20260813-rockchip-usbdp-cleanu=
+p-v14-0-b5ad9c68fa11@collabora.com
+> >  - Avoid #ifdef for CONFIG_PM in the new glue driver (Thinh Nguyen)
+> >  - Do not add #if IS_ENABLED around the DT compatible blacklist in the
+> >    generic driver, using the glue driver should be mandatory as the
+> >    generic driver results in arbitrary system hangs. Thinh Nguyen sugge=
+sted
+> >    updating Kconfig for this, but did not clarify what that means.
+> >    Current Kconfig works the same way as the other mandatory glue
+> >    drivers.
+> >  - Split series to simplify review
+> >=20
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > ---
+> > Sebastian Reichel (7):
+> >       phy: rockchip: usbdp: Track PHY power state
+> >       phy: rockchip: usbdp: Add reset hook support for dwc3
+> >       usb: dwc3: rockchip: introduce glue driver
+> >       usb: dwc3: core: add post PHY registration hook for platform glue
+> >       usb: dwc3: rockchip: add USBDP PHY reset quirk
+> >       usb: gadget: define stub for usb_udc_vbus_handler
+> >       usb: dwc3: rockchip: fix USB-C reconnect in gadget mode
+> >=20
+> >  drivers/phy/rockchip/phy-rockchip-usbdp.c |  82 ++++++++++-
+> >  drivers/usb/dwc3/Kconfig                  |  13 ++
+> >  drivers/usb/dwc3/Makefile                 |   1 +
+> >  drivers/usb/dwc3/core.c                   |  17 ++-
+> >  drivers/usb/dwc3/core.h                   |   9 ++
+> >  drivers/usb/dwc3/dwc3-rockchip.c          | 227 ++++++++++++++++++++++=
+++++++++
+> >  drivers/usb/dwc3/trace.c                  |   3 +
+> >  include/linux/phy/rockchip-usbdp.h        |  31 ++++
+> >  include/linux/usb/gadget.h                |   5 +
+> >  9 files changed, 383 insertions(+), 5 deletions(-)
+> > ---
+> > base-commit: 8f56fdf3d8cb9f1dbdc93bf9ac816698aa6f70b7
+> > change-id: 20260914-b4-rockchip-dwc3-rockchip-glue-979ea3735d43
+> >=20
+> > Best regards,
+> > -- =20
+> > Sebastian Reichel <sebastian.reichel@collabora.com>
+> >=20
+> >=20
+>=20
+> --=20
+>=20
+> Thanks,
+> Peter Chen
+
+--y273ql62b2nj3j4n
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmr3mwoACgkQ2O7X88g7
++pragA/9FzXXAxsGqNAe5lp4EQDO7Y3egVEb59vzkimcTXPurGE/l4kePSGKJAg4
+MWxXZ1F9OXKrbef+ruuzAE0SpV0QedcA+VFhgxMsB68j37twnkngzmpEiESkyNHR
+/QPiUk0KYTqZyYDSeGmmvUiJWSyOLouIKKPs+hSxJ9CuLdF2+agbPuL7aNRcRK3t
+6HQX6nM1QlcCXoLXhUo57rtplRGngj3l4HAGxrcptCTY6mRAt4gyiFg7cBUB6BNS
+noUZ+GL1sW1wdFB9BMtRoR+ghTir5i+PQpy0TKx/TeEY4WVriTI0j4DCDnIFbpGw
+PxRph0W+C6x+Am65L/LC4wBcL5yhlgNJCJeg+RXK7YJPGZTn5vX1VHUhiRa6wXCJ
+3h8lHZJigfiiGEPbMUvgB+hHCdJBRVCiR7lu8GMS1thwcpcN87x+x7immvgG+sk/
+62Z6mrGVy1ANECRBuNicQ68Nge0HKv6Ea2j1a3Ql1k5ZO8OSe9SZi3qutYUKtGtG
+vk/w+ANGpGKbD3nnHQFLTywivg1ygndoOPVqrTGGWsRFY6yglkm4EvEndMe2khFe
+zaTBuIg63ivrqZ0EQ9kV1vmSHWxgRRgxLK44pjzxCWeoOX3B6ilfEsDSLHoKtAac
+gAUXovjWlFWb6IRTtUtoQsbY5C6HraVIwxniPSO1cuoZx0QFmk8=
+=xdRH
+-----END PGP SIGNATURE-----
+
+--y273ql62b2nj3j4n--
+
+
+--===============6830441817353893310==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6830441817353893310==--
+
