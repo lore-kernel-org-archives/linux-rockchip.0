@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 02F5A606A323
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:41:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1ACE2606A883
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:41:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=snj5raFQ;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=iOdpoGbC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zaaKqiB+;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=aOpfZLNA
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=My5+chfVSPUA9bZrWUUOuUovOBo5PZlfEmgnyIXHQhM=; b=snj5raFQGGcSC5jPoATgb9eJ9J
-	o5E2TlGsTZD9FDJUO1USJ/clKW+Uy2NApBWhZaxnJjTofa6DuqkwtZ/vIhnqzngvoAKTwQoVnLwld
-	qWmzCHMWW+LeaGHtPe+fvWzJ2BdhoCcFUwQR0AzMPV/w2/cpNy5gBPD9DfDiKYx9drvpeH4VN77Ry
-	RVx1I0G2jQVN8WgQ76bXHAeQCbgJp1g13P/nawBLDPEB+xGTDfnJZGZI8dUHZRIBz+k1zoJstXawp
-	+/GTiVej9JEUgl5jb6nYFbGqcWu3LrK8sg2cqPvD99mGbz12qP4BCvQ8GoGTyltnnMf0nScoCh4C1
-	kdGbqy4w==;
+	bh=vfjKVEqSjVOaob5UzWIIZByIYC3SXAHh1QVPLayGdeg=; b=zaaKqiB+bXUa9CEhxNjBVzlBpP
+	prZKq290qfY4QSizWNjrkLENNPAdiBXV3pFuO5v/lIR9fCJHIO5AGUjaeAXYCFtXLJnVzah00VfN+
+	JCHmxLpkq5vBDAwgxaE6zj91idD7OX+tMWva2jEW1GH+aZl5D9bJjKx5eCwSqy1nvJ5Up0ypVeWx1
+	1c3/7V6mTBkz9GxpcjnQM2tufCddaOhtLTOvHMqjrd4hCdNUFqZZJ/kock2MONXtaTmuhJOb2G0nf
+	RiAaQZT0u4vhRIbG9yAHJ7SLouGEdtZv/hrQWQr2244m/gV2kp1QXTfY9d1ZqYh421uy1Fl1fgXz+
+	FgC2p3eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuKu-0000000DbNo-0Zuo;
-	Fri, 13 Nov 2026 16:41:12 +0000
+	id 1xRuKy-0000000DbSH-2THb;
+	Fri, 13 Nov 2026 16:41:16 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuKJ-0000000DawF-2ktZ;
-	Fri, 13 Nov 2026 16:40:35 +0000
+	id 1xRuKK-0000000Dax3-2Ub8;
+	Fri, 13 Nov 2026 16:40:36 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1DF6362930;
-	Fri, 13 Nov 2026 16:40:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0EC6B628D4;
+	Fri, 13 Nov 2026 16:40:36 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794588034;
-	b=l37SEBs+uLM29R5ut4AZ7y2KIjgKzKOm+roY9W4tFmcNVBm33Q725RjsovO52mXYo3er
-	 9E2S6vitYhxZUT97zxnusU2vFgyOVoif9Q7SUEaxpBzG+1RzM25oEV3UQ6mDCSyGyOyLs
-	 ixWa8Aeny6h6AR2S/TxDINGFJHvWF1HnUMji3oE8LwMtmIH5Qq4nczdKOVBiUfF5mdvEy
-	 AZJ4WIDdcOk2GD7VB90G6Y3ryJOiG0Va19YtQcit5bpARAGfqJ+IGeOPV1zPcB/1HNatf
-	 cRghXsWubc1wvrYmYFrUYahPQsnW33cxHNPbrqru7nFnPPWQFN0jogwFaTJGm4BudwQ==
+	t=1794588035;
+	b=qrAU3FLkhEyPBnaNKdTSnecs8bkj4iMGBqXvLxNN+MDkMhnUd238VkzzIpszASOmrLIb
+	 UEmQliIyqNXJjUiTbprSOQxRTnZ9biad/prvE01tHUkCZNCyU0fMsHQH3VIz0evSCEP1w
+	 lp5Ea0cE/vpoa0Xe6HiGAKAhmpiOD1fDCJx+TSxDu8XikeFOcwLsXQW7ZIT21X77wzpOf
+	 roARRTs8JqNUhEGjm/Rn2U07JPgyyQFL2xbL5RO+BR2Xihr3CkXj5tLM9QupkdupemkHa
+	 uvw8AdJZPc6I/TSVz1/1u7Yd6N1/EU37ROv48cHCteUucKMHUegQ3JpZ2JsB9v+5bCg==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794588034;
+	c=relaxed/relaxed; t=1794588035;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=IIcORSMCHHPaaM/EomqXjuMSf3vKl+5Nk3vSHMLuEVI=;
-	b=Aq0UCJTIaIZmwxYlD5w3waH8KPIOooqAZlwYFl2mRyMbstn8VSRp0/VRyj5oQSnub7O2
-	 gHs4MrN+EAAtVtBKr8HyxI73hxiVXsX2E/S9ppcMO7U4ORqwF2/MOK1hO6oz377++ViT7
-	 D0e6FAUU61duGBLIHcmBYX/Be5gFIz7tUepKtu3Svj/AWBWr8lKm1SXcIFTfk8KsT+meM
-	 KKhkME++JP1xJO6sc3Q8/dYbfD/7oC2Zg79zUMF2NfXACiLHmBN02YqtKkEutdfgBPWCO
-	 IvwzWAtWlOdvGALyLimzvbpK9lcbnPJA0DWoUPVXSDTOAPVs4DaaNVb0VtPoZ0xqoHg==
+	bh=duaSgK5diYqNhsVVmsc0RbAG9oAaNnkgjzWifl8mDlg=;
+	b=16xPJOTpoONspMCw7SLyChltXW7T+iCNY9TpGVHGv7bfsqdAQ5ka9GCa5unDxX4kRn7n
+	 P16U1Rp3sa+Z/bf6rXIcmr8Sfu28tsIPyK1CoCE56k+CIkll+Me8ZUKmpo+68HeI4eR1j
+	 kp5QnGTT0+/QyUcl+7H/c1JNQoSmyvWld51Uql1H7YqPPnbTSdqUBQhIGoSNzqQSSg741
+	 MzDA8BdFZxbWsS1VGTY3jvaUHylGoz6/Iw287eToL93HzpzYVQm8pRntdPi0IJknN1pHL
+	 3m0pwBd07nC3ALVb+xalcXPwJdJ2z8INeA1tmqsvc98E6ZrF14XYf06bcyA/hAPZofA==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 747661F000C9;
+	by smtp.kernel.org (Postfix) with ESMTPS id 44BDC1F000C6;
 	Fri, 13 Nov 2026 16:40:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794588034;
-	bh=IIcORSMCHHPaaM/EomqXjuMSf3vKl+5Nk3vSHMLuEVI=;
+	s=k20260515; t=1794588035;
+	bh=duaSgK5diYqNhsVVmsc0RbAG9oAaNnkgjzWifl8mDlg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=iOdpoGbCGEiHaRmCdZAjmnLFzoWobWqj1FPsRaz7zfHFEukg28xV3hnXu2hOXBc0g
-	 3AqdC7mL5J4lqb2uCjIvN7C5IjBrVcofyCTPNteQU8h2cx4RR8MNdoKYsWw4pas29t
-	 JpYgWvvl30BodLDlUtafWcKeTJGJ2yStB0V6I/oetRlEeWiqxyX9LHqvlyq9UE2gyO
-	 izDnP9OorjV40GR+TACFupdPJdvjhZjga3b05EcxOX9WayW20TebZwKlOvWXw+vnZ/
-	 bPxuc32Ba/Xl/fEX5MIigMmVY3Ab/fjTGvq6olr3FmAHPXDA350PL71YI8i9cAvaQ+
-	 2tCKPRIHd37xQ==
+	b=aOpfZLNAqPDgdsVQLWfibmOde6PcXaMcHCp8aPXc4VDsLgYbyCTM4OXgvSTUgdbtH
+	 UFXwokyuCOlH6zdeH6Cq7dYy90anJAx9Dg+c8usbwiPUcGxC0wDFZ4vuNCsuXTo5Y9
+	 Dqiwy9kMJ3jUs348qa1Dch/9A6FKN4djpYOB4JqjIFaOYXog2do7XN/WUegkplO9Tu
+	 tQ3s1g2INnMyHF5MIYMTW9Ag6+HRYwbm9z3jQoKvNAJrPJ8GT3Z7lQk/8plmod81ie
+	 DvgV6hKcA4v/zKOlLvVI5qxN2BfjdXFBhoyWJLGa/3kFZGuujOGg6KyXpT4QdFsKhF
+	 eOcJMzBXrWZQg==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 0541A499E3;
-	Fri, 13 Nov 2026 16:40:33 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id C9760499DB;
+	Fri, 13 Nov 2026 16:40:32 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Fri, 13 Nov 2026 16:40:35 +0000
-Subject: [PATCH v3 04/12] media: verisilicon: Don't hold the VPU in reset
- after remove
+Date: Fri, 13 Nov 2026 16:40:33 +0000
+Subject: [PATCH v3 02/12] media: verisilicon: Check the match data in
+ hantro_probe()
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261113-hantro-robust-v3-4-82383c722ad2@gmail.com>
+Message-Id: <20261113-hantro-robust-v3-2-82383c722ad2@gmail.com>
 References: <20261113-hantro-robust-v3-0-82383c722ad2@gmail.com>
 In-Reply-To: <20261113-hantro-robust-v3-0-82383c722ad2@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
@@ -100,13 +100,13 @@ Cc: linux-media@vger.kernel.org, iommu@lists.linux.dev,
  Sergei Khomenkov <shomenkow@gmail.com>, 
  Tharit Tangkijwanichakul <tharitt97@gmail.com>, 
  Sascha Hauer <s.hauer@pengutronix.de>, 
- Arun Iyengar <aiyengar1990@gmail.com>, stable@vger.kernel.org
+ Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794588032; l=3070;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794588032; l=2017;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=423gUTaQDvX29zH2dozaJwYSRoYQI88efAs7A7ebRKw=;
- b=tK9mQBxdWRV/qXhq69U7Id832ZFNjel5ug1ZPyHSDNSzD1jaelBWFjauAfPUIZdm2DvMYlri7
- cZ8ygCe4PpQA6cWZfiuh03rbalK2SrvLh5ZOzcYkXnSeUwuBSY/boA6
+ bh=USarBI/8QLSUU7n4QQXOd3oICBoakGw0nlmY2gPzpAo=;
+ b=VHn9biPtTSPgjKSK+LlZtbRsJG7aomHpah4FtXX6wvlrtziNtNDasva9saf6Y9Yd21xb7URUY
+ Kjqx/X9W7idCWs6uQxrP6bjU0Ed9vIN+cDEtGVVGMiPaQ5Mq44mzyFX
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -135,78 +135,58 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-On the RK3588, the resets of the AV1 decoder include the AXI and APB
-bus interface resets (SRST_A_AV1_BIU, SRST_P_AV1_BIU), which also cover
-the Verisilicon IOMMU of the decoder. When the driver is unbound, the
-driver core runtime resumes the device and, through the runtime PM
-device link, its IOMMU. hantro_remove() then asserts the resets, and
-when the IOMMU autosuspends 100 ms later, vsi_iommu_suspend() writes to
-its registers while they are held in reset, which raises an SError and
-panics the system:
+A device bound through driver_override may have no OF match, and
+hantro_probe() then dereferences a NULL match. Use
+device_get_match_data() and fail with -ENODEV without match data.
 
-  SError Interrupt on CPU4, code 0x00000000be000411 -- SError
-  Workqueue: pm pm_runtime_work
-  Call trace:
-   clk_disable+0x30/0x90 (P)
-   clk_bulk_disable+0x44/0x90
-   vsi_iommu_suspend+0x4c/0xc8 [vsi_iommu]
-   pm_generic_runtime_suspend+0x38/0x80
-   genpd_runtime_suspend+0xc4/0x348
-   ...
-  Kernel panic - not syncing: Asynchronous SError Interrupt
-
-Hit when reloading the module.
-
-Commit 8e26d4c20ed2 ("media: hantro: disable runtime PM before hardware
-teardown") moved the assert after the runtime PM teardown because
-powering the domain off faulted on it. With the resets left asserted,
-the domain is still powered on for the next bind, and off after a
-failed probe, in that state.
-
-A runtime suspended VPU has its resets deasserted and its clocks off.
-Leave it in that state on remove and on the probe error path instead of
-asserting the resets.
-
-Fixes: ea71631b7129 ("media: hantro: add support for reset lines")
-Cc: stable@vger.kernel.org
+Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- drivers/media/platform/verisilicon/hantro_drv.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+ drivers/media/platform/verisilicon/hantro_drv.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 42822b2b376c..daec9f1ea968 100644
+index 26e5d5547466..e86eb943d16a 100644
 --- a/drivers/media/platform/verisilicon/hantro_drv.c
 +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -1214,7 +1214,7 @@ static int hantro_probe(struct platform_device *pdev)
- 	ret = clk_bulk_prepare(vpu->variant->num_clocks, vpu->clocks);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to prepare clocks\n");
--		goto err_pm_disable_assert_reset;
-+		goto err_pm_disable;
- 	}
+@@ -17,6 +17,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/pm.h>
+ #include <linux/pm_runtime.h>
++#include <linux/property.h>
+ #include <linux/slab.h>
+ #include <linux/videodev2.h>
+ #include <linux/workqueue.h>
+@@ -1071,7 +1072,6 @@ static struct v4l2_m2m_dev *hantro_get_v4l2_m2m_dev(struct hantro_dev *vpu)
  
- 	ret = v4l2_device_register(&pdev->dev, &vpu->v4l2_dev);
-@@ -1268,11 +1268,6 @@ static int hantro_probe(struct platform_device *pdev)
- 	v4l2_device_unregister(&vpu->v4l2_dev);
- err_clk_unprepare:
- 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
--err_pm_disable_assert_reset:
--	pm_runtime_dont_use_autosuspend(vpu->dev);
--	pm_runtime_disable(vpu->dev);
--	reset_control_assert(vpu->resets);
--	return ret;
- err_pm_disable:
- 	pm_runtime_dont_use_autosuspend(vpu->dev);
- 	pm_runtime_disable(vpu->dev);
-@@ -1294,7 +1289,6 @@ static void hantro_remove(struct platform_device *pdev)
- 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
- 	pm_runtime_dont_use_autosuspend(vpu->dev);
- 	pm_runtime_disable(vpu->dev);
--	reset_control_assert(vpu->resets);
- }
+ static int hantro_probe(struct platform_device *pdev)
+ {
+-	const struct of_device_id *match;
+ 	struct hantro_dev *vpu;
+ 	int num_bases;
+ 	int i, ret;
+@@ -1085,8 +1085,9 @@ static int hantro_probe(struct platform_device *pdev)
+ 	mutex_init(&vpu->vpu_mutex);
+ 	spin_lock_init(&vpu->irqlock);
  
- static int hantro_runtime_resume(struct device *dev)
+-	match = of_match_node(of_hantro_match, pdev->dev.of_node);
+-	vpu->variant = match->data;
++	vpu->variant = device_get_match_data(&pdev->dev);
++	if (!vpu->variant)
++		return -ENODEV;
+ 
+ 	ret = hantro_disable_multicore(vpu);
+ 	if (ret)
+@@ -1098,8 +1099,7 @@ static int hantro_probe(struct platform_device *pdev)
+ 	 * nxp,imx8mq-vpu-g1 or nxp,imx8mq-vpu-g2 instead.
+ 	 */
+ 	if (of_device_is_compatible(pdev->dev.of_node, "nxp,imx8mq-vpu"))
+-		dev_warn(&pdev->dev, "%s compatible is deprecated\n",
+-			 match->compatible);
++		dev_warn(&pdev->dev, "nxp,imx8mq-vpu compatible is deprecated\n");
+ 
+ 	INIT_DELAYED_WORK(&vpu->watchdog_work, hantro_watchdog);
+ 
 
 -- 
 2.55.0
