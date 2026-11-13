@@ -2,75 +2,110 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C6F15606A323
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 15:42:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 36BFB60A6F79
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:38:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fz99P7KJ;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=nFxA6vUo
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Uf6eKd5d;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=EkXsh9bZ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=EIIL94buj5EoTpLZzuNkIUnmwn1Jyksj4He1BpcHees=; b=fz99P7KJZxXTS3nTAUwlMq3wAT
-	ZZlankTZ58kXTWX8gbtpjkTofzn4KiKVRLeviK+7+FBH/S3n9nY9l11Md4b79Ztg+qsKmy1rT40Kh
-	Q17XgDgSV1HjHu1KFJzHgYdXFS634+C7HDvv59KpzSdMsgh65j1eI1nkkNTIFEyZeqst53rxSfkLF
-	uvrgG4HHcF8kkVp/5ED2PvRrDaqLrwRqvb2UgI6E2lxh+wdDXvoHVMPz+XjZmcdp6IjM1AQ3lkrER
-	mCygDbLUhbApEYFuRkOlYMppZsFdUZ8CL00aF07Br1wIDJ0/IAvKtaIRJ2gWhk+68+peOl8tR4v4u
-	fyiT1YNw==;
+	bh=zFUQRIa3qCS7CeVepRjc1+Ew8E2EulJIZ4cODUA1W/A=; b=Uf6eKd5duH/3lLLqqbnmueKDCW
+	YLY1yXwUtUykRP1rt7UfGcZ1PXEZVv5Y+fYtjZ/e/h5N1qUChBm3NKyyC/lF79KdwJKjz3UGuxPye
+	C/n6i7exJwIqalaUCkF0H8DoP3wAu93zLBI1ZnqMeOUlfALoNl8WU53NTxZ+Zwz9srqdYyqRHzyod
+	jTdcmS3wIZaYTZoJLHRw5M9Aj4sR8scfdkycmGqIdzCXcBw8j3Lg2RMvTIGxpOEmpQI/UjifM0oIQ
+	U6N8PCmmIdXJNwxAqPyMMsgn9DWgDlri9+sRasMf66AgXDU3Hv/p0ofsHVlPzbqQFqOt3m44wcS+E
+	rs62pvjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRtPz-0000000DQgk-0MJI;
-	Fri, 13 Nov 2026 15:42:23 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1xRuIe-0000000DZBk-2yeJ;
+	Fri, 13 Nov 2026 16:38:52 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRtPt-0000000DQeh-0RDD
-	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Nov 2026 15:42:19 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 0E5F64E415A7;
-	Fri, 13 Nov 2026 15:42:13 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id C707360015;
-	Fri, 13 Nov 2026 15:42:12 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 216FA11BC11E7;
-	Fri, 13 Nov 2026 16:41:57 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1794584527; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=rHB1s2IjKO7bwiIKX5FWkoy/jmzbxhzjzTrvBEzLn5E=;
-	b=nFxA6vUoH0x4DTtoCgCXxJmVcI3pdkHLUk/3kmd7oD/49D39QXUjVuJLZLwTecCZkhIcNl
-	PXCqJZXRvM/0ZP12N5JH5FNHiMRoDWR+gPyByVcVZ6HeiMGWoCNIkCLClvZFEwvruvfKI9
-	ZzDTRQoYOrCsfLu8mtNiKhKFbw6z1FlP5h2DnU/dTUgLuHPXxJazAMbnatXFvaqOOqF2Ah
-	DZEReUJk6f4zc6HkVPom4VPQXb74rha0hpB6vWrFE/6v199j1bALFfj54wht54zFUYswX2
-	SvwVzQBX6uUjEBLD4nfOUhIiIHGHUp0/Tlb2FwSbVdwqlImG9cF39sUgOlkdvw==
+	id 1xRuIc-0000000DZ9i-2Svk;
+	Fri, 13 Nov 2026 16:38:50 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1EE664358D;
+	Fri, 13 Nov 2026 16:38:50 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794587930;
+	b=BXFvbf5uDGqNmWTVEps7Z8GHnyTRgnWtRh9DLhvT+VrYC9jasEPWOsSaul2Jh1l3ftOV
+	 YuFPypGtMNQxpJRiKbSO2gAmYgpHEGaghj7ZYQB1J1I9IvyNFI9wE8uLTWptCG7OVbQ+O
+	 myMDKe9E+7L6RSZtekKmrmRAhCr5Np7lEi/9o47AKAsxIDIteljFDDV36ACEQm06NYAZ4
+	 aZlaNhxDP8aRtd52gqcLsk6F9zUp2oxskU/QKmRsmi3pmfATNaJxZW/+bKNqPVZr0GXpy
+	 CwNICwJ/UDSLMYXuVXk8Mvr8FMVMmjA+f2Ahpwlq7I8v48e5OEsU5qsJwc3FMPrZcnA==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794587930;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=sMSQ+avg+iqG/IQkttcCunKx1tc/rZHgiCheJcioyCQ=;
+	b=DMNN18EFcn1Sj3ORchYzYT6+l8L9ZPSfHyk/MUJ4hlAHyNkHa7cR56WPbfTN7VduqZk8
+	 qOX7rScliWOEpFCxpcy8GXUNCvGbdplxHQzhZXHTEAS6//rAPxV01XrE6mcPx2x1jsCA/
+	 xvEqveKSVew4hDAKFZ0yfrOPLi59wnyiek+nS0twM7DDbeRscch9vWwxEYOnJ9Q9tB68L
+	 AZwjWpIzNlHjYNrlfRTSRUgl8bnFrDoxaInY4HmfhV5PEADHIMvBg5CcNIg3tXFG8ufcS
+	 f34WKNbKGE9l+Ya6fgyIy6bl5FvmEezrsRgpYX62uKFh4pxqUAKt+NVu4+maD9vxLhg==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id E5F781F000C6;
+	Fri, 13 Nov 2026 16:38:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794587930;
+	bh=sMSQ+avg+iqG/IQkttcCunKx1tc/rZHgiCheJcioyCQ=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=EkXsh9bZDseRe9miJMAbztnsJErnPjuvTS7FVcixPr8rygs6RuTFAvP2yuddFdpFF
+	 Qfd3fXmcIUz+h0e0aZMfIpxtUiWaS0x+F313bW8X2Fn+KAxE6Bs9StExEMorzKGeDo
+	 IcsIW4IlNQ5NatojYDWa40/614WkiWvwruFTkKDKH9D/Weflt8PKNYXcqjLsmq4R1U
+	 FMPtZxTSg8O6AqCbcunnnlmoN8g9P0YR34RcA6I5UGP7IVI7JQH6l+L91Bx3jugrpl
+	 a1kisrweRNM5cwwi0ByfLU0jayJv+zKN3LbsRdgebqhXAY3d2w+uXZUJb9URKgximy
+	 eJVMSDtULXgVw==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 72D1E49996;
+	Fri, 13 Nov 2026 16:38:48 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Date: Fri, 13 Nov 2026 16:38:48 +0000
+Subject: [PATCH 2/9] dt-bindings: ata: rockchip,dwc-ahci: Allow iommus
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0
-Date: Fri, 13 Nov 2026 16:41:56 +0100
-Message-Id: <DMU749TMB523.3OCGPYVI4NZDU@bootlin.com>
-Subject: Re: [PATCH v3] drm/bridge: analogix_dp: use devm_phy_optional_get()
- for the DP PHY
-Cc: <Laurent.pinchart@ideasonboard.com>, <airlied@gmail.com>,
- <andrzej.hajda@intel.com>, <dri-devel@lists.freedesktop.org>,
- <heiko@sntech.de>, <jernej.skrabec@gmail.com>, <jonas@kwiboo.se>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>, <luca.ceresoli@bootlin.com>,
- <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
- <neil.armstrong@linaro.org>, <rfoss@kernel.org>, <simona@ffwll.ch>,
- <tzimmermann@suse.de>
-To: "Jun Yan" <jerrysteve1101@gmail.com>, <damon.ding@rock-chips.com>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-X-Mailer: aerc 0.22.0
-References: <385a67f0-e5cd-4dba-9b9c-5b766462c6c0@rock-chips.com>
- <20261113131248.2804840-1-jerrysteve1101@gmail.com>
-In-Reply-To: <20261113131248.2804840-1-jerrysteve1101@gmail.com>
-X-Last-TLS-Session-Version: TLSv1.3
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_074217_291708_F3AF1C63 
-X-CRM114-Status: GOOD (  16.72  )
-X-Spam-Score: -2.1 (--)
+MIME-Version: 1.0
+Message-Id: <20261113-mmu600-php-v1-2-231196049a3b@gmail.com>
+References: <20261113-mmu600-php-v1-0-231196049a3b@gmail.com>
+In-Reply-To: <20261113-mmu600-php-v1-0-231196049a3b@gmail.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ David Wu <david.wu@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>, 
+ Niklas Cassel <cassel@kernel.org>, Serge Semin <fancer.lancer@gmail.com>, 
+ netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, 
+ Pranjal Shrivastava <praan@google.com>, Will Deacon <will@kernel.org>, 
+ Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev, 
+ Shawn Lin <shawn.lin@rock-chips.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Arun Iyengar <aiyengar1990@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794587927; l=768;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=isSOzqim4au9wHe7ayRhl/SLN2i9x9Bd32HMuVeTIQM=;
+ b=f6Y3AcMeSBLf/zykfhiJs5LybaevPurozLoFXlFNqhejoU33A3G1MjYQNWi1Mb5O1U8Ymvg19
+ B/YuuGiVKViCq0yib6lm2auaQC3rhJ4p7/Hv04UMNTk54hvSQsIEhip
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,65 +115,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hello,
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-On Fri Nov 13, 2026 at 2:12 PM CET, Jun Yan wrote:
-> Hi Damon,
->
->> You are right, this is really a valid concern.
->>
->> If CONFIG_GENERIC_PHY is disabled, the old code could still proceed and
->> keep the driver probing, while the new version would return an error
->> directly.
->
-> -ENOSYS can only come from the !CONFIG_GENERIC_PHY stubs in
-> include/linux/phy/phy.h; the real implementation in drivers/phy/phy-core.c
-> never returns it. And the stub for the optional variant returns NULL, not
-> -ENOSYS:
->
->     static inline struct phy *devm_phy_optional_get(struct device *dev,
->                                                     const char *string)
->     {
->             return NULL;
->     }
->
-> So with CONFIG_GENERIC_PHY disabled the PHY is still treated as absent
-> (NULL), exactly as the old -ENOSYS branch did. With CONFIG_GENERIC_PHY
-> enabled, -ENOSYS cannot occur, devm_phy_optional_get() turns -ENODEV into
-> NULL, and any other error is still propagated - same as the open-coded
-> check.
->
->> It should be better to keep the -ENOSYS handling to preserve the
->> original behavior.
->
-> Overall the behaviour is unchanged in both configurations, so no separate
-> handling is needed.
+The RK3588 SATA controllers are behind the PHP SMMU. Allow iommus, as
+snps,dwc-ahci does.
 
-Thanks for the analysis! Cna you send a v4 with that explained in the
-commit message, possibly in a more concise way, maybe with bullets for the
-various CONFIG_GENERIC_PHY on/off cases or so, for readability?
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+---
+ Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Reading it now, this v3 commit message kind of said the same things. but it
-misled both me and Damon, so it's worth a clear explanation.
+diff --git a/Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml b/Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml
+index b5ecaabfe2e2..e33e8b5591ee 100644
+--- a/Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml
++++ b/Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml
+@@ -34,6 +34,9 @@ properties:
+           - rockchip,rk3588-dwc-ahci
+       - const: snps,dwc-ahci
+ 
++  iommus:
++    maxItems: 1
++
+   ports-implemented:
+     const: 1
+ 
 
-Thanks!
+-- 
+2.55.0
 
-Luca
 
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
