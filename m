@@ -2,105 +2,67 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 26002606A333
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 20:38:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 715C8606A887
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 20:42:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DLq94Alf;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=DGBrgu2V
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zItdgjEn;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=L+/347sM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=SZAIZlq3xUtvEtWtTY6zrKyuQP2KBmmiJBrBp+VbZ3w=; b=DLq94Alfv5Agy4GKOSo2PemBBg
-	NNoZz9F5dUYHP3aHV6nOXadOjeaWqOXjEhoBgcngbnBGe8+M6S+NoNM1GZdp4fxHCDubntEMJvcCN
-	+0EwqkzdCuPRfZdxAXgPfvk2hod8AOrSEFsS7g2auLRz5r56S7zDWvKrvd8FozBZ8KsH2nNunxzct
-	fNDT/ndLtJteIsdZxP+3+vrOtjJDCVejPprNyUzTUjHl3+g8KXGpuZpxLWcYxulw2yf5nT+WyT/80
-	SbadOpU+dzttoAaGASZ2tCo4SaMAUN9KkBm8i2zZD6N2oMqDN4EBnCmz5OYC/B6uNTcKY5Wjg/XwR
-	Nv5NrIaA==;
+	bh=s+0+wnK0FZf2nerl9d9TWIR95PhsUZlG1AzBa0/zryw=; b=zItdgjEnBNxPOn6IyyyNf5omM9
+	bP+bkT+3uLnH5UC4ggnYWDd74mWOkVAUL8Xmly98z6B3e+YfAaTT7kN3o3HzkS2DNFPMELMYMtwjJ
+	YPuOogWXW96HDkECNPbKXCge3YL2RP0nGZjUXVm+YamQvatpKtepIrgueikJTIYyoi83/1OEhDl8F
+	EcuDmqkkDh3hdKGJRFOLp8kdFc+G9mK0BUNyQbfeeJldxfbkL0qO+rHAJn8p8FLjNmosG4X8Haj0q
+	j89CFi7bWtTbw0Orwx4fdLr6x5rHV5DaB5ehCfZIdyL+Wbl+433ojq0FWgnDwvsS+32diZimkXlJQ
+	FTvsKSIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRy27-0000000ERp0-1oUE;
-	Fri, 13 Nov 2026 20:38:03 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xRy6c-0000000ET6W-0IMU;
+	Fri, 13 Nov 2026 20:42:42 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRy21-0000000ERlX-42PX;
-	Fri, 13 Nov 2026 20:37:58 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B5BD746EA2;
-	Fri, 13 Nov 2026 20:37:57 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794602277;
-	b=v5BYhPzNZkRqAgpV0tgR3NYA9zY712vFNSIjr1vcgGzs/FfA+/wTJ9XoJMlm9wZuNMIJ
-	 Woop4HL3uE+jTYrhTOMtZfBebkZTw7HOKafeCpCQG+fjognYg2iGVulrCBx2Bk5NeJx0N
-	 cNjSChLc6s4NUR2LWz35VEhqdbtfe4rY7RcMirR15bPw/8pfkPLv0lAf6eu47FkKHcSKH
-	 3hKzq3qgTOlSK9FOx00i7HQEFwDsGwYFIRzeoZkrIRoj6/0buFc0lJVw0PNcqn4jLXODI
-	 p7zLOw12uQ9M1/MF3IdRswb6sYX4NwDgM795ymSeUN4fI3KxMiQ9ACtqt53UGYGy9VA==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794602277;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=zcbGexqUs6AyY6rvNjsjQJWCSAAYmXVOXmh3IdhOCBM=;
-	b=1KBXuMvz+W9nyPwHc91KN1255Heq09pcKu0z2uiU0tqAQtFenc4aF4MUi4KZ5vvOqGI3
-	 WgF+qXYViPzsCQ107/noPqByuVG44oaWp3jAvoaWsvERCVtHBstFvzunOfZKGlcKqR0u3
-	 Q62EpMnp8114GJXA6M2DmXexRUQjOW9EeOMl1rjL/susk8kEhtdP1pN8Uy/00/nuehu+V
-	 9I+9I3XZ/YIUdMtmFgo6AL03LW9lOPqFOKIFrI1rcjGhtP8otgTcGKlX32oZhK2bgqIRR
-	 h+lydXXxUPNMYfPhmAN9Y1PWKInnesG/10/1I9z7nbzFsv2JByemuhdYaw8D4/qmmdA==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 2629B1F000C5;
-	Fri, 13 Nov 2026 20:37:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794602277;
-	bh=zcbGexqUs6AyY6rvNjsjQJWCSAAYmXVOXmh3IdhOCBM=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=DGBrgu2V0TLeGXO57K3WHeHX2F5btUEhAsCWTruq06By8FEhHvvbN+D3bcP/cLffV
-	 aIJTWEltyJMpkPIdGeP42pQ+FXwMbLbViG5/0Esvzotav9h9qanrGu9Zufz/texXqt
-	 sCD+qRv9tyHgbVb/ycM2LjSAmBma81RXnZcPdmaziL8B4iNeNEVCFPHJKQBXNj2ZrF
-	 qGp6XPOTKhneJCNPuKbKZeTWU03h28cjnsR1Ccj+2IYIn3OuOh5HCLPrx9wmNqGd5f
-	 Vtn7g66g9wNEH/yk0ua671FVkY/Dzw5RBqLDREOn7x9IUmKlv2eVC0/GVM+MAPdR+V
-	 e9vipkOnNOeaQ==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 7B09D49ABD;
-	Fri, 13 Nov 2026 20:37:56 +0000 (UTC)
-From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Fri, 13 Nov 2026 20:37:56 +0000
-Subject: [PATCH] arm64: dts: rockchip: Fix the order of the RK3588 AV1
- decoder resets
+	id 1xRy6Z-0000000ET5U-3vdl;
+	Fri, 13 Nov 2026 20:42:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=YAdamMR8GtstdFSlMhrRzbOBWBG4qIbe0wTjGGjDiwA=; b=L+/347sMtegLNHELLY7zT/q+Pm
+	5TB2i1mEmMSSFoaCdgHLQxsIqVR6KvDa9xynuBb369HFBNfHLmT78nh8sY4m5mgTzR7fxEPydbq7z
+	WaP3ADlq8anyST6nFH4pIL08mptZNcCI9c3+o6VbEXjgatNh8RTzh9Dkx8B9jOVp5NMG8HJQ+tWVn
+	5yoDlXzESHbetaSid7t0LNPlpQ3ucb7gSsk6Z5ChMjnUj8+Xpwkl6F91x2IEnu23yzsZU1/szk63u
+	tnVvx7WRGUOrYbIcA4t0g6nmP7y1ZOFAmLBMmhtkwxb/wHlE/+CpibnAAiYkLe6ObSOdjtKjXRc5l
+	cIZMQ88A==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>, Sebastian Reichel <sre@kernel.org>
+Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, kernel@collabora.com,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Subject: Re: [PATCH v2 2/4] arm64: dts: rockchip: Use DP AltMode defines
+Date: Fri, 13 Nov 2026 21:42:34 +0100
+Message-ID: <6TUX_NmlTWq-Z5zuCxQLsQ@sntech.de>
+In-Reply-To: <20261017-dp-altmode-dt-defines-v2-2-7ab3d93553dd@collabora.com>
+References: <20261017-dp-altmode-dt-defines-v2-0-7ab3d93553dd@collabora.com>
+ <20261017-dp-altmode-dt-defines-v2-2-7ab3d93553dd@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261113-rk3588-av1-reset-order-v1-1-d73f60222ff9@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXM0QqCQBCF4VeRuW6gcTW0VwkvdvVUU6AxYxKI7
- +5Wlx+H86/kMIXTuVjJsKjrNGbIoaD+HscbWIdsKo/lSUQC2zPUTcNxETY4Zp5sgHGq8h7bOqY
- 2UD6/DFf9/MKX7m9/pwf6+VujbdsBhO9S/noAAAA=
-X-Change-ID: 20261113-rk3588-av1-reset-order-b4261a95ab93
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Arun Iyengar <aiyengar1990@gmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794602276; l=1508;
- i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=YP+Ju9QjQfuU0YGwfWBljQdLr0V0QHLGHZyAd+cCC3w=;
- b=h2Y6s+lUrSYGVaonyq4DMPUpiqk68iJw40e55HnQ6t7RM1x9PLBQhBMoWYd4m+8wB0YLKqp18
- ZScq/59KbGvCoQqS2b+yERSYY7jGHr4Gf+2ESpKOOVfHH4VqwHLBUul
-X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
- pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
-X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
- auth_id=1480
-X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261113_124239_995001_557FDB00 
+X-CRM114-Status: GOOD (  11.27  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,62 +72,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: aiyengar1990@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
-
-The binding lists the AV1 resets as AXI, AXI BIU, APB, APB BIU. Use that
-order. The driver gets them as an array, so only the order in which they
-are toggled changes.
-
-Fixes: dd6dc0c4c126 ("arm64: dts: rockchip: Add AV1 decoder node to rk3588s")
-Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
----
-Found while describing the same resets on the AV1 IOMMU (hantro-robust
-v3). AV1 fluster on RK3588S (Orange Pi 5) is unchanged (203/242).
-
-Developed with Claude (Anthropic), which wrote the code and the commit
-message. I reviewed it.
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index d0f364547ae5..3d1e4369578b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1471,7 +1471,8 @@ av1d: video-codec@fdc70000 {
- 		clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
- 		clock-names = "aclk", "hclk";
- 		power-domains = <&power RK3588_PD_AV1>;
--		resets = <&cru SRST_A_AV1>, <&cru SRST_P_AV1>, <&cru SRST_A_AV1_BIU>, <&cru SRST_P_AV1_BIU>;
-+		resets = <&cru SRST_A_AV1>, <&cru SRST_A_AV1_BIU>,
-+			 <&cru SRST_P_AV1>, <&cru SRST_P_AV1_BIU>;
- 		iommus = <&av1d_mmu>;
- 	};
- 
-
----
-base-commit: c3baae5f1a15645cddadcb2b9abddef5df291f59
-change-id: 20261113-rk3588-av1-reset-order-b4261a95ab93
-
-Best regards,
---  
-Arun Iyengar <aiyengar1990@gmail.com>
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gU2Ftc3RhZywgMTcuIE9rdG9iZXIgMjAyNiwgMjE6NTk6MzEgTWl0dGVsZXVyb3DDpGlzY2hl
+IE5vcm1hbHplaXQgc2NocmllYiBTZWJhc3RpYW4gUmVpY2hlbDoKPiBGcm9tOiBTZWJhc3RpYW4g
+UmVpY2hlbCA8c2ViYXN0aWFuLnJlaWNoZWxAY29sbGFib3JhLmNvbT4KPiAKPiBVc2UgdGhlIG5l
+dyBVU0ItQyBEUCBBbHRNb2RlIGRlZmluZXMgZm9yIHRoZSBTVklEIGFuZCB0aGUgY2FwYWJpbGl0
+aWVzCj4gVkRPIHRvIG1ha2UgdGhlIERUcyBtb3JlIHJlYWRhYmxlLiBUaGlzIGFsc28gZml4ZXMg
+dXAgYW5ub3VuY2luZwo+IDB4ZmZmZmZmZmYsIHdoaWNoIGlzIHNpbXBseSB3cm9uZyBhcyB0aGF0
+IGFsbG93cyB1c2luZyB0aGUgcG9ydCBpbgo+IHVwZmFjaW5nIG1vZGUgKGkuZS4gdGhlIGJvYXJk
+IHJlY2VpdmluZyBEaXNwbGF5UG9ydCBkYXRhLCBiYW5kd2lkdGgKPiBhYm92ZSBIQlIzIG9yIHBp
+biBjb25maWd1cmF0aW9ucyBub3QgaGFuZGxlZCBieSBVU0JEUC4KPiAKPiBSZXZpZXdlZC1ieTog
+RG1pdHJ5IEJhcnlzaGtvdiA8ZG1pdHJ5LmJhcnlzaGtvdkBvc3MucXVhbGNvbW0uY29tPgo+IFNp
+Z25lZC1vZmYtYnk6IFNlYmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hlbEBjb2xsYWJv
+cmEuY29tPgo+IC0tLQo+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU3Ni1hbmJl
+cm5pYy1yZy12aXRhLXByby5kdHMgfCA4ICsrKysrKy0tCj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszNTc2LWFybXNvbS1jbTUtaW8uZHRzICAgICAgICB8IDggKysrKysrLS0KPiAg
+YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NzYtYXJtc29tLXNpZ2U1LmR0cyAgICAg
+ICAgIHwgOCArKysrKystLQo+ICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1y
+b2NrLTViLTVicC01dC5kdHNpICAgICAgfCA4ICsrKysrKy0tCj4gIGFyY2gvYXJtNjQvYm9vdC9k
+dHMvcm9ja2NoaXAvcmszNTg4cy1pbmRpZWRyb2lkLW5vdmEuZHRzICAgICB8IDggKysrKysrLS0K
+PiAgNSBmaWxlcyBjaGFuZ2VkLCAzMCBpbnNlcnRpb25zKCspLCAxMCBkZWxldGlvbnMoLSkKCgpS
+ZXZpZXdlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KCkNvdWxkIGdvIHRv
+Z2V0aGVyIHdpdGggdGhlIGJpbmRpbmcgY29udHN0YW50cyBvciB0aGVuIG9uZSByZWxlYXNlIGFm
+dGVyCnBhdGNoMSBnZXRzIG1lcmdlZC4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
