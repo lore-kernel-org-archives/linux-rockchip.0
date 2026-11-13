@@ -2,88 +2,85 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E08FD606A321
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 08:45:39 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D9B32606A330
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 08:45:48 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xzgN3fjy;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=SYoZpfZ7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TU6At9+n;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=KB6NVbQD
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FuP4fcC61J0BQn7/xYAJ9bfLpHkDfjhyHhxlR9ugrFU=; b=xzgN3fjyk/wYakA6XGrcasWhja
-	ECduvJ14wjmtz3d7lj4RtedJ7GKH6g7aeS0baKxb6T/M5W6nXtmL72USiwmLUOJN9j+/SMInuOUyI
-	ySozgDt4lalccr29V/uv3rzwbinXkjYIvRfzy0kPK16mEYLx7UDJXbj/m+H+NpRFEUy3iC+VFnmxr
-	iZn5BW/ilKKsKtyx+X6jopp+6LBrA1kqmcqW098+tU+wZEiSfn7kqlxSFVMvar55RBn749Rd6SU3i
-	mFOiL3KFfb7cEFD+f1A5kD5sUbF+4CEQFV6aBEi+Yoi09KDpbh1stY9hjPU06ABkcN3nnpIMDYxqS
-	IdUqqahg==;
+	bh=RYyC0RJlET0Vec9G4SJWCWg/pnLLRYOXJVW9gRafQY4=; b=TU6At9+nKhbixSreMjyIpklFI1
+	EzpPo0jhyXOe4nokxaDz8BUQ2J9i7U2COup9aZK73WKQS1Kx3+72zNWYqMGWzzPxFnepjRvjiXk1z
+	CPttJEAA53r56OQp3zpI6WdYj0iwsHvkfXxIrJrnOajzLRl/fkz5Xp5tkSqUGluZKfqEYW1ie4UWJ
+	LvIt9+ZLt4dKE1k7NfR1p1sFk8sPPiBqKye46hITMbElV9TBvu8OtEkJv4Uy6EZdeGuDnTKlaSgFy
+	M1dFl8KkShSnB5CzfP/ZfOqNiRUwk4X4gEtY+jhU0s0SN1R1zPWoCg4K/2IxNdFIGTVhg9ftkWky9
+	0ATuKx4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRmua-0000000C80Z-12rB;
-	Fri, 13 Nov 2026 08:45:32 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xRmuf-0000000C80u-260n;
+	Fri, 13 Nov 2026 08:45:39 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRmuB-0000000C7pj-3HnY;
-	Fri, 13 Nov 2026 08:45:07 +0000
+	id 1xRmuC-0000000C7qC-1cKp;
+	Fri, 13 Nov 2026 08:45:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 648084168A;
+	by tor.source.kernel.org (Postfix) with ESMTP id CFFE762628;
 	Fri, 13 Nov 2026 08:45:07 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1794559507;
-	b=u2pCk5CMdkNZ+3MTt4wM8kVjpQx5qCKoFlRrNLyVxSsnD40J9XrTb2hxdnkCiXBnxmWI
-	 v7rzYifibccyVIwAg5q2bKvvrHXbyan+W2CrQ5hJn2UcNMaYTDeBYjywu/M8VvVSAeosy
-	 p1OATfU41ppdniQey3MCyOvY5er4/y1iJhAmXzz77MqWzpkEsjU6etq9eLkH0xQEH6tzM
-	 aJoROhlnv0W2yRI+alUkFn7QD6dCEmFHvTk52X+ltHoSnOCe2u9szIBQ4S5RH6PxiT8qt
-	 L9ftT6J24yM+JD+/kOYcghVBS4P9KpJjnbvF3GfLZw/UPHQ4QZRhgX7hm0LHd3jnlXg==
+	b=IsDWLR8H+UBhI3MHI6qPzGkA7wX80YG+0/mrEmbBa2lRnOZ+TS/+Glb2yjA7JYsz8zJN
+	 65RZqnh0OauKw2MKZ/YbFgKzjY+Ew5nziWhsm257Gt3zxD0RcuGNBE5E4YjwnFDDVfrE4
+	 ZqI1Vz/SvC6+zK/G2RALwCu7AOkcDVeghbdctnaZmneydwo8hDh0VllruxlWmQ2WxMnqX
+	 6sy7fRcuXsTJSDMTwJbfO/s3rdp1XX9S6WmJL7SVyfI3tr5Nl1Ge0We6VC56ZKRoOfa2L
+	 YxvfzgOxFK1JUOfcQymAwbGo/XxS8wPTLpafYQbTlUP4rTcBGCBzTDlGEBMf2NUGckQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1794559507;
-	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
-	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
-	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=31dV+hbb4hVRp8z0uoBI2OUNQZcOaUvP3vksNhkTFGo=;
-	b=kjW0HGekRsPrW0xmxt0hHK+N+sqvdQTwcO5eAtwMU8F+KX9451MfvzeiTBLPNzrXv/PK
-	 SvwnqRFsKm53AQIGqWFjupGrSwxSaGC6iollcgHfUmTx1jJYZI43WzTd9awK81mMmYgrS
-	 BwRrzqV0vmY+h1j86amKydFoT4tqZ6dnP7c5caSUOb0zSiNI5IEYUMecY/gJqVQQ44YbM
-	 29XhzaWA+xq9EKhW30Wt6rnxLA3pUHrYtc1Mp9RcxPuLmZSUeZGB4nmE3ZLr3SvGIHmyw
-	 WA1eggl9gkjvuVo79FVjLH7Vj6tCxOrMmo4zaoXSGnGKEKgF6dBAIqeODi9BTtATF/g==
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=Lmr+Elr9OpIQ5ZPemcYMeDSVJeWYJTiqTeKhrH7JLDQ=;
+	b=X6FzvJYqPvShyfh8CihTxuoySd3LQzbIIId7A71Jqq3991lUr60NDBMsNdqgbE7FBbVq
+	 wN9RBFEDGRosGR4KUud9miVtk43j4KN4YA5fk5nYD62QitcJQR41Cl0zSEJnWsoOYL1ls
+	 QRGMiuB7GgsBV2e15hGPunlniY9IA7QKpjtjwc315FAVKvqNy/PlR+PtkJW6YDKxKc7Hc
+	 VCt8dVg/9//VfILf/UiSJQ6B7RbfpCH6Z6e/cB45F04cpmSvSwgDnHEwNvi2O1UODREJ6
+	 aQDgOQzi7OyG57gvisUc9uAC3aQpktl0TKpLnaxJzFkWG7+H0X+AN4WEFt4TgICtqxw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 1BF541F000C4;
+	by smtp.kernel.org (Postfix) with ESMTPS id 309A01F000CD;
 	Fri, 13 Nov 2026 08:45:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1794559507;
-	bh=31dV+hbb4hVRp8z0uoBI2OUNQZcOaUvP3vksNhkTFGo=;
-	h=From:Subject:Date:To:Cc:Reply-To;
-	b=SYoZpfZ7hEbNeF5GTYyX72hicta2768hYXtnnzo6ZxFe7HJIbP4fYij75bGBr8DKd
-	 PxRFuHiDn6PldT29VYXSIAqIynvHYQHE0U3mQx3want1w1L+Gt0CY1ae0MDSAJScK4
-	 b6q2qDrNh7goz4lpr/8XGaftfQV6ep8mBBPHYbKj5qE1n7Xehtc9YbZjvnfugThDZP
-	 deJI5vFVJD1+rc4yjNtuu/fy3FJxrZ0I+hsCm5Y3TKlvNYzK3T6eooHmL07+Gc4T4P
-	 lQlE3ZGTENgEfPGJkMBN2btYksZCBZ4Ix3pzi4KuzwNN51J/HI1YalaupOLFmgFf3B
-	 pdyn3rTuOtg5Q==
+	bh=Lmr+Elr9OpIQ5ZPemcYMeDSVJeWYJTiqTeKhrH7JLDQ=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=KB6NVbQDL8/GFM1yuFWNnJoYtM9AQ1HmMWgwxyzB88AkhhlNDEfqgZ2Y6LPDoqRiw
+	 sdf0s32wKCJ1zxpSmJEteL1HvMdvjK19iYUBOHA1xfhrM7epWQ2ydkQ8syaDAIVhnA
+	 l+XsljHH06Xutwa+hmJYnsdSETkrNEGJrUgnJfDH7puDXsMTGiOyoHvGtQhLU7f2SA
+	 I2rPT1Iy8dV0FnwaHseBhDGp2ovmKip2lmX5hzjnnSbi3stzSEk5Ms6X8eaaRFKc7b
+	 UAUChRMxu4I1U1iY1o9ey79741HzgmmAoAdZFt77GwmBN8ejWgaWo/R0n7HUta+Doa
+	 A8qgKFOtRS4HQ==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 6D5B8476C9;
+	by lkml.kernel.org (Postfix) with ESMTP id ADE5A476D1;
 	Fri, 13 Nov 2026 08:45:05 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Subject: [PATCH v3 0/3] iommu/arm-smmu-v3: Keep the clock of the RK3588
- PCIe SMMU running
-Date: Fri, 13 Nov 2026 08:45:04 +0000
-Message-Id: <20261113-smmu-v3-pcie-pd-v3-0-39eb4f919529@gmail.com>
+Date: Fri, 13 Nov 2026 08:45:07 +0000
+Subject: [PATCH v3 3/3] arm64: dts: rockchip: Add the clock and reset of
+ the RK3588 PCIe SMMU
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNyw6CMBBFf4V0bQ0zECiu/A/joi0FxsgjLTQaw
- r/b4obEuDzJPeeuzBlLxrFLsjJrPDkahwDZKWG6k0NrONWBGaZYAEDKXd8v3Gd80mT4VHOJDWC
- pBNSiYcGarGnotRdv9y+7RT2MnmMmLjpy82jf+6WHuPtf98BTXqAQUGmZ56q6tr2k51mPPYt1j
- 0cff30MfibLUilVKNT50d+27QOoIzUYAAEAAA==
-X-Change-ID: 20261110-smmu-v3-pcie-pd-a2f127b81d8f
+Message-Id: <20261113-smmu-v3-pcie-pd-v3-3-39eb4f919529@gmail.com>
+References: <20261113-smmu-v3-pcie-pd-v3-0-39eb4f919529@gmail.com>
+In-Reply-To: <20261113-smmu-v3-pcie-pd-v3-0-39eb4f919529@gmail.com>
 To: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, 
  "Joerg Roedel (AMD)" <joro@8bytes.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -98,11 +95,11 @@ Cc: Pranjal Shrivastava <praan@google.com>,
  Finley Xiao <finley.xiao@rock-chips.com>, 
  Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794559505; l=2819;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794559505; l=1300;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=JFQF5/x0xcmOO0il+Oumud6dGqDqEHGMJfPbBtaSTas=;
- b=r+ccjvH9jrVlYhNR5ezOijurYTiyt5yfiemcGV3RXLrUNiui61CYNJy//fe7BhE07XOPhzNE2
- wY7ACapqPM6BUGt6qS9vDJkBwcln639T7ld7v8/RoTqPdZ44VyBNH3n
+ bh=aCMSqAU5WbX0kmyurBhD544RJoO9ROFPyNVyyC5PiCw=;
+ b=xbQO8OmwQeLvZibAIEHXHgkcx69pXkcQHoUG3vrRDW/NWEL/vMQIm1fjAqge7Ggi6eBIPdsMG
+ +3xn2EdC2PZB1UZGg5so/JiSWEXxmGAVdMFval8/gVhEJqkzV5ftYW1
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -129,67 +126,40 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On RK3588 boards without an enabled PCIe controller, ACLK_MMU_PCIE is
-gated as unused while arm-smmu-v3 is bound to the PCIe SMMU, and reboot
-hangs in arm_smmu_device_shutdown() until the watchdog fires.
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Patches 1-2 are for the iommu tree, patch 3 for the Rockchip tree.
+mmu600_pcie is enabled in rk3588-base.dtsi, but its node lacks its
+clock, ACLK_MMU_PCIE. On a board without an enabled PCIe controller
+(e.g. the Orange Pi 5 with its M.2 slot in SATA mode) nothing holds the
+clock, it is gated as unused, and reboot hangs in
+arm_smmu_device_shutdown() until the watchdog fires.
 
-Pranjal Shrivastava's "iommu/arm-smmu-v3: Implement Runtime/System
-Sleep ops" v11 (not merged) has no clock handling; the clock can move
-into its runtime PM callbacks once it lands. mmu600_php is disabled in
-rk3588-base.dtsi and is not changed here.
+Add the clock, so the SMMU driver keeps it running, and the reset,
+SRST_A_MMU_PCIE.
 
-Tested as v2 (same code, 7.3 kernel) on an Orange Pi 5 with the M.2
-slot in SATA mode and the root filesystem on SATA: three reboots reach
-the boot loader 0.59 s after "reboot: Restarting system" (was ~89 s,
-via the watchdog), and aclk_mmu_pcie stays enabled. The resets property
-is not used by the driver and was not tested.
-
-Developed with Claude (Anthropic), which wrote the code and the commit
-messages. I reviewed every change.
-
+Fixes: da92d3dfc871 ("arm64: dts: rockchip: enable the mmu600_pcie IOMMU on the rk3588 SoC")
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
-Changes in v3:
-- Shortened the commit messages and the cover letter, and dropped the
-  "on SoCs where ..." part of the binding's clock description
-  (Sebastian Reichel).
-- Squashed the DTS reset patch into the clock patch (Sebastian Reichel).
-  His Reviewed-by of the clock patch is kept.
-- Dropped the description of the binding's resets property.
-- No code changes.
-- Link to v2: https://patch.msgid.link/20261112-smmu-v3-pcie-pd-v2-0-3a77bbb6b2c4@gmail.com
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Changes in v2:
-- Moved the fix for the Tegra CMDQV reference leak on a bad
-  #iommu-cells (Sashiko AI review) to a separate patch.
-- Dropped the power-domain patches: the TRM puts MMU600_PCIE in PD_PHP,
-  which Linux does not control (Sebastian Reichel, Shawn Lin).
-- Binding: one clock instead of up to four (Sashiko, Sebastian Reichel).
-- Driver: one optional clock, got before the firmware probe so a failure
-  cannot leak the CMDQV reference (Sashiko); shorter comment (Sebastian
-  Reichel).
-- Added the reset to the binding and the DTS (Sebastian Reichel).
-- Link to v1: https://patch.msgid.link/20261110-smmu-v3-pcie-pd-v1-0-628819ca44b9@gmail.com
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index aa69fd3793fd..45c1bb335447 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -559,6 +559,8 @@ mmu600_pcie: iommu@fc900000 {
+ 			     <GIC_SPI 374 IRQ_TYPE_EDGE_RISING 0>,
+ 			     <GIC_SPI 367 IRQ_TYPE_EDGE_RISING 0>;
+ 		interrupt-names = "eventq", "gerror", "priq", "cmdq-sync";
++		clocks = <&cru ACLK_MMU_PCIE>;
++		resets = <&cru SRST_A_MMU_PCIE>;
+ 		#iommu-cells = <1>;
+ 	};
+ 
 
----
-Arun Iyengar (3):
-      dt-bindings: iommu: arm,smmu-v3: Allow a clock and a reset
-      iommu/arm-smmu-v3: Enable an optional clock
-      arm64: dts: rockchip: Add the clock and reset of the RK3588 PCIe SMMU
-
- Documentation/devicetree/bindings/iommu/arm,smmu-v3.yaml |  8 ++++++++
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi            |  2 ++
- drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c              | 11 +++++++++++
- 3 files changed, 21 insertions(+)
----
-base-commit: 2cf4be57b301ed2d7af82e70cff5dfd96894d8de
-change-id: 20261110-smmu-v3-pcie-pd-a2f127b81d8f
-
-Best regards,
---  
-Arun Iyengar <aiyengar1990@gmail.com>
+-- 
+2.55.0
 
 
 
