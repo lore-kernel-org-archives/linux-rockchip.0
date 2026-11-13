@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EE6D2606A884
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 13:13:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7DAE606AB84
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 13:23:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UKTnB/Lv;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=L5Leebox
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YDuJSUHR;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=gK8jig75
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,97 +14,96 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=4GhQTG0gMl2aAc1yHoW7nQGOny2sXBHs0qof3W2BAmI=; b=UKTnB/LvHrX1TRwek4eKnT9/Bh
-	Wa96iQrQGJ7x8v9nHwSeK+1+5+zqHMu7Z2F3AwI6+hjdsHX1AiAFiCF3vpNvzCFEZKeVwgkCafn80
-	TSdWd0QQX0EqT5LWjj+wJYAmkZRh1AhGQAo2oIARUgXEuNLa1lW5RF5HMQ6rlRzrvs77pRK1UFiZY
-	A+cPKTF68X7IXjgg2bDVG5WQoFNNu6X/3r3DMJ6r81wJBhZiPlqRvsvyWqJbhWRX9dVQcR93uYG/x
-	Sp2z6dXCIdev/7KXPQ14SJ9zmAViJqegi9FBrxn0iNg42la+LcGGTh+wx5o1gO1MdRfSPwRMv4+A8
-	Y6gqHqWg==;
+	bh=6U4vHee2GwVRyVCCCKW2a5QdOqmi7J4gvgtebsWsS5k=; b=YDuJSUHRug6jhn6Fz9i6yQMg43
+	fzWC4P8W0LoYxYc5ctDueaE/u0Et600Hg+h68AIes1OYGTmGw4xUxfS3kGaGN9O/jcdOwUp+U3f85
+	taqjP2c1qTMFA/W7hUR8ooZxMm031gYrAGGi1+lKB7EgxW+IaGbHI7TWpEZ5EfrWFMwY3kBDgGUUi
+	bQWfk5yUAzUd8CiikwU9mCK9vABTDgLW5NFJr1BiNUCwNwD9VgGmDEoge0OjywWvZC/6Owdh/EkYN
+	731ryIWFGodUZoGlQhvVn3ihnUvDqcumoCkbLq2rQqPQ42xVdmw5JHcU4HjkZWRSLPSQHbUoHvT6v
+	hIJfFQ7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRr5V-0000000CqkB-1JkZ;
-	Fri, 13 Nov 2026 13:13:05 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1xRrFr-0000000CuXf-1c12;
+	Fri, 13 Nov 2026 13:23:47 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRr5S-0000000CqhS-0mrZ
+	id 1xRrFi-0000000CuP0-4C4W
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Nov 2026 13:13:03 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-3ae2b7e1e17so1187001a91.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 05:13:00 -0800 (PST)
+	Fri, 13 Nov 2026 13:23:40 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4a1fbd52ab6so10344605e9.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 05:23:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794575579; x=1795180379; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=fMa45R+tCxZf7NGiJEXnK9MPuFreV0vlZ1o7pYt/ZYA=;
-        b=L5Leeboxerfck2RcYo3aufINxLdm9tzQ0eJjXlY8bgpCbqw0AF7ki7rwxM6Ae4jLNz
-         Sxs5zcGpz197GDFpvc+pUITI4+Xn3r0ayDi8Kwjt7510d8JejL2N6n+YDoe7YpG5U27O
-         gxv5+hfnlzOkX4sXA1cLCS90KxogWdb9EKbEmT9woTRXhAv6wGT6pV+bAUAfe2KQWkOK
-         8O9SguC7NJXMTvJY2M1YOuI/OzLAzCS+oVYTOSsuM85B8pvOVCynKxV902MreeQZaneK
-         Q5UqdCq7GzVNMGUOFO+fJZh8Jx5CnzJlfA4CCHv97lZq4pxOBVL4EHxCF80RXLZ9sBFo
-         DozA==
+        d=gmail.com; s=20260707; t=1794576217; x=1795181017; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=bPhouWL64Ss7xA+3PtWE37jW1mEzq4J5HXL5n/CanOg=;
+        b=gK8jig75ZgI701ePh70qa9edXsST5TY2TIUB9LWrANrXxfEO+eLAXnLwy1TF90ajSw
+         l3Q/R2WDpGo9OPp3ItIAnT+1f8BArmb9VfLvizHfvNirInFiKUzhwgy3BAjgtKGpKnNg
+         8/A/90d0nm+tu3s2NQIcK2owYiRLYz1uTp9iCYrBto54QTixJwYNvtNEgnFmuAulmcin
+         cbVgtmov45PS7KUlgos/gnOfXzwjA4z1rF9fI5acJRZLVcExnfbAtpL7eiKydVN5jr2v
+         3W4291uk9x+06Tw4Dpx4v0ujiOeIheWCNI+JjGyUzKH2NuaVCe1kD4JiNqd0O6sVSNTF
+         kI5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794575579; x=1795180379;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=fMa45R+tCxZf7NGiJEXnK9MPuFreV0vlZ1o7pYt/ZYA=;
-        b=PwGqhhE1LZoDR3Cj2fom3aCkOFuRXvPH6CwfLyvSfx5rrmls6j5DGkhJ3lI+aqFCgd
-         R5eUoL3sXrwwm29On1yjJF7iJcQ8dKUkyqa1q6LgPQSmXXDO9NWJ0JGbzf1UDPgqvcBZ
-         uu+wbkD5QXz3z5VQOddLE7faBqo0Q1gKcv5aowoYvITlqcHzqmvIJwuFcg3KEJxUC0My
-         sbKmosPq4riarCeyAZOT9WNfzvV97kNrlCdTiuUrsVG0N8rDLVg4MCnOzErsSGa00PzO
-         PkgZ4DBvVwUZFQSBzKx5LtTJDSJYO5HpWUGKdmWSwmgXHPTfVRl3kSgBfUdTsykER7J5
-         qfYw==
-X-Forwarded-Encrypted: i=1; AL+hErFSHD3UW3ZZ0WMV2ugssTqB2nOr01PfQ74QJlBJAkCzlFXKvYuO8VtwmE/FmeoWafyPrWDjW204zcS9GxROVg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+jlVBhHVJ+u8gsw/mtKfu1QYzGGoZd/PRO0n0LAegMw41t+cZU
-	6mjJteCpSxCIOe7xNvDpLuqoji4mDTeMIuNzrsk09YxIQf5pLLStRgya
-X-Gm-Gg: AYBFou2MvCdtOHDZ3YIX5+iARaMtThGx8NuchNZw5SwPBUn/1OGXbZtttC7Y/hAulg4
-	bHsMioHHBzJ8+KEeyeqNYbNqwpIBqctgnpROJz5cDwlxdZ7mDqvItW0i+eqTGPLbTPPswzgpDph
-	29u9s4rky/9T7ZyblMnsq0TRK7oytKDvl4gPIK5iyrOptbF7k8m4Vvoc/mdEe7HB0WXKoytpEtB
-	O1N/gndPlfXvk3VFXv4j5+3IHyU7pgNBYT+sbjRJRY+K4cZQWI7qVB9jpGO/LmQOF2csf09D76T
-	BDb2kBpcKdl0Afw+xKTAGEGQVpNK+ZliPmsnQgTd4v+nU3ydSR30hfv5ddfwwYOFsySreaHih1s
-	bGfj+XSDr86FEez/UapE0eSyfJucp5fEwl06MDJTabuJqlwWXONMg8Yz/kl3lVZuF7nz4CLMAFP
-	ycXHju7TYfkLjG6fsuhTOpz2MjR7WmM+Segve4R6+r/udWeSU8K8QwpofP1I5oV5mHLiLyJo7CC
-	EAYq52VBe8T9EEGm+scQsgNYQb7WfI+ehXaDgACKWbGxZGlSQMyXLaz/nia/uF1m9mi8rFRuWR6
-	HrknwayY2CMJn/2JqvLBNtWGWerD/9LpOFu5jM4=
-X-Received: by 2002:a17:90b:2642:b0:3b0:9162:948e with SMTP id 98e67ed59e1d1-3b1b0ba0a60mr1992696a91.27.1794575579407;
-        Fri, 13 Nov 2026 05:12:59 -0800 (PST)
-Received: from arch.localdomain ([152.175.35.19])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b1aec622b6sm4931622a91.11.2026.11.13.05.12.50
+        d=1e100.net; s=20260707; t=1794576217; x=1795181017;
+        h=content-transfer-encoding:content-type:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=bPhouWL64Ss7xA+3PtWE37jW1mEzq4J5HXL5n/CanOg=;
+        b=PacZyxYXFi9INsNeBWt+wexIxq4JjcRmSM1AoWGdcPTGUAI58Gd1nBv3sANTU4jCP0
+         K4rI7qknw2oWROu94C9MqypLRU6nPBXBREl7MCJ5nmBWk4a97+S4OF/R0mgFKxXCiNkx
+         s0f2ZFptdIX+9UcV8r7Ny7cHmx5P2j9BRq0dyX3HTdIbnOR7gMSl6Y9rycqA4ZWrLeeg
+         6+bNJeu0HH1kCAky+1OOYhqoUt1m8yCq5/EVKMIl9lMr+gk0wdPDLmDnyDYmtMy8UHci
+         GqRcorpEkt2DtLvcC8p0QHozTz67gULhGORwtThY1mltbZiM3mnRBlmvUU7M9jPsTocB
+         fNoA==
+X-Forwarded-Encrypted: i=1; AL+hErHin6JeOCs8FNfc1Jd6iS2CcqWZAcMM+AeUFdFLGonyIP0t8XzFbmAzttJchWa/Tgt8SYpcOeyc1nc9fxnWIg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/9kO0JcYPrPEdPwXH/AXAsVaM+ZnV9SbiGhcDbHsQFMdWkTYsK
+	ZHXykOACwPlDCKKDZWW3ZXPRhv4PzKvy3Pw2cMrmR1ygOHM0eNUSiUu5
+X-Gm-Gg: AYBFou1TpBPrEkmRnPnnvELtLyZijOihm3x0wDzzy/YwdqKXOr43nehAWs7EY3DYC5u
+	aFPAmJVG5DYbiZ/BouFE2m0yWWq7OAhyPlPEbf2SEWo9iHcHZVOskGETrY9Lctv4D5/6r1JbazX
+	TDne2coDjMHOPXQCCjrLkR7wLXzOQidzJAV2MOtFCp40MJlbygsLTgdXbRi2J6cAwgWuM4FTBaE
+	07THWOmj74oA0Wx4o2rKA0Fa1o43QXJlj2LxBWz2+MK7+mtG6WjBFpkWw6ZTGDxGxR3dNY0cbOm
+	A43lUSx5b3DAyUA0CcJnml9YsTB3nKJcvIROlh52B0HApZlyje/x6ndB5/J4Wn2LGvh70+t2EXK
+	ODIMeR5rPQinymGjCBrm77bgVEVUn41lDTl8XFRZky57je+vzjakl8fp3yJofZ8qVYaxvXK0whL
+	9lLE8nJecqfCnV7uBcRRrG9CaON4N9+2cWfEds8CjAn4CLzKPytkMnfBG9dGTImbrlxMB+aXQ9A
+	ydwxg8R5jXyYbOUqfjb7RtfJSDdF23di7jzUSBM2USU6RRz8yr9jRWS0f9+yWkPyLc/EJvtRp+M
+	y5+73xv7Hcno02tZaS4WuReNYBa5VwBe1dqG863jhnJ0L7XmDUYgewgw//WN8s2VPWUPiCTvH0s
+	=
+X-Received: by 2002:a05:600c:8010:b0:4a7:9025:5c3b with SMTP id 5b1f17b1804b1-4bb55a6a5f0mr53609575e9.19.1794576216701;
+        Fri, 13 Nov 2026 05:23:36 -0800 (PST)
+Received: from vlw-PC.. (static.18.103.245.188.clients.your-server.de. [188.245.103.18])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb4e284339sm136419825e9.5.2026.11.13.05.23.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Nov 2026 05:12:58 -0800 (PST)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: damon.ding@rock-chips.com
-Cc: Laurent.pinchart@ideasonboard.com,
-	airlied@gmail.com,
-	andrzej.hajda@intel.com,
-	dri-devel@lists.freedesktop.org,
-	heiko@sntech.de,
-	jernej.skrabec@gmail.com,
-	jerrysteve1101@gmail.com,
-	jonas@kwiboo.se,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+        Fri, 13 Nov 2026 05:23:36 -0800 (PST)
+From: Vladimir Bely <vlwwwwww@gmail.com>
+To: Jiaxing Hu <gahing@gahingwoo.com>
+Cc: heiko@sntech.de,
+	ulfh@kernel.org,
+	finley.xiao@rock-chips.com,
+	zhangqing@rock-chips.com,
+	abel.vesa@oss.qualcomm.com,
+	tomeu@tomeuvizoso.net,
+	royalnet026@gmail.com,
+	sebastian.reichel@collabora.com,
+	shawn.lin@rock-chips.com,
+	chaoyi.chen@rock-chips.com,
+	diederik@cknow-tech.com,
 	linux-rockchip@lists.infradead.org,
-	luca.ceresoli@bootlin.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	neil.armstrong@linaro.org,
-	rfoss@kernel.org,
-	simona@ffwll.ch,
-	tzimmermann@suse.de
-Subject: Re: [PATCH v3] drm/bridge: analogix_dp: use devm_phy_optional_get() for the DP PHY
-Date: Fri, 13 Nov 2026 21:12:48 +0800
-Message-ID: <20261113131248.2804840-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <385a67f0-e5cd-4dba-9b9c-5b766462c6c0@rock-chips.com>
-References: <385a67f0-e5cd-4dba-9b9c-5b766462c6c0@rock-chips.com>
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v16 09/16] pmdomain: rockchip: add optional per-domain power-on settle delay
+Date: Fri, 13 Nov 2026 16:23:22 +0300
+Message-ID: <20261113132323.159015-1-vlwwwwww@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261108065917.135194-10-gahing@gahingwoo.com>
+References: <20261108065917.135194-1-gahing@gahingwoo.com> <20261108065917.135194-10-gahing@gahingwoo.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_051302_248522_5961EDDF 
-X-CRM114-Status: GOOD (  11.33  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261113_052339_084072_3ADA9D2E 
+X-CRM114-Status: GOOD (  15.38  )
+X-Spam-Score: 0.4 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,47 +116,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-7.3 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=4.0.1
+	FREEMAIL_FROM,FROM_LOCAL_NOVOWEL,HEADER_FROM_DIFFERENT_DOMAINS,
+	HK_RANDOM_FROM,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Damon,
+On Sun, Nov 08, 2026 at 07:59:10PM +1300, Jiaxing Hu wrote:
+> The NPU power domain is switched off when the driver probes, so the first
+> power-on goes through this wait even when the bootloader left the NPU on.
 
-> You are right, this is really a valid concern.
->
-> If CONFIG_GENERIC_PHY is disabled, the old code could still proceed and
-> keep the driver probing, while the new version would return an error
-> directly.
+[...]
 
--ENOSYS can only come from the !CONFIG_GENERIC_PHY stubs in
-include/linux/phy/phy.h; the real implementation in drivers/phy/phy-core.c
-never returns it. And the stub for the optional variant returns NULL, not
--ENOSYS:
+> +	[RK3576_PD_NPU]		= DOMAIN_RK3576_R("npu",  0x0, BIT(0),  BIT(0), 0,       0x0, 0,       0,       0,       0,    false),
 
-    static inline struct phy *devm_phy_optional_get(struct device *dev,
-                                                    const char *string)
-    {
-            return NULL;
-    }
+Hi Jiaxing,
 
-So with CONFIG_GENERIC_PHY disabled the PHY is still treated as absent
-(NULL), exactly as the old -ENOSYS branch did. With CONFIG_GENERIC_PHY
-enabled, -ENOSYS cannot occur, devm_phy_optional_get() turns -ENODEV into
-NULL, and any other error is still propagated - same as the open-coded
-check.
+(reply to https://lore.kernel.org/all/20261108065917.135194-10-gahing@gahingwoo.com/ )
 
-> It should be better to keep the -ENOSYS handling to preserve the
-> original behavior.
+This probe-time power-off hangs a board that does not enable the NPU.
+I hit it with v14 as Armbian carries it on 7.3.3; v16 has the same
+DOMAIN_RK3576_R("npu", ...), so I expect the same there, but I have not
+run v16.
 
-Overall the behaviour is unchanged in both configurations, so no separate
-handling is needed.
+Board: FriendlyElec NanoPi R76S. Its DTS has no domain-supply on pd_npu
+and the NPU nodes stay disabled. vdd_npu_s0 is RK806 dcdc-reg2,
+regulator-boot-on, no consumers.
 
-Best regards,
-Jun Yan
+On about every second boot the SoC hangs hard ~30 s after start: no
+oops, no answer to SysRq over the serial console, only the watchdog
+gets it out. The last console line is "vdd_npu_s0: disabling" from
+regulator_late_cleanup(). The kernel without the series (7.2.8) does
+not hang. 10 boots each, no hang, with any of:
+
+  - regulator_ignore_unused
+  - regulator-always-on on vdd_npu_s0 only
+  - the NPU enabled as in your ROCK 4D patch (domain-supply and
+    npu-supply on vdd_npu_s0, cores and MMUs okay)
+
+PMU registers after boot (regmap debugfs of 27380000.power-management):
+
+               NPU not enabled   NPU enabled as on ROCK 4D
+  0x110 req    0x000013e0        0x000013fe
+  0x128 idle   0x000313e0        0x000313fe
+  0x214 pwr    0x0000003e        0x000001fe
+  0x230 stat   0x003e4181        0x01fe4181
+
+With the NPU not enabled, nputop/npu0/npu1 (bits 6..8 at 0x214) are
+still powered and their idle requests (bits 1..4 at 0x110) are not set,
+while pm_genpd_summary lists npu, nputop, npu0 and npu1 as off-0 from
+early boot.
+
+My reading: rockchip_pm_add_one_domain() powers the parent "npu" domain
+off at probe because of need_regulator, but the children U-Boot left on
+are neither idled nor powered off first, and genpd then treats them as
+off, so nothing cleans them up. When vdd_npu_s0 is cut later, the bus
+hangs on those NIUs. I have not dumped the PMU on a kernel without the
+series and have not tested a kernel fix, so this is a report rather
+than a diagnosis. Idling and powering off the children that are on
+before the parent at probe, or skipping the probe power-off when there
+is no domain-supply, look like possible directions.
+
+This would hit every RK3576 board that does not enable the NPU, which
+is most of them.
+
+More detail: https://github.com/gahingwoo/linux-rk3576-npu/issues/4
+I am happy to test patches on the R76S; it has a serial console.
+
+Thanks,
+Vladimir
 
 _______________________________________________
 Linux-rockchip mailing list
