@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C3FC8606A8AC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:41:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19861606A8AE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:41:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=J0QVWB7l;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=JHXM3yd2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eOF//ZTZ;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=VDr6mC19
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=j0lIkliuZAJF2cmEbtCPtgHEcY0E9bMMT1fj/CmrGsc=; b=J0QVWB7lom6ecKNGxofMgC6PP6
-	LvkO2PRvF0BzP0/oaAuBTOQOVizDbAUM+yJgsqG2LeaOYPndQ3Z6T1nGtxHJY91bSvTAIBzI3TkE0
-	n0TbmG9qHUzzQgEYdLuaRt0iU9Dq2gMu+7wkML3Br7P232QOTjbAgXFr6oEGHlIKjfOgYIcNUKmo7
-	ou2Jo4QTE7FnbVvE9hnw0rbZ5F72eZKKTGT45FrUU1z5vYwoVmngnWldXnYMw1IQhSnrH6aK1Xc5R
-	yYM4Yy8ds1ZaPdG/ih8cmEPMBi2JbqrCaMHSJqHhK3tjQ6isZ5oIh4YRZ/gDfHmLEOF4j16+1+CMO
-	XzNiK78g==;
+	bh=8TALhs+/49HWqCrdJiUJ3jlvl2BVQP+xdx3xwM9qlDw=; b=eOF//ZTZndlJ/o5R4n3jn2oiKv
+	s1Lj/IIKjtIbiKh6zYSCTz9URJxSdVIPiQqtPDnwHPgiAMwE2iwhwpewfkxtbLUDguSgo0d+a5u16
+	Q8tLqHZmUB9Xe/lDCEJNVcnYQTUxbyTXwxSV1kh5f4yENEcPs7X9TorcvbLLLRZG5K5ErD3S/iPMC
+	DbGgvn/D7uq6Mu5qGcPMX2rEkw4G0NhGpQ+8w7xe41Rz5AWLwNV2cu/gfw0Iic0x9wihX41o7L/U9
+	E3mdWO3T9Z5O9Za+JzOYttUpRl2N3wwzid8NeMdrUksV5xs+/QTGrA3NF73uqiRqQg429fygAkywa
+	BKF5mnoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuLG-0000000DbyZ-1JtR;
+	id 1xRuLG-0000000DbzY-3hZb;
 	Fri, 13 Nov 2026 16:41:34 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuKM-0000000Dayh-1cQN;
-	Fri, 13 Nov 2026 16:40:38 +0000
+	id 1xRuKN-0000000Db04-202q;
+	Fri, 13 Nov 2026 16:40:39 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2175F46A17;
+	by tor.source.kernel.org (Postfix) with ESMTP id E5F0462933;
 	Fri, 13 Nov 2026 16:40:38 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1794588038;
-	b=ikXZaXta1x22eFw9lMLSvVqrKKspEzjRVMmGJkQ/1c8R2er6CeJHQVejLwnCCpRd65As
-	 j+3/jhDNDJxy9syFa0gy+HZk0xaVp1ZzwfnwoQDpGwR8nbXLB/qS9X4xYw7oRtrwZm6J9
-	 8yUhf5R9CI5JGnDomHw4B2dw/+VRH9oFIyt68MKI3ol52vTlo/cruSh4Nkh6ZQc7ioYAa
-	 qTcil7qxfNjr/7UuvW9t2CBZJUf4nx5J7YWoUcC47HdqnUrEr69pSvj89lRcWajESA1lR
-	 9HOiwhnu15pJT23Z0YuS3oATVtZZ+wTYY8MAim/UAXwBRQztfokdMoT0C8PCYjItNLg==
+	b=Cg+s8CHiAmQqJZoMioaeQljye45tqVRsDCAsGSp7RLE6eVDJ/mBQHxvMpWflKarPAErj
+	 matjhN4si/3kKe64b5e1/tKwhy6uz49bn1NcUijNvEL1u2T8EWSjvQuFjlKAm6yQjtweU
+	 IMfJHgZ0g53SasroA7AX/Tm5yhonTnAeiPWfe4gQfywd4GyDQ/LRJFoRpiPiM5OJsk/hg
+	 h4HGK53YgdY4uYqQKIqEDAhrYhxUiPeN3Q6QVRRQ8h+c53/8qDF+KHVmcJI1LQmauM+Yg
+	 4XYTdpHv40L+9fVr6U0pus5b5WQAt/+I2865eez9UqyL5clSq9oHJtDd75E43ieLo/g==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1794588038;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=BVzq2TVxNl7sAlgFnyFmzccAIM4zI5WuCQ9eRu5l8NU=;
-	b=vKElS6mPK+gxf3dwfpdsEHY+Ng0KuT6Tbwm96c2uUby+/LdO8iLIwevOP0l+QRQ4yhRs
-	 sSZ60gU8lJedpKaA9Ia5Cqlf6tRjluTyas5OLIbaBq/5RER3cwZuEnXg2QLnEtC65RMVv
-	 K1echYFveaS3I7/E10s6eX7q2VzCnzVbqTy/yNWC1d5V3CQHbR7ooDZkNea1hzFQjQhlW
-	 FfaFZSV3qGurD+SDxKCn9trjZ/NcRXm/F19scP92sbhY8HMQoSOgL6gdtHNUaVXLFv+hQ
-	 focK3f1xo6y6xRp6Vkj+Kixizs9/oSAjBFS/E10E/IIG2ecTS3A1q9eL8ouJ/9ihN5g==
+	bh=OZCIHbTkBuyVirzrgZ0HMwGGiwpqM+aCNKiZrR08Zfg=;
+	b=ttX0AO5rVs460U56d2z4VJtcm0WWGCdOyADekfrmiY8hTFcFobF8HtUkffjr2m35SjK9
+	 PpgpaBWhUOhW4BmJJSvYchMGhTZNNyVZonN8oj/bmL9OKA0EFYmriQU/NVZwcF4ijynSO
+	 cChAKqajsMhD3ica1YUIqaKUwVcRkv3u03wWjSR3awR1R1smU5AA/fr//PlnR1SwG5cAo
+	 vTVejkumMTWrckEJG4bSLvGqJvAliRB9ITTPbBCJYfg+4WzmPNZincoqyr64oYy24rMgB
+	 fQYkY6dbqxCcnTvguayHU8fkpNznHMpbBnfH3tWo2EWRWuYmjX2acFRYG0Y4CBI0hew==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 0D68E1F00925;
-	Fri, 13 Nov 2026 16:40:35 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 492271F000C5;
+	Fri, 13 Nov 2026 16:40:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1794588038;
-	bh=BVzq2TVxNl7sAlgFnyFmzccAIM4zI5WuCQ9eRu5l8NU=;
+	bh=OZCIHbTkBuyVirzrgZ0HMwGGiwpqM+aCNKiZrR08Zfg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=JHXM3yd2uZ9GqcR/axW2ErnRfSCSl8FZ1IBwQ4oE/ObWwM819FBrThOhtysV6l7X9
-	 gMfOgpI68hw7LN1kDPyQSyUHfKdh4eLhQEvG2wdhD7+RZpi7ngUDDTfWA8WdFcGcNC
-	 IjdsRzKgbPLT6tPK/ORZYDmlPCQdqqyenbKF/H8JlShq744ci8l3ZrTMrHwqZAUptu
-	 8S524S6WEG3uXkaRL8a9+UnVfoja6isdg1YY2xjMBGHWgJwJByQtU1ilw4YptuO0dZ
-	 HK3baPZ/wBuI7/UPPmkwIfZMdoP/CePVKzA8p6S+daxvYXvJ1qnfT/YuhJuQX9x0b7
-	 rpNTgw3o3PKdg==
+	b=VDr6mC19K6U45zJjmotPPcmT28r9SwydFqpl6tKBwAk7axBtVHBWYDm0fyM+KF912
+	 o4eLqBqF5lFs6+//O4GN2e9iN6+r5grs5jbkMbtOx8qMJkEkxbGQhkXjo1KZTWGqPM
+	 anJmPO1Xh1Vt9XJVWnrdAZgjVmefTklT9bs1nBFoLiWyj++fyILwzzI/cQW6x3kYtt
+	 e/uChKntja2628R5vMbDxcGlBycZ8Yx9ySPcPSFL92Ix5NphjDgt3hqnF5RJEcg8eJ
+	 dXQejC7cfoRHmKDZZ75/3rI9u7ahN7oF7jT+SOuY3kALUH2dnq5dgxoRc2H+5JlRcQ
+	 kXrixRp6Ut8Kw==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 53483499EF;
+	by lkml.kernel.org (Postfix) with ESMTP id 25BC8499E7;
 	Fri, 13 Nov 2026 16:40:33 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Fri, 13 Nov 2026 16:40:38 +0000
-Subject: [PATCH v3 07/12] media: verisilicon: Reinitialize the IOMMU after
- resetting an encoder core
+Date: Fri, 13 Nov 2026 16:40:36 +0000
+Subject: [PATCH v3 05/12] media: verisilicon: Enable the Rockchip encoder
+ interrupt again after a reset
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261113-hantro-robust-v3-7-82383c722ad2@gmail.com>
+Message-Id: <20261113-hantro-robust-v3-5-82383c722ad2@gmail.com>
 References: <20261113-hantro-robust-v3-0-82383c722ad2@gmail.com>
 In-Reply-To: <20261113-hantro-robust-v3-0-82383c722ad2@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
@@ -100,13 +100,13 @@ Cc: linux-media@vger.kernel.org, iommu@lists.linux.dev,
  Sergei Khomenkov <shomenkow@gmail.com>, 
  Tharit Tangkijwanichakul <tharitt97@gmail.com>, 
  Sascha Hauer <s.hauer@pengutronix.de>, 
- Arun Iyengar <aiyengar1990@gmail.com>
+ Arun Iyengar <aiyengar1990@gmail.com>, stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794588032; l=6191;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794588032; l=1763;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=jnOaMXXkqIdF/W+aQDFv26f6KiRw45A2/C/Mdhu62GA=;
- b=E4l1drfEiAJSnLdl7T1rjptWqXeyJxfVf8LWkzKBpQsl0eMJm3v7Ft2xmP0KSV33xJ3HB+flB
- wrhXSrVghzjB5HwZj+B+UJIj5sxF23fny1XAmR69NlLHTdNujLTd272
+ bh=+x7MAvTN4ercbfI9R+yr1fEuEHWiIaV4thCiEwGlL7Q=;
+ b=DmmH1x6jQBsbYSOBHBaVgphBTbVvRTk3LmuShnbMWCcdllIPzSyNpvrxNu7zr7MgNbWCHasO4
+ qoCujNxrwL7BC1hMjPTAFrPBIE+y6ju5hZnMRno+q5aS/5QDlT+FKWO
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -135,182 +135,44 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-A Rockchip encoder core that faulted on an unmapped IOVA leaves its
-IOMMU with the fault pending, and the reset pulse of the previous patch
-can reset the IOMMU behind its driver. The IOMMU is only reprogrammed
-on runtime resume, which doesn't happen between back-to-back jobs.
+The reset operations of the Rockchip VEPU1 and VEPU2 encoders disable
+the encoder interrupt before stopping the encoder. Nothing enables it
+again: the encoder run functions don't write the interrupt register,
+only the interrupt handler does. Every later job on the encoder then
+times out as well.
 
-Do like rkvdec: allocate an empty paging domain at probe and, after the
-reset pulse, attach and detach it. The IOMMU driver reprograms the
-IOMMU on each domain change, and the default domain keeps its mappings.
+Clear the interrupt register at the end of the reset, as the interrupt
+handler does after each frame.
 
-Only do this for a device with reset lines whose domain is a DMA
-domain. If the attach fails, the IOMMU may be left without translation
-(rockchip-iommu falls back to its identity domain), so refuse all
-further jobs.
-
+Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
+Cc: stable@vger.kernel.org
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- drivers/media/platform/verisilicon/hantro.h        |  5 ++
- drivers/media/platform/verisilicon/hantro_drv.c    | 62 ++++++++++++++++++++++
- drivers/media/platform/verisilicon/hantro_hw.h     |  1 +
- .../media/platform/verisilicon/rockchip_vpu_hw.c   |  6 ++-
- 4 files changed, 73 insertions(+), 1 deletion(-)
+ drivers/media/platform/verisilicon/rockchip_vpu_hw.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-index 0353de154a1e..e3881ca21c56 100644
---- a/drivers/media/platform/verisilicon/hantro.h
-+++ b/drivers/media/platform/verisilicon/hantro.h
-@@ -193,6 +193,9 @@ hantro_vdev_to_func(struct video_device *vdev)
-  *			shared with interrupt handlers.
-  * @variant:		Hardware variant-specific parameters.
-  * @watchdog_work:	Delayed work for hardware timeout handling.
-+ * @empty_domain:	Empty IOMMU domain, used to reinitialize the IOMMU after
-+ *			a reset of the core. NULL if not needed.
-+ * @iommu_lost:		The IOMMU couldn't be reinitialized, no job can run.
-  */
- struct hantro_dev {
- 	struct v4l2_device v4l2_dev;
-@@ -213,6 +216,8 @@ struct hantro_dev {
- 	spinlock_t irqlock;
- 	const struct hantro_variant *variant;
- 	struct delayed_work watchdog_work;
-+	struct iommu_domain *empty_domain;
-+	bool iommu_lost;
- };
- 
- /**
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index daec9f1ea968..9bb4d1582622 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -11,6 +11,7 @@
-  */
- 
- #include <linux/clk.h>
-+#include <linux/iommu.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_platform.h>
-@@ -113,6 +114,30 @@ void hantro_irq_done(struct hantro_dev *vpu,
- 	}
- }
- 
-+/*
-+ * Pulsing the reset lines of a core can reset its IOMMU behind the IOMMU
-+ * driver. Attaching and detaching the empty domain makes the driver reprogram
-+ * it; the default domain keeps its mappings. A failed attach may leave the
-+ * IOMMU without translation, so no further job may run.
-+ */
-+void hantro_iommu_restore(struct hantro_dev *vpu)
-+{
-+	int ret;
-+
-+	if (!vpu->empty_domain)
-+		return;
-+
-+	ret = iommu_attach_device(vpu->empty_domain, vpu->dev);
-+	if (ret) {
-+		dev_err(vpu->dev, "Failed to reinitialize the IOMMU (%d), refusing further jobs\n",
-+			ret);
-+		vpu->iommu_lost = true;
-+		return;
-+	}
-+
-+	iommu_detach_device(vpu->empty_domain, vpu->dev);
-+}
-+
- void hantro_watchdog(struct work_struct *work)
- {
- 	struct hantro_dev *vpu;
-@@ -175,6 +200,9 @@ static void device_run(void *priv)
- 	src = hantro_get_src_buf(ctx);
- 	dst = hantro_get_dst_buf(ctx);
- 
-+	if (unlikely(vpu->iommu_lost))
-+		goto err_cancel_job;
-+
- 	ret = pm_runtime_resume_and_get(vpu->dev);
- 	if (ret < 0)
- 		goto err_cancel_job;
-@@ -1074,6 +1102,36 @@ static struct v4l2_m2m_dev *hantro_get_v4l2_m2m_dev(struct hantro_dev *vpu)
- 	return v4l2_m2m_init(&vpu_m2m_ops);
- }
- 
-+static void hantro_free_empty_domain(void *data)
-+{
-+	iommu_domain_free(data);
-+}
-+
-+static int hantro_alloc_empty_domain(struct hantro_dev *vpu)
-+{
-+	struct iommu_domain *domain;
-+
-+	/*
-+	 * Only needed if the core can be reset, and only possible with a DMA
-+	 * domain to return to.
-+	 */
-+	if (!vpu->resets)
-+		return 0;
-+
-+	domain = iommu_get_domain_for_dev(vpu->dev);
-+	if (!domain || !iommu_is_dma_domain(domain))
-+		return 0;
-+
-+	domain = iommu_paging_domain_alloc(vpu->dev);
-+	if (IS_ERR(domain))
-+		return PTR_ERR(domain);
-+
-+	vpu->empty_domain = domain;
-+
-+	return devm_add_action_or_reset(vpu->dev, hantro_free_empty_domain,
-+					domain);
-+}
-+
- static int hantro_probe(struct platform_device *pdev)
- {
- 	struct hantro_dev *vpu;
-@@ -1134,6 +1192,10 @@ static int hantro_probe(struct platform_device *pdev)
- 	if (IS_ERR(vpu->resets))
- 		return PTR_ERR(vpu->resets);
- 
-+	ret = hantro_alloc_empty_domain(vpu);
-+	if (ret)
-+		return ret;
-+
- 	num_bases = vpu->variant->num_regs ?: 1;
- 	vpu->reg_bases = devm_kcalloc(&pdev->dev, num_bases,
- 				      sizeof(*vpu->reg_bases), GFP_KERNEL);
-diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-index 13e573f1f19d..aa610dd5beef 100644
---- a/drivers/media/platform/verisilicon/hantro_hw.h
-+++ b/drivers/media/platform/verisilicon/hantro_hw.h
-@@ -427,6 +427,7 @@ extern const struct hantro_postproc_ops rockchip_vpu981_postproc_ops;
- extern const u32 hantro_vp8_dec_mc_filter[8][6];
- 
- void hantro_watchdog(struct work_struct *work);
-+void hantro_iommu_restore(struct hantro_dev *vpu);
- void hantro_irq_done(struct hantro_dev *vpu,
- 		     enum vb2_buffer_state result);
- void hantro_start_prepare_run(struct hantro_ctx *ctx);
 diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index 1467ae2bed1a..113b6977031d 100644
+index 02673be9878e..ce3dbea70a8d 100644
 --- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
 +++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -490,8 +490,12 @@ static void rockchip_vpu_enc_hw_reset(struct hantro_dev *vpu)
- 	udelay(5);
- 
- 	ret = reset_control_deassert(vpu->resets);
--	if (ret)
-+	if (ret) {
- 		dev_err(vpu->dev, "Failed to deassert resets: %d\n", ret);
-+		return;
-+	}
-+
-+	hantro_iommu_restore(vpu);
+@@ -475,6 +475,8 @@ static void rockchip_vpu1_enc_reset(struct hantro_ctx *ctx)
+ 	vepu_write(vpu, H1_REG_INTERRUPT_DIS_BIT, H1_REG_INTERRUPT);
+ 	vepu_write(vpu, 0, H1_REG_ENC_CTRL);
+ 	vepu_write(vpu, 0, H1_REG_AXI_CTRL);
++	/* Only the interrupt handler writes this register: enable the interrupt again. */
++	vepu_write(vpu, 0, H1_REG_INTERRUPT);
  }
  
- static void rockchip_vpu1_enc_reset(struct hantro_ctx *ctx)
+ static void rockchip_vpu2_dec_reset(struct hantro_ctx *ctx)
+@@ -493,6 +495,8 @@ static void rockchip_vpu2_enc_reset(struct hantro_ctx *ctx)
+ 	vepu_write(vpu, VEPU_REG_INTERRUPT_DIS_BIT, VEPU_REG_INTERRUPT);
+ 	vepu_write(vpu, 0, VEPU_REG_ENCODE_START);
+ 	vepu_write(vpu, 0, VEPU_REG_AXI_CTRL);
++	/* Only the interrupt handler writes this register: enable the interrupt again. */
++	vepu_write(vpu, 0, VEPU_REG_INTERRUPT);
+ }
+ 
+ /*
 
 -- 
 2.55.0
