@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9F208606A33A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 21:09:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D431760A5BD0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 21:09:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZR8wJxL/;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=S8PF/b2X
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=S5UM4H8d;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=RIvUPb5f
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,56 +14,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=NvfT73ryhh/Rz1mkfMO5LTxonMnV7xPmsCJdK56QmRc=; b=ZR8wJxL/9UboLNhJEiERoUKahr
-	YT0vcNTJM5D9VrBTDbv4EttJ9Xy1Eg3cT9cjq2QGEu5cZisbadXDrTMAvTspNEJOhwtDLZSk4jbik
-	KtgV3mfrLP1jHfrjEdo68E9uOpXalzJaX91S8R9ZAlX2RqOKtrtUT7+ZndThYA9PDrGx5a3iL7X4m
-	BqeGb1BMtsvdFCQF7qQhZ1zdBPT3uflgHR036Lag22ChZLaXAWyLG/ZoWymwjgGmAGNbQKFASx6yP
-	ZY/hdboIH5rbEMkqC428Ub8ZYTQ0u87ClvqMSLxNS6/2TN5vZrJtO7Yfi9CNCHLT1kymhRYx1pw8m
-	Mi17cEVw==;
+	bh=MMCgBc7mTZRLtEUjxKPU8iV+knIMZCsSTwx69XkqrUU=; b=S5UM4H8da8ul2CzHidL9+44JwB
+	YACu8cZ4J6sJ2THdKOTB8FOuJ7p8XLXyJpLK7PrPJPpQIzNw/fKIo8ORfu0tnDGTLC5tZ06ag6o2Z
+	Zox+0SGt7e5p1+fhFACBFQtu09Y9X5n+5NEQHA0jf3+eke7nY4/AiEYWMgDxy8ivKJO8GwpcFdJvz
+	ScgtED1uU64JH7QXO6kJwJnff6Gtic5vghB1dz0kY5RAdfPmJXMNmQ6iDTNpPsRRYlxjnOB72h/Au
+	01Y3ROfmvhiHi+bsNH6LFuktX29Tm+xiXad1byFRLLPmMxtv0+KdTyy93+AA9VB17no8+0Ac9eP5F
+	knOnlZeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRyWP-0000000EXMy-0RrM;
-	Fri, 13 Nov 2026 21:09:21 +0000
+	id 1xRyWk-0000000EXZ1-1nE2;
+	Fri, 13 Nov 2026 21:09:42 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRyVO-0000000EWnY-0Kr0;
-	Fri, 13 Nov 2026 21:08:20 +0000
+	id 1xRyVM-0000000EWmc-2cPq;
+	Fri, 13 Nov 2026 21:08:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=OeOsxZrRVRDIqTdGDpdJI5DQe9V4RgKB2bsKt5qqiyw=; b=S8PF/b2XIzZBdeBxgIu2e8xOT7
-	RUj4jb5ZfUUbi5n3xl8mxvE1yJjjMr0KitMyUPIwiZ0Wuutp608PtIQAhn90ASOsLZJUM7BdzgnR5
-	9FxTEfB2aQSACtV5rT5AddyyzRUJVLwLYLk09bUbZX5JHdXYHeckEaDZwic7+V3Bc1F6PGCNm/U+y
-	CVDuUDOP7U8fEgxkjaQqUerDSspjNo7AUow4q4Nqtp+XoIeepWbGPy9HydHv297f2q6297q0rBnlv
-	rujPtcmVu2NbEn9TpuQkShhn5DVOsAXnICWANlP3lQUU625qk4HnNjSyNYrX1yINoEbeJyp4slk2t
-	3rswiM1Q==;
+	bh=9HyvOPa2UhLzmeJoxn3FVY6hx1fLNyYLiAGZU5rDFMI=; b=RIvUPb5fDU60DynvAvDuW4rbXJ
+	vuilFTWJBxMAgN7oDMQZT7daazrCvZ3jkoEBJCccTivqbH5NFKEtZL36TcyL/deFE6fEI4q4mLU/h
+	MIdDCa6copyv7Kucd5zZ7S2kgz/RreaNh7wkz7+6yf+lP9uUQ56bhB3K03Cua6AAabReO2XynzBfC
+	qkrcoIWGKPwY0xegS0CDRpDBHE8kA2oIFnR36kH/eErIHpdx2/BFRIckJtPHR/D5Vu7Bcd1/5JbeN
+	TuSMBTWyHs2NvCYyL8sq19BkQkye6srdLU832WTFw9C3Fs8WUQnw1jY+26u0d5k1DNgmtzk33RAaj
+	Ad1kRmpQ==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Deomid rojer Ryabkov <rojer@rojer.me>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	broonie@kernel.org,
-	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
-	krzk+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-sound@vger.kernel.org,
 	luca.ceresoli@bootlin.com,
-	robh@kernel.org,
-	jin@mediatomb.cc,
-	shawn.lin@rock-chips.com,
-	jensenhuang@friendlyarm.com
-Subject: Re: [PATCH v2 0/2] arm64: dts: rockchip: NanoPi R2S Plus: fix io-domains, enable SDIO Wi-Fi
-Date: Fri, 13 Nov 2026 22:08:07 +0100
-Message-ID: <179460406454.1165597.838727442879059278.b4-ty@b4>
+	kernel@collabora.com
+Subject: Re: [PATCH 0/5] arm64: dts: rockchip: Enable more features on RK3588 EVB1
+Date: Fri, 13 Nov 2026 22:08:08 +0100
+Message-ID: <179460406451.1165597.16868636622919014871.b4-ty@b4>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261031104714.3271017-1-rojer@rojer.me>
-References: <20261031104714.3271017-1-rojer@rojer.me>
+In-Reply-To: <20261106-rk3588-evb1-dt-updates-v1-0-bdbe16223589@collabora.com>
+References: <20261106-rk3588-evb1-dt-updates-v1-0-bdbe16223589@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_130818_654424_170ECEE6 
-X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-CacheID: sfid-20261113_130818_611125_52EA1A0C 
+X-CRM114-Status: UNSURE (   8.31  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -86,22 +84,21 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Sat, 31 Oct 2026 13:47:12 +0300, Deomid rojer Ryabkov wrote:
-> Patch 1 fixes the VCCIO4/VCCIO6 supplies of the NanoPi R2S Plus, which
-> were inherited from the NanoPi R2S but are wired differently (see the
-> schematics referenced in the patch).
-> 
-> Patch 2 enables the M.2 E-key SDIO slot, which FriendlyElec populates
-> with an optional RTL8822CS (Fn-Link 6222B-SRC) Wi-Fi module.
-> 
-> [...]
+On Fri, 06 Nov 2026 22:57:05 +0100, Sebastian Reichel wrote:
+> Enable a bunch of features on the RK3588 EVB1.
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: Fix VCCIO4/VCCIO6 supplies on NanoPi R2S Plus
-      commit: f889f5d1f9a809fda80d9c6a9e540d8e0e12761f
-[2/2] arm64: dts: rockchip: Enable SDIO Wi-Fi on NanoPi R2S Plus
-      commit: bcb95c3641b06f20e0c2ed4c849139ad72084d29
+[1/5] arm64: dts: rockchip: Add missing PCIe wake pinmux on RK3588 EVB1
+      commit: 57c33a45eab35579a73eb0cf8a742dd54a5e6566
+[2/5] arm64: dts: rockchip: Enable NPU on RK3588 EVB1
+      commit: 38e2bfcc44fc3694c4ab2aac896ad9fa6abbeca9
+[3/5] arm64: dts: rockchip: Enable HDMI sound on RK3588 EVB1
+      commit: ea3b5dcefd88c6c433c0c0f05221e058f60b4b26
+[4/5] arm64: dts: rockchip: Add DSI panel to RK3588 EVB1
+      commit: 61e97442ca409f577816699aa203461b76b24e9a
+[5/5] arm64: dts: rockchip: Add Bluetooth to RK3588 EVB1
+      commit: 914eabb8b872fe1298be5d397525f0a0e39b25b3
 
 Best regards,
 -- 
