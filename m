@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B1E7A606A335
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 02:59:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 255C9606A8A6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 03:47:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZdHOEyZS;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=Qdg4MUZ5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4R3IRvNp;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=UOeTeFTk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
@@ -14,30 +14,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=2//VqzMAL8TL1u5s9xrUXfzdrbxhJ6hUvIf2SdIEcd0=; b=ZdHOEyZSd48kCOLeAioOG8uKpb
-	rBVEH7lv2uyle8U0ZZ15UjgieUy+PhHjprxq55hRYtNrYkfoKrMbZnP1MnioiOykF8B2rNqOi7/Fp
-	oKNXj3ijNfMOOwupwQKQn2tJgbygK+TdOoZK+RZzWJC2lEBUmqQRWzYmpesLCNCWFxc67GqsDlFYX
-	wsXkprg+Nmf9lGKpkQIuZlVraA2S4p11b83UPSYxYQja7qGNtTMXj1PjRIJLg4hHLDzVHCCsKLO+j
-	GXj0XsAXEKCKANKHEL9TNOy/1Eww4HzAxjbzBgluNCx43EzZbcCFjPMuKmuRHJJjn76jhbRq+wzuk
-	zKS9pcUA==;
+	bh=GZW3LVa1RNoDLU90ItUT/9ekhrGs3nk+V6BwvPWU0CI=; b=4R3IRvNplh5VFUpEI7OUgWjvDU
+	QwmbZDaxu8/LTE6mlVS4CApjcsBVYe5vOPdcmFjxw3R2iJ37p9mnY8tdvlh09PJIo3i1XN4C2lzJn
+	pnFCWK8CR6vSdThHAkS1gyS0bQaQs8xRVx5u/rXcR7fk6wwpI+2INQnk3vmIJ+nmA+wcCtMdejT6C
+	QW4mftet2N2RPfQ04c1sZDcJX2Fb8LoVW8ULrVL27Q5Q8CFafQYecqZYOQk906axCjKhwWNuMp6Gt
+	vv6sjzdC5Ridh2Eb+yAf29ijtmn05nLIjMgDKL7ge0tC/seSQQCZrRdjkksZ5ggbywxyJjfA6ooAT
+	QDhecYfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRhVg-0000000BXbA-04mD;
-	Fri, 13 Nov 2026 02:59:28 +0000
-Received: from mail-m12843.netease.com ([103.209.128.43])
+	id 1xRiGA-0000000BbOv-2LE5;
+	Fri, 13 Nov 2026 03:47:30 +0000
+Received: from mail-m9357.xmail.ntesmail.com ([103.126.93.57])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRhVc-0000000BXa6-04sA;
-	Fri, 13 Nov 2026 02:59:26 +0000
+	id 1xRiG7-0000000BbNu-03Ch;
+	Fri, 13 Nov 2026 03:47:29 +0000
 Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 548728669;
-	Fri, 13 Nov 2026 10:59:19 +0800 (GMT+08:00)
-Message-ID: <72fb3540-e08e-40be-8f3d-63727063be6a@rock-chips.com>
-Date: Fri, 13 Nov 2026 10:59:18 +0800
+	by smtp.qiye.163.com (Hmail) with ESMTP id 5488ddde6;
+	Fri, 13 Nov 2026 11:47:22 +0800 (GMT+08:00)
+Message-ID: <d8c4201a-7fa5-4831-b2a0-7e603e443567@rock-chips.com>
+Date: Fri, 13 Nov 2026 11:47:21 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/9] drm/rockchip: vop2: Don't use uninitialised
- dividers on RK3588
+Subject: Re: [PATCH v2 6/9] drm/rockchip: vop2: Report POST_BUF_EMPTY at most
+ once per frame
 To: aiyengar1990@gmail.com, Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Andy Yan
  <andyshrk@163.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -49,23 +49,23 @@ Cc: Piotr Zalewski <pZ010001011111@proton.me>,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20261112-vop2-fixes-v2-0-8218c1cf8ac8@gmail.com>
- <20261112-vop2-fixes-v2-2-8218c1cf8ac8@gmail.com>
+ <20261112-vop2-fixes-v2-6-8218c1cf8ac8@gmail.com>
 Content-Language: en-US
 From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20261112-vop2-fixes-v2-2-8218c1cf8ac8@gmail.com>
-X-HM-Tid: 0aa1d2d8660c03a8kunm99272d8254646
+In-Reply-To: <20261112-vop2-fixes-v2-6-8218c1cf8ac8@gmail.com>
+X-HM-Tid: 0aa1d30462b203a8kunm6288f08e5bde9
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZS04dVkMfH0hJGk5CGUtOQlYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCGBkaVhlOS0IeThgaSh8ZGlYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
 	9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=Qdg4MUZ5Y5J5AttCyLUfn9lIM32IW8XAcaVforshf1MHKrWmIjs5KPzF7sr5ykNqk4XWdPqxd/kZqOSYOCZRct3O6ZciBOTaddFdowkjYuaDeHkiVOJ+Pputz/rl2wt+RHFdr6fNS8xAE5b+cJEXtrfgF7Tdnc0btK8nXnye/dY=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=7f0VgzKYfj5CawodwOdHpH247rLlZpKsDV1GNlXMq38=;
+	b=UOeTeFTknFLncW5GEyIIqqIAPAhoP8j7fodDwPUCsy9ptksY/V+zcWtpn4NERrJDm0gn/gfDgrY41ayvsT1WRO0R0/a01ZXggzWwaDtU58ia3adLvT/HqImPAgfGtvR4S3+NAC8HvHZhqZpWt3atIytZl3XG24J1toe9Yl7aGwY=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=m3fmYBaNLptWcqbvTdAs8gd+S3McHL6fxfP2xtMRAWE=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_185924_631546_9A247033 
-X-CRM114-Status: GOOD (  22.44  )
+X-CRM114-CacheID: sfid-20261112_194727_284734_9C0E9B0C 
+X-CRM114-Status: GOOD (  14.54  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,69 +92,46 @@ Hi Arun,
 On 11/12/2026 4:33 PM, Arun Iyengar via B4 Relay wrote:
 > From: Arun Iyengar <aiyengar1990@gmail.com>
 > 
-> rk3588_calc_cru_cfg() converts all four dividers to their register
-> encoding with ilog2(), but only sets the ones the interface uses:
-> dclk_out_div is left uninitialised for HDMI, eDP and DPI, and
-> if_pixclk_div/if_dclk_div for DP and DPI. The garbage is then written to
-> RK3588_VP_CLK_CTRL; on an Orange Pi 5 the dclk_out divider of the HDMI
-> video port reads back as 3 (/8) in every mode.
+> POST_BUF_EMPTY is raised for every line on which the post processing
+> stage of a video port finds no data. The interrupt handler only
+> rate-limits the error message and leaves the interrupt enabled, so an
+> underflowing video port keeps the CPU in the interrupt handler 50000 to
+> 300000 times per second, for as long as the configuration that causes
+> the underflow stays in place (e.g. 120000 interrupts per second for
+> 3840x2160@120 with two full screen layers on one AXI port).
 > 
-
-The comments are not entirely accurate. The divider relationship is:
-
-dclk_out_div: HDMI(dsc mode), DP and MIPI
-if_pixclk_div: All interfaces
-if_dclk_div: HDMI and eDP
-
-> Start all dividers at 1. dclk_out only feeds DP and MIPI (and HDMI with
-> DSC, which is not supported), so for the other interfaces keep it at the
-> dclk_core rate, as the vendor kernel does for HDMI with DSC, instead of
-> letting it run at the full DCLK rate.
+> Mask POST_BUF_EMPTY when it fires and unmask it at the next frame start.
+> The frame start (FS) interrupt is enabled for that frame even when
+> vblank reporting is off, and disabled again once POST_BUF_EMPTY is
+> re-armed or the video port is switched off. VP_INT_EN is write-masked,
+> so masking POST_BUF_EMPTY leaves FS alone; FS only needs enabling here
+> while vblank reporting has it off. A new per video port lock
+> serialises the interrupt enable bookkeeping between the interrupt
+> handler and the vblank callbacks. The error is still reported, now at
+> most once per frame and video port.
 > 
-> Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
+> Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
 > Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 > ---
->   drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 12 ++++++++++++
->   1 file changed, 12 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> index c44648e1bc0d..659fd0a3ab63 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> @@ -1579,6 +1579,15 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
->   	unsigned long if_pixclk_rate;
->   	int K = 1;
->   
-> +	/*
-> +	 * Not every interface uses every divider: dclk_out only feeds DP and
-> +	 * MIPI, the interface dividers are unused for DP. Start from 1 so that
-> +	 * no divider is left uninitialised when its value is converted below.
-> +	 */
-> +	*dclk_out_div = 1;
-> +	*if_pixclk_div = 1;
-> +	*if_dclk_div = 1;
-> +
->   	if (vop2_output_if_is_hdmi(id)) {
->   		/*
->   		 * K = 2: dclk_core = if_pixclk_rate > if_dclk_rate
-> @@ -1648,6 +1657,9 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
->   	}
->   
->   	*dclk_core_div = dclk_rate / dclk_core_rate;
-> +	/* An unused dclk_out must not run faster than dclk_core */
-> +	if (!vop2_output_if_is_dp(id) && !vop2_output_if_is_mipi(id))
-> +		*dclk_out_div = *dclk_core_div;
->   	*if_pixclk_div = ilog2(*if_pixclk_div);
->   	*if_dclk_div = ilog2(*if_dclk_div);
->   	*dclk_core_div = ilog2(*dclk_core_div);
-> 
+>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 91 ++++++++++++++++++++++++++--
+>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.h | 10 +++
+>   2 files changed, 97 insertions(+), 4 deletions(-)
 
-I think we can drop the previous divider initialization, and configure 
-the correct dividers for specific interfaces.
+Well. This change can indeed reduce CPU interrupt pressure when 
+occasional POST_BUF_EMPTY occurs. However, we do not expect this error 
+to happen during normal system operation: if POST_BUF_EMPTY shows up, it 
+should be resolved by adjusting layers configurations or improving DDR 
+bandwidth, rather than being masked.
 
-- dclk_core_div and if_pixclk_div just remain unchanged.
-- if_dclk_div is set for HDMI and eDP interfaces; all others are set to 0.
-- dclk_out_div is set for DP and MIPI interfaces; the rest are set to 0.
+On the other hand, this approach drops the per-line POST_BUF_EMPTY
+information. In complex debugging scenarios we still need the per-line
+error reports to locate issues, for example partial line data corruption
+with AFBC on Cluster planes. Reporting only one interrupt per frame 
+would hide these critical debug details.
+
+So in my opinion, we should keep POST_BUF_EMPTY handling as it is.
+
+Nacked-by: Damon Ding <damon.ding@rock-chips.com>
 
 Best regards,
 Damon
