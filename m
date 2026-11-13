@@ -2,74 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F421606A8AB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 11:38:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 511EF606A8AB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 11:38:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hUvtKnO9;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.a=rsa-sha256 header.s=google header.b=nLAqHjfR
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4CaUtbkn;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.a=rsa-sha256 header.s=google header.b=GvSunoO2
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=0MbCy72JCru9/L/kjGZwmO6fy1B9SbBHT57LerhtsFg=; b=hUvtKnO9X7houytPWe5phUDwBG
-	CHz8uKLAlWDlIjW1c1cZ3b4n53I6OMrb0kAEmBC+6HPRG1LNASrl+UsmV86YRrPtRbq0H9k0X5a/N
-	twtapzgOuyOCUTZANQhR0N73ym3L3YXBK0LOFUxe2gvnayA568ndmbmhlB7tDQuaqTNtVNmetYau3
-	6XAkFAG37RQ8pxReKPOm4P3hpBTg8rP3DUGbStkxEIr/9EZw91Lpf9Y+Dca4jneiagy5mwwFV0VZO
-	Q8X6YzC7ybuTvq4NzbM8gZU3/Z/mFhtoBEpatA0x2OWeah/TzDHCWrbrsI4y66FWXJfPyAdDgAj/i
-	938uSnLg==;
+	bh=uzhafQVrQZPrmdqIcWehUbB7v5dXZ6O5FNu4ZoSrBSA=; b=4CaUtbkn0mzGCs4x8JePgSGhc4
+	Ah4T1jTSyrmWXJw3UM3fpvD0RL38yoK88if8BR/GS7svhF2+WV+MZET1ZSAZxCrJupzYcndw8ob0Q
+	3mMy4suoLWiY3rnXfL/Gvnh/wMCKAUtwy+dlynpqmpTes382uEdW8igCZgNQ/TsqTE1JeDVQlTI/D
+	Gu/L9MLHbKlXw2niUU/w/IL1NftgEMPhqj6SqgLSjKzTkLXQcDnY6Jf1yCTDZHqtYMxIw8jYDsWAs
+	d/6C7apOZ8ERfGfjh2qz9yqjmifJ3YZ0imTD1d3XbOhJgj5WfF27caaoXF1jE0uPsLQm0eGKYu8rd
+	lVFdZiFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRpbk-0000000CYQh-1ck4;
-	Fri, 13 Nov 2026 11:38:16 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1xRpbm-0000000CYRn-2laQ;
+	Fri, 13 Nov 2026 11:38:18 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRpbh-0000000CYPd-3wSj
+	id 1xRpbj-0000000CYQC-3uQU
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Nov 2026 11:38:15 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4a208d93758so13095325e9.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 03:38:13 -0800 (PST)
+	Fri, 13 Nov 2026 11:38:17 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-48dfc0421d9so974045f8f.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 03:38:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=amarulasolutions.com; s=google; t=1794569892; x=1795174692; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=DyYt9/DWMV0EyHpbAMNA++QZYC/8eNT5egYzuTC+VI8=;
-        b=nLAqHjfRkjRp6LE8ogf33XQtEt2aj5nC0nJjYp9MdS0HQdoCEzt/5loV17CBPEeKyJ
-         tMIYTqio6V81aGejiClM7agcc8NfUH6IFVr0grtdxDhguZDkcBJ8zOGXFBDPL2n1UNs2
-         ITeetR42YwlgT+xRqy/3fIZLqlT51jbsopul0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794569892; x=1795174692;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=amarulasolutions.com; s=google; t=1794569894; x=1795174694; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=DyYt9/DWMV0EyHpbAMNA++QZYC/8eNT5egYzuTC+VI8=;
-        b=i9iNZZh7NEOMhNHV2voBb5K/LpScrcaWjM9CU1NjJBTsySW5DCdrOrfNWwuGuxBjpk
-         +QJkq6pCneOQ7hBxZ0BCSQYqvOOI1mnFXfYUbfo/NtIW5uYR6ZlmRIzVeuUIkffSthQm
-         /YKhemydBHSXF1+m0rf1ORf40IeIgRH3Rhn5iWHxr7/Dn+wk0kly1cWnOz8b0XcCenV3
-         gALHlHqoRPH5tb9wpq3B1Kh7WPNY7gdcmQ7SNihQ8bRzqszDuRDA/CAKDgarmHVx+Ece
-         cyirAc4ImocUifV5pE/lEaX1YCX1pgzvVk8nIvBebWq+0YnCDZge/Es9bfwy+1jeD200
-         ez+A==
-X-Forwarded-Encrypted: i=1; AL+hErHEK4iMZ5I/zhuohE9VYiEpHqitl78iVU9avGb9PaPlbCvOE3QL+Np+J8oqpWxia+R5VGXW3oItBCxCGkX/qw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8ePVFLwIuJjk8kX8JSUgHXNwo0it6uTBcI+u8L+0yDui8R42rV
-	80bArmn3XX54+Z196xXxARxailCapOM7a23CHLygdohynBkTGwE4aBjddw5bQnWjT0s=
-X-Gm-Gg: AYBFou0na4KTk1aIt5fy3OIANzvFODMAe7Xy6pz7ArCtRlV19lXb/avtMMOKwl8rEb9
-	oIoUn90LcAGjk4PtpmYshZRTUUTvGy1C3Uqm3Rgg6UvwRcCkuD+R131b9vuc5etZeOETde2SN/X
-	79qVI6LYwJ4gt5dgk4jd+91EpYVYlxGMGu0bZMBhEmClx4aKyzAFfV56AFyp7rWG0pS0mb6vt3r
-	SmB10+CsPNqXdsQPVKbXfMEfFGONzzUR3L6m60Tz8yg6FPq1k87uyy5ZKpm3EuYAuzQkQIjNbmm
-	76nFx2EBqbXP/DASRJm9F1yb1HLAKh42Ch3FPHGM6nWV2Wej5aTcFko44kPOO1zob1LrwMcdHlg
-	TGbTcn/7GEQtnNoYaDtJ6idFVXuMLCCu525GaoxsE46V2eBrUG7+4C/eZlHMTSaPEGvlzyX19Ke
-	fxEbNqfyJvWc+vAOJIp5mCTDdFYJAeWcpPN6pnJofueNt3JkQakp7iSRBB5UDoOqs5K5KZezgRK
-	pPZH+4EZye4h7LGEk1QHelQ++OOXZyW0vGoJcazuQ9HkMbn9JQYnd+dWL4xwVhenLKjWWTXm5xq
-	V/DvztjqPbGD1XIkzdv08o3/RaxsYCA2Efy5eh1DbcP6pxj+uwiJX2AncZm3gAJ9pvLv4bd7v6F
-	n
-X-Received: by 2002:a05:6000:26ce:b0:48c:571a:a1aa with SMTP id ffacd0b85a97d-49c70de38a0mr4829044f8f.19.1794569891720;
-        Fri, 13 Nov 2026 03:38:11 -0800 (PST)
+        bh=4DDTI+GX+RwqcL75e7n+wQt/eJDBwcDKt5JSCL+vSP0=;
+        b=GvSunoO2qIO70ElxPx7lMv+bnygaPKkWRDPG0Zu8ezKDaovWJVEdfHl9mYOmsO3h7w
+         oDwRytBMdxG2iGvD/b7FQwaQ6gnbnr5ODPeTC3tqkQKlEAXTJbRtfpwmZe3AeSjy94eC
+         pdW1a0iNqH/TMiPusVzXVk6leuZW8cbwxNFPY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794569894; x=1795174694;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=4DDTI+GX+RwqcL75e7n+wQt/eJDBwcDKt5JSCL+vSP0=;
+        b=shePBuHENb5LpPRkAXNaLG2ZijE8OOzmqD92n3Iu8W9T0hTJFyuTkwH2zpbZtWV0O0
+         AYyC+4NZfQi/Rqbh+13O2a/79aelEZuXL8n/xpB59mhxjotvp79puzABVaRBWOudV1p5
+         wlJzsTdDJtPY1Zn/a1xFq1dvcJH2HiJkkk2fQSTQfKNPPSPGVwCmg9bqS9uROXTTQRHp
+         dCiybe5CrR2EF1nDWR7pGT3P1BfB6PB3p7g0NX88Xh1tiw67dkGF7kHdMQojpT678JGp
+         Jx9RC/U9WmfvlOuRBehOilhy7BnwEGWf0xGBnrczWqFcnYUyhnJuQMsf7sdWuyyVG1Yr
+         MGRQ==
+X-Forwarded-Encrypted: i=1; AL+hErHTocO9wCormkmEp6sEMXA6ofg9X8t8rrxZ8bIdmapb2iizO23jylUusQzbKPmaRlCVrvgaY8zBubjkqmAa7A==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+uXp/TBxOiVBPWUG91jB8RVJIlsyo557/DeTFLqg3jBPdYu73w
+	TrpRf6wdDnSAFh6dH6CCamLyI7ocIpj1m4xf5BwDoCC+/O+0U5Cfk1W9uQY62Q7FPY0=
+X-Gm-Gg: AYBFou1Zm5RZi2kwcLp6XkecdvYaMOeFPdIJZH7PukoWR3wIiZ9pi1JEQHhC6HpTAKi
+	/3jDhl4hYeFtEAKi37knolBr/wb75BLx6Y5yeiar/+b0UzlvxU0xS6n4K/AwnkaPO90B3DL1Wgk
+	R5QeSSTikM2J9adp/dXxZ3IJXggr6jMox7yLRlbCCdOGH06iMT/RVIL3TLynhz1wjgdNtScs9iw
+	XWhotMkqnoTqUgyPIhW6Hc/8aA//+7nxr9/VeBNFXRhDFNW0ugU6Afs4DdS0YsfKjxEGxcHojCq
+	Dy+TC7wLZlvUeqeCnsslus+BnPCnZd88l1tz3BplZsfkX8iEnx2fqogiOMD3xZ1iqsVC3Bg7clE
+	JbBAHxCV0THt5R4aqUQlGCL3q5bHSIyKGf87d1QWqplIr3taT7tIR8QRXX8rKQu1MQlbPxJn5YC
+	NyEV54oJySAYSKZ6AG93VUVmi/wHmD23giJwZyjc1Tmwmi6seZCUMiG4ICmHf9ZzeYFR9cN+fPW
+	MX2l/BiYMks29ImT8Xu9PAPiDVMLCLbVlVJ4N4cybtFhp6AIssqtH62wjpdSuhCIZ86PDl+yZ02
+	PeJdqUBGaQsOIAgO9tHFzsE3zvN6gy9OXBP6cy+MZYZMs52IR6wbfCVanFXs1NQyxwKwT90UXfJ
+	b
+X-Received: by 2002:a5d:6f19:0:b0:490:a3e7:8af3 with SMTP id ffacd0b85a97d-49c71a6547bmr4387223f8f.35.1794569893910;
+        Fri, 13 Nov 2026 03:38:13 -0800 (PST)
 Received: from thinkpat.amarulasolutions.com ([2a07:7e81:b71d:0:3e39:d071:1d81:5914])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-49c5d03b10fsm5448492f8f.1.2026.11.13.03.38.10
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-49c5d03b10fsm5448492f8f.1.2026.11.13.03.38.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Nov 2026 03:38:11 -0800 (PST)
+        Fri, 13 Nov 2026 03:38:13 -0800 (PST)
 From: Patrick Barsanti <patrick.barsanti@amarulasolutions.com>
 To: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
@@ -81,16 +82,20 @@ To: devicetree@vger.kernel.org,
 Cc: linux-amarula@amarulasolutions.com,
 	michael@amarulasolutions.com,
 	dario.binacchi@amarulasolutions.com,
-	Patrick Barsanti <patrick.barsanti@amarulasolutions.com>
-Subject: [PATCH v3 0/3] arm64: dts: rockchip: Add support for Axelera Embedded 111c
-Date: Fri, 13 Nov 2026 12:38:05 +0100
-Message-ID: <20261113113808.1779860-1-patrick.barsanti@amarulasolutions.com>
+	Patrick Barsanti <patrick.barsanti@amarulasolutions.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v3 1/3] dt-bindings: vendor-prefixes: Add Axelera AI
+Date: Fri, 13 Nov 2026 12:38:06 +0100
+Message-ID: <20261113113808.1779860-2-patrick.barsanti@amarulasolutions.com>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20261113113808.1779860-1-patrick.barsanti@amarulasolutions.com>
+References: <20261113113808.1779860-1-patrick.barsanti@amarulasolutions.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_033814_006191_F0116B3F 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20261113_033815_984163_A86E58BE 
+X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,89 +109,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The Axelera Embedded 111c is an SBC based on the Rockchip RK3588
-SoC. It offers efficient AI compute for multi-stream computer vision and
-generative AI applications in a compact design.
+Axelera AI is an EU-based provider of AIPUs for edge AI inference.
 
-Product page [1].
+Link: https://axelera.ai/
+Signed-off-by: Patrick Barsanti <patrick.barsanti@amarulasolutions.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+---
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-This series aims to introduce basic support for the board,
-which includes the console, the eMMC, the two Gigabit Ethernet ports,
-the four USB ports and the HDMI connector.
-
-Changes in v3:
-- Address Heiko's comment about the incorrect Signed-off-by chain.
-- Address Heiko's comment about the dts name being too generic.
-- Address Heiko's comment about the deprecated
-  "regulator-suspend-microvolt" property.
-- Add Copyright header on dts.
-- Add Krzysztof's Acked-by.
-
-Changes in v2:
-- The board was renamed by Axelera between v1 and v2, from "Metis
-  Compute Board" to "Embedded 111c". Address the name change. Drop
-  Conor's Acked-by on the bindings, since the compatible changed. Keep
-  it on the vendor-prefix.
-- Address Heiko's comment about regulator node names starting with
-  "regulator-".
-- Address Heiko's comment about non-existent "mem-supply" binding.
-- Address Heiko's comment about dropping the unneeded "Use rgmii-rxid
-  mode to disable rx delay inside Soc" comment; checkpatch complains
-  about uncommented rgmii-rxid, so take the one from
-  rk3588-youyeetoo-yy3588.
-- Address Heiko's comment about reset lines of the phy nodes being
-  incorrectly described in the gmac node; note that these are still not
-  described in the phy node because GPIO3_B7 defaults to pull-down,
-  which causes the rgmii_phy1 node to never come up; rgmii_phy0's
-  reset GPIO, GPIO4_B3, defaults to pull-up, so that node does not
-  encounter the same issue. Moving the reset to the parent mdio node
-  instead did the trick.
-- Address Sashiko's high severity comment about hdmi0 node mixing M0 and
-  M1 pinmux groups; use the existing hdmim1_tx0_hpd pinctrl group
-  instead of redefining it. HPD is wired to M1 while CEC and DDC use the
-  M0 pins. Verified hot-plug detection on external display.
-- Address Sashiko's medium comment about "full-pwr-cycle-in-suspend" and
-  missing "vmmc-supply" and "vqmmc-supply" on the eMMC node; drop the
-  former, add the latter two.
-- Address Sashiko's medium comment about the pmic node lacking a pinctrl
-  assignment for the interrupt pin; add it.
-- Address Sashiko's medium comment about the "vcc3v3_hubreset" regulator
-  hack; describe the two GL3523 hubs linked with peer-hub.
-- Address Sashiko's low comment about defined-but-never-referenced
-  regulators without regulator-always-on property; drop them, alongside
-  their pinctrls.
-- Mux PCIEX4_PERST_N as GPIO, to match it being used via reset-gpios.
-- Drop the unused input.h include.
-- Drop the unused rtc label.
-- Drop the local PCIe x1 pinctrl groups, which duplicated the
-  pcie30x1m1_1_* groups in rk3588-base-pinctrl.dtsi.
-
-Link to v1: [2].
-Link to v2: [3].
-
-[1]: https://axelera.ai/axelera-products/embedded/111c
-[2]: https://lore.kernel.org/all/20260522174918.61523-1-patrick.barsanti@amarulasolutions.com
-[3]: https://lore.kernel.org/all/20261020113717.189082-1-patrick.barsanti@amarulasolutions.com
-
-Patrick Barsanti (3):
-  dt-bindings: vendor-prefixes: Add Axelera AI
-  dt-bindings: arm: rockchip: Add Axelera Embedded 111c
-  arm64: dts: rockchip: Add Axelera Embedded 111c
-
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../rockchip/rk3588-axelera-embedded-111c.dts | 810 ++++++++++++++++++
- 4 files changed, 818 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-axelera-embedded-111c.dts
-
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 5471a06f93f1..20a3b24319c4 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -221,6 +221,8 @@ patternProperties:
+     description: Avnet, Inc.
+   "^awinic,.*":
+     description: Shanghai Awinic Technology Co., Ltd.
++  "^axelera,.*":
++    description: Axelera AI B.V.
+   "^axentia,.*":
+     description: Axentia Technologies AB
+   "^axiado,.*":
 -- 
 2.53.0
 
