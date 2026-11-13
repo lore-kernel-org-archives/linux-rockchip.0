@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0A10C606D635
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:40:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9979B60A263A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:40:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hFwma4Co;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=iprGMWYA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hCOyJx5S;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=liHHypdb
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=aG8ITCLRlW59KLDtW9/1DengMj0OZXatidfG66tYKnI=; b=hFwma4Co4lobmUvAj/+082g307
-	be37IM5UshqNLS/VpIG7RREU2fjtAktvYD1l6zqrmgSkk2H5O1C5CUkYlnCaIKEFJ39nttEv/cesT
-	ViR/40t1+x6Yp6l7wt3MsVo44LKSQyby1bP6WbjDxuVt9eELj7y5cjLJipIEgstpOKiiBx+16Si0x
-	VnmTKjurYyxb+00GOVFLbq6hF2kyIdKoeE6IoW/S8YsHqtPPEq7kbENbuxQrJZt9oAH+J/e9Lnkld
-	qcAl9vhIpCgbkv1HmFuhEplLw9kzrmFoPsFuQtil9gWFXVBxsRcKGF8PRvMNGrU7ak3PUD4vh5LCZ
-	427OGFDA==;
+	bh=T6Q5C7pLyFQRe2N3wtQ4HTd1EHZSQUEUxvm6k/ATVZo=; b=hCOyJx5SRSPW3R3Wys/M77DzW6
+	0jmzmADtyNjXpjg3GbpRGOIz7apYRZ5i4BiouXaf84xrFEhmV8RYz/+P1tq3K0Q+uiIsfXyE5gQWQ
+	bYc7+M6P7+BO3EuJ6HTxSnhm3AK/ikfndQpaTD0cylUqEKKG9nAvo0sBRfefNOy0vhB2TRw1UomXH
+	fEz7pexN5yAdlB6L1wRcuZ6DIjUAYOlKaNO2thJQP3IT5CjisJIixPFAJXYljfb2CmsI10WqzIIUs
+	2fcKDB9detbOaT8pQbarTbbyZLAg90nGsWkn8UvG52Bj4WiLG7cnmiO/QQ7xzjj08J+MhgqcfwKb4
+	n5mAnnkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuJu-0000000DaOU-0M7s;
-	Fri, 13 Nov 2026 16:40:10 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xRuJz-0000000DaTn-0thC;
+	Fri, 13 Nov 2026 16:40:15 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuJ7-0000000DZeU-1Nx1;
-	Fri, 13 Nov 2026 16:39:21 +0000
+	id 1xRuJ5-0000000DZaz-3Yd6;
+	Fri, 13 Nov 2026 16:39:19 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 91ED36292A;
-	Fri, 13 Nov 2026 16:39:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8927B40A78;
+	Fri, 13 Nov 2026 16:39:19 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794587960;
-	b=fbaKO7NdIOYUyQ/4+G/mI1f7bmunKNnZgg/5ca2nb9Qq+EbArTXv72XbUhHAV/lskmD6
-	 Yt/pVpVaIlGs2al8S1T9fUZKvec7N+0PenYilK+7Z3O4VloWtb8TdF+yoJ/DQRjGg2eg8
-	 w/bm56W2V7Jbgk1UxdW+CYPpMrjWYdr3xkRmqCAa1WM0q/HG+8TJKHSYiKjAd/Oe5kVWe
-	 n+FsJzXKWBBqQQN/36z9B1E6tSiNDrOYkyF5fZQd/Ivf9Rw1SRtE4qr2V0lH8LiBXM/ax
-	 ZEAvsgH9+BHpkXovMOGM5B42rYkOogbMXec6VRBTTTzty3YsNqrG0el1zDieCH4MQ0Q==
+	t=1794587959;
+	b=pxtisLY8NTsy762MMvDnwTI14w3Pa53mGQZFD7Ekk3H27zeE3BCWVAVn404Q9by1+zL1
+	 pP7XLxOCxZB2nUIeAUoe1uaYhSwAP7BYXKwo3LN3vYEUAeU6qABvjbKnXwVFPcz8e5sDs
+	 wtTn/KLe3wJ31zsZJ4WK7EmxSDJ7hbdX2gL+ZLwr7RS8TBXVrQ4jRw/bBrjD2A2XithbG
+	 NqZ41K3V4hOeEd11sYjXwOkrO/fKNriHcKgMNo8wmGbrNHKqzCfrYrTTSDFGYT0Kr3UkK
+	 +uabgI0zRZXiXUzpxZTRMIQodeGsf828ToecN3Ovd6WW9IKExuBmYawVuAqIxrD5wBQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794587960;
+	c=relaxed/relaxed; t=1794587959;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=FNxftrXL1E2FSc0xpVv1WeFG1GOkl5gZQCa/93IkA6I=;
-	b=joRXcN8XVDIhLIdr3f8YJodxqKnsJgckv5MV41pN1Rz3DIT3PE9naCxY/UFyhjGsb8ow
-	 tg1BWik/RizHq5mXMfhw5G2lt7zbIrrpj8hCsbSw23PEvDMEB+xOgsmi33MTKdsb8XkYd
-	 YQzfTIpnS+Gi6Le5Pw8e54Mhb6MHvYoFVGm91RPWs0UggtOivzrPbyyN0hub/rPmbbJYw
-	 zqc67StPPwMq+mK24rZ22B6XgGCCgcvIuz0oeDdW6pEjkC2CzM4iv2HXLW5xNOVRLzoZQ
-	 EBp2yLZ7nnQrXpJvjX0zFrq2omgwTrJe4zWyD37GrEgJdeRj27gQjmFJgvZP9ffAFOQ==
+	bh=7zpkorwus004YyxUUcOl7JyvlAtNECWRC9I0Q9NEaTU=;
+	b=L5DDuBqwUf1gjAJhzQ9JjcpTiarLCAljJBh2vjfVvkIdQawNZoDMchJKBZwX9TB0GtF/
+	 jMWchb2ViMHlQuUbrNnVUxND8yeqD7SuLNixQaU0L8s9I1YTa+IdbCaUJtZjnFgXV7n0R
+	 NrV+7trpbUp0NSAQ/1t9bsN7SbLgw1DU1u1sPiqgIp88x4hXOKsSM1Hacm3RsWOH1xnGQ
+	 PulSYHp78VSK9R8yLL4OtYukOvyZuv+f3G8K7wW08O0bgc8UlT3+yE/PvbpvamMI/7ETn
+	 SFJUW2127vB3TzkZZzuzKCUCTbfD2QRLHe5W8DutmrmAmjOeReBq4jo5vNweTMJVdjQ==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 3F6A71F000C8;
-	Fri, 13 Nov 2026 16:39:19 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id E4D5B1F000C7;
+	Fri, 13 Nov 2026 16:39:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794587960;
-	bh=FNxftrXL1E2FSc0xpVv1WeFG1GOkl5gZQCa/93IkA6I=;
+	s=k20260515; t=1794587959;
+	bh=7zpkorwus004YyxUUcOl7JyvlAtNECWRC9I0Q9NEaTU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=iprGMWYAA6D+FVel2n88O5jgqqWGNZNWvqHFCcuQBUF04QwFuQ2tKv/26h+MAi6wz
-	 Iaje3q2lAcnBfId5mzwZW3eTY1L66WY44v3QLJA6yojUgHg+xL0hbq4ra05TgWns2n
-	 I1Y9ckQQf6A4UMTyT4jGmQgsV3D/p8Jva/2NFCuALeTTKzWMY1Al5PueTvRCbbhz5n
-	 bhabgosgAh5tpqBsA8iuIWoMqePMgTWW3klksLDP/4ijEflbTOLgBp0Uz5i532Pv6n
-	 ywekMynVMkrh8uhWzvwY14vdXJvBnKqzJIukLXYbzAWdjG23pZWqBTmWXZwQR82wzy
-	 PpHUm9SNPqXNQ==
+	b=liHHypdbqq+1mNlpkUHAmBMwR4jXHGgNoLdOCknNBNSjX82KbNJa0z8IAGsMe1PPO
+	 pq6F5z0XnrNsTQeq4zIA3GftwSNx5IfzDRi/XSRLLUojmzEvZI25cQYKO58yzEw4e+
+	 zw7WUtPGMHxWbcza+ib+hVop3MWwdTEMzoWdaMNb72a597mj9kyIJ1q1DgzWoZxORX
+	 XEI6vaF0DeAm4MmQWw6Xrj6oHFA00MQOse5VKLbdgh29ze/jCxxB574honn7IHmNZI
+	 9Aw+awQ2X4B2nECwO/tgG7Fz4Vt4JWLp9RqhynUnR+gbaFOemltFXc+y2ozqxXowFD
+	 hhfnEnTuZDRFA==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id C6985499BD;
+	by lkml.kernel.org (Postfix) with ESMTP id 77359499AA;
 	Fri, 13 Nov 2026 16:39:18 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Fri, 13 Nov 2026 16:39:21 +0000
-Subject: [PATCH v3 4/8] drm/rockchip: vop2: Fix the HDMI sync polarity bit
- order on RK3588
+Date: Fri, 13 Nov 2026 16:39:18 +0000
+Subject: [PATCH v3 1/8] drm/rockchip: vop2: Take the UV plane address from
+ the second GEM object
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261113-vop2-fixes-v3-4-08ae37e83b5c@gmail.com>
+Message-Id: <20261113-vop2-fixes-v3-1-08ae37e83b5c@gmail.com>
 References: <20261113-vop2-fixes-v3-0-08ae37e83b5c@gmail.com>
 In-Reply-To: <20261113-vop2-fixes-v3-0-08ae37e83b5c@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -92,13 +92,14 @@ Cc: Piotr Zalewski <pZ010001011111@proton.me>,
  Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
  Damon Ding <damon.ding@rock-chips.com>, dri-devel@lists.freedesktop.org, 
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Arun Iyengar <aiyengar1990@gmail.com>
+ linux-kernel@vger.kernel.org, Arun Iyengar <aiyengar1990@gmail.com>, 
+ stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794587957; l=1424;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794587957; l=1358;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=UGsUFXw5YCEmRTpiw/otu9BINYjzUVbOqG/Y9ftnmx4=;
- b=6Dmcvc9cKlPBL5ogCbcn9fM+YHzcY68rXAT61AwNeTTAOlVNuJLADIMDaq1o8ZWo8lib94SxW
- b48ZjBNy9qPAy7ZL0AWu90nR+lgltj7uWvUY7PlTIkKGQLoRzeIY9NK
+ bh=NyEom6Ygar2g2E7rLCqTeR+IWUlMO87YHp3qaA5pe+8=;
+ b=CJPvsRb+FeVzYc8gP6W0cF136DeokOuAD1BCNIGfE8dNt1REZCVnpFJ49KJgBJlBuQBo0FjL6
+ Jatlf+XM37dA1SJ3GZlKWla6xcQrmz2pBEgjBC4I6zKcqAZy83iSe60
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -127,39 +128,36 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-In GRF_VO1_CON0 the HDMI vsync polarity bit comes before the hsync one
-(bits 5 and 6 for HDMI0, 7 and 8 for HDMI1), but rk3588_get_hdmi_pol()
-puts hsync first. Modes with mixed sync polarities go out with both
-syncs inverted: the HDMI controller sees 1920x1080@144 +HSync -VSync
-as -HSync +VSync in VIDEO_INTERFACE_STATUS0.
+vop2_plane_atomic_update() takes the chroma plane address from
+fb->obj[0]. The planes of a framebuffer can be in different GEM objects
+(ADDFB2 with two handles, e.g. NV12M from a V4L2 decoder), and the
+window then fetches the chroma plane from the luma buffer.
 
-Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
+Use fb->obj[1] for formats with more than one plane.
+
+Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Closes: https://lore.kernel.org/all/sashiko-outbox-206550@kernel.org/
+Cc: stable@vger.kernel.org
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index 3e654cb99ddf..6d08988d7007 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -1683,13 +1683,13 @@ static u32 rk3588_get_mipi_port_mux(int vp_id)
- 		return 0;
- }
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 76d151b8bc52..e8ef83d6924b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1369,7 +1369,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 		if ((pstate->rotation & DRM_MODE_REFLECT_Y) && !afbc_en)
+ 			offset += fb->pitches[1] * ((pstate->src_h >> 16) - 2) / vsub;
  
--/* The sync polarity bits in GRF_VO1_CON0 are set for a negative sync */
-+/* GRF_VO1_CON0: vsync bit below the hsync bit, each set for a negative sync */
- static u32 rk3588_get_hdmi_pol(u32 polflags)
- {
- 	u32 val;
+-		rk_obj = to_rockchip_obj(fb->obj[0]);
++		if (fb->format->num_planes > 1)
++			rk_obj = to_rockchip_obj(fb->obj[1]);
+ 		uv_mst = rk_obj->dma_addr + offset + fb->offsets[1];
+ 	}
  
--	val = (polflags & BIT(HSYNC_POSITIVE)) ? 0 : BIT(HSYNC_POSITIVE);
--	val |= (polflags & BIT(VSYNC_POSITIVE)) ? 0 : BIT(VSYNC_POSITIVE);
-+	val = (polflags & BIT(VSYNC_POSITIVE)) ? 0 : BIT(0);
-+	val |= (polflags & BIT(HSYNC_POSITIVE)) ? 0 : BIT(1);
- 
- 	return val;
- }
 
 -- 
 2.55.0
