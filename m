@@ -2,90 +2,74 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C19FC606A323
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 15:22:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C6F15606A323
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 15:42:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wO8zwXx4;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=YBoZvUPk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fz99P7KJ;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=nFxA6vUo
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
+	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=s0GQvBnvrjQjDMjS4APCKnfu1ZZ4DBL5LWdCbl5rDCA=; b=wO8zwXx4cYvlIdCim7rZn8+5+g
-	GuqADnVq3q3/gfB5j4nnIbOsxnQbkLpHjt0hgwka1KgKDkG466ny7R1LvJdm7TI3gw4xiP2wGThOV
-	//KRl6SPs2FcsGZdKlfNn+1cYY3SVBd6SIXzSoaozA4SzfnHQeNAouEvCMKHZhbZFp4wbUBu5ic/q
-	CQroEMqVK0IClkQHhg5Qlvm294CgTQfG5XCb9+4fzOXFwisESr2e6QXZPY+7luTdKy5KYuRTQ54os
-	qASwXUcqmbU1BlVVADzPt7JC0xV3CzlfBcyI/0fnwDkOkaMl0vW8HO7tBPERMqP3iS0i2qKS9WZvi
-	v24SmJOw==;
+	bh=EIIL94buj5EoTpLZzuNkIUnmwn1Jyksj4He1BpcHees=; b=fz99P7KJZxXTS3nTAUwlMq3wAT
+	ZZlankTZ58kXTWX8gbtpjkTofzn4KiKVRLeviK+7+FBH/S3n9nY9l11Md4b79Ztg+qsKmy1rT40Kh
+	Q17XgDgSV1HjHu1KFJzHgYdXFS634+C7HDvv59KpzSdMsgh65j1eI1nkkNTIFEyZeqst53rxSfkLF
+	uvrgG4HHcF8kkVp/5ED2PvRrDaqLrwRqvb2UgI6E2lxh+wdDXvoHVMPz+XjZmcdp6IjM1AQ3lkrER
+	mCygDbLUhbApEYFuRkOlYMppZsFdUZ8CL00aF07Br1wIDJ0/IAvKtaIRJ2gWhk+68+peOl8tR4v4u
+	fyiT1YNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRt73-0000000DNts-2maR;
-	Fri, 13 Nov 2026 15:22:49 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xRtPz-0000000DQgk-0MJI;
+	Fri, 13 Nov 2026 15:42:23 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRt6u-0000000DNoT-1Ohj;
-	Fri, 13 Nov 2026 15:22:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794583354;
-	bh=rz93IMDAkHoneXiIeX0ZJ9Q/dVSLcFMM1YZN4Bp5kW0=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=YBoZvUPk40k3teW4EFPC67/Pk8FMm0DK4dgcs+Q6a2DuiZHDVBEXntia0TjKrhhqr
-	 HNQf7O+ht8pudGMxNIlqNkL78eMsysTUc1zxAemoAK/lq1fmWV+8pXwn65JYPlSut/
-	 28Vvl1pyvOrKQkZijZwmqE0qoEqMux1BmnCndEBTpA25aW0weeTWm7n1RjcJX6l9SD
-	 WRqq7VGTypmO+k4oMWd/fDqD+SVH1YQXRBYhKhqqySCggMa+m3tKgZxJK40njnKmVK
-	 WFdYmd82paxEln//e2tFEpvRevPqPIX7NEhYgeg8Rs2Dq0vAQ+uRNac0DUsEatsaB/
-	 vDINaFvwkeskw==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9BADC17E0840;
-	Fri, 13 Nov 2026 16:22:32 +0100 (CET)
-Message-ID: <f8d5854825dccb39741565057d460bb4723db431.camel@collabora.com>
-Subject: Re: [PATCH v2 3/6] media: verisilicon: Don't offer VP8 above 1080p
- on the Rockchip VDPU2
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Arun Iyengar <aiyengar1990@gmail.com>
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel	
- <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Sebastian Fricke <sebastian.fricke@collabora.com>, Hans Verkuil
- <hverkuil@kernel.org>, Heiko Stuebner	 <heiko@sntech.de>, Boris Brezillon
- <boris.brezillon@collabora.com>, Jonas Karlman <jonas@kwiboo.se>, Ezequiel
- Garcia <ezequiel@vanguardiasur.com.ar>, Jeffy Chen	
- <jeffy.chen@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, 
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Date: Fri, 13 Nov 2026 10:22:30 -0500
-In-Reply-To: <CAEy9hNVSC7TAvdLmN-yWH9NdtKH9jgVnyxFwLJ+J2qPZvOQTEA@mail.gmail.com>
-References: <20261112-hantro-codec-fixes-v2-0-f44424df585b@gmail.com>
-	 <20261112-hantro-codec-fixes-v2-3-f44424df585b@gmail.com>
-	 <f041c5d87698ab3be8283ecc71ead0679327238e.camel@collabora.com>
-	 <CAEy9hNVSC7TAvdLmN-yWH9NdtKH9jgVnyxFwLJ+J2qPZvOQTEA@mail.gmail.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
+	id 1xRtPt-0000000DQeh-0RDD
+	for linux-rockchip@lists.infradead.org;
+	Fri, 13 Nov 2026 15:42:19 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 0E5F64E415A7;
+	Fri, 13 Nov 2026 15:42:13 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id C707360015;
+	Fri, 13 Nov 2026 15:42:12 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 216FA11BC11E7;
+	Fri, 13 Nov 2026 16:41:57 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1794584527; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=rHB1s2IjKO7bwiIKX5FWkoy/jmzbxhzjzTrvBEzLn5E=;
+	b=nFxA6vUoH0x4DTtoCgCXxJmVcI3pdkHLUk/3kmd7oD/49D39QXUjVuJLZLwTecCZkhIcNl
+	PXCqJZXRvM/0ZP12N5JH5FNHiMRoDWR+gPyByVcVZ6HeiMGWoCNIkCLClvZFEwvruvfKI9
+	ZzDTRQoYOrCsfLu8mtNiKhKFbw6z1FlP5h2DnU/dTUgLuHPXxJazAMbnatXFvaqOOqF2Ah
+	DZEReUJk6f4zc6HkVPom4VPQXb74rha0hpB6vWrFE/6v199j1bALFfj54wht54zFUYswX2
+	SvwVzQBX6uUjEBLD4nfOUhIiIHGHUp0/Tlb2FwSbVdwqlImG9cF39sUgOlkdvw==
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
+Mime-Version: 1.0
+Date: Fri, 13 Nov 2026 16:41:56 +0100
+Message-Id: <DMU749TMB523.3OCGPYVI4NZDU@bootlin.com>
+Subject: Re: [PATCH v3] drm/bridge: analogix_dp: use devm_phy_optional_get()
+ for the DP PHY
+Cc: <Laurent.pinchart@ideasonboard.com>, <airlied@gmail.com>,
+ <andrzej.hajda@intel.com>, <dri-devel@lists.freedesktop.org>,
+ <heiko@sntech.de>, <jernej.skrabec@gmail.com>, <jonas@kwiboo.se>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-rockchip@lists.infradead.org>, <luca.ceresoli@bootlin.com>,
+ <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
+ <neil.armstrong@linaro.org>, <rfoss@kernel.org>, <simona@ffwll.ch>,
+ <tzimmermann@suse.de>
+To: "Jun Yan" <jerrysteve1101@gmail.com>, <damon.ding@rock-chips.com>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+X-Mailer: aerc 0.22.0
+References: <385a67f0-e5cd-4dba-9b9c-5b766462c6c0@rock-chips.com>
+ <20261113131248.2804840-1-jerrysteve1101@gmail.com>
+In-Reply-To: <20261113131248.2804840-1-jerrysteve1101@gmail.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_072244_389089_52D4E149 
-X-CRM114-Status: UNSURE (   8.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261113_074217_291708_F3AF1C63 
+X-CRM114-Status: GOOD (  16.72  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,7 +80,8 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2776563518439416908=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -105,50 +90,57 @@ X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============2776563518439416908==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-4yY0KbJj6xKjU43niVpD"
+Hello,
 
---=-4yY0KbJj6xKjU43niVpD
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Fri Nov 13, 2026 at 2:12 PM CET, Jun Yan wrote:
+> Hi Damon,
+>
+>> You are right, this is really a valid concern.
+>>
+>> If CONFIG_GENERIC_PHY is disabled, the old code could still proceed and
+>> keep the driver probing, while the new version would return an error
+>> directly.
+>
+> -ENOSYS can only come from the !CONFIG_GENERIC_PHY stubs in
+> include/linux/phy/phy.h; the real implementation in drivers/phy/phy-core.c
+> never returns it. And the stub for the optional variant returns NULL, not
+> -ENOSYS:
+>
+>     static inline struct phy *devm_phy_optional_get(struct device *dev,
+>                                                     const char *string)
+>     {
+>             return NULL;
+>     }
+>
+> So with CONFIG_GENERIC_PHY disabled the PHY is still treated as absent
+> (NULL), exactly as the old -ENOSYS branch did. With CONFIG_GENERIC_PHY
+> enabled, -ENOSYS cannot occur, devm_phy_optional_get() turns -ENODEV into
+> NULL, and any other error is still propagated - same as the open-coded
+> check.
+>
+>> It should be better to keep the -ENOSYS handling to preserve the
+>> original behavior.
+>
+> Overall the behaviour is unchanged in both configurations, so no separate
+> handling is needed.
 
-Le vendredi 13 novembre 2026 =C3=A0 00:00 -0800, Arun Iyengar a =C3=A9crit=
-=C2=A0:
-> I have no i.MX8M board to check what the VP8 limit is there, so I left
-> those tables alone for now. I will take a look at getting a patch for
-> this separately.
+Thanks for the analysis! Cna you send a v4 with that explained in the
+commit message, possibly in a more concise way, maybe with bullets for the
+various CONFIG_GENERIC_PHY on/off cases or so, for readability?
 
-Ack, separate, later is fine with me.
+Reading it now, this v3 commit message kind of said the same things. but it
+misled both me and Damon, so it's worth a clear explanation.
 
-Nicolas
+Thanks!
 
---=-4yY0KbJj6xKjU43niVpD
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+Luca
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCavcrNgAKCRDZQZRRKWBy
-9GVEAP4zxrBESO8Pzt4btrBZoJ14BJWUThjkW8et96mAQvSCSwEAncpAf7voMdI4
-UXfw4UP7YYzkRt17Wyp01B6gYeYhWwI=
-=L8JS
------END PGP SIGNATURE-----
-
---=-4yY0KbJj6xKjU43niVpD--
-
-
---===============2776563518439416908==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2776563518439416908==--
-
