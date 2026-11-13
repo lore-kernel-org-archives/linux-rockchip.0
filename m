@@ -2,73 +2,87 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B5FBF606A882
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 08:24:39 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 267E7606A327
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 08:24:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KlPmCr/Z;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=GU+JXV4Q
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=yWx76eB9;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=WG6g1gcX
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=zpaQo1QaklvIfItNpYIubv5RJOGgJGsnjtFlSRP0e7c=; b=KlPmCr/ZPpOopwO/IczSRGnIoh
-	Erh629bi6YEuDwfdTFznvjsCR+xU16e347P3exPO00HWjEwtBXIBaXjrls/z6u55CScQDA8wx/5KR
-	UxCYpGnCaoueE6VdMrfY5RIaktgbgllQjC33714T2E70JIxFUME5y5Gp4CNjV12lTyY1YaMG/U/Gx
-	pngm/vnDHdZoJc216nvOop2wXXZBvzttnsnJCOGZVTnIDO62XbPdvdg5LKOMnSrAqxl+jo9x001Hv
-	ZKoXldeDMpjyF27FAwuMnkpPkZhC4TyXyan8Z0EpFsh1h8RyG5NUz0syIDftsoW/ZD2NVmFSKzFcJ
-	zdks3atA==;
+	bh=8+A9bx1uYjJPnHr/FeXLnJA00X+/wygSIN0LvsdOmCc=; b=yWx76eB9fVHYi4Tn4sb0WAoPVQ
+	2Xjhq2lq1+LzlSsxtCVLwK65QoCXOFyFxrZGmbbHWPJ0lyl9bPaOSaqRSqK32uRDKoB0ofVqUkjsW
+	usUtOGzC727Tn/g8AGn5EM1+By6MzaGsqtH4UId5+VHa808HKdCI2nl+ZK6PxU62lPyvChGTDspHO
+	M9SPKAX/9AzQV3oWF9MyxW0RJpT8NsB2Swu5CYhSeS5vVjAJTGsO1bvU6ts1rxpF6foBuIjJg/zk+
+	95z+x9JsrbKzZGq/FLqglsmbohA5C4k/vTQUxk2E267UO2BixS4OOPJFCBtyFftEIIj4wJnf8Kpro
+	3K3fIBXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRmaK-0000000C1qg-3lOE;
-	Fri, 13 Nov 2026 08:24:36 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1xRmaM-0000000C1sS-3czn;
+	Fri, 13 Nov 2026 08:24:38 +0000
+Received: from mail-m822136119.xmail.ntesmail.com ([8.221.36.119])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRmZQ-0000000C1G7-18f9;
-	Fri, 13 Nov 2026 08:23:48 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id B1D71C4F76E;
-	Fri, 13 Nov 2026 08:23:38 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 1B0A5601D5;
-	Fri, 13 Nov 2026 08:23:36 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id DF65B11BC06F0;
-	Fri, 13 Nov 2026 09:23:28 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1794558214; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=+xvWra1IEANazOUIzu9aYSpzBjP8CbiiZ/8VsGzinn4=;
-	b=GU+JXV4QJPFmtQbnhkL9VJX0jszc0OySFQarr89JdBgAZRT+LZu/MiIgtdoT4ptk/co1XE
-	vsGS6kdmJMih+mTBZiY42Paf0jfqPWaS0sQrEYRKCsRXuVs3h7y0GZEXx46e01IYQ4tDdW
-	QgbC1iwhetxZ+CijzqOpweUJVEfygITk0Ez7uGaIhOga5s3OYpAQErtUi2dzqKRK6BXAel
-	f1LdK7ZKYvepAKJhW8QHJQkwXkg5cZVDWJLuzMeHfP+dFCbqU3HDpW9Au/mKkXgY9FNqua
-	Q5OELq4eunCmxyg9bXqytE5A+MO36ZAyOmCSDYGGl0ZQgkgkoW1VDuro8ehBYg==
-Message-ID: <36ecbf49-0d09-4abf-a93d-fc3f92191f7d@bootlin.com>
-Date: Fri, 13 Nov 2026 09:23:27 +0100
+	id 1xRmZQ-0000000C1GF-48VM;
+	Fri, 13 Nov 2026 08:23:53 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 54921be77;
+	Fri, 13 Nov 2026 16:23:34 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andyshrk@163.com>
+Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v6 14/18] drm/bridge: analogix_dp: Move IRQ enable/disable to bind/unbind
+Date: Fri, 13 Nov 2026 16:23:01 +0800
+Message-Id: <20261113082305.541652-15-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261113082305.541652-1-damon.ding@rock-chips.com>
+References: <20261113082305.541652-1-damon.ding@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next] net: stmmac: dwmac-rk: only read the delays the
- MAC applies
-To: aiyengar1990@gmail.com, Heiko Stuebner <heiko@sntech.de>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-kernel@vger.kernel.org
-References: <20261110-stmmac-dwmac-rk-delays-v1-1-87abb6592921@gmail.com>
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Content-Language: en-US
-In-Reply-To: <20261110-stmmac-dwmac-rk-delays-v1-1-87abb6592921@gmail.com>
-X-Last-TLS-Session-Version: TLSv1.3
+X-HM-Tid: 0aa1d401420c03a8kunm073aab0481adf
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDTBkYVksYTk5MTUhCGB4dTlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=WG6g1gcXu+aUNJ1ZRCs7jXip7vt+pv0FuHYVMYkbQSGeSSkic5/SfedWsaQpGUGI6mMViNhGvgC5rfQVmUCE7Zs896Sx3qRRI0C1F7ACZjSdOYrk8Yca0LG1vpc/2AUroBcpxATAcnsdCNjlqWfVQhORCY8Wa45FMaErimcc73w=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=ut3BDmCWOauFsURzlyD7adGSwi9BnGWrMNMiar1oKBY=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_002345_401746_69562CDE 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20261113_002345_403328_47DDDDB6 
+X-CRM114-Status: GOOD (  17.14  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,46 +96,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+Move enable_irq()/disable_irq() from bridge enable/disable handlers
+into analogix_dp_bind()/analogix_dp_unbind(). This keeps the IRQ
+active throughout the device lifecycle rather than only during display
+activity, which is a prerequisite for supporting HPD detection while
+the display pipeline is inactive.
 
-On 11/10/26 08:13, Arun Iyengar via B4 Relay wrote:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
-> 
-> The tx_delay and rx_delay properties are only used for the directions in
-> which the MAC inserts the RGMII clock delay itself: both for "rgmii",
-> TX for "rgmii-rxid" and RX for "rgmii-txid". For "rgmii-id" (the PHY
-> adds both delays, the recommended setup) and for RMII they are ignored
-> by rk_gmac_powerup().
-> 
-> The driver nevertheless parses both properties unconditionally and logs
-> an error, plus the default it picks, for each one that is missing. A
-> correct device tree using "rgmii-rxid" therefore gets
-> 
->   Can not read property: rx_delay.
->   set rx_delay to 0x10
-> 
-> and one using "rgmii-id" gets the same pair for tx_delay as well, for a
-> value that is never programmed.
-> 
-> Only parse the delay values that will actually be used, so the error is
-> reserved for device trees that really lack a required delay. Behaviour
-> for "rgmii", "rgmii-rxid" and "rgmii-txid" is unchanged.
-> 
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+Make the interrupt fully threaded and hold a runtime PM reference in
+the threaded handler, so that no register is accessed while the
+controller is runtime suspended.
 
-LGTM, I was worried about breaking compat but the rk_gmac_powerup() only
-applies the rx/tx delays based on the ID mode, so
+Tested-by: Heiko Stuebner <heiko@sntech.de>
+Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 
-Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
+---
 
-Maxime
+Changes in v3:
+- Move this patch after mute/unmute related modification and detail the
+  commit msg.
+
+Changes in v4:
+- Add Tested-by tag.
+
+Changes in v5:
+- Use a pure threaded IRQ handler and hold a runtime PM reference in
+  it, so that no MMIO happens on the unclocked controller after
+  runtime suspend. (Sashiko)
+- Add prep patches to call analogix_dp_unbind() when
+  drm_bridge_connector_init() fails, so that the IRQ enabled across
+  the bind lifetime gets properly disabled on bind failures. (Sashiko)
+
+Changes in v6:
+- Skip the runtime PM reference in the IRQ thread for the GPIO HPD
+  mode, since it only reads the GPIO level. (Sashiko)
+- Add Tested-by tag.
+---
+ .../drm/bridge/analogix/analogix_dp_core.c    | 40 +++++++++++--------
+ 1 file changed, 23 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index b14a8aa12394..7f6346d45a01 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -700,24 +700,25 @@ static int analogix_dp_enable_scramble(struct analogix_dp_device *dp,
+ 	return ret < 0 ? ret : 0;
+ }
+ 
+-static irqreturn_t analogix_dp_hardirq(int irq, void *arg)
+-{
+-	struct analogix_dp_device *dp = arg;
+-	irqreturn_t ret = IRQ_NONE;
+-	u32 irq_type;
+-
+-	irq_type = analogix_dp_get_irq_type(dp);
+-	if (irq_type)
+-		ret = IRQ_WAKE_THREAD;
+-
+-	return ret;
+-}
+-
+ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ {
+ 	struct analogix_dp_device *dp = arg;
+ 	u32 irq_type;
+ 	bool hpd_detected;
++	int ret;
++
++	/*
++	 * The device may have been runtime suspended since the interrupt was
++	 * raised. Hold a runtime PM reference before touching the registers,
++	 * as the controller clocks are only guaranteed to be enabled while
++	 * the device is runtime PM active. The GPIO HPD mode needs no such
++	 * reference, since it only reads the GPIO level.
++	 */
++	if (!dp->hpd_gpiod) {
++		ret = pm_runtime_resume_and_get(dp->dev);
++		if (ret)
++			return IRQ_HANDLED;
++	}
+ 
+ 	irq_type = analogix_dp_get_irq_type(dp);
+ 	if (!dp->hpd_gpiod && irq_type)
+@@ -734,6 +735,11 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ 			drm_helper_hpd_irq_event(dp->drm_dev);
+ 	}
+ 
++	if (!dp->hpd_gpiod) {
++		pm_runtime_mark_last_busy(dp->dev);
++		pm_runtime_put_autosuspend(dp->dev);
++	}
++
+ 	return IRQ_HANDLED;
+ }
+ 
+@@ -1056,7 +1062,6 @@ static int analogix_dp_set_bridge(struct analogix_dp_device *dp)
+ 		goto out_dp_init;
+ 	}
+ 
+-	enable_irq(dp->irq);
+ 	return 0;
+ 
+ out_dp_init:
+@@ -1198,8 +1203,6 @@ static void analogix_dp_bridge_disable(struct drm_bridge *bridge)
+ 	if (dp->dpms_mode != DRM_MODE_DPMS_ON)
+ 		return;
+ 
+-	disable_irq(dp->irq);
+-
+ 	analogix_dp_set_analog_power_down(dp, POWER_ALL, 1);
+ 
+ 	pm_runtime_put_sync(dp->dev);
+@@ -1527,7 +1530,7 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
+ 	}
+ 
+ 	ret = devm_request_threaded_irq(&pdev->dev, dp->irq,
+-					analogix_dp_hardirq,
++					NULL,
+ 					analogix_dp_irq_thread,
+ 					irq_flags, "analogix-dp", dp);
+ 	if (ret)
+@@ -1613,6 +1616,8 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
+ 		goto err_unregister_aux;
+ 	}
+ 
++	enable_irq(dp->irq);
++
+ 	return 0;
+ 
+ err_unregister_aux:
+@@ -1624,6 +1629,7 @@ EXPORT_SYMBOL_GPL(analogix_dp_bind);
+ 
+ void analogix_dp_unbind(struct analogix_dp_device *dp)
+ {
++	disable_irq(dp->irq);
+ 	drm_dp_aux_unregister(&dp->aux);
+ }
+ EXPORT_SYMBOL_GPL(analogix_dp_unbind);
+-- 
+2.34.1
 
 
 _______________________________________________
