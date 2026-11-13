@@ -2,64 +2,63 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0060606A32A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 11:51:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 213C9606A323
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 12:39:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JtKgrUfg
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Micirb9M;
+	dkim=temperror header.d=puresig.cz header.i=@puresig.cz header.a=rsa-sha256 header.s=dkim header.b=URzV+I8X
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=mQtPpRZOx4v3Ewg4QbPtPo7DeqMjVeo9yorTCGOQhb0=; b=JtKgrUfgg1oF2+sWK3UKXbkpap
-	sJjG09mD/OihfeQpsxKdVVXywtQjfGG2EE7GmvEtrksQ7DfqhjbpSU0FRqNSpve7UVP5aZAclXLoP
-	Qf5DaXRMH9QxZ0F0E+NaRQuHEoJBCNmhmfpCHGaV+P8RKd0SDCVxSrzfw5jjL6STs24uPd6IUKezk
-	1s6L9QAGBp4X/Uu5F8TqxTKxSXsSAEtUomm0MRiWAjBkoxH30s/q3tISpUrD5JEIg7Pq+qJpVVZs9
-	aMHwSLLDxG2g7Zj1VYwsXWaNkTRjXm3m7zb1dJ+d8g4E5wfZWGeubOZFlftzVrV6bqNLQ/WK6NgfN
-	NEnCI0iQ==;
+	bh=WQ0pBtmWwcz1W/so7Vl7CZNiQfw4ZBqEiI1jTIZcpiA=; b=Micirb9M7QoodCvRUU9P0+FZz1
+	DT574QHLTZFiy4NQREOW97GJ5eVr1Ma1aThJkZrtPl0RwUxGA4wBZDPoDmfmDC06NYyacmlKvQKRI
+	TfQIrXDfqJsd7SbKYH+dEm9oQE7IilXxaxwcOCl17BNrCjnATcg0j6DPLp2MNa9cx3m96CembSPcC
+	NTZEUxVEExLZdPYBflOGlx3c9c+31Bty7XR3S6HLEg1E4AaaVEeqQLFz19qLC+1ehaSBzDI7g1QWU
+	zMAXwem5eVlEkefTGvRbEq4aLwClYuUz8FRAY8boeoShlIJ1vM6qoqgf23RqOJkI3Xs/C0oJNoDme
+	VgwjCCLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRpoI-0000000CaOt-12ub;
-	Fri, 13 Nov 2026 11:51:14 +0000
-Received: from [101.71.155.101] (helo=mail-m155101.qiye.163.com)
+	id 1xRqZ9-0000000ClMs-2fSg;
+	Fri, 13 Nov 2026 12:39:39 +0000
+Received: from mail.serverx.eu ([93.185.108.244])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRpoD-0000000CaKk-0J5X;
-	Fri, 13 Nov 2026 11:51:12 +0000
-Received: from Vostro-3710.lan (unknown [14.220.232.40])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 54988c7f9;
-	Fri, 13 Nov 2026 19:50:54 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: coiaprant@gmail.com
-Cc: amadeus@jmu.edu.cn,
-	bigfoot@classfun.cn,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 5/6] arm64: dts: rockchip: fix USB OTG power on Photonicat in battery mode
-Date: Fri, 13 Nov 2026 19:50:50 +0800
-Message-Id: <20261113115050.362683-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <CALj3r0hOjksUtYg+qLqPU9kz4w3SAqGvSmFFi9YBXNGiEPEZSw@mail.gmail.com>
-References: <CALj3r0hOjksUtYg+qLqPU9kz4w3SAqGvSmFFi9YBXNGiEPEZSw@mail.gmail.com>
+	id 1xRqZ5-0000000ClL2-1PKp;
+	Fri, 13 Nov 2026 12:39:38 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 6225F13F4C;
+	Fri, 13 Nov 2026 13:39:20 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=puresig.cz; s=dkim;
+	t=1794573564; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 in-reply-to:references; bh=iFLB5hhb5axx2wBU+qQkAhbTinTqvnjS+ztS3y8CPfg=;
+	b=URzV+I8XXZ1k2/AWVmF40lYdmbxpP3gFE3sauXwLMApIDUqmVqryqozTCbfOBL1Gzu28Wd
+	QeDkTpQqI48j4a9LmUYLzgGGJ3Vt/WOb2DMpYTFG3oFoDPwPGy7cen1zGFtya33OYz32Pj
+	8jcPgBx2AZDmk71xzK8sXTZ0+6znY7sBAyie309d8QVCg3/HQnHNNS76qeFa/SFqBRda9h
+	oPAhiFyUfopZzPIKntM288C351gVqAHI7+8pwOn7BLW+/3PvnPshG+6hW6vLcJWS5WK6tm
+	doDbWCcAVy26UU9Ei58AIhRkdCPFWJKSPu2QJ8eFYVC5AHtufor6Bpuo3RZleQ==
+Date: Fri, 13 Nov 2026 13:39:20 +0100
+From: Lukas Splavec <lukas.splavec@puresig.cz>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Heiko Stuebner <heiko@sntech.de>, 
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil <hverkuil+cisco@kernel.org>, 
+	Jonas Karlman <jonas@kwiboo.se>, Sven =?utf-8?Q?P=C3=BCschel?= <s.pueschel@pengutronix.de>, 
+	kernel@collabora.com, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 0/5] media: rkvdec: Enable multi-core support
+Message-ID: <avb5Bm7IA15N2ibR@Lukass-MacBook-Air.local>
+References: <20260810-rkvdec-multicore-v2-0-986f89d22cdc@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa1d4bf11ec03a2kunmbf5334663d203
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDGklMVh1OTUwfQkgfTEJMTlYeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKT1VJSUtVSUhJVU9LWVdZFhoPEhUdFFlBWU9LSFVCQklOS1
-	VKS0tVSkJLQlkG
+Content-Disposition: inline
+In-Reply-To: <20260810-rkvdec-multicore-v2-0-986f89d22cdc@collabora.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_035109_326848_8862A17C 
-X-CRM114-Status: UNSURE (   7.29  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.1 (-)
+X-CRM114-CacheID: sfid-20261113_043935_829162_D4FFC0EB 
+X-CRM114-Status: GOOD (  12.90  )
+X-Spam-Score: -1.7 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,33 +71,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+On Mon, Aug 10, 2026 at 11:22:10AM +0100, Detlev Casanova wrote:
+> Since the driver is used for decoding on rk3588 and that the SoC has
+> 2 identical decoding cores, enable support for it.
 
-> I understand your concern regarding 5V_OUT not being a standalone
-> physical regulator. However, I'd prefer to keep the node for two
-> reasons:
+Hi Detlev,
 
-It looks like you copied your previous reply.
+I tested this series together with Sven's RGA3 multicore v1 on an RK3588
+board (Giada D77, both vdec cores enabled), with 4 to 8 concurrent
+GStreamer 1.28 pipelines (v4l2slh264dec / v4l2slh265dec, 1080p to 4K60,
+H.264 and HEVC 8/10-bit).
 
-> Regarding the startup time, a fixed-regulator without GPIO or clock
-> controls does no hardware I/O during probe, so the overhead is
-> negligible.
+Multicore works fine: both cores are used and throughput scales roughly
+linearly up to 8 streams; 4x HEVC 4K60 runs at about 65% busy per core.
 
-Adding an uncontrolled regulator is not recommended. Similar discussions:
-https://lore.kernel.org/all/90eafe45-7863-4c1d-b1e5-55a4fe32c806@kernel.org/
-https://lore.kernel.org/all/20260511065338-GKA3624147@kernel.org/
+I encountered a problem on v7.1-rc1. I hit an rk_iommu page fault storm
+followed by a decoder timeout and device freeze, when pipelines were
+started and stopped in overlapping manner. I was able to replicate the
+same behaviour without these and Sven's patches on plain v7.1-rc1, but
+not on v7.0.
 
-> On the node ordering: the node is named `regulator-5v-boost` (starting
-> with 'r'), so it is correctly sorted after `battery` and `chosen`
+The cause seems to be the inverted error check in iommu_map_nosync() from
+d6c65b0fd6 ("iommupt: Avoid rewalking during map"), already fixed by
+6fc7e8a3 ("iommu: Fix loss of errno on map failure for classic ops") in
+v7.1-rc4. With that fix applied on top of both series, 150 rounds of my
+stress test pass with no faults. So it is not caused by this series, but
+a rebase onto >= v7.1-rc4 would avoid confusing other testers.
 
-I misread it, sorry.
+The underlying map failure is likely a separate issue: the RCB SRAM
+buffers are mapped at IOVA == kernel VA, which the dma-iommu allocator
+does not know about, so capture buffers can collide with them. That is
+present since v7.0 and independent of this series, so it is probably a
+matter for a separate thread.
+
+Tested-by: Lukas Splavec <lukas.splavec@puresig.cz>
+
+Thanks,
+Lukas
 
 _______________________________________________
 Linux-rockchip mailing list
