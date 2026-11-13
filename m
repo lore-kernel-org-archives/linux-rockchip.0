@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE961606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 08:01:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 09D1B60A2604
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 08:20:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=e02gQQGS;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=UNB+yZPq
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4RRSbcuI;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=jO6INF/3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,104 +14,103 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=v/b/HalCpu0PKow5ANCntrllAh2RiysqnikNteiSVQs=; b=e02gQQGShrBCEk0uiTcNr/8aLS
-	xFfiHbp+UkOnucf0kLyysytbXQQYmZANhXyyLCNDdtORubikMFMMyOIHTRprDYFWoAsawzCf7q+Tj
-	MwxS9PtmDBJgUqU9UYcnGKrPX3ydkD8rFOiRQcR5MnSKcqiBQr7P23ygmrJM8o3KHg5b1c9CGqnMg
-	H6U1FyxjTufiOYtSNXALyGCIVC/+coZNxup+HpefkVQvOSf62Y+uNUpUlcl7Qm7pCI6aB1padWWPS
-	UbvVj/5+U8VW+VwYW2cQqqKohyXrz4AzXsuVajD+677qSwJjxML8xWrBa1PnW7ZaOl0U7Jex/9vYk
-	cmKQ9E2Q==;
+	bh=dPm9/iW/FiH/2fOZDYH9lFIXWaXdBdlsoWRWvPkp6aQ=; b=4RRSbcuImjzUQHZxeH00yK/t+p
+	uAmiCjhlOzlFkvrWmxcJEWc/MTfts5cQsE7rozrX7jngKEwuGeovE3kDBsN2r2W4ax70dj+imBzzL
+	ADC0SxGepkJ1xt7cTe0M5BcAPLRrgIhnouhIRQf1lfNMb2v78T+YlplBROSakfG2SdhDuDSlmshst
+	4aG1DSEiJPL8xlc6xZ9gZpJU9ebAShhohd1mel0LQ2y7OGPrFBmU0kluUw2AY9hvNWiEj+/Jv4dho
+	332onEyyxuUJKcWvUB+2lx8v9MKYFCvqZZwTKTL/PAuB+vsDhDY7SW7bAkB9TSRTrAhkOwcZMiP77
+	+VNeqSDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRmDh-0000000By9p-3EnX;
-	Fri, 13 Nov 2026 08:01:13 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1xRmWd-0000000C0jj-2NWv;
+	Fri, 13 Nov 2026 08:20:47 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRmDE-0000000By49-08x9
+	id 1xRmWW-0000000C0h9-3wLZ
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Nov 2026 08:00:52 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-3ab30d04674so1054281fa.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 00:00:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794556842; cv=none;
+	Fri, 13 Nov 2026 08:20:46 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-5c14c0503dfso58039e87.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 00:20:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794558039; cv=none;
         d=google.com; s=arc-20260327;
-        b=Ir+ilQIetcmhP4Ee2bIFkercsc7921XxnGvJWjfW880nG9y7mO1op4MJ83kuaDWqy5
-         eyzSwpmjhJgdOr8JoSz2ABsg9T4dGXDw68Z9kpkw5RBM2S3pfHKNqGuvpynY3hDyPlxP
-         yYKxF1QNwCiuxCW9ETqIi40hPehYwCv6pq9U1Gw8BXHsdjnQKGu6JuUDV6vO07j1Vpad
-         XAJOjEqc8aPQc1Tw1mqrAS/gTpx9q6RYJdC7XANu27+KUTSllMMZ7rNWLnE6lax4C/9w
-         tvEbKN/wMxON4Ft4AK3Z1vP3SF2OORXD7Zuo/nuFKKX6a0CliwL05amfh8oBKRJGQlV7
-         zw7Q==
+        b=Mpnp4EYpOJnOz/MA0R6/J8uQqtByCUI4REbEWq/xJKHxPN+uTmG7GkQ8lywAmJXegs
+         Oedeh7zmQAQP47CNV6X3MQwY9focVyF40xHFfAS0l2MKYfdU+mvr/cSsL5TKHA3N/pK9
+         idEGbNCaNIQ2bZKygpAb2XQiW+06ZphFNyk0qOwj5FirQs0uP7nS/MvJe83UwJBBD4+T
+         mziKEd1UzXG+tmLFyX29anbPT1zpq6fKFy+unDi+iw+4fUezwDBjT9ZZ+pSmwTmU5suS
+         NeQJigrb+7lgaACanTdQMgKVcGFtf4CFpG08GT3fz1cA8DibAajbbYL/7LjzwIKCv5FD
+         zHGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=im5VzDYCAR+lhrziKPe6VB/YsWt6tS1hfXIpy0sqr8w=;
-        fh=XfNugaYdoTKvi7DAwrL2Xy6yztpSe3C1oeKg/OilSyc=;
-        b=iPDQ9BgsoqfJ3W3y9QeXx3khfUNLk/8c95XESDtgJJPpRK7eBxZAe+7iuONb+SW0Wu
-         OI6M8E+PQR+RKJHPcqs10KN+QcbIs+RNKysWvPeBO76M/RSDRaqVFa9HU+v22UuLylo3
-         RMz/jD8VJ4cHypDK0lA/G/K5kmorMYE405H8IC5x+xncnGH/GysuKvAeLdOV2k8/O0Sq
-         r7K0PdWz58PMY0pSuuje2s87vcZwX0bWJ3oeUhR861UqmaOk60DnD+2yV5VqQfzJ+NAW
-         oSG4cnexvCh1c4PoAloi598svGN+zx6ntx2v9fRxit8GrkK2dZ+bOv7ltgaxGROJuJbk
-         2/Nw==;
+        bh=qfKfJJI7wxhAdDWtpsGEzNb54cWJZYAwY7eIBpXfiDk=;
+        fh=lymAeTjTRd899SN69OAZrJWyLgN7GLS/ShArVyP3Ns4=;
+        b=mUbhg/xOWrjJPSkjoLOGXOmVjEGqaMRYUTTBNX9Y4NohBUytPm4e3b9hHFflRwkzSp
+         FxywEWt7dAqfaPdYT2eIbv45K6+fjF2NWFBYE2BObLv9AdRHpCssopMAlyzeBa3Q3oPx
+         Gg4MOA+GNLAuyx+R1AzJJilKk6YzHgNcK3I/G1T7exCXkVQV+0aKVv6uutKVt4SO2wh0
+         QnBu/M0/+xyq37yU7vPTApQsZNwHPUNKc+2NcTfX3kxojwy5J7w+KZsoRVKFOptNeV75
+         k8osbNnMPLFbXvaKpvaGVUbxbQA8o329edlUIFMBa764MzNJUwVr6V0kDsiGz7ufvo4y
+         QqwA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794556842; x=1795161642; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1794558039; x=1795162839; darn=lists.infradead.org;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=im5VzDYCAR+lhrziKPe6VB/YsWt6tS1hfXIpy0sqr8w=;
-        b=UNB+yZPqGJN7fzofTFji7BSf5vu3dPYCH60xng7qkX7KxqGby3dKJg3f07r3sJQkhJ
-         CuNij1uIxVSuYy2wT53/3yNYrzmT2AEt2xb2pkWEkXYUGlsLE7OYMKRhqNHydlIGOlLY
-         e80LfYDJhZzpjCuYqIhhVpBBmQnbYAghOiAkXgwyZDC1WIt39zbU69zPCad8ZWlyGMDl
-         gu5cyrYFb+L5Pda1lx16P4p0WTrr+sMmQGBuefvo8Oj3QsaEtf1fCjAatI45C3PDv3cp
-         oQnqk8Noow/rAULCHPubmeLQcfZdk4kuD0OefCZpQAo5iV6ittKmrKoqDXv42LYVwHL1
-         Z56A==
+        bh=qfKfJJI7wxhAdDWtpsGEzNb54cWJZYAwY7eIBpXfiDk=;
+        b=jO6INF/3/kqg02oMqn374kRS74DvTC4ukXAM+1vd15getnQXAKOLaUg+xE1d5q4p0w
+         LhiHXRRkmU0vdlzOKGtVF6sIXiu5xg20BWdsW5d5Mx3SqQe/0JeLJJOeOZXXSVVdBWmW
+         4rtz0iykdI938LfqLIwrOxI5DXVr3BvMwn/9gY+jjjQ/Qa98e5ZqlCUe5BqqXTSpb/FG
+         uGhzSZa+4vFlxVfKu95jjK+qkvy++lQJLX2EGgPe1fr3aWq3r+W/uARZBjVR4bfMI8bV
+         ZDbXqwU0clQ42ZvaTAao2a1vMBCZq8ZduFRROxxJJed8e/oVb/WhsUErTN1ohnqQbvMt
+         RSdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794556842; x=1795161642;
+        d=1e100.net; s=20260707; t=1794558039; x=1795162839;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=im5VzDYCAR+lhrziKPe6VB/YsWt6tS1hfXIpy0sqr8w=;
-        b=uf3K6NryfNsAnuyCY5np2Dt//3OgviphEtAOJdL2KdwOXKe57Xj5uUcm1s4c4EmqyM
-         oJbQn5okoAyGMu0xqlyRl37erawdYnCJNW75bnfcqRxOK+fajg/zKaJi8MqwU+Ff1ol8
-         71SIimWNlsV0L/1Yhkjmkn4axFc7G7Z+UuQxYCy8LjRGBriaFmnfRN+cOZBownL/uJ1z
-         FD6MZXq1+C3uItZuKIUPOiKg+KgtveTtDFlZAtImdzF+OydD1wtQitMiGVy+1d9dgVBd
-         sIMADfX1ESzuJKLnhE4IRxrD7f4W4/N7NmOTGKMRxBkgGGhYhYrJS5IhkbDe5tW5LWSJ
-         r0yw==
-X-Forwarded-Encrypted: i=1; AL+hErFpQNQtle67kUHgkN5txe9CBg+AFbb+JfdQl/GOf0xkssgSqBWp+9MP+Ibqvs7E6iaBGeWLyD6PojvMpJYlFg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9vgYv4wPKrxjLG2rz9oyeXxiuCNzZSnGjm3jFVDlHp1UHMs45c
-	JN9Vi8xA/WefWS8wIT2H3O958URMmCv+MULy840mrIkKNH1Q8vkI76Z1doBYGQDq4B24rO3giHn
-	zl/L711JnATi0gHoIepNRwELfMRp8Qn8/LKlu93vJFg==
-X-Gm-Gg: AYBFou3a37cDFz8ND8L63jLSgYTxM6MMAQqgV6oTBRy1+a89vMh8m3SQSCjZ6IBfYQi
-	cX5gR96NlQavr1j/17eXdGgwXHzpgCMnN17wV7TofzVsJlj4eipz1FBVeWh7+bKYNXT1PE+ajH/
-	T037sppTXA6nDLKKSFI1bzf0NU6qFaMEeZRHdz/IytTJjuKfrBvH+XBJWWMFTIXd3uhG4SprZYo
-	YuKd/PztgxGTguHUL4jrUE1DFcOTirBLy35bDZpKChmcbSFvChrjFVEzThrpuoAoJp2r9NHf8nI
-	HVX13yuJpFqwhjnicjk+gWIToECeq/3YW+SKNs8BWGzlNoEHuV7y+cTf6fCNsY2iJDHgtCuEpls
-	KSwOS+laIEO5NUEV1MqWCi5fZ4yZZ8tqPz0e0PZDgNDqxMjIVy7P8N5gBHZh/rCQ+nzE6EMg=
-X-Received: by 2002:a05:6512:108a:b0:5c0:b5c:4084 with SMTP id
- 2adb3069b0e04-5c1705d663fmr682927e87.1.1794556841810; Fri, 13 Nov 2026
- 00:00:41 -0800 (PST)
+        bh=qfKfJJI7wxhAdDWtpsGEzNb54cWJZYAwY7eIBpXfiDk=;
+        b=kiDkzs0Ch332TAleLs2z7G0gm5csMkX8hsm10HCDK0iJ31+z0c0q3+lNnSwF6M8UUd
+         v5LaWFXkmTznFGS9iGBbxVM8KrjwX1z+UDu0Ykq9dv+22sxTm8wmZs5qy2pIXzlUTLmm
+         lD1Z6+8G4aALTMY3PxeXPiLRk1TGl4YeTOTyejHrtKnxBgSdCbSpYetxBgld9JYnC6q2
+         Th8AobNslnNcZ7oTwKp8RNBZZ0ymWYr+os1uWODFtxAYauPmL6UZIGyGKsalz5v/1Bvi
+         53m292y3MG6rjLPkOnCGh9GQNivn51FdMzfjSBhQGDXtCyHx7L5RcOZxYU3RX3VTwnDV
+         hxxQ==
+X-Forwarded-Encrypted: i=1; AL+hErHKVF0DVPdqaHJPvY9QksjlSPH3F0+8mdKjeI0pCililkeu/pE43GEQccc15URFhFNUPBg9vms7n0kcmu1GKg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/PYSw0vp1azdat/xRi138sCnCkGq0fUdrb4VzoZmHMyhYrrxsi
+	fOoK/nEYg/wP5R2UE9Z4xTAD5YCeHUJQ1B+OvG5qKLJLxCR5GAFK+iqp9py02ASAer8GMlXYHwU
+	ACCAL3lCTaYltXG4qyIWHwT1ciOBqLo0=
+X-Gm-Gg: AYBFou2S2/XTpllkTsMA2PZKp/jtDk6hWt18mLqGq3OCAatq71/OmWJCI/Hzh5X+NWB
+	9jfD//oF1NkUC1H6Dw4LdUBKfavGM+QLXiOSGqDzkHS0iTW7pf4HhgKli+KLfKtxCRUani0ulUp
+	ZnFqHLaUCyNofJnePWpjwsOIpzrOnMpM6DbtqbcLsUCUk2FCdLg7QtSfjoV0yOq+s943A6y0VvN
+	TmNOELosm3Vr61FcPWHExigOSIvBoxct1kFT8WIFxGQ/ldTfFumsMDxW25nvmEUhZvZv0v2LmkR
+	3aBEyqy/mEwLYPMIuli94xFzvq5HqxLwu1vzNC0YNawNHJSON04TYWk6JDXGrEzYT0QOXOFz90B
+	eHX1/Ih+IgmSX61VeASG76d8V2csb69pwNdu+FQ+JomFxNK12ksVZ3wpGZiBdhA12r4gTVxs=
+X-Received: by 2002:a05:6512:3e0d:b0:5bf:a66f:e5e with SMTP id
+ 2adb3069b0e04-5c17058b108mr849129e87.0.1794558038625; Fri, 13 Nov 2026
+ 00:20:38 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261112-hantro-codec-fixes-v2-0-f44424df585b@gmail.com>
- <20261112-hantro-codec-fixes-v2-3-f44424df585b@gmail.com> <f041c5d87698ab3be8283ecc71ead0679327238e.camel@collabora.com>
-In-Reply-To: <f041c5d87698ab3be8283ecc71ead0679327238e.camel@collabora.com>
+References: <20261110-usb-port-pairing-v1-0-9307e29d2ed2@gmail.com>
+ <20261110-usb-port-pairing-v1-1-9307e29d2ed2@gmail.com> <CAGb2v65goAuKgYu-849171FGeCxZ8Cq3GUxQLDLaHLbhRTMmqA@mail.gmail.com>
+ <CAEy9hNV9saBWyKxuMR5unmLjzBM2+S7u+FewEevuLV-6yo1ztw@mail.gmail.com> <CAGb2v64xjbc2t+fMegBUSptiwT5FQBqc8aqiVkLjwfaB+3FV0A@mail.gmail.com>
+In-Reply-To: <CAGb2v64xjbc2t+fMegBUSptiwT5FQBqc8aqiVkLjwfaB+3FV0A@mail.gmail.com>
 From: Arun Iyengar <aiyengar1990@gmail.com>
-Date: Fri, 13 Nov 2026 00:00:30 -0800
-X-Gm-Features: AclHuK-I_zgsSZZ7-9_Jv6URD3G7__LXdFVlF7HwZI4Ihkxqdy0NcAMKAgOjjTI
-Message-ID: <CAEy9hNVSC7TAvdLmN-yWH9NdtKH9jgVnyxFwLJ+J2qPZvOQTEA@mail.gmail.com>
-Subject: Re: [PATCH v2 3/6] media: verisilicon: Don't offer VP8 above 1080p on
- the Rockchip VDPU2
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Sebastian Fricke <sebastian.fricke@collabora.com>, 
-	Hans Verkuil <hverkuil@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Jeffy Chen <jeffy.chen@rock-chips.com>, 
-	Tomasz Figa <tfiga@chromium.org>, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
+Date: Fri, 13 Nov 2026 00:20:26 -0800
+X-Gm-Features: AclHuK8fPl6O1DLxtbIbOB_Tvsw2cAGJCYYC3mBqm8ET2-FLO8BbsLPv08rZzEo
+Message-ID: <CAEy9hNXErDHYorhMp+xVz-A1tYs7JSEdFYApCK5AO1nMAFDqCA@mail.gmail.com>
+Subject: Re: [PATCH 1/4] dt-bindings: usb: generic-ehci: Allow describing the
+ root hub ports
+To: wens@kernel.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Alan Stern <stern@rowland.harvard.edu>, linux-usb@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_000051_089817_8CD2C154 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20261113_002041_575235_68BDDCB3 
+X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -132,24 +131,15 @@ X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> Just to bring to your attention, the IP does support up to 65Kx65k, but then you
-> can't do referencing (its the WebP mode, key frame only). Hughes Fruchet from ST
-> started looking into this but his work was not completed. The general idea
-> though was to perhaps introduce a V4L2_PIX_FMT_WEBP_VP8 (or VP8_INTRA, naming is
-> hard) format to signal this to the decoder, and limit to 1080 the FMT_VP8 (what
-> you are fixing I suppose).
+> It should definitely use the raw port number, since that is what is
+> supposed to be used in DT (and what is used in ACPI).
 
-Thanks, good to know. Yes, this only limits FMT_VP8, so a WebP or
-VP8_INTRA format can still be added for the larger sizes.
+Thanks. v2 crossed with your mail; v3 will use the raw port number.
 
-> If you have time, it is also miss-configured on the imx8mm, the combo-core
-> (G1/H1 combined, like RK modified version). While the imx8mq has 4k h264, I
-> don't know if the VP8 core actually is capable of 4k, so perhaps both soc need
-> fixing.
+> FWIW I'm also pushing a series to wire up USB on M.2 connectors [1].
+> That also has some code that does OF graph lookup.
 
-I have no i.MX8M board to check what the VP8 limit is there, so I left
-those tables alone for now. I will take a look at getting a patch for
-this separately.
+I'll look at it for v3 and reuse what fits.
 
 Arun
 
