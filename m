@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5F53B606A883
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:41:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 698A2606A89A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 16:41:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=f7j+uXzn;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jRT4sSRi
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=r+zvXcZ9;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=E6z+1PLw
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Qsn43vDezltNHUhZF8Rc596Wn5l56GhM0W8ix+fwItQ=; b=f7j+uXznQjmVgbk//rmg5obqXV
-	qqRSCrsY0q56l6SA2qhIklnBdUGh0YpKc/SgnfGrcnT+Pp97SEx4eT1YDpbDuqAeCydEzEEVFRcte
-	wZxtFADRSDAxoM/dRxC91c7IT6YNeZBylV7QaCc6GtenShQL4Au5pUhPiZ5tz++/0nc/SAmbyFUn5
-	7MLl6ZfGsoevDmNIr8lziUNyRBT03oXJnIvP99EdgEHYVs5a9A4bjr+8FCsIF/X392G+vdVrJi+Q0
-	JL4A+Rjr42Zd/g+CGNaqnRuj5V0Qdh793ESCXjB6p5J//5p0AgTov42QsBq/WMbf4XZuSRM4YqJq/
-	K3CSiCfQ==;
+	bh=h0FVKW/xdy/5lAlP260p5FuogC4J3JWLC3CkHBU3Zp4=; b=r+zvXcZ9mPdjcunZqIcQeAvTE1
+	U1EktebdQ1eq35zpT9VNDGkQmTsiwEPKLxS156UiKqNEgOk1+NoKVpsoG9w2iyxrIkNLOxvxn55Ey
+	q5NchROMEmnotpoYafXkg1pZwD6pWLsQDKlPKOqZZ6CYDWRs1PcRAtPILi1HLDbazVur4eGPhWOOB
+	DUz9MMo/VENvUEFzNB4yhyEvPa0dbh8v75uxbqX4vDRwSX+abZKSD/YDMyu23QRpgfcZgLnVdJJ+F
+	kJyKHJE4Js+XE476fxurnialawXBe0W6V1OZ5L7ekgainSjDeNfHC3fT4YYbkFg2hBzliYZcrKdwj
+	GVupzi6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuL5-0000000Dbfj-0c4E;
-	Fri, 13 Nov 2026 16:41:23 +0000
+	id 1xRuLD-0000000Dbsh-1dbC;
+	Fri, 13 Nov 2026 16:41:31 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRuKL-0000000Day2-2nNi;
-	Fri, 13 Nov 2026 16:40:37 +0000
+	id 1xRuKM-0000000Dayb-1A5i;
+	Fri, 13 Nov 2026 16:40:38 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6D4784688B;
-	Fri, 13 Nov 2026 16:40:37 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 0470B43DFD;
+	Fri, 13 Nov 2026 16:40:38 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1794588037;
-	b=Z4V861lIS9RjuPAPsT1JvEnolKqBESsD4NZSQAsA63Bgo2H9jAmAXQCPl+akOi1XjdZn
-	 7ts25hxmjjAobUn78Sog1Z61r1fqUpCDNOmq78oqGSGzImk7HYzJMqo8PCrtooYsTt89P
-	 pxcOlMIPw7hL7CobNODaPC/MIyekExb2hIfQOxfyj2Tkx8ZC/avC+D8DaHzbpiE2MEIIp
-	 0UylXwlEjLq9EnrbLVU8dsmtRDMHCuzY3mYD8gY4aJLY8JlYexkG2CUYMqgwnFl/7g3fy
-	 SRn2/MfvIRYT7PZ2C6WXnVQFUYZNzB+dritr8NDTdxzfShnONGsuzgWsDL2apiiQ/DQ==
+	b=rWHVYq8EWtVlBdkATnfY2VCI5cA5S5Qq3/Kp4u0Vm6u6e9QMk3Ly6EClQADtmFqvNjb7
+	 JkD/oFtXcVZbnzzvdKNmFu1uIihZXgA+FUJYtvE8sw2cx/qQGwQW8U5C/ZrHz0TQQsPfh
+	 z27/HnOme71boanfhwtjsTo14qd0/30AtQo+W8sGhIChhHA8GYcGhw75FsILTxt2/lYB9
+	 4wxlEw6hhq+HIiqi4rAVBvi/BNyKDNqTIlFnKzX2NbsGwfqpruoOo8DYIYxzIKAGKmJQs
+	 m765hfgxQtDa4nVla8b2VfGjCm2x38HP7weUCV9bWqlFWfFTBHiFzmjlqbv4la3HUmw==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1794588037;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=32waLqqt2swUzhJWArbh1IzS7YkAtqX1L64oSzrx3MM=;
-	b=EHVlCarq5KKfXNHG/bWtaxclpG9YhyLSd9t3Kx+lo9u1WEGgFf8ywBJ1mF72MDE/f2+1
-	 7ddyGZEtwPVMbfUKFLhdfrVxMUslN4Hn7fa3Qh9aKys1fzViEwhOgNx6/kl1hzK2zN+VS
-	 f1iIhRPon/jkJ4DCNDxCtPglaULoJb43WDFJ5UHwNWNuhXvT/nQjtfZ6uDih3Sw5fV/BA
-	 C3bY+0OSRfztzzwIGWX/+UbC2zgt2LYxw+2EyK4ChDxgrI/LOXKZ90co4jiY/yitUe8Om
-	 TQAopqQ8GKu+rtP1QXyLlikXYJFAYXWijuQyp3mRJMzZrg9Ci1rU207YyoyPlXvdGww==
+	bh=Ea52I2vnQCe6Ni6efkUTjPrh+GmNSqV3kj5+yTLJAXI=;
+	b=iIu5mM7nW7jMxPT7HweHlWsQ9iZC3mrOkaJf8VnqqwFw4/M+2tPWrJ/kfPJNdLFcTwe1
+	 u98XgGcjNTABdZ8bJEe8fk7yklwqQNhnMwIIjDSmqeP4a8UBsW93F5uqGcYttTK7e5P9m
+	 RxpEhIZENNT61dJ3lJ5SptNSh7LBbrW5XQ07xGrW9dkdr64zPTArlhdUXA3sGLTepSVYq
+	 nAXZkdvetotubfwYOyHRIPZB94VKQ7OBCAUsQMatBR1fylXbW/8ksyCqA5TA/8sSA/f3m
+	 pP47DoEfOYYIByKQFk8KjbcYocHFqGWb3Y6vNJn3N660nOW7U8Mu1myEpFLIkcJvkiw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 6630F1F000D2;
-	Fri, 13 Nov 2026 16:40:35 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 0CE771F00931;
+	Fri, 13 Nov 2026 16:40:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1794588037;
-	bh=32waLqqt2swUzhJWArbh1IzS7YkAtqX1L64oSzrx3MM=;
+	bh=Ea52I2vnQCe6Ni6efkUTjPrh+GmNSqV3kj5+yTLJAXI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=jRT4sSRiN65Rea6q+ooPLoSCtMVlDimAMl+nISOb4ZqfqT/pE4h4M7qV8wEtXB0RG
-	 TRT+T0ejGizzpZpzxHSimS7oAlcNwo/x+A2VjRlbiiVCgQ7K4dl3hWRPElDIFdKTNf
-	 RH9axCSCiegr6MbL7JHaigw8Run1lIaBmxl1fMBdC6DovVgbBaYg9zE6P2J+2G5cT7
-	 VtSlS4r4vkwC55TCOt0qKbtGK/K6IP6iApC2UD7XjnK3ExKFUHxgx5a3z6wXqOnr2C
-	 8B5LLuJzR1yF7NTs5k/ICfDf/fMrzyRUNnJ7CE2NDmisqXTm77M8OoyA1ulAYsLUq9
-	 2o/5LjlIB2uIw==
+	b=E6z+1PLw8ZgAazWXSe/Qw4zD+zAqi2H3Z5Kcwfn7C/AiwBCNpw28yhjPMtymk2QuB
+	 P6sSxXZzhObCZtfShROoo2fgNwwI1B4xqlVDi8I30JsJcUqug85DI7JUatjjPVryWR
+	 WZvVrz8jRD8cH+CKvqQza9dTw9KTakTtcX9FpXayjtAd2dHd3iA9aPbGL+Y/Z8JR7q
+	 FfYI1hrx3OxBWNjo923169tWLrmZ567rMD5z5DW7ApxFFm5BHOFc3pMeMQi7FEqLgj
+	 rTxJoqUyokjDYaI9ZwNyIuPNSPfNWs72fF3EQeUA0pV8xjCol9YNxVR11UUcc1qAxt
+	 jBKTFUTIfgW0Q==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 81431499F7;
+	by lkml.kernel.org (Postfix) with ESMTP id A7008499FF;
 	Fri, 13 Nov 2026 16:40:33 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Fri, 13 Nov 2026 16:40:40 +0000
-Subject: [PATCH v3 09/12] dt-bindings: iommu: verisilicon: Add the reset
- lines
+Date: Fri, 13 Nov 2026 16:40:42 +0000
+Subject: [PATCH v3 11/12] arm64: dts: rockchip: Add the reset lines of the
+ RK3588 VEPU121 cores
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261113-hantro-robust-v3-9-82383c722ad2@gmail.com>
+Message-Id: <20261113-hantro-robust-v3-11-82383c722ad2@gmail.com>
 References: <20261113-hantro-robust-v3-0-82383c722ad2@gmail.com>
 In-Reply-To: <20261113-hantro-robust-v3-0-82383c722ad2@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
@@ -102,11 +102,11 @@ Cc: linux-media@vger.kernel.org, iommu@lists.linux.dev,
  Sascha Hauer <s.hauer@pengutronix.de>, 
  Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794588032; l=1642;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794588032; l=2128;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=a+eZKtwV8FPJqeLafXDDZfyk/cG+VGlzjpq9Qo8/bY8=;
- b=L1wozRVp2YsBLp3pnvZOk6Asi0zgyaASac5q4LLSW86i3YR69JPYnHiVkoLFTnbNW5SGSsSLt
- 1z+C7LIT1weBo0dAv6on114npHG1f0hH7gdwj0HY9/mqbqP+VVsAHTz
+ bh=pWGgDNReqboxSyr5VfPbRCUDYTeDvzJsJNZ3jQadXZk=;
+ b=xlaQlRPGNedb+7Aggz+XzrrJ5V2GEFZb3cM3x2htpaw4NA4fX5zQHfHCaZ26hKfcMjd+YQkLU
+ 0XqMYpqifR5AhYVZjF+SM+b95Ukk4rvYav9GDAd5ZwXPXSEPWJMgVFE
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -135,50 +135,60 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-The RK3588 AV1 IOMMU is part of the AV1 block and has no reset lines
-of its own: the four AV1 resets also cover it. Its registers can't be
-accessed while they are asserted. Describe them.
+Describe the AXI and AHB reset lines of the four VEPU121 JPEG encoder
+cores, so that the driver can reset a core that is stuck after a fault
+of its IOMMU.
 
-Suggested-by: Philipp Zabel <p.zabel@pengutronix.de>
+The IOMMU of each core sits in the same register block and is clocked
+by the same clocks, so these resets likely cover its bus interface as
+well. This relies on the driver not leaving the VPU in reset after
+remove ("media: verisilicon: Don't hold the VPU in reset after remove").
+
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml b/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
-index d3ce9e603b61..70df03102015 100644
---- a/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
-@@ -41,6 +41,13 @@ properties:
-   power-domains:
-     maxItems: 1
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index aa69fd3793fd..227465d446a2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -1325,6 +1325,8 @@ vepu121_0: video-codec@fdba0000 {
+ 		clock-names = "aclk", "hclk";
+ 		iommus = <&vepu121_0_mmu>;
+ 		power-domains = <&power RK3588_PD_VDPU>;
++		resets = <&cru SRST_A_JPEG_ENCODER0>, <&cru SRST_H_JPEG_ENCODER0>;
++		reset-names = "axi", "ahb";
+ 	};
  
-+  resets:
-+    items:
-+      - description: AXI reset line
-+      - description: AXI bus interface unit reset line
-+      - description: APB reset line
-+      - description: APB bus interface unit reset line
-+
- required:
-   - compatible
-   - reg
-@@ -55,6 +62,7 @@ examples:
-   - |
-     #include <dt-bindings/clock/rockchip,rk3588-cru.h>
-     #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
+ 	vepu121_0_mmu: iommu@fdba0800 {
+@@ -1345,6 +1347,8 @@ vepu121_1: video-codec@fdba4000 {
+ 		clock-names = "aclk", "hclk";
+ 		iommus = <&vepu121_1_mmu>;
+ 		power-domains = <&power RK3588_PD_VDPU>;
++		resets = <&cru SRST_A_JPEG_ENCODER1>, <&cru SRST_H_JPEG_ENCODER1>;
++		reset-names = "axi", "ahb";
+ 	};
  
-     bus {
-       #address-cells = <2>;
-@@ -67,5 +75,7 @@ examples:
-         clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
-         clock-names = "core", "iface";
-         #iommu-cells = <0>;
-+        resets = <&cru SRST_A_AV1>, <&cru SRST_A_AV1_BIU>,
-+                 <&cru SRST_P_AV1>, <&cru SRST_P_AV1_BIU>;
-       };
-     };
+ 	vepu121_1_mmu: iommu@fdba4800 {
+@@ -1365,6 +1369,8 @@ vepu121_2: video-codec@fdba8000 {
+ 		clock-names = "aclk", "hclk";
+ 		iommus = <&vepu121_2_mmu>;
+ 		power-domains = <&power RK3588_PD_VDPU>;
++		resets = <&cru SRST_A_JPEG_ENCODER2>, <&cru SRST_H_JPEG_ENCODER2>;
++		reset-names = "axi", "ahb";
+ 	};
+ 
+ 	vepu121_2_mmu: iommu@fdba8800 {
+@@ -1385,6 +1391,8 @@ vepu121_3: video-codec@fdbac000 {
+ 		clock-names = "aclk", "hclk";
+ 		iommus = <&vepu121_3_mmu>;
+ 		power-domains = <&power RK3588_PD_VDPU>;
++		resets = <&cru SRST_A_JPEG_ENCODER3>, <&cru SRST_H_JPEG_ENCODER3>;
++		reset-names = "axi", "ahb";
+ 	};
+ 
+ 	vepu121_3_mmu: iommu@fdbac800 {
 
 -- 
 2.55.0
