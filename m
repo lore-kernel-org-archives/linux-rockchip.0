@@ -2,11 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C19F560A5BC3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 21:08:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E439D606A8A7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 21:09:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fihIro+s;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=Fq6FkOsr
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=I1Dl3KvT;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=FgulRQCM;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=q7aAchcl
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,55 +15,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=sJZqxrmJF06b5O8omA9ih1KyHhM47MypZy+LSpB0AtQ=; b=fihIro+swoPMr8FHk7uoNOpt91
-	T1yFZhaRKT+iWuG2pLkH6um7u8wazecyZ2YGFHJqjzGKDRU6ugLLiGeUH6egTmhlsVYQ9uo2Tvqii
-	DH8PiKTAsv56YiTM2EO7XZNnTPjV+0cW10rUi2Ly+bdqIrGhy98Ufvx9vDnPoMG64FGFRqIdROqwa
-	guC1lXgpdv5ssbm9q83+sE4x0AQ3VfwkOqSeBqYFO6wpm7IMDVc8Soq2d/bGwBF5AjpJidvUXJ7gg
-	VBWTMbma5BZ0hFOOXa3QrEqMZDTgFeqlYFPaahaPnFhFvHSofzODZIYBFYyVWYo87ABittMD3Xzt0
-	PurmdBBA==;
+	bh=zrIgd1r1nMyzTvUBt+XZstQTvLAZ4Yf44ZFK3XsjJN8=; b=I1Dl3KvTHb3AqeOPHHzRYrDHpl
+	IPc7xR8w7HDar9g+zerl97sggP18E2ULMnClHsxTvEaggOVM7Oy9ZQRnABcC+WFIJ+chCQsVEi1BW
+	yaI8CTxwFIrGeS31R6rwj9j1JNmf0+caTK07MZ6bogVVKdUv7YI+7oEyNE4ByAnrVCxQFekYXcrHb
+	wYlNSWGyFUw9nZlaBwXKOrMQF2WPt14mgChbEiZ9/7UhKGujgrySrDGYJ+OYGoWHvNSi+LUMmqc7C
+	mhTahLdkrlUZe/q+87AJimZJ6L66a9/9IUyXyMz9Q8Q42tQn45k6d/Gf66dG2Xv8swrusp2ZvJJJH
+	J5raCmeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRyVt-0000000EX3e-2T9g;
-	Fri, 13 Nov 2026 21:08:49 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xRyW8-0000000EXBy-2dg7;
+	Fri, 13 Nov 2026 21:09:04 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRyVK-0000000EWlF-2s2s;
-	Fri, 13 Nov 2026 21:08:18 +0000
+	id 1xRyVP-0000000EWnc-03jl;
+	Fri, 13 Nov 2026 21:08:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=nTWhZFEhQHsmtsz8gu1pvZwk6WEInEV5R1xDIdW6aS0=; b=FgulRQCMAC/mnTquDgQNreahjI
+	d4S2hDTG1J2Vo3Wz4oViodDLHVCA/MFCOatCB0QuxsIHUGwx1DqkqkOTPSYUWUqv+o3eswD41urCM
+	u4OwqmaDEskbfQEkymMf5PrbEmdRkt3hFYIX/KfVsEOngdZl31dD7AdQLBp6KuygjGq1crO/P36PW
+	gbKgd7/j5n5Jef27w4x1ptKyBkzke1hqzux713tR967LmaCE5ZelL8z7rIY1PoStTWpB6sVBnCT2K
+	SjT5AUIYnfVVrYFS3xTfJXSZz90uAIvRZzNdipawIgixbDY3QFR7urxl6+/UVJCGE5GI00qj5nXD8
+	SfsYklaQ==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xRyVK-0000000Br4E-3RWz;
+	Fri, 13 Nov 2026 21:08:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=KL61sUxGGXBLoXiDN/MT8f5YU0XPMLUvi7kW1YNxd5w=; b=Fq6FkOsrggmsp8mQ2lX6leF3JL
-	G2Xu+3xGCgwVm/HxXjIZr1p46QA4Y0DNs9L5+eh/pMO9xPa00hg34VjICP6NT+nePRGSSGtcKlQtQ
-	Ezue9u3CwCzQ2GnRVquBzdp2q14X1kxeDvPeGKdxF0gOpn14xzH3kq80S2XXQgUBPGPBTPxU1m6O2
-	nE9AXoEwNgr6ryO5EzDx3MVXBQWAfyC1ZOGlSH3tRU/heDHuPVAo2UzQbpdO321aRVJNjr/6NbOPS
-	pSHVdP8WjpwznDkCCqwl99mp4RHIzy8Rgo7XrVMUPeCKoENGtkl7CTMEmQwYhjOL2YExxymHUIE07
-	K0QsAYWQ==;
+	bh=nTWhZFEhQHsmtsz8gu1pvZwk6WEInEV5R1xDIdW6aS0=; b=q7aAchcliIS1W978NdKZEiA7pH
+	JrLAMjIddCUv9BUYvV/7IhmKAySpbROufMrQ2rGAyxvZU5vJs9ji5bs+805t7IKRupIlvqWaVhxqJ
+	48EgvkQXJYTXQgxjL5WoGnAMMjUd4kBptgAR9dHR1CYl/SpTAxONmlMdOCzQY26OwL+/0EvLCtxP7
+	51Ac3prl6nkkiVfzeaKMQZgcQo9JoTS0AZNjfqgIYXzy0VipDqR/L8oEQa8+rYHDWRmI7D3stgCai
+	iBDK7yPvCzmAUT8KnuCj6H4yzI20xaxFrNLirea9Ll+MtQ3bk6mAjWF1g/tA7qpOASDPmJ5cY+TlA
+	ERt9sCAQ==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Igor Velkov <iav@iav.lv>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Igor Velkov <iav@iav.lv>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	broonie@kernel.org,
-	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
-	krzk+dt@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-sound@vger.kernel.org,
-	luca.ceresoli@bootlin.com,
-	robh@kernel.org
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Describe more of the power tree on Kobol Helios64
-Date: Fri, 13 Nov 2026 22:08:03 +0100
-Message-ID: <179460406460.1165597.4015563597141303036.b4-ty@b4>
+	luca.ceresoli@bootlin.com
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable SDR104 on the Kobol Helios64 SD card
+Date: Fri, 13 Nov 2026 22:08:02 +0100
+Message-ID: <179460406458.1165597.11570162473311943903.b4-ty@b4>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261108-helios64-power-tree-v2-1-639ac2fc5ad7@iav.lv>
-References: <20261108-helios64-power-tree-v2-1-639ac2fc5ad7@iav.lv>
+In-Reply-To: <20261109-helios64-sd-uhs-v1-1-ef8fc370d282@iav.lv>
+References: <20261109-helios64-sd-uhs-v1-1-ef8fc370d282@iav.lv>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_130814_783125_52D70749 
-X-CRM114-Status: UNSURE (   9.45  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261113_210814_908224_6A7F2DBD 
+X-CRM114-Status: GOOD (  11.18  )
+X-Spam-Score: -0.2 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,22 +97,20 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Sun, 08 Nov 2026 23:00:18 +0000, Igor Velkov wrote:
-> Add the regulators that the Helios64 schematic shows and the device
-> tree does not describe yet:
+On Mon, 09 Nov 2026 03:45:58 +0000, Igor Velkov wrote:
+> The SD card I/O supply vcc_sdio_s0 can switch between 1.8 V and 3.0 V and
+> is already described as vqmmc-supply and as the sdmmc I/O domain supply,
+> but the card only runs in high speed mode.
 > 
-> - RK808 DCDC_REG3 vcc_ddr_s3, LDO_REG6 vcc1v5_s3 and SWITCH_REG1
->   vcc3v3_sys_s0 (sheet 6),
-> - the fixed 0.9 V regulator vcc0v9_s3, fed from vcc3v3_sys_s3 (sheet 8),
-> - the hard disk supplies vcc5v0_hdd and vcc12v_hdd, fed from
->   vcc12v_dcin_bkup (sheets 4 and 9).
+> Allow SDR104. With a SanDisk 32 GB card it runs at 148.5 MHz, and direct
+> read goes from 23 MB/s to 53-66 MB/s.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Describe more of the power tree on Kobol Helios64
-      commit: 6c9bd34d299ccf3cd1374a79749f9509059f5bd7
+[1/1] arm64: dts: rockchip: Enable SDR104 on the Kobol Helios64 SD card
+      commit: abf495038cc9f0693cecf54bd37d3200d5da942c
 
 Best regards,
 -- 
