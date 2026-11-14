@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0297A606A327
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 12:54:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 32C44606A332
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 12:55:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WbqkqEkR;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=furiosa.ai header.i=@furiosa.ai header.a=rsa-sha256 header.s=google header.b=MeBx7NZq
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Mnu43vd6;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=furiosa.ai header.i=@furiosa.ai header.a=rsa-sha256 header.s=google header.b=L4zuBYhl
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,107 +14,90 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=a9b5xQIbRAkUTSCgwQ+6s888tKi0CeaSBpOrfzsA2T8=; b=WbqkqEkRx4qjcTXhT5IaFBuSxs
-	h5hINMefbT6aszaqaNo2bw5D8YZwvJUaarjeHhgHKbqtmR9olKT69iuO+FOSdWOXtl0kKjWMfvHPX
-	6waQIqbxZb0gwoxRZ6sYg0z9ZV2TxXzZTB4vz3NCY6pwRSz6BrJ32qBVyN4NfuKr+sCKNHQmVBKnr
-	TMTj+x9nPG63eoNoHdYMJz1eJNcOYrF4o1oYGJlzk8va3e1MmZEuVLWPIHjeoRtctFhKyoOfMQ90U
-	hYVvqntBCRhEOaYs4uKuYjuZljul0vv/XDR8oR7HMLlTEEkDywrC9H2w2N+Hhw8+QK0fiiid7HO6u
-	+USrI7jw==;
+	bh=5iluhuheh9Fqb8WUP/91ITS4K609Un7TLo0pBlsbfZQ=; b=Mnu43vd6hKBOhbri/d+8pLTtqX
+	GOPSO2EYFYEGKiRDSMhDz7rnKTlZZLX+DgGLq/inyG/BHVrluWQrP1WN1/sQIEMaEsV/OItBKNdFJ
+	kFjFmzAJ2aHJt+ExvFhJqrEqR7szkroo56VWvbXb9X9sbzwDb6Iy7mj8V5kQS32SgI2ACOjN96SJS
+	oXcNKoLvNX95O8s2GWY6IPQnqXKw/Uh6bQSSZKb39xro7gVlcnV4mM4odlV52zwGuUESwYx94ryfS
+	Fzv72QuVTh8Bun95ggLC4Jj7bHHbgvPM0XUKYnsPseNeVUsb54Ef/nnd0AJUG/uucxmAls/zxr8So
+	aVEVhM8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSDHO-0000000G1w2-3WbY;
-	Sat, 14 Nov 2026 12:54:50 +0000
-Received: from mail-dl1-x1234.google.com ([2607:f8b0:4864:20::1234])
+	id 1xSDHl-0000000G227-0WAF;
+	Sat, 14 Nov 2026 12:55:13 +0000
+Received: from mail-dy1-x132e.google.com ([2607:f8b0:4864:20::132e])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSDHM-0000000G1vJ-0hLq
+	id 1xSDHi-0000000G213-1Deh
 	for linux-rockchip@lists.infradead.org;
-	Sat, 14 Nov 2026 12:54:49 +0000
-Received: by mail-dl1-x1234.google.com with SMTP id a92af1059eb24-1a8cc11ac42so1756512c88.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 14 Nov 2026 04:54:47 -0800 (PST)
+	Sat, 14 Nov 2026 12:55:11 +0000
+Received: by mail-dy1-x132e.google.com with SMTP id 5a478bee46e88-36fc0a3fe93so3572293eec.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 14 Nov 2026 04:55:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=furiosa.ai; s=google; t=1794660887; x=1795265687; darn=lists.infradead.org;
+        d=furiosa.ai; s=google; t=1794660909; x=1795265709; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=kzZ572SYqNYS7AFbKEhSpyO0POmges/XmCJlcN/iV2Y=;
-        b=MeBx7NZqmIuTjbuJIgU+sE2VXLTB+42zV860m0otEGWxBvRup/X5O2wmegTS/SMepx
-         ox8hsG+uT6BJVYkJRKfEE1HZCR8W5BUVYZomuuVAX+lORZVpF7uRI4/0x1RvkVh2CbRa
-         yJFGTgv8PVMMR7KWq9nmZuh6iDmo4CJ094UMw=
+        bh=RIAjwWAB/1kSNYGnZwFAsdhypWK0Kwmt4wTEOFin5Vs=;
+        b=L4zuBYhlD0hEFU4y2zOo/g+fcpnX5WTk/qb2wkd68D55kq1DWt5NHRDMDXwCPMgkC6
+         +MevVR88VsHDUNYrJgjhXCBerWqs/CfFhABwp1RePct6LyYC/tZjLvFLpKfcnmBj0tsA
+         Pnv51274FZJo3b+Ai5hwAiF5Qf9+6R7EDNKt0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794660887; x=1795265687;
+        d=1e100.net; s=20260707; t=1794660909; x=1795265709;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=kzZ572SYqNYS7AFbKEhSpyO0POmges/XmCJlcN/iV2Y=;
-        b=WBj8gYvnsgZuiBMre9mlXJkvPVWscxQPPNW2lIC4ffYiGtJf9hT3Yk1I/pXDeftQKX
-         ZIf+6bLpGWMNtsTME7Blgc2kuDx2NL9GRec0WJ1uKZrl4bxXNXMAdTsxluYUTsQXi3E3
-         8AadPSeeOE9QWzIkAVlWG6+xuBmKE/NupbqM3YmFn+9HoVA9dUDkbvxFaAqVrTWo6JEP
-         Qq16fwPJcdCBGrp8Cq9Pvtq4dT9Vmcwl59kWAhN0m4SRuoiAV/D3bcRzeKukp+SamLSP
-         BrVLT/65Yju5+iSJT7X9fvkgEVkDD9J+a9aTNVASOmy93L0VY1njz1RZ5vluNsNRapxF
-         8Jfw==
-X-Forwarded-Encrypted: i=1; AL+hErEp0WUGdRIqEBIJWMdX1W7KOswl2vyC6HNbyP+6TujjtvFXcOg4DJr94iDwpgEj793IV7g+ItLrIgrL+AqtYg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/FpeVulDeaV2FGe6FjWgPc2KCIEKIzy9KCi4l15XNrcbAgu1oR
-	0PybBChdJb/IZOb+63L7yFpuX8t4j1s1R9+6fazhj+J5gqwkfi3U1kwKGc+juhPtMu0=
-X-Gm-Gg: AYBFou1p3ao5hKHBkfPpWMwgWlmJ5BvgBn+qP17kVu4wvy11qS9WzpzFyaLYpZdt0+q
-	i1Y3hHzS5mZXS6g1dHZQaalLvUBBUASIMcA+2GZ5NXBfLIYKF97L5kicV1as9P7G8UPHNx9QzpK
-	U2ObD6FqLGLzMr2Nswyxf/0XZz8nDZBdIiKwP32qer5lTt2x9VZbUoF38MT3HrU5sl4ULIvBTN8
-	QAm6CHDrjiyo9dcAidEng+QbXTP5K6lsCxLnwN4OUO52DMkXoZsvpcQ92TrSBLjDGKbHCAkFnA8
-	/FVBvhvoP7L9IRbWNO7OyG9e96k7k8iyCoDXxExDv+BNwNCYE7GcoySjE/QWJjLhWF10Y1oO3Li
-	281Z9qaMI7gOvElcljLcYuaeAPEjvpYEqsJSuAF79yUfqEsy7qFElptbLGv+GLuoHC9jb+Sf6Wc
-	VA02nvDXSy/SRGTbraxLEoOwj9TSu8ph4YtEzVrLZQR4OHK+X5SCQNaNtpOek5uBt457qGFsZpY
-	EbARXkqiCS2YYjig81vU0SmTIHNm2lD3HsyB6B9ZkcUL20hUlZwl2OTcDZHMb1OPbI80uQZ5/R+
-	XFGxCT9Kf41BkXhQCzOesDWPgjNDH0a5s40lIJ5ERWbuteruqhq4kVH8Unf9rBgLi+5HQSId7C+
-	W4MWvRN3diVhF
-X-Received: by 2002:a05:701b:2706:b0:1b2:4c54:d976 with SMTP id a92af1059eb24-1b50311d3e0mr5111198c88.31.1794660886535;
-        Sat, 14 Nov 2026 04:54:46 -0800 (PST)
+        bh=RIAjwWAB/1kSNYGnZwFAsdhypWK0Kwmt4wTEOFin5Vs=;
+        b=oxlxnDzHVLDrzJCYTiY8adrCF/X8MGnznPf9gB2eBId8Y02WtAlF0s4FrlEq1PkQl/
+         iTnEU9g4SH4OcXE+fvKWcNR+kSUldU2EkIBqZzLZnz/cnnbOXufMRuAUQJUyjI2z4BHg
+         TurT/4ZT2Roo64E0BVdHXo/+nsqzZIcDRtsH+OgU9Mqp7q16mpTEkKT3ZKlBeEDpAAkc
+         3Dfko8saL+o3/rPXzxfSSfrlp4sDAr73ULbfLSKJdsZsyiXlSDq4bDcwVB7vYtBAkY0A
+         MraHPG6W8YxEy1dKiC8W8998LhpPhs8qsMSRdm2LYfgSta6rkTlkOmSkmcrc+gHSdAUo
+         TBZg==
+X-Forwarded-Encrypted: i=1; AL+hErEFAk8BgBnYb+gFgNgZ/+VfTIZHvRJijw4ReeTe7eZkx7Q+P3AG+M7lS67asFvVA5XibFFsd+nMPge2kyyrxw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/MXTOULN94wp/Ziqy6EKVfRCceOfu5in2m/O4piAnp9YX0Tll+
+	TlUkDZ8x9Ivuj78gp/yxjl/S1iK77JXAvTj6fB27DfkqhlBFC1OxQ48FLm78L7Ne57w=
+X-Gm-Gg: AYBFou0OPxYv2YI+EOUIGdo/1ywJJwdrGArCQyp/vW0rrj8kyB2Ht1npH4bzlXCWXCB
+	GST1v/Xo938i9MuckqqlqQAl8ZM7AGLJsuxXqGg+0GnOBMRanlhWFCQ9rq9tmVn1lM2+KzHUMCL
+	ZGeqol34wUh0a/gQKLAIvee6CCoKUn391iTrBco//+5kRi+v5KJIc5l01QxUwGQZF133w4UexUg
+	5J1kanRnXZWYOES+QJhoHgRDXRBfJp83N51vj5LUtkMYTNwAWcwt6+PE/xrYoUgTnrQ4YTYuNfa
+	V/TOQOgX4QH/qlGUD1dwzZa05H13BPQbM8vKKTJ6mLSnD7XmskzzM/xEcCIpWwLFCvtLmhjLYtu
+	fVdzMAY9B1WNfzH4tlir2BOIsZJzORWsDWKvGFvO8GpbAneJNmQBV6kJBAq6ECoJaTEi7UE21kB
+	qthbmtH+/sp+xfBlmA8TPhO2tGSw3Zkfcv8w6vcq3kIrMbOTFhSyAtVBqGuGB5cPihI95z0QQ8j
+	0bY6Oogim0vMfBcAN3qcwpGfJwfQJZp6YbKG0bKvxaH13W/Zj0fQSWOjALlPWUJRIcZy1m8JPK1
+	2Znn/K45p2eLaU7u0al+G909HJkRKAxVATmi4uPsCNYgG8S7VmgY3ot+VJdFTHgIHKrWkkkG4Hh
+	42tsV2bqJCHWX
+X-Received: by 2002:a05:7301:1528:b0:369:1401:c5c2 with SMTP id 5a478bee46e88-37966d4077dmr4508914eec.26.1794660909271;
+        Sat, 14 Nov 2026 04:55:09 -0800 (PST)
 Received: from rock-5b-plus ([61.83.209.48])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b50319e381sm15468097c88.12.2026.11.14.04.54.41
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3797f98b9b2sm15904809eec.6.2026.11.14.04.55.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 14 Nov 2026 04:54:46 -0800 (PST)
+        Sat, 14 Nov 2026 04:55:08 -0800 (PST)
 From: Sidong Yang <sidong.yang@furiosa.ai>
 To: Jiaxing Hu <gahing@gahingwoo.com>
-Cc: tomeu@tomeuvizoso.net,
+Cc: ulf.hansson@oss.qualcomm.com,
+	ulfh@kernel.org,
 	heiko@sntech.de,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	p.zabel@pengutronix.de,
-	ogabbay@kernel.org,
-	zhangqing@rock-chips.com,
-	royalnet026@gmail.com,
-	ulf.hansson@oss.qualcomm.com,
-	abel.vesa@oss.qualcomm.com,
-	sebastian.reichel@collabora.com,
-	u.kleine-koenig@baylibre.com,
-	chaoyi.chen@rock-chips.com,
-	shawn.lin@rock-chips.com,
 	finley.xiao@rock-chips.com,
-	diederik@cknow-tech.com,
-	alchark@flipper.net,
-	leonard@lausen.nl,
+	shawn.lin@rock-chips.com,
+	sebastian.reichel@collabora.com,
 	vlwwwwww@gmail.com,
-	jeff.hugo@oss.qualcomm.com,
-	rfoss@kernel.org,
-	dri-devel@lists.freedesktop.org,
+	leonard@lausen.nl,
+	abel.vesa@oss.qualcomm.com,
+	tomeu@tomeuvizoso.net,
+	linux-pm@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	iommu@lists.linux.dev,
-	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v17 00/12] accel/rocket: RK3576 NPU (RKNN) enablement
-Date: Sat, 14 Nov 2026 21:54:35 +0900
-Message-ID: <20261114125437.9986-1-sidong.yang@furiosa.ai>
+Subject: Re: [PATCH v17 1/3] pmdomain: rockchip: switch off the subdomains of a regulator domain at probe
+Date: Sat, 14 Nov 2026 21:54:53 +0900
+Message-ID: <20261114125459.10030-1-sidong.yang@furiosa.ai>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <cover.1794615324.git.gahing@gahingwoo.com>
-References: <cover.1794615324.git.gahing@gahingwoo.com>
+In-Reply-To: <733b921576828ca70a3f5048691400130f8a5dbc.1794615323.git.gahing@gahingwoo.com>
+References: <cover.1794615323.git.gahing@gahingwoo.com> <733b921576828ca70a3f5048691400130f8a5dbc.1794615323.git.gahing@gahingwoo.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261114_045448_203053_C2C69F9B 
-X-CRM114-Status: UNSURE (   6.79  )
+X-CRM114-CacheID: sfid-20261114_045510_322738_FE97EF38 
+X-CRM114-Status: UNSURE (   7.33  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -136,16 +119,15 @@ X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sat, Nov 14, 2026 at 04:05:17PM +1300, Jiaxing Hu wrote:
-> This series adds RK3576 NPU (RKNN) support to the mainline DRM rocket
-> driver.
+On Sat, Nov 14, 2026 at 04:04:59PM +1300, Jiaxing Hu wrote:
+> Mark a regulator domain and every domain below it as off when it is
+> added, and once the subtree is complete, switch it off from the leaves
+> up. If a subdomain fails to switch off, leave its parents on and warn.
 
-I checked the accel/rocket patches for regressions on a ROCK 5B+
-(RK3588): MobileNet inference with up to 6 concurrent clients, runtime
-PM cycling, core unbind/rebind, GET_PARAM (returns 1) and recovery from
-93 forced job timeouts all pass, with no warnings.
-
-For patches 2-5 and 8-10:
+This also changes probe on RK3588, where npu, gpu and vcodec are
+regulator domains, so I booted it on a ROCK 5B+ (backported to 7.2).
+It boots as before: the NPU and GPU work, the video codecs probe, and
+there are no new warnings.
 
 Tested-by: Sidong Yang <sidong.yang@furiosa.ai> # RK3588, ROCK 5B+
 
