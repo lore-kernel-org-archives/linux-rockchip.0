@@ -2,109 +2,115 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CF5EC606A323
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 15:09:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A81C5606A330
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 17:58:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=k87oTM6p;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=bOO8oDcJ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Ol6/yCQG;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jMtLVM9h
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=r5NxgD9V47Q62aDyGfXPB+b44v3ggJyhp5jQeJKt3xg=; b=k87oTM6p6nb1X07IdUn0qqeDVe
-	U9T60RNwrtw6ee/Zn02Z980puzcMBJPHVh+RifCy8oPLCO3O6NjRmrI9qwKlLDbX5BkTKqg2Km5BA
-	fzWoWOSwKTVspbFMZNrW8oim2Yht0SsI2YvPQTeE9Z+cIljLrtda4U1Nzl8Y/XlAIc/eTgt2eVjJy
-	Hc3TgO03IqjO+X6mL9dFtWhNwuSW+IzgFiZH/7OiPgGty8v+fXjDn+IsjK05JiTdEDXiyitmJGN6y
-	mMK9xJIdLuHxC79Gx81bAYrloiLQo1B2pT5na8ftzRZdPyD2nIb1pusl2kkIP3riwLNJqWwI4ym6b
-	gSndkSCA==;
+	bh=v4qsvRClOxxHbSv3Xl+aj37EQ9c7wJCCUEL8nZxvEwc=; b=Ol6/yCQGMsQmSelsQV5DtPIoIs
+	VpQnRJNN9LCpfLDZrhx82ekCspm+a2lxKxS9FfJNhpW0ksomNKHTNWi4PE9cDEP+12Hm/hRGDMaf1
+	6jrzMIv5whqfc2aWRMmXna5Vaf82CPXCRc79Hv73ruAFPcm8BVQKNHQjaI0CGoTIThhNMdVTpKdsi
+	6JhJEstIDlMJmWKk3V80dqDFRuZL0nMfJE2Z91E+PX7UBNwVaXTpYCnWIMoXsKR0ieV7wrKDB5GB8
+	RcVAqzFyN12zOvXtL0+VLmgKVsFYfW9DK5E/wBwh/kimPMDNTe9IkWlprySMYKJ6nN1WaWEcx39Jx
+	0yJxcWDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSFNX-0000000GLfs-2Esk;
-	Sat, 14 Nov 2026 15:09:19 +0000
-Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
+	id 1xSI0i-0000000GZBc-0aOv;
+	Sat, 14 Nov 2026 17:57:56 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSFNV-0000000GLf4-0GRF
-	for linux-rockchip@lists.infradead.org;
-	Sat, 14 Nov 2026 15:09:18 +0000
-Received: by mail-dy1-x1335.google.com with SMTP id 5a478bee46e88-36e99cf7bb3so2587674eec.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 14 Nov 2026 07:09:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794668956; x=1795273756; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=LIozortPxX9/yGgYF5RVAdU5h+CP6K/5KZOyPsSClnQ=;
-        b=bOO8oDcJO3SApUANfeOnXK0iCWqugFSjO026iiCCkucUqzrMJUBBiJAKJ5nLHoe84p
-         vCPEbyiLJ5CEPsL4CMp/1zGUXRfarEMBmuAvx53uRwVFa/rdUTWyz+G08VNMMZMZ0MTl
-         N7x+h/d28F5dkbT7WKfkmDm2ljUsaoAHVqfJ0O73PhbVIUtDkKX8eVmPX5MSY6JY3cxt
-         m8nW/QLMfaV4JozqyJ5EKhzxrhJYln0SAzz28a6DonBUVDRktYfyv212DTZV3CIUKaak
-         Lq7SEJ2TpiZ0eGJNx9lOiMtA5YqfozoDDA9Z+yf7mw4IhojXLYwUpCbpwmo7H6odsYJj
-         rk4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794668956; x=1795273756;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=LIozortPxX9/yGgYF5RVAdU5h+CP6K/5KZOyPsSClnQ=;
-        b=aMvuv4NtGZRZYCAHGIsXqYFz8cT+WkrXgoBhzononWD/jEx7Yg1orddY+JyWLy19vV
-         2G+Y476+hOClne8UmHz8S6+MAm3vpwoq5twM7/IoU3bFE/kNa9vWCPu7/Q42vJmYPSzO
-         lVTBFxFSfN4QrCMGYLELCrIoQkDedIFea7bxNRNP3WiLDLq4Xys2ucIkRNLYdK27x+hX
-         HCNOp+xBLiGOIGHLR7+F6rE/dWGlrCZTeT5CONAbQqe3KXGU7M0CHyPCf07b7MMglUjD
-         J0C+C7XNqsAI7wjnrD6muqPIxh9m79Xt2y569AP1OJ3JQ7IySYvrQKrPzjT+EsM8Gn9Y
-         o0AA==
-X-Forwarded-Encrypted: i=1; AL+hErHcox0ZwLUJbMv3t1yvIgwTNPRo0YBN9WzkyRn2zOeYZ8EW63B4MppIGsNU7ECFRROrVYrlCMx3mZatbknotw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z94KNGykOZh5RZLsf6AbBCNCVIIpqCcqJuJ0MxynpgkOAq5yiZc
-	7oGM8uUQ3KkzweA0QHOBKyTp4XkgH2AhoytANGDKk3wOQ0o9BCpmlpPfjSOALen9MvA=
-X-Gm-Gg: AYBFou2KhQwlH53DO0wY5DHxgS+Q++0YCEEl/i3XYcJSq+xl8Ub6syJDijrLOteHWXb
-	UQflp3KuS6+1YZrI1xYV78mMIz+cJuJBkvnxpPo0M04oCoDY/hD4gzpNgpKtMLe/iIiW0eKoY2t
-	ekbAGW72kZiT5P+CKwuEgMTvs1K4ly+moSEEn3xp6XfQ65W3R9M+Ed1HLGQUHYlgWwx+8NDT9Bk
-	YlVPqnZY70T71K6Ickh0FbX9fs6wnQErVsW2SRr2k7IbZQAg2rfe2USxOxMWfvuPq0BO2RVFoN5
-	mdhIdWndPV5qiIOdAUJVTfy8aRiNbIrIQEJD3ARRpWSnCImIUNOYwoz77JttdhCSU9SXf6Z7yx8
-	wIz0PBh8TdmCFbtmwSMeXXC0myDTHpicWU8GGovuZjxh/Drffs7FnqyMVQHPrdb/wO3r07XHtFA
-	aEOYL0kxdW2JMGGMc+uRi70UGRqtMTtXLbD+wY/eJnruNbrgasCvaEBw336UFCSKxrcQgknpu/D
-	r0VOQfyAnrCZQFwWAzC4yBfvHNKHfmh8oLKKsrBN1TYHqdOKTUlHWwBm/585h65aGCl65GVE3f4
-	ypf2lgmyGK6IxsmYbws3zyqfhw==
-X-Received: by 2002:a05:7300:cc9c:b0:371:5cb0:4929 with SMTP id 5a478bee46e88-37967dd4c20mr5561636eec.25.1794668955716;
-        Sat, 14 Nov 2026 07:09:15 -0800 (PST)
-Received: from arch.localdomain ([2409:8a2b:a08:f11::1003])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-379563e6b6dsm30427886eec.21.2026.11.14.07.09.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 14 Nov 2026 07:09:15 -0800 (PST)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: luca.ceresoli@bootlin.com
-Cc: Laurent.pinchart@ideasonboard.com,
-	airlied@gmail.com,
-	andrzej.hajda@intel.com,
-	damon.ding@rock-chips.com,
-	dri-devel@lists.freedesktop.org,
-	heiko@sntech.de,
-	jernej.skrabec@gmail.com,
-	jerrysteve1101@gmail.com,
-	jonas@kwiboo.se,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	neil.armstrong@linaro.org,
-	rfoss@kernel.org,
-	simona@ffwll.ch,
-	tzimmermann@suse.de
-Subject: Re: [PATCH v3] drm/bridge: analogix_dp: use devm_phy_optional_get() for the DP PHY
-Date: Sat, 14 Nov 2026 23:09:07 +0800
-Message-ID: <20261114150907.305160-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <DMU749TMB523.3OCGPYVI4NZDU@bootlin.com>
-References: <DMU749TMB523.3OCGPYVI4NZDU@bootlin.com>
+	id 1xSI0h-0000000GZAu-1GpB;
+	Sat, 14 Nov 2026 17:57:55 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4843F62773;
+	Sat, 14 Nov 2026 17:57:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77AC11F000C6;
+	Sat, 14 Nov 2026 17:57:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794679074;
+	bh=qFHfirH5vChjL8wVOpZRT6SwMpXMf+RApUPlogONKaE=;
+	h=Date:Subject:To:References:From:In-Reply-To;
+	b=jMtLVM9hF5qvIFJ1wFC288HB7lswk+NBuqc6nhfyd9qGG7Ke0jNb+zXx+PMopFDbr
+	 Zf9BXU6maqkNYL+JJe3Ujg2Tu4+Oh5x28k9LkVpfE7mR91MMsdvI6q+H/rJDgxhzTa
+	 2M0JjSlpRUMnm8eMnuYGB6NMHzgIwZrkQtrCE0e/z7nH4kbzlcRKXAaRQWFeAmWPhY
+	 229+2zd17p1Hv1hERAhHToWrMH+z8M9PozzfPUi1p78A8deOGrEsm0wC2AgJVRw7mW
+	 zuAUTVNjTCnA13kGWxhiIzS2hrQdZlZJwW6+2ygV1Db9Ij4vv6foLkScOsFAts+JA+
+	 HB7oAwyUbS8jQ==
+Message-ID: <b4d6cc36-e986-41ce-a887-d7d9076cabd4@kernel.org>
+Date: Sat, 14 Nov 2026 18:57:46 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261114_070917_096038_C5DEE719 
-X-CRM114-Status: GOOD (  22.95  )
-X-Spam-Score: -1.9 (-)
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/7] media: dt-bindings: rockchip: Add RK3568 Video
+ Decoder bindings
+To: Daniel Golle <daniel@makrotopia.org>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Shawn Lin <shawn.lin@rock-chips.com>,
+ Michael Riesch <michael.riesch@collabora.com>,
+ David Heidelberg <david@ixit.cz>,
+ Christian Hewitt <christianshewitt@gmail.com>, Marc Zyngier
+ <maz@kernel.org>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <cover.1794654074.git.daniel@makrotopia.org>
+ <90878fc566a9752eb582a82d1324d811ebb324e7.1794654074.git.daniel@makrotopia.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <90878fc566a9752eb582a82d1324d811ebb324e7.1794654074.git.daniel@makrotopia.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,68 +123,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Luca,
-
-> Hello,
+On 14/11/2026 12:09, Daniel Golle wrote:
+> From: Christian Hewitt <christianshewitt@gmail.com>
 > 
-> On Fri Nov 13, 2026 at 2:12 PM CET, Jun Yan wrote:
-> > Hi Damon,
-> >
-> >> You are right, this is really a valid concern.
-> >>
-> >> If CONFIG_GENERIC_PHY is disabled, the old code could still proceed and
-> >> keep the driver probing, while the new version would return an error
-> >> directly.
-> >
-> > -ENOSYS can only come from the !CONFIG_GENERIC_PHY stubs in
-> > include/linux/phy/phy.h; the real implementation in drivers/phy/phy-core.=
-> c
-> > never returns it. And the stub for the optional variant returns NULL, not
-> > -ENOSYS:
-> >
-> >     static inline struct phy *devm_phy_optional_get(struct device *dev,
-> >                                                     const char *string)
-> >     {
-> >             return NULL;
-> >     }
-> >
-> > So with CONFIG_GENERIC_PHY disabled the PHY is still treated as absent
-> > (NULL), exactly as the old -ENOSYS branch did. With CONFIG_GENERIC_PHY
-> > enabled, -ENOSYS cannot occur, devm_phy_optional_get() turns -ENODEV into
-> > NULL, and any other error is still propagated - same as the open-coded
-> > check.
-> >
-> >> It should be better to keep the -ENOSYS handling to preserve the
-> >> original behavior.
-> >
-> > Overall the behaviour is unchanged in both configurations, so no separate
-> > handling is needed.
+> The video decoder in RK356X (vdpu346) is described in the same way as
+> the one in RK3588 (vdpu381). A new compatible is added as the decoder
+> capabilities are a subset of the vdpu381 capabilities.
 > 
-> Thanks for the analysis! Cna you send a v4 with that explained in the
-> commit message, possibly in a more concise way, maybe with bullets for the
-> various CONFIG_GENERIC_PHY on/off cases or so, for readability?
-> 
+> Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
+> Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-Yes, I'll send a v4.
+> Tested-by: Diederik de Haas <diederik@cknow-tech.com> # PineTab2, Quartz64-A, NanoPi R5S
 
-> Reading it now, this v3 commit message kind of said the same things. but it
-> misled both me and Damon, so it's worth a clear explanation.
-> 
-> Thanks!
-> 
-> Luca
+How v1 could get it?
 
-Thanks,
-Jun
+Anyway, drop, not applicable here. You cannot test a binding on PineTab2.
 
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
