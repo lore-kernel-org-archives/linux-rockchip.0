@@ -2,10 +2,10 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6289C606A891
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 11:10:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 86847606A88F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 11:10:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Ps56J6Zc
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WssXrt7N
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,27 +13,27 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=C/nwXlTMoi8+LBUgTsITONmjjAaQRJAZP6B+lQAyENs=; b=Ps56J6Zc8NQ6u+L1RRCwdMUtPo
-	RyFieo5e+d8OjXshSO7o4Qf7ZqPW4L1kWtJA9HE1vkci+4jZ5auVbPc5E9ZzFZC+E7kKwOGesXGyn
-	mtlorFO9fayTuU9/kuM0XUNQZyKkrKaxKR171tYNvaiakycyS/dXknFm4Y1+oKyVU+vyvlA52L6H5
-	7WLM1kl2Zc25Xm5WvJCbKfMb9v4VHVEk/wP7buiEugD/U0njgt7VLdNhDjxbUHo4ezCQJ5y/BmsWq
-	vDaXFp4vdyrIkdeIvjFtHCNS6zbdhiREf2JnGKbIr1qDa1HvK4xKgCT02HM0bkK/6ZtojXJKWsRyA
-	OMIIQ5Lw==;
+	bh=UjDC0vwtYs7tnJQU1ns8CzVkc7tr3R1/KRoJ8YE8Wq8=; b=WssXrt7NjT8S09e+Le5ZlwZcSW
+	J5U1r9KeJhwfQn2TEuqMAGsVGjn0GYOkBPzUArrMa8PdExTrix5EQG3wm7II003i5ZB6pt1COAq2k
+	/3LocDp2GLCfLyo4k0pHmBEJd0kgj1nKgPnyLX9MB8Mu+ybA506pbn7SxSre4qhyYWYfHuEqiMvX6
+	buvb3eE20MWt/LFdXoNE4vfsv0WMPn8YS/iRS+QBJz6PDKpE/jcRVFKQYmjM9qkpe4AwQofUFY7Ot
+	wz3tXL4err8+wNeGpfBA8kx/UVG52Or0SV0sVLr3vFcvUcpIqC4EdOZ/J/QjFCmYumJ+gmVegmi4t
+	VrdXiVxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSBe3-0000000Frne-44Tk;
-	Sat, 14 Nov 2026 11:10:07 +0000
+	id 1xSBeG-0000000Frvj-0ayG;
+	Sat, 14 Nov 2026 11:10:20 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSBe1-0000000FrlQ-0MTU;
-	Sat, 14 Nov 2026 11:10:07 +0000
+	id 1xSBeE-0000000Frtk-1hGZ;
+	Sat, 14 Nov 2026 11:10:19 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
 	 (Exim 4.100.1)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1xSBds-000000003yQ-3YrY;
-	Sat, 14 Nov 2026 11:09:56 +0000
-Date: Sat, 14 Nov 2026 11:09:53 +0000
+	id 1xSBe6-000000003zF-1HVG;
+	Sat, 14 Nov 2026 11:10:10 +0000
+Date: Sat, 14 Nov 2026 11:10:07 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: Detlev Casanova <detlev.casanova@collabora.com>,
 	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
@@ -50,16 +50,18 @@ To: Detlev Casanova <detlev.casanova@collabora.com>,
 	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 4/7] media: rkvdec: vdpu381: Program the read caches
-Message-ID: <c052b9e59c9871315a24bbf129457b4dccbe3030.1794654074.git.daniel@makrotopia.org>
+Subject: [PATCH 5/7] arm64: dts: rockchip: Add the vdpu346 Video Decoders on
+ RK356X
+Message-ID: <edcae5cf4c8a2806e58bcdc947b7829f1780f6be.1794654074.git.daniel@makrotopia.org>
 References: <cover.1794654074.git.daniel@makrotopia.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <cover.1794654074.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261114_031006_141373_592FA4E0 
-X-CRM114-Status: GOOD (  15.43  )
+X-CRM114-CacheID: sfid-20261114_031018_447916_1D6AD778 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,135 +82,88 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The "cache" register block of the VDPU381 and VDPU346 holds the
-configuration of three read caches. The driver leaves the block
-unmapped and the caches in their reset state.
+From: Christian Hewitt <christianshewitt@gmail.com>
 
-The vendor kernel driver, in rkvdec2_run() and in its link mode,
-permits cacheable access and read allocation with 64 byte lines and
-clears all three caches before every decode. Map the block and write
-the same configuration before each H.264 and HEVC run.
+Add the vdpu346 Video Decoders to the rk356x-base devicetree to
+enable support on RK3566 and RK3568 boards. Also add the needed
+sram and vdec_mmu nodes.
 
-On the RK3568 the HEVC conformance vectors RAP_B_Bossen_2,
-WPP_D_ericsson_MAIN_2, WPP_D_ericsson_MAIN10_2 and
-WPP_E_ericsson_MAIN_2 and the H.264 vectors CAPM3_Sony_D, MR8_BT_B,
-MR9_BT_B and NRF_MW_E decode with wrong output while the caches are
-in their reset state, and pass once they are configured.
-
+Suggested-by: Diederik de Haas <diederik@cknow-tech.com>
+Suggested-by: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
+Tested-by: Diederik de Haas <diederik@cknow-tech.com> # PineTab2, Quartz64-A, NanoPi R5S
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
-v4: new patch
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 49 +++++++++++++++++++
+ 1 file changed, 49 insertions(+)
 
----
- .../rockchip/rkvdec/rkvdec-vdpu381-h264.c      |  2 ++
- .../rockchip/rkvdec/rkvdec-vdpu381-hevc.c      |  2 ++
- .../rockchip/rkvdec/rkvdec-vdpu381-regs.h      |  9 +++++++++
- .../media/platform/rockchip/rkvdec/rkvdec.c    | 18 ++++++++++++++++++
- .../media/platform/rockchip/rkvdec/rkvdec.h    |  2 ++
- 5 files changed, 33 insertions(+)
-
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
-index b961fddc8583a..40db8ba3856a7 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
-@@ -445,6 +445,8 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+index 1a4562df20ee5..fac41e34005f2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -402,6 +402,19 @@ usb2phy1_grf: syscon@fdca8000 {
+ 		reg = <0x0 0xfdca8000 0x0 0x8000>;
+ 	};
  
- 	rkvdec_schedule_watchdog(rkvdec, h264_ctx->regs.common.reg032_timeout_threshold);
- 
-+	rkvdec_vdpu381_config_cache(rkvdec);
++	sram@fdcc0000 {
++		compatible = "mmio-sram";
++		reg = <0x0 0xfdcc0000 0x0 0xb000>;
++		ranges = <0x0 0x0 0xfdcc0000 0xb000>;
++		#address-cells = <1>;
++		#size-cells = <1>;
 +
- 	/* Start decoding! */
- 	writel(VDPU381_DEC_E_BIT, rkvdec->regs + VDPU381_REG_DEC_E);
- 
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
-index e1936e87f45be..8afb13866d0bb 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
-@@ -617,6 +617,8 @@ static int rkvdec_hevc_run(struct rkvdec_ctx *ctx)
- 
- 	rkvdec_schedule_watchdog(rkvdec, hevc_ctx->regs.common.reg032_timeout_threshold);
- 
-+	rkvdec_vdpu381_config_cache(rkvdec);
++		vdec_sram: rkvdec-sram@0 {
++			reg = <0x0 0xb000>;
++			pool;
++		};
++	};
 +
- 	/* Start decoding! */
- 	writel(VDPU381_DEC_E_BIT, rkvdec->regs + VDPU381_REG_DEC_E);
+ 	pmucru: clock-controller@fdd00000 {
+ 		compatible = "rockchip,rk3568-pmucru";
+ 		reg = <0x0 0xfdd00000 0x0 0x1000>;
+@@ -638,6 +651,42 @@ vepu_mmu: iommu@fdee0800 {
+ 		#iommu-cells = <0>;
+ 	};
  
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
-index 6da36031df2dc..b23b47217d43b 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
-@@ -41,6 +41,15 @@
- #define VDPU381_STA_INT_TIMEOUT		BIT(5)
- #define VDPU381_STA_INT_SOFTRESET_RDY	BIT(9)
- 
-+/* base: "cache" register block */
-+#define VDPU381_CACHE_COUNT		3
-+#define VDPU381_REG_CACHE_CLR(i)	(0x010 + (i) * 0x40)
-+#define VDPU381_CACHE_CLR		BIT(0)
-+#define VDPU381_REG_CACHE_SIZE(i)	(0x01c + (i) * 0x40)
-+#define VDPU381_CACHE_PERMIT_CACHEABLE_ACCESS	BIT(0)
-+#define VDPU381_CACHE_PERMIT_READ_ALLOCATE	BIT(1)
-+#define VDPU381_CACHE_LINE_SIZE_64_BYTES	BIT(4)
++	vdec: video-codec@fdf80100 {
++		compatible = "rockchip,rk3568-vdec";
++		reg = <0x0 0xfdf80200 0x0 0x500>,
++		      <0x0 0xfdf80100 0x0 0x100>,
++		      <0x0 0xfdf80700 0x0 0x100>;
++		reg-names = "function", "link", "cache";
++		interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>,
++			 <&cru CLK_RKVDEC_CA>, <&cru CLK_RKVDEC_CORE>,
++			 <&cru CLK_RKVDEC_HEVC_CA>;
++		clock-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
++		assigned-clocks = <&cru ACLK_RKVDEC>,
++				  <&cru CLK_RKVDEC_CORE>,
++				  <&cru CLK_RKVDEC_CA>,
++				  <&cru CLK_RKVDEC_HEVC_CA>;
++		assigned-clock-rates = <297000000>, <297000000>,
++				       <297000000>, <600000000>;
++		iommus = <&vdec_mmu>;
++		power-domains = <&power RK3568_PD_RKVDEC>;
++		resets = <&cru SRST_A_RKVDEC>, <&cru SRST_H_RKVDEC>,
++			 <&cru SRST_RKVDEC_CA>, <&cru SRST_RKVDEC_CORE>,
++			 <&cru SRST_RKVDEC_HEVC_CA>;
++		reset-names = "axi", "ahb", "cabac", "core", "hevc_cabac";
++		sram = <&vdec_sram>;
++	};
 +
- /* base: OFFSET_COMMON_REGS */
- struct rkvdec_vdpu381_regs_common {
- 	struct {
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-index ba61e373b4342..5673c5205bfcd 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-@@ -1249,6 +1249,20 @@ void rkvdec_schedule_watchdog(struct rkvdec_dev *rkvdec, u32 timeout_threshold)
- 	schedule_delayed_work(&rkvdec->watchdog_work, msecs_to_jiffies(watchdog_time));
- }
- 
-+void rkvdec_vdpu381_config_cache(struct rkvdec_dev *rkvdec)
-+{
-+	u32 cfg = VDPU381_CACHE_PERMIT_CACHEABLE_ACCESS |
-+		  VDPU381_CACHE_PERMIT_READ_ALLOCATE |
-+		  VDPU381_CACHE_LINE_SIZE_64_BYTES;
-+	unsigned int i;
++	vdec_mmu: iommu@fdf80800 {
++		compatible = "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdf80800 0x0 0x40>, <0x0 0xfdf80840 0x0 0x40>;
++		interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
++		clock-names = "aclk", "iface";
++		power-domains = <&power RK3568_PD_RKVDEC>;
++		#iommu-cells = <0>;
++	};
 +
-+	for (i = 0; i < VDPU381_CACHE_COUNT; i++)
-+		writel(cfg, rkvdec->cache + VDPU381_REG_CACHE_SIZE(i));
-+
-+	for (i = 0; i < VDPU381_CACHE_COUNT; i++)
-+		writel(VDPU381_CACHE_CLR, rkvdec->cache + VDPU381_REG_CACHE_CLR(i));
-+}
-+
- static void rkvdec_device_run(void *priv)
- {
- 	struct rkvdec_ctx *ctx = priv;
-@@ -1910,6 +1924,10 @@ static int rkvdec_probe(struct platform_device *pdev)
- 		rkvdec->link = devm_platform_ioremap_resource_byname(pdev, "link");
- 		if (IS_ERR(rkvdec->link))
- 			return PTR_ERR(rkvdec->link);
-+
-+		rkvdec->cache = devm_platform_ioremap_resource_byname(pdev, "cache");
-+		if (IS_ERR(rkvdec->cache))
-+			return PTR_ERR(rkvdec->cache);
- 	}
- 
- 	ret = dma_set_coherent_mask(&pdev->dev, DMA_BIT_MASK(32));
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-index a24be6638b6b7..54e6f50c0ff9f 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-@@ -136,6 +136,7 @@ struct rkvdec_dev {
- 	struct clk *axi_clk;
- 	void __iomem *regs;
- 	void __iomem *link;
-+	void __iomem *cache;
- 	struct mutex vdev_lock; /* serializes ioctls */
- 	struct delayed_work watchdog_work;
- 	struct gen_pool *sram_pool;
-@@ -180,6 +181,7 @@ void rkvdec_run_preamble(struct rkvdec_ctx *ctx, struct rkvdec_run *run);
- void rkvdec_run_postamble(struct rkvdec_ctx *ctx, struct rkvdec_run *run);
- void rkvdec_memcpy_toio(void __iomem *dst, void *src, size_t len);
- void rkvdec_schedule_watchdog(struct rkvdec_dev *rkvdec, u32 timeout_threshold);
-+void rkvdec_vdpu381_config_cache(struct rkvdec_dev *rkvdec);
- 
- void rkvdec_quirks_disable_qos(struct rkvdec_ctx *ctx);
- 
+ 	vicap: video-capture@fdfe0000 {
+ 		compatible = "rockchip,rk3568-vicap";
+ 		reg = <0x0 0xfdfe0000 0x0 0x200>;
 -- 
 2.56.0
 
