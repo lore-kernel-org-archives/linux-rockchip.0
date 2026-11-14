@@ -2,12 +2,13 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 72BD860A2601
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 03:06:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 88FAC606A884
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 03:07:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Lyl8X+70;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gahingwoo.com header.i=@gahingwoo.com header.a=rsa-sha256 header.s=fm1 header.b=Kpr5Rdgp;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=xKaqqu4H
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=A7OvivkD;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=M0uFKQvA;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gahingwoo.com header.i=@gahingwoo.com header.a=rsa-sha256 header.s=fm1 header.b=hmFJBlo1;
+	dkim=neutral header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=02oCrzVs
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -15,90 +16,105 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=F1m5oPWdBtguOdtNIl35WltL0hEwU6kDLGUDUHnL4gc=; b=Lyl8X+70ww6Ujazwwm5Qo9ofz+
-	VevtFq7bZbzuIOcBF0A2v3G9RDhPfqU/pr0Z+GwHcO2k6FzBtCz89/3V/RmscZ0lyns7q/XZwnkOj
-	iyJsCy72XgqOTN4uFsKN/asw1oW/9PXnFNfmZ0/ZdjocAQUa6zvMY72T7po64qg25OY5vCSfr6mCd
-	GEqQhwGV9MM7W4YgEDs011tW9uYTnGnJ4xR/66VrmFW4AM2WXlkc18Z0MZQ3nKLmNBVhAFF/18191
-	d4MH2prRwZWumqCOG8c0UNDK1CqBP84sb2uMtASMLvdKOfh33wCbaxZ4mVWXa0r41WTsai7vzUNPq
-	S9MI+KkA==;
+	bh=scVjYKvYmS1LOkT8SM/omVa9nHe6oe5FOc2bSwc2prM=; b=A7OvivkDWm2RTintLho5LtRfv2
+	OiIg0NAmdsEgro+c0jKuKU1onX0m1//UiNZ4laHgno0RHYCHXTLo2QosoDfH6/i2OdywRJQo7PTYq
+	3JGWUyfNFtl+2NZew0kBvJEzucr3TkxOXInD7AEhcwOfKAF8AGqAEt3+7k8oYPzaC/vDATRaze54I
+	7e72lBbTxmQfQFJ4MJRHg6ODLEIQqtFYUaeKrK/U76d9VMalbx1qdbPmNAOAXtHiniiM/CfswoiWe
+	skkXAvFjwVoeq6hfCIKqS0sCqyAkA+6AgkcrGLMhVCgFTi6lGvAbvp2XR6mYgBrW5GXMCSGL8IbXI
+	gcobRbSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS46K-0000000FBBl-45qv;
-	Sat, 14 Nov 2026 03:06:48 +0000
-Received: from flow-a4-smtp.messagingengine.com ([103.168.172.139])
+	id 1xS46X-0000000FBYA-0XiX;
+	Sat, 14 Nov 2026 03:07:01 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS45y-0000000FAYM-2VDv
+	id 1xS46W-0000000FBW0-0S72
+	for linux-rockchip@bombadil.infradead.org;
+	Sat, 14 Nov 2026 03:07:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=N+9Y3ZHWND8ST8ERZZyyzL82Il25wWJZbVPoJhmWdl4=; b=M0uFKQvAsLjw7Y6jRlLZA29Whe
+	/vY1Di4M5CFTO4qCacEEsavOKZg2yy1v2/tWEuCqzNMg0UWg09YCmx1lZEg87NEFcjw01+eOv0O4c
+	tGL8ihc1VBvyRXGt8sCPP68qNkCHO2t2BHSIBR/rh+I4LLBLgCzuywiHzJMVbXXiGQ9SriSQ8KGXX
+	bcnPJlBoOAHu8t6T7mOcanGIJHYIGRuF121ciTTpbX8ml8uxMCavpkFHtDOVOnoT+Fk4Jfpdoeq6j
+	zc93Uq/vrNFg/VuLaOi5eyVB9tP8A0JcbYCyIK6EXCogU171zLJG7FDp2bzbwEdwWwGTQ7cIujyY5
+	T4H33yhA==;
+Received: from flow-a4-smtp.messagingengine.com ([103.168.172.139])
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xS46K-0000000C5iW-3cea
 	for linux-rockchip@lists.infradead.org;
-	Sat, 14 Nov 2026 03:06:32 +0000
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailflow.phl.internal (Postfix) with ESMTP id CC7461381A42
-	for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 22:06:25 -0500 (EST)
-Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-02.internal (MEProxy); Fri, 13 Nov 2026 22:06:25 -0500
+	Sat, 14 Nov 2026 03:06:55 +0000
+Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
+	by mailflow.phl.internal (Postfix) with ESMTP id 9C02B1381A43
+	for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 22:06:47 -0500 (EST)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-04.internal (MEProxy); Fri, 13 Nov 2026 22:06:47 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
 	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
 	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm1; t=1794625585; x=
-	1794632785; bh=wtL8onRsQa4FKNucUOeBmROB3ML/t6UwjP7ZuXv3/oI=; b=K
-	pr5RdgpKbzBMcCWa/EymVsCyNVmFzFNIGSxDEIUjO3sWa+wYwYBmkEzxCezijKjK
-	NRuDnFZN3PP0oVqFI2cobfIRhdkE16a/SuG6xPYl0Y+6rRZPaK0xH6XuSxX7ziK3
-	ZWMpTjqxAMDpo/Ojqjog5R2dWRn4EfWYDTUVSIZTMfCjaXe2XApPJVzsnmE2ZZIk
-	mGI4/7wReCmq2Btz7S4zcaMzdVdxGlhrSajZErQE19s5uyFnsZ1zSYqbxQb+rU9D
-	y1Vcbk5JMwfd3P+/er0ouE1LHttYQRzTmp1Z8hXeUXcGestELBPWUrGqZzR3rNH7
-	uTHUZPgtSiyf0BwC1pxAw==
+	:reply-to:subject:subject:to:to; s=fm1; t=1794625607; x=
+	1794632807; bh=N+9Y3ZHWND8ST8ERZZyyzL82Il25wWJZbVPoJhmWdl4=; b=h
+	mFJBlo1z252QPnZhveWFXdEwvah8nHxZD86blxjM2ZZOV8D1MY9ZFxAcYdDNWPKD
+	lrVlltL4N0t8k/kI1zgDn79W2OaPHUjuM0PantmGbC7KZk1g08lWmoBvyGYgPSZ5
+	wILqZPLZzXUq2OUwRGWW4IFn/L5ysj9NyQnlNVMd9KISPn8lwaY5V2gd7iQkqZWF
+	h5Vl/rEfLQu9pTtWHqrTRVpE2xvexSw05G3QpssqXsZQL6DI1lUl+UiSZOTpqTxx
+	Mq7RZsA4CMhQT67fc7PGBFQcp1EydmdUhA0ICdhxhP0QFM0tjNvfXnlL5GuRa/pE
+	yP7+IukD01isOeasRU84g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
 	:in-reply-to:in-reply-to:message-id:mime-version:references
 	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1794625585; x=1794632785; bh=w
-	tL8onRsQa4FKNucUOeBmROB3ML/t6UwjP7ZuXv3/oI=; b=xKaqqu4HUQfaSG592
-	DsVGXsZG3rhjQQxnZ6eXRFR/+SnU/FOQGcLD1sUWMT45FX354IXAiddRrDW7k1y0
-	HnW8PiFh1QTIeJ2Ac6IrD2QG3rWTo0940/hPl1NHqgAvUVTgkPDS/5V/4n0sYwlU
-	2FFDb4GmPDCiPClGZ4iJcK+esnTNUfrH60n0V7W1d+maCIj7F5ok9yclsMTz7os1
-	chIlpOqDlSw4o4FqBZp14Y0mAzDU0CcoofR2iNHZ3wKLZVMSe8qoYF1nPhYiYJc9
-	vf5ZQHc1dJWTlQ5nLoZjjGwGW1LN2p7NOdKNoVmZDKXVR9Bneh2JaT70yujXC3Yp
-	6nvvg==
+	:x-me-sender:x-sasl-enc; s=fm3; t=1794625607; x=1794632807; bh=N
+	+9Y3ZHWND8ST8ERZZyyzL82Il25wWJZbVPoJhmWdl4=; b=02oCrzVsPHFU0PiH8
+	woZAbQuY5YOEAqPsWc6K167EgqRbUCrrWVBKj8k73THjgy9qwEKrhVjZtWOPoPw3
+	0zu7PhBN9+qmHgTQY4/U/loWisUeVU3Cwed+Zam3wrbZEX07q3h6tFZqWinRj40y
+	XnlPeoosVDhEtnx6PKor9Dau39xZ/7KmNsTmg1IaCMs+m+BNVm8tK+IvTG1O9Vht
+	dSDgyaa9eVTulk2vjzPdiV4Tyj/hcp7HEQc3Og7naFtdIkyjnhPPPzJGqTOhcbMc
+	dbtIF61k+fo/dwzKNaOycvwNJjZNP26BnTy3NxLan/PK0FtMSh+UDfPLfCRr2zXb
+	kSV2Q==
 X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
 	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
 	action=sign d=gahingwoo.com a=rsa-sha256;
-DKIM2-Signature: i=1; m=1; t=1794625585; d=gahingwoo.com;
+DKIM2-Signature: i=1; m=1; t=1794625607; d=gahingwoo.com;
 	mf=PGdhaGluZ0BnYWhpbmd3b28uY29tPg==;
 	rt=PGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmc+;
-	s=fm1:rsa-sha256:XeM/6KM/v7ns5A/TIls39AEEMUgc+otlDZ+WJy4fjuOdMD5
-	SxbsdEHgXChRlAYQxZ6pKDUNoUd2csCFFAjG/8pRTlqk4OnsxkMBwmEowAuvaacu
-	U2OqTu3SfiviM9YE0QRGzwpSHHXG5+KBnhMwwbECqFNTbFrqDeDzjWAFFQR173gm
-	i3AlhOqSDinpltI0VwxbCPSrp0fSjY3lohaiLt/phyHcNBW1vT10m9mgHTW+YoPC
-	2IjT2Q0R+PWqo7e1EeyxpsjtEUPsg29epnfqjV/qkT76X1Bz0wlrb1d4TbH3XHGg
-	D2hUGdaY3l/0tFvu/LSOktwD+4wQg/13XqGFh6Q==;
+	s=fm1:rsa-sha256:pA8SYlTV1p70GoO80AtiQ6qCpBD3OQI+AeDZAdr7SnNNZTq
+	aL38IV8s1zOb1Ou7Ii1SW6ePPAKP2Tohks9uItlkrhJFB1zPJLsbItVYZ9aswz0v
+	6EO/3WlDp2CajXrS48zyLvQtqUu3ok00OWQdbR6zo61FDYRDJqfr0b2Be16PoFDX
+	dTvI1DRzfFHycEtfaSaBOPfR4ervcsXQ7s3Y4A/1gyh1O3S3v8o4O83/wxhKtMAL
+	vF0LstN11vAzWvOzllQtO3Zq2usb0iU68TCFl729uSBoqrcBlUwfnrNwjUfQKeyV
+	ZwUGJDsBgo69R6sREyl1gqoWvzHBxI3cE+8U21A==;
 X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
 	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
 	action=mi-m=1; hc=11;
 	hn=cc,content-transfer-encoding,date,feedback-id,from,
 	in-reply-to,message-id,mime-version,references,subject,to;
-Message-Instance: m=1; h=sha256:INdvg0qswqI5TQqb/MaDFU5u4GadFo5mddg+YZCPnvU=:Iw4QifsNe1TTda7rjuxndWE+FvFi121RwnltSrgn99Q=;
-X-ME-Sender: <xms:MdD3aqiDAVNw7OwBvdrVzryE-MKMGEtUOpKhgVj_tIGgY2Hj126lTA>
-    <xme:MdD3anJJrM3pGx9wyYqOco2Wx6QLofz4C_n5o1vT_WmgNAl5Azb1d_uF_k4FDGD5l
-    3kQJwYo3rrQtMGy1w1WRPZb_az1fhnENw08H87s_J7eqpeegLE6MxrZ>
-X-ME-Received: <xmr:MdD3arXNxKpnggKwMXLc1mPZxR6hhKcu93CVedzm67ZKaC9aYrH_ksA2sQi_vzy7NISm6_SY>
-X-ME-Proxy-Cause: dmFkZTFN5n0M1sV6hjRMacCSKdAr6N3pS+YE/TAdgAdeT3jNjadOVj8g7xjlVeELRx26FA
-    0G0s/13un4dx2MLumLLnXw/bDau5lHSXUFFcLd8xXzubqCUqxYW0eIugGDBbsbMXcrdwNs
-    DCDuOlbXPQ6dLCdPvHAzxuhqdFHhqq5Ji+odz2rHSfwVnpXQwQ1U+XtJQ8keYfCbYGYg4j
-    vcn9bmBN/0vZ1vtPpoUx/4lGsjr+cPNQKgUdgU73aancAkK88dELEBioTJzSpO0HE/6gQs
-    fg3JNPMD10vRZQ/dYub4Kqo7W/dVZJu0mN8v4TxzqUqDx+ytDhdOnQ6y0whNCoF+vNdRIW
-    2o8EGYd38qa+8FmZmEf5zeAhwPdOhVaRGDaPgduPu0uKLwhXo6ySbm+pWYSKdrgu/od7FE
-    u74gd3ecTxTxaVXgg3wTw7fODuGenl7/ZQlIm89BYUREUKRPFlxar48WlpGYct9R7TLtIH
-    iHi8GLK+e+lhpn0WNZAaLwc/EPbRl1nc9fY40DHK5bBFpx0mR/th/1lZBtBPSNfHRPr/a9
-    czscFtip1n9UwtOn303d6hsu7Az+eIQqqwgSc/vSnvjnflpefNJrBG+weXFjsyUM0I7v5+
-    dVAa9AOr19qqponHvgOHzvAaIBxoHrAsXawq6+j6ToDPKTUv7kdMt6cBeK9g
-X-ME-Proxy: <xmx:MdD3aiWZW3NEY51NfPicUrFbM0IBCH8wmybu7z1hokHxgW5Qw3AJnQ>
-    <xmx:MdD3ar9pMwSrkzGOZz219xqIvwEeB6FSeVrpTf1vUExlxBxoTKJLyw>
-    <xmx:MdD3aiaV2-2ydPz-j4nRn3n06yrSR9JK2PU0w88WcBxGNx4Fi12f1g>
-    <xmx:MdD3atAnUaOKWqKm0nECuEhdxyzgR5hI8IehJEmP4trfIBlddvG1pw>
-    <xmx:MdD3arYtnfe_jCpUYVN81Z8aJ1GnK1Mm4wfm-8Z_Ds3vx4RJ29R6O-je>
+Message-Instance: m=1; h=sha256:G0rMrLQgBxn4OAvwTRlSphgqx9ONQzzqiiQi5Btpnrg=:E3QG1wpL1G3f8pPSmRg3P12/DKKK+lX4bpFVJJLsfbA=;
+X-ME-Sender: <xms:R9D3ao4GXcVrBtILyChglSVcmY-nwVOlE2UZAOotYsYxYlP-NrrZaQ>
+    <xme:R9D3amCpRdbEJTU-BU0RfXPxqr0kRdfZe5MD4TkundRlTk10xlrNHkfiNsTlRsZfZ
+    7ac8hlcXjdX1snS99bjCHWj_ECEpl3jGtQIxMhPUyeHFC51k6d7UWcZ>
+X-ME-Received: <xmr:R9D3agt6qvPfKvr8UPxiW5Ni1XCm7nSxgKCMumkJZ7Y-PYFFrhElxE3qCwFk_MHKts6p6QKx>
+X-ME-Proxy-Cause: dmFkZTENh3Cq6bNtRDDqH//naJpK03OGhXB8Cp3eHHX2EpHYf2oBjZ1/43ruyqVDLzR5bI
+    q7gV+k53czH7SJj0JMNaMvWBGkaUqaereb01ifHpul1q14DobEKJC2mDvQQE3HzqoOU9gl
+    QO0UnCSJOnNpWmY1qWdj/IivEZ+5eJmA8XcRYmqsfPBSZaKqk9zCnQvCGUQuYFJdsYZGP5
+    L8zECb373LU+oefpY9jKwOjkFDiU4CWxV3iExHL3zPnpeZwM1wkFJxhm/yJk+2AJ3ju4OO
+    RXCknd9xSS299sQU1FiikwzYfEAyF9m0XTBIDoIn2qfRRJDU3uzKkImCFIAQPMS5Q++UMJ
+    HNGti+0chsjtgHUFHERda/e1esdxvF/MLapAIbUuAA8i/5FCjBkAcw5N369Zb1h1zT9bJ5
+    6m7RBUUXtquxt0RqeHkHOekFzPQ77KqUX4LxLzfAJN6IjAPwHnrvYt1MpX9r/enJ2nOEql
+    bVS6HYaFJdTO5LnsW/AjFKyK0zv1VoUA5EtHmfilWRIc6TWsAZHvV6/FKjBUFjB34AyCqV
+    As7v0V2ObOmVe8tSCaESH6Uh0AXx7IsFxmAIh94XZFQD2nV6GGyw+HfzGwCwltht78VCM/
+    NeqYAotcOPiXJvEbQzwmLaKDYwUt1GYeDCnzXCwXhJU+QCtmjewixHGi/suQ
+X-ME-Proxy: <xmx:R9D3asM9Q0m49OQPHsJ7heQWwbeqZlQW2FOL6veyn0aSVqa8lP8C0A>
+    <xmx:R9D3agV1YvvBbE7Ef3wX4DvRZdJTVBP5fqdZLnNznZb5xe4P7q3ZMg>
+    <xmx:R9D3avRFjImoTT6eWnfx8DGeVfZzMGP7WaiVqUfFW1Lki2nsVgRZvQ>
+    <xmx:R9D3aoaDTU4LJunbR6TnjFVryxsIxtLqyJAoELuSVbP-v41H14Y1UA>
+    <xmx:R9D3agw4r_dvEpyT0t3EpwPTpr23kA2D80R1Sz_25EalAwRsI1xvvFD4>
 Feedback-ID: i7a5e4b5f:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 13 Nov 2026 22:06:17 -0500 (EST)
+ 13 Nov 2026 22:06:38 -0500 (EST)
 From: Jiaxing Hu <gahing@gahingwoo.com>
 To: tomeu@tomeuvizoso.net,
 	heiko@sntech.de,
@@ -132,18 +148,19 @@ Cc: royalnet026@gmail.com,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v17 04/12] accel/rocket: let the core suspend after a reset
-Date: Sat, 14 Nov 2026 16:05:21 +1300
-Message-ID: <2afd051e37b8dd4f10e347a3537b0086973d554c.1794615323.git.gahing@gahingwoo.com>
+Subject: [PATCH v17 06/12] dt-bindings: npu: rockchip: add rockchip,rk3576-rknn-core
+Date: Sat, 14 Nov 2026 16:05:23 +1300
+Message-ID: <381d2bc99486ca312e1d02f482eccd37def29831.1794615323.git.gahing@gahingwoo.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1794615324.git.gahing@gahingwoo.com>
 References: <cover.1794615324.git.gahing@gahingwoo.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_190627_296314_D16F80FD 
-X-CRM114-Status: GOOD (  12.09  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261114_030648_963398_7300BDDE 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.2 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -163,77 +180,103 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The reset path drops the runtime PM reference with
-pm_runtime_put_noidle(), which does not let the device suspend, so the
-power domain is never switched off and on again.
+The RK3576 and the RK3588 use the same NPU block, with different hardware
+resources.
 
-On the RK3576, powering the domain on resets the NPU bus interface. If
-that does not happen after a reset, the IOMMU may not respond and the
-next job after a timeout fails.
+The RK3576 has two cores. Each core needs six clocks, two more than the
+RK3588 (aclk_cbuf and hclk_cbuf), needs only one reset, and has no
+sram-supply.
 
-Use pm_runtime_put_autosuspend() instead, so the reset path handles
-runtime PM the same way as a normal job completion.
+Define the requirements of each SoC in allOf. The RK3588 still requires
+sram-supply.
 
-Also drop the runtime PM reference after rocket_core_reset(), so the NPU
-core stays powered during the reset.
-
-The earlier test on the ROCK 4D was done on the v15 code: the job after a
-timeout went from all 128 channels wrong to all 128 correct.
-
-Repeated resets were triggered with a 2 ms job timeout.
-
-v15 (put, then reset): tested twice; both times the board hung within the
-same second as the first batch of job timeouts, with nothing printed.
-
-v16 (reset, then put): tested four times; the board never hung.
-
-So moving pm_runtime_put_autosuspend() after rocket_core_reset() avoids
-the board hanging during a reset.
-
-Link: https://lore.kernel.org/all/20260819073530.6087-1-royalnet026@gmail.com/
-Fixes: 0810d5ad88a1 ("accel/rocket: Add job submission IOCTL")
 Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
- drivers/accel/rocket/rocket_job.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ .../npu/rockchip,rk3588-rknn-core.yaml        | 40 ++++++++++++++++++-
+ 1 file changed, 38 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/accel/rocket/rocket_job.c b/drivers/accel/rocket/rocket_job.c
-index 8b4ad028bc9b..41c723238b2b 100644
---- a/drivers/accel/rocket/rocket_job.c
-+++ b/drivers/accel/rocket/rocket_job.c
-@@ -397,6 +397,8 @@ static void rocket_job_handle_irq(struct rocket_core *core)
- static void
- rocket_reset(struct rocket_core *core, struct drm_sched_job *bad)
- {
-+	bool put_job_ref;
+diff --git a/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml b/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
+index caca2a4903cd..2eb9337819e6 100644
+--- a/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
++++ b/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
+@@ -21,6 +21,7 @@ properties:
+ 
+   compatible:
+     enum:
++      - rockchip,rk3576-rknn-core
+       - rockchip,rk3588-rknn-core
+ 
+   reg:
+@@ -33,14 +34,18 @@ properties:
+       - const: core # Main NPU core processing unit registers
+ 
+   clocks:
+-    maxItems: 4
++    minItems: 4
++    maxItems: 6
+ 
+   clock-names:
++    minItems: 4
+     items:
+       - const: aclk
+       - const: hclk
+       - const: npu
+       - const: pclk
++      - const: aclk_cbuf
++      - const: hclk_cbuf
+ 
+   interrupts:
+     maxItems: 1
+@@ -54,9 +59,11 @@ properties:
+     maxItems: 1
+ 
+   resets:
++    minItems: 1
+     maxItems: 2
+ 
+   reset-names:
++    minItems: 1
+     items:
+       - const: srst_a
+       - const: srst_h
+@@ -75,7 +82,36 @@ required:
+   - resets
+   - reset-names
+   - npu-supply
+-  - sram-supply
 +
- 	if (!atomic_read(&core->reset.pending))
- 		return;
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,rk3588-rknn-core
++    then:
++      properties:
++        clocks:
++          maxItems: 4
++        clock-names:
++          maxItems: 4
++        resets:
++          minItems: 2
++        reset-names:
++          minItems: 2
++      required:
++        - sram-supply
++    else:
++      properties:
++        clocks:
++          minItems: 6
++        clock-names:
++          minItems: 6
++        resets:
++          maxItems: 1
++        reset-names:
++          maxItems: 1
++        sram-supply: false
  
-@@ -415,11 +417,10 @@ rocket_reset(struct rocket_core *core, struct drm_sched_job *bad)
- 	/*
- 	 * Remaining interrupts have been handled, but we might still have
- 	 * stuck jobs. Let's make sure the PM counters stay balanced by
--	 * manually calling pm_runtime_put_noidle().
-+	 * dropping the job's reference once the core has been reset.
- 	 */
- 	scoped_guard(mutex, &core->job_lock) {
--		if (core->in_flight_job)
--			pm_runtime_put_noidle(core->dev);
-+		put_job_ref = core->in_flight_job;
- 
- 		iommu_detach_group(NULL, core->iommu_group);
- 
-@@ -429,6 +430,9 @@ rocket_reset(struct rocket_core *core, struct drm_sched_job *bad)
- 	/* Proceed with reset now. */
- 	rocket_core_reset(core);
- 
-+	if (put_job_ref)
-+		pm_runtime_put_autosuspend(core->dev);
-+
- 	/* NPU has been reset, we can clear the reset pending bit. */
- 	atomic_set(&core->reset.pending, 0);
+ additionalProperties: false
  
 -- 
 2.43.0
