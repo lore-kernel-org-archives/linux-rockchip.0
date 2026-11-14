@@ -2,98 +2,67 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 42B64606A329
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 14:16:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 434A5606A323
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 14:54:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=j4KG/k40;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=xEKK8D1g
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kzBHzQi7
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=DQfC+ZjQmAW4UGA6PzCXkEef/mSl3eAoahX/vCjM0Ik=; b=j4KG/k400E4ao2tedeSoCpdd+m
-	kTUCHjggxJzDlIuWB64y+mlI9mHu3zRnO+xG4Mt2LOoCbNqM5CYDLNg7GQjLiOx19lOgt9a//XmQW
-	hcw2/wiQ4kPXN1ZIGaZVjImyqYcAgh/ohb4YBFwlKficQwfIvLsj2xSiGlfvSEO0eMBaDwPztedCa
-	1SpG+WsqtFht0ipu4wh4MJcPWSKZDrlRq+ebd/5obKaEBT1IkQW+6ohUc2fThC63WojMsGXkxH4Tc
-	bKJQMPGH4FMo87rXuDryo4KgVTtBSazZ+HBnQewmPzSpIzTHudx7Lrz9PXVK7dfFtcx+xnFLHTtf5
-	2UpKctUQ==;
+	bh=0fu1HeFf7itYhAqE3lwCG3I1AV/u2BGHTdUi7T8dwpk=; b=kzBHzQi7x917xXv7J+e3Bz/1NK
+	nWIcjv6oytTa9MXOczKx1jx+fQ935t+oXZqSVpjxhIDOuMnQB9AY0uFh+rxlA4AmWdldMszNN1e5u
+	QN95SQEjnmoyT9NUrShbBeeb/j/+lnrmYJQNPnzZmQvbuKzDdPpHrJJDd2QmxUguazzrb0w091wHu
+	d04kj150UkAujHpFI6EFJeiH9q/ptHBfvnzVMVaFJph+l7/UiiSpLUhSlEHOiA8toswhr6Ihk5Aw1
+	UEh4lK+S54L0Yd224B0lj97Oj4+hCG0wpqcW8rPjzYILr4+BMHuvSbr2UOLH2pBYJbJ2QMSqdtpRg
+	zPNfKjww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSEYk-0000000GFN2-0uCx;
-	Sat, 14 Nov 2026 14:16:50 +0000
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+	id 1xSF9Z-0000000GJNv-2ZzX;
+	Sat, 14 Nov 2026 14:54:53 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSEYg-0000000GFMh-3e5g
-	for linux-rockchip@lists.infradead.org;
-	Sat, 14 Nov 2026 14:16:48 +0000
-Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-3b18717a193so1063554a91.1
-        for <linux-rockchip@lists.infradead.org>; Sat, 14 Nov 2026 06:16:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794665806; x=1795270606; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from:references
-         :cc:to:content-language:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Rsh3PSgy5EeLZfkj2Ume/HSuLoP9g7O08oXc9D5ZzEE=;
-        b=xEKK8D1gepE+ExulfuH6bAvAKj/cNSMdnNklVtv6bDzUPd3ppiRmOv6FDa/z4dJNRy
-         L4CB4mdPDbGgjPzzvNlny7UndxnzeWJqKUjaPf6XbC9q6fd0yQJa5jM3kONOAVFluhVZ
-         SpPamPrh8g8lBvgZRFeQB7PRuRxzdlsoRUKkjx+UDtX2Wfhpk4aqJmXzVFfbQrlWSEe3
-         +diDyty2xD0F2W4/AFF8hzRXJ9EPowwA/2PwwXXPAqQ/+pBjoRXXNqmktGtHFjgaIbvo
-         mgylGq819/djzQqILJugyW59MKpRn3anTOCMm1oenhltLSvhnFIKJXPyW+yebxV1dItw
-         besw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794665806; x=1795270606;
-        h=content-transfer-encoding:content-type:in-reply-to:from:references
-         :cc:to:content-language:subject:user-agent:mime-version:date
-         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=Rsh3PSgy5EeLZfkj2Ume/HSuLoP9g7O08oXc9D5ZzEE=;
-        b=Muaux6o3qMHyCb85SYjFviYHe2sV0Cco3d+WMTO1qBNzaneNpY09GJixySe0f3Qz6w
-         N2Ytc88oYipg3KkJUHw8n5ImdlARCCwsD0QePtA6O1VALoK+y9pntHE7XdOfpuDv2kFu
-         dJK2f/ZS276TLiEHKFPFrg+0SQV3qRtqxlvS+DHaiMd7aXcUOx1WzCxjj6e6RR+Kg589
-         F798olgsuk2Uc06YXmZQyhixjMptI/8bFlHapX/4bHwQtxx/NoLAuI6E75hrXKCH8Uu+
-         le6ac2Ya601dNu62oZ25hZTqL4hpClAw7MqD2CAaemG3h2BcsymyJJemaEbwB4L96Nsb
-         S+cQ==
-X-Forwarded-Encrypted: i=1; AL+hErF9bCLfSs6ISQIKs25bm5/xE6b0DQDP1DBqbD4/9wsEuR2YAxlBTa5AH0EY33mC3B1Eii2y+0Miw7+zL0zvMQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9vBG2ldcTCO9p3LMb13wUp0jKQfmpGRoLzn/cM/oxlbVGBP5hN
-	PqVGHxrTwiMZueRaSP+6yT15Mej7hhbGOBWgbohoCGw2caxP0H2E4qx8
-X-Gm-Gg: AYBFou0Qr5imRPwP4mwhF4qQB4MDjTLZgr0uWSoV/ikLEhHedUcHIk19PC1GL4g8mau
-	fxlxI2a1rMgjPokLGUSpveI/QGUp5DdMGL87AyeEnqrYNxiMHvPqssbl5SG1JolX+kgKW1NG1jH
-	dmVlFAbwepykzZA413IEoEp1TeNgIXzMXW7AR2S7bEqxPwWSpEHMz2SfYt/YKbEGK7m0/95Ru8q
-	ff3gyaynOZPgFlKT/aKcKYIRsgQV/inXSBEnl+Dv0eTDdJWZo/6g7Vfm8SOLo0AJ4yCGJn+0bVr
-	WHpCF2Tlx5VSZjNnd9oawnp+8gGm/hfQevB2dNaIJmln2DaTG0+kbmaUARnWGDNvFQPXKwO7JvU
-	DRwOcGfuaxoUYjuHvJUgPx4ts8oeDwZXHmNmyqsu2OPv6wEhSyaMjLtEp9ZCPxpDYSUKBxL6oi4
-	+1j6MwsakK2tLq4OvK7n0Y1unffEGwD41apR7cEVExzsUsOE22VPmtfkR2US1lL+aVi3t4Rp3eu
-	Et7Eo76p3PPVpBLb2KhbtY96BzZ9og9EbFyOTZwJyu0V9zByoUekXARjwBo4mF9uA0eMmu7Lhpz
-	iLLLSSZ7ZhUW2li59xOYOo1pEYaeSbDRBc4rwfWqfUEM72dvafbKOz5gP4J9/mJOtBo=
-X-Received: by 2002:a17:90b:440b:b0:3ac:adce:60a8 with SMTP id 98e67ed59e1d1-3b1b07ef8bbmr5367145a91.5.1794665805884;
-        Sat, 14 Nov 2026 06:16:45 -0800 (PST)
-Received: from [192.168.35.40] ([218.50.238.131])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b1b245f0c3sm4377768a91.0.2026.11.14.06.16.42
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 14 Nov 2026 06:16:45 -0800 (PST)
-Message-ID: <94a65d65-e81f-4942-b119-51b71e8eabb4@gmail.com>
-Date: Sat, 14 Nov 2026 23:16:41 +0900
+	id 1xSF9W-0000000GJMY-2He5;
+	Sat, 14 Nov 2026 14:54:52 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
+	 (Exim 4.100.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1xSF9G-000000005Gc-2tNt;
+	Sat, 14 Nov 2026 14:54:34 +0000
+Date: Sat, 14 Nov 2026 14:54:25 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Daniel Golle <daniel@makrotopia.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@kernel.org>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Michael Riesch <michael.riesch@collabora.com>,
+	Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	Gerald Loacker <gerald.loacker@wolfvision.net>,
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org
+Cc: nicolas.dufresne@collabora.com, detlev.casanova@collabora.com,
+	paulk@sys-base.io, ezequiel@vanguardiasur.com.ar
+Subject: [RFC PATCH 0/6] media: rockchip: RKVENC v1 H.264/HEVC encoder for
+ the RV1126
+Message-ID: <cover.1794666330.git.daniel@makrotopia.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] PM / devfreq: governor_userspace: Guard against NULL
- governor_data during switch
-Content-Language: ko
-To: Finley Xiao <finley.xiao@rock-chips.com>, heiko@sntech.de,
- linux-pm@vger.kernel.org
-Cc: cw00.choi@samsung.com, myungjoo.ham@samsung.com, kant@allwinnertech.com,
- kyungmin.park@samsung.com, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, tony.xie@rock-chips.com,
- huangtao@rock-chips.com, stable@vger.kernel.org
-References: <20261022022109.642339-1-finley.xiao@rock-chips.com>
-From: Choi Chanwoo <cwchoi00@gmail.com>
-In-Reply-To: <20261022022109.642339-1-finley.xiao@rock-chips.com>
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261114_061646_968896_39D7E5F4 
-X-CRM114-Status: GOOD (  24.95  )
+X-CRM114-CacheID: sfid-20261114_065450_745909_E2EF1C81 
+X-CRM114-Status: GOOD (  29.57  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,108 +76,244 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+This RFC adds a driver for RKVENC v1, the H.264 and HEVC video encoder
+of the Rockchip RV1109 and RV1126 (Rockchip calls this generation
+"vepu541"; the RK3566 and RK3568 carry the "vepu540" variant). It is a
+stateful V4L2 memory-to-memory encoder: NV12 or NV12M in, H.264 or HEVC
+Annex B out, low-delay IDR plus P pictures with a single reference, no
+B frames. The driver writes the parameter sets (SPS, PPS and VPS), the
+hardware writes the slice headers and data. Rate control is frame
+level, in the driver: CBR with one QP per picture, the hardware row
+rate control stays off. The core clock follows the load through
+devfreq and the encoder registers as a cooling device. No new uAPI is
+added; the driver uses the existing stateful encoder controls and
+formats only.
+
+The series:
+  1  binding (with MAINTAINERS entry)
+  2  RV1126 clock tree of the VEPU power domain
+  3  the driver
+  4  frequency scaling and cooling
+  5  RV1126 device tree node, IOMMU, power domain and QoS nodes
+  6  RV1126 operating points
+
+It is an RFC because of the questions below, which decide where and
+in which shape this can go.
+
+Hardware and testing:
+
+I have tested H.264 and H.265 encoding extensively with this driver on
+Linux 6.18 in an RV1126 IP camera (Herospeed board, Sony IMX415
+sensor) behind the RV1126 ISP, including 3856x2192 and 1280x720 H.265
+at 30 fps streamed continuously over RTSP. The driver has been part of
+the OpenWrt rockchip/armv7 target since 2026-10-17
+(target/linux/rockchip/patches-6.18/183-*), so that testing can be
+reproduced by anyone with the hardware.
+
+The port to linux-next in this series is compile-tested only: gcc 16.2
+and clang 23, both with W=1, ARM multi_v7_defconfig plus the RKVENC
+options; dt_binding_check on the binding and dtbs_check on the RV1109
+and RV1126 boards in tree, all without warnings (dtschema 2026.9).
+Against the 6.18 code the driver differs in the cooling device
+registration signature of the base, kzalloc_obj(), one min_t(), a few
+named constants and its comments.
+
+Design questions:
+
+There is no stateless encoder framework upstream yet. The driver
+implements a stateful front end only, and keeps the hardware back end
+apart from it so that it can move to stateless infrastructure once
+that exists:
+
+- Hardware back end: rkvenc.c (job start, interrupt, recovery,
+  watchdog, power), rkvenc-vepu541*.c (the register image, built from
+  struct rkvenc_frame, which carries no V4L2 types), the tuning tables,
+  rkvenc-ref.c (reconstruction and reference buffers) and
+  rkvenc-dvfs.c.
+- Codec front end: rkvenc-gop.c (IDR cadence, forced key frames, which
+  slot is the reference), rkvenc-h264.c and rkvenc-hevc.c (frame_num,
+  POC, idr_pic_id and NAL type of each picture), rkvenc-nal.c (the
+  parameter set writer) and rkvenc-rc.c (the picture QP).
+- V4L2 binding: rkvenc-v4l2.c.
+
+Under the H.264 stateless encode series Paul posted in May, userspace
+decides the frame type, frame_num, POC and references and passes them
+in V4L2_CID_STATELESS_H264_ENCODE_PARAMS, while header writing and rate
+control stay in the kernel as shared helpers. Applied to this driver,
+rkvenc-gop.c and the picture fields of rkvenc-h264.c become userspace
+input, rkvenc-nal.c and rkvenc-rc.c give way to the shared helpers,
+and the back end stays as it is: struct rkvenc_frame is already the
+per-picture state such a core hands to a driver. The single reference
+with sliding window marking in that series is what the two-slot
+reference handling here implements. HEVC has no posted stateless
+encode uAPI at the moment. Still to be done for a conversion: the GOP,
+reference and rate control code works on struct rkvenc_ctx, which also
+carries the V4L2 file handle and control state, and the parameter set
+code reads V4L2 control enums; both need a codec state of their own.
+
+Questions:
+
+1. Conformance of a stateful encoder.
+
+   The maintainer entry profile requires v4l2-compliance to pass, and
+   dev-encoder.rst defines the interface, but there is no fluster
+   equivalent for encoders, and Nicolas noted in January 2025 that we
+   have no metric of how good or bad the in-tree encoders are. The plan
+   for the next version is: v4l2-compliance -s with streaming from a
+   file, plus every stream decoded by FFmpeg and by the H.264 JM and
+   HEVC HM reference decoders, the decoded pictures required to be
+   bit-identical between the decoders, PSNR reported per picture
+   against the source, a static-scene sequence to catch
+   encoder/decoder drift, and the bitrate of CBR runs reported against
+   the target. Is that what you expect to see for a new encoder, is
+   there a test corpus or tool you would rather have used, and should
+   the results go into the cover letter or somewhere else?
+
+2. Staging or drivers/media/platform/rockchip.
+
+   hantro and rkvdec were staged because the stateless uAPI was not
+   stable yet, see commit fbb6c848dd89 ("media: destage Hantro VPU
+   driver"), and allegro left staging once the stateful encoder API
+   was final, see commit d74d4e2359ec ("media: allegro: move driver
+   out of staging"). This driver uses only the stable stateful encoder
+   uAPI and adds no controls, formats or ioctls of its own, so it is
+   posted for drivers/media/platform/rockchip/rkvenc. The in-kernel
+   rate control and the driver-written parameter sets are the parts
+   that differ from the firmware-based stateful encoders in tree. Do
+   either of them, or anything else, argue for staging in your view?
+
+3. Stateful now, and the back end for the stateless work?
+
+   dev-encoder.rst strongly discourages header generation in the
+   driver for a stateful encoder and advises the stateless encoder
+   interface instead, and in the VEPU510 thread Nicolas asked not to
+   offer two interfaces for the same hardware. RKVENC v1 is the
+   generation before VEPU510/VEPU580, its main users are 32-bit camera
+   SoCs whose userspace is GStreamer and v4l2 RTSP servers, and no
+   other interface for it has been posted. Nicolas also asked for a
+   second implementation of the stateless encoder spec, from another
+   vendor than the VC8000E. Would you take the stateful driver now,
+   with its back end offered as that second implementation and the
+   driver converted once the spec is merged, or should RKVENC v1 only
+   come as a stateless driver?
+
+4. Naming. The binding is rockchip,rv1126-rkvenc.yaml with the
+   compatibles rockchip,rv1126-rkvenc and rockchip,rk3568-rkvenc, and
+   the driver directory rockchip/rkvenc. The RK3576 and RK3588 RFCs
+   below used rockchip/rkvenc for a different generation of the
+   block. Should RKVENC v1 keep that directory and those names, or
+   take generation specific ones (for example vepu541)?
+
+5. RK3566/RK3568. The driver matches rockchip,rk3568-rkvenc with the
+   vepu540 variant data, but I don't have hardware to actuall test
+   that. Keep the compatible for a later RK356x series, or drop it
+   until someone with the hardware has done some testing?
+
+Related postings:
+
+- Jiaxing Hu, "[RFC PATCH 0/3] media: rockchip: VEPU510 H.264 encoder
+  for RK3576", stateful, I frames only; the author moved to the Vulkan
+  Video direction in the thread:
+  https://lore.kernel.org/all/20260722073417.2064667-1-gahing@gahingwoo.com/
+- Arun Iyengar, "[PATCH RFC 00/12] media: rockchip: Add a VEPU580
+  stateless H.264/HEVC encoder driver for the RK3588", withdrawn by
+  the author on 2026-11-13:
+  https://lore.kernel.org/all/20261110-rkvenc-v1-0-ea8b47122d8c@gmail.com/
+- Paul Kocialkowski, "[PATCH 00/14] media: Add V4L2 H.264 stateless
+  encode and VC8000E support":
+  https://lore.kernel.org/all/20260522101653.2565125-1-paulk@sys-base.io/
+
+Not in this series:
+
+- Binding the encoder to the RV1126 NPU thermal zone, the zone that
+  covers the VEPU power domain. It needs RV1126 TSADC support, which is
+  not in mainline yet, and follows with it.
+- venc-supply on the RV1126 boards in tree. Their encoder shares the
+  vdd_npu_vepu rail with the NPU.
+
+Provenance:
+
+There is no public documentation of this block. The driver was written
+by reverse engineering the hardware, with the Rockchip MPP userspace
+library as a behavioural reference. A spec was derived by an LLM
+agent, and that spec was then used to create the driver
+
+Tool use:
+
+Most of this series was written with multiple LLM coding assistants:
+The spec was derived by Claude Sonnet 5.5, handed to a locally run
+Qwen3.8-37B which carried out the initial implementation. Claude
+Opus 5.5 then did the initial testing and bug fixing, and pre-submission
+polishment under my micro-management.
+The full test coverage, and long-term testing on the off-the-shelf camera
+was done by me.
+
+Daniel Golle (6):
+  dt-bindings: media: Add Rockchip RKVENC v1 video encoder
+  clk: rockchip: rv1126: Add PD_VEPU clock tree
+  media: rockchip: Add RKVENC v1 video encoder driver
+  media: rockchip: rkvenc: Add frequency scaling and cooling
+  ARM: dts: rockchip: Add RKVENC encoder to RV1126
+  ARM: dts: rockchip: Add RKVENC operating points to RV1126
+
+ .../media/rockchip,rv1126-rkvenc.yaml         |  104 ++
+ MAINTAINERS                                   |    8 +
+ arch/arm/boot/dts/rockchip/rv1126.dtsi        |   80 ++
+ drivers/clk/rockchip/clk-rv1126.c             |   21 +
+ drivers/media/platform/rockchip/Kconfig       |    1 +
+ drivers/media/platform/rockchip/Makefile      |    1 +
+ .../media/platform/rockchip/rkvenc/Kconfig    |   20 +
+ .../media/platform/rockchip/rkvenc/Makefile   |   16 +
+ .../platform/rockchip/rkvenc/rkvenc-dvfs.c    |  364 ++++++
+ .../platform/rockchip/rkvenc/rkvenc-gop.c     |   72 ++
+ .../platform/rockchip/rkvenc/rkvenc-h264.c    |   82 ++
+ .../platform/rockchip/rkvenc/rkvenc-hevc.c    |   63 +
+ .../platform/rockchip/rkvenc/rkvenc-nal.c     |  351 ++++++
+ .../platform/rockchip/rkvenc/rkvenc-nal.h     |   12 +
+ .../platform/rockchip/rkvenc/rkvenc-rc.c      |  214 ++++
+ .../platform/rockchip/rkvenc/rkvenc-ref.c     |  114 ++
+ .../platform/rockchip/rkvenc/rkvenc-v4l2.c    | 1085 +++++++++++++++++
+ .../rockchip/rkvenc/rkvenc-vepu541-h264.c     |  206 ++++
+ .../rockchip/rkvenc/rkvenc-vepu541-hevc.c     |  182 +++
+ .../rockchip/rkvenc/rkvenc-vepu541-regs.h     |  283 +++++
+ .../rockchip/rkvenc/rkvenc-vepu541-tables.c   |  256 ++++
+ .../platform/rockchip/rkvenc/rkvenc-vepu541.c |  215 ++++
+ .../platform/rockchip/rkvenc/rkvenc-vepu541.h |  201 +++
+ .../media/platform/rockchip/rkvenc/rkvenc.c   |  498 ++++++++
+ .../media/platform/rockchip/rkvenc/rkvenc.h   |  263 ++++
+ 25 files changed, 4712 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip,rv1126-rkvenc.yaml
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/Kconfig
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/Makefile
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-dvfs.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-gop.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-h264.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-hevc.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-nal.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-nal.h
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-rc.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-ref.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-v4l2.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-vepu541-h264.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-vepu541-hevc.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-vepu541-regs.h
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-vepu541-tables.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-vepu541.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc-vepu541.h
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc.c
+ create mode 100644 drivers/media/platform/rockchip/rkvenc/rkvenc.h
 
 
-On 10/22/2026 11:21 AM, Finley Xiao wrote:
-> The userspace governor is the only one that uses devfreq->governor_data,
-> allocated in its DEVFREQ_GOV_START handler (userspace_init()) and freed
-> in its DEVFREQ_GOV_STOP handler (userspace_exit()).
-> 
-> When switching governors via sysfs (governor_store in devfreq.c), the
-> sequence is:
-> 
-> STOP(old) -> df->governor = userspace -> START(userspace) -> userspace_init
-> 
-> Between the df->governor assignment and userspace_init() completing,
-> governor_data is still NULL (the previous governor never touched it,
-> and the core does not clear or pre-allocate it). During that window,
-> asynchronous paths that call update_devfreq() outside of the driver's
-> control -- the OPP notifier (devfreq.c:686) and the pm_qos notifier
-> (devfreq.c:707) -- run devfreq_update_target() under df->lock and reach
-> devfreq_userspace_func(), which dereferences governor_data without a
-> NULL check, causing:
-> 
->   Unable to handle kernel access to user memory outside uaccess routines
->   pc : devfreq_userspace_func+0xc/0x28
->   lr : devfreq_update_target+0x58/0x158
-> 
-> Add a NULL check in devfreq_userspace_func() and fall back to
-> previous_freq, which is the same behaviour as the existing "no user
-> frequency specified yet" branch. This closes the race for all callers
-> since every path ultimately goes through get_target_freq.
-> 
-> Additionally, take devfreq->lock around the kfree()/NULL assignment in
-> userspace_exit(). Without it, a concurrent OPP/pm_qos notifier running
-> under devfreq->lock could read governor_data after it is freed but
-> before it is set to NULL, constituting a use-after-free.
-> 
-> Fixes: 5fdded844892 ("PM/devfreq: governor: Add a private governor_data for governor")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> 
-> Link: https://lore.kernel.org/linux-pm/20260723080806.1451-1-finley.xiao@rock-chips.com/
-> ---
-> Changes in v2:
-> - Add Fixes: tag and Cc: stable@vger.kernel.org
-> 
->  drivers/devfreq/governor_userspace.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/devfreq/governor_userspace.c b/drivers/devfreq/governor_userspace.c
-> index 3906ebedbae8..f7a485c43fd7 100644
-> --- a/drivers/devfreq/governor_userspace.c
-> +++ b/drivers/devfreq/governor_userspace.c
-> @@ -24,7 +24,7 @@ static int devfreq_userspace_func(struct devfreq *df, unsigned long *freq)
->  {
->  	struct userspace_data *data = df->governor_data;
->  
-> -	if (data->valid)
-> +	if (data && data->valid)
->  		*freq = data->user_frequency;
->  	else
->  		*freq = df->previous_freq; /* No user freq specified yet */
-> @@ -110,8 +110,10 @@ static void userspace_exit(struct devfreq *devfreq)
->  	if (devfreq->dev.kobj.sd)
->  		sysfs_remove_group(&devfreq->dev.kobj, &dev_attr_group);
->  
-> +	mutex_lock(&devfreq->lock);
->  	kfree(devfreq->governor_data);
->  	devfreq->governor_data = NULL;
-> +	mutex_unlock(&devfreq->lock);
->  }
->  
->  static int devfreq_userspace_handler(struct devfreq *devfreq,
-
-Hi,
-
-Looks good to me.
-
-I think that it is needed to lock  on usrespace_init.
-
-diff --git a/drivers/devfreq/governor_userspace.c b/drivers/devfreq/governor_userspace.c
-index f7a485c43fd7..cfbd72892598 100644
---- a/drivers/devfreq/governor_userspace.c
-+++ b/drivers/devfreq/governor_userspace.c
-@@ -94,7 +94,9 @@ static int userspace_init(struct devfreq *devfreq)
- 		goto out;
- 	}
- 	data->valid = false;
-+	mutex_lock(&devfreq->lock);
- 	devfreq->governor_data = data;
-+	mutex_unlock(&devfreq->lock);
- 
- 	err = sysfs_create_group(&devfreq->dev.kobj, &dev_attr_group);
- out:
-
+base-commit: 84abb955b1015477aa11a96e2f3ac1b938b77f48
+-- 
+2.56.0
 
 _______________________________________________
 Linux-rockchip mailing list
