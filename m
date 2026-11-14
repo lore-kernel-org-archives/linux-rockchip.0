@@ -2,96 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D7A19606A327
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 05:03:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 292EE60A2616
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 08:34:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4CaVoPnV;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=KoBbhMlG
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nlgfLGzG;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=jtpUoGu9
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=epoT+msNKgdjC/F8SOaPAd0mnp7LKJBkprcfPajr3bY=; b=4CaVoPnVhg24OwX6MPYONU5DSP
-	5q0VSC8ToOuqT8IsiwKCLPZthlDUdzNsv0zU5+gzh1HZBzVRQ6xAg9xGELtIPK/rhEbpMD0cgF496
-	qMlNX0ROczk3vnST18gtM966kmvUakEdgig6HzV1DodFtzo9gK9dGUHp/4VGnHP2sZnNgVSfWcI4k
-	8swNYEvyDLulavUgjx6y2HsOIU8rF0/XduBoYtaFkrqQCWJ38es2ebSfPwo4JrKfB6Tqnqr3DiYZ+
-	PTeZwdv1SV1PGPz46mdi5XDtwAflDr8zLcSNOrvDqYivpbxqz3NTkG4c5slpsBUWNNgcWIYbnMhZZ
-	b9HFcBHQ==;
+	bh=HrJ/jEVKQcQ0S1jETf65ZutY0m0oWM9STml3DSuHTMM=; b=nlgfLGzGoRQ6lxcgfpcdmBEmMf
+	uewr3mdTc7sd2KJWuT7BaurHB4YDcg0q7m/Xb7uIgXjwmN3SYkM10X5aVO+lIfedBPFXkLLVN0/Ra
+	mR9GTbmxfalJs/Agr7l/M2oAVyj8Zw4thKEf3UT3HSfeM+qPi8SFivtxCWoWMLSNv3FijqI5hdhbo
+	ZM/EH92WmUfGBb8vItrn0dlXnP36cn2jOZ9ttdN7HxU8iCoKIvOTgG3JOxwJX4g5t4vjmNeUEI1GV
+	osY0I4Oiy5AgubVC9gzYOvTTa2IyHPQqOiwt8X1iHfMfv7RMCeiuHcUCOvlRnOQ1G+sTsNrBXfP6u
+	rgvoQk7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS5vR-0000000FT1X-3D9O;
-	Sat, 14 Nov 2026 05:03:41 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xS9Cx-0000000FbDo-1Tlp;
+	Sat, 14 Nov 2026 08:33:59 +0000
+Received: from mail-m12888.netease.com ([103.209.128.88])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS5uW-0000000FS2u-1var;
-	Sat, 14 Nov 2026 05:02:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794632562;
-	bh=WCH3joQTwHDZO9+k8imnq+hta8rBNGbqZDWXf+Ud0mI=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KoBbhMlGolq3HqiyBhchsj0pGdExpqSIlAn9nox2KevJUew2+ZqubHLtSYSZB7Rfr
-	 mE2jyaB4gHbYtEM9OsEGXG4Fd6M9i4KldZwZh9Z+5my69DJxChCqGVb8P8V/lQUwNe
-	 UkxjCes8jChlXyKJLbLkTXI7GRGLs0lA1q2DBpvQz4NUGuzVZrIk7lz2lKSzrIbJNT
-	 mz3/2JByuKfkf6nbZeQqFJZVkZVsg1e9mbkStjO+rKkiW4eJxm+M49iMZlCw470YEs
-	 +cKPNiSOTKyZ3gyQMAiUZMKsr5OKuCTeSSBb8qirQ6HzCbsv/twDs9shPeobQ+6ks8
-	 M/F5GvrY27VkQ==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 762ED17E0F7F;
-	Sat, 14 Nov 2026 06:02:42 +0100 (CET)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 25569480064; Sat, 14 Nov 2026 06:00:56 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Sat, 14 Nov 2026 06:00:50 +0100
-Subject: [PATCH v12 17/23] drm/bridge: synopsys: dw-dp: Protect
- sdp_reg_bank from concurrent access
+	id 1xS9Ct-0000000FbC5-3bqU;
+	Sat, 14 Nov 2026 08:33:58 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 54aa88686;
+	Sat, 14 Nov 2026 16:33:48 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: Vinod Koul <vkoul@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Dave Jones <s.dave.jones@gmail.com>,
+	linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v6 3/4] arm64: dts: rockchip: rk356x: Add eDP controller and phy nodes
+Date: Sat, 14 Nov 2026 16:33:38 +0800
+Message-Id: <20261114083339.600986-4-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261114083339.600986-1-damon.ding@rock-chips.com>
+References: <20261114083339.600986-1-damon.ding@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261114-synopsys-dw-dp-improvements-v12-17-d42d3dc5bdd4@collabora.com>
-References: <20261114-synopsys-dw-dp-improvements-v12-0-d42d3dc5bdd4@collabora.com>
-In-Reply-To: <20261114-synopsys-dw-dp-improvements-v12-0-d42d3dc5bdd4@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andyshrk@163.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2443;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=WCH3joQTwHDZO9+k8imnq+hta8rBNGbqZDWXf+Ud0mI=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr36wfkDczpe3NpCoYHjrLJ+FZ95bPzQ+RDy
- tcDN2uLgt4jNYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq9+sHAAoJENju1/PI
- O/qaNjAQAKNvCQI48qH2yD+bOxyXjS9BfimRr1TtI5OaPhHLJ9X7SvcBnXTBaco4fdvtcKHloJN
- kcMDx8UNHeyVMrqzYAedyKxJ3PAZjxBexkmt4VzvrP2rg5jmmFom7uba3icThbD1Z7Xin2b4ayt
- D3k2bTwXdN/IdPtVj7Jj10Th//CQYTTipbJxQD8yc0KHQRTZFGoZWF6GJbW2Nq0kLO1htGz5dJK
- CmEhdeJmG8r1WUiqZGuIEFOVANBWqOZsFVESZF1zr47yuUdubfpfRSsnywGmf0Ob6H1W7dsu6aQ
- 6DZESj/pf/fa8HjCjNYJeynolABx9IXiDkwU5nllyN9mnf6VUJMD2bZHgoZfO3P26H/DudjOXxp
- tlApIUn+yIKEE6GNqtg6vxZtJ0N3CCIC5L+PS3K6tf+kQkYn+lo6K6T88Q+8UCfys37ppdziiWn
- 9SCrT7EvQZiDMbhuFlD28bXyjGBc7Jq7vDxb6zYPVBOsT81L1bLNdngNNsiY3coCuOC5eYvdWAQ
- 8QFBSCU/1xMB9JvijQq9oUwKS9f1IlK9ao/91TyIwjIfgEzTmRw1VJie+qNumUbX7tkqvI2B6SE
- 5lUiN8iiU+l8QioXIZKmZqgF3UhLgV5tCjxaYjZBKVZTuXPKDKM0vFtLdpBQAVudptZcBDzSjqU
- 8B8k5RRknk3dOrkUVyjcpRw==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+X-HM-Tid: 0aa1d930fb2403a8kunmf52e9804102260
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZS0wZVhpMSklJSh8dTx0ZQ1YVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	JDQ0xVSktLVUtZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=jtpUoGu9c0gtIa9KpDgD57+0b56m+gtVDig0YvoWIAlkjmVlJhAvAMPoOA8GZZD+YTSH8FJGSUVYPw7z+4uGMBaI9SgCxmcVIoswlgdzQuGjDfZAvwN5Gk5Y0iLNkQNQoEl0SGqhrZ00lZQ93M7ToroZeoADtwT/AZwdHSdyWys=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=KKnJ9j2I4wwMNUFVM40Ukd6sfFrm3+y8FEhOVW263CY=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_210245_638060_7752C7D6 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20261114_003356_507369_2B7A4C34 
+X-CRM114-Status: UNSURE (   7.64  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,7 +81,6 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Igor Paunovic <royalnet026@gmail.com>, devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -113,84 +91,90 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Right now sdp_reg_bank is only used during atomic enable/disable and
-thus there is no risk of two threads accidently claiming the same bit.
+Add the eDP PHY GRF (with the eDP PHY child node mapped by its own
+register window) and the eDP controller nodes for the RK3568/RK3566
+SoCs.
 
-This changes once more SDP users (like audio support) are added, so
-introduce a mutex to protect concurrent access to the bitmap.
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 
-Tested-by: Igor Paunovic <royalnet026@gmail.com> # Orange Pi 5+
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 24 +++++++++++++++++-------
- 1 file changed, 17 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 4d61ca8f0174..cd1499ae449e 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -322,6 +322,8 @@ struct dw_dp {
- 	struct dw_dp_hotplug hotplug;
- 	/* Serialize hpd status access */
- 	struct mutex irq_lock;
-+	/* Serialize sdp_reg_bank access */
-+	struct mutex sdp_lock;
+Changes in v4:
+- Model the PHY node with a reg property under the parent syscon.
+
+Changes in v5:
+- Move the APB clock (PCLK_EDPPHY_GRF) from the parent syscon node to
+  the PHY node, matching the updated binding and driver. (Sashiko)
+- Rename the PHY reference clock to "ref", matching the binding.
+---
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 45 +++++++++++++++++++
+ 1 file changed, 45 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+index 1a4562df20ee..e3f370cad5d5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+@@ -402,6 +402,24 @@ usb2phy1_grf: syscon@fdca8000 {
+ 		reg = <0x0 0xfdca8000 0x0 0x8000>;
+ 	};
  
- 	struct drm_dp_aux aux;
- 
-@@ -1046,11 +1048,13 @@ static int dw_dp_send_sdp(struct dw_dp *dp, struct dw_dp_sdp *sdp)
- 	u32 reg;
- 	int i, nr;
- 
--	nr = find_first_zero_bit(dp->sdp_reg_bank, SDP_REG_BANK_SIZE);
--	if (nr < SDP_REG_BANK_SIZE)
--		set_bit(nr, dp->sdp_reg_bank);
--	else
--		return -EBUSY;
-+	scoped_guard(mutex, &dp->sdp_lock) {
-+		nr = find_first_zero_bit(dp->sdp_reg_bank, SDP_REG_BANK_SIZE);
-+		if (nr < SDP_REG_BANK_SIZE)
-+			set_bit(nr, dp->sdp_reg_bank);
-+		else
-+			return -EBUSY;
-+	}
- 
- 	reg = DW_DP_SDP_REGISTER_BANK + nr * 9 * 4;
- 
-@@ -1708,7 +1712,8 @@ static void dw_dp_bridge_atomic_enable(struct drm_bridge *bridge,
- 		return;
- 	}
- 
--	set_bit(0, dp->sdp_reg_bank);
-+	scoped_guard(mutex, &dp->sdp_lock)
-+		set_bit(0, dp->sdp_reg_bank);
- 
- 	ret = dw_dp_link_enable(dp);
- 	if (ret < 0) {
-@@ -1752,7 +1757,8 @@ static void dw_dp_bridge_atomic_disable(struct drm_bridge *bridge,
- 
- 	dw_dp_video_disable(dp);
- 	dw_dp_link_disable(dp);
--	bitmap_zero(dp->sdp_reg_bank, SDP_REG_BANK_SIZE);
-+	scoped_guard(mutex, &dp->sdp_lock)
-+		bitmap_zero(dp->sdp_reg_bank, SDP_REG_BANK_SIZE);
- 	dw_dp_reset(dp);
- 	pm_runtime_put_autosuspend(dp->dev);
- }
-@@ -2230,6 +2236,10 @@ int dw_dp_probe(struct dw_dp *dp)
- 	if (ret)
- 		return ret;
- 
-+	ret = devm_mutex_init(dev, &dp->sdp_lock);
-+	if (ret)
-+		return ret;
++	edp_phy_grf: syscon@fdcb0000 {
++		compatible = "rockchip,rk3568-edp-phy-grf", "syscon", "simple-mfd";
++		reg = <0x0 0xfdcb0000 0x0 0x8000>;
++		clocks = <&cru PCLK_EDPPHY_GRF>;
++		ranges = <0x0 0x0 0xfdcb0000 0x100>;
++		#address-cells = <1>;
++		#size-cells = <1>;
 +
- 	res = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(res))
- 		return PTR_ERR(res);
-
++		edp_phy: phy@0 {
++			compatible = "rockchip,rk3568-edp-phy";
++			reg = <0x0 0x100>;
++			clocks = <&pmucru XIN_OSC0_EDPPHY_G>, <&cru PCLK_EDPPHY_GRF>;
++			clock-names = "ref", "apb";
++			#phy-cells = <0>;
++			status = "disabled";
++		};
++	};
++
+ 	pmucru: clock-controller@fdd00000 {
+ 		compatible = "rockchip,rk3568-pmucru";
+ 		reg = <0x0 0xfdd00000 0x0 0x1000>;
+@@ -878,6 +896,33 @@ hdmi_out: port@1 {
+ 		};
+ 	};
+ 
++	edp: edp@fe0c0000 {
++		compatible = "rockchip,rk3568-edp";
++		reg = <0x0 0xfe0c0000 0x0 0x10000>;
++		clocks = <&pmucru XIN_OSC0_EDPPHY_G>, <&cru PCLK_EDP_CTRL>, <&cru HCLK_VO>;
++		clock-names = "dp", "pclk", "hclk";
++		interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
++		phys = <&edp_phy>;
++		phy-names = "dp";
++		power-domains = <&power RK3568_PD_VO>;
++		resets = <&cru SRST_EDP_24M>, <&cru SRST_P_EDP_CTRL>;
++		reset-names = "dp", "apb";
++		status = "disabled";
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			edp_in: port@0 {
++				reg = <0>;
++			};
++
++			edp_out: port@1 {
++				reg = <1>;
++			};
++		};
++	};
++
+ 	qos_gpu: qos@fe128000 {
+ 		compatible = "rockchip,rk3568-qos", "syscon";
+ 		reg = <0x0 0xfe128000 0x0 0x20>;
 -- 
-2.53.0
+2.34.1
 
 
 _______________________________________________
