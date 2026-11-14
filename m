@@ -2,13 +2,13 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 21FFA606A8B5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 03:06:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A2DC0606A8A3
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 03:06:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eREN8d0K;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=EXWPXysT;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gahingwoo.com header.i=@gahingwoo.com header.a=rsa-sha256 header.s=fm1 header.b=Q2bis67B;
-	dkim=neutral header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=B4vCN7n/
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ONYsY5b3;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=hPco1FIT;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gahingwoo.com header.i=@gahingwoo.com header.a=rsa-sha256 header.s=fm1 header.b=MpFmoVkf;
+	dkim=neutral header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=GSo5tdob
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -16,105 +16,105 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=bv8OfIBkn1W3Jbzu06gyQEFxPMgTkzpe/OYG1etgiIU=; b=eREN8d0KBwaTf90IVO3wI1g0WR
-	duhqvo8upvjd2eu/cxM+LXfY0x7VTJ2/UWcwEJNYpb9VJ+TXKbryYCfrANr5Mgu0DRMnXlzU3o75j
-	PXWlp3oPCHrtKK1CANqfANnKX6EP1Kq+ddyWQw38ILeNVm/9VIMELQjaKFKnsqyxwodKU2PdWxTLy
-	f5GWqyTNORZFI11Sz8AqZIP+Kzq1wyVQ0H2ahw44lfLaH9gzWt5jJx25Q61ag6ZFcJYG66SmmeuBk
-	RawIBhBj5vAlwtra8u7XSTEWujWW/5tWsBAAUk6RxRk7aJI9aqyML2QbVGhedP6K6e46I9q9owk7g
-	2sxLxjVA==;
+	bh=MXpLjTIIVViPTgmvs24IeHpswFGACzldeo5F1Q6/Au4=; b=ONYsY5b3EGwqsbJqOsV3/QDo8e
+	Y+oblww9aNkKEiInM0zASM9smK56/aQEhhLWgVTadAfR59phm7XCmHbVIU1BQnx+L/ngt61daxw3B
+	d+E7Hu710GmYVqAnOjSGsl2qhx0wimZqim39yTFH3M29rcgA0v55I1WsVh3ZdVc8OHiQx/Cd9Pufa
+	pwdYXRvxZFxK4rf0TgGXsKZAQX4zgjGyDrs3V1E8ktGmh3O6XpA3ljnlZjvaALoPhgMsp6lvXlC54
+	9lBqRO7v8nHtJp7mBUO+H9faFaKz2k5UDBdk3cGMYGfdwRhgd+P9WJeiByIhqFI0w+DFDf40E3NY9
+	Ssm3QLTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS463-0000000FAj5-4Bj9;
-	Sat, 14 Nov 2026 03:06:32 +0000
+	id 1xS46L-0000000FBD4-1q36;
+	Sat, 14 Nov 2026 03:06:49 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS45t-0000000FAVe-2tow
+	id 1xS46J-0000000FB6j-0NHy
 	for linux-rockchip@bombadil.infradead.org;
-	Sat, 14 Nov 2026 03:06:21 +0000
+	Sat, 14 Nov 2026 03:06:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=jLe41rxtvqSNao2UIdbEczdLg1Uh1yqAQx73nNAS2+o=; b=EXWPXysTfgBC1ml7LSczNT7uBg
-	VjjKlz9dviXhIRMp1ggQsYjC+N2K5na9vpYJ9dD3xpHYmxNZA3rSBgOEwStGPYpcB7L0Gje+duLi7
-	eK7qNThDsued2MEN/7RLaC9/OAuBqeInmYQK0LKVM01Erx9IxyZjFFJV4T4BRTknq/wohhAa+LXrj
-	V0Mqgt3hEz0pgmhHk9u57Fmtt9H5AQffbfF4lkapNMS/G72QQsHxMCXWSZFKU8Ca2YAno1ZJJta1T
-	uC0ORSygR3ucd0fQ/vgzjZzUNVPOrn8iCtfR+JKZzE+3gBU/2EJ4onhz4QlRkgMM6l3RR/dbTpKVp
-	x0Lb5PUQ==;
+	bh=+LBt2CZx+pYCe+VktFRZGdw09u24nWiEXEs5S39YV9s=; b=hPco1FITG+IMAy3Jg3rCbIwVTk
+	nYYbaUqinKF0Uzg88IuMVYOjYhGMJqmGcblY1h+IE/owsxpuRrhmnFM59jnXqfycACBFMxUViWTql
+	AVTrMD42pr2sDNCxFNaGc4UZvhUUEtzZDWl72SNSQ3Fju6werdB+LL4dYrSy1QAJOiD9qr5rHghrN
+	PFwSZzzd28fifF5tddtB7QUgdV00H6WlGuZ1aE+OzbYHl2VRj4WEsD/al7tqj00cH2FnZFiXgkige
+	lsD/EQsOkMjV55hGV6TXY3HyK7og6SZRepzVPZVbZdG9Cn13DYLNnwyaxixFjo1kbK1D02+h5ZEuZ
+	IDQtX2qg==;
 Received: from flow-a4-smtp.messagingengine.com ([103.168.172.139])
 	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS45h-0000000C5YR-4AV3
+	id 1xS46A-0000000C5f1-3Zzu
 	for linux-rockchip@lists.infradead.org;
-	Sat, 14 Nov 2026 03:06:20 +0000
-Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
-	by mailflow.phl.internal (Postfix) with ESMTP id C186C1381A4F
-	for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 22:06:03 -0500 (EST)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-01.internal (MEProxy); Fri, 13 Nov 2026 22:06:03 -0500
+	Sat, 14 Nov 2026 03:06:45 +0000
+Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
+	by mailflow.phl.internal (Postfix) with ESMTP id 6878A1381A47
+	for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 22:06:36 -0500 (EST)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-02.internal (MEProxy); Fri, 13 Nov 2026 22:06:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
 	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
 	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm1; t=1794625563; x=
-	1794632763; bh=jLe41rxtvqSNao2UIdbEczdLg1Uh1yqAQx73nNAS2+o=; b=Q
-	2bis67BhJj54JWwFsmK/fPB8oUBjT61R0xXvk39k4dEQ/ED0y7bEKTXQMV8iig//
-	3y8LnPHtsV8rnufqemKOGZDs5NaF/dq5j4k+sru2mPc7mjG1ejfcrBDJ6+QUnV2n
-	Oy/LARV7p96A6se7uOBgYURdC0I+6kvJnRnGgVOEz74Jn/M2ojUP8tG+joaSuxBP
-	2VOakmQ5dgP5C/NtfvjJGLTeaP1nMzS3REmWHQ7K2k19cjvFZgOJgu7wchOYKyQb
-	2/UlX/GTY6iWwT1iZVu0IrKpLJc72jej7SH6Sar7pcJkiCUpTO2WRYM5Z8/FH6vC
-	sHUqP1TYbpqOP50YarJTg==
+	:reply-to:subject:subject:to:to; s=fm1; t=1794625596; x=
+	1794632796; bh=+LBt2CZx+pYCe+VktFRZGdw09u24nWiEXEs5S39YV9s=; b=M
+	pFmoVkfQu1JGVJTCNhtQqMEwr2liWyEIZoHL5yvbYPPxZwP/v1UovQu/4YzjOb6A
+	+qGTcdvwLoaBGX6TY8c3q+4GDjjMLb+ORp2e6N7GFueze+e+w1LEZIb9W4MaqBdZ
+	tluvPe9HwMTUClSp8L39OJrkuxSkjVlIuX5ArszZsk7Bgap3o/nb/dFQ30WOCPBy
+	2lCyIoU/o9f9KHlaiySJAvIOLlNzr88MHA5QFoyuTSUq4wXYkaoPsjPluC272Mdm
+	Ns8GvucNtSYonZuHwGSkOuSY4IpPueF1/k0y96ZCiQR+bWziBsLhkA8UL2b2AwGc
+	tI5CjhGktRh0wjCljZ9KQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
 	:in-reply-to:in-reply-to:message-id:mime-version:references
 	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1794625563; x=1794632763; bh=j
-	Le41rxtvqSNao2UIdbEczdLg1Uh1yqAQx73nNAS2+o=; b=B4vCN7n/WzyEO7hNX
-	rzQ0pKADmvpvu3gLLsXUGnytSEF658SWm1+tAJkrxi7L7tB8xSRdxbAQrIPTzHme
-	klxZEhcJee0Nz3nhGNVkAfzDOJedaWZzoQPjJsXUOi+ZueuTtOc3koCLDtR9yTLc
-	G8fqkDixoPC5e9zCW9S43iNMPqpGsfbqvEmsdF5Jrli09Dp9XAZqXeStaQEHmWgC
-	zDugmbEa2Aux1cM8S8DNpRXDmgB8TNPF2vc2iseRheCl2phZhhC+vZOu3RWLxJUi
-	0hoIoX0gWrHhLabLCd/mWeEGPVUPpWTHZxxNz+m95QuJe/zyN5ktcOLTgk3ilQK9
-	32v0w==
+	:x-me-sender:x-sasl-enc; s=fm3; t=1794625596; x=1794632796; bh=+
+	LBt2CZx+pYCe+VktFRZGdw09u24nWiEXEs5S39YV9s=; b=GSo5tdobvfAhOysz3
+	4BF6b3zPdMu2r+/9DDrnpE5gePb3kcW3EjLbCs/37NWtWcgPJLlW8wdxPUfYMDsN
+	ieu5MBjXH2jJSo2KaqazrBrGvS5Pe/PrUVkmR1JrsFew3I/HSdXhz3VpCiKF2T2a
+	FpVWlP6H1liNGXzld/4QG8nLVt4qrrLv2XZwuyYMcHWmI5ft/DiZZ/3JCgZCRI6Q
+	Tpt1NseJHQzvUuOGc6iX/9fPnkDerV+9LkHGb/BKN89p4xr7bkjcssGmdDPNsEUr
+	/vRyvbjd1d1hYvA6p5sNACFwl2OptJ/QYDniimqqqrS2RBFlyz9t5otFrCtT2PRi
+	BWtAA==
 X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
 	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
 	action=sign d=gahingwoo.com a=rsa-sha256;
-DKIM2-Signature: i=1; m=1; t=1794625563; d=gahingwoo.com;
+DKIM2-Signature: i=1; m=1; t=1794625596; d=gahingwoo.com;
 	mf=PGdhaGluZ0BnYWhpbmd3b28uY29tPg==;
 	rt=PGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmc+;
-	s=fm1:rsa-sha256:b9otHV/Sefqtq9hv4bgBVkEU54UPmO4IqcN8xmXHLKYcepZ
-	2FX72BZENf/GEGZnMzfEMz/guu2AdbFpeXAt3UAmxg2C2v/q/5qKIRip9FLo64uM
-	HARqx5OUtNJM3NidgzewYYXTsLW7NUSDqs7e4Ycdp5RYgOpzlu1u4UBC8FX+UFEt
-	3CIxk73igkFhDzFz+RciOUS/wF7kqZguwLyDt5oirHCULETr5p2C7oeDYuDHlHvh
-	CuUZDMcIlEk7ZCIjrHldQ77n6tfYeLB+A3NQ86XWv+98UdKC/GIgf0zYXWm4GJ+l
-	3WWGpXNse47TYLcSSKEvDr8mA3KirtFipg91xIA==;
+	s=fm1:rsa-sha256:UKfPzscWwKkvhncj3qrxI7Fs17TC4giK2oFzJrlj7LeXvvN
+	Em+LcnRK+G8A85BaJJn8G+xjnL5BOaTCYx9KyLu/hQb6R2FTphM+pmGGZJLGDUv5
+	Ov/VzoZB3N03l+65zRleJyvbIm/FDUUONTn2ccs++s18p9TtDowsipQEianOxxfr
+	BCFCQARRhvICvbsQHwSfgBfnOEzxrysAhbrZDpK9pfoaCqpx+rCUV7HVc6hmlZeH
+	aoJ0F2BCLWvKbfDksFwAxIeeFFBuAn4ZuZNOs0gopcE16g7y3C1jFRjEVCSxuvmi
+	hDy5/jaV9WFEEbZ2wwKqkG7D5UPk71ikMNNRzCg==;
 X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
 	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
 	action=mi-m=1; hc=11;
 	hn=cc,content-transfer-encoding,date,feedback-id,from,
 	in-reply-to,message-id,mime-version,references,subject,to;
-Message-Instance: m=1; h=sha256:KkU9OItywWMXa8xCxJXvpsCUuVVYeELHJ3ZywXHw29k=:7oH1PnecAoj3OHP3QYcSMmdKkLdmCJWxLcqrSSziT3Y=;
-X-ME-Sender: <xms:G9D3aoSLjEKSjs0QnKzQZxIP6-1_QH3SZvtWjCxW5jZ4lavCL_FpGQ>
-    <xme:G9D3aiOAb5Tdj7A3IpUIelKXn8T3Yj0CumWmHOcP1r8afC5npJEsTe7fVryhWgiMG
-    lqO47uLsWHuXu4dYYqmRr2YU7AAedGCvblygfz3nKGZ73xMcyiVdP4>
-X-ME-Received: <xmr:G9D3atFLu-VezKaxS5G_SCUZwFk9xOuQinha3XV4xVq12sYK-7dFJD7TyF559-jCzI8cRDJT>
+Message-Instance: m=1; h=sha256:XafIFsESyWSCFJ4JxBXyNSLDfMk/cjGExV12Dd3+tVI=:WrX3o+lDD5jTdTR26wtfTgnBfNa8ezWBEE2dZFQ4KSc=;
+X-ME-Sender: <xms:PND3amh794LD56q87f8rG2juyPzV7O55k23-4C6KRn3BOzvA7-01Ew>
+    <xme:PND3ajd8rvObjVO4nu0WaRfgKSGOd3SBEZXXQneH0K4jnzjijFNe0ARcEgVvoHGR4
+    uvMR85eRIqnvf5LFPO2EEqaA_KyDDhQlxjzmaY5B2cYcKAEkY-ltb4u>
+X-ME-Received: <xmr:PND3alWYdsRB9ef9UYEv99V3MhUx7UqiCh_ZdL-gd8hpiJHeJ0mylOlHCSDnziYt3ilgzbkm>
 X-ME-Proxy-Cause: dmFkZTENh3Cq6bNtRDDqH//naJpK03OGhXB8Cp3eHHX2EpHYf2oBjZ1/43ruyqVDLzR5bI
     q7gV+k53czH7SJj0JMNaMvWBGkaUqaereb01ifHpul1q14DobEKJC2mDvQQE3HzqoOU9gl
     QO0UnCSJOnNpWmY1qWdj/IivEZ+5eJmA8XcRYmqsfPBSZaKqk9zCnQvCGUQuYFJdsYZGP5
     L8zECb373LU+oefpY9jKwOjkFDiU4CWxV3iExHL3zPnpeZwM1wkFJxhm/yJk+2AJ3ju4OO
-    RXCknd9xSS299sQU1FiikwzYfEAyF9m0XTBIDoIn2qfRRJDU3uzKkImCFIAQPMS5Q++UYK
-    QT1oghQMiLOEEDqc0qJ2Gei+8zpQ5h9f1GYvfROcAztvhWDSYxYdo7YMX5wTM18aoSALCm
-    5wmJdp6uvygPFmK2xbqZJXBBZNVNDur6w2x2R+bjTrWRDzbVjqipo8zxlImtnjuEE2Axc7
-    ItcGzHZc78kbodAWVyQNpFeV2lkhDDCBF9t//GsvyG9IzF3/sIS52PfJEVWqLlmwMsV53K
-    EL/8bvqplcZ8FBIW3bT38f5Tl9LDGu+Jq1EYTJ9OPScIzc3/mocusb9PEy8pvTlTds4dJq
-    769cqL/rDifX+Q8SPEOIgG1wgVJEnt2qDoXmVrFsx+prKT7w1Ok45BQYUvJg
-X-ME-Proxy: <xmx:G9D3aigq3vbtqueHcg0UsqjvBJRwNtI4s75DY3xgp5q9zKbcCgwSHQ>
-    <xmx:G9D3ahxIO5dRfxtiOQbhCQ1vw4P4ZraV2l8EoGdD2osR-4nivWdfuA>
-    <xmx:G9D3aurSVr-PJOhlMIHENeO7J5-BcCe-lyq2nJBVoES5EcV0sF6FXw>
-    <xmx:G9D3anX-D6pijwhcb6qgMYEHOZwUHOGnlmQWdLjm60KDC4oUovc4dQ>
-    <xmx:G9D3ajV36tZGG6rr-HBXMH2F8KK2KwTCPBxXcodFKRJ7ZNBER7416FpB>
+    RXCknd9xSS299sQU1FiikwzYfEAyF9m0XTBIDoIn2qfRRJDU3uzKkImCFIAQPMS5Q++USP
+    923CS5Nb9d9bOFy7Yh3e2DfgrlFTDA+YgZzQFEB14VPk/BfY8zaBCcNePtMsiEsymKDO6c
+    W0e6TVNKDzEaqoJ2VAR5RTbrla43R+hyFAL6n9OzOnl/EmCym3tRL9zMVuSbjH+6tCN1ts
+    TI9CqErl0Ry8Fkw7U5Prk50r/bH+K5gnse8OO4GGwSatLH16xsvIeclqhA1fHdF+gkT5d5
+    PHPEoo529Jt5Rh512efJf7mKQoZlqE1RI9YX0hHLyamkSzDNJ1qGX/f6cwG7VwiWdwcW9X
+    8szlPKTYYzpRTRFBfqDls7NX+WJEuVFmwIZsWbwOBibH7dta4PP4F+9NBUrA
+X-ME-Proxy: <xmx:PND3alxWDBWWs41Vz3896FLBlfwKaT-ErVWM1MbDMRpNjfhst--mnw>
+    <xmx:PND3akDSisRf8kmAG5ziw2CjLA4HYHxJPtkR7eVdFeyfTXS7iTP0YQ>
+    <xmx:PND3aj78gBFNfd9oR32HUjCa44iNz1Yy_rySCcy1lyuvWSJ0tzNwew>
+    <xmx:PND3ajkPlXi8PZYSg5gSett_1A6PoHDHFEznZnj_FRG0nrxTGzWRUA>
+    <xmx:PND3arl3EN4pbEk5SAYd06DE_sYd_ei2A4Vi_zJmZb2QuP6Pyqod2zZ_>
 Feedback-ID: i7a5e4b5f:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 13 Nov 2026 22:05:54 -0500 (EST)
+ 13 Nov 2026 22:06:27 -0500 (EST)
 From: Jiaxing Hu <gahing@gahingwoo.com>
 To: tomeu@tomeuvizoso.net,
 	heiko@sntech.de,
@@ -148,17 +148,17 @@ Cc: royalnet026@gmail.com,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v17 02/12] accel/rocket: take the completion register writes under job_lock
-Date: Sat, 14 Nov 2026 16:05:19 +1300
-Message-ID: <1adbff3238fd312e23daab83ed936ad13d7f223f.1794615323.git.gahing@gahingwoo.com>
+Subject: [PATCH v17 05/12] accel/rocket: factor the completion tail out of the IRQ handler
+Date: Sat, 14 Nov 2026 16:05:22 +1300
+Message-ID: <d3edc2ee1e2f6e431f3a22fad4466a1a59e053b6.1794615323.git.gahing@gahingwoo.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1794615324.git.gahing@gahingwoo.com>
 References: <cover.1794615324.git.gahing@gahingwoo.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261114_030610_197230_D1F7A6C6 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20261114_030639_162436_8C192D9B 
+X-CRM114-Status: GOOD (  12.19  )
 X-Spam-Score: -0.2 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -179,56 +179,65 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The IRQ handler writes OPERATION_ENABLE and INTERRUPT_CLEAR before it
-takes job_lock, while rocket_job_hw_submit() sets OPERATION_ENABLE to 1
-under that lock.
+Move the part of the IRQ handler that starts the next task or finishes
+the current job into rocket_job_next_locked(). This makes the code easier
+to follow and does not change behaviour.
 
-If the two run at the same time, the 0 written by the IRQ handler can
-overwrite the 1 written for a new task and stop a task that has just
-started.
-
-Move both writes into the existing scoped_guard(), so they are under the
-same lock as the submit.
-
-Fixes: 0810d5ad88a1 ("accel/rocket: Add job submission IOCTL")
 Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
-Tested-by: Igor Paunovic <royalnet026@gmail.com> # RK3588, three cores, induced reset, JOB_TIMEOUT_MS=2
+Reviewed-by: Igor Paunovic <royalnet026@gmail.com>
 Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/accel/rocket/rocket_job.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+ drivers/accel/rocket/rocket_job.c | 30 +++++++++++++++++++-----------
+ 1 file changed, 19 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/accel/rocket/rocket_job.c b/drivers/accel/rocket/rocket_job.c
-index b2a00992c889..b61bb4d242ce 100644
+index 41c723238b2b..68df1596014e 100644
 --- a/drivers/accel/rocket/rocket_job.c
 +++ b/drivers/accel/rocket/rocket_job.c
-@@ -371,10 +371,15 @@ static void rocket_job_handle_irq(struct rocket_core *core)
- {
- 	pm_runtime_mark_last_busy(core->dev);
- 
--	rocket_pc_writel(core, OPERATION_ENABLE, 0x0);
--	rocket_pc_writel(core, INTERRUPT_CLEAR, 0x1ffff);
-+	scoped_guard(mutex, &core->job_lock) {
-+		/*
-+		 * Stopping the block belongs under the lock. hw_submit() writes
-+		 * OPERATION_ENABLE too, and outside the lock this zero can land
-+		 * after that one and stop a task that has only just started.
-+		 */
-+		rocket_pc_writel(core, OPERATION_ENABLE, 0x0);
-+		rocket_pc_writel(core, INTERRUPT_CLEAR, 0x1ffff);
- 
--	scoped_guard(mutex, &core->job_lock)
- 		if (core->in_flight_job) {
- 			if (core->in_flight_job->next_task_idx < core->in_flight_job->task_count) {
- 				rocket_job_hw_submit(core, core->in_flight_job);
-@@ -386,6 +391,7 @@ static void rocket_job_handle_irq(struct rocket_core *core)
- 			pm_runtime_put_autosuspend(core->dev);
- 			core->in_flight_job = NULL;
- 		}
-+	}
+@@ -367,6 +367,24 @@ static struct dma_fence *rocket_job_run(struct drm_sched_job *sched_job)
+ 	return ERR_PTR(ret);
  }
  
- static void
++static void rocket_job_next_locked(struct rocket_core *core)
++{
++	lockdep_assert_held(&core->job_lock);
++
++	if (!core->in_flight_job)
++		return;
++
++	if (core->in_flight_job->next_task_idx < core->in_flight_job->task_count) {
++		rocket_job_hw_submit(core, core->in_flight_job);
++		return;
++	}
++
++	iommu_detach_group(NULL, iommu_group_get(core->dev));
++	dma_fence_signal(core->in_flight_job->done_fence);
++	pm_runtime_put_autosuspend(core->dev);
++	core->in_flight_job = NULL;
++}
++
+ static void rocket_job_handle_irq(struct rocket_core *core)
+ {
+ 	pm_runtime_mark_last_busy(core->dev);
+@@ -380,17 +398,7 @@ static void rocket_job_handle_irq(struct rocket_core *core)
+ 		rocket_pc_writel(core, OPERATION_ENABLE, 0x0);
+ 		rocket_pc_writel(core, INTERRUPT_CLEAR, 0x1ffff);
+ 
+-		if (core->in_flight_job) {
+-			if (core->in_flight_job->next_task_idx < core->in_flight_job->task_count) {
+-				rocket_job_hw_submit(core, core->in_flight_job);
+-				return;
+-			}
+-
+-			iommu_detach_group(NULL, iommu_group_get(core->dev));
+-			dma_fence_signal(core->in_flight_job->done_fence);
+-			pm_runtime_put_autosuspend(core->dev);
+-			core->in_flight_job = NULL;
+-		}
++		rocket_job_next_locked(core);
+ 	}
+ }
+ 
 -- 
 2.43.0
 
