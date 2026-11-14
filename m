@@ -2,10 +2,10 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7785606A339
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 10:23:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 90B9A606A882
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 10:23:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TMt1ByF8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PQqTbZbM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,27 +13,27 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=86U3wVbBI8r9T4/ji5/3xUuFDPKCLk6fiOgsVvtA1lM=; b=TMt1ByF8qJOJfHEP6mrvMcaSmd
-	rZqWhl338djY5+enKiI1g89fbScF8kCCg7+wU/CwDB4bmyjAcTBo7+cKBFnkYM+VpUDPVyYIQNQLF
-	Z/FqU5LCnL3tFjhmEk6nhihS7iC0TmLBhR9lyLYV8tF/h8aKEjbc1zLMcV6xTCPyB3MafT9KaEk+0
-	a18n0lmkMp+iOoCYMLZy7jJOsbZ01wwLkKYrdQqOjuaBBOMbMhdJF6thIbNrOR01pNVOqucgw8Fed
-	hEAwoKzH+eZI4jW27JTZaUZ6ONg27Wo0Mh5dyE8LVYnIPHT1w97J8Z5xjJ+VCrnzK/UBiilCxbWhZ
-	o5fa5BtA==;
+	bh=IExbPOjpcmZ7rIXGMryPlgrQlUaWG2jAc7d782uiLuU=; b=PQqTbZbM55UiKUeaULLwjvQk7r
+	JUHEHwwE2zjTDU0u1V9yV2xLQq9t2WGWXpRGbqm5i2ff55KyQiAUPcL22k/EC8TXH0zkPIDcL/UBR
+	BOT/2qybv/ZR55l1uw85J5TD4m1HwI8FnvIrFu7qSAm3TYxlllSuXBGnsV492YyP5Wpxbp4NJB8n0
+	ZL5c/ou6rdiTg6berp/i3AlT8m14Eg/pC77fMhG5VZTeiZSB3aY3ZVrdgdK5EQh033gemMWBzey6r
+	RXcBoRs4RUaJBhZK7vNfIesFJIUmy2vpMcs8x7gzIZ3YnUaQ776HJlwGygKXtOCSd3nHy4oBkKrDy
+	sR6UKBRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSAuT-0000000FkCh-3kOu;
-	Sat, 14 Nov 2026 10:23:01 +0000
+	id 1xSAub-0000000FkIc-1xw1;
+	Sat, 14 Nov 2026 10:23:09 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSAuR-0000000FkAY-3CED;
-	Sat, 14 Nov 2026 10:23:00 +0000
+	id 1xSAuZ-0000000FkG5-0Jr7;
+	Sat, 14 Nov 2026 10:23:08 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
 	 (Exim 4.100.1)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1xSAuK-000000003aj-37ZX;
-	Sat, 14 Nov 2026 10:22:52 +0000
-Date: Sat, 14 Nov 2026 10:22:50 +0000
+	id 1xSAuS-000000003bG-0Ffl;
+	Sat, 14 Nov 2026 10:23:00 +0000
+Date: Sat, 14 Nov 2026 10:22:57 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: Detlev Casanova <detlev.casanova@collabora.com>,
 	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
@@ -46,17 +46,17 @@ To: Detlev Casanova <detlev.casanova@collabora.com>,
 	Sebastian Fricke <sebastian.fricke@collabora.com>,
 	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 2/7] media: rkvdec: vdpu383: complete refused HEVC requests
-Message-ID: <1c2a7d695a34ff9a1603d981da53fbeb564f6dfe.1794645268.git.daniel@makrotopia.org>
+Subject: [PATCH 3/7] media: rkvdec: hevc: bound the RPS reads by the control
+ size
+Message-ID: <bb9c44d0f56221874b105394169e5c377ef21b42.1794645268.git.daniel@makrotopia.org>
 References: <cover.1794645268.git.daniel@makrotopia.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <cover.1794645268.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261114_022259_816251_CF48AF57 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261114_022307_118126_29389012 
+X-CRM114-Status: GOOD (  17.07  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,37 +77,92 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-rkvdec_hevc_run() returns -EINVAL when the RPS controls are missing,
-after rkvdec_hevc_run_preamble() applied the request's controls but
-without completing them. rkvdec_device_run() then returns the buffers
-with VB2_BUF_STATE_ERROR, which unbinds the source buffer from the
-request, while the request's control handler object stays incomplete.
-The request never reaches MEDIA_REQUEST_STATE_COMPLETE: poll() on its
-file descriptor never reports it, and MEDIA_REQUEST_IOC_REINIT fails
-with -EBUSY.
+The RPS helpers read num_short_term_ref_pic_sets elements of the
+EXT_SPS_ST_RPS control and num_long_term_ref_pics_sps elements of the
+EXT_SPS_LT_RPS control, however many elements userspace passed. Beyond
+the passed elements they read stale entries of the control's array,
+and past its allocation once the SPS counts more sets than the control
+has ever held, as the control framework sizes a dynamic array for the
+largest element count it has seen. The short-term sets read from there
+are unchecked, and a num_negative_pics or num_positive_pics above 16
+overflows the calculated sets, the stack arrays of
+st_ref_pic_set_prediction() and the hardware RPS table.
 
-Complete the request's controls before returning the error, as
-rkvdec_vp9_run() does.
+A userspace V4L2 client that can open the RKVDEC m2m decoder can set an
+SPS whose counts exceed the number of elements it passed in these
+controls, so the reads run past the allocation.
 
-Fixes: e3b5b77e3689 ("media: rkvdec: Add HEVC support for the VDPU383 variant")
+Use the controls only when they hold at least as many elements as the
+SPS counts, and treat them as not set otherwise in both back ends.
+
+Fixes: c9a59dc2acc7 ("media: rkvdec: Add HEVC support for the VDPU381 variant")
 Cc: stable@vger.kernel.org
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c | 1 +
- 1 file changed, 1 insertion(+)
+ .../platform/rockchip/rkvdec/rkvdec-hevc-common.c    | 12 ++++++------
+ .../platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c   |  4 ++--
+ .../platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c   |  4 ++--
+ 3 files changed, 10 insertions(+), 10 deletions(-)
 
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
+index c249e3f16f42c..797a16517ed59 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
+@@ -448,18 +448,18 @@ void rkvdec_hevc_run_preamble(struct rkvdec_ctx *ctx,
+ 			      V4L2_CID_STATELESS_HEVC_SCALING_MATRIX);
+ 	run->scaling_matrix = ctrl ? ctrl->p_cur.p : NULL;
+ 
++	run->ext_sps_st_rps = NULL;
+ 	if (ctx->has_sps_st_rps) {
+ 		ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl,
+ 				      V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS);
+-		run->ext_sps_st_rps = ctrl ? ctrl->p_cur.p : NULL;
+-	} else {
+-		run->ext_sps_st_rps = NULL;
++		if (ctrl && ctrl->elems >= run->sps->num_short_term_ref_pic_sets)
++			run->ext_sps_st_rps = ctrl->p_cur.p;
+ 	}
++	run->ext_sps_lt_rps = NULL;
+ 	if (ctx->has_sps_lt_rps) {
+ 		ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl,
+ 				      V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS);
+-		run->ext_sps_lt_rps = ctrl ? ctrl->p_cur.p : NULL;
+-	} else {
+-		run->ext_sps_lt_rps = NULL;
++		if (ctrl && ctrl->elems >= run->sps->num_long_term_ref_pics_sps)
++			run->ext_sps_lt_rps = ctrl->p_cur.p;
+ 	}
+ }
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
+index e1936e87f45be..fea7ff48c0dce 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
+@@ -604,8 +604,8 @@ static int rkvdec_hevc_run(struct rkvdec_ctx *ctx)
+ 	 * On vdpu381, not setting the long and short term ref sets will just output wrong frames.
+ 	 * Let's just warn about it and let the decoder run anyway.
+ 	 */
+-	if ((!ctx->has_sps_lt_rps && run.sps->num_long_term_ref_pics_sps) ||
+-	    (!ctx->has_sps_st_rps && run.sps->num_short_term_ref_pic_sets)) {
++	if ((!run.ext_sps_lt_rps && run.sps->num_long_term_ref_pics_sps) ||
++	    (!run.ext_sps_st_rps && run.sps->num_short_term_ref_pic_sets)) {
+ 		dev_warn_ratelimited(rkvdec->dev, "Long and short term RPS not set\n");
+ 	} else {
+ 		rkvdec_hevc_assemble_hw_rps(&run, &tbl->rps, &hevc_ctx->st_cache);
 diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
-index 3462d995d4cf0..e9d8b590f0d58 100644
+index e9d8b590f0d58..c409d21c08598 100644
 --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
 +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
-@@ -553,6 +553,7 @@ static int rkvdec_hevc_run(struct rkvdec_ctx *ctx)
- 	if ((!ctx->has_sps_lt_rps && run.sps->num_long_term_ref_pics_sps) ||
- 	    (!ctx->has_sps_st_rps && run.sps->num_short_term_ref_pic_sets)) {
+@@ -550,8 +550,8 @@ static int rkvdec_hevc_run(struct rkvdec_ctx *ctx)
+ 	 * To be on the safe side for this new v4l2 control, write an error in the log and mark
+ 	 * the buffer as failed by returning an error here.
+ 	 */
+-	if ((!ctx->has_sps_lt_rps && run.sps->num_long_term_ref_pics_sps) ||
+-	    (!ctx->has_sps_st_rps && run.sps->num_short_term_ref_pic_sets)) {
++	if ((!run.ext_sps_lt_rps && run.sps->num_long_term_ref_pics_sps) ||
++	    (!run.ext_sps_st_rps && run.sps->num_short_term_ref_pic_sets)) {
  		dev_err_ratelimited(rkvdec->dev, "Long and short term RPS not set\n");
-+		rkvdec_run_postamble(ctx, &run.base);
+ 		rkvdec_run_postamble(ctx, &run.base);
  		return -EINVAL;
- 	}
- 
 -- 
 2.56.0
 
