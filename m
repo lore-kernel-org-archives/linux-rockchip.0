@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 26F30606C21B
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A49D0606A8A3
 	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 05:02:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YcsMocui;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Ar/jc+Up
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=q0c6aVz8;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=JV6dSIYK
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
@@ -14,45 +14,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=iVPRqDP+wugUln71Gv9ybRNvJ0wWAT+B7LGl7EvSgHU=; b=YcsMocuiN5GqLgxhDgflYouEMN
-	QPNx0KQxYILZttzL3KHOqkZR3OS5aYYd/O1jC+pY8SgFWYexyzg5xeh/XlME/yJZcnM6d5ZxYJc4W
-	5bYRGWC3CIBWB0h8QcT0oqorTZncgfGc039Az2ac3qhAQiH3WpJC5V4zRNy0fBrvc0J4rA1dEsQqj
-	J4h0eDBcEQy5yB0jaCFF5pAO0ejA9XoDE08I8pzREYUJtBbJxRJ83UEogabkPnoIb8H9Im4VzYMgq
-	csV/tfjD6Nk+Zv1GbyXqQ8EfBTM+qXmPQe1ezu6WNLGJdaWKS8CzMk78DO8+uvAINGnpvG87nrNpo
-	m/hHi+Qw==;
+	bh=qddyeesDQk/qkw24JyqlmAUOnY99x2b+3+aEhoVZFkI=; b=q0c6aVz8tl5nU0YTkUr2NrpPhg
+	+IWXD/faSkcFgnROD2B7VInc14R9xn3hFkiiZhx4+YLopA77O7gnmnSHHfaWTyQjf6p8P7H+l/TfR
+	Sph/FMn2BV2QzoAo5WumuhweTSwyt0xjuzES4Tl3vCITdbzlM77eNVN2KwsLzt/QJK8hgL4Az7KPY
+	ar016M7TaBKucCfskaunSK53Pb6ftSS1BureLkYxUuxDmrSl5Fb8iXVD081gb6jGPimjizAX35xuy
+	GHqvlE9h3oWmRwfwQFLGdG84ynAyhar8hEPytrVNdCcTGHZV6Y5A/2jn9GSsOhOsAG8QDslqw3N3g
+	zV5bVVlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS5ua-0000000FSBi-48Dt;
-	Sat, 14 Nov 2026 05:02:49 +0000
+	id 1xS5ua-0000000FSBO-3HsO;
+	Sat, 14 Nov 2026 05:02:48 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS5t0-0000000FQPv-2H6k;
+	id 1xS5sy-0000000FQO2-49Nj;
 	Sat, 14 Nov 2026 05:01:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1794632457;
-	bh=45boCezNlmhhziUm1FzEEYt43rJYJ/1/7ikuYa1yghs=;
+	bh=mnLwXsYtnsb7GeCy1GBlGm35J14qnNJQ1xWbhGMHV/0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Ar/jc+UpSFh0F7Z/zALXxHoNTyNx8NdTni49RhLmIZr6IJrWnFjKzgjbZdQZSnsXg
-	 yHEMITid2W09sa29SIdOTPTzaQ2aTsmbHJ7V+7y0K8pVVBASzF8NiY7/2nxzBgV9O0
-	 IlgsSDuROa5PWq4hTqqC7y39OX7fhvnztf8/eZOXZaPadqkEpuW3OXzThj38FTsS5F
-	 ytlQkrmWxRk0xArdnkC2VgCS8AtUyO8vbQVlauV4wSOJ5d7x2aSGTvHouDHN0GXGGp
-	 cV+cbE/2Fqe9Sui3KwfiNawhEbjrj6EPIRl2cRlGiq4lutjrIu7y+qoLvXfs0zRFxK
-	 +4fnpw7lwjlAQ==
+	b=JV6dSIYKn2G/dPCqZEyNxicIgOVKHUK6BO/XSiWsLFmIZPMUZhJzkbCUpu68RftkL
+	 CniqyRsJ7Zx210K0pTA0rK8NVValzIWd3vSMXSvGvQKVrmscr/yQoQBZjW1aY5SEEL
+	 zi0jEbOjB9u33cawW1IkM20n3Y9jTHSr5aFsz8iTmX3J/AN2B2dOagqmED7NO4hxO1
+	 4c2KW9eAaAhV1y1c8ZSaU3qe2Cbv7MeR8lSEqpJStANTV6L2sBwxe3FZUAkRtRFxDb
+	 xpjOzfqqa8sftbUV+D5OQQhx66yllmt9kkuTBPv7WR3JamZqdXG7KmZ9KTkOS/kF6x
+	 y1aV2M066cTGw==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 058D817E3BF6;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0181917E3BEA;
 	Sat, 14 Nov 2026 06:00:57 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 23AB1480062; Sat, 14 Nov 2026 06:00:56 +0100 (CET)
+	id 220CB480061; Sat, 14 Nov 2026 06:00:56 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Sat, 14 Nov 2026 06:00:49 +0100
-Subject: [PATCH v12 16/23] drm/rockchip: dw_dp: Add system PM support
+Date: Sat, 14 Nov 2026 06:00:48 +0100
+Subject: [PATCH v12 15/23] drm/rockchip: dw_dp: Add runtime PM support
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261114-synopsys-dw-dp-improvements-v12-16-d42d3dc5bdd4@collabora.com>
+Message-Id: <20261114-synopsys-dw-dp-improvements-v12-15-d42d3dc5bdd4@collabora.com>
 References: <20261114-synopsys-dw-dp-improvements-v12-0-d42d3dc5bdd4@collabora.com>
 In-Reply-To: <20261114-synopsys-dw-dp-improvements-v12-0-d42d3dc5bdd4@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -71,27 +71,26 @@ To: Sandy Huang <hjc@rock-chips.com>,
  Luca Ceresoli <luca.ceresoli@bootlin.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1010;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2123;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=45boCezNlmhhziUm1FzEEYt43rJYJ/1/7ikuYa1yghs=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr36weEWcInHZA679Yj1StCqOFPYLhDNHZLM
- vbi3xG9n43o14kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq9+sHAAoJENju1/PI
- O/qaHF4P/jVBIVmlo/DZ5M7ZQqryNZoQ03JqP8zliw6mRVyQBiGyuwo+6lQRA7vd1nKW97Eretf
- n/CWVYj8b79IxBUwYe9gjAX66suftDI90MsHUNFwUCO7dYqh64a9RqwwczocasmQ+aK2kFh6bEf
- lw9SmBaMuF/0Y69SUKY5cW2ClZlAscf4YbAL9jGN+4iC6GL8FfZMYHNe664Rp3EYUBBQen0UntD
- 3SkQwWHvpTreN0B/ahxMQN9HFmtTJ1j2vgLQAi2Tg2pB11/qPT8leRBenFbMRmO7szL7o5nNYjT
- w2Mf7LqteW4KHfihXAfA4/SeU8mQPalm+BGQ0IM+B+2YtSb60wOUgsUI1D4YSQ1qAexQ9RGoQzx
- umlqz+RJEkm9cLDfaR7YaHDoyi1hWTa0/t69L7eF/58wP/ceqrslxPLoiWb3ONZEAmY5re89SGy
- l4Uvi4IDcY6/mGP2DUKuHP+iesKqDw2zGYgGtvnfSz1mp9yx9TTGRsmuVNxCXQVbS/oEK5C8GBj
- zo+Fl6HdUBxytK1WnO10nvSRSWpZAf0vx/6bg940/LIsrBZTDYcg0HIc5uYBr75ufQjGHh39IGj
- feQntBTSgYCci+GVGIebCCG9N78y9SefKt+93ZQ3xl230Qt+xV5u/I/iuBBYMvTZHP4FVTpRy87
- i3GUbhbZAQt1BB3TpuE4tpQ==
+ bh=mnLwXsYtnsb7GeCy1GBlGm35J14qnNJQ1xWbhGMHV/0=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr36we2zCjnm5BlstHLolxg+Sb+x4stiUfJm
+ sDCWagCyfyEqIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq9+sHAAoJENju1/PI
+ O/qaKbMQAIliBlNemxFVbhJ+wmwuPH7C3v+ndaa+fE9uOLr7AbYz3SADc6KkuO/mTRAL12n26FC
+ BbE80Y6PL9O2mHoGIUkqp6CNzSS3DBP9AFiWYK7dTWaNLkdVDb87FoD5cvCYrhL/wqXcvNZSFOy
+ 7EbETjQ72RtqBTY2d4AebmhagGBYSPyjn1QHzL0Nw6HVP1n0buFbKoMYC495o7yJjx/ASiyez/1
+ tzP0m/B69RkOUtBjz9toLWIzehCd8MPqEF28YuB5DCV5JazMP0MiJjRUugk9BLo608nGIt5z6Gy
+ Z13Pm//R2WQDmcTVC8DlRFg90RlvauJxYSchIchk0JT9Bq/bVBEHHWSFc/9B1hHXoDpTazE6k1S
+ X89s72uTk/T+ISmiXU8dIgaus9VHoJ6R+ruSRJtkX3+IRai6R8u7HRaWv6VFOKXooEgFEPbTAKt
+ D7q6wPXZXwO+Ruk0SkawIFdjGOr7zRYRATu6L2Ls7IKcrqrURNfuhz+peDOiu0elJoOcUO9IhIE
+ QIclSOEzW7T39E79ebrqTYmO+uXlIikbRi+/XIxBbLMMLzYphtNGocAAr1KQGwlj13IUFhG0U4g
+ FWz8H+3QUu5cKYf3a5w2F6X/XPqY/NddGY/MwWoGfZfZSLHzWjhGrU4AomMt5ZOVd+nQUR088rf
+ ycD6n6ukWoze3reKKGiE5jA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_210110_936219_AB75B841 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261113_210109_260202_D83BF05C 
+X-CRM114-Status: GOOD (  12.60  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,7 +101,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
+Cc: Igor Paunovic <royalnet026@gmail.com>, devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -113,27 +112,67 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Explicitly suspend the DP controller when the system goes to sleep and
-more importantly resume it properly after system sleep exit to recover
-USB-C HPD register state, which is lost when the system goes to sleep.
+Add support for runtime PM to the Rockchip RK3576/3588 Synopsys
+DesignWare DisplayPort driver.
 
+Tested-by: Igor Paunovic <royalnet026@gmail.com> # Orange Pi 5+
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_dp-rockchip.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/rockchip/dw_dp-rockchip.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-index 99d948a7c51f..4cfb40494379 100644
+index 1cc6cfad4104..99d948a7c51f 100644
 --- a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-@@ -269,6 +269,7 @@ static int dw_dp_rockchip_runtime_resume(struct device *dev)
+@@ -12,6 +12,7 @@
+ #include <linux/mfd/syscon.h>
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
+ #include <linux/regmap.h>
+ #include <linux/videodev2.h>
  
- static const struct dev_pm_ops dw_dp_pm_ops = {
- 	RUNTIME_PM_OPS(dw_dp_rockchip_runtime_suspend, dw_dp_rockchip_runtime_resume, NULL)
-+	LATE_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend, pm_runtime_force_resume)
- };
+@@ -229,6 +230,7 @@ static int dw_dp_rockchip_probe(struct platform_device *pdev)
+ 	if (IS_ERR(dp->vo_grf))
+ 		return PTR_ERR(dp->vo_grf);
  
++	plat_data->autosuspend_delay = 500;
+ 	plat_data->max_link_rate = plat_data_const->max_link_rate;
+ 	plat_data->pixel_mode = plat_data_const->pixel_mode;
+ 	plat_data->hpd_sw_sel = dw_dp_rockchip_hpd_sw_sel;
+@@ -251,6 +253,24 @@ static void dw_dp_rockchip_remove(struct platform_device *pdev)
+ 	component_del(&pdev->dev, &dw_dp_rockchip_component_ops);
+ }
+ 
++static int dw_dp_rockchip_runtime_suspend(struct device *dev)
++{
++	struct rockchip_dw_dp *dp = dev_get_drvdata(dev);
++
++	return dw_dp_runtime_suspend(dp->base);
++}
++
++static int dw_dp_rockchip_runtime_resume(struct device *dev)
++{
++	struct rockchip_dw_dp *dp = dev_get_drvdata(dev);
++
++	return dw_dp_runtime_resume(dp->base);
++}
++
++static const struct dev_pm_ops dw_dp_pm_ops = {
++	RUNTIME_PM_OPS(dw_dp_rockchip_runtime_suspend, dw_dp_rockchip_runtime_resume, NULL)
++};
++
  static const struct rockchip_dw_dp_plat_data rk3588_dp_plat_data = {
+ 	.num_ctrls = 2,
+ 	.ctrl_ids = {0xfde50000, 0xfde60000},
+@@ -285,5 +305,6 @@ struct platform_driver dw_dp_driver = {
+ 	.driver = {
+ 		.name = "dw-dp",
+ 		.of_match_table = dw_dp_of_match,
++		.pm = pm_ptr(&dw_dp_pm_ops),
+ 	},
+ };
 
 -- 
 2.53.0
