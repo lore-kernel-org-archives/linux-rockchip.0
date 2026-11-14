@@ -2,108 +2,94 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B0D3B606A894
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 00:52:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2DCED60A2635
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 01:02:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=P4PdufJ4;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=OGJFZfGa
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eLgWGpAB;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Z36M9yIb
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=CITULiA/2unjldLv6A+B/5KiIXhAlZoKA0uVVCS1c9s=; b=P4PdufJ4cgOpAA0BiFCkGjyDJ6
-	VRYQpJIMLxmEd2VAP50H02gOiqap/BbdjgeLfr0eF6U3eUAQYJ9cTvJeF4wcJGoVJZQt5eTkYM/VL
-	ytQMTfYIQIbdyN9vjZ6cyA8t3W0jKXAAnkaf8i5LFob2k2KnK4wdtuTfTc7uRz+tYNaGsBl2r1gEN
-	GZSSiXYKyB+pIP3eyxsNvPLWAa5mRN2BN1X2stew6r432HH2ySnvTVYlGSOlpZUAOwqw4d8oGWtRJ
-	EHh4BW/jKN4QX5rIKkw89Z5XXFxzF2xKIPYZpKZ9iIJCHrCZqXdcJMexWEFcBXVchH1Ag5qDhCIGb
-	QpLnwATg==;
+	bh=hcIXJfMwKIVaMW56TVRUZahtUcembxW5n7mzjvWbtb0=; b=eLgWGpAB/MtgGQQST0YiBzdvIr
+	GvMAdG/1k7PZfB5MxqVRSDuK3wUZB8/z/BCjVDC3rNl6MvAUwPvCAf1bSOcCjSNjZ+Fu4wakDmdal
+	h4iSA1N+H74uv7e344ph78DSm2vWuE6sLuSF1j8lBSiFTBP4RpKWz2Pzmn3wdhnMTxek/GO1UZ+II
+	B01u/TPtfMuavaQG4n1W8lDxp4qsyc9XsuwBoV6lXIwr5XhbGprZIKeH2x9+Oqck7H0QVZZEURdkS
+	ZykujBneqiIZqcnwSJ4GDlteq8bRGH3Mu3md2fd8ayOirBUGXhQnIUXS2LUyJNZ6GfiHwC+qkurVZ
+	9TITUDwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS20M-0000000ExUw-2rnn;
-	Sat, 14 Nov 2026 00:52:30 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xS2AO-0000000EyWv-2Wst;
+	Sat, 14 Nov 2026 01:02:52 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS20F-0000000ExPX-45pp;
-	Sat, 14 Nov 2026 00:52:24 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 318C3627EE;
-	Sat, 14 Nov 2026 00:52:23 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794617542;
-	b=mfv6AL4QWkLJEKcJfF1GBJEYxqi5/vXinZ2zRdZ6tSjd/97o2RB336dEqC20lSWZXAub
-	 a1xgUvKBEb6wLUkDI51V2sYiCzbo9ah+wQ/CJvKcwwvcM+Wggw/KnWbQJbZB33f+7KNqp
-	 LFY5uY8HuYjjiQGwBs1FwMAvhJY4PgH/wRSFcfprtnh3uftmLp95MxvGF6TMr37uY9ht7
-	 OwcRSHjBNYDo1JatmspLuPnY5RSp4ZHSgHE8BZjefN7ZK/tHwDi58nb/ZDi6gru7OEzEH
-	 4GOweK0sh0DRn2Im7hmCND2S/qk99lF1NaPSyDWicKSAkFh/GYRhcyKACKAJQ41ehxA==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794617542;
-	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
-	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
-	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=aIqvjGY2BoJa1S5k5OTFxK2lNEFIunzD8NJXeg3oTac=;
-	b=tIzeRN0QZO7ryl7igEKIt6Kg60YoBQsLMPko/JFGQtatnfkCoMtLwz1DvwXXIQf71FIB
-	 qbOcOXQJQK+OGYcfu7JRtqaJxG5oKxjLK9Lsn9NGIIa9R1kS65mbMvpsRQRWZitPfQGzQ
-	 1PaObryS6Fw/BrZGpMo24nOphlQi5sYeHa4YKxK+Fih07b+4/3itJp59e5rYMu59SbvBS
-	 L6Fv5lRHTTHC09BODEEAFaz8N3l9PYUmzV4k881pg/JMMbj9p7UiaDq/I6useJ/LvQ2Xw
-	 jmSgVIkhe4IaLXnjtZJXCPLVIIfs1K55BPiYo8dEOdDW2EohJbsCc2SXUUfpFHNjtow==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	id 1xS2AL-0000000EyTj-0MWg;
+	Sat, 14 Nov 2026 01:02:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1794618166;
+	bh=xnlO9in6Z1+Bk+onYHPVFQSnxIJtGXyd6zhQkeV69kQ=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=Z36M9yIbOlpBt32GRm2yENOoo3rLJtTIATZHwTfnukEJqVVFULBpL8jHUEULAxmtT
+	 KCsZAxEkuK+je4drdIKfGc1X6YZQAoH2nFY0b3OzLhwa7Ci/VuScQWpXYUSHZR+rLG
+	 WaPIFOtvogAV+BGMoi4XoluI0SEnuERdiQ7RyT/aMtC8XWGLaud2wy5Zz7bkwajZE1
+	 ux6M74zeprPqeJ3oUk6ubNRU6lYPvUF3ta7yXlR1f/OuymqmUQ0NEhzcEe2imoJad+
+	 ILmintbnWhkzt44KF3JxqazTHia6MN/xCFqXK6f7kLXsglOBIKVAuH30RsJ+CZw+0S
+	 2g0kHF77/Iexg==
+Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id C3A641F000C7;
-	Sat, 14 Nov 2026 00:52:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794617542;
-	bh=aIqvjGY2BoJa1S5k5OTFxK2lNEFIunzD8NJXeg3oTac=;
-	h=From:Subject:Date:To:Cc:Reply-To;
-	b=OGJFZfGaI/tVHwgR02sk458tfXsBuwXXT0O59DGnA7hoQou36k7xObWhVV7VXfvoc
-	 J9UywouKkFD0BSpMXSi3XkxAwqwGiZpH91+vzuogpg8hP51NtYPzUP7hUCvvMS0Z0H
-	 p0s42oysYGB6hPmLhS6yPV2Z+Xx3x6Y0GVsqbs89MHdZEugobpWiM6ZFU7vQCQTmoA
-	 h6P3w0VhRIb5j1R6XtfNbjdiGj0ZLd0F3noNu7pRIwGNWeS4reY2exhT/DcGn/dUnQ
-	 0CzUph5b7DGbAqyeUtISax08Va+yb/l93AqwH6ybGk1vqI1haXZ7OcSCipBWDedNM7
-	 D+oL7BV+DXxPQ==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id C711449BF4;
-	Sat, 14 Nov 2026 00:52:20 +0000 (UTC)
-From: Matt Thompson via B4 Relay <devnull+matt.boondocker.io@kernel.org>
-Subject: [PATCH RFC v2 0/3] PCI: rockchip-host: Handle unavailable
- downstream config space
-Date: Fri, 13 Nov 2026 17:52:18 -0700
-Message-Id: <20261113-rfc-b4-v2-0-d6b14f95c1d6@boondocker.io>
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0CE8B17E0F70;
+	Sat, 14 Nov 2026 02:02:46 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id C481E480031; Sat, 14 Nov 2026 02:02:45 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Sat, 14 Nov 2026 02:02:02 +0100
+Subject: [PATCH v19 3/6] usb: dwc3: rockchip: introduce glue driver
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAMOw92oC/12NQQrCMBBFr1JmbSRJTaWuBMEDuJUuOsnUjkIjS
- S1K6d1N487l+zzenyFSYIpwKGYINHFkPyTQmwJs3w43EuwSg5a6UkqVInRW4E5UuK8NmrJydQt
- Jfgbq+J1DV7icT9D8xvjCO9lxTaxaz3H04ZPvJpXl//KkhBRYK2fRSK2NPKL3g/P2QWHLHpplW
- b4RYmE+twAAAA==
-X-Change-ID: 20261113-rfc-b4-6b795b536d9a
-To: Shawn Lin <shawn.lin@rock-chips.com>, 
- Bjorn Helgaas <bhelgaas@google.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, Mark Rutland <mark.rutland@arm.com>, 
- linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Message-Id: <20261114-b4-rockchip-dwc3-rockchip-glue-v19-3-b79fb5f4b42a@collabora.com>
+References: <20261114-b4-rockchip-dwc3-rockchip-glue-v19-0-b79fb5f4b42a@collabora.com>
+In-Reply-To: <20261114-b4-rockchip-dwc3-rockchip-glue-v19-0-b79fb5f4b42a@collabora.com>
+To: Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>, 
+ Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>, 
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+ Igor Paunovic <royalnet026@gmail.com>, Alexey Charkov <alchark@flipper.net>, 
+ linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-phy@lists.infradead.org, kernel@collabora.com, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794617540; l=2945;
- i=matt@boondocker.io; s=rk3399-rfc-20261113; h=from:subject:message-id;
- bh=u8NC1h2UFOo1v6PYckTyaAJW66VhB2jXXpyJT0WEzzE=;
- b=OwCULHv2DTo7iZm5pH4MrnKZdJGHc4Pm+X0UKcVZOeVooF2AHEUEMn0dyo3IqMpyHEB/nI9pb
- OIJlGYE7jVmDKXVtsSqLepnrFpddKUXdTrx7bzBJffKITc/dqVy1lzq
-X-Developer-Key: i=matt@boondocker.io; a=ed25519;
- pk=WMnh3kwFFRkrqamL/FbDcdl1/9rBF2uT03VdvGGP40k=
-X-Endpoint-Received: by B4 Relay for matt@boondocker.io/rk3399-rfc-20261113
- with auth_id=1517
-X-Original-From: Matt Thompson <matt@boondocker.io>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6276;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=xnlO9in6Z1+Bk+onYHPVFQSnxIJtGXyd6zhQkeV69kQ=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr3szX4/VVcHSguS7oy9qSMstwb6RCISJYF3
+ V1hwH24L2hOUokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq97M1AAoJENju1/PI
+ O/qaGL0P/iW1z/JRuqqFXNn9aiW0cZMW3Onlw+3U5hlM45Y7R3BEwy8gUewu5kkyI6KuPv1jUtX
+ Li+vPZPDEZq58XU/30hMps0kLVtUd8+b5Qe/TOKl5ObzjC2K5sYRLfu0WgdVVk7jMkx36gVyZOR
+ Ict1v80Rs57k7A5mCbCb4zOy/t42dA8dx9mcYqDegJiP4SQ4PLi/u+AoX+rGYJoshlpW2QHNX6c
+ fLDb4+ooQLhY65ZS6eQktUnRbKRTc/WM5tr3k417ihsHyWtxFOFnfVaMdfas+zN+8AyGTS5QbZN
+ 1RUYJhRL6mk0AOR9zEu33wDCgGW8g5MnSioitph83MQm5NEVGhi2s0e6Qnl2yQCZ/haYD3w+rA8
+ eC9RDqWciQnd1itNl6UKuqTvyrcmPNugHydcJ0zNHkxgIQBOfEzpmguWTth/GqW/Ha3ctzOGi8e
+ 21OuaohrSJ0X5dXiXIHdeTQ3P7ho1AXRpOc/CoV+PHT7HF5f/rcpc6ErADqhnd8pZUn3auSMfud
+ wabFC4OCQutoOCdgnepwGOS+M3n6FjloN5UEsMDUJJmHMw++Yq/JVkXaDrVqJJ+hHWRRAvbuSpX
+ loBNR6I/nufDtOb9z9GRIcAvrtArHJminTGhQjVJiCuP8rabQ36idN8040Kfm2LmxBC2kTdgV1o
+ qvBz0YR7bsodC6naz3OU4dA==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261113_170249_320508_F4F22318 
+X-CRM114-Status: GOOD (  21.04  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,80 +99,214 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: matt@boondocker.io
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On a RockPro64 v2.1 with a Kintex-7 FPGA endpoint, a downstream
-vendor-ID read during a PCI rescan raised a synchronous external
-abort (ESR 0x96000210) in rockchip_pcie_rd_conf(). The rescan task
-exited with IRQs disabled and a watchdog lockup followed.
+Introduce Rockchip specific glue code for the Synopsys DWC3 USB driver.
+For now this handles things identical to the default glue.
 
-The first patch skips downstream config accesses while the controller
-reports the link unavailable. The remaining patches handle synchronous
-external aborts on explicitly annotated arm64 config reads, including
-when the link changes after the status check. The final patch also
-clears the AXI link-down latch before downstream config accesses
-once the controller reports the link ready.
+After this change the glue driver is mandatory for Rockchip RK3588 and
+RK3576; it does not make sense to fallback to the core driver as the
+whole purpose of the glue driver is fixing race conditions resulting in
+SErrors and non-functional USB.
 
-The arm64 change is limited to marked load instructions. Asynchronous
-SError, BAR accesses, and config writes that race a link change are
-outside that recovery path. Feedback on the exception-table interface
-and whether the controller can handle absent completions directly is
-welcome.
-
-A related discussion covers an RK3399 endpoint that trains but fails
-to answer config requests:
-https://lore.kernel.org/linux-pci/20261024-rockchip-pcie-resume-v1-0-58e54a5cf5f1@iav.lv/
-
-Validation: applied these three RFC patches to upstream commit
-97d73c8251226cf27cc6656b4c542869bb8c69fa and booted the resulting
-7.4.0-rc2 kernel on a RockPro64 v2.1. The test config enabled Rust
-and built in the required board drivers.
-
-Three test cycles completed on the v2 kernel. Each removed the FPGA
-from Linux, disabled the link and rescanned, then re-enabled the link,
-requested retraining and rescanned. The FPGA stayed absent in each
-disabled scan and returned at 01:00.0 after each retrain without a host
-driver rebind. The log showed no synchronous external abort or
-watchdog lockup. The test did not establish whether the arm64 fixup ran.
-
+Tested-by: Igor Paunovic <royalnet026@gmail.com> # Orange Pi 5 Plus
+Tested-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
-Changes in v2:
-- Restrict the MMIO read fixup to the SEA path and exclude its
-  exception-table type from user-access classification.
-- Look up the guarded instruction once on the SEA path.
-- Use the standard arm64 register-number encoding helpers in
-  the exception-table macro (Sashiko review).
-- Link to v1: https://patch.msgid.link/20261113-rfc-b4-v1-0-b91dcb502250@boondocker.io
+ drivers/usb/dwc3/Kconfig         |  11 ++++
+ drivers/usb/dwc3/Makefile        |   1 +
+ drivers/usb/dwc3/core.c          |  15 ++++++
+ drivers/usb/dwc3/dwc3-rockchip.c | 106 +++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 133 insertions(+)
 
----
-Matt Thompson (3):
-      PCI: rockchip-host: Skip downstream config access while link is down
-      arm64: Allow synchronous abort fixups for guarded MMIO reads
-      PCI: rockchip-host: Recover downstream configuration access
+diff --git a/drivers/usb/dwc3/Kconfig b/drivers/usb/dwc3/Kconfig
+index 18169727a413..3c120ea9746d 100644
+--- a/drivers/usb/dwc3/Kconfig
++++ b/drivers/usb/dwc3/Kconfig
+@@ -190,6 +190,17 @@ config USB_DWC3_OCTEON
+ 	  Only the host mode is currently supported.
+ 	  Say 'Y' or 'M' here if you have one such device.
+ 
++config USB_DWC3_ROCKCHIP
++	tristate "Rockchip DWC3 Platform Driver"
++	depends on ARCH_ROCKCHIP || COMPILE_TEST
++	depends on OF
++	default USB_DWC3
++	help
++	  Rockchip SoCs with DesignWare Core USB3 IP inside,
++	  and IP Core configured for USB 2.0 and USB 3.0 in host
++	  or dual-role mode.
++	  Say 'Y' or 'M' if you have such device.
++
+ config USB_DWC3_RTK
+ 	tristate "Realtek DWC3 Platform Driver"
+ 	depends on OF && ARCH_REALTEK
+diff --git a/drivers/usb/dwc3/Makefile b/drivers/usb/dwc3/Makefile
+index f37971197203..444e7e7f34b2 100644
+--- a/drivers/usb/dwc3/Makefile
++++ b/drivers/usb/dwc3/Makefile
+@@ -58,6 +58,7 @@ obj-$(CONFIG_USB_DWC3_IMX8MP)		+= dwc3-imx8mp.o
+ obj-$(CONFIG_USB_DWC3_IMX)		+= dwc3-imx.o
+ obj-$(CONFIG_USB_DWC3_XILINX)		+= dwc3-xilinx.o
+ obj-$(CONFIG_USB_DWC3_OCTEON)		+= dwc3-octeon.o
++obj-$(CONFIG_USB_DWC3_ROCKCHIP)		+= dwc3-rockchip.o
+ obj-$(CONFIG_USB_DWC3_RTK)		+= dwc3-rtk.o
+ obj-$(CONFIG_USB_DWC3_GENERIC_PLAT)	+= dwc3-generic-plat.o
+ obj-$(CONFIG_USB_DWC3_GOOGLE)		+= dwc3-google.o
+diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
+index fd5c2cd36c59..4b7132887a03 100644
+--- a/drivers/usb/dwc3/core.c
++++ b/drivers/usb/dwc3/core.c
+@@ -2448,11 +2448,26 @@ int dwc3_core_probe(const struct dwc3_probe_data *data)
+ }
+ EXPORT_SYMBOL_GPL(dwc3_core_probe);
+ 
++/*
++ * List of compatibles, which have "synopsys,dwc3" as a fallback
++ * compatible, but have a vendor specific glue driver that should
++ * be used instead of this one.
++ */
++static const char *const dwc3_compatible_blocklist[] = {
++	"rockchip,rk3588-dwc3",
++	"rockchip,rk3576-dwc3",
++};
++
+ static int dwc3_probe(struct platform_device *pdev)
+ {
+ 	struct dwc3_probe_data probe_data = {};
+ 	struct resource *res;
+ 	struct dwc3 *dwc;
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(dwc3_compatible_blocklist); i++)
++		if (device_is_compatible(&pdev->dev, dwc3_compatible_blocklist[i]))
++			return -ENODEV;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	if (!res) {
+diff --git a/drivers/usb/dwc3/dwc3-rockchip.c b/drivers/usb/dwc3/dwc3-rockchip.c
+new file mode 100644
+index 000000000000..4129aefd6a8b
+--- /dev/null
++++ b/drivers/usb/dwc3/dwc3-rockchip.c
+@@ -0,0 +1,106 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c) 2026, Collabora Ltd. */
++#include <linux/module.h>
++#include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
++#include "glue.h"
++
++struct dwc3_rockchip {
++	struct dwc3		dwc;
++};
++
++static int dwc3_rockchip_probe(struct platform_device *pdev)
++{
++	struct dwc3_probe_data probe_data = {};
++	struct resource *res;
++	struct dwc3_rockchip *dwc_rk;
++
++	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	if (!res) {
++		dev_err(&pdev->dev, "missing memory resource\n");
++		return -ENODEV;
++	}
++
++	dwc_rk = devm_kzalloc(&pdev->dev, sizeof(*dwc_rk), GFP_KERNEL);
++	if (!dwc_rk)
++		return -ENOMEM;
++
++	dwc_rk->dwc.dev = &pdev->dev;
++	dwc_rk->dwc.glue_ops = NULL;
++
++	probe_data.dwc = &dwc_rk->dwc;
++	probe_data.res = res;
++	probe_data.properties = DWC3_DEFAULT_PROPERTIES;
++
++	return dwc3_core_probe(&probe_data);
++}
++
++static void dwc3_rockchip_remove(struct platform_device *pdev)
++{
++	dwc3_core_remove(platform_get_drvdata(pdev));
++}
++
++static int dwc3_rockchip_runtime_suspend(struct device *dev)
++{
++	return dwc3_runtime_suspend(dev_get_drvdata(dev));
++}
++
++static int dwc3_rockchip_runtime_resume(struct device *dev)
++{
++	return dwc3_runtime_resume(dev_get_drvdata(dev));
++}
++
++static int dwc3_rockchip_runtime_idle(struct device *dev)
++{
++	return dwc3_runtime_idle(dev_get_drvdata(dev));
++}
++
++static int dwc3_rockchip_suspend(struct device *dev)
++{
++	return dwc3_pm_suspend(dev_get_drvdata(dev));
++}
++
++static int dwc3_rockchip_resume(struct device *dev)
++{
++	return dwc3_pm_resume(dev_get_drvdata(dev));
++}
++
++static void dwc3_rockchip_complete(struct device *dev)
++{
++	dwc3_pm_complete(dev_get_drvdata(dev));
++}
++
++static int dwc3_rockchip_prepare(struct device *dev)
++{
++	return dwc3_pm_prepare(dev_get_drvdata(dev));
++}
++
++static const struct dev_pm_ops dwc3_rockchip_dev_pm_ops = {
++	SYSTEM_SLEEP_PM_OPS(dwc3_rockchip_suspend, dwc3_rockchip_resume)
++	RUNTIME_PM_OPS(dwc3_rockchip_runtime_suspend, dwc3_rockchip_runtime_resume,
++		       dwc3_rockchip_runtime_idle)
++	.complete = pm_sleep_ptr(dwc3_rockchip_complete),
++	.prepare = pm_sleep_ptr(dwc3_rockchip_prepare),
++};
++
++static const struct of_device_id dwc3_rockchip_of_match[] = {
++	{ .compatible = "rockchip,rk3588-dwc3" },
++	{ .compatible = "rockchip,rk3576-dwc3" },
++	{ }
++};
++MODULE_DEVICE_TABLE(of, dwc3_rockchip_of_match);
++
++static struct platform_driver dwc3_rockchip_driver = {
++	.probe		= dwc3_rockchip_probe,
++	.remove		= dwc3_rockchip_remove,
++	.driver		= {
++		.name	= "dwc3-rockchip",
++		.pm	= pm_ptr(&dwc3_rockchip_dev_pm_ops),
++		.of_match_table	= dwc3_rockchip_of_match,
++	},
++};
++
++module_platform_driver(dwc3_rockchip_driver);
++
++MODULE_LICENSE("GPL");
++MODULE_DESCRIPTION("DesignWare DWC3 Rockchip Glue Driver");
 
- arch/arm64/include/asm/asm-extable.h        | 15 +++++++
- arch/arm64/mm/extable.c                     | 20 +++++++++
- arch/arm64/mm/fault.c                       |  4 ++
- drivers/pci/controller/pcie-rockchip-host.c | 68 +++++++++++++++++++++++++++++
- drivers/pci/controller/pcie-rockchip.h      |  1 +
- 5 files changed, 108 insertions(+)
----
-base-commit: a72c40386d63746568fb027900faaa8ec0054127
-change-id: 20261113-rfc-b4-6b795b536d9a
-
-Best regards,
---  
-Matt Thompson <matt@boondocker.io>
-
+-- 
+2.53.0
 
 
 _______________________________________________
