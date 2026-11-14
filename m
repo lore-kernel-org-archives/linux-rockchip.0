@@ -2,152 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C0107606A32E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2026 23:49:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 78558606A8B7
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 00:13:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lSrC4sJM;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gahingwoo.com header.i=@gahingwoo.com header.a=rsa-sha256 header.s=fm1 header.b=UlYMm/Fs;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=Kbv6hEsY
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LREMnaF/;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=UK4YRzX7
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=W1EQpzjuDajr/iwazTjte0BG8c509YCBql6tVa+BwxM=; b=lSrC4sJMQ0ZVyY0JitfMnb7lK9
-	5cu9yrmrpwkJiaJ8TD6UKTMNKD1fGwEooBHdpDm6yyfMj2YSozYJrOUEmQQcJoWlm1JLJHU6Ee/qT
-	dWL1pHrbkdV2r7hDhgVQvTmfK/ehs/TsAFFj2QjDYuY2CR/c0Epre3bSboFaW7Uh0PF3J/3+gdLV4
-	UDW6WbeZ6tgDnKzM2zUt29iMtGJK2nd23HP6uWGn5pZQ9f/z/shcqE1Jd4mZ9vR9ibqy60rR2GuwY
-	njJxVvkIpNdJwkd7lv2Yi8oaRZwfsctn1Ua9LI7/7ukyBr+TSWKiijaUh+RqJ4hH/AdhIalMUz+Z8
-	yPr2DFgQ==;
+	bh=OC4CdZXU9CRK8kQAy0nQjPYknOfiTY40zqHN1ybAegk=; b=LREMnaF/yh/bATIamnmDAq5ccp
+	kgFFTcLWww0md3m7tHI2WGWq1zq1DHRwSz3hIxayILUxusdZfeTKUaVsXFy5c9Jygiv/NoMKiLrq8
+	D7YVfXxlNSFot8+KJr1CHOr3Hs9pwCD80z9QznE4d+Q2TTr654W8DSl20VpqNiCCE72+EUSYjwZSj
+	bdySqU8zUYm/FTKEL0XZ/vxHvwJmmh+G8UbDKYG119zUVnsaH68E20ZJ6UCox6PRbXl8e3sQNJFcD
+	NTkdokAQ24F3cY3HcAzO5hduXZHnWqSrqAcbz55+01404LHQ3Ci4ayvggPI/n4jnApSLYwuKMEIKB
+	BtGmKbCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS11K-0000000EpOP-1GxS;
-	Fri, 13 Nov 2026 23:49:26 +0000
-Received: from flow-b1-smtp.messagingengine.com ([202.12.124.136])
+	id 1xS1P1-0000000Erys-1b39;
+	Sat, 14 Nov 2026 00:13:55 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS11G-0000000EpNO-22OE
-	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Nov 2026 23:49:24 +0000
-Received: from phl-compute-11.internal (phl-compute-11.internal [10.202.2.51])
-	by mailflow.stl.internal (Postfix) with ESMTP id 2C34B1302A42
-	for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 18:49:19 -0500 (EST)
-Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-11.internal (MEProxy); Fri, 13 Nov 2026 18:49:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
-	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
-	:from:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to; s=fm1; t=1794613754; x=
-	1794620954; bh=/o9hLhdBPn8cdi1Wxj/gbuT8hiPvUs8r+uSoRMeCvTs=; b=U
-	lYMm/Fsoj+r8geFJv0LOqWv1MpvzDQTc1MqmCUAl2LOGZIHC+Fga3cCXVyeFtSdi
-	bYjE3RRDqE7efhzw+hiZSEilb81PpG7/2T9R3Zk37AGE4Hrls18xn/8YeiPNWu4U
-	9xPCHeGgFAo2VzfFgRTP9ceWNVQ2Oird/Uxb6lhpS1D3heWSqh2n8q2rRQW5Nxvf
-	xycvQaRXjpLgfTuDcpzOlJohY2tnltTfuACTl2+DYLbTLLZhlfNWwYKEky0LwqoU
-	meWzhpnk/bJtdWa5UahJFchqCoqMkVerMfrqjQkXXULGBwwIHEi9cT2ureGZT7nI
-	tNWu4xIgjs3qO7CKUGW2A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm3; t=1794613754; x=1794620954; bh=/
-	o9hLhdBPn8cdi1Wxj/gbuT8hiPvUs8r+uSoRMeCvTs=; b=Kbv6hEsYJB/5FYcc7
-	o+36gAzaudVzx1OVRXQcOZFWXZBDdr+FPlNt6B0CDEA9xnCwFir29Kl1Ux08ZsSR
-	OJyOUuSwPuRI/9+aHkK5MSMww3iWR1ZbiucID2mbzK8Krs0bujCxmr0jTUFHTMyU
-	O8pb35YSxRMbHERZ9H6tlwl3uE77gYJ2uaTRT6Pelqmj9bHXhuu32FXG8pKlr6KD
-	hmXUquJRZ0ON4uHFQSEMHVM/Xxr/XR9Shvh2Adj1TkVg1zJ+RhEwBW5vs6tnRClP
-	TqwEXmBCC16/t+Te8cAx49AP7Kykb7kjG57CtFSbvbVUCHCT9pyqDi0WEg9Kpa9O
-	xldsQ==
-X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
-	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
-	action=sign d=gahingwoo.com a=rsa-sha256;
-DKIM2-Signature: i=1; m=1; t=1794613754; d=gahingwoo.com;
-	mf=PGdhaGluZ0BnYWhpbmd3b28uY29tPg==;
-	rt=PGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmc+;
-	s=fm1:rsa-sha256:Knmj+qYJjbkK5ZH3sWp/3nY8bVwtlkpJwgwCas64pJY/1yu
-	i5WWB22yY5u0AZztPnCilosmC9Pncmdv4WuQDGBfR6VLnyxwrIx+42iNP5aD5yd1
-	VBXI1N3mg3D01JNvDkjhWTMOXYRY8+Oi7W/4HluD4sQ2JXbubkYS4tOUhe4vOe/y
-	19hdUqEOzQYVYIn7DD0zzanoMkjjAea3saaUdPSTZTN+stkHGylOndTrXxQmZ092
-	o+c8Qr0mR0BhwEZrUwoqnhqtN8E5uYG9Bu36gxYC+ZPzjNHzo13NB6qnIxgRV20J
-	qJOE2lqahiRH75myv02HShJDlx6f3P5ro0w+Kzg==;
-X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
-	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
-	action=mi-m=1; hc=11;
-	hn=cc,content-transfer-encoding,date,feedback-id,from,
-	in-reply-to,message-id,mime-version,references,subject,to;
-Message-Instance: m=1; h=sha256:rp3Is3ckG8hz2zrJbdiFe7omtKF0PxAQ8ym9SeM2Qzk=:/o9hLhdBPn8cdi1Wxj/gbuT8hiPvUs8r+uSoRMeCvTs=;
-X-ME-Sender: <xms:-KH3aueYucPAN-8SqiNgFZCNiCj6jx5DIKLhFukwwra09vGDSsTtkA>
-    <xme:-KH3aujswu_X8kk2LnjSP1Rq4X9Bgm0wL3l-5Wb4hdXJQ_VYYgQBt5AgmSzOa26rZ
-    -gJccF6ImqI16DTFxBjYnyd1Y38UvBpjWdPmoqxocMekqfNYlUDwso>
-X-ME-Received: <xmr:-KH3aljEQ776igM0Rpj4R0m8h3YUEEhmdoGNKafcAUp2sXlDAVMT4iGZ7QoFCQPtkDrYFpxX>
-X-ME-Proxy-Cause: dmFkZTFS60ybEwlxxb4K3SeK8mTCMIe/J7SGIQZYhTY37qjBx5CZtBVvuXRCD//zEzv8CQ
-    +kZsvg7kGYLuSkWXyPscs4Ic9CYpH9tvjtBM/I3P0n0odWrIB0N3f9wNlXf7iY84Vr0wuN
-    /OkvJ5GwImBrRKfcXCNhp41KWqX6wlztjkqyXvwGNiLchaun23so7vCnQJb45q4NPV2bar
-    JSd3SPHKZp5+r50cI5C2Cnupo9v8z4qiDDMnjpwrZNthjLhcTTntOPyEaEv5uflorcthJq
-    hHEEH5C78LNxi1tFpExUwGX5Qn5V6TTB4Q0mhCZEyd9xxCMFb62EO4KC/k2ENcFelMvrN2
-    batNi9or+TWUf/rgJ2hnMVW64QlO8XsLqhEiN8OnVQWrZgRCQvaBXHppTLxuixNARxd8fH
-    QtsTWKUrgWPWy2/x8+UTito3XyVIfiE+4zESbSse8qb3T8LtWM9SvrQ7lG9l3N9ZNL0sSl
-    TgQ+AuWkeUyWGG/L40JLFb5Ptb0qcmvRfo75jmDFd3/l5Hh7gtSCRyY5v+5+Pcw0fAiQiG
-    l6dVQsY6ZST7H6Piukjbld0gDmFHnzTldJ2I2s9WAt8RLfj+fI4o4Cz2BG7GTW/LZ4DNrV
-    mGb6D7byXBAWuQggjbgK5xuPQq98govt++BwmseJ7y/H/df5/jYs4MsJ0xHA
-X-ME-Proxy: <xmx:-KH3apRKXpXdx17IJ6LDSkjaUAobNZ0-oiERE7FhaBarxZs6vSVRwA>
-    <xmx:-KH3ahRO96YCYAifWNHsqwZxtzY84BbMH0F9X3v1M4WVbJsL6cQVLA>
-    <xmx:-KH3alBv0zVEUAKvADA03bTmhMmVEXZGTond7zy3ueTflcI2-ytWcg>
-    <xmx:-KH3alzxDNwuPQJYtUbeM31NmEU7iFJzQ5-WRY6qlRJUfZfivAN2Mg>
-    <xmx:-qH3as7O6p0S5CopMVSKIooPCpr92uJ29WmqYO-U8LVMRBp7Jfejl2_i>
-Feedback-ID: i7a5e4b5f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 13 Nov 2026 18:49:02 -0500 (EST)
-From: Jiaxing Hu <gahing@gahingwoo.com>
-To: vlwwwwww@gmail.com,
-	ulf.hansson@oss.qualcomm.com,
-	heiko@sntech.de,
-	finley.xiao@rock-chips.com,
-	tomeu@tomeuvizoso.net,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	joro@8bytes.org,
-	will@kernel.org,
-	robin.murphy@arm.com,
-	ulfh@kernel.org,
-	p.zabel@pengutronix.de,
-	ogabbay@kernel.org,
-	zhangqing@rock-chips.com
-Cc: shawn.lin@rock-chips.com,
-	royalnet026@gmail.com,
-	abel.vesa@oss.qualcomm.com,
-	sebastian.reichel@collabora.com,
-	sidong.yang@furiosa.ai,
-	u.kleine-koenig@baylibre.com,
-	chaoyi.chen@rock-chips.com,
-	diederik@cknow-tech.com,
-	alchark@flipper.net,
-	leonard@lausen.nl,
-	jeff.hugo@oss.qualcomm.com,
-	rfoss@kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	iommu@lists.linux.dev,
-	linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jiaxing Hu <gahing@gahingwoo.com>
-Subject: Re: [PATCH v16 09/16] pmdomain: rockchip: add optional per-domain power-on settle delay
-Date: Sat, 14 Nov 2026 12:48:59 +1300
-Message-ID: <20261113234859.658218-1-gahing@gahingwoo.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261113132323.159015-1-vlwwwwww@gmail.com>
-References: <20261108065917.135194-1-gahing@gahingwoo.com> <20261108065917.135194-10-gahing@gahingwoo.com> <20261113132323.159015-1-vlwwwwww@gmail.com>
+	id 1xS1Oy-0000000ErxF-3lFz;
+	Sat, 14 Nov 2026 00:13:52 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 933E742A83;
+	Sat, 14 Nov 2026 00:13:52 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794615232;
+	b=rDT4QYgG/0mXnV1sGaio42y3s78CYtv2s2wYve0rpbyodSl8w7jqrLnRr2hzKwayRjO3
+	 oNug+WFq/gpznwM8Am+ldVsj60Ttk/LR/N3zApQl8VSWQjT25/bp+rLxt6AjqmEcYnoDr
+	 LiiTFrv3BTExBCwZ/fi8rm8UHLHdgbtcqa+YA8G/jLJad9RXwz++T43rDVY6a5Y3iV1cP
+	 JoCwP3s6XJOvioUoFnNsYXQeE8g+8qiEeOLRTL/tHcmiCQkzNla6NYgKu3M6ulrJqfqku
+	 cyffeDuyqRqaaqn98oiScLk7DXErthJsDrj+FD7UGyj+a3zo/pqKyepnluXEBGQ7Tiw==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794615232;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=YJIqsMHXUd36NytjdySw+FUQZNq6eqzvdp3DyLOfBec=;
+	b=YOxLIqc9YAl4WHvnu33Ih51WogbwyDiggSoJvnH6Kuw2tFUbGLd1niMiK00y2rEDkDrK
+	 CrtrJS6cLeHCIEdcb9AIApMvw5KndYuF92LlJ1RVe2WVJjwpdBHkNA40LTSbkskVv9Ca0
+	 JOeJNOcEwFiMg61heYbsDhSyCIQgnPowhvtYZ19lzUQQqHz47SZoT7BDmFyiN69mmtKyP
+	 LbkIiZAv5VI4Nnt45WLv3MSVvOfqMi4RKK3oLiUl4fHofgEzuk2NbBR0S3yiDAE8wBoxI
+	 WW+g4mREJwbjXn87jbEPgcZDytrwbGvcyOZFuxta+TU3pRKNqpT7dH47nPUt0MmzUxA==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 20CF11F000C7;
+	Sat, 14 Nov 2026 00:13:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794615232;
+	bh=YJIqsMHXUd36NytjdySw+FUQZNq6eqzvdp3DyLOfBec=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=UK4YRzX7Vyj7XxYAQmb/5XT8ft2ohXSHUZawNeIeuR0ILDdr9HtBxgWwUKBk2Jwpd
+	 LAmF1VBLPxwWKfxxYA3LA5fwmJ4sSRlDrmf11oI9mrdl33kuoB4xqla8SIOCXAh0aH
+	 ZkmRPFJJuYLLs6g3MIq3L5edUYRZuIQsN5kXKQMM/Am97wlYTXk/IYHl7BHCNxjwL8
+	 8XlKBZfAZEBR9KyXIEjXHAdfAYjVq2aDOBZ16mN3Pd48ieKhES/rRQn5hh/5Q2D+9R
+	 RDtoUsFlTCyT61vehsaSbiFAtelqbX2Eri8MowtOr2l/+rJUExbAOJddd++u6rsYWf
+	 7JdkCltii3Ggw==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 9DB9949BBB;
+	Sat, 14 Nov 2026 00:13:50 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Date: Sat, 14 Nov 2026 00:13:52 +0000
+Subject: [PATCH 3/3] arm64: dts: rockchip: Add IEP2 deinterlacer to RK3588
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_154922_649230_E9EFC251 
-X-CRM114-Status: UNSURE (   8.49  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261114-iep2-v1-3-a8edde5a21e1@gmail.com>
+References: <20261114-iep2-v1-0-a8edde5a21e1@gmail.com>
+In-Reply-To: <20261114-iep2-v1-0-a8edde5a21e1@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@kernel.org>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Alex Bee <knaerzche@gmail.com>, Arun Iyengar <aiyengar1990@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794615229; l=1739;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=WgCd6FsHVVdbiiKnG9YJDyBq5Nk8EKW+LFZEF7P5gec=;
+ b=ZDkYJl5rlhy4ikFsVvxMmPNwylnSlks+4jVcGClUXWdaR5HiEWXTskWM/CQq764zS2h/UVIv+
+ UFc2pkGlrtTCeQeHdCvKdqHns76LCR1Oz5Rerec4vd/2zx0jWdwHCJT
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,53 +109,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Vladimir,
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Thanks for pointing this out. Your analysis is right, and I have
-reproduced it on a ROCK 4D.
+Add the IEP2 deinterlacer and its IOMMU to the RK3588 base dtsi. Both
+share GIC SPI 117 and sit in the VDPU power domain.
 
-The problem is that a power domain marked need_regulator is switched off
-as soon as add_one_domain() adds it, and its subdomains are added only
-after that.
+Addresses, clocks, resets and the interrupt are taken from the Rockchip
+BSP rk3588s.dtsi (develop-6.1).
 
-NPUTOP, NPU0 and NPU1, which U-Boot left on, are neither idled nor really
-powered off, but genpd treats them as off. So when the regulator core
-disables vdd_npu_s0 because it has no users, the system hangs.
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-I reproduced it on the ROCK 4D with a DT that has the NPU disabled. All
-14 boots showed the same wrong state (0x214 = 0x23e, 0x110 = 0x13e1),
-and 1 of them hung. The ROCK 4D hangs less often than your R76S, but the
-underlying state is the same.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+index aa69fd3793fd..5297519bd251 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+@@ -1397,6 +1397,28 @@ vepu121_3_mmu: iommu@fdbac800 {
+ 		#iommu-cells = <0>;
+ 	};
+ 
++	iep: deinterlace@fdbb0000 {
++		compatible = "rockchip,rk3588-iep2", "rockchip,rk3568-iep2";
++		reg = <0x0 0xfdbb0000 0x0 0x500>;
++		interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_IEP2P0>, <&cru HCLK_IEP2P0>, <&cru CLK_IEP2P0_CORE>;
++		clock-names = "aclk", "hclk", "sclk";
++		resets = <&cru SRST_A_IEP2P0>, <&cru SRST_H_IEP2P0>, <&cru SRST_IEP2P0_CORE>;
++		reset-names = "axi", "ahb", "core";
++		power-domains = <&power RK3588_PD_VDPU>;
++		iommus = <&iep_mmu>;
++	};
++
++	iep_mmu: iommu@fdbb0800 {
++		compatible = "rockchip,rk3588-iommu", "rockchip,rk3568-iommu";
++		reg = <0x0 0xfdbb0800 0x0 0x100>;
++		interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_IEP2P0>, <&cru HCLK_IEP2P0>;
++		clock-names = "aclk", "iface";
++		power-domains = <&power RK3588_PD_VDPU>;
++		#iommu-cells = <0>;
++	};
++
+ 	vdec0: video-codec@fdc38000 {
+ 		compatible = "rockchip,rk3588-vdec";
+ 		reg = <0x0 0xfdc38000 0x0 0x100>,
 
-The fix: when the power domains are added, a domain that needs a
-regulator and all of its subdomains are marked as off from the start.
-Once the whole subtree has been added, the domains are switched off in
-order, from the leaves up to the root.
+-- 
+2.55.0
 
-With the fix, all 10 boots showed the correct state (0x214 = 0x3fe) and
-none hung. I also tested it on the board with the NPU enabled, and all
-30 power-ups were fine.
 
-If you have time, could you test the patch on the R76S as well? 10 boots
-are enough, without any workaround. That would show whether the fix
-works on your board.
-
-Patch:
-https://github.com/gahingwoo/build/blob/rk3576-pmdomain-probe-off/patch/kernel/archive/rockchip64-7.3/rk3576-pmdomain-power-off-npu-subtree-at-probe.patch
-
-Thanks again, this really helped find the root cause.
-
-Jiaxing
 
 _______________________________________________
 Linux-rockchip mailing list
