@@ -2,102 +2,97 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1F7C3606A333
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 04:50:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 597F3606A339
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 05:01:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4cz8xESy;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Ec+L+orn
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1SCprFWI;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=b0QWyK4f
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
+	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=W3vNA6M585z4LjyJucwKXRyA2IbcnaVfJlSMG7+CNvY=; b=4cz8xESywfVzUSOcxKVSUModDv
-	kKG9Ctw32SiPOfOXTBOHCpgxcm7sxo/0ihhqlKVNcXJeaA2nxd8H/cbCBlH/tRN5HJPJ/Catw6Hpl
-	bScL8m7LlvxjOY+jyM1DIwCmp9dLZ8W9OZn8LYNCN44FAlIiFl9WqUSXetSTF9Ck/PptVLJsmI3dn
-	gZTwTrEafY2uR7DXolzWJu6ffvYmJHvN56BO6CSuh232YGyaBkAeIsQwvg84RmqGGi91VjQTqFoGJ
-	OKgKshXI2zKIyxZFYSRa+SLM5N2WmlYEKpIRXgqUMCkZsZQaiXxYqZY67z3NOEwYEcEVHQoqWrNHU
-	ocsJIH3Q==;
+	bh=nHSIZwRHTurp+PQ9Uje1D0Cz5r4JpbrAxpZEK/94jbQ=; b=1SCprFWIKJLirNTw/1KoHyjHUE
+	lH0fURm612Bt8tBCECc0AqMYC3FqtvC3IJCBYNpQUR+gQa2a/dAOiD+g2GP7f7/TvGovalXZeD/TR
+	UpC6vcgN8/3JBHQTFIQmH9KumtgWHy0ewwkXs2TTHirrKAfz/lOqvDIYgz6LJ1sEitV+hQJE8idya
+	JS7Zj3nlrq/Sq8QhIglmbrhUnh42+ma1labML6rT38fjp2B2q4x5rBPA3JeVcHK7JTS7PwSIvzHM5
+	wTgJKe0UPKxWMKBZy5aiNO1m4JRb+PQWp5T0Kop9O36iBItfXM+n3Ep5eJaaNVkEiXdR4F3SNVHgp
+	5+uvlpkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS5iV-0000000FPmX-2UTk;
-	Sat, 14 Nov 2026 04:50:19 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1xS5sw-0000000FQMw-2iMP;
+	Sat, 14 Nov 2026 05:01:06 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS5iR-0000000FPkp-3kYO
-	for linux-rockchip@lists.infradead.org;
-	Sat, 14 Nov 2026 04:50:17 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-3b0b8b5d28cso216026a91.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Nov 2026 20:50:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794631815; x=1795236615; darn=lists.infradead.org;
-        h=mime-version:content-transfer-encoding:content-type:message-id:date
-         :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=jlWU+LetvIC/3AgkoO5NcAsGhswOcH4rtrYp5MfQMCg=;
-        b=Ec+L+ornYA9V4I7YJmj0WU69C+g/sIH+PbCx7aXPOUQWBpA9Z77bjwT1yqoj5ZIAn/
-         tSgwPiDUtVQZL8wdI1O2Fwf34sJSK/1iOI9jgZGDq2wdXXZzZlcn7kDk0ElcuBgyl1N3
-         lbaLm08f3hTY34C1+KzjQKlE73zEmBbUVczRDpqu6vQX6L6kU2vQIEbWQtiqoBV6E/vn
-         7Fmk1j4VCZXNFrUg7WGUcJ8UFgUhM2C6bwCcm9LqdcFT/XF/PVJrDbq5jjh10B0hfvr0
-         R7vOVvVG8UtmQDtHY6Ny0b8cGXU8P3C8JwcJ6gsAr9gkiOGlqpPDpfn55YbTix9DCJAE
-         oogQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794631815; x=1795236615;
-        h=mime-version:content-transfer-encoding:content-type:message-id:date
-         :references:in-reply-to:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=jlWU+LetvIC/3AgkoO5NcAsGhswOcH4rtrYp5MfQMCg=;
-        b=Db1cK5fiYazM8L3NBQVQUJSLBmYfmyCge4tGut0WtV3LlryeLJqpkRVa83KMLI3uTl
-         TkMORSpn7jN2ZnvjhTR5CrCnYoTwVROUGMyUD9a9Xhi+saTLi/W7NMY173+0UrnoIOSx
-         PRKQSpe+/utTJoiww+gAENIyz/B8Vnx0Tj8LrJMN2Cf8hl2JWR54oJJlxekWvrJIrISF
-         hNA2rsXQsGuPqFXpxyosGjl5NRFp+YRNKaGBht1kLgk0CXOjEqRXC9iGbHpLeHF1Q7/I
-         ZxOpK4DBILUMqMeXPynO00G0G8650BEWZuEzABEdYKvTd4GEkm2Bc9QFSrRv481k4bhj
-         XVPA==
-X-Forwarded-Encrypted: i=1; AL+hErEx+JEC7LJoYiWcebQDaeMLWbNlKVzvFI9FC+itdaM14Y+7Hu2my4LgE6SntL5NyEjwWTkPTi/9uyn9MZzEVQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9CHp0iinfdhlsupZGAoqlF1QXBkmvGvDAOE0Y0gJeSjUQaOgCq
-	x15vpcTNr+9cHB5buIcLicUIz18XYoaagGraVEzQdq84Y0rQvwMB0vpg
-X-Gm-Gg: AYBFou2tSBr2boYGVzw2RDbU2jS4Vi8f5JMeAJiavcPZ+yuHY14tTtsDzHVB5rZGuwe
-	4b2TEbYZpkA+7DNEN9VlubkraLJ+vaVfLJvChyef8997MIVakKCoGbT8iLuEMsp9zNXZH13eV9/
-	ezzEzcFAs+T3eVMd0WOTNbKWZ8IWtBl9fsE3GtxmMn+pcq6MDKbajpv8GLLD1TPhnB+O6BHTuHY
-	CESRJyHvpAcLaEyQjzshAhe6zYNWNfpwv5RcMbMv7SKapof6mgkOSm+lDEW+1wCxzwvcTNcbFB1
-	5Qrqgw9/F7CRy596tbfWRT2vDPRaMlerqALVYH5mVPn2zZAwC9miIPwDvSGyH4LDq8jTqenkySQ
-	ZKusFNZOcj0y93KKa4QJE5nJXLIVxtv01CYrM1jWUFaD3uzwF/oEYiJEupKk70gxEZBtn5J8frY
-	tyE+KklCQCPstdjUmlHPDed+8WRA4WZ98UUZM/4CBTwgnF6k2bcfam2rx6J14mVT2C2pHcwSOs4
-	ymtjFatPNYPN2mfchPWbktwphb2GQktEVCzTvVuZnsoEvKCWCJPFWmXUmyzfDSwoujnSkyOQWJE
-	mvamglau6FAz2nMPAWiw6gXw9c2/QUkFFkZJrxuxAzY5MH1K+CKSD4kbnHGEchfm2Iv9NcZ16IA
-	U1XzPS2I=
-X-Received: by 2002:a17:90b:3dc7:b0:3b0:9e2f:cfc5 with SMTP id 98e67ed59e1d1-3b1b0826e52mr8146982a91.1.1794631814909;
-        Fri, 13 Nov 2026 20:50:14 -0800 (PST)
-Received: from claudebox.iyengar.cloud ([50.39.139.68])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b197d04336sm12649072a91.7.2026.11.13.20.50.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Nov 2026 20:50:14 -0800 (PST)
-From: Arun Iyengar <aiyengar1990@gmail.com>
-To: Detlev Casanova <detlev.casanova@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Heiko Stuebner <heiko@sntech.de>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, hverkuil+cisco@kernel.org,
- Jonas Karlman <jonas@kwiboo.se>,
- Sven =?utf-8?q?P=C3=BCschel?= <s.pueschel@pengutronix.de>,
- kernel@collabora.com, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 0/5] media: rkvdec: Enable multi-core support
-In-Reply-To: <20260810-rkvdec-multicore-v2-0-986f89d22cdc@collabora.com>
-References: <20260810-rkvdec-multicore-v2-0-986f89d22cdc@collabora.com>
-Date: Sat, 14 Nov 2026 04:50:12 -0000
-Message-ID: <179463181227.3521962.172866405609790742@gmail.com>
+	id 1xS5sp-0000000FQGQ-0zw4;
+	Sat, 14 Nov 2026 05:01:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1794632456;
+	bh=gVPDlukkMHav3dijaRJZnGw/xEdv0jNsddzU7nlThLs=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=b0QWyK4fZqxYjqzTac6iJikkx3E7WcQRCNd3Tss5HQzOuzUngnFhQLv/G+V37eZw7
+	 yZsWwfBMI9WpBuqQgIBgIHBbCJnU+MPLrdBtwmtyZWF5PxUw6SY4HeMxEaDFQrMbSp
+	 Ytmwpl8zlMDcO0CJu8svNY8q2mkAJ/1RkNGsLnIjnOU4QVULacTWQvRmf2JsSwFxVN
+	 KXhKK29JY2bHObsux1Kj2yLMoZxcOthNrdP6tQCR/NK6H0EuOKl2tgXN3BLWamKQ9d
+	 xKPSi3sdKIepyJofzG4LuXBmtnOKKMZq50TFwhUwwW9BavKcay13oJxkwYEhjERehs
+	 lERU7WxzV+Huw==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5764417E12E0;
+	Sat, 14 Nov 2026 06:00:56 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 10E70480035; Sat, 14 Nov 2026 06:00:56 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Sat, 14 Nov 2026 06:00:37 +0100
+Subject: [PATCH v12 04/23] drm/bridge: synopsys: dw-dp: Document missing
+ reset line deassert
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Message-Id: <20261114-synopsys-dw-dp-improvements-v12-4-d42d3dc5bdd4@collabora.com>
+References: <20261114-synopsys-dw-dp-improvements-v12-0-d42d3dc5bdd4@collabora.com>
+In-Reply-To: <20261114-synopsys-dw-dp-improvements-v12-0-d42d3dc5bdd4@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andyshrk@163.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1659;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=gVPDlukkMHav3dijaRJZnGw/xEdv0jNsddzU7nlThLs=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr36wfSqzx2QfkGHKW8EK8uQUKg308joTDPL
+ 4umTdCfrivmXIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq9+sHAAoJENju1/PI
+ O/qaReQP/1XxlW/jNg3nUvjTtgHCnJ+piAlDVuw9Ow1SV/ZaGAbPW1tHnddufVDtARiBNdGyF7I
+ xS89bBmwPHuCmUaboYdK+HmrI5ZWr25icGs/HP8mzG4XweCPVgvsZZ92VoPtjmiuuqu7C2249om
+ MpEs9oWoXmk57SzkmXJ76RDD0VYR/U8qOpKxRt4dcL+eV0cjxpo5QzxayLe+JJfBiYGjdbl6Qgp
+ 5ohVIyqyEq5z4C7lRoBJN0eh3FuwD6namvjPnwKx2r9U0BFAn2YikAGLsgR9DRlpMWHCCw5+u3Z
+ grjksAunRiTL7pgU5AjGr5FvpTl05hpb+TUvGLg4QD0PKJXaZI1nzBLGwiLwA74wtXPpaPcYJ5H
+ O6dblw36qkXJqDRZV6p9vrP6MZeiTa3bPkDInl7BOCoqcBtJYe7zxuc9D8LmpflvVZ764eMEtN3
+ 97wTNJYVzWlTTAzGuqI3tYGOSVrf/89EJAXdfY4ZRaSyNXwKSYVW9h9r7UYiAfsvvr7FNt4eMK7
+ VBOyvUBA2p6mK3It1PH2OwzzNQl+2apdII6ZSOxCli3DupBrPI+V1ORmLyPgRvcM3TBdwG5kqor
+ SWm2qR6alwXYmNwdV1HPuowvzpH7wE1aW2NtNRbSCq6/Y7rZ7GjIwHR8tvpnXXpD7u8OURr8nry
+ /bYPIk/KvIWRjSVOKbw82Ew==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_205015_935085_822310DF 
-X-CRM114-Status: UNSURE (   5.84  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261113_210059_445622_4F307642 
+X-CRM114-Status: GOOD (  13.91  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,32 +102,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Dmitry Baryshkov <lumag@kernel.org>, Andy Yan <andyshrk@163.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sebastian Reichel <sebastian.reichel@collabora.com>, Alexey Charkov <alchark@flipper.net>, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Sashiko <sashiko-bot@kernel.org>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Detlev,
+If the driver uses devm_reset_control_get_exclusive_deasserted() instead
+of devm_reset_control_get() and thus automatically deasserts during
+probe, the SoC will hang when the device is unbound.
 
-Tested on an Orange Pi 5 (RK3588S), v7.3 with rga/ and rkvdec/ synced
-to the 7.4 merge window, together with Sven's RGA multi-core v2 (whose
-patch 7 already carries the export of your 3/5; your 4/5 needed a
-small hand merge there). Decode-only, 4K HEVC streams in parallel:
-1/2/4 streams 105/202/206 fps total (single core: 105/111/129).
-4 parallel 4K HEVC and 2 parallel 4K H.264 streams are bit-exact
-against FFmpeg's software decoder, and both cores take interrupts.
-v4l2-compliance is unchanged, with no IOMMU faults or timeouts. Not
-tested: 8K, long runs, runtime PM idle cycling, unbind under load.
+This does not happen, when runtime PM is being used (not yet supported
+in mainline), which suggests the power-domain involved requires this reset
+line to be deasserted.
 
-Tested-by: Arun Iyengar <aiyengar1990@gmail.com>
+Even with runtime PM there is no guarantee that the power-domain is
+disabled as it is shared. Considering the power-domain does not have
+the reset dependency described in DT, document the problem but leave
+things in the current state until a better solution is found as the
+reset line is deasserted by default on all supported platforms.
 
-Arun
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Reviewed-by: Andy Yan <andy.yan@rock-chips.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+index 93d52a76044f..9677f789c986 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+@@ -2091,6 +2091,10 @@ struct dw_dp *dw_dp_probe(struct platform_device *pdev, const struct dw_dp_plat_
+ 		return ERR_CAST(dp->hdcp_clk);
+ 	}
+ 
++	/*
++	 * This reset line is deasserted by default; asserting it hangs the SoC if the
++	 * related power-domain is still active.
++	 */
+ 	dp->rstc = devm_reset_control_get(dev, NULL);
+ 	if (IS_ERR(dp->rstc)) {
+ 		dev_err_probe(dev, PTR_ERR(dp->rstc), "failed to get reset control\n");
+
+-- 
+2.53.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
