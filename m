@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B837D606A33D
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 00:14:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C666E606A8A2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2026 00:14:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=riVnE9C6;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=YYLWIbeq
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Ve+j2q8x;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Ctee2aTQ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,72 +14,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=s1197a/i5qWMlHtnj6HvHhg0L1JGnPFHiZc2Lwh/kw8=; b=riVnE9C6mXd/9jI/SIf2IozOtp
-	b15IDX+wCdcZFC9lK+AzSLRWJM0jY/pvv0wWC9BdJDt0+AqASvIfA6oXzzWkPORYExX2XcQmz9bjS
-	UE+Ohd7UZcwr04vOmeDyAjFXR+hpzNn/6/YL+6t2qcsxwDiLRPXVB6Ty2fZxWae9+L0UnSPKZTE2D
-	cKyAkXzAoFCU0TdgK2F6BeDTYf1Gw/VZQQCmEK4UWCeFUKTItEF/xgm8ebP8dfl3nnd89k9tzAQXv
-	nC5wIkrxBYCHUawpOeMfIvDtQRnnde1yMK4Nf60cxrTxboujdZGf4jKMu+0Xob8XEnJ/BRZD7jM7O
-	XtPWEz5w==;
+	bh=dTOQIx5Y77BS6pdYbc9/bcv/kfrzBP9lkR6nFk109Xw=; b=Ve+j2q8xoKnquM9CFtqEk58SQn
+	zRI4L7zd4QsqURk4bnsE2SVneIwV7hnnx4Ulv7xBVowgjVeNM8Xm2tMCfkM3MKrWWKHV+b9PB0yoj
+	sysMDAGOfEAGT4bLmHV7OmDt4KOLht0oaNrXIobK8rSlbMfoDCV8gx0W/+ECRRUThrRef4H6TJbx0
+	C9c97d9rc7vLLES+uTVRCAN9J9iFmp1K/wx+prH/fRAOLa7yuNailwSqbJaRy7/5DcpfVL5YFtKm5
+	M2cJrSAAnp8h9oV8n/YRctl5Oub5oRb149UKbHW/LYsCzBh7ItZqpx4VKUnb/tETBy736Jj4NaQIX
+	y8IYByEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS1PN-0000000EsGb-2N21;
+	id 1xS1PN-0000000EsGU-224v;
 	Sat, 14 Nov 2026 00:14:17 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS1PM-0000000EsEb-10dU
+	id 1xS1PM-0000000EsEd-0Xm0
 	for linux-rockchip@lists.infradead.org;
 	Sat, 14 Nov 2026 00:14:16 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id ACBF1618A1;
+	by sea.source.kernel.org (Postfix) with ESMTP id BAB6F43C08;
 	Sat, 14 Nov 2026 00:14:15 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1794615255;
-	b=tt2I4sedBlDmPOaYboWGVTTmGXhNhtQpPpQdS1RY1ecx6qpQ0VMHgp61x34dMZBT+qZo
-	 wbst7DBpkgs9Rf1ZVrUmBs4LI/ZWNQMx16ZxdgeoMITGP/8gBOjZefBobLjoECJ0I+oGx
-	 XKqzRLMqFpqwbfAyv/wO5OT6mwaW4kh3BlNEqURY+y6eUIKPfx4c/TD9OcG49aTSip5J/
-	 UMGV6HBZTC2aDNJaMQDhX0HvEfr3F3u/yjN6jt3hi7UVd99gNRm+jawEL++ZVPr4tp0yQ
-	 Tsv9hIr5EpC/0arw/VsE6CbtIvn+MhRvO49j5TBnKp6xU5o79J34b0Z3aXXJxjL+9gw==
+	b=T+csyDrd6KrnenhMwWg6MIgdXtrctUnpK9xYhUmTjsyWqwb4Gdr8SE64gqG6nSH9LLJE
+	 VZhd7K6xUrZ+P+pQMYfG5UVIYwPHlSezGewxi4vgZSyJNIlodHXS5eC6sm/Iw8LW9nB4b
+	 MHkr5H3yqHtcQS8EiHohhZuSX1+qauiTOV+LZbtt48I+46dTcI/xRNBbbqeIvhwfaV0B3
+	 VArYvdMPI0yXUkj5MNTzD4F+mgvz391ns3Laf07S/iB26BHkF1uFUMI8DS1Zezu+L0AJX
+	 YUwroMBlowUvu+yVbYOCLZcVG/5BhZmmd7SbgY8BHLLjsYapg9jtTeLf18ZDbTKvcLg==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1794615255;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=wxKzoWd8znOVxZHovUv0aCQVRbaHaH7T+GMsvURWN8k=;
-	b=WBqgRM0VXWXwy6qnXvb/aR3Pe2ZXvl5Bnqx32+jy/mR4w94T66KP9DUjOX3/BNJoPuCH
-	 yExPCo+SXP9iJ0r5oD9HD8+ry6IeGBjgfExZwUaFh+00fLkuhZaAtkzDtUSrThiQbEUJN
-	 Amfdbxh1kEo1e3jXQKWyaVNQsXtr8AEFwIZ6ZqpD8mLIR6cfau7KjfNopm/c8BzpB3y6Y
-	 oB6uk5X2KUeJJePgtNTI39zGBeTRoM5RCgmIT+2mflgidxKO2yWrxQoIr1ifT5BL3DZqW
-	 lwuyfcZ2lgy8Cl6vudLWhEBVVxGX34/FDU6N6oa1tohpK+TrbIH0q0QrTaLc2bFEL7Q==
+	bh=FQ1LfSq7RW9yRUYVXOUx5MG/HJXut2PEx0C5V9vOAm0=;
+	b=Jajq6VshPxqD2FWquq4tN+B5cdhGhxgrXoP1bYSOjYWgvFdcnpvSTiXbYdL/ml6QGj4e
+	 SSPnR6eFoqR09uEcdu1kGRqPt8fVDc0eQ4o58TazeMu0jwWcmRaxv5PWKBomlnKkLWaPw
+	 DHuRL5rkXrPa4ddFzDyG5K/gO1tOkimSN+y4CMlMeJ2w0ksUkn8n/CV1DB++P8ecjyZKO
+	 HXMsF5GCVtAOvCP7u2l+lmAtkmha7S8rQCGOUwK3i2fj52su6FAtUcfG6+eL15v++Eldc
+	 knkBaANuvTYp1G1ZYFLFHXsrf+9JjLKNSsPDbLSyqCR7+XT8cddcABYhpW/523gBKmg==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 3549F1F000CB;
+	by smtp.kernel.org (Postfix) with ESMTPS id 195861F000CA;
 	Sat, 14 Nov 2026 00:14:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1794615255;
-	bh=wxKzoWd8znOVxZHovUv0aCQVRbaHaH7T+GMsvURWN8k=;
+	bh=FQ1LfSq7RW9yRUYVXOUx5MG/HJXut2PEx0C5V9vOAm0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=YYLWIbeqU1nWZGysrGIE3XxHVeN/5OVYIrxaCSdNNc5i6AfLokpfPsGrbLIGagdkx
-	 8hQfscLfmkKJvomJVN1LjASYjk2E0MZLBGMfLwADiYSKNHMxjw4CBFbDRXdkcWM/5S
-	 kgKeWWMIXSuktXE+W+FRECK2Sf/rHG6rACT8U0B34kVIik3ln6Dt+5M/5as2tqdD4g
-	 oFORt1Ku8ypU89E5kCykQ/d8GA1oMkQ3ul0XannN3Yt6nd7o+QNXv0v2VbGPAWu38f
-	 SH9YEGnM3fe60Gunrq6bs62UkGIttNxeL91Gh2pZpoVuOUC6Ib7nhB6kR4xrRYEC1w
-	 oNRLAj2rnOtvg==
+	b=Ctee2aTQF98y0nsjDWArljxUS0XqHTeilzxVfbuv1eGK6ckI+T0ToQjq0LHRhK85W
+	 BIcfTqAxfdY2gJ6aEZE2ST/S7fbmI3wMA5FRouO4FV46hjvNBcNa+C8aZHkLD8YzuQ
+	 aPvy3VzE/9I6WUPdi3U+cveUUBDgIbSQ50ZBGpMpe4kIa98yLU0CgSSJlw9FcjeDdy
+	 L0x7d0PS86TX1imcwsm6XdDZG5blsRfl+UqZZNxz9DOtlXk4DMQQ4ybDVuwEXTCzM7
+	 7JedrLdtIEVsP4jytqKxX5bbQBd9O1AT3C/3gf9xcHPQOhd4lB8cAfPz7xDMhKalXj
+	 31gChYpOKyvaw==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id B496849BCB;
+	by lkml.kernel.org (Postfix) with ESMTP id 9F39D49BC7;
 	Sat, 14 Nov 2026 00:14:12 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Sat, 14 Nov 2026 00:14:15 +0000
-Subject: [PATCH 4/4] media: verisilicon: Set the bit depth again when its
- control is rewritten
+Date: Sat, 14 Nov 2026 00:14:14 +0000
+Subject: [PATCH 3/4] media: verisilicon: Keep the CAPTURE format at the
+ stream's bit depth
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261114-hantro-fixes-v1-4-abb78264801e@gmail.com>
+Message-Id: <20261114-hantro-fixes-v1-3-abb78264801e@gmail.com>
 References: <20261114-hantro-fixes-v1-0-abb78264801e@gmail.com>
 In-Reply-To: <20261114-hantro-fixes-v1-0-abb78264801e@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
@@ -94,11 +94,11 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, Arun Iyengar <aiyengar1990@gmail.com>, 
  stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794615252; l=3003;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794615252; l=1438;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=g1FKZCeiFkbp6h/EOPblVSfvHIN9lybSdPAZ2FY8L+U=;
- b=XtEqFv07p6afEIhLvhgVrMIRR/y2skjNRqfE0Ws4C+M2qg8OS812JKjgaRNebETxXcT5KQDj3
- HfHLsUAESK+DH2MKcgwHY6jkvcthvi9BFAilADw8gmFmIhat9Y4tKkp
+ bh=mXsqYy0PJIO8RW/ep6ozTJeepcxK3PGTSINO9ycmhwE=;
+ b=tLpy5tv59U2Ro7kaItdF8i3ov9qaV21o4xMBS8B4whtF/nSccwrZClo6yLBRnU7Z8mpsg6ps7
+ q0YdIYvsTOXC+AOk/OR0fTbBlil3Pm2m1kffIT2kx0hEsZbTxmuxnj8
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -127,84 +127,42 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-S_FMT on the OUTPUT queue resets the CAPTURE format to 8 bits, but the
-HEVC SPS, VP9 frame and AV1 sequence controls keep their 10-bit value.
-Writing the same value again doesn't call s_ctrl, so the CAPTURE format
-stays at 8 bits while the decoder writes 10-bit pictures. The same holds
-for the AV1 film grain flag.
+ENUM_FMT on the CAPTURE queue of a decoder lists only the formats that
+match the bit depth of the stream, but S_FMT and TRY_FMT accept any of
+them, so userspace can select an 8-bit format for a 10-bit stream and
+the decoder writes 10-bit pictures into buffers sized for 8 bits.
 
-Mark these controls EXECUTE_ON_WRITE. Every write of them then sends a
-V4L2_EVENT_CTRL value change, and VIDIOC_QUERY_EXT_CTRL shows the flag.
+Replace a format of the wrong depth with the default one for the depth,
+as for an unknown format.
 
 Found by Sashiko in its review of hantro-dec-size-check v1.
 
-Fixes: 3c32d94c9c52 ("media: verisilicon: Do not change context bit depth before validating the format")
+Fixes: 8d03c2ab881b ("media: hantro: Support format filtering by depth")
 Cc: stable@vger.kernel.org
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- drivers/media/platform/verisilicon/hantro_drv.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+ drivers/media/platform/verisilicon/hantro_v4l2.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 26e5d5547466..dffba6c43a0f 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -534,6 +534,7 @@ static const struct hantro_ctrl controls[] = {
- 		.cfg = {
- 			.id = V4L2_CID_STATELESS_HEVC_SPS,
- 			.ops = &hantro_hevc_ctrl_ops,
-+			.flags = V4L2_CTRL_FLAG_EXECUTE_ON_WRITE,
- 		},
- 	}, {
- 		.codec = HANTRO_HEVC_DECODER,
-@@ -555,6 +556,7 @@ static const struct hantro_ctrl controls[] = {
- 		.cfg = {
- 			.id = V4L2_CID_STATELESS_VP9_FRAME,
- 			.ops = &hantro_vp9_ctrl_ops,
-+			.flags = V4L2_CTRL_FLAG_EXECUTE_ON_WRITE,
- 		},
- 	}, {
- 		.codec = HANTRO_VP9_DECODER,
-@@ -577,6 +579,7 @@ static const struct hantro_ctrl controls[] = {
- 		.cfg = {
- 			.id = V4L2_CID_STATELESS_AV1_SEQUENCE,
- 			.ops = &hantro_av1_ctrl_ops,
-+			.flags = V4L2_CTRL_FLAG_EXECUTE_ON_WRITE,
- 		},
- 	}, {
- 		.codec = HANTRO_AV1_DECODER,
-@@ -591,6 +594,7 @@ static int hantro_ctrls_setup(struct hantro_dev *vpu,
- 			      int allowed_codecs)
- {
- 	int i, num_ctrls = ARRAY_SIZE(controls);
-+	struct v4l2_ctrl *ctrl;
- 
- 	v4l2_ctrl_handler_init(&ctx->ctrl_handler, num_ctrls);
- 
-@@ -598,8 +602,8 @@ static int hantro_ctrls_setup(struct hantro_dev *vpu,
- 		if (!(allowed_codecs & controls[i].codec))
- 			continue;
- 
--		v4l2_ctrl_new_custom(&ctx->ctrl_handler,
--				     &controls[i].cfg, NULL);
-+		ctrl = v4l2_ctrl_new_custom(&ctx->ctrl_handler,
-+					    &controls[i].cfg, NULL);
- 		if (ctx->ctrl_handler.error) {
- 			vpu_err("Adding control (%d) failed %d\n",
- 				controls[i].cfg.id,
-@@ -607,6 +611,12 @@ static int hantro_ctrls_setup(struct hantro_dev *vpu,
- 			v4l2_ctrl_handler_free(&ctx->ctrl_handler);
- 			return ctx->ctrl_handler.error;
- 		}
-+
-+		/*
-+		 * Standard controls get their flags from the core. S_FMT on
-+		 * OUTPUT resets the bit depth: set it again on every write.
-+		 */
-+		ctrl->flags |= controls[i].cfg.flags & V4L2_CTRL_FLAG_EXECUTE_ON_WRITE;
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index 2baab4cf3bbf..362fbc747eea 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -342,6 +342,14 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+ 		pix_mp->pixelformat = fmt->fourcc;
  	}
- 	return v4l2_ctrl_handler_setup(&ctx->ctrl_handler);
- }
+ 
++	if (!coded && !ctx->is_encoder &&
++	    !hantro_check_depth_match(fmt, ctx->bit_depth)) {
++		fmt = hantro_get_default_fmt(ctx, false, ctx->bit_depth, ctx->need_postproc);
++		if (!fmt)
++			return -EINVAL;
++		pix_mp->pixelformat = fmt->fourcc;
++	}
++
+ 	if (coded) {
+ 		pix_mp->num_planes = 1;
+ 		vpu_fmt = fmt;
 
 -- 
 2.55.0
