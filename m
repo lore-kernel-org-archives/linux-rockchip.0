@@ -2,106 +2,76 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DEFA0606A327
-	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Nov 2026 01:00:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4E409606A327
+	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Nov 2026 01:33:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pSbViBB+;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=cAujmSE1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uCVfUmTP;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=ilqVIflI
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:
-	Cc:To:Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=eGW38jwHxOf9E48ChtQNnFLYFQ3x9CwJqspt8rmHF4U=; b=pSbViBB+HkC2hnC/7W/9WEYb2y
-	swiNhgsJuCYBPANFgo7cLikh/QXGzmQiLu0Z5kbi4zroVQw3zhx2cYkZPIXpR8890oZDmkZBCtwIo
-	0d5LEiIxM+CjN89MckMvJOGXdH35XkCT88smf90x5/+mq6DAlJvdi6wB8ofkL2zZbir1nvpeeDIGp
-	V4R4TEfqOlKODXI92aK34+R3//t6jIPcCWToICqCPE1p6uzPWTffV/OQbLJeleGEgCaNTM4Y1Zldv
-	rYAbDtdyf0sG7bOP0BBHRga3HhVu9wwMreE7izuS/0xuofYfWxyWWrsT2hjuF2FHKh0p8J9jgrehz
-	ZlkRzS/Q==;
+	bh=n6mVcOXQevkuj1wxsM+uw5OZ/MqD96jF05X6apnwWkk=; b=uCVfUmTPOlmyPSQaIQOI/7L+M2
+	OR95yrek45rP23/Pxli8lX31CbhKUesg5wln3a04AU/mNN5fF0pbuiIY2ITm8Ea537FHJC0vD6vs6
+	6Z5G2/FgRxyavzJ0ldqI0xfQgnJ5vWvhnQb+Sfrj4UDSspdLOvHvsvdmWHwrKkGKFzSFiLMGYRe0F
+	Iyx1/WjLN80UF/8zLXJhx08UFa/q+npwvfuSnAPDmP7KpGRjpm3udF8P4wxc+Xp8BVgaXrV9LoCwd
+	76+5zA2yC4pDvysEpzaFKDDp1ii4EklDGoDHw0nnA/AEK3q7TWLHASZeJvZd7wvDDJhcHIsrjANYX
+	axgjhdRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSObS-0000000Gwwj-1E14;
-	Sun, 15 Nov 2026 01:00:18 +0000
-Received: from mail-dy1-x132a.google.com ([2607:f8b0:4864:20::132a])
+	id 1xSP7T-0000000GyNQ-2YVz;
+	Sun, 15 Nov 2026 01:33:23 +0000
+Received: from sender6-op-o11.zoho.com ([165.173.180.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSObQ-0000000GwvF-14ys
-	for linux-rockchip@lists.infradead.org;
-	Sun, 15 Nov 2026 01:00:17 +0000
-Received: by mail-dy1-x132a.google.com with SMTP id 5a478bee46e88-36dbde64409so3370807eec.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 14 Nov 2026 17:00:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794704415; x=1795309215; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from:references
-         :cc:to:content-language:subject:reply-to:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=5JVcksrPn6+Ig6tuNU22o2qjR3uSsPz6hcIi+8PBA4g=;
-        b=cAujmSE15aZ5xZXr/wHFxqA2ajAM5F8+EDLwklq7LNXgnUkiOF8CMXiiPgyFqBpGsJ
-         ZWl22Iw80Pe2f232mX+AVnWxuEbjpWOnImsW3zB/yZ9JwDDwGgo1/5bnL6gahXM6+KNM
-         o/mOOi//rCBOLVFV0sUfGEuSV1T7ptGMUXfpTyhfsFlwYqdAl1tpP4NmGK4NtXbqZZZp
-         ZTRq3rCV+bTHiTqPaQiliI+PDnb0OiDf1j4l7lh+kgNx5ssOTChOBzhHCu1W76ZShOLb
-         T5H4HjSwrpc74VVhNDB8i4keegwJgaNLEmk03G6DNBAwM36mwi+pAFFcj1Z503ecQFSE
-         1aYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794704415; x=1795309215;
-        h=content-transfer-encoding:content-type:in-reply-to:from:references
-         :cc:to:content-language:subject:reply-to:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=5JVcksrPn6+Ig6tuNU22o2qjR3uSsPz6hcIi+8PBA4g=;
-        b=Fs0kG1F6IMBFMqvXG9CXhJNRbFt5g2XEt9HaQzH5pVKnTc0EzbnyoVvkVETLdUUEHx
-         KuNVnTmxNcfHVGMvGHw6EFJLmiAUX8jv9OjYv3AobdhNG154w73tF22ExCr4xM+JV4KB
-         GngB2Axh2yAUfFCNEM3qjyf55ZVBtK3KeelY3JcmCGwkSsUE7W4haKr3EoskTKwPLObQ
-         C/JvcquEaWNEsYIN+7cxjzLe+lpcvPBXiQU2d8ew+MZocp8R/p9o3piK+sqkQ327GH5V
-         J2ajHJf6I6oK5VICiHEAUmEFO6xAFE8mNCOgf/kG/ShbHR44Ch5mRjlioTQWAfW8kr2C
-         lGDQ==
-X-Forwarded-Encrypted: i=1; AL+hErEF8x9Jpfvzl5soli2udH6qI11vSwLahHpu3QKSqUKFZ4AVVDbd6BRtLSoY4Ssx+T2wgy/YCZNqrOTQdX7/+Q==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8j5AFbmIc6tNIlXwjImqxenpbVvMSv8UK90TT6+FLBuhZNG0pD
-	4SGyPMNMi0uDbDtQKPqDE1eGyU+fvL8vFqprjLPyAbTp0XLt/6sgdF+J
-X-Gm-Gg: AYBFou0Ojsw2wU7mTqkVUbKRqhrXq8ageCR+mpMasXFx6oxSy5IttWH2mZQYo4G032P
-	fW/5JK8i/TYDQQ0ER1yhtLw1qrnc2z6dPe9GwasxPja6YvyDpOm/cOk/PfecOigLzb6HSy2lo4R
-	ngLxnraNqBDUUjb81sq9Bo7FQtdiO+My270jTlGaDYFRzMw1AXfPE7pcdV1oYXRCjAulvNUsYzo
-	t0+lMBmxXB1a6dGoZaUxGiiNEwwKzMJ9AaUPHqqjB+1/xAPCcXOL96riblpwoMIOOiJOxbaavPQ
-	O1WS5xSeSnWhGB62cdhMDHwYrihCXyrW3mb46OoCTLlLxQcs4AI2z+thglBaR/atKLv8ZWq+sCO
-	0H6bceyoSvoNlY4sAgMDmr0G4ZKaDjIfDEw8qs2qwhCJui/aFlP7bmiKkNB7Q64j+kkMqWEyh7+
-	k2fV5Vqm9HET+MUedb3wswd2nMBvgMaLgzoTmvvrhJwTaEHHzBxNqC00ZEWfMwdviB69O1w8wxD
-	dYUYmMT5DtHgxkv+vagT+H+GsilUn9gkAzZ4D8j1RD0L8Uub9QyreVeXyxgvusnSinf/Fk5xshf
-	WRE/NFrxPFP5ysKJ/vQlSeC7HQ9Rck/mrvtr2aRhU1fQT2QbA6JextNKK+BOB69fyq8=
-X-Received: by 2002:a05:7300:7481:b0:375:c5e1:931d with SMTP id 5a478bee46e88-37966e3aff8mr9267695eec.25.1794704413837;
-        Sat, 14 Nov 2026 17:00:13 -0800 (PST)
-Received: from [192.168.35.43] ([218.50.238.131])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-379560f5e06sm26895445eec.19.2026.11.14.17.00.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 14 Nov 2026 17:00:13 -0800 (PST)
-Message-ID: <c0b9ed82-3e30-4f53-809e-e7f35b0296d7@gmail.com>
-Date: Sun, 15 Nov 2026 10:00:08 +0900
+	id 1xSP7R-0000000GyMy-0oOJ;
+	Sun, 15 Nov 2026 01:33:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794706389; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=nLJRCzEYNbLoxN3S1NuockbI2t6ExOS23/WUmS8imsFw1bdVB162TD/2mKLacUCgQm7Gr2a8QUMk/lBuc5iQ/0D2qoL5zrklHAzMFCxuhotseq+gsqT8gH74i+5tBiwFp7oJiRzuZynEOKp/5TVtsowCCQfzdCfad9cd2V58aDY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794706389; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=xg9g6C/5fZ2E7eZtJQ3y3FzrxJXQqr0QulKYhlA7ksE=; 
+	b=BZg97skBHgr8As2NVh6NVmc1Np/xV+lQUT6hna+UQynunVRpjihw0H6izlenFsq0urQxDxW3DSWHW5hI1fS/N/KxC5JJu4hSGbidcVs9LZCjeD9u+GG+NvvP7eo7IqMYwzGFLszXZ8Ub+LVBQ1jL3rjL4L8dv2YuQJrqraYJmk8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=ilqVIflIqTQHTbEk4//3nZQG1ccH+/ue3B6IcZj6f0+SY9ewX40telS1hLr2G2DE0hLzkrM187SX5g3pePrywofm0nhJ21QwYvWpEoHLH7fZ0VypZtNPkeEzcJ7Rmjn4Yk8hujNb6+hRNkypuV2sGCSRZnWOWJfO8ZGkPMXHMug=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=xg9g6C/5fZ2E7eZtJQ3y3FzrxJXQqr0QulKYhlA7ksE=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794706386483224.14966488591017;
+	Sat, 14 Nov 2026 17:33:06 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id E94731801C7; Sun, 15 Nov 2026 02:32:59 +0100 (CET)
+Date: Sun, 15 Nov 2026 02:32:59 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: chanwoo@kernel.org
+Cc: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
+	Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Chanwoo Choi <cw00.choi@samsung.com>, 
+	MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
+	kernel@collabora.com
+Subject: Re: [PATCH v2 3/7] dt-bindings: devfreq: event: rockchip,dfi: add
+ rk3576
+Message-ID: <avkHvso6ljhn693V@venus>
+References: <20260921-b4-rockchip-dfi-rk3576-support-v2-0-04f847016321@collabora.com>
+ <20260921-b4-rockchip-dfi-rk3576-support-v2-3-04f847016321@collabora.com>
+ <0f536451-9f7b-46f7-acca-e10e54dec37e@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 7/7] PM / devfreq: rockchip-dfi: add RK3576 support
-Content-Language: ko
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
- Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham
- <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>,
- Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, kernel@collabora.com
-References: <20260921-b4-rockchip-dfi-rk3576-support-v2-0-04f847016321@collabora.com>
- <20260921-b4-rockchip-dfi-rk3576-support-v2-7-04f847016321@collabora.com>
-From: Choi Chanwoo <cwchoi00@gmail.com>
-In-Reply-To: <20260921-b4-rockchip-dfi-rk3576-support-v2-7-04f847016321@collabora.com>
+In-Reply-To: <0f536451-9f7b-46f7-acca-e10e54dec37e@gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.637.76
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261114_170016_293843_ABE6685E 
-X-CRM114-Status: GOOD (  15.43  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261114_173321_271712_BC83C207 
+X-CRM114-Status: GOOD (  25.08  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,84 +81,148 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: chanwoo@kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3768756337223412090=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 9/22/2026 6:15 AM, Sebastian Reichel wrote:
-> Add RK3576 support to the DFI driver exposing the same functionality
-> as found on previous chips. This uses the RK3588 init for getting the
-> DRAM type info from the GRF registers. In contrast to RK3588 it uses
-> a newer DDRMON controller IP, though (version 0x40).
-> 
-> Co-developed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  drivers/devfreq/event/rockchip-dfi.c | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
-> 
-> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> index 8ba97af78e3d..a895e566b4b9 100644
-> --- a/drivers/devfreq/event/rockchip-dfi.c
-> +++ b/drivers/devfreq/event/rockchip-dfi.c
-> @@ -858,6 +858,10 @@ static const char * const rk3399_clk_names[] = {
->  	"pclk_ddr_mon",
->  };
->  
-> +static const char * const rk3576_clk_names[] = {
-> +	"pclk_ddr_mon_ch0", "pclk_ddr_mon_ch1",
-> +};
-> +
->  static const char * const rk3588_clk_names[] = {
->  	"pclk_ddr_mon_ch0", "pclk_ddr_mon_ch1", "pclk_ddr_mon_ch2",
->  	"pclk_ddr_mon_ch3",
-> @@ -887,6 +891,18 @@ static const struct rockchip_dfi_variant rk3568_variant = {
->  	.reg_access = 0x2c,
->  };
->  
-> +static const struct rockchip_dfi_variant rk3576_variant = {
-> +	.init = rk3588_dfi_init,
-> +	.stride = 0x10000,
-> +	.max_channels = 2,
-> +	.clk_names = rk3576_clk_names,
-> +	.num_clks = ARRAY_SIZE(rk3576_clk_names),
-> +	.reg_write_access = 0x28,
-> +	.reg_read_access = 0x2c,
-> +	.reg_access = 0x34,
-> +	.reg_clock_cycles = 0x30,
-> +};
-> +
->  static const struct rockchip_dfi_variant rk3588_variant = {
->  	.init = rk3588_dfi_init,
->  	.stride = 0x4000,
-> @@ -903,6 +919,7 @@ static const struct rockchip_dfi_variant rk3588_variant = {
->  static const struct of_device_id rockchip_dfi_id_match[] = {
->  	{ .compatible = "rockchip,rk3399-dfi", .data = &rk3399_variant },
->  	{ .compatible = "rockchip,rk3568-dfi", .data = &rk3568_variant },
-> +	{ .compatible = "rockchip,rk3576-dfi", .data = &rk3576_variant },
->  	{ .compatible = "rockchip,rk3588-dfi", .data = &rk3588_variant },
->  	{ },
->  };
-> 
 
-Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
+--===============3768756337223412090==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="4opafguzx4x2ylyg"
+Content-Disposition: inline
 
--- 
-Best Regards,
-Chanwoo Choi
-Principal Engineer, Samsung Electronics
+
+--4opafguzx4x2ylyg
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 3/7] dt-bindings: devfreq: event: rockchip,dfi: add
+ rk3576
+MIME-Version: 1.0
+
+Hi,
+
+On Sun, Nov 15, 2026 at 09:58:48AM +0900, Choi Chanwoo wrote:
+> On 9/22/2026 6:15 AM, Sebastian Reichel wrote:
+> > From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> >=20
+> > The RK3576 has DFI hardware for monitoring the DDR's bandwidth much
+> > like other rockchip SoCs do. Unlike the RK3588 however, it only has two
+> > memory channels, so only two per-channel pclks for DFI.
+> >=20
+> > Add a compatible for this SoC's variant, and add it to the conditionals
+> > at the bottom of the bindings file.
+> >=20
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > ---
+> >  .../bindings/devfreq/event/rockchip,dfi.yaml          | 19 +++++++++++=
+++++++++
+> >  1 file changed, 19 insertions(+)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip,d=
+fi.yaml b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+> > index 3450e28b4020..dcf3bbde3e8d 100644
+> > --- a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+> > +++ b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
+> > @@ -14,6 +14,7 @@ properties:
+> >      enum:
+> >        - rockchip,rk3399-dfi
+> >        - rockchip,rk3568-dfi
+> > +      - rockchip,rk3576-dfi
+> >        - rockchip,rk3588-dfi
+> > =20
+> >    clocks:
+> > @@ -64,6 +65,24 @@ allOf:
+> >          - clocks
+> >          - clock-names
+> > =20
+> > +  - if:
+> > +      properties:
+> > +        compatible:
+> > +          contains:
+> > +            enum:
+> > +              - rockchip,rk3576-dfi
+> > +    then:
+> > +      properties:
+> > +        clocks:
+> > +          minItems: 2
+> > +          maxItems: 2
+> > +        clock-names:
+> > +          minItems: 2
+> > +          maxItems: 2
+> > +      required:
+> > +        - clocks
+> > +        - clock-names
+> > +
+> >    - if:
+> >        properties:
+> >          compatible:
+> >=20
+>=20
+> When I applied it, there are some error.
+> Could you please resend it on latest commit?
+
+This patch should still apply cleanly, when you merge this one first:
+
+https://lore.kernel.org/linux-rockchip/20260921-rockchip-dfi-cleanup-v2-2-4=
+3ff34ac8599@collabora.com/
+
+Generally all DFI patches from the linked "PM / devfreq:
+rockchip-dfi: cleanups" series are backwarts and forward compatible.
+You can just pick them up (i.e. patches 2, 3, 4, 5, and 7).
+
+Afterwards from this series you can pick up 3, 5, 6, 7.
+
+I can then ask Heiko to pick the clock and DT changes.
+
+I probably should have structured this submission a bit differently,
+sorry for the mess.
+
+Thanks for your reviews.
+
+Greetings,
+
+-- Sebastian
+
+--4opafguzx4x2ylyg
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmr5C8gACgkQ2O7X88g7
++po+tQ/8DXaiXv5bhz6X8EjEPpQ/FjCstJcZ2thsSB3EUjQHwKBpqrVQo9rS0eB3
+ctkdzB6OUpFRJGWTG1tAlhbkHhnwi9ZfnXmM2TDHd6EdNjNzd9uAtUeUt0BrWsiY
+rLBX1sTC45nh4eMaAT7IAFAHDZxa5jOAr2UnDqUKy9H/Hb1s382gpkSn7nXltkLS
+pfQ741MqDbiIx/AvU6tvJVF4Q/RSC6+Pr2/x8qURUZs5ZeEOxkXEZ9LYgt2oVYWk
+H27BfOgnwfxLiomWLOWAY4vOo2ujWyW9bSIMhxqvcQxdtimZ8EJmY4a8IHo0AL8J
+JbHyLadHU2DzT94WF2K47VVC15M4vwukyCy532OLHPAkfWoyBguNLd4dbu0oYDOn
+zakprRwAY3knNSta2f4m+NGJyce2haAd9Rb/NGpR6X4GymQ4JOg1Q24duwrsUUz5
+OmCJL80VCKNy22H9SnPhat/Q6Sd/88hfxFlDwsO86GKUutobkeZ1ymY5mu8Wld6L
+DiWYnKGy5WVlth7lOg59k5X6C7hJMNuNKVDBaXUIpGzvrUWcZLkai/3KHQJrhOKL
+AowPuTyo8CHqKYNJXuxvv5120Sxg6Wo6h0Snrd6HWArsMdrt+ICCPBmj334FiL79
+MAv3osTwm9leJMHRhWTfxGkvc6Rhy6E+8cW88URrOx3TyjE1Nfc=
+=OpSE
+-----END PGP SIGNATURE-----
+
+--4opafguzx4x2ylyg--
+
+
+--===============3768756337223412090==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3768756337223412090==--
+
