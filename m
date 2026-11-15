@@ -2,80 +2,112 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E34E0606A32F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Nov 2026 14:32:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D92AA606A31E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Nov 2026 15:48:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=asm7r5ey;
-	dkim=fail reason="signature verification failed" (4096-bit key) header.d=lausen.nl header.i=@lausen.nl header.a=rsa-sha256 header.s=uberspace header.b=BXgAcNYY
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YkGfL/05;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=KrZOaIhM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=HHyane3ub80uI69zmIg409s3edWtVWvwh0kWLzjNVtQ=; b=asm7r5eyuHYcDRFXyUdAmkK9BM
-	hdWOatiEjUjvsB4lHzNJayTiXCgvV4Xdb16IRSZGQCx3yj5iNciafOo7bgNm6Lj9xSRamtZe8O2OG
-	ME6GepiuDmsOMBMZVMZlM4Ad0YvSGLMHth64+9h8RpxGeDZbxjVo2zoCPUMhfW1MVcvezGla9qdbh
-	2tVSJVaX6HDAcNOtIy5RQGU5hcbsFjySit6DEHJvZLabG+/R9qnY5E9m4RivRDDwWe+mTtGBzuEwR
-	qdzx+5PgOqDDyc3Jk9evZKF8AB+JfwSgSanvgXN6f7GVRxolg2Zv7apZRra1TKYlb2MxnIAwZQMId
-	vRCqLwhw==;
+	bh=sz+kGGjwzfwuWjVwQNczbxb5xV+4br+aTyM2XEtootw=; b=YkGfL/05FYX6E9knd0m7ZsUtYx
+	Du0tqDRdAvJF2uHub4DAU8EOhQIR3f7AHyCojN/8ve7P9BtjPLSC3KWkRL+vK/KEMs1/CFjP038V+
+	2B//Y5Nh3GCk5VSYer0rLZr/gSd+xK7FpcTiaYAYmygAlEhXkfbx38GrU+AymoOcsmATQ0YqGJj+Z
+	DcDaz7b4+ulmEINWvcT+rSL8gtU7dUIrp5lvaz284gtEMGFMHro+6sxvOtzdrKp4GxfUC0FJRdp/K
+	eWE7PNFT5vU6jpp+0TOT4SXxsTQX3NNk94ij1/dTmlYhcBHboF76rWjVrfEezcjNgpje5jzn0YWgN
+	3Q+dxCgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSbHc-000000004Pq-2Hx2;
-	Sun, 15 Nov 2026 14:32:40 +0000
-Received: from mailgate01.uberspace.is ([95.143.172.20])
+	id 1xScSn-00000000AM6-3Tfy;
+	Sun, 15 Nov 2026 15:48:17 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSbHZ-000000004OU-1Yvk
-	for linux-rockchip@lists.infradead.org;
-	Sun, 15 Nov 2026 14:32:39 +0000
-Received: from devico.uberspace.de (devico.uberspace.de [185.26.156.185])
-	by mailgate01.uberspace.is (Postfix) with ESMTPS id 9AEC260D76
-	for <linux-rockchip@lists.infradead.org>; Sun, 15 Nov 2026 15:32:35 +0100 (CET)
-Received: (qmail 32341 invoked by uid 990); 15 Nov 2026 14:32:35 -0000
-Authentication-Results: devico.uberspace.de;
-	auth=pass (plain)
-Received: from unknown (HELO unknown) (::1)
-	by devico.uberspace.de (Haraka/3.1.1) with ESMTPSA; Sun, 15 Nov 2026 15:32:35 +0100
-Message-ID: <7f2ea700-ddd3-41b9-9500-63a44c321648@lausen.nl>
-Date: Sun, 15 Nov 2026 15:32:34 +0100
+	id 1xScSl-00000000ALa-2Hzr;
+	Sun, 15 Nov 2026 15:48:15 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6B8086061D;
+	Sun, 15 Nov 2026 15:48:14 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794757694;
+	b=Lr3eodA8Kw75qmKUBUYgpnCpf4bXaEg3UZiF7dWF1dfu492etqJZM7Z4gtSxlEMEwjvv
+	 AkBbWVuo3vuAIfuZLG70A4q5zAwoa+omuZrZgbPP1IYkdto6p6SPFZ3URYNic/cAxnShD
+	 DUn4moy08dsDVJCw94DDNWOjVA9+6xWm+fAY9A+Jrq28FRcAmNqEAG+e6bR139OFuAWpb
+	 avKFo6kbmQcQ9XUXElL3g5ZstJlJ7+eOl8C8AWCwD1z474m1TAVhbqDMIWJhpYy+S1mrF
+	 3FhnJGmC7/5TbfynB0nIQfWk850JXZdK3JNeC6j+pPrX1zeIep/EYvxCnKkYt9H4MwA==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794757694;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:
+	 X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=NInYMJ+ut3zDh5Fb+CgE3l3kNaY9NJsY+o6n7flFLcw=;
+	b=vO3MMUNEVQrsW1znvqToAaXEz0m/USwBgJnjZmayoJw6MlJz+wMGXF9oB+4Y3ulnANiF
+	 KGLg9P4FlAfpAX8ecHoEylbPAa1F+3dSI2wN3RW0ZFkEXLQIDuR9rk7iU5AGEzP2wGEwh
+	 IZeHrMKGUjN5ayudt2Ui9NS//xrre+oJU0gemYUjSR14PcecfVMsE0DQC4GcVt/pykKd2
+	 P6D839e9+MeK44A82PsooQGcK87PeTNTLABtiVMBe8ATgOL3NaVNEzPilAnOGqFOSB8v0
+	 jCkYM8Lb2YHnwzxkbfwreU0GtVL8z6W+sKGFuuvWO5s+bXCERQ1he0x/v76I45D9VIA==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 958EA1F000C4;
+	Sun, 15 Nov 2026 15:48:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794757694;
+	bh=NInYMJ+ut3zDh5Fb+CgE3l3kNaY9NJsY+o6n7flFLcw=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=KrZOaIhMkWHaTakDBX4dnHLgAkHn7h/WboXX/sanQxYPbHQA2l/yiBQ4MTqDYPoMA
+	 pC/4+PZX8s27EpRPBiHAdPTfeYU1/akNQOorSzNLyI/kNVx6WbPVb5iXJiZlBu+lNV
+	 w0ob3HOXHUhajvbl9996UPTe+I7y+N5WVO7oF03Ne5Ql3zavmdx+BgFenTxQ0wefOt
+	 X/YuOxor+wz5GRvtyd+hHIVl2A1ul6b4Ufp0IYk62v934Hb5OrICteIlqZOhtKcuAH
+	 g8gD/dZ/klkTNt3wvrYNaUc/h0nTuAF71WEcvaaa/4jqUhnanoN8+q8gag6QeX0fKp
+	 Gnz62um5ifR+g==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 19E274A0FA;
+	Sun, 15 Nov 2026 15:48:13 +0000 (UTC)
+From: Ricardo Pardini via B4 Relay <devnull+ricardo.pardini.net@kernel.org>
+Date: Sun, 15 Nov 2026 16:48:11 +0100
+Subject: [PATCH v2] phy: rockchip: naneng-combphy: fix RK3588 SATA
+ pipe_con1 register offset
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Leonard Lausen <leonard@lausen.nl>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Enable Wi-Fi on the NanoPi M5
-To: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20261025205339.14539-2-leonard@lausen.nl>
- <4b7bd146-93fd-41f8-ad3c-88333adc73b4@rock-chips.com>
- <20261026070821.324094-1-leonard@lausen.nl>
- <e028ba53-0c69-4ba6-9b16-8648b8a787b2@rock-chips.com>
-Content-Language: en-US
-In-Reply-To: <e028ba53-0c69-4ba6-9b16-8648b8a787b2@rock-chips.com>
-X-Rspamd-Bar: -
-X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-2.992814) XM_UA_NO_VERSION(0.01) MIME_GOOD(-0.1)
-X-Rspamd-Score: -1.582814
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=lausen.nl; s=uberspace;
-	h=from:to:cc:subject:date;
-	bh=wEW9XVAV0DUg1t10qy3lbNxLg4TAA4TlBE4rFTXyck4=;
-	b=BXgAcNYYDk0LWEkWPTYakA9wmgidxf1/hV9wTaYI6vyCuqmEP/scby5qY/cCYeDzXWEZconqiN
-	muPFWqC+DU7CNGSzfqcwHPWaObKtp4vQA47ZWJlfrEoh82xWzq8HbgpRXZ8Pyyt4l8eBKh/cSNCg
-	C6ntv2511UkbwaQWWt3isuaFuf/iM/UGPidSups3frU2PQgq5r64se6LLRVlx6O9eBuYn5Q3NquI
-	E1q/eIprbxbg3mIaibNFL0GlFl7UHqi7P4jnf/Sazb2NXY54NIfBaeqWk3oThwOjACmUBtj/PijK
-	PVDGPGylSYucwzjhRFqJhDDROTRDv+cUXgJN8+yjw6tLstrJz05Yldy188qkJcpOMsUTmk0R8PaM
-	fg3hrlMu7uc7h7FVj/xTZkGUULMTaWA6PZ/jRVZdQH7iZgTHYfp2vbEM6n/Rrt00DswvMj4zXx41
-	VXjRH+hue9HpSJuo7pXv4ukSa8skt0sIvEKCKbShq1zgaZ5LFMcdz2c6KxN+tAjh8ceDM4UjFJB7
-	XFHCjNLyH+qRzezA2coUNCd+gdbQv7xl4SvPYy4EbqBVqGmBwjSLS8kV2yiqGxSUNNZLOU0HWtvT
-	ya/xwpBJF2Wr7sKWhWyHUgnKTk5P0Vj12+PZA0IlYF8uBBeK5m3+9+VxmumDlgR7EScC44ui9tD3
-	8=
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261115_063237_551217_7F2714BE 
-X-CRM114-Status: UNSURE (   5.71  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261115-rk3588-combphy-sata2-6g-v2-1-778e0e8011fe@pardini.net>
+X-B4-Tracking: v=1; b=H4sIADrU+WoC/3WNyw6CMBBFf4V07ZhOawm48j8MixZGGI2FtJVIC
+ P8uj7XLk9x7ziwiBaYortksAo0cufcrqFMm6s76loCblYWSKkepLhBe2hQF1P3bDd0E0SarIG9
+ Baue0RIPGKLG+h0AP/u7me3Vw/Lgn1WnTbYuOY+rDtKdH3HZHBWX5tzIiIFCJ2tQlNpTb22BDw
+ 57PnpKolmX5AZz+eZnSAAAA
+X-Change-ID: 20261024-rk3588-combphy-sata2-6g-03bb30151552
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Lucas Tanure <tanure@linux.com>, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
+ stable@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Ricardo Pardini <ricardo@pardini.net>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3245;
+ i=ricardo@pardini.net; h=from:subject:message-id;
+ bh=7C3z50HF4YPPhxfojWOPHlWST5mhlOANTFSCF0BvMLE=;
+ b=owEBbQGS/pANAwAKATteP+Oex+3pAcsmYgBq+dQ8Q7AOEqBEaJ40Qr8v90oLDQJ4qH6b6aZGN
+ Rxv5wgYhS2JATMEAAEKAB0WIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCavnUPAAKCRA7Xj/jnsft
+ 6Qu5B/43ii5B5vLp7uePCdS2Y60DAhqinh6J/QWpePpP4kNJVbE3YWpuHFy9lFKwgX7VaIRTNjq
+ b3b06t7skss2elc97aE6opCrKTCog4udVuaUFgbXajh63e/nJBZgr91p9dSespZKw1RkNg9fsj7
+ XEnFvSfys82kKhyK3Ap7g9qvhyukWwo6XsSCbUjnTRP0WBBNPJBM2LQ6cjEwia06jlipE5LZIxQ
+ Hv49ZX2NnMZ3ba4y3Q+Dwh1U/KGFw2UuOjpo23r+4MFQFYEetjNqPKQxVkFdseeyz9GHGYtgCpV
+ lJdsS2jc6D6do+YxNpwORkbkyNwgrK9fifExcH/RUeVuGsK4
+X-Developer-Key: i=ricardo@pardini.net; a=openpgp;
+ fpr=AC18230CF6AFEACADC4888933B5E3FE39EC7EDE9
+X-Endpoint-Received: by B4 Relay for ricardo@pardini.net/default with
+ auth_id=588
+X-Original-From: Ricardo Pardini <ricardo@pardini.net>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,29 +117,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: ricardo@pardini.net
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
->> The NanoPi M5 has an M.2 E-key slot for SDIO Wi-Fi modules such as the
->> RTL8822CS-based AC200. The SDIO controller is disabled and the module's
->> power sequence is not described, preventing the card from enumerating.
->>
-> 
-> I suspect RTL8822CS doesn't work as-is, unless you need to apply it[1].
-> Please double check it.
+From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
 
-Thank you, Shawn Confirmed your series fixes SDR104 and improves the 
-wifi throughput. Throughput still stays substantially below the 792 
-Mbit/s raw SDIO bandwidth. I prepared a few commits to remove overhead. 
-First two are at 
-https://lore.kernel.org/linux-wireless/20261115142330.359247-2-leonard@lausen.nl/
+On RK3588, the sata2 PHY speed is selected by sata2_phy_spdmode in
+PHP_GRF_PHP_CON1[1:0] (offset 0x0004), with sata2_phy_rx_err in bit 2.
+rk3588_combphy_grfcfgs has pipe_con1_for_sata at offset 0x0000 though,
+so the value 0x2 (6.0 Gb/s, rx_err cleared) ends up in PHP_GRF_PHP_CON0
+and CON1 is never written.
+
+This leaves sata2 at its 1.5 Gb/s reset value, so the link only trains
+at 1.5 Gb/s, even with a 6 Gb/s capable disk and no SControl speed
+limit. sata0 and sata1 are not affected: their speed fields are in
+PHP_GRF_PHP_CON0 and are set by pipe_con0_for_sata.
+
+The misplaced write also lands in PHP_GRF_PHP_CON0[2:0], which are the
+PCIe link reset grant bits, and turns on the one for pcie3x2 whenever a
+combphy is put in SATA mode. No effect from that is known, but this
+stops it too.
+
+The register layout is described in the RK3588 TRM V1.0 Part1, section
+6.17 "PHP_GRF Register Description".
+
+Tested with an mSATA SSD on sata2 (combphy2_psu). Before:
+
+  ata2: SATA link up 1.5 Gbps (SStatus 113 SControl 300)
+  Timing O_DIRECT disk reads: 374 MB in 3.01 seconds = 124.45 MB/sec
+
+After:
+
+  ata2: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+  Timing O_DIRECT disk reads: 1266 MB in 3.00 seconds = 421.78 MB/sec
+
+Fixes: a03c44277253 ("phy: rockchip: Add naneng combo phy support for RK3588")
+Cc: stable@vger.kernel.org
+Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+[rewrite commit message]
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
+---
+Only sata2 was tested. U-Boot has the same table and the same problem;
+the fix was sent there in [1].
+
+[1] https://patch.msgid.link/20261109-rk3588-sata-fixes-v2027-01-v1-0-e54ca8e68f18@pardini.net
+---
+Changes in v2:
+- Author is now Yifeng Zhao, who wrote the fix in the Rockchip BSP
+  kernel; add his Signed-off-by (Sebastian)
+- Move the PCIe link reset grant note into the commit message (Sebastian)
+- Drop the BSP history sentence, the BSP Link: and the Cc (Sebastian)
+- Trim the notes below the fold (Sebastian)
+- Collect Sebastian's Reviewed-by
+- Link to v1: https://patch.msgid.link/20261109-rk3588-combphy-sata2-6g-v1-1-e9135c91de6a@pardini.net
+---
+ drivers/phy/rockchip/phy-rockchip-naneng-combphy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+index 3102a99128f6..c469222dba8b 100644
+--- a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+@@ -1395,7 +1395,7 @@ static const struct rockchip_combphy_grfcfg rk3588_combphy_grfcfgs = {
+ 	.con3_for_sata		= { 0x000c, 15, 0, 0x00, 0x0407 },
+ 	/* pipe-grf */
+ 	.pipe_con0_for_sata	= { 0x0000, 11, 5, 0x00, 0x22 },
+-	.pipe_con1_for_sata	= { 0x0000, 2, 0, 0x00, 0x2 },
++	.pipe_con1_for_sata	= { 0x0004, 2, 0, 0x00, 0x2 },
+ 	.pipe_pcie1l0_sel	= { 0x0100, 0, 0, 0x01, 0x0 },
+ 	.pipe_pcie1l1_sel	= { 0x0100, 1, 1, 0x01, 0x0 },
+ };
+
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20261024-rk3588-combphy-sata2-6g-03bb30151552
+
+Best regards,
+--  
+Ricardo Pardini <ricardo@pardini.net>
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
