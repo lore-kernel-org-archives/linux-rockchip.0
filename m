@@ -2,97 +2,105 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ECA96606A31E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Nov 2026 08:01:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A7327606A31D
+	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Nov 2026 08:21:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0VoXXZrG;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=MVpe4YVq
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IGh4AHzv;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=EQa4+kUx
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=YzhGY3syzOKi46aOIsfEcunoXb0seY+lhNxTrMpRbsU=; b=0VoXXZrGSj7G9wRDKKpmT4adOZ
-	ZCN6tfuPptwlsXrck0EciqBaCy2YRmmnMScckGl0r7nvz9k6E0FN+NaEVSPRcWqi2R9IpYGiQXcu/
-	ej4QIhnF3/jrt4VE+JRpmBFUad+I7R/EU8vu/qno1QR/J/4PergJB0kErS4bRrLBgUn7ql9+Z0iUh
-	EJLKsiKQc9wX5/WTha/fYpZyRblsgvtCMgKdsGnWx2ZBFRYgv8W+NjXRHCY8wgMwaV/W3rlWDx+/1
-	ERNJiZL1gkCY2C5nlfD12ys17tMipZ1fkCXGDfiv1nnoYdN0T0cuSSqh6+hEuFsRrQQJJZJrBMfF/
-	BgVhBj3g==;
+	bh=n8n3zktXUrLS7ZiNH5J7RgAgkC4UQ3JSfU2n/T3ovho=; b=IGh4AHzvKX3qzSKvnIwZhGLbVS
+	k5TZNqkCazdyN7M6CyrlKGj8x5fFa/02w206t91yCHyiFYfEuQzwqMlnKhGSEUU7i9cGWgbJy2t9n
+	EsCYRaDA+DykvHk5KPP/NOw32c3bVXWkcuDvXovhRpxLzPLWZnreSTuaq0SQMb69ARF82anSpXecG
+	NKg4TTgJVAu0nwlNiFLTy1DksbtYHixOOeZEL5l0vi3mGOz2l6Ym5OTSVx2uo1pOCf6mvcpgTtwoy
+	Z/+1a2wqy2Manb2+9p+/HSy+jVkCpvrJWH9AbZ1QtoLXFNu31aKO3f8AcAImVwd6LSHFJV7eLIebC
+	aptSOKUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSVBI-0000000HCqt-2T8s;
-	Sun, 15 Nov 2026 08:01:44 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1xSVUS-0000000HDZj-0Wrp;
+	Sun, 15 Nov 2026 08:21:32 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSVBF-0000000HCpw-43Ji
-	for linux-rockchip@lists.infradead.org;
-	Sun, 15 Nov 2026 08:01:43 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-3b0b8b5d28cso340107a91.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 15 Nov 2026 00:01:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794729701; x=1795334501; darn=lists.infradead.org;
-        h=mime-version:content-transfer-encoding:content-type:message-id:date
-         :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=80dMFC0Ro/jAPdAujll83Boy4CMrv8kmaX2kTiPJvwU=;
-        b=MVpe4YVqPaLS/jHe/eMejyrjXk760Rd51J7IDVU+DErEA4bThVYAGM9oPMHhNbTdRI
-         KvFlupkxbqGDfiJJSMbLeKA3EkvZZjJfORi8khBZ//zkh6Hgy3GoH1K/HEKirYZar7ET
-         iO7EuNT2fuFSi3yE/T9k0GCo4MoGJo0fFR/49w1axtxZyoyjt2SoMgc9gtgMcKLh+9FM
-         mXzrY8spXh64ZbAJ6QCMw3WLT7QV7futd7vb0F0anhaKCimdCO+sreppl8zXx8J2bcwQ
-         1YSN9WbnbJQByPPU8aPwAIgI75R+k+JCe8ZvtKO67FKQAq+7xXZOgbQJCO12vm5Fqg0D
-         wAVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794729701; x=1795334501;
-        h=mime-version:content-transfer-encoding:content-type:message-id:date
-         :references:in-reply-to:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=80dMFC0Ro/jAPdAujll83Boy4CMrv8kmaX2kTiPJvwU=;
-        b=mHz80WNImXwvYmC1weNRAm57Rk9CTvIeRPUQ2OdeOEmHQLhCVADiJTUWQTeO7fV6gN
-         GAwvnyTOxTUBjzoWABVk6jigLHMrKTouX/ulJeL0SW0WuuwW0eSSB/y+mV3afMpSqKXM
-         0/c4yQOi9J6NpkMCFPBxZRpsZILXYiI0AsH4IXZDakuFZkC4j/dLpBDJZKVKMUYjBFfn
-         +zlcxd4EMXEkY3o17r51vEa8aVemgEngNhXIjGDPkLbVpObJtnN/wQN8xooxwcoOYupO
-         iG5ufwv2EGAalgDOghRFG5X1epGHDVjSdRDVXgQp5KAuksyekUe7ZPNZ4KWvJ+Ybl+dT
-         e7Iw==
-X-Forwarded-Encrypted: i=1; AL+hErHqJeI624UjhuNyYIEq8MKBU3fYPx9fn2RGKBtLNyW80cNmbFYOrc4OU+8HIxGIgFcAnD1GnxkbEuSKqgbWCQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+6qbNyl+8stjPR7OPlySx1aARpiS+Hyj6bRYolXF+A61a3vmdy
-	dZ/vz6PvVlbHShswJ3o+Jpv7ZaPVvB2/9cynawdTBHBIfKM1WQ3QlXF1
-X-Gm-Gg: AYBFou0nkuuT6bHfO7+/Sisfbcxv5zNd2c36e2K+7+cM6dDhmTQ/56veAZTdVkeA6xU
-	B6c7+RaHnXMWzBk8GVmBNB9aUaWwlxsAGrQuGhYC/EHQL0IkAX9fsmesEIQz1sPtjUVczGsxfUt
-	J32E1MaKgW5slTF57s2sCh1ZDK1epWUAv7kMcvvWItaM5dCY/BZkAUzzfC1tUUwLAXCqt8SSb3a
-	eJIxFW/LLVeZZ2C4CNpaMgCTDsVw7urATVP0Hmev+/K/RnPhOQaK19aD75Gb3jfJZlikbI9D94G
-	OUx87CPWANSAMXlCDJCBJf/CGijCR+a0Ga+PfEGxZuiW2lOxcSFtDTu2cDCtTckt4YHeTPatNRS
-	rKjwqatikAMOE22czkcFTpeEttR+iAAANyvXuAKCzJQCXN6YDJ8I9jJx9Bm5OFxYBjxhnKS4wFG
-	/zYq+sselVet2GuDBPp0JWntxaQHXPecLPUpJUvdqPf4iCCeQ5OChtYn/QJ0UG60v/7vggeMNCf
-	fYVKAvWSkE5dlb5GeCJdSGAaaV7ezJUaz/q6TJq9yp8n88d8aiCvL5UqtF7zNBa6L5GSavuWiHl
-	stoKkQB/RVUNp1vZOyhpczXQY8Dw70J7PBWuDg8MRUEyD6uMfkbKpw2lMKw2fMpyNC9pF1ib8Ee
-	63pCPCiM=
-X-Received: by 2002:a17:90a:e7c2:b0:3ac:73c7:9c07 with SMTP id 98e67ed59e1d1-3b1b0608b39mr11786795a91.0.1794729701017;
-        Sun, 15 Nov 2026 00:01:41 -0800 (PST)
-Received: from claudebox.iyengar.cloud ([50.39.139.68])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b1b3a21769sm6224118a91.4.2026.11.15.00.01.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 15 Nov 2026 00:01:40 -0800 (PST)
-From: Arun Iyengar <aiyengar1990@gmail.com>
-To: Lukas Splavec <lukas.splavec@puresig.cz>
-Cc: detlev.casanova@collabora.com, ezequiel@vanguardiasur.com.ar,
- mchehab@kernel.org, heiko@sntech.de, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: rkvdec: Use dma_map_resource() to map RCB SRAM buffers
-In-Reply-To: <20261114094916.28744-1-lukas.splavec@puresig.cz>
-References: <20261114094916.28744-1-lukas.splavec@puresig.cz>
-Date: Sun, 15 Nov 2026 08:01:39 -0000
-Message-ID: <179472969996.3843098.1159119154248532841@gmail.com>
+	id 1xSVUP-0000000HDZ6-43vp;
+	Sun, 15 Nov 2026 08:21:30 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 909D240AB1;
+	Sun, 15 Nov 2026 08:21:29 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794730889;
+	b=uIHTxWgxHeav0Yah/4gpId49IAp5ODUymgmPHXQE5K0anOjcH6ONa6Wd2bA5erPAVKLT
+	 wO6CyjB8o9k/m/8ZcyN4zTRWMfKQKj7hrrCu6ZebHIpMP24j4i7+JeGjWm/M7rXwfSQ7L
+	 2RsZS1lA9ZTLVLXt2THibsuzFqeacSOoE0UG2jGP3IiPeYa6OEwvz3Ivwftv2vGIitRoK
+	 uVwJn1LNzKxITF2m+Kn3CkorSGQJtmYutkCpHWj84rk+9iqF3CvO71FVlayZ8WXBXyvoW
+	 /YWtD9nUjLC2z3r9Vw2hDdNyEyPWGtk/wTJSWKm/6L6TfujPYB8u5BzeytlCzHCF84g==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794730889;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=xvJHN8PTWcCjuzksBv84XcItk7liGN0IwqC0kFvZgKY=;
+	b=Tx+TI57z0cW7qt3QAPtdWY5bgjD7wMextmhgcf3uuOVpnr+5WUlheQ2ITnpXL1xC7car
+	 fb1gC62NhFE+QjVfwwBk7htrEh+quFoyEzgk7+BydCB8yVdOH3sqb5Bp8EYopffEzF7qB
+	 48iXEyuF1943RyJM0ToYZVRyKwRZXw5LujJhHXIrxiEbPC8a6j605SYdhxPrB+h7oMHGn
+	 noYTcWC3WEW9Mkfqn0xU99kVAeApq/wOGrxmR/XNl1IFNqqabtMg5Y2d50JZPhxgbYRwg
+	 yT1joulCfeRkdDLIQ6H2SLynqNsJQuAI3TXXV0aZnIwlPlRYT6iSsy+sdNOu9tZRXpg==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id C15851F000C5;
+	Sun, 15 Nov 2026 08:21:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794730889;
+	bh=xvJHN8PTWcCjuzksBv84XcItk7liGN0IwqC0kFvZgKY=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=EQa4+kUxwoSm9bMxJWdOF2lrV3sywmd78fJbBbFuqIFqg7TXwDKWdmPNstZb2kKoD
+	 nekLO+7ZKZjzuzLL2G5jCZVLXzaHJEHCX1iQr2JalLZlTnr7cidKwhwBt5aXkfm3Fl
+	 n376W0CXfOTPkrSkamWmTCoq1KgkljBxs/rGBPJ/NqiAUHUZQUJ2+aliOv3Z7Qvbqs
+	 /vi+TeiMyq3Ni6NqliLMvlKnIs8dKSTGHntVUTuotKEqAlNOwgsbqh8O6ErVardLrd
+	 dnu8cla1wrg2RGo3UbtT1DGOBWP4oThavLPBC2PhpfRNUF8WLn4jNOXT1FkC7vA4hM
+	 Kv1V51l9eUaLw==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 4C40949F69;
+	Sun, 15 Nov 2026 08:21:28 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Date: Sun, 15 Nov 2026 08:21:28 +0000
+Subject: [PATCH 1/2] media: rkvdec: Stop the VDPU381 core on timeout
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261115_000142_030736_577D1E10 
-X-CRM114-Status: UNSURE (   4.87  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+Message-Id: <20261115-rkvdec-wdt-stop-v1-1-59e687c6cc63@gmail.com>
+References: <20261115-rkvdec-wdt-stop-v1-0-59e687c6cc63@gmail.com>
+In-Reply-To: <20261115-rkvdec-wdt-stop-v1-0-59e687c6cc63@gmail.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Hans Verkuil <hverkuil+cisco@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Alex Kazinsky <a.kazinsky@ideco.ru>, stable@vger.kernel.org, 
+ Arun Iyengar <aiyengar1990@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794730887; l=6869;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=L/ZVI8Exe59G7uEuqh1qHfrONjucBNmbBZOMQ/y3hf8=;
+ b=HW1zDX/AQ/P2BPCCM5lbu9Oq0SQoERVPUY7+uECcih2+7wLgaVBIDWQcI9C4newUPBc91Mh9S
+ LBnSiGvM4DjBO/s6XKM1s72rRVd96U45suz86+hul4DXcIEguGLSs5X
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,22 +110,215 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Tested on an Orange Pi 5 (RK3588S), rkvdec from media next with this
-patch, KASAN and lockdep on: all RCBs in SRAM now use IOVAs, no IOMMU
-fault or splat, fluster HEVC and H.264 results unchanged.
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Tested-by: Arun Iyengar <aiyengar1990@gmail.com>
+On a timeout, rkvdec_watchdog_func() writes RKVDEC_IRQ_DIS to
+RKVDEC_REG_INTERRUPT, an RK3399 register. On VDPU381 that offset is
+another register, so the core keeps running after the job completes
+and its IOMMU and power domain are suspended. On RK3588:
+
+  Kernel panic - not syncing: stack-protector: Kernel stack is corrupted in: cpu_suspend+0x380/0x3d0
+
+Add a ->stop() variant op, called with the IRQ disabled. VDPU381 soft
+resets the core as the Rockchip BSP does, with the reset lines as a
+fallback, and reprograms the IOMMU, which the reset leaves in bypass.
+VDPU383 is fixed separately.
+
+Fixes: e5aa698ea659 ("media: rkvdec: Add H264 support for the VDPU381 variant")
+Cc: stable@vger.kernel.org
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+---
+ .../platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h |  4 ++
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c    | 64 +++++++++++++++++++++-
+ drivers/media/platform/rockchip/rkvdec/rkvdec.h    |  3 +
+ 3 files changed, 70 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
+index 6da36031df2d..57ab23d76d73 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
+@@ -34,6 +34,7 @@
+ 
+ #define VDPU381_REG_IMPORTANT_EN	0x02c
+ #define VDPU381_DEC_IRQ_DISABLE	BIT(4)
++#define VDPU381_SOFT_RESET_EN		BIT(20)
+ 
+ #define VDPU381_REG_STA_INT		0x380
+ #define VDPU381_STA_INT_DEC_RDY_STA	BIT(2)
+@@ -41,6 +42,9 @@
+ #define VDPU381_STA_INT_TIMEOUT		BIT(5)
+ #define VDPU381_STA_INT_SOFTRESET_RDY	BIT(9)
+ 
++#define VDPU381_REG_DEBUG_INT		0x440
++#define VDPU381_DEBUG_INT_BUS_IDLE	BIT(0)
++
+ /* base: OFFSET_COMMON_REGS */
+ struct rkvdec_vdpu381_regs_common {
+ 	struct {
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+index 4e3a706f74f6..a8fdad2850fb 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+@@ -14,12 +14,14 @@
+ #include <linux/genalloc.h>
+ #include <linux/interrupt.h>
+ #include <linux/iommu.h>
++#include <linux/iopoll.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm.h>
+ #include <linux/pm_runtime.h>
++#include <linux/reset.h>
+ #include <linux/slab.h>
+ #include <linux/videodev2.h>
+ #include <linux/workqueue.h>
+@@ -1592,6 +1594,56 @@ static void vdpu383_flatten_matrices(u8 *output, const u8 *input, int matrices,
+ 	}
+ }
+ 
++static int rkvdec_pulse_resets(struct rkvdec_dev *rkvdec)
++{
++	int ret;
++
++	if (!rkvdec->resets)
++		return -ENODEV;
++
++	ret = reset_control_assert(rkvdec->resets);
++	if (ret)
++		return ret;
++	udelay(5);
++	return reset_control_deassert(rkvdec->resets);
++}
++
++static void rk3399_stop(struct rkvdec_dev *rkvdec)
++{
++	writel(RKVDEC_IRQ_DIS, rkvdec->regs + RKVDEC_REG_INTERRUPT);
++}
++
++static void vdpu381_stop(struct rkvdec_dev *rkvdec)
++{
++	void __iomem *regs = rkvdec->regs;
++	u32 status;
++	int ret;
++
++	/* Soft reset needs an idle bus: let a busy core finish first. */
++	readl_poll_timeout(regs + VDPU381_REG_STA_INT, status, status,
++			   100, 100 * USEC_PER_MSEC);
++
++	writel(VDPU381_DEC_IRQ_DISABLE | VDPU381_SOFT_RESET_EN,
++	       regs + VDPU381_REG_IMPORTANT_EN);
++	ret = readl_poll_timeout_atomic(regs + VDPU381_REG_STA_INT, status,
++					status & VDPU381_STA_INT_SOFTRESET_RDY,
++					1, 100);
++	writel(0, regs + VDPU381_REG_STA_INT);
++	if (!ret)
++		ret = readl_poll_timeout(regs + VDPU381_REG_DEBUG_INT, status,
++					 status & VDPU381_DEBUG_INT_BUS_IDLE, 1, 1000);
++
++	if (ret) {
++		dev_warn(rkvdec->dev, "soft reset failed\n");
++		if (rkvdec_pulse_resets(rkvdec)) {
++			dev_err(rkvdec->dev, "cannot reset the core\n");
++			return;
++		}
++	}
++
++	rkvdec_iommu_restore(rkvdec);
++}
++
+ static void rkvdec_watchdog_func(struct work_struct *work)
+ {
+ 	struct rkvdec_dev *rkvdec;
+@@ -1602,7 +1654,9 @@ static void rkvdec_watchdog_func(struct work_struct *work)
+ 	ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
+ 	if (ctx) {
+ 		dev_err(rkvdec->dev, "Frame processing timed out!\n");
+-		writel(RKVDEC_IRQ_DIS, rkvdec->regs + RKVDEC_REG_INTERRUPT);
++		disable_irq(rkvdec->irq);
++		rkvdec->variant->ops->stop(rkvdec);
++		enable_irq(rkvdec->irq);
+ 		rkvdec_job_finish(rkvdec, VB2_BUF_STATE_ERROR);
+ 	}
+ }
+@@ -1652,6 +1706,7 @@ static int rkvdec_disable_multicore(struct rkvdec_dev *rkvdec)
+ 
+ static const struct rkvdec_variant_ops rk3399_variant_ops = {
+ 	.irq_handler = rk3399_irq_handler,
++	.stop = rk3399_stop,
+ 	.colmv_size = rkvdec_colmv_size,
+ 	.flatten_matrices = transpose_and_flatten_matrices,
+ };
+@@ -1696,6 +1751,7 @@ static const struct rcb_size_info vdpu381_rcb_sizes[] = {
+ 
+ static const struct rkvdec_variant_ops vdpu381_variant_ops = {
+ 	.irq_handler = vdpu381_irq_handler,
++	.stop = vdpu381_stop,
+ 	.colmv_size = rkvdec_colmv_size,
+ 	.flatten_matrices = transpose_and_flatten_matrices,
+ };
+@@ -1723,6 +1779,7 @@ static const struct rcb_size_info vdpu383_rcb_sizes[] = {
+ 
+ static const struct rkvdec_variant_ops vdpu383_variant_ops = {
+ 	.irq_handler = vdpu383_irq_handler,
++	.stop = rk3399_stop,
+ 	.colmv_size = vdpu383_colmv_size,
+ 	.flatten_matrices = vdpu383_flatten_matrices,
+ };
+@@ -1813,9 +1870,14 @@ static int rkvdec_probe(struct platform_device *pdev)
+ 
+ 	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+ 
++	rkvdec->resets = devm_reset_control_array_get_optional_exclusive(&pdev->dev);
++	if (IS_ERR(rkvdec->resets))
++		return PTR_ERR(rkvdec->resets);
++
+ 	irq = platform_get_irq(pdev, 0);
+ 	if (irq < 0)
+ 		return irq;
++	rkvdec->irq = irq;
+ 
+ 	ret = devm_request_threaded_irq(&pdev->dev, irq, NULL,
+ 					rkvdec_irq_handler, IRQF_ONESHOT,
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+index 894c18eeb795..d9acf85e5acc 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+@@ -74,6 +74,7 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
+ 
+ struct rkvdec_variant_ops {
+ 	irqreturn_t (*irq_handler)(struct rkvdec_dev *rkvdec);
++	void (*stop)(struct rkvdec_dev *rkvdec);
+ 	u32 (*colmv_size)(u16 width, u16 height);
+ 	void (*flatten_matrices)(u8 *output, const u8 *input, int matrices, int row_length);
+ };
+@@ -139,6 +140,8 @@ struct rkvdec_dev {
+ 	void __iomem *link;
+ 	struct mutex vdev_lock; /* serializes ioctls */
+ 	struct delayed_work watchdog_work;
++	struct reset_control *resets;
++	int irq;
+ 	struct gen_pool *sram_pool;
+ 	struct iommu_domain *iommu_domain;
+ 	struct iommu_domain *empty_domain;
+
+-- 
+2.55.0
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
