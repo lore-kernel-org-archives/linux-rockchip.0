@@ -2,77 +2,79 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 955FA606A335
-	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Nov 2026 14:29:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E34E0606A32F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Nov 2026 14:32:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=s/tUh4ad;
-	dkim=fail reason="signature verification failed" (4096-bit key) header.d=lausen.nl header.i=@lausen.nl header.a=rsa-sha256 header.s=uberspace header.b=nTECe/ak
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=asm7r5ey;
+	dkim=fail reason="signature verification failed" (4096-bit key) header.d=lausen.nl header.i=@lausen.nl header.a=rsa-sha256 header.s=uberspace header.b=BXgAcNYY
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=CwWbn7PCOeaaE66aPqzfDXAx8JjYrJ/Ie95MvjCe4gU=; b=s/tUh4adIVkTb4EZyW1ogTNQh+
-	HfiY5a1asI6sCGhxMukN4YgRAEypEyfZCoHH+M3ed/cqi//mq6/6LBre3O64TUPRQKQmaDIR4e8dQ
-	vEQ/XwzPSJr8HdWYfUHzkNhlJyqAXhxBMm/miyRr/TG3l6wiMXAtnciajL1HNHSlPucSk0naTNPev
-	5w0kE0siYlL7fktB32i2HBrJnRpCVlYGUTFGWyuzGB1Lmd90nAJo0z11Il6QQfN5qh1BtpW4zL6Sd
-	p81bJpAiG97Q72o+Cm114F6/BrHgE2aD5xJKFXe7TY/pLaLaSOhTfSf21s9zkLEemaFapyIYqM4/b
-	tySYWl9A==;
+	bh=HHyane3ub80uI69zmIg409s3edWtVWvwh0kWLzjNVtQ=; b=asm7r5eyuHYcDRFXyUdAmkK9BM
+	hdWOatiEjUjvsB4lHzNJayTiXCgvV4Xdb16IRSZGQCx3yj5iNciafOo7bgNm6Lj9xSRamtZe8O2OG
+	ME6GepiuDmsOMBMZVMZlM4Ad0YvSGLMHth64+9h8RpxGeDZbxjVo2zoCPUMhfW1MVcvezGla9qdbh
+	2tVSJVaX6HDAcNOtIy5RQGU5hcbsFjySit6DEHJvZLabG+/R9qnY5E9m4RivRDDwWe+mTtGBzuEwR
+	qdzx+5PgOqDDyc3Jk9evZKF8AB+JfwSgSanvgXN6f7GVRxolg2Zv7apZRra1TKYlb2MxnIAwZQMId
+	vRCqLwhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSbET-000000003r3-0Mpw;
-	Sun, 15 Nov 2026 14:29:25 +0000
-Received: from mailgate01.uberspace.is ([2001:1a50:11:0:c83f:a8ff:fea6:c8da])
+	id 1xSbHc-000000004Pq-2Hx2;
+	Sun, 15 Nov 2026 14:32:40 +0000
+Received: from mailgate01.uberspace.is ([95.143.172.20])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSbEQ-000000003p7-2dp3
+	id 1xSbHZ-000000004OU-1Yvk
 	for linux-rockchip@lists.infradead.org;
-	Sun, 15 Nov 2026 14:29:24 +0000
+	Sun, 15 Nov 2026 14:32:39 +0000
 Received: from devico.uberspace.de (devico.uberspace.de [185.26.156.185])
-	by mailgate01.uberspace.is (Postfix) with ESMTPS id 0690E60D76
-	for <linux-rockchip@lists.infradead.org>; Sun, 15 Nov 2026 15:29:20 +0100 (CET)
-Received: (qmail 28843 invoked by uid 990); 15 Nov 2026 14:29:19 -0000
+	by mailgate01.uberspace.is (Postfix) with ESMTPS id 9AEC260D76
+	for <linux-rockchip@lists.infradead.org>; Sun, 15 Nov 2026 15:32:35 +0100 (CET)
+Received: (qmail 32341 invoked by uid 990); 15 Nov 2026 14:32:35 -0000
 Authentication-Results: devico.uberspace.de;
 	auth=pass (plain)
 Received: from unknown (HELO unknown) (::1)
-	by devico.uberspace.de (Haraka/3.1.1) with ESMTPSA; Sun, 15 Nov 2026 15:29:19 +0100
-Message-ID: <3813f20a-7e0a-436e-b8f6-a29756280a74@lausen.nl>
-Date: Sun, 15 Nov 2026 15:29:18 +0100
+	by devico.uberspace.de (Haraka/3.1.1) with ESMTPSA; Sun, 15 Nov 2026 15:32:35 +0100
+Message-ID: <7f2ea700-ddd3-41b9-9500-63a44c321648@lausen.nl>
+Date: Sun, 15 Nov 2026 15:32:34 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] wifi: rtw88: 8822c: filter hardware-handled control
- frames on SDIO
-To: Ping-Ke Shih <pkshih@realtek.com>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- linux-wireless@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20261115142330.359247-2-leonard@lausen.nl>
- <20261115142330.359247-4-leonard@lausen.nl>
-Content-Language: en-US
 From: Leonard Lausen <leonard@lausen.nl>
-In-Reply-To: <20261115142330.359247-4-leonard@lausen.nl>
-X-Rspamd-Bar: ---
-X-Rspamd-Report: BAYES_HAM(-2.999999) XM_UA_NO_VERSION(0.01) MIME_GOOD(-0.1)
-X-Rspamd-Score: -3.089999
+Subject: Re: [PATCH v2] arm64: dts: rockchip: Enable Wi-Fi on the NanoPi M5
+To: Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20261025205339.14539-2-leonard@lausen.nl>
+ <4b7bd146-93fd-41f8-ad3c-88333adc73b4@rock-chips.com>
+ <20261026070821.324094-1-leonard@lausen.nl>
+ <e028ba53-0c69-4ba6-9b16-8648b8a787b2@rock-chips.com>
+Content-Language: en-US
+In-Reply-To: <e028ba53-0c69-4ba6-9b16-8648b8a787b2@rock-chips.com>
+X-Rspamd-Bar: -
+X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-2.992814) XM_UA_NO_VERSION(0.01) MIME_GOOD(-0.1)
+X-Rspamd-Score: -1.582814
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=lausen.nl; s=uberspace;
 	h=from:to:cc:subject:date;
-	bh=gsaC/4/UTX3ni3aFcTq1jM1TUloizS3Ttt12uTCL2X8=;
-	b=nTECe/akQIMrRRC7vGgLQIr15P+dQ8YGAnKp6ZSGFNYv/SAVL9Woa/qdftW8WEXdsXTWosXtU+
-	AQnlYogzaS5Ef5nDIBf9M6n303MbJMcjd1oQVHUlNUHRPM/wwWvpsH3Pjg3IvbQIaze3XywBX0ZG
-	SPnCRjnX5aT91d5bOp/hqgP/JM2OhKP4zbgdfYV/sWVM98+wyLlJ5NTJ8IoQrxWbud1SLyr/tBWj
-	TjV+67w/8fdOKFhFg464yjmEUNWXBJRX1ScOeUQ9Gu/avSP9hVo1TlMV50kZT1tIRUpY/vgWBYoV
-	YdzxJ95FtwypaTEANZB8+O5v6PaG1Mre5KZSzkqThMG/lV+f4X4kE3PHiTBCEPMA/TDk92gx3fzV
-	Hyux0gqWlINC4cCNhf37gOtPdY0YloUy89b7YN/uGKE/7ioE9PO9968DjLVNhX/HQubSaDoyNvml
-	yIW638ttdNbMkixyKdGfmuoY8T4MPPw1s75JXMvZJP48YT3pj47WtTrF4eVz2T1h6HGtA6jf9RHL
-	5Fyw4XhghBlEaV1vDssCg2xvysq9FuTHuGE9YXoXI5AIBJ8uCL9zfTknhlE+EHFOfKLhGkmmfFwl
-	8TYTO+C4g3iX63e12t0d9q6bb8ApbRZ6T/RM9O4V1+S9ciy3NOux3CMDE7jdrMT9opX5Njwixsy9
-	s=
+	bh=wEW9XVAV0DUg1t10qy3lbNxLg4TAA4TlBE4rFTXyck4=;
+	b=BXgAcNYYDk0LWEkWPTYakA9wmgidxf1/hV9wTaYI6vyCuqmEP/scby5qY/cCYeDzXWEZconqiN
+	muPFWqC+DU7CNGSzfqcwHPWaObKtp4vQA47ZWJlfrEoh82xWzq8HbgpRXZ8Pyyt4l8eBKh/cSNCg
+	C6ntv2511UkbwaQWWt3isuaFuf/iM/UGPidSups3frU2PQgq5r64se6LLRVlx6O9eBuYn5Q3NquI
+	E1q/eIprbxbg3mIaibNFL0GlFl7UHqi7P4jnf/Sazb2NXY54NIfBaeqWk3oThwOjACmUBtj/PijK
+	PVDGPGylSYucwzjhRFqJhDDROTRDv+cUXgJN8+yjw6tLstrJz05Yldy188qkJcpOMsUTmk0R8PaM
+	fg3hrlMu7uc7h7FVj/xTZkGUULMTaWA6PZ/jRVZdQH7iZgTHYfp2vbEM6n/Rrt00DswvMj4zXx41
+	VXjRH+hue9HpSJuo7pXv4ukSa8skt0sIvEKCKbShq1zgaZ5LFMcdz2c6KxN+tAjh8ceDM4UjFJB7
+	XFHCjNLyH+qRzezA2coUNCd+gdbQv7xl4SvPYy4EbqBVqGmBwjSLS8kV2yiqGxSUNNZLOU0HWtvT
+	ya/xwpBJF2Wr7sKWhWyHUgnKTk5P0Vj12+PZA0IlYF8uBBeK5m3+9+VxmumDlgR7EScC44ui9tD3
+	8=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261115_062922_813004_3CC34A82 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20261115_063237_551217_7F2714BE 
+X-CRM114-Status: UNSURE (   5.71  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,81 +88,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-20.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-RTL8822C forwards every control-frame subtype to the host by default.
-ACK, Block Ack, RTS and CTS frames are handled by hardware, but forwarding
-them also adds small SDIO transfers to the data path.
+>> The NanoPi M5 has an M.2 E-key slot for SDIO Wi-Fi modules such as the
+>> RTL8822CS-based AC200. The SDIO controller is disabled and the module's
+>> power sequence is not described, preventing the card from enumerating.
+>>
+> 
+> I suspect RTL8822CS doesn't work as-is, unless you need to apply it[1].
+> Please double check it.
 
-Clear these four subtypes from the SDIO default RX filter. Retain BAR,
-PS-Poll and the remaining subtypes, and store the default in rxfltmap1
-so FIF_CONTROL can still request all control frames.
-
-Limit the new default to SDIO, where profiling identified the overhead
-and throughput tests measured a benefit. PCIe and USB use different
-receive paths and have not been validated with this filter setting.
-
-FriendlyElec's RTL8822CS driver also filters control frames at startup;
-this change retains additional subtypes for mac80211.
-
-On RTL8822CS/NanoPi M5 at 198 MHz SDR104, this patch alone increased
-median TCP upload from 170 to 258 Mbit/s (+52%).
-A separate download test (four 30-second samples per configuration)
-measured 241 to 263 Mbit/s (+9%).
-
-Link: 
-https://github.com/friendlyarm/rtl8822cs/blob/c8b944a34bba2116fcdb060362bde40242bb87e5/hal/rtl8822c/rtl8822c_halinit.c
-Assisted-by: LLM
-Signed-off-by: Leonard Lausen <leonard@lausen.nl>
----
-Resending with the Signed-off-by and Assisted-by tags.
-
-  drivers/net/wireless/realtek/rtw88/reg.h      | 4 ++++
-  drivers/net/wireless/realtek/rtw88/rtw8822c.c | 9 +++++++++
-  2 files changed, 13 insertions(+)
-
-diff --git a/drivers/net/wireless/realtek/rtw88/reg.h 
-b/drivers/net/wireless/realtek/rtw88/reg.h
-index afcdb66fdb9a1..8e220580be4f8 100644
---- a/drivers/net/wireless/realtek/rtw88/reg.h
-+++ b/drivers/net/wireless/realtek/rtw88/reg.h
-@@ -587,6 +587,10 @@
-   #define REG_RXFLTMAP0		0x06A0
-  #define REG_RXFLTMAP1		0x06A2
-+#define BIT_RXFLTMAP1_BACK	BIT(9)
-+#define BIT_RXFLTMAP1_RTS	BIT(11)
-+#define BIT_RXFLTMAP1_CTS	BIT(12)
-+#define BIT_RXFLTMAP1_ACK	BIT(13)
-  #define REG_RXFLTMAP2		0x06A4
-  #define REG_RXFLTMAP4		0x068A
-  #define REG_BT_COEX_TABLE0	0x06C0
-diff --git a/drivers/net/wireless/realtek/rtw88/rtw8822c.c 
-b/drivers/net/wireless/realtek/rtw88/rtw8822c.c
-index 32d9709f2c243..9c9e4f2397282 100644
---- a/drivers/net/wireless/realtek/rtw88/rtw8822c.c
-+++ b/drivers/net/wireless/realtek/rtw88/rtw8822c.c
-@@ -2096,6 +2096,15 @@ static int rtw8822c_mac_init(struct rtw_dev *rtwdev)
-  	rtw_write8(rtwdev, REG_WMAC_TRXPTCL_CTL_H  + 2, WLAN_BAR_ACK_TYPE);
-  	rtw_write16(rtwdev, REG_RXFLTMAP0, WLAN_RX_FILTER0);
-  	rtwdev->hal.rxfltmap1 = WLAN_RX_FILTER1;
-+	if (rtw_hci_type(rtwdev) == RTW_HCI_TYPE_SDIO) {
-+		/* Hardware handles these frames; retain BAR and PS-Poll for
-+		 * mac80211. FIF_CONTROL restores all subtypes for monitors.
-+		 */
-+		rtwdev->hal.rxfltmap1 &= ~(BIT_RXFLTMAP1_BACK |
-+						BIT_RXFLTMAP1_RTS |
-+						BIT_RXFLTMAP1_CTS |
-+						BIT_RXFLTMAP1_ACK);
-+	}
-  	rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
-  	rtw_write16(rtwdev, REG_RXFLTMAP2, WLAN_RX_FILTER2);
-  	rtw_write32(rtwdev, REG_RCR, WLAN_RCR_CFG);
+Thank you, Shawn Confirmed your series fixes SDR104 and improves the 
+wifi throughput. Throughput still stays substantially below the 792 
+Mbit/s raw SDIO bandwidth. I prepared a few commits to remove overhead. 
+First two are at 
+https://lore.kernel.org/linux-wireless/20261115142330.359247-2-leonard@lausen.nl/
 
 _______________________________________________
 Linux-rockchip mailing list
