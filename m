@@ -2,66 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8664E606A31C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 01:47:24 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AE6C7606A884
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 01:49:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JPUO+GOd;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=Xlx9MASN
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BfSTx6tM;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=Y8f8/gZS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=MuhBFyGBBBw+hAqiV9gE+WTCADxHC46RB0foMKrpJ8k=; b=JPUO+GOd64e90MqKT7nW3RUwNX
-	KscLuKdUr+a/irsvFD/r5wM2/KWlyG2oO3kDPhzahFEQ6jgWd6MkTegwm58P+fyd2sTHt+XmP05YO
-	dkunhQvA1q7EsfSkGJlwYDYCa7eNZvdZbzkk2FBHy5H6mfRKSZKPVm5nijc/LGvVyuLIcicdTYWNN
-	hvhh6dSsrLnfF/Q1ANF+kQeBC6wzC8W4ELoR8AMgksV6WVFfCMH8n7HTtqxGXkW8cRb5EwOKAvzKJ
-	KF9yDeYu5GlhXkMHA+CVnP9gNqz65CxwPNtbBDg9SHDJOPbV48HFzy2SxHOuES/jbnrsIR2Owzm/H
-	SF1b5FNw==;
+	bh=0dZssB5Wy7H7mavEExxA4dMf/xe0GBiCaYMbqowGsak=; b=BfSTx6tM3kSpW9NtYOVf+FpxDC
+	fzxrzpgL5CYffzmiqWbOwWqrukBGidYJ+vnDYNPw096uqWqIL3Qd0ZCgjNGaLChLphp2g/Q5EhTDt
+	UTLdZntni4CpF6cc0TyjUuLvEzPPPt0VIpJZ7h83mnbVMJ2wGbKxT2NR04Up67nknR0VslndF0gsF
+	Vv9o8953qN0gWoTo/0agLEALBs1uf335y0sHzn1bl59xmUq9IjUtzy5IQWkMGjYFMKE3ShoDJN4pw
+	/1WitXm+zCxNeFCQOGTliUajfiIWcMTHDT+iUKJbgt1aH8nsgkR7gYMCasqkPmjUGLhrBIyRr4CxT
+	Ls/QLDkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSloP-00000000ttW-3fha;
-	Mon, 16 Nov 2026 01:47:13 +0000
-Received: from mail-m6096.netease.com ([210.79.60.96])
+	id 1xSlqI-00000000tzr-0LzD;
+	Mon, 16 Nov 2026 01:49:10 +0000
+Received: from mail-m83203.xmail.ntesmail.com ([156.224.83.203])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSloL-00000000tt4-1iwd
+	id 1xSlqF-00000000tz4-1u79
 	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Nov 2026 01:47:11 +0000
-Received: from [172.16.12.11] (gyproxy-mailtls4-entmail-gy2-virt39.gy.ntes [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 54c20f935;
-	Mon, 16 Nov 2026 09:46:55 +0800 (GMT+08:00)
-Message-ID: <13ee0fa0-fcbf-455e-9aac-ea3dcf03b270@rock-chips.com>
-Date: Mon, 16 Nov 2026 09:46:53 +0800
+	Mon, 16 Nov 2026 01:49:09 +0000
+Received: from xf.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 54c22ece0;
+	Mon, 16 Nov 2026 09:49:03 +0800 (GMT+08:00)
+From: Finley Xiao <finley.xiao@rock-chips.com>
+To: finley.xiao@rock-chips.com
+Cc: cw00.choi@samsung.com,
+	heiko@sntech.de,
+	huangtao@rock-chips.com,
+	kant@allwinnertech.com,
+	kyungmin.park@samsung.com,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	myungjoo.ham@samsung.com,
+	stable@vger.kernel.org,
+	tony.xie@rock-chips.com
+Subject: [PATCH v3] PM / devfreq: governor_userspace: Guard against NULL governor_data during switch
+Date: Mon, 16 Nov 2026 09:49:01 +0800
+Message-ID: <20261116014901.896762-1-finley.xiao@rock-chips.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261022022109.642339-1-finley.xiao@rock-chips.com>
+References: <20261022022109.642339-1-finley.xiao@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] PM / devfreq: governor_userspace: Guard against NULL
- governor_data during switch
-To: Choi Chanwoo <cwchoi00@gmail.com>, heiko@sntech.de,
- linux-pm@vger.kernel.org
-Cc: cw00.choi@samsung.com, myungjoo.ham@samsung.com, kant@allwinnertech.com,
- kyungmin.park@samsung.com, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, tony.xie@rock-chips.com,
- huangtao@rock-chips.com, stable@vger.kernel.org
-References: <20261022022109.642339-1-finley.xiao@rock-chips.com>
- <94a65d65-e81f-4942-b119-51b71e8eabb4@gmail.com>
-From: Finley Xiao <finley.xiao@rock-chips.com>
-In-Reply-To: <94a65d65-e81f-4942-b119-51b71e8eabb4@gmail.com>
-X-HM-Tid: 0aa1e2092ded03a8kunm3009e2001cb66a
+X-HM-Tid: 0aa1e20b245703a8kunmd57494981cbbc7
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCHhkfVkJPT0lDHU0fTE9MQ1YVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDGB9MVhlKGRhOSBhPTEhLHVYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUJCSU
 	5LVUpLS1VKQktCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=Xlx9MASNidfN/0/OmnFeLgsodsmzadR89tKU3zq++QnM8UqlhcBAE9GPtPhdMUj8as2WjEADMkE/eG3Rli8TzVi7BgvVr9cUHtnLqTgGasY8903Sk5ClXTWQxdj6y6ojSI0uCWupVaDfuFNU/3WGZBJQghHQMmWVOc63uL7iGhQ=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=QL5XckioorVY3HmQuyB7sCoeqaOvjjXM1fRm/QS1zoc=;
+	b=Y8f8/gZS0dF8Xu2hNuvJAklZVFzfXEvqDzdY2Tv4puUxqL5qPHyWFIP6zC6DugWu/Mgo/7gqpmBt2hPp+dldAb3YgFB6NCwl1GneHbZqC/MgAEvv0pZ5kvIn6puKefsDqs1aa986QpTS6m894rbpRCIib7wEStCvB7jWw+UQUxo=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=VkBZsAiFAz9Y4meBWnrjGsMls9VyjXgRjtpNrWV7Y34=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261115_174710_049129_B97125A7 
-X-CRM114-Status: GOOD (  21.12  )
+X-CRM114-CacheID: sfid-20261115_174907_803514_4544805A 
+X-CRM114-Status: GOOD (  13.04  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,95 +76,107 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgQ2hhbndvbywKClRoYW5rcyBmb3IgdGhlIHJldmlldy4gWW91J3JlIHJpZ2h0IOKAlCBJJ3Zl
-IGFsc28gdGFrZW4gZGV2ZnJlcS0+bG9jawphcm91bmQgdGhlIGdvdmVybm9yX2RhdGEgYXNzaWdu
-bWVudCBpbiB1c2Vyc3BhY2VfaW5pdCgpIGluIHYzLgoKV2lsbCBzZW5kIHYzIHNob3J0bHkuCgoK
-5ZyoIDIwMjYvMTEvMTQgMjI6MTYsIENob2kgQ2hhbndvbyDlhpnpgZM6Cj4KPiBPbiAxMC8yMi8y
-MDI2IDExOjIxIEFNLCBGaW5sZXkgWGlhbyB3cm90ZToKPj4gVGhlIHVzZXJzcGFjZSBnb3Zlcm5v
-ciBpcyB0aGUgb25seSBvbmUgdGhhdCB1c2VzIGRldmZyZXEtPmdvdmVybm9yX2RhdGEsCj4+IGFs
-bG9jYXRlZCBpbiBpdHMgREVWRlJFUV9HT1ZfU1RBUlQgaGFuZGxlciAodXNlcnNwYWNlX2luaXQo
-KSkgYW5kIGZyZWVkCj4+IGluIGl0cyBERVZGUkVRX0dPVl9TVE9QIGhhbmRsZXIgKHVzZXJzcGFj
-ZV9leGl0KCkpLgo+Pgo+PiBXaGVuIHN3aXRjaGluZyBnb3Zlcm5vcnMgdmlhIHN5c2ZzIChnb3Zl
-cm5vcl9zdG9yZSBpbiBkZXZmcmVxLmMpLCB0aGUKPj4gc2VxdWVuY2UgaXM6Cj4+Cj4+IFNUT1Ao
-b2xkKSAtPiBkZi0+Z292ZXJub3IgPSB1c2Vyc3BhY2UgLT4gU1RBUlQodXNlcnNwYWNlKSAtPiB1
-c2Vyc3BhY2VfaW5pdAo+Pgo+PiBCZXR3ZWVuIHRoZSBkZi0+Z292ZXJub3IgYXNzaWdubWVudCBh
-bmQgdXNlcnNwYWNlX2luaXQoKSBjb21wbGV0aW5nLAo+PiBnb3Zlcm5vcl9kYXRhIGlzIHN0aWxs
-IE5VTEwgKHRoZSBwcmV2aW91cyBnb3Zlcm5vciBuZXZlciB0b3VjaGVkIGl0LAo+PiBhbmQgdGhl
-IGNvcmUgZG9lcyBub3QgY2xlYXIgb3IgcHJlLWFsbG9jYXRlIGl0KS4gRHVyaW5nIHRoYXQgd2lu
-ZG93LAo+PiBhc3luY2hyb25vdXMgcGF0aHMgdGhhdCBjYWxsIHVwZGF0ZV9kZXZmcmVxKCkgb3V0
-c2lkZSBvZiB0aGUgZHJpdmVyJ3MKPj4gY29udHJvbCAtLSB0aGUgT1BQIG5vdGlmaWVyIChkZXZm
-cmVxLmM6Njg2KSBhbmQgdGhlIHBtX3FvcyBub3RpZmllcgo+PiAoZGV2ZnJlcS5jOjcwNykgLS0g
-cnVuIGRldmZyZXFfdXBkYXRlX3RhcmdldCgpIHVuZGVyIGRmLT5sb2NrIGFuZCByZWFjaAo+PiBk
-ZXZmcmVxX3VzZXJzcGFjZV9mdW5jKCksIHdoaWNoIGRlcmVmZXJlbmNlcyBnb3Zlcm5vcl9kYXRh
-IHdpdGhvdXQgYQo+PiBOVUxMIGNoZWNrLCBjYXVzaW5nOgo+Pgo+PiAgICBVbmFibGUgdG8gaGFu
-ZGxlIGtlcm5lbCBhY2Nlc3MgdG8gdXNlciBtZW1vcnkgb3V0c2lkZSB1YWNjZXNzIHJvdXRpbmVz
-Cj4+ICAgIHBjIDogZGV2ZnJlcV91c2Vyc3BhY2VfZnVuYysweGMvMHgyOAo+PiAgICBsciA6IGRl
-dmZyZXFfdXBkYXRlX3RhcmdldCsweDU4LzB4MTU4Cj4+Cj4+IEFkZCBhIE5VTEwgY2hlY2sgaW4g
-ZGV2ZnJlcV91c2Vyc3BhY2VfZnVuYygpIGFuZCBmYWxsIGJhY2sgdG8KPj4gcHJldmlvdXNfZnJl
-cSwgd2hpY2ggaXMgdGhlIHNhbWUgYmVoYXZpb3VyIGFzIHRoZSBleGlzdGluZyAibm8gdXNlcgo+
-PiBmcmVxdWVuY3kgc3BlY2lmaWVkIHlldCIgYnJhbmNoLiBUaGlzIGNsb3NlcyB0aGUgcmFjZSBm
-b3IgYWxsIGNhbGxlcnMKPj4gc2luY2UgZXZlcnkgcGF0aCB1bHRpbWF0ZWx5IGdvZXMgdGhyb3Vn
-aCBnZXRfdGFyZ2V0X2ZyZXEuCj4+Cj4+IEFkZGl0aW9uYWxseSwgdGFrZSBkZXZmcmVxLT5sb2Nr
-IGFyb3VuZCB0aGUga2ZyZWUoKS9OVUxMIGFzc2lnbm1lbnQgaW4KPj4gdXNlcnNwYWNlX2V4aXQo
-KS4gV2l0aG91dCBpdCwgYSBjb25jdXJyZW50IE9QUC9wbV9xb3Mgbm90aWZpZXIgcnVubmluZwo+
-PiB1bmRlciBkZXZmcmVxLT5sb2NrIGNvdWxkIHJlYWQgZ292ZXJub3JfZGF0YSBhZnRlciBpdCBp
-cyBmcmVlZCBidXQKPj4gYmVmb3JlIGl0IGlzIHNldCB0byBOVUxMLCBjb25zdGl0dXRpbmcgYSB1
-c2UtYWZ0ZXItZnJlZS4KPj4KPj4gRml4ZXM6IDVmZGRlZDg0NDg5MiAoIlBNL2RldmZyZXE6IGdv
-dmVybm9yOiBBZGQgYSBwcml2YXRlIGdvdmVybm9yX2RhdGEgZm9yIGdvdmVybm9yIikKPj4gQ2M6
-IHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmcKPj4gU2lnbmVkLW9mZi1ieTogRmlubGV5IFhpYW8gPGZp
-bmxleS54aWFvQHJvY2stY2hpcHMuY29tPgo+Pgo+PiBMaW5rOiBodHRwczovL2xvcmUua2VybmVs
-Lm9yZy9saW51eC1wbS8yMDI2MDcyMzA4MDgwNi4xNDUxLTEtZmlubGV5LnhpYW9Acm9jay1jaGlw
-cy5jb20vCj4+IC0tLQo+PiBDaGFuZ2VzIGluIHYyOgo+PiAtIEFkZCBGaXhlczogdGFnIGFuZCBD
-Yzogc3RhYmxlQHZnZXIua2VybmVsLm9yZwo+Pgo+PiAgIGRyaXZlcnMvZGV2ZnJlcS9nb3Zlcm5v
-cl91c2Vyc3BhY2UuYyB8IDQgKysrLQo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMo
-KyksIDEgZGVsZXRpb24oLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZGV2ZnJlcS9nb3Zl
-cm5vcl91c2Vyc3BhY2UuYyBiL2RyaXZlcnMvZGV2ZnJlcS9nb3Zlcm5vcl91c2Vyc3BhY2UuYwo+
-PiBpbmRleCAzOTA2ZWJlZGJhZTguLmY3YTQ4NWM0M2ZkNyAxMDA2NDQKPj4gLS0tIGEvZHJpdmVy
-cy9kZXZmcmVxL2dvdmVybm9yX3VzZXJzcGFjZS5jCj4+ICsrKyBiL2RyaXZlcnMvZGV2ZnJlcS9n
-b3Zlcm5vcl91c2Vyc3BhY2UuYwo+PiBAQCAtMjQsNyArMjQsNyBAQCBzdGF0aWMgaW50IGRldmZy
-ZXFfdXNlcnNwYWNlX2Z1bmMoc3RydWN0IGRldmZyZXEgKmRmLCB1bnNpZ25lZCBsb25nICpmcmVx
-KQo+PiAgIHsKPj4gICAJc3RydWN0IHVzZXJzcGFjZV9kYXRhICpkYXRhID0gZGYtPmdvdmVybm9y
-X2RhdGE7Cj4+ICAgCj4+IC0JaWYgKGRhdGEtPnZhbGlkKQo+PiArCWlmIChkYXRhICYmIGRhdGEt
-PnZhbGlkKQo+PiAgIAkJKmZyZXEgPSBkYXRhLT51c2VyX2ZyZXF1ZW5jeTsKPj4gICAJZWxzZQo+
-PiAgIAkJKmZyZXEgPSBkZi0+cHJldmlvdXNfZnJlcTsgLyogTm8gdXNlciBmcmVxIHNwZWNpZmll
-ZCB5ZXQgKi8KPj4gQEAgLTExMCw4ICsxMTAsMTAgQEAgc3RhdGljIHZvaWQgdXNlcnNwYWNlX2V4
-aXQoc3RydWN0IGRldmZyZXEgKmRldmZyZXEpCj4+ICAgCWlmIChkZXZmcmVxLT5kZXYua29iai5z
-ZCkKPj4gICAJCXN5c2ZzX3JlbW92ZV9ncm91cCgmZGV2ZnJlcS0+ZGV2LmtvYmosICZkZXZfYXR0
-cl9ncm91cCk7Cj4+ICAgCj4+ICsJbXV0ZXhfbG9jaygmZGV2ZnJlcS0+bG9jayk7Cj4+ICAgCWtm
-cmVlKGRldmZyZXEtPmdvdmVybm9yX2RhdGEpOwo+PiAgIAlkZXZmcmVxLT5nb3Zlcm5vcl9kYXRh
-ID0gTlVMTDsKPj4gKwltdXRleF91bmxvY2soJmRldmZyZXEtPmxvY2spOwo+PiAgIH0KPj4gICAK
-Pj4gICBzdGF0aWMgaW50IGRldmZyZXFfdXNlcnNwYWNlX2hhbmRsZXIoc3RydWN0IGRldmZyZXEg
-KmRldmZyZXEsCj4gSGksCj4KPiBMb29rcyBnb29kIHRvIG1lLgo+Cj4gSSB0aGluayB0aGF0IGl0
-IGlzIG5lZWRlZCB0byBsb2NrICBvbiB1c3Jlc3BhY2VfaW5pdC4KPgo+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL2RldmZyZXEvZ292ZXJub3JfdXNlcnNwYWNlLmMgYi9kcml2ZXJzL2RldmZyZXEvZ292
-ZXJub3JfdXNlcnNwYWNlLmMKPiBpbmRleCBmN2E0ODVjNDNmZDcuLmNmYmQ3Mjg5MjU5OCAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL2RldmZyZXEvZ292ZXJub3JfdXNlcnNwYWNlLmMKPiArKysgYi9k
-cml2ZXJzL2RldmZyZXEvZ292ZXJub3JfdXNlcnNwYWNlLmMKPiBAQCAtOTQsNyArOTQsOSBAQCBz
-dGF0aWMgaW50IHVzZXJzcGFjZV9pbml0KHN0cnVjdCBkZXZmcmVxICpkZXZmcmVxKQo+ICAgCQln
-b3RvIG91dDsKPiAgIAl9Cj4gICAJZGF0YS0+dmFsaWQgPSBmYWxzZTsKPiArCW11dGV4X2xvY2so
-JmRldmZyZXEtPmxvY2spOwo+ICAgCWRldmZyZXEtPmdvdmVybm9yX2RhdGEgPSBkYXRhOwo+ICsJ
-bXV0ZXhfdW5sb2NrKCZkZXZmcmVxLT5sb2NrKTsKPiAgIAo+ICAgCWVyciA9IHN5c2ZzX2NyZWF0
-ZV9ncm91cCgmZGV2ZnJlcS0+ZGV2LmtvYmosICZkZXZfYXR0cl9ncm91cCk7Cj4gICBvdXQ6Cgot
-LSAKQmVzdCByZWdhcmRzLAoK5bqV5bGC5bmz5Y+w5Lit5b+DIOiClumUi++8iEZpbmxleSBYaWFv
-77yJCioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgrnkZ7oiq/lvq7nlLXlrZDogqHku73mnInp
-mZDlhazlj7gKUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uLCBMdGQuCuemj+W7uuecgeemj+W3nuW4
-gumTnOebmOi3r+i9r+S7tuWkp+mBkzg55Y+36L2v5Lu25ZutQeWMujIx5Y+35qW8IDM1MDAwMwpO
-by4yMSBCdWlsZGluZywgQSBEaXN0cmljdCwgRnV6aG91IFNvZnR3YXJlIFBhcmssIEZ1emhvdSwg
-RnVqaWFuIDM1MDAwMywgUC5SLiBDaGluYQpUZWw6IDA1OTEtODM5OTE5MDYtODYwMiBNb2JpbGU6
-IDE4NTA2MDU3NjAzCioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+The userspace governor is the only one that uses devfreq->governor_data,
+allocated in its DEVFREQ_GOV_START handler (userspace_init()) and freed
+in its DEVFREQ_GOV_STOP handler (userspace_exit()).
+
+When switching governors via sysfs (governor_store in devfreq.c), the
+sequence is:
+
+STOP(old) -> df->governor = userspace -> START(userspace) -> userspace_init
+
+Between the df->governor assignment and userspace_init() completing,
+governor_data is still NULL (the previous governor never touched it,
+and the core does not clear or pre-allocate it). During that window,
+asynchronous paths that call update_devfreq() outside of the driver's
+control -- the OPP notifier (devfreq.c:686) and the pm_qos notifier
+(devfreq.c:707) -- run devfreq_update_target() under df->lock and reach
+devfreq_userspace_func(), which dereferences governor_data without a
+NULL check, causing:
+
+  Unable to handle kernel access to user memory outside uaccess routines
+  pc : devfreq_userspace_func+0xc/0x28
+  lr : devfreq_update_target+0x58/0x158
+
+Add a NULL check in devfreq_userspace_func() and fall back to
+previous_freq, which is the same behaviour as the existing "no user
+frequency specified yet" branch. This closes the race for all callers
+since every path ultimately goes through get_target_freq.
+
+Additionally, take devfreq->lock around the governor_data assignment in
+userspace_init() and around the kfree()/NULL assignment in
+userspace_exit(). Without them, a concurrent OPP/pm_qos notifier running
+under devfreq->lock could race with the setup/teardown of governor_data:
+it could read governor_data after it is freed but before it is set to
+NULL, constituting a use-after-free. Note that all DEVFREQ_GOV_START
+callers invoke the handler without holding devfreq->lock, so taking the
+lock in userspace_init() is safe.
+
+Fixes: 5fdded844892 ("PM/devfreq: governor: Add a private governor_data for governor")
+Cc: stable@vger.kernel.org
+Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+
+Link: https://lore.kernel.org/linux-pm/20260723080806.1451-1-finley.xiao@rock-chips.com/
+---
+Changes in v3:
+- Also take devfreq->lock around the governor_data assignment in
+  userspace_init()
+
+Changes in v2:
+- Add Fixes: tag and Cc: stable@vger.kernel.org
+
+ drivers/devfreq/governor_userspace.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/devfreq/governor_userspace.c b/drivers/devfreq/governor_userspace.c
+index 3906ebedbae8..cfbd72892598 100644
+--- a/drivers/devfreq/governor_userspace.c
++++ b/drivers/devfreq/governor_userspace.c
+@@ -24,7 +24,7 @@ static int devfreq_userspace_func(struct devfreq *df, unsigned long *freq)
+ {
+ 	struct userspace_data *data = df->governor_data;
+ 
+-	if (data->valid)
++	if (data && data->valid)
+ 		*freq = data->user_frequency;
+ 	else
+ 		*freq = df->previous_freq; /* No user freq specified yet */
+@@ -94,7 +94,9 @@ static int userspace_init(struct devfreq *devfreq)
+ 		goto out;
+ 	}
+ 	data->valid = false;
++	mutex_lock(&devfreq->lock);
+ 	devfreq->governor_data = data;
++	mutex_unlock(&devfreq->lock);
+ 
+ 	err = sysfs_create_group(&devfreq->dev.kobj, &dev_attr_group);
+ out:
+@@ -110,8 +112,10 @@ static void userspace_exit(struct devfreq *devfreq)
+ 	if (devfreq->dev.kobj.sd)
+ 		sysfs_remove_group(&devfreq->dev.kobj, &dev_attr_group);
+ 
++	mutex_lock(&devfreq->lock);
+ 	kfree(devfreq->governor_data);
+ 	devfreq->governor_data = NULL;
++	mutex_unlock(&devfreq->lock);
+ }
+ 
+ static int devfreq_userspace_handler(struct devfreq *devfreq,
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
