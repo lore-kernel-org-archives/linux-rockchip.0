@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 03BB1606A334
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 15:58:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C83F8606A322
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 16:26:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Y139Fmhs;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=Vq+E7Xsk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=oYAw08QP;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=fDhmh7NK
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,68 +14,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=vj/DWRf2E3dMXheZVUuXtftIv5Uiw6ZPL5HFxJE91rE=; b=Y139FmhsVUHR1YNQDFP40aYzjS
-	Vl5LSQCi9Tke21j7TVKqCWkXRlZsU/PqiOMtIZJ9MNES+eCnm2Mo1Or0cY9pjFNt9xWNPlmE08DSD
-	Wy6I2n/3ItVuNp+xNlmTnFtz9UnZU7xpAEEDrm2JZQXYCsadz57pw11p9t9ecTsXOxID2ZneFZli3
-	lTrODD+T39YLN5qZt+yDRkolEWEHVnlTWgR0lr3IegNOvJxMznB65LkPedm6Ihr6JcdphHfDBTLeq
-	ilPND3T6DUOBGviMP0SIrbhtJv52vhJ/KPACN/Yqs1a63NRv1o0kEv8l6kWfodWMX0T9qcNGuzEiD
-	9CBLgEYQ==;
+	bh=Y+Ybwj8ow5xPOuPGgjyIgYF6xkNFEUDItL0Ughct7rs=; b=oYAw08QPkS9mffd49BjBfrXYwS
+	+SdvVir6EbMD9LZ5OLvHQbV5Wcp5a41sCXFmQsI0y+UiWiHYMr8MqDxyuGZB0SpgN9F35fZelbH6D
+	c6aClbXLuoWLIYdXyvxsQfc0opTpRzMvIMvF7OsMEis3nnOAohou6ExtH85zYz9wMO+/+iIgP920B
+	KTcMc8aDQIDRnP1UM5KPHwuFf3GVQG2KRm6pK+Ta4bh6mKjDs/lOmFh50jiT7cCXo8Hm+BBQq1I9a
+	NsbIyzl0BR+tOj/SZGENR9LkXs8FXaTfFze13ZIpxbTAGy4M/9dfCbCGphbxBVbjAVpbqWqPfzz0m
+	0mcaynLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSz6L-000000038nN-3pJz;
-	Mon, 16 Nov 2026 15:58:37 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1xSzWv-00000003DOh-2jBq;
+	Mon, 16 Nov 2026 16:26:05 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSz6J-000000038mf-0Zlq;
-	Mon, 16 Nov 2026 15:58:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=zno5lGS0axCV2J7th/KKxA7LyCzjnlPiDTG2Ak1Q8bE=; b=Vq+E7XskQVTJi7Fjb9VsfEP7L2
-	ui7ElJUX6yhXo6pAgC/vgt3OJFYJJ1Usi4r0ta9yTSblNO2OlyoT0lqdg3RxrYh08HbkqLmMSZWjg
-	HEYgnwyZ4YtBeUr+HyOY4dDSPE/zmc/Y3S3sTj0aJFUudQwEFNuaXLAevYSQ4JvhFY2w=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1xSz5w-00GxGL-44; Mon, 16 Nov 2026 16:58:12 +0100
-Date: Mon, 16 Nov 2026 16:58:12 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Cunhao Lu <1579567540@qq.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	David Wu <david.wu@rock-chips.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	netdev <netdev@vger.kernel.org>,
-	devicetree <devicetree@vger.kernel.org>,
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
-	linux-rockchip <linux-rockchip@lists.infradead.org>,
-	linux-kernel <linux-kernel@vger.kernel.org>,
-	linux-stm32 <linux-stm32@st-md-mailman.stormreply.com>
-Subject: Re: [PATCH net-next v3 2/2] net: stmmac: dwmac-rk: Add RK3572 support
-Message-ID: <ec29187b-e23b-484b-b642-b1d504627c28@lunn.ch>
-References: <20261116-add-board-ok3572-c-net-v3-0-a957fdcd9c7a@qq.com>
- <20261116-add-board-ok3572-c-net-v3-2-a957fdcd9c7a@qq.com>
- <f8d4b637-1818-419c-ac51-fb2ded1f9b3e@lunn.ch>
- <tencent_273206094323A701D688217E3A4D72341C08@qq.com>
+	id 1xSzWt-00000003DNk-0hzB;
+	Mon, 16 Nov 2026 16:26:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1794846363; x=1826382363;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=besSWkv2lgjjgJhS0YJxeUkJug4DOd6erC79ptELE0k=;
+  b=fDhmh7NKnIxUcbpUOMthKtfQdpY5BWv7X5GnuZgT1BUWnfKFY013AgmI
+   5E/FxlCSZ4osMh0Nm6eyOjU4A0Y254jiI77UphQp4FlF2XSIF0Gt4r5jC
+   hBZ9H51oaptXERWKxnlgV//NQgMp4SNVDhWXjknX/TvdtK7OG22DsUTAS
+   aCKmHPnjNosBvcoWo5O5nX0K09PLpcZf68Ed+WvIBOr6iv6WodBRQ2dag
+   7sVd1l8qKoAR+6vbF/SgXVDX7JUWBNkT2PPWq6Gg5a1bNt15J+rmXt8VI
+   yIDY/LwLQMF2NLsL4CzOVw2eiC4xYSkyn3BDqgfnc1Ak9lz2FLapMIQF2
+   g==;
+X-CSE-ConnectionGUID: Wn12fY/lT5ySVMtBBg9qqQ==
+X-CSE-MsgGUID: Wzc11lXrTX2r48DB6MA2IQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11968"; a="3577882"
+X-IronPort-AV: E=Sophos;i="6.27,217,1787036400"; 
+   d="scan'208";a="3577882"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Nov 2026 08:26:02 -0800
+X-CSE-ConnectionGUID: SDP/YCk5SwGJiowYb7qt6w==
+X-CSE-MsgGUID: k+Hn71nVQtGxQ9G/P02lqQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,217,1787036400"; 
+   d="scan'208";a="9575553"
+Received: from smoticic-mobl1.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.245.207])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Nov 2026 08:26:00 -0800
+Date: Mon, 16 Nov 2026 17:25:52 +0100
+From: Mehdi Djait <mehdi.djait@linux.intel.com>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Michael Riesch <michael.riesch@collabora.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Hans Verkuil <hverkuil+cisco@kernel.org>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/6] media: rockchip: rkcif: fix the MIPI stop path
+ locking
+Message-ID: <avstwwwxx0KrGe23@mdjait-mobl>
+References: <cover.1793702189.git.daniel@makrotopia.org>
+ <744eeec346f96d580a9215c657951f5a737e734e.1793702189.git.daniel@makrotopia.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <tencent_273206094323A701D688217E3A4D72341C08@qq.com>
+In-Reply-To: <744eeec346f96d580a9215c657951f5a737e734e.1793702189.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_075835_177839_499EFBF0 
-X-CRM114-Status: GOOD (  19.06  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261116_082603_246227_018BD0FE 
+X-CRM114-Status: GOOD (  33.07  )
+X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,51 +88,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Nov 16, 2026 at 11:11:42PM +0800, Cunhao Lu wrote:
-> Hi,
-> 
-> > [...]
-> > > + .regs_valid = true,
-> > > + .regs = { 0x29d20000, 0x2a040000, 0 },
-> > > +};
-> >
-> > Just looking at this, it is not obvious that rx_delay and tx_delay are
-> > actually not used.
-> 
-> My board currently uses rgmii-id, where both MAC TX and RX delays
-> are disabled. I kept the delay handling to support rgmii-rxid,
-> rgmii-txid and rgmii, using the default values for the MAC delays
-> enabled in those modes. The legacy tx_delay and rx_delay properties
-> are now disallowed for RK3572 in the binding.
-> 
-> I currently have only one oscilloscope, with a maximum bandwidth of
-> 200 MHz. With this equipment, I cannot accurately determine how the
-> TX and RX delay register values translate to picoseconds, so I am
-> not planning to add support for tx-internal-delay-ps and
-> rx-internal-delay-ps in this series for now.
-> 
-> Would it be acceptable to support only rgmii-id for RGMII in the next
-> version, and reject rgmii, rgmii-rxid and rgmii-txid? This would let me
-> stop using tx_delay and rx_delay in the RK3572 driver path as well.
+Hello Daniel,
 
-No, rgmii, rgmii-rxid and rgmii-txid are valid, it depends on the PCB
-design.
+Thank you for the patch!
 
-https://elixir.bootlin.com/linux/v6.15/source/Documentation/devicetree/bindings/net/ethernet-controller.yaml#L287
+On Tue, Nov 03, 2026 at 10:45:29AM +0000, Daniel Golle wrote:
+> rkcif_mipi_stop_streaming() takes the subdev state mutex, and the
+> interrupt handler calls it at the frame end that completes a stop. A
+> mutex taken in hard interrupt context sleeps when it is contended, and
+> CONFIG_DEBUG_ATOMIC_SLEEP reports the call on every stream stop. The
+> state itself is not read on either path; the lock serialises the
+> read-modify-write of the interrupt enable and status registers, which
+> the streams of a MIPI block share.
+> 
+> Guard those registers with a spinlock per interface, taken with
+> interrupts disabled, so that the handler and the process context paths
+> exclude each other, and leave the subdev state alone.
+> 
+> Fixes: 1f2353f5a1af ("media: rockchip: rkcif: add support for rk3568 vicap mipi capture")
+> Assisted-by: LLM
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+> ---
+>  .../rockchip/rkcif/rkcif-capture-mipi.c       | 24 +++++++------------
+>  .../platform/rockchip/rkcif/rkcif-common.h    |  3 +++
+>  2 files changed, 12 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
+> index 686b995525b9b..53cfd37bf02bd 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
+> @@ -721,17 +721,14 @@ static int rkcif_mipi_start_streaming(struct rkcif_stream *stream)
+>  	struct rkcif_interface *interface = stream->interface;
+>  	const struct rkcif_output_fmt *active_out_fmt;
+>  	const struct rkcif_mipi_match_data *match_data;
+> -	struct v4l2_subdev_state *state;
+>  	u32 ctrl0 = 0, ctrl1 = 0, int_temp = 0, int_mask = 0, vlw = 0;
+> +	unsigned long flags;
+>  	u16 height, width;
+> -	int ret = -EINVAL;
+> -
+> -	state = v4l2_subdev_lock_and_get_active_state(&interface->sd);
+>  
+>  	active_out_fmt = rkcif_stream_find_output_fmt(stream, false,
+>  						      stream->pix.pixelformat);
+>  	if (!active_out_fmt)
+> -		goto out;
+> +		return -EINVAL;
+>  
+>  	height = stream->pix.height;
+>  	width = stream->pix.width;
+> @@ -746,6 +743,7 @@ static int rkcif_mipi_start_streaming(struct rkcif_stream *stream)
+>  	int_mask |= RKCIF_MIPI_INT_FRAME0_END(stream->id);
+>  	int_mask |= RKCIF_MIPI_INT_FRAME1_END(stream->id);
+>  
+> +	spin_lock_irqsave(&interface->irq_lock, flags);
+>  	int_temp = rkcif_mipi_read(interface, RKCIF_MIPI_INTEN);
+>  	int_temp |= int_mask;
+>  	rkcif_mipi_write(interface, RKCIF_MIPI_INTEN, int_temp);
+> @@ -753,6 +751,7 @@ static int rkcif_mipi_start_streaming(struct rkcif_stream *stream)
+>  	int_temp = rkcif_mipi_read(interface, RKCIF_MIPI_INTSTAT);
+>  	int_temp &= ~int_mask;
+>  	rkcif_mipi_write(interface, RKCIF_MIPI_INTSTAT, int_temp);
+> +	spin_unlock_irqrestore(&interface->irq_lock, flags);
+>  
+>  	rkcif_mipi_stream_write(stream, RKCIF_MIPI_FRAME0_VLW_Y, vlw);
+>  	rkcif_mipi_stream_write(stream, RKCIF_MIPI_FRAME1_VLW_Y, vlw);
+> @@ -769,26 +768,21 @@ static int rkcif_mipi_start_streaming(struct rkcif_stream *stream)
+>  	 */
+>  	rkcif_mipi_write(interface, RKCIF_MIPI_CTRL, RK3588_MIPI_CTRL_CAP_EN);
+>  
+> -	ret = 0;
+> -
+> -out:
+> -	v4l2_subdev_unlock_state(state);
+> -	return ret;
+> +	return 0;
+>  }
+>  
+>  static void rkcif_mipi_stop_streaming(struct rkcif_stream *stream)
+>  {
+>  	struct rkcif_interface *interface = stream->interface;
+> -	struct v4l2_subdev_state *state;
+>  	u32 int_temp = 0, int_mask = 0;
+> -
+> -	state = v4l2_subdev_lock_and_get_active_state(&interface->sd);
+> +	unsigned long flags;
+>  
+>  	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CTRL0, 0);
+>  
+>  	int_mask |= RKCIF_MIPI_INT_FRAME0_END(stream->id);
+>  	int_mask |= RKCIF_MIPI_INT_FRAME1_END(stream->id);
+>  
+> +	spin_lock_irqsave(&interface->irq_lock, flags);
+>  	int_temp = rkcif_mipi_read(interface, RKCIF_MIPI_INTEN);
+>  	int_temp &= ~int_mask;
+>  	rkcif_mipi_write(interface, RKCIF_MIPI_INTEN, int_temp);
+> @@ -796,10 +790,9 @@ static void rkcif_mipi_stop_streaming(struct rkcif_stream *stream)
+>  	int_temp = rkcif_mipi_read(interface, RKCIF_MIPI_INTSTAT);
+>  	int_temp &= ~int_mask;
+>  	rkcif_mipi_write(interface, RKCIF_MIPI_INTSTAT, int_temp);
+> +	spin_unlock_irqrestore(&interface->irq_lock, flags);
+>  
+>  	stream->stopping = false;
+> -
+> -	v4l2_subdev_unlock_state(state);
+>  }
+>  
+>  static void rkcif_mipi_set_crop(struct rkcif_stream *stream, u16 left, u16 top)
+> @@ -881,6 +874,7 @@ int rkcif_mipi_register(struct rkcif_device *rkcif)
+>  		interface->in_fmts_num = ARRAY_SIZE(mipi_in_fmts);
+>  		interface->set_crop = rkcif_mipi_set_crop;
+>  		interface->streams_num = 0;
+> +		spin_lock_init(&interface->irq_lock);
+>  		ret = rkcif_interface_register(rkcif, interface);
+>  		if (ret)
+>  			continue;
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-common.h b/drivers/media/platform/rockchip/rkcif/rkcif-common.h
+> index 4d9211ba9bda8..16a5ecb25c2fb 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-common.h
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-common.h
+> @@ -198,6 +198,9 @@ struct rkcif_interface {
+>  		struct rkcif_dvp dvp;
+>  	};
+>  
+> +	/* interrupt enable and status are shared by the streams of a block */
+> +	spinlock_t irq_lock;
+> +
+>  	void (*set_crop)(struct rkcif_stream *stream, u16 left, u16 top);
+>  };
 
-What i would prefer is that the C code does not parse the rx_delay and
-tx_delay properties. If somebody actually needs them, they need to
-implement tx-internal-delay-ps and rx-internal-delay-ps. Since you
-don't need them, you don't need to implement them.
+Could you please add this to this patch to fix the timeout issue when
+stopping the stream: I sent a patch series to fix some issues on the
+rkcif driver.
 
-      Andrew
+I fixed also the stop stream timeout issue and then I saw
+that it is quite similar to your patch.
+
+You can give this a test and tell me how it goes:
+
+$ git diff
+diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+index 66726f654674..c72e22e0d726 100644
+--- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
++++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+@@ -308,10 +308,6 @@ static void rkcif_stream_stop_streaming(struct vb2_queue *queue)
+        u64 mask;
+        int ret;
+ 
+-       mask = BIT_ULL(stream->id);
+-       v4l2_subdev_disable_streams(&stream->interface->sd, RKCIF_IF_PAD_SRC,
+-                                   mask);
+-
+        stream->stopping = true;
+        ret = wait_event_timeout(stream->wq_stopped, !stream->stopping,
+                                 msecs_to_jiffies(1000));
+@@ -319,6 +315,10 @@ static void rkcif_stream_stop_streaming(struct vb2_queue *queue)
+        if (!ret && stream->stop_streaming)
+                stream->stop_streaming(stream);
+ 
++       mask = BIT_ULL(stream->id);
++       v4l2_subdev_disable_streams(&stream->interface->sd, RKCIF_IF_PAD_SRC,
++                                   mask);
++
+        pm_runtime_put(rkcif->dev);
+ 
+        rkcif_stream_return_all_buffers(stream, VB2_BUF_STATE_ERROR);
+
+--
+Kind Regards
+Mehdi Djait
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
