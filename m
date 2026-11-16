@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A7691606A32F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 13:43:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CFBD5606A31C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 13:44:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bfgf5H6c;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=NzhE4WrA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=D0MddPCZ;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=t0Gz1Geq
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,32 +14,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=HJOZ7R+jgWdXMMcxY27WwZCgWyx7eEENKDFBHWpDIy0=; b=bfgf5H6csQ5Umpd4LZwRA8/Saz
-	Ug7Jpy5p6Zuz17WPxNeUt/n5sYbAt/NnH9/XToSMrwLekm8KDa5YaW5AbD6djps2VpYHro5rWj+R7
-	EbsGVKfgyqT1rZG759ZrFLwDvndG0PvPa9Fl544LRlycB8WUQt7VKxQqEKqLJuoesjRbi6uFENUUO
-	6H3j8R5WEtGAvZY8ydxLtkXTzNlwTpimF1YScsVwA7GUTNRYt/U40OBSTWlnBvZ+LhIzCWw3OzvzO
-	Kc9zqOZKAHULTlkN+SqGypkko94gRunkDKZvwe1Ctz4jXi24ycIA/ol8vJqmbBzS0/UgGZGpZU48u
-	yjcogW+Q==;
+	bh=K+eXFF/p+XfXfm2iuMazumVa5SDvXtj4PQ+4QX6EiS8=; b=D0MddPCZoJHYh67qqRUctlz3f5
+	VIR32KE47bBLv6sOzNM8ujrxG0HC64fpu7stZIhck/4Uea3KMGmLhLG1kfjHp+4lfTB1zkYw3xlCZ
+	Tj+XVruj53jHO2bpOMfJ8bwxpmP6Ry9u1UEi7Tpq2CCm74N1X9+QKhDd8bXhPuA3z1wnHEMp2inRm
+	RQbVvucYiCyTjHcUQNcOynN+dsRtivYL3CqBylbQ17n/1C3O3VD1aeDUmpHRs6uK3PKUTbsJqgZa0
+	SsNzjsxhB3VxxvBJJUb7pTv+9IyM/uL2y9TxRy6BojZkUvVu01vJj6vgYrxl04EgGSpf5cpIVGfMo
+	vLm6SJ0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSwzz-00000002g4Y-3amt;
-	Mon, 16 Nov 2026 13:43:55 +0000
+	id 1xSx0i-00000002gD0-0XcW;
+	Mon, 16 Nov 2026 13:44:40 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSwzw-00000002g3f-31zP;
-	Mon, 16 Nov 2026 13:43:54 +0000
+	id 1xSx0f-00000002gBr-086q;
+	Mon, 16 Nov 2026 13:44:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=OgpKVi56iYyrqQb1XrLNVi7ftcITPhmk6C7+krOK81I=; b=NzhE4WrAx6sZNQUV4/SVRdwpX1
-	6Xt5b3BQMx6CM6lrifP4tOmcFTEPbB2/61J9kecr/gJvgzWS+IGsuRTW1yM+/spsRSki3b5pvmzxW
-	p69T2L2cWesX2gauOjZ1EA7x0kP/6vGP0qVHV94jhbUh3KqJz8Y8vvwfZ2YI8MYLEGgc=;
+	bh=xyOPebxqczNB/gJfDkZwbXaMote1MbilyqqQ/50z+0A=; b=t0Gz1GeqYdligw2G0195Np4K7S
+	J4qjzX/g7YT7Ah4vixjvHNMBSUKX4e8o10jS3yArLjMJ7D30wHuxXkxL8YO1F8GiL0WQp8QZ6CFGg
+	NaV159lQ3Xn9YmAmpWNAVdeVBeOOCVAjlHSB8oz58yMWc/cElf/Kbu4LRHImYIWnegqs=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1xSwzV-00GvKE-JM; Mon, 16 Nov 2026 14:43:25 +0100
-Date: Mon, 16 Nov 2026 14:43:25 +0100
+	id 1xSx0P-00GvLr-61; Mon, 16 Nov 2026 14:44:21 +0100
+Date: Mon, 16 Nov 2026 14:44:21 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: 1579567540@qq.com
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -59,16 +59,19 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
 	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH net-next v3 0/2] net: stmmac: Add RK3572 support
-Message-ID: <d9114295-47ac-4fa7-ab4a-db631a46b363@lunn.ch>
+Subject: Re: [PATCH net-next v3 1/2] dt-bindings: net: rockchip-dwmac: Add
+ RK3572
+Message-ID: <03378e2f-4667-4cfb-9662-f65629e04321@lunn.ch>
 References: <20261116-add-board-ok3572-c-net-v3-0-a957fdcd9c7a@qq.com>
+ <20261116-add-board-ok3572-c-net-v3-1-a957fdcd9c7a@qq.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20261116-add-board-ok3572-c-net-v3-0-a957fdcd9c7a@qq.com>
+In-Reply-To: <20261116-add-board-ok3572-c-net-v3-1-a957fdcd9c7a@qq.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_054352_780671_82734560 
-X-CRM114-Status: GOOD (  15.50  )
+X-CRM114-CacheID: sfid-20261116_054437_087214_043E5F9A 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,70 +85,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Nov 16, 2026 at 03:39:13PM +0800, Cunhao Lu via B4 Relay wrote:
-> This is one of the subsystem submissions for RK3572 support.
+On Mon, Nov 16, 2026 at 03:39:14PM +0800, Cunhao Lu via B4 Relay wrote:
+> From: Cunhao Lu <1579567540@qq.com>
 > 
-> This series adds the RK3572 GMAC bindings and support for both Ethernet
-> controllers in the Rockchip stmmac glue driver. It provides RGMII and
-> RMII mode and clock control, together with RGMII delay configuration.
+> Add the rockchip,rk3572-gmac compatible with the snps,dwmac-4.20a
+> fallback and require rockchip,php-grf.
+> 
+> Mark tx_delay and rx_delay as deprecated and disallow them for RK3572
+> so new designs do not use the legacy delay properties.
+> 
+> Signed-off-by: Cunhao Lu <1579567540@qq.com>
 
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-> 
-> The RK3572 SoC has eight CPU cores: two Cortex-A73 cores and six
-> Cortex-A53 cores. It also integrates an Arm Mali-G310V2 MC1 GPU.
-> The OK3572-C board provides two Gigabit Ethernet ports, three USB3 Type-A
-> ports, a Type-C dual-role port, eMMC, microSD, and UART.
-> 
-> Testing was performed with Debian 13 minimal and Linux 7.3 on the
-> OK3572-C with the FET3572-C module.
-> 
-> Passed functionality:
-> 
-> - SD and eMMC complete the firmware, kernel, and root filesystem
->   boot chain.
-> - UART console works at 1500000 baud.
-> - SD read/write and data persistence checks pass.
-> - All eight CPUs start; CPU frequency scaling and hotplug checks pass.
-> - Both Ethernet ports obtain IPv4 addresses and pass bidirectional file
->   transfers.
-> - All three Type-A ports pass USB2 and USB3 enumeration, data transfers,
->   and reconnect persistence checks.
-> - Type-C host and device modes pass in both plug orientations. Physical
->   reconnects correctly select the expected device, host, and device roles
->   in sequence.
-> 
-> Stability:
-> 
-> - Repeated cold and software reboots complete on SD and eMMC without data
->   integrity failures.
-> - A combined CPU, memory, network, SD, and USB3 stress test completes
->   without a crash, lockup, CPU offline event, or thermal shutdown.
-> - Ethernet error and drop counters do not increase during bidirectional
->   network tests.
-> 
-> Build and checks:
-> 
-> - The kernel, modules, and board DTB build successfully.
-> - The series passes checkpatch with --strict.
-> 
-> Untested hardware and paths:
-> 
-> - NPU
-> - PCIe
-> - GPU, video output, and audio
-> - Other low-speed external interfaces
-
-Most of this is irrelevant for netdev. Please write your merge commit
-message for the subsystem doing to merge.
-
-Andrew
+    Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
