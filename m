@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 95627606A31C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 10:59:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 58190606A31C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 11:52:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Qd7+j+tW;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=gmYoRoB6
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Tp2H3jky;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=N4qcmHqo
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,55 +14,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=dPJNRPuH/sBelDaUJX33q5BK86FCmjA+QmrucK41N38=; b=Qd7+j+tWI0ZGjLuZjrfAayHHxC
-	hAIZbHuNgHZYhcwg3HnEn472QYTaz+x0MBM/otx5HRPE1LsE0ULLhsgNMEPjoxftCote3/GehTn1h
-	si+npKQ4EiYW5s47XFGHZ7NOuPsPc6lUP+UiiauhuQ1gBdfm3+zTB6kgrNL6rqqVwQ0W/iSueG4Eo
-	AhsWc0dXNkJFMFMFsEfdAujcmfn6ShplsLDP/d0GG+KhGZMHnTqxFwzO/LFJ3ialxjP+yTFrPtzgi
-	ix1lxryy2aODCSzvtnas3OsITpOA2GnUNj9OKxIKlP5BnF9lnKVolNQKv/ZT2r+ICUqD+hypJdzO/
-	Y+OAqA0Q==;
+	bh=I+EAw7IPfb6MezQS61ZTfltp1m0HlKd1oqbi3pxdknQ=; b=Tp2H3jkyw9soStnIYpEmNJ4wc0
+	bvHAqDwqS+V7vHl44wQQm4AvjAg5xaWChoZXrsL4sRevRD++5xZHXlxo2lHL2vLmdyJYzmXf66+C1
+	H41LW1YFSw2xfFhUO1uZ+OegL8p11HYt7ENY3KFPH5e0aqZr5mnHcoZKUSTotIrmU4CRBKtZtxZBD
+	iXUsHWBmKh87pzRtwFPoCzWWrVlC8gpAnXP0bzNB3aOi9joG/K/BwCuGop85vTDbIackQYNnU9i01
+	v8KHhIIFc/YDVKqnzw56MlQFBi2I6I5YzIuYPmNBGHh7Ee7jTZa+PiQwN2EhA0RI1lKvIy7szIbXn
+	FPCzEM2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSuQM-000000023LR-2JL7;
-	Mon, 16 Nov 2026 10:58:58 +0000
+	id 1xSvG0-00000002FIK-0m0C;
+	Mon, 16 Nov 2026 11:52:20 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSuQK-000000023L7-2Y9A
-	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Nov 2026 10:58:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794826723; cv=none; 
+	id 1xSvFx-00000002FHM-2Rmu;
+	Mon, 16 Nov 2026 11:52:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794829917; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=U4di7FQLEGmh5daOcGk2o50RD1RZRFsdi9aQoA8ojjLbUX96S1kCd8uSWRqLueoimcp4P7JKDZYVX4oKgLEV/m4NJbcoxgPMOKNuFlJdap9YOtxhQI4CpqdulRa2+6yLW9XDDT6LA+V6n7yB6rZxRtrtm9AlpPztUPNZH/iOX2c=
+	b=irrbfyXogddlylcQkZlr6cFYcsiEft7lACg+oXK/70XkypgFcOjhmlPA7bq12bE16XzEfAWJYo4r3oWZcjOf3EUX46INf7/iqVbcT/NRcuNT9mFS7dg9/l2KKYIYPTF8fJlCSwLunT45fEXl/zkUcBQNFCd+V4pflORA2ag13Lk=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1794826723; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=H0/JMO0MVBV4Zw97lRkerZQkk83rH+m9BE4n2iCqH98=; 
-	b=NuORiU6iqRD+GYvbIZWS+GNV1E4TWx6iJwKNY9M37u/rLqNJNTyA0VjewG1qB1/Gg/wFrFqqTSUmOaDbwwBbfV+mHYJidjO1EadWsEmQwdNTuDk45z+w2eGVjdN6DYoifgNy2dlMbvUgXMPgFqM40ZQzrNmq8smMAyZuzac7doc=
+	t=1794829917; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=w26fEEm5ybG+G7gyNNOpBbzc8hwwqjZd0VP12Wt699s=; 
+	b=D6oNnhh/8JLSRSl95JJcti5S9vsohH8/64oARoV8f0hCc7bQfImSA93NBfkpdwFosA9+xFE864riOu+NhuPED6i9DB1j6vHnT2txkXGIvpK+V9VAYv5NUNVf937QzPzylg+y6IoVhuWf4Nbs0gqve8aq48i8uH8WNoom1ikvaPI=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
 	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=gmYoRoB6F3PFZlpxFpHCOUFln6iGvF6CHYby8KvdogacxOk8YQW6aSHLgXr+P81MaTOah0JATWnZ+Tg1EMxoCPxQvonaD+Yyw0ZIpd0HqgXJNog5BEgjmh+aQAlpEQfkOMxAv4PNaPh4MfO/VvB6d5XZjrJgYDrFKtNArTSeU+g=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=H0/JMO0MVBV4Zw97lRkerZQkk83rH+m9BE4n2iCqH98=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1794826721300634.623479738804;
-	Mon, 16 Nov 2026 02:58:41 -0800 (PST)
-Message-ID: <df61d7d2-7ad8-4b68-b3a0-7a03513ab5b7@collabora.com>
-Date: Mon, 16 Nov 2026 11:58:35 +0100
+DKIM-Signature: a=rsa-sha256; b=N4qcmHqo84guRQyqnmSu5MjnWgmGqqRgJx9a78v6H+YMDg0X2DOyl/HIZmAgFDsvibkEl5CTzA8eowA/zTt1HiGiSi0ht5rNR3SauwE+SxlW6i2xeongA00WAH966tOIosLWnLvvNIaFko5hsiXgrA4AvfVKhjx3Q9zdpAKkMP0=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=w26fEEm5ybG+G7gyNNOpBbzc8hwwqjZd0VP12Wt699s=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794829915540706.1524411200606;
+	Mon, 16 Nov 2026 03:51:55 -0800 (PST)
+Message-ID: <8c3805ca-0be7-4634-8904-30a9c36d8962@collabora.com>
+Date: Mon, 16 Nov 2026 12:51:45 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/2] media: rockchip: rkcif: Don't reset the hardware
- in runtime suspend
-To: Mehdi Djait <mehdi.djait@linux.intel.com>
-Cc: linux-media@vger.kernel.org, paul.elder@ideasonboard.com,
- daniel@makrotopia.org, linux-rockchip@lists.infradead.org,
- stable@vger.kernel.org
-References: <20261112183208.2688580-1-mehdi.djait@linux.intel.com>
- <20261112183208.2688580-2-mehdi.djait@linux.intel.com>
+Subject: Re: [PATCH 2/2] media: rockchip: rkcif: Honour the requested
+ bytesperline on MIPI
+To: Faizel K B <faizel.kb@gmail.com>
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, libcamera-devel@lists.libcamera.org,
+ Robert Mader <robert.mader@collabora.com>
+References: <20261105232310.385463-1-faizel.kb@gmail.com>
+ <20261105232310.385463-3-faizel.kb@gmail.com>
+ <51b09428-9d10-4f36-a811-a681e479e45e@collabora.com>
+ <fxrwhxkzgihpiz52rbeuomtqkzz7izgdfcbux7osamqruc7w7u@qhvh3nkqypro>
 Content-Language: en-US
 From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20261112183208.2688580-2-mehdi.djait@linux.intel.com>
+In-Reply-To: <fxrwhxkzgihpiz52rbeuomtqkzz7izgdfcbux7osamqruc7w7u@qhvh3nkqypro>
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_025856_683312_641875D8 
-X-CRM114-Status: GOOD (  20.92  )
+X-CRM114-CacheID: sfid-20261116_035217_881726_D39D97CC 
+X-CRM114-Status: GOOD (  25.66  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,108 +77,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Mehdi,
-
-On 11/12/26 19:32, Mehdi Djait wrote:
-> The reset in the runtime suspend also resets the VICAP IOMMU.
-> 
-> When the IOMMU driver accesses the IOMMU registers inside the delay window
-> between the assert and deassert, e.g. in rk_iommu_zap_lines() to shootdown
-> IOTLB entries, the system hangs.
-> 
-> Drop the reset and the now unused reset control.
-
-I agree that the current situation is nothing more than a crude hack
-that happened to work in most cases. But I doubt simply removing the
-reset is the correct solution. Recently, I saw some downstream patch
-that makes the reset a shared one, which seems like the right thing to
-do here. What would you think about that?
-
-Best regards,
-Michael
-
-> 
-> Fixes: f53fb31a3889 ("media: rockchip: add driver for the rockchip camera interface")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Mehdi Djait <mehdi.djait@linux.intel.com>
-> ---
->  .../media/platform/rockchip/rkcif/rkcif-common.h  |  1 -
->  drivers/media/platform/rockchip/rkcif/rkcif-dev.c | 15 ---------------
->  2 files changed, 16 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-common.h b/drivers/media/platform/rockchip/rkcif/rkcif-common.h
-> index 4d9211ba9bda..38208e8b7b2d 100644
-> --- a/drivers/media/platform/rockchip/rkcif/rkcif-common.h
-> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-common.h
-> @@ -237,7 +237,6 @@ struct rkcif_device {
->  	struct clk_bulk_data clks[RKCIF_CLK_MAX];
->  	unsigned int clks_num;
->  	struct regmap *grf;
-> -	struct reset_control *reset;
->  	void __iomem *base_addr;
->  
->  	struct rkcif_interface interfaces[RKCIF_IF_MAX];
-> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-dev.c b/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
-> index be3a174b9aab..dceabee2ecd6 100644
-> --- a/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
-> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
-> @@ -10,7 +10,6 @@
->   */
->  
->  #include <linux/clk.h>
-> -#include <linux/delay.h>
->  #include <linux/interrupt.h>
->  #include <linux/mfd/syscon.h>
->  #include <linux/module.h>
-> @@ -18,7 +17,6 @@
->  #include <linux/of_graph.h>
->  #include <linux/of_platform.h>
->  #include <linux/pm_runtime.h>
-> -#include <linux/reset.h>
->  
->  #include <media/v4l2-fwnode.h>
->  #include <media/v4l2-mc.h>
-> @@ -201,10 +199,6 @@ static int rkcif_probe(struct platform_device *pdev)
->  	if (ret)
->  		return dev_err_probe(dev, ret, "failed to get clocks\n");
->  
-> -	rkcif->reset = devm_reset_control_array_get_exclusive(dev);
-> -	if (IS_ERR(rkcif->reset))
-> -		return PTR_ERR(rkcif->reset);
-> -
->  	rkcif->grf = syscon_regmap_lookup_by_phandle(dev->of_node,
->  						     "rockchip,grf");
->  	if (IS_ERR(rkcif->grf))
-> @@ -273,15 +267,6 @@ static int rkcif_runtime_suspend(struct device *dev)
->  {
->  	struct rkcif_device *rkcif = dev_get_drvdata(dev);
->  
-> -	/*
-> -	 * Reset CIF (CRU, DMA, FIFOs) to allow a clean resume.
-> -	 * Since this resets the IOMMU too, we cannot issue this reset when
-> -	 * resuming.
-> -	 */
-> -	reset_control_assert(rkcif->reset);
-> -	udelay(5);
-> -	reset_control_deassert(rkcif->reset);
-> -
->  	clk_bulk_disable_unprepare(rkcif->clks_num, rkcif->clks);
->  
->  	return 0;
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRmFpemVsLAoKT24gMTEvMTIvMjYgMDc6MjAsIEZhaXplbCBLIEIgd3JvdGU6Cj4gSGkgTWlj
+aGFlbCwKPiAKPiBPbiBXZWQsIE5vdiAxMSwgMjAyNiBhdCAxMDo0Njo0M0FNICswMTAwLCBNaWNo
+YWVsIFJpZXNjaCB3cm90ZToKPj4KPj4gQ29tZSB0byB0aGluayBvZiBpdCwgVFJNIHAuIDIxMTEg
+c2F5cyBmb3IgZS5nLiBWSUNBUF9NSVBJMF9WTFdfSUQwOgo+PiAiVmlydHVhbCBsaW5lIHdpZHRo
+IG9mIGV2ZW4gZnJhbWUgZm9yIElEMCBwYXRoKG11c3QgYmUgYWxpZ25lZCB0byBkb3VibGUKPj4g
+d29yZCkuIiB3aGljaCBJIHdvdWxkIGludGVycHJldCBhcyAiaXQgbXVzdCBiZSBhIG11bHRpcGxl
+IG9mIGZvdXIKPj4gYnl0ZXMiLiBXaGF0IGRvIHlvdSB0aGluaz8KPj4KPiAKPiBUaGUgVklDQVAg
+cmVnaXN0ZXIgc3VtbWFyeSBkZWZpbmVzIGl0LlRSTSBwYXJ0IDEgKFYxLjAsIHBhZ2UgMjA4MSkK
+PiAiRFcgLSBEb3VibGUgV09SRCAoNjQgYml0cykgYWNjZXNzIi4gU28gOCBieXRlcy4KCkFjay4K
+Cj4+PiArc3RhdGljIHZvaWQgcmtjaWZfc3RyZWFtX3NldF9ieXRlc3BlcmxpbmUoc3RydWN0Cj4+
+PiB2NGwyX3BpeF9mb3JtYXRfbXBsYW5lICpwaXgsCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgIHUzMiByZXFfYnBsKQo+Pj4gK3sKPj4+ICvCoMKgwqAgdTMy
+IG1pbl9icGwgPSBBTElHTihwaXgtPnBsYW5lX2ZtdFswXS5ieXRlc3BlcmxpbmUsIDgpOwo+Pgo+
+PiBQbGVhc2UgYWRkIHN1cHBvcnQgZm9yIHRoZSBieXRlc3BlcmxpbmUgZmllbGQgaW4gYWxsIHRo
+ZSBwbGFuZV9mbXQKPj4gZW50cmllcyBoZXJlLi4uCj4+Cj4+PiDCoMKgwqDCoCB3aWR0aCA9IGNs
+YW1wX3QodTMyLCBwaXgtPndpZHRoLCBDSUZfTUlOX1dJRFRILCBDSUZfTUFYX1dJRFRIKTsKPj4+
+ICvCoMKgwqAgcmVxX2JwbCA9IHBpeC0+cGxhbmVfZm10WzBdLmJ5dGVzcGVybGluZTsKPj4KPj4g
+Li4uIGFuZCBoZXJlLgo+Pgo+Pj4gwqDCoMKgwqAgcmV0ID0gdjRsMl9maWxsX3BpeGZtdF9tcChw
+aXgsIGZtdC0+Zm91cmNjLCB3aWR0aCwgaGVpZ2h0KTsKPj4+IMKgwqDCoMKgIGlmIChyZXQpCj4+
+PiDCoMKgwqDCoMKgwqDCoMKgIHJldHVybiByZXQ7Cj4+Pgo+Pj4gK8KgwqDCoCBpZiAoc3RyZWFt
+LT5pbnRlcmZhY2UtPnR5cGUgPT0gUktDSUZfSUZfTUlQSSkKPj4+ICvCoMKgwqDCoMKgwqDCoCBy
+a2NpZl9zdHJlYW1fc2V0X2J5dGVzcGVybGluZShwaXgsIHJlcV9icGwpOwo+Pgo+PiBXaHkgaXMg
+dGhpcyByZXN0cmljdGVkIHRvIHRoZSBNSVBJIGludGVyZmFjZXM/Cj4+Cj4gCj4gVGhlIE1JUEkg
+Zm9ybWF0cyBhbGwgaGF2ZSBhIHNpbmdsZSBwbGFuZSwgYW5kIHRoZSBNSVBJIHBhdGggYWxyZWFk
+eQo+IHByb2dyYW1zIHRoZSBsaW5lIHdpZHRoIGZyb20gYnl0ZXNwZXJsaW5lLiBUaGUgRFZQIHBh
+dGggdXNlcyB0aGUgd2lkdGgsCj4gYW5kIEkgY2FuJ3QgdGVzdCBpdC4gQnV0IEkgYWdyZWUgaXQg
+c2hvdWxkIG5vdCBkZXBlbmQgb24gdGhlIGludGVyZmFjZS4KPiAKPiBGb3IgdjIgSSB3b3VsZDoK
+PiAKPiAtIHRha2UgdGhlIHJlcXVlc3RlZCBieXRlc3BlcmxpbmUgb2YgYWxsIHBsYW5lcyBpbnRv
+IGFjY291bnQsIGFuZCB1c2UKPiDCoCB0aGUgbGFyZ2VzdCBmb3IgYWxsIHBsYW5lcywgYXMgdGhl
+IERWUCBoYXMgb25lIGxpbmUgd2lkdGggcmVnaXN0ZXIKPiDCoCBmb3IgWSBhbmQgVVYKPiAtIGNv
+bXB1dGUgdGhlIHNpemVpbWFnZSBvZiBlYWNoIHBsYW5lIGZyb20gaXQKPiAtIGxpbWl0IGl0IHRv
+IHRoZSBsaW5lIHdpZHRoIGZpZWxkICgyMCBiaXRzIE1JUEksIDE1IGJpdHMgRFZQKQo+IC0gcHJv
+Z3JhbSBSS0NJRl9EVlBfVklSX0xJTkVfV0lEVEggZnJvbSBieXRlc3BlcmxpbmUsIHdpdGggdGhl
+IGN1cnJlbnQKPiDCoCB2YWx1ZSBhcyB0aGUgbWluaW11bQo+IAo+IERvZXMgdGhhdCBzb3VuZCBv
+az8KClRoYXQgZG9lcyBzb3VuZCByZWFzb25hYmxlLCB5ZXMuCgo+IEEgcXVlc3Rpb24gb24gdGhl
+IERWUDogdGhlIFBYMzAgVFJNIChQYXJ0IDIsIDUuMykgc2F5cyByYXcgZGF0YSBpcwo+IHN0b3Jl
+ZCBhcyAxNiBiaXRzIHBlciBwaXhlbCwgZXZlbiBmcm9tIGFuIDgtYml0IHNvdXJjZS4gVGhpcyBt
+YXRjaGVzCj4gdGhlIHdpZHRoICogMiBpbiB0aGUgZHJpdmVyLiBCdXQgZm9yIFY0TDJfUElYX0ZN
+VF9TKjggKGUuZy4KPiBWNEwyX1BJWF9GTVRfU1JHR0I4KSBieXRlc3BlcmxpbmUgaXMgdGhlIHdp
+ZHRoLCBzbyB0aGUgYnVmZmVyIGlzIGhhbGYKPiB0aGUgc2l6ZSB0aGUgaGFyZHdhcmUgd3JpdGVz
+LiBBbSBJIG1pc3Npbmcgc29tZXRoaW5nPwoKSSBkb24ndCBoYXZlIGFueSBQWDMwIGJvYXJkLCBh
+bmQgYWN0dWFsbHkgaXQgaXMgdGhlIGZpcnN0IHRpbWUgSSBoZWFyCmFib3V0IHRoYXQuIE1heWJl
+IE1laGRpIGNhbiBjaGltZSBpbj8KCj4gSSBjYW4gb25seSB0ZXN0IHRoZSBNSVBJIHBhdGgsIG9u
+IFJLMzU4OCAoUmFkeGEgUk9DSyA1QispLiBDb3VsZCB5b3UKPiB0ZXN0IHRoZSBEVlAgcGFydCBv
+biBQWDMwIG9yIFJLMzU2OD8KCkN1cnJlbnRseSwgSSBkb24ndCBoYXZlIGFueSBhY3RpdmUgRFZQ
+IHNldHVwLCBidXQgd2hlbiB5b3Ugc2VuZCB0aGUKdXBkYXRlZCBwYXRjaGVzIEknbGwgYXNrIGFy
+b3VuZC4KClRoYW5rcyBhbmQgYmVzdCByZWdhcmRzLApNaWNoYWVsCgo+IAo+IFJlZ2FyZHMsCj4g
+RmFpemVsCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
