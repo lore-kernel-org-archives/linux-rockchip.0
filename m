@@ -2,111 +2,86 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E972A606A323
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 07:39:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 82D2F606A323
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 08:47:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2OE6DI0V;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PBHaF9A9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TJb0GbAz;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=airkyi.com header.i=@airkyi.com header.a=rsa-sha256 header.s=altu2504 header.b=WkmvYP94
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=zSmJlz+yPA8/rolqJOKB6amuTQeo3OP/NN+U9Wh34PE=; b=2OE6DI0VL8noIX856ST/K+vlSh
-	s7n2PPlY1Ek/Xc+IkyLpekpuFOsedRqrbfi6NXghBocqXmw4rdiadzjHK5i+cI/2RlAc89KEEjlxv
-	0arZ/Acahxj2ACMHbY+9+swS5hKJDxZHgrVdxYxOgBn12eSOHcUQj2NuXTF+dGKsU3ErYsgtR4i7J
-	fmKwOzh+sHDOLjXLMHRXtJXHq+MjbYg8JFxf07kA95rS+ZtbTvmNt0lU9uy4Ez67h0Elzck+0CmJq
-	qZLr+MZO3RDLhJECgcORZyh7LSuT5RB9MegiTvOPYOdIjKckEHfTjZAhsLWom4yxaiuWRWmYGorVm
-	mVlukoCg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Unsubscribe-Post:List-Owner;
+	bh=jndpg96iFFzXut0zSKV0M47T3X1JpaUr0kGwSwtoDkg=; b=TJb0GbAzq7boh+3PafChkZBU+e
+	hDIHD+a+ieJEFhip7nwXCZyXEmz7aLl/bmH8i29XmPOB6pHTNZYXIz72djfGFeI1EJOgFPQxSAO1g
+	P76jFDOB/K17bUy47r2y6QR0rnv5/7fyg8CxMgmArdJkKx6+8RCNPJScf1voMpzpIfyYQ2vgyLCZI
+	LfS4RBqazXcYTlMh6zz9uX1Vvd8OMRjGm4pcUXl52Kqa8/+4ri3G5S55CpQ/bB6UEy/giv1Vhbrg5
+	xxIrlybRaSyMrtnHQjF7KYuD+7xIRKAsJjJkdjQm72a0lkvucqxwHjx3mVaNmbRXhnJhVF9SU+DL3
+	cc6JKXuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSrJF-00000001QsH-0L5W;
-	Mon, 16 Nov 2026 07:39:25 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xSsN2-00000001ezG-0dak;
+	Mon, 16 Nov 2026 08:47:24 +0000
+Received: from bg5.exmail.qq.com ([43.154.155.102])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSrJD-00000001QpS-00i5;
-	Mon, 16 Nov 2026 07:39:23 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8E33B439F8;
-	Mon, 16 Nov 2026 07:39:22 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794814762;
-	b=IEr4PcEydCMew3Z7aXmUG2qFl/0HZJRnFmQix/M4Dclxzlp2EfkcFgUOZQ9CZPzaMvEI
-	 3kApeA1lyAJAkwHBkyTTGGfzRE06+oEFfJQQy23CI4t6drUFx2dPmRB7hBAZYRHEhMhmZ
-	 bRKrftprclpum5ROm64uDu4XEZ7BfssTR2qczbSEQVBjmUxUrunvP8nfi6qhIenxWoaEX
-	 zicDaON91BpYq/wFUOgJBkUOM8kRy3LohVddDS2e8RlqvxKeXEcNChcsqWoSNSI3LI3WR
-	 gHM/vRf/YQbhQbiq6XX98q4lCuQJ3NHDXbs6QB8V+Hyd5GfdaSBxdnrDR6+aq80yW5g==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794814762;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=uFMjLNndPE2hSZg1IrxVDy7d2EmfKGeBiqo/gCRC8g8=;
-	b=woyXANDGhV+KfCxs37cmreR34ItkwdHifwMAzCfVarKhARy4+s7uPwYgd+mrWTiNNUc1
-	 4L9QWkfPw5yArgOsRp+VLrrHexcSmQVkppN+PflHc8nE+9boHKuOJ9NdBkaRfMgsxide2
-	 foNARF/eCCX+9TBk+Y6JDewWhqVleHxy751ivTwG/5KKroU8YcrCAjTIcgzcdsj1gqzuk
-	 YTxW2uoEEDI2Q+P44WlGoKyskE3N9coE0effLZFNzVZaaIZyMyYI4jOogZxwQiTeaPdmS
-	 KYaHP9dhFlCyhA4l8HRig5Jd4pC3KSfQOTqKrwEcbB5gm73jwRvfxnDUHIDO6upoXlg==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 4ADD41F000C4;
-	Mon, 16 Nov 2026 07:39:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794814762;
-	bh=uFMjLNndPE2hSZg1IrxVDy7d2EmfKGeBiqo/gCRC8g8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=PBHaF9A9H85RU9qqhVTMNUsYnrhkMoaO1zU8bc33o8yIhNKWfJjENP2eVhLmWUDWH
-	 /JgIxq8Xb4Ilh26T5Lrv900XC37SA1NZ2GH46Dt4+kSJEq5lIjkqA/MV4PixqznznN
-	 ZxqdZsGvvdfuUuZr3kQTynMnCuaIJOWs0sxXqWXsjxJgSTi1QF6NWq9yIjQKQuvgeo
-	 TyfhAdP2bwLjQl7gM9zAxcmz6rRIFS1oeWc16aO1fcdU8F7JXN5vQ4zqjwU6EHOV07
-	 GPbqWbf2zB550plpyzt1C39oiQsno4Ze6G/oO2/7WilKbgkLY51SLxjSacJfq2eMeR
-	 wNoSBgEBq173w==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id BD8064A371;
-	Mon, 16 Nov 2026 07:39:20 +0000 (UTC)
-From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
-Date: Mon, 16 Nov 2026 15:39:14 +0800
-Subject: [PATCH net-next v3 1/2] dt-bindings: net: rockchip-dwmac: Add
- RK3572
-X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-Message-Id: <20261116-add-board-ok3572-c-net-v3-1-a957fdcd9c7a@qq.com>
-References: <20261116-add-board-ok3572-c-net-v3-0-a957fdcd9c7a@qq.com>
-In-Reply-To: <20261116-add-board-ok3572-c-net-v3-0-a957fdcd9c7a@qq.com>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- David Wu <david.wu@rock-chips.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
- Jose Abreu <joabreu@synopsys.com>, 
- Maxime Chevallier <maxime.chevallier@bootlin.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>
-Cc: Cunhao Lu <1579567540@qq.com>, netdev@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-stm32@st-md-mailman.stormreply.com
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794814757; l=2920;
- i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
- bh=9X/mZiSA5jyMtUsqAtAfx0rl2X8abEMLp5i4XTgwPa0=;
- b=wH5xOzdBZxT/5VRr5XLL3M3qt9J56QsDvaqyh9NkKpCorcn2oXeNTo7FY69mSA6mGJ6W1Plou
- X3ZO2gwTakMDnpSNTYe6B2nubHZYEy2F6SF+vcls2FpeUZ2KR7fbkBv
-X-Developer-Key: i=1579567540@qq.com; a=ed25519;
- pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
-X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
- auth_id=1177
-X-Original-From: Cunhao Lu <1579567540@qq.com>
+	id 1xSsMy-00000001eyI-1UAG;
+	Mon, 16 Nov 2026 08:47:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1794818780;
+	bh=xsQByQ0D6Ix2x9EDzpTjaiHgbcand3FUuNn+57t5Hbk=;
+	h=From:To:Subject:Date:Message-Id;
+	b=WkmvYP94G1jMmCFBA3kmzWG4uv/8CZkDrJFEFxQuJojl+a/Neg1lMkAj/8y+7/cgv
+	 jQdHg0gplNZWzOp3dRXKV6BLSSQnbgzbkneeWtZvHGjVprtDoyJ4EYVFmto9D/dGnR
+	 MJ71XBhxSGXxJtT/LxvTFmbkN7eCrQDaBFS33y+I=
+X-QQ-mid: esmtpgz13t1794818773tdd28430e
+X-QQ-Originating-IP: TBPlYzybBYcUlZTHNZ5djQ84nZ6wvxk85DaLGnl+X4Q=
+Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Mon, 16 Nov 2026 16:46:10 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 14606022908303960892
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andyshrk@163.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>
+Subject: [PATCH v3 2/3] drm/rockchip: vop2: Skip UV plane setup for packed YUV formats
+Date: Mon, 16 Nov 2026 16:45:54 +0800
+Message-Id: <20261116084555.1061-3-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20261116084555.1061-1-kernel@airkyi.com>
+References: <20261116084555.1061-1-kernel@airkyi.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: NXAwOXNh0CeGsAHYVU5ebLtx3oOy+pS1m7AX/6mk1qAn0uEi3lrU1m5K
+	T37jYmNnI/X0o4RCax/7X9OLGuZ8ZqSg6TJnayvcV6J0EumuXWTWaSDPGPlz2WOCRg739PM
+	W6b0KrJwGLbv1e8XjuzAYM1Win9qVr07fhAoIcPl1hJqayf2LvvXM5PNENLkjLUttHs30xn
+	peGlT/UlBu2QlK35MlzcuFmCrDwo2RVnCuzTCuvXQgkjsUK4nkyxTjWPiLkG2gmoD2bvPXK
+	OS0gk2ZrmK85+ZZKN0ioovhBmCSAleA+zCUZEQ5IGYfwFozVpfsuKntecuAFAJb2f1hEoMk
+	hvozHmGkXVMgyp1NFPTMEe9IL8BQpHB/sug0TLdoi4pINKpBJOmFAZSnVqBVBxk1GsOUFqg
+	qXowtxBJZySZZVfTi0lVjhl3o/iIBc8sghIGMRHAc+O5O9vDHqi0mV083kZA68/K9SamFL6
+	5/AT+ikoGQc9a/rY9TfBnxnUtFhUQSZ7nhY+XBY9lVXByOQIo5Vjdu8WCZR0cnnUiMOKgZZ
+	4Rfv4/J1TiXaJrovYY6ja9kfdeZhTupTnqMTWolg99kONrI0g+uGV39hHcmK7EMOxEAIXop
+	FfWLY6sIHHPf6rtk85BoSU6iFFVX7xNao3MMUDQmtddU2MW2roDStWJoNyIvD3sdwvxfAWQ
+	miS26GOxPoD9Mbg6ud4MFi5SGWJyidkd+CTovwqhv5gGDcsC5ZC8XL6WeEOKwNfOzLxVnba
+	3LwePR1P8LPX2mkaTGHmA7slfXdaviIoJk+74s21X6pkV3Ac0VpZ12/0ecku3sWsaLH3wXA
+	Au85ZBXfegt+Z+24FWfJnmapG/mieLQUTXm+fMUjZk4B4xA0DIs/nPUbAK1J6DK3nmf/nxx
+	xJXLd9FMLJChI1ctKgdP1P7XxQi4XOxdtvxRGZ0+NyTK4Vrt7hkdqLzF3zWki4byWiP7mpV
+	1k6jVTiGyCHgJxWxL2lHtC7Giip2AugiaKGkwG2Xkwj2pqumpDWrXSFIrA48fmXExRKllbQ
+	fYh/T4zfNGepL+fCVp
+X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
+X-QQ-RECHKSPAM: 0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261116_004720_743372_237AE3DE 
+X-CRM114-Status: GOOD (  11.88  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,113 +91,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: 1579567540@qq.com
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>, linux-rockchip@lists.infradead.org, Sebastian Reichel <sebastian.reichel@collabora.com>, linux-arm-kernel@lists.infradead.org
+X-Archived-By: <archiver.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Cunhao Lu <1579567540@qq.com>
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-Add the rockchip,rk3572-gmac compatible with the snps,dwmac-4.20a
-fallback and require rockchip,php-grf.
+Packed YUV formats store chroma interleaved with luma in the same plane,
+so they have no plane 1 that the UV address registers could point at.
 
-Mark tx_delay and rx_delay as deprecated and disallow them for RK3572
-so new designs do not use the legacy delay properties.
+Restrict both the plane 1 offset calculation and the UV register writes
+to formats with more than one plane.
 
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 ---
-Changes in v3:
-- Deprecate tx_delay and rx_delay and disallow them for RK3572.
-
-Changes in v2:
-- Add RK3572 to the shared Synopsys compatible list for consistency.
+(no changes since v1)
 ---
- Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 15 +++++++++++++++
- Documentation/devicetree/bindings/net/snps,dwmac.yaml     |  1 +
- 2 files changed, 16 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-index e8dda1961ab3..d7b7bb008235 100644
---- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-@@ -27,6 +27,7 @@ select:
-           - rockchip,rk3506-gmac
-           - rockchip,rk3528-gmac
-           - rockchip,rk3568-gmac
-+          - rockchip,rk3572-gmac
-           - rockchip,rk3576-gmac
-           - rockchip,rk3588-gmac
-           - rockchip,rv1108-gmac
-@@ -54,6 +55,7 @@ properties:
-               - rockchip,rk3506-gmac
-               - rockchip,rk3528-gmac
-               - rockchip,rk3568-gmac
-+              - rockchip,rk3572-gmac
-               - rockchip,rk3576-gmac
-               - rockchip,rk3588-gmac
-               - rockchip,rv1126-gmac
-@@ -112,6 +114,7 @@ properties:
-     minimum: 0
-     maximum: 0x7F
-     default: 0x30
-+    deprecated: true
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 0de038acb56f..e811709bdc72 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1305,7 +1305,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 	rk_obj = to_rockchip_obj(fb->obj[0]);
  
-   rx_delay:
-     description: Delay value for RXD timing.
-@@ -119,6 +122,7 @@ properties:
-     minimum: 0
-     maximum: 0x7F
-     default: 0x10
-+    deprecated: true
+ 	yrgb_mst = rk_obj->dma_addr + offset + fb->offsets[0];
+-	if (fb->format->is_yuv) {
++	if (fb->format->is_yuv && fb->format->num_planes > 1) {
+ 		int hsub = fb->format->hsub;
+ 		int vsub = fb->format->vsub;
  
-   pcs-handle:
-     description:
-@@ -141,11 +145,22 @@ required:
- allOf:
-   - $ref: snps,dwmac.yaml#
+@@ -1460,7 +1460,7 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
+ 	uv_swap = vop2_win_uv_swap(fb->format->format);
+ 	vop2_win_write(win, VOP2_WIN_UV_SWAP, uv_swap);
  
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3572-gmac
-+    then:
-+      properties:
-+        rx_delay: false
-+        tx_delay: false
-+
-   - if:
-       properties:
-         compatible:
-           contains:
-             enum:
-+              - rockchip,rk3572-gmac
-               - rockchip,rk3576-gmac
-               - rockchip,rk3588-gmac
-     then:
-diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-index 2c4842404bf6..80d3b43e2889 100644
---- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-@@ -94,6 +94,7 @@ properties:
-         - rockchip,rk3506-gmac
-         - rockchip,rk3528-gmac
-         - rockchip,rk3568-gmac
-+        - rockchip,rk3572-gmac
-         - rockchip,rk3576-gmac
-         - rockchip,rk3588-gmac
-         - rockchip,rv1108-gmac
-
+-	if (fb->format->is_yuv) {
++	if (fb->format->is_yuv && fb->format->num_planes > 1) {
+ 		vop2_win_write(win, VOP2_WIN_UV_VIR, DIV_ROUND_UP(fb->pitches[1], 4));
+ 		vop2_win_write(win, VOP2_WIN_UV_MST, uv_mst);
+ 	}
 -- 
-2.34.1
-
+2.53.0
 
 
 _______________________________________________
