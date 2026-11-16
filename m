@@ -2,108 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2DC8A606A329
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 07:05:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98847606A31C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 07:12:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WoB91Cm5;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=SJ5S0Ys/
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=znmqX2Lu;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=MnxzOx9D
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=xtLe2L8ybhwwDeTJstQJfToim/miAISrLrjMaamrCX8=; b=WoB91Cm5tTWYWZaRcNmfiYvxkx
-	j7EPGFfw4m10ex2j5knPImIy9odf1xdm317wnXV9IjnW0FkBvPMsYd07xbP7sn0RWHLeKqDETf/0H
-	kd15bS8a7p8F1VrofctlZeZCqYm3p1GlgQFhZm/YfhQu0WEwEnRtgeIHVtb30lXwYbuYW0LAaatK9
-	fa1Cbv+JdebdbYlLucJDlThqHt5+u5QXSMcVuwXWAZRi/ClqEzmKOBEgGe0DpMdjd5C+NIjbsuRqh
-	8jb5wHhEgXLZ9ZC3AvHG6ETVwjkhdtfq6fbomzSEMSqT0woytM/f2p9L5lZxgH70puGjl5en9QohU
-	bctn1Y6w==;
+	bh=UUhXZuhti6VvWEwPT4uJC5cbK4fnyYV+qaTMcF8tTCM=; b=znmqX2LuldU/uQdVZ4aaxyyixT
+	Ypxd6h6l+w59uXr+dqG1opekEbUpesR06hd59Gs6MJYc/B/TtRt0D/WpEHVgNO7ueSoNrnaORiu0L
+	IhK457lTd04mleWCaaezLTTL0hamhcFfEFDSeia3+9/W0n+c5A8H5zjm+/+NaxNyeJx9WIT92Px96
+	XM41FQt8n6Bx6MGQhE3R69qTmSLWCrVsaOguHWzkjCltV6zucvijCsJja1qGpy8lVWO5CNMMpMzC1
+	hMQfT/6uDyiS1lBCK09vChw3lKMfFlqFojxFSU3CluBXqWKWocyKJMUd1tuBVEqrZbBRx7U+hYfGl
+	z8yX2HoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSqmf-00000001MIk-0BoE;
-	Mon, 16 Nov 2026 07:05:45 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xSqsb-00000001Mrr-15Fh;
+	Mon, 16 Nov 2026 07:11:53 +0000
+Received: from sender-op-o17.zoho.eu ([136.143.169.17])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSqmc-00000001MIR-3ty8;
-	Mon, 16 Nov 2026 07:05:43 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id B9F6560F36;
-	Mon, 16 Nov 2026 07:05:41 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794812741;
-	b=Tm08GaosT3F35/goGlMpFlAHYY8sLzjJNGvB2jqci8Egx3nCjpORUUuS9fVMDo6XwQoN
-	 DPssXd3At6lRwQ/hIvzabaRCIshsObTR+CyiAhvWOjVP1aue6BEBmK6zpBbJDTx4qILLE
-	 WlmEMvlY1xqQHtT9AHyHexNb4IPqdiP+y1NEqSb7uk6ThH7Htz7Z6snG8PBc7IBguMJx/
-	 4gJ0qtqff1jAupMkl/UUFJtNhhPrzlz1Xtnrlxb8nO99eZ73OJ0/rIdGyw/d8uCkniLG7
-	 OuOemv1LZGKvXpDYzjdbXQcIPXWN/XbroGWhw8SP8+slhV/GiG2rFo9E6J8eTNNrAaQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794812741;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
-	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
-	 Content-Transfer-Encoding;
-	bh=rBoc9Az+eYLYApOQ5Nq0UwLguS2L7Y5c89wC992tlqw=;
-	b=BHqtVSLUaiK8Zkq8jw1Nbze/XQz3JyfdkU1SWd8xpkVdZy0fSjd5c6v1MWKolC+k43Al
-	 BRsdpm8HiWnYyMTOEHMQIG7jDCXEA1aR+a4DlepRTRQwGlJqvL/HFcF1BFhnK+i9MEmED
-	 RSszyqxrmhl9uN+gwEhawRCE3kKNekfgyFtxXjpoW0rDUS9xjghvQGH8blXKi0hD9pBbQ
-	 x7bPXOIdIs/ThgoEpyIg6s6iLnuPRZYQFb7hvisQg+2BEtR9ntJi411fIP5Tvje8d/r+O
-	 /MSZdNwJCjPBuRK3iPlmLmj4EUUuBFKersQJV5SFs5MoY92TJZQDtFzs3XVVowPXMxQ==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id BEF1C1F000C5;
-	Mon, 16 Nov 2026 07:05:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794812741;
-	bh=rBoc9Az+eYLYApOQ5Nq0UwLguS2L7Y5c89wC992tlqw=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=SJ5S0Ys/PDkerFAQXDztg4mxwvUqQaWJAKat33wC7U99JQi3bEsDGm+TLR+0tGr2H
-	 zQvr9sBZZkRn588EZzdtU1LK+X0dauYc2+dcZ9wSVpGtzMOeVyB3/FDUBXeM7fKk7Y
-	 eDlRewvqT2LIM5XdLV4M6Mw8m1iavIspbHY17i4r/yX/ilbjRYZKl49Qyiat08/u2B
-	 XXR6llGwZU2LJ1MNnAb6HKQnCwo6CGzJ24ymTLlCkN9Tq8eGCpgNLN8Zia+FDH09Zc
-	 dKeMtZ/BSJUVkGll2RYyQ29QotRYOnGuZ36MkGq35y6Ue5NFRSCeG1uHdwXDSBr5WZ
-	 GwDOq25TgQeBA==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 4F66B4A368;
-	Mon, 16 Nov 2026 07:05:40 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Mon, 16 Nov 2026 09:05:39 +0200
-Subject: [PATCH v2] PCI: rockchip-host: Retry link bring-up on repeated
- Recovery
+	id 1xSqsY-00000001MrU-0olO;
+	Mon, 16 Nov 2026 07:11:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794813102; cv=none; 
+	d=zohomail.eu; s=zohoarc; 
+	b=IW6TlYuzRhN7B3QoDxPTrfOfNagoQUnVYFzJDo6cpswoRfoUF0FKH/flEQlFIVtwqKCCxeS6ScSzCHezdtIejrTwJGyOrYNkT/+EO6icZRul5nHsrp2XzU9WGIT4k4Pbup3up/PDA/uhDZfWRBMlxROqNW3Bzs1ihqg2xllR8Ns=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
+	t=1794813102; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=3ddNMHunRkB0O0QsoA7pd9wVv/0W9Lfu97gA1D6q22Y=; 
+	b=kTlsDA4+ZAcC4gHDVf8rbiL04nJ9bJNvWGItQrrDBrrIZgD0Rqx08A4zT7yh90KDdiGpjcTbhDvLnWkh3I3vJDXD6Ec3KH1HVXsRqNScbjeWnaEd5jFKt5udMYHVcpdoGptNoEWGvfWGTHbme21Ra8Sp0sk/pw1A85ORJzPqh6s=
+ARC-Authentication-Results: i=1; mx.zohomail.eu;
+	dkim=pass  header.i=iav.lv;
+	spf=pass  smtp.mailfrom=iav@iav.lv;
+	dmarc=pass header.from=<iav@iav.lv>
+DKIM-Signature: a=rsa-sha256; b=MnxzOx9DB9Pc3DLzjtnsEsr35z3pdqGGQW7Mp5329orCMLRQj8xJR90OVU03I/0/VsUzquNuZRoOZWxRGnuBnt/sugH9RDH40HS5FlkDEeBBJ5S69DV57vfqCi1YBnUsYnCpuH9q6Iu//qhXd+/QjtBbw40Zj019bZnR8LYJZLM=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=3ddNMHunRkB0O0QsoA7pd9wVv/0W9Lfu97gA1D6q22Y=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zoho.eu with SMTPS id 1794813100805897.2580520315063;
+	Mon, 16 Nov 2026 08:11:40 +0100 (CET)
+Date: Mon, 16 Nov 2026 09:11:39 +0200
+From: Igor Velkov <iav@iav.lv>
+To: Matt Thompson <matt@boondocker.io>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Rob Herring <robh@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH RFC v2 0/3] PCI: rockchip-host: Handle unavailable downstream config space
+In-Reply-To: <20261113-rfc-b4-v2-0-d6b14f95c1d6@boondocker.io>
+References: <20261113-rfc-b4-v2-0-d6b14f95c1d6@boondocker.io>
+Message-ID: <20261116-rockchip-host-rfc-v2-test-1@iav.lv>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261116-rockchip-pcie-resume-v2-1-a633e279be97@iav.lv>
-X-B4-Tracking: v=1; b=H4sIAEKr+moC/22NQQ7CIBBFr9LM2jFAwTSuvIfpgtBBJmppQImm4
- e5i49Lle8l/f4VMiSnDsVshUeHMcW6gdh24YOcLIU+NQQl1kEIOmKK7usALLo4JE+XnnVA5PXl
- Sfa8lQZsuiTy/tux5bBw4P2J6by9Ffu0vqPT/YJEo0AxktDXOGy9PbMv+VmCstX4AwyDy0bUAA
- AA=
-To: Shawn Lin <shawn.lin@rock-chips.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, 
- Bjorn Helgaas <bhelgaas@google.com>
-Cc: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Matt Thompson <matt@boondocker.io>, linux-pci@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=7808; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=Cps1/uQ5Lnu2PNKM6vu/z1g7FA1bXqg0a2gSZkGUYzE=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFm/VjufXCMedXRF1s3YKRz8VQrzCiaVx98o7BBOVCreF
- sBle+ZaRykLgxgXg6yYIsuEQxq3MpZc/evvYf4AZg4rE8gQBi5OAZgITynDP43jLLzXq0//a/xd
- JMa//0BQ2KdX6z4XPVA4u6FnqUXw9HyG/w6tAgwiIXGes+Xu68078sU99PeGRIlznw/WrcucYJC
- 6hh0A
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261115_231150_536750_FD9DE859 
+X-CRM114-Status: UNSURE (   6.59  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,230 +73,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Igor Velkov <iav@iav.lv>
+Tested v2 on Kobol Helios64 (RK3399, JMB585 at x2), 7.4-rc2, DT without
+ep-gpios, 150 unbind/bind cycles, bind pinned alternately to A53 and A72.
+A53: the fixup ran 4 times (debug print on the err path); probe found no
+device and the JMB585 stayed absent until the next bind; no crash.
+A72: the same read raised an asynchronous SError (bf000002) on the dmb in
+__io_ar() after the guarded ldr; panic in 1 of 75 cycles.
+Patch 1 does not catch this case: LINK_UP and training done are set, the
+endpoint does not answer.
+Retrying the link bring-up avoids the abort here:
+https://lore.kernel.org/r/20261116-rockchip-pcie-resume-v2-1-a633e279be97@iav.lv
+With both applied: 4 bad bring-ups in 150 cycles, no device lost.
 
-On Kobol Helios64 (RK3399 with a JMB585 at x2) about 3% of link
-bring-ups go bad. The LTSSM reaches L0 and then re-enters Recovery about
-every 200 us; the RC sees DLLPs about 300 times as often as on a good
-link, with no DLLP or CRC errors. The first config read behind the port
-gets no completion and aborts the CPU, or link training times out. The
-state survives Recovery, and a new bring-up of the port clears it.
-
-After the link comes up, poll the LTSSM for 5 ms and treat more than two
-entries into Recovery as a bad bring-up. The RC runs at 2.5 GT/s only,
-so no speed change goes through Recovery, and good bring-ups on the
-boards we tested showed no Recovery entries after L0. Bring the port up
-again, up to five tries in all with 500 ms between them, for this and
-for a training timeout. An empty slot stays in Detect, so a timeout
-there fails on the first try. If no try gives a usable link, probe and
-resume fail as they do on a training timeout today.
-
-Every link bring-up takes 5 ms longer. A link that stays bad delays the
-failure by 3 to 5 s.
-
-Signed-off-by: Igor Velkov <iav@iav.lv>
----
-Tested on Helios64 with unbind/bind cycles; every bad bring-up was fixed
-by the first retry:
-- earlier builds with the same poll and retry loop, 7.3: no abort in 600
-  cycles (5 in 150 without the patch), 10/10 cold boots, 60/60 s2idle;
-- 7.4-rc2 with Matt Thompson's RFC v2 [1]: 4 bad bring-ups in 150
-  cycles; with the RFC alone the JMB585 was lost in 5 of 150;
-- this patch, 7.4-rc2: 5 bad bring-ups in 150 cycles (one of them a
-  training timeout), no abort; 20/20 s2idle.
-An NVMe drive on a ROCK Pi 4A with the patch: 60 cycles, none rejected.
-
-[1] https://lore.kernel.org/r/20261113-rfc-b4-v2-0-d6b14f95c1d6@boondocker.io
----
-Changes in v2:
-- Drop the hot reset of patch 2: it did not stop the aborts.
-- Also retry when the link keeps entering Recovery in the first 5 ms
-  after link-up; up to five tries, 500 ms apart.
-- Do not retry a training timeout in Detect.
-- Rebase onto pci/next.
-- Link to v1: https://lore.kernel.org/r/20261024-rockchip-pcie-resume-v1-0-58e54a5cf5f1@iav.lv
----
- drivers/pci/controller/pcie-rockchip-host.c | 80 +++++++++++++++++++++++++++--
- drivers/pci/controller/pcie-rockchip.h      |  3 ++
- 2 files changed, 80 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index 1e1556e436b8..7c43e5bcccd3 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -13,12 +13,14 @@
- 
- #include <linux/bitfield.h>
- #include <linux/bitrev.h>
-+#include <linux/delay.h>
- #include <linux/gpio/consumer.h>
- #include <linux/interrupt.h>
- #include <linux/iopoll.h>
- #include <linux/irq.h>
- #include <linux/irqchip/chained_irq.h>
- #include <linux/irqdomain.h>
-+#include <linux/ktime.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_pci.h>
-@@ -29,6 +31,11 @@
- #include "../pci.h"
- #include "pcie-rockchip.h"
- 
-+#define ROCKCHIP_PCIE_LINK_CHECK_US		5000
-+#define ROCKCHIP_PCIE_LINK_CHECK_MAX_RECOVERIES	2
-+#define ROCKCHIP_PCIE_LINK_BRING_UP_TRIES	5
-+#define ROCKCHIP_PCIE_LINK_RETRY_WAIT_MS	500
-+
- static void rockchip_pcie_enable_bw_int(struct rockchip_pcie *rockchip)
- {
- 	u32 status;
-@@ -277,9 +284,40 @@ static void rockchip_pcie_set_power_limit(struct rockchip_pcie *rockchip)
- 	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_DEVCAP);
- }
- 
-+/*
-+ * A bad bring-up re-enters Recovery about every 200 us, and config requests
-+ * through it get no completion. A good link settles in L0. Each visit to
-+ * Recovery lasts about 5 us, so we busy-poll; the limit of two entries leaves
-+ * margin for an occasional retrain of a good link.
-+ */
-+static bool rockchip_pcie_link_is_stable(struct rockchip_pcie *rockchip)
-+{
-+	ktime_t end = ktime_add_us(ktime_get(), ROCKCHIP_PCIE_LINK_CHECK_US);
-+	bool was_recovery = false, is_recovery;
-+	int recoveries = 0;
-+	u32 state;
-+
-+	while (ktime_before(ktime_get(), end)) {
-+		state = rockchip_pcie_read(rockchip, PCIE_CLIENT_DEBUG_OUT_0);
-+		state &= PCIE_CLIENT_DEBUG_LTSSM_MASK;
-+		is_recovery = state >= PCIE_CLIENT_DEBUG_LTSSM_RCVR_LOCK &&
-+			      state <= PCIE_CLIENT_DEBUG_LTSSM_RCVR_IDLE;
-+
-+		if (is_recovery && !was_recovery)
-+			recoveries++;
-+		was_recovery = is_recovery;
-+		udelay(2);
-+	}
-+
-+	return recoveries <= ROCKCHIP_PCIE_LINK_CHECK_MAX_RECOVERIES;
-+}
-+
- /**
-  * rockchip_pcie_host_init_port - Initialize hardware
-  * @rockchip: PCIe port information
-+ *
-+ * Return: 0 on success, -EAGAIN if another bring-up of the link may help, or
-+ * another negative error code
-  */
- static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
- {
-@@ -325,7 +363,19 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
- 				 status, PCIE_LINK_UP(status), 20,
- 				 500 * USEC_PER_MSEC);
- 	if (err) {
--		dev_err(dev, "PCIe link training gen1 timeout!\n");
-+		status = rockchip_pcie_read(rockchip, PCIE_CLIENT_DEBUG_OUT_0) &
-+			 PCIE_CLIENT_DEBUG_LTSSM_MASK;
-+		dev_warn(dev, "PCIe link training gen1 timeout, LTSSM %#x\n",
-+			 status);
-+		/* An empty slot stays in Detect; another try cannot help. */
-+		if (status > PCIE_CLIENT_DEBUG_LTSSM_DETECT_ACTIVE)
-+			err = -EAGAIN;
-+		goto err_power_off_phy;
-+	}
-+
-+	if (!rockchip_pcie_link_is_stable(rockchip)) {
-+		dev_warn(dev, "PCIe link up but keeps entering Recovery\n");
-+		err = -EAGAIN;
- 		goto err_power_off_phy;
- 	}
- 
-@@ -377,6 +427,30 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
- 	return err;
- }
- 
-+static int rockchip_pcie_bring_up_port(struct rockchip_pcie *rockchip)
-+{
-+	struct device *dev = rockchip->dev;
-+	int i, err;
-+
-+	for (i = 0; i < ROCKCHIP_PCIE_LINK_BRING_UP_TRIES; i++) {
-+		if (i) {
-+			dev_info(dev, "retrying the link bring-up (%d/%d)\n", i,
-+				 ROCKCHIP_PCIE_LINK_BRING_UP_TRIES - 1);
-+			msleep(ROCKCHIP_PCIE_LINK_RETRY_WAIT_MS);
-+		}
-+		err = rockchip_pcie_host_init_port(rockchip);
-+		if (err != -EAGAIN)
-+			break;
-+	}
-+
-+	if (err == -EAGAIN)
-+		err = -ETIMEDOUT;
-+	if (err)
-+		dev_err(dev, "no usable link: %pe\n", ERR_PTR(err));
-+
-+	return err;
-+}
-+
- static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
- {
- 	struct rockchip_pcie *rockchip = arg;
-@@ -881,7 +955,7 @@ static int rockchip_pcie_resume_noirq(struct device *dev)
- 	if (err)
- 		goto err_disable_0v9;
- 
--	err = rockchip_pcie_host_init_port(rockchip);
-+	err = rockchip_pcie_bring_up_port(rockchip);
- 	if (err)
- 		goto err_pcie_resume;
- 
-@@ -938,7 +1012,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 		goto err_set_vpcie;
- 	}
- 
--	err = rockchip_pcie_host_init_port(rockchip);
-+	err = rockchip_pcie_bring_up_port(rockchip);
- 	if (err)
- 		goto err_vpcie;
- 
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index b5da15601b58..fcdc3783b3fd 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -51,6 +51,9 @@
- #define   PCIE_CLIENT_PHY_ST			BIT(12)
- #define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
- #define   PCIE_CLIENT_DEBUG_LTSSM_MASK		GENMASK(5, 0)
-+#define   PCIE_CLIENT_DEBUG_LTSSM_DETECT_ACTIVE	0x01
-+#define   PCIE_CLIENT_DEBUG_LTSSM_RCVR_LOCK	0x0b
-+#define   PCIE_CLIENT_DEBUG_LTSSM_RCVR_IDLE	0x0e
- #define   PCIE_CLIENT_DEBUG_LTSSM_L1		0x18
- #define   PCIE_CLIENT_DEBUG_LTSSM_L2		0x19
- #define PCIE_CLIENT_BASIC_STATUS0	(PCIE_CLIENT_BASE + 0x44)
-
----
-base-commit: 35f800669ce835aa77364a2ab5b61be19b778d3c
-change-id: 20261018-rockchip-pcie-resume-2c4dfe23341e
-
-Best regards,
--- 
-Igor Velkov <iav@iav.lv>
-
-
+--
+Igor Velkov
 
 _______________________________________________
 Linux-rockchip mailing list
