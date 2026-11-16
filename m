@@ -2,79 +2,76 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ABC39606A332
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 14:31:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9BC8D606A33B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 15:11:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Gr4PPywN;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=E33JlIVN
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Si+KaWfr;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=P6es5K0B
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
+	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=R1wuYSx2hbgO+GxHzaSH5djwqDHGcwLFuqRwyzWlkx0=; b=Gr4PPywNtq+FKnnhKjMN4+M44C
-	a4/kRGd6vpvGHB0UrNb5rZLR4qacxqyak+vRWt+iEkoDZ5ePhhKYPR5Cb/Pno7HFGIlTlD0ayhQy8
-	L3t3z2wzHj9YyYbmYlrvQO/cjYV/0GUSwrTQayoPsE3ZMJG7E5c7Lpn2fHX6c1SBrumoFhFiGEUts
-	GkVEw6j/1GQ5sbe5CuCtdZrvqsSipP1/a9xbyZHFWMiFI1U2Mb8T+k/TTS1tMC8Q5CdoMvD/o4t9H
-	sjm4MJQ5gVyZkWtKfP6HpjvVsBf82yEaJxpa/5Sflh51YRvjsjWYPLce/LVIAl7j1bcGI8FOkbmUa
-	SGWERekA==;
+	bh=4/lMyljUheSiaMUrRqYwFBcrFHJiQpQMG6RmRYb+OUk=; b=Si+KaWfrSnPyFiuYFL4cnGwRWh
+	QRawBloV21365Z0Rh6/R+5KC+ZiMKSDXGT/E58/Di6kCf7bhmyicRMB9S4kHU50q1XtAd2WJdQnSl
+	HgOCPgRzhqCjtEXHmW7HvD/QXhLoP3aRqQrr6FfNQP39JqiMhwPmqMuG+rm5MA103D52M9Rp2orZt
+	XKPILAebbRgqES7b2ZdfLp+63kdVqGS9mMrIXrled1g5zRUc5huEE1d/uS1Thm+6roA7GCYlpvG3F
+	RubSmSNLiF4F89veSnyqefNgNnnt66QBIBSblso8dqofFL2fMSPHSCxoCKx5rXcamvUdrmUR4lKPo
+	a9MFqbJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSxjz-00000002srU-0bag;
-	Mon, 16 Nov 2026 14:31:27 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1xSyN6-000000030Jf-41jV;
+	Mon, 16 Nov 2026 15:11:52 +0000
+Received: from xmbghk7.mail.qq.com ([43.163.128.53])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSxjr-00000002sq5-0126
-	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Nov 2026 14:31:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1794839479; x=1826375479;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=RluHToA0n2Uv7zh1LziASXx+m8ZDEfvA6K1KXGytIBg=;
-  b=E33JlIVNMADpwn3y6d/bK0M5fle4RMsDmh4sM3tKx1u9vrXQwvEaP3Ov
-   oAFQGTQlYVrxkQS/2ZLt7DGfnHe5Cu2cniowsagAScbADz4AxjFr/3gT+
-   c2Y3ZDNt2hOKn1VqzpJX2wmwvTok+dd5b3DiuEOZ/KTlqilahxkCDLgrX
-   3CZt/skPHZYr6ygbBXLi/jkS27YJkDyrpEEJv5W0Lyr+gADq7Zpw+1rPg
-   PaTztswhqKLqn1eDQMsoFBeahe57N137hEXFuAlmjL/tf/u2R1lHtS0ag
-   zOevtkLqRfo8CB+TZojBXscMArae3EXlCeQBthYoIiAg1EmJsANFzbvl4
-   w==;
-X-CSE-ConnectionGUID: OzjmpqXKT0uuAr1hYYXBGA==
-X-CSE-MsgGUID: RJ5WLDpKT9OftrheAjQmEA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11968"; a="3567374"
-X-IronPort-AV: E=Sophos;i="6.27,216,1787036400"; 
-   d="scan'208";a="3567374"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Nov 2026 06:30:29 -0800
-X-CSE-ConnectionGUID: 4QPSCljFSiuoYlVqF3lnTg==
-X-CSE-MsgGUID: 2EA/vbiESXyLWrSqaU8bJQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,216,1787036400"; 
-   d="scan'208";a="9725435"
-Received: from smoticic-mobl1.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.245.190])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Nov 2026 06:30:27 -0800
-Date: Mon, 16 Nov 2026 15:30:19 +0100
-From: Mehdi Djait <mehdi.djait@linux.intel.com>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: linux-media@vger.kernel.org, paul.elder@ideasonboard.com, 
-	daniel@makrotopia.org, linux-rockchip@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH v1 1/2] media: rockchip: rkcif: Don't reset the hardware
- in runtime suspend
-Message-ID: <avsBed-E2RPJnZ6k@mdjait-mobl>
-References: <20261112183208.2688580-1-mehdi.djait@linux.intel.com>
- <20261112183208.2688580-2-mehdi.djait@linux.intel.com>
- <df61d7d2-7ad8-4b68-b3a0-7a03513ab5b7@collabora.com>
+	id 1xSyN2-000000030H0-3VJC;
+	Mon, 16 Nov 2026 15:11:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1794841905; bh=k3wjoXPfdYoH26BVWO3+cw76m8FT5NmjFkdWFdobGv4=;
+	h=From:To:Cc:Subject:Date:References:In-Reply-To;
+	b=P6es5K0BZwtv8hMmKItvJ6Bm0mQIhFLeCzPZyRREgDgLMdOH0P+i/M03fp8zfsnS+
+	 eNGr3Z/nFkjoIGTSJKXfHAw4U/YdBFNDhGKtW6UojbRp4x+P4RnOJ91EkbOnDkcDZR
+	 Wu9+0g5WeXubLQNVsUeM2KBpLofZCn8wvAQq2dwM=
+X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
+X-QQ-XMAILINFO: N55iztL8edgQvN0v5JGUgkPqXum1H/JEX8chapWGgvcpkKr/b21ELtNOyEdmlM
+	 t2Ss/HHlHdNl09w2GkccrfHlVek5Hr327J2k5O2pfKE0e3jieSFBKD9ATUn4wF3IH/yb2Rntu7TFp
+	 WXm5k0hlGYKwxl1uL9czFZFsGSjq/0nI5xfRoqexTLgEzt5+vRcbMBJCAv0jwWeRskC/qHUaFD2om
+	 giLcX0UafcBok9fRKpWypOekoGvYlbISbOu0Y1rEtSf6GQ88i2qx1DycCNNAU9fRch3pP7jVWT1lI
+	 AXczut/A/6blFfthX49WeF0Eku9mA2NKjvG+fVc+u3v325NZb635H60VBFXAwRmuzD1X4Ewtn89T7
+	 eSRinH6r+1lnCc/s3HTjxSGosXICIGZsdA/c2NsLbdFRaq13z1J8jOSfX3XIxt9gaHOvPHE7MrowT
+	 R/7vQV+R1TJCj68QHoopG6fwdQIO7DaLceTq9QM3CxqCN0PIdSDxbD3lfiXaNlIcjcwlPtBHhmTaK
+	 0bUxCd+1OwXG9BACryzD3tt7jVRenVmqVAz9pGfEIln9qoBZZyKhTh0zNFmELXf34LKDl5+wWP1EA
+	 jg6VTKx1Qof9JczdcZ3ceoWV/kZ5yefg8UriRIoweWbOxdzIViLK96hpSWyCDCxCSAPJg+ahpZnhV
+	 aFZvGr+wjPNK2unDlIsAGnp+hf+X1VIe1Yn9AasJ5zIhwNnFSxt1Vdbea+gHFVK2RRm8zIVlnP4tx
+	 aJXIeCUWwlVmS5hoba83KO5O/0UQcjEK5f6D08xhQUpM8W3ACZGbgMOasj5v9i5/BDh5u26DBFWVQ
+	 Zq/MryA/TfMrEMkV+Q8Eu6SO7nPAXa00pOVy/QMrybrCGwV86vV3Aatf69lW1rX31yZOiNkqRDdOW
+	 aUgMzU6Sv8AWEHYxPbXpgSa4srkwhoS8FKMojcBvCFYVh1o5OzFLBroxc920eFp/cXn6meUo+MCKE
+	 EMkyKcI++AVByQxb+h3oR4+dtvJLHI82V5EkozsjeyMLRb6EUnZ6ysgJxbMX9jol4LrAujVYffWoM
+	 RnUWUfu+qhoZXC+/qPy1u5iXmJJPd+1GfAKz71UTZRFgrykU=
+From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
+To: "=?utf-8?B?QW5kcmV3IEx1bm4=?=" <andrew@lunn.ch>
+Cc: "=?utf-8?B?QW5kcmV3IEx1bm4=?=" <andrew+netdev@lunn.ch>, "=?utf-8?B?RGF2aWQgUy4gTWlsbGVy?=" <davem@davemloft.net>, "=?utf-8?B?RXJpYyBEdW1hemV0?=" <edumazet@kernel.org>, "=?utf-8?B?SmFrdWIgS2ljaW5za2k=?=" <kuba@kernel.org>, "=?utf-8?B?UGFvbG8gQWJlbmk=?=" <pabeni@redhat.com>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?RGF2aWQgV3U=?=" <david.wu@rock-chips.com>, "=?utf-8?B?QWxleGFuZHJlIFRvcmd1ZQ==?=" <alexandre.torgue@foss.st.com>, "=?utf-8?B?R2l1c2VwcGUgQ2F2YWxsYXJv?=" <peppe.cavallaro@st.com>, "=?utf-8?B?Sm9zZSBBYnJldQ==?=" <joabreu@synopsys.com>, 
+	"=?utf-8?B?TWF4aW1lIENoZXZhbGxpZXI=?=" <maxime.chevallier@bootlin.com>, "=?utf-8?B?TWF4aW1lIENvcXVlbGlu?=" <mcoquelin.stm32@gmail.com>, "=?utf-8?B?bmV0ZGV2?=" <netdev@vger.kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bGludXgtc3RtMzI=?=" <linux-stm32@st-md-mailman.stormreply.com>
+Subject: Re: [PATCH net-next v3 2/2] net: stmmac: dwmac-rk: Add RK3572 support
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <df61d7d2-7ad8-4b68-b3a0-7a03513ab5b7@collabora.com>
+Mime-Version: 1.0
+Date: Mon, 16 Nov 2026 23:11:42 +0800
+X-Priority: 3
+Message-ID: <tencent_273206094323A701D688217E3A4D72341C08@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+References: <20261116-add-board-ok3572-c-net-v3-0-a957fdcd9c7a@qq.com>
+ <20261116-add-board-ok3572-c-net-v3-2-a957fdcd9c7a@qq.com>
+	<f8d4b637-1818-419c-ac51-fb2ded1f9b3e@lunn.ch>
+In-Reply-To: <f8d4b637-1818-419c-ac51-fb2ded1f9b3e@lunn.ch>
+X-QQ-mid: xmsezb41-0t1794841902tc50bzb2f
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_063119_589216_EDB50A34 
-X-CRM114-Status: GOOD (  15.98  )
-X-Spam-Score: -4.2 (----)
+X-CRM114-CacheID: sfid-20261116_071149_200852_B63DE7E4 
+X-CRM114-Status: GOOD (  13.81  )
+X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,49 +84,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Michael,
+Hi,
 
-On Mon, Nov 16, 2026 at 11:58:35AM +0100, Michael Riesch wrote:
-> Hi Mehdi,
-> 
-> On 11/12/26 19:32, Mehdi Djait wrote:
-> > The reset in the runtime suspend also resets the VICAP IOMMU.
-> > 
-> > When the IOMMU driver accesses the IOMMU registers inside the delay window
-> > between the assert and deassert, e.g. in rk_iommu_zap_lines() to shootdown
-> > IOTLB entries, the system hangs.
-> > 
-> > Drop the reset and the now unused reset control.
-> 
-> I agree that the current situation is nothing more than a crude hack
-> that happened to work in most cases. But I doubt simply removing the
-> reset is the correct solution. Recently, I saw some downstream patch
-> that makes the reset a shared one, which seems like the right thing to
-> do here. What would you think about that?
+> [...]
+> > + .regs_valid = true,
+> > + .regs = { 0x29d20000, 0x2a040000, 0 },
+> > +};
+>
+> Just looking at this, it is not obvious that rx_delay and tx_delay are
+> actually not used.
 
-Do you have a link for these patches ?
+My board currently uses rgmii-id, where both MAC TX and RX delays
+are disabled. I kept the delay handling to support rgmii-rxid,
+rgmii-txid and rgmii, using the default values for the MAC delays
+enabled in those modes. The legacy tx_delay and rx_delay properties
+are now disallowed for RK3572 in the binding.
 
-I also agree that this patch will not be the solution that will go in
-but the situation needs to change.
+I currently have only one oscilloscope, with a maximum bandwidth of
+200 MHz. With this equipment, I cannot accurately determine how the
+TX and RX delay register values translate to picoseconds, so I am
+not planning to add support for tx-internal-delay-ps and
+rx-internal-delay-ps in this series for now.
 
-The VICAP_GLB_CTRL register does expose this:
-reset the VICAP(except MMU/AXI MASTER/REG FILE)
+Would it be acceptable to support only rgmii-id for RGMII in the next
+version, and reject rgmii, rgmii-rxid and rgmii-txid? This would let me
+stop using tx_delay and rx_delay in the RK3572 driver path as well.
 
-The Rockchip-bsp kernel exports the disable and enable functions of the
-iommu driver and calls them in the rkcif driver, see:
-https://github.com/rockchip-linux/kernel/blob/develop-6.1/drivers/media/platform/rockchip/cif/capture.c#L7269
-
---
-Kind regards
-Mehdi Djait
-
+Best regards,
+Cunhao Lu
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
