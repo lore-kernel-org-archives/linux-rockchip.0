@@ -2,119 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 332B1606A883
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 03:01:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8E3F6606A31C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 03:17:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LwkB402W;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ypZUOlzW
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Rmwd1IJy;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=uyjm94tI
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
+	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=aGXFfaVxPbTtTQQAD5TC8lrXngURvG2PBDH3gsAGBtk=; b=LwkB402WWLbXJtGN+kYhknmM7G
-	HCE52NIH1btdMnZLqeeXm6jkCw9AIbJJWfdiq9R8JmAlwm+O/tluoiE0kHlrksdsaRMP++r0TUWGc
-	aIuFnnCjHcdYOiK2a76jrT7LlT5d2P9X0eJLCtya+Beite22BK6/4wAMB+NVtoHJGfkrncU4TzxCF
-	yIGlVHbHOAvaAfufQeRaaZN95LgsPVuBgR0jKrTcMaXCEa5Fn+tzItciehx0HdKDz7tA3bTxAJcQx
-	yIBushhnWn/aIbah1gE/hPlymGTtMPFK6WPgdEG1h0HdxV9qeM/Kz7x2UdB7voBB/y8n55B/RmfcP
-	NJdO1BKg==;
+	bh=aYqS0nW6Pwx2/1ImK0b6TTaSs2+uMruk37+F1L88JtE=; b=Rmwd1IJyCZFb4yVban9o64N6z2
+	JflBMZU1qaUD60Sr8TAhnPVF1puRXQ6D85CyRsyHSJv4ubj+mqaJYkETMbJgDPmq/KNArN9GC/etB
+	NSg8Kh8hRQuvyij3zvECXanuR6raGFg2VPZPL//rAT8kiogIIDdXVILZpEWq2j5hE47hxArWpSjRs
+	aZvGj9hNlu47TgBrTql2xrZRhAR/x6ly2oeFskTyCdEvsGKzzGJw5bkmtIb8cm6lFcV8DbjeKerZy
+	eI4PEmbQJehnrQWBwEHfdwFktNtQcUnQzB2ntag2VlkcOaIBediK22VNhazljdRRfeHUeaxWufiD7
+	miV0X5PA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSmyI-00000000zPX-3Jiv;
-	Mon, 16 Nov 2026 03:01:30 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1xSnE3-000000010oz-3dDS;
+	Mon, 16 Nov 2026 03:17:47 +0000
+Received: from out203-205-221-190.mail.qq.com ([203.205.221.190])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSmyC-00000000zKG-3y5J
-	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Nov 2026 03:01:27 +0000
-Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-6b7c7fd4c33so353928a12.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 15 Nov 2026 19:01:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794798081; cv=none;
-        d=google.com; s=arc-20260327;
-        b=m1ck2LmSI/w6RPZtZnMt33DWeEKi7Drjey5C3dvFQHhWsE7KV+NrlGKMUFCxLCtmEQ
-         85dti3Rx6Ml4qHS7aidPdXOVDfbjbgm0C0xP2rfbM5Xi02ZCmEFh8tP49UFlxS7PA69O
-         7fg+TiT77cA39XJasiEzKgvzkP4mTjcJzIMEDkzcjSKcJU3VxASzkUiP4QYVvToHgNnG
-         2cEeomvMeNKuNpxPM6AikiaOQrHxSXPpQwwYk7B6iuC4ZQHdLCYhmEDgAbpi4b4vzVZ+
-         RaWUI9/ie16jzdElWkH3rLBMXeP3+I9k+iCn0gPD3EMcRg/NG6zFVv+s0V6W8JFiqDUH
-         m2Kw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=4qUheKg2Lay7rkyQAuqzWzkTXaIYOEjjSVeDSogdieo=;
-        fh=GsklUYPrstIvsiT4ekJORl8NXFUs0iSqU09TCDjJCpI=;
-        b=e0L3+YGA/jQi3G0ylfC8thtzvmnqo1Y4xkc10eXug0yPlyUQaojag6xpGChJnYQqnb
-         YQgZ1qbNkardM4Qu/xRoLbna4ewoE0apyAPAw8dzslw4zHcO9Mt3rw2c2XU61gM6DmDl
-         dKJYThLoHWWfBX++znbUulFmX1zyDnfwZyS3ywHvLhhMqlNEEckVixz2UmMVuDbwdF0W
-         yLrU2OYyjpNxy/QC9r4nnOj2rh61IAFAMKcew7eH9whFzthGuuxjw5zb3aumIAp5zEoK
-         KN+hDKofZ/z5w0UYnQyPSFQYI+x1CsrKNyqzbJIyMgilQqJmCA0B/qkmIIZprsyKlSE3
-         tJ2A==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794798081; x=1795402881; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=4qUheKg2Lay7rkyQAuqzWzkTXaIYOEjjSVeDSogdieo=;
-        b=ypZUOlzW0zfxiQOwmiTLgU4qngWZuHY9XO+Aes+aYyaOfXsP2aye96YbozwVFG3Zdz
-         7xfkQNgysPOy0aAFrWl4jHZuQvLf8CqjeJThUfEpLA0dVmatlXqNl1S+lR3aKuOCGMYR
-         Ex3qYAE4urmIwqLj7dPJeLFIaBl34KYsFQycjMnIyhxhh2Lydlxub2q+rh2HfrltOXHH
-         WXZ7OLoNG54sUTs1ww/ikqjcmigExi/o0KdXLBAmQ9vgntnKc0dre4lXsv1b7X6iHPOR
-         tnBTOLUxnlczGCsEd8obVqEiZ0kEWC1yJ6tvQCOKW9fb/93wp9vIfRS+/Mu2M6c+6kLQ
-         T0FQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794798081; x=1795402881;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=4qUheKg2Lay7rkyQAuqzWzkTXaIYOEjjSVeDSogdieo=;
-        b=IKE+8nK+GvdCcosJzk8ZJitT2SeE9J9XlV7MyhLv+b5valu6CJtmx2tVC6ff0Mxvz6
-         9qTDJF3ZGap3Va/TzHv5wqd1WN/0YCWyepRpFwD4vmd6Jn6yx8Emj2sMWMcF5E8ZA+DL
-         kkFQH3Twk7WyYlpqeJrZysckorDRBCyW2wbyIbl783mZVMTQyFOiiYW22bcT5InharuM
-         CXm1oUcVirXdPhEvUySr8psiYknGvmZuKIRj/u9gjpJwwzVxnaNphkw7D4WZL+a3d17s
-         EgRGcEyN1G8x5H5D8jhk2GUfsPJh8IFqXR5ZsRSQnG2V0nXECOnUZE1jaR2t4A6MxoGr
-         d1eQ==
-X-Forwarded-Encrypted: i=1; AL+hErFdypDoHhK98oap5h8uqv24SCQ2hBbXEqv6ms7deAdhic435oFluzvjIo5BlqXNCFRbTLp1FOHqH3HwNgGPOQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8VKwrC/Ff87tGBue7K8bj7m2WBrOwwDDoMMFU3HcY9r7bfZS/R
-	ricxu/tErtwFntCdOzMC05eTt3uqg2OlMDGXD4v5VOIVft/zy1Gtdpl+5DGf1dH7DDhk9g87121
-	V4UH/O8c1mncr5hmQDmGabbxvkn3sHAA=
-X-Gm-Gg: AYBFou3kBy+A0ATU+QiClV4eRMz9lT8LSO5phqUDkoV4IS/EDS29FQW45hqH9ASO2Ki
-	CsIds0b8DinLMkjR+BX+W54ek6Z4Q//mpfrBuv85Fzx1eweQSidbjdJTB+a9Nsb0blpuJ8PwHCV
-	B+I5xROlJroqNOCzV+kkx1dA2ti0Hu9VBXWG+/8KlQqWB6bQ9jxxN/fAUMhpsyBtZjwr4r1ccdw
-	yUVAPm0/IbIGFm4nWKMQY3sKEhRAwXtRLpfEJLowBEx1C7cXnwo1CpPJTetG1HVtJWGkztV4EjQ
-	1y7YFQ/9wkTIn+axud0Yq4bfJT75oFJJXyy8V7iztb1etcEmYFYYu7DMRF0KThE59pt45Az2wsv
-	xR93xYv6yDf71tt+9kRs0OCLTHUg2b/XYtJFT/AmfYKMZ3nWW8GApbYMb840mgrs/orzLvaY9Yg
-	vyv0P3ZCUb0EdQPUE6
-X-Received: by 2002:a17:907:6eaa:b0:c4d:1768:48eb with SMTP id
- a640c23a62f3a-c50962f0b77mr1233752266b.2.1794798080923; Sun, 15 Nov 2026
- 19:01:20 -0800 (PST)
+	id 1xSnE0-000000010oH-0tkb;
+	Mon, 16 Nov 2026 03:17:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1794799055; bh=1Ydo/JFA5qxzni2gYLker+DXlrCuegpZ91spzV6zZE8=;
+	h=From:To:Cc:Subject:Date:References:In-Reply-To;
+	b=uyjm94tIVJhun8tf0cxQrwn3SAmdL9BJOgxG0SJruOCtLwTUvp0K6j/diLZyBSYif
+	 14iFGOGdAOifYpm9yOb38h0c+n8OrC/TacPrib6ccHq+JOlniVfHtBRfSikerK+YXy
+	 SJVXPJQ8pgXuNhr6SrizNxEnb7Pjgrug4c1S2BNE=
+X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
+X-QQ-XMAILINFO: OTkXlZHit/HD2ECOkNMUpes8JgqTDIrnl70ocTF10oUnzcXJddXHB8IPNghF2M
+	 JHs400WfCpZeUssfdsYQd/c7h3L3LYYfnCRPV+X3YuVS/8S8eFX4wH/7S6tN2GZnKkaGo1tMKcA3e
+	 NyGFphqRO+5RnMyHR29RtGVG8ST4RQgBvG4i8puzNz3i8tYEapvB24rIQhDyDUTMCs3GV4R4LD7cw
+	 yTuq9t9T2CuV/VlV8vW/Vme/E4o7hDt6J+6HnmAPthlrC40NMLgV3Epr/IGGtiegRziuQmsNEsspl
+	 Ze1CVKptd66VdpVLqDsMG6qotZNllafFC0EHsqaOKrlJl9cRbWUNgShd0oMSqu5p0SpBkuQyA1+P1
+	 vuVY/OFE+p66Yv0px9wRlTy35WuuF/zAovV5TqyBlieIO63c36U/Q35TLmajQfcX/SkfT+8m9zfaC
+	 vMOyC8DZnMvHNwAoOCWpwCUL5V5VKq2+KYLdZsSZCKkOhgrNVqQCbSEDE4WeNPGcCnp1RsAQkJb8J
+	 vHHEGcNyAoVUc3w3y/i8iqFCwdhaeaPCQ9P9jyZztKpyR5MJTmKhagE60xs9Y+VlpwMMLicVefZmH
+	 L/nXwsWP1JLFpblgK+HXuY9C/b4AsSuitvZXzNd5COYv6XCmEpNrdDPUYq8iAxLC2KA+is7TUJ5ck
+	 cjLKdbl6YAjwGbYUBt1yAkGoH6owstvDJZm5I4dKDSBy9sAMenvlnSoXN0ukIl4cUTnK85iBV1O5z
+	 bOxAkjBJvBoW2xVRsheWR9CbcyEjBJreUQOiRSn23BeypNvKC1cdJskR4IP5fcqFuDT6A0ZGS3o8s
+	 EZaG+Clu38feonPN0W+0RQvFD+DkJ9drTX40ba0Bg+GWlO67W+1M61OlL/ej/Q1cnvRK2MAv9ejQB
+	 vFrtr0K+wOyf2EnqPZ6EqAVz6OO+isn2wcEiL8Advqkq87CfkAIYYF8IqrQegaLsVMAOcos0CwsNY
+	 60UC+MDUER7PAV1HHHxhJia4HxOHywop8LuEGyvEvhqm/M4xtQLvmq9pkopQsZe5wK8bPcXvWYtBo
+	 MYgHtPwsT9u3NKQNFX8sqzsj9RFsanT56AQAzQBbXCJinzWE=
+From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
+To: "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>
+Cc: "=?utf-8?B?bGludXgtY2xr?=" <linux-clk@vger.kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?UmljaGFyZCBDb2NocmFu?=" <richardcochran@gmail.com>, "=?utf-8?B?RWxhaW5lIFpoYW5n?=" <zhangqing@rock-chips.com>, "=?utf-8?B?UGhpbGlwcCBaYWJlbA==?=" <p.zabel@pengutronix.de>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?SmVyb21lIEJydW5ldA==?=" <jbrunet+clk@baylibre.com>, "=?utf-8?B?QnJpYW4gTWFzbmV5?=" <bmasney+clk@redhat.com>, "=?utf-8?B?U3RlcGhlbiBCb3lk?=" <sboyd@kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, 
+	"=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bmV0ZGV2?=" <netdev@vger.kernel.org>
+Subject: Re: [PATCH v5 2/4] clk: rockchip: Add internal support for 24-bit fractional dividers
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-References: <20261110-dcphy-rx-v1-v6-0-d681ba20b36a@gmail.com>
- <20261110-dcphy-rx-v1-v6-3-d681ba20b36a@gmail.com> <3ab93996-7e37-4143-aa4c-b4b4b0e025d8@collabora.com>
-In-Reply-To: <3ab93996-7e37-4143-aa4c-b4b4b0e025d8@collabora.com>
-From: =?UTF-8?B?5qWK5pm65oiQ?= <jason98166@gmail.com>
-Date: Mon, 16 Nov 2026 11:01:08 +0800
-X-Gm-Features: AclHuK_2CCL-6w7SS-4GVGwc0x2u2Iaps879pDspYuxXhI4Edd6EqNeYrnLX7uA
-Message-ID: <CAPwA33JHxsd=nr9F9_KFKWPx+HGaR8P3ee7hxMc8XCS6QY46gw@mail.gmail.com>
-Subject: Re: [PATCH v6 3/9] phy: rockchip-samsung-dcphy: Unwind power-on on
- PLL lock failure
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Guochun Huang <hero.huang@rock-chips.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>, 
-	"Bryan O'Donoghue" <bryan.odonoghue@linaro.org>, linux-phy@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Sashiko <sashiko-bot@kernel.org>
+Mime-Version: 1.0
+Date: Mon, 16 Nov 2026 11:17:32 +0800
+X-Priority: 3
+Message-ID: <tencent_A76502128C463402C8115BFD549A4E69CE09@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+References: <20261030-add-board-ok3572-c-clk-v5-0-9a43403cb149@qq.com>
+ <20261030-add-board-ok3572-c-clk-v5-2-9a43403cb149@qq.com>
+	<Yf6NfRPFTxKjDagKAm6hpw@sntech.de>
+In-Reply-To: <Yf6NfRPFTxKjDagKAm6hpw@sntech.de>
+X-QQ-mid: xmsezb41-0t1794799052treparxye
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261115_190125_010843_465568E2 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20261115_191744_597376_1CE397A7 
+X-CRM114-Status: GOOD (  20.81  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -128,48 +84,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
 	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Michael,
+Hi,
 
-On 11/11/26 14:02, Michael Riesch wrote:
-> I wonder whether this should be here in the first place. Only judging by
-> the name, samsung_mipi_dcphy_pll_enable is something that affects the
-> complete logic block and probably should be kept in runtime resume to
-> begin with.
+Thank you very much for your review.
+
+> > Add an internal Rockchip fractional-divider helper and clock branch type
+> > for this register layout. This provides the support needed by the RK3572
+> > audio fractional clocks.
 >
-> However, since _dphy_rx_power_on does not call this funcion, it seems to
-> be something related only to the TX side of the logic block, but for
-> D-PHY and C-PHY. In this case, it probably should go into
-> samsung_mipi_dcphy_tx_power_on.
+> Please add a paragraph about the "v2" naming.
+> I assume the v2 is a Rockchip naming, because v1 was the other one that
+> could still fit the regular franctional divider.
 >
-> On the off chance that this is actually for the D-PHY TX operation, the
-> function should be renamed "*_dcphy_pll_*" -> "*_dphy_pll_*" or
-> "*_dphy_tx_pll_*".
+> > +static inline u32 clk_fd_v2_readl(struct clk_fractional_divider_v2 *fd,
+> > +   void __iomem *reg)
+> > +{
+> > + return readl(reg);
+> > +}
+> > +
+> > +static inline void clk_fd_v2_writel(struct clk_fractional_divider_v2 *fd,
+> > +     void __iomem *reg, u32 val)
+> > +{
+> > + writel(val, reg);
+> > +}
 >
-> What do you think?
+> why do we have those? They do not serve any purpose I can see.
+> So please just use readl and writel directly at the appropriate places.
+>
+> [...]
+>
+> > + if (fd->flags & CLK_FRAC_DIVIDER_ZERO_BASED) {
+> > + (*m)--;
+> > + (*n)--;
+> > + }
+>
+> ... blank line please ...
+>
+> > + if (!*m && !(fd->flags & CLK_FRAC_DIVIDER_ZERO_BASED))
+> > + return clk_fd_v2_get_low_rate_divider(fd, rate, parent_rate, m, n);
+>
+> ... blank line please ...
+>
+> [...]
+>
+> > +static const struct clk_ops clk_fractional_divider_ops_v2 = {
+> > + .recalc_rate = clk_fd_v2_recalc_rate,
+> > + .determine_rate = clk_fd_v2_determine_rate,
+> > + .set_rate = clk_fd_v2_set_rate,
+> > +};
+> > +
+> > +static struct clk_hw *clk_hw_register_fractional_divider_v2(struct device *dev,
+>
+> maybe adapt the function name.
+> Function above abbreviated things to
+>
+> clk_fd_v2_something, so naming this clk_hw_register_fd_v2()
+> might make that line less unwieldy?
 
-The settings in this function are indeed only for TX, for both D-PHY
-and C-PHY, so I will rename the PLL helpers to
-samsung_mipi_dcphy_tx_pll_* in the renaming patch (6/9).
+I will fix these issues in v6.
 
-samsung_mipi_dcphy_tx_power_on does look like a more suitable place.
-However, I do not have a C-PHY board, and I only have one panel with
-mainline support, so I may not be able to test the DC-PHY TX side
-thoroughly. For now I am trying to leave the TX code unchanged unless
-my series affects that code.
+Best regards,
+Cunhao Lu
 
-Should I move the PLL enable to samsung_mipi_dcphy_tx_power_on, or keep
-this error cleanup path and the renaming change for now?
-
-Thanks,
-Jason
-
+pw-bot: cr
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
