@@ -2,118 +2,108 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 37655606C4B9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 06:30:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2DC8A606A329
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 07:05:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2c2I0z1K;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=casper.20170209 header.b=SQrqQblK;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=yE0Ni0cD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WoB91Cm5;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=SJ5S0Ys/
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FoLm+x0dXJwApsyd666LTvUM2K+epSMiILlwwZbrKdY=; b=2c2I0z1KB1eii7OVMY/wDPnVYO
-	TSeVooDoyG1Oq9elup5bvRLgTLKx2GCJamh6nCgjFCdCaa1Bq/qpAv1umzQlnJylCMKhIBVEe/Uc0
-	GpcyH3CJ31OMVZcX5ApupbkJERY1E/Npvz1P7vpvIEizqeUx54dgQVwGmBLDBKf0UZpzLUlqnBtwk
-	7JjCN8HBHcVqASp6jE0ooTDpGxX7OMOFKpy7eljYSG7RBCSpc99es8ETB8qsai1OA56HjOUCmDnUU
-	ReA1iIMnkqDgPPxKokEAKBTvtGn1vmORQhyrECVJLO8d5eapFIN6IxbF8Ys45hU8RMVGpsFExBY0Q
-	AGnpSDMw==;
+	bh=xtLe2L8ybhwwDeTJstQJfToim/miAISrLrjMaamrCX8=; b=WoB91Cm5tTWYWZaRcNmfiYvxkx
+	j7EPGFfw4m10ex2j5knPImIy9odf1xdm317wnXV9IjnW0FkBvPMsYd07xbP7sn0RWHLeKqDETf/0H
+	kd15bS8a7p8F1VrofctlZeZCqYm3p1GlgQFhZm/YfhQu0WEwEnRtgeIHVtb30lXwYbuYW0LAaatK9
+	fa1Cbv+JdebdbYlLucJDlThqHt5+u5QXSMcVuwXWAZRi/ClqEzmKOBEgGe0DpMdjd5C+NIjbsuRqh
+	8jb5wHhEgXLZ9ZC3AvHG6ETVwjkhdtfq6fbomzSEMSqT0woytM/f2p9L5lZxgH70puGjl5en9QohU
+	bctn1Y6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSqEN-00000001FWY-2Cj5;
-	Mon, 16 Nov 2026 06:30:19 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1xSqmf-00000001MIk-0BoE;
+	Mon, 16 Nov 2026 07:05:45 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSqEL-00000001FS8-2kV8
-	for linux-rockchip@bombadil.infradead.org;
-	Mon, 16 Nov 2026 06:30:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
-	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=FraXL6TvEduJvf5AaveEnMU+FvEiUNO/y+vqECKLnSg=; b=SQrqQblKAyhrU079gzyTLlufSl
-	1ydEryxtrH2692D8WuR4HRMu+jnbqp9WFswIj68mpIsNK6earwX/mkUg9Qkr867Apsqfl2pLws9HY
-	AB+io5t6Q1OhBDjl+R7Qh5PQZY95IRdNxhhJnm0D23DUd6mdj+gotRUPE7s9nXSnpinrDdxkuYwe/
-	jQZttSA/M/r5GxiQ1erYQMXImnCf9l2dGof7e2OtKJTQU0+WSJYpSXBxZ2XY5swpCpnLIAkbL2r+Z
-	BsHkJRnckXM1lEOjMIFJTQhVILOFAZMX924bqIblIJw2QQ/M92X1f4Y/PA77BY6ne5O7wAI+eiv8t
-	stiFbQOw==;
-Received: from mail-oo1-xc34.google.com ([2607:f8b0:4864:20::c34])
-	by casper.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSqEC-0000000CeKT-3OAG
-	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Nov 2026 06:30:16 +0000
-Received: by mail-oo1-xc34.google.com with SMTP id 006d021491bc7-716b58a4365so2119175eaf.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 15 Nov 2026 22:30:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794810606; x=1795415406; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=FraXL6TvEduJvf5AaveEnMU+FvEiUNO/y+vqECKLnSg=;
-        b=yE0Ni0cDr8FNr5C6NFTlHKLh0QccMUS6QlJSFy/xlQPHo0PXM/WmzVQUQ++EPeRw6L
-         ePDRbqSgd810AIk0CCr/gGqYRv+o02VjflS0NCG00qIp48QLb7m2/HW04ttt65kH7Yn+
-         5MQbrxSvyjeh5863PrxTbf6I+z/mJjzwp/vUYlNIta/iPrTygSM+OxT3YE+nB7GaP14b
-         iPI0wr033m8RcPMfLqChra4Ao08dbFcAmlhDuZMUO5nffj9OfQWT/kqd6he/DKsDkvKV
-         4V4WJNLuEHtz8mEOpubB5E3j2cA3ortxK30mARVLjsD25Peh9n+XldLxABkIwbO54AQB
-         YwCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794810606; x=1795415406;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=FraXL6TvEduJvf5AaveEnMU+FvEiUNO/y+vqECKLnSg=;
-        b=po2eOTHZV0SXsFk+8d+QPdUv+Yluj+96GquBwdgwuF1+rWGBXhAc6bIN4E+fjleIf8
-         VBiuVSC++Rl88ailaqKmgryY4nJcuNtjGHZCgAudmyhqDJXo2ruU5n0r7h7hPpaZ5jW4
-         mXn84I+X/OB5yhL0frSFbploslfpQS6TpxjvZO2xW6jb2c2uS0Idi7UI+S+YOvlzFN6X
-         S+2CPAPiJW+5G/ya0k/OqWstFpM2mfBABFHcYYahFJ2YWElOlUgw5B4yYH7VjuMvGcId
-         V+nrC/m/n+FX2gJ6nb3kEZ+COVy/YsCyGz8KqrogO5bcqnMM10lQaBZe4YktOidLBlTd
-         NLbw==
-X-Forwarded-Encrypted: i=1; AL+hErGkgmsmao4imagKQLNotYeipY47EXrVqmm3QrOeFwvjotQSu5RcgiatESSfiv+Bu0b/rNv9iOTKfccvQkBUCg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z963RAae7wp8HHJoY2nyinAE8a6wnbQlhWtNiEdO15iMMOVpkxF
-	6N7zJhLYNrJfBuvRImEfvw0ZDhT9mwV0wINN06CcPrKk6R23uS47MxVz
-X-Gm-Gg: AYBFou06d1XwDSMnQMRPA76B+KZ3GVGm6VInKHTfBYvlRJ18b+s5P5+cP6pWGA3K2Ab
-	zUK0sruAdGKM2dGETosnyADBGmUl5d7LvH/6ZfdIqKfTbymQM+8BWL3P9ErWzs67XQ0Zp9zYbTW
-	oYSUxdJBodbBM8G7A6D6L/oE1CcMlwJc6SykkZn/DOSR09NjpYTgIw1siL7UBNNu4oQyw9hgLWI
-	CRe8l0h6hiTYckM9OD7WHS+GWpeNAGZJAD1WkDuC5p6H1QQao1k8bIP5wHf1zHEfMo3fP5cdb5N
-	DRHDtSdVip4NfCzbXMIQfWGD8oLZ4E+XQgm2p7xVSLQaqscs2AHAep1sGALGsY8+Oxt5XGYeI/B
-	UUxRRhDWEmgZeXyMOCn5UWISEpTcCBWe0qJncHvwimMWSwf5ORLLBVunKAlEl8+2p9FOexJ6HJV
-	ZKe4WRmXGzq9TlJLCyd7r5xdkuVLgY6vt5XMZcMmlh7d/chsh4I8OzrLYcYGJ0uEfozDXtULBhS
-	bkWi8HxM/gXEhbAc9keZoCtzDKxK+Dcj5Rz26MYnevd7VpQkK+K4MgqmzHMhvodQy+QETn2s8zV
-	uiTlU4XdPsugsIQg0dv/opfo6byQ2YQJW1tC10t4/3VGQRPmNbXpOK3MZoY2tWH+ydC7bpMhIqE
-	isWF+PH2/JIBtF1fgJAbAlwRTk2g/YY4T5psn9WGRzry7I+05gskwYstk1VJVOnGQrk4xFMPYzg
-	i9XDPrTDkBCK0Yd1xfQqCuYEeG/S/xRMw8vKzM21JmLqAxUP2vSyc=
-X-Received: by 2002:a05:6820:339c:20b0:71a:f228:3222 with SMTP id 006d021491bc7-71af22833b7mr1068015eaf.77.1794810606340;
-        Sun, 15 Nov 2026 22:30:06 -0800 (PST)
-Received: from [127.0.1.1] (174-29-1-49.hlrn.qwest.net. [174.29.1.49])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-71ab42c41e9sm7994558eaf.6.2026.11.15.22.30.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 15 Nov 2026 22:30:05 -0800 (PST)
-From: James Hilliard <james.hilliard1@gmail.com>
-Date: Sun, 15 Nov 2026 23:29:32 -0700
-Subject: [PATCH v5 17/58] mtd: rawnand: rockchip: retain chips across
- controller removal
+	id 1xSqmc-00000001MIR-3ty8;
+	Mon, 16 Nov 2026 07:05:43 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id B9F6560F36;
+	Mon, 16 Nov 2026 07:05:41 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794812741;
+	b=Tm08GaosT3F35/goGlMpFlAHYY8sLzjJNGvB2jqci8Egx3nCjpORUUuS9fVMDo6XwQoN
+	 DPssXd3At6lRwQ/hIvzabaRCIshsObTR+CyiAhvWOjVP1aue6BEBmK6zpBbJDTx4qILLE
+	 WlmEMvlY1xqQHtT9AHyHexNb4IPqdiP+y1NEqSb7uk6ThH7Htz7Z6snG8PBc7IBguMJx/
+	 4gJ0qtqff1jAupMkl/UUFJtNhhPrzlz1Xtnrlxb8nO99eZ73OJ0/rIdGyw/d8uCkniLG7
+	 OuOemv1LZGKvXpDYzjdbXQcIPXWN/XbroGWhw8SP8+slhV/GiG2rFo9E6J8eTNNrAaQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794812741;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
+	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=rBoc9Az+eYLYApOQ5Nq0UwLguS2L7Y5c89wC992tlqw=;
+	b=BHqtVSLUaiK8Zkq8jw1Nbze/XQz3JyfdkU1SWd8xpkVdZy0fSjd5c6v1MWKolC+k43Al
+	 BRsdpm8HiWnYyMTOEHMQIG7jDCXEA1aR+a4DlepRTRQwGlJqvL/HFcF1BFhnK+i9MEmED
+	 RSszyqxrmhl9uN+gwEhawRCE3kKNekfgyFtxXjpoW0rDUS9xjghvQGH8blXKi0hD9pBbQ
+	 x7bPXOIdIs/ThgoEpyIg6s6iLnuPRZYQFb7hvisQg+2BEtR9ntJi411fIP5Tvje8d/r+O
+	 /MSZdNwJCjPBuRK3iPlmLmj4EUUuBFKersQJV5SFs5MoY92TJZQDtFzs3XVVowPXMxQ==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id BEF1C1F000C5;
+	Mon, 16 Nov 2026 07:05:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794812741;
+	bh=rBoc9Az+eYLYApOQ5Nq0UwLguS2L7Y5c89wC992tlqw=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=SJ5S0Ys/PDkerFAQXDztg4mxwvUqQaWJAKat33wC7U99JQi3bEsDGm+TLR+0tGr2H
+	 zQvr9sBZZkRn588EZzdtU1LK+X0dauYc2+dcZ9wSVpGtzMOeVyB3/FDUBXeM7fKk7Y
+	 eDlRewvqT2LIM5XdLV4M6Mw8m1iavIspbHY17i4r/yX/ilbjRYZKl49Qyiat08/u2B
+	 XXR6llGwZU2LJ1MNnAb6HKQnCwo6CGzJ24ymTLlCkN9Tq8eGCpgNLN8Zia+FDH09Zc
+	 dKeMtZ/BSJUVkGll2RYyQ29QotRYOnGuZ36MkGq35y6Ue5NFRSCeG1uHdwXDSBr5WZ
+	 GwDOq25TgQeBA==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 4F66B4A368;
+	Mon, 16 Nov 2026 07:05:40 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Mon, 16 Nov 2026 09:05:39 +0200
+Subject: [PATCH v2] PCI: rockchip-host: Retry link bring-up on repeated
+ Recovery
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261115-submit-rawnand-retained-handle-lifetime-v1-v5-17-cbc49c5c5e74@gmail.com>
-References: <20261115-submit-rawnand-retained-handle-lifetime-v1-v5-0-cbc49c5c5e74@gmail.com>
-In-Reply-To: <20261115-submit-rawnand-retained-handle-lifetime-v1-v5-0-cbc49c5c5e74@gmail.com>
-To: Miquel Raynal <miquel.raynal@bootlin.com>, 
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>
-Cc: linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- James Hilliard <james.hilliard1@gmail.com>, 
- Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Yifeng Zhao <yifeng.zhao@rock-chips.com>
-X-Mailer: b4 0.17-dev
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_063010_526940_DFB2D715 
-X-CRM114-Status: GOOD (  14.60  )
-X-Spam-Score: -1.9 (-)
+Message-Id: <20261116-rockchip-pcie-resume-v2-1-a633e279be97@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAEKr+moC/22NQQ7CIBBFr9LM2jFAwTSuvIfpgtBBJmppQImm4
+ e5i49Lle8l/f4VMiSnDsVshUeHMcW6gdh24YOcLIU+NQQl1kEIOmKK7usALLo4JE+XnnVA5PXl
+ Sfa8lQZsuiTy/tux5bBw4P2J6by9Ffu0vqPT/YJEo0AxktDXOGy9PbMv+VmCstX4AwyDy0bUAA
+ AA=
+To: Shawn Lin <shawn.lin@rock-chips.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, 
+ Bjorn Helgaas <bhelgaas@google.com>
+Cc: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Matt Thompson <matt@boondocker.io>, linux-pci@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=7808; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=Cps1/uQ5Lnu2PNKM6vu/z1g7FA1bXqg0a2gSZkGUYzE=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFm/VjufXCMedXRF1s3YKRz8VQrzCiaVx98o7BBOVCreF
+ sBle+ZaRykLgxgXg6yYIsuEQxq3MpZc/evvYf4AZg4rE8gQBi5OAZgITynDP43jLLzXq0//a/xd
+ JMa//0BQ2KdX6z4XPVA4u6FnqUXw9HyG/w6tAgwiIXGes+Xu68078sU99PeGRIlznw/WrcucYJC
+ 6hh0A
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,166 +113,229 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Keep chip metadata and controller storage alive for retained MTD
-handles. Disconnect each chip after unregistering it and before
-releasing transfer buffers or clocks. This also lets unregister
-notifiers finish using those buffers before hardware teardown. Free chip
-metadata on the final MTD put.
+From: Igor Velkov <iav@iav.lv>
 
-Run NAND cleanup during disconnection; the final core-owned put only
-releases retained allocation and layout data.
+On Kobol Helios64 (RK3399 with a JMB585 at x2) about 3% of link
+bring-ups go bad. The LTSSM reaches L0 and then re-enters Recovery about
+every 200 us; the RC sees DLLPs about 300 times as often as on a good
+link, with no DLLP or CRC errors. The first config read behind the port
+gets no completion and aborts the CPU, or link training times out. The
+state survives Recovery, and a new bring-up of the port clears it.
 
-Fixes: 058e0e847d54 ("mtd: rawnand: rockchip: NFC driver for RK3308, RK2928 and others")
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
+After the link comes up, poll the LTSSM for 5 ms and treat more than two
+entries into Recovery as a bad bring-up. The RC runs at 2.5 GT/s only,
+so no speed change goes through Recovery, and good bring-ups on the
+boards we tested showed no Recovery entries after L0. Bring the port up
+again, up to five tries in all with 500 ms between them, for this and
+for a training timeout. An empty slot stays in Detect, so a timeout
+there fails on the first try. If no try gives a usable link, probe and
+resume fail as they do on a training timeout today.
+
+Every link bring-up takes 5 ms longer. A link that stays bad delays the
+failure by 3 to 5 s.
+
+Signed-off-by: Igor Velkov <iav@iav.lv>
 ---
- drivers/mtd/nand/raw/rockchip-nand-controller.c | 41 +++++++++++++++++--------
- 1 file changed, 28 insertions(+), 13 deletions(-)
+Tested on Helios64 with unbind/bind cycles; every bad bring-up was fixed
+by the first retry:
+- earlier builds with the same poll and retry loop, 7.3: no abort in 600
+  cycles (5 in 150 without the patch), 10/10 cold boots, 60/60 s2idle;
+- 7.4-rc2 with Matt Thompson's RFC v2 [1]: 4 bad bring-ups in 150
+  cycles; with the RFC alone the JMB585 was lost in 5 of 150;
+- this patch, 7.4-rc2: 5 bad bring-ups in 150 cycles (one of them a
+  training timeout), no abort; 20/20 s2idle.
+An NVMe drive on a ROCK Pi 4A with the patch: 60 cycles, none rejected.
 
-diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-index 1e56e5e41f79..1616c9335e38 100644
---- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
-+++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-@@ -1134,8 +1134,7 @@ static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
- 		return -EINVAL;
- 	}
+[1] https://lore.kernel.org/r/20261113-rfc-b4-v2-0-d6b14f95c1d6@boondocker.io
+---
+Changes in v2:
+- Drop the hot reset of patch 2: it did not stop the aborts.
+- Also retry when the link keeps entering Recovery in the first 5 ms
+  after link-up; up to five tries, 500 ms apart.
+- Do not retry a training timeout in Detect.
+- Rebase onto pci/next.
+- Link to v1: https://lore.kernel.org/r/20261024-rockchip-pcie-resume-v1-0-58e54a5cf5f1@iav.lv
+---
+ drivers/pci/controller/pcie-rockchip-host.c | 80 +++++++++++++++++++++++++++--
+ drivers/pci/controller/pcie-rockchip.h      |  3 ++
+ 2 files changed, 80 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
+index 1e1556e436b8..7c43e5bcccd3 100644
+--- a/drivers/pci/controller/pcie-rockchip-host.c
++++ b/drivers/pci/controller/pcie-rockchip-host.c
+@@ -13,12 +13,14 @@
  
--	rknand = devm_kzalloc(dev, struct_size(rknand, sels, nsels),
--			      GFP_KERNEL);
-+	rknand = kzalloc(struct_size(rknand, sels, nsels), GFP_KERNEL);
- 	if (!rknand)
- 		return -ENOMEM;
+ #include <linux/bitfield.h>
+ #include <linux/bitrev.h>
++#include <linux/delay.h>
+ #include <linux/gpio/consumer.h>
+ #include <linux/interrupt.h>
+ #include <linux/iopoll.h>
+ #include <linux/irq.h>
+ #include <linux/irqchip/chained_irq.h>
+ #include <linux/irqdomain.h>
++#include <linux/ktime.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_pci.h>
+@@ -29,6 +31,11 @@
+ #include "../pci.h"
+ #include "pcie-rockchip.h"
  
-@@ -1144,17 +1143,19 @@ static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
- 		ret = of_property_read_u32_index(np, "reg", i, &tmp);
- 		if (ret) {
- 			dev_err(dev, "reg property failure : %d\n", ret);
--			return ret;
-+			goto free_chip;
- 		}
- 
- 		if (tmp >= NFC_MAX_NSELS) {
- 			dev_err(dev, "invalid CS: %u\n", tmp);
--			return -EINVAL;
-+			ret = -EINVAL;
-+			goto free_chip;
- 		}
- 
- 		if (test_and_set_bit(tmp, &nfc->assigned_cs)) {
- 			dev_err(dev, "CS %u already assigned\n", tmp);
--			return -EINVAL;
-+			ret = -EINVAL;
-+			goto free_chip;
- 		}
- 
- 		rknand->sels[i] = tmp;
-@@ -1174,19 +1175,20 @@ static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
- 	chip->ecc.engine_type = NAND_ECC_ENGINE_TYPE_ON_HOST;
- 
- 	mtd = nand_to_mtd(chip);
--	mtd->owner = THIS_MODULE;
++#define ROCKCHIP_PCIE_LINK_CHECK_US		5000
++#define ROCKCHIP_PCIE_LINK_CHECK_MAX_RECOVERIES	2
++#define ROCKCHIP_PCIE_LINK_BRING_UP_TRIES	5
++#define ROCKCHIP_PCIE_LINK_RETRY_WAIT_MS	500
 +
- 	mtd->parent_dev = dev;
- 
- 	if (!mtd->name) {
- 		dev_err(nfc->dev, "NAND label property is mandatory\n");
--		return -EINVAL;
-+		ret = -EINVAL;
-+		goto free_chip;
- 	}
- 
- 	mtd_set_ooblayout(mtd, &rk_nfc_ooblayout_ops);
- 	rk_nfc_hw_init(nfc);
- 	ret = nand_scan(chip, nsels);
- 	if (ret)
--		return ret;
-+		goto free_chip;
- 
- 	if (chip->options & NAND_IS_BOOT_MEDIUM) {
- 		ret = of_property_read_u32(np, "rockchip,boot-blks", &tmp);
-@@ -1197,16 +1199,26 @@ static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
- 		rknand->boot_ecc = ret ? chip->ecc.strength : tmp;
- 	}
- 
-+	ret = nand_set_lifetime(chip, container_of(chip, struct rk_nfc_nand_chip, chip));
-+	if (ret) {
-+		nand_cleanup(chip);
-+		goto free_chip;
-+	}
- 	ret = mtd_device_register(mtd, NULL, 0);
- 	if (ret) {
- 		dev_err(dev, "MTD parse partition error\n");
--		nand_cleanup(chip);
-+		nand_disconnect(chip);
-+		mtd_put_master(mtd);
- 		return ret;
- 	}
- 
- 	list_add_tail(&rknand->node, &nfc->chips);
- 
- 	return 0;
-+
-+free_chip:
-+	kfree(rknand);
-+	return ret;
- }
- 
- static void rk_nfc_chips_cleanup(struct rk_nfc *nfc)
-@@ -1219,8 +1231,9 @@ static void rk_nfc_chips_cleanup(struct rk_nfc *nfc)
- 		chip = &rknand->chip;
- 		ret = mtd_device_unregister(nand_to_mtd(chip));
- 		WARN_ON(ret);
--		nand_cleanup(chip);
-+		nand_disconnect(chip);
- 		list_del(&rknand->node);
-+		mtd_put_master(nand_to_mtd(chip));
- 	}
- }
- 
-@@ -1381,11 +1394,13 @@ static int rk_nfc_probe(struct platform_device *pdev)
- 	struct rk_nfc *nfc;
- 	int ret, irq;
- 
--	nfc = devm_kzalloc(dev, sizeof(*nfc), GFP_KERNEL);
-+	nfc = kzalloc_obj(*nfc);
- 	if (!nfc)
- 		return -ENOMEM;
- 
--	nand_controller_init(&nfc->controller);
-+	ret = devm_nand_controller_init(dev, &nfc->controller, nfc);
-+	if (ret)
-+		return ret;
- 	INIT_LIST_HEAD(&nfc->chips);
- 	nfc->controller.ops = &rk_nfc_controller_ops;
- 
-@@ -1449,9 +1464,9 @@ static void rk_nfc_remove(struct platform_device *pdev)
+ static void rockchip_pcie_enable_bw_int(struct rockchip_pcie *rockchip)
  {
- 	struct rk_nfc *nfc = platform_get_drvdata(pdev);
- 
-+	rk_nfc_chips_cleanup(nfc);
- 	kfree(nfc->page_buf);
- 	kfree(nfc->oob_buf);
--	rk_nfc_chips_cleanup(nfc);
- 	rk_nfc_disable_clks(nfc);
+ 	u32 status;
+@@ -277,9 +284,40 @@ static void rockchip_pcie_set_power_limit(struct rockchip_pcie *rockchip)
+ 	rockchip_pcie_write(rockchip, status, PCIE_RC_CONFIG_CR + PCI_EXP_DEVCAP);
  }
  
++/*
++ * A bad bring-up re-enters Recovery about every 200 us, and config requests
++ * through it get no completion. A good link settles in L0. Each visit to
++ * Recovery lasts about 5 us, so we busy-poll; the limit of two entries leaves
++ * margin for an occasional retrain of a good link.
++ */
++static bool rockchip_pcie_link_is_stable(struct rockchip_pcie *rockchip)
++{
++	ktime_t end = ktime_add_us(ktime_get(), ROCKCHIP_PCIE_LINK_CHECK_US);
++	bool was_recovery = false, is_recovery;
++	int recoveries = 0;
++	u32 state;
++
++	while (ktime_before(ktime_get(), end)) {
++		state = rockchip_pcie_read(rockchip, PCIE_CLIENT_DEBUG_OUT_0);
++		state &= PCIE_CLIENT_DEBUG_LTSSM_MASK;
++		is_recovery = state >= PCIE_CLIENT_DEBUG_LTSSM_RCVR_LOCK &&
++			      state <= PCIE_CLIENT_DEBUG_LTSSM_RCVR_IDLE;
++
++		if (is_recovery && !was_recovery)
++			recoveries++;
++		was_recovery = is_recovery;
++		udelay(2);
++	}
++
++	return recoveries <= ROCKCHIP_PCIE_LINK_CHECK_MAX_RECOVERIES;
++}
++
+ /**
+  * rockchip_pcie_host_init_port - Initialize hardware
+  * @rockchip: PCIe port information
++ *
++ * Return: 0 on success, -EAGAIN if another bring-up of the link may help, or
++ * another negative error code
+  */
+ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
+ {
+@@ -325,7 +363,19 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
+ 				 status, PCIE_LINK_UP(status), 20,
+ 				 500 * USEC_PER_MSEC);
+ 	if (err) {
+-		dev_err(dev, "PCIe link training gen1 timeout!\n");
++		status = rockchip_pcie_read(rockchip, PCIE_CLIENT_DEBUG_OUT_0) &
++			 PCIE_CLIENT_DEBUG_LTSSM_MASK;
++		dev_warn(dev, "PCIe link training gen1 timeout, LTSSM %#x\n",
++			 status);
++		/* An empty slot stays in Detect; another try cannot help. */
++		if (status > PCIE_CLIENT_DEBUG_LTSSM_DETECT_ACTIVE)
++			err = -EAGAIN;
++		goto err_power_off_phy;
++	}
++
++	if (!rockchip_pcie_link_is_stable(rockchip)) {
++		dev_warn(dev, "PCIe link up but keeps entering Recovery\n");
++		err = -EAGAIN;
+ 		goto err_power_off_phy;
+ 	}
+ 
+@@ -377,6 +427,30 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
+ 	return err;
+ }
+ 
++static int rockchip_pcie_bring_up_port(struct rockchip_pcie *rockchip)
++{
++	struct device *dev = rockchip->dev;
++	int i, err;
++
++	for (i = 0; i < ROCKCHIP_PCIE_LINK_BRING_UP_TRIES; i++) {
++		if (i) {
++			dev_info(dev, "retrying the link bring-up (%d/%d)\n", i,
++				 ROCKCHIP_PCIE_LINK_BRING_UP_TRIES - 1);
++			msleep(ROCKCHIP_PCIE_LINK_RETRY_WAIT_MS);
++		}
++		err = rockchip_pcie_host_init_port(rockchip);
++		if (err != -EAGAIN)
++			break;
++	}
++
++	if (err == -EAGAIN)
++		err = -ETIMEDOUT;
++	if (err)
++		dev_err(dev, "no usable link: %pe\n", ERR_PTR(err));
++
++	return err;
++}
++
+ static irqreturn_t rockchip_pcie_subsys_irq_handler(int irq, void *arg)
+ {
+ 	struct rockchip_pcie *rockchip = arg;
+@@ -881,7 +955,7 @@ static int rockchip_pcie_resume_noirq(struct device *dev)
+ 	if (err)
+ 		goto err_disable_0v9;
+ 
+-	err = rockchip_pcie_host_init_port(rockchip);
++	err = rockchip_pcie_bring_up_port(rockchip);
+ 	if (err)
+ 		goto err_pcie_resume;
+ 
+@@ -938,7 +1012,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 		goto err_set_vpcie;
+ 	}
+ 
+-	err = rockchip_pcie_host_init_port(rockchip);
++	err = rockchip_pcie_bring_up_port(rockchip);
+ 	if (err)
+ 		goto err_vpcie;
+ 
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+index b5da15601b58..fcdc3783b3fd 100644
+--- a/drivers/pci/controller/pcie-rockchip.h
++++ b/drivers/pci/controller/pcie-rockchip.h
+@@ -51,6 +51,9 @@
+ #define   PCIE_CLIENT_PHY_ST			BIT(12)
+ #define PCIE_CLIENT_DEBUG_OUT_0		(PCIE_CLIENT_BASE + 0x3c)
+ #define   PCIE_CLIENT_DEBUG_LTSSM_MASK		GENMASK(5, 0)
++#define   PCIE_CLIENT_DEBUG_LTSSM_DETECT_ACTIVE	0x01
++#define   PCIE_CLIENT_DEBUG_LTSSM_RCVR_LOCK	0x0b
++#define   PCIE_CLIENT_DEBUG_LTSSM_RCVR_IDLE	0x0e
+ #define   PCIE_CLIENT_DEBUG_LTSSM_L1		0x18
+ #define   PCIE_CLIENT_DEBUG_LTSSM_L2		0x19
+ #define PCIE_CLIENT_BASIC_STATUS0	(PCIE_CLIENT_BASE + 0x44)
 
+---
+base-commit: 35f800669ce835aa77364a2ab5b61be19b778d3c
+change-id: 20261018-rockchip-pcie-resume-2c4dfe23341e
+
+Best regards,
 -- 
-2.53.0
+Igor Velkov <iav@iav.lv>
+
 
 
 _______________________________________________
