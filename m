@@ -2,68 +2,110 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98847606A31C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 07:12:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D7BB6606A886
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2026 07:39:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=znmqX2Lu;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=MnxzOx9D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=amE2Srqy;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jz85i1Za
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=UUhXZuhti6VvWEwPT4uJC5cbK4fnyYV+qaTMcF8tTCM=; b=znmqX2LuldU/uQdVZ4aaxyyixT
-	Ypxd6h6l+w59uXr+dqG1opekEbUpesR06hd59Gs6MJYc/B/TtRt0D/WpEHVgNO7ueSoNrnaORiu0L
-	IhK457lTd04mleWCaaezLTTL0hamhcFfEFDSeia3+9/W0n+c5A8H5zjm+/+NaxNyeJx9WIT92Px96
-	XM41FQt8n6Bx6MGQhE3R69qTmSLWCrVsaOguHWzkjCltV6zucvijCsJja1qGpy8lVWO5CNMMpMzC1
-	hMQfT/6uDyiS1lBCK09vChw3lKMfFlqFojxFSU3CluBXqWKWocyKJMUd1tuBVEqrZbBRx7U+hYfGl
-	z8yX2HoA==;
+	bh=sONhUz4NiLZh7pbPQVOmV66O/3TaDPdrsvhe8r8KnZo=; b=amE2SrqyJRSzCEYlrmolSWDhJ2
+	9EV5xINwnZFmX41lk8xYSF2nIeg5OEwMdc2DTqz8/U1hu7nBAz1g0VuPAaaFDxEGjktueXEBozZEb
+	q8egt8EutDFPdsCL3K0lp/tOWTLdE1iF6D4ROjAfgIxkm6dZILTjN11uSM8cenCC2IvgGUKEzApgX
+	wQ2klULnb7bl1ZpML+Zv7nVn4CTq55ornicDRGfn9sznj222sn9pXzk3VZXgnIC6LxWav4ibpPT2f
+	xMANu83p3Rakt28zfRSvTS8okhUD4PS0DjWERqaVFObGud9+lyhlLJvP8kfUQKf3W5yThf0lv8YJD
+	OpAOxEPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSqsb-00000001Mrr-15Fh;
-	Mon, 16 Nov 2026 07:11:53 +0000
-Received: from sender-op-o17.zoho.eu ([136.143.169.17])
+	id 1xSrJF-00000001Qs4-02v6;
+	Mon, 16 Nov 2026 07:39:25 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSqsY-00000001MrU-0olO;
-	Mon, 16 Nov 2026 07:11:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1794813102; cv=none; 
-	d=zohomail.eu; s=zohoarc; 
-	b=IW6TlYuzRhN7B3QoDxPTrfOfNagoQUnVYFzJDo6cpswoRfoUF0FKH/flEQlFIVtwqKCCxeS6ScSzCHezdtIejrTwJGyOrYNkT/+EO6icZRul5nHsrp2XzU9WGIT4k4Pbup3up/PDA/uhDZfWRBMlxROqNW3Bzs1ihqg2xllR8Ns=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
-	t=1794813102; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=3ddNMHunRkB0O0QsoA7pd9wVv/0W9Lfu97gA1D6q22Y=; 
-	b=kTlsDA4+ZAcC4gHDVf8rbiL04nJ9bJNvWGItQrrDBrrIZgD0Rqx08A4zT7yh90KDdiGpjcTbhDvLnWkh3I3vJDXD6Ec3KH1HVXsRqNScbjeWnaEd5jFKt5udMYHVcpdoGptNoEWGvfWGTHbme21Ra8Sp0sk/pw1A85ORJzPqh6s=
-ARC-Authentication-Results: i=1; mx.zohomail.eu;
-	dkim=pass  header.i=iav.lv;
-	spf=pass  smtp.mailfrom=iav@iav.lv;
-	dmarc=pass header.from=<iav@iav.lv>
-DKIM-Signature: a=rsa-sha256; b=MnxzOx9DB9Pc3DLzjtnsEsr35z3pdqGGQW7Mp5329orCMLRQj8xJR90OVU03I/0/VsUzquNuZRoOZWxRGnuBnt/sugH9RDH40HS5FlkDEeBBJ5S69DV57vfqCi1YBnUsYnCpuH9q6Iu//qhXd+/QjtBbw40Zj019bZnR8LYJZLM=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=3ddNMHunRkB0O0QsoA7pd9wVv/0W9Lfu97gA1D6q22Y=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zoho.eu with SMTPS id 1794813100805897.2580520315063;
-	Mon, 16 Nov 2026 08:11:40 +0100 (CET)
-Date: Mon, 16 Nov 2026 09:11:39 +0200
-From: Igor Velkov <iav@iav.lv>
-To: Matt Thompson <matt@boondocker.io>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Rob Herring <robh@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH RFC v2 0/3] PCI: rockchip-host: Handle unavailable downstream config space
-In-Reply-To: <20261113-rfc-b4-v2-0-d6b14f95c1d6@boondocker.io>
-References: <20261113-rfc-b4-v2-0-d6b14f95c1d6@boondocker.io>
-Message-ID: <20261116-rockchip-host-rfc-v2-test-1@iav.lv>
+	id 1xSrJD-00000001QpR-00b7;
+	Mon, 16 Nov 2026 07:39:23 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7BD3943C64;
+	Mon, 16 Nov 2026 07:39:22 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794814762;
+	b=zwJNo/crojmmMPXSrZtxnZvdEeZXczLuz2bPpEKWO7W+SemucnZiCkdwqHVjv2bMWVSp
+	 w8PHHSJY3VYmtKqNpfPAMPVpV89COuQuslBA5xELu8VueNRJ3SjA7qIoEE0jNRPWs5VYo
+	 HZ/x2T0IS9QMXIUL7K0OO7Ft/TH+TBtjq1Nsx4/n1vKnAD/2wVN2yKY47fzr72fBNqeLN
+	 ejsRL3Gu5oKKwtzsrSbFyBpievNuQ+GBLlGjuH8fbLfHHDp6LUXT/TDl515eu8OEIPPJk
+	 TMdxdu1tztoOlha75Vfc/+6ySJ8dxagiJOzJHL30EKX7U1kLngpW5tCnSlCPkuJpXgg==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794814762;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=0inTc72tNtgjCZaCWeW8u0+OSffO1GI14ZtqPEL3d8g=;
+	b=BuAL3PLuol8g8ZcJ4jA319HbruWFqF8nL+HRZYsM7qvA2Jqi/FOAnNqNTrLSExG3VN1V
+	 Os+LowEOh3uSshtwR17+7ToPtgQIm2t5PQH7tsG/pjPQCp89Ubc2eyJPY9pfc9qtA/e/L
+	 L7iYLVGzJiAdJPmO2iqXxdfHvceFdcBlnW+mug64HmgjIZPXglpuPfkdQgQ+WiiengdSf
+	 wUJncJHLlgvbkLMdFdV2UhnMjYt66vROZPvXqjSduiBUlzVSX9wNvCyk/hRTM1fDVmY8x
+	 djgMPaqQjzVY9boAKYD+ksNma0NoFbn1Dfc806x9lgnGsukr6N6SXoP8yMJUlEe2oKQ==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 636D81F000C6;
+	Mon, 16 Nov 2026 07:39:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794814762;
+	bh=0inTc72tNtgjCZaCWeW8u0+OSffO1GI14ZtqPEL3d8g=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=jz85i1ZaLPl0AvbORyPD++PuuQ3meDo/WLKNS8znESi0oqL4Gl8a71K3FpSr7wRC1
+	 /OV4e0PHqYUBtMKPSeaxXV7Qe4gpZ4ecZzrJMs6JtTIecbo7yrldTPyPbaKULvgaM6
+	 1cUhI6d7zZ4u/RXOt4dl2XfJbXJ5vWECREakmGkOxJqQ60vdYKQjMOoT1gS+TaDe9J
+	 iaEgLOBp/cPVGVGln0Pl/Uw2+nL/m+oBM8iH+eQQEUtq8Lr4ESTme4TUCmc0vD1Btt
+	 Cg2FbAV3sT8fvyNmQS+LqTY5F7cGc65rzHXLptVS7r4f1yIkj96kPaw5K+uV0soFbR
+	 +TygldjIOJ24Q==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id DCD654A383;
+	Mon, 16 Nov 2026 07:39:20 +0000 (UTC)
+From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
+Date: Mon, 16 Nov 2026 15:39:15 +0800
+Subject: [PATCH net-next v3 2/2] net: stmmac: dwmac-rk: Add RK3572 support
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261115_231150_536750_FD9DE859 
-X-CRM114-Status: UNSURE (   6.59  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261116-add-board-ok3572-c-net-v3-2-a957fdcd9c7a@qq.com>
+References: <20261116-add-board-ok3572-c-net-v3-0-a957fdcd9c7a@qq.com>
+In-Reply-To: <20261116-add-board-ok3572-c-net-v3-0-a957fdcd9c7a@qq.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ David Wu <david.wu@rock-chips.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
+ Jose Abreu <joabreu@synopsys.com>, 
+ Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>
+Cc: Cunhao Lu <1579567540@qq.com>, netdev@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794814757; l=3142;
+ i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
+ bh=bJZr2jTjg4023AjgAd/Zj2CWJraJeUFEaOgI88A3Cbk=;
+ b=VvzUkw46av484OhGEDZykqHAl2X4+zVTPUXUav8AP9Bgwx90r5ZL0plEwVBEG6fPaiZ/7k5NO
+ 5QWb+CV7w6qCX7NWqgQxafOpkbPrhcyhs1Uw++0b4ew3Q0/qGwPUf3e
+X-Developer-Key: i=1579567540@qq.com; a=ed25519;
+ pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
+X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
+ auth_id=1177
+X-Original-From: Cunhao Lu <1579567540@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,30 +115,109 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Tested v2 on Kobol Helios64 (RK3399, JMB585 at x2), 7.4-rc2, DT without
-ep-gpios, 150 unbind/bind cycles, bind pinned alternately to A53 and A72.
-A53: the fixup ran 4 times (debug print on the err path); probe found no
-device and the JMB585 stayed absent until the next bind; no crash.
-A72: the same read raised an asynchronous SError (bf000002) on the dmb in
-__io_ar() after the guarded ldr; panic in 1 of 75 cycles.
-Patch 1 does not catch this case: LINK_UP and training done are set, the
-endpoint does not answer.
-Retrying the link bring-up avoids the abort here:
-https://lore.kernel.org/r/20261116-rockchip-pcie-resume-v2-1-a633e279be97@iav.lv
-With both applied: 4 bad bring-ups in 150 cycles, no device lost.
+From: Cunhao Lu <1579567540@qq.com>
 
---
-Igor Velkov
+The RK3572 has two GMAC controllers with separate mode and clock control
+registers in the PHP and NVM0 GRFs. RGMII delay lines are configured
+through the IOC.
+
+Add the register layout and delay callback for both controllers so the
+Rockchip glue driver can configure their RGMII and RMII interfaces and
+select the appropriate clocks for each link speed.
+
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 53 ++++++++++++++++++++++++++
+ 1 file changed, 53 insertions(+)
+
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index a37df5767d84..c9d8d8bf51f7 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -900,6 +900,58 @@ static const struct rk_gmac_ops rk3568_ops = {
+ 	},
+ };
+ 
++#define RK3572_VCCIO0_3_VO_IOC_CON1		0x10608
++#define RK3572_VCCIO1_2_4_VI_IOC_CON1		0x12604
++#define RK3572_VCCIO5_6_IOC_MISC0		0x14630
++#define RK3572_PHP_GRF_GMAC0_CON		0x0070
++#define RK3572_NVM0_GRF_GMAC1_CON		0x0020
++
++static int rk3572_init(struct rk_priv_data *bsp_priv)
++{
++	switch (bsp_priv->id) {
++	case 0:
++		bsp_priv->gmac_grf_reg = RK3572_PHP_GRF_GMAC0_CON;
++		break;
++	case 1:
++		bsp_priv->gmac_grf_reg = RK3572_NVM0_GRF_GMAC1_CON;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	bsp_priv->clock_grf_reg = bsp_priv->gmac_grf_reg;
++	return 0;
++}
++
++static void rk3572_set_to_rgmii(struct rk_priv_data *bsp_priv,
++				int tx_delay, int rx_delay)
++{
++	u32 val = GRF_FIELD(14, 8, rx_delay) | GRF_FIELD(6, 0, tx_delay) |
++		  GRF_FIELD(15, 15, !!rx_delay) | GRF_FIELD(7, 7, !!tx_delay);
++
++	if (bsp_priv->id == 1) {
++		regmap_write(bsp_priv->php_grf, RK3572_VCCIO0_3_VO_IOC_CON1, val);
++		regmap_write(bsp_priv->php_grf, RK3572_VCCIO5_6_IOC_MISC0, val);
++	} else {
++		regmap_write(bsp_priv->php_grf, RK3572_VCCIO1_2_4_VI_IOC_CON1, val);
++	}
++}
++
++static const struct rk_gmac_ops rk3572_ops = {
++	.init = rk3572_init,
++	.set_to_rgmii = rk3572_set_to_rgmii,
++	.gmac_phy_intf_sel_mask = GENMASK_U16(11, 9),
++	.gmac_rmii_mode_mask = BIT_U16(3),
++	.clock.io_clksel_io_mask = BIT_U16(7),
++	.clock.gmii_clk_sel_mask = GENMASK_U16(6, 5),
++	.clock.rmii_clk_sel_mask = BIT_U16(5),
++	.clock.rmii_gate_en_mask = BIT_U16(4),
++	.supports_rmii = true,
++	.php_grf_required = true,
++	.regs_valid = true,
++	.regs = { 0x29d20000, 0x2a040000, 0 },
++};
++
+ /* VCCIO0_1_3_IOC */
+ #define RK3576_VCCIO0_1_3_IOC_CON2		0X6408
+ #define RK3576_VCCIO0_1_3_IOC_CON3		0X640c
+@@ -1720,6 +1772,7 @@ static const struct of_device_id rk_gmac_dwmac_match[] = {
+ 	{ .compatible = "rockchip,rk3506-gmac", .data = &rk3506_ops },
+ 	{ .compatible = "rockchip,rk3528-gmac", .data = &rk3528_ops },
+ 	{ .compatible = "rockchip,rk3568-gmac", .data = &rk3568_ops },
++	{ .compatible = "rockchip,rk3572-gmac", .data = &rk3572_ops },
+ 	{ .compatible = "rockchip,rk3576-gmac", .data = &rk3576_ops },
+ 	{ .compatible = "rockchip,rk3588-gmac", .data = &rk3588_ops },
+ 	{ .compatible = "rockchip,rv1108-gmac", .data = &rv1108_ops },
+
+-- 
+2.34.1
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
