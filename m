@@ -2,83 +2,78 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B9170606A896
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 10:43:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D12F606A338
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 11:10:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Z/7niRuI;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=PA3h6R6d
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Xz4GEgi/;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=lcoA3U+t
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=cQ/sx/oftIdrBTX0SGDxWRsJUdMAN0QSwloS2IA8tzM=; b=Z/7niRuI4LQtOd6FqBjqH0J04n
-	JLA9rDRIqZWtEjahOTe0FVB5QNqKtiVYD9kSXXtGe5K2UxJucL1VD+1V/i20PbAuKbZ/JyWsYfmtC
-	ZyZTfaQILncvPB6N2B7DR0UznCwPsPe5R5YUcqG2zMF7nPLFG9tqJYsQLi1R2tvIppQBWpbD6UKF8
-	DyaV51h9U3SAcVBmHw39oAebcFjUlW4nAdJQaGCT+LGdo9z8F3PZIbjBaSYQ09Hv2HRGX4YE0DT0w
-	2zXH+0w0NmDHpq/7hT9Y+rZjPrzskbxVY+rlH9YpuVF9l/SNAEs4N4pTQe0vW4KL0EOgxE7J8DdXL
-	fNxlKnQA==;
+	bh=2kSgrfWBw3Jd0frQtq2HNLrrDRNga5jCbAHYCL9N25M=; b=Xz4GEgi/QGg5XS48j0MWuQKljo
+	q3PQTB4pn6rTh7SGbAnk5p3X+6VHDxgmL/3q3n19EA0NEHNkChrzz1CYNUdp8zmuCTchX+gT72G6S
+	ZAU84j8lqEktRSKjI5iDxRJXLk0YAhytHFw/BwkHQ1o0IRs+tVmD/Q9nhdCnuWQkljghZjuF7ZXJE
+	NU2zB1NQzNWswngJZqW5v3dCzTo3vkpwerCvJFGc5xd4YF71H+lPeLYXMxSqP28maP8huowZclkUp
+	4tf+uvGnxCVyjEVf+kRhR84qRF7oSpfV1qntHEEQ4rJj67+/HZNp285aQ5sPrC6qYNkbUIDAHRpjJ
+	mQgpTu9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTGel-00000005Jig-2Xwy;
-	Tue, 17 Nov 2026 10:43:19 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1xTH5M-00000005Oul-29qb;
+	Tue, 17 Nov 2026 11:10:48 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTGei-00000005Jhg-3PhU;
-	Tue, 17 Nov 2026 10:43:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1794912197; x=1826448197;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=f+rZ70jL9NuYsutro/ekKRtcwGGOxbC6WYytJj8x+/8=;
-  b=PA3h6R6d/VRwHZrSA3hU2ErZ+cR1nv3MLnk43Q3GimPsiWDVx2irWz1d
-   +u7nzZkTdWPf71gh0ZMhNJioX/DKZVPAaja6FO4YVcL3ASa8M4tB7faAU
-   Yr4SghX6FY/vJnmSFpFhYPLPulU7ehYoKg4j7ph5d44f8xQAwgRjMzryv
-   aDhr0ZOFBEG0Y3PGKrElc3LyRMluYujZrgswP0t5jZUdCb9Y9xJsPSqMI
-   GfUgEfJbzbd3/DlbqE5ayhWhakCn8P4wnGSCEY3mkFTcvIgm2ZJEXUtTc
-   XR2xdcngyOp/exXwiYeepbcKDOZ1Y29LhpJb7fkYOsdK5M4HwyezdA5NQ
-   g==;
-X-CSE-ConnectionGUID: qG50XwJ3S9SqU+NepbOaGA==
-X-CSE-MsgGUID: tSfnXxKRTpyrz3eiSThY9g==
-X-IronPort-AV: E=McAfee;i="6800,10657,11968"; a="3600971"
-X-IronPort-AV: E=Sophos;i="6.27,218,1787036400"; 
-   d="scan'208";a="3600971"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Nov 2026 02:43:16 -0800
-X-CSE-ConnectionGUID: Nzqs3jYXS5GkPf0gSVdZKA==
-X-CSE-MsgGUID: 3cq5BzNoSAaTy3999ZO3ng==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,218,1787036400"; 
-   d="scan'208";a="9742331"
-Received: from black.igk.intel.com ([10.91.253.5])
-  by orviesa007.jf.intel.com with ESMTP; 17 Nov 2026 02:43:14 -0800
-Received: by black.igk.intel.com (Postfix, from userid 1008)
-	id 22A2C99; Tue, 17 Nov 2026 11:43:12 +0100 (CET)
-Date: Tue, 17 Nov 2026 11:43:12 +0100
-From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-To: aiyengar1990@gmail.com
-Cc: Badhri Jagan Sridharan <badhri@google.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Guenter Roeck <linux@roeck-us.net>,
-	Heiko Stuebner <heiko@sntech.de>, linux-usb@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 2/2] usb: typec: fusb302: Toggle with the default Rp
- current
-Message-ID: <avwvwBLFBHCc36dc@black.igk.intel.com>
-References: <20261112-tcpm-attach-reboot-v2-0-b4bc6ca83490@gmail.com>
- <20261112-tcpm-attach-reboot-v2-2-b4bc6ca83490@gmail.com>
+	id 1xTH5G-00000005OtA-3pM5;
+	Tue, 17 Nov 2026 11:10:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1794913840;
+	bh=TsYVa8isDVataCZgNzSJYbWDvnoB0Lq+O1qTliUZPco=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=lcoA3U+teuYzs2jPvFXgWSwLi96f5Dn7/ylXITEs6Lo19EEPT+wJt6/uztcAR22BG
+	 +KI+EEyoncZOoAzhnny98sf+OBaCvyHLEvuam5WS3VjCUK5aira2qhdv4LmhGgUnkc
+	 UOcwJsFofIScApVAlIrsaCeA4HHvqEUomYvvl1VQTWcidsmKkBRc413NkyP64HSPro
+	 UP7qhzP6LRoI7iVyIkxCzXrx9NFaZ0jU7ho7Lgba2E5s2gEuzbrEN0w7k5cDX/RGmA
+	 rlHB3DvCpLg0s4LT7WdQ0zf27JWbBvXIbF5KQSuC5Zpy2cuZw68nmWqcjuCUUL9qmz
+	 Mt42friiwnmwA==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A3F5717E07F6;
+	Tue, 17 Nov 2026 12:10:39 +0100 (CET)
+Message-ID: <7bde7e86-3b4f-4f76-9d6e-0a98216ce740@collabora.com>
+Date: Tue, 17 Nov 2026 12:10:39 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261112-tcpm-attach-reboot-v2-2-b4bc6ca83490@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/4] arm64: dts: mediatek: Use DP AltMode defines
+To: Sebastian Reichel <sre@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>
+Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, kernel@collabora.com,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+References: <20261017-dp-altmode-dt-defines-v2-0-7ab3d93553dd@collabora.com>
+ <20261017-dp-altmode-dt-defines-v2-3-7ab3d93553dd@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20261017-dp-altmode-dt-defines-v2-3-7ab3d93553dd@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_024316_866475_27C3C885 
-X-CRM114-Status: GOOD (  29.71  )
-X-Spam-Score: -4.2 (----)
+X-CRM114-CacheID: sfid-20261117_031043_125691_4E6E60C3 
+X-CRM114-Status: UNSURE (   9.10  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,111 +83,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 12, 2026 at 08:23:34AM +0000, Arun Iyengar via B4 Relay wrote:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
+On 10/17/26 21:59, Sebastian Reichel wrote:
+> From: Sebastian Reichel <sebastian.reichel@collabora.com>
 > 
-> tcpm_start_toggling() programs the Rp current that tcpm asks for, which
-> is the current of the source PDO (Rp 3.0A on boards that can source
-> 3A) when the port starts toggling from Unattached.SRC, and the default
-> current when it starts from Unattached.SNK after a detach.
+> Use the new USB-C DP AltMode defines for the SVID and the capabilities
+> VDO to make the DTs more readable. This also fixes up mt8390 Genio
+> platform incorrectly announcing UFP_D (upwards facing) support. This
+> feature is unfortunately not supported by the SoC.
 > 
-> A Genesys Logic based USB-C to DisplayPort cable connected to the
-> Orange Pi 5 is often not detected after a warm reboot: the FUSB302
-> toggle state machine raises no interrupt with it while it drives the
-> high Rp current, but finds it within seconds once toggling restarts
-> with the default current after another device was detached.
-> 
-> Toggle with the default current, and switch to the requested one when
-> toggling stops on a sink, before tcpm is told about the attach, so the
-> sink sees the configured level from the start of the connection as
-> before. tcpm does not set it again after attach on every path (not on
-> ports without PD, for instance). The Rd detection threshold used for
-> unplug detection follows the restored current.
-> 
-> The FUSB302B datasheet sets the toggle up the same way: under "Toggle
-> Functionality" the processor writes HOST_CUR for the default current
-> before it sets TOGGLE, and a HOST_CUR change after attach is applied to
-> the CC line immediately ("HOST_CUR Changed After Attach").
-> 
-> Fixes: c034a43e72dd ("staging: typec: Fairchild FUSB302 Type-c chip driver")
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-Looks okay to me, but you need to CC stable:
-https://docs.kernel.org/process/submitting-patches.html#select-the-recipients-for-your-patch
+Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-But let's wait for comments from Badhri to the tcpm patch.
-
-Thanks,
-
-> ---
->  drivers/usb/typec/tcpm/fusb302.c | 21 +++++++++++++++++++--
->  1 file changed, 19 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/usb/typec/tcpm/fusb302.c b/drivers/usb/typec/tcpm/fusb302.c
-> index 3319f6a2b0c9..44aa05fd4ba2 100644
-> --- a/drivers/usb/typec/tcpm/fusb302.c
-> +++ b/drivers/usb/typec/tcpm/fusb302.c
-> @@ -97,6 +97,7 @@ struct fusb302_chip {
->  	/* chip status */
->  	enum toggling_mode toggling_mode;
->  	enum src_current_status src_current_status;
-> +	enum src_current_status toggling_src_current;
->  	bool intr_togdone;
->  	bool intr_bc_lvl;
->  	bool intr_comp_chng;
-> @@ -942,10 +943,19 @@ static int tcpm_start_toggling(struct tcpc_dev *dev,
->  	}
->  
->  	mutex_lock(&chip->lock);
-> -	ret = fusb302_set_src_current(chip, cc_src_current[cc]);
-> +	/*
-> +	 * Look for a partner with the default USB current advertisement.
-> +	 * Some sinks (seen with a Genesys Logic based USB-C to DisplayPort
-> +	 * cable) present an Rd that the FUSB302 toggle state machine does
-> +	 * not detect while it drives the high (3.0 A) Rp current, so they
-> +	 * are only found when toggling starts from the sink side. The
-> +	 * requested current is restored when toggling finds a sink.
-> +	 */
-> +	chip->toggling_src_current = cc_src_current[cc];
-> +	ret = fusb302_set_src_current(chip, SRC_CURRENT_DEFAULT);
->  	if (ret < 0) {
->  		fusb302_log(chip, "unable to set src current %s, ret=%d",
-> -			    typec_cc_status_name[cc], ret);
-> +			    typec_cc_status_name[TYPEC_CC_RP_DEF], ret);
->  		goto done;
->  	}
->  	ret = fusb302_set_toggling(chip, mode);
-> @@ -1357,6 +1367,13 @@ static int fusb302_handle_togdone_src(struct fusb302_chip *chip,
->  			    typec_cc_status_name[cc2]);
->  		return fusb302_set_toggling(chip, toggling_mode);
->  	}
-> +	/* advertise the requested Rp current now that a sink is attached */
-> +	ret = fusb302_set_src_current(chip, chip->toggling_src_current);
-> +	if (ret < 0) {
-> +		fusb302_log(chip, "cannot set src current, ret=%d", ret);
-> +		return ret;
-> +	}
-> +	rd_mda = rd_mda_value[chip->src_current_status];
->  	/* set polarity and pull_up, pull_down */
->  	ret = fusb302_set_cc_polarity_and_pull(chip, cc_polarity, true, false);
->  	if (ret < 0) {
-> 
-> -- 
-> 2.55.0
-> 
-
--- 
-heikki
 
 _______________________________________________
 Linux-rockchip mailing list
