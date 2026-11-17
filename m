@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 39BF0606A891
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 15:36:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 75AD9606A884
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 15:36:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=24tNvqEN;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=cJDYfDfB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WJxV0URd;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=WsoJlqdk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,46 +14,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=HJy8+nqvvEnWfx79Zfjtg63uG471JlS8xBdUavn1n8s=; b=24tNvqENDgUwezZQSuxWsQsHiy
-	+rtCXxXcwnQHYuKB81rPXOVagaf+F+v1J2t5BsRgIN1EBm2jmN2LYJteUqqoNMaZKAgz5pCR3zNDo
-	6gvcxL5ldvqCv9OVzP1Ys/0RoUzCXc6Kb3vgaczNJme3MRhFbXgBSUtAPPBjg9BfORLcK9OFXH+Hc
-	p6pw1efMcQN4AMSOMw3fLLrtGdS+XIu/9YgdBJmj8UaPDjZdQ3b/TyOheFD73WSk23oEYvJ2pznho
-	tGnUFepHRPpTgoktxtStVUulAgVWmIOQzXMR5mB6SBAGPB+sVOx2nSHEdcLbANLVFQfHweU8uV+6M
-	coNO4AOw==;
+	bh=h0cnWTP0Hr7xPkj0gmSy2Q41KqGkJD0jel+JK+wXLWw=; b=WJxV0URd+b1stZAu1KNZT5Oj5A
+	04GHq4ADJxSAGL37S/2O+BQdpu0AKscqyLUq2JV7QDtQvMDEUWEH36S0JhhcJ2n1GtwN+1F9J2hxE
+	iJ3ZY9nTtCPPc786sEYTb6hFbdtDpr1vLSoU4C+V8pvwVuF21cdAsPQNWKT8SFdwNBtSvOyYmnROj
+	OjD+BJThL7YTK+dILCHBJCMyT/NLgGSLWq1Fj6aSs6S51FG9K5omxwx1qjXm0apdCBgi8+xdjMbTj
+	7vKa0yPISoQ+oq6Ncrf/2q7hpxWKz7vZDOVji3+4K/eXa/3b8x6xg2Jh/DAkBr6jkIrOPO2y9W5A4
+	RH7ATDQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTLEe-00000006JWR-0Oa8;
-	Tue, 17 Nov 2026 15:36:40 +0000
+	id 1xTLEk-00000006JbY-1dJ8;
+	Tue, 17 Nov 2026 15:36:46 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTLER-00000006JNx-30cg;
+	id 1xTLER-00000006JNv-3HCq;
 	Tue, 17 Nov 2026 15:36:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794929785;
-	bh=ujlHVjQMDz4YaqkKi9GBL+L1DFCVvWW0bFq+wVcPWFs=;
+	s=mail; t=1794929784;
+	bh=p0aPUrV2t7O659E4kKwh/OBRJ4chchzDLVx2BMBwY6A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=cJDYfDfBOCf2V7AmWZngEB6Rh0JgeISkmkaZOuUEs95LL3GEBw48Zp22nJH7nWyJw
-	 kBNwYABi6hSDPvGpxMnheg+dUbX7gkPllIvkSX5ZMQ4XJyUShWhK7nZcfbFQlLvEBN
-	 HpGO5Cbj1OUUg782F+tt0MgyFV2tTI46kwZNZQQi3ypVU6oFycPURtzSVV2C55MpCU
-	 1F3VaGB4t4UuIn2v9IxdmqBKXGtP1S8pxGMkcdkKLWb7KX9D7I+mQk20iCeBURG9vD
-	 jUpYJn03aNj6+b+7yZ0TC2lyhMwwZZUQx4zdxKho26tJnnh6WY20I55PiT8uTOkJW5
-	 JH2tGAKl7Ts/Q==
+	b=WsoJlqdk7m4bdFtgY9+xPcaVnF1Fc265OWvU7gheC0L1FP1aivh+OLFuyrTYCNRrn
+	 S9i9Z39Dayt5e5GV+jvPNLTRMLGj02+qx1G9/032w2aWOwbsFWL3cK+c8vdPyNxSCs
+	 aJuFnToFweBtbNDHB3pZRYjJXgHEdJhMnlj45VP4XGlVhGICUtfs308np3z9ezL+50
+	 LTV6fFpGZxEwSY0EzvQTg0DOgYVj1HpcA1RCnRbveBTnyu9Nrlsdq1ckdfa+HW3C7A
+	 A2m8+DlZrdknkcKlchDj2cdh+jEc3mb17MlA9ZUzqs0txjYymEn5nbBhvNNqvL8/gz
+	 CLYCQm2JlnBCQ==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DF2C317E0BCC;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DB99917E0648;
 	Tue, 17 Nov 2026 16:36:24 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 9B80248002B; Tue, 17 Nov 2026 16:36:24 +0100 (CET)
+	id 9C83E480030; Tue, 17 Nov 2026 16:36:24 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 17 Nov 2026 16:35:37 +0100
-Subject: [PATCH v3 1/9] dt-bindings: devfreq: event: rockchip,dfi: add
- clocks to rk3588
+Date: Tue, 17 Nov 2026 16:35:38 +0100
+Subject: [PATCH v3 2/9] dt-bindings: devfreq: event: rockchip,dfi: add
+ rk3576
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261117-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v3-1-32ff1546b0e4@collabora.com>
+Message-Id: <20261117-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v3-2-32ff1546b0e4@collabora.com>
 References: <20261117-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v3-0-32ff1546b0e4@collabora.com>
 In-Reply-To: <20261117-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v3-0-32ff1546b0e4@collabora.com>
 To: Chanwoo Choi <cw00.choi@samsung.com>, 
@@ -68,26 +68,26 @@ Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3871;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1878;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=+1y02qlNP8Qcrhbmptr/ShMc6O9Y5XCldvuGMgDLz8Q=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr8dHj5yv8PYpd62mYOtn3eTpX0Tjtrd0Dl3
- +X2UJuyvB1zXokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq/HR4AAoJENju1/PI
- O/qaQBYQAII7WBcoe4n233SX+alTezfNo7/77s7PrDAZWC5YKTTWUc7vZd/xqO11/J4pk/vNcPS
- UeXmBQ/JLf2HOOgwR86e74nnkUQZeWaZg07pDe29xNfv/9kfp7ds+tr/uzslk+37vaSY5n4cK43
- J5XkUcmC+AXbYyXPOX8JV4pQ1dJ8GhsaBuRFpaI05oPcl9NJ6x5PGmbIIGCANIdWRbs6eYlD91R
- A+s3EHz3aHcffcXJZ0wmGbGCe3U0Iyk2XECqHNRHjPfcXuT6yhU9PfgLsT8ty9dlPh7KL1wK9YL
- OI+TRtZ45W52uENsC5B/p13aOb9haoAA4YeEE1HKtOhQa1vKmjERP+xCtM5HqGWJbSPJjBPUpaF
- vOqWkArfiGdzfdkVEdsBDtQj3r1KccCMuBDp55nqFlirf9ge7a5iFUP7PIXG0odLuYWS3EqIrOH
- 5BLppN2LbYSICn/5S0KYspn+XRpGqX47LRMu2JFIFMRWNWvgOhjlZng9bu88OSafJEClORonjLy
- HY1zwlxwcoc8HLbODf7QYZRiyID4MxQyzxQV312gTcLS5LDnaz9MttjegX9pxu8A+40IMu6PhhE
- JqEdGtI56IRSQT9vKbmBkj9CykYIK5s0eqk3+ynpbwU2VC/j65al5vjikWcrtKLDORlvJKVADOB
- gkBmLDbwiV8y8UZU/EM40vA==
+ bh=kde048okcSOUuMGluJ2pdLxZmjahxqiNXkiSB6ShPbk=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr8dHhHx/f/zCGLSYaYefmrmhHn45cAPYeBI
+ nTdiMn5X1AesIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq/HR4AAoJENju1/PI
+ O/qaWJAP/2+hlHUIsbgIS3nK0e+Bso3oHjsJtp+eGoRp3WYS78r1UfN7+bNRANVlcDidOuMGSrF
+ 2Ya6QjyTOeSmlgRtj66Nj1ulsPcd+A3moEaXBqEoJsbK+yplJpsdC5UQ8OvGn45F0GUMQyAwd3c
+ ywuW+3sZWYgMfnlBSDtwHbDzKSigk/+x7xqWudrdOIcMQZxSzJLkEpezRLLxqF0isjBzWC9SU8y
+ E6+4FNmMTe9w3zm8CibMxhMuQIu5tVwdR8j4RcvgxK9RdKA5hLOb/15pCs9iMEBF0vucyWRMUmo
+ h5r8ecn62SEtldMIALn6G/aSIBMlWbfDiFr22BlIDwpjBaS6bRBdW2r355bCVKXBuG8wGz1lNLQ
+ Y5yvEkKt5cRtvp4rauwCHpDPHp92/YZJwYqbIxydAG41bG2hJl56DTGBc4c2kHRpeTyvL6meblo
+ bC82AzS0lnJXlbPFPVUhCf4yGbhwy6xNti6Z8s58Xf72Pz53haNd6P/FKMWOf0sWaGS1vf8conE
+ pchtFfpXMiJSVS2aAUMxklVFI1aAb/RQYP6pwS9Je4Tvz7Zx2iNYdXfkwKSAT4AFOLrzQxbwptm
+ ua/NSf4KMktM1JAkl25x7yc3L218MaC/JilkIS+gwjZQEjdDPSpqdK33iO2w9Ds3kvYvsGIeO3B
+ KnwsQ35STOh9I3IpjwwQp1g==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_073627_942151_EF308BF5 
-X-CRM114-Status: GOOD (  13.69  )
+X-CRM114-CacheID: sfid-20261117_073628_015572_D4261A68 
+X-CRM114-Status: GOOD (  11.99  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,89 +110,42 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-RK3588's DFI has pclks for each channel. They just weren't noticed as
-missing until now because nothing ever gates them, and they're ungated
-by default on power-on.
+The RK3576 has DFI hardware for monitoring the DDR's bandwidth much
+like other rockchip SoCs do. Unlike the RK3588 however, it only has two
+memory channels, so only two per-channel pclks for DFI.
 
-The RK3399 clock situation needs no changes, as there the hardware
-really just has one monitoring unit for both channels.
-
-Add these clocks to the binding, so that drivers for this device can
-properly know about their existence.
+Add a compatible for this SoC's variant, and add it to the conditionals
+at the bottom of the bindings file.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../bindings/devfreq/event/rockchip,dfi.yaml       | 84 ++++++++++++++++++----
- 1 file changed, 72 insertions(+), 12 deletions(-)
+ .../bindings/devfreq/event/rockchip,dfi.yaml       | 23 ++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
-index 50d3fabe958d..d6e06a9bea19 100644
+index d6e06a9bea19..964f1827496a 100644
 --- a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
 +++ b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
-@@ -17,11 +17,19 @@ properties:
+@@ -14,6 +14,7 @@ properties:
+     enum:
+       - rockchip,rk3399-dfi
+       - rockchip,rk3568-dfi
++      - rockchip,rk3576-dfi
        - rockchip,rk3588-dfi
  
    clocks:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 4
+@@ -68,6 +69,28 @@ allOf:
+         - clocks
+         - clock-names
  
-   clock-names:
-+    minItems: 1
-+    maxItems: 4
-     items:
--      - const: pclk_ddr_mon
-+      - enum:
-+          - pclk_ddr_mon
-+          - pclk_ddr_mon_ch0
-+      - const: pclk_ddr_mon_ch1
-+      - const: pclk_ddr_mon_ch2
-+      - const: pclk_ddr_mon_ch3
- 
-   interrupts:
-     minItems: 1
-@@ -40,17 +48,50 @@ required:
-   - interrupts
-   - reg
- 
--if:
--  properties:
--    compatible:
--      contains:
--        enum:
--          - rockchip,rk3399-dfi
-+allOf:
 +  - if:
 +      properties:
 +        compatible:
 +          contains:
 +            enum:
-+              - rockchip,rk3399-dfi
-+    then:
-+      properties:
-+        clocks:
-+          items:
-+            - description:
-+                clock driving the DDR monitoring logic for all channels
-+        clock-names:
-+          items:
-+            - const: pclk_ddr_mon
-+      required:
-+        - clocks
-+        - clock-names
- 
--then:
--  required:
--    - clocks
--    - clock-names
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - rockchip,rk3588-dfi
++              - rockchip,rk3576-dfi
 +    then:
 +      properties:
 +        clocks:
@@ -201,42 +154,17 @@ index 50d3fabe958d..d6e06a9bea19 100644
 +                clock driving the DDR monitoring logic for memory channel 0
 +            - description:
 +                clock driving the DDR monitoring logic for memory channel 1
-+            - description:
-+                clock driving the DDR monitoring logic for memory channel 2
-+            - description:
-+                clock driving the DDR monitoring logic for memory channel 3
 +        clock-names:
 +          items:
 +            - const: pclk_ddr_mon_ch0
 +            - const: pclk_ddr_mon_ch1
-+            - const: pclk_ddr_mon_ch2
-+            - const: pclk_ddr_mon_ch3
- 
- additionalProperties: false
- 
-@@ -72,3 +113,22 @@ examples:
-         clock-names = "pclk_ddr_mon";
-       };
-     };
++      required:
++        - clocks
++        - clock-names
 +
-+  - |
-+    bus {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      dfi_rk3588: dfi@fe060000 {
-+        compatible = "rockchip,rk3588-dfi";
-+        reg = <0x00 0xfe060000 0x00 0x10000>;
-+        clocks = <&cru 0x53>, <&cru 0x48>, <&cru 0x49>, <&cru 0x54>;
-+        clock-names = "pclk_ddr_mon_ch0", "pclk_ddr_mon_ch1",
-+                      "pclk_ddr_mon_ch2", "pclk_ddr_mon_ch3";
-+        interrupts =  <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH 0>,
-+                      <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH 0>,
-+                      <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH 0>,
-+                      <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH 0>;
-+        rockchip,pmu = <&pmugrf>;
-+      };
-+    };
+   - if:
+       properties:
+         compatible:
 
 -- 
 2.53.0
