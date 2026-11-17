@@ -2,71 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 51AB2606A32F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 16:12:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B6075606A31C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 16:13:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BUwfZBNd;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=O5Q+/YvM
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=slcQk0pg;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=KEiFQFik
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=oOBTGqTGCU+/sEtCwPucSzbIT5/2/C3afv5OB7FwBHY=; b=BUwfZBNd6oHe8GVLmgRaITZbW0
-	3ALpmFKFNynD9FTBfLEv4zmDsugAfBUuKo7sVMToNTI0XusnKrDkh2ExGMOP6vVze9r/i1P6R6iiu
-	ctQaUjscrpyD1j6IW5ZhrF68iBdJZ2FLDBAPUoxR/iOee3DQybsLGa9GLHiBMeEY20y866WJO0H0R
-	gjem333m9gW98uZo9jSZ/9+/3kLmVNJYkCBOb2+wE92T4gqyOMbLjBjtTYr6FIVukU4Z6VI7hMC6r
-	S2bnKyD3qQ30O+0HP8knN+hJb5FSEs4lA7iNoOGbSMarC7+y3X0TKCs51fwirzYyFyqUT7buRiEFZ
-	Axo0wwLA==;
+	bh=tGV1RzVFkp+7NaXjwYAIPvxzsnuSZyEUCVkjXy8nQvk=; b=slcQk0pgG7ZpJngjimS9VEqyAT
+	KWp/SfTMwAvVuDUnVetQ0ysQ9fQZMH2DGH57eVeNmkhWwQ0IMQCMokfGO1e5I9IHyu214GM6t2FkI
+	93uiZhFtgHMb/iBqPyl9eqFZyboFGtBQ3HM52iwIUAweyzzd3tT4smJCtm7tDo4qSQE/GvH1z3k/U
+	ZyH54omVjDgdzA8A+bkpEVl0ArxcPjRi5GHhwI4mBQMGAdnAWj+bQuE4Abu8NYNRDpZ1aYwr1CHdP
+	aTDZ20UTCGHK2blnE6lUTx4g7YazIbN9aBhAanFeiACkSxV69Uh4b4G+gawLg87JbNXMEodYu1Lqe
+	OIOOI7Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTLnV-00000006OFB-1bvG;
-	Tue, 17 Nov 2026 16:12:41 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xTLnm-00000006OKc-2dpU;
+	Tue, 17 Nov 2026 16:12:58 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTLnU-00000006OEy-0ZBR;
-	Tue, 17 Nov 2026 16:12:40 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2DCC061185;
-	Tue, 17 Nov 2026 16:12:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0249E1F000C4;
-	Tue, 17 Nov 2026 16:12:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794931958;
-	bh=f+/6cPyVL7K4OQJ17M0iF+OL3WNe7td3ln+qN/9TMlU=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=O5Q+/YvM44QUk3wBqsXYQ26kDyelxtYbP2AvDJgP4Icc/O+WTKurgKpLEx1KD7NA8
-	 tPenRS3dAbuIf+ZA0sVhuKWsb0thB07Tj4fdspfYaeKZccr5Z4VNt7eBiDxYP0gUH9
-	 hACBTwj/SuWTmcHINjid+6p6xgMetH4SlRfegPdhSprjLRGO8vpDql5MSFeBrMXjuR
-	 s/4+X5HfeD4LNzr7DxslN5CaxeWh8xKzYCE2VAor1bkNJ72Q9/Yj1O5nx/G+BPUDs3
-	 Y8P5WOBKpRS8WFFLctyKlgqQ+hAOa2kzz3OklN9BaYLZio7xB169v6rkmlY0aXC/eS
-	 F3ZTrVkwWBo5w==
-From: Mark Brown <broonie@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>, Mark Hasemeyer <markhas@chromium.org>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- kernel@collabora.com, Alexander Shiyan <eagle.alexander923@gmail.com>, 
- stable@vger.kernel.org
-In-Reply-To: <20261110-spi-runtime-pm-fix-v1-1-8601ebb2f6a8@collabora.com>
-References: <20261110-spi-runtime-pm-fix-v1-1-8601ebb2f6a8@collabora.com>
-Subject: Re: [PATCH] spi: Fix runtime PM imbalance on pump transfer message
- error
-Message-Id: <179492736789.77896.11207792576309707845.b4-ty@b4>
-Date: Tue, 17 Nov 2026 14:56:07 +0000
+	id 1xTLnh-00000006OIk-3bQt
+	for linux-rockchip@lists.infradead.org;
+	Tue, 17 Nov 2026 16:12:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794931963; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=MgOHWAj5XE8K0ZM4dpF5XMNexXAnmpIJ22CkRU12AZeaADrNwrf8OuiBkMan97v+4uLxTDfvqT6rnk/gbSImUycf8qN1CEj58Te1Vg07vKVkf//wG3p1blxQMTYZtHG38XhdMHQ+LC00sc/Dmf/cLeyh3mR/nmYY64N9aEVv2So=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794931963; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=BytRtfaLGfvvVXgsafcGA/NpSLeZVUmNdMkFX+1ckpo=; 
+	b=PXEqmBBfDhf1y20KZ3gHWk099aQV7Ep39Dz+i1nsayC2euMeIn+J38/3wj9CjOixOs6JxeJ1hAoFAAvNMZAoVlskrtpinLSlfNXvrdj4N5REr/uELqCcBBm0TzKbSwA8ftJXP9oDu8vpzoBXQUSsoTpGp4HgdU/UTBpBtA3qAmk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
+	dmarc=pass header.from=<michael.riesch@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=KEiFQFikCfWia1pepdG0mMUms+RTrMzQX4TKoDM56XmjS0YO7p7BWj4r1QpnapnWZkmFfesqh60i0aDy/sy82KlTjfXJ2F/B7sCGIpjjNKmuPWcd464PqsItpwS+KTtYWs6wWZZNAXkdcqQpP8U3zLmbdWP7L7nVQztmoU4TQz8=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=BytRtfaLGfvvVXgsafcGA/NpSLeZVUmNdMkFX+1ckpo=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794931960251635.8971346252681;
+	Tue, 17 Nov 2026 08:12:40 -0800 (PST)
+Message-ID: <55886a47-47a5-4f52-97d8-69b5142ecb28@collabora.com>
+Date: Tue, 17 Nov 2026 17:12:36 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1139; i=broonie@kernel.org;
- h=from:subject:message-id; bh=GPDZObiCK6E7h0QOgxLM+QhPzWZiBmUAKR9S9vrKWUY=;
- b=kA0DAAoWL+9zsLPQOIkByyZiAGr8fPPI7inKTe2wtGgZeTG4r2RF9kW8nGMEgXFbp+eQObqro
- 4h1BAAWCgAdFiEEXmoL6X9066wOwaGGL+9zsLPQOIkFAmr8fPMACgkQL+9zsLPQOImb3wD/Whxe
- fbfRYX67y/ghbpoJ3vURtSdkY1/y/tSBKKYneZsBANtXLZCDy3LmaNxdZU9ahvCM+nBfEhqwv0l
- JVvHp5QMN
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 1/2] media: rockchip: rkcif: Don't reset the hardware
+ in runtime suspend
+To: Mehdi Djait <mehdi.djait@linux.intel.com>
+Cc: linux-media@vger.kernel.org, paul.elder@ideasonboard.com,
+ daniel@makrotopia.org, linux-rockchip@lists.infradead.org,
+ stable@vger.kernel.org
+References: <20261112183208.2688580-1-mehdi.djait@linux.intel.com>
+ <20261112183208.2688580-2-mehdi.djait@linux.intel.com>
+ <df61d7d2-7ad8-4b68-b3a0-7a03513ab5b7@collabora.com>
+ <avsBed-E2RPJnZ6k@mdjait-mobl> <avwZpcF8fti2vVI9@mdjait-mobl>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <avwZpcF8fti2vVI9@mdjait-mobl>
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261117_081253_964876_C41A0F9F 
+X-CRM114-Status: GOOD (  18.80  )
+X-Spam-Score: -0.8 (/)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,43 +78,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, 10 Nov 2026 01:41:58 +0100, Sebastian Reichel wrote:
-> spi: Fix runtime PM imbalance on pump transfer message error
+Hi Mehdi,
 
-Applied to
+On 11/17/26 10:09, Mehdi Djait wrote:
+> On Mon, Nov 16, 2026 at 03:30:33PM +0100, Mehdi Djait wrote:
+>> Hi Michael,
+>>
+>> On Mon, Nov 16, 2026 at 11:58:35AM +0100, Michael Riesch wrote:
+>>> Hi Mehdi,
+>>>
+>>> On 11/12/26 19:32, Mehdi Djait wrote:
+>>>> The reset in the runtime suspend also resets the VICAP IOMMU.
+>>>>
+>>>> When the IOMMU driver accesses the IOMMU registers inside the delay window
+>>>> between the assert and deassert, e.g. in rk_iommu_zap_lines() to shootdown
+>>>> IOTLB entries, the system hangs.
+>>>>
+>>>> Drop the reset and the now unused reset control.
+>>>
+>>> I agree that the current situation is nothing more than a crude hack
+>>> that happened to work in most cases. But I doubt simply removing the
+>>> reset is the correct solution. Recently, I saw some downstream patch
+>>> that makes the reset a shared one, which seems like the right thing to
+>>> do here. What would you think about that?
+>>
+>> Do you have a link for these patches ?
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.4
+Unfortunately they are not yet public, but I presume I have to address
+that issue anyway soon. May I ask you for a bit of patience?
 
-Thanks!
+>> I also agree that this patch will not be the solution that will go in
+>> but the situation needs to change.
+>>
+>> The VICAP_GLB_CTRL register does expose this:
+>> reset the VICAP(except MMU/AXI MASTER/REG FILE)
+>>
+>> The Rockchip-bsp kernel exports the disable and enable functions of the
+>> iommu driver and calls them in the rkcif driver, see:
+>> https://github.com/rockchip-linux/kernel/blob/develop-6.1/drivers/media/platform/rockchip/cif/capture.c#L7269
+>>
+> 
+> I mean, I of course don't think this is a solution to be considered, but
+> this is what I found for now..
 
-[1/1] spi: Fix runtime PM imbalance on pump transfer message error
-      https://git.kernel.org/broonie/spi/c/bb5caf7a2e0b
+Yeah I wouldn't really like to go in *that* direction unless it is
+absolutely necessary...
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Best regards,
+Michael
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+> 
+> --
+> Kind regards
+> Mehdi Djait
 
 
 _______________________________________________
