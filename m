@@ -2,71 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9A7AF606A31C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 11:08:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BDDF8606A32F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 11:59:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tTvA5mG3;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=dRStX11h
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eMVoeYOF;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=fWg9WAKJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=1wYsH2+RqjPoEzW5yDmf3K8tNpVgbz/l9d9uBcx2g44=; b=tTvA5mG3U0q4JQm8MJVXT0P+EY
-	2thEbiqchTjpWY72S44rqAqZPUeaCvkvj2YXG7/Jd7NdcdgltaiGtxH7jIw4dX7jBTsSIYX7FLD9a
-	f5KrFD4x7gARxNrqSitjHkX1Ik424TSSaX4IBcT4YENDdixbXVrHsT2KMpV+6N5WUHMFo/QjmY9cr
-	x7Bpcodu+/vvqCJOvH5nZ1i3g15mxFS+5h20dOj/Za2z8bmTaEI1fYhEni6dtv66i1i666Uln2fLe
-	A+IOmJtK4KPiRSChGh7JdfvTpDV4CPtsEdPyCdC9uNlHkeD+Qg6P09HxZV/AUiV2Y2hBUPJoro7Uq
-	GH/y4pfg==;
+	bh=AZrBcanW4/j7OFdvZNJvjJSUDkcjoHoWONggfIEXweE=; b=eMVoeYOFJXNn3UsNpmHHepU1/c
+	pRwbdru1KLLuCsSHmZPpeOEStuk2lAXkGFSMDpy5wFMcUiIviG8Zzh8WncAkNM0uJlqCJCsCqxggq
+	2B7uevcCgSM1eyss+NZjDTG6rWTrVahh14WXpyLp8z1/3O4twxv0qZtIeOn1d9NMVPGuZMxF7o/RS
+	kC46kXmh7Sdq7vzL5XT8DUgNZkrd0qLAkaF/nHNhZwTBRCV9GiB810QjEQzVopkFADfqpsTyLmJLn
+	zJSS/F6Vvwry7axV9QMu1qMIqVafm1YLZoYYF4hRsqlCADHlEtBitYSe2WbRBRCfInQc89u25C9Q1
+	dDdC4ZPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTdWP-00000008gAp-0G2U;
-	Wed, 18 Nov 2026 11:08:13 +0000
-Received: from mail-m17218.xmail.ntesmail.com ([45.195.17.218])
+	id 1xTeJS-00000008m3P-3eWw;
+	Wed, 18 Nov 2026 11:58:54 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTdWJ-00000008gAD-3XYz;
-	Wed, 18 Nov 2026 11:08:11 +0000
-Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5523317e8;
-	Wed, 18 Nov 2026 19:08:00 +0800 (GMT+08:00)
-Message-ID: <0cd86b2b-004b-4a36-ab8e-fd3b50960413@rock-chips.com>
-Date: Wed, 18 Nov 2026 19:07:59 +0800
+	id 1xTeJR-00000008m2n-3Izf;
+	Wed, 18 Nov 2026 11:58:53 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4848440BB6;
+	Wed, 18 Nov 2026 11:58:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50E3C1F000C6;
+	Wed, 18 Nov 2026 11:58:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795003133;
+	bh=YdF13372jy/m199oRlOe/vzqPP9Dt54Ay4k6PphMxZM=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=fWg9WAKJ0LPxwvRXKGcS2CpfyEXetZ1zj+yi+EPSH6YMcOYVMEJz2IOGISnrm8iOP
+	 bVRzbOmwZn2+jRKa9N1Vhj6a1Ghgs0uRCAmLxnU2SLGTQGYaOlXHtXcKnJ/it6VgC/
+	 f6cM25DIsuuik44OFgegzpm8lTcCIJf54qahEeTrRf0uXg1FE/NstSE7U3TZDAM6CW
+	 qzoBbA1mVbOKOnbPyxpTSBD6Uk/4jUEQcGidmfMLYiEG4FMWKibxjlnDkMs9T95DNd
+	 FiaAd8oBv92xPTitJGGdUC9En17PGbmjS3chYMH/R10uQtYNu60gw6HGbyA920T5wL
+	 EUcrOTRF4YRKQ==
+From: Mark Brown <broonie@kernel.org>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Arun Iyengar <aiyengar1990@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20261110-asoc-rockchip-i2s-tdm-v1-0-f32951b3c527@gmail.com>
+References: <20261110-asoc-rockchip-i2s-tdm-v1-0-f32951b3c527@gmail.com>
+Subject: Re: [PATCH 0/2] ASoC: rockchip: i2s-tdm: register the PCM before
+ the DAI
+Message-Id: <179495878868.2707353.10848747945533783819.b4-ty@b4>
+Date: Tue, 17 Nov 2026 23:39:48 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 5/8] drm/rockchip: vop2: Only accept AFBC YTR for 8 bit
- RGB on RK3588
-To: aiyengar1990@gmail.com, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Andy Yan
- <andyshrk@163.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Piotr Zalewski <pZ010001011111@proton.me>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20261113-vop2-fixes-v3-0-08ae37e83b5c@gmail.com>
- <20261113-vop2-fixes-v3-5-08ae37e83b5c@gmail.com>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20261113-vop2-fixes-v3-5-08ae37e83b5c@gmail.com>
-X-HM-Tid: 0aa1ee57974103a8kunm31e77375358449
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaGEpLVkgYHUMZT0tPSU9KTFYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=dRStX11hKIKXImeBPSFSnbL4EsfI4ippAvDWiIMjgZwMZsNT/qSSdtmiAfpCFt89dJ4cV435LnMtrQE35l6abkTOSitQjAvB++qhkLwniOfRYGWOa7YzW9QPxuBS9iSdHbj+zvbil7mXmytF+itkskDXYcYyHHEY34tnh6X3yiM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=5Z5/zjedC8T+CAY4SMgSU23abppwtiRyhcMgN9UWEQ0=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_030809_369940_2920A699 
-X-CRM114-Status: GOOD (  15.55  )
-X-Spam-Score: -2.1 (--)
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1946; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=W59zQSeaIH+lyhkCe/swjpF15sOyCWor0aGiYZn+l/w=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLL+TvqZoc+pm2Kb2+rVVXyH65hYwaQjqa8rFggvZlQ87
+ PdgukZeRykLgxgXg6yYIktcFvfL+pLXa/gOLmyDmcPKBDKEgYtTACaStIWR4VuV6Z5Xbd2Ouszi
+ vlb3azbvbLtyOmDawsWblf5e9HuzbjEjwzLn2YHrHUqOtLK/aYlOvflfcdLuLbH5zDs8ras3++9
+ P5gUA
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,61 +76,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DATE_IN_PAST_12_24,
+	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Arun,
+On Tue, 10 Nov 2026 07:16:57 +0000, Arun Iyengar wrote:
+> ASoC: rockchip: i2s-tdm: register the PCM before the DAI
+> 
+> The Rockchip I2S-TDM driver registers its DAI component before the
+> dmaengine PCM component. A sound card that was registered earlier and
+> waits for the CPU DAI is bound by snd_soc_component_register() as soon
+> as the DAI component appears, which also satisfies the DAI link's
+> platform (it defaults to the CPU of_node), so the card binds without the
+> PCM component. Every open of the PCM then fails with -EINVAL from
+> snd_pcm_hw_constraints_complete(), silently. On RK3588 this happens to
+> the HDMI sound card whenever the HDMI codec probes before the I2S
+> controller. Patch 1 registers the PCM first, as rockchip_spdif already
+> does.
+> 
+> [...]
 
-On 11/14/2026 12:39 AM, Arun Iyengar via B4 Relay wrote:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
-> 
-> According to the TRM, the AFBC decoder of the RK3588 Cluster windows
-> supports the lossless colour transform (YTR) only for the 8 bit RGB
-> formats. An RGB565 buffer with YTR gives a black picture and
-> POST_BUF_EMPTY, while the same buffer without YTR displays fine.
-> 
-> Don't accept YTR for any other format on RK3588.
-> 
-> Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
-> ---
->   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 5 +++++
->   1 file changed, 5 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index e8ef83d6924b..de3da292b05a 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -404,6 +404,11 @@ static bool rockchip_vop2_mod_supported(struct drm_plane *plane, u32 format,
->   	if (vop2_convert_afbc_format(format) == VOP2_AFBC_FMT_INVALID)
->   		return false;
->   
-> +	if (vop2->version == VOP_VERSION_RK3588 && (modifier & AFBC_FORMAT_MOD_YTR) &&
-> +	    vop2_convert_afbc_format(format) != VOP2_AFBC_FMT_ARGB8888 &&
-> +	    vop2_convert_afbc_format(format) != VOP2_AFBC_FMT_RGB888)
-> +		return false;
-> +
->   	/* Different windows have different format/modifier support */
->   	for (i = 0; i < plane->modifier_count; i++) {
->   		if (plane->modifiers[i] == modifier)
-> 
+Applied to
 
-Yes, RK3588 only supports VOP2_AFBC_FMT_ARGB8888/VOP2_AFBC_FMT_RGB888 
-with AFBC_FORMAT_MOD_YTR.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.5
 
-Shall we move this new check a bit earlier, right after the RK3588 10bpc 
-formats check? Also add a comment and a drm_dbg_kms trace for it.
+Thanks!
 
-Best regards,
-Damon
+[1/2] ASoC: rockchip: i2s-tdm: Register the PCM before the DAI
+      https://git.kernel.org/broonie/sound/c/3743fe2e36d2
+[2/2] ASoC: rockchip: i2s-tdm: add the reset value of XFER to the regmap defaults
+      https://git.kernel.org/broonie/sound/c/49562d274477
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
