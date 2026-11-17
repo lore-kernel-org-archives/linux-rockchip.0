@@ -2,106 +2,66 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C94E9606A32F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 17:29:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F3910606A338
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 17:35:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SH/B/Ixv;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=W+GHFgVa
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zgBUkFcc;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=DB31nbrg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=uWc63qeUGJDJpgGywyOm347ttXbSJZEWmRVb4wf2CUY=; b=SH/B/IxvNyz7Hs1lm8Xgz9WqzK
-	/cUMp+M+UW/9cJzbObl6jOVlHLn2oIkE3Xt18G/AZnCnKq93Twa8t3LJMY/FSzjw7/K1jIk9jy4OZ
-	H5b/xBY4Br9ylDzvElqfLVyAYHdaO6sYmKa+NAaKkCKzMwD6z+KxF4l359mqiZylmdZ1QoSS2WhX4
-	phGt2zugiFAjykxK0RnRvXLd4FLbFmH7UyBmO8Yyb5BjVdIyCmFFRBzP+oQpwR4ogbulmtqXo4ilJ
-	adLs8zeG1qadGxzpws6mhywaZuon32Gsi+xMBSt7PWh6OLDPL3zzLgoDo3U4723ANEqnwC2IfrUYl
-	+wTJdqvw==;
+	bh=azdKlyiItryMIfG/Roj5oi1mCSqcv1kiVhDIn4RR+3M=; b=zgBUkFccBWq2yOYavtX+jS4M3S
+	ZNa+updK6hFdgDBYEQrUOpthQM7opvx+u/b/TdIiu+lmEnwfILH/QyWSYH4tCQDBBGgnfvYYhS4qn
+	ilH04Vew6Mvw9d/1sChP3rRtzYV5JJq5BKZuL8MnRgQ1mgFnMA1YYXLJkeW+ruv7cPcHkm1zhhoUa
+	h8hSJVh+pQF4sWzmMDmc2uI/DT8NQXfU+biibIArmlsdVJpbSlpILMesUvJEfdi4XTJCsg6PsbzdF
+	8fq0wLWPWiOZcXPzFuSlPuWg/ViG9Xf5+MPya2xTRhYNGDUcMzUscT0gD+01vR/yNRzEILG5HPl1j
+	0+yxjSIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTMzL-00000006ZLw-35hb;
-	Tue, 17 Nov 2026 17:28:59 +0000
-Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
+	id 1xTN5N-00000006aqC-2hrG;
+	Tue, 17 Nov 2026 17:35:13 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTMzB-00000006ZDz-3Qh8
-	for linux-rockchip@lists.infradead.org;
-	Tue, 17 Nov 2026 17:28:56 +0000
-Received: by mail-oa1-x2a.google.com with SMTP id 586e51a60fabf-49429181ce9so48374fac.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 17 Nov 2026 09:28:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794936529; x=1795541329; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=A1I4z1aUO9/p85/RlMfw5TI5KhCmT/Op6gBboD1szzg=;
-        b=W+GHFgVa4qlq0RICd2Gke2uV3YxsDqLbNjYp2yNwBn04W5N+mcWebd0RCkONTxNOKh
-         X8Nqqo8A6+1K5QDOA7qGCMwU/tXunKPeY55R8Ca6Wz+VZcLKtQLsUqzJ4PzDuRFB3vJN
-         fgor+wBKR+DjsMPaRQF0dpWnFPQcffuAU7dwOyEW0ZWoXta5I8uX2HaYxCjqw796epoZ
-         J2O35H7hzZRBIpWPZlwwOvQT4bw3UykGi80z5sKOeNH0Hadxpa8smH0tEEzKnhP/Gbbf
-         uCHG2AOWNEJ+hXxsvpiHjgqThJUvRgyGZzDANp6oKRMPM5sntOM2wCVUZF2fHihPcwCN
-         4ZsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794936529; x=1795541329;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=A1I4z1aUO9/p85/RlMfw5TI5KhCmT/Op6gBboD1szzg=;
-        b=GCkt3ZzmNgmczFFKRDXnWfoMdWZ627f9CnHrxVI9koAV9TalefR6ZhHBPQKedOmoj3
-         Xiajf1+y8lexv5Xvkb/Tg0g9pSNrl/zn+7YYgMljVm9+oHwKWsBUOwSz/MK6OCpDwCBg
-         vEyOqADMt4qCl2EAXKGRe8VTFAtqQ2s819Wzf/5hC59pBA1gBnpWg3fbNLh9o+y1kBJY
-         Uj8gF5lXxc8NqFuIqMFQGzMTrdEjQQn54zZTuLdVUhY85kRvi777NrN+2gkNbMTaYZwZ
-         5Fv3hHt0vXWHZVjpS5KF41UXcXwPZE+//Q3BZKiMXsAocRiRR+a5muOBYyTNCp8Knf+F
-         zt0A==
-X-Gm-Message-State: APuU4Z8QQiaw4DVFryN/S6uPLmdFQ2mkYab+g7OF22c/NPmM1HhfiqWd
-	qLdLG9SeH2W64DlNz258NN2OT6ysKs8vy1IBef6A6TWa0z+CrGT8UHnXCfV47DM5
-X-Gm-Gg: AYBFou0/zfWMl+cX+D6yjXdk/+DqHjqPaGPX6rvYiQmJvk9plD3MLqY7pjqj9/qilkK
-	9jqr8TUMqEPQAXbmIJjQUd/+E1icmuM1S2nf7IMsFuKoljlwtjwuQEdlvd2hSFCHCf38a+vVahQ
-	6xwlOqs/8nGQOqAEaMW6qVOk2UZh/aoSlBjcKvRhXScgS8bcVFZn8cCH0R826yZnFPyigp7tzMz
-	bOYMGTHx+jlPxU2FLrhRFiez/aaByqU+rCuOYIGlFptfW2L0CsDfEDY0qmhv1zyJUC5ya7H3QzG
-	BfhYHleKHtxkKuhmgiHExUGgokD1eK8Xmgsd6SkhUS3Ya5XdGsgb9HlX42+7rSdF0rq61ztz0TB
-	bAe2QKCFUUcPI5FNAeQ1cZ7CSLUT+ZJBbTccImngKCT28XoAXvl7z7S+XcFiZR9B1z92y0PYhs+
-	pkWin1GGHsyT5SnGMFVbKP2eY7OPd2SRUO99DDQwxVAlXsmwSFTI9M84naiVCnKMbUs9kvEAnRJ
-	6A4dFlBOOMARoy9vh2Qc26i/vQP0/3xONu74Gga+Llys1/8ng1S0KbV5XwNdTVe7MNmYP59Oz8D
-	vtdIOGs4ucQZVtTTYAD5DklCXBdBNw==
-X-Received: by 2002:a05:6870:1707:b0:4a6:9418:da4e with SMTP id 586e51a60fabf-4afdf7d9f45mr11592986fac.60.1794936528546;
-        Tue, 17 Nov 2026 09:28:48 -0800 (PST)
-Received: from neuromancer ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4b70d5b1c64sm148358fac.14.2026.11.17.09.28.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Nov 2026 09:28:48 -0800 (PST)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	shawn.lin@rock-chips.com,
-	diederik@cknow-tech.com,
-	michael.riesch@collabora.com,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	daniel.lezcano@kernel.org,
-	tglx@kernel.org,
-	detlev.casanova@collabora.com,
-	maz@kernel.org,
-	david@ixit.cz,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V2 2/2] arm64: dts: rockchip: Add timer node for rk356x
-Date: Tue, 17 Nov 2026 11:28:42 -0600
-Message-ID: <20261117172842.65346-3-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261117172842.65346-1-macroalpha82@gmail.com>
-References: <20261117172842.65346-1-macroalpha82@gmail.com>
+	id 1xTN5L-00000006apX-3Rp9;
+	Tue, 17 Nov 2026 17:35:11 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1DB23605ED;
+	Tue, 17 Nov 2026 17:35:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8297B1F000C4;
+	Tue, 17 Nov 2026 17:35:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794936910;
+	bh=+KzEQNGHNyX+d3v3aVcwTAOvdhg7OdW27uOcL3lFZr8=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=DB31nbrgHw4cb5wk09Uoa3sTa0f48KHnVB0If14yyoePPs2K870d/2jEQ5MCJTxk7
+	 0HbKP/tiPgmXoOHfj2InyasAd47uGI8E/6iSoGTJhOzM8dvbDWG7HZPRHc1peUVljb
+	 bpK0ef6TRTVaBEeQgE1lXV+qAr6GbTkVpd+c0RE4ulHrao45SJHUPegpUWrKFnclEo
+	 FQCp6PuFn/QNCouwAXCJuSg2lpyRKy7uDDr02088M4XQa+eLK4f+LEVvyBEA+6Nq0M
+	 nYXgyZYAq/AsgoC+Rn+TdaHymUq0WvnTsk/kCX4Ps8PLhsT1M+7GNk3Jc4PC38jZgV
+	 TkXzr9kfqXCiA==
+Subject: Re: [PATCH 1/9] dt-bindings: net: rockchip-dwmac: Allow iommus
+From: netdev-bot+sashiko@kernel.org
+To: aiyengar1990@gmail.com
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@kernel.org,
+ kuba@kernel.org, pabeni@redhat.com, david.wu@rock-chips.com,
+ dlemoal@kernel.org, cassel@kernel.org, fancer.lancer@gmail.com,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, praan@google.com,
+ will@kernel.org, robin.murphy@arm.com, iommu@lists.linux.dev,
+ shawn.lin@rock-chips.com, sebastian.reichel@collabora.com
+Date: Tue, 17 Nov 2026 17:35:09 +0000
+Message-ID: <179493690908.3136.827247860672592948@kernel.org>
+In-Reply-To: <20261113-mmu600-php-v1-1-231196049a3b@gmail.com>
+References: <20261113-mmu600-php-v1-1-231196049a3b@gmail.com>
+X-sashiko-severity: Low
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_092849_859814_A4E9C8A7 
-X-CRM114-Status: GOOD (  10.03  )
-X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,51 +71,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Chris Morgan <macromorgan@hotmail.com>
-
-Add the timer node for the rk356x. The timer is present at the SoC
-level and is register compatible with the rk3288 timer.
-
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index 7e23f6983448..3c7178b013a5 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -1389,6 +1389,14 @@ i2c5: i2c@fe5e0000 {
- 		status = "disabled";
- 	};
- 
-+	timer0: timer@fe5f0000 {
-+		compatible = "rockchip,rk3568-timer", "rockchip,rk3288-timer";
-+		reg = <0x0 0xfe5f0000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru PCLK_TIMER>, <&cru CLK_TIMER0>;
-+		clock-names = "pclk", "timer";
-+	};
-+
- 	wdt: watchdog@fe600000 {
- 		compatible = "rockchip,rk3568-wdt", "snps,dw-wdt";
- 		reg = <0x0 0xfe600000 0x0 0x100>;
--- 
-2.53.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhhbmsgeW91IGZvciB5b3VyIGNvbnRyaWJ1dGlvbiEgU2FzaGlrbyBBSSByZXZpZXcgZm91bmQg
+bW9yZSBzZXZlcmUKaXNzdWUocykgaW4gb3RoZXIgcGF0Y2hlcyBvZiB0aGlzIHNlcmllcy4gVGhp
+cyBtYWlsIGlzIG9ubHkgYW4gRllJLCBpbiBjYXNlCnlvdSB3YW50IHRvIGFkZHJlc3MgdGhlIG5p
+dCBwaWNrcyBiZWxvdyB3aGVuIHlvdSByZXNwaW4uCgpMb3cgcHJpb3JpdHkgLyBuaXQgcGlja3Mg
+Zm9yIHlvdXIgY29uc2lkZXJhdGlvbjoKCi0gW0xvd10gVGhpcyBwYXRjaCAoImR0LWJpbmRpbmdz
+OiBuZXQ6IHJvY2tjaGlwLWR3bWFjOiBBbGxvdyBpb21tdXMiKQogIGFkZHMgYGlvbW11czogbWF4
+SXRlbXM6IDFgIHRvIHRoZSB0b3AtbGV2ZWwgYHByb3BlcnRpZXM6YCBtYXAgb2bigKYKCi0tCgpk
+dC1iaW5kaW5nczogbmV0OiByb2NrY2hpcC1kd21hYzogQWxsb3cgaW9tbXVzCgpUaGlzIGNvbW1p
+dCBhZGRzIGFuIGlvbW11cyBwcm9wZXJ0eSwgbGltaXRlZCB0byBvbmUgZW50cnksIHRvIHRoZQpS
+b2NrY2hpcCBEV01BQyBiaW5kaW5nLiBUaGUgY29tbWl0IG1lc3NhZ2Ugc2F5cyB0aGUgUkszNTg4
+IEdNQUNzIHNpdApiZWhpbmQgdGhlIFBIUCBTTU1VLgoKPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9yb2NrY2hpcC1kd21hYy55YW1sIGIvRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9yb2NrY2hpcC1kd21hYy55YW1sCj4gaW5k
+ZXggZThkZGExOTYxYWIzMS4uMmEwY2Q1NmZiNGZlOSAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L3JvY2tjaGlwLWR3bWFjLnlhbWwKPiArKysgYi9E
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L3JvY2tjaGlwLWR3bWFjLnlhbWwK
+PiBAQCAtODcsNiArODcsOSBAQCBwcm9wZXJ0aWVzOgo+ICAKPiAgICBkbWEtY29oZXJlbnQ6IHRy
+dWUKPiAgCj4gKyAgaW9tbXVzOgo+ICsgICAgbWF4SXRlbXM6IDEKPiArCgpbU2V2ZXJpdHk6IExv
+d10KVGhlIGNvbW1pdCBtZXNzYWdlIG9ubHkgZ2l2ZXMgYSByZWFzb24gZm9yIFJLMzU4OCwgYnV0
+IGlvbW11cyBpcyBhZGRlZCB0bwp0aGUgdG9wLWxldmVsIHByb3BlcnRpZXMgd2l0aG91dCBhbnkg
+Y29tcGF0aWJsZS1iYXNlZCBjb25kaXRpb24uIFdhcyBpdAppbnRlbmRlZCB0byBhbGxvdyBpb21t
+dXMgb24gZXZlcnkgUm9ja2NoaXAgR01BQyBjb21wYXRpYmxlIChweDMwLCByazMxMjgsCnJrMzIy
+OCwgcmszMjg4LCByazMzMDgsIHJrMzMyOCwgcmszMzY2LCByazMzNjgsIHJrMzM5OSwgcmszNTA2
+LCByazM1MjgsCnJrMzU2OCwgcmszNTc2LCBydjExMDgsIHJ2MTEyNik/CgpJbiB0aGUgaW4tdHJl
+ZSBEVFMsIHRoZSBvbmx5IFNNTVUgYSBHTUFDIGNvdWxkIHJlZmVyZW5jZSBhcHBlYXJzIHRvIGJl
+Cm1tdTYwMF9waHAgaW4gcmszNTg4LWJhc2UuZHRzaToKCmFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcmszNTg4LWJhc2UuZHRzaToKCW1tdTYwMF9waHA6IGlvbW11QGZjYjAwMDAwIHsKClRo
+ZSBzYW1lIGJpbmRpbmcgYWxyZWFkeSByZXN0cmljdHMgdGhlIFBIUC1zcGVjaWZpYyByb2NrY2hp
+cCxwaHAtZ3JmCnByb3BlcnR5IHRvIHRoZSBTb0NzIHRoYXQgaGF2ZSBpdDoKCiAgLSBpZjoKICAg
+ICAgcHJvcGVydGllczoKICAgICAgICBjb21wYXRpYmxlOgogICAgICAgICAgY29udGFpbnM6CiAg
+ICAgICAgICAgIGVudW06CiAgICAgICAgICAgICAgLSByb2NrY2hpcCxyazM1NzYtZ21hYwogICAg
+ICAgICAgICAgIC0gcm9ja2NoaXAscmszNTg4LWdtYWMKICAgIHRoZW46CiAgICAgIHJlcXVpcmVk
+OgogICAgICAgIC0gcm9ja2NoaXAscGhwLWdyZgogICAgZWxzZToKICAgICAgcHJvcGVydGllczoK
+ICAgICAgICByb2NrY2hpcCxwaHAtZ3JmOiBmYWxzZQoKQXMgd3JpdHRlbiwgYSBHTUFDIG5vZGUg
+Zm9yIGEgbm9uLVJLMzU4OCBTb0MgdGhhdCBjYXJyaWVzIGFuIGlvbW11cwpwaGFuZGxlIChmb3Ig
+ZXhhbXBsZSwgb25lIGNvcGllZCBmcm9tIGFuIFJLMzU4OCBub2RlKSB3b3VsZCBwYXNzCmR0YnNf
+Y2hlY2sgd2l0aG91dCBhIHdhcm5pbmcuCgpDb3VsZCBpb21tdXMgYmUgc2NvcGVkIGluIGEgc2lt
+aWxhciBjb25kaXRpb25hbCwgd2l0aCBpb21tdXM6IGZhbHNlIGZvcgp0aGUgY29tcGF0aWJsZXMg
+b3RoZXIgdGhhbiByb2NrY2hpcCxyazM1ODgtZ21hYz8gSWYgYWxsb3dpbmcgaXQgb24gYWxsCnZh
+cmlhbnRzIGlzIGludGVudGlvbmFsLCBjb3VsZCB0aGUgY29tbWl0IG1lc3NhZ2Ugc2F5IHNvPwoK
+PiAgICBjbG9ja19pbl9vdXQ6Cj4gICAgICBkZXNjcmlwdGlvbjoKPiAgICAgICAgRm9yIFJHTUlJ
+LCBpdCBtdXN0IGJlICJpbnB1dCIsIG1lYW5zIG1haW4gY2xvY2soMTI1TUh6KQoKLS0gClNhc2hp
+a28gQUkgcmV2aWV3IMK3IGh0dHBzOi8vbmV0ZGV2LWFpLmJvdHMubGludXguZGV2L3Nhc2hpa28v
+Iy9wYXRjaHNldC8yMDI2MTExMy1tbXU2MDAtcGhwLXYxLTAtMjMxMTk2MDQ5YTNiJTQwZ21haWwu
+Y29tCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
