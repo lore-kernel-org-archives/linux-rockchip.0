@@ -2,78 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D12F606A338
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 11:10:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7061A606A323
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 12:05:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Xz4GEgi/;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=lcoA3U+t
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0hU9hn0P;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=BartBUr6
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=2kSgrfWBw3Jd0frQtq2HNLrrDRNga5jCbAHYCL9N25M=; b=Xz4GEgi/QGg5XS48j0MWuQKljo
-	q3PQTB4pn6rTh7SGbAnk5p3X+6VHDxgmL/3q3n19EA0NEHNkChrzz1CYNUdp8zmuCTchX+gT72G6S
-	ZAU84j8lqEktRSKjI5iDxRJXLk0YAhytHFw/BwkHQ1o0IRs+tVmD/Q9nhdCnuWQkljghZjuF7ZXJE
-	NU2zB1NQzNWswngJZqW5v3dCzTo3vkpwerCvJFGc5xd4YF71H+lPeLYXMxSqP28maP8huowZclkUp
-	4tf+uvGnxCVyjEVf+kRhR84qRF7oSpfV1qntHEEQ4rJj67+/HZNp285aQ5sPrC6qYNkbUIDAHRpjJ
-	mQgpTu9A==;
+	bh=3vA/t2cMFdRWduLC/bhq0kWBXukvjb6V98eesiXTRhk=; b=0hU9hn0PoGZ9TCrTebyscg3gsn
+	l2K7WpYu5EmBPGBM0fbzZ/Ar2xiwTfnP/pOkn8mfiCWUpdhi0Ievzbpyi/AR4gHkn+R9KzjSC57df
+	I3egC5bcXoakGgHsZQPkPt28sauKk6sigGIi2JkHdxDIAQ3nSXZcHuzg74EnyDjNn72eJGFLdRJ+a
+	PO/ByqVR/KuG9jDh52FV+XuazPHyvYX/+36LFjlb6HDM034v4wsfJods6f1QXOvPXHuECrOAyej5B
+	XWsaSafJM9j3IDims9v1T9xgl+7rnBin7nVOD2WMoq3D7ysAS93LnoyuhrqE/SwxhaGdv7vQ2MLeC
+	qu1VuFkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTH5M-00000005Oul-29qb;
-	Tue, 17 Nov 2026 11:10:48 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xTHvn-00000005WoE-3CXK;
+	Tue, 17 Nov 2026 12:04:59 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTH5G-00000005OtA-3pM5;
-	Tue, 17 Nov 2026 11:10:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794913840;
-	bh=TsYVa8isDVataCZgNzSJYbWDvnoB0Lq+O1qTliUZPco=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lcoA3U+teuYzs2jPvFXgWSwLi96f5Dn7/ylXITEs6Lo19EEPT+wJt6/uztcAR22BG
-	 +KI+EEyoncZOoAzhnny98sf+OBaCvyHLEvuam5WS3VjCUK5aira2qhdv4LmhGgUnkc
-	 UOcwJsFofIScApVAlIrsaCeA4HHvqEUomYvvl1VQTWcidsmKkBRc413NkyP64HSPro
-	 UP7qhzP6LRoI7iVyIkxCzXrx9NFaZ0jU7ho7Lgba2E5s2gEuzbrEN0w7k5cDX/RGmA
-	 rlHB3DvCpLg0s4LT7WdQ0zf27JWbBvXIbF5KQSuC5Zpy2cuZw68nmWqcjuCUUL9qmz
-	 Mt42friiwnmwA==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A3F5717E07F6;
-	Tue, 17 Nov 2026 12:10:39 +0100 (CET)
-Message-ID: <7bde7e86-3b4f-4f76-9d6e-0a98216ce740@collabora.com>
-Date: Tue, 17 Nov 2026 12:10:39 +0100
+	id 1xTHvd-00000005WjO-0s73;
+	Tue, 17 Nov 2026 12:04:50 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id A559244EE1;
+	Tue, 17 Nov 2026 12:04:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BB411F000C4;
+	Tue, 17 Nov 2026 12:04:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794917088;
+	bh=4vnrUH1GRjckPRWmrfIxNgnhEnk8Xa/wgumm0ceW7tI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=BartBUr6Stg07pLC0D2AtcCX9IUPXwbzyytX0DYnqSpCOIimST8hmkphcHHeU++bK
+	 e6RwwUKsimCxqecV5NShikpsua8dkusxR3mHxnGNLECUkgGoflFMpcn8adtk+Wdrpl
+	 YUcIM4BT10M+MxCdR+91P2cpf6D/ohd6a2PYX3ATaxLrkvnBN6xiynSOnCa0gJKDlC
+	 IWyCDVw0VYOVuODbLLtpbTUmj7b8F/RETtDDrALEuv4Rgz68xTpNRr8RKnPpP4aVnL
+	 4kKCgr4dHpYa4N5I2Q8enqkpioWyMRwdq6I4atxUCoO27dYl6mtCDM6uaIUaDPTp5N
+	 +aIN4HNBU72NQ==
+Date: Tue, 17 Nov 2026 12:04:40 +0000
+From: Will Deacon <will@kernel.org>
+To: matt@boondocker.io
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Rob Herring <robh@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+	linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Igor Velkov <iav@iav.lv>, maz@kernel.org, arnd@arndb.de
+Subject: Re: [PATCH RFC v3 2/6] arm64: Allow synchronous abort fixups for
+ guarded MMIO reads
+Message-ID: <avxC2NbBCa3Ilowr@willie-the-truck>
+References: <20261116-rfc-b4-v3-0-0bf052b68f2a@boondocker.io>
+ <20261116-rfc-b4-v3-2-0bf052b68f2a@boondocker.io>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/4] arm64: dts: mediatek: Use DP AltMode defines
-To: Sebastian Reichel <sre@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konradybcio@kernel.org>
-Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, kernel@collabora.com,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-References: <20261017-dp-altmode-dt-defines-v2-0-7ab3d93553dd@collabora.com>
- <20261017-dp-altmode-dt-defines-v2-3-7ab3d93553dd@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20261017-dp-altmode-dt-defines-v2-3-7ab3d93553dd@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_031043_125691_4E6E60C3 
-X-CRM114-Status: UNSURE (   9.10  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Content-Disposition: inline
+In-Reply-To: <20261116-rfc-b4-v3-2-0bf052b68f2a@boondocker.io>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,29 +75,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/17/26 21:59, Sebastian Reichel wrote:
-> From: Sebastian Reichel <sebastian.reichel@collabora.com>
-> 
-> Use the new USB-C DP AltMode defines for the SVID and the capabilities
-> VDO to make the DTs more readable. This also fixes up mt8390 Genio
-> platform incorrectly announcing UFP_D (upwards facing) support. This
-> feature is unfortunately not supported by the SoC.
-> 
-> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Hi Matt,
 
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Mon, Nov 16, 2026 at 02:35:44AM -0700, Matt Thompson via B4 Relay wrote:
+> From: Matt Thompson <matt@boondocker.io>
+> 
+> An RK3399 PCI configuration read can raise a synchronous external data
+> abort if it does not get a usable response. Allow an explicitly annotated
+> MMIO load to return an error in this case.
+> 
+> Match only a current-EL synchronous external abort on a read instruction
+> with the new exception table type. Keep existing handling for other
+> faults, including asynchronous SError and translation table walk aborts.
+> 
+> Signed-off-by: Matt Thompson <matt@boondocker.io>
+> ---
+>  arch/arm64/include/asm/asm-extable.h | 15 +++++++++++++++
+>  arch/arm64/mm/extable.c              | 20 ++++++++++++++++++++
+>  arch/arm64/mm/fault.c                |  4 ++++
+>  3 files changed, 39 insertions(+)
 
+[...]
+
+> diff --git a/arch/arm64/mm/extable.c b/arch/arm64/mm/extable.c
+> index 299a244..dcb84d8 100644
+> --- a/arch/arm64/mm/extable.c
+> +++ b/arch/arm64/mm/extable.c
+> @@ -28,6 +28,8 @@ bool insn_may_access_user(unsigned long addr, unsigned long esr)
+>  		return false;
+>  
+>  	switch (ex->type) {
+> +	case EX_TYPE_MMIO_READ_ERR_ZERO:
+> +		return false;
+>  	case EX_TYPE_UACCESS_CPY:
+>  		return cpy_faulted_on_uaccess(ex, esr);
+>  	default:
+> @@ -101,6 +103,8 @@ bool fixup_exception(struct pt_regs *regs, unsigned long esr)
+>  	case EX_TYPE_UACCESS_ERR_ZERO:
+>  	case EX_TYPE_KACCESS_ERR_ZERO:
+>  		return ex_handler_uaccess_err_zero(ex, regs);
+> +	case EX_TYPE_MMIO_READ_ERR_ZERO:
+> +		return false;
+>  	case EX_TYPE_UACCESS_CPY:
+>  		return ex_handler_uaccess_cpy(ex, regs, esr);
+>  	case EX_TYPE_LOAD_UNALIGNED_ZEROPAD:
+> @@ -109,3 +113,19 @@ bool fixup_exception(struct pt_regs *regs, unsigned long esr)
+>  
+>  	BUG();
+>  }
+> +
+> +bool fixup_sea_exception(struct pt_regs *regs, unsigned long esr)
+> +{
+> +	const struct exception_table_entry *ex;
+> +
+> +	if (ESR_ELx_EC(esr) != ESR_ELx_EC_DABT_CUR ||
+> +	    (esr & ESR_ELx_FSC) != ESR_ELx_FSC_EXTABT ||
+> +	    (esr & ESR_ELx_WNR))
+> +		return false;
+> +
+> +	ex = search_exception_tables(instruction_pointer(regs));
+> +	if (!ex || ex->type != EX_TYPE_MMIO_READ_ERR_ZERO)
+> +		return false;
+> +
+> +	return ex_handler_uaccess_err_zero(ex, regs);
+> +}
+> diff --git a/arch/arm64/mm/fault.c b/arch/arm64/mm/fault.c
+> index b227368..ebe8054 100644
+> --- a/arch/arm64/mm/fault.c
+> +++ b/arch/arm64/mm/fault.c
+> @@ -30,6 +30,7 @@
+>  #include <linux/hugetlb.h>
+>  
+>  #include <asm/acpi.h>
+> +#include <asm/asm-extable.h>
+>  #include <asm/bug.h>
+>  #include <asm/cmpxchg.h>
+>  #include <asm/cpufeature.h>
+> @@ -879,6 +880,9 @@ static int do_sea(unsigned long far, unsigned long esr, struct pt_regs *regs)
+>  	const struct fault_info *inf;
+>  	unsigned long siaddr;
+>  
+> +	if (fixup_sea_exception(regs, esr))
+> +		return 0;
+> +
+
+We've deliberately avoided exposing an interface such as this from the
+architecture code for a variety of reasons, including:
+
+- If you can trigger one of these, you can probably also trigger
+  asynchronous exceptions (i.e. SError) which we cannot handle using
+  fixups
+
+- External aborts are usually a sign that something has gone horribly
+  wrong
+
+- In the general case of MMIO, it's not at all clear what state the
+  endpoint is left in and so swallowing the abort is likely masking the
+  issue
+
+- It's not a portable interface for drivers
+
+So rather than trying to fix the symptoms, it would be much better if
+you could fix your driver so that the hardware doesn't generate these
+things in the first place.
+
+Will
 
 _______________________________________________
 Linux-rockchip mailing list
