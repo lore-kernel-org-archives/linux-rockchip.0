@@ -2,101 +2,107 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4BA4D606A31C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 07:00:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2AE2F60A260A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 07:06:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=31+QEA2t;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=PD9tPR1y;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=realtek.com header.i=@realtek.com header.a=rsa-sha256 header.s=dkim header.b=n1vslqUc
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LfcuXc8L;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=f13az/Gh
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=+7BM2XN/jxQEBWCS6sCMm7sdjrd/5iK0t5bXsVSmw84=; b=31+QEA2t41H3NNmJXpEaRsWh7u
-	yTeKHCKhIiEd5WTL+ir/dVNKNP8J6kexQz9i05tLQ8PdZd+LqKhbJ/yHquJL7LNa9i0xMJoJ8qrPK
-	1bp2rem+IoNvz2pjSHc4xVxmnrfUc//HrN+5vrIfsWoGl9Ou7aYNgpGOU0+ujbYAayVM1m14ZuGKn
-	GfP1wUb+kIisgmSA2/HAR1ryowXmo1BRYKTQc+OWaUMbKI6ApV53u3IDIjhzEWsK2K0qWTmMYUr9e
-	CB4Lv5Cf6BJZ0uOE6Lzve0fAXqBbwhb82VvGsAgWaJaJwwAiOY8Ez0VJ7FYuVzQivtR4y/knzr9bH
-	FDMbB/Cw==;
+	bh=pbozQg9Hb+GbKX9Lb+jVHfoQiQCUEvyIahDrwb4WEEE=; b=LfcuXc8LCb8//EDPNMpmhUFpjz
+	DJFltAet8sMUzk15H0Cul16Bt7heKZSwk/ytQpTpD57UDCTJoWPBU5J8KdLhhAtDWHwh/ywgYzFk4
+	2MDUS6ul41rQMyl+LLLvIkSIa43m5s2voBD6JN1B/8En99CuRscPhht4KQJjk9OHxRDfJqyaLIBwn
+	w1G0USIZk7+0hRT7ClmMR3MXPyhwJWTXI6ZdAfJvBay5LEXFu4rD2yHKqvdrUjSHLAsXsWqD4391T
+	FSM6bzU9gSCqXMWiLuHYL3GggUxuyYSehpo9vVFpIe5TPApk0w5mpwQDKgEODQuET39HsKhiE2sNp
+	AtytZ9Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTDB1-00000004hdT-1wSV;
-	Tue, 17 Nov 2026 07:00:23 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xTDHG-00000004i5I-1WNH;
+	Tue, 17 Nov 2026 07:06:50 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTDB0-00000004hdN-2aUm
-	for linux-rockchip@bombadil.infradead.org;
-	Tue, 17 Nov 2026 07:00:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=SHGfrp4bopYd7kSN9zwAjUxkO+1WPrFH+JL4BlUgktw=; b=PD9tPR1yD+r9uZnz55Vhk+L6P3
-	beJRL1m6zb9aU3MGUcKJaT9h+aJ6K7V4uy/u9zbINlCwEymzmf6jxEtVqekbIXxgLWQJHB6Pu9X7s
-	QiSzuhz8yo8b+vi/GimcJJiZHgU7edvIp8PB47ZRE7kdWvKBjFNBnHZbYhJgOzUL1WrACkQ8T7NOr
-	nz165kWdXgVIVxqbk447oj2W2uDrOn+CSZnxd0AEcswp355CvAAVlHwETovzmh+J7Cs5sO+i+GrVW
-	NPcXTB7nNrfDkJoSErNQ3FHA6x1c8sngRDxTeap6c2CvhYUQnHdjdJ7pwSN8OiLvWs9mC3EmwFJx1
-	tjVViOag==;
-Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTDAu-0000000Ebz5-3Lz3
-	for linux-rockchip@lists.infradead.org;
-	Tue, 17 Nov 2026 07:00:20 +0000
-X-SpamFilter-By: ArmorX SpamTrap 5.80 with qID 6AH6xHXE1009131, This message is accepted by code: ctloc85258
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=realtek.com; s=dkim;
-	t=1794898757; bh=SHGfrp4bopYd7kSN9zwAjUxkO+1WPrFH+JL4BlUgktw=;
-	h=From:To:CC:Subject:Date:Message-ID:References:In-Reply-To:
-	 Content-Type:Content-Transfer-Encoding:MIME-Version;
-	b=n1vslqUcXj1pLQuWKwXCdtwpkBLbkLsMIVrZaMygN7Jy03CCjFZjQs9gTqAfoJd+B
-	 737HYT8fQbDi9xvPCIHAywkNejLk4S8VDHleTz17ehjuy+997z5E/L3WJ3wad+dthn
-	 Qd1IIcYvMAykaGHBAOKDSRMM60KdV5TFU2d0W6mRIoZN1LQxJle9WkQBP0EJ/vNi4F
-	 WxowPlyAn2xi0MmMb42VYPoZJCkhFCyZ2kmsRPcCb83SKKDh+t9O3WDrn2ltM1DiB8
-	 o1RgTweYpveGFtpr9W6wyVe7wBxnvqGuxGk424lDA24qrwtPxD3+crq9jfMnreJvSs
-	 vsJb8v05kZm5Q==
-Received: from mail.realtek.com (rtkexhmbs02.realtek.com.tw[172.21.6.41])
-	by rtits2.realtek.com.tw (8.15.2/3.29/5.94) with ESMTPS id 6AH6xHXE1009131
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 17 Nov 2026 14:59:17 +0800
-Received: from RTKEXHMBS05.realtek.com.tw (10.21.1.55) by
- RTKEXHMBS02.realtek.com.tw (172.21.6.41) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.56; Tue, 17 Nov 2026 14:59:18 +0800
-Received: from RTKEXHMBS06.realtek.com.tw (10.21.1.56) by
- RTKEXHMBS05.realtek.com.tw (10.21.1.55) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.56; Tue, 17 Nov 2026 14:59:17 +0800
-Received: from RTKEXHMBS06.realtek.com.tw ([fe80::eeeb:c765:ca73:5eef]) by
- RTKEXHMBS06.realtek.com.tw ([fe80::eeeb:c765:ca73:5eef%10]) with mapi id
- 15.02.2562.056; Tue, 17 Nov 2026 14:59:17 +0800
-From: Ping-Ke Shih <pkshih@realtek.com>
-To: Leonard Lausen <leonard@lausen.nl>
-CC: Luka Gejak <luka.gejak@linux.dev>, =?iso-8859-1?Q?David_H=E4rdeman?=
-	<david@hardeman.nu>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner
-	<heiko@sntech.de>, "linux-wireless@vger.kernel.org"
-	<linux-wireless@vger.kernel.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>
-Subject: RE: [PATCH rtw-next v3 1/2] wifi: rtw88: 8822c: filter
- hardware-handled control frames on SDIO
-Thread-Topic: [PATCH rtw-next v3 1/2] wifi: rtw88: 8822c: filter
- hardware-handled control frames on SDIO
-Thread-Index: AQHddg20ST1VskQ6L0e3SHfK9/KuYbcx1R5w
-Date: Tue, 17 Nov 2026 06:59:17 +0000
-Message-ID: <acd95beb9e704a51a00e1b3a18420c06@realtek.com>
-References: <20261116205739.462458-2-leonard@lausen.nl>
- <20261116205739.462458-4-leonard@lausen.nl>
-In-Reply-To: <20261116205739.462458-4-leonard@lausen.nl>
-Accept-Language: en-US, zh-TW
-Content-Language: zh-TW
+	id 1xTDHB-00000004i1a-3vlh;
+	Tue, 17 Nov 2026 07:06:46 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 636F243EF7;
+	Tue, 17 Nov 2026 07:06:45 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794899205;
+	b=qIGp2rUsyhr0ThHnlHW0KgrzxOGqgC+1YmzZ/aY/tgOfFUKMfHd2U/c5Ipx5iY326TUQ
+	 vZeVQqzaNxM5jnHza5da89FU8fdF8Q4todtiiZMBFarXDcGpQeibmFJ4wxrFpNyQ4rDgg
+	 dXetcCY1FZXpT/fgrqQxdJ6xGGHRdm7VUyQF5TPEnyGXbyntweW8EW5fmWTIe1/YskG0o
+	 vKsrkcQdtdFq4OiIsGLjAPzG3OkRjG48RWxv1w8MY/fSe/Ir3iZD5n1WpB3bxRMolSxL8
+	 JotrIoN8af9UxpO+jXd6d0WZQlgGIZ226Rh15ZYldfE1o8VFYlqjCH9H3ZuUtcBIXWA==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794899205;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:Message-Id:References:In-Reply-To:To:Cc:
+	 X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=QZQ0OLYxSEs5u77Q4Tee1gRSnR0YYIfa5aCuKhvSQ5M=;
+	b=SMrYC8/Ckf73N8Kku6V3sfCJD2vfBs5/Kx149WHEVEtJVRY0Da0sqO/9UpnTaHfsXe3W
+	 fWyfHsz3YfJKaznz/UtUBT0h9GgUSWAFKtoxZoHz8fbRM6zjH1FOcaagrXRM2YzgOC6Ls
+	 n6U3+YbEfga98pyfxMcjxxkoBv0AHP6YdGZ4Bou6C2oQIb9/Mm04KHgeIesh9hWmdQAQo
+	 rUg0zYQGX9Lg6nMhps/q/W2Ky0l/kvT2CTXcm+OEr2ctfYk+N2gDkZ9HjkDQa5NSWv4xR
+	 egNJxMtlpafWANATIQvm7QyGN/3arQhIflyVZm1BBV8l5VsZ1Hsb6kxm+/e2nRtxMuw==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id DF8111F000CA;
+	Tue, 17 Nov 2026 07:06:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794899205;
+	bh=QZQ0OLYxSEs5u77Q4Tee1gRSnR0YYIfa5aCuKhvSQ5M=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=f13az/Gh0vZ9uxmidW8OChESFp3xClYqPgR4PZzyUWmT1iajWFxz/GEtx8gVNTZaF
+	 WAgST49bfQ3TrKgmqQKeRNGXfQ4/Z/kJTAThZPxf0G4KftlDMEFUiub/glvj6QQSFb
+	 f/kkbb6LvrD0aGsfCcyQaFR83MBmco9vHUrEMwWcjLUIBZ5bpIzY7/H3m7iXMJdUkv
+	 uSQp58EASgG1GxAKRPZNOK2Cu5p/uXuOZt9k/Er55B9KUkoDTD1vzt0cMPuIfSX4n5
+	 oAR/GP41QmQcAn3bPSlHzM0/xdgJwf0XKSLnByfXAHauZDg+hNCWvTonL34WAXicTX
+	 I9zgcEM8XyiyQ==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 6FE924A706;
+	Tue, 17 Nov 2026 07:06:43 +0000 (UTC)
+From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
+Date: Tue, 17 Nov 2026 15:06:23 +0800
+Subject: [PATCH v6 3/4] clk: rockchip: Add composite clock macro with mux
+ table
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_070018_214722_95602726 
-X-CRM114-Status: GOOD (  13.24  )
-X-Spam-Score: -0.2 (/)
+Message-Id: <20261117-add-board-ok3572-c-clk-v6-3-cabad6610c5f@qq.com>
+References: <20261117-add-board-ok3572-c-clk-v6-0-cabad6610c5f@qq.com>
+In-Reply-To: <20261117-add-board-ok3572-c-clk-v6-0-cabad6610c5f@qq.com>
+To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
+ Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Elaine Zhang <zhangqing@rock-chips.com>, 
+ Richard Cochran <richardcochran@gmail.com>
+Cc: Cunhao Lu <1579567540@qq.com>, linux-clk@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ netdev@vger.kernel.org
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794899201; l=1536;
+ i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
+ bh=ARjPwse4rOa3gyvTIyxk5QA6f1wP4DKLCzCn6mGIImM=;
+ b=xZ9qFKy/b0fySTvvtwuPXLE+IiBSlXcZW0oooIqLCqhlK9LPOqBQzvvnLY76ikoqyHGoHBHZ8
+ JYXR9LKGRPfAsNarDIWdS92UKxWlnKrj97c1/ZL92+vErRLTHOxlYyP
+X-Developer-Key: i=1579567540@qq.com; a=ed25519;
+ pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
+X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
+ auth_id=1177
+X-Original-From: Cunhao Lu <1579567540@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,104 +112,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Leonard Lausen <leonard@lausen.nl> wrote:
+From: Elaine Zhang <zhangqing@rock-chips.com>
 
-> @@ -285,14 +285,11 @@ static void rtw_ops_configure_filter(struct ieee80211_hw *hw,
-> 
->         mutex_lock(&rtwdev->mutex);
-> 
-> +       rtwdev->hal.rx_control = *new_flags & FIF_CONTROL;
-> +
->         rtw_leave_lps_deep(rtwdev);
-> 
-> -       if (changed_flags & FIF_CONTROL) {
-> -               if (*new_flags & FIF_CONTROL)
-> -                       rtw_write16(rtwdev, REG_RXFLTMAP1, 0xffff);
-> -               else
-> -                       rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
-> -       }
-> +       rtw_update_rx_filter(rtwdev);
+Some Rockchip composite clocks use mux selector values that do not
+match the order of their parent clocks.
 
-a blank line.
+Add COMPOSITE_MUXTBL to describe the parent-to-selector mapping along
+with the divider and gate. The RK3572 audio clocks use this layout.
 
->         if (changed_flags & FIF_ALLMULTI) {
->                 if (*new_flags & FIF_ALLMULTI)
->                         rtwdev->hal.rcr |= BIT_AM;
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
 
-[...]
+---
+Changes in v4:
+- Split this helper out of the RK3572 driver patch.
+---
+ drivers/clk/rockchip/clk.h | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-> diff --git a/drivers/net/wireless/realtek/rtw88/reg.h b/drivers/net/wireless/realtek/rtw88/reg.h
-> index afcdb66fdb9a1..8e220580be4f8 100644
-> --- a/drivers/net/wireless/realtek/rtw88/reg.h
-> +++ b/drivers/net/wireless/realtek/rtw88/reg.h
-> @@ -587,6 +587,10 @@
-> 
->  #define REG_RXFLTMAP0          0x06A0
->  #define REG_RXFLTMAP1          0x06A2
-> +#define BIT_RXFLTMAP1_BACK     BIT(9)
-> +#define BIT_RXFLTMAP1_RTS      BIT(11)
-> +#define BIT_RXFLTMAP1_CTS      BIT(12)
-> +#define BIT_RXFLTMAP1_ACK      BIT(13)
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index b89165ee261b..7bf242410f63 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -871,6 +871,28 @@ struct rockchip_clk_branch {
+ 		.gate_flags	= gf,				\
+ 	}
+ 
++#define COMPOSITE_MUXTBL(_id, cname, pnames, f, mo, ms, mw, mf,	\
++			 mt, ds, dw, df, go, gs, gf)		\
++	{							\
++		.id		= _id,				\
++		.branch_type	= branch_composite,		\
++		.name		= cname,			\
++		.parent_names	= pnames,			\
++		.num_parents	= ARRAY_SIZE(pnames),		\
++		.flags		= f,				\
++		.muxdiv_offset	= mo,				\
++		.mux_shift	= ms,				\
++		.mux_width	= mw,				\
++		.mux_flags	= mf,				\
++		.mux_table	= mt,				\
++		.div_shift	= ds,				\
++		.div_width	= dw,				\
++		.div_flags	= df,				\
++		.gate_offset	= go,				\
++		.gate_shift	= gs,				\
++		.gate_flags	= gf,				\
++	}
++
+ #define COMPOSITE_DIV_OFFSET(_id, cname, pnames, f, mo, ms, mw,	\
+ 			     mf, do, ds, dw, df, go, gs, gf)	\
+ 	{							\
 
-In reverse order, see existing pattern.
+-- 
+2.34.1
 
->  #define REG_RXFLTMAP2          0x06A4
->  #define REG_RXFLTMAP4          0x068A
->  #define REG_BT_COEX_TABLE0     0x06C0
-
-[...]
-
-> diff --git a/drivers/net/wireless/realtek/rtw88/rtw8822c.c
-> b/drivers/net/wireless/realtek/rtw88/rtw8822c.c
-> index 09315d23e2c40..5a5215c05276c 100644
-> --- a/drivers/net/wireless/realtek/rtw88/rtw8822c.c
-> +++ b/drivers/net/wireless/realtek/rtw88/rtw8822c.c
-> @@ -2096,7 +2096,17 @@ static int rtw8822c_mac_init(struct rtw_dev *rtwdev)
->         rtw_write8(rtwdev, REG_WMAC_TRXPTCL_CTL_H  + 2, WLAN_BAR_ACK_TYPE);
->         rtw_write16(rtwdev, REG_RXFLTMAP0, WLAN_RX_FILTER0);
->         rtwdev->hal.rxfltmap1 = WLAN_RX_FILTER1;
-> -       rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
-> +       if (rtw_hci_type(rtwdev) == RTW_HCI_TYPE_SDIO) {
-> +               /*
-> +                * Hardware handles these frames; retain BAR and PS-Poll for
-
-I prefer the wording "not forward".
-
-> +                * mac80211. The common writer preserves FIF_CONTROL requests.
-> +                */
-> +               rtwdev->hal.rxfltmap1 &= ~(BIT_RXFLTMAP1_BACK |
-> +                                          BIT_RXFLTMAP1_RTS |
-> +                                          BIT_RXFLTMAP1_CTS |
-> +                                          BIT_RXFLTMAP1_ACK);
-> +       }
-> +       rtw_update_rx_filter(rtwdev);
->         rtw_write16(rtwdev, REG_RXFLTMAP2, WLAN_RX_FILTER2);
->         rtw_write32(rtwdev, REG_RCR, WLAN_RCR_CFG);
->         rtw_write8(rtwdev, REG_RX_PKT_LIMIT, WLAN_RXPKT_MAX_SZ_512);
-> diff --git a/drivers/net/wireless/realtek/rtw88/rtw88xxa.c
-> b/drivers/net/wireless/realtek/rtw88/rtw88xxa.c
-> index 5ffa29d18168e..7aacdb64c6e3c 100644
-> --- a/drivers/net/wireless/realtek/rtw88/rtw88xxa.c
-> +++ b/drivers/net/wireless/realtek/rtw88/rtw88xxa.c
-> @@ -513,7 +513,7 @@ static void rtw88xxa_init_wmac_setting(struct rtw_dev *rtwdev)
->  {
->         rtw_write16(rtwdev, REG_RXFLTMAP0, 0xffff);
->         rtwdev->hal.rxfltmap1 = 0x0400;
-> -       rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
-> +       rtw_update_rx_filter(rtwdev);
->         rtw_write16(rtwdev, REG_RXFLTMAP2, 0xffff);
-> 
->         rtw_write32(rtwdev, REG_MAR, 0xffffffff);
 
 
 _______________________________________________
