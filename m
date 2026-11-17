@@ -2,102 +2,93 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7BC3606A323
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 14:42:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0AA4A606A336
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 15:36:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PFk95hWP;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=CDA+btKW
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cbVrebl7;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=GCREOlcy
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=podHE5tYFk0utjZs3PLut8W0BXwfLtuVXKOjVxu/2SU=; b=PFk95hWPlGZW03qoWxhP7zriAQ
-	vjbeaRTdLBSJz+0BFZ2FEIn0qkOCA3QGkebbLLPzT8ts1jOy39p6qgZkgvaIB/cMNuBq1Fva+9ioR
-	Pmw47Hxr/U4lkkq/1pxHhEnV0NLfwBMJIm/rlrunhyjwkPTH6Qh9r0KJp+n2fgzy6GS700gjcjXlY
-	P8CDvI4vNPIQ3WfYgN3M4zDgGuNVD6PqHZr2f+Hbr2Jzk+YXv9O6/kqrSugRApjQQ/BvD5KyN7rwn
-	SP9xk4uzSKwm7HIME3qT3/9hGrQKNDN6ca3Jp9Q6xHM01bgVc6AVBrHIjFjUZXiz/Qfs7RrJ+7wRd
-	Iv/DiY8A==;
+	bh=1b0Vge9fOJ1WliVu34MmyUY12tn1wFkIhwm548Y/CPg=; b=cbVrebl7qNznCd9ONaGJs4IlCc
+	EyCZkU4sOyw64zyfMn20XUUwUkJe0pUEHYnNN+9UhBOfKH7acR/FSeJw//INvktdLG29DCrdL0/aZ
+	s6y5C58+A+ZfRlpdvDSlBEOZlbhPe5aLtSF3kmFlWmzfe/xIXtEh/kgsP845RqsF2j72Zt/i8oTv0
+	FBIzw1KIL2tYrYQOgaAOlJBQ6rdkrwArXmW8jincuNbBVCqCUwkgHHetiK3CybTrWdjzdASKjcLTH
+	wzBTwcWZCpq0jtFBA9ZBmWoJtVIR0PKS2Ys4fYx9EePSwDfHVitBu1AFj3s8S08e/vxhN9jnrj2Rn
+	k9D4Vrvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTKON-00000006BXx-1w0s;
-	Tue, 17 Nov 2026 14:42:39 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1xTLEW-00000006JR1-1kj7;
+	Tue, 17 Nov 2026 15:36:32 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTKOK-00000006BWx-0x3L;
-	Tue, 17 Nov 2026 14:42:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1794926556; x=1826462556;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=q4W2BYtbGrF9b+Sza6/X9rpK+8tQ7WvHYOd7Ql0pQuI=;
-  b=CDA+btKWxaQTRb/tQxMrPzVlH75jUF5eA8x+tddSWn9OU8Z6SlR2NM0n
-   aaqYCQAirc8SyZ0StwKgMndhEy80mAbByIE6YyCCqG4944L6UQzY2M/T4
-   +EqjQ6kzQz17G6h7pGp4SJ3MFR8jpqwzmQWmOozOQUAUiPOy5eFT6VwJl
-   u9udteOA0xN5KpOJmUwtBP4MAmyuhAQXmIh0y73L7iloaAmLMbg3EnUY8
-   d6SUiqP5Fed73ZY/o6Hh+YAQeJ5M3PEt2vlbGjUybNL4LRs4miDebSyGF
-   r4KP3zc2W/t2r9XfO/G5+Q5oDmZepDBY2O8A9x7Jv7G4Jl33XRHdVbYk6
-   Q==;
-X-CSE-ConnectionGUID: Nri7q5mfTmW1agLwNsX8DQ==
-X-CSE-MsgGUID: w8pqfhqISK6nsKPePi5vYA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11969"; a="3600737"
-X-IronPort-AV: E=Sophos;i="6.27,218,1787036400"; 
-   d="scan'208";a="3600737"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Nov 2026 06:42:35 -0800
-X-CSE-ConnectionGUID: BX821WPNTgqlq2KMILKrdg==
-X-CSE-MsgGUID: atJO8mfxQl62FlzFQ0EonQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,218,1787036400"; 
-   d="scan'208";a="9714237"
-Received: from mkosciow-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.236])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Nov 2026 06:42:27 -0800
-Date: Tue, 17 Nov 2026 16:42:23 +0200
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Erwin Springer <aot.lerwin@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
-	intel-xe@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
-	=?iso-8859-1?Q?Andr=E9?= Almeida <andrealmeid@igalia.com>,
-	Boris Brezillon <bbrezillon@kernel.org>,
-	Christopher Snowhill <chris@kode54.net>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	Dharma Balasubiramani <dharma.b@microchip.com>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	freedreno@lists.freedesktop.org,
-	Gustavo Padovan <gustavo.padovan@collabora.com>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
-	Jianmin Lv <lvjianmin@loongson.cn>, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	=?iso-8859-1?Q?Ma=EDra?= Canal <mcanal@igalia.com>,
-	Manikandan Muralidharan <manikandan.m@microchip.com>,
-	Maxime Ripard <mripard@kernel.org>, Mingcong Bai <jeffbai@aosc.io>,
-	nouveau@lists.freedesktop.org, Qianhai Wu <wuqianhai@loongson.cn>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-	Simon Ser <contact@emersion.fr>,
-	wayland-devel@lists.freedesktop.org,
-	Xaver Hugl <xaver.hugl@kde.org>, Xi Ruoyao <xry111@xry111.site>
-Subject: Re: [PATCH 00/12] drm/atomic: Try to make atomic+async usable, and
- clear up the "async update" helper confusion
-Message-ID: <avxnz4Nt1IufM6oM@intel.com>
-References: <20261116091130.13950-1-ville.syrjala@linux.intel.com>
- <1b7a7d94-e349-4f3c-b973-c365041c15f2@gmail.com>
+	id 1xTLER-00000006JNw-2vQL;
+	Tue, 17 Nov 2026 15:36:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1794929785;
+	bh=7GoAWptegRv/cDijOkhodFadWGZgOk7IPO1AGcY1Os4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=GCREOlcyLOZIKpgr/R2zL5frVBStMwL1qOGdmXwraJErGO4vv/mjH/PoI8N27yw5n
+	 w35cA0z0sehUFde1zH/9eeN0DAF3oRPu/tZw7Cy1QsWzBXcv4r9jPf9RQSiXTVOD5E
+	 PnPPReRdPAJo4M8iEcEfPy3DG4EE8Kz14C2ABBI0thuyFmKDUAsRgS9F3ksALUux/z
+	 KJb6nWyhfGA9btq72K0ktfZyRuV9Xb2Do62bbDPyaQ3svkzzYLlzGGqpDUuV96FBpM
+	 AkIh0E91t0PiE03pArfQsgHrkNzKhmNFXrZLlfJn4JUW0yaOjO1tENXXU/cUI9p2ll
+	 LZMnevhcoIQHQ==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E0D8017E1136;
+	Tue, 17 Nov 2026 16:36:24 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 9E756480031; Tue, 17 Nov 2026 16:36:24 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Tue, 17 Nov 2026 16:35:39 +0100
+Subject: [PATCH v3 3/9] PM / devfreq: rockchip-dfi: move to per-variant
+ const structs
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1b7a7d94-e349-4f3c-b973-c365041c15f2@gmail.com>
-X-Patchwork-Hint: comment
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
+Message-Id: <20261117-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v3-3-32ff1546b0e4@collabora.com>
+References: <20261117-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v3-0-32ff1546b0e4@collabora.com>
+In-Reply-To: <20261117-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v3-0-32ff1546b0e4@collabora.com>
+To: Chanwoo Choi <cw00.choi@samsung.com>, 
+ MyungJoo Ham <myungjoo.ham@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=9589;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=eU4EgEpy7UxsxJjBW2dvb1HlzTTiqSEDSVWkQ9LdX4I=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr8dHjmNoU7t/a5RXPOOtqzXEHdb5STmMEtg
+ mr8xMp7bCCErIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq/HR4AAoJENju1/PI
+ O/qaVtMP/1tBehlrIN1gkYdGYuBAy8C73/WQq8N9u8O8TFXMoLn88LQxlvLOwkyJbZLsV/pmwKx
+ hzFtln7Gjfk4mc1P0nfTXoBGL6DlzKTNhwlrpSboYjgibruAsmtQPwiTBXvrnm2BG0zG+zpZVXc
+ 7vgt38g6pGMtiiGRmb8BcdNTVs6bOQrJrout5m3+L3rG4Xxn/sEelecZRyAVqaXkwyXmRhVoWmG
+ BjfokphMgprbUZzrRoFizhsRsLUOxjGGwCM2ZjrIb27HNQKeZghXJJ+djAIHEPOjcB/o8ckOWqr
+ gvrvwgD42v4T5TH2ihQyPPAkdKgTN75gpWY3o7RZ+SAZ4/pJ4nFN7cKzI0AWT2WpBnTbk2JHMSe
+ KDxcGpO02AHNopb/85IhyeadI0/1nZQpaLEak26eDE+7msQsOspwCSkyZX31vuussy3dgCGbWC1
+ wrAGIFtG4zfRDe2dHkt/jx6MnxUMubZo7dhVAUq7+RxuFtp8RQmOk9gUeYBf6jRhWSK6hzb2ja5
+ hqPN+WsmRws/xSV94XuFK6/6klxf6lt5p8DmK2zUN1AQI+wDRUe3QWoe3VLMYldp+d/dQiyVW7s
+ pY9INbfgVeLKVVs2+7mbR/tI3xxiVPIzVMC0o+V29CZ0G7IqX0/XIun9nm8hyOPF/8hEm0ekXUC
+ Ug3CyrqmncHXD8NMtgkA5wg==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_064236_305397_24FC77DE 
-X-CRM114-Status: GOOD (  22.87  )
-X-Spam-Score: -4.3 (----)
+X-CRM114-CacheID: sfid-20261117_073627_908055_E48D29D0 
+X-CRM114-Status: GOOD (  23.77  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,72 +98,288 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Nov 16, 2026 at 06:29:38PM +0100, Erwin Springer wrote:
-> =
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-> Am 16.11.2026 um 10:11 schrieb Ville Syrjala:
-> > From: Ville Syrj=E4l=E4 <ville.syrjala@linux.intel.com>
-> >
-> > The weird uapi semantics of the atomic async flip support make it
-> > really hard for drivers to implement. Try to fix that by filtering
-> > out the no-op junk from the commit that userspace likes to put there.
-> >
-> > Also a lot of people are apparently confusing the
-> > .atomic_async_{update,check}() hack with async flips. The two
-> > are completely orthogonal, so try to clear up that mess by
-> > renaming the hack to .atomic_bypass_{update,check}().
-> >
-> > TODO: atomic+async is in serious need to proper tests, somehow
-> >        all that seems to have gotten skipped when the feature
-> >        was added :(
-> =
+The rockchip-dfi driver supports several variants of the DDR monitoring
+hardware. The differences in these variants are handled with one init
+function for each variant.
 
-> thanks, this fixes the KWin case for me, so my patch is no longer
-> needed..
-> =
+However, some of the members that these init functions set are actually
+constants, specific to that variant, with no runtime involvement from
+reading registers or anything.
 
-> tested on Raptor Lake-U (Iris Xe) with unmodified KWin 6.8.2 and a
-> fullscreen client that requests tearing through wp_tearing_control_v1,
-> without my patch. I applied the series to the CachyOS 7.3.4 kernel,
-> the only conflicts were the renames in amdgpu and msm.
-> =
+Refactor the code to move those values (and the soc_init function
+pointer) into a new struct. Declare some const instances of this variant
+struct, and use it wherever needed.
 
-> Before, none of about 350 frames per run was presented without vsync.
-> With the series 3330 of 3336 frames tear over four runs (with and
-> without CCS modifiers), and the "async flip not supported" message is
-> gone. What is still rejected is the first flip after the modifier or
-> format changed, once per run, as intended, and in three of the runs
-> one commit that touches the cursor plane, which can't do async flips:
-> =
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/devfreq/event/rockchip-dfi.c | 94 +++++++++++++++++++++---------------
+ 1 file changed, 54 insertions(+), 40 deletions(-)
 
->  =A0 [PLANE:146:cursor A] does not support async flips
-> No warnings and no flip_done timeouts in the log.
-> =
+diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+index e0b942028e50..d02a01188ea2 100644
+--- a/drivers/devfreq/event/rockchip-dfi.c
++++ b/drivers/devfreq/event/rockchip-dfi.c
+@@ -103,7 +103,6 @@ struct rockchip_dfi {
+ 	struct mutex mutex;
+ 	u32 ddr_type;
+ 	unsigned int channel_mask;
+-	unsigned int max_channels;
+ 	enum cpuhp_state cpuhp_state;
+ 	struct hlist_node node;
+ 	struct pmu pmu;
+@@ -112,11 +111,17 @@ struct rockchip_dfi {
+ 	int active_events;
+ 	int burst_len;
+ 	int buswidth[DMC_MAX_CHANNELS];
+-	int ddrmon_stride;
+-	bool ddrmon_ctrl_single;
+ 	u32 lp5_bank_mode;
+ 	bool lp5_ckr;	/* true if in 4:1 command-to-data clock ratio mode */
+ 	unsigned int count_multiplier;	/* number of data clocks per count */
++	const struct rockchip_dfi_variant *variant;
++};
++
++struct rockchip_dfi_variant {
++	int (*init)(struct rockchip_dfi *dfi);
++	int stride;
++	bool ctrl_single;
++	unsigned int max_channels;
+ };
+ 
+ static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl)
+@@ -190,7 +195,7 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+ 		goto out;
+ 	}
+ 
+-	for (i = 0; i < dfi->max_channels; i++) {
++	for (i = 0; i < dfi->variant->max_channels; i++) {
+ 
+ 		if (!(dfi->channel_mask & BIT(i)))
+ 			continue;
+@@ -199,16 +204,16 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
+ 		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_TIMER_CNT_EN, 0) |
+ 			       FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 0) |
+ 			       FIELD_PREP_WM16(DDRMON_CTRL_HARDWARE_EN, 0),
+-			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
++			       dfi_regs + i * dfi->variant->stride + DDRMON_CTRL);
+ 
+-		writel_relaxed(ctrl, dfi_regs + i * dfi->ddrmon_stride +
++		writel_relaxed(ctrl, dfi_regs + i * dfi->variant->stride +
+ 			       DDRMON_CTRL);
+ 
+ 		/* enable count, use software mode */
+ 		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 1),
+-			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
++			       dfi_regs + i * dfi->variant->stride + DDRMON_CTRL);
+ 
+-		if (dfi->ddrmon_ctrl_single)
++		if (dfi->variant->ctrl_single)
+ 			break;
+ 	}
+ out:
+@@ -231,14 +236,14 @@ static void rockchip_dfi_disable(struct rockchip_dfi *dfi)
+ 	if (dfi->usecount > 0)
+ 		goto out;
+ 
+-	for (i = 0; i < dfi->max_channels; i++) {
++	for (i = 0; i < dfi->variant->max_channels; i++) {
+ 		if (!(dfi->channel_mask & BIT(i)))
+ 			continue;
+ 
+ 		writel_relaxed(FIELD_PREP_WM16(DDRMON_CTRL_SOFTWARE_EN, 0),
+-			       dfi_regs + i * dfi->ddrmon_stride + DDRMON_CTRL);
++			       dfi_regs + i * dfi->variant->stride + DDRMON_CTRL);
+ 
+-		if (dfi->ddrmon_ctrl_single)
++		if (dfi->variant->ctrl_single)
+ 			break;
+ 	}
+ 
+@@ -252,17 +257,17 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
+ 	u32 i;
+ 	void __iomem *dfi_regs = dfi->regs;
+ 
+-	for (i = 0; i < dfi->max_channels; i++) {
++	for (i = 0; i < dfi->variant->max_channels; i++) {
+ 		if (!(dfi->channel_mask & BIT(i)))
+ 			continue;
+ 		res->c[i].read_access = readl_relaxed(dfi_regs +
+-				DDRMON_CH0_RD_NUM + i * dfi->ddrmon_stride);
++				DDRMON_CH0_RD_NUM + i * dfi->variant->stride);
+ 		res->c[i].write_access = readl_relaxed(dfi_regs +
+-				DDRMON_CH0_WR_NUM + i * dfi->ddrmon_stride);
++				DDRMON_CH0_WR_NUM + i * dfi->variant->stride);
+ 		res->c[i].access = readl_relaxed(dfi_regs +
+-				DDRMON_CH0_DFI_ACCESS_NUM + i * dfi->ddrmon_stride);
++				DDRMON_CH0_DFI_ACCESS_NUM + i * dfi->variant->stride);
+ 		res->c[i].clock_cycles = readl_relaxed(dfi_regs +
+-				DDRMON_CH0_COUNT_NUM + i * dfi->ddrmon_stride);
++				DDRMON_CH0_COUNT_NUM + i * dfi->variant->stride);
+ 	}
+ }
+ 
+@@ -299,7 +304,7 @@ static int rockchip_dfi_get_event(struct devfreq_event_dev *edev,
+ 	rockchip_dfi_read_counters(dfi, &count);
+ 
+ 	/* We can only report one channel, so find the busiest one */
+-	for (i = 0; i < dfi->max_channels; i++) {
++	for (i = 0; i < dfi->variant->max_channels; i++) {
+ 		u32 a, c;
+ 
+ 		if (!(dfi->channel_mask & BIT(i)))
+@@ -338,7 +343,7 @@ static void rockchip_ddr_perf_counters_add(struct rockchip_dfi *dfi,
+ 	const struct dmc_count *last = &dfi->last_perf_count;
+ 	int i;
+ 
+-	for (i = 0; i < dfi->max_channels; i++) {
++	for (i = 0; i < dfi->variant->max_channels; i++) {
+ 		res->c[i].read_access = dfi->total_count.c[i].read_access +
+ 			(u32)(now->c[i].read_access - last->c[i].read_access);
+ 		res->c[i].write_access = dfi->total_count.c[i].write_access +
+@@ -479,11 +484,11 @@ static u64 rockchip_ddr_perf_event_get_count(struct perf_event *event)
+ 		count = total.c[0].clock_cycles * dfi->count_multiplier;
+ 		break;
+ 	case PERF_EVENT_READ_BYTES:
+-		for (i = 0; i < dfi->max_channels; i++)
++		for (i = 0; i < dfi->variant->max_channels; i++)
+ 			count += total.c[i].read_access * blen * dfi->buswidth[i];
+ 		break;
+ 	case PERF_EVENT_WRITE_BYTES:
+-		for (i = 0; i < dfi->max_channels; i++)
++		for (i = 0; i < dfi->variant->max_channels; i++)
+ 			count += total.c[i].write_access * blen * dfi->buswidth[i];
+ 		break;
+ 	case PERF_EVENT_READ_BYTES0:
+@@ -511,7 +516,7 @@ static u64 rockchip_ddr_perf_event_get_count(struct perf_event *event)
+ 		count = total.c[3].write_access * blen * dfi->buswidth[3];
+ 		break;
+ 	case PERF_EVENT_BYTES:
+-		for (i = 0; i < dfi->max_channels; i++)
++		for (i = 0; i < dfi->variant->max_channels; i++)
+ 			count += total.c[i].access * blen * dfi->buswidth[i];
+ 		break;
+ 	}
+@@ -728,14 +733,10 @@ static int rk3399_dfi_init(struct rockchip_dfi *dfi)
+ 	dfi->ddr_type = FIELD_GET(RK3399_PMUGRF_OS_REG2_DDRTYPE, val);
+ 
+ 	dfi->channel_mask = GENMASK(1, 0);
+-	dfi->max_channels = 2;
+ 
+ 	dfi->buswidth[0] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH0, val) == 0 ? 4 : 2;
+ 	dfi->buswidth[1] = FIELD_GET(RK3399_PMUGRF_OS_REG2_BW_CH1, val) == 0 ? 4 : 2;
+ 
+-	dfi->ddrmon_stride = 0x14;
+-	dfi->ddrmon_ctrl_single = true;
+-
+ 	return 0;
+ };
+ 
+@@ -758,13 +759,9 @@ static int rk3568_dfi_init(struct rockchip_dfi *dfi)
+ 		dfi->ddr_type |= FIELD_GET(RK3568_PMUGRF_OS_REG3_DRAMTYPE_INFO_V3, reg3) << 3;
+ 
+ 	dfi->channel_mask = BIT(0);
+-	dfi->max_channels = 1;
+ 
+ 	dfi->buswidth[0] = FIELD_GET(RK3568_PMUGRF_OS_REG2_BW_CH0, reg2) == 0 ? 4 : 2;
+ 
+-	dfi->ddrmon_stride = 0x0; /* not relevant, we only have a single channel on this SoC */
+-	dfi->ddrmon_ctrl_single = true;
+-
+ 	return 0;
+ };
+ 
+@@ -793,9 +790,7 @@ static int rk3588_dfi_init(struct rockchip_dfi *dfi)
+ 	dfi->buswidth[3] = FIELD_GET(RK3588_PMUGRF_OS_REG2_BW_CH1, reg4) == 0 ? 4 : 2;
+ 	dfi->channel_mask = FIELD_GET(RK3588_PMUGRF_OS_REG2_CH_INFO, reg2) |
+ 			    FIELD_GET(RK3588_PMUGRF_OS_REG2_CH_INFO, reg4) << 2;
+-	dfi->max_channels = 4;
+ 
+-	dfi->ddrmon_stride = 0x4000;
+ 	dfi->count_multiplier = 2;
+ 
+ 	if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR5) {
+@@ -809,10 +804,30 @@ static int rk3588_dfi_init(struct rockchip_dfi *dfi)
+ 	return 0;
+ };
+ 
++static const struct rockchip_dfi_variant rk3399_variant = {
++	.init = rk3399_dfi_init,
++	.stride = 0x14,
++	.ctrl_single = true,
++	.max_channels = 2,
++};
++
++static const struct rockchip_dfi_variant rk3568_variant = {
++	.init = rk3568_dfi_init,
++	.stride = 0x0,
++	.ctrl_single = true,
++	.max_channels = 1,
++};
++
++static const struct rockchip_dfi_variant rk3588_variant = {
++	.init = rk3588_dfi_init,
++	.stride = 0x4000,
++	.max_channels = 4,
++};
++
+ static const struct of_device_id rockchip_dfi_id_match[] = {
+-	{ .compatible = "rockchip,rk3399-dfi", .data = rk3399_dfi_init },
+-	{ .compatible = "rockchip,rk3568-dfi", .data = rk3568_dfi_init },
+-	{ .compatible = "rockchip,rk3588-dfi", .data = rk3588_dfi_init },
++	{ .compatible = "rockchip,rk3399-dfi", .data = &rk3399_variant },
++	{ .compatible = "rockchip,rk3568-dfi", .data = &rk3568_variant },
++	{ .compatible = "rockchip,rk3588-dfi", .data = &rk3588_variant },
+ 	{ },
+ };
+ 
+@@ -824,17 +839,16 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
+ 	struct rockchip_dfi *dfi;
+ 	struct devfreq_event_desc *desc;
+ 	struct device_node *np = pdev->dev.of_node, *node;
+-	int (*soc_init)(struct rockchip_dfi *dfi);
+ 	int ret;
+ 
+-	soc_init = of_device_get_match_data(&pdev->dev);
+-	if (!soc_init)
+-		return -EINVAL;
+-
+ 	dfi = devm_kzalloc_obj(dev, *dfi);
+ 	if (!dfi)
+ 		return -ENOMEM;
+ 
++	dfi->variant = of_device_get_match_data(dev);
++	if (!dfi->variant)
++		return -EINVAL;
++
+ 	dfi->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(dfi->regs))
+ 		return PTR_ERR(dfi->regs);
+@@ -856,7 +870,7 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
+ 	desc->driver_data = dfi;
+ 	desc->name = np->name;
+ 
+-	ret = soc_init(dfi);
++	ret = dfi->variant->init(dfi);
+ 	if (ret)
+ 		return ret;
+ 
 
-> If you think it fits, feel free to add:
-> =
+-- 
+2.53.0
 
-> Reported-by: Erwin Springer <aot.lerwin@gmail.com>
-> Tested-by: Erwin Springer <aot.lerwin@gmail.com>
-
-Thanks. There are quite a few unresolved issues left here
-though, so we might want you patch as a short term fix.
-I'll have to go read it with some actual thought...
-
--- =
-
-Ville Syrj=E4l=E4
-Intel
 
 _______________________________________________
 Linux-rockchip mailing list
