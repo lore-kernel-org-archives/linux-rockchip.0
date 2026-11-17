@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3F3EB606A32C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 23:50:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1384A606A32F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 23:51:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=x4uYj+9a;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=X9C5zq4q
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VjemEeKH;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=BZQ+rYVE
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,29 +14,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=+Z2HofqO5IEGfbENHuWJL0gC5iaUe3RdkvY15tzp0mQ=; b=x4uYj+9adv7eEj735QHRfQheEn
-	4aATt1uS9ebHhtvUXFpoQdN+cvW8caowzAz1LjfTP3XNlTAkIOtBQNNFCGqOlgdJ8IfA0DFHlwGrs
-	eAL1eWTNq9coCJJoYlSDB7rK00fTKwZ+Hyq90U9VH+zt8kA84w9ZeWI86nzbvQmnRrdXXjFkX2Crj
-	s8ZerxwbdIiCmT8/inqkS4JPo7emJs4y9qlZBPr2Hpb9zmF1Z+KOaul0CzyZ9TgQNjXenCAN3Yxr0
-	h+0ncpYB2Rl1uKtnNBapP4dbo8NZrWrvgcaD/MZ33NWplA9RO4H6S4BK6LE99V4H+r3DiRnaJMS3b
-	txk6NfxQ==;
+	bh=9ifHbiEPbmJb8DlB+QrQMKMTxjAM0qWkCD3eoui0blI=; b=VjemEeKHQfJglj40udZp7GpIh3
+	RQ6vWnjqWNab7zPFr8AOrSUpyKf9L4zSnFXgcvDpK/NHDM2Ez6MBU8//UBEpscd5H1AMhlKCiYjGc
+	Zmz3yz8jHyoFckuD48ksuK0kUGlonrBFJ6ZkBXW0mcxHtvxzvgfMGqvVqVfkhfg/xuQ5ynevFQdMA
+	69Le8yP4zBSNjk/YIGkfrHZ0T4Dit2LLxg3XppWdo+NoxHgnt0eK+Ok62Kzp6qdNtQoKfFJJztG2X
+	GuaNx0f4n4IvewZNVxPXzuCTNoS6BiP9IcBTIDLlLCywrwwJTztwlYK3acyMtDBm5hmZ67Hu4Uip/
+	+LZbW7lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTSwr-00000007JOQ-2Kjg;
-	Tue, 17 Nov 2026 23:50:49 +0000
+	id 1xTSx3-00000007JUC-46Ce;
+	Tue, 17 Nov 2026 23:51:01 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTSwp-00000007JMe-1wHG;
-	Tue, 17 Nov 2026 23:50:48 +0000
+	id 1xTSwq-00000007JMp-0B4A;
+	Tue, 17 Nov 2026 23:50:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=1L1rnpEa1FMQhHWjQ297g0CVeUw3DnJ6PRrNwvd4eCI=; b=X9C5zq4qmzVZbAo9rnBmBh45mj
-	J2chf+v2QllC3118joYKv2Hv6rxQFGdQPEnxw3/DdgIgGaDNFSBMDfZbpS4iE2Etcy64/sYhrnz/I
-	vVmAnLh4p2KjJBZtd3j804B3HzhO9rfJsL3xmtcTB9e8JzqFMWOavGsWE0b2YDQLK6IAgljk3ZmhT
-	FZJJdfooN7EkvfCPC6QKbayNxAMToxfNOOcxKY5ZoXlqH/OW+uGe2SeDOmqAop7Mre2KmLUbGUxTO
-	4ScypXDF1/FskYMOqiZYfidP4AD/Yar+q4l49O9yzN9/WXjfZvjzdBYM6oPPHt8srhJS3fE87thsx
-	RETxkPjA==;
+	bh=khN6VDPnjL2LqUdtA4sH+OiPa/4+wQB3zpuMWXL1Td4=; b=BZQ+rYVE1E2AuhqxEk4m8XoOB8
+	owdC7L8wRELvw5zwtR/NhsSBpcdW+bq1OG43l/7WuUG2Z6COoy8lYfwQeWvPOmPssf4p6fzdH4+bp
+	3cOO8ggcbu7+7PWDkOeQL14Xy5MN5HnsuRQ44TwVJSynryst5Miziidgbr75rnfgJJSqUlGDIZMza
+	b4yT9WKQiwkm44jbnb0y9LI9SOFuHHuddldd12fD9P44tdArGuziF1zxM2OKlKTvafHIIqdx1b8dn
+	ATZ9Fnmgl7GJ13hF9UkEq81TKzSvp9mjkePrf6I40MZr9WRWj9S65X1s1MktpEPO82JqVBQBJ1tGC
+	D0ObPtAw==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: broonie@kernel.org
 Cc: Heiko Stuebner <heiko@sntech.de>,
@@ -47,17 +47,17 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	Lee Jones <lee@kernel.org>,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH v3 2/7] spi: Allow spi_delay_exec() to be used from atomic contexts
-Date: Wed, 18 Nov 2026 00:50:16 +0100
-Message-ID: <20261117235021.2013719-3-heiko@sntech.de>
+Subject: [PATCH v3 6/7] spi: rockchip: Move to pm_runtime_resume_and_get
+Date: Wed, 18 Nov 2026 00:50:20 +0100
+Message-ID: <20261117235021.2013719-7-heiko@sntech.de>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261117235021.2013719-1-heiko@sntech.de>
 References: <20261117235021.2013719-1-heiko@sntech.de>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_155047_532722_ED04174E 
-X-CRM114-Status: GOOD (  13.50  )
+X-CRM114-CacheID: sfid-20261117_155048_126201_E898610F 
+X-CRM114-Status: GOOD (  13.12  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,44 +80,47 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-When using spi_delay_exec() only the fsleep in the subsequent
-_spi_transfer_delay_ns() can actually sleep.
+Currently pm_runtime_get_sync() is used, which increments the usage
+count even if the resume was not successful.
 
-As we might want to use spi_delay_exec() from atomic contexts in the
-future, move the might_sleep() up to the actual place that matters
-and fall back to the existing ndelay if called from an atomic context.
+Move to the more modern pm_runtime_resume_and_get() which handles the
+usage counter better.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
 ---
- drivers/spi/spi.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/spi/spi-rockchip.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index 3aeee3b11c0c..8a82d7f5b9fa 100644
---- a/drivers/spi/spi.c
-+++ b/drivers/spi/spi.c
-@@ -1714,11 +1714,12 @@ static void _spi_transfer_delay_ns(u32 ns)
- {
- 	if (!ns)
- 		return;
--	if (ns <= NSEC_PER_USEC) {
-+	if (ns <= NSEC_PER_USEC || spi_in_atomic()) {
- 		ndelay(ns);
- 	} else {
- 		u32 us = DIV_ROUND_UP(ns, NSEC_PER_USEC);
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 8bb55d52d346..ce1629e5a513 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -255,7 +255,7 @@ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
  
-+		might_sleep();
- 		fsleep(us);
- 	}
- }
-@@ -1766,8 +1767,6 @@ int spi_delay_exec(struct spi_delay *_delay, struct spi_transfer *xfer)
- {
- 	int delay;
+ 	if (cs_asserted) {
+ 		/* Keep things powered as long as CS is asserted */
+-		pm_runtime_get_sync(rs->dev);
++		pm_runtime_resume_and_get(rs->dev);
  
--	might_sleep();
--
- 	if (!_delay)
+ 		if (spi_get_csgpiod(spi, 0))
+ 			ROCKCHIP_SPI_SET_BITS(rs->regs + ROCKCHIP_SPI_SER, 1);
+@@ -734,7 +734,7 @@ static int rockchip_spi_setup(struct spi_device *spi)
  		return -EINVAL;
+ 	}
+ 
+-	pm_runtime_get_sync(rs->dev);
++	pm_runtime_resume_and_get(rs->dev);
+ 
+ 	cr0 = readl_relaxed(rs->regs + ROCKCHIP_SPI_CTRLR0);
+ 
+@@ -924,7 +924,7 @@ static void rockchip_spi_remove(struct platform_device *pdev)
+ {
+ 	struct spi_controller *ctlr = platform_get_drvdata(pdev);
+ 
+-	pm_runtime_get_sync(&pdev->dev);
++	pm_runtime_resume_and_get(&pdev->dev);
+ 
+ 	spi_unregister_controller(ctlr);
  
 -- 
 2.53.0
