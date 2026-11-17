@@ -2,95 +2,102 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ECA4F606A31C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 18:26:24 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6960C606A33D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 21:46:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jvGvIt7j;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=zrXsSPIL
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FB8IuOUM;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=e2aFpoLG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=jXOot5aei5lp0VPxY5M6uXPtp1PXPq8nZfVbdrw3Plo=; b=jvGvIt7j9o9gvTwTxh1j7Ih6rS
-	UfmfHFP6wC8VnB3DfyANQNA0o6qxFpZUzQMbP5DMgN4e4TmwsQUzTYAp97xptesx5JcZ6DuFS3LtB
-	KA30PV4fzfKRJ89HY69WL1HQau5ZKnPMLI9/5fTDwVSaoqFRrxvCRgwkei/qsfZISTzCL+deQVUh8
-	V5oYmMJmvJQDH/8y0zKHYJiys+nnYuTvoBkb3TRY/yJL8JjsSfevTZ/ESChpjg1rheq3Wl0TYrGaS
-	rf2kb0rKrIhH0bTbmqHNVZQvhLHSxXSZ+HN789JKilIfJja0J0B5OSYkSZThCuAuH3fD7GOzsdZQS
-	XwUqzUgg==;
+	bh=d2Jf8BArWARYB8f+BGfzZAjiPS1qf1UcDfdDw/ZKymA=; b=FB8IuOUM+n3+/GYQTzYfHT65cl
+	OsfAz91HyPERVVGxO2HbPpJo9+uTMJDJj2jrMERuzJ2khPXOaarrbZjs+Ol05O7epDcoZahcar7sE
+	mI5IYHhjSdx9lDc9o7Ihg1xFzK9NURLg7a6YXZ4xuJK4KU1PK+hI8FQaNNZcSYXy9hV1GOhyzoV35
+	Y6NTmHVfdFfBZkY99qLnlHicxO6hmW8AJELn0aDtj9FXefVJhx14f47oWG96P0k874EKlRP8recsW
+	Q08cI5xw9x278H21aQo1mlclcMBrr4w4Xwo21PY+7kqvZLLU3CeTHvFS1ovE59EPt+Fqf616yLDtc
+	Eyr/iyyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTNsp-00000006kpv-3017;
-	Tue, 17 Nov 2026 18:26:19 +0000
-Received: from mail-dy2-x0a.google.com ([2607:f8b0:4864:36::a])
+	id 1xTR0B-000000079vs-3m1d;
+	Tue, 17 Nov 2026 21:46:07 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTNsn-00000006kpC-12Eh
+	id 1xTR06-000000079ux-4BHs
 	for linux-rockchip@lists.infradead.org;
-	Tue, 17 Nov 2026 18:26:18 +0000
-Received: by mail-dy2-x0a.google.com with SMTP id 5a478bee46e88-36d73027aedso36911eec.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 17 Nov 2026 10:26:16 -0800 (PST)
+	Tue, 17 Nov 2026 21:46:06 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-4bb666304fdso11329845e9.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 17 Nov 2026 13:46:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794939976; x=1795544776; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Ul8avXQobHMQCgtgHYaeZ3hLQKdlpeIZoIBnaJtF8Qg=;
-        b=zrXsSPILvXokjVjJNAV/9y+nvQw4jJKHy8rKLOs3xslmF/8MAdR2R2P/wHMvtum2Nl
-         TJl+cUDf2zluw4fJELVsVKv2FU/TKDy2X6WTuN5BraTSxUdIhF5uAI+e7RHbv+8UNQBY
-         a5sixHmaniFSKww9n3tRfaz/AoZqAZLZHmhiVDxoNDEdDM8ZtaBP4pNdG5vbWhlOPV9R
-         U7r+VA3y0goQVvc0SMyhRnIi0TvNVd2m5pF34Q8L5GtHI2H3Qp8XKkkmG6NFpUhtyUE6
-         O2tCabGZLIenpLryt06aaGfN7mLgNN/Qh/lu2u9C4lKTD34cXArFJXdH2wqPoS1TzEqq
-         UxpA==
+        d=baylibre.com; s=google; t=1794951960; x=1795556760; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=e/0455aVSKf4ZqTvdu8SIA7Syq8Dck34mc+Lxs2NK9Q=;
+        b=e2aFpoLGnaJekC6GOzvpdisKS6cWpS4//QaRIneEa8dyYPdZuEx4xpoJAmLH7/2ml4
+         6gvvOi6BuiWzmABnZgsiw19+DES/VW2TlN5Kb3eQP7PKEMdrSE1RXanxWja6ihmATChv
+         qqxXbJLEbna7D3te9VHPsmibmCUfCbf+SyultwqNM5Q5wcP6pi7Wyq67kRFuUnRnukVv
+         uqRCxL5p7GU7sieHoCfkLaUh6Gy5iUSrBzWAomdy4W9/cYS2H5S3UTu/QpX4Caw6Gzjt
+         e3fFBGlV1A51g6KTl/PvcaPgce5J2XqbiebcypXe7SZ7WPxu2cJ+NIagEGRhwvdh1iT5
+         AI7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794939976; x=1795544776;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20260707; t=1794951960; x=1795556760;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=Ul8avXQobHMQCgtgHYaeZ3hLQKdlpeIZoIBnaJtF8Qg=;
-        b=wj2ngvmy3CptASXAl6eW7AB7JUiHsY7TtgsIC0tyfGWa4NJxFOWDtQCMYOczU5CCQ2
-         J+MC8Q0h011MEo6boMZ2vTFyPMzwu1Xi6fF6CqH2pgHC8M90Mga3510IKMKVl7vUiF7b
-         w4EsMQ7dA8pR+sZz8X8itbd8z+ztMlZsUIBQJrfR6VKXVuhEj/wHXfawOwI+PKNHnqZb
-         yuxKlgNoMJ5m2vQZtQPDi9446cYfuN0HGGGFbTUH4xFX6OG3svkuWsgBK26/rLky3emQ
-         VY91uLUlnld/fxEp8GcSIuaNoNhIA0tAbPHYp9BLRnjOcIpHqRRprL0CpdvjjbpbufMz
-         VcYg==
-X-Forwarded-Encrypted: i=1; AL+hErF0kleeZhmoYmdgXDjEg6Qg26wdo8V4VS4S1417t+r+wjrMR5lsnCb0nvi36A20dBEeqoU8N31K3JxP5zNQmw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8ni/iodO5IqSNokf5eNaeTwfrD9TjRfc/Cs/z+BY5WrNAbNPFC
-	jwlA+zjjtWaFAz6kfy+pfU8dUTLLRYHbMm3+B60VMZgzqhpcDVLVW3gF
-X-Gm-Gg: AZFdTZdRXl7pm6wleNC6K+hZIjFJN1qf9z1xnLT4RELRmGb9Wj/uQJs6r+XkEsXjIbs
-	sDHgxS4u9nlxaqY2mKQPhOlBScplfu0JEMtcb8ek0Vh+6Bz14IcmmlZuOoFM//xPZbJ68lg2X+j
-	/mvRbFjTEemqsSv6c6c1lrcYuGCxCsdTueSyv8ulI29CALlTDy3QSq5NuID2pMJy4hcNhw5x8h0
-	TBlyC6EQFDdRFW6R8YyS+nOXWmFE/MrDGJSEqDjp7YtNTS/0alXim2bS0aNaGoU37jbMEkEncRy
-	9S/gQRRkNtrba4jrQpaVucl8aKatK+nsYSdWPSSnCL7F/Dp9REd+3HXIiz6spsscoEU7sQ+t8bv
-	dvJa2EqHxAOVaD8LJxg9+uD9WGeHEwEAD8buB3RfEzzh1sc2Ts1JfPWTleC3qjitdVMIl8fWF+l
-	2soyXuYqISaCSSEC0BpR0PSqFbiUXlv3GcWgzyRo/eo4ThfLSPFYt/fZ4AOlq+lfdMkn6YlD93Z
-	Ot7qV6xb1TNiQbPUHepXGgRTVRPaVB/HPFqFZeRy8P0e1bVF6UyMHgtfIeXD87Xlk1J8kZx0yQD
-	A/PVKp+ftYggA2StZjW/1swPHEfHVgPd0ULXETlFliv75nbq3LibmMAsdJ8=
-X-Received: by 2002:a05:7300:4307:b0:376:c352:2fcb with SMTP id 5a478bee46e88-38281020584mr279305eec.9.1794939976302;
-        Tue, 17 Nov 2026 10:26:16 -0800 (PST)
-Received: from server.lan ([168.138.199.194])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3795378d73dsm45641488eec.2.2026.11.17.10.26.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Nov 2026 10:26:15 -0800 (PST)
-From: Coia Prant <coiaprant@gmail.com>
-To: Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	Heiko Stuebner <heiko@sntech.de>,
-	netdev@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Coia Prant <coiaprant@gmail.com>
-Subject: [PATCH net-next] net: stmmac: dwmac-rk: split gmac_clk_enable into enable/disable
-Date: Wed, 18 Nov 2026 02:25:03 +0800
-Message-ID: <20261117182502.3045841-2-coiaprant@gmail.com>
-X-Mailer: git-send-email 2.47.3
+        bh=e/0455aVSKf4ZqTvdu8SIA7Syq8Dck34mc+Lxs2NK9Q=;
+        b=HJakkjYIqBNK4y4rkr2jlMsfmUUgk0vLsF8siSzM+dzTR89vuDjsZRMWIqg3xNZs6s
+         fP1x3nKV/54G931eIxMfJSu59cttqdwEFRF4ccMHZBEHigXAr8tFGOhofnhbqCOSn905
+         2EQi58EHABTGQ7AKlTR83PCiDO5jMwojA+NGZd+VFRUh6uOSi0lqdA4tQUYrVSiPKsY9
+         Qg2zBkbLI2S6u2cqeVdUGM5QzJzAhIP6zohBJbmxKaG/Z01zzaNvYoy6JNjPeS9qvXDy
+         UHPb8XI5sL4gRnw1WSg7qUCWrLJ3Ya/Xi3Y0jPrhWqsw9penN9ugJw+y2Ep3yATzayvR
+         mZ+A==
+X-Forwarded-Encrypted: i=1; AL+hErEkKS0aWBDVOMFMEzAHqRo/6WP4NPhJtqv2sTbctt7bfgm1qKT/ZO2iqgr8EbJzSpe06JfwWhadreX37azeWg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+i82R9r+M2RdFZR4B+dGzQW2z+JY6046CyjEkeQo+1i3OOez/O
+	nS72aDXJg98HwgdFoufWZQ/PwdfXwb3LF+ytQSjv0OGlXrc2sb20YIbTC/ml0HWZleg=
+X-Gm-Gg: AYBFou1Zt8IRn4p3f8vEevljXpmfdXY2ME7/mKqj14hhAgsIA8KN4Sn2Nwj6vSziGGB
+	oWXBnssepLsTW/lDkWzj9IInpmpJ/GSXm/phU/7e9vY/sxQ+MaDoO2KTKdMye/BNafUT3D1Bqp+
+	z2pPlIX3mfrzRjldQb/rn0qlv0GZQDN8Bnv6FJQbQ1FyJG+b9Ik4VQJV0Z8QHS2OyzYtipXFXbb
+	jZJE4P1QBVVoM2BqAG2Ya//Gn/nDJ9OwFGSv2P9NEVGRaQ2dmikHR3I9cPr9zsrD0WdT9km9Hag
+	x7h1vsis6yfctCbOM04f1Ql0fdQgRTZasISrk5KPI89Tw8yIE3Oum5KWe/rq5Q0/AaHDSSLCQ04
+	L8wQnHy4VVYSODvKWlAv+EdO5Vhx4w2poOkqkqcdhB16l28OnkWUHgSt8/232pjwULjSY6PG5xF
+	bx16OV14GTysNZVTsTprvWTmLLcIcE5WClFprIOzfpdO7gYF7vzWtF5vnqocxGynZVfYTlNGhrY
+	hSjpWzZYBc8A1uAOqHnhYGt+h4PhNrtAodqJkLOdAO+HGI66lVcjWbjaRt24lYcFsifIAxOlAPi
+	CXtrF9/Sc14BUjbWef9Lp+epUrvR/E9PU2HgiZIZhseE7Q2cxll4bRvJOKeFDahu4xnh6MAsoVs
+	4XnU=
+X-Received: by 2002:a05:600c:a54:b0:4bb:5fd1:92aa with SMTP id 5b1f17b1804b1-4bb7da30033mr10977415e9.15.1794951959287;
+        Tue, 17 Nov 2026 13:45:59 -0800 (PST)
+Received: from ?IPV6:2001:8a0:d6cd:9000:86f4:4e71:9fc8:3183? ([2001:8a0:d6cd:9000:86f4:4e71:9fc8:3183])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb7d28ec3asm15648465e9.0.2026.11.17.13.45.58
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 17 Nov 2026 13:45:58 -0800 (PST)
+Message-ID: <39614a57-c375-4bee-bcea-f0ebd2d0b572@baylibre.com>
+Date: Tue, 17 Nov 2026 21:45:57 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] accel/rocket: Fix the IOMMU domain leak in
+ rocket_ioctl_create_bo
+To: Chaoyi Chen <kernel@airkyi.com>, Tomeu Vizoso <tomeu@tomeuvizoso.net>,
+ Oded Gabbay <ogabbay@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jeff Hugo <jeff.hugo@oss.qualcomm.com>
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>
+References: <20260814022453.437-1-kernel@airkyi.com>
+ <20260814022453.437-2-kernel@airkyi.com>
+Content-Language: en-US
+From: Daniel Drake <ddrake@baylibre.com>
+In-Reply-To: <20260814022453.437-2-kernel@airkyi.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_102617_320740_77465F0D 
-X-CRM114-Status: GOOD (  15.06  )
+X-CRM114-CacheID: sfid-20261117_134603_049031_5F037543 
+X-CRM114-Status: UNSURE (   6.59  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,155 +108,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-As the great Linus Torvalds once said in
-Documentation/process/coding-style.rst:
 
-  "If you need more than 3 levels of indentation, you're screwed anyway,
-   and should fix your program."
-
-The gmac_clk_enable() function previously used a 'bool enable' parameter
-to handle both clock enabling and disabling. This resulted in deeply
-nested if/else blocks, which made the error handling and rollback paths
-cumbersome and prone to bugs.
-
-This complexity has led to bugs, such as the bulk clock leak fixed by
-commit 8db67bb6a1ff ("net: ethernet: stmmac: dwmac-rk: fix bulk clock leak when the PHY clock fails").
-
-Split the function into two distinct helpers: gmac_clk_enable() and
-gmac_clk_disable(). This flattens the code, removes the boolean flag,
-makes the caller's intent much clearer, and simplifies the error
-unwinding logic.
-
-Additionally, this refactoring aids compiler inlining and CPU branch
-prediction (trust me). The reason is simple: no branch, no prediction.
-While the compiler might optimize it, there's no guarantee it will :P
-
-Signed-off-by: Coia Prant <coiaprant@gmail.com>
----
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 67 ++++++++++---------
- 1 file changed, 36 insertions(+), 31 deletions(-)
-
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index a37df5767d84..78bc8c71ad10 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -1178,43 +1178,48 @@ static int rk_gmac_clk_init(struct plat_stmmacenet_data *plat)
- 	return 0;
- }
- 
--static int gmac_clk_enable(struct rk_priv_data *bsp_priv, bool enable)
-+static int gmac_clk_enable(struct rk_priv_data *bsp_priv)
- {
- 	int ret;
- 
--	if (enable) {
--		if (!bsp_priv->clk_enabled) {
--			ret = clk_bulk_prepare_enable(bsp_priv->num_clks,
--						      bsp_priv->clks);
--			if (ret)
--				return ret;
--
--			ret = clk_prepare_enable(bsp_priv->clk_phy);
--			if (ret) {
--				clk_bulk_disable_unprepare(bsp_priv->num_clks,
--							   bsp_priv->clks);
--				return ret;
--			}
-+	if (bsp_priv->clk_enabled)
-+		return 0;
- 
--			rk_configure_io_clksel(bsp_priv);
--			rk_ungate_rmii_clock(bsp_priv);
-+	ret = clk_bulk_prepare_enable(bsp_priv->num_clks,
-+				      bsp_priv->clks);
-+	if (ret)
-+		return ret;
- 
--			mdelay(5);
--			bsp_priv->clk_enabled = true;
--		}
--	} else {
--		if (bsp_priv->clk_enabled) {
--			rk_gate_rmii_clock(bsp_priv);
-+	ret = clk_prepare_enable(bsp_priv->clk_phy);
-+	if (ret)
-+		goto err_clk_phy;
- 
--			clk_bulk_disable_unprepare(bsp_priv->num_clks,
--						   bsp_priv->clks);
--			clk_disable_unprepare(bsp_priv->clk_phy);
-+	rk_configure_io_clksel(bsp_priv);
-+	rk_ungate_rmii_clock(bsp_priv);
- 
--			bsp_priv->clk_enabled = false;
--		}
--	}
-+	mdelay(5);
-+	bsp_priv->clk_enabled = true;
- 
- 	return 0;
-+
-+err_clk_phy:
-+	clk_bulk_disable_unprepare(bsp_priv->num_clks,
-+				   bsp_priv->clks);
-+	return ret;
-+}
-+
-+static void gmac_clk_disable(struct rk_priv_data *bsp_priv)
-+{
-+	if (!bsp_priv->clk_enabled)
-+		return;
-+
-+	rk_gate_rmii_clock(bsp_priv);
-+
-+	clk_bulk_disable_unprepare(bsp_priv->num_clks,
-+				   bsp_priv->clks);
-+	clk_disable_unprepare(bsp_priv->clk_phy);
-+
-+	bsp_priv->clk_enabled = false;
- }
- 
- static int rk_phy_powerup(struct rk_priv_data *bsp_priv)
-@@ -1453,7 +1458,7 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
- 	if (ret)
- 		return ret;
- 
--	ret = gmac_clk_enable(bsp_priv, true);
-+	ret = gmac_clk_enable(bsp_priv);
- 	if (ret)
- 		return ret;
- 
-@@ -1544,7 +1549,7 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
- 	return 0;
- 
- clk_disable:
--	gmac_clk_enable(bsp_priv, false);
-+	gmac_clk_disable(bsp_priv);
- 	return ret;
- }
- 
-@@ -1556,7 +1561,7 @@ static void rk_gmac_powerdown(struct rk_priv_data *gmac)
- 	pm_runtime_put_sync(gmac->dev);
- 
- 	rk_phy_powerdown(gmac);
--	gmac_clk_enable(gmac, false);
-+	gmac_clk_disable(gmac);
- }
- 
- static void rk_get_interfaces(struct stmmac_priv *priv, void *bsp_priv,
--- 
-2.47.3
+On 14/08/2026 03:24, Chaoyi Chen wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> 
+> When rocket_ioctl_create_bo fails, rocket_iommu_domain_put should be
+> called to avoid an IOMMU domain leak.
+> 
+> Fixes: 658ebeac3351 ("accel/rocket: Add IOCTL for BO creation")
+> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Reviewed-by: Daniel Drake <ddrake@baylibre.com>
 
 
 _______________________________________________
