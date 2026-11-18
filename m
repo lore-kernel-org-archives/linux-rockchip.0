@@ -2,65 +2,57 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B4928606A31C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 16:01:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9ABFD606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 16:10:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NrNzezbQ;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256 header.s=key1 header.b=jNLmMzj+
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NLAehoYS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Cc:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=iELYhR982rHuEUFxjSW1tgqo8KX6NAu81S+ldIK5e6I=; b=NrNzezbQowj/L1ZRC1b8qUFOJy
-	r8fqmiXa/6QWbqJ6bP/YyT1q1sAGG9RCORxRAiY9TGDeVL6jk6fP03BwBCTZNb2Y7sLtZAI37WabY
-	x0OiKPrXSXi4ArdWAxtKgzvT7oURHEkuhzWCSrYKrQgQLqfpptlaXWre/ljbNOs8DRebL3b8wcftj
-	z9xjGT1orL5KNIGs3FdOYKQMPX1TOCCwLs0DE3nInCH4YEz9hojuqUAABfmO7xQk9mFUOv/S/MAl3
-	p4Lyr1e5Lm2rLMnqYK0+5nUxb5/l2B0nm6x6mfTHY7CX3xQ03mU+3LIUG+ApGUKzVnf+kliAfHCMI
-	NvGAccuQ==;
+	bh=xB+lNZ5nGosJmxynu/NomqZ5o/FXmGOt43BJLXbskVw=; b=NLAehoYSJMXmz0r/tS4cLzVCYm
+	KmaKKZ0koRWsTjfaVmpUKRUjgIK5AkwTPo1y+nTZbDkiwg1Mq9+XX3aNIEepQT3g3mzQXfAIcz7Vc
+	Ac7eLQlv7aRHRqvcXOB4IqfjcCrnHLT8AhR/GA8dC8dQQxST3+CDpdDv0exVveYUCXkt/cfegNAHM
+	L9/bkjO/9TkjBSbTJlXV+9W/z16YJoYQMYUt/LDkaFtBbeH4iOh/d8jNNzvJhYLli9IXbCgI9rK+z
+	B7uGWQkwt3ul4zvuEM+UQjSmIsQQ4sboEIQEUwKf7JVxCZMB4IJTPw3sqAJTgM0KmjaiXJ4PXqkdN
+	nCCzUOmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTi5Y-00000009OVz-1VbG;
-	Wed, 18 Nov 2026 16:00:48 +0000
-Received: from out-48.mta1.migadu.com ([95.215.58.48] helo=mta1.migadu.com)
+	id 1xTiF0-00000009PxV-2qJz;
+	Wed, 18 Nov 2026 16:10:34 +0000
+Received: from woodpecker.gentoo.org ([140.211.166.183] helo=smtp.gentoo.org)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTi5V-00000009OUo-3GDD
+	id 1xTiEx-00000009Pwr-3wZh
 	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Nov 2026 16:00:47 +0000
-X-Envelope-To: linux-rockchip@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=7VeXSmZ3/hUkdPciRRL585AMCPSZFly0ImGRWGDZsag=;
- c=simple/simple; d=linux.dev;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1795017643; v=1; x=1795622443;
- b=jNLmMzj+LWIEyTsXHqJY/sFju3iEkY8eNZmswrqQ3+o/tdhuTanGZGPjBS4QVzEZXnvxe3Df
- RoQOr0nkcaYMWOCm0tx5xvTulEQxI5GZ+48JZAbb9rV+/J5/Lc/xQxTygPoy3afAp/NqKnNbduI
- yXQPYPgbl+mh+y+IDKYYOqxw=
-X-Envelope-To: linux-rockchip@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id a1dd53c957c54ffa;
-	Wed, 18 Nov 2026 16:00:43 +0000
-X-Mizu-Trace-ID: a1dd53c957c54ffa
-X-Migadu-Flow: FLOW_OUT
-Date: Wed, 18 Nov 2026 16:00:43 +0000
-From: Bradley Morgan <bradley.morgan@linux.dev>
-To: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>, rafael@kernel.org,
- tglx@linutronix.de
-CC: Andrew Morton <akpm@linux-foundation.org>,
- Peter Ziljstra <peterz@infradead.org>, Heiko Stuebner <heiko@sntech.de>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Thomas Gleixner <tglx@kernel.org>, linux-kernel@vger.kernel.org
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_1/2=5D_smpboot=3A_Allow_res?=
- =?US-ASCII?Q?tricting_per-CPU_threads_to_a_CPU_mask?=
-In-Reply-To: <7a1e55d24c39d70caa157e6e2c823d9be5db07e7.1794992905.git.daniel.lezcano@oss.qualcomm.com>
-References: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com> <7a1e55d24c39d70caa157e6e2c823d9be5db07e7.1794992905.git.daniel.lezcano@oss.qualcomm.com>
-Message-ID: <0453960B-FF17-4E49-8672-FC0FDA3EF5DE@linux.dev>
+	Wed, 18 Nov 2026 16:10:33 +0000
+Received: from 9.b.8.c.1.6.8.7.6.b.f.2.6.1.2.4.c.6.e.0.c.6.2.0.0.b.8.0.1.0.0.2.ip6.arpa (unknown [IPv6:2001:8b0:26c:e6c:4216:2fb6:7861:c8b9])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: chewi)
+	by smtp.gentoo.org (Postfix) with ESMTPSA id 23975342899;
+	Wed, 18 Nov 2026 16:03:16 +0000 (UTC)
+Message-ID: <08cc96c5171fc969b074371692e6d95d46eba60b.camel@gentoo.org>
+Subject: PCI: dw-rockchip: Unable to boot Quartz64 Model B from NVMe since
+ reset changes
+From: James Le Cuirot <chewi@gentoo.org>
+To: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+Cc: Niklas Cassel <cassel@kernel.org>, Manivannan Sadhasivam	
+ <manivannan.sadhasivam@oss.qualcomm.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, 	linux-pci@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Shawn Lin	 <shawn.lin@rock-chips.com>
+Date: Wed, 18 Nov 2026 16:03:11 +0000
+User-Agent: Evolution 3.60.2 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_080046_365253_DB4B428C 
-X-CRM114-Status: GOOD (  17.78  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261118_081032_011559_92320BB2 
+X-CRM114-Status: UNSURE (   4.34  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,206 +65,137 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 18 November 2026 10:33:48 GMT, Daniel Lezcano
-<daniel.lezcano@oss.qualcomm.com> wrote:
->smpboot_register_percpu_thread() creates a thread for every online CPU
->and registers the descriptor for subsequent CPU hotplug operations.
->There is currently no way to restrict these threads to a subset of
->CPUs, even when the user only needs work performed on that subset.
->
->For example, an idle injection device targets a specific CPU mask.
->Creating threads outside that mask consumes resources unnecessarily.
->Supporting multiple such devices also requires each descriptor to
->manage only the threads associated with its own CPUs.
->
->Add an optional CPU mask to struct smp_hotplug_thread and apply it
->throughout the thread lifecycle. Registration creates threads only for
->online CPUs in the mask. CPU bring-up creates threads for selected
->CPUs that were offline at registration, while parking and unparking
->are restricted to the same mask.
->
->Apply the restriction to thread destruction as well, both during
->unregistration and registration failure cleanup. This is necessary
->when descriptors with disjoint masks share the same per-CPU task
->storage: tearing down one descriptor must not stop or clear threads
->owned by another descriptor.
->
->Reject registrations that share task storage with an existing
->descriptor and have overlapping CPU masks. Check for overlaps under
->smpboot_threads_lock before creating any threads, warn once and return
->-EBUSY on a conflict. Checking the masks also covers offline CPUs,
->whose task pointers may not yet be populated. This prevents descriptors
->from sharing a thread and interfering with each other's teardown.
->
->Default a NULL mask to cpu_possible_mask at registration, preserving
->the existing all-CPU behavior and allowing the lifecycle helpers to
->use the mask unconditionally. Use scoped guards for the registration
->locks so all error returns release them in the correct order.
->
->The caller must keep the mask valid and unchanged until the descriptor
->is unregistered. smpboot serializes the overlap check and descriptor
->registration against other registration and unregistration operations.
+Hello Wilfred,
 
-Cheers,
+Unfortunately, since your commit "PCI: dw-rockchip: Implement
+.reset_root_port() and use for link down" (b376b3ff9cb0527), I have been
+basically unable to boot my Quartz64 Model B from NVMe. Sometimes if I wait
+long enough, it will eventually work, albeit very slowly. If I revert this
+(and 4e9f69d08253) against 7.3.5, then it boots normally. Here is the relevant
+output.
 
-Reviewed-by: Bradley Morgan <bradley.morgan@linux.dev>
+rockchip-dw-pcie 3c0000000.pcie: host bridge /pcie@fe260000 ranges:
+rockchip-dw-pcie 3c0000000.pcie:       IO 0x00f4100000..0x00f41fffff -> 0x00f4100000
+rockchip-dw-pcie 3c0000000.pcie:      MEM 0x00f4200000..0x00f5ffffff -> 0x00f4200000
+rockchip-dw-pcie 3c0000000.pcie:      MEM 0x0300000000..0x033fffffff -> 0x0300000000
+rockchip-dw-pcie 3c0000000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
+rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
+rockchip-dw-pcie 3c0000000.pcie: PCI host bridge to bus 0000:00
+pci_bus 0000:00: root bus resource [bus 00-0f]
+pci_bus 0000:00: root bus resource [io  0x0000-0xfffff] (bus address [0xf4100000-0xf41fffff])
+pci_bus 0000:00: root bus resource [mem 0xf4200000-0xf5ffffff]
+pci_bus 0000:00: root bus resource [mem 0x300000000-0x33fffffff]
+pci 0000:00:00.0: [1d87:3566] type 01 class 0x060400 PCIe Root Port
+pci 0000:00:00.0: ROM [mem 0x00000000-0x0000ffff pref]
+pci 0000:00:00.0: PCI bridge to [bus 01-ff]
+pci 0000:00:00.0:   bridge window [io  0x0000-0x0fff]
+pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
+pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
+pci 0000:00:00.0: supports D1 D2
+pci 0000:00:00.0: PME# supported from D0 D1 D3hot
+pci_bus 0000:01: busn_res: can not insert [bus 01-ff] under [bus 00-0f] (conflicts with (null) [bus 00-0f])
+pci 0000:01:00.0: [1e0f:0009] type 00 class 0x010802 PCIe Endpoint
+pci 0000:01:00.0: BAR 0 [mem 0x00000000-0x00003fff 64bit]
+pci 0000:01:00.0: 4.000 Gb/s available PCIe bandwidth, limited by 5.0 GT/s PCIe x1 link at 0000:00:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe x4 link)
+pci 0000:01:00.0: ASPM: default states L1
+pci 0000:00:00.0: bridge window [mem 0xf4200000-0xf42fffff]: assigned
+pci 0000:00:00.0: ROM [mem 0xf4300000-0xf430ffff pref]: assigned
+pci 0000:01:00.0: BAR 0 [mem 0xf4200000-0xf4203fff 64bit]: assigned
+pci 0000:00:00.0: PCI bridge to [bus 01-ff]
+pci 0000:00:00.0:   bridge window [mem 0xf4200000-0xf42fffff]
+pci_bus 0000:00: resource 4 [io  0x0000-0xfffff]
+pci_bus 0000:00: resource 5 [mem 0xf4200000-0xf5ffffff]
+pci_bus 0000:00: resource 6 [mem 0x300000000-0x33fffffff]
+pci_bus 0000:01: resource 1 [mem 0xf4200000-0xf42fffff]
+pcieport 0000:00:00.0: PME: Signaling with IRQ 86
+pcieport 0000:00:00.0: AER: enabled with IRQ 95
+pcieport 0000:00:00.0: Recovering Root Port due to Link Down
+nvme nvme0: pci function 0000:01:00.0
+nvme 0000:01:00.0: enabling device (0000 -> 0002)
+rockchip-pm-domain fdd90000.power-management:power-controller: sync_state() pending due to fdeb0000.rga
+nvme nvme0: D3 entry latency set to 10 seconds
+hwmon hwmon2: temp1_input not attached to any thermal zone
+nvme nvme0: passthrough uses implicit buffer lengths
+nvme nvme0: 4/0/0 default/read/poll queues
+ nvme0n1: p1 p2 p3 p4 p5
+nvme nvme0: frozen state error detected, reset controller
+rk_gmac-dwmac fe010000.ethernet eth0: Register MEM_TYPE_PAGE_POOL RxQ-0
+rk_gmac-dwmac fe010000.ethernet eth0: PHY [stmmac-0:01] driver [RTL8211F-VD Gigabit Ethernet] (irq=POLL)
+dwmac4: Master AXI performs any burst length
+rk_gmac-dwmac fe010000.ethernet eth0: No Safety Features support found
+rk_gmac-dwmac fe010000.ethernet eth0: IEEE 1588-2008 Advanced Timestamp supported
+rk_gmac-dwmac fe010000.ethernet eth0: registered PTP clock
+rk_gmac-dwmac fe010000.ethernet eth0: configuring for phy/rgmii link mode
+rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
+pcieport 0000:00:00.0: Root Port has been reset
+nvme nvme0: restart after slot reset
+nvme nvme0: D3 entry latency set to 10 seconds
+nvme nvme0: 4/0/0 default/read/poll queues
+pcieport 0000:00:00.0: AER: device recovery successful
+pcieport 0000:00:00.0: Recovering Root Port due to Link Down
+nvme nvme0: frozen state error detected, reset controller
+rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
+pcieport 0000:00:00.0: Root Port has been reset
+nvme nvme0: restart after slot reset
+nvme nvme0: D3 entry latency set to 10 seconds
+nvme nvme0: 4/0/0 default/read/poll queues
+pcieport 0000:00:00.0: AER: device recovery successful
+pcieport 0000:00:00.0: Recovering Root Port due to Link Down
+nvme nvme0: frozen state error detected, reset controller
+rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
+pcieport 0000:00:00.0: Root Port has been reset
+nvme nvme0: restart after slot reset
+nvme nvme0: D3 entry latency set to 10 seconds
+nvme nvme0: 4/0/0 default/read/poll queues
+pcieport 0000:00:00.0: AER: device recovery successful
+pcieport 0000:00:00.0: Recovering Root Port due to Link Down
+nvme nvme0: frozen state error detected, reset controller
+rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
+pcieport 0000:00:00.0: Root Port has been reset
+nvme nvme0: restart after slot reset
+nvme nvme0: D3 entry latency set to 10 seconds
+nvme nvme0: 4/0/0 default/read/poll queues
+pcieport 0000:00:00.0: AER: device recovery successful
+pcieport 0000:00:00.0: Recovering Root Port due to Link Down
+nvme nvme0: frozen state error detected, reset controller
+rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
+pcieport 0000:00:00.0: Root Port has been reset
+nvme nvme0: restart after slot reset
+nvme nvme0: D3 entry latency set to 10 seconds
+nvme nvme0: 4/0/0 default/read/poll queues
+pcieport 0000:00:00.0: AER: device recovery successful
+pcieport 0000:00:00.0: Recovering Root Port due to Link Down
+nvme nvme0: frozen state error detected, reset controller
+rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
+pcieport 0000:00:00.0: Root Port has been reset
+nvme nvme0: restart after slot reset
+nvme nvme0: D3 entry latency set to 10 seconds
+nvme nvme0: 4/0/0 default/read/poll queues
+pcieport 0000:00:00.0: AER: device recovery successful
+pcieport 0000:00:00.0: Recovering Root Port due to Link Down
+nvme nvme0: frozen state error detected, reset controller
+rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
+pcieport 0000:00:00.0: Root Port has been reset
+nvme nvme0: restart after slot reset
+nvme nvme0: D3 entry latency set to 10 seconds
+nvme nvme0: 4/0/0 default/read/poll queues
+pcieport 0000:00:00.0: AER: device recovery successful
+pcieport 0000:00:00.0: Recovering Root Port due to Link Down
+nvme nvme0: frozen state error detected, reset controller
+nvme nvme0: D3 entry latency set to 10 seconds
+nvme nvme0: 4/0/0 default/read/poll queues
+pcieport 0000:00:00.0: Root Port has been reset
+(and so on...)
 
->
->Signed-off-by: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
->---
-> include/linux/smpboot.h |  6 ++++++
-> kernel/smpboot.c        | 45 ++++++++++++++++++++++++++++++++---------
-> 2 files changed, 41 insertions(+), 10 deletions(-)
->
->diff --git a/include/linux/smpboot.h b/include/linux/smpboot.h
->index 9d1bc65d226c..57b945d51b19 100644
->--- a/include/linux/smpboot.h
->+++ b/include/linux/smpboot.h
->@@ -5,6 +5,7 @@
-> #include <linux/types.h>
-> 
-> struct task_struct;
->+struct cpumask;
-> /* Cookie handed to the thread_fn*/
-> struct smpboot_thread_data;
-> 
->@@ -27,6 +28,10 @@ struct smpboot_thread_data;
->  *			unparked (cpu online)
->  * @selfparking:	Thread is not parked by the park function.
->  * @thread_comm:	The base name of the thread
->+ * @cpumask:		Optional mask of CPUs on which to create threads. Must remain
->+ *			valid and unchanged until the descriptor is unregistered.
->+ *			Registration defaults NULL to cpu_possible_mask. Descriptors
->+ *			sharing @store must have disjoint masks.
->  */
-> struct smp_hotplug_thread {
-> 	struct task_struct		* __percpu *store;
->@@ -40,6 +45,7 @@ struct smp_hotplug_thread {
-> 	void				(*unpark)(unsigned int cpu);
-> 	bool				selfparking;
-> 	const char			*thread_comm;
->+	const struct cpumask		*cpumask;
-> };
-> 
-> int smpboot_register_percpu_thread(struct smp_hotplug_thread
-> *plug_thread);
->diff --git a/kernel/smpboot.c b/kernel/smpboot.c
->index 4503b60ce9bd..f997fe85f088 100644
->--- a/kernel/smpboot.c
->+++ b/kernel/smpboot.c
->@@ -168,6 +168,9 @@ __smpboot_create_thread(struct smp_hotplug_thread *ht, unsigned int cpu)
-> 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
-> 	struct smpboot_thread_data *td;
-> 
->+	if (!cpumask_test_cpu(cpu, ht->cpumask))
->+		return 0;
->+
-> 	if (tsk)
-> 		return 0;
-> 
->@@ -225,6 +228,9 @@ static void smpboot_unpark_thread(struct smp_hotplug_thread *ht, unsigned int cp
-> {
-> 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
-> 
->+	if (!cpumask_test_cpu(cpu, ht->cpumask))
->+		return;
->+
-> 	if (!ht->selfparking)
-> 		kthread_unpark(tsk);
-> }
->@@ -244,6 +250,9 @@ static void smpboot_park_thread(struct smp_hotplug_thread *ht, unsigned int cpu)
-> {
-> 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
-> 
->+	if (!cpumask_test_cpu(cpu, ht->cpumask))
->+		return;
->+
-> 	if (tsk && !ht->selfparking)
-> 		kthread_park(tsk);
-> }
->@@ -267,6 +276,9 @@ static void smpboot_destroy_threads(struct smp_hotplug_thread *ht)
-> 	for_each_possible_cpu(cpu) {
-> 		struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
-> 
->+		if (!cpumask_test_cpu(cpu, ht->cpumask))
->+			continue;
->+
-> 		if (tsk) {
-> 			kthread_stop_put(tsk);
-> 			*per_cpu_ptr(ht->store, cpu) = NULL;
->@@ -279,28 +291,41 @@ static void smpboot_destroy_threads(struct smp_hotplug_thread *ht)
->  * 					    to hotplug
->  * @plug_thread:	Hotplug thread descriptor
->  *
->- * Creates and starts the threads on all online cpus.
->+ * Creates and starts the threads on online CPUs selected by the descriptor's
->+ * cpumask, or all online CPUs if no mask is specified.
->+ *
->+ * Return: 0 on success, -EBUSY if a registered descriptor shares the same task
->+ * storage and has an overlapping CPU mask, or a thread creation error.
->  */
-> int smpboot_register_percpu_thread(struct smp_hotplug_thread
-> *plug_thread)
-> {
->+	struct smp_hotplug_thread *ht;
-> 	unsigned int cpu;
->-	int ret = 0;
->+	int ret;
->+
->+	if (!plug_thread->cpumask)
->+		plug_thread->cpumask = cpu_possible_mask;
->+
->+	guard(cpus_read_lock)();
->+	guard(mutex)(&smpboot_threads_lock);
->+
->+	list_for_each_entry(ht, &hotplug_threads, list) {
->+		if (ht->store != plug_thread->store)
->+			continue;
->+		if (WARN_ON_ONCE(cpumask_intersects(ht->cpumask, plug_thread->cpumask)))
->+			return -EBUSY;
->+	}
-> 
->-	cpus_read_lock();
->-	mutex_lock(&smpboot_threads_lock);
-> 	for_each_online_cpu(cpu) {
-> 		ret = __smpboot_create_thread(plug_thread, cpu);
-> 		if (ret) {
-> 			smpboot_destroy_threads(plug_thread);
->-			goto out;
->+			return ret;
-> 		}
-> 		smpboot_unpark_thread(plug_thread, cpu);
-> 	}
-> 	list_add(&plug_thread->list, &hotplug_threads);
->-out:
->-	mutex_unlock(&smpboot_threads_lock);
->-	cpus_read_unlock();
->-	return ret;
->+	return 0;
-> }
-> EXPORT_SYMBOL_GPL(smpboot_register_percpu_thread);
-> 
->@@ -308,7 +333,7 @@ EXPORT_SYMBOL_GPL(smpboot_register_percpu_thread);
->  * smpboot_unregister_percpu_thread - Unregister a per_cpu thread related to hotplug
->  * @plug_thread:	Hotplug thread descriptor
->  *
->- * Stops all threads on all possible cpus.
->+ * Stops all threads associated with the descriptor, including offline CPUs.
->  */
-> void smpboot_unregister_percpu_thread(struct smp_hotplug_thread
-> *plug_thread)
-> {
->
-
-
---- Thanks!
+Regards,
+Chewi
 
 _______________________________________________
 Linux-rockchip mailing list
