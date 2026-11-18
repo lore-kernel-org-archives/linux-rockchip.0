@@ -2,96 +2,95 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 404CB606A32A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 10:34:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 32EA4606A330
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 10:34:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RSmTnfNK;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=BrRsi15Q;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=GoM4Ov4Z
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ErSgwtjX;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=SsUiiGMG;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=WQwCcV8p
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=MaoMo00I8tLzhDiqcsfvfUN/UJbEy1+SgS/paJFW/HA=; b=RSmTnfNKWcUcKlZt8H4om65Eii
-	kO2PBgLE2idyQyKe4ZFa1Vbyw2iDmkPLn+2ztLHvVIQe8qNRfkxdmEfLsLux2T+oIOF+wSnu/g1Q0
-	YHAgLzbv8qIMJ2HwYOwTkeFw5cecnsFtCAWAnQPCVB1+3OvnD4eq8lUAtRo8oomuqRZwkJgKTZ/tm
-	Icbr+9HTMKOr4zpQqxik+/cu+wufdutfsM+Sc5tlTmTs4f4XmRI9b1QFxs/5wLNl9raizP0vL0gzl
-	P7uRT/j3uhW3LyxOvAMcx2CVEKlbO1uioRRy69+UE/pzMQLw9WR7XFt2bye5v1IIimWbXzupBdrR+
-	C2wnDv6A==;
+	bh=x31PPm9EtolFalHAi7lRzKXEVUBkUCjYLuVHWwNxrek=; b=ErSgwtjXgQYtdOtqjUtCgsCLpL
+	aW5QpUVLZzm8FTf37TAVXhtAlaWC1YFx/bF382g413NBuOAJNFYJ9neYKehzq2a9c2Crit5jficB4
+	jCJtFdL/Gp4ntz7S2s9+Rc0Kpo5V3xcx4h0Pzhc0OWTAQpQp717J1vsE4E7juiMz5VM7qsRLcCZFQ
+	xv4SdqhqIRj/rzag3XvePIW6EWGSpbpDZmvttwTPHiIPYjnQgu7kGFaMOWVMVLHcXSYJ25BRVg/bs
+	YcbfJEt2jsx9cS9ZFcBE0/9buPdnY0uJg9nd5MLE1+R4+Pawvpc2j5XG3eKyGaWJBIlLRJWX03fGu
+	fBGisjVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTczZ-00000008ZGW-48Ld;
-	Wed, 18 Nov 2026 10:34:18 +0000
+	id 1xTczZ-00000008ZGF-38K8;
+	Wed, 18 Nov 2026 10:34:17 +0000
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTczX-00000008ZDx-0L3k
+	id 1xTczW-00000008ZDS-1biP
 	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Nov 2026 10:34:17 +0000
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6AI9lfhd835353
-	for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 10:34:14 GMT
+	Wed, 18 Nov 2026 10:34:16 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6AI9kLIE1436976
+	for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 10:34:12 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=JM0P9MP8V3Z
-	9pRfWYuZq7GLzbhT+pDJLjfew9vz2LnA=; b=BrRsi15Qn6gRPGJ00LtpID9bdaB
-	MVKAcwjaZE+xrOeDgjutOTF8imQFK6o3AuN/9R44zMt7BKGIHdm+rV+8kNncLumY
-	OI6Wj7AvToP2pjoFnZlvJ/g7UuknaDZWqtwOhiXNpWSYa8U/ePcI62HDeXS6Y0Eh
-	N//xJ55tmW2Ic78N3HSO4guCnydth2j2ftHxZYl7wXD/63FJFgWpUtFnGC55/Yug
-	jv95vOmZ+qwTk5xP3bLuU+ocUm7giG2VTx7Oi2oTxhObjSApzSRI2Nr31mileXrT
-	lz+ETUEiLFAH6xTf7lWZVg6r+KWtBYO028zvE7/IADOv7dTbrDnrU87ItyA==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j0yvcjkdr-1
+	cc:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=qcppdkim1; bh=iTvIF9xRP0uN+SwNc6JxvB4VOROFp75+Uu1
+	hHT20jpo=; b=SsUiiGMGFDjlwS1UaGh9zeibIhBketuh9WeA49mEAL/ADORES8Y
+	iUbrjH1tJGc3PL2ha38JwViu7+QmcF0G4Recl2WhEJV5hc6D/NV9kTmayG5a0T2/
+	silql2KTqHKgTfd0IWSMWqNr8hZUDk/fcG381Qf8VVQ+Rt8S5BS40qzEGJ6t47vF
+	ZnBnUK/5ubwdzebofwo9ndz4R1GtIxp1Q3NEl9EbK9fzc+iTnE6WGgzQRjN4sQ3y
+	uMcJo+WcNQaS3QUCxzx8W0Ln5vpeYkWHf7x3rVVWoh+kzrfVWYRcho4md75VWERd
+	9KV7rEp3FuGLUS6XOrx8KajCHFpWECHXF3w==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j0yv8ahrn-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 10:34:13 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-945b0154705so122645985a.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 02:34:13 -0800 (PST)
+	for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 10:34:12 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-9495af07676so145081185a.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 02:34:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1794998053; x=1795602853; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=JM0P9MP8V3Z9pRfWYuZq7GLzbhT+pDJLjfew9vz2LnA=;
-        b=GoM4Ov4Zj/KkxIV527u4HfWOkTmXWJNOCaRERbI2H8viHS8OkokHZh2RYzmJvFFoG+
-         blH7Xb8q4JTvXRtHD63DSYc5ysueRrrxqyyteyGcMegg4DuPH6EOcAiRGv/oCC3H19f0
-         KVi5qVfUNmEVWrJZkDC832RlcUmn+U1n3HlwPjUR3J3QspvVpshbblQqKwGEZk43P/4u
-         vuoLRne3VeKgj/bOiBn6rhxHOStW3dgb/ZLmKLplpFryJh/4OBsyqMt/qyxQt6yqOYn2
-         CaGU8wB2ix89iqdGBPYCdmSAWKf2tlkaVr55VdbOXd6s1b0bTvh90xOqdtia6m+7I2vU
-         1f4g==
+        d=oss.qualcomm.com; s=google; t=1794998052; x=1795602852; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=iTvIF9xRP0uN+SwNc6JxvB4VOROFp75+Uu1hHT20jpo=;
+        b=WQwCcV8p0tpAdrPnOccqoa56ezbIV4+JlFdT2hYf8Tbv6it1n5y2OnHufOa/GQHi7g
+         nRhmbFGaXIhUX0Pc9KP33WcUztY0ejVXmcSQWwTnAdB87A8KMG14FsuD6Lv5ykKnCXna
+         HQdK9kM4nIlv8VmTKAgh1VibFhwV7miWnr6s2UKASMF3rMNZU+TWGNwDDcQZuSi9hIQL
+         Ov6im1TYz47VdEHe/A1RYWh5lh8O1bu5y+va0a7zxfudJu2rfGMHTB9oAyWL/3ENIiFd
+         6nQNuxDiQSxu4AIiZRZdg3ZYaseH94g8xcInG1AQ6Oa3kFAXeGnDra/zpuTUWgfHYosA
+         RnBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794998053; x=1795602853;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=JM0P9MP8V3Z9pRfWYuZq7GLzbhT+pDJLjfew9vz2LnA=;
-        b=B04gBynPb9J69l6/H+2yAAkpFUP4w27ZkOd0isKJzW/LuPDvzeFMVx6hwtobbj1U8x
-         9lhu5Wbje2XQbXKK93Yy5eaIkANF6acrtegDHTP/uLb91re1z+JdxOXW+ZxaLtJNel9T
-         EHJDX0t/GJDDv2oDGqsxwBvTKmXJSXgPz+ZOukUKHL70lLpJ3Z1/d3yR5E8H2PEHZZ48
-         wEYwCalHJnx4F+sNQ8i9Gb0PyEE6T8/4+vleEW2LkAnU3yvlxRsQ8bTzfSI3Ujs6sIgl
-         V3IbtjMMn1iJB+YQIWBj4C3vKjFk+ORlhglw9CW1qYe+RFEKDrvdyGdU6jZr3GiJ0XFE
-         L9wQ==
-X-Forwarded-Encrypted: i=1; AL+hErHvn4O6NHN5XiCZghuMvYBQU185Mk+WYfSz/hp1Fo6LUT7amBpxkQJT2iqJd881JJIoOTZoe9DuO0WATZ2GHA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+IrS9B65ayHYc/tifqUn2oLsBjYauqfbtDG8NHSzdl1iR383Dw
-	tA+q/THYhESreA/n5F7HiRfondFkKi2nM4DKbv4JNqcsBX3BTX4JEmjZhepz2+WVSrf/GDdpj0y
-	CbFdztacdHUnIYAA1G1rsbKTP9fciN8XPwANkewm63MQpTiFi6vKlinwPoJCgog5geJytaXjolK
-	8=
-X-Gm-Gg: AYBFou3J1KQOhD/ChAMf5sS+M/hOrM9hngtG13P7QHWz5Ld5/N/VMGBhyQH+oyIIUqN
-	aHoGpbwjAqIh38f93JgohrWkB9hDqKQUWVB6KewvcXhrNKRM0YySUWNJF3S7DMBMRFF/55y9qEd
-	TFdCuntE+c75UbOSCFDu+PZOp7Os2mBGXKMkmUgMu2/stFvNZbOy9uFIEHM71I5qlxoSIO8VFIp
-	h48FEyXZDvD1m6+nAIsgpDwcwCGa3zYHcRpgDMJenkiUUYj+ou5UZjPZFvc+nRg6Pa6YbFfnQJX
-	mpz37BxWrJwf33PJMbHbWloI69HzLi4lO7rwbFsY6NtwFTBSHY8tqGow2/p7NuX4XQF4+rhel5r
-	X2gGwwD8/guV4VkmGHs2lpDdTpRZQBx4JGLG8iWCU4pNZatMC9nHXcMhc3OfjACf+5KQ111j6dZ
-	4S
-X-Received: by 2002:a05:620a:44c2:b0:949:6841:60d4 with SMTP id af79cd13be357-9499957e934mr403492085a.24.1794998053336;
-        Wed, 18 Nov 2026 02:34:13 -0800 (PST)
-X-Received: by 2002:a05:620a:44c2:b0:949:6841:60d4 with SMTP id af79cd13be357-9499957e934mr403489085a.24.1794998052798;
-        Wed, 18 Nov 2026 02:34:12 -0800 (PST)
+        d=1e100.net; s=20260707; t=1794998052; x=1795602852;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=iTvIF9xRP0uN+SwNc6JxvB4VOROFp75+Uu1hHT20jpo=;
+        b=Hq58VUfboAvTqYsjhUuihg8u14rw9UExIVTceBLJPMdFU8LkuXYiyCDU0wVz5Irh8J
+         DjhFXsAXsCAZasn4cwhd/N2ysInusl5DM+cX67EUTi35v6Fl8WH6op/U4bCY6G/mRxp8
+         g+hyefNEe16baxlAEhdZ9iwNVu7uuPKZN3Daw9IxoQTlb9mMzEz1aeSE8hUVG7RRADqx
+         spMBzNrKgeOWxQBBtEhQzdJiDF2O8zneFpXwzCVJccQr7ypljSWp2sgnHydfsmZiTQFL
+         Lk7p+RV9PD64ip8JEN5cgxv83hvSxD03qvO+PhS2fpvdhUjHdaKxzSLsYyODSUNtj6B1
+         0p4w==
+X-Forwarded-Encrypted: i=1; AL+hErGIJ7rpPglrZj+kC8N2/FyM1eb7h4b9cPI1d+jI7I1dxMkRpVHslkx3SQQKbGsv8OqsDHqC9N+pg/gFxydJCw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z93ynNSqZjefVJojUqo9myd8HnGYMbPKQMXPMnR/MD1xw4XNv2R
+	HCrC6iM0uZgUPMXVABZxMp/OZk9t3e4DwZFdt4gYDbySC+OP52p7zaz3iygsNci1w5HLzlkZLAS
+	63io0rOIRq2GxHzi7IQRsrAFBEUvr9JpxW1YfKnXRL7lc6WtSOrxT0RKWDjFQ01g0zoktZnQ2Nl
+	k=
+X-Gm-Gg: AYBFou22KOBJLlSI2GSQw2ZW5yWxJyvsyKw24KZlmc4NUmk4403F9pXQ7/hSP5Ib+HN
+	E1c/l/brpwRjwD5/Cx1wOe3JdKXwVtvyki7rLxox5Ojze6Zwf+2m8Ukc2QXTTUpaCa4SJKAzxvy
+	StSKhu+UQDO1gn5CdiuSvsl6H7tMs7zQlFwKeBYfSV4veb+TdOyeIw5NXwslFFZnsXHo72AQs7F
+	cb9N+tdghlOE49wutmZ2FB6i1y6gzS6GJhkznhduoXGQ6x+rY+JBtL5LOz+0vuw2CPrM1xyM4mJ
+	FkUh3eGsjz/wVBiAS/JKxd55k+HbWbH9IGr8M4yaSd8jHkbydsrVnh+2TadKxO4DBWRL9xOA0ud
+	gxjLPNIKZ294OoZbMOvLVF70YdYUfy3F5Qy+wB60bst8cYokJiiZc/aBh3Mw+QZyoGermpM5twC
+	UN
+X-Received: by 2002:a05:620a:3710:b0:949:6ece:8aff with SMTP id af79cd13be357-94999769dfbmr380050585a.55.1794998051844;
+        Wed, 18 Nov 2026 02:34:11 -0800 (PST)
+X-Received: by 2002:a05:620a:3710:b0:949:6ece:8aff with SMTP id af79cd13be357-94999769dfbmr380046785a.55.1794998051378;
+        Wed, 18 Nov 2026 02:34:11 -0800 (PST)
 Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:d355:fe70:14a0:ac8d])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4a650d2ecd0sm4519631f8f.8.2026.11.18.02.34.11
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4a650d2ecd0sm4519631f8f.8.2026.11.18.02.34.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Nov 2026 02:34:12 -0800 (PST)
+        Wed, 18 Nov 2026 02:34:10 -0800 (PST)
 From: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
 To: rafael@kernel.org, tglx@linutronix.de
 Cc: Andrew Morton <akpm@linux-foundation.org>,
@@ -99,46 +98,43 @@ Cc: Andrew Morton <akpm@linux-foundation.org>,
         Bradley Morgan <brads@mainlining.org>,
         Heiko Stuebner <heiko@sntech.de>,
         linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-        linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
-        Thomas Gleixner <tglx@kernel.org>,
-        linux-kernel@vger.kernel.org (open list:CPU HOTPLUG)
-Subject: [PATCH v2 1/2] smpboot: Allow restricting per-CPU threads to a CPU mask
-Date: Wed, 18 Nov 2026 11:33:48 +0100
-Message-ID: <7a1e55d24c39d70caa157e6e2c823d9be5db07e7.1794992905.git.daniel.lezcano@oss.qualcomm.com>
+        linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
+Subject: [PATCH v2 0/2] powercap: idle_inject: Create threads on demand
+Date: Wed, 18 Nov 2026 11:33:47 +0100
+Message-ID: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com>
-References: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Authority-Analysis: v=2.4 cv=R5OWitRX c=1 sm=1 tr=0 ts=6afd7f26 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=xqWC_Br6kY4A:10 a=zJRp6_cAMcgA:10
+X-Proofpoint-ORIG-GUID: AOXHeXp9KJpv37RZf-xdHrm8I5PWiB1o
+X-Authority-Analysis: v=2.4 cv=N9u8hG9B c=1 sm=1 tr=0 ts=6afd7f24 cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=xqWC_Br6kY4A:10 a=zJRp6_cAMcgA:10
  a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=3WHJM1ZQz_JShphwDgj5:22 a=EUspDBNiAAAA:8 a=5Kbu-F-uTTPTLeMpapkA:9
- a=NFOGd7dJGGMPyQGDc5-O:22
-X-Proofpoint-GUID: RxW_0ZsjFqegwQNmhbpv6GKxHo4PV5AN
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTE4MDA0MSBTYWx0ZWRfX+Q70UbudWpDC
- et372AcDWUvuENzZoyesUhay2AW4IAn0BA43RwUWu0JQV2diHjiTctco+JLlRiFp9ieeC+6QrsD
- PYBz2upAddBSjFosYMaC/jQbc3ZiDY8=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTE4MDA0MSBTYWx0ZWRfX1GwCHzZ05Q4e
- PBnDaBAT6Sd40cd1szFjpZUudobv4OXQ38TkwZ7zy0wtQLjelGqnN0oji4halIHhXuvs9SECNnH
- 8T9wMOF/JBaQmTrWQLp52vap0y4ksOHgscyHpP+LVXyCoFJrfOfs/IlEuzyrkSa+rIQiTTMhkfL
- Y2xo0lXnmT7IZBHUSg+GWk7ruFNdB4+rDSgYd93WyIS2617bSVcTbOsboSj3GaZZtmS77wKMTIY
- nDvnvvl9VewgIfMQdQ7w1/yX0SEVbCNpASCsu+Zi8U2Hg7K0duk2+Ywli7Lv914hv+6OzHyaq/i
- cpDupbXkAtyz2qN2f1Y2kL38XdZEnGCqvAGaDUiWccS/JvnUcBT2+TfCN2AjU4890A4EpJcF4Nj
- cJS3niQOWKK0C6NaoydIv45RpEAtTSm8ULFch92YC8itWVXcxGQLQBDPNo81Wexpaqaw3lqWq5e
- D8+LRtTzmwD47dcDqXg==
-X-Proofpoint-ORIG-GUID: RxW_0ZsjFqegwQNmhbpv6GKxHo4PV5AN
+ a=rJkE3RaqiGZ5pbrm-msn:22 a=Z4Rwk6OoAAAA:8 a=VwQbUJbxAAAA:8 a=OuZLqq7tAAAA:8
+ a=x1L0ys6JoTQEvF2T-JwA:9 a=bTQJ7kPSJx9SKPbeHEYW:22 a=HkZW87K1Qel5hWWM3VKY:22
+ a=AKGiAy9iJ-JzxKVHQNES:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTE4MDA0MSBTYWx0ZWRfX9CQd0Yk5YH7L
+ iOmpBOrSgb0w79L8GWqpjS4LR5FQLrAW6HzY4/0Kz2PvJZQqN55DUgV+FFz5HELiis/bzfjIYaI
+ GfX+9q2IbtYBECueCWj8rYp40TW6O4tddK8A8NdIPhaH+GN0SY89z4sFMKkwoy7lDl2bIC+ANhj
+ 0f2QKDBf0SqVUwIrmqciC470Ix6/4v1FyRqFDyScdSnEY2y/DCdOU2Bdl3MlaBvsmz0rsZrA0Qk
+ kGUmAzw3foZM30d+yc+2I3pNjPTj/ZdOFUBHz8WKqEBNbtDJ7SIVFa7CXt1tALcfi2oV+yhnVVN
+ FfypIv6KieFHNbXSXKf3WRTcHZmm/Y8ybOAW3HeCL+YSVhmEcQiyXP81/S1YfbsX7uPSido2jcp
+ 0l3f1W81DoEqqfTp2rrE3+laKv9ZYXtijQXVaPu0tsI4X74nBODymhyyZAXEoJj4FRZ7vNoTye2
+ aeG+i+PaQ8ZEompQJgg==
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTE4MDA0MSBTYWx0ZWRfX63vHBdIb/YlD
+ Ywbwi4qEr6Y91tscZmeVPdL/SXp1UCyFJyoiAt4CK3R69OdlNMX5BfCx9nkzFzPLDiY8a+jQlmG
+ SzkXwpC/Z7m7evzGz+UYhzqCjG6VsmM=
+X-Proofpoint-GUID: AOXHeXp9KJpv37RZf-xdHrm8I5PWiB1o
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-18_02,2026-11-16_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 impostorscore=0 spamscore=0 lowpriorityscore=0 suspectscore=0
- malwarescore=0 priorityscore=1501 bulkscore=0 adultscore=0 phishscore=0
+ adultscore=0 phishscore=0 suspectscore=0 clxscore=1015 impostorscore=0
+ priorityscore=1501 malwarescore=0 lowpriorityscore=0 bulkscore=0 spamscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611180041
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_023415_243416_0FEF582E 
-X-CRM114-Status: GOOD (  24.04  )
+X-CRM114-CacheID: sfid-20261118_023414_544270_B017178E 
+X-CRM114-Status: GOOD (  14.75  )
 X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -152,195 +148,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-smpboot_register_percpu_thread() creates a thread for every online CPU
-and registers the descriptor for subsequent CPU hotplug operations.
-There is currently no way to restrict these threads to a subset of
-CPUs, even when the user only needs work performed on that subset.
+Idle injection currently registers per-CPU kernel threads during early
+initialization, including on CPUs for which no idle injection device
+will be registered.
 
-For example, an idle injection device targets a specific CPU mask.
-Creating threads outside that mask consumes resources unnecessarily.
-Supporting multiple such devices also requires each descriptor to
-manage only the threads associated with its own CPUs.
+This series makes thread creation follow the lifetime and CPU mask of
+each idle injection device.
 
-Add an optional CPU mask to struct smp_hotplug_thread and apply it
-throughout the thread lifecycle. Registration creates threads only for
-online CPUs in the mask. CPU bring-up creates threads for selected
-CPUs that were offline at registration, while parking and unparking
-are restricted to the same mask.
+The first patch adds an optional CPU mask to smpboot thread descriptors.
+The mask restricts thread creation, CPU hotplug handling and teardown,
+while preserving the existing behavior for descriptors without a mask.
+Registrations sharing task storage are checked for overlapping CPU
+masks under smpboot_threads_lock before any threads are created.
 
-Apply the restriction to thread destruction as well, both during
-unregistration and registration failure cleanup. This is necessary
-when descriptors with disjoint masks share the same per-CPU task
-storage: tearing down one descriptor must not stop or clear threads
-owned by another descriptor.
+The second patch uses this support to register idle injection threads
+when a device registers and destroy them when it unregisters. CPU
+ownership claims, registration rollback and thread teardown are
+serialized to prevent overlapping registrations from sharing threads.
 
-Reject registrations that share task storage with an existing
-descriptor and have overlapping CPU masks. Check for overlaps under
-smpboot_threads_lock before creating any threads, warn once and return
--EBUSY on a conflict. Checking the masks also covers offline CPUs,
-whose task pointers may not yet be populated. This prevents descriptors
-from sharing a thread and interfering with each other's teardown.
+The series was tested on Rockchip RK3588. The updated smpboot code and
+idle injection code also build with W=1. Concurrent registration and
+CPU hotplug runtime testing remains outstanding.
 
-Default a NULL mask to cpu_possible_mask at registration, preserving
-the existing all-CPU behavior and allowing the lifecycle helpers to
-use the mask unconditionally. Use scoped guards for the registration
-locks so all error returns release them in the correct order.
+Changes in v2:
+- Reject overlapping smpboot registrations sharing per-CPU task storage
+  with WARN_ON_ONCE() and -EBUSY, as suggested by Thomas Gleixner.
+- Default a NULL CPU mask to cpu_possible_mask at registration and
+  remove redundant NULL-mask checks from the lifecycle helpers.
+- Use scoped guards for the smpboot registration locks.
+- Document the overlap restriction and registration return values, and
+  update the core commit explanation.
+- Add Bradley Morgan's Reviewed-by tag to the idle injection patch.
 
-The caller must keep the mask valid and unchanged until the descriptor
-is unregistered. smpboot serializes the overlap check and descriptor
-registration against other registration and unregistration operations.
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Rafael J. Wysocki <rafael@kernel.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: Bradley Morgan <brads@mainlining.org>
 
-Signed-off-by: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
----
- include/linux/smpboot.h |  6 ++++++
- kernel/smpboot.c        | 45 ++++++++++++++++++++++++++++++++---------
- 2 files changed, 41 insertions(+), 10 deletions(-)
+Daniel Lezcano (2):
+  smpboot: Allow restricting per-CPU threads to a CPU mask
+  powercap: idle_inject: Create per-CPU threads on registration
 
-diff --git a/include/linux/smpboot.h b/include/linux/smpboot.h
-index 9d1bc65d226c..57b945d51b19 100644
---- a/include/linux/smpboot.h
-+++ b/include/linux/smpboot.h
-@@ -5,6 +5,7 @@
- #include <linux/types.h>
- 
- struct task_struct;
-+struct cpumask;
- /* Cookie handed to the thread_fn*/
- struct smpboot_thread_data;
- 
-@@ -27,6 +28,10 @@ struct smpboot_thread_data;
-  *			unparked (cpu online)
-  * @selfparking:	Thread is not parked by the park function.
-  * @thread_comm:	The base name of the thread
-+ * @cpumask:		Optional mask of CPUs on which to create threads. Must remain
-+ *			valid and unchanged until the descriptor is unregistered.
-+ *			Registration defaults NULL to cpu_possible_mask. Descriptors
-+ *			sharing @store must have disjoint masks.
-  */
- struct smp_hotplug_thread {
- 	struct task_struct		* __percpu *store;
-@@ -40,6 +45,7 @@ struct smp_hotplug_thread {
- 	void				(*unpark)(unsigned int cpu);
- 	bool				selfparking;
- 	const char			*thread_comm;
-+	const struct cpumask		*cpumask;
- };
- 
- int smpboot_register_percpu_thread(struct smp_hotplug_thread *plug_thread);
-diff --git a/kernel/smpboot.c b/kernel/smpboot.c
-index 4503b60ce9bd..f997fe85f088 100644
---- a/kernel/smpboot.c
-+++ b/kernel/smpboot.c
-@@ -168,6 +168,9 @@ __smpboot_create_thread(struct smp_hotplug_thread *ht, unsigned int cpu)
- 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
- 	struct smpboot_thread_data *td;
- 
-+	if (!cpumask_test_cpu(cpu, ht->cpumask))
-+		return 0;
-+
- 	if (tsk)
- 		return 0;
- 
-@@ -225,6 +228,9 @@ static void smpboot_unpark_thread(struct smp_hotplug_thread *ht, unsigned int cp
- {
- 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
- 
-+	if (!cpumask_test_cpu(cpu, ht->cpumask))
-+		return;
-+
- 	if (!ht->selfparking)
- 		kthread_unpark(tsk);
- }
-@@ -244,6 +250,9 @@ static void smpboot_park_thread(struct smp_hotplug_thread *ht, unsigned int cpu)
- {
- 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
- 
-+	if (!cpumask_test_cpu(cpu, ht->cpumask))
-+		return;
-+
- 	if (tsk && !ht->selfparking)
- 		kthread_park(tsk);
- }
-@@ -267,6 +276,9 @@ static void smpboot_destroy_threads(struct smp_hotplug_thread *ht)
- 	for_each_possible_cpu(cpu) {
- 		struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
- 
-+		if (!cpumask_test_cpu(cpu, ht->cpumask))
-+			continue;
-+
- 		if (tsk) {
- 			kthread_stop_put(tsk);
- 			*per_cpu_ptr(ht->store, cpu) = NULL;
-@@ -279,28 +291,41 @@ static void smpboot_destroy_threads(struct smp_hotplug_thread *ht)
-  * 					    to hotplug
-  * @plug_thread:	Hotplug thread descriptor
-  *
-- * Creates and starts the threads on all online cpus.
-+ * Creates and starts the threads on online CPUs selected by the descriptor's
-+ * cpumask, or all online CPUs if no mask is specified.
-+ *
-+ * Return: 0 on success, -EBUSY if a registered descriptor shares the same task
-+ * storage and has an overlapping CPU mask, or a thread creation error.
-  */
- int smpboot_register_percpu_thread(struct smp_hotplug_thread *plug_thread)
- {
-+	struct smp_hotplug_thread *ht;
- 	unsigned int cpu;
--	int ret = 0;
-+	int ret;
-+
-+	if (!plug_thread->cpumask)
-+		plug_thread->cpumask = cpu_possible_mask;
-+
-+	guard(cpus_read_lock)();
-+	guard(mutex)(&smpboot_threads_lock);
-+
-+	list_for_each_entry(ht, &hotplug_threads, list) {
-+		if (ht->store != plug_thread->store)
-+			continue;
-+		if (WARN_ON_ONCE(cpumask_intersects(ht->cpumask, plug_thread->cpumask)))
-+			return -EBUSY;
-+	}
- 
--	cpus_read_lock();
--	mutex_lock(&smpboot_threads_lock);
- 	for_each_online_cpu(cpu) {
- 		ret = __smpboot_create_thread(plug_thread, cpu);
- 		if (ret) {
- 			smpboot_destroy_threads(plug_thread);
--			goto out;
-+			return ret;
- 		}
- 		smpboot_unpark_thread(plug_thread, cpu);
- 	}
- 	list_add(&plug_thread->list, &hotplug_threads);
--out:
--	mutex_unlock(&smpboot_threads_lock);
--	cpus_read_unlock();
--	return ret;
-+	return 0;
- }
- EXPORT_SYMBOL_GPL(smpboot_register_percpu_thread);
- 
-@@ -308,7 +333,7 @@ EXPORT_SYMBOL_GPL(smpboot_register_percpu_thread);
-  * smpboot_unregister_percpu_thread - Unregister a per_cpu thread related to hotplug
-  * @plug_thread:	Hotplug thread descriptor
-  *
-- * Stops all threads on all possible cpus.
-+ * Stops all threads associated with the descriptor, including offline CPUs.
-  */
- void smpboot_unregister_percpu_thread(struct smp_hotplug_thread *plug_thread)
- {
+ drivers/powercap/idle_inject.c | 69 +++++++++++++++++++++-------------
+ include/linux/smpboot.h        |  6 +++
+ kernel/smpboot.c               | 45 +++++++++++++++++-----
+ 3 files changed, 83 insertions(+), 37 deletions(-)
+
+
+base-commit: c03c1a14507dfaf8b856c2608f9ac216021fc222
 -- 
 2.43.0
-
 
 _______________________________________________
 Linux-rockchip mailing list
