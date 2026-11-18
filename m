@@ -2,107 +2,103 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 920A0606A31C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 14:06:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0B79A60A262D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 14:16:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VMF5yKiX;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=a7OWiBHH
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ql8O5T/V;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=tomeuvizoso-net.20260707.gappssmtp.com header.i=@tomeuvizoso-net.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=CoU+ooOG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=8uOatzdYUvNBX/0Zrec8IbDDvCCknNq4uZ2UuU4nLBQ=; b=VMF5yKiXCD3XMqhQx3Lfx3/a4Y
-	PAucAixbqDUpnvTcG9vcP3x/qS0mv20sWPU8Tszi/e3RV/7OTTlmF86VRZU8JdSgWfrL28covCMaC
-	NwyPDGZWDvJYGTXOmU42uQ4pkd+uLQrfSfWmmfGxOXyu8+CdKQ4Wyv2FtC45JShfsd86WvKpAd4Zb
-	vE99OiT3HPRB5sogOq7eVSY9hflPmjFwuRU+E+uZBXBmXiWBre2fZv8Hedf9SevWj0/MEm+U9/onu
-	HFJ428uoaKO2KhTYvxYZzKG7aaZ69CeTxGrSM1wAGLn1DJLQsqllwxuwxffX7GqaLH+MZNta8I1LQ
-	ozwaDQmw==;
+	bh=c2L79y4EW/jjILno/rSYYBST5gMh7GbUIN9ZLFGyMQw=; b=ql8O5T/VbHOwTvH7jFFwCBKwh2
+	/EBKUtlhQg84YU73T/Mzl+MTKZMki/2fzdVIBTTU5ZSiUogwkxD0g+wIQP7O80l26cqWNbczvoRF0
+	81WnPWluoMJj8Uc4MJOalZ/2CWPjElEkFzIhTxyF05+dMjYer8PQzh9K+wSV7+R6U7Fecb23jnwN3
+	oFE/9HFKFPhs3MhTKA6yLBROIe5GXzSEb/JphIB1A3LzWy3sJ3Se94/Ei1uUIJMYtKWArazUpodli
+	Qq/9Gj45rIsmPD+JfCFSHveggFB70O+IdM/25JwuazEVJH0d7gYeY2Za0y3M/6CQqO6trreDFKPkV
+	pBrofQYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTgJF-0000000938p-3Vub;
-	Wed, 18 Nov 2026 14:06:49 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1xTgSd-000000094n9-1Q8L;
+	Wed, 18 Nov 2026 14:16:31 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTgJC-0000000936X-0iyv
+	id 1xTgSZ-000000094mV-3eO3
 	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Nov 2026 14:06:48 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4bb68c197c7so14096855e9.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 06:06:45 -0800 (PST)
+	Wed, 18 Nov 2026 14:16:29 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4a2153c8525so7803045e9.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 06:16:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1795010804; x=1795615604; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+        d=tomeuvizoso-net.20260707.gappssmtp.com; s=20260707; t=1795011385; x=1795616185; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=O8kUxWwNMGGKdJF+2JBGIvhWCx8VFS9Gq0fs2XPEP3c=;
-        b=a7OWiBHHeBpBKtUK3YqsZwYROT3IvgmEwhlPetuS3hbUlbRr10imUpHdv6Dpp+R+wT
-         KisRdOfJX0VF6DabLD35EFA7Dui7hBEV6T74DFHVSHKTnC6bNPb3AqpLJL6WxQUzy9eW
-         o46uMoRW/+HvWciMAq3Mel5tp/M52RDky/6heoKBFRcfJqg2/nYFG2NDy+4XndV4ye9a
-         QWm7RfulzKFt1uWqtft6CanEwUoMrKppKO1/y1pVW73bPzoHJh/i3GJ3c+cpJxyZpCwE
-         bFErBKRMhS1T/x0cnLX3y2jGeKTryHHkifoYXmPkVSqhfIIhbnnxtx3mUHBjxhMPlGM8
-         xpmw==
+        bh=PKEsbvmI/h2yNfkKYeLdhdyKF8D1G+AbgQ3dQC6oEvo=;
+        b=CoU+ooOGTOPjLPhWdNHLWQUD22JksxzOpRSWS7pwthGWIlTyDjFqC17R3Z2/iTc+C0
+         do9Oi21wo5FtNGbxp6AUx9Lh06yIckrN7yeBQimtuux0eKk1phgh3hjayKGBx4f9p529
+         OVmd+ciNDU+bWfs3P2dIyIzXq0EYyaCa7QpB514iHPWEBRhsw4rPrG9sS4x9bqAcn1U/
+         mE9oKYw0a+UtKvZY0jNuOkuiP+s6YAotZfqz/4Q9uKuHq5VCbGLEETosiGnp4CVWDlsw
+         +uPXSMhNkTBLBKS2XJSpBaaS0WXRmsvQLJPbVGC7yY60OwDye+bWHnSY76s8U2PhnMt4
+         RObQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795010804; x=1795615604;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
+        d=1e100.net; s=20260707; t=1795011385; x=1795616185;
+        h=content-transfer-encoding:content-type:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=O8kUxWwNMGGKdJF+2JBGIvhWCx8VFS9Gq0fs2XPEP3c=;
-        b=XXMuL81YoeoDs2+X7juKpWmOcCC33Uf06qkkCjPdUA1QxH8oWXz0ejdTt8oi9aW2/G
-         2zYz+QAepLGjD2S/GNchU7bZJvuM8gx8U5v8d7S0pZyH8ulPah1fYtEwMIKzScu4TfUb
-         3yfzRNCJ88X5HMncnkIGY8l4epRe7tvPcXKSCmHQFu6YwAr8ATL4M9KWN5Szm1UpPcdt
-         kl/Dxr6xCEZhe0nXYmoSqHbVoHxfs8AbBF4ZPC3oQd5k0MtHPjKPn9tWsRDuFuqFS/Kh
-         Gc9msJ5iforShKY75eASIan2S5qaOpIA0FO6nMeVcVdIwAc4E/DAM/WVF//VxvxsvoDi
-         48Vg==
-X-Forwarded-Encrypted: i=1; AL+hErFXw4kBw0iL6SuQWUIfF4l/4lvXCarlETYU6+C+4FwJAX+zjhdawR47LEE/qYzkyu086Z/siZyk5RRcp5Xg5g==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9f/rFjXEfUwDdXH1c4xeVZXCHsIMfhs0+S5gmj5FGG0EMtHXCp
-	p2356WAobCnhox2xkR/dbOtBrHRrWhQ26Lz7O3y4ViqOzkR/7WMwVQPK5r5apF1QFDo=
-X-Gm-Gg: AYBFou1/cDD3ZG7QxXGD4HnRO7BrWfMOIJPVvX6c7pxzhzXgRpyngGKx+CJpB8iJCS3
-	wpmo5RR4IuR+l8C0ywdXoH9Ddg5FfxmHTyxcO+VyonR+LCyjv/krw9E9+062ZzxlnEF4261cbs7
-	OSIIuesUHtbGjhwjjYGNG9f3RihDxDwShignnzRBWAMao/Cua76gtRy14NPYy2gjuvueDitoRzg
-	AxOFSbTe3meimall4xllroa9gBK/kJ3znnAZpNRZG1DKH90lke/9aPTnrnk3yDrU02kZavSyJoO
-	sbPDI9/90HRGqeFbZJUhMH5wFf3UOOQD8agkSjZJ69GddopENfkVjTmy+w+Qxme+2kkItqqTb5A
-	sIiiF7Klp65wgs0tTpuZyo9TBv17WUg7TEqZbTDqAm1CzJq81YuzyhZpvUdvFd9lpgB3nJZQY+B
-	zOYdi+mn0K1dKdvPuhfQtQ7CTUhUzcFZEF2WQ7Ae0ppGJgoBRUfNyTqlbtSTN4EVlzvIyAPmPuw
-	eKyEJ6ZRSnHG5yc6/01YHCPfbEBMDFldrJwAemhS9jVyx1HayuTVlwV7dAe11qkJnZg5FqcgnEg
-	YpUiiFkIa6hkHUNq+PQagHYQuplFj+lSiQs=
-X-Received: by 2002:a05:600c:3509:b0:4bb:68b9:f610 with SMTP id 5b1f17b1804b1-4bb7da03954mr52120315e9.9.1795010803953;
-        Wed, 18 Nov 2026 06:06:43 -0800 (PST)
-Received: from localhost ([2a02:8071:56d1:2de0:1d24:d58d:2b65:c291])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-4bb7d256f64sm61534715e9.1.2026.11.18.06.06.42
+        bh=PKEsbvmI/h2yNfkKYeLdhdyKF8D1G+AbgQ3dQC6oEvo=;
+        b=y/e+XAHR3tPn3Nno19Svq0prgOoZy6Z3oH43p2H90JTyivxliy2cWHKtQiksMoctdW
+         NPsdKarVRQHOu9oJup+ZCfrhrgGwUR8Tzl4IRzClfizS3yJwg0k83IgOvPGqchYP/WmF
+         fOgjlcwnRZ+VrVYZu5+66woeoGMLE7/A98aAJlMIa7HE1qT+81lJCvHwhlwyTepx1ONA
+         FbM/Hp2bKU0+a21/mTw9MvCTzJMppwWyFhMfSGrpwYZVmrPcKJI6B/oQKgZAVvj7KksT
+         n9/bnbb8JHdj4Z4cbpNiYKwi2+9pzkmG1T0OWGE5TkYBiJ3VA/v8yFkfZ2290Rhlw7Sa
+         qeow==
+X-Forwarded-Encrypted: i=1; AL+hErHWCRMOgfGjSY478pDmgMD3qV7LfsGpVocyxUkbOsLX3O8EA6mz9vQl2KOq0OyK/TFnilPrpi3+pbOYLoa0MQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8MTZsiSR6j5nphuUHyiUwpruz2GmFQkvwlETbmm1QD3Nn6WN4L
+	J9GHPtGdwthvdea55oks6Eep4cS0/T9jePPB3AlOq2K9ANyIOJF/bdlhBJdZAvGeuU4=
+X-Gm-Gg: AYBFou3Xuc0A59SwFhv8Nl6mVHN1GX9UAaGY9CC1uuErNxwguwgx6WNXCB5AfG5rR5h
+	rJOAI/kU3BaF1UTa+MM7w5DPZ4Ki5TjNk4xzADO8BSvov0A316Sl1Zatapn98vtb7Hf5oQmRH74
+	Eu8BQdfwYDst/0wzFvgDJcKifTt2yMGkToB8pBRzh6hgkSepsmF8iA089RhThvGgk7Zr443L9a9
+	0hu6KbRdGH4ouVt9tqjjqliYVVzZb+o8taGPuaTMKhazIxLmgFEc0GnQ8IMwYztdYcZXupp4g6z
+	WXZr3zcbJt1y7Nfy3tyuXN71dmi6qwqBhACxQ885/VK48OGWgsK5SXjGEceqzsfBHN9qAtXTZqQ
+	d16GtQ+eLVa+5Ov1LK7ZheI/494TaGVFEG5HWUQ26oPI7dZOxLb444lpWnuBC6gUzrZjrfWsSS2
+	JnS6UOF0XgW06LVM2Yg5L2Umy62iYJHIwMmSM0VB+ZspT7b35LBau4zvwV5h1DYFwTngLB478Xl
+	esZxXRrpEn4jQvztEdoiUnfVrQxWLF5zY+q/z79Ot26HfWnfKAhiUwyZ9AUcabNyx8M1afF1+86
+	o2q+L/fyJ7ailxAsdAcLfHK5LxGbQDEQtQRetwGiYgCRrkwGOfSiuX8pId43rv00ojVot+eXFOc
+	AElgy0kRepxedkG9frvwkA7QnswYTYw4E/2aNnEQU/rTPl+zinx4OZt6XlAHNEpDyN3QMSw8=
+X-Received: by 2002:a05:600c:19d0:b0:4bb:5de1:e923 with SMTP id 5b1f17b1804b1-4bb7d6d1de3mr52112595e9.4.1795011385062;
+        Wed, 18 Nov 2026 06:16:25 -0800 (PST)
+Received: from alcachofa.home (cst-prg-52-235.cust.vodafone.cz. [46.135.52.235])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb7843bd79sm146337145e9.14.2026.11.18.06.16.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Nov 2026 06:06:43 -0800 (PST)
-Date: Wed, 18 Nov 2026 15:06:41 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Sasha Finkelstein <k@chaosmail.tech>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, dri-devel@lists.freedesktop.org, asahi@lists.linux.dev, 
-	linux-aspeed@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev, 
-	linux-riscv@lists.infradead.org, etnaviv@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, 
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
-	imagination@lists.freedesktop.org, linux-mips@vger.kernel.org, lima@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org, 
-	virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v1 9/9] drm: Unify coding style for *_device_id arrays
-Message-ID: <av2rKJQ0AKU9CFZI@monoceros>
-References: <cover.1795002467.git.ukleinek@kernel.org>
- <a2d5ce256b8ec150de4a6494c177b19693a33222.1795002467.git.ukleinek@kernel.org>
- <7692c160e418e7ad0528739fcc879b11fbac8ab0@intel.com>
+        Wed, 18 Nov 2026 06:16:24 -0800 (PST)
+From: Tomeu Vizoso <tomeu@tomeuvizoso.net>
+To: Oded Gabbay <ogabbay@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jeff Hugo <jeff.hugo@oss.qualcomm.com>,
+	Chaoyi Chen <kernel@airkyi.com>
+Cc: Tomeu Vizoso <tomeu@tomeuvizoso.net>,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Subject: Re: (subset) [PATCH 4/4] MAINTAINERS: accel/rocket: Add rockchip mail list for rocket
+Date: Wed, 18 Nov 2026 15:15:23 +0100
+Message-ID: <179501127061.337132.729815382590515286.b4-ty@b4>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260814022453.437-5-kernel@airkyi.com>
+References: <20260814022453.437-5-kernel@airkyi.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <7692c160e418e7ad0528739fcc879b11fbac8ab0@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_060646_608777_EA99E5A5 
-X-CRM114-Status: GOOD (  19.03  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261118_061628_040929_E774636D 
+X-CRM114-Status: UNSURE (   6.83  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,123 +108,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6845975769402555631=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
---===============6845975769402555631==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="5c6ped4sw6nigwko"
-Content-Disposition: inline
+On Fri, 14 Aug 2026 10:24:53 +0800, Chaoyi Chen wrote:
+> The rocket is a DRM accel driver for the Rockchip NPU. Add the Rockchip
+> mailing listso that changes can be tracked.
 
+Applied, thanks!
 
---5c6ped4sw6nigwko
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v1 9/9] drm: Unify coding style for *_device_id arrays
-MIME-Version: 1.0
+[4/4] MAINTAINERS: accel/rocket: Add rockchip mail list for rocket
+      commit: 20f0d3fdc8f51ff89d23f107bdb66db03e2dbdb5
 
-Hello Jani,
-
-On Wed, Nov 18, 2026 at 03:27:40PM +0200, Jani Nikula wrote:
-> > [...]
-> >  drivers/gpu/ipu-v3/ipu-common.c               |   8 +-
-> >  drivers/gpu/ipu-v3/ipu-pre.c                  |   4 +-
-> >  drivers/gpu/ipu-v3/ipu-prg.c                  |   4 +-
-> >  254 files changed, 1155 insertions(+), 940 deletions(-)
->=20
-> How do you expect a patch of this size be merged?
-
-Using b4 am :-) Honestly, in the cover letter I wrote about an immutable
-branch and offered to rebase to 7.4-rc1. When trying to apply this
-series on top ov 7.4-rc1 there are only 6 conflicts (1x modify/delete
-and 5x content); these are all not so hard to resolve (and even dropping
-the respective hunks (i.e. resolving using `git checkout HEAD`) is fine
-for me.)
-
-> > diff --git a/drivers/gpu/drm/i915/i915_pci.c b/drivers/gpu/drm/i915/i91=
-5_pci.c
-> > index 84a7dc6ab5db..faceb3de4fa3 100644
-> > --- a/drivers/gpu/drm/i915/i915_pci.c
-> > +++ b/drivers/gpu/drm/i915/i915_pci.c
-> > @@ -870,7 +870,7 @@ static const struct pci_device_id pciidlist[] =3D {
-> >  	INTEL_ATS_M_IDS(INTEL_VGA_DEVICE, &ats_m_info),
-> >  	INTEL_ARL_IDS(INTEL_VGA_DEVICE, &mtl_info),
-> >  	INTEL_MTL_IDS(INTEL_VGA_DEVICE, &mtl_info),
-> > -	{}
-> > +	{ }
->=20
-> Personally, I would *always* use {} instead of { }, and would rather not
-> change.
->=20
-> Across the tree, {} is slightly more common than { }. IMO changing them
-> is pointless churn.
-
-It depends on how you count. My statistic looks as follows (on top of
-next-20261117):
-
-	$ git grep -l device_id | xargs -n 1 perl -g -n -e 'print "$1\n" if m/devi=
-ce_id\s*[a-zA-Z_0-9]*\[\]\s*=3D\s*{(?:\s*{[^}]*},\s*({\s*}))/' | sort | uni=
-q -c
-	      2 	}
-	      2 {
-	      6 {  }
-	   2598 { }
-	   1262 {}
-
-So over all *_device_id { } is more common by a factor of > 2. This
-series fixes one {  } and reduces the number of {} by 37. For only
-pci_device_id it's:
-
-	$ git grep -l pci_device_id | xargs -n 1 perl -g -n -e 'print "$1\n" if m/=
-pci_device_id\s*[a-zA-Z_0-9]*\[\]\s*=3D\s*{(?:\s*{[^}]*},\s*({\s*}))/' | so=
-rt | uniq -c
-	    159 { }
-	     32 {}
-
-Without the context of an array initializer there are many empty
-code blocks (function bodys or `do {} while (0)`), empty dt nodes, and
-{} in Rust code, which IMHO have to be considered off-topic for this
-statistic.
-
-Best regards
-Uwe
-
---5c6ped4sw6nigwko
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmr9sOcACgkQj4D7WH0S
-/k4vggf+PQfM4MkbLgaQRCdXRWWsc4/Fa0tTMBQAl4gjx2p5NE/N7TDUO571o3+N
-oWcelzY5O1uRcc2qHZVnu3vAxFqzk4YHfGjsbGHsxQAibxnIFW7ttYTzt0w5a9NH
-v65V6+sebCdwLrPVE5ilcqzFFSgmnv1wTNm2vCEUxdKGacifySaGRmg4+ax+fLb1
-CL+RS7fM2EkQxG1k4iDEPv1Onrm9S4DtwTts0wxkK780rWYD9FoSLjHyX/x21Y8x
-SZKaXeNZlxtHJpQLq8ub8AL/t6k82nC020wYZOUbUmvPyqxhNoUuuS0/RVlz9xT6
-kXiliIwWzcMtAKt4ik8nbTRO5JERhQ==
-=0alU
------END PGP SIGNATURE-----
-
---5c6ped4sw6nigwko--
-
-
---===============6845975769402555631==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Best regards,
+-- 
+Tomeu Vizoso <tomeu@tomeuvizoso.net>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6845975769402555631==--
-
