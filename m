@@ -2,71 +2,118 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 03549606A880
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 09:48:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A59C3606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 10:08:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wep/HARM;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=SD/4ffKk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QCInjnEh;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=DYBjfuJG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=tpMJGZ2wrZ6S+opFJ7T7xv1ujQbJii7i0X6bspYG6MQ=; b=wep/HARMdOBv3GEj+pcO3HO8dr
-	PTnpov6ujM2/IxzhiMUA3zjlSJ9JcZt4yZYMLYwLC1Voa9Hv+HawBa5bGE0hXbETJ0kgsOHmqoAa8
-	TMCjvUUSwD4eIqsL6sbpJ0xE+BPLSwnBeHZBlT7MNEbWP+I8r+RrOxvkmK72gKlwrOsTss3zhXxkz
-	PZ5aJEDNn7i1eQ0llHrWvxjvQiwPuo/spLZNIOcWo7yMwO57JrisCfBXafYKv752f99gxF6RhqN+1
-	d5DBFvNN3QxT3qQ9vS+ub9kuTdHAhndHlxUhs246NLvp8jsTlxipDInMWjANUboWHiMh7lR1JzXIh
-	vQKEggsw==;
+	bh=tjyqjp+scJ2OWjOUE4E8aSxuRwLlUN1aCcsD+uceL5w=; b=QCInjnEhkhqh3rmjgCi9YQ2MNi
+	XhybEIhTYOff07R/GrVayhZ8GHBLpEnc9C9hF6yWWfHz00gIMx1EivwmAUEEgRc8dBcrzQ0W2XUze
+	nCZ1UeBS5GAbw8rkWdT33vaJU+Vj+a8sq/dHmERRvQxWQu2mqzjs7vz1ij46A8rObg9umnwvGB17i
+	3JpS8Js7SHJvQZd5y41XyTplEYNklAWLCkexwS+bWfW3t5MVOAMslD9NW1ou/YgFbK4T1UlApfQhq
+	faCq1fy7vfLTm6jr1sBuadb0XTcl2jjaoo0+X2T8tl50NLtoenSk8zQn6a4PEFjJzSyXe1vdHHIsu
+	joVg33Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTcHH-00000008Qi5-3EQF;
-	Wed, 18 Nov 2026 09:48:31 +0000
-Received: from mail-m12868.netease.com ([103.209.128.68])
+	id 1xTcaN-00000008WFJ-1ZbQ;
+	Wed, 18 Nov 2026 10:08:15 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTcHF-00000008Qh3-0k1Z;
-	Wed, 18 Nov 2026 09:48:31 +0000
-Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 5520d7b24;
-	Wed, 18 Nov 2026 17:48:24 +0800 (GMT+08:00)
-Message-ID: <abc2d0e2-521c-4ae8-8a8b-e41c8f2bc482@rock-chips.com>
-Date: Wed, 18 Nov 2026 17:48:23 +0800
+	id 1xTcaM-00000008WEd-0Iqz;
+	Wed, 18 Nov 2026 10:08:14 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1A0306113A;
+	Wed, 18 Nov 2026 10:08:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 728631F000C4;
+	Wed, 18 Nov 2026 10:08:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794996492;
+	bh=7zhgK2cftjiTzkt87l4mZkq8xI6jhkpMgB4GLzuXArw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=DYBjfuJGrCXQ5e9ujie/dO4L0JQvm+DUcbp2mc5xLpc6ZPVBjs3Ks40ccoAIAn5jE
+	 S064t9CjDeHB7T3eD57yk2dXCKfnBCc6wRIq+ITEIAdxG1oGk9NZkCCWhJODWp/Dbs
+	 ITgEHQZfxngWJpcYEVO0uKaZyWR9UqTt0PUJ0E5rvoLarq2wbkWgaUzYyw+1OA4UCO
+	 AefOBHsv0F+y8WwxpSM6ztttoWEsueqP42lDnMak+TZEkavGJ0n0yZQjCg7eQsioGi
+	 50KaZEwibq/raNQbq8BnQ6SOqDX6nGbphDC99VEYumkuZNFqFD7zuwP4HwACP0Jmwm
+	 S/Z+52+/5aPjg==
+Message-ID: <fceee6fa-2bfb-4676-b5ac-80e1bae8d4f4@kernel.org>
+Date: Wed, 18 Nov 2026 11:08:06 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/8] drm/rockchip: vop2: Fix the HDMI sync polarity bit
- order on RK3588
-To: aiyengar1990@gmail.com, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Andy Yan
- <andyshrk@163.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Piotr Zalewski <pZ010001011111@proton.me>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+Subject: Re: [PATCH v7 2/9] dt-bindings: phy: rockchip,rk3588-mipi-dcphy:
+ Select TX or RX, add phy-type
+To: Quentin Schulz <quentin.schulz@cherry.de>,
+ Jason Yang <jason98166@gmail.com>, Vinod Koul <vkoul@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Guochun Huang <hero.huang@rock-chips.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Michael Riesch <michael.riesch@collabora.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-References: <20261113-vop2-fixes-v3-0-08ae37e83b5c@gmail.com>
- <20261113-vop2-fixes-v3-4-08ae37e83b5c@gmail.com>
+References: <20261118-dcphy-rx-v1-v7-0-8de1adac3a74@gmail.com>
+ <20261118-dcphy-rx-v1-v7-2-8de1adac3a74@gmail.com>
+ <3a9e999f-5ff5-422c-aa65-b8560dca84bc@kernel.org>
+ <fe324e43-50c4-4f0e-9bb0-57ea7172530b@cherry.de>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20261113-vop2-fixes-v3-4-08ae37e83b5c@gmail.com>
-X-HM-Tid: 0aa1ee0eb96103a8kunmdffd083c34ef57
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaSUNJVkhDSk5CTU1KSE0dHlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=SD/4ffKkoOL31/82SahftnhWFXNBC2jzLaHRzM6GbsP7Hbz3SM51Nc/ri1edybUEcvBM1vA6QZGVF2GKQEQxxlf/94JzVNKPVwCz54XpfMjMuHYMB7p5dV1v6A1h3RsDGFwHhPp1FIvUv9mwhNUdb1w6+7TO8NXhAb4sKHf6wsY=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=/PG22HUnpipGjaN800i0S6Qg/5eh4aaNl1rldurwMEw=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_014829_815051_3CB89806 
-X-CRM114-Status: GOOD (  16.24  )
-X-Spam-Score: -2.1 (--)
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <fe324e43-50c4-4f0e-9bb0-57ea7172530b@cherry.de>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,71 +123,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Arun,
-
-On 11/14/2026 12:39 AM, Arun Iyengar via B4 Relay wrote:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
+On 18/11/2026 10:28, Quentin Schulz wrote:
+> Hi Krzysztof,
 > 
-> In GRF_VO1_CON0 the HDMI vsync polarity bit comes before the hsync one
-> (bits 5 and 6 for HDMI0, 7 and 8 for HDMI1), but rk3588_get_hdmi_pol()
-> puts hsync first. Modes with mixed sync polarities go out with both
-> syncs inverted: the HDMI controller sees 1920x1080@144 +HSync -VSync
-> as -HSync +VSync in VIDEO_INTERFACE_STATUS0.
+> On 11/18/26 9:16 AM, Krzysztof Kozlowski wrote:
+>> On 18/11/2026 06:55, Jason Yang wrote:
+>>> The Samsung MIPI D-/C-PHY block on RK3588 and RK3576 has a transmitter
+>>> for DSI and a receiver for CSI-2, and the DSI host and the CSI-2 host
+>>> can use the transmitter and the receiver at the same time. The single
+>>> cell of this binding selects the mode and refers to the transmitter, so
+>>> the receiver cannot be described.
+>>>
+>>> Change the cell to select the transmitter or the receiver. The
+>>> transmitter and the receiver cannot operate in different modes [1], so
+>>> the optional phy-type property of the PHY node sets the mode for the
+>>> whole block, D-PHY by default:
+>>>
+>>> 	/* the MIPI DSI host, driving the transmitter */
+>>> 	phys = <&mipidcphy0 PHY_DIRECTION_TX>;
+>>>
+>>> 	/* the MIPI CSI-2 host, driving the receiver */
+>>> 	phys = <&mipidcphy0 PHY_DIRECTION_RX>;
+>>>
+>>> For C-PHY the consumers stay the same and the PHY node gets:
+>>>
+>>> 	phy-type = <PHY_TYPE_CPHY>;
+>>>
+>>> Existing DTs on a newer kernel: PHY_TYPE_DPHY and PHY_TYPE_CPHY remain
+>>> valid as deprecated values. They select the transmitter and imply
+>>> phy-type = <PHY_TYPE_DPHY> or <PHY_TYPE_CPHY> respectively, so nothing
+>>> changes for them.
+>>>
+>>> New DTs on an older kernel: an ABI break. The older kernel ignores
+>>> phy-type and takes any cell value as the mode of the block. A DSI node
+>>> with PHY_DIRECTION_TX therefore gets no display, and a CSI-2 node with
+>>> PHY_DIRECTION_RX gets no camera.
+>>>
+>>> [1] RK3588 TRM: section 22.1 (overview): "The TX and RX only support
+>>>      operate in the same PHY mode."
+>>>
+>>> Suggested-by: Michael Riesch <michael.riesch@collabora.com>
+>>> Link: https://lore.kernel.org/r/94d47cab-10c6-4ec3-84a0-3bddc9d67f5f@collabora.com
+>>> Signed-off-by: Jason Yang <jason98166@gmail.com>
+>>> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+>>> Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
+>>> Tested-by: Quentin Schulz <quentin.schulz@cherry.de> # RK3588 Tiger CSI1 2-lane IMX219, CSI0 2-lane OV5675+DSI
+>>
+>> Please drop the tag, this did not happen. In the future, please add only
+>> applicable tags. Otherwise share how this code was executed and tested
+>> on the actual hardware (make process, like building code, is obviously
+>> not testing).
+>>
 > 
-> Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
-> ---
->   drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
+> What did not happen? I tested the v6, on the reported hardware, on the 
+> reported two DCPHYs, see 
+> https://lore.kernel.org/all/840285d6-a8a6-4777-8d38-6758ccbc7723@cherry.de/
+
+
+I comment in a specific place in a specific patch. The testing of this
+patch did not happen, which I explained why.
+
+
 > 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> index 3e654cb99ddf..6d08988d7007 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> @@ -1683,13 +1683,13 @@ static u32 rk3588_get_mipi_port_mux(int vp_id)
->   		return 0;
->   }
->   
-> -/* The sync polarity bits in GRF_VO1_CON0 are set for a negative sync */
-> +/* GRF_VO1_CON0: vsync bit below the hsync bit, each set for a negative sync */
->   static u32 rk3588_get_hdmi_pol(u32 polflags)
->   {
->   	u32 val;
->   
-> -	val = (polflags & BIT(HSYNC_POSITIVE)) ? 0 : BIT(HSYNC_POSITIVE);
-> -	val |= (polflags & BIT(VSYNC_POSITIVE)) ? 0 : BIT(VSYNC_POSITIVE);
-> +	val = (polflags & BIT(VSYNC_POSITIVE)) ? 0 : BIT(0);
-> +	val |= (polflags & BIT(HSYNC_POSITIVE)) ? 0 : BIT(1);
->   
->   	return val;
->   }
+> If you're complaining about the Tested-by being given to a dt-binding 
+> patch, it was provided as an answer to the cover-letter, and the 
+
+I know. Tag was applied blindly and that I ask to correct.
+
+> contributor is clearly using b4 considering the last few lines from the 
+> cover letter (base-commit/change-id lines). b4 trailers -u applies the 
+> tags given to the cover letter to all patches in the series, so if 
+> there's someone to blame here, it's me for adding it as an answer to the 
+> cover letter. So now the question is, do you want me to add a Tested-by: 
+> to each individual patches of long series when I technically built and 
+
+The comment was not to you. I responded to the contributor and I expect
+the contributor to act, not you.
+
+> tested only based on the last patch of the series, which is only a DTS 
+> patch adding the nodes to the RK3588 DTSI? In that case, I cannot 
+> provide Tested-by for patches before the last, as it can simply not work 
+> at all until the last (actually all of them, except the bindings) patch 
+> is applied.
 > 
 
-Oh, this is a good catch. I verified the RK3588 HDMI sync polarity bits 
-are arranged differently from other interfaces.
 
-Would it make sense to add two macros for these bits under 
-RK3588_GRF_VO1_CON0 in rockchip_drm_vop2.h:
-
-#define RK3588_HDMI_VSYNC_INVERT	BIT(0)
-#define RK3588_HDMI_HSYNC_INVERT	BIT(1)
-
-rather than using raw BIT(0) and BIT(1)?
 
 Best regards,
-Damon
-
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
