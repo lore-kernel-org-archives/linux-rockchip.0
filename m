@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2DD2B606A31C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 05:56:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0B39B606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 05:57:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QtLdDqao;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=I2out3Jn
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=I6qtBvkn;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=vduwhfPF
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,74 +14,74 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Om7Zren2sUczx/oniliZYtZCp9g78N646yrhquHCmY8=; b=QtLdDqaocqfJcnySj750TlluGl
-	MjF7uiVCNFyBbN1YEQp+ZCnSg28MVn4Rx+toCokWTaJKLSKvZwvk8GU2EWy6ehi6l2xnk8aKw+A5P
-	gTMxTebbLJheqUQBZmsORfksJTfNY6WZ3M2zEHuuDYOx5UXIplZELygcTeaf1y1GgWgi9Sz6wSVGU
-	cXiY32dllkBI12jkgMT1fRP1diWNRxjm4NPngKBVupxgGdgNWgRtumEWONE6JlVfV6dVHhkfSGRLL
-	EHCbq1ZFDDDm+GoBEI0vUcXKcGCqi9XOrJrQqPdXets9778TBmDnGEpZvTme1SCQS0SnsCVIb1icj
-	PPhalagw==;
+	bh=wohvduYMx7afZq3dnkgbOfOxxYxXt7stJz354p7oQZI=; b=I6qtBvknIu24cm0mkoYYMMJfiH
+	5RLRRK3Ufhctzx0xio7Im4NoHXThebLMOCEGDGpQDUmQvQsJe/V2uNw6qKF/Yyfhr5ss/g3cp4N2D
+	muHOGSSMuaVg/wdxI05jUXMIHZoctkxf06Vnn6v2BXaOlxGHn8hZJBJKmzFkkITDKJCtiVPeeKSro
+	kQ2x1xP+adXOOf7tVT3yF6GeL0Q/sMgCPlMkeyush6nfju2YDvkuSOrVT2nwFVSv5m7UbkhLOBZUF
+	QrCs/LLZSUP4Pyd+GxBa+ICgXZZqpR6CZcN/BvZyXLuFf1TbrlnLxiZswVKiPJYqk7sb627fPtGep
+	X57ieT1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTYew-00000007ojl-3qBs;
-	Wed, 18 Nov 2026 05:56:42 +0000
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+	id 1xTYeX-00000007o8N-3ZiM;
+	Wed, 18 Nov 2026 05:56:17 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTYeb-00000007oDU-2N00
+	id 1xTYeG-00000007npZ-488V
 	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Nov 2026 05:56:23 +0000
-Received: by mail-pg1-x52a.google.com with SMTP id 41be03b00d2f7-cdb2fcaafb7so5151a12.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 17 Nov 2026 21:56:21 -0800 (PST)
+	Wed, 18 Nov 2026 05:56:03 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-cdb8c4233b8so34099a12.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 17 Nov 2026 21:56:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794981381; x=1795586181; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1794981360; x=1795586160; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=wQwtBGptsppIiSD2EEtPZn/sWs62aWDTih2dvDjWrWg=;
-        b=I2out3JnAdMBQCKSmn6c3/26hfmhfNtT+m9zdyev99G8vs1K4F1T5MQOuaEzU0PAhP
-         sU+ECNq8Bp73gQz0/rplH9gPFbZ2XGSSFTp+bXzDwWYPlKdL9DnN+kSHRtZyJoXePd8N
-         wx5OIEl92e2yt6mnjMTtxmRiVY7FUC1obcC56b5fT/RjVu8U5F604TjtX8tx4D7kw/2T
-         GK9Crw/OuVdIqM/DGnwj+5y3hFz9vip7dbpFOgXpnjnB1bbcgwx9HZubvLYuTufB7kVZ
-         cQBQ1Wq6gBo09fK51EiNkRaiKQQv8rhBt1ryEJK5+SYCirSLCwcPvedWK0aCGwfzPvvN
-         8ksA==
+        bh=iHpEgxPbFinlelTShydiqMdXL6WmYaYuO85mjvtFPkY=;
+        b=vduwhfPFQhauriY8fidDKqD5nU2KbQthVocO/XafqQKzyzazrSXi6Jy7qTRm1whn3r
+         nTXj3Kd8h7nPlqPiOSi7/vfu41mDmMYl8MSnUnx/f1FR3ESr9xMgKbr9FTgh+R4lEHx1
+         9D5Mbb7ZBHc330jNZH6Ykcw4HdiujJKhrbFn9XgdOFnJb/BpXxMnHfPsPS18ncsQlwVw
+         jYDyAiLh/6jogoIuDQ7XNjoU67OX95sEZpKyYEbjS7RnEs7JJW7h4RMBHSx7MWoNCLL9
+         tSWYWvbLuYgn5KhQ4/D67FvT77ra/Wti6HnLyIwTXzG+gfkuwTQFOrgzFZCtIKD7KaTF
+         WCUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794981381; x=1795586181;
+        d=1e100.net; s=20260707; t=1794981360; x=1795586160;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=wQwtBGptsppIiSD2EEtPZn/sWs62aWDTih2dvDjWrWg=;
-        b=RffwZdecgfeacBRSECxn4g9ikliI2enji4XjNCOZBX5uNDKvion/EoYR1o4gTC00cW
-         6rXOQvQ1IIta0yJfm0mzeC33D/ESTCABG7c0YWPcqR9gdWl0rxstiCBEv8OerFUcf3eu
-         Q3lIIAea4EynLJmTZYPNjSzFF6CtBHac3U58RjV9+LKWbm/pY0j58B14znkQt3cTlgaF
-         zWpqyDUOQEQuYAxUraUPrKFKkvY6jA1K34u5RbI2IpwZMZlbTcat3Y1G9JIXDfPSApWu
-         LpaPQYMuhmHfYgPMyYnkfBVhBbUP9DvC2IqwQQ4Liyo1m/LT1wsLgjd6kSZ5SyvNzrSZ
-         s+hw==
-X-Forwarded-Encrypted: i=1; AL+hErEPPiCJIyg4QZgrMK06Orx15/8EJs4OvATpVJvuw+Ba4UK1zX0MPHgqHSrwjyFsUcWP9CR8K88K+xL2M2v7Xw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z966lgHLjHcpkj917O+5f/+AEqZlRFi2JmuOzlW4S6laId3yLqW
-	9kLYnUEF6P4+GXCECXGYtBS/UfWyLud6KAHC+6amUYxv/Lb1zhNIuHoO
-X-Gm-Gg: AYBFou0hqgTNqJ3GPASwa7e1XzyFNntZnh0JQvEwM3YnTP7fGTOYsBE9fAtLE4ZPVzN
-	JFQrD/+zUQEFRQixdzSGLWFzZyy9ZpmPjOHDhsq0xYPmE98C9ORc6rYvXFZu+8dJl0G3bomndDt
-	mzUzaOidBTMs4vNB5GVj5FP/8kZavZJ6iLnBhcYP0ZcVE2SWnjUgDQOBoFae9Kund9mpY3rL5NC
-	3jrUxs+0Qd3FlsvyxJ0yOIZLGVhiaWRG+VqRuJgsQ7ZBjTfKUn8byU8ha5zTpxmQT2ClIpRTEHx
-	57gV55H5aL6e4V+XShxsCahEguSBJI9UMZ6z0Xd1R/Kbbd0tt4TqVJa/XtNjfVDIYQuvNefOry0
-	vlBeHWjrs/PkjPQbUyc8H33zQnMNRrli9qVNwLYeexr9fRyQnR8jtEfmlZCi7wMtBtn0GGhohFV
-	Laupn8px6t7/YCsZX1JahFO2LDU60OmqDmxdacrEu3XIERBfIIMx3YUp7UgPE43U0q5bjK5VwIm
-	/iL6q4sUa6kpkiyPoMmCSGCNLmDiawMh6ZsCsz4VzgVvnCngXZthMgfacoornqY/i/J5t4/DLTx
-	MKZ20AEwGQOmCwbTYAnQX+nnX1pKSjX6AYmyei9EuECh5YaL274BT/Lw570hdwyAajdP0k8moN1
-	vLmzq9F7/BDh6oFk/FF6I
-X-Received: by 2002:a05:6a21:c219:b0:3fc:7f4f:ba46 with SMTP id adf61e73a8af0-3fe888eb7b0mr1972957637.2.1794981380287;
-        Tue, 17 Nov 2026 21:56:20 -0800 (PST)
+        bh=iHpEgxPbFinlelTShydiqMdXL6WmYaYuO85mjvtFPkY=;
+        b=nHCAMmkkvx1IodqUtA+OskpWTDzQC6X6y1GzIg2aYVlyc4eYEFPuJyaRnzwjgSXmuD
+         317UH0CVfjRmFY0BnbzUHHtHIma6fkBSX73eZ1b3fOdKqXY5L1zt7Pp9uPgip+zfmHe+
+         rbMFOH0JUuhKee+1Dhv1owL7eBRltiGEhenhi3H8ke/8FKlG5YKI5b/WZA/544FLkCNA
+         5SdEYVNODvx2FLb4goqJpo+RVs50dZYiJLluRXkqbRZVEfFsOrw5mORpuuU/lkLBS7OG
+         RekBg3KGl9l05JzlUyGFJlsFK102JUT0OogoAyGjqIk95VwvxATVcfifEx/znUP+DOQW
+         bydQ==
+X-Forwarded-Encrypted: i=1; AL+hErHEZFEsrdLIMifKKc6Od0Pkr1TYZVvKZhzpN1vCDfjqnJ1Sk7vfz6OaE39bSra35TJ2aB7Xr+VkR+WNfT1vOg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8jx3k6ljJYOgg90bYbASMSefEVyY+Eg20mUN0EVLx0KVv73icQ
+	Da6peybRGr/mNrHUYCvbI4udeo5L4+AKRMI3liru0TMRJU+ntyfgPv58
+X-Gm-Gg: AYBFou2kgiBUMD7D0SNIF7fTGNBr9BFnZT+QmH37kAaHIYRgwu70Kfc2oMYyUU+tOPl
+	m9LhBQgdrmTzpDTX6NWUH6ImgmSsJXQw7AO+LRh0CR9Ua38Ej1sxDxfdSVwR0lHM9NvfFr6JQbh
+	GA9bwNIamktYI23lI9d/ff1CcblludsgqYj+y60eIGzRd7X1C0bXJhK+9xBP89MzE8xVyxRPtO6
+	JQWv77iqfwkJMsp3+Ts17q8CCkSb4OX4K5oiU7D0/LtyHIK2vf6H6LNUqVx53xLNJu/+vflEQE2
+	i4VMv8oCeKKJ7e+PC8E4OUsueVrZbCTBe9jc1tV7cCDZyH1GQeKp0egJbW7p4pko84zJSDVHnNX
+	npawss8lHsh/Tl2+iuwK0fwjE1ssO2rbqB9r5cLh3fUkK+J2MH6gdvBIb6RbId6U7htxr8blSpF
+	8aiKQTfjRYh2Zr5A75L3FrKcYoaT+vm1UdigFMyuPLoIfCzVcJl1TD0Eb9hRyepX7Q03zCimrXe
+	gfPgk04KXl59aSIraZMP0chT0rGKkvbL6zr03LYUXg+WB9AbCpzC707OltlSdaoMCskgrCpYt1m
+	Nd6rjo4EGtxV4o1TvPW5ymvG2y/33vX3k5JZpKi7UnhFjCKsLg1pvK1JeL/GF9P0i1RanbqsFuG
+	VXusKAa2y2M3pQm4d2nw3
+X-Received: by 2002:a05:6300:6bc1:20b0:3ef:2f72:c7e5 with SMTP id adf61e73a8af0-3fe89100d9fmr1650543637.2.1794981359689;
+        Tue, 17 Nov 2026 21:55:59 -0800 (PST)
 Received: from [127.0.1.1] (211-23-39-77.hinet-ip.hinet.net. [211.23.39.77])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8c5ca5bf959sm569563b3a.20.2026.11.17.21.56.16
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8c5ca5bf959sm569563b3a.20.2026.11.17.21.55.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Nov 2026 21:56:19 -0800 (PST)
+        Tue, 17 Nov 2026 21:55:59 -0800 (PST)
 From: Jason Yang <jason98166@gmail.com>
-Date: Wed, 18 Nov 2026 13:55:22 +0800
-Subject: [PATCH v7 9/9] arm64: dts: rockchip: add the dcphy mipi csi-2
- receiver nodes to rk3588
+Date: Wed, 18 Nov 2026 13:55:17 +0800
+Subject: [PATCH v7 4/9] phy: rockchip-samsung-dcphy: Always write the
+ rate-dependent registers
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261118-dcphy-rx-v1-v7-9-8de1adac3a74@gmail.com>
+Message-Id: <20261118-dcphy-rx-v1-v7-4-8de1adac3a74@gmail.com>
 References: <20261118-dcphy-rx-v1-v7-0-8de1adac3a74@gmail.com>
 In-Reply-To: <20261118-dcphy-rx-v1-v7-0-8de1adac3a74@gmail.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -99,15 +99,15 @@ Cc: Michael Riesch <michael.riesch@collabora.com>,
  linux-kernel@vger.kernel.org, Jason Yang <jason98166@gmail.com>, 
  Quentin Schulz <quentin.schulz@cherry.de>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794981338; l=3591;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794981338; l=2791;
  i=jason98166@gmail.com; s=20260721; h=from:subject:message-id;
- bh=wHYitdr9DGtZWdI+e6LvB71Er0urXzEmjuek2OzfqCA=;
- b=8DgSgyPhpQNduk9l/SM/4dMAVGgXDC3dSb7ZJjM9K4UTaLkxLcbj5MRsPNdpQa4pp54aTKeyl
- /jVizBopUDuA0gxVUv0l9MYhwPgtlRDmP/mh/ZJasL0zxGzgI4x0Zyy
+ bh=jOoW884/QWxzl0iQgg361AUaX2tfS/RGrsDEUvgeOSs=;
+ b=VkOIadDSCSCWfnuqRaor/8P7xZ2XT4u0wDDTi479M168RRkokCGNAss3oSGd4blzKFbElD6Bu
+ whowWKt+GmhDXy0qQNwzix6IZpQLJ7M65vCrX2H2rmVHBAv8R8sC34y
 X-Developer-Key: i=jason98166@gmail.com; a=ed25519;
  pk=xQmD001Q/ooHl39PxyQtusbUQmgbOsSfpFryRVWZ/k4=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_215621_647782_147CDF95 
+X-CRM114-CacheID: sfid-20261117_215601_084305_8767B55E 
 X-CRM114-Status: GOOD (  11.55  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -130,121 +130,76 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The MIPI0 and MIPI1 receiver units are connected to MIPI DCPHY0 and
-MIPI DCPHY1, whose receiver side is now supported. Add the two nodes and
-wire them to the VICAP ports.
+The lane timing init functions write DPHY_MC_ANA_CON1, the four data
+lane ANA_CON1 registers and DPHY_MC_DESKEW_CON0 only above a data
+rate threshold, and the registers have to be zero below it [1].
 
-The csi nodes select the PHY receiver with the new PHY_DIRECTION_RX from
-the dt-bindings header. The phy nodes need no phy-type: the DSI host and
-the CSI-2 host both run the block in D-PHY mode, the default.
+Today the APB reset at the start of every power_on provides the zero.
 
-PHY_DIRECTION_RX is an ABI change: an older kernel takes any cell value
-as the mode of the block. The csi nodes are disabled, so an older kernel
-is not affected until a board enables csi0 or csi1.
+A later change moves that reset to runtime resume, so a power_on at a
+lower rate after a higher one would keep the old values.
 
-Before v7.0, there is no CSI-2 host driver, so enabling csi0 or csi1
-changes nothing. Since v7.0, a CSI-2 host driver probes the enabled csi
-nodes. An older PHY driver then gives the CSI-2 host the PHY transmitter
-that drives the display. The camera gets no frames, and the display can
-stop working as well.
+Write the registers on every power_on, with zero below the threshold.
+
+[1] RK3588 TRM: sections 22.4.2 (reset values) and 22.4.3
+    (DPHY_MC_ANA_CON1, DPHY_MC_DESKEW_CON0)
 
 Signed-off-by: Jason Yang <jason98166@gmail.com>
 Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
 Tested-by: Quentin Schulz <quentin.schulz@cherry.de> # RK3588 Tiger CSI1 2-lane IMX219, CSI0 2-lane OV5675+DSI
 ---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 68 +++++++++++++++++++++++++++
- 1 file changed, 68 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c | 24 +++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index aa69fd3793fd..c7174c2f15c3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1516,10 +1516,18 @@ vicap_dvp: port@0 {
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+index ce1bc62497c5..7a009d87a665 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-dcphy.c
+@@ -1228,7 +1228,10 @@ samsung_mipi_dphy_clk_lane_timing_init(struct samsung_mipi_dcphy *samsung)
+ 	regmap_write(samsung->regmap, DPHY_MC_ANA_CON0, val);
  
- 			vicap_mipi0: port@1 {
- 				reg = <0x1>;
-+
-+				vicap_mipi0_input: endpoint {
-+					remote-endpoint = <&csi0_output>;
-+				};
- 			};
+ 	if (lane_hs_rate >= 4500)
+-		regmap_write(samsung->regmap, DPHY_MC_ANA_CON1, 0x0001);
++		val = 0x0001;
++	else
++		val = 0;
++	regmap_write(samsung->regmap, DPHY_MC_ANA_CON1, val);
  
- 			vicap_mipi1: port@2 {
- 				reg = <0x2>;
-+
-+				vicap_mipi1_input: endpoint {
-+					remote-endpoint = <&csi1_output>;
-+				};
- 			};
+ 	val = 0;
+ 	/*
+@@ -1259,7 +1262,10 @@ samsung_mipi_dphy_clk_lane_timing_init(struct samsung_mipi_dcphy *samsung)
+ 	 * under 1.5Gbps or equal to 1.5Gbps.
+ 	 */
+ 	if (lane_hs_rate > 1500)
+-		regmap_write(samsung->regmap, DPHY_MC_DESKEW_CON0, 0x9cb1);
++		val = 0x9cb1;
++	else
++		val = 0;
++	regmap_write(samsung->regmap, DPHY_MC_DESKEW_CON0, val);
+ }
  
- 			vicap_mipi2: port@3 {
-@@ -1568,6 +1576,66 @@ vicap_mmu: iommu@fdce0800 {
- 		status = "disabled";
- 	};
+ static void
+@@ -1284,12 +1290,14 @@ samsung_mipi_dphy_data_lane_timing_init(struct samsung_mipi_dcphy *samsung)
+ 	regmap_write(samsung->regmap, COMBO_MD2_ANA_CON0, val);
+ 	regmap_write(samsung->regmap, DPHY_MD3_ANA_CON0, val);
  
-+	csi0: csi@fdd10000 {
-+		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
-+		reg = <0x0 0xfdd10000 0x0 0x10000>;
-+		interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 144 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "err1", "err2";
-+		clocks = <&cru PCLK_CSI_HOST_0>;
-+		phys = <&mipidcphy0 PHY_DIRECTION_RX>;
-+		power-domains = <&power RK3588_PD_VI>;
-+		resets = <&cru SRST_P_CSI_HOST_0>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			csi0_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			csi0_out: port@1 {
-+				reg = <1>;
-+
-+				csi0_output: endpoint {
-+					remote-endpoint = <&vicap_mipi0_input>;
-+				};
-+			};
-+		};
-+	};
-+
-+	csi1: csi@fdd20000 {
-+		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
-+		reg = <0x0 0xfdd20000 0x0 0x10000>;
-+		interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "err1", "err2";
-+		clocks = <&cru PCLK_CSI_HOST_1>;
-+		phys = <&mipidcphy1 PHY_DIRECTION_RX>;
-+		power-domains = <&power RK3588_PD_VI>;
-+		resets = <&cru SRST_P_CSI_HOST_1>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			csi1_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			csi1_out: port@1 {
-+				reg = <1>;
-+
-+				csi1_output: endpoint {
-+					remote-endpoint = <&vicap_mipi1_input>;
-+				};
-+			};
-+		};
-+	};
-+
- 	csi2: csi@fdd30000 {
- 		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
- 		reg = <0x0 0xfdd30000 0x0 0x10000>;
+-	if (lane_hs_rate >= 4500) {
+-		regmap_write(samsung->regmap, COMBO_MD0_ANA_CON1, 0x0001);
+-		regmap_write(samsung->regmap, COMBO_MD1_ANA_CON1, 0x0001);
+-		regmap_write(samsung->regmap, COMBO_MD2_ANA_CON1, 0x0001);
+-		regmap_write(samsung->regmap, DPHY_MD3_ANA_CON1, 0x0001);
+-	}
++	if (lane_hs_rate >= 4500)
++		val = 0x0001;
++	else
++		val = 0;
++	regmap_write(samsung->regmap, COMBO_MD0_ANA_CON1, val);
++	regmap_write(samsung->regmap, COMBO_MD1_ANA_CON1, val);
++	regmap_write(samsung->regmap, COMBO_MD2_ANA_CON1, val);
++	regmap_write(samsung->regmap, DPHY_MD3_ANA_CON1, val);
+ 
+ 	val = 0;
+ 	/*
 
 -- 
 2.43.0
