@@ -2,78 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 66F1B606A339
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2026 23:51:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EDFEB606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 01:53:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pUtQqoWQ;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=fYNJsjgA;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=LaVRiDqS
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4p6Dc3ms;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=GedTyRb0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=eEBBooBaYYbCDXeI4sJgka4PT2WivbylUUM4tY6DJqo=; b=pUtQqoWQK7VepbVCV3o+EO6vKz
-	g7tMKNWqPQ97bRWk2yjlNVaAzu8B1/ymy9QV868wSq7fTbcqVmzwmXZloCydL9+pRI66rFdR8FKG2
-	EzTOn3a//ABEOZnuj4LgwGUZ4rC2mvYHvjESZSHz4A3kRaoEOhUXqs02fUgATceYGF1DbqOmG19Mv
-	Lz15J6lukZiyvOzDLNMD4wfqmb6Umwcu0Wg6bVazT5kQaBjhIC/A74O+bhP3cudg5EsVPN3qFQXyP
-	YdmI3WAzYDEFqodeUIXi/N9Q67gxFeSZZgxWTGRO5+oC5WiOP7JRqrCaRQNhLwHM21JZIIYwbCvdd
-	ifK6ZKyg==;
+	bh=68YRn4fh5hr9YKi8FFjn67wjpY+zIdpynS/Z+pi4MXY=; b=4p6Dc3msiF1gN7ztE+h5l3oAt5
+	OdGA0wXusn9Pmf19KhEqEWSEBLKGs3bIuKqB978tm29EeiVhOHqTpPsTCzvmJiduIPUjEpMHY9I8p
+	QwdyZOmeG8uCBQFJeOGjVMN3FrZ/+DSLcaUvUIGBlVhwus11fa8SFRWkDlkn4j5ozPN3SAWndA5yB
+	qu343ObIFkTBfd03fuI9MevTrtgF62666wWTHvFGQsifIvV/o95EAySpdq0fyWptM2CKqb4AVZBSP
+	zoFVKkwJxsNOF3x+7VWBT6T1COJE3+jD0X8hVrbPfq93lqC6MejcvEcnaYu1neApvfTIobxiAPNs3
+	fjgmgHxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTSxO-00000007Jlq-2vk8;
-	Tue, 17 Nov 2026 23:51:22 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xTUrr-00000007Um6-28un;
+	Wed, 18 Nov 2026 01:53:47 +0000
+Received: from sender5-op-o11.zoho.com ([165.173.182.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTSwu-00000007JOn-1bPJ;
-	Tue, 17 Nov 2026 23:50:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=LwdZQUIfgt+sse1gdnZ0Zk0xWEjAcM+cCSRaPUtzOtM=; b=fYNJsjgAtk6V2YI3dOHcHqy/1e
-	pXoT5LCwerWPQ1qDZdqnuocJJc8vjbg3OaeeSjvymplHHWS038GLNk9euWPt1au8qh1f/iCTiRlas
-	KAe/aj94D9NeodhxZPEfebwbt9wCVoZpyBjxOQvnydz+x5Wl9hSW8V7svPSB1U/uXjbFe19kZe1sc
-	6FnkAWYH6EP787GtYwip8t2cOe2ZtxaUuUUzZo+UW233KpYS8lkUH8C+cczoEWrN9N5iRMcq91iNN
-	Ektcq61JWc1+SgGfaLombQVOKWhWJJ1MDypvW8eNZij+W1tr1XM5FCXurPQ8Mq56ccDj+jIailkTO
-	J2cIQGiQ==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTSwp-0000000FVId-1bDQ;
-	Tue, 17 Nov 2026 23:50:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=LwdZQUIfgt+sse1gdnZ0Zk0xWEjAcM+cCSRaPUtzOtM=; b=LaVRiDqSxwymtAkxtIdEfecLdH
-	ORdLws6Pi9v60/6LufNliNKsp+zQBjp8VwG5NxgifJKiK8J/YY4BCWabY4CkU6vNDl+M+2g34p0Mp
-	RFv+cAnHP6tnzc33m8HvrBokQBy5kmJYkWYAxyBIGA2Sh/CDeRNb/bTp8DbrFrpAKCATzb154Rbla
-	r3RpITOe1UlvmnBh+AvyDvG9ybouqBKFU7d1qh4JyW45BY7oiDBRlbYnWjYcsRWzIFJcRH1ZIu8rW
-	Q2QEm0zTE0olTt1rbqIGYmt87aE9S6j5UnbqrQ5jeeJKsTX+GrE1Qauipzj3F9M9jePT7NLkvkNvf
-	IPbNbyxw==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: broonie@kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	quentin.schulz@cherry.de,
-	Lee Jones <lee@kernel.org>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH v3 4/7] spi: Add infrastructure for atomic sync transfers
-Date: Wed, 18 Nov 2026 00:50:18 +0100
-Message-ID: <20261117235021.2013719-5-heiko@sntech.de>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261117235021.2013719-1-heiko@sntech.de>
+	id 1xTUro-00000007UlM-35UP;
+	Wed, 18 Nov 2026 01:53:45 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794966818; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=SMP+etA0Km86ZmZzSdQz7vwF6RkI0N+EFo1Hqr96jinrWKBE+YC9TxYwI9xdNKKEgnSRpJyqggnfPms/xLj/XkvKBt3cHy7S6XwKZ21e4YFgsxQ+yu4k4AyxRybMNut1S/T/V+kjOuAwFoUmkIi4X6FNDB0AQUVlWFXjMR4kgO0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794966818; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=nQKDTwDBF1/ggwMSLdB5vYCc2ZxBOitSyxm8OOIMw/4=; 
+	b=RbM5kyTWcHZbWshzpYxjOeMa8TybvYKlbFca3MwYZK6mJ9BlAp3Txk/zsaoyzlrJuTY7ZbDGGFCqX17bn2BDlg1nZsD/jZtZkDtFNnwjJN7uUU1TPk7lh0zCL3TdjeZb7hrMIgl4Fns/4Dtq10/XPLFRH+PWFhBK2wqlxm82I+4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=GedTyRb0MSUBj2wl2F/MatucdK90d24aNgeK5jnxVF7e/RobDbOiref3RtAZkvTJ6gbXnATRgk2ruYHqkoxUopB++CWV2ipt80WHouhyWzx2lZaZfSZyHdpOv9Cb5JlZE4ThtA7Hv58OoFY2u+o8eYRkSqYnOWRHGC95OrhDTj8=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=nQKDTwDBF1/ggwMSLdB5vYCc2ZxBOitSyxm8OOIMw/4=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794966815662459.097755113708;
+	Tue, 17 Nov 2026 17:53:35 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 691EC1805DB; Wed, 18 Nov 2026 02:53:32 +0100 (CET)
+Date: Wed, 18 Nov 2026 02:53:32 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: broonie@kernel.org, linux-spi@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, quentin.schulz@cherry.de, 
+	Lee Jones <lee@kernel.org>, Heiko Stuebner <heiko.stuebner@cherry.de>
+Subject: Re: [PATCH v3 6/7] spi: rockchip: Move to pm_runtime_resume_and_get
+Message-ID: <av0CaMF_jOyqMYA0@venus>
 References: <20261117235021.2013719-1-heiko@sntech.de>
+ <20261117235021.2013719-7-heiko@sntech.de>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <20261117235021.2013719-7-heiko@sntech.de>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.949.34
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_235047_861837_FBF0E932 
-X-CRM114-Status: GOOD (  27.69  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20261117_175344_864560_DED3B35B 
+X-CRM114-Status: GOOD (  22.61  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,189 +73,145 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8064872778072598450=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
 
-There are cases where SPI transfers are needed during times without
-interrupts like shutdown when a PMIC should turn off the system.
+--===============8064872778072598450==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="mxp2qjembnrdivaf"
+Content-Disposition: inline
 
-I2C already has atomic transfers for exactly that case, so introduce a
-similar concept for SPI. Similar to I2C, this is and should stay a
-corner-case, so is only allowed during the shutdown stages of the kernel,
-when interrupts are already turned off.
 
-So add an optional transfer_atomic callback, drivers can implement to do
-immediate uninterrupted transfers and let spi_sync() determine if the
-state is late enough to use it.
+--mxp2qjembnrdivaf
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v3 6/7] spi: rockchip: Move to pm_runtime_resume_and_get
+MIME-Version: 1.0
 
-For drivers without a transfer_atomic callback defined, the previous
-behaviour is kept for backwards compatibility and a helper
-spi_in_atomic_sync_mode() makes sure to only ever use this atomic mode
-during late system stages.
+Hi,
 
-spi_async() does not require a sleeping context for itself, so while it
-could in theory also be included, its caller waiting for the completion
-can sleep, so would still cause the splat about it.
+On Wed, Nov 18, 2026 at 12:50:20AM +0100, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+>=20
+> Currently pm_runtime_get_sync() is used, which increments the usage
+> count even if the resume was not successful.
+>=20
+> Move to the more modern pm_runtime_resume_and_get() which handles the
+> usage counter better.
+>=20
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> ---
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
----
- drivers/spi/spi.c       | 68 ++++++++++++++++++++++++++++++++++++++---
- include/linux/spi/spi.h | 11 +++++++
- 2 files changed, 75 insertions(+), 4 deletions(-)
+This only makes sense when combined with error handling. Keeping
+the use count increased makes more sense for the current code:
 
-diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index f04adf069ec1..95fa460ca3ff 100644
---- a/drivers/spi/spi.c
-+++ b/drivers/spi/spi.c
-@@ -5026,6 +5026,47 @@ static int __spi_sync(struct spi_device *spi, struct spi_message *message)
- 	return status;
- }
- 
-+/*
-+ * We only allow atomic transfers for very late communication, e.g. to access a
-+ * PMIC when powering down. Atomic transfers are a corner case and not for
-+ * generic use!
-+ */
-+static inline bool spi_in_atomic_sync_mode(void)
-+{
-+	return system_state > SYSTEM_RUNNING && spi_in_atomic();
-+}
-+
-+static int __spi_sync_atomic(struct spi_device *spi, struct spi_message *message)
-+{
-+	struct spi_controller *ctlr = spi->controller;
-+	unsigned long flags;
-+	int status;
-+
-+	if (!ctlr->transfer_atomic) {
-+		dev_err(&ctlr->dev, "No atomic transfer handler defined\n");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	if (__spi_check_suspended(ctlr)) {
-+		dev_warn_once(&spi->dev, "Attempted to sync while suspend\n");
-+		return -ESHUTDOWN;
-+	}
-+
-+	/* Not using spi_maybe_optimize_message, so just validate */
-+	status = __spi_validate(spi, message);
-+	if (status)
-+		return status;
-+
-+	spin_lock_irqsave(&ctlr->bus_lock_spinlock, flags);
-+	status = ctlr->transfer_atomic(spi, message);
-+	spin_unlock_irqrestore(&ctlr->bus_lock_spinlock, flags);
-+
-+	if (status == 0)
-+		status = message->status;
-+
-+	return status;
-+}
-+
- /**
-  * spi_sync - blocking/synchronous SPI data transfers
-  * @spi: device with which data will be exchanged
-@@ -5036,6 +5077,10 @@ static int __spi_sync(struct spi_device *spi, struct spi_message *message)
-  * is non-interruptible, and has no timeout.  Low-overhead controller
-  * drivers may DMA directly into and out of the message buffers.
-  *
-+ * During the time when the system is being shutdown and a transfer_atomic
-+ * function is set, this call may also be used from a context that does
-+ * not allow sleeping, i.e. with disabled interrupts.
-+ *
-  * Note that the SPI device's chip select is active during the message,
-  * and then is normally disabled between messages.  Drivers for some
-  * frequently-used devices may want to minimize costs of selecting a chip,
-@@ -5049,11 +5094,17 @@ static int __spi_sync(struct spi_device *spi, struct spi_message *message)
-  */
- int spi_sync(struct spi_device *spi, struct spi_message *message)
- {
-+	struct spi_controller *ctlr = spi->controller;
- 	int ret;
- 
--	mutex_lock(&spi->controller->bus_lock_mutex);
--	ret = __spi_sync(spi, message);
--	mutex_unlock(&spi->controller->bus_lock_mutex);
-+	/* Keep old behaviour for clients that tolerate the warnings */
-+	if (spi_in_atomic_sync_mode() && ctlr->transfer_atomic) {
-+		ret = __spi_sync_atomic(spi, message);
-+	} else {
-+		mutex_lock(&spi->controller->bus_lock_mutex);
-+		ret = __spi_sync(spi, message);
-+		mutex_unlock(&spi->controller->bus_lock_mutex);
-+	}
- 
- 	return ret;
- }
-@@ -5069,6 +5120,10 @@ EXPORT_SYMBOL_GPL(spi_sync);
-  * is non-interruptible, and has no timeout.  Low-overhead controller
-  * drivers may DMA directly into and out of the message buffers.
-  *
-+ * During the time when the system is being shutdown and a transfer_atomic
-+ * function is set, this call may also be used from a context that does
-+ * not allow sleeping, i.e. with disabled interrupts.
-+ *
-  * This call should be used by drivers that require exclusive access to the
-  * SPI bus. It has to be preceded by a spi_bus_lock call. The SPI bus must
-  * be released by a spi_bus_unlock call when the exclusive access is over.
-@@ -5077,7 +5132,12 @@ EXPORT_SYMBOL_GPL(spi_sync);
-  */
- int spi_sync_locked(struct spi_device *spi, struct spi_message *message)
- {
--	return __spi_sync(spi, message);
-+	struct spi_controller *ctlr = spi->controller;
-+
-+	if (spi_in_atomic_sync_mode() && ctlr->transfer_atomic)
-+		return __spi_sync_atomic(spi, message);
-+	else
-+		return __spi_sync(spi, message);
- }
- EXPORT_SYMBOL_GPL(spi_sync_locked);
- 
-diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
-index 0bf31776c54c..f62b21af5d75 100644
---- a/include/linux/spi/spi.h
-+++ b/include/linux/spi/spi.h
-@@ -461,6 +461,8 @@ extern struct spi_device *devm_spi_new_ancillary_device(struct spi_device *spi,
-  * controller for configuring specific CS setup time, hold time and inactive
-  * delay in terms of clock counts
-  * @transfer: adds a message to the controller's transfer queue.
-+ * @transfer_atomic: transfer a message immediately from a late-stage
-+ *	synchronous transfer
-  * @cleanup: frees controller-specific state
-  * @can_dma: determine whether this controller supports DMA
-  * @dma_map_dev: device which can be used for DMA mapping
-@@ -721,6 +723,15 @@ struct spi_controller {
- 	int			(*transfer)(struct spi_device *spi,
- 						struct spi_message *mesg);
- 
-+	/*
-+	 * Bidirectional bulk atomic transfers
-+	 *
-+	 * Special function that allows transfers in contexts where
-+	 * no interrupts nor DMA are available.
-+	 */
-+	int			(*transfer_atomic)(struct spi_device *spi,
-+						   struct spi_message *mesg);
-+
- 	/* Called on deregistration to free memory provided by spi_controller */
- 	void			(*cleanup)(struct spi_device *spi);
- 
--- 
-2.53.0
+pm_runtime_get_sync(); // keep use count increased on failure
+random_code();
+pm_runtime_put(); // always decrease the RPM use count
 
+Meanwhile your new code would result in double decrease on error:
+
+pm_runtime_resume_and_get(); // only increase use count on success
+random_code();
+pm_runtime_put(); // always decrease RPM use count
+
+Realistically random_code() will SError anyways without runtime PM,
+so it *should* actually be pm_runtime_resume_and_get + error handling:
+
+ret =3D pm_runtime_resume_and_get();
+if (ret)
+    return ret;
+random_code();
+pm_runtime_put();
+
+For this pattern pm_runtime_resume_and_get() is better than
+pm_runtime_get_sync().
+
+Greetings,
+
+-- Sebastian
+
+>  drivers/spi/spi-rockchip.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+> index 8bb55d52d346..ce1629e5a513 100644
+> --- a/drivers/spi/spi-rockchip.c
+> +++ b/drivers/spi/spi-rockchip.c
+> @@ -255,7 +255,7 @@ static void rockchip_spi_set_cs(struct spi_device *sp=
+i, bool enable)
+> =20
+>  	if (cs_asserted) {
+>  		/* Keep things powered as long as CS is asserted */
+> -		pm_runtime_get_sync(rs->dev);
+> +		pm_runtime_resume_and_get(rs->dev);
+> =20
+>  		if (spi_get_csgpiod(spi, 0))
+>  			ROCKCHIP_SPI_SET_BITS(rs->regs + ROCKCHIP_SPI_SER, 1);
+> @@ -734,7 +734,7 @@ static int rockchip_spi_setup(struct spi_device *spi)
+>  		return -EINVAL;
+>  	}
+> =20
+> -	pm_runtime_get_sync(rs->dev);
+> +	pm_runtime_resume_and_get(rs->dev);
+> =20
+>  	cr0 =3D readl_relaxed(rs->regs + ROCKCHIP_SPI_CTRLR0);
+> =20
+> @@ -924,7 +924,7 @@ static void rockchip_spi_remove(struct platform_devic=
+e *pdev)
+>  {
+>  	struct spi_controller *ctlr =3D platform_get_drvdata(pdev);
+> =20
+> -	pm_runtime_get_sync(&pdev->dev);
+> +	pm_runtime_resume_and_get(&pdev->dev);
+> =20
+>  	spi_unregister_controller(ctlr);
+> =20
+> --=20
+> 2.53.0
+>=20
+
+--mxp2qjembnrdivaf
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmr9BRkACgkQ2O7X88g7
++pofmQ/6A20dmueybUWTFdl0o+NBnIXaATuHRlPP3e09YZRc7fxiP+8xf1zDz6pu
+hZlrABEximLecP0t6Xb0v9JAz9GwafkCACqZgecmsnG68SLTBq+AF0GsPDbryFT5
+H0P1tR8DVGaj1c+B309/2R0cn8qzxCc/zPHN7VO3yCI8ro+jgdJbXfdY4yAabqv5
+mvVFISo3ornXBtMdQQvRo3cQSdLG/zwUi8apSbU4elGS4Y5EuFyZrvfEN537/MII
+r5atMh5a1wIfswrMLwCqCNW229siyPLLlz6bG1WpMMD6PRtYnW/XjSMp0QvlZ82J
+M0p/ykLDcX4BIv/EU1xOdIbqXO+23PRLX2yGqiwW5IzI+J3294VL98YnKfHuKFDd
+glVT71V+NhTTz5+4bsILZVTnJRP+nzzBtZRnjTyVL3TkNFwufovCdGMukrhfO0UU
+BeaTewGu1z3af/ldaKzX22UsmKBNqr+/8euDz+qvk//vst0jcKTkMWIdOUKYtFHZ
+jh9JRSf+wwWVzxkDUulOhyn8RiArFKLuEXq0qZTSUNpCBvJJRojFd/xrvzIETWy0
+S/wYHd44jG+t1Yu9g9m8d78YM9rAyEyrLOnrEE9NiqURWWrePI/pQZRCEf11e4Zb
+1vtJFoxKnnARp6KjyuJW7CGuJa2Amtf7EVpTiWB7Rgqf1OgR0wc=
+=2x6H
+-----END PGP SIGNATURE-----
+
+--mxp2qjembnrdivaf--
+
+
+--===============8064872778072598450==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8064872778072598450==--
+
