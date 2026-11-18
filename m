@@ -2,57 +2,141 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9ABFD606A31C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 16:10:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0F849606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 16:17:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NLAehoYS
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YPzv//UX;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=TpSRxbv0;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=ZDZWfroi
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Cc:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=xB+lNZ5nGosJmxynu/NomqZ5o/FXmGOt43BJLXbskVw=; b=NLAehoYSJMXmz0r/tS4cLzVCYm
-	KmaKKZ0koRWsTjfaVmpUKRUjgIK5AkwTPo1y+nTZbDkiwg1Mq9+XX3aNIEepQT3g3mzQXfAIcz7Vc
-	Ac7eLQlv7aRHRqvcXOB4IqfjcCrnHLT8AhR/GA8dC8dQQxST3+CDpdDv0exVveYUCXkt/cfegNAHM
-	L9/bkjO/9TkjBSbTJlXV+9W/z16YJoYQMYUt/LDkaFtBbeH4iOh/d8jNNzvJhYLli9IXbCgI9rK+z
-	B7uGWQkwt3ul4zvuEM+UQjSmIsQQ4sboEIQEUwKf7JVxCZMB4IJTPw3sqAJTgM0KmjaiXJ4PXqkdN
-	nCCzUOmw==;
+	bh=x31PPm9EtolFalHAi7lRzKXEVUBkUCjYLuVHWwNxrek=; b=YPzv//UXwKZSSZQ/kKlxhUxrUq
+	GsFPqgtrSVgVrtTQSBdheAZwwlqGXfIl2oGxUNGSzXEJjtzAUvf3jaHSlcTEgm751j5pySUxgcbAw
+	ppi8pE9f1mKY2iw13jVMuX9S+ZWQVamFoloxve57PyNsXV+ptUEWKm/lXQbTaZg0zgqn9fpAn72gh
+	/x2dFuSiQBoPmeypgxci70vtPYj79ZOEumoZYcXcInBwV/QouawEbBKY2fXG6oBdEZtQ/ifgbebb5
+	ze9WWGLQEzR7R9LQum1/RiEcPkX9IL80y2Dx3uEfaf3wnvxcoXP6GNNLpI3sa6gbuDl/QWJ50RYem
+	ngRiI5gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTiF0-00000009PxV-2qJz;
-	Wed, 18 Nov 2026 16:10:34 +0000
-Received: from woodpecker.gentoo.org ([140.211.166.183] helo=smtp.gentoo.org)
+	id 1xTiLC-00000009Qm9-2zCc;
+	Wed, 18 Nov 2026 16:16:58 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTiEx-00000009Pwr-3wZh
+	id 1xTiL9-00000009Qju-37re
 	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Nov 2026 16:10:33 +0000
-Received: from 9.b.8.c.1.6.8.7.6.b.f.2.6.1.2.4.c.6.e.0.c.6.2.0.0.b.8.0.1.0.0.2.ip6.arpa (unknown [IPv6:2001:8b0:26c:e6c:4216:2fb6:7861:c8b9])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: chewi)
-	by smtp.gentoo.org (Postfix) with ESMTPSA id 23975342899;
-	Wed, 18 Nov 2026 16:03:16 +0000 (UTC)
-Message-ID: <08cc96c5171fc969b074371692e6d95d46eba60b.camel@gentoo.org>
-Subject: PCI: dw-rockchip: Unable to boot Quartz64 Model B from NVMe since
- reset changes
-From: James Le Cuirot <chewi@gentoo.org>
-To: Wilfred Mallawa <wilfred.mallawa@wdc.com>
-Cc: Niklas Cassel <cassel@kernel.org>, Manivannan Sadhasivam	
- <manivannan.sadhasivam@oss.qualcomm.com>, Bjorn Helgaas
- <bhelgaas@google.com>, 	linux-pci@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Shawn Lin	 <shawn.lin@rock-chips.com>
-Date: Wed, 18 Nov 2026 16:03:11 +0000
-User-Agent: Evolution 3.60.2 
+	Wed, 18 Nov 2026 16:16:57 +0000
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6AIEIDS61431822
+	for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 16:16:54 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=qcppdkim1; bh=iTvIF9xRP0uN+SwNc6JxvB4VOROFp75+Uu1
+	hHT20jpo=; b=TpSRxbv09hrbhgSonNLCOwk+MS7oGBadtVKM++L5ec7fAptEewo
+	FVMTMTrDhoTtW2NO/4/YK82Ee7wiUbgSNcNz18h0t6fSQNKunnJ4dIp7e4O2NYBY
+	37CN4Ry7FGuR8yn8tNVfevW5+Rwng9zBK7p2u4aZZOz51PJZcPeETcbsCFas/pDl
+	hw5KRSFr7naDwvmfU8M9AghqD2YREEwyNfoDBaEQGVwCOYC6MzKftNhbrbLd0hSJ
+	gfrIa6dnATeR1c2dRNHaaxRU6rb7rqwyIXZOaSxH/+E5UV+HelYZ+ceIjwH5Jaxu
+	8KooB8qHBkMqfsf2w+VxT+og4RlV1MLXaEA==
+Received: from mail-vk1-f200.google.com (mail-vk1-f200.google.com [209.85.221.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j1dnrrmbr-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 16:16:54 +0000 (GMT)
+Received: by mail-vk1-f200.google.com with SMTP id 71dfb90a1353d-5ece3cd5a00so734595e0c.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 08:16:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1795018614; x=1795623414; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=iTvIF9xRP0uN+SwNc6JxvB4VOROFp75+Uu1hHT20jpo=;
+        b=ZDZWfroiLjja3PlYAx5sp1BKsnHSSTWPNIVR6mLP2jcjiuvCHQq3vG1C7/IQJ2frPY
+         FKYgCafoQAk3wl+NFajANkYVPQy6ryey0z71zxn2tszJmcNruJGZwqQHeOFTwOABSddu
+         L2weKpGgJZVQEAaAwupcR/HIyNs1HKd7otrCp31yw4euGQsLJ5kF7Fb12MQeOJmVrDhm
+         K6kj6YAfoXrWwVVdCW13/0dkjmvCKUddaoHK/mL4bKFzmXnM2DD5YSViMr2ukMkQV6DM
+         HgCTtqPxy5SXrUV+H8GN7DQh7f7Yw8l27PeL6On/ubAupvT41e7bliZsYy0lmRjTkQdp
+         Bqbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795018614; x=1795623414;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=iTvIF9xRP0uN+SwNc6JxvB4VOROFp75+Uu1hHT20jpo=;
+        b=ovlLfJcacRGwLO8JlCJ8fSo9BCnmFNaR1oAMRgga6F4wqNRpnBAuZahucJ2d0t+ll1
+         /K7JEywveK+J100HxkjnEiiqcOfQGQj5PPP5rv7TnC7p/IAXmLt5KrGoGkIBOwFuxk4K
+         CNA/bwSnO/DOVjZovipy/gF3ldnMEOMbJ3RNwFpPkktKvnAMawgPSDnjCLqOc9HYe/tm
+         xOPkfGtCQAS6Uhech4amRZRmITzIcjuhqnqlT9cCGgtPCtnUWEEKTa3SUH5nG/khE7qz
+         HU+J3+4ywCWAmLdmP2+GPcoLPq3No+gKzc89ZynJhWYhEnoENeedjAUJDJAdZ6X3Y0L0
+         dzXQ==
+X-Forwarded-Encrypted: i=1; AL+hErGQ9n6eOVBVmT1pUTLgEbD4N5MtMOpuLd4YDR2qfee7VIulKBzeCHlFfYZC2H4m/tlmcIDVHOji169hN/k7Ew==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/GWYQBRl5QKFh/ssMcAhxBwvW4ZK68zxee83CPV6IC5O58Qlad
+	nUNm4Jd0kFblpe1dZb8cHsiNLpr952pAXi5qaeDlATYOxO9vSFdX5rfxicozvM+Gpegr2Xhrvuu
+	t8BhW7Jdesygp5+JVkgVdw90sxf4C+f54+jIwbCzH93bHQTPBY+ki7O/bpD548naH+PqGo/Zahc
+	E=
+X-Gm-Gg: AYBFou0aRgSnupVOnWaQP0kyoTYWjvZX9LzqlpJylEWKl8sjTU7zZoOqXl9dip8Q5zM
+	sa8ikFZtBBTHvxH5nvUlZrncms0C/GnN5U3qHfJldANGGMh6/KqWyfsavuakD07zTY+Iy6ctRvk
+	8jEvCOyDdrQ54zLobNtoyAFw7RPwxhBzxPvD8G0m1pnCYmOrurh8JnHqNxsKGq9gRCj2jooMF/t
+	XxIfMuXiaSL3KUzwlkRX1qOcG6tSLQQWXAuKLWjbcFp240aId0YyGJqewpxMdQKJm0xo/U5qXlv
+	3bECMZhiKZEGyJXsCRFplv4koNiN/VJbxupUzPl0HrNIQMp9GOWxqQd6zN2qdKIvQ/p4Savp17W
+	UopvWvX+oNjxs6nAi2ZMhcouQ/Ph7A60FI8uB81TiYfPKabDN+RzZwkhin1GZggjxi11uS5pC0Y
+	+x
+X-Received: by 2002:a05:6122:1d48:b0:5ea:d2fa:c2e6 with SMTP id 71dfb90a1353d-5ee646fe5e0mr1635598e0c.14.1795018613847;
+        Wed, 18 Nov 2026 08:16:53 -0800 (PST)
+X-Received: by 2002:a05:6122:1d48:b0:5ea:d2fa:c2e6 with SMTP id 71dfb90a1353d-5ee646fe5e0mr1635579e0c.14.1795018613364;
+        Wed, 18 Nov 2026 08:16:53 -0800 (PST)
+Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:d355:fe70:14a0:ac8d])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb78418853sm217090495e9.8.2026.11.18.08.16.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Nov 2026 08:16:52 -0800 (PST)
+From: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
+To: rafael@kernel.org, tglx@linutronix.de
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+        Andrew Morton <akpm@linux-foundation.org>,
+        Peter Ziljstra <peterz@infradead.org>,
+        Bradley Morgan <brads@mainlining.org>,
+        Heiko Stuebner <heiko@sntech.de>,
+        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+        linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
+Subject: [PATCH RESEND v2 0/2] powercap: idle_inject: Create threads on demand
+Date: Wed, 18 Nov 2026 17:15:25 +0100
+Message-ID: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com>
+X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTE4MDA2NCBTYWx0ZWRfXwEvz298jwezw
+ hqvKpvuHaKuSUZA9NsZ19kGARMji6rfnp+pwG1QoumZz+b/B/n5zJMMJiKNBmxbRqSdZJOYxaKI
+ 78Wc58CBeNQg0zjFsOzNurpGuNmmIs6OuKM11nptF9p2PHIjP39zhWwnw5eiYLRl75bB6ULjaLq
+ vl550mZHHj5icO/8x0ybrxNFQ6lHBQE5fVmodQsMUNCdoAyexziPx62iEoTsEoLi3x32Rv7Xfa9
+ uGiVq7pdNm1U/b17xZS2ecpozqMxhVffr8IqZG7k8xs/JtbKJhZ849pGVORmKkEoufXktYskJnm
+ Z1J1zHovtCtwUL8AhzWZhXIA6eF9AaM7x/wxX/Zyrp8kfNdPOL6WCY/2C9lY104bxdKRLE0yTdV
+ YaVcmA54p6+oiKBOF1xEZSsLx22z6afguPpVZ/ZbthBeY1kG4HIALrikLNIY6dOXRKISEbzJCnu
+ NVmTRV9ljsWFBaV4jMw==
+X-Proofpoint-GUID: 4weZ-Y0L1T7zSzbvsyPMjN1X8XFkHwJ_
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTE4MDA2NCBTYWx0ZWRfXwccQHJNBRAOH
+ D2blct9yX1fj6h04dK7+5DXgo81/zVzNrXcMCKMbn4MEgvZ5yDcLvX86aHJGQe+WxygC+cWmN95
+ 9jH1Ubunx0y12C5mQel3szP3svQBZMA=
+X-Proofpoint-ORIG-GUID: 4weZ-Y0L1T7zSzbvsyPMjN1X8XFkHwJ_
+X-Authority-Analysis: v=2.4 cv=bfH+w+PB c=1 sm=1 tr=0 ts=6afdcf76 cx=c_pps
+ a=wuOIiItHwq1biOnFUQQHKA==:117 a=xqWC_Br6kY4A:10 a=zJRp6_cAMcgA:10
+ a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
+ a=3WHJM1ZQz_JShphwDgj5:22 a=Z4Rwk6OoAAAA:8 a=VwQbUJbxAAAA:8 a=OuZLqq7tAAAA:8
+ a=x1L0ys6JoTQEvF2T-JwA:9 a=XD7yVLdPMpWraOa8Un9W:22 a=HkZW87K1Qel5hWWM3VKY:22
+ a=AKGiAy9iJ-JzxKVHQNES:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-11-18_04,2026-11-16_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 suspectscore=0 adultscore=0 malwarescore=0 bulkscore=0
+ spamscore=0 lowpriorityscore=0 phishscore=0 clxscore=1015 impostorscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611180064
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_081032_011559_92320BB2 
-X-CRM114-Status: UNSURE (   4.34  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -4.2 (----)
+X-CRM114-CacheID: sfid-20261118_081655_900006_82D31332 
+X-CRM114-Status: GOOD (  14.91  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,137 +149,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
+Message-ID: <20261118161525.sNiRWKbl-kcG3prb3qkJfdq0j0kTSTmUj_d4-b6TgKU@z>
 
-Hello Wilfred,
+Idle injection currently registers per-CPU kernel threads during early
+initialization, including on CPUs for which no idle injection device
+will be registered.
 
-Unfortunately, since your commit "PCI: dw-rockchip: Implement
-.reset_root_port() and use for link down" (b376b3ff9cb0527), I have been
-basically unable to boot my Quartz64 Model B from NVMe. Sometimes if I wait
-long enough, it will eventually work, albeit very slowly. If I revert this
-(and 4e9f69d08253) against 7.3.5, then it boots normally. Here is the relevant
-output.
+This series makes thread creation follow the lifetime and CPU mask of
+each idle injection device.
 
-rockchip-dw-pcie 3c0000000.pcie: host bridge /pcie@fe260000 ranges:
-rockchip-dw-pcie 3c0000000.pcie:       IO 0x00f4100000..0x00f41fffff -> 0x00f4100000
-rockchip-dw-pcie 3c0000000.pcie:      MEM 0x00f4200000..0x00f5ffffff -> 0x00f4200000
-rockchip-dw-pcie 3c0000000.pcie:      MEM 0x0300000000..0x033fffffff -> 0x0300000000
-rockchip-dw-pcie 3c0000000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K, limit 8G
-rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
-rockchip-dw-pcie 3c0000000.pcie: PCI host bridge to bus 0000:00
-pci_bus 0000:00: root bus resource [bus 00-0f]
-pci_bus 0000:00: root bus resource [io  0x0000-0xfffff] (bus address [0xf4100000-0xf41fffff])
-pci_bus 0000:00: root bus resource [mem 0xf4200000-0xf5ffffff]
-pci_bus 0000:00: root bus resource [mem 0x300000000-0x33fffffff]
-pci 0000:00:00.0: [1d87:3566] type 01 class 0x060400 PCIe Root Port
-pci 0000:00:00.0: ROM [mem 0x00000000-0x0000ffff pref]
-pci 0000:00:00.0: PCI bridge to [bus 01-ff]
-pci 0000:00:00.0:   bridge window [io  0x0000-0x0fff]
-pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
-pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
-pci 0000:00:00.0: supports D1 D2
-pci 0000:00:00.0: PME# supported from D0 D1 D3hot
-pci_bus 0000:01: busn_res: can not insert [bus 01-ff] under [bus 00-0f] (conflicts with (null) [bus 00-0f])
-pci 0000:01:00.0: [1e0f:0009] type 00 class 0x010802 PCIe Endpoint
-pci 0000:01:00.0: BAR 0 [mem 0x00000000-0x00003fff 64bit]
-pci 0000:01:00.0: 4.000 Gb/s available PCIe bandwidth, limited by 5.0 GT/s PCIe x1 link at 0000:00:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe x4 link)
-pci 0000:01:00.0: ASPM: default states L1
-pci 0000:00:00.0: bridge window [mem 0xf4200000-0xf42fffff]: assigned
-pci 0000:00:00.0: ROM [mem 0xf4300000-0xf430ffff pref]: assigned
-pci 0000:01:00.0: BAR 0 [mem 0xf4200000-0xf4203fff 64bit]: assigned
-pci 0000:00:00.0: PCI bridge to [bus 01-ff]
-pci 0000:00:00.0:   bridge window [mem 0xf4200000-0xf42fffff]
-pci_bus 0000:00: resource 4 [io  0x0000-0xfffff]
-pci_bus 0000:00: resource 5 [mem 0xf4200000-0xf5ffffff]
-pci_bus 0000:00: resource 6 [mem 0x300000000-0x33fffffff]
-pci_bus 0000:01: resource 1 [mem 0xf4200000-0xf42fffff]
-pcieport 0000:00:00.0: PME: Signaling with IRQ 86
-pcieport 0000:00:00.0: AER: enabled with IRQ 95
-pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-nvme nvme0: pci function 0000:01:00.0
-nvme 0000:01:00.0: enabling device (0000 -> 0002)
-rockchip-pm-domain fdd90000.power-management:power-controller: sync_state() pending due to fdeb0000.rga
-nvme nvme0: D3 entry latency set to 10 seconds
-hwmon hwmon2: temp1_input not attached to any thermal zone
-nvme nvme0: passthrough uses implicit buffer lengths
-nvme nvme0: 4/0/0 default/read/poll queues
- nvme0n1: p1 p2 p3 p4 p5
-nvme nvme0: frozen state error detected, reset controller
-rk_gmac-dwmac fe010000.ethernet eth0: Register MEM_TYPE_PAGE_POOL RxQ-0
-rk_gmac-dwmac fe010000.ethernet eth0: PHY [stmmac-0:01] driver [RTL8211F-VD Gigabit Ethernet] (irq=POLL)
-dwmac4: Master AXI performs any burst length
-rk_gmac-dwmac fe010000.ethernet eth0: No Safety Features support found
-rk_gmac-dwmac fe010000.ethernet eth0: IEEE 1588-2008 Advanced Timestamp supported
-rk_gmac-dwmac fe010000.ethernet eth0: registered PTP clock
-rk_gmac-dwmac fe010000.ethernet eth0: configuring for phy/rgmii link mode
-rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
-pcieport 0000:00:00.0: Root Port has been reset
-nvme nvme0: restart after slot reset
-nvme nvme0: D3 entry latency set to 10 seconds
-nvme nvme0: 4/0/0 default/read/poll queues
-pcieport 0000:00:00.0: AER: device recovery successful
-pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-nvme nvme0: frozen state error detected, reset controller
-rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
-pcieport 0000:00:00.0: Root Port has been reset
-nvme nvme0: restart after slot reset
-nvme nvme0: D3 entry latency set to 10 seconds
-nvme nvme0: 4/0/0 default/read/poll queues
-pcieport 0000:00:00.0: AER: device recovery successful
-pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-nvme nvme0: frozen state error detected, reset controller
-rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
-pcieport 0000:00:00.0: Root Port has been reset
-nvme nvme0: restart after slot reset
-nvme nvme0: D3 entry latency set to 10 seconds
-nvme nvme0: 4/0/0 default/read/poll queues
-pcieport 0000:00:00.0: AER: device recovery successful
-pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-nvme nvme0: frozen state error detected, reset controller
-rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
-pcieport 0000:00:00.0: Root Port has been reset
-nvme nvme0: restart after slot reset
-nvme nvme0: D3 entry latency set to 10 seconds
-nvme nvme0: 4/0/0 default/read/poll queues
-pcieport 0000:00:00.0: AER: device recovery successful
-pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-nvme nvme0: frozen state error detected, reset controller
-rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
-pcieport 0000:00:00.0: Root Port has been reset
-nvme nvme0: restart after slot reset
-nvme nvme0: D3 entry latency set to 10 seconds
-nvme nvme0: 4/0/0 default/read/poll queues
-pcieport 0000:00:00.0: AER: device recovery successful
-pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-nvme nvme0: frozen state error detected, reset controller
-rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
-pcieport 0000:00:00.0: Root Port has been reset
-nvme nvme0: restart after slot reset
-nvme nvme0: D3 entry latency set to 10 seconds
-nvme nvme0: 4/0/0 default/read/poll queues
-pcieport 0000:00:00.0: AER: device recovery successful
-pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-nvme nvme0: frozen state error detected, reset controller
-rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
-pcieport 0000:00:00.0: Root Port has been reset
-nvme nvme0: restart after slot reset
-nvme nvme0: D3 entry latency set to 10 seconds
-nvme nvme0: 4/0/0 default/read/poll queues
-pcieport 0000:00:00.0: AER: device recovery successful
-pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-nvme nvme0: frozen state error detected, reset controller
-nvme nvme0: D3 entry latency set to 10 seconds
-nvme nvme0: 4/0/0 default/read/poll queues
-pcieport 0000:00:00.0: Root Port has been reset
-(and so on...)
+The first patch adds an optional CPU mask to smpboot thread descriptors.
+The mask restricts thread creation, CPU hotplug handling and teardown,
+while preserving the existing behavior for descriptors without a mask.
+Registrations sharing task storage are checked for overlapping CPU
+masks under smpboot_threads_lock before any threads are created.
 
-Regards,
-Chewi
+The second patch uses this support to register idle injection threads
+when a device registers and destroy them when it unregisters. CPU
+ownership claims, registration rollback and thread teardown are
+serialized to prevent overlapping registrations from sharing threads.
+
+The series was tested on Rockchip RK3588. The updated smpboot code and
+idle injection code also build with W=1. Concurrent registration and
+CPU hotplug runtime testing remains outstanding.
+
+Changes in v2:
+- Reject overlapping smpboot registrations sharing per-CPU task storage
+  with WARN_ON_ONCE() and -EBUSY, as suggested by Thomas Gleixner.
+- Default a NULL CPU mask to cpu_possible_mask at registration and
+  remove redundant NULL-mask checks from the lifecycle helpers.
+- Use scoped guards for the smpboot registration locks.
+- Document the overlap restriction and registration return values, and
+  update the core commit explanation.
+- Add Bradley Morgan's Reviewed-by tag to the idle injection patch.
+
+Cc: Andrew Morton <akpm@linux-foundation.org>
+Cc: Rafael J. Wysocki <rafael@kernel.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: Bradley Morgan <brads@mainlining.org>
+
+Daniel Lezcano (2):
+  smpboot: Allow restricting per-CPU threads to a CPU mask
+  powercap: idle_inject: Create per-CPU threads on registration
+
+ drivers/powercap/idle_inject.c | 69 +++++++++++++++++++++-------------
+ include/linux/smpboot.h        |  6 +++
+ kernel/smpboot.c               | 45 +++++++++++++++++-----
+ 3 files changed, 83 insertions(+), 37 deletions(-)
+
+
+base-commit: c03c1a14507dfaf8b856c2608f9ac216021fc222
+-- 
+2.43.0
 
 _______________________________________________
 Linux-rockchip mailing list
