@@ -2,145 +2,65 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 95BD4606A332
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 10:34:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D3C0E606A33A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 10:41:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aXaEDW2Z;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=d2PcsH4x;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=MxC6/goI
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=apzc7p1J;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=aHzdJmhr
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=xJqWdps00Nyfb2oghIPp0rIsVn3QQVsMnddIrXTHJCY=; b=aXaEDW2Z3vr0gNM9+ZQArbTU+6
-	veLkjlG5u5OvotuO0neNVoPixwOt5aEHUXiO6FSHF0vCYLbmnp2Hsd3KbPLKfJI9+sAZN5bka+Bz+
-	ldQk8DJXCH+f90C0TNCuOuXXy3HETstUiJfzulbYrdwg5GINyKdScJpW3zGIzEBgNhhML3U6a7vrT
-	sqsU57w7wHsF+/R89EfrN/fBsVOru0wsdnksVzDY4s+7R6HewAB/9zH95o7y34fLREj5c1GYqAr9C
-	N2/kI0xvGruhLk02xA4oFeJ6BevGbkITtWz9xm+1YEs6KHWGnNJGQOjlYFBuKFv5xwCqUMojZheO/
-	ADJTcKJg==;
+	bh=g1RlZTCi9HTmD3dLYypXKWxxbutGYZAxO3DYA8TfqSg=; b=apzc7p1JEgaLBzpnLhnfCksm//
+	RQrroZOJrLLush2VCzeH5MHMxJqgY+Hly7/HzcdeVJetLWR4EkJzqkk3RQwaOVf1I6hjPhk0ZcJH3
+	zyWG6eAFCu+ehygOYzX20s7+1qa2XUIKZsaBV1GcrTvMsbNRXyNkEL54IBbuV8gnBO3Iq5XZCPMYo
+	BfHzRPeTOMtFdt01aiGgnYagrFEJFoLAt8vs60qrkeAjcEdwrcmKJZXUKKTEwEWipf1yNZwtZWXas
+	lAXrcWqixwGgbFRirYkaeTxrqDlYWL+JgXzNoqPgJ5p4QJ8JPQRC8rK+0s4ubKvs9sWRpgD2MVpYZ
+	22gcXcrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTczc-00000008ZIp-128n;
-	Wed, 18 Nov 2026 10:34:20 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1xTd6X-00000008awN-0rTJ;
+	Wed, 18 Nov 2026 10:41:29 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTczY-00000008ZFG-2Kn1
-	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Nov 2026 10:34:18 +0000
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6AI9k8N92398689
-	for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 10:34:16 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=aGe5/35woBl
-	dXiPfqQ49uVeqf5gd1K2N9K/JlpgH0bM=; b=d2PcsH4x0fz27gATpvfFFjXUxTP
-	Iqx+SHqvWPtcqOe4Nxybmu0h89MAVxrgdfDrOs1maertntw//gd1ZBJMh4Ji0HR0
-	xUDL6FfeQ+rBgBcpwwSD5em/fHxN5aTuuPH6I+v9FtJULznJpih9vTAmvhWa6q/X
-	S1M3E22AYYZs+GAVKWGxSo6TOCIz8+YX3i72Q61Jlrlyk1GChiS+J2cS2HealNJ3
-	Theko5Uolj2m7PSzSXLhJEbG2yLe5Ll3CZTt7MG7zMNggyXz3Y9s/yiNtd3sBvbB
-	NaGx5AfukLxxkGH+RoCrvQNA5Bxuta00iVhUSBHXWaPo0OrmQB3Z5gzPJJg==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j0yv92k7u-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 10:34:15 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-946038e22f5so189196385a.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 02:34:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1794998055; x=1795602855; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=aGe5/35woBldXiPfqQ49uVeqf5gd1K2N9K/JlpgH0bM=;
-        b=MxC6/goIB6oNJm2/WnQ41Xo3TyWn2gyDmh1mM8rnfpjBRDOxMm8XzhnNZDendLBsbp
-         JEnUVu7xzEDyn9z+ljxA69MDj59oplzbIOlsEvy5pGNxzpiftsvjmCFDcli8TsZdONTP
-         8bXQhIGk6+vQrurmjZ0xvaixMsqJOhDUHVBKQY25kc9vsEVUqB8ZFyoE6xIw7hhmXKzc
-         GcsQ1n5BHXgCAfxTp4wxHYTlUyBxZV5+QCnfKM/bhVQP9WYb+hkYwvLJ7mkCQlBu6WRr
-         uXDdZuY9iHLOjfp7Y487fiMtLUasOVZH3jSdPvG7R0K/j5GHCGNANSSuszJiyRuwIvn6
-         /bJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794998055; x=1795602855;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=aGe5/35woBldXiPfqQ49uVeqf5gd1K2N9K/JlpgH0bM=;
-        b=pkRQ0rHqvsG2Sisb9ebJZx2dJU5re7bdNEC33DHgDhMIjUqIln+pVuqdgU2CDkiGP+
-         4qYNTagOlBSRHu6ak3vq6wknWPZ/Izki+zrn3jy4442nTD03RpUGsMOIV6InaOp4cgkM
-         7Qgy2djSirSg3sRVQ+pg/2paU+ePeoBCwzKH/HyV//cvyAksfXbJSWIowohsVd7k6+NW
-         HKLBDzOytI+2g5Sy9UUqOUjFRT2xUKIOyhhOFpAVGj1odgg74jm7O6nrxSvMFLqIQ0pd
-         BTZUiox4K96W6Un7/JZ4tqsjCPiFHtJEou1MUFQC6H6SmKbNpQhW3QpeWJPb96oII+J9
-         KilA==
-X-Forwarded-Encrypted: i=1; AL+hErHjgq3BUFRH0L/+7pvqBu9hbZYpWUJvR6ilUV7cx9z+O3Xmh4nxvaNMLK9dBOjgJE+q9MH++sTWY9G9rcgdQA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8aHyWNSL7CN+RLp2RX3QDLRuRTzeW/8mchQwkZBTbIbATTfNWp
-	cofW0rVlGWNcx7RfjNaF2Dti9ITqYNyaxa3hUUYu4chYt9D6tOj4WbaADitc8B8lcCnGXN54Co/
-	zyZcNrxy4BWF6LkuBEPME8J8mQ86ccZ/9GMWykKvs6Uc+1jTBubqqXYUNfg5bX7v59L1cr/TNTq
-	o=
-X-Gm-Gg: AYBFou03zxjICN7DmxTO4dZpMKU75NyOmU56RzcwDPSkXD5OTAFQ6Obj5/DET9S/tes
-	fT8ZqGhFtBxpspzg1hLyKnv3iCH2rcu9E8oBqpJrJ57oJY2q5+Uu12OaoG2RwlcDTyWpFYiT2oI
-	k3CUoegNWFHtX9VQcvH5lQ6s8JV8IxKUwn0HhXrWHDcw6LE635mTT9+VQBU3dOYzI+v2jOJhvg/
-	sr/kV2VAEEtr1X1GakealFa87NyeSZplMFvJPKKgP4pJmp2owq403TGguRbMx3D6pN+XtYpFFUI
-	kNb6KZUGG2Sxq1sgshOfzf7wgQPOw5pZr7iR0UvaohNc+MPc4frCywC0kC1wmxL1jckDyorZDJc
-	j+pXdRK4GpNiCmss7DSAA1P58BnOh6krQDGg/tQ9XKohQhlSRg5lfak+574C4nOPsBaioJNr9sr
-	0O
-X-Received: by 2002:a05:620a:3710:b0:947:8344:17a7 with SMTP id af79cd13be357-949995f8716mr384303185a.11.1794998054839;
-        Wed, 18 Nov 2026 02:34:14 -0800 (PST)
-X-Received: by 2002:a05:620a:3710:b0:947:8344:17a7 with SMTP id af79cd13be357-949995f8716mr384298685a.11.1794998054258;
-        Wed, 18 Nov 2026 02:34:14 -0800 (PST)
-Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:d355:fe70:14a0:ac8d])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4a650d2ecd0sm4519631f8f.8.2026.11.18.02.34.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Nov 2026 02:34:13 -0800 (PST)
-From: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
-To: rafael@kernel.org, tglx@linutronix.de
-Cc: Andrew Morton <akpm@linux-foundation.org>,
-        Peter Ziljstra <peterz@infradead.org>,
-        Bradley Morgan <brads@mainlining.org>,
-        Heiko Stuebner <heiko@sntech.de>,
-        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-        linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
-        linux-pm@vger.kernel.org (open list:POWER MANAGEMENT CORE),
-        linux-kernel@vger.kernel.org (open list)
-Subject: [PATCH v2 2/2] powercap: idle_inject: Create per-CPU threads on registration
-Date: Wed, 18 Nov 2026 11:33:49 +0100
-Message-ID: <0fd0b28b29f6d9ad38bc91f3582bfee511fbf4f8.1794992905.git.daniel.lezcano@oss.qualcomm.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com>
-References: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com>
+	id 1xTd6V-00000008avI-3gWc;
+	Wed, 18 Nov 2026 10:41:27 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4F5FA430AF;
+	Wed, 18 Nov 2026 10:41:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 050011F000C4;
+	Wed, 18 Nov 2026 10:41:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794998487;
+	bh=eA5bJYl2DX4B2F944LFo8gIjbAOwIGsts+2iJmGpa8o=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=aHzdJmhrk8AvQMP52KBWR3kJhhJe6X/JHFc7uTrs9EDvrY43MMWzcSg5DDKNd2TY5
+	 6o2+AfxvyYC0wvWPhtioeeS0TzXrzwWBeqs4qeehRlvKjTFHoihcYFt2rJyz3FOJ22
+	 Mdx+krFvoBCZYVDZZo/aZrQMAxJCfP46uOBojDxMd58fnNCzkhB1hUeGBypRZRzuk7
+	 ZjZtgXSsIL5Hexl/KsBsLkpP+UD5XrRX0Z+GIhhXcpKvC9oOh9SxGH8qo0vp6w/mYt
+	 soRJFkgckm2aA04YpxiUPCsy/LEeKZ+g5LJEkC1NYrxwuiqH7Qfb22CTIHU40+qbpi
+	 Yq01+xFRqcPzg==
+Subject: Re: [PATCH net-next v3 1/2] dt-bindings: net: rockchip-dwmac: Add RK3572
+From: netdev-bot+sashiko@kernel.org
+To: 1579567540@qq.com
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@kernel.org,
+ kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, heiko@sntech.de, david.wu@rock-chips.com,
+ alexandre.torgue@foss.st.com, peppe.cavallaro@st.com, joabreu@synopsys.com,
+ maxime.chevallier@bootlin.com, mcoquelin.stm32@gmail.com,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
+Date: Wed, 18 Nov 2026 10:41:25 +0000
+Message-ID: <179499848555.3136.11343853995146230295@kernel.org>
+In-Reply-To: <20261116-add-board-ok3572-c-net-v3-1-a957fdcd9c7a@qq.com>
+References: <20261116-add-board-ok3572-c-net-v3-1-a957fdcd9c7a@qq.com>
+X-sashiko-severity: Medium
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTE4MDA0MSBTYWx0ZWRfXxQn6tSjB/Slj
- YHW0grExxSRP7St/rvBn8aGGd7qihFv4FfFhcU4S4Llyhn5sIXLzXcRTBs6Wv3lbOOg0MZK2EML
- TYO+eS2AIaOfo19TfhZYl/V0DzUyAKhfBSie61oqoXKKbtONx9GZdVfzcniO4WFukqUxyVK/HS3
- BhlHv3GLGgIxEv65YOQItYJCUQJs4oBk/kunrHcG/wPT4Glc5gzfm7mq3Sa9nWqnbt+fOTUOzjA
- Yi3sbTsJVn4YU92EUgcPztQuX4rSYcdNKFD3ELraVxRnVfvRTkuBES6gC6wA4QI8KiZU9N2ZPP6
- ru8ARgfwdFgrnuubUWQrYwz88nVxYQfL/2xEZxJZvGGxE9BquZ4qoiEQq1cYVby46TqvU5rBvW0
- pc+37LsV6Jq17MuoFRuasQNU7uPjqiRfwFayOym67dKUT6FqtP5p1x0wN7uZH88HFymDi6b4iCC
- 4Qf+JBfTd+sCK+8FIxA==
-X-Proofpoint-GUID: jmfvHgpMB_jTKPba12WPTBsawCnFFqj8
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTE4MDA0MSBTYWx0ZWRfX9tNIXU2zwRVE
- HqgbK9HEK+BNToG6vSM+XB02WlUzu02A7J1fKu3Mxk1PM5rmJNa4Qps5g4i2sk6o10+DbkA96eW
- ObYwu9FxQXw0eZFfUjxj87GBEQcPCZ0=
-X-Authority-Analysis: v=2.4 cv=LuQHWXdc c=1 sm=1 tr=0 ts=6afd7f27 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=xqWC_Br6kY4A:10 a=zJRp6_cAMcgA:10
- a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=YMgV9FUhrdKAYTUUvYB2:22 a=Z4Rwk6OoAAAA:8 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8
- a=OuZLqq7tAAAA:8 a=z2xlO20o2AOZ5rEB0BcA:9 a=NFOGd7dJGGMPyQGDc5-O:22
- a=HkZW87K1Qel5hWWM3VKY:22 a=AKGiAy9iJ-JzxKVHQNES:22
-X-Proofpoint-ORIG-GUID: jmfvHgpMB_jTKPba12WPTBsawCnFFqj8
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-18_02,2026-11-16_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 impostorscore=0 malwarescore=0 suspectscore=0 clxscore=1015
- adultscore=0 lowpriorityscore=0 spamscore=0 priorityscore=1501 bulkscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611180041
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_023416_652345_D888E8E7 
-X-CRM114-Status: GOOD (  24.61  )
-X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,220 +70,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Create idle injection threads when a device registers instead of
-creating them unconditionally during early initialization. Destroy the
-threads when the device unregisters.
-
-Use a per-device smpboot descriptor with the device's CPU mask so thread
-creation and CPU hotplug handling are limited to the CPUs registered by
-that device. Allow stopping devices whose offline CPUs have not yet had
-a thread created, and update the registration documentation to describe
-the thread lifecycle and possible failures.
-
-Serialize CPU ownership checks and claims with a framework-wide mutex.
-Without serialization, registrations with overlapping masks can both
-observe an unclaimed CPU and overwrite each other's device pointer.
-Their smpboot descriptors can then share the same per-CPU task, allowing
-one device's teardown to destroy a thread belonging to another device.
-Registration rollback can also clear another caller's ownership.
-
-Hold the mutex through smpboot registration and failure rollback, and
-during thread unregistration through ownership release. This prevents a
-CPU from being claimed again until its previous thread is destroyed.
-
-Stop idle injection before acquiring the mutex, keeping timer callback
-cancellation and stop-side hotplug exclusion outside the ownership
-critical section. Neither the idle injection threads nor their smpboot
-hotplug paths acquire this mutex. The existing caller-side lifecycle
-synchronization requirement remains in effect.
-
-Reported-by: Andrew Morton <akpm@linux-foundation.org>
-Cc: Rafael J. Wysocki (Intel) <rafael@kernel.org>
-Signed-off-by: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
-Reviewed-by: Bradley Morgan <brads@mainlining.org>
----
- drivers/powercap/idle_inject.c | 69 +++++++++++++++++++++-------------
- 1 file changed, 42 insertions(+), 27 deletions(-)
-
-diff --git a/drivers/powercap/idle_inject.c b/drivers/powercap/idle_inject.c
-index a25eb2018acd..24646b8be9ac 100644
---- a/drivers/powercap/idle_inject.c
-+++ b/drivers/powercap/idle_inject.c
-@@ -10,11 +10,9 @@
-  * It relies on the smpboot kthreads feature providing common code for CPU
-  * hotplug and thread [un]parking.
-  *
-- * All of the kthreads used for idle injection are created at init time.
-- *
-- * Next, the users of the idle injection framework provide a cpumask via
-- * its register function. The kthreads will be synchronized with respect to
-- * this cpumask.
-+ * Users of the idle injection framework provide a cpumask via its register
-+ * function. The kthreads are created on demand for CPUs in this mask and
-+ * will be synchronized with respect to it.
-  *
-  * The idle + run duration is specified via separate helpers and that allows
-  * idle injection to be started.
-@@ -40,6 +38,7 @@
- #include <linux/cpu.h>
- #include <linux/hrtimer.h>
- #include <linux/kthread.h>
-+#include <linux/mutex.h>
- #include <linux/sched.h>
- #include <linux/slab.h>
- #include <linux/smpboot.h>
-@@ -60,6 +59,7 @@ struct idle_inject_thread {
- /**
-  * struct idle_inject_device - idle injection data
-  * @timer: idle injection period timer
-+ * @threads: per-device CPU hotplug thread descriptor
-  * @idle_duration_us: duration of CPU idle time to inject
-  * @run_duration_us: duration of CPU run time to allow
-  * @latency_us: max allowed latency
-@@ -82,6 +82,7 @@ struct idle_inject_thread {
-  */
- struct idle_inject_device {
- 	struct hrtimer timer;
-+	struct smp_hotplug_thread threads;
- 	unsigned int idle_duration_us;
- 	unsigned int run_duration_us;
- 	unsigned int latency_us;
-@@ -92,6 +93,9 @@ struct idle_inject_device {
- static DEFINE_PER_CPU(struct idle_inject_thread, idle_inject_thread);
- static DEFINE_PER_CPU(struct idle_inject_device *, idle_inject_device);
- 
-+/* Serialize CPU ownership changes and the associated thread lifecycle. */
-+static DEFINE_MUTEX(idle_inject_lock);
-+
- /**
-  * idle_inject_wakeup - Wake up idle injection threads
-  * @ii_dev: target idle injection device
-@@ -279,7 +283,8 @@ void idle_inject_stop(struct idle_inject_device *ii_dev)
- 		iit = per_cpu_ptr(&idle_inject_thread, cpu);
- 		iit->should_run = 0;
- 
--		wait_task_inactive(iit->tsk, TASK_ANY);
-+		if (iit->tsk)
-+			wait_task_inactive(iit->tsk, TASK_ANY);
- 	}
- 
- 	cpu_hotplug_enable();
-@@ -319,12 +324,12 @@ static int idle_inject_should_run(unsigned int cpu)
-  * idle
-  *
-  * This function creates an idle injection control device structure for the
-- * given set of CPUs and initializes the timer associated with it. This
-+ * given set of CPUs, registers their kthreads and initializes the timer. This
-  * function also allows to register update()callback.
-  * It does not start any injection cycles.
-  *
-- * Return: NULL if memory allocation fails, idle injection control device
-- * pointer on success.
-+ * Return: NULL if allocation or thread registration fails, or a CPU is already
-+ * registered; idle injection control device pointer on success.
-  */
- 
- struct idle_inject_device *idle_inject_register_full(struct cpumask *cpumask,
-@@ -342,6 +347,8 @@ struct idle_inject_device *idle_inject_register_full(struct cpumask *cpumask,
- 	ii_dev->latency_us = UINT_MAX;
- 	ii_dev->update = update;
- 
-+	mutex_lock(&idle_inject_lock);
-+
- 	for_each_cpu(cpu, to_cpumask(ii_dev->cpumask)) {
- 
- 		if (per_cpu(idle_inject_device, cpu)) {
-@@ -352,6 +359,20 @@ struct idle_inject_device *idle_inject_register_full(struct cpumask *cpumask,
- 		per_cpu(idle_inject_device, cpu) = ii_dev;
- 	}
- 
-+	ii_dev->threads = (struct smp_hotplug_thread) {
-+		.store = &idle_inject_thread.tsk,
-+		.setup = idle_inject_setup,
-+		.thread_fn = idle_inject_fn,
-+		.thread_comm = "idle_inject/%u",
-+		.thread_should_run = idle_inject_should_run,
-+		.cpumask = to_cpumask(ii_dev->cpumask),
-+	};
-+
-+	if (smpboot_register_percpu_thread(&ii_dev->threads))
-+		goto out_rollback;
-+
-+	mutex_unlock(&idle_inject_lock);
-+
- 	return ii_dev;
- 
- out_rollback:
-@@ -361,6 +382,8 @@ struct idle_inject_device *idle_inject_register_full(struct cpumask *cpumask,
- 		per_cpu(idle_inject_device, cpu_rb) = NULL;
- 	}
- 
-+	mutex_unlock(&idle_inject_lock);
-+
- 	kfree(ii_dev);
- 
- 	return NULL;
-@@ -372,11 +395,11 @@ EXPORT_SYMBOL_NS_GPL(idle_inject_register_full, "IDLE_INJECT");
-  * @cpumask: CPUs to be affected by idle injection
-  *
-  * This function creates an idle injection control device structure for the
-- * given set of CPUs and initializes the timer associated with it.  It does not
-- * start any injection cycles.
-+ * given set of CPUs, registers their kthreads and initializes the timer. It
-+ * does not start any injection cycles.
-  *
-- * Return: NULL if memory allocation fails, idle injection control device
-- * pointer on success.
-+ * Return: NULL if allocation or thread registration fails, or a CPU is already
-+ * registered; idle injection control device pointer on success.
-  */
- struct idle_inject_device *idle_inject_register(struct cpumask *cpumask)
- {
-@@ -398,23 +421,15 @@ void idle_inject_unregister(struct idle_inject_device *ii_dev)
- 
- 	idle_inject_stop(ii_dev);
- 
-+	mutex_lock(&idle_inject_lock);
-+
-+	smpboot_unregister_percpu_thread(&ii_dev->threads);
-+
- 	for_each_cpu(cpu, to_cpumask(ii_dev->cpumask))
- 		per_cpu(idle_inject_device, cpu) = NULL;
- 
-+	mutex_unlock(&idle_inject_lock);
-+
- 	kfree(ii_dev);
- }
- EXPORT_SYMBOL_NS_GPL(idle_inject_unregister, "IDLE_INJECT");
--
--static struct smp_hotplug_thread idle_inject_threads = {
--	.store = &idle_inject_thread.tsk,
--	.setup = idle_inject_setup,
--	.thread_fn = idle_inject_fn,
--	.thread_comm = "idle_inject/%u",
--	.thread_should_run = idle_inject_should_run,
--};
--
--static int __init idle_inject_init(void)
--{
--	return smpboot_register_percpu_thread(&idle_inject_threads);
--}
--early_initcall(idle_inject_init);
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhhbmsgeW91IGZvciB5b3VyIGNvbnRyaWJ1dGlvbiEgU2FzaGlrbyBBSSByZXZpZXcgZm91bmQg
+MiBwb3RlbnRpYWwKaXNzdWUocykgdG8gY29uc2lkZXIuCgpDcml0aWNhbDogMCDCtyBIaWdoOiAw
+IMK3IE1lZGl1bTogMSDCtyBMb3c6IDEKCklmIHlvdSBiZWxpZXZlIG5vbmUgb2YgdGhlIGlzc3Vl
+cyBhcmUgbGVnaXRpbWF0ZSwgcGxlYXNlIHJlcGx5IHRvIGVhY2gKaXNzdWUgb2YgTWVkaXVtIHNl
+dmVyaXR5IG9yIGhpZ2hlciBhbmQgZXhwbGFpbiB3aHkgdGhlIEFJIGlzIHdyb25nLgpJZiBhbnkg
+b2YgdGhlbSBhcmUgbGVnaXRpbWF0ZSBhbmQgeW91IHBsYW4gdG8gcmVzcGluLCBwbGVhc2UgbGV0
+IHBhdGNod29yawprbm93IGJ5IGluY2x1ZGluZyAicHctYm90OiBjciIgYXMgYSBzZXBhcmF0ZSBs
+aW5lIGF0IHRoZSBlbmQgb2YgeW91ciByZXBseQoob25lIHN1Y2ggcmVwbHkgcGVyIHNlcmllcyBp
+cyBlbm91Z2gpLgoKLSBbTWVkaXVtXSBJbiByb2NrY2hpcC1kd21hYy55YW1sLCB0aGlzIHBhdGNo
+IGFkZHMgYW4gYWxsT2YgYmxvY2sgdGhhdAogIHNldHMgYHJ4X2RlbGF5OiBmYWxzZWAgYW5kIGB0
+eF9kZWxheTogZmFsc2VgIGZvciByb2NrY2hpcCxyazM1NzItZ21hYy4KLSBbTG93XSBVbmRlciB0
+aGUgc3ViamVjdCAiQWRkIFJLMzU3MiIsIHRoZSBwYXRjaCBhZGRzIGBkZXByZWNhdGVkOiB0cnVl
+YAogIHRvIHRoZSB0b3AtbGV2ZWwgdHhfZGVsYXkgYW5kIHJ4X2RlbGF5IGRlZmluaXRpb25zIGlu
+IHJvY2tjaGlwLeKApgoKLS0KCmR0LWJpbmRpbmdzOiBuZXQ6IHJvY2tjaGlwLWR3bWFjOiBBZGQg
+UkszNTcyCgpUaGlzIGFkZHMgdGhlIHJvY2tjaGlwLHJrMzU3Mi1nbWFjIGNvbXBhdGlibGUsIHdp
+dGggc25wcyxkd21hYy00LjIwYSBhcwp0aGUgZmFsbGJhY2ssIGFuZCByZXF1aXJlcyByb2NrY2hp
+cCxwaHAtZ3JmIGZvciBpdC4gSXQgYWxzbyBtYXJrcwp0eF9kZWxheSBhbmQgcnhfZGVsYXkgYXMg
+ZGVwcmVjYXRlZCBhbmQgZGlzYWxsb3dzIHRoZW0gZm9yIFJLMzU3Mi4KCj4gZGlmZiAtLWdpdCBh
+L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9uZXQvcm9ja2NoaXAtZHdtYWMueWFt
+bCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9uZXQvcm9ja2NoaXAtZHdtYWMu
+eWFtbAo+IGluZGV4IGU4ZGRhMTk2MWFiMzEuLmQ3YjdiYjAwODIzNTcgMTAwNjQ0Cj4gLS0tIGEv
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9yb2NrY2hpcC1kd21hYy55YW1s
+Cj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9yb2NrY2hpcC1k
+d21hYy55YW1sCgpbIC4uLiBdCgo+IEBAIC0xMTIsNiArMTE0LDcgQEAgcHJvcGVydGllczoKPiAg
+ICAgIG1pbmltdW06IDAKPiAgICAgIG1heGltdW06IDB4N0YKPiAgICAgIGRlZmF1bHQ6IDB4MzAK
+PiArICAgIGRlcHJlY2F0ZWQ6IHRydWUKPiAgCj4gICAgcnhfZGVsYXk6Cj4gICAgICBkZXNjcmlw
+dGlvbjogRGVsYXkgdmFsdWUgZm9yIFJYRCB0aW1pbmcuCj4gQEAgLTExOSw2ICsxMjIsNyBAQCBw
+cm9wZXJ0aWVzOgo+ICAgICAgbWluaW11bTogMAo+ICAgICAgbWF4aW11bTogMHg3Rgo+ICAgICAg
+ZGVmYXVsdDogMHgxMAo+ICsgICAgZGVwcmVjYXRlZDogdHJ1ZQoKW1NldmVyaXR5OiBMb3ddClRo
+ZXNlIGRlcHJlY2F0ZWQ6IHRydWUgbGluZXMgYXJlIG9uIHRoZSB0b3AtbGV2ZWwgdHhfZGVsYXkg
+YW5kIHJ4X2RlbGF5CmRlZmluaXRpb25zLiBEb2Vzbid0IHRoYXQgZGVwcmVjYXRlIHRoZW0gZm9y
+IGV2ZXJ5IFJvY2tjaGlwIEdNQUMgY29tcGF0aWJsZQoocHgzMCwgcmszMTI4IHRocm91Z2ggcmsz
+NTg4LCBydjExMDgsIHJ2MTEyNiksIGFuZCBub3Qgb25seSBmb3IgUkszNTcyPwoKVGhlIGJpbmRp
+bmcgZG9lc24ndCBuYW1lIGEgcmVwbGFjZW1lbnQuIGR3bWFjLXJrLmMgYWxzbyBkb2Vzbid0IHJl
+YWQgYW55CnN0YW5kYXJkIGFsdGVybmF0aXZlIHN1Y2ggYXMgcngtaW50ZXJuYWwtZGVsYXktcHMg
+b3IgdHgtaW50ZXJuYWwtZGVsYXktcHMuCk9uIHRoZSBvbGRlciBTb0NzLCBhIGJvYXJkIHRoYXQg
+bmVlZHMgTUFDLXNpZGUgUkdNSUkgZGVsYXkgaGFzIG5vCm5vbi1kZXByZWNhdGVkIHdheSB0byBk
+ZXNjcmliZSBpdC4KCklmIGEgRFQgbGVhdmVzIHRoZSBwcm9wZXJ0aWVzIG91dCwgcmtfZ21hY19z
+ZXR1cCgpIGxvZ3MgZXJyb3JzIGFuZCBmYWxscwpiYWNrIHRvIGhpZGRlbiBkZWZhdWx0czoKCmRy
+aXZlcnMvbmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL2R3bWFjLXJrLmM6cmtfZ21hY19zZXR1
+cCgpIHsKICAgIC4uLgoJcmV0ID0gb2ZfcHJvcGVydHlfcmVhZF91MzIoZGV2LT5vZl9ub2RlLCAi
+dHhfZGVsYXkiLCAmdmFsdWUpOwoJaWYgKHJldCkgewoJCWJzcF9wcml2LT50eF9kZWxheSA9IDB4
+MzA7CgkJZGV2X2VycihkZXYsICJDYW4gbm90IHJlYWQgcHJvcGVydHk6IHR4X2RlbGF5LiIpOwog
+ICAgLi4uCn0KCkNvdWxkIHRoaXMgYmluZGluZy13aWRlIGRlcHJlY2F0aW9uIGdvIGluIGEgc2Vw
+YXJhdGUgcGF0Y2ggd2l0aCBhIHJhdGlvbmFsZQphbmQgYSBzdWNjZXNzb3IgdGhhdCB0aGUgZHJp
+dmVyIHN1cHBvcnRzPyBBbHRlcm5hdGl2ZWx5LCBjb3VsZCBpdCBiZSBsaW1pdGVkCnRvIGNvbXBh
+dGlibGVzIHdoZXJlIGEgcmVwbGFjZW1lbnQgZXhpc3RzPwoKPiBAQCAtMTQxLDExICsxNDUsMjIg
+QEAgcmVxdWlyZWQ6Cj4gIGFsbE9mOgo+ICAgIC0gJHJlZjogc25wcyxkd21hYy55YW1sIwo+ICAK
+PiArICAtIGlmOgo+ICsgICAgICBwcm9wZXJ0aWVzOgo+ICsgICAgICAgIGNvbXBhdGlibGU6Cj4g
+KyAgICAgICAgICBjb250YWluczoKPiArICAgICAgICAgICAgY29uc3Q6IHJvY2tjaGlwLHJrMzU3
+Mi1nbWFjCj4gKyAgICB0aGVuOgo+ICsgICAgICBwcm9wZXJ0aWVzOgo+ICsgICAgICAgIHJ4X2Rl
+bGF5OiBmYWxzZQo+ICsgICAgICAgIHR4X2RlbGF5OiBmYWxzZQoKW1NldmVyaXR5OiBNZWRpdW1d
+CldpdGggcnhfZGVsYXkgYW5kIHR4X2RlbGF5IHNldCB0byBmYWxzZSwgaG93IGRvZXMgYW4gUksz
+NTcyIGJvYXJkIGNvbnRyb2wKdGhlIE1BQy1zaWRlIFJHTUlJIGRlbGF5PyBwaHktbW9kZSBpc24n
+dCByZXN0cmljdGVkLCBzbyAicmdtaWkiLAoicmdtaWktcnhpZCIgYW5kICJyZ21paS10eGlkIiBz
+dGlsbCBwYXNzIHZhbGlkYXRpb24uCgpUaGUgY29tcGFuaW9uIGNvbW1pdCAibmV0OiBzdG1tYWM6
+IGR3bWFjLXJrOiBBZGQgUkszNTcyIHN1cHBvcnQiIGJpbmRzCnJvY2tjaGlwLHJrMzU3Mi1nbWFj
+IHRvIHJrMzU3Ml9vcHMuIFRoYXQgdXNlcyB0aGUgc2hhcmVkIHJrX2dtYWNfc2V0dXAoKQphbmQg
+cmtfZ21hY19wb3dlcnVwKCkgcGF0aHMuIHJrX2dtYWNfc2V0dXAoKSBhbHdheXMgcmVhZHMgYm90
+aCBwcm9wZXJ0aWVzLgpPbiBhIHZhbGlkIFJLMzU3MiBEVCB0aGV5IGFyZSBhbHdheXMgbWlzc2lu
+Zywgc28gaXQgZmFsbHMgYmFjayB0byAweDMwLzB4MTA6Cgpkcml2ZXJzL25ldC9ldGhlcm5ldC9z
+dG1pY3JvL3N0bW1hYy9kd21hYy1yay5jOnJrX2dtYWNfc2V0dXAoKSB7CiAgICAuLi4KCXJldCA9
+IG9mX3Byb3BlcnR5X3JlYWRfdTMyKGRldi0+b2Zfbm9kZSwgInR4X2RlbGF5IiwgJnZhbHVlKTsK
+CWlmIChyZXQpIHsKCQlic3BfcHJpdi0+dHhfZGVsYXkgPSAweDMwOwoJCWRldl9lcnIoZGV2LCAi
+Q2FuIG5vdCByZWFkIHByb3BlcnR5OiB0eF9kZWxheS4iKTsKCQlkZXZfZXJyKGRldiwgInNldCB0
+eF9kZWxheSB0byAweCV4XG4iLAoJCQlic3BfcHJpdi0+dHhfZGVsYXkpOwogICAgLi4uCglyZXQg
+PSBvZl9wcm9wZXJ0eV9yZWFkX3UzMihkZXYtPm9mX25vZGUsICJyeF9kZWxheSIsICZ2YWx1ZSk7
+CglpZiAocmV0KSB7CgkJYnNwX3ByaXYtPnJ4X2RlbGF5ID0gMHgxMDsKICAgIC4uLgp9CgpUaGF0
+IGdpdmVzIGZvdXIgZGV2X2VycigpIGxpbmVzIG9uIGV2ZXJ5IHByb2JlIG9mIGV2ZXJ5IFJLMzU3
+MiBHTUFDLApyZ21paS1pZCBpbmNsdWRlZC4KClRoZW4gdGhlIHNldF9tb2RlIHN3aXRjaCBpbiBy
+a19nbWFjX3Bvd2VydXAoKSBwYXNzZXMgdGhvc2UgZmFsbGJhY2tzIGludG8Kb3BzLT5zZXRfdG9f
+cmdtaWkoKToKCgljYXNlIFBIWV9JTlRFUkZBQ0VfTU9ERV9SR01JSToKCQkuLi4KCQkJYnNwX3By
+aXYtPm9wcy0+c2V0X3RvX3JnbWlpKGJzcF9wcml2LAoJCQkJCQkgICAgYnNwX3ByaXYtPnR4X2Rl
+bGF5LAoJCQkJCQkgICAgYnNwX3ByaXYtPnJ4X2RlbGF5KTsKCS4uLgoJY2FzZSBQSFlfSU5URVJG
+QUNFX01PREVfUkdNSUlfUlhJRDoKCQkuLi4KCQkJCQkJICAgIGJzcF9wcml2LT50eF9kZWxheSwg
+MCk7CgkuLi4KCWNhc2UgUEhZX0lOVEVSRkFDRV9NT0RFX1JHTUlJX1RYSUQ6CgkJLi4uCgkJCQkJ
+CSAgICAwLCBic3BfcHJpdi0+cnhfZGVsYXkpOwoKSW4gdGhlIGNvbXBhbmlvbiBjb21taXQsIHJr
+MzU3Ml9zZXRfdG9fcmdtaWkoKSBkb2VzOgoKCXUzMiB2YWwgPSBHUkZfRklFTEQoMTQsIDgsIHJ4
+X2RlbGF5KSB8IEdSRl9GSUVMRCg2LCAwLCB0eF9kZWxheSkgfAoJCSAgR1JGX0ZJRUxEKDE1LCAx
+NSwgISFyeF9kZWxheSkgfCBHUkZfRklFTEQoNywgNywgISF0eF9kZWxheSk7CgpTbyB0aGUgbm9u
+LXplcm8gZmFsbGJhY2tzIHN3aXRjaCBvbiB0aGUgcGhwX2dyZiBJT0MgZGVsYXkgbGluZXMuIFRo
+ZSBkZWxheQp2YWx1ZXMgYXJlIGZpeGVkLCBhbmQgdGhlIERUIGNhbid0IHR1bmUgdGhlbSBvciB0
+dXJuIHRoZW0gb2ZmLiBCZWZvcmUgdGhpcwpjaGFuZ2UsIHR4X2RlbGF5ID0gPDA+IHdhcyBob3cg
+dG8gdHVybiB0aGUgZGVsYXkgb2ZmLCBhbmQgdGhlIHNjaGVtYSBub3cKcmVqZWN0cyB0aGF0LiBP
+bmx5IHBoeS1tb2RlID0gInJnbWlpLWlkIiBlbmRzIHVwIHdpdGggemVybyBNQUMgZGVsYXkuCgpU
+aGUgY29tbWl0IG1lc3NhZ2Ugc2F5cyB0aGUgZ29hbCBpcyAic28gbmV3IGRlc2lnbnMgZG8gbm90
+IHVzZSB0aGUgbGVnYWN5CmRlbGF5IHByb3BlcnRpZXMiLiBUaGUgc2NoZW1hIGRvZXMgdGhhdCwg
+YnV0IHRoZSBkcml2ZXIgc3RpbGwgYXBwbGllcwpsZWdhY3kgZGVsYXkgdmFsdWVzIHRocm91Z2gg
+aXRzIGhpZGRlbiBkZWZhdWx0cy4KClRoZSBzdGFuZGFyZCB0eC1pbnRlcm5hbC1kZWxheS1wcyBh
+bmQgcngtaW50ZXJuYWwtZGVsYXktcHMgcHJvcGVydGllcwp2YWxpZGF0ZSB0aHJvdWdoIHNucHMs
+ZHdtYWMueWFtbCBhbmQgZXRoZXJuZXQtY29udHJvbGxlci55YW1sLiBCdXQKZHdtYWMtcmsuYyBu
+ZXZlciByZWFkcyB0aGVtLCBzbyBzZXR0aW5nIHRoZW0gZG9lcyBub3RoaW5nIGFuZCBnaXZlcyBu
+bwplcnJvci4KCldvdWxkIGl0IG1ha2Ugc2Vuc2UgdG8gZWl0aGVyIHJlc3RyaWN0IFJLMzU3MiB0
+byByZ21paS1pZCAod2l0aCB0aGUgZHJpdmVyCnNraXBwaW5nIHRoZSByZWFkcyBhbmQgZGV2X2Vy
+cigpIGNhbGxzIGZvciBSSzM1NzIpLCBvciB0byBhZGQgZHJpdmVyCnN1cHBvcnQgZm9yIHR4LWlu
+dGVybmFsLWRlbGF5LXBzIGFuZCByeC1pbnRlcm5hbC1kZWxheS1wcyBiZWZvcmUgYmFubmluZwp0
+aGUgbGVnYWN5IHByb3BlcnRpZXM/CgpbIC4uLiBdCgotLSAKU2FzaGlrbyBBSSByZXZpZXcgwrcg
+aHR0cHM6Ly9uZXRkZXYtYWkuYm90cy5saW51eC5kZXYvc2FzaGlrby8jL3BhdGNoc2V0LzIwMjYx
+MTE2LWFkZC1ib2FyZC1vazM1NzItYy1uZXQtdjMtMC1hOTU3ZmRjZDljN2ElNDBxcS5jb20KCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
