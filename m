@@ -2,76 +2,77 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1A7B7606A32F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 20:33:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1FC6B60A2615
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 20:34:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DNXZNLWX;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=I5vVE1Mh
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=R0nzHBlA;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ZJI04bdQ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=NDFPLN7b1bEM/7LrjrNj985vXGvgIJR3C7eb3ktCfYE=; b=DNXZNLWXWwI5ToPUScZzGaf2Eu
-	KIr6spWaowmGsRvBynMk8xswGh+hMlBpFmMEWyXA+m55U8zSPYlITWhEwRhqJTYnz/etDAmhOrtlD
-	VW7jnbiVOKxNqDG7wtnyoA3GUvrbYNliN5Pxnsg05FOuvpPuuYPGGCH9DV0FkTnKmQ+rP0L2XwIdH
-	UDoICUsQxoA+kcKGcB5ADnCcO0/Jv70jakq8QBQnjLrxjIBbWj6o8UeDVvW85v6AiQfg3LEHS3lvT
-	7GYqiLpQN0h1b0i8j9S+VGu4HtBaWG73kz1UQAsRdONFFONd37DSHewiyFp8dmOSy4cyV3pSrMLvM
-	uBPvyBGQ==;
+	bh=PUjBxjr5/X5C2bjQtc4XMLeRn4pw+hx0UdD9Lvb5M9w=; b=R0nzHBlAs8iZxpFJx3Ua/AkdnS
+	J7iZJmM52emCtNbLN4JYl+iZCPcFzV7WBWq/jMMjf12B2X40W52ZWJt9m1BpOW3youR+cjFfUulVv
+	wWmEl1gJOR5YejDfrzzWdMv6sTCswGWWYO4P2au/FhEaS+kCugfQO/W5hyThawKq6rLDkrnzTOYy5
+	M9Xu3vVyy5JU75Ib7doEAFUL4Ba/cFa2Prma5IElZVgu4Hb7xiJQD+MxBVOQx+tXLls+SED7w9c+p
+	CRbgwP0mjUPD+USsCbDEHRfd8YQUkAgw1bQZJvyb2ht50AhcbVBx7tr+ctzQUIUKSHhuWVL9owOH7
+	IMYeup9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTmLo-0000000ADre-2h2D;
-	Wed, 18 Nov 2026 20:33:52 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1xTmLq-0000000ADtl-3ckP;
+	Wed, 18 Nov 2026 20:33:54 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTmLk-0000000ADqQ-2VNV
+	id 1xTmLo-0000000ADrY-3GZD
 	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Nov 2026 20:33:50 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-8a73075f2f4so74259b3a.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 12:33:47 -0800 (PST)
+	Wed, 18 Nov 2026 20:33:54 +0000
+Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-8bddb1172a4so159926b3a.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 12:33:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795034027; x=1795638827; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=IZ8flJOS7vt4IlbZiE/b3qc9/s7rsTbEqNnieP1+rFo=;
-        b=I5vVE1MhdKL7Vqs5GwD32ixStK3D94JZu9wxLMeKO1VJVtaNIq1hBPv4ZSvV/Ds9zV
-         +PSMBSv6AlYsC46UC2W2g4KpcPLRPzdwaz8tI6n8PN1dXbxlzdfxGCOUbdBYPD1oappv
-         P8wjnx6fZp9/oeI3AbWP4udXBVMnqMsKxtYWXxx8zSrH9NKEvcXaWR59jwdFij3WP507
-         iyZ1U4eS3AWoH14rdMtxT8O6dq9sZnxrRuye5suCSK3ishz+k6SJIl43h+FxjiAJ9vfL
-         seMVmETKxUiKxTMR5LyQl+trcxKrw7269u/sRe8w4tCJgNeQnGYTAbxcY3bZLwQqScno
-         l07A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795034027; x=1795638827;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20260707; t=1795034032; x=1795638832; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=IZ8flJOS7vt4IlbZiE/b3qc9/s7rsTbEqNnieP1+rFo=;
-        b=VnMD+VYCB4vtwvfEBN6CpJCEsn/zBx58DLwa8h9cS4SCTJ8ptqUCS5SWUlqJ8jmNUP
-         wA0O1jnm3jDbus1TzUtmuJpr5twWci/tG9sazbqH/qKl3aT3y45sjrlEv14zE9MhTPcd
-         PYxCVCXS3hshM0rQDOqP/4/+sshI2vijp3PHNkOxdjcM8SXpp/eJL4W38EXC6gmbb2N/
-         JJ/rOQcw9stGx2psAtG32TPnqXtqVzdJBjuguZQpljCyx43EFvsfMZJHzPgKwTRAwkqo
-         B7waYL6+59GES9LlbgG3htU4Lmt0VW4Xkvj8VoKU0qrudfakQbFiV5TpyemAspJ0OhKb
-         mTHA==
-X-Forwarded-Encrypted: i=1; AL+hErFfZYHCSB1Hsyoj+d55wSzMdG5L9FRMYfXxd+/STWMBCc483diFminrkp2IaewyKAHcLshJt2fgDhor6Ib4SA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8SDIwR+kSKS6+A72QM9WTlikMgTSMHdt3EWRh0dVwyDBptM/nw
-	CUMJf0jzsru+5ZNdqTOdY1p4kLv1LP66sXXoqxwYfuocH2WPoX6LnbdZ
-X-Gm-Gg: AZFdTZfbaVkmtzFl4ENZcGASyrPgQecWyTyAtBFW7qLD6MVv0g+jv4RAQe3nUk0OJgk
-	OjRvhbm2dSBXJsdt+ZAfVbRaBB/4HLIysGvpsjswbuWZmBznzyTlIv/7W9LiJcAxlrCHu5okDRJ
-	Qyr88/Yru0ptCtkW2UApJZnKNevqEArZTdDvuZWaum0glqUIBPWdp0N3CZLptKrO7bVzA37a1gw
-	R6s7D0jNQqs5QU1lMKEiXO9cpZnkrGgVVsB60PI0VvjlKbKmvbPdzCj0Q4lDPm7Xp3jQ6D5acYn
-	N6HyAcvLDwZOwxFb4IjovH9EWKCmrW+DgFy+bKcqHRRXkanfdV3lctttRbw3gqHeYRNspiMuUHl
-	2vzzMRko/56O/VKXoPV/buQ1X/qRTTEMDak8Lv0qaehJP3hcb8j9iix7+xi6LKnHvQDXUU1f9Vb
-	FBqZVPE+Vy6EiCFk9/IbqhtBpdFxEdHp7Mkw39FVBlKCROshnvtdzEP6X3O1H4CXwgaSmxL1QB7
-	0n4CxIjV+hfjpCFd9HElGjjWeUu4f9gD+TJUtXtpDURl6whv25TxD4zF6/xIClAEgmTRnUf4enm
-	0EFoRzE/nTWv1iHNiRjEuqcKNZ7iPi8bdfRHBcpHvs4bBZoyaG0lgcTyONsFAA==
-X-Received: by 2002:a17:903:90f:b0:2ef:da10:beaa with SMTP id d9443c01a7336-2eff71f59acmr62060055ad.1.1795034027132;
-        Wed, 18 Nov 2026 12:33:47 -0800 (PST)
+        bh=YixFM3AWmT7jYQ+cnCQNR8AFTxM/A/eG60HgEXpPHIc=;
+        b=ZJI04bdQ8yP0TY6p/Fxmw8RKBnO52Ik5EqOLRt06pwYspwNuTDp/VQbkmnBoLyyTPg
+         DECXgSudzbYQ1Q9nKU1fyZG+Lp02+0dtKTGunsIG8GlnVV3y94YrhuBGMAhoN4wqjwTS
+         dMa7RTWcFU4txZcdxbSFwatvcuc5OfO9ChJ4OBZ9EMsoPGPWl3UjuYZhohr9UdXnj5Ck
+         74WptSOPnzUBUMAYm1ENWqc/SuB9Wl2bZNI3S95yIr/G+LRdfYowsSlC95+Twv3neeXE
+         DnXSb+E/u3D5qWPr5dMScCjLK5d/AAGAUvf9MvPp5WUxA3hUBf6Kfn08GuPaKFMqvySB
+         hT0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795034032; x=1795638832;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=YixFM3AWmT7jYQ+cnCQNR8AFTxM/A/eG60HgEXpPHIc=;
+        b=JzdnCewwDrsyewwPwe2dsdX8O0cbG45L1xDG4I+7Y+XQen9cJNUPMWyDeZHinzBT10
+         7U2vqGivav9ZVAJu+mjcjU0UH42Om8/KKB0IBe9oTYkx2N9qzb16X6r8kd12s84IyipS
+         tOlWaOmposD7YgF3lgFrcegXfObtxhIeLa7HfzyX76ax+fv8H7XpY3VD6zwhUwn8VM1z
+         t8MfXr4dVAFf7YGKCfmKff46Btk34G2s/ebJ/XT5iEGtSr480gv9tyfHDiaMkqzZKiGM
+         Z5ZI2E+ocLAtHD0xHBoE9t2rcJXE5N/FixFEwY4mQijeSo7Sq0lUh0N5tThLGq1Ts16r
+         WjOQ==
+X-Forwarded-Encrypted: i=1; AL+hErF3Bk8Rk2kyikmWlYUF4fCaIDeOyooiyFIVQ34cZ4ayhhJbhDlkAUWq7dgmfwCUAFy/lYw+YYLbfkf13L7lDA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8v9OeRMQnfv+CvsKkxX/F0sM40Y7JBK4ziqhy2+OWjM2J/iDsi
+	UFLZYow3Mj43H7yTkaz6DqhQX95f0q/URP/87V3i/Puzd91Junhif3p0
+X-Gm-Gg: AZFdTZekeIcP/ZHsaRNwSi43ylJFYm2+pBN0Z53aAJub3cXZ8T2LopA97DVP4pzkIit
+	qD1WCKSvmw8V6v9cVsikDL+292+XLg9z/ozNJZlpzvWvwKYZahXcrIGwWtSpZCSpkJGVGlaFxTQ
+	Fn//VEIz+d4ArFotfmtV1swrv7ZqM2sLrvUGWl4hvlES3yWHh3RHg5z6BpML+u8Yr0/J6eKuLh3
+	MS6MREsAl/75GIDUfVrPSfUSR6lkmMKo24rh4oVOBY1ikeyXZ17zZsoFjm8GpunoNEd85ufpy5X
+	VGqWzm6T9G1jMZbKSQngtvRuzBOP6mJHNZxAX6Pc1v7msy1R+gBJwoTkdEL48GmKPyRhpdLv6L1
+	rsrE96mOBkf3GKowLGF6LOKUv2LXN9b1LbLmJZjkCVPQRIRWNuRvdidTwv1a+numDN+C20/Y38l
+	Qy957PTbfxsMSTFPdmmJJgVH23ShTyPSPK1GKxFTf+IvVVDtxDYLRK5YaNq4Qu8tC/lPJImjyz0
+	9rBuJdyBtUY/4Ka8nafUbmIGXbnG+2xNLdET4TCbqagW4c5TRf2lsx8N+OzeCqL36y+KB1pJbIG
+	W1SJRwsLCdSJdCDFU2diWuM/SnjfCjPWJWzBps0N0svLhRiEMSylAM2DJMeYOw==
+X-Received: by 2002:a17:902:e888:b0:2ed:29a5:782d with SMTP id d9443c01a7336-2eff72e15f0mr59296815ad.2.1795034031819;
+        Wed, 18 Nov 2026 12:33:51 -0800 (PST)
 Received: from FAIZEL-KB.. ([2001:569:52f5:4b00:cfaf:4885:b023:6316])
-        by smtp.googlemail.com with ESMTPSA id d9443c01a7336-2eff6116331sm19166825ad.22.2026.11.18.12.33.46
+        by smtp.googlemail.com with ESMTPSA id d9443c01a7336-2eff6116331sm19166825ad.22.2026.11.18.12.33.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Nov 2026 12:33:46 -0800 (PST)
+        Wed, 18 Nov 2026 12:33:51 -0800 (PST)
 From: Faizel K B <faizel.kb@gmail.com>
 To: Mehdi Djait <mehdi.djait@linux.intel.com>,
 	Michael Riesch <michael.riesch@collabora.com>
@@ -84,15 +85,17 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	libcamera-devel@lists.libcamera.org,
 	Robert Mader <robert.mader@collabora.com>,
 	Faizel K B <faizel.kb@gmail.com>
-Subject: [PATCH v2 0/2] media: rockchip: rkcif: ENUM_FMT and bytesperline fixes
-Date: Wed, 18 Nov 2026 13:31:32 -0700
-Message-ID: <20261118203134.315591-1-faizel.kb@gmail.com>
+Subject: [PATCH v2 1/2] media: rockchip: rkcif: Filter enumerated formats by media bus code
+Date: Wed, 18 Nov 2026 13:31:33 -0700
+Message-ID: <20261118203134.315591-2-faizel.kb@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261118203134.315591-1-faizel.kb@gmail.com>
+References: <20261118203134.315591-1-faizel.kb@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_123348_995388_385D112E 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20261118_123352_837073_A6D0BA00 
+X-CRM114-Status: GOOD (  15.18  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,46 +109,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Two fixes for rkcif capture.
+VIDIOC_ENUM_FMT ignores the mbus_code field and returns all formats,
+although the video devices set V4L2_CAP_IO_MC. Return only the formats
+that match the requested media bus code. The DVP output formats have no
+media bus code, so they are still all returned.
 
-Patch 1 filters VIDIOC_ENUM_FMT by the media bus code, as the video
-devices set V4L2_CAP_IO_MC.
+Otherwise userspace can pick a pixel format that doesn't match the
+media bus format, and then interprets the captured data in the wrong
+format.
 
-Patch 2 aligns bytesperline to 8 bytes and honours a larger value
-requested by userspace, so DMA-BUF importers that need a larger stride
-alignment can use the buffers directly.
+Signed-off-by: Faizel K B <faizel.kb@gmail.com>
+---
+ .../platform/rockchip/rkcif/rkcif-stream.c     | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
 
-Tested on RK3588 (Radxa ROCK 5B+) with an IMX415 sensor, using libcamera
-with the GPU software ISP. The DVP part is compile-tested only.
-
-Changes in v2:
-- Patch 1: don't filter the DVP output formats, which have no media bus
-  code (Mehdi)
-- Patch 2: handle all planes and the DVP interface, and limit the stride
-  to the line width register of each interface (Michael)
-- Patch 2: drop "on MIPI" from the subject
-
-v1: https://lore.kernel.org/linux-media/20261105232310.385463-1-faizel.kb@gmail.com
-
-Faizel K B (2):
-  media: rockchip: rkcif: Filter enumerated formats by media bus code
-  media: rockchip: rkcif: Honour the requested bytesperline
-
- .../rockchip/rkcif/rkcif-capture-dvp.c        |  4 ++
- .../rockchip/rkcif/rkcif-capture-mipi.c       |  3 +
- .../platform/rockchip/rkcif/rkcif-common.h    |  1 +
- .../platform/rockchip/rkcif/rkcif-stream.c    | 66 +++++++++++++++++--
- 4 files changed, 68 insertions(+), 6 deletions(-)
-
-base-commit: 7969a6f407cf55b5254c824c87875452655ef11e
+diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+index 3130d420ad55..b117ba57bc75 100644
+--- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
++++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+@@ -395,13 +395,23 @@ static int rkcif_stream_enum_formats(struct file *file, void *priv,
+ 				     struct v4l2_fmtdesc *f)
+ {
+ 	struct rkcif_stream *stream = video_drvdata(file);
++	const struct rkcif_output_fmt *fmt;
++	unsigned int i, n = 0;
+ 
+-	if (f->index >= stream->out_fmts_num)
+-		return -EINVAL;
++	for (i = 0; i < stream->out_fmts_num; i++) {
++		fmt = &stream->out_fmts[i];
+ 
+-	f->pixelformat = stream->out_fmts[f->index].fourcc;
++		if (f->mbus_code && fmt->mbus_code &&
++		    fmt->mbus_code != f->mbus_code)
++			continue;
+ 
+-	return 0;
++		if (n++ == f->index) {
++			f->pixelformat = fmt->fourcc;
++			return 0;
++		}
++	}
++
++	return -EINVAL;
+ }
+ 
+ static int rkcif_stream_enum_framesizes(struct file *file, void *fh,
 -- 
 2.43.0
 
