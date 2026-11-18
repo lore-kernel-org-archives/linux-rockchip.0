@@ -2,113 +2,59 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 271A3606A31C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 21:46:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 58935606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 22:31:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LrBt5YL7;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=NtKxG7XQ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RALd3KUJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=rGvy85tHE5YGgDuIfa+0XFKhfaj8znsDwYQ8Bs1TEo8=; b=LrBt5YL7mtnNvA2+WKXD/xLy5z
-	cQlGHQRe1jXBNON3ZuLhuh/i/wu6U9OunPTMuYFlyb0IyhmEELecd4rtiPDjMOYBXemFGkMoHE4Pf
-	YmiXimtl3AXPRYRxoMCoFImJnf+HHUURgnfJHYXg4cWcUPtIQoq7YVy5Qn66jMwKdF8Pjbz0sPEc6
-	5kToNxXShCqLMeKVoY5znwHp8PbWgh7yh0Vgp1+W2LuMLAy4kFZYdpR2e1jHzofJ3eyGhJsxI5Pv6
-	ODRsZdaYPmRIqaJzsRGz8vss3KnwDPLqajx78sEssDTOx8rM2sm6d3I4o4Z7ooecmecSmDJB/tvPc
-	miUcuAUg==;
+	bh=WQ4LTnIgHf0fg5Nfr2g7ksQEWaeV4hh50ffk9hvPgvo=; b=RALd3KUJuDf75vbCNeLG6i6X+Y
+	t+U8ByGWosTSKtXPx23Ah1wPXIUZqlJILweBldn/yGgflcgfcBh48pBz6pDyMxIIFOCIJJg3KJr+B
+	DPtb1adJHGQGN2f2qMyPRJVWly/7ZiXp9jhd4dp4hGjZiT/lxtAwqtZFDVufCrDIJP2URE2uto301
+	u2u59fjWikJ3cAFW3ZZv/Tj+qRmjNOlBUJk/uipvL7MgA6Ii5r8S4lqvs6S90hiXGVCuDiLGJA3cX
+	AneU52+Ik5plzJPFio0AE4OS4exWJprFHdsnl0WnpGnjXULRMy70B5K/mXHf1ZVFUeq9h/Y1BnmvD
+	Z9jTuyoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTnUF-0000000AM01-2JNp;
-	Wed, 18 Nov 2026 21:46:39 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xToBD-0000000APOM-2050;
+	Wed, 18 Nov 2026 22:31:03 +0000
+Received: from smtp.gentoo.org ([2001:470:ea4a:1:5054:ff:fec7:86e4])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTnTr-0000000ALiP-0gPe;
-	Wed, 18 Nov 2026 21:46:15 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D522D411E1;
-	Wed, 18 Nov 2026 21:46:13 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795038373;
-	b=xpR+nkbt8CO251WZpr3In+Zdmd0akzAF55lbOau2ccBBbAFrmIo1JOoxLBczBXrP6H0N
-	 f9ra42B+LjyoRVhGCZIRltAjG271vRyGW4V3cJITlC5A7dvuBTZm50iGah6dNkrFeCXCc
-	 kO54zb4Za31dE/q700w1wJaLH7SHMnqvbUlLgxpGJsN59gEzwwUfFyMrXb5WJrNG3RqQX
-	 gv0HwXz+d6QF6D37+U2+BUyfLLCLL6v06q7x4tbjCBJJy5vY4pHvwAB2Muh60GWgKJWPD
-	 q+5wZ7wLTyHyReENKKJqmhbSdco4GVPYZ+2q2J7+ej25suzE9ZIO0JzszIS8eTZyplw==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795038373;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=UYCzXL6/0dZ8X2NJb8r8x4jhecKOjPKN/Z3O1wEqXoE=;
-	b=2FKf9ff1fGD/raTZ7c1eZf9ILKpDMzXlWn13EidUsj1CsbJp7Nb6Ls4x6FGAqs06wp8r
-	 MshtoCfbeiVlvnHtOarinCTPOxMZDiYsrnDN5JG26Jl0xKQkU6HoIdXCOpbAkA08lbNbF
-	 Z0JrIiSy0ND5xB2OasqJq8OMASiJC5ca6+VdpfzJaN5rxAHeJFo8x1C/xA5iswPC/jIvw
-	 k+1nMgdLVD35sRcge+C2v4wIEpckedoqVXj42OLQR3C53Tp3OxQ4ra/Kethir71AbvAO7
-	 sLY9HrMYs92LN2/s8jIMTiLi4IO5VJgf9MM9xVhnmhkvzSNePjKiEMAa2LH9mpmyh8g==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	id 1xToBA-0000000APNZ-2Pfq
+	for linux-rockchip@lists.infradead.org;
+	Wed, 18 Nov 2026 22:31:02 +0000
+Received: from 9.b.8.c.1.6.8.7.6.b.f.2.6.1.2.4.c.6.e.0.c.6.2.0.0.b.8.0.1.0.0.2.ip6.arpa (unknown [IPv6:2001:8b0:26c:e6c:4216:2fb6:7861:c8b9])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 32B131F000C8;
-	Wed, 18 Nov 2026 21:46:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795038373;
-	bh=UYCzXL6/0dZ8X2NJb8r8x4jhecKOjPKN/Z3O1wEqXoE=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=NtKxG7XQkvwn5unUUAqUMFIZbag8Nm/Qo1NW6RETai45wTTcEOneyZkVMLxnl1Dt/
-	 Z9US/8D/t+O3lJorxJTilg8N41LvOiJxeGprQ2O9udTEd8k1l9h0ZJ0aAkjNJV7rfk
-	 K/7keCUsVyM7gHla7KHhbKQW2dIoF499YeLNWANEvI9YzyYjvjTdjeOHzNiW2sE75z
-	 q2u/axNVC18cdCBe6XBkVUHkmJBmn/bqe2qcJjfAfdufTFNWT7tL55nEEF41nYsvWH
-	 dJ2Iv4bSin9u1Jv2EBZEyJ5PXje/l8if5MzmWgJO2Lll6qV/ryIccS3eR01kziI5oZ
-	 QdsupgDA7SdGw==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id B90724AFD9;
-	Wed, 18 Nov 2026 21:46:11 +0000 (UTC)
-From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Wed, 18 Nov 2026 22:45:31 +0100
-Subject: [PATCH 4/4] arm64: dts: rockchip: enable hdmi sound on
- rk3588-h96-max-v58
+	(Authenticated sender: chewi)
+	by smtp.gentoo.org (Postfix) with ESMTPSA id 4045E342592;
+	Wed, 18 Nov 2026 22:30:58 +0000 (UTC)
+Message-ID: <a112657de590aefc2b306ebc9e6771cbaa76ae82.camel@gentoo.org>
+Subject: Re: PCI: dw-rockchip: Unable to boot Quartz64 Model B from NVMe
+ since reset changes
+From: James Le Cuirot <chewi@gentoo.org>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>, Manivannan Sadhasivam	
+ <manivannan.sadhasivam@oss.qualcomm.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, 	linux-pci@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Shawn Lin	 <shawn.lin@rock-chips.com>
+Date: Wed, 18 Nov 2026 22:30:45 +0000
+In-Reply-To: <av3WcJyt_tRXNj2l@ryzen>
+References: <08cc96c5171fc969b074371692e6d95d46eba60b.camel@gentoo.org>
+	 <av3WcJyt_tRXNj2l@ryzen>
+User-Agent: Evolution 3.60.2 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261118-dw-hdmi-qp-bridge_attach-v1-4-e370920bc7f3@gmail.com>
-References: <20261118-dw-hdmi-qp-bridge_attach-v1-0-e370920bc7f3@gmail.com>
-In-Reply-To: <20261118-dw-hdmi-qp-bridge_attach-v1-0-e370920bc7f3@gmail.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andyshrk@163.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Alexey Charkov <alchark@gmail.com>, 
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Joachim Eastwood <joachim.eastwood@gmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795038370; l=838;
- i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=Olvh2LZXh8fwddYqdBGYqLRZSxdXzrxttsogQiNz044=;
- b=+rBsl+l7IxeVv/QH09lai1TD/u5HoNCnxlTLKxgYu1V3vc3HHrgm7mebshsZbQVpZmgFuMJtE
- bOzsqqGuVLXBxOpqr3SQ/NERCfJSzRqjNasrbGxdvb4yJFOU/7PH+ZL
-X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
- pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
-X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
- with auth_id=846
-X-Original-From: Joachim Eastwood <joachim.eastwood@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261118_143100_645356_52EDC3D1 
+X-CRM114-Status: GOOD (  14.44  )
+X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,59 +64,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: joachim.eastwood@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7323173220072293614=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-Enable hdmi0_sound and i2s5_8ch to get sound over HDMI.
-
-Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts b/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
-index da6282c105255..5dd3f71932ec1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
-@@ -239,6 +239,10 @@ hdmi0_out_con: endpoint {
- 	};
- };
- 
-+&hdmi0_sound {
-+	status = "okay";
-+};
-+
- &hdptxphy0 {
- 	status = "okay";
- };
-@@ -299,6 +303,10 @@ hym8563: rtc@51 {
- 	};
- };
- 
-+&i2s5_8ch {
-+	status = "okay";
-+};
-+
- &gmac1 {
- 	clock_in_out = "output";
- 	phy-handle = <&rgmii_phy1>;
-
--- 
-2.56.0
+--===============7323173220072293614==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-ebQo5WGk+sMw/9Rs5xM+"
 
 
+--=-ebQo5WGk+sMw/9Rs5xM+
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, 2026-11-18 at 17:46 +0100, Niklas Cassel wrote:
+> Hello James,
+>=20
+> On Wed, Nov 18, 2026 at 04:03:11PM +0000, James Le Cuirot wrote:
+> > Hello Wilfred,
+> >=20
+> > Unfortunately, since your commit "PCI: dw-rockchip: Implement
+> > .reset_root_port() and use for link down" (b376b3ff9cb0527), I have bee=
+n
+> > basically unable to boot my Quartz64 Model B from NVMe. Sometimes if I =
+wait
+> > long enough, it will eventually work, albeit very slowly. If I revert t=
+his
+> > (and 4e9f69d08253) against 7.3.5, then it boots normally. Here is the r=
+elevant
+> > output.
+>=20
+> There are some dwc-rockchip fixes queued on the following branch:
+> https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git/log/?h=3Dcont=
+roller/dwc-rockchip
+>=20
+> It would be interesting to see if using this branch makes a differnce.
+>=20
+>=20
+> Kind regards,
+> Niklas
+
+Thanks for the suggestion. I rebased these against 7.3.5 (with 85203c831a8)=
+,
+but sadly it made no difference.
+
+--=-ebQo5WGk+sMw/9Rs5xM+
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEDBAAWCgCrFiEE6qETVs4yu3Lfuc3XsNCJZ6jP87QFAmr+JxUbFIAAAAAABAAO
+bWFudTIsMi41KzEuMTIsMiwyXxSAAAAAAC4AKGlzc3Vlci1mcHJAbm90YXRpb25z
+Lm9wZW5wZ3AuZmlmdGhob3JzZW1hbi5uZXRFQUExMTM1NkNFMzJCQjcyREZCOUNE
+RDdCMEQwODk2N0E4Q0ZGM0I0ERxjaGV3aUBnZW50b28ub3JnAAoJELDQiWeoz/O0
+a4UA/2QTkaQulxaeDprLbiSZip0cFicH+VDzRL03fNgAgMvuAP4nCgw1WMjlWfmE
+ycubVwztY7P4xsIOejROvHY5BecKBg==
+=Df3U
+-----END PGP SIGNATURE-----
+
+--=-ebQo5WGk+sMw/9Rs5xM+--
+
+
+--===============7323173220072293614==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7323173220072293614==--
+
