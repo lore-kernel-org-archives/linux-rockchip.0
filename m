@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7F13606A336
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 06:22:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB0E7606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 07:56:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=H9gAoFWQ;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=QFyz1YFj
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KDsbzu4s;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=RyQFNc4i
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
@@ -14,30 +14,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=yhONhUFy5vgvaX+lErGn5DGTNxMBuWV7j7Ttf4ZSD+A=; b=H9gAoFWQQwfXCbK5iYjWD+W9Qx
-	gcwE68ndqTP+NgLR3Ip20SManeBB4T7g8Ixw7tLgy/LjCeItG/nUrDIx/WdVxVj9HtBM3fyKS6bSO
-	elap/SX7Eyx4eHvt8wtxKj/j0bTldCdDXGNLv8OmhwL0OcWsknShudiRgGjZwYNUkoWpj/6zlEuuV
-	0yEZxmDiI3jIBJ6AnLN5rroXLhaHnTehscPbLLvZHLaVQiF9PpWN+oox+N98H6ds2FIRhdj3uXSqq
-	Y9RbtrzHH/832Z94Ve3kkQsClCbU7eqwNYldxVv00Yj5yh8k7ZsUD74S/xshK196xVSXyhJ7rX/9C
-	9vR2lkXQ==;
+	bh=/K3xhXtO0J/Qx0ExIqx25nPgSZD5aOXg7RBOHJcz0Mo=; b=KDsbzu4svLp7XPQPfgFPF4oN7A
+	HdxOU3vpp4TaX3DeSF4EGC3NHSi49as4NwJ1nJ5F5yXQBOzBEMiJ3RhfoPGLR5ZJFpFo13JjVbSov
+	iMQGIFZEv78nHoeUPcbjoykzVYHKcc+2AxO57H67slxoY++LlUTWhLhMlQfYDi4NYu7sPhhnyV8uX
+	bRzbwSP0ESttackholBZw6gDXCmKJdBh4asuohuh/kK4crCiRHtnpoKFGH8RCSWAneTbBV6xWJJDy
+	et381Zvt9XAAEFpGjS/yFXlhFDUxTBUoXyfnRP+sIcoGOYlCT2v0CxCOrHS68RZO0y7d5NR4WvKQx
+	zta94e3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTZ3b-00000007sw4-0kmp;
-	Wed, 18 Nov 2026 06:22:11 +0000
-Received: from mail-m128100.netease.com ([103.209.128.100])
+	id 1xTaWI-000000084ex-2wQV;
+	Wed, 18 Nov 2026 07:55:54 +0000
+Received: from mail-m12846.netease.com ([103.209.128.46])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTZ3X-00000007sr2-1Nfq;
-	Wed, 18 Nov 2026 06:22:09 +0000
+	id 1xTaWE-000000084eA-35Yp;
+	Wed, 18 Nov 2026 07:55:53 +0000
 Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 55181e2c8;
-	Wed, 18 Nov 2026 14:21:54 +0800 (GMT+08:00)
-Message-ID: <fbad426d-29fe-4e0b-b983-b020e06c781c@rock-chips.com>
-Date: Wed, 18 Nov 2026 14:21:53 +0800
+	by smtp.qiye.163.com (Hmail) with ESMTP id 551bffbb0;
+	Wed, 18 Nov 2026 15:55:45 +0800 (GMT+08:00)
+Message-ID: <8e614b4d-b2be-4da8-8003-de88f22ab7ef@rock-chips.com>
+Date: Wed, 18 Nov 2026 15:55:44 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/8] drm/rockchip: vop2: Take the UV plane address from
- the second GEM object
+Subject: Re: [PATCH v3 2/8] drm/rockchip: vop2: Don't use uninitialised
+ dividers on RK3588
 To: aiyengar1990@gmail.com, Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Andy Yan
  <andyshrk@163.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -47,25 +47,25 @@ To: aiyengar1990@gmail.com, Sandy Huang <hjc@rock-chips.com>,
 Cc: Piotr Zalewski <pZ010001011111@proton.me>,
  Chaoyi Chen <chaoyi.chen@rock-chips.com>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org
+ linux-kernel@vger.kernel.org
 References: <20261113-vop2-fixes-v3-0-08ae37e83b5c@gmail.com>
- <20261113-vop2-fixes-v3-1-08ae37e83b5c@gmail.com>
+ <20261113-vop2-fixes-v3-2-08ae37e83b5c@gmail.com>
 Content-Language: en-US
 From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20261113-vop2-fixes-v3-1-08ae37e83b5c@gmail.com>
-X-HM-Tid: 0aa1ed51ab4503a8kunm213d4f1332ef37
+In-Reply-To: <20261113-vop2-fixes-v3-2-08ae37e83b5c@gmail.com>
+X-HM-Tid: 0aa1eda7965b03a8kunm1a1ddd1833dd04
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaHkxKVk5KQ01MTxpKTE1DGFYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQk1VSktLVUpCWQY+
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDGR5DVkgeHktKSUlMSx4aTlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=QFyz1YFjrSR7kBLZdin9kyuyLMQ5jZIfL1d2ADHhPEMcnSjYmspNWAvRFnHNbP2Ep5fIsa83dPoz2W4Ewyjgo7Hje5VxYa553VISDGHcshaR22CIHAHoc2l9N56Jd4q2srj1f/fui5Ccz59X70Q54YYjlgLZx3b50MeDsoZcy5U=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=w4m4cPQwQJpXhlcoWu8T5iKxhXJjXTacGdEiUdqBdko=;
+	b=RyQFNc4ij2drw6Fx0nqJbDh+SFPMGM1Pqfbh0IhdR4KcOBgFgAMAIFpF/e2okYwYuUcCAohtps8YxDc0spFY7KMXP83tQQMfG/ESJAeh/zlQa5QQZh4F0HozwlE4sFb7RobNAO+ZD02FwVmFtA6gw0qFMA3yf1x3NBMlsCXp4qI=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=yoojdmS52xksREd25PZVdu2MX9Ot+zg4Wegw5yQYlu4=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_222207_931511_9C7F9071 
-X-CRM114-Status: GOOD (  14.49  )
+X-CRM114-CacheID: sfid-20261117_235551_345337_D4CB4551 
+X-CRM114-Status: GOOD (  16.43  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,36 +90,63 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 On 11/14/2026 12:39 AM, Arun Iyengar via B4 Relay wrote:
 > From: Arun Iyengar <aiyengar1990@gmail.com>
 > 
-> vop2_plane_atomic_update() takes the chroma plane address from
-> fb->obj[0]. The planes of a framebuffer can be in different GEM objects
-> (ADDFB2 with two handles, e.g. NV12M from a V4L2 decoder), and the
-> window then fetches the chroma plane from the luma buffer.
+> rk3588_calc_cru_cfg() converts all four dividers with ilog2(), but every
+> interface only sets the ones it uses: dclk_out_div is left uninitialised
+> for HDMI, eDP and DPI, if_dclk_div for DP, MIPI and DPI, and
+> if_pixclk_div for DP and DPI. For HDMI and eDP the uninitialised
+> dclk_out_div is then written to RK3588_VP_CLK_CTRL.
 > 
-> Use fb->obj[1] for formats with more than one plane.
+> Set the dividers an interface doesn't use to 1.
 > 
-> Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-> Reported-by: Sashiko <sashiko-bot@kernel.org>
-> Closes: https://lore.kernel.org/all/sashiko-outbox-206550@kernel.org/
-> Cc: stable@vger.kernel.org
+> Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
+> Suggested-by: Damon Ding <damon.ding@rock-chips.com>
 > Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 > ---
->   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+>   drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 8 ++++++++
+>   1 file changed, 8 insertions(+)
 > 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index 76d151b8bc52..e8ef83d6924b 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -1369,7 +1369,8 @@ static void vop2_plane_atomic_update(struct drm_plane *plane,
->   		if ((pstate->rotation & DRM_MODE_REFLECT_Y) && !afbc_en)
->   			offset += fb->pitches[1] * ((pstate->src_h >> 16) - 2) / vsub;
->   
-> -		rk_obj = to_rockchip_obj(fb->obj[0]);
-> +		if (fb->format->num_planes > 1)
-> +			rk_obj = to_rockchip_obj(fb->obj[1]);
->   		uv_mst = rk_obj->dma_addr + offset + fb->offsets[1];
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> index c44648e1bc0d..f340aba5bfd1 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> @@ -1597,6 +1597,7 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
+>   		 */
+>   		*if_pixclk_div = 2;
+>   		*if_dclk_div = 4;
+> +		*dclk_out_div = 1;
+>   	} else if (vop2_output_if_is_edp(id)) {
+>   		/*
+>   		 * edp_pixclk = edp_dclk > dclk_core
+> @@ -1609,6 +1610,7 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
+>   		 */
+>   		*if_pixclk_div = K;
+>   		*if_dclk_div = K;
+> +		*dclk_out_div = 1;
+>   	} else if (vop2_output_if_is_dp(id)) {
+>   		if (output_mode == ROCKCHIP_OUT_MODE_YUV420)
+>   			dclk_out_rate = v_pixclk >> 3;
+> @@ -1622,6 +1624,8 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
+>   			return 0;
+>   		}
+>   		*dclk_out_div = dclk_rate / dclk_out_rate;
+> +		*if_pixclk_div = 1;
+> +		*if_dclk_div = 1;
+>   	} else if (vop2_output_if_is_mipi(id)) {
+>   		if_pixclk_rate = dclk_core_rate / K;
+>   		/*
+> @@ -1643,8 +1647,12 @@ static unsigned long rk3588_calc_cru_cfg(struct vop2_video_port *vp, int id,
+>   		 * mipi pixclk == dclk_out
+>   		 */
+>   		*if_pixclk_div = 1;
+> +		*if_dclk_div = 1;
+>   	} else if (vop2_output_if_is_dpi(id)) {
+>   		dclk_rate = v_pixclk;
+> +		*dclk_out_div = 1;
+> +		*if_pixclk_div = 1;
+> +		*if_dclk_div = 1;
 >   	}
 >   
+>   	*dclk_core_div = dclk_rate / dclk_core_rate;
 > 
 
 Reviewed-by: Damon Ding <damon.ding@rock-chips.com>
