@@ -2,58 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 00E79606A332
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 11:00:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9A7AF606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 11:08:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LQiRm53V;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=csgAyA94
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tTvA5mG3;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=dRStX11h
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=dpywzQgXg8CZwHx4AYdXaMqCnKl6q6/e5DPk9JVV5Ek=; b=LQiRm53Vx/QCdZFIg1Lb3kbo9A
-	Z1B8kSw0C1ItWukgPPKCnbrEgZU2C2PUL8ezTfek1shJxn1w0bGpTw6rbemSWxNrFONz6om6ZC9V4
-	Xg/9Tcrg4iz1OjPp5nBI/aq5zcn46Nyfl5fX3CMwAL1LXFjj1ofBlifBWqD5JMAdZLSNJLdqjoq1/
-	6txmro5IzvddlUUxpJOfN/0umKcwLi4WQ6cxvTcXSgiTHIMikBomvP616GoWW7iaC1uYg3uUvYD1/
-	cMTBKgbLKNLN8aKx1LWLvXADL9/e21eWtWomTDkUHMdqrgWEDagjt5hQXlOdVnyu/31arksps49AO
-	VTPdbbjQ==;
+	bh=1wYsH2+RqjPoEzW5yDmf3K8tNpVgbz/l9d9uBcx2g44=; b=tTvA5mG3U0q4JQm8MJVXT0P+EY
+	2thEbiqchTjpWY72S44rqAqZPUeaCvkvj2YXG7/Jd7NdcdgltaiGtxH7jIw4dX7jBTsSIYX7FLD9a
+	f5KrFD4x7gARxNrqSitjHkX1Ik424TSSaX4IBcT4YENDdixbXVrHsT2KMpV+6N5WUHMFo/QjmY9cr
+	x7Bpcodu+/vvqCJOvH5nZ1i3g15mxFS+5h20dOj/Za2z8bmTaEI1fYhEni6dtv66i1i666Uln2fLe
+	A+IOmJtK4KPiRSChGh7JdfvTpDV4CPtsEdPyCdC9uNlHkeD+Qg6P09HxZV/AUiV2Y2hBUPJoro7Uq
+	GH/y4pfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTdOX-00000008epg-3Ptj;
-	Wed, 18 Nov 2026 11:00:05 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xTdWP-00000008gAp-0G2U;
+	Wed, 18 Nov 2026 11:08:13 +0000
+Received: from mail-m17218.xmail.ntesmail.com ([45.195.17.218])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTdOO-00000008ens-03Xj;
-	Wed, 18 Nov 2026 11:00:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=gulFkJpN4JJLUUrFDIJ1uZidMX2ZMDzwOEgh26q791E=; b=csgAyA947I7Hek8AbKzETrouaR
-	jXnL/3/GGumOrnVFeD+BJYTZhH7hEFv4z9CFKgpka6tAX29J0S6jMIiR7WYAyJgKE0A2boaJ36Jdi
-	zOAo5w3EwQgtGs6gPXVJIzI42Upimekp6sbZ8iG70k1LAMP59gDzUdjMZUC3zkZbxPTM5ljO32+QQ
-	gP20K/mN5fkscnOV0CLcWAjQyZ9ZxZyJk3HS0K3JzGURqbxUctZvT77o4+/iXLVOd+WUwP2/XsG9q
-	ncyIOaU/gr3Ns7sSi+JOBOoKRlYLXwuvlvKBPgWwHkoH5xaBBYQbzmrfTEJbRyfIY2WFZR4AgWmap
-	W/iWnt6Q==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: broonie@kernel.org, linux-spi@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- quentin.schulz@cherry.de, Lee Jones <lee@kernel.org>,
- Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH v3 6/7] spi: rockchip: Move to pm_runtime_resume_and_get
-Date: Wed, 18 Nov 2026 11:59:50 +0100
-Message-ID: <_LGRfnuzREyWei8rJ7BZTA@sntech.de>
-In-Reply-To: <ldw_Vn7fRw2QdWAMZ2npBw@sntech.de>
-References: <20261117235021.2013719-1-heiko@sntech.de> <av0CaMF_jOyqMYA0@venus>
- <ldw_Vn7fRw2QdWAMZ2npBw@sntech.de>
+	id 1xTdWJ-00000008gAD-3XYz;
+	Wed, 18 Nov 2026 11:08:11 +0000
+Received: from [172.16.12.74] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 5523317e8;
+	Wed, 18 Nov 2026 19:08:00 +0800 (GMT+08:00)
+Message-ID: <0cd86b2b-004b-4a36-ab8e-fd3b50960413@rock-chips.com>
+Date: Wed, 18 Nov 2026 19:07:59 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 5/8] drm/rockchip: vop2: Only accept AFBC YTR for 8 bit
+ RGB on RK3588
+To: aiyengar1990@gmail.com, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Andy Yan
+ <andyshrk@163.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Piotr Zalewski <pZ010001011111@proton.me>,
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20261113-vop2-fixes-v3-0-08ae37e83b5c@gmail.com>
+ <20261113-vop2-fixes-v3-5-08ae37e83b5c@gmail.com>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <20261113-vop2-fixes-v3-5-08ae37e83b5c@gmail.com>
+X-HM-Tid: 0aa1ee57974103a8kunm31e77375358449
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaGEpLVkgYHUMZT0tPSU9KTFYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=dRStX11hKIKXImeBPSFSnbL4EsfI4ippAvDWiIMjgZwMZsNT/qSSdtmiAfpCFt89dJ4cV435LnMtrQE35l6abkTOSitQjAvB++qhkLwniOfRYGWOa7YzW9QPxuBS9iSdHbj+zvbil7mXmytF+itkskDXYcYyHHEY34tnh6X3yiM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=5Z5/zjedC8T+CAY4SMgSU23abppwtiRyhcMgN9UWEQ0=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_025956_053581_F62906DB 
-X-CRM114-Status: GOOD (  18.64  )
+X-CRM114-CacheID: sfid-20261118_030809_369940_2920A699 
+X-CRM114-Status: GOOD (  15.55  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -64,39 +76,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gTWl0dHdvY2gsIDE4LiBOb3ZlbWJlciAyMDI2LCAxMTo1NDowMiBNaXR0ZWxldXJvcMOkaXNj
-aGUgTm9ybWFsemVpdCBzY2hyaWViIEhlaWtvIFN0w7xibmVyOgo+IEFtIE1pdHR3b2NoLCAxOC4g
-Tm92ZW1iZXIgMjAyNiwgMDI6NTM6MzIgTWl0dGVsZXVyb3DDpGlzY2hlIE5vcm1hbHplaXQgc2No
-cmllYiBTZWJhc3RpYW4gUmVpY2hlbDoKPiA+IEhpLAo+ID4gCj4gPiBPbiBXZWQsIE5vdiAxOCwg
-MjAyNiBhdCAxMjo1MDoyMEFNICswMTAwLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPiA+ID4gRnJv
-bTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvLnN0dWVibmVyQGNoZXJyeS5kZT4KPiA+ID4gCj4gPiA+
-IEN1cnJlbnRseSBwbV9ydW50aW1lX2dldF9zeW5jKCkgaXMgdXNlZCwgd2hpY2ggaW5jcmVtZW50
-cyB0aGUgdXNhZ2UKPiA+ID4gY291bnQgZXZlbiBpZiB0aGUgcmVzdW1lIHdhcyBub3Qgc3VjY2Vz
-c2Z1bC4KPiA+ID4gCj4gPiA+IE1vdmUgdG8gdGhlIG1vcmUgbW9kZXJuIHBtX3J1bnRpbWVfcmVz
-dW1lX2FuZF9nZXQoKSB3aGljaCBoYW5kbGVzIHRoZQo+ID4gPiB1c2FnZSBjb3VudGVyIGJldHRl
-ci4KPiA+ID4gCj4gPiA+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrby5zdHVl
-Ym5lckBjaGVycnkuZGU+Cj4gPiA+IC0tLQo+ID4gCj4gPiBUaGlzIG9ubHkgbWFrZXMgc2Vuc2Ug
-d2hlbiBjb21iaW5lZCB3aXRoIGVycm9yIGhhbmRsaW5nLiBLZWVwaW5nCj4gPiB0aGUgdXNlIGNv
-dW50IGluY3JlYXNlZCBtYWtlcyBtb3JlIHNlbnNlIGZvciB0aGUgY3VycmVudCBjb2RlOgo+ID4g
-Cj4gPiBwbV9ydW50aW1lX2dldF9zeW5jKCk7IC8vIGtlZXAgdXNlIGNvdW50IGluY3JlYXNlZCBv
-biBmYWlsdXJlCj4gPiByYW5kb21fY29kZSgpOwo+ID4gcG1fcnVudGltZV9wdXQoKTsgLy8gYWx3
-YXlzIGRlY3JlYXNlIHRoZSBSUE0gdXNlIGNvdW50Cj4gPiAKPiA+IE1lYW53aGlsZSB5b3VyIG5l
-dyBjb2RlIHdvdWxkIHJlc3VsdCBpbiBkb3VibGUgZGVjcmVhc2Ugb24gZXJyb3I6Cj4gCj4gZGFy
-biwgb25lIHNob3VsZCBub3QgZ28gImVoLCBsZXQncyBqdXN0IHVzZSB0aGUgc2FtZSBwbS1ydW50
-aW1lIHBhdHRlcm4sCj4gc2hvdWxkIGJlIGVhc3kiIDstKSAuCj4gCj4gQnV0IEkgZ3Vlc3MgcmVh
-bCBlcnJvciBoYW5kbGluZyBpbiB0aG9zZSBjYXNlcyBtaWdodCBhY3R1YWxseSBkZXNpcmVhYmxl
-LgoKYXQgbGVhc3QgaW4gc2V0dXAgLi4uIHRoZSBvdGhlcnMgZG9uJ3QgaGF2ZSBzdWl0YWJsZSBy
-ZXR1cm4gdmFsdWVzIGF0IGFsbAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Arun,
+
+On 11/14/2026 12:39 AM, Arun Iyengar via B4 Relay wrote:
+> From: Arun Iyengar <aiyengar1990@gmail.com>
+> 
+> According to the TRM, the AFBC decoder of the RK3588 Cluster windows
+> supports the lossless colour transform (YTR) only for the 8 bit RGB
+> formats. An RGB565 buffer with YTR gives a black picture and
+> POST_BUF_EMPTY, while the same buffer without YTR displays fine.
+> 
+> Don't accept YTR for any other format on RK3588.
+> 
+> Fixes: 5a028e8f062f ("drm/rockchip: vop2: Add support for rk3588")
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> ---
+>   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 5 +++++
+>   1 file changed, 5 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> index e8ef83d6924b..de3da292b05a 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -404,6 +404,11 @@ static bool rockchip_vop2_mod_supported(struct drm_plane *plane, u32 format,
+>   	if (vop2_convert_afbc_format(format) == VOP2_AFBC_FMT_INVALID)
+>   		return false;
+>   
+> +	if (vop2->version == VOP_VERSION_RK3588 && (modifier & AFBC_FORMAT_MOD_YTR) &&
+> +	    vop2_convert_afbc_format(format) != VOP2_AFBC_FMT_ARGB8888 &&
+> +	    vop2_convert_afbc_format(format) != VOP2_AFBC_FMT_RGB888)
+> +		return false;
+> +
+>   	/* Different windows have different format/modifier support */
+>   	for (i = 0; i < plane->modifier_count; i++) {
+>   		if (plane->modifiers[i] == modifier)
+> 
+
+Yes, RK3588 only supports VOP2_AFBC_FMT_ARGB8888/VOP2_AFBC_FMT_RGB888 
+with AFBC_FORMAT_MOD_YTR.
+
+Shall we move this new check a bit earlier, right after the RK3588 10bpc 
+formats check? Also add a comment and a drm_dbg_kms trace for it.
+
+Best regards,
+Damon
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
