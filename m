@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D4B78606A325
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 12:28:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 758EF606A331
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 12:28:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Om1zDrYk;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=HspPv9gR
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bGneucsj;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=c91rAe0R
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,75 +14,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=J5JAChv/b4bFBRSnfYx/j1chYjm8TDaHljgXm8dpFhA=; b=Om1zDrYksdgtHr9mubK1WRYpTv
-	br/O26gdsGhn2jRKvTb/Gr2ZJypUoD74VL1q9ue7Vq8rUmfe8DNulPk/MK/wqkuEZCaC4NhORkV0h
-	eEFQPyVJGdTH4vE3dS4hRPR6R9fqSu0xw1rU1lvPtaJ3xWv/TGB6p7l5wfvKdda9nULSFtJI3Rzc2
-	QtzSAcSW9TBNMGarGnqGHNdDTYNnzS3mnMr1fpKS17eC4+eibODlEYfM+zOGf9pfqQkmNcQSZqnxh
-	0WVKwG1esB5rjjIEVNx1s/pQms4PeEErZnXCHO5qYaQttODLtmM+4kmtT6T1A4d9JxBszNIoArko8
-	rCcOpNpA==;
+	bh=z2jPGzO0BkFhZKD7LBgtX7+oStbUcf5mP38ESnTQ8hw=; b=bGneucsjm2TPb0omzhIbrdSIp4
+	syICjvc5WuKaAURieUTz1XBL1ITmjicnJK0OXIIyf0ec2D/3y2IRSO1LAIVCcmTco5Q0O8uuO/XES
+	NbfqUgvDGsnXG8mSe0mYYDA/N+qB9JTdiqG2IdZDS07lZqZBcYt2thuzx2uTaJi+gLbp7tq/0OEJL
+	n0BwPLNI2/4HLHQjiEFbnSpg5JTmC/l/+zO6RiY6YSpYdS4wU4hQOSQkkRTUMonjh99U5Cil4uhrG
+	JxXz3pNIb4Llj7nl7hpsEatuGBvDSTVfw03+1T+YDikybbesVN2TIEVI0hU+BwZsCRYB+ccVQ5BKD
+	HHMzGypg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTelw-00000008qWc-3goN;
-	Wed, 18 Nov 2026 12:28:20 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1xTem4-00000008qdN-2d29;
+	Wed, 18 Nov 2026 12:28:28 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTelu-00000008qTJ-17rb
+	id 1xTelz-00000008qWy-3uxa
 	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Nov 2026 12:28:19 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-4a5b2be99a8so8599115e9.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 04:28:17 -0800 (PST)
+	Wed, 18 Nov 2026 12:28:26 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4ba013938d7so8473355e9.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 04:28:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1795004896; x=1795609696; darn=lists.infradead.org;
+        d=baylibre.com; s=google; t=1795004902; x=1795609702; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:in-reply-to:content-language
          :references:cc:to:subject:from:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Sbg0KLhjP6VImCPLy3d1+inU/8Bcn6/seY59UQYwN7I=;
-        b=HspPv9gRoTZpVMVwQMygkdidqgisQM/oCfvEW38ZpIx6FSn8qOr5MFARxu9mnH3aS6
-         4JU4JzUmYWpYRuaIspsGoI1wWHdWxV2uw8EX5g52ZhqS0nUZOrLWAMlToaNa/X2bbeRs
-         1GxWvIomcyv+6irgZUQC5HpS5LXFfVoWNrDAKTYRbGHlKdZMEtTISAIUMEWLllmUSvrD
-         SMAIKAovkAoaALm5ftCYII3EJcAmrvRtJSIRpq7F4h9m599ijh9n3wR7T0zTQb0lSjNU
-         oLrOLrMCOAode4PNpy+kU/wRNVO6IJ677c3gBtglQvMQemnhwsh1K7hqJgU4KTw68ptL
-         6n+A==
+        bh=qZqAnvrKTsVRZ3k+qpJ8SHuObdEj1UWG4cr1fECpUNs=;
+        b=c91rAe0RMFu6J5Cv9LDEkusyQ7z5B0vYVjHbXgucWirB30jnRpICePYa6zUTSeh0PZ
+         yfnqbmgQkkHyY747Vi4QINW+BoXUt4dkfgmGrAxKaOjZvCaNgxyAGu8qgqxVhN1HsQHP
+         tQzzVzP9vkq29/I4qtQvF74Pp17ZPehwyuP0RrMAnMMgJuSfoB+9TZuZN3mtClGaKSz4
+         tz25zf7wlckyrNgsz7yQhEDvirQYVPfm5Ma9+4klxl2pObY0TOX0Ggew2gqPVwZRjTpv
+         LCxMczugXTwl1T19r3zOlrUJqxSY5p01RFKRP93tWRduuTvZgIk/WDyfJODJmBIoJfUF
+         sS3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795004896; x=1795609696;
+        d=1e100.net; s=20260707; t=1795004902; x=1795609702;
         h=content-transfer-encoding:content-type:in-reply-to:content-language
          :references:cc:to:subject:from:user-agent:mime-version:date
          :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=Sbg0KLhjP6VImCPLy3d1+inU/8Bcn6/seY59UQYwN7I=;
-        b=TRD480fLaLCUPp+rPS+N5crT61zvzEra3+QO3tjbh8523hMht6K6g+ZoM3RlegY342
-         k8t6NHHvEaAQIsDafeIJzJUl2uvsD8AhcXLmXop7qS5+lYyYS2Xi8ohtiP0DF1Z5Q5A6
-         wtR2E1HURQyEVn0+nI1+nYSYpGnZb0/iLElK/KDrEFRSysO6m/G23/9tsHhdM5yMf1tb
-         MMRxYbA6mgO419wWXYXE/gNPZKuMjXto+3VtbHiSXXefQQDHQOQpAWG3xKTBkzVb0H8V
-         3MgguNLmVklx3Z1QNsPKJ+eQUjDoEcncH0HxVYoSBhfVuMpbAm0M45+84Yrl6K3HsiRH
-         5Ghw==
-X-Forwarded-Encrypted: i=1; AL+hErHNIRGfvbs7hgbyPa8ykw5mc1BFIpJmZktz4XhSpPAt+sqmpOHRQSQNY6afPvG4O2jiJezJ4+m610COe6aIjw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+p8cEiy2FmdcbbO1kShjm+aLsc7CeR6dvG6Tv9HosHRjJOsOF3
-	QTQARmGEREpQg6gxuvOX2WpdamyUUm38mtFzg4gA8kfkNfkVnV/AYnw+MY0zHkLfb0c=
-X-Gm-Gg: AYBFou3JgeZ4qgQN/QIMRs6XP4CAW/XFrSvL/4ylwjjsG7MWbZprVPFvt1sajQ2PJ5Z
-	1RgvvkRB6fFlpwX4dxKuT0rNq4kseMjtry5/E4b/2EcCC9H7B4wkXi4YXih7Rp9TLcz/6HNi4Qk
-	VyLmeFmW7bNdHES1eLyPqnUcSFsinRGii5No6mioK9PjF/5w58BgLg4cN0O05Xnh2QxjialDT73
-	pTBJx/QRgIgmarcWnsXehFXxi7Hp512smrdrZGs1ywOvau+7QLF8HdPugSfQgAQ/zRZ2pYT5+uL
-	7u7LzUnW9EBF7ayjwCXdHwczqWnSZJLux6HTnJwktQuE5p7TJCl37ybpDNkC7pUtgQmK4nasItT
-	VoHZlCl/DvNm3WkqOFB/OLFQfFvKVdy9JbWpQ3NGwqfH8/Ert3P+rg1G8SEELLkbsjTYaRTNdSA
-	nk7zExjA63YUyJ8F+JZr5mKCuIUz0kgax65UJtckTN+DWGtMQEBADxgsX9Is6+7AGk+kjHXV3di
-	K5E1MEezVKEvTPwnp+CAc48coknmCqhHB0qgxBjWhMBNvzI2wtB4YZla6D4MDK42DAURReu9fPz
-	jvYFGw8Xg2B0pt7BkMWkCgl0KsJbay9TyJ98p67CZYeNLbGhSCut80oya+3OJbzIMgXQEsHcSqW
-	HYw==
-X-Received: by 2002:a05:600c:8b63:b0:4bb:6871:8f21 with SMTP id 5b1f17b1804b1-4bb7da27fd2mr44906275e9.23.1795004896063;
-        Wed, 18 Nov 2026 04:28:16 -0800 (PST)
+        bh=qZqAnvrKTsVRZ3k+qpJ8SHuObdEj1UWG4cr1fECpUNs=;
+        b=roqA0JvUs6UenI+RrouohAWFJ0PB4eLbrMkRjL37KInSMRYdsjV27yQA7Dj3bRPfop
+         2joZgmd/+Vn3nrJumCG5ZwOw/IY+HfWDuJs2icpxHeYW8fs+UVqQnyrormLcI3lBZkPn
+         NC/hDvaSn5lNWuUET/1SckvpSnz3wiz5+FAwRPjY1i6ovJ3th1K8OqkpD+jVDj/CFlbM
+         NO2ara3nilEoNK7EuRNMCZ+kUBvSM2L2bK0DVLtWFlfvo3gdJZQe07x+2TwKa8MXwRrf
+         8vXrM9Q5RCAZevxLK1wIgWARCLppD3lzbK1yI6WJReqWOk0HFSA21oyWxhk+GVdNadB1
+         d/1w==
+X-Forwarded-Encrypted: i=1; AL+hErGVuoDdJ9+t200l4BnZEVs64sBqCriGxyfmkpdPdyTh4QRYh6kazPIv/OYDk+2yDAYlRveRHzyKkUu1tLPN+g==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8Lc5q273P4DWATol1YlrG8560Xho1xE+3G/ZV2cxwS92LCNqtp
+	RXnJ+uEmP42dyGQvqHg+lJxoEcv3TMp41VGiy5yxHgZWOMC1ztBClCKe4LRa4Tk6lfg=
+X-Gm-Gg: AYBFou1YVeYW0+rWF8UqRVk9OJ28ftY3ty7BXlxpBqzsqUAZ62+kcaRfZ91nX9a0Wv4
+	Eam1b0lLUVV3sH4ILgd5occabTzfaHpJxhxqtITAENPyD6zPm6BXbb+KgUQcshc+tF/cH/ZaWya
+	NXL0ys+7WeB1Z3lwUXDlSo4IxYpbrY5O0Lxel2nzbRKgTSOgU7nBVmwgak7cM4hNitAu22/iBGX
+	INcB7fzjNu6FgBGJWSKiWtqH/iMEzc4Ydb060pZHXkudFKOl5ynz26wpj4g93DUlOxIbp6ZAFQr
+	dOL0dtq7o5MYMK1A4yTS7IoU70eYOIM9nBcc6k9mzKI0jQru8cOJPJ21KNHyld4JASZpL2/cgqJ
+	j5uoOwpAd2XFVaiuLv6wK83hAE+gVvucux+Pb5dClbvhXPC7mNslZLzUZyH9ibiL+8W8Q6ENB0O
+	hIOxzJ6UxMoaohFG4iN/kHo0sbRk6D5J3Az1DA97FV0ERy87F5cZtjE6mfO+cjVSOUEE8ImsdtI
+	v8gYEjUQs+8XJ4MUG9YmJSNljSjR/x+zBIhRRD6gB7OGZLHo7G2bA0vDWnKzYhe45wtWTHGNi+X
+	NLIOa5L/fOoyrHiSmmJuSVuCtS6Fw9HLxBxZM8UJz8lUQhbdhpyGy5W+iTshghDHJvLctkQoIy4
+	6wA==
+X-Received: by 2002:a05:600c:34d2:b0:4a1:6992:f861 with SMTP id 5b1f17b1804b1-4bb7d6d1f21mr46698525e9.1.1795004901817;
+        Wed, 18 Nov 2026 04:28:21 -0800 (PST)
 Received: from ?IPV6:2001:8a0:d6cd:9000:86f4:4e71:9fc8:3183? ([2001:8a0:d6cd:9000:86f4:4e71:9fc8:3183])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb7d2abfc4sm64858355e9.7.2026.11.18.04.28.13
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb7d2abfc4sm64858355e9.7.2026.11.18.04.28.19
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Nov 2026 04:28:15 -0800 (PST)
-Message-ID: <6291be5c-94e8-4a5b-aa30-f797672e4165@baylibre.com>
-Date: Wed, 18 Nov 2026 12:28:13 +0000
+        Wed, 18 Nov 2026 04:28:21 -0800 (PST)
+Message-ID: <49a9337f-6808-4f30-b826-9a280849a51c@baylibre.com>
+Date: Wed, 18 Nov 2026 12:28:19 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Daniel Drake <ddrake@baylibre.com>
-Subject: Re: [PATCH v17 10/12] accel/rocket: add a GET_PARAM ioctl for the
- hardware version
+Subject: Re: [PATCH v17 11/12] arm64: dts: rockchip: add NPU (RKNN) nodes to
+ rk3576
 To: Jiaxing Hu <gahing@gahingwoo.com>, tomeu@tomeuvizoso.net,
  heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  joro@8bytes.org, will@kernel.org, robin.murphy@arm.com,
@@ -98,12 +98,12 @@ Cc: royalnet026@gmail.com, ulf.hansson@oss.qualcomm.com,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <cover.1794615324.git.gahing@gahingwoo.com>
- <bd963b70e40af3c3c74ac1569cda7be885b0ada1.1794615323.git.gahing@gahingwoo.com>
+ <f9f4f43cd1c4c8c6cee0371b4b92badf37e68832.1794615323.git.gahing@gahingwoo.com>
 Content-Language: en-US
-In-Reply-To: <bd963b70e40af3c3c74ac1569cda7be885b0ada1.1794615323.git.gahing@gahingwoo.com>
+In-Reply-To: <f9f4f43cd1c4c8c6cee0371b4b92badf37e68832.1794615323.git.gahing@gahingwoo.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_042818_337531_211DB8BE 
-X-CRM114-Status: GOOD (  21.04  )
+X-CRM114-CacheID: sfid-20261118_042824_072119_36AD346D 
+X-CRM114-Status: GOOD (  10.20  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,84 +117,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 Hi,
 
 On 14/11/2026 03:05, Jiaxing Hu wrote:
-> Add DRM_IOCTL_ROCKET_GET_PARAM so that userspace can query the NPU
-> hardware version and pick the matching hardware description, such as the
-> SRAM configuration and the register layout.
+> Each core is on its own power domain only: core 0 on PD_NPU0, core 1 on
+> PD_NPU1. Measured with both cores running, the results are correct, and
+> the nputop and npu domains above them are powered through the domain
+> hierarchy.
+
+No need to include lab notes; we assume you tested this work and found
+it to be working before submission.
+
+> Label PD_NPU so a board can connect the NPU supply. The IOMMUs use four
+> clocks.
 > 
-> Add DRM_ROCKET_PARAM_HW_VERSION, which returns a hardware version enum
-> that matches the device tree compatible.
-> 
-> The enum starts at 1 and 0 is not used:
-> 
->   RK3588: 1
->   RK3576: 2
+> Also set CLK_RKNN_DSU0 to 594 MHz. Mainline sets neither its rate nor the
+> NPU voltage. On the ROCK 4D the DSU runs at 786 MHz by default and the
+> rail boots at 750 mV; with both cores running, each pass of the 5400-row
+> test has 11 to 25 wrong words. At 594 MHz the test is all correct. In the
+> vendor OPP table, the 500 MHz and 600 MHz steps both need 725 mV.
 
-I wonder if REG_PC_VERSION / REG_PC_VERSION_NUM could be used instead of
-creating our own numbering scheme?
+I found this wording a bit confusing. I think you're saying, the system
+boots into Linux with 786MHz & 750mV, and that configuration gives bad
+results.
 
-> diff --git a/drivers/accel/rocket/rocket_core.h b/drivers/accel/rocket/rocket_core.h
-> index ef7043046bc6..50c8b05bd394 100644
-> --- a/drivers/accel/rocket/rocket_core.h
-> +++ b/drivers/accel/rocket/rocket_core.h
-> @@ -41,6 +41,7 @@ struct rocket_soc_data {
->  	unsigned int num_clks;
->  	unsigned int num_resets;
->  	bool task_con_16bit;
-> +	u32 hw_version;
->  };
+I'm not clear why you picked 594 Hz then. What does the vendor kernel
+do, are you matching that behaviour?
 
-
-If we're adding hw_version here then perhaps the task_con register
-selection could be made based on the hw_version field value. Then we
-don't need an extra flag.
-
-> +static int
-> +rocket_ioctl_get_param(struct drm_device *dev, void *data, struct drm_file *file)
-> +{
-> +	struct rocket_device *rdev = to_rocket_device(dev);
-> +	struct drm_rocket_get_param *args = data;
-> +	const struct rocket_soc_data *soc;
-> +
-> +	if (args->reserved != 0) {
-> +		drm_dbg(dev, "Reserved field in drm_rocket_get_param struct should be 0.\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	soc = READ_ONCE(rdev->cores[0].soc);
-
-Does it make sense to do READ_ONCE if the variable was not written with
-WRITE_ONCE?
-
-If my quick read of commits like 89c2c777df17 is correct, it's possible
-that there are gaps anywhere in the cores[] list; please double check if
-it's safe to always assume core 0 exists.
-
-> +/**
-> + * enum drm_rocket_param - parameters for DRM_IOCTL_ROCKET_GET_PARAM
-> + * @DRM_ROCKET_PARAM_HW_VERSION: an enum drm_rocket_hw_version value.
-> + */
-> +enum drm_rocket_param {
-> +	DRM_ROCKET_PARAM_HW_VERSION = 0,
-> +};
-> +
-> +/**
-> + * enum drm_rocket_hw_version - the NPU, one value per DT compatible
-> + * @DRM_ROCKET_HW_RK3588: "rockchip,rk3588-rknn-core"
-> + * @DRM_ROCKET_HW_RK3576: "rockchip,rk3576-rknn-core"
-> + */
-
-Let's not document these as a match against compatible and their values,
-just state it as a way of identifying the NPU chipset.
 
 _______________________________________________
 Linux-rockchip mailing list
