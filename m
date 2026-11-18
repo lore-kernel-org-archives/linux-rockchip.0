@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C841E606A33B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 19:08:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1DD1D606A320
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 20:32:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=AnS7GbE+;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=BDJPVTAD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sJbMiarq;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Ak41hTEh
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,64 +14,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=lplVI5YE7wv1mPkPK6jKUkwozp/wGKjL5xuFY2QGPuQ=; b=AnS7GbE+CjYBXLSj8y3EJAWV9Q
-	LA/wdYMo5eaAv2GQBZCHcpxG3xynThtWHp7m9MbS1VAxWPJ9Vfj/xMrGEewW+tLhEmgIUPD9vRUcd
-	S/nMk84liLyrOAHjSTg215KKaDGMZ5oB+spiCYMbVrsK3INdnx4EVfPSm4SGCkcOJsXxCjk2dACAj
-	MjweblJD2dSTbPPQwZg5tqoIwldQBmB49Azy+aEDP+MAu/CcdbU6e2bKekBeB244IgLbBqeoGLqFm
-	RLqw73g+UQG5RGVffQLKSLZwr+mK5jgKMzNaT2hZC44RYh4xcBqgn4Ev96Q0TUWkMcEJmy8TOqKfa
-	t2w3jcUg==;
+	bh=BZCygSKgr7fwgD5GYDIfYaZ+RrGJ/rPz0SrbpoFF1yI=; b=sJbMiarqJJB/zj5Uc6ehJ0WatW
+	SxdXrroDjGs4vNqEI/C0FT+jp3D326oZe3wwQYHvuBo6Rl4JfbzKLVm8jVIOJgRyrXL6mijGbjVKg
+	6R1VNRhsx+7YfyWs7dcEBY5nloXFlrjIzNeaXXk3dH+dBc/RTyof7J1augCptLZUzcACChljMJc54
+	pTM3Gve0TcIcUagxu74EfoyaGu+eys1K3WCPN0l6UBNVcnrLQ6zDGWOD2B71zuYU2HslYXe5aFrZE
+	UZth3iTcwpW54pbU0f8dXdN1p0kZqcrvojobosrofSV2tYtZbJH+w+RoZfd8Ahao4Kf3eypbPlVQP
+	UdbRxasQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTl1P-0000000A50J-2k9r;
-	Wed, 18 Nov 2026 19:08:43 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xTmKf-0000000ADXP-4ACV;
+	Wed, 18 Nov 2026 20:32:41 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTl1O-0000000A4yj-10Zm;
-	Wed, 18 Nov 2026 19:08:42 +0000
+	id 1xTmKe-0000000ADX8-1emM;
+	Wed, 18 Nov 2026 20:32:40 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6E7B1625B6;
-	Wed, 18 Nov 2026 19:08:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EAAFB1F000C4;
-	Wed, 18 Nov 2026 19:08:40 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1FCFE63B78;
+	Wed, 18 Nov 2026 20:32:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9666B1F000C6;
+	Wed, 18 Nov 2026 20:32:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795028921;
-	bh=j8NHvkg0mcHS6NppRIX+eDEokhzbE1hV9ZJ/sEvlK4U=;
+	s=k20260515; t=1795033958;
+	bh=XJmqha3jczEcaerimpEtNez8vFhS9CMO3UzYk56rIsY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=BDJPVTADU+MiIs2CIl8rFOWWP+9Kt+G6akZKawZPdkAf8/Qm/NUbj1bozbJgxecFG
-	 CJWqECGUh9QehHXJKFCjGT5C4nsLfq/JT9mKc9UMMxk5pw13fC+My2ZBlj+8s8Ijrf
-	 eeVTd1gMOF+J3ER8O4/CteXSRjHc3ry65VUWdDO/Ez0ilceOqiLLzGLoWsGDAwegW9
-	 63MbdibGqqdzH/1YN+xjeYbdiXqeLeYoDMicEE/3c+oIpqAGUt6vZYTqzrSz3hY1Ut
-	 yDxj2PlvVER2TSmMwEPQlAMwfhF7ia8EPRxb14ufHd+/277knxt3tuD9qq5Ajj5OW3
-	 tOpjPFZQvUduw==
-Date: Wed, 18 Nov 2026 13:08:39 -0600
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Cunhao Lu <1579567540@qq.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>, devicetree@vger.kernel.org,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jose Abreu <joabreu@synopsys.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	b=Ak41hTEh2Or4toXQzz7176z2UqaczmbWwvTnufoviYFJytOETfRg2aa0QK/68A9Nm
+	 gxIYDh6Ag75SdaG3TKZW+16O2wyybY+cPkHsLxDWD/QC6bQ5ym6fGzH9mXMsP5DIN3
+	 RHP8zK8feAO8BB4Mab8J7Y97Ukhy6y5e7wtbkPSyl4jNHX5Gx8z9d2Rd9qpgn4b7jr
+	 auWnbP5kFSpwUUmbK7pHZg5D0Ah7yuAxK01zgG47x/QVPNEYHIg57EsxCwJ2N6MCb9
+	 jY8keMjByapseewDHzDH4TGhtnl06j0T31BCfNER9ddo3G9guNLbixjZlh1e4oJdCw
+	 NFaYBExwJyP7A==
+Date: Wed, 18 Nov 2026 14:32:36 -0600
+From: Rob Herring <robh@kernel.org>
+To: Arun Iyengar <aiyengar1990@gmail.com>
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+	"Joerg Roedel (AMD)" <joro@8bytes.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	linux-kernel@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
-	Heiko Stuebner <heiko@sntech.de>, netdev@vger.kernel.org,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Andrew Lunn <andrew@lunn.ch>, David Wu <david.wu@rock-chips.com>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH net-next v4 1/2] dt-bindings: net: rockchip-dwmac: Add
- RK3572
-Message-ID: <179502891855.247733.11686816962535109949.robh@kernel.org>
-References: <20261117-add-board-ok3572-c-net-v4-0-4e9da569395a@qq.com>
- <20261117-add-board-ok3572-c-net-v4-1-4e9da569395a@qq.com>
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, Niklas Cassel <cassel@kernel.org>,
+	Pranjal Shrivastava <praan@google.com>,
+	linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>,
+	Finley Xiao <finley.xiao@rock-chips.com>
+Subject: Re: [PATCH v3 2/3] iommu/arm-smmu-v3: Enable an optional clock
+Message-ID: <20261118203236.GA823624-robh@kernel.org>
+References: <20261113-smmu-v3-pcie-pd-v3-0-39eb4f919529@gmail.com>
+ <20261113-smmu-v3-pcie-pd-v3-2-39eb4f919529@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20261117-add-board-ok3572-c-net-v4-1-4e9da569395a@qq.com>
+In-Reply-To: <20261113-smmu-v3-pcie-pd-v3-2-39eb4f919529@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,30 +86,57 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-
-On Tue, 17 Nov 2026 17:04:35 +0800, Cunhao Lu wrote:
-> Add the rockchip,rk3572-gmac compatible with the snps,dwmac-4.20a
-> fallback and require rockchip,php-grf.
+On Fri, Nov 13, 2026 at 08:45:06AM +0000, Arun Iyengar wrote:
+> On the RK3588 the PCIe SMMU's clock is gated as unused when no PCIe
+> controller holds it, and the next register access (the CR0 write at
+> shutdown) hangs. Enable the clock from the firmware node, if there is
+> one, while the driver is bound.
 > 
-> Mark tx_delay and rx_delay as deprecated and disallow them for RK3572
-> so new designs do not use the legacy delay properties.
+> Do it first in probe, as the firmware probe may take a Tegra CMDQV
+> reference that only arm_smmu_impl_probe() releases.
 > 
-> Signed-off-by: Cunhao Lu <1579567540@qq.com>
-> Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 > ---
-> Changes in v3:
-> - Deprecate tx_delay and rx_delay and disallow them for RK3572.
+>  drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
 > 
-> Changes in v2:
-> - Add RK3572 to the shared Synopsys compatible list for consistency.
-> ---
->  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 15 +++++++++++++++
->  Documentation/devicetree/bindings/net/snps,dwmac.yaml     |  1 +
->  2 files changed, 16 insertions(+)
-> 
+> diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
+> index 6d4520c47308..d3f42316b0d6 100644
+> --- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
+> +++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
+> @@ -12,6 +12,7 @@
+>  #include <linux/acpi.h>
+>  #include <linux/acpi_iort.h>
+>  #include <linux/bitops.h>
+> +#include <linux/clk.h>
+>  #include <linux/crash_dump.h>
+>  #include <linux/delay.h>
+>  #include <linux/err.h>
+> @@ -5786,12 +5787,22 @@ static int arm_smmu_device_probe(struct platform_device *pdev)
+>  	resource_size_t ioaddr;
+>  	struct arm_smmu_device *smmu;
+>  	struct device *dev = &pdev->dev;
+> +	struct clk *clk;
+>  
+>  	smmu = devm_kzalloc(dev, sizeof(*smmu), GFP_KERNEL);
+>  	if (!smmu)
+>  		return -ENOMEM;
+>  	smmu->dev = dev;
+>  
+> +	/*
+> +	 * Before the firmware probe: it may take a reference on the Tegra
+> +	 * CMDQV device that only arm_smmu_impl_probe() releases.
+> +	 */
+> +	clk = devm_clk_get_optional_enabled(dev, NULL);
+> +	if (IS_ERR(clk))
+> +		return dev_err_probe(dev, PTR_ERR(clk),
+> +				     "failed to enable clock\n");
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+The primary point of the "optional" flavor of get functions is so the 
+get function itself can print an error rather than every driver doing 
+it. So drop the error print here.
 
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
