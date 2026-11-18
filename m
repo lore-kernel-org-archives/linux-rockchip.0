@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB509606A332
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 12:28:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DB09C606A335
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 12:28:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eqhwRrfS;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=pUgfagwF
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=d217jrcv;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=IM4vBm4r
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,75 +14,74 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=7GkDIrJud68bbxShsmiG/cCmpYpLdi3pvt1ZT5QAotE=; b=eqhwRrfSOW5SK83FOqhFNilOUw
-	sjsFPeXPUGGt0TZOGGYOxDhY9Eh9PkTaRBxMEJivctIfok1BxwVHXXdcqU8bZWQOQswT80gjU1V3W
-	nXZNY+FVKJOz/g8owPKMTXxa/3xJl3D/W36eKRnB4EATUw/EOwtMVY7+gO7wbFt+cawWfUMUPoBAp
-	jh/4m58rpQDqIvc2kZRiGtmiB/ItP0mBiKZkzxbrT7pCzzJPR0lirTF6EhVcfdkwvbDc99UHjd2iQ
-	Iykhr9xXOi9kXjq8LfK1xPWky1+BgyNR1bBNOyO3AW1ikoKGVvAZnS9btdNk+eplXkw0y8K+yOthn
-	48Iubvug==;
+	bh=jMG5sW+5+a3bEb8B8XkfGCo14c1r1watfoqT2dODMME=; b=d217jrcvRR8+Y9DZeiUBGq/CUk
+	86sDBiTJZZ2ATuChg+ZXWbJJeKdiJ/NJ1fNy7qnl8AtG/6R/P0La6edgbd4f5pKfspd9JyfbsSqW9
+	ZL3JHsTWe904Nbu7m+79/O7CnVlJDs+JCpe0nPtIiDFlR5cSc+s0j1RLIIrw2C+ybTvSTkRjOtkf6
+	6lKOQ7GNyDSBhzq5RrthkW9+j9OXHdOjLTBhidV3kqgp6Y5hqpPreoOv3gt+alnCTnZBUBB+OYLqQ
+	1vnMcdt3cbr/RuJvziciwBevauJ15aPBEyQXg4vcPODnZujjya0rJYh7LNkzEZ8m1A04gBQ/uRqCJ
+	aKjmjtiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTelb-00000008qJz-49kh;
-	Wed, 18 Nov 2026 12:27:59 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1xTelq-00000008qRI-361t;
+	Wed, 18 Nov 2026 12:28:14 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTela-00000008qI9-0WxI
+	id 1xTelj-00000008qNR-39mm
 	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Nov 2026 12:27:59 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-49465892f7bso653869f8f.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 04:27:57 -0800 (PST)
+	Wed, 18 Nov 2026 12:28:09 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-48e20ed3b9dso732723f8f.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 04:28:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1795004875; x=1795609675; darn=lists.infradead.org;
+        d=baylibre.com; s=google; t=1795004885; x=1795609685; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:in-reply-to:content-language
          :references:cc:to:subject:from:user-agent:mime-version:date
          :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=pWhnfvWenZjOfquzYUSnlcmZobUEBcHEFf7Qs3x3jIo=;
-        b=pUgfagwF07epxOthydXOg5trufdJfMZg4oCAIEAIwybp6uDQ3HDKibCtdgtMWEo1DG
-         1vfbfPp1dt7ETdafZ7mThIb94mpTkKZyia6aggca/NV90Is4oaiPKgcv63KebNEdFioU
-         ItT9MjX0ljJ2oD3O/zRD55snr86mI1m0V2KESDFWGmJ73IvmaJe7KUx5h+uh92cs3HYp
-         IcaebjP513H6NUj7MUASFi43I4+3o2EEOWMvtcmLo+vQHYKTXNJw2dfPMmtxJkLG8YG+
-         wFv9P8zGRB66ajob5NvIJpRsceMjRkTAvP84QCJlcpj7JTWXR1404Bn0HGEfPnX66WZk
-         8HYQ==
+        bh=8ByWoUJOn8xt5bIjc/DgDVb/Znhr0IJHP27C3VPG/e4=;
+        b=IM4vBm4rRGv17TAMMp3rzdguAoeGPnjStIkS1QepU7hyK9xuGEMMLU/VvW7+6pI78l
+         MTcCacLEdqkbLJsuqahchJz+16YF1oURquaf4Yp3csGgYOYn2/0FTzFka4bCQZCzooE7
+         Zr+1kxym51G/hE6mPOHIAf8oIw9SSQjf2pgctlfpGhOayfjX6DrJtKpTkvU4yax0YFrC
+         SoP5reH8g/NBkTP2CVlQlSqxRDlU8rVN9BpW0sX4yygtRIIQGsP2/twPdPAF/naImz5T
+         rkzdtjI/gGbaRPyDPp6QkM7W03InmOaJKovLACWR6vd1FNO7VEMFCPB+mPjQBWcbpPiJ
+         o90g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795004875; x=1795609675;
+        d=1e100.net; s=20260707; t=1795004885; x=1795609685;
         h=content-transfer-encoding:content-type:in-reply-to:content-language
          :references:cc:to:subject:from:user-agent:mime-version:date
          :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=pWhnfvWenZjOfquzYUSnlcmZobUEBcHEFf7Qs3x3jIo=;
-        b=uRau0pkfJeXGvmavf8ijNy5YCMbrpD4HHwzLFPesKn9TghhtQftg0OXAIQTT3HM79R
-         c1UtzVeuYJdr/FAAImJBiT1B2yAVmgPLtfFLWWdyTlJz0dZzT8beCpRHoxd18Fxy8NWp
-         s2pkOhRDGocDv+AH/VGLqQ+Dx2VqQ0+B3GRwt0eWndqeGLo3qp2ci7Ju2a2+b2nsvUz3
-         xwc0N6+6CvM2HzgULNNuG9Y1WWIWc3hLr4uvLcxg2JeOXyXdeq5ibEFPZThCqh1apG8u
-         ecZnSVDM8sLopEbTVsALHBTLddGh8EarSrVx4RDgFB2oh3NjYZemShfs1J9vj8mTSNxu
-         B03g==
-X-Forwarded-Encrypted: i=1; AL+hErEQ60/A+wtrsLsnDEd95Jf3ZbMTSWAFtFtzjseOL6XEqNfaR3eZB07jEOyoI7YJl/aTX9fZScwOfcfSvjpEXA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+WoPsDs5TiRG1l7EhC43NKKF5o9rXaTtA0aJEBc439uDqlkmJy
-	JhMErmA+oa8Asc7vn8vI1BL8J1g8XBId2aKmj+dFvPc1GPTNA8XC7DsuhnXbDWI3iWY=
-X-Gm-Gg: AZFdTZd3t4mSDTOHlt/BhqZO+FJxgqWyCN/H4d97FD/98Bc4SZP4IrgsAUJSajA0Sam
-	bnz7G2uCHFubCZG4lZAA4OjMIbwTgmsMTLpoVIc0C/CCz4f4/+hjrAZzvMVnRh9u9RAiJ9Gwc3r
-	MqF0RVBR2r7fqiHPygLUPB7BxKxRlSS56lJvA5XQ/kemqLNGa68C8/VySRJ2rL5jhz5OP638AML
-	F8XKBWbYRKJZsDNtX8NTRxdvT14alKbd+API55AITAHR8HPRQo2ZQ5gycfhdiJpBLuhtbqb255o
-	PztKdHOOgMxFDVuB543ji90wnU3I1FIMzgs/U6o9vPfW4LipTKBAsNY+pvxMV+AMQzYBWhW6hLI
-	LMr3dWQZnUwJQTtDn9VZHPUqQrbQfn2n0uqH7/jxq/TRb4hjER30CLWBWv0hbt8mLjs4VhHNk17
-	7wTAnMJoTdGl+56QAEKAQ6QNNgKMXGQDffTOlnDj1XHyisdjkXpG5DDMEvWFflAZndbBacKSJVn
-	Wa1KkXO5uLF4jQmXQHtGa/frxjlKXOf7Ftd40XLPHQCFAYtipoC9sfoQ0oxvA18bXLAzENbLTap
-	Rf/d/2Ev1LcADlw2C0ElnXo4b4ifMYV04uCqXNOdJDaawvhgh7IuEJUvXM5kqzeVknKkhfSLKrI
-	12G8QgRgajoollaUI0+RZZBg=
-X-Received: by 2002:a5d:5d0f:0:b0:4a7:9630:7b32 with SMTP id ffacd0b85a97d-4a7963080d9mr2359433f8f.46.1795004875475;
-        Wed, 18 Nov 2026 04:27:55 -0800 (PST)
+        bh=8ByWoUJOn8xt5bIjc/DgDVb/Znhr0IJHP27C3VPG/e4=;
+        b=VPb9BuZ9YV5tF2F1lVjg3vs0eghZt2nmnygcH/4ClKIVZw8Lb8oDTtu88u6mPJgjaR
+         roq3v0NEsWZlR985YYfNBrwcmQLVFLYb4Y8Uns4VWBuMJLVdXjOtSzuL8QIZdyav0qLY
+         SAZVYFko9WDgiyRaenGbhDJveaSMZpZaO0Wdd8s2DE3XvXNTe2pE+iM2//FY+fZ2pJCC
+         iIvCuVHdcj53rC1I+T9CtVmqwqEI5qwOqIUJDX1x+VmDDHrOzN0wQHXi8dIxSivLUWMC
+         6c/3Ki4yC6sABxL5FcI7upnK+kvJDL5pg+r7xHTVmEaQmKCMipvcoA5NaJt2OUYbmPH6
+         YCrw==
+X-Forwarded-Encrypted: i=1; AL+hErEjcf8nchz+iIG/MyW9v0FTBqjw9YWzGZ69Z3i5IuUsU+7xJUCyP41HRbeautSDGa7F9hNux0E1XCl93zLwCA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+3GvA9PqKBbFXpXkeWq2xeX8kX+XfUO8mXKCt4r1EJp2gA8xKu
+	edduDtWgGvQWKFuKVFLgdx0aQExlU4YQsOpWPJKGUyFgNbPwVoLvzy8B6IhoM/r9W7U=
+X-Gm-Gg: AZFdTZc6foIzE/bmrjVmCNgu9J2Aspa275RRX1z4/0UagBAsFwsm/NnekMGw+zgxkq7
+	Qn66FCNGS7XtAoSZmy58gGVW5KlNoLTjZjcj6rOPZd1GNmXfZLQLPiIxcou+o59+/qPdEl3aSpt
+	E442vjuee6qO2B4YDQWZoKsIHgDCg1r3tV73U3w8/pdoZaBCBRMVnQKaZtQsoCVSYaRFJ351r4Y
+	c2RUGwDmx4wr7LU7VVE0cbu+bAhd3r2Wy0enDp6F5CZefPa/wIekWIvEJja9ABjSGlp+GSY3XXe
+	nP71uhGk2Q9IMpdTz6nDDfGsMsMAHk4eXv13nh7vlVFLkxzltBKn/KiNlKyYnEDIYZm+YpjZHDC
+	rlKUvbhCZ9wyIgASq+IgoCpUZ3fAF+plJDKGi9SQ1nyOdKWEKVcT/jBXLxPPLVdIebDIqBNApXi
+	WOdKMk7u2VCEI5bn7fXGpFQZXvm0fYEaIiGityYjAIdX8ar275AfmbB9R8OLy4Jf0TsdVspAbyf
+	12rAZz9gw9Q7yYHhP1YbhbS6hJqdsIX29VD6oOz1IJPbh1yG4H42+nZJ1Lzl1+S7UbkytLYS4GB
+	MfQq4rOGmGSksJiTxh0urTwE7M4xWWGpkhGXJ/yz/ElQYZ41eY0caFnODLAYbj4z+/V+HQbMTVt
+	Wqg==
+X-Received: by 2002:a05:6000:2608:b0:4a6:8012:198 with SMTP id ffacd0b85a97d-4a6801202dbmr3938687f8f.31.1795004885474;
+        Wed, 18 Nov 2026 04:28:05 -0800 (PST)
 Received: from ?IPV6:2001:8a0:d6cd:9000:86f4:4e71:9fc8:3183? ([2001:8a0:d6cd:9000:86f4:4e71:9fc8:3183])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4a655f9f4a7sm4675322f8f.34.2026.11.18.04.27.53
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4a654a8c23bsm4011448f8f.12.2026.11.18.04.28.03
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Nov 2026 04:27:55 -0800 (PST)
-Message-ID: <0bcd84bb-6a87-453f-9b68-04dfa95f34a4@baylibre.com>
-Date: Wed, 18 Nov 2026 12:27:53 +0000
+        Wed, 18 Nov 2026 04:28:05 -0800 (PST)
+Message-ID: <c5068359-e155-4374-9f3a-1b89106c6fb4@baylibre.com>
+Date: Wed, 18 Nov 2026 12:28:02 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Daniel Drake <ddrake@baylibre.com>
-Subject: Re: [PATCH v17 08/12] accel/rocket: select the per-core clock and
- reset counts from match data
+Subject: Re: [PATCH v17 09/12] accel/rocket: add RK3576 NPU (RKNN) support
 To: Jiaxing Hu <gahing@gahingwoo.com>, tomeu@tomeuvizoso.net,
  heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  joro@8bytes.org, will@kernel.org, robin.murphy@arm.com,
@@ -98,12 +97,12 @@ Cc: royalnet026@gmail.com, ulf.hansson@oss.qualcomm.com,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <cover.1794615324.git.gahing@gahingwoo.com>
- <fcdd7117d3d7fe99ea1658c39b6d1a05428823f4.1794615323.git.gahing@gahingwoo.com>
+ <57874e7459ed84ad47b2e31a62871ff535da249b.1794615323.git.gahing@gahingwoo.com>
 Content-Language: en-US
-In-Reply-To: <fcdd7117d3d7fe99ea1658c39b6d1a05428823f4.1794615323.git.gahing@gahingwoo.com>
+In-Reply-To: <57874e7459ed84ad47b2e31a62871ff535da249b.1794615323.git.gahing@gahingwoo.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_042758_194832_E2157A87 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20261118_042807_846430_513518EE 
+X-CRM114-Status: GOOD (  13.59  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,45 +116,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Hi,
+
 On 14/11/2026 03:05, Jiaxing Hu wrote:
-> The RK3576 and the RK3588 use the same NPU block, but with different
-> numbers of clocks and resets.
-> 
-> Take the number of clocks and resets for each core from soc_data in the
-> match data, so the driver uses the right count on each SoC.
+> # Conflicts:
+> #	drivers/accel/rocket/rocket_core.c
+> #	drivers/accel/rocket/rocket_core.h
+
+This needs to be removed from the commit message.
 
 
-Rather than these clock and reset count rules via soc_data here, can we
-just rely on the DT validation that is almost equivalent?
+> diff --git a/drivers/accel/rocket/rocket_device.c b/drivers/accel/rocket/rocket_device.c
+> index db137e2ec15e..868af86d00ce 100644
+> --- a/drivers/accel/rocket/rocket_device.c
+> +++ b/drivers/accel/rocket/rocket_device.c
+> @@ -9,6 +9,7 @@
+>  #include <linux/of.h>
+>  
+>  #include "rocket_device.h"
+> +#include "rocket_drv.h"
+>  
+>  struct rocket_device *rocket_device_init(struct platform_device *pdev,
+>  					 const struct drm_driver *rocket_drm_driver)
+> @@ -27,7 +28,7 @@ struct rocket_device *rocket_device_init(struct platform_device *pdev,
+>  	ddev = &rdev->ddev;
+>  	dev_set_drvdata(dev, rdev);
+>  
+> -	for_each_compatible_node(core_node, NULL, "rockchip,rk3588-rknn-core")
+> +	for_each_matching_node(core_node, rocket_dt_match)
+>  		if (of_device_is_available(core_node))
+>  			num_cores++;
 
-Then we can use devm_clk_bulk_get_all() and
-devm_reset_control_array_get_exclusive() and not worry about checking
-counts and names within the driver.
+I think it would be a little cleaner to do the counting in rocket_drv.c,
+and pass it in as a parameter to rocket_device_init().
+Then you don't need to share the dt_match over two files.
 
-dtbs_check will already catch cases where the wrong number of clocks or
-resets is provided, or where the names don't match the ones expected in
-the bindings.
+> diff --git a/drivers/accel/rocket/rocket_job.c b/drivers/accel/rocket/rocket_job.c
+> index 68df1596014e..59a6f548e108 100644
+> --- a/drivers/accel/rocket/rocket_job.c
+> +++ b/drivers/accel/rocket/rocket_job.c
+> @@ -31,6 +31,11 @@
+>  /* Bits 3:0 of PC_BASE_ADDRESS hold the mode selection bit and reserved bits */
+>  #define ROCKET_REGCMD_ALIGN	16
+>  
+> +#define RK3576_PC_TASK_CON_TASK_NUMBER(n)	((n) & 0xffff)
+> +#define RK3576_PC_TASK_CON_PP_EN		BIT(16)
+> +#define RK3576_PC_TASK_CON_COUNT_CLEAR		BIT(17)
+> +#define RK3576_PC_TASK_CON_LAST_LAYER_CLEAR	BIT(18)
 
->   static int rocket_probe(struct platform_device *pdev)
->   {
-> +	const struct rocket_soc_data *soc = of_device_get_match_data(&pdev->dev);
->   	int ret;
->   
-> +	if (!soc) {
-> +		dev_err(&pdev->dev, "no match data for this device\n");
-> +		return -ENODEV;
-> +	}
+This introduces an inconsistency in the way registers are handled. All
+other reg definitions are in rocket_registers.h (originating from mesa
+xml) but this one is placed here.
 
-
-Since this would only be caused by a programming error, no print is
-necessary.
+I think you should add it to mesa as some kind of register variant, and
+then regenerate rocket_registers.h
 
 
 _______________________________________________
