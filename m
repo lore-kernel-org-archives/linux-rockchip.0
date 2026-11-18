@@ -2,154 +2,144 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E34C606A31C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 10:31:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 404CB606A32A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 10:34:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=5Dt9wGdh;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=cherry.de header.i=@cherry.de header.a=rsa-sha256 header.s=selector1 header.b=Sl0YDSfK
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RSmTnfNK;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=BrRsi15Q;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=GoM4Ov4Z
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Dilje7wM5zgk5XWRINkaSPucznNUBFPla2rJsvesMcw=; b=5Dt9wGdhhSB9rN9SpDr77JvhsD
-	ZB0Q4hFmsNbNIvAAWfa9QpMmEyovyb/EGIRTCBKEt6mOzgAWuZJA4Q3p5/QvKTk0GviVUq30jxx5C
-	+6trb5feTghtjDl2l8M6UIGMODGVeWeLTLbX4Lj2qW1g7/8ET76OGfFUZC3DP9hFQJDVqpCVF78LD
-	oAFV0Jw5+16/JVcZNYGy07l5OeBlUh4YITpoQjAE14/L+vmYCBgDeyMHBjM2lYzcF48HM6tKs/6Qt
-	sP14sLlQtKw4HnmbexZV7EQbHaXYhHuIIbGn01+oPbrzBHPkYCxfcnmzxEbeZnJhwVocGj98jOd5G
-	e6KJ+Xog==;
+	bh=MaoMo00I8tLzhDiqcsfvfUN/UJbEy1+SgS/paJFW/HA=; b=RSmTnfNKWcUcKlZt8H4om65Eii
+	kO2PBgLE2idyQyKe4ZFa1Vbyw2iDmkPLn+2ztLHvVIQe8qNRfkxdmEfLsLux2T+oIOF+wSnu/g1Q0
+	YHAgLzbv8qIMJ2HwYOwTkeFw5cecnsFtCAWAnQPCVB1+3OvnD4eq8lUAtRo8oomuqRZwkJgKTZ/tm
+	Icbr+9HTMKOr4zpQqxik+/cu+wufdutfsM+Sc5tlTmTs4f4XmRI9b1QFxs/5wLNl9raizP0vL0gzl
+	P7uRT/j3uhW3LyxOvAMcx2CVEKlbO1uioRRy69+UE/pzMQLw9WR7XFt2bye5v1IIimWbXzupBdrR+
+	C2wnDv6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTcwP-00000008YmO-2PzW;
-	Wed, 18 Nov 2026 10:31:01 +0000
-Received: from mail-francecentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20a::7] helo=PA4PR04CU001.outbound.protection.outlook.com)
+	id 1xTczZ-00000008ZGW-48Ld;
+	Wed, 18 Nov 2026 10:34:18 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTcwL-00000008YkS-3ELc;
-	Wed, 18 Nov 2026 10:30:59 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=OIlKGR3Oe855QrpQCuNISn7KLhUETvwZKyFS/iPNv42t6dIIxE9AT98KFme9XZ/Tfwojo5iKpAqfwA2PaDRc0jm7b+F929RqG6PT6tcfp2B4Ng6dpP2+VZ9lKui5a6Ixs22kiIp1rpaoHsbT/BeUek0zFqty+VTY0ZaathnpaYDd1j5uwy2woQmKwkVCmeiKxKMS//JR4IUW4Pw6d6N9bxBZLq+hR9w0vfdcAqKlx2aC+28wSGG4dE1JNAaJGpz4+5n1v5KK/87Q9p1A0e6wIdqjlFJfwA7fqFbM2EHGylvK6Rglwo05wAlwCyBNUqRhcAavWTuQLaSkc6ez52paSA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VZhk0xYM64wZzmigRfc6+fqsodbghheVW7QvCupgAHE=;
- b=K/DwKuz0Xc8T67WpVeT6kj5YiyTYsIljusOx8zuQoMGT7FT+17xVLUKtE/gF0HNq2lgjAFXGekllI2oK6GfO1/mLzNZkaCzifQwngmXRX5/hBz+ruTj4Z6vJ+/K4nloFYif7/Y/78LEiA26HYEtlwiytlhjjGmaQXJUXxvYzautcLxuxTb9TJngW+OiA5j2Mi9MzdouaF7GkOI+Pt1mGuxDRZEHskOAAIc1HYP/0nerOLkojWDdLO/bNS16fcc9Vvmkr60VxceJr8N3WvNH4fcOfb2B+0kx26zq586bZLnhNQBXhW6N8+bPKvHbX+bSIBj7M2uoV9jgwyjb5gxj83w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
- dkim=pass header.d=cherry.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VZhk0xYM64wZzmigRfc6+fqsodbghheVW7QvCupgAHE=;
- b=Sl0YDSfK+dgpcIEoC1pc38R8iJBhrmTDM9Uex/sVlix93XCgnB1Ucypi1eM0u/gQw8VwkK8bPqPMlXDsxvbFNdVU/YdWQcJzA5lxmYwktbLIr3IhgtY3tUQaxb55n9M9IH3m5HDSuUberZadqWrRohP+q8DmYMGj6DzpzDn2Uf4=
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=cherry.de;
-Received: from PA3PR04MB11153.eurprd04.prod.outlook.com (2603:10a6:102:4ab::7)
- by AM0PR04MB6818.eurprd04.prod.outlook.com (2603:10a6:208:186::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.615.14; Wed, 18 Nov
- 2026 10:30:50 +0000
-Received: from PA3PR04MB11153.eurprd04.prod.outlook.com
- ([fe80::6b02:c0eb:95a4:3c3d]) by PA3PR04MB11153.eurprd04.prod.outlook.com
- ([fe80::6b02:c0eb:95a4:3c3d%5]) with mapi id 15.21.0615.013; Wed, 18 Nov 2026
- 10:30:48 +0000
-Message-ID: <b7a242af-cde4-43e8-a835-0143f925d519@cherry.de>
-Date: Wed, 18 Nov 2026 11:30:46 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 2/9] dt-bindings: phy: rockchip,rk3588-mipi-dcphy:
- Select TX or RX, add phy-type
-To: Krzysztof Kozlowski <krzk@kernel.org>, Jason Yang <jason98166@gmail.com>,
- Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Guochun Huang <hero.huang@rock-chips.com>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Michael Riesch <michael.riesch@collabora.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20261118-dcphy-rx-v1-v7-0-8de1adac3a74@gmail.com>
- <20261118-dcphy-rx-v1-v7-2-8de1adac3a74@gmail.com>
- <3a9e999f-5ff5-422c-aa65-b8560dca84bc@kernel.org>
- <fe324e43-50c4-4f0e-9bb0-57ea7172530b@cherry.de>
- <fceee6fa-2bfb-4676-b5ac-80e1bae8d4f4@kernel.org>
-Content-Language: en-US
-From: Quentin Schulz <quentin.schulz@cherry.de>
-In-Reply-To: <fceee6fa-2bfb-4676-b5ac-80e1bae8d4f4@kernel.org>
-X-ClientProxiedBy: VIUP296CA0166.AUTP296.PROD.OUTLOOK.COM
- (2603:10a6:800:35d::10) To PA3PR04MB11153.eurprd04.prod.outlook.com
- (2603:10a6:102:4ab::7)
+	id 1xTczX-00000008ZDx-0L3k
+	for linux-rockchip@lists.infradead.org;
+	Wed, 18 Nov 2026 10:34:17 +0000
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6AI9lfhd835353
+	for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 10:34:14 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:date:from:in-reply-to:message-id
+	:mime-version:references:subject:to; s=qcppdkim1; bh=JM0P9MP8V3Z
+	9pRfWYuZq7GLzbhT+pDJLjfew9vz2LnA=; b=BrRsi15Qn6gRPGJ00LtpID9bdaB
+	MVKAcwjaZE+xrOeDgjutOTF8imQFK6o3AuN/9R44zMt7BKGIHdm+rV+8kNncLumY
+	OI6Wj7AvToP2pjoFnZlvJ/g7UuknaDZWqtwOhiXNpWSYa8U/ePcI62HDeXS6Y0Eh
+	N//xJ55tmW2Ic78N3HSO4guCnydth2j2ftHxZYl7wXD/63FJFgWpUtFnGC55/Yug
+	jv95vOmZ+qwTk5xP3bLuU+ocUm7giG2VTx7Oi2oTxhObjSApzSRI2Nr31mileXrT
+	lz+ETUEiLFAH6xTf7lWZVg6r+KWtBYO028zvE7/IADOv7dTbrDnrU87ItyA==
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j0yvcjkdr-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 10:34:13 +0000 (GMT)
+Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-945b0154705so122645985a.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 02:34:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1794998053; x=1795602853; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=JM0P9MP8V3Z9pRfWYuZq7GLzbhT+pDJLjfew9vz2LnA=;
+        b=GoM4Ov4Zj/KkxIV527u4HfWOkTmXWJNOCaRERbI2H8viHS8OkokHZh2RYzmJvFFoG+
+         blH7Xb8q4JTvXRtHD63DSYc5ysueRrrxqyyteyGcMegg4DuPH6EOcAiRGv/oCC3H19f0
+         KVi5qVfUNmEVWrJZkDC832RlcUmn+U1n3HlwPjUR3J3QspvVpshbblQqKwGEZk43P/4u
+         vuoLRne3VeKgj/bOiBn6rhxHOStW3dgb/ZLmKLplpFryJh/4OBsyqMt/qyxQt6yqOYn2
+         CaGU8wB2ix89iqdGBPYCdmSAWKf2tlkaVr55VdbOXd6s1b0bTvh90xOqdtia6m+7I2vU
+         1f4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794998053; x=1795602853;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=JM0P9MP8V3Z9pRfWYuZq7GLzbhT+pDJLjfew9vz2LnA=;
+        b=B04gBynPb9J69l6/H+2yAAkpFUP4w27ZkOd0isKJzW/LuPDvzeFMVx6hwtobbj1U8x
+         9lhu5Wbje2XQbXKK93Yy5eaIkANF6acrtegDHTP/uLb91re1z+JdxOXW+ZxaLtJNel9T
+         EHJDX0t/GJDDv2oDGqsxwBvTKmXJSXgPz+ZOukUKHL70lLpJ3Z1/d3yR5E8H2PEHZZ48
+         wEYwCalHJnx4F+sNQ8i9Gb0PyEE6T8/4+vleEW2LkAnU3yvlxRsQ8bTzfSI3Ujs6sIgl
+         V3IbtjMMn1iJB+YQIWBj4C3vKjFk+ORlhglw9CW1qYe+RFEKDrvdyGdU6jZr3GiJ0XFE
+         L9wQ==
+X-Forwarded-Encrypted: i=1; AL+hErHvn4O6NHN5XiCZghuMvYBQU185Mk+WYfSz/hp1Fo6LUT7amBpxkQJT2iqJd881JJIoOTZoe9DuO0WATZ2GHA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+IrS9B65ayHYc/tifqUn2oLsBjYauqfbtDG8NHSzdl1iR383Dw
+	tA+q/THYhESreA/n5F7HiRfondFkKi2nM4DKbv4JNqcsBX3BTX4JEmjZhepz2+WVSrf/GDdpj0y
+	CbFdztacdHUnIYAA1G1rsbKTP9fciN8XPwANkewm63MQpTiFi6vKlinwPoJCgog5geJytaXjolK
+	8=
+X-Gm-Gg: AYBFou3J1KQOhD/ChAMf5sS+M/hOrM9hngtG13P7QHWz5Ld5/N/VMGBhyQH+oyIIUqN
+	aHoGpbwjAqIh38f93JgohrWkB9hDqKQUWVB6KewvcXhrNKRM0YySUWNJF3S7DMBMRFF/55y9qEd
+	TFdCuntE+c75UbOSCFDu+PZOp7Os2mBGXKMkmUgMu2/stFvNZbOy9uFIEHM71I5qlxoSIO8VFIp
+	h48FEyXZDvD1m6+nAIsgpDwcwCGa3zYHcRpgDMJenkiUUYj+ou5UZjPZFvc+nRg6Pa6YbFfnQJX
+	mpz37BxWrJwf33PJMbHbWloI69HzLi4lO7rwbFsY6NtwFTBSHY8tqGow2/p7NuX4XQF4+rhel5r
+	X2gGwwD8/guV4VkmGHs2lpDdTpRZQBx4JGLG8iWCU4pNZatMC9nHXcMhc3OfjACf+5KQ111j6dZ
+	4S
+X-Received: by 2002:a05:620a:44c2:b0:949:6841:60d4 with SMTP id af79cd13be357-9499957e934mr403492085a.24.1794998053336;
+        Wed, 18 Nov 2026 02:34:13 -0800 (PST)
+X-Received: by 2002:a05:620a:44c2:b0:949:6841:60d4 with SMTP id af79cd13be357-9499957e934mr403489085a.24.1794998052798;
+        Wed, 18 Nov 2026 02:34:12 -0800 (PST)
+Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:d355:fe70:14a0:ac8d])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4a650d2ecd0sm4519631f8f.8.2026.11.18.02.34.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Nov 2026 02:34:12 -0800 (PST)
+From: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
+To: rafael@kernel.org, tglx@linutronix.de
+Cc: Andrew Morton <akpm@linux-foundation.org>,
+        Peter Ziljstra <peterz@infradead.org>,
+        Bradley Morgan <brads@mainlining.org>,
+        Heiko Stuebner <heiko@sntech.de>,
+        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+        linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
+        Thomas Gleixner <tglx@kernel.org>,
+        linux-kernel@vger.kernel.org (open list:CPU HOTPLUG)
+Subject: [PATCH v2 1/2] smpboot: Allow restricting per-CPU threads to a CPU mask
+Date: Wed, 18 Nov 2026 11:33:48 +0100
+Message-ID: <7a1e55d24c39d70caa157e6e2c823d9be5db07e7.1794992905.git.daniel.lezcano@oss.qualcomm.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com>
+References: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PA3PR04MB11153:EE_|AM0PR04MB6818:EE_
-X-MS-Office365-Filtering-Correlation-Id: fd0dce5c-369b-49a2-74cc-08df455f0270
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|1800799024|10070799003|376014|366016|23010399003|921020|56012099006|261022105027099003|261022113327099003|261021121427099003|4143699003|5023799004|11063799006|10067099003|261026140227099003|261026121527099003|261026130827099003|261022075727099003|261021133027099003|261026135527099003|261021135927099003|261021130227099003|261028144727099003|261022115727099003|261102123227099003|261021123027099003|261009223027099003|18002099003|6133799003|22082099003|4133799003;
-X-Microsoft-Antispam-Message-Info: qw2pTTLEm3MzXBEFbMjOlX06YpO/bTB7mNHjVlfr2a1dwvfAOZ6puCDAhfrIJcyPR6SjAj5G8jAdbe1gcuRLWGQ449+A7XMZRFasuwnUB7llmeGgdWcv49WHsVxszCbXh8HYNnPTaMl4KlM0nlULsKSMkR0qqsSh1x4yDbvYIDPkikuyI2C/PYT5bSy07ZMkozi1vS04IXMWUCL+YC6JTOGuBQlDRSmRU+i9PrxRTwl0zXMQLxVHs/B490WP2eyfrV68T5cfQ8fdfOO3cmZaKI0NyqtVS1Tzwxf1ZJvm82jt0lUDNz+nEAnPMohpNbqdyQts+Q/gNUnaHUcCN8+qmVqpmu98Kf1eAgSGnhw/nUgA+vTjHyyj20S7ywJwRidsH9aCZVx0jLd3WsHqUuMezCnVNY+RpxIeXdnKQpe0Qw0+g24+ZMT6L7SCjMBxXZiUGhDpw0hCbhW/shXvqbigt787E5XWBiCiugUHplc41H1yFKUCmyPqwqvEWyKTsYgvfDUnZSM7QvpqxBHdHiaRaMmZkakHJeNFXayIjrDQTKsj2rzSbIbgOvmb9PUqoU8x0zPzHppt+H0M603ecPDZsCmwCwdFcI7nqPUq950YzUkSTrHyPXG3MAxuzShI1X9j1jQXo7eOQOa4KXOz03uzykmpQCnqllD6QXF9rQyUPfs=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA3PR04MB11153.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(1800799024)(10070799003)(376014)(366016)(23010399003)(921020)(56012099006)(261022105027099003)(261022113327099003)(261021121427099003)(4143699003)(5023799004)(11063799006)(10067099003)(261026140227099003)(261026121527099003)(261026130827099003)(261022075727099003)(261021133027099003)(261026135527099003)(261021135927099003)(261021130227099003)(261028144727099003)(261022115727099003)(261102123227099003)(261021123027099003)(261009223027099003)(18002099003)(6133799003)(22082099003)(4133799003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Tjl1bjhHQzhYaDNvZStZME1IS0doRytYN2JtbUF3aDJ1WEFKQ1lqVmRxakMx?=
- =?utf-8?B?R2tHREtpaGFLVzcrVWZFTnQ0SzBBYkpFVldBcWlJL01aUWl3RjI0L3QrOW9a?=
- =?utf-8?B?NTdtZklBTERlcjZHUFBpZ2lGRERQV2pPVlVSbENtcVJrZDZhU3hUNUZCQzJn?=
- =?utf-8?B?UDg5bnBxckhJYnRGdk1FQW5xZGpKTDR3QWVzY0F6ajU3RlpkTGVvWUxzUWp5?=
- =?utf-8?B?WnlFSHIrODdhbitxV1pWeU1DNi9LTWRLYnBUYmlXYkw3MlhldEZjTlJDSWFX?=
- =?utf-8?B?WFFKRzZ6RnU1Z3JrK2lGNU9UYWgwY2ZLRkRnRzI3NXRIbmN2WitNVWVOa1B6?=
- =?utf-8?B?V1dRR0k1bk56UldsamZjZVMvYXdRVGZmRkVvcWViYVBMbmF3U05WRW82Mnhu?=
- =?utf-8?B?SEZtYkVWdnpCaFVlZlhaeEZ2SGRBRmEvMVdSMWNVS1B5eTEzSGo0bE04Q2ZO?=
- =?utf-8?B?K0lrNEE3QWN0L0xuR2lzL3RDY21uS0JrNXh6SjZZbnNHNkM1VGd0T3pPOGgy?=
- =?utf-8?B?VjlSeFAwSEhDbU5DOGVsTHA4NCtIckM3b2ZiNGFkU3lmQUgvMHFaSmpZc3Ny?=
- =?utf-8?B?TlA4dmdOc0FGU0lGU0R2WVRnSE1BODBxMzVtbjZKSXVHU0pMZjBZUG5rbVFC?=
- =?utf-8?B?MFE1QWpCSzl3MGdjaU5aVFZYam0yNW90M3FXZmtJOFdLUWdMUGYxL3dYeVk4?=
- =?utf-8?B?NGY2dlRRZ0JvWnVsTzkyVHRaaHdZNzFiS2VwRVRINkdwVE9BWXZhZ0lYTWcx?=
- =?utf-8?B?TDN3bnlabjNKVG9XdlUvQTJYZXJ2Rlg4Zm04WGdXZEJyUzJzWEdtdVNuS0ZG?=
- =?utf-8?B?RXlySjY2Q3FsZlptQWUrODMyS0xvTXZURXE5RElqRy9pRTk4clRTRUMwWGxm?=
- =?utf-8?B?UldEcTQ0b1M3MXQzOHIrUzFYRnN2TVRibzIzT291R05TMXdWbHZoV3oyNEtM?=
- =?utf-8?B?OGdTZkhHdG44ekRTN3JnSjJDS3dQT3JWbWI5bFhJWFFxUGxnNVF5ZnpzMTRv?=
- =?utf-8?B?RlFyYlVFSW5xYklZZU8vbEo0ZHdWVWFqMGJ2OGYwS3p0SVE4eHJKMDM3eWxW?=
- =?utf-8?B?UGJpb1VnOXdOaUFYREFHOHFCdEZkb0R4TW1yYmFnRW1SSUlSNmFRN3VnNkpN?=
- =?utf-8?B?cytpOC90bEpqVjZRSElsa0dvd3FpNlRncldSK2p1Q2YyaGVTeW12Y1lYYXBx?=
- =?utf-8?B?TFZyd01LR3J0U0x2NjYvU1UxWW80NmZDVk13MjNoMk0rN04xN0s2ZkhJSjZK?=
- =?utf-8?B?alVQNURqRm5SZ1NDRStMNm1NcTA5OVVYMGlBYXhYQUFEYnQ4OVRRSFErc011?=
- =?utf-8?B?b3NMVngzcVhaR2IzL2NobitrMDdXRkRMU3RxcUVRakR6aWg2bkFQZ3RWYWRj?=
- =?utf-8?B?Rit6ODZReE9odFRiTFd4amhMMXFsZlZlZkFRdDV2TGxNMDI0QTRmZkdGamRo?=
- =?utf-8?B?R3hNYTNLMFNDcm10bDc0amlXb251U3krc0xRSXAxNUVkOW5hWkQ1eGRtb2xQ?=
- =?utf-8?B?Z0ErbFlGcXZvbGlwK2g0MEFvTDY3WW1EanpvY3ZQcUx6M1lNcDRXRHU3bXhE?=
- =?utf-8?B?azRWNEExSnMyOEFqK0s1anViZXlnOUZqRkd3WHYrL2ZSdUR2MUdvSXZab0Zu?=
- =?utf-8?B?NUs5bmZTbVRVbnFvSnBhZjBzdU5oa0NjRTY5NHpZNWh4SWN1SU9RMURyeDRr?=
- =?utf-8?B?QVdWUjI3U1U3OWRhcWdoQjF0TUhKUHZyeElIbnBTWHlVMlIyeGQ3aFZQYzZI?=
- =?utf-8?B?UFB5WlQ0Vy9vZ1AvcUZKaXI3a09hZWQ4MDZZaE9RM1Q0MEFxbVB4d3dpQkdH?=
- =?utf-8?B?WkJLZ3AyM0xHT0dSRmJlbVcyVGZKbnhyTzVvczloYmU4V3RIOTBYL2R2TVJy?=
- =?utf-8?B?UE1EcUphVVlLTzJTbFo4Z2JCVGVmUkp6K2dEZ01hOG45aHYrc2hMRGp6UEJr?=
- =?utf-8?B?dFNwWTFGdTVHUTRhZGlHcXl4OU53S05uK2tWT21CVGJxTENvalFwRTZ3UFdr?=
- =?utf-8?B?WjREaDcxeklEWjMzMUVLMGJaT0M1Uk5yaEp0cDZaRFhNQ0E2Y25TTnlIYkVz?=
- =?utf-8?B?bndnNStpM2xLSlp4c2tGQUdtUTU4czFTNGxwUTdZS2o3SENLYlA4bUNlVDRW?=
- =?utf-8?B?YytYWEk0dW5FckZDNExDWmJhMHkwTklSa1N3aWxWbkgyeGEwWmJyYkNjRkZC?=
- =?utf-8?B?M25KNzdYcWNSUzJPTmxVZ0NwNmQwMkRRdTJTK3ZhYnlOMUYvL0p6U1FZMkhj?=
- =?utf-8?B?NkFyU3h6VE8rNm9mdUlQK1BZRi9zMXRqeDNzTkJ1QTIxK1Qyblh3QTR6TXc0?=
- =?utf-8?B?bGpSdDZlN1lpWml0Mk1hZ1U1bklQSmdNdDh2dmcrMmE2RS8vSDNDdHFoNVI4?=
- =?utf-8?Q?CKPfTNfrydfL+Brb1+qCXCHJMFkIOlnztsKKnouYFDwxB?=
-X-MS-Exchange-AntiSpam-MessageData-1: E38viJ9NaQpyTSHVTj29qOwS7BD/f/otp8M=
-X-OriginatorOrg: cherry.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: fd0dce5c-369b-49a2-74cc-08df455f0270
-X-MS-Exchange-CrossTenant-AuthSource: PA3PR04MB11153.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Nov 2026 10:30:47.8483
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: f5WCF3+xEsmFdF9JOMxGBBm7AnxDPtCMuCeJRZp1QzfAcugzvn0nZErznnYE+gSkr1BKqikdbIGELbn6gwgeZvx89bYZYQfVw3ueztXR35E=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR04MB6818
+X-Authority-Analysis: v=2.4 cv=R5OWitRX c=1 sm=1 tr=0 ts=6afd7f26 cx=c_pps
+ a=qKBjSQ1v91RyAK45QCPf5w==:117 a=xqWC_Br6kY4A:10 a=zJRp6_cAMcgA:10
+ a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
+ a=3WHJM1ZQz_JShphwDgj5:22 a=EUspDBNiAAAA:8 a=5Kbu-F-uTTPTLeMpapkA:9
+ a=NFOGd7dJGGMPyQGDc5-O:22
+X-Proofpoint-GUID: RxW_0ZsjFqegwQNmhbpv6GKxHo4PV5AN
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTE4MDA0MSBTYWx0ZWRfX+Q70UbudWpDC
+ et372AcDWUvuENzZoyesUhay2AW4IAn0BA43RwUWu0JQV2diHjiTctco+JLlRiFp9ieeC+6QrsD
+ PYBz2upAddBSjFosYMaC/jQbc3ZiDY8=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTE4MDA0MSBTYWx0ZWRfX1GwCHzZ05Q4e
+ PBnDaBAT6Sd40cd1szFjpZUudobv4OXQ38TkwZ7zy0wtQLjelGqnN0oji4halIHhXuvs9SECNnH
+ 8T9wMOF/JBaQmTrWQLp52vap0y4ksOHgscyHpP+LVXyCoFJrfOfs/IlEuzyrkSa+rIQiTTMhkfL
+ Y2xo0lXnmT7IZBHUSg+GWk7ruFNdB4+rDSgYd93WyIS2617bSVcTbOsboSj3GaZZtmS77wKMTIY
+ nDvnvvl9VewgIfMQdQ7w1/yX0SEVbCNpASCsu+Zi8U2Hg7K0duk2+Ywli7Lv914hv+6OzHyaq/i
+ cpDupbXkAtyz2qN2f1Y2kL38XdZEnGCqvAGaDUiWccS/JvnUcBT2+TfCN2AjU4890A4EpJcF4Nj
+ cJS3niQOWKK0C6NaoydIv45RpEAtTSm8ULFch92YC8itWVXcxGQLQBDPNo81Wexpaqaw3lqWq5e
+ D8+LRtTzmwD47dcDqXg==
+X-Proofpoint-ORIG-GUID: RxW_0ZsjFqegwQNmhbpv6GKxHo4PV5AN
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-11-18_02,2026-11-16_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 impostorscore=0 spamscore=0 lowpriorityscore=0 suspectscore=0
+ malwarescore=0 priorityscore=1501 bulkscore=0 adultscore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611180041
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_023057_845715_A88A210A 
-X-CRM114-Status: GOOD (  27.51  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261118_023415_243416_0FEF582E 
+X-CRM114-Status: GOOD (  24.04  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,115 +149,198 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+smpboot_register_percpu_thread() creates a thread for every online CPU
+and registers the descriptor for subsequent CPU hotplug operations.
+There is currently no way to restrict these threads to a subset of
+CPUs, even when the user only needs work performed on that subset.
 
+For example, an idle injection device targets a specific CPU mask.
+Creating threads outside that mask consumes resources unnecessarily.
+Supporting multiple such devices also requires each descriptor to
+manage only the threads associated with its own CPUs.
 
-On 11/18/26 11:08 AM, Krzysztof Kozlowski wrote:
-> On 18/11/2026 10:28, Quentin Schulz wrote:
->> Hi Krzysztof,
->>
->> On 11/18/26 9:16 AM, Krzysztof Kozlowski wrote:
->>> On 18/11/2026 06:55, Jason Yang wrote:
->>>> The Samsung MIPI D-/C-PHY block on RK3588 and RK3576 has a transmitter
->>>> for DSI and a receiver for CSI-2, and the DSI host and the CSI-2 host
->>>> can use the transmitter and the receiver at the same time. The single
->>>> cell of this binding selects the mode and refers to the transmitter, so
->>>> the receiver cannot be described.
->>>>
->>>> Change the cell to select the transmitter or the receiver. The
->>>> transmitter and the receiver cannot operate in different modes [1], so
->>>> the optional phy-type property of the PHY node sets the mode for the
->>>> whole block, D-PHY by default:
->>>>
->>>> 	/* the MIPI DSI host, driving the transmitter */
->>>> 	phys = <&mipidcphy0 PHY_DIRECTION_TX>;
->>>>
->>>> 	/* the MIPI CSI-2 host, driving the receiver */
->>>> 	phys = <&mipidcphy0 PHY_DIRECTION_RX>;
->>>>
->>>> For C-PHY the consumers stay the same and the PHY node gets:
->>>>
->>>> 	phy-type = <PHY_TYPE_CPHY>;
->>>>
->>>> Existing DTs on a newer kernel: PHY_TYPE_DPHY and PHY_TYPE_CPHY remain
->>>> valid as deprecated values. They select the transmitter and imply
->>>> phy-type = <PHY_TYPE_DPHY> or <PHY_TYPE_CPHY> respectively, so nothing
->>>> changes for them.
->>>>
->>>> New DTs on an older kernel: an ABI break. The older kernel ignores
->>>> phy-type and takes any cell value as the mode of the block. A DSI node
->>>> with PHY_DIRECTION_TX therefore gets no display, and a CSI-2 node with
->>>> PHY_DIRECTION_RX gets no camera.
->>>>
->>>> [1] RK3588 TRM: section 22.1 (overview): "The TX and RX only support
->>>>       operate in the same PHY mode."
->>>>
->>>> Suggested-by: Michael Riesch <michael.riesch@collabora.com>
->>>> Link: https://lore.kernel.org/r/94d47cab-10c6-4ec3-84a0-3bddc9d67f5f@collabora.com
->>>> Signed-off-by: Jason Yang <jason98166@gmail.com>
->>>> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
->>>> Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
->>>> Tested-by: Quentin Schulz <quentin.schulz@cherry.de> # RK3588 Tiger CSI1 2-lane IMX219, CSI0 2-lane OV5675+DSI
->>>
->>> Please drop the tag, this did not happen. In the future, please add only
->>> applicable tags. Otherwise share how this code was executed and tested
->>> on the actual hardware (make process, like building code, is obviously
->>> not testing).
->>>
->>
->> What did not happen? I tested the v6, on the reported hardware, on the
->> reported two DCPHYs, see
->> https://lore.kernel.org/all/840285d6-a8a6-4777-8d38-6758ccbc7723@cherry.de/
-> 
-> 
-> I comment in a specific place in a specific patch. The testing of this
-> patch did not happen, which I explained why.
-> 
-> 
->>
->> If you're complaining about the Tested-by being given to a dt-binding
->> patch, it was provided as an answer to the cover-letter, and the
-> 
-> I know. Tag was applied blindly and that I ask to correct.
-> 
->> contributor is clearly using b4 considering the last few lines from the
->> cover letter (base-commit/change-id lines). b4 trailers -u applies the
->> tags given to the cover letter to all patches in the series, so if
->> there's someone to blame here, it's me for adding it as an answer to the
->> cover letter. So now the question is, do you want me to add a Tested-by:
->> to each individual patches of long series when I technically built and
-> 
-> The comment was not to you. I responded to the contributor and I expect
-> the contributor to act, not you.
-> 
+Add an optional CPU mask to struct smp_hotplug_thread and apply it
+throughout the thread lifecycle. Registration creates threads only for
+online CPUs in the mask. CPU bring-up creates threads for selected
+CPUs that were offline at registration, while parking and unparking
+are restricted to the same mask.
 
-Still, b4 exists to make contribution easier and it can always be 
-improved, same for processes. If there's something I can do to make this 
-process easier at low cost for me, such that maintainers and 
-contributors alike don't have to go through unnecessary hoops and 
-revisions, then I'd like to know if and how I can help.
+Apply the restriction to thread destruction as well, both during
+unregistration and registration failure cleanup. This is necessary
+when descriptors with disjoint masks share the same per-CPU task
+storage: tearing down one descriptor must not stop or clear threads
+owned by another descriptor.
 
->> tested only based on the last patch of the series, which is only a DTS
->> patch adding the nodes to the RK3588 DTSI? In that case, I cannot
->> provide Tested-by for patches before the last, as it can simply not work
->> at all until the last (actually all of them, except the bindings) patch
->> is applied.
->>
-> 
-Would the suggested "Tested-by trailer added to each relevant patch in a 
-series instead of as a whole" be something you'd like to see happening?
+Reject registrations that share task storage with an existing
+descriptor and have overlapping CPU masks. Check for overlaps under
+smpboot_threads_lock before creating any threads, warn once and return
+-EBUSY on a conflict. Checking the masks also covers offline CPUs,
+whose task pointers may not yet be populated. This prevents descriptors
+from sharing a thread and interfering with each other's teardown.
 
-Cheers,
-Quentin
+Default a NULL mask to cpu_possible_mask at registration, preserving
+the existing all-CPU behavior and allowing the lifecycle helpers to
+use the mask unconditionally. Use scoped guards for the registration
+locks so all error returns release them in the correct order.
+
+The caller must keep the mask valid and unchanged until the descriptor
+is unregistered. smpboot serializes the overlap check and descriptor
+registration against other registration and unregistration operations.
+
+Signed-off-by: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
+---
+ include/linux/smpboot.h |  6 ++++++
+ kernel/smpboot.c        | 45 ++++++++++++++++++++++++++++++++---------
+ 2 files changed, 41 insertions(+), 10 deletions(-)
+
+diff --git a/include/linux/smpboot.h b/include/linux/smpboot.h
+index 9d1bc65d226c..57b945d51b19 100644
+--- a/include/linux/smpboot.h
++++ b/include/linux/smpboot.h
+@@ -5,6 +5,7 @@
+ #include <linux/types.h>
+ 
+ struct task_struct;
++struct cpumask;
+ /* Cookie handed to the thread_fn*/
+ struct smpboot_thread_data;
+ 
+@@ -27,6 +28,10 @@ struct smpboot_thread_data;
+  *			unparked (cpu online)
+  * @selfparking:	Thread is not parked by the park function.
+  * @thread_comm:	The base name of the thread
++ * @cpumask:		Optional mask of CPUs on which to create threads. Must remain
++ *			valid and unchanged until the descriptor is unregistered.
++ *			Registration defaults NULL to cpu_possible_mask. Descriptors
++ *			sharing @store must have disjoint masks.
+  */
+ struct smp_hotplug_thread {
+ 	struct task_struct		* __percpu *store;
+@@ -40,6 +45,7 @@ struct smp_hotplug_thread {
+ 	void				(*unpark)(unsigned int cpu);
+ 	bool				selfparking;
+ 	const char			*thread_comm;
++	const struct cpumask		*cpumask;
+ };
+ 
+ int smpboot_register_percpu_thread(struct smp_hotplug_thread *plug_thread);
+diff --git a/kernel/smpboot.c b/kernel/smpboot.c
+index 4503b60ce9bd..f997fe85f088 100644
+--- a/kernel/smpboot.c
++++ b/kernel/smpboot.c
+@@ -168,6 +168,9 @@ __smpboot_create_thread(struct smp_hotplug_thread *ht, unsigned int cpu)
+ 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
+ 	struct smpboot_thread_data *td;
+ 
++	if (!cpumask_test_cpu(cpu, ht->cpumask))
++		return 0;
++
+ 	if (tsk)
+ 		return 0;
+ 
+@@ -225,6 +228,9 @@ static void smpboot_unpark_thread(struct smp_hotplug_thread *ht, unsigned int cp
+ {
+ 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
+ 
++	if (!cpumask_test_cpu(cpu, ht->cpumask))
++		return;
++
+ 	if (!ht->selfparking)
+ 		kthread_unpark(tsk);
+ }
+@@ -244,6 +250,9 @@ static void smpboot_park_thread(struct smp_hotplug_thread *ht, unsigned int cpu)
+ {
+ 	struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
+ 
++	if (!cpumask_test_cpu(cpu, ht->cpumask))
++		return;
++
+ 	if (tsk && !ht->selfparking)
+ 		kthread_park(tsk);
+ }
+@@ -267,6 +276,9 @@ static void smpboot_destroy_threads(struct smp_hotplug_thread *ht)
+ 	for_each_possible_cpu(cpu) {
+ 		struct task_struct *tsk = *per_cpu_ptr(ht->store, cpu);
+ 
++		if (!cpumask_test_cpu(cpu, ht->cpumask))
++			continue;
++
+ 		if (tsk) {
+ 			kthread_stop_put(tsk);
+ 			*per_cpu_ptr(ht->store, cpu) = NULL;
+@@ -279,28 +291,41 @@ static void smpboot_destroy_threads(struct smp_hotplug_thread *ht)
+  * 					    to hotplug
+  * @plug_thread:	Hotplug thread descriptor
+  *
+- * Creates and starts the threads on all online cpus.
++ * Creates and starts the threads on online CPUs selected by the descriptor's
++ * cpumask, or all online CPUs if no mask is specified.
++ *
++ * Return: 0 on success, -EBUSY if a registered descriptor shares the same task
++ * storage and has an overlapping CPU mask, or a thread creation error.
+  */
+ int smpboot_register_percpu_thread(struct smp_hotplug_thread *plug_thread)
+ {
++	struct smp_hotplug_thread *ht;
+ 	unsigned int cpu;
+-	int ret = 0;
++	int ret;
++
++	if (!plug_thread->cpumask)
++		plug_thread->cpumask = cpu_possible_mask;
++
++	guard(cpus_read_lock)();
++	guard(mutex)(&smpboot_threads_lock);
++
++	list_for_each_entry(ht, &hotplug_threads, list) {
++		if (ht->store != plug_thread->store)
++			continue;
++		if (WARN_ON_ONCE(cpumask_intersects(ht->cpumask, plug_thread->cpumask)))
++			return -EBUSY;
++	}
+ 
+-	cpus_read_lock();
+-	mutex_lock(&smpboot_threads_lock);
+ 	for_each_online_cpu(cpu) {
+ 		ret = __smpboot_create_thread(plug_thread, cpu);
+ 		if (ret) {
+ 			smpboot_destroy_threads(plug_thread);
+-			goto out;
++			return ret;
+ 		}
+ 		smpboot_unpark_thread(plug_thread, cpu);
+ 	}
+ 	list_add(&plug_thread->list, &hotplug_threads);
+-out:
+-	mutex_unlock(&smpboot_threads_lock);
+-	cpus_read_unlock();
+-	return ret;
++	return 0;
+ }
+ EXPORT_SYMBOL_GPL(smpboot_register_percpu_thread);
+ 
+@@ -308,7 +333,7 @@ EXPORT_SYMBOL_GPL(smpboot_register_percpu_thread);
+  * smpboot_unregister_percpu_thread - Unregister a per_cpu thread related to hotplug
+  * @plug_thread:	Hotplug thread descriptor
+  *
+- * Stops all threads on all possible cpus.
++ * Stops all threads associated with the descriptor, including offline CPUs.
+  */
+ void smpboot_unregister_percpu_thread(struct smp_hotplug_thread *plug_thread)
+ {
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
