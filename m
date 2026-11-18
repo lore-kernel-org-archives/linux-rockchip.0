@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46F6E606A325
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 21:46:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D41F1606A31C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2026 21:46:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ykEUEXuI;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=DiBzdDVt
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rgRGza0B;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=USA++iVm
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=jKhn0V5RnsDCNalxwEYKyRnaBqXxHyXN05BIA7I4NsU=; b=ykEUEXuIc8jbV2I+DfR2QCHnnz
-	R1ZUKBDevHGAbOXMgrcc4baR9QArPBfT9L/LFm+mAAR7FppUxubSDeFnJYnaRnDoP8MGGrJ1DK4Q2
-	+IRrnV1YKOhRF48stT5ZzrT2SZK0Ju0vkcU+x8Mz7JrFoyHb+3D74AA/SdyYaZYfyJ3zLcTOGVvOv
-	1x9/y0mU/Kdsbs5TJ90Z82TuEuidOvqzlU7Wfv1Kd+dG1OXkcMUq/44rAdE6oOAlxmSh2ayroNjxy
-	BFP8mpMMtMbWe/PVEmQ7vjopPmke/tqkmNf5bxIwEhW8lgVDGwtRLUnYSG1lLQmqDVxP6kg1vAfJx
-	Q8vW49Hg==;
+	bh=UFbFXlP6jc437485+W3rDlMbGra98CQkpxwUZeZG/HY=; b=rgRGza0BOU0CA6SnF1nvzFWZIw
+	XYF97GU3eca6OrBM6MSlog/1K9Fx6fTaTcsMjYnSunWkI2miU+cVzaC1fglflERsuka312Gkx49ah
+	tY5ETsxEvvLie+kfU3tsjt16tPSeuLovj2xTGq+Ge+jc3oDDFvft/UZA7d85ALibzbqIEBPNgjsIO
+	0rqmZGnjo2h5DFEhIKTaYBY+OWsmmLD2vuhAZNIUTeu2Jq4WzcObsp90EwWporCO/CZ5/GmiZTJIr
+	ShM7ksQ0kjbIs65hvh2jcvKDyJwIcjjLHUv2eXYEHLfZ5ovHFJMmyrUhHP7IIHG/S132kzLj7UE+e
+	A42RsF2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTnTy-0000000ALns-3iqF;
-	Wed, 18 Nov 2026 21:46:22 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xTnU8-0000000ALvJ-4A9J;
+	Wed, 18 Nov 2026 21:46:32 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTnTp-0000000ALhZ-337j;
-	Wed, 18 Nov 2026 21:46:13 +0000
+	id 1xTnTp-0000000ALhf-4ANg;
+	Wed, 18 Nov 2026 21:46:14 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4ED4647702;
+	by tor.source.kernel.org (Postfix) with ESMTP id 5F3BA63EF6;
 	Wed, 18 Nov 2026 21:46:13 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1795038373;
-	b=JEm7iooYb5Rwp/E09Y6dbsyZdVreFThtIv888Pqy/EAO7KYtrknGej3baP6Aad331xdC
-	 NvS21fS/CN/vA/sFC3b+L6MxueK5on18PpBx8PNvbmU6gkklLpDAQ6fnjUDrGu769Hc57
-	 MZxYaIB+JHkLVe6urMvrDDU+tcq41Ln4aQJY9GV3VDQPLekJQsMU/Ygs4AGSetQwnJ1qu
-	 e9YMxeoMSEu5mpCiV97klSyTkbY5sayfUo8XaKXupPtCAmd1tWTK8qYicLz47UgntmG10
-	 J57xUocZ0r4hOqQbvFTI8jDP0Knab59FSbrjlFp41sD9f2jsLW7EWtsrMerzO5VdZqA==
+	b=Crl3x4yV9K7Bo8go0ZfcXFlHr95VOAGQyCc5puae5/f/mbmKTHnfUPTxXAsOzLUDHcv6
+	 x4OpyBsm1G6H5SU1u3PQItauQOZVbDkYpyqvaT8yTKRU8/gcRWpE8ethJMMbg3n3M5hoO
+	 dcO90LN8fIWV9qRhPzkQ273JRxLgOqrxonvIZDTq4IXBCQNJPBSahx0A5bui5WjW3/cbN
+	 NWMgtoQI/2sqYBHzUj4HWHHThOYm8GNBsIZj+9D3EPlVUderRaxWTvTg8SLpJB1RcXeSg
+	 /cUyxafyIQ4U/E3dl/HFIefxGDop2aP10HAloR8ev1VINjyoSYk/mtzxXdvsSJcKXsA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1795038373;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=c/E5glnHrnNUs1be/DidTd7n/hXyUC7pMFA6Uy1CyMA=;
-	b=tizYDuW2ZtVcbd3TWuyvsYnnHvwtXoiRvckM+kVGIxGBBXyiFDpe29Bxlyrc/Tfqwiks
-	 yydgc9p2ZJsW16lMTJMlfdcwMz+MUU9aQnSBboYjAry+pyGlIC/P2d5T4WTYgCya8XUWj
-	 zT3/fn4TVeRJLFOB//porJa61Pg8ej+Ms4XpciyRzFIJ2N4975HmJFLKbdishNaM8aBw2
-	 skZfclKhNvh/uAI21e9HMdOOuf+kxdMmzfLPlcRSDFhHG9CHJUoMrx9UvHlwP+W8gHd+v
-	 k+wec0TYyjL6QqiYT8IefqDNK4f8yGcDFt0mihc1BRlgXVYCuXD4Lrx4RWd+dK388YA==
+	bh=Ub5FGgymBIHQ/4R5fQ4sm6HAhxGJYj6EuFKbouwlUbU=;
+	b=nGGxKkZmi53bb29v3XH5I/iPVvDjoGAE2SiYTqyBqmn+TJvckGK0zLg66+ZPVhyT9vgw
+	 mKbbjBPEDeViT82TvOkiMASUGVXQQNwDjvAO7cLV6Rgj+Z3W6ev7sEDL4QWlE6cC3Wgwc
+	 b0t9F6rNzNvB29MwY+ynCb/qO0T7CGKGr+LOQ4WP6KKT3qP/AZiIn65GcbYKPYeIBkeyK
+	 vfUJd0xomYFDAtwhjSej1+eAZTm6d81eHHTHYBe/vLLHrghRywjItBt6iKYecV6rKabEm
+	 20QDWVPGUYBVMt+/4ARFfdYv+TvGNCEd/f6IcBFZHCWBVRMRX0gA9Bxe7fgQbg63+ow==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 1EE7C1F000C7;
+	by smtp.kernel.org (Postfix) with ESMTPS id 0823F1F000C6;
 	Wed, 18 Nov 2026 21:46:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1795038373;
-	bh=c/E5glnHrnNUs1be/DidTd7n/hXyUC7pMFA6Uy1CyMA=;
+	bh=Ub5FGgymBIHQ/4R5fQ4sm6HAhxGJYj6EuFKbouwlUbU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=DiBzdDVtnESdCPs0nz8rxdJ601LsxrUB/CTv4rbLve0A/dFGyVafOTyZCfaT85e+Y
-	 FHfj9vJvzi/hhgdyPqHABQeD8L6DEjHEySHMm0irncqKfPNidt5hXoImDJmpepvee1
-	 WXqjU9dyFOGiE7CtuTp+G6H81ftn6NSz484zfgCVkUwwWCQJO2zg2IezeHRIuj81jZ
-	 3h3b5BJNlObDGWzpkaspVaAS4jZfAuLEwgcmWcmcteGgBk795hzaxuaNkb4z6LZ62g
-	 cP3yatpVA7lhMx4eDMtzqykkeHuXhoi4cKZn6yUxpQYUTq0X57AsoVQjsrzgt7hcrL
-	 +MY8aMCHr3XKQ==
+	b=USA++iVmokDbfAysQ5onjaOXhvCS9xdjcVh2JBM0M/6CgfrW6KFy+IAF1UFRvljJ5
+	 mDCCKqVDQYUatAHIojwDqHlhALn+ASBE8Ty+RN80ru2vx+/n/HlT2zYcYeYEVqH8Tp
+	 2sl6oAPtsUyZvmjzJ++Nz4z6dShsVaFdsAnLCmvGl3E+NNfQ1NTN2lZxs3IMWd1kcy
+	 E3/S1XcPFdZbMpEnoH3rcUWGoa05Ek9j0kpBffdTrHev/SNHyB+2nu+DuBWuSQcMAV
+	 ZFfRvSxl+crNrniMFslZxIg6qYTNIK56CW2f/AlQ8pMMZrrraRecgQkSUavf3a0zs+
+	 7Y16MbBeM2BjA==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id A2C4B4AFD5;
+	by lkml.kernel.org (Postfix) with ESMTP id 8CCCC4AFD1;
 	Wed, 18 Nov 2026 21:46:11 +0000 (UTC)
 From: Joachim Eastwood via B4 Relay <devnull+joachim.eastwood.gmail.com@kernel.org>
-Date: Wed, 18 Nov 2026 22:45:30 +0100
-Subject: [PATCH 3/4] arm64: dts: rockchip: use i2c-gpio for hdmi ddc on
- rk3588-h96-max-v58
+Date: Wed, 18 Nov 2026 22:45:29 +0100
+Subject: [PATCH 2/4] drm/bridge: synopsys: dw-hdmi-qp: Attach the next
+ bridge in the chain
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261118-dw-hdmi-qp-bridge_attach-v1-3-e370920bc7f3@gmail.com>
+Message-Id: <20261118-dw-hdmi-qp-bridge_attach-v1-2-e370920bc7f3@gmail.com>
 References: <20261118-dw-hdmi-qp-bridge_attach-v1-0-e370920bc7f3@gmail.com>
 In-Reply-To: <20261118-dw-hdmi-qp-bridge_attach-v1-0-e370920bc7f3@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -99,11 +99,11 @@ Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  Joachim Eastwood <joachim.eastwood@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795038370; l=2059;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795038370; l=2517;
  i=joachim.eastwood@gmail.com; s=20260701; h=from:subject:message-id;
- bh=ZKHrf9fZfya43GZzxlgu/vfQ6CugSi9lV4hIpaRZsLU=;
- b=uyr04LBj1Nkn02R5XunZ6iLLnYc3emIzJl0246OwELe6DeMlNxzvY5CUUxs7ZSy600h8hBtt9
- xRJbf1vdC2qDiR9dNIaXCijrlEPVUkyd/ClCCn1XF0OPfwPmuEaSwKB
+ bh=1lj8+1BKN4Nmy9uS7g9V3h/v7ntQIcakt96ADfZAy+E=;
+ b=qq32ej2OwuLI/6OrZU8KxRARx2vkpz9KS9rNSkIXUhwn2XNIS7+VOH1ZX6Rl+Vc7M/OvdOdHH
+ E5qFVxvmA1HCsi5jMmSESIPXKvWfeo2N8U7fvzw7LjmNPZ7lQWSvd9k
 X-Developer-Key: i=joachim.eastwood@gmail.com; a=ed25519;
  pk=ZN/8xWtdYaSd5oEfloYSZ1a+/ri0n0VZqjlEeHlbXFU=
 X-Endpoint-Received: by B4 Relay for joachim.eastwood@gmail.com/20260701
@@ -131,69 +131,73 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Joachim Eastwood <joachim.eastwood@gmail.com>
 
-On-chip DDC controller is unreliable on this board so override DDC on
-the HDMI connector with i2c-gpio. The root cause of breakage is not
-known but on-chip DDC controller refuses to read the EDID.
+Implement the drm_bridge_funcs attach function so dw-hdmi-qp will attach
+to the next bridge in the chain. This will allow the properties on the
+next bridge be used. In the case of hdmi-connector this will make
+properties like ddc-i2c-bus and hpd-gpios can override the on-chip
+functions in dw-hdmi-qp.
 
 Signed-off-by: Joachim Eastwood <joachim.eastwood@gmail.com>
 ---
- .../arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts | 22 ++++++++++++++++++++--
- 1 file changed, 20 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 30 ++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts b/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
-index 3811f9a73bb6c..da6282c105255 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts
-@@ -37,6 +37,7 @@ chosen {
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index eed249aca1e23..200229e5d9afc 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -16,6 +16,7 @@
+ #include <linux/module.h>
+ #include <linux/mutex.h>
+ #include <linux/of.h>
++#include <linux/of_graph.h>
  
- 	hdmi0-con {
- 		compatible = "hdmi-connector";
-+		ddc-i2c-bus = <&i2c_gpio_ddc>;
- 		type = "a";
+ #include <drm/bridge/dw_hdmi_qp.h>
+ #include <drm/display/drm_hdmi_helper.h>
+@@ -39,6 +40,9 @@
+ #define DDC_CI_ADDR		0x37
+ #define DDC_SEGMENT_ADDR	0x30
  
- 		port {
-@@ -46,6 +47,16 @@ hdmi0_con_in: endpoint {
- 		};
- 	};
- 
-+	/* on-chip DDC controller is unreliable on this board */
-+	i2c_gpio_ddc: i2c-ddc {
-+		compatible = "i2c-gpio";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&i2c_ddc_scl &i2c_ddc_sda>;
-+		scl-gpios = <&gpio4 RK_PB7 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
-+		sda-gpios = <&gpio4 RK_PC0 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
-+		i2c-gpio,delay-us = <5>;
-+	};
++/* OF graph port carrying the output towards the HDMI connector */
++#define DW_HDMI_QP_OUTPUT_PORT	1
 +
- 	ir-receiver {
- 		compatible = "gpio-ir-receiver";
- 		gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_LOW>;
-@@ -211,8 +222,7 @@ &gpu {
+ struct dw_hdmi_qp_i2c {
+ 	struct i2c_adapter	adap;
  
- &hdmi0 {
- 	frl-enable-gpios = <&gpio4 RK_PB1 GPIO_ACTIVE_LOW>;
--	pinctrl-0 = <&hdmim0_tx0_cec &hdmim0_tx0_hpd
--		     &hdmim0_tx0_scl &hdmim0_tx0_sda &hdmi0_tx_on_h>;
-+	pinctrl-0 = <&hdmim0_tx0_cec &hdmim0_tx0_hpd &hdmi0_tx_on_h>;
- 	pinctrl-names = "default";
- 	status = "okay";
- };
-@@ -347,6 +357,14 @@ hdmi {
- 		hdmi0_tx_on_h: hdmi0-tx-on-h {
- 			rockchip,pins = <4 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-+
-+		i2c_ddc_scl: i2c-ddc-scl {
-+			rockchip,pins = <4 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		i2c_ddc_sda: i2c-ddc-sda {
-+			rockchip,pins = <4 RK_PC0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
- 	};
+@@ -1024,7 +1028,33 @@ static void dw_hdmi_qp_bridge_hpd_disable(struct drm_bridge *bridge)
+ 		hdmi->phy.ops->disable_hpd(hdmi, hdmi->phy.data);
+ }
  
- 	hym8563 {
++static int dw_hdmi_qp_bridge_attach(struct drm_bridge *bridge,
++				    struct drm_encoder *encoder,
++				    enum drm_bridge_attach_flags flags)
++{
++	struct dw_hdmi_qp *hdmi = bridge->driver_private;
++	struct device_node *remote __free(device_node) =
++		of_graph_get_remote_node(hdmi->dev->of_node,
++					 DW_HDMI_QP_OUTPUT_PORT, -1);
++
++	/*
++	 * The HDMI connector node is optional. When present, chain its bridge
++	 * so that properties such as ddc-i2c-bus, hpd-gpios and supplies are
++	 * honoured by the DRM bridge connector.
++	 */
++	if (!remote)
++		return 0;
++
++	struct drm_bridge *next_bridge __free(drm_bridge_put) =
++		of_drm_find_and_get_bridge(remote);
++	if (!next_bridge)
++		return -EPROBE_DEFER;
++
++	return drm_bridge_attach(encoder, next_bridge, bridge, flags);
++}
++
+ static const struct drm_bridge_funcs dw_hdmi_qp_bridge_funcs = {
++	.attach = dw_hdmi_qp_bridge_attach,
+ 	.atomic_get_output_bus_fmts = drm_atomic_helper_bridge_get_hdmi_output_bus_fmts,
+ 	.atomic_get_input_bus_fmts = drm_atomic_helper_bridge_propagate_bus_fmt,
+ 	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
 
 -- 
 2.56.0
