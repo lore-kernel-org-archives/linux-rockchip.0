@@ -2,58 +2,93 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0D991606A330
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 12:33:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E6675606A33B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 13:03:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=iS4EuGlD;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=m0b8hBMx
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KpiNAwnB;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=m7WXrInM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=oqqXkQGsqahrPIZLGD9tY+CpGxka6TvNlsSbFc+kuHc=; b=iS4EuGlDrtQLVaRFB5npclVfK9
-	TEr+V+ohLvzf8LtAOKLipgR2zMos9O5ccVB1nwiq9kBuuDD+l15AaM8CQT6dNKogyPKRq027Rg8x8
-	IlDLWDX3pL7iVY410z98pKCGTCiK5T/tE188fy5Qgac7Y8LtEmmLWm10OY3rC3A6ZeC5wOpiAGaQL
-	v7+un56R8mfsEnF5GMOWWy+ZuuFNH4BvguaAK6UoWoNMFLh+mY3smHWdLH3cCbI++STCCnRJMeQS4
-	MZr2dOrQf3ZkOVFQtzH/86YiQEBFWpNg/2l+yYc2S8yT6TPtp21+r2JR8O2EPLqHr89Yx0hlNvyRL
-	X87F7n1w==;
+	bh=7MK6jnvg54wAa/W8+h0zMeyfo3I+GZPyqWgUs4FZ48o=; b=KpiNAwnBpMY+jmD62Xr+z/dNUi
+	+OdEo7TmZp2CMnAO5+xgqCsu2Q4EPLhlldcFWO5CrXjEBbWe6ukohweCdKs2a2dIQOJHaCtCDuea/
+	6v9EbGCteCiig5W9iknKuZXwiSwuUcC1X+uB9RqEA8WVArMCbf7oXlcV2G1bwsVJDwwZR3G23eAAN
+	pCN1XLo0v2eHqRtIa3uk3h07UjTqeHkYbVFW/ltda29j0nNA3DBJZAMe9N9WYs5BvHH9QHrHpHowy
+	CvUJZ/kBm2wlzeLVYsGY3Sr58JqtTAW8HGsVxcv1VxVOleyTwJySIC2mixOCV4fZkS1XeFKv1MFLx
+	+e9p/f/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU1Kn-0000000Bqlq-2F69;
-	Thu, 19 Nov 2026 12:33:49 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xU1nU-0000000BxJh-40pp;
+	Thu, 19 Nov 2026 13:03:28 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU1Kk-0000000BqkQ-1msl;
-	Thu, 19 Nov 2026 12:33:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=tASzR4wXMMc0YCUiYCKzn7cgOIVewXX+hCln4mp/s0Y=; b=m0b8hBMxJPiifKd5Vrc1LUdxvo
-	C/9lFoUO7AwB5+4VNJDtVLiKW6e1/PvUg3h8YwNppqqGxD8J9FtBKkVzaQRwg6u+ATgOmBW1Am/Sr
-	spKP/EE+/EncvF2JkAQa6cc5Gj9tXjblT39lDR1BeR5G3HLX/hd//ePFePfNtvUQf5A/5+lVmVn+m
-	bR09+Oj5XOHHN6qpeDZ1fBfcYu+f9LWA8KrWVbRbp3+ZntukKDgjqWugwDHYKOxEJWh2adqw3x6a3
-	2OcYfOo/ejFAcVtfn15LA5q9btjRrwChiYIb5NpEywE+++Yjf+szUWO0v+8jfBNSFyXSxARb+l90a
-	dXi+CK4w==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Ulf Hansson <ulfh@kernel.org>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Peter Geis <pgwipeout@gmail.com>, 1579567540@qq.com
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Cunhao Lu <1579567540@qq.com>
-Subject: Re: [PATCH v2] pmdomain: rockchip: Roll back power-on when leaving idle fails
-Date: Thu, 19 Nov 2026 13:33:40 +0100
-Message-ID: <X4VYa84sR92_76QOKnT74g@sntech.de>
-In-Reply-To: <20261118-fix-rockchip-pmdomain-power-on-rollback-v2-1-3e4e93a19996@qq.com>
-References: <20261118-fix-rockchip-pmdomain-power-on-rollback-v2-1-3e4e93a19996@qq.com>
+	id 1xU1nR-0000000BxHP-3gGq;
+	Thu, 19 Nov 2026 13:03:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795093403;
+	bh=r/7DOVU3zbP/DiBvAk5lk/ApUFqwoCwJJqDxg9WSfaM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=m7WXrInM9CokMzVQlOEoy7QlC4SI7aRVqm5756P9gienxG9OA2pGNCFAs1MKwkG+J
+	 b3Peawd3yS5KjBnj5vQ5a9pSQDKNS2eQ9c1wBHFjhgoS489yJF5CG3XMC2hzyg75DU
+	 Oc2Mu8gCFt/JsBea13K0FPDtSmmKLGw9yWOZyWjt35xo6StZECT7KCGdIIwnc7NAiM
+	 58kEUVEOsGXUT0FxBs+Sb4RU/hjWC/LZIAtXK2IU/BJI7GCPw67O66VofGcIJpHoOw
+	 rb0HkhRkAu534ppMTC44CcI3TjJk+PP4P6kuPEb+swJjdMnJvHHX1l2IcfkJpMzEI1
+	 sTmL2tVOvmwhw==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D797317E0DE8;
+	Thu, 19 Nov 2026 14:03:22 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 92F6A480031; Thu, 19 Nov 2026 14:03:22 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Thu, 19 Nov 2026 14:01:53 +0100
+Subject: [PATCH v4 03/11] PM / devfreq: rockchip-dfi: drop incorrect shift
+ of LP5 bank mode
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Message-Id: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-3-517a68c008fe@collabora.com>
+References: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-0-517a68c008fe@collabora.com>
+In-Reply-To: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-0-517a68c008fe@collabora.com>
+To: Chanwoo Choi <cw00.choi@samsung.com>, 
+ MyungJoo Ham <myungjoo.ham@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Sashiko <sashiko-bot@kernel.org>, stable@vger.kernel.org
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1522;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=r/7DOVU3zbP/DiBvAk5lk/ApUFqwoCwJJqDxg9WSfaM=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr+85rzgztPrhe15mOzQThqgubzxnmjjDiXZ
+ Re4lABkofhTmYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq/vOaAAoJENju1/PI
+ O/qaxUcP/AnyYv/h/Ex+H+Nh4DTzdozserjwNba7o4OWerriSN68xuqqyLGrcRoM8jUZYlN63ey
+ QiXp/QTPSsUyBCzsmjyEnyIVlGljGY+8BsezHg6rTBTh3SZ1XG+dJiTzmFELf6gvRDudr2acOEU
+ zfWLRMidmbGZAE36uhiCIrkwow0VglA4GTnmHs4NcoPSNzsOtSfxmpgzGH4gQaksbzNHuXRuCHu
+ EDqrXfOHZkWit0P8Y6IEtxP6IdfjyfRjjm4RvQDdYAfOrsFgXb43r0rX7D8DUF9qgvRmIDdxoap
+ 90Oy5iHbRZKQCiQBQGhiC5BhhRF001SUf0HlqpcVUPkH70JW3f4OnMUkpiDpD+aTok2Yx0fqZBk
+ o3UtucIsnbBIUMsBZC7qoIyrKqNM/jps+6Aj6r1U/Ep4rgS+oL5CgZ2bFv0u5UHzPuo7SsacnkD
+ 4vW7gxgfDi+p94PxsciUBb10YZaWPs6kY8KL+nMB0COLzHCggm++6j/jS1XOge4zaDEJCSoapYS
+ /PCAIiKv9A6b2Kz3OJmqSLXY6VpAP+ZXCMocr0ywm+PD1TMEfw/JqhiSKgRDGr788PEQjeRe+/N
+ rYqPEUQHKE+0MwTYi92Uv/8laxoxM6NFlh5+4qiBy/Ncxg8CVOpbtc2MMLg493JhA5kIZWokc+D
+ 6mumnCqh66/SbB1gExoguLA==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_043346_486659_BA577308 
-X-CRM114-Status: GOOD (  30.41  )
+X-CRM114-CacheID: sfid-20261119_050326_108926_008071E3 
+X-CRM114-Status: GOOD (  15.07  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -64,94 +99,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gTWl0dHdvY2gsIDE4LiBOb3ZlbWJlciAyMDI2LCAxMDowMzo0NiBNaXR0ZWxldXJvcMOkaXNj
-aGUgTm9ybWFsemVpdCBzY2hyaWViIEN1bmhhbyBMdSB2aWEgQjQgUmVsYXk6Cj4gRnJvbTogQ3Vu
-aGFvIEx1IDwxNTc5NTY3NTQwQHFxLmNvbT4KPiAKPiBXaGVuIE5JVSBpZGxlIGV4aXQgZmFpbHMg
-YWZ0ZXIgUE1VIHBvd2VyLW9uLCBjbG9ja3MgYW5kIHRoZSByZWd1bGF0b3IKPiByZWZlcmVuY2Ug
-YXJlIHJlbGVhc2VkIHdoaWxlIHRoZSBkb21haW4gcmVtYWlucyBwb3dlcmVkLiBnZW5wZCB0cmVh
-dHMKPiBpdCBhcyBvZmYgYW5kIG1heSBwb3dlciBvZmYgaXRzIHBhcmVudHMuCj4gCj4gUmVxdWVz
-dCBpZGxlIGFnYWluIGFuZCwgaWYgc3VjY2Vzc2Z1bCwgdXNlIHRoZSBsb3ctbGV2ZWwgcG93ZXIt
-b2ZmIHBhdGgKPiBiZWZvcmUgcmVsZWFzaW5nIHJlc291cmNlcy4gVGhpcyBwcmVzZXJ2ZXMgc2F2
-ZWQgUW9TIGFuZCBub3RpZmllcwo+IGZpcm13YXJlIHdoaWxlIHJldGFpbmluZyB0aGUgb3JpZ2lu
-YWwgZXJyb3IuCj4gCj4gSWYgcm9sbGJhY2sgZmFpbHMsIHJlc291cmNlcyBhcmUgc3RpbGwgcmVs
-ZWFzZWQgYW5kIGdlbnBkIG1heSBwb3dlciBvZmYKPiB0aGUgcGFyZW50cy4KPiAKPiBGaXhlczog
-NmIyNjkwZGYzZjAzICgicG1kb21haW46IHJvY2tjaGlwOiBmaXggcm9ja2NoaXBfcGRfcG93ZXIg
-ZXJyb3IgaGFuZGxpbmciKQo+IFNpZ25lZC1vZmYtYnk6IEN1bmhhbyBMdSA8MTU3OTU2NzU0MEBx
-cS5jb20+CgoKUmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cgo+
-IC0tLQo+IFRoaXMgcHJlLWV4aXN0aW5nIGlkbGUtZXhpdCBmYWlsdXJlIGNhc2Ugd2FzIHJlcG9y
-dGVkIGJ5IFNhc2hpa28gQUkKPiBkdXJpbmcgdGhlIFJLMzU3MiBtYWlubGluaW5nIHdvcms6Cj4g
-aHR0cHM6Ly9zYXNoaWtvLmRldi8jL3BhdGNoc2V0LzIwMjYxMDIyLWFkZC1ib2FyZC1vazM1NzIt
-Yy12MS0wLTBiMGZkODVhMzFlZUBxcS5jb20/cGFydD0xMAo+IAo+IElmIGxlYXZpbmcgTklVIGlk
-bGUgZmFpbHMgYWZ0ZXIgUE1VIHBvd2VyLW9uLCB0aGUgZG9tYWluIHJlbWFpbnMgcG93ZXJlZAo+
-IHdoaWxlIGdlbnBkIHRyZWF0cyBpdCBhcyBvZmYuIFRoZSBlcnJvciBwYXRoIHJlbGVhc2VzIHRo
-ZSBjbG9ja3MgYW5kCj4gcmVndWxhdG9yIHJlZmVyZW5jZSwgYW5kIGdlbnBkIG1heSBwb3dlciBv
-ZmYgdGhlIHBhcmVudCBkb21haW5zLgo+IAo+IFRoaXMgcGF0Y2ggcmVxdWVzdHMgaWRsZSBhZ2Fp
-biBhbmQsIGlmIHN1Y2Nlc3NmdWwsIHBvd2VycyB0aGUgZG9tYWluCj4gb2ZmIGJlZm9yZSByZWxl
-YXNpbmcgdGhvc2UgcmVzb3VyY2VzLiBJdCBwcmVzZXJ2ZXMgdGhlIHNhdmVkIFFvUyBzdGF0ZQo+
-IGFuZCBvcmlnaW5hbCBlcnJvciwgYW5kIHVzZXMgdGhlIGxvdy1sZXZlbCBwYXRoIHRvIG5vdGlm
-eSBmaXJtd2FyZS4KPiAKPiBWYWxpZGF0aW9uOgo+IAo+IC0gQWxsIDQ4IGhvc3Qgc2ltdWxhdGlv
-bnMgcGFzc2VkLCBjb3ZlcmluZyBwb3dlciBjeWNsZXMsIGlkbGUtZXhpdCBhbmQKPiAgIHJvbGxi
-YWNrIGZhaWx1cmVzLCBRb1MgcHJlc2VydmF0aW9uIGFuZCBlcnJvciBwcm9wYWdhdGlvbi4gTm8g
-c2FuaXRpemVyCj4gICBmaW5kaW5ncy4KPiAKPiAtIEhhcmR3YXJlIHRlc3Rpbmcgb24gT0szNTcy
-LUM6IDIwIHBhdGNoZWQgYW5kIDUwIHVucGF0Y2hlZCBOVk0xIHBvd2VyCj4gICBjeWNsZXMgcGFz
-c2VkLiBSZXF1ZXN0LXdyaXRlIGluamVjdGlvbiBjYXVzZWQgbmF0aXZlIGlkbGUtZXhpdCBwb2xs
-aW5nCj4gICB0aW1lb3V0cy4gVGhlIGZpeCBwb3dlcmVkIHRoZSBkb21haW4gb2ZmIGluIDMvMyBj
-YXNlczsgdGhlIG9yaWdpbmFsCj4gICBkcml2ZXIgbGVmdCBpdCBPTi4gUW9TIGFuZCB0aGUgb3Jp
-Z2luYWwgZXJyb3Igd2VyZSBwcmVzZXJ2ZWQsIGFuZAo+ICAgcmV0cmllcyBzdWNjZWVkZWQgYWZ0
-ZXIgcmVtb3ZpbmcgdGhlIGluamVjdGlvbi4KPiAKPiBQZXJzaXN0ZW50IHJvbGxiYWNrIGlkbGUg
-YW5kIHBvd2VyLW9mZiB0aW1lb3V0cyB3ZXJlIGFsc28gdGVzdGVkOgo+IHJlc291cmNlcyB3ZXJl
-IHN0aWxsIHJlbGVhc2VkIHdpdGggdGhlIGRvbWFpbiBPTiBhbmQgZ2VucGQgT0ZGLiBUaGVzZQo+
-IGZhaWx1cmUgcGF0aHMgcmVtYWluIHVucmVzb2x2ZWQsIGFuZCBnZW5wZCBtYXkgc3RpbGwgcG93
-ZXIgb2ZmIHRoZSBwYXJlbnRzLgo+IAo+IEFJIGFzc2lzdGFuY2U6Cj4gCj4gLSBDb2RleCAvIERl
-ZXBTZWVrIFY0LjEgRmxhc2ggd2VyZSB1c2VkIGZvcjoKPiAgIC0gUmV2aWV3aW5nIGFuZCBhZGp1
-c3RpbmcgY29kZSBzdHlsZSB0byBmb2xsb3cgY29tbXVuaXR5IGNvbnZlbnRpb25zCj4gICAtIEF1
-dG9tYXRpbmcgdGVzdHMKPiAgIC0gQ29sbGVjdGluZyBkYXRhCj4gLS0tCj4gQ2hhbmdlcyBpbiB2
-MjoKPiAtIFJlYmFzZSBvbnRvIHRoZSBuZXh0IGJyYW5jaCBvZiBVbGYgSGFuc3NvbidzIGxpbnV4
-LXBtLmdpdCB0cmVlLgo+IC0gTGluayB0byB2MToKPiAgIGh0dHBzOi8vcGF0Y2gubXNnaWQubGlu
-ay8yMDI2MTEwMS1maXgtcm9ja2NoaXAtcG1kb21haW4tcG93ZXItb24tcm9sbGJhY2stdjEtMS01
-OWE0NTc4M2UzM2VAcXEuY29tCj4gLS0tCj4gIGRyaXZlcnMvcG1kb21haW4vcm9ja2NoaXAvcG0t
-ZG9tYWlucy5jIHwgMjcgKysrKysrKysrKysrKysrKysrKysrKysrKystCj4gIDEgZmlsZSBjaGFu
-Z2VkLCAyNiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvcG1kb21haW4vcm9ja2NoaXAvcG0tZG9tYWlucy5jIGIvZHJpdmVycy9wbWRvbWFpbi9y
-b2NrY2hpcC9wbS1kb21haW5zLmMKPiBpbmRleCA2YWJlZjYwYTViNGMuLjJjMDIxNzg0MzE2YSAx
-MDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BtZG9tYWluL3JvY2tjaGlwL3BtLWRvbWFpbnMuYwo+ICsr
-KyBiL2RyaXZlcnMvcG1kb21haW4vcm9ja2NoaXAvcG0tZG9tYWlucy5jCj4gQEAgLTY0OCw2ICs2
-NDgsMjkgQEAgc3RhdGljIGludCByb2NrY2hpcF9kb19wbXVfc2V0X3Bvd2VyX2RvbWFpbihzdHJ1
-Y3Qgcm9ja2NoaXBfcG1fZG9tYWluICpwZCwKPiAgCXJldHVybiAwOwo+ICB9Cj4gIAo+ICsvKgo+
-ICsgKiBUaGUgY2FsbGVyIGhvbGRzIHRoZSBQTVUgbG9jayBhbmQgdHJhbnNpdGlvbiByZXNvdXJj
-ZXMuIFVzZSB0aGUgbG93LWxldmVsCj4gKyAqIHBvd2VyLW9mZiBwYXRoIHRvIGF2b2lkIG92ZXJ3
-cml0aW5nIHRoZSBzYXZlZCBRb1Mgc3RhdGUuCj4gKyAqLwo+ICtzdGF0aWMgdm9pZCByb2NrY2hp
-cF9wZF9wb3dlcl9vbl9yb2xsYmFjayhzdHJ1Y3Qgcm9ja2NoaXBfcG1fZG9tYWluICpwZCkKPiAr
-ewo+ICsJaW50IHJldDsKPiArCj4gKwlyZXQgPSByb2NrY2hpcF9wbXVfc2V0X2lkbGVfcmVxdWVz
-dChwZCwgdHJ1ZSk7Cj4gKwlpZiAocmV0IDwgMCkgewo+ICsJCWRldl9lcnIocGQtPnBtdS0+ZGV2
-LAo+ICsJCQkiZmFpbGVkIHRvIGlkbGUgZG9tYWluICclcycgb24gcm9sbGJhY2s6ICVkXG4iLAo+
-ICsJCQlwZC0+Z2VucGQubmFtZSwgcmV0KTsKPiArCQlyZXR1cm47Cj4gKwl9Cj4gKwo+ICsJcmV0
-ID0gcm9ja2NoaXBfZG9fcG11X3NldF9wb3dlcl9kb21haW4ocGQsIGZhbHNlKTsKPiArCWlmIChy
-ZXQgPCAwKQo+ICsJCWRldl9lcnIocGQtPnBtdS0+ZGV2LAo+ICsJCQkiZmFpbGVkIHRvIHBvd2Vy
-IG9mZiBkb21haW4gJyVzJyBvbiByb2xsYmFjazogJWRcbiIsCj4gKwkJCXBkLT5nZW5wZC5uYW1l
-LCByZXQpOwo+ICt9Cj4gKwo+ICBzdGF0aWMgaW50IHJvY2tjaGlwX3BkX3Bvd2VyKHN0cnVjdCBy
-b2NrY2hpcF9wbV9kb21haW4gKnBkLCBib29sIHBvd2VyX29uKQo+ICB7Cj4gIAlzdHJ1Y3Qgcm9j
-a2NoaXBfcG11ICpwbXUgPSBwZC0+cG11Owo+IEBAIC02ODIsOCArNzA1LDEwIEBAIHN0YXRpYyBp
-bnQgcm9ja2NoaXBfcGRfcG93ZXIoc3RydWN0IHJvY2tjaGlwX3BtX2RvbWFpbiAqcGQsIGJvb2wg
-cG93ZXJfb24pCj4gIAlpZiAocG93ZXJfb24pIHsKPiAgCQkvKiBpZiBwb3dlcmluZyB1cCwgbGVh
-dmUgaWRsZSBtb2RlICovCj4gIAkJcmV0ID0gcm9ja2NoaXBfcG11X3NldF9pZGxlX3JlcXVlc3Qo
-cGQsIGZhbHNlKTsKPiAtCQlpZiAocmV0IDwgMCkKPiArCQlpZiAocmV0IDwgMCkgewo+ICsJCQly
-b2NrY2hpcF9wZF9wb3dlcl9vbl9yb2xsYmFjayhwZCk7Cj4gIAkJCWdvdG8gb3V0Owo+ICsJCX0K
-PiAgCj4gIAkJcm9ja2NoaXBfcG11X3Jlc3RvcmVfcW9zKHBkKTsKPiAgCX0KPiAKPiAtLS0KPiBi
-YXNlLWNvbW1pdDogNmY1YzhlYzkzMDJjNWFkODkwNGRiZGZlOGNmMmE1MzhmZjgzNTU3Mgo+IGNo
-YW5nZS1pZDogMjAyNjExMDEtZml4LXJvY2tjaGlwLXBtZG9tYWluLXBvd2VyLW9uLXJvbGxiYWNr
-LWMxMWUxMDE0ZWYxMQo+IAo+IEJlc3QgcmVnYXJkcywKPiAtLSAgCj4gQ3VuaGFvIEx1IDwxNTc5
-NTY3NTQwQHFxLmNvbT4KPiAKPiAKPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+When the driver got converted to the FIELD_PREP_WM16 macro, it was
+missed that the lp5_bank_mode variable is already shifted in
+rk3588_dfi_init() resulting in FIELD_PREP_WM16() effectively doing a
+double shift and thus writing 0.
+
+As most Rockchip boards use LPDDR4 (incl. all of mine) and DFI is more
+or less exclusively used for debugging with upstream kernel so far, this
+hasn't been noticed until now.
+
+Reported-by: Sashiko <sashiko-bot@kernel.org>
+Closes: https://lore.kernel.org/all/sashiko-outbox-219117@kernel.org/
+Cc: stable@vger.kernel.org
+Fixes: 7e85ac9da1ac ("PM / devfreq: rockchip-dfi: switch to FIELD_PREP_WM16 macro")
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/devfreq/event/rockchip-dfi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
+index e0b942028e50..22f82cb6e33f 100644
+--- a/drivers/devfreq/event/rockchip-dfi.c
++++ b/drivers/devfreq/event/rockchip-dfi.c
+@@ -800,7 +800,7 @@ static int rk3588_dfi_init(struct rockchip_dfi *dfi)
+ 
+ 	if (dfi->ddr_type == ROCKCHIP_DDRTYPE_LPDDR5) {
+ 		regmap_read(regmap_pmu, RK3588_PMUGRF_OS_REG6, &reg6);
+-		dfi->lp5_bank_mode = FIELD_GET(RK3588_PMUGRF_OS_REG6_LP5_BANK_MODE, reg6) << 7;
++		dfi->lp5_bank_mode = FIELD_GET(RK3588_PMUGRF_OS_REG6_LP5_BANK_MODE, reg6);
+ 		dfi->lp5_ckr = FIELD_GET(RK3588_PMUGRF_OS_REG6_LP5_CKR, reg6);
+ 		if (dfi->lp5_ckr)
+ 			dfi->count_multiplier *= 2;
+
+-- 
+2.53.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
