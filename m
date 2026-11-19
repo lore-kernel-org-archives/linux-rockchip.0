@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54AD8606A332
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 19:12:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 16408606A320
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 19:27:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fr+xd8lE;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=SxnitvcN
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=01caOXEO;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=AwmWQL/v
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,88 +14,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=nGkHvITD2K8op61TbIn8ohu5Q6F9G52jsCsiVl+hXaw=; b=fr+xd8lEAJa01ix4gaFvEaEQJ1
-	RBQTi6GOhqRvdGE/769nw6w7i8Om849hn1DWTb1u+sRaIAm6IBhYqxxsqOEAZXDmlVqeWGbmng15Y
-	tQ8HUkFETRwWSjUz5yf+C6l39GDdpKe/z0j93ba+I1arv+aMK+9SF4zfQQykktCAGzdGgT9IUz46j
-	MVDdJwzCMs9M/74KYIaXE/U+ITlbBuiM+rHGb4ASUhgqZI76ppqogCl2V7jTUWFusSh4V6Gnvn/u4
-	DWSqLx7vfl2Y49q4nPVs6VNT9QgtGdV/jF+M+BcpT8jUxRsbCLui5BHim/4q75wAhKpSIDvP7U11s
-	U5/yWWEQ==;
+	bh=cl0P8MWBiW0T7jIJ0PXoE7lFC+2U3Zcebf9HAGgE8Ag=; b=01caOXEOBjI2Ql00cGoKOoBY59
+	INfwRm3a6eb6JGeLaEGT8Nv3QdUkgBjRDSAHDKoHjMcopuuaaQfTXnAdUmpbGYMwl7z09bIFG6py0
+	tHZatjXq5qEnlvKYikuhGg6pR1lxPGYGmrQmbmzKn6FK6rAC8cpU9JgxoXpnHlXlpONvdZz+YI7FB
+	4va84zMsEfGFMwRgoz2FOJ6XS0ZfPpXVM2OsfDp8E+ZFF3i3c1G9gHD9LqMpojLxhvvOSakku03xw
+	oDrwvaSOJPjcVnAfchxferO2iPmaFxi9O2GNrUBkqKFbdo7NcAptiOVPmxbNhS/hB2LhxBT/SsMru
+	dCN/buBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU7Yd-0000000DAl7-3578;
-	Thu, 19 Nov 2026 19:12:31 +0000
-Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
+	id 1xU7ml-0000000DCsw-47li;
+	Thu, 19 Nov 2026 19:27:07 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU7Ya-0000000DAkl-11oZ
-	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Nov 2026 19:12:30 +0000
-Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-4932b13c4ccso84866fac.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 19 Nov 2026 11:12:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795115547; x=1795720347; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=cPRlIWoU3nedg5UMks9BflBLw1pyZb+IzsqBpWtRPsw=;
-        b=SxnitvcN5MNq1kxLthMtVrYoAyOAvkAjCIaT+9v1XtZK/ZqeGPR8SIPhczCsG7YmRy
-         8kGiIWUWCrzSYcaamdgAw4Ez2RmYMiyx5OfC9nIKZID+PYpwk6y68uW+hDpgVNgx/1YW
-         jMVEKlAHc/YwOPjGhawN0rfKyfNjBqfmeuI9hf9BwWh4+xCvpmKeXeB+F23byAkXcDbC
-         +UWP/Bwf1QPxIBjnu5UJJiodMVFa86TairVVCjGc1N3Tm1Af74VPG0LTiESv9AZtWWAX
-         nowqviMlY/kDbh+ommobD0F4GpUqUefTtL5Oee5VBxm1HwEBwKkeL7sC4Ob8PTt5ZdWb
-         PkVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795115547; x=1795720347;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=cPRlIWoU3nedg5UMks9BflBLw1pyZb+IzsqBpWtRPsw=;
-        b=oc3v5V5CAwM8JAz5FIg4dqfLU80TKnU4K9O8qFT/vWCauP1hKlVWeXmPyW5hc93CHD
-         jtIORYmUYBUkFU+a+746WAGlX9Z++LEFMRVwwW1qlJUGZxRTgw+Wscpe4s+SGE35kpyY
-         12SBbBXXIu7ZMans52Ne1m2GqqgCDHF36NhpfnG142FxEY1ZIiDbrpEFpHoEzpJSKL4t
-         1x7lhinpj5b03GKklnOfohZBdG6Vx9NwmYFI/4nzObwxpuMCFFOmLed2MNjZhxJRPWc7
-         P1plhSuJAT7ft7UoP4BoBjMMHpdITrKIBp4MmnYRRAa7TjPHBlyk+KHcEL2KJiihI2sC
-         DSmw==
-X-Forwarded-Encrypted: i=1; AL+hErF0jk8qQgffUw+0wC0ukJY+dFgupvEXRbHFD3XJNVmzbNVyA58bFbss576q4Vrx00WxbCVzYsjlF9GA6Av5Eg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8J9ZaUD+BpIdw5s4GLUVtNQhRhOONNHZ9/j+egZUWqpGtHYZW8
-	OSw1yBxYdDbPWVVFFzZXR+G+R+OjKInG1Uby+H7QnHAcrAvc+bQucH3q
-X-Gm-Gg: AYBFou2fOs2veNMIo8nI5LLvednnb/u0Fwa4QxkQru+LX1ytOKd4OIAq3aOFiSsMIgl
-	TAT2McT3TRAxuBxuxhHax4gZcydRVPO+HKdSzhQlCZCGUd8I3XKOtQDE0ETNZt/XFqrd/9a6pAL
-	hZBFTVx9qBcFJ3hVpcU6jza4hHiClZnU8ybhmZO4c8xUkFRUut3S98O/XIINdwHAT7es8wjYuA7
-	Ex9Q/J74QRw3FTg9VYn2n947mgQmU1mEzu4nqSiMIqXo9gqh5aknKWb+PMYRR6ivHfPqEBTd6oZ
-	Qyy7QkBEfvl28gPrInsvwEghbsEpfjIUO1KoArlFjEYV0Q2Q1O+fzOG80GB9aS1TWk4ejAd+2dg
-	yi12/PVsxQRXGhvYsP0Pz63oQ/lSse6vipAAG/lK75lejx60gmQ7qQnwKbsp35RkSrJOgh5qTtX
-	1c6f6MRBZV4h1FbMZwWUALp3NJByQEEqXrUFIhbjnvXF70iL9ot7KGPU8/s+MhyeXPiT3hRI1/k
-	AV0DTtFhdbSkrhioKEoLl3rzOsLkCRvV3MoCu2hfjbfkzFbt86PJ0DMjYTlvlBaNYdgw6CovHiw
-	VkS8PpAl9TpD5FvLdv3o+w58k3lFPbgt6NJwXvOtlj2I4g==
-X-Received: by 2002:a05:6808:c3d2:b0:4e9:3412:14ac with SMTP id 5614622812f47-57a0af3421bmr1094077b6e.33.1795115546794;
-        Thu, 19 Nov 2026 11:12:26 -0800 (PST)
-Received: from neuromancer.localdomain ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-57a347636b9sm223450b6e.7.2026.11.19.11.12.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Nov 2026 11:12:26 -0800 (PST)
-Date: Thu, 19 Nov 2026 13:12:24 -0600
-From: Chris Morgan <macroalpha82@gmail.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, heiko@sntech.de,
-	conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
-	sre@kernel.org, t.schramm@manjaro.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH 1/3] dt-bindings: power: cw2015: add cw2215, cw2217, and
- cw2218
-Message-ID: <av9KGG70s_UAkKJO@neuromancer.localdomain>
-References: <20261027131751.1724448-1-macroalpha82@gmail.com>
- <20261027131751.1724448-2-macroalpha82@gmail.com>
- <83695285-207e-4d0f-ada0-2273953e2eb9@kernel.org>
+	id 1xU7mk-0000000DCsU-1T4m;
+	Thu, 19 Nov 2026 19:27:06 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id CA8C1415BF;
+	Thu, 19 Nov 2026 19:27:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC1071F000C8;
+	Thu, 19 Nov 2026 19:27:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795116425;
+	bh=qHLkF6tVlZ+i0QFCbA67HWU+g83dxZTEV5zaNmKwHJw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=AwmWQL/v/ILoQCm/U7h+szaU1lXZ97cfrHmUU/UJY4ndFIy3jRXc1LnA6fqPFTvCm
+	 ke2KBzPrsmNVGkAgIWvoGYMmU7USgqhecOiyiV72n/3XZG9dKGAKT3/GUUa9R1DYUZ
+	 4ATP93XyuGRLJGK80xRLfrKBNZzyYswx15FmcgsaQLKUJOU7m5ObEOa9egP9mrcwQ5
+	 f7f3xN5weFYaRmraMcSM5QS06LtBY9BreGaz+MLrVZhi8OfAIFhDI5Jg2d7yUY0frl
+	 ma2GHg5sBYzHkllBEiNfhAjpX3nzOEcuXbmo6lyX6bG42UVAAdgjtqBWX+MeyJXhEV
+	 0icLKCkVOT3aA==
+Date: Thu, 19 Nov 2026 19:27:00 +0000
+From: Lee Jones <lee@kernel.org>
+To: Jakob Unterwurzacher <jakobunt@gmail.com>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Joseph Chen <chenjh@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-input@vger.kernel.org, mfd@lists.linux.dev,
+	devicetree@vger.kernel.org,
+	Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
+Subject: Re: [PATCH 2/4] mfd: rk8xx-core: keep the PMIC interrupt disabled
+  during system suspend
+Message-ID: <179510313469.63755.466425546513135743@kernel.org>
+References: <20261029-dev-tiger-v7-4-pre-20261028-tiger-suspend-b4-v1-0-cb12621c1fb4@cherry.de>
+ <20261029-dev-tiger-v7-4-pre-20261028-tiger-suspend-b4-v1-2-cb12621c1fb4@cherry.de>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <83695285-207e-4d0f-ada0-2273953e2eb9@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_111229_055427_6BEC15E3 
-X-CRM114-Status: GOOD (  20.81  )
-X-Spam-Score: -1.9 (-)
+In-Reply-To: <20261029-dev-tiger-v7-4-pre-20261028-tiger-suspend-b4-v1-2-cb12621c1fb4@cherry.de>
+X-AI-Review-Draft: <20261029-dev-tiger-v7-4-pre-20261028-tiger-suspend-b4-v1-2-cb12621c1fb4@cherry.de>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,120 +80,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Oct 27, 2026 at 04:57:12PM +0100, Krzysztof Kozlowski wrote:
-> On 27/10/2026 14:17, Chris Morgan wrote:
-> >  
-> > -allOf:
-> > -  - $ref: power-supply.yaml#
-> > -
-> >  properties:
-> >    compatible:
-> > -    const: cellwise,cw2015
-> > +    enum:
-> > +      - cellwise,cw2015
-> > +      - cellwise,cw2215
-> > +      - cellwise,cw2217
-> > +      - cellwise,cw2218
-> >  
-> >    reg:
-> >      maxItems: 1
-> > @@ -31,8 +32,6 @@ properties:
-> >        it is to mail two batteries to a test facility of CellWise and receive
-> >        back a test report with the binary blob.
-> >      $ref: /schemas/types.yaml#/definitions/uint8-array
-> > -    minItems: 64
-> > -    maxItems: 64
-> 
-> This needs min/maxItems constraints.
+> From: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
+>
+> When the system is woken up by the PMIC (e.g. by the power key), the
+> PMIC interrupt is handled as soon as interrupts are re-enabled on
+> resume. At that point, the bus to the PMIC may not have resumed yet, so
+> reading and acking the interrupt status fails. On RK3588 with an RK806
+> on SPI:
+>
+>   spi_master spi2: noqueue transfer failed
+>   rk8xx-spi spi2.0: Failed to ack 0x79: -13
+>
+> Disable the interrupt at the end of rk8xx_suspend() and re-enable it at
+> the start of rk8xx_resume(). Both run in the regular suspend/resume
+> phase, while the parent bus controller is active. If the interrupt is a
+> wakeup source, it stays armed while disabled, and the pending event is
+> replayed by enable_irq() on resume.
+>
+> Store the interrupt number in struct rk808 for this.
 
-I'm removing the constraints here and pushing it down below where there is
-logic based on the compatible string. For the new cellwise,cw2217 the
-constraint is 80, while the constraint remains 64 for other implementations.
+SoB?
 
-> 
-> >  
-> >    cellwise,monitor-interval-ms:
-> >      description:
-> > @@ -41,7 +40,14 @@ properties:
-> >  
-> >    power-supplies:
-> >      minItems: 1
-> > -    maxItems: 8 # Should be enough
-> > +    maxItems: 8  # Should be enough
-> 
-> Why changing? yamllint complained?
-> 
+> ---
+>  drivers/mfd/rk8xx-core.c  | 19 ++++++++++++++++++-
+>  include/linux/mfd/rk808.h |  1 +
+>  2 files changed, 19 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/mfd/rk8xx-core.c b/drivers/mfd/rk8xx-core.c
+> index 21182df45d1b6..2ae9107fc5161 100644
+> --- a/drivers/mfd/rk8xx-core.c
+> +++ b/drivers/mfd/rk8xx-core.c
+> @@ -851,6 +851,8 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
+>  	if (!irq)
+>  		return dev_err_probe(dev, -EINVAL, "No interrupt support, no core IRQ\n");
+>
+> +	rk808->irq = irq;
+> +
+>  	ret = devm_regmap_add_irq_chip(dev, rk808->regmap, irq,
+>  				       IRQF_ONESHOT | dual_support, -1,
+>  				       rk808->regmap_irq_chip, &rk808->irq_data);
+> @@ -929,7 +931,20 @@ int rk8xx_suspend(struct device *dev)
+>  		break;
+>  	}
+>
+> -	return ret;
+> +	if (ret)
+> +		return ret;
+> +
+> +	/*
+> +	 * Keep the interrupt disabled while the bus to the PMIC may be
+> +	 * suspended: otherwise a wakeup event (e.g. the power key) is handled
+> +	 * as soon as interrupts are re-enabled on resume, before the bus has
+> +	 * resumed, and reading/acking the interrupt status fails. If the
+> +	 * interrupt is a wakeup source, it stays armed, and the pending event
+> +	 * is replayed by enable_irq() on resume.
+> +	 */
+> +	disable_irq(rk808->irq);
+> +
+> +	return 0;
+>  }
+>  EXPORT_SYMBOL_GPL(rk8xx_suspend);
+>
+> @@ -938,6 +953,8 @@ int rk8xx_resume(struct device *dev)
+>  	struct rk808 *rk808 = dev_get_drvdata(dev);
+>  	int ret = 0;
+>
+> +	enable_irq(rk808->irq);
 
-Yes, it did. Should I not fix it and ignore yamllint (since I'm not
-actually modifying this line)?
+This is early - are you sure you want to do this right away?
 
-> > +
-> > +  shunt-resistor-micro-ohms:
-> > +    description: |
-> 
-> Do not need '|' unless you need to preserve formatting.
+> +
+>  	switch (rk808->variant) {
+>  	case RK809_ID:
+>  	case RK817_ID:
+> diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+> index 7ffc904c864c9..1255de484ab51 100644
+> --- a/include/linux/mfd/rk808.h
+> +++ b/include/linux/mfd/rk808.h
+> @@ -1461,6 +1461,7 @@ enum {
+>
+>  struct rk808 {
+>  	struct device			*dev;
+> +	unsigned int			irq;
+>  	struct regmap_irq_chip_data	*irq_data;
+>  	struct regmap			*regmap;
+>  	long				variant;
+>
+> -- 
+> 2.47.3
+>
 
-Understood, thank you.
-
-> 
-> > +      The value, in micro-ohms, of the shunt resistor used for sampling
-> > +      the battery current.
-> > +    minimum: 1000000
-> > +    maximum: 50000000
-> >  
-> >    monitored-battery: true
-> >  
-> > @@ -49,6 +55,28 @@ required:
-> >    - compatible
-> >    - reg
-> >  
-> > +allOf:
-> > +  - $ref: power-supply.yaml#
-> > +  - if:
-> > +      properties:
-> > +        compatible:
-> > +          contains:
-> > +            enum:
-> > +              - cellwise,cw2015
-> > +    then:
-> > +      properties:
-> > +        shunt-resistor-micro-ohms: false
-> > +
-> > +        cellwise,battery-profile:
-> > +          minItems: 64
-> > +          maxItems: 64
-> > +
-> > +    else:
-> > +      properties:
-> > +        cellwise,battery-profile:
-> > +          minItems: 80
-> > +          maxItems: 80
-> 
-> default for shunt-resistor-micro-ohms? or is it required for new devices?
-
-I'll add a default, since there is a default value in the driver.
-
-> 
-> 
-> Best regards,
-> Krzysztof
-> 
-
-Thank you,
-Chris
-
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+-- 
+Lee Jones
 
 _______________________________________________
 Linux-rockchip mailing list
