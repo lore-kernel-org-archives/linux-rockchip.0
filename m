@@ -2,86 +2,84 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D050F606A334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 15:29:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 02685606A32C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 15:51:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=s8wyUBji;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=pTLeWf2C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kPXuTXzl
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ulIs5/n0E/eX3GjhUd0DEqkDhBH4lAmyXcan77n6HFY=; b=s8wyUBjiDPEuAh7NZD8v3b3vBV
-	RxdYsG8L+1FVuKpeIsw1B3OSxsSeOmQVlJcrLG4MTa1b2Jq3Ywq+PCNd7Ur+U9ZuGVtYvAmY1LXdk
-	TCuaMySoLyF1LKjDbjdKsxnRl8a6esdWXqaloFmF0K65gpzhNTKtFDe58uMP6pLvwyiYdqJsiDeY/
-	UG4AUxHcYyrq97X0U6U8q5/VTA1Pt1MNlrJPJi12AAU5KFhqi3j9ZwmhStlqPnDX6yjqOkHCieyAt
-	6LFy85+f4axwaW2JQjDHXbmHXgkUmo6hEaxfov/Y2gQAPlVhN8GnXZrEjsG0ZPGsPNWwJofE3xRcM
-	G1aAXjHA==;
+	bh=DlAunA+PNioVTXFGiU10pkAvihkNU2450ULgAI7JNz8=; b=kPXuTXzlmuTnY02i9Cp2XBWZLh
+	Y63icDVBsrtUr5a9a9S/uWhfA/fmaIpmdLM1tQl4pGR81Gh92wnMPyZWDXT90EmcfYLMhO5tucJjg
+	FaYPmET3+uuFCeXQP2Dob1N1r3OHkI+aY0cfbCpOPNLLTMqqs7sgoasTD8r9KyxZfIUdiQhHNyd6d
+	GuBkF2ZHQIKK4lRtYT0gCNg9AaEQysUeIdRAcn1bsu5W6aceEmO4p3zJ2/b18f4hoLhRifPnMZ85z
+	pZB3ShEeKqjhL3T9UqXLeXG71k/jFbyP2gaTejPQqEN4jMOvJdrizcNH7B5AnpDlr3aPzpqeFurid
+	llz1IADQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU45C-0000000CSKS-11kf;
-	Thu, 19 Nov 2026 15:29:54 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xU4Q7-0000000CXEe-3qI2;
+	Thu, 19 Nov 2026 15:51:31 +0000
+Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU45A-0000000CSJT-07Ii;
-	Thu, 19 Nov 2026 15:29:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795102189;
-	bh=Y31Aqu/ldrVNOH8NWT+K15XwnhuT0aa2J5qcnZjNsQE=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=pTLeWf2CvggpnVn6mgPTtu2P5jyV8zAI42CrI5UNI+np2uaeGTE210VX3NcyYAPBf
-	 j0cZWJWKPf9ytklQUgkU9dJA+MJryEXSZwOKWfjdGWM/+IlWTHNqic0aYE91nM75LZ
-	 6p0LsNcqvQ6qI5PYa37igU29lzp8KNuq2uTAe3aTF3XlLSGQQLnqEONqUAA6Fr3iRz
-	 anuFN+n0URkv2ho/ZsdlTqqWc/3nSTe7Kti1RhIlrgsJYgQ7MvIp7AXTtT0wlcNJdK
-	 mf8s51IAGpzpFK7SWw3JYfTWd9V2QT6BsdnNJKTKjtfITMbMi1Pat2ChxyQDFZde1f
-	 XcJ7GYTz+mRig==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 25DD317E0A27;
-	Thu, 19 Nov 2026 16:29:48 +0100 (CET)
-Message-ID: <b1aeedac26af03a4b1bd25d5f062f9efb7c04639.camel@collabora.com>
-Subject: Re: [PATCH 2/2] media: verisilicon: Reset the VDPU2 decoder after
- an error
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: aiyengar1990@gmail.com, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>,  Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner	
- <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Boris Brezillon	
- <boris.brezillon@collabora.com>, Hans Verkuil <hverkuil@kernel.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	stable@vger.kernel.org
-Date: Thu, 19 Nov 2026 10:29:46 -0500
-In-Reply-To: <20261119-vdpu2-errreset-v1-2-f8fa403b6a3a@gmail.com>
-References: <20261119-vdpu2-errreset-v1-0-f8fa403b6a3a@gmail.com>
-	 <20261119-vdpu2-errreset-v1-2-f8fa403b6a3a@gmail.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
+	id 1xU4Py-0000000CXC0-2QuM;
+	Thu, 19 Nov 2026 15:51:25 +0000
+Received: from edelgard.fodlan.icenowy.me (unknown [112.94.102.23])
+	by APP-03 (Coremail) with SMTP id rQCowAD3yZrbGv9qvGJbAQ--.6169S4;
+	Thu, 19 Nov 2026 23:50:59 +0800 (CST)
+From: Icenowy Zheng <zhengxingda@iscas.ac.cn>
+Date: Thu, 19 Nov 2026 23:50:45 +0800
+Subject: [PATCH v2 2/2] drm/bridge: add TH1520 DesignWare MIPI DSI host
+ controller
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Message-Id: <20261119-th1520-dw-mipi-dsi-v2-2-9ab5f9808f87@iscas.ac.cn>
+References: <20261119-th1520-dw-mipi-dsi-v2-0-9ab5f9808f87@iscas.ac.cn>
+In-Reply-To: <20261119-th1520-dw-mipi-dsi-v2-0-9ab5f9808f87@iscas.ac.cn>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andyshrk@163.com>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-riscv@lists.infradead.org, 
+ Icneowy Zheng <uwu@icenowy.me>, Han Gao <gaohan@iscas.ac.cn>, 
+ Icenowy Zheng <zhengxingda@iscas.ac.cn>
+X-Mailer: b4 0.15.0
+X-CM-TRANSID: rQCowAD3yZrbGv9qvGJbAQ--.6169S4
+X-Coremail-Antispam: 1UD129KBjvAXoW3CryxCryxKFyfWFyUtw43Jrb_yoW8Ar48Zo
+	WfWFn3Jw1rWw1fA39Ykr1fWFyUXrsru347W3s8Zr48CrnxWasxJry5tw4SvrW3Wr18Kry8
+	Z3ZIvrZxJ3yYkFyUn29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7v73VFW2AGmfu7bjvjm3
+	AaLaJ3UjIYCTnIWjp_UUUO27AC8VAFwI0_Wr0E3s1l1xkIjI8I6I8E6xAIw20EY4v20xva
+	j40_Wr0E3s1l1IIY67AEw4v_Jr0_Jr4l82xGYIkIc2x26280x7IE14v26r15M28IrcIa0x
+	kI8VCY1x0267AKxVW5JVCq3wA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK021l84AC
+	jcxK6xIIjxv20xvE14v26r1I6r4UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j6r4UJw
+	A2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oVCq3wAS
+	0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2
+	IY67AKxVWUGVWUXwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0
+	Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628vn2kIc2
+	xKxwCY1x0262kKe7AKxVW8ZVWrXwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWU
+	JVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67
+	kF1VAFwI0_GFv_WrylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY
+	6xIIjxv20xvEc7CjxVAFwI0_Cr0_Gr1UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42
+	IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIev
+	Ja73UjIFyTuYvjTRRCJPDUUUU
+X-CM-SenderInfo: x2kh0wp0lqwv3d6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_072952_240363_74162E25 
-X-CRM114-Status: GOOD (  24.13  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261119_075123_031643_9C75E143 
+X-CRM114-Status: GOOD (  21.94  )
+X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,143 +89,645 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7034861978243337449=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============7034861978243337449==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-VNfhIxJwLPoRKtgwmuvP"
+The T-Head TH1520 SoC contains a Synopsys DesignWare MIPI DSI host
+controller with an internal DesignWare MIPI D-PHY.
 
---=-VNfhIxJwLPoRKtgwmuvP
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Add a glue driver configuring clocks and PHY parameters for it.
 
-Le jeudi 19 novembre 2026 =C3=A0 06:20 +0000, Arun Iyengar via B4 Relay a =
-=C3=A9crit=C2=A0:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
->=20
-> After a stream or bus error the decoder can still access the buffers of
-> the failed picture. On RK3588 these accesses hit buffers userspace had
-> already freed: IOMMU page faults, an IOMMU that can no longer stall and
-> corrupted output for the next job.
->=20
-> Soft-reset the decoder on every error interrupt, as the vendor driver
-> does, and wait for the reset to complete.
+Signed-off-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
+---
+ drivers/gpu/drm/bridge/Kconfig              |  12 +
+ drivers/gpu/drm/bridge/Makefile             |   1 +
+ drivers/gpu/drm/bridge/th1520-dw-mipi-dsi.c | 570 ++++++++++++++++++++++++++++
+ 3 files changed, 583 insertions(+)
 
-Its not because the vendor use a big hammer that we should use it upstream.=
- We
-fixed a lot of these driver bugs by handling specific error correctly. When=
- the
-TRM says the IP will self reset, it does, and you should not add extra over=
-head
-there unless you can prove something is broken.
+diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+index c7da6b02d7b6b..f8987e8946fbb 100644
+--- a/drivers/gpu/drm/bridge/Kconfig
++++ b/drivers/gpu/drm/bridge/Kconfig
+@@ -372,6 +372,18 @@ config DRM_THEAD_TH1520_DW_HDMI
+ 	  Choose this to enable support for the internal HDMI bridge found
+ 	  on the T-Head TH1520 SoC.
+ 
++config DRM_THEAD_TH1520_DW_MIPI_DSI
++	tristate "T-Head TH1520 DesignWare MIPI DSI bridge"
++	depends on OF
++	depends on COMMON_CLK
++	depends on ARCH_THEAD || COMPILE_TEST
++	select DRM_DW_MIPI_DSI
++	select GENERIC_PHY_MIPI_DPHY
++	select MFD_SYSCON
++	help
++	  Choose this to enable support for the internal MIPI DSI bridge
++	  found on the T-Head TH1520 SoC.
++
+ config DRM_TOSHIBA_TC358762
+ 	tristate "TC358762 DSI/DPI bridge"
+ 	depends on OF
+diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
+index 15cc821d85b7e..5af871ba5ce77 100644
+--- a/drivers/gpu/drm/bridge/Makefile
++++ b/drivers/gpu/drm/bridge/Makefile
+@@ -32,6 +32,7 @@ obj-$(CONFIG_DRM_SII9234) += sii9234.o
+ obj-$(CONFIG_DRM_SIMPLE_BRIDGE) += simple-bridge.o
+ obj-$(CONFIG_DRM_SOLOMON_SSD2825) += ssd2825.o
+ obj-$(CONFIG_DRM_THEAD_TH1520_DW_HDMI) += th1520-dw-hdmi.o
++obj-$(CONFIG_DRM_THEAD_TH1520_DW_MIPI_DSI) += th1520-dw-mipi-dsi.o
+ obj-$(CONFIG_DRM_THINE_THC63LVD1024) += thc63lvd1024.o
+ obj-$(CONFIG_DRM_TOSHIBA_TC358762) += tc358762.o
+ obj-$(CONFIG_DRM_TOSHIBA_TC358764) += tc358764.o
+diff --git a/drivers/gpu/drm/bridge/th1520-dw-mipi-dsi.c b/drivers/gpu/drm/bridge/th1520-dw-mipi-dsi.c
+new file mode 100644
+index 0000000000000..8e866b70aec88
+--- /dev/null
++++ b/drivers/gpu/drm/bridge/th1520-dw-mipi-dsi.c
+@@ -0,0 +1,570 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2026 Institute of Software, Chinese Academy of Sciences (ISCAS)
++ *
++ * Author:
++ *   Icenowy Zheng <zhengxingda@iscas.ac.cn>
++ *
++ * Based on dw_mipi_dsi-stm.c, which is:
++ *   Copyright (C) STMicroelectronics SA 2017
++ *
++ * Based on dw-mipi-dsi-rockchip.c, which is:
++ *   Copyright (C) Rockchip Electronics Co., Ltd.
++ *
++ * Based on vendor kernel phy-dw-mipi-dphy.c, which is:
++ *   Copyright (C) Alibaba Group Holding Limited.
++ */
++
++#include <linux/bitfield.h>
++#include <linux/clk.h>
++#include <linux/kernel.h>
++#include <linux/mfd/syscon.h>
++#include <linux/module.h>
++#include <linux/phy/phy.h>
++#include <linux/phy/phy-mipi-dphy.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++#include <linux/regulator/consumer.h>
++
++#include <video/mipi_display.h>
++
++#include <drm/bridge/dw_mipi_dsi.h>
++#include <drm/drm_mipi_dsi.h>
++
++/* DSI controller registers for DPHY access */
++
++#define DSI_PHY_TST_CTRL0		0xb4
++#define PHY_TESTCLK			BIT(1)
++#define PHY_UNTESTCLK			0
++#define PHY_TESTCLR			BIT(0)
++#define PHY_UNTESTCLR			0
++
++#define DSI_PHY_TST_CTRL1		0xb8
++#define PHY_TESTEN			BIT(16)
++#define PHY_UNTESTEN			0
++#define PHY_TESTDOUT(n)			(((n) & 0xff) << 8)
++#define PHY_TESTDIN(n)			(((n) & 0xff) << 0)
++
++/* DPHY registers */
++
++#define PLL_DELAY_LP_TX_START_LP11	0x02
++#define TXDINDLYTIME_9_2		GENMASK(7,  0)
++
++#define PLL_FSM_CNTRL			0x03
++
++#define PLL_PROP_CHARGE_PUMP_CTRL	0x0e
++#define PLL_PROP_CNTRL			GENMASK(5,  0)
++
++#define PLL_INT_CHARGE_PUMP_CTRL	0x0f
++#define PLL_INT_CNTRL			GENMASK(5,  0)
++
++#define PLL_VCO_CTRL			0x12
++#define PLL_VCO_CNTRL_OVR_EN		BIT(6)
++#define PLL_VCO_CNTRL_OVR		GENMASK(5,  0)
++
++#define PLL_GMP_CTRL_DIGITAL_TEST	0x13
++#define PLL_TESTLOCK			BIT(7)
++#define PLL_GMP_CNTRL			GENMASK(5,  4)
++#define TSTPLLDIG			GENMASK(3,  1)
++#define TSTPLLDIG_LOCK			(0x0 << 1)
++#define TSTPLLDIG_REFCLK		(0x1 << 1)
++#define TSTPLLDIG_FBCLK			(0x2 << 1)
++#define TSTPLLDIG_INT_CLKIN		(0x3 << 1)
++#define TSTPLLDIG_LOCK_FROM_DETECTOR	(0x4 << 1)
++#define TSTPLLDIG_OUTPUT		(0x5 << 1)
++#define TSTPLLDIG_BUF_VCOCLK		(0x6 << 1)
++#define TSTPLLDIG_UPDATEPLL		(0x7 << 1)
++
++#define PLL_N_DIV_FSM_SIG		0x17
++#define PLL_N_OVR			GENMASK(3,  0)
++
++#define PLL_M_DIV			0x18
++#define PLL_M_OVR_4_0			GENMASK(4,  0)
++#define PLL_M_OVR_9_5			GENMASK(4,  0)
++
++#define PLL_N_AND_M_DIV_CTRL		0x19
++#define PLL_M_OVR_EN			BIT(5)
++#define PLL_N_OVR_EN			BIT(4)
++
++#define PLL_CHARGE_PUMP_BIAS_CTRL	0x1c
++#define PLL_CPBIAS_CNTRL		GENMASK(6,  0)
++
++#define PLL_ANALOG_PROGRAM_CONTROL	0x1f
++#define PLL_MPLL_PROG_5_0		GENMASK(5,  0)
++#define PLL_MPLL_PROG_11_6		GENMASK(5,  0)
++#define PLL_MPLL_PROG_16_12		GENMASK(4,  0)
++
++#define HS_FREQ_RANGE_OF_OPERATION	0x44
++#define HSFREQRANGE_OVR_EN		BIT(7)
++#define HSFREQRANGE_OVR			GENMASK(6,  0)
++#define HSFREQRANGE			HSFREQRANGE_OVR
++
++#define PG_LP_BIAS_LANE0		0x4a
++#define PRG_ON_LANE0			BIT(6)
++
++#define SR_FSM_OVR_CNTRL		0xa0
++#define SR_DDL_LOOP_CONF		0xa3
++
++/* syscon registers */
++
++#define MIPIDSI0_SYSREG			0x8
++#define MIPIDSI1_SYSREG			0xc
++#define MIPIDSI_HSFREQRANGE		GENMASK(9,  3)
++#define MIPIDSI_CFGCLKFREQRANGE		GENMASK(15, 10)
++#define MIPIDSI_CFGCLKFREQRANGE_DEF	(0x1c << 10)
++
++struct pll_hsfreqrange {
++	unsigned int max_mbps;
++	u8 hsfreqrange;
++};
++
++static const struct pll_hsfreqrange hsfreqrange_table[] = {
++	{ 80,  0x00 },
++	{ 90,  0x10 },
++	{ 100, 0x20 },
++	{ 110, 0x30 },
++	{ 120, 0x01 },
++	{ 130, 0x11 },
++	{ 140, 0x21 },
++	{ 150, 0x31 },
++	{ 160, 0x02 },
++	{ 170, 0x12 },
++	{ 180, 0x22 },
++	{ 190, 0x32 },
++	{ 205, 0x03 },
++	{ 220, 0x13 },
++	{ 235, 0x23 },
++	{ 250, 0x33 },
++	{ 275, 0x04 },
++	{ 300, 0x14 },
++	{ 325, 0x25 },
++	{ 350, 0x35 },
++	{ 400, 0x05 },
++	{ 450, 0x16 },
++	{ 500, 0x26 },
++	{ 550, 0x37 },
++	{ 600, 0x07 },
++	{ 650, 0x18 },
++	{ 700, 0x28 },
++	{ 750, 0x39 },
++	{ 800, 0x09 },
++	{ 850, 0x19 },
++	{ 900, 0x29 },
++	{ 950, 0x3A },
++	{ 1000, 0x0A },
++	{ 1050, 0x1A },
++	{ 1100, 0x2A },
++	{ 1150, 0x3B },
++	{ 1200, 0x0B },
++	{ 1250, 0x1B },
++	{ 1300, 0x2B },
++	{ 1350, 0x3C },
++	{ 1400, 0x0C },
++	{ 1450, 0x1C },
++	{ 1500, 0x2C },
++	{ 1550, 0x3D },
++	{ 1600, 0x0D },
++	{ 1650, 0x1D },
++	{ 1700, 0x2E },
++	{ 1750, 0x3E },
++	{ 1800, 0x0E },
++	{ 1850, 0x1E },
++	{ 1900, 0x2F },
++	{ 1950, 0x3F },
++	{ 2000, 0x0F },
++	{ 2050, 0x40 },
++	{ 2100, 0x41 },
++	{ 2150, 0x42 },
++	{ 2200, 0x43 },
++	{ 2250, 0x44 },
++	{ 2300, 0x45 },
++	{ 2350, 0x46 },
++	{ 2400, 0x47 },
++	{ 2450, 0x48 },
++	{ 2500, 0x49 },
++};
++
++struct hstt {
++	unsigned int max_mbps;
++	struct dw_mipi_dsi_dphy_timing timing;
++};
++
++#define HSTT(_max_mbps, _c_lp2hs, _c_hs2lp, _d_lp2hs, _d_hs2lp)	\
++{					\
++	.max_mbps = _max_mbps,		\
++	.timing = {			\
++		.clk_lp2hs = _c_lp2hs,	\
++		.clk_hs2lp = _c_hs2lp,	\
++		.data_lp2hs = _d_lp2hs,	\
++		.data_hs2lp = _d_hs2lp,	\
++	}				\
++}
++
++static struct hstt hstt_table[] = {
++	HSTT(80, 21, 17, 15, 10),
++	HSTT(90, 23, 17, 16, 10),
++	HSTT(100, 22, 17, 16, 10),
++	HSTT(110, 25, 18, 17, 11),
++	HSTT(120, 26, 20, 18, 11),
++	HSTT(130, 27, 19, 19, 11),
++	HSTT(140, 27, 19, 19, 11),
++	HSTT(150, 28, 20, 20, 12),
++	HSTT(160, 30, 21, 22, 13),
++	HSTT(170, 30, 21, 23, 13),
++	HSTT(180, 31, 21, 23, 13),
++	HSTT(190, 32, 22, 24, 13),
++	HSTT(205, 35, 22, 25, 13),
++	HSTT(220, 37, 26, 27, 15),
++	HSTT(235, 38, 28, 27, 16),
++	HSTT(250, 41, 29, 30, 17),
++	HSTT(275, 43, 29, 32, 18),
++	HSTT(300, 45, 32, 35, 19),
++	HSTT(325, 48, 33, 36, 18),
++	HSTT(350, 51, 35, 40, 20),
++	HSTT(400, 59, 37, 44, 21),
++	HSTT(450, 65, 40, 49, 23),
++	HSTT(500, 71, 41, 54, 24),
++	HSTT(550, 77, 44, 57, 26),
++	HSTT(600, 82, 46, 64, 27),
++	HSTT(650, 87, 48, 67, 28),
++	HSTT(700, 94, 52, 71, 29),
++	HSTT(750, 99, 52, 75, 31),
++	HSTT(800, 105, 55, 82, 32),
++	HSTT(850, 110, 58, 85, 32),
++	HSTT(900, 115, 58, 88, 35),
++	HSTT(950, 120, 62, 93, 36),
++	HSTT(1000, 128, 63, 99, 38),
++	HSTT(1050, 132, 65, 102, 38),
++	HSTT(1100, 138, 67, 106, 39),
++	HSTT(1150, 146, 69, 112, 42),
++	HSTT(1200, 151, 71, 117, 43),
++	HSTT(1250, 153, 74, 120, 45),
++	HSTT(1300, 160, 73, 124, 46),
++	HSTT(1350, 165, 76, 130, 47),
++	HSTT(1400, 172, 78, 134, 49),
++	HSTT(1450, 177, 80, 138, 49),
++	HSTT(1500, 183, 81, 143, 52),
++	HSTT(1550, 191, 84, 147, 52),
++	HSTT(1600, 194, 85, 152, 52),
++	HSTT(1650, 201, 86, 155, 53),
++	HSTT(1700, 208, 88, 161, 53),
++	HSTT(1750, 212, 89, 165, 53),
++	HSTT(1800, 220, 90, 171, 54),
++	HSTT(1850, 223, 92, 175, 54),
++	HSTT(1900, 231, 91, 180, 55),
++	HSTT(1950, 236, 95, 185, 56),
++	HSTT(2000, 243, 97, 190, 56),
++	HSTT(2050, 248, 99, 194, 58),
++	HSTT(2100, 252, 100, 199, 59),
++	HSTT(2150, 259, 102, 204, 61),
++	HSTT(2200, 266, 105, 210, 62),
++	HSTT(2250, 269, 109, 213, 63),
++	HSTT(2300, 272, 109, 217, 65),
++	HSTT(2350, 281, 112, 225, 66),
++	HSTT(2400, 283, 115, 226, 66),
++	HSTT(2450, 282, 115, 226, 67),
++	HSTT(2500, 281, 118, 227, 67),
++};
++
++struct dsi_chip_data {
++	u64 reg;
++
++	u32 sysreg;
++};
++
++struct th1520_dw_mipi_dsi {
++	struct device *dev;
++
++	struct dw_mipi_dsi *dmd;
++	struct dw_mipi_dsi_plat_data pdata;
++	const struct dsi_chip_data *cdata;
++
++	void __iomem *base;
++	struct regmap *syscon;
++	struct clk *clk_pix;
++	struct clk *clk_ref;
++	struct clk *clk_cfg;
++
++	unsigned int lane_mbps;
++	u8 hsfreqrange;
++};
++
++static inline void dsi_write(struct th1520_dw_mipi_dsi *dsi, u32 reg, u32 val)
++{
++	writel(val, dsi->base + reg);
++}
++
++static void dw_mipi_dsi_phy_write(struct th1520_dw_mipi_dsi *dsi, u8 test_code, u8 test_data)
++{
++	/*
++	 * With the falling edge on TESTCLK, the TESTDIN[7:0] signal content
++	 * is latched internally as the current test code. Test data is
++	 * programmed internally by rising edge on TESTCLK.
++	 */
++	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_TESTCLK | PHY_UNTESTCLR);
++
++	dsi_write(dsi, DSI_PHY_TST_CTRL1, PHY_TESTEN | PHY_TESTDOUT(0) |
++					  PHY_TESTDIN(test_code));
++
++	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_UNTESTCLK | PHY_UNTESTCLR);
++
++	dsi_write(dsi, DSI_PHY_TST_CTRL1, PHY_UNTESTEN | PHY_TESTDOUT(0) |
++					  PHY_TESTDIN(test_data));
++
++	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_TESTCLK | PHY_UNTESTCLR);
++}
++
++static int dsi_phy_init(void *priv_data)
++{
++	struct th1520_dw_mipi_dsi *dsi = priv_data;
++	u32 val;
++
++	val = FIELD_PREP(MIPIDSI_HSFREQRANGE, dsi->hsfreqrange) |
++	      MIPIDSI_CFGCLKFREQRANGE_DEF;
++
++	regmap_update_bits(dsi->syscon, dsi->cdata->sysreg,
++			   MIPIDSI_HSFREQRANGE | MIPIDSI_CFGCLKFREQRANGE, val);
++
++	/* disable slew rate calibration */
++	dw_mipi_dsi_phy_write(dsi, SR_DDL_LOOP_CONF, 0);
++	dw_mipi_dsi_phy_write(dsi, SR_FSM_OVR_CNTRL, 1);
++
++	/* configure prg_on_lane0 */
++	dw_mipi_dsi_phy_write(dsi, PG_LP_BIAS_LANE0, PRG_ON_LANE0);
++
++	/* configure PLL charge pump */
++	if (dsi->lane_mbps >= 1150)
++		dw_mipi_dsi_phy_write(dsi, PLL_PROP_CHARGE_PUMP_CTRL, 0xE);
++	else
++		dw_mipi_dsi_phy_write(dsi, PLL_PROP_CHARGE_PUMP_CTRL, 0x8);
++	dw_mipi_dsi_phy_write(dsi, PLL_CHARGE_PUMP_BIAS_CTRL, 0x10);
++
++	return 0;
++}
++
++static void dsi_phy_power_on(void *priv_data)
++{
++	struct th1520_dw_mipi_dsi *dsi = priv_data;
++
++	clk_prepare_enable(dsi->clk_pix);
++}
++
++static void dsi_phy_power_off(void *priv_data)
++{
++	struct th1520_dw_mipi_dsi *dsi = priv_data;
++
++	clk_disable_unprepare(dsi->clk_pix);
++}
++
++static unsigned int
++calculate_lane_mbps(const struct drm_display_mode *mode,
++		    unsigned long mode_flags,
++		    u32 lanes, u32 format)
++{
++	int bpp = mipi_dsi_pixel_format_to_bpp(format);
++	union phy_configure_opts phy_opts;
++
++	/*
++	 * FIXME: the extra bandwidth headroom logic mimics what the Rockchip
++	 * driver does, and test shows that it's necessary for the hardware
++	 * to work with the mainline dw-mipi-dsi common code.
++	 */
++	phy_mipi_dphy_get_default_config(mode->clock * 1000UL * 10 / 8,
++					 bpp, lanes,
++					 &phy_opts.mipi_dphy);
++
++	return DIV_ROUND_UP(phy_opts.mipi_dphy.hs_clk_rate, USEC_PER_SEC);
++}
++
++static int
++dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
++		  unsigned long mode_flags, u32 lanes, u32 format,
++		  unsigned int *lane_mbps)
++{
++	struct th1520_dw_mipi_dsi *dsi = priv_data;
++	int i;
++
++	*lane_mbps = calculate_lane_mbps(mode, mode_flags, lanes, format);
++
++	for (i = 0; i < ARRAY_SIZE(hsfreqrange_table); i++)
++		if (*lane_mbps <= hsfreqrange_table[i].max_mbps)
++			break;
++
++	if (i == ARRAY_SIZE(hsfreqrange_table))
++		return -EINVAL;
++
++	*lane_mbps = hsfreqrange_table[i].max_mbps;
++	dsi->lane_mbps = *lane_mbps;
++	dsi->hsfreqrange = hsfreqrange_table[i].hsfreqrange;
++
++	return 0;
++}
++
++static int
++dsi_phy_get_timing(void *priv_data, unsigned int lane_mbps,
++		   struct dw_mipi_dsi_dphy_timing *timing)
++{
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(hstt_table); i++)
++		if (lane_mbps <= hstt_table[i].max_mbps)
++			break;
++
++	if (i == ARRAY_SIZE(hstt_table))
++		return -EINVAL;
++
++	*timing = hstt_table[i].timing;
++
++	return 0;
++}
++
++static const struct dw_mipi_dsi_phy_ops th1520_dw_mipi_dsi_phy_ops = {
++	.init = dsi_phy_init,
++	.power_on = dsi_phy_power_on,
++	.power_off = dsi_phy_power_off,
++	.get_lane_mbps = dsi_get_lane_mbps,
++	.get_timing = dsi_phy_get_timing,
++};
++
++static enum drm_mode_status
++dsi_mode_valid(void *priv_data, const struct drm_display_mode *mode,
++	       unsigned long mode_flags, u32 lanes, u32 format)
++{
++	unsigned int lane_mbps, max_mbps;
++
++	lane_mbps = calculate_lane_mbps(mode, mode_flags, lanes, format);
++	max_mbps = hsfreqrange_table[ARRAY_SIZE(hsfreqrange_table) - 1].max_mbps;
++
++	if (lane_mbps > max_mbps)
++		return MODE_NOCLOCK;
++
++	return MODE_OK;
++}
++
++static struct dsi_chip_data th1520_chip_data[] = {
++	{
++		.reg = 0xffef500000,
++		.sysreg = MIPIDSI0_SYSREG,
++
++		/*
++		 * TODO: The user manual shows a mux register for DSI0 but the
++		 * vendor driver doesn't touch it either.
++		 */
++	},
++	{
++		.reg = 0xffef510000,
++		.sysreg = MIPIDSI1_SYSREG,
++	},
++	{ /* sentinel */ },
++};
++
++static int th1520_dw_mipi_dsi_probe(struct platform_device *pdev)
++{
++	const struct dsi_chip_data *cdata;
++	struct device *dev = &pdev->dev;
++	struct th1520_dw_mipi_dsi *dsi;
++	struct resource *res;
++	int i, ret;
++
++	dsi = devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
++	if (!dsi)
++		return -ENOMEM;
++
++	dsi->dev = dev;
++
++	dsi->syscon = syscon_regmap_lookup_by_phandle(dev->of_node, "thead,vo-syscon");
++	if (IS_ERR(dsi->syscon)) {
++		ret = PTR_ERR(dsi->syscon);
++		dev_err_probe(dev, ret, "Unable to get VO system controller regmap\n");
++		return ret;
++	}
++
++	dsi->base = devm_platform_get_and_ioremap_resource(pdev, 0, &res);
++	if (IS_ERR(dsi->base)) {
++		ret = PTR_ERR(dsi->base);
++		dev_err_probe(dev, ret, "Unable to get DSI registers\n");
++		return ret;
++	}
++
++	cdata = of_device_get_match_data(dev);
++	i = 0;
++	while (cdata[i].reg) {
++		if (cdata[i].reg == res->start) {
++			dsi->cdata = &cdata[i];
++			break;
++		}
++
++		i++;
++	}
++
++	if (!dsi->cdata) {
++		dev_err(dev, "Failed to find chip data for this controller\n");
++		return -EINVAL;
++	}
++
++	dsi->clk_ref = devm_clk_get_enabled(dev, "ref");
++	if (IS_ERR(dsi->clk_ref)) {
++		ret = PTR_ERR(dsi->clk_ref);
++		dev_err_probe(dev, ret, "Unable to get PHY reference clock\n");
++		return ret;
++	}
++
++	dsi->clk_cfg = devm_clk_get_enabled(dev, "phy_cfg");
++	if (IS_ERR(dsi->clk_cfg)) {
++		ret = PTR_ERR(dsi->clk_cfg);
++		dev_err_probe(dev, ret, "Unable to get PHY configuration clock\n");
++		return ret;
++	}
++
++	dsi->clk_pix = devm_clk_get(dev, "pixel");
++	if (IS_ERR(dsi->clk_pix)) {
++		ret = PTR_ERR(dsi->clk_pix);
++		dev_err_probe(dev, ret, "Unable to get PHY pixel clock\n");
++		return ret;
++	}
++
++	dsi->pdata.base = dsi->base;
++	dsi->pdata.priv_data = dsi;
++	dsi->pdata.max_data_lanes = 4;
++	dsi->pdata.phy_ops = &th1520_dw_mipi_dsi_phy_ops;
++	dsi->pdata.mode_valid = dsi_mode_valid;
++
++	platform_set_drvdata(pdev, dsi);
++
++	dsi->dmd = dw_mipi_dsi_probe(pdev, &dsi->pdata);
++	if (IS_ERR(dsi->dmd)) {
++		ret = PTR_ERR(dsi->dmd);
++		dev_err_probe(dev, ret, "Failed to initialize mipi dsi host\n");
++		return ret;
++	}
++
++	return 0;
++}
++
++static void th1520_dw_mipi_dsi_remove(struct platform_device *pdev)
++{
++	struct th1520_dw_mipi_dsi *dsi = platform_get_drvdata(pdev);
++
++	dw_mipi_dsi_remove(dsi->dmd);
++}
++
++static const struct of_device_id th1520_dw_mipi_dsi_dt_ids[] = {
++	{ .compatible = "thead,th1520-dw-mipi-dsi", .data = &th1520_chip_data },
++	{ },
++};
++MODULE_DEVICE_TABLE(of, th1520_dw_mipi_dsi_dt_ids);
++
++static struct platform_driver th1520_dw_mipi_dsi_driver = {
++	.probe		= th1520_dw_mipi_dsi_probe,
++	.remove		= th1520_dw_mipi_dsi_remove,
++	.driver		= {
++		.of_match_table = th1520_dw_mipi_dsi_dt_ids,
++		.name	= "th1520-dw-mipi-dsi",
++	},
++};
++
++module_platform_driver(th1520_dw_mipi_dsi_driver);
++
++MODULE_AUTHOR("Icenowy Zheng <zhengxingda@iscas.ac.cn>");
++MODULE_DESCRIPTION("T-Head TH1520 MIPI DSI host controller driver");
++MODULE_LICENSE("GPL");
 
-Please check G2 IRQ handler, its more aligned to were we want to bring all =
-the
-IRQ handlers in this driver.
+-- 
+2.56.0
 
-Nicolas
-
->=20
-> Fixes: 879dee56a40c ("media: rockchip/vpu: Add MPEG2 decoding support to =
-RK3399")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
-> ---
->  .../media/platform/verisilicon/rockchip_vpu_hw.c    | 21 +++++++++++++++=
-++++--
->  1 file changed, 19 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drive=
-rs/media/platform/verisilicon/rockchip_vpu_hw.c
-> index 4bc1bdb41c70..01cd449f3ab2 100644
-> --- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-> +++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-> @@ -7,6 +7,7 @@
->   */
-> =20
->  #include <linux/clk.h>
-> +#include <linux/iopoll.h>
-> =20
->  #include "hantro.h"
->  #include "hantro_jpeg.h"
-> @@ -384,6 +385,21 @@ static irqreturn_t rockchip_vpu1_vepu_irq(int irq, v=
-oid *dev_id)
->  =09return IRQ_HANDLED;
->  }
-> =20
-> +/*
-> + * After an error the decoder can still have bus accesses of the failed
-> + * picture in flight; reset it before its buffers go back to userspace.
-> + */
-> +static void rockchip_vpu2_dec_soft_reset(struct hantro_dev *vpu)
-> +{
-> +=09u32 val;
-> +
-> +=09vdpu_write(vpu, 0, VDPU_REG_EN_FLAGS);
-> +=09vdpu_write(vpu, 1, VDPU_REG_SOFT_RESET);
-> +=09if (read_poll_timeout_atomic(vdpu_read, val, !val, 0, 5, false, vpu,
-> +=09=09=09=09     VDPU_REG_SOFT_RESET))
-> +=09=09dev_warn_ratelimited(vpu->dev, "decoder soft reset timed out\n");
-> +}
-> +
->  static irqreturn_t rockchip_vpu2_vdpu_irq(int irq, void *dev_id)
->  {
->  =09struct hantro_dev *vpu =3D dev_id;
-> @@ -396,6 +412,8 @@ static irqreturn_t rockchip_vpu2_vdpu_irq(int irq, vo=
-id *dev_id)
-> =20
->  =09vdpu_write(vpu, 0, VDPU_REG_INTERRUPT);
->  =09vdpu_write(vpu, 0, VDPU_REG_AXI_CTRL);
-> +=09if (state !=3D VB2_BUF_STATE_DONE)
-> +=09=09rockchip_vpu2_dec_soft_reset(vpu);
-> =20
->  =09hantro_irq_done(vpu, state);
-> =20
-> @@ -482,8 +500,7 @@ static void rockchip_vpu2_dec_reset(struct hantro_ctx=
- *ctx)
->  =09struct hantro_dev *vpu =3D ctx->dev;
-> =20
->  =09vdpu_write(vpu, VDPU_REG_INTERRUPT_DEC_IRQ_DIS, VDPU_REG_INTERRUPT);
-> -=09vdpu_write(vpu, 0, VDPU_REG_EN_FLAGS);
-> -=09vdpu_write(vpu, 1, VDPU_REG_SOFT_RESET);
-> +=09rockchip_vpu2_dec_soft_reset(vpu);
->  }
-> =20
->  static void rockchip_vpu2_enc_reset(struct hantro_ctx *ctx)
-
---=-VNfhIxJwLPoRKtgwmuvP
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCav8V6gAKCRDZQZRRKWBy
-9E1/AQCQ/OEC7goF6NstMHroyb/dSBFTJpopbeXazJtj+GWl+QD+PV71UkvRHlSI
-DHHIB57bxeLUtYz/8hJRQEs2dAGUmAw=
-=zEAS
------END PGP SIGNATURE-----
-
---=-VNfhIxJwLPoRKtgwmuvP--
-
-
---===============7034861978243337449==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7034861978243337449==--
-
