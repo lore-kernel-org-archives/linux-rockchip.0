@@ -2,88 +2,86 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6152B606A33C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 15:29:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D050F606A334
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 15:29:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=G1eV/nTi;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=0wlPkc71
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=s8wyUBji;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=pTLeWf2C
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=knXO+QyvuGimv/QV6P3P2ZzqhYBvz3TxQXgZcEefhKs=; b=G1eV/nTiymaQ1PNO8om0QkPhqk
-	uQmJgs1tjlHyJL0yRjPBRbAyaOVPrKWKWtOec/IuxLcJSigF6CedyST2DgJmm1xfYNdiA64KJhwVt
-	Gp+AE3glrB0ccKGEea4Kuvw2IUoQeQa1M9Id5jR1xOY8iQmxeT0D8gfZkGAPzv56FLGbm+GtnGZOA
-	zAPL/vsBOUEq447dp9qkhTbxAyfQvtjEoHn4RoQEYN+vYsnO8FmPGLTEGOQGPNkHQOUxmFudnSuzu
-	Kc/WXbJYMi9T+CO4vbTW8MHVZLq43qUGpc4wZ6ySWFnFSwXaxWkOODqUpJ4I4uxdKogfM81DDXvhV
-	bI+GOtyg==;
+	bh=ulIs5/n0E/eX3GjhUd0DEqkDhBH4lAmyXcan77n6HFY=; b=s8wyUBjiDPEuAh7NZD8v3b3vBV
+	RxdYsG8L+1FVuKpeIsw1B3OSxsSeOmQVlJcrLG4MTa1b2Jq3Ywq+PCNd7Ur+U9ZuGVtYvAmY1LXdk
+	TCuaMySoLyF1LKjDbjdKsxnRl8a6esdWXqaloFmF0K65gpzhNTKtFDe58uMP6pLvwyiYdqJsiDeY/
+	UG4AUxHcYyrq97X0U6U8q5/VTA1Pt1MNlrJPJi12AAU5KFhqi3j9ZwmhStlqPnDX6yjqOkHCieyAt
+	6LFy85+f4axwaW2JQjDHXbmHXgkUmo6hEaxfov/Y2gQAPlVhN8GnXZrEjsG0ZPGsPNWwJofE3xRcM
+	G1aAXjHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU44L-0000000CS9v-3l5j;
-	Thu, 19 Nov 2026 15:29:01 +0000
-Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
+	id 1xU45C-0000000CSKS-11kf;
+	Thu, 19 Nov 2026 15:29:54 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU44E-0000000CS7t-1nvH
-	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Nov 2026 15:29:00 +0000
-Received: by mail-ot1-x32e.google.com with SMTP id 46e09a7af769-847ac7ccd85so1587166a34.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 19 Nov 2026 07:28:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795102133; x=1795706933; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=pxt1sopQlSkfKoFQzdpWbaKq45H8uP8fsn00DXSyY+E=;
-        b=0wlPkc71P2JyJqMKMhVcB+JIAswT6c5qVwpkAvlti9DXVby9kK3ILPKM0OtjBqh13H
-         eDcyUcBFZ2tso6W47yj2jTnuhZNo46Wn5jIp/k2IgzF1sP+3DwpCetllAApfqzlttNan
-         w0/cTfqShd5L4pA2kTcFi6zy98TBeZY966OPl6RxuPSwJ6PfRd2cKNA6fIiBGj+y4wH1
-         F663EK6lFy0Dz5yeNnVGwuhy0gG+VatMPOZUeWC+/5t6rwiE2repYNU5Z5e4DiO6q+4/
-         89xqpWTseK9y7rLppzq806rOEWM0HnLgaB4819uOi+4ypW9NWHPOFIH326ydh9Dz00W/
-         Ma4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795102133; x=1795706933;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=pxt1sopQlSkfKoFQzdpWbaKq45H8uP8fsn00DXSyY+E=;
-        b=XfbhHuKXDJ49PgR4qktKMx0305rzID/Nh2jJuvHpPf43l6FDc4HTxAAQdfv/Infg2R
-         JQ5VGgTl/FXCspJDM7gRqVl9JetkxFEkCYsNTw9ZnT+mQsO1lJ6iXylyseFOmY+7miaU
-         bJff1U9HqdWIPoodNhpVJeh7iSIrlCf6JWUWaIP396E2mbD+YAcLkT4rPqR3m8qTsZ8b
-         vbKtq0xqU9HqN0j6/xWCGmSiBx3ptgpB9TcmoKfwWS6l+b3znjnR+Ddx70MQL0SXn7gP
-         mhaD5Tirnq//kNAnDyLi4BKw6eMMmkYoy7i523VKR6UCV7jzINwWp95t2xyFKxv2t5c4
-         0K0A==
-X-Gm-Message-State: APuU4Z9R/2HPlC+hWLJT4He44tsOXVOSPZsihbW+0O+HbZURY37+2YWv
-	U9NyIH97wDW7DNwVIQ99mL37sXfM8KdFGRnwiteQ+xXMcAcGJeQ9rwh3qGkApMWq
-X-Gm-Gg: AYBFou2l4ikexw60IeZBZ2f9GUFBBxwYbiDIuKTB3UYB+akbRVyuLhNf/etMhY+d/Ec
-	jWTnq+mJNq4g5/ZDyUboEUxADrmGqc3HQOMRulUNzF4gxW8HjUJLuK53YvLMffbJ5c6XzpjkW27
-	9mD5DN/3azZZ9MErofA+R0g1f1+n2CsIcWbwcBTDcCaj387iJ56z+eUDCfkGkVjmRFFNtryOwfs
-	XhoLpV7B1+cfucnxGBRHrx+sbqnZaBGDnMAQLTtgGaM94T8w7bNvIIt/ImJr65LwF2X3jc9X+Us
-	h1KFLxT7AtefmX9cNMuZGCuNl5yOvb3VTcjRCXzxdjLCZHky5NXnLSsaKGCeRGTVgs8K27MZL91
-	0YVLgqzMkPDOjMRVbScsq0rjBNQEIOxlQUUK976ixNp+r4IZVzy29W960snztsU8PTOTQqytzPU
-	Dz8OmzaWd4gztYdQmrdAXdYyeGgO6YnvcElsj6TGTOZ44Gj21qrgnSNfDzHvhsw8aUAcRz2540F
-	njL8ZR8lLcCDJX0Z1c43UtqDpYN2I9S4daAQhROLKF0do0lnVOwO0cQ68EHCWVT/akC8u63w2OZ
-	ueoQ46U572byoOTUirhOE1a7lG3vcQ==
-X-Received: by 2002:a05:6830:3495:b0:862:b9dc:183b with SMTP id 46e09a7af769-86315a31dd6mr230760a34.27.1795102133180;
-        Thu, 19 Nov 2026 07:28:53 -0800 (PST)
-Received: from neuromancer ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-862f01381f5sm4560975a34.3.2026.11.19.07.28.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Nov 2026 07:28:52 -0800 (PST)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Subject: [PATCH] arm64: dts: rockchip: describe PCIe RTL8111 ethernet on Indiedroid Nova
-Date: Thu, 19 Nov 2026 09:28:47 -0600
-Message-ID: <20261119152847.312239-1-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	id 1xU45A-0000000CSJT-07Ii;
+	Thu, 19 Nov 2026 15:29:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795102189;
+	bh=Y31Aqu/ldrVNOH8NWT+K15XwnhuT0aa2J5qcnZjNsQE=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=pTLeWf2CvggpnVn6mgPTtu2P5jyV8zAI42CrI5UNI+np2uaeGTE210VX3NcyYAPBf
+	 j0cZWJWKPf9ytklQUgkU9dJA+MJryEXSZwOKWfjdGWM/+IlWTHNqic0aYE91nM75LZ
+	 6p0LsNcqvQ6qI5PYa37igU29lzp8KNuq2uTAe3aTF3XlLSGQQLnqEONqUAA6Fr3iRz
+	 anuFN+n0URkv2ho/ZsdlTqqWc/3nSTe7Kti1RhIlrgsJYgQ7MvIp7AXTtT0wlcNJdK
+	 mf8s51IAGpzpFK7SWw3JYfTWd9V2QT6BsdnNJKTKjtfITMbMi1Pat2ChxyQDFZde1f
+	 XcJ7GYTz+mRig==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 25DD317E0A27;
+	Thu, 19 Nov 2026 16:29:48 +0100 (CET)
+Message-ID: <b1aeedac26af03a4b1bd25d5f062f9efb7c04639.camel@collabora.com>
+Subject: Re: [PATCH 2/2] media: verisilicon: Reset the VDPU2 decoder after
+ an error
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: aiyengar1990@gmail.com, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>,  Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner	
+ <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Boris Brezillon	
+ <boris.brezillon@collabora.com>, Hans Verkuil <hverkuil@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	stable@vger.kernel.org
+Date: Thu, 19 Nov 2026 10:29:46 -0500
+In-Reply-To: <20261119-vdpu2-errreset-v1-2-f8fa403b6a3a@gmail.com>
+References: <20261119-vdpu2-errreset-v1-0-f8fa403b6a3a@gmail.com>
+	 <20261119-vdpu2-errreset-v1-2-f8fa403b6a3a@gmail.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_072854_475280_B5EBA4DE 
-X-CRM114-Status: UNSURE (   8.36  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261119_072952_240363_74162E25 
+X-CRM114-Status: GOOD (  24.13  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,70 +91,143 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, heiko@sntech.de, robh@kernel.org, shawn.lin@rock-chips.com, Chris Morgan <macromorgan@hotmail.com>, krzk+dt@kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7034861978243337449=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Chris Morgan <macromorgan@hotmail.com>
+--===============7034861978243337449==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-VNfhIxJwLPoRKtgwmuvP"
 
-The Indiedroid Nova carries an on-board Realtek RTL8111 NIC behind the
-pcie2x1l2 port.
+--=-VNfhIxJwLPoRKtgwmuvP
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Describe the PCI function nodes and attach ethernet0 aliases, so that
-U-Boot's fdt_fixup_ethernet() can fill in the MAC address from its
-ethaddr/eth1addr environment.
+Le jeudi 19 novembre 2026 =C3=A0 06:20 +0000, Arun Iyengar via B4 Relay a =
+=C3=A9crit=C2=A0:
+> From: Arun Iyengar <aiyengar1990@gmail.com>
+>=20
+> After a stream or bus error the decoder can still access the buffers of
+> the failed picture. On RK3588 these accesses hit buffers userspace had
+> already freed: IOMMU page faults, an IOMMU that can no longer stall and
+> corrupted output for the next job.
+>=20
+> Soft-reset the decoder on every error interrupt, as the vendor driver
+> does, and wait for the reset to complete.
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- .../boot/dts/rockchip/rk3588s-indiedroid-nova.dts | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+Its not because the vendor use a big hammer that we should use it upstream.=
+ We
+fixed a lot of these driver bugs by handling specific error correctly. When=
+ the
+TRM says the IP will self reset, it does, and you should not add extra over=
+head
+there unless you can prove something is broken.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-index db6adeeb408e..d6254abe53c4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-@@ -43,6 +43,7 @@ button-recovery {
- 	};
- 
- 	aliases {
-+		ethernet0 = &rtl_eth0;
- 		mmc0 = &sdhci;
- 		mmc1 = &sdmmc;
- 		mmc2 = &sdio;
-@@ -493,6 +494,20 @@ &pcie2x1l2 {
- 	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
- 	vpcie3v3-supply = <&vcc_3v3_s3>;
- 	status = "okay";
-+
-+	pcie@0,0 {
-+		reg = <0x400000 0 0 0 0>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		ranges;
-+		device_type = "pci";
-+		bus-range = <0x41 0x4f>;
-+
-+		rtl_eth0: ethernet@0,0 {
-+			compatible = "pci10ec,8168";
-+			reg = <0x410000 0 0 0 0>;
-+		};
-+	};
- };
- 
- &pd_gpu {
--- 
-2.53.0
+Please check G2 IRQ handler, its more aligned to were we want to bring all =
+the
+IRQ handlers in this driver.
 
+Nicolas
+
+>=20
+> Fixes: 879dee56a40c ("media: rockchip/vpu: Add MPEG2 decoding support to =
+RK3399")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> ---
+>  .../media/platform/verisilicon/rockchip_vpu_hw.c    | 21 +++++++++++++++=
+++++--
+>  1 file changed, 19 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drive=
+rs/media/platform/verisilicon/rockchip_vpu_hw.c
+> index 4bc1bdb41c70..01cd449f3ab2 100644
+> --- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+> +++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+> @@ -7,6 +7,7 @@
+>   */
+> =20
+>  #include <linux/clk.h>
+> +#include <linux/iopoll.h>
+> =20
+>  #include "hantro.h"
+>  #include "hantro_jpeg.h"
+> @@ -384,6 +385,21 @@ static irqreturn_t rockchip_vpu1_vepu_irq(int irq, v=
+oid *dev_id)
+>  =09return IRQ_HANDLED;
+>  }
+> =20
+> +/*
+> + * After an error the decoder can still have bus accesses of the failed
+> + * picture in flight; reset it before its buffers go back to userspace.
+> + */
+> +static void rockchip_vpu2_dec_soft_reset(struct hantro_dev *vpu)
+> +{
+> +=09u32 val;
+> +
+> +=09vdpu_write(vpu, 0, VDPU_REG_EN_FLAGS);
+> +=09vdpu_write(vpu, 1, VDPU_REG_SOFT_RESET);
+> +=09if (read_poll_timeout_atomic(vdpu_read, val, !val, 0, 5, false, vpu,
+> +=09=09=09=09     VDPU_REG_SOFT_RESET))
+> +=09=09dev_warn_ratelimited(vpu->dev, "decoder soft reset timed out\n");
+> +}
+> +
+>  static irqreturn_t rockchip_vpu2_vdpu_irq(int irq, void *dev_id)
+>  {
+>  =09struct hantro_dev *vpu =3D dev_id;
+> @@ -396,6 +412,8 @@ static irqreturn_t rockchip_vpu2_vdpu_irq(int irq, vo=
+id *dev_id)
+> =20
+>  =09vdpu_write(vpu, 0, VDPU_REG_INTERRUPT);
+>  =09vdpu_write(vpu, 0, VDPU_REG_AXI_CTRL);
+> +=09if (state !=3D VB2_BUF_STATE_DONE)
+> +=09=09rockchip_vpu2_dec_soft_reset(vpu);
+> =20
+>  =09hantro_irq_done(vpu, state);
+> =20
+> @@ -482,8 +500,7 @@ static void rockchip_vpu2_dec_reset(struct hantro_ctx=
+ *ctx)
+>  =09struct hantro_dev *vpu =3D ctx->dev;
+> =20
+>  =09vdpu_write(vpu, VDPU_REG_INTERRUPT_DEC_IRQ_DIS, VDPU_REG_INTERRUPT);
+> -=09vdpu_write(vpu, 0, VDPU_REG_EN_FLAGS);
+> -=09vdpu_write(vpu, 1, VDPU_REG_SOFT_RESET);
+> +=09rockchip_vpu2_dec_soft_reset(vpu);
+>  }
+> =20
+>  static void rockchip_vpu2_enc_reset(struct hantro_ctx *ctx)
+
+--=-VNfhIxJwLPoRKtgwmuvP
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCav8V6gAKCRDZQZRRKWBy
+9E1/AQCQ/OEC7goF6NstMHroyb/dSBFTJpopbeXazJtj+GWl+QD+PV71UkvRHlSI
+DHHIB57bxeLUtYz/8hJRQEs2dAGUmAw=
+=zEAS
+-----END PGP SIGNATURE-----
+
+--=-VNfhIxJwLPoRKtgwmuvP--
+
+
+--===============7034861978243337449==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7034861978243337449==--
+
