@@ -2,56 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6BB65606A324
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 21:40:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4B09E606A335
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 21:45:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UmZPoCz5;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=cIZk8F7y
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dsLxGjUj;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=bUeatrqE
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=PLWgBoca7p//HKehzALm5ttPgZAmD8pocL0gf8R0U2M=; b=UmZPoCz5578SdenG4hPEAr8OB6
-	LtiRl2fbxE/2TuOgVYsrDBunSTGfv3QA95yFtyIni5Zhrahy6KEU7g3E7nmOc7QKl3OEcZCgxM/wy
-	Pe1IsNJWxp7/WSGwU4YFjqQkvZ60SgWdBzdowYQ0syIL2GeUlxv18o960MzkaQ/VVZSVRc2MeOybR
-	y1t6uNU5vYo2CrjAYuctbAkuQ8Oj6aj69yNpbACy5wwRbyrGCuZ1goFb3Q2RNWopM8Smds5WfUfc5
-	kB6ifdlN02EPqk+DG6nL0ErPernW3q+xG6rxEWJiLCPyj/k4YZ/r2l50iTWuUuF0r2603viDrwGYg
-	WpGvVOJg==;
+	bh=VScsn2YUx5osPTMKiMWbrpt5IYOJ8CefFouJIXqilSg=; b=dsLxGjUjJBhAswvWFT5afa+iUj
+	pn+gXV1W8QPJO6Hq1VEoK+cVgsWdjKv1ibVixo+9iqNcGV28FJtVQYiTWjcmoWvfx2PUyQ0mXKz2O
+	G1KvF364Gucakz9CgTILqqGudT1T2duRtUUJG1EApftRsbXML/Ru8xnCusDPPKGGbG+GZLAmrbkSX
+	CejNqqX9Bvsg6bvmGst9e2Rsh9bI1NGBxvcwakpmeqWX5ooHxdpOj5dwUAJCPd9IRTeFyzKsBwGLR
+	zWpB5VtOLuEdzXR3OF4gCJPfdtlS0sEXleEPRef82dYpU0kSTLgOWCVpnZOF+9OZz3hHS8ttcA8Na
+	/uEqcibQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU9s3-0000000DUvt-3evU;
-	Thu, 19 Nov 2026 21:40:43 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xU9wk-0000000DVRT-3Fcg;
+	Thu, 19 Nov 2026 21:45:34 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU9s1-0000000DUuR-2cFM;
-	Thu, 19 Nov 2026 21:40:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=2rk+9h91UF2ccmiOZHWNjHja5T1YkUMf6w6s0Yio7b0=; b=cIZk8F7yhAFCNkrt6xE1Y+BH0v
-	nyS733Z7MQ12xmYp4/P1CojN6TCgQBabqGw7NqzjcRoJWAf5mLCJA1KC5quBtfD73fHgeHJlxMGpo
-	mMlbVftarWrNbpBNM6R2rsKwi1F4bXkvjVWiZvdzugb3218cxGNnce7ZNhfYD+xOyqWr7D2tcyrZJ
-	LZgOv8Nh3URQ54loXMQxqq0tEL93UMM6mxK9DX/xu2H0izBE3NQ0OSoaa34tEkbUEh2Rj2hGyCoTK
-	5crHzHwGpRM8GlOsDGUgmuCRXAeIhCPJQzqdPXR1PVlTxOPTMnzW4TDkPYss8u7e61o/I4V2BhF2R
-	HyRZHyuw==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Linus Walleij <linusw@kernel.org>, Ye Zhang <ye.zhang@rock-chips.com>,
- Jonas Karlman <jonas@kwiboo.se>
-Cc: linux-rockchip@lists.infradead.org, Jonas Karlman <jonas@kwiboo.se>,
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] pinctrl: rockchip: Fix RK3506 pinctrl support
-Date: Thu, 19 Nov 2026 22:40:28 +0100
-Message-ID: <R9Lr9e5PRAa-_53xglqBFw@sntech.de>
-In-Reply-To: <20261119211739.566874-1-jonas@kwiboo.se>
-References: <20261119211739.566874-1-jonas@kwiboo.se>
+	id 1xU9wg-0000000DVQp-45DL;
+	Thu, 19 Nov 2026 21:45:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795124728;
+	bh=qWrn0xVdylPSfFkj1g2JFpd2zWe+c98phSaOjNlvRvg=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=bUeatrqEEzqiXVtOvzacLan37HwzC6db6JqRsmwDkTUkVSRoZT8UQsF4Pbg1hD7v3
+	 xCi6tfisi0UkR4k/JzY5G7CdJ0uFfl4TNAtBa1hbmyBarDoq1+e5qxTd1m/34sdKqb
+	 Qbm1cP5H9JVUp4GClTINNoLNKZD0c8W7e4fgqUBNxn+PaaXCbY1xU2XEf8qVJGGZN/
+	 /IvE/PVq100GkIuRkN2RHTuqEdkJpnTn1BdpVc32KJ4NOb+pRKOykjS9t4ctddwskb
+	 pBS8m+67VA+3/beOw+qxIy+tonf6jZnPi07bU3Gt59RTDG/C03covc9n2USyECJP+h
+	 172Y0qY5UzqNA==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1571C17E0480;
+	Thu, 19 Nov 2026 22:45:26 +0100 (CET)
+Message-ID: <3611eee93f6d48bbe7de642abd238c7da147eaa2.camel@collabora.com>
+Subject: Re: [PATCH v6] media: verisilicon: Create AV1 helper library
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	kernel@collabora.com
+Date: Thu, 19 Nov 2026 16:45:25 -0500
+In-Reply-To: <ac588bfc-94f3-4ad7-9808-92ea0db1d017@collabora.com>
+References: <20260910092021.139970-1-benjamin.gaignard@collabora.com>
+	 <ac588bfc-94f3-4ad7-9808-92ea0db1d017@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_134041_690310_BE79D233 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20261119_134531_197539_64CA0100 
+X-CRM114-Status: GOOD (  10.99  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -62,8 +87,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============5357383385957112478=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -72,31 +96,93 @@ X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gRG9ubmVyc3RhZywgMTkuIE5vdmVtYmVyIDIwMjYsIDIyOjE3OjM5IE1pdHRlbGV1cm9ww6Rp
-c2NoZSBOb3JtYWx6ZWl0IHNjaHJpZWIgSm9uYXMgS2FybG1hbjoKPiBUaGUgcGluY3RybCBkcml2
-ZXIgYWRkZWQgaW4gY29tbWl0IGRiZDIzMTdkN2I5ZiAoInBpbmN0cmw6IHJvY2tjaGlwOgo+IEFk
-ZCByazM1MDYgcGluY3RybCBzdXBwb3J0IikgZGVwZW5kcyBvbiBhIHJvY2tjaGlwLGlvYzEgcHJv
-cGVydHkgbm90Cj4gZG9jdW1lbnRlZCBpbiBkdC1iaW5kaW5ncyB0byB3b3JrLCBpLmUuIGl0IGV4
-cGVjdHMgdGhlIHBpbmN0cmwgbm9kZSB0bwo+IGxvb2sgc29tZXRoaW5nIGxpa2UgZm9sbG93aW5n
-Ogo+IAo+ICAgcGluY3RybCB7Cj4gCXJvY2tjaGlwLHBtdSA9IDwmZ3BpbzBfaW9jPjsKPiAJcm9j
-a2NoaXAsaW9jMSA9IDwmZ3BpbzFfaW9jPjsKPiAJcm9ja2NoaXAsZ3JmID0gPCZncGlvMjM0X2lv
-Yz47Cj4gCj4gCWdwaW8wIHsgfTsKPiAJZ3BpbzEgeyB9Owo+IAlncGlvMiB7IH07Cj4gICB9Owo+
-IAo+IFdpdGggdGhlIGNvbW1pdCA2MzExM2Q0ZmNlNmMgKCJwaW5jdHJsOiByb2NrY2hpcDogQWRk
-IFJWMTEwNiBwaW5jdHJsCj4gc3VwcG9ydCIpIHRoZSBkcml2ZXIgZ2FpbmVkIHN1cHBvcnQgZm9y
-IHVzaW5nIEdQSU8gYmFuayByZWZlcmVuY2VkIElPCj4gY29udHJvbCByZWdpc3RlciBibG9ja3Mg
-dXNpbmcgdGhlIHJvY2tjaGlwLGdyZiBwaGFuZGxlIG9mIHRoZSBiYW5rIG5vZGUuCj4gCj4gQ2hh
-bmdlIHRoZSBkcml2ZXIgdG8gd29yayB3aXRoIGR0LWJpbmRpbmdzIGRvY3VtZW50ZWQgbm9kZXMg
-YW5kCj4gcHJvcGVydGllcywgaS5lLiBzb21ldGhpbmcgbGlrZToKPiAKPiAgIHBpbmN0cmwgewo+
-IAlyb2NrY2hpcCxncmYgPSA8JmdwaW8yMzRfaW9jPjsKPiAKPiAJZ3BpbzAgewo+IAkJcm9ja2No
-aXAsZ3JmID0gPCZncGlvMF9pb2M+Owo+IAl9Owo+IAlncGlvMSB7Cj4gCQlyb2NrY2hpcCxncmYg
-PSA8JmdwaW8xX2lvYz47Cj4gCX07Cj4gCWdwaW8yIHsgfTsKPiAgIH07Cj4gCj4gRml4ZXM6IGRi
-ZDIzMTdkN2I5ZiAoInBpbmN0cmw6IHJvY2tjaGlwOiBBZGQgcmszNTA2IHBpbmN0cmwgc3VwcG9y
-dCIpCj4gU2lnbmVkLW9mZi1ieTogSm9uYXMgS2FybG1hbiA8am9uYXNAa3dpYm9vLnNlPgoKdGhh
-bmtzIGZvciB3b3JraW5nIG9uIHRoaXMsIGFsc28gYXMgdGhlIHJrMzUwNiBkZXZpY2V0cmVlIGhh
-cyBzbyBmYXIKX25vdF8gbWFkZSBpdCBtYWlubGluZSBhdCBhbGwsIHRoaXMgY2hhbmdlIGNhbm5v
-dCBicmVhayBhbnkgYmFja3dhcmRzCmNvbXBhdGlibGl0eSAtIGFzIHRoZXJlJ3Mgbm90aGluZyB0
-byBicmVhay4KClJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgoK
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
-b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cg==
+--===============5357383385957112478==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-Dg5vUNNPaPxbWQnJXS5h"
+
+--=-Dg5vUNNPaPxbWQnJXS5h
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le lundi 16 novembre 2026 =C3=A0 14:33 +0100, Benjamin Gaignard a =C3=A9cri=
+t=C2=A0:
+> Le 10/09/2026 =C3=A0 11:20, Benjamin Gaignard a =C3=A9crit=C2=A0:
+> > Regroup all none hardware related AV1 functions into a helper library.
+> > The goal is to avoid code duplication for future AV1 codecs.
+> >=20
+> > Tested on rock 5b board Fluster score remains the same 204/241.
+> >=20
+> > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+>=20
+> Gentle ping on this patch.
+
+Nice ping, but it does not apply. I've manually applied it, but will leave =
+to
+you to retest.
+
+https://gitlab.freedesktop.org/linux-media/users/ndufresne/-/commit/c98580a=
+49562a26d2cfc11fc0eb88e6e75f329d8
+
+While doing so I notice few hidden changes:
+
+rockchip_vpu981_av1_dec_luma_size -> hantro_av1_luma_size:
+
+-=09return ctx->dst_fmt.width * ctx->dst_fmt.height * ctx->bit_depth / 8;
++=09return ctx->ref_fmt.plane_fmt[0].bytesperline * ctx->ref_fmt.height;
+
+
+Change is really good, and it allows for padding, but totally undocumented,=
+ and
+would be better placed in its own commit. And then couple of bound check, w=
+hich:
+
+
+int hantro_av1_get_frame_index(struct hantro_ctx *ctx, int ref):
++=09if (ref < 0 || ref >=3D V4L2_AV1_REFS_PER_FRAME)
++=09=09return AV1_INVALID_IDX;
+
+void hantro_av1_set_prob(struct hantro_ctx *ctx):
+ =09} else {
++=09=09if (frame->primary_ref_frame < 0 ||
++=09=09    frame->primary_ref_frame >=3D V4L2_AV1_REFS_PER_FRAME)
++=09=09=09return;
+
+
+These should clearly be prepend patches with Fixes tag for backport, and no=
+t
+hidden in the rework. Looking for your v7.
+
+Nicolas
+
+--=-Dg5vUNNPaPxbWQnJXS5h
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCav9t9QAKCRDZQZRRKWBy
+9CM/AQCgYjUXpp9ak9su9niYjM75+PBdrqkoOLdBR1tzshrL7gEAvsCwrMGVV+Ln
+l/ilaftJcZE6qkNjcFU3b6foC2Y9Ags=
+=wAiv
+-----END PGP SIGNATURE-----
+
+--=-Dg5vUNNPaPxbWQnJXS5h--
+
+
+--===============5357383385957112478==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5357383385957112478==--
+
