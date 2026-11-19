@@ -2,111 +2,90 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2ED08606A32C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 16:35:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 119F7606A332
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 16:48:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3w2AkWj0;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=CMMndePN
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vGg+Dyqb;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=hOGW4L7i
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=WiXDtfoZ9t7k5IRMYUKPXcdRfATAyEpfJR6xT/Y7uoU=; b=3w2AkWj0fdVrxG9wrzpMPtdu+K
-	Lpes4Tmsh10OaC2UF7YTVs+OPEgJZ5z5mD/jCXgzKj250/0QU9IgioAncFZqefH4gFJ25jye3i0Ht
-	kBR6+nKJt950+yCOPq0GLAfIaTRJadQd7M7CQgDGd7XMADG30E2JcML7gEa89c9Yx7BYGtLbv54g4
-	yVmnVR48RLbdAUhMRpKOh9HRBuRRtBNAlwEUa8DAQy9rhX5eLnbfKeMj6Hy1+5uDCAR3DUxGoP+WI
-	EBzLkrbiYQYV0HoaJqJ7MCGYzP8srtatggqYssxdQYH4Kttwv0dc1mZF6GhrffOdNwvf/GYS1gK6R
-	DJ7+/EoQ==;
+	bh=LC6yZvxj5kp3Yu0OuuPft3RIVWn0iOADV1vYuReRzmw=; b=vGg+Dyqb+M7legcHrqkij8wfBQ
+	dwho5ma8JPk4/Om1M6Gwow174K6eulaoUDz1+oXjz41+REL8oHR09exd69k/+3qtwNmVn4ULOAzJe
+	WlilqJTdMJUAZn4Q1pQdW4Fh71fbLNdbpmMUI0KnslTtvj/Lzfh9D2sBsvTy1kKGlCAFblSENS32V
+	04hPEw4FqFWZiCrIkN3WHxisKAdd0xOChqHb2GNW2dI4bpJzm98tzYtF6bFeeqcSA3VOOnKG9BAaN
+	x4nFkrmTRmKGiwqrfFs+uuXDPV+UiV+yhHJsTHPMBbBtzkWuS71A87vVbYNX4Q863syvY76KfG13R
+	qjns/QgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU56P-0000000Cf0g-2l3y;
-	Thu, 19 Nov 2026 16:35:13 +0000
+	id 1xU5JS-0000000CinG-24Fm;
+	Thu, 19 Nov 2026 16:48:42 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU566-0000000CepH-1dKx;
-	Thu, 19 Nov 2026 16:34:54 +0000
+	id 1xU5JQ-0000000Cimp-466K;
+	Thu, 19 Nov 2026 16:48:41 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C3C6F6128E;
-	Thu, 19 Nov 2026 16:34:53 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795106093;
-	b=Site0pLdZCEXxQgic45OMgCEhE7BVwafmpgDwimo0pU0PHHRsAuV+NZRDey1Bmi6Gt1W
-	 ficRBVgboSLhmR0NVn0KMN6zTSGrHIIVNaOQsHF+i3aY1qdINKxTdqitlTdx7fBROosB3
-	 TsKUHUlWvMtzpGrEI7xVo7B4uEqpx8Bu6Ylbz0LgyQg3Uxi7YGKhCxBFSPsn10GZMkH55
-	 3BT6JARL/FmvXAgrPvF8JrCzJoLr7GkcUjGScjoPrqNdjnj2rnRMOlVC8Bg4HtgW3vUf+
-	 EJilqEI8Ut0dYB1r1V9WrlVNou41XYBrWKTuXHnDvqH+GoiNm5VqdOsDhw+O+M89XcA==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795106093;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=LLhomrGYVSXgiL/MtOBi8ccnZatBsLWNQ72z/RjLnI8=;
-	b=Vla4t3EVZ/p/Mwhj1a8nhvXPefn7k9xZ7dbcDePRGNKEmeD5uEqeObEyOXDs7zkJb0lb
-	 9K7Hs9GoWY/BVCyiFp7ClLU6MA9Y8WZgqCbnZjbfLtaaUfoYFQr+CBwpeV1brHAhB9mqt
-	 kB3p61oai9Y1VfjMiZHGHDVZT1C5NAZDhQyEF9W+nc7kaemWxUhKdLX8B/PxgNQo06b8D
-	 Wur/9H1Zo1Pj5kLpt59GWRxF5CKyFMYa91TfuXwr4oB1OwBhMJkfbRk6Xo5xhd4ka+4Ra
-	 SB7k8CL8b2vjXuy0XFAOzzST0VKtuMIuXMQWIlsn19JSRHU+M+2rRuNGC4ynK1bG3yQ==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 40E521F000C4;
-	Thu, 19 Nov 2026 16:34:52 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 4849561297;
+	Thu, 19 Nov 2026 16:48:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4DBF1F000C7;
+	Thu, 19 Nov 2026 16:48:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795106093;
-	bh=LLhomrGYVSXgiL/MtOBi8ccnZatBsLWNQ72z/RjLnI8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=CMMndePNESjXinXNtamvVKTQZOUkWZ0VFG5AtRSTj3XJqGmYgtj7UynGmM26z8Xgc
-	 NI7CRe7cG8mHYg8JUjFcGzKni/2T34bo00BBMMRnfTzLdSg4QZqMMPbVpq7WUNlhsj
-	 it7atR8URVQxNUXPI4NYFlIaYbzzkC3AM6KbGAboHl8XYD+kpPgI7CwVlnapdBHytX
-	 u8dFIIrXZUYm6YKENxeWNJ+4+5E1sQvnYFBX29ZMliwRgv+YBFGq0bRsZl2qe3t7bM
-	 rjX64OCe1JGExtj9e8uXj1CM5cL8vba6vP5oN8ljUpkNp7+cpaBeGvfDnVKSgejYUM
-	 yQcGa+YY2fdUA==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id C1EB14B348;
-	Thu, 19 Nov 2026 16:34:51 +0000 (UTC)
-From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 19 Nov 2026 16:34:52 +0000
-Subject: [PATCH RFC 1/2] media: uapi: mpeg2: add MPEG-1 flags and the
- MPEG-1 parsed slice format
+	s=k20260515; t=1795106920;
+	bh=8HXa68Qw9U8seRwWAPXNB/ewGGSCzzxtMHD1FScJ9Vo=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=hOGW4L7iXcp23kZoYzOxl244lck6jnSGkO3u/foitA0/9XQXVU0S6YWNWJy74lRWJ
+	 IZnpmAUyFvq0Kth/zdeWp/9lb+Xft6SlOmA00sPRSsX+vj6M3eUb15cntpHPNHu3I+
+	 sqWeySL6onzxSn+OubDpygDV8ycIfwI6hjP5vEYboR6jH/XruUjQGwrpadH3FLRBcO
+	 gWUmEu1Z6nHSwlR1k0HTIr5MQngxOUnS0sAJofHnQaqKOuTNDvPfkoLQ1H0G6fh82g
+	 xkyXaRVVzeEs5ghlRSE6AjISFFFCihwgbiuQnBWawAOyXcTAmDsRfoRAXwvKbSihVw
+	 K/J2K3KG5X2vQ==
+From: Lee Jones <lee@kernel.org>
+To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
+ Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Elaine Zhang <zhangqing@rock-chips.com>, Lee Jones <lee@kernel.org>, 
+ Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>, 
+ Richard Cochran <richardcochran@gmail.com>, Ulf Hansson <ulfh@kernel.org>, 
+ Andi Shyti <andi.shyti@kernel.org>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Jiri Slaby <jirislaby@kernel.org>, Jisheng Zhang <jszhang@kernel.org>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ David Wu <david.wu@rock-chips.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Daniel Lezcano <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, 
+ Lukasz Luba <lukasz.luba@arm.com>, 
+ Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, 
+ Thinh Nguyen <Thinh.Nguyen@synopsys.com>, 
+ Jaehoon Chung <jh80.chung@samsung.com>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, Cunhao Lu <1579567540@qq.com>
+Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, mfd@lists.linux.dev, 
+ linux-gpio@vger.kernel.org, netdev@vger.kernel.org, 
+ linux-pm@vger.kernel.org, linux-i2c@vger.kernel.org, 
+ linux-serial@vger.kernel.org, linux-mmc@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-phy@lists.infradead.org, 
+ linux-usb@vger.kernel.org
+In-Reply-To: <20261022-add-board-ok3572-c-v1-4-0b0fd85a31ee@qq.com>
+References: <20261022-add-board-ok3572-c-v1-4-0b0fd85a31ee@qq.com>
+Subject: Re: (subset) [PATCH 04/27] dt-bindings: mfd: syscon: Add RK3572
+ QoS register compatible
+Message-Id: <179510691068.78262.17485799721461490431.b4-ty@b4>
+Date: Thu, 19 Nov 2026 16:48:30 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261119-b4-cedrus-mpeg1-v1-1-aa5ba1192822@gmail.com>
-References: <20261119-b4-cedrus-mpeg1-v1-0-aa5ba1192822@gmail.com>
-In-Reply-To: <20261119-b4-cedrus-mpeg1-v1-0-aa5ba1192822@gmail.com>
-To: Hans Verkuil <hverkuil@kernel.org>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Maxime Ripard <mripard@kernel.org>, 
- Paul Kocialkowski <paulk@sys-base.io>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Samuel Holland <samuel@sholland.org>
-Cc: Jonas Karlman <jonas@kwiboo.se>, linux-media@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, 
- =?utf-8?q?Christian_Stefan_K=C3=B6v=C3=A9r-Draxl?= <ckoever@outlook.de>, 
- Arun Iyengar <aiyengar1990@gmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795106091; l=10856;
- i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=cr1ebbEpYfWsicr/Rh2XWDklPbPQq1/SEj00xW+AuGw=;
- b=YTzvKL1/vIhS7V+WNcIzdm3mzTdaytbUeglRKrle4YvKlRrIG2OTzwAFizgCyoeGQvQAjOfn0
- HkIAv+gc5dyAiLacoGNM9MuZJx7lJ3pYpRxt7PTO2kyxq6Sc7ZE6tXb
-X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
- pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
-X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
- auth_id=1480
-X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
+X-Mailer: b4 0.16-dev-ad80c
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,242 +95,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: aiyengar1990@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
-
-Stateless MPEG-2 decoders can decode MPEG-1, but the uAPI cannot say a
-stream is MPEG-1, and decoding it as MPEG-2 is wrong: MPEG-1 has its own
-inverse quantisation mismatch control, full pel motion vectors and
-D-pictures.
-
-Add V4L2_MPEG2_SEQ_FLAG_MPEG1, V4L2_MPEG2_PIC_FLAG_FULL_PEL_FORWARD and
-_BACKWARD, and allow V4L2_MPEG2_PIC_CODING_TYPE_D for MPEG-1.
-
-Flags alone are not discoverable (the control framework does not check
-compound control flags, and existing drivers would decode such a stream
-as MPEG-2), so add V4L2_PIX_FMT_MPEG1_SLICE ('MG1S'). It reuses the
-MPEG-2 controls; the MPEG-1 flag is set with this format only. Drivers
-that cannot decode D-pictures reject that coding type, also in
-VIDIOC_TRY_EXT_CTRLS, so applications can check before decoding.
-
-hantro has no MPEG-1 mode: reject the MPEG-1 flags and D-pictures
-there, which it would otherwise decode as MPEG-2 inter pictures.
-
-Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
----
- .../media/v4l/ext-ctrls-codec-stateless.rst        | 35 ++++++++++++++++++++--
- .../userspace-api/media/v4l/pixfmt-compressed.rst  | 23 ++++++++++++++
- drivers/media/platform/verisilicon/hantro_drv.c    | 12 ++++++++
- drivers/media/v4l2-core/v4l2-ctrls-core.c          |  1 +
- drivers/media/v4l2-core/v4l2-ioctl.c               |  1 +
- include/uapi/linux/v4l2-controls.h                 |  3 ++
- include/uapi/linux/videodev2.h                     |  1 +
- 7 files changed, 74 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
-index d7a3b8ef03a7..afe57be7cb87 100644
---- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
-+++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec-stateless.rst
-@@ -1317,6 +1317,23 @@ FWHT Flags
-       - 0x01
-       - Indication that all the frames for the sequence are progressive instead
- 	of interlaced.
-+    * - ``V4L2_MPEG2_SEQ_FLAG_MPEG1``
-+      - 0x02
-+      - The sequence is an ISO/IEC 11172-2 (MPEG-1) sequence: the inverse
-+	quantisation uses the MPEG-1 mismatch control, motion vectors may be
-+	full pel and pictures may be D-pictures. Applications set this flag
-+	if and only if the coded format is ``V4L2_PIX_FMT_MPEG1_SLICE``;
-+	drivers reject it with ``V4L2_PIX_FMT_MPEG2_SLICE``. MPEG-1 has no
-+	sequence or picture extensions: applications set the fields that
-+	come from them to chroma_format 1, V4L2_MPEG2_SEQ_FLAG_PROGRESSIVE,
-+	frame pictures with V4L2_MPEG2_PIC_FLAG_FRAME_PRED_DCT and
-+	V4L2_MPEG2_PIC_FLAG_PROGRESSIVE, intra_dc_precision 0, the flags
-+	V4L2_MPEG2_PIC_FLAG_Q_SCALE_TYPE, V4L2_MPEG2_PIC_FLAG_INTRA_VLC,
-+	V4L2_MPEG2_PIC_FLAG_ALT_SCAN, V4L2_MPEG2_PIC_FLAG_CONCEALMENT_MV,
-+	V4L2_MPEG2_PIC_FLAG_TOP_FIELD_FIRST and
-+	V4L2_MPEG2_PIC_FLAG_REPEAT_FIRST cleared, both components of
-+	``f_code[0]`` set to forward_f_code and of ``f_code[1]`` to
-+	backward_f_code.
- 
- .. raw:: latex
- 
-@@ -1366,8 +1383,12 @@ FWHT Flags
-     * - __u8
-       - ``picture_coding_type``
-       - Picture coding type for the frame covered by the current slice
--	(V4L2_MPEG2_PIC_CODING_TYPE_I, V4L2_MPEG2_PIC_CODING_TYPE_P or
--	V4L2_MPEG2_PIC_CODING_TYPE_B).
-+	(V4L2_MPEG2_PIC_CODING_TYPE_I, V4L2_MPEG2_PIC_CODING_TYPE_P,
-+	V4L2_MPEG2_PIC_CODING_TYPE_B, or V4L2_MPEG2_PIC_CODING_TYPE_D in MPEG-1
-+	sequences). Decoding D-pictures is optional: drivers that cannot
-+	decode them reject V4L2_MPEG2_PIC_CODING_TYPE_D, also in
-+	``VIDIOC_TRY_EXT_CTRLS``, which applications can use to find out
-+	whether D-pictures are supported.
-     * - __u8
-       - ``picture_structure``
-       - Picture structure (1: interlaced top field, 2: interlaced bottom field,
-@@ -1415,6 +1436,16 @@ FWHT Flags
-     * - ``V4L2_MPEG2_PIC_FLAG_PROGRESSIVE``
-       - 0x00000080
-       - Indicates whether the current frame is progressive.
-+    * - ``V4L2_MPEG2_PIC_FLAG_FULL_PEL_FORWARD``
-+      - 0x00000100
-+      - full_pel_forward_vector of an MPEG-1 picture header: the forward
-+	motion vectors are in full pel units. Only valid with
-+	V4L2_MPEG2_SEQ_FLAG_MPEG1.
-+    * - ``V4L2_MPEG2_PIC_FLAG_FULL_PEL_BACKWARD``
-+      - 0x00000200
-+      - full_pel_backward_vector of an MPEG-1 picture header: the backward
-+	motion vectors are in full pel units. Only valid with
-+	V4L2_MPEG2_SEQ_FLAG_MPEG1.
- 
- .. raw:: latex
- 
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst b/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst
-index 235f955d3cd5..898bb5393f9f 100644
---- a/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst
-@@ -129,6 +129,29 @@ Compressed Formats
- 	this pixel format. The output buffer must contain the appropriate number
- 	of macroblocks to decode a full corresponding frame to the matching
- 	capture buffer.
-+    * .. _V4L2-PIX-FMT-MPEG1-SLICE:
-+
-+      - ``V4L2_PIX_FMT_MPEG1_SLICE``
-+      - 'MG1S'
-+      - MPEG-1 parsed slice data, as extracted from the MPEG-1
-+	(ISO/IEC 11172-2) bitstream. This format is adapted for stateless
-+	video decoders that implement a MPEG-1 pipeline with the
-+	:ref:`stateless_decoder`. It uses the controls of
-+	``V4L2_PIX_FMT_MPEG2_SLICE``: metadata associated with the frame to
-+	decode is required to be passed through the
-+	``V4L2_CID_STATELESS_MPEG2_SEQUENCE`` and
-+	``V4L2_CID_STATELESS_MPEG2_PICTURE`` controls, with
-+	``V4L2_MPEG2_SEQ_FLAG_MPEG1`` set in the sequence control and the
-+	fields that come from the MPEG-2 extensions filled as described for
-+	that flag. Quantisation matrices can optionally be specified through
-+	the ``V4L2_CID_STATELESS_MPEG2_QUANTISATION`` control.
-+	See the :ref:`associated Codec Control IDs <v4l2-codec-stateless-mpeg2>`.
-+	Exactly one output and one capture buffer must be provided for use with
-+	this pixel format. The output buffer must contain the appropriate number
-+	of macroblocks to decode a full corresponding frame to the matching
-+	capture buffer. Decoders that enumerate this format decode MPEG-1
-+	sequences; decoders that only enumerate ``V4L2_PIX_FMT_MPEG2_SLICE``
-+	do not.
-     * .. _V4L2-PIX-FMT-MPEG4:
- 
-       - ``V4L2_PIX_FMT_MPEG4``
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 26e5d5547466..c910a69e8e3c 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -264,6 +264,16 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
- 		if (sps->bit_depth_luma_minus8 != 0 && sps->bit_depth_luma_minus8 != 2)
- 			/* Only 8-bit and 10-bit are supported */
- 			return -EINVAL;
-+	} else if (ctrl->id == V4L2_CID_STATELESS_MPEG2_SEQUENCE) {
-+		if (ctrl->p_new.p_mpeg2_sequence->flags & V4L2_MPEG2_SEQ_FLAG_MPEG1)
-+			return -EINVAL;
-+	} else if (ctrl->id == V4L2_CID_STATELESS_MPEG2_PICTURE) {
-+		const struct v4l2_ctrl_mpeg2_picture *pic = ctrl->p_new.p_mpeg2_picture;
-+
-+		if (pic->picture_coding_type == V4L2_MPEG2_PIC_CODING_TYPE_D ||
-+		    pic->flags & (V4L2_MPEG2_PIC_FLAG_FULL_PEL_FORWARD |
-+				  V4L2_MPEG2_PIC_FLAG_FULL_PEL_BACKWARD))
-+			return -EINVAL;
- 	} else if (ctrl->id == V4L2_CID_STATELESS_VP9_FRAME) {
- 		const struct v4l2_ctrl_vp9_frame *dec_params = ctrl->p_new.p_vp9_frame;
- 
-@@ -435,11 +445,13 @@ static const struct hantro_ctrl controls[] = {
- 		.codec = HANTRO_MPEG2_DECODER,
- 		.cfg = {
- 			.id = V4L2_CID_STATELESS_MPEG2_SEQUENCE,
-+			.ops = &hantro_ctrl_ops,
- 		},
- 	}, {
- 		.codec = HANTRO_MPEG2_DECODER,
- 		.cfg = {
- 			.id = V4L2_CID_STATELESS_MPEG2_PICTURE,
-+			.ops = &hantro_ctrl_ops,
- 		},
- 	}, {
- 		.codec = HANTRO_MPEG2_DECODER,
-diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-index 6e751a043a21..a12359626121 100644
---- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-+++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-@@ -1049,6 +1049,7 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
- 		case V4L2_MPEG2_PIC_CODING_TYPE_I:
- 		case V4L2_MPEG2_PIC_CODING_TYPE_P:
- 		case V4L2_MPEG2_PIC_CODING_TYPE_B:
-+		case V4L2_MPEG2_PIC_CODING_TYPE_D:
- 			break;
- 		default:
- 			return -EINVAL;
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index b7d248ab7db2..bbe7a0ae75df 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1507,6 +1507,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 		case V4L2_PIX_FMT_H263:		descr = "H.263"; break;
- 		case V4L2_PIX_FMT_MPEG1:	descr = "MPEG-1 ES"; break;
- 		case V4L2_PIX_FMT_MPEG2:	descr = "MPEG-2 ES"; break;
-+		case V4L2_PIX_FMT_MPEG1_SLICE:	descr = "MPEG-1 Parsed Slice Data"; break;
- 		case V4L2_PIX_FMT_MPEG2_SLICE:	descr = "MPEG-2 Parsed Slice Data"; break;
- 		case V4L2_PIX_FMT_MPEG4:	descr = "MPEG-4 Part 2 ES"; break;
- 		case V4L2_PIX_FMT_XVID:		descr = "Xvid"; break;
-diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
-index d17e41d51d2e..e7e6030ac00c 100644
---- a/include/uapi/linux/v4l2-controls.h
-+++ b/include/uapi/linux/v4l2-controls.h
-@@ -2007,6 +2007,7 @@ struct v4l2_ctrl_vp8_frame {
- /* Stateless MPEG-2 controls */
- 
- #define V4L2_MPEG2_SEQ_FLAG_PROGRESSIVE	0x01
-+#define V4L2_MPEG2_SEQ_FLAG_MPEG1	0x02
- 
- #define V4L2_CID_STATELESS_MPEG2_SEQUENCE (V4L2_CID_CODEC_STATELESS_BASE+220)
- /**
-@@ -2055,6 +2056,8 @@ struct v4l2_ctrl_mpeg2_sequence {
- #define V4L2_MPEG2_PIC_FLAG_ALT_SCAN			0x0020
- #define V4L2_MPEG2_PIC_FLAG_REPEAT_FIRST		0x0040
- #define V4L2_MPEG2_PIC_FLAG_PROGRESSIVE			0x0080
-+#define V4L2_MPEG2_PIC_FLAG_FULL_PEL_FORWARD		0x0100
-+#define V4L2_MPEG2_PIC_FLAG_FULL_PEL_BACKWARD		0x0200
- 
- #define V4L2_CID_STATELESS_MPEG2_PICTURE (V4L2_CID_CODEC_STATELESS_BASE+221)
- /**
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 5373dba640fa..c7469c01e83f 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -761,6 +761,7 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_MPEG1    v4l2_fourcc('M', 'P', 'G', '1') /* MPEG-1 ES     */
- #define V4L2_PIX_FMT_MPEG2    v4l2_fourcc('M', 'P', 'G', '2') /* MPEG-2 ES     */
- #define V4L2_PIX_FMT_MPEG2_SLICE v4l2_fourcc('M', 'G', '2', 'S') /* MPEG-2 parsed slice data */
-+#define V4L2_PIX_FMT_MPEG1_SLICE v4l2_fourcc('M', 'G', '1', 'S') /* MPEG-1 parsed slice data */
- #define V4L2_PIX_FMT_MPEG4    v4l2_fourcc('M', 'P', 'G', '4') /* MPEG-4 part 2 ES */
- #define V4L2_PIX_FMT_XVID     v4l2_fourcc('X', 'V', 'I', 'D') /* Xvid           */
- #define V4L2_PIX_FMT_VC1_ANNEX_G v4l2_fourcc('V', 'C', '1', 'G') /* SMPTE 421M Annex G compliant stream */
-
--- 
-2.55.0
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCAyMiBPY3QgMjAyNiAwMDoxMTowMSArMDgwMCwgQ3VuaGFvIEx1IHdyb3RlOgo+IEFk
+ZCByb2NrY2hpcCxyazM1NzItcW9zIHRvIHRoZSBzeXNjb24gY29tcGF0aWJsZSBsaXN0LgoKQXBw
+bGllZCwgdGhhbmtzIQoKWzA0LzI3XSBkdC1iaW5kaW5nczogbWZkOiBzeXNjb246IEFkZCBSSzM1
+NzIgUW9TIHJlZ2lzdGVyIGNvbXBhdGlibGUKICAgICAgICBjb21taXQ6IDk3NzZmYmI0N2Q2Yzlk
+MDkyOGM2NjczNGVkNTY1ZDg3MGQ4ZmRmZTkKCi0tCkxlZSBKb25lcyBb5p2O55C85pavXQoKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
