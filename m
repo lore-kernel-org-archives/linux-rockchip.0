@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 906E2606A33E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 13:03:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 594A4606B19A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 13:03:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=HGzRWr0q;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=UFLi/6eK
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uY/hr7nF;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=HBXcnSKu
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,46 +14,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=cST7bGEGVib0fEtFLruYVkknlTQD3Glej+WGpkK17EM=; b=HGzRWr0qZ7QzwrNeYBJrSpQiPg
-	GE8KM+s1bSR6EOQCfAgVu9hm0TeGIyLIxpIC1PurkPBu4/mxi9SU9KeuzohVfBRYrZQ3JLiOeDz1w
-	TFyBy5wd2w6ieDVT8qhhqPpAuNe4d15gVuwYCxXlLBI+Vq7IAJidozL3/XyADyLFkJKStQtF/PRSG
-	bDvmUXehWPkHqaniyNMEaryjh+5qJ5EZ4/PbTbg1Bsm6f0ibRjzcIx2iTzdDZgz5As0/jqoyDWgWk
-	dS5VRPD+/8nkkCpUHoTZL7xPMS6LyDjtvzOqJlUyEz+P3slbJhRO5uGR05dPrpOYt32zgfumC8rPK
-	F7A4Dx0w==;
+	bh=W+KHwS2FZL6mU7AewVZgQcNiF4JDI92ODZ85m03I0Lw=; b=uY/hr7nFn8VRjy6dOHEaIlE8nk
+	Abg6nDcsZ9msHEOtbKCgnZk2Ol5sKMSQOanOCeFfeU4u23fAnAGiNOBdiHPS5e/l2smDE+k6R0mDL
+	VlPLgCQUx4mx6Gvnce6geSQU/NyPxHaMuv6ap4GeSKUWRV7IPzTrCK2K0sP0B8A/qiaYkrtDT9RSj
+	1Y37CM+jzGBnTKLw3TFPDM8U7SLuGDmiT6NoB/nVs5cep5OTpnGA6PB7V2G/3VjgwxwhbHAZDVupN
+	qnGz+Jv1O0zRuwCvv2U73m3Bk8uBEHTnfsLNUjZ8V+gJGHnoM3BxxC2sFUyONzj2EwJ1I9+gVeZq5
+	Ie2zbThQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU1nW-0000000BxMY-25dL;
-	Thu, 19 Nov 2026 13:03:30 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xU1nh-0000000BxWZ-2Utb;
+	Thu, 19 Nov 2026 13:03:41 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU1nR-0000000BxHO-3gD3;
+	id 1xU1nS-0000000BxHS-2Ss5;
 	Thu, 19 Nov 2026 13:03:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795093402;
-	bh=NcbY1Kwj3zdv2Zy0vTw7QH7m4EmoNY/fT3JfB7rg+pY=;
+	s=mail; t=1795093403;
+	bh=jo3nCflY99PJQS3l0ROT5/iJaEglvr9vdCeiMlh4QAQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=UFLi/6eK4QpPXFew3S/yByKSPQZ+MYlEvNo82jSUO/hcIm/rP/eI9Lk1L5RqRZ1sr
-	 CgOorXoWggbkk5OXYZpwdCKUv+lmfuC2KTPD3p5WnPJKO9rXkQHzfJq+TYgWIAJBFn
-	 pXsfHHRcFWM/tm4cDiRDF4DSzGH1fQ4H+e3ktCd3I2XhspXuw87yEdH+kCPwF3crr+
-	 tyZyvfI6rRRpUy+DeI/aETQOg2FCkPIhFHZIl4vWqSKZ9eUtYfDaVTOwBhqt71oZ9P
-	 kZZL2BWAadgwWyLJJ+/KOdXMB6X/x4sT49jqv074etdrqnZDfb/oRizOrgdNm+XPD/
-	 Q+kMfHHDOrgLg==
+	b=HBXcnSKuXpigViXWu71/Ilw9X8CBhIM54qdSWCiu1Zgod3Ew3rXfI6mj6jmNjftkM
+	 cEGOS9U3wJs2qnv+zFyuHjJTY2OPvm1LWnE0owIOoZGXttRtEjCrS3sXeuU4cS3Mrd
+	 LI6ne35oo5scnWmYd2qov+1MD1PQPsScwfnOqJP9C7M+AG/OjrDVJav7Toee/QLm60
+	 NReTtPzTFaJZZnHaWc2jdAFSgPCEwylli8/qD+jcjLqBHTz2VSSJc/d64+fnG+upji
+	 V2GmswlufzIcwX303u3bzHjyCblBpjYWGjNFM0FqXuiLnD0t4jQ6q86g8ydUBLtsyu
+	 qR+WyrKmsag3w==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D62B517E0BCD;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D2FA817E0311;
 	Thu, 19 Nov 2026 14:03:22 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 911F1480030; Thu, 19 Nov 2026 14:03:22 +0100 (CET)
+	id 8FEB148002B; Thu, 19 Nov 2026 14:03:22 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 19 Nov 2026 14:01:52 +0100
-Subject: [PATCH v4 02/11] dt-bindings: devfreq: event: rockchip,dfi: add
- rk3576
+Date: Thu, 19 Nov 2026 14:01:51 +0100
+Subject: [PATCH v4 01/11] dt-bindings: devfreq: event: rockchip,dfi: add
+ clocks to rk3588
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-2-517a68c008fe@collabora.com>
+Message-Id: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-1-517a68c008fe@collabora.com>
 References: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-0-517a68c008fe@collabora.com>
 In-Reply-To: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-0-517a68c008fe@collabora.com>
 To: Chanwoo Choi <cw00.choi@samsung.com>, 
@@ -68,26 +68,26 @@ Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1642;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3196;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=KprlhcFVeTBpVsP2HF+tCll/JPahCV7NR/zzegHDw2I=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr+85oA6DA/KhZxvFcKYJ5gL1mhn4HeSwvCx
- 38LX/KkPvoaiokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq/vOaAAoJENju1/PI
- O/qaDbwP/0lQqVCYl0oxQiFuNhuSiyYsld8IEQnHlAwcULM/44a9U2tzPaBOeMtjMNpuVYaTAe6
- y5ZagRXGRGJi39xPcEUHGjREy5gRbxVkdnymsSt/KPQH+jqowW7gS18KABDqxG4YCHhaVSyqsdD
- oeuHECraLYfWIeZr9971gE+Jq44flvUcTUuv8f0hVnDT1wCVhO/M63J0Dq4Tua2ELrd6TkMaNBK
- mSTDYL5LjAwvtU9L+fm8hUeO8ZL02CNfFxm9DoDCXt/NPs1Yzbee21P6WFqZCtaxaMedcpRLKeB
- f97/kbliJ+xoeV6K2YQ2T7F+nkC4PhJmzO0PEddezCSatCbav5VWwyxgyYDjwp1Qs/Y/ZxcPkhK
- K0F2eI0gv14pYns+n7518wPWt7wT+XpckUx6CphP/WlwZ9qwfXHpHNaUw1k4A4Ftm/4bHX8MYWS
- b0NI33Z9kMv95poWeLPSd+/FqKOoKiOnGhTfHiwWAL1Gst8/y4ZGbtdQs2dp3aKQFAEV7nF4QLi
- 7fw86hk3zyXC+hJ1hba/GN7Ix+ZoHkcWJCTM6qcIBhprTOQHGe68jNWAp2mExn9OeSBmtcDLguz
- uBZHNtVGVN7/h1ERQzT53JCeb0tY5m/3SCgPA6w9Rdhn53ADGNdgW943mWjQDR4+DDAq3HirFyW
- uST5cS2l+aQk5elvwc/ggKw==
+ bh=ZBKcYRMvGhObvY8W1+zIgAuybma3qErauP+lHK7ErAg=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr+85rC5zp+q9Kk3t11KLkC9KBrSV0A4/cN0
+ SwUa0BEuTkNoYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq/vOaAAoJENju1/PI
+ O/qaSnQP/ig/NqPWDyqLreQ+wXjTu0hw72W9L/5n+t9Kg4+GcUj58zOH79IILmgI8ZhwDexyoyj
+ 7HjvTPFQgdEHygotqBEkeRzDV3mbvMRCpiQO36yRRgiRwcRcjjbQ+fG3A2cJNsGiz2LfJTOj+rC
+ tP+13NFrWMEIIPWZih+zuhJx7JYBNSSkYZK5P1q/QigTFZSx+vOYavLHExOaaskJSNBAjXxUrqT
+ XuCzzwim2GGNytZ8jPzjjJbbVxl8Ee5OCflTxz2THYUS842zCWxQkXCpCsFr6vbjSsGKkBBby20
+ BbceLnBWg+Myxvxea/TOHdu2fu22h2eM5fFV9jpRdy8VJqZB1bjyJiSt4Y/zTp1bt0ThjahKudG
+ cNxfZNTT9bj7sOh/OVo1S89a4M9N0kClQaX/H6ctdo+uS632mCEnwBZfUpEe76yw1AOx/l/oE4R
+ 1rcol+n+6kyEQoL3kQkOQPXF0NkNaQo8d282aFRERXx1cpJbyvZTnH/rghiuBNr9JntpOkHFERW
+ 37t010cyaYuy4EUj3aEJpCjgrkgb+X5x9PAkMF+nCEsZLo2ao12akFZdyMfYvZeYYFOYHvtu7M2
+ XUtuS4Jr5kCv74v5PTnTv08Fmu6Vw300Ot9lxigKHuwl8XvsLXjgFpvIF+IsnoGVCOGB0XEi+xj
+ CR+2jEHBobA8Lb/cVHv8scA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_050326_107924_CD4C68AC 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20261119_050326_884669_A47A0C59 
+X-CRM114-Status: GOOD (  12.47  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,57 +110,119 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-The RK3576 has DFI hardware for monitoring the DDR's bandwidth much
-like other rockchip SoCs do. Unlike the RK3588 however, it only has two
-memory channels, so only two per-channel pclks for DFI.
+RK3588's DFI has pclks for each channel. They just weren't noticed as
+missing until now because nothing ever gates them, and they're ungated
+by default on power-on.
 
-Add a compatible for this SoC's variant, and add it to the conditionals
-at the bottom of the bindings file.
+The RK3399 clock situation needs no changes, as there the hardware
+really just has one monitoring unit for both channels.
+
+Add these clocks to the binding, so that drivers for this device can
+properly know about their existence.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../bindings/devfreq/event/rockchip,dfi.yaml          | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+ .../bindings/devfreq/event/rockchip,dfi.yaml       | 70 ++++++++++++++++++----
+ 1 file changed, 58 insertions(+), 12 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
-index 3450e28b4020..dcf3bbde3e8d 100644
+index 50d3fabe958d..3450e28b4020 100644
 --- a/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
 +++ b/Documentation/devicetree/bindings/devfreq/event/rockchip,dfi.yaml
-@@ -14,6 +14,7 @@ properties:
-     enum:
-       - rockchip,rk3399-dfi
-       - rockchip,rk3568-dfi
-+      - rockchip,rk3576-dfi
+@@ -17,11 +17,18 @@ properties:
        - rockchip,rk3588-dfi
  
    clocks:
-@@ -64,6 +65,24 @@ allOf:
-         - clocks
-         - clock-names
+-    maxItems: 1
++    minItems: 1
++    maxItems: 4
  
+   clock-names:
++    minItems: 1
+     items:
+-      - const: pclk_ddr_mon
++      - enum:
++          - pclk_ddr_mon
++          - pclk_ddr_mon_ch0
++      - const: pclk_ddr_mon_ch1
++      - const: pclk_ddr_mon_ch2
++      - const: pclk_ddr_mon_ch3
+ 
+   interrupts:
+     minItems: 1
+@@ -40,17 +47,37 @@ required:
+   - interrupts
+   - reg
+ 
+-if:
+-  properties:
+-    compatible:
+-      contains:
+-        enum:
+-          - rockchip,rk3399-dfi
++allOf:
 +  - if:
 +      properties:
 +        compatible:
 +          contains:
 +            enum:
-+              - rockchip,rk3576-dfi
++              - rockchip,rk3399-dfi
 +    then:
 +      properties:
 +        clocks:
-+          minItems: 2
-+          maxItems: 2
++          maxItems: 1
 +        clock-names:
-+          minItems: 2
-+          maxItems: 2
++          maxItems: 1
 +      required:
 +        - clocks
 +        - clock-names
+ 
+-then:
+-  required:
+-    - clocks
+-    - clock-names
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3588-dfi
++    then:
++      properties:
++        clocks:
++          minItems: 4
++          maxItems: 4
++        clock-names:
++          minItems: 4
++          maxItems: 4
+ 
+ additionalProperties: false
+ 
+@@ -72,3 +99,22 @@ examples:
+         clock-names = "pclk_ddr_mon";
+       };
+     };
 +
-   - if:
-       properties:
-         compatible:
++  - |
++    bus {
++      #address-cells = <2>;
++      #size-cells = <2>;
++
++      dfi_rk3588: dfi@fe060000 {
++        compatible = "rockchip,rk3588-dfi";
++        reg = <0x00 0xfe060000 0x00 0x10000>;
++        clocks = <&cru 0x53>, <&cru 0x48>, <&cru 0x49>, <&cru 0x54>;
++        clock-names = "pclk_ddr_mon_ch0", "pclk_ddr_mon_ch1",
++                      "pclk_ddr_mon_ch2", "pclk_ddr_mon_ch3";
++        interrupts =  <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH 0>,
++                      <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH 0>,
++                      <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH 0>,
++                      <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH 0>;
++        rockchip,pmu = <&pmugrf>;
++      };
++    };
 
 -- 
 2.53.0
