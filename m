@@ -2,64 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3325D606A326
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 21:49:35 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2A993606A334
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 21:50:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NHa0c2hQ;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=eVuzqfT9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=f4zpf8Cu;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kemnade.info header.i=@kemnade.info header.a=rsa-sha256 header.s=20220719 header.b=R3tgwmdJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=xIavfjaxv1Pq5EDNNOpg+gUa0sPk/I6E2YfK+3sd9sU=; b=NHa0c2hQMHtPGam0RkEJOBTc5h
-	TBcWdaXXIxgd30kd22ANlTCtiXkDmSSrhmQivHH7yMLXG2yEcC55qmsC+jZmSv2AYWn+5GrotVtR7
-	nMfOEgb1hB3uXMlBMct0Cv9OTqFn9pOcYHEQK+B/SygUw50oUXI4Rtv1pc8VlmneHKeaK7DTPKRZu
-	TcJpo882bVjZ0/7wgG4KKOcFYNTBcGwHSB43C1u5ydPsOKGn0+6MUSD+2Cd2w7l3jNBLvEUMnbXl1
-	44wgEVlvpzqGgjTxxx50m16VLJqwyM0/DxtVqovoWp7L/JJ9Pywu+nnzVPckh3u1Vj6jJokxtKr+g
-	yXDQKRRg==;
+	bh=vy5yuyG2LLElpCt1YJbPgqGnKYMkV0hecRuwrox6oXs=; b=f4zpf8Cua+mojEWw2ffpDx0L7N
+	zk6PpKA2xJpv/PQwAo7e3/1CEcIA8mvXQBvLQI4upfTLw7NnggfK16OgDM0kti4yPzXI7cMlIL4Mz
+	ZdIphS4UJyit+CCid6TY0JxAWC/5UOmMQx1uNP0XbCFjmmzIZYPpGKNrDnGrVJr1szH2BkeXXk7U9
+	nL/V9Ne/as9Hif4jxaGTUe3AXQgyySeJH28axku0J7jDlb3go5Er2q1TBmMmPnjeb5SU6eTPGsO8u
+	T3VmalJfHr8DeimZW1Bdgn+2yByQEJfzcN8gjVPRI/3UTd45xkOI/XkBqqb+k0C9y68t8Z+0MtDNw
+	bIsEAkGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUA0Z-0000000DVlW-1q1i;
-	Thu, 19 Nov 2026 21:49:31 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xUA1n-0000000DW0A-2l05;
+	Thu, 19 Nov 2026 21:50:47 +0000
+Received: from mail.andi.de1.cc ([2a02:c205:3004:2154::1])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUA0X-0000000DVkz-10Qa;
-	Thu, 19 Nov 2026 21:49:29 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A92676250C;
-	Thu, 19 Nov 2026 21:49:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 258DF1F000C0;
-	Thu, 19 Nov 2026 21:49:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795124968;
-	bh=dqFY46zm6egYH9t5KmwLXvg+tBy4Vv7ro9hejLUEyLo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=eVuzqfT97Y+6ATNIbIJnCGp00575h0keradQM49V9oQSUNMXYSelpv+8HDARiIGBa
-	 uuYzucDmkX2px2ys9ahSXOJsJZhiuGhhTmPcGW3B7/WvxdbrsorMEgUcCrf5GirfIp
-	 Agbeze0ycmbxT85EPf1I5hJcYvQWssH+y/NhyhrKkYvwumVPQvruhChuz67n26x/ZM
-	 10dVMTo+KziOzofPm9Qy/X6T6kYy9O0/bluP1RAlLtBcOw5IHzzYMxrsYczUSKaTMz
-	 whUQKNIUF4ObtcYldG6YX+AGq4xuHZ2VztnEF0sHv3ZDHMo/WjZZ7LjhRVoJ9pH9iP
-	 dDw+pLJ7ZDXeA==
-Date: Thu, 19 Nov 2026 15:49:26 -0600
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Diederik de Haas <diederik@cknow-tech.com>
-Cc: linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [PATCH RESEND 1/3] dt-bindings: arm: rockchip: Add FriendlyElec
- NanoPC-T6 Plus
-Message-ID: <179512496548.785631.3672990790869029250.robh@kernel.org>
-References: <20261104110640.1132917-1-diederik@cknow-tech.com>
- <20261104110640.1132917-2-diederik@cknow-tech.com>
+	id 1xUA1j-0000000DVzl-2bRW;
+	Thu, 19 Nov 2026 21:50:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=kemnade.info; s=20220719; h=References:In-Reply-To:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description;
+	bh=vzam9azfkf4B2QjTL0Ocw4FvWfNSsyoxxQWc2bs79yk=; t=1795125043; x=1796334643; 
+	b=R3tgwmdJVc/udqxibQh9Jp3Ifc4xoN6n6TSpvIgjtTgJu0NvGyQ+VIOmt1yhO0ZyKyt4cXKg5JZ
+	LubTEOLct1zU/Za8oMS8BSYUA/Cm35/0yC+roPm6hHjc3N+fKbnYRbXmDZ2kFQa3HdRFggSLSIi7s
+	2SHI1mz9U1Olh1lnGVbL1/0HkEw0sRwWNlv0u/MS/fZRwTob9xPLwLhZWaH97SsxBGi9uagqofYB6
+	SVMFKKv5lb7d6Bb9iWH+poKrgMLFCABhGmf5q9cgUjBHjjGKOmRaZt6aOgYBaWaAGcJUpgv4y14Qo
+	3w7WHpi1IOoW75VNvqCsIhu403aCrMn+gDgA==;
+Date: Thu, 19 Nov 2026 22:50:17 +0100
+From: Andreas Kemnade <andreas@kemnade.info>
+To: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: Aaro Koskinen <aaro.koskinen@iki.fi>, Kevin Hilman
+ <khilman@baylibre.com>, Roger Quadros <rogerq@kernel.org>, Tony Lindgren
+ <tony@atomide.com>, Russell King <linux@armlinux.org.uk>, Paul Walmsley
+ <paul@pwsan.com>, Stephen Boyd <sboyd@kernel.org>, Brian Masney
+ <bmasney+clk@redhat.com>, Jerome Brunet <jbrunet+clk@baylibre.com>, Sandy
+ Huang <hjc@rock-chips.com>, Heiko =?UTF-8?B?U3TDvGJuZXI=?=
+ <heiko@sntech.de>, Andy Yan <andyshrk@163.com>, Ulf Hansson
+ <ulfh@kernel.org>, linux-clk@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH 5/6] [RFT] ARM: OMAP2+: Convert to
+ dev_clk_get_from_provider()
+Message-ID: <20261119225017.15a7b5cc@kemnade.info>
+In-Reply-To: <683b5b189409e5ee04100044fb615b01cb877f3d.1795094688.git.geert+renesas@glider.be>
+References: <cover.1795094688.git.geert+renesas@glider.be>
+	<683b5b189409e5ee04100044fb615b01cb877f3d.1795094688.git.geert+renesas@glider.be>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; aarch64-unknown-linux-gnu)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261104110640.1132917-2-diederik@cknow-tech.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261119_135043_690979_7E826BA8 
+X-CRM114-Status: GOOD (  18.52  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,25 +76,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+On Thu, 19 Nov 2026 14:40:38 +0100
+Geert Uytterhoeven <geert+renesas@glider.be> wrote:
 
-On Wed, 04 Nov 2026 12:05:04 +0100, Diederik de Haas wrote:
-> The NanoPC-T6 Plus is the latest addition to the NanoPC-T6 series.
-> Add it to the NanoPC-T6 list.
+> OMAP2+ clock handling uses of_clk_get_from_provider() to obtain clocks
+> used for power management, so the latter show up as "deviceless" in the
+> consumer column of the clk_summary file in debugfs.
 > 
-> Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
+> Fix this by using dev_clk_get_from_provider() instead, letting us pass
+> the consumer device, too.
+> 
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 > ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
->  1 file changed, 1 insertion(+)
+> Compile-tested only.
 > 
+> The first change is probably OK.  The second change may fail if anything
+> in the oh->od->pdev->dev chain is not available yet at this point.
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Test on OMAP3:
+
+$ diff -u clk-old clk-new
+--- clk-old	2026-11-19 22:44:59.810807920 +0100
++++ clk-new	2026-11-19 22:26:52.862531880 +0100
+@@ -1,17 +1,17 @@
+                                  enable  prepare  protect                                duty  hardware                            connection
+    clock                          count    count    count        rate   accuracy phase  cycle    enable   consumer                         id
+ ---------------------------------------------------------------------------------------------------------------------------------------------
+- oscillator                          0       0        0        26000000    0          0     50000      Y   deviceless                      of_clk_get_from_provider 
++ oscillator                          0       0        0        26000000    0          0     50000      Y   deviceless                      dev_clk_get_from_provider
+                                                                                                            deviceless                      no_connection_id         
+- secure_32k_fck                      0       1        0        32768       0          0     50000      Y   deviceless                      of_clk_get_from_provider 
++ secure_32k_fck                      0       1        0        32768       0          0     50000      Y   deviceless                      dev_clk_get_from_provider
+                                                                                                            deviceless                      no_connection_id         
+-    wdt1_fck                         0       0        0        32768       0          0     50000      Y      deviceless                      of_clk_get_from_provider 
++    wdt1_fck                         0       0        0        32768       0          0     50000      Y      deviceless                      dev_clk_get_from_provider
+                                                                                                               deviceless                      no_connection_id         
+     gpt12_fck                        0       1        0        32768       0          0     50000      Y      48304000.timer                  fck                      
+                                                                                                               48304000.target-module          fck                      
+-                                                                                                              deviceless                      of_clk_get_from_provider 
++                                                                                                              deviceless                      dev_clk_get_from_provider
+                                                                                                               deviceless                      no_connection_id         
+- dummy_ck                            0       0        0        0           0          0     50000      Y   deviceless                      of_clk_get_from_provider 
++ dummy_ck                            0       0        0        0           0          0     50000      Y   deviceless                      dev_clk_get_from_provider
+                                                                                                            deviceless                      no_connection_id         
+  mcbsp_clks                          0       5        0        0           0          0     50000      Y   deviceless                      mcbsp_clks               
+                                                                                                            deviceless                      mcbsp_clks               
+[...]
+Regards,
+Andreas
+> ---
+>  arch/arm/mach-omap2/omap_device.c | 2 +-
+>  arch/arm/mach-omap2/omap_hwmod.c  | 3 ++-
+>  2 files changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm/mach-omap2/omap_device.c b/arch/arm/mach-omap2/omap_device.c
+> index 77a75b0b9ae69c85..5695e0c8f2392eca 100644
+> --- a/arch/arm/mach-omap2/omap_device.c
+> +++ b/arch/arm/mach-omap2/omap_device.c
+> @@ -73,7 +73,7 @@ static void _add_clkdev(struct omap_device *od, const char *clk_alias,
+>  
+>  		clkspec.np = of_find_node_by_name(NULL, clk_name);
+>  
+> -		r = of_clk_get_from_provider(&clkspec);
+> +		r = dev_clk_get_from_provider(&od->pdev->dev, &clkspec);
+>  
+>  		rc = clk_register_clkdev(r, clk_alias,
+>  					 dev_name(&od->pdev->dev));
+> diff --git a/arch/arm/mach-omap2/omap_hwmod.c b/arch/arm/mach-omap2/omap_hwmod.c
+> index 03cd523dff874bb0..5e4123014909d4ac 100644
+> --- a/arch/arm/mach-omap2/omap_hwmod.c
+> +++ b/arch/arm/mach-omap2/omap_hwmod.c
+> @@ -147,6 +147,7 @@
+>  #include <asm/system_misc.h>
+>  
+>  #include "clock.h"
+> +#include "omap_device.h"
+>  #include "omap_hwmod.h"
+>  
+>  #include "soc.h"
+> @@ -796,7 +797,7 @@ static struct clk *_lookup_clkctrl_clk(struct omap_hwmod *oh)
+>  				clkspec.args[0] = addr - provider->addr[0];
+>  				clkspec.args[1] = 0;
+>  
+> -				clk = of_clk_get_from_provider(&clkspec);
+> +				clk = dev_clk_get_from_provider(&oh->od->pdev->dev, &clkspec);
+>  
+>  				pr_debug("%s: %s got %p (offset=%x, provider=%pOF)\n",
+>  					 __func__, oh->name, clk,
 
 
 _______________________________________________
