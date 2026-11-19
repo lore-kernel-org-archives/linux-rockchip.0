@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4BF4F60A3834
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 07:24:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BCCF7606A326
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 07:24:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bckk//0w;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ljZAlWjZ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CiCWPA/w;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=NB3NJ9HV
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=W2Jtn09nY0CUy5/B02OgscNtFYUva9EPCk0ma3jDWw8=; b=bckk//0widUg8HJn3yN1BbL9Sk
-	OyMokhCxbi3tyQ8BK3X5LknfDT6BS9AJkYw27OVMrsAhObSHJeP7RaJP7tEtBH/e+Esi451mzVn28
-	k9BzcdWsAPBWhMK/e4F1u4cun0EZuhHl5Z6AOJwHXp/I0gEmcwflknhOADQBDGIzLz5wbH/vh2dFa
-	BddIn/xNhRktpqBYm7UhwzH2Q5pk7jCRi4Jf35OkuiwVVL7h+m/DDLf7DiZN9x6oCNf62RoZmFYDG
-	OeEHPGEenEhhaqKs7vVrLHp3zTsXUj/8I+S2i4v5oTWNwFYqDBYEWg7xnLg1lCGGaO8sLxEestokH
-	7w2PKYQQ==;
+	bh=svS3fp3MC5s3daebYlZDdZbIEouCu8+VyF9EVrW18GQ=; b=CiCWPA/wMfdjrY9ZUEGRgbmeFA
+	ndJ5w8fcysMBT59eAJrDNKFqYKjZhyLZnq3F3RqUukLJmNv/11Ps+zwSET2N0Z5ghdmXgI9du8K7L
+	RvXtyAifikcf/XkIxYfgaIEspJAgSZHSaFV9WS/uUfEyVHrd41gHXEsXyVS0LrlbIiL27zM59O2R6
+	VMf5gFBXdfjP3ckCgpxhxzGxWf9ZhzYkU86xnhvsFnu13gMwkfHs32UvMOuwWG6zcydnrP8zij/IX
+	dHDW89pvvKEiLuaOSZcdietl60UmIwM9qXsBWlzXZUE9ERayqmaoUzH7HVLusHI85qtsm5m5+JYf/
+	9BnzaLrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTwV5-0000000B3iH-3Wkv;
-	Thu, 19 Nov 2026 07:24:07 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xTwVL-0000000B3sN-2xqK;
+	Thu, 19 Nov 2026 07:24:23 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTwV4-0000000B3ga-01P4;
-	Thu, 19 Nov 2026 07:24:06 +0000
+	id 1xTwV4-0000000B3gZ-338v;
+	Thu, 19 Nov 2026 07:24:07 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A313C46B97;
+	by tor.source.kernel.org (Postfix) with ESMTP id 2A724614A7;
 	Thu, 19 Nov 2026 07:24:05 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795073045;
-	b=oyIupMk56tF5ZC1P0iaGj8bptwKlBaUJxRjZk1MZZG+RaxALRE+CGHTwHp+CBjyFlY6w
-	 m0lHJRSvpw79If0xWpxUbgjgBOdiLKmlyts1jeNczoxWTu0Exwfxp8RkIES3nR6g0bwDl
-	 v7MkvMtwZcPN2eQXs5WkU3pHP8YsQTb0THa5DoVNAWa95TpG4EYl3HpD4UemXGDJ1ZvSS
-	 +BWBcxWf0gQqElKcvWcNRZomSSUlapDpN0ggpZqH4EhJOJKmGDdnIj/urxhLDPini5M0K
-	 Yi1r2X5mPmFdI10mnsLh9AF+pWc2O/drpmCvH8dFWkaNlElq7T1WTvLaoG4QgJ3D6Gg==
+	t=1795073044;
+	b=TirZHVKHe4H6F8gzhloFU0tF4WrdPdyMvrfYjGttnMO61cjBVcAEXxru8k1l+dbYynZr
+	 BMyuuQR/g0sAlitjckvYFr33XdbST+DBp6QtsyTTQHQ/UkPqiFIfVfm8QiIOAmvNHK1el
+	 Yb9hI1BEBbfq5JYplAOHVYpHQJ+GaZFk4zG7qMbSCJWrA3OXuiWlqmz9b5K+YmY2QzhMA
+	 JJitCgGII4wYflVlV30mklbkRxXXEDuS06/nb32kaIx3epLJczvjDGfR4tO2vu67eUZHl
+	 2W7VDLTGp9/vIO+u1ZhTPGcI5ykIDts5TA5qoB+zj96IwaKSdYJjGljf2XQizpSr8nw==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795073045;
+	c=relaxed/relaxed; t=1795073044;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=/7jA1mdGjpdRHZ3a5Ter91k3t1QA732PAZu5RAALnms=;
-	b=s2H8wwmMzUEvCL0KVBrj/UdtnEZyvYp3WiFTKr3B/X+YuOiBq+0nXvj8PaToV0ZYeO+o
-	 XIlp9njo+B5VjrcDhYvmEP8aum2FiojWzEq8rK2hJioAGkzT8hOGVPwp76p0dXIJ53D2S
-	 CBX7HzQb2OMvmlGkef9H6vhbySz8lzp7LNexyGoBaaY791vSKVaoaEbGJ9VleojQbiXS1
-	 GBgV/c4/m1ej08BQ/UhRsKeD8WSAp17Stsxko3VwJ6tXHmMIqee+t+VDDwzdj65suZdmA
-	 awn2hBtU9kjDurbvl2TnsEnVhCvGyvbnfxLLMmPSNqRVgXgnBA2pUeFwiCqSCl3ieRA==
+	bh=cwtYdg7Ff/aGghpLaQ6sVil8yrw30S9ZwzKbTVNyIbs=;
+	b=UQE8Drv5dKfTU7L7e/K/+vah97nGKB21439L/aTcSqWvS0OqV1r1rdk36gq3BnPGfLsl
+	 mP/N2Y/Vqste9N0d3dFtx8epGal/uvNAk91ShoVz4bh1e4imT1KyR2KcR+SHHfg2wK+6x
+	 5bJGIE8YspWCKM//IDMRO1eZ43hvtw/SUtFItKmJlSjUPWr3Z/WP/hebRJzw50He71Q3B
+	 wysEAnNuPlnvZsGMFbV6ckgT2Wj/ONs2MNCQAPwh7z9fhCzL6I4AeOPGv/I3B0aGjDK+h
+	 mZvA8VtvyHmiDvSk2aF4zgyxoqwdrAbZ2S8hq3yt024UIr1X/ynD10u3XM/RP9rQg/w==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 6DCC21F000C8;
+	by smtp.kernel.org (Postfix) with ESMTPS id 3A2401F000C5;
 	Thu, 19 Nov 2026 07:24:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795073045;
-	bh=/7jA1mdGjpdRHZ3a5Ter91k3t1QA732PAZu5RAALnms=;
+	s=k20260515; t=1795073044;
+	bh=cwtYdg7Ff/aGghpLaQ6sVil8yrw30S9ZwzKbTVNyIbs=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=ljZAlWjZaELtUmdrKMoiOcoEHH0iUq3qtxHAScLAtnUTNevsFvPnfqR3euUVT5V7W
-	 MMpWGz7scyVEGWBBux5Ox50KcZi4EfWwimnoR/qciu/J/5KhfCwTg98XC6/EntPNKp
-	 TJPDGJFlO53H4y56tDewE6X8Uk/BdJ4LqcXNECGE09+aFCffVcJLBbV32Tkqvg4JJO
-	 6TfQf7n6a/jxLDyVGWnQ8fNIiAxOAucLH/ml/iNmYYL2rZauhGZRrK2QRj2x5sDhoQ
-	 DCL0K3reAH5PvRjrbrWqQg7HQkVEGGJJETOQOHdkvWZ4iaNpZjpRQQadCyStdDPU1Y
-	 FloSDxAI6bQvw==
+	b=NB3NJ9HVEa9bixAUZ65xqA+LbU0YI/OlsyGuKR7VwKpO1/v0hmA70/cQCVtdjISl4
+	 ZmSLWouLmzN2JtIfElmNBvQ7TiyQ+jI0jUTzPXHviA470xqUjzzAl9JPr1NfXVJ0VW
+	 BCStyCMr9UyyMeFoxk5Du51aJH9n5+Jsp45dFH9Zjq86crWnkpl55ihjF9HHOemboj
+	 LS215XBTW1PEsWWHSZQVYWqF5ZdB/9hIkAkTJIcbj4TroY/wQwy1gKoERgnN+e0AFQ
+	 7PsZVtppEb1lQTHRHGv6noBlKI1nTFyf1bj0B8Hl3cOMXdaeXYQ6D+3K6vcJ7qInW3
+	 BMnt3yVMYtx7Q==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 015004B169;
-	Thu, 19 Nov 2026 07:24:04 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id C4EB94B160;
+	Thu, 19 Nov 2026 07:24:03 +0000 (UTC)
 From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Thu, 19 Nov 2026 07:23:59 +0000
-Subject: [PATCH net v7 3/5] net: phy: stop postponing PHY interrupts when
- phy_suspend() fails
+Date: Thu, 19 Nov 2026 07:23:57 +0000
+Subject: [PATCH net v7 1/5] net: phy: move irq_suspended and irq_rerun out
+ of the bitfield
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261119-b4-phylib-mac-pm-irq-v3-v7-3-d8b8f43b5a62@iav.lv>
+Message-Id: <20261119-b4-phylib-mac-pm-irq-v3-v7-1-d8b8f43b5a62@iav.lv>
 References: <20261119-b4-phylib-mac-pm-irq-v3-v7-0-d8b8f43b5a62@iav.lv>
 In-Reply-To: <20261119-b4-phylib-mac-pm-irq-v3-v7-0-d8b8f43b5a62@iav.lv>
 To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, 
@@ -100,13 +100,13 @@ Cc: Thomas Gleixner <tglx@kernel.org>, linux-pm@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Igor Velkov <iav@iav.lv>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2032; i=iav@iav.lv;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3375; i=iav@iav.lv;
  h=from:subject:message-id;
- bh=+A2hLcXVzSFgT2M5CYC4xlPO/kE1CSINjgk6/JEhbKI=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFn/lghOjFq7xNrV8U3Y5A+Lrx4tsry8p7Gv1+g0G/9v4
- xaLui0HO0pZGMS4GGTFFFkmHNK4lbHk6l9/D/MHMHNYmUCGMHBxCsBEMj4x/C9L2niVU95cLkVn
- 9p3ra3IXR6Qs0EqYpWfEs7ZD7S1X8RZGhnV7/72td/kZsHTxpC2dN1YEzwneln/k0py+7Pnnel3
- Sz/ADAA==
+ bh=Qlv4+bRQfcVjpy/H1IULOONZkAOElJ21mxexa2OAmIQ=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDFn/lgjUCk+6bG5wcFd7fYP0pI9qKw59uL763uJjcrVhR
+ 3Y3lk0W7ShlYRDjYpAVU2SZcEjjVsaSq3/9PcwfwMxhZQIZwsDFKQAT8XNm+Ctku+TaE4W5K9tS
+ eE0XbGm5dWnG3abk3tnHhFj+TT0e+2ghI8O/xhX7UjtKZBeenOIsqT9tq6W9ZGFIyzbB868sL+c
+ 9z2ECAA==
 X-Developer-Key: i=iav@iav.lv; a=openpgp;
  fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
 X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
@@ -133,61 +133,97 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Igor Velkov <iav@iav.lv>
 
-When phy_suspend() fails in mdio_bus_phy_suspend(), irq_suspended
-stays set and the state machine stays stopped: the PM core does not
-resume a device whose suspend callback failed, and the next PHY
-interrupt disables the line until the next resume.
+irq_suspended and irq_rerun share a word with link, autoneg_complete
+and interrupts. phy_interrupt() sets irq_rerun from the IRQ thread
+without phydev->lock, while the state machine writes link and
+autoneg_complete under it and phy_request_interrupt()/
+phy_free_interrupt() write interrupts, so one read-modify-write can
+undo another. A lost irq_rerun leaves the PHY interrupt disabled after
+resume, as phy_interrupt() has already disabled the line.
 
-Undo the postponing and restart the state machine when phy_suspend()
-fails. Set suspended_by_mdio_bus only after phy_suspend() succeeds.
-Set before it, the flag outlived a failed suspend, and in a later cycle
-where mdio_bus_phy_may_suspend() returns false, mdio_bus_phy_resume()
-ran phy_init_hw() and phy_resume() on a PHY that the MDIO bus had not
-suspended.
+The last patch of this series sets irq_suspended for PHYs whose MAC
+driver manages PHY PM; with stmmac that happens before the MAC stops
+the PHY, which widens the window.
+
+Taking phydev->lock in phy_interrupt() alone does not close it:
+phy_suspend() stores suspended in the same word and cannot hold the
+lock across phy_may_wakeup(), which may take it, and phy_init_hw() and
+mdio_bus_phy_suspend() write the word unlocked too. Locking every
+writer, MAC drivers included, is a wide audit, and one missed now or
+added later reopens the race.
+
+Make both flags bools.
 
 Fixes: 1758bde2e4aa ("net: phy: Don't trigger state machine while in suspend")
+Tested-by: Haoning Cheng <Haoning.CHENG@cn.bosch.com>
 Signed-off-by: Igor Velkov <iav@iav.lv>
 ---
-Haoning Cheng's Tested-by on v5 is not carried: this patch no longer
-changes the resume error path.
----
- drivers/net/phy/phy_device.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+ drivers/net/phy/phy.c        | 2 +-
+ drivers/net/phy/phy_device.c | 6 +++---
+ include/linux/phy.h          | 7 +++++--
+ 3 files changed, 9 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/net/phy/phy.c b/drivers/net/phy/phy.c
+index fce9bc7be330..9af303d60bd6 100644
+--- a/drivers/net/phy/phy.c
++++ b/drivers/net/phy/phy.c
+@@ -1430,7 +1430,7 @@ static irqreturn_t phy_interrupt(int irq, void *phy_dat)
+ 				pm_wakeup_dev_event(parent, 0, true);
+ 		}
+ 
+-		phydev->irq_rerun = 1;
++		phydev->irq_rerun = true;
+ 		disable_irq_nosync(irq);
+ 		return IRQ_HANDLED;
+ 	}
 diff --git a/drivers/net/phy/phy_device.c b/drivers/net/phy/phy_device.c
-index f2e2370b4be7..2d2058c29f30 100644
+index b39e945cebd7..1791d578f4dd 100644
 --- a/drivers/net/phy/phy_device.c
 +++ b/drivers/net/phy/phy_device.c
-@@ -368,6 +368,7 @@ static __maybe_unused void mdio_bus_phy_resume_irq(struct phy_device *phydev)
- static __maybe_unused int mdio_bus_phy_suspend(struct device *dev)
- {
- 	struct phy_device *phydev = to_phy_device(dev);
-+	int ret;
+@@ -344,7 +344,7 @@ static __maybe_unused int mdio_bus_phy_suspend(struct device *dev)
+ 	 * has resumed. Wait for concurrent interrupt handler to complete.
+ 	 */
+ 	if (phy_interrupt_is_valid(phydev)) {
+-		phydev->irq_suspended = 1;
++		phydev->irq_suspended = true;
+ 		synchronize_irq(phydev->irq);
+ 	}
  
- 	if (phydev->mac_managed_pm)
- 		return 0;
-@@ -385,9 +386,20 @@ static __maybe_unused int mdio_bus_phy_suspend(struct device *dev)
- 	if (!mdio_bus_phy_may_suspend(phydev))
- 		return 0;
+@@ -394,14 +394,14 @@ static __maybe_unused int mdio_bus_phy_resume(struct device *dev)
+ 		return ret;
+ no_resume:
+ 	if (phy_interrupt_is_valid(phydev)) {
+-		phydev->irq_suspended = 0;
++		phydev->irq_suspended = false;
+ 		synchronize_irq(phydev->irq);
  
-+	ret = phy_suspend(phydev);
-+	if (ret) {
-+		/* The PM core skips the resume callback of a device whose
-+		 * suspend callback failed.
-+		 */
-+		mdio_bus_phy_resume_irq(phydev);
-+		if (phy_uses_state_machine(phydev))
-+			phy_start_machine(phydev);
-+		return ret;
-+	}
-+
- 	phydev->suspended_by_mdio_bus = 1;
+ 		/* Rerun interrupts which were postponed by phy_interrupt()
+ 		 * because they occurred during the system sleep transition.
+ 		 */
+ 		if (phydev->irq_rerun) {
+-			phydev->irq_rerun = 0;
++			phydev->irq_rerun = false;
+ 			enable_irq(phydev->irq);
+ 			irq_wake_thread(phydev->irq, phydev);
+ 		}
+diff --git a/include/linux/phy.h b/include/linux/phy.h
+index 21afc2082b17..59c75296d535 100644
+--- a/include/linux/phy.h
++++ b/include/linux/phy.h
+@@ -726,8 +726,11 @@ struct phy_device {
  
--	return phy_suspend(phydev);
-+	return 0;
- }
+ 	/* Interrupts are enabled */
+ 	unsigned interrupts:1;
+-	unsigned irq_suspended:1;
+-	unsigned irq_rerun:1;
++	/* Not bitfields: phy_interrupt() and the PM callbacks write them
++	 * without phydev->lock
++	 */
++	bool irq_suspended;
++	bool irq_rerun;
  
- static __maybe_unused int mdio_bus_phy_resume(struct device *dev)
+ 	unsigned default_timestamp:1;
+ 
 
 -- 
 2.43.0
