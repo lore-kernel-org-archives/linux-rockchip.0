@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AD1CC606A320
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 10:08:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 142F1606A320
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 10:13:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=25vkTtZz;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=T8t+X2ah
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gMB0FXS5;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jt7Crehm
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,98 +14,91 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=uRuwCf6c3j6Rnu/s/ade0gUm1G4tLXbkYvqOniTWKDA=; b=25vkTtZzOr4lc7LVFwTvLLB/cs
-	cIkR6/P1mfQDR0Z+BRH87FhRH96Wd3RIcmm1nIpPxPXUFJU+/Is/sDXMzBXfzbKzRkiKvWVgv6hhy
-	vt9oVyDXlslpgi/TCgFrPRHpcUiP8qr3H01EB8Rii03gnEno3RVMHZKwhMFNfrgQYl0TTBiE19tO4
-	a1FZzlwHRbmcKCiilzX+JawKA3osbDl9q6mkENc4ebHbxiOJf8d8m7MsBH85t/WZQLHlR8JJKR0FY
-	/aNKJs6cfNOLi4sEl61MnLsXitbKfnncjzoNxPj7iUh4DYQoG1e92APDEvcJQjEV90OHJeiJB6bE4
-	HlMdVijQ==;
+	bh=8AXpC2HkxxzL92OabG3K3AbGX+49HumARRUw8g40OCE=; b=gMB0FXS5DB7T28TuZEkFFs5dFg
+	HzW6M/pAYJFKyJ1/g1DW6bT39IEl9PvKDmGksY7D/esyz6vTH6FZXoxlK92MFdj8WXPjB+uquuwJ3
+	TRzrFJumd+qsPE7u1AD5nivGd4SeEnJOdxZqHBpNVFujoEw6hxpb72Emq2bAaMIT9JFKigSYHlKbh
+	xPdsbvB1Uf/8uuI83m0yaX7C2jcM9AlfiVXO5wgPs/FeunROkCQn9B8Mw3EdL6p2KhyPc8UDSv6C8
+	S1YvvNguhLkuNt4uvW+pF07GLtjUgvuTFy9Oni6NF0QGjF5vZ4sdlWyLicPe/ReKmx1J1ztV3LN84
+	1wtR2X3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTz3h-0000000BUSS-1N8T;
-	Thu, 19 Nov 2026 10:08:01 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xTz8U-0000000BUzs-32i6;
+	Thu, 19 Nov 2026 10:12:58 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTz3f-0000000BURf-29To;
-	Thu, 19 Nov 2026 10:07:59 +0000
+	id 1xTz8T-0000000BUzM-0V1k;
+	Thu, 19 Nov 2026 10:12:57 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4784D45905;
-	Thu, 19 Nov 2026 10:07:59 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7B83F4772B;
+	Thu, 19 Nov 2026 10:12:56 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795082879;
-	b=Cf2/qBq34dLnxUZDWbMpiT2mkrxuoIP73tlM77n7U59vctV02TAXJCvVYAnASGLFO5Tf
-	 zDK+CLu0jcPbZLC36gS/Be9s/f0LJjxoEYf3c7AhTvLbXRaozDoi5HGgyKD2KPA0wRi49
-	 xeJQLarQe+nkIOi1XFWO9JlivLaSwcVT856Rac/lz9ahDYh6OkNRiiv+0VW/QOUWaI8+f
-	 iMXGJ8OrEWaLxo8HbCxPyMKmmMoK1zk00MUex75ZhHWWgP3TR9Gjyxr/Z7b+aYWtdFsrK
-	 +4ky1m3OYBjA18roJ8dt9PIkg2MW9moj6LT7QZV5GkSD4UM5jdyVVkP00lc4smNDdPQ==
+	t=1795083176;
+	b=zz7ubXUdGlR+MQvsWe4TgMMT9w22qynndfy0YQdzHPjJo2kM2CkDpWZBOeWO1IEoxvBn
+	 A49wbqFQq1kZ30VfVzVA5lVx19SVKzJr7YT0m9zU3pX2NVTtW70dGXFoKjHHizbwgE1Te
+	 bzDjV3TqdRkAX1osO1pmwnkH9jjDnJsji5+Z+sj08MxB46HpJVn83EqosR9mq5EGuzZDt
+	 tXkELr7cJt1b3X23mJUhxcsqKL+s0vazqP9uFB6YjqxMs3mgZfKrgZEiM1SeDFe6VS+H6
+	 b+bfWh8nucjhi5E41uW2FbXIpjgdfsPyXZ4ewR0wZTELaGJybB2MFmNLEPl3hvoTkww==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795082879;
+	c=relaxed/relaxed; t=1795083176;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=gYAYrLCOGgg/07L+LDhGF2bUCvhFzYdBrR2yq0ZLqyw=;
-	b=LPLXfaA0ju6jXbtzUMQ3lFreqj7ms+4QR6P5vcNAuC0F5FPNJdEE4k0V+nIL+d2kB+dY
-	 YLYKblzj43bJgKrnLVIZcDDwc1aYYQsAOZWE5usQSQD1wAWY+t+9WYxOytBLRFcPv3XGl
-	 o5zyMhoVmiW+zbNzbgUzSLmTftZT2MhDFJWfbbRub7j2RgqsxcJvQ7m+zUm3P16EAtLQ9
-	 QOg3IC1UoXbw6D8bHHxAUDkcrOrexmlDA+ufpx/K03jXiCPGZp6M0Fe/+Sq4upRc3Bip6
-	 hp8BKFNiqNFW14zO2+tRJgjMbaidNnW2bj7VRBnmp2vQAMlY8UXRUInTl3pDv+2O3yA==
+	bh=K03F2f4Ft9K50wqvLnOpW9292yJSmRuD1JS5YqElWiA=;
+	b=CVakwcCbm6QfUjnpNCfBzny8q21+YNxCnKVBM+kb9P8nhtDeypeN0I6LUlIL5N2bA5mR
+	 Xppc1OSBrTDeFAcokaMjVjw59pcUPcJO5lZJBRob1SpSdftwoBi1QiHk27QVH62inp5jB
+	 dhWjRSiuPXiocdff7AZPmbPtGWAMpFx++mVQ0Y3bXB8rVduBa+fzIhYwWIo9WoJTkc5ej
+	 v44g8NnEjYgr1tUHMHzRBTQK0Lb1iHrpoPy5b96xlW2dsPTgyrkfDf6edv6ZTFLKOD8SC
+	 ig+1pXGHFzgtwQEnQKTwK4g68RwEBDNgo9OOjk/c45JBesjCLHNbHZ8rDz0VL3Ex3GA==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 0E1A81F000C5;
-	Thu, 19 Nov 2026 10:07:58 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id CCCAA1F000C8;
+	Thu, 19 Nov 2026 10:12:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795082879;
-	bh=gYAYrLCOGgg/07L+LDhGF2bUCvhFzYdBrR2yq0ZLqyw=;
+	s=k20260515; t=1795083176;
+	bh=K03F2f4Ft9K50wqvLnOpW9292yJSmRuD1JS5YqElWiA=;
 	h=From:Date:Subject:To:Cc:Reply-To;
-	b=T8t+X2ah2gHvrkFQ3W2yMPBC+uL/144J9JzCFJUzPZfef0zDYFEHFE963tH1OE+T1
-	 mzxdKJXffY0sebIWXn0UCBPVFWPOsLs8EXshu07vGxsJJ367e/W1h2vnaSVHe6k49G
-	 4y5D9wTCToF+CEJUwqBQ6XUmcJ4aaF8eRGcT1byEd3loo7ApaR/GW2BfoTWU8egpBV
-	 QldPZ9qs6StAtRmp6ztGoNaJq3idERLcyN7Lu8QuRRHRCnTgVzWbgXxnjdPavqbTx/
-	 W0OcckyJcfLljWTX/vH8lwvuwqrltz+6aix3FSCWAAD91ANAkKkJRaQo+kAX6wuifI
-	 WNyjtCPS6LImQ==
+	b=jt7CrehmLMGaLTM0GMaSe3CYXcE3L3UMJtET6YQZDHD9wjJwjzEaiWy583Plu2gtG
+	 LcSCBtrMNawctw0ct6AbYJODQSfu/Dk2v3pY2qAplis1iyUcZjD9yPswwZ5lSrPakZ
+	 gO1LiwEGs1flg83I4VmjtlNC5GdmA8PgXHCDUQWhmy6VWDmyfDAlyeot1Ur7puwgMX
+	 Xl42XmeN6Jm5nAF5+ZEj/FE9XLUO2CCpyt72QexoDICAo2uSBoQiERQaGoQP5bHf2G
+	 IPgne1ITX5Zo+ED6khEOxMs5qnjjtq3hgC6yzUnhrsvqUpv8myilrgOWPalZtitz52
+	 NjeodRq44xbnQ==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 92AA04B1FE;
-	Thu, 19 Nov 2026 10:07:57 +0000 (UTC)
-From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 19 Nov 2026 10:07:58 +0000
-Subject: [PATCH] media: verisilicon: Limit the i.MX8MM G1 decoder to 1920
- pixel wide pictures
+	by lkml.kernel.org (Postfix) with ESMTP id 4851C4B208;
+	Thu, 19 Nov 2026 10:12:55 +0000 (UTC)
+From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
+Date: Thu, 19 Nov 2026 18:12:34 +0800
+Subject: [PATCH v2] dt-bindings: soc: rockchip: Add RK3572 PMU and GRF
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261119-hantro-imx8mm-vp8-v1-1-835dd9b5382c@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXM0Q5EMBCF4VeRuTaJ6Qrtvoq4sEwZSZEWkYh3V
- +vyO8n5TwjshQN8kxM87xJkniIoTaAdmqlnlC4aVKYKIjIYx9XPKO7QzuG+aFQfy7q0ZLrcQPw
- tnq0c/2ZVvw7bb+R2fUJwXTfIrYPTdQAAAA==
-X-Change-ID: 20261119-hantro-imx8mm-vp8-23fe87f19d49
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Frank Li <Frank.Li@nxp.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, Hans Verkuil <hverkuil@kernel.org>, 
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Adam Ford <aford173@gmail.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Arun Iyengar <aiyengar1990@gmail.com>
+Message-Id: <20261119-add-board-ok3572-c-soc-v2-1-86f331024ae6@qq.com>
+X-B4-Tracking: v=1; b=H4sIAJHL/moC/22Nyw6CMBBFf4XM2jGdkuJj5X8YFqWdSjVSaZFoC
+ P9uga3Lk9x7zgSJo+cE52KCyKNPPnQZ5K4A0+ruxuhtZpBCVkR0Qm0tNkFHi+FRqoNEgykYFI0
+ jpXXlVGUhn1+Rnf+s4mu9cXo3dzbDYlsWrU9DiN+1PNKy2yJCyn+RkVDkinD2qHRJzJe+35vwh
+ Hqe5x/Y49qWxwAAAA==
+X-Change-ID: 20261119-add-board-ok3572-c-soc-0bf15aa6f56d
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Elaine Zhang <zhangqing@rock-chips.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, Cunhao Lu <1579567540@qq.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795082877; l=3675;
- i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=ttabhbq6HX9n6LkD9lfDtGqujWqiEJqLK1Woo7amLA4=;
- b=+G5/+KW2AA45IYVMYGsAK031f3/0CCyalGQ+9VZaUy/I1qNSEut0kIdVEsvlPABpwv/SV97aN
- by0MkGaTorGCX58eERoTDkfsA1sJAYMPiaiCNQwfVdOyBtXjalc1cP+
-X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
- pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
-X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
- auth_id=1480
-X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795083174; l=5318;
+ i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
+ bh=b/rDTbq4DCmHSU701K3E2hX3KodZSHqR0es+ciOnncM=;
+ b=T1wmbAcUr5SHtkt0cRgeD/nv42XSiVmV7RqDZ+6uN8OuohfqZgffN9iSBgDLcYGlT/0+iRMyU
+ M8sXcuF/eNHBKdqabV+HA6x9dmbPPvJKqH1GtKy/abpUtZcqtw4hRRO
+X-Developer-Key: i=1579567540@qq.com; a=ed25519;
+ pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
+X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
+ auth_id=1177
+X-Original-From: Cunhao Lu <1579567540@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,7 +108,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: aiyengar1990@gmail.com
+Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -127,117 +120,139 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
+From: Cunhao Lu <1579567540@qq.com>
 
-The i.MX8MM G1 uses the i.MX8MQ format table, which allows H.264, VP8
-and NV12 up to 3840x2160. The i.MX 8M Mini data sheet rates the decoder
-at 1080p60, and NXP's hantro_v4l2 driver offers a decoder of that size
-1920 pixels wide and up to 4096 high.
+The RK3572 PMU and GRF blocks are system controllers shared with the
+clock, power-domain, and USB PHY drivers.
 
-Give it its own table with these formats limited to 1920 pixels wide.
-Heights are kept so that portrait pictures such as 1080x1920 are still
-accepted, as in NXP's driver.
-
-Fixes: cf1abc501a5c ("media: hantro: Add support for i.MX8MM Hantro-G1")
-Reported-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Closes: https://lore.kernel.org/r/f041c5d87698ab3be8283ecc71ead0679327238e.camel@collabora.com
-Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 ---
-Not tested on hardware: I have no i.MX8MM board, so the limit is from the
-data sheet and NXP's driver, not from the decoder's configuration
-register. Build-tested only (W=1 arm64). The i.MX8MQ table is unchanged:
-NXP's driver gives VP8 the same 4096x4096 as H.264 there.
+This is one of the subsystem submissions for RK3572 support.
 
-Developed with Claude (Anthropic), which wrote the code and the commit
-messages. I reviewed every change.
+This patch documents the RK3572 power management unit (PMU) and general
+register files (GRFs) used by the clock, power-domain and PHY drivers.
+The GRF binding describes the USB2 PHY as a child of its GRF and
+requires clocks for the NVM0, PHP, PIPE PHY and USB2 PHY GRFs.
+
+The RK3572 SoC has eight CPU cores: two Cortex-A73 cores and six
+Cortex-A53 cores. It also integrates an Arm Mali-G310V2 MC1 GPU.
+The OK3572-C board provides two Gigabit Ethernet ports, three USB3 Type-A
+ports, a Type-C dual-role port, eMMC, microSD, and UART.
+
+Testing was performed with Debian 13 minimal and Linux 7.3 on the
+OK3572-C with the FET3572-C module.
+
+Passed functionality:
+
+- SD and eMMC complete the firmware, kernel, and root filesystem
+  boot chain.
+- UART console works at 1500000 baud.
+- SD read/write and data persistence checks pass.
+- All eight CPUs start; CPU frequency scaling and hotplug checks pass.
+- Both Ethernet ports obtain IPv4 addresses and pass bidirectional file
+  transfers.
+- All three Type-A ports pass USB2 and USB3 enumeration, data transfers,
+  and reconnect persistence checks.
+- Type-C host and device modes pass in both plug orientations. Physical
+  reconnects correctly select the expected device, host, and device roles
+  in sequence.
+
+Some files in this series are derived from the Forlinx OK3572-C BSP
+Alpha1. Thanks to Forlinx for their support.
+Thanks also to Rockchip's David Wu, Elaine Zhang, Finley Xiao, Frank
+Wang, William Wu, and Ye Zhang for providing the driver source files.
+
+AI assistance:
+
+- Codex / DeepSeek V4.1 Flash were used for:
+  - Reviewing and adjusting code style to follow community conventions
+  - Automating tests
+  - Collecting data
 ---
- drivers/media/platform/verisilicon/imx8m_vpu_hw.c | 58 ++++++++++++++++++++++-
- 1 file changed, 56 insertions(+), 2 deletions(-)
+Changes in v2:
+- Split the original RK3572 support series by subsystem.
+- Link to v1:
+  https://patch.msgid.link/20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com
+---
+Raw dmesg: see the v1 cover letter.
+---
+ Documentation/devicetree/bindings/arm/rockchip/pmu.yaml |  2 ++
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 12 ++++++++++++
+ 2 files changed, 14 insertions(+)
 
-diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-index fa4224de4b99..805c57a4adcb 100644
---- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-@@ -148,6 +148,60 @@ static const struct hantro_fmt imx8m_vpu_dec_fmts[] = {
- 	},
- };
- 
-+static const struct hantro_fmt imx8mm_vpu_g1_dec_fmts[] = {
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV12,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_MPEG2_SLICE,
-+		.codec_mode = HANTRO_MODE_MPEG2_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_VP8_FRAME,
-+		.codec_mode = HANTRO_MODE_VP8_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_H264_SLICE,
-+		.codec_mode = HANTRO_MODE_H264_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+};
-+
- static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12,
-@@ -382,8 +436,8 @@ const struct hantro_variant imx8mq_vpu_g2_variant = {
- };
- 
- const struct hantro_variant imx8mm_vpu_g1_variant = {
--	.dec_fmts = imx8m_vpu_dec_fmts,
--	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_dec_fmts),
-+	.dec_fmts = imx8mm_vpu_g1_dec_fmts,
-+	.num_dec_fmts = ARRAY_SIZE(imx8mm_vpu_g1_dec_fmts),
- 	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
- 		 HANTRO_H264_DECODER,
- 	.codec_ops = imx8mq_vpu_g1_codec_ops,
+diff --git a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+index 1cff2328cd01..43dcaa77ffdb 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+@@ -28,6 +28,7 @@ select:
+           - rockchip,rk3528-pmu
+           - rockchip,rk3562-pmu
+           - rockchip,rk3568-pmu
++          - rockchip,rk3572-pmu
+           - rockchip,rk3576-pmu
+           - rockchip,rk3588-pmu
+           - rockchip,rv1126-pmu
+@@ -48,6 +49,7 @@ properties:
+           - rockchip,rk3528-pmu
+           - rockchip,rk3562-pmu
+           - rockchip,rk3568-pmu
++          - rockchip,rk3572-pmu
+           - rockchip,rk3576-pmu
+           - rockchip,rk3588-pmu
+           - rockchip,rv1126-pmu
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index e94c83d7c138..0e0bf8e234c8 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -30,6 +30,12 @@ properties:
+               - rockchip,rk3568-pipe-grf
+               - rockchip,rk3568-pipe-phy-grf
+               - rockchip,rk3568-usb2phy-grf
++              - rockchip,rk3572-ioc-grf
++              - rockchip,rk3572-nvm0-grf
++              - rockchip,rk3572-php-grf
++              - rockchip,rk3572-pipe-phy-grf
++              - rockchip,rk3572-pmu0-grf
++              - rockchip,rk3572-sys-grf
+               - rockchip,rk3576-bigcore-grf
+               - rockchip,rk3576-cci-grf
+               - rockchip,rk3576-csidphy-grf
+@@ -96,6 +102,7 @@ properties:
+               - rockchip,rk3562-pmu-grf
+               - rockchip,rk3568-grf
+               - rockchip,rk3568-pmugrf
++              - rockchip,rk3572-usb2phy-grf
+               - rockchip,rk3576-ioc-grf
+               - rockchip,rk3576-pmu0-grf
+               - rockchip,rk3576-usb2phy-grf
+@@ -259,6 +266,7 @@ allOf:
+               - rockchip,rk3308-usb2phy-grf
+               - rockchip,rk3328-usb2phy-grf
+               - rockchip,rk3399-grf
++              - rockchip,rk3572-usb2phy-grf
+               - rockchip,rk3576-usb2phy-grf
+               - rockchip,rk3588-usb2phy-grf
+               - rockchip,rv1108-grf
+@@ -310,6 +318,10 @@ allOf:
+         compatible:
+           contains:
+             enum:
++              - rockchip,rk3572-nvm0-grf
++              - rockchip,rk3572-php-grf
++              - rockchip,rk3572-pipe-phy-grf
++              - rockchip,rk3572-usb2phy-grf
+               - rockchip,rk3576-dcphy-grf
+               - rockchip,rk3576-vo1-grf
+               - rockchip,rk3588-vo-grf
 
 ---
-base-commit: aa0f4c41d4870a18e65772a1817af16427200371
-change-id: 20261119-hantro-imx8mm-vp8-23fe87f19d49
+base-commit: 4405c18c95d2d0f99f6c581ef0ee8591a1aa6ccd
+change-id: 20261119-add-board-ok3572-c-soc-0bf15aa6f56d
 
 Best regards,
 --  
-Arun Iyengar <aiyengar1990@gmail.com>
+Cunhao Lu <1579567540@qq.com>
 
 
 
