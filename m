@@ -2,67 +2,83 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2A993606A334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 21:50:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 560E3606A324
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 21:58:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=f4zpf8Cu;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kemnade.info header.i=@kemnade.info header.a=rsa-sha256 header.s=20220719 header.b=R3tgwmdJ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rwX6ChbY;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=VnUIuf9k
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=vy5yuyG2LLElpCt1YJbPgqGnKYMkV0hecRuwrox6oXs=; b=f4zpf8Cua+mojEWw2ffpDx0L7N
-	zk6PpKA2xJpv/PQwAo7e3/1CEcIA8mvXQBvLQI4upfTLw7NnggfK16OgDM0kti4yPzXI7cMlIL4Mz
-	ZdIphS4UJyit+CCid6TY0JxAWC/5UOmMQx1uNP0XbCFjmmzIZYPpGKNrDnGrVJr1szH2BkeXXk7U9
-	nL/V9Ne/as9Hif4jxaGTUe3AXQgyySeJH28axku0J7jDlb3go5Er2q1TBmMmPnjeb5SU6eTPGsO8u
-	T3VmalJfHr8DeimZW1Bdgn+2yByQEJfzcN8gjVPRI/3UTd45xkOI/XkBqqb+k0C9y68t8Z+0MtDNw
-	bIsEAkGw==;
+	bh=pmWtkoTx436lvD0e+DVb9Pl1IsLBTo8kubzT9Hg2S+o=; b=rwX6ChbYo+rcD3lFdSiwuRU8j7
+	+qt1KSM3CT3aQASR2u9c5LedAbl/E61Cmx5OTryfzwvPlOQwuDFUMMoyHp5jBG6PAJJAUEHwyT8gC
+	gIqi3+P+nRTSmQiJk6ScfWzkfkVzber0MWgs7LcpRKeFH6PgAQUvuLBn0NAdlqUDAcOM43miH7UE4
+	Ex3YFSzXcMT009sNDpQ+NYv7ku6USpjjVPsj4Hmol4tI848YCtvnpLkK4Pf0ppzMpe+inVME+nngI
+	4hDez0qhEmB9F2Li+Mvz0B0a6q93vJcrU2RBA7rsqszgBZxHcB4tkVodaVTbZ5JTBfIKmsdMdAExO
+	8jxpnKFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUA1n-0000000DW0A-2l05;
-	Thu, 19 Nov 2026 21:50:47 +0000
-Received: from mail.andi.de1.cc ([2a02:c205:3004:2154::1])
+	id 1xUA9C-0000000DWXC-315u;
+	Thu, 19 Nov 2026 21:58:26 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUA1j-0000000DVzl-2bRW;
-	Thu, 19 Nov 2026 21:50:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=kemnade.info; s=20220719; h=References:In-Reply-To:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description;
-	bh=vzam9azfkf4B2QjTL0Ocw4FvWfNSsyoxxQWc2bs79yk=; t=1795125043; x=1796334643; 
-	b=R3tgwmdJVc/udqxibQh9Jp3Ifc4xoN6n6TSpvIgjtTgJu0NvGyQ+VIOmt1yhO0ZyKyt4cXKg5JZ
-	LubTEOLct1zU/Za8oMS8BSYUA/Cm35/0yC+roPm6hHjc3N+fKbnYRbXmDZ2kFQa3HdRFggSLSIi7s
-	2SHI1mz9U1Olh1lnGVbL1/0HkEw0sRwWNlv0u/MS/fZRwTob9xPLwLhZWaH97SsxBGi9uagqofYB6
-	SVMFKKv5lb7d6Bb9iWH+poKrgMLFCABhGmf5q9cgUjBHjjGKOmRaZt6aOgYBaWaAGcJUpgv4y14Qo
-	3w7WHpi1IOoW75VNvqCsIhu403aCrMn+gDgA==;
-Date: Thu, 19 Nov 2026 22:50:17 +0100
-From: Andreas Kemnade <andreas@kemnade.info>
-To: Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: Aaro Koskinen <aaro.koskinen@iki.fi>, Kevin Hilman
- <khilman@baylibre.com>, Roger Quadros <rogerq@kernel.org>, Tony Lindgren
- <tony@atomide.com>, Russell King <linux@armlinux.org.uk>, Paul Walmsley
- <paul@pwsan.com>, Stephen Boyd <sboyd@kernel.org>, Brian Masney
- <bmasney+clk@redhat.com>, Jerome Brunet <jbrunet+clk@baylibre.com>, Sandy
- Huang <hjc@rock-chips.com>, Heiko =?UTF-8?B?U3TDvGJuZXI=?=
- <heiko@sntech.de>, Andy Yan <andyshrk@163.com>, Ulf Hansson
- <ulfh@kernel.org>, linux-clk@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH 5/6] [RFT] ARM: OMAP2+: Convert to
- dev_clk_get_from_provider()
-Message-ID: <20261119225017.15a7b5cc@kemnade.info>
-In-Reply-To: <683b5b189409e5ee04100044fb615b01cb877f3d.1795094688.git.geert+renesas@glider.be>
-References: <cover.1795094688.git.geert+renesas@glider.be>
-	<683b5b189409e5ee04100044fb615b01cb877f3d.1795094688.git.geert+renesas@glider.be>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; aarch64-unknown-linux-gnu)
+	id 1xUA9A-0000000DWWo-0DfW
+	for linux-rockchip@lists.infradead.org;
+	Thu, 19 Nov 2026 21:58:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795125501;
+	bh=LBFpxZHG8DXttjFCfrXOKXE0UTtg7CewXCAmh+s72GQ=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=VnUIuf9ky9aDe1HxfNH7n/JRkL0tH6fDtd1pmgAHcpIPsYV4qEcppVPVs6UHTEuKP
+	 gjZvkzJvIwVUvFP4k2TK2e/26DPoEvL7E4a2bVl1frNp06SX8149Rfwvx2Jz2VPZL/
+	 QKffBIi50UkDoyEMpYdd7sFaKU3EFJZuYcU7OgAGQystKWNHO1XEiuV525pKsOs51l
+	 PKLMpCdzfGcbGFZbPO5TU3ium3jMDRmcOkscStUK44xUNJf7r7RDWbEsVyNSRWxH2H
+	 tIjk1cdvMv5nm32Rqux71mpjWvA/r2M92JIeIslUrhD1IYeWDQCaf9twQghz+UBfkI
+	 BHcQozXjsWzlQ==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A553017E00E8;
+	Thu, 19 Nov 2026 22:58:20 +0100 (CET)
+Message-ID: <e5b11c9daee18bc93aa3986d85bb280117cf5620.camel@collabora.com>
+Subject: Re: [PATCH v1 1/7] media: verisilicon: Add helpers to allocate and
+ free auxiliary buffers
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	p.zabel@pengutronix.de, mchehab@kernel.org
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, kernel@collabora.com
+Date: Thu, 19 Nov 2026 16:58:18 -0500
+In-Reply-To: <20260916125443.78602-2-benjamin.gaignard@collabora.com>
+References: <20260916125443.78602-1-benjamin.gaignard@collabora.com>
+	 <20260916125443.78602-2-benjamin.gaignard@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_135043_690979_7E826BA8 
-X-CRM114-Status: GOOD (  18.52  )
+X-CRM114-CacheID: sfid-20261119_135824_295844_26FD18A3 
+X-CRM114-Status: UNSURE (   6.81  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,107 +89,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5987913704494650641=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no
-	version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, 19 Nov 2026 14:40:38 +0100
-Geert Uytterhoeven <geert+renesas@glider.be> wrote:
+--===============5987913704494650641==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-G8gCA4wMjP1oE/ZB/PAu"
 
-> OMAP2+ clock handling uses of_clk_get_from_provider() to obtain clocks
-> used for power management, so the latter show up as "deviceless" in the
-> consumer column of the clk_summary file in debugfs.
-> 
-> Fix this by using dev_clk_get_from_provider() instead, letting us pass
-> the consumer device, too.
-> 
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> ---
-> Compile-tested only.
-> 
-> The first change is probably OK.  The second change may fail if anything
-> in the oh->od->pdev->dev chain is not available yet at this point.
+--=-G8gCA4wMjP1oE/ZB/PAu
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Test on OMAP3:
+Le mercredi 16 septembre 2026 =C3=A0 14:54 +0200, Benjamin Gaignard a =C3=
+=A9crit=C2=A0:
+> Add helpers functions to allocate and free the auxiliary buffers.
+> That simplify the code and make it more easy to read and maintain.
 
-$ diff -u clk-old clk-new
---- clk-old	2026-11-19 22:44:59.810807920 +0100
-+++ clk-new	2026-11-19 22:26:52.862531880 +0100
-@@ -1,17 +1,17 @@
-                                  enable  prepare  protect                                duty  hardware                            connection
-    clock                          count    count    count        rate   accuracy phase  cycle    enable   consumer                         id
- ---------------------------------------------------------------------------------------------------------------------------------------------
-- oscillator                          0       0        0        26000000    0          0     50000      Y   deviceless                      of_clk_get_from_provider 
-+ oscillator                          0       0        0        26000000    0          0     50000      Y   deviceless                      dev_clk_get_from_provider
-                                                                                                            deviceless                      no_connection_id         
-- secure_32k_fck                      0       1        0        32768       0          0     50000      Y   deviceless                      of_clk_get_from_provider 
-+ secure_32k_fck                      0       1        0        32768       0          0     50000      Y   deviceless                      dev_clk_get_from_provider
-                                                                                                            deviceless                      no_connection_id         
--    wdt1_fck                         0       0        0        32768       0          0     50000      Y      deviceless                      of_clk_get_from_provider 
-+    wdt1_fck                         0       0        0        32768       0          0     50000      Y      deviceless                      dev_clk_get_from_provider
-                                                                                                               deviceless                      no_connection_id         
-     gpt12_fck                        0       1        0        32768       0          0     50000      Y      48304000.timer                  fck                      
-                                                                                                               48304000.target-module          fck                      
--                                                                                                              deviceless                      of_clk_get_from_provider 
-+                                                                                                              deviceless                      dev_clk_get_from_provider
-                                                                                                               deviceless                      no_connection_id         
-- dummy_ck                            0       0        0        0           0          0     50000      Y   deviceless                      of_clk_get_from_provider 
-+ dummy_ck                            0       0        0        0           0          0     50000      Y   deviceless                      dev_clk_get_from_provider
-                                                                                                            deviceless                      no_connection_id         
-  mcbsp_clks                          0       5        0        0           0          0     50000      Y   deviceless                      mcbsp_clks               
-                                                                                                            deviceless                      mcbsp_clks               
-[...]
-Regards,
-Andreas
-> ---
->  arch/arm/mach-omap2/omap_device.c | 2 +-
->  arch/arm/mach-omap2/omap_hwmod.c  | 3 ++-
->  2 files changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/arch/arm/mach-omap2/omap_device.c b/arch/arm/mach-omap2/omap_device.c
-> index 77a75b0b9ae69c85..5695e0c8f2392eca 100644
-> --- a/arch/arm/mach-omap2/omap_device.c
-> +++ b/arch/arm/mach-omap2/omap_device.c
-> @@ -73,7 +73,7 @@ static void _add_clkdev(struct omap_device *od, const char *clk_alias,
->  
->  		clkspec.np = of_find_node_by_name(NULL, clk_name);
->  
-> -		r = of_clk_get_from_provider(&clkspec);
-> +		r = dev_clk_get_from_provider(&od->pdev->dev, &clkspec);
->  
->  		rc = clk_register_clkdev(r, clk_alias,
->  					 dev_name(&od->pdev->dev));
-> diff --git a/arch/arm/mach-omap2/omap_hwmod.c b/arch/arm/mach-omap2/omap_hwmod.c
-> index 03cd523dff874bb0..5e4123014909d4ac 100644
-> --- a/arch/arm/mach-omap2/omap_hwmod.c
-> +++ b/arch/arm/mach-omap2/omap_hwmod.c
-> @@ -147,6 +147,7 @@
->  #include <asm/system_misc.h>
->  
->  #include "clock.h"
-> +#include "omap_device.h"
->  #include "omap_hwmod.h"
->  
->  #include "soc.h"
-> @@ -796,7 +797,7 @@ static struct clk *_lookup_clkctrl_clk(struct omap_hwmod *oh)
->  				clkspec.args[0] = addr - provider->addr[0];
->  				clkspec.args[1] = 0;
->  
-> -				clk = of_clk_get_from_provider(&clkspec);
-> +				clk = dev_clk_get_from_provider(&oh->od->pdev->dev, &clkspec);
->  
->  				pr_debug("%s: %s got %p (offset=%x, provider=%pOF)\n",
->  					 __func__, oh->name, clk,
+"more easy" -> easier, :-D
 
+>=20
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+--=-G8gCA4wMjP1oE/ZB/PAu
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCav9w+gAKCRDZQZRRKWBy
+9MMpAQDX5MVq3FLT2AZZbIUK7/q/eAwYusGRmh55gqMqOKSEEQD+Jl7Y+eu4QRt9
+niSMVaKFbGTbklGM/mSgUMIS6CkB0gw=
+=yWYf
+-----END PGP SIGNATURE-----
+
+--=-G8gCA4wMjP1oE/ZB/PAu--
+
+
+--===============5987913704494650641==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5987913704494650641==--
+
