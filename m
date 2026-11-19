@@ -2,86 +2,100 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0F45C606A32A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 18:24:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54AD8606A332
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 19:12:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YUmljxEl;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=J8DSUV9O
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fr+xd8lE;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=SxnitvcN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=N7GJXfHFl0cedHkq/LpE9Gcc8GjnHjE/uayvufcmkzQ=; b=YUmljxElB0s+PfEwdZb1q5E/Iw
-	q0PSgSnaKWD/30/y2KHg7J7gSkXqa1bcGBhN2zaiyRd9IeLofg35UAbYaDbkibMueI6Wbwm1DibIw
-	6r73U563il88bNBhw+CW0NMcEWri94ODuPcqmRnwJaIi6RuCrlRcNxjjWQBCFNW6OkXsjOd344vVb
-	JCdampz/tu0xGmqGh009kTxZ1Z2WZUM6YdudVvFteGBsTr2iHRfl3TkAtD0CWSKuSvYpWknCvmZht
-	x1xVCLB/NX0EzLVa+ZKq/bwa2f3xtr1KbyuoszRJnjpP3ZvMLcdf+9edne658CRYL/RFAHub0F4hd
-	aWJqi13g==;
+	bh=nGkHvITD2K8op61TbIn8ohu5Q6F9G52jsCsiVl+hXaw=; b=fr+xd8lEAJa01ix4gaFvEaEQJ1
+	RBQTi6GOhqRvdGE/769nw6w7i8Om849hn1DWTb1u+sRaIAm6IBhYqxxsqOEAZXDmlVqeWGbmng15Y
+	tQ8HUkFETRwWSjUz5yf+C6l39GDdpKe/z0j93ba+I1arv+aMK+9SF4zfQQykktCAGzdGgT9IUz46j
+	MVDdJwzCMs9M/74KYIaXE/U+ITlbBuiM+rHGb4ASUhgqZI76ppqogCl2V7jTUWFusSh4V6Gnvn/u4
+	DWSqLx7vfl2Y49q4nPVs6VNT9QgtGdV/jF+M+BcpT8jUxRsbCLui5BHim/4q75wAhKpSIDvP7U11s
+	U5/yWWEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU6nq-0000000CzWK-2jle;
-	Thu, 19 Nov 2026 18:24:10 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xU7Yd-0000000DAl7-3578;
+	Thu, 19 Nov 2026 19:12:31 +0000
+Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU6nn-0000000CzVQ-2yOQ;
-	Thu, 19 Nov 2026 18:24:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795112645;
-	bh=Zk90Z/Y3viDwOI3ZsdQdnBzY5lakoxWPX4l5Ay17998=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=J8DSUV9OGi0zBJ+IaPlC574+FbNpzN+zb2hH4lqo/pZxe1iWjpRO8bZAFH8ayHa2k
-	 L8Giq8TQUMzrV1pwd6SGriFiCdv8N0S1K/8eKYuVgx7hdRsc+DI9/0LZKLBVXTBS32
-	 +/BKlz6YyHn1C3Pv71iMYxB8FgGZw0rKk4IHiTcpSoHpJjgoqJYYx9iO5Edj3X8Eg/
-	 1ggmmNwDbfBZ8cBg4tSD/x+z42BEUGgZcFXk6fB2RelBxllWKTOR5iVQk29D7jHAW1
-	 rQSyQ0SfGRT6aUTAuhuj5mNE9U3jigjl0ZaP/qmuVvBXekuRQN+Xf7Uc+FJA/85ZqK
-	 /wCdpH4GwjCIw==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 13D3117E09BC;
-	Thu, 19 Nov 2026 19:24:03 +0100 (CET)
-Message-ID: <2ae3151d83a9eb8fd567f7c87b722d9afa7dbb92.camel@collabora.com>
-Subject: Re: [PATCH 1/3] media: verisilicon: Fix the cleanup when a codec
- ->run() fails
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Sascha Hauer <s.hauer@pengutronix.de>, Benjamin Gaignard	
- <benjamin.gaignard@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab	 <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Ezequiel Garcia	 <ezequiel@vanguardiasur.com.ar>, Hans
- Verkuil <hverkuil@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Date: Thu, 19 Nov 2026 13:24:02 -0500
-In-Reply-To: <20260824-rk3588-jpegdec-v1-1-180a30a2852d@pengutronix.de>
-References: <20260824-rk3588-jpegdec-v1-0-180a30a2852d@pengutronix.de>
-	 <20260824-rk3588-jpegdec-v1-1-180a30a2852d@pengutronix.de>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
+	id 1xU7Ya-0000000DAkl-11oZ
+	for linux-rockchip@lists.infradead.org;
+	Thu, 19 Nov 2026 19:12:30 +0000
+Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-4932b13c4ccso84866fac.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 19 Nov 2026 11:12:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1795115547; x=1795720347; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=cPRlIWoU3nedg5UMks9BflBLw1pyZb+IzsqBpWtRPsw=;
+        b=SxnitvcN5MNq1kxLthMtVrYoAyOAvkAjCIaT+9v1XtZK/ZqeGPR8SIPhczCsG7YmRy
+         8kGiIWUWCrzSYcaamdgAw4Ez2RmYMiyx5OfC9nIKZID+PYpwk6y68uW+hDpgVNgx/1YW
+         jMVEKlAHc/YwOPjGhawN0rfKyfNjBqfmeuI9hf9BwWh4+xCvpmKeXeB+F23byAkXcDbC
+         +UWP/Bwf1QPxIBjnu5UJJiodMVFa86TairVVCjGc1N3Tm1Af74VPG0LTiESv9AZtWWAX
+         nowqviMlY/kDbh+ommobD0F4GpUqUefTtL5Oee5VBxm1HwEBwKkeL7sC4Ob8PTt5ZdWb
+         PkVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795115547; x=1795720347;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=cPRlIWoU3nedg5UMks9BflBLw1pyZb+IzsqBpWtRPsw=;
+        b=oc3v5V5CAwM8JAz5FIg4dqfLU80TKnU4K9O8qFT/vWCauP1hKlVWeXmPyW5hc93CHD
+         jtIORYmUYBUkFU+a+746WAGlX9Z++LEFMRVwwW1qlJUGZxRTgw+Wscpe4s+SGE35kpyY
+         12SBbBXXIu7ZMans52Ne1m2GqqgCDHF36NhpfnG142FxEY1ZIiDbrpEFpHoEzpJSKL4t
+         1x7lhinpj5b03GKklnOfohZBdG6Vx9NwmYFI/4nzObwxpuMCFFOmLed2MNjZhxJRPWc7
+         P1plhSuJAT7ft7UoP4BoBjMMHpdITrKIBp4MmnYRRAa7TjPHBlyk+KHcEL2KJiihI2sC
+         DSmw==
+X-Forwarded-Encrypted: i=1; AL+hErF0jk8qQgffUw+0wC0ukJY+dFgupvEXRbHFD3XJNVmzbNVyA58bFbss576q4Vrx00WxbCVzYsjlF9GA6Av5Eg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8J9ZaUD+BpIdw5s4GLUVtNQhRhOONNHZ9/j+egZUWqpGtHYZW8
+	OSw1yBxYdDbPWVVFFzZXR+G+R+OjKInG1Uby+H7QnHAcrAvc+bQucH3q
+X-Gm-Gg: AYBFou2fOs2veNMIo8nI5LLvednnb/u0Fwa4QxkQru+LX1ytOKd4OIAq3aOFiSsMIgl
+	TAT2McT3TRAxuBxuxhHax4gZcydRVPO+HKdSzhQlCZCGUd8I3XKOtQDE0ETNZt/XFqrd/9a6pAL
+	hZBFTVx9qBcFJ3hVpcU6jza4hHiClZnU8ybhmZO4c8xUkFRUut3S98O/XIINdwHAT7es8wjYuA7
+	Ex9Q/J74QRw3FTg9VYn2n947mgQmU1mEzu4nqSiMIqXo9gqh5aknKWb+PMYRR6ivHfPqEBTd6oZ
+	Qyy7QkBEfvl28gPrInsvwEghbsEpfjIUO1KoArlFjEYV0Q2Q1O+fzOG80GB9aS1TWk4ejAd+2dg
+	yi12/PVsxQRXGhvYsP0Pz63oQ/lSse6vipAAG/lK75lejx60gmQ7qQnwKbsp35RkSrJOgh5qTtX
+	1c6f6MRBZV4h1FbMZwWUALp3NJByQEEqXrUFIhbjnvXF70iL9ot7KGPU8/s+MhyeXPiT3hRI1/k
+	AV0DTtFhdbSkrhioKEoLl3rzOsLkCRvV3MoCu2hfjbfkzFbt86PJ0DMjYTlvlBaNYdgw6CovHiw
+	VkS8PpAl9TpD5FvLdv3o+w58k3lFPbgt6NJwXvOtlj2I4g==
+X-Received: by 2002:a05:6808:c3d2:b0:4e9:3412:14ac with SMTP id 5614622812f47-57a0af3421bmr1094077b6e.33.1795115546794;
+        Thu, 19 Nov 2026 11:12:26 -0800 (PST)
+Received: from neuromancer.localdomain ([75.28.21.198])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-57a347636b9sm223450b6e.7.2026.11.19.11.12.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Nov 2026 11:12:26 -0800 (PST)
+Date: Thu, 19 Nov 2026 13:12:24 -0600
+From: Chris Morgan <macroalpha82@gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, heiko@sntech.de,
+	conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
+	sre@kernel.org, t.schramm@manjaro.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH 1/3] dt-bindings: power: cw2015: add cw2215, cw2217, and
+ cw2218
+Message-ID: <av9KGG70s_UAkKJO@neuromancer.localdomain>
+References: <20261027131751.1724448-1-macroalpha82@gmail.com>
+ <20261027131751.1724448-2-macroalpha82@gmail.com>
+ <83695285-207e-4d0f-ada0-2273953e2eb9@kernel.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <83695285-207e-4d0f-ada0-2273953e2eb9@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_102407_917155_0A2C5BC4 
-X-CRM114-Status: GOOD (  38.08  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261119_111229_055427_6BEC15E3 
+X-CRM114-Status: GOOD (  20.81  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,245 +105,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1700313539759577716=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============1700313539759577716==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-RNSc+2CDpB24BGnucsKa"
+On Tue, Oct 27, 2026 at 04:57:12PM +0100, Krzysztof Kozlowski wrote:
+> On 27/10/2026 14:17, Chris Morgan wrote:
+> >  
+> > -allOf:
+> > -  - $ref: power-supply.yaml#
+> > -
+> >  properties:
+> >    compatible:
+> > -    const: cellwise,cw2015
+> > +    enum:
+> > +      - cellwise,cw2015
+> > +      - cellwise,cw2215
+> > +      - cellwise,cw2217
+> > +      - cellwise,cw2218
+> >  
+> >    reg:
+> >      maxItems: 1
+> > @@ -31,8 +32,6 @@ properties:
+> >        it is to mail two batteries to a test facility of CellWise and receive
+> >        back a test report with the binary blob.
+> >      $ref: /schemas/types.yaml#/definitions/uint8-array
+> > -    minItems: 64
+> > -    maxItems: 64
+> 
+> This needs min/maxItems constraints.
 
---=-RNSc+2CDpB24BGnucsKa
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+I'm removing the constraints here and pushing it down below where there is
+logic based on the compatible string. For the new cellwise,cw2217 the
+constraint is 80, while the constraint remains 64 for other implementations.
 
-Le lundi 24 ao=C3=BBt 2026 =C3=A0 08:39 +0200, Sascha Hauer a =C3=A9crit=C2=
-=A0:
-> A codec ->run() operation that fails leaves three things behind, and they
-> cannot be untangled one at a time, so fix them together.
->=20
-> hantro_start_prepare_run() sets up the controls of the request attached
-> to the source buffer, hantro_end_prepare_run() completes them again and
-> arms the watchdog for the job that is about to be started. That pairing
-> does not survive the error paths. The two ->run() operations that do
-> reach hantro_end_prepare_run() arm a watchdog for a job that is never
-> started: device_run() finishes the job synchronously via
-> hantro_job_finish_no_pm() and nothing cancels the delayed work, so it
-> expires two seconds later and aborts whatever unrelated job happens to be
-> running by then.
->=20
-> Split the two jobs hantro_end_prepare_run() would otherwise have to do.
-> It keeps its meaning for the success path, complete the request and arm
-> the watchdog, and a new hantro_abort_prepare_run() completes the request
-> and nothing else for the error paths. Note the resulting invariant: after
-> hantro_end_prepare_run() the ->run() operation must return 0, as the
-> watchdog is armed and only the interrupt handler disarms it.
->=20
-> rockchip_vpu981_av1_dec_run() then calls hantro_irq_done() on its error
-> path and returns the error code to device_run(), which finishes the job a
-> second time. The buffers have already been given back by then, so the
-> second attempt trips the WARN_ON(!src) in hantro_job_finish_no_pm() and
-> bails out. Without the watchdog change this at least reached the first
-> finish by accident, because the cancel_delayed_work() in
-> hantro_irq_done() returned true for the watchdog the error path had just
-> armed. Neither behaviour is something to rely on, so drop the call and
-> let device_run() clean the job up. No other codec calls hantro_irq_done()
-> from ->run().
->=20
-> That leaves device_run() itself. It takes a pm_runtime reference and
-> enables the clocks, then on any subsequent failure jumps to a single
-> err_cancel_job label that calls hantro_job_finish_no_pm() - which
-> releases neither. Release the acquired resources there.
->=20
-> This last part is what ties the three together. hantro_irq_done() ends up
-> in hantro_job_finish(), which already drops the pm reference and disables
-> the clocks, so as long as the AV1 error path still goes through it,
-> releasing the same resources in device_run() would trip the
->=20
->   WARN_ON(core->enable_count =3D=3D 0)
->=20
-> in clk_core_disable() and underflow dev->power.usage_count. Conversely,
-> as soon as a failed job no longer arms the watchdog, hantro_irq_done()
-> stops releasing anything at all and the resources are leaked until
-> device_run() takes over.
->=20
-> The late_postproc setup is skipped on the error path as well. It is part
-> of preparing the run, the hardware is not started and the next job
-> configures it again, so hantro_abort_prepare_run() simply does not have
-> it. Only the sunxi variant sets late_postproc, and its only decoder is
-> VP9.
->=20
-> Fixes: 892bb6ecead9 ("media: hantro: do a PM resume earlier")
-> Fixes: e2da465455ce ("media: hantro: Support VP9 on the G2 core")
-> Fixes: 727a400686a2 ("media: verisilicon: Add Rockchip AV1 decoder")
-> Assisted-by: Claude:claude-opus-5
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  drivers/media/platform/verisilicon/hantro_drv.c    | 35 ++++++++++++++++=
-++++--
->  .../media/platform/verisilicon/hantro_g2_vp9_dec.c |  2 +-
->  drivers/media/platform/verisilicon/hantro_hw.h     |  1 +
->  .../verisilicon/rockchip_vpu981_hw_av1_dec.c       |  3 +-
->  4 files changed, 36 insertions(+), 5 deletions(-)
->=20
-> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/me=
-dia/platform/verisilicon/hantro_drv.c
-> index ad71c0402ef3b..a9ebf856096e6 100644
-> --- a/drivers/media/platform/verisilicon/hantro_drv.c
-> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-> @@ -147,6 +147,18 @@ void hantro_start_prepare_run(struct hantro_ctx *ctx=
-)
->  =09}
->  }
-> =20
-> +/**
-> + * hantro_end_prepare_run() - finish the preparation of a job and arm th=
-e
-> + *=09=09=09      watchdog
-> + * @ctx:=09context the job belongs to
-> + *
-> + * Complete the controls of the request that hantro_start_prepare_run() =
-set up
-> + * and arm the watchdog. The caller must go on and start the hardware, a=
-s only
-> + * the interrupt handler disarms the watchdog again.
-> + *
-> + * A ->run() operation that gives up before the hardware is started must=
- call
-> + * hantro_abort_prepare_run() instead.
-> + */
->  void hantro_end_prepare_run(struct hantro_ctx *ctx)
->  {
->  =09struct vb2_v4l2_buffer *src_buf;
-> @@ -167,6 +179,21 @@ void hantro_end_prepare_run(struct hantro_ctx *ctx)
->  =09=09=09      msecs_to_jiffies(2000));
->  }
-> =20
-> +/**
-> + * hantro_abort_prepare_run() - give up on a job before the hardware is =
-started
-> + * @ctx:=09context the job belongs to
-> + *
-> + * Counterpart of hantro_end_prepare_run() for the error paths of ->run(=
-).
-> + */
-> +void hantro_abort_prepare_run(struct hantro_ctx *ctx)
-> +{
-> +=09struct vb2_v4l2_buffer *src_buf;
-> +
-> +=09src_buf =3D hantro_get_src_buf(ctx);
-> +=09v4l2_ctrl_request_complete(src_buf->vb2_buf.req_obj.req,
-> +=09=09=09=09   &ctx->ctrl_handler);
-> +}
-> +
->  static void device_run(void *priv)
->  {
->  =09struct hantro_ctx *ctx =3D priv;
-> @@ -182,15 +209,19 @@ static void device_run(void *priv)
-> =20
->  =09ret =3D clk_bulk_enable(ctx->dev->variant->num_clocks, ctx->dev->cloc=
-ks);
->  =09if (ret)
-> -=09=09goto err_cancel_job;
-> +=09=09goto err_pm_put;
-> =20
->  =09v4l2_m2m_buf_copy_metadata(src, dst);
-> =20
->  =09if (ctx->codec_ops->run(ctx))
-> -=09=09goto err_cancel_job;
-> +=09=09goto err_clk_disable;
+> 
+> >  
+> >    cellwise,monitor-interval-ms:
+> >      description:
+> > @@ -41,7 +40,14 @@ properties:
+> >  
+> >    power-supplies:
+> >      minItems: 1
+> > -    maxItems: 8 # Should be enough
+> > +    maxItems: 8  # Should be enough
+> 
+> Why changing? yamllint complained?
+> 
 
-Clock handling is now part of the PM ops, so all this complexity is gone no=
-w.
-I've merge everything else in this patch, thanks.
+Yes, it did. Should I not fix it and ignore yamllint (since I'm not
+actually modifying this line)?
 
-Nicolas
+> > +
+> > +  shunt-resistor-micro-ohms:
+> > +    description: |
+> 
+> Do not need '|' unless you need to preserve formatting.
 
-> =20
->  =09return;
-> =20
-> +err_clk_disable:
-> +=09clk_bulk_disable(ctx->dev->variant->num_clocks, ctx->dev->clocks);
-> +err_pm_put:
-> +=09pm_runtime_put_autosuspend(ctx->dev->dev);
->  err_cancel_job:
->  =09hantro_job_finish_no_pm(ctx->dev, ctx, VB2_BUF_STATE_ERROR);
->  }
-> diff --git a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c b/dri=
-vers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-> index 56c79e339030e..78100d1c7e850 100644
-> --- a/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-> +++ b/drivers/media/platform/verisilicon/hantro_g2_vp9_dec.c
-> @@ -895,7 +895,7 @@ int hantro_g2_vp9_dec_run(struct hantro_ctx *ctx)
-> =20
->  =09ret =3D start_prepare_run(ctx, &decode_params);
->  =09if (ret) {
-> -=09=09hantro_end_prepare_run(ctx);
-> +=09=09hantro_abort_prepare_run(ctx);
->  =09=09return ret;
->  =09}
-> =20
-> diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/med=
-ia/platform/verisilicon/hantro_hw.h
-> index 13e573f1f19de..c6addab4d758b 100644
-> --- a/drivers/media/platform/verisilicon/hantro_hw.h
-> +++ b/drivers/media/platform/verisilicon/hantro_hw.h
-> @@ -431,6 +431,7 @@ void hantro_irq_done(struct hantro_dev *vpu,
->  =09=09     enum vb2_buffer_state result);
->  void hantro_start_prepare_run(struct hantro_ctx *ctx);
->  void hantro_end_prepare_run(struct hantro_ctx *ctx);
-> +void hantro_abort_prepare_run(struct hantro_ctx *ctx);
-> =20
->  irqreturn_t hantro_g1_irq(int irq, void *dev_id);
->  void hantro_g1_reset(struct hantro_ctx *ctx);
-> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_de=
-c.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> index e4e21ad373233..99ffb4a743764 100644
-> --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> @@ -2192,8 +2192,7 @@ int rockchip_vpu981_av1_dec_run(struct hantro_ctx *=
-ctx)
->  =09return 0;
-> =20
->  prepare_error:
-> -=09hantro_end_prepare_run(ctx);
-> -=09hantro_irq_done(vpu, VB2_BUF_STATE_ERROR);
-> +=09hantro_abort_prepare_run(ctx);
->  =09return ret;
->  }
-> =20
+Understood, thank you.
 
---=-RNSc+2CDpB24BGnucsKa
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+> 
+> > +      The value, in micro-ohms, of the shunt resistor used for sampling
+> > +      the battery current.
+> > +    minimum: 1000000
+> > +    maximum: 50000000
+> >  
+> >    monitored-battery: true
+> >  
+> > @@ -49,6 +55,28 @@ required:
+> >    - compatible
+> >    - reg
+> >  
+> > +allOf:
+> > +  - $ref: power-supply.yaml#
+> > +  - if:
+> > +      properties:
+> > +        compatible:
+> > +          contains:
+> > +            enum:
+> > +              - cellwise,cw2015
+> > +    then:
+> > +      properties:
+> > +        shunt-resistor-micro-ohms: false
+> > +
+> > +        cellwise,battery-profile:
+> > +          minItems: 64
+> > +          maxItems: 64
+> > +
+> > +    else:
+> > +      properties:
+> > +        cellwise,battery-profile:
+> > +          minItems: 80
+> > +          maxItems: 80
+> 
+> default for shunt-resistor-micro-ohms? or is it required for new devices?
 
------BEGIN PGP SIGNATURE-----
+I'll add a default, since there is a default value in the driver.
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCav8+wgAKCRDZQZRRKWBy
-9I0bAP0Z5y/n/Eb1+AoLjE/2DUP+EHqmnSkFBIn7VfGyNJCa1gEAiXWEeNOMf5DY
-wu/rbRJt0gwgBHWPEkqZXmGe1JvVKAw=
-=LuLX
------END PGP SIGNATURE-----
+> 
+> 
+> Best regards,
+> Krzysztof
+> 
 
---=-RNSc+2CDpB24BGnucsKa--
+Thank you,
+Chris
 
-
---===============1700313539759577716==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1700313539759577716==--
-
