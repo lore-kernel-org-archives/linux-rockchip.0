@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A4CF5606A324
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 13:04:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6603A606A326
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 13:04:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gMIlHyZv;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=OfHgteXa
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=HjiE4g5R;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=ld40b3/L
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,46 +14,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=RHYLTUcBHIDaA3V30bbwBAB9eRKrTgU0LLv0oY/fmPM=; b=gMIlHyZv2o1UxL1KALJLe40hWA
-	f9coi1DPVzwZvT9CUVXozcP1ViHDQuA0SXdO7IBfNGQJf8CTulUcXBl5pt7+XHjUSVRPLJoAJT+kJ
-	gMvFToteD7ncGfCyR429i95JS0+es9UpzGo3lYaB8TN75lxOPMODCylHNkR/9cRMc0pRU4PEMzNQB
-	OT9qAXbaG8xm/uSjVs8ZMFXYBtcKmKfJ0WiUVzKHxLsv6e7W3YcLZt7C6wPJBRZAHEqFv2Q1jmyMd
-	TmjeTTduw+MpDylJ+uAOhZrVlI1a0alUVZ6TSAx579nYs0oFg/Zy96PnVzdh/aRbhUtgqqT2QPpzS
-	YVbT/NFQ==;
+	bh=rb53drBYvl6VbU2YssHiVfIgn6Xjg+Nw3rKQltWgCeo=; b=HjiE4g5RooU//bInjrC2eSpdSu
+	yKzAw626QspB0InrKXtoEq+kSfkCrVNfiK1Wl/LrhMqMs95vqsnG2vIspX2Zjr5kFee7XV6hYpsHi
+	aEMPIKE8A45wY4gvnY8S3t0GdfDb+PRIEzS0is0jlNbdsnUpMn44GOeZAXfFJv55cApn/Cebh+7V5
+	L5BzXM3g6fL6UbrVugpcEY//tV1gJwYgXGo61tW7jOaCxfHh7B7/d/OUR5RADkNriThdDPHrmVuI+
+	wC1K80DRIEDQR8JubbmtMww7qdBbshUITkxJ2d38gDMboVQgijD7VEuVkC081TWgtmAvy+k5qnsmb
+	Ge/b0v5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU1oS-0000000ByFT-0aFd;
-	Thu, 19 Nov 2026 13:04:28 +0000
+	id 1xU1oa-0000000ByOK-1uSU;
+	Thu, 19 Nov 2026 13:04:36 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU1nX-0000000BxJg-08Wn;
-	Thu, 19 Nov 2026 13:03:33 +0000
+	id 1xU1nX-0000000BxJm-3KtR;
+	Thu, 19 Nov 2026 13:03:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1795093403;
-	bh=+5SgEWnkoWOtJ2jdLxg0AQaYLfZljKvmJAUEogbH4b0=;
+	bh=189/Wb7wAR5Wao+TccPh0/fJo+O+FiP0nVvOXZeN/CU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=OfHgteXaGtmCA8UW8pYSFWbxJ6guQRUeEwgGHryt5sZ6imp794H3SVzDdPFeZkGBR
-	 RQgs7mN/P+u62LJpPczBoNc1zn7O+aSoUD50YMq3o0ZDHQlWt2o/KsCK+egPzMgcvc
-	 k6OEb1nTgGoQz8tM0HKTjcEDHiG1orbJBxXT6JuQCsyBbUlzXmc7u52EXo2G4OWAew
-	 mnMYGcK4yCN0Vb7OHeyXWAl61y1zogJRZCZnbefwqHGgD9D03b8s6XWHtYr0a5jmuf
-	 Y+yME2przF3R6IOGYhoKuHwgFKsjHTSm1DTppLTcEY9RPguzXp/lY9KmcBj/zXSM/6
-	 pOt+4kU/MByPQ==
+	b=ld40b3/LCPLvkhbWxL2oK1n4/DS2GerNic0XNXSGhVMa7Mb8dUvVwAgzZtNaJ1n8b
+	 0cJq3aAOTKjNTICnq4hNYw1zBfFJM/Na3+1+7dkg1pAkCw9AyFKj16VcIreY+UnWdr
+	 eqrfgeclmCuz2NFtjcTiVRys71BqZtDbPK899vfoaCI8UzzJXE5ZgRwmVosZgFUAd4
+	 yAf8rLrb0lw6T6niV2xnIU6J6Xh1KYzWv2MOdABttqzNSyTpzdLn9USjF/o0yvVlZ3
+	 Sg3PreaiP/Tu39ZUVdc4OaqgqRhqvtBcfls9IxV/qKlXBrALBp3Rds0RkDFG9iHyNT
+	 hPpndfRcXrjwA==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4682017E0E41;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 51AA917E0E6C;
 	Thu, 19 Nov 2026 14:03:23 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 9DC80480047; Thu, 19 Nov 2026 14:03:22 +0100 (CET)
+	id A129E48004C; Thu, 19 Nov 2026 14:03:22 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 19 Nov 2026 14:01:59 +0100
-Subject: [PATCH v4 09/11] PM / devfreq: rockchip-dfi: move register offsets
- to variant struct
+Date: Thu, 19 Nov 2026 14:02:01 +0100
+Subject: [PATCH v4 11/11] PM / devfreq: rockchip-dfi: add RK3576 support
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-9-517a68c008fe@collabora.com>
+Message-Id: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-11-517a68c008fe@collabora.com>
 References: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-0-517a68c008fe@collabora.com>
 In-Reply-To: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-0-517a68c008fe@collabora.com>
 To: Chanwoo Choi <cw00.choi@samsung.com>, 
@@ -68,26 +67,26 @@ Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3935;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2187;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=+5SgEWnkoWOtJ2jdLxg0AQaYLfZljKvmJAUEogbH4b0=;
- b=kA0DAAoB2O7X88g7+poByyZiAGr+85qiYp8matfa8pEfF8LWVaNeOzhYBgPma9R7xf6VvTup0
- YkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq/vOaAAoJENju1/PIO/qa8WYP/2DQ
- kpo/xSLbjP3DanDGBvzC8sqwK6WPr5UXcbDEIguMnt6SDB+zx9sXmzG91vvjiLBwF8KaG7ab1CY
- Bw+xRxUZMIzWXR7mdCO9wTRbfYi5LiPmrKR812fwmOSEsqP29OlqJDGc4JB26oNLjf+u4WXPCst
- BmpUZqy47dW7BzxOwD9QJb7Y8l86fOfgWTHD//wPohpkqbsNa/I9hqo12HHFwVJMUdJByhTWzE1
- ziuDn984gDuySGKIidhHRZbWqmHZwt2Nn6ivOiv65vKWY280Rd256vrhAENV9yU6klsUljZDoAk
- dpI9S4s/eL+nxbWhEn+8T8JBRFc4hvjXzVRjRzJrX+/x7pbaUmXXJISWWcB/+P1Ll6W5UWLn2jL
- m5M7qo0yW/BaY3IZ5LO4TWPlSU61mhhu3ZorGhEgwPAva+hLNBjfNQEtZ/2C5kUxJiyLJqWi9wU
- wrfYkd4M38wfTpU7Gl5TaKIkoWM+mlqy4rewLhUVhoJ6dkd1ZDxxANH1cnslJyKEip2dT2XD5be
- 9VXtX250H5u2UAwyXPYnFm4qCJgo3XWjA/sayixDVDlat0ujsnL4CLsosQWSIWYIofnAJZNhl48
- rKLW93yLWIKiDT8rkRewzuqg03Dy7F313ABbjJh7NTr1LPzBFvabW2kiSiKR5pI8otr3sA45LO5
- 4b4dt
+ bh=189/Wb7wAR5Wao+TccPh0/fJo+O+FiP0nVvOXZeN/CU=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr+85oe7j+c/5fx60jVJUxmbXk43f7T2DBR7
+ 8dLvea+4G9t+YkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq/vOaAAoJENju1/PI
+ O/qaeG0P/A47wQnk1LcG5oDfUxLMhv1xQ0XI+IdDgNzegYajRUrNpNpaXfr/H5/AreM6cXULysC
+ XLuMsIctCpkkQdI1qmJeVRSkgW+CGS5h53MLC7up/J+/3ZtZWByuWjS/E6blwDZXVCOsLQaG5bo
+ 019b05dqVgk9dGG1aTCT/By7ntcjA6htqvluJJJbZGEPoSKojA8tbqVSMhMO8mDDgDNTbpx3xB1
+ f4izBelW9LWjA9+k6lDSxz11+hfrBhGXBRM7NWvNC2M0dYeyU54MmLiCtrbbDmry3hfy+08gFcI
+ f2JDbcYor5T8aMdDyngNnSjxK/vpu5cyDk6uqA1wn3pGB4LNfWl+y4OdRczoilCHSa9O21esFyj
+ 37RLPfI/vy+aRyqXEN7tAKKzGSD0Yl2wOVcAWzX8vyteExUSZUk/w6uwDClEfYBqvzlmxBylLim
+ A7owwJfPypxUF0tDnf/ILtdDJfgMejoabWA2GHXZqob4/OsSGNtuVBzOD7DHhU+Ge40KW8oQyO7
+ 8xdmP771xX6Q8n8BHy6sP3a7XCQGi8wncZ2buLBiwmyiAngczdKAeneR6ObS14x2Y+SUxDlYIjz
+ X6JzZrXuuYypbCW3YKPzJ1sHOQMY00sQxSPLUnUIHI6aoCSjRYSlnjJnVFYmxHzzBBXLe2z4twb
+ YXdgKhojllAoRrh/e4uI5kQ==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_050331_396286_27E4EAE6 
-X-CRM114-Status: GOOD (  15.57  )
+X-CRM114-CacheID: sfid-20261119_050332_133013_54E18FB8 
+X-CRM114-Status: GOOD (  13.53  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,106 +107,61 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-DDRMON in version 0x40 (found in RK3576) has two control registers,
-which moves the register addresses. Move the register offsets from the
-defines to the varaint struct to ease supporting the newer version.
+Add RK3576 support to the DFI driver exposing the same functionality
+as found on previous chips. This uses the RK3588 init for getting the
+DRAM type info from the GRF registers. In contrast to RK3588 it uses
+a newer DDRMON controller IP, though (version 0x40).
 
+Co-developed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/devfreq/event/rockchip-dfi.c | 34 ++++++++++++++++++++++++----------
- 1 file changed, 24 insertions(+), 10 deletions(-)
+ drivers/devfreq/event/rockchip-dfi.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
 diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index c51d7eeec394..a8329af90709 100644
+index db2c77fc5907..cde10d1e708c 100644
 --- a/drivers/devfreq/event/rockchip-dfi.c
 +++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -42,12 +42,6 @@
- #define DDRMON_CTRL_TIMER_CNT_EN	BIT(0)
- #define DDRMON_CTRL_LP5_BANK_MODE_MASK	GENMASK(8, 7)
- 
--#define DDRMON_CH0_WR_NUM		0x20
--#define DDRMON_CH0_RD_NUM		0x24
--#define DDRMON_CH0_COUNT_NUM		0x28
--#define DDRMON_CH0_DFI_ACCESS_NUM	0x2c
--#define DDRMON_CH1_COUNT_NUM		0x3c
--#define DDRMON_CH1_DFI_ACCESS_NUM	0x40
- 
- #define PERF_EVENT_CYCLES		0x0
- #define PERF_EVENT_READ_BYTES		0x1
-@@ -128,6 +122,10 @@ struct rockchip_dfi {
-  * @clocks_optional: whether not finding the clocks is non-fatal. Set if the
-  *                   DT binding for this variant didn't require clocks in the
-  *                   past, so that the driver remains compatible with old DTs.
-+ * @reg_write_access: register offset for writes access
-+ * @reg_read_access: register offset for read access
-+ * @reg_access: register offset for read/write access
-+ * @reg_clock_cycles: register offset for clock cycles
-  */
- struct rockchip_dfi_variant {
- 	int (*init)(struct rockchip_dfi *dfi);
-@@ -137,6 +135,10 @@ struct rockchip_dfi_variant {
- 	const char * const *clk_names;
- 	unsigned int num_clks;
- 	bool clocks_optional;
-+	u8 reg_write_access;
-+	u8 reg_read_access;
-+	u8 reg_access;
-+	u8 reg_clock_cycles;
+@@ -859,6 +859,10 @@ static const char * const rk3399_clk_names[] = {
+ 	"pclk_ddr_mon",
  };
  
- static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl)
-@@ -277,13 +279,13 @@ static void rockchip_dfi_read_counters(struct rockchip_dfi *dfi, struct dmc_coun
- 		if (!(dfi->channel_mask & BIT(i)))
- 			continue;
- 		res->c[i].read_access = readl_relaxed(dfi_regs +
--				DDRMON_CH0_RD_NUM + i * dfi->variant->stride);
-+				dfi->variant->reg_read_access + i * dfi->variant->stride);
- 		res->c[i].write_access = readl_relaxed(dfi_regs +
--				DDRMON_CH0_WR_NUM + i * dfi->variant->stride);
-+				dfi->variant->reg_write_access + i * dfi->variant->stride);
- 		res->c[i].access = readl_relaxed(dfi_regs +
--				DDRMON_CH0_DFI_ACCESS_NUM + i * dfi->variant->stride);
-+				dfi->variant->reg_access + i * dfi->variant->stride);
- 		res->c[i].clock_cycles = readl_relaxed(dfi_regs +
--				DDRMON_CH0_COUNT_NUM + i * dfi->variant->stride);
-+				dfi->variant->reg_clock_cycles + i * dfi->variant->stride);
- 	}
- }
- 
-@@ -831,6 +833,10 @@ static const struct rockchip_dfi_variant rk3399_variant = {
- 	.max_channels = 2,
- 	.clk_names = rk3399_clk_names,
- 	.num_clks = ARRAY_SIZE(rk3399_clk_names),
-+	.reg_write_access = 0x20,
-+	.reg_read_access = 0x24,
-+	.reg_clock_cycles = 0x28,
-+	.reg_access = 0x2c,
++static const char * const rk3576_clk_names[] = {
++	"pclk_ddr_mon_ch0", "pclk_ddr_mon_ch1",
++};
++
+ static const char * const rk3588_clk_names[] = {
+ 	"pclk_ddr_mon_ch0", "pclk_ddr_mon_ch1", "pclk_ddr_mon_ch2",
+ 	"pclk_ddr_mon_ch3",
+@@ -888,6 +892,18 @@ static const struct rockchip_dfi_variant rk3568_variant = {
+ 	.reg_access = 0x2c,
  };
  
- static const struct rockchip_dfi_variant rk3568_variant = {
-@@ -838,6 +844,10 @@ static const struct rockchip_dfi_variant rk3568_variant = {
- 	.stride = 0x0,
- 	.ctrl_single = true,
- 	.max_channels = 1,
-+	.reg_write_access = 0x20,
-+	.reg_read_access = 0x24,
-+	.reg_clock_cycles = 0x28,
-+	.reg_access = 0x2c,
- };
- 
++static const struct rockchip_dfi_variant rk3576_variant = {
++	.init = rk3588_dfi_init,
++	.stride = 0x10000,
++	.max_channels = 2,
++	.clk_names = rk3576_clk_names,
++	.num_clks = ARRAY_SIZE(rk3576_clk_names),
++	.reg_write_access = 0x28,
++	.reg_read_access = 0x2c,
++	.reg_access = 0x34,
++	.reg_clock_cycles = 0x30,
++};
++
  static const struct rockchip_dfi_variant rk3588_variant = {
-@@ -847,6 +857,10 @@ static const struct rockchip_dfi_variant rk3588_variant = {
- 	.clk_names = rk3588_clk_names,
- 	.num_clks = ARRAY_SIZE(rk3588_clk_names),
- 	.clocks_optional = true,
-+	.reg_write_access = 0x20,
-+	.reg_read_access = 0x24,
-+	.reg_clock_cycles = 0x28,
-+	.reg_access = 0x2c,
- };
- 
+ 	.init = rk3588_dfi_init,
+ 	.stride = 0x4000,
+@@ -904,6 +920,7 @@ static const struct rockchip_dfi_variant rk3588_variant = {
  static const struct of_device_id rockchip_dfi_id_match[] = {
+ 	{ .compatible = "rockchip,rk3399-dfi", .data = &rk3399_variant },
+ 	{ .compatible = "rockchip,rk3568-dfi", .data = &rk3568_variant },
++	{ .compatible = "rockchip,rk3576-dfi", .data = &rk3576_variant },
+ 	{ .compatible = "rockchip,rk3588-dfi", .data = &rk3588_variant },
+ 	{ },
+ };
 
 -- 
 2.53.0
