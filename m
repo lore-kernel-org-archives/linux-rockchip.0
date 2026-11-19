@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 869ED606A325
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A168A606A326
 	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 19:41:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Svogt2Fk;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=eDbpZMnR
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nKnrQTxn;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=MG4vbkgS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,46 +14,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=/jHn68FCUmMxJLsN83opiE6/evQ8sq+FtJQmK/E7lXk=; b=Svogt2Fk1mVZQHQgTI+AYaxpyc
-	Qa1u0dNUXvi+2db7p9FuLhUYRca0aLXe39CUQdBCrHlLpVHLL72XYRSSLdSJ8H3w2G7rxBhhufNQZ
-	e/ejdLHLZFX8vF04sbbbufyYo8tBCCHShOThzUqpND6PP5ft188THN3fn+C95NtNhg1NAQqeYi+xQ
-	TY2MizCHcbb01QpKL4ZRDZTyfaNG2I0qs5DStOgEp/Ahs39GB9V1urHLpiGBBGa04ZD0ohRi6zrVR
-	cu4V7zJjLn+OrZ839tFktUWUM9lr7LaQsQ8B9bxAgBbwrYdhgdOP6caYpI43OnXPvOf+73qn8pXBJ
-	A7cQaf9g==;
+	bh=vEB5/WjDcjIhggXXecplc+hDs++1QceF8krbkZuWw/0=; b=nKnrQTxnh/ol3vh4KYzcpp9M9L
+	egZL1gYacCwkXxoQDCrL3pcUV2PwDmEX02PtYrNPW4caizujmkB3Vv4DvuubbJ+FhQjj3qMf4S39U
+	5RgTs+s4SdTsZXV0CB0A7V/SDnTHuRX1EaB0vspNbJ3Dp9HmQ7aNtvcKwoBaAco85ajbhSwbzWj8P
+	MFMAmcIRqhu1268kwKCdzhUqw2LSPLHTzTh1q20F/eADa/ngZJf3wg7hTzkjhIXGU/y81rLp2V3FE
+	B/7RW0Kf4iX4PqhmEIaCEWYictvUsCRopxgm3BVZoybPGrBUrG1GLWep7bto+xunA0lHltnKTY/TC
+	UelINkEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU80c-0000000DEhc-3MKa;
+	id 1xU80c-0000000DEhp-3uUf;
 	Thu, 19 Nov 2026 19:41:26 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU7zz-0000000DEJs-2lRv;
+	id 1xU7zz-0000000DEK0-3iNM;
 	Thu, 19 Nov 2026 19:40:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1795117245;
-	bh=VLIkL6wE7wYf6uwe+nUboRMEv27Th4EuZ1ktfV7x+0A=;
+	bh=Y0ahJFIOGX3bRryRmmv/cq+7XRNRRYPyaAzmDErQaZo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=eDbpZMnRARCAlScndnXjmT1YZ7+9lrqt4NvJUP6el++L5/Y68WoXn1vxtUHtJ/Cdn
-	 /xxbgNVVmS7csES1plVHIPLttGaTLNYL2Sfd2IYRd/dBy/v4ljRe4/Aleb6FyL1yrN
-	 PLKjMPT9fUSbZ832LL/IoaYvQeZ9x5PUJ3GKwDEbxfvkiDvlJI4ZOEFzQG5026bsFT
-	 UT8Dl+dotOQdBZ8pmASeYHCZJm4FeGybj61gNY0a5aNfXB0Kh808ybgm2TECuBW+5G
-	 75ltDvi2mOqvrPU41oQ3B7JOYrQWRuYsGneICjuTF/IcAa4AMh+nrjVlQCxW/ipPkc
-	 jtcK/KVppmhyw==
+	b=MG4vbkgSWkmTyRlzPfpCkO8QFEaFJCL8/aGiHoZ2uVZZ5P7FsEAM5ihARYZrL22la
+	 sTgIqThwAYR+RXsUu5T+ty8iPLeihFXDxl2+bQR9wNZDnM9PztnOrn+gTbjcZMjhxs
+	 8vITy9/viVRuYwamDsAsfyip7Hb5qQBWsTYNVaSUa+E16OPgWaCy/0CDu/bvinEZH8
+	 gX9ggPTrC6pb+Y8XOfJh0E9KDfrzYEXCs4Ibsf0dv6f+5s2dUJTiiHxp0oKTSG779h
+	 RVSs2IAYYcOIJmbSijl8Hn7oZym8ZMTt+PTuTZ+3ihf30YFAY7S6AnpKcsMzLSXtBA
+	 9PI45RkesHcYw==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id ECA5A17E091F;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDE5417E09BC;
 	Thu, 19 Nov 2026 20:40:44 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id B094E48002B; Thu, 19 Nov 2026 20:40:44 +0100 (CET)
+	id B1F1E480030; Thu, 19 Nov 2026 20:40:44 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 19 Nov 2026 20:40:29 +0100
-Subject: [PATCH v18 1/7] phy: rockchip: usbdp: Disable USB3 port during
- normal power-on
+Date: Thu, 19 Nov 2026 20:40:30 +0100
+Subject: [PATCH v18 2/7] phy: rockchip: usbdp: Drop -EPROBE_DEFER hack
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261119-b4-rockchip-usbdp-cleanup-part3-v18-1-fb325e336494@collabora.com>
+Message-Id: <20261119-b4-rockchip-usbdp-cleanup-part3-v18-2-fb325e336494@collabora.com>
 References: <20261119-b4-rockchip-usbdp-cleanup-part3-v18-0-fb325e336494@collabora.com>
 In-Reply-To: <20261119-b4-rockchip-usbdp-cleanup-part3-v18-0-fb325e336494@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -69,26 +68,26 @@ Cc: Igor Paunovic <royalnet026@gmail.com>,
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1244;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1574;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=VLIkL6wE7wYf6uwe+nUboRMEv27Th4EuZ1ktfV7x+0A=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr/ULzw0MbRiyxs1SKri2Sq3RO/Zv355PsmU
- ekbWX0BcxVP2okCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq/1C8AAoJENju1/PI
- O/qaWjUP/iX5couLjvn/eYovoBNz/IaaFRooxvFWa3qLmPfhOdf18dOl8AXQKUa+BY85K+KbKnn
- 4B8zXRGYgJqNSvEGcIoZWyZoFo2HD29z0VcBXbWucQhj4RZd7E9L6VPu2Gnsu1eAGo0i3B2r3hM
- /5CRrP98nygBWCZgfbl9jzw2EYp8k+dMRNwazA1XwrbaV42rm6VR3FuOmEyDa3Nk29k+qGlaqki
- X7pW2Ug9GErXu3fIRIAswCnOe3o/Rs33fxtz9pEuZXQxgcFkHp40Tcr4ORmqlgrUI18yh1a6p0L
- txCETF0fWhrrEWDABwoxeZaSx/bS/Eq2GAaNqYrd85y3W6wDwMar9JqejEiWylRk7ni+YwpzBYT
- CpRAixl8C4q5PVvrzdox4rHAugm9oHXU55FMj/vgMnj0XiMXpvl+tKnx8sQK4UoGkhGrPHwB81M
- xes/8KXOjA3JtnvIcGOKW+SSBeoAsJE2C8veZ3WXKjE9v3SYVMvHwQ3VitEORFizwcna838QCHd
- FwDOdwSSBNYFRkzc9cFwX5gtMeD8grZr4aUL1lEdnXtJf0lFSUkJPPjQqUQEcgvhiTOzNMHAaM0
- c8cmA9lpbIBCJeyD0q4WxdF9Pnenx7isUCT4cG4mCIHlDyT2ObzqAUd7U/e/lqZyyzdwW2tdCZX
- KT4KI27Hin85id321qJIzag==
+ bh=Y0ahJFIOGX3bRryRmmv/cq+7XRNRRYPyaAzmDErQaZo=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGr/ULzWcVBRSGHMxKdXwUnhKXpCkIPxJP3Bw
+ 2zgj7+qxiVgyYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJq/1C8AAoJENju1/PI
+ O/qaSPcP/1U5PjJHwkxPPfdbAWWp7CDdlJKRyT1dl/RfTmagjnZq55tAczE6PrikpjqitiD4rKD
+ 69RNfSKcMXHF6xIdNEtPuUd6mwoYBll1fkjGTKtu99RqdvrTFgfciaTDsGuzd6TYNbioRxIlVW3
+ TbBElBQUF7Gpx/qNwD2N0DZB/ZLz2yqkzijMxQWGcuAGIZqdJG3KzlWBW7DiDiv2nmRJDYreVAO
+ zb2PbNtY+uVx2aqOTqgfGmKBPRMNq+RIWZEtMetzQof2c6cJeO56hC+EaAhORrfZYUDN5bP1Uuq
+ 2QwN0sCDTPc76OtUEQ8kBKvrJndKR9xkNR6gJKVPDTdUhACcqZCJ8sYETAUhALE9CpVhZlBxROg
+ VTtu5/fSSxdG4K/A/GC9ZuD2kTFfYvSuoSxbAOa8CziZd5HesdoRLuB4CBtkRTiFx6oKwaQW9ZD
+ jpUdm7rbdowJVMoDEaa4ZPDmT/xOLb1CYE+GKKi6+i1xWi57Exh62wMe0g97oROnytjPe6pAhGI
+ SzPWAj1j5zJwI+Y1KkuxImEHP/rVarY3Ce6C3kFM0KuuhQ2bKdkt4qSzyxgzQWjEVq9veQ5nVy/
+ 243xGKKy5MmmNq7vvejljT+V/3P8T7rC5azANGk6ZXE3ZLOOxZnJIHpFOo94dK62I1CF6UWlrHx
+ D6dwgiQirb5jDSjGojg4wMw==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_114047_886928_FA91FDAA 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20261119_114048_084748_B08F51ED 
+X-CRM114-Status: GOOD (  13.82  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,35 +108,43 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-In the reset path, the USB3 port is disabled. This re-routes the clock
-going from the PHY to the USB3 controller. This adds the same to the
-normal power-on path, so that it behaves exactly the same (except that
-the clocks routed to the PHY stay enabled in the reset path).
+The hack to return -EPROBE_DEFER when the lcpll lock timeouts is no
+longer needed. The driver now does a reset during its PHY init, which
+avoids the problem.
 
-This hasn't been done so far, as it requires the recently introduced
-PHY reset infrastructure to avoid the PHY PLL not locking during
-startup.
+Since rk_udphy_status_check() is called after the probe, it should not
+return -EPROBE_DEFER.
 
 Tested-by: Igor Paunovic <royalnet026@gmail.com> # Orange Pi 5 Plus
+Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 9c6d921b9191..d01a819bf794 100644
+index d01a819bf794..025c8d52d72c 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -1051,6 +1051,9 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
- 	if (udphy->status == UDPHY_MODE_NONE) {
- 		rk_udphy_run_reset_handler(udphy, true);
- 
-+		rk_udphy_u3_port_disable(udphy, true);
-+		udelay(10);
-+
- 		ret = rk_udphy_setup(udphy);
+@@ -754,17 +754,7 @@ static int rk_udphy_status_check(struct rk_udphy *udphy)
+ 					       (val & CMN_ANA_LCPLL_LOCK_DONE), 200, 100000);
  		if (ret) {
- 			rk_udphy_run_reset_handler(udphy, false);
+ 			dev_err(udphy->dev, "cmn ana lcpll lock timeout\n");
+-			/*
+-			 * If earlier software (U-Boot) enabled USB once already
+-			 * the PLL may have problems locking on the first try.
+-			 * It will be successful on the second try, so for the
+-			 * time being a -EPROBE_DEFER will solve the issue.
+-			 *
+-			 * This requires further investigation to understand the
+-			 * root cause, especially considering that the driver is
+-			 * asserting all reset lines at probe time.
+-			 */
+-			return -EPROBE_DEFER;
++			return ret;
+ 		}
+ 
+ 		if (!udphy->flip) {
 
 -- 
 2.53.0
