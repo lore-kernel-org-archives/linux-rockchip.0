@@ -2,12 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54EE660A2628
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6C43D60A383B
 	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 15:21:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JMW7LRVE;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=kS+IJVHn;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=Usn00CEY
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JvapeABw;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=FIBEg/H2;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=eSqziSpN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -15,44 +15,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=0INwWVdIRLk6R3b54REKPQoNnxao1Z2KKeVzrtPr5tI=; b=JMW7LRVEeFFAnhVcI2WgXap99r
-	rqSrh6OaQHqntwmEPiCoqzDo0aLaxITYopW2NSR/xsdOm6W4p5VlQH+OK8fCRB33qg2fBAPSwrY2+
-	eyFQ513GYIS8J0iOPciQIzG43xNSjxjawepdiq+I7opyx7Mybdd5L0JC0/h46hjO3kG8NxZ14kVvz
-	TyNVyQwLmKzC0j2IXYhKeaCy5A1hn80tmGn0EVyXEgr9XUmrLOy8jLKAUnH7CSGKXQ1Wu9Os6QWjT
-	mJZb+DwoKvG4/Ab0gl9HNRv+6xaoRyMh/+RVs/Nll2LEeuJFSSw6zeqZG9zxnZYC3vug3WYFC1vrw
-	onQ+oMbg==;
+	bh=Y8Nvv5bHzmrn5jf73nwuhRs2h7FFeun8+SQyUEkHiDA=; b=JvapeABwvfqS33c6W4hdAvtqB0
+	82N3jmmPS00PyG4hw1XmMGYkC0+yp0dqHdQynr/IxjWig2z1GXHOpiSpAIy4eNTTHpXcF4mviP/7C
+	5cnyxtHOA15bvAJOL1aCej5X1662w9ksd+7vTeBDk5kAt+q6ks6M3ZrrfKu3RBU/1xhOe8R8kJPtE
+	eONoQLTcFo5y5j6jwK3DlRlLK+eqDdZlbOUFRyvopDQl98fRZSqH1Z/G1kQI5P0uDc1YCah1pI62t
+	ZIvGoAMAyuAox+5ueYixVjTSxmz9gt8YYI5SHOcOmMDkg0HQAMBU79I++mKeYIGQJ9gsHQNQqyg8Q
+	jDNd4B0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU3wy-0000000CPkv-1Hp1;
+	id 1xU3wy-0000000CPkX-0M36;
 	Thu, 19 Nov 2026 15:21:24 +0000
-Received: from smtp.forwardemail.net ([121.127.44.66])
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU3ws-0000000CPck-0z26
+	id 1xU3wo-0000000CPab-0xYX
 	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Nov 2026 15:21:19 +0000
+	Thu, 19 Nov 2026 15:21:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From: CFBL-Address: CFBL-Feedback-ID;
- q=dns/txt; s=fe-e1b5cab7be; t=1795101677;
- bh=TAlM5jTVZrM+XUfMxfpCUHKgs3VRnpzXKI3CImjcnWE=;
- b=kS+IJVHnqvY9+wObki5RzSVCoEUxa4dbEdukgo7Bzvkhr8Ng44A9Lli7b9l39u8W1ieETYCgs
- mBOojmqy0aXopInB1JjAXrc+sem7xrg1KQTTKE3vCmQzWy5Lzx4UVGL/lNn6v/g8Gl7erL41Qt7
- cBhNppzeHJDixe0eZ5J4tE5wByG/8LYUBbXLePAX7H4zsuTholEebjzRtmT8idh5MV9oYKFbIQF
- m+MSlOfDoHWCABi+pxudqAa97CqkIhjsmzC/j++UYnn1fJxC0+Dt6rdDy7zegYf4FdqxDV++OAK
- 7Ri/Y/yiGqMsIoz2oziIxgMCvlhkVuBi/l+5i5RAiM6g==
+ q=dns/txt; s=fe-e1b5cab7be; t=1795101673;
+ bh=LqXHUUaEAYAv/Q+Al8HLAFSVcPECY/QLRNGskJYYfIo=;
+ b=FIBEg/H2lvRs4wNiUeBLC3jNWguJo/1wInY5Lz2SKpm+iQU8672Z1x4TORMo1bKWwVfwDQ3AA
+ CjeQrEHP2pvbeBL3P51KMes+F/UjUkB1EnE253tSZQlak4dnTJj7t4KJUfLmSm7noBMGp0wMead
+ 999LABIEDAD2ju6RhaPTybtgPwMlazZHcUxJdCSnqoQ0sRBpeh1arA4q7j5T67Q2OqqasNAGOBg
+ 4+B9WO18eTH3l98Wu79CBXdTbKKEIG76LtmnlPhssjChXb/Uz5JJu1yPQggFbRmfVJMxDA7+lRP
+ 6pd/Ymgxws3V23uJV6eZVaki9uWIVZqHy94l8XzRVbvA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=forwardemail.net;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From: CFBL-Address: CFBL-Feedback-ID;
- q=dns/txt; s=default; t=1795101677;
- bh=TAlM5jTVZrM+XUfMxfpCUHKgs3VRnpzXKI3CImjcnWE=;
- b=Usn00CEYe/2fEeX7e84Bhe57b0BYwTLYRNsUW+HXt3T5AaWoAL8iOCWQ/u9n7FIwZcZgC5BWP
- IenN5Ls24Fk5gGdHYbFh1+mCfaBeh78LeNTzo7tIetj9amxq+lc+MHPMq5O83Nx76BL8eaO3Nn2
- fAYIr9fiIzJgVm5S6n7xJck=
-CFBL-Feedback-ID: 6aff13ed83f3cb488062bab9:4c81b50846e028b8ccfa75098b192798
+ q=dns/txt; s=default; t=1795101673;
+ bh=LqXHUUaEAYAv/Q+Al8HLAFSVcPECY/QLRNGskJYYfIo=;
+ b=eSqziSpN6jE2Bpba2b3YIRhJ6Y9Y3SatuN0VYIf48pkymkvKbMvpLTf53PSOd9LqbkmFs+7LV
+ pjLtengwezxX7dzBJ5ZvCD6ggi+Jhrdq18Qic4Y5IT4ZnemoGTmnJXbYjJ+zlrRcMMu5QxIeOoD
+ 8W3QwQA2eWbNa5CrATGfuQc=
+CFBL-Feedback-ID: 6aff13e483f3cb488062ba55:35c3a38be5423f5ccd1bd3436bbc3bae
 CFBL-Address: abuse@forwardemail.net; report=arf
-X-Forward-Email-ID: 6aff13ed83f3cb488062bab9
+X-Forward-Email-ID: 6aff13e483f3cb488062ba55
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.66
+ 149.28.215.223
 X-Forward-Email-Version: 2.19.33
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -68,17 +68,17 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 5/8] dt-bindings: arm: rockchip: Add Luckfox Lyra Ultra
-Date: Thu, 19 Nov 2026 15:20:48 +0000
-Message-ID: <20261119152055.556266-6-jonas@kwiboo.se>
+Subject: [PATCH 1/8] dt-bindings: soc: rockchip: grf: Add RK3506 compatibles
+Date: Thu, 19 Nov 2026 15:20:44 +0000
+Message-ID: <20261119152055.556266-2-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.56.1
 In-Reply-To: <20261119152055.556266-1-jonas@kwiboo.se>
 References: <20261119152055.556266-1-jonas@kwiboo.se>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_072118_429063_54DD99DA 
-X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-CacheID: sfid-20261119_072114_294589_3401B56B 
+X-CRM114-Status: UNSURE (   7.30  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.0 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -100,31 +100,48 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Luckfox Lyra Ultra is powered by the Rockchip RK3506B SoC, which
-integrates three Cortex-A7 cores and one Cortex-M0 core. It includes
-512 MB of DDR3 memory, 8 GB of eMMC storage, MIPI DSI, Ethernet, and
-IO expansion interfaces.
+Add the GRF and IOC compatible strings for the Rockchip RK3506 SoC.
+
+Table 1-1 RK3506 Address Mapping in TRM for RK3506 contains following
+related entries:
+
+  Module		Address		Size
+  GRF			0xFF288000	16KB
+  GPIO2/3/4_IOC		0xFF4D8000	32KB
+  GPIO1_IOC		0xFF660000	64KB
+  GRF_CORE		0xFF840000	16KB
+  GRF_PMU/RMIO		0xFF910000	16KB
+  GPIO0_IOC		0xFF950000	64KB
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
-As mentioned in cover letter, unclear if this should use
-rockchip,rk3506b instead of rockchip,rk3506.
----
- Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 37321e23b087..651da02cfa51 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -865,6 +865,7 @@ properties:
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index e94c83d7c138..3c1c3dc1b84d 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -15,6 +15,9 @@ properties:
+       - items:
            - enum:
-               - luckfox,lyra
-               - luckfox,lyra-plus
-+              - luckfox,lyra-ultra
-           - const: rockchip,rk3506
- 
-       - description: Lunzn FastRhino R66S / R68S
+               - rockchip,rk3288-sgrf
++              - rockchip,rk3506-ioc0
++              - rockchip,rk3506-ioc1
++              - rockchip,rk3506-ioc234
+               - rockchip,rk3528-ioc-grf
+               - rockchip,rk3528-pipe-phy-grf
+               - rockchip,rk3528-vo-grf
+@@ -93,6 +96,9 @@ properties:
+               - rockchip,rk3368-pmugrf
+               - rockchip,rk3399-grf
+               - rockchip,rk3399-pmugrf
++              - rockchip,rk3506-core-grf
++              - rockchip,rk3506-grf
++              - rockchip,rk3506-pmu-grf
+               - rockchip,rk3562-pmu-grf
+               - rockchip,rk3568-grf
+               - rockchip,rk3568-pmugrf
 -- 
 2.56.1
 
