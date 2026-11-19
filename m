@@ -2,55 +2,57 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9A64A606A32F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 12:14:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3D6A6606A331
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 12:15:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TtAx9HeM;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=kVFQqDBC;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=E4sAS0c1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=foq7ygOc;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=mtZvP3Ly;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=PriZYvaQ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=+/Uq3LST4kJeeV/0Ku69ztjY1BTXxa+5nPJnEQpl8SM=; b=TtAx9HeM6n/7VLXlVZ1S+j8d/F
-	DJRyQ5bJGVhQSw83Zgp7ytVSstuvWYo+55S00lF+/SsrrqpGNYIH+5jQEDGTYQD5TzRJEOSIeQqxr
-	8a4xteiAyLJHzczy0POGO0uu1nh6pyX+7qPdkki4zWApjINjtZ1oeOcQU4P9XC9GwEh8oWwGe+I8K
-	UqZULhvlRsBpp4dV/Fqk1sxEaV22iVrvg5i7jS4IARNtv5cryZsi8e/sK0fJJL5EtLuk9CAmlsskD
-	sdRGk1mYiftzQ0wr2SXQvm0Al+1NCCiAnvgHenkQRCOWqZ/BR3xnHiyPmKg/+ARLduuqjQ8/pFUwB
-	DvMfp9rQ==;
+	bh=Ao1yibKoG6VlhFVtYkzuIOgjfGKP5hlBRAJB3gzgzaw=; b=foq7ygOculiGejpgN0JNkQ22Vx
+	xTz/mCRu7Xd2L9N0BpOojJLkyD2XYXbIxNZi017xhrUjCOW8ifxnKsf1WguTM7tx63Nb+1BGGZeBJ
+	rqu6t/bsENUY7BU+LII8WkHlaOPi9kDoWHMiDwo+5ic5xik3RmmP1NOJ07WcHtGEQyRyODZTpCYPA
+	QOHGOAVqKS+ryubaj0hRn7PP0aNT2dznWo0yrVxjOf55ldP7L+j8EaF5+gcVSMLo3vd/e/JgBXxuV
+	EDbpfbaa32rvYojndkp/hA9vVsuhKEzE3RdCdbPlhO2RiWPnqz27zYkP2EiFceF1oovoxO8nHVVzW
+	xnbEkkuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU12O-0000000BokD-0eOE;
-	Thu, 19 Nov 2026 12:14:48 +0000
-Received: from smtp.forwardemail.net ([121.127.44.66])
+	id 1xU12X-0000000BonZ-1thm;
+	Thu, 19 Nov 2026 12:14:57 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU12L-0000000Boil-26an
+	id 1xU12N-0000000BojN-0PLC
 	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Nov 2026 12:14:46 +0000
+	Thu, 19 Nov 2026 12:14:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From: CFBL-Address: CFBL-Feedback-ID; q=dns/txt; s=fe-e1b5cab7be;
- t=1795090483; bh=KPwgoK2ctYkEIoXLDhQ+9ixRvnytQ+HTp/D7L99rIqE=;
- b=kVFQqDBC+crWGyazLnC0gyGSRFkDlZUWjtBodVuMawOZAp7v725i9zKg75Bj/Te0MOc17x1O+
- ni08GL2AcjO90b+rv68hAZpgEKeMh30Y2NrgQWOejcI8bXZ+S5Lyp/pZxiR0ahKdHOAV/DpuGEH
- bVVTF5KMKoUPg5yH8+rP6+1FniblEzyJqM5WPfzqrZwB5UeT0iZ1PjW0W0i+0npMSC1QX3AZtR/
- +aHGAYpGsKSfcXb/lwe8ERaEueh+9ObiE5W2iiRHho20VqV0Npzx3rYvPlylcq3Ov5bIUnEM2vS
- oMy8mFw3P88zeJyREmJKyrjEDuz6Fm2+3iktfbOiOSvg==
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From: CFBL-Address: CFBL-Feedback-ID;
+ q=dns/txt; s=fe-e1b5cab7be; t=1795090486;
+ bh=wytq4v1yoNl2lNxNKZUWQLMKNWC9LRDCwAsV3MchUXY=;
+ b=mtZvP3LywoTs7iVbx/6+6JfzbLIjVc6jcmFhG2EGODsdVu39wkfYkjj0RbGsDHb2+DpVq4Gpc
+ UWaLiLVT1MB0UERZN1MHwOX7tkCnYr2Chxml5yrvzlXk9aicVoFsbWVWwbUnOdk1Vhfyo9s94lg
+ uQnUvlWsJqjg41YFinWbwspCUl78f/PkOEp/s0zSktapO/hdB0TfGhmoKEpKaso/SIaS/zoGm1C
+ LKo84dCDvjxRsJWPLZAb7gFfowE/S6wDiMcv3rKfk5sN9tJ1QRP0hW2zlSfKoqBgikuiUnp8E3s
+ 4vs7tbg0elGNTwGCJEv84VM1A6pDabADgy0bqL+n7/mA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=forwardemail.net;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From: CFBL-Address: CFBL-Feedback-ID; q=dns/txt; s=default;
- t=1795090483; bh=KPwgoK2ctYkEIoXLDhQ+9ixRvnytQ+HTp/D7L99rIqE=;
- b=E4sAS0c1ftV4X1auGU4iAWL94ziJboI2mwUr70kbLYiCHylqnWJqdKDEVo+zmE0QPlXkYg9Il
- wOLBOK34xR01PNU0QAkPVmN04HTzhAWlfqokX2MDQIfsVPXlA4FMme+L4s7zn5Hg++Y85pa0bLZ
- bZFaLFJWE102GwOpZ2Jfjng=
-CFBL-Feedback-ID: 6afee831d37bc4966df160da:3d0014e63e262de90a9d6bb08833dc93
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From: CFBL-Address: CFBL-Feedback-ID;
+ q=dns/txt; s=default; t=1795090486;
+ bh=wytq4v1yoNl2lNxNKZUWQLMKNWC9LRDCwAsV3MchUXY=;
+ b=PriZYvaQo/RG7HI/tbMsYlR2F7jZl+F3hSZKGGvXq2YRrjfHvGyxEiaL8yMYTnmAA6Rh7rUip
+ yGPCwvlEj9/CkmtRaS7R6OQoWjWPuZKSjx8YHVIc6BE0cmIdY5kltRIYOlMlUMnpzj04BKQQQrT
+ mQ0RSKbfqtRkjPMuLZF20q4=
+CFBL-Feedback-ID: 6afee835d37bc4966df160f3:48c077aad09a957449f716d8faf09bff
 CFBL-Address: abuse@forwardemail.net; report=arf
-X-Forward-Email-ID: 6afee831d37bc4966df160da
+X-Forward-Email-ID: 6afee835d37bc4966df160f3
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.66
+ 121.127.44.73
 X-Forward-Email-Version: 2.19.33
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -66,15 +68,17 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 0/2] arm64: dts: rockchip: Add FriendlyElec NanoPi NEO3 Plus
-Date: Thu, 19 Nov 2026 12:14:30 +0000
-Message-ID: <20261119121433.550704-1-jonas@kwiboo.se>
+Subject: [PATCH 1/2] dt-bindings: arm: rockchip: Add FriendlyElec NanoPi NEO3 Plus
+Date: Thu, 19 Nov 2026 12:14:31 +0000
+Message-ID: <20261119121433.550704-2-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.56.1
+In-Reply-To: <20261119121433.550704-1-jonas@kwiboo.se>
+References: <20261119121433.550704-1-jonas@kwiboo.se>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_041445_579315_9FF467D8 
-X-CRM114-Status: UNSURE (   7.33  )
+X-CRM114-CacheID: sfid-20261119_041447_185008_D4AD8D55 
+X-CRM114-Status: UNSURE (   7.82  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.0 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -89,29 +93,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This series add initial support for the FriendlyElec NanoPi NEO3 Plus board.
+The NanoPi NEO3 Plus is a compact headless SBC based on the Rockchip
+RK3528A SoC. It shares its base devicetree with the NanoPi R28S and
+Zero2.
 
-The FriendlyElec NanoPi NEO3 Plus is a compact headless SBC based on the
-Rockchip RK3528A SoC. It shares most of its design with the NanoPi R28S
-and NanoPi Zero2 boards.
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Jonas Karlman (2):
-  dt-bindings: arm: rockchip: Add FriendlyElec NanoPi NEO3 Plus
-  arm64: dts: rockchip: Add FriendlyElec NanoPi NEO3 Plus board
-
- .../devicetree/bindings/arm/rockchip.yaml     |  1 +
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../dts/rockchip/rk3528-nanopi-neo3-plus.dts  | 96 +++++++++++++++++++
- 3 files changed, 98 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-nanopi-neo3-plus.dts
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 01a13aaf3e8f..a5eec2ecf23c 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -361,6 +361,7 @@ properties:
+       - description: FriendlyElec NanoPi RK3528 series boards
+         items:
+           - enum:
++              - friendlyarm,nanopi-neo3-plus
+               - friendlyarm,nanopi-r28s
+               - friendlyarm,nanopi-zero2
+           - const: rockchip,rk3528
 -- 
 2.56.1
 
