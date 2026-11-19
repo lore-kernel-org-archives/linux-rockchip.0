@@ -2,107 +2,65 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3C8A5606A320
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 13:37:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CD8B0606A335
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 13:40:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DA+XSXgs;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=aCpWxHc9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=V+Bmp90P
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ACn0j8lj8JFjRP58WC0NFoH13nsTW8hihfaH7vsZRxs=; b=DA+XSXgsugfZ3oHM6tOUL3H2sf
-	IQCyX5gMHPUsSyXNfs4Oyc4LLKrkF8WbALewjBUo4Ric22nli8XTqZ05OyhDWBBuPzfEM3oXMNwxd
-	oaVtvGYWJW1TTEJ0u7epX5JoGazXttyLeF/at+4T0ZJf/eGCDVkK09lEnznQGKOjhBp3hfOP6cNwn
-	7VG75EWfOS5+E5BvsMzFK/u6Q1bE3v9KbLOhQy7vbFNWyxKXw7g+/uSUU4NXe85ggFgWWwnDCkWko
-	50NPuNGsaTCLnNdlzGQm8g6AcwAy5+rj9SsPrs+0fKtJ/YitVDXyXaJsHjiYgjYU4Ic5lYEZHQoXP
-	uwGPZ5pw==;
+	bh=0DAg/IL53V40mXfClvuH0krqFsmupOwXCMyZ+tReCxg=; b=V+Bmp90PiwVP8gCnZModu9HhTL
+	KmPw3CD1cJg2BG7oP8I/oxj8RgmvqO9z7/vfTd6U/yCX5B13wQ/faBK0QXAt4w2HoqAMmVrt+Ytem
+	7xBQG4wgmi7OWrHg8lXq/EuqY86RxfW4t0ZCPy8Rokav5W20bvxPf/wWyQBe/h1LE/UYlAl+gAB4T
+	URU91lxVTY8ZXbxe7MJYhdN1jIABFfR5+XqyLtBnVfbMhlZKOgxEDRoLvc7NAfCqGHr+l6gqOjdnC
+	zw3tQ4d6Bi6mr3Ya0DAE0PwJ2tlenY92DarcO2h6EVXVfnfUVTiAM6IyDn/EQFVJ5goVy9mdM0ntR
+	Nr3VEFsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU2K3-0000000C4rT-1gVj;
-	Thu, 19 Nov 2026 13:37:07 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xU2Ni-0000000C5DX-0yIH;
+	Thu, 19 Nov 2026 13:40:54 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU2Jz-0000000C4qN-3EN6;
-	Thu, 19 Nov 2026 13:37:05 +0000
+	id 1xU2Nh-0000000C5Cm-1KW5;
+	Thu, 19 Nov 2026 13:40:53 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id BDD5762690;
-	Thu, 19 Nov 2026 13:37:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 422281F000C5;
-	Thu, 19 Nov 2026 13:36:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795095422;
-	bh=iGRAZkIuP1YtokXXzVpaqN0uz+iGToylhe2xYT/d790=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=aCpWxHc9pB8sLSB/toFJ4tqtw5h4OJnZaSHGfzZo5WRfQNwLEhBMvbWLck+b3rhiD
-	 u1HJszsTab/EZMtyXIPNZZWz9O+ry63dz97VcANSUWKqfY2kg1fq3rjROus+qY7fzZ
-	 9iFnpMxnddef3XoWPS/TIeR5fYu5bFcAaRtJ+JuBifJbNwK3uMQBMmGAfTcelWDXGR
-	 +GE2KSSMyoCXSSV3IIaAn3RhivFyrmxwJCidYvi0Kzu9U7jffiU/dU8bcSnInXBB4E
-	 J8j+cwjKDlGfksKhBuPZ7Qr4gTKk5WiEctz2RE9N8fwMPh1HHcxspSGY4JS4J+Qr2+
-	 7yOqQRxAwqkKw==
-Message-ID: <d24ace05-d008-4d5d-aa69-d0883af0c589@kernel.org>
-Date: Thu, 19 Nov 2026 14:36:58 +0100
+	by sea.source.kernel.org (Postfix) with ESMTP id C30FD41E9A;
+	Thu, 19 Nov 2026 13:40:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93B921F000C6;
+	Thu, 19 Nov 2026 13:40:48 +0000 (UTC)
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Aaro Koskinen <aaro.koskinen@iki.fi>,
+	Andreas Kemnade <andreas@kemnade.info>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Roger Quadros <rogerq@kernel.org>,
+	Tony Lindgren <tony@atomide.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Paul Walmsley <paul@pwsan.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Andy Yan <andyshrk@163.com>,
+	Ulf Hansson <ulfh@kernel.org>
+Cc: linux-clk@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-omap@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
+	linux-pm@vger.kernel.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>
+Subject: [PATCH 0/6] clk: Improve consumer field in debugfs clk_summary
+Date: Thu, 19 Nov 2026 14:40:33 +0100
+Message-ID: <cover.1795094688.git.geert+renesas@glider.be>
+X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add FriendlyElec NanoPi
- NEO3 Plus
-To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20261119121433.550704-1-jonas@kwiboo.se>
- <20261119121433.550704-2-jonas@kwiboo.se>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <20261119121433.550704-2-jonas@kwiboo.se>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,28 +73,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 19/11/2026 13:14, Jonas Karlman wrote:
-> The NanoPi NEO3 Plus is a compact headless SBC based on the Rockchip
-> RK3528A SoC. It shares its base devicetree with the NanoPi R28S and
-> Zero2.
-> 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
->  1 file changed, 1 insertion(+)
+	Hi all,
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+When a driver uses of_clk_get_from_provider() to obtain clocks, the
+latter show up as "deviceless" in the consumer column of the clk_summary
+file in debugfs.
 
-Best regards,
-Krzysztof
+This patch series aims to improve that, by introducing a new variant
+dev_clk_get_from_provider() that also takes a consumer device.
+When callers provide it, the consumer's name will be shown in the
+clk_summary output.
+
+Sample clk_summary change snippet on R-Car H1 Marzen:
+    - sata 1 1 0 62500000 0 0 50000 Y deviceless    of_clk_get_from_provider
+    + sata 1 1 0 62500000 0 0 50000 Y fc600000.sata dev_clk_get_from_provider
+
+Overview:
+  - The first patch removes the unused "dev" member from struct clk and
+    the "dev" parameter from clk_hw_create_clk(): it felt wrong to add
+    yet another user of clk_hw_create_clk() passing a useless device
+    pointer,
+  - The second patch introduces the new dev_clk_get_from_provider()
+    function,
+  - Patches 3-6 convert users to the new helper:
+      - The Renesas clock patch was tested on R-Car H1 and H3, and
+	should work fine on other Renesas SoCs,
+      - The Rockchip HDMI patch was only compile-tested, but is probably
+	fine, too,
+      - The OMAP2+ patch definitely needs testing,
+      - The Renesas pmdomain patch depends on work in progress.
+
+This series has been tested on R-Car H1, H3, and X5H.
+
+Thanks for your comments!
+
+Geert Uytterhoeven (6):
+  clk: Remove unused clk.dev
+  clk: Add dev_clk_get_from_provider()
+  clk: renesas: Convert to dev_clk_get_from_provider()
+  [RFT] drm/rockchip: dw_hdmi: Convert to dev_clk_get_from_provider()
+  [RFT] ARM: OMAP2+: Convert to dev_clk_get_from_provider()
+  [RFC] pmdomain: renesas: r8a78000: Convert to
+    dev_clk_get_from_provider()
+
+ arch/arm/mach-omap2/omap_device.c           |  2 +-
+ arch/arm/mach-omap2/omap_hwmod.c            |  3 ++-
+ drivers/clk/clk.c                           | 23 ++++++++++-----------
+ drivers/clk/clk.h                           | 11 ++++------
+ drivers/clk/clkdev.c                        | 14 ++++---------
+ drivers/clk/renesas/clk-mstp.c              |  2 +-
+ drivers/clk/renesas/r9a06g032-clocks.c      |  2 +-
+ drivers/clk/renesas/renesas-cpg-mssr.c      |  2 +-
+ drivers/clk/renesas/rzg2l-cpg.c             |  2 +-
+ drivers/clk/renesas/rzv2h-cpg.c             |  2 +-
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c |  3 ++-
+ drivers/pmdomain/renesas/r8a78000-mdlc.c    |  2 +-
+ include/linux/clk.h                         | 10 +++++++--
+ 13 files changed, 38 insertions(+), 40 deletions(-)
+
+-- 
+2.43.0
+
+Gr{oetje,eeting}s,
+
+						Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+							    -- Linus Torvalds
 
 _______________________________________________
 Linux-rockchip mailing list
