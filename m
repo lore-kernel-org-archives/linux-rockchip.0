@@ -2,107 +2,120 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2CC39606A31C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 01:12:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 70ECF606A325
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 01:36:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FjBtV74T;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=QUQRXBSx
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hWal87Ct;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=RLKD4rdw
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=BL5T0BySWImiF7ui4ny/7S7qPFyVUcYknXcvjLUhLys=; b=FjBtV74T3UJE41EU6KgmEtthDR
-	YbqL6vHb6tCpjCXmTrpevqbVDGuNFaydisqoJVvqKxUMax7WcEsfKTBCiBS82QJiA3dKISvLT7fYw
-	bzFXk0LIW6T0KtsJ4CZdDKD4k9oIDHRLBY+bZZy3WPg6VkpMJeZFPUMFi7NJjh4yl4n5iFk87yYO7
-	GBeohBmPRGv1Ugb+AWOGGdPMeW+2F3EAWovfUo4e3HmF31fuNFXPqUC69eAeA3gV7iyF73aq26l3/
-	xeG5ao95aPd3guRHiPPKxG5OdNFb2K+E63vAcO0pPDDbviB7nZ2XMstxCa0Iein+Wgh7/eJyahnWO
-	2NxvJnCQ==;
+	bh=bSjA+T7csT9QgPslj5nV68CzbR6uPxCgA4Mt2p3axb4=; b=hWal87CtKBAFv6KW32XHsQtDQK
+	QRAG/3KNpP9GbdiNjbQzdxZ1IXHZMgcvtZSGf1USzYp75RrfFmHMpKBlkFz+hF13dYR9XKCmWfFWn
+	zY6kYdulwGsVT0Gv2RRiXJTd8hW+Oa/k+wM4owI/qUF3RDUKxY7wHkgzxb+0USMXRI/vUT1dcKPne
+	gDgGSCQFc42ELbekRD3xjHieIcOZFbcTDIbk8tk9qNl4eFhVpICWPJ8h62fZDIUiR3zNktLKtWukY
+	SQ+dJpuJWbGzzdnlUf3qlc7jnGyPcDmhzX1jpHo4QQ4OSauEAWg6YJ6vEFBCHzuiZjL2dsM4qoYjp
+	6sFJN9bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTqhd-0000000AcFH-3Y6x;
-	Thu, 19 Nov 2026 01:12:41 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xTr4H-0000000AddW-1gq2;
+	Thu, 19 Nov 2026 01:36:05 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTqhc-0000000AcEv-2RcT;
-	Thu, 19 Nov 2026 01:12:40 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id AC6E26458C;
-	Thu, 19 Nov 2026 01:12:39 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795050759;
-	b=1Cp7LI4D2BNbbH5s3h249qsx+eoUDFTQbbXJPaoZ18AnH/jLKhFSYE5c9FZgwCvMlmXD
-	 2rGFA5RU78a3pQEhe5BVcx9iHuw9U+z1RjZHrjWqCJi6fg3N829YsQafDmRK+6+bHlqNq
-	 aLHcsGavbmez6b1ra2XdQ4qb/LadPDtueCyP0yyNIWBlJVPfFijCpAone71bvBfI2440o
-	 LSxR578HeIpMax3Qow9tiqOrdzbOB+XivwGf+aLWKIBKugSTOKJeBeIhXoCKjJdoNIaUy
-	 azw9jnmOfq9RuDxQpdqUUUXf7WeXPU/BPZhiDA03IzELjHd9gvRSaYqdsnhYXdFoffA==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795050759;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
-	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
-	 Content-Transfer-Encoding;
-	bh=by7fjbTSRtK9qhJcl4QtE4BTB7jqesvx7t7tAFmcyho=;
-	b=TXuQLHVh100MYRDOWJYHtoRAc58PtCybC684o9mI1vZl3algjnIACzDa+/EMNqaofuhg
-	 RgovIUDww3HLdrteNUTBeMmxoHRxYjaPkFGirG82i3NqdKv/W0w8ZtavmvyZzImg01oaB
-	 dhnOsrIRNYu8qfjq9aoD9utGSPsVH95Xr6+6Feu636dqkCIxKHoUXKSWOOI1CvEmeE40G
-	 U7t1ubTn9mRxbFGO/G7ocNautH3XHBvhm/XEu4r/Uc3QE0aSyJw85FW9vKA5hnPZAUiTc
-	 xkJ+9oecDLqACv8EY/sbWWkq4JV6JmGJ5uqtzEITdQUZDuMNt0exAR73GCqRKflI0Zw==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id C2B8E1F000C5;
-	Thu, 19 Nov 2026 01:12:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795050759;
-	bh=by7fjbTSRtK9qhJcl4QtE4BTB7jqesvx7t7tAFmcyho=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=QUQRXBSxGyQcMeylOT2qYn4VrHPBKaJ+AxBcwIYwVLSogRIC3N5G8Llb7nrBZkPuR
-	 P9wLEw4OiKJUOn7SbL6zBzJgHeKYaIO6AGgfz0pdegx2yN+T6nvL5cMk6/5D+S72J2
-	 c6ukqeC78CHshcLH+k83b7OwLyIZfH4VizurAdSodZEsI0X/WCbOjBj5IlYl+9S2WK
-	 /DgF8O83Nu6o899AZXK9y55dNHf8Phn80rvv8CMUptTQYylHWZ1rz3WAcrA0LPEeoA
-	 mZOObhzhz/oexdaYNxnnRC0fZopFLBYc317as7nQ+DVfPHaXSf/GHcwJU36IWL6Rcg
-	 wwb1XvlEF7JFQ==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 5092F47D70;
-	Thu, 19 Nov 2026 01:12:38 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Thu, 19 Nov 2026 01:12:36 +0000
-Subject: [PATCH] PCI: rockchip-host: Support hibernation with endpoints in
- D0
+	id 1xTr4E-0000000AdcF-0wst
+	for linux-rockchip@lists.infradead.org;
+	Thu, 19 Nov 2026 01:36:03 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-c506187deb9so28653366b.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Nov 2026 17:36:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795052158; cv=none;
+        d=google.com; s=arc-20260327;
+        b=F3O//hTKz/SkJNmGs16nt/REVjSo9XH4kyl/iUbPWMUucOqVHVNxc6Dui50IoBrYhU
+         pGpvX/jSvN2Rm50zVbQkd+oqWaGAEPfZZhv5GBD6+5cT7q9Hw5nHe5XOJ4BR7QO88DBV
+         DGpuU2v7c/4DOHyA8aZ1WjLcc+3cUCVC4w8lzMehdV8TxTOFCroBlXnw0Wl3VBVGl6mM
+         NYxdw5NUotSKH4W3KmsK4lQidkRBxyR5Lo6LCEy6f7CZS4bmtJSg9tZPPwUsM0cFT8PQ
+         AllkxjV2744vqs79wqP4cK5VALVykIwB8tZvdrXU5t7RWY3KZCCTXT/+gfJB2nE++Bam
+         tjsA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=WaRyxnVWPqgnXOf76Bo8+FkIIWslu9CLgRdA1TVjs0A=;
+        fh=pDgx/mA01IZpHISL6jDVqk4ys9eBbrPBl+O4a3CNrik=;
+        b=KnmmwKkWbtjlrI8cKRgnzQ+GQTT/qvDrF+ynSbPBf1LFzLuFm/WPopFRGQCmZXXwuQ
+         WRZ+lIk+WWycx1c3jRphb16ymNLj4fSoDkxYr3476VaWwtYoPSHECKIsvYuj1eYphGU6
+         u4JxSq+Gp0j2lRcfRgPsDy254ryHtD3i9QzVQb5Af51aL4TxWm1LkVJBJy1XmUpLpCII
+         TArgjbou9LYsnpOG+uNxKchc2zfGarFEYER30xn6M8IOZ833Hk/l17AwBtyEqVKoF8eQ
+         rm6xIrbEg0/ToKTu/lmYirrV3sV8sFDjCed7HBidFy0k9xadEVf/Tz9r79mKNw/0b+eG
+         4T2A==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1795052158; x=1795656958; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=WaRyxnVWPqgnXOf76Bo8+FkIIWslu9CLgRdA1TVjs0A=;
+        b=RLKD4rdwg7AX6q6Xv7pL46VABEUr2hG6XutVXVHPoM8EcI/QtmiQzX1R72PY8xyAkJ
+         D8NfMPl0Mvwnok2jdxKhfgKxHi40WxJ0pVHmEMky6Mtx/TsLAz8fClu8ydBEomhh2k8b
+         7mcldCN6JK4q1Vr0GXpaprI1Phmx0pf99Oezq/poINZzO/lKWguaSj54lROikD2DTti4
+         JKu4frlISQoI5TdbP3c+hZhA8PTrErx+Ol0a9jSBkwwOezEXu+4AZaCrsP2w6Mz/ARZw
+         uBy8i+w+pNC4zGnCGe0JTOMOkbaFCZKHZ21NlPnZJ2YrUfbz/w100Ztlbz+uCHtKrCyj
+         9wDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795052158; x=1795656958;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=WaRyxnVWPqgnXOf76Bo8+FkIIWslu9CLgRdA1TVjs0A=;
+        b=IHnmIQty+2MaTQQNsaeHJ1bxfUcKMijSPWCEorKUdzHE3Rb2IK+xb52nipA1I3JNYv
+         Xxgtf3vccuKcaB/2FLzopJyJifNnGuhkHf82HJBz8OYmyUlC+QmB33onyaQi0pBeYYoV
+         oDmobpzrhTqWyLMoNt/xvdAdKgIRNKA3bU/oF2M25AiQoezB3Z+q+FtMHHxHmP0ot9U7
+         UxhdCJxsi8P2PnwwrjeLmC14PjLrnY1RLQRiXgx5hfds1megv04rnvraee3dPln4qTN+
+         d0rqPhZ73T77Fh8q0aQ/82eVT0j8xmzm/UN1S6t76TUsh7wj+K6yFr3xfe6L0E/1ZbFs
+         PuHg==
+X-Forwarded-Encrypted: i=1; AL+hErGQcpwyWgSWxl0ZOkX5hiJAgTXnm7cccTTGCX2GfZB+KfvjbxIc8PGaLqx3pHEO2lWOJqksIZe2qV5qU8uP5g==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8LqoEjA8/NoNFMtTATFBAJNpsICcbHfdjONwpy/4sWU4Qbm75w
+	ri3TntZcByLtQqp6YRymn36SCBk1l2DlbLTrqv9TVLn7pmNWrS1zjff9sUTIaFEeACdDS8V1riu
+	9NpL6vDzDfHKwndl81Qk4KYQ5HbjUEyI=
+X-Gm-Gg: AYBFou0MwCUm6+SQYigBi9aQIieWZ7tmCoxMQmuJ60ZGFqvque+Wpl1HvGPM9mjXHrm
+	nkKh1v2YJAzevUYmS+VAYf08cOVqg2R8M2vBpR7Bfx6jSIQpNpZIBUrqpsxG9Ht/mZQiOdGw5Do
+	OqSlcxMlH+b6eRCZNalmZIIzvza9pLf3bh/z1ksYKHWZMbQ6Lg9El9SqeNvwKRmtoLowlK1X8li
+	3fvr899jwUfxIL6qsitWwJr+TWXLa6hNCkMcfPtAcNI8gSnQ3hxEqNg89rescHoa1cq6CwknOUR
+	yX40zTkkh3kG2RhqJV/qjcu2cObotEAKiuR+SrLE/MWhlyNneWQyqBwRkNAYbLWcXK1zso6tHE9
+	PZJpdD3RCEPe+r1+7pdVLxd+UIz05igZARqGCbXPPfauW0tMR7d+ITjZtwY1lDAVMFp5mNCE=
+X-Received: by 2002:a05:6402:446:b0:6b4:2960:d381 with SMTP id
+ 4fb4d7f45d1cf-6b887a7ca45mr3534756a12.1.1795052158003; Wed, 18 Nov 2026
+ 17:35:58 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261119-b4-rockchip-pcie-hib-v1-1-05df24cc77e6@iav.lv>
-X-B4-Tracking: v=1; b=H4sIAANN/moC/x3MQQqAIBBA0avErBtwRIK6SrTIccohKFGIQLp70
- vIt/q9QJKsUmLoKWW4tep0N1HfAcT13QQ3NYI0diGhE7zBffHDUhIlVMKpHY5zQGtgZZ6GlKcu
- mz7+dl/f9AEvHSUxmAAAA
-To: Shawn Lin <shawn.lin@rock-chips.com>, 
- Manivannan Sadhasivam <mani@kernel.org>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>, 
- Igor Velkov <iav@iav.lv>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3860; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=tt1dbxgPAsX3IFa6cNo4EeAGvruDQ8t+mQUrzu36VIA=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDFn/fFkLdjOq/VvaYb5qy+rEVp9/9i1Kum+enHy7OHvJw
- +56/X8uHaUsDGJcDLJiiiwTDmncylhy9a+/h/kDmDmsTCBDGLg4BWAiW68yMiy6dXtzyes9JYFh
- EzrObIx5cy/W4desP1GbA59ozX+gZBDGyNCroHr9tm1TxhZNtfNPZ/d6byj5oWV1V2dp3Oftv5e
- IvmYDAA==
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+References: <20261118-dcphy-rx-v1-v7-0-8de1adac3a74@gmail.com>
+ <20261118-dcphy-rx-v1-v7-2-8de1adac3a74@gmail.com> <3a9e999f-5ff5-422c-aa65-b8560dca84bc@kernel.org>
+In-Reply-To: <3a9e999f-5ff5-422c-aa65-b8560dca84bc@kernel.org>
+From: =?UTF-8?B?5qWK5pm65oiQ?= <jason98166@gmail.com>
+Date: Thu, 19 Nov 2026 09:35:46 +0800
+X-Gm-Features: AclHuK8yzTD5Ny6Jae8xfaKIWU82OgGlGfteSTdmbBGr1nUYx7XM082OBv9L5nk
+Message-ID: <CAPwA33KcMNnyBEeWkheaEQYUp8FhR+xOdrfv2CAEhG+YuAV2Vw@mail.gmail.com>
+Subject: Re: [PATCH v7 2/9] dt-bindings: phy: rockchip,rk3588-mipi-dcphy:
+ Select TX or RX, add phy-type
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Guochun Huang <hero.huang@rock-chips.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Michael Riesch <michael.riesch@collabora.com>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, 
+	"Bryan O'Donoghue" <bryan.odonoghue@linaro.org>, linux-phy@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Quentin Schulz <quentin.schulz@cherry.de>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261118_173602_300250_7A8F6AB3 
+X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,129 +125,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Igor Velkov <iav@iav.lv>
+On 11/18/26 9:16 AM, Krzysztof Kozlowski wrote:
+> Please drop the tag, this did not happen. In the future, please add only
+> applicable tags. Otherwise share how this code was executed and tested
+> on the actual hardware (make process, like building code, is obviously
+> not testing).
 
-The driver runs its suspend callback on every system sleep transition,
-including hibernation freeze and the quiesce step of the kernel that
-loads the image. The PCI core leaves the endpoints in D0 there, the
-link does not enter L2 after PME_Turn_Off, and hibernation aborts:
+Hi Krzysztof,
 
-  rockchip-pcie f8000000.pcie: PCIe link enter L2 timeout!
-  rockchip-pcie f8000000.pcie: PM: failed to freeze noirq: error -110
-
-Keep the link up across freeze and thaw. On restore, power the port
-down and bring it up as on resume, because the kernel that loaded the
-image may have left it in any state. The port may already be down if
-poweroff_noirq ran, so track that state.
-
-Signed-off-by: Igor Velkov <iav@iav.lv>
----
-Tested on v7.4-rc3 with this patch, ROCK Pi 4A with a WD SN770 NVMe:
-5 of 5 hibernation cycles restored, the NVMe readable after each.
----
- drivers/pci/controller/pcie-rockchip-host.c | 33 +++++++++++++++++++++++++++--
- drivers/pci/controller/pcie-rockchip.h      |  1 +
- 2 files changed, 32 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index 1e1556e436b8..df4b9b3ec031 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -863,6 +863,8 @@ static int rockchip_pcie_suspend_noirq(struct device *dev)
- 
- 	regulator_disable(rockchip->vpcie0v9);
- 
-+	rockchip->powered_down = true;
-+
- 	return ret;
- }
- 
-@@ -893,6 +895,8 @@ static int rockchip_pcie_resume_noirq(struct device *dev)
- 	rockchip_pcie_update_txcredit_mui(rockchip);
- 	rockchip_pcie_enable_interrupts(rockchip);
- 
-+	rockchip->powered_down = false;
-+
- 	return 0;
- 
- err_err_deinit_port:
-@@ -904,6 +908,25 @@ static int rockchip_pcie_resume_noirq(struct device *dev)
- 	return err;
- }
- 
-+static int rockchip_pcie_restore_noirq(struct device *dev)
-+{
-+	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-+
-+	/*
-+	 * The boot kernel may have left the port in any state, while the image
-+	 * holds the enable counts of a running port. Power it down so that
-+	 * resume brings it up from scratch.
-+	 */
-+	if (!rockchip->powered_down) {
-+		rockchip_pcie_deinit_phys(rockchip);
-+		rockchip_pcie_disable_clocks(rockchip);
-+		regulator_disable(rockchip->vpcie0v9);
-+		rockchip->powered_down = true;
-+	}
-+
-+	return rockchip_pcie_resume_noirq(dev);
-+}
-+
- static int rockchip_pcie_probe(struct platform_device *pdev)
- {
- 	struct rockchip_pcie *rockchip;
-@@ -1011,9 +1034,15 @@ static void rockchip_pcie_remove(struct platform_device *pdev)
- 	regulator_disable(rockchip->vpcie0v9);
- }
- 
-+/*
-+ * Freeze leaves the endpoints in D0 and the link does not reach L2 then,
-+ * so keep the link up across freeze and thaw; restore re-inits the port.
-+ */
- static const struct dev_pm_ops rockchip_pcie_pm_ops = {
--	NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_pcie_suspend_noirq,
--				  rockchip_pcie_resume_noirq)
-+	.suspend_noirq = pm_sleep_ptr(rockchip_pcie_suspend_noirq),
-+	.resume_noirq = pm_sleep_ptr(rockchip_pcie_resume_noirq),
-+	.poweroff_noirq = pm_sleep_ptr(rockchip_pcie_suspend_noirq),
-+	.restore_noirq = pm_sleep_ptr(rockchip_pcie_restore_noirq),
- };
- 
- static const struct of_device_id rockchip_pcie_of_match[] = {
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index b5da15601b58..51877678d3df 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -324,6 +324,7 @@ struct rockchip_pcie {
- 	void    __iomem *msg_region;
- 	phys_addr_t msg_bus_addr;
- 	bool is_rc;
-+	bool powered_down;
- 	struct resource *mem_res;
- };
- 
-
----
-base-commit: 35f800669ce835aa77364a2ab5b61be19b778d3c
-change-id: 20261119-b4-rockchip-pcie-hib-004e1adc4042
+I will drop these two tags.
 
 Best regards,
--- 
-Igor Velkov <iav@iav.lv>
-
-
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
