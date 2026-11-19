@@ -2,109 +2,191 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DF7A606AEC0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 08:41:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C89F4606A324
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 09:13:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OaxFg+OJ;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=OtuFythm
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4OqHSPhI;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=cherry.de header.i=@cherry.de header.a=rsa-sha256 header.s=selector1 header.b=jfFaPc3p
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Fz4Z2AXpZ44C8kWc/fdUUUjzdMvSLRBMy+9ctiRB5jk=; b=OaxFg+OJp6YAOQ5q2JN3WrWkwU
-	f84V0CbHd+gzzOKCHWTYi6Rc5aC/QH++o+UcqhGhKbkRuBHnVL3E0yhCRVsxJHN0rwZHC2aGUJFk8
-	nU/wN/lPU3Qn0kCRYCfhvARnIyUOqlqdQoxIJlPL5rvqAuOOrDPs1YeW1Jwp05jVs/uR6ub3ZfJAB
-	EOQkhqCrpLynHRs6zHRZssKf4hlLsyuaVpw+jRI/hCXxKLl2zi4IdfQTkWuf1yikWFR7wXgXcitPI
-	cMq0LfVcjEhOxZT9ybgSNK2M4tMBaBX9LOo2c0HjQa29AN4I6QOfThA2UUBLM0BSA8Dw/6BRWe599
-	0YxgKgiA==;
+	bh=xZMF84M8VuUZ83A1Z4Kze3+ng9096F5FZHdJkG4lrI8=; b=4OqHSPhIDgkjRfbqCHEtiD7ZT4
+	6s52lh6+hDKO1eEtZOi3pdXiFSassAFnZW94BKT3g/5aVTR/0aSv8iP1eS2KLT2SPmdpugJ02DcIu
+	r+FkTTbGmzunXyd27hlW0wvEefGv8PUWZykxy0kuyJ8El3H9wzM/EIvVLjbtr/VPtjB95nSTPVCAs
+	8fCEAZ2vW6DZ0MNsamV8IoXNR9tiU4vLdXQxjYyea2qzGIOItIqld8DtoFU3dzn+8WBtMNUflH77h
+	bRR/KMHqU3Y9OgUha85ltSNMKHPHTEWEB7ocnPAs+LAr0G7Pi/GrUbRMfCEUG4HZN8+kWLS4gOni4
+	nQrzQJGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTxhU-0000000BDnS-0ybZ;
-	Thu, 19 Nov 2026 08:41:00 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xTyCS-0000000BMQT-36NM;
+	Thu, 19 Nov 2026 09:13:00 +0000
+Received: from mail-norwayeastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20f::7] helo=OSPPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTxgU-0000000BCi7-0yqU;
-	Thu, 19 Nov 2026 08:39:58 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9E151628B5;
-	Thu, 19 Nov 2026 08:39:57 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795077597;
-	b=YZweZSltCbxzYg3gIFFkstptEhqB5/nwNkojg1jO/zaOdEFrVr2bckQgIm5cTLJrTWUt
-	 ymOnYcKlIY5eVOsQyCxTf8htiWdzbWF/p58o9OyFZ2TBaTDFNgKdJidAVIevLldzq+rSk
-	 znRBIsGabzsqhOxNc+ltCiAdMDEawtUGHWWqSSK7TRJPw/qpxCJR59zAiMmF9H7Bkjk7a
-	 IFZx3O0yY+pOPNASa3PkRUavHEWA1FXs/6W8zjDir0ni5hhL3kXMLLDjoC5OICubO4Lfq
-	 qlM944UDqKQd0n7VRzkO5asEPFPWwqZ+vOPMONtHH2sxV4sy+O3YQ3wDeuUOGsT6wIA==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795077597;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=ZiLoLmU3ej16vGNuZXg1NNjxseA9K6QpUjZSYUoSksI=;
-	b=OJvKyrc6uftavVDVaSQD/Pmej3os4jIvqztzEqOteHTe4VBmgOEGrqMEaQwuhZw+b73A
-	 D+u6aiPUja/bZoJVHiS6f4XD9nf0VqPdDqNURtjVeOG3S4aqfeAzDF5QWL5Zb4+k4zieu
-	 rcXkGGSrRnojGr4CTAD7c8pLmvTzoWUzIRWo8kAsFI8ikPuOyGAahlHqxmz7+P50fWX4A
-	 wWbZSW/GBwo3APYS/AV+b9jXYR7SFkTBgcRRQLfyZPKGcqeKuc+Mb27IjFBXlF2fYJpOz
-	 FpMUbpu5VnpvbkCrdnoAz1ynXBohhAY0vF5S8FCnbHn/zaydn0NviXg4eQveEw7dgtA==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 5ED1E1F00929;
-	Thu, 19 Nov 2026 08:39:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795077597;
-	bh=ZiLoLmU3ej16vGNuZXg1NNjxseA9K6QpUjZSYUoSksI=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=OtuFythmLOh0Qhhv9A178iPwCFOjLj6dDSvpvhvk8cp3q8pmjVLaqzByDP7FhOtX5
-	 tCP04nItfhUzVSb/IFFxe0wopybyQ/yPpy78Z5ALz8b3TMvFpWa6xn06BAWLXRCfmG
-	 vEtZ7xjw/pQlSMeBkivVVYH0miZ0XcmsoWneH24ai1WlPT22TI5HIxFbAkrZgRUiuD
-	 9PCkRmMMoIeIyWW/p8Rc25n+QoZ40p8ddkBt0kJtd3nZDL93zGK2SY/Xt1vxKEa3FZ
-	 Di0kd423+UpzXN/reNl02BOGJqEP0OLv+aXtvrH+9QWWhGOCTEH6dPeMjJSbFJ2IEx
-	 PnKf13sUOpbrQ==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 0F9384B1C2;
-	Thu, 19 Nov 2026 08:39:50 +0000 (UTC)
-From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
-Date: Thu, 19 Nov 2026 16:39:49 +0800
-Subject: [PATCH net v10 08/10] can: rockchip_canfd: retry the outstanding
- TX buffer
+	id 1xTyCP-0000000BMPs-3qj3;
+	Thu, 19 Nov 2026 09:12:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=bVpGYDv+5ierkXdqrx/yVDhsUZXn0zE6KiRw5E2BoveWaeMeXRrdDcq3vSADClsUgCIQ/pKQneI3pXu/4ud8q8JrRrwxI70lNhW5i7hA2JTIL1UdG4+JPmVBMeGL2HUUEhLL8yD5rw8Pci/3VF/aejAJQfFo6FbzCZ2yPc/l6NQFUEevXkH+3WoGlcVmYUZOoqbCYNvVmboYrhPGvzWw9EPhCzsNizStzs1jV0Tj6F+PByxl2cmxvNVyJVmPB4S9+kBoobEPq6OS3mfpaCjmSG8oTfmEiDlwPbHfMDL7Li5/yJv+6W4LKhsaDCusvdxyGiSDuHyWe2+Q8QHLECjQ0w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8D1gNUSDy7c0U+03wfTJBNTnsYDSvEUXFPfEdtJXXHc=;
+ b=Pevfqz29yBUCRBoU+4E5oxpeQzmHtrP38ittjlqPl745C/kytSKhy7C9JxjfudLNH4YiKohEImDIqyCwESR09X/LWH7smjcQwMa6kGFgcaw8cA8zkJHcjd0NZz1cKIvC6ZDd+bEPNlaAEbuH1EhlDPIuVGHDsfHQlJufcIDaDf0ZFO8mSLCkNz4+nQwhfNuCzyDCUCF6oew5t0552bOYHJtT7Kejdb3M5Ozlc0ut4r+y+EHdkhFT2EAbkphAZ7vHihWcsaKRFqV6fjZ7Dl3zJ4bn3y1n/o6N/1P3pkkt3tkzW/ivy+EjjdyNADS8oIIjuw7doZnsXH4r+u6rd703eA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8D1gNUSDy7c0U+03wfTJBNTnsYDSvEUXFPfEdtJXXHc=;
+ b=jfFaPc3p1tfaOmyWVZyGqyBFVuhovMiaM4Ghp3YJkTyQx6hSWcodgG29C8ra+XnGxwfyY2Fo0HI89wQ0Ylni711ewJHirk4TiNMEx89awkzwOSXGs1qj1OwG1jbX3D1rXVEQKx3k4aKn9PmUyQ03TmUa78HM1ud8Lz5PHd5l82k=
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from GVXPR04MB12016.eurprd04.prod.outlook.com (2603:10a6:150:335::6)
+ by DU2PR04MB8919.eurprd04.prod.outlook.com (2603:10a6:10:2e2::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.615.14; Thu, 19 Nov
+ 2026 09:12:51 +0000
+Received: from GVXPR04MB12016.eurprd04.prod.outlook.com
+ ([fe80::f2d4:9db8:9a4e:b0bd]) by GVXPR04MB12016.eurprd04.prod.outlook.com
+ ([fe80::f2d4:9db8:9a4e:b0bd%4]) with mapi id 15.21.0639.010; Thu, 19 Nov 2026
+ 09:12:51 +0000
+Message-ID: <af94a18e-cb7e-4319-95e3-0df120f730dd@cherry.de>
+Date: Thu, 19 Nov 2026 10:12:49 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/4] Suspend-to-RAM fixes for RK3588 + SPI-connected RK806
+ PMIC, enable PMIC sleep on RK3588 Tiger
+To: Quentin Schulz <quentin.schulz@cherry.de>,
+ Jakob Unterwurzacher <jakobunt@gmail.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Joseph Chen <chenjh@rock-chips.com>, Lee Jones <lee@kernel.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-input@vger.kernel.org,
+ mfd@lists.linux.dev, devicetree@vger.kernel.org
+References: <20261029-dev-tiger-v7-4-pre-20261028-tiger-suspend-b4-v1-0-cb12621c1fb4@cherry.de>
+ <a220ebd0-a28d-44cc-9a80-62382018348c@cherry.de>
+Content-Language: en-US
+From: Jakob Unterwurzacher <jakob.unterwurzacher@cherry.de>
+Autocrypt: addr=jakob.unterwurzacher@cherry.de; keydata=
+ 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
+ ldPHIqbIwpfecQ==
+In-Reply-To: <a220ebd0-a28d-44cc-9a80-62382018348c@cherry.de>
+X-ClientProxiedBy: VI1PR04CA0093.eurprd04.prod.outlook.com
+ (2603:10a6:803:64::28) To GVXPR04MB12016.eurprd04.prod.outlook.com
+ (2603:10a6:150:335::6)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261119-rockchip-canfd-restart-close-v10-8-df23913aa33a@qq.com>
-References: <20261119-rockchip-canfd-restart-close-v10-0-df23913aa33a@qq.com>
-In-Reply-To: <20261119-rockchip-canfd-restart-close-v10-0-df23913aa33a@qq.com>
-To: Marc Kleine-Budde <mkl@pengutronix.de>, kernel@pengutronix.de, 
- Vincent Mailhol <mailhol@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Oliver Hartkopp <socketcan@hartkopp.net>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
- Shuah Khan <skhan@linuxfoundation.org>, 
- Randy Dunlap <rdunlap@infradead.org>, 
- Wolfgang Grandegger <wg@grandegger.com>
-Cc: linux-can@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-doc@vger.kernel.org, Cunhao Lu <1579567540@qq.com>, 
- stable@vger.kernel.org
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795077587; l=9789;
- i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
- bh=kBKb8AmgJ6pzOGhAXdb9opycixy8N3evuqoCl84o4lQ=;
- b=zz5c2loXtLfCkdXEablUzfT0ucsZLa4P3XwhbTrxM6/kbLnFsIQfyN4e3JJYQP6hi3whgo8zz
- F8NLbln+BtCCV6SzDCnrhLuH/cZ6U3WClcyvtXXhEDEy9UnSfIsaU8d
-X-Developer-Key: i=1579567540@qq.com; a=ed25519;
- pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
-X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
- auth_id=1177
-X-Original-From: Cunhao Lu <1579567540@qq.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GVXPR04MB12016:EE_|DU2PR04MB8919:EE_
+X-MS-Office365-Filtering-Correlation-Id: 39ab31c7-0474-4bee-9f7a-08df461d496c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|23010399003|1800799024|11063799006|4143699003|921020|56012099006|22082099003|18002099003|10067099003|261009223027099003|261102123227099003|261028144727099003|261021135927099003|261021133027099003|261021121427099003|261022115727099003|261021123027099003|261026121527099003|261022075727099003|261026140227099003|261021130227099003|261022105027099003|261022113327099003|261026130827099003|261026135527099003|4133799003;
+X-Microsoft-Antispam-Message-Info: bs7TWLY+TpYAiyoXsT4+xl0ma2kDgE3WAJUDNvrAdngCChNEdV8+w69Mfb9ob6ZmNZFoFVbvitCvkTKAtep032lr0B1S/koOm6fIlu+9d3D8lyUYATbeq2TLn2uBwuztkSvbE+ji9+XxqCp/KCs/d+Uf3BScsV5UphLjBXNaFJafmRQxZPFLQCX/4fexXJIzWabcGufcWEchvJKz3pWXCa4/PJdEJ1FMP1evpTC7MbI0uqiT4wm1qWJRliG/14VIcVWCFSeLVMynPrSF79rfD+/p0ZME6Hxr3DR2n0uJkpZSoIDXNBGwwcv7cjYzIQyfgpipXb/EQdZTkm9Gxp7GW/zF4Hnp1rKHTu4r+JNh1xjqlwA9JWqPenU1VJ4NEsRNPgkwvKcWFMLkOo3V2haaHdHt9XQX1PEkkDiIEueUbrPjzDKOu/Lor7u4Iza2LkAdLTSYdTH9fbzNS91sUE+kaphxsZyzAXXsgdYVSHLnQSEnPPfDholnSHnZ/N9d8n36OQurTJa2HBtb1EyCuGoQhFcTvnq1aCbRHSAyAivqyRJF80O0MPrjElXzZJ1qUE8dpX/xWCjRAZwLB6THLH5mvwvt8LrNGnesQL9q6T2uQBbK9GtRcAnua/0g6FaDa3KvuD4b87GjE8lqy00+vzI1Eke8re+h3pZb6pbWWkCyWx8=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GVXPR04MB12016.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(23010399003)(1800799024)(11063799006)(4143699003)(921020)(56012099006)(22082099003)(18002099003)(10067099003)(261009223027099003)(261102123227099003)(261028144727099003)(261021135927099003)(261021133027099003)(261021121427099003)(261022115727099003)(261021123027099003)(261026121527099003)(261022075727099003)(261026140227099003)(261021130227099003)(261022105027099003)(261022113327099003)(261026130827099003)(261026135527099003)(4133799003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bmwwR0JFNG5kcG5ralErdVEybXIwdnJ6Q1pQVHFQMUdQSURpb2pxWktycVdG?=
+ =?utf-8?B?L3BxS2lBYTUrcEhRdWFoQkYxQS9mSmxTbGk1RHl1RnlWbkhnS0puSWVPTG10?=
+ =?utf-8?B?eTErY3U4alZ1WUFaZTNnSkRLQm5QTkdEdXZoRHk3NzJhSkxMTHltOEVKN2xY?=
+ =?utf-8?B?QnBud3BwRzF0RmFac3BSclVqcnplbmVLdS90VXRPUmZYdENsWURjOTJHSjdm?=
+ =?utf-8?B?RDdSVXF4bS92eVNSaFhBYitscSt2OEZYQXFZTytjdG9jdE1MUHNpZ0dOQ0ND?=
+ =?utf-8?B?eUhwMHJSdEc1endRV1lrODlTL2dpM1JDaFJEcGYrUFB1d21oTzNzYTBBTEdz?=
+ =?utf-8?B?d2Y1dWVtRkNQdzJPbGRLWlJGVTlVRU95Vlg3cDVrSlVrOTlHVDAyV1NpZlhw?=
+ =?utf-8?B?eTNtczhtK0JLU0p6bVI4dFAxaVA3c1B4UXVpWDlMZ09uSy9uZG1iWkEwMW9Y?=
+ =?utf-8?B?Wm5keWdmaTR4LzhlODcwR3JXL1dnYzZaQmdnVHRSbDJVSTZoZDE1Vk5tMmdI?=
+ =?utf-8?B?cnlPNUxHUGRjUHQzMzYrTi8yUmZja1ZySWdSOUxZZDhtWklJWGhyTGpibmdU?=
+ =?utf-8?B?RGJMSHZPRlZ6UDRHVnpHTEtZR3phTkh6WHNVNmtNNXlZQTU4U3BCcURVaFNC?=
+ =?utf-8?B?MGFwRWJNaGNYQmNjS1c2RDR1L3IvVHlMcDhsMXJNNHJwSWFUU3l2Rzh3UXFn?=
+ =?utf-8?B?MVVUV2xXR0RKN1RNWWd2Yk1lUjVMVHpBY29jL0NuSHk4YnpXTVdMYzZIaVlZ?=
+ =?utf-8?B?RTY0YXdOb1RXWVArYkkrVU5TQXRIdTBJd04rbStUa1FOTFJwQ04rTDVja01r?=
+ =?utf-8?B?bGp0dFpzUG9pVXVZaE80RzR4d2tOVHpzQmg2MHhnMjhlRFJzYi9CWmN0Y08v?=
+ =?utf-8?B?VEFOTFRBeHJwc3ZVV1BNNzBqUjc0RnZaaW9vejM5K1JLOGMyUER4bGxrdkI1?=
+ =?utf-8?B?MDJpTjRZdm55YngzbksvbWNaeXRLZW50VkxHdVM1cVU2SEkzVTZHVFMrWHlP?=
+ =?utf-8?B?dkhXS3NMMFlpZmRjSlpLeCtBOENjSzRzenNXK2d4enJ3VVJIMWNwQzc5eXZD?=
+ =?utf-8?B?VkkrTTNuUEpaeDhzM3FLejVMcDdRQzFpbkZub2J4aFFoUEZpRitTSDBlU2M3?=
+ =?utf-8?B?WjNFUTlpeGNOZWFTekxoQW9XU0NXZWFiVWJhVTdSQVBRV2JYaWV4S3ExUVVS?=
+ =?utf-8?B?SDdOZGQvUkpBaUxDbmo0WEdkZEx4Y0ZJSEx4dTk3UU11SFVuSlYrYlNQWHFP?=
+ =?utf-8?B?b0xOVzJSK2VZUlJlTUlUaEltZ0xTREM1aEFPUjhzZUtMa0t2MWozVm44WDJp?=
+ =?utf-8?B?R25LVkliZHZqa241WXNoRUdGMGlXUzF1a0JoUEpZcjV6Y29qeXZoMzU5cmYr?=
+ =?utf-8?B?bTcxUWRTVTRaQnpLdUcrVWhacmpaOTJESlZBTER4VGE1QnRzSytYVHpmbFgv?=
+ =?utf-8?B?VEFsRi9QWEsvZ0pRMVNiTk4wbzhaOTU3UFlIQ3oyZjJIandFdnp2YlY5ajFH?=
+ =?utf-8?B?QXVKMGJlZStpWEg0SDZzZ1MyWXVob1ZQcXp2aEJlT1dGR0hvRjVOWWdqQ1Nl?=
+ =?utf-8?B?QTNvaUdkN29xaHQrYjBqZitwWXZqVlpQZmxCU0hSTjlFL0d4M2kvYURZaldU?=
+ =?utf-8?B?Qm5kRllEVXQxL05wQlJHN05oUEZ1QTJkcS8rY0VBbTNMZHBRT0QraWUvVTlB?=
+ =?utf-8?B?NDAzUTJYY1lGTlZ5SDlpeFNDTUdmUjlUb2NMMGgyelpIKzdmWjZLblpCY05H?=
+ =?utf-8?B?c3UvTTB4TVRqdnJwWjdnaUR6Wnd2WXZ3L3lVZXVvTWYwQWtVeldQL0VpbzNP?=
+ =?utf-8?B?Ym9UL2FENUVxYjNtTzJSSzFOSEpEU3hlRmladFRyekEzUXZZZjRQZDNYMVUy?=
+ =?utf-8?B?MnA5RytaOUtEZ3RMZ3AzWDFOYm9JeVJMUzA1NkgyYmViOE9OU2ZXcStPOGln?=
+ =?utf-8?B?Q09OR1RQRjlWaldxVTJLRzRpRU9XZ1Z5M05mOWFvQ2MrK0h1VWtwcno2Qk95?=
+ =?utf-8?B?d1VUdEVTbEtUUFhtcG1rblZ6U2NadzNDbWtWb3FJN2VaZHBnbjhLZ3NvL3gr?=
+ =?utf-8?B?OGIrZDUxeDRyMlIyWXZTRjA5NGpXWWJEZjduanZoRDlhcWdxbHNDMllBaEJa?=
+ =?utf-8?B?dUR2SkZXTGFveUVhT3BDY1Y4NDNiR1p2OW1xd3J5RFdleVZGSVl0NEZIOXNV?=
+ =?utf-8?B?aTNBMjNXV3JFWUJ3Zjk3YlBvSUhvR0lnd3B6dkJ2L0tZNXdMblZGNEUxdGhD?=
+ =?utf-8?B?QWNxNUZ1TGRmc1pxMnpmNVpSeDV2WSt5ZVppMzBZeW9rKzdhOFhTbU5ta2Nv?=
+ =?utf-8?B?L3c4c3dwWHY5QUdwNWxremFFRHQ0NVBoT1loVWFwdGdEQmx2bTVjVkN5bU8x?=
+ =?utf-8?Q?p9gfaVgHDQv/i7c8=3D?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 39ab31c7-0474-4bee-9f7a-08df461d496c
+X-MS-Exchange-CrossTenant-AuthSource: GVXPR04MB12016.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Nov 2026 09:12:51.1371
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: cP6Ok+cF6MfCKDHA3SA5Ltx+atJvKwo2WeC+rIrQqMyEKbypBxmjK+01rIMFSxhUeDKaEIBktae7G7AV4DqjuQGOyzVvyHfNIW2bfih2gmM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU2PR04MB8919
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261119_011258_185952_1ECE1BAF 
+X-CRM114-Status: GOOD (  21.91  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,279 +196,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: 1579567540@qq.com
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Cunhao Lu <1579567540@qq.com>
+Hi Quentin, thanks for looking at this!
 
-rkcanfd_xmit_retry() uses tx_head to select the buffer for an erratum 6
-retransmission. With two buffers and one outstanding frame, this selects
-the next submission slot instead of the slot holding that frame.
-
-A standard frame from another node can match the erratum 6 check while
-the original extended frame is still pending: its ID matches the low
-11 ID bits, and both have the same RTR flag and length. Data frames must
-also have matching payloads. The retry loads the extended frame from the
-shared TX registers into the other buffer. In RK3588 tests, the peer
-received the current extended frame twice and local sockets received the
-extra copy as ordinary RX. When a queued successor reused the buffer
-while the retry was active, it was lost, leaving its echo and BQL
-accounting pending and the TX queue stopped.
-
-Use tx_tail to retry the original slot. The original request may have
-completed by the time the driver processes the matching standard frame,
-with its echo still in the RX FIFO. Processing that echo can wake the
-queue while the retry is active, allowing a successor to overwrite the
-shared TX registers.
-
-Stop the queue and mark the retry pending under tx_lock before issuing
-it. Complete the original echo and BQL accounting normally, but return
-NETDEV_TX_BUSY for new submissions without consuming their skbs. A worker
-polls both TX request bits with a one-jiffy delay, so progress does not
-depend on another RX interrupt. Once both bits clear, it releases the
-guard and wakes the queue if space is available. Repeated matches do not
-postpone a pending check, but worker scheduling can delay the next TX.
-
-Disable retries before publishing BUS_OFF and at close entry so the
-retry worker cannot read TX request bits, requeue itself or wake the
-queue. Close frees the IRQ before draining the worker. Restart waits
-for in-flight IRQ handlers, then drains the worker before resetting the
-controller. Both paths wait for the worker outside tx_lock.
-
-On RK3588 with PREEMPT_RT, a higher-priority userspace task delayed the
-CAN IRQ thread. The peer had already received the original extended frame
-when the driver processed the matching standard frame. With only the
-tx_tail change, the peer received a frame with the original CAN ID and
-a payload containing bytes from a queued successor. The TX queue stalled.
-With new submissions blocked until both TX request bits cleared, the peer
-received all queued successors and no mixed frames in the same test.
-
-The guard prevents later submissions from overwriting the shared TX
-registers during a retry, but the driver can still filter out a matching
-standard frame from another node and send a second complete copy of the
-original extended frame.
-
-Fixes: a5605d61c7dd ("can: rockchip_canfd: enable full TX-FIFO depth of 2")
-Cc: stable@vger.kernel.org
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
-
----
-Changes in v10:
-- Block new submissions until both TX request bits clear after a retry.
-- Move this patch after the TX/IRQ lifecycle synchronization.
-
-Changes in v8:
-- Apply the retry-slot correction after TX serialization.
----
- drivers/net/can/rockchip/rockchip_canfd-core.c | 10 ++++
- drivers/net/can/rockchip/rockchip_canfd-tx.c   | 77 +++++++++++++++++++++++++-
- drivers/net/can/rockchip/rockchip_canfd.h      |  7 +++
- 3 files changed, 92 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-core.c b/drivers/net/can/rockchip/rockchip_canfd-core.c
-index a5c6331191d1..38ffd06768a3 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-core.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-core.c
-@@ -270,6 +270,8 @@ static void rkcanfd_chip_start(struct rkcanfd_priv *priv)
- {
- 	u32 reg;
- 
-+	rkcanfd_tx_retry_stop_sync(priv);
-+
- 	rkcanfd_chip_set_reset_mode(priv);
- 
- 	/* Receiving Filter: accept all */
-@@ -329,12 +331,15 @@ static void rkcanfd_chip_start(struct rkcanfd_priv *priv)
- 
- 	netdev_dbg(priv->ndev, "%s: reg_mode=0x%08x\n", __func__,
- 		   rkcanfd_read(priv, RKCANFD_REG_MODE));
-+	rkcanfd_tx_retry_start(priv);
- }
- 
- static void rkcanfd_tx_disable(struct rkcanfd_priv *priv)
- {
- 	unsigned long flags;
- 
-+	rkcanfd_tx_retry_stop(priv);
-+
- 	spin_lock_irqsave(&priv->tx_lock, flags);
- 	priv->tx_enabled = false;
- 	netif_stop_queue(priv->ndev);
-@@ -377,6 +382,8 @@ static void rkcanfd_chip_stop(struct rkcanfd_priv *priv, const enum can_state st
- 
- static void rkcanfd_chip_stop_sync(struct rkcanfd_priv *priv, const enum can_state state)
- {
-+	rkcanfd_tx_retry_stop_sync(priv);
-+
- 	priv->can.state = state;
- 
- 	rkcanfd_timestamp_stop_sync(priv);
-@@ -811,6 +818,8 @@ static int rkcanfd_stop(struct net_device *ndev)
- {
- 	struct rkcanfd_priv *priv = netdev_priv(ndev);
- 
-+	rkcanfd_tx_retry_stop(priv);
-+
- 	close_candev_cancel_restart_sync(ndev);
- 	rkcanfd_tx_disable(priv);
- 
-@@ -976,6 +985,7 @@ static int rkcanfd_probe(struct platform_device *pdev)
- 	priv->can.do_get_berr_counter = rkcanfd_get_berr_counter;
- 	priv->ndev = ndev;
- 	spin_lock_init(&priv->tx_lock);
-+	rkcanfd_tx_retry_init(priv);
- 
- 	match = device_get_match_data(&pdev->dev);
- 	if (match) {
-diff --git a/drivers/net/can/rockchip/rockchip_canfd-tx.c b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-index 7e3f478422e0..745029c23645 100644
---- a/drivers/net/can/rockchip/rockchip_canfd-tx.c
-+++ b/drivers/net/can/rockchip/rockchip_canfd-tx.c
-@@ -39,6 +39,10 @@ unsigned int rkcanfd_get_effective_tx_free(const struct rkcanfd_priv *priv)
- {
- 	lockdep_assert_held(&priv->tx_lock);
- 
-+	/* The original echo can precede completion of a retry. */
-+	if (!priv->tx_retry_enabled || priv->tx_retry_pending)
-+		return 0;
-+
- 	if (priv->devtype_data.quirks & RKCANFD_QUIRK_RK3568_ERRATUM_6 &&
- 	    rkcanfd_tx_tail_is_eff(priv))
- 		return 0;
-@@ -46,6 +50,68 @@ unsigned int rkcanfd_get_effective_tx_free(const struct rkcanfd_priv *priv)
- 	return rkcanfd_get_tx_free(priv);
- }
- 
-+static void rkcanfd_tx_retry_work(struct work_struct *work)
-+{
-+	struct rkcanfd_priv *priv = container_of(to_delayed_work(work),
-+						 struct rkcanfd_priv, tx_retry_work);
-+	const u32 tx_req = RKCANFD_REG_CMD_TX0_REQ | RKCANFD_REG_CMD_TX1_REQ;
-+	unsigned long flags;
-+	u32 reg_cmd;
-+
-+	spin_lock_irqsave(&priv->tx_lock, flags);
-+	if (!priv->tx_retry_enabled || !priv->tx_retry_pending)
-+		goto out_unlock;
-+
-+	reg_cmd = rkcanfd_read(priv, RKCANFD_REG_CMD);
-+
-+	if (reg_cmd & tx_req) {
-+		schedule_delayed_work(&priv->tx_retry_work, 1);
-+		goto out_unlock;
-+	}
-+
-+	priv->tx_retry_pending = false;
-+
-+	if (rkcanfd_get_effective_tx_free(priv) >= RKCANFD_TX_START_THRESHOLD)
-+		netif_wake_queue(priv->ndev);
-+
-+out_unlock:
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
-+}
-+
-+void rkcanfd_tx_retry_init(struct rkcanfd_priv *priv)
-+{
-+	INIT_DELAYED_WORK(&priv->tx_retry_work, rkcanfd_tx_retry_work);
-+}
-+
-+void rkcanfd_tx_retry_start(struct rkcanfd_priv *priv)
-+{
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&priv->tx_lock, flags);
-+	priv->tx_retry_enabled = netif_running(priv->ndev);
-+	priv->tx_retry_pending = false;
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
-+}
-+
-+void rkcanfd_tx_retry_stop(struct rkcanfd_priv *priv)
-+{
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&priv->tx_lock, flags);
-+	priv->tx_retry_enabled = false;
-+	priv->tx_retry_pending = false;
-+	netif_stop_queue(priv->ndev);
-+	spin_unlock_irqrestore(&priv->tx_lock, flags);
-+
-+	cancel_delayed_work(&priv->tx_retry_work);
-+}
-+
-+void rkcanfd_tx_retry_stop_sync(struct rkcanfd_priv *priv)
-+{
-+	rkcanfd_tx_retry_stop(priv);
-+	cancel_delayed_work_sync(&priv->tx_retry_work);
-+}
-+
- static void rkcanfd_start_xmit_write_cmd(const struct rkcanfd_priv *priv,
- 					 const u32 reg_cmd)
- {
-@@ -63,12 +129,19 @@ static void rkcanfd_start_xmit_write_cmd(const struct rkcanfd_priv *priv,
- 
- void rkcanfd_xmit_retry(struct rkcanfd_priv *priv)
- {
--	const unsigned int tx_head = rkcanfd_get_tx_head(priv);
--	const u32 reg_cmd = RKCANFD_REG_CMD_TX_REQ(tx_head);
-+	const unsigned int tx_tail = rkcanfd_get_tx_tail(priv);
-+	const u32 reg_cmd = RKCANFD_REG_CMD_TX_REQ(tx_tail);
- 
- 	lockdep_assert_held(&priv->tx_lock);
- 
-+	if (!priv->tx_retry_enabled)
-+		return;
-+
-+	priv->tx_retry_pending = true;
-+	netif_stop_queue(priv->ndev);
-+
- 	rkcanfd_start_xmit_write_cmd(priv, reg_cmd);
-+	schedule_delayed_work(&priv->tx_retry_work, 1);
- }
- 
- netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev)
-diff --git a/drivers/net/can/rockchip/rockchip_canfd.h b/drivers/net/can/rockchip/rockchip_canfd.h
-index 8fdb59025bfa..07fc5bc605df 100644
---- a/drivers/net/can/rockchip/rockchip_canfd.h
-+++ b/drivers/net/can/rockchip/rockchip_canfd.h
-@@ -487,10 +487,13 @@ struct rkcanfd_priv {
- 
- 	bool tx_enabled;
- 	bool irq_suspended;
-+	bool tx_retry_enabled;
-+	bool tx_retry_pending;
- 
- 	struct cyclecounter cc;
- 	struct timecounter tc;
- 	struct delayed_work timestamp;
-+	struct delayed_work tx_retry_work;
- 	unsigned long work_delay_jiffies;
- 
- 	struct can_berr_counter bec;
-@@ -564,6 +567,10 @@ void rkcanfd_timestamp_stop(struct rkcanfd_priv *priv);
- void rkcanfd_timestamp_stop_sync(struct rkcanfd_priv *priv);
- 
- unsigned int rkcanfd_get_effective_tx_free(const struct rkcanfd_priv *priv);
-+void rkcanfd_tx_retry_init(struct rkcanfd_priv *priv);
-+void rkcanfd_tx_retry_start(struct rkcanfd_priv *priv);
-+void rkcanfd_tx_retry_stop(struct rkcanfd_priv *priv);
-+void rkcanfd_tx_retry_stop_sync(struct rkcanfd_priv *priv);
- void rkcanfd_xmit_retry(struct rkcanfd_priv *priv);
- netdev_tx_t rkcanfd_start_xmit(struct sk_buff *skb, struct net_device *ndev);
- void rkcanfd_handle_tx_done_one(struct rkcanfd_priv *priv, const u32 ts,
-
--- 
-2.34.1
+On 10/29/26 20:31, Quentin Schulz wrote:
+> Hi Jakob,
+> 
+> On 10/29/26 11:06 AM, Jakob Unterwurzacher wrote:
+>> This series, together with a few out-of-tree patches (see below), makes
+>> suspend-to-RAM on RK3588-Tiger work, down to a power consumption of
+>> about 0.4 W. Patches 1-3 apply to all boards with an RK806 PMIC
+>> connected via SPI, which includes most RK3588 boards.
+>>
+>> Patch 1 ("Input: rk805-pwrkey - enable the wakeup interrupt during 
+>> system suspend")
+>> arms the power key interrupt as a wakeup source, so that the
+>> power key can wake up the system. This is done in the regular suspend
+>> phase, because the SPI bus to the PMIC can no longer be used in the
+>> noirq phase.
+>>
+>> Patch 2 ("mfd: rk8xx-core: keep the PMIC interrupt disabled during 
+>> system suspend")
+>> keeps the PMIC interrupt disabled across system suspend, so that its
+>> handler does not run before the bus to the PMIC has resumed.
+>>
+>> Patch 3 ("mfd: rk8xx-spi: add system sleep PM ops")
+>> hooks up the existing rk8xx suspend/resume callbacks for the SPI
+>> variant, which so far lacked them.
+>>
+>> Patch 4 ("arm64: dts: rockchip: put the PMIC into sleep mode in 
+>> suspend on RK3588 Tiger")
+>> configures the RK806 PWRCTRL1 pin on RK3588 Tiger for its sleep
+>> function, so that the regulator suspend states take effect. This lowers
+>> the module's power consumption in suspend-to-RAM from 1.09 W to 0.43 W.
+>>
+>> The patches do not depend on each other and can be applied through
+>> their respective trees.
+>>
+> 
+> Then have them in separate series. Series should be as small as 
+> possible, down to a single commit if possible.
 
 
+I'll split it into tree (1, 2+3, 4).
+
+
+>> 1) Upstream TF-A does not complete suspend-to-RAM on this board yet, 
+>> so the
+>> tests used Rockchip's BL31 (rkbin v1.47), configured through a small
+>> out-of-tree driver. The plan is to get suspend working in TF-A instead.
+>>
+> 
+> I'm guessing you(r LLM) meant upstream TF-A here? Or what is it that you 
+> mean?
+
+Yes, both my LLM and me meant upstream TF-A.
+
+>> 2) The inno-usb2 PHY has to be resumed when its 480 MHz clock is enabled,
+>> otherwise EHCI/OHCI resume hangs. This is addressed by Sebastian
+>> Reichel's inno-usb2 series [1].
+>>
+> 
+> Having access to your downstream branch, you have a patch generated by 
+> your LLM and not Sebastian's patch series. Either use what Sebastian 
+> posted, or be more careful in your choice of words as I read the above 
+> as implying you used his series.
+
+I have now pulled in Sebastian's patch series instead and posted a 
+Tested-By ( 
+https://lore.kernel.org/lkml/ae532396-557b-4a0b-b13c-920a971962b8@cherry.de/ 
+).
+
+>> Known issues
+>> ------------
+>>
+>> PCIe devices do not survive resume; this depends on system PM
+>> support in pcie-dw-rockchip [2].
+>>
+>> [2] https://eur02.safelinks.protection.outlook.com/? 
+>> url=https%3A%2F%2Flore.kernel.org%2Fr%2F20260316-rockchip-pcie-system- 
+>> suspend- 
+>> v5-0-5bb5ad37d643%40collabora.com&data=05%7C02%7Cjakob.unterwurzacher%40cherry.de%7C464ac9f060054aad6eb808df35f33f19%7C5e0e1b5221b54e7b83bb514ec460677e%7C0%7C0%7C639288990982194241%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=cg2d38YMtjlOG4gFsyy7LYI%2FWi4RFRUuHL8QjVL0DJg%3D&reserved=0
+>>
+> 
+> There already is a v6 from almost two months ago. Did you actually test 
+> with the v5 or are you just hinting at what could be helping resume PCIe 
+> devices?
+> 
+> I'm sure Sebastian would be happy to receive a nice Tested-by tag if you 
+> did indeed test that.
+
+I was just hinting.
+
+It was merged in the meantime ( 
+https://lore.kernel.org/linux-pci/179407115382.87267.12160393716568806842.b4-ty@b4/ 
+) and I have now also pulled it into my local tree. It solves the problem.
+
+> All your patches are missing the Signed-off-by, required to signify 
+> DCO[1]. LLMs are forbidden to add it, so I guess you missed that when 
+> reviewing the patches before sending. Please triple check that you agree 
+> to all criteria listed in the documentation before adding the SoB to 
+> patches generated by LLMs[2].
+Well, that's embarrassing.
+
+"b4 prep --check" came back clean, so I assumed that b4 adds the 
+Signed-off-by.
+
+But, as it turns out, "b4 prep --check" does not actually work.
+I have reported this as 
+https://lore.kernel.org/all/a37b228f-0d12-4c26-b29b-51ad59bc6d1a@cherry.de/ 
+.
+
+Thanks for the links, I have triple-checked.
+
+Best regards,
+Jakob
 
 _______________________________________________
 Linux-rockchip mailing list
