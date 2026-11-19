@@ -2,86 +2,85 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 24C5A606A333
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 06:20:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ECD00606A337
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Nov 2026 06:20:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vzkv2/eW;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ma4EZ4Mz
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2jA1Nj5J;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=csBUG3p9
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=hWTkrjyXMfOaPXjdMxvTjTnH838Ll6307pXDLSGbk2E=; b=vzkv2/eWB5ASLmnK9gaDwcWwz/
-	wUQJlyWBQIPF/1H8flVUNYQtidC5Tt55gaZkfK5tx7lJDF7iwb4SlZxMO6coH3G1eAm5bjm5EVlxV
-	ZzUXtU0RXaW7Np7Tto4Vt5aJqwyPrqr26yJ/Yi8Uyy5fuir0uYMLrXkF3CtWLuNZI9ykOV/4V5zbq
-	p0mQbklDr9vaafqan41fk19kGZkPLXf8mknjV9dPPT6rwNYCvkRgt0fyhff/FR5rc17bTcujwfUbT
-	EtnemPOhymf00D+Fg4PDeiqdga8llCUvy+tBieBGPMlizxituB0cUfYqKu71u716SvXtwk8XoHpxS
-	3IfLqhWw==;
+	bh=Kn4zRSufOGfpTlSfhsZg0eI366qQAQxbktcNQ+3jzp4=; b=2jA1Nj5JYje6ENP0cjBLAhtGZF
+	hr7ynb2g6GnS9J0K2Xc6EsrVaKUEFtPWbY/ImlISmTfDVwTegbmRfbyu0uLndrI2jJyUopZcdrj94
+	lYI4+2q8d8JE6f+zbJagpreChgKKFfXjVQVbd/f/6HOXZParjoLSh83TcYv5p2/38qDamzmTGDk+5
+	hvKMsRc2UPJXx0AGl8GThYTGdqQ3M2db+eWBx5iyZC+LAGzUHkAie1biU0jqBLFxbV5RjigyWPiWM
+	PL2psWqx+/MwtZgCMw/HdyDjLLJl6ROFyqy0qXjIUEOPx7lhI2DYgGNxJ/YZB3aRxyFCEBPThjt95
+	MaH88r8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTvVC-0000000AynR-2oLq;
-	Thu, 19 Nov 2026 06:20:10 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xTvVO-0000000AyuZ-04bY;
+	Thu, 19 Nov 2026 06:20:22 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTvVA-0000000Aymr-3v57;
-	Thu, 19 Nov 2026 06:20:08 +0000
+	id 1xTvVB-0000000Ayn3-37Sh;
+	Thu, 19 Nov 2026 06:20:09 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6A02B43B55;
-	Thu, 19 Nov 2026 06:20:08 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0FB8462147;
+	Thu, 19 Nov 2026 06:20:09 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1795069208;
-	b=Qi/id70l3RB72kxMY9/BLZI9e07QZ7filVhVDTK7iadWz9Fhp/L2cnheQjh15yWfEnNg
-	 FQS35BIvXgjCQWAMTweViqP64ShDeqNSjoSIV1oGuUPl1Rf4ao0xViwHFlnmWBbyxhGH+
-	 cApyP0kC/sQyThEA4ajZ+ZxUAnuu35qVWBZN8QA9PFfZ2iRpsBE8GSptlkFam59Wgt+Os
-	 AXVG7BtTqACTyqXUpCecrlLPxaGaXVBTxycTeiw+q6cgCW3WnUYLHAhH5zG8YAoFkPLNR
-	 VJOIbQlN+cJ9CtobJM5IFoC5niL629pJXHL0lDF7amxeAaDzq3SUX9wf7h14ve9EGiQ==
+	b=oFqEn7AlMG+KBaJ+233otNj/CA0hrtMAcI7LYe2JkucCfcB8qOppAephxs8/9TgcZll8
+	 9ihTt2HByDjMA+u9ILc8vqT1dmQNsSqoSFDTMxz/BjuYWnJk0JHW01qp/dGaMu0adocrV
+	 d4FyS7yduMdADwnmojQ3qw2OgVGpth8yTf5pPhYrZlBMtss7RvRC2G3vJNMS77yBot37W
+	 MTVvNQaBbLjMN/A47hbDBheGLo63wTRRjEQXD16YcivApbYf7CUROErhvgRaJZkkgFYDf
+	 1dWdMX3RyHCcjRZMQlP+VRjI02/DHSBnRYt+lAUCGB2whF3gk1HEuXkSnvVylkECERQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1795069208;
-	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
-	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
-	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=P51zQnnlFN29NM1R8E8OMTMjHLC0aAOfMUy/UOhFuHY=;
-	b=AVakpmYKl5HWCI831C0NdDiYD+qT7c6E5/RAKuzwO3tr3YDcMtSqLdpcKRvlCxtMVPnU
-	 5l5vvmRMZ3tcOnx5TdiLTns28SwWMUR2RFwaipQrjyx5Ln41toqz22y94bPO1RCU6Npzm
-	 P7Oa1HIpfUNC5hHsRRGfS3Lqotw4jRGKlRM1aOaeJ2UGSucaNOpY3kAXxzGUcitmUKOah
-	 nNxtDyFQfuLy3b0RN/IEtqDWoZjMTv2uIkaft9jmTmNfmcP7CcPbWcbr7BqLpuQG9TcSC
-	 6liAN6YfkIowHSJ70EIFbkwvS3o2f9MnRUwHEAooNgaGxYcl8QyFm1b4QlGM+oQBQgA==
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=uZkRTJla5CwLMcW9i2JUtSgkCfjOBmDVaDO3vNDdUEg=;
+	b=x4LeZeq9Sz+H/+Y1BuYbbmDSh41KOef11shrsU+l9haG+bx/lHYPOifxUTWTXkbcJz/c
+	 ayqtU5y2XUXMKs68MnhUBhmQi0NBq5HRayibK+uXzjoBghcudQ8UnrkhoEPLpCgVtyq35
+	 lePqQ7nQ23wXOqpbZJLaoCTLGyJmA0UCt6YtmbLkYLogVMjdDuD7WCFH/JfiUypSPXwmo
+	 pa/Q42inNHMi7kcXKyxBMcatBalLnKBs6ryP5UhiC9rC4yArUAqiTmgqbW7di/iS7fr1B
+	 uMbixti18Tvig14G635fa1Fqm8QBVhhje5hcktbvKMZO+7C0GGTLd+xm07NbF1H5iaw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id BC7661F000C9;
+	by smtp.kernel.org (Postfix) with ESMTPS id BC72A1F000C8;
 	Thu, 19 Nov 2026 06:20:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1795069208;
-	bh=P51zQnnlFN29NM1R8E8OMTMjHLC0aAOfMUy/UOhFuHY=;
-	h=From:Subject:Date:To:Cc:Reply-To;
-	b=ma4EZ4MzINVfA6Pkkyhoq9WX4oO0jz4QRd0NedKsHkClM0FuSzkJQzBg94zdaTldQ
-	 YbFKym6983FEj0tl3T2v0OFnqteCehGQiAgGC7MjAWLZISqEBuy9Yy3TcQk2EfNlOE
-	 RvXRBPa0DUOTH5IXKr3R76IQ2Ca0NgGwzPeTK0ibXjmlr+CGEvxtHgNdYpQJVCrmkg
-	 yUySdVXayWgB/jmmOgqN83E7/WNlyCZzv57CNT/hejydRhOI8BkuOP5CsYN37ESac8
-	 Sq815wy2rjYBWw9LZONKpIg7X+pNVrO67g4lTFKtQ454GFDxpStMnSyJGTcd9GgSEj
-	 x/69bpPdIi4rA==
+	bh=uZkRTJla5CwLMcW9i2JUtSgkCfjOBmDVaDO3vNDdUEg=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=csBUG3p9BqnQKK0c4HQBMUQYG2t90ruQVgsAFqfcR/jLUV8kQ+uN3uzhIqE4w6fiX
+	 aGQa5DiJDTBCow0MupIQjsRGPASZ0E0b/HJw1gUAPolltFLZYhlhwwIIay6azuQLqc
+	 2J11Il/ZN+/ux8Sw1WLQXvJQJkJdDoG89pZUesj2/afriTdB1Q23+7ubTEfcohPU8H
+	 yligTp+mtk1Gyh4rJsvFOV3gcU3wEQ/pjOZhOYBD0wE0+1AFXt6k2/flwjjN49CdJy
+	 22mtHuhroamnCyom82ef+5CLclpFcKbgUxzlNVs1ZfhFdEX54CXYLXScpoW/VeRkaU
+	 1yoCZ2D/tH/jA==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 1DE334B130;
+	by lkml.kernel.org (Postfix) with ESMTP id 467F04B122;
 	Thu, 19 Nov 2026 06:20:07 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Subject: [PATCH 0/2] media: verisilicon: Fix VDPU2 decoder error handling
-Date: Thu, 19 Nov 2026 06:20:06 +0000
-Message-Id: <20261119-vdpu2-errreset-v1-0-f8fa403b6a3a@gmail.com>
+Date: Thu, 19 Nov 2026 06:20:07 +0000
+Subject: [PATCH 1/2] media: verisilicon: Don't report VDPU2 decoder errors
+ as success
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMSwqDQBBF0a1IjdPQHzStWwkZ+HmJ5UClSiUg7
- t3WDM/g3p0UwlCqsp0EGytPY4J7ZNT29fiF4S6ZvPWFcy43Wzev3kBEoFhMLGJ8WhvKUAdK0Sz
- 48O8evt5/69oMaJfrQsdxAjWqA61yAAAA
-X-Change-ID: 20261115-vdpu2-errreset-8688700393a3
+Message-Id: <20261119-vdpu2-errreset-v1-1-f8fa403b6a3a@gmail.com>
+References: <20261119-vdpu2-errreset-v1-0-f8fa403b6a3a@gmail.com>
+In-Reply-To: <20261119-vdpu2-errreset-v1-0-f8fa403b6a3a@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
  Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
  Philipp Zabel <p.zabel@pengutronix.de>, 
@@ -93,11 +92,11 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Arun Iyengar <aiyengar1990@gmail.com>, stable@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795069206; l=1334;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795069206; l=1243;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=2RFAUR3ng5/QnrGOQnWU+xGFztNU4gfgufFi7kzRutU=;
- b=OjJRsu4+0DdVHmvl5f/yUFh9DPg7MhS/pT7qenF5H07QM1yFTfJx6KXvTla6h9Fqw68gjmIuo
- mtkobnUna1sCg+BTTpBZtAsQOddm23UGyyBfLbCHqFHog2CZUfoSsl2
+ bh=pmz+6zoUL7toWQYosmuS4NH+xU1lJuYNQV3oDGrhPbs=;
+ b=OYCFLJRuRrbnhDbhNtGXvR4hOd51xcqVX9fSAJzoa1o2Xi3QrAm9+9J1oqKqSvdXVmD1CED6q
+ ibtyPRYQXKnAedQ/0X/pd0hfWzk1Gc4ER24OAidPj173RuSexecTNsw
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -124,39 +123,38 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The VDPU2 decoder reports failed decodes as done and is not reset
-after an error, so it can keep accessing freed buffers.
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Tested on an Orange Pi 5 (RK3588S), KASAN v7.3 based kernel: 72 H.264
-fluster runs, no IOMMU faults or stalls; with patch 1 alone, an earlier
-run faulted. The VP8 test vectors pass (61/61). Two H.264 vectors
-(FI1_Sony_E, MR8_BT_B) fail in 1 to 4 of 249 runs each, with patch 1
-alone as with both. Build-tested on media next. MPEG-2, RK3399 and
-RK3568 untested.
+The VDPU2 interrupt handler completes the job as done whenever the
+decoder raised an interrupt. DEC_IRQ is set for every interrupt,
+including timeouts, bus errors and stream errors, so failed decodes
+are returned to userspace as valid frames.
 
-Independent of "Recover the Rockchip VPUs from faults and timeouts"
-v3 [1]; the two only conflict in one #include line.
+Check the picture ready bit instead, as the G1 handler does.
 
-Developed with Claude (Anthropic), which wrote the code and the commit
-messages. I reviewed every change.
-
-[1] https://lore.kernel.org/r/20261113-hantro-robust-v3-0-82383c722ad2@gmail.com
-
+Fixes: 879dee56a40c ("media: rockchip/vpu: Add MPEG2 decoding support to RK3399")
+Cc: stable@vger.kernel.org
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
-Arun Iyengar (2):
-      media: verisilicon: Don't report VDPU2 decoder errors as success
-      media: verisilicon: Reset the VDPU2 decoder after an error
+ drivers/media/platform/verisilicon/rockchip_vpu_hw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- .../media/platform/verisilicon/rockchip_vpu_hw.c   | 23 +++++++++++++++++++---
- 1 file changed, 20 insertions(+), 3 deletions(-)
----
-base-commit: aa0f4c41d4870a18e65772a1817af16427200371
-change-id: 20261115-vdpu2-errreset-8688700393a3
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+index 02673be9878e..4bc1bdb41c70 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+@@ -391,7 +391,7 @@ static irqreturn_t rockchip_vpu2_vdpu_irq(int irq, void *dev_id)
+ 	u32 status;
+ 
+ 	status = vdpu_read(vpu, VDPU_REG_INTERRUPT);
+-	state = (status & VDPU_REG_INTERRUPT_DEC_IRQ) ?
++	state = (status & VDPU_REG_INTERRUPT_DEC_RDY_INT) ?
+ 		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
+ 
+ 	vdpu_write(vpu, 0, VDPU_REG_INTERRUPT);
 
-Best regards,
---  
-Arun Iyengar <aiyengar1990@gmail.com>
+-- 
+2.55.0
 
 
 
