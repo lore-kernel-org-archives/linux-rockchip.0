@@ -2,58 +2,74 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8665360A2612
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 18:00:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1C6B7606A6DF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 19:18:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=I/1N6La0;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=P5mkqwGq
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Whs7fT2+;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Tsu+dV+R
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=+bl7JAOeMmatNMrReYJYbSv8lN5lrrnH1adJLuhtsTs=; b=I/1N6La0HGIH5GWLmE+vCnlc7p
-	H6oLKEJ8eNngG/nSlzzcFd4HzN++ejpV/Rn2z63OtwFSvOxJ1It2JZxivnlRIr8XbKGFdB1ANilJL
-	ES5MYRAYe1B6683YtRE++I1CkuWO+dP/5PSRJStPwnz8Q2UrkwZxZ8PJnrfUoj5on9v9EMJz+JLgw
-	QKnOS4RLoaA5cFsFYlH8mP1lUJJutObHS6dihryVZxIgTeY8XuBKxJL4WzEhUYHEmqDz554vdUFJJ
-	s6s9wUImvOQ11ndV9CqgrgFcqColXQ1dCN5+zK8U+hC9Z3Zb4ZtBBbEt+fj6qVcHn4Cc6JmF/RBCS
-	LLIudccQ==;
+	bh=f9bxkvx9Uycyho51Lrh36SDss+gIcuASDdQRU1J/mt0=; b=Whs7fT2+e/ZhpAh08NP4u1KlET
+	/aQIExqQKkT+0iwZMsSX37OZgdreCkuGi+uCQdWtGwPdLmHtPX6plXj+fA4Stf9lCuwEeW9aO86nX
+	OjZmZyXmu9IwwOTN5PiXlLhG6oAETjrOna+PfuNMaBCsWO5WvCgFieqC7a8iJRHcHpG+EhKdX0Ypp
+	viEDo/BOeRft0fkF4KJ5IS1hva8xHL7z7RX3A29td30cbUjR1iiKwRqOkHxM6nmaWvaQT3NbcrHlc
+	Psvu/lJY3ILEIF2X4hob3HLUDYQneOoRm6pNOjuHtt16QEw8yTXxEJPJYJl6Tid9sRdzcGxiRGt3/
+	sO4zotFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUSug-0000000FqP6-2Yb6;
-	Fri, 20 Nov 2026 18:00:42 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xUU7u-0000000G3IV-1TMS;
+	Fri, 20 Nov 2026 19:18:26 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUSuf-0000000FqOf-1w5K;
-	Fri, 20 Nov 2026 18:00:41 +0000
+	id 1xUU7i-0000000G3AX-0smq
+	for linux-rockchip@lists.infradead.org;
+	Fri, 20 Nov 2026 19:18:15 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D1621440D4;
-	Fri, 20 Nov 2026 18:00:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF2F61F000E6;
-	Fri, 20 Nov 2026 18:00:31 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A53006013B
+	for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 19:18:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE45C1F000C6
+	for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 19:18:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795197640;
-	bh=aWDQDm7LuQie9jvzV6uB014UdAyJXJaIz6fRdlyOS1c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=P5mkqwGqab+KQfWEfEH4mmcGEw6tOW3qm6uvmVNmNnR+GzzxXVkIdUySNuc32vLc0
-	 q31FmpssPWpu0Q0701/2KM+kgiJvkQeROnbFBI/6oZ0XIWMdH/TRqoJRA56olYaWYW
-	 6sckacjB2oiIkTR6cFalvpY3OG8+9vBEABBa8mPfnBQDyQFQb9GpyeuXO6/H4Hsxc7
-	 r057Siz8DIpUlqoO1uqHmWLR0dPkKtgaXHxx+DiDE/T/jrcn+qbpB4oejbh4rAIM+X
-	 nfVNM38HAe0awFXGnv2Hk87AJ60ZrMYfMBsoNpwPtGgOEBEkecr7rs5EqAM+rI876q
-	 Z24xn6pr9lUSQ==
-Date: Fri, 20 Nov 2026 18:00:29 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Michal Wilczynski <m.wilczynski@samsung.com>
-Subject: Re: [PATCH v7 00/19] drm: starfive: jh7110: Enable display subsystem
-Message-ID: <20261120-lagged-aorta-a5799cab633a@spud>
-References: <CGME20261106135849eucas1p242718d72fa1f38e31477210fd9ee30bc@eucas1p2.samsung.com>
- <20261106-jh7110-clean-send-v7-0-68f7ea9913db@samsung.com>
- <d21992c9-9e60-4613-b7cd-8e324d214a48@samsung.com>
+	s=k20260515; t=1795202292;
+	bh=D0aacaaucLazBzamGaNcpBWXLJSLR5Zsq+QZIkHcA28=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=Tsu+dV+RFstRRv9DCiGG0qgN4F8PbOY6/XDaZv5+N00mdm7KoZod3Jdlpak9BABKb
+	 +0EFOLZDoGVg1Vq9B4RmzFxNH/wQY0yNFsv45UIm33eSA73I4GM3IBVrF/5Jqw/Xgf
+	 ozcfDRa8hK4Gmiw0At24xmlO4vfcN5aQBbCTmw4TWJimTBBU98kG9/k6WGLZhzvu80
+	 8sOHlyWx2IzZXdrGubIH5/9bXbZHy+JDhVtOFJrXu9DKfIBP1fHYkjCf4DRqULZovf
+	 kinhqDgKUHIqWP9cTdUBbH2y7ALbtl9I4RyBWfFTNyTg8UZca1BJi5UI4Mk2tRNRKo
+	 P2IFBQw4/i2Mw==
+Received: by mail-lj1-f177.google.com with SMTP id 38308e7fff4ca-3ae6f2b193fso6959561fa.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 11:18:12 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AL+hErGQQp0X7PtO6VXuOxC/pdolvlMGvYTQkGgHuZqqXWgmaK2a6SXP9rI+PlabEBXjF+eTEarux/eWFRLW5lXxvA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9BJ5Odl9zgDG4fnEaUDXplTJsMdXmzHhT9nHNlUUmPyrIoJtGO
+	CTQQNihF+iGK9mhpECUBGTB5N4EX8TLz3OJENTF9M+FteRp8ouRA6u1u/PcbF3yRD5zlHnOLtq0
+	SMCkt0gXCX9qSVZMsLAaNuo34iSU6/5o=
+X-Received: by 2002:a05:651c:419b:b0:3ac:433c:6ab7 with SMTP id
+ 38308e7fff4ca-3ae7f9f2550mr11211681fa.16.1795202291354; Fri, 20 Nov 2026
+ 11:18:11 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <d21992c9-9e60-4613-b7cd-8e324d214a48@samsung.com>
+References: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com>
+In-Reply-To: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com>
+From: "Rafael J. Wysocki (Intel)" <rafael@kernel.org>
+Date: Fri, 20 Nov 2026 20:17:58 +0100
+X-Gmail-Original-Message-ID: <CAJZ5v0h_kRcqpfM=8wnEXSnwB5+MHHUd2wK8jruQSRoTYnuXew@mail.gmail.com>
+X-Gm-Features: Aa3M54oLwSoxOTZL4M8rcFfriin7DTrg-svIenSNy9jdlFieUb2umtCsC8Amt5k
+Message-ID: <CAJZ5v0h_kRcqpfM=8wnEXSnwB5+MHHUd2wK8jruQSRoTYnuXew@mail.gmail.com>
+Subject: Re: [PATCH RESEND v2 0/2] powercap: idle_inject: Create threads on demand
+To: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
+Cc: rafael@kernel.org, tglx@linutronix.de, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>, 
+	Peter Ziljstra <peterz@infradead.org>, Bradley Morgan <brads@mainlining.org>, 
+	Heiko Stuebner <heiko@sntech.de>, 
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,92 +79,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Joshua Peisach <jpeisach@ubuntu.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, William Qiu <william.qiu@starfivetech.com>, linux-riscv@lists.infradead.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>, David Airlie <airlied@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Dominique Belhachemi <db@domibel.de>, Robert Foss <rfoss@kernel.org>, Alexandre Ghiti <alex@ghiti.fr>, Manivannan Sadhasivam <mani@kernel.org>, Andy Yan <andyshrk@163.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Hal Feng <hal.feng@starfivetech.com>, Maud Spierings <maud_spierings@murena.io>, linux-rockchip@lists.infradead.org, Icenowy Zheng <zhengxingda@iscas.ac.cn>, Marek Szyprowski <m.szyprowski@samsung.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Albert Ou <aou@eecs.berkeley.edu>, Philipp Zabel <p.zabel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>, Graham Markall <hello@big-grey.co.uk>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Xingyu Wu <xingyu.wu@starfivetech.com>, Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>, Paul Walmsley <pjw@kernel.org>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Sandy Huang <hjc@rock-chips.com>, OOHehir <oo.hehir@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>, Thomas Zimmermann <tzimmermann@suse.de>, Byron Stanoszek <gandalf@winds.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Yakir Yang <kuankuan.y@gmail.com>
-Content-Type: multipart/mixed; boundary="===============9151397919972844980=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============9151397919972844980==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="9Y3BF9tXWb3jCBuR"
-Content-Disposition: inline
-
---9Y3BF9tXWb3jCBuR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Nov 20, 2026 at 03:02:35PM +0100, Michal Wilczynski wrote:
-> On 11/6/26 14:58, Michal Wilczynski wrote:
-> > This series enables the display subsystem on the StarFive JH7110.
-> >=20
-> > Merging: the series splits by subsystem, there is no build dependency
-> > between the blocks, and each block lands in the tree that already owns
-> > those files:
-> >=20
-> >   drm-misc                     1-3, 6, 8-14, 17
-> >     drivers/gpu/drm/bridge/, include/drm/bridge/ and the display
-> >     bindings. Patches 1 and 2 are inno-hdmi fixes with Fixes: tags;
-> >     they apply to Rockchip as much as to StarFive and are independent
-> >     of the rest, so they can go on their own.
-> >=20
-
-> >   Conor's tree                 4, 5, 7, 15-16, 18
-> >     drivers/soc/starfive/, together with
-> >     the bindings for its two drivers (patches 4 and 7, under
-> >     bindings/display/starfive/) and the vout-syscon compatible in
-> >     bindings/soc/starfive/ (STARFIVE SOC DRIVERS), and
-> >     arch/riscv/boot/dts/starfive/ (STARFIVE DEVICETREES).
-
-Other than for the dts patch,
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
-I don't want to take the display binding because I won't have the child
-nodes, and I won't take the driver without the binding for it. At then
-at that point, the remaining trivial binding and driver may as well go
-with the rest of the code.
-
-Please resubmit the dts patch to me individually when the rest of this
-has been applied.
-
->=20
-> Gentle ping on this series. It depends on the Innosilicon HDMI PHY
-> series [1], but only for dt_binding_check/dtbs_check (the PHY binding
-> is referenced from the jh7110-hdmi-subsystem binding) and at runtime.
-> Everything else builds and can be reviewed independently.
->=20
-> Any comments on the DRM bridge / inno-hdmi parts would be much
-> appreciated.
-
---9Y3BF9tXWb3jCBuR
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCawCKvQAKCRB4tDGHoIJi
-0qj8AP0ZaeGM0TZcGSFuopE9ZeecanF/1QUS00H2PGlontmwXQEA3BQeYKyiBSs4
-lx/sKFxuXkEXlgn/ah1AzWlf0uWxDQg=
-=XGjQ
------END PGP SIGNATURE-----
-
---9Y3BF9tXWb3jCBuR--
-
-
---===============9151397919972844980==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============9151397919972844980==--
-
+T24gV2VkLCBOb3YgMTgsIDIwMjYgYXQgNToxNuKAr1BNIERhbmllbCBMZXpjYW5vCjxkYW5pZWwu
+bGV6Y2Fub0Bvc3MucXVhbGNvbW0uY29tPiB3cm90ZToKPgo+IElkbGUgaW5qZWN0aW9uIGN1cnJl
+bnRseSByZWdpc3RlcnMgcGVyLUNQVSBrZXJuZWwgdGhyZWFkcyBkdXJpbmcgZWFybHkKPiBpbml0
+aWFsaXphdGlvbiwgaW5jbHVkaW5nIG9uIENQVXMgZm9yIHdoaWNoIG5vIGlkbGUgaW5qZWN0aW9u
+IGRldmljZQo+IHdpbGwgYmUgcmVnaXN0ZXJlZC4KPgo+IFRoaXMgc2VyaWVzIG1ha2VzIHRocmVh
+ZCBjcmVhdGlvbiBmb2xsb3cgdGhlIGxpZmV0aW1lIGFuZCBDUFUgbWFzayBvZgo+IGVhY2ggaWRs
+ZSBpbmplY3Rpb24gZGV2aWNlLgo+Cj4gVGhlIGZpcnN0IHBhdGNoIGFkZHMgYW4gb3B0aW9uYWwg
+Q1BVIG1hc2sgdG8gc21wYm9vdCB0aHJlYWQgZGVzY3JpcHRvcnMuCj4gVGhlIG1hc2sgcmVzdHJp
+Y3RzIHRocmVhZCBjcmVhdGlvbiwgQ1BVIGhvdHBsdWcgaGFuZGxpbmcgYW5kIHRlYXJkb3duLAo+
+IHdoaWxlIHByZXNlcnZpbmcgdGhlIGV4aXN0aW5nIGJlaGF2aW9yIGZvciBkZXNjcmlwdG9ycyB3
+aXRob3V0IGEgbWFzay4KPiBSZWdpc3RyYXRpb25zIHNoYXJpbmcgdGFzayBzdG9yYWdlIGFyZSBj
+aGVja2VkIGZvciBvdmVybGFwcGluZyBDUFUKPiBtYXNrcyB1bmRlciBzbXBib290X3RocmVhZHNf
+bG9jayBiZWZvcmUgYW55IHRocmVhZHMgYXJlIGNyZWF0ZWQuCj4KPiBUaGUgc2Vjb25kIHBhdGNo
+IHVzZXMgdGhpcyBzdXBwb3J0IHRvIHJlZ2lzdGVyIGlkbGUgaW5qZWN0aW9uIHRocmVhZHMKPiB3
+aGVuIGEgZGV2aWNlIHJlZ2lzdGVycyBhbmQgZGVzdHJveSB0aGVtIHdoZW4gaXQgdW5yZWdpc3Rl
+cnMuIENQVQo+IG93bmVyc2hpcCBjbGFpbXMsIHJlZ2lzdHJhdGlvbiByb2xsYmFjayBhbmQgdGhy
+ZWFkIHRlYXJkb3duIGFyZQo+IHNlcmlhbGl6ZWQgdG8gcHJldmVudCBvdmVybGFwcGluZyByZWdp
+c3RyYXRpb25zIGZyb20gc2hhcmluZyB0aHJlYWRzLgo+Cj4gVGhlIHNlcmllcyB3YXMgdGVzdGVk
+IG9uIFJvY2tjaGlwIFJLMzU4OC4gVGhlIHVwZGF0ZWQgc21wYm9vdCBjb2RlIGFuZAo+IGlkbGUg
+aW5qZWN0aW9uIGNvZGUgYWxzbyBidWlsZCB3aXRoIFc9MS4gQ29uY3VycmVudCByZWdpc3RyYXRp
+b24gYW5kCj4gQ1BVIGhvdHBsdWcgcnVudGltZSB0ZXN0aW5nIHJlbWFpbnMgb3V0c3RhbmRpbmcu
+Cj4KPiBDaGFuZ2VzIGluIHYyOgo+IC0gUmVqZWN0IG92ZXJsYXBwaW5nIHNtcGJvb3QgcmVnaXN0
+cmF0aW9ucyBzaGFyaW5nIHBlci1DUFUgdGFzayBzdG9yYWdlCj4gICB3aXRoIFdBUk5fT05fT05D
+RSgpIGFuZCAtRUJVU1ksIGFzIHN1Z2dlc3RlZCBieSBUaG9tYXMgR2xlaXhuZXIuCj4gLSBEZWZh
+dWx0IGEgTlVMTCBDUFUgbWFzayB0byBjcHVfcG9zc2libGVfbWFzayBhdCByZWdpc3RyYXRpb24g
+YW5kCj4gICByZW1vdmUgcmVkdW5kYW50IE5VTEwtbWFzayBjaGVja3MgZnJvbSB0aGUgbGlmZWN5
+Y2xlIGhlbHBlcnMuCj4gLSBVc2Ugc2NvcGVkIGd1YXJkcyBmb3IgdGhlIHNtcGJvb3QgcmVnaXN0
+cmF0aW9uIGxvY2tzLgo+IC0gRG9jdW1lbnQgdGhlIG92ZXJsYXAgcmVzdHJpY3Rpb24gYW5kIHJl
+Z2lzdHJhdGlvbiByZXR1cm4gdmFsdWVzLCBhbmQKPiAgIHVwZGF0ZSB0aGUgY29yZSBjb21taXQg
+ZXhwbGFuYXRpb24uCj4gLSBBZGQgQnJhZGxleSBNb3JnYW4ncyBSZXZpZXdlZC1ieSB0YWcgdG8g
+dGhlIGlkbGUgaW5qZWN0aW9uIHBhdGNoLgo+Cj4gQ2M6IEFuZHJldyBNb3J0b24gPGFrcG1AbGlu
+dXgtZm91bmRhdGlvbi5vcmc+Cj4gQ2M6IFJhZmFlbCBKLiBXeXNvY2tpIDxyYWZhZWxAa2VybmVs
+Lm9yZz4KPiBDYzogVGhvbWFzIEdsZWl4bmVyIDx0Z2x4QGxpbnV0cm9uaXguZGU+Cj4gQ2M6IEJy
+YWRsZXkgTW9yZ2FuIDxicmFkc0BtYWlubGluaW5nLm9yZz4KPgo+IERhbmllbCBMZXpjYW5vICgy
+KToKPiAgIHNtcGJvb3Q6IEFsbG93IHJlc3RyaWN0aW5nIHBlci1DUFUgdGhyZWFkcyB0byBhIENQ
+VSBtYXNrCj4gICBwb3dlcmNhcDogaWRsZV9pbmplY3Q6IENyZWF0ZSBwZXItQ1BVIHRocmVhZHMg
+b24gcmVnaXN0cmF0aW9uCj4KPiAgZHJpdmVycy9wb3dlcmNhcC9pZGxlX2luamVjdC5jIHwgNjkg
+KysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLQo+ICBpbmNsdWRlL2xpbnV4L3NtcGJv
+b3QuaCAgICAgICAgfCAgNiArKysKPiAga2VybmVsL3NtcGJvb3QuYyAgICAgICAgICAgICAgIHwg
+NDUgKysrKysrKysrKysrKysrKystLS0tLQo+ICAzIGZpbGVzIGNoYW5nZWQsIDgzIGluc2VydGlv
+bnMoKyksIDM3IGRlbGV0aW9ucygtKQo+CgpBcHBsaWVkIGFzIDcuNSBtYXRlcmlhbCwgdGhhbmtz
+IQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
