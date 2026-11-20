@@ -2,90 +2,76 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B88A3606A320
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 13:49:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 808D3606A320
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 13:54:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XltFVFce;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=pengutronix.de header.i=@pengutronix.de header.a=rsa-sha256 header.s=20260414 header.b=YmrxRN5B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dcF6CTHu;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=avxULmTp
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:References:In-Reply-To:
-	Cc:To:Subject:From:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
+	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=h4mD59OLMl1tvHKPEeevVKdIx/5yy6gZG1sy8nYj5fk=; b=XltFVFceyx508iyZB/bVGRjhQo
-	Ipa5wiOo6w5IwtKhAAJjhf1U+l7foXfh1ASQgMFE8299civN0YIgtexKCa/6GWHvlYjJ8DLQyOA/7
-	w97V+UZbsj7vZtzQ2D/roG9Er6x/HMyoNWC+u5sVSYBxMLDEDC6cwzEVtBgn9LRoxs5LMvGSxiGkz
-	84aKJ0nn3w1v/z1o9C+B1Ih76KevRAHVPJE65vjZY+z04+m11fcqX4PERF3efw+tSvZbW5a62cG6r
-	ujT4syAsQp4bRY/xkBTVTxFt+k3mt9cHqiTyo2MM5ymh2E/wGHWFl2SCViCKSM5fZIMljdbtMEpCD
-	tt/qLEIg==;
+	bh=REyPYd+Jd1PiND7VpN3asNKp461KsN8qzz5IpWT6rdI=; b=dcF6CTHuogqgA3F8NkdrtI55hu
+	Cqml6MKyWtHTgWZL1UUOgoTkknNRpqFz/cy+wwsFFZyrCaCmb5F0Zbpjd7V3A84ugGTJFRhPNNJbe
+	bWSVqLbyAV0fXJSCtDuZGAsTcpQ0+dmllXacuPx65tEYi27DSUoeQ3yVH3pz8GXdSt8EvgGvOVXfr
+	s6ICLZ7FQtR1m2OThC2/Zt85oGHA0by4UhMnmUeLwLEcuO0lEP6+jBN8GDRDCm9nvrrrXYcHAQEs8
+	kg++laoR4FjfkDYFohu0uRQuB2AAEUB39LrkCY9Hye6L+oh253MOTJXz0YV4MRE3fml1RXbMlohLF
+	uLw1tuTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUOzH-0000000FApQ-0wdh;
-	Fri, 20 Nov 2026 13:49:11 +0000
-Received: from mx1.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::107])
+	id 1xUP4E-0000000FBXc-2lJY;
+	Fri, 20 Nov 2026 13:54:18 +0000
+Received: from out162-62-58-216.mail.qq.com ([162.62.58.216])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUOzD-0000000FAoE-2psT;
-	Fri, 20 Nov 2026 13:49:09 +0000
-Received: from [127.0.0.1] (unknown [IPv6:2a02:560:5c0a:3200:9ebf:dff:fe00:fdb5])
-	(Authenticated sender: sha@pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id C891C202284;
-	Fri, 20 Nov 2026 14:49:03 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
-	s=20260414; t=1795182543;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=PSHSxED65AnpWskI+zndcsoj9vhLG7Y6yB7a+EXXCRI=;
-	b=YmrxRN5BlxHFPxY2kfXI38ZIFzr/mftDDptQVVgALq8EGk9KFpm/BSUUTumF7A8Lg40Z5t
-	voMLta3CKVM3VysCnjW4vOnfG5m0WR8auBgrCLd4902vrffq0E6qONyaZGNTDA9Wmssr0d
-	cxvfRY70R2A/nmWpFrfE4D/MpBNK+NQudVO2OtTMWrtHZqbj8qMzXXzVoYwzX1gG4K11Ei
-	PIecDc56J4CrUHlPxBLdHKAE7Sp0NZ3/CXF9b8Wa3Kjiec9xaMBNhIb0X8lq9InAkfvK2c
-	pOuVFmkOgf69YS+uGAdE4oELkAKSiMjCsyhMqRCq9sAR010D/CrwWmos3LAh9g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
-	s=20260414; t=1795182543;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=PSHSxED65AnpWskI+zndcsoj9vhLG7Y6yB7a+EXXCRI=;
-	b=RMJ//48gHnP/MWe0w62kRSDg6IbkJw6cekgiRaswZ9QGQZtBRCtu2/xUY9ch/Df8k5ktJV
-	EJ+pFcoz4KjIzNUYZ3OcA41zWU6kftNV/WgufDUgzDEneTy2XyoAmgszrHx3c/uBXXXa2R
-	QKh8NFp4tXVElNIGOwDY+4Ow1jnr2bNhM4N05Vr/dpX6ZxqTy7F97KM7MDPl/o0FlcU858
-	18u+v4coNkBtex8Tx+EPPEYZNPv5EZab4nptBKnbdaIFIrxOyU4ykp0yF0IMoo8nCo2OjO
-	0IKculyiRnGLXttfpTfWvGkyWUQiorjWNzWySMPu7zZjYOvyHZd258v48FRCzA==
-ARC-Seal: i=1; s=20260414; d=pengutronix.de; t=1795182543; a=rsa-sha256;
-	cv=none;
-	b=f8N6LrVJ/HxgbB54m+tOKZ9deaW+Yb9M9s+xMyzEl6SXLcRkLuj/z1ISJJ22V+uab16Jte
-	VCEbxmoMRdGC0GgPrzIT9gygOJVPtNvbkSVGjUhwaO7YkxNDN5DNoVk5lyk0+fuWQh7tVx
-	7hxpwv/x46dlr0iO6mI9okNgDlpjlyck9T8jiL+pPT63ZIN6V6IgUXsZPH6ZDhePLdeRxv
-	xHldrd4+hl6h8LFaIPfaYyRWAzq5/vaUbnkuXDgPpsBa8Yc+ckqrDyHJO43+LLqlkpOco6
-	BG/3hMDUmDoX7bmV3jMQ1g8YJuP+moBMEf88hcC4/FHlGHcF9DGXsVOnM9upDQ==
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=sha@pengutronix.de smtp.mailfrom=s.hauer@pengutronix.de
-Message-ID: <8bc5870a-2b38-4e3a-9f93-76b2673a79dd@pengutronix.de>
-From: "Sascha Hauer" <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v7 2/4] media: rockchip: Add JPEG decoder driver
-To: "Nicolas Dufresne" <nicolas@ndufresne.ca>
-Cc: "Sascha Hauer" <s.hauer@pengutronix.de>, "Sergei Khomenkov" <shomenkow@gmail.com>, "Lucas
- Sinn" <lucas.sinn@wolfvision.net>, "Mauro Carvalho Chehab" <mchehab@kernel.org>, "Rob
- Herring" <robh@kernel.org>, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor
- Dooley" <conor+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <41e428a6fcdcf3d0c10cada8743231797b3dd5f4.camel@ndufresne.ca>
-References: <20261022-rockchip-jpegdec-v7-0-3fd7dd55f408@pengutronix.de>
- <20261022-rockchip-jpegdec-v7-2-3fd7dd55f408@pengutronix.de>
- <596F6C9E-4A5D-4AE8-8D26-7A7247050D7D@gmail.com>
- <85353f59-52a0-446d-ace3-65e2d03d0d0b@pengutronix.de>
- <41e428a6fcdcf3d0c10cada8743231797b3dd5f4.camel@ndufresne.ca>
-Date: Fri, 20 Nov 2026 13:49:03 +0000
+	id 1xUP48-0000000FBWP-28BM;
+	Fri, 20 Nov 2026 13:54:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1795182840; bh=JvKgGTjq2BPEe61GwX/IAd5voKriY1si3N+Q1SQuS+8=;
+	h=From:To:Cc:Subject:Date:References:In-Reply-To;
+	b=avxULmTpzYlINMYMerBM8KO0ptt/FuqSFGc8Nvesy/uIg+2oRARAUR8EfBYiazqx1
+	 2BeuOfaIqGXlYGL05H++5xKwa2BFu+nPfyPYOAAPGxmNyLFedVjxjG2D9RROMbDXF1
+	 4IUU8S2vwn88T4XCjw8TJ45yZu+FyvdkhaRWhqfU=
+X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
+X-QQ-XMAILINFO: OTkXlZHit/HDYSOMMYUSEEaFDIssz1W9vtk4QajQI2ZSIDw6z3e3/fziSn1gxD
+	 NRzOwWA0EKV5Xs+u57yAudQ/ZR+h/8ZQ2O1AUpRdZGuBGoLSIniCUhxiNX60gGQBeU/s7BVNMeoDK
+	 6sQTLDQAQvtnsKWBuEa8O2bR9X6uLK3NdiBgHKpcgVyp/dqCOE9FZsnvH+Nh7TABBd4s+RjqnLpzo
+	 kX0WwTvW0pry+FPxjPfTFI5bDKsWLCNfU9b7rQs0QEMCX+yjXJF3pXLY5INZt1PRaeiYIm980EC+i
+	 ksbMOELwGQyLAsjY1g5aniNmIS+geQlR2jwJniCicFcpInkrFLuerPKM/r7Uc98T/fvCoTUrxSbHe
+	 8W67anNj909GuWCLJnvyzj9VKlcT/fMW4SgyQ8g1AjRjVve1raT93B6AoJRaskEg6NfIYLFNflEcT
+	 iZrnjeqQKB4VWhI+jVbUjca1TGGFOod6sMcR5YNTJTH9u693e5BXglWXTSkr+MsYa8zB+pv9V1jpD
+	 MjDcJhgl5yVjqOWyWxYtDdh7WHUJkVdiIlAgw0ZQtr+Cj8u/CiW1d16CsnX2zzj5GLAaduahoxfyM
+	 TCEkmm432ee+WSri6RKBSVM/ktHFXJCli1M/Hk4E6cqeWfk0BqBsxH8VRQ/ihT1ahdqfyvzYLJZEp
+	 t4q4/A6Tj8UGgn909/LVRfKN2IikVmwqK8AJfyFcBMoHvxT3TM/Z4dcuj/AaFZHSDd6L9BRYNMB5m
+	 F6HKoDrSPC+sX/x48Nu3RsE5fI/fZN/QHNO9LSEB4uLbomRE99gOdW/9ewDWlEPYEb5r16UQ2oOuM
+	 +FJvdsW+5wvlJ9rFoEhFMIQ8PjOK2p6G2Lf1G2jsd8EnrSlYbnzyTKkfkiU0QIzVZAblvQQLUGwoJ
+	 rfycw2PefoJtR3rtCuqN7jF7II9g0Xb5Xbp9LjMhSY7FY2cbWxZJzTqoD5p6QGQ2lrXTRIy433COB
+	 HF0W0RuPpgEDtZXbMBRLnVBbS/AMYrm0k5Gz4MUiuX19nwNerN+cqUrNj/gU4WqwYcbNpRx7XBtiQ
+	 9obkPQmlblrCQuSR8D8yRDCao9KM8Hq4xYqZQFtwvq3/NJG9iEXLhe13raQMjUOpe5jpnPM45cZ1A
+	 8alZDdwOwNZLX9K2Udy1Vu9Vfn88od9O75+eVdokKCqFJTvDITj3pAe+
+From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
+To: "=?utf-8?B?SGVpa28gU3TDvGJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?RWxhaW5lIFpoYW5n?=" <zhangqing@rock-chips.com>, "=?utf-8?B?VWxmIEhhbnNzb24=?=" <ulfh@kernel.org>
+Cc: "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bGludXgtcG0=?=" <linux-pm@vger.kernel.org>, "=?utf-8?B?U2ViYXN0aWFuIFJlaWNoZWw=?=" <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH v5 2/2] pmdomain: rockchip: Add RK3572 power domains
+X-Archived-By: <archiver.kernel.org>
+Mime-Version: 1.0
+Date: Fri, 20 Nov 2026 21:53:58 +0800
+X-Priority: 3
+Message-ID: <tencent_DFB6F95537CDD14CC97C26B08CE407F4210A@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+References: <20261118-add-board-ok3572-c-pmdomain-v5-0-f1af919dd434@qq.com>
+ <20261118-add-board-ok3572-c-pmdomain-v5-2-f1af919dd434@qq.com>
+	<z4ZFdDPMSaWK2zh19ZM7pA@sntech.de>
+In-Reply-To: <z4ZFdDPMSaWK2zh19ZM7pA@sntech.de>
+X-QQ-mid: xmsezb41-0t1795182838tuf7c54wx
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_054907_860030_5AE3AC49 
-X-CRM114-Status: GOOD (  20.82  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261120_055413_105139_051A925B 
+X-CRM114-Status: GOOD (  25.08  )
+X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,48 +81,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgTmljb2xhcywKCk9uIDIwMjYtMTEtMTkgMTE6MDAsIE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6
-Cj4gTGUgbWVyY3JlZGkgMTggbm92ZW1icmUgMjAyNiDDoCAxNDoyNyArMDAwMCwgU2FzY2hhIEhh
-dWVyIGEgw6ljcml0wqA6Cj4gPiA+IFdvdWxkIDMgYnl0ZXMgcGVyIHBpeGVsIGJlIGFjY2VwdGFi
-bGUgYXMgdGhlIGRlZmF1bHQsIGFuZCBhcyBhIGZsb29yCj4gPiA+IGZvciBzbWFsbGVyIHJlcXVl
-c3RzLCBsaWtlIHRoZSAyIGJ5dGVzIHBlciBwaXhlbCBmbG9vciBpbiA2Lzcgb2YgeW91cgo+ID4g
-PiBoYW50cm8tYmFzZWQgdjE/IDQ6NDo0IGF0IHF1YWxpdHkgMTAwIHdvdWxkIHN0aWxsIG5vdCBm
-aXQsIGJ1dCB0aGUKPiA+ID4gc3Vic2FtcGxpbmcgaXMgbm90IGtub3duIGJlZm9yZSB0aGUgaGVh
-ZGVyIGlzIHBhcnNlZC4KPiA+IAo+ID4gSSBoYXZlbid0IGJlZW4gYWZmZWN0ZWQgYnkgdGhpcyBp
-c3N1ZSBsYXRlbHksIGJ1dCBzYXcgaXQgd2hlbiB0aGUgc2VyaWVzCj4gPiB3YXMgc3RpbGwgYmFz
-ZWQgb24gdGhlIGhhbnRybyBkcml2ZXIuIFllcywgSSdsbCBjaGFuZ2UgdG8gMyBieXRlcyBwZXIK
-PiA+IHBpeGVsIG5leHQgcm91bmQgYW5kIG1ha2UgdGhhdCB0aGUgZmxvb3Igb2Ygc2l6ZWltYWdl
-LiBXb3VsZCBiZSBuaWNlIHRvCj4gPiBoYXZlIGEgcHJvcGVyIHNvbHV0aW9uIGZvciB0aGlzIHJh
-dGhlciB0aGFuIGVpdGhlciB3YXN0aW5nIHRvbnMgb2YKPiA+IG1lbW9yeSBvciByaXNrIGhhdmlu
-ZyB0b28gc21hbGwgYnVmZmVycy4KPiAKPiBUaGUgaGFudHJvIEhXIGNhbiBydW4gaW4gcmluZyBi
-dWZmZXIgbW9kZSwgdGhhdCBmb3JjZXMgdXMgdG8gY29weSwgYnV0IEkgdGhpbmsKPiB5b3UgY2Fu
-IHRoZW4gcGVyZm9ybSBkZWNvZGUgd2l0aG91dCBhY3R1YWxseSBoYXZpbmcgdGhlIGVudGlyZSBp
-bWFnZSBpbiBSQU0uCj4gV291bGQgbmVlZCBzb21lIGV4cGVyaW1lbnRhdGlvbi4gV2UgcHJvYmFi
-bHkgZG9uJ3Qgd2FudCBjb3B5IHRvIG1tYXAgKyBjb3B5IHRvCj4gcmluZyBidWZmZXIgKGRvdWJs
-ZSBjb3B5KSwgYW5kIFY0TDIgcmVhZC93cml0ZSBhcmUgZGVwcmVjYXRlZC4gTm90ZSBzdXJlIHdo
-YXQgdG8KPiBwcm9wb3NlIHJlYWxseS4KClRoZSBSb2NrY2hpcCBKUEVHIGRlY29kZXIgY2FuIHN0
-b3Agb24gYnVmZmVyIGVuZHMgYW5kIEkganVzdCBtYW5hZ2VkIHRvCnJlc3VtZSBvcGVyYXRpb24g
-b24gdGhlIG5leHQgYnVmZmVyIGFmdGVyd2FyZHMsIHNvIGluIHByaW5jaXBsZSB3ZSBjb3VsZApp
-bXBsZW1lbnQgc3RyZWFtaW5nIG1vZGUuCgpBbnl3YXksIEknZCBzYXkgaXQncyBub3Qgd29ydGgg
-YWRkaW5nIHRoZSBjb21wbGV4aXR5IHRvIHRoZSBkcml2ZXIgdG8KaGFuZGxlIHRoYXQuCgpTYXNj
-aGEKCi0tIApQZW5ndXRyb25peCBlLksuICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgfApTdGV1ZXJ3YWxkZXIgU3RyLiAyMSAgICAgICAgICAg
-ICAgICAgICAgICAgfCBodHRwOi8vd3d3LnBlbmd1dHJvbml4LmRlLyAgfAozMTEzNyBIaWxkZXNo
-ZWltLCBHZXJtYW55ICAgICAgICAgICAgICAgICAgfCBQaG9uZTogKzQ5LTUxMjEtMjA2OTE3LTAg
-ICAgfApBbXRzZ2VyaWNodCBIaWxkZXNoZWltLCBIUkEgMjY4NiAgICAgICAgICAgfCBGYXg6ICAg
-KzQ5LTUxMjEtMjA2OTE3LTU1NTUgfAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Heiko,
+
+> I guess the first question is, why do you need that?
+> The TRMs of both RK3572 and RK3588 have the voltage-domain power-control
+> registers, but why do you need to control them now?
+>
+> Side-question, how are voltage-domains handled on the other SoCs.
+> The RK3588 also has the PMU_VOL_GATE_CONx registers, so I guess
+> they could also be turned off?
+
+In his v3 review [1], Finley Xiao, an engineer at Rockchip, asked me
+to include Rockchip's voltage-domain handshake when adding RK3572 NPU
+support. Specifically, he asked me to call rockchip_pmu_vd_on() to
+request VD_NPU before asking the PMU to power up PD_NPU.
+
+So far I've only tested basic NPU power management on RK3572. I haven't
+run a compute workload, so I can't say which NPU functions, if any,
+would be affected by omitting the VD request.
+
+I compared the upstream and Rockchip drivers for RK3588. Both switch
+the top-level NPU domain using bit 1 of PMU_PWR_GATE_SFTCON0 [2].
+Neither writes PMU_VOL_GATE_CON0 during normal NPU domain transitions.
+
+Should I keep the VD_NPU request before powering up PD_NPU on RK3572
+in v6?
+
+> But in general, if you need to enable the voltage-domain to enable the
+> power-domain inside it, this really sounds more like a power-domain of
+> a different type - because the wiggling inside the power-domain
+> handling below looks strange, and we already are handling domain
+> trees.
+
+I checked Rockchip's kernel and the RK3572 documentation, but I couldn't
+find a separate status bit for VD_NPU. If I model it as a parent
+domain, would it make sense to track its state in software?
+
+>> -	int clk_ungate_w_mask = pd_info->clk_ungate_mask << 16;
+>> +	u32 clk_ungate_w_mask = (u32)pd_info->clk_ungate_mask << 16;
+>
+> why does it need to be u32 now?
+> Yes, the mask should probably be u32, but why not change simply change
+> the global type then?
+
+I'll make clk_ungate_mask itself u32 in v6 and drop the cast.
+
+> both the clk_ungate_offset + status_offset addition should probably be
+> separate patches, as they should get a descriptive commit message on
+> why they are needed.
+>
+>> +	if (pmu->info->chain_status_inverted)
+>> +		return !(val & pd->info->mem_status_mask);
+>
+> again, introducing this new parameter should get its own commit and
+> descriptive message on what this does.
+
+I'll split these.
+
+>> +	return regmap_read_poll_timeout(pmu->grf, pmu->info->fw_status_offset,
+>> +				       val, (val & mask) == mask, 0, 10000);
+>> +}
+>
+> this definitly also needs way more explanation
+
+Understood.
+
+[1] https://lore.kernel.org/all/18fcfe7a-e25a-4516-810f-d787b779914d@rock-chips.com/
+[2] RK3588 TRM, Part 1, v1.1, chapter 7, especially section 7.5.5:
+    https://dl.namtso.com/products/a10/a10-3588/datasheets/rockchip-rk3588-trm-v1.1-part1.pdf
+
+Best regards,
+Cunhao Lu
+
+pw-bot: cr
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
