@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E668760A2605
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 23:00:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1504C606A335
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 23:00:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uM0MLmNg;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Z/1j7BYT
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4OvlyQiS;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=gGHxnwhR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,39 +14,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Im786kEW4J1+InpVaqLgY+FEjnR66vv7GeWlLDt+zy8=; b=uM0MLmNg4bZz/61Nl1zqQP0QJp
-	8ZDJH9IrwHVdWHcq11CQT9zImd00bjqm8bjQkyZylsUKP3Rix8ESvvdJouZMFB20kqW8xkdoSjGJG
-	q0lgQb9AJlAU6T9l5HacmIH6aWeU+fG88+0KGt+5Atx95aSgI9KXRiZB+ZmZRtBxH3fu25Mn4AZ+n
-	89jqatAorIQBGpz9i58XKWZeQlhD0az2rskQyfBxwbNqX83ntVDyUyFke5Xpacs8bB4ZNXwVYLIbP
-	4aKKTmrYw6uIJBNoVEHNqdiGiHFt/WE8tNwAa/38U32CPirbgWvf6Scct1yKyyuYnAMuZZ4A+4O3R
-	NSEaHM7g==;
+	bh=mJXfrChRpEKuV+9d5/7NtUAzlng0v0nH5ScVmyUTRHY=; b=4OvlyQiSrMlrveGJWNapxmG6Kg
+	dyFSlU8a7BMbH9xdZR5BoCX/Udxk5EorlLOqHMBY1XBMin0ifuvbzToU8ZmVekCK7WGd7gGLHp0fE
+	3mkdMnHdzXNT76ce+6sOzSTmwKhLucSXKb2EPwUjAPXIMPhE7qYdhWbfl/Xgh1C4rAGBJ9qL7g01y
+	LEFzox5tI4Eak1wafDvux8yOGKzuwbFFHktrZ2aEYW6CvffMoFrpiY7OQCo5xuaERuYzR40BXreZd
+	qm4bv1/w4+2erVz9xDrjEXTZ+3p/tDvhIRSVqTxokCVNtldzKgSIV14k1a91KYrTkKGRu7+Hi8xy2
+	HWqKjbtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUXay-0000000GN1r-1wci;
-	Fri, 20 Nov 2026 23:00:40 +0000
+	id 1xUXar-0000000GN05-1J1k;
+	Fri, 20 Nov 2026 23:00:33 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUXav-0000000GN11-3tRn
+	id 1xUXah-0000000GMzj-0pJt
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Nov 2026 23:00:39 +0000
+	Fri, 20 Nov 2026 23:00:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795215636;
-	bh=K4e2VYLcZ7zQZ1eaew87SzkYvCxdTvZku1cYHYpTPgU=;
+	s=mail; t=1795215621;
+	bh=8QJNmFNB7eHS2pukQJjzkptuIZoj5T1eb1LbOd09li4=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=Z/1j7BYTouF+EtT7x0CGNjcC4PA/1iHzmstb10kAZVHxyu78YuHl6DORcSRJrBR73
-	 sNfW0hOl52VD/n26S6gChpA+pJD68RbeYN5gvyE4TZmVon789H/OxhLhlf3sl/WKTr
-	 mujbz0GANbNhNbLxrPJjadw/LBBd/6yfCWHKcNSfI1TY3HCUrQxJKYuw7n4TY+Ctna
-	 oRygGJavGwKMei+xISbIrQurFffOV2z6Kd2meObHeK2N0u9QC668S6F8+wx4Lpt2Cq
-	 W+8yH52utLnM22rnNG1LQ1sGb/s+F/y3Xyc+C3woQAfXNRQrS9zG2Tf/pXzw4FvE11
-	 CvVPdsNSWhH/w==
+	b=gGHxnwhR7wS3xLVx3e/8nfAg/EVNeENnOlwCpEmChz3IRkICVAL5A9T5O3WD/4kT6
+	 qh7sKqL2R4a+ZR1dqIUBLjRnpzaQf+O8LrrD3MONm407NmVGXH642k1dJ+OPtKvCeg
+	 h6f53oSSarsDkCG6VXsq0HQwBQC0+pdP40juYiuzztCpF1TiCxoxD40vvlqYrnZbaM
+	 qIefeVodquGiqyMZpto6J9CER9AvuJYbo6fRRzQaUNRaYtrqCt5OFXgxeiYIBJBC8J
+	 3WkjW1P8hrQSJr6cpnhITvG9tAfsPGQGZ2SYPp5jPXpPKlPnS2+cpJLfupSfx67yyG
+	 HIQefQIK9XS5Q==
 Received: from [100.64.0.214] (unknown [100.64.0.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 11FDC17E0060;
-	Sat, 21 Nov 2026 00:00:34 +0100 (CET)
-Message-ID: <53db01280c85529e09daf56af48e55311f4a38fa.camel@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 19E2217E0060;
+	Sat, 21 Nov 2026 00:00:19 +0100 (CET)
+Message-ID: <3fc964299086dbe5436d44009218d15eb7c51f69.camel@collabora.com>
 Subject: Re: [PATCH v2 3/7] media: verisilicon: h264: Use alloc/free helpers
  for auxiliary buffers
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
@@ -54,7 +54,7 @@ To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
 	p.zabel@pengutronix.de, mchehab@kernel.org
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
 	linux-kernel@vger.kernel.org
-Date: Fri, 20 Nov 2026 18:00:34 -0500
+Date: Fri, 20 Nov 2026 18:00:18 -0500
 In-Reply-To: <20261120151345.88802-4-benjamin.gaignard@collabora.com>
 References: <20261120151345.88802-1-benjamin.gaignard@collabora.com>
 	 <20261120151345.88802-4-benjamin.gaignard@collabora.com>
@@ -76,8 +76,8 @@ User-Agent: Evolution 3.62.1 (3.62.1-1.fc45)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_150038_135695_54054D00 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20261120_150023_402239_A3AAE811 
+X-CRM114-Status: GOOD (  10.99  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,7 +88,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4054985784390197950=="
+Content-Type: multipart/mixed; boundary="===============4211674015906168486=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -97,11 +97,11 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============4054985784390197950==
+--===============4211674015906168486==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-4aiA40uwE+TdXv0yb5Ab"
+	protocol="application/pgp-signature"; boundary="=-+jVkEY2oqmTK+8km2w/Y"
 
---=-4aiA40uwE+TdXv0yb5Ab
+--=-+jVkEY2oqmTK+8km2w/Y
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -146,7 +146,7 @@ ctx)
 > +=09if (hantro_allocate_aux_buf(ctx, priv, sizeof(*tbl)))
 >  =09=09return -ENOMEM;
 
-EINVAL is masked.
+As found by Philipp, you mask EINVAL here.
 
 > =20
 > -=09priv->size =3D sizeof(*tbl);
@@ -154,23 +154,23 @@ EINVAL is masked.
 >  =09memcpy(tbl->cabac_table, h264_cabac_table, sizeof(tbl->cabac_table));
 > =20
 
---=-4aiA40uwE+TdXv0yb5Ab
+--=-+jVkEY2oqmTK+8km2w/Y
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawDREgAKCRDZQZRRKWBy
-9IOWAQCA6UMU7WmyeqL6t8usni3NYUSWMeAYUQioq7Dqqp8+rgD/cCV+mPm0VO+V
-j4uYJ4mnXDb1FfNqhctT0j0qE341jQM=
-=mi1m
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawDRAgAKCRDZQZRRKWBy
+9P4IAQCJdmIkEYiKaA8iBuJXfScw1LKOvqzA9/ec/Hn+6SeuAgEA4MsYWMibrVth
+vZnwseJRaP0E9TwFBy9oOlkTLuvesgE=
+=V2kn
 -----END PGP SIGNATURE-----
 
---=-4aiA40uwE+TdXv0yb5Ab--
+--=-+jVkEY2oqmTK+8km2w/Y--
 
 
---===============4054985784390197950==
+--===============4211674015906168486==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -181,5 +181,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============4054985784390197950==--
+--===============4211674015906168486==--
 
