@@ -2,101 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6C246606A6A3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 21:29:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 10F8F606A6A9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 21:50:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rg1SvSgb;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=J6M2k4cp
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vIS/PLhd;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=NU7oXRwB
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=xiMKCRo1Pwg3IMByku011gcY92ANwnIJVfONk57JV9Y=; b=rg1SvSgbpR7zqkEkXYGKLlXN2d
-	0RNgq+sRk8UJ4FdG+7VJYzFyHm+GhIPf5B7ogggeb31s/aVznLwPIZdIkS6J346V+Atyhcacii2oM
-	4U3hZozcwFlOHpEwo/xqlrLslU8UlVnJ/BwVP0fYJrUCq/m27N33D+bA0jT2wv2BOWILDYvREvPgL
-	+8xKEOPion2OMEgaL+DFAco0MiPc5KLqwJLdbZtRA9LEs2xqpROzHTplh22TSKu3lYypE74h6SDEi
-	VGNpP9OL68K66zUeq9OS+Dk6bFuV6ZFEe7LkY2HKpHR+OWtMJOLG0bjonpu30k6M6eSpdYWqeDvUd
-	/ZkBc8qA==;
+	bh=Q26n+DrGGUYwq91xXhaKRMtk3buxGRpjmmaHYxLGsJ0=; b=vIS/PLhdHzpjZMIFnfBLR0ww4e
+	tTQNEEpwRuDs2uUu2+hAGzdAqwkHkPvXURCCLwddOF7Pt49+HQ1an3lhdpUAESelNf48cSNi52dvL
+	4U0Ry9bjHMaT6zZ+lAZe9h1CSBM7S8dxr6AiFErzcDCUHiO/NFpgTz6OSKttfB/0LuZbYB0gxNndk
+	LIkpbMzfPDq941xgZEKbbwZH4YZIRY/uBPPLdMJpNwrkXUxFUdaVDyt9p0ah+ZMDYWzpYH6QfrdNX
+	/F0cMqt26N5VxDXyNk79l469wsYBeLeFawyn1lZmT5qkuLi2LGQxcI72H0EPnC2wPIDBF8mA+i6IC
+	X9ptLqbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUWAW-0000000GJ8j-0wCm;
-	Fri, 20 Nov 2026 21:29:16 +0000
-Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f])
+	id 1xUWV1-0000000GJzL-0vaQ;
+	Fri, 20 Nov 2026 21:50:27 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUW9f-0000000GJ2u-2zYy
-	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Nov 2026 21:29:12 +0000
-Received: by mail-oa1-x2f.google.com with SMTP id 586e51a60fabf-46556b9e02cso1005634fac.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 13:28:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795210102; x=1795814902; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=LXePsUP69J9BLo04WPbdbC0T2RsRqLHGKdkvwdCquvE=;
-        b=J6M2k4cpuzuGONtruvVR+DvJpl4xcYC52GFI17JxOzimXmdUHLTzgvSxQiGwWeMg4y
-         Lq0UvOtO22b8fZOOKdkEDmOQNlMcVyw35yT9olOB36qCR3DHv1UfoKL8+wu2V6adg05Z
-         owCpJyhHURz+MOjQes6V6i9PWbS13iGIpafq/F+vfnFutw+kBOHaohE3cyO3L9psP7YK
-         9+m1e2Fm3EkNpav6IMkXQKXw8akFlan//oij0c3LjOiHP27ha62LfWRUoOo7gxZ2cNAD
-         eHeWlSY3XO2Xlkts5TwJ5gT/WdjyCU05UjPlBen4MG9hbUY3YUhvkZviJ/xv4XR2hp+4
-         hHzg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795210102; x=1795814902;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=LXePsUP69J9BLo04WPbdbC0T2RsRqLHGKdkvwdCquvE=;
-        b=N2ZkmVsm5vOez+hQQ64HL1Ma5QVftQjy3z6jOS/bHi0oDo2rZY5q4xJGtoyiWSMoqI
-         CIsTXJKIqn7gpv5u1yY/2M7UotWXKOqVJGie/yI9Ha9UNmEdgbKM75ryKof7s+NAxOFY
-         S0IDdCESR7k5LvHtUYlhXTaVv8+IB7FijZYll/AExtDHcT2iVGu/8LPFuO+w1r6xe4gx
-         op5uaOGkKpkaqW+Xmjfc8z+iWDWlSjIRWA2RjYmM1BprEkBzTlNL4b2XvRI18LhtMjst
-         VXkjNu5of0nuBSO8S+GZSIqiwxHqad870tebE0Py3jRtaKYU0AIA5e70QxeGnPAchIYL
-         5+QQ==
-X-Gm-Message-State: APuU4Z+mUmO5CcdHxUwUkieWo6MSW+DYdIVpCdyC4O6ht7yOL1/S3+IR
-	3Je6xKZofBmxQtw6hK6zRnH6u9ZyqXjDzTweY+sci4WZJBtPkNdH6rjJ4ToWVcbC
-X-Gm-Gg: AZFdTZdm+4tzvu8mfCryt0COTOm7WxNmtYxOaEsJ9k9+lz/0OpijKynSPud71xC8N3n
-	b3/78Y0ufWZAu7eV//e7mFC5+ZvRzbKDuc2PX3nfbEoePMyZLeXypWfoL8PHJ5r+xZ3d0Cwkv5j
-	Z2j2Fq//+BslVE2D1k8apnb1jRsxgYfBgtFDzeqsUPxmbs6Dpo/KR4VJTXf+uDdrIsguGc9NzUe
-	L7Bla5WQRXCa4JpCkG9Zq1+GKL/6oR0fSRFLd/O9fv1S+51WvbZRaupp2TkfNaT3ooyrnGCELXG
-	LaywMLq2d6X9dLidnUgXV1Pb5lsYUFfaxPg7XnUtADRFOsAc861vwvENB70hXXIX7QGhe3ohi3z
-	xqUFF/EiMkuvjfK7ZmzIaCH5gTbIP/aY057pkDkn0gAOeRczWMKapB6CcpzS+YjjH+p0TRuuj63
-	pYiLMrcgmssG2fDuAUv1ManRJibY8UvshIcQZyXwwhkhVSEybn5e5TBwsBpUIZu7t5Ur6SqS20j
-	ac9ktYZwyo3Tie6JlHwwMwan9qoAhk8K7yPATYl6ljMFKTfl6J/sAO7zmm/MyyT/jLsKmZ2fkUO
-	KTL/rWF/6vON4nyZ+VQTVaeTHltsbw==
-X-Received: by 2002:a05:6870:9d90:b0:4a8:15a:b062 with SMTP id 586e51a60fabf-4bc84f170d6mr2947268fac.25.1795210102525;
-        Fri, 20 Nov 2026 13:28:22 -0800 (PST)
-Received: from neuromancer ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4bc5b07d766sm3774126fac.2.2026.11.20.13.28.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Nov 2026 13:28:21 -0800 (PST)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
-	shawn.lin@rock-chips.com,
-	linux-pm@vger.kernel.org,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	sre@kernel.org,
-	t.schramm@manjaro.org,
-	xsf@rock-chips.com,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V2 1/3] dt-bindings: power: cw2015: add cw2215, cw2217, and cw2218
-Date: Fri, 20 Nov 2026 15:28:13 -0600
-Message-ID: <20261120212815.35663-2-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261120212815.35663-1-macroalpha82@gmail.com>
-References: <20261120212815.35663-1-macroalpha82@gmail.com>
+	id 1xUWUy-0000000GJz4-1dCD;
+	Fri, 20 Nov 2026 21:50:24 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 989144044A;
+	Fri, 20 Nov 2026 21:50:23 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795211422;
+	b=Vomt4wKq3pwx7mfiiijT03kZngLrWTPDfEi3uFeQG8LTzVj3qqC4XRb9ZaBwjLYMb3Qr
+	 L6NpYzkCFFRzGhKnbBdHNDlm/ybUeqGfSYrqBkSEx6TAMWAwyLpptUQjuy9UToIBpVmtx
+	 2zalH/3pm6gH+VUpN9K1JuK63NlHX/lFQBuY7Mbyjqa/+6di4w5v0ho59Teq2Qd7LwlQr
+	 agqgbHBf3TuVHe4Duo+rC8XqF4+vLDE81CCeKZ6thUsX9f4z7KGhDJljTkNrfKkE6vxoW
+	 ZHz0DZCG6URtVlRm3zksR0am4GiNyNWI2ZDw/PJcfkCsja9RvI5rG8keWwkMeDaomEg==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795211422;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=FifjGHjtBoRtzkOOJ+i+OfzI8gb85lACJmrrh0Mq/7g=;
+	b=F7RuItdZu1nb6qGLIiHTrMDIy7HMKCdyrlV2wbv5T1HtYb242d3IBldwQe6pXMesqnUJ
+	 s7vVfyntQuxwtcdbI2SPns7G/xFw6RbypLotG91kEDJoQQsr83O2f40aTuKuc1vXcEYCR
+	 iGWy4bYfPqdOdGeL3KnIrkVR8SndPd5DG2hD6hXbxxBSv6CIk+3zRTKj//wVgU0R2EAN7
+	 IqTPuzHXbeaOz2ymX0ob4omkPURivh+KhnN9kEQR0SvGzTVsyz3M0uamBMXFHkYdmhQIf
+	 jS9SYFswlnXsHCID5tCyV16EFwvryZtw4LmGUyouog+p9BGLYhnYasNuAy1G5Yz8MBw==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 3BBA91F000C6;
+	Fri, 20 Nov 2026 21:50:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795211422;
+	bh=FifjGHjtBoRtzkOOJ+i+OfzI8gb85lACJmrrh0Mq/7g=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=NU7oXRwB0rf7uT20WX7gY+yESLJQpNqR4bfzCJ6ppyifZRxkW8wuv0DvtVtkEtq8i
+	 17axIhz6cURhNbLFFInZFNYd2ByxP7RnVkd5kDxBLDGTJcMCH9Rq9saI7BBGs5gq7m
+	 8zXJUeYmnxEL7QgG/Ue3f9D4eysoveE5r+r0RjgfplXL67Bnsv6A3u0Yt8O3I6OiWG
+	 OkZIGU4hdJgxjR3eBSYqyybwBiFMvNzPuTg7NZBt6+pbR43SOgTIWCe85V8iTBwJYx
+	 bOyaSndPw4ek7tgo7B2zcZ/FzHdJ9Mb7ociAXZ3nmXbG961qbfUmbD9HPIR2Iepe5E
+	 oQCs4SLAAeiaw==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id BFCDF4BA44;
+	Fri, 20 Nov 2026 21:50:12 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Date: Fri, 20 Nov 2026 21:50:12 +0000
+Subject: [PATCH] mfd: syscon: Give each syscon its own lockdep class
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_132824_494955_38712081 
-X-CRM114-Status: GOOD (  11.48  )
-X-Spam-Score: -1.9 (-)
+Message-Id: <20261120-syscon-lockdep-v1-1-aed779a004b8@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/zWO3W7CMAxGX6XK9YzmpA0tmqa9x8RF7Dosoz+sb
+ tEQ4t0Jf5dH+nyOz0ZlSqJmU5zNJMekaRwy4Fth+CcMO4HUZjb23XpErEBPyuMA3cj7Vg7QonO
+ RqpoticlHh0li+r8Lv7cP1oV+heeb5bmY5G/JpfkxM72ohntpU3w8Q80rxN0elhDhiIDQchlKR
+ hJXua9dH1K34rH/vGkpqECGPs35faa19TV572ouESM7G93aSeMroZpCIw1ZKs32crkCfN8YTwM
+ BAAA=
+X-Change-ID: 20261115-syscon-lockdep-d133fb58c2be
+To: Lee Jones <lee@kernel.org>, Arnd Bergmann <arnd@arndb.de>
+Cc: mfd@lists.linux.dev, linux-kernel@vger.kernel.org, 
+ Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ Arun Iyengar <aiyengar1990@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795211412; l=3821;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=WqiBN6Xp2Rqa6ZfdIfM4Z9bo5BDV1QpOV4b8/NaDhLA=;
+ b=bV7qC6N8PcVutSRsBfSL/nmmHW3NwY1Keqwl447bgS/qvzvVny8vuxfTo+l50SKkegBdNZ7VK
+ mp5l1YLaOh8Cm9JkXuRnrzzNyNU8T4HtjAak3io8yApvq2tBKt2sVnL
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,111 +109,138 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Chris Morgan <macromorgan@hotmail.com>
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Add bindings for the Cellwise cw2215/cw2217/cw2218 i2C interface
-battery gauge. It is similar in function to the existing cw2015 but
-with a different register layout. Each of the cw2215, cw2217 and cw2218
-only really differ in the minor specs and the hardware ID they display
-when queried. shunt-resistor-micro-ohms is a property in use for
-multiple devices so not appending a vendor prefix to it.
+All syscon regmaps share one lockdep class, as regmap_init_mmio() uses a
+static key per call site. Lockdep then mixes up unrelated syscons: on
+RK3588 the clock-gated VO1 GRF calls clk_enable() under its regmap lock,
+while the CRU's GRF gates take the SYS GRF regmap lock under enable_lock.
+This is reported as a circular dependency and disables lockdep.
 
-Move the minItems and maxItems for the battery profile to a conditional
-based on the compatible string, as the new monitors require 80 bytes of
-firmware instead of 64 bytes.
+Lock each syscon regmap with its own spinlock and lockdep class.
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- .../bindings/power/supply/cw2015_battery.yaml | 41 ++++++++++++++++---
- 1 file changed, 35 insertions(+), 6 deletions(-)
+Tested on an Orange Pi 5 (RK3588S) with a 7.3 based kernel that has
+out-of-tree DisplayPort patches, lockdep and KASAN on. Without the patch
+lockdep reports the cycle during boot. With it /proc/lockdep shows one
+syscon lock -> enable_lock and enable_lock -> another syscon lock, there
+is no report and lockdep stays on. Build-tested on for-mfd-next.
 
-diff --git a/Documentation/devicetree/bindings/power/supply/cw2015_battery.yaml b/Documentation/devicetree/bindings/power/supply/cw2015_battery.yaml
-index f7bde324153d..dce7c51e4e62 100644
---- a/Documentation/devicetree/bindings/power/supply/cw2015_battery.yaml
-+++ b/Documentation/devicetree/bindings/power/supply/cw2015_battery.yaml
-@@ -14,12 +14,13 @@ description: |
-   phandle in monitored-battery. If specified the driver uses the
-   charge-full-design-microamp-hours property of the battery.
+Applies on top of "mfd: syscon: Put the clock after regmap_exit()":
+https://lore.kernel.org/r/20261119-syscon-clk-uaf-v1-1-dc4a4c1be353@gmail.com
+
+Developed with Claude (Anthropic), which wrote the code and the commit
+message. I reviewed every change.
+---
+ drivers/mfd/syscon.c | 36 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 35 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mfd/syscon.c b/drivers/mfd/syscon.c
+index 3ff4e024542b..34f278dfd2a8 100644
+--- a/drivers/mfd/syscon.c
++++ b/drivers/mfd/syscon.c
+@@ -13,6 +13,7 @@
+ #include <linux/err.h>
+ #include <linux/hwspinlock.h>
+ #include <linux/list.h>
++#include <linux/lockdep.h>
+ #include <linux/mutex.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+@@ -20,6 +21,7 @@
+ #include <linux/reset.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/slab.h>
++#include <linux/spinlock.h>
  
--allOf:
--  - $ref: power-supply.yaml#
--
- properties:
-   compatible:
--    const: cellwise,cw2015
-+    enum:
-+      - cellwise,cw2015
-+      - cellwise,cw2215
-+      - cellwise,cw2217
-+      - cellwise,cw2218
+ static DEFINE_MUTEX(syscon_list_lock);
+ static LIST_HEAD(syscon_list);
+@@ -29,8 +31,29 @@ struct syscon {
+ 	struct regmap *regmap;
+ 	struct reset_control *reset;
+ 	struct list_head list;
++	spinlock_t lock;
++	unsigned long lock_flags;
++	struct lock_class_key lock_key;
+ };
  
-   reg:
-     maxItems: 1
-@@ -31,8 +32,6 @@ properties:
-       it is to mail two batteries to a test facility of CellWise and receive
-       back a test report with the binary blob.
-     $ref: /schemas/types.yaml#/definitions/uint8-array
--    minItems: 64
--    maxItems: 64
- 
-   cellwise,monitor-interval-ms:
-     description:
-@@ -43,12 +42,42 @@ properties:
-     minItems: 1
-     maxItems: 8 # Should be enough
- 
-+  shunt-resistor-micro-ohms:
-+    description:
-+      The value, in micro-ohms, of the shunt resistor used for sampling
-+      the battery current.
-+    minimum: 1000
-+    maximum: 50000
-+    default: 1500
++static void syscon_lock(void *arg)
++__acquires(&syscon->lock)
++{
++	struct syscon *syscon = arg;
++	unsigned long flags;
 +
-   monitored-battery: true
- 
- required:
-   - compatible
-   - reg
- 
-+allOf:
-+  - $ref: power-supply.yaml#
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - cellwise,cw2015
-+    then:
-+      properties:
-+        shunt-resistor-micro-ohms: false
++	spin_lock_irqsave(&syscon->lock, flags);
++	syscon->lock_flags = flags;
++}
 +
-+        cellwise,battery-profile:
-+          minItems: 64
-+          maxItems: 64
++static void syscon_unlock(void *arg)
++__releases(&syscon->lock)
++{
++	struct syscon *syscon = arg;
 +
-+    else:
-+      properties:
-+        cellwise,battery-profile:
-+          minItems: 80
-+          maxItems: 80
++	spin_unlock_irqrestore(&syscon->lock, syscon->lock_flags);
++}
 +
- additionalProperties: false
+ static const struct regmap_config syscon_regmap_config = {
+ 	.reg_bits = 32,
+ 	.val_bits = 32,
+@@ -114,12 +137,21 @@ static struct syscon *of_syscon_register(struct device_node *np, bool check_res)
+ 	if (!syscon_config.max_register)
+ 		syscon_config.max_register_is_0 = true;
  
- examples:
--- 
-2.53.0
++	lockdep_register_key(&syscon->lock_key);
++	spin_lock_init(&syscon->lock);
++	lockdep_set_class(&syscon->lock, &syscon->lock_key);
++	if (!syscon_config.use_hwlock) {
++		syscon_config.lock = syscon_lock;
++		syscon_config.unlock = syscon_unlock;
++		syscon_config.lock_arg = syscon;
++	}
++
+ 	regmap = regmap_init_mmio(NULL, base, &syscon_config);
+ 	kfree(syscon_config.name);
+ 	if (IS_ERR(regmap)) {
+ 		pr_err("regmap init failed\n");
+ 		ret = PTR_ERR(regmap);
+-		goto err_regmap;
++		goto err_key;
+ 	}
+ 
+ 	if (check_res) {
+@@ -159,6 +191,8 @@ static struct syscon *of_syscon_register(struct device_node *np, bool check_res)
+ 	regmap_exit(regmap);
+ 	if (!IS_ERR(clk))
+ 		clk_put(clk);
++err_key:
++	lockdep_unregister_key(&syscon->lock_key);
+ err_regmap:
+ 	iounmap(base);
+ 	return ERR_PTR(ret);
+
+---
+base-commit: 1cb7268b6638c411fc32f373e965eb8ba9e9b2b4
+change-id: 20261115-syscon-lockdep-d133fb58c2be
+prerequisite-message-id: <20261119-syscon-clk-uaf-v1-1-dc4a4c1be353@gmail.com>
+prerequisite-patch-id: 7cf33abeabb3eeaf1ba8ac6c461726fca87702cd
+
+Best regards,
+--  
+Arun Iyengar <aiyengar1990@gmail.com>
+
 
 
 _______________________________________________
