@@ -2,98 +2,110 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A93B2606A320
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 11:28:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5E7E6606A33A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 11:30:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=McvWyooJ;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=g/gSM+ss
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fnpT/pLc;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PinF9+nw
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ud3Nz2N5ha/bTV3x8M3INm6E8fA41JrSD3EYlIAMTWA=; b=McvWyooJzRAkrc5dD0PjTcU8Te
-	/N4m8uI04VNN+I/B80UKMCeJZQhQZx5w23HsPFBIV/JEekWdrUodnsXBm3Z3VxbUVGjizuRLEmqZs
-	V6KTizS7/1Weh7x+xL0DqFNdMvAkZ3YlnfJuG+hok1YoLrNROOO1AD4B5O9qxpSb/th/TKCD9vuKZ
-	v+6OVfWeD2aIuL3q1EcwgIBKk7VsKOWxgc7ZmRa1TkmcqTIgpSxgfWoy3+myo9HpPwjwAxy1en+cw
-	kyOymQjcDQfREB6jcjQp8hIc8UdpINIzJYgOH6ZmQMQe9r7bMx61OitCsZZY7LjXIH6ejZEEKS7Bq
-	fxfQ83sQ==;
+	bh=wmXauZYkt4pA+eQoXXI8suZlFXq9oyuDdccy3xj5Kk4=; b=fnpT/pLcqbzsD1yGCWFat8dUyA
+	jvlQC6J8qrjcaHxug9iSVuiy/xURiRFO6BiklT1CYQ7qpOgjLZlm6kRLS1TAozWuUvvE1kiEbbf53
+	6Ts0fI0utR++f8j1DoN1PSiMfIf8qIqIW7r5e7sBYCHyHbzaw4/0R1HEndiEBA75bWNkcCuumMrc/
+	NOlIE0eqN/2QDjOuMI3EgEuusO+Gq3g3dqyrtNX6mz3MBZSbwVgVBdKspSmFSiqodADMJgBeHuwSU
+	dTBkMblLL47S7FvC6G4DpDJ2xDJGXc74iHrIT1XpFzEwhc90Bf4eb88plTNPRC29DBzRj6Jz5Cv+r
+	aWO4tZkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUMmf-0000000En69-2QWr;
-	Fri, 20 Nov 2026 11:28:01 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1xUMom-0000000EneZ-45W5;
+	Fri, 20 Nov 2026 11:30:12 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUMmc-0000000En4u-1bln
-	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Nov 2026 11:27:59 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4a2d6d01ecbso4285565e9.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 03:27:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795174076; x=1795778876; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=KPsWJf8/QIknvbiif9zP+BPQ4xe2P2QvRm+jnUhFSik=;
-        b=g/gSM+ssbDUL5Seebs6Z4RZDUytEf5NFzIyhUr77Z0youZ1bbWniRLVf+jvWxfWpi0
-         g/J4sGe23sdJsz6Rw90ePNfxmuWG5DW5DagxRE9XYBqX5u+4UvkkluyPJCL5d5dn/s1x
-         STsB7WZUZtgDT4iCVyIQEPMY9S+l0ScnLNzGE3Fb4cY63FrmFoWMcPluzyp5vAtF4wW/
-         OT+aJQvUApPvzxmQGrM63E7BBiNx04BQom9Bqm7X5aSIbRZZdeIc0NX8MRfoT29qWPg2
-         xpaJX+HEnL4R7XeEyOVf5MX3iUxUQeOFLlehjZ6/A1BG/OCCywS7WTNn5iWiTYCd1x+U
-         C5eg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795174076; x=1795778876;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=KPsWJf8/QIknvbiif9zP+BPQ4xe2P2QvRm+jnUhFSik=;
-        b=HTd7eBoTnC6ugmmUxIyGkww/s8HburDzG+DyzI4+kG8QDo8UsPw3fc/FG8Opcbu8Zg
-         anuMspuFXGNh/BZWdcRr09MGfK95xY1khuQRVhAQXnmt5XJjRN+GmpS0/bLNZg0dCyoB
-         qTYb46eMPKITtRaXcQOg2Dx19l54GRryQr0WOKKW8jz9VptqA7/xGkKJDCZ6mJt3NlNi
-         c3NsTqYi0/OT9vOHZzZdvXh7YiLU8MpbUZOKYyezAQ/LEJ33EngibWwFS4qhWjF630o3
-         /E90AXvQh9zQIx8P6hSQkh0yJkDnNPXez5cObrJw4V1ScZG8Nh1Gid8ea3M5jiMPdxQ2
-         QCdg==
-X-Gm-Message-State: APuU4Z+9KnSYlnrROA3oy3B/T9wH+v36ubUB6gkVvPsOoK9Yhf6Mg/aY
-	k4PtUqTbmv5PQ7fLkIxtLZ3mX/4nFXb79yqCOTH8FEjNB8DhS+yF45yE
-X-Gm-Gg: AYBFou0KLLHSsstvGcEbH7d3MuOTrVHFlDM1Ej6yQbEMxiR+XllXM1M3y+h1st3RGlg
-	VHerhQqieu4Qzzi9A0ogNmW6hwnRzeFDQygzuCaKdIOPylst4YoLfBYY4fWj1QjNbOklW+Z2Bo7
-	e8iWlSA37x+LEdbk296NjxprYycjhzhNEbhixMMpBdpj+m/yTstfVFkWVD48Xw7NoUETCCAqS8w
-	MqbPzBXvvBF7qBUD5+xm3nLnC6mGjYHeiZ7yfULVM8CeOmBhvej/f35035TDas7EhUDdP/kaZpC
-	8I1Q7R6eULmDtPOiXmnSYp2IArZOQ+kDmXtdzi9s9AfNWZyiMjQV3e5CQmvBpXcAvzG9+jRn2+B
-	NvJmmqkpOBc1xtNdvy2Uubl7URFXiKL66PV6yoyNaZVhvu/2ZrKIPfJz0QQMSgsQ6DG4dS/WtWl
-	WiATtWJLpwdjSUTZ4BpaCesI1U3gTeDw2zjz+j0TFTUz1mSROOzYvS2eGOpSSvq3xorMDzcwkbL
-	cuCokFVKU4pxUfPV5OcUo65xKTS3QwAxt+UwKNe57Dmc0ahZhyUTTEwXdFzaIP0g+QLoM66J0Pq
-	hZIHEE3CInkE0bSCHAM0Hd29ZureX051TTibELRARKi+dg00kCp+5SlR1EWmFUV/fJVuDdHwL25
-	D
-X-Received: by 2002:a05:600c:4e16:b0:4bb:69b2:d3df with SMTP id 5b1f17b1804b1-4bb88813024mr63973915e9.25.1795174075876;
-        Fri, 20 Nov 2026 03:27:55 -0800 (PST)
-Received: from debian.tailb81abf.ts.net ([213.152.28.84])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb853368d3sm112095135e9.1.2026.11.20.03.27.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Nov 2026 03:27:55 -0800 (PST)
-From: MidG971 <midgy971@gmail.com>
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org,
-	Tomeu Vizoso <tomeu@tomeuvizoso.net>,
-	Simon Xue <xxm@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	dri-devel@lists.freedesktop.org
-Subject: Re: RK3568 NPU: what triggers the CNA weight-fetch DMA after the executer engages? (mainline rocket vs vendor rknpu)
-Date: Fri, 20 Nov 2026 12:27:54 +0100
-Message-Id: <20261120112754.1400099-1-midgy971@gmail.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20260721230746.175786-1-midgy971@gmail.com>
-References: <20260721230746.175786-1-midgy971@gmail.com>
+	id 1xUMol-0000000Endp-1dkI;
+	Fri, 20 Nov 2026 11:30:11 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id EEC5C415D7;
+	Fri, 20 Nov 2026 11:30:10 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795174210;
+	b=gggMt24qNJTyNG8ghgKICfXgRUow9ONYFql+B06KCpU2dr8MmYk762Rhw0lKZrks25iz
+	 Kgw8WwjKp9xU5WCWI5F4O1SdXBDtvaurp5pU24uo95iIzAPWnaxCsdbiWwjwDhliafPRU
+	 SonjnsrtzNKahX50jrhay8J9J5dj3w8uAkqPNvJyswrh4T9st2h2m1vGydwUJRhDBMY6k
+	 6uENvomp0oNVWVt92GLxk04uCWySH00DMgODPgCokgXEkNa1M8xXCbIX6kIpY0pY6xSOz
+	 1LLVwK7y649tUzOCSES5jQ3IEktxMetBcZrx/UUwar1YwoNw5eslMzWEA/FLMPura6Q==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795174210;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=jhE8weqNYy0n4xKaMJDFdD/R5NpshsvyD+takwcLwVc=;
+	b=rbuX5km/adNDKS4oYcKYggEfv5uzNkrHJLghy2IVMXorvigyTsk3SOlaiPUM6QqGfG7H
+	 sSLGfQx8h5KsOfciG6cd1keaJo69OzGsoqipBavb6KS8ox1UYZOW+l5NFRLCz01+WS6Hl
+	 OqLCnvOU1ZhRFr9hFEogco54GMXnqv9yUqJhBnlyqDhY3JtCU9CZidU/tAeNp/ciHXEyJ
+	 bpiFmwd3lAQePhBHlAVSYFzOzhD7cDsSbUnbKaksYehjay/8WYa0wCA+f7x1a8XbDB2Ag
+	 wdnxdaeVK7WYXlM8sAOmt7zAwaO0AnqT/xBXq1QTfsJatsSsKY+jGzyhReF8qo8kgCA==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 178ED1F000C4;
+	Fri, 20 Nov 2026 11:30:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795174210;
+	bh=jhE8weqNYy0n4xKaMJDFdD/R5NpshsvyD+takwcLwVc=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=PinF9+nwwP0NYITXY8jERw7YQQDvsAiZLrQdpIbyKTiq4KvFv9gEMrIhMCynKtuWP
+	 tL8SD1oTujY4W9xp/XBrtP8ZG97ZPad36P+xaX1enK3TYj8pZO4eFm08v6PCIpeRWw
+	 ECmjHUgF7xOo8D4Tqz4Dw9ARlCnEVvuA6CxNec8fvxHLU9wgdxwr2vYFJTGYt/GvMf
+	 oKvWXJm/YTi51uTPrA35Nmm1LFUHQcEu0oIYMiW5wczY5Tz7YDsj44NXAFM1cYqpE3
+	 P1xpk+v8fCXewY1yemOUtFGuvSOyZTZ69Wz3Ah/y9kMKweNYHdv5a3UBw7W501nghZ
+	 ohzpLhZvtjGyg==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 9A60B49849;
+	Fri, 20 Nov 2026 11:30:06 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Subject: [PATCH v3 0/3] media: rockchip: Add the IEP2 deinterlacer of
+ RK3568/RK3588
+Date: Fri, 20 Nov 2026 11:30:05 +0000
+Message-Id: <20261120-iep2-v3-0-e94eb9f629d2@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_032758_470480_E56D845A 
-X-CRM114-Status: UNSURE (   9.71  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/02Nyw6CMBQFf4V0bQ0tFCgr/8O4KO0VrpFHWmw0h
+ H+3BU1YTnJmzkIcWARH6mQhFjw6HIcA2SkhulNDCxRNYMJTXjDGUoowcdpIJXUBZanznITpZOG
+ O7y1zve3sXs0D9BzduOjQzaP9bD+exd0/me9Jz2hKVQXGgFCcAbu0vcLnWY89iUnPj5L4STxIm
+ alKWWkjlRBHaV3XLxaagl/fAAAA
+X-Change-ID: 20261110-iep2-b9a9c6e77c44
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@kernel.org>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Alex Bee <knaerzche@gmail.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ Arun Iyengar <aiyengar1990@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795174206; l=2896;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=R65zek14E7+PZ6+dhDe8b4DlafUNDeybXwhd5n/LjPY=;
+ b=UNdXYNTz4DvcNhR0iYG1qIoq1f3xowbXK1kf1ZdCsz7eo2VwPi/Nyadw0seBLq/WduPSx6hY+
+ zz3NAIc4mVMAqK58wcT8UDvehFwKl/yVQrmjvvwl5dSqB4GMzSVAgJB
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,56 +115,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Chaoyi, hi all,
+Add a V4L2 mem2mem driver for the IEP2 deinterlacer of the RK3568 and
+RK3588, with its binding and the RK3588 DT node. The V4L2 side follows
+Alex Bee's IEP driver.
 
-A gentle follow-up on the thread above from July: no reply yet, and I
-wanted to add the new evidence I gathered since, in case it sharpens
-the question.
+Tested on an Orange Pi 5 (RK3588S) with a 7.3-based kernel (KASAN,
+lockdep); build-tested on media next. v4l2-compliance 59/59, all four
+modes at 1080i without IOMMU faults, s2idle and deep suspend while
+streaming, unbind while streaming, forced watchdog and IOMMU fault
+resets. Not tested: RK3568. DMABUF imports of exactly the image size
+are refused, because of the 4 KiB OUTPUT padding (see 2/3).
 
-Since then I confirmed the engage/completion split explicitly:
+One case is still open: a reset during a transfer, seen only with
+forced watchdog resets, can leave the IOMMU busy. Jobs then fail
+without DMA and the driver suspends at once so that PD_VDPU powers
+off, which restores it. While another device of the domain, e.g. a
+video decoder, keeps it on, the jobs keep failing.
 
-  - Loading the vendor rknpu and running ONE vendor job ("priming"),
-    then unloading it (no power cycle) and loading mainline rocket,
-    makes rocket's executers engage for the first time (S_POINTER
-    bit 16 = 0x1000e on all five units, matching the working vendor
-    signature).  So the engage is one-time HW state established by a
-    *working vendor job*, not by probe/init writes.
-  - But completion still fails afterwards: even primed, rocket's job
-    times out with wt_rd = 0 / dt_wr = 0 (vendor: 0x1900 / 0x6400).
-  - An NIU reset pulse (CRU SOFTRST_CON2 bits 8..10) at resume CLEARS
-    the primed state (reads drop to 0); nothing we write re-arms it.
-    I also tested a kiln-style reset edge inside rockchip_pd_power()
-    at PD power-on (RK3576 kiln 0002 analog) on v7.4-rc3, including a
-    forced cold power cycle of the PMU island from userspace:
-    negative -- the pulse does not re-arm the sequencer, and the PD
-    never actually cold-cycles on this board.
-  - Cache coherency ruled out (forced dma_sync of all BOs at submit;
-    live DT has no dma-coherent). CBUF_DBG matches the vendor's engaged
-    values pre/post job. The board now runs mainline v7.4-rc3 and the
-    gate reproduces there unchanged.
+Developed with Claude (Anthropic), which wrote the code and the commit
+messages. I reviewed every change.
 
-So the refined question: after a vendor job has left the NPU in the
-armed per-power-session state, which step of that job arms the CNA
-weight-fetch sequencer - and is there any RK3568-visible precondition
-(CBUF/DCOMP/weight-DMA enable, ordering vs. engage) I could replicate
-in rocket so it computes without the vendor prime?
+---
+Changes in v3:
+- Drop the vendor kernel notes from the commit messages and cover (Krzysztof)
+- 1/3: drop the linux-media list from the MAINTAINERS entry (Krzysztof)
+- 1/3: add Krzysztof's Reviewed-by
+- 2/3: start the job and its watchdog under irq_lock (Sashiko)
+- 2/3: soft-reset the core with the AXI side, CRU reset if the IOMMU
+  stays lost, shared IRQ off during a reset; no DMA until the IOMMU is
+  restored
+- 2/3: return OUTPUT buffers before CAPTURE buffers
+- 2/3: mask and clear all interrupts on completion and before a job
+- 2/3: suspend at once when the IOMMU is lost
+- 2/3: take the mutex in system suspend
+- Link to v2: https://patch.msgid.link/20261115-iep2-v2-0-3d8798cd9a55@gmail.com
 
-Happy to run any targeted capture on the board (RK3568, ROCK 3B).
+---
+Arun Iyengar (3):
+      media: dt-bindings: Add Rockchip IEP2 deinterlacer
+      media: rockchip: Add IEP2 deinterlacer driver
+      arm64: dts: rockchip: Add IEP2 deinterlacer to RK3588
 
-Thanks again.
-Kind regards,
-Midgy
+ Documentation/admin-guide/media/rockchip-iep2.rst  |   32 +
+ Documentation/admin-guide/media/v4l-drivers.rst    |    1 +
+ .../bindings/media/rockchip,rk3568-iep2.yaml       |   95 ++
+ MAINTAINERS                                        |    8 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   22 +
+ drivers/media/platform/rockchip/Kconfig            |    1 +
+ drivers/media/platform/rockchip/Makefile           |    1 +
+ drivers/media/platform/rockchip/iep2/Kconfig       |   16 +
+ drivers/media/platform/rockchip/iep2/Makefile      |    3 +
+ drivers/media/platform/rockchip/iep2/iep2-regs.h   |  191 +++
+ drivers/media/platform/rockchip/iep2/iep2.c        | 1320 ++++++++++++++++++++
+ drivers/media/platform/rockchip/iep2/iep2.h        |  108 ++
+ 12 files changed, 1798 insertions(+)
+---
+base-commit: ad6549a46748d00818483b535e5cd2a704685c98
+change-id: 20261110-iep2-b9a9c6e77c44
+
+Best regards,
+--  
+Arun Iyengar <aiyengar1990@gmail.com>
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
