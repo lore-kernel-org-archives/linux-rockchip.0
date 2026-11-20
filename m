@@ -2,74 +2,84 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1C6B7606A6DF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 19:18:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C42B4606A6FC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 19:20:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Whs7fT2+;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Tsu+dV+R
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jcTyiTvM;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.a=rsa-sha256 header.s=20260707 header.b=bucLORRw
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=f9bxkvx9Uycyho51Lrh36SDss+gIcuASDdQRU1J/mt0=; b=Whs7fT2+e/ZhpAh08NP4u1KlET
-	/aQIExqQKkT+0iwZMsSX37OZgdreCkuGi+uCQdWtGwPdLmHtPX6plXj+fA4Stf9lCuwEeW9aO86nX
-	OjZmZyXmu9IwwOTN5PiXlLhG6oAETjrOna+PfuNMaBCsWO5WvCgFieqC7a8iJRHcHpG+EhKdX0Ypp
-	viEDo/BOeRft0fkF4KJ5IS1hva8xHL7z7RX3A29td30cbUjR1iiKwRqOkHxM6nmaWvaQT3NbcrHlc
-	Psvu/lJY3ILEIF2X4hob3HLUDYQneOoRm6pNOjuHtt16QEw8yTXxEJPJYJl6Tid9sRdzcGxiRGt3/
-	sO4zotFQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:From:Subject:Message-ID:
+	Mime-Version:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Unsubscribe-Post:List-Owner;
+	bh=NANw2SXLcDspGn+au84y6FTUINLQtEiCO0+kbLcHCE4=; b=jcTyiTvMy7O+3DOTjS6wVHjt6M
+	iFZEgMGt5JpmjYMq78mQnvgfRziLz4myulSMMA2zphb4Ohte6NM09XAjfOROL97v/ioD0g7/SB3lj
+	/FbNkbTWFzvGQTmVd6V9A86ZM7NB9HkdqLK1kiZV7SE1K68skXmeGywT+xFSAMSKwRHWF4YYU/+Kq
+	qsLv5H/7lYNU8iD2+1QOOjhFpzacoPR6TgMcthHSD7Udu8x9ui3SfvpwHZ63sMAYxTukV0KrP/WuD
+	iCB4KwssIpjd+McT67sKZdNsGbw0AknnTsLHyEj+gs8W+1pa9FVLdkkE+9rr2Yo+DnaGSqclGt+aP
+	/d+PWu5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUU7u-0000000G3IV-1TMS;
-	Fri, 20 Nov 2026 19:18:26 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xUUA2-0000000G3gl-0WPX;
+	Fri, 20 Nov 2026 19:20:38 +0000
+Received: from mail-dl1-x1245.google.com ([2607:f8b0:4864:20::1245])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUU7i-0000000G3AX-0smq
+	id 1xUU9w-0000000G3fz-3WF7
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Nov 2026 19:18:15 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A53006013B
-	for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 19:18:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE45C1F000C6
-	for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 19:18:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795202292;
-	bh=D0aacaaucLazBzamGaNcpBWXLJSLR5Zsq+QZIkHcA28=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=Tsu+dV+RFstRRv9DCiGG0qgN4F8PbOY6/XDaZv5+N00mdm7KoZod3Jdlpak9BABKb
-	 +0EFOLZDoGVg1Vq9B4RmzFxNH/wQY0yNFsv45UIm33eSA73I4GM3IBVrF/5Jqw/Xgf
-	 ozcfDRa8hK4Gmiw0At24xmlO4vfcN5aQBbCTmw4TWJimTBBU98kG9/k6WGLZhzvu80
-	 8sOHlyWx2IzZXdrGubIH5/9bXbZHy+JDhVtOFJrXu9DKfIBP1fHYkjCf4DRqULZovf
-	 kinhqDgKUHIqWP9cTdUBbH2y7ALbtl9I4RyBWfFTNyTg8UZca1BJi5UI4Mk2tRNRKo
-	 P2IFBQw4/i2Mw==
-Received: by mail-lj1-f177.google.com with SMTP id 38308e7fff4ca-3ae6f2b193fso6959561fa.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 11:18:12 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AL+hErGQQp0X7PtO6VXuOxC/pdolvlMGvYTQkGgHuZqqXWgmaK2a6SXP9rI+PlabEBXjF+eTEarux/eWFRLW5lXxvA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9BJ5Odl9zgDG4fnEaUDXplTJsMdXmzHhT9nHNlUUmPyrIoJtGO
-	CTQQNihF+iGK9mhpECUBGTB5N4EX8TLz3OJENTF9M+FteRp8ouRA6u1u/PcbF3yRD5zlHnOLtq0
-	SMCkt0gXCX9qSVZMsLAaNuo34iSU6/5o=
-X-Received: by 2002:a05:651c:419b:b0:3ac:433c:6ab7 with SMTP id
- 38308e7fff4ca-3ae7f9f2550mr11211681fa.16.1795202291354; Fri, 20 Nov 2026
- 11:18:11 -0800 (PST)
+	Fri, 20 Nov 2026 19:20:36 +0000
+Received: by mail-dl1-x1245.google.com with SMTP id a92af1059eb24-154e9d2d94fso2819059c88.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 11:20:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20260707; t=1795202431; x=1795807231; darn=lists.infradead.org;
+        h=content-type:cc:to:from:subject:message-id:mime-version:date:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=KO/bgS9573WdL9OckehiaeYLsdBAM3AUhNlncBXYYkQ=;
+        b=bucLORRwVngoiWSmXwz2R//KF3Vi//78K3GUD+TAvjDPg5ojU1JaEWF3JT+kWBxSbu
+         jWhjG3hktgk4b6r9tbXS1F0IrTxZnv97a0VybqjWvN2c9w4xItNJ1kUAHkSnEIMNbh3k
+         SvXg4XPfctLYLQuY93hF1tWFiM+Dd6mShe+3lsJkNlW9mlfku/mZZaxkrLeJr6O1voh1
+         aia8iR9RW6pBJJdTaC6GLUGmvIoirsfCQAdQu99FS9DIHY7ScWMiB0fa/i8PPt4D3cxd
+         urJMpqb/qX9heq7N/2sFVdsCGrhjWHoTJv+JsmT2acouDWPKvOqZKmxGdIYX3mbpGcoY
+         tTAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795202431; x=1795807231;
+        h=content-type:cc:to:from:subject:message-id:mime-version:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=KO/bgS9573WdL9OckehiaeYLsdBAM3AUhNlncBXYYkQ=;
+        b=LBnznI1qc1W1e3t6zwjhzRhy6yq91p22NqLHwe8Hv3a8Dhtz/+womHNO4bPw/kNdXG
+         Cs3PyjOknVYapQzHgine+pzB6gpMpT8VWT0vFa0KVko7kV17BAZenZ8/CNzbGGcaqr85
+         4szelPubYBY9c+tCojf6v7qxs6vW5CE1rG9HDPYU+lf5AMISo4ppA2vlmFTiobWZhIF7
+         roSAR7tMqZhB8Phfi3Z/M7qnD6+wR6i9QmdLOQA9FaY49HQyJL43iCuECJHjAaCXPDFr
+         tegdmWD2uznCpHpl4/pycviz0Db7u/wfD5acULPtglZpoCNWo3c7KCOkbzOFjXkgo9Em
+         vJ/Q==
+X-Forwarded-Encrypted: i=1; AL+hErG61RAQfY4uN99YvxDmHdnd7Qie5kQOEs/AYdvNiA+aSpqZ/Km4Y4xOtdDfUIg1SfPI50NrNlDJn0gYOH9bsw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/r+ohXAPP94SrgXUr0cLGEToKh6GGGOO4E6btTLczjp5zlpG25
+	VhUo92+mMg5kCLChIezN3e5nAuN3NbNwehRJ8FTetqf/GM5L0KJoV3joVImE0mfgelFERg7oJiJ
+	tjA==
+X-Received: from dlbvv25.prod.google.com ([2002:a05:7022:5f19:b0:1a4:c892:b166])
+ (user=elkin job=prod-delivery.src-stubby-dispatcher) by 2002:a05:7023:907:b0:193:9aa3:474c
+ with SMTP id a92af1059eb24-1b5568a9271mr3806499c88.21.1795202429856; Fri, 20
+ Nov 2026 11:20:29 -0800 (PST)
+Date: Fri, 20 Nov 2026 19:18:31 +0000
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-References: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com>
-In-Reply-To: <cover.1794992905.git.daniel.lezcano@oss.qualcomm.com>
-From: "Rafael J. Wysocki (Intel)" <rafael@kernel.org>
-Date: Fri, 20 Nov 2026 20:17:58 +0100
-X-Gmail-Original-Message-ID: <CAJZ5v0h_kRcqpfM=8wnEXSnwB5+MHHUd2wK8jruQSRoTYnuXew@mail.gmail.com>
-X-Gm-Features: Aa3M54oLwSoxOTZL4M8rcFfriin7DTrg-svIenSNy9jdlFieUb2umtCsC8Amt5k
-Message-ID: <CAJZ5v0h_kRcqpfM=8wnEXSnwB5+MHHUd2wK8jruQSRoTYnuXew@mail.gmail.com>
-Subject: Re: [PATCH RESEND v2 0/2] powercap: idle_inject: Create threads on demand
-To: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
-Cc: rafael@kernel.org, tglx@linutronix.de, linux-pm@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>, 
-	Peter Ziljstra <peterz@infradead.org>, Bradley Morgan <brads@mainlining.org>, 
-	Heiko Stuebner <heiko@sntech.de>, 
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.56.1.750.gf70dc682cf-goog
+Message-ID: <20261120191831.2865901-1-elkin@google.com>
+Subject: [PATCH] drm/rockchip: dw_hdmi: check IS_ERR() on drm_atomic_get_bridge_state()
+From: Elkin Cruz <elkin@google.com>
+To: Sandy Huang <hjc@rock-chips.com>, "=?UTF-8?q?Heiko=20St=C3=BCbner?=" <heiko@sntech.de>, Andy Yan <andyshrk@163.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>, Damon Ding <damon.ding@rock-chips.com>, 
+	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	llvm@lists.linux.dev, irogers@google.com, Elkin Cruz <elkin@google.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261120_112032_878029_07ABA328 
+X-CRM114-Status: GOOD (  10.81  )
+X-Spam-Score: -9.5 (---------)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,58 +89,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-T24gV2VkLCBOb3YgMTgsIDIwMjYgYXQgNToxNuKAr1BNIERhbmllbCBMZXpjYW5vCjxkYW5pZWwu
-bGV6Y2Fub0Bvc3MucXVhbGNvbW0uY29tPiB3cm90ZToKPgo+IElkbGUgaW5qZWN0aW9uIGN1cnJl
-bnRseSByZWdpc3RlcnMgcGVyLUNQVSBrZXJuZWwgdGhyZWFkcyBkdXJpbmcgZWFybHkKPiBpbml0
-aWFsaXphdGlvbiwgaW5jbHVkaW5nIG9uIENQVXMgZm9yIHdoaWNoIG5vIGlkbGUgaW5qZWN0aW9u
-IGRldmljZQo+IHdpbGwgYmUgcmVnaXN0ZXJlZC4KPgo+IFRoaXMgc2VyaWVzIG1ha2VzIHRocmVh
-ZCBjcmVhdGlvbiBmb2xsb3cgdGhlIGxpZmV0aW1lIGFuZCBDUFUgbWFzayBvZgo+IGVhY2ggaWRs
-ZSBpbmplY3Rpb24gZGV2aWNlLgo+Cj4gVGhlIGZpcnN0IHBhdGNoIGFkZHMgYW4gb3B0aW9uYWwg
-Q1BVIG1hc2sgdG8gc21wYm9vdCB0aHJlYWQgZGVzY3JpcHRvcnMuCj4gVGhlIG1hc2sgcmVzdHJp
-Y3RzIHRocmVhZCBjcmVhdGlvbiwgQ1BVIGhvdHBsdWcgaGFuZGxpbmcgYW5kIHRlYXJkb3duLAo+
-IHdoaWxlIHByZXNlcnZpbmcgdGhlIGV4aXN0aW5nIGJlaGF2aW9yIGZvciBkZXNjcmlwdG9ycyB3
-aXRob3V0IGEgbWFzay4KPiBSZWdpc3RyYXRpb25zIHNoYXJpbmcgdGFzayBzdG9yYWdlIGFyZSBj
-aGVja2VkIGZvciBvdmVybGFwcGluZyBDUFUKPiBtYXNrcyB1bmRlciBzbXBib290X3RocmVhZHNf
-bG9jayBiZWZvcmUgYW55IHRocmVhZHMgYXJlIGNyZWF0ZWQuCj4KPiBUaGUgc2Vjb25kIHBhdGNo
-IHVzZXMgdGhpcyBzdXBwb3J0IHRvIHJlZ2lzdGVyIGlkbGUgaW5qZWN0aW9uIHRocmVhZHMKPiB3
-aGVuIGEgZGV2aWNlIHJlZ2lzdGVycyBhbmQgZGVzdHJveSB0aGVtIHdoZW4gaXQgdW5yZWdpc3Rl
-cnMuIENQVQo+IG93bmVyc2hpcCBjbGFpbXMsIHJlZ2lzdHJhdGlvbiByb2xsYmFjayBhbmQgdGhy
-ZWFkIHRlYXJkb3duIGFyZQo+IHNlcmlhbGl6ZWQgdG8gcHJldmVudCBvdmVybGFwcGluZyByZWdp
-c3RyYXRpb25zIGZyb20gc2hhcmluZyB0aHJlYWRzLgo+Cj4gVGhlIHNlcmllcyB3YXMgdGVzdGVk
-IG9uIFJvY2tjaGlwIFJLMzU4OC4gVGhlIHVwZGF0ZWQgc21wYm9vdCBjb2RlIGFuZAo+IGlkbGUg
-aW5qZWN0aW9uIGNvZGUgYWxzbyBidWlsZCB3aXRoIFc9MS4gQ29uY3VycmVudCByZWdpc3RyYXRp
-b24gYW5kCj4gQ1BVIGhvdHBsdWcgcnVudGltZSB0ZXN0aW5nIHJlbWFpbnMgb3V0c3RhbmRpbmcu
-Cj4KPiBDaGFuZ2VzIGluIHYyOgo+IC0gUmVqZWN0IG92ZXJsYXBwaW5nIHNtcGJvb3QgcmVnaXN0
-cmF0aW9ucyBzaGFyaW5nIHBlci1DUFUgdGFzayBzdG9yYWdlCj4gICB3aXRoIFdBUk5fT05fT05D
-RSgpIGFuZCAtRUJVU1ksIGFzIHN1Z2dlc3RlZCBieSBUaG9tYXMgR2xlaXhuZXIuCj4gLSBEZWZh
-dWx0IGEgTlVMTCBDUFUgbWFzayB0byBjcHVfcG9zc2libGVfbWFzayBhdCByZWdpc3RyYXRpb24g
-YW5kCj4gICByZW1vdmUgcmVkdW5kYW50IE5VTEwtbWFzayBjaGVja3MgZnJvbSB0aGUgbGlmZWN5
-Y2xlIGhlbHBlcnMuCj4gLSBVc2Ugc2NvcGVkIGd1YXJkcyBmb3IgdGhlIHNtcGJvb3QgcmVnaXN0
-cmF0aW9uIGxvY2tzLgo+IC0gRG9jdW1lbnQgdGhlIG92ZXJsYXAgcmVzdHJpY3Rpb24gYW5kIHJl
-Z2lzdHJhdGlvbiByZXR1cm4gdmFsdWVzLCBhbmQKPiAgIHVwZGF0ZSB0aGUgY29yZSBjb21taXQg
-ZXhwbGFuYXRpb24uCj4gLSBBZGQgQnJhZGxleSBNb3JnYW4ncyBSZXZpZXdlZC1ieSB0YWcgdG8g
-dGhlIGlkbGUgaW5qZWN0aW9uIHBhdGNoLgo+Cj4gQ2M6IEFuZHJldyBNb3J0b24gPGFrcG1AbGlu
-dXgtZm91bmRhdGlvbi5vcmc+Cj4gQ2M6IFJhZmFlbCBKLiBXeXNvY2tpIDxyYWZhZWxAa2VybmVs
-Lm9yZz4KPiBDYzogVGhvbWFzIEdsZWl4bmVyIDx0Z2x4QGxpbnV0cm9uaXguZGU+Cj4gQ2M6IEJy
-YWRsZXkgTW9yZ2FuIDxicmFkc0BtYWlubGluaW5nLm9yZz4KPgo+IERhbmllbCBMZXpjYW5vICgy
-KToKPiAgIHNtcGJvb3Q6IEFsbG93IHJlc3RyaWN0aW5nIHBlci1DUFUgdGhyZWFkcyB0byBhIENQ
-VSBtYXNrCj4gICBwb3dlcmNhcDogaWRsZV9pbmplY3Q6IENyZWF0ZSBwZXItQ1BVIHRocmVhZHMg
-b24gcmVnaXN0cmF0aW9uCj4KPiAgZHJpdmVycy9wb3dlcmNhcC9pZGxlX2luamVjdC5jIHwgNjkg
-KysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLQo+ICBpbmNsdWRlL2xpbnV4L3NtcGJv
-b3QuaCAgICAgICAgfCAgNiArKysKPiAga2VybmVsL3NtcGJvb3QuYyAgICAgICAgICAgICAgIHwg
-NDUgKysrKysrKysrKysrKysrKystLS0tLQo+ICAzIGZpbGVzIGNoYW5nZWQsIDgzIGluc2VydGlv
-bnMoKyksIDM3IGRlbGV0aW9ucygtKQo+CgpBcHBsaWVkIGFzIDcuNSBtYXRlcmlhbCwgdGhhbmtz
-IQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+drm_atomic_get_bridge_state() returns an ERR_PTR() on failure rather
+than NULL. dw_hdmi_rockchip_get_bus_format() checks !bridge_state and
+then dereferences bridge_state->input_bus_cfg.format, which faults if an
+error pointer is returned.
+
+Use IS_ERR(bridge_state) instead of !bridge_state.
+
+Fixes: dc70272cc184 ("drm/rockchip: dw_hdmi: Propagate bus format to display driver")
+Signed-off-by: Elkin Cruz <elkin@google.com>
+---
+I am trying out a new Clang static analysis linter for ERR_PTR/NULL
+handling, and it flagged this code as possibly buggy. The findings were triaged
+and fixed with an AI coding assistant, then checked against linux-next (not
+runtime-tested on hardware).
+
+Thanks,
+Elkin
+
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index b6e154c35e7c..30191927593b 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -286,7 +286,7 @@ static u32 dw_hdmi_rockchip_get_bus_format(struct drm_encoder *encoder,
+ 		return 0;
+ 
+ 	bridge_state = drm_atomic_get_bridge_state(conn_state->state, bridge);
+-	if (!bridge_state)
++	if (IS_ERR(bridge_state))
+ 		return 0;
+ 
+ 	if (bridge_state->input_bus_cfg.format != MEDIA_BUS_FMT_FIXED)
+-- 
+2.56.1.750.gf70dc682cf-goog
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
