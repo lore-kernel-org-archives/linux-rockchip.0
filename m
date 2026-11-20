@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 258E5606A33D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 14:31:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EFF6560A3836
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 14:32:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FqaiVlqM;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=D3U3CzEf
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FzY7I9xM;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=GPMxLtZJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,37 +14,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=xQkPGi0KzzIAQ4s+9/Y81VAdXxhg0UiwPLapmFZ0uoQ=; b=FqaiVlqMh/nmNiLSO2wCD6QNzb
-	VZbfXbdeKYiqz5qBXKfR3+4MmP26/xEdHM3OBWzIf3oARcLnvn/UZmbfORlbsJptyDXizBHA+ukia
-	TSHYqxQlrrvn6CSRaZa+DVukO5CiLcrAoKPY3mKXq7RvTNIdG3ccKO88++9G6J2Dd/6A2oAqGY2hN
-	7mvGoqZJa6s/G5+9dMlLmJ/aGpPmVU4ILeSKOQFUITesdYm6HZ5ZUiXMe3Rb8Grnx5FyXv1NFX04Y
-	Yq7uopN9SyuEyC7ZZLDy0OlqQVnCEuxE8aLTAZOzHTTqyYubb0vC75Vza3e+nfuQHq6re5Bx3iAZ0
-	Vw4ZiolQ==;
+	bh=7TLSirH2Y+tFP7K3PtDAXwvQZZoZl5+dlceLHWpqMZc=; b=FzY7I9xMpcdR4feViMy4SGzhYk
+	VX1jJZGq+gzvaB99M0US/OOHvyGXBHbDQcH4osMDsLEFIzcShBW/Uu22vIWOlIaoTMyYXKWt4cGeN
+	HeMtpK2NtMdT2n23UqEvAFeia8DlRMC56SOrXn6MjHJ3JZlvtX5gmoyAiv48/jLaj9VXBeqzgYPxl
+	CAHIRTgncQvdZ24ahgr32fCIdXmDoJA6FdBGwduEWwLaa8m6TSp53A7rop0hUg3SVrn+jUJY7JR+j
+	kykBXlPQnmsRFhnVMdZNaXYTLoDzHDn1G6UvmFCPtGabnKcRzLDvkokP73InlF/M7w6WzSozs7Q10
+	x6dVlqlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUPeV-0000000FFsa-121c;
-	Fri, 20 Nov 2026 14:31:47 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xUPel-0000000FFzJ-0gjp;
+	Fri, 20 Nov 2026 14:32:03 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUPeS-0000000FFrE-0DVD;
-	Fri, 20 Nov 2026 14:31:45 +0000
+	id 1xUPeS-0000000FFrD-1ywl;
+	Fri, 20 Nov 2026 14:31:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1795185101;
-	bh=1ZPtzm7B2+TCZF2ySc+x5bmtJZBLwrSuv34z+pW3mqE=;
+	bh=YK/k1fZJBJ7Ho2aRUWs/6q2KowLDTaMyFWDZCUHSuK0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=D3U3CzEfU0Q9CCZYqO2LIecxvGVEvDk6+1OlgUlAUYo8maRf7vBpM41MgwdXXEBDC
-	 YkVpk+39Ub9KMRgQ1erSS68JXrBxyRvJQ5aRwUPdaM/Fmbx5KlK1mGSWZYtEOptbnE
-	 3ctFHwccMyuFyt8zGpuw+AMo8/SW0bAK0iotBGKUvRSLlM95tcCLmVBvojnySSoZRT
-	 YLzrbKF4HuT9iXAvS3DJxLNzGd7wEjF8szi0+EFkqBQiS74YkU4z4qRsBehDFaXoIv
-	 4H5S/mAnEFoAhT4jT5Fxp/4CsLt070lGE9U1XfJALzbFTg9wojoJWjo/xwsTkXT882
-	 3I+e+x0dbR/2Q==
+	b=GPMxLtZJeYIvB0K8CA/6DuwErAe+OJF1hU6+qnMKH9AfMzhtA1Efxpd0RUMEfbdrW
+	 P1oI6zhsbNKSoHcDQsUSDPBJN26vd1cf+ghhan2vlYBrP5c1vBVS4U7joyIGwa2Zq0
+	 yjSBVzDL4bL1yb1aoRFIC1iXfnoWym8z/a8sPB29pdVds5VyfVHdWAhe38G0TUi/TK
+	 hJoJrOgfoSinTP4ihsPx1St0COTJEOt0YSA4UURE7HGcOaUVlganEfDCq3I7/DKtmM
+	 Mng00isuAem7euYzS7Olpu78gJb5uynHNqnlzgOhZeljVEme5UlEX9d8/JvuPBp1b1
+	 fS3FPlxmAcmiw==
 Received: from benjamin-XPS-13-9310 (unknown [100.64.1.43])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 51FB817E09F3;
-	Fri, 20 Nov 2026 15:31:41 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E365E17E0883;
+	Fri, 20 Nov 2026 15:31:40 +0100 (CET)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: nicolas.dufresne@collabora.com,
 	p.zabel@pengutronix.de,
@@ -56,18 +56,17 @@ Cc: linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 2/3] media: verisilicon: AV1: Fix luma size
-Date: Fri, 20 Nov 2026 15:31:34 +0100
-Message-ID: <20261120143135.71134-3-benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 1/3] media: verisilicon: AV1: Check reference frame index
+Date: Fri, 20 Nov 2026 15:31:33 +0100
+Message-ID: <20261120143135.71134-2-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261120143135.71134-1-benjamin.gaignard@collabora.com>
 References: <20261120143135.71134-1-benjamin.gaignard@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_063144_246406_9080027C 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261120_063144_708410_C26802F0 
+X-CRM114-Status: GOOD (  10.79  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,28 +87,43 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Use the values computed by v4l2 helpers to get luma size.
-Unlile before this will also take care of padding.
+Make sure that reference frame index is valid before using it.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Fixes: 727a400686a2c ("media: verisilicon: Add Rockchip AV1 decoder")
 ---
- drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../platform/verisilicon/rockchip_vpu981_hw_av1_dec.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-index 5da59104a966..5e0cd5268f22 100644
+index 2a145433e6d1..5da59104a966 100644
 --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
 +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-@@ -221,7 +221,7 @@ static void rockchip_vpu981_av1_dec_clean_refs(struct hantro_ctx *ctx)
+@@ -121,7 +121,12 @@ static int rockchip_vpu981_get_frame_index(struct hantro_ctx *ctx, int ref)
+ 	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+ 	const struct v4l2_ctrl_av1_frame *frame = ctrls->frame;
+ 	u64 timestamp;
+-	int i, idx = frame->ref_frame_idx[ref];
++	int i, idx;
++
++	if (ref < 0 || ref >= V4L2_AV1_REFS_PER_FRAME)
++		return AV1_INVALID_IDX;
++
++	idx = frame->ref_frame_idx[ref];
  
- static size_t rockchip_vpu981_av1_dec_luma_size(struct hantro_ctx *ctx)
- {
--	return ctx->dst_fmt.width * ctx->dst_fmt.height * ctx->bit_depth / 8;
-+	return ctx->ref_fmt.plane_fmt[0].bytesperline * ctx->ref_fmt.height;
- }
- 
- static size_t rockchip_vpu981_av1_dec_chroma_size(struct hantro_ctx *ctx)
+ 	if (idx >= V4L2_AV1_TOTAL_REFS_PER_FRAME || idx < 0)
+ 		return AV1_INVALID_IDX;
+@@ -1262,6 +1267,10 @@ static void rockchip_vpu981_av1_dec_set_prob(struct hantro_ctx *ctx)
+ 		rockchip_av1_default_coeff_probs(quantization->base_q_idx,
+ 						 av1_dec->cdfs);
+ 	} else {
++		if (frame->primary_ref_frame < 0 ||
++		    frame->primary_ref_frame >= V4L2_AV1_REFS_PER_FRAME)
++			return;
++
+ 		rockchip_av1_get_cdfs(ctx, frame->ref_frame_idx[frame->primary_ref_frame]);
+ 	}
+ 	rockchip_av1_store_cdfs(ctx, frame->refresh_frame_flags);
 -- 
 2.53.0
 
