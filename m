@@ -2,109 +2,65 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8F76606A320
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 02:49:35 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 12D09606A320
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 02:53:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pPClLHHk;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=N47Ecp42
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gzXG4GAu;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=F5Z5xuru
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=JU+7RB6jtth2Mr0OIjR73YS3655SBzStb1Wxe4bdPr4=; b=pPClLHHkiDXzBMfbvu4vD+v+uS
-	+iEMQ7lSW2Kc9XmgCsDbygV6/tegNJJcU+EaoSnpozL9kBD3CF8nmlOEkCPchltQS1k4C53/p1EWn
-	0Cd5CJEQntExe6/brG/KTxMakWU/usShXkuCfaioq9MkhxhC4p3leliAdP7esP3drMIvwHAd04iWv
-	Mk34imbQTKuG7pTuc3SlTtKYFc+umGmTIeJ+ZjrDqIwynqgJgCZPfpez9pyqkqPQfoOodshsjMxAG
-	MshQlUr4gr/tOzDo8JufGj9NIYmNvFYPmZXamJzyD/ycH4kuHkr1sdcXFxbEu8hbJMiwTs4v7LUHu
-	GbVCpKWg==;
+	bh=1oxLFoei+gFKVKaFEEtjnuyWhLyRP8yougWsJfNZ1D8=; b=gzXG4GAu2TGNalBoUMn8Q+DQON
+	pjyExrBqbJLpcC+3BMo1D7JDQ40KDee3SCEfccZy4PnePhI/QV/8I74m9vDAX/38Ff5eKENxXHIKT
+	h1iTjBwKLMCsPcr0eADH8N4fPthyOA8yXSWniwjotWKwuoZyIQ+gchvZAu4hydzNGtZyYJKwVihot
+	chTwwPH//pZ7qzxcIWvhjRgQuRHbna4fmkw9EldCI9lysbhoxMh47xgDsQqXy6qDI1IHL1JaFJbVe
+	oi8k9HI98t8FRmEtw1w4fbObPTFAD97gx/Y3i9H6AWWpF+zegs9fmugm2wCaZm35EOPLN5GJkwxFY
+	JtYABu2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUEgf-0000000DuQD-1IW2;
-	Fri, 20 Nov 2026 02:49:17 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xUEkz-0000000Duw8-0vMq;
+	Fri, 20 Nov 2026 02:53:45 +0000
+Received: from mail-m82117.xmail.ntesmail.com ([156.224.82.117])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUEgd-0000000DuPh-20JP;
-	Fri, 20 Nov 2026 02:49:15 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D7588440B3;
-	Fri, 20 Nov 2026 02:49:14 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795142954;
-	b=bAZL82/NGYB57OCKwcvaL90hdPKlNcM1pK3kyavHP5kpWQNtpJrX6kd0sqpUCo6JwAU9
-	 vVkP9QE3e2L2imPx9RMeylFftzm++PH31+OGrgZ+X83iiMLyY8kAOxb0IEvNp8/9YcEd2
-	 S++e1RlYm3Fj9KvcvXf0+lCHzJKTpODdgwLX8Y5+C3B3OX6rwqS3F+nDLWCBGSsULcwAp
-	 TlCXiV+8bM2xQXlGor618sIishzotwI3EKuvZTaFOnofgaE3WAqLVJx1KJyGn7g25S6Lc
-	 RqGfr2gpCpgEc4Sk2NFKWIlqWh9AtEx6HbBNUo1cP0crVZJIndgc6hWP9Sp219aK3Dg==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795142954;
-	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
-	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
-	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=CQl2SvQWLVhrrF+rgxKWAOgk0VZ5T5baWvxZ2m1vTk4=;
-	b=cvPQuophWFeDOUAhetGCCxWFuHp4XqClU+Fm60f19wN6oRpg5/s1UX8RoHtYhff/nBqM
-	 8J+F35+5UCXRVX6CVc2kTKAHmCayy39qcSWW4KCOGvngeI//O4Y/3OZxC1xOPjNovhbqZ
-	 kvq3zP/A8aIxIVi7cdWPFR4QLqUOySE8+fb18R6UBOMePZzajfnu5lliDJzR3632XpTBE
-	 kHAUjuImbDofandbHixyB29Fqoe7m3FqVKEAmo5d7/FV7Pt9rkFL4xlCPwIECKh8L0NsK
-	 CMlLScN7AHG0IwQWvGquxU0QpvCX6x9tzBDgavc103yUDNpFpFQI/t3dBklzsq09DiA==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 3D4141F000C4;
-	Fri, 20 Nov 2026 02:49:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795142954;
-	bh=CQl2SvQWLVhrrF+rgxKWAOgk0VZ5T5baWvxZ2m1vTk4=;
-	h=From:Subject:Date:To:Cc:Reply-To;
-	b=N47Ecp42XNCgB1A/TRdRC2XV80YsdBV9YKDQEJPT/xr2ReBkfnYfCP3ftCBoeMmbJ
-	 MsQ1SLtA/7/LYD2DEXeiR7gylxvuyNzqDeCxpd8jqjJhZShNt/6ifBI+k4Rp3AlbY2
-	 Q15jw3k2tPJmMCIX78Cjd0mt/MHdaS7aHCWd2CQ+VmbheMtGrcKt7pLhSj/57HsEjt
-	 VbzIXAm9fImqlaMvfaVbezb/hPnVlnUJwdq2xradnXnEs5ztk6Xn+d8KiMIMjeiHed
-	 vfS9rJcc6S0Tu5XaZIzOPG1Ch2+4Qh97yTfhpbwhScjHcI1FxmlK1n/crMkSLgqUtg
-	 QEayeH7cvLq3Q==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id AE2704263C;
-	Fri, 20 Nov 2026 02:49:13 +0000 (UTC)
-From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Subject: [PATCH v2 0/2] media: verisilicon: Fix VDPU2 decoder error
- handling
-Date: Fri, 20 Nov 2026 02:49:13 +0000
-Message-Id: <20261120-vdpu2-errreset-v2-0-8f4ef55e6dee@gmail.com>
+	id 1xUEkv-0000000Duvj-44JA;
+	Fri, 20 Nov 2026 02:53:44 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 555b66815;
+	Fri, 20 Nov 2026 10:53:31 +0800 (GMT+08:00)
+Message-ID: <f3746e7d-2c56-4e95-bed5-b2e993cf35e0@rock-chips.com>
+Date: Fri, 20 Nov 2026 10:53:29 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/12Nyw6CMBBFf4XM2po+FIsr/8OwKDDAGKFkCo2G8
- O8Cxo3Lk5x77gwBmTDANZmBMVIg36+gDwmUresbFFStDFrqVCl1FrEaJi2QmTHgKGxq7UVKkxl
- nYB0NjDW99uA9/3KYigeW41bZjJbC6Pm9P0a1eb949h+PSkhR29qdpClSZ9yt6Rw9j6XvIF+W5
- QPt8b64vgAAAA==
-X-Change-ID: 20261115-vdpu2-errreset-8688700393a3
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, 
- Boris Brezillon <boris.brezillon@collabora.com>, 
- Hans Verkuil <hverkuil@kernel.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Arun Iyengar <aiyengar1990@gmail.com>, stable@vger.kernel.org
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795142953; l=1549;
- i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=236hsCejcx3sS9x+HFSJjCRXf+BV1f1+zibsBZf0JVg=;
- b=+ScOgDQeEaI5FZeSrS1ngM1Vh5HeTVe1p8NGZR8cjcXzNPcKHKCVAGU/ex+lwBGdM2kHJUuCi
- 3ZpiTcU5blgAZD4G9tSKHLAmAsOsrEeaAqfLZAxw7WU3d/sWWcCRDiu
-X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
- pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
-X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
- auth_id=1480
-X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/8] ARM: dts: rockchip: Add Luckfox Lyra boards
+To: Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Ye Zhang <ye.zhang@rock-chips.com>, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20261119152055.556266-1-jonas@kwiboo.se>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20261119152055.556266-1-jonas@kwiboo.se>
+X-HM-Tid: 0aa1f6df9b2803a7kunm6104eb818583c9
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCShoZVk1NTEkaHk1OSU1CHVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQkxVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=F5Z5xuruCazoaM4nZqRIoo2ASiIy5//s09rRWUsZaEavrYVosw7/BMchHNSKrMaz2x5f7Fi27GZd7g+aUCbhPiT8mXx095UWd3Yk8A1ZTVmBbxH3af2WdjEcpkyLOu36NS4ESVhil2j7PpGZyueV+6bGlbLDCMX+FcdTsbnLWl8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=aCvUb7UtGNSzVb6BdtJGVlutl707NOIlxUqbdWEblTo=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261119_185342_599306_6DE7EF53 
+X-CRM114-Status: GOOD (  15.28  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,56 +70,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The VDPU2 decoder reports failed decodes as done, and its interrupt
-handler can finish a job the decoder is still working on.
+Hi Jonas, 
 
-Tested on Orange Pi 5 (RK3588S), v7.3-based KASAN kernel: 72 H.264
-fluster suite runs, 50 error-stream runs, VP8 61/61; no IOMMU faults or
-timeouts. The decoder was still enabled after 72 buffer-empty
-interrupts; a later interrupt ended each of those jobs.
-With a TEST-only patch (not in this series), the IRQ_NONE path ran
-200 times on real registers; bus error and timeout, simulated 5 times
-each by injected status bits, were logged and ended their jobs at once.
-VP8 stayed 61/61 bit-exact.
-Build-tested on media next. MPEG-2, RK3399 and RK3568 untested.
+On 11/19/2026 11:20 PM, Jonas Karlman wrote:
+> This series adds initial devicetree for Rockchip RK3506 SoC and initial
+> support for Luckfox Lyra board family [1].
+> 
+> The Luckfox Lyra board family use different RK3506 SoC variants, i.e. Lyra
+> and Lyra Plus both use RK3506G2 and Lyra Ultra and Lyra Zero W both use the
+> RK3506B varaiant.
+> 
+> All board compatibles use rockchip,rk3506 in this revision of the series,
+> maybe we should use rockchip,rk3506b for the RK3506B (and RK3506J) variants?
+> 
+> The pinctrl driver for RK3506 will not work as-is using the SoC DT from this
+> series. The already merged driver depends on a rockchip,ioc1 phandle prop
+> that never was described in dt-bindings. The SoC DT in this series instead
+> uses rockchip,grf in GPIO controller node to reference correct IOC for GPIO0
+> and GPIO1.
+> 
+> The branch at [2] contains follow-up patches that e.g. fixes pinctrl driver
+> and adds USB support.
 
-Developed with Claude (Anthropic), which wrote the code and the commit
-messages. I reviewed every change.
+Perhaps these pinctrl patches should be included before the dts patch?
 
-Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
----
-Changes in v2:
-- Patch 2: no reset after an error; handle the interrupt like the G2
-  handler instead (Nicolas)
-- Link to v1: https://patch.msgid.link/20261119-vdpu2-errreset-v1-0-f8fa403b6a3a@gmail.com
+Cc: Ye Zhang <ye.zhang@rock-chips.com>
 
----
-Arun Iyengar (2):
-      media: verisilicon: Don't report VDPU2 decoder errors as success
-      media: verisilicon: Handle VDPU2 decoder interrupts like the G2
+> 
+> Mainline U-Boot support can be tested using a branch at [3], it contains
+> board support using same devicetree files extended with USB support.
+> 
+> [1] https://wiki.luckfox.com/Luckfox-Lyra
+> [2] https://github.com/Kwiboo/linux-rockchip/commits/next-20261116-rk3506
+> [3] https://git.u-boot-project.org/u-boot/contributors/kwiboo/u-boot/-/commits/rk3506
+> 
+> Jonas Karlman (8):
+>   dt-bindings: soc: rockchip: grf: Add RK3506 compatibles
+>   ARM: dts: rockchip: Add support for RK3506
+>   dt-bindings: arm: rockchip: Add Luckfox Lyra and Lyra Plus
+>   ARM: dts: rockchip: Add Luckfox Lyra and Lyra Plus boards
+>   dt-bindings: arm: rockchip: Add Luckfox Lyra Ultra
+>   ARM: dts: rockchip: Add Luckfox Lyra Ultra board
+>   dt-bindings: arm: rockchip: Add Luckfox Lyra Zero W
+>   ARM: dts: rockchip: Add Luckfox Lyra Zero W board
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |   9 +
+>  .../devicetree/bindings/soc/rockchip/grf.yaml |   6 +
+>  arch/arm/boot/dts/rockchip/Makefile           |   6 +-
+>  .../dts/rockchip/rk3506-luckfox-lyra-plus.dts |  31 +
+>  .../boot/dts/rockchip/rk3506-luckfox-lyra.dts |   9 +
+>  .../dts/rockchip/rk3506-luckfox-lyra.dtsi     | 124 ++++
+>  .../arm/boot/dts/rockchip/rk3506-pinctrl.dtsi | 576 ++++++++++++++++++
+>  arch/arm/boot/dts/rockchip/rk3506.dtsi        | 540 ++++++++++++++++
+>  .../rockchip/rk3506b-luckfox-lyra-ultra.dts   |  31 +
+>  .../rockchip/rk3506b-luckfox-lyra-zero-w.dts  |  23 +
+>  .../dts/rockchip/rk3506b-luckfox-lyra.dtsi    | 100 +++
+>  11 files changed, 1454 insertions(+), 1 deletion(-)
+>  create mode 100644 arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra-plus.dts
+>  create mode 100644 arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra.dts
+>  create mode 100644 arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra.dtsi
+>  create mode 100644 arch/arm/boot/dts/rockchip/rk3506-pinctrl.dtsi
+>  create mode 100644 arch/arm/boot/dts/rockchip/rk3506.dtsi
+>  create mode 100644 arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra-ultra.dts
+>  create mode 100644 arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra-zero-w.dts
+>  create mode 100644 arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra.dtsi
+> 
 
- drivers/media/platform/verisilicon/rockchip_vpu_hw.c | 20 ++++++++++++++++++--
- 1 file changed, 18 insertions(+), 2 deletions(-)
----
-base-commit: aa0f4c41d4870a18e65772a1817af16427200371
-change-id: 20261115-vdpu2-errreset-8688700393a3
-
-Best regards,
---  
-Arun Iyengar <aiyengar1990@gmail.com>
-
+-- 
+Best, 
+Chaoyi
 
 
 _______________________________________________
