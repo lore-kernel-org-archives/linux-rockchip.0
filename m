@@ -2,98 +2,123 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E0983606A326
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 08:50:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3BA3A606A320
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 09:08:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vwZ6oMXk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=d43CqBBs;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=jschaer.ch header.i=@jschaer.ch header.a=rsa-sha256 header.s=fm3 header.b=R7mugJqw;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=aivISwZU
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=9ZD9bDHX5BDmRV3YNJR01QirCQEMtTcTR/OKmdWn/C8=; b=vwZ6oMXkyInCJSCU3SB7GzyVGa
-	sj17dvkw1nongnc8/kNUvJD3Fd+uAoJ4UDVRHt+6d7bhMu+jcGshgQtbp5q4VILEVKXuXs4fXw29J
-	nFPZLY4qbKq1C/HUNdfyD6sjBBTD9xs/DMNbnKL5I3E4vGquJXZrb53sZPznlKJ7zYqK0IBw7Ngt3
-	14nrOzi48KAXWXqLsnGmwEUsdKm0H4mmYRtMKrdntOTbKA8aC4TPQ/pRtx3sIP96fKFjYhJZE1dc5
-	pn7vI+hZx74VHzfaYckfmcM4YApLdUan6tMurEfC3vqEzG1bSWZuaiSWUpCbm7ZdS6gUJbAuw2f4+
-	ElSLxXxw==;
+	bh=6RhnHVTRJ4J/D9yI6Zeo8clexi2vhp9vE7kXnmA3eAw=; b=d43CqBBsXJU2XeekPvyqQok12S
+	S0AOZ69NpkL3xJT+/ReO7il4+/nG1MQk847aGg3J6ELG2p7EKunD1FhGp3MFA3/jdrhgqPJyev3fH
+	I1rxSUyA+/jDfKQKdTSXssM1fF6Pe7+Ie1mTh5ZbZ+5cJGbM4+FOmDRo5l/yHnRsiWaLINxejQ2fK
+	oRrpcgRqHqqJsSKz7XqMEHfreaI6+YPxNbvE49nsUp9WqXr+P/MhS82wpjPQi7SlRlX6ts657tYu8
+	hqrnf9kMhnkvH1OTijwxZKkV3JOA9JU640x9USOV81BFOr7SLldInJwWnNo6WkERdbaUjrGKeV9Cw
+	TX9tMSbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUKJi-0000000EOL6-3udq;
-	Fri, 20 Nov 2026 08:49:58 +0000
-Received: from mail-ua1-f47.google.com ([209.85.222.47])
+	id 1xUKbc-0000000EQae-42l6;
+	Fri, 20 Nov 2026 09:08:28 +0000
+Received: from fout-b4-smtp.messagingengine.com ([202.12.124.147])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUKJd-0000000EOJn-1zxz
+	id 1xUKbW-0000000EQZE-3h0d
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Nov 2026 08:49:54 +0000
-Received: by mail-ua1-f47.google.com with SMTP id a1e0cc1a2514c-99075306daaso288805241.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 00:49:52 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795164592; x=1795769392;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=slnLzkdmpwFbnxdOJOf8j6Mw1PiHOu2DMR+OPWGMV3g=;
-        b=QyvZFqaI/BFyFrmzRyd84q4s0xbcqFjTW6ppf3ZiQ2GG1QINpi0HS1jjeWqE5khbC7
-         eBB/xQlGR7gVZ3gydeY1/otAC7mtn5BxKRdBvi9rdVrYa7DC8SpruCJOfDlkv8r7kl8M
-         2xmfexCLXZtLFWJQ4Ua5jTGV7XNVBsUYUHCqORMkVrw6eX5eE/gt3S48Ly2cTlGWTTc4
-         QqhrBNzq9Gd8UIf0dNbYHYH8fgPNb46JMqsqUlPkBA1NPXvQStBIcwAI2gj5GCXr+rLQ
-         yQUkpOySz53Hk/A0P9KzZYLo8Qh11ieLI+PHRMXEMueAYIwv56PFUGaVuEqO3XmBgyqW
-         yr8w==
-X-Forwarded-Encrypted: i=1; AL+hErHNoPAwtaEEUPbB2Dnwh19rAU04x+k7ATP1Kfv0UGc4Zkf/oQaWRuLgH97cJM6yFMi1/yTh9I/eH2hCc7WZ4g==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8i3cLPcn3bCytRRLSNo9StEC4aNy4pzYZn0fH2gywEioQbni1G
-	NgALPCg4MIr8pLjvOqDW62f/5ZbU74v3os7hgNtdwsBPmnq6ysaszWLy6dbjVWGt
-X-Gm-Gg: AZFdTZeyT5Jo5r/fsLx5lYLWFTI9vcn7P1pjZUoIMg3aGWmCD4Aynqy3KOIlNz7siPb
-	4jfKNAD+ccnkOdxi7AJeIIOwKgbcyteJJ8xN0p+tnyrONSnC7gETCXzai1c5pypPf3G8dIocG4g
-	547LbCPwtc/tb1T6P0eKPyYH5/aObw7iMJIwXZGLY5DqkByJmh+01BeRQDKMUa532sEa0AxQdXc
-	KjlLyiFGjM0rzF13Z2XSPerNZAEyOfhiVwwkJA2ZVMFzLElzo1Ky6mGjwQ7qbVNE8Gte8Sf3Atq
-	fm6HzeshW4jlq8OSmHFhGCaGLD/mbEl99GQCL8Wf2/ixyz5E5M2+FbrALBL26d61dgx6Apy+rrr
-	c4y2nseGDV7DMUvvcAwMTcuuBnfgXrYAPMMIVMQimhswfCqi53Cm7mTncqeBpBZ5Qfl+ea7KWl8
-	NhLqoiDoQ6e4u2zNVNbkz/XZZfQy+yp3q2td4EcuK6mAxgHKMmGJbdcvFO3SRYqVaIJ7VF4QJl+
-	oNdn+9cDSqaO+MaAisjF/P9/6ULkTo/G3EbywBNoauus+oZYOumyRFku4xg5AsmQK/6xBq7jRic
-	8oE+89CsTdSYSdH/GWwhxwTL9jRUsQxPQfC/fcg2zufoZ7v09II4EhsA9fsgoatsXr4=
-X-Received: by 2002:a05:6102:3f45:b0:7c3:2f13:d905 with SMTP id ada2fe7eead31-7d72b3731efmr1027596137.3.1795164591916;
-        Fri, 20 Nov 2026 00:49:51 -0800 (PST)
-Received: from mail-vs1-f50.google.com (mail-vs1-f50.google.com. [209.85.217.50])
-        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-99e6e08a02asm2314725241.11.2026.11.20.00.49.51
-        for <linux-rockchip@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 20 Nov 2026 00:49:51 -0800 (PST)
-Received: by mail-vs1-f50.google.com with SMTP id ada2fe7eead31-7cc53938a8fso505264137.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 00:49:51 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AL+hErGAp9AYF10VKFAsqj98m5BL2Dru+6RTH6fyDplmB1fyxapILozfoAzWeWT9hs7JLsUJo1a0FvuggWYs/hBFvw==@lists.infradead.org
-X-Received: by 2002:a05:6102:a49:b0:7c3:7286:c291 with SMTP id
- ada2fe7eead31-7d739587805mr971622137.19.1795164590827; Fri, 20 Nov 2026
- 00:49:50 -0800 (PST)
+	Fri, 20 Nov 2026 09:08:24 +0000
+Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
+	by mailfout.stl.internal (Postfix) with ESMTP id 8E1FE1D00388
+	for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 04:08:19 -0500 (EST)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-03.internal (MEProxy); Fri, 20 Nov 2026 04:08:19 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jschaer.ch; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:message-id:mime-version:reply-to
+	:subject:subject:to:to; s=fm3; t=1795165698; x=1795252098; bh=Eb
+	8Btk76s77msHfVg+/TsIgZczD+oc/KLRtiVpgTo1M=; b=R7mugJqwUYfPgsmGbc
+	SszqyzftyFV9n3wx7kM0YsvVz7T9k9/VqO460/q7F9yY6H2HIbHcgGx4RF0AWDFr
+	Z+JUVGPY2ApuVBEqocNWQxwqn74MRtt2zvzJhtSFK/uQo4doHYIIZR1TguupzC/h
+	4RC1fluJHyjGux0CLtZZrD3U7J4qyJY6B2oRZPy42vTykPYSNQQrnnxTXN+Eukmx
+	Ciw4nfFg2NmdL3t/nG29FyR/DZtzkSjMnMs4CS3uJ/PD+5t5J4/D3O9khu/oT+gz
+	nxqfspeYw4LtLFU2xibTRLxdiP6vxf1BxJzZ0YsX2xzqWnFlPZGe/nNvCVXvp4S/
+	jdgg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm3; t=1795165698; x=1795252098; bh=Eb8Btk76s77msHfVg+/TsIgZczD+
+	oc/KLRtiVpgTo1M=; b=aivISwZUn2zhIH8UpkCWHs8XgMSuBSmznlNynCgur5pv
+	0UOgLS5NQ9Q2zPMZnOoMAaUyvU8kePoar/+cnOI22wZpwb6iiXCSGqn9UCbuuAl+
+	jyDf67QuaGUM3iu33dUOnOmOkOcUAWA3CLb3nSl8Y23mobfsXOaBlCeO+D/xbQcs
+	UZyye2wUcQPKL3fosgk6GJVFovJFTSrDDIjFvpgSSZeIDfhMa5GetuOUMEABbZAl
+	+Lu7X+7ySM4yHKtLAcDi+Nby6RW2WZJSUGfYvDxgRXASi3DG40wI0WjYH17LN40H
+	ZrbVC//ZnJGx2q6YkUCpBZSSnnH+60AFhdvo64AZlg==
+X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
+	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
+	action=sign d=jschaer.ch a=rsa-sha256;
+DKIM2-Signature: i=1; m=1; t=1795165698; d=jschaer.ch;
+	mf=PGphbkBqc2NoYWVyLmNoPg==;
+	rt=PGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmc+;
+	s=fm3:rsa-sha256:d6ce1rg8tCMhUf/nMaFrtNiRBZGX8xCI/RSHD2n9euwn7Zc
+	hpZM8x20Q7djPOXifMo+RigIFMg96ama5XgT2lzQKPDe1SwSKI7tgnhhuymH4PSW
+	oCrsQyXsxzCPr3vXhYC24kaWPI1iokVmi9BOzaxB9nsBfpCogIIWxjgG7noAk6Ws
+	PlxauYggh9LFNd9m9CaVEOE8KGSSpKLd1V3D17jaRwZU8h8GccAv7PnD+j5G2thX
+	ocPUL2kI798HPwBEhKZxmLUvzelRgEeRYak7QRgg5G6S2ItF8nE8XU2o3T+kykaw
+	3FEoXeISjdNsKvIkNQvptoyk4+X7HdlfPVsVWkA==;
+X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
+	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
+	action=mi-m=1; hc=10;
+	hn=cc,content-transfer-encoding,content-type,date,feedback-id,
+	from,message-id,mime-version,subject,to;
+Message-Instance: m=1; h=sha256:Dina7eqkP6ZONZ96ujKUKkvbXZTPeYWQAoG52r4zcww=:FR2VA/pOmFjNjYQfGp/Vu41XJ6bW+af+V+qlyrlnlKU=;
+X-ME-Sender: <xms:AQ4AawcOQEq8hAqLVsgyS7VWNn3BKC2j7qU-MJJqrE7PuvNmNdk81w>
+    <xme:AQ4Aa-wpIKKjDJOZywtIyWjFem4lBE5WDfydhZbMOx7kCz7s0eMefHex8Dch-86DO
+    GYySGDeJ3WQf2Y9pEQIVYA6x4syeljbtocwpaKcjCvOft-I3y_PWnm6>
+X-ME-Received: <xmr:AQ4Aa18akq4b1w6Tjm5A3iM2Jlbkmib7tGKbnMWOtd3spWcSf299fJh4ueEnJiz2MX4h9FVTsKG9zpkhF-5tXC9wYrV1DuAKyDdL>
+X-ME-Proxy-Cause: dmFkZTEXrV/HxlQ+uFM1Vvb9hd4Fep4Iz7Tfl+ZCU5TmlMm/EV93OgCR0ATk9L7A99QwOy
+    t0RPc+JM/E3+efD0A1zZzQDEgEVeRKlQV8JnS2tyog0XUVE0hlAgUZYJ0csH1Mp+7ZkW4K
+    YejMfg+em/LD9OHm2YlDpgGQMPeAxj6esbPowGt/wARofr9MAN6kX3ZdRdMdXA4OLgzo9S
+    gBxovOQaLhRYEXg9ALRDWtgNnJI4XWZsdxKa5K8QkafhqhaJa1NJnyQosnz1eMf0kpb+IP
+    rDxVGtdTSUAZc12x9SCfDx/PGeh+rJkaiD1O8kvgxPQZ/wPzP5VRHE6SA5U5SAdqePz1Fp
+    OHnEgevTHtK8SVk2DFGUxlX2347kVenhVkjgc4VOwR4AsC6mBWHhNjNdDolCdNyVBE1HQN
+    skPvz8997Ik8YwVeX7IZp6mUU+cf+vYXbhUJnBp846VeGOW6iMJgf0Rm/oulqnswzB3Han
+    tdX7KU10kLPMmvEC2g6f7d+cwNj27S89aunyRH+L+5hZ0xo1csJJGg2AGNEi/cPMe43rHL
+    PU98yQ/X+TX0czpFs5PLjr763GSDIkcqXaNDgwaXN4rjGivmiR7hyege0vsrb9uVtiO2Lz
+    3OD2yr9uNmI9muURCdWUup4wAK4R+OuIy1X29RbnEWjAjnY4srGWkwiimsUQ
+X-ME-Proxy: <xmx:AQ4Aa8yV73luS7OIuxK7I1OVLM_U15nGTYOXB9Fm81bPYVd6YS1Y9A>
+    <xmx:AQ4Aa9rnxYcTUUjvR7wmpBn3npwxhxNYt1TY4beFxI1ToHG6MzlqpQ>
+    <xmx:AQ4Aa1oLjD8C9dVGbPHoxPfnnnmfCeshThBevmg6TlbHMc087sOsNQ>
+    <xmx:AQ4Aa1AajPdgf05GcTe156-mf2zn_vIUzjQArfilllsIVXZhU2kHjQ>
+    <xmx:Ag4Aa5rn1blT7JH11eLChFUcT6tHWyqdf7QCcjbOJwk7jEm8cyegg0dO>
+Feedback-ID: ie67446dc:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 20 Nov 2026 04:08:16 -0500 (EST)
+From: =?UTF-8?q?Jan=20Sch=C3=A4r?= <jan@jschaer.ch>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Jan=20Sch=C3=A4r?= <jan@jschaer.ch>
+Subject: [PATCH] arm64: dts: rockchip: Enable HDMI RX for Orange Pi 5 Ultra
+Date: Fri, 20 Nov 2026 10:07:12 +0100
+Message-ID: <20261120090712.68178-1-jan@jschaer.ch>
+X-Mailer: git-send-email 2.53.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <cover.1795094688.git.geert+renesas@glider.be> <683b5b189409e5ee04100044fb615b01cb877f3d.1795094688.git.geert+renesas@glider.be>
- <20261119225017.15a7b5cc@kemnade.info> <CAMuHMdVbgGV_6yjOip4xT3YhBgaOveHzSRbw9e_cHen9NRZqmw@mail.gmail.com>
- <20261120094320.442d064b@kemnade.info>
-In-Reply-To: <20261120094320.442d064b@kemnade.info>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Fri, 20 Nov 2026 09:49:39 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdWiCODz6RC9Q9-xMM5_k3grHztiLuR+-ikOZYoBawVvZg@mail.gmail.com>
-X-Gm-Features: Aa3M54pnWIgbseGoLAFGMXWb1P8DBLFzk6LU-uNSdaE_BgKhwLT8uPsc_3uFT5k
-Message-ID: <CAMuHMdWiCODz6RC9Q9-xMM5_k3grHztiLuR+-ikOZYoBawVvZg@mail.gmail.com>
-Subject: Re: [PATCH 5/6] [RFT] ARM: OMAP2+: Convert to dev_clk_get_from_provider()
-To: Andreas Kemnade <andreas@kemnade.info>
-Cc: ettore.chimenti@linaro.org, Aaro Koskinen <aaro.koskinen@iki.fi>, 
-	Kevin Hilman <khilman@baylibre.com>, Roger Quadros <rogerq@kernel.org>, 
-	Tony Lindgren <tony@atomide.com>, Russell King <linux@armlinux.org.uk>, Paul Walmsley <paul@pwsan.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
-	Jerome Brunet <jbrunet+clk@baylibre.com>, Sandy Huang <hjc@rock-chips.com>, 
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andyshrk@163.com>, 
-	Ulf Hansson <ulfh@kernel.org>, linux-clk@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	dri-devel@lists.freedesktop.org, linux-pm@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_004953_611152_91A9A4DB 
-X-CRM114-Status: GOOD (  32.34  )
-X-Spam-Score: -0.8 (/)
+X-CRM114-CacheID: sfid-20261120_010823_105968_B9399845 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,83 +128,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Andreas,
-
-On Fri, 20 Nov 2026 at 09:44, Andreas Kemnade <andreas@kemnade.info> wrote:
-> On Fri, 20 Nov 2026 08:49:05 +0100
-> Geert Uytterhoeven <geert@linux-m68k.org> wrote:
-> > On Thu, 19 Nov 2026 at 22:50, Andreas Kemnade <andreas@kemnade.info> wrote:
-> > > On Thu, 19 Nov 2026 14:40:38 +0100
-> > > Geert Uytterhoeven <geert+renesas@glider.be> wrote:
-> > >
-> > > > OMAP2+ clock handling uses of_clk_get_from_provider() to obtain clocks
-> > > > used for power management, so the latter show up as "deviceless" in the
-> > > > consumer column of the clk_summary file in debugfs.
-> > > >
-> > > > Fix this by using dev_clk_get_from_provider() instead, letting us pass
-> > > > the consumer device, too.
-> > > >
-> > > > Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> > > > ---
-> > > > Compile-tested only.
-> > > >
-> > > > The first change is probably OK.  The second change may fail if anything
-> > > > in the oh->od->pdev->dev chain is not available yet at this point.
-> > >
-> > > Test on OMAP3:
-> >
-> > Thanks for testing!
-> >
-> > > --- clk-old     2026-11-19 22:44:59.810807920 +0100
-> > > +++ clk-new     2026-11-19 22:26:52.862531880 +0100
-> > > @@ -1,17 +1,17 @@
-> > >                                   enable  prepare  protect                                duty  hardware                            connection
-> > >     clock                          count    count    count        rate   accuracy phase  cycle    enable   consumer                         id
-> > >  ---------------------------------------------------------------------------------------------------------------------------------------------
-> > > - oscillator                          0       0        0        26000000    0          0     50000      Y   deviceless                      of_clk_get_from_provider
-> > > + oscillator                          0       0        0        26000000    0          0     50000      Y   deviceless                      dev_clk_get_from_provider
-> > >                                                                                                             deviceless                      no_connection_id
-
-                                deviceless
-mcbsp_clks
-> >
-> > Hmm, so the passed device is always NULL, and thus there is no point
-> > in making the change.
-> > Do you know if these come from the first or second change in my patch
-> > (I guess the second)?
-> >
-> From the first change, The second piece is nowadys only used by the dm81*
-> devices.
-
-Interesting.  So that means all/some of the existing use of
-&od->pdev->dev in _add_clkdev() is futile, as it may be NULL?
-
-> I would prefer to have this tested on dm81* too.
-
-Agreed.
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlIE9yYW5nZSBQaSA1IFVsdHJhIGhhcyBhbiBIRE1JIGlucHV0LCBlbmFibGUgaXQuIEl0IHdh
+cyBtaXNzaW5nCmJlY2F1c2UgdGhlIHNucHNfaGRtaXJ4IGRyaXZlciB3YXMgaW50cm9kdWNlZCBh
+ZnRlciB0aGUgT3JhbmdlIFBpIDUKVWx0cmEgRFRTLgoKVGhlIHBpbiBkZWZpbml0aW9ucyBoZXJl
+IG1hdGNoIHRoZSBzY2hlbWF0aWMgYW5kIHRoZSBEVFMgaW4gdGhlIE9yYW5nZQpQaSB2ZW5kb3Ig
+a2VybmVsLiBJbiB0aGUgc2NoZW1hdGljLCB0aGUgaG90LXBsdWcgZGV0ZWN0IHBpbiBpcyBuYW1l
+ZApIRE1JX1JYX0RFVF9MLgoKU2lnbmVkLW9mZi1ieTogSmFuIFNjaMOkciA8amFuQGpzY2hhZXIu
+Y2g+Ci0tLQogLi4uL2R0cy9yb2NrY2hpcC9yazM1ODgtb3JhbmdlcGktNS11bHRyYS5kdHMgICAg
+fCAxNyArKysrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDE3IGluc2VydGlvbnMoKykK
+CmRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1vcmFuZ2Vw
+aS01LXVsdHJhLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LW9yYW5n
+ZXBpLTUtdWx0cmEuZHRzCmluZGV4IDJiNjkzZGZiNDM0Yy4uZGRjYjFkMmY5YjQ5IDEwMDY0NAot
+LS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1vcmFuZ2VwaS01LXVsdHJh
+LmR0cworKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1vcmFuZ2VwaS01
+LXVsdHJhLmR0cwpAQCAtNDgsNiArNDgsMTcgQEAgJmhkbWkxX3NvdW5kIHsKIAlzdGF0dXMgPSAi
+b2theSI7CiB9OwogCismaGRtaV9yZWNlaXZlcl9jbWEgeworCXN0YXR1cyA9ICJva2F5IjsKK307
+CisKKyZoZG1pX3JlY2VpdmVyIHsKKwlocGQtZ3Bpb3MgPSA8JmdwaW8zIFJLX1BEMyBHUElPX0FD
+VElWRV9MT1c+OworCXBpbmN0cmwtMCA9IDwmaGRtaW0yX3J4X2NlYyAmaGRtaW0yX3J4X2hwZGlu
+ICZoZG1pbTJfcnhfc2NsICZoZG1pbTJfcnhfc2RhICZoZG1pcnhfZGV0PjsKKwlwaW5jdHJsLW5h
+bWVzID0gImRlZmF1bHQiOworCXN0YXR1cyA9ICJva2F5IjsKK307CisKICZoZHB0eHBoeTEgewog
+CXN0YXR1cyA9ICJva2F5IjsKIH07CkBAIC03MSw2ICs4MiwxMiBAQCBoZG1pMV90eF9vbl9oOiBo
+ZG1pMS10eC1vbi1oIHsKIAkJfTsKIAl9OwogCisJaGRtaXJ4IHsKKwkJaGRtaXJ4X2RldDogaGRt
+aXJ4LWRldCB7CisJCQlyb2NrY2hpcCxwaW5zID0gPDMgUktfUEQzIFJLX0ZVTkNfR1BJTyAmcGNm
+Z19wdWxsX25vbmU+OworCQl9OworCX07CisKIAl1c2IgewogCQl1c2Jfb3RnX3B3cmVuOiB1c2It
+b3RnLXB3cmVuIHsKIAkJCXJvY2tjaGlwLHBpbnMgPSA8NCBSS19QQjEgUktfRlVOQ19HUElPICZw
+Y2ZnX3B1bGxfbm9uZT47CgpiYXNlLWNvbW1pdDogYWViYjcyNzQ0NzY0MDMwNDBkNTgyYzYxNDc4
+ZGY4ZjRhN2JmOWNkMwotLSAKMi41My4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
