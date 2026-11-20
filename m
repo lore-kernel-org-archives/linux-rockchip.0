@@ -2,76 +2,69 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1C53F606A33C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 16:57:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B2896606A32C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 17:37:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IP2fxC/n;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=IvjL9tvT
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=u4y6wHXq
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=HqEQgGiJtwS52mqwFOI7+6TuhhsGn7LbbS63811Iwgg=; b=IP2fxC/nCmlBot1rw8TipFsiTl
-	nkaSsg/0myd6z7BJoqgP5xU2xANUz0hxRxukcY9h4AHx2i+EQkv9Q+cZC7M/s03h+iVhXRWKfHq0y
-	ubAsrqdidMXU5NF0FJ/AxhhGydt1gV8wSGqik+h9ay8j29ZRkQ6sb1N4ho9qw0lwTovQ1a3uEfExI
-	TK2gTUgcaZ9MCi7pxnaYEoRI8QmU5gUbliS2CQSileCL0UkLD9M/H9ok1Hz+xd8kEFa7ANx/+Jg5O
-	HrI+wppcJda+KeYrz9yKacACuT4LljNYFLfELivWRu0QmXxNLL2528puysdBu8rCdgWv7tKJIzr2a
-	8FNcVd8w==;
+	bh=FglH0qyTyTVtnKAjzZwCBja20Rpmf/856deZhHLRWwU=; b=u4y6wHXqV044kBdeqZMqB1AgH4
+	4R2ZSNNbPkz80TZO6012eZiCoAnSsTrIcAizqIppBYylQ2M5pBZNiirFLcSQN+x4wkOnBRc4PvZlX
+	uiuY40SJdBxscEGz+oyEvsRhB4ecyaIiavofB20wzCCNi6XIPmZWOrtVgVmVIW+iU+w5EhkW2KbIz
+	INPUGVhT2nUAw2DNiAW3g99x/O9Ap986LHgHNc3qG/ywqTGEgKAGhuyuxLKzePnEPlpS9xKmlNWEI
+	HyOuoX7RCbC+JDrhWq/l1E/GP1abcj1nL03LFPw9UDhYhPS1mOzV7eBxDDsw2WFfi0TZCMjl0whX8
+	BcUPrZIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xURv6-0000000FbfZ-1r9e;
-	Fri, 20 Nov 2026 16:57:04 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xUSYA-0000000Fjc3-3fSR;
+	Fri, 20 Nov 2026 17:37:26 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xURv2-0000000Fbep-3ZuP;
-	Fri, 20 Nov 2026 16:57:02 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 18EBA62466;
-	Fri, 20 Nov 2026 16:57:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 536F91F000C6;
-	Fri, 20 Nov 2026 16:56:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795193819;
-	bh=DJ8cIXCRUOB9I2+njuBlGE2LdGi0WFfh6HrV7BoGga0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=IvjL9tvTQiaHmCAeq33bh7cFtxbf7C0P3W2mb5u/sHTjg5ZZ1TlTASaX589CHUTBE
-	 SYhMFA7GBcFTiBF20NyZfjJPAWMj+S0i8HfaMniF3IF2WrIfG39DkDkl+w4Sc8ZSJl
-	 rl25wzQXY04GQrpJ5sIp1JoOy4BarvUDAgeh2SV0OI4PtT/XqTzTcCFVSs5n0Gp702
-	 WcMHxkybAkagD/kGHlIKYRRGjjQmpBseVg1sWbGRqUN3sw7wkBD+EhCrxFCrBOLCX1
-	 +pLkiqN1sUQPvCj1nzfaOGFY7AsjZCp5JUOyeollaCp+tKvu0tI8pBJ/5/r8oB7XOb
-	 U7IUN3yMvsNyg==
-Date: Fri, 20 Nov 2026 11:56:53 -0500
-From: Brian Masney <masneyb@kernel.org>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Aaro Koskinen <aaro.koskinen@iki.fi>,
-	Andreas Kemnade <andreas@kemnade.info>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Roger Quadros <rogerq@kernel.org>, Tony Lindgren <tony@atomide.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Paul Walmsley <paul@pwsan.com>, Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney+clk@redhat.com>,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andyshrk@163.com>, Ulf Hansson <ulfh@kernel.org>,
-	linux-clk@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-omap@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	dri-devel@lists.freedesktop.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH 1/6] clk: Remove unused clk.dev
-Message-ID: <awB71ckHyTRIfy0p@x1g10>
-References: <cover.1795094688.git.geert+renesas@glider.be>
- <a896e5bdb29c7c6de39df9b28b11d55614f2ec2d.1795094688.git.geert+renesas@glider.be>
- <179513882271.284394.17357508909448455391.b4-review@b4>
- <CAMuHMdWJ8zK+kzcznM7FJ3JCo1xWzjRZ5MQz9jhSUcYQfO5rBA@mail.gmail.com>
+	id 1xUSY3-0000000FjYM-3peV;
+	Fri, 20 Nov 2026 17:37:26 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
+	 (Exim 4.100.1)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1xUSXi-000000000HS-3e3A;
+	Fri, 20 Nov 2026 17:36:58 +0000
+Date: Fri, 20 Nov 2026 17:36:29 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Michael Riesch <michael.riesch@collabora.com>,
+	David Heidelberg <david@ixit.cz>,
+	Christian Hewitt <christianshewitt@gmail.com>,
+	Marc Zyngier <maz@kernel.org>, linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Dang Huynh <dang.huynh@mainlining.org>,
+	Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Subject: [PATCH v5 0/5] media: rockchip: rkvdec: add support for the VDPU346
+ variant
+Message-ID: <cover.1795191822.git.daniel@makrotopia.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAMuHMdWJ8zK+kzcznM7FJ3JCo1xWzjRZ5MQz9jhSUcYQfO5rBA@mail.gmail.com>
-User-Agent: Mutt/2.4.3 (2026-10-09)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261120_093720_106476_FC47F33D 
+X-CRM114-Status: GOOD (  26.20  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,43 +77,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Nov 20, 2026 at 08:44:29AM +0100, Geert Uytterhoeven wrote:
-> On Fri, 20 Nov 2026 at 02:40, Brian Masney <masneyb@kernel.org> wrote:
-> > > This basically reverts commit efa850487a6b6742 ("clk: Inform the core
-> > > about consumer devices").
-> > >
-> > > This commit added a struct device pointer member to struct clk and a
-> > > parameter to clk_hw_create_clk(), but the new member was never used
-> > > beyond setting.
-> > >
-> > > Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> 
-> > > --- a/drivers/clk/clk.h
-> > > +++ b/drivers/clk/clk.h
-> > > @@ -5,8 +5,6 @@
-> > >   */
-> > >
-> > >  struct clk_hw;
-> > > -struct device;
-> > > -struct of_phandle_args;
-> >
-> > Did you mean to remove of_phandle_args?
-> 
-> Yes, it was added by efa850487a6b6742, too (although it was
-> used in that header file before). Currently it's not used.
+This series adds the VDPU346 decoder of the RK3566 and RK3568 to the
+rkvdec driver, for H.264 and HEVC. It continues Christian Hewitt's v3
+[1]; in the v2 cover letter he offered to pass the series on. The
+previous posting [2] carried no version in its subject and counts as
+v4.
 
-OK, I see that.
+Patches 1, 2 and 4 are Christian's, with two fixups folded in that v4
+carried as separate patches. Patches 3 and 5 are new since v3 and come
+out of a comparison of the driver with the vendor kernel driver
+(rockchip-linux/kernel develop-6.6, drivers/video/rockchip/mpp) and
+the Rockchip MPP library, followed by conformance runs on hardware.
 
-Reviewed-by: Brian Masney <masneyb@kernel.org>
+Fluster on a NanoPi R5C (RK3568B2), GStreamer 1.28.7 v4l2sl decoders:
 
+  JCT-VC-HEVC_V1   142/147
+  JVT-AVC_V1       129/135
+  JVT-FR-EXT        65/69
+
+HEVC failures: PICSIZE_A/B/C/D_Bossen_1 are coded at up to 8440 luma
+samples in one dimension, beyond the 4096x2304 limit of the decoder.
+TSUNEQBD_A_MAIN10_Technicolor_2 has unequal luma and chroma bit depth,
+which the driver rejects for every variant.
+
+H.264 failures: CVFC1_Sony_C, FM1_BT_B, FM1_FT_E, SP1_BT_A, sp2_bt_b
+and FM2_SVA_C fail in JVT-AVC_V1; the Hantro G1 of the same board
+fails the same six with the same GStreamer. In JVT-FR-EXT
+Hi422FREXT17_SONY_A, Hi422FREXT19_SONY_A, HPCAMOLQ_BRCM_B and
+HPCVMOLQ_BRCM_B fail; the two BRCM vectors fail on the Hantro G1 as
+well, the two Hi422 intra profile vectors are not understood yet.
+
+SAODBLK_A/B_MainConcept_4 and FREH10-1/2 are counted as passes: they
+decode correctly and exceed the default 60 s fluster timeout only
+because the checksum is computed from an uncached mapping of the
+capture buffers.
+
+Patch 3 is what makes the score deterministic. With the read caches
+left in their reset state, RAP_B_Bossen_2, WPP_D_ericsson_MAIN_2,
+WPP_D_ericsson_MAIN10_2, WPP_E_ericsson_MAIN_2 (HEVC) and
+CAPM3_Sony_D, MR8_BT_B, MR9_BT_B, NRF_MW_E (H.264) produce wrong
+output in three runs out of three; with the patch they pass in three
+out of three. This is likely the source of the artefacts reported
+against v3. The function is shared with the VDPU381, where the cache
+block is mapped by the binding already. The series has been run on
+the RK3588 as well as on the RK3568.
+
+Decode rates with the series: HEVC Main 2160p 92 fps, Main10 2160p
+77 fps, Main 1080p 380 fps, H.264 High 1080p 197 fps.
+
+Patch 5 is kept apart from the node it modifies because the existing
+Tested-by tags were given at the v3 clock rates, and so that it can be
+dropped on its own.
+
+On the row and column buffer sizes raised in the v3 review [3]: the
+MPP library uses one vdpu34x HAL with one set of size formulas for the
+RK356x and the RK3588, so the variant keeps vdpu381_rcb_sizes.
+
+Known limits, none of them introduced here:
+
+- FFmpeg's v4l2-request hwaccel does not set the HEVC EXT_SPS_ST_RPS
+  and EXT_SPS_LT_RPS controls, so HEVC through FFmpeg decodes wrongly
+  on this decoder as on the VDPU381 ("Long and short term RPS not
+  set"). The handling of these controls is also the subject of [6].
+- A decode error on such a stream ends in the IOMMU page faults and
+  the oops reported against v3 [4]. The cause is in the error path
+  shared by all variants: the interrupt handler restores the IOMMU
+  while the watchdog is still armed, and the watchdog starts the next
+  job while the IOMMU is detached. "media: rkvdec: Handle interrupts
+  without a current context" [5] covers the oops; the remainder will
+  be addressed separately.
+- The Sashiko review of v4 points out that rkvdec_probe() takes the
+  SRAM pool without a device link to its provider. This predates the
+  series, affects all variants with an sram property and will be sent
+  as a separate fix.
+
+Patches 3 and 5 were written with the help of an LLM coding assistant,
+which also performed the comparison with the vendor sources. It was
+asked to review the v3 series against the vendor driver and to
+complete it, and for v5 to go through the v4 feedback, fold the fixups
+and revise the commit messages. The conformance and A/B runs above
+were done on the board with builds of v4 on Linux 6.18; v5 differs
+from v4 in the order of two writes to the device tree source and in
+one node name, the driver code is unchanged.
+
+Changes since v4:
+- Fold "media: rkvdec: vdpu346: Limit HEVC EXT SPS RPS dimensions"
+  into "media: rkvdec: Add support for the VDPU346 variant", so that
+  no commit registers 65 element controls
+- Fold "arm64: dts: rockchip: rk356x: Order vdec regs by address" into
+  "arm64: dts: rockchip: Add the vdpu346 Video Decoders on RK356X"
+- Name the SRAM pool node codec-sram as on the RK3588
+- Read caches: shorten the commit message and state that the cache
+  block is mapped for the VDPU383 as well
+- 400 MHz: state that the rate applies to all streams
+- Cc the reviewers and testers of v3
+
+Changes since v3:
+- Add "media: rkvdec: vdpu381: Program the read caches"
+- Add "arm64: dts: rockchip: rk356x: Clock the vdec at 400 MHz"
+- Register the HEVC EXT SPS RPS controls with 64 and 32 elements
+- List the vdec register blocks as link, function, cache
+- Add fluster scores and failure analysis
+- Add Tested-by from Diederik de Haas
+
+v4: https://lore.kernel.org/r/cover.1794654074.git.daniel@makrotopia.org
+v3: https://lore.kernel.org/r/20260110053727.2295260-1-christianshewitt@gmail.com
+v2: https://lore.kernel.org/r/20251226113140.573759-1-christianshewitt@gmail.com
+
+[1] https://lore.kernel.org/r/20260110053727.2295260-1-christianshewitt@gmail.com
+[2] https://lore.kernel.org/r/cover.1794654074.git.daniel@makrotopia.org
+[3] https://lore.kernel.org/r/DFL5TY0QQNMN.1RS04UM9D1V8S@cknow-tech.com
+[4] https://lore.kernel.org/r/DFRU6ODDM71P.3NQGLRK8IVDUY@cknow-tech.com
+[5] https://lore.kernel.org/r/20261026124808.642373-1-a.kazinsky@ideco.ru
+[6] https://lore.kernel.org/r/cover.1794645268.git.daniel@makrotopia.org
+
+Christian Hewitt (3):
+  media: dt-bindings: rockchip: Add RK3568 Video Decoder bindings
+  media: rkvdec: Add support for the VDPU346 variant
+  arm64: dts: rockchip: Add the vdpu346 Video Decoders on RK356X
+
+Daniel Golle (2):
+  media: rkvdec: vdpu381: Program the read caches
+  arm64: dts: rockchip: rk356x: Clock the vdec at 400 MHz
+
+ .../bindings/media/rockchip,vdec.yaml         |   2 +
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi |  49 +++++++
+ .../rockchip/rkvdec/rkvdec-vdpu381-h264.c     |   2 +
+ .../rockchip/rkvdec/rkvdec-vdpu381-hevc.c     |   2 +
+ .../rockchip/rkvdec/rkvdec-vdpu381-regs.h     |   9 ++
+ .../media/platform/rockchip/rkvdec/rkvdec.c   | 121 ++++++++++++++++++
+ .../media/platform/rockchip/rkvdec/rkvdec.h   |   2 +
+ 7 files changed, 187 insertions(+)
+
+
+base-commit: 7475ea8b58616b33c04afb976cf0fbaad9dd63fb
+-- 
+2.56.1
 
 _______________________________________________
 Linux-rockchip mailing list
