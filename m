@@ -2,62 +2,59 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CB05C606A680
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 23:23:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 29F4B606A33E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 23:41:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=exF+g2P9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pRC7Pvxq
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=vheyV6CeiXCk9R+Qvc8NZkxZS70gpCTSYjAeJlLvF5U=; b=exF+g2P9K9EESXM8oefp5aYVx+
-	XaxF8frq2XvCj/KdBzpqSS+0VpRLEnBHvLhNlUfg2dZPR6jTxFe+b9iJvL46RbSiKuarUhPy+tXds
-	f7Acefa/yy8gFAgWudgSYTbp75HXD05kuPr8mzZ61OZKYo6LK8oI0LyWdG8JPmo7eyceo1ulMIJkc
-	TEvPjC6TCmEp7Cr7HrkoUgkoNHYrx9i6kwVcjlg3b9X1eWYSTY0HH4mD6qLGlRXwvrEQAeQzt2q1z
-	cTFPhNvuxQTN9V06ftWHcQSJRE9BYsCACGGEQSX84aipNgEoRokAfK7IxNohCgj6RgPQCTLUraGzE
-	VkrEN22A==;
+	bh=MA47MghMaioJlMWrmcyjyKkwXpapr5vqj9IntF1t+yg=; b=pRC7PvxqlZaJMFrp1bsaXITJxM
+	a1Q0/IiKmv0UWJhren+yasgvX7xnst/k54So7llmyycGgVBO6D1hYMqevrOs58f1sFGwOxAT6MF4h
+	JDCLnvmCi0UiDbhHP8xaMnYMEQ3nM4RB5cXuHJDo8NkcJbQ+RROmW/gUXf4kxQvkkGyqMqtYV2MGT
+	CDCv26Eeel/2buxru75Mk0xv10/B32hwoSt1/k9/tZ/8uBvliXRoGHrehfQ4wQJg3FePPSZwsnUMg
+	LXG/Y0J3iysWMoXyx3TWQNpiYweRvaTWMNBp+Z4LNdZxkwFGlZTPgSqZWEu7u2H7C9idSayTdBDf4
+	mjh5dY/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUXx2-0000000GPXI-3Gxi;
-	Fri, 20 Nov 2026 23:23:28 +0000
+	id 1xUYEL-0000000GQxd-3S59;
+	Fri, 20 Nov 2026 23:41:21 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUXwz-0000000GPWm-3msi;
-	Fri, 20 Nov 2026 23:23:27 +0000
+	id 1xUYEH-0000000GQwx-3qbK;
+	Fri, 20 Nov 2026 23:41:19 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
 	 (Exim 4.100.1)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1xUXwq-000000002ZQ-437a;
-	Fri, 20 Nov 2026 23:23:17 +0000
-Date: Fri, 20 Nov 2026 23:23:08 +0000
+	id 1xUYE8-000000002dn-3NMw;
+	Fri, 20 Nov 2026 23:41:08 +0000
+Date: Fri, 20 Nov 2026 23:41:00 +0000
 From: Daniel Golle <daniel@makrotopia.org>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>,
+To: Detlev Casanova <detlev.casanova@collabora.com>,
 	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Alex Bee <knaerzche@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Alex Bee <knaerzche@gmail.com>,
 	Hans Verkuil <hverkuil+cisco@kernel.org>,
 	Jonas Karlman <jonas@kwiboo.se>,
 	Sebastian Fricke <sebastian.fricke@collabora.com>,
 	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 3/7] media: rkvdec: hevc: bound the RPS reads by the
- control size
-Message-ID: <awDWVpqEBcOGsCuu@makrotopia.org>
-References: <cover.1794645268.git.daniel@makrotopia.org>
- <bb9c44d0f56221874b105394169e5c377ef21b42.1794645268.git.daniel@makrotopia.org>
- <6ae6d1101d3f7095d11462579a5a3313153533e6.camel@collabora.com>
+Subject: [PATCH v2 0/7] media: rkvdec: Fix the HEVC reference picture set
+ handling
+Message-ID: <cover.1795217229.git.daniel@makrotopia.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <6ae6d1101d3f7095d11462579a5a3313153533e6.camel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_152326_132039_52B891E3 
-X-CRM114-Status: GOOD (  15.39  )
+X-CRM114-CacheID: sfid-20261120_154117_968171_AD8E0648 
+X-CRM114-Status: GOOD (  19.47  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,51 +75,90 @@ X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi again,
+This series fixes how the VDPU381 and VDPU383 HEVC back ends of the
+rkvdec driver handle the EXT_SPS_ST_RPS and EXT_SPS_LT_RPS controls.
+The defects were found while bringing up the VDPU346 of the RK3568,
+which uses the VDPU381 back end, on top of Christian Hewitt's VDPU346
+series [1], which has since been continued in [2].
 
-I missed the part of your review which was inlined with the code.
-See my reply below.
+Patch 1 looks up the controls after the request was applied instead of
+before, which fixes a use-after-free.
 
-On Mon, Nov 16, 2026 at 08:49:44AM -0500, Nicolas Dufresne wrote:
-> [...]
-> > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
-> > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
-> > @@ -448,18 +448,18 @@ void rkvdec_hevc_run_preamble(struct rkvdec_ctx *ctx,
-> >  			      V4L2_CID_STATELESS_HEVC_SCALING_MATRIX);
-> >  	run->scaling_matrix = ctrl ? ctrl->p_cur.p : NULL;
-> >  
-> > +	run->ext_sps_st_rps = NULL;
-> >  	if (ctx->has_sps_st_rps) {
-> >  		ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl,
-> >  				      V4L2_CID_STATELESS_HEVC_EXT_SPS_ST_RPS);
-> > -		run->ext_sps_st_rps = ctrl ? ctrl->p_cur.p : NULL;
-> > -	} else {
-> > -		run->ext_sps_st_rps = NULL;
-> > +		if (ctrl && ctrl->elems >= run->sps->num_short_term_ref_pic_sets)
-> > +			run->ext_sps_st_rps = ctrl->p_cur.p;
-> >  	}
-> > +	run->ext_sps_lt_rps = NULL;
-> >  	if (ctx->has_sps_lt_rps) {
-> >  		ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl,
-> >  				      V4L2_CID_STATELESS_HEVC_EXT_SPS_LT_RPS);
-> > -		run->ext_sps_lt_rps = ctrl ? ctrl->p_cur.p : NULL;
-> > -	} else {
-> > -		run->ext_sps_lt_rps = NULL;
-> > +		if (ctrl && ctrl->elems >= run->sps->num_long_term_ref_pics_sps)
-> > +			run->ext_sps_lt_rps = ctrl->p_cur.p;
-> 
-> So you are saying that if the passed array is too short, we should use an older
-> entry to none? That seems a little strange, what about up-front rejecting bad
-> entries?
+Patches 2 and 3 are about jobs which cannot be decoded because the RPS
+controls are missing. The VDPU383 back end now completes the request
+when it refuses such a job, and the VDPU381 back end refuses the job
+as well instead of starting the hardware.
 
-That's what I do, but only after patch 5, before that the decoder would
-still run with the previous table. I will reorder the series so the
-refusal comes first.
+Patch 4 refuses RPS controls with fewer elements than the SPS counts,
+and patch 5 limits the size of predicted short-term sets. Both fix out
+of bounds accesses which userspace can trigger.
 
-Rejecting when the control is set does not work, as the count and the
-array are separate controls which can be set in any order, also in
-different requests. The first point where both are known is when the
-request is applied in device_run.
+Patch 6 fixes wrong decoding caused by a short-term RPS cache which
+only looked at the first set, and patch 7 adds a missing allocation
+check.
+
+Patches 1 to 6 carry Cc: stable, like the EXT SPS RPS bounds merged in
+v7.3 (f0b9d7e5be06, 796b5c6d4f16, 052c5ed5a1d9).
+
+Tested on a NanoPi R5C (RK3568) with Linux 6.18 and the VDPU346 series
+backported: GStreamer fluster JCT-VC-HEVC_V1 stays at 140/147, an FFmpeg
+v4l2request build that sets the RPS controls confirms the reads and the
+short-term set cache, and the VDPU381 refusal removes a watchdog reset
+of the RK3568. The same VDPU381 back end was exercised on a Radxa ROCK
+5B (RK3588): H.264, HEVC and VP9 decode through rkvdec with no kernel
+message across the fluster runs (HEVC 146/147), a per-patch A/B sweep
+and a 30-minute stability run, at the baseline throughput. The VDPU383
+back end has no hardware here, the code-only patches have no reproducer,
+and nothing was tested on an RK3576.
+
+All of this was done with v1. v2 changes the order of the patches and
+the commit messages, the code after the series is the same as in v1,
+and the tests were not repeated.
+
+An LLM coding agent did the analysis, and helped with writing the
+patches. A second instance, given only the code, reviewed the series,
+and has tested and validated it on real hardware independently.
+
+Changes since v1:
+- Move "media: rkvdec: vdpu381: refuse HEVC jobs without RPS sets"
+  before the check of the control size (5/7 -> 3/7). A control which is
+  too short is handled like a missing one, and this way that means a
+  refused job in both back ends as soon as the check exists, instead
+  of a decode with a stale RPS table on the VDPU381 (Nicolas Dufresne)
+- Rename "media: rkvdec: hevc: bound the RPS reads by the control size"
+  to "media: rkvdec: hevc: refuse RPS controls shorter than the SPS
+  counts" (3/7 -> 4/7)
+- Rewrite all commit messages: say what is wrong and what the patch
+  achieves, without walking through the code (Nicolas Dufresne)
+- State in patch 4 why the size cannot be checked when the control is
+  set (Nicolas Dufresne)
+- Rebase on linux-next
+- No change to the code after the series
+
+v1: https://lore.kernel.org/r/cover.1794645268.git.daniel@makrotopia.org
+
+[1] https://lore.kernel.org/r/20260110053727.2295260-1-christianshewitt@gmail.com
+[2] https://lore.kernel.org/r/cover.1794654074.git.daniel@makrotopia.org
+
+Daniel Golle (7):
+  media: rkvdec: hevc: apply request controls first
+  media: rkvdec: vdpu383: complete refused HEVC requests
+  media: rkvdec: vdpu381: refuse HEVC jobs without RPS sets
+  media: rkvdec: hevc: refuse RPS controls shorter than the SPS counts
+  media: rkvdec: hevc: bound predicted short-term RPS sets
+  media: rkvdec: hevc: cache every short-term RPS set
+  media: rkvdec: hevc: check the RPS scratch allocation
+
+ .../rockchip/rkvdec/rkvdec-hevc-common.c      | 52 +++++++++++++------
+ .../rockchip/rkvdec/rkvdec-hevc-common.h      | 11 +++-
+ .../rockchip/rkvdec/rkvdec-vdpu381-hevc.c     | 24 +++++----
+ .../rockchip/rkvdec/rkvdec-vdpu383-hevc.c     | 14 +++--
+ 4 files changed, 67 insertions(+), 34 deletions(-)
+
+
+base-commit: 909ef7a9a30fa139e69e555e3606680f5cca7726
+-- 
+2.56.1
 
 _______________________________________________
 Linux-rockchip mailing list
