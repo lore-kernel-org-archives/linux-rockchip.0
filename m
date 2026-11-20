@@ -2,78 +2,78 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1A96A606A6CF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 20:16:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2A10C606A6EB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 20:17:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QYt1zz+U;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=KPVEzt7V;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=YmjCu5BL
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=retdQjUt;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=cknow-tech.com header.i=@cknow-tech.com header.a=rsa-sha256 header.s=key1 header.b=gKHowIYZ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ESw/KWp/NxqXOFOL4UG/APNHFNnUToaP/N+W0HPNiPQ=; b=QYt1zz+UWtmf+Wj6879Q7HOpso
-	ZG4V/GUJ2G5yzvQ9RBg1o9/ctgg0HobdairSJaEY/fg2XWqSZ8abVEe96cwWsFf8RIYaBOzFcIHW4
-	2pVmTR3xdgueFykv3PZfGVgf1dCmYmWwrGXcE3VC44pNzaGQ0Uj3Z3iyD+FhuaO259s2F1jeSLJkO
-	+hdV2qHearM/9FeP/xVYqa6jELt0d/bQ6HUz/XfSpbmJd1lSeTE/uDRY23bbAxK1pF07mrRXjkdT0
-	XKKQ9xEWsauJXJG0U8hn3WdZBNggMUlX/ZtgeIWLh4SdVzqquKFM6UHD5KlLQ+MesyHp8G9j0TdbY
-	WqlzWs0Q==;
+	bh=m2IbwZ5/SgzuArN3K7gK/nabwVxEdOVMydg1KvT7Tys=; b=retdQjUt1m2xzEPeZlc+0lbGcF
+	5zd97wJMGvEvG3+Hmh15BLwu269RPDFgA0B4cS4If1wIvVCIDT0THoN/zfFBurLq5HXqhAYYIFBzD
+	FsIMqTzZMEKWG0dYem8nB/AG5jdXFazx9oV3q84wkk/UUxDScWCnWk0Zlm+/Rul2lUKpbjVVwmy7i
+	1bjBgZt813TpFbuStoCiEe56szj5EVwIV8Sv9dIFpcsQzQW3cVZHZEYtMLYk+TVqw7x0k9aWbtIB0
+	8ObpgH3nH9hxsW/8l/Ymb9VELeSZXbeT2IoXWjEnDnyOz4of2NC0eI5Ka1lijPn9NPF1QSiZDL/QE
+	tzQeeVpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUV1X-0000000GDKl-1taP;
-	Fri, 20 Nov 2026 20:15:55 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1xUV2n-0000000GDYa-48GB;
+	Fri, 20 Nov 2026 20:17:13 +0000
+Received: from out-126.mta1.migadu.com ([95.215.58.126] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUV1T-0000000GDJR-3dfv
+	id 1xUV2j-0000000GDUd-1OgQ
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Nov 2026 20:15:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From: CFBL-Address: CFBL-Feedback-ID; q=dns/txt; s=fe-e1b5cab7be;
- t=1795205749; bh=n/hZHGeIt+h+WZIRaIc6xW62uzKvAoC1A95prVUGR50=;
- b=KPVEzt7VroJH8q02nVl7UaJZDofOz/192ra6kzUrOckFpglwQ9c3DLlUcbn+RGm7dGTepSibA
- TCLwjH/cbuyxhutRIdc4buuPkbJY1YvHIZWPLKzbTzMqYASQN4SL7rUOSu/mlm/afJ7bsPIWpE9
- yve6TcxcqjdJDdJutNgJhe4JOQLXcDoBOStDS7EVP7zassAXfx3gAeMnq//JU++HTXqQ/CODQ6k
- U2EKufEZKP0BRm8/I9bwlGjAX5GzoigmCnK0PzfW6iohr4ckdZDg/97DUQAqGFjmZjEMwIge5WQ
- H/1I3qN7LZrKNMcPL8QvBh8Zgs99GNaz4MzR3zIzzNYg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=forwardemail.net;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From: CFBL-Address: CFBL-Feedback-ID; q=dns/txt; s=default;
- t=1795205749; bh=n/hZHGeIt+h+WZIRaIc6xW62uzKvAoC1A95prVUGR50=;
- b=YmjCu5BLlmO7qvc2DzdYNJVXvChHahJZPmPz/pT44Ri73pBKmBejooZxoQl87rfxdghA+7a+S
- Dag+G9HmuUbfGVUhHKISchylpgXbLmWxSw6wg6GTX4KZyUk+9L/bwu0eDLSxReGVEjXHvNrIWQU
- VjKTafxTEapA6/OmCJ2zsYc=
-CFBL-Feedback-ID: 6b00aa72774eddf080e7f073:e7410673846c8ea6efcb7b8d7722dfd8
-CFBL-Address: abuse@forwardemail.net; report=arf
-X-Forward-Email-ID: 6b00aa72774eddf080e7f073
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 2.19.33
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Linus Walleij <linusw@kernel.org>,
-	Ye Zhang <ye.zhang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org,
-	Jonas Karlman <jonas@kwiboo.se>,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2] pinctrl: rockchip: Fix RK3506 pinctrl support
-Date: Fri, 20 Nov 2026 20:15:39 +0000
-Message-ID: <20261120201540.672016-1-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.56.1
+	Fri, 20 Nov 2026 20:17:12 +0000
+X-Envelope-To: linux-rockchip@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=oCLNHmGkPtVaSdKOgJfSe9v1erehhFj7NdQ3Eg5hEtA=;
+ c=simple/simple; d=cknow-tech.com;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1795205810; v=1; x=1795810610;
+ b=gKHowIYZCh6xFbfA3OQTaIxtY2Pm/e4nbwUKMbvrYX0yi9YQf3Oe5dbYk96M2L0oQkrQnRY2
+ PiqomfO0JyG0qeJf9ciquCMsSVsgwFPZ8l867UyV0aJeVfiwqp1NFs8VtS3qPBf255OjnHzVPaE
+ MpKmK7Q1/U18XDdOC4hkjghkkkBWhm0hRHHpgIoG9dn8G/cbxxLQNoxOOMNeUVEIgkIYHQQSE0C
+ Iuh9bjrBYIu1ArwgheRJplKSlevturS39+Ccnlg+2OWB+spRk1FOcESvaGpk1p8xhdyZyy9hmyZ
+ 6iZy+fhsNzRkp5bYDX4sn7S5REXF12IehtteaUw/jk+jQ==
+X-Envelope-To: linux-rockchip@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 8603c6dc317910df;
+	Fri, 20 Nov 2026 20:16:50 +0000
+X-Mizu-Trace-ID: 8603c6dc317910df
+X-Migadu-Flow: FLOW_OUT
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
+Mime-Version: 1.0
+Date: Fri, 20 Nov 2026 21:16:42 +0100
+Message-Id: <DN0BCGELZCSC.G0MWCPQU85UO@cknow-tech.com>
+Cc: "Nicolas Dufresne" <nicolas.dufresne@collabora.com>, "Hans Verkuil"
+ <hverkuil+cisco@kernel.org>, "Jonas Karlman" <jonas@kwiboo.se>, "Diederik
+ de Haas" <diederik@cknow-tech.com>, "Dang Huynh"
+ <dang.huynh@mainlining.org>, "Piotr Oniszczuk" <piotr.oniszczuk@gmail.com>
+Subject: Re: [PATCH v5 0/5] media: rockchip: rkvdec: add support for the
+ VDPU346 variant
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Daniel Golle" <daniel@makrotopia.org>, "Detlev Casanova"
+ <detlev.casanova@collabora.com>, "Ezequiel Garcia"
+ <ezequiel@vanguardiasur.com.ar>, "Mauro Carvalho Chehab"
+ <mchehab@kernel.org>, "Rob Herring" <robh@kernel.org>, "Krzysztof
+ Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>,
+ "Heiko Stuebner" <heiko@sntech.de>, "Shawn Lin" <shawn.lin@rock-chips.com>,
+ "Michael Riesch" <michael.riesch@collabora.com>, "David Heidelberg"
+ <david@ixit.cz>, "Christian Hewitt" <christianshewitt@gmail.com>, "Marc
+ Zyngier" <maz@kernel.org>, <linux-media@vger.kernel.org>,
+ <linux-rockchip@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+X-Mailer: aerc 0.22.0-31-g5c1c510d2b65
+References: <cover.1795191822.git.daniel@makrotopia.org>
+In-Reply-To: <cover.1795191822.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_121552_276724_9577A688 
-X-CRM114-Status: GOOD (  17.09  )
-X-Spam-Score: -2.0 (--)
+X-CRM114-CacheID: sfid-20261120_121709_853295_2D74ECF1 
+X-CRM114-Status: UNSURE (   7.32  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,280 +86,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The pinctrl driver added in commit dbd2317d7b9f ("pinctrl: rockchip:
-Add rk3506 pinctrl support") depends on a rockchip,ioc1 property not
-documented in dt-bindings to work, i.e. it expects the pinctrl node to
-look something like following:
+On Fri Nov 20, 2026 at 6:36 PM CET, Daniel Golle wrote:
+> This series adds the VDPU346 decoder of the RK3566 and RK3568 to the
+> rkvdec driver, for H.264 and HEVC. It continues Christian Hewitt's v3
+> ...
+> Known limits, none of them introduced here:
+>
+> - FFmpeg's v4l2-request hwaccel does not set the HEVC EXT_SPS_ST_RPS
+>   and EXT_SPS_LT_RPS controls, so HEVC through FFmpeg decodes wrongly
+>   on this decoder as on the VDPU381 ("Long and short term RPS not
+>   set"). The handling of these controls is also the subject of [6].
 
-  pinctrl {
-	rockchip,pmu = <&gpio0_ioc>;
-	rockchip,ioc1 = <&gpio1_ioc>;
-	rockchip,grf = <&gpio234_ioc>;
+FWIW and IIUC, Detlev has a patch for that here:
+https://gitlab.collabora.com/detlev/ffmpeg/-/commits/v4l2-request-ext-sps-rps-n8.1
 
-	gpio0 { };
-	gpio1 { };
-	gpio2 { };
-  };
-
-With the commit 63113d4fce6c ("pinctrl: rockchip: Add RV1106 pinctrl
-support") the driver gained support for using GPIO bank referenced IO
-control register blocks using the rockchip,grf phandle of the bank node.
-
-Change the driver to work with dt-bindings documented nodes and
-properties, i.e. something like:
-
-  pinctrl {
-	rockchip,grf = <&gpio234_ioc>;
-
-	gpio0 {
-		rockchip,grf = <&gpio0_ioc>;
-	};
-	gpio1 {
-		rockchip,grf = <&gpio1_ioc>;
-	};
-	gpio2 { };
-  };
-
-Fixes: dbd2317d7b9f ("pinctrl: rockchip: Add rk3506 pinctrl support")
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
----
-The initial devicetree submitted for RK3506 at [1] uses rockchip,grf
-props in gpio0 and gpio1 nodes together with a rockchip,grf in the
-pinctrl node to work as the fallback for gpio2, gpio3 and gpio4.
-
-[1] https://patch.msgid.link/20261119152055.556266-3-jonas@kwiboo.se/
-
-Changes in v2:
-- Drop IOMUX_SOURCE_PMU flag
-- Collect r-b tag
-Link to v1: https://patch.msgid.link/20261119211739.566874-1-jonas@kwiboo.se/
----
- drivers/pinctrl/pinctrl-rockchip.c | 57 ++++++++++++------------------
- drivers/pinctrl/pinctrl-rockchip.h |  1 -
- 2 files changed, 23 insertions(+), 35 deletions(-)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index b78be7dd5342..97a73f8c4f6e 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -1335,12 +1335,8 @@ static int rockchip_get_mux(struct rockchip_pin_bank *bank, int pin)
- 	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin >= 12)
- 		return 0;
- 
--	if (ctrl->type == RK3506) {
--		if (bank->bank_num == 1)
--			regmap = info->regmap_ioc1;
--		else if (bank->bank_num == 4)
--			return 0;
--	}
-+	if (ctrl->type == RK3506 && bank->bank_num == 4)
-+		return 0;
- 
- 	/* get basic quadrupel of mux registers and the correct reg inside */
- 	mux_type = bank->iomux[iomux_num].type;
-@@ -1492,12 +1488,8 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
- 	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin >= 12)
- 		return 0;
- 
--	if (ctrl->type == RK3506) {
--		if (bank->bank_num == 1)
--			regmap = info->regmap_ioc1;
--		else if (bank->bank_num == 4)
--			return 0;
--	}
-+	if (ctrl->type == RK3506 && bank->bank_num == 4)
-+		return 0;
- 
- 	/* get basic quadrupel of mux registers and the correct reg inside */
- 	mux_type = bank->iomux[iomux_num].type;
-@@ -2568,9 +2560,13 @@ static int rk3506_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
- 	struct rockchip_pinctrl *info = bank->drvdata;
- 	int ret = 0;
- 
-+	if (bank->regmap_ioc)
-+		*regmap = bank->regmap_ioc;
-+	else
-+		*regmap = info->regmap_base;
-+
- 	switch (bank->bank_num) {
- 	case 0:
--		*regmap = info->regmap_pmu;
- 		if (pin_num > 24) {
- 			ret = -EINVAL;
- 		} else if (pin_num < 24) {
-@@ -2584,7 +2580,6 @@ static int rk3506_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
- 		break;
- 
- 	case 1:
--		*regmap = info->regmap_ioc1;
- 		if (pin_num < 28)
- 			*reg = RK3506_DRV_GPIO1_OFFSET;
- 		else
-@@ -2592,7 +2587,6 @@ static int rk3506_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
- 		break;
- 
- 	case 2:
--		*regmap = info->regmap_base;
- 		if (pin_num < 17)
- 			*reg = RK3506_DRV_GPIO2_OFFSET;
- 		else
-@@ -2600,7 +2594,6 @@ static int rk3506_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
- 		break;
- 
- 	case 3:
--		*regmap = info->regmap_base;
- 		if (pin_num < 15)
- 			*reg = RK3506_DRV_GPIO3_OFFSET;
- 		else
-@@ -2608,7 +2601,6 @@ static int rk3506_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
- 		break;
- 
- 	case 4:
--		*regmap = info->regmap_base;
- 		if (pin_num < 8 || pin_num > 11) {
- 			ret = -EINVAL;
- 		} else {
-@@ -2653,9 +2645,13 @@ static int rk3506_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
- 	struct rockchip_pinctrl *info = bank->drvdata;
- 	int ret = 0;
- 
-+	if (bank->regmap_ioc)
-+		*regmap = bank->regmap_ioc;
-+	else
-+		*regmap = info->regmap_base;
-+
- 	switch (bank->bank_num) {
- 	case 0:
--		*regmap = info->regmap_pmu;
- 		if (pin_num > 24) {
- 			ret = -EINVAL;
- 		} else if (pin_num < 24) {
-@@ -2669,7 +2665,6 @@ static int rk3506_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
- 		break;
- 
- 	case 1:
--		*regmap = info->regmap_ioc1;
- 		if (pin_num < 28)
- 			*reg = RK3506_PULL_GPIO1_OFFSET;
- 		else
-@@ -2677,7 +2672,6 @@ static int rk3506_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
- 		break;
- 
- 	case 2:
--		*regmap = info->regmap_base;
- 		if (pin_num < 17)
- 			*reg = RK3506_PULL_GPIO2_OFFSET;
- 		else
-@@ -2685,7 +2679,6 @@ static int rk3506_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
- 		break;
- 
- 	case 3:
--		*regmap = info->regmap_base;
- 		if (pin_num < 15)
- 			*reg = RK3506_PULL_GPIO3_OFFSET;
- 		else
-@@ -2693,7 +2686,6 @@ static int rk3506_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
- 		break;
- 
- 	case 4:
--		*regmap = info->regmap_base;
- 		if (pin_num < 8 || pin_num > 11) {
- 			ret = -EINVAL;
- 		} else {
-@@ -2739,9 +2731,13 @@ static int rk3506_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
- 	struct rockchip_pinctrl *info = bank->drvdata;
- 	int ret = 0;
- 
-+	if (bank->regmap_ioc)
-+		*regmap = bank->regmap_ioc;
-+	else
-+		*regmap = info->regmap_base;
-+
- 	switch (bank->bank_num) {
- 	case 0:
--		*regmap = info->regmap_pmu;
- 		if (pin_num > 24) {
- 			ret = -EINVAL;
- 		} else if (pin_num < 24) {
-@@ -2755,7 +2751,6 @@ static int rk3506_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
- 		break;
- 
- 	case 1:
--		*regmap = info->regmap_ioc1;
- 		if (pin_num < 28)
- 			*reg = RK3506_SMT_GPIO1_OFFSET;
- 		else
-@@ -2763,7 +2758,6 @@ static int rk3506_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
- 		break;
- 
- 	case 2:
--		*regmap = info->regmap_base;
- 		if (pin_num < 17)
- 			*reg = RK3506_SMT_GPIO2_OFFSET;
- 		else
-@@ -2771,7 +2765,6 @@ static int rk3506_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
- 		break;
- 
- 	case 3:
--		*regmap = info->regmap_base;
- 		if (pin_num < 15)
- 			*reg = RK3506_SMT_GPIO3_OFFSET;
- 		else
-@@ -2779,7 +2772,6 @@ static int rk3506_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
- 		break;
- 
- 	case 4:
--		*regmap = info->regmap_base;
- 		if (pin_num < 8 || pin_num > 11) {
- 			ret = -EINVAL;
- 		} else {
-@@ -5030,9 +5022,6 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
- 	/* try to find the optional reference to the pmu syscon */
- 	info->regmap_pmu = syscon_regmap_lookup_by_phandle_optional(np, "rockchip,pmu");
- 
--	/* try to find the optional reference to the ioc1 syscon */
--	info->regmap_ioc1 = syscon_regmap_lookup_by_phandle_optional(np, "rockchip,ioc1");
--
- 	if (ctrl->type == RK3308) {
- 		ret = rk3308_soc_data_init(info);
- 		if (ret)
-@@ -5651,10 +5640,10 @@ static struct rockchip_pin_ctrl rk3399_pin_ctrl = {
- 
- static struct rockchip_pin_bank rk3506_pin_banks[] = {
- 	PIN_BANK_IOMUX_FLAGS_OFFSET_DRV_FLAGS_PULL_FLAGS(0, 32, "gpio0",
--				    IOMUX_WIDTH_4BIT | IOMUX_SOURCE_PMU,
--				    IOMUX_WIDTH_4BIT | IOMUX_SOURCE_PMU,
--				    IOMUX_WIDTH_4BIT | IOMUX_SOURCE_PMU,
--				    IOMUX_WIDTH_2BIT | IOMUX_SOURCE_PMU,
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_2BIT,
- 				    0x0, 0x8, 0x10, 0x830,
- 				    DRV_TYPE_IO_LEVEL_8_BIT,
- 				    DRV_TYPE_IO_LEVEL_8_BIT,
-diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-index 553197f6dc69..b565f14254d8 100644
---- a/drivers/pinctrl/pinctrl-rockchip.h
-+++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -468,7 +468,6 @@ struct rockchip_pinctrl {
- 	int				reg_size;
- 	struct regmap			*regmap_pull;
- 	struct regmap			*regmap_pmu;
--	struct regmap			*regmap_ioc1;
- 	struct device			*dev;
- 	struct rockchip_pin_ctrl	*ctrl;
- 	struct pinctrl_desc		pctl;
--- 
-2.56.1
 
 
 _______________________________________________
