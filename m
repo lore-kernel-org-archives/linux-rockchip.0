@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 955D1606A69C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 23:05:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C795D606A680
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 23:08:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PiFbNkf3;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=lwIbnNya
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=k6w1/PQS;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Ku/us/nu
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,79 +14,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=gBq6s03vJMAVQFdY2nXDbzglFjQ/ZpgTD8zTEfd0rtU=; b=PiFbNkf3CAAP+ie4+Lp8JXGSQc
-	wiql9Nc4+idJUMRY0rJqYagvY8ht8/8SWoo5Z3oMgsMVqi5xPHCqHnAD8XLRdn63BRcBtz3R1NORt
-	ct5puLuS3VbzZSF+vfz1MTeIol5gl6JdSg2OiuorK6uklg82ZgzxIjS5u+yVhmSOqCOwj5cqTRXGy
-	6+ORyPbj9IBXYCPHMk/KxqCN1iWLR2B4M0Wk0x+CeO5tmdt8YbliFo+7rGT17x0b23/jfZhTFkfqU
-	YejmEdaRLI1yjwMI+LRtcHsLDPFTIh4ksm0NJhCN7D+ETcC1Bb61eTr3ISFKDJcvHNfLQu8worNzQ
-	DJMw6HTg==;
+	bh=5vIBPGKTNxAjwcc1KQqV2tIapNq8SDJpREkN/IXYUTQ=; b=k6w1/PQSwZy2AOV9xYqV541YlK
+	IJjWngytvvNaeccbftj1RjBWOIf6lWa8n1x7Wn8T9J7XSQEcOKScuulCECaBl+5IqOtpl+CIHiQx2
+	Lj4savyxKyt4gq9vDQ2OYhBc0KDLW1eog6mNleuIOI1rL+Q7QiO5Ap4pnQw5//PqYeIqkIIA9E9WU
+	HfaNjhHCYibI52+Zx2H705MLzgZBbBIzS+BfkfnL2Wg0FKtSTJHGjv+6hIZrUo0BEg8IXUT4vkfo+
+	GIo+b1bTYOfRd1WKXL9nYQc39gU9zStq4I49HhSkbTLLCh88/vwsGS6t7xoUJCwNiZh3HB1z7G7Bd
+	gqJ5UujQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUXff-0000000GNHA-3GJ2;
-	Fri, 20 Nov 2026 23:05:31 +0000
-Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
+	id 1xUXib-0000000GNXk-13qh;
+	Fri, 20 Nov 2026 23:08:33 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUXfZ-0000000GNGF-3meQ
-	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Nov 2026 23:05:27 +0000
-Received: by mail-qt1-x830.google.com with SMTP id d75a77b69052e-55b8cd4e2abso16133101cf.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 15:05:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1795215924; x=1795820724; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-type:autocrypt:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=eJ5BpJRw2McaWgy6GPAJWhZZHCtWtK9atUe2DqC0wZY=;
-        b=lwIbnNyafnK5JoBLxIAEol0o1rSKEacYyM23h9fgndG0ujy0ZMFpTs9XkYg7Hej+qk
-         UAtVa0KYVjui7sWZRl/8yoQTMQG6+1SEYHio9XZskmHmSnfn8nZeUc5/Tf44rKB0JYg+
-         wytgFpmAhZZv0ECZdMB58WfffJ746TQ/AydBAQXDCco+pXw58F1GGvCQQZ4vwpK/q2gi
-         ZEODFtCwSrtWgvUxtRpW473e10XC/wSo0gqR2rUdkaB+hZ7/9OR0RnAGUd/Kp70EgYgm
-         luUjjGSc8vaEEpfRC2GwVBQzkT3IVvEMMbnu2QpWPlQfnxx1p52aWgvy9pbH+cQFTGd1
-         uJ+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795215924; x=1795820724;
-        h=mime-version:user-agent:content-type:autocrypt:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=eJ5BpJRw2McaWgy6GPAJWhZZHCtWtK9atUe2DqC0wZY=;
-        b=Vt6E/zXOj1hNkIVblxoUqokvb3HTTKQm6lLD1a2Qrt+dVXu6ms2mBeEsQCVyWK7SPS
-         4GveWHSNkorX7REyKCJnov1fDRymCchlswSQCSKfQIHQl8I7WbE5Mn2ECufkDuYINbto
-         X3ZVnmNuwknDXpzIlG8rANU1+YvDX+rAcVJ13cEBO6dqFHZ8YPGRF6WBRMuCWihxHqTE
-         B+LNZmIIZz23JHPmdG0u3hfxzBHHr5+YhT2q4ckb6jKay/TgBqZP+RN18U5tDjVkmU9u
-         x2apaesS1ez3YFubW++YdN30e1y3kkfp7naRFLay96FEjASaN5x1KiMmwijot96lEI3k
-         bkfA==
-X-Forwarded-Encrypted: i=1; AL+hErFrRqULtUndOk3xBhGXKbNblMAY063qs9ThEJyxIEV2ErTgdhSnr/MwqzluYiqb3R9Quo8HaM+P03Gj2drCKg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/T/Ua1eg3w3rnjh2D5qK4tmWuRycANQKnw/P7MObyngS2mLwel
-	aSS+R4OoCpH3np019HQ4xK5Q2qgko0kjmk41Ax/ApmZwdr00QXfkkEXiQPBY3ly4CA0=
-X-Gm-Gg: AYBFou0hvVTFUZyW1/9uJKJk9VF1/Oa55u7nOx/EvYujbnEJKXmTO7jssQUxXYMuwBN
-	OJGYfrO8ESU7ILZ1SoCbsZoAqc4oNyC8X+ZAmd6XT83BeJgyEoY6d6DcXqWcjl0qV96HUTjV/Cq
-	NYm6YsB9Qi2hhNjLzkVCWR/ek7+vyC13rHd8puX/W13ZkzRWUfDmTGcd1Dwr+6e9Qt2DHzxtcGl
-	vTuiAtXTtCtGGNJSBQeMXsnBpi6AXGRWZFh+dKGVlHZ9mv03wRLc0B04nX0llnuc28yDM03mZrf
-	z4+KGZFBHJT0v/EKmeoDzbxhKxf2I2asd2u6PmNVlMscNW/70hpGEx2eTGosdWyomCFOvxwDSpt
-	QeoRk9XZvjGbSuNUkTmaATKDyIXYt1LzADFy+ww71Eg+mUfK7UZaFczkf6yWMiaebNuaqLxmY/Q
-	kSMVn4t+Ze4PQWBVMyIe2eEYrBkWwKswkQrb15XAUjcntq1+ngsVQyEWkphsyHQf4s3xAIQsr2a
-	NxgeVeoFXZrrQAVFuBwptcumeUTR4XsHYCZDAcEoJTvVjzzioJD1g3XIVqjG+vg0hXPQw06SVNK
-	0Wxd5Nx9njFuI+z0Ed+oTXtCp+6jyTk+++9nJU+uIG9xdi7mU6obroI=
-X-Received: by 2002:ac8:5cc9:0:b0:55d:36cb:d2f6 with SMTP id d75a77b69052e-55d76994ab8mr78951971cf.8.1795215923589;
-        Fri, 20 Nov 2026 15:05:23 -0800 (PST)
-Received: from ?IPv6:2606:6d00:11:8ec9::c41? ([2606:6d00:11:8ec9::c41])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-55d7882bf70sm35229321cf.11.2026.11.20.15.05.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Nov 2026 15:05:22 -0800 (PST)
-Message-ID: <c328eb172979255e0998fd126db313651a471d7a.camel@ndufresne.ca>
-Subject: Re: [PATCH] media: rkvdec: Use dma_map_resource() to map RCB SRAM
- buffers
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Lukas Splavec <lukas.splavec@puresig.cz>, detlev.casanova@collabora.com,
- 	ezequiel@vanguardiasur.com.ar, mchehab@kernel.org
-Cc: heiko@sntech.de, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Date: Fri, 20 Nov 2026 18:05:20 -0500
-In-Reply-To: <20261114094916.28744-1-lukas.splavec@puresig.cz>
-References: <20261114094916.28744-1-lukas.splavec@puresig.cz>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+	id 1xUXiV-0000000GNWk-2l1O;
+	Fri, 20 Nov 2026 23:08:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795216105;
+	bh=vhRGA5stCNe5n0EWpCuQMaKiuxZMQFmZwfvJS2nbnJs=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=Ku/us/nudTVXa1sGIDwmBnCyhJyIoDqC4IqMpZYBnsH2YKz7i1ub6EJ56VVQgHVrl
+	 0e/bcAlozEsdha+oA5ioGWJSmKVtCutMBs7wjIUZvns9QtrIyl8CNewH6M6Pus6CRQ
+	 8mdOuNZSnMV7Gq6x3HrE2CdQjODP2/Z/2bVjgh2yeemw02C3CrW7Hn4upUr1jfvbfF
+	 7tLgaeNvQUWY5bb9SKy1sRX9AEL2/AxIxXD7nI2aU69EWPnhNch3xJH7oonhuzVJhy
+	 MUtVG90XUwxdbfL57SVZYUU8tuTmkyGlMbfeCzs178gL6JvPoIQ6JSSkjSMfTrqmwt
+	 IdJPAMXe0mldg==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 737EB17E031D;
+	Sat, 21 Nov 2026 00:08:23 +0100 (CET)
+Message-ID: <fd7d38bfd2e6b3ba56422c0f14ccf46f6f1bea6d.camel@collabora.com>
+Subject: Re: [PATCH v3] media: rkvdec: Handle interrupts without a current
+ context
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Alex Kazinsky <a.kazinsky@ideco.ru>, Detlev Casanova
+	 <detlev.casanova@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+	 <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	lvc-project@linuxtesting.org
+Date: Fri, 20 Nov 2026 18:08:22 -0500
+In-Reply-To: <20261113102456.4155237-1-a.kazinsky@ideco.ru>
+References: <20261113102456.4155237-1-a.kazinsky@ideco.ru>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
  cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
@@ -99,13 +72,14 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
  ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
 User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_150526_020556_BE822942 
-X-CRM114-Status: GOOD (  11.52  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261120_150827_935047_883C346B 
+X-CRM114-Status: GOOD (  10.06  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,7 +89,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7403035127221281942=="
+Content-Type: multipart/mixed; boundary="===============0269633779334382052=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -124,58 +98,52 @@ X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============7403035127221281942==
+--===============0269633779334382052==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-mVFMrjNK4prCvdK9IMd/"
+	protocol="application/pgp-signature"; boundary="=-voWmVM1frdbreVTmWmdK"
 
---=-mVFMrjNK4prCvdK9IMd/
+--=-voWmVM1frdbreVTmWmdK
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le samedi 14 novembre 2026 =C3=A0 09:49 +0000, Lukas Splavec a =C3=A9crit=
+Le vendredi 13 novembre 2026 =C3=A0 14:24 +0400, Alex Kazinsky a =C3=A9crit=
 =C2=A0:
-> rkvdec_allocate_rcb() uses the CPU virtual address of the SRAM buffer
-> as the decoder's IOVA and writes it into the IOMMU page table directly
-> with iommu_map(), bypassing the DMA API. Only the low 32 bits of that
-> address are used, which falls inside the IOVA range managed by the
-> allocator. The IOVA allocator does not know about this range and
-> considers it free. Under load it hands out the same IOVA to another
-> buffer, e.g. a capture buffer, whose mapping then fails:
+> The watchdog can finish the current job before the threaded IRQ handler
+> retrieves its context. In that case, v4l2_m2m_get_curr_priv() returns NUL=
+L,
+> but the variant IRQ handlers unconditionally dereference ctx->dev.
 >=20
->   [   66.930512] iova: 0x0000000082100000 already mapped to 0x00000000ff0=
-01000 cannot remap to phys: 0x0000000168231000 prot: 0x3
->   [   66.930674] rkvdec fdc38100.video-codec: dma alloc of size 16588800 =
-failed
+> Pass only the device pointer to the variant IRQ handlers, so they can
+> acknowledge interrupts without accessing the current context. Retrieve
+> the context inside rkvdec_job_finish() instead. In the IRQ path, this
+> happens only after successfully cancelling the watchdog, while the job
+> is still active.
 >=20
-> and decoding cannot start.
+> Found by Linux Verification Center (linuxtesting.org) with SVACE.
 >=20
-> Map the SRAM buffer with dma_map_resource() instead, so the IOVA is
-> allocated by the IOVA allocator and the mapping is created by the DMA
-> API, and release it with dma_unmap_resource(). Without an IOMMU,
-> dma_map_resource() returns the physical address, so the separate
-> no-IOMMU path is no longer needed.
->=20
-> Fixes: e5640dbb991c ("media: rkvdec: Add RCB and SRAM support")
-> Signed-off-by: Lukas Splavec <lukas.splavec@puresig.cz>
+> Fixes: f9c7b7deeffd ("media: rkvdec: Support per-variant interrupt handle=
+r")
+> Signed-off-by: Alex Kazinsky <a.kazinsky@ideco.ru>
 
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
---=-mVFMrjNK4prCvdK9IMd/
+--=-voWmVM1frdbreVTmWmdK
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawDSMAAKCRDZQZRRKWBy
-9PMfAPwOi/tB/Jf87fecrO+PluXuT7royZvxIrCNZmOHBSuEegEAlBEB69ZnNtbu
-KA2zhN0q8/7t1JDmNdzQt64epCy1WgE=
-=cLZV
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawDS5gAKCRDZQZRRKWBy
+9N/xAP93QEhfxMoixZ27CiEovcLw6efRsiOmrPrLVvLdjDXqVwD/Y19TZSzDEVqi
+qmeVvZAq3Glew2P4GvsejKJZnuBWiQI=
+=hXHK
 -----END PGP SIGNATURE-----
 
---=-mVFMrjNK4prCvdK9IMd/--
+--=-voWmVM1frdbreVTmWmdK--
 
 
---===============7403035127221281942==
+--===============0269633779334382052==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -186,5 +154,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7403035127221281942==--
+--===============0269633779334382052==--
 
