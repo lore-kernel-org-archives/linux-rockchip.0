@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 31EC6606A320
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 10:49:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 77C91606A320
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 10:49:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sZGhT3VC;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=flipper.net header.i=@flipper.net header.a=rsa-sha256 header.s=google header.b=QZyGsBhO
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qEOxfP7x;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=flipper.net header.i=@flipper.net header.a=rsa-sha256 header.s=google header.b=WfQ2ywv6
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,74 +14,74 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=1otRSd7q9jxaBFUCxsS3B7M107BD6z5ClXlox/vYV6Y=; b=sZGhT3VCLoFOAhZgR0Ak5YxKbF
-	q0V1kDU12/vd5ggw++HtCraZUJW/wGp1Qf6O+CpMOlBzIy/xV6B34vnVneElh3Q19pCJBGhxvGYbL
-	Pk0Pii1czRekXNIGrevthxGH9SwUDKnkkLMP5wimHgwEfn05+b7x3zVWMUzoU89hiCuMXbxcTYRGH
-	0drn8ObTNdrccO5uBxwcyiUWp2sbwVhypq23IwlKk5EGor5WJvZOBVFeU1eYHvC5j2azqmm79HkE3
-	nOEROjSRxcpcvBKtC2kYA5W7pwMb1C03pU/udfRNxunVcM2yKEfAHVPUMVelN+dTfR8yc8pHCZrRa
-	iyzgTYow==;
+	bh=U1eSvFBQB0cT3NMP0ghCIJfUfKNMZqRzo+QYBJ5y2L4=; b=qEOxfP7x34BOzUZIzU7tYThdPI
+	cS2qGqiN0tBNWdrVrLwu0ADf5g7D31Df9tgF3UlCl37pAu4pmn9M18JioFHZ/U1Nw+0Lqr2CPlaYd
+	wB7mQQMp1DHoDIkF2UF4J9l7M3klzVnA0hR/cS5MIhzvKmVwfVMxCZo/RkjuygBFrAefea37tRlGa
+	ACR1TURAL5slkaUwXn9LMRlQdRTbcgxqRz9K/9PEfkO/FaUydPfJmGHpQzXirj9sUcj5R7W9Y/BqV
+	pvZcb5x8P6M+FGx4V3s1VM4wW/YJP0qqrk4ah5wcs3xCuW4vOsROjFH2Oz8gSQ1r4PS5AOxBF/wez
+	Ql1VWNbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUMAu-0000000Eel8-1Gak;
-	Fri, 20 Nov 2026 10:49:00 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1xUMBG-0000000Eetp-1iYO;
+	Fri, 20 Nov 2026 10:49:22 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUMAL-0000000EeU5-33sq
+	id 1xUMAN-0000000EeUR-1bpT
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Nov 2026 10:48:32 +0000
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-48e47347279so403710f8f.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 02:48:25 -0800 (PST)
+	Fri, 20 Nov 2026 10:48:33 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-4bb68c197c7so8686705e9.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 02:48:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1795171704; x=1795776504; darn=lists.infradead.org;
+        d=flipper.net; s=google; t=1795171706; x=1795776506; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=uv7rVZc4l2BEJWjfYhOWW8q9b0czaroyJ+vHsktb+9w=;
-        b=QZyGsBhOuQCH819hwPFR22xmZwatNQry8p9/4lxoqpZbdso8FCN9L7pX1o4R6R9q/E
-         5rGVqqv7e471icJqCH2Zev1GMM91BkKJPi9LJPlY+crXezGvPfKXL+OiFnkiiR5meRpe
-         bdkOb6+WcgISDNpovm+sOmDyGk+rvYP54/Og9ZLpSxepa16jtxgd1Lz9KQ08wShaEE70
-         Y6WuxjVPZhGCvqwCaL+A0r1Ely+D2dfbdTus7n5wNAexvVmTvDsv5ylU71hKg0mwwQew
-         r5sxJElGu7mv70IToMyzJZZVIWdmaDLVyDnMDYnwXtYa8I2nUOVt+idvHCWQhFU0E8TV
-         OEZg==
+        bh=vHOMPFBnuW28mRa7isHb3MCchoH5mvXwIUScVxLLKUY=;
+        b=WfQ2ywv6w24okio4vEvjnbBQ6RstlVT0er/6SVddYkfKouMU3ttEc1RC0z4Q+sF4FN
+         rLaUcLN/0cumAcCEL/RiXxLHA00chOald6xJj7OA+oMpVvsPYsqP40nXgRZPnx733XPP
+         u3bcssYQBdLHJ5qU63CKxzeDKZDS0Jr/iR1csgmYXGanaWQx6y43vBsv78DeX4V9t1qR
+         z5leh6LJsSee/Qck9TNSTTwZ8zpYYzg1jiK+P6iL5nDgC48nXX8zXoLDxLzJqKTYDq+E
+         aeVsKl1GVW3eOmRhwuGXchzBrP1fkeK9tZoH643SqBMrbkTRN9CVIKcgbB1VrqagKYRa
+         ARlw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795171704; x=1795776504;
+        d=1e100.net; s=20260707; t=1795171706; x=1795776506;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=uv7rVZc4l2BEJWjfYhOWW8q9b0czaroyJ+vHsktb+9w=;
-        b=CM8AFZw83D9hPYmBhb73lDKIHTX8E+fK3GQv8wgK6ag5Zo8nVQKIv7FFSMVlKJHjPt
-         rzTVet3TWjmGk1ojTeLvcpYKoEvFG7Up99BMYwiXwy/UOiKkW4OE1/QhBaKrdXJlXU0z
-         EGZ8dGXs5PbpKJ2DG94skpkxnM6Wx3fpkFPOlld+lwiSUC/7ag0kwrhrAzyCdc1wrhI4
-         +c4uBsKpbslYBV12g9RabqbEBWJpybhpWvnh1CVruBpKgBhMxKWEWDFQemvNMJQJEnV9
-         qkMc/BcU87xTKoQdB0ifgRekfIHW8PYjq8paoh1hHq4fTppLXSbx9TtWdIJl6TxT65s7
-         3Fyg==
-X-Forwarded-Encrypted: i=1; AL+hErGyjjr8sFGhk9HU1kJ25SkooZOfDbKPMBYaFIMSApSeWsui+mh/d9ijIs21rh/YKFBrNSsfh2oiXp0a9GagXg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8H7G20ItdfYFnYkQpdWVXQ91+O299cIUit4/viV7koGJfbXGJc
-	RhSoDF72xT79WdBAqj1j9R39LAzNwzghbFIUQyx5dnSOe0MSN7Bcdqgz9r2dpYmVxHU=
-X-Gm-Gg: AYBFou3GoijTkfSZzKTzl/g0LVDzuspLA6J9QcDCCiZjgSqv1vbB4yErgZyl+cbc9NU
-	gGf8N0N23gLzOI3wSbaV73xADr7rDB+ejo9zZczqHQCOsSqTqHIAYE3g1sexBLpU7UylTrS9bdP
-	He7GvaFhHfh+d8OjkamZ7xduYxpyebfL8PTu1Bma1n9dbS909rFkkGlS6GSHhCbKCPnu7sW/6J0
-	Zj2QReX7H/urCa2bAJmEAN9/LSUfYZvw/dSGefMmxwWTDIOtWbpbcVeiDNl9Y7AC3FPFiXqaybg
-	C3LhilcPu39NkXy9BoRoLZaZp5I3dChg5Ezy/PHZkSzHlYLar49su7nMBKAY33Za9RB5dhKLS93
-	5Jv8aYA5JzgCJth/BiURFh+LJwCbUCdsTvbkuA5qmFX3Jzn31v+cT1NhWC051Cpj6GWR7VB/09x
-	uGVnZvSV1NDVQstuGx9k9/gZ28KMw6eMgjVEWPSchIBlDOuJdOvcXU+kmRFzTEwHUwaWnAx8pX5
-	ECu4/xZtFBrEq8A8uZuCPI6L2Ap6LfscmixJfZTLz0aO7apXeZ5D6N5itFnRxmP46dz+u04wYKe
-	M8vE0Ucunhg+qJGcr+GImAqhIXrRagOodQgFpqJr1KPvvpvGR/kL+W6u5McC8KgwNe0s3degiLG
-	TPD5hyzspr5v9mkkfmiprpcQC/6CZmw==
-X-Received: by 2002:a05:600c:a08b:b0:4bb:6651:9eda with SMTP id 5b1f17b1804b1-4bb88922ca4mr53057695e9.14.1795171703610;
-        Fri, 20 Nov 2026 02:48:23 -0800 (PST)
+        bh=vHOMPFBnuW28mRa7isHb3MCchoH5mvXwIUScVxLLKUY=;
+        b=paDOCgm/v/M2VHypmE4T2stZ/s1RFuTVAeMwbI+gePitiD15Y3wh3+JSKWnOvBn4y3
+         zpai2X3A627O1djl0GqUnN1cmFvALk0pgitGhdNqXz1ImhADtMv2zfz5t9Rw+g5ECZC0
+         DO/+QhVpRi329Z43Hd60uAY+tCX0xs8PFqUrNi8OCWdbX23sswXTinFcd2OHufu+SCub
+         gNQBrrij46Uy7+kLW/mvJB8WjSDp6/nyvcJi9I953GqZo4fx/psRFhy6ycMbAeviwc23
+         HK56LehcwCC8GAHKfAsjgGAtk2ksLA0RxA+ikvgktEJfTcI0piB7z5CvYJozsZIACewg
+         XlkQ==
+X-Forwarded-Encrypted: i=1; AL+hErHW0Qes+NmAsgkfR/CPCX3ds+szu0kJj79j4fkq9LTnjQ90qr46fnMGNX8DSDaNlVSKx7hgMHwz1RvOZ5X9Zw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/64v7/xRyTim2PKt4UsQnVNfUil3Y2WTMFc9MdC6PsbRGwP5Is
+	gH6CeSYR44WPlOIM+TqxjVODndb6/mJCh+6qZ6ouAhSERAMJ08uJKlIJEOZAqLnz0cU=
+X-Gm-Gg: AYBFou0reHBEoHvuCLz08tSow4fmp9w6y0ixk1F9jCaUyzi1+Z7Phyvn4lDIm/WaCGP
+	1+EquEcDkzZW8jI5N/ZmibOlJBrcyyC6WI23weglWekSjdqxHx59tpoL46qGzPCsGMfISx8FEOd
+	wlkOWDsIA8GbuY6u+TImQ6UffdJ5gh9OEczkzbxMkc4IHksLT+flvvlrRq2y1C/r+LQLsht9FeA
+	6dXCoPjFaCvctwrhzCK8BhXCb3FApqJTdvK1+7Y31cOa8nxrkgpYi3lboJBNFVBLXt6SwUUisV2
+	OAUmFkjhUgTJ8cWdJ1WO9iWxiLMQu/pdTTHgE778PyZ3+RqdvmSG+cqKmC/eO1LpIDi6opP59iW
+	nQHTFSHiD3yJefn9/ydhCWPOU5HYCS1Se/8MuIsaKoevxlMvdFeKmRD+uk5rOMNZitHZ2QN/8is
+	xJiErisBotdnNGTEANX6JlE9BR5YMZR3E5HIxQlq3/JsEBT6taeJDzn31JCy7ObQCuqQ7G5HKs0
+	uyu2TX3AyS58LVmnsab7zYV7g6aCK4cT/A6NIXnCe9hzfrn26tx+wZC+NyUrU0ZnF8iRMxXSRmt
+	kYDDVFvyYaCwoRGXwC5C8picwFvg6GyPeiBkAC9pcXZL7OReGmwRebgd4+agHK7Jo229yMjlvYp
+	mquEepAFl
+X-Received: by 2002:a05:600c:310f:b0:4b5:d95c:2378 with SMTP id 5b1f17b1804b1-4bb8881f9b7mr60419825e9.34.1795171705813;
+        Fri, 20 Nov 2026 02:48:25 -0800 (PST)
 Received: from alchark-surface.localdomain (bba-86-98-194-229.alshamil.net.ae. [86.98.194.229])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb88f14f1esm38161425e9.2.2026.11.20.02.48.21
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb88f14f1esm38161425e9.2.2026.11.20.02.48.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Nov 2026 02:48:23 -0800 (PST)
+        Fri, 20 Nov 2026 02:48:25 -0800 (PST)
 From: Alexey Charkov <alchark@flipper.net>
-Date: Fri, 20 Nov 2026 14:48:11 +0400
-Subject: [PATCH 3/7] arm64: dts: rockchip: Drop NanoPi M5 PHY reference
- clocks
+Date: Fri, 20 Nov 2026 14:48:12 +0400
+Subject: [PATCH 4/7] arm64: dts: rockchip: Enable ALDPS on NanoPi M5
+ Ethernet PHYs
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261120-rk3576-phys-v1-3-6382cd14e3dc@flipper.net>
+Message-Id: <20261120-rk3576-phys-v1-4-6382cd14e3dc@flipper.net>
 References: <20261120-rk3576-phys-v1-0-6382cd14e3dc@flipper.net>
 In-Reply-To: <20261120-rk3576-phys-v1-0-6382cd14e3dc@flipper.net>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -91,17 +91,17 @@ To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, Alexey Charkov <alchark@flipper.net>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1217; i=alchark@flipper.net;
- h=from:subject:message-id; bh=5qT6I0fyxu/KWGFadssYTHPy5IComESd8JDoC1h/QDg=;
- b=kA0DAAoWsqLYjxBZ1KUByyZiAGsAJW2gyaWdTUQhJ45E0zow6TH0ZQMhhzZW7bte5h/v9dF43
- IiRBAAWCgA5FiEEnfakPZUyDpq6SEj1sqLYjxBZ1KUFAmsAJW0bFIAAAAAABAAObWFudTIsMi41
- KzEuMTIsMywyAAoJELKi2I8QWdSlK94BAPQ3kqGcbzUlhw4XuafSmIBE+T4TPflywMkR+EONaWF
- hAP4kxZJpaSjPBy3yWYacO2N4ASKF9wtaQl248+2S22unDQ==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1114; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=mpSxx4bNJlZdRiHhmqkwGoKjmGi2UpOvN6mAhYr+h88=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWQzqOZ22986VC2TrsfYesTwddY5Pl2m7E/WRlMcz3/8L
+ Hon/5Jmx0QWBjEuBksxRZa535bYTjXim7XLw+MrzBxWJpAh0iINDEDAwsCXm5hXaqRjpGeqbahn
+ aKRjrGPEwMUpAFMtW8jwv+D+z+mvzY4/XMlj+qo5foPYLQafoGdKslYrpx6bE5s9ZQojw6oj8hO
+ ibt/mfDRDkWHXpCk/AsrXzJrwWoUjMahO8NbfUywA
 X-Developer-Key: i=alchark@flipper.net; a=openpgp;
  fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_024827_539202_8B3B2ECC 
-X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-CacheID: sfid-20261120_024827_582590_51646B8C 
+X-CRM114-Status: UNSURE (   7.96  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -123,36 +123,36 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Each NanoPi M5 RTL8211F runs from its own 25MHz crystal (X12, X13), and
-the SoC's REFCLKO25M outputs reach neither PHY. Remove the clocks the
-PHY nodes claim from the SoC, so nothing enables an output that drives
-no PHY.
+Let the RTL8211F PHYs power down while no link partner is present
+(Advanced Link Down Power Saving), which a PHY leaves disabled after
+reset. Both PHYs are also strapped to stop their PLL in that state
+(PLLOFF), so an unplugged port draws close to nothing.
 
 Signed-off-by: Alexey Charkov <alchark@flipper.net>
 ---
- arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts | 2 --
- 1 file changed, 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-index 49bbef5730d2..778cb8181639 100644
+index 778cb8181639..638e00b6e165 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts
-@@ -805,7 +805,6 @@ &mdio0 {
- 	rgmii_phy0: ethernet-phy@1 {
- 		compatible = "ethernet-phy-id001c.c916";
- 		reg = <0x1>;
--		clocks = <&cru REFCLKO25M_GMAC0_OUT>;
- 		interrupt-parent = <&gpio2>;
- 		interrupts = <RK_PB1 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
-@@ -820,7 +819,6 @@ &mdio1 {
- 	rgmii_phy1: ethernet-phy@1 {
- 		compatible = "ethernet-phy-id001c.c916";
- 		reg = <0x1>;
--		clocks = <&cru REFCLKO25M_GMAC1_OUT>;
- 		interrupt-parent = <&gpio3>;
- 		interrupts = <RK_PA2 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
+@@ -812,6 +812,7 @@ rgmii_phy0: ethernet-phy@1 {
+ 		reset-assert-us = <20000>;
+ 		reset-deassert-us = <100000>;
+ 		reset-gpios = <&gpio2 RK_PB5 GPIO_ACTIVE_LOW>;
++		realtek,aldps-enable;
+ 	};
+ };
+ 
+@@ -826,6 +827,7 @@ rgmii_phy1: ethernet-phy@1 {
+ 		reset-assert-us = <20000>;
+ 		reset-deassert-us = <100000>;
+ 		reset-gpios = <&gpio3 RK_PA3 GPIO_ACTIVE_LOW>;
++		realtek,aldps-enable;
+ 	};
+ };
+ 
 
 -- 
 2.56.0
