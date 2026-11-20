@@ -2,76 +2,89 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 808D3606A320
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 13:54:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4B7DA606A320
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 13:54:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dcF6CTHu;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=avxULmTp
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YUkZJs8s;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=pengutronix.de header.i=@pengutronix.de header.a=rsa-sha256 header.s=20260414 header.b=AGjG0qqK
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
-	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:References:In-Reply-To:
+	Cc:To:Subject:From:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=REyPYd+Jd1PiND7VpN3asNKp461KsN8qzz5IpWT6rdI=; b=dcF6CTHuogqgA3F8NkdrtI55hu
-	Cqml6MKyWtHTgWZL1UUOgoTkknNRpqFz/cy+wwsFFZyrCaCmb5F0Zbpjd7V3A84ugGTJFRhPNNJbe
-	bWSVqLbyAV0fXJSCtDuZGAsTcpQ0+dmllXacuPx65tEYi27DSUoeQ3yVH3pz8GXdSt8EvgGvOVXfr
-	s6ICLZ7FQtR1m2OThC2/Zt85oGHA0by4UhMnmUeLwLEcuO0lEP6+jBN8GDRDCm9nvrrrXYcHAQEs8
-	kg++laoR4FjfkDYFohu0uRQuB2AAEUB39LrkCY9Hye6L+oh253MOTJXz0YV4MRE3fml1RXbMlohLF
-	uLw1tuTQ==;
+	bh=RyZ/UOzG4gNQwc5bhyGle78Bp8aOfd5f26sLdMqzwbI=; b=YUkZJs8s84JJ0kC41xL/LWfEIL
+	FSb5wosj9bQxuPPeYOxFBfKPpiN2AR4ft1heC+q1CkiNm6n0IciznwCgC823n4HgExlm4rD30IOqw
+	dTCUyOv31/atJkqwWoYc1HpUS0pBdEw9Kx+rz9BMM19qWPVx0ZkbQAdHg1hy7I1F2e2e5YmKKibW1
+	xf/HFZNhdOe4Y7BQ4CcnqBLyR/ZuHCDttcFjM7Vds/v9GphDWKBj4VEk8DQRPJKPI2PUh/Re7/17m
+	QGLpq21AdnxYNWbPdpZoWrT8EJ83B6jnANsAzGdYuMmEa6eCKqJW2Gc+ikfgFEks95FrLquJXRI5F
+	mkmr6fYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUP4E-0000000FBXc-2lJY;
-	Fri, 20 Nov 2026 13:54:18 +0000
-Received: from out162-62-58-216.mail.qq.com ([162.62.58.216])
+	id 1xUP4Q-0000000FBdC-0Qb5;
+	Fri, 20 Nov 2026 13:54:30 +0000
+Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUP48-0000000FBWP-28BM;
-	Fri, 20 Nov 2026 13:54:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1795182840; bh=JvKgGTjq2BPEe61GwX/IAd5voKriY1si3N+Q1SQuS+8=;
-	h=From:To:Cc:Subject:Date:References:In-Reply-To;
-	b=avxULmTpzYlINMYMerBM8KO0ptt/FuqSFGc8Nvesy/uIg+2oRARAUR8EfBYiazqx1
-	 2BeuOfaIqGXlYGL05H++5xKwa2BFu+nPfyPYOAAPGxmNyLFedVjxjG2D9RROMbDXF1
-	 4IUU8S2vwn88T4XCjw8TJ45yZu+FyvdkhaRWhqfU=
-X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
-X-QQ-XMAILINFO: OTkXlZHit/HDYSOMMYUSEEaFDIssz1W9vtk4QajQI2ZSIDw6z3e3/fziSn1gxD
-	 NRzOwWA0EKV5Xs+u57yAudQ/ZR+h/8ZQ2O1AUpRdZGuBGoLSIniCUhxiNX60gGQBeU/s7BVNMeoDK
-	 6sQTLDQAQvtnsKWBuEa8O2bR9X6uLK3NdiBgHKpcgVyp/dqCOE9FZsnvH+Nh7TABBd4s+RjqnLpzo
-	 kX0WwTvW0pry+FPxjPfTFI5bDKsWLCNfU9b7rQs0QEMCX+yjXJF3pXLY5INZt1PRaeiYIm980EC+i
-	 ksbMOELwGQyLAsjY1g5aniNmIS+geQlR2jwJniCicFcpInkrFLuerPKM/r7Uc98T/fvCoTUrxSbHe
-	 8W67anNj909GuWCLJnvyzj9VKlcT/fMW4SgyQ8g1AjRjVve1raT93B6AoJRaskEg6NfIYLFNflEcT
-	 iZrnjeqQKB4VWhI+jVbUjca1TGGFOod6sMcR5YNTJTH9u693e5BXglWXTSkr+MsYa8zB+pv9V1jpD
-	 MjDcJhgl5yVjqOWyWxYtDdh7WHUJkVdiIlAgw0ZQtr+Cj8u/CiW1d16CsnX2zzj5GLAaduahoxfyM
-	 TCEkmm432ee+WSri6RKBSVM/ktHFXJCli1M/Hk4E6cqeWfk0BqBsxH8VRQ/ihT1ahdqfyvzYLJZEp
-	 t4q4/A6Tj8UGgn909/LVRfKN2IikVmwqK8AJfyFcBMoHvxT3TM/Z4dcuj/AaFZHSDd6L9BRYNMB5m
-	 F6HKoDrSPC+sX/x48Nu3RsE5fI/fZN/QHNO9LSEB4uLbomRE99gOdW/9ewDWlEPYEb5r16UQ2oOuM
-	 +FJvdsW+5wvlJ9rFoEhFMIQ8PjOK2p6G2Lf1G2jsd8EnrSlYbnzyTKkfkiU0QIzVZAblvQQLUGwoJ
-	 rfycw2PefoJtR3rtCuqN7jF7II9g0Xb5Xbp9LjMhSY7FY2cbWxZJzTqoD5p6QGQ2lrXTRIy433COB
-	 HF0W0RuPpgEDtZXbMBRLnVBbS/AMYrm0k5Gz4MUiuX19nwNerN+cqUrNj/gU4WqwYcbNpRx7XBtiQ
-	 9obkPQmlblrCQuSR8D8yRDCao9KM8Hq4xYqZQFtwvq3/NJG9iEXLhe13raQMjUOpe5jpnPM45cZ1A
-	 8alZDdwOwNZLX9K2Udy1Vu9Vfn88od9O75+eVdokKCqFJTvDITj3pAe+
-From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
-To: "=?utf-8?B?SGVpa28gU3TDvGJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?RWxhaW5lIFpoYW5n?=" <zhangqing@rock-chips.com>, "=?utf-8?B?VWxmIEhhbnNzb24=?=" <ulfh@kernel.org>
-Cc: "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, "=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bGludXgtcG0=?=" <linux-pm@vger.kernel.org>, "=?utf-8?B?U2ViYXN0aWFuIFJlaWNoZWw=?=" <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH v5 2/2] pmdomain: rockchip: Add RK3572 power domains
-X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0
-Date: Fri, 20 Nov 2026 21:53:58 +0800
-X-Priority: 3
-Message-ID: <tencent_DFB6F95537CDD14CC97C26B08CE407F4210A@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
-References: <20261118-add-board-ok3572-c-pmdomain-v5-0-f1af919dd434@qq.com>
- <20261118-add-board-ok3572-c-pmdomain-v5-2-f1af919dd434@qq.com>
-	<z4ZFdDPMSaWK2zh19ZM7pA@sntech.de>
-In-Reply-To: <z4ZFdDPMSaWK2zh19ZM7pA@sntech.de>
-X-QQ-mid: xmsezb41-0t1795182838tuf7c54wx
+	id 1xUP4E-0000000FBXP-1QEg;
+	Fri, 20 Nov 2026 13:54:20 +0000
+Received: from [127.0.0.1] (unknown [IPv6:2a02:560:5c0a:3200:9ebf:dff:fe00:fdb5])
+	(Authenticated sender: sha@pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 04D5C205B37;
+	Fri, 20 Nov 2026 14:54:16 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
+	s=20260414; t=1795182856;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=y4gUhOHZ5Dg/eVpejUL/iLgyeedE8wBdB818/Yz+Gac=;
+	b=AGjG0qqKX/dnRRDclRFEwp9LrG0BIGja6B5bhxSSGDDqOPb5yA8hC9qMxHo4g+DXTECZwD
+	IYaN68X/1Azmdy82gHGmFZ5GW81u8JMFFRRU9uV5dqM/N6OG/x+uc1xF3zJd7xuaRIJdGU
+	DOl44ccwdw/MMDmM60XV3/hV72DcNinIAn8a14Iqzwee2NoGw1AK1N4VcFQ0UHAgZR/ldN
+	lLM2EpqDyDz0vmuofAhepsk+ctEuSBSS8zemeftHb0V1er0rxRC/eGH25RQxgS1oBiP791
+	Tj89HipKsku7LiYfWPecDrRmzZ4sz+mnqChbpOjB24+K2e/VnIN+6RG/T5p33w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
+	s=20260414; t=1795182856;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=y4gUhOHZ5Dg/eVpejUL/iLgyeedE8wBdB818/Yz+Gac=;
+	b=Mfe3EvlI8G6xPOHWf8h2x/WMkjBzJv+9Soql10ONZZokf8gJT78snxc2o7ZQMZQnFYrY/D
+	wJqKYMd4en+axLquesgQqClWLOWMdl8b3bVJUncFSS2BvamlX2RgjapkPBMnUAQdZY/ne9
+	fE/NyJdD3IwRvVv+v4Y05ti3k2S7MZZ5XZWRyqxlTMpPhJ3avcKoOkZIWUfTGoM+reDmfS
+	P+UzSZFW97SIxsqwmFHjvdV/S+HjIraANeegTzQ6drkPK4fQEkWxtELHXeRaM/+mQdlcUg
+	sRuUAmcchX+pOW/K9nw8YwHUqqukp2n5oh8FwDiqiQVms2VkpPbMTdEWSS6ARg==
+ARC-Seal: i=1; s=20260414; d=pengutronix.de; t=1795182856; a=rsa-sha256;
+	cv=none;
+	b=G50iDqclBwQIZOWXrSdW7zR+j/nX6mLkHD8Qk5r0W79Gg3wVsvVp7z1bSLZqjKt7DZZc7Y
+	1V+/ZnBTI7wprK2F7feR7hUaqh1k9K0SlI13gMBRRDb36Gz76OwxmQsZ/8X0ejXNbp3wNt
+	s5O6W45XlBvPPtiacPbuBo3UbJNo/6v4q1ydZUDVNCBa6nlAbQLg6jq4XRpuRWN8TT66Fm
+	wp0jVvBGZyQseEVX6ALeuWGSwoKiBrcvajQI56/Now9Eu4OVmEhZu7xwoXc8Ar2jgXyrbi
+	behoYLWmgMaUNr/SBC+0BsllffVVHV4tW77uvrH+fKeKXQpY56PMpLAoc7t0tQ==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=sha@pengutronix.de smtp.mailfrom=s.hauer@pengutronix.de
+Message-ID: <028df402-a8df-4084-a4bc-7eca286a0c35@pengutronix.de>
+From: "Sascha Hauer" <s.hauer@pengutronix.de>
+Subject: Re: [PATCH v7 2/4] media: rockchip: Add JPEG decoder driver
+To: "Sergei Khomenkov" <shomenkow@gmail.com>
+Cc: "Sascha Hauer" <s.hauer@pengutronix.de>, "Lucas Sinn" <lucas.sinn@wolfvision.net>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>, "Rob Herring" <robh@kernel.org>, "Krzysztof
+ Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko
+ Stuebner" <heiko@sntech.de>, "Philipp Zabel" <p.zabel@pengutronix.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <92CE2271-6485-4B33-AF75-480F9BD56980@gmail.com>
+References: <20261022-rockchip-jpegdec-v7-0-3fd7dd55f408@pengutronix.de>
+ <20261022-rockchip-jpegdec-v7-2-3fd7dd55f408@pengutronix.de>
+ <596F6C9E-4A5D-4AE8-8D26-7A7247050D7D@gmail.com>
+ <85353f59-52a0-446d-ace3-65e2d03d0d0b@pengutronix.de>
+ <92CE2271-6485-4B33-AF75-480F9BD56980@gmail.com>
+Date: Fri, 20 Nov 2026 13:54:15 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_055413_105139_051A925B 
-X-CRM114-Status: GOOD (  25.08  )
-X-Spam-Score: -1.8 (-)
+X-CRM114-CacheID: sfid-20261120_055418_690081_57C1B921 
+X-CRM114-Status: GOOD (  20.73  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,89 +94,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+X-Archived-By: <archiver.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Heiko,
+Hi Sergei,
 
-> I guess the first question is, why do you need that?
-> The TRMs of both RK3572 and RK3588 have the voltage-domain power-control
-> registers, but why do you need to control them now?
->
-> Side-question, how are voltage-domains handled on the other SoCs.
-> The RK3588 also has the PMU_VOL_GATE_CONx registers, so I guess
-> they could also be turned off?
+On 2026-11-19 22:19, Sergei Khomenkov wrote:
+> Hi Sascha,
+> 
+> On 2026-11-18 14:27, Sascha Hauer wrote:
+> > I haven't been affected by this issue lately, but saw it when the series
+> > was still based on the hantro driver. Yes, I'll change to 3 bytes per
+> > pixel next round and make that the floor of sizeimage. Would be nice to
+> > have a proper solution for this rather than either wasting tons of
+> > memory or risk having too small buffers.
+> 
+> Thanks. A correction to my last mail: 3 bytes per pixel is not a worst
+> case for 4:2:0, despite what tj3JPEGBufSize() suggests. Since then I
+> built 4:2:0 test patterns that push the quality 100 scan as far as I
+> could: libjpeg-turbo writes 3.35 bytes per pixel of scan data, byte
+> stuffing included, for one of them (640x480), and the Hantro H1
+> encoder on the RK3026 3.14. At quality 99 the largest I found was 3.08
+> (libjpeg-turbo) and 2.88 (H1). The patterns, 96x48 and 640x480 JPEGs,
+> the same frames as raw NV12 and a short script that makes them at any
+> size, are at https://homenkow.ru/kernel/vpu/
+> 
+> With the Annex K Huffman tables and 8-bit samples, a baseline 4:2:0
+> scan is at most about 3.3 bytes per pixel before byte stuffing and 4.9
+> after it, at quality 100 (lower qualities are smaller). Other tables
+> give a higher bound, and APPn/COM segments add any amount on top, so
+> for a decoder any fixed factor is a trade-off.
+> 
+> So 3 bytes per pixel covers what the H1 wrote up to quality 99 and most
+> of its quality 100 frames, but libjpeg-turbo goes over it from quality
+> 99 up. If that trade-off is fine for you, I have no objection; I only
+> would not call it the worst case in the commit message or a comment.
 
-In his v3 review [1], Finley Xiao, an engineer at Rockchip, asked me
-to include Rockchip's voltage-domain handshake when adding RK3572 NPU
-support. Specifically, he asked me to call rockchip_pmu_vd_on() to
-request VD_NPU before asking the PMU to power up PD_NPU.
+Ok, I'll rephrase that.
 
-So far I've only tested basic NPU power management on RK3572. I haven't
-run a compute workload, so I can't say which NPU functions, if any,
-would be affected by omitting the VD request.
+Sascha
 
-I compared the upstream and Rockchip drivers for RK3588. Both switch
-the top-level NPU domain using bit 1 of PMU_PWR_GATE_SFTCON0 [2].
-Neither writes PMU_VOL_GATE_CON0 during normal NPU domain transitions.
+--
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
-Should I keep the VD_NPU request before powering up PD_NPU on RK3572
-in v6?
 
-> But in general, if you need to enable the voltage-domain to enable the
-> power-domain inside it, this really sounds more like a power-domain of
-> a different type - because the wiggling inside the power-domain
-> handling below looks strange, and we already are handling domain
-> trees.
-
-I checked Rockchip's kernel and the RK3572 documentation, but I couldn't
-find a separate status bit for VD_NPU. If I model it as a parent
-domain, would it make sense to track its state in software?
-
->> -	int clk_ungate_w_mask = pd_info->clk_ungate_mask << 16;
->> +	u32 clk_ungate_w_mask = (u32)pd_info->clk_ungate_mask << 16;
->
-> why does it need to be u32 now?
-> Yes, the mask should probably be u32, but why not change simply change
-> the global type then?
-
-I'll make clk_ungate_mask itself u32 in v6 and drop the cast.
-
-> both the clk_ungate_offset + status_offset addition should probably be
-> separate patches, as they should get a descriptive commit message on
-> why they are needed.
->
->> +	if (pmu->info->chain_status_inverted)
->> +		return !(val & pd->info->mem_status_mask);
->
-> again, introducing this new parameter should get its own commit and
-> descriptive message on what this does.
-
-I'll split these.
-
->> +	return regmap_read_poll_timeout(pmu->grf, pmu->info->fw_status_offset,
->> +				       val, (val & mask) == mask, 0, 10000);
->> +}
->
-> this definitly also needs way more explanation
-
-Understood.
-
-[1] https://lore.kernel.org/all/18fcfe7a-e25a-4516-810f-d787b779914d@rock-chips.com/
-[2] RK3588 TRM, Part 1, v1.1, chapter 7, especially section 7.5.5:
-    https://dl.namtso.com/products/a10/a10-3588/datasheets/rockchip-rk3588-trm-v1.1-part1.pdf
-
-Best regards,
-Cunhao Lu
-
-pw-bot: cr
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
