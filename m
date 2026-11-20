@@ -2,123 +2,76 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3BA3A606A320
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 09:08:35 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6F107606A33A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 09:40:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=d43CqBBs;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=jschaer.ch header.i=@jschaer.ch header.a=rsa-sha256 header.s=fm3 header.b=R7mugJqw;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=aivISwZU
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=x9lZZCNI;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=oSr97Ei1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Message-ID:Date:
+	Mime-Version:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=6RhnHVTRJ4J/D9yI6Zeo8clexi2vhp9vE7kXnmA3eAw=; b=d43CqBBsXJU2XeekPvyqQok12S
-	S0AOZ69NpkL3xJT+/ReO7il4+/nG1MQk847aGg3J6ELG2p7EKunD1FhGp3MFA3/jdrhgqPJyev3fH
-	I1rxSUyA+/jDfKQKdTSXssM1fF6Pe7+Ie1mTh5ZbZ+5cJGbM4+FOmDRo5l/yHnRsiWaLINxejQ2fK
-	oRrpcgRqHqqJsSKz7XqMEHfreaI6+YPxNbvE49nsUp9WqXr+P/MhS82wpjPQi7SlRlX6ts657tYu8
-	hqrnf9kMhnkvH1OTijwxZKkV3JOA9JU640x9USOV81BFOr7SLldInJwWnNo6WkERdbaUjrGKeV9Cw
-	TX9tMSbg==;
+	bh=uG56QHbfjyxnHzmoHwp1edE5TRTV4p4+Y76v/9kIiVo=; b=x9lZZCNIJd7L+p0OJn/vEjl9AG
+	wDKwaAbfhiKBZKXtKRdG98CMxflvPiIiKtWtflG3Rd2He2vmIsjwPd6Nquo6PkX/YzUU9Ca8osE5r
+	8dyyt3OOYABBuq+3eEX5cNsTtOq5EbtgNv8tKjdvaFC3oMBxys2qZ1Li/XX5FKQOWpVaS1igxYx8S
+	vLd0Bej4ktnT++x5jzGsMDRk1WXPSSF/vLFQidTAvML76qt6Hg+lhFlixyzU25Ro5LmOyAWgD6YYp
+	saWNsd7klmS2KaBWW/X1iAzGwNJVhMwROxQcsTW59SsLJ85sXvmRdLpG9TFthnOcRWv8q6IVW2Sm4
+	8tRlxKgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUKbc-0000000EQae-42l6;
-	Fri, 20 Nov 2026 09:08:28 +0000
-Received: from fout-b4-smtp.messagingengine.com ([202.12.124.147])
+	id 1xUL6q-0000000EUCS-0TZh;
+	Fri, 20 Nov 2026 09:40:44 +0000
+Received: from xmbghk7.mail.qq.com ([43.163.128.49])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUKbW-0000000EQZE-3h0d
-	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Nov 2026 09:08:24 +0000
-Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
-	by mailfout.stl.internal (Postfix) with ESMTP id 8E1FE1D00388
-	for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 04:08:19 -0500 (EST)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-03.internal (MEProxy); Fri, 20 Nov 2026 04:08:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jschaer.ch; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:message-id:mime-version:reply-to
-	:subject:subject:to:to; s=fm3; t=1795165698; x=1795252098; bh=Eb
-	8Btk76s77msHfVg+/TsIgZczD+oc/KLRtiVpgTo1M=; b=R7mugJqwUYfPgsmGbc
-	SszqyzftyFV9n3wx7kM0YsvVz7T9k9/VqO460/q7F9yY6H2HIbHcgGx4RF0AWDFr
-	Z+JUVGPY2ApuVBEqocNWQxwqn74MRtt2zvzJhtSFK/uQo4doHYIIZR1TguupzC/h
-	4RC1fluJHyjGux0CLtZZrD3U7J4qyJY6B2oRZPy42vTykPYSNQQrnnxTXN+Eukmx
-	Ciw4nfFg2NmdL3t/nG29FyR/DZtzkSjMnMs4CS3uJ/PD+5t5J4/D3O9khu/oT+gz
-	nxqfspeYw4LtLFU2xibTRLxdiP6vxf1BxJzZ0YsX2xzqWnFlPZGe/nNvCVXvp4S/
-	jdgg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:message-id:mime-version:reply-to:subject
-	:subject:to:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1795165698; x=1795252098; bh=Eb8Btk76s77msHfVg+/TsIgZczD+
-	oc/KLRtiVpgTo1M=; b=aivISwZUn2zhIH8UpkCWHs8XgMSuBSmznlNynCgur5pv
-	0UOgLS5NQ9Q2zPMZnOoMAaUyvU8kePoar/+cnOI22wZpwb6iiXCSGqn9UCbuuAl+
-	jyDf67QuaGUM3iu33dUOnOmOkOcUAWA3CLb3nSl8Y23mobfsXOaBlCeO+D/xbQcs
-	UZyye2wUcQPKL3fosgk6GJVFovJFTSrDDIjFvpgSSZeIDfhMa5GetuOUMEABbZAl
-	+Lu7X+7ySM4yHKtLAcDi+Nby6RW2WZJSUGfYvDxgRXASi3DG40wI0WjYH17LN40H
-	ZrbVC//ZnJGx2q6YkUCpBZSSnnH+60AFhdvo64AZlg==
-X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
-	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
-	action=sign d=jschaer.ch a=rsa-sha256;
-DKIM2-Signature: i=1; m=1; t=1795165698; d=jschaer.ch;
-	mf=PGphbkBqc2NoYWVyLmNoPg==;
-	rt=PGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmc+;
-	s=fm3:rsa-sha256:d6ce1rg8tCMhUf/nMaFrtNiRBZGX8xCI/RSHD2n9euwn7Zc
-	hpZM8x20Q7djPOXifMo+RigIFMg96ama5XgT2lzQKPDe1SwSKI7tgnhhuymH4PSW
-	oCrsQyXsxzCPr3vXhYC24kaWPI1iokVmi9BOzaxB9nsBfpCogIIWxjgG7noAk6Ws
-	PlxauYggh9LFNd9m9CaVEOE8KGSSpKLd1V3D17jaRwZU8h8GccAv7PnD+j5G2thX
-	ocPUL2kI798HPwBEhKZxmLUvzelRgEeRYak7QRgg5G6S2ItF8nE8XU2o3T+kykaw
-	3FEoXeISjdNsKvIkNQvptoyk4+X7HdlfPVsVWkA==;
-X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
-	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
-	action=mi-m=1; hc=10;
-	hn=cc,content-transfer-encoding,content-type,date,feedback-id,
-	from,message-id,mime-version,subject,to;
-Message-Instance: m=1; h=sha256:Dina7eqkP6ZONZ96ujKUKkvbXZTPeYWQAoG52r4zcww=:FR2VA/pOmFjNjYQfGp/Vu41XJ6bW+af+V+qlyrlnlKU=;
-X-ME-Sender: <xms:AQ4AawcOQEq8hAqLVsgyS7VWNn3BKC2j7qU-MJJqrE7PuvNmNdk81w>
-    <xme:AQ4Aa-wpIKKjDJOZywtIyWjFem4lBE5WDfydhZbMOx7kCz7s0eMefHex8Dch-86DO
-    GYySGDeJ3WQf2Y9pEQIVYA6x4syeljbtocwpaKcjCvOft-I3y_PWnm6>
-X-ME-Received: <xmr:AQ4Aa18akq4b1w6Tjm5A3iM2Jlbkmib7tGKbnMWOtd3spWcSf299fJh4ueEnJiz2MX4h9FVTsKG9zpkhF-5tXC9wYrV1DuAKyDdL>
-X-ME-Proxy-Cause: dmFkZTEXrV/HxlQ+uFM1Vvb9hd4Fep4Iz7Tfl+ZCU5TmlMm/EV93OgCR0ATk9L7A99QwOy
-    t0RPc+JM/E3+efD0A1zZzQDEgEVeRKlQV8JnS2tyog0XUVE0hlAgUZYJ0csH1Mp+7ZkW4K
-    YejMfg+em/LD9OHm2YlDpgGQMPeAxj6esbPowGt/wARofr9MAN6kX3ZdRdMdXA4OLgzo9S
-    gBxovOQaLhRYEXg9ALRDWtgNnJI4XWZsdxKa5K8QkafhqhaJa1NJnyQosnz1eMf0kpb+IP
-    rDxVGtdTSUAZc12x9SCfDx/PGeh+rJkaiD1O8kvgxPQZ/wPzP5VRHE6SA5U5SAdqePz1Fp
-    OHnEgevTHtK8SVk2DFGUxlX2347kVenhVkjgc4VOwR4AsC6mBWHhNjNdDolCdNyVBE1HQN
-    skPvz8997Ik8YwVeX7IZp6mUU+cf+vYXbhUJnBp846VeGOW6iMJgf0Rm/oulqnswzB3Han
-    tdX7KU10kLPMmvEC2g6f7d+cwNj27S89aunyRH+L+5hZ0xo1csJJGg2AGNEi/cPMe43rHL
-    PU98yQ/X+TX0czpFs5PLjr763GSDIkcqXaNDgwaXN4rjGivmiR7hyege0vsrb9uVtiO2Lz
-    3OD2yr9uNmI9muURCdWUup4wAK4R+OuIy1X29RbnEWjAjnY4srGWkwiimsUQ
-X-ME-Proxy: <xmx:AQ4Aa8yV73luS7OIuxK7I1OVLM_U15nGTYOXB9Fm81bPYVd6YS1Y9A>
-    <xmx:AQ4Aa9rnxYcTUUjvR7wmpBn3npwxhxNYt1TY4beFxI1ToHG6MzlqpQ>
-    <xmx:AQ4Aa1oLjD8C9dVGbPHoxPfnnnmfCeshThBevmg6TlbHMc087sOsNQ>
-    <xmx:AQ4Aa1AajPdgf05GcTe156-mf2zn_vIUzjQArfilllsIVXZhU2kHjQ>
-    <xmx:Ag4Aa5rn1blT7JH11eLChFUcT6tHWyqdf7QCcjbOJwk7jEm8cyegg0dO>
-Feedback-ID: ie67446dc:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 20 Nov 2026 04:08:16 -0500 (EST)
-From: =?UTF-8?q?Jan=20Sch=C3=A4r?= <jan@jschaer.ch>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Jan=20Sch=C3=A4r?= <jan@jschaer.ch>
-Subject: [PATCH] arm64: dts: rockchip: Enable HDMI RX for Orange Pi 5 Ultra
-Date: Fri, 20 Nov 2026 10:07:12 +0100
-Message-ID: <20261120090712.68178-1-jan@jschaer.ch>
-X-Mailer: git-send-email 2.53.0
+	id 1xUL6k-0000000EUBd-0qe6;
+	Fri, 20 Nov 2026 09:40:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1795167629; bh=FYDZTGaxRQkg6ye2y37LBZ7R/w35GWMR5g7vC5sJq90=;
+	h=From:To:Cc:Subject:Date:References:In-Reply-To;
+	b=oSr97Ei13la3XAwmDA99AgXnUonx56cczMhNiwcJUmlax4sLs6n5Nli6FvZyBONMo
+	 SDXJuOfFuv9G2bMkib6dFSovX2cjgtsOe/e2LpqU3ZlER68u6rL5qpIw9Ei7jTblHU
+	 2lR7DdiWTzWxG94lx8Hom7FylzG5gyLF6CdIMjzQ=
+X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
+X-QQ-XMAILINFO: M/BhhHt976mJlz9cj1QS+sHBoY4gKMr0HT9qk0Ju/X9qGHRJoxbU6sekW+/tRR
+	 fX3NkO49H2B6nMWAn74Wn4yTGfbgZRlh5TTkgP3nKSyAU9VtmO14+11NkoGeuPp7I8lhDlXmuEMNT
+	 zWC/h0LlvTefphW/1H1PjEf3OtJSMdtFj7XDEbnY5Y0CjJPPAzFLQR7O0Cv1HWri07qydg1YVoD6x
+	 0bNdln+QIDRl9mWWNPAX4MdVtB8t3LkwvaqJVtWnmfvsWXaEsfSqOHk1XaxovE93MtRfN1xBqy9qA
+	 XSComPs4Qu6WPs44lPo5jtS4EejhYCiFp5pUUpBlnuCwh+WOBITT0CoVP/UJKkS28lKDhjlQxJ2p1
+	 nZwSOshkwULKNxiVkrupQr6FkYkutE6mkC8LXvHSV8Ap60E07P9lfbRtdeYseA3cDZ8irYMg9bVnP
+	 bXOvZlg3iceF63haGYmvL39lJh/QJjWmcO0lWk9To7pJfFDyhnSEAajOP0dB+jypiBb8gGQyrZ7Zp
+	 4OrE/kxgq4TEcoPlB2C5KQAbaVZTI0AtYbo9ZGI82VY3GGTZcqbIQsOkuhN+jHyhNL5UeSY/lgPYf
+	 BFz5fjbl4IKQYvUgneTtbk1h8kPMP45nxhLZLFiJ1tJcH5fndHha1v+wN0zOKvRhrBAIbQQfvxpJL
+	 aOWpd2EefD2VU+xSe4DGyGgs5SkiUz/kyw8wAEhvuVYciFB6q/JiZee1wnuoHPfmbyg4WEWY18ezd
+	 bTvxk7mVV+h273bD2hlh/daw8xoW96T9A5bVa+xNC1CFot16kDeaKWD8qR/FJuHzigAeRdQXZFV2q
+	 /YMw6K2ANZOV9qFI2256UZ+JrAWTd7K6xCf8aHDH7q7AHitbwGB/ikHRIDGVrqKWqgH+KxmfaP/VN
+	 gjM6/c43x62rtF9tNxiwg673PILsZO3MrRZoqLr8VDjGDY8omhQgASYFsudH+ur0XCEeFDWGO8aLv
+	 292L81594Kr+dPfvw5kJzPHwubBfZp/Qch9vrG/aER3L3R0awUSPYhIDnF72HdVk6DoffKwaXQSGq
+	 ENFssGVkf6+H/feoNyidI1BByoIZm9gisfX1o
+From: "=?utf-8?B?Q3VuaGFvIEx1?=" <1579567540@qq.com>
+To: "=?utf-8?B?Sm9uYXMgS2FybG1hbg==?=" <jonas@kwiboo.se>
+Cc: "=?utf-8?B?U3RlcGhlbiBCb3lk?=" <sboyd@kernel.org>, "=?utf-8?B?QnJpYW4gTWFzbmV5?=" <bmasney+clk@redhat.com>, "=?utf-8?B?SmVyb21lIEJydW5ldA==?=" <jbrunet+clk@baylibre.com>, "=?utf-8?B?Um9iIEhlcnJpbmc=?=" <robh@kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzk+dt@kernel.org>, "=?utf-8?B?Q29ub3IgRG9vbGV5?=" <conor+dt@kernel.org>, "=?utf-8?B?SGVpa28gU3R1ZWJuZXI=?=" <heiko@sntech.de>, "=?utf-8?B?UGhpbGlwcCBaYWJlbA==?=" <p.zabel@pengutronix.de>, "=?utf-8?B?RWxhaW5lIFpoYW5n?=" <zhangqing@rock-chips.com>, "=?utf-8?B?UmljaGFyZCBDb2NocmFu?=" <richardcochran@gmail.com>, "=?utf-8?B?bGludXgtY2xr?=" <linux-clk@vger.kernel.org>, "=?utf-8?B?ZGV2aWNldHJlZQ==?=" <devicetree@vger.kernel.org>, "=?utf-8?B?bGludXgtYXJtLWtlcm5lbA==?=" <linux-arm-kernel@lists.infradead.org>, 
+	"=?utf-8?B?bGludXgtcm9ja2NoaXA=?=" <linux-rockchip@lists.infradead.org>, "=?utf-8?B?bGludXgta2VybmVs?=" <linux-kernel@vger.kernel.org>, "=?utf-8?B?bmV0ZGV2?=" <netdev@vger.kernel.org>, "=?utf-8?B?S3J6eXN6dG9mIEtvemxvd3NraQ==?=" <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: [PATCH v6 1/4] dt-bindings: clock: rockchip: Add RK3572 CRU
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
+Mime-Version: 1.0
+Date: Fri, 20 Nov 2026 17:40:26 +0800
+X-Priority: 3
+Message-ID: <tencent_BB5901AB88D47E874D0E348B32A609A92308@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+References: <20261117-add-board-ok3572-c-clk-v6-0-cabad6610c5f@qq.com>
+ <20261117-add-board-ok3572-c-clk-v6-1-cabad6610c5f@qq.com>
+	<34dbd46a-29cc-4b86-b9cb-9477dc0a4da8@kwiboo.se>
+In-Reply-To: <34dbd46a-29cc-4b86-b9cb-9477dc0a4da8@kwiboo.se>
+X-QQ-mid: xmsezb41-0t1795167626tagk7ay80
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_010823_105968_B9399845 
-X-CRM114-Status: UNSURE (   8.97  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261120_014038_874648_2EA6CFC6 
+X-CRM114-Status: GOOD (  19.69  )
+X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,42 +81,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	FROM_EXCESS_BASE64,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-VGhlIE9yYW5nZSBQaSA1IFVsdHJhIGhhcyBhbiBIRE1JIGlucHV0LCBlbmFibGUgaXQuIEl0IHdh
-cyBtaXNzaW5nCmJlY2F1c2UgdGhlIHNucHNfaGRtaXJ4IGRyaXZlciB3YXMgaW50cm9kdWNlZCBh
-ZnRlciB0aGUgT3JhbmdlIFBpIDUKVWx0cmEgRFRTLgoKVGhlIHBpbiBkZWZpbml0aW9ucyBoZXJl
-IG1hdGNoIHRoZSBzY2hlbWF0aWMgYW5kIHRoZSBEVFMgaW4gdGhlIE9yYW5nZQpQaSB2ZW5kb3Ig
-a2VybmVsLiBJbiB0aGUgc2NoZW1hdGljLCB0aGUgaG90LXBsdWcgZGV0ZWN0IHBpbiBpcyBuYW1l
-ZApIRE1JX1JYX0RFVF9MLgoKU2lnbmVkLW9mZi1ieTogSmFuIFNjaMOkciA8amFuQGpzY2hhZXIu
-Y2g+Ci0tLQogLi4uL2R0cy9yb2NrY2hpcC9yazM1ODgtb3JhbmdlcGktNS11bHRyYS5kdHMgICAg
-fCAxNyArKysrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDE3IGluc2VydGlvbnMoKykK
-CmRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1vcmFuZ2Vw
-aS01LXVsdHJhLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LW9yYW5n
-ZXBpLTUtdWx0cmEuZHRzCmluZGV4IDJiNjkzZGZiNDM0Yy4uZGRjYjFkMmY5YjQ5IDEwMDY0NAot
-LS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1vcmFuZ2VwaS01LXVsdHJh
-LmR0cworKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1vcmFuZ2VwaS01
-LXVsdHJhLmR0cwpAQCAtNDgsNiArNDgsMTcgQEAgJmhkbWkxX3NvdW5kIHsKIAlzdGF0dXMgPSAi
-b2theSI7CiB9OwogCismaGRtaV9yZWNlaXZlcl9jbWEgeworCXN0YXR1cyA9ICJva2F5IjsKK307
-CisKKyZoZG1pX3JlY2VpdmVyIHsKKwlocGQtZ3Bpb3MgPSA8JmdwaW8zIFJLX1BEMyBHUElPX0FD
-VElWRV9MT1c+OworCXBpbmN0cmwtMCA9IDwmaGRtaW0yX3J4X2NlYyAmaGRtaW0yX3J4X2hwZGlu
-ICZoZG1pbTJfcnhfc2NsICZoZG1pbTJfcnhfc2RhICZoZG1pcnhfZGV0PjsKKwlwaW5jdHJsLW5h
-bWVzID0gImRlZmF1bHQiOworCXN0YXR1cyA9ICJva2F5IjsKK307CisKICZoZHB0eHBoeTEgewog
-CXN0YXR1cyA9ICJva2F5IjsKIH07CkBAIC03MSw2ICs4MiwxMiBAQCBoZG1pMV90eF9vbl9oOiBo
-ZG1pMS10eC1vbi1oIHsKIAkJfTsKIAl9OwogCisJaGRtaXJ4IHsKKwkJaGRtaXJ4X2RldDogaGRt
-aXJ4LWRldCB7CisJCQlyb2NrY2hpcCxwaW5zID0gPDMgUktfUEQzIFJLX0ZVTkNfR1BJTyAmcGNm
-Z19wdWxsX25vbmU+OworCQl9OworCX07CisKIAl1c2IgewogCQl1c2Jfb3RnX3B3cmVuOiB1c2It
-b3RnLXB3cmVuIHsKIAkJCXJvY2tjaGlwLHBpbnMgPSA8NCBSS19QQjEgUktfRlVOQ19HUElPICZw
-Y2ZnX3B1bGxfbm9uZT47CgpiYXNlLWNvbW1pdDogYWViYjcyNzQ0NzY0MDMwNDBkNTgyYzYxNDc4
-ZGY4ZjRhN2JmOWNkMwotLSAKMi41My4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Jonas,
+
+Thank you for your review.
+
+> [...]
+> > +#define PCLK_DDR_MON 527
+> > +
+> > +/* Secure clocks */
+> > +#define ACLK_CCI 600
+> > +#define SCLK_DDR 601
+> > +#define CLK_STIMER0_ROOT 602
+> > +#define PCLK_SECURE_S 603
+> > +#define HCLK_SECURE_S 604
+> > +#define ACLK_SECURE_S 605
+> > +#define CLK_PKA_CRYPTO_S 606
+> > +#define PCLK_KLAD 607
+> > +#define HCLK_CRYPTO_S 608
+> > +#define HCLK_KLAD 609
+> > +#define ACLK_CRYPTO_S 610
+> > +#define PCLK_OTPC_S 611
+> > +#define CLK_OTPC_S 612
+> > +#define PCLK_WDT_S 613
+> > +#define TCLK_WDT_S 614
+> > +#define HCLK_TRNG_S 615
+>
+> Are these secure clocks meant to be used as SCMI clock ids? Why a gap from
+> 527 to 600? If I am not mistaken SCMI ids should similar to Linux clock ids
+> start at 0 and be a consecutive series.
+
+Yes, these are SCMI clock IDs. The CRU IDs end at 527, but the SCMI
+IDs are a separate set. The vendor header [1] uses 600-615 for this
+group, matching the IDs in the released RK3572 BL31 firmware.
+
+I haven't found the RK3572 BL31 source on GitHub, so I can't rebuild
+the firmware. That also means I can't change the clock IDs it exposes
+via SCMI. If I numbered this group from zero in the binding, Linux
+would request ID 1 for the DDR clock, but the firmware on existing
+boards expects 601. With those IDs, I wouldn't be able to read the
+correct clock data on my board.
+
+I'll add the SCMI_ prefix in the next version and keep the firmware IDs
+unchanged.
+
+> [...]
+> > +/* CRU-->SOFTRST_CON01 */
+> > +#define SRST_ARESETN_TOP_BIU                     0
+> > +#define SRST_PRESETN_TOP_BIU                     1
+> > +#define SRST_ARESETN_TOP_MID_BIU                 2
+> > +#define SRST_HRESETN_TOP_BIU                     3
+>
+> Please drop the unnecessary/redundant RESETN in all constants. The SRST
+> prefix is already a short for Software Reset.
+
+I'll fix the names in the next version.
+
+> Please see [1] for the header I prepared for U-Boot mainline RK3572 support,
+> it should have all these symbols cleaned up, to match naming patterns used
+> for all currently supported Rockchip SoCs.
+>
+> [1] https://git.u-boot-project.org/u-boot/contributors/kwiboo/u-boot/-/blob/rk3562/include/dt-bindings/reset/rockchip%2Crk3572-cru.h
+
+Thanks, I'll follow the naming convention in your header in the next
+revision. I did notice two possible issues with the reset IDs:
+
+Your header skips 421 between SRST_LINKSYM_HDMITXPHY0 (420) and
+SRST_P_PHPPHY_CRU (422). I've fixed this gap in the current patch.
+
+Your header also assigns ID 453 to both SRST_H_PMU1_BIU and
+SRST_H_PMU1_FW, but the lookup table [2] maps them to bits 9 and 10
+of PMU1 SOFTRST_CON03, respectively. Could you confirm whether these
+two reset lines are meant to share an ID?
+
+[1] https://github.com/rockchip-linux/kernel/blob/470f9dccbdc42e7b8a824d0a5c5640a10e9457d2/include/dt-bindings/clock/rockchip,rk3572-cru.h#L542-L560
+[2] https://git.u-boot-project.org/u-boot/contributors/kwiboo/u-boot/-/blob/85afc941266af08ab30a897dde794f952321025a/drivers/reset/rst-rk3572.c#L605-606
+
+Best regards,
+Cunhao Lu
+
+pw-bot: cr
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
