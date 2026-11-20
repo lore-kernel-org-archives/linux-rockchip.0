@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 69119606A695
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 21:29:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6C246606A6A3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2026 21:29:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=yfgfP+9A;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=VOHQZIPG
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rg1SvSgb;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=J6M2k4cp
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,64 +14,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=QwCdiJ61lfRvmW3i1I2mmSYBiHxN+/y9WeUd46ZVd7g=; b=yfgfP+9AcmMs/OOgJydgtKGXZq
-	KSTP8dbI+RfqBnV6dFaDQV7B6tC80/QgKx5Hy8njAXji3GydgPTuZAMu2rLS/MzH8HZf5jiKcuREh
-	CZbberJrRaZK0dm9aXiuCJtJf8x4LeTzQYgw7gP+3ttRP0AbsBQR/bmn+0TkI4dRy3rb+1qEPDqX3
-	odQtPvpXEZGdwZBSoJUFBuntTWZOkXEMf6pAD3luWvDERfq/wcPokcEXiXRU5FixATLw6s5AiBsDp
-	GaGFddruvaczapukScDMssWIz8jwzrTc6Y4Xa3NPgg7ruOOg7SMUYs9uejLKugXARwZ8FFMlP8Eg9
-	/C9OxMuw==;
+	bh=xiMKCRo1Pwg3IMByku011gcY92ANwnIJVfONk57JV9Y=; b=rg1SvSgbpR7zqkEkXYGKLlXN2d
+	0RNgq+sRk8UJ4FdG+7VJYzFyHm+GhIPf5B7ogggeb31s/aVznLwPIZdIkS6J346V+Atyhcacii2oM
+	4U3hZozcwFlOHpEwo/xqlrLslU8UlVnJ/BwVP0fYJrUCq/m27N33D+bA0jT2wv2BOWILDYvREvPgL
+	+8xKEOPion2OMEgaL+DFAco0MiPc5KLqwJLdbZtRA9LEs2xqpROzHTplh22TSKu3lYypE74h6SDEi
+	VGNpP9OL68K66zUeq9OS+Dk6bFuV6ZFEe7LkY2HKpHR+OWtMJOLG0bjonpu30k6M6eSpdYWqeDvUd
+	/ZkBc8qA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUWAW-0000000GJ9E-1vIW;
+	id 1xUWAW-0000000GJ8j-0wCm;
 	Fri, 20 Nov 2026 21:29:16 +0000
-Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
+Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUW9h-0000000GJ3e-40tv
+	id 1xUW9f-0000000GJ2u-2zYy
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Nov 2026 21:29:10 +0000
-Received: by mail-oa1-x31.google.com with SMTP id 586e51a60fabf-4ad89c49e0dso493702fac.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 13:28:25 -0800 (PST)
+	Fri, 20 Nov 2026 21:29:12 +0000
+Received: by mail-oa1-x2f.google.com with SMTP id 586e51a60fabf-46556b9e02cso1005634fac.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 20 Nov 2026 13:28:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795210105; x=1795814905; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1795210102; x=1795814902; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=vtcXd26CBIIDN3LfpX4nHV3TvJWIXKwwyZF0T/tbLeY=;
-        b=VOHQZIPG6eU65/5pJIL9oVsfNwGFRvWcZa4lrTj75fTyMgG1ak0psxgAw15m2Nercg
-         PaQADB2QV77eFK0I7geo86eOTTMBJCfdcrbXpdso3mMwxTaj7A8dGVnSNcnmnLEDkTSd
-         bKAxE6h5pK9NAZHl+rUjVbKbTuRnx9DaW1VIerFHWswOG0BDpwcLsdtdQl8k39rAzurA
-         zxHfydXJKfEtkcDKmQKkw+BgXpiSTuS4eZYNp5+VeHwLKzojKyHXG6u5QA+vFrtEkHL3
-         jmduQtkGzg6DhpzC+9hgZSSGlYO5IVWvpV8GEMidIrF/97HaIutRCEDWC4dryDF/dX6A
-         rVNQ==
+        bh=LXePsUP69J9BLo04WPbdbC0T2RsRqLHGKdkvwdCquvE=;
+        b=J6M2k4cpuzuGONtruvVR+DvJpl4xcYC52GFI17JxOzimXmdUHLTzgvSxQiGwWeMg4y
+         Lq0UvOtO22b8fZOOKdkEDmOQNlMcVyw35yT9olOB36qCR3DHv1UfoKL8+wu2V6adg05Z
+         owCpJyhHURz+MOjQes6V6i9PWbS13iGIpafq/F+vfnFutw+kBOHaohE3cyO3L9psP7YK
+         9+m1e2Fm3EkNpav6IMkXQKXw8akFlan//oij0c3LjOiHP27ha62LfWRUoOo7gxZ2cNAD
+         eHeWlSY3XO2Xlkts5TwJ5gT/WdjyCU05UjPlBen4MG9hbUY3YUhvkZviJ/xv4XR2hp+4
+         hHzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795210105; x=1795814905;
+        d=1e100.net; s=20260707; t=1795210102; x=1795814902;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=vtcXd26CBIIDN3LfpX4nHV3TvJWIXKwwyZF0T/tbLeY=;
-        b=zGLURUZiQn76WPq0yE2RhdTh7byhZTkIbYCMOHjizTv9z1Q4d3RjjFsA9KSlrnfNrZ
-         eIk5F8JKqKhbnJ33S/NyNJuLqI3jw9edzvTJX7e+pD2gcTodLsEN2YHH1+hv9oU7l4jr
-         JFAdzLy/gLx2oW9V0Df923FMCuwSTkvguADd9jtaP59Gpy6E1KTArAeeolZzYUHvOkcg
-         0EFPCUZ/Ktv8XLKY9iW36hsoADL7/kd8b4HDbJcgFedK58JF/kxckmrvx6YyTdyoKJ+o
-         hWkFBtBvDyR3A35T5JxZ9Uck/HXkl5lleVhxm4hO2lGDkWO0soxMRqKBa1q82Gz/mxPa
-         L6cA==
-X-Gm-Message-State: APuU4Z8xq4T7d5SWgHfH/5FWOurTNQSPDmiNqG5kCbQ10vwFDdHzvWcD
-	0iIBC//ccLFldEQFTRplW3N1SP4+Wz7WBnl93pH2LEyGTSBodgkALdmrWr3c+OoH
-X-Gm-Gg: AYBFou0efG5wQ6rQ8OnXgFIvny4pdrr6JsURmn2vv3LVle4OZsukhnga5sbiNqEHAuX
-	GNbUgeu9d0+pi/mPrPb7YTGAMebdaQLzYOuRlG7NdXGzkygbpo5Q3/+paBLdn/FruggbPMFe8eX
-	+t9fhc6bJm2jmL8OatqvNqkmjoYYwovhoBqdNuUQXUaRE7/3OTfyPpo8BfxCDSB4aswTOsNwIza
-	Fq0OQLLWlosbA1ZKgbFL1SCfH1qzoP34haezP5moe3qaCFjkdPstq5X6cV5WsMadQTA3FS43mgk
-	oX9FesnrkKsj+Knfifx4tPCvNJWuBWxEkF1kmpxhxRuII1Ubbyyn3uSiVeAzgal+HsIBdqICB8S
-	gJk9p/5VIgbU3ZbRyNTxDW4rnRyzJd64BqxcHw3hrHW6glEbGzQVeu6PQyBLXuyFZr4lIXWID+H
-	7CaoKVdSUQIi3cE7Z6LLY8Kc6/5YT1vm0DVPXoyTf7R3O53cTvrzZltll4nlwB3OMOyzAXkYBCx
-	QG7Jowee4KxJFG1wxlj55FUb5NUl0dEU2k7BfAheGThAoENG8qRvW1riHBc4iKYV7HIArbOvYxe
-	R/vHg9q/eMnQ0DvzYc1Ql1E29fP94Q==
-X-Received: by 2002:a05:6870:5b9a:b0:4b4:8c0f:40b6 with SMTP id 586e51a60fabf-4bc821920bcmr4451217fac.20.1795210104791;
-        Fri, 20 Nov 2026 13:28:24 -0800 (PST)
+        bh=LXePsUP69J9BLo04WPbdbC0T2RsRqLHGKdkvwdCquvE=;
+        b=N2ZkmVsm5vOez+hQQ64HL1Ma5QVftQjy3z6jOS/bHi0oDo2rZY5q4xJGtoyiWSMoqI
+         CIsTXJKIqn7gpv5u1yY/2M7UotWXKOqVJGie/yI9Ha9UNmEdgbKM75ryKof7s+NAxOFY
+         S0IDdCESR7k5LvHtUYlhXTaVv8+IB7FijZYll/AExtDHcT2iVGu/8LPFuO+w1r6xe4gx
+         op5uaOGkKpkaqW+Xmjfc8z+iWDWlSjIRWA2RjYmM1BprEkBzTlNL4b2XvRI18LhtMjst
+         VXkjNu5of0nuBSO8S+GZSIqiwxHqad870tebE0Py3jRtaKYU0AIA5e70QxeGnPAchIYL
+         5+QQ==
+X-Gm-Message-State: APuU4Z+mUmO5CcdHxUwUkieWo6MSW+DYdIVpCdyC4O6ht7yOL1/S3+IR
+	3Je6xKZofBmxQtw6hK6zRnH6u9ZyqXjDzTweY+sci4WZJBtPkNdH6rjJ4ToWVcbC
+X-Gm-Gg: AZFdTZdm+4tzvu8mfCryt0COTOm7WxNmtYxOaEsJ9k9+lz/0OpijKynSPud71xC8N3n
+	b3/78Y0ufWZAu7eV//e7mFC5+ZvRzbKDuc2PX3nfbEoePMyZLeXypWfoL8PHJ5r+xZ3d0Cwkv5j
+	Z2j2Fq//+BslVE2D1k8apnb1jRsxgYfBgtFDzeqsUPxmbs6Dpo/KR4VJTXf+uDdrIsguGc9NzUe
+	L7Bla5WQRXCa4JpCkG9Zq1+GKL/6oR0fSRFLd/O9fv1S+51WvbZRaupp2TkfNaT3ooyrnGCELXG
+	LaywMLq2d6X9dLidnUgXV1Pb5lsYUFfaxPg7XnUtADRFOsAc861vwvENB70hXXIX7QGhe3ohi3z
+	xqUFF/EiMkuvjfK7ZmzIaCH5gTbIP/aY057pkDkn0gAOeRczWMKapB6CcpzS+YjjH+p0TRuuj63
+	pYiLMrcgmssG2fDuAUv1ManRJibY8UvshIcQZyXwwhkhVSEybn5e5TBwsBpUIZu7t5Ur6SqS20j
+	ac9ktYZwyo3Tie6JlHwwMwan9qoAhk8K7yPATYl6ljMFKTfl6J/sAO7zmm/MyyT/jLsKmZ2fkUO
+	KTL/rWF/6vON4nyZ+VQTVaeTHltsbw==
+X-Received: by 2002:a05:6870:9d90:b0:4a8:15a:b062 with SMTP id 586e51a60fabf-4bc84f170d6mr2947268fac.25.1795210102525;
+        Fri, 20 Nov 2026 13:28:22 -0800 (PST)
 Received: from neuromancer ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4bc5b07d766sm3774126fac.2.2026.11.20.13.28.23
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4bc5b07d766sm3774126fac.2.2026.11.20.13.28.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Nov 2026 13:28:23 -0800 (PST)
+        Fri, 20 Nov 2026 13:28:21 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -85,18 +85,17 @@ Cc: devicetree@vger.kernel.org,
 	t.schramm@manjaro.org,
 	xsf@rock-chips.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V2 3/3] arm64: dts: rockchip: Add Battery Gauge to Anbernic Vita-Pro
-Date: Fri, 20 Nov 2026 15:28:15 -0600
-Message-ID: <20261120212815.35663-4-macroalpha82@gmail.com>
+Subject: [PATCH V2 1/3] dt-bindings: power: cw2015: add cw2215, cw2217, and cw2218
+Date: Fri, 20 Nov 2026 15:28:13 -0600
+Message-ID: <20261120212815.35663-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261120212815.35663-1-macroalpha82@gmail.com>
 References: <20261120212815.35663-1-macroalpha82@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_132825_997561_8790E0F8 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261120_132824_494955_38712081 
+X-CRM114-Status: GOOD (  11.48  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -120,46 +119,96 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the Cellwise cw2217 battery gauge to the Anbernic
-Vita-Pro.
+Add bindings for the Cellwise cw2215/cw2217/cw2218 i2C interface
+battery gauge. It is similar in function to the existing cw2015 but
+with a different register layout. Each of the cw2215, cw2217 and cw2218
+only really differ in the minor specs and the hardware ID they display
+when queried. shunt-resistor-micro-ohms is a property in use for
+multiple devices so not appending a vendor prefix to it.
+
+Move the minItems and maxItems for the battery profile to a conditional
+based on the compatible string, as the new monitors require 80 bytes of
+firmware instead of 64 bytes.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- .../rockchip/rk3576-anbernic-rg-vita-pro.dts  | 21 ++++++++++++++++++-
- 1 file changed, 20 insertions(+), 1 deletion(-)
+ .../bindings/power/supply/cw2015_battery.yaml | 41 ++++++++++++++++---
+ 1 file changed, 35 insertions(+), 6 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts b/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
-index e66803b5399c..2203e092e8c8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
-@@ -954,7 +954,26 @@ hym8563: rtc@51 {
- 		wakeup-source;
- 	};
+diff --git a/Documentation/devicetree/bindings/power/supply/cw2015_battery.yaml b/Documentation/devicetree/bindings/power/supply/cw2015_battery.yaml
+index f7bde324153d..dce7c51e4e62 100644
+--- a/Documentation/devicetree/bindings/power/supply/cw2015_battery.yaml
++++ b/Documentation/devicetree/bindings/power/supply/cw2015_battery.yaml
+@@ -14,12 +14,13 @@ description: |
+   phandle in monitored-battery. If specified the driver uses the
+   charge-full-design-microamp-hours property of the battery.
  
--	/* cellwise,cw221X battery manager at 0x64 */
-+	cw2217: fuel-gauge@64 {
-+		compatible = "cellwise,cw2217";
-+		reg = <0x64>;
-+		cellwise,battery-profile = /bits/ 8 <
-+			0x5a 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-+			0xab 0xb5 0xae 0xc0 0xa9 0xa4 0xcf 0xaf
-+			0x96 0xff 0xff 0xd7 0x9a 0x83 0x70 0x69
-+			0x65 0x65 0x65 0xb8 0x81 0xd9 0xaf 0xd9
-+			0xd2 0xce 0xcd 0xcb 0xca 0xc7 0xc8 0xc5
-+			0xc2 0xba 0xa8 0x96 0x8a 0x85 0x7d 0x7a
-+			0x7f 0x88 0x92 0x93 0x94 0xd3 0xff 0x5f
-+			0x20 0x00 0xab 0x10 0x00 0x91 0x68 0x00
-+			0x00 0x00 0x64 0x3c 0xa0 0x89 0x00 0x00
-+			0x00 0x00 0x00 0x00 0x00 0x00 0x00 0xb2
-+		>;
-+		monitored-battery = <&battery>;
-+		power-supplies = <&sgm41542>;
-+		shunt-resistor-micro-ohms = <2000>;
-+		status = "okay";
-+	};
- };
+-allOf:
+-  - $ref: power-supply.yaml#
+-
+ properties:
+   compatible:
+-    const: cellwise,cw2015
++    enum:
++      - cellwise,cw2015
++      - cellwise,cw2215
++      - cellwise,cw2217
++      - cellwise,cw2218
  
- &mipidcphy {
+   reg:
+     maxItems: 1
+@@ -31,8 +32,6 @@ properties:
+       it is to mail two batteries to a test facility of CellWise and receive
+       back a test report with the binary blob.
+     $ref: /schemas/types.yaml#/definitions/uint8-array
+-    minItems: 64
+-    maxItems: 64
+ 
+   cellwise,monitor-interval-ms:
+     description:
+@@ -43,12 +42,42 @@ properties:
+     minItems: 1
+     maxItems: 8 # Should be enough
+ 
++  shunt-resistor-micro-ohms:
++    description:
++      The value, in micro-ohms, of the shunt resistor used for sampling
++      the battery current.
++    minimum: 1000
++    maximum: 50000
++    default: 1500
++
+   monitored-battery: true
+ 
+ required:
+   - compatible
+   - reg
+ 
++allOf:
++  - $ref: power-supply.yaml#
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - cellwise,cw2015
++    then:
++      properties:
++        shunt-resistor-micro-ohms: false
++
++        cellwise,battery-profile:
++          minItems: 64
++          maxItems: 64
++
++    else:
++      properties:
++        cellwise,battery-profile:
++          minItems: 80
++          maxItems: 80
++
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.53.0
 
