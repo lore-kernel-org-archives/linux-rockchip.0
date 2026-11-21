@@ -2,106 +2,87 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19948606A332
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Nov 2026 06:30:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 47524606A33D
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Nov 2026 06:33:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=m611m8a6;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=dlGenvA9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lO1Hdest;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=yt/wcE0V
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=3sbyTOYHPXNFmx/U7Yaw3FCaghU/zgBLrB2r2VO20nA=; b=m611m8a6fK/ZYOHWe/wsHQcHDq
-	S2l3hyLBd8hx1+Lh/iSgCRYlHSr//Ltzm6xI/yi1Vp6rANU3mPUqz/V/+CYc+UgEjW/OqRIeS77yN
-	Zd6ZNj79y/1Fi0BuNQwr6W3lRfpOi4Nr8DE+oXw8f+Sy9Ip3zQQgLgE8h+D/nZozWYy/ifgq503vh
-	WvAVJtd+7kYVUrmpIrQoH4Icw2J/k9+Z2eaqFY87GOa+tdviQyHSaZo8DwUrgzbfBzzdFVfSJKQ+q
-	FOJLqp9mvb57GEWcKjkmynvQ/Okv8+t8/FGQTQXnbV5gi6EpyrVTOFiuCXJnxruSEamPRB68Iub9r
-	EsJ8uzKg==;
+	bh=qJ4NBaHflThLbJxqAjoZt5+mAFbvocX72AiK0ifGIiQ=; b=lO1Hdest3OAmBMmzCn4dC23La7
+	IGXIq0lY8azn73yBMxfT2++8tYpQXSrrm8b565gKzW+YGrGxLQ1xjSK7XdwNC5TN0bIwBdNs+85o3
+	KhQx168NflP7fLi/MP1dpiPe+3K9aHgHzY0rAczlSUnox8h2iVXK03HNRd4TmBe8Wwi2gcfZVg4qp
+	+yPVbCXyR51T0Y8HNANpcBlNle7Nr9h4jhx/Kdd4K6++lVLyYmmCa4Iu2Wg8Tivkia+7aZTpuHha1
+	eCkmseHah9wKLhJ2bHQCR48ln18t3Ih11ohpEUzh9Y8BpuexteAapkTBbvgHmRkdY6QhXhPvYTWVt
+	FIHtD0bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUecD-0000000GnS5-1cOG;
-	Sat, 21 Nov 2026 06:30:25 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xUefV-0000000GnvN-1SHq;
+	Sat, 21 Nov 2026 06:33:49 +0000
+Received: from out203-205-221-155.mail.qq.com ([203.205.221.155])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUecB-0000000GnRP-2hZR;
-	Sat, 21 Nov 2026 06:30:23 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 11F0845CB4;
-	Sat, 21 Nov 2026 06:30:23 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795242623;
-	b=q4SH99T3J/9nau3VAKqYyLSA6bYUFtyiKx7Gbls+ueKXEl2131eM3qwJxCxyN9SEfwIj
-	 0qttqqeDGnOslFcWc8dH90IXqrKbNH802g3cu8aW6iYwt5l46nM4Xk725NxWEAyFcgC1N
-	 YQGtmEwWlrK0E2IbjlRZWDAYjYR5ryaSHh3hmGBbL6uB4olr20l2yVTB4Scu6rOc6Jtsp
-	 S7H7uk7AWWyQgz25HJ/QFQ3CHPt0ZDsmOZU+suo7gBrqIo8iJYfKFdysDKyYO7z/EoJyI
-	 aKd8uH0+uIpcsSsUhjsv/1b/Y6kPjnz2l2KBKMcEfHoImqiDofuCQ22wEZ499WQlMWA==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795242623;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=E3eSco/DGJQbQNBc6DVRc0KKsxNtSjGfkJNnHbsunqk=;
-	b=QJ7C8mLZmGFruCyXMJCm6WDQyYtF8K49lHH6sYTKrtGESqTTqEThJsaZrpI/ZfyoCnAa
-	 j6fOX2dPAAC/rtSd6oRSN6iEb3ji4swYclBPrbPhB2932rpDshyb8QZkTpu7MEhId12Xj
-	 ULVs6kOwVVZsaItJqk4oVFmJSYLUa6Q8xQogelZbZI9dKo7qivV2iGbnHwmhWFT+ov1Qe
-	 oyLKypWDWr6vWVIEehPjBlMd+lxYpaPIfXjtRIGxaKYtHoi8QkLiiS1iD99mppvVinWRa
-	 mXtDfV9KLNsUGvMUmlP08EUtiwhGZ4nBMu8NZ3Ntv9kVex4LG0xS1tCkZ+G98/lEv+Q==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 086331F000CA;
-	Sat, 21 Nov 2026 06:30:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795242622;
-	bh=E3eSco/DGJQbQNBc6DVRc0KKsxNtSjGfkJNnHbsunqk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=dlGenvA9G7Dm9iTYhSxMsCuqHe3A7wKC7we1IMimaCHjDPsBwZ57/ohr9BX5FKodI
-	 rHBnpAWMeaf0cSMEhSAd7d2Bd6IFwv5q/ZbaiN7GGMQ6A6VaKL4cRNSMYNIo6wO28Y
-	 UwxZYFGLyI5i0b613nJ4pyF7Cqj5NA/oSlieiO07WibjAlVGpykpz56zK1HixuLkJU
-	 BQPcpEXRjT5IjN+JWm2VhM7mYfHrZNVjAVlHPyD5WE2NM1tUDP8TCbaoBjNkHSkrEs
-	 0m1kI07YceIay0/ifl4oHOqzcAHHVwAXq5Qo148gggPT59NNNbnMGy8XPfk93GTPj7
-	 7k6qMo6PcTJSA==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 877634BB28;
-	Sat, 21 Nov 2026 06:30:21 +0000 (UTC)
-From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Sat, 21 Nov 2026 06:30:22 +0000
-Subject: [PATCH v3 2/2] media: verisilicon: Handle VDPU2 decoder interrupts
- like the G2
+	id 1xUefR-0000000Gnt4-3Hhe
+	for linux-rockchip@lists.infradead.org;
+	Sat, 21 Nov 2026 06:33:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1795242816; bh=WCE0vUfhS0MhPYOM4DRo/ve5dejGQTzGK0Aug4NmRXQ=;
+	h=From:To:Cc:Subject:Date;
+	b=yt/wcE0VqUe3YStJRPZ64ruksnzgz5e5T3jmDUlwhR6IWTVR/bNblcjNvVD/4p9LF
+	 Ec1p/8XI7iv7oASsB+aFKC5aZmTpM9/BoJY/FdDcYfBPSvitVLI1eZve9fl88V4FdV
+	 cD4AS2VuwwTwcrGnTUDUYZ/44uVDfsEmbuH3faCU=
+Received: from jerry-PC.lan ([2408:8249:5f:7101:71a:8713:56b4:5043])
+	by newxmesmtplogicsvrsza53-0.qq.com (NewEsmtp) with SMTP
+	id 86136C4F; Sat, 21 Nov 2026 14:33:33 +0800
+X-QQ-mid: xmsmtpt1795242813t2sx48k49
+Message-ID: <tencent_5995CC7B942E7CD204E49AE7AE32164BAB09@qq.com>
+X-QQ-XMAILINFO: OZZSS56D9fAjSJ9wQXs34T/QCnXRQN1WHKrDU0AzKxo+oPpQOEt6oaKnTYBun0
+	 dhvk7l0VVzmWluLRZUV2IobXFwWimg3+dCrdNAqANIm/ZlYYeyrpFvHKeJduD/9yS8OtbK72EPhs
+	 jN73tWTYZUQNQCAv725uvIGjmsbZJUx0puQF9D6RX65exj+s2nlJZYVXMIeoQQVNZ8Ev1Hufw0/C
+	 qZ0aUcDa/Z1FE+ZolIkZNHBBJ0moqEpnYor+6xbq2CfU9WI6DVicRtZBVAkOFd4vPdr/aWfc1IOp
+	 NkIdWmIAi5CJ6Ychu651fWd80ykyDJLPOG0ge51CjvV//mZ8zKMeq479QVb3UqOenMFGEEc/AZ8V
+	 SISR7e/JwYnKxD4oTzptfHDFs6t1iYKB771+wmLZHYagFndpNvFJ9l+XNmy2Ob6nAfdEryvXRPVi
+	 uVwqhZzsUMgq5W2VXZkymaKt4RwUfR9qGzKRf1CecRNvxvh52KiC7ofapyscIvxLaGY0JJyr3tYF
+	 D3/mn4iO6lA9qV0X9P+lk2TAr3LmUlvJLaljktBDjkJ6z+QsEfFzBrCO9U8u0hD+VcrXzQKPsPi5
+	 iQwt7xWU81zcsk9E48Vwe1HlhoN3NLHfXAQtFXaoueB3vrtPA/bQXGVZYcFlrVM7rk6u1VYKptbi
+	 Wb7MtiJbtW1z4n7gYxLXbjl1GWJZCpYB74i03GRNf4NEImzYexSrRYCQK+940Xil6BiWBtRfzLKx
+	 CzGyGp8NLSVAk8vBfXFs/IRfq9gZVPUA+aoVHyX50AIfQgB2WsHSPdJzeZHjeWNh4Qv2dQ98yv5G
+	 LofJFsdTT2ULQzuJB64nqLbW8SgnSfbtPrA2t3sFm2vJIN7u3TRNwXT7CtQ9WS4V9yKE0M6G7BcL
+	 3UdcYngiz8FLby2LpJfy2EpMfPL6QysM+dvF/1b06CcNxX02fIzwHy6xRF9LVei8UojHx5sIEgCM
+	 MY1jRwGcLMTNx6OCmorD4aaGe0NXnMIZFbG81F1oetvmm3ODNEGyC97g+sdMp7ov/bhEG7sUD12G
+	 wSqj0WOeWiSS3RHrZHADNtyoBwOPYeDeeRrGFgEdx2cuMaXulRASi144AeL9EWXMWYrvAFOf0LBw
+	 ul5hI8IEyjGdMvDr7xktyeeLjshe6jLbkyIIxMGLG95gUEobFAyb+oxqIkqDGiX6RS7KMkl++8l2
+	 05qfSB0I4pXA81Hw==
+X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
+From: ZhuXiangyu <1194781887@qq.com>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	ZhuXiangyu <1194781887@qq.com>
+Subject: [PATCH 1/2] thermal: rockchip: add RK3506 TSADC support
+Date: Sat, 21 Nov 2026 14:33:29 +0800
+X-OQ-MSGID: <20261121063330.1094548-1-1194781887@qq.com>
+X-Mailer: git-send-email 2.47.3
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261121-vdpu2-errreset-v3-2-073b5e5bdd64@gmail.com>
-References: <20261121-vdpu2-errreset-v3-0-073b5e5bdd64@gmail.com>
-In-Reply-To: <20261121-vdpu2-errreset-v3-0-073b5e5bdd64@gmail.com>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, 
- Boris Brezillon <boris.brezillon@collabora.com>, 
- Hans Verkuil <hverkuil@kernel.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Arun Iyengar <aiyengar1990@gmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795242621; l=2022;
- i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=XODhh5Dd9rMUpP33KPbOb4EVOiXmSAe1+k9Dq3skJb8=;
- b=CdFflbvT8l/U4XCM+0ECupgCV1WJ5De35FbZIRZqABSUKoTdZUGX23wEnKFr6VfaBR6VJ41Nf
- 9sZr2w6mg1eB1J7oz4EtCDfbpbnK6a30Pt44KW+XC02GXSwx59Rhcr3
-X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
- pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
-X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
- auth_id=1480
-X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261120_223346_236490_641A2826 
+X-CRM114-Status: GOOD (  19.68  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,73 +92,241 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
+The RK3506 TSADC is based on the TSADCV13 register layout and provides
+a single CPU sensor channel. Its analog front-end is enabled through
+the GRF and the controller needs the TSEN clock for the sensor analog
+supply.
 
-Do as the G2 interrupt handler: ignore interrupts the decoder did not
-raise, report the error type and don't finish the job while the decoder
-is still enabled. The decoder disables itself on errors, except when
-its input buffer runs empty; a later interrupt or the driver's
-watchdog then ends the job.
+Add the chip data, the conversion table, the initialization sequence
+and a suspend callback that turns the analog front-end off while the
+SoC is suspended. Also grab the optional TSEN clock so that it is not
+disabled as unused.
 
-Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+Tested on an RK3506B EVB: the thermal zone registers successfully and
+reports the on-chip temperature correctly.
+
+Tested-by: ZhuXiangyu <1194781887@qq.com>
+Signed-off-by: ZhuXiangyu <1194781887@qq.com>
 ---
- .../media/platform/verisilicon/rockchip_vpu_hw.c   | 22 ++++++++++++++++++++--
- 1 file changed, 20 insertions(+), 2 deletions(-)
+ drivers/thermal/rockchip_thermal.c | 101 +++++++++++++++++++++++++++++
+ 1 file changed, 101 insertions(+)
 
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index 4bc1bdb41c70..3bc4400d5778 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -388,13 +388,31 @@ static irqreturn_t rockchip_vpu2_vdpu_irq(int irq, void *dev_id)
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index 5e327039..fbfd78a6 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -104,6 +104,7 @@ struct rockchip_tsadc_chip {
+ 	/* Chip-wide methods */
+ 	void (*initialize)(struct regmap *grf,
+ 			   void __iomem *reg, enum tshut_polarity p);
++	void (*suspend)(struct regmap *grf, void __iomem *reg);
+ 	void (*irq_ack)(void __iomem *reg);
+ 	void (*control)(void __iomem *reg, bool on);
+ 
+@@ -146,6 +147,7 @@ struct rockchip_thermal_sensor {
+  * @sensors: array of thermal sensors
+  * @clk: the controller clock is divided by the exteral 24MHz
+  * @pclk: the advanced peripherals bus clock
++ * @tsen: the sensor analog clock, optional
+  * @grf: the general register file will be used to do static set by software
+  * @regs: the base address of tsadc controller
+  * @trim_base: major component of sensor trim value, in Celsius
+@@ -165,6 +167,7 @@ struct rockchip_thermal_data {
+ 
+ 	struct clk *clk;
+ 	struct clk *pclk;
++	struct clk *tsen;
+ 
+ 	struct regmap *grf;
+ 	void __iomem *regs;
+@@ -210,6 +213,7 @@ struct rockchip_thermal_data {
+ #define TSADCV2_AUTO_PERIOD_HT			0x6c
+ #define TSADCV3_AUTO_PERIOD			0x154
+ #define TSADCV3_AUTO_PERIOD_HT			0x158
++#define TSADCV9_Q_MAX				0x210
+ 
+ #define TSADCV2_AUTO_EN				BIT(0)
+ #define TSADCV2_AUTO_EN_MASK			BIT(16)
+@@ -220,6 +224,7 @@ struct rockchip_thermal_data {
+ #define TSADCV2_AUTO_TSHUT_POLARITY_MASK	BIT(24)
+ 
+ #define TSADCV3_AUTO_Q_SEL_EN			BIT(1)
++#define TSADCV3_AUTO_Q_SEL_EN_MASK		BIT(17)
+ 
+ #define TSADCV2_INT_SRC_EN(chn)			BIT(chn)
+ #define TSADCV2_INT_SRC_EN_MASK(chn)		BIT(16 + (chn))
+@@ -246,6 +251,10 @@ struct rockchip_thermal_data {
+ #define TSADCV6_AUTO_PERIOD_TIME		5000 /* 2.5ms */
+ #define TSADCV6_AUTO_PERIOD_HT_TIME		5000 /* 2.5ms */
+ 
++#define TSADCV13_AUTO_PERIOD_TIME		2500 /* 2.5ms */
++#define TSADCV13_AUTO_PERIOD_HT_TIME		2500 /* 2.5ms */
++#define TSADCV13_Q_MAX_VAL			0x3ff /* 10bit 1023 */
++
+ #define TSADCV2_USER_INTER_PD_SOC		0x340 /* 13 clocks */
+ #define TSADCV5_USER_INTER_PD_SOC		0xfc0 /* 97us, at least 90us */
+ 
+@@ -255,6 +264,10 @@ struct rockchip_thermal_data {
+ 
+ #define PX30_GRF_SOC_CON2			0x0408
+ 
++#define RK3506_GRF_TSADC_CON			0x0010
++#define RK3506_GRF_TSADC_TSEN			(0x10001 << 8)
++#define RK3506_GRF_TSADC_ANA			(0xff0007 << 0)
++
+ #define RK3568_GRF_TSADC_CON			0x0600
+ #define RK3568_GRF_TSADC_ANA_REG0		(0x10001 << 0)
+ #define RK3568_GRF_TSADC_ANA_REG1		(0x10001 << 1)
+@@ -526,6 +539,17 @@ static const struct tsadc_table rk3399_code_table[] = {
+ 	{TSADCV3_DATA_MASK, 125000},
+ };
+ 
++static const struct tsadc_table rk3506_code_table[] = {
++	{0, -60000},
++	{362, -60000},
++	{395, -40000},
++	{503, 25000},
++	{604, 85000},
++	{672, 125000},
++	{757, 180000},
++	{TSADCV3_DATA_MASK, 180000},
++};
++
+ static const struct tsadc_table rk3568_code_table[] = {
+ 	{0, -40000},
+ 	{1584, -40000},
+@@ -863,6 +887,40 @@ static void rk_tsadcv8_initialize(struct regmap *grf, void __iomem *regs,
+ 			       regs + TSADCV2_AUTO_CON);
+ }
+ 
++static void rk_tsadcv13_initialize(struct regmap *grf, void __iomem *regs,
++				   enum tshut_polarity tshut_polarity)
++{
++	regmap_write(grf, RK3506_GRF_TSADC_CON, RK3506_GRF_TSADC_TSEN);
++	usleep_range(10, 20);
++	regmap_write(grf, RK3506_GRF_TSADC_CON, RK3506_GRF_TSADC_ANA);
++	usleep_range(100, 200);
++
++	writel_relaxed(TSADCV13_AUTO_PERIOD_TIME, regs + TSADCV3_AUTO_PERIOD);
++	writel_relaxed(TSADCV13_AUTO_PERIOD_TIME,
++		       regs + TSADCV3_AUTO_PERIOD_HT);
++	writel_relaxed(TSADCV2_HIGHT_INT_DEBOUNCE_COUNT,
++		       regs + TSADCV3_HIGHT_INT_DEBOUNCE);
++	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
++		       regs + TSADCV3_HIGHT_TSHUT_DEBOUNCE);
++	writel_relaxed(TSADCV13_Q_MAX_VAL, regs + TSADCV9_Q_MAX);
++	if (tshut_polarity == TSHUT_HIGH_ACTIVE)
++		writel_relaxed(TSADCV2_AUTO_TSHUT_POLARITY_HIGH |
++			       TSADCV2_AUTO_TSHUT_POLARITY_MASK,
++			       regs + TSADCV2_AUTO_CON);
++	else
++		writel_relaxed(TSADCV2_AUTO_TSHUT_POLARITY_MASK,
++			       regs + TSADCV2_AUTO_CON);
++	writel_relaxed(TSADCV3_AUTO_Q_SEL_EN | TSADCV3_AUTO_Q_SEL_EN_MASK,
++		       regs + TSADCV2_AUTO_CON);
++}
++
++static void rk3506_tsadc_suspend(struct regmap *grf, void __iomem *regs)
++{
++	/* Disable the analog front-end while the SoC is suspended. */
++	regmap_write(grf, RK3506_GRF_TSADC_CON,
++		     RK3506_GRF_TSADC_TSEN & 0xffff0000);
++}
++
+ static void rk_tsadcv2_irq_ack(void __iomem *regs)
  {
- 	struct hantro_dev *vpu = dev_id;
- 	enum vb2_buffer_state state;
--	u32 status;
-+	u32 status, en;
+ 	u32 val;
+@@ -1280,6 +1338,29 @@ static const struct rockchip_tsadc_chip rk3399_tsadc_data = {
+ 	},
+ };
  
- 	status = vdpu_read(vpu, VDPU_REG_INTERRUPT);
-+	if (!(status & VDPU_REG_INTERRUPT_DEC_IRQ))
-+		return IRQ_NONE;
++static const struct rockchip_tsadc_chip rk3506_tsadc_data = {
++	.chn_offset = 0, /* cpu sensor is channel 0 */
++	.chn_num = 1, /* one channel for tsadc */
++	.grf_required = true,
++	.tshut_mode = TSHUT_MODE_CRU, /* default TSHUT via CRU */
++	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
++	.tshut_temp = 95000,
++	.initialize = rk_tsadcv13_initialize,
++	.suspend = rk3506_tsadc_suspend,
++	.irq_ack = rk_tsadcv4_irq_ack,
++	.control = rk_tsadcv4_control,
++	.get_temp = rk_tsadcv4_get_temp,
++	.set_alarm_temp = rk_tsadcv3_alarm_temp,
++	.set_tshut_temp = rk_tsadcv3_tshut_temp,
++	.set_tshut_mode = rk_tsadcv4_tshut_mode,
++	.table = {
++		.id = rk3506_code_table,
++		.length = ARRAY_SIZE(rk3506_code_table),
++		.data_mask = TSADCV3_DATA_MASK,
++		.mode = ADC_INCREMENT,
++	},
++};
 +
-+	/* Read DEC_E with the status, before the clear, as G2 does. */
-+	en = vdpu_read(vpu, VDPU_REG_EN_FLAGS);
-+	vdpu_write(vpu, 0, VDPU_REG_INTERRUPT);
+ static const struct rockchip_tsadc_chip rk3568_tsadc_data = {
+ 	/* cpu, gpu */
+ 	.chn_offset = 0,
+@@ -1383,6 +1464,10 @@ static const struct of_device_id of_rockchip_thermal_match[] = {
+ 		.compatible = "rockchip,rk3399-tsadc",
+ 		.data = (void *)&rk3399_tsadc_data,
+ 	},
++	{
++		.compatible = "rockchip,rk3506-tsadc",
++		.data = (void *)&rk3506_tsadc_data,
++	},
+ 	{
+ 		.compatible = "rockchip,rk3568-tsadc",
+ 		.data = (void *)&rk3568_tsadc_data,
+@@ -1736,6 +1821,11 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 		return dev_err_probe(&pdev->dev, PTR_ERR(thermal->pclk),
+ 				     "failed to get apb_pclk clock.\n");
+ 
++	thermal->tsen = devm_clk_get_optional_enabled(&pdev->dev, "tsen");
++	if (IS_ERR(thermal->tsen))
++		return dev_err_probe(&pdev->dev, PTR_ERR(thermal->tsen),
++				     "failed to get tsen clock.\n");
 +
- 	state = (status & VDPU_REG_INTERRUPT_DEC_RDY_INT) ?
- 		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
-+	if (state == VB2_BUF_STATE_ERROR) {
-+		if (status & VDPU_REG_INTERRUPT_DEC_BUS_INT)
-+			dev_warn_ratelimited(vpu->dev, "bus error detected.\n");
-+		if (status & VDPU_REG_INTERRUPT_DEC_ERROR_INT)
-+			dev_warn_ratelimited(vpu->dev, "decode error detected.\n");
-+		if (status & VDPU_REG_INTERRUPT_DEC_TIMEOUT)
-+			dev_warn_ratelimited(vpu->dev, "frame decode timed out.\n");
+ 	rockchip_thermal_reset_controller(thermal->reset);
+ 
+ 	error = rockchip_configure_from_dt(&pdev->dev, np, thermal);
+@@ -1815,6 +1905,10 @@ static int __maybe_unused rockchip_thermal_suspend(struct device *dev)
+ 
+ 	thermal->chip->control(thermal->regs, false);
+ 
++	if (thermal->chip->suspend)
++		thermal->chip->suspend(thermal->grf, thermal->regs);
 +
-+		/* Still enabled: a later interrupt or the watchdog ends the job. */
-+		if (en & VDPU_REG_INTERRUPT_DEC_E)
-+			return IRQ_HANDLED;
++	clk_disable(thermal->tsen);
+ 	clk_disable(thermal->pclk);
+ 	clk_disable(thermal->clk);
+ 
+@@ -1842,6 +1936,13 @@ static int __maybe_unused rockchip_thermal_resume(struct device *dev)
+ 		return error;
+ 	}
+ 
++	error = clk_enable(thermal->tsen);
++	if (error) {
++		clk_disable(thermal->pclk);
++		clk_disable(thermal->clk);
++		return error;
 +	}
++
+ 	rockchip_thermal_reset_controller(thermal->reset);
  
--	vdpu_write(vpu, 0, VDPU_REG_INTERRUPT);
- 	vdpu_write(vpu, 0, VDPU_REG_AXI_CTRL);
- 
- 	hantro_irq_done(vpu, state);
-
+ 	tsadc->initialize(thermal->grf, thermal->regs, thermal->tshut_polarity);
 -- 
-2.55.0
-
+2.47.3
 
 
 _______________________________________________
