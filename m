@@ -2,81 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CD872606A320
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Nov 2026 17:11:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 79522606A320
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Nov 2026 19:02:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uhbUUX41;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=gtQC1xM8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=G61yJJ/i;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=mail.ru header.i=@mail.ru header.a=rsa-sha256 header.s=mail4 header.b=grBjMxpc
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:Cc:To:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=SdaK2i1mpU66LvfpaYxMrrVyWF8YF1hR22mRO7VTsm8=; b=uhbUUX41Gk+X1oIkYIhqi7+Nvq
-	Anfq1IMhuB9vmB5kuer0vb0p1r0lxWPMJqWN60eRGBQ6DMEchi8nm5VP9+YjhZLUOcW8+BovUxdHg
-	5ipsuZeN2Xi+2ZPWxL3pOLZATdl8hghBBmeXC/QmIG2bgc40/ev29kG/C/qSun0X0PhdSKfVIiTY7
-	OiVkxa9kkHtSHIC9YhOXsywZHlJYKb94ZOEvqfOZWS5zRtNUt+obUxwfqXNl2R54/W5oGLKyISisq
-	h1VbhdGi3NvjwrOvkabXUuI9ErM9dyopLXrKOY4t1xi4W2DfkTCME/nymTL8DpYvrxOkw0xIHpVDw
-	eDOy1i3Q==;
+	bh=Pxy6gT5/EOlcxDh/vWJ20sP5z8wjzZyoQ7NEFZkqebI=; b=G61yJJ/iW0nJz7JBv4ceC2DQj6
+	mrkw6lDJvVDU05V8xokZ6fwUac+EpIeuujv51d58MAHgt7RqiHA7oCZVXD9IA5kYC1fZVEnvD7Twr
+	vEQDXx69AnKe+5PepH/i51RrpLdbFa5nLOLDHOphRXMld3G4uB0lWYQiy4HI6moykEdIVvS9Im2RE
+	mEt5pYvl75CGffDFjxkUy7ZcPF1S8uCtmT/77g1Y5oj47TV/09kotyUScoegTF3wHG439l1p1pbG8
+	DQrGrqkVwRghyUbnv7DdXZVLl6wAW9tyMuV+w3YrQYCQrhWq81cjGKcvNfZXWxSWYIektj7424CJl
+	RFPt5BgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUoca-0000000HYXc-0vM1;
-	Sat, 21 Nov 2026 17:11:28 +0000
-Received: from out203-205-221-191.mail.qq.com ([203.205.221.191])
+	id 1xUqLs-000000004Gr-2P15;
+	Sat, 21 Nov 2026 19:02:20 +0000
+Received: from send197.i.mail.ru ([95.163.59.36])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUocX-0000000HYWC-17vY;
-	Sat, 21 Nov 2026 17:11:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1795281081; bh=zeAGBzUvkXeOm8/CB9GEDh0u7+FI30sxlipMlqhTmnI=;
-	h=From:To:Cc:Subject:Date;
-	b=gtQC1xM8obtKfjt5gvs/0bzkII2b22Kj4/W3pUrdxDIEaOIB/fgsoUHqYuSI6PYOs
-	 t3WCrr6ZaNHALXLFP9+h8BQ5ozoOK8xR9MZJ82/ruE2kOCNHxsZYAzmUyL101ekLvZ
-	 6HD32fvmsc+ECIdxg2bOARFup+xIB0xCNsgKxiio=
-Received: from jerry-PC.lan ([2408:8249:5f:7101:71a:8713:56b4:5043])
-	by newxmesmtplogicsvrszb51-1.qq.com (NewEsmtp) with SMTP
-	id 2D22F85E; Sun, 22 Nov 2026 01:11:18 +0800
-X-QQ-mid: xmsmtpt1795281078tmvupf2jg
-Message-ID: <tencent_6A9CF9A2529C8FA2C04933F2D5D1A259B506@qq.com>
-X-QQ-XMAILINFO: NbgegmlEc3JuvjAbzxDC/d292Dzu8u6ODXknC8jRsMFWVDLcsIjgINkf7SjZxi
-	 5CoJ4Zk8Pmsg+MVa1E2WfndJK9wHKEnMX70Me40klfXK7EoPkJQUGZodA/sqAK65tNrhy7T5MWMh
-	 Atu3+QVqJVQ4OCG/wQRYvCWuiYWF7IWSNDp1tNZ1HGnhhJKUG5jqO3hxWzhh8nxCqU+JIrnaNF9V
-	 zA3Y1u3YztGF+EB1KZIUQq19e6UyjdQtwqUPOlLM5bWRuBBHNFlNwXoqRqQOYNJQumriyvLyPwVF
-	 b/Kz5Kqz+yhqG19TLUuZerB0cd5soTFNH6+9rs4K3P2ozrPX/TkxEWMY6teGbc+8MIBMj7NqDAjS
-	 2MQ01R/U234CtXliA6FEYRAWxmGfKtg/kApkfqG+sNYDBq2XOacLLGCLigtIz7v0HtjSSRQHujz8
-	 3WO+frUiywH9KyF1aZB0zy43b0J5BxWUYCOcA2V1HyAbzHAVqOT/LFa+PoUHPe9ykaZsqYZqTkGC
-	 Oxns19w/zWhfCv1c3owh2r6G7qUqNP9jDdNH500Ip3dkoD/MYLyRHtlwfnCx03zFt6GfR/LucrJP
-	 YlHBHUFli87+/EMOzU7NH1udYTdYsSoi2R/ujPDD5JKTTm1DRYKep1BUcrU+fY8z//w45QcYDlFR
-	 JMJH/bY08mh8pXEd/k6LO9Di2aqEBE2jV+vYATizT+45NyX/Xw/1b/ZQw3GeBv02bGz+b7nJbkd+
-	 QzgCOgdzNYSrrB3+4nHsljt5aUvsCXgjfioc389ZB6dL0pxkiVXJxCGOeb/Phh2E7+BFjp/psLeL
-	 H0KJIydCaOSuDCfPFW82s8PV6WH+wmQsaqxFCrwqfB99Q0w/2F+yTcgngYVH7ehj8+q4UrnfqRbz
-	 2j7UrOqd/WdgzM+Lwxmz6+5SbuBpUn4559sZuxrVj53hlj2BT270JLXE4KTzTrF4LEQdqkavyALp
-	 lOOXwj63ko6VbrJPHi2B7TmH8y0/z91KypoAmv7vi12C/l9hLXA5hKEZNcjztTZoFsGIYxUNsCdM
-	 6AvlSVPrFwuUyihkXlrpUOB7vNHXN9bDUdgqqsWafoTPkDKlIrIiNKivBXn6xqJ9UnsYwa0AmIrF
-	 gfA0VDTNDFKCdySZrp7o8bjcZuqegT8TK+Ywdr
-X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
-From: ZhuXiangyu <1194781887@qq.com>
-To: Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	linux-phy@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	ZhuXiangyu <1194781887@qq.com>
-Subject: [PATCH v2] phy: rockchip: inno-dsidphy: fix 1.5 GHz rate units
-Date: Sun, 22 Nov 2026 01:11:16 +0800
-X-OQ-MSGID: <20261121171116.1703397-1-1194781887@qq.com>
-X-Mailer: git-send-email 2.47.3
+	id 1xUqLp-000000004GM-1WGE;
+	Sat, 21 Nov 2026 19:02:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mail.ru;
+	s=mail4; h=Message-ID:Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:
+	To:Subject:Date:From:From:Sender:Reply-To:To:Cc:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:
+	List-Owner:List-Archive:X-Cloud-Ids:Disposition-Notification-To;
+	bh=328eQAbB8/UBj/0mWCVQur+TyaLE3ycwXB1eGyossf0=; t=1795287737; x=1795377737; 
+	b=grBjMxpcjOD/j3CtGv76oZmV1OLxoYsiARJOLquZqwiBdd5KbENI08lLzhh/5jkvJrLiCgsxvNA
+	TN0e1OHhn/Iy4Eo+z/rQ4A0URMJG+sBt2x6pfxrmLA1mMQ/jPW9w7YtB2pnmT55Wo0zTX39mzUF1a
+	H4qxwQUoKbNsx36i3jrcG4NA8kTK5c0P4VcuxR9i8DPGyJ+kAESk8ftudw+ctmK7bHy1+TiNlYj4z
+	fesM2eBxWgNnH7iqGc2lSI4ftmYOeeD0C4jtj12/S+zja34rTjtlRCAavvZgoPeOiK0UtPnZrZXzT
+	SVTz7w1xrfGcsUDwWA/YU0z+IJK15vXisgqQ==;
+Received: by exim-smtp-56bb8ff957-2htg9 with esmtpa (envelope-from <mihail75rezh@mail.ru>)
+	id 1xUqLh-00000000CVv-0eGB; Sat, 21 Nov 2026 22:02:09 +0300
+From: Mihail Chichkanov <mihail75rezh@mail.ru>
+Date: Sun, 22 Nov 2026 00:02:08 +0500
+Subject: [PATCH] arm64: dts: rockchip: enable the USB 3.0 host ports on Orange
+ Pi 5 Plus
+To: linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, linux-arm-kernel@lists.infradead.org
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Message-ID: <179528772812.216453.4350843694259417297@mail.ru>
+Authentication-Results: exim-smtp-56bb8ff957-2htg9; auth=pass smtp.auth=mihail75rezh@mail.ru smtp.mailfrom=mihail75rezh@mail.ru
+X-Mailru-Src: smtp
+X-7564579A: 646B95376F6C166E
+X-77F55803: 4F1203BC0FB41BD9749DDC91F62168F9676E14FC0BE869578A4D98A256668C45182A05F5380850402DA51C4A982F47013DE06ABAFEAF670524650630FB41EC75033F56492D606416B7E140D37D564E50
+X-7FA49CB5: FF5795518A3D127A4AD6D5ED66289B5278DA827A17800CE7B9FBA884A7C9B8BAEA1F7E6F0F101C67BD4B6F7A4D31EC0BCC500DACC3FED6E28638F802B75D45FF8AA50765F7900637AC83A81C8FD4AD23D82A6BABE6F325AC2E85FA5F3EDFCBAA7353EFBB55337566B47933B1EBDEC5AFE377994DC0999922EE7036FA95A95CD7272B048948ACF3268EEF46B7454FC60B9742502CCDD46D0D4B3849D6E5CCBAFD117882F446042972877693876707352026055571C92BF10F618001F51B5FD3F9D2E47CDBA5A96583BA9C0B312567BB2376E601842F6C81A127C277FBC8AE2E8B59F9E71D9C611E8C3AA81AA40904B5D99C9F4D5AE37F343AD1F44FA8B9022EA23BBE47FD9DD3FB595F5C1EE8F4F765FC72CEEB2601E22B093A03B725D353964B0B7D0EA88DDEDAC722CA9DD8327EE4931B544F03EFBC4D57B58781B77DE60D36C4224003CC83647689D4C264860C145E
+X-C1DE0DAB: 0D63561A33F958A504280602568FB4625002B1117B3ED696BD5FEF5F9D7F2FD7406406D89DD9EB8A823CB91A9FED034534781492E4B8EEAD2B1D74EDA564F90EC79554A2A72441328621D336A7BC284946AD531847A6065A17B107DEF921CE79BDAD6C7F3747799A
+X-C8649E89: 1C3962B70DF3F0AD73CAD6646DEDE1918E10F71CB4DF9F9677DD89D51EBB774225B6776AC983F447FC0B9F89525902EE6F57B2FD27647F25E66C117BDB76D659F4B879F07ABC7B3205CC582C1C59231D693637C1A5C6056EAC58C84B349BCC8D9E6511EDC0726525B8341EE9D5BE9A0AE6FCA2D2315E296819354E36F90C7DB2102B001CDBA470E06536EB022892E5344C41F94D744909CE24EEEB59A186B1012BC612C73171380F8A6692EB6A46169083DB18EBE73F7D69
+X-D57D3AED: 3ZO7eAau8CL7WIMRKs4sN3D3tLDjz0dLbV79QFUyzQ2Ujvy7cMT6pYYqY16iZVKkSc3dCLJ7zSJH7+u4VD18S7Vl4ZUrpaVfd2+vE6kuoey4m4VkSEu53w8ahmwBjZKM/YPHZyZHvz5uv+WouB9+ObcCpyrx6l7KImUglyhkEat/+ysWwi0gdhEs0JGjl6ggRWTy1haxBpVdbIX1nthFXOcIETfglQORZ0zpDET4Zrk3igikrdHlWGdM+X+52RqyOphDQ8QPJMA=
+X-Mailru-Sender: AC85C63E67562A65F584232FF5CACDECB95D0575A0345AC53DE06ABAFEAF670524650630FB41EC751D93E9944352DD8137C641616DBB8FEE91296853BA92DB571669B47AD10F0EF10BAD65F17811557DBDEB696115404FDD7B061B403C924453C77752E0C033A69E3453F38A29522196
+X-Mras: Ok
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261121_091125_653954_7E8043BC 
-X-CRM114-Status: UNSURE (   9.45  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261121_110217_747180_A9444D04 
+X-CRM114-Status: GOOD (  11.36  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,81 +78,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The 1.5 GHz Innosilicon DSI PHY timing table stores its rates in Mbps,
-whereas the other timing tables and the lookup loop use Hz. When
-enabling a mode, the driver compares inno->pll.rate in Hz (e.g.
-372000000) against timings[].rate in Mbps (e.g. 400), so no entry
-matches. The loop falls through to the last, fastest entry and programs
-an excessively large TLPX/LPX counter, preventing panels from decoding
-low-power DCS initialization commands.
+The two blue USB 3.0 Type-A ports on the Orange Pi 5 Plus are wired to the
+usb_host1_xhci controller (usb@fc400000) and its PHYs (u2phy1 / u2phy1_otg and
+usbdp_phy1). All of them are left disabled in rk3588-extra.dtsi, and the board
+file only enables usb_host1_ehci/ohci, so the SuperSpeed ports are dead: no
+5 V is switched on, nothing ever shows up on the bus, and there is not a single
+line in the kernel log when something is plugged in. The USB 2.0 ports work.
 
-Convert the 1.5 GHz timing table rate values to Hz so the lookup
-selects the matching entry.
+Enable the whole chain for that port:
 
-Tested on an RK3506B board: the panel receives the low-power init
-sequence and the framebuffer console displays properly.
+ - u2phy1 and its otg-port, with phy-supply pointing at vcc5v0_usb20, which the
+   board file already describes (a 5 V rail switched via gpio3 RK_PB7). Without
+   phy-supply the controller comes up but the port stays unpowered.
+ - usbdp_phy1, which is used by nothing else on this board.
+ - usb_host1_xhci itself, with dr_mode = "host". The default in the .dtsi is
+   "otg", but this connector is a host-only Type-A port; the Type-C connector is
+   a separate controller (usb_host0_xhci / usbdp_phy0).
 
-Fixes: 785a9d5bb145 ("phy: rockchip: inno-dsidphy: Add support for rk3506")
-Signed-off-by: Xiangyu Zhu <1194781887@qq.com>
+The other SuperSpeed host controller, usb_host2_xhci (usb@fcd00000), is
+deliberately left alone: its PHY (phy@fee20000) is shared with pcie@fe180000,
+which on this board is the Ethernet port.
+
+Tested on an Orange Pi 5 Plus (rk3588, root on NVMe/SD, ALT Linux userland):
+with this patch a USB audio DAC and a USB 3.0 hub enumerate on the blue ports,
+the hub's SuperSpeed root hub reports 5000 Mbit/s, and the USB 2.0 ports keep
+working.
+
+Signed-off-by: Mihail Chichkanov <mihail75rezh@mail.ru>
 ---
-Changes in v2:
-- Split out from the combined drm/phy patch into a standalone phy
-  subsystem patch per Heiko's review.
-- Limit recipients to phy and Rockchip maintainers/lists.
-- Fix Signed-off-by author name formatting.
+ .../dts/rockchip/rk3588-orangepi-5-plus.dts    | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
- .../phy/rockchip/phy-rockchip-inno-dsidphy.c  | 28 +++++++++----------
- 1 file changed, 14 insertions(+), 14 deletions(-)
-
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
-index 6ad04b0c..fcf7aa17 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
-@@ -282,20 +282,20 @@ struct inno_mipi_dphy_timing inno_mipi_dphy_timing_table_max_1ghz[] = {
- 
- static const
- struct inno_mipi_dphy_timing inno_mipi_dphy_timing_table_max_1_5ghz[] = {
--	{ 110, 0x02, 0x7f, 0x16, 0x02, 0x02},
--	{ 150, 0x02, 0x7f, 0x16, 0x03, 0x02},
--	{ 200, 0x02, 0x7f, 0x17, 0x04, 0x02},
--	{ 250, 0x02, 0x7f, 0x17, 0x05, 0x04},
--	{ 300, 0x02, 0x7f, 0x18, 0x06, 0x04},
--	{ 400, 0x03, 0x7e, 0x19, 0x07, 0x04},
--	{ 500, 0x03, 0x7c, 0x1b, 0x07, 0x08},
--	{ 600, 0x03, 0x70, 0x1d, 0x08, 0x10},
--	{ 700, 0x05, 0x40, 0x1e, 0x08, 0x30},
--	{ 800, 0x05, 0x02, 0x1f, 0x09, 0x30},
--	{1000, 0x05, 0x08, 0x20, 0x09, 0x30},
--	{1200, 0x06, 0x03, 0x32, 0x14, 0x0f},
--	{1400, 0x09, 0x03, 0x32, 0x14, 0x0f},
--	{1500, 0x0d, 0x42, 0x36, 0x0e, 0x0f},
-+	{ 110000000, 0x02, 0x7f, 0x16, 0x02, 0x02},
-+	{ 150000000, 0x02, 0x7f, 0x16, 0x03, 0x02},
-+	{ 200000000, 0x02, 0x7f, 0x17, 0x04, 0x02},
-+	{ 250000000, 0x02, 0x7f, 0x17, 0x05, 0x04},
-+	{ 300000000, 0x02, 0x7f, 0x18, 0x06, 0x04},
-+	{ 400000000, 0x03, 0x7e, 0x19, 0x07, 0x04},
-+	{ 500000000, 0x03, 0x7c, 0x1b, 0x07, 0x08},
-+	{ 600000000, 0x03, 0x70, 0x1d, 0x08, 0x10},
-+	{ 700000000, 0x05, 0x40, 0x1e, 0x08, 0x30},
-+	{ 800000000, 0x05, 0x02, 0x1f, 0x09, 0x30},
-+	{1000000000, 0x05, 0x08, 0x20, 0x09, 0x30},
-+	{1200000000, 0x06, 0x03, 0x32, 0x14, 0x0f},
-+	{1400000000, 0x09, 0x03, 0x32, 0x14, 0x0f},
-+	{1500000000, 0x0d, 0x42, 0x36, 0x0e, 0x0f},
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+index dd4c79b..aee1b13 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+@@ -852,3 +852,21 @@
+ &usb_host1_ohci {
+ 	status = "okay";
  };
- 
- static const
++
++&u2phy1 {
++	status = "okay";
++};
++
++&u2phy1_otg {
++	phy-supply = <&vcc5v0_usb20>;
++	status = "okay";
++};
++
++&usbdp_phy1 {
++	status = "okay";
++};
++
++&usb_host1_xhci {
++	dr_mode = "host";
++	status = "okay";
++};
 -- 
-2.47.3
+2.50.1
 
 
 _______________________________________________
