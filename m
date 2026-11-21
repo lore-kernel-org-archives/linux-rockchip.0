@@ -2,62 +2,106 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CD851606A335
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Nov 2026 13:35:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 70BF6606A320
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Nov 2026 14:25:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=irlTlRrf;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=nEylbCvu
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bXW+0ZAx;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=KmXW6l6A
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=+3/kgFKjMy4amksb1A2g+MZ5W3mW+8bfDT4nG5AFLPs=; b=irlTlRrf2lzr6WS4gqoXz26cYE
-	4N1I/IeEpqHYWRM6YxgiRZIO7wMpAGbMqs5YP86tKhiwwCfXYdsPwrfJuIOGIQvsAbW6lys029Jd3
-	Yd1afiFdNrBYoE4aqHD9KypSH74I6hT1BeKsmv6SkRRb8zeMXm0C8q6/mFqK1+dXnk2n7hFpeQ3fw
-	hy7wUN47PB1/I4p6j7GwG7MkNwfCGFIn1xTsj75qvO7E1Wl3yYZbt05hsYF1X8XVxst1ScfuL5eL8
-	Fb7iOk8L2/FzPBpK9kN6Xa/0g6SMczFBbG2vzRVHBtDVW7wqNl4CzN8DIZ9v897Oubn96LZrfcmDS
-	OrHB5nhw==;
+	bh=kMtpRaN/vYKiUc+APnzr7iNQN3XPYVoonG6Y91wQXJM=; b=bXW+0ZAx+VgE8YhKGpm/J77lMc
+	AjElBDHszujBfI3AVzJpSPOP68pHJFut+0bbXKSMpq2b+vf3CKQJnHdPQU9O2nB0yRO5ee+Bo9apZ
+	RXeyLlEDKGkvb5K+/kujX2EMYVVeNAoYCIby2MnSFkfBQSgHUTRQ5moRIqRvIjbeYaLLEjhStNzZS
+	rSqWv6FWoh8hMDhomPpMlqpTEpEO3nr7MYTyKLpmkiS8zJDqgq6zqNY5oo7MtsNYPTnPdKQNCKc2f
+	p44dlD5/fIeVSa8KYHCmMLG3gKnjW35gQVHrnGPU3qmwCOSBpTDOMno0DaHWfYWm+Ich5kNocqdtW
+	1U1Oxysw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUlFS-0000000HIFv-0n09;
-	Sat, 21 Nov 2026 13:35:22 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1xUm1x-0000000HKoX-3e7I;
+	Sat, 21 Nov 2026 14:25:29 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUlFP-0000000HIF5-2XcE;
-	Sat, 21 Nov 2026 13:35:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=fffPhen65RXvgrHvozLgMLsmu+SDxyuRcwXFiGMhJew=; b=nEylbCvuQdGWOM/Z5RINWTpd0Q
-	ZKohSuNpjwv+qUOH+VwAOX6t1I6AhjQcjdO0UNXQmY4IYWW31T+vGl11olyTl22SSSukG4H/CUqjM
-	vh5OthKF5we6rnV+eL1JR9NZSnXcfDXBOHp528Gswn27fALsq2tzDLzZgCT+nscdib5axuNJw85l4
-	asYmd0Ze7D5MBfuRwSeBqQAGjsYNyEw7L4l+n5mejjv5Kb+mZvMDyw8rMRMw+Joq0Rm92HXlVddDx
-	H8q20B6fQgUdj/NVFy7PMz0kUI0XDJQF3a0j9Etgqapx2yPN1kUzG+Vkqj2Hw4wEeg75Z9u0Zq7AG
-	mFvw2B1Q==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <ukleinek@kernel.org>,
- ZhuXiangyu <1194781887@qq.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, linux-pwm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- ZhuXiangyu <1194781887@qq.com>
-Subject: Re: [PATCH 2/2] dt-bindings: pwm: rockchip: add RK3506 and RK3576 PWM
-Date: Sat, 21 Nov 2026 14:35:17 +0100
-Message-ID: <dcRZnWeuS9WMWkKE52x__A@sntech.de>
-In-Reply-To: <tencent_85AFCE164FAAD1CCAB95DC7CD804CA9BB309@qq.com>
-References: <20261121065936.1125919-1-1194781887@qq.com>
- <tencent_85AFCE164FAAD1CCAB95DC7CD804CA9BB309@qq.com>
+	id 1xUm1t-0000000HKne-0zbL;
+	Sat, 21 Nov 2026 14:25:27 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9500D4445F;
+	Sat, 21 Nov 2026 14:25:24 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795271124;
+	b=N00K9jTEZrK3Y9J4SNruasc/O216RxsQwDeNiK6+kSaiU9zxH38G4rqydxFZ1ceaq12h
+	 pXlEOdx8vckT3r1f+vlD4Ejcu4/lx+PVF25Xos8WrpLmbEYwpZBxA8HWWY/61/IVSbigM
+	 Vp6avnKEjE+ZpQKOX9jIVYMFnnzngOlIXfgzvleFX4rI10xXNk/G9ftzUs7dDvKKh+SU1
+	 uM7UqujCvAj+BOApRd3LO8qs/DvpnmigAM4l1mTX17QyzzLIOlwJNY3ej1z+HPuGnALNY
+	 pG1hZztV8koPoMUVcfIHqNvFLt2Po8comhg03Q6wS9L9NUdwdXMtLAv9EYBUFh36qPQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795271124;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=7duCnWH8krM8z9+VrW7onyigZ+9oryd9rni6Jfwyl9w=;
+	b=uumBqPQKmIII03ItC8G5qU5tU6voNFBalwDhOLtE0I++Je+M0DYh2BtggAWfTOCHtOs8
+	 rn+qgj1Bt0HVBvZ+H4ueE7i7k7BNmzqVmP4oU1sDHjXTPCQhScV97Q92aO4NiBktqn2RO
+	 IMFm5NzbswiRfE6P3QXKgtsTdR0EmOLFm3e+nOry5erF5k8TQI1PU6MHpvYaIEP1T91hi
+	 KQ8EZ9Assp2NURkNhIYHqGzwggB6eYwMkYooeyR5LtdCBD6py5/TQzjAGwjRa8QE5zdwy
+	 IlsTIePmyKwsgCuk5mBJ8JLYh4hq6bbXw+YuzCbxafXEsbtKlSubYb1QSzSdUlclJ6Q==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id E9ACC1F000C6;
+	Sat, 21 Nov 2026 14:25:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795271124;
+	bh=7duCnWH8krM8z9+VrW7onyigZ+9oryd9rni6Jfwyl9w=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=KmXW6l6ARR7wlKOMauv6eMYu8eabXfqx2nJL3ep+8xmXjCDACTGE8hmX6Tx/cvhzU
+	 MefQfUZkzKJi+rp+jl85WKeNpM0RHXjRaCNnI0EsGZFs7BUy8dJe7+H/pJU5+SB5N9
+	 ThipPGQUhIB9n1YeN4TRPQy+tJtPRiod8/tpSZVblCvQwoFTaA1vsOOVG63IN+6GLo
+	 KeAnYzgJhF1r1wq6rj3izOnU1gzmbEVV8sBedgLtPSZhljSGQNdntCZcLd87iCGCiQ
+	 UUmWjU6d9sQ2pnefXyrklBTR94iqkphhYzqx9A+1+tPxoFAbIjw59eU/21hR182/Z1
+	 +hnJg/xJq7YHA==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 750174BCAB;
+	Sat, 21 Nov 2026 14:25:23 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Date: Sat, 21 Nov 2026 14:25:24 +0000
+Subject: [PATCH v2 2/2] media: rkvdec: Decode monochrome H.264 to GREY
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261121_053519_646865_F482A969 
-X-CRM114-Status: UNSURE (   8.56  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261121-b4-h264-monochrome-grey-v2-2-ffe7f2383cbe@gmail.com>
+References: <20261121-b4-h264-monochrome-grey-v2-0-ffe7f2383cbe@gmail.com>
+In-Reply-To: <20261121-b4-h264-monochrome-grey-v2-0-ffe7f2383cbe@gmail.com>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Detlev Casanova <detlev.casanova@collabora.com>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Hans Verkuil <hverkuil@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Arun Iyengar <aiyengar1990@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795271122; l=2530;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=PaUrtuP231glBes9RSGbgqUD4OET3z2k5Uwhdrm6JOc=;
+ b=y/1yCxtIXKH7PSSDwSz4e9oAw7VMWTHsbk5cgfs2stAayL7ItyV+UH/eYU8x3y14IicrWk2X6
+ 2wYgLxw2liUA5D3NqRvGnifFVnOWiFAaOe/mMmno+877gjvhS13jL+V
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,29 +111,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: aiyengar1990@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-QW0gU2Ftc3RhZywgMjEuIE5vdmVtYmVyIDIwMjYsIDA3OjU5OjM2IE1pdHRlbGV1cm9ww6Rpc2No
-ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgWmh1WGlhbmd5dToKPiBEb2N1bWVudCB0aGUgUFdNIHY0IGNv
-bnRyb2xsZXJzIGZvdW5kIG9uIFJLMzUwNiBhbmQgUkszNTc2LiBUaGV5IHVzZQo+IHRoZSBwd20v
-cGNsayBjbG9ja3MgYW5kIG1heSBhZGRpdGlvbmFsbHkgcHJvdmlkZSB0aGUgb3NjIGFuZCByYwo+
-IGNsb2NrcyB1c2VkIGJ5IHRoZSBleHRlbmRlZCBmZWF0dXJlcy4KPiAKPiBTaWduZWQtb2ZmLWJ5
-OiBaaHVYaWFuZ3l1IDwxMTk0NzgxODg3QHFxLmNvbT4KCgpwbGVhc2UgY2hlY2sgbWFpbGluZyBs
-aXN0cywgYmVmb3JlIHN1Ym1pdHRpbmcgZHVwbGljYXRlIHdvcmsuClRoZXJlIGlzIGFscmVhZHkg
-YSBiZXR0ZXIgKHlldCB1bmZpbmlzaGVkIGltcGxlbWVudGF0aW9uIHBlbmRpbmcsCnRoYXQgYWxz
-byBpbmNvcnBvcmF0ZXMgdGhlIGNvdW50ZXIgaW5wdXQpLgoKRXNwZWNpYWxseSBhcyB0aGlzIGlz
-IGEgbmV3IElQIGJsb2NrIC0gaW5jbHVkaW5nIGEgZGlmZmVyZW50IGhhcmR3YXJlCnN0cnVjdHVy
-ZSwgdGhpcyBzaG91bGQgbW9zdCBsaWtlbHkgbm90IGxpdmUgaW5zaWRlIHRoZSBwcmV2aW91cyBi
-aW5kaW5nLgoKQWxsIHRoZSBwcm9jZXNzIGlzc3VlcywgS3J6eXN6dG9mIHBvaW50ZWQgb3V0IGlu
-IGFub3RoZXIgdGhyZWFkIHN0aWxsCmFwcGx5IHRvby4KCgpIZWlrbwoKCgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Arun Iyengar <aiyengar1990@gmail.com>
+
+The decoder writes only the luma plane of a 4:0:0 H.264 picture, but
+the driver offers NV12, so userspace gets a chroma plane the decoder
+never wrote (green or stale pictures). JVT-FR-EXT HPCAMOLQ_BRCM_B and
+HPCVMOLQ_BRCM_B fail although their luma is bit-exact.
+
+Offer GREY for 8-bit 4:0:0 streams. There is no V4L2 format for the
+packed 10-bit luma that 10-bit 4:0:0 would need, so those keep NV15.
+
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+---
+ drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.c | 4 +++-
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c             | 4 ++++
+ drivers/media/platform/rockchip/rkvdec/rkvdec.h             | 1 +
+ 3 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.c
+index 54639512e456..8ad41c4e56c8 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.c
+@@ -146,7 +146,9 @@ enum rkvdec_image_fmt rkvdec_h264_get_image_fmt(struct rkvdec_ctx *ctx,
+ 		return RKVDEC_IMG_FMT_ANY;
+ 
+ 	if (sps->bit_depth_luma_minus8 == 0) {
+-		if (sps->chroma_format_idc == 2)
++		if (sps->chroma_format_idc == 0)
++			return RKVDEC_IMG_FMT_400_8BIT;
++		else if (sps->chroma_format_idc == 2)
+ 			return RKVDEC_IMG_FMT_422_8BIT;
+ 		else
+ 			return RKVDEC_IMG_FMT_420_8BIT;
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+index fbcd0f175ad3..548659d23bc2 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+@@ -414,6 +414,10 @@ static const struct rkvdec_decoded_fmt_desc rkvdec_h264_decoded_fmts[] = {
+ 		.fourcc = V4L2_PIX_FMT_NV20,
+ 		.image_fmt = RKVDEC_IMG_FMT_422_10BIT,
+ 	},
++	{
++		.fourcc = V4L2_PIX_FMT_GREY,
++		.image_fmt = RKVDEC_IMG_FMT_400_8BIT,
++	},
+ };
+ 
+ static const struct rkvdec_ctrl_desc rkvdec_vp9_ctrl_descs[] = {
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+index a24be6638b6b..58c53a1f58b3 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+@@ -108,6 +108,7 @@ enum rkvdec_image_fmt {
+ 	RKVDEC_IMG_FMT_420_10BIT,
+ 	RKVDEC_IMG_FMT_422_8BIT,
+ 	RKVDEC_IMG_FMT_422_10BIT,
++	RKVDEC_IMG_FMT_400_8BIT,
+ };
+ 
+ struct rkvdec_decoded_fmt_desc {
+
+-- 
+2.55.0
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
