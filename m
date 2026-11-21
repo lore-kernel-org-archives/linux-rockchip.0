@@ -2,107 +2,120 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 37BE7606A320
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Nov 2026 11:48:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 48F4C606A680
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Nov 2026 13:12:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=V2YG4rJ+;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=pardini.net header.i=@pardini.net header.a=rsa-sha256 header.s=google header.b=aKtzsSx4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2dMl/Cnc;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=FPWMCT7l
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=oO1a5knExZfIGRmykRsr0QG7IEYoUSfDEGxLMRuX5fg=; b=V2YG4rJ+tOUlkHkfWwMkCW8oLD
-	MWX//NWGMDYj6CrzjtWC+RCELWZAGbSt2gLi89FrZIwSWjqTd3bqMU8I9TwTD3Ul7i/EoDICAMVSx
-	GvnDiRnCuZ7IkgsCfcaScRCxKiP2Kd+K2fXKHiQM4hLxxLevjNB9QXTrrxT89ZV1N3RQNwUP+faZK
-	Pf7bsOkjzmcjlAwpkz1NUNwgGeW8TYlozsA3xeG4ao9bbExFnSS99lM6zV2gDP8VBh64OgflaI/HB
-	kh9ZA1saya7+oTpvQcKQwrqD63pkSeA5DRHufrgH6/MhixMKr2kWZWLz2DNvAAQRCjV2gCh8PSGKP
-	5aWlCVNg==;
+	bh=wDGU5JRkMgDBp/qU28H0L0k0PL7TqKcdPvMA9UVnjcg=; b=2dMl/CncAWP5IzHI7c9PzFQRaL
+	cQw1e+5jGGzw7sXG9C4f8lh/v5AMLOS7t4eajvMEhuotOmbIOFVDCyp41BqBegGfS550ZC5MmI5xH
+	3BHwzcPIo8nSHgFMsMLyJUmAPVnchXHbOTRoqkzu5zeUyq0ICznWl+18Y5PmKbqT3Q4gijyqtIJrU
+	cXVGRSCKwss+ZML8VDFVJjeTYbUvorPlpJ3YMGKp3VyN9WBoHGM+hlTYNoTg1hjqpXTZG3vZK3vi9
+	5oYZZqo9nuRgzmMyioR7CCuj6caF39ZOD1YOcgeEPj0Imq45/1gS16hTn1QAkafCR6CnINAfl9nE5
+	83DHtgHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUja9-0000000H7xP-3Eng;
-	Sat, 21 Nov 2026 11:48:37 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1xUkt7-0000000HFvK-295E;
+	Sat, 21 Nov 2026 13:12:17 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUja6-0000000H7we-1Ead
-	for linux-rockchip@lists.infradead.org;
-	Sat, 21 Nov 2026 11:48:36 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-c5154989984so138442566b.1
-        for <linux-rockchip@lists.infradead.org>; Sat, 21 Nov 2026 03:48:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=pardini.net; s=google; t=1795261712; x=1795866512; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=yRL3JyiAib4oTHNTDKyWbrLU/IIxfk4M2prFXzJ16C4=;
-        b=aKtzsSx4dTRXpjGZTJJIq1aUSW/RI8yr3GzKZJ3GnNdl1FFmSOZW0bmzFKo4u5QCUw
-         0j64Uc0bkv/gnq8qEieSXzUz8nUJ/zsozJtgcXJBO6qcAqsIha3iRjWEAtM8wnpq+QNI
-         +j0LrN21PZlpu70d4+NJj5/0VrfRPTywjbbnPKOLJmRpykSBPYIS6pHanOhxeeF4OGMQ
-         CBDtiqZDYJ54iwxg+ZwVWeoptDznVY1mLphNiQaMFlOD/3sjEBgQ5mzG9dellrXsLt4/
-         jv3jFrSOKvycq5EIczSufG+FGALaHy5pMI8yfNg2zIJVazadQJW/XZzNnoparGGkBKvm
-         DCEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795261712; x=1795866512;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=yRL3JyiAib4oTHNTDKyWbrLU/IIxfk4M2prFXzJ16C4=;
-        b=w8NIKPk+idpv5blzHq1RCACvYE6sFDBmCXgNN9ik6RrjZYe97e8Tmj7gNvG/cVMWuw
-         8UB7PdnO4hfm0SSuf0//zHWcxRLbj0OB0Z4zZxeqD2Rh8RO/3qMlQ6u2iLqXLZMs2GRy
-         L03r/4dIeXFGkb4UrKwaAzek42wDc/MIVKQb3PJKKj9akoP8lciaRGb7rMWABAx8jIT2
-         Uvu3bWeuAv0nfJHii6duaBVanGJEOUDCTwKKozYiqQGMdVjRKrHcoyTnOAx8nY8tJMdv
-         7wPpQobuyiUUPxnu5I+hhSoA1MncIsHSTSum6c86KuCYso0Hdeg3y792wjt3YMvwJCJx
-         sCqA==
-X-Forwarded-Encrypted: i=1; AL+hErHrMUdHxSMrlrvu2rLyDeILB7hEaIBJeprgePGeSFTynGlRio/p9Bp4rJNUyNSDmfHuYXDZ9FEOckN2QTTiIA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8BwrL693W3uf5s5uS0lkF2k8CQ4dPSuvyFmCET1sDV2LczDs1+
-	rPgXHYFjqGlzvF4nCyFZwwyNyuO1v/Qgzl1mH5r+XKdpGW1E4wRaTxWRjUj0tTGeig==
-X-Gm-Gg: AZFdTZdDZbCXqVmtjiXsRuf5GE2Ayc7LW+SSapZRu88UbIB0lpxkbonUutaKS3qBT0j
-	hW1nAJBNWIGEdhiisNpV51Tnbg+Nby/v3ENi6YSV0MnGzkK1yt7PPeH8DnZoboE88sUi6+CQbZ8
-	Z85vX/QM4FFTaQMKJUrNKTaeCRJqSZ0papzLV/8IZQ2oC7Wiu5VNt0iytj0cbS7pJoJk/87l5LB
-	ipVF3HN3SlVjEK7dvCzAtGZ4DyYky+oC4KAd4leVE9ytFkd+OeYAeJbJZ3JH7D8RmZidX5PRFRq
-	E1uZIU87gwsL37e1tRqmID1+A5nG6gB2cgYxgA5MPafpSDTAnBzIIC2zweJ+kpRXnI6v2mCxvta
-	PjeygMPiEj0KF8j+lmfs9q/sZPz9N/IOACZvbq/DE4MDv03+XiQ+znv6WraduWdIgGqtnSxbH9T
-	hGQCeuZxcLYfLtVhT5aY8biz/eAotxS3Aw4b0dDNY2lpSfdELreFliExrA5YtuHzENRVT/0ItkZ
-	fhDWZQQ9h7nRVG7d+2LN8wKKgoOT7kXKBq1iDdgPc0sbA00rdazD89FrtQUzHMtwikGXdhdjea5
-	+/8pKiOElLwROKTWKxQpQQvV7LTXmdhEn4T8xvMpG18Wn3VPsvOk/NYfq3qWMpEKRXKRK+dSy4R
-	HgLbLo2YrZgVxYNR+OtUmApQUAir7+JRPI9Sg1WEMs9PPvlGLXsZaGZhnpaehu9csaVi7/pAhJh
-	y1
-X-Received: by 2002:a17:906:eb15:b0:c24:4128:c19f with SMTP id a640c23a62f3a-c513a5ed086mr409503766b.11.1795261712641;
-        Sat, 21 Nov 2026 03:48:32 -0800 (PST)
-Received: from ?IPV6:2a02:a466:4d7a:0:409e:13f1:8f3d:aa19? (2a02-a466-4d7a-0-409e-13f1-8f3d-aa19.fixed6.kpn.net. [2a02:a466:4d7a:0:409e:13f1:8f3d:aa19])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c513afecbb5sm193756466b.71.2026.11.21.03.48.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 21 Nov 2026 03:48:32 -0800 (PST)
-Message-ID: <139cd117-9a75-4304-9e3d-94c47476443e@pardini.net>
-Date: Sat, 21 Nov 2026 12:48:30 +0100
+	id 1xUkt3-0000000HFtq-2SVC;
+	Sat, 21 Nov 2026 13:12:13 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5798C61347;
+	Sat, 21 Nov 2026 13:12:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55C221F000C4;
+	Sat, 21 Nov 2026 13:12:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795266732;
+	bh=DL3+uXTpmmOZ+eFU2EbIBqbznty7fMOIe07P6uKnuow=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=FPWMCT7lqV4WfTCXR9cR7k9HumG1WbgX7+l7Rif1pJwo77OP+v1yXbt/Sqjrme0+2
+	 9RMbEGWaEOwuBtRwWM5bTEniUSmwUu635HfDYLmObt3NSKJ+D46wopvh4geoI5IJGM
+	 zrNdBFk7zJq1GBpEihUl3j9jzntMavxuaJpmCdq60n/vtW8REVhBP72iOQ8EIQU0X/
+	 DNCmyC+w2k9fH6V7t9HLCzCxAt47JB1iZmYj5wrNaqhwlDXPA4BNqs5Y3ZNBNjGmDL
+	 LDxlonuM6sMlHQf6KOs1QOyegkqZ1+2/JLCCmgM+EduNOUF/yRIq4Iw0R3/ZHPyePL
+	 EsJkWl3Wr/i7w==
+Message-ID: <2c21c753-9acc-4111-99d1-a5e686f35f6d@kernel.org>
+Date: Sat, 21 Nov 2026 14:12:01 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/connector: Cache out-of-band hotplug events
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Heiko Stuebner <heiko@sntech.de>, Dmitry Baryshkov <lumag@kernel.org>
-Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
- Yongxing Mou <yongxing.mou@oss.qualcomm.com>,
- Igor Paunovic <royalnet026@gmail.com>, Alexey Charkov <alchark@flipper.net>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-References: <20260821-drm-connector-oob-hotplug-cache-v1-1-e92e146fdc7b@collabora.com>
+Subject: Re: [PATCH v5 1/5] media: dt-bindings: rockchip: Add RK3568 Video
+ Decoder bindings
+To: Daniel Golle <daniel@makrotopia.org>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Shawn Lin <shawn.lin@rock-chips.com>,
+ Michael Riesch <michael.riesch@collabora.com>,
+ David Heidelberg <david@ixit.cz>,
+ Christian Hewitt <christianshewitt@gmail.com>, Marc Zyngier
+ <maz@kernel.org>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil+cisco@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
+ Diederik de Haas <diederik@cknow-tech.com>,
+ Dang Huynh <dang.huynh@mainlining.org>,
+ Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+References: <cover.1795191822.git.daniel@makrotopia.org>
+ <70b950c4b4fefbe07fe081f780ff359ed697d37f.1795191822.git.daniel@makrotopia.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-From: Ricardo Pardini <ricardo@pardini.net>
-In-Reply-To: <20260821-drm-connector-oob-hotplug-cache-v1-1-e92e146fdc7b@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261121_034834_373477_58B0E400 
-X-CRM114-Status: UNSURE (   5.87  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <70b950c4b4fefbe07fe081f780ff359ed697d37f.1795191822.git.daniel@makrotopia.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,8 +125,8 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -122,30 +135,23 @@ X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 21/08/2026 16:55, Sebastian Reichel wrote:
-> When the USB-C state machine finished negotiating DP AltMode before the
-> DRM device has been probed, the out-of-band hotplug events fired to
-> early and are lost. Without replugging the display or reloading the
-> USB-C driver, the DRM driver assumes nothing is plugged.
-[...]
+On 20/11/2026 18:40, Daniel Golle wrote:
+> From: Christian Hewitt <christianshewitt@gmail.com>
+> 
+> The video decoder in RK356X (vdpu346) is described in the same way as
+> the one in RK3588 (vdpu381). A new compatible is added as the decoder
+> capabilities are a subset of the vdpu381 capabilities.
+> 
+> Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
+> Acked-by: Rob Herring (Arm) <robh@kernel.org>
+> Tested-by: Diederik de Haas <diederik@cknow-tech.com> # PineTab2, Quartz64-A, NanoPi R5S
 
-Thanks for this! Tested on a Mekotronics R58X-Pro (RK3588,
-FUSB302) on v7.4-rc3 with dw-dp v12 and usbdp part3 v18.
+You just ignored my feedback.
 
-With an Apple USB-C Digital AV Multiport adapter (A2119) plugged in at
-boot, HPD arrives about 2s before dw-dp binds. Without this patch DP
-stays disconnected until a replug; with it the display comes up at
-boot.
+NAK
 
-Note: I used the rebased copy from your rockchip-devel branch, since v1
-no longer applies after the drm_utils.h rename.
-
-Tested-by: Ricardo Pardini <ricardo@pardini.net> # Mekotronics R58X-Pro 
-(RK3588)
-
-mvg,
-Ricardo
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
