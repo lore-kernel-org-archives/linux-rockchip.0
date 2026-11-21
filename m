@@ -2,89 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 78166606A33A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Nov 2026 06:33:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 08CD8606A33D
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Nov 2026 06:59:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kp76Z+q+;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=WQSqMnwi
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SYiHZi5f;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=pElU/YCg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Subject:Cc:To:From:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=p3ENMccqyftoNIgUQZyV7dDCH9i8/F0bjorIbgJBMiQ=; b=kp76Z+q+nXiBSwgmyKJniD2+lb
-	joMNYzsrf+dVVquTRczfpnMrINEk+zirheh2SXism0YxzsfqaxXHEFjXEEBW2oUEI563CWXoT6Wot
-	+7DMjRFf2a4A2Wf9v4srCU7zkhGxx3rUUbG7LAvrO+4ptw2FqpSRAXXAZTWgbN3Z4PPA/VHKcdD5J
-	hk56yvIBzFV1KeDLs6LqwD/2bFM7H7R8Wyj4mM9QvcvyD7zWM+SHx/4jSR9jo3cMK6+OAy8Jv4+FC
-	o8vtVvjA0oph4ChUBe4abyV34hlYszdBVhT+jKq3ToN4Z5TroGgaYoXltkNKZi+waE123navYBlls
-	R0620ZbA==;
+	bh=qI2+ew5301eoIIJ2WlEubCQQqLYtW7Ml51srzg3ms1k=; b=SYiHZi5fx4F+4VeCTzNAZVUpd/
+	hBTtL7MDbUH/Yc8bmlQym61KYyZFOjDvGndY/IhCdJllz75QtFNVLqkARS32nRQVg9kP254nmmYMd
+	Gz4ZgWXdWJ2oRfaNvfxSJC2oRqVYU6kQZnKXOF3SOxXr7+3/060s1mCwzrmgfPV4Pv4t4To0nmFR/
+	Q5gAHWfyvYzikhH36A7F7X7+TUw4T7Q5JeldCj/RCA+u6b5TZ9CWLNDVhKphDMbMknpwMa0UD5UfG
+	rrt87wNHt2SAfcAF9b9pzW9Y7a/C33MVgMBQdTh8iAKRU8Ot8jC+P9EeKidvmkf/yr/XEwsH5yerg
+	bSXKgKIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUefV-0000000GnvS-1nHH;
-	Sat, 21 Nov 2026 06:33:49 +0000
-Received: from out203-205-221-231.mail.qq.com ([203.205.221.231])
+	id 1xUf4h-0000000Gowc-0zy1;
+	Sat, 21 Nov 2026 06:59:51 +0000
+Received: from out203-205-221-240.mail.qq.com ([203.205.221.240])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUefS-0000000GntA-1qu2
-	for linux-rockchip@lists.infradead.org;
-	Sat, 21 Nov 2026 06:33:47 +0000
+	id 1xUf4d-0000000Govj-3q6v;
+	Sat, 21 Nov 2026 06:59:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1795242820; bh=vrWn0Ixp2M1jrHpRUCkv+bLIfyIujqapxXCKCxU/7AE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=WQSqMnwiam/ueGtzWs3rSyy5JGCtzGCbTL2peHaLgFNwoG1+rmCbS04luCp+xT7U8
-	 Y+LpbEB6eWBPqSPXfq0pFBHWHat0wyNJtyrMXb8Z8tIPjME9OcqNUjkL0CxBCVAuJp
-	 UaB+gbItilDWzYirrXi+70JpQU9N/WZheMO3RHCc=
+	t=1795244382; bh=jK2zYQmh64qPZi1PcNYWIZ+ueibLnSi2h0M89dZtMcg=;
+	h=From:To:Cc:Subject:Date;
+	b=pElU/YCguCeDHzYXiYZAXUWSu5OfRdfp7/zbiybcDOhKx5azB2T2jpb+9bNDBA4za
+	 VnUdqYjCWEiVCuU0MJ9cRH2F/36K/fzlq5u5YEtx9nkPZ37wC4Q70bE8/dlEtpHBUt
+	 HQT874azzwFBb5MmZy7AGV/OiYG9HVnWsVXZUTRE=
 Received: from jerry-PC.lan ([2408:8249:5f:7101:71a:8713:56b4:5043])
-	by newxmesmtplogicsvrsza53-0.qq.com (NewEsmtp) with SMTP
-	id 86136C4F; Sat, 21 Nov 2026 14:33:33 +0800
-X-QQ-mid: xmsmtpt1795242815t7b4l3f5q
-Message-ID: <tencent_362D76566799132999F95C09AC34775D0D0A@qq.com>
-X-QQ-XMAILINFO: Mb8jOXBTO9mFtvXd4x42BWdNJrJAhWsAQ4eNSsIFjy94jB3IpWBPVnsOUyULK3
-	 Y9l6y3PnpRvdHjyuKGo5oQNzTvOGxC0zdJ1kxLM8DrxohF+DndfSO0PG/phjqkkzakieirK/+pmH
-	 Cr+gi9qNtGxkxHMEcSDlUvMx8w8TE0ryP6Y4wlZyrmqin1Lg5b7dCrToDzS3gUxfoT11GFxlveTQ
-	 fQzya8V3pKdolnFI1f+1SFdMF4101oEvjs5FhkeYu149PyhUKhQRpJr4LA2bVBIUNDoJ1r+aP0EY
-	 m+bkZS3g3tXqpmzwmh+PeQ927jv38fKchWzIEVB0tAM5+4gVB/kUbgTchdtt5x+NFSkIvq/t67BM
-	 cbSnSfZIQ6us+PZGkGsoUL6BH8jFXpq9Axrmc9LiGyr7PMmwg82O4LAQlHEczTL+cRZngAhWmanS
-	 2yqp3TO5nZ7V/UFTe7yOSgtypkGWX6R+NDlEUKRfl8rPhKAe3xJIHA75F6DIlhx/Fcct/PEEF1RB
-	 9MErmFeYi9SEQ/vEVkVtRl9Hs8kLsIBfvG9Asv6WtAu/KBA1yv/zNCzYs8jdfcmsH/5F/LHgzo5V
-	 /PTxl9IFmORTonfG+cOcwN+RLXcC/POHTQV5c2mtiZ2LhQXoPn4tueV3Unv55glPkpgte1X1wNl/
-	 SlOx3+afQcy8e7BtSld5gVlWK0WSMgTgaXq0FWs+FzkIzjkbDzDuvh37WYAL/0bt0+LYFKSYo6Gb
-	 EM89vpGfkkCrqTI1hUUi/h3eFwNJY80j+fyzGxpcEsVCapUmTrMyMeX4JrdBHWBP0NrpHbDLKBD+
-	 udShGJ8S4SBfWr+JL3OnQ0WVKeO4q+ScnPMp8LlJO3nhl1IvuXO14ItC0Aq9KkqT+HO7p8i6Kg/D
-	 pvyKfkbsGzcoeNgix3gid9DffsMfR/wSNo5/Bv04bCNqFF5dk0qguIZUma+AB4rd/aV5r4OdapjA
-	 1+UhqcMGu5G6yMEpwqgCnPi2Y1bQfg/h7oojbhbe4b/tfVIyHyZVRsxC2CSGZYBfA5KeOFVCFd1b
-	 NiEPKEHkCZfUmbAKZCcmmaUpLim7Frl9v52xhNacYLQLUZiiADEI8hlu1+Xcf3BCLNNF2azWywFI
-	 ShUVyul4mKG1UbMeWW1gcEVcckRTvJD1yaLr2a3k1E27e4PJIUFJl1ZosVcMG6TvPifleYAZyCFx
-	 UgL8q5G4TsRzFVE76Uzey+ZSvf
-X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
+	by newxmesmtplogicsvrszc56-0.qq.com (NewEsmtp) with SMTP
+	id EE72042D; Sat, 21 Nov 2026 14:59:39 +0800
+X-QQ-mid: xmsmtpt1795244379t6zcn6lw1
+Message-ID: <tencent_27C5A1EA3CF33BA5221F7F01A066E92BCC07@qq.com>
+X-QQ-XMAILINFO: Mpt5V4XGwnFy4a/nabu402ZCgr4HCjbav7E+2nIRO5S+M9bW9j16AgO0eYZNxO
+	 Z/QSlGGFAV96WP9hht/6bqcxhLGoaztLNOYmXxy/3oIqdNhSwMoL0N1Ay1ELmbXRBQB0XM0Gix8k
+	 mYFlVQIRKhdEe4hRWIF8JqVcmuj7xapfA/4+QJsSm+sUFi59otfV2fHOjSYlN4PJBoMgoJcuJoWb
+	 MgnjNVsIuIQ3XUaWbe6YP+L2+bf7wN0F27uxwmrxnM+WVNdaFdRco3IyTplKdplG317qZH8NX0SS
+	 fQll/9vJGL9uB1sxzfDRZTgD3I0bVuc5IcdSD9C7ZVW2cWNovWUHKlTocpuBAglOB6cbAPtMmTKR
+	 xqHGMKZc1nE5DtCnAzRyejjiQNQ6FVhIMEKjmOYCtUH6GRR0CAig/F+7aKDfDdKRe7oht/UiTrAU
+	 WP/Rb6vHcoClZL3Aw4Umaqiwl1wNaZiYcrKMU+bjXE8XLm2Zoclzh7aJ/ZUpHcSNJ+B+3CYM1P51
+	 Hd8TRKzz2ixnJqXD2CY/sYrcpD62cPLyTHDoBajmBgJBlutHGYXURVuvB1An6jAZJrUyAjOi0y2k
+	 hCYY3rbXwJDbk320sclhaLTK2aHDWlHfhR436O96XHRRqwruVVEo++iNvUJhA57qlUHdC29cBU/Q
+	 YBbPVi828deqwxn4CbmVAsIFyn8G3yThlhF5nzHmt4gIOyWJc9DUfLjWKX+LYqhDfDNLTW6tu8zM
+	 /MdCVpvtjYnDl4EUOZiIW0Mjckp1ASLOe/0uGvMpRuD+QUNtZRK7DzbKD4E9BClSMaQk5eqq7QmN
+	 NGB3C6VeuWiHE5tHLuIda/9k/XhOVG+bLomj1Uj/MUNBAlXNg3O45aTH0wrIM/hgesw0WxzL73Hd
+	 490qOg6sbyb39XeFCm7U9FKmLkBwzvQAnTwF3W1sTkiHFI8DXGCi6/ZWhZdL726oRk8xACoGo2c8
+	 jmqahsEIWIZ62rvzD9ugzWGn95WB8pPX8/XnOHmnfZLvXrcquQm3LvirycHSy/Uwp6BmQu0qwLAE
+	 YCmGaDvNCLuVxs2bqEH8didhEX23RFne4vGPymTz9S5RLy/5WBrlHL83MISIyPGeyFThp8fKPfAU
+	 osIy+e+vo/BXm0oDttX02Dq6h4dG0Q52/rGx2DUUVOGYxqj1k=
+X-QQ-XMRINFO: MPJ6Tf5t3I/ylTmHUqvI8+Wpn+Gzalws3A==
 From: ZhuXiangyu <1194781887@qq.com>
-To: "Rafael J . Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@kernel.org>,
-	Zhang Rui <rui.zhang@intel.com>,
-	Lukasz Luba <lukasz.luba@arm.com>,
+To: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	linux-pm@vger.kernel.org,
+	linux-pwm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	ZhuXiangyu <1194781887@qq.com>
-Subject: [PATCH 2/2] dt-bindings: thermal: rockchip: add RK3506 TSADC
-Date: Sat, 21 Nov 2026 14:33:30 +0800
-X-OQ-MSGID: <20261121063330.1094548-2-1194781887@qq.com>
+Subject: [PATCH 1/2] pwm: rockchip: add PWM v4 support
+Date: Sat, 21 Nov 2026 14:59:35 +0800
+X-OQ-MSGID: <20261121065936.1125919-1-1194781887@qq.com>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261121063330.1094548-1-1194781887@qq.com>
-References: <20261121063330.1094548-1-1194781887@qq.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_223346_902330_710E4404 
-X-CRM114-Status: UNSURE (   9.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261120_225948_408071_2B424DC0 
+X-CRM114-Status: GOOD (  21.58  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,76 +98,250 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Document the RK3506 TSADC, which uses the TSADCV13 register layout
-and requires the TSEN clock in addition to the controller and APB
-clocks. Like the other newer Rockchip TSADCs it needs the GRF to
-enable the sensor analog front-end.
+Add basic support for the Rockchip PWM v4 controller found on the
+RK3506 and RK3576 SoCs. Compared to the earlier versions, v4 moves the
+enable bits into a separate register, uses hiword write masks for the
+control fields and latches a new configuration with a control-update
+bit.
 
+Only continuous output mode is supported for now.
+
+Tested on an RK3506 board with a 100 kHz output at 40% duty cycle,
+including enable/disable, verified on an oscilloscope.
+
+Tested-by: ZhuXiangyu <1194781887@qq.com>
 Signed-off-by: ZhuXiangyu <1194781887@qq.com>
 ---
- .../bindings/thermal/rockchip-thermal.yaml    | 23 ++++++++++++++++++-
- 1 file changed, 22 insertions(+), 1 deletion(-)
+ drivers/pwm/pwm-rockchip.c | 146 +++++++++++++++++++++++++++++++++----
+ 1 file changed, 130 insertions(+), 16 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-index 9fa5c4c4..f7fa4b60 100644
---- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-+++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-@@ -20,6 +20,7 @@ properties:
-       - rockchip,rk3328-tsadc
-       - rockchip,rk3368-tsadc
-       - rockchip,rk3399-tsadc
-+      - rockchip,rk3506-tsadc
-       - rockchip,rk3568-tsadc
-       - rockchip,rk3576-tsadc
-       - rockchip,rk3588-tsadc
-@@ -33,12 +34,14 @@ properties:
+diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
+index 050ca8aa..aa89f23d 100644
+--- a/drivers/pwm/pwm-rockchip.c
++++ b/drivers/pwm/pwm-rockchip.c
+@@ -7,6 +7,7 @@
+  */
  
-   clocks:
-     minItems: 2
--    maxItems: 2
-+    maxItems: 3
+ #include <linux/clk.h>
++#include <linux/delay.h>
+ #include <linux/io.h>
+ #include <linux/limits.h>
+ #include <linux/math64.h>
+@@ -31,6 +32,27 @@
+ #define PWM_LOCK_EN		(1 << 6)
+ #define PWM_LP_DISABLE		(0 << 8)
  
-   clock-names:
-+    minItems: 2
-     items:
-       - const: tsadc
-       - const: apb_pclk
-+      - const: tsen
++/*
++ * Register layout for PWM v4
++ */
++#define PWM_V4_HIWORD_UPDATE(v, l, h) \
++	((((v) << (l)) & GENMASK((h), (l))) | (GENMASK((h), (l)) << 16))
++
++#define PWM_V4_ENABLE_MASK		GENMASK(1, 0)
++#define PWM_V4_CLK_EN(v)		PWM_V4_HIWORD_UPDATE(v, 0, 0)
++#define PWM_V4_EN(v)			PWM_V4_HIWORD_UPDATE(v, 1, 1)
++#define PWM_V4_CTRL_UPDATE_EN(v)	PWM_V4_HIWORD_UPDATE(v, 2, 2)
++
++#define PWM_V4_MODE(v)			PWM_V4_HIWORD_UPDATE(v, 0, 1)
++#define PWM_V4_CONTINUOUS		1
++#define PWM_V4_POLARITY(v)		PWM_V4_HIWORD_UPDATE(v, 2, 3)
++#define PWM_V4_DUTY_NEGATIVE		(0 << 0)
++#define PWM_V4_DUTY_POSITIVE		BIT(0)
++#define PWM_V4_INACTIVE_NEGATIVE	(0 << 1)
++#define PWM_V4_INACTIVE_POSITIVE	BIT(1)
++#define PWM_V4_CTRL_DUTY_POSITIVE	BIT(2)
++#define PWM_V4_ALIGNED_INVALID(v)	PWM_V4_HIWORD_UPDATE(v, 5, 5)
++
+ struct rockchip_pwm_chip {
+ 	struct clk *clk;
+ 	struct clk *pclk;
+@@ -43,6 +65,7 @@ struct rockchip_pwm_regs {
+ 	unsigned long period;
+ 	unsigned long cntr;
+ 	unsigned long ctrl;
++	unsigned long enable;
+ };
  
-   nvmem-cells:
-     items:
-@@ -127,6 +130,7 @@ allOf:
-               - rockchip,px30-tsadc
-               - rockchip,rk3366-tsadc
-               - rockchip,rk3399-tsadc
-+              - rockchip,rk3506-tsadc
-               - rockchip,rk3568-tsadc
-     then:
-       required:
-@@ -155,6 +159,23 @@ allOf:
-     then:
-       patternProperties:
-         "@[0-9a-f]+$": false
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3506-tsadc
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 3
-+        clock-names:
-+          minItems: 3
-+    else:
-+      properties:
-+        clocks:
-+          maxItems: 2
-+        clock-names:
-+          maxItems: 2
+ struct rockchip_pwm_data {
+@@ -88,13 +111,25 @@ static int rockchip_pwm_get_state(struct pwm_chip *chip,
+ 	tmp *= prescaled_ns;
+ 	state->duty_cycle =  DIV_U64_ROUND_UP(tmp, clk_rate);
  
- unevaluatedProperties: false
+-	val = readl_relaxed(pc->base + pc->data->regs.ctrl);
+-	state->enabled = (val & enable_conf) == enable_conf;
++	if (pc->data->regs.enable) {
++		val = readl_relaxed(pc->base + pc->data->regs.enable);
++		state->enabled = (val & enable_conf) == enable_conf;
  
+-	if (pc->data->supports_polarity && !(val & PWM_DUTY_POSITIVE))
+-		state->polarity = PWM_POLARITY_INVERSED;
+-	else
+-		state->polarity = PWM_POLARITY_NORMAL;
++		val = readl_relaxed(pc->base + pc->data->regs.ctrl);
++		if (pc->data->supports_polarity &&
++		    !(val & PWM_V4_CTRL_DUTY_POSITIVE))
++			state->polarity = PWM_POLARITY_INVERSED;
++		else
++			state->polarity = PWM_POLARITY_NORMAL;
++	} else {
++		val = readl_relaxed(pc->base + pc->data->regs.ctrl);
++		state->enabled = (val & enable_conf) == enable_conf;
++
++		if (pc->data->supports_polarity && !(val & PWM_DUTY_POSITIVE))
++			state->polarity = PWM_POLARITY_INVERSED;
++		else
++			state->polarity = PWM_POLARITY_NORMAL;
++	}
+ 
+ 	clk_disable(pc->clk);
+ 	clk_disable(pc->pclk);
+@@ -102,6 +137,47 @@ static int rockchip_pwm_get_state(struct pwm_chip *chip,
+ 	return 0;
+ }
+ 
++static void rockchip_pwm_config_v4(struct pwm_chip *chip, struct pwm_device *pwm,
++				   const struct pwm_state *state)
++{
++	struct rockchip_pwm_chip *pc = to_rockchip_pwm_chip(chip);
++	u64 prescaled_ns = (u64)pc->data->prescaler * NSEC_PER_SEC;
++	u64 clk_rate, tmp;
++	u32 period_ticks, duty_ticks;
++
++	clk_rate = clk_get_rate(pc->clk);
++
++	tmp = mul_u64_u64_div_u64(clk_rate, state->period, prescaled_ns);
++	if (tmp > U32_MAX)
++		tmp = U32_MAX;
++	period_ticks = tmp;
++
++	tmp = mul_u64_u64_div_u64(clk_rate, state->duty_cycle, prescaled_ns);
++	if (tmp > U32_MAX)
++		tmp = U32_MAX;
++	duty_ticks = tmp;
++
++	writel_relaxed(period_ticks, pc->base + pc->data->regs.period);
++	writel_relaxed(duty_ticks, pc->base + pc->data->regs.duty);
++
++	if (pc->data->supports_polarity) {
++		if (state->polarity == PWM_POLARITY_INVERSED)
++			writel_relaxed(PWM_V4_POLARITY(PWM_V4_DUTY_NEGATIVE |
++						       PWM_V4_INACTIVE_POSITIVE),
++				       pc->base + pc->data->regs.ctrl);
++		else
++			writel_relaxed(PWM_V4_POLARITY(PWM_V4_DUTY_POSITIVE |
++						       PWM_V4_INACTIVE_NEGATIVE),
++				       pc->base + pc->data->regs.ctrl);
++	}
++
++	writel_relaxed(PWM_V4_MODE(PWM_V4_CONTINUOUS) |
++		       PWM_V4_ALIGNED_INVALID(false),
++		       pc->base + pc->data->regs.ctrl);
++	writel_relaxed(PWM_V4_CTRL_UPDATE_EN(true),
++		       pc->base + pc->data->regs.enable);
++}
++
+ static void rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 			       const struct pwm_state *state)
+ {
+@@ -175,14 +251,31 @@ static int rockchip_pwm_enable(struct pwm_chip *chip,
+ 			return ret;
+ 	}
+ 
+-	val = readl_relaxed(pc->base + pc->data->regs.ctrl);
+-
+-	if (enable)
+-		val |= enable_conf;
+-	else
+-		val &= ~enable_conf;
++	if (pc->data->regs.enable) {
++		writel_relaxed(PWM_V4_EN(enable) | PWM_V4_CLK_EN(enable),
++			       pc->base + pc->data->regs.enable);
++
++		if (!enable) {
++			struct pwm_state curstate;
++
++			/*
++			 * In continuous mode the disable takes effect at the end
++			 * of the current period, so keep the clock running for
++			 * one more period.
++			 */
++			pwm_get_state(pwm, &curstate);
++			fsleep(DIV_ROUND_UP_ULL(curstate.period, NSEC_PER_USEC));
++		}
++	} else {
++		val = readl_relaxed(pc->base + pc->data->regs.ctrl);
++
++		if (enable)
++			val |= enable_conf;
++		else
++			val &= ~enable_conf;
+ 
+-	writel_relaxed(val, pc->base + pc->data->regs.ctrl);
++		writel_relaxed(val, pc->base + pc->data->regs.ctrl);
++	}
+ 
+ 	if (!enable)
+ 		clk_disable(pc->clk);
+@@ -217,7 +310,10 @@ static int rockchip_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
+ 		enabled = false;
+ 	}
+ 
+-	rockchip_pwm_config(chip, pwm, state);
++	if (pc->data->regs.enable)
++		rockchip_pwm_config_v4(chip, pwm, state);
++	else
++		rockchip_pwm_config(chip, pwm, state);
+ 	if (state->enabled != enabled) {
+ 		ret = rockchip_pwm_enable(chip, pwm, state->enabled);
+ 		if (ret)
+@@ -291,11 +387,26 @@ static const struct rockchip_pwm_data pwm_data_v3 = {
+ 		       PWM_CONTINUOUS,
+ };
+ 
++static const struct rockchip_pwm_data pwm_data_v4 = {
++	.regs = {
++		.duty = 0x14,
++		.period = 0x10,
++		.ctrl = 0xc,
++		.enable = 0x4,
++	},
++	.prescaler = 1,
++	.supports_polarity = true,
++	.supports_lock = true,
++	.enable_conf = PWM_V4_ENABLE_MASK,
++};
++
+ static const struct of_device_id rockchip_pwm_dt_ids[] = {
+ 	{ .compatible = "rockchip,rk2928-pwm", .data = &pwm_data_v1 },
+ 	{ .compatible = "rockchip,rk3288-pwm", .data = &pwm_data_v2 },
+ 	{ .compatible = "rockchip,vop-pwm", .data = &pwm_data_vop },
+ 	{ .compatible = "rockchip,rk3328-pwm", .data = &pwm_data_v3 },
++	{ .compatible = "rockchip,rk3506-pwm", .data = &pwm_data_v4 },
++	{ .compatible = "rockchip,rk3576-pwm", .data = &pwm_data_v4 },
+ 	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(of, rockchip_pwm_dt_ids);
+@@ -327,7 +438,7 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
+ 
+ 	count = of_count_phandle_with_args(pdev->dev.of_node,
+ 					   "clocks", "#clock-cells");
+-	if (count == 2)
++	if (count >= 2)
+ 		pc->pclk = devm_clk_get(&pdev->dev, "pclk");
+ 	else
+ 		pc->pclk = pc->clk;
+@@ -351,7 +462,10 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
+ 	chip->ops = &rockchip_pwm_ops;
+ 
+ 	enable_conf = pc->data->enable_conf;
+-	ctrl = readl_relaxed(pc->base + pc->data->regs.ctrl);
++	if (pc->data->regs.enable)
++		ctrl = readl_relaxed(pc->base + pc->data->regs.enable);
++	else
++		ctrl = readl_relaxed(pc->base + pc->data->regs.ctrl);
+ 	enabled = (ctrl & enable_conf) == enable_conf;
+ 
+ 	ret = pwmchip_add(chip);
 -- 
 2.47.3
 
