@@ -2,109 +2,109 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB60C606A32C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Nov 2026 11:04:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8512E606A325
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Nov 2026 11:38:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wf/esUmE;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=SdLSu61o
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dDjmS9R5;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=pardini.net header.i=@pardini.net header.a=rsa-sha256 header.s=google header.b=Q7anUxom
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=PvzTj5NB87jFAne0DanmGQlYyWs828XFwjVsHnOkspo=; b=wf/esUmEgLULqWFj/jCGICCtmx
-	lAwf5okheWzUqwFFfbkHtp9JCvP1+wA2htpe/GXZ8V+9luu7XUBEVLcmGQxEmrT0A1ZAxAEVis7Ts
-	Wl+mdXK8Yg5N+EeqtsPuJj4asHLjj0zlD6lqOXETH5acDkHdwXnMlTlMyXwIpe9XLTsrMUHGR9LB/
-	7Sw5W+sjIc+9bPjdrngsLy/203bnfyIaYmgRXnecwR+rFrxLawcZ3ifXIOOcJxPJMb4zVuLp1RsPa
-	udYB4cmifpU+LVUnZbs+s6ymzgLi1Smq5jGpFf9hG7pGUyugUHOFX0rkdJw7PEdjmmhkzbxlyPTXL
-	rKef6oFA==;
+	bh=URw95gAaNyMSCmRD+gof92zyCbsGOgNvtSs4tbO+zUE=; b=dDjmS9R58dO/usvHibcOIpsiyh
+	DfMnZ6y6ozsYJpQGKSv3SBBtsPCh/BxMiWf2YlxvbjK3XbhgExEsavyjX3WuJLaVoLHEbZfuH4zhg
+	PUIMp28xNfrTTz3TzAEzC46DrYwd9XEFSAMGO7ti0HXUiEAWEuKeRCOVk6CuWWAulLkOpNilIkYNz
+	8FNfaB20IxP2R+Tpgisp6MPpoarkNwBjxum7SaQ8MXqdObo+CqvK3ZrXrUR+cqRZ6ZnR+yxwxQ4SV
+	oePOsd3Y3cMnCnkV87WaaWUD3PdGJmXK91ob7/QswSK+EmzUjAUiz6G/1dOqPRxc9OBxCypy9Py6b
+	hfPL3vDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUit2-0000000H4Mz-34li;
-	Sat, 21 Nov 2026 11:04:04 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xUjPr-0000000H6H2-2grR;
+	Sat, 21 Nov 2026 11:37:59 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUit1-0000000H4Mj-33Ri;
-	Sat, 21 Nov 2026 11:04:03 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D44806121D;
-	Sat, 21 Nov 2026 11:04:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4CA981F000C4;
-	Sat, 21 Nov 2026 11:03:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795259042;
-	bh=0IEDqFSkt+C2PVyEWS3RXL3VqNTsxyCiSPrOLMqTKq8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=SdLSu61oD6c7Zyog6ba9BfhNAVOZI8XI7wHvEst6k3Cl+et0x/kYNRjD5u55c2yz4
-	 FyExcaZskfKITW6mD/esUsb/Zx9ZtHITQBaaznibfk0IkDep94IpHgQaY56LIERI93
-	 QhDtr9BIGqLzBeY7nypK6JbUBCoYOMFNQRi5DL1irf944WKMvqAwKwQOF9iNX/VCb0
-	 nvDyugpCrz3gxIL00WU2WYVp5ZeKD7mwjm5wH0htBAU0TtGo6fiGPtFxCTkUREGSwm
-	 FMRNm/gPI8W7BJUaNDilmXQnXBWeCMxirXLPrhsgLuqX9S6Drp1rxqrsRzyEL5Pc5u
-	 yPf26uPm8yRmw==
-Message-ID: <729d5740-b611-4701-a293-447f940453ec@kernel.org>
-Date: Sat, 21 Nov 2026 12:03:56 +0100
+	id 1xUjPo-0000000H6Fi-2cGC
+	for linux-rockchip@lists.infradead.org;
+	Sat, 21 Nov 2026 11:37:58 +0000
+Received: by mail-ed1-x529.google.com with SMTP id 4fb4d7f45d1cf-6ba380cd8dbso2281187a12.3
+        for <linux-rockchip@lists.infradead.org>; Sat, 21 Nov 2026 03:37:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pardini.net; s=google; t=1795261074; x=1795865874; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=QWBZ24J2L01VeEpwZsAilZvLBxGps9oMKqAOB5tV14o=;
+        b=Q7anUxomp2wdVcLWRSgo2MpWhn+rAO24OR7mTkgPTeUMtoSGuUKiT9D7ndKbAhkCRd
+         G2L1siAqg3wQapPKTRXOGHrGq5Gm13fAutZI4cDycxWTnEhRwMv1pWsLYVlMY2HhGsum
+         Z/RAiDk3xCCz7zFYG4zTN0KR6CAai33oruGV5PgS4LW9272jn0jywH02mAFW2cLo0Kpb
+         +ms3WHx5jU6jGLNC8GtNk86+CcPd1dGVxxcFnD7yZzXnsKNOhhrnp/Z8uw+d/aApIPAZ
+         xn3ZUjHQa76OabFyWWRyp0JepSeQTXCpP+TJstcty8CN0EX/udXZKpyTWUgq4HNDv6Be
+         QgcA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795261074; x=1795865874;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=QWBZ24J2L01VeEpwZsAilZvLBxGps9oMKqAOB5tV14o=;
+        b=rDzIYECOKayAOj4ppyhl+MydueZsABC+tzCxd+BIKrbKN3a09eJ3cfHOIlNXwMki3+
+         UoeXU5wgB/x4LAFHoEaUWrRq7VK54Tygix+In09a4PY0cjkil7kQPaTo2rAZI1X9icxB
+         KvqN+rF3svB2o2502k6BhRqoRssIBzPhz+sf3mK/xDg8EIlxxQYCuAGe3tHsnk7Zu4PM
+         x8NfY0gAPEu0NOg52OnbmuS3G1MqNR76bpOmDErk10JQtB5QW5jziRUiLVZluyxT/3ht
+         gowP8eHRhgShtVrvM4HvdR83SVlZ/XMfhmPS+ATTEef2qyiU0mKF9zJZ7AI8IO3tmGaL
+         Q7TA==
+X-Forwarded-Encrypted: i=1; AL+hErHFW1yixkXAtrWHgDS78MHvBy3TwjqhjCiln51PGYYnr0DtZ4eyhf2cFlGYKRf8huwlsyejyH7kK+1NalWmMA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+N0jYy7xsuysMyK9efPyGq5cVoI7gHwUqSeIaZ7S99Bz5279p/
+	g/gIyiM5hY5DnBB3hlvu6SeSox7xdBYMuAPLIffdbyo2/PBryEr5VvdpT61ckaHN8A==
+X-Gm-Gg: AZFdTZey/mr1BcTZ64OQmQGlCERfptoPDs7J9UY9UBACYOgtxRD57oN+SanIq6TTwJt
+	BZbOqJJhBjvL0CEd5yUQZZ2m8HAgFKXi8EHsmRIISG/Rw7yreS7Uql4BKu9n/jx7Kyt0GoDXj2D
+	cKbwtDsbK12YG5E+JLHbzhEd4uddpl5Uzxby6iKXkwtKo4Fl/6BVmCxM/ACSmuGJAUWfk1DHq6t
+	qMWM6MZIkVG9Bno32fMb1T2IEO2KIiefonusX/y2O3AKkygFZfrtjQGL0uaS5iMHAqz5OeGiwGO
+	s+tqq81kz44ghmT94cYQtgG4NS0yW42kbqICNZGoRtkIq/NjdaPkMa7hOuvs+qekRr9TYwrOd7L
+	gnm0m2Mc9FFQKkBIPJU7kdHeT+nnOeAwZhitbLOzVXGNTKIxqgKQuSskeKVa1gIk3FHVny73gtt
+	g9UX2qp3IAokNmcq7Q71Cdh4E0W0BVifT4W2hXHjnQoGAKtliaJFp/pwk+aO3nsS/p5Js8JH5N5
+	IKfcYYlW9uaBkydDU+uH05+sRrEnqm07g5p8FYzT6JEia6rd7BJFhaaScbYQzcZYVSOuU/nWqor
+	BEO9nvdr6dBUkF4ZN2UJX1DKakKeRu1ul5HTcHJkWLxi4KZtpBgqPTXLdTr6Cen1xPpqgQrk3IZ
+	h+9FO+5fdnGP2kB0RkmGzXKQvLVl0GtSg78CgPG616snRrkCpPxfVLk2hvDPgYg/3DDTO9B+HaY
+	R/
+X-Received: by 2002:a05:6402:1cc3:b0:6b8:7816:8735 with SMTP id 4fb4d7f45d1cf-6ba37cc09f1mr4099511a12.3.1795261074138;
+        Sat, 21 Nov 2026 03:37:54 -0800 (PST)
+Received: from ?IPV6:2a02:a466:4d7a:0:409e:13f1:8f3d:aa19? (2a02-a466-4d7a-0-409e-13f1-8f3d-aa19.fixed6.kpn.net. [2a02:a466:4d7a:0:409e:13f1:8f3d:aa19])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6ba370e91c3sm2202346a12.19.2026.11.21.03.37.52
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 21 Nov 2026 03:37:52 -0800 (PST)
+Message-ID: <1cf0e772-e5ab-485f-bd6a-d1088e01ad1e@pardini.net>
+Date: Sat, 21 Nov 2026 12:37:52 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] clk: rockchip: add clock output/input switch driver
-To: ZhuXiangyu <1194781887@qq.com>, Stephen Boyd <sboyd@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: Brian Masney <bmasney+clk@redhat.com>,
- Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, linux-clk@vger.kernel.org,
+Subject: Re: [PATCH v19 0/6] usb: dwc3: introduce Rockchip glue driver
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Heiko Stuebner <heiko@sntech.de>, Vinod Koul <vkoul@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Manivannan Sadhasivam <mani@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
+ Krishna Kurapati <krishna.kurapati@oss.qualcomm.com>,
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+ Igor Paunovic <royalnet026@gmail.com>, Alexey Charkov <alchark@flipper.net>,
+ linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20261121105856.1414984-1-1194781887@qq.com>
- <tencent_6DE9C8A75BC0B999E08A6DD1A67AC25C5705@qq.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ linux-phy@lists.infradead.org, kernel@collabora.com
+References: <20261114-b4-rockchip-dwc3-rockchip-glue-v19-0-b79fb5f4b42a@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <tencent_6DE9C8A75BC0B999E08A6DD1A67AC25C5705@qq.com>
+From: Ricardo Pardini <ricardo@pardini.net>
+In-Reply-To: <20261114-b4-rockchip-dwc3-rockchip-glue-v19-0-b79fb5f4b42a@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261121_033756_697520_24EC1E0F 
+X-CRM114-Status: UNSURE (   5.13  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,8 +114,8 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -124,24 +124,27 @@ X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 21/11/2026 11:58, ZhuXiangyu wrote:
-> Add a small driver for the Rockchip GRF-controlled clock output/input
-> switch. It exposes a single gate bit as a clock, allowing the SAI MCLK
-> pin direction to be controlled through the clock framework.
-> 
-> Tested on an RK3506B board with the ES8388 codec: this clock drives the
-> I2S MCLK and audio playback works.
-> 
-> Tested-by: ZhuXiangyu <1194781887@qq.com>
+On 14/11/2026 02:01, Sebastian Reichel wrote:
+> The recent Rockchip platforms have a combined PHY, which does USB3 and
+> DisplayPort as well as muxing the lines in arbitrary order.
+[...]
 
-No, this makes no sense. Please do not invent own stuff, like
-author-testing-tags. Look how other people did it.
+Thanks for the series! Tested on a Mekotronics R58X-Pro (RK3588,
+FUSB302, source-only Type-C) on v7.4-rc3, with usbdp part3 v18:
 
-> Signed-off-by: ZhuXiangyu <1194781887@qq.com>
-> ---
+RTL8156 2.5G USB NIC, flipped (reverse, normal, reverse): 5 Gbps every 
+time. Before the series, reverse needed a dwc3 rebind.
 
-Best regards,
-Krzysztof
+Apple USB-C Digital AV Multiport adapter (A2119): a SanDisk Extreme Pro 
+USB 3 stick on it reads ~220 MB/s at 5 Gbps while DP alt mode runs, in 
+both orientations.
+
+Tested-by: Ricardo Pardini <ricardo@pardini.net> # Mekotronics R58X-Pro 
+(RK3588)
+
+mvg,
+Ricardo
+
 
 _______________________________________________
 Linux-rockchip mailing list
