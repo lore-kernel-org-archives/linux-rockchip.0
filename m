@@ -2,61 +2,64 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C1247606A32A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 02:09:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 56879606A320
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 05:52:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YJympbWa;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=protonmail.com header.i=@protonmail.com header.a=rsa-sha256 header.s=protonmail3 header.b=iM8UOG+5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IWTu7rac
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=rjE/2fdmzlFl28tH/7rUTuMy6kKUdOIcGdxsirBBqCs=; b=YJympbWa3D21Bpj/t+6qpHrU2T
-	3ztsMU38teDtV/yyIgHXKFhFSObI8s98R+9NoVNvDSt1rtoALVQKgoc+E8Aa5iFvbhz1+KlWeGa0d
-	O/cGzIQmQwfgHS0wgOAIkzYUCC4wH8b21YXePhr+tvjsqTCcO4GYxHczM3YFXbfoDNrw8rRSl1UX5
-	AHdaeDTgiPwrTfgk5igzQRhbsFBRIMp5D16Pk9oe+qmZQTEN0zjwUIqHHjBngPJCh9nYnN4TSkqsJ
-	koFKtIWH+S6oY2Ui/gsgpvF2oycsDYG+lPJLS+cOnsmltJuJf3Mt6lD5OA9LYZ4IYFk76NrNibvaL
-	ZHFfssyA==;
+	bh=0QEJ+HcUzFAUgTZpqYYPlGnvnMJIQoFxg+HfDraZyp0=; b=IWTu7racw/Fir8ObD83fMAJYww
+	l/+kRfddNl8MHSnFw6mluR3ad6/Q8Zi7b4w5EJIuNimygShuRw3m0GYYZqyj5KUOMN/m+3vK8Jtpw
+	s/Nf5I3UwHCrwPu9iTkkWUkeMPA8+dXNLP4vOUvoE13G2zp7rwtsn7AeWyGCGDruBuvaX1Ft94DL9
+	smYSomnExP5s+VYGTKP6w/rKaPDRxWtY094FRy+6beRWwjl0znW1AFtr8P/lVh5gkwlayfFw5d+nf
+	LoF2eh59MMUBBlQd9xR3W4HO3RMQrHeupyytrmZwtLDYPjvF58mwDGl3iSeMtwSyvINAPTz8kjUd6
+	QxHLWoTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUx0u-00000000fsn-3Ouw;
-	Sun, 22 Nov 2026 02:09:08 +0000
-Received: from mail-10696.protonmail.ch ([79.135.106.96])
-	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUx0p-00000000fs1-0IYU
-	for linux-rockchip@lists.infradead.org;
-	Sun, 22 Nov 2026 02:09:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1795313337; x=1795572537;
-	bh=QSOldkyDHE3yvTcYOBM7bHlgZUHM49mDL6VtgEY/wP4=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=iM8UOG+5q86LGv69yARR1d2gnI8ozdIm0sBATLpKTk5PtHE6eIDPGugKw8AvDltsC
-	 BdrxmxTMSvOq4x3T20ZNWLk/6OZU4efCiTZD8T1IUkhYC5Ok+6+izz/v45K/NmJxvv
-	 i/0RPFHyV7v+40ZUXld4J4elUYcj/KD9N7zoSCJn9RKUZzCKH+P67XpveWtsZZu7pB
-	 6QUCsjCLfVZZcoZP5F1R+B9FlzQjfnNMX2B8af2OReUW5vWnpS/RJ98oGhhs3dCbTn
-	 GqR1o+jNnq89v37hD7zq1BCqfdzIXWqz0aKh+fQBUWlZKSd5OrXmmRtMLtJ6pyQbf4
-	 +oOYXn18Rqp9Q==
-Date: Sun, 22 Nov 2026 02:08:51 +0000
-To: Alexey Charkov <alchark@flipper.net>
-From: Ryan Leung <untilscour@protonmail.com>
-Cc: Rob Herring <robh@kernel.org>, Srinivas Kandagatla <srini@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Michael Walle <michael@walle.cc>, Miquel Raynal <miquel.raynal@bootlin.com>, Finley Xiao <finley.xiao@rock-chips.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH v2 0/4] nvmem: Derive Rockchip MAC addresses from the OTP CPU ID
-Message-ID: <RWg2ZbGh-TJtEJMDWD9DGxBKsszG10BM07351ALdCUa9UL-IImPGxSYztcNF3kiRFVCA0x5cECwign-2lb56nPMGZQ5LVZhckY4-KTb5qpk=@protonmail.com>
-In-Reply-To: <AQpdyd6hRl9cLAxBK-fEdzq0dcZsWpHP63dbDpOxcNQWCdaNIc4D3Mfi9Ll86jBVsbEVhr5-9EZzFHbkF6efBDcRUT7nXx9TH5Aeffy5DyU=@protonmail.com>
-References: <20260902-rk3576-otp-cpuid-mac-v2-0-e4b7fe2ab13f@flipper.net> <CAKTNdwH9QAgreJ-6+t1j_P1di4VyoMBSsFkf_g=mCi_-M8g9Pw@mail.gmail.com> <20260917221857.GA4056431-robh@kernel.org> <CAKTNdwH6E5=9gZHB6tdianC2+1aDv4wnLmvL59kDW-dR3a12bg@mail.gmail.com> <AQpdyd6hRl9cLAxBK-fEdzq0dcZsWpHP63dbDpOxcNQWCdaNIc4D3Mfi9Ll86jBVsbEVhr5-9EZzFHbkF6efBDcRUT7nXx9TH5Aeffy5DyU=@protonmail.com>
-Feedback-ID: 184418679:user:proton
-X-Pm-Message-ID: 7c823cd84927e819292d16fce6b08949de0d11f8
+	id 1xV0UM-00000000kum-1Vei;
+	Sun, 22 Nov 2026 05:51:46 +0000
+Received: from mail.hit.edu.cn ([202.118.224.62])
+	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xV0UG-00000000kuC-2Tnz;
+	Sun, 22 Nov 2026 05:51:44 +0000
+Received: from 220110626hanxuechao$alu.hit.edu.cn ( [219.223.233.19] ) by
+ ajax-webmail-mail-appserver03 (Coremail) ; Sun, 22 Nov 2026 13:51:27 +0800
+ (GMT+08:00)
+Date: Sun, 22 Nov 2026 13:51:27 +0800 (GMT+08:00)
+X-CM-HeaderCharset: UTF-8
+From: 220110626hanxuechao@alu.hit.edu.cn
+To: linux-rockchip@lists.infradead.org
+Cc: "Heiko Stuebner" <heiko@sntech.de>,
+	"Liu Changjie" <liucj1228@outlook.com>,
+	"Alexey Charkov" <alchark@gmail.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [RFC] arm64: dts: rockchip: rk3576-lckfb-tspi-3m: sdmmc0_det_l
+ question
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version 2026.2-cmXT5 build
+ 20261015(8d7e304b) Copyright (c) 2002-2026 www.mailtech.cn
+ mispb-0670b814-d594-4118-92e0-dc1bc2f00e12-hit.edu.cn
+X-CM-CTRLMSGS: =?B?4U4dcjiH6nJ5xwDR7hwMki1N8jM=
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Message-ID: <5e6ebf68.3773.1a201cf3894.Coremail.220110626hanxuechao@alu.hit.edu.cn>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: P0WgCgDXlYffggJrW6MxAA--.1562W
+X-CM-SenderInfo: yssqiiaqwslx5dq03vpfkd0qhdoxhxllwovvfxof0/1tbiAgQTAGs
+	BgIcYVgAFsz
+X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VWxJw
+	CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
+	daVFxhVjvjDU=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261121_180904_694476_8ECEE21C 
-X-CRM114-Status: GOOD (  42.97  )
-X-Spam-Score: -2.8 (--)
+X-CRM114-CacheID: sfid-20261121_215141_059857_7F3AAEAD 
+X-CRM114-Status: UNSURE (   3.72  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.2 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,104 +69,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-3.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FROM_STARTS_WITH_NUMS,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgQWxleGV5LAoKT24gV2VkbmVzZGF5LCBOb3ZlbWJlciAxOHRoLCAyMDI2IGF0IDEwOjUxIFBN
-LCBSeWFuIExldW5nIDx1bnRpbHNjb3VyQHByb3Rvbm1haWwuY29tPiB3cm90ZToKCj4gT24gRnJp
-ZGF5LCBTZXB0ZW1iZXIgMTh0aCwgMjAyNiBhdCAzOjA4IFBNLCBBbGV4ZXkgQ2hhcmtvdiA8YWxj
-aGFya0BmbGlwcGVyLm5ldD4gd3JvdGU6Cj4gCj4gPiBIaSBSb2IsCj4gPgo+ID4gT24gRnJpLCBT
-ZXAgMTgsIDIwMjYgYXQgMjoxOeKAr0FNIFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+IHdy
-b3RlOgo+ID4gPgo+ID4gPiBPbiBUaHUsIFNlcCAxMCwgMjAyNiBhdCAwNjo0ODozM1BNICswNDAw
-LCBBbGV4ZXkgQ2hhcmtvdiB3cm90ZToKPiA+ID4gPiBPbiBXZWQsIFNlcCAyLCAyMDI2IGF0IDU6
-MDjigK9QTSBBbGV4ZXkgQ2hhcmtvdiA8YWxjaGFya0BmbGlwcGVyLm5ldD4gd3JvdGU6Cj4gPiA+
-ID4gPgo+ID4gPiA+ID4gUm9ja2NoaXAgU29DcyBhcmUgc2hpcHBlZCB3aXRoIGEgdW5pcXVlIENQ
-VSBJRCBpbiB0aGVpciBpbnRlcm5hbCBPVFAKPiA+ID4gPiA+IG1lbW9yeSwgYW5kIFJvY2tjaGlw
-IGJvb3Rsb2FkZXJzIHVzZSBpdCB0byBnaXZlIGJvYXJkcyB3aGljaCBoYXZlIG5vCj4gPiA+ID4g
-PiBkZWRpY2F0ZWQgc3RvcmFnZSBmb3IgYSBNQUMgYWRkcmVzcyBhIHN0YWJsZSBvbmUgYW55d2F5
-OiB0aGV5IGhhc2ggdGhlIENQVQo+ID4gPiA+ID4gSUQgYW5kIHBhdGNoIHRoZSByZXN1bHRpbmcg
-YWRkcmVzc2VzIGludG8gdGhlIGRldmljZSB0cmVlIHRoZXkgaGFuZCBvdmVyLgo+ID4gPiA+ID4K
-PiA+ID4gPiA+IEtlcm5lbHMgc3RhcnRlZCB3aXRob3V0IHRoYXQgZml4dXAsIGUuZy4gc3RyYWln
-aHQgZnJvbSB0aGUgU1BMIGluIEZhbGNvbgo+ID4gPiA+ID4gbW9kZSBvciBieSBhbnkgb3RoZXIg
-bG9hZGVyIHdoaWNoIGRvZXMgbm90IGltcGxlbWVudCBSb2NrY2hpcCdzIGRlcml2YXRpb24sCj4g
-PiA+ID4gPiBmYWxsIGJhY2sgdG8gcmFuZG9tIE1BQyBhZGRyZXNzZXMgd2hpY2ggY2hhbmdlIG9u
-IGV2ZXJ5IGJvb3QuCj4gPiA+ID4gPgo+ID4gPiA+ID4gRm9ybWFsaXplIHRoZSBkZXJpdmF0aW9u
-IGluIHRoZSBEVCBiaW5kaW5nIGFuZCBhZGQgYSBMaW51eCBrZXJuZWwgZHJpdmVyCj4gPiA+ID4g
-PiBpbXBsZW1lbnRpbmcgaXQsIHNvIHRoYXQgYSBMaW51eCBpbWFnZSBjYW4gdXNlIHRoZSBzYW1l
-IHN0YWJsZSBhZGRyZXNzZXMKPiA+ID4gPiA+IHJlZ2FyZGxlc3Mgb2YgdGhlIGJvb3QgZmxvdy4K
-PiA+ID4gPiA+Cj4gPiA+ID4gPiBPbmx5IFJLMzU3NiBpcyB3aXJlZCB1cCBoZXJlLCB0aGF0IGJl
-aW5nIHRoZSBTb0MgSSBjYW4gdGVzdCBvbi4gT3RoZXIKPiA+ID4gPiA+IFJvY2tjaGlwIFNvQ3Mg
-a2VlcCB0aGUgc2FtZSBDUFUgSUQgYXQgYSBkaWZmZXJlbnQgT1RQIG9mZnNldCAtIDB4NyByYXRo
-ZXIKPiA+ID4gPiA+IHRoYW4gMHhhIG9uIFJLMzU4OCwgZm9yIGluc3RhbmNlIC0gd2hpY2ggbWFr
-ZXMgc3VwcG9ydGluZyB0aGVtIGEgdHdvLWxpbmUKPiA+ID4gPiA+IGFkZGl0aW9uIHRvIHRoZSBk
-cml2ZXIncyBtYXRjaCB0YWJsZSBwbHVzIHRoZSBsYXlvdXQgbm9kZS4KPiA+ID4gPiA+Cj4gPiA+
-ID4gPiBQYXRjaCAxIGlzIGEgcHJlcmVxdWlzaXRlIGZpeC4gVGhlIE9UUCBoYXJkd2FyZSBoYXMg
-aXRzIG93biBpbnRlcm5hbCBzdGF0ZQo+ID4gPiA+ID4gbWFjaGluZSB3aGljaCBvbmx5IHdvcmtz
-IGNvcnJlY3RseSB3aXRoIHNlcmlhbCBhY2Nlc3MsIGJ1dCB0aGUgY3VycmVudAo+ID4gPiA+ID4g
-ZHJpdmVyIHNlcmlhbGl6ZXMgbm90aGluZywgd2hpY2ggcmVzdWx0cyBpbiB0aW1lb3V0cyBhbmQv
-b3IgY29ycnVwdGVkCj4gPiA+ID4gPiByZWFkcyAoZS5nLiByZXR1cm5pbmcgc3BsaWNpbmcgYSBU
-U0FEQyB0cmltIHZhbHVlIGludG8gdGhlIGJ1ZmZlciBvZiBhCj4gPiA+ID4gPiBjYWxsZXIgYXNr
-aW5nIGZvciB0aGUgQ1BVIElELCBvciBtaXhpbmcgdXAgdHJpbSB2YWx1ZXMgb2YgZGlmZmVyZW50
-IFRTQURDCj4gPiA+ID4gPiBjYWxsZXJzKS4gSGVuY2UgdGhlIEZpeGVzOiB0YWcgYW5kIENjOiBz
-dGFibGUuCj4gPiA+ID4gPgo+ID4gPiA+ID4gQ3Jvc3MtY2hlY2tlZCBvbiBhbiBSSzM1NzYgYm9h
-cmQ6IHRoZSBhZGRyZXNzZXMgZml4ZWQgdXAgaW50byB0aGUgRkRUIGJ5Cj4gPiA+ID4gPiBVLUJv
-b3QgbWF0Y2ggdGhlIG9uZXMgZGVyaXZlZCBieSB0aGUgbmV3IGRyaXZlciwgYW5kIHRoZSBkcml2
-ZXIgY29ycmVjdGx5Cj4gPiA+ID4gPiBhc3NpZ25zIHRoZW0gdG8gdGhlIG5ldHdvcmsgaW50ZXJm
-YWNlcyB3aGVuIHRoZSBrZXJuZWwgaXMgYm9vdGVkIHdpdGhvdXQKPiA+ID4gPiA+IFUtQm9vdCBw
-cm9wZXIgYXQgYWxsICh2aWEgRmFsY29uIG1vZGUpLgo+ID4gPiA+ID4KPiA+ID4gPiA+IFNhc2hp
-a28gYWxzbyByaWdodGx5IHBvaW50ZWQgb3V0IGEgdXNlLWFmdGVyLWZyZWUgaW4gdGhlIG52bWVt
-IGNvcmUgd2hlbgo+ID4gPiA+ID4gYSBsYXlvdXQgZHJpdmVyIGlzIHVubG9hZGVkIGxlYXZpbmcg
-aXRzIHN5c2ZzIG5vZGVzIGFuZCB0aGUgcG9zdHByb2Nlc3Nvcgo+ID4gPiA+ID4gZnVuY3Rpb24g
-cG9pbnRlciBkYW5nbGluZy4gVGhpcyBpcyBmaXhlZCBzZXBhcmF0ZWx5IGluIFsxXS4KPiA+ID4g
-PiA+Cj4gPiA+ID4gPiBbMV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjYwOTAyLW52
-bWVtLWxheW91dC11bnJlZy12MS0xLTJkMTZiZWJlYjUxOEBmbGlwcGVyLm5ldC8KPiA+ID4gPiA+
-Cj4gPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBBbGV4ZXkgQ2hhcmtvdiA8YWxjaGFya0BmbGlwcGVy
-Lm5ldD4KPiA+ID4gPiA+IC0tLQo+ID4gPiA+ID4gQ2hhbmdlcyBpbiB2MjoKPiA+ID4gPiA+IC0g
-U3dpdGNoZWQgZnJvbSBhIHNjb3BlLWJhc2VkIGd1YXJkIHRvIGV4cGxpY2l0IGxvY2svdW5sb2Nr
-IGNhbGxzIGluIHRoZQo+ID4gPiA+ID4gICBPVFAgZHJpdmVyIHRvIGF2b2lkIG1peGluZyBzdHls
-ZXMgaW4gYSBmdW5jdGlvbiB1c2luZyBnb3RvIGVycm9yCj4gPiA+ID4gPiAgIGhhbmRsaW5nIChT
-YXNoaWtvKQo+ID4gPiA+ID4gLSBMaW5rIHRvIHYxOiBodHRwczovL3BhdGNoLm1zZ2lkLmxpbmsv
-MjAyNjA5MDEtcmszNTc2LW90cC1jcHVpZC1tYWMtdjEtMC1lYTkxMzUyNzBmYzJAZmxpcHBlci5u
-ZXQKPiA+ID4gPiA+Cj4gPiA+ID4gPiAtLS0KPiA+ID4gPiA+IEFsZXhleSBDaGFya292ICg0KToK
-PiA+ID4gPiA+ICAgICAgIG52bWVtOiByb2NrY2hpcC1vdHA6IFNlcmlhbGl6ZSByZWFkcwo+ID4g
-PiA+Cj4gPiA+ID4gSW5jaWRlbnRhbGx5LCBwYXRjaCAxIG9mIHRoaXMgc2VyaWVzIGFsc28gZml4
-ZXMgQ1BVIHRoZXJtYWwgdGhyb3R0bGluZwo+ID4gPiA+IG9uIG15IFJLMzU3NiBkZXZpY2U6IGFw
-cGFyZW50bHksIHRoZSBtaXMtcmVhZCBPVFAtcHJvZ3JhbW1lZCB0aGVybWFsCj4gPiA+ID4gdHJp
-bSB2YWx1ZXMgYnJva2UgdGhlIHRoZXJtYWwgZ292ZXJub3IgbG9naWMsIHdoaWNoIG5vdyB3b3Jr
-cwo+ID4gPiA+IGNvcnJlY3RseSB3aXRoIHByb3Blcmx5IHNlcmlhbGl6ZWQgT1RQIHJlYWRzLiBT
-byBpdCB3b3VsZCBiZSBncmVhdCB0bwo+ID4gPiA+IGhhdmUgdGhlc2UgbWVyZ2VkLgo+ID4gPgo+
-ID4gPiBJdCB3b3VsZCBiZSBncmVhdCB0byBoYXZlIHRoZSBzYXNoaWtvIGNvbW1lbnRzIGFuYWx5
-emVkIGFuZCByZXBsaWVkIHRvCj4gPiA+IGFzIHdlbGwgaWYgeW91IHdvdWxkIGxpa2UgdGhpcyB0
-byBiZSByZXZpZXdlZC4KPiA+Cj4gPiBPZiBjb3Vyc2UuIE9uZSBjb2RlLXJlbGF0ZWQgY29tbWVu
-dCBTYXNoaWtvIHJhaXNlZCBoYXMgYmVlbiBhZGRyZXNzZWQKPiA+IGluIGEgc2VwYXJhdGUgcGF0
-Y2ggWzFdIHdoaWNoIGlzIHN0aWxsIHBlbmRpbmcgcmV2aWV3LiBUaGUKPiA+IGJpbmRpbmctcmVs
-YXRlZCBjb21tZW50cyB3aWxsIG5lZWQgdG8gYmUgcmV2aXNpdGVkLCBhcyBJJ2QgbGlrZSB0bwo+
-ID4gZmlyc3QgZXhwbG9yZSB0aGUgaWRlYSBSeWFuIHByb3Bvc2VkIGluIHRoZSBhZGphY2VudCB0
-aHJlYWQgWzJdLCBhcyBpdAo+ID4gd2lsbCBjaGFuZ2UgdGhlIGFwcHJvYWNoIHNvbWV3aGF0IGlm
-IGl0IHdvcmtzIG91dC4KPiA+Cj4gPiBCZXN0IHJlZ2FyZHMsCj4gPiBBbGV4ZXkKPiA+Cj4gPiBb
-MV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjYwOTAyLW52bWVtLWxheW91dC11bnJl
-Zy12MS0xLTJkMTZiZWJlYjUxOEBmbGlwcGVyLm5ldC8KPiA+IFsyXSBodHRwczovL2xvcmUua2Vy
-bmVsLm9yZy9hbGwvMjAyNjA5MTYxMjMzNTUuNDUwNy0xLXVudGlsc2NvdXJAcHJvdG9ubWFpbC5j
-b20vCj4gCj4gSGkgQWxleGV5LAo+IAo+IEhhdmUgeW91IGhhZCBhIGNoYW5jZSB0byBleHBsb3Jl
-IHRoaXM/IEkgaGF2ZSBnb3QgYSB3b3JraW5nIHByb29mIG9mCj4gY29uY2VwdCBbMV0gZm9yIHRo
-ZSBmb3JtYXQgSSBzdWdnZXN0ZWQsIHRlc3RlZCBvbiBSSzM1NzYgKE5hbm9QaSBNNSkgYW5kCj4g
-UkszNTI4IChOYW5vUGkgUjI4UykuCj4gCj4gQmVzdCByZWdhcmRzLAo+IFJ5YW4KPiAKPiBbMV0g
-aHR0cHM6Ly9naXRodWIuY29tL3VudGlsc2NvdXIvb3BlbndydC9jb21taXQvYTYyMmMxY2YyOTJm
-N2E0YmI3MDkzNTIxZTI1NDM2YmUzMjRmYzFhNAoKSSd2ZSB1cGRhdGVkIFsxXSB0aGUgcHJvb2Yg
-b2YgY29uY2VwdCBzbGlnaHRseS4gUGVyaGFwcyB5b3UgYXJlIGJ1c3kKd2l0aCBvdGhlciBwYXRj
-aGVzPyBBcyBpdCdzIGJlZW4gbW9yZSB0aGFuIDIgbW9udGhzLCBpZiB5b3UgZG9uJ3QgbWluZCwK
-SSdkIGxpa2UgdG8gc2VuZCBpdCBpbiBhcyB2MyBvZiB0aGlzIHNlcmllcywgd2l0aCB5b3UgYXMg
-Y28tYXV0aG9yLgoKQmVzdCByZWdhcmRzLApSeWFuCgpbMV0gaHR0cHM6Ly9naXRodWIuY29tL3Vu
-dGlsc2NvdXIvb3BlbndydC9jb21taXQvNjY4NmFmMmY2NDc1ZjZjYzlkMWMxZmIzN2NkODg1NTg0
-NWY3NTRkYgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+Hi Heiko, Liu Changjie,
+
+I have a question about the SD card detect configuration of the LCKFB
+Taishan Pi 3M.
+
+The &sdmmc node uses the board-specific sdmmc0_det_l group:
+
+    sdmmc {
+        sdmmc0_det_l: sdmmc0-det-l {
+            rockchip,pins = <0 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>;
+        };
+    };
+
+which muxes GPIO0_A7 as a GPIO, matching
+
+    cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
+
+The SoC dtsi already provides sdmmc0_det for the same pin, using the
+SDMMC0_DETn function instead:
+
+    sdmmc0_det: sdmmc0-det {
+        rockchip,pins = <0 RK_PA7 1 &pcfg_pull_up>;
+    };
+
+and other RK3576 boards use it together with cd-gpios, for example
+rk3576-evb1-v10.dts and rk3576-evb2-v10.dts. Both groups configure the
+same pin with the same pull-up; only the pin function differs.
+
+I tested the node below on a Taishan Pi 3M with mainline v7.4-rc2,
+i.e. with sdmmc0_det instead of sdmmc0_det_l and cd-gpios unchanged,
+and card insertion and removal are still detected correctly:
+
+    &sdmmc {
+        bus-width = <4>;
+        cap-sd-highspeed;
+        cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
+        disable-wp;
+        max-frequency = <50000000>;
+        no-mmc;
+        no-sdio;
+        pinctrl-names = "default";
+        /* GPIO0_B6/SDMMC0_PWREN is not connected on this board. */
+        pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_det &sdmmc0_bus4>;
+        vmmc-supply = <&vcc_3v3_s0>;
+        vqmmc-supply = <&vccio_sd_s0>;
+        status = "okay";
+    };
+
+Could you explain the reasoning behind using sdmmc0_det_l instead of
+sdmmc0_det here? Card detection also works with sdmmc0_det in my
+testing, so I would like to understand whether the board-specific
+group is required or just a preference.
+
+Thanks,
+Xuechao Han
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
