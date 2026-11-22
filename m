@@ -2,115 +2,92 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07C51606A320
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 09:17:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2F033606A32A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 09:31:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PfVadAxf;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=g2UCKDe0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ePvtZNQ4;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=dyDUqwj1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:MIME-Version:References
+	:In-Reply-To:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=om5jEvTkO0SFQSfgVRF+ayD59TRliS1fho1JyPMIhrI=; b=PfVadAxf1iNIjNT3bPwOJXx8Ez
-	/lkzPo3U+tvo7wyuej1jixgMge6wZ6+9oFdffbXi3tQTnfb0cywbihBz5K+LI6jkw4q2ZWdQJHXVe
-	l4K7NvuU5wqYFNkgs9zUnH8eXggGPp7serus6WMzyNF8M9cMkfmM9MQovioptAFRxRhJeiJ2LmAGK
-	osuh1un0EnLxku7Rq0j15691BZJKKcm8CviDNA5jWCZUGkg6WLtIZUqt7YpggAj3rgWcNoKZjeTdE
-	pwJfIccY25IbY9SmtKescE/CqXMcbhAWc7+vrfbW2j/rZybhXniXiTvv0iRQtLfvv6YC7Ou75yzbM
-	RhL3p0Ng==;
+	bh=AxNHGgIdih82xOW/b5UWvj3uJt85b7Up+9zxkrlL1Ns=; b=ePvtZNQ41w5lWDqLRcAK6/HBj8
+	OgVaD7dYVZGfVKE+lUicuys37ZzE7KhJLjiS/XKiDxUSN3+JMRCJDFzW38nYnEZZ4YkSmj+ZBjApI
+	El1Qq0EkXuSSdwg+pAdgWyZze6aEPpK08cZQAQtO0uLSchOXiLgpTP35XhOXqKpWZBfl9fYNKYwaP
+	v/aCSecv6KSawio0oIIa5DBb8jnHGO+bHgaN625MMPYwpjloVF+psiQ3AVTrTkixcEW/aZWmoBQoT
+	hZXNRbyVYHlY+ADVgVxGhKxO7jX06cZmifcZKHISheEDtpFeOjkiTMAUmFr+7nzZWWx0vViYGJapn
+	L2Phsoqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xV3gt-00000000tsd-3Fhy;
-	Sun, 22 Nov 2026 09:16:55 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1xV3vL-00000000uy3-0EaN;
+	Sun, 22 Nov 2026 09:31:51 +0000
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xV3gr-00000000tro-0uPD
+	id 1xV3vF-00000000uwd-4Ajk
 	for linux-rockchip@lists.infradead.org;
-	Sun, 22 Nov 2026 09:16:55 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-5c00c727a26so177394e87.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 22 Nov 2026 01:16:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795339011; cv=none;
-        d=google.com; s=arc-20260327;
-        b=Cs67lss5LaKOKVg4758KvrynXnTvxmVbaL7N2KXNNFOsrzvm5cJyU9Z9QQiZTEqp2a
-         alKtqrbwCt5kFEwMkPTVugn8q9+k6Q1TfKlV/K7WRcsPsVroWoFQmh6Y0l5NZRntTIdm
-         pMlq1ANA3ltprw/INJQXxwipTZxlL7WnW/xGUETvFOlOic3Jr4hHTENgZnOc30V30wI8
-         2/77NgI9d77SfPVy1epProyH3wS0KLkMlJQhDsk87IoK1UyMYoHPlD615w0sHLoKZY9N
-         4+cXfU4envlJ89ru46LsxI2AWSwA/ihW2Byy0R2DCno3lHPjSXb7BWfvwjlN6c+5Gm3q
-         Ebkg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=jlk4MoliGvZW1IkxqxKZvX+OlKzVs5YdkLc7yt4n2p4=;
-        fh=Bfy/YOVIXtftauoMAyWMWLdKCFfPFcuDLwoPGA+Rm1s=;
-        b=FPNMOMHpXZlnh4pt2LXdoLnltmTqvSTDcCU7//4x8CEY+dmFvAfyRtvQV73LVxASlQ
-         u5Ls+SSrtWGyaUl7lREC8lcIwxMAec4WeNXfB7a0OT7SHpOh32G30unuNGHAuOem22Vr
-         ttzA8zg4tgKpefb0yZMAY0H/FKE2ULWqNKJuHUqcusfmd+uLpwpg7DgHYojGvzNkXg98
-         N9BXCxussQZBGdeBGvmGUiczffyOCJocBMgGOtmAapk4PhWW6C/V4vRNfxC6nO/uyWJO
-         L6IMFf1onvQrKXQx3d8dmuggmJdllZv1KNSWm2gmu/IL+BLw9CSjZLRWF2kae+6J2Dn1
-         D8fg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Sun, 22 Nov 2026 09:31:48 +0000
+Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-3b413f6dda6so267228a91.2
+        for <linux-rockchip@lists.infradead.org>; Sun, 22 Nov 2026 01:31:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795339011; x=1795943811; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=jlk4MoliGvZW1IkxqxKZvX+OlKzVs5YdkLc7yt4n2p4=;
-        b=g2UCKDe0age70HqGJPoem9Igd4cf6HsWaQFfGXsPrV5U86CRGpEknjag+G9TQhYamK
-         RVlCIWj9vs6SttGzrIhYihmd9cZHGgRCHPnzrEqjRY24VQQbcJHxny8xWub5Fw4V7mj6
-         AfmSMAgo46s891dcc0iywxXTa1tB8yEb9xBxf+9WyOOzpCwy2OVDV/sL0r+XuGnrNrQH
-         lK75+IEL4npEVIhAf9q2kZen165yMpMYndebvruFN3yWhVrOre0Oty9g1RlFQhsmEreX
-         fTRsqS6a77Dr2nx2eIHyiz54bn4I0CsDKi6KdbmST6j7LYh+pbxGB/Q9U3GDKc1dCJTH
-         iODw==
+        d=gmail.com; s=20260707; t=1795339905; x=1795944705; darn=lists.infradead.org;
+        h=message-id:date:content-transfer-encoding:content-type:mime-version
+         :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=R5GY9TTuofYTaa/ZejIza37Mpjz95YygMJZxjVzg2k8=;
+        b=dyDUqwj122vJ4cWm4eHhUXVgHJEHEjNG20gpbmYxc4Y/iFwqG43vuPsvkcRyQlg6F/
+         xlmbsrDZarNwa2rBQrsrFyqW5Md8nH7/Lc238cD10qy2bs1QYn4R5xJSjnwiq5Zn7hOZ
+         tIiBMOXx4MwV7kK7cKboj5DHYn621vk6xh58L7nANsfe2EMFwZ1yvDdoCem0qf3QZv24
+         2LhD82RvAbfRxVc7ank3h3HEqLjvzFf4Cs0UKAfkUGa+4FUJSeeLyoeeW5K1fFkpuxi3
+         zFCHj81d6n8UWOqk0PUfzuSYsPzTR4MRWE4BFL74690mTC5RBQGcZNQ20wRYtRI1MgaI
+         ct0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795339011; x=1795943811;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=jlk4MoliGvZW1IkxqxKZvX+OlKzVs5YdkLc7yt4n2p4=;
-        b=DVL4A3PnhbQmoaxCZNDpEJSUkVUC3gzlOBBJn+VlvD+XZfj/8py+gprYn+6bWCfkBp
-         kGeCxW4bCNPqXZkah+9wzt9s9Ah3gWQdCJ0rH3oYf3X0ZTBgbWJLiwTQw7zmy9jsqqB5
-         P9v8r/0ZM6qUQAaKK0mjLytEdmsPvB27l6D7wjF7zYIC3Cce0qNuSBv8cu9JSnidP71W
-         TC7+K/hznxyzOrqvXtKOJ2CMm8uZR/6VrDgfgqwENjGP3XEdT/zqu7qzEEGMiglgUryi
-         3483kh298URZHoFVwZI/DwDFzDtRMDCZ2TVDX2GwlWM8lmGU0L47ni415cW4Dq2KkIXQ
-         HFdA==
-X-Forwarded-Encrypted: i=1; AL+hErFA+QCL6Pn7MWqvfWdbdrkhN8qIsNrCCn639DdIpTDUj/MJcVlDf0C7Z6B5y6+1eM7U4J7QG/G23FQp4p8OmA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/62q6k62Qedg+dzXceuMxXiPTsVk4C0WVbnaUz3fEdMtfn3BN1
-	s5hEnXYxoIQ04XSV9LRJ5w18zBPfL5f0SuQXhXM5M4lCYEZGLR/y0oG6Wray9D0JCXN96mRHk8X
-	oOJt4KCnKe6rxa1PLAYHwsxcqhneVNmg=
-X-Gm-Gg: AZFdTZdpN35DA9aB20kP0s3kRcYzcESHS3tWGpeOUZf3T+bl3q862eygLzFxRvx1fvl
-	96ol29FeXPmWQ03HeGljA7Io77a34xwuA9T0MVZFSTwY8nHL5gYBjNlBpj5czrySaNwFbl+Dc/2
-	0Daqp0ISyGmonobXgqAZtXnMsEBqJFzMt4pzDM3XteXt8upuRdvQ+ySbmP6jZdg542zYiexKqAV
-	9KxMkgf7G10+XiG3x8VlAEPi0dDhWTK8pGNm4CuQffuzq4utQW3ZIQF5XuUvbYmLAjEMQAtLkct
-	N8MsRmv6KhlkRDqk1qB/zNJVIo6gupgHmOx2Pb08ce6uHQ0oN1tsz/NO95YwDVTj5tl44suVHi0
-	tOTKw09JNZ0N8ezHCe0kjXwX+koXppGtNPwD2qNWkc6Joi5uHjxR8NqAcWieuG8qNuPSA/ak=
-X-Received: by 2002:a05:6512:6719:b0:5bf:ba43:fa67 with SMTP id
- 2adb3069b0e04-5c1bc935c91mr2187197e87.6.1795339010786; Sun, 22 Nov 2026
- 01:16:50 -0800 (PST)
+        d=1e100.net; s=20260707; t=1795339905; x=1795944705;
+        h=message-id:date:content-transfer-encoding:content-type:mime-version
+         :references:in-reply-to:subject:cc:to:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=R5GY9TTuofYTaa/ZejIza37Mpjz95YygMJZxjVzg2k8=;
+        b=VmOdCTstEDAlF9QE1v1mW/55ALlV+3J0cZXBPbGgEI6rLq5uoXxqWlb5hfQKumG6l1
+         UqxBjkxpUGVbdT73D/Gxd0wI3p3sCwoXCe3Wh4NOY/cmFh/GVOpxkYbf8QW6ixTyVuXn
+         6JN8+jgy2iYqRI8gHrzN9Vnz9ePI0tb1qh26aMqPUZCrjLtapQDfHks38KBG0V+mfzOw
+         CpVGqrdttmvLYipwUu0kk8z6RM1dvagpA/8fOtb1AQ50TLeYdgLTc/KAzLtfEGGrQYbq
+         K2uDRZmqywJKxdWyuYugu3AhkXbroMzVJ8GPjkjGdjGLQ73cT67EsTXVaMnIulDoqkFg
+         EJPw==
+X-Forwarded-Encrypted: i=1; AL+hErG8s/P2oEwv0Pq+Ghs8iUqQz5i400QXOgBv1FwGJTPqy5EDk8CA3Lh9Ylwe+D+Dq8UoyY2fdkBE1Kw+4HL71A==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9NFcezCp4d2ogBOvIkCEwSl3tytJlPSCy9g9ikWJc1Zqw0NUMK
+	rhv4wL3igjVwPO0LQ5fwKrQnCNQpIBLQHCMFxHLeKYQW+5RSdOGXU7xM
+X-Gm-Gg: AZFdTZeAAdZ3pKlVZnrmO2eRhTIjFQiB5BdQRsd/+BXw1xa05XwG1lvcShX9VWOqRM+
+	Ihy0l7uMkn4ujkYlA3/AdvTKdFuTZFTgjttlsMO4yEd9ZIus3K+e5lcK4GKKLGcB+m/Y8gMxY42
+	9gvfm9ZWv/kBurIjKAc7j7sIm6o/jx60tgd9TihzHVBIx0Cu2J4fwVFzJxYFyzjArzGfJuO3AUF
+	svk8wCMUw9jEtM78YA8qKwHFFF1n74Zh+D/h88gztaoZyY22A8Bj7hdeXo5zPA+4TeuA37nmgZT
+	f4Gx0xDcekwNx2VBTCOETmVYBXbOcVe/Hp0Y3EwXZeXpxkOoS70BadkcoYL/MmTktbRl3y0kOQl
+	SMU53oF4JcF9reZ+ni/M8RhYOH/Iu8R7Anq4fVQO4+Zut8YhOlwC/WdFw7O+oP0AOu0kXuWapbr
+	DXf2YOzdARdiHPngQXhd9uMd8+0Mu9XHd1AGno5GKfJVDZhkLBe6hC0aNS7p5xtSu9r2JDH+j95
+	trkuVZn/a6kT3PbrLpEDmXbF3J0q4YonYCw6m0V+QIbSjdZMs/2gsGVZiVV5OdJMHmFsdurPfnt
+	DzR6XIzqA9L528qJdrf9cuAz+AjsBOvkh12RdNLs3WW+4W+m76Qed59Ll3s5mbvoXkDg5hdDZQj
+	x2DUcVOiXfx1AMqRRcPmyCpSY56M=
+X-Received: by 2002:a17:90a:e705:b0:3ac:9c37:9422 with SMTP id 98e67ed59e1d1-3b41c7e4cf5mr11892464a91.2.1795339905049;
+        Sun, 22 Nov 2026 01:31:45 -0800 (PST)
+Received: from claudebox.iyengar.cloud ([50.39.139.68])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b405ffa98esm14795295a91.17.2026.11.22.01.31.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 22 Nov 2026 01:31:44 -0800 (PST)
+From: Arun Iyengar <aiyengar1990@gmail.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH v12 06/23] drm/bridge: synopsys: dw-dp: Fix AUX transfer
+ timeout race condition
+In-Reply-To: <20261114-synopsys-dw-dp-improvements-v12-6-d42d3dc5bdd4@collabora.com>
+References: <20261114-synopsys-dw-dp-improvements-v12-6-d42d3dc5bdd4@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261119-b4-cedrus-mpeg1-v1-0-aa5ba1192822@gmail.com>
- <20261119-b4-cedrus-mpeg1-v1-2-aa5ba1192822@gmail.com> <1a1f912f033.2efff015191157.7190884739957848478@collabora.com>
-In-Reply-To: <1a1f912f033.2efff015191157.7190884739957848478@collabora.com>
-From: Arun Iyengar <aiyengar1990@gmail.com>
-Date: Sun, 22 Nov 2026 01:16:39 -0800
-X-Gm-Features: Aa3M54oE-VNyvNZaxxRREWe_L_ECyiIpVpQf2rmUEBWZs2-DphbG3Q0KscfmLqc
-Message-ID: <CAEy9hNVXZvfbW6U=Y7aiONidPKee7npGWpWuR2yQOeUu4aOVfg@mail.gmail.com>
-Subject: =?UTF-8?Q?Re=3A_=C2=A0=5BPATCH_RFC_2=2F2=5D_media=3A_cedrus=3A_mpeg2=3A_decode_M?=
-	=?UTF-8?Q?PEG=2D1_as_V4L2=5FPIX=5FFMT=5FMPEG1=5FSLICE?=
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: hverkuil@kernel.org, mchehab@kernel.org, benjamin.gaignard@collabora.com, 
-	p.zabel@pengutronix.de, mripard@kernel.org, paulk@sys-base.io, 
-	gregkh@linuxfoundation.org, wens@kernel.org, jernej.skrabec@gmail.com, 
-	samuel@sholland.org, jonas@kwiboo.se, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, ckoever@outlook.de
+Date: Sun, 22 Nov 2026 09:31:43 -0000
+Message-ID: <179533990370.107225.5765165679182115805@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261122_011653_301958_08FD8FE4 
-X-CRM114-Status: UNSURE (   3.63  )
+X-CRM114-CacheID: sfid-20261122_013146_034299_B240EA16 
+X-CRM114-Status: UNSURE (   7.48  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -122,23 +99,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Heiko =?utf-8?q?St=C3=BCbner?= <heiko@sntech.de>, devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Andy Yan <andyshrk@163.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, Igor Paunovic <royalnet026@gmail.com>, Conor Dooley <conor+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Alexey Charkov <alchark@flipper.net>, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Thomas Zimmermann <tzimmermann@suse.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, 20 Nov 2026 08:08:50 -0500, Nicolas Dufresne wrote:
-> MPEG2 requires MPEG1 support. The new format simply add noise, you can
-> fix cedrus with V4L2_MPEG2_SEQ_FLAG_MPEG1 alone.
+On Sat, Nov 14, 2026 at 06:00:39AM +0100, Sebastian Reichel wrote:
+> @@ -1491,6 +1493,12 @@ static ssize_t dw_dp_aux_transfer(struct drm_dp_aux *aux,
+>  	status = wait_for_completion_timeout(&dp->complete, timeout);
+>  	if (!status) {
+>  		dev_err(dp->dev, "timeout waiting for AUX reply\n");
 
-Thanks, done in v2: the format is gone and cedrus selects MPEG-1 from
-V4L2_MPEG2_SEQ_FLAG_MPEG1.
-https://lore.kernel.org/r/20261121-b4-cedrus-mpeg1-v2-0-95e4decf03fa@gmail.com
+This still drops a reply the sink did send when the IRQ thread runs
+more than 10 ms late. On RK3588 (7.3, KASAN on, v11 of this series:
+same 06/23), with a SCHED_FIFO hog at the IRQ thread's priority on its
+CPU (busy 40 ms of every 200 ms), 1410 DPCD reads gave 183 timeouts.
+Checking for the reply once more before giving up gave 0 timeouts,
+with 127 late replies taken:
+
+--- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+@@ -1493,2 +1493,6 @@ static ssize_t dw_dp_aux_transfer(struct drm_dp_aux *aux,
+ 	status = wait_for_completion_timeout(&dp->complete, timeout);
++	if (!status) {
++		synchronize_irq(dp->irq);
++		status = try_wait_for_completion(&dp->complete);
++	}
+ 	if (!status) {
+
+Feel free to fold it in.
+
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+
+Claude (Anthropic) wrote this change; I reviewed and tested it.
 
 _______________________________________________
 Linux-rockchip mailing list
