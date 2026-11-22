@@ -2,55 +2,53 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DAA76606A320
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E57B0606A32A
 	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 06:01:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QkTNHJDl;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=us0TarKX;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=U2zs7dA2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cf6eJ+kv;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=cUDnae7y;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=a/NrGWp1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=vAC6nH/etR//xPM1Lc0M0jqHvnSIZD7za4xOWsB4Khw=; b=QkTNHJDl7imeusKhDEpSgbeHEn
-	H/f0Vy6Pm5dW6Bt2sLjRVzPNWv/zpFrAMpUGijGJY07VY09fBY3BZInAhR8qP680a5OG40JCXWW7d
-	kcwEJ5Z0/ITQyPfs+aMsiv3IazaGt6SF812IRKxk09V1X2m7iOToQubrarsgbjoEftV/gWQHJ6/jo
-	BVPryEH3JHpoaQEVVjcWEd2+1vO/khR9btBKmDIm+vgYJMRalbhvJAf3tet7DXQ+AUiGeBNV4rHf2
-	F757ajJEj49lHvXdB/b+s4XBhWS8fhu/b7iwvoFXYf1HelZxa5v/XeckEDeSGlVPE5uo8CmqXgOxw
-	FcsTSnDg==;
+	bh=VEg+sXMt2fn4OXWpikxrKQY8D1QMwC6jmpLi8QsfXco=; b=cf6eJ+kvjlpGRt9vZPAARhlKkv
+	at+CLS/GKdf+4n51GfivHb3Uw8L1Wj1ZSxbeZYzZm71mXs/2hj9QJPCZSe8ZAMK/5QxA8XUVXil6U
+	om3NFok4n9TnufZvGDytkPTF1XL96v40IjazdiJJxFMdi3uHyzfrJwWu9/+43XXb8+V7y1SYS7Z+p
+	VYoFi2MvOq4dJAiaEeBX3FQPw+qkydzMGQBVqvmKHIhR/w4s2Z3o2jshI1F5fMefQjNb8NyuKhsjo
+	mWAKrVrr2eRh09R8ODbxxxCbu+f8BR5wNcPJpj4Z7TjOnvoUgCi3m8HWpeJaypC0m36mnBnrkzwY5
+	VBLGPy0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xV0e0-00000000lU4-2jbA;
+	id 1xV0e0-00000000lUL-35MP;
 	Sun, 22 Nov 2026 06:01:44 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xV0dp-00000000lGQ-0agA
+	id 1xV0dp-00000000lGx-11Sr
 	for linux-rockchip@lists.infradead.org;
-	Sun, 22 Nov 2026 06:01:34 +0000
+	Sun, 22 Nov 2026 06:01:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From: CFBL-Address: CFBL-Feedback-ID;
- q=dns/txt; s=fe-e1b5cab7be; t=1795327292;
- bh=l3joljTh86SrgqgzDwpfUEKaM0c8d0FKMsL+NNKPMFQ=;
- b=us0TarKXhMT6JoKUplSDsQIF/hlO2WtCwTXczXHNd15qhLMfB9SGhlrWSnVJHacdPej4EkZ1l
- onCBNwiijiKbYujap8CqKEiHiFKOYI2/on8+cfcFWhtAeBstoU+4iMruGujcDVoE2d+nVmmXSlR
- mX2fFSkSq6TfzHhah2yabX1fMKu+pOz/4SX3Lhqw7lJrKnIOKSWrK+8j14NdYUmrysofYoVX3T4
- QADeQx9kdYE2F9KefGUgs/oXiH416zDyMD2+YDdayfRT79QRFDk/6mdV0GNwFvDGS2t/OngxBRB
- s1sUlHTPKhXb2zCP38zuOdU2Ixor76wVTqj5gxRt5xgA==
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From: CFBL-Address: CFBL-Feedback-ID; q=dns/txt; s=fe-e1b5cab7be;
+ t=1795327293; bh=ke4IgnUz7inY+ONMqxKiiDGn14CGx+ZmqvyLZlExotU=;
+ b=cUDnae7yA1M6I2hroE6s2wSpQ6BFd3NqVOhaCCNbNQvE/K2U/PBR/qRjidXv6zfqeCEeUdCGc
+ cwDpPLTQDn1z2/4qRNmkRh6+ovXlcHJB1vTAvQsEXDaKeyI008qOTYfpfdWIqcbYyNu3UVUm47R
+ O5+hzGa6Q+HZcKnK65k9tlbENMKhJnzVYt9hCPoo1Ja1eKKT6MFXwmOyZBrOaUJfLhzv0DktuJW
+ osMQI/mAzh2jM7NiqdIMNWwJ2Gs6VpkrO+l+FxuLtw6nBAvLNpzGvUZ9S5R+kIaRv5tADAlHBAM
+ nSFcCcFtSrJI9Xc/p6MdKgzTPRtrOoKy1TyqAEidopkA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=forwardemail.net;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From: CFBL-Address: CFBL-Feedback-ID;
- q=dns/txt; s=default; t=1795327292;
- bh=l3joljTh86SrgqgzDwpfUEKaM0c8d0FKMsL+NNKPMFQ=;
- b=U2zs7dA2J/042n9Or3OeomtUDkRvgMD/e408V8Pcv8mVAEB+7rmAV7m3Ro4SfXrDN35Hj6Xfo
- 5eQSgmLhnLUUARpynkAn3M5MFbcBC3Oq7OkfsXDskdZ0wFaKp2sAMRJKOuo3I8RcgurrvHahqbW
- XCzS+fXTZouVHgooLWzVRlE=
-CFBL-Feedback-ID: 6b028531cff95ecda8c09342:2df51f67f4fae979f4232f86c9c7a8f0
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From: CFBL-Address: CFBL-Feedback-ID; q=dns/txt; s=default;
+ t=1795327293; bh=ke4IgnUz7inY+ONMqxKiiDGn14CGx+ZmqvyLZlExotU=;
+ b=a/NrGWp1k+xPMd27VtL7ljA1cwEn62tdUxdPA8doZsSJoMHC1CbFnVI3oxJWCRqGlZyQfQl6b
+ sNw/jL34PS+n7BPPG4iyT4YcBuZYOpL2VKV+iuysb722WTYOADe4KnSh20Xn3ttNJwmllZH2A4l
+ UWHT3rVXFuCHDu77nMpTgt8=
+CFBL-Feedback-ID: 6b02852fcff95ecda8c09329:42337bd3833695854f7a2e6fc72dcce6
 CFBL-Address: abuse@forwardemail.net; report=arf
-X-Forward-Email-ID: 6b028531cff95ecda8c09342
+X-Forward-Email-ID: 6b02852fcff95ecda8c09329
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
 X-Forward-Email-Version: 2.19.37
@@ -68,18 +66,15 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 1/8] dt-bindings: soc: rockchip: grf: Add RK3506 compatibles
-Date: Sun, 22 Nov 2026 06:01:04 +0000
-Message-ID: <20261122060114.773624-2-jonas@kwiboo.se>
+Subject: [PATCH v2 0/8] ARM: dts: rockchip: Add Luckfox Lyra boards
+Date: Sun, 22 Nov 2026 06:01:03 +0000
+Message-ID: <20261122060114.773624-1-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.56.1
-In-Reply-To: <20261122060114.773624-1-jonas@kwiboo.se>
-References: <20261122060114.773624-1-jonas@kwiboo.se>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261121_220133_201833_E51A55AF 
-X-CRM114-Status: UNSURE (   6.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261121_220133_310584_951856A0 
+X-CRM114-Status: GOOD (  12.99  )
 X-Spam-Score: -2.0 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,56 +90,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add the GRF and IOC compatible strings for the Rockchip RK3506 SoC.
+This series adds initial devicetree for Rockchip RK3506 SoC and initial
+support for Luckfox Lyra board family [1].
 
-Table 1-1 RK3506 Address Mapping in TRM for RK3506 contains following
-related entries:
+The Luckfox Lyra board family use different RK3506 SoC variants, i.e. Lyra
+and Lyra Plus both use RK3506G2 and Lyra Ultra and Lyra Zero W both use the
+RK3506B varaiant.
 
-  Module		Address		Size
-  GRF			0xFF288000	16KB
-  GPIO2/3/4_IOC		0xFF4D8000	32KB
-  GPIO1_IOC		0xFF660000	64KB
-  GRF_CORE		0xFF840000	16KB
-  GRF_PMU/RMIO		0xFF910000	16KB
-  GPIO0_IOC		0xFF950000	64KB
+All board compatibles use rockchip,rk3506 in this revision of the series,
+maybe we should use rockchip,rk3506b for the RK3506B (and RK3506J) variants?
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
+The pinctrl driver for RK3506 will not work as-is using the SoC DT from this
+series. The already merged driver depends on a rockchip,ioc1 phandle prop
+that never was described in dt-bindings. The SoC DT in this series instead
+uses rockchip,grf in GPIO controller node to reference correct IOC for GPIO0
+and GPIO1. A patch to fix the pinctrl driver can be found at [2].
+
+The branch at [3] also contains follow-up patches that e.g. fixes pinctrl
+driver and adds USB support.
+
+Mainline U-Boot support can be tested using a branch at [4], it contains
+board support using same devicetree files extended with USB support.
+
 Changes in v2:
-- No change
----
- Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 6 ++++++
- 1 file changed, 6 insertions(+)
+- Add default pinctrl to fspi node
+- Add display_subsystem, vop, dsi and dsi_dphy nodes
+- Add osc_clk_out and ref_clk0_out to pinctrl
+Link to v1: https://patch.msgid.link/20261119152055.556266-1-jonas@kwiboo.se/
 
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index e94c83d7c138..3c1c3dc1b84d 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -15,6 +15,9 @@ properties:
-       - items:
-           - enum:
-               - rockchip,rk3288-sgrf
-+              - rockchip,rk3506-ioc0
-+              - rockchip,rk3506-ioc1
-+              - rockchip,rk3506-ioc234
-               - rockchip,rk3528-ioc-grf
-               - rockchip,rk3528-pipe-phy-grf
-               - rockchip,rk3528-vo-grf
-@@ -93,6 +96,9 @@ properties:
-               - rockchip,rk3368-pmugrf
-               - rockchip,rk3399-grf
-               - rockchip,rk3399-pmugrf
-+              - rockchip,rk3506-core-grf
-+              - rockchip,rk3506-grf
-+              - rockchip,rk3506-pmu-grf
-               - rockchip,rk3562-pmu-grf
-               - rockchip,rk3568-grf
-               - rockchip,rk3568-pmugrf
+[1] https://wiki.luckfox.com/Luckfox-Lyra
+[2] https://patch.msgid.link/20261120201540.672016-1-jonas@kwiboo.se/
+[3] https://github.com/Kwiboo/linux-rockchip/commits/next-20261116-rk3506
+[4] https://git.u-boot-project.org/u-boot/contributors/kwiboo/u-boot/-/commits/rk3506
+
+Jonas Karlman (8):
+  dt-bindings: soc: rockchip: grf: Add RK3506 compatibles
+  ARM: dts: rockchip: Add support for RK3506
+  dt-bindings: arm: rockchip: Add Luckfox Lyra and Lyra Plus
+  ARM: dts: rockchip: Add Luckfox Lyra and Lyra Plus boards
+  dt-bindings: arm: rockchip: Add Luckfox Lyra Ultra
+  ARM: dts: rockchip: Add Luckfox Lyra Ultra board
+  dt-bindings: arm: rockchip: Add Luckfox Lyra Zero W
+  ARM: dts: rockchip: Add Luckfox Lyra Zero W board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   9 +
+ .../devicetree/bindings/soc/rockchip/grf.yaml |   6 +
+ arch/arm/boot/dts/rockchip/Makefile           |   6 +-
+ .../dts/rockchip/rk3506-luckfox-lyra-plus.dts |  31 +
+ .../boot/dts/rockchip/rk3506-luckfox-lyra.dts |   9 +
+ .../dts/rockchip/rk3506-luckfox-lyra.dtsi     | 124 ++++
+ .../arm/boot/dts/rockchip/rk3506-pinctrl.dtsi | 594 +++++++++++++++++
+ arch/arm/boot/dts/rockchip/rk3506.dtsi        | 614 ++++++++++++++++++
+ .../rockchip/rk3506b-luckfox-lyra-ultra.dts   |  31 +
+ .../rockchip/rk3506b-luckfox-lyra-zero-w.dts  |  23 +
+ .../dts/rockchip/rk3506b-luckfox-lyra.dtsi    | 100 +++
+ 11 files changed, 1546 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra-plus.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra.dtsi
+ create mode 100644 arch/arm/boot/dts/rockchip/rk3506-pinctrl.dtsi
+ create mode 100644 arch/arm/boot/dts/rockchip/rk3506.dtsi
+ create mode 100644 arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra-ultra.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra-zero-w.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra.dtsi
+---
+Based-on: <20261121155810.706866-1-jonas@kwiboo.se>
+
 -- 
 2.56.1
 
