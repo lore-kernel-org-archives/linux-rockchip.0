@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D5C45606A31A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 22:52:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6BFA7606A31A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 22:52:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qZBsNvCL;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=kF+a3xZN
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BxtdbMWU;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=S9HritYr
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,53 +14,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=x7rBSvG95T5PreoDknEJER+fFdFfVjQQDw1bCL3w1bo=; b=qZBsNvCLKnutCOYWE5AvRTa7Ro
-	kpaHcbbMGhqdq0BA6Dlw8dB4Oly7QrmL16DSbFuNblBcI5yOC9WXDVOw2VVktIl3dRZL5LzVva5cd
-	0H7IZR/keJCifHY5jEujK7L9c06ZbHGha60Z5alJc1m7AiaCsaE/e6IkKSPOWMTgQGIWJDVVwWm3i
-	EdsSZtB0007U6PbfZBSVgFtYQJ+MeJcwnET12yYSVSqDYoVWE8Om82FP8f/FwV2q8gsquQk9Z+NQ/
-	Z4NQAm6oxSO7qd7c32aHV02maWTU5O+MYwuaRZ4K5KL5OEI0G4jsb9p0pxoeH7cW1rCP8wOOlU0Yo
-	1rePgP/A==;
+	bh=xpeYbRRTiemmr0jhB0tpvXKz8YpCWzEnUpFZ7ddrb/w=; b=BxtdbMWUq5i+cLqMCUD317zvef
+	6zcUBbaY7m0wV1Psd5P5KJPiNezWDjsjS7DyeCfYb4+h7nhlkwfAvTLLUEsMKyVEex1fDfBzuYUke
+	dps96e4TawqvjYq5lckEfsm/nvKyGfXtn5xJCxplMYaqTYpggrG8TJr8Ssps5uYABiKMdail63X5p
+	VJSgFY8V9/tOSvrX7HvTMls8lJQU1v/PKxpB2ZjsMwJK6Vy+5UTq/IlUSCgHeoe4MthOx1MEtByPV
+	zv3gYrrNQDvWjboXAo/6AorBmxcHa+lXLcXoSZ8jKwokVZ6FzRP+yF7ZXZdcdm0X8Oo5DPuZfp7v2
+	9rNiPunA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVGPq-00000001rsO-40cU;
-	Sun, 22 Nov 2026 22:52:10 +0000
+	id 1xVGQ2-00000001rxP-0hvH;
+	Sun, 22 Nov 2026 22:52:22 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVGOV-00000001rMW-47lc;
+	id 1xVGOV-00000001rLu-1RLq;
 	Sun, 22 Nov 2026 22:50:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=m0n2SYcY79h2AUU1BpwbEVohNWmGBSP6n4I5dcaBSL8=; b=kF+a3xZNaGXJEfbrh3p4y3vmue
-	7Lx+LfyXqZJRUliEFzkvHVMK9XySoBiDcm7VsOFc2gjV4AyTT77D/3kP+S4LeHxIdYaw79jJmSYVe
-	yY9JHXwHpRM8khH+7hgYerkVRNjnmNc/9zIrKB5CTbg7pQuElUJfu9QtuE20okjw0s3WgjAJZ6iPw
-	tRXBTxYj70uwYwxV2ed4wifSnPkJoSj7sBPY56S7MaY/pMq/QJxuh6TLS0xsVUon0CVMtuh0CyH+F
-	9PQ4Zv4IPNSue7B9TZjRtsnP8no+4lzpNVlnmQlH0P4pux1v1Qu+DseWIoVj7Z198ygUy1VGyMLQq
-	9JadTD7w==;
+	bh=4BM+qrLCQG7Tx5gN7bK0k9cYmhAdjhuB3LguEexBUjQ=; b=S9HritYrDbD8pAM1lmbZNOMEOk
+	xwKVm/NnoU5Jh5cQpBcnNZsh2KWd1972S2UC+XBUExB1N0cJUvFy/BEsK65h3S6Qf6Ko5Xell4Kxz
+	7LuiJusJZH6CJBF4H6NAZ6OM31kLdIbaGsUGYlW91ZK0HtiqFyKON14PF8iU+bnwIQBnw7sPZBiP7
+	oV9vKAzl/aLB+MCV/TGBA3MPwbME9RB9PdAdxK+Yc+dvJUVZKWgnGmZH03JAF5JmkoCENG2XRkQey
+	i3uVIBruAt5nNs0nmXMe3bkMLiKQJev2rjxlRZi1fdzk3fDqCJi15byrhUwCtbUBELCBOXOWrxZ1p
+	VkqmofXw==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	Patrick Barsanti <patrick.barsanti@amarulasolutions.com>
+To: linux-rockchip@lists.infradead.org,
+	Chris Morgan <macroalpha82@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-amarula@amarulasolutions.com,
-	michael@amarulasolutions.com,
-	dario.binacchi@amarulasolutions.com
-Subject: Re: [PATCH v3 0/3] arm64: dts: rockchip: Add support for Axelera Embedded 111c
-Date: Sun, 22 Nov 2026 23:50:28 +0100
-Message-ID: <179538782470.3150822.2574967572696059189.b4-ty@b4>
+	linux-kernel@vger.kernel.org,
+	diederik@cknow-tech.com,
+	arseney300@gmail.com,
+	michael.riesch@collabora.com,
+	shawn.lin@rock-chips.com,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add cpu-idle-states for RK356x
+Date: Sun, 22 Nov 2026 23:50:27 +0100
+Message-ID: <179538782484.3150822.3368192161153782434.b4-ty@b4>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261113113808.1779860-1-patrick.barsanti@amarulasolutions.com>
-References: <20261113113808.1779860-1-patrick.barsanti@amarulasolutions.com>
+In-Reply-To: <20261102173944.312295-1-macroalpha82@gmail.com>
+References: <20261102173944.312295-1-macroalpha82@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261122_145049_681823_A5164D91 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20261122_145049_694003_9C31FC96 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,27 +85,21 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Fri, 13 Nov 2026 12:38:05 +0100, Patrick Barsanti wrote:
-> The Axelera Embedded 111c is an SBC based on the Rockchip RK3588
-> SoC. It offers efficient AI compute for multi-stream computer vision and
-> generative AI applications in a compact design.
+On Mon, 02 Nov 2026 11:39:44 -0600, Chris Morgan wrote:
+> Add cpu-idle-states for the rk356x-base to affect all rk3566 and
+> rk3568 devices. With the fix implemented by upstream Arm Trusted
+> Firmware [1] this now works on both mainline A-TF and the vendor
+> provided binary A-TF.
 > 
-> Product page [1].
-> 
-> This series aims to introduce basic support for the board,
-> which includes the console, the eMMC, the two Gigabit Ethernet ports,
-> the four USB ports and the HDMI connector.
+> Tests on my devices show this parameter provides idle power saving
+> of around 5-10%.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/3] dt-bindings: vendor-prefixes: Add Axelera AI
-      commit: 26688b74c3706b4e890517f6add709446b214102
-[2/3] dt-bindings: arm: rockchip: Add Axelera Embedded 111c
-      commit: a74cd16a74e3ecafedf392105d6d8ab6c2dfc1fc
-[3/3] arm64: dts: rockchip: Add Axelera Embedded 111c
-      commit: 4cfbc536b8728b6c217add4f321a6e80d7c03cc8
+[1/1] arm64: dts: rockchip: Add cpu-idle-states for RK356x
+      commit: f38c22652ec64441d4ddfb189697fe0e4ef8f293
 
 Best regards,
 -- 
