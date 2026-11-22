@@ -2,66 +2,85 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D781C606A335
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 15:47:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4D458606A32A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 16:01:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XsdenkwI;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=FWAlQpvl
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VcLbECn0;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=X1DPxKVU;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=OztXrZ6K
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=gJgn6JsBkw9SeuCDXKYN2f73dEKEIBYsrNoi0xfbFzo=; b=XsdenkwIzj6fjLWpaTz3CwIhsa
-	u3mxICb0xapVyLoSQ/zvwECKKAeRta88aOvpB8D2LEId0ihKGply4bQ5u/QFhynst0HKCIWa2MmZ4
-	uMfUDGhrEBRqpRNuOwtTLU9ajcTItPNpgzF9ZoLzrrlNmlYkNQYYYuy/cTtjtNaJ6pZoqhGj2+pEe
-	RpjrTC/zGwz3suSBRLyTMnZ3nEgN/witySZR3H1fs4DuNGlaST9n76hhD1sZ44RTZphQirqQAE88s
-	+D4HefSQjSYnIQ9cbMLkYei327oq1daktHp/f34fEmKKkWnQOwx0vUeT19q//wzPEFtJQ7a+wDtbK
-	q8uQumYQ==;
+	bh=ozoKQcWweSzZ+3aC8ZfePi7ZnPC6o6gdqxEkvS2GJ+4=; b=VcLbECn0a1aJ/yPOsBAg/MZ8y+
+	FdA3QK7mG8z+W0fCb4fUeGxPTP1IML0qlvqJHrtFKmxhcfZHy8wEmBQwvanRckc9szGv1OzvAypRP
+	Wtn7xTJSuKpYBdRBQ3tfdzdGwtkwiUR2tII9UbVoPC+83WlUrmOx83gZkjPfBf8g07etZLNcGvIC6
+	EObLdntBYnRIOXXjjEDckNjxONlF7Gi5gOr/WB9kHRAwR5ytPiMX5nfO7+QTas1jjLWiobTCK3mXc
+	aFbOMsK1cnx4fy/8EacoQC/5Zc4YbhZiqCMIRDAjGBO0pWYEaY141tg3bU5694iefgJFAevN7RjeI
+	byeFJUuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xV9mJ-00000001IKz-0UZI;
-	Sun, 22 Nov 2026 15:46:55 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1xVA0U-00000001JjK-2uIV;
+	Sun, 22 Nov 2026 16:01:34 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xV9mH-00000001IKb-1AYC;
-	Sun, 22 Nov 2026 15:46:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=yoDV+prWsX7guq+90WivZjKbCtQ+ft9UJtNUNcoppyw=; b=FWAlQpvl9OScDr7zh1eXy10phf
-	2k/eaxwZpN3S1rognH3ERyRNfvilejPDFDKo/iib74CPp4Cg+G2yEcaADYM383sGV/b1B1dDUsbrX
-	MAEm8LbHu+rIi4ix0YXUiKlHY/ULurJJRs64W1Ws2wAVrabjm0Ci2F5X8633lGtDqNp0=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1xV9m6-000aVN-A8; Sun, 22 Nov 2026 16:46:42 +0100
-Date: Sun, 22 Nov 2026 16:46:42 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>,
-	devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org
-Subject: Re: [PATCH v2 2/8] ARM: dts: rockchip: Add support for RK3506
-Message-ID: <86007bdd-6c10-46ba-aac6-197939934c73@lunn.ch>
-References: <20261122060114.773624-1-jonas@kwiboo.se>
- <20261122060114.773624-3-jonas@kwiboo.se>
+	id 1xVA0R-00000001Ji1-0zpk
+	for linux-rockchip@lists.infradead.org;
+	Sun, 22 Nov 2026 16:01:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From:
+ Content-Language: References: Cc: To: Subject: MIME-Version: Date:
+ Message-ID: CFBL-Address: CFBL-Feedback-ID; q=dns/txt; s=fe-e1b5cab7be;
+ t=1795363289; bh=0nnzDdRCsGSeP+fBdqjwR5i2BMDAgYKhOGLFfKlLzIo=;
+ b=X1DPxKVUYnpe0DXC5ZhIMoX4Hq5JdwOAy2tRI+a5/jRolQADBgfqAUbk9mS77+S+LiyQvUsYf
+ xaGwISAmq740tpskvF1QJ8aI2bgc/KZ/Hvo6a1FrV8i9Ge/mcXjg82A6pb4MSxYOrqrhg8yyM3l
+ MOGENnVJUK4+bo+StG8WpLlkdkwym2DTLOUNni7Q8kJ+QGvPla2ppLW88RAlyKh8NnLgHyKtieR
+ Oy1nr6f3JcR08UO93MJ0XIhdh0V+sXoBaedsoAN/yA/QH6PG49Ie+QBoDFCuOstlNAv1PIGO+C2
+ KTRbboOJF6oBmh/BAc0mo9rmPi5NVMiL96HiL6G6ZZ0A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=forwardemail.net;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From:
+ Content-Language: References: Cc: To: Subject: MIME-Version: Date:
+ Message-ID: CFBL-Address: CFBL-Feedback-ID; q=dns/txt; s=default;
+ t=1795363289; bh=0nnzDdRCsGSeP+fBdqjwR5i2BMDAgYKhOGLFfKlLzIo=;
+ b=OztXrZ6KEcEzqTFvaMjQahny9+U3H4o/YMTHNthHSkEEdlPotoG5E4eaiWNemQ+UF7+HGOpEE
+ j6ym3AMrD0BIaUHQrmSWuMx3lFLx03zhiAl3Mx8GDfu1AaTVmhvmAcIBMfs4MSdzf6ZFzAF20xu
+ Z0ypfVrJECtlLAGrL+RmTkE=
+CFBL-Feedback-ID: 6b0311c84993f8611a547daf:b2541adc3895f43479a7fd6879cc7454
+CFBL-Address: abuse@forwardemail.net; report=arf
+X-Forward-Email-ID: 6b0311c84993f8611a547daf
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 2.19.37
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <5cf52e28-110a-4fc2-acfb-eb264e8c31e2@kwiboo.se>
+Date: Sun, 22 Nov 2026 17:01:08 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20261122060114.773624-3-jonas@kwiboo.se>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/8] ARM: dts: rockchip: Add support for RK3506
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Richard Cochran <richardcochran@gmail.com>,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org
+References: <20261122060114.773624-1-jonas@kwiboo.se>
+ <20261122060114.773624-3-jonas@kwiboo.se>
+ <86007bdd-6c10-46ba-aac6-197939934c73@lunn.ch>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <86007bdd-6c10-46ba-aac6-197939934c73@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261122_074653_319068_BDD946C0 
-X-CRM114-Status: UNSURE (   8.93  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261122_080131_653116_E34CCFD5 
+X-CRM114-Status: GOOD (  10.18  )
+X-Spam-Score: -2.0 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,35 +93,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> diff --git a/arch/arm/boot/dts/rockchip/rk3506.dtsi b/arch/arm/boot/dts/rockchip/rk3506.dtsi
+Hi Andrew,
 
-> +		gmac0: ethernet@ff4c8000 {
-> +			compatible = "rockchip,rk3506-gmac", "snps,dwmac-4.20a";
-> +			reg = <0xff4c8000 0x2000>;
-> +			clocks = <&cru CLK_MAC0>, <&cru CLK_MAC0_PTP>,
-> +				 <&cru PCLK_MAC0>, <&cru ACLK_MAC0>;
-> +			clock-names = "stmmaceth", "ptp_ref",
-> +				      "pclk_mac", "aclk_mac";
-> +			interrupts = <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH>,
-> +				     <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
-> +			interrupt-names = "macirq", "eth_wake_irq";
-> +			phy-mode = "rmii";
+On 11/22/2026 4:46 PM, Andrew Lunn wrote:
+>> diff --git a/arch/arm/boot/dts/rockchip/rk3506.dtsi b/arch/arm/boot/dts/rockchip/rk3506.dtsi
+> 
+>> +		gmac0: ethernet@ff4c8000 {
+>> +			compatible = "rockchip,rk3506-gmac", "snps,dwmac-4.20a";
+>> +			reg = <0xff4c8000 0x2000>;
+>> +			clocks = <&cru CLK_MAC0>, <&cru CLK_MAC0_PTP>,
+>> +				 <&cru PCLK_MAC0>, <&cru ACLK_MAC0>;
+>> +			clock-names = "stmmaceth", "ptp_ref",
+>> +				      "pclk_mac", "aclk_mac";
+>> +			interrupts = <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH>,
+>> +				     <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
+>> +			interrupt-names = "macirq", "eth_wake_irq";
+>> +			phy-mode = "rmii";
+> 
+> Sorry, missed this on the first pass of the patchset.
+> 
+> phy-mode is generally a board/PCB property, not a SoC property. It
+> would only be a SoC property when the SoC cannot do anything other
+> than RMII. But given this is snps,dwmac, i expect it can do other phy
+> modes.
 
-Sorry, missed this on the first pass of the patchset.
+This SoC only support RMII mode, so I put the phy-mode at SoC level.
 
-phy-mode is generally a board/PCB property, not a SoC property. It
-would only be a SoC property when the SoC cannot do anything other
-than RMII. But given this is snps,dwmac, i expect it can do other phy
-modes.
+Datasheet for this SoC lists following:
 
-	Andrew
+  RMII 10/100 Ethernet Controller
+  - Support two Ethernet Controllers
+  - Supports 10/100-Mbps data transfer rates with the RMII interfaces
+  - Supports both full-duplex and half-duplex operation
+
+The Technical Reference Manual also only mention RMII:
+
+  38.2 Block Diagram
+  ...
+  The MAC only supports the PHY interfaces of reduced MII (RMII).
+  ...
+  MAC Supports 10/100-Mbps data transfer rates with the RMII interfaces.
+
+Regards,
+Jonas
+
+> 
+> 	Andrew
+
 
 _______________________________________________
 Linux-rockchip mailing list
