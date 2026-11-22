@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0C83E606A31A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 22:52:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6302C606A31A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 22:53:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=g0ePjWuM;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=KhwzlGAA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XKBZXdKH;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=sntech.de header.i=@sntech.de header.a=rsa-sha256 header.s=gloria202408 header.b=ax3EThsO
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,58 +14,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=i4TltvU/BHzwabYg4BCEArLqlI1LwZptX6er7+9B4Lk=; b=g0ePjWuMT7bwsB2mjLNz3U/PCz
-	0QUqhOo9/HpKzfrmUM2AWxeGzmMSoqu20f0jE33qKf3fedM6gBT3tE+EnFGGhT3hLUqd3msOVTiGL
-	5cYq1yPmx857KZYBU2AUxozpHkUdMGYK/BBXCIc8drOsKRO2Ks9JnCpDBh6VDJnetgJgRt+U/szUz
-	nQ9pc42YcKnyXFQ8mGdtXRdn8GAl6t8i32db7t1Fdh3haPXg8Gki8ey2zXAQZtRRIT8r62x3OdhGI
-	q2qlShAjVFLjv4K9hN0PWQokn8kQViVOMg+JuCIp+JOjKcJPCOrjQYZur0yQJ5k7PWktjyGoR2uAp
-	rUF4JDWg==;
+	bh=QAA4QZWxUL7VxT9AaK5B0TPwOjYJqJWq88Fz6Gc04Cc=; b=XKBZXdKHNaK2w/O8mOsujsltQp
+	FcPCK5evMbKyD3l6tSqQVFICLVCnQEyeMzOv5JJIXLM+JcStaFHGB3lgjofNvjctGPO4QYf8GhB6C
+	lS2+KccpiJurmN20adeqUSXnGL8KhN/p4tpVUK7pZORf3GAeNZuXvrPpY5tuHMsU0u3/2oapestbb
+	iSWkDzhNXfYvl2qRkZkdMQTVeGPDBH7XVFHPRIsy9Er89CN8xBeZ5EBxaaUBXnenBqZPajSIAI7+S
+	++8vffOrk0axbOKnD73uhUPLVwUgCF2ti3gfJY5jcO9OZbjDjv103EadJ2mu617eEhoz7pYGkSuOK
+	R2FhZh3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVGQP-00000001s3g-173E;
-	Sun, 22 Nov 2026 22:52:45 +0000
+	id 1xVGQv-00000001sC9-2TYL;
+	Sun, 22 Nov 2026 22:53:17 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVGOc-00000001rQT-0hev;
-	Sun, 22 Nov 2026 22:50:58 +0000
+	id 1xVGOV-00000001rLs-171X;
+	Sun, 22 Nov 2026 22:50:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=WDxhkF33TpclfX5h060G3+KBXmy0Dwtz0cCnAQsQB6c=; b=KhwzlGAAxWJcLMcTRnCExkVRgc
-	njifOQ+uyKTCfhVBAeTjEAjUALzZR3ZUTU0Snq3xkM9OFaJXVTaCx4LrrK5oqreJfpxFRfKmrtPWr
-	0wVpeV8DXCjByDy/25NfAsN5asixOvb3IaWqVE7wLDqUXhL9aKcmceoBRJ+mlhhG7/TMY1vke/mLp
-	SgsnzAeF5cr1TEe+s5zQytZHpYTmXEFH5x/jcUYhtR0mx5tG+IkV9H+uV2IqEzejbz+qq+3MkTdDF
-	lDTTacG2PdBiAYQsVVlwmIAIeEiAJA3LezixGQoYSvTom/O8FbL4wKM12stuXj0ocrx1C/JpPhUaQ
-	Liteyshg==;
+	bh=fL7U3381lRKl0leRXdHMgrHniLI1nUrxbkYQxcEjLqc=; b=ax3EThsOorRJywhBtMvHtFKJ38
+	IswFG3psBt0fWq4p2CSsOGvDySCx+Z21iAS68wk6V+HfzXVUO3bRDkhzvClaRHsog4XLmyqjZXHfQ
+	+in6YffJYuWjoEAUwwBnGyodjmtEVVD5EB05DlAp/H5qaEwSM6x+qAjoTMVfW5q3zQzER0lace1CH
+	aEgBBXX06ABme8yHcX+/4UnFNMrddTAKO8TZSCKlKP1yqphzvmN8sEw8BJByvEonmc0fLqSoMA0G8
+	9I+nLlbYNwiwh/i4ApYcd/CmbNI1bI9/b2kXznfEEUWLq3T2OEnQRdJIMpRabzRFbKwm+bX7xNm91
+	hvT4NUmg==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney+clk@redhat.com>,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	Liang Chen <cl@rock-chips.com>,
-	YouMin Chen <cym@rock-chips.com>,
-	Finley Xiao <finley.xiao@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
+To: ulfh@kernel.org,
+	Leonard Lausen <leonard@lausen.nl>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	kernel@collabora.com,
-	Dragan Simic <dsimic@manjaro.org>,
-	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH] clk: rockchip: rk3576: create proper platform device
-Date: Sun, 22 Nov 2026 23:50:29 +0100
-Message-ID: <179538782489.3150822.15047892656895127141.b4-ty@b4>
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	detlev.casanova@collabora.com,
+	finley.xiao@rock-chips.com,
+	zhangqing@rock-chips.com,
+	inindev@gmail.com,
+	linux-pm@vger.kernel.org,
+	gahing@gahingwoo.com
+Subject: Re: (subset) [PATCH 0/2] Fix Panfrost boot hang on NanoPi M5
+Date: Sun, 22 Nov 2026 23:50:26 +0100
+Message-ID: <179538782480.3150822.6529696700670964484.b4-ty@b4>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261112-rk3576-clk-platform-device-v1-1-2f3ac9f09403@collabora.com>
-References: <20261112-rk3576-clk-platform-device-v1-1-2f3ac9f09403@collabora.com>
+In-Reply-To: <20261019092417.391522-1-leonard@lausen.nl>
+References: <20261019092417.391522-1-leonard@lausen.nl>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261122_145056_739745_165FCC0D 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20261122_145049_678862_FF4290D0 
+X-CRM114-Status: UNSURE (   8.00  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,24 +87,21 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Thu, 12 Nov 2026 03:36:40 +0100, Sebastian Reichel wrote:
-> When RK3576 clock controller support was upstreamed, it copied the
-> vendor kernel's logic. That code makes no sense as it contains a
-> bunch of unused code (clk_rk3576_probe is never called as the DT
-> node is already initialized; if it would be called, the clock tree
-> would be registered twice).
+On Mon, 19 Oct 2026 09:24:14 +0000, Leonard Lausen wrote:
+> On the NanoPi M5, boot hangs during Panfrost initialization. Before this
+> fix, booting required blacklisting Panfrost on the kernel command line.
+> Loading Panfrost after boot reports a GPU power-domain acknowledgment
+> timeout.
 > 
-> Let's switch the driver to use the same style as RK3588: Continue to
-> initialize the clock tree early via rk3576_clk_init executed by
-> CLK_OF_DECLARE_DRIVER before the device model is initialized, but
-> don't mark the DT node as processed.
+> Enable regulator management for the RK3576 GPU power domain and connect
+> its supply to the NanoPi M5 GPU rail.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] clk: rockchip: rk3576: create proper platform device
-      commit: e8a4084724e114295aa3a077d9458726e7ef4e90
+[2/2] arm64: dts: rockchip: Fix GPU domain supply on NanoPi M5
+      commit: ac5f8e47fcb2e7a5e5829968a406d2fbff63db8b
 
 Best regards,
 -- 
