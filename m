@@ -2,104 +2,117 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB9E4606A32A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 09:01:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07C51606A320
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2026 09:17:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uzIXZsJ7;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=m5CXg0Kj
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PfVadAxf;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=g2UCKDe0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=M0zOCwfN1J6Fds/bak5mlvbYPCkF1lANAr7DNF8dmjU=; b=uzIXZsJ7qp5e+mcCiAUMIdDNnh
-	kLkiTUYlqXMYOgfKKOiKFT/6zVSP9Zh+vFV7VUzdKh08cHqo7GpLOZtGsCD7X6DEI8nxjPsYaKjjS
-	7EqYZb751q3p4GhOVWVJqEfYT3BJIjfEpOqBJvoD4pIcCBILzZvNHCUkI4W1eEWCYkYKHQQsmN6Tq
-	p4NMMFXK/qapQsa5HzoUZYkxMYM9UlYYodHz8p/yZazUGnzBkJ1AHetDrJuJXIEawoGFfwroQBp/R
-	D4ZZtAfTlspN1FcmDY/oQ4JI65w+Et4/pGhy5OiAQTf8mmHeV6HaYYVabxE3xt8mZHi9tK8Gr4oDE
-	jgFh/S4w==;
+	bh=om5jEvTkO0SFQSfgVRF+ayD59TRliS1fho1JyPMIhrI=; b=PfVadAxf1iNIjNT3bPwOJXx8Ez
+	/lkzPo3U+tvo7wyuej1jixgMge6wZ6+9oFdffbXi3tQTnfb0cywbihBz5K+LI6jkw4q2ZWdQJHXVe
+	l4K7NvuU5wqYFNkgs9zUnH8eXggGPp7serus6WMzyNF8M9cMkfmM9MQovioptAFRxRhJeiJ2LmAGK
+	osuh1un0EnLxku7Rq0j15691BZJKKcm8CviDNA5jWCZUGkg6WLtIZUqt7YpggAj3rgWcNoKZjeTdE
+	pwJfIccY25IbY9SmtKescE/CqXMcbhAWc7+vrfbW2j/rZybhXniXiTvv0iRQtLfvv6YC7Ou75yzbM
+	RhL3p0Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xV3Rd-00000000so6-09Tb;
-	Sun, 22 Nov 2026 09:01:09 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xV3gt-00000000tsd-3Fhy;
+	Sun, 22 Nov 2026 09:16:55 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xV3Rb-00000000snq-37jO;
-	Sun, 22 Nov 2026 09:01:07 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7AD99609F0;
-	Sun, 22 Nov 2026 09:01:06 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795338066;
-	b=f4/ruAbGfADX/2/ch2hesigpkvGwPBA5sL71A+zbpcMrxfMv465GAz7CsH06RjhrbQ5v
-	 YSymi+Hm/5SG3OFLYYgii3A4FqXLW8qddAUEhTX8r66yYM7Uuo9CGG0cDqA9XJFQPh7U7
-	 HVLallE13I0qK+qXaQ6+zuTZbNYfB8Tludo5Mo1cvDt6/lmo+FmnsSCDKspWsRDIofXfC
-	 /oNurMi2DBnDHfNMnwP6atkzQW7CtvDe5o7DVNDwhAQUMf0FCLN+GInRqNJRlG/RCFmS1
-	 TDz6igraQ/yiTAnZ9SvtRigS72sRz1NwSAmRdfLi4JftgbHyCTZalRrg5m0qRieP8XQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795338066;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=l5t4RAXcO7LRry3XVVZFdulyCmiEkHchMr2XOmtZokg=;
-	b=abkcTeTspwc9hrQOXGJ/HHF7SCkPFlikPfpgQoZJIX4FOunewdH9BE6IdI2XI3cgvXao
-	 Tu8i0Cu6be2cEdj0MQWFEBnERSYi7BMc7t5ZrFwlwW59jBrKcFY7k35SM3MYBKiBmKwgd
-	 5cuaB1tPW4IhnvZDmrIFIEnCFM66wjbUHdCXBXYReuJL8LWlXC4yz/A65nuY2z/VYksZA
-	 ienAE6t7YIEJZbgiYHTURxCtBgb3UvcPO/P4cj7e59HYUucCK1ZYRbirvY8PoqOWPyyCn
-	 tBxnHBxTHjdLWJIX+A2M21Uz6dpqN3lZ7wDIBiozlBQYwzdaI03i1vSUOHjl4sC2fSQ==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 814231F000C6;
-	Sun, 22 Nov 2026 09:01:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795338066;
-	bh=l5t4RAXcO7LRry3XVVZFdulyCmiEkHchMr2XOmtZokg=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=m5CXg0KjkUY4ZZuvU5xGbLfwwaENopkaRvIWQDeg2E20+h4osHlAjWs+wCpyLyOrb
-	 ueK+SmpZAY2UtbzOTbGJgH3p8PchV1Qa+tJZ2YOmb9ntmT9dEJBHaEuEDj1MGmbeR1
-	 eGycy5PV5PUE+IkdntACOAR0uqpL4uq++1PdmvT6L+GYr48+DwIoluZhqXg6PEADLd
-	 mOwoO7AKuDiLhf0NVNEOVd7qmXSgHtout6hTPLa0tHNCsFa4GHEfxfb08+HPznPynk
-	 HOzdcJ+GBSdIC1e1OsRss44lquRmIkw1i2fGJtE4lUJHDV6naX6PAW3WMbiftnmwOi
-	 5aqQI9S3S5KFw==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id D8C9E4BFBF;
-	Sun, 22 Nov 2026 09:01:04 +0000 (UTC)
-From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Sun, 22 Nov 2026 09:01:05 +0000
-Subject: [PATCH v2] mfd: syscon: Give each syscon its own lockdep class
+	id 1xV3gr-00000000tro-0uPD
+	for linux-rockchip@lists.infradead.org;
+	Sun, 22 Nov 2026 09:16:55 +0000
+Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-5c00c727a26so177394e87.2
+        for <linux-rockchip@lists.infradead.org>; Sun, 22 Nov 2026 01:16:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795339011; cv=none;
+        d=google.com; s=arc-20260327;
+        b=Cs67lss5LaKOKVg4758KvrynXnTvxmVbaL7N2KXNNFOsrzvm5cJyU9Z9QQiZTEqp2a
+         alKtqrbwCt5kFEwMkPTVugn8q9+k6Q1TfKlV/K7WRcsPsVroWoFQmh6Y0l5NZRntTIdm
+         pMlq1ANA3ltprw/INJQXxwipTZxlL7WnW/xGUETvFOlOic3Jr4hHTENgZnOc30V30wI8
+         2/77NgI9d77SfPVy1epProyH3wS0KLkMlJQhDsk87IoK1UyMYoHPlD615w0sHLoKZY9N
+         4+cXfU4envlJ89ru46LsxI2AWSwA/ihW2Byy0R2DCno3lHPjSXb7BWfvwjlN6c+5Gm3q
+         Ebkg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=jlk4MoliGvZW1IkxqxKZvX+OlKzVs5YdkLc7yt4n2p4=;
+        fh=Bfy/YOVIXtftauoMAyWMWLdKCFfPFcuDLwoPGA+Rm1s=;
+        b=FPNMOMHpXZlnh4pt2LXdoLnltmTqvSTDcCU7//4x8CEY+dmFvAfyRtvQV73LVxASlQ
+         u5Ls+SSrtWGyaUl7lREC8lcIwxMAec4WeNXfB7a0OT7SHpOh32G30unuNGHAuOem22Vr
+         ttzA8zg4tgKpefb0yZMAY0H/FKE2ULWqNKJuHUqcusfmd+uLpwpg7DgHYojGvzNkXg98
+         N9BXCxussQZBGdeBGvmGUiczffyOCJocBMgGOtmAapk4PhWW6C/V4vRNfxC6nO/uyWJO
+         L6IMFf1onvQrKXQx3d8dmuggmJdllZv1KNSWm2gmu/IL+BLw9CSjZLRWF2kae+6J2Dn1
+         D8fg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1795339011; x=1795943811; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=jlk4MoliGvZW1IkxqxKZvX+OlKzVs5YdkLc7yt4n2p4=;
+        b=g2UCKDe0age70HqGJPoem9Igd4cf6HsWaQFfGXsPrV5U86CRGpEknjag+G9TQhYamK
+         RVlCIWj9vs6SttGzrIhYihmd9cZHGgRCHPnzrEqjRY24VQQbcJHxny8xWub5Fw4V7mj6
+         AfmSMAgo46s891dcc0iywxXTa1tB8yEb9xBxf+9WyOOzpCwy2OVDV/sL0r+XuGnrNrQH
+         lK75+IEL4npEVIhAf9q2kZen165yMpMYndebvruFN3yWhVrOre0Oty9g1RlFQhsmEreX
+         fTRsqS6a77Dr2nx2eIHyiz54bn4I0CsDKi6KdbmST6j7LYh+pbxGB/Q9U3GDKc1dCJTH
+         iODw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795339011; x=1795943811;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=jlk4MoliGvZW1IkxqxKZvX+OlKzVs5YdkLc7yt4n2p4=;
+        b=DVL4A3PnhbQmoaxCZNDpEJSUkVUC3gzlOBBJn+VlvD+XZfj/8py+gprYn+6bWCfkBp
+         kGeCxW4bCNPqXZkah+9wzt9s9Ah3gWQdCJ0rH3oYf3X0ZTBgbWJLiwTQw7zmy9jsqqB5
+         P9v8r/0ZM6qUQAaKK0mjLytEdmsPvB27l6D7wjF7zYIC3Cce0qNuSBv8cu9JSnidP71W
+         TC7+K/hznxyzOrqvXtKOJ2CMm8uZR/6VrDgfgqwENjGP3XEdT/zqu7qzEEGMiglgUryi
+         3483kh298URZHoFVwZI/DwDFzDtRMDCZ2TVDX2GwlWM8lmGU0L47ni415cW4Dq2KkIXQ
+         HFdA==
+X-Forwarded-Encrypted: i=1; AL+hErFA+QCL6Pn7MWqvfWdbdrkhN8qIsNrCCn639DdIpTDUj/MJcVlDf0C7Z6B5y6+1eM7U4J7QG/G23FQp4p8OmA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/62q6k62Qedg+dzXceuMxXiPTsVk4C0WVbnaUz3fEdMtfn3BN1
+	s5hEnXYxoIQ04XSV9LRJ5w18zBPfL5f0SuQXhXM5M4lCYEZGLR/y0oG6Wray9D0JCXN96mRHk8X
+	oOJt4KCnKe6rxa1PLAYHwsxcqhneVNmg=
+X-Gm-Gg: AZFdTZdpN35DA9aB20kP0s3kRcYzcESHS3tWGpeOUZf3T+bl3q862eygLzFxRvx1fvl
+	96ol29FeXPmWQ03HeGljA7Io77a34xwuA9T0MVZFSTwY8nHL5gYBjNlBpj5czrySaNwFbl+Dc/2
+	0Daqp0ISyGmonobXgqAZtXnMsEBqJFzMt4pzDM3XteXt8upuRdvQ+ySbmP6jZdg542zYiexKqAV
+	9KxMkgf7G10+XiG3x8VlAEPi0dDhWTK8pGNm4CuQffuzq4utQW3ZIQF5XuUvbYmLAjEMQAtLkct
+	N8MsRmv6KhlkRDqk1qB/zNJVIo6gupgHmOx2Pb08ce6uHQ0oN1tsz/NO95YwDVTj5tl44suVHi0
+	tOTKw09JNZ0N8ezHCe0kjXwX+koXppGtNPwD2qNWkc6Joi5uHjxR8NqAcWieuG8qNuPSA/ak=
+X-Received: by 2002:a05:6512:6719:b0:5bf:ba43:fa67 with SMTP id
+ 2adb3069b0e04-5c1bc935c91mr2187197e87.6.1795339010786; Sun, 22 Nov 2026
+ 01:16:50 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261122-syscon-lockdep-v2-1-868056a6a808@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/12Q22rDMAyGXyX4eh6R7Rwpo+9RemEpSus1ibs4C
- Ssl774cOga7/ED6/096isC94yDK6Cl6nlxwvltAvUWCrra7sHTVwkLFKgWARIZHIN/JxtOt4ru
- sQOsak5wUsliW7j3X7nsLPJ13DiN+Mg1rymui569xaRr2MdFyCHZrKqPDq6j4LaLmJkdbywkky
- IqMNQTIOtHHS2td806+/Vhj0QaWC7RuKCMgzFSaY5rqnAxATVrVOtNcpAljjrbgAhUasSpeXRh
- 8/9heMMFmtEuo+P+1m4TlKssKG8cG8z8JcZ7n+QcGrh23TwEAAA==
-X-Change-ID: 20261115-syscon-lockdep-d133fb58c2be
-To: Lee Jones <lee@kernel.org>, Arnd Bergmann <arnd@arndb.de>
-Cc: mfd@lists.linux.dev, linux-kernel@vger.kernel.org, 
- Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- Arun Iyengar <aiyengar1990@gmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795338064; l=4034;
- i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=891oUdhj4DaGdagCnYKDL4s/TeHvsuAZqehCwJn+lk0=;
- b=20u1VWFtJ9IxfpiChtYKMa2hCcY2YOfQVM7WdqvVfAw9aTT+ndMiIRLUGz4AHmbeV6uIYswCC
- c1oDlzufNhRAD0TlZyZGQBCap4B/Oq09srlpCeGsCy0zJ8yTPu/uQPh
-X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
- pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
-X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
- auth_id=1480
-X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
+References: <20261119-b4-cedrus-mpeg1-v1-0-aa5ba1192822@gmail.com>
+ <20261119-b4-cedrus-mpeg1-v1-2-aa5ba1192822@gmail.com> <1a1f912f033.2efff015191157.7190884739957848478@collabora.com>
+In-Reply-To: <1a1f912f033.2efff015191157.7190884739957848478@collabora.com>
+From: Arun Iyengar <aiyengar1990@gmail.com>
+Date: Sun, 22 Nov 2026 01:16:39 -0800
+X-Gm-Features: Aa3M54oE-VNyvNZaxxRREWe_L_ECyiIpVpQf2rmUEBWZs2-DphbG3Q0KscfmLqc
+Message-ID: <CAEy9hNVXZvfbW6U=Y7aiONidPKee7npGWpWuR2yQOeUu4aOVfg@mail.gmail.com>
+Subject: =?UTF-8?Q?Re=3A_=C2=A0=5BPATCH_RFC_2=2F2=5D_media=3A_cedrus=3A_mpeg2=3A_decode_M?=
+	=?UTF-8?Q?PEG=2D1_as_V4L2=5FPIX=5FFMT=5FMPEG1=5FSLICE?=
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: hverkuil@kernel.org, mchehab@kernel.org, benjamin.gaignard@collabora.com, 
+	p.zabel@pengutronix.de, mripard@kernel.org, paulk@sys-base.io, 
+	gregkh@linuxfoundation.org, wens@kernel.org, jernej.skrabec@gmail.com, 
+	samuel@sholland.org, jonas@kwiboo.se, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev, ckoever@outlook.de
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261122_011653_301958_08FD8FE4 
+X-CRM114-Status: UNSURE (   3.63  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,143 +122,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Arun Iyengar <aiyengar1990@gmail.com>
+On Fri, 20 Nov 2026 08:08:50 -0500, Nicolas Dufresne wrote:
+> MPEG2 requires MPEG1 support. The new format simply add noise, you can
+> fix cedrus with V4L2_MPEG2_SEQ_FLAG_MPEG1 alone.
 
-All syscon regmaps share one lockdep class, as regmap_init_mmio() uses a
-static key per call site. Lockdep then mixes up unrelated syscons: on
-RK3588 the clock-gated VO1 GRF calls clk_enable() under its regmap lock,
-while the CRU's GRF gates take the SYS GRF regmap lock under enable_lock.
-This is reported as a circular dependency and disables lockdep.
-
-Lock each syscon regmap with its own spinlock and lockdep class.
-
-Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
----
-Tested on an Orange Pi 5 (RK3588S) with a 7.3 based kernel that has
-out-of-tree DisplayPort patches, lockdep and KASAN on. Without the patch
-lockdep reports the cycle during boot. With it /proc/lockdep shows one
-syscon lock -> enable_lock and enable_lock -> another syscon lock, there
-is no report and lockdep stays on. Build-tested on for-mfd-next.
-
-Applies on top of "mfd: syscon: Put the clock after regmap_exit()":
-https://lore.kernel.org/r/20261119-syscon-clk-uaf-v1-1-dc4a4c1be353@gmail.com
-
-Developed with Claude (Anthropic), which wrote the code and the commit
-message. I reviewed every change.
----
-Changes in v2:
-- __acquires/__releases: name the argument, not a local (Sashiko).
-- Link to v1: https://patch.msgid.link/20261120-syscon-lockdep-v1-1-aed779a004b8@gmail.com
----
- drivers/mfd/syscon.c | 36 +++++++++++++++++++++++++++++++++++-
- 1 file changed, 35 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/mfd/syscon.c b/drivers/mfd/syscon.c
-index 3ff4e024542b..480ac178968a 100644
---- a/drivers/mfd/syscon.c
-+++ b/drivers/mfd/syscon.c
-@@ -13,6 +13,7 @@
- #include <linux/err.h>
- #include <linux/hwspinlock.h>
- #include <linux/list.h>
-+#include <linux/lockdep.h>
- #include <linux/mutex.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-@@ -20,6 +21,7 @@
- #include <linux/reset.h>
- #include <linux/mfd/syscon.h>
- #include <linux/slab.h>
-+#include <linux/spinlock.h>
- 
- static DEFINE_MUTEX(syscon_list_lock);
- static LIST_HEAD(syscon_list);
-@@ -29,8 +31,29 @@ struct syscon {
- 	struct regmap *regmap;
- 	struct reset_control *reset;
- 	struct list_head list;
-+	spinlock_t lock;
-+	unsigned long lock_flags;
-+	struct lock_class_key lock_key;
- };
- 
-+static void syscon_lock(void *arg)
-+__acquires(&((struct syscon *)arg)->lock)
-+{
-+	struct syscon *syscon = arg;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&syscon->lock, flags);
-+	syscon->lock_flags = flags;
-+}
-+
-+static void syscon_unlock(void *arg)
-+__releases(&((struct syscon *)arg)->lock)
-+{
-+	struct syscon *syscon = arg;
-+
-+	spin_unlock_irqrestore(&syscon->lock, syscon->lock_flags);
-+}
-+
- static const struct regmap_config syscon_regmap_config = {
- 	.reg_bits = 32,
- 	.val_bits = 32,
-@@ -114,12 +137,21 @@ static struct syscon *of_syscon_register(struct device_node *np, bool check_res)
- 	if (!syscon_config.max_register)
- 		syscon_config.max_register_is_0 = true;
- 
-+	lockdep_register_key(&syscon->lock_key);
-+	spin_lock_init(&syscon->lock);
-+	lockdep_set_class(&syscon->lock, &syscon->lock_key);
-+	if (!syscon_config.use_hwlock) {
-+		syscon_config.lock = syscon_lock;
-+		syscon_config.unlock = syscon_unlock;
-+		syscon_config.lock_arg = syscon;
-+	}
-+
- 	regmap = regmap_init_mmio(NULL, base, &syscon_config);
- 	kfree(syscon_config.name);
- 	if (IS_ERR(regmap)) {
- 		pr_err("regmap init failed\n");
- 		ret = PTR_ERR(regmap);
--		goto err_regmap;
-+		goto err_key;
- 	}
- 
- 	if (check_res) {
-@@ -159,6 +191,8 @@ static struct syscon *of_syscon_register(struct device_node *np, bool check_res)
- 	regmap_exit(regmap);
- 	if (!IS_ERR(clk))
- 		clk_put(clk);
-+err_key:
-+	lockdep_unregister_key(&syscon->lock_key);
- err_regmap:
- 	iounmap(base);
- 	return ERR_PTR(ret);
-
----
-base-commit: 1cb7268b6638c411fc32f373e965eb8ba9e9b2b4
-change-id: 20261115-syscon-lockdep-d133fb58c2be
-prerequisite-message-id: <20261119-syscon-clk-uaf-v1-1-dc4a4c1be353@gmail.com>
-prerequisite-patch-id: 7cf33abeabb3eeaf1ba8ac6c461726fca87702cd
-
-Best regards,
---  
-Arun Iyengar <aiyengar1990@gmail.com>
-
-
+Thanks, done in v2: the format is gone and cedrus selects MPEG-1 from
+V4L2_MPEG2_SEQ_FLAG_MPEG1.
+https://lore.kernel.org/r/20261121-b4-cedrus-mpeg1-v2-0-95e4decf03fa@gmail.com
 
 _______________________________________________
 Linux-rockchip mailing list
