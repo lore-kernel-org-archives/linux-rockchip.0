@@ -2,108 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 609F0606A31F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 17:33:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 318CA606A321
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 17:42:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pOu1YB+y;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=F3kwWrlk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Tj0SHhVs;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=ROaEf9fG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=YTm95+zJl+M1zoOBsLrYN4lK470JMSKO4NI4lBayb2I=; b=pOu1YB+yoNGSLVBEp30+ZomNYL
-	vay2ITKc+yf940hT+4FRctSHDqf410zkSpjpzbTwk2AjFEkz+6FC3doVqL/LDSJP+Qh9HeqCmm199
-	s0fNeXblf8FiUHCyylguCE6FEhH0o4uShJoLD5bcdrA+yI0Ui7F9kBcYF6SVIrn1BdrVmcURTZWWE
-	eDK/LnEs33HieXmzpBfUH9CEqzwa5uMovhf2nbELyJCHEM2G+FPykG+FOLrBoRGPvEwRg4T+50Rte
-	rAMhopIW/CpBBhm7siof/KtM6OAt+EGnnjUk3Xzsl8pb7r+35s6pe/RwWWoG3sQ8tEZgp8umvjPi3
-	AB4P56dQ==;
+	bh=WkK4k87SfRVHlJiI7oxeF5wc4WlXc6GWwpMlLfqnht0=; b=Tj0SHhVsBMn/UiGO/qClF5qgz8
+	e4J0s45P4Ia60pJFQEC5ephqexMsOOC45gbMNxgb7dI3JsrF5vGHTOWVOrvqWBOh3HQd2cEFUnoLI
+	lqLLivDd+Npkq+9/0rVt8h/a4DnQCPlI8kVo59Wktn8vFKHZK9xGWf8kmeMlWXcgX8ct044Mn6VEF
+	oZLYZHbl0CX4ApnNyFpnO/xh58MNogOdjgyZDe+qSfjiOtqQ7E7TG7BaA4vElZgC3zgJY3Zakgk0i
+	6sIIW4Z23AbUhjlona23DyuHrCE3F6Xc+vR8AEqJngFcxWJu9bBEI0EHwtS17xlHJz4XQMem7Jjp4
+	h5hQdqbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVXvB-00000004NUM-0WZr;
-	Mon, 23 Nov 2026 17:33:41 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xVY3a-00000004OrZ-1dqT;
+	Mon, 23 Nov 2026 17:42:22 +0000
+Received: from sender-op-o15.zoho.eu ([136.143.169.15])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVXv9-00000004NTk-3S0j;
-	Mon, 23 Nov 2026 17:33:39 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 91F70438A6;
-	Mon, 23 Nov 2026 17:33:39 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795455219;
-	b=O3VhYw4UdVinZG9MApj+VL7kEGLTp/yh7XAF9eW7CeDjrJM4AnggPGxk5GR4VA03D2Ox
-	 SL6fZnffCD3F+vydEW/cfApUoKxbjYIJEH3DTI2kaK5WbedP1OdRAR7BoQ5jQlqLK0m7P
-	 gpk5+LBtZUbnUTj4OA6y00gqqtx6hDNGg1PBdxCG5H84cLNxLXqoRGcMWBH57nEX+OfV4
-	 PsRwjUamZ4vRJM5oFVoiZwTcKNva8762CCuGKG8ZK4e/zBX9w2rIgwog9TwTcpqQgHQKJ
-	 x+b5Q0xZojKv2O18/Ncl7z3pCKXpIFOExxwc6bJzrrzw/dFnRiwKneuZqcl00b7wDQg==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795455219;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
-	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
-	 Content-Transfer-Encoding;
-	bh=URDPaglQXKS7bojwQwMsPG/Rk5Gel8tTQUM0/WVvGKU=;
-	b=Aw2EmvpH0lNV5lYDEGnGFbQ7UWNZO7GOROEpycl+V+LfBZXknoEBFWvg8sWsuaTm+AKP
-	 bn+ewYUovybJOEXhxboxqf4Fzb4ieAVXF61Qg4sIXXyt9rS6bo5KxZxZk7YZR5ToL1MQ9
-	 LBYPXzRZd6MpKtJIFrcEMgPn2guprbK9RyClxwyLZ4KFhR5RqTOY/V5k4ivdpXRxOhfZU
-	 Rt6knv1irWqV4ggjOIigSqYa0hZq7rej9VpwRwx5dDrlli/MrTssHMKk/FkCRtD2DZd3Z
-	 NOwVqRBcE+EaJ4NCpll8dVsIXYUqhRnZ6imzz3PLOVQ6rIDiWJP3AXobagfPXKossGA==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id B7EC21F000ED;
-	Mon, 23 Nov 2026 17:33:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795455218;
-	bh=URDPaglQXKS7bojwQwMsPG/Rk5Gel8tTQUM0/WVvGKU=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=F3kwWrlk9YB9aXOSXyEBLDwDYiLI+DQ0ms2dW2DaC4Cj+zZnqDbwMq5N9ESAkai/B
-	 kuN0HftO7z1nN0N24S8XJlAlvMq67zK6Fumf0bmU/oiiDl5UYPYB/YyLN+ehXdDLiR
-	 Ds4mSfxP5aB6JvrP790OyAs3L1fdFGR1AdDd5VjlOvlaCS6U5ylxFDLsIgLwbVigAu
-	 RyYtK6yPXluo2cJta6dwp0eLNv0LtC5PDTM8Lf1g0v3ce5kczGk0NnpF4ahZwthw/j
-	 NiMxKNO13VZbKOwVkMfXtcbWSmQxHRJQBwLuyCRZOaKU+4G5HjRCZRejN9dYXYGtrj
-	 4/DFaPaQL+67A==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 4A5FA4C580;
-	Mon, 23 Nov 2026 17:33:28 +0000 (UTC)
-From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
-Date: Mon, 23 Nov 2026 17:33:26 +0000
-Subject: [PATCH v3] drm/panfrost: Enable GPU_PM_RT for RK3399
+	id 1xVY3V-00000004Oq7-3f2g;
+	Mon, 23 Nov 2026 17:42:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1795455714; cv=none; 
+	d=zohomail.eu; s=zohoarc; 
+	b=SwreKrU3R4DY5UQLmxROrMTAvJOzV/bwy1uuct9TMHcJUdUJpWZdG4gEz4KaLfNI5D/7ld90JoIM2A9iBDHIT2k8f3/56g4fwn+1SjuwLHw2MzOm2J2Kmaihy71CspObQaFmDHD3gyDbGqmkWMmnrw3JdsKrAI5r7FxyteusvSA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
+	t=1795455714; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Wm4D2R2fUZcmyfdUwMn9Zrbt21Lpi8FA50NzkPSXeJk=; 
+	b=Zo6r7cdYaLdgg5Tn9B1qBjoHM0yvdYKpb3+YlXkId9vOgnFJyafJtPY3oANQpi7WOK+L05F1C/sb/XsxWZdRHYy+8nN6p7UO2TPYZM+OPnxQ8dkBreg9Lgw270p+QWWIF0B47Ho41x/Okkw+9v47gwxVxeUBRJb1qqPJ+eXBwjA=
+ARC-Authentication-Results: i=1; mx.zohomail.eu;
+	dkim=pass  header.i=iav.lv;
+	spf=pass  smtp.mailfrom=iav@iav.lv;
+	dmarc=pass header.from=<iav@iav.lv>
+DKIM-Signature: a=rsa-sha256; b=ROaEf9fGu9dgnJESKk7Pq+FC/c3IEsHSaFpIRF6suDhiDwHvAsC7hdJ4NYMkH6AhU504mikDfbSfwu30qklszRLOEvphSa3SQMkFt7ewLIGi7BbvAEOIxnbCVIbhMAIWWw5hZfygAECqRgJZbUi1ZcPuflRNFR8mFOPGo8CxlK8=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=Wm4D2R2fUZcmyfdUwMn9Zrbt21Lpi8FA50NzkPSXeJk=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zoho.eu with SMTPS id 1795455713979281.6369456863033;
+	Mon, 23 Nov 2026 18:41:53 +0100 (CET)
+From: Igor Velkov <iav@iav.lv>
+To: Steven Price <steven.price@arm.com>
+Cc: =?UTF-8?Q?Adri=C3=A1n_Larumbe?= <adrian.larumbe@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Rob Herring <robh@kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] drm/panfrost: Gate the RK3399 GPU clock in runtime suspend
+Date: Mon, 23 Nov 2026 19:34:34 +0200
+Message-ID: <20261123-panfrost-rk3399-pm-rt-price-reply-1@iav.lv>
+In-Reply-To: <a9a404e8-66fc-4595-9d14-7ab97cd08583@arm.com>
+References: <20261030-panfrost-rk3399-pm-rt-v1-1-e94437159a9d@iav.lv>
+ <autNWETrwrHbD2H9@sobremesa>
+ <20261104-panfrost-rk3399-pm-rt-larumbe-reply-1@iav.lv>
+ <a9a404e8-66fc-4595-9d14-7ab97cd08583@arm.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261123-panfrost-rk3399-pm-rt-v3-1-04c7c58d1140@iav.lv>
-X-B4-Tracking: v=1; b=H4sIAOV4BGsC/4XOwQ6CMAyA4VchO1uzbijWk+9hPDSwyaIC6ciiI
- by7g4OejMe/Sb92UtFJcFEdi0mJSyGGvsthN4WqW+6uDkKTWxlt9qithoE7L30cQW7WEsHwABm
- hdmx9jRXphlTeHcT58Fzd8yV3G+LYy2s9k3CZ/hMTAoKjsrQV7oipOQVO23tSC5fMl0BjfhEmE
- 6X2+S1kRj58iHme34wldAD6AAAA
-To: Boris Brezillon <boris.brezillon@collabora.com>, 
- Rob Herring <robh@kernel.org>, Steven Price <steven.price@arm.com>, 
- =?utf-8?q?Adri=C3=A1n_Larumbe?= <adrian.larumbe@collabora.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- Daniel Stone <daniel@fooishbar.org>, Igor Velkov <iav@iav.lv>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2865; i=iav@iav.lv;
- h=from:subject:message-id;
- bh=jVdmdH5Fy/vduyoI4gZY5e3ymBwUoj6ShIzYh5QXSJg=;
- b=owGbwMvMwCVmNH1q96v4SmbG02pJDNksFc8rdlg+iPedscv2zTeRq886bvTwXj389ETWup/Tx
- Yx0XCpfd5SyMIhxMciKKbJMOKRxK2PJ1b/+HuYPYOawMoEMYeDiFICJvNjCyLDxom9Vt/Cntm3z
- p2a3/bu646580qG17p4BC/eL/+p9a1fH8M+OY+r5VRVeDdumxLzwZV7zhZVPfseqbxx3Tm3hi2R
- 78JkTAA==
-X-Developer-Key: i=iav@iav.lv; a=openpgp;
- fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
-X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
-X-Original-From: Igor Velkov <iav@iav.lv>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261123_094218_190238_7362524C 
+X-CRM114-Status: UNSURE (   6.57  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,83 +77,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Igor Velkov <iav@iav.lv>
+On 23/11/2026 15:29, Steven Price wrote:
+> Other than the somewhat confusing commit message (e.g. a subject of
+> "Enable GPU_PM_RT for RK3399" would be clearer), this is fine:
+>
+> Reviewed-by: Steven Price <steven.price@arm.com>
 
-The RK3399 Mali-T860 matches arm,mali-t860 and gets default_data, so
-panfrost enables aclk_gpu at probe and keeps it enabled until unbind;
-runtime suspend powers the GPU off but leaves the clock on.
+Hi Steve,
 
-On ROCK Pi 4A restore from hibernation hangs in genpd_restore_noirq()
-of the GPU when the hibernated kernel had panfrost bound and the
-kernel that loads the image does not. There clk_disable_unused()
-gates aclk_gpu, while the restored image still holds an enable count
-on it, so powering the GPU domain back on does not ungate the clock.
-With the clock gated in runtime suspend, as on the Allwinner H616 and
-the Renesas RZ/G3L and RZ/G3E, restore completes.
+Thanks. v2 went out a day earlier with the same code; v3 [1] is
+retitled as you suggested and carries your tag.
 
-Match rockchip,rk3399-mali to default_pm_rt_data, which differs from
-default_data only in GPU_PM_RT.
+[1] https://lore.kernel.org/r/20261123-panfrost-rk3399-pm-rt-v3-1-04c7c58d1140@iav.lv
 
-Reviewed-by: Steven Price <steven.price@arm.com>
-Signed-off-by: Igor Velkov <iav@iav.lv>
----
-Tested on ROCK Pi 4A, drm-misc-next c408466a4dfa with the rkvdec fix [1]
-applied: hibernation restores 9 of 9 with this patch (3 with an HDMI
-mode held, 3 right after glmark2-es2-drm, 3 idle), and the GPU renders
-after restore. With the GPU node left with arm,mali-t860 only, restore
-hangs 2 of 2, in genpd_restore_noirq() of the GPU.
-[1] fixes the same kind of hang in rkvdec, which otherwise hits first;
-this patch applies and builds without it.
-
-[1] https://lore.kernel.org/r/20261030-rkvdec-runtime-pm-clocks-v2-1-8ff510a231de@iav.lv
-
-Changes in v3:
-- Retitle as Steven suggested, say what GPU_PM_RT changes
-- Add Steven's Reviewed-by, given on v1 (same code)
-- Link to v2: https://lore.kernel.org/r/20261122-panfrost-rk3399-pm-rt-v2-1-40f1791aa1a8@iav.lv
-
-Changes in v2:
-- Name the SoCs that already use default_pm_rt_data
-- Say why restore hangs
-- Rebase onto drm-misc-next
-- Link to v1: https://lore.kernel.org/r/20261030-panfrost-rk3399-pm-rt-v1-1-e94437159a9d@iav.lv
----
- drivers/gpu/drm/panfrost/panfrost_drv.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-index eeda113037fe..91acfa13ef42 100644
---- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-@@ -983,6 +983,7 @@ static const struct of_device_id dt_match[] = {
- 	  .data = &amlogic_data, },
- 	{ .compatible = "renesas,r9a08g046-mali", .data = &default_pm_rt_data },
- 	{ .compatible = "renesas,r9a09g047-mali", .data = &default_pm_rt_data },
-+	{ .compatible = "rockchip,rk3399-mali", .data = &default_pm_rt_data },
- 	{ .compatible = "arm,mali-t604", .data = &default_data, },
- 	{ .compatible = "arm,mali-t624", .data = &default_data, },
- 	{ .compatible = "arm,mali-t628", .data = &default_data, },
-
----
-base-commit: c408466a4dfaee4b12587e926c5b85e68c8b3c40
-change-id: 20261030-panfrost-rk3399-pm-rt-cea3fc1790d9
-
-Best regards,
--- 
-Igor Velkov <iav@iav.lv>
-
-
+--
+Igor Velkov
 
 _______________________________________________
 Linux-rockchip mailing list
