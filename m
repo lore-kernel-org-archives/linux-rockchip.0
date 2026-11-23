@@ -2,69 +2,106 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 157DD606A331
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E4299606A31F
 	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 09:59:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YshrVZa1;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=ijmR6W82
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2I3mT74Y;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=FpoTyrvc
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=xEPNLaTiOWIMNZtuDIk/XvGTP2k/qrvDPwS0ulM5i4g=; b=YshrVZa1fns9mXVKvDPYRGm+is
-	YUQj3eh5P44yIJaCAioGwv9GiwrAxU5IhvYXU5ZzIlq7Q8C96wBBKychZD2kSqZfNsiXCcSoimXjL
-	2R+ejYdkK6NR9uMYbxkiXxp4PLk64CWaA6sWZn4tv6V4LwpTGRmBWtQ8WJzOkyLd7/N0ZwOsN8zDU
-	nlxyW74bmMkqT73Ekc1wEW3qSqVA6EQwcRLvObsi7jLxQdQsefpLJD/vLH6bfcqIU3+SGZwEBBKe7
-	5J+pZtqiLnXtTd+S0HF20HaduEVCr0OhStgb5pze2oZ9EnUGiJwjxFgKIRs1/cKPGXWqWgI3NsUba
-	r5wfb0uQ==;
+	bh=PSvtnuPUzjuxdxk4ML5+fk3oLUMBGpzrCMd+hHY2lOU=; b=2I3mT74YA8KRETZ2yaV4y0ZVXI
+	Eu1xbqXwFYgNgIum+9USQeUll+nL71rraTW5A/z9tV6+Pk7D5qKMhtps+K0DOaq3CUsFBPn7WL4Du
+	CG+Zqrvk5wy/dcxrZwMgVzFa7QCfJpg5Yj5rpioNfbAyXDow5dSEjk9gnlBtTI845bK4FrptbaPuq
+	OeHwSz0E1xzr/b01yjXiWdFfE7mMbarmqq/aXft8HsRl2FhqEcODyW1W+9ZkxIhjFe5yCKU3Dh4ZZ
+	2m1xXlOobYzDCDWSCneFODG9iwqK7MQ6kuGWPd2bUOqE0Z3T1LPe8KBEpzqgPAeVcYkBBdqfZIqbZ
+	NH84y29g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVQpV-00000002rHP-3Guy;
+	id 1xVQpV-00000002rHJ-2pNo;
 	Mon, 23 Nov 2026 09:59:21 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVQpN-00000002rAT-03sf
-	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Nov 2026 09:59:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795427951;
-	bh=hIu4Io13bboxqzPRv7r5Z8rpPIQv75yL07z2+l+m2IQ=;
-	h=From:To:Cc:Subject:Date:From;
-	b=ijmR6W82fP9Yo4I8xMkEtfnYQxbbL9bXqjKqZ7gxAUeSuPErflDUw/ff0DOWnsu+G
-	 i8kxyup4CatGrpRmoFR5qG0uGmBquz3JLTER7lYRkSMSnf6elDeTNIfGs3g9H5QFJS
-	 us0UM6pMLN0LYZm//DJTttu7HAq3vXmkbvBLtNJS6gOaMr6bH1ZnPnBih95IBtBer4
-	 gB88dDHzcEsCG9Qzfli4qxjuVLsoaW65mW4GdyjQhZ7bGETvMnPsD7VRYthocryvw3
-	 LxSGtZZMsCdXR5kHJTI7x809VtSvcY+EtJFd756Bpk92rEKQHC/d1v11ptDNwL6GDf
-	 E0YXb6Keztkvg==
-Received: from benjamin-XPS-13-9310.home (unknown [100.64.1.43])
+	id 1xVQpN-00000002rB6-2w9o;
+	Mon, 23 Nov 2026 09:59:13 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id BD31461194;
+	Mon, 23 Nov 2026 09:59:12 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795427951;
+	b=Nd41ScdLS1z+hrReyTTQJOGplD+DpkvJ+AmV9ZcUmHDJBSnm4o5WOTllKnGUjeOa9bb7
+	 dLkf4km28rt4WwMjfC+Mf6UX/ZhFcLSL2eTpgDJjp/o1Y9i6MFECuAaq5DSr20VzYz68z
+	 0+lVp5/fOSLo242G32k6yh5Wfgwze3nppIcWlQqknlvmISuNQtMJaxQ9dZWpzv2BhEn8m
+	 kxsJQ+i+3SznMNWc9ROt0lcNAitZakViPTwzgo9kqyVT1GfLhMndRdTJdA+IJP1yzVwsw
+	 iwGh7kzuLHsF100DcwFMG4GjPFZ+m6Vyj4OsihOyUVL7mzQsYskcZOYVE1Qd7kBdi6w==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795427951;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:Message-Id:References:In-Reply-To:To:Cc:
+	 X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=zSZ/MpBtD/kNl9aZH6KuQ47KMysciB4nys9MW6FEKPA=;
+	b=iYt2UOazfc4tTtc+jG1gUKDXh3nKSs+CXAaALfbL0a98HU8OTC3tC9LpF9pxwSpNciud
+	 s0BcPyVEUj4N8VqR7aT9OOuOjVGkWSdVPIqTWPP9nq1k9UeU0kqYVQ+qgWYOkcMKRHlnH
+	 rB385z+q1Bb/fsWcBPrFBtsddEmKw3zhT+4hFsDz4IZ3IDix3UFVy/9yDrrwVrv354nAi
+	 4ZOTYGLfutktrLUKQEGAjOuTgewy9ZtkaCjBRzj052v2U9gBUO5lwLf9xTGP6WTSX8EZ/
+	 xvcidAIPVxwk6HW2rj04EiPQND2srGGmRgROutDyAZbeLxXMAPd6tqNepMCIg5oXIDw==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D566717E00C4;
-	Mon, 23 Nov 2026 10:59:10 +0100 (CET)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: nicolas.dufresne@collabora.com,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org
-Cc: linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v3 0/7] media: verisilicon: simplify auxiliary buffers allocation
-Date: Mon, 23 Nov 2026 10:58:58 +0100
-Message-ID: <20261123095905.60622-1-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.53.0
+	by smtp.kernel.org (Postfix) with ESMTPS id 688AD1F000D8;
+	Mon, 23 Nov 2026 09:59:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795427951;
+	bh=zSZ/MpBtD/kNl9aZH6KuQ47KMysciB4nys9MW6FEKPA=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=FpoTyrvcJ2mmv9JWcE4/aqUu1Z1mYdc6Quq2I9xzx0mkpSoJM2ISWsl7sOVwbvGiz
+	 5g09kmUeEgN3nbggO6u6HYg5SFyWorY8LeYi7Pr9J+VoQh9+GFengNSYOrKniGUQT8
+	 YRgi+GNOeeQe8kUfvEF/570ITcMgXT2ovw6RSLS+nv6if4XQwOK/w5RTRAHSrXFXUn
+	 P6Lq/atkMK9hQXGuGVc2nQO+3sxnIE2scYoW9vZKUkVl/E2SjgM73vwSX/i4NqpswN
+	 0n4ewywLT40UHbKKsZQqK6P9m7p6fixvEXXadO08o8lWD81nDxz1YytoTTTcSQRzNK
+	 eIX5bXtIkLTBg==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id EA3464C403;
+	Mon, 23 Nov 2026 09:59:02 +0000 (UTC)
+From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
+Date: Mon, 23 Nov 2026 17:59:02 +0800
+Subject: [PATCH v7 3/5] clk: rockchip: Add composite clock macro with mux
+ table
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_015913_215817_BD7469E7 
-X-CRM114-Status: UNSURE (   9.75  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261123-add-board-ok3572-c-clk-v7-3-16f6860191a9@qq.com>
+References: <20261123-add-board-ok3572-c-clk-v7-0-16f6860191a9@qq.com>
+In-Reply-To: <20261123-add-board-ok3572-c-clk-v7-0-16f6860191a9@qq.com>
+To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
+ Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Elaine Zhang <zhangqing@rock-chips.com>
+Cc: Cunhao Lu <1579567540@qq.com>, Jonas Karlman <jonas@kwiboo.se>, 
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795427940; l=1536;
+ i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
+ bh=yxo50L8CzB/1StZYdCwymW+hb91fAweyci4aIptKK2w=;
+ b=xKVsyK3stWTQJ5YUnAtv+eo3p/FuwhHqJpQTx3tQ6R/GaEsslVWYVhbx1/pdgexVS+P5BqRRC
+ xawwrwMcu6KDonOVmtCoUBpOpoCTbbURT8dyfF8V81gpJIzAGuoUsLE
+X-Developer-Key: i=1579567540@qq.com; a=ed25519;
+ pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
+X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
+ auth_id=1177
+X-Original-From: Cunhao Lu <1579567540@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,67 +111,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Verisilicon stateless video decoder driver allocates lot of auxiliary
-buffers to decode bitstreams. These allocations duplicate a lot of code.
-This series add helpers functions to allocate and free auxiliary
-buffers. This simplify the driver code and will allow to implement more
-easly incoming feature like disentanglement data buffers from mv and rfc 
-buffers or adding reference frame support for more codecs.
+From: Elaine Zhang <zhangqing@rock-chips.com>
 
-This series has been tested with fluster on IMX8MP for h264, hevc, vp8 
-and vp9 codecs, and on rk3588 for av1.
+Some Rockchip composite clocks use mux selector values that do not
+match the order of their parent clocks.
 
-This series depends of this one:
-https://patchwork.linuxtv.org/project/linux-media/list/?series=34366
+Add COMPOSITE_MUXTBL to describe the parent-to-selector mapping along
+with the divider and gate. The RK3572 audio clocks use this layout.
 
-Regards,
-Benjamin
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
 
-changes in v3:
-- As suggested by Philipp do not mask hantro_allocate_aux_buf() returned
-  value.
-- In hantro_allocate_aux_buf() and hantro_free_aux_buf() only set vpu if
-  ctx isn't NULL.
+---
+Changes in v4:
+- Split this helper out of the RK3572 driver patch.
+---
+ drivers/clk/rockchip/clk.h | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-changes in v2:
-- rebase on top of media: verisilicon: Create AV1 helper library v7
-- tag reviewed-by tag
-- fix patch 1 and 7 commit messages
-
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 063e3d567a2f..d84e42533266 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -871,6 +871,28 @@ struct rockchip_clk_branch {
+ 		.gate_flags	= gf,				\
+ 	}
  
-Benjamin Gaignard (7):
-  media: verisilicon: Add helpers to allocate and free auxiliary buffers
-  media: verisilicon: AV1: Use alloc/free helpers for auxiliary buffers
-  media: verisilicon: h264: Use alloc/free helpers for auxiliary buffers
-  media: verisilicon: hevc: Use alloc/free helpers for auxiliary buffers
-  media: verisilicon: vp8: Use alloc/free helpers for auxiliary buffers
-  media: verisilicon: vp9: Use alloc/free helpers for auxiliary buffers
-  media: verisilicon: mpeg4: Use alloc/free helpers for auxiliary
-    buffers
-
- drivers/media/platform/verisilicon/hantro.h   |   4 +
- .../media/platform/verisilicon/hantro_av1.c   | 191 +++++-------------
- .../media/platform/verisilicon/hantro_h264.c  |  13 +-
- .../media/platform/verisilicon/hantro_hevc.c  | 133 ++++--------
- .../media/platform/verisilicon/hantro_mpeg2.c |  19 +-
- .../platform/verisilicon/hantro_postproc.c    |  21 +-
- .../media/platform/verisilicon/hantro_v4l2.c  |  37 ++++
- .../media/platform/verisilicon/hantro_vp8.c   |  36 +---
- .../media/platform/verisilicon/hantro_vp9.c   |  42 ++--
- 9 files changed, 169 insertions(+), 327 deletions(-)
++#define COMPOSITE_MUXTBL(_id, cname, pnames, f, mo, ms, mw, mf,	\
++			 mt, ds, dw, df, go, gs, gf)		\
++	{							\
++		.id		= _id,				\
++		.branch_type	= branch_composite,		\
++		.name		= cname,			\
++		.parent_names	= pnames,			\
++		.num_parents	= ARRAY_SIZE(pnames),		\
++		.flags		= f,				\
++		.muxdiv_offset	= mo,				\
++		.mux_shift	= ms,				\
++		.mux_width	= mw,				\
++		.mux_flags	= mf,				\
++		.mux_table	= mt,				\
++		.div_shift	= ds,				\
++		.div_width	= dw,				\
++		.div_flags	= df,				\
++		.gate_offset	= go,				\
++		.gate_shift	= gs,				\
++		.gate_flags	= gf,				\
++	}
++
+ #define COMPOSITE_DIV_OFFSET(_id, cname, pnames, f, mo, ms, mw,	\
+ 			     mf, do, ds, dw, df, go, gs, gf)	\
+ 	{							\
 
 -- 
-2.53.0
+2.34.1
+
 
 
 _______________________________________________
