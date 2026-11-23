@@ -2,70 +2,106 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7FBD3606A32E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 09:59:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 622EC606A31E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 09:59:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tGGbvMe+;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=DSuYsXFo
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BmCBxMA7;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=MbrwP3+D
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=fD4QKbvwm395CFEJnSkpION0ag2WdVhPgf42GPDdBT8=; b=tGGbvMe+DecKPQpwOeumvpJ1SZ
-	FHDWPVA1XB05E+a80apJdwzKL6eKnWKGKOgXPQqGShKZTUeU+8+wBjAfxXzTAO/BMlKFgepaolgAD
-	SmpOdXqQWw9VMuexS85d7Yn27qfLborfdCsIOyIn7UV1riqIrUfO0oZ/7K+PQFMqOKgHEzybhexAR
-	h6ZdIBM+rm6fY1Unvdd05lKT3ISCoy/G9hEkiyeO0Sa8gBnAmpEXY8Kdxq2xvyHoXgE8gzAhh/+7h
-	EIJ00G3uXc+j/+Ukgajeor6OhavMGo/mVJTriuXbu9GpVgtVO6G2rO5+K76jef+6Iy6FKocpdP3Jl
-	wBo6K+Lg==;
+	bh=/RccZrupjv4Yx1NgRyYSDJBYRKP3ciVdz5uIEVHC9qc=; b=BmCBxMA7CEO/vMJszTWyFL7Z2Z
+	IHQfZ3haTLWqDlmE21UOt6lDW1jVFO1kgyouomnkNP4V5kM1xxuS+bcdRseACAu9gDFquOuqP2C+j
+	BzNW/m66PfnjE1AKMOJABS139aYGuXae8Vz2VJ8agjL2dgbSqvtm4OkfkpooGJfvNrxVkPYrkG2iz
+	xk9UgkeTdYhgC5KwDaMY3BReJo9aP02AfvkUEvjVKp5t7UP6XCg1vA8HX4/8mZWe2fwufJ+ySD5Wp
+	uGLovJvP486/l38pfRDL3pMi1LcaMGTsFiq3h4Bg0n8wr2Rul/2+r4uUFwcCKeX/R/cfIArF1RH8i
+	JAmYHULw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVQpm-00000002rVB-0rDz;
-	Mon, 23 Nov 2026 09:59:38 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xVQpl-00000002rTj-3gSD;
+	Mon, 23 Nov 2026 09:59:37 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVQpQ-00000002rDF-0MDu
-	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Nov 2026 09:59:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795427953;
-	bh=yrh/jm7FbncyrbGG/W70xKf2SqOJYAZGqJKC5tZlRwc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DSuYsXFottJCzZRvxZJxaM5fiysfY64tgz0IrVqK2bbBOLxfjK3fZbAk01fsT58ed
-	 bUPwbgbp5p1Sac9IbcDD8vpZFmlwShLrQTTvpIbZhofhK/0M/fzz82r/vGH9u5K8OT
-	 4eNCaHLwsncK+iTupM1fyz3jbopvM0cEuc4x4+CcEywiaZDxM8xbhoYcgC94WR0go2
-	 50vKVOfqWvegzly4UKsctDfFjkhXYc4nE+FTppYg3bkxWZk7aLYuucXfrveT4aSIr1
-	 hjraNPKuv9/kdqFwnVxGNOgxkYl4eulJDUkej0C1y9OOyjPMBXXTN0z0Qw14Nxlsuq
-	 SdyglyE+D1DCA==
-Received: from benjamin-XPS-13-9310.home (unknown [100.64.1.43])
+	id 1xVQpP-00000002rDH-1MJN;
+	Mon, 23 Nov 2026 09:59:15 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 177E24570C;
+	Mon, 23 Nov 2026 09:59:15 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795427954;
+	b=3MWy+m0ccvOs8D556QK+H5ank3uGNj7LM4KWYdlShs0f6RN9ARd/3EYPjuY+QEGsSgei
+	 VOlHmyxkEjhkVkWgFyZTlrlsDRdhWr8yZJmHfS/vdpQB65BytH7w+FaHEmj8EIsXwggZn
+	 KVLWqgEfqGqsia+qb+4C6bFyB3XYZrSKGzU7tFuj1i34sWCHsLtBlpYkYM+WSP+4NxGga
+	 YEDl+Q39TH7OK4u3cBQD9wYl6NmFf8+gP1W0sytcHZ2eIkKDN9vjR+KEtaQuQpCdIRpMu
+	 m9b+FTUAkOK0Yesz/cn3wquiEtneouRXAwTjNF5bPAQMkmpdgVMO0vTjV/whYL5u0KA==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795427954;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=HaNmPdUYqf2uOT1nrrfv60pp6/8ycrTLUOW0Lh2Yw1o=;
+	b=edA4tBLPmf2F2mo3OXlhOzi9ymVlyON/doWvXpqI2KSnRp9356BUsPox298Wk7V1qWMD
+	 VkSq1+2WNpyfH8j7TpuUrGIvJFXZjFpWtSYIY+0XdIMk2xX0ggi7f2S/ZRbugQPim895E
+	 ljI4yeSKWyj2wBTxBJY5oYdiLo9yragyKXOrSR42oVC+eV9Os51gByD1S5dzMRzGoNMdQ
+	 qD/FHM6NsgYTW7UapkY8HXTouJ+YAahDIozPQtCnT6xxtfW5WCpcZqivnKVamoDP25BKj
+	 RF498TG0ycZsRmF1OkeHTYrcqRHkQdaWfgSDHUM4wraVB03C7rUb1XraG344wql3PTQ==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F135217E0F76;
-	Mon, 23 Nov 2026 10:59:12 +0100 (CET)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: nicolas.dufresne@collabora.com,
-	p.zabel@pengutronix.de,
-	mchehab@kernel.org
-Cc: linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v3 6/7] media: verisilicon: vp9: Use alloc/free helpers for auxiliary buffers
-Date: Mon, 23 Nov 2026 10:59:04 +0100
-Message-ID: <20261123095905.60622-7-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261123095905.60622-1-benjamin.gaignard@collabora.com>
-References: <20261123095905.60622-1-benjamin.gaignard@collabora.com>
+	by smtp.kernel.org (Postfix) with ESMTPS id 854E71F000E1;
+	Mon, 23 Nov 2026 09:59:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795427954;
+	bh=HaNmPdUYqf2uOT1nrrfv60pp6/8ycrTLUOW0Lh2Yw1o=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=MbrwP3+DxyipqOMY9hhw4xIamuaxgfc1XWAap+HaUkYi32X8/0OyQ5Xr04BilECsQ
+	 kx9SQKmNYNBHXihlpu8g7aM0nsladd2WKTGXiQckEK/MPcAUtYiytQyUEZnOcBBu9K
+	 OvRJhYBGPDzjnhza8l9uRrBgFKcnkwAELGv1o5a/WvM2aI2Lqn4Z1dl922hivWaT/g
+	 obdtvQSYEGol55V+x+Iw9aLbTVfM5zoOzYpAQIDzplT9MjrZYXzHBIspY8xsClHB9X
+	 Z/2NAqJ+TroJBqK9M9/I3RqCbYYwGObomWBNTcFBioS/KOc5/U51h39CytlHEJb9sM
+	 XdXoH/NK+niwA==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 123224C407;
+	Mon, 23 Nov 2026 09:59:03 +0000 (UTC)
+From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
+Date: Mon, 23 Nov 2026 17:59:03 +0800
+Subject: [PATCH v7 4/5] clk: rockchip: Return errors from
+ rockchip_clk_of_add_provider()
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_015916_286353_1082168E 
-X-CRM114-Status: GOOD (  10.13  )
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261123-add-board-ok3572-c-clk-v7-4-16f6860191a9@qq.com>
+References: <20261123-add-board-ok3572-c-clk-v7-0-16f6860191a9@qq.com>
+In-Reply-To: <20261123-add-board-ok3572-c-clk-v7-0-16f6860191a9@qq.com>
+To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
+ Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Elaine Zhang <zhangqing@rock-chips.com>
+Cc: Cunhao Lu <1579567540@qq.com>, Jonas Karlman <jonas@kwiboo.se>, 
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795427940; l=2105;
+ i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
+ bh=KzKhwQsNNbIws0UUJ9FPBVs8oMjRaBZLFgFz/fZdYoI=;
+ b=HFB7NnDB8rPefSg8tt8zKk/NjvwmZqMsFFY3rd8vjxVT35SJbPvWEKCrjSWqXC3wDoHA/evN1
+ ww9SYQ9+g54AvPkJL0DqtcqYOvI585gggM2QGBUGtECUkSHcdlp+uPI
+X-Developer-Key: i=1579567540@qq.com; a=ed25519;
+ pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
+X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
+ auth_id=1177
+X-Original-From: Cunhao Lu <1579567540@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,117 +111,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Simplify and clean up the code by using the helpers.
+From: Cunhao Lu <1579567540@qq.com>
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+rockchip_clk_of_add_provider() discards the OF registration status
+after logging an error. Return the status so a caller can release its
+lookup data if the OF provider fails to register.
+
+Signed-off-by: Cunhao Lu <1579567540@qq.com>
 ---
-changes in v3:
-- As suggested by Philipp do not mask hantro_allocate_aux_buf() returned
-  value.
+ drivers/clk/rockchip/clk.c | 14 +++++++++-----
+ drivers/clk/rockchip/clk.h |  4 ++--
+ 2 files changed, 11 insertions(+), 7 deletions(-)
 
- .../media/platform/verisilicon/hantro_vp9.c   | 42 +++++++------------
- 1 file changed, 15 insertions(+), 27 deletions(-)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_vp9.c b/drivers/media/platform/verisilicon/hantro_vp9.c
-index 566cd376c097..6f7995076610 100644
---- a/drivers/media/platform/verisilicon/hantro_vp9.c
-+++ b/drivers/media/platform/verisilicon/hantro_vp9.c
-@@ -164,6 +164,7 @@ int hantro_vp9_dec_init(struct hantro_ctx *ctx)
- 	struct hantro_aux_buf *segment_map = &vp9_dec->segment_map;
- 	struct hantro_aux_buf *misc = &vp9_dec->misc;
- 	u32 i, max_width, max_height, size;
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index 2053e0d67a1b..7c52406d4925 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -420,12 +420,16 @@ void rockchip_clk_finalize(struct rockchip_clk_provider *ctx)
+ }
+ EXPORT_SYMBOL_GPL(rockchip_clk_finalize);
+ 
+-void rockchip_clk_of_add_provider(struct device_node *np,
+-				  struct rockchip_clk_provider *ctx)
++int rockchip_clk_of_add_provider(struct device_node *np,
++				 struct rockchip_clk_provider *ctx)
+ {
+-	if (of_clk_add_provider(np, of_clk_src_onecell_get,
+-				&ctx->clk_data))
+-		pr_err("%s: could not register clk provider\n", __func__);
 +	int ret;
- 
- 	if (variant->num_dec_fmts < 1)
- 		return -EINVAL;
-@@ -181,23 +182,18 @@ int hantro_vp9_dec_init(struct hantro_ctx *ctx)
- 	size = hantro_vp9_tile_filter_size(max_height);
- 	vp9_dec->bsd_ctrl_offset = size;
- 	size += hantro_vp9_bsd_control_size(max_height);
--
--	tile_edge->cpu = dma_alloc_coherent(vpu->dev, size, &tile_edge->dma, GFP_KERNEL);
--	if (!tile_edge->cpu)
-+	if (hantro_allocate_aux_buf(ctx, tile_edge, size))
- 		return -ENOMEM;
- 
--	tile_edge->size = size;
- 	memset(tile_edge->cpu, 0, size);
- 
- 	size = hantro_vp9_segment_map_size(max_width, max_height);
- 	vp9_dec->segment_map_size = size;
- 	size *= 2; /* we need two areas of this size, used alternately */
-+	ret = hantro_allocate_aux_buf(ctx, segment_map, size);
++
++	ret = of_clk_add_provider(np, of_clk_src_onecell_get, &ctx->clk_data);
 +	if (ret)
-+		goto error;
- 
--	segment_map->cpu = dma_alloc_coherent(vpu->dev, size, &segment_map->dma, GFP_KERNEL);
--	if (!segment_map->cpu)
--		goto err_segment_map;
--
--	segment_map->size = size;
- 	memset(segment_map->cpu, 0, size);
- 
- 	size = hantro_vp9_prob_tab_size();
-@@ -205,36 +201,28 @@ int hantro_vp9_dec_init(struct hantro_ctx *ctx)
- 	size += hantro_vp9_count_tab_size();
- 	vp9_dec->tile_info_offset = size;
- 	size += hantro_vp9_tile_info_size();
-+	ret = hantro_allocate_aux_buf(ctx, misc, size);
-+	if (ret)
-+		goto error;
- 
--	misc->cpu = dma_alloc_coherent(vpu->dev, size, &misc->dma, GFP_KERNEL);
--	if (!misc->cpu)
--		goto err_misc;
--
--	misc->size = size;
- 	memset(misc->cpu, 0, size);
- 
- 	init_v4l2_vp9_count_tbl(ctx);
- 
- 	return 0;
- 
--err_misc:
--	dma_free_coherent(vpu->dev, segment_map->size, segment_map->cpu, segment_map->dma);
--
--err_segment_map:
--	dma_free_coherent(vpu->dev, tile_edge->size, tile_edge->cpu, tile_edge->dma);
-+error:
-+	hantro_free_aux_buf(ctx, segment_map);
-+	hantro_free_aux_buf(ctx, tile_edge);
- 
--	return -ENOMEM;
++		pr_err("%pOF: could not register clk provider: %d\n", np, ret);
++
 +	return ret;
  }
+ EXPORT_SYMBOL_GPL(rockchip_clk_of_add_provider);
  
- void hantro_vp9_dec_exit(struct hantro_ctx *ctx)
- {
--	struct hantro_dev *vpu = ctx->dev;
- 	struct hantro_vp9_dec_hw_ctx *vp9_dec = &ctx->vp9_dec;
--	struct hantro_aux_buf *tile_edge = &vp9_dec->tile_edge;
--	struct hantro_aux_buf *segment_map = &vp9_dec->segment_map;
--	struct hantro_aux_buf *misc = &vp9_dec->misc;
- 
--	dma_free_coherent(vpu->dev, misc->size, misc->cpu, misc->dma);
--	dma_free_coherent(vpu->dev, segment_map->size, segment_map->cpu, segment_map->dma);
--	dma_free_coherent(vpu->dev, tile_edge->size, tile_edge->cpu, tile_edge->dma);
-+	hantro_free_aux_buf(ctx, &vp9_dec->tile_edge);
-+	hantro_free_aux_buf(ctx, &vp9_dec->segment_map);
-+	hantro_free_aux_buf(ctx, &vp9_dec->misc);
- }
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index d84e42533266..a1d4fd3b1248 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -1374,8 +1374,8 @@ struct rockchip_clk_provider *rockchip_clk_init(struct device_node *np,
+ struct rockchip_clk_provider *rockchip_clk_init_early(struct device_node *np,
+ 			void __iomem *base, unsigned long nr_clks);
+ void rockchip_clk_finalize(struct rockchip_clk_provider *ctx);
+-void rockchip_clk_of_add_provider(struct device_node *np,
+-				struct rockchip_clk_provider *ctx);
++int rockchip_clk_of_add_provider(struct device_node *np,
++				 struct rockchip_clk_provider *ctx);
+ int rockchip_clk_add_grf(struct rockchip_clk_provider *ctx,
+ 			 struct regmap *grf,
+ 			 enum rockchip_grf_type type);
+
 -- 
-2.53.0
+2.34.1
+
 
 
 _______________________________________________
