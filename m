@@ -2,110 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 08EF5606A337
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 09:59:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E75D3606A32D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 09:59:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1p9LbuhP;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=KFKM3NSs
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=l77KnIHR;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=K4auACvY
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=54xq33wFs0/gSG3zWwZn7PuuDsOp3LiBdafilSKOi9o=; b=1p9LbuhPQZ3Lig0dBFXHu/CcBe
-	qiv9jZC5mq1H/oYGQYC/5pJV6nRgQNMgbu5JT8uufwU9lsovR+pZU+7R9+HLwnfP6yq7mlKMl9X7o
-	qdOMZWdJbmFMGfHad0iXcaX1U8Ms4kky/BESTiJo2NVgsp1C8vxPON7mP0u7Ph6+VyPzR1vFdb+f2
-	FLtIjbPP4BSg15TrvGQEvbHoufYSpa0IR1tRAJHphgfRTNxZ8r7/z50Qjc3SSWFLCghR7W3HwunQn
-	D667YpSRrA2PSsfuGd0vRaqlumDtinEIFweaWr34pGnSxfOqTBzwDYmbm/XM/fPusoyV+C0Nk6a4U
-	kq4Wb+oQ==;
+	bh=AME1F5pcJbfm2mYKalqjm5lPev/mv49EINr67i9PuzE=; b=l77KnIHRmzMwXASwJM6C/WOD94
+	tLH6MebTzfJfNpy24S7Iu/kwl6BETnCIMJ/NHti6mwpEm8vMKiyXFyoRxJwLImK0S/nDYP9JHuSm/
+	uvP8psNoxhgPM0nCaEUPZ/9BNR8Ya20U3j76Aa3VnvBycyK3XBjgVItFWGnF32lGDyeZcZyRDHlNA
+	9DGKcea8nMbOLXFwCkeQp/vSLTA2SLmLs3QyOJ2+703nnq/3JR0q5gGFCwjIfK9JlLG9qE5bV8bbD
+	lYQhrHekYdZ55peHZDKsa4vi+SKxaBnbe9Na82lzpHjJsQVtmfrDi1+65STobS6HR4vZHJ3m83NOa
+	TXcr7GFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVQpM-00000002rAf-0gct;
-	Mon, 23 Nov 2026 09:59:12 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xVQpl-00000002rUF-43NH;
+	Mon, 23 Nov 2026 09:59:37 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVQpK-00000002rAB-1nck;
-	Mon, 23 Nov 2026 09:59:10 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D9898443B4;
-	Mon, 23 Nov 2026 09:59:09 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795427949;
-	b=WHeNp+PabGR90eTFKkE/hGGIvUqCxY4RRsv6I4WDFKa890Hiza4PriNn8q2LZOs4bAzv
-	 jjTeIzK9hWly+1BOoMab2XkF3Jfjn2700DiMx8FFJhLHQIyRVmoh+V7rE7fJFc/cOwzNf
-	 KsRwBJoIcusJFtS1yKoYtnnQ8LsEj80+uH22aWca5t7XUldGEsrntrcKVvH0fi33k4ql6
-	 KhS6RV7tIEk2I9sVTHC5LOb7IIWxBFM/y7Ibj+ozJJdZjp2KmrxuPeCD/i38lxnKMW/yD
-	 wiYkGoFD2ivVUAoA7PHS9gq1T+7Si6NaAir30uTEZdrmQOyfXvgvnPvZZRekjP/v/pQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795427949;
-	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
-	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
-	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=cqs4IDk6z5rv/drnt7fI052RF8NFc+xZa49jPCsOnIY=;
-	b=g5QehFaRlOHF1VTZNMYxTVk5Xf5f2k4D/d7zFUxgYL9WrM1j+INPKWkVADmzBTlHYsIj
-	 qHFKcHT0oQjk6gxVX+TUwsxAy59UMHpPAgGwOsiS4QgXUK0ifE2CGc7nJD6G4JEnf2Y6e
-	 Vm0R48pxhay5oOKPa5enycwQR+5y3KoqEONZmAC1bRBPMBBbt1RoorMu5Eq3T6mkFlooM
-	 CwKJ5jGOHKRQuRqpwL99KpGKWc49GrzcWfuBkbyTwiMh+qc7K5Mp6qzYa6Q9OH/uk6KEo
-	 YBSb8489cLGi5WwQJ1whgI9+Bg70n6kEktmZtsUahaJuKzUXjZKYZU0c3kKY+tYtXYA==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	id 1xVQpN-00000002rAY-34KB
+	for linux-rockchip@lists.infradead.org;
+	Mon, 23 Nov 2026 09:59:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795427951;
+	bh=OjDDyVHPNQifEr60j6NAsafCT0swfBWHW8NPixfG70A=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=K4auACvYkUdMZriytZX6utE0cikKw2SUz/QAg5TdofNGY2cUTK+lSxCVcLIge8BIz
+	 2ARqlFRi2MU/yakYseDOwL3lW60v8uKAsu1DfZ6ygrifvm2bWA5E8hRpIMHyYLFufV
+	 YBgdNd3tye9B4A7V5UhqXqYJpyAPstdOTKVDcXF5Us1gFs51h57k4gu5I+sP7AHnau
+	 0wnvxwDKsw4Zhj+mGEn6fx4WnyrB4wSLm8kshurQCgyw+VceSgV0fXTNUDc69iyRq/
+	 mKEIb5cLMhh4ep3iWLMxQEfq/a5p2y+ypYXZccwS9/EU7wTzvHikig0GPzHSa1z2Uz
+	 15e4ikPqnASOQ==
+Received: from benjamin-XPS-13-9310.home (unknown [100.64.1.43])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 3BBF21F000D0;
-	Mon, 23 Nov 2026 09:59:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795427949;
-	bh=cqs4IDk6z5rv/drnt7fI052RF8NFc+xZa49jPCsOnIY=;
-	h=From:Subject:Date:To:Cc:Reply-To;
-	b=KFKM3NSsU/kRu8BKjO6eMSoU3Y4cDuYzH3TdGdHnaczs2Rn+CHBAAMMTAaNgYge9/
-	 Pa/RDt25ikgCvhdtkgVwDH4icXa6bsIMSnRlMJC/fmj5vU1oHhAYwNEzlYylqG6cqr
-	 +JI9aVsDZMxma4FCagtSiJZVDjMhZHCfqyc66sk1Pw2IxJoYg8m4+cOGtadQtTlpRl
-	 WiPw9VMZmzUWGiGtlWSpl0GyEV/un34B+qFZXkvPxaMerxUmD9aHvDu4o8h8Njqcuw
-	 JW4HduYfBPn4TEkaAFhqBtl8k1uSAI0mpNUojbXF3QUWzF53o+E3F1MwNX55Qql6Y7
-	 rQIvJKLl4AkBQ==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 8EABB4C3F8;
-	Mon, 23 Nov 2026 09:59:02 +0000 (UTC)
-From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
-Subject: [PATCH v7 0/5] clk: rockchip: Add RK3572 clock and reset support
-Date: Mon, 23 Nov 2026 17:58:59 +0800
-Message-Id: <20261123-add-board-ok3572-c-clk-v7-0-16f6860191a9@qq.com>
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3C6DA17E0309;
+	Mon, 23 Nov 2026 10:59:11 +0100 (CET)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: nicolas.dufresne@collabora.com,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org
+Cc: linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v3 1/7] media: verisilicon: Add helpers to allocate and free auxiliary buffers
+Date: Mon, 23 Nov 2026 10:58:59 +0100
+Message-ID: <20261123095905.60622-2-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20261123095905.60622-1-benjamin.gaignard@collabora.com>
+References: <20261123095905.60622-1-benjamin.gaignard@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAGMOBGsC/3XPTU7DMBAF4KtUXmPk/8SsuAdiMfbY1BRqmhQLV
- OXu2EVAIuHlk2a+N3Mhc5hSmMnd7kKmUNKc8rGG4WZH/B6OT4EmrJkIJgxnQlJApC7DhDQfpB4
- E9dS/HCizDCNqLSJaUpffphDTxxV+ePzO87t7Dv7ctDaxT/M5T5/X5sLb3E+J+K+kcMoocyziq
- EHyEO5Pp1ufX0nTi1jvd48sohqWOTuO0rhgtoZcG6ZryGqgAxdBWjRWbAy1NoauoZqhuBZOxYA
- AG0OvDMm6hm6/gJKKSe+4shvD/Bmc9+8w1fDgAE3t8jr+GsuyfAGZGyIqGwIAAA==
-X-Change-ID: 20261023-add-board-ok3572-c-clk-090dfd552fd9
-To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
- Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Cunhao Lu <1579567540@qq.com>, Jonas Karlman <jonas@kwiboo.se>, 
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795427940; l=7301;
- i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
- bh=RSHw02Kvs0bpE02qsTU/7SnG0z35YiJlKRjefdl+PXk=;
- b=MUHySwll1chqnunnd2B5AnwKjiesT4UoZAKAggsm85lol9u81FTAUpKFwoSk1Zk5D33V3dMPd
- rNlOEvJHmCPCR917fytJE4DxPpHQw/XluwYqALuS4y+zeXtEY9X+Ygj
-X-Developer-Key: i=1579567540@qq.com; a=ed25519;
- pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
-X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
- auth_id=1177
-X-Original-From: Cunhao Lu <1579567540@qq.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261123_015913_972437_F8060323 
+X-CRM114-Status: GOOD (  16.61  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,195 +75,155 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This is one of the subsystem submissions for RK3572 support.
+Add helpers functions to allocate and free the auxiliary buffers.
+That simplify the code and make it easier to read and maintain.
 
-This series adds the CRU binding, clock and reset IDs, an internal
-Rockchip 24-bit fractional divider helper, a composite clock macro with
-mux-table support, and the RK3572 clock and reset driver. The shared
-helpers precede the driver that uses them.
-
-The RK3572 SoC has eight CPU cores: two Cortex-A73 cores and six
-Cortex-A53 cores. It also integrates an Arm Mali-G310V2 MC1 GPU.
-The OK3572-C board provides two Gigabit Ethernet ports, three USB3 Type-A
-ports, a Type-C dual-role port, eMMC, microSD, and UART.
-
-The driver provides the peripheral clock and reset trees, including the
-three audio fractional clocks. It obtains the PMU0 GRF for the AUPLL
-reference mux. CPU frequency scaling is controlled through SCMI; BPLL
-and LPLL remain enabled for firmware use.
-
-Testing was performed with Debian 13 minimal and Linux 7.3 on the
-OK3572-C with the FET3572-C module. Shared peripheral tests were run with
-the system booted from SD, while eMMC validation covered the complete
-boot chain.
-
-Passed functionality:
-
-- SD and eMMC complete the firmware, kernel, and root filesystem
-  boot chain.
-- UART console works at 1500000 baud.
-- SD read/write and data persistence checks pass.
-- All eight CPUs start; CPU frequency scaling and hotplug checks pass.
-- Both Ethernet ports obtain IPv4 addresses and pass bidirectional file
-  transfers.
-- All three Type-A ports pass USB2 and USB3 enumeration, data transfers,
-  and reconnect persistence checks.
-- Type-C host and device modes pass in both plug orientations. Physical
-  reconnects correctly select the expected device, host, and device roles
-  in sequence.
-
-Stability:
-
-- Repeated cold and software reboots complete on SD and eMMC without data
-  integrity failures.
-- A combined CPU, memory, network, SD, and USB3 stress test completes
-  without a crash, lockup, CPU offline event, or thermal shutdown.
-- Ethernet error and drop counters do not increase during bidirectional
-  network tests.
-
-Build and checks:
-
-- The kernel, modules, and board DTB build successfully.
-- Strict checkpatch reports the existing MAINTAINERS and Kconfig help
-  warnings and a macro argument-reuse check.
-
-Untested hardware and paths:
-
-- NPU
-- PCIe
-- GPU, video output, and audio
-- CPU rates above 1.2 GHz and voltage scaling
-- Other low-speed external interfaces
-
-Some files in this series are derived from the Forlinx OK3572-C BSP
-Alpha1. Thanks to Forlinx for their support.
-
-Thanks also to Rockchip's David Wu, Elaine Zhang, Finley Xiao, Frank
-Wang, William Wu, and Ye Zhang for providing the driver source files.
-
-AI assistance:
-
-- Codex / DeepSeek V4.1 Flash were used for:
-  - Reviewing and adjusting code style to follow community conventions
-  - Automating tests
-  - Collecting data
-
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
-Changes in v7:
-- Group the SCMI clock IDs separately and prefix them with SCMI_.
-- Drop RESETN from reset names in the binding and driver.
-- Fully initialize clk_init_data and require direct M/N encoding with a
-  16/8-bit field split in the 24-bit fractional divider helper.
-- Register the RK3572 CRU as a platform device.
-- Return OF clock provider registration errors in a separate preparatory
-  patch so the RK3572 driver can free its clock ID lookup table on failure.
-- Rebase onto the latest v7.5-clk/next in mmind/linux-rockchip.git.
-- Link to v6:
-  https://patch.msgid.link/20261117-add-board-ok3572-c-clk-v6-0-cabad6610c5f@qq.com
+changes in v3:
+- In hantro_allocate_aux_buf() and hantro_free_aux_buf() only set vpu if
+  ctx isn't NULL.
 
-Changes in v6:
-- Explain the v1/v2 fractional-divider differences.
-- Improve readability.
-- Link to v5:
-  https://patch.msgid.link/20261030-add-board-ok3572-c-clk-v5-0-9a43403cb149@qq.com
+ drivers/media/platform/verisilicon/hantro.h   |  4 ++
+ .../platform/verisilicon/hantro_postproc.c    | 21 ++---------
+ .../media/platform/verisilicon/hantro_v4l2.c  | 37 +++++++++++++++++++
+ 3 files changed, 44 insertions(+), 18 deletions(-)
 
-Changes in v5:
-- Select encodable 24-bit fractional-divider ratios using the actual
-  compensation and field-width limits.
-- Keep fractional-divider rate determination, programming and rate
-  recalculation consistent after integer-Hz rounding.
-- Correct the clk_ddrphy_top_src and aclk_top parent selector mapping.
-- Link to v4:
-  https://patch.msgid.link/20261027-add-board-ok3572-c-clk-v4-0-d4152b4fedaa@qq.com
-
-Changes in v4:
-- Move COMPOSITE_MUXTBL into clk.h as a separate preparatory patch and
-  use it in the RK3572 driver.
-- Link to v3:
-  https://patch.msgid.link/20261026-add-board-ok3572-c-clk-v3-0-dbabfa39d692@qq.com
-
-Changes in v3:
-- Close the reset ID gap while preserving the register mapping of each
-  named reset.
-- Check fractional-divider scaling against the actual field widths and
-  reject unrepresentable compensated ratios during rate determination.
-- Use signed negative PLL coefficients in the RK3572 rate table.
-- Drop CLK_NR_CLKS from the binding and derive the provider size from
-  registered clocks, keeping the existing clock IDs.
-- Fix the indentation of the CRU binding example.
-- Link to v2:
-  https://patch.msgid.link/20261023-add-board-ok3572-c-clk-v2-0-90b98836be6e@qq.com
-
-Changes in v2:
-- Split the original RK3572 support series by subsystem.
-- Port the vendor 24-bit fractional divider to the internal Rockchip
-  clock helpers and adapt it to the determine_rate API.
-- Register audio frac0-2. Keep internal SPLL factors outside the DT
-  lookup so PPLL retains clock ID 0, and remove the unused xin12m factor.
-- Link to v1:
-  https://patch.msgid.link/20261022-add-board-ok3572-c-v1-0-0b0fd85a31ee@qq.com
-
----
-Raw dmesg: see v2 cover letter.
-
-To: Stephen Boyd <sboyd@kernel.org>
-To: Brian Masney <bmasney+clk@redhat.com>
-To: Jerome Brunet <jbrunet+clk@baylibre.com>
-To: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>
-To: Conor Dooley <conor+dt@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Jonas Karlman <jonas@kwiboo.se>
-Cc: linux-clk@vger.kernel.org
-Cc: devicetree@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-
----
-Cunhao Lu (1):
-      clk: rockchip: Return errors from rockchip_clk_of_add_provider()
-
-Elaine Zhang (4):
-      dt-bindings: clock: rockchip: Add RK3572 CRU
-      clk: rockchip: Add 24-bit fractional divider support
-      clk: rockchip: Add composite clock macro with mux table
-      clk: rockchip: Add RK3572 clock and reset support
-
- .../bindings/clock/rockchip,rk3572-cru.yaml        |   57 +
- drivers/clk/rockchip/Kconfig                       |    7 +
- drivers/clk/rockchip/Makefile                      |    2 +
- drivers/clk/rockchip/clk-fractional-divider-v2.c   |  354 ++++
- drivers/clk/rockchip/clk-rk3572.c                  | 2023 ++++++++++++++++++++
- drivers/clk/rockchip/clk.c                         |   24 +-
- drivers/clk/rockchip/clk.h                         |   87 +-
- drivers/clk/rockchip/rst-rk3572.c                  |  738 +++++++
- include/dt-bindings/clock/rockchip,rk3572-cru.h    |  561 ++++++
- include/dt-bindings/reset/rockchip,rk3572-cru.h    |  713 +++++++
- 10 files changed, 4559 insertions(+), 7 deletions(-)
----
-base-commit: e8a4084724e114295aa3a077d9458726e7ef4e90
-change-id: 20261023-add-board-ok3572-c-clk-090dfd552fd9
-
-Best regards,
---  
-Cunhao Lu <1579567540@qq.com>
-
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index 0353de154a1e..f2f02522a543 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -507,4 +507,8 @@ void hantro_postproc_free(struct hantro_ctx *ctx);
+ int hanto_postproc_enum_framesizes(struct hantro_ctx *ctx,
+ 				   struct v4l2_frmsizeenum *fsize);
+ 
++int hantro_allocate_aux_buf(struct hantro_ctx *ctx, struct hantro_aux_buf *aux_buf,
++			    size_t size);
++void hantro_free_aux_buf(struct hantro_ctx *ctx, struct hantro_aux_buf *aux_buf);
++
+ #endif /* HANTRO_H_ */
+diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
+index e94d1ba5ef10..3e202076bd2f 100644
+--- a/drivers/media/platform/verisilicon/hantro_postproc.c
++++ b/drivers/media/platform/verisilicon/hantro_postproc.c
+@@ -180,7 +180,6 @@ static int hantro_postproc_g2_enum_framesizes(struct hantro_ctx *ctx,
+ 
+ void hantro_postproc_free(struct hantro_ctx *ctx)
+ {
+-	struct hantro_dev *vpu = ctx->dev;
+ 	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
+ 	struct vb2_queue *queue = &m2m_ctx->cap_q_ctx.q;
+ 	unsigned int i;
+@@ -188,11 +187,7 @@ void hantro_postproc_free(struct hantro_ctx *ctx)
+ 	for (i = 0; i < queue->max_num_buffers; ++i) {
+ 		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
+ 
+-		if (priv->cpu) {
+-			dma_free_attrs(vpu->dev, priv->size, priv->cpu,
+-				       priv->dma, priv->attrs);
+-			priv->cpu = NULL;
+-		}
++		hantro_free_aux_buf(ctx, priv);
+ 	}
+ }
+ 
+@@ -223,7 +218,6 @@ static unsigned int hantro_postproc_buffer_size(struct hantro_ctx *ctx)
+ 
+ static int hantro_postproc_alloc(struct hantro_ctx *ctx, int index)
+ {
+-	struct hantro_dev *vpu = ctx->dev;
+ 	struct hantro_aux_buf *priv = &ctx->postproc.dec_q[index];
+ 	unsigned int buf_size = hantro_postproc_buffer_size(ctx);
+ 
+@@ -235,13 +229,7 @@ static int hantro_postproc_alloc(struct hantro_ctx *ctx, int index)
+ 	 * buffers for the decoder, so no mapping is needed.
+ 	 */
+ 	priv->attrs = DMA_ATTR_NO_KERNEL_MAPPING;
+-	priv->cpu = dma_alloc_attrs(vpu->dev, buf_size, &priv->dma,
+-				    GFP_KERNEL, priv->attrs);
+-	if (!priv->cpu)
+-		return -ENOMEM;
+-	priv->size = buf_size;
+-
+-	return 0;
++	return hantro_allocate_aux_buf(ctx, priv, buf_size);
+ }
+ 
+ int hantro_postproc_init(struct hantro_ctx *ctx)
+@@ -268,14 +256,11 @@ hantro_postproc_get_dec_buf_addr(struct hantro_ctx *ctx, int index)
+ {
+ 	struct hantro_aux_buf *priv = &ctx->postproc.dec_q[index];
+ 	unsigned int buf_size = hantro_postproc_buffer_size(ctx);
+-	struct hantro_dev *vpu = ctx->dev;
+ 	int ret;
+ 
+ 	if (priv->size < buf_size && priv->cpu) {
+ 		/* buffer is too small, release it */
+-		dma_free_attrs(vpu->dev, priv->size, priv->cpu,
+-			       priv->dma, priv->attrs);
+-		priv->cpu = NULL;
++		hantro_free_aux_buf(ctx, priv);
+ 	}
+ 
+ 	if (!priv->cpu) {
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index 83af9fa1ce94..9ca6509512e4 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -1029,3 +1029,40 @@ const struct vb2_ops hantro_queue_ops = {
+ 	.start_streaming = hantro_start_streaming,
+ 	.stop_streaming = hantro_stop_streaming,
+ };
++
++int hantro_allocate_aux_buf(struct hantro_ctx *ctx, struct hantro_aux_buf *aux_buf,
++			    size_t size)
++{
++	struct hantro_dev *vpu;
++
++	if (!aux_buf || !ctx || !size)
++		return -EINVAL;
++
++	vpu = ctx->dev;
++	aux_buf->cpu = dma_alloc_attrs(vpu->dev, size,
++				       &aux_buf->dma,
++				       GFP_KERNEL,
++				       aux_buf->attrs);
++	if (!aux_buf->cpu)
++		return -ENOMEM;
++
++	aux_buf->size = size;
++
++	return 0;
++}
++
++void hantro_free_aux_buf(struct hantro_ctx *ctx, struct hantro_aux_buf *aux_buf)
++{
++	struct hantro_dev *vpu;
++
++	if (!aux_buf || !ctx)
++		return;
++
++	vpu = ctx->dev;
++	if (aux_buf->cpu)
++		dma_free_attrs(vpu->dev, aux_buf->size,
++			       aux_buf->cpu, aux_buf->dma,
++			       aux_buf->attrs);
++	aux_buf->cpu = NULL;
++	aux_buf->size = 0;
++}
+-- 
+2.53.0
 
 
 _______________________________________________
