@@ -2,110 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9ADEC606A31E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 03:08:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E79B4606A31A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 08:28:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pZ9N7X73;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ZnFGWSFD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zMUQFkPx;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=i7M+DngD
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=JWnhID68cqE8Bud/KHdlyNXxanOH6PzNATDc094Zl1k=; b=pZ9N7X73wKcHc6I4MhXWO3hZA+
-	HRxRvKE1avD6vdZnPhXP9oB6sAGPW7xbvCFVT8+8NYzWTX5WuzO3fyKIr/68zSosC/oIB8xUv2qzD
-	05Z8GqNaR5eXONvcIIrYDY+YUev3IGZOXvR97jLF4LxWieXQmWrsAR04L2dpaB7wbqMH8K7LO8FA7
-	9tGYtJeL4H2ImQHAi0PEK0x5k0i3PHyoJ0FTPkCckaO+J4aJ1Dcxu3vqtVxTEu7tDCQhm1LBmRJRn
-	fx8qhS9shaauwcxY9g6bgQDo7D5iY73RW6Y6pJaL5JuQyqxjAggPyAFng34q0x5n+lVMtK37aJ5QH
-	EUBCQy8A==;
+	bh=BHJJUTNZs7KO3k3MaoHz+TRtyBklW+s9d+LF6smuCqQ=; b=zMUQFkPxGwXUSRKLa2Tz/gZtiU
+	20wfcBYcqWq82BWzOl1UTPOR2x6HOo2Wq8X3aYipw25mamIcyR2NcvrklAVq+dqvkeyk0ynaVzQGt
+	ifDmJ7vXTbyzGFaT6er7Dyl8eV9G0+wRouYmn6vgUF0t01YZQK67dWWIjQfVxfTrpWX9pJFVNvp87
+	dCMy5ZVJGq1F1H9vZ/HuXD4qYBL/3DKd6VMr4P+ltfLXuBGFZ9qE7X/9dtnSYRDAtSG6ivBQBUQU1
+	hXrzhfZVdMRLy7eLM7yTi/SUpo0spWjHPLVmGAR9PNsRafkVMh3HZy5wrGV4ArsQ2HjB2qnjczb57
+	1ctMKgpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVKPG-00000002AgH-1qBI;
-	Mon, 23 Nov 2026 03:07:50 +0000
+	id 1xVPPn-00000002ZDT-2Tgc;
+	Mon, 23 Nov 2026 08:28:43 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVKPA-00000002AeC-4BGj;
-	Mon, 23 Nov 2026 03:07:45 +0000
+	id 1xVPPU-00000002ZA4-1cMe;
+	Mon, 23 Nov 2026 08:28:30 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B8809450C0;
-	Mon, 23 Nov 2026 03:07:44 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795403264;
-	b=1ZtHDq93iCVKPM0Sq1Vr8mMz6Jsbrk+QpuScZPzkXbWmkBOiKjDEwbMgcT7oDMUEEwZU
-	 DSCCR7L/C5fPe7LCbJ57vxeZ22gG1PtPuULGlYhvCD8SXrmTsTl9E0efVJjXrrGwbeWLr
-	 oZ0JAnMz+eJdN1Pg3nkC3mPv1DwNofMGtD8x1z5p2Wcs3J1WY8juznmTixz1MJ1jsWqqf
-	 QkAYGoDvA4Bl8vfJ+RlJOESvDfr/BIie8oo1j5ACA6lMBaVH+9WazSNCWJ19j6XqJOVoC
-	 /L7QRpo8iuCQ6YaAz5FvMIgcvh8r+ZPqj2X8aMLQMMP5DKDDvneYQlgW5UnW7f31Fbw==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795403264;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=EEjXBCSermC5XnoBYhMJUthJ3HfgGrN66oi6FLQHx0A=;
-	b=Pn/gB2tPo/CoD+lowySDu+SUaC8svw5zQ9Xlk7KVBLWL5SqVh7MnSdZzLhCtlJzy2S3S
-	 4erFXkkC7LKjPM5PsXmYR+pZ0johz6a+oUOQhItKn4NGAsn+FKrf86xFVUeov8QS1mN6N
-	 OqK0Zp3KzpqUiwRQPbq0CW0QORZU0SV+d6AkcixQzUbHh4lmJUPIUiWa2dHewcXwDMbz/
-	 +uqwR17qc4+KZbq8bsqZjgPJbnFIJNjok59jzxj+owgTVRfTfXHnYAnFOPSNzztW5luSm
-	 ntGWW1gZscDquAGzV3zsNbJ+F731eP58GqVpYoyLuJzNszkeqQDUy3joLnzp9ATEjPg==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id B6AC51F00A00;
-	Mon, 23 Nov 2026 03:07:33 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id BA7BC44279;
+	Mon, 23 Nov 2026 08:28:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E50D21F000C4;
+	Mon, 23 Nov 2026 08:28:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795403264;
-	bh=EEjXBCSermC5XnoBYhMJUthJ3HfgGrN66oi6FLQHx0A=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=ZnFGWSFDWriNokQ83/4EPjHQ8QnNgYt0dBJAFaUPDJFS9O3AXyugGzxrMzauXm9Lh
-	 4POcNGhliQZX9RAAL4AY6IgBIhe+PX0QPZ8wAH2jyCieojF8eO1lgXnK4nfgq3uYQu
-	 /IDgxDN3AHx29lVhSRSN6JmsfP3M1PXneLGJHpMWSnOgjvWTPA4bxiez8R0bDiRxZh
-	 d+68enJgc6GX9EOT9gCg7vdTQbmfLmYL/59mbF2sIR/XFJb5ZceSyWNlX2Dd6n9nY0
-	 X0gwGXPvWb4P0IbUBiX1xJaCZsQ+fPFpXXGagGCyVH41lZ38ZtSWt86X1F7FnkgzTK
-	 6Qh9HhJPVVGFg==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 474CF4C30B;
-	Mon, 23 Nov 2026 03:07:33 +0000 (UTC)
-From: Cunhao Lu via B4 Relay <devnull+1579567540.qq.com@kernel.org>
-Date: Mon, 23 Nov 2026 11:07:28 +0800
-Subject: [PATCH net-next v5 2/2] net: stmmac: dwmac-rk: Add RK3572 support
+	s=k20260515; t=1795422503;
+	bh=b0SFDURPDtHYhsTYGEf5G56Lkm17f5tRBqoimhyc//E=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=i7M+DngD1SDR874UCBpw2SklVQofyZcfxMeTHvjGIKZa+v+g+DxJyHumXMA1YEUKH
+	 Kg4aSv1qTf1LMH7sul6cKuzOmamn8Lq2Ke8Ay3HHNLePNP1G4+kRR4O5F5XrqOya5F
+	 pw9qL+95yGDFAIFBJdDeFnYDD5C0qIxCNiEDIGrw1QFJmqdeVX9DwhHHxRBHy+zVfd
+	 /Jo9oR9rFS2karUpqaX4Tfo5GhSowux+fD98NCfnZHO3CDgvpyUSb0lV33zGrVuvu8
+	 jLZxcIGCaJQHKkyVIBsU4FLOVOtxerC2MF454BPc0eIU4yaS6WZIIrKGYsKYKczbHf
+	 4FjEffIC2WAQA==
+Date: Mon, 23 Nov 2026 09:28:20 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Arun Iyengar <aiyengar1990@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	David Wu <david.wu@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>, 
+	Niklas Cassel <cassel@kernel.org>, Serge Semin <fancer.lancer@gmail.com>, netdev@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-ide@vger.kernel.org, 
+	Pranjal Shrivastava <praan@google.com>, Will Deacon <will@kernel.org>, 
+	Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev, Shawn Lin <shawn.lin@rock-chips.com>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH 2/9] dt-bindings: ata: rockchip,dwc-ahci: Allow iommus
+Message-ID: <20261123-first-dark-griffin-a7d2a1@quoll>
+References: <20261113-mmu600-php-v1-0-231196049a3b@gmail.com>
+ <20261113-mmu600-php-v1-2-231196049a3b@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261123-add-board-ok3572-c-net-v5-2-8ec9012b578f@qq.com>
-References: <20261123-add-board-ok3572-c-net-v5-0-8ec9012b578f@qq.com>
-In-Reply-To: <20261123-add-board-ok3572-c-net-v5-0-8ec9012b578f@qq.com>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- David Wu <david.wu@rock-chips.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
- Jose Abreu <joabreu@synopsys.com>, 
- Maxime Chevallier <maxime.chevallier@bootlin.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>
-Cc: Cunhao Lu <1579567540@qq.com>, netdev@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-stm32@st-md-mailman.stormreply.com
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795403251; l=4857;
- i=1579567540@qq.com; s=20261015; h=from:subject:message-id;
- bh=Er103tsloFwxtyv/kT9C0DhrwH98VW9zC6CCWRpsoHU=;
- b=Z2V7b5VvyQH25FE4KjoGgEHT/QYwAgUWmxRBa4lT7hyDodKvBmN1PGaFBn2b0tjmKvzPYotf2
- 8ZldegRrchOBOkORIJ9EUuLmJ9wSOqR7024Wu6tPNVt8zXlkW4xgOCr
-X-Developer-Key: i=1579567540@qq.com; a=ed25519;
- pk=sUTWrzlIwT4C7ctjNfVZAzzg0G7QUn2XxRGpYsw4RtM=
-X-Endpoint-Received: by B4 Relay for 1579567540@qq.com/20261015 with
- auth_id=1177
-X-Original-From: Cunhao Lu <1579567540@qq.com>
+Content-Disposition: inline
+In-Reply-To: <20261113-mmu600-php-v1-2-231196049a3b@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,158 +75,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: 1579567540@qq.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Cunhao Lu <1579567540@qq.com>
+On Fri, Nov 13, 2026 at 04:38:48PM +0000, Arun Iyengar wrote:
+> The RK3588 SATA controllers are behind the PHP SMMU. Allow iommus, as
+> snps,dwc-ahci does.
+> 
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/ata/rockchip,dwc-ahci.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
+>
 
-The RK3572 has two GMAC controllers with separate mode and clock control
-registers in the PHP and NVM0 GRFs. RGMII delay lines are configured
-through the IOC.
+Same here
 
-Add the register layout and delay callback for both controllers so the
-Rockchip glue driver can configure their RGMII and RMII interfaces and
-select the appropriate clocks for each link speed. Skip parsing the
-deprecated tx_delay and rx_delay properties for RK3572.
-
-Signed-off-by: Cunhao Lu <1579567540@qq.com>
----
-Changes in v5:
-- Use skip_rgmii_delay_props to control tx_delay and rx_delay parsing.
-
-Changes in v4:
-- Skip legacy delay properties and disable MAC RGMII delays on RK3572.
----
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 75 ++++++++++++++++++++++++--
- 1 file changed, 71 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index ad2bae308323..01fec12aa16a 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -66,6 +66,9 @@ struct rk_gmac_ops {
- 	bool supports_rgmii;
- 	bool supports_rmii;
- 	bool supports_sgmii;
-+	/* Skip parsing legacy tx_delay and rx_delay properties on new SoCs. */
-+	bool skip_rgmii_delay_props;
-+
- 	bool php_grf_required;
- 	bool regs_valid;
- 	u32 regs[];
-@@ -900,6 +903,67 @@ static const struct rk_gmac_ops rk3568_ops = {
- 	},
- };
- 
-+#define RK3572_VCCIO0_3_VO_IOC_CON1		0x10608
-+#define RK3572_VCCIO1_2_4_VI_IOC_CON1		0x12604
-+#define RK3572_VCCIO5_6_IOC_MISC0		0x14630
-+#define RK3572_PHP_GRF_GMAC0_CON		0x0070
-+#define RK3572_NVM0_GRF_GMAC1_CON		0x0020
-+
-+static int rk3572_init(struct rk_priv_data *bsp_priv)
-+{
-+	switch (bsp_priv->id) {
-+	case 0:
-+		bsp_priv->gmac_grf_reg = RK3572_PHP_GRF_GMAC0_CON;
-+		break;
-+	case 1:
-+		bsp_priv->gmac_grf_reg = RK3572_NVM0_GRF_GMAC1_CON;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	bsp_priv->clock_grf_reg = bsp_priv->gmac_grf_reg;
-+	return 0;
-+}
-+
-+static void rk3572_set_to_rgmii(struct rk_priv_data *bsp_priv,
-+				int __always_unused tx_delay,
-+				int __always_unused rx_delay)
-+{
-+	u32 val = GRF_CLR_BIT(15) | GRF_CLR_BIT(7);
-+
-+	if (bsp_priv->id == 1) {
-+		regmap_write(bsp_priv->php_grf, RK3572_VCCIO0_3_VO_IOC_CON1, val);
-+		regmap_write(bsp_priv->php_grf, RK3572_VCCIO5_6_IOC_MISC0, val);
-+	} else {
-+		regmap_write(bsp_priv->php_grf, RK3572_VCCIO1_2_4_VI_IOC_CON1, val);
-+	}
-+}
-+
-+static const struct rk_gmac_ops rk3572_ops = {
-+	.init = rk3572_init,
-+	.set_to_rgmii = rk3572_set_to_rgmii,
-+
-+	.gmac_phy_intf_sel_mask = GENMASK_U16(11, 9),
-+	.gmac_rmii_mode_mask = BIT_U16(3),
-+
-+	.clock.io_clksel_io_mask = BIT_U16(7),
-+	.clock.gmii_clk_sel_mask = GENMASK_U16(6, 5),
-+	.clock.rmii_clk_sel_mask = BIT_U16(5),
-+	.clock.rmii_gate_en_mask = BIT_U16(4),
-+
-+	.supports_rmii = true,
-+	.skip_rgmii_delay_props = true,
-+
-+	.php_grf_required = true,
-+	.regs_valid = true,
-+	.regs = {
-+		0x29d20000, /* gmac0 */
-+		0x2a040000, /* gmac1 */
-+		0x0, /* sentinel */
-+	},
-+};
-+
- /* VCCIO0_1_3_IOC */
- #define RK3576_VCCIO0_1_3_IOC_CON2		0X6408
- #define RK3576_VCCIO0_1_3_IOC_CON3		0X640c
-@@ -1341,8 +1405,9 @@ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
- 	 * provide (see rk_gmac_powerup()), so only the delay values for
- 	 * those directions are needed.
- 	 */
--	if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII ||
--	    bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII_RXID) {
-+	if (!ops->skip_rgmii_delay_props &&
-+	    (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII ||
-+	     bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII_RXID)) {
- 		ret = of_property_read_u32(dev->of_node, "tx_delay", &value);
- 		if (ret) {
- 			bsp_priv->tx_delay = 0x30;
-@@ -1355,8 +1420,9 @@ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
- 		}
- 	}
- 
--	if (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII ||
--	    bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII_TXID) {
-+	if (!ops->skip_rgmii_delay_props &&
-+	    (bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII ||
-+	     bsp_priv->phy_iface == PHY_INTERFACE_MODE_RGMII_TXID)) {
- 		ret = of_property_read_u32(dev->of_node, "rx_delay", &value);
- 		if (ret) {
- 			bsp_priv->rx_delay = 0x10;
-@@ -1736,6 +1802,7 @@ static const struct of_device_id rk_gmac_dwmac_match[] = {
- 	{ .compatible = "rockchip,rk3506-gmac", .data = &rk3506_ops },
- 	{ .compatible = "rockchip,rk3528-gmac", .data = &rk3528_ops },
- 	{ .compatible = "rockchip,rk3568-gmac", .data = &rk3568_ops },
-+	{ .compatible = "rockchip,rk3572-gmac", .data = &rk3572_ops },
- 	{ .compatible = "rockchip,rk3576-gmac", .data = &rk3576_ops },
- 	{ .compatible = "rockchip,rk3588-gmac", .data = &rk3588_ops },
- 	{ .compatible = "rockchip,rv1108-gmac", .data = &rv1108_ops },
-
--- 
-2.34.1
-
+Best regards,
+Krzysztof
 
 
 _______________________________________________
