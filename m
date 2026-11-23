@@ -2,75 +2,76 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E7D5C606A32A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 01:50:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AD292606A31A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 01:50:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MBRreMIg;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=X7thJ7LY
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1CYg1jEZ;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=jSKdzprB
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=lgBjRP7sPt7UXTwUO4AXniPr9BvHRnYpRZqKy43wUi8=; b=MBRreMIggUemnDHvpuD2LSk89F
-	og0LqJUWr1Ou2YMwtNDyrW2Bvawt8hgCqr9z9Faht99nKj5Xcdxe/xUb0KMJO6u1h49vuvkP6uVEp
-	tRh376ibBfgva/KpOf4Tugrm7MYx6/aHNWnp/01cu1r7px5D/7sQcL3wt9lUYDQgDU7kZjmg+rCLk
-	skLYYgG+3ML2bN2WTpR80TX+XQfCZkukxqYuT63wvlqJCXyDGI/cfOeUDRSSz4G2OAUQ/diLub6mf
-	JAWH9iD12ZWQzi290gpmjFthgx5gz6pn712v1u6EQB6aRaOUENL00LlHazeMn0wfkublWuXIJlefb
-	j4G9aEMQ==;
+	bh=QwCdiJ61lfRvmW3i1I2mmSYBiHxN+/y9WeUd46ZVd7g=; b=1CYg1jEZYr5/NKTDevtcaWgXqD
+	JPvLVqn4fG7BT/RP4riezrHJNrnv7Y6Ghwc/U225O+824ZZuS/VfGykggapvZbw2DWqxnJ/KvX/LU
+	pqQz3vr8O1fh0nLHhuEvV0NiTYDOryeCQpAZi3ykmp95YoR3HuizlysCB1XOTjMmPC14PWkYe3VcS
+	ngkLyJWViUDY8gU2cN7hCkMM2bha+Ns+a75URg0KaaPtqbNX/MKJ92np5HmwDOndcchOytyeCjZgj
+	HnN3dol/Mcu3d6BLLZ3OepRqEsNbrPdTv8BkJL8nHJJoVUyISIasVpGwVBNkI1tiZb80mp1P6t1NY
+	LkZTiKfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVJCe-000000026dJ-3d0N;
-	Mon, 23 Nov 2026 01:50:44 +0000
-Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
+	id 1xVJCk-000000026gY-0jIp;
+	Mon, 23 Nov 2026 01:50:50 +0000
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVJCa-000000026bR-09ht
+	id 1xVJCc-000000026cc-2qJ2
 	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Nov 2026 01:50:41 +0000
-Received: by mail-oa1-x32.google.com with SMTP id 586e51a60fabf-48e94879f02so790740fac.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 22 Nov 2026 17:50:39 -0800 (PST)
+	Mon, 23 Nov 2026 01:50:46 +0000
+Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-46556b9e02cso2177660fac.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 22 Nov 2026 17:50:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795398639; x=1796003439; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=veZxcNVuo2b3ptIF4Zf8vJr2Tg8zlMewCoNyj0061vg=;
-        b=X7thJ7LYa+EkhjO+vEpjXO2BjH6ML7iTD2WZBBQR3AS0GoNj5VtiZeVKhlTHFaw2bZ
-         b/7u2Kyrpe7WDH2cP6hM90GILFIMCtCaNQQxYcggLgJuqfx80EFEp6nT3Zc7F+kiP2mj
-         CTO8KMx7twIkH5qnbeVYHUid00xC3NmIW7tyeU8emUxahDE4pM+fgjXiCa+c4nnKdwk1
-         TtCugIHYydSekAqFl1eVEzL9dHZTg96sINyjAyCqUQEF6ntGnqgJM4H+MNPwxfemjJiM
-         7tSf6OYZBj15O+UEprhzoWrCSO5SbSQ07mnZlTCmedzJXAC5fdproQtsHzMwiZqfQUDq
-         0SrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795398639; x=1796003439;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20260707; t=1795398641; x=1796003441; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=veZxcNVuo2b3ptIF4Zf8vJr2Tg8zlMewCoNyj0061vg=;
-        b=1Jp7XGNE8qrb6/O5FMIv5DTEtpLpuuK6QFEktwRMLraWD4xxGzF8Wz8De2BbKb+fU8
-         J6DRj5C9koFiuuLpMhL0Opj6f0A28u8UW25ih9mQB1H05amhohxdOU60GSWbjH0gIynS
-         GnLL9QO/ah3tTpevwvWAG8z53atMRaUrR1WK8UxHWkgGy7pZsUbrtaAcgUOikQr4Py8l
-         c9hvR5Pz9af0CcjOT8DxVDx0n7WmTE8sjhNPYBilxPeC+hwvBcFaLonFk8G6A86xOxyt
-         9yQl4fVcWxQKopmA3LtnVps2cE0cB4U1L0Jw1Dq9s64CEj/76Uk45ooZDbjTzfPha3+5
-         S6DQ==
-X-Gm-Message-State: APuU4Z+oKWBUddOFbqu/6KHAw6vmNMw7Tpx3kYY07I3awXrw5tVP2NMW
-	KzgTOG6J2aWej8Ghj2o3XXYum5csQiIbK6ScY+dBIvYewq7fg9xTyJ2yHhtUii49
-X-Gm-Gg: AZFdTZc7QWZE3YZcXq0k/8speg7LXX9tbPgVP+gzvChoEcKKJdkrzxWmjrbj6ZDr32N
-	3or3STSDuNd9ynTBbUnvXh9rmFGUk7qVRS2Uk3oiVDr8fgzDfRfiPcXd3Ar1EHs0Nu0mjbmqGPw
-	CsWIc+JfEHiGgaKxnR/RMfYJfy37OjXbrzNZBqYRT0a8HqMC17KT/nLilB+bMsIxwB89CGpScuw
-	WZ7/sHIDzYBTtXqet3t08uUe/5LX+gihsndnvf3WW2mhyRhvKSnt3gScd6Y31SImhmGItXlgGwp
-	1e/3YpcM1vhVE+gY1a0LK1m2iXhVFKMikOpylhgdkyREDEjUNvXSLmu36WuMKE1UwBpnMHXok7i
-	R3eR8tV2Mrz5ELy0pnXBI9pORqC0q0bE2t8gF+2I+R6zRfiIqKudDpw8CY4j/tmBM1pLtrBtJSl
-	wL0Dk0uNVcjN4XHKxQtoyqhck6N+VsQxyeOi5XSFtPzHQSw//oCP3z2yQWG2Jiuo6RbbWULO3uA
-	287tEmR521Qon2DIhaCoNf6Yb0lIk9ZLcC4KspP3EqoQhNbki3QUYR+0TyMSc6Vpay9DLZ2hJ08
-	qV5dwuoSWx/Wi9nB7yX9yDi+H5Y75g==
-X-Received: by 2002:a05:6870:810e:b0:4a7:8aff:348b with SMTP id 586e51a60fabf-4bc81ca0d2bmr9676309fac.16.1795398638564;
-        Sun, 22 Nov 2026 17:50:38 -0800 (PST)
+        bh=vtcXd26CBIIDN3LfpX4nHV3TvJWIXKwwyZF0T/tbLeY=;
+        b=jSKdzprBRAVXmKK9oPQlheunrLza8WPxVP2QmAcke7HXsChXUwHM2W1PB4QVqosqGt
+         bDQE850kGDcmWX+yZTyapAfhCGLTH5TYXanjeNCbVg5x60cK5ZDui6Ykp8zH0zFqnFnq
+         28NfaJbhxDwH9k8aK0azcOxX/Olwjk8GYe7StHaDuqcTLNZo4KqyIW63nMeKCZReKW7N
+         9leyLtcUsD2dZXrx8FwjbxVqoUkWKKHz/jVmh/LWlZadcC1w35l8+pvDKOjsizSAfC6z
+         HStSHv/EQKrdjbd9fJuKjSGUV2ycjs/d/7KuOhzQY3Kc4ciqXVXMjFhFBxXEwfCFFzVv
+         jG/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795398641; x=1796003441;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=vtcXd26CBIIDN3LfpX4nHV3TvJWIXKwwyZF0T/tbLeY=;
+        b=a+WD+18+NnVakQ+BPTVtLywBQ4tz00agrO0Mm+PF4GpxUaNdISeZPm15B5Fefmj/L1
+         lk/H9mgkcZiGnCExEXWyvFflBKS3A7KChyClxAakze+UVcL0UJjEoBBioipUwf+vrzTl
+         aI+fvqiwfMpTG8u51vTiZ90cbeeV4xxAkAeuxqWXh1hKp3s0Z9+DxDYl8FvPP7ZeKpQP
+         a2micvlNYGSpFMTLvMBwMEifUo1vuM3XYQGLqsMZVxJObaEI2HBP2DpCob7/3jf1aFOg
+         kI/bTfcLoScP2to/RQp6ZiJxV5j/YjRohGzgLPz+oTkiFxyAZatiUnUtZnA/Q+2EvWIu
+         CD5w==
+X-Gm-Message-State: APuU4Z/Cf1Q8Tmn7FliSf2vnW3RyzVrKvo8niX0HINp8new/SjTq42wR
+	yCavD/udI1UCte4lhhGWIrtb0fHOMeIwsty9fykOj5NFToXIn8HYP3rjuZpDTKRG
+X-Gm-Gg: AZFdTZcpoYW+OzXzFDNDpUNeUuXfTHwtjNyHMZ26ZyvQkx6TtGrHw70pRmptQyKe3lO
+	BnClHU2/705FlSoK2OMjgiir3dhYIL6LQJ4Yd+1gTia7Mi0iGCxQpzSrz21pkrpxffpjaXwzUmv
+	wJQHAp0PbK3dwzTHAutItvImPZsAa4V/YNDe3+asKQy/t/c2R3s7kqQw+Aod426TsCT3c7XhER6
+	ac1j5WqiroZIqJkKkBO4Zc7SbH+CWlz2N17TRVYb8iaRh6cuTAm94QaxV5WgtYqwBzutQcSDepu
+	RgWzCc3LAWKudJLdOEWhXc186///gqYNyXCogcymh0IoKuDgEHKBJTA9Mpdh0/KsdXpkGW6TZ6q
+	spxKsoHOcN4HAWnkUMX3hHtRc9vnJgSRDHpkz4KNWBp1hHyrsQ7niWSM8NW5hNQOcKMXwhgDmqO
+	wrpRo4JWd2Zge0bIKSlNhaHh722Nv+CnNtywv3WHg2liJiATj5aqAqM6WVcnN3pPLF1PHnDQAsg
+	dksyvWb861RSS3deO7PIPbGSiUUyJShWJ9wklWsmsyGDRX1I3/TvWebQVuyGAm8UOkpVE4Omgt2
+	sPyeCC+5VjID9w6wzC+VZtl5QqqLuQ==
+X-Received: by 2002:a05:6870:b0f6:b0:48f:e0f6:bfee with SMTP id 586e51a60fabf-4bc852ff281mr6943652fac.26.1795398641649;
+        Sun, 22 Nov 2026 17:50:41 -0800 (PST)
 Received: from neuromancer ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4bc5f7ae7dcsm9209484fac.8.2026.11.22.17.50.37
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4bc5f7ae7dcsm9209484fac.8.2026.11.22.17.50.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Nov 2026 17:50:38 -0800 (PST)
+        Sun, 22 Nov 2026 17:50:41 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -84,15 +85,18 @@ Cc: devicetree@vger.kernel.org,
 	t.schramm@manjaro.org,
 	xsf@rock-chips.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V3 0/3] Add Cellwise CW2217
-Date: Sun, 22 Nov 2026 19:50:32 -0600
-Message-ID: <20261123015035.369192-1-macroalpha82@gmail.com>
+Subject: [PATCH V3 3/3] arm64: dts: rockchip: Add Battery Gauge to Anbernic Vita-Pro
+Date: Sun, 22 Nov 2026 19:50:35 -0600
+Message-ID: <20261123015035.369192-4-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20261123015035.369192-1-macroalpha82@gmail.com>
+References: <20261123015035.369192-1-macroalpha82@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261122_175040_104802_1EE44304 
-X-CRM114-Status: GOOD (  14.82  )
+X-CRM114-CacheID: sfid-20261122_175044_446739_D764831B 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,53 +113,53 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
 	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add the Cellwise CW2217 battery gauge driver. This driver is based on
-the sources used for Rockchip's Board Support package [1] but has
-been updated to use the regmap API and devm helpers.
+Add support for the Cellwise cw2217 battery gauge to the Anbernic
+Vita-Pro.
 
-[1] https://github.com/rockchip-linux/kernel/blob/develop-6.12/drivers/power/supply/cw221x_battery.c
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../rockchip/rk3576-anbernic-rg-vita-pro.dts  | 21 ++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
 
-Changes Since V2:
- - Fixed more bugs pointed out by Sashiko.
- - Corrected an integer overflow condition when measuring current.
- - Corrected logic for when we don't have a user specified battery
-   profile.
- - Added power supply changed logic in the worker.
- - Updated the Kconfig text to note support for the cw2215 and cw2218.
- - Added a check to ensure polling interval cannot be below 250ms.
-
-Changes Since V1:
- - Added a default value for the shunt resistor in the binding
-   documentation, and updated the commit description to note that the
-   min and max for the battery profile is now per-compatible string.
- - Fixed bugs pointed out by Sashiko bot, and corrected units for
-   temp and shunt resistor values.
- - Corrected include pointed out by kernel test robot.
- - Noted in the commit message the patch is based on original work by
-   Xu Shengfei at Rockchip. I did not list him as co-developed or
-   signed-off since I did not have his permission (yet) to do so,
-   but I have his authorship included in the file itself.
-
-Chris Morgan (3):
-  dt-bindings: power: cw2015: add cw2215, cw2217, and cw2218
-  power: supply: cw2217: Add support for Cellwise cw2217
-  arm64: dts: rockchip: Add Battery Gauge to Anbernic Vita-Pro
-
- .../bindings/power/supply/cw2015_battery.yaml |  41 +-
- .../rockchip/rk3576-anbernic-rg-vita-pro.dts  |  21 +-
- drivers/power/supply/Kconfig                  |  11 +
- drivers/power/supply/Makefile                 |   1 +
- drivers/power/supply/cw2217_battery.c         | 878 ++++++++++++++++++
- 5 files changed, 945 insertions(+), 7 deletions(-)
- create mode 100644 drivers/power/supply/cw2217_battery.c
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts b/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
+index e66803b5399c..2203e092e8c8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
+@@ -954,7 +954,26 @@ hym8563: rtc@51 {
+ 		wakeup-source;
+ 	};
+ 
+-	/* cellwise,cw221X battery manager at 0x64 */
++	cw2217: fuel-gauge@64 {
++		compatible = "cellwise,cw2217";
++		reg = <0x64>;
++		cellwise,battery-profile = /bits/ 8 <
++			0x5a 0x00 0x00 0x00 0x00 0x00 0x00 0x00
++			0xab 0xb5 0xae 0xc0 0xa9 0xa4 0xcf 0xaf
++			0x96 0xff 0xff 0xd7 0x9a 0x83 0x70 0x69
++			0x65 0x65 0x65 0xb8 0x81 0xd9 0xaf 0xd9
++			0xd2 0xce 0xcd 0xcb 0xca 0xc7 0xc8 0xc5
++			0xc2 0xba 0xa8 0x96 0x8a 0x85 0x7d 0x7a
++			0x7f 0x88 0x92 0x93 0x94 0xd3 0xff 0x5f
++			0x20 0x00 0xab 0x10 0x00 0x91 0x68 0x00
++			0x00 0x00 0x64 0x3c 0xa0 0x89 0x00 0x00
++			0x00 0x00 0x00 0x00 0x00 0x00 0x00 0xb2
++		>;
++		monitored-battery = <&battery>;
++		power-supplies = <&sgm41542>;
++		shunt-resistor-micro-ohms = <2000>;
++		status = "okay";
++	};
+ };
+ 
+ &mipidcphy {
 -- 
 2.53.0
 
