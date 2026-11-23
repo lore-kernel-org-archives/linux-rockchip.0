@@ -2,61 +2,62 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B55A5606A333
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 00:11:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8476E606A320
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 00:38:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nlsQImI4;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=KhabOH+o
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ETJ5kjHz;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=gwQRCdz5
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Subject:Cc:To:From:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=aq+1WHh1yboPTxTgWjDM+4lCDlQ1IvISR7iCoJfYlqI=; b=nlsQImI4nNlGM23vqM/QJcW+as
-	Mr0mSFME5X7Tpi+H3VPI1NLL6mOPKdVz0nqWGM3USZOL3flQnJGs948N2boI9xe9blNPHru9ogVBW
-	BPBuOLFdRPHD6whJcRCQ9S+WPkVZYCu9vN3zA7Qf6+6a/0iyy2vLK5EqN1Ft+/UI4DnCotOKdWhsy
-	90/ekbQoAb3gLA6VT2bzt2K8M8tLCwNfo1C+fR5kMumVaPM6WmL4YqSBlgmOSDhtVX3eldIYzn3Q1
-	rr6ZrVWpjfuKfxea9QXdedWDHRw52CgqdeI+i720gVy9yhNc04tPfR+kRFRHuchtxxyzXa5WwIvdC
-	OkBJ670g==;
+	bh=fyc+Yi2F1ksbftisyi5tUzOosb/TM8+r2GQiQkbdRNg=; b=ETJ5kjHzSyDC4wwpaoIjyp+4sQ
+	lfF5n3/O7t97CtGs46HeGvU7L7b2Cyne0C9UnORNuleUP/KpQ0KfTOzcyY0C4MWg0Bqljj2CkobrX
+	EBzADlPL+JbQQdZVn/8PGXPHxiEGg4glw2ivPEEg5aA+kirN3KsmBKps9M9ghK6zObPbHewYIw6w4
+	y2gmfGlUX5Tfca4th8xsE87fX5m8eIn5MPihQBr9OyQBh5yrrsBvOKsYJS9O8mNcRZV8kJv19Ua+D
+	WwgeFHx2tUknBN8hgw+OedRQYLV7qpqN5KI42RtQdJJcWVSeazlpHFkE+Ab3JlnOG8l3pjXObGpdI
+	Q5w034kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVHdu-00000001ww5-3N6t;
-	Mon, 23 Nov 2026 00:10:46 +0000
-Received: from out162-62-57-64.mail.qq.com ([162.62.57.64])
+	id 1xVI53-00000001yht-2YpM;
+	Mon, 23 Nov 2026 00:38:49 +0000
+Received: from out203-205-221-235.mail.qq.com ([203.205.221.235])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVHdq-00000001wtY-1CYr;
-	Mon, 23 Nov 2026 00:10:44 +0000
+	id 1xVI50-00000001yfL-3Zel;
+	Mon, 23 Nov 2026 00:38:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1795392635; bh=zCzXcB/gcPUK0OBE9Ia6L1IFSVcN8lBVdYQJrZSjFyk=;
-	h=From:To:Cc:Subject:Date;
-	b=KhabOH+oIt37Gj9TpdCsGiDPO71SYpLBp8IU0XEabvp53J8olfS9CUVoXWmZXOFjc
-	 fCNwkZ7mWkilP06CCxUI9ES2vaofBJjloWxf+mvIxYjP1Paph2J50fvPkF6PLFxVua
-	 2SZZfUhDtixP7WdD5MiTNt+WNRolcETicjwl0SUw=
+	t=1795394324; bh=Quk+i+RLhvm+ITRHRSHRS993N/vU6wVhQmtQekP7shc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=gwQRCdz5TLOlZvOs1+mTn0EQGSKJ71FPPa4BO6q0OR1JcxgFaIAczMN6jbnheEl4L
+	 L4udtxrTuKwX1nG7HTKmL+evfKTyfwIc8JWNZCJQbnOGfuk5WpzRXjR2ejH6Nf5jM9
+	 LNkbcjU4y9ObkmujXUPs8553x9hBQA50ozRscox8=
 Received: from jerry-PC.lan ([2408:8249:5f:7101:71a:8713:56b4:5043])
-	by newxmesmtplogicsvrszc56-0.qq.com (NewEsmtp) with SMTP
-	id 2A1184D1; Mon, 23 Nov 2026 08:10:33 +0800
-X-QQ-mid: xmsmtpt1795392633tb9wyo0qg
-Message-ID: <tencent_EB9C4DA9CDC741E0BE99F36A6871B9BADB05@qq.com>
-X-QQ-XMAILINFO: OVgMLYsdica2kuw9YlcxebNwrLkqTlTuscftxkVmfoVanPi7KTjAJRloxnsawE
-	 OkzUHWDIpLLH5hzIOL5HFwLFfJsiI81LqqBgHRmTr1KdMC7gAF8MJZCBz2nde0l/Rqzx22LsNe3S
-	 i/FipitTETSr7VJruxVHUAEk+2bl3YmBtdEnGNEgpMnRsmps0itXCIxydnejv3R0sUIwKfrGVCGV
-	 GJHN85fkoQXW2X+BDtUpQo5lhb5zb3m/2f6F7a6F3TFRkLiKFVanvCT+AE05nrz0G+LJg0dAogaM
-	 oUCLu7gu4OHaI40eZR1u9AoNxWPcqtGSnR6/DqH/pbN3jndhfUjUCJN43v8Qp+T2l+MaM0F6xEPQ
-	 Y25WuPqpY9ZUdxFG3RzAbrWfhR8r98I+HDNS8xiSAVZetoN8K9IGs9hUyN7jqIQJVzFdujZ8iCRy
-	 zDPY8yWM6x/Df0CY9/S+b5/8P78X4cagraxasES7+nd1Wu+A18LQWYCrHj18Ah0WPFUcGkcVF+4g
-	 KuCsax7INbZ8FJJTGQ48SvXGHfOXFGABUr/N+5xQZg7UUFXDNpJBIm+ONRrPyRRj0yQXyQ8EoJNS
-	 3W15RhnSK3mUO0keRSk8+gzm7VtQ+X2WmyRAPQfa6lekwXx8BE9DMllVEIii2qdosQ1S+IvwL/9e
-	 XdoxIKUF4eCpI1DMGSAz9ChFHLv4xtDudqefT+UWhk3TBOAuCQVfKaN3PB/f3A3tvCOLGEJPU66Y
-	 f+xPzFd/LJ88yPDo66dAT+WDFYvFA1bDYYFyoR9THcBc9wneZ0BmaTGuVnwql2npNRJMyDOXQz/W
-	 3R6fCTtSP6dadxdlJwATh59wVtsS+7872/NCE+xnW9IYpzTKI8gOVVXkW4MyOgoK/bBwMMKuzEyT
-	 B/Yo8ok2T8y5Uq0NaKqVpp5ZwCmNHt0c2B34d8CtPy5bCzkUQnGnOobQpOUq4kl3Kk6L/II0uw3j
-	 3S84qoiG5+UvoISoB7W/fdcyWGnHxtdFLLa69HloFwHY0Xl+yNToGrhw9/3FUC51gDGOlfHU/UMz
-	 DnuFwV9RcW3Ss6UCwpd6OG5gx68xK/MdszeGZSc3wyfRmnMNYL3lesMnBeYO9AS6vTIYmL+Z1Xd0
-	 i1Kwaig6bQOfjiM6bb3OuLIEtB+pwq4m/+qcpFIe/dB+o7MW2Q7HOl3P3lcemgBJuK6Bfz5naTwl
-	 VV4cArqaEJA7B88o1ClC3K3gXD
-X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
+	by newxmesmtplogicsvrszb51-0.qq.com (NewEsmtp) with SMTP
+	id 9A63524B; Mon, 23 Nov 2026 08:38:38 +0800
+X-QQ-mid: xmsmtpt1795394321tibpj7gpb
+Message-ID: <tencent_6A1DF318251B1F7D01E6E6B8AB9A45E3EA07@qq.com>
+X-QQ-XMAILINFO: NM1flO+R30QG4TXeUNfdyw7rjdk2yIB6EJ7b8AMe5egQjr2bORbeQ8x2zjIIia
+	 5J1XD6joABVL4+vdbW2sZE6WV/tf8b5ecZYkORPUslR9ESaCxZdmVmm1tKVQdHWrflRvoA+yec6B
+	 tf/yosJwDMKAMwlurLlNlZhg8+uur2cVHF5D1juqOm/adSBRg6Y5xC6soj8FY5O8aufKUrLoETsV
+	 i4XhB4pwt6vf5LaQiiFdZOxLI7kQzBW6i/JZUmQqzzYVeKcr8nW8IRoTTsIntoZ2YIdvmVtIwdA+
+	 Y9ms3aa8cXi60tYAkmFvKMQWS3sZIy3KmOLWeTtqnrzl7OHOElr/NFl8ExOZAB3c7xCtvUOph8aZ
+	 zla1/ZJdffc17UA00LQq1xo/zpfj4re0VayHNQdM0fxpzl5ZB/q0+bU9X7CGMzEXabNIFcBhfWX9
+	 w4WxbWsD2mRnjHy61zzgVrlTErdLwW6wSipS1hwsjSvBFTez5I1jXyl1/bRormo+XlTt0rQLxRA+
+	 MbZCXHRrJ0/mKxzVZAEBNke7yCddSuXKItRhZjJNN8NeO3XOqgmYDiX0EFu3QgKvQlql36fia+nm
+	 AtzEQVRf8jIzpk0EnInqdq52kIkvpHP58UZ1EslGuRthqXxxE464S5gOGTILtMZ39yKmZ365gRcI
+	 WqkReuNFG/J/2erwQUoPajbs6WsJQSsECR6X4JIiFOPRmB6hUUlWvRR8S9347rDEYTFAcGwr7jUE
+	 llfcEyO0okqXdpzkBgipoWDzDh89UW5YXXbZWIg8SoAY8e2Rg/JPvRSLz6W0gbW591EBMyMatwOM
+	 HxzfYVH0mqV1UaNVp9KcM/JI0SOmYSpVnPmdBB2g0YpzTdEF1NwR5HF1seLALfOsCcTG26r8yocY
+	 qadZiVhcYwRbBvMKuBoIxnjM67Srx6g/yxzMGtq0QNxRHomGmJGnGMKJ9N7acM0YP/gqBtlKoqED
+	 Kih5JEs1kboOkk6He1ZAtAiqB4agv7iIXiLcMx0ke297spHuiBPb9hvPhfclQCIj2HSHiLaLarKb
+	 CJEATIhGS2E4zWPxBNg0GakQZ9yoEo5jBFeKFJWScvMuhzQ590bxBVsrikKITeo5CyRth23mj1+P
+	 fkLz7Q5xbs71Et7GwSr2B7S4I5HMfIe9Fsa08C3UEiSDruAziQqSYAgnWAGSJXyh9OaeJ8b8NGbl
+	 bbBrQFW/RBLwMpWWUq0Z/+lbjmzfp30UiYFXPrj7chPW7AW7FcO7Z7JlG3yyXYmICYA2IFP/0E8G
+	 VmkA==
+X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
 From: Xiangyu Zhu <1194781887@qq.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Stephen Boyd <sboyd@kernel.org>
@@ -69,16 +70,19 @@ Cc: Xiangyu Zhu <1194781887@qq.com>,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 0/2] clk: rockchip: rk3506: Add the SAI MCLK output gate clocks
-Date: Mon, 23 Nov 2026 08:10:27 +0800
-X-OQ-MSGID: <cover.1795366993.git.1194781887@qq.com>
+Subject: [PATCH v4 2/3] dt-bindings: clock: rockchip,rk3506-cru: Add SAI MCLK output gate IDs
+Date: Mon, 23 Nov 2026 08:38:35 +0800
+X-OQ-MSGID: <1d48a3116456de6a3f236aa852fa99a515a4b7e3.1795394137.git.1194781887@qq.com>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <cover.1795394137.git.1194781887@qq.com>
+References: <cover.1795394137.git.1194781887@qq.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261122_161042_893187_B8F23BE2 
-X-CRM114-Status: GOOD (  14.58  )
-X-Spam-Score: -1.8 (-)
+X-CRM114-CacheID: sfid-20261122_163847_349610_13433BC0 
+X-CRM114-Status: UNSURE (   8.02  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,59 +95,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The RK3506 has four SAI MCLK output gates: SAI0 and SAI1 are controlled
-by bits in the PMU GRF, SAI2 and SAI3 by bits in the system GRF.  Model
-them as GRF gate clocks so the SAI MCLK pin direction can be controlled
-through the clock framework.
+Add clock IDs for the four SAI MCLK output-to-IO gates of the RK3506.
+SAI0 and SAI1 are controlled by bits in the PMU GRF, SAI2 and SAI3 by
+bits in the system GRF.
 
-This is a v3 of the earlier "rockchip,clk-out" binding/driver submission.
-That one introduced a generic "rockchip,clk-out" compatible plus a
-standalone driver, which is not acceptable: upstream already has generic
-GRF gate support (branch_grf_gate together with rockchip_clk_add_grf()),
-and RK3576 and RK3588 register their SAI/I2S MCLK output gates with it.
-No device tree changes are included.
+Signed-off-by: Xiangyu Zhu <1194781887@qq.com>
+---
+ include/dt-bindings/clock/rockchip,rk3506-cru.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-v2 registered all four gates from one branch table while only the PMU GRF
-was added as an auxiliary GRF.  The two system GRF gates therefore came
-right after two PMU GRF gates in the same table, and
-rockchip_clk_register_branches() keeps using the regmap it picked for the
-previous branch when it finds no entry for a branch's grf_type, so they
-ended up toggling bits of the PMU GRF.  The SAI0/SAI1 gates are now
-registered from their own table, and only once the PMU GRF was really
-added, so no branch table mixes two GRF types and the PMU GRF gates can
-no longer fall back to the system GRF.
-
-Tested on a RK3506B board: the SAI0 MCLK output runs at 12.288 MHz and
-drives the ES8388 codec, audio playback works, and the GRF gate bits were
-read back from the registers to confirm that they get set.  Enabling the
-SAI2/SAI3 gates sets bit 2 and bit 3 of the system GRF (0xff288004) and
-leaves the PMU GRF alone.
-
-Changes since v2:
- - register the SAI0/SAI1 gates from a separate table that is only used
-   when the PMU GRF was added successfully
-
-Changes since v1:
- - drop the rockchip,clk-out binding and driver
- - use the existing GATE_GRF support like RK3576 and RK3588 do
- - limit the series to the clock driver and the dt-bindings IDs
-
-Xiangyu Zhu (2):
-  dt-bindings: clock: rockchip,rk3506-cru: Add SAI MCLK output gate IDs
-  clk: rockchip: rk3506: Register the SAI MCLK output gates
-
- drivers/clk/rockchip/clk-rk3506.c               | 27 +++++++++++++++++++++++++
- include/dt-bindings/clock/rockchip,rk3506-cru.h |  4 ++++
- 2 files changed, 31 insertions(+)
-
+diff --git a/include/dt-bindings/clock/rockchip,rk3506-cru.h b/include/dt-bindings/clock/rockchip,rk3506-cru.h
+index 71d7dda2..708502db 100644
+--- a/include/dt-bindings/clock/rockchip,rk3506-cru.h
++++ b/include/dt-bindings/clock/rockchip,rk3506-cru.h
+@@ -281,5 +281,9 @@
+ #define CLK_V0PLL_REF			268
+ #define CLK_V1PLL_REF			269
+ #define CLK_32K_FRAC_MUX		270
++#define MCLK_OUT_SAI0_TO_IO		271
++#define MCLK_OUT_SAI1_TO_IO		272
++#define MCLK_OUT_SAI2_TO_IO		273
++#define MCLK_OUT_SAI3_TO_IO		274
+ 
+ #endif
 -- 
 2.47.3
 
