@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 674B8606A31E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 21:13:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE18C606A31E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 21:23:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YyXdvFzT;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=WKfelPKb
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=h8bVjkFV;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=AvzgeGpS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,40 +14,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=6WbQXwf32j1vbC1tQ47vTOHR6vh4Hp8lec3nu0BfGFg=; b=YyXdvFzTeDPJ63+cy0csz/KaUo
-	Rl1PwPx0y2TKzaqYgjoviNrUcU46KqeOZUR5DDELGeUHLJTWeVhFztes6AKvD2ArTa7CKG5hUhxKE
-	DLYlMIYSAtmeIt+PTgLKjyDBm81h4ySUPhtkMezur4k0CRXV8gmpC2IpS4vno6QYFfJJZ33C/5BWG
-	DdS37MhSl6g82kn7ZFG8I18qBZtUz9A2UwE263swznwsDGEm5e4RTviSeBUNUcmlX58SKw1zQ9Wg/
-	TAxSL6pvv/pC+BYaiI/yK9kfQGJ3iRBMF3bjaQzwkmgklhVug/yxxTq6swo+R1wJ3qeydtSZDJGSi
-	0EqVEPpA==;
+	bh=goiTxTJtZ3bp+Dml/U7sc0VwgGBwlUUMZsD9gvNI2GM=; b=h8bVjkFVaqwCd29SNeGrSqr80k
+	XZ6E33e4wdBNS3hFmOTDhFSHxvl+LzWM7nswi3lW1dkPIrbT+cDuaVG3Vixosde7jYqkpCIrlCmhH
+	XYE46FP2OZ6X8p/eHNN43+LPJmyW3uL9BPDr1PqU9eatTVW8v6znJ++6DaMvcMKMsMZbH7U5giZFi
+	jpsXvFLZvet4kqMXBpfVZdyjL6e9PUqkbE76S25UTfumA6r4KvkrCKYvtT2LH5WxZxX3Wu+1aklDG
+	cq7Due4yrlWY2KbBPPt4ZL01lPp/xf7MZnYT93JZjUr5pbHqWkfcNVloTQKVJrcQ5KRRVI15+2ykT
+	ERrAb19Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVbLe-00000004wRk-3MS3;
-	Mon, 23 Nov 2026 21:13:14 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xVbVd-00000004xoF-182p;
+	Mon, 23 Nov 2026 21:23:33 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVbLb-00000004wR5-0nQa;
-	Mon, 23 Nov 2026 21:13:12 +0000
+	id 1xVbVa-00000004xnM-1tOY;
+	Mon, 23 Nov 2026 21:23:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795468387;
-	bh=iu9XpwdJa26Z7o/BScxC2C2qx9clmv3hojJxBRLM6PM=;
+	s=mail; t=1795469008;
+	bh=qXsWzwhK9zcOB2dUhIS8bc94DISbCNVtGQbuPkQF+Nk=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=WKfelPKb613ib9VmkQX9i28SLZy0CqEYwko96dYB+PPaK9qoqvUgplmOpfTIRyb2P
-	 KbNFgVWSaNYd/oW0l2vFxpCq7+fGzFr3ujbWmuUsaB2GW5EmOWLaJIzKURfYsCDgPx
-	 MCY54+c2te/THmmhD++m90sO38KS0xSf1U7oS6q+5zrUkrZzr7e5VQ+nlpk5f1rQhQ
-	 7xWBD1TG6+eIoQ5w0FfZTNMGuZw+weGKKOeHIor8oEL8UQSiFrS7q1SvvdJ8muqLfw
-	 G55k3OK+KfkHQZHrq79OtJ3CzGZdO/UEYdL+ODFtA7E/a1qsAO/IskdgNbSV4/xX7t
-	 ebPJGVO/JMQCw==
+	b=AvzgeGpSfG57TZIkqGQiAm3tNLJj5Mf1vSRfrWQYE6gfwXCEPy8CDEnY2FZceYvtk
+	 WNcYewCiwo+MFT422mNBjHwEv4sH1HeCoPruVNbBgLAoAnzNXX/pmzQ8rmFPeY9dkj
+	 j/iG5sLeQ3TNYhnZ8Mtvz2FJUIjbPuhQYCsiJLv85bVMBAH4DDt+4pKChtsGdGB30h
+	 lYA35h1a+ePcA5l8rpHSB4InCNXK7QyFwPK03oS3aaWm6ofQSdEGtP0bHT8ngIXEon
+	 q/+MyFlsoxCAy2wOQiXJKz1On+ggrKJJfj5PCqveTxR8B7ZzwYvA+mbGYtnZixjA6e
+	 aSDhhesUr2qUQ==
 Received: from [100.64.0.214] (unknown [100.64.0.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8054B17E0DB6;
-	Mon, 23 Nov 2026 22:13:05 +0100 (CET)
-Message-ID: <859f39e1b7c0e9e91504a34c37cccb922ef0ec6b.camel@collabora.com>
-Subject: Re: [PATCH v2 2/3] media: verisilicon: program the H1 JPEG stream
- limit in 64-bit words
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5E17F17E02F2;
+	Mon, 23 Nov 2026 22:23:26 +0100 (CET)
+Message-ID: <4fc740ba49bcd5880d13b627fc16a7b8f119e0a0.camel@collabora.com>
+Subject: Re: [PATCH v2 3/3] media: verisilicon: leave room for the JPEG
+ header and one stream burst
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: shomenkow@gmail.com, Benjamin Gaignard
  <benjamin.gaignard@collabora.com>,  Philipp Zabel <p.zabel@pengutronix.de>
@@ -58,10 +58,10 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil
 	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
 	linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org, 
 	stable@vger.kernel.org
-Date: Mon, 23 Nov 2026 16:13:03 -0500
-In-Reply-To: <20261110-hantro-buflimit-v2-2-ff7790def9fc@gmail.com>
+Date: Mon, 23 Nov 2026 16:23:24 -0500
+In-Reply-To: <20261110-hantro-buflimit-v2-3-ff7790def9fc@gmail.com>
 References: <20261110-hantro-buflimit-v2-0-ff7790def9fc@gmail.com>
-	 <20261110-hantro-buflimit-v2-2-ff7790def9fc@gmail.com>
+	 <20261110-hantro-buflimit-v2-3-ff7790def9fc@gmail.com>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -80,8 +80,8 @@ User-Agent: Evolution 3.62.1 (3.62.1-1.fc45)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_131311_484647_947AEEB5 
-X-CRM114-Status: GOOD (  22.05  )
+X-CRM114-CacheID: sfid-20261123_132330_640581_1A57F224 
+X-CRM114-Status: GOOD (  21.31  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,7 +92,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2228324972319221283=="
+Content-Type: multipart/mixed; boundary="===============1250767583423765630=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -101,11 +101,11 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============2228324972319221283==
+--===============1250767583423765630==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-/pZ7QRKaT58RrTydTrIs"
+	protocol="application/pgp-signature"; boundary="=-GXXpYju9zHAOXYjKgWjd"
 
---=-/pZ7QRKaT58RrTydTrIs
+--=-GXXpYju9zHAOXYjKgWjd
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -113,77 +113,74 @@ Le mardi 10 novembre 2026 =C3=A0 15:41 +0300, Sergei Khomenkov via B4 Relay=
  a =C3=A9crit=C2=A0:
 > From: Sergei Khomenkov <shomenkow@gmail.com>
 >=20
-> H1_REG_STR_BUF_LIMIT counts 64-bit words, but the driver writes the room
-> left in the CAPTURE plane in bytes. A stream that does not fit, such as
-> a quality 100 frame of noise in a default-sized buffer, is then written
-> past the end of the plane, up to eight times its size.
+> hantro_try_fmt() keeps any non-zero CAPTURE sizeimage of the JPEG
+> encoder, however small. The CPU writes the 624-byte header into the
+> plane, and on the RK3026 VEPU1 the encoder then writes at least one
+> 64-byte burst even with a stream limit of 0, so a smaller plane is
+> written past its end. A plane smaller than the header also makes the
+> WARN_ON() in hantro_h1_jpeg_enc_set_buffers() fire on every job.
 >=20
-> Write the limit in 64-bit words, rounded down to whole 64-byte bursts:
-> the encoder finishes a burst it has started, so an unrounded limit lets
-> it write up to 56 bytes past it.
+> Raise a smaller request to header_size + 64.
 >=20
 > Found with an LLM coding assistant while porting mainline Linux to a
 > Rockchip RK3026 board; the assistant also drafted this change. Tested
-> on that board: overflowing frames now stop at the programmed limit
-> without writing past the plane, and frames that fit are byte for byte
-> the same as before. Not tested on other SoCs, including the STM32MP25,
-> which shares this code.
+> on that board: a sizeimage of 1 or 600 now reads back 688, and frames
+> that do not fit a 688-byte plane stop exactly at its end. Not tested on
+> other SoCs.
 
-Move the paragraph after --, its not need in the commit and add an Assisted=
--by:
-tag.
+Move after --, and add Assisted-by: tag.
 
 >=20
 > Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
 > Cc: stable@vger.kernel.org
 > Signed-off-by: Sergei Khomenkov <shomenkow@gmail.com>
 > ---
->  drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
+>  drivers/media/platform/verisilicon/hantro_v4l2.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 >=20
-> diff --git a/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c b/dr=
-ivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c
-> index 86cc1a07026f..665a87e9fe92 100644
-> --- a/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c
-> +++ b/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c
-> @@ -55,7 +55,12 @@ static void hantro_h1_jpeg_enc_set_buffers(struct hant=
-ro_dev *vpu,
->  =09vepu_write_relaxed(vpu, vb2_dma_contig_plane_dma_addr(dst_buf, 0) +
->  =09=09=09=09ctx->vpu_dst_fmt->header_size,
->  =09=09=09   H1_REG_ADDR_OUTPUT_STREAM);
-> -=09vepu_write_relaxed(vpu, size_left, H1_REG_STR_BUF_LIMIT);
-> +=09/*
-> +=09 * The limit is in 64-bit words. The encoder finishes a 64-byte burst
-> +=09 * it has started (measured on the RK3026), so give it whole bursts.
-> +=09 */
-> +=09vepu_write_relaxed(vpu, round_down(size_left, 64) / 8,
-> +=09=09=09   H1_REG_STR_BUF_LIMIT);
+> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/m=
+edia/platform/verisilicon/hantro_v4l2.c
+> index 83af9fa1ce94..6a6d27443a5e 100644
+> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
+> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> @@ -394,6 +394,15 @@ static int hantro_try_fmt(const struct hantro_ctx *c=
+tx,
+>  =09=09 */
+>  =09=09pix_mp->plane_fmt[0].sizeimage =3D fmt->header_size +
+>  =09=09=09pix_mp->width * pix_mp->height * fmt->max_depth;
+> +=09} else if (fmt->codec_mode =3D=3D HANTRO_MODE_JPEG_ENC) {
+> +=09=09/*
+> +=09=09 * Room for the header and one stream burst (64 bytes on the
+> +=09=09 * RK3026 VEPU1), which the encoder writes even with a stream
+> +=09=09 * limit of 0.
+> +=09=09 */
+> +=09=09pix_mp->plane_fmt[0].sizeimage =3D
+> +=09=09=09max_t(u32, pix_mp->plane_fmt[0].sizeimage,
+> +=09=09=09      fmt->header_size + 64);
 
-Its safe to apply to rockchip_vpu2_hw_mpeg2_dec.c, I'll test it for you.
+hantro_v4l2 is generic, place the magic numbers in the variants.
 
-Nicolas
-
+>  =09}
 > =20
->  =09if (pix_fmt->num_planes =3D=3D 1) {
->  =09=09src[0] =3D vb2_dma_contig_plane_dma_addr(src_buf, 0);
+>  =09return 0;
 
---=-/pZ7QRKaT58RrTydTrIs
+--=-GXXpYju9zHAOXYjKgWjd
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawSsXwAKCRDZQZRRKWBy
-9HNIAQC1AkHZ6E5OyxDSWJREMVm1CeMIoPq3mhZfx4yRWXyUQQEA8Mtv0S6aS9JT
-HeguwlOq2Yfa54g5tPNoGKDwqB5fCw4=
-=eW1k
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawSuzAAKCRDZQZRRKWBy
+9DYBAQDCgXE5fTFdXAXHZOSEBSHB/laGe9BGvnk6D9+hz4Bi5AEA8+/dAfYesZCV
+A/5MqFlc0hlRBS1kr1RJQjUjauLTjAw=
+=IDgL
 -----END PGP SIGNATURE-----
 
---=-/pZ7QRKaT58RrTydTrIs--
+--=-GXXpYju9zHAOXYjKgWjd--
 
 
---===============2228324972319221283==
+--===============1250767583423765630==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -194,5 +191,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============2228324972319221283==--
+--===============1250767583423765630==--
 
