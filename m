@@ -2,98 +2,108 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 45D0A606A31A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 16:58:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 609F0606A31F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 17:33:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tNMUOfsS;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=PtTwDStN
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pOu1YB+y;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=F3kwWrlk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=0OsoxIiv7UAizPAih3zmRdyThLvGMS6FbeQTAk/v5K8=; b=tNMUOfsSbzj+hXjCQLVq4CINqE
-	QqhirTD3SidPE7CHuT9jUm6TstfEQRnXj/Mr+t8K3iSUdksismqNoXx7Nt9pSfC1OrvOULJ1yciAJ
-	uAa4C7ovK0aPUsc2T2jg41QarHowLTcNTj2/YIDSVl/SMdANao/R7Wpvwzu3xhZtdLEAuNgQdXrd0
-	+9rWSsx8TI9faK7rti3xYXAHFoFijr1+p6+rZBm2ExiFrD+d7eSH6CSS0+KKDxpQWJM5+nim8S7a8
-	yVqerHL2YMPlxz+PVlTKgF4AT7Ozd+jANZkNRoEX+QhRSCYzuEnvqoU0HOYDJKXcvP5kUmIqowVK8
-	1DGyvlnw==;
+	bh=YTm95+zJl+M1zoOBsLrYN4lK470JMSKO4NI4lBayb2I=; b=pOu1YB+yoNGSLVBEp30+ZomNYL
+	vay2ITKc+yf940hT+4FRctSHDqf410zkSpjpzbTwk2AjFEkz+6FC3doVqL/LDSJP+Qh9HeqCmm199
+	s0fNeXblf8FiUHCyylguCE6FEhH0o4uShJoLD5bcdrA+yI0Ui7F9kBcYF6SVIrn1BdrVmcURTZWWE
+	eDK/LnEs33HieXmzpBfUH9CEqzwa5uMovhf2nbELyJCHEM2G+FPykG+FOLrBoRGPvEwRg4T+50Rte
+	rAMhopIW/CpBBhm7siof/KtM6OAt+EGnnjUk3Xzsl8pb7r+35s6pe/RwWWoG3sQ8tEZgp8umvjPi3
+	AB4P56dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVXNP-00000004HPS-10OU;
-	Mon, 23 Nov 2026 16:58:47 +0000
-Received: from mail-dy2-x07.google.com ([2607:f8b0:4864:36::7])
+	id 1xVXvB-00000004NUM-0WZr;
+	Mon, 23 Nov 2026 17:33:41 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVXMi-00000004H9r-1XMB
-	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Nov 2026 16:58:07 +0000
-Received: by mail-dy2-x07.google.com with SMTP id 5a478bee46e88-382afece6d8so653875eec.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 23 Nov 2026 08:58:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795453084; x=1796057884; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=1w51x/PKCtrb5fNAPvfXEuoWbCAe37FjN4HnJ6V/8YM=;
-        b=PtTwDStNgPa8hjTaBuuBAYfc46F21f1JqGB0GzGjRUb5cuqnfV8m2IvLdj7KdQPx39
-         V4qjP2XIBghS6xW/zJQEget3EtOQq2FvJoOfP9WUlqlkYJD+7Y5nH/M2eEgy1L0rxBir
-         pwFAlgKvNNZk71tmgZYo4+v7uLslDEUZaN3eH6rCoJJxety1YzZO9N9CqtzYKsNBhHGm
-         dPzwQDDE6ucToYLyilH6jeQXlCpapSy6UPeI1QtzkYClxaUdIIYVRL+/QGL7t5UUZ0gp
-         8GXrbqhQseon43tz+gWTwctU2zKmgkVn66ldpOjj0nEpMzBz80ZUVlx57vuuGV1tef6Q
-         qUoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795453084; x=1796057884;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=1w51x/PKCtrb5fNAPvfXEuoWbCAe37FjN4HnJ6V/8YM=;
-        b=pxO0wP+GalxPcK1iI+0ExkFe172ThAvR4T7K3XBe6AUe0xO2tK28GtlDTbo5qqJWgT
-         zVIQLYYm+YLxIpOCsgW9BOSPLJXyKGCUs+pmf6qEdDk6SniUSs3g/JbFvCxuqRHetk49
-         xxU9A0P9QlQGeui7MPVVX1wS1MttualstoY0fMWynE1Xuwb8l9Yqf47zn9QDpZno3pI0
-         Z2l1HJ0WLTnYIW/C0Tft7sJACeaSodxRci49VDZPkk59JDzKI3CtzEk1aBu/vDM77J+O
-         SqfYSBPBSsadgXbUVuyYDG2LKnj71x+J2+ifhgBiovhlPvumN6RAE9lo4D5DlXYldA0K
-         phxg==
-X-Forwarded-Encrypted: i=1; AL+hErHKSP/St0Oj1w32ymOhh5ka6KAyI3pTBWs75L9osfTANBWdGOmysiUhP+5xeOB+BiKpQnpPzq/uN3XEL2q/fg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+Mo4Z9YlkGQPaqAF1SudTJ7rKIodyPmWepTO409ncy/3ob6qaM
-	QnGuXlp1rQ7O0FKcWuJxsTi3O8XSwGSejd9hS+rpYvC9i4eFNwhcJcrf
-X-Gm-Gg: AZFdTZdWQ8JoXeauv41cVGJAxD6UCC1Jel3apsSO/MFIlKzbpmjx91koSLjA25RWUTb
-	fiOLjNmepPxvlXKDV4Dt+TI2f3f4pwcgCs+T/C97ExpV5vND1vAJOBakLEGGu4P2DHGeW5ED036
-	N2JlKuADIsMKXHZKTkHbCLDvu0KOBFvhjePzkGQjeRxXgn9onT02TJsFaMnGQ7v8I0iNDrlFuxA
-	xK8AmE/KW/GxFMwWmO2a2x91N5ZqGqZpKskKsIWSzUM08CdgvdakEYnGmdS5GCI1/ehKfJp7lyP
-	Mz06HpUqO4mSTXpMUBFfk5eWrWPQThTmdvk7bXOeef0GMRA9sikrIT/XxqKFNGkUyYf3QjjlzjX
-	q5DlRzEK4XK/Z5fnE/9cpwkbSYzajUhnVfogArQmHwXsnuFYDRUnnPSYguTAzSnVkraVn1M0zDx
-	QC1UM46mOH/9Zr9bFxiF27ppyG6i9Wc2K15+I9jsNdmXpueqDEYZ1nqdZdBicsMlNyaCXGPoqku
-	qAb9hUOhe7tk1eZvQFWS9S7MrQWs6CSM89v7ybsoLVs9FRDjgZlwcbf5oar8mzaP0bYivX4bNUN
-	13O3Q2ki+TI86lVV7QlrOz3cwdrJ/sPqfRVvJhhNZ6pXwVzCSkKWYyUJBEg=
-X-Received: by 2002:a05:693c:88cd:20b0:386:a16d:1bce with SMTP id 5a478bee46e88-386a16d1cb0mr6943823eec.36.1795453083560;
-        Mon, 23 Nov 2026 08:58:03 -0800 (PST)
-Received: from server.lan ([168.138.199.194])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-386aa203267sm13315280eec.0.2026.11.23.08.58.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Nov 2026 08:58:03 -0800 (PST)
-From: Coia Prant <coiaprant@gmail.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Coia Prant <coiaprant@gmail.com>
-Subject: [PATCH v13 3/3] arm64: dts: rockchip: rk3568-photonicat: enable SGMII LAN port
-Date: Tue, 24 Nov 2026 00:57:03 +0800
-Message-ID: <20261123165703.667564-4-coiaprant@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261123165703.667564-1-coiaprant@gmail.com>
-References: <20261123165703.667564-1-coiaprant@gmail.com>
+	id 1xVXv9-00000004NTk-3S0j;
+	Mon, 23 Nov 2026 17:33:39 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 91F70438A6;
+	Mon, 23 Nov 2026 17:33:39 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795455219;
+	b=O3VhYw4UdVinZG9MApj+VL7kEGLTp/yh7XAF9eW7CeDjrJM4AnggPGxk5GR4VA03D2Ox
+	 SL6fZnffCD3F+vydEW/cfApUoKxbjYIJEH3DTI2kaK5WbedP1OdRAR7BoQ5jQlqLK0m7P
+	 gpk5+LBtZUbnUTj4OA6y00gqqtx6hDNGg1PBdxCG5H84cLNxLXqoRGcMWBH57nEX+OfV4
+	 PsRwjUamZ4vRJM5oFVoiZwTcKNva8762CCuGKG8ZK4e/zBX9w2rIgwog9TwTcpqQgHQKJ
+	 x+b5Q0xZojKv2O18/Ncl7z3pCKXpIFOExxwc6bJzrrzw/dFnRiwKneuZqcl00b7wDQg==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795455219;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:To:Cc:X-Mailer:X-Developer-Signature:
+	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=URDPaglQXKS7bojwQwMsPG/Rk5Gel8tTQUM0/WVvGKU=;
+	b=Aw2EmvpH0lNV5lYDEGnGFbQ7UWNZO7GOROEpycl+V+LfBZXknoEBFWvg8sWsuaTm+AKP
+	 bn+ewYUovybJOEXhxboxqf4Fzb4ieAVXF61Qg4sIXXyt9rS6bo5KxZxZk7YZR5ToL1MQ9
+	 LBYPXzRZd6MpKtJIFrcEMgPn2guprbK9RyClxwyLZ4KFhR5RqTOY/V5k4ivdpXRxOhfZU
+	 Rt6knv1irWqV4ggjOIigSqYa0hZq7rej9VpwRwx5dDrlli/MrTssHMKk/FkCRtD2DZd3Z
+	 NOwVqRBcE+EaJ4NCpll8dVsIXYUqhRnZ6imzz3PLOVQ6rIDiWJP3AXobagfPXKossGA==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id B7EC21F000ED;
+	Mon, 23 Nov 2026 17:33:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795455218;
+	bh=URDPaglQXKS7bojwQwMsPG/Rk5Gel8tTQUM0/WVvGKU=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=F3kwWrlk9YB9aXOSXyEBLDwDYiLI+DQ0ms2dW2DaC4Cj+zZnqDbwMq5N9ESAkai/B
+	 kuN0HftO7z1nN0N24S8XJlAlvMq67zK6Fumf0bmU/oiiDl5UYPYB/YyLN+ehXdDLiR
+	 Ds4mSfxP5aB6JvrP790OyAs3L1fdFGR1AdDd5VjlOvlaCS6U5ylxFDLsIgLwbVigAu
+	 RyYtK6yPXluo2cJta6dwp0eLNv0LtC5PDTM8Lf1g0v3ce5kczGk0NnpF4ahZwthw/j
+	 NiMxKNO13VZbKOwVkMfXtcbWSmQxHRJQBwLuyCRZOaKU+4G5HjRCZRejN9dYXYGtrj
+	 4/DFaPaQL+67A==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 4A5FA4C580;
+	Mon, 23 Nov 2026 17:33:28 +0000 (UTC)
+From: Igor Velkov via B4 Relay <devnull+iav.iav.lv@kernel.org>
+Date: Mon, 23 Nov 2026 17:33:26 +0000
+Subject: [PATCH v3] drm/panfrost: Enable GPU_PM_RT for RK3399
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_085804_511280_4AA5E92B 
-X-CRM114-Status: GOOD (  11.94  )
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261123-panfrost-rk3399-pm-rt-v3-1-04c7c58d1140@iav.lv>
+X-B4-Tracking: v=1; b=H4sIAOV4BGsC/4XOwQ6CMAyA4VchO1uzbijWk+9hPDSwyaIC6ciiI
+ by7g4OejMe/Sb92UtFJcFEdi0mJSyGGvsthN4WqW+6uDkKTWxlt9qithoE7L30cQW7WEsHwABm
+ hdmx9jRXphlTeHcT58Fzd8yV3G+LYy2s9k3CZ/hMTAoKjsrQV7oipOQVO23tSC5fMl0BjfhEmE
+ 6X2+S1kRj58iHme34wldAD6AAAA
+To: Boris Brezillon <boris.brezillon@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Steven Price <steven.price@arm.com>, 
+ =?utf-8?q?Adri=C3=A1n_Larumbe?= <adrian.larumbe@collabora.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ Daniel Stone <daniel@fooishbar.org>, Igor Velkov <iav@iav.lv>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2865; i=iav@iav.lv;
+ h=from:subject:message-id;
+ bh=jVdmdH5Fy/vduyoI4gZY5e3ymBwUoj6ShIzYh5QXSJg=;
+ b=owGbwMvMwCVmNH1q96v4SmbG02pJDNksFc8rdlg+iPedscv2zTeRq886bvTwXj389ETWup/Tx
+ Yx0XCpfd5SyMIhxMciKKbJMOKRxK2PJ1b/+HuYPYOawMoEMYeDiFICJvNjCyLDxom9Vt/Cntm3z
+ p2a3/bu646580qG17p4BC/eL/+p9a1fH8M+OY+r5VRVeDdumxLzwZV7zhZVPfseqbxx3Tm3hi2R
+ 78JkTAA==
+X-Developer-Key: i=iav@iav.lv; a=openpgp;
+ fpr=90C228DA68A4D5FD4F4837E03297958BEA5F7903
+X-Endpoint-Received: by B4 Relay for iav@iav.lv/default with auth_id=1060
+X-Original-From: Igor Velkov <iav@iav.lv>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,131 +113,82 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: iav@iav.lv
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The Ariaboard Photonicat connects a Motorcomm YT8521SC Gigabit Ethernet
-PHY to GMAC0 through the RK3568 XPCS using an SGMII link. Enable the
-required DT nodes to make this port operational.
+From: Igor Velkov <iav@iav.lv>
 
-The 125 MHz GMAC reference clock is generated internally by combphy2 and
-is modelled as a board-level fixed-clock, since it is specific to this
-board's SGMII wiring. Configure GMAC0 to use it as the RX/TX reference
-clock.
+The RK3399 Mali-T860 matches arm,mali-t860 and gets default_data, so
+panfrost enables aclk_gpu at probe and keeps it enabled until unbind;
+runtime suspend powers the GPU off but leaves the clock on.
 
-Enable the XPCS node, route combphy2 to GMAC0 through
-rockchip,sgmii-mac-sel, and reference combphy2 as the SerDes PHY.
+On ROCK Pi 4A restore from hibernation hangs in genpd_restore_noirq()
+of the GPU when the hibernated kernel had panfrost bound and the
+kernel that loads the image does not. There clk_disable_unused()
+gates aclk_gpu, while the restored image still holds an enable count
+on it, so powering the GPU domain back on does not ungate the clock.
+With the clock gated in runtime suspend, as on the Allwinner H616 and
+the Renesas RZ/G3L and RZ/G3E, restore completes.
 
-Add the MDIO description for the YT8521SC PHY, including its reset GPIO
-and LED configuration.
+Match rockchip,rk3399-mali to default_pm_rt_data, which differs from
+default_data only in GPU_PM_RT.
 
-Signed-off-by: Coia Prant <coiaprant@gmail.com>
+Reviewed-by: Steven Price <steven.price@arm.com>
+Signed-off-by: Igor Velkov <iav@iav.lv>
 ---
- .../boot/dts/rockchip/rk3568-photonicat.dts   | 55 ++++++++++++++++++-
- 1 file changed, 53 insertions(+), 2 deletions(-)
+Tested on ROCK Pi 4A, drm-misc-next c408466a4dfa with the rkvdec fix [1]
+applied: hibernation restores 9 of 9 with this patch (3 with an HDMI
+mode held, 3 right after glmark2-es2-drm, 3 idle), and the GPU renders
+after restore. With the GPU node left with arm,mali-t860 only, restore
+hangs 2 of 2, in genpd_restore_noirq() of the GPU.
+[1] fixes the same kind of hang in rkvdec, which otherwise hits first;
+this patch applies and builds without it.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts b/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
-index 3cc05f08f429..522778a36423 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts
-@@ -41,6 +41,13 @@ chosen: chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
- 
-+	clk_gmac0_xpcs_mii: clock-xpcs-gmac0 {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "clk_gmac0_xpcs_mii";
-+		#clock-cells = <0>;
-+	};
-+
- 	hdmi_con: hdmi-con {
- 		compatible = "hdmi-connector";
- 		type = "a";
-@@ -283,6 +290,7 @@ &combphy1 {
- };
- 
- &combphy2 {
-+	rockchip,sgmii-mac-sel = <0>;
- 	status = "okay";
- };
- 
-@@ -302,9 +310,18 @@ &cpu3 {
- 	cpu-supply = <&vdd_cpu>;
- };
- 
--/* Motorcomm YT8521SC LAN port (require SGMII) */
-+/* Motorcomm YT8521SC LAN port */
- &gmac0 {
--	status = "disabled";
-+	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>;
-+	assigned-clock-parents = <&clk_gmac0_xpcs_mii>;
-+	managed = "in-band-status";
-+	pcs-handle = <&xpcs>;
-+	phy-handle = <&sgmii_phy>;
-+	phy-mode = "sgmii";
-+	phy-supply = <&vcc_3v3>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&gmac0_miim>;
-+	status = "okay";
- };
- 
- /* Motorcomm YT8521SC WAN port */
-@@ -383,6 +400,35 @@ &i2s0_8ch {
- 	status = "okay";
- };
- 
-+&mdio0 {
-+	sgmii_phy: ethernet-phy@3 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <0x3>;
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio3 RK_PC6 GPIO_ACTIVE_LOW>;
-+
-+		leds {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			led@1 {
-+				reg = <1>;
-+				color = <LED_COLOR_ID_AMBER>;
-+				function = LED_FUNCTION_LAN;
-+				default-state = "keep";
-+			};
-+
-+			led@2 {
-+				reg = <2>;
-+				color = <LED_COLOR_ID_GREEN>;
-+				function = LED_FUNCTION_LAN;
-+				default-state = "keep";
-+			};
-+		};
-+	};
-+};
-+
- &mdio1 {
- 	rgmii_phy: ethernet-phy@3 {
- 		compatible = "ethernet-phy-ieee802.3-c22";
-@@ -653,3 +699,8 @@ &xin32k {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&clk32k_out1>;
- };
-+
-+&xpcs {
-+	phys = <&combphy2 PHY_TYPE_SGMII>;
-+	status = "okay";
-+};
+[1] https://lore.kernel.org/r/20261030-rkvdec-runtime-pm-clocks-v2-1-8ff510a231de@iav.lv
+
+Changes in v3:
+- Retitle as Steven suggested, say what GPU_PM_RT changes
+- Add Steven's Reviewed-by, given on v1 (same code)
+- Link to v2: https://lore.kernel.org/r/20261122-panfrost-rk3399-pm-rt-v2-1-40f1791aa1a8@iav.lv
+
+Changes in v2:
+- Name the SoCs that already use default_pm_rt_data
+- Say why restore hangs
+- Rebase onto drm-misc-next
+- Link to v1: https://lore.kernel.org/r/20261030-panfrost-rk3399-pm-rt-v1-1-e94437159a9d@iav.lv
+---
+ drivers/gpu/drm/panfrost/panfrost_drv.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
+index eeda113037fe..91acfa13ef42 100644
+--- a/drivers/gpu/drm/panfrost/panfrost_drv.c
++++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
+@@ -983,6 +983,7 @@ static const struct of_device_id dt_match[] = {
+ 	  .data = &amlogic_data, },
+ 	{ .compatible = "renesas,r9a08g046-mali", .data = &default_pm_rt_data },
+ 	{ .compatible = "renesas,r9a09g047-mali", .data = &default_pm_rt_data },
++	{ .compatible = "rockchip,rk3399-mali", .data = &default_pm_rt_data },
+ 	{ .compatible = "arm,mali-t604", .data = &default_data, },
+ 	{ .compatible = "arm,mali-t624", .data = &default_data, },
+ 	{ .compatible = "arm,mali-t628", .data = &default_data, },
+
+---
+base-commit: c408466a4dfaee4b12587e926c5b85e68c8b3c40
+change-id: 20261030-panfrost-rk3399-pm-rt-cea3fc1790d9
+
+Best regards,
 -- 
-2.47.3
+Igor Velkov <iav@iav.lv>
+
 
 
 _______________________________________________
