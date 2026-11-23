@@ -2,87 +2,164 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0F794606A31E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 14:37:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4865F606A31F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 15:03:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4VXnR1We;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=pengutronix.de header.i=@pengutronix.de header.a=rsa-sha256 header.s=20260414 header.b=alPWYmgy
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3JR8r1Y0;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=IbfO81VA;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=WR5lZAld
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:References:In-Reply-To:
-	Cc:To:Subject:From:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=8//7d92dFy06Bo8Bnd81rzsNSPPHU6P+Bbi/VP1vZLQ=; b=4VXnR1WeEQTg8Yk+FmZOXxhsR/
-	Q/625o0opYDrCk44Oj4ylU6qMaFOppuBR9Ph75g3Ug1kr2CRKpJ460e+6n9OQA1VWNDEOHe7UIdMV
-	eOflZfzFGqvSxk/NiGWzL7IfpWAIcu4Fa9fU2tjiukDni5nJD5TJCrO03jC3/qfjD4tyAaCookyGG
-	I/k1l0mlwt/wSsmh0rCLir+4Zl7dH1qRXqkmlMTOkOx55d47117yf/i63P3X0v0BzEbLw+eUCbJpZ
-	t9NDN1n8zgvt4lX/knfY4vVk23BSHFcWwrG3vbN6Z0wJL5MHmgVExwYpihVbsaryhS3ENSoLMkmX2
-	tUJbx7Bw==;
+	bh=P5i426i63kcQouKTsK2OhSfFRni6uofJNaZKo+sYsMg=; b=3JR8r1Y0JcMGehNOr6ckuUTio0
+	JH2e9r0kxOigPa0pZwzh6EmEjL4pcn5cwA23lN14GAbgfFdId2s9nyizxeCp7RT4wThmz2SD4+XBt
+	+RQDvYrRTwcv90Ra3eVBnHzH0smxC4NHv8pTUeBnAjyl7Wk2PjFL3j/QCnC45yRamTYAscDdrOe7V
+	+zz8nUhi4OZAouGuhb7ATfM06JptyHBa/saq/itDZnEHYOxLyeF7b6/qIl5EOyy5NBU1nx9jMC4LD
+	MGEwwm5CdzRiN6NTbKz+uK/ZCbBx07GfFj2grwfvclolN+wKu9pJ/bE5Y0ot4ac7/3gymYDvSOCS4
+	rcceammA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVVAg-00000003lBn-2Mse;
-	Mon, 23 Nov 2026 14:37:30 +0000
-Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
+	id 1xVVZp-00000003tMU-0IeU;
+	Mon, 23 Nov 2026 15:03:29 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVVAc-00000003lAi-1vE5;
-	Mon, 23 Nov 2026 14:37:29 +0000
-Received: from [127.0.0.1] (unknown [IPv6:2a02:560:5c0a:3200:9ebf:dff:fe00:fdb5])
-	(Authenticated sender: sha@pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 784592020DC;
-	Mon, 23 Nov 2026 15:37:18 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
-	s=20260414; t=1795444638;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hnYJCBiRfz7yllErcSmEBCv6f1PEOQS5KfWCrNNzX9U=;
-	b=alPWYmgyip7ZtXwDQnfvGEFHT2Vf4GgtfehdO2x9jpPrZarvupKfolT6gdVOR7x/jMbvbx
-	l1g/ljk6KDsWPZSK4OdZsm7iyPL865uOgd5AgHGnxou8clgdNIJFULRWuikVEycxFH2a6O
-	G3kqr+X/5MTBlPP1jKphwJmFDzMVKy1tG54wY2L/3XfJI1Kfd0v49EsILrbVysVuAOw/u9
-	o/GebSmw3jzvQkUUsGv+YnlU/u4g8oIYrazFl5waNrmMAylMMLasdrmQnzNshf1ZxH0QN6
-	w7jkALJ8F3i+LbW6jywT/AG/5ourWOhFnXcipmNRb8JRq/epUXZr2neNRnZypA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
-	s=20260414; t=1795444638;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hnYJCBiRfz7yllErcSmEBCv6f1PEOQS5KfWCrNNzX9U=;
-	b=I/WTdnfLS/bKcKqhFAyV+yXnfcHSLyA2CeYu+0oJW3SFN6iZ7hhvDYL9v+6G7qi72AVGHv
-	cEmMnesQPScLxXt8KCpqzG4kzlh/uBRk/tV8GwmiQkBMuRpzwjtrJ9Zoc/GsRn5lAF29D0
-	3RVANz8+Hjn7pY9xwKhiJcbJ1ojuHMOTBMEMYeTia6JQZ+dtAgTwFU/8GaSTk6c3CYjjw+
-	YMQR0ugR/BEFu6m0KY4gS0NUjMlpKUkE2M+PTbTtf7yN/BErVLCaE8+8rPZygsli+jdbSI
-	JFE54AvvhJeoL2pHj13cH2uzk76GiaIEblxd8KHCB/FQpcyTz1UQ+xD77Lz/lw==
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=sha@pengutronix.de smtp.mailfrom=s.hauer@pengutronix.de
-ARC-Seal: i=1; s=20260414; d=pengutronix.de; t=1795444638; a=rsa-sha256;
-	cv=none;
-	b=VyrsRtnBpkODZmAdxfMV+MoBNy3FPDmMTbrBEk0s5rZRo7/E1zC5LVRKwhyZcFAY9qYTr6
-	ggZNrY83tSAsakpMOzvnXRgDUgrWBZdSg94bzHJ3qJNpickakNtgBoKNxfe1rJTqClrVcP
-	W8RwQuvdOTTSd7Q/NWY1jLJiMazCNN4JY6RWVkCQ1gCNYqBPqtymk8TBFsRufaVEhYhjky
-	Y38VwMpcRLGyyB+A4nOctuFqz9tOjNmW6GQxi85/Hla7IBz6XV1TbBONUBO0BxongDQEIO
-	5nI8bcQ+wFluw3yxNs1Q077yjYvy+Vjid/us9cXw/5PLDDSs0q0mi75u97EWdA==
-Message-ID: <20c75d45-0b9b-4465-83aa-3ef24b90309b@pengutronix.de>
-From: "Sascha Hauer" <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v7 2/4] media: rockchip: Add JPEG decoder driver
-To: "Philipp Zabel" <p.zabel@pengutronix.de>
-Cc: "Sascha Hauer" <s.hauer@pengutronix.de>, "Lucas Sinn" <lucas.sinn@wolfvision.net>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>, "Rob Herring" <robh@kernel.org>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Heiko
- Stuebner" <heiko@sntech.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <266c9fe4a9aca943c2c2be39a7dc0f3bea2df362.camel@pengutronix.de>
-References: <20261022-rockchip-jpegdec-v7-0-3fd7dd55f408@pengutronix.de>
- <20261022-rockchip-jpegdec-v7-2-3fd7dd55f408@pengutronix.de>
- <266c9fe4a9aca943c2c2be39a7dc0f3bea2df362.camel@pengutronix.de>
-Date: Mon, 23 Nov 2026 14:37:17 +0000
+	id 1xVVZl-00000003tLM-24PF
+	for linux-rockchip@lists.infradead.org;
+	Mon, 23 Nov 2026 15:03:28 +0000
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6ANDL1AL1937831
+	for <linux-rockchip@lists.infradead.org>; Mon, 23 Nov 2026 15:03:24 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	sZmn/sNxwAfKWKSIqSCT0pljBWlXHOxHLlaVhxvwNo0=; b=IbfO81VAygWqws1q
+	TyYwzZLUHWgB64GgdO9dyaTt3zpAjoZJTDLgfEK+Re46q144zQ/jXm7UXcLujI3H
+	3704UyUwCzMPStRZkWgk0SAvSYRVpYoQqPVCPMbG1rBBjNGXvQRthDqmm/VLgGmq
+	eua9pk6y4yQJJboujmd9FOPeCnKeMLAi1zWreYZmb4BfbxKi6k8Usii2edWf3Qf2
+	TPZ6mQvAySOhb7U/BEnLigjn1K43367diJYkpo40vAtzLfnyiP79fe+z1XO1Yckd
+	yeY0KLT8BbSG1ND5//lKn9wXU+qJrzCeCaaZuhg7/Ttmcx3Impz72pohCAly1rYE
+	5wYCbg==
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com [209.85.214.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j4exx25n9-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Mon, 23 Nov 2026 15:03:23 +0000 (GMT)
+Received: by mail-pl1-f200.google.com with SMTP id d9443c01a7336-2efe8f2bdc0so25984255ad.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 23 Nov 2026 07:03:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795446203; cv=none;
+        d=google.com; s=arc-20260327;
+        b=i2z2j8v0FZPHsAqPJpZV5aYvYEmsCr45Jse/xYGKlGI3m3bpDJVPtoKWIU+StNudQO
+         U4V9y7vwgfJJG6AxLsAGILK9KdjdVZSuOMG91S6JHZH6OgkU4FolnGQQORH2SKiDp19A
+         W98piqUmnqxx5FBe9pXmF2Yfz3TzlYcfyToS0xUiNb30qSW5+K6lHhvPAIh40lN7iS6i
+         E26OZgVBxOBIb4wouAmOXE3lK7EsIMPpq5AbQagnx8yzAe/foY9I4j35arjZMNH4B2HM
+         jQY2ChfBWs71XZS29IugMd/qViqzj0tOPQWwQQLMz1eUARWoC1A4+VAVyLAwEskcbzEJ
+         9zew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=sZmn/sNxwAfKWKSIqSCT0pljBWlXHOxHLlaVhxvwNo0=;
+        fh=la+iZCoGNmr9rMsp7nxRDoJqPkkZ+Oa/PnYQ005fnjI=;
+        b=KvHBbsNlp3RKjmIi1+FvBQ3/5IAyUVc5Qa6+PXjcB1o6ybyGVouJQN+lMFo1dQbbT3
+         bgYv/4FN93klpuski4mai3SqyPK4YtI8iZN2aQ4M9Co7A2rzLXT2eEziEufL0sYIR2RO
+         6RGrXoBNdi9opqjJIKEkBekCpAH32Fjgm4YEG0xfUgizgMKcHaHLkkzg7rtXSOumt5ex
+         nOfqVcgweBItZPqx26qpRZlG/o+Jz0qgoQ/I4vCg1k4/MqSKvHnVWw7+xcbSW5FZOtFI
+         m4jpK9/yRqgigrlQj2t31IIZ9d4Fd8jKx9It5D6EhVr8TwdEUd+v5hSCyFpU7DuNE5e4
+         ee8Q==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1795446203; x=1796051003; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=sZmn/sNxwAfKWKSIqSCT0pljBWlXHOxHLlaVhxvwNo0=;
+        b=WR5lZAldSvjfj+lOaslyoMTbLLNjCchECLmXwmyqGRUij0psg1dDnqTzWvWUkK80Zu
+         4V4yzi4pZtFbZjqRFoKt9Qh00zV/J8WSGfM5o6c2bUR4/wyAC8ppWp5HHeKnDbQks6wk
+         1LRdu0ScaAJrPwNISriwS7WZSHkeIM+l3+OXulbpN3mHs7wxTqiTgkM31R/Vq5suvv6a
+         t+2K2tf5STAbEdpfy93iKaoS4yYfe/XfJXNB/C3ghDL/LLZn/Fzpbd2aWMdqO3llkkgN
+         P8zqqanDEE1E3NnxZIYmxqUpdJVv+1pNY28/89/r8LJd3TOoh8kqzHasFKbAnU01wzia
+         C4Yw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795446203; x=1796051003;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=sZmn/sNxwAfKWKSIqSCT0pljBWlXHOxHLlaVhxvwNo0=;
+        b=zfVOlboXBCiA4AqM+P4GDhuqgIAtwit847hv8Uz7FuqQ4LX0SPmfRD9AmroTyPg3mR
+         3dJBWdXIGyyjcbBhr+ry2ITM0PhcuIY387oYOxpFsJg3OA4Y3D3++8keExM7iUa7HAhb
+         75KJkuDrOKw5+nH//QwCsiHvI8Nw4GbuBZJ+994FSBo/AZTwVbA5lx8lCwUZ5UgpoLLl
+         dFnBAWQs2V1SeLU/+5Ctg3p+NiH99Iw6whWhmG0x7GmWlaTwVU5m7qc2b+yszWNbe2kc
+         jM8nFoL6mZVvd7E0TlDBFoHtl6eq74T0+4l0vQU2qScqvRREERTikDE1Fhk1T9ye5GPC
+         t2AQ==
+X-Forwarded-Encrypted: i=1; AL+hErGud4KgTpwCTzb2Fh0PtdczlkNW1F+gnJgdtFdM/mZILAfitK8CvJKR9JB/oCnAA1XcduTKbi8VYAtjugHisw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/OjW4aMr6q/m86SYIgUdSxiO6suvnK879rdnxeC+dwUureqAbh
+	NcpCgwfdt9CgRMsy/RF7fDs1vbl6v4Bf8dy5dzTVB7RvnxdEvFGXVU35GcRo3Auvf5a1SVRPMao
+	WKRz4Caa2sTjKrs+UtfohD9jW8XOWp4BttKr4F4gaiCKYTcI4ze14UDz5KJF4aXkdzNfryqbbtO
+	0Rt3iwOT6hpjmfETI/cEasaJTQD044BXBR30tf8/cBP28No3RWEQ==
+X-Gm-Gg: AZFdTZfy9xZ2gW9SIrQT4Uu50GZ7ZPScNwuAztYhEjjx9dc56WuP+ckhyZVwAVV28Pd
+	GAjLxGkleUZ2Vleoj3UdCzrzinFvRLeQz6ibBS6y+yJGp5FgHQBcS5K3ZBSC3+M0sD+7YCC8kz5
+	UE/52vg3BFpsto5VTwOaxlaGqZZVOsDS/FUXr1PGA9gWVmsAaa/v+o4KI7EfftQ1jWCMadafLyN
+	xV0so8yJCpPwNzq
+X-Received: by 2002:a17:903:1c9:b0:2ef:fcd8:df75 with SMTP id d9443c01a7336-2f03f18847fmr120968235ad.36.1795446202955;
+        Mon, 23 Nov 2026 07:03:22 -0800 (PST)
+X-Received: by 2002:a17:903:1c9:b0:2ef:fcd8:df75 with SMTP id
+ d9443c01a7336-2f03f18847fmr120967425ad.36.1795446202035; Mon, 23 Nov 2026
+ 07:03:22 -0800 (PST)
+X-Archived-By: <archiver.kernel.org>
+MIME-Version: 1.0
+References: <20261113-pmdomain-rockchip-v3-0-b7039ca30b87@gmail.com>
+In-Reply-To: <20261113-pmdomain-rockchip-v3-0-b7039ca30b87@gmail.com>
+From: Ulf Hansson <ulf.hansson@oss.qualcomm.com>
+Date: Mon, 23 Nov 2026 16:03:09 +0100
+X-Gm-Features: Aa3M54p3bvaqL4-4P5a9q3TQOKbyz1uWNRpSG9PtFinKLWfQ4vS-W5Tpi3kneLA
+Message-ID: <CAPx+jO8KYfvm+=UXKYZv+xBAmGNUU7xtYH9+cJRtOrnQh3GmrQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/3] pmdomain: rockchip: fix the probe error and
+ deferral paths
+To: aiyengar1990@gmail.com
+Cc: Ulf Hansson <ulfh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+        Shawn Lin <shawn.lin@rock-chips.com>,
+        Sebastian Reichel <sebastian.reichel@collabora.com>,
+        Kevin Hilman <khilman@linaro.org>, Caesar Wang <wxt@rock-chips.com>,
+        Elaine Zhang <zhangqing@rock-chips.com>, linux-pm@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+        Yao Zi <me@ziyao.cc>, Igor Pecovnik <igor@armbian.com>,
+        stable@vger.kernel.org
+X-Authority-Analysis: v=2.4 cv=FKKOVOos c=1 sm=1 tr=0 ts=6b0455bb cx=c_pps
+ a=IZJwPbhc+fLeJZngyXXI0A==:117 a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10
+ a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
+ a=_K5XuSEh1TEqbUxoQ0s3:22 a=VwQbUJbxAAAA:8 a=bC-a23v3AAAA:8 a=pGLkceISAAAA:8
+ a=0OowS_b49qHy5rEh488A:9 a=QEXdDO2ut3YA:10 a=uG9DUKGECoFWVXl0Dc02:22
+ a=FO4_E8m0qiDe52t0p3_H:22
+X-Proofpoint-ORIG-GUID: oIDCU_rZI-nSB5uKksw4e-EMwPMN-6ML
+X-Proofpoint-GUID: oIDCU_rZI-nSB5uKksw4e-EMwPMN-6ML
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTIzMDA1OSBTYWx0ZWRfX4lf1T7tTqn9b
+ Tgl7uZbBZomHC2ntN5I7vc177aNjrCEqA6UsZqCy9byki+GDHX5avzW25TZVKn03arfO+dzaY3v
+ J4GldIDWrb0YoOiJLWchIabTSP/zuAA=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTIzMDA1OSBTYWx0ZWRfX6pe/r8ZSbi2B
+ mT0kXLqWY9mhCaZfTTJ7nI+wpwiV+28lDB/TwwcLhC7lR2/wTLuYoaKU/5KcCbdhXZkWqB9Nnt2
+ VJJ69UDNvoCNIEDki9FVNMMEPRqH/6/MUEUFJVdQB9Y+p8MXWJmjmiDJO7gFo84AWo12klC9hOc
+ WpS8FckfTSFerEwzxUqkf0r7qE8Qezo2Il5yaULDif8l5h4w9GumttqzFLtBCwtXV9LSvgDwCVR
+ YRluEXbwTLNJe6PXkia+DCqJexohybrF4J/Pv2UAvf8vnBhwnYTnBSLbuFA+Q1ALcWb+N+OGevv
+ aBE1bJcWiZu83r5EuramzDeayngoMCV4H78VeNfe0RlW/N3HCiUtnJxsD0zjL7QFbl6x3G99RFj
+ kBt/HT+459DWxP+4ktPRHfbfQMcUrMJ9Q1OCBAJVpql+2mWXW0gVj+WlDacqB31jGXuX+o9oT32
+ cT+HTiTpgS2CVikjpwA==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-11-23_03,2026-11-23_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 spamscore=0 bulkscore=0 priorityscore=1501 malwarescore=0
+ lowpriorityscore=0 impostorscore=0 phishscore=0 suspectscore=0 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611230059
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_063726_658129_6BF15311 
-X-CRM114-Status: GOOD (  41.50  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261123_070325_543796_2D24C8E4 
+X-CRM114-Status: GOOD (  25.14  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,291 +169,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 2026-11-20 15:58, Philipp Zabel wrote:
-> > +
-> > +/* Error status bits used to decide whether a hardware reset is needed */
-> > +#define VDPU720_ERR_MASK		(VDPU720_BUS_ERR | VDPU720_DEC_ERR | \
-> > +					 VDPU720_TIMEOUT | VDPU720_BUF_EMPTY)
-> > +
-> > +/*
-> > + * VPU720 IRQ clear mask.
-> > + *
-> > + * Some revisions require a two-step IRQ acknowledgment before checking
-> > + * VDPU720_IRQ_RAW: write the status back with only the enable and control
-> > + * bits kept, then write 0 to fully clear.  The downstream BSP computes the
-> > + * first value as
-> > + *
-> > + *   clr = (~(0x00fe7f40 & status)) & (0xff0180bf & status)
-> > + *
-> > + * The two masks are complements, so that is status & 0xff0180bf: bits 0-5,
-> > + * 7, 15, 16 and 24-31 are kept, IRQ_RAW and the status bits 8-14 dropped.
-> > + *
-> > + * It is applied unconditionally here.  The BSP gates it on the revision in
-> > + * VDPU720_REG_VERSION matching 0xdb1f0006 exactly, and the RK3588 reports
-> > + * 0xdb1f0005, so it is not needed on that part.  The extra write is
-> > + * harmless there and saves a revision check that would need silicon we do
-> > + * not have to validate.
-> > + */
-> > +#define VDPU720_IRQ_CLR_KEEP		0xff0180bf
-> > +
-> > +#define VDPU720_REG_SYS			0x008
-> > +#define VDPU720_FORCE_SOFTRST		BIT(17)	/* set when dec_e=0 before soft-reset */
-> > +#define VDPU720_FILL_DOWN_E		BIT(24)	/* fill bottom padding rows */
-> > +#define VDPU720_FILL_RIGHT_E		BIT(25)
-> > +#define VDPU720_OUT_SEQ			BIT(26)	/* 0=raster, 1=tile */
-> > +#define VDPU720_YUV_OUT_FMT		GENMASK(29, 27)
-> > +#define VDPU720_YUV_OUT_FMT_NATIVE	0	/* no format conversion */
-> 
-> This is never used.
-
-It will be in v8 due to adding NV16 support ;)
-
-> 
-> > +#define VDPU720_YUV_OUT_FMT_NV12	3	/* output as NV12 */
-> > +
-> > +#define VDPU720_REG_PIC_SIZE		0x00c
-> > +#define VDPU720_PIC_W_M1		GENMASK(15, 0)
-> > +#define VDPU720_PIC_H_M1		GENMASK(31, 16)
-> > +
-> > +#define VDPU720_REG_PIC_FMT		0x010
-> > +#define VDPU720_JPEG_MODE		GENMASK(2, 0)
-> > +#define VDPU720_JPEG_MODE_YUV400	0
-> > +#define VDPU720_JPEG_MODE_YUV411	1
-> > +#define VDPU720_JPEG_MODE_YUV420	2
-> > +#define VDPU720_JPEG_MODE_YUV422	3
-> > +#define VDPU720_JPEG_MODE_YUV440	4
-> > +#define VDPU720_JPEG_MODE_YUV444	5
-> 
-> So the driver can decode 4:4:4 JPEGs but always subsamples and outputs
-> them as 4:2:0 (NV12)?
-
-For simplicity, yes. I added NV16 support for 4:2:2 sampling for the
-next round, as that's a common format for webcams. I'll leave 4:4:4
-to NV24 for a later exercise.
-
-> > +#include <media/v4l2-jpeg.h>
-> > +#include <media/v4l2-mem2mem.h>
-> > +#include <media/videobuf2-core.h>
-> > +#include <media/videobuf2-dma-contig.h>
-> > +
-> > +#include "rkjpegd-vdpu720-regs.h"
-> > +
-> > +#define RKJPEGD_NAME "rockchip-jpegd"
-> > +
-> > +/*
-> > + * The reference manual gives 48x48 to 65536x65536, and a frame header cannot
-> > + * describe more than 65535.  The coded format steps in RKJPEGD_CODED_STEP.
-> > + * Beyond that only the decoded frame has to fit a 32 bit sizeimage, see
-> > + * rkjpegd_raw_fits().
-> > + */
-> > +#define RKJPEGD_MIN_WIDTH	48
-> > +#define RKJPEGD_MIN_HEIGHT	48
-> > +#define RKJPEGD_MAX_SIZE	65528
-> 
-> This seems inconsistent. Why not MIN_SIZE or MAX_WIDTH/HEIGHT?
-
-Ok, will change to RKJPEGD_MIN_SIZE
-
-> 
-> 
-> [...]
-> > +/* The capture format and crop a frame decodes to. */
-> > +static void rkjpegd_fill_hdr_fmt(struct v4l2_pix_format_mplane *pix_mp,
-> > +				 struct v4l2_rect *crop,
-> > +				 const struct v4l2_jpeg_header *hdr)
-> > +{
-> > +	rkjpegd_fill_raw_fmt(pix_mp, rkjpegd_raw_pixelformat(hdr),
-> > +			     ALIGN(hdr->frame.width, RKJPEGD_RAW_STEP),
-> > +			     ALIGN(hdr->frame.height, RKJPEGD_RAW_STEP));
-> 
-> Aligning to 16 is safe, but for e.g. grayscale (or YUV 4:4:4) I'd
-> expect aligning to 8 to be enough (see vdpu720_mcu_width/height()).
-
-The width has to stay at 16 pixel alignment, as the hardware takes its
-stride in units of 16 pixels.
-
-For the height I'd say we have to play around with the FILL_DOWN_E bit.
-When set, the reference manual says: "Fill picture height to multiple of
-16 pixels". Right now we always have this bit set, same as the Rockchip
-driver does. I'd rather leave this up for a later exercise to dig deeper
-into that.
-
-> 
-> > +	crop->left = 0;
-> > +	crop->top = 0;
-> > +	crop->width = hdr->frame.width;
-> > +	crop->height = hdr->frame.height;
-> > +}
-> > +
-> [...]
-> > +/*
-> > + * The capture format as userspace sees it.  Once the decoder stopped at a
-> > + * format change, that is the one of the frame it stopped in front of.
-> > + */
-> > +static void rkjpegd_get_cap_fmt(struct rkjpegd_ctx *ctx,
-> > +				struct v4l2_pix_format_mplane *pix_mp,
-> > +				struct v4l2_rect *crop)
-> > +{
-> > +	struct vb2_v4l2_buffer *src;
-> > +
-> > +	if (READ_ONCE(ctx->stopped_at_change)) {
-> 
-> Why does TRY_FMT depend on decoder state?
-
-The format is dictated by the JPEG stream. It depends on the decoder
-state to support a midstream format change. When stopped at a format
-change we have to report the new format, otherwise the current format.
-
-> 
-> > +		src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-> > +		rkjpegd_fill_hdr_fmt(pix_mp, crop,
-> > +				     &vb2_to_rkjpegd_src_buf(&src->vb2_buf)->header);
-> > +		return;
-> > +	}
-> > +
-> > +	*pix_mp = ctx->dst_fmt;
-> > +	*crop = ctx->crop;
-> > +}
-> [...]
-> > +static int rkjpegd_enum_framesizes(struct file *file, void *priv,
-> > +				   struct v4l2_frmsizeenum *fsize)
-> > +{
-> > +	/* The decoded format follows the bitstream, nothing to enumerate. */
-> > +	if (fsize->pixel_format == V4L2_PIX_FMT_NV12 ||
-> > +	    fsize->pixel_format == V4L2_PIX_FMT_GREY)
-> > +		return -ENOTTY;
-> > +
-> > +	if (fsize->pixel_format != V4L2_PIX_FMT_JPEG)
-> > +		return -EINVAL;
-> > +
-> > +	if (fsize->index)
-> > +		return -EINVAL;
-> > +
-> > +	fsize->type = V4L2_FRMSIZE_TYPE_STEPWISE;
-> > +	fsize->stepwise.min_width = RKJPEGD_MIN_WIDTH;
-> > +	fsize->stepwise.max_width = RKJPEGD_MAX_SIZE;
-> > +	fsize->stepwise.step_width = RKJPEGD_CODED_STEP;
-> > +	fsize->stepwise.min_height = RKJPEGD_MIN_HEIGHT;
-> > +	fsize->stepwise.max_height = RKJPEGD_MAX_SIZE;
-> > +	fsize->stepwise.step_height = RKJPEGD_CODED_STEP;
-> 
-> This is the coded size. I'd expect this to be continuous. You just have
-> to make sure that the decoded buffer is properly aligned and set the
-> PADDED selection rectangle accordingly.
-
-Oh, yes. That can indeed be continuous. Will change.
-
-> > +
-> [...]
-> > +
-> > +	rkjpegd_irq_done(jpegd, state);
-> 
-> Why is this hidden in a separate function call?
-
-Likely historic reasons. I'll inline the code here.
-
-> 
-> > +	return IRQ_HANDLED;
-> > +}
-> > +
-> > +static void rkjpegd_watchdog(struct work_struct *work)
-> > +{
-> > +	struct rkjpegd_dev *jpegd = container_of(to_delayed_work(work),
-> > +						 struct rkjpegd_dev,
-> > +						 watchdog_work);
-> > +	/* Only armed while a job runs, so there is always a context. */
-> > +	struct rkjpegd_ctx *ctx = v4l2_m2m_get_curr_priv(jpegd->m2m_dev);
-> > +
-> > +	dev_err(jpegd->dev, "frame processing timed out\n");
-> > +
-> > +	rkjpegd_vdpu720_reset(ctx);
-> > +	rkjpegd_job_finish(ctx, VB2_BUF_STATE_ERROR);
-> > +}
-> [...]
-> > +static int rkjpegd_buf_out_validate(struct vb2_buffer *vb)
-> > +{
-> > +	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-> > +
-> > +	vbuf->field = V4L2_FIELD_NONE;
-> 
-> Hmm, "drivers can use this to validate userspace-provided information".
-> Is this really validation?
->
-> It seems a lot of drivers have exactly the same function:
-> 
->   vpu_vb2_buf_out_validate()
->   cedrus_buf_out_validate()
->   mdp_m2m_buf_out_validate()
->   vb2ops_venc_buf_out_validate()
->   tegra_buf_out_validate()
->   dw100_buf_out_validate()
->   mxc_jpeg_buf_out_validate()
->   rkvdec_buf_out_validate()
->   hantro_buf_out_validate()
->   vicodec_buf_out_validate()
->   visl_buf_out_validate()
-> 
-> At least e5010_buf_out_validate() and
-> dma2d_buf_out_validate() warn or fail, respectively, if the field value
-> is invalid.
-> 
-> Is overwriting field to NONE what this callback was designed for, and
-> if so, does this warrant a common helper?
-
-1f2f510753be ("media: vivid: add buf_out_validate callback") which Hans
-upstreamed along with the patch adding the buf_out_validate hook
-suggests it's really for validation rather than normalisation.
-
-However, buf_out contains the coded stream. The field order has no
-meaning in a coded stream, which is why I think that most decoder
-drivers just normalize to a sane value.
-
-Yes, this sounds an opportunity to add a generic helper function. If
-that's desired I would add one as a separate series though.
-
-> 
-> > +
-> > +	return 0;
-> > +}
-> > 
-> [...]
-> > +
-> > +static int rkjpegd_resume(struct device *dev)
-> > +{
-> > +	struct rkjpegd_dev *jpegd = dev_get_drvdata(dev);
-> > +	int ret;
-> > +
-> > +	ret = pm_runtime_force_resume(dev);
-> 
-> I'd expect this to not call v4l2_m2m_resume() if runtime PM resume
-> failed.
-
-Yes. Will change to return early when it fails.
-
-Regards,
-  Sascha
-
-
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBOb3YgMTMsIDIwMjYgYXQgOTo0MuKAr0FNIEFydW4gSXllbmdhciB2aWEgQjQgUmVs
+YXkKPGRldm51bGwrYWl5ZW5nYXIxOTkwLmdtYWlsLmNvbUBrZXJuZWwub3JnPiB3cm90ZToKPgo+
+IEZpeGVzIGZvciBhIFJvY2tjaGlwIHBvd2VyIGRvbWFpbiBjb250cm9sbGVyIHByb2JlIHRoYXQg
+ZmFpbHMgb3IgZGVmZXJzLAo+IGZvciBleGFtcGxlIG9uIGEgZG9tYWluIGNsb2NrIHRoYXQgaXMg
+bm90IGF2YWlsYWJsZSB5ZXQuIFRoZXkgYXBwbHkgb24KPiB0b3Agb2YgMS8yIG9mIFlhbyBaaSdz
+IHNlcmllcyBbMV0sIHdoaWNoIGhhcyB0byBnbyBpbiBmaXJzdDsgcGF0Y2ggMgo+IHJlcGxhY2Vz
+IDIvMiBvZiBbMV0uIE9uIHRoZSBwbWRvbWFpbiBuZXh0IGJyYW5jaCwgMS8yIG9mIFsxXSBjb25m
+bGljdHMKPiB3aXRoICJjeWNsZSBhbiBvcHRpb25hbCBwb3dlci1kb21haW4gcmVzZXQgb24gcG93
+ZXItb24iIGluIG9uZSBsaW5lLgoKVGhpcyBzb3VuZHMgbWVzc3kuCgpJIHRyaWVkIHRvIGFwcGx5
+IHBhdGNoMSBvbiBteSBmaXhlcyBicmFuY2ggd2hpY2ggZmFpbGVkLiBQbGVhc2UKcmUtYmFzZSB0
+aGlzIGFuZCBzZW5kIGEgbmV3IHZlcnNpb24uCgpGb3IgY2hhbmdlcyB0aGF0IGFyZSB0YXJnZXRl
+ZCBmb3IgZml4ZXMsIHBsZWFzZSBzZW5kIHRoZW0gc2VwYXJhdGVseQpmcm9tIHRoZSBvdGhlciBp
+bXByb3ZlbWVudHMuCgpLaW5kIHJlZ2FyZHMKVWZmZQoKPgo+IFRlc3RlZCB3aXRoIHYxIG9uIGFu
+IE9yYW5nZSBQaSA1IChSSzM1ODhTKSwgdjcuMyBiYXNlZCBrZXJuZWwsIHdpdGggYQo+IHRlc3Qg
+ZGV2aWNlIHRyZWUgdGhhdCBtYWtlcyB0aGUgUERfRkVDIGNsb2NrIGFwcGVhciBsYXRlOiBubyBm
+cmVlZAo+IGRvbWFpbiBsZWZ0IG9uIGdwZF9saXN0LCBubyAtNTE3IGVycm9ycywgYW5kIHRoZSBj
+b250cm9sbGVyIGJpbmRzIGxhdGVyCj4gd2l0aCBhbGwgMjYgZG9tYWlucy4gVGhlIHYyL3YzIGNo
+YW5nZXMgYXJlIGJ1aWxkLXRlc3RlZCBvbmx5Lgo+Cj4gWzFdIGh0dHBzOi8vbG9yZS5rZXJuZWwu
+b3JnL3IvMjAyNjExMDUwMDEyNTcuMTM2ODI2Ni0xLW1lQHppeWFvLmNjCj4KPiBEZXZlbG9wZWQg
+d2l0aCBDbGF1ZGUgKEFudGhyb3BpYyksIHdoaWNoIHdyb3RlIHRoZSBjb2RlIGFuZCB0aGUgY29t
+bWl0Cj4gbWVzc2FnZXMuIEkgcmV2aWV3ZWQgZXZlcnkgY2hhbmdlLgo+Cj4gU2lnbmVkLW9mZi1i
+eTogQXJ1biBJeWVuZ2FyIDxhaXllbmdhcjE5OTBAZ21haWwuY29tPgo+IC0tLQo+IENoYW5nZXMg
+aW4gdjM6Cj4gLSBTcGxpdCAyLzIgaW50byB0aGUgZml4ICgyLzM6IGRlZmVycmFsLCBwbV9xb3Mg
+ZXJyb3IgY29kZSwgY2FsbGVycycKPiAgIG1lc3NhZ2VzKSBhbmQgYSBjbGVhbi11cCBvZiB0aGUg
+b3RoZXIgbWVzc2FnZXMgd2l0aG91dCBGaXhlcyB0YWdzCj4gICAoMy8zKSAoWWFvIFppKQo+IC0g
+U2hvcnRlciBjb21taXQgbWVzc2FnZXMgYW5kIGNvbW1lbnRzIChIZWlrbyBTdHVlYm5lcikKPiAt
+IE5vIGNvZGUgY2hhbmdlIGZyb20gdjIgYXBhcnQgZnJvbSB0aGUgY29tbWVudHMgaW4gMS8zCj4g
+LSBMaW5rIHRvIHYyOiBodHRwczovL3BhdGNoLm1zZ2lkLmxpbmsvMjAyNjExMTItcG1kb21haW4t
+cm9ja2NoaXAtdjItMC01Y2Q5NDJhMjNkZjdAZ21haWwuY29tCj4KPiBDaGFuZ2VzIGluIHYyOgo+
+IC0gRHJvcHBlZCAicG1kb21haW46IHJvY2tjaGlwOiBwdXQgb25seSB0aGUgY2xvY2tzIHRoYXQg
+d2VyZSBnb3Qgb24KPiAgIGVycm9yIiBmb3IgMS8yIG9mIFsxXSwgd2hpY2ggZml4ZXMgdGhlIHNh
+bWUgYnVnCj4gLSAyLzI6IGRyb3AgdGhlIGNhbGxlcnMnIG1lc3NhZ2VzIGFuZCB1c2UgZGV2X2Vy
+cl9wcm9iZSgpIHdoZXJlIHRoZQo+ICAgZXJyb3JzIGhhcHBlbiAoU2ViYXN0aWFuIFJlaWNoZWwp
+Cj4gLSAyLzI6IGEgcG1fcW9zIHN5c2NvbiBlcnJvciBrZWVwcyBpdHMgb3duIGNvZGUKPiAtIExp
+bmsgdG8gdjE6IGh0dHBzOi8vcGF0Y2gubXNnaWQubGluay8yMDI2MTExMC1wbWRvbWFpbi1yb2Nr
+Y2hpcC12MS0wLTZiOWZhNmViYWE4NkBnbWFpbC5jb20KPgo+IC0tLQo+IEFydW4gSXllbmdhciAo
+Myk6Cj4gICAgICAgcG1kb21haW46IHJvY2tjaGlwOiByZW1vdmUgc3ViZG9tYWluIGxpbmtzIGJl
+Zm9yZSB0aGUgZG9tYWlucyBvbiBlcnJvcgo+ICAgICAgIHBtZG9tYWluOiByb2NrY2hpcDogZG9u
+J3QgcmVwb3J0IHByb2JlIGRlZmVycmFsIGFzIGFuIGVycm9yCj4gICAgICAgcG1kb21haW46IHJv
+Y2tjaGlwOiB1c2UgZGV2X2Vycl9wcm9iZSgpIGZvciB0aGUgb3RoZXIgcHJvYmUgZXJyb3JzCj4K
+PiAgZHJpdmVycy9wbWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5zLmMgfCAxMzEgKysrKysrKysr
+KysrKysrKysrKy0tLS0tLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA3NiBpbnNlcnRpb25z
+KCspLCA1NSBkZWxldGlvbnMoLSkKPiAtLS0KPiBiYXNlLWNvbW1pdDogNzQ3NWVhOGI1ODYxNmIz
+M2MwNGFmYjk3NmNmMGZiYWFkOWRkNjNmYgo+IGNoYW5nZS1pZDogMjAyNjExMTAtcG1kb21haW4t
+cm9ja2NoaXAtMzQ5N2EyZTdmZGY1Cj4gcHJlcmVxdWlzaXRlLXBhdGNoLWlkOiBjMmYwYzVlYjY2
+NTFiYWE3NDRmNjYzNDJkYjYzNDg1YTY2ODVmYjcxCj4KPiBCZXN0IHJlZ2FyZHMsCj4gLS0KPiBB
+cnVuIEl5ZW5nYXIgPGFpeWVuZ2FyMTk5MEBnbWFpbC5jb20+Cj4KPgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
