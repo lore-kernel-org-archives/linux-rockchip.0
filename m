@@ -2,59 +2,95 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9EC8A606A31E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 10:47:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C0371606A31F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 10:54:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=P756B9tH
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=n8EQgK30;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=googlemail.com header.i=@googlemail.com header.a=rsa-sha256 header.s=20260707 header.b=BJWhJ7WD
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=7cjtkNOKAOJ0+G8HScqwGubOAZ60oIGnJWx5fipd81E=; b=P756B9tHQzNKmszGb1rlvObh+N
-	w2ZvqZBI7/Z0qfiGe3Fa+MymI1T6Qkwy08PZxLM8RmYOx5bJYrBQkY5KLC4J2kup01lKKGmKytaHu
-	Qa2FHYVxJ3T8wR4TQkL1TXD3loZCbNtJUYpWDWiKZzuKyti6Z3Lv0fC7PSPmj4669FkPfwaVcxo0S
-	VDPoNIWGW483nLmAetFHOAVCARvYpssfaTieSuznP3ACb1DAygvI/WywzDdAPys1WGP+Y+efPOfSL
-	RdxxrSqrpDY/+v+KpUSSCKDBv0NHS5hz7QbqN6WSmt1XSqfod0+SlFZDuqd0y8jLC+O14+svR1Di6
-	grIa/V5A==;
+	bh=7lN/vToJNKKZI/RD4kR0qupaaGhKCvCcAMvkKpgppXw=; b=n8EQgK3065i8nT3iC1UMvyMx1M
+	cFXs751d92YLVDjHzjJOSl608hrCIwvEXdyMQZphE4y6iZQFwoFqSBAxS+XqNly6X8CAuVL507dVg
+	Godqiw31x1cBRhP/HwJc/+mRkB2NObuVe0WxQcOFaXilntV00UBRITLl9dXIqSTzra6AG7vPIGFWy
+	2hjST89yuBPvSyD2H+0UFYz+ChsSfWdKAcgNwV9BOrGyhWXqR3MtNDst1x75Br49VQGMq1ufEdfyx
+	3ZkDk26Uj+zlHOECIdppc+3gPkZZn9p7j+As5vqUO2TYIHObmOBWufrSH69yfLNtgwTLTG6xiFRih
+	zx4h35Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVRa0-000000031tG-1qmH;
-	Mon, 23 Nov 2026 10:47:24 +0000
-Received: from smtp.gentoo.org ([2001:470:ea4a:1:5054:ff:fec7:86e4])
+	id 1xVRgW-000000033FK-1Wnj;
+	Mon, 23 Nov 2026 10:54:08 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVRZx-000000031rv-3IH5
+	id 1xVRgT-000000033DM-2Z3l
 	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Nov 2026 10:47:22 +0000
-Received: from 6.1.6.a.a.4.0.0.3.b.d.7.8.f.c.9.c.6.e.0.c.6.2.0.0.b.8.0.1.0.0.2.ip6.arpa (unknown [IPv6:2001:8b0:26c:e6c:9cf8:7db3:4a:a616])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: chewi)
-	by smtp.gentoo.org (Postfix) with ESMTPSA id BEE2F342BA3;
-	Mon, 23 Nov 2026 10:47:18 +0000 (UTC)
-Message-ID: <39bd808037e8eed09e40f7731a41e71e58d10070.camel@gentoo.org>
-Subject: Re: PCI: dw-rockchip: Unable to boot Quartz64 Model B from NVMe
- since reset changes
-From: James Le Cuirot <chewi@gentoo.org>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Wilfred Mallawa <wilfred.mallawa@wdc.com>, Manivannan Sadhasivam	
- <manivannan.sadhasivam@oss.qualcomm.com>, Bjorn Helgaas
- <bhelgaas@google.com>, 	linux-pci@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Shawn Lin	 <shawn.lin@rock-chips.com>
-Date: Mon, 23 Nov 2026 10:47:03 +0000
-In-Reply-To: <av7Vvw5CpQo0gt1d@ryzen>
-References: <08cc96c5171fc969b074371692e6d95d46eba60b.camel@gentoo.org>
-	 <av7Vvw5CpQo0gt1d@ryzen>
-User-Agent: Evolution 3.60.2 
+	Mon, 23 Nov 2026 10:54:07 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-4a2d6d01ecbso16723815e9.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 23 Nov 2026 02:54:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlemail.com; s=20260707; t=1795431243; x=1796036043; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=Uwx0NG3uKtnrDSAtqR9l2sngz111pr86ksoehzxrkGc=;
+        b=BJWhJ7WDrewjysDtS2ilhnrA/ihuAw5ryoGbnPauSvv+brWlVycSm74VRe5KN3aN4l
+         UhSC/2VqVRISSBrCsedR09ioavKOcgZa0Bv6Jcwzhyew46TtY7FIfqub0ujpHmRMccIr
+         rvBBILsSpl9FwLIOCAzuW6XK35lHfdVDxZpoGCDR+fAqYHht4rbinNppQPAljdszhvlj
+         hIH3rdFsg+oPhTZ2gRvcK9KLy0U1HdpSEAlHdH5FeEgcySTEB8w31taJMzuyC0lmtQxG
+         BHb06Blm+dlqOf6qr2INmp7gBC/M5uDmd94IcXKM7l6vyd6butzzndvfqNE2R9edhOq6
+         CyJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795431243; x=1796036043;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=Uwx0NG3uKtnrDSAtqR9l2sngz111pr86ksoehzxrkGc=;
+        b=OFwjLqkITre+iwzgBn2ZsxxRuw7RJsiOc6KcKt5RQLWgjsy91kbtDynHaftq5soQmi
+         1SebisCdZCJJPWb/A5OwWQcj4PCbINsB2uLj8cj6bx9Hkfik1GXAqyWbuQwxIn1X9Vri
+         V6+UYlRk0werogScupKqRj7emmbqQn8Payc9PBIgu0mHt22W94cYVcxuBxBpR/4i6bPR
+         idVxqg+mil5xAJ0VWDoMw8+nbFWSvU/7/KZSkU+gNiGFQoAPAgbuBGv1B0Jg3fcGa8zW
+         6/IuKAFwJ7JWFRy4ctsH+/k6ZEC/6/9RsowvLAD0bgViiOYx6DGVH+Z9NFm5BV2glQ7C
+         WyIg==
+X-Forwarded-Encrypted: i=1; AL+hErEohexRuiwxgjoVKM+EhE4/vnjL2kO0HgM65eCIR93fQ4UiRlv6FvLoukZdZfFxLeWbjpNUJ+amVQ8hvsrhNg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9PHqvFAJp0l3hlqb1e+f6Xv/0eUj5MEPaVEcFIk+1jwTKauGPy
+	r/rivQpCh302t2/5UwS6T6Ey8BQqyBamlwhCuegTYjMGUM5lIYv460JB
+X-Gm-Gg: AZFdTZdxQ5J/NZYUnAu+5UGgo2XY7eP8RA00ZXM6NOEDTgPeDROiAr49kxrNPIJgRzg
+	muhLUks/LfzIvg9uP4tU3SVyuRVFIPVMZO4fbVYryAuA6pXlIhcm0hJNdOd6TQnlzTkkNGxwsbV
+	/7+P9pmagXwTjqO/suPwPatFsAKcngvsS9hhLGipjzMjhf69tyruSmS8LlUjpuRgnmX3ECg+ia3
+	FueFPXYG1Ui9PbUPW+571Ts46J2qmbSCk87tXxXxysgjXKhHDlW6nBNhl7OX5AXhIliHKUpcY7q
+	MSmIvIy5gEIFyqWiXnexCC+r3rxM1ZJ4e45nNn0p9rTIJbMQbkR5pZkohBhCo9QEJO2Q3HJuTTR
+	M3r8NZHGbIHsoEkcko2r+6zGBHeqZ7+QZYmcfNxS8Kk18fG8Rq3c9eoWyNHX12go1/nesrUvaTk
+	wVrs7ZTN2DAnNDnxlk7BA0WdN7XithUqUXlGrsMh4z2dIpBtcOC0MfM2VBEcV7VkxFpIyyIBhGz
+	lQRdk4dNrRS196kL8aLY4OOJxB+vofG42+HXfIh8giwovI5CPIv8KpFQtoSy+//S4eZVVfH1yYS
+	VZKLw5kcMXZgor2FudqSNNka7vvZXgxv1weO9XHntQf96emFGLF2S8De3vW5q3SLa7KivKkcyEN
+	Aw1atkhzeWqnmYPDzLwek850GGmuP5tnbHO8=
+X-Received: by 2002:a05:600c:5395:b0:4b1:4017:c4f4 with SMTP id 5b1f17b1804b1-4bb8880ca2fmr222661655e9.20.1795431243355;
+        Mon, 23 Nov 2026 02:54:03 -0800 (PST)
+Received: from nixos.speedport.ip (p200300facf0c97e239628f9633b68e4c.dip0.t-ipconnect.de. [2003:fa:cf0c:97e2:3962:8f96:33b6:8e4c])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb85399d52sm332544245e9.6.2026.11.23.02.54.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Nov 2026 02:54:02 -0800 (PST)
+From: Cenk Uluisik <cenk.uluisik@googlemail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] arm64: dts: rockchip: Enable Wi-Fi and Bluetooth on Orange Pi 5B
+Date: Mon, 23 Nov 2026 11:53:58 +0100
+Message-ID: <20261123105358.640680-1-cenk.uluisik@googlemail.com>
+X-Mailer: git-send-email 2.56.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_024721_864824_47CCFED7 
-X-CRM114-Status: GOOD (  27.84  )
-X-Spam-Score: -4.2 (----)
+X-CRM114-CacheID: sfid-20261123_025405_658680_87AEAF62 
+X-CRM114-Status: GOOD (  10.56  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,183 +100,145 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6002435820472435202=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+The Orange Pi 5B carries an AP6275P module: a BCM43752 Wi-Fi chip on
+PCIe plus a companion Bluetooth chip on UART9.
 
---===============6002435820472435202==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-zwn4MhrHzB+5uyxiHqhx"
+Describe the Wi-Fi side below the pcie2x1l2 controller. The module's
+WL_REG_ON line (GPIO0_PD0) is modelled as a fixed regulator and used
+as the PCIe 3.3V supply, and the PCIe reset line (GPIO3_PD1) gets its
+pinctrl group.
 
+Describe the Bluetooth side on UART9 with hardware flow control.
+GPIO3_PA6 drives BT_REG_ON, GPIO0_PC6 is BT_WAKE, GPIO0_PC5 is the
+host wake interrupt, and the 32.768 kHz LPO clock comes from the
+hym8563 RTC.
 
---=-zwn4MhrHzB+5uyxiHqhx
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The plain Orange Pi 5 has no wireless module, so keep these nodes in
+the 5B device tree and leave rk3588s-orangepi-5-5b.dtsi shared with
+it untouched.
 
-On Thu, 2026-11-19 at 11:55 +0100, Niklas Cassel wrote:
-> On Wed, Nov 18, 2026 at 04:03:11PM +0000, James Le Cuirot wrote:
-> > Hello Wilfred,
-> >=20
-> > Unfortunately, since your commit "PCI: dw-rockchip: Implement
-> > .reset_root_port() and use for link down" (b376b3ff9cb0527), I have bee=
-n
-> > basically unable to boot my Quartz64 Model B from NVMe. Sometimes if I =
-wait
-> > long enough, it will eventually work, albeit very slowly. If I revert t=
-his
-> > (and 4e9f69d08253) against 7.3.5, then it boots normally. Here is the r=
-elevant
-> > output.
-> >=20
-> > rockchip-dw-pcie 3c0000000.pcie: host bridge /pcie@fe260000 ranges:
-> > rockchip-dw-pcie 3c0000000.pcie:       IO 0x00f4100000..0x00f41fffff ->=
- 0x00f4100000
-> > rockchip-dw-pcie 3c0000000.pcie:      MEM 0x00f4200000..0x00f5ffffff ->=
- 0x00f4200000
-> > rockchip-dw-pcie 3c0000000.pcie:      MEM 0x0300000000..0x033fffffff ->=
- 0x0300000000
-> > rockchip-dw-pcie 3c0000000.pcie: iATU: unroll T, 8 ob, 8 ib, align 64K,=
- limit 8G
-> > rockchip-dw-pcie 3c0000000.pcie: PCIe Gen.2 x1 link up
->=20
-> Here the link is reported as being up, at Gen2 speed.
->=20
->=20
-> > rockchip-dw-pcie 3c0000000.pcie: PCI host bridge to bus 0000:00
-> > pci_bus 0000:00: root bus resource [bus 00-0f]
-> > pci_bus 0000:00: root bus resource [io  0x0000-0xfffff] (bus address [0=
-xf4100000-0xf41fffff])
-> > pci_bus 0000:00: root bus resource [mem 0xf4200000-0xf5ffffff]
-> > pci_bus 0000:00: root bus resource [mem 0x300000000-0x33fffffff]
-> > pci 0000:00:00.0: [1d87:3566] type 01 class 0x060400 PCIe Root Port
-> > pci 0000:00:00.0: ROM [mem 0x00000000-0x0000ffff pref]
-> > pci 0000:00:00.0: PCI bridge to [bus 01-ff]
-> > pci 0000:00:00.0:   bridge window [io  0x0000-0x0fff]
-> > pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
-> > pci 0000:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref=
-]
-> > pci 0000:00:00.0: supports D1 D2
-> > pci 0000:00:00.0: PME# supported from D0 D1 D3hot
-> > pci_bus 0000:01: busn_res: can not insert [bus 01-ff] under [bus 00-0f]=
- (conflicts with (null) [bus 00-0f])
-> > pci 0000:01:00.0: [1e0f:0009] type 00 class 0x010802 PCIe Endpoint
-> > pci 0000:01:00.0: BAR 0 [mem 0x00000000-0x00003fff 64bit]
-> > pci 0000:01:00.0: 4.000 Gb/s available PCIe bandwidth, limited by 5.0 G=
-T/s PCIe x1 link at 0000:00:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe=
- x4 link)
-> > pci 0000:01:00.0: ASPM: default states L1
-> > pci 0000:00:00.0: bridge window [mem 0xf4200000-0xf42fffff]: assigned
-> > pci 0000:00:00.0: ROM [mem 0xf4300000-0xf430ffff pref]: assigned
-> > pci 0000:01:00.0: BAR 0 [mem 0xf4200000-0xf4203fff 64bit]: assigned
-> > pci 0000:00:00.0: PCI bridge to [bus 01-ff]
-> > pci 0000:00:00.0:   bridge window [mem 0xf4200000-0xf42fffff]
-> > pci_bus 0000:00: resource 4 [io  0x0000-0xfffff]
-> > pci_bus 0000:00: resource 5 [mem 0xf4200000-0xf5ffffff]
-> > pci_bus 0000:00: resource 6 [mem 0x300000000-0x33fffffff]
-> > pci_bus 0000:01: resource 1 [mem 0xf4200000-0xf42fffff]
-> > pcieport 0000:00:00.0: PME: Signaling with IRQ 86
-> > pcieport 0000:00:00.0: AER: enabled with IRQ 95
-> > pcieport 0000:00:00.0: Recovering Root Port due to Link Down
->=20
-> Here you get a link down IRQ.
->=20
-> Why is the link going down?
->=20
-> You seem to have already trained in Gen2, and your board seems to only
-> support Gen2 (so even if it was related to speed change - normally a
-> speed should not trigger a link down - a speed change does not seem to
-> happen here).
->=20
->=20
-> Perhaps you can enable CONFIG_PCIE_DW_DEBUGFS and then look at
-> /sys/kernel/debug/dwc_pcie_<dev>/
-> to try to see if that gives any more information about why the link goes =
-down.
+Signed-off-by: Cenk Uluisik <cenk.uluisik@googlemail.com>
+---
+ .../boot/dts/rockchip/rk3588s-orangepi-5b.dts | 88 +++++++++++++++++++
+ 1 file changed, 88 insertions(+)
 
-Gave that a try but it revealed nothing. All the counter values were 0.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
+index 8af174777..384a70e4f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5b.dts
+@@ -12,8 +12,96 @@ aliases {
+ 		mmc0 = &sdhci;
+ 		mmc1 = &sdmmc;
+ 	};
++
++	vcc3v3_wifi: regulator-vcc3v3-wifi {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio0 RK_PD0 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_reg_on>;
++		regulator-name = "vcc3v3_wifi";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		startup-delay-us = <50000>;
++		vin-supply = <&vcc_3v3_s3>;
++	};
++};
++
++&pcie2x1l2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie2_2_rst>;
++	reset-gpios = <&gpio3 RK_PD1 GPIO_ACTIVE_HIGH>;
++	vpcie3v3-supply = <&vcc3v3_wifi>;
++	status = "okay";
++
++	pcie@0,0 {
++		reg = <0x400000 0 0 0 0>;
++		#address-cells = <3>;
++		#size-cells = <2>;
++		ranges;
++		device_type = "pci";
++		bus-range = <0x40 0x4f>;
++
++		wifi: wifi@0,0 {
++			compatible = "pci14e4,449d";
++			reg = <0x410000 0 0 0 0>;
++			clocks = <&hym8563>;
++			clock-names = "lpo";
++		};
++	};
++};
++
++&pinctrl {
++	bluetooth {
++		bt_reset_pin: bt-reset-pin {
++			rockchip,pins = <3 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		bt_wake_pin: bt-wake-pin {
++			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++
++		bt_wake_host_irq: bt-wake-host-irq {
++			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
++
++	pcie {
++		pcie2_2_rst: pcie2-2-rst {
++			rockchip,pins = <3 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	wlan {
++		wifi_reg_on: wifi-reg-on {
++			rockchip,pins = <0 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
+ };
+ 
+ &sdhci {
+ 	status = "okay";
+ };
++
++&uart9 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart9m2_xfer &uart9m2_ctsn &uart9m2_rtsn>;
++	uart-has-rtscts;
++	status = "okay";
++
++	bluetooth {
++		compatible = "brcm,bcm43438-bt";
++		clocks = <&hym8563>;
++		clock-names = "lpo";
++		device-wakeup-gpios = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
++		interrupt-names = "host-wakeup";
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PC5 IRQ_TYPE_LEVEL_HIGH>;
++		max-speed = <1500000>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_wake_host_irq &bt_wake_pin &bt_reset_pin>;
++		shutdown-gpios = <&gpio3 RK_PA6 GPIO_ACTIVE_HIGH>;
++		vbat-supply = <&vcc_3v3_s3>;
++		vddio-supply = <&vcc_1v8_s3>;
++	};
++};
+-- 
+2.56.0
 
-> Like Wilfred said, you could also try to disable ASPM.
-
-Tried that. No difference, unfortunately.
-
-> Also make sure that your device is attached to the slot properly (and
-> hopefully you are not using any extender cables or similar).
-
-Actually, I am using an extender, but only because it's practically impossi=
-ble
-not to with this board. The slot is positioned on the edge of the board,
-pointing *outwards*. This does get joked about. However, it's worked perfec=
-tly
-fine like this for years until now.
-
-> I guess we could also try to clear the interrupt just before unmasking it=
-,
-> to see if this is a spurious interrupt, something like:
->=20
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -692,7 +692,7 @@ static int rockchip_pcie_configure_rc(struct platform=
-_device *pdev,
->         struct device *dev =3D &pdev->dev;
->         struct dw_pcie_rp *pp;
->         int irq, ret;
-> -       u32 val;
-> +       u32 reg, val;
->=20
->         if (!IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST))
->                 return -ENODEV;
-> @@ -739,6 +739,9 @@ static int rockchip_pcie_configure_rc(struct platform=
-_device *pdev,
->                 return ret;
->         }
->=20
-> +       reg =3D rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS=
-_MISC);
-> +       rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_M=
-ISC);
-> +
->         /* unmask hot reset/link-down reset */
->         val =3D FIELD_PREP_WM16(PCIE_LINK_REQ_RST_NOT_INT, 0);
->         rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MIS=
-C);
-
-The good news is that this worked! :) Please go ahead and commit it if you
-believe it makes sense.
-
---=-zwn4MhrHzB+5uyxiHqhx
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iQEDBAAWCgCrFiEE6qETVs4yu3Lfuc3XsNCJZ6jP87QFAmsEGbEbFIAAAAAABAAO
-bWFudTIsMi41KzEuMTIsMiwyXxSAAAAAAC4AKGlzc3Vlci1mcHJAbm90YXRpb25z
-Lm9wZW5wZ3AuZmlmdGhob3JzZW1hbi5uZXRFQUExMTM1NkNFMzJCQjcyREZCOUNE
-RDdCMEQwODk2N0E4Q0ZGM0I0ERxjaGV3aUBnZW50b28ub3JnAAoJELDQiWeoz/O0
-S0oBAJL1uYNumrFXENhHAHLjXAjyueiaq2OQXs2HpV1F3d21AQDGNCfYDTDW3HV4
-Wwe4cm/J8qVTPQfEi1K+i76PODvgDg==
-=urbL
------END PGP SIGNATURE-----
-
---=-zwn4MhrHzB+5uyxiHqhx--
-
-
---===============6002435820472435202==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6002435820472435202==--
-
