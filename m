@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 86A87606A31A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 12:13:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2CEFB606A31A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 12:14:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aC8bShTv;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=CeBXs2oL
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OxR2iaUh;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=keuiwiiz
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,60 +14,84 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=PZHct6Qze0C7ydCwV26CrehE27IJC3NnIhZGHCbz+d0=; b=aC8bShTvK/0F23stCVIcIMRLQG
-	YWvWJtUhhsn3LJmxOP5BTVMBJgiOGbIxB8ssBjEfZjGFzbfQ0tEAL0C+t0j6mmX153Ch9LUR7oHdj
-	kKlGPvAwftKz/59N0wyQitYEbXjfpmTohQJ01MuvKaFa4JGnJGX3CH0qLoVcMAiz3uMUFp/6yOgZB
-	L4i31ZsI2YV3Juf06Fj7MSKf+EWUnZenjwuUVxJAosf0IU2Jl9sWDpdoMjtVBBAoVJuzYj0UpacvF
-	l5k5d2uNLJZPXwvmDNIOeXZwRBFdcb1kJ0/gmd6e46vK0apr4pjUfZTVWYIwjGyGoMa4DcLU9GgPn
-	zdvfLlog==;
+	bh=K0jkxJKexsoSIbndA81t3yocWXvWwppevHjtixuh7eE=; b=OxR2iaUhxOf/b6GAysDOHsaec/
+	RpEKjvdfJMbYzfeHYDZEnT9gp9GLJRcCHB6Vi+xlDpXKvGInDkNdy5VjNJHvHv9/4yLat0F2nrVaX
+	/U3gjZEpScns7hx2+Ff67I1J5kC5SB0VNiJeo+/1d4d0TzhxsEp4cCHPjpda0KqceXCYear9fDfEh
+	TNoKJI1Jpnh6L2lKvn+ZseuhifZgyYRjMUq+OVAyoN8t/ctfKKn//nCWwKD/J81vlHtVblrhNCrv4
+	fZGvbWdXy9dUHBGhp9BlD55UJWLnA2RxMOgQ3sMmIS6SCaXqCX0G1Z3hn/gxYEPzGdMbk/hs/RmWZ
+	d9v542tQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVSvH-00000003IoG-3gNH;
-	Mon, 23 Nov 2026 12:13:27 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xVSvk-00000003Ixl-21N7;
+	Mon, 23 Nov 2026 12:13:56 +0000
+Received: from mail-dy2-x09.google.com ([2607:f8b0:4864:36::9])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVSvG-00000003Inu-2pLN;
-	Mon, 23 Nov 2026 12:13:26 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D37E2614A2;
-	Mon, 23 Nov 2026 12:13:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10BF51F000D0;
-	Mon, 23 Nov 2026 12:13:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795436005;
-	bh=o7sIBFFFGupPpSXGGScHHW+hehWJv0kYPtO1ufaH37I=;
-	h=From:To:Cc:Subject:Date;
-	b=CeBXs2oLp6A32oLgZuKi8TFJBh8uOfS5BUwobI8S42NbNsdRfXkrzWL+9Q2zYh4Yx
-	 0XcdBqK7RUhEVf7O1nCTJk30bvhV/WUaFlRnfrsrLdIFZj5104+Jy1vCQSb7Yeugtt
-	 DJvCd81Rl+pOGrONR7Fnk56GQcHLInJrkCHeHUbSlW7OOJ8lZnML2Rkqqp4Xmlz/pA
-	 TgjUcBkhnkbvEu6GmdK2VRsCbUixs+ZCRG4b6KqJTwh6ytFW8DZhZEf7fE1xJFqtzG
-	 dSxsVARt/EZDM4D3qxAVkt22KVTPa/WJpp3jaj0PoSwvLvt06S5lmCmrPT+psIH071
-	 QFLLM/ouWeczw==
-From: Niklas Cassel <cassel@kernel.org>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Niklas Cassel <cassel@kernel.org>,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	James Le Cuirot <chewi@gentoo.org>,
-	stable@vger.kernel.org,
-	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1xVSvi-00000003Ix6-1FCf
+	for linux-rockchip@lists.infradead.org;
+	Mon, 23 Nov 2026 12:13:55 +0000
+Received: by mail-dy2-x09.google.com with SMTP id 5a478bee46e88-35adc681e1aso490273eec.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 23 Nov 2026 04:13:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1795436033; x=1796040833; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=fjlxH4l0PpU/A+nrxn7qK+PVufEbeMAD3+j2srfN4gw=;
+        b=keuiwiizdOB2k+azmDlnYYzrRE269P+00a58ZC8lORchp7uXl10LDDfgBqxgWfy4rk
+         I15ruZdx+2kH5Xp4db1g9lWnEMjPfXYbQYkAFIHYjv9umMy1MWWAnOy2tG8JBHj0XKHL
+         Fseu57e4Gu5CL+eQtqFWC2Wg5oVWc5f0LxF60OGwUTK8zija0vgGLmCtXrBHrIaUm2xj
+         abQP2LtUUo5HEZEUMnMD2BKt2zOZDBuJKnP0jvZ8XcVnvog9bXF9iViTmwVZpiCzxRYj
+         Jxx79e+4xSwbdV7yPs9Fz3aDzFd+0HRPtHgaiEIO49//CLc6+51TmDlutq/W3BeBQogm
+         RW0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795436033; x=1796040833;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=fjlxH4l0PpU/A+nrxn7qK+PVufEbeMAD3+j2srfN4gw=;
+        b=xByjjjIVY0bvReXYS1qm1KaiBYPmPYalu0Ckt8yXgBEAAH6lF9sitpbv/cLHLuoy/0
+         wmmcrRb+sQMMW7LtoGl2n+9Fh/InmzGEEbgcWGlxOG5hBERI8o7vDf3O6HDCpX/U8fAm
+         ltrVA3ixHbTIjx5lAeon7H0uSmXECSDh4oDTX5T3wSCGknOy1IR1bBAFGey2XBiPmbZX
+         f3HOXUHuSRkTRvZsDALUBAimPLkI2vvSpIOfp8MdCev8MqWTatRXVPgvIlVcm2egTN9r
+         bDCLp6OUvZkEwQTGD8VO6ldohgJElFOg0MdvB3ycmpuURHxrfQR9lan147xet1Q9NlFL
+         KYsQ==
+X-Forwarded-Encrypted: i=1; AL+hErEkN1yzcBg16c/zOWOj+RZQ08BIYJwz6x8zJF0NTZOg8ficcNwvuktOP6HBH+7GxTRNyvbLGf2AvdI/hkAJ4A==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+DdC508R5N/JoErDKTt/9GOZeHvy9I096WSP+OFMvS3W1RS4ET
+	q0NHDwpFNvTdAMAKdzaximrt3mWPXMaaKUv/rXzl7nkqXNFZsiwevJK+
+X-Gm-Gg: AZFdTZeCROsaD4cZ95m2swe5IbedN4AHLDzlb7kLLwJJHmZdGyd1mAzDEhC5eb+UWVa
+	vW1u7YbMw4676omUJd6j2Hcr/1s8pjvntIcmVa8/FPIDG5QgNWxguXOsx/Rkk8DZR7kP80Tk+15
+	9y/bUcpPh5UOWCc4l1qDxx04qnAJ5bWpgebjlEennc2lTt/s+0wAtUvsGdZ7IHM423RUGoffQJg
+	5N9L/Pn1g34j6BM17AeF+EbK61CiY8wf77PxzMWhikjue88x0Q4zZ8aZyw/tVYB7h1qpwdwPrHF
+	xYZYbxZAzfJCApIJRRScKgmwQe8yn9Sr7AocyOvHVXLGROa7RA1TIC/1fJlOsgSr55FywjezEz0
+	pL7G0gwyaFKRgqW9nDqFaZggjLUh0bYl/27ime+OaSsppdyGi5uALvSZ3whA98Rk1mgu6589wU5
+	Pf5mkRdxJFBBtHWkqs8W/l7o8aRF7uiKHpTNBavZqzOromqL5Jvns9z4BFsfTosIjXB4MMntQdy
+	fFFvRILhSx7TVm9C4UG+kFyco2gPl+L39nNBeLwVqntdNspTuRlulGfuQOeapAsw7swYDNXdklP
+	v1VOolRkXnJz4auOGd+n4BeY3Rju+E8jts5UvaT1YWqoyQDwFScq+x5EndY=
+X-Received: by 2002:a05:7301:1a84:b0:386:abfb:4a2 with SMTP id 5a478bee46e88-386abfb1a83mr4107662eec.11.1795436033404;
+        Mon, 23 Nov 2026 04:13:53 -0800 (PST)
+Received: from server.lan ([168.138.199.194])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-38567daaf70sm37751721eec.28.2026.11.23.04.13.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Nov 2026 04:13:52 -0800 (PST)
+From: Coia Prant <coiaprant@gmail.com>
+To: netdev@vger.kernel.org
+Cc: "David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@kernel.org>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH] PCI: dw-rockchip: Clear stale link down interrupt before unmasking it
-Date: Mon, 23 Nov 2026 13:12:17 +0100
-Message-ID: <20261123121217.1107902-2-cassel@kernel.org>
-X-Mailer: git-send-email 2.56.1
+Subject: [PATCH] net: pcs: xpcs-rk: use cleanup.h for platform_device reference
+Date: Mon, 23 Nov 2026 20:13:47 +0800
+Message-ID: <20261123121347.563739-1-coiaprant@gmail.com>
+X-Mailer: git-send-email 2.47.3
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3718; i=cassel@kernel.org; h=from:subject; bh=Htlfg5iHMsP43OFyuabLrE8FquJUbNL/9t80OIK+2Hs=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGLJZdBeminx25P9yxP4HU5alfPZCs80bUju/+tRyeL9hX RUtsnh2RykLgxgXg6yYIovvD5f9xd3uU44r3rGBmcPKBDKEgYtTACYyTZ6R4cMJB6GL2xblnW1e Ls7WYFK8nyl798PAyo+vfN5clRM8OYPhf4hJ9vLwT+2xzb/uz1l+VO6v+G2H70mfl0c/P+HK0tH HwgUA
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261123_041354_335112_9380BD65 
+X-CRM114-Status: GOOD (  11.24  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,106 +104,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-PCIE_LINK_REQ_RST_NOT_INT is set by smlh_req_rst_not, which according to
-the RK3568 TRM "is asserted after power-on reset until first link up".
-The bit is thus already pending when the driver unmasks the interrupt
-after resetting the controller, both in probe and in .reset_root_port(),
-so the interrupt fires as soon as it is unmasked, even though the link
-is up. Since each recovery resets the controller again, this results in
-an endless loop, as seen on a Quartz64 Model B (RK3566):
+Use the __free(platform_device_put) cleanup action to manage the
+platform_device reference obtained from of_find_device_by_node().
 
-  pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-  pcieport 0000:00:00.0: Root Port has been reset
-  pcieport 0000:00:00.0: AER: device recovery successful
-  pcieport 0000:00:00.0: Recovering Root Port due to Link Down
+This removes the need for explicit put_device() calls on every failure
+path and at the end of the successful path, simplifying the function
+and reducing the chance of reference leaks or double puts.
 
-Clear the bit before unmasking the interrupt, and in .reset_root_port()
-only unmask it once the link is back up, like in probe. Also keep the
-interrupt masked while .reset_root_port() resets the controller, so the
-link down caused by the reset itself is not reported.
-
-Fixes: b376b3ff9cb0 ("PCI: dw-rockchip: Implement .reset_root_port() and use for link down")
-Reported-by: James Le Cuirot <chewi@gentoo.org>
-Closes: https://lore.kernel.org/linux-pci/08cc96c5171fc969b074371692e6d95d46eba60b.camel@gentoo.org/
-Cc: stable@vger.kernel.org
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
+Signed-off-by: Coia Prant <coiaprant@gmail.com>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 24 +++++++++++++------
- 1 file changed, 17 insertions(+), 7 deletions(-)
+ drivers/net/pcs/pcs-xpcs-rk.c | 20 +++++---------------
+ 1 file changed, 5 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index ab2e26699409..2ef7ae97eb10 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -686,6 +686,18 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- 	return IRQ_HANDLED;
- }
- 
-+static void rockchip_pcie_rc_unmask_link_down(struct rockchip_pcie *rockchip)
-+{
-+	u32 val;
-+
-+	rockchip_pcie_writel_apb(rockchip, PCIE_LINK_REQ_RST_NOT_INT,
-+				 PCIE_CLIENT_INTR_STATUS_MISC);
-+
-+	/* unmask hot reset/link-down reset */
-+	val = FIELD_PREP_WM16(PCIE_LINK_REQ_RST_NOT_INT, 0);
-+	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
-+}
-+
- static int rockchip_pcie_configure_rc(struct platform_device *pdev,
- 				      struct rockchip_pcie *rockchip)
+diff --git a/drivers/net/pcs/pcs-xpcs-rk.c b/drivers/net/pcs/pcs-xpcs-rk.c
+index e0057545329a..8539caff6725 100644
+--- a/drivers/net/pcs/pcs-xpcs-rk.c
++++ b/drivers/net/pcs/pcs-xpcs-rk.c
+@@ -481,7 +481,6 @@ MODULE_DEVICE_TABLE(of, xpcs_rk_of_ids);
+ struct dw_xpcs *xpcs_rk_create(struct device *dev, struct device_node *pcs, int port)
  {
-@@ -739,9 +751,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
- 		return ret;
- 	}
+ 	DECLARE_PHY_INTERFACE_MASK(supported_interfaces) = { 0, };
+-	struct platform_device *pdev;
+ 	struct dw_xpcs_rk *pxpcs;
+ 	struct dw_xpcs *xpcs;
  
--	/* unmask hot reset/link-down reset */
--	val = FIELD_PREP_WM16(PCIE_LINK_REQ_RST_NOT_INT, 0);
--	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
-+	rockchip_pcie_rc_unmask_link_down(rockchip);
+@@ -494,7 +493,7 @@ struct dw_xpcs *xpcs_rk_create(struct device *dev, struct device_node *pcs, int
+ 	if (!xpcs_rk_mdio_addr_validate(port))
+ 		return ERR_PTR(-EINVAL);
  
- 	return ret;
+-	pdev = of_find_device_by_node(pcs);
++	struct platform_device *pdev __free(platform_device_put) = of_find_device_by_node(pcs);
+ 	if (!pdev)
+ 		return ERR_PTR(-EPROBE_DEFER);
+ 
+@@ -515,27 +514,19 @@ struct dw_xpcs *xpcs_rk_create(struct device *dev, struct device_node *pcs, int
+ 	 * destroyed (DL_FLAG_AUTOREMOVE_CONSUMER), so no explicit
+ 	 * device_link_remove() is needed on the failure paths.
+ 	 */
+-	if (!device_link_add(dev, &pdev->dev, DL_FLAG_AUTOREMOVE_CONSUMER)) {
+-		put_device(&pdev->dev);
++	if (!device_link_add(dev, &pdev->dev, DL_FLAG_AUTOREMOVE_CONSUMER))
+ 		return ERR_PTR(-EPROBE_DEFER);
+-	}
+ 
+-	if (READ_ONCE(pdev->dev.links.status) != DL_DEV_DRIVER_BOUND) {
+-		put_device(&pdev->dev);
++	if (READ_ONCE(pdev->dev.links.status) != DL_DEV_DRIVER_BOUND)
+ 		return ERR_PTR(-EPROBE_DEFER);
+-	}
+ 
+ 	pxpcs = platform_get_drvdata(pdev);
+-	if (!pxpcs || !pxpcs->bus) {
+-		put_device(&pdev->dev);
++	if (!pxpcs || !pxpcs->bus)
+ 		return ERR_PTR(-EPROBE_DEFER);
+-	}
+ 
+ 	xpcs = xpcs_create_mdiodev(pxpcs->bus, port);
+-	if (IS_ERR(xpcs)) {
+-		put_device(&pdev->dev);
++	if (IS_ERR(xpcs))
+ 		return xpcs;
+-	}
+ 
+ 	/*
+ 	 * The RK3568 XPCS supports 1000BASE-X, SGMII and QSGMII.
+@@ -547,7 +538,6 @@ struct dw_xpcs *xpcs_rk_create(struct device *dev, struct device_node *pcs, int
+ 			  supported_interfaces);
+ 
+ 	xpcs_config_eee_mult_fact(xpcs, pxpcs->eee_mult_fact);
+-	put_device(&pdev->dev);
+ 	return xpcs;
  }
-@@ -898,6 +908,9 @@ static int rockchip_pcie_rc_reset_root_port(struct pci_host_bridge *bridge,
- 	u32 val;
- 	int ret;
- 
-+	val = FIELD_PREP_WM16(PCIE_LINK_REQ_RST_NOT_INT, 1);
-+	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
-+
- 	dw_pcie_stop_link(pci);
- 	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
- 	rockchip_pcie_phy_deinit(rockchip);
-@@ -938,16 +951,13 @@ static int rockchip_pcie_rc_reset_root_port(struct pci_host_bridge *bridge,
- 		goto deinit_clk;
- 	}
- 
--	/* unmask hot reset/link-down reset */
--	val = FIELD_PREP_WM16(PCIE_LINK_REQ_RST_NOT_INT, 0);
--	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
--
- 	ret = dw_pcie_start_link(pci);
- 	if (ret)
- 		goto deinit_clk;
- 
- 	/* Ignore errors, the link may come up later */
- 	dw_pcie_wait_for_link(pci);
-+	rockchip_pcie_rc_unmask_link_down(rockchip);
- 	dev_dbg(dev, "Root Port reset completed\n");
- 	return ret;
- 
-
-base-commit: b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f
+ EXPORT_SYMBOL_GPL(xpcs_rk_create);
 -- 
-2.56.1
+2.47.3
 
 
 _______________________________________________
