@@ -2,101 +2,67 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AF3A4606A31A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 01:51:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D8C6F606A336
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 01:51:48 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FCdysdDD;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=NYpyBUZh
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mu8VzCO4;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=NJoD1TY/
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=kUI9G+9eY/dzvZX7GGkrd7i8/6Qk9IRBqUgJAbUQEWY=; b=FCdysdDDmLMEi4BoNSagK7A28G
-	XrCn+sAktaltRoPw36iAb7FQCMO70MQgpfPVbzN3PHFOcIlY42TB7tya2wQqbJK5NzhHvmJOGANPi
-	GkG3stZvq52JwfxSG3sTkTG4e529mz8wW+zS2pno3wzyzh31YaEOReN7+0/mZyZZcXP+idniGUhIF
-	IGZZyP/cVjVzjQej5CLVRev6VDwSxHV1P79VVX/N3Bi9ZDGH/66gsNRGoRoM1AnJrnOWeHP1UMDix
-	kfuxH/K8wUU5rC4Vgzvtr6Z+IkInfIuldQJtE7okKfcGVsTG2hSdkM1ZejVGsaubsMVXKHICJiQKe
-	HiBNekMQ==;
+	bh=9zoMQXklwZ/JZmNUKa0XcIMpkHz52PIyD36PjiKh4kY=; b=mu8VzCO4tQQe0K2fHi1LJC/mZA
+	v0ySVq8bhpgEPgedQ5FLUbuXfjezjeCiBwEjvMhenm1uJ5Npb0z1iOLF6xgZwMaTTbKnHXgNB+VcX
+	yECawq3736/kLUy/zX6RugIs2sGD1o8xp12LuelTUwpDeGR0nRKuFBr4wGrQGBihvJ7uizIRvCk0B
+	RiHAvcowTkMeNsoJ7XxJ7R3CbJJN310k/3VScqwr33w7jqNj0Pnm+GTgDC0dxn+aVS+bhtpOLYpH3
+	CCMdmx4UvEH4STgSTSqcO/8kHftlDWzcA8Bblc7WXTbxLw9D90s5dfxOnPQZCMxGm/WLjapfgiaJ7
+	Px0TZuSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVJCk-000000026gM-0Ewg;
-	Mon, 23 Nov 2026 01:50:50 +0000
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+	id 1xVJDc-000000026rf-1bmf;
+	Mon, 23 Nov 2026 01:51:44 +0000
+Received: from mail-m1602365372.xmail.ntesmail.com ([160.236.53.72])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVJCb-000000026c6-3bbq
-	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Nov 2026 01:50:44 +0000
-Received: by mail-oi1-x22e.google.com with SMTP id 5614622812f47-563a0462094so1421643b6e.1
-        for <linux-rockchip@lists.infradead.org>; Sun, 22 Nov 2026 17:50:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795398641; x=1796003441; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=k6viWCOftL/Tl4vkXu0yX55mQD8FxAwm7TJ+P3BB+WA=;
-        b=NYpyBUZhPsUjWVcSmDqZ/bTGKqPcc1K1vLxTpVHSmEUn2AWY6wmGPfqtKv+Ja0AqRz
-         g7rSMtel8RcmZ85P6z2X8dw/N7I6pbFIg3IiHp7j3Fs+U0QUZU9Ai1/w07C3gjTq6p7j
-         IDCeLTFWN7aYJGpue8eU9dT408r/Y5hHQGsJP8fZbj4WAppFuXQsVorK68MEIJVx4ZMB
-         2aeMQzjUwvTFaUPF9RH4Pefezn3wKGASxm4jT1VK7I4L+s3E1WWPJAlJ0hYLdTXoXCDa
-         N6bgSl7GSZy3/sDfe1Uuc/zOS7UalGvVvwsEVFD0jpenEwJpQpMhtKChSb7vtFovUAmD
-         pGzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795398641; x=1796003441;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=k6viWCOftL/Tl4vkXu0yX55mQD8FxAwm7TJ+P3BB+WA=;
-        b=B2uiEiA0o/dxrmbGBAFEHMCkmDWN69ootUStP+RIsEAjQzUI3pYDJATwgcVM3q6BUV
-         od6w5b9/R6Jhe/29SdgFKgZ0m4X9W5tilf3zCscNXpa4RU1V3iXxw2a2vgimzXtv0/A/
-         yzlHuzjV0hPBGKYc3Ffl2hMgInEj7Vavz5dgG4efAz1/brBtU0uBobmO1Mer6XEjgbrN
-         Teql5x5n2OFiIp9aMfc397V0OMCGaNc0KDtV1uLQmCpM7EYDkOuA90oXJUQ2Xz6jUE+k
-         wOVNxJaXq5+g8Vl7sh7pkWnkHGEB/KqP9W4wDg3Fv4dc0k9P6Nw2yBncCUMyg06mXlTY
-         IgLw==
-X-Gm-Message-State: APuU4Z/9L5kzJ6xLndyBY+g9//WFpuu8TdBN5WlFchqg4zvoaInIg+/H
-	eUFiWSz/vBwRv7hH3Rr1lqvN1mXYUw+fKugUXmOHHuqRLaes/QCMrA7SjSbR1iTr
-X-Gm-Gg: AZFdTZdx78WJ0mBYduEvk8oxL5JmSj3cYskAwxDrHmoDneg+WfAMW7F93RVlzmSQQnh
-	m7fYemkc1RGt1oQVGUCXbeoxg7GKQp22ufHw1GE4zZdTVwBWe8fumqv/lVJ+/mn/MQ6NRG9RTeS
-	3I+qcXcjO240ripKu1Dbauj3V0zHIZyUrBo5t25d0XOw8JZK+aMyN30D/+ozvc4NAjGmjqzSAvm
-	ehdhQ/hB+FSHUvtQm/Ssy0uCwIDDuNtbPjbP+0R9eEBrzw5KJsKoVsIHpvbN7HAYabm1+lXOYAI
-	zUPzSNijhKxwiqsuSNH66ITqnjV98iWE/m+7XIyWw4oT7wU4yONYPf5ehPVOGBkDW02YBpOlEnL
-	jtKlf9C7wmq2Vhznf9hXrLTlYpJXkMO/RY9Un93vobNIgtG7QN7Jpa5QVf9eZgDvu/oTtW1spkL
-	oze2U+BW4tGoQZCNQfO1Sm2LWu9K0qaWPMKNrSdrY3CFTul0d1ykizpqmV2BwwJJ38PRX5T34e8
-	y0/OEEpdzaLz0+1m5d+L3smq0eYHdEC2jEBjrMSYElXgtWCHQd6vasIlQLN9UDm69HDB0ldq0G8
-	A5u48UEAvUlU+Ar+0c5Ji7deAdTfSg==
-X-Received: by 2002:a05:6808:50ac:b0:572:c276:47c1 with SMTP id 5614622812f47-57a0bb79badmr11599329b6e.62.1795398640448;
-        Sun, 22 Nov 2026 17:50:40 -0800 (PST)
-Received: from neuromancer ([75.28.21.198])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4bc5f7ae7dcsm9209484fac.8.2026.11.22.17.50.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Nov 2026 17:50:40 -0800 (PST)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org,
-	shawn.lin@rock-chips.com,
-	linux-pm@vger.kernel.org,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	sre@kernel.org,
-	t.schramm@manjaro.org,
-	xsf@rock-chips.com,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V3 2/3] power: supply: cw2217: Add support for Cellwise cw2217
-Date: Sun, 22 Nov 2026 19:50:34 -0600
-Message-ID: <20261123015035.369192-3-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261123015035.369192-1-macroalpha82@gmail.com>
-References: <20261123015035.369192-1-macroalpha82@gmail.com>
+	id 1xVJDW-000000026rB-2Ynl;
+	Mon, 23 Nov 2026 01:51:43 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 5595de3af;
+	Mon, 23 Nov 2026 09:51:34 +0800 (GMT+08:00)
+Message-ID: <5176e5e2-72f3-4175-8b29-1dbc64c4e418@rock-chips.com>
+Date: Mon, 23 Nov 2026 09:51:32 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 0/3] clk: rockchip: rk3506: Add the SAI MCLK output
+ gate clocks
+To: Xiangyu Zhu <1194781887@qq.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, linux-clk@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <tencent_C2AD19EB4A6C91A75AD3DC4089CB875C4005@qq.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <tencent_C2AD19EB4A6C91A75AD3DC4089CB875C4005@qq.com>
+X-HM-Tid: 0aa20619f63c03a7kunm9ecc2466b555bb
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCQkwdVkNJH0hDQk9CTEIYGVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=NJoD1TY/x5HC+BNx2DhEsOexcaA3iF2SBwoYNe3h21uciMr+ZKulGD2CmX3tWEuWoWlx+JRbSnUoWMVVqTcm+C10FJTNIwn1lVOklkI9jXhJJ21KejXGgvp9IaaViHs4YFlyGtsfsu7MPnqwVfPKHG58LodKmT8Ysv35BcjRq/k=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=Q9NunyhRXef+uYLUVcBJxPIw1fxbnbcm5osyb8TqXYc=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261122_175041_973825_F509DA4B 
-X-CRM114-Status: GOOD (  30.56  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261122_175139_398407_79F4EB75 
+X-CRM114-Status: GOOD (  24.68  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,954 +75,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Chris Morgan <macromorgan@hotmail.com>
+Hi Xiangyu,
 
-Add support for the CW2217 i2c battery gauge. The gauge driver was
-adapted from the Rockchip BSP driver [1].
+On 11/23/2026 8:38 AM, Xiangyu Zhu wrote:
+> The RK3506 has four SAI MCLK output gates: SAI0 and SAI1 are controlled
+> by bits in the PMU GRF, SAI2 and SAI3 by bits in the system GRF.  Model
+> them as GRF gate clocks so the SAI MCLK pin direction can be controlled
+> through the clock framework.
+> 
+> This is v4 of the earlier "rockchip,clk-out" binding/driver submission.
+> That one introduced a generic "rockchip,clk-out" compatible plus a
+> standalone driver, which is not acceptable: upstream already has generic
+> GRF gate support (branch_grf_gate together with rockchip_clk_add_grf()),
+> and RK3576 and RK3588 register their SAI/I2S MCLK output gates with it.
+> No device tree changes are included.
 
-This patch was adapted from work originally done by Xu Shengfei at
-Rockchip <xsf@rock-chips.com>.
+Please slow down the pace at which you send patches so that people have
+time to read them. Don't send your patches within 24 hours.
 
-[1] https://github.com/rockchip-linux/kernel/blob/develop-6.12/drivers/power/supply/cw221x_battery.c
+In addition, your Message-ID seems to have been modified by your email
+provider:
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- drivers/power/supply/Kconfig          |  11 +
- drivers/power/supply/Makefile         |   1 +
- drivers/power/supply/cw2217_battery.c | 878 ++++++++++++++++++++++++++
- 3 files changed, 890 insertions(+)
- create mode 100644 drivers/power/supply/cw2217_battery.c
+Message-ID: <tencent_C4C715C962613597F98212938F8940633306@qq.com>
 
-diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
-index ee7dc5f2617a..9a3592dc9767 100644
---- a/drivers/power/supply/Kconfig
-+++ b/drivers/power/supply/Kconfig
-@@ -141,6 +141,17 @@ config BATTERY_CW2015
- 	  This driver can also be built as a module. If so, the module will be
- 	  called cw2015_battery.
- 
-+config BATTERY_CW2217
-+	tristate "CW2217 Battery driver"
-+	depends on I2C
-+	select REGMAP_I2C
-+	help
-+	  Say Y here to enable support for the cellwise cw2217
-+	  battery fuel gauge (includes support for the cw2215 and cw2218).
-+
-+	  This driver can also be built as a module. If so, the module will be
-+	  called cw2217_battery.
-+
- config BATTERY_DS2760
- 	tristate "DS2760 battery driver (HP iPAQ & others)"
- 	depends on W1
-diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
-index f3c0d1006c1a..66e6303888c7 100644
---- a/drivers/power/supply/Makefile
-+++ b/drivers/power/supply/Makefile
-@@ -27,6 +27,7 @@ obj-$(CONFIG_CHARGER_AXP20X)	+= axp20x_ac_power.o
- obj-$(CONFIG_BATTERY_CHAGALL)	+= chagall-battery.o
- obj-$(CONFIG_BATTERY_CPCAP)	+= cpcap-battery.o
- obj-$(CONFIG_BATTERY_CW2015)	+= cw2015_battery.o
-+obj-$(CONFIG_BATTERY_CW2217)	+= cw2217_battery.o
- obj-$(CONFIG_BATTERY_DS2760)	+= ds2760_battery.o
- obj-$(CONFIG_BATTERY_DS2780)	+= ds2780_battery.o
- obj-$(CONFIG_BATTERY_DS2781)	+= ds2781_battery.o
-diff --git a/drivers/power/supply/cw2217_battery.c b/drivers/power/supply/cw2217_battery.c
-new file mode 100644
-index 000000000000..a25803865943
---- /dev/null
-+++ b/drivers/power/supply/cw2217_battery.c
-@@ -0,0 +1,878 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Charger driver for cw2217
-+ *
-+ * Copyright (c) 2026 Rockchip Electronics Co., Ltd.
-+ *
-+ * Author: Xu Shengfei <xsf@rock-chips.com>
-+ */
-+
-+#include <linux/bitfield.h>
-+#include <linux/bits.h>
-+#include <linux/delay.h>
-+#include <linux/devm-helpers.h>
-+#include <linux/i2c.h>
-+#include <linux/math64.h>
-+#include <linux/minmax.h>
-+#include <linux/module.h>
-+#include <linux/power_supply.h>
-+#include <linux/regmap.h>
-+#include <linux/workqueue.h>
-+
-+#include <asm/byteorder.h>
-+
-+#define CW2217_VERSION		0x00
-+#define CW2217_CHIP_ID		0xA0
-+
-+#define CW2217_VCELL_H		0x02
-+#define CW2217_VCELL_L		0x03
-+
-+#define CW2217_SOC_H		0x04
-+#define CW2217_SOC_L		0x05
-+
-+#define CW2217_TEMP		0x06
-+
-+#define CW2217_CONFIG		0x08
-+#define CW2217_CONFIG_ACT_MSK	GENMASK(7, 4)
-+#define CW2217_CONFIG_SLEEP	(0x03 << 6)
-+#define CW2217_CONFIG_RESTART	(0x03 << 4)
-+#define CW2217_CONFIG_ACTIVE	(0x00)
-+
-+#define CW2217_INT_CONF		0x0A
-+#define CW2217_EN_SOC_INT	BIT(6)
-+#define CW2217_EN_TMX_INT	BIT(5)
-+#define CW2217_EN_TMN_INT	BIT(4)
-+
-+#define CW2217_SOC_ALERT	0x0B
-+#define CW2217_SOC_UPDATE_FLG	BIT(7)
-+#define CW2217_SOC_ALERT_MSK	GENMASK(6, 0)
-+#define CW2217_SOC_ALERT_OFF	0x0
-+
-+#define CW2217_TEMP_MAX		0x0C
-+
-+#define CW2217_TEMP_MIN		0x0D
-+
-+#define CW2217_CURRENT_H	0x0E
-+#define CW2217_CURRENT_L	0x0F
-+
-+#define CW2217_BAT_PROFILE	0x10
-+#define CW2217_PROFILE_SZ	80
-+
-+#define CW2217_T_HOST_H		0xA0
-+#define CW2217_T_HOST_L		0xA1
-+
-+#define CW2217_USER_CONF	0xA2
-+
-+#define CW2217_CYCLECNT_H	0xA4
-+#define CW2217_CYCLECNT_L	0xA5
-+
-+#define CW2217_SOH		0xA6
-+
-+/* This register not documented in datasheet. */
-+#define CW2217_IC_STATE		0xA7
-+#define CW2217_IC_READY_MASK	0x0C
-+#define CW2217_IC_READY		3
-+
-+#define CW2217_STB_CUR_H	0xA8
-+#define CW2217_STB_CUR_L	0xA9
-+
-+#define CW2217_FW_VERSION	0xAB
-+#define CW2217_ID_MASK		GENMASK(7, 6)
-+#define CW2215_ID		2
-+#define CW2217_ID		1
-+#define CW2218_ID		0
-+
-+/* Default values from BSP driver */
-+#define CW2217_USER_RSENSE		1500
-+#define CW2217_DEFAULT_POLL_INTERVAL_MS	5000
-+
-+struct cw2217_battery {
-+	struct device *dev;
-+	struct regmap *regmap;
-+	struct power_supply *cw_bat;
-+	u8 *bat_profile;
-+	struct workqueue_struct *battery_workqueue;
-+	struct delayed_work battery_delay_work;
-+	int user_rsense;
-+	int chip_id;
-+	int voltage;
-+	int soc;
-+	int temp;
-+	long cw_current;
-+	int cycle;
-+	int soh;
-+	int fw_version;
-+	u32 poll_interval_ms;
-+	bool update_profile;
-+	bool battery_changed;
-+};
-+
-+/*
-+ * The CONFIG register is used for the host MCU to configure the fuel gauge IC.
-+ * The default value is 0xF0, SLEEP and RESTART bits are set. To power up the
-+ * IC, the host MCU needs to write 0x30 to exit shutdown mode, and then write
-+ * 0x00 to restart the gauge to enter active mode. To reset the IC, the host
-+ * MCU needs to write 0xF0, 0x30 and 0x00 in sequence to this register to
-+ * complete the restart procedure. The CW2217 will reload relevant parameters
-+ * and settings and restart SOC calculation. Note that the SOC may be a
-+ * different value after reset operation since it is a brand-new calculation
-+ * based on the latest battery status. The BSP driver slept 20ms after restart
-+ * and 10ms after setting active, though no delays are documented in the
-+ * datasheet.
-+ */
-+static int cw2217_active(struct cw2217_battery *cw_bat, bool active)
-+{
-+	int ret;
-+
-+	ret = regmap_write(cw_bat->regmap, CW2217_CONFIG,
-+			   CW2217_CONFIG_RESTART);
-+	if (ret)
-+		return ret;
-+
-+	fsleep(20000);
-+
-+	if (active) {
-+		ret = regmap_write(cw_bat->regmap, CW2217_CONFIG,
-+				   CW2217_CONFIG_ACTIVE);
-+		if (ret)
-+			return ret;
-+	} else {
-+		ret = regmap_write(cw_bat->regmap, CW2217_CONFIG,
-+				   CW2217_CONFIG_SLEEP | CW2217_CONFIG_RESTART);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	fsleep(10000);
-+
-+	return 0;
-+}
-+
-+/*
-+ * The 0x00 register is an UNSIGNED 8bit read-only register. Its value is
-+ * fixed to 0xA0 in shutdown mode and active mode.
-+ */
-+static int cw2217_get_chip_id(struct cw2217_battery *cw_bat)
-+{
-+	u32 reg;
-+	int ret;
-+
-+	ret = regmap_read(cw_bat->regmap, CW2217_VERSION, &reg);
-+	if (ret)
-+		return ret;
-+
-+	cw_bat->chip_id = reg;
-+
-+	return 0;
-+}
-+
-+/*
-+ * The VCELL registers (0x02 0x03) are an UNSIGNED 14bit read-only register
-+ * that updates the battery voltage continuously. Battery voltage is measured
-+ * between the VCELL pin and VSS pin, which is the ground reference. A 14bit
-+ * sigma-delta A/D converter is used and the voltage resolution is 312.5uV
-+ * (0.3125mV is * 5/16).
-+ */
-+static int cw2217_get_voltage(struct cw2217_battery *cw_bat)
-+{
-+	int val = cw_bat->voltage;
-+	__be16 reg;
-+	int ret;
-+
-+	ret = regmap_bulk_read(cw_bat->regmap, CW2217_VCELL_H,
-+			       &reg, sizeof(reg));
-+	if (ret)
-+		return ret;
-+
-+	cw_bat->voltage = ((be16_to_cpu(reg) * 5) / 16) * 1000;
-+
-+	if (val != cw_bat->voltage)
-+		cw_bat->battery_changed = true;
-+
-+	return 0;
-+}
-+
-+/*
-+ * The SOC registers (0x04 0x05) are an UNSIGNED 16bit read-only register that
-+ * indicates the SOC of the battery. The SOC shows in % format, which means
-+ * how much percent of the battery's total available capacity is remaining in
-+ * the battery now. The SOC can intrinsically adjust itself to cater to the
-+ * change of battery status; including load, temperature, and aging.
-+ * The high byte(0x04) contains the SOC in 1% unit which can be directly used
-+ * if this resolution is good enough for the application. The low byte (0x05)
-+ * provides more accurate fractional part of the SOC and its LSB is (1/256) %.
-+ * For now, we are only interested in the high byte.
-+ */
-+static int cw2217_get_capacity(struct cw2217_battery *cw_bat)
-+{
-+	int val = cw_bat->soc;
-+	u32 reg;
-+	int ret;
-+
-+	ret = regmap_read(cw_bat->regmap, CW2217_SOC_H, &reg);
-+	if (ret)
-+		return ret;
-+
-+	cw_bat->soc = clamp(reg, 0, 100);
-+	if (val != cw_bat->soc)
-+		cw_bat->battery_changed = true;
-+
-+	return 0;
-+}
-+
-+/*
-+ * The TEMP register is an UNSIGNED 8bit read only register.
-+ * It reports the real-time battery temperature
-+ * measured at TS pin. The scope is from -40 to 87.5 degrees Celsius,
-+ * LSB is 0.5 degree Celsius. TEMP(C) = - 40 + Value(0x06 Reg) / 2
-+ */
-+static int cw2217_get_temp(struct cw2217_battery *cw_bat)
-+{
-+	int val = cw_bat->temp;
-+	u32 reg;
-+	int ret;
-+
-+	ret = regmap_read(cw_bat->regmap, CW2217_TEMP, &reg);
-+	if (ret)
-+		return ret;
-+
-+	cw_bat->temp = (int)reg * 5 - 400;
-+
-+	if (val != cw_bat->temp)
-+		cw_bat->battery_changed = true;
-+
-+	return 0;
-+}
-+
-+/*
-+ * Current is a signed 16bit register (0x0E 0x0F) that reports current A/D
-+ * converter result of the voltage across the current sense resistor,
-+ * 10mohm typical. The register value should be divided by the sense
-+ * resistance to convert to amperes. The value of the sense resistor
-+ * determines the resolution and the full-scale range of the current readings.
-+ * The LSB of 0x0F is (52.4/32768)uV for CW2215 and CW2217. The LSB of 0x0F is
-+ * (125/32768)uV for CW2218. The calculation in the datasheet sets the units
-+ * of the sense resistor at milliohms (not microohms) so multiply by 1000
-+ * to return the current in the correct units.
-+ */
-+static int cw2217_get_current(struct cw2217_battery *cw_bat)
-+{
-+	int val = cw_bat->cw_current;
-+	s32 cw_current;
-+	__be16 reg;
-+	u8 fw_ver;
-+	int ret;
-+
-+	if (cw_bat->fw_version == 0) {
-+		cw_bat->cw_current = 0;
-+		dev_err(cw_bat->dev, "Error! CW2217 firmware read error!\n");
-+		return -EIO;
-+	}
-+
-+	ret = regmap_bulk_read(cw_bat->regmap, CW2217_CURRENT_H,
-+			       &reg, sizeof(reg));
-+	if (ret)
-+		return ret;
-+
-+	cw_current = (s16)be16_to_cpu(reg);
-+
-+	fw_ver = FIELD_GET(CW2217_ID_MASK, cw_bat->fw_version);
-+	switch (fw_ver) {
-+	case CW2215_ID:
-+	case CW2217_ID:
-+		cw_bat->cw_current = div_s64((s64)cw_current * 1600 * 1000, cw_bat->user_rsense);
-+		break;
-+	case CW2218_ID:
-+		cw_bat->cw_current = div_s64((s64)cw_current * 3815 * 1000, cw_bat->user_rsense);
-+		break;
-+	default:
-+		cw_bat->cw_current = 0;
-+		dev_err(cw_bat->dev, "Error! CW2217 firmware read error!\n");
-+		return -EIO;
-+	}
-+
-+	if (val != cw_bat->cw_current)
-+		cw_bat->battery_changed = true;
-+
-+	return 0;
-+}
-+
-+/*
-+ * CYCLECNT is an UNSIGNED 16bit register (0xA4 0xA5) that counts cycle life
-+ * of the battery. The LSB of 0xA5 stands for 1/16 cycle. This register will
-+ * be cleared after entering shutdown mode.
-+ */
-+static int cw2217_get_cycle_count(struct cw2217_battery *cw_bat)
-+{
-+	int val = cw_bat->cycle;
-+	__be16 reg;
-+	int ret;
-+
-+	ret = regmap_bulk_read(cw_bat->regmap, CW2217_CYCLECNT_H,
-+			       &reg, sizeof(reg));
-+	if (ret)
-+		return ret;
-+
-+	cw_bat->cycle = be16_to_cpu(reg) / 16;
-+
-+	if (val != cw_bat->cycle)
-+		cw_bat->battery_changed = true;
-+
-+	return 0;
-+}
-+
-+/*
-+ * SOH (State of Health) is an UNSIGNED 8bit register(0xA6) that represents the level of
-+ * battery aging by tracking battery internal impedance increment. When the device enters
-+ * active mode, this register refresh to 0x64 by default. Its range is 0x00 to 0x64,
-+ * indicating 0 to 100%. This register will be clear after enters shutdown mode.
-+ */
-+static int cw2217_get_soh(struct cw2217_battery *cw_bat)
-+{
-+	int val = cw_bat->soh;
-+	u32 reg;
-+	int ret;
-+
-+	ret = regmap_read(cw_bat->regmap, CW2217_SOH, &reg);
-+	if (ret)
-+		return ret;
-+
-+	cw_bat->soh = clamp(reg, 0, 100);
-+
-+	if (val != cw_bat->soh)
-+		cw_bat->battery_changed = true;
-+
-+	return 0;
-+}
-+
-+/*
-+ * FW_VERSION register reports the firmware (FW) running in the chip. It is
-+ * fixed to 0x00 when the chip is in shutdown mode. When in active mode,
-+ * Bit [7:6] = '01' stand for the CW2217, Bit [7:6] = '00' stand for the
-+ * CW2218 and Bit [7:6] = '10' stand for CW2215. Bit[5:0] stand for the FW
-+ * version running in the chip. Note that the FW version is subject to update.
-+ */
-+static int cw2217_get_fw_version(struct cw2217_battery *cw_bat)
-+{
-+	u32 reg;
-+	int ret;
-+
-+	ret = regmap_read(cw_bat->regmap, CW2217_FW_VERSION, &reg);
-+	if (ret)
-+		return ret;
-+
-+	cw_bat->fw_version = reg;
-+
-+	return 0;
-+}
-+
-+static int cw2217_update_data(struct cw2217_battery *cw_bat)
-+{
-+	int ret;
-+
-+	ret = cw2217_get_voltage(cw_bat);
-+	if (ret)
-+		return ret;
-+
-+	ret = cw2217_get_capacity(cw_bat);
-+	if (ret)
-+		return ret;
-+
-+	ret = cw2217_get_temp(cw_bat);
-+	if (ret)
-+		return ret;
-+
-+	ret = cw2217_get_current(cw_bat);
-+	if (ret)
-+		return ret;
-+
-+	ret = cw2217_get_cycle_count(cw_bat);
-+	if (ret)
-+		return ret;
-+
-+	return cw2217_get_soh(cw_bat);
-+}
-+
-+static int cw2217_parse_properties(struct cw2217_battery *cw_bat)
-+{
-+	struct device *dev = cw_bat->dev;
-+	int length;
-+	int ret;
-+
-+	ret = device_property_read_u32(dev, "cellwise,monitor-interval-ms",
-+				       &cw_bat->poll_interval_ms);
-+	if (ret) {
-+		dev_dbg(cw_bat->dev, "Using default poll interval\n");
-+		cw_bat->poll_interval_ms = CW2217_DEFAULT_POLL_INTERVAL_MS;
-+	}
-+
-+	/*
-+	 * The hardware reports a minimum resolution of 10ms for certain values,
-+	 * but the previously used minimum value of 250ms seems like a sane
-+	 * minimum value to allow.
-+	 */
-+	if (cw_bat->poll_interval_ms < 250) {
-+		dev_warn(cw_bat->dev, "Monitor interval too low, setting to 250ms\n");
-+		cw_bat->poll_interval_ms = 250;
-+	}
-+
-+	/*
-+	 * Datasheet only lists options of between 1M and 50M for resistor
-+	 * values, so assuming that is all and clamping if out of range.
-+	 */
-+	ret = device_property_read_u32(dev,
-+				       "shunt-resistor-micro-ohms",
-+				       &cw_bat->user_rsense);
-+	if (ret) {
-+		cw_bat->user_rsense = CW2217_USER_RSENSE;
-+		dev_warn(cw_bat->dev,
-+			 "Using default resistor value, reported mA may be wrong\n");
-+	}
-+
-+	/* Clamp, but also warn we're clamping due to out of range. */
-+	if ((cw_bat->user_rsense < 1000) || (cw_bat->user_rsense > 50000)) {
-+		cw_bat->user_rsense = clamp(cw_bat->user_rsense, 1000, 50000);
-+		dev_warn(cw_bat->dev, "Shunt resistor value out of range, setting to %d",
-+			 cw_bat->user_rsense);
-+	}
-+
-+	length = device_property_count_u8(dev, "cellwise,battery-profile");
-+	if (length < 0) {
-+		dev_warn(cw_bat->dev,
-+			 "No battery-profile found, using current flash contents\n");
-+	} else if (length != CW2217_PROFILE_SZ) {
-+		dev_err(cw_bat->dev, "battery-profile must be %d bytes\n",
-+			CW2217_PROFILE_SZ);
-+		return -EINVAL;
-+	} else {
-+		cw_bat->bat_profile = devm_kzalloc(dev, length, GFP_KERNEL);
-+		if (!cw_bat->bat_profile)
-+			return -ENOMEM;
-+
-+		ret = device_property_read_u8_array(dev,
-+						    "cellwise,battery-profile",
-+						    cw_bat->bat_profile,
-+						    length);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+/* Load a new battery profile provided from the device tree. */
-+static int cw2217_update_config(struct cw2217_battery *cw_bat)
-+{
-+	u32 reg;
-+	int ret;
-+
-+	/* Set the battery monitor state to shutdown. */
-+	ret = cw2217_active(cw_bat, false);
-+	if (ret)
-+		return ret;
-+
-+	/*
-+	 * Update new battery info if we have a profile, otherwise continue
-+	 * like we updated the profile (without actually updating it).
-+	 */
-+	if (cw_bat->bat_profile) {
-+		ret = regmap_raw_write(cw_bat->regmap, CW2217_BAT_PROFILE,
-+				       cw_bat->bat_profile, CW2217_PROFILE_SZ);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	/*
-+	 * Set update flag for new profile (even if we didn't update it) and
-+	 * disable SOC alert.
-+	 */
-+	ret = regmap_write(cw_bat->regmap, CW2217_SOC_ALERT,
-+			   CW2217_SOC_UPDATE_FLG | CW2217_SOC_ALERT_OFF);
-+	if (ret)
-+		return ret;
-+
-+	/* mask all interrupts */
-+	ret = regmap_clear_bits(cw_bat->regmap, CW2217_INT_CONF,
-+				CW2217_EN_SOC_INT | CW2217_EN_TMX_INT | CW2217_EN_TMN_INT);
-+	if (ret)
-+		return ret;
-+
-+	ret = cw2217_active(cw_bat, true);
-+	if (ret)
-+		return ret;
-+
-+	/*
-+	 * Check the undocumented register for bits 2 and 3 to be 1. Note that
-+	 * the BSP driver would sleep 100ms after every iteration and retry up
-+	 * to 50 times, this felt excessive so reducing to 10.
-+	 */
-+	ret = regmap_read_poll_timeout(cw_bat->regmap, CW2217_IC_STATE, reg,
-+				       FIELD_GET(CW2217_IC_READY_MASK, reg) == CW2217_IC_READY,
-+				       100 * USEC_PER_MSEC, 10 * USEC_PER_SEC);
-+	if (ret) {
-+		dev_err(cw_bat->dev,
-+			"Gauge did not become ready after profile upload\n");
-+		cw2217_active(cw_bat, false);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+/* Determine whether the battery profile needs to be updated. */
-+static int cw2217_check_profile(struct cw2217_battery *cw_bat)
-+{
-+	u8 bat_info[CW2217_PROFILE_SZ];
-+	int ret;
-+	u32 reg;
-+
-+	cw_bat->update_profile = false;
-+
-+	ret = regmap_read(cw_bat->regmap, CW2217_CONFIG, &reg);
-+	if (ret)
-+		return ret;
-+
-+	/* Active is 0x00, anything else is inactive */
-+	if (FIELD_GET(CW2217_CONFIG_ACT_MSK, reg)) {
-+		cw_bat->update_profile = true;
-+		return 0;
-+	}
-+
-+	ret = regmap_read(cw_bat->regmap, CW2217_SOC_ALERT, &reg);
-+	if (ret)
-+		return ret;
-+
-+	if (FIELD_GET(CW2217_SOC_UPDATE_FLG, reg) == 0) {
-+		cw_bat->update_profile = true;
-+		return 0;
-+	}
-+
-+	/* We're using the existing profile, so checking here isn't needed. */
-+	if (!cw_bat->bat_profile)
-+		return 0;
-+
-+	ret = regmap_raw_read(cw_bat->regmap, CW2217_BAT_PROFILE, bat_info, CW2217_PROFILE_SZ);
-+	if (ret) {
-+		dev_err(cw_bat->dev, "Failed to read existing battery profile\n");
-+		return ret;
-+	}
-+
-+	if (memcmp(bat_info, cw_bat->bat_profile, CW2217_PROFILE_SZ)) {
-+		dev_warn(cw_bat->dev, "Replacing stored battery profile\n");
-+		cw_bat->update_profile = true;
-+	}
-+
-+	return 0;
-+}
-+
-+static int cw2217_init(struct cw2217_battery *cw_bat)
-+{
-+	int ret;
-+
-+	ret = cw2217_get_chip_id(cw_bat);
-+	if (ret)
-+		return dev_err_probe(cw_bat->dev, ret, "I2C read write error");
-+
-+	/*
-+	 * All of the known Cellwise 221x chips set the ID bits to 0xa0. If it
-+	 * doesn't match, we're trying to probe the wrong hardware.
-+	 */
-+	if (cw_bat->chip_id != CW2217_CHIP_ID)
-+		return dev_err_probe(cw_bat->dev, -ENODEV, "Not a cw221x\n");
-+
-+	ret = cw2217_check_profile(cw_bat);
-+	if (ret) {
-+		dev_err(cw_bat->dev, "i2c read write error");
-+		return ret;
-+	}
-+
-+	if (cw_bat->update_profile) {
-+		ret = cw2217_update_config(cw_bat);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static void cw2217_bat_work(struct work_struct *work)
-+{
-+	struct delayed_work *delay_work;
-+	struct cw2217_battery *cw_bat;
-+	int ret;
-+
-+	delay_work = container_of(work,
-+				  struct delayed_work,
-+				  work);
-+
-+	cw_bat = container_of(delay_work,
-+			      struct cw2217_battery,
-+			      battery_delay_work);
-+
-+	ret = cw2217_update_data(cw_bat);
-+	if (ret)
-+		dev_err(cw_bat->dev, "i2c read error when update data");
-+
-+	/*
-+	 * Note that the very first run of this will always have a
-+	 * battery_changed = true because the initial values will be compared
-+	 * against zero, that's not a big deal for us.
-+	 */
-+	if (cw_bat->battery_changed) {
-+		power_supply_changed(cw_bat->cw_bat);
-+		cw_bat->battery_changed = false;
-+	}
-+
-+	queue_delayed_work(cw_bat->battery_workqueue,
-+			   &cw_bat->battery_delay_work,
-+			   msecs_to_jiffies(cw_bat->poll_interval_ms));
-+}
-+
-+static int cw2217_battery_get_property(struct power_supply *psy,
-+				   enum power_supply_property psp,
-+				   union power_supply_propval *val)
-+{
-+	struct cw2217_battery *cw_bat = power_supply_get_drvdata(psy);
-+	int ret = 0;
-+
-+	switch (psp) {
-+	case POWER_SUPPLY_PROP_CYCLE_COUNT:
-+		val->intval = cw_bat->cycle;
-+		break;
-+	case POWER_SUPPLY_PROP_CAPACITY:
-+		val->intval = cw_bat->soc;
-+		break;
-+	case POWER_SUPPLY_PROP_STATUS:
-+		/*
-+		 * Observed when battery was full that it would report
-+		 * approximately -12mv at between 97-99 SoC. Assume that if the
-+		 * battery current is above 0 it's charging, it's below
-+		 * 0 but with an SoC 95% or above it's not charging because
-+		 * it's full, otherwise it's simply not charging. If it's not
-+		 * supplied it is discharging.
-+		 */
-+		if (power_supply_is_system_supplied()) {
-+			if (cw_bat->cw_current > 0)
-+				val->intval = POWER_SUPPLY_STATUS_CHARGING;
-+			else if (cw_bat->soc >= 95)
-+				val->intval = POWER_SUPPLY_STATUS_FULL;
-+			else
-+				val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
-+		} else
-+			val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
-+		break;
-+	case POWER_SUPPLY_PROP_PRESENT:
-+		val->intval = (cw_bat->voltage <= 0) ? 0 : 1;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_NOW:
-+		val->intval = cw_bat->voltage;
-+		break;
-+	case POWER_SUPPLY_PROP_CURRENT_NOW:
-+		val->intval = cw_bat->cw_current;
-+		break;
-+	case POWER_SUPPLY_PROP_STATE_OF_HEALTH:
-+		val->intval = cw_bat->soh;
-+		break;
-+	case POWER_SUPPLY_PROP_TEMP:
-+		val->intval = cw_bat->temp;
-+		break;
-+	default:
-+		ret = -EINVAL;
-+		break;
-+	}
-+
-+	return ret;
-+}
-+
-+static enum power_supply_property cw2217_battery_properties[] = {
-+	POWER_SUPPLY_PROP_CYCLE_COUNT,
-+	POWER_SUPPLY_PROP_CAPACITY,
-+	POWER_SUPPLY_PROP_PRESENT,
-+	POWER_SUPPLY_PROP_VOLTAGE_NOW,
-+	POWER_SUPPLY_PROP_CURRENT_NOW,
-+	POWER_SUPPLY_PROP_STATUS,
-+	POWER_SUPPLY_PROP_STATE_OF_HEALTH,
-+	POWER_SUPPLY_PROP_TEMP,
-+};
-+
-+static const struct power_supply_desc cw2217_bat_desc = {
-+	.name		= "cw2217-battery",
-+	.type		= POWER_SUPPLY_TYPE_BATTERY,
-+	.properties	= cw2217_battery_properties,
-+	.num_properties	= ARRAY_SIZE(cw2217_battery_properties),
-+	.get_property	= cw2217_battery_get_property,
-+};
-+
-+static const struct regmap_range cw2217_ranges_rd_yes[] = {
-+	regmap_reg_range(CW2217_VERSION, CW2217_VERSION),
-+	regmap_reg_range(CW2217_VCELL_H, CW2217_TEMP),
-+	regmap_reg_range(CW2217_CONFIG, CW2217_CONFIG),
-+	regmap_reg_range(CW2217_INT_CONF, CW2217_CURRENT_L),
-+	regmap_reg_range(CW2217_BAT_PROFILE,
-+			 CW2217_BAT_PROFILE + CW2217_PROFILE_SZ - 1),
-+	regmap_reg_range(CW2217_T_HOST_H, CW2217_USER_CONF),
-+	regmap_reg_range(CW2217_CYCLECNT_H, CW2217_STB_CUR_L),
-+	regmap_reg_range(CW2217_FW_VERSION, CW2217_FW_VERSION),
-+};
-+
-+static const struct regmap_access_table cw2217_rd_table = {
-+	.yes_ranges = cw2217_ranges_rd_yes,
-+	.n_yes_ranges = ARRAY_SIZE(cw2217_ranges_rd_yes),
-+};
-+
-+static const struct regmap_range cw2217_ranges_wr_yes[] = {
-+	regmap_reg_range(CW2217_TEMP, CW2217_TEMP),
-+	regmap_reg_range(CW2217_CONFIG, CW2217_CONFIG),
-+	regmap_reg_range(CW2217_INT_CONF, CW2217_CURRENT_L),
-+	regmap_reg_range(CW2217_BAT_PROFILE,
-+			 CW2217_BAT_PROFILE + CW2217_PROFILE_SZ - 1),
-+	regmap_reg_range(CW2217_T_HOST_H, CW2217_USER_CONF),
-+};
-+
-+static const struct regmap_access_table cw2217_wr_table = {
-+	.yes_ranges = cw2217_ranges_wr_yes,
-+	.n_yes_ranges = ARRAY_SIZE(cw2217_ranges_wr_yes),
-+};
-+
-+static const struct regmap_range cw2217_ranges_vol_yes[] = {
-+	regmap_reg_range(CW2217_VCELL_H, CW2217_TEMP),
-+	regmap_reg_range(CW2217_INT_CONF, CW2217_SOC_ALERT),
-+	regmap_reg_range(CW2217_CURRENT_H, CW2217_CURRENT_L),
-+	regmap_reg_range(CW2217_CYCLECNT_H, CW2217_STB_CUR_L),
-+};
-+
-+static const struct regmap_access_table cw2217_vol_table = {
-+	.yes_ranges = cw2217_ranges_vol_yes,
-+	.n_yes_ranges = ARRAY_SIZE(cw2217_ranges_vol_yes),
-+};
-+
-+static const struct regmap_config cw2217_regmap_config = {
-+	.reg_bits = 8,
-+	.val_bits = 8,
-+	.rd_table = &cw2217_rd_table,
-+	.wr_table = &cw2217_wr_table,
-+	.volatile_table = &cw2217_vol_table,
-+	.cache_type = REGCACHE_MAPLE,
-+	.max_register = CW2217_FW_VERSION,
-+};
-+
-+static int cw2217_probe(struct i2c_client *client)
-+{
-+	struct power_supply_config psy_cfg = { 0 };
-+	struct cw2217_battery *cw_bat;
-+	int ret;
-+
-+	cw_bat = devm_kzalloc(&client->dev, sizeof(*cw_bat), GFP_KERNEL);
-+	if (!cw_bat)
-+		return -ENOMEM;
-+
-+	i2c_set_clientdata(client, cw_bat);
-+	cw_bat->dev = &client->dev;
-+
-+	cw_bat->regmap = devm_regmap_init_i2c(client, &cw2217_regmap_config);
-+	if (IS_ERR(cw_bat->regmap))
-+		return dev_err_probe(cw_bat->dev, PTR_ERR(cw_bat->regmap),
-+				     "Failed to allocate regmap: %ld\n",
-+				     PTR_ERR(cw_bat->regmap));
-+
-+	ret = cw2217_parse_properties(cw_bat);
-+	if (ret)
-+		return ret;
-+
-+	ret = cw2217_init(cw_bat);
-+	if (ret)
-+		return dev_err_probe(cw_bat->dev, ret, "cw2217 init fail\n");
-+
-+	ret = cw2217_get_fw_version(cw_bat);
-+	if (ret)
-+		return dev_err_probe(cw_bat->dev, ret,
-+				     "Unable to read fw version\n");
-+
-+	ret = cw2217_update_data(cw_bat);
-+	if (ret)
-+		return dev_err_probe(cw_bat->dev, ret,
-+				     "Unable to read initial data\n");
-+
-+	psy_cfg.fwnode = dev_fwnode(&client->dev);
-+	psy_cfg.drv_data = cw_bat;
-+	cw_bat->cw_bat = devm_power_supply_register(&client->dev,
-+						    &cw2217_bat_desc, &psy_cfg);
-+	if (IS_ERR(cw_bat->cw_bat))
-+		return dev_err_probe(cw_bat->dev, PTR_ERR(cw_bat->cw_bat),
-+				     "Failed to register battery: %ld\n",
-+				     PTR_ERR(cw_bat->cw_bat));
-+
-+	cw_bat->battery_workqueue = devm_alloc_ordered_workqueue(&client->dev,
-+								 "cw2217_gauge", 0);
-+	if (!cw_bat->battery_workqueue)
-+		return -ENOMEM;
-+
-+	ret = devm_delayed_work_autocancel(&client->dev,
-+					   &cw_bat->battery_delay_work,
-+					   cw2217_bat_work);
-+	if (ret)
-+		return dev_err_probe(&client->dev, ret,
-+				     "Failed to register delayed work\n");
-+
-+	queue_delayed_work(cw_bat->battery_workqueue,
-+			   &cw_bat->battery_delay_work,
-+			   msecs_to_jiffies(50));
-+
-+	return 0;
-+}
-+
-+static int __maybe_unused cw2217_bat_suspend(struct device *dev)
-+{
-+	struct i2c_client *client = to_i2c_client(dev);
-+	struct cw2217_battery *cw_bat = i2c_get_clientdata(client);
-+
-+	cancel_delayed_work_sync(&cw_bat->battery_delay_work);
-+	return 0;
-+}
-+
-+static int __maybe_unused cw2217_bat_resume(struct device *dev)
-+{
-+	struct i2c_client *client = to_i2c_client(dev);
-+	struct cw2217_battery *cw_bat = i2c_get_clientdata(client);
-+
-+	queue_delayed_work(cw_bat->battery_workqueue,
-+			   &cw_bat->battery_delay_work,
-+			   msecs_to_jiffies(20));
-+	return 0;
-+}
-+
-+static SIMPLE_DEV_PM_OPS(cw2217_bat_pm_ops, cw2217_bat_suspend,
-+			 cw2217_bat_resume);
-+
-+static const struct i2c_device_id cw2217_id_table[] = {
-+	{ .name = "cw2215" },
-+	{ .name = "cw2217" },
-+	{ .name = "cw2218" },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(i2c, cw2217_id_table);
-+
-+static const struct of_device_id cw2217_match_table[] = {
-+	{ .compatible = "cellwise,cw2215", },
-+	{ .compatible = "cellwise,cw2217", },
-+	{ .compatible = "cellwise,cw2218", },
-+	{ },
-+};
-+MODULE_DEVICE_TABLE(of, cw2217_match_table);
-+
-+static struct i2c_driver cw2217_driver = {
-+	.driver = {
-+		.name = "cw2217",
-+		.pm = &cw2217_bat_pm_ops,
-+		.of_match_table = cw2217_match_table,
-+	},
-+	.probe = cw2217_probe,
-+	.id_table = cw2217_id_table,
-+};
-+
-+module_i2c_driver(cw2217_driver);
-+
-+MODULE_AUTHOR("Xu Shengfei <xsf@rock-chips.com>");
-+MODULE_AUTHOR("Chris Morgan <macromorgan@hotmail.com>");
-+MODULE_DESCRIPTION("cw2217 battery driver");
-+MODULE_LICENSE("GPL");
+Please try the downgrade the git version[0] you use for
+git send-email, or switch to a different email provider.
+
+[0]: https://lore.kernel.org/all/8771714B848C3A9F+9f64a309-ff70-466f-8d29-15950318b728@airkyi.com/
+
+> 
+> v2 registered all four gates from one branch table while only the PMU GRF
+> was added as an auxiliary GRF.  The two system GRF gates therefore came
+> right after two PMU GRF gates in the same table, and
+> rockchip_clk_register_branches() keeps using the regmap it picked for the
+> previous branch when it finds no entry for a branch's grf_type, so they
+> ended up toggling bits of the PMU GRF.  The SAI0/SAI1 gates are now
+> registered from their own table, and only once the PMU GRF was really
+> added, so no branch table mixes two GRF types and the PMU GRF gates can
+> no longer fall back to the system GRF.
+> 
+> The series now also documents the RK3506 GRF compatibles in the Rockchip
+> GRF binding, including the "rockchip,rk3506-pmu-grf" name used by the
+> clock driver.  The RK3506 DTS uses the same PMU GRF compatible; that
+> rename is part of the RK3506 DTS series.
+> 
+> Tested on a RK3506B board: the SAI0 MCLK output runs at 12.288 MHz and
+> drives the ES8388 codec, audio playback works, and the GRF gate bits were
+> read back from the registers to confirm that they get set.  Enabling the
+> SAI2/SAI3 gates sets bit 2 and bit 3 of the system GRF (0xff288004) and
+> leaves the PMU GRF alone.
+> 
+> Changes since v3:
+>  - add the RK3506 GRF compatibles to the Rockchip GRF binding
+>  - look up the PMU GRF using the documented "rockchip,rk3506-pmu-grf"
+>    compatible instead of the vendor's "rockchip,rk3506-grf-pmu" name
+> 
+> Changes since v2:
+>  - register the SAI0/SAI1 gates from a separate table that is only used
+>    when the PMU GRF was added successfully
+> 
+> Changes since v1:
+>  - drop the rockchip,clk-out binding and driver
+>  - use the existing GATE_GRF support like RK3576 and RK3588 do
+>  - limit the series to the clock driver and the dt-bindings IDs
+> 
+> Xiangyu Zhu (3):
+>   dt-bindings: soc: rockchip: Add RK3506 GRF compatibles
+>   dt-bindings: clock: rockchip,rk3506-cru: Add SAI MCLK output gate IDs
+>   clk: rockchip: rk3506: Register the SAI MCLK output gates
+> 
+>  .../devicetree/bindings/soc/rockchip/grf.yaml |  4 +++
+>  drivers/clk/rockchip/clk-rk3506.c             | 27 +++++++++++++++++++
+>  .../dt-bindings/clock/rockchip,rk3506-cru.h   |  4 +++
+>  3 files changed, 35 insertions(+)
+> 
+
 -- 
-2.53.0
-
+Best, 
+Chaoyi
 
 _______________________________________________
 Linux-rockchip mailing list
