@@ -2,86 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B50A606A31E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 21:38:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0A10B606A321
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 21:56:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eFi0AzEZ;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=HSvYYxz4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=h2J8EVoq;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=oHDB07x0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=sG4xEj60CBupBxeYpHlnop7XqOsmvGl8oz4Mc3/3cmY=; b=eFi0AzEZ6LhqFLICIpJxI7XHE4
-	zZHVsIPDAeuQEUPxHxFZMd0mZbQO9cRF2+tY87TtJxo8RGN9qCAc/4/+p7IQNKN2senwuUXMiCTxX
-	p1PTyTyG0Xhi16SmeFDqHOHTmV7HwFmdn3bXdtHsdQQWzpvQzboZPKOY1A/CeYapZkupdc578hDjq
-	IbF2pBEnEXi3FgXzlp85r+KQ56G0V96PS8SsABLyAomt9L2pXEyoBQGYBRRAjUO+DnLYWT0M33EaK
-	5/WzP+raKst7bRxdIOFrLrkVHsI8AJvIUCnYxEsTcaNVsuI6HTdugAJLRjAxoLdwx7301PcnMRG7A
-	oe8aPymQ==;
+	bh=4MDtE6GINxAsRyNADgcuFqk5qq6GRXH4pMDn4s58eio=; b=h2J8EVoq+SMFECir9NwxQTVr+K
+	m6zfPBzFeiws5/08JQxqhiGQhTu7A5eVCq05Z8EzcwSyxCmVEdWK/lyIfq/0/ANDiw+0fNZ6CWw+2
+	ljeaEo3F0MCtRjYG13ZZfPF1O1C8z0Cx4ZJguIOQpl3IkmdCnyHyr2lNRTaQh+X3sFhefSe+W/Sgy
+	/KqnHQXuiU+q+/2VO/4gbUBVHteLjQFp8KVXAUBhXWo61A//CLlYNc4ujGupkABLIP9uIyxn9D883
+	2n7r/7B0oSDU0eaM/wujJr1WG4t0abw/q5/1fgoA3Ki5SDQlUoSvRd/wA31GpOjSF6gJTQQ16UN7U
+	CiA3GNoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVbjh-00000004zma-30Dh;
-	Mon, 23 Nov 2026 21:38:05 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xVc1b-000000051bV-0NvW;
+	Mon, 23 Nov 2026 21:56:35 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVbjU-00000004zkL-0R5S;
-	Mon, 23 Nov 2026 21:37:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795469867;
-	bh=eqTz5I5hXDw/utCcHS4ZZHudHX0/EsrXro8Gc1lz+Ro=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=HSvYYxz4hFHJFR/ULMOWK5fixWjJk8ihJMLLpTqi1mYhOy6TG6rGg3D1/NOgqSsTi
-	 fZ2ZNH7LPyrS1+Pgdbl6FVtI1xAWwVsEBFbsRMEsWSwYJ+4tCmZKzgBPDyndmHvHBo
-	 p3WMpS1d/1YQsnf1854UNB/KRzskp7MMD9G1Cg+l0z5BdABPu03LzZtNb/HfR9swnj
-	 ooJIucIZFqjqiYMwyTqa/ro63A473ypL+boC7bKpb94t6GVIggS6dCKDjasj/h+jPB
-	 yc9GJUFSRmNXnr+zDToQ6ZD/nK1ScW7MemSzYVIM3wswQFQ3gi6AKXIomaj7uMBwHZ
-	 Os7BjdgPgsMHg==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A349717E04F7;
-	Mon, 23 Nov 2026 22:37:45 +0100 (CET)
-Message-ID: <aa951ce0fd972085a4c9fb19a3c67e36ed90dc7f.camel@collabora.com>
-Subject: Re: [PATCH v3 0/3] media: rockchip: Add the IEP2 deinterlacer of
- RK3568/RK3588
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: aiyengar1990@gmail.com, Mauro Carvalho Chehab <mchehab@kernel.org>, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley	 <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Philipp
- Zabel	 <p.zabel@pengutronix.de>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil@kernel.org>, Alex Bee
-	 <knaerzche@gmail.com>, Krzysztof Kozlowski
-	 <krzysztof.kozlowski@oss.qualcomm.com>
-Date: Mon, 23 Nov 2026 16:37:43 -0500
-In-Reply-To: <20261120-iep2-v3-0-e94eb9f629d2@gmail.com>
-References: <20261120-iep2-v3-0-e94eb9f629d2@gmail.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
+	id 1xVc1a-000000051bI-013t;
+	Mon, 23 Nov 2026 21:56:34 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 62C4040C32;
+	Mon, 23 Nov 2026 21:56:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A2DC1F000C0;
+	Mon, 23 Nov 2026 21:56:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795470993;
+	bh=uOViL6s1ZH3I4W/r3A50yJP31I+R+h3vMj5i5mSRSr0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=oHDB07x0IeuPsdAU32f0RWYDNf6TxYIFLnTE+u5CtJaLY85OuRViUqypjn4sZ54tl
+	 eaL/D9cbQaY1Z9U9k9jcXs+mj4qkH6jED7RQe943m3B2fZUeerWK2mhdF9DZxXy/hP
+	 JwiH3dMQG1xWLevaaKMEDotcsaEb4ifG+t7FQg5VwByw8/MuqliYq6Df9VYcEA6Cfy
+	 VzxW0LaHijUV42sSFMP+5WAkhvM7wXCcunZABwaHQDNif4rmcJYx4UaHnZDoQk359N
+	 jzYB5nUAXyLEgbyNIqDOuIH6CwxQ4P9fElnzLptPt44YBy86w++rFDEVXKDDi/26mD
+	 lLiWEYxa6eG6Q==
+Message-ID: <0391e09d-3d44-4f91-8cad-dbfe8d4741d5@kernel.org>
+Date: Mon, 23 Nov 2026 21:56:29 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_133753_964210_FFF9EB63 
-X-CRM114-Status: GOOD (  24.37  )
-X-Spam-Score: -2.1 (--)
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/5] nvmem: core: Let read post-processing return a
+ shorter length
+To: Alexey Charkov <alchark@flipper.net>,
+ Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
+ Michael Walle <michael@walle.cc>, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Finley Xiao <finley.xiao@rock-chips.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Ryan Leung <untilscour@protonmail.com>,
+ Ricardo Pardini <ricardo@pardini.net>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20261123-rk3576-otp-cpuid-mac-v3-0-40c756dcf36f@flipper.net>
+ <20261123-rk3576-otp-cpuid-mac-v3-2-40c756dcf36f@flipper.net>
+From: Srinivas Kandagatla <srini@kernel.org>
+Content-Language: en-US
+In-Reply-To: <20261123-rk3576-otp-cpuid-mac-v3-2-40c756dcf36f@flipper.net>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,127 +76,123 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0175202324213938341=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============0175202324213938341==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-FWklcH9hjr78QjddYyVY"
 
---=-FWklcH9hjr78QjddYyVY
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Le vendredi 20 novembre 2026 =C3=A0 11:30 +0000, Arun Iyengar via B4 Relay =
-a =C3=A9crit=C2=A0:
-> Add a V4L2 mem2mem driver for the IEP2 deinterlacer of the RK3568 and
-> RK3588, with its binding and the RK3588 DT node. The V4L2 side follows
-> Alex Bee's IEP driver.
->=20
-> Tested on an Orange Pi 5 (RK3588S) with a 7.3-based kernel (KASAN,
-> lockdep); build-tested on media next. v4l2-compliance 59/59, all four
-> modes at 1080i without IOMMU faults, s2idle and deep suspend while
-> streaming, unbind while streaming, forced watchdog and IOMMU fault
-> resets. Not tested: RK3568. DMABUF imports of exactly the image size
-> are refused, because of the 4 KiB OUTPUT padding (see 2/3).
+On 11/23/26 3:35 PM, Alexey Charkov wrote:
+> A cell can hold data from which a provider derives a shorter value for
+> some of its consumers, while others still need the raw cell content. A
+> CPU ID which serves as the base for MAC addresses is one example: the
+> MAC address consumer needs six bytes, whereas anyone after the ID itself
+> needs all of it. The post-processing hook has no way to express that,
+> as the reported length is always the full cell size, and consumers such
+> as of_get_mac_address() reject anything but the exact length they
+> expect.
+This is the correct behaviour.
+> 
 
-What software makes use of this driver? Did you test in a real application?
+nvmem cell fundamentally has cells that are fixed size during creation.
 
->=20
-> One case is still open: a reset during a transfer, seen only with
-> forced watchdog resets, can leave the IOMMU busy. Jobs then fail
-> without DMA and the driver suspends at once so that PD_VDPU powers
-> off, which restores it. While another device of the domain, e.g. a
-> video decoder, keeps it on, the jobs keep failing.
 
-What do you mean by iommu busy? In the decoder, some errors would lead to t=
-he
-decoder core doing a self reset witch we believe wipes the MMU registers. C=
-ould
-the watchdog reset endup doing the same?
+> Let the hook return the shortened length of its output instead of 0,
+> and zero the buffer beyond it, so that a caller ignoring the reported
+this looks like workaround.
 
->=20
-> Developed with Claude (Anthropic), which wrote the code and the commit
-> messages. I reviewed every change.
->=20
+This behavior should be inside the provider not in the core.
+
+--srini
+
+> length sees no leftovers of the raw cell. Reject a length beyond the
+> cell size as a bug in the hook. Every existing hook returns 0 on
+> success, so their behaviour does not change. Clamp the sysfs cell
+> attribute read to the reported length, as it can now be shorter than
+> the attribute size.
+> 
+> Signed-off-by: Alexey Charkov <alchark@flipper.net>
 > ---
-> Changes in v3:
-> - Drop the vendor kernel notes from the commit messages and cover (Krzysz=
-tof)
-> - 1/3: drop the linux-media list from the MAINTAINERS entry (Krzysztof)
-> - 1/3: add Krzysztof's Reviewed-by
-> - 2/3: start the job and its watchdog under irq_lock (Sashiko)
-> - 2/3: soft-reset the core with the AXI side, CRU reset if the IOMMU
->   stays lost, shared IRQ off during a reset; no DMA until the IOMMU is
->   restored
-> - 2/3: return OUTPUT buffers before CAPTURE buffers
-> - 2/3: mask and clear all interrupts on completion and before a job
-> - 2/3: suspend at once when the IOMMU is lost
-> - 2/3: take the mutex in system suspend
-> - Link to v2: https://patch.msgid.link/20261115-iep2-v2-0-3d8798cd9a55@gm=
-ail.com
->=20
-> ---
-> Arun Iyengar (3):
->       media: dt-bindings: Add Rockchip IEP2 deinterlacer
->       media: rockchip: Add IEP2 deinterlacer driver
->       arm64: dts: rockchip: Add IEP2 deinterlacer to RK3588
->=20
->  Documentation/admin-guide/media/rockchip-iep2.rst  |   32 +
->  Documentation/admin-guide/media/v4l-drivers.rst    |    1 +
->  .../bindings/media/rockchip,rk3568-iep2.yaml       |   95 ++
->  MAINTAINERS                                        |    8 +
->  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |   22 +
->  drivers/media/platform/rockchip/Kconfig            |    1 +
->  drivers/media/platform/rockchip/Makefile           |    1 +
->  drivers/media/platform/rockchip/iep2/Kconfig       |   16 +
->  drivers/media/platform/rockchip/iep2/Makefile      |    3 +
->  drivers/media/platform/rockchip/iep2/iep2-regs.h   |  191 +++
->  drivers/media/platform/rockchip/iep2/iep2.c        | 1320 ++++++++++++++=
-++++++
->  drivers/media/platform/rockchip/iep2/iep2.h        |  108 ++
->  12 files changed, 1798 insertions(+)
-> ---
-> base-commit: ad6549a46748d00818483b535e5cd2a704685c98
-> change-id: 20261110-iep2-b9a9c6e77c44
->=20
-> Best regards,
-> -- =20
-> Arun Iyengar <aiyengar1990@gmail.com>
->=20
+>  drivers/nvmem/core.c           | 17 ++++++++++++++---
+>  include/linux/nvmem-provider.h |  8 +++++++-
+>  2 files changed, 21 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/nvmem/core.c b/drivers/nvmem/core.c
+> index d976c0d6603b..dde77f78e109 100644
+> --- a/drivers/nvmem/core.c
+> +++ b/drivers/nvmem/core.c
+> @@ -384,7 +384,8 @@ static ssize_t nvmem_cell_attr_read(struct file *filp, struct kobject *kobj,
+>  		goto destroy_cell;
+>  	}
+>  
+> -	read_len = min_t(unsigned int, cell_sz - pos, count);
+> +	/* Post-processing may have left less data than the attribute size */
+> +	read_len = pos < cell_sz ? min_t(size_t, cell_sz - pos, count) : 0;
+>  	memcpy(buf, content + pos, read_len);
+>  	kfree(content);
+>  
+> @@ -1647,6 +1648,7 @@ static int __nvmem_cell_read(struct nvmem_device *nvmem,
+>  			     struct nvmem_cell_entry *cell,
+>  			     void *buf, size_t *len, const char *id, int index)
+>  {
+> +	size_t out_len = cell->bytes;
+>  	int rc;
+>  
+>  	rc = nvmem_reg_read(nvmem, cell->offset, buf, cell->raw_len);
+> @@ -1661,12 +1663,21 @@ static int __nvmem_cell_read(struct nvmem_device *nvmem,
+>  	if (cell->read_post_process) {
+>  		rc = cell->read_post_process(cell->priv, id, index,
+>  					     cell->offset, buf, cell->raw_len);
+> -		if (rc)
+> +		if (rc < 0)
+>  			return rc;
+> +
+> +		/* The post-processor may have shrunk the data: drop the rest */
+> +		if (rc > 0) {
+> +			if (WARN_ON_ONCE(rc > cell->bytes))
+> +				return -EINVAL;
+> +
+> +			out_len = rc;
+> +			memset(buf + out_len, 0, cell->bytes - out_len);
+> +		}
+>  	}
+>  
+>  	if (len)
+> -		*len = cell->bytes;
+> +		*len = out_len;
+>  
+>  	return 0;
+>  }
+> diff --git a/include/linux/nvmem-provider.h b/include/linux/nvmem-provider.h
+> index 6063fe5b7784..a95529aa3e80 100644
+> --- a/include/linux/nvmem-provider.h
+> +++ b/include/linux/nvmem-provider.h
+> @@ -20,7 +20,13 @@ typedef int (*nvmem_reg_read_t)(void *priv, unsigned int offset,
+>  				void *val, size_t bytes);
+>  typedef int (*nvmem_reg_write_t)(void *priv, unsigned int offset,
+>  				 void *val, size_t bytes);
+> -/* used for vendor specific post processing of cell data */
+> +/*
+> + * Used for vendor specific post processing of cell data. Returns 0 if the
+> + * data keeps the cell size (the cell's bytes, not the raw length passed in),
+> + * the length of the processed data if it ends up shorter (1 up to the cell
+> + * size), or a negative error code. The core zeroes the buffer beyond a
+> + * shortened length. An empty result cannot be reported.
+> + */
+>  typedef int (*nvmem_cell_post_process_t)(void *priv, const char *id, int index,
+>  					 unsigned int offset, void *buf,
+>  					 size_t bytes);
+> 
 
---=-FWklcH9hjr78QjddYyVY
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawSyJwAKCRDZQZRRKWBy
-9HpuAQD2iyW68QKwqexXSmR8w/lWArl2Njqs9To+Zvdg2jBNBAEA6vJcr0L5MZYS
-Rnl6XvNw8L5b5ihSSaBSPLHj+IItZgE=
-=1qmu
------END PGP SIGNATURE-----
-
---=-FWklcH9hjr78QjddYyVY--
-
-
---===============0175202324213938341==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0175202324213938341==--
-
