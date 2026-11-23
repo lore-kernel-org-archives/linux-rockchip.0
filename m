@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1907C606A327
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 16:02:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E1C8606A334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 16:06:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=HK9IU7Qz;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=fbe9rZ1M
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NQT8eSWu;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=NhSYPe9l
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,48 +14,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ljborxKagIHPyoqZCTQpc281g0MWgrDUl0Ld67qZEvM=; b=HK9IU7QzGroU/ME/nlmn/IXU52
-	2BUtC1zMU66Jwc8fDCYgYCjTZLNUudzfiYfXK7WBWk/ARLR/aMBinUAf4fCfeRxOAjALmMD9CUD94
-	TdsUndimIwa4aDcyrmPb9Ls1uva5a9JwxkWnQLuJGzV666d2g9VTRrG7+u9dg8SM/a3O9Cm1c89Wu
-	zi3quhlq6LxW/wS2nZhxq1el7b1hjnKktcRItY28eHLB2G3jSyknPPKaF8mW+WjYZf42gc8/Hk4Sk
-	4JHvBAoCeXoL8jE3NdhGGUTPKrQ7T0LpcsxF+dRbu8ZD9YtEqki25/9KasmqN1IsU3rtYYc63Bemt
-	MCCSm/Fg==;
+	bh=QOJ/U6/EBwQLW1xGsRKgv6LbbBKxGeuKOJ74135irsw=; b=NQT8eSWuVyv/LrOKuCxYiXEOff
+	f5Z02aGTJxlCnqBsM9+uN/1f2xFHHOtw0W3kFdZ7KYeQRJyanzdgrvVcJKJ1mgclTkbhrzQtmaBRn
+	NUKWDT2txXSaPSFl+SxykNWuSgQqjYr22lU26G87OjfyPcVvuhM3ZxExkwqefLR/6nmguiBTNG+a8
+	c1qbhHVPvhPdK480jz2ZJ69/kagtIZ0GoJ27DXZaL9/3DLXxWeYPfbbmk1srwrsK1t/RpWMbEwTlc
+	TolG+V98cYSHo3hrOX45eyNO+Td4b5HZktcKGFvbtz7m60r+pNyK5bwUMt6lg4uP1wa15tvDBiYZr
+	GaIimFcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVWUd-000000047IP-2ok2;
-	Mon, 23 Nov 2026 16:02:11 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xVWYd-0000000482H-40TX;
+	Mon, 23 Nov 2026 16:06:19 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVWUb-000000047Hf-3zw5;
-	Mon, 23 Nov 2026 16:02:10 +0000
+	id 1xVWYc-0000000481f-0dYp;
+	Mon, 23 Nov 2026 16:06:18 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 55502622FA;
-	Mon, 23 Nov 2026 16:02:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33E901F000D2;
-	Mon, 23 Nov 2026 16:02:05 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B2EC5439EE;
+	Mon, 23 Nov 2026 16:06:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E8AB1F000C6;
+	Mon, 23 Nov 2026 16:06:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795449728;
-	bh=N1Kph1Jnk+DxQD2xwzYoq4HTvoREjcNCOFAcKHlvXLQ=;
+	s=k20260515; t=1795449977;
+	bh=0aJ5NufMkA0oD7AZywus5LCK/c7Fmr+e+ufWOzcP874=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=fbe9rZ1Mv1u8RJWaAxnCXG49oerJ+CjiUI0zg42zlZTlVgKSbRM7B7/pXkEAdbaNj
-	 IWTlVDP4ABD5HLR/QmfRjs/cj4KIbOQ0B2chPcGTfz5qxNl8H9JbcnD9GX1BVVZyrW
-	 is0BxM+OAQDFWELHwPJhABcimE7uC9rnYVpv2/mLvzaIx5rtlV65/do/WKiemXp6rq
-	 WMTrLCHChMnIUJq+Cx9HaT9SgIyuvlNkbvLX7iugA1rxo75MXLAhdVgYcyMMV1uVpe
-	 xm4OrfE2pmRC8bn+D4fMl6jFugDJckS3YsXafVR7kACdUJ/uL7vVNDwXqIFvjWeU8X
-	 tqb3wafxFup/Q==
+	b=NhSYPe9lfkgnjIr0bn0lVFAu74Gql+ImttqV88SSuZvfqujeqgyPWhfkEFENt/3r1
+	 ljaq1vYZcEqdY0QaOOL0xJ4faDwMsTQWFhuc/DLEh7F5S53TUi76y7pRy5/2KBJ/Do
+	 R/AaittP7TCCqVaLAbG5/xg6ENb9TGCtEL+H/GAXsuuZOXoKaJz8LwIN0Ih2Sz6fQq
+	 SG7WQ/80to5vqtqJf8jhdVTBv1i7WdongDEm5KiOJKob1tyqgknECSUJa6CRaEcXdy
+	 YQjXCHSPa4xaMWqbotNc8S9Xm+c8go1+kbdWfwbW/aLlsp9GODhkQTb7wDZfjNFCul
+	 ywN2gZCgmj4mw==
 From: Vinod Koul <vkoul@kernel.org>
-To: Neil Armstrong <neil.armstrong@linaro.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Guangshuo Li <liguangshuo@mail.sdu.edu.cn>
-Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- stable@vger.kernel.org
-In-Reply-To: <20261110-9f141e6bc8-phy-rockchip@mail.sdu.edu.cn>
-References: <20261110-9f141e6bc8-phy-rockchip@mail.sdu.edu.cn>
-Subject: Re: [PATCH] phy: rockchip: inno-hdmi: Fix potential stale clock
- provider
-Message-Id: <179544972583.261285.10042942204136038609.b4-ty@kernel.org>
-Date: Mon, 23 Nov 2026 21:32:05 +0530
+To: Coia Prant <coiaprant@gmail.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20261006162807.2843858-1-coiaprant@gmail.com>
+References: <20261006162807.2843858-1-coiaprant@gmail.com>
+Subject: Re: [PATCH v13 0/2] phy: rockchip: naneng-combphy: add SGMII MAC
+ selection for RK3568
+Message-Id: <179544997369.275844.18034015183144679963.b4-ty@kernel.org>
+Date: Mon, 23 Nov 2026 21:36:13 +0530
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Mailer: b4 0.14.3
@@ -79,20 +81,24 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Tue, 10 Nov 2026 22:32:25 +0800, Guangshuo Li wrote:
-> The clock provider remains registered if PHY provider registration fails.
-> Device-managed cleanup then frees the clock hardware and PHY private
-> data still referenced by the provider.
+On Wed, 07 Oct 2026 00:28:04 +0800, Coia Prant wrote:
+> Changes since v12:
 > 
-> Use a device-managed clock provider so both probe failure and removal
-> unregister it before the clock hardware is released.
+> - Only write pipe_sgmii_mac_sel when the property is present, leaving the
+>   routing unchanged otherwise (Shawn).
+> - Validate the value in the driver and reject anything other than 0 or 1
+>   (Shawn).
+> - Drop "default: 1" from the binding; the property is tri-state, so no
+>   'default' in the schema is appropriate (Rob).
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] phy: rockchip: inno-hdmi: Fix potential stale clock provider
-      commit: e7d2f93a4426ea6b33dbca1ce585a9876e3a7344
+[1/2] dt-bindings: phy: rockchip: naneng-combphy: add rockchip,sgmii-mac-sel property
+      commit: 0451ac710ad1627f48116204f6fcf3aec72cc87b
+[2/2] phy: rockchip: naneng-combphy: add SGMII MAC selection for RK3568
+      commit: 7827b62741ea75d24b3db1ad01d09b6d15423a62
 
 Best regards,
 -- 
