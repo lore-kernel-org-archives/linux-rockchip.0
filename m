@@ -2,88 +2,124 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 83D45606A31E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 22:26:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CEE16606A31E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 23:52:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GSY9fSwM;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=ntYxdNfw
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=oyOxDo0j;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gahingwoo.com header.i=@gahingwoo.com header.a=rsa-sha256 header.s=fm2 header.b=CPYfRbcB;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=uTacps4U
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=w1Vqo+32CHq6LU6DQI4hgmFMmoDjgi/FjBXNUr5d9Z0=; b=GSY9fSwMjYFgZX5fG70zNR2H4t
-	zm5G38PxBZNJjRPBfRPUpZNRnaFtxkV8kLjJ4qFKbf4VJ5exhQAaeuc1XAUUUgPXh2lAr45cQ4esA
-	D9xp4o2Cv48F4asDf2Nc7vocopCOr8AFY39MdBN4sHjQKyYkwCoVHxRY/Kk9O4y6M5tqAhWb7E8xt
-	iU39hstFv7O3lsdoKuqh7Ny18wtYWX4IDyTFS4osv6aSmY/9AVYyAgdbM3b9J8XGyq3pqDQApu57Y
-	yTYMFPvY3ZWWOz3ctq8J9zqjEXtbqMmBKtdytVIk1mIwm/xFuUSx/hZG4RHL24631wqmGMSqTGKUh
-	BO0g+Yng==;
+	bh=/oAkzbwKYJZqkiztiiTTWjArWU9UI91oVV32BBCX7GI=; b=oyOxDo0j4ABU6D7GtapTIMFtES
+	D5xUkNA4SBOnamvWuA4ZEyXiC/j2fQROq8GqZb/4DdJl0xjO5FQs3wOiUnQ2Z/TeOp/ejEL1k/RPc
+	bs4+BVxxDR/hQya3YiJr/nbtUDD8EEFE1LXQUxDxDpKvVzHBhWwdiL+81mH3fU0+xF9CkzbXBo9+O
+	jWxygYRn52+oV2KNaWJGXCOAhkgXlfqpGEEaoZ+HirfdJq1GAwTkr4T6Uxo7OENU797om/3xjSO0u
+	T/FLIRMpFkL6hTJv+774MLSXRGOAvC3CR/pY0UYdE/kod6YVRPW0GnLPIhW3GBtvjcHDNQG6am9K5
+	7zr3yCrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVcUd-000000054rE-3PTq;
-	Mon, 23 Nov 2026 22:26:35 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xVdpY-00000005DO7-083T;
+	Mon, 23 Nov 2026 23:52:16 +0000
+Received: from fout-b8-smtp.messagingengine.com ([202.12.124.151])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVcUa-000000054pt-1Sra;
-	Mon, 23 Nov 2026 22:26:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795472786;
-	bh=jafCJiO5kEDoT7LeCzSexDLui/CmGZgBcYWpbAal89Q=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=ntYxdNfwbYMnR4G45krGiMK/xALKPCbBjGzrhhLZGJQYQdwmRIX5bijv4Rj14dK7C
-	 YoIU6u0/EddOz3/sPdJScestRmDdf7TqRSAspK9AodsFySnvLSrxw0AQjQ67/sHDhZ
-	 +oC3+nJZlvNNbwEx7VZ3xLY7EUBEv6uvDz7H74nM2NP4NdK1o4bXh6Gz25gIHf0PXd
-	 onMmipYGNV55v3SSLWC2IgIQoPJElx9DzDTmGBpAqe8DRMojWjUdrrXwFUhCqRjPcO
-	 skrk3XF/3Mcke4Qw3KUSoOqJDSBxCqUPpw2lWsqCic43iwh2yRWnmIK7X6lavKcMmb
-	 VAhExsYZuVxOw==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 424EA17E05F2;
-	Mon, 23 Nov 2026 23:26:24 +0100 (CET)
-Message-ID: <adfcc7bb137c294d01395dff64bfb915d2f34a5e.camel@collabora.com>
-Subject: Re: [PATCH v2 2/3] media: verisilicon: reject MPEG-1 controls
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: aiyengar1990@gmail.com, Hans Verkuil <hverkuil@kernel.org>, Mauro
- Carvalho Chehab <mchehab@kernel.org>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Philipp Zabel	 <p.zabel@pengutronix.de>,
- Maxime Ripard <mripard@kernel.org>, Paul Kocialkowski	 <paulk@sys-base.io>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,  Chen-Yu Tsai
- <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel
- Holland	 <samuel@sholland.org>
-Cc: Jonas Karlman <jonas@kwiboo.se>, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev, Christian Stefan
- =?ISO-8859-1?Q?K=F6v=E9r-Draxl?=	 <ckoever@outlook.de>
-Date: Mon, 23 Nov 2026 17:26:23 -0500
-In-Reply-To: <20261121-b4-cedrus-mpeg1-v2-2-95e4decf03fa@gmail.com>
-References: <20261121-b4-cedrus-mpeg1-v2-0-95e4decf03fa@gmail.com>
-	 <20261121-b4-cedrus-mpeg1-v2-2-95e4decf03fa@gmail.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
+	id 1xVdpP-00000005DND-0nqX
+	for linux-rockchip@lists.infradead.org;
+	Mon, 23 Nov 2026 23:52:09 +0000
+Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
+	by mailfout.stl.internal (Postfix) with ESMTP id 1E0B11D0059B
+	for <linux-rockchip@lists.infradead.org>; Mon, 23 Nov 2026 18:52:04 -0500 (EST)
+Received: from phl-frontend-04 ([10.202.2.163])
+  by phl-compute-01.internal (MEProxy); Mon, 23 Nov 2026 18:52:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
+	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
+	:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to; s=fm2; t=1795477922; x=1795564322; bh=IybjlPb0LV
+	Z7QOrAFKKCkNNJ886YmIr8unCCc4l7uQU=; b=CPYfRbcBBrg7/V9O3wjaPCSf5J
+	k7ahECh+Td41Nh3WV874GvdzmLJrXDD/OlBAXv8e9eLflbum4+/Dx+jYK2Ql+IZo
+	ntHexnWr8jTjyTDPFL79OqXvUCW8zSvPic8moGM1uIK3iXo9eHFOcaZWxK1woHcK
+	GhkCz763bnkmfJEl983rsOBp2ivPYuIw+srDOeXOVzHbDqTkZ9ShpN7uXD1hieRj
+	oUKVIdwMcSmqQPX7G0bTKUFx82u8pLcCduzJjZql9QWlkrm3C+mwEH4OqGPlx2Y3
+	izD/qOjcnDp1wZJsLxt6RfYQWboBVyPJvbBv430vTMk743FJoekPCohP3n4Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
+	1795477922; x=1795564322; bh=IybjlPb0LVZ7QOrAFKKCkNNJ886YmIr8unC
+	Cc4l7uQU=; b=uTacps4UBTdqNXSA/ZYq/EdYMuORnzKAjwshymbVPFPMZeiLpsO
+	mjBxTVc8GbLrHQjKqtoWMsAYF+UNR+w02vIHtcAjQyDxyswD/koZJO/dDaz3ScHe
+	8rTpL/g37zcbmrwhdWNy0/1gUE2hVD3K7BgjWX+e0d3lgpF27wIg9CI9jQgbkLBY
+	jd/wHDLDNt3/C6vR0C2xJ18LS57b4Sgapm9vzaVlgwPbcCw06pPnlvSa0L+RVLBx
+	fyIY/+GkA7epr8FoTCRReFZP6j5WgIdhvytF8UA5mSh9Nu/CqUPJmHcjZWpuoCX0
+	uKekc0czs23FP+aZUyezKwberEiPwiomwoA==
+X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
+	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
+	action=sign d=gahingwoo.com a=rsa-sha256;
+DKIM2-Signature: i=1; m=1; t=1795477922; d=gahingwoo.com;
+	mf=PGdhaGluZ0BnYWhpbmd3b28uY29tPg==;
+	rt=PGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmc+;
+	s=fm2:rsa-sha256:YttU8N0cxnYY3bFIDBUQjcX3+WxU9SbdSrHgXlm5ddrs7JE
+	wG0LUgufVmNzlro+5ZIcggZEadCnp22CwGkA7jY1L+LTcuz4s2qJ9qMvo8hFcpnL
+	wt1LqmA4Qvrjlbl+WSjizDQlzHOrBVypqTt5TuOqY/tpjWMNJ+zNnXxbD84wkJqP
+	6QcWcGSmP6s2EDUuSP9obmzjkuV8nbXuaboKw2M0PDn4vnPDrzzQPGwIZm+fqkjs
+	mAGkkgC4srg21s6yddq55XnS/10xymKrlmU1+ULNDUuBLsUi666qyTzBF4VJlucY
+	ZRdJfOLdkFpwET2M3kww8TR85qRmoyZarHGAeAw==;
+X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
+	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
+	action=mi-m=1; hc=9;
+	hn=cc,content-transfer-encoding,date,feedback-id,from,
+	message-id,mime-version,subject,to;
+Message-Instance: m=1; h=sha256:snLsPNsbCz4VYOV2yj47o6aRDOxjWYqyPbozGNNs8VY=:P1o165xLoA2qPuWrWFB5pBAq5tFyty/t5vGj9pxnMhE=;
+X-ME-Sender: <xms:oNEEayNBhIsU1UsD4wcEKvo0F7MVcHuRFBk7UpQ2QN0e_m-K_rFQdw>
+    <xme:oNEEa9Wt-eCR0KFCQfpEhkNvInUAZuyiqoWWNKM09uQfu_Bc5yFMli7BFEpsIbvpJ
+    pijCkXMummPZerpiV_S3AU-fOMt_VJCNnVTDJ7N72szWB7KVigdK7U>
+X-ME-Received: <xmr:oNEEa9vyk1XhCip0WNq7twhcbfXgFs_dXjNlOTmLOOFXifPBa3VIt-6z5WOys9_whlW3fzKY>
+X-ME-Proxy-Cause: dmFkZTGJb1GdD04PLpCAwZXXn7KZFUQpgvhFpeiMNWdTsgQSXg4su9r1wkz1eWzPIWOfBk
+    FJ9NY1WQK6z+GMRPOeRa/xAcpLpGhZ3i3rHu5zB/D89kM2qY3MxfXxhF110D0CRcXEf2fs
+    4MN8MAYO53DHxq/1TxDxLsW5l7z73MpX6FTTFOLL15TnPkCKO8+O8eTU+J7YY12pzpLN9D
+    p/Kfr1ryp9Wgd2f7QZubaklTf0nB4k6SUJquczvZb3B/7xgpFlcJ0khWtpNl6yBmu4hGTG
+    rRsYCFoUn1baSUqCSDWvFHpznLOQrwKiCna74wQ9/Gjj2KmMpF+aQXmxNWCHIUGenuXuJh
+    7S3H+o9zDSJGKzoghBTYfKDpTcrMP8uXEMuxALYb/6VCSTKN566GB/8nyz/Wod6HIjG1RJ
+    ggCKta78hvrnZZZmTSy5AjuBmN0Z+eCbSKfT0pxpOhQol3WDC/xm0duisMs4leMcI2X4bm
+    vElPhLbZwcp8fFyfcud8QwdbASs/s9OHFa2l34KCDcDJoVV73h7OYUsJMoCVtX8tY4kYra
+    YBGMqVPC1naNhEqezi3z9gcD/pzGewTMhtrXBkjPD4czMToAIjEwz8zslcpWt72BD8ThG+
+    s4aY8/tdWsw96+Mj9zvaymtCPXiBR2ss+/GFpYC+3lTl90JY7qAdmQgEvcMw
+X-ME-Proxy: <xmx:oNEEaw0-SK_YQXOqR6vG6JDwO3SMTOonxH7AI6Qkpj3Jt0T5AtOmfw>
+    <xmx:oNEEa265RLCMuUWeLqN_Et1li24zw51GNx9ZNrpsXJJ8mKxMmU3XUA>
+    <xmx:oNEEa_XrqjxsazoJvxACg2og9xgDzysaS0fyq_8BQ0efYoVFd_GZLw>
+    <xmx:oNEEa2iay_QGchCQCamWbZuZRRbbAd7njZtZxz1iT-B5qsHgXdVYTA>
+    <xmx:otEEa9IbXmXQVeWTV5gWRzJeSD0Si6hsRP_FhIDNSdEyRkWZo8GclPrN>
+Feedback-ID: i7a5e4b5f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 23 Nov 2026 18:51:56 -0500 (EST)
+From: Jiaxing Hu <gahing@gahingwoo.com>
+To: joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	heiko@sntech.de
+Cc: tomeu@tomeuvizoso.net,
+	ddrake@baylibre.com,
+	sidong.yang@furiosa.ai,
+	anton.sovetov@gmail.com,
+	chaoyi.chen@rock-chips.com,
+	iommu@lists.linux.dev,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] iommu/rockchip: Disable paging on banks that still page before a force reset
+Date: Tue, 24 Nov 2026 12:51:54 +1300
+Message-ID: <20261123235154.315460-1-gahing@gahingwoo.com>
+X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_142633_060592_955B5A64 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20261123_155207_547012_6F8789E8 
+X-CRM114-Status: GOOD (  12.35  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,109 +130,127 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6781979623025064608=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============6781979623025064608==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-fZd9Y1jimBb0WSf6xeuw"
+After an RK3576 NPU job timeout resets the core, the banks of its IOMMU
+can be left in different states: bank 0 is still paging while bank 1
+has been reset.
 
---=-fZd9Y1jimBb0WSf6xeuw
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In this state the existing stall and paging helpers do nothing, so the
+force reset that follows fails as well. The IOMMU can then no longer be
+enabled, and the NPU stops working.
 
-Le samedi 21 novembre 2026 =C3=A0 10:10 +0000, Arun Iyengar via B4 Relay a =
-=C3=A9crit=C2=A0:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
->=20
-> The driver decodes everything in MPEG-2 mode. Reject
-> V4L2_MPEG2_SEQ_FLAG_MPEG1, the full pel flags and D-pictures, which it
-> would otherwise decode as MPEG-2. Compile tested only.
+When the banks disagree, stop paging on the banks that still page
+first, then run the existing sequence.
 
-That change flags the the API is not backward compatible. Please fix.
+Tested on a ROCK 4D with repeated forced job timeouts. Without this
+patch, one in every 2 to 10 timeouts was not recovered from; with it,
+20 out of 20 recovered.
 
-Nicolas
+Fixes: cd6438c5f844 ("iommu/rockchip: Reconstruct to support multi slaves")
+Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
+---
+Not tested on the RK3588.
 
->=20
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
-> ---
->  drivers/media/platform/verisilicon/hantro_drv.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
->=20
-> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/me=
-dia/platform/verisilicon/hantro_drv.c
-> index 26e5d5547466..c910a69e8e3c 100644
-> --- a/drivers/media/platform/verisilicon/hantro_drv.c
-> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-> @@ -264,6 +264,16 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
->  =09=09if (sps->bit_depth_luma_minus8 !=3D 0 && sps->bit_depth_luma_minus=
-8 !=3D 2)
->  =09=09=09/* Only 8-bit and 10-bit are supported */
->  =09=09=09return -EINVAL;
-> +=09} else if (ctrl->id =3D=3D V4L2_CID_STATELESS_MPEG2_SEQUENCE) {
-> +=09=09if (ctrl->p_new.p_mpeg2_sequence->flags & V4L2_MPEG2_SEQ_FLAG_MPEG=
-1)
-> +=09=09=09return -EINVAL;
-> +=09} else if (ctrl->id =3D=3D V4L2_CID_STATELESS_MPEG2_PICTURE) {
-> +=09=09const struct v4l2_ctrl_mpeg2_picture *pic =3D ctrl->p_new.p_mpeg2_=
-picture;
-> +
-> +=09=09if (pic->picture_coding_type =3D=3D V4L2_MPEG2_PIC_CODING_TYPE_D |=
-|
-> +=09=09    pic->flags & (V4L2_MPEG2_PIC_FLAG_FULL_PEL_FORWARD |
-> +=09=09=09=09  V4L2_MPEG2_PIC_FLAG_FULL_PEL_BACKWARD))
-> +=09=09=09return -EINVAL;
->  =09} else if (ctrl->id =3D=3D V4L2_CID_STATELESS_VP9_FRAME) {
->  =09=09const struct v4l2_ctrl_vp9_frame *dec_params =3D ctrl->p_new.p_vp9=
-_frame;
-> =20
-> @@ -435,11 +445,13 @@ static const struct hantro_ctrl controls[] =3D {
->  =09=09.codec =3D HANTRO_MPEG2_DECODER,
->  =09=09.cfg =3D {
->  =09=09=09.id =3D V4L2_CID_STATELESS_MPEG2_SEQUENCE,
-> +=09=09=09.ops =3D &hantro_ctrl_ops,
->  =09=09},
->  =09}, {
->  =09=09.codec =3D HANTRO_MPEG2_DECODER,
->  =09=09.cfg =3D {
->  =09=09=09.id =3D V4L2_CID_STATELESS_MPEG2_PICTURE,
-> +=09=09=09.ops =3D &hantro_ctrl_ops,
->  =09=09},
->  =09}, {
->  =09=09.codec =3D HANTRO_MPEG2_DECODER,
+LLM-assisted.
 
---=-fZd9Y1jimBb0WSf6xeuw
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+ drivers/iommu/rockchip-iommu.c | 61 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 61 insertions(+)
 
------BEGIN PGP SIGNATURE-----
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 1fa3110b142a..5eabefb0ad14 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -507,6 +507,64 @@ static int rk_iommu_disable_paging(struct rk_iommu *iommu)
+ 	return ret;
+ }
+ 
++/*
++ * The helpers above only act when every bank agrees. After a reset of the
++ * master, one bank can still be paging; stop it bank by bank.
++ */
++static void rk_iommu_quiesce_paging_banks(struct rk_iommu *iommu)
++{
++	int i, ret;
++	u32 status;
++
++	for (i = 0; i < iommu->num_mmu; i++) {
++		void __iomem *base = iommu->bases[i];
++
++		if (!(rk_iommu_read(base, RK_MMU_STATUS) & RK_MMU_STATUS_PAGING_ENABLED))
++			continue;
++
++		dev_warn_ratelimited(iommu->dev, "bank %d still paging, status %#08x; disabling it\n",
++				     i, rk_iommu_read(base, RK_MMU_STATUS));
++
++		if (rk_iommu_read(base, RK_MMU_STATUS) & RK_MMU_STATUS_PAGE_FAULT_ACTIVE)
++			writel(RK_MMU_CMD_PAGE_FAULT_DONE, base + RK_MMU_COMMAND);
++
++		rk_iommu_base_command(base, RK_MMU_CMD_ENABLE_STALL);
++		ret = readl_poll_timeout(base + RK_MMU_STATUS, status,
++					 status & RK_MMU_STATUS_STALL_ACTIVE,
++					 RK_MMU_POLL_PERIOD_US, RK_MMU_POLL_TIMEOUT_US);
++		if (ret)
++			dev_err(iommu->dev, "bank %d: stall timed out, status %#08x\n",
++				i, status);
++
++		rk_iommu_base_command(base, RK_MMU_CMD_DISABLE_PAGING);
++		ret = readl_poll_timeout(base + RK_MMU_STATUS, status,
++					 !(status & RK_MMU_STATUS_PAGING_ENABLED),
++					 RK_MMU_POLL_PERIOD_US, RK_MMU_POLL_TIMEOUT_US);
++		if (ret)
++			dev_err(iommu->dev, "bank %d: disable paging timed out, status %#08x\n",
++				i, status);
++
++		rk_iommu_base_command(base, RK_MMU_CMD_DISABLE_STALL);
++		ret = readl_poll_timeout(base + RK_MMU_STATUS, status,
++					 !(status & RK_MMU_STATUS_STALL_ACTIVE),
++					 RK_MMU_POLL_PERIOD_US, RK_MMU_POLL_TIMEOUT_US);
++		if (ret)
++			dev_err(iommu->dev, "bank %d: disable stall timed out, status %#08x\n",
++				i, status);
++	}
++}
++
++static bool rk_iommu_banks_disagree_on_paging(struct rk_iommu *iommu)
++{
++	int i, n = 0;
++
++	for (i = 0; i < iommu->num_mmu; i++)
++		n += !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
++			RK_MMU_STATUS_PAGING_ENABLED);
++
++	return n && n != iommu->num_mmu;
++}
++
+ static int rk_iommu_force_reset(struct rk_iommu *iommu)
+ {
+ 	int ret, i;
+@@ -947,6 +1005,9 @@ static int rk_iommu_enable(struct rk_iommu *iommu)
+ 	if (ret)
+ 		return ret;
+ 
++	if (rk_iommu_banks_disagree_on_paging(iommu))
++		rk_iommu_quiesce_paging_banks(iommu);
++
+ 	ret = rk_iommu_enable_stall(iommu);
+ 	if (ret)
+ 		goto out_disable_clocks;
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawS9jwAKCRDZQZRRKWBy
-9FgnAQD8bTw31XYUe1vtqtfkbGoUUqyeBO03yvS9WjlSeEZEqAEAwb/xlN87u1WT
-eKzhSo5iACnSctSO6DI1zERR4hborwY=
-=+31i
------END PGP SIGNATURE-----
+base-commit: 909ef7a9a30fa139e69e555e3606680f5cca7726
+-- 
+2.43.0
 
---=-fZd9Y1jimBb0WSf6xeuw--
-
-
---===============6781979623025064608==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6781979623025064608==--
-
