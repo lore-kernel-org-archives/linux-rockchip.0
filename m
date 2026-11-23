@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C5967606A31A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 08:28:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 901FA606A31A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 08:30:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ok7pyYU7;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=WRgNkBuA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Ix6G/PWm;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PXULo1uE
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,36 +14,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=vdDf1YbpUZOX3Gf0+wQT8Mkih+hKGYS+0uFon9eDwcs=; b=ok7pyYU7xwAX68/uA8RMKkc34j
-	WUwW4O7zapI2htQkD9QwbcFpU4VqX0yVYTuVuD6VBMBJ1ux9VS4oC+uJvAl5zB6d+htXA5cwWIDSc
-	pk/w41DKINQS9xg/hZvayynCMf++caRdmlM2KO+VauKRB+87ZNllraXV0xq7ImGocICO7KeDF47Fq
-	/aDfFswtCoYkbsbMA726ovelI7Jy7tTJx8hFYmTcnts9WzepU6+cA/f2heezVjtryu2fz0BbceRG5
-	HSXBXQt04N38MJDVt3DvfumH6216Fxsvx9P8xXGFlZGvFlhEBFjYB6ORyI6Qwlew5KkKae94udQBq
-	6vPf1b7A==;
+	bh=J8/e5JTJNs3Eep3A6XZyhikRhX4EbL/mf+3Js9gs0E4=; b=Ix6G/PWmkMXEYPgRXRX/5tpHwY
+	Jrf4lJhPXivl3FsoiVG4TNUq6gYNoiLtsjv4MF1v12bk6OJc9m4g7QAB+9MMrfJheledgGcQPA2o3
+	RjJe2GgbZdMti5cH3P5/ofxFonL5Q/5ps9nr5Nfw446PQN2ytAUjVlh/EIh50cbLwefZxZHbLWg4o
+	UECaKiyjJ9QAaViWiSALiqEaNmMyjZt9/FMWqU+PAaI7LHdjxzXpRw95cs85hXIb8rzg//OkdfAXu
+	XwYGdT8rEsytj7GCL4fZ3BIVTfsPFIoGMRpebtjYfX3zyumDFXD5rRUYpcop9HJYaUgjnKADfAdTg
+	yqy1mV1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVPPn-00000002ZDL-28pB;
-	Mon, 23 Nov 2026 08:28:43 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xVPRU-00000002ZcR-2ww1;
+	Mon, 23 Nov 2026 08:30:28 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVPPB-00000002Z9g-0Onw;
-	Mon, 23 Nov 2026 08:28:23 +0000
+	id 1xVPRH-00000002ZXy-31rq;
+	Mon, 23 Nov 2026 08:30:15 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7E774605C9;
-	Mon, 23 Nov 2026 08:28:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72EB41F000CF;
-	Mon, 23 Nov 2026 08:28:03 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 675DA419E0;
+	Mon, 23 Nov 2026 08:30:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 841501F000CA;
+	Mon, 23 Nov 2026 08:30:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795422484;
-	bh=ijyetjFveDyx8d2oHXD3zLUbbfnSn8RYdMkJF4ohCQ0=;
+	s=k20260515; t=1795422615;
+	bh=g90/0bhbxPIHkU4mFDJWsNmnCkTgmCZxPuEg8GPDaE4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=WRgNkBuATBZUt2Ophjkqvi6ZrUouc+KYnC048Q5TibJouB+gHeINVZ/p7qu1XI6a9
-	 2txgSp+ZKHXQfE0vmhNscwVpGA140KfyagginBxbivt4s6C/pAOeFMbXwaXqZZ7QSP
-	 OWMzC9jLT0fI4Py0ILZryqSbTU8GIktJTETeKRTVaVPo8jzsG/yXvEpLVdFbFKFT+z
-	 SJD3Ybhf1izLyCZY03EYBDRFg6pZbaLMj+Sruz/uY8xzOOvoiu8/fyuw6qveKVPixg
-	 hOvj69mcV+vW3jfmhBXn294OvOb8ZBkxX1dSmOOO6MXbqISEgZ6tEnxjCSFR/YvKVy
-	 AO2wss5/0hnrg==
-Date: Mon, 23 Nov 2026 09:28:00 +0100
+	b=PXULo1uEs5gqu1IV55GH6XzrlAMnkg7aML82UaJ7P0OLCy2GmoAv5mYdxL9hUIV7u
+	 jEnaL7Mzr0zmJzdlrh1FTVQpNNcU4E0e9whuo8ZLAWP27aVJY8zIIQxBhRVIW5qtV8
+	 ITHTFckdHDzXFIroyGvBmKet6tLcxgecDClkheY54A8wnhpZm6X3t/G8TpbUd6M28h
+	 FEdGAcxU0Q/gFfgk4219uGFxeYvN//XCAyraN1ZjPfgQ/ifzbksu4GKAmqWV6zm29M
+	 xNB603K1JIdFM5wvMVEheM3ybmTvHLcB1sTMJHQ1a0xvq3I/76jYcSCd8ArO5DHA1I
+	 SqCYOEVQW60QA==
+Date: Mon, 23 Nov 2026 09:30:12 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Arun Iyengar <aiyengar1990@gmail.com>
 Cc: Rob Herring <robh@kernel.org>, 
@@ -58,14 +58,15 @@ Cc: Rob Herring <robh@kernel.org>,
 	Pranjal Shrivastava <praan@google.com>, Will Deacon <will@kernel.org>, 
 	Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev, Shawn Lin <shawn.lin@rock-chips.com>, 
 	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH 1/9] dt-bindings: net: rockchip-dwmac: Allow iommus
-Message-ID: <20261123-quirky-scallop-of-beauty-c662b7@quoll>
+Subject: Re: [PATCH 3/9] dt-bindings: soc: rockchip: grf: Allow a clock for
+ the RK3588 PHP GRF
+Message-ID: <20261123-wealthy-luminous-skunk-cb5dbb@quoll>
 References: <20261113-mmu600-php-v1-0-231196049a3b@gmail.com>
- <20261113-mmu600-php-v1-1-231196049a3b@gmail.com>
+ <20261113-mmu600-php-v1-3-231196049a3b@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20261113-mmu600-php-v1-1-231196049a3b@gmail.com>
+In-Reply-To: <20261113-mmu600-php-v1-3-231196049a3b@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,16 +86,37 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Nov 13, 2026 at 04:38:47PM +0000, Arun Iyengar wrote:
-> The RK3588 GMACs are behind the PHP SMMU. Allow iommus.
+On Fri, Nov 13, 2026 at 04:38:49PM +0000, Arun Iyengar wrote:
+> The RK3588 PHP GRF is clocked from pclk_php_root, which is gated when
+> no PHP peripheral holds it. Allow the clock, so the syscon regmap
+> enables it.
 > 
 > Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 > ---
->  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 3 +++
->  1 file changed, 3 insertions(+)
->
+>  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 12 ++++++++++--
+>  1 file changed, 10 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> index e94c83d7c138..2525eb51f13b 100644
+> --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> @@ -321,8 +321,16 @@ allOf:
+>          - clocks
+>  
+>      else:
+> -      properties:
+> -        clocks: false
+> +      if:
+> +        not:
+> +          properties:
+> +            compatible:
+> +              contains:
+> +                const: rockchip,rk3588-php-grf
+> +
 
-No response to the report, so dropping from DT patchwork.
+This is not understandable - two nested ifs, one even with negation.
+
+If binding is too complex, it could be split.
 
 Best regards,
 Krzysztof
