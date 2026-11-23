@@ -2,86 +2,67 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3BC4E606A31A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 00:58:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E0807606A31A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 01:13:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=R3pKb7dD;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=qq.com header.i=@qq.com header.a=rsa-sha256 header.s=s201512 header.b=opXAUP98
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rkBd9mfN;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=XfVFItQf
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Subject:Cc:To:From:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=fyc+Yi2F1ksbftisyi5tUzOosb/TM8+r2GQiQkbdRNg=; b=R3pKb7dDd7wvA8U1b8wFy4QVrU
-	EZboR0AN0Qb9L/4RAIOuXQplmNs5rmoxagTau1zShHXs7mTj9ikcrAXJh6EnMA21tno+e19CX/tBf
-	5jMFi0zJqM8ZGTvFrTHYjN2A39G8ezYpcfu7IvVZoKy6UJFq8ixI5l97wSKjwI1x16YH2cfPJrCPU
-	0jbcurEdJNRDOuUsqznMwPTcpN4MPq+Bw/mSMn5jqlGoE+ivLyhDSrHdZZasHaYTvJN6ROWdbbwel
-	Q3dQjT4RAQQSmi8WOyicjvMuQRkyiGQbH/+LX8N1Bm3l1LR7fyw2RGPChQRUzFFbX5+SGSl4XIUEq
-	rk6PmWbQ==;
+	bh=J4pavk0mz19sOJ9jOa+AMxoVOZhU560NcZ6I7UKB2k8=; b=rkBd9mfNE+QXEmze4PV0VEYxbG
+	4hiOgqNdZmK3oX5Ikp4HEOl92YyKmlEnh6aGronEZXfCuggbQLcDOHbA+tw0lYe+nPFt6i5ubK0Eb
+	T/HU4RIYP1o9x+M4nypbu4YuBfWkufZo8hJWi+W0bNhiCxIK0hoLXeq+DOpKm7+j0wogHy+tb3nZl
+	8y+8Dq+19gr6Jv0M+2D5n3H0RXuREIMDHBYX0okueEXPmDZpDeygKaLvF3X3lMRjGoU9bpQD0Vzxz
+	iNpXLkUJT4qcI0Dr9YtkrtXEWVu+sJNbLdWYX3jtwy1uqidvDHDw84vaITQxqI7yBn8k5LwBVOdbZ
+	JXvtEu/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVHe2-00000001x0a-4ARk;
-	Mon, 23 Nov 2026 00:10:54 +0000
-Received: from out203-205-221-239.mail.qq.com ([203.205.221.239])
+	id 1xVIcC-000000023ih-1ZVl;
+	Mon, 23 Nov 2026 01:13:04 +0000
+Received: from mail-m81165.netease.com ([47.88.81.165])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVHdq-00000001wta-3nBk;
-	Mon, 23 Nov 2026 00:10:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1795392637; bh=Quk+i+RLhvm+ITRHRSHRS993N/vU6wVhQmtQekP7shc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=opXAUP98ECNIPzHHTYFhcatQkP88dFwsZ54X0MkK1VSSh7Wi3WY41x5a72qgtgBZO
-	 px/X1VIig0djaR4+iWv2hv3TxKKJLfJowaNJoXOHXjCy0cZV4mR2SJykX0pGDGYbO8
-	 rnS2MgnWIqawE8/QGBGQhkBOV82/+z5GbBXnTX48=
-Received: from jerry-PC.lan ([2408:8249:5f:7101:71a:8713:56b4:5043])
-	by newxmesmtplogicsvrszc56-0.qq.com (NewEsmtp) with SMTP
-	id 2A1184D1; Mon, 23 Nov 2026 08:10:33 +0800
-X-QQ-mid: xmsmtpt1795392634twi6siz7n
-Message-ID: <tencent_362F86565B982729D9FAF4092C36DF5C0D0A@qq.com>
-X-QQ-XMAILINFO: NAFJfp6T/atIbpMrV/G9srCwmCIGjaHoKLYzKk4QKc757IuZk0lgeclpX8mOY/
-	 kDigw3JkmCRVa7d233NPv4QU+G0n1Hqvq7cD+rzA65nFGuZs0D5QBFK9vECRtdgcpeNi5YreUCHs
-	 GKolS5WC8x7WkL/otZ2jGo0+mwxyVpz4qgWexvi9MWR2YrudAXpXaS1JaA2A4QsbWrRvf94xXtG4
-	 c3n0t2IDsiZnIkAjWQirxMsI074oEru+WtsVXpzYSdkwb/G1znBpZjaUaNrksRWQgQ/zJoyMxa3J
-	 1KUX+MQtW0ui/mOo5sT3GBnJ4Rd0t0rnlGjGzA2xqeMc8GNXOCEEnaPW2D8kyC2vo7hcv3xd33f8
-	 j03qY4kudsE2HxPQ0uHcte8b1mR4wgSm9iqI/Qian2rzQDxaBtz8VZVz+AluESbtg/c9Q8BAYgAU
-	 TzYv9xYl6MG/ZaY+3JUYq5JscFyA6g+hX9OfaGrQB9ZHPwm6Ojr6VSYgjwqkVm+4W4i++vL6yZzV
-	 W9Uj8bcTa9lfELbbcpBC7wCWU5fe3+jj0g1ETcyPcSI0twzVld3lmpeAtrZ1iezlaW8hD1Ol6tdf
-	 h8XU4KTzmjbnis/KlhBBJgHJLFfZiksCnLVJvjydPPV0BN/WONf/Nwxovtr5y4rvAKkTc4sjTcii
-	 YSGxnFAbol98wWycxk/yFJ5tWo9wwQRBlb3FRNdVq+QbhqcF5L5r1I5ymJnZETS87dlbKdnwoPAW
-	 /vPHhJA1VIO2GGfJNEEn6MBxQLgSaEimZRnLUcqCMx9LxTbYAPs03jEDWzwPjJeCPaR6mRyDVFvb
-	 nKFJhuvwc6afPrp+dlq0RxWRWORd1L1Blb1DPR110UxnUJd3/RtCbR/oaWGzZM6prgMbRNQBYkf8
-	 fpjwtKnGG6ZgQbEablmyyf9BOLjof+WUuupcKfOIgGB8oIhV6Vt4l1dcmWV90Rv4xJicks6bzhUW
-	 UTXYaEgXtH0heU0UhjXvv2oKKwXf7ZT8aXOqOyMhLj5DNMrxR8uGOuUny1x4BbvWM8r1ubTfd05E
-	 4RwMHLi0akmLH2DWkDPCwo6p5ZwcxMPzkrzAYrDxqnSlVcqhdZqoPQaDQ4I2xj8viFV4JARQglEU
-	 /2ifPIsVuuVRKROOjqd/0W8ZfgkQ7de0u787W6e58twRe40iUq+nFr6YDBcEX6W0JV1xU7lDPsw7
-	 BY6C8eOV8rpbHm4Tv/4LkZ38ZUhbql1bDcTj7ApDDx5zxvFq6MFg9d40Yee5Ck38/xQLk=
-X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
-From: Xiangyu Zhu <1194781887@qq.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Stephen Boyd <sboyd@kernel.org>
-Cc: Xiangyu Zhu <1194781887@qq.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-clk@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 1/2] dt-bindings: clock: rockchip,rk3506-cru: Add SAI MCLK output gate IDs
-Date: Mon, 23 Nov 2026 08:10:28 +0800
-X-OQ-MSGID: <7dbf1b4557d7cd9eec7d03838bb169c5db327bd1.1795366993.git.1194781887@qq.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <cover.1795366993.git.1194781887@qq.com>
-References: <cover.1795366993.git.1194781887@qq.com>
+	id 1xVIc8-000000023hq-1hVI;
+	Mon, 23 Nov 2026 01:13:03 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 5594437e6;
+	Mon, 23 Nov 2026 09:12:44 +0800 (GMT+08:00)
+Message-ID: <04e31b87-e766-4fb8-a361-0e92b1ab12ae@rock-chips.com>
+Date: Mon, 23 Nov 2026 09:12:42 +0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] drm/rockchip: dsi: enable RK3506 PHY data lanes in GRF
+To: ZhuXiangyu <1194781887@qq.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+ Andy Yan <andyshrk@163.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <tencent_C4C715C962613597F98212938F8940633306@qq.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <tencent_C4C715C962613597F98212938F8940633306@qq.com>
+X-HM-Tid: 0aa205f6674d03a7kunme2eb5a24b4b784
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDQkNCVh9OSUMZQkJCGBgfHVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=XfVFItQf3zmtTWT5dWXxy2+IBA8SoihxLBFhsNLWJcR0kd+7H5NxCN2UyNu0YbRlNkuiCF9rw4bezgW1BndNvr62M/1nDpAcngQmjKtky4966raCiSNBJY9/C7Wgv5JxF8h18TGc6sW32EFQM/dv5qqsrGHFw04XfoWBG7cS2Is=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=0Gp1eyUb1TRq0HLGTC1lCi4kXREArXMUBnkCXCJmk+g=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261122_161043_258435_1B3796DE 
-X-CRM114-Status: UNSURE (   8.23  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261122_171301_291914_9AAE4505 
+X-CRM114-Status: GOOD (  16.28  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,39 +75,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add clock IDs for the four SAI MCLK output-to-IO gates of the RK3506.
-SAI0 and SAI1 are controlled by bits in the PMU GRF, SAI2 and SAI3 by
-bits in the system GRF.
+On 11/22/2026 1:10 AM, ZhuXiangyu wrote:
+> rk3506_chip_data currently only clears the turnaround, force-rx, and
+> force-tx-stop fields in RK3506_SYS_GRF_SOC_CON6. As a result, the DSI
+> PHY data lanes remain disabled unless the bootloader happens to enable
+> them.
+> 
+> Set RK3506_DSI_PHY_ENABLE_LANE0 and RK3506_DSI_PHY_ENABLE_LANE1 in
+> lanecfg1 so the data lanes are reliably enabled by the driver.
+> 
+> Tested on an RK3506B board: the panel receives the low-power init
+> sequence and the framebuffer console displays properly.
+> 
+> Fixes: cabeacc7eadc ("drm/rockchip: dsi: Add support for rk3506")
+> Signed-off-by: Xiangyu Zhu <1194781887@qq.com>
+> ---
+> Changes in v2:
+> - Split out from the combined drm/phy patch into a standalone drm
+>   subsystem patch per Heiko's review.
+> - Limit recipients to drm and Rockchip maintainers/lists.
+> - Fix Signed-off-by author name formatting.
+> 
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> index 30d6f83c..116cc140 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> @@ -199,6 +199,8 @@
+>  
+>  #define RK3506_SYS_GRF_SOC_CON6		0x0018
+>  #define RK3506_DSI_FORCETXSTOPMODE	(0xf << 4)
+> +#define RK3506_DSI_PHY_ENABLE_LANE1	BIT(9)
+> +#define RK3506_DSI_PHY_ENABLE_LANE0	BIT(8)
+>  #define RK3506_DSI_TURNDISABLE		BIT(2)
+>  #define RK3506_DSI_FORCERXMODE		BIT(0)
+>  
+> @@ -1727,7 +1729,9 @@ static const struct rockchip_dw_dsi_chip_data rk3506_chip_data[] = {
+>  		.lanecfg1_grf_reg = RK3506_SYS_GRF_SOC_CON6,
+>  		.lanecfg1 = (FIELD_PREP_WM16_CONST(RK3506_DSI_TURNDISABLE, 0) |
+>  			     FIELD_PREP_WM16_CONST(RK3506_DSI_FORCERXMODE, 0) |
+> -			     FIELD_PREP_WM16_CONST(RK3506_DSI_FORCETXSTOPMODE, 0)),
+> +			     FIELD_PREP_WM16_CONST(RK3506_DSI_FORCETXSTOPMODE, 0) |
+> +			     FIELD_PREP_WM16_CONST(RK3506_DSI_PHY_ENABLE_LANE0, 1) |
+> +			     FIELD_PREP_WM16_CONST(RK3506_DSI_PHY_ENABLE_LANE1, 1)),
+>  		.max_data_lanes = 2,
+>  		.max_bit_rate_per_lane = 1500000000UL,
+>  		.dphy_get_timing = dw_mipi_dsi_phy_px30_get_timing,
 
-Signed-off-by: Xiangyu Zhu <1194781887@qq.com>
----
- include/dt-bindings/clock/rockchip,rk3506-cru.h | 4 ++++
- 1 file changed, 4 insertions(+)
+Reviewed-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-diff --git a/include/dt-bindings/clock/rockchip,rk3506-cru.h b/include/dt-bindings/clock/rockchip,rk3506-cru.h
-index 71d7dda2..708502db 100644
---- a/include/dt-bindings/clock/rockchip,rk3506-cru.h
-+++ b/include/dt-bindings/clock/rockchip,rk3506-cru.h
-@@ -281,5 +281,9 @@
- #define CLK_V0PLL_REF			268
- #define CLK_V1PLL_REF			269
- #define CLK_32K_FRAC_MUX		270
-+#define MCLK_OUT_SAI0_TO_IO		271
-+#define MCLK_OUT_SAI1_TO_IO		272
-+#define MCLK_OUT_SAI2_TO_IO		273
-+#define MCLK_OUT_SAI3_TO_IO		274
- 
- #endif
 -- 
-2.47.3
+Best, 
+Chaoyi
 
 
 _______________________________________________
