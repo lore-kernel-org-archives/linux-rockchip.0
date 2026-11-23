@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E1C8606A334
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 16:06:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 86D5F606A31E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 16:07:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NQT8eSWu;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=NhSYPe9l
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vaAC9KQt;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=QqgJ7d2v
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,50 +14,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=QOJ/U6/EBwQLW1xGsRKgv6LbbBKxGeuKOJ74135irsw=; b=NQT8eSWuVyv/LrOKuCxYiXEOff
-	f5Z02aGTJxlCnqBsM9+uN/1f2xFHHOtw0W3kFdZ7KYeQRJyanzdgrvVcJKJ1mgclTkbhrzQtmaBRn
-	NUKWDT2txXSaPSFl+SxykNWuSgQqjYr22lU26G87OjfyPcVvuhM3ZxExkwqefLR/6nmguiBTNG+a8
-	c1qbhHVPvhPdK480jz2ZJ69/kagtIZ0GoJ27DXZaL9/3DLXxWeYPfbbmk1srwrsK1t/RpWMbEwTlc
-	TolG+V98cYSHo3hrOX45eyNO+Td4b5HZktcKGFvbtz7m60r+pNyK5bwUMt6lg4uP1wa15tvDBiYZr
-	GaIimFcw==;
+	bh=+qV3BJ/uCH2k1wSktQtnm1R5z1fT1G1zpcXji61bM+o=; b=vaAC9KQtF3q8LdIxq5wU1fnsWK
+	Vuck9ppxWSpDkGx7xeMcyt/FNqVuuSU6HpQm/fGQUflhMdjaDWMOS3+MBk2pq4SkHFtQvwx2dfc0Z
+	3EVMswU+940BjmZx2iEzd13zGrbWBGUYVYWXnHTx4wu6gaGgQDMFeDvVBQUwZcAU0PI+xIyicPofk
+	zjwW/Idl2G7vWdZdMhefrza4VvCNgQUhYpa9TJvLwMmlxxrabVIyjaaytQC6wRCwJuoR+P1WAww6n
+	hFBQtat+zeZR3quK9bsOGQei2HrHi/V1XPY+a106/HHPYgB74ZX0fRUCjwbyTECsvzfjUYL6jtO8S
+	SG+/yw9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVWYd-0000000482H-40TX;
-	Mon, 23 Nov 2026 16:06:19 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xVWZX-000000048KP-2YdJ;
+	Mon, 23 Nov 2026 16:07:15 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVWYc-0000000481f-0dYp;
-	Mon, 23 Nov 2026 16:06:18 +0000
+	id 1xVWYq-0000000488c-3axq;
+	Mon, 23 Nov 2026 16:06:33 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B2EC5439EE;
-	Mon, 23 Nov 2026 16:06:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E8AB1F000C6;
-	Mon, 23 Nov 2026 16:06:13 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 4F72A62350;
+	Mon, 23 Nov 2026 16:06:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A887F1F000EF;
+	Mon, 23 Nov 2026 16:06:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795449977;
-	bh=0aJ5NufMkA0oD7AZywus5LCK/c7Fmr+e+ufWOzcP874=;
+	s=k20260515; t=1795449991;
+	bh=3r+hUQa+rAKmwXtdf1nQj3yrmAj5PM06tZTg7mvEGIc=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=NhSYPe9lfkgnjIr0bn0lVFAu74Gql+ImttqV88SSuZvfqujeqgyPWhfkEFENt/3r1
-	 ljaq1vYZcEqdY0QaOOL0xJ4faDwMsTQWFhuc/DLEh7F5S53TUi76y7pRy5/2KBJ/Do
-	 R/AaittP7TCCqVaLAbG5/xg6ENb9TGCtEL+H/GAXsuuZOXoKaJz8LwIN0Ih2Sz6fQq
-	 SG7WQ/80to5vqtqJf8jhdVTBv1i7WdongDEm5KiOJKob1tyqgknECSUJa6CRaEcXdy
-	 YQjXCHSPa4xaMWqbotNc8S9Xm+c8go1+kbdWfwbW/aLlsp9GODhkQTb7wDZfjNFCul
-	 ywN2gZCgmj4mw==
+	b=QqgJ7d2vWDd1Bxz2cm7/D6YBpeuDuZd/TLwC9GimcjA4zKcJGl1TFB/vS1+nBe5d4
+	 680Sp0UlADSTr80BWXvTIKtZf4xOcoFDPi9PqKdiUaYDQO+2GFvhhgZo5hsOYTx/2z
+	 XSYwXXUI3jcy1H8H0TQStRsDaNUUn0X5JMJUTivqCkQJkUN2ph5ZZJMl/WQEYCuhXb
+	 Ti1ZGej91s1q7GZaiFnb2qpcdw6+V4OWUoXHiRAaW/y1TTPoHq5yz0XH/m0cPcg6s6
+	 tGVk/E8bc8e0nsa02ndV53bCs5XeNCTmh8E/hDar7mj8Cb9FJx4jHHxurNpDSRqxc6
+	 jtiZfCJmWH6UQ==
 From: Vinod Koul <vkoul@kernel.org>
-To: Coia Prant <coiaprant@gmail.com>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20261006162807.2843858-1-coiaprant@gmail.com>
-References: <20261006162807.2843858-1-coiaprant@gmail.com>
-Subject: Re: [PATCH v13 0/2] phy: rockchip: naneng-combphy: add SGMII MAC
- selection for RK3568
-Message-Id: <179544997369.275844.18034015183144679963.b4-ty@kernel.org>
-Date: Mon, 23 Nov 2026 21:36:13 +0530
+ Damon Ding <damon.ding@rock-chips.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Dave Jones <s.dave.jones@gmail.com>, linux-phy@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20261114083339.600986-1-damon.ding@rock-chips.com>
+References: <20261114083339.600986-1-damon.ding@rock-chips.com>
+Subject: Re: (subset) [PATCH v6 0/4] Add eDP support for RK3568
+Message-Id: <179544998732.275844.17211132534453781481.b4-ty@kernel.org>
+Date: Mon, 23 Nov 2026 21:36:27 +0530
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-Mailer: b4 0.14.3
@@ -81,24 +83,24 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On Wed, 07 Oct 2026 00:28:04 +0800, Coia Prant wrote:
-> Changes since v12:
+On Sat, 14 Nov 2026 16:33:35 +0800, Damon Ding wrote:
+> Picked from:
+> https://lore.kernel.org/all/20261030064905.2248999-1-damon.ding@rock-chips.com/
 > 
-> - Only write pipe_sgmii_mac_sel when the property is present, leaving the
->   routing unchanged otherwise (Shawn).
-> - Validate the value in the driver and reject anything other than 0 or 1
->   (Shawn).
-> - Drop "default: 1" from the binding; the property is tri-state, so no
->   'default' in the schema is appropriate (Rob).
+> The 'rockchip,rk3568-edp' display binding, the RK3568 support for the
+> Analogix DP bridge driver and the RK3568 support for the Rockchip
+> Analogix DP driver have been applied to the drm-misc-next tree.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] dt-bindings: phy: rockchip: naneng-combphy: add rockchip,sgmii-mac-sel property
-      commit: 0451ac710ad1627f48116204f6fcf3aec72cc87b
-[2/2] phy: rockchip: naneng-combphy: add SGMII MAC selection for RK3568
-      commit: 7827b62741ea75d24b3db1ad01d09b6d15423a62
+[1/4] dt-bindings: phy: Add rockchip,rk3568-edp-phy
+      commit: f634e1dd3528fe4341ddc7fa44ad448821afbd21
+[2/4] phy: rockchip: Add support for Naneng eDP phy
+      commit: ecf8bf37197560c0dd8222ae2dc8791b6271c9f8
+[4/4] MAINTAINERS: Add entry for Rockchip eDP phy
+      commit: 3f63ca7ce197c661bbe53fc808d0cec444b40042
 
 Best regards,
 -- 
