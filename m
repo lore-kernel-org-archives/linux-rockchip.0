@@ -2,12 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CEE16606A31E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2026 23:52:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D5D19606A321
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 00:02:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=oyOxDo0j;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gahingwoo.com header.i=@gahingwoo.com header.a=rsa-sha256 header.s=fm2 header.b=CPYfRbcB;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=uTacps4U
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=N1fdExmQ;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=gahingwoo.com header.i=@gahingwoo.com header.a=rsa-sha256 header.s=fm2 header.b=iWP9oYfo;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=messagingengine.com header.i=@messagingengine.com header.a=rsa-sha256 header.s=fm3 header.b=gQR7ZRGp
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -15,111 +15,129 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=/oAkzbwKYJZqkiztiiTTWjArWU9UI91oVV32BBCX7GI=; b=oyOxDo0j4ABU6D7GtapTIMFtES
-	D5xUkNA4SBOnamvWuA4ZEyXiC/j2fQROq8GqZb/4DdJl0xjO5FQs3wOiUnQ2Z/TeOp/ejEL1k/RPc
-	bs4+BVxxDR/hQya3YiJr/nbtUDD8EEFE1LXQUxDxDpKvVzHBhWwdiL+81mH3fU0+xF9CkzbXBo9+O
-	jWxygYRn52+oV2KNaWJGXCOAhkgXlfqpGEEaoZ+HirfdJq1GAwTkr4T6Uxo7OENU797om/3xjSO0u
-	T/FLIRMpFkL6hTJv+774MLSXRGOAvC3CR/pY0UYdE/kod6YVRPW0GnLPIhW3GBtvjcHDNQG6am9K5
-	7zr3yCrw==;
+	bh=GXll6dk0lYnjDai1eg5ZOZmQUElMBWE8VcJc2nqvILA=; b=N1fdExmQSXrpoDAOVOPo7DAxrd
+	w2RHNBNJe1AYbkjQjKNCjopY0taQgH5lZn2U1ZAQPQdFEIYYTMubzk0Rrb+m9eTituctAGlkArVAo
+	4mbBoSIEDbQ1A1CoD/d+xG518w5PUt7acdwCbgbcH6ZsMCEm4NxgFrk/VvlDPRSVo0qZ4BCz5sRNc
+	naBTh0pyASX9CMdWT+Df5ihhjqvvuGlLs8gKNX5Zd7yMsB0RuYWDybJqfhBlahxPryrxvQ3adeMS9
+	7UkPgADUmohz40iL1R5BhHDz20iyse7nT4xwE/DiTPhOus2l+fwwVGKPITXl1US3c3qDLhXSuV9N8
+	vzJGk4vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVdpY-00000005DO7-083T;
-	Mon, 23 Nov 2026 23:52:16 +0000
-Received: from fout-b8-smtp.messagingengine.com ([202.12.124.151])
+	id 1xVdyy-00000005Dkl-3Cvd;
+	Tue, 24 Nov 2026 00:02:00 +0000
+Received: from fout-a3-smtp.messagingengine.com ([103.168.172.146])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVdpP-00000005DND-0nqX
+	id 1xVdyu-00000005Djm-0Pbh
 	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Nov 2026 23:52:09 +0000
-Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
-	by mailfout.stl.internal (Postfix) with ESMTP id 1E0B11D0059B
-	for <linux-rockchip@lists.infradead.org>; Mon, 23 Nov 2026 18:52:04 -0500 (EST)
+	Tue, 24 Nov 2026 00:01:58 +0000
+Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
+	by mailfout.phl.internal (Postfix) with ESMTP id 6BF4FEC0B14
+	for <linux-rockchip@lists.infradead.org>; Mon, 23 Nov 2026 19:01:54 -0500 (EST)
 Received: from phl-frontend-04 ([10.202.2.163])
-  by phl-compute-01.internal (MEProxy); Mon, 23 Nov 2026 18:52:04 -0500
+  by phl-compute-02.internal (MEProxy); Mon, 23 Nov 2026 19:01:54 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gahingwoo.com;
 	 h=cc:cc:content-transfer-encoding:content-type:date:date:from
 	:from:in-reply-to:message-id:mime-version:reply-to:subject
-	:subject:to:to; s=fm2; t=1795477922; x=1795564322; bh=IybjlPb0LV
-	Z7QOrAFKKCkNNJ886YmIr8unCCc4l7uQU=; b=CPYfRbcBBrg7/V9O3wjaPCSf5J
-	k7ahECh+Td41Nh3WV874GvdzmLJrXDD/OlBAXv8e9eLflbum4+/Dx+jYK2Ql+IZo
-	ntHexnWr8jTjyTDPFL79OqXvUCW8zSvPic8moGM1uIK3iXo9eHFOcaZWxK1woHcK
-	GhkCz763bnkmfJEl983rsOBp2ivPYuIw+srDOeXOVzHbDqTkZ9ShpN7uXD1hieRj
-	oUKVIdwMcSmqQPX7G0bTKUFx82u8pLcCduzJjZql9QWlkrm3C+mwEH4OqGPlx2Y3
-	izD/qOjcnDp1wZJsLxt6RfYQWboBVyPJvbBv430vTMk743FJoekPCohP3n4Q==
+	:subject:to:to; s=fm2; t=1795478514; x=1795564914; bh=KKx5Q0VuU2
+	/e6f1PoJVzvJ/nSVlotgFqvYyL3B4vcIA=; b=iWP9oYfoKz8vdvVNcJkyegK3+z
+	oxjhFo8zLPV1e5JTMsdtpsA71/dRj2MAPN1RaxlitWXRGx2fYBQxhIKv/zgylpQD
+	Tf3vK2EXGngcYtBN9c0+9kYAMut5WqBjt9Q9Z82sFd2nFb+GzYkuXjToxQcoQUoR
+	3wa/umu+6zFYqVpV1ihmJ7JSK9vJvhaym9KrKY0AMjk3OEXCvsRBVf2H0kWOhrrK
+	OPDpadAmmfd/LZFSHt+4nAj18BCPqcDiJmiyLSbgVdECd2O+AG+TQvJmMSJvqUxQ
+	YeCsxuS3Vsk3EM3sYw8SSmAGFTmUX0cR/xTxx+We8BX+zTRNrheEGfPLMhBg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
 	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
 	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
-	1795477922; x=1795564322; bh=IybjlPb0LVZ7QOrAFKKCkNNJ886YmIr8unC
-	Cc4l7uQU=; b=uTacps4UBTdqNXSA/ZYq/EdYMuORnzKAjwshymbVPFPMZeiLpsO
-	mjBxTVc8GbLrHQjKqtoWMsAYF+UNR+w02vIHtcAjQyDxyswD/koZJO/dDaz3ScHe
-	8rTpL/g37zcbmrwhdWNy0/1gUE2hVD3K7BgjWX+e0d3lgpF27wIg9CI9jQgbkLBY
-	jd/wHDLDNt3/C6vR0C2xJ18LS57b4Sgapm9vzaVlgwPbcCw06pPnlvSa0L+RVLBx
-	fyIY/+GkA7epr8FoTCRReFZP6j5WgIdhvytF8UA5mSh9Nu/CqUPJmHcjZWpuoCX0
-	uKekc0czs23FP+aZUyezKwberEiPwiomwoA==
+	1795478514; x=1795564914; bh=KKx5Q0VuU2/e6f1PoJVzvJ/nSVlotgFqvYy
+	L3B4vcIA=; b=gQR7ZRGpskGrnADFQKWrb14P8mlnCclct9k2/KYMVnN6Gf93Ybx
+	1LU1kQVBem85ahKLYrtkst1Cs7DqG43rz6G7vcwhndP2Zei4wVHxv0ufYTjR7fw4
+	kEargYnXlT/8wRI1E9TJU48GfAJF1RvIT94eNvcnRR6nNBqxRpyd0GJwjdMt3T5y
+	cf83Jwy9z6A1yUjxSfP3xuYSnVJYuMk6AdkTHu25p2kOHsbJC3fBpJMZuW7elhBV
+	/U4b29hoC2vyWgbB0KEMQPIOSIn1wx1Gh9IUARvZ7V0VWmw+J/dVyv4LsDaQBBR4
+	lEv2SDPgagWX7x073PEYlOiufFME48j5bQw==
 X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
 	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
 	action=sign d=gahingwoo.com a=rsa-sha256;
-DKIM2-Signature: i=1; m=1; t=1795477922; d=gahingwoo.com;
+DKIM2-Signature: i=1; m=1; t=1795478514; d=gahingwoo.com;
 	mf=PGdhaGluZ0BnYWhpbmd3b28uY29tPg==;
 	rt=PGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmc+;
-	s=fm2:rsa-sha256:YttU8N0cxnYY3bFIDBUQjcX3+WxU9SbdSrHgXlm5ddrs7JE
-	wG0LUgufVmNzlro+5ZIcggZEadCnp22CwGkA7jY1L+LTcuz4s2qJ9qMvo8hFcpnL
-	wt1LqmA4Qvrjlbl+WSjizDQlzHOrBVypqTt5TuOqY/tpjWMNJ+zNnXxbD84wkJqP
-	6QcWcGSmP6s2EDUuSP9obmzjkuV8nbXuaboKw2M0PDn4vnPDrzzQPGwIZm+fqkjs
-	mAGkkgC4srg21s6yddq55XnS/10xymKrlmU1+ULNDUuBLsUi666qyTzBF4VJlucY
-	ZRdJfOLdkFpwET2M3kww8TR85qRmoyZarHGAeAw==;
+	s=fm2:rsa-sha256:MAKHsno2hRwkD+JI0GnqOyXvDa1uBstt9B6WUvmYkZAKyiT
+	N3WgjiP5ByUV2K2IT/SEPgwOVXZRcnVBbHLsfp46nWk31xM12NNwOzl8N0gh75iT
+	KedoSO2bOmb58/YGW0Hb7i30h0JjaYJBWko6FiAnXWrsI9NJOZVeFqu5Gqv/9VQB
+	RxZiudhz+cSA/sXjzNz/VaxntDELo/W91kw1pGvFv3xwc0fMYMa0cu+ELcTvnqpg
+	F5WcnaL/jV9x1pV00ES65GnZuPJiHq9O+6zyWiW/aP76hsTyOrlg+PbsXhb4VYKz
+	j1adwAd6yuiinmkFo9FM1/1mhiBy4ld5gYy2g7Q==;
 X-DKIM2-Info: draft=ietf-dkim-dkim2-spec-09;
 	repo=github.com/dkim2wg/interop; date=2026-11-03; sw=lmtpprox;
 	action=mi-m=1; hc=9;
 	hn=cc,content-transfer-encoding,date,feedback-id,from,
 	message-id,mime-version,subject,to;
-Message-Instance: m=1; h=sha256:snLsPNsbCz4VYOV2yj47o6aRDOxjWYqyPbozGNNs8VY=:P1o165xLoA2qPuWrWFB5pBAq5tFyty/t5vGj9pxnMhE=;
-X-ME-Sender: <xms:oNEEayNBhIsU1UsD4wcEKvo0F7MVcHuRFBk7UpQ2QN0e_m-K_rFQdw>
-    <xme:oNEEa9Wt-eCR0KFCQfpEhkNvInUAZuyiqoWWNKM09uQfu_Bc5yFMli7BFEpsIbvpJ
-    pijCkXMummPZerpiV_S3AU-fOMt_VJCNnVTDJ7N72szWB7KVigdK7U>
-X-ME-Received: <xmr:oNEEa9vyk1XhCip0WNq7twhcbfXgFs_dXjNlOTmLOOFXifPBa3VIt-6z5WOys9_whlW3fzKY>
-X-ME-Proxy-Cause: dmFkZTGJb1GdD04PLpCAwZXXn7KZFUQpgvhFpeiMNWdTsgQSXg4su9r1wkz1eWzPIWOfBk
-    FJ9NY1WQK6z+GMRPOeRa/xAcpLpGhZ3i3rHu5zB/D89kM2qY3MxfXxhF110D0CRcXEf2fs
-    4MN8MAYO53DHxq/1TxDxLsW5l7z73MpX6FTTFOLL15TnPkCKO8+O8eTU+J7YY12pzpLN9D
-    p/Kfr1ryp9Wgd2f7QZubaklTf0nB4k6SUJquczvZb3B/7xgpFlcJ0khWtpNl6yBmu4hGTG
-    rRsYCFoUn1baSUqCSDWvFHpznLOQrwKiCna74wQ9/Gjj2KmMpF+aQXmxNWCHIUGenuXuJh
-    7S3H+o9zDSJGKzoghBTYfKDpTcrMP8uXEMuxALYb/6VCSTKN566GB/8nyz/Wod6HIjG1RJ
-    ggCKta78hvrnZZZmTSy5AjuBmN0Z+eCbSKfT0pxpOhQol3WDC/xm0duisMs4leMcI2X4bm
-    vElPhLbZwcp8fFyfcud8QwdbASs/s9OHFa2l34KCDcDJoVV73h7OYUsJMoCVtX8tY4kYra
-    YBGMqVPC1naNhEqezi3z9gcD/pzGewTMhtrXBkjPD4czMToAIjEwz8zslcpWt72BD8ThG+
-    s4aY8/tdWsw96+Mj9zvaymtCPXiBR2ss+/GFpYC+3lTl90JY7qAdmQgEvcMw
-X-ME-Proxy: <xmx:oNEEaw0-SK_YQXOqR6vG6JDwO3SMTOonxH7AI6Qkpj3Jt0T5AtOmfw>
-    <xmx:oNEEa265RLCMuUWeLqN_Et1li24zw51GNx9ZNrpsXJJ8mKxMmU3XUA>
-    <xmx:oNEEa_XrqjxsazoJvxACg2og9xgDzysaS0fyq_8BQ0efYoVFd_GZLw>
-    <xmx:oNEEa2iay_QGchCQCamWbZuZRRbbAd7njZtZxz1iT-B5qsHgXdVYTA>
-    <xmx:otEEa9IbXmXQVeWTV5gWRzJeSD0Si6hsRP_FhIDNSdEyRkWZo8GclPrN>
+Message-Instance: m=1; h=sha256:XBkiax/mVjOMH/ql7HbN1vjdn1dgmhEk1Pibb2QZj2k=:WYvuWbIIUB3/05DuEse5xWx7f10TYxwWRMKXRK08Xl4=;
+X-ME-Sender: <xms:8dMEa5Q7GFQyWfmn6M9VlmrtPHkVNST4OkH2QALO10rOkYdGcpJlQA>
+    <xme:8dMEa9I9uXZbbBl6PBd5LpSWy3I5vUvriH2bzmx8NTeQ-Ma5SCHGuNG5EPzLNBAcA
+    qdNubJmgBJCV6t8tmo_w7UkW-TJvZ6pGXYLk1tTHiggjpKFT4cra4cB>
+X-ME-Received: <xmr:8dMEa6Z_269ozBlVDI5c3b5mczVizDJ2V8PnXiYVNlEsMffgrL4ei_qXvYG1RRtc4Xn1zYiE>
+X-ME-Proxy-Cause: dmFkZTEO+jdX3VbqHwNFG1H/l5IqV/QA4KK2LxyqGkusUGBknKv3Xj1lEXrn/q0NWh9696
+    uJcRyqwNAgUu1eI3+mw5Mm0lXI+Exbp4rbR7odfV5Ie/H0+KLpwyZZ9uObBJ4SUlfoT+VV
+    jocDoaizgQd+irp/EWqfciQcGw/n6DFOoj1bsZAd80lRzyEqUKsjh5+A1TUQJwLoKPrirF
+    8d754mQQjnz/m7I+bJphRJV6dZeDq5BGGozuCVQyiIOs/eBUa85noikxAgpdNeqSmOEuFe
+    PF00S25zKkH6GNlyYmUPhzJBBYBJYmg4dhW0bNIZ1ocOseioSLu17CndKIRu5UbiZ7B2Wf
+    ATDSyiy6FfIwiCqc/QL1C7jwcUgXg62S5yLczvcCP4qxN3pTTRxSVSuctoE7SO2Jv2ayUH
+    0//0I1s/t/BMhQ+1jndiqqyRhZ63gfp/VP+M2qNceL7vyl9PNi1xi2PFYpDYfMk/kE2CsC
+    SHGVwn9U/i0vmhucAEGBzmh6r/iyGS3AUJiio4tZEGOUlWCvYtGLJT/RdtXNjnmM3FypAq
+    /3dEJc7sfWi4mEASfJV/tN4Kiw3hWAmi/mKOjZG9Cee7fImCoG4tZJPIz7HgDT/wpLuEWa
+    J5ZoXeBdOSpflVemgYwT6jlfQhiiLUe1HXIWLy0L+Q13w/cGAhJRuP1cFzWg
+X-ME-Proxy: <xmx:8dMEa7A4zAOKarBr9xXMWLiVNimIkqor8QYvbth8i3N05OZym_Sr2g>
+    <xmx:8dMEa8XUWsqAPPDWYowJDKdh5vGsj10EcaLLAbu2IZ-Mc9cbuRSlhA>
+    <xmx:8dMEa01imZHdK2-zwjv01fhHmen8aSw_yKvCDuaFrWtrL9OoLbuQYg>
+    <xmx:8dMEa9XAgztFcAtfHyF-goqFUxB_ZAcGa9HN5Xxd406HjJFlpXQSFA>
+    <xmx:8tMEa9HK4cR-7P3qY6agrjudQ3l39i8KhrPlp4qd2TTjwTa3bSsKA5U4>
 Feedback-ID: i7a5e4b5f:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 23 Nov 2026 18:51:56 -0500 (EST)
+ 23 Nov 2026 19:01:45 -0500 (EST)
 From: Jiaxing Hu <gahing@gahingwoo.com>
-To: joro@8bytes.org,
+To: tomeu@tomeuvizoso.net,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	joro@8bytes.org,
 	will@kernel.org,
 	robin.murphy@arm.com,
-	heiko@sntech.de
-Cc: tomeu@tomeuvizoso.net,
-	ddrake@baylibre.com,
+	p.zabel@pengutronix.de,
+	ogabbay@kernel.org,
+	zhangqing@rock-chips.com
+Cc: ddrake@baylibre.com,
+	royalnet026@gmail.com,
 	sidong.yang@furiosa.ai,
-	anton.sovetov@gmail.com,
+	ulf.hansson@oss.qualcomm.com,
+	abel.vesa@oss.qualcomm.com,
+	sebastian.reichel@collabora.com,
 	chaoyi.chen@rock-chips.com,
-	iommu@lists.linux.dev,
+	shawn.lin@rock-chips.com,
+	finley.xiao@rock-chips.com,
+	diederik@cknow-tech.com,
+	alchark@flipper.net,
+	leonard@lausen.nl,
+	vlwwwwww@gmail.com,
+	jeff.hugo@oss.qualcomm.com,
+	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
+	iommu@lists.linux.dev,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH] iommu/rockchip: Disable paging on banks that still page before a force reset
-Date: Tue, 24 Nov 2026 12:51:54 +1300
-Message-ID: <20261123235154.315460-1-gahing@gahingwoo.com>
+Subject: [PATCH v18 0/8] accel/rocket: RK3576 NPU (RKNN) enablement
+Date: Tue, 24 Nov 2026 13:01:35 +1300
+Message-ID: <cover.1795478392.git.gahing@gahingwoo.com>
 X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_155207_547012_6F8789E8 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20261123_160156_212794_A77D78ED 
+X-CRM114-Status: GOOD (  15.93  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -133,117 +151,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-After an RK3576 NPU job timeout resets the core, the banks of its IOMMU
-can be left in different states: bank 0 is still paging while bank 1
-has been reset.
+This series adds RK3576 NPU (RKNN) support to the mainline rocket
+driver.
 
-In this state the existing stall and paging helpers do nothing, so the
-force reset that follows fails as well. The IOMMU can then no longer be
-enabled, and the NPU stops working.
+Changes in v18
 
-When the banks disagree, stop paging on the banks that still page
-first, then run the existing sequence.
+- Rebased onto next-20261120. Patches 1-4 of v17 are in v7.4-rc4 and
+  are dropped. The pmdomain series has been applied by Ulf (1/3 to
+  fixes, 2/3 and 3/3 to next).
 
-Tested on a ROCK 4D with repeated forced job timeouts. Without this
-patch, one in every 2 to 10 timeouts was not recovered from; with it,
-20 out of 20 recovered.
+- 4/8 (was 8/12), following Daniel's review: the clocks are taken with
+  devm_clk_bulk_get_all() and the resets as a reset array, so their
+  number is no longer given per SoC and enum rocket_clk is gone. On the
+  RK3588 this changes the reset deassert order: srst_a is now released
+  before srst_h.
 
-Fixes: cd6438c5f844 ("iommu/rockchip: Reconstruct to support multi slaves")
-Signed-off-by: Jiaxing Hu <gahing@gahingwoo.com>
----
-Not tested on the RK3588.
+- 5/8 (was 10/12): GET_PARAM now comes before the RK3576 support. The
+  hardware version is taken from the match data when the first core
+  probes and stored in rocket_device, so READ_ONCE is not needed and
+  core 0 is not assumed to exist. The driver keeps its own enum rather
+  than PC_VERSION, which reads 0 on the RK3568. The UAPI documentation
+  no longer ties the version to a compatible.
+
+- 6/8 (was 9/12): the RK3576 TASK_CON uses a register definition
+  generated from Mesa's registers.xml, selected by the hardware
+  version. The cores are counted in rocket_drv.c. The "# Conflicts:"
+  lines left in v17 are gone.
+
+- 7/8 and 8/8: test notes removed from the commit messages; 8/8 states
+  its dependency on b1bff9ced657 in Ulf's tree.
+
+- All commit messages shortened.
+
+Review tags
+
+Kept: Reviewed-by from Igor and Heiko and Tested-by from Sidong on 1/8,
+Reviewed-by from Krzysztof on 2/8, Acked-by from Conor on 3/8. Dropped
+Sidong's Tested-by on v17 8-10, which were rewritten.
+
+Sidong, could you test this again on the RK3588? The reset and recovery
+path after a job timeout matters most, since the deassert order has
+changed.
+
+Testing
+
+Radxa ROCK 4D (RK3576), v7.4-rc4 with this series, in an image built
+with Armbian:
+
+- Both NPU cores probe.
+- GET_PARAM returns the RK3576 hardware version (2); invalid requests
+  return -EINVAL.
+- 30 inference runs in a row give identical output, with no job
+  timeout, IOMMU error or SError.
+- Booted 3 times with the NPU not enabled: NPUTOP, NPU0 and NPU1 are
+  switched off, and so is the NPU rail.
+
+Known issue
+
+A core reset after a job timeout can leave bank 0 of the IOMMU paging,
+and the NPU then does not recover. The fix has been sent separately:
+
+https://lore.kernel.org/all/20261123235154.315460-1-gahing@gahingwoo.com/
+
+With repeated forced timeouts on the ROCK 4D, about one in every 2 to
+10 is not recovered from without the fix; with it, 20 in a row all
+recovered.
+
+Notes
+
+- 594 MHz (Daniel's question): mainline does not scale the NPU
+  frequency or voltage yet. The NPU boots at 786 MHz and 750 mV, which
+  is not in the vendor's OPP table. That table runs up to 600 MHz at
+  725 mV, so 594 MHz is within it.
+
+- npu-supply: the binding requires it and the RK3588 device trees set
+  it, but the driver does not use it. The NPU rail is switched by the
+  power domain through domain-supply.
+
+- The register definitions are generated from Mesa's registers.xml;
+  the XML change will go with Mesa MR !43804.
 
 LLM-assisted.
 
- drivers/iommu/rockchip-iommu.c | 61 ++++++++++++++++++++++++++++++++++
- 1 file changed, 61 insertions(+)
+Jiaxing Hu (8):
+  accel/rocket: factor the completion tail out of the IRQ handler
+  dt-bindings: npu: rockchip: add rockchip,rk3576-rknn-core
+  dt-bindings: iommu: rockchip: describe the RK3576 NPU MMU
+  accel/rocket: take the core clocks and resets from the devicetree
+  accel/rocket: add a GET_PARAM ioctl for the hardware version
+  accel/rocket: add RK3576 NPU (RKNN) support
+  arm64: dts: rockchip: add NPU (RKNN) nodes to rk3576
+  arm64: dts: rockchip: enable the NPU on rk3576-rock-4d
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 1fa3110b142a..5eabefb0ad14 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -507,6 +507,64 @@ static int rk_iommu_disable_paging(struct rk_iommu *iommu)
- 	return ret;
- }
- 
-+/*
-+ * The helpers above only act when every bank agrees. After a reset of the
-+ * master, one bank can still be paging; stop it bank by bank.
-+ */
-+static void rk_iommu_quiesce_paging_banks(struct rk_iommu *iommu)
-+{
-+	int i, ret;
-+	u32 status;
-+
-+	for (i = 0; i < iommu->num_mmu; i++) {
-+		void __iomem *base = iommu->bases[i];
-+
-+		if (!(rk_iommu_read(base, RK_MMU_STATUS) & RK_MMU_STATUS_PAGING_ENABLED))
-+			continue;
-+
-+		dev_warn_ratelimited(iommu->dev, "bank %d still paging, status %#08x; disabling it\n",
-+				     i, rk_iommu_read(base, RK_MMU_STATUS));
-+
-+		if (rk_iommu_read(base, RK_MMU_STATUS) & RK_MMU_STATUS_PAGE_FAULT_ACTIVE)
-+			writel(RK_MMU_CMD_PAGE_FAULT_DONE, base + RK_MMU_COMMAND);
-+
-+		rk_iommu_base_command(base, RK_MMU_CMD_ENABLE_STALL);
-+		ret = readl_poll_timeout(base + RK_MMU_STATUS, status,
-+					 status & RK_MMU_STATUS_STALL_ACTIVE,
-+					 RK_MMU_POLL_PERIOD_US, RK_MMU_POLL_TIMEOUT_US);
-+		if (ret)
-+			dev_err(iommu->dev, "bank %d: stall timed out, status %#08x\n",
-+				i, status);
-+
-+		rk_iommu_base_command(base, RK_MMU_CMD_DISABLE_PAGING);
-+		ret = readl_poll_timeout(base + RK_MMU_STATUS, status,
-+					 !(status & RK_MMU_STATUS_PAGING_ENABLED),
-+					 RK_MMU_POLL_PERIOD_US, RK_MMU_POLL_TIMEOUT_US);
-+		if (ret)
-+			dev_err(iommu->dev, "bank %d: disable paging timed out, status %#08x\n",
-+				i, status);
-+
-+		rk_iommu_base_command(base, RK_MMU_CMD_DISABLE_STALL);
-+		ret = readl_poll_timeout(base + RK_MMU_STATUS, status,
-+					 !(status & RK_MMU_STATUS_STALL_ACTIVE),
-+					 RK_MMU_POLL_PERIOD_US, RK_MMU_POLL_TIMEOUT_US);
-+		if (ret)
-+			dev_err(iommu->dev, "bank %d: disable stall timed out, status %#08x\n",
-+				i, status);
-+	}
-+}
-+
-+static bool rk_iommu_banks_disagree_on_paging(struct rk_iommu *iommu)
-+{
-+	int i, n = 0;
-+
-+	for (i = 0; i < iommu->num_mmu; i++)
-+		n += !!(rk_iommu_read(iommu->bases[i], RK_MMU_STATUS) &
-+			RK_MMU_STATUS_PAGING_ENABLED);
-+
-+	return n && n != iommu->num_mmu;
-+}
-+
- static int rk_iommu_force_reset(struct rk_iommu *iommu)
- {
- 	int ret, i;
-@@ -947,6 +1005,9 @@ static int rk_iommu_enable(struct rk_iommu *iommu)
- 	if (ret)
- 		return ret;
- 
-+	if (rk_iommu_banks_disagree_on_paging(iommu))
-+		rk_iommu_quiesce_paging_banks(iommu);
-+
- 	ret = rk_iommu_enable_stall(iommu);
- 	if (ret)
- 		goto out_disable_clocks;
+ .../bindings/iommu/rockchip,iommu.yaml        | 26 +++++++
+ .../npu/rockchip,rk3588-rknn-core.yaml        | 40 ++++++++++-
+ .../boot/dts/rockchip/rk3576-rock-4d.dts      | 22 ++++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 70 ++++++++++++++++++-
+ drivers/accel/rocket/rocket_core.c            | 25 +++----
+ drivers/accel/rocket/rocket_core.h            | 13 +---
+ drivers/accel/rocket/rocket_device.c          | 11 +--
+ drivers/accel/rocket/rocket_device.h          |  6 +-
+ drivers/accel/rocket/rocket_drv.c             | 52 ++++++++++++--
+ drivers/accel/rocket/rocket_job.c             | 45 ++++++++----
+ drivers/accel/rocket/rocket_registers.h       | 32 +++++++++
+ include/uapi/drm/rocket_accel.h               | 43 ++++++++++++
+ 12 files changed, 329 insertions(+), 56 deletions(-)
+
 
 base-commit: 909ef7a9a30fa139e69e555e3606680f5cca7726
 -- 
