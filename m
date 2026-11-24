@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9E2F7606A31E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 03:40:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 87DEB606A31E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 03:44:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=InMRzHc+;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=h6mdar+A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CstRu0dS;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Vj8u7L60
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,49 +14,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=DkFOjwPDM8JxVw4W0IpnMYq5KxjYsxttA7kiSxAlWVg=; b=InMRzHc+uHK4E4quqo17peto/q
-	GgJBVy8S+GxdaudgNKHR26ULS0vjBm9hQAofXGZH2zDaXgs42FOz1wg+6lMgN8FiFezD2hTYseZ9N
-	aZ6x71knMp/EfuGDZvBdHcjDVQpUC1Qk826mPgryai9ZzCAly0ejqv8o+luKWc0jAtfjFTHDmZ4gH
-	7w4bE4f9FH8Hlq7B2N18TbZcE2prnp0CC+ptE8VwCiKqTtcej8lQQ0Utq1AzuqaR5HKPiPxyxdyRP
-	3LyLbSEy3o0Po6b8/LnYuX7T9r0PhExsdiOCrfjeE6AlLwnxlP7bPbHVu6HMNVfPxKJYHv/1LiWie
-	evsNLXvA==;
+	bh=UeiCwfkhOlbPBaoWZ4hLnxYUzfOWd0URvkm5fKq0b0U=; b=CstRu0dS0szvbot0n9ANDYM3LB
+	/avR8v/iWHdJY6r1FPRezHUb93AaEo0xtYa1q1A9IlVPTXb7jJcyNGeHKM4kNL6bgznSqVbeU83qX
+	fPm8qkrb6njVhEZAFjxUEe1PZOTf0Vji+v0pAfBwDQvp221AUURSBn+R1JnW/XufR+Q1Y1C/gfqp3
+	rPIlVOQYA1pY3zv31unNIRSjoH/85P6Rf10t03NJRJX+oAQ6I03kTcGe76AHnnsFgwFQypNWdGson
+	+wRMRQekr9Uhx7b6gdbYqNJ5U4ZZWUoqH+yJSRmWkRt3/IJg5zE5tcy/KcdYuusbymhBBurgCMHHk
+	FqCEu1tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVhOk-00000005SaB-47zN;
-	Tue, 24 Nov 2026 03:40:50 +0000
+	id 1xVhSR-00000005Snu-2LYR;
+	Tue, 24 Nov 2026 03:44:39 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVhOh-00000005SYq-04ea
-	for linux-rockchip@lists.infradead.org;
-	Tue, 24 Nov 2026 03:40:49 +0000
+	id 1xVhSO-00000005Sn7-1lJq;
+	Tue, 24 Nov 2026 03:44:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795491643;
-	bh=QhqdYdT7M/jtRCJyOksKmWAlKfDFnwolfbIqPbeF2ZQ=;
+	s=mail; t=1795491873;
+	bh=nMy8A8dspKyD4GQcj7I09F4uoZ54ej+K/KIoy3ZgamU=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=h6mdar+AFMHCToI32rjA1wBIRW0J4RGqS4fhfc8Yu1OxdPzFLH5DcYylsVe8Otx0v
-	 kKAs6rwagzY1zT1gTNxKIU+qFcqfk8hVPgaPQCpQJ6yAKXAkBhjkMxv9KK2gOrNKZp
-	 dZLPrPqQTvA+RseBr8ogAYrFMttuBXLmNV/3nNC7/7dTayvsN6/osYwH2Q5g0LIv/l
-	 blnuWIghjBRPqWyiZDNSMVDtEi3qZVm6TTxKxL2KbF4iKO3kdtFVCFeojLhF8v5ynp
-	 PwLFoMoJn7EdEVg5NCGJjbNamv2Sczyg/MfeUwqFXdOjPNzg0p3XgHPVM/eRJzupO0
-	 c8OytkyiiRc6A==
+	b=Vj8u7L60X2/fSBAqE7B8mTW5UwhE4nXuBjHrS8KCtkpKKcbMtxLHf4wtXLUaVvID4
+	 pL2YYg6FYFXWqafhzHVqx3wEoROA0OzKyGXOexhXeT1YfB9BK9+x06jILxkqXEzFok
+	 NYEbNoCeVMkFwW6aoqdiurnfGZ2A2sYgnjha9qYs72W13Io8qqFJoQdAT+P5LRB7WT
+	 XpiNaevNeVpLmZ0TOCcr5FYzIlxd1B0n5rjfvKvCEhsCkQyyrTh+Qs86hBhkqX27+f
+	 //D06V3rLOEYC21jgh9OzfR8iP32p6RmMLO64ixjChwNE5t+xBtF1vLm2vYH/zP/Zx
+	 aDBhywIK6GAog==
 Received: from [100.64.0.214] (unknown [100.64.0.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange secp256r1)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6637417E0CD7;
-	Tue, 24 Nov 2026 04:40:42 +0100 (CET)
-Message-ID: <542f7fd2973f4b32ec55bb5c3314535a2c4b82a6.camel@collabora.com>
-Subject: Re: [PATCH v3 0/7] media: verisilicon: simplify auxiliary buffers
- allocation
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6D4F517E0CD7;
+	Tue, 24 Nov 2026 04:44:32 +0100 (CET)
+Message-ID: <1e59911003612aa645607efcd502c010f1972a5e.camel@collabora.com>
+Subject: Re: [PATCH v7 2/3] media: verisilicon: AV1: Fix luma size
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	p.zabel@pengutronix.de, mchehab@kernel.org
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Date: Mon, 23 Nov 2026 22:40:40 -0500
-In-Reply-To: <20261123095905.60622-1-benjamin.gaignard@collabora.com>
-References: <20261123095905.60622-1-benjamin.gaignard@collabora.com>
+	p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de,
+ hverkuil@kernel.org
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Date: Mon, 23 Nov 2026 22:44:31 -0500
+In-Reply-To: <3dfe5ae59107fa77075676fc226ac818bc2700f9.camel@collabora.com>
+References: <20261120143135.71134-1-benjamin.gaignard@collabora.com>
+		 <20261120143135.71134-3-benjamin.gaignard@collabora.com>
+	 <3dfe5ae59107fa77075676fc226ac818bc2700f9.camel@collabora.com>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -75,8 +76,8 @@ User-Agent: Evolution 3.62.1 (3.62.1-1.fc45)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_194048_444612_11505858 
-X-CRM114-Status: GOOD (  15.13  )
+X-CRM114-CacheID: sfid-20261123_194437_368417_58643E96 
+X-CRM114-Status: GOOD (  15.59  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,100 +88,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7973220606600427416=="
+Content-Type: multipart/mixed; boundary="===============6087876520112190867=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============7973220606600427416==
+--===============6087876520112190867==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-d1+zo/NEbm+5SALSuWmp"
+	protocol="application/pgp-signature"; boundary="=-VHcejEzEPR4GHlk6YEht"
 
---=-d1+zo/NEbm+5SALSuWmp
+--=-VHcejEzEPR4GHlk6YEht
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le lundi 23 novembre 2026 =C3=A0 10:58 +0100, Benjamin Gaignard a =C3=A9cri=
-t=C2=A0:
-> Verisilicon stateless video decoder driver allocates lot of auxiliary
-> buffers to decode bitstreams. These allocations duplicate a lot of code.
-> This series add helpers functions to allocate and free auxiliary
-> buffers. This simplify the driver code and will allow to implement more
-> easly incoming feature like disentanglement data buffers from mv and rfc=
-=20
-> buffers or adding reference frame support for more codecs.
->=20
-> This series has been tested with fluster on IMX8MP for h264, hevc, vp8=
-=20
-> and vp9 codecs, and on rk3588 for av1.
->=20
-> This series depends of this one:
-> https://patchwork.linuxtv.org/project/linux-media/list/?series=3D34366
+Since you need a v8 ...
 
-This is only pending the dependency, which one of the hidden changes had is=
-sues,
-please fix and update, ping me once ready.
+Le lundi 23 novembre 2026 =C3=A0 22:30 -0500, Nicolas Dufresne a =C3=A9crit=
+=C2=A0:
+> Le vendredi 20 novembre 2026 =C3=A0 15:31 +0100, Benjamin Gaignard a =C3=
+=A9crit=C2=A0:
+> > Use the values computed by v4l2 helpers to get luma size.
+> > Unlile before this will also take care of padding.
 
-Nicolas
+    Unlike
+
+> >=20
+> > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > Fixes: 727a400686a2c ("media: verisilicon: Add Rockchip AV1 decoder")
+
+Fixes goes before Signed-off-by, does this need to be cc to stable?
 
 >=20
-> Regards,
-> Benjamin
+> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 >=20
-> changes in v3:
-> - As suggested by Philipp do not mask hantro_allocate_aux_buf() returned
->   value.
-> - In hantro_allocate_aux_buf() and hantro_free_aux_buf() only set vpu if
->   ctx isn't NULL.
->=20
-> changes in v2:
-> - rebase on top of media: verisilicon: Create AV1 helper library v7
-> - tag reviewed-by tag
-> - fix patch 1 and 7 commit messages
->=20
-> =20
-> Benjamin Gaignard (7):
->   media: verisilicon: Add helpers to allocate and free auxiliary buffers
->   media: verisilicon: AV1: Use alloc/free helpers for auxiliary buffers
->   media: verisilicon: h264: Use alloc/free helpers for auxiliary buffers
->   media: verisilicon: hevc: Use alloc/free helpers for auxiliary buffers
->   media: verisilicon: vp8: Use alloc/free helpers for auxiliary buffers
->   media: verisilicon: vp9: Use alloc/free helpers for auxiliary buffers
->   media: verisilicon: mpeg4: Use alloc/free helpers for auxiliary
->     buffers
->=20
->  drivers/media/platform/verisilicon/hantro.h   |   4 +
->  .../media/platform/verisilicon/hantro_av1.c   | 191 +++++-------------
->  .../media/platform/verisilicon/hantro_h264.c  |  13 +-
->  .../media/platform/verisilicon/hantro_hevc.c  | 133 ++++--------
->  .../media/platform/verisilicon/hantro_mpeg2.c |  19 +-
->  .../platform/verisilicon/hantro_postproc.c    |  21 +-
->  .../media/platform/verisilicon/hantro_v4l2.c  |  37 ++++
->  .../media/platform/verisilicon/hantro_vp8.c   |  36 +---
->  .../media/platform/verisilicon/hantro_vp9.c   |  42 ++--
->  9 files changed, 169 insertions(+), 327 deletions(-)
+> > ---
+> >  drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >=20
+> > diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_=
+dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> > index 5da59104a966..5e0cd5268f22 100644
+> > --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> > +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> > @@ -221,7 +221,7 @@ static void rockchip_vpu981_av1_dec_clean_refs(stru=
+ct hantro_ctx *ctx)
+> > =20
+> >  static size_t rockchip_vpu981_av1_dec_luma_size(struct hantro_ctx *ctx=
+)
+> >  {
+> > -=09return ctx->dst_fmt.width * ctx->dst_fmt.height * ctx->bit_depth / =
+8;
+> > +=09return ctx->ref_fmt.plane_fmt[0].bytesperline * ctx->ref_fmt.height=
+;
+> >  }
+> > =20
+> >  static size_t rockchip_vpu981_av1_dec_chroma_size(struct hantro_ctx *c=
+tx)
 
---=-d1+zo/NEbm+5SALSuWmp
+--=-VHcejEzEPR4GHlk6YEht
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawUHOQAKCRDZQZRRKWBy
-9F6EAQCwseq4NDQojK6PfR3v2YM5UAI7KZmdH0HcIjV+x6cdkQEAt4UtMeEuSbVm
-CWa7124MFpsFveeuJOqp6SHTfm/plgU=
-=AqRt
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawUIHwAKCRDZQZRRKWBy
+9AgzAQCYcZQsQXxWhzBG+rQkqaUoWlXfLw76Ec7suNYc7L3DYgD/WVROKXt7doP/
+gd9qyH1wa0gnWIXTtyOoUMoj8l+1TQY=
+=hkrb
 -----END PGP SIGNATURE-----
 
---=-d1+zo/NEbm+5SALSuWmp--
+--=-VHcejEzEPR4GHlk6YEht--
 
 
---===============7973220606600427416==
+--===============6087876520112190867==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -191,5 +176,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7973220606600427416==--
+--===============6087876520112190867==--
 
