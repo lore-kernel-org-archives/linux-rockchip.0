@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7D919606A31E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 04:28:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C2E17606A32C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 04:28:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SVi8y7J4;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=Eekg1VTb
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=To6UvTcD;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=WRxd5AtB
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,47 +14,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=s/VBJ1BDibQFnOtH8XfKkNccCPL9q45ZhHMovFbx/Dc=; b=SVi8y7J4qeD86iHK3SYfIcdq4k
-	du1GHNwceNLeUxlgFNkkxz5qm6MlRjGr1v7IKCMPKhOPn2D8SYBOPt1eZPYA0tuEqaTM5tXy1g71H
-	NGcY+3IJfP9eMIOgzn+NfPalv9bWZ6A0cAdplXiC9kWPL/hE3Hz2Yt3RAGA1i49KWYjSWOa2trYG1
-	MP5tB0VH2I5Wklo0pLzDvktH+1pWVdiv2VzcUBhRcLeCsXTq0PuZgAJYwBVwyghG8gg1MTtasMFnu
-	9fj1l2pFELQcKBvtQwH6Rn7OxT9hTEyNUZ5nozLQGtY9gSbteHTHoQSyKvuZNGvdQ1R2ixc4+ohQH
-	XXv/WgBg==;
+	bh=ghfA++ehrxtFVznJjI558HNzEe7PRm4/3NN2BIFnSZ4=; b=To6UvTcDStr1V9dtr02SVFdCYk
+	vkvmYZ64p7NEvshe55GRveBFuzWpMibHmVmotpLnARAmcLpFVYcZ6YfRPKLUlFoG8eP46pKE5jiLw
+	ud1PUaxKeTcwm+2tRhGSfjULTa3fWBFLZAOcXCuM162SpkfjKcMowHIC0jA7UlM9VFAg0jyFuZSe+
+	KIoI4bvsIwE0hjxR/wbVv51EcIEb9AerAnIoaBcEG4vCD/D6oArzjB0zbZkPpCote70+sHCslnR6H
+	pf8M0fQl5sJjAJv5Ji4n4I4Mo0QqzUHROrM0NAweusywrufdFWM2iICUKa1XPlSydwhH7Fi9a+YcF
+	WXFyMfJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVi8M-00000005XE9-32Wp;
-	Tue, 24 Nov 2026 04:27:58 +0000
+	id 1xVi8c-00000005XLK-40xV;
+	Tue, 24 Nov 2026 04:28:14 +0000
 Received: from sender-op-o15.zoho.eu ([136.143.169.15])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVi8B-00000005X9T-0msh;
-	Tue, 24 Nov 2026 04:27:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1795494443; cv=none; 
+	id 1xVi8a-00000005XJb-2vqo;
+	Tue, 24 Nov 2026 04:28:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1795494470; cv=none; 
 	d=zohomail.eu; s=zohoarc; 
-	b=Cr1Rs+QodrLqQQ20hcMUtR7OGvnCP5i0DEoyl4qdrHQd7lrieXsl6gJ7cMVHwyuKJUWL0SF24FJpIr+h5xzL8lbvCRi0PkJoU0JGqOepBz1f43uvI5tsWVt4Lm5vRkVqNAyda2il7VTDbD/rv4WXgA+cz/shIf+kl9VRbTMMCMI=
+	b=Mmyzwk889ELTgYQyLnf7ie8jjy9zwLTbLgJUa00RTIdusRvaHZj1ccqBPasAkbiyjUa9VIrpbuFklkJ9G1KEb1jeRkMrJ1gWmcJaZtYJ8j35N6XevM9UOYKc8ekSYa1Erue/sC2eb6pZaFf9BKPK+9rWICR4M2eQUgQ3kWUqeHc=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
-	t=1795494443; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=vuetuOMcXl7Z9VetHlJKUvaUZnnt7YAI79ma6kC/W1M=; 
-	b=T2/Rr/7HnJ2gG7bzZcVE/01JzR07zi8t9YLg0pEeZOC1ehE5eiUor1gTSFGsf7ZjLjvYdo/UipOQaGEzO7jZIEpThyg06kEKmtM+cXQzn/UlHek7LsOpygaN/klwy5UfmScVKLYxWP0xkKWfGe9qdzayl3tjnp4KXky+8f4j7zM=
+	t=1795494470; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=AVBjQGBWsRhbqtXGph3xAHQAvMR6+/rx3lfHXKGz6Zg=; 
+	b=OU5/CiF5ZMGIYB2eLtEyBzkaWMWoftJ4jOayra0YFQDBAchPdhcFEPfxm7uI28dMW2Lavt0SmsD6oYFipSajAc0xvySgBflekGUI9A6xYhi+QwjI72thT58RwzW6f1YlcbWOIGxmj+1cJSJDdb7/EaQ7dnq9IHIql1dJxYAegTo=
 ARC-Authentication-Results: i=1; mx.zohomail.eu;
 	dkim=pass  header.i=iav.lv;
 	spf=pass  smtp.mailfrom=iav@iav.lv;
 	dmarc=pass header.from=<iav@iav.lv>
-DKIM-Signature: a=rsa-sha256; b=Eekg1VTbLiA3RT5+LuRlMnci8jA7g7lxoiL0RFN0JBFtn5He01n3x5e/A0nv+RzdplzEX0HKgQ8WxqXC2mycPrD5U0+O4F05Y+5Lp7aVKv0xNHQQl+a8S4p9MGeR4iuWqDN5+lcs65ovS0hoS0CsARDAaJQgv4YBEsbL15L+os4=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=vuetuOMcXl7Z9VetHlJKUvaUZnnt7YAI79ma6kC/W1M=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zoho.eu with SMTPS id 1795494441932964.2980390085781;
-	Tue, 24 Nov 2026 05:27:21 +0100 (CET)
-Date: Tue, 24 Nov 2026 06:27:20 +0200
+DKIM-Signature: a=rsa-sha256; b=WRxd5AtB7K/QZ5HA6TcTMeRxMrm9lkOu0AXdJVXxL5ufL41Or+X2EvopnuyJUto0wHFJKv3eHDqp2s6Bk26W2sbMaXCwtff+iP04gp2YV4sSi1DDWeJHJjB2xCEyzNAGbFEQ4VSdGxXrEFnZeQnUCR5J1RUx0Rn6mbVp+7fuxfs=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=AVBjQGBWsRhbqtXGph3xAHQAvMR6+/rx3lfHXKGz6Zg=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zoho.eu with SMTPS id 1795494469281732.244746746565;
+	Tue, 24 Nov 2026 05:27:49 +0100 (CET)
+Date: Tue, 24 Nov 2026 06:27:47 +0200
 From: Igor Velkov <iav@iav.lv>
 To: netdev-bot+sashiko@kernel.org
 Cc: iav@iav.lv, andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk, davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com, tglx@kernel.org, linux-pm@vger.kernel.org, maxime.chevallier@bootlin.com, lukas@wunner.de, rafael.j.wysocki@intel.com, wei.fang@nxp.com, niklas.soderlund@ragnatech.se, paul@pbarker.dev, florian.fainelli@broadcom.com, opendmb@gmail.com, Thangaraj.S@microchip.com, shenwei.wang@nxp.com, Haoning.CHENG@cn.bosch.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net v8 4/5] net: phy: run a postponed PHY interrupt handler directly on resume
-Message-ID: <179549408701.90856.922626687148@iav.lv>
-In-Reply-To: <179548270110.3135.13757603939004535921@kernel.org>
-References: <20261123-b4-phylib-mac-pm-irq-v3-v8-4-e9f706e79614@iav.lv> <179548270110.3135.13757603939004535921@kernel.org>
+Subject: Re: [PATCH net v8 5/5] net: phy: postpone PHY interrupts during sleep with MAC-managed PM
+Message-ID: <179549408717.90858.144565102470528@iav.lv>
+In-Reply-To: <179548270352.3135.4334710117066284426@kernel.org>
+References: <20261123-b4-phylib-mac-pm-irq-v3-v8-5-e9f706e79614@iav.lv> <179548270352.3135.4334710117066284426@kernel.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_202747_509637_9A6B0AD5 
-X-CRM114-Status: UNSURE (   6.42  )
+X-CRM114-CacheID: sfid-20261123_202813_020039_F615BB16 
+X-CRM114-Status: UNSURE (   8.93  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -76,17 +76,27 @@ X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> Can phydev->interrupts reliably tell us that the PHY still has its
-> interrupt requested at this point?
+> in some topologies the replay here can still reach the MDIO bus before
+> the MAC has resumed.
 
-> Is this read of phydev->interrupts really serialized against the write in
-> phy_free_interrupt()?
+Yes, the commit message describes it; the patch moves this access
+later, not earlier.
 
-Agreed on both: some resume callbacks set the bit again, and it shares
-a bitfield word. I will gate the rerun on a separate bool that only
-phy_request_interrupt() and phy_free_interrupt() write under
-irq_pm_lock, in the next version or in a follow-up, and update both
-irq_pm_lock comments with it.
+> Can this abort every suspend for a Broadcom BCM54210E behind stmmac with
+> PHY Wake-on-LAN on a level-triggered line?
+
+That is the level-triggered case the commit message describes: the PHY
+driver has to restrict its interrupt to Wake-on-LAN in its suspend
+callback. I have no such hardware; bcm54xx_suspend() is for a separate
+patch.
+
+> Could the check fall back to irqd_is_wakeup_set() for nested-thread
+> lines?
+
+The cover letter lists these lines as not covered. Enabling one in the
+noirq phase is not safe: enable_irq() goes through chip_bus_sync_unlock(),
+which on regmap-irq writes the mask over I2C or SPI while the bus
+controller may already be suspended.
 
 _______________________________________________
 Linux-rockchip mailing list
