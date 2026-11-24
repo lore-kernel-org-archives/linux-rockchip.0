@@ -2,67 +2,88 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 33033606A31E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 01:12:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E2B52606A31E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 02:46:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Fs8bHkGD;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Pj2A6hsd
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CRzMVhrM;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=BNJlh81v
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Gdrb4XFF18Yi+nkKNF0dY+B3/x2HskkXx7qsZxSdEwA=; b=Fs8bHkGDvJ7pZOIaCTzm1reNb7
-	t2XbkUBq5eWmIP7AwTSzN3WrlakbjGkQu1f44nifByZfx3fN5ne1EJ5yv6eHGBKHVFv0xkbuqDCJo
-	+MJ08UMLvc49CgDQOVwLlHYXr1/8ZTKHQmjtQQsEPHLtg4yHL/taCFBuX/oY80zrQLPJ/FKN9TBZO
-	hDxPQrRs9fOmwJjQImZIGbctuChGfSKsNibImupSiY5CKZPN45CxFR47xfkEDQYAzxOFIOGNEyH3W
-	DS4G8jbW8sZgUofIkpL6lfo2VkejiLkkRN4WP14xsH+IZ8+Dq29OVukTP9yZmawO01/qdnPBo8S+B
-	mYeRb1nQ==;
+	bh=ty8QxgNJgMkyfwjaIp9FMS9iMG4Wt4dCRim0MgHV7ss=; b=CRzMVhrM5AaBYE0jp2cvykpiZr
+	bwUX0QXzDHnbO6hRfbga/ljjrWNInuFvWCtl8EqjD7lCh+2SUqt/TuiN01N21MZU1XoUSyiaq0CBu
+	uU2+HQ3JbDpQuohlWtgDragzeKwTEq5EYdwdqREcPbfdreygVf+1tFGr7JuSR7hrmalp1YqMlyCaa
+	rCHwNX+1rFRQ4GsfqQc5LVhEvXlswLFUE2/tPZod9dMQnMmUlVrvwl8goafRZhVvNbTmN8T8ikH9C
+	G/mrnNZJCG6Sorcwqmdz5dJjcaVnEmNY2rWU5dUzhRio93UyPEURXnGQ34of3hSw6Rp8hmHSipu2z
+	fDPZh9ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVf4s-00000005IoG-2ntk;
-	Tue, 24 Nov 2026 01:12:10 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xVgXi-00000005Ol6-0g5v;
+	Tue, 24 Nov 2026 02:46:02 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVf4T-00000005Idp-2gSG;
-	Tue, 24 Nov 2026 01:11:46 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6475242217;
-	Tue, 24 Nov 2026 01:11:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EAC571F0093E;
-	Tue, 24 Nov 2026 01:11:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795482705;
-	bh=fG+e0SZ/Vty3N1wlRogfG9N5LAKYiGKy+6hsfHYsEwA=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=Pj2A6hsd0UwcWn/oOSM3C3MY/DOVVSg6fe3zv3wK8kmwf+L3rqFNlYrbdkbsHnkS1
-	 xapy/UlUhOv6OpJvlAfJHrPWxjFwl3C7Us/VFEuaRSt/LoxnBvJioml+1567EyQ92B
-	 dInlyRtW+j+Tg/gY1o8ctCcsQK13iXTo8OAKDz/cWbRaQHqt7eWqnm4VSFjQ9j6YZU
-	 JWPLUQSBZhVpeIp0Vh9DblXtYsf+qkPBPlhZqkMftYwdd1RpTi0hSW/yS36HcDO2Kg
-	 nvxHRIfZXOmgVF5VGL7jonRbXuYo/v0JVNozbbb2raRX/hxUvM4nppenPXMfE5IBlj
-	 qOsf9V5TtuiwQ==
-Subject: Re: [PATCH net v8 5/5] net: phy: postpone PHY interrupts during sleep
- with MAC-managed PM
-From: netdev-bot+sashiko@kernel.org
-To: iav@iav.lv
-Cc: andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
- davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com,
- tglx@kernel.org, linux-pm@vger.kernel.org, maxime.chevallier@bootlin.com,
- lukas@wunner.de, rafael.j.wysocki@intel.com, wei.fang@nxp.com,
- niklas.soderlund@ragnatech.se, paul@pbarker.dev,
- florian.fainelli@broadcom.com, opendmb@gmail.com, Thangaraj.S@microchip.com,
- shenwei.wang@nxp.com, Haoning.CHENG@cn.bosch.com, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Date: Tue, 24 Nov 2026 01:11:43 +0000
-Message-ID: <179548270352.3135.4334710117066284426@kernel.org>
-In-Reply-To: <20261123-b4-phylib-mac-pm-irq-v3-v8-5-e9f706e79614@iav.lv>
-References: <20261123-b4-phylib-mac-pm-irq-v3-v8-5-e9f706e79614@iav.lv>
-X-sashiko-severity: Medium
+	id 1xVgXZ-00000005OkN-0ZiV;
+	Tue, 24 Nov 2026 02:45:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795488349;
+	bh=hAWPWROczWYZNupwEyTrlKdHA0d8EAftyJ0z6GpDucA=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=BNJlh81v/8EtCMnxtkuGdFNYcCZpwLd0Ci7dYykDdWza5ubw8zHIMuh0+h1wge8rd
+	 3AKDZwGENysd6nrDheXZsXzJQcSjz5eWG8om4NS/6McoyZkHrb/4dvLsfmH4b0sYA9
+	 gDhVafa04lj6V1BYwgM6/yo5ymAunV2zbgB7HCSTLHsizT/qZLbFAK++bMjONqvMHp
+	 ibAutszOnNFyUAGnjConVtKWfrsNzt4voG9yYc9DYyWPG0jflewPs2JW/vj98rTjro
+	 3EN6MRG0HHQTxgHS94jgfBvIsLN0EyWYz/Zgjr78UbSb4x7IgzuZ2q1dkjZxzJjaM3
+	 5ofAvY1wx7gYw==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1778117E0CF4;
+	Tue, 24 Nov 2026 03:45:46 +0100 (CET)
+Message-ID: <74db7a7fa49abac0a91fb8585703b90244428b02.camel@collabora.com>
+Subject: Re: [PATCH v2 2/7] media: verisilicon: Enforce a minimum CAPTURE
+ sizeimage for the encoder
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: aiyengar1990@gmail.com, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>,  Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner	
+ <heiko@sntech.de>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Hans
+ Verkuil <hverkuil@kernel.org>, Boris Brezillon
+ <boris.brezillon@collabora.com>, Andrzej Pietrasiewicz
+ <andrzej.p@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Sergei
+ Khomenkov <shomenkow@gmail.com>
+Date: Mon, 23 Nov 2026 21:45:44 -0500
+In-Reply-To: <20261112-hantro-jpeg-enc-fixes-v2-2-de03e643c75d@gmail.com>
+References: <20261112-hantro-jpeg-enc-fixes-v2-0-de03e643c75d@gmail.com>
+	 <20261112-hantro-jpeg-enc-fixes-v2-2-de03e643c75d@gmail.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261123_184554_178583_CCAEA24A 
+X-CRM114-Status: GOOD (  22.65  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,152 +93,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============6061885661336102551=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-VGhhbmsgeW91IGZvciB5b3VyIGNvbnRyaWJ1dGlvbiEgU2FzaGlrbyBBSSByZXZpZXcgZm91bmQg
-MiBwb3RlbnRpYWwKaXNzdWUocykgdG8gY29uc2lkZXIuCgpDcml0aWNhbDogMCDCtyBIaWdoOiAw
-IMK3IE1lZGl1bTogMiAoMSkgwrcgTG93OiAwCgpJZiB5b3UgYmVsaWV2ZSBub25lIG9mIHRoZSBp
-c3N1ZXMgYXJlIGxlZ2l0aW1hdGUsIHBsZWFzZSByZXBseSB0byBlYWNoCmlzc3VlIG9mIE1lZGl1
-bSBzZXZlcml0eSBvciBoaWdoZXIgYW5kIGV4cGxhaW4gd2h5IHRoZSBBSSBpcyB3cm9uZy4KSWYg
-YW55IG9mIHRoZW0gYXJlIGxlZ2l0aW1hdGUgYW5kIHlvdSBwbGFuIHRvIHJlc3BpbiwgcGxlYXNl
-IGxldCBwYXRjaHdvcmsKa25vdyBieSBpbmNsdWRpbmcgInB3LWJvdDogY3IiIGFzIGEgc2VwYXJh
-dGUgbGluZSBhdCB0aGUgZW5kIG9mIHlvdXIgcmVwbHkKKG9uZSBzdWNoIHJlcGx5IHBlciBzZXJp
-ZXMgaXMgZW5vdWdoKS4KCi0gW01lZGl1bV0gT24gYSBsZXZlbC10cmlnZ2VyZWQgd2FrZSBsaW5l
-LCBhIEJyb2FkY29tIEJDTTU0MjEwRSBQSFkgdW5kZXIKICBzdG1tYWMgd2l0aCBQSFkgV2FrZS1v
-bi1MQU4gbm93IGFib3J0cyBldmVyeSBzdXNwZW5kLgotIFtNZWRpdW1dIFRoZSBub2lycSB3YWtl
-IGZpeCBkb2VzIG5vdCB3b3JrIGZvciBuZXN0ZWQtdGhyZWFkZWQgUEhZCiAgaW50ZXJydXB0IGxp
-bmVzLCB3aGljaCB0aGUgc2VyaWVzIGV4cGxpY2l0bHkgc3VwcG9ydHMgKGNvbW1pdCAibmV0OuKA
-pgoKUHJlLWV4aXN0aW5nIGlzc3VlczoKLSBbTWVkaXVtXSBUaGlzIHByb2JsZW0gd2Fzbid0IGlu
-dHJvZHVjZWQgYnkgdGhpcyBwYXRjaCwgYnV0IHRoZSBuZXcKICByZXBsYXkgc3RpbGwgZG9lcyBN
-RElPIGFjY2VzcyBiZWZvcmUgdGhlIE1BQyBoYXMgcmVzdW1lZCBpbiBzb21l4oCmCgotLQoKbmV0
-OiBwaHk6IHBvc3Rwb25lIFBIWSBpbnRlcnJ1cHRzIGR1cmluZyBzbGVlcCB3aXRoIE1BQy1tYW5h
-Z2VkIFBNCgpGb3IgUEhZcyB3aXRoIE1BQy1tYW5hZ2VkIFBNLCB0aGlzIHBhdGNoIHBvc3Rwb25l
-cyBQSFkgaW50ZXJydXB0cyBmcm9tIHRoZQpwcmVwYXJlIGNhbGxiYWNrIGFuZCByZXBsYXlzIHRo
-ZW0gZnJvbSBtZGlvX2J1c19waHlfcmVzdW1lKCkuIElmIGEKdHJhbnNpdGlvbiBhYm9ydHMsIHRo
-ZSBjb21wbGV0ZSBjYWxsYmFjayBzdG9wcyB0aGUgcG9zdHBvbmluZy4gTmV3IG5vaXJxCmNhbGxi
-YWNrcyByZS1lbmFibGUgYSBsaW5lIHRoYXQgYSBwb3N0cG9uZWQgaW50ZXJydXB0IGRpc2FibGVk
-LCB3aGVuIHRoZQppcnEgY29yZSBoYXMgYXJtZWQgaXQgZm9yIHdha2V1cCwgYW5kIGRpc2FibGUg
-aXQgYWdhaW4gb24gbm9pcnEgcmVzdW1lLgoKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvcGh5
-L3BoeV9kZXZpY2UuYyBiL2RyaXZlcnMvbmV0L3BoeS9waHlfZGV2aWNlLmMKPiBpbmRleCA4YmMz
-OTRmZjdkMmQyLi4wODJhZTMxYzIyMzQxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L3BoeS9w
-aHlfZGV2aWNlLmMKPiArKysgYi9kcml2ZXJzL25ldC9waHkvcGh5X2RldmljZS5jCgpbIC4uLiBd
-Cgo+IEBAIC00MTQsOCArNDQ1LDEwIEBAIHN0YXRpYyBfX21heWJlX3VudXNlZCBpbnQgbWRpb19i
-dXNfcGh5X3Jlc3VtZShzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gIAlzdHJ1Y3QgcGh5X2RldmljZSAq
-cGh5ZGV2ID0gdG9fcGh5X2RldmljZShkZXYpOwo+ICAJaW50IHJldDsKPiAgCj4gLQlpZiAocGh5
-ZGV2LT5tYWNfbWFuYWdlZF9wbSkKPiArCWlmIChwaHlkZXYtPm1hY19tYW5hZ2VkX3BtKSB7Cj4g
-KwkJbWRpb19idXNfcGh5X3Jlc3VtZV9pcnEocGh5ZGV2KTsKPiAgCQlyZXR1cm4gMDsKPiArCX0K
-CltTZXZlcml0eTogTWVkaXVtXQpUaGlzIGlzIGEgcHJlLWV4aXN0aW5nIGlzc3VlLCBub3Qgb25l
-IHRoaXMgcGF0Y2ggaW50cm9kdWNlcywgYnV0IGluIHNvbWUKdG9wb2xvZ2llcyB0aGUgcmVwbGF5
-IGhlcmUgY2FuIHN0aWxsIHJlYWNoIHRoZSBNRElPIGJ1cyBiZWZvcmUgdGhlIE1BQyBoYXMKcmVz
-dW1lZC4KCnBoeV9hdHRhY2hfZGlyZWN0KCkgY2FuIGFkZCBhIGRldmljZSBsaW5rIGJldHdlZW4g
-dGhlIE1BQyBhbmQgdGhlIFBIWToKCglpZiAoZGV2ICYmIHBoeWRldi0+bWRpby5idXMtPnBhcmVu
-dCAmJiBkZXYtPmRldi5wYXJlbnQgIT0gcGh5ZGV2LT5tZGlvLmJ1cy0+cGFyZW50KQoJCXBoeWRl
-di0+ZGV2bGluayA9IGRldmljZV9saW5rX2FkZChkZXYtPmRldi5wYXJlbnQsICZwaHlkZXYtPm1k
-aW8uZGV2LAoJCQkJCQkgIERMX0ZMQUdfUE1fUlVOVElNRSB8IERMX0ZMQUdfU1RBVEVMRVNTKTsK
-ClRoZSBQSFkgaXMgdGhlbiB0aGUgc3VwcGxpZXIsIHNvIGl0IHJlc3VtZXMgYmVmb3JlIHRoZSBN
-QUMsIGFuZCB0aGlzIHBhdGgKcnVucyBmaXJzdDoKCm1kaW9fYnVzX3BoeV9yZXN1bWUoKQogIG1k
-aW9fYnVzX3BoeV9yZXN1bWVfaXJxKCkKICAgIHBoeWRldi0+ZHJ2LT5oYW5kbGVfaW50ZXJydXB0
-KCkgICAvKiBNRElPIHJlYWQgKi8KClRoZSBNQUMncyByZXN1bWUgY2FsbGJhY2sgaGFzIG5vdCBy
-ZXN0b3JlZCBpdHMgTURJTyBjb250cm9sbGVyIGF0IHRoYXQKcG9pbnQuIFRoZSBzYW1lIHRoaW5n
-IGhhcHBlbnMgaW4gdGhlIHBhcmVudC1jaGlsZCB0b3BvbG9neSB3aGVuIHRoZSBNQUMncwpyZXN1
-bWUgY2FsbGJhY2sgZmFpbHMsIGJlY2F1c2UgdGhlIFBNIGNvcmUgc3RpbGwgcmVzdW1lcyB0aGUg
-Y2hpbGRyZW4uCgpDb3VsZCBhIE1BQyB0aGF0IGdhdGVzIGl0cyBNRElPIGNsb2NrcyBpbiBpdHMg
-cmVndWxhciBzdXNwZW5kIGNhbGxiYWNrLAphbmQgd2hvc2UgTURJTyBhY2Nlc3NvcnMgYXJlIG5v
-dCBndWFyZGVkIGJ5IHJ1bnRpbWUgUE0sIHN0YWxsIG9uIHRoaXMKYWNjZXNzPwoKVGhlIGNvbW1p
-dCBtZXNzYWdlIGFscmVhZHkgZGVzY3JpYmVzIHRoaXMgbGltaXRhdGlvbi4gQmVmb3JlIHRoaXMg
-cGF0Y2gKdGhlIGhhbmRsZXIgcmFuIGV2ZW4gZWFybGllciwgZnJvbSByZXN1bWVfZGV2aWNlX2ly
-cXMoKS4gTm93IGl0IHJ1bnMgYWZ0ZXIKZGV2aWNlX3Jlc3VtZV9lYXJseSgpIGhhcyByZS1lbmFi
-bGVkIHJ1bnRpbWUgUE0sIGFuZCBzdG1tYWMncyBNRElPCmFjY2Vzc29ycyBjYWxsIHBtX3J1bnRp
-bWVfcmVzdW1lX2FuZF9nZXQoKS4gU28gdGhlIHBhdGNoIG1vdmVzIHRoZSBhY2Nlc3MKbGF0ZXIg
-YW5kIGRvZXMgbm90IHdpZGVuIGV4cG9zdXJlLgoKSSBjb3VsZCBub3QgZmluZCBhbiBpbi10cmVl
-IGJvYXJkIHRoYXQgcGFpcnMgdGhpcyB0b3BvbG9neSB3aXRoIHN1Y2ggYQpNQUMuIEkgYW0gbGlz
-dGluZyBpdCBmb3IgY29tcGxldGVuZXNzIG9ubHkuCgpbIC4uLiBdCgo+IEBAIC00NDYsOCArNDc5
-LDQ4IEBAIHN0YXRpYyBfX21heWJlX3VudXNlZCBpbnQgbWRpb19idXNfcGh5X3Jlc3VtZShzdHJ1
-Y3QgZGV2aWNlICpkZXYpCj4gIAlyZXR1cm4gMDsKPiAgfQo+ICAKPiAtc3RhdGljIFNJTVBMRV9E
-RVZfUE1fT1BTKG1kaW9fYnVzX3BoeV9wbV9vcHMsIG1kaW9fYnVzX3BoeV9zdXNwZW5kLAo+IC0J
-CQkgbWRpb19idXNfcGh5X3Jlc3VtZSk7Cj4gK3N0YXRpYyBfX21heWJlX3VudXNlZCBpbnQgbWRp
-b19idXNfcGh5X3N1c3BlbmRfbm9pcnEoc3RydWN0IGRldmljZSAqZGV2KQo+ICt7Cj4gKwlzdHJ1
-Y3QgcGh5X2RldmljZSAqcGh5ZGV2ID0gdG9fcGh5X2RldmljZShkZXYpOwo+ICsJc3RydWN0IGly
-cV9kYXRhICpkOwo+ICsKPiArCW11dGV4X2xvY2soJnBoeWRldi0+aXJxX3BtX2xvY2spOwo+ICsJ
-LyogV2UgZW5hYmxlIHRoZSBsaW5lIGEgcG9zdHBvbmVkIGludGVycnVwdCBkaXNhYmxlZCBpZiB0
-aGUgaXJxIGNvcmUKPiArCSAqIGFybWVkIGl0IGZvciB3YWtldXAsIHNvIHRoYXQgaXQgd2FrZXMg
-dGhlIHN5c3RlbS4KPiArCSAqLwo+ICsJaWYgKHBoeWRldi0+aXJxX3JlcnVuKSB7Cj4gKwkJZCA9
-IGlycV9nZXRfaXJxX2RhdGEocGh5ZGV2LT5pcnFfcmVydW5fbGluZSk7Cj4gKwkJaWYgKGQgJiYg
-aXJxZF9pcnFfZGlzYWJsZWQoZCkgJiYgaXJxZF9pc193YWtldXBfYXJtZWQoZCkpIHsKPiArCQkJ
-ZW5hYmxlX2lycShwaHlkZXYtPmlycV9yZXJ1bl9saW5lKTsKPiArCQkJcGh5ZGV2LT5pcnFfd2Fr
-ZV9lbmFibGVkID0gdHJ1ZTsKPiArCQl9Cj4gKwl9CgpbU2V2ZXJpdHk6IE1lZGl1bV0KQ2FuIHRo
-aXMgYWJvcnQgZXZlcnkgc3VzcGVuZCBmb3IgYSBCcm9hZGNvbSBCQ001NDIxMEUgYmVoaW5kIHN0
-bW1hYyB3aXRoClBIWSBXYWtlLW9uLUxBTiBvbiBhIGxldmVsLXRyaWdnZXJlZCBsaW5lPwoKYmNt
-X3BoeV9zZXRfd29sKCkgc2VsZWN0cyBJTlRSIG9uIExFRDQgYW5kIG1ha2VzIHRoZSBtYWluIFBI
-WSBpbnRlcnJ1cHQKdGhlIHdha2UgSVJROgoKZHJpdmVycy9uZXQvcGh5L2JjbS1waHktbGliLmM6
-YmNtX3BoeV9zZXRfd29sKCkgewogICAgLi4uCglpZiAocGh5X2ludGVycnVwdF9pc192YWxpZChw
-aHlkZXYpKQoJCWVuYWJsZV9pcnFfd2FrZShwaHlkZXYtPmlycSk7CiAgICAuLi4KfQoKV2hlbiBX
-YWtlLW9uLUxBTiBpcyBlbmFibGVkLCBiY201NHh4X3N1c3BlbmQoKSBkb2VzIG5vdCByZXN0cmlj
-dApNSUlfQkNNNTRYWF9JTVIsIHNvIGxpbmssIHNwZWVkIGFuZCBkdXBsZXggaW50ZXJydXB0cyBz
-dGF5IG9uIElOVFI6Cgpkcml2ZXJzL25ldC9waHkvYnJvYWRjb20uYzpiY201NHh4X3N1c3BlbmQo
-KSB7CiAgICAuLi4KCWlmIChwaHlkZXYtPndvbF9lbmFibGVkKQoJCXJldHVybiBiY201NHh4X3Nl
-dF93YWtldXBfaXJxKHBoeWRldiwgdHJ1ZSk7CiAgICAuLi4KfQoKc3RtbWFjIHNldHMgbWFjX21h
-bmFnZWRfcG0gYW5kIHdvbF9waHlfc3BlZWRfY3RybCwgc28gdGhlIHNlcXVlbmNlIGxvb2tzCmxp
-a2UgdGhpczoKCnN0bW1hY19zdXNwZW5kKCkKICBwaHlsaW5rX3N1c3BlbmQoKQogICAgcGh5bGlu
-a19zdG9wKCktPnBoeV9zdG9wKCktPnBoeV9zdXNwZW5kKCktPmJjbTU0eHhfc3VzcGVuZCgpCiAg
-ICBwaHlsaW5rX3NwZWVkX2Rvd24oKSAgIC8qIHJlc3RhcnRzIGF1dG9uZWcsIHJhaXNlcyBhIGxp
-bmsgaW50ZXJydXB0ICovCgpwaHlfaW50ZXJydXB0KCkKICBpcnFfc3VzcGVuZGVkIGFscmVhZHkg
-c2V0IGJ5IG1kaW9fYnVzX3BoeV9wcmVwYXJlKCkKICBNSUlfQkNNNTRYWF9JU1IgaXMgbm90IHJl
-YWQsIGRpc2FibGVfaXJxX25vc3luYygpCgpzdXNwZW5kX2RldmljZV9pcnFzKCkKICBzZXRzIElS
-UURfV0FLRVVQX0FSTUVEIG9uIHRoZSBsaW5lCgptZGlvX2J1c19waHlfc3VzcGVuZF9ub2lycSgp
-CiAgbGluZSBpcyBkaXNhYmxlZCBhbmQgYXJtZWQsIHNvIGVuYWJsZV9pcnEoKQogIHRoZSBsZXZl
-bCBpbnRlcnJ1cHQgaXMgc3RpbGwgYXNzZXJ0ZWQKICAgIGlycV9wbV9oYW5kbGVfd2FrZXVwKCkt
-PnBtX3N5c3RlbV9pcnFfd2FrZXVwKCkKICAgIHN1c3BlbmQgYWJvcnRzCgpUaGUgbmV4dCBhdHRl
-bXB0IHJlcGVhdHMgdGhlIHNwZWVkIGRvd24uIFdvdWxkIHRoZSBzeXN0ZW0gZXZlciBzdGF5CnN1
-c3BlbmRlZCBpbiB0aGlzIGNvbmZpZ3VyYXRpb24/CgpUaGUgY29tbWl0IG1lc3NhZ2Ugc2F5cyAi
-aXRzIGRyaXZlciBoYXMgdG8gcmVzdHJpY3QgdGhlIGludGVycnVwdCB0bwpXYWtlLW9uLUxBTiBp
-biBpdHMgc3VzcGVuZCBjYWxsYmFjaywgYXMgcnRsODIxMWZfc3VzcGVuZCgpIGRvZXMiLiBUaGUK
-QnJvYWRjb20gZHJpdmVyIHNldHMgUEhZX0FMV0FZU19DQUxMX1NVU1BFTkQsIHNvIGJjbTU0eHhf
-c3VzcGVuZCgpIGRvZXMKcnVuLCBidXQgaXQgZG9lcyBub3QgcmVzdHJpY3QgdGhlIGludGVycnVw
-dCB0aGlzIHdheS4KCkkgY291bGQgbm90IGZpbmQgYW4gaW4tdHJlZSBib2FyZCB3aXRoIHRoaXMg
-ZXhhY3QgY29tYmluYXRpb24uIEJlZm9yZSB0aGlzCnBhdGNoLCB0aGUgbGluay11cCBpbnRlcnJ1
-cHQgYWZ0ZXIgcmVuZWdvdGlhdGlvbiBtYXkgYWxyZWFkeSBoYXZlIGNhdXNlZCBhCnNwdXJpb3Vz
-IHdha2V1cCBvbmNlIHRoZSBzeXN0ZW0gd2FzIGFzbGVlcC4gU28gdGhpcyBtYXkgbW9zdGx5IGNo
-YW5nZSBob3cKdGhlIGNvbmZpZ3VyYXRpb24gZmFpbHMsIGJ1dCB0aGUgbm9pcnEgcmUtZW5hYmxl
-IGhlcmUgbWFrZXMgdGhlIGFib3J0Cm5ld2x5IHJlYWNoYWJsZS4KClNob3VsZCBiY201NHh4X3N1
-c3BlbmQoKSBtYXNrIHRoZSBub24tV29MIGludGVycnVwdCBzb3VyY2VzIGFzIHdlbGw/CgpbU2V2
-ZXJpdHk6IE1lZGl1bV0KQ2FuIHRoZSBpcnFkX2lzX3dha2V1cF9hcm1lZCgpIGNoZWNrIGV2ZXIg
-cGFzcyBmb3IgYSBuZXN0ZWQtdGhyZWFkZWQgUEhZCmxpbmUsIHN1Y2ggYXMgb25lIGJlaGluZCBh
-biBJMkMgb3IgU1BJIGV4cGFuZGVyPyBPdGhlciBwYXRjaGVzIGluIHRoaXMKc2VyaWVzIGV4cGxp
-Y2l0bHkgc3VwcG9ydCBzdWNoIGxpbmVzLgoKc3VzcGVuZF9kZXZpY2VfaXJxcygpIHNraXBzIG5l
-c3RlZC10aHJlYWQgZGVzY3JpcHRvcnM6CgprZXJuZWwvaXJxL3BtLmM6c3VzcGVuZF9kZXZpY2Vf
-aXJxcygpIHsKICAgIC4uLgoJCWlmIChpcnFfc2V0dGluZ3NfaXNfbmVzdGVkX3RocmVhZChkZXNj
-KSkKCQkJY29udGludWU7CiAgICAuLi4KfQoKU28gSVJRRF9XQUtFVVBfQVJNRUQgaXMgbmV2ZXIg
-c2V0IG9uIHRoZW0sIGV2ZW4gYWZ0ZXIgaXJxX3NldF9pcnFfd2FrZSgpCmhhcyBzZXQgSVJRRF9X
-QUtFVVBfU1RBVEUuCgpXaXRoIHRoaXMgcGF0Y2ggYSBNQUMtbWFuYWdlZCBQSFkgaXMgcG9zdHBv
-bmVkIGZyb20gbWRpb19idXNfcGh5X3ByZXBhcmUoKSwKc28gYW55IFBIWSBpbnRlcnJ1cHQgZHVy
-aW5nIHRoZSB0cmFuc2l0aW9uIGNhbGxzIGRpc2FibGVfaXJxX25vc3luYygpIG9uCnRoZSBuZXN0
-ZWQgbGluZS4KClNvbWUgcGFyZW50IGNoaXBzIGltcGxlbWVudCAuaXJxX2Rpc2FibGUsIHN1Y2gg
-YXMgcmVnbWFwLWlycSB3aXRoCnJlZ21hcF9pcnFfZGlzYWJsZSgpLiBPbiB0aG9zZSwgdGhlIGRp
-c2FibGUgbWFza3MgdGhlIFBIWSdzIHNvdXJjZSBpbiB0aGUKcGFyZW50J3MgaGFyZHdhcmUuCgpt
-ZGlvX2J1c19waHlfc3VzcGVuZF9ub2lycSgpIHRoZW4gc2tpcHMgZW5hYmxlX2lycSgpLCBhbmQg
-dGhlIHNvdXJjZSBzdGF5cwptYXNrZWQgdGhyb3VnaCBzbGVlcC4gQSBsYXRlciBXYWtlLW9uLUxB
-TiBldmVudCBmcm9tIHRoZSBQSFkgbmV2ZXIgYXNzZXJ0cwp0aGUgcGFyZW50J3Mgd2FrZS1hcm1l
-ZCBsaW5lLCBhbmQgdGhlIHN5c3RlbSBrZWVwcyBzbGVlcGluZy4KCklzbid0IHRoaXMgdGhlICJ3
-b3VsZCBzbGVlcCB0aHJvdWdoIGEgd2FrZXVwIiBjYXNlIHRoZSBub2lycSBjYWxsYmFja3MgYXJl
-Cm1lYW50IHRvIGNsb3NlPyBDb3VsZCB0aGUgY2hlY2sgZmFsbCBiYWNrIHRvIGlycWRfaXNfd2Fr
-ZXVwX3NldCgpIGZvcgpuZXN0ZWQtdGhyZWFkIGxpbmVzPwoKTGF6eS1kaXNhYmxlIHBhcmVudHMg
-dGhhdCBpbXBsZW1lbnQgb25seSBpcnFfbWFzaywgc3VjaCBhcyBwY2E5NTN4LCBhcmUKbm90IGFm
-ZmVjdGVkLCBiZWNhdXNlIHRoZSBwaW4gc3RheXMgdW5tYXNrZWQuIEkgY291bGQgbm90IGNvbmZp
-cm0gYW4KaW4tdHJlZSBib2FyZCB0aGF0IGNvbWJpbmVzIGEgTUFDLW1hbmFnZWQgUEhZIHdpdGgg
-c3VjaCBhIHBhcmVudCBpcnFjaGlwCmFuZCBXYWtlLW9uLUxBTi4KCj4gKwltdXRleF91bmxvY2so
-JnBoeWRldi0+aXJxX3BtX2xvY2spOwo+ICsKPiArCXJldHVybiAwOwo+ICt9CgpbIC4uLiBdCgot
-LSAKU2FzaGlrbyBBSSByZXZpZXcgwrcgaHR0cHM6Ly9uZXRkZXYtYWkuYm90cy5saW51eC5kZXYv
-c2FzaGlrby8jL3BhdGNoc2V0LzIwMjYxMTIzLWI0LXBoeWxpYi1tYWMtcG0taXJxLXYzLXY4LTAt
-ZTlmNzA2ZTc5NjE0JTQwaWF2Lmx2CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+--===============6061885661336102551==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-AdAYXv1YzTfNAtP30eeO"
+
+--=-AdAYXv1YzTfNAtP30eeO
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Le jeudi 12 novembre 2026 =C3=A0 08:31 +0000, Arun Iyengar via B4 Relay a =
+=C3=A9crit=C2=A0:
+> From: Arun Iyengar <aiyengar1990@gmail.com>
+>=20
+> For coded formats hantro_try_fmt() only computes sizeimage when the
+> application passes 0, and otherwise accepts any value. On the encoder
+> that lets the CAPTURE buffers be far too small for the selected
+> resolution.
+>=20
+> This is easy to hit: "v4l2-ctl --set-fmt-video=3Dwidth=3D1920,height=3D10=
+80,
+> pixelformat=3DJPEG" does G_FMT, modifies the size and calls S_FMT, so it
+> passes back the 6768 byte sizeimage of the 96x32 default format. The
+> driver accepts it for 1920x1088, the hardware runs out of stream buffer
+> on every frame and the encoder only produces empty buffers.
+>=20
+> The stateful encoder specification lets the encoder adjust sizeimage to
+> match hardware requirements. For the encoder, clamp the requested
+> sizeimage up to the size already used as the default, while still
+> allowing applications to ask for larger buffers. The decoder behaviour
+> is unchanged.
+>=20
+> Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+> ---
+>  drivers/media/platform/verisilicon/hantro_v4l2.c | 17 ++++++++++++++---
+>  1 file changed, 14 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/m=
+edia/platform/verisilicon/hantro_v4l2.c
+> index d033fe0ecef6..c4e36a79eecc 100644
+> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
+> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> @@ -386,14 +386,25 @@ static int hantro_try_fmt(const struct hantro_ctx *=
+ctx,
+>  =09=09=09pix_mp->plane_fmt[0].sizeimage +=3D
+>  =09=09=09=09hantro_av1_mv_size(pix_mp->width,
+>  =09=09=09=09=09=09   pix_mp->height);
+> -=09} else if (!pix_mp->plane_fmt[0].sizeimage) {
+> +=09} else {
+> +=09=09u32 max_size =3D fmt->header_size +
+> +=09=09=09pix_mp->width * pix_mp->height * fmt->max_depth;
+> +=09=09u32 *sizeimage =3D &pix_mp->plane_fmt[0].sizeimage;
+> +
+>  =09=09/*
+>  =09=09 * For coded formats the application can specify
+>  =09=09 * sizeimage. If the application passes a zero sizeimage,
+>  =09=09 * let's default to the maximum frame size.
+> +=09=09 *
+> +=09=09 * On the encoder, a buffer that is too small for the
+> +=09=09 * current resolution only gives failed frames, so never
+> +=09=09 * let the application go below that default. Larger
+> +=09=09 * values are kept.
+>  =09=09 */
+> -=09=09pix_mp->plane_fmt[0].sizeimage =3D fmt->header_size +
+> -=09=09=09pix_mp->width * pix_mp->height * fmt->max_depth;
+> +=09=09if (ctx->is_encoder)
+> +=09=09=09*sizeimage =3D max(*sizeimage, max_size);
+> +=09=09else if (!*sizeimage)
+> +=09=09=09*sizeimage =3D max_size;
+
+I find this part a bit loaded, maye you could add a helper and do something=
+ such
+as:
+
+=09} else if (ctx->is_encoder) {
+=09=09u32 sizeimage =3D pix_mp->plane_fmt[0].sizeimage;
+=09=09u32 max_size =3D coded_max_size(pix_mp, fmt);
+=09=09pix_mp->plane_fmt[0].sizeimage =3D max(sizeimage, max_size);
+=09} else if (!pix_mp->plane_fmt[0].sizeimage) {
+=09=09pix_mp->plane_fmt[0].sizeimage =3D coded_max_size(pix_mp, fmt);
+=09}
+
+> =20
+>  =09return 0;
+
+--=-AdAYXv1YzTfNAtP30eeO
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawT6WAAKCRDZQZRRKWBy
+9DN8AQDidI6brWMNg9iRjwOn80RNcWkk1i3HZpK9aFQ3oev3LwEArKEXDhNLzM7K
+p8Qsj0dhUHNC6p6kJMLcWFI4UQgjuww=
+=xex6
+-----END PGP SIGNATURE-----
+
+--=-AdAYXv1YzTfNAtP30eeO--
+
+
+--===============6061885661336102551==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6061885661336102551==--
+
