@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 96C2E606A321
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 15:43:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5A2B3606A31E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 15:43:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nkXwSDl/;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ZjrRzAub
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WrksJZg1;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=RJrJFn1+
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,50 +14,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=hnuvZTWKXiZzoUPjC6LYKygDjd7kyyUyG0TDTn0+BDE=; b=nkXwSDl/bwVCtmpZsU9vSeeT/w
-	wdcx2Z/1GKEZfNOkPIbkxAjDcg4QH3Kcbet84rD2B0jzd8Qb/UphaBH+upB/ThSAPibVFqJ4Divjx
-	zzloBTTCpBXrUNdaAFuC3rot7Fqe3sygIAoXZ/YcOtORzBAb4QhO5ofiTa1ZVeVONFrOOJ/4fmHzU
-	RPYz1uhqa+sAg8Vme6f342HDRnmIP+EtoBe72l919ba0VvbBJbWBQLpOWB60XHvb3UDy4NRIVQpuA
-	J+dZs0ewH41E9l6DXSqwmXWz3uoe9E05xubVKpj4PA4moNYJadTTcSwNxDsAonuKQIsjDsXcOsDp2
-	2nTNaSdw==;
+	bh=CiLIA/naJgaZNlYGlli0Q6TRfjV300I4sRbkfktEnX8=; b=WrksJZg1gpUtic/KH/MK+ZYH1m
+	zIqoWUKV+93G24aznIPxP00z5R7HRwJJl7ddCnQQ33UiNjRu9VLXEUwO86JC2S1IBTL4b7q595Mli
+	HKNxWuHfu9kK/N98zrX9EFRLTuwaYUN/2Ok0jgNrbmp1+rSPzGhTBh7iM/2GMQZQ4oUSTpd9UtyJS
+	dWV0UGJ3G8aWKUh3EHa8hFbTj2o0vCigitjtvn49L3U2gw2EzqB3JsmDnUrv25hFFAzXhz0vIIHqC
+	QE3YzZqE5cg5ZGIgCUkeRb5/wPoYw1E3K1VO5pyLIAh8Yo1+voQDm5RcntgN1ZpjwdITh+iEP8fzZ
+	OWCP93lQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVsfZ-00000006voF-0Jsp;
-	Tue, 24 Nov 2026 15:42:57 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xVsfe-00000006vrT-2dCu;
+	Tue, 24 Nov 2026 15:43:02 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVsfK-00000006viO-26tj;
-	Tue, 24 Nov 2026 15:42:42 +0000
+	id 1xVsfR-00000006vkh-2AVJ;
+	Tue, 24 Nov 2026 15:42:49 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 53BCC61121;
-	Tue, 24 Nov 2026 15:42:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 232441F000CA;
-	Tue, 24 Nov 2026 15:42:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E27E745B6D;
+	Tue, 24 Nov 2026 15:42:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B6C21F000CF;
+	Tue, 24 Nov 2026 15:42:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795534960;
-	bh=mxhOZAYkWjiUVCEs7lYi5uQ2vyidYwZzsDUgb1c1k6g=;
+	s=k20260515; t=1795534968;
+	bh=UGhK0QrMPxXRtKp897cYCLvU5E9xWo/VhywbzffDG+s=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=ZjrRzAubspoUH/6lwbalXHTO11d8e/DyOYyTGbdXaDbZhKxpaucX9Vg4hBv2NVHpk
-	 Lp2IaJmDZwW8rxGKob5cvq9n2+GwShFTu8LLuxkEl4pha17J8VorSk8qCl/gLudfQa
-	 kopfQOshiLZtm3vuZkeJ7Q8aqZG94QhYxT/MTLHbFwKmaCQz4FILwF7/5tV5I56Eti
-	 Hbvx8FqnvuQ7j7GvHvO8CBSeC5kwnUztXZOx+VGDWZseyVFYLAfVEcPvveXV55p2r0
-	 /0QnZ/E7GPwQyzk9oCJO9AlFuvhSvlo0ZhdEl9X6PKhqA+WsVng6votW0v8MjLz01v
-	 6tL2NmJ+Fc/ZQ==
-Message-ID: <e6c6be85-0378-4ade-8e31-337a85890efc@kernel.org>
-Date: Tue, 24 Nov 2026 16:42:35 +0100
+	b=RJrJFn1+wsU7egRz4Z9X+g5EGIWLaISk6BJUuTwrVvFQIjWrQDowVAkWPbX3MpfpJ
+	 m3Nul+MRsN0uhDQeZhJ1E2XU97wQwiIJcSJoOf/9bsMKaaUI8t9wJeBGkXixzKyZuu
+	 15rHeLpR+K9C72QiTGb+AT5Pk61TUgqD/Fi56MmKmoXzMd7x/uCG2VaOUAMKbnj3/M
+	 AH17Y4yOW8Qubssr2sZs0vQsYaDdIp3NursiIFY6Smgb1XD4dmaJFu7xKsd7mhv3nw
+	 bSJseYYylvAtXv6XxSPrzlEfmmItLJQSl6gpVY4E5GVuLTNfJRhTX3lWQEn1w5fb7O
+	 9C+datB35uDGg==
+Message-ID: <35262943-a161-4e31-b213-5c3d51b81f90@kernel.org>
+Date: Tue, 24 Nov 2026 16:42:44 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] dt-bindings: phy: rockchip: add RK3506 USB2 PHY
-To: ZhuXiangyu <1194781887@qq.com>, Vinod Koul <vkoul@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, linux-phy@lists.infradead.org,
+Subject: Re: [PATCH 2/2] dt-bindings: pwm: rockchip: add RK3506 and RK3576 PWM
+To: ZhuXiangyu <1194781887@qq.com>, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?=
+ <ukleinek@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, linux-pwm@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20261121074753.1262819-1-1194781887@qq.com>
- <tencent_1A5C41E9DE4754C0A639FE4A64B1B23AC305@qq.com>
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
+References: <20261121065936.1125919-1-1194781887@qq.com>
+ <tencent_85AFCE164FAAD1CCAB95DC7CD804CA9BB309@qq.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -103,7 +102,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  K9bCVaboTA2T77QYkRcRJYSsO1alGX0ome/hMLD1daXlkrNUp1HWa3K4iytLRXjCSIorWiGs
  n+q3krnpXu3TFkA8qtOFZMdnIiFuiq1yLT8hptsV5xh1TA2nsVvSYiaCr3q4s4BKjS/KrLDb
  qoxzw8ISjdUp4pA85vb6YLCmb39NgidD+7PmAr65lBNveIFynTgsja1rRQ4=
-In-Reply-To: <tencent_1A5C41E9DE4754C0A639FE4A64B1B23AC305@qq.com>
+In-Reply-To: <tencent_85AFCE164FAAD1CCAB95DC7CD804CA9BB309@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,14 +123,15 @@ X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 21/11/2026 08:47, ZhuXiangyu wrote:
-> Document the RK3506 USB2 PHY, which uses the phyclk and apb_pclk
-> clocks and requires the PMU GRF phandle.
+On 21/11/2026 07:59, ZhuXiangyu wrote:
+> Document the PWM v4 controllers found on RK3506 and RK3576. They use
+> the pwm/pclk clocks and may additionally provide the osc and rc
+> clocks used by the extended features.
 > 
 > Signed-off-by: ZhuXiangyu <1194781887@qq.com>
 > ---
->  .../bindings/phy/rockchip,inno-usb2phy.yaml     | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
+>  .../devicetree/bindings/pwm/pwm-rockchip.yaml | 54 +++++++++++++++----
+>  1 file changed, 45 insertions(+), 9 deletions(-)
 
 I will mark everything you as changes requested. This is all half
 broken, b4 review cannot even fetch for review.
