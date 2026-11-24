@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1A15B606A69B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 17:08:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ECB35606A31E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 17:25:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RgN3p3PT;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=PqazgT6i
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RX/x/kyE;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=PfClU7bE
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,51 +14,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=MmP5NYiBfCOhNdzkYCGHlC6jvxmgKbfQelvb/P/IjzU=; b=RgN3p3PTDfJ6C6vn3kcPuQA5LR
-	7hkpitTqtaG1l04lmE/4agpaUD5sNpECLXR4hwduGGJBzFJa+4JpduRdsQ+AgPCKObCll2e7XnKwI
-	xryJ6dCPmelksMuDANP5/J5vxEEFSyltmqrlCVZDN2xZpS1UDMkBovF6fQ2sDpeZXqnYKF/ztwlnf
-	MyPTHy5iT1L037+WGe0CptW7JZ066KCMID0+z30Q6E8+ANX0u5SNP/tebzLEja/0bOEyyyoK3WEXq
-	iIvt5gFcoYsHeNOqKcl8HDAx9T6kgg7cv6rUkTFchIqSI0AfPwAie5nq//TeoL2U0nnYW5WLgm/FK
-	6MGmUAwQ==;
+	bh=IEmaI+cQxNZwbFjAOt5rsDLV1JWhSPhzQCauNW+JtGs=; b=RX/x/kyEnK+fchVK0pnmXIrCHf
+	0zmLuU4KISxT+OFHymxfn1MBq6JGkNmek9URCRVymWshtPZmLSifVrFTHNPM+/i3mRw0U4uf7FtO0
+	3bYD4V4PxXu1zKzC+e3Mth9i4MvS8OGE6Okup7Ig69anBgcnaORqNaV7gumYyjHm/dIC/YG1HqLzO
+	hdUwK3+5Nfwgj1Mdl60zwfJahPm5Yeq7+ViUBhAtVmUcjINm86u7G3KroDPiW1bY8gRCVyk1RgoIY
+	9Da12nMUkH8l6XNaVZJgPSMkA6g7JilXRhcccmtnmiyBDhiWGApYq5IZrP4S9A6tBLWGwfpYypET2
+	YYkQ676Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVtzz-00000007GC3-3j3o;
-	Tue, 24 Nov 2026 17:08:07 +0000
+	id 1xVuGT-00000007LP5-3y2R;
+	Tue, 24 Nov 2026 17:25:09 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVtzx-00000007GAH-2U4y;
-	Tue, 24 Nov 2026 17:08:06 +0000
+	id 1xVuGN-00000007LMg-3lGn;
+	Tue, 24 Nov 2026 17:25:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795540083;
-	bh=XVsm2g87K7EiScMpFX+YLK3BjagJwRTYcIiVjtlKvoU=;
+	s=mail; t=1795541101;
+	bh=m07kO0w39ZGOpJ7N1oAJdrXNCV6zROzJBkUq6TvKKEw=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=PqazgT6iD61c1zbABIMmIWWGdKVAnMdvNQ7mKFGbQsmcNILBUjAJ1lRNTG0g+NbSd
-	 qVd80YvrB9OzKy6KMEdhSDT09jZXj7HoZCga8I+fLpiKUUgNAp7eFRSI2LGf351hVT
-	 /ghjLdlH9MA9i0IujvXnwVW5Vz0btMl0QwxyAv0EK7DHbrYgL0ZpjJNih5Cd2E0dqs
-	 /lji7+IMznkl18g3Kl5TvF9ftQQxjwjourYR0L5l90vg7pjLCaaqwrQ/F9GNA4m+KI
-	 Zh74e8AQOnW0zUNg88roYoDD7VM6+1uTQE/6gJci6g+PmEKf+1zwSifBtjrzb3eSDp
-	 qNSS/2uBuCWGA==
+	b=PfClU7bENUiH3dPsxzpNT3P8oZ2zd+jYU51lg9/WdVuT8DtjQBOps63DLdwp+Td5B
+	 iYMvqXfK8xAQ9Qk2QPJI4x3FiOvlU0AxJq7hb/ky2j3WjaBrgvcAZvXHTBweUZ/qRR
+	 awgL3hY1rC4+/rjvTDGq4ndmJhCTKB4dNe537+Ln766hBvdiNrzEaiagzSOwZmYTYn
+	 kBeJFHuDVooR5zo+8V2J0SvqEVawXSg4CetbSYuH+EvUyGm7614o0VCKBfyN8w6np5
+	 8qLaEmdfDYZL62LVmBNnd+wSJfxjEKoDbK3tE+qzmLH0Sb0qKEo3ZCHsyk05liAg/4
+	 jjYzS0peNNuVA==
 Received: from [100.64.0.214] (unknown [100.64.0.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E112D17E047C;
-	Tue, 24 Nov 2026 18:08:01 +0100 (CET)
-Message-ID: <deea128399ee10bcd7e789a48763222b961ae0f1.camel@collabora.com>
-Subject: Re: [PATCH v8 1/3] media: v4l2-ctrls: validate AV1 reference frame
- index
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 433CC17E00E8;
+	Tue, 24 Nov 2026 18:24:59 +0100 (CET)
+Message-ID: <17ff7540be764241e6083ba2b6876f7a90787333.camel@collabora.com>
+Subject: Re: [PATCH v3 3/3] media: verisilicon: leave room for the JPEG
+ header and one stream burst
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de,
- hverkuil@kernel.org
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+To: shomenkow@gmail.com, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>,  Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil	
+ <hverkuil@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia	
+ <ezequiel@vanguardiasur.com.ar>, Chen-Yu Tsai <wenst@chromium.org>, Hugues
+ Fruchet <hugues.fruchet@foss.st.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, linux-media@vger.kernel.org, 
 	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	kernel@collabora.com
-Date: Tue, 24 Nov 2026 12:08:00 -0500
-In-Reply-To: <20261124131816.115131-2-benjamin.gaignard@collabora.com>
-References: <20261124131816.115131-1-benjamin.gaignard@collabora.com>
-	 <20261124131816.115131-2-benjamin.gaignard@collabora.com>
+	linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org, 
+	stable@vger.kernel.org
+Date: Tue, 24 Nov 2026 12:24:57 -0500
+In-Reply-To: <20261124-hantro-buflimit-v3-3-780903970ca0@gmail.com>
+References: <20261124-hantro-buflimit-v3-0-780903970ca0@gmail.com>
+	 <20261124-hantro-buflimit-v3-3-780903970ca0@gmail.com>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -77,8 +82,8 @@ User-Agent: Evolution 3.62.1 (3.62.1-1.fc45)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_090805_815338_7C2C01DF 
-X-CRM114-Status: GOOD (  18.21  )
+X-CRM114-CacheID: sfid-20261124_092504_115436_DC5A4926 
+X-CRM114-Status: GOOD (  24.08  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,7 +94,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8784229979313567673=="
+Content-Type: multipart/mixed; boundary="===============5349185473256233829=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -98,129 +103,136 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============8784229979313567673==
+--===============5349185473256233829==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-7bhjUBWK19mT5W91FGeZ"
+	protocol="application/pgp-signature"; boundary="=-9hyBsZW3zMk+VaUuUSDf"
 
---=-7bhjUBWK19mT5W91FGeZ
+--=-9hyBsZW3zMk+VaUuUSDf
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le mardi 24 novembre 2026 =C3=A0 14:18 +0100, Benjamin Gaignard a =C3=A9cri=
-t=C2=A0:
-> The stateless AV1 decoders use primary_ref_frame and ref_frame_idx[] to
-> to find the matching reference frames.
-> V4L2_AV1_PRIMARY_REF_NONE is the value of primary_ref_frame indicating
-> that there is no primary reference frame.
-> Reject invalid indexes to avoid issues in the drivers while validate othe=
-r
-> frame parameters.
+Le mardi 24 novembre 2026 =C3=A0 16:40 +0300, Sergei Khomenkov via B4 Relay=
+ a =C3=A9crit=C2=A0:
+> From: Sergei Khomenkov <shomenkow@gmail.com>
 >=20
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> hantro_try_fmt() keeps any non-zero CAPTURE sizeimage of the JPEG
+> encoder, however small. The CPU writes the 624-byte header into the
+> plane, and on the RK3026 the H1 then writes at least one 64-byte burst
+> even with a stream limit of 0, so a smaller plane is written past its
+> end. A plane smaller than the header also makes the WARN_ON() in
+> hantro_h1_jpeg_enc_set_buffers() fire on every job.
+>=20
+> Add a minimum plane size to struct hantro_fmt, set it to header_size +
+> 64 in the JPEG encoder formats of the Rockchip and STM32MP25 variants,
+> and raise a smaller coded sizeimage to it in hantro_try_fmt().
+>=20
+> Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
+> Cc: stable@vger.kernel.org
+> Assisted-by: Claude:claude-opus-5-5
+
+Drop if v4 needed.
+
+> Signed-off-by: Sergei Khomenkov <shomenkow@gmail.com>
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
 > ---
-> changes in v8
-> - check reference frame index when validating the frame before
->   calling the driver.
+> Found with an LLM coding assistant while porting mainline Linux to a
+> Rockchip RK3026 board; the assistant also drafted this change. Tested
+> on that board: a sizeimage of 1 or 600 now reads back 688, and frames
+> that do not fit a 688-byte plane stop exactly at its end. Not tested on
+> other SoCs.
+> ---
+>  drivers/media/platform/verisilicon/hantro.h           | 2 ++
+>  drivers/media/platform/verisilicon/hantro_v4l2.c      | 3 +++
+>  drivers/media/platform/verisilicon/rockchip_vpu_hw.c  | 1 +
+>  drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c | 1 +
+>  4 files changed, 7 insertions(+)
 >=20
->  .../verisilicon/rockchip_vpu981_hw_av1_dec.c  |  3 +--
->  drivers/media/v4l2-core/v4l2-ctrls-core.c     | 20 +++++++++++++++++++
->  include/uapi/linux/v4l2-controls.h            |  1 +
->  3 files changed, 22 insertions(+), 2 deletions(-)
-
-Split core from driver changes.
-
->=20
-> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_de=
-c.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> index 2a145433e6d1..bbfca34688eb 100644
-> --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> @@ -20,7 +20,6 @@
->  #define AV1_REF_SCALE_SHIFT=0914
->  #define AV1_INVALID_IDX=09=09-1
->  #define MAX_FRAME_DISTANCE=0931
-> -#define AV1_PRIMARY_REF_NONE=097
->  #define AV1_TILE_SIZE=09=09ALIGN(32 * 128, 4096)
->  /*
->   * These 3 values aren't defined enum v4l2_av1_segment_feature because
-> @@ -1256,7 +1255,7 @@ static void rockchip_vpu981_av1_dec_set_prob(struct=
- hantro_ctx *ctx)
->  =09bool frame_is_intra =3D IS_INTRA(frame->frame_type);
+> diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/=
+platform/verisilicon/hantro.h
+> index 0353de154a1e..f51beae79f1f 100644
+> --- a/drivers/media/platform/verisilicon/hantro.h
+> +++ b/drivers/media/platform/verisilicon/hantro.h
+> @@ -286,6 +286,7 @@ struct hantro_ctx {
+>   * @codec_mode:=09Codec mode related to this format. See
+>   *=09=09enum hantro_codec_mode.
+>   * @header_size: Optional header size. Currently used by JPEG encoder.
+> + * @min_size:=09Optional minimum sizeimage, for bitstream formats.
+>   * @max_depth:=09Maximum depth, for bitstream formats
+>   * @enc_fmt:=09Format identifier for encoder registers.
+>   * @frmsize:=09Supported range of frame sizes (only for bitstream format=
+s).
+> @@ -297,6 +298,7 @@ struct hantro_fmt {
+>  =09u32 fourcc;
+>  =09enum hantro_codec_mode codec_mode;
+>  =09int header_size;
+> +=09u32 min_size;
+>  =09int max_depth;
+>  =09enum hantro_enc_fmt enc_fmt;
+>  =09struct v4l2_frmsize_stepwise frmsize;
+> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/m=
+edia/platform/verisilicon/hantro_v4l2.c
+> index 83af9fa1ce94..b3dbc0629d25 100644
+> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
+> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+> @@ -394,6 +394,9 @@ static int hantro_try_fmt(const struct hantro_ctx *ct=
+x,
+>  =09=09 */
+>  =09=09pix_mp->plane_fmt[0].sizeimage =3D fmt->header_size +
+>  =09=09=09pix_mp->width * pix_mp->height * fmt->max_depth;
+> +=09} else {
+> +=09=09pix_mp->plane_fmt[0].sizeimage =3D
+> +=09=09=09max(pix_mp->plane_fmt[0].sizeimage, fmt->min_size);
+>  =09}
 > =20
->  =09if (error_resilient_mode || frame_is_intra ||
-> -=09    frame->primary_ref_frame =3D=3D AV1_PRIMARY_REF_NONE) {
-> +=09    frame->primary_ref_frame =3D=3D V4L2_AV1_PRIMARY_REF_NONE) {
->  =09=09av1_dec->cdfs =3D &av1_dec->default_cdfs;
->  =09=09av1_dec->cdfs_ndvc =3D &av1_dec->default_cdfs_ndvc;
->  =09=09rockchip_av1_default_coeff_probs(quantization->base_q_idx,
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4=
-l2-core/v4l2-ctrls-core.c
-> index 6e751a043a21..f4c2a04fb721 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> @@ -817,10 +817,30 @@ static int validate_av1_tile_info(struct v4l2_av1_t=
-ile_info *t)
 >  =09return 0;
->  }
-> =20
-> +static int validate_av1_reference_index(struct v4l2_ctrl_av1_frame *f)
-> +{
-> +=09int idx;
-> +
-> +=09if (f->primary_ref_frame > V4L2_AV1_PRIMARY_REF_NONE)
-> +=09=09return -EINVAL;
-> +
-> +=09if (f->primary_ref_frame =3D=3D V4L2_AV1_PRIMARY_REF_NONE)
-> +=09=09return 0;
-> +
-> +=09idx =3D f->ref_frame_idx[f->primary_ref_frame];
-> +=09if (idx < 0 || idx >=3D V4L2_AV1_TOTAL_REFS_PER_FRAME)
-> +=09=09return -EINVAL;
-> +
-> +=09return 0;
-> +}
-> +
->  static int validate_av1_frame(struct v4l2_ctrl_av1_frame *f)
->  {
->  =09int ret =3D 0;
-> =20
-> +=09ret =3D validate_av1_reference_index(f);
-> +=09if (ret)
-> +=09=09return ret;
->  =09ret =3D validate_av1_tile_info(&f->tile_info);
->  =09if (ret)
->  =09=09return ret;
-> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2=
--controls.h
-> index d17e41d51d2e..82023fbffd6a 100644
-> --- a/include/uapi/linux/v4l2-controls.h
-> +++ b/include/uapi/linux/v4l2-controls.h
-> @@ -2940,6 +2940,7 @@ struct v4l2_ctrl_vp9_compressed_hdr {
->  #define V4L2_AV1_MAX_TILE_COLS=09=0964
->  #define V4L2_AV1_MAX_TILE_ROWS=09=0964
->  #define V4L2_AV1_MAX_TILE_COUNT=09=09512
-> +#define V4L2_AV1_PRIMARY_REF_NONE=097
-> =20
->  #define V4L2_AV1_SEQUENCE_FLAG_STILL_PICTURE=09=09  0x00000001
->  #define V4L2_AV1_SEQUENCE_FLAG_USE_128X128_SUPERBLOCK=09  0x00000002
+> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drive=
+rs/media/platform/verisilicon/rockchip_vpu_hw.c
+> index d201b058e5e8..ab5abe2c78ad 100644
+> --- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+> +++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+> @@ -50,6 +50,7 @@ static const struct hantro_fmt rockchip_vpu_enc_fmts[] =
+=3D {
+>  =09=09.codec_mode =3D HANTRO_MODE_JPEG_ENC,
+>  =09=09.max_depth =3D 2,
+>  =09=09.header_size =3D JPEG_HEADER_SIZE,
+> +=09=09.min_size =3D JPEG_HEADER_SIZE + 64,=09/* header + one burst */
+>  =09=09.frmsize =3D {
+>  =09=09=09.min_width =3D 96,
+>  =09=09=09.max_width =3D 8192,
+> diff --git a/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c b/driv=
+ers/media/platform/verisilicon/stm32mp25_vpu_hw.c
+> index 833821120b20..3f337554e936 100644
+> --- a/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
+> +++ b/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
+> @@ -83,6 +83,7 @@ static const struct hantro_fmt stm32mp25_venc_fmts[] =
+=3D {
+>  =09=09.codec_mode =3D HANTRO_MODE_JPEG_ENC,
+>  =09=09.max_depth =3D 2,
+>  =09=09.header_size =3D JPEG_HEADER_SIZE,
+> +=09=09.min_size =3D JPEG_HEADER_SIZE + 64,=09/* header + one burst */
+>  =09=09.frmsize =3D {
+>  =09=09=09.min_width =3D 96,
+>  =09=09=09.max_width =3D FMT_4K_WIDTH,
 
---=-7bhjUBWK19mT5W91FGeZ
+--=-9hyBsZW3zMk+VaUuUSDf
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawXEcAAKCRDZQZRRKWBy
-9Ci7AQCh7xzeUtcWsraOr3AfuynLmcy7NS4EHZq9py+FhRQcXAEAtY05sOxD+TCy
-Tr02JjL2CDLvPbRoTN9ins5yelgbgwY=
-=sCxR
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawXIaQAKCRDZQZRRKWBy
+9BOUAQDB13SGsNUp9oo0GULFzOq8ooFbMD+D1z8pwpgBhY3I/gD7BBun+nzgWLRF
+kcm+xZkcOJAH6AFAmIgpuo+y1l8swgM=
+=tHV6
 -----END PGP SIGNATURE-----
 
---=-7bhjUBWK19mT5W91FGeZ--
+--=-9hyBsZW3zMk+VaUuUSDf--
 
 
---===============8784229979313567673==
+--===============5349185473256233829==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -231,5 +243,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8784229979313567673==--
+--===============5349185473256233829==--
 
