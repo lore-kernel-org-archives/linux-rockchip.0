@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 920D6606A32E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 21:13:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 23A07606A685
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 21:15:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JuUCZebX;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=Qz27+WXT
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zewHikmK;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=uIBGKnDD
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,70 +14,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=rU/7zhhAkHe3JLtnYwtsw7nQnQc2o4l5ASe211p6R6M=; b=JuUCZebX2gMWiki6suX6QpMjVs
-	HVjQRF/Ss1kHlDJ01zOr4zORLUsY2vKevcTsWR8P+TSNCYxLaU9Nrotk4xU7m8wnHSfVFmF+8qfLN
-	pcZVC82o/dwdH06eiadAKpSI7LHr6o0Gjm5jLY/JM9jhhwFTeLe/713iUFnFpwqSAuaWa9Z2o+Sfy
-	e990V6DsGcrpXC4cSnEYdPrq7QRV9LbTpcXLLTBpbqLFaqCOAsGAwQOqdNORa9Pe0Fv78Qm2grEzf
-	Q+BwV1dtxo5vx3JTeOzW55or0suNjl/QsHBMdvgOQ/RO55KqZgW0dcTLGul5eZg1VCmMTdwqUs8w6
-	q4DJPm8A==;
+	bh=1gp8ljI1ctwvsVewrqQX/Hp/7auygPNlHB3o3uNXvtM=; b=zewHikmK7EuGmkrm0ahUI+GTZl
+	8LjugJJSWRYvb3i/mPHaVjUysnCHw1/HhSsPKnTMgDQA16Mdx0XDi69BecScy8TYD2sm12vrncUk6
+	rRnSIYrLveyrRPxpFFYjH5Ktm4SMv1A4ecASOOhoBz6HsjsqW6jqhagNvX8OEO2puLVLFg9hez4nR
+	bbWud/uzd10x8jWZi0i94WygGquO/VFDvpk72LMTgLs0H4ylT+PrLCytO1hXi0VDqS+52ONHZBvcy
+	5xNwla1mQjOxarJboQSLv3TjfatWryzw3XsULnYpYM0G07h4Ys8zGhYt+w8eHnS9f2WSmWzAijrVV
+	W3dhgTOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVxov-00000007olp-2ndi;
-	Tue, 24 Nov 2026 21:12:57 +0000
-Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
+	id 1xVxqq-00000007pVp-25a9;
+	Tue, 24 Nov 2026 21:14:56 +0000
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVxoq-00000007ojh-46Ct
+	id 1xVxql-00000007pSD-0yY3
 	for linux-rockchip@lists.infradead.org;
-	Tue, 24 Nov 2026 21:12:56 +0000
-Received: by mail-qk1-x72a.google.com with SMTP id af79cd13be357-9495e8ae23aso427149585a.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 24 Nov 2026 13:12:52 -0800 (PST)
+	Tue, 24 Nov 2026 21:14:54 +0000
+Received: by mail-qk1-x731.google.com with SMTP id af79cd13be357-949680e6d83so454298785a.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 24 Nov 2026 13:14:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1795554772; x=1796159572; darn=lists.infradead.org;
+        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1795554890; x=1796159690; darn=lists.infradead.org;
         h=mime-version:user-agent:content-type:autocrypt:references
          :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=58e55Dq73HKDPI7jbSEGjDb83KloozrgTme0p4JRxec=;
-        b=Qz27+WXTdJfFwAj7OO0YQrFHC+633OAlfxZS6inw3pPeqtJnnCzsg/p1ycGU4pgAWB
-         YnswqyXsz/MhWTey1XcyRYEzs9aNnyygx2Z87jRbzQ4eB+tbPTAtkUC4Mg9tN4W0Blot
-         jj69s/JgjVLxQJNJTvCeQaMguz5rNUoJO8birdgFTanXSmVSMz5NDAkKGCs3KQs2SKLx
-         2fHHI0MASGUEJzWkFPfg5KWEibmeR0+Fb3wwIpxkeqklBK3dEzfmvPjCmKOMjtal56Xf
-         i5VKtSj9l7rr5ETaeZd+YNVOqnYOiFcuO9X5Y8Abq5YGa3YeUHYgZ3186viCMfoS22Qx
-         zNtA==
+        bh=W9arlbU5hy5tgNRpcN7WmEtmYSBI8GYP25HN7JEKy5U=;
+        b=uIBGKnDDZhfVSUVJ5rybg6sFLDTieanBKLFDSy3WjdWtGqtcGzdgHsjD+YGwj/L22w
+         dAFQCmEw5Qr/lAzsoqi9GYkQypbCP5CU3ZEvpSYoapHi+io2D0LwGZCN4WwWwEha5Bza
+         J3cqMBchrLvjh899OuP/XyH68UD3tcRR6rF2I/Bf77U6QoO447CBShS1DMz/xurtSIl+
+         N8NnsM+nhvWwOeD3/QrcWKXCOdedTtXIBjl7uWP6HJcSOM8ynJtXrwTknZu4eXhoHJk1
+         WVGdCKiIISCCnTrP1MdlNTo94BiO4kDkl5YPGkJU6MMOcsDYla2gLHsKLYkiZkwtb6Qu
+         +HCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795554772; x=1796159572;
+        d=1e100.net; s=20260707; t=1795554890; x=1796159690;
         h=mime-version:user-agent:content-type:autocrypt:references
          :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=58e55Dq73HKDPI7jbSEGjDb83KloozrgTme0p4JRxec=;
-        b=T4BBRkB3ap7TWIHPsrdwhTi4Assw46SMZ60GS5CMitl15YtWcWJvK2xLheuXRDMyoO
-         TNL26O26cwthPHaRD78V2DhU2xQzhXFQ8fIn83WVtdgV+c6sdQde5107XYI3p0DNbGHJ
-         iIoYM/9hHylr4LC7ca7JtDUJGONqjcxrAORBpEOP7MCOSfx3b00H/bwcJ29Y7sfHxd8y
-         Cv762aITX4LL/xuywRMGa9efOCJbis/ZzJ4teP5T/kZcJZxrgXIct3Ok/E/aHvstIviB
-         ytKV/paulfmICozn8fDWQ9Cqatq09v3BUX9cfkFPD9YKKl1Z4PLjMRft/p1G95HhzCmF
-         693A==
-X-Forwarded-Encrypted: i=1; AL+hErE7tELC9LWtKc38v/79xzEOUViUg48ny3w5U2s6H0hakYGz8CKT/eZpLEKFPHsDBRwbWhU4eeABa519fJL+KA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8ncITCewn6UwQf05+gdk6fmv5E+u2jir0XEFiyvBridKCafeNT
-	BN42DlbO0A+Tec9h4+K0hXqag7KQ7SmdAq4i/UCvFBAcoKAGfTod2kYdQYj0dU95F1VF77ixLu1
-	KLT9F
-X-Gm-Gg: AZFdTZeOR8Y6nyX4/8D7tCN+re16kPu/pOfHlobNnTQo/Iehvw/yfXW2zGiB6XwnGkg
-	dakXvq5SeGdSAhg2ap3APaTctTLfgR/c2yU4XAiVSDSDBIAoiBGl4eX/siMJkmttjR417iwoQcq
-	4ELZt3rQa+Y8Pr+Q0OsleO8Lsh9p/Ie2/0tCdItixujsYCSnScXGwHii1XPScqWtAkn/KpapWy0
-	80A6wyuZ36YxobeVcVyYeaHNDdnnuHhF7t5w4tAC9m2zZaqfQtMFck/DtbqdIOqhTxtpl5V6NV8
-	EaZJ7XbkhE7gP2AL83pPonJrvBmAyQ1Le+XHHD4sqUH1I2NfQSaTCL0zZiNhsYdt9tC1oYLrD9H
-	bA+kSw4OR4o2NAcrXb8qBofxP9XiQB/nKadQWDclphmn9FDx45s2VKOi5KNxflFrnP0QmhcNdrF
-	J3WYEeinM2w/W3hHiTMPuz6Uo1bT4HNh/GZJqs6XEHcxBa9D+VH71auBsiBpm+1pwqRLw94Zwu3
-	QSWsNb7UK0PCQMaMH+/uFs6AKwBbXk3IL4JrQsSHPXSpb5z/gg23Obkj7rKnVviGt5mWmXn7Nxn
-	7Qye63HoW1IVjAzt6lFBX4pFYfZyrNqx29S/5RjbAvLHzFTUiR3hIVs=
-X-Received: by 2002:a05:620a:f11:b0:93e:5016:e3a6 with SMTP id af79cd13be357-949ba9c6e0bmr3182280585a.26.1795554771717;
-        Tue, 24 Nov 2026 13:12:51 -0800 (PST)
+        bh=W9arlbU5hy5tgNRpcN7WmEtmYSBI8GYP25HN7JEKy5U=;
+        b=1fRp2rR/n4/jA+/Zgo7A/Yyx7HKMHcgrD1VGCzj31KNGY+RrTGDVXylUleli0qWipW
+         oPNESas/7OequdgPAhQn7yBKg1so+LaZVWG6Oe3XTpFJOQsYPPmib8ksv6IbjgkMtt7K
+         /UvTAR22iYkaivrcS6+wgflx8ZSBpWOUCXUGaefSwgzUASlimQodKwq8Hje4aU24pn+M
+         QxY8IKfuj3cVSdhFqJkaK+K4Yn+cLyHfSfvTHQ3+Dx3vcWRGTZ4rPfBLUlKr1s48tiqa
+         lNv6wJVtMY8dmJu+ZPlU+wFNkbCWVSe7FyUGB+AHpfcacoIQGbEFhLMtGI3x1Kj84Gal
+         xFmg==
+X-Forwarded-Encrypted: i=1; AL+hErEjzVV65iry8litc5JLff7iY6dOJHOYX8uOhap6JudqOcsggt0aIvLxPjVvIa8eHcDpv3uV07qCDRhFTz2HnA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9y5tBHVNYHxB1OWy+5IolDK52HtQDOcxlyvcfv+LiOLcuFjOlT
+	RyjJC5LuEiP5UtxpmShCQOuMJ3yf+nsWhXosfveC5sdXs1RbimVod6f14l2ELWF9alE=
+X-Gm-Gg: AZFdTZfzPXgz2NHYuSD2m22h+o6Kg0Vpklz0983xpO0/MdcFM/Ktp2o3FQtnzrIc5We
+	s7MCWrkwody8R9znFhcu9DK5THzTB2Hg9ctwNMOo6QQr1Tt0r24SuRUzf08p0aIBaLct0Wt2y5g
+	r7WAcIV7uVDe/EDcpDtkFHDDcqsr8IzwqiygsRuMPWlcHX6pHWPLoKfqK9xhm8CapY/X78R9VUF
+	4pXDc61etxDSYOhr38CR1Z0KgX5sToli1LGNT4QPRG2WrhM4qhWkQHGMBEy4RftEiOjMZAdCpOT
+	3eNIPD+7EWe1qi2KyB9vAqptqlCarbWlCthfHpNO4cGhvM/y5grdK3YTC0U3t+yG8aY/w7mhZm9
+	ODladTE6GUvV7t/hsyXBkRT6S//VRZicYvakVBgx2s0+IHgXWSN0xGvp+GSV0JfpETLHtfXPF0V
+	IFPZiN32VImwDC1oifgDB3mP1vRenY8gQ94/WKEvHkYCr3FluGPj+a2pnVToS6147OXzk230PRO
+	aUck52LVgVUkA5x1Ts0UD5Pzxflj8ovX0hB2AQf2slzzjCTB6814y6p0qDtAWp8jDgxZn2zIpfb
+	nNA+5ErSRblQU8AaTbr/wl/8/bvCT22HeqtCl7weSlL2HdaqQfH3SUjMXVp3oHwMzuuEtYJIQ5B
+	w
+X-Received: by 2002:a05:620a:700e:b0:949:735c:90c4 with SMTP id af79cd13be357-949bab1df97mr2669499685a.70.1795554889851;
+        Tue, 24 Nov 2026 13:14:49 -0800 (PST)
 Received: from ?IPv6:2606:6d00:11:8ec9::c41? ([2606:6d00:11:8ec9::c41])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-949bb0315f4sm1131851185a.3.2026.11.24.13.12.50
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-949bb0319fcsm1129758785a.4.2026.11.24.13.14.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Nov 2026 13:12:51 -0800 (PST)
-Message-ID: <332bab94048c257f816b616cede22dbde20a0d9e.camel@ndufresne.ca>
-Subject: Re: [PATCH v2 07/17] media: v4l2-mem2mem: support running multiple
- jobs in parallel
+        Tue, 24 Nov 2026 13:14:49 -0800 (PST)
+Message-ID: <728acfd6e085408e7998bc9e7dfbb2d110cd53ed.camel@ndufresne.ca>
+Subject: Re: [PATCH v2 08/17] media: rockchip: rga: move power handling to
+ device_run
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
 To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
 	 <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
@@ -89,10 +89,10 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	kernel@pengutronix.de, Detlev Casanova <detlev.casanova@collabora.com>, 
  Michael Tretter <m.tretter@pengutronix.de>, Guangshuo Li
  <lgs201920130244@gmail.com>
-Date: Tue, 24 Nov 2026 16:12:49 -0500
-In-Reply-To: <20260916-spu-rga3multicore-v2-7-23aa2cb74e61@pengutronix.de>
+Date: Tue, 24 Nov 2026 16:14:48 -0500
+In-Reply-To: <20260916-spu-rga3multicore-v2-8-23aa2cb74e61@pengutronix.de>
 References: <20260916-spu-rga3multicore-v2-0-23aa2cb74e61@pengutronix.de>
-	 <20260916-spu-rga3multicore-v2-7-23aa2cb74e61@pengutronix.de>
+	 <20260916-spu-rga3multicore-v2-8-23aa2cb74e61@pengutronix.de>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -110,8 +110,8 @@ User-Agent: Evolution 3.62.1 (3.62.1-1.fc45)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_131253_042052_EFA20FDE 
-X-CRM114-Status: GOOD (  36.04  )
+X-CRM114-CacheID: sfid-20261124_131451_296633_9099A290 
+X-CRM114-Status: GOOD (  23.02  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -122,7 +122,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6098774160589981121=="
+Content-Type: multipart/mixed; boundary="===============1808445887923285134=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -131,242 +131,135 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============6098774160589981121==
+--===============1808445887923285134==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-BgQ9A5uHRmZ+BgHmEpOW"
+	protocol="application/pgp-signature"; boundary="=-VHje7+kFOoy685T8Rgq0"
 
---=-BgQ9A5uHRmZ+BgHmEpOW
+--=-VHje7+kFOoy685T8Rgq0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Le mercredi 16 septembre 2026 =C3=A0 17:09 +0200, Sven P=C3=BCschel a =C3=
 =A9crit=C2=A0:
-> Add support for running multiple jobs in parallel for SoCs containing
-> multiple identical devices. An example is the Rockchip RK3588 SoC,
-> which contains two identical RGA3 devices. Therefore it is desirable to
-> have the kernel schedule the work across all available devices and only
-> expose one video device to the userspace.
+> Move the power handling to the device_run function in preparation for
+> enabling multiple cores. This allows to power the only the necessary core=
+s
+> instead of powering all available cores.
 >=20
-> To avoid queueing too many parallel jobs, the
-> v4l2_m2m_set_max_parallel_jobs method is added. It allows a driver
-> to set the number of parallel jobs and avoids calling device_run when
-> the given number of jobs is already running. This is set to 1 by default
-> to prevent parallel job runs. Drivers with the need and support for
-> scheduling jobs can adjust this value accordingly.
+> As the decision on which core the given job is executed will be done in
+> device_run, we can only power to correct core there.
 >=20
-> Note that this change doesn't allow a context to be used multiple times
-> in parallel. So a single stream won't be able to utilize multiple devices
-> at once, but N streams can utilize up to N devices. This is caused by the
-> fact that a context is not added multiple times to the job_list and also
-> holds the job_flags to distinguish if it's currently running.
+> To avoid unpowering the core in a streaming state switch to autosuspend.
+> This avoids powering down the core when the next frame is scheduled in
+> the next 50ms. The timeout maps to a framerate of 20fps, which should be
+> pretty uncommon in a normal video stream.
 >=20
 > Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
 >=20
 > ---
 > v2
-> - split out the removal of the curr_ctx member
-> - add EXPORT_SYMBOL to v4l2_m2m_set_max_parallel_jobs
->   (indirectly pointed out by Detlev)
-> - document v4l2_m2m_get_curr_priv being incompatible with parallel jobs
-> - add documentation comment for the added function
-> - rework v4l2_m2m_suspend to avoid potential errors due to looping
->   outside of a spinlock over the list
+> - also set autosuspend flag with pm_runtime_use_autosuspend
 >   (https://sashiko.dev/#/patchset/20260606-spu-rga3multicore-v1-0-3ec2b15=
-675f7%40pengutronix.de?part=3D5)
+675f7%40pengutronix.de?part=3D6)
 > ---
->  drivers/media/v4l2-core/v4l2-mem2mem.c | 51 ++++++++++++++++++++++++++--=
-------
->  include/media/v4l2-mem2mem.h           | 18 ++++++++++++
->  2 files changed, 58 insertions(+), 11 deletions(-)
+>  drivers/media/platform/rockchip/rga/rga-buf.c | 12 ------------
+>  drivers/media/platform/rockchip/rga/rga.c     | 13 +++++++++++++
+>  2 files changed, 13 insertions(+), 12 deletions(-)
 >=20
-> diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-=
-core/v4l2-mem2mem.c
-> index 60cca94195166..f1b6255984087 100644
-> --- a/drivers/media/v4l2-core/v4l2-mem2mem.c
-> +++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
-> @@ -88,6 +88,7 @@ static const char * const m2m_entity_name[] =3D {
->   * @job_spinlock:=09protects job_queue
->   * @job_work:=09=09worker to run queued jobs.
->   * @job_queue_flags:=09flags of the queue status, %QUEUE_PAUSED.
-> + * @max_parallel_jobs:=09max job_queue instances number marked as runnin=
-g
->   * @m2m_ops:=09=09driver callbacks
->   * @kref:=09=09device reference count
->   */
-> @@ -106,6 +107,7 @@ struct v4l2_m2m_dev {
->  =09spinlock_t=09=09job_spinlock;
->  =09struct work_struct=09job_work;
->  =09unsigned long=09=09job_queue_flags;
-> +=09u32=09=09=09max_parallel_jobs;
+> diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/medi=
+a/platform/rockchip/rga/rga-buf.c
+> index c0ea6003336bf..3f7c3c68e0cb8 100644
+> --- a/drivers/media/platform/rockchip/rga/rga-buf.c
+> +++ b/drivers/media/platform/rockchip/rga/rga-buf.c
+> @@ -242,14 +242,6 @@ static int rga_buf_prepare_streaming(struct vb2_queu=
+e *q)
+>  static int rga_buf_start_streaming(struct vb2_queue *q, unsigned int cou=
+nt)
+>  {
+>  =09struct rga_ctx *ctx =3D vb2_get_drv_priv(q);
+> -=09struct rockchip_rga *rga =3D ctx->rga;
+> -=09int ret;
+> -
+> -=09ret =3D pm_runtime_resume_and_get(rga->dev);
+> -=09if (ret < 0) {
+> -=09=09rga_buf_return_buffers(q, VB2_BUF_STATE_QUEUED);
+> -=09=09return ret;
+> -=09}
 > =20
->  =09const struct v4l2_m2m_ops *m2m_ops;
+>  =09if (V4L2_TYPE_IS_OUTPUT(q->type))
+>  =09=09ctx->osequence =3D 0;
+> @@ -261,11 +253,7 @@ static int rga_buf_start_streaming(struct vb2_queue =
+*q, unsigned int count)
 > =20
-> @@ -121,6 +123,13 @@ static struct v4l2_m2m_queue_ctx *get_queue_ctx(stru=
-ct v4l2_m2m_ctx *m2m_ctx,
->  =09=09return &m2m_ctx->cap_q_ctx;
+>  static void rga_buf_stop_streaming(struct vb2_queue *q)
+>  {
+> -=09struct rga_ctx *ctx =3D vb2_get_drv_priv(q);
+> -=09struct rockchip_rga *rga =3D ctx->rga;
+> -
+>  =09rga_buf_return_buffers(q, VB2_BUF_STATE_ERROR);
+> -=09pm_runtime_put(rga->dev);
 >  }
 > =20
-> +void v4l2_m2m_set_max_parallel_jobs(struct v4l2_m2m_dev *m2m_dev,
-> +=09=09=09=09    u32 max_parallel_jobs)
-> +{
-> +=09m2m_dev->max_parallel_jobs =3D max_parallel_jobs;
-> +}
-> +EXPORT_SYMBOL(v4l2_m2m_set_max_parallel_jobs);
-> +
->  struct vb2_queue *v4l2_m2m_get_vq(struct v4l2_m2m_ctx *m2m_ctx,
->  =09=09=09=09       enum v4l2_buf_type type)
->  {
-> @@ -256,7 +265,9 @@ EXPORT_SYMBOL(v4l2_m2m_get_curr_priv);
->  static void v4l2_m2m_try_run(struct v4l2_m2m_dev *m2m_dev)
->  {
+>  const struct vb2_ops rga_qops =3D {
+> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/pl=
+atform/rockchip/rga/rga.c
+> index d7f0712177b70..c24bc8e26b91e 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.c
+> +++ b/drivers/media/platform/rockchip/rga/rga.c
+> @@ -37,6 +37,14 @@ static void device_run(void *prv)
+>  =09struct rockchip_rga *rga =3D ctx->rga;
+>  =09struct vb2_v4l2_buffer *src, *dst;
 >  =09unsigned long flags;
-> -=09struct v4l2_m2m_ctx *chosen_ctx;
-> +=09struct v4l2_m2m_ctx *chosen_ctx =3D NULL;
-> +=09struct v4l2_m2m_ctx *ctx;
-> +=09u32 running_jobs =3D 0;
-> =20
->  =09spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
-
-Here sashiko seems right, you want o loop back over this locking block unti=
-l you
-reached the maximum of jobs, or there is no more pending context. Right now=
-, we
-risk starvation.
-
-Nicolas
-
->  =09if (list_empty(&m2m_dev->job_queue)) {
-> @@ -271,10 +282,22 @@ static void v4l2_m2m_try_run(struct v4l2_m2m_dev *m=
-2m_dev)
->  =09=09return;
->  =09}
-> =20
-> -=09chosen_ctx =3D list_first_entry(&m2m_dev->job_queue, struct v4l2_m2m_=
-ctx, queue);
-> -=09if (chosen_ctx->job_flags & TRANS_RUNNING) {
-> +=09list_for_each_entry(ctx, &m2m_dev->job_queue, queue) {
-> +=09=09if (!(ctx->job_flags & TRANS_RUNNING)) {
-> +=09=09=09chosen_ctx =3D ctx;
-> +=09=09=09break;
-> +=09=09}
+> +=09int ret;
 > +
-> +=09=09running_jobs++;
-> +=09}
-> +=09if (running_jobs >=3D m2m_dev->max_parallel_jobs) {
->  =09=09spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> -=09=09dprintk("Another instance is running, won't run now\n");
-> +=09=09dprintk("Maximum number of parallel jobs reached\n");
+> +=09ret =3D pm_runtime_resume_and_get(rga->dev);
+> +=09if (ret < 0) {
+> +=09=09v4l2_m2m_buf_done_and_job_finish(rga->m2m_dev, ctx->fh.m2m_ctx,
+> +=09=09=09=09=09=09 VB2_BUF_STATE_ERROR);
 > +=09=09return;
 > +=09}
-> +=09if (!chosen_ctx) {
-> +=09=09spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> +=09=09dprintk("All jobs already running\n");
->  =09=09return;
+> =20
+>  =09spin_lock_irqsave(&rga->ctrl_lock, flags);
+>  =09if (ctx->cmdbuf_dirty) {
+> @@ -81,6 +89,8 @@ static irqreturn_t rga_isr(int irq, void *prv)
+>  =09=09v4l2_m2m_buf_done(src, VB2_BUF_STATE_DONE);
+>  =09=09v4l2_m2m_buf_done(dst, VB2_BUF_STATE_DONE);
+>  =09=09v4l2_m2m_job_finish(rga->m2m_dev, ctx->fh.m2m_ctx);
+> +
+> +=09=09pm_runtime_put_autosuspend(rga->dev);
 >  =09}
 > =20
-> @@ -549,19 +572,24 @@ EXPORT_SYMBOL(v4l2_m2m_buf_done_and_job_finish);
->  void v4l2_m2m_suspend(struct v4l2_m2m_dev *m2m_dev)
->  {
->  =09unsigned long flags;
-> -=09struct v4l2_m2m_ctx *curr_ctx;
+>  =09return IRQ_HANDLED;
+> @@ -801,6 +811,9 @@ static int rga_probe(struct platform_device *pdev)
+>  =09if (ret)
+>  =09=09return ret;
 > =20
->  =09spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
->  =09m2m_dev->job_queue_flags |=3D QUEUE_PAUSED;
-> -=09if (list_empty(&m2m_dev->job_queue)) {
+> +=09pm_runtime_set_autosuspend_delay(rga->dev, 50);
+> +=09pm_runtime_use_autosuspend(rga->dev);
 > +
-> +=09while (!list_empty(&m2m_dev->job_queue)) {
-> +=09=09/* Running jobs are always at the start of the queue */
-> +=09=09struct v4l2_m2m_ctx *first_ctx =3D
-> +=09=09=09list_first_entry(&m2m_dev->job_queue,
-> +=09=09=09=09=09 struct v4l2_m2m_ctx, queue);
-> +
-> +=09=09if (!(first_ctx->job_flags & TRANS_RUNNING))
-> +=09=09=09break;
-> +
->  =09=09spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> -=09=09return;
-> +=09=09wait_event(first_ctx->finished, !(first_ctx->job_flags & TRANS_RUN=
-NING));
-> +=09=09spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
->  =09}
-> -
-> -=09curr_ctx =3D list_first_entry(&m2m_dev->job_queue, struct v4l2_m2m_ct=
-x, queue);
->  =09spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> -
-> -=09wait_event(curr_ctx->finished, !(curr_ctx->job_flags & TRANS_RUNNING)=
-);
->  }
->  EXPORT_SYMBOL(v4l2_m2m_suspend);
-> =20
-> @@ -1205,6 +1233,7 @@ struct v4l2_m2m_dev *v4l2_m2m_init(const struct v4l=
-2_m2m_ops *m2m_ops)
->  =09spin_lock_init(&m2m_dev->job_spinlock);
->  =09INIT_WORK(&m2m_dev->job_work, v4l2_m2m_device_run_work);
->  =09kref_init(&m2m_dev->kref);
-> +=09m2m_dev->max_parallel_jobs =3D 1;
-> =20
->  =09return m2m_dev;
->  }
-> diff --git a/include/media/v4l2-mem2mem.h b/include/media/v4l2-mem2mem.h
-> index 31de25d792b98..37ffd33b653f2 100644
-> --- a/include/media/v4l2-mem2mem.h
-> +++ b/include/media/v4l2-mem2mem.h
-> @@ -144,6 +144,10 @@ struct v4l2_m2m_buffer {
->   * v4l2_m2m_get_curr_priv() - return driver private data for the current=
-ly
->   * running instance or NULL if no instance is running
->   *
-> + * It is incompatible with using parallel instances enabled by calling
-> + * v4l2_m2m_set_max_parallel_jobs(), as it is undefined which private da=
-ta of
-> + * the parallel running instances is returned.
-> + *
->   * @m2m_dev: opaque pointer to the internal data to handle M2M context
->   */
->  void *v4l2_m2m_get_curr_priv(struct v4l2_m2m_dev *m2m_dev);
-> @@ -594,6 +598,20 @@ static inline void v4l2_m2m_set_dst_buffered(struct =
-v4l2_m2m_ctx *m2m_ctx,
->  =09m2m_ctx->cap_q_ctx.buffered =3D buffered;
->  }
-> =20
-> +/**
-> + * v4l2_m2m_set_max_parallel_jobs() - adjust the limit of the maximum nu=
-mber of
-> + * jobs being run in parallel.
-> + *
-> + * By default only one job is allowed to be run at any time. A driver wi=
-th
-> + * multiple cores can call this function to (dynamically) adjust this li=
-mit
-> + * based on the underlying hardware capabilities.
-> + *
-> + * @m2m_dev: opaque pointer to the internal data to handle M2M context
-> + * @max_parallel_jobs: maximum number of jobs to queue in parallel
-> + */
-> +void v4l2_m2m_set_max_parallel_jobs(struct v4l2_m2m_dev *m2m_dev,
-> +=09=09=09=09    u32 max_parallel_jobs);
-> +
->  /**
->   * v4l2_m2m_ctx_release() - release m2m context
->   *
+>  =09rga->regs =3D devm_platform_ioremap_resource(pdev, 0);
+>  =09if (IS_ERR(rga->regs))
+>  =09=09return PTR_ERR(rga->regs);
 
---=-BgQ9A5uHRmZ+BgHmEpOW
+--=-VHje7+kFOoy685T8Rgq0
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawX90QAKCRDZQZRRKWBy
-9IPZAP43AmMPiX21oO0Gu+MatDhXA80g92HvFv70p0QcgSsjTwEA96BLtiIAzKie
-Pw4t5V8CQ31Qy/RwTTLccjd4pKQIowc=
-=RgJF
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawX+SAAKCRDZQZRRKWBy
+9BvLAP9Q5/iAdKDJ6TMCJMFG+qc3MCvexx/cnmIvxTp7c1XLhgEA2wrgdWTeGaKA
+sk6wt4xFNb7zeeIPPdyxQHP8JK17XQc=
+=r19R
 -----END PGP SIGNATURE-----
 
---=-BgQ9A5uHRmZ+BgHmEpOW--
+--=-VHje7+kFOoy685T8Rgq0--
 
 
---===============6098774160589981121==
+--===============1808445887923285134==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -377,5 +270,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============6098774160589981121==--
+--===============1808445887923285134==--
 
