@@ -2,89 +2,63 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ECB35606A31E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 17:25:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D58E606A31E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 17:57:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RX/x/kyE;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=PfClU7bE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0n9V/5fy;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=arm.com header.i=@arm.com header.a=rsa-sha256 header.s=foss header.b=c6lqprQY
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=IEmaI+cQxNZwbFjAOt5rsDLV1JWhSPhzQCauNW+JtGs=; b=RX/x/kyEnK+fchVK0pnmXIrCHf
-	0zmLuU4KISxT+OFHymxfn1MBq6JGkNmek9URCRVymWshtPZmLSifVrFTHNPM+/i3mRw0U4uf7FtO0
-	3bYD4V4PxXu1zKzC+e3Mth9i4MvS8OGE6Okup7Ig69anBgcnaORqNaV7gumYyjHm/dIC/YG1HqLzO
-	hdUwK3+5Nfwgj1Mdl60zwfJahPm5Yeq7+ViUBhAtVmUcjINm86u7G3KroDPiW1bY8gRCVyk1RgoIY
-	9Da12nMUkH8l6XNaVZJgPSMkA6g7JilXRhcccmtnmiyBDhiWGApYq5IZrP4S9A6tBLWGwfpYypET2
-	YYkQ676Q==;
+	bh=8wo5UyzYlwLDFiasiRYn4U1F9OGi5nSGD1v4Z1ld5bA=; b=0n9V/5fyU11xzCWXO5yUwpZHhE
+	a7zouHLbzrhjS6izBsGv4giW3Rm6j/UUHu0W7K8QJhnzOYejqm9hrDM7rOfNG/EDKS3Zqf3B4kxTJ
+	4aXlUYredsfJeRTpxGDzzSILZznkhZLeFydJGirL7sqJ1D/Q0GbmyKnaT57GSEpEmwu97ueEUZdr/
+	z8Nr68hFab65nAGcYuySbX4IiZDlYeNnvkbRX20JjtamSL/MbHglA0xPRFOTYTw+XkhSOcPfRjo+c
+	S0VnudPCXDEtIwPFU8H+am7N468pHvnq/HIFnkCsx0E5vNQzwNZYx3esZF76+CQjkvZ9UZ5brXbnR
+	3Qbs4SYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVuGT-00000007LP5-3y2R;
-	Tue, 24 Nov 2026 17:25:09 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVuGN-00000007LMg-3lGn;
-	Tue, 24 Nov 2026 17:25:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795541101;
-	bh=m07kO0w39ZGOpJ7N1oAJdrXNCV6zROzJBkUq6TvKKEw=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=PfClU7bENUiH3dPsxzpNT3P8oZ2zd+jYU51lg9/WdVuT8DtjQBOps63DLdwp+Td5B
-	 iYMvqXfK8xAQ9Qk2QPJI4x3FiOvlU0AxJq7hb/ky2j3WjaBrgvcAZvXHTBweUZ/qRR
-	 awgL3hY1rC4+/rjvTDGq4ndmJhCTKB4dNe537+Ln766hBvdiNrzEaiagzSOwZmYTYn
-	 kBeJFHuDVooR5zo+8V2J0SvqEVawXSg4CetbSYuH+EvUyGm7614o0VCKBfyN8w6np5
-	 8qLaEmdfDYZL62LVmBNnd+wSJfxjEKoDbK3tE+qzmLH0Sb0qKEo3ZCHsyk05liAg/4
-	 jjYzS0peNNuVA==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 433CC17E00E8;
-	Tue, 24 Nov 2026 18:24:59 +0100 (CET)
-Message-ID: <17ff7540be764241e6083ba2b6876f7a90787333.camel@collabora.com>
-Subject: Re: [PATCH v3 3/3] media: verisilicon: leave room for the JPEG
- header and one stream burst
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: shomenkow@gmail.com, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>,  Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil	
- <hverkuil@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia	
- <ezequiel@vanguardiasur.com.ar>, Chen-Yu Tsai <wenst@chromium.org>, Hugues
- Fruchet <hugues.fruchet@foss.st.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org, 
-	stable@vger.kernel.org
-Date: Tue, 24 Nov 2026 12:24:57 -0500
-In-Reply-To: <20261124-hantro-buflimit-v3-3-780903970ca0@gmail.com>
-References: <20261124-hantro-buflimit-v3-0-780903970ca0@gmail.com>
-	 <20261124-hantro-buflimit-v3-3-780903970ca0@gmail.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
+	id 1xVulS-00000007RBJ-0Snv;
+	Tue, 24 Nov 2026 17:57:10 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xVulP-00000007RA3-21di
+	for linux-rockchip@lists.infradead.org;
+	Tue, 24 Nov 2026 17:57:09 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8752C339;
+	Tue, 24 Nov 2026 09:57:01 -0800 (PST)
+Received: from [10.2.212.23] (e121345-lin.cambridge.arm.com [10.2.212.23])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7AE6F3F763;
+	Tue, 24 Nov 2026 09:57:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
+	t=1795543024; bh=I6pw8uS8s5roJNHb7M2GM3OgWZOUcGnGgtSmOYmDpLA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=c6lqprQYOctmM+/fQeuolrZ+/sAfDhBlYn6i0fniglNB+4MwNRaFwVhU0AWexLKDd
+	 0dJaJktHsbqbhj5212vBrwIuPIFS42nLlbTpJMeJv0tuzeczJCMQ6LYG8UiGsa/0Nu
+	 OJH2NEs+0VqstSHCG9YNw4T5EUmsHdco4iHEkoqc=
+Message-ID: <d4f010f9-44b3-4f0e-9f84-f85ad9c82b3e@arm.com>
+Date: Tue, 24 Nov 2026 17:57:01 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH] iommu/rockchip: program the MMU even when the device
+ is not in use
+To: Anton Sovetov <anton.sovetov@gmail.com>, iommu@lists.linux.dev
+Cc: heiko@sntech.de, joro@8bytes.org, will@kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <CANLiQWrVGN00Hn8s3X7nyDZxh3x0wJ1YqTVzYsLUPM3s-Pkp1A@mail.gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <CANLiQWrVGN00Hn8s3X7nyDZxh3x0wJ1YqTVzYsLUPM3s-Pkp1A@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_092504_115436_DC5A4926 
-X-CRM114-Status: GOOD (  24.08  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261124_095707_613393_D75F135C 
+X-CRM114-Status: GOOD (  54.75  )
+X-Spam-Score: -4.4 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,154 +68,207 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5349185473256233829=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============5349185473256233829==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-9hyBsZW3zMk+VaUuUSDf"
+On 23/11/2026 8:07 pm, Anton Sovetov wrote:
+> Hi,
+> 
+> I hit three related problems in drivers/iommu/rockchip-iommu.c on an RK3566
+> (Radxa Zero 3W) with the out-of-tree NPU driver. All three have the same shape:
+> the driver gates work on pm_runtime_get_if_in_use(), which is 0 unless somebody
+> already holds a reference, and for a device that keeps its DMA domain for its
+> whole lifetime that is the normal state.
+> 
+> 1. rk_iommu_irq(), line 583, gate at 592.
+> 
+>     A page fault raised while the device is running, outside a map or unmap
+>     call, finds usage_count 0,
 
---=-9hyBsZW3zMk+VaUuUSDf
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+That sounds wrong - if "the device is running" then its RPM state should 
+be logically active, which should in turn hold the IOMMU active via the 
+device link. And if the client device is still doing DMA and able to 
+cause page faults while logically suspended, that would seem like a bug 
+in the client driver.
 
-Le mardi 24 novembre 2026 =C3=A0 16:40 +0300, Sergei Khomenkov via B4 Relay=
- a =C3=A9crit=C2=A0:
-> From: Sergei Khomenkov <shomenkow@gmail.com>
->=20
-> hantro_try_fmt() keeps any non-zero CAPTURE sizeimage of the JPEG
-> encoder, however small. The CPU writes the 624-byte header into the
-> plane, and on the RK3026 the H1 then writes at least one 64-byte burst
-> even with a stream limit of 0, so a smaller plane is written past its
-> end. A plane smaller than the header also makes the WARN_ON() in
-> hantro_h1_jpeg_enc_set_buffers() fire on every job.
->=20
-> Add a minimum plane size to struct hantro_fmt, set it to header_size +
-> 64 in the JPEG encoder formats of the Rockchip and STM32MP25 variants,
-> and raise a smaller coded sizeimage to it in hantro_try_fmt().
->=20
-> Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
-> Cc: stable@vger.kernel.org
-> Assisted-by: Claude:claude-opus-5-5
+> so the handler returns IRQ_NONE without touching
+>     the registers. The fault stays latched: INT_RAWSTAT bit 0 and INT_STATUS bit
+>     0 remain set, PAGE_FAULT_ACTIVE stays set in STATUS, REPLAY_BUFFER_EMPTY
+>     clears, and nothing is printed. The device then sits on a stalled
+>     transaction and dmesg says nothing at all, which is the worst part for
+>     anyone trying to debug it.
+> 
+>     Observed on the NPU: after a job that never completed, the MMU read back
+>     dte 0x480000 status 0x2b rawstat 0x1 intstatus 0x1 fault 0xdc80, and the
+>     handler had never run. A normal fault report would have printed "Page fault
+>     at 0x0000dc80 of type read" plus the page table walk.
+> 
+> 2. rk_iommu_zap_iova(), line 680, gate at 694.
+> 
+>     The comment says "Only zap TLBs of IOMMUs that are powered on", but the test
+>     is the usage count, not the power state. An unmap that happens while nothing
+>     else is using the IOMMU skips the shootdown. A device that keeps its domain
+>     but is idle at that moment, which is the usual case when the process that
+>     owned the buffers has exited, keeps stale entries, and the next owner of the
+>     same iova can still be translated to the previous physical page.
+> 
+>     I could not prove this one with a bus trace, so I am reporting it as a code
+>     observation and not as a measured failure.
 
-Drop if v4 needed.
+The physical power state shouldn't matter - as long as the IOMMU is 
+logically suspended then we should have been through rk_iommu_suspend() 
+-> rk_iommu_disable(), after which we're not going to touch it again 
+until rk_iommu_resume() -> rk_iommu_enable() which inherently does an 
+RK_MMU_CMD_ZAP_CACHE. Thus resuming a suspended IOMMU, invalidating all 
+the TLBs in the process, just to issue a command to re-invalidate 
+nothing, then disabling it until the client device next resumes it and 
+invalidates all the TLBs yet again, clearly seems a bit silly.
 
-> Signed-off-by: Sergei Khomenkov <shomenkow@gmail.com>
+> 3. rk_iommu_attach_device(), line 1008, gate at 1040.
+> 
+>     Detach plus attach is how a driver resets its IOMMU domain. On attach, when
+>     the usage count is 0, the function returns 0 without calling
+>     rk_iommu_enable(), so paging stays off, DTE_ADDR stays 0 and INT_MASK stays
+>     0. The caller is told the attach succeeded.
+> 
+>     Observed on the NPU: its soft reset does iommu_detach_device() and then
+>     iommu_attach_device() on the same domain. After the first reset the MMU read
+>     dte 0x0 status 0x18 intmask 0x0, no translation at all, and every later DMA
+>     ran on raw iovas. Before the reset it was dte 0x480000 status 0x19
+>     intmask 0x3. Holding the MMU device with pm_runtime_resume_and_get() around
+>     the detach/attach makes the same sequence end with dte 0x480000 status 0x19,
+>     which is how I convinced myself the gate, and not the reset itself, was
+>     responsible.
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Again, that sounds very much like something is wrong with either the 
+device link or how the out-of-tree client driver is managing its own 
+RPM. And since the device link support has been upstream and apparently 
+working fine with the upstream VOP/RGA/etc. client drivers for over 8 
+years now...
 
+Thanks,
+Robin.
+
+> The patch below resumes the device around the attach and the zap. Both run in
+> process context, so pm_runtime_get_sync() is fine there. For the interrupt
+> handler I only added a log line on the drop path, because I do not want to
+> touch registers from hard irq context while the device may be suspended.
+> 
+> What it fixes: the MMU now stays programmed across a detach/attach cycle, and a
+> fault that arrives while nothing is mapping gets reported instead of vanishing.
+> 
+> What it does not fix: the reason I went looking. Our NPU still stops executing
+> jobs in IOMMU mode after a few separate processes, with a healthy MMU and no
+> page fault at all. That is a different problem and I am not claiming this patch
+> touches it. I am sending these three because each one is a real failure mode on
+> its own.
+> 
+> Tested only on rk3566 with the v1 block. I have no rk3588 hardware and would
+> rather not guess about the v2 path.
+> 
+> Questions:
+> 
+> - Is the usage count gate deliberate, in the sense that register access is
+>    unsafe unless someone holds a reference? If so, is the right fix to keep the
+>    MMU programmed for as long as the device is attached to a domain, instead of
+>    tying it to the map/unmap window?
+> - For the interrupt path, what is the intended behaviour when a fault arrives
+>    while the IOMMU device is runtime suspended? Ignoring it leaves the device
+>    stalled and the status latched, which is what we see today.
+> 
+> Signed-off-by: Anton Sovetov <anton.sovetov@gmail.com>
+> 
 > ---
-> Found with an LLM coding assistant while porting mainline Linux to a
-> Rockchip RK3026 board; the assistant also drafted this change. Tested
-> on that board: a sizeimage of 1 or 600 now reads back 688, and frames
-> that do not fit a 688-byte plane stop exactly at its end. Not tested on
-> other SoCs.
-> ---
->  drivers/media/platform/verisilicon/hantro.h           | 2 ++
->  drivers/media/platform/verisilicon/hantro_v4l2.c      | 3 +++
->  drivers/media/platform/verisilicon/rockchip_vpu_hw.c  | 1 +
->  drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c | 1 +
->  4 files changed, 7 insertions(+)
->=20
-> diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/=
-platform/verisilicon/hantro.h
-> index 0353de154a1e..f51beae79f1f 100644
-> --- a/drivers/media/platform/verisilicon/hantro.h
-> +++ b/drivers/media/platform/verisilicon/hantro.h
-> @@ -286,6 +286,7 @@ struct hantro_ctx {
->   * @codec_mode:=09Codec mode related to this format. See
->   *=09=09enum hantro_codec_mode.
->   * @header_size: Optional header size. Currently used by JPEG encoder.
-> + * @min_size:=09Optional minimum sizeimage, for bitstream formats.
->   * @max_depth:=09Maximum depth, for bitstream formats
->   * @enc_fmt:=09Format identifier for encoder registers.
->   * @frmsize:=09Supported range of frame sizes (only for bitstream format=
-s).
-> @@ -297,6 +298,7 @@ struct hantro_fmt {
->  =09u32 fourcc;
->  =09enum hantro_codec_mode codec_mode;
->  =09int header_size;
-> +=09u32 min_size;
->  =09int max_depth;
->  =09enum hantro_enc_fmt enc_fmt;
->  =09struct v4l2_frmsize_stepwise frmsize;
-> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/m=
-edia/platform/verisilicon/hantro_v4l2.c
-> index 83af9fa1ce94..b3dbc0629d25 100644
-> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> @@ -394,6 +394,9 @@ static int hantro_try_fmt(const struct hantro_ctx *ct=
-x,
->  =09=09 */
->  =09=09pix_mp->plane_fmt[0].sizeimage =3D fmt->header_size +
->  =09=09=09pix_mp->width * pix_mp->height * fmt->max_depth;
-> +=09} else {
-> +=09=09pix_mp->plane_fmt[0].sizeimage =3D
-> +=09=09=09max(pix_mp->plane_fmt[0].sizeimage, fmt->min_size);
->  =09}
-> =20
->  =09return 0;
-> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drive=
-rs/media/platform/verisilicon/rockchip_vpu_hw.c
-> index d201b058e5e8..ab5abe2c78ad 100644
-> --- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-> +++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-> @@ -50,6 +50,7 @@ static const struct hantro_fmt rockchip_vpu_enc_fmts[] =
-=3D {
->  =09=09.codec_mode =3D HANTRO_MODE_JPEG_ENC,
->  =09=09.max_depth =3D 2,
->  =09=09.header_size =3D JPEG_HEADER_SIZE,
-> +=09=09.min_size =3D JPEG_HEADER_SIZE + 64,=09/* header + one burst */
->  =09=09.frmsize =3D {
->  =09=09=09.min_width =3D 96,
->  =09=09=09.max_width =3D 8192,
-> diff --git a/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c b/driv=
-ers/media/platform/verisilicon/stm32mp25_vpu_hw.c
-> index 833821120b20..3f337554e936 100644
-> --- a/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
-> +++ b/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
-> @@ -83,6 +83,7 @@ static const struct hantro_fmt stm32mp25_venc_fmts[] =
-=3D {
->  =09=09.codec_mode =3D HANTRO_MODE_JPEG_ENC,
->  =09=09.max_depth =3D 2,
->  =09=09.header_size =3D JPEG_HEADER_SIZE,
-> +=09=09.min_size =3D JPEG_HEADER_SIZE + 64,=09/* header + one burst */
->  =09=09.frmsize =3D {
->  =09=09=09.min_width =3D 96,
->  =09=09=09.max_width =3D FMT_4K_WIDTH,
+>   drivers/iommu/rockchip-iommu.c | 42 ++++++++++++++++++++++------------
+>   1 file changed, 28 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 07e3517..a3da612 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -590,8 +590,11 @@ static irqreturn_t rk_iommu_irq(int irq, void *dev_id)
+>    int i, err;
+> 
+>    err = pm_runtime_get_if_in_use(iommu->dev);
+> - if (!err || WARN_ON_ONCE(err < 0))
+> + if (!err || WARN_ON_ONCE(err < 0)) {
+> + dev_err(iommu->dev,
+> + "interrupt while the mmu is not in use, ignored\n");
+>    return ret;
+> + }
+> 
+>    if (WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks)))
+>    goto out;
+> @@ -691,17 +694,19 @@ static void rk_iommu_zap_iova(struct
+> rk_iommu_domain *rk_domain,
+> 
+>    iommu = list_entry(pos, struct rk_iommu, node);
+> 
+> - /* Only zap TLBs of IOMMUs that are powered on. */
+> - ret = pm_runtime_get_if_in_use(iommu->dev);
+> + /*
+> + * The usage count says nothing about the power state, so an
+> + * unmap that runs while the IOMMU is idle skipped the
+> + * shootdown and left stale translations for the next owner of
+> + * the same iova.
+> + */
+> + ret = pm_runtime_get_sync(iommu->dev);
+>    if (WARN_ON_ONCE(ret < 0))
+>    continue;
+> - if (ret) {
+> - WARN_ON(clk_bulk_enable(iommu->num_clocks,
+> - iommu->clocks));
+> - rk_iommu_zap_lines(iommu, iova, size);
+> - clk_bulk_disable(iommu->num_clocks, iommu->clocks);
+> - pm_runtime_put(iommu->dev);
+> - }
+> + WARN_ON(clk_bulk_enable(iommu->num_clocks, iommu->clocks));
+> + rk_iommu_zap_lines(iommu, iova, size);
+> + clk_bulk_disable(iommu->num_clocks, iommu->clocks);
+> + pm_runtime_put(iommu->dev);
+>    }
+>    spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
+>   }
+> @@ -1037,13 +1042,22 @@ static int rk_iommu_attach_device(struct
+> iommu_domain *domain,
+>    list_add_tail(&iommu->node, &rk_domain->iommus);
+>    spin_unlock_irqrestore(&rk_domain->iommus_lock, flags);
+> 
+> - ret = pm_runtime_get_if_in_use(iommu->dev);
+> - if (!ret || WARN_ON_ONCE(ret < 0))
+> - return 0;
+> + /*
+> + * Detach plus attach is how drivers reset their domain, and the caller
+> + * has no way to notice that the MMU was left unprogrammed. Resume the
+> + * device and program it.
+> + */
+> + ret = pm_runtime_get_sync(iommu->dev);
+> + if (ret < 0) {
+> + dev_err(dev, "cannot resume the mmu, ret: %d\n", ret);
+> + return ret;
+> + }
+> 
+>    ret = rk_iommu_enable(iommu);
+> - if (ret)
+> + if (ret) {
+> + dev_err(dev, "mmu enable failed, ret: %d\n", ret);
+>    WARN_ON(rk_iommu_identity_attach(&rk_identity_domain, dev));
+> + }
+> 
+>    pm_runtime_put(iommu->dev);
+> 
+> 
 
---=-9hyBsZW3zMk+VaUuUSDf
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawXIaQAKCRDZQZRRKWBy
-9BOUAQDB13SGsNUp9oo0GULFzOq8ooFbMD+D1z8pwpgBhY3I/gD7BBun+nzgWLRF
-kcm+xZkcOJAH6AFAmIgpuo+y1l8swgM=
-=tHV6
------END PGP SIGNATURE-----
-
---=-9hyBsZW3zMk+VaUuUSDf--
-
-
---===============5349185473256233829==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5349185473256233829==--
-
