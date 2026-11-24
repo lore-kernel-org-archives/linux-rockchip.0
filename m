@@ -2,87 +2,102 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 75007606A31E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 15:58:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20FE8606A6B7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 16:50:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kfgkFj+z;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=ETofVZ8x
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qO42UIaO;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=pengutronix.de header.i=@pengutronix.de header.a=rsa-sha256 header.s=20260414 header.b=XsHPv4wR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Y3132J3wiCMroY/Qz2d0VG2GQjgNlDoT0tySLjnmCKE=; b=kfgkFj+ztJTES5C+E0wFNP25Tf
-	M46reygyXOb9nclgICj/CAi3kWWG/Ab0lqq10uZTxnhVXIBehqinw/uy/dt7glFQHjj7FlQHLit5/
-	vtxc1uHhWCdHb4HVIrWcCkQeizCX+eXqy2+mqoRYUjAkVYTVv5NGIzTuB2102ChIxCzrfj9YxQMlF
-	I/adE/6rcjKq1Ni+gtCz//HiApSaK50USDl/ubfUlSKVKT3g7JqBbEQn8nCYj3bFulxv+dli1O127
-	08rsVtcG7fyQx9UwgVZYjzz5u/awkAagZ8fN2+HSAzEaBrEM6SVVVnwTTJkwNDkEFO289vZWQK/zo
-	4UzS11IA==;
+	bh=FfTYWzgAsGEWU9CUAHbp+XEPkW8pKJcroXfo8D9g62g=; b=qO42UIaOLhljd1KJVlJoW3uWq9
+	XvnpjFL5pYTE4GgE3a7A+0YT6bnPgyi1IIncVzp7n1EGXQV3OGGfSYl4D1SxRxPZTNi8OiOo8OKpR
+	45xnTJI9GJOHF+gC/NmIuVGXlwfB7ORrM9A8HWnp1trFMCd4j6O2+gVIhDyhU4H7kx+pkhyrFMmfR
+	1tzb84uNMS5y0UljpB2V3R/jt6cBBHF/cBdd71/TnbJ0QbOk3Z8pQGdZkq31T5hxv+oQU4uAFhAVN
+	mdXt7ryEyn3TvQNMVj3YZYl0OLvVqRXU/5KwktCJfROEyyYbx2BAqBGAcsEjk1STMs4SX6qgvFeUl
+	93jG3u4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVsu3-000000071zy-0LUu;
-	Tue, 24 Nov 2026 15:57:55 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xVtif-00000007Cq7-0G9H;
+	Tue, 24 Nov 2026 16:50:13 +0000
+Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVssK-000000070HW-1Qra;
-	Tue, 24 Nov 2026 15:56:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795535765;
-	bh=ruxnBoOV6xGZY/CSfA+iq4Vpv8wHSpb/bh4/86Bx53I=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=ETofVZ8xrguINm0cpUpPyTjkAv/N0HvLyR9jy7i/Cds+ypgawZ8PCHZ+xw1nqYejH
-	 VVecFaUKipjF1VnW9ntnr86B73vMTdWvUnaWW4I8nrZttZNElnX0GMZAYow37r20Lf
-	 fPz4lx0hhUqLnKc8DAbKooL4kMDIvjdqKX7gk8e2ZeIXSK7l+Rn10aCugEWOrlud2B
-	 40VDiiLHhpHMg3E423NXFMY5acf8wQJWQFL0Vso5bLxbvPwTHeaSoD0/HHTcA0vAdl
-	 PRXrseaQwPz8NgO44BgPuYYbIXKRDQe6cmjL+YsfmpRrebxYvZIIFcMnaWKpCOkEQF
-	 n4KUwGbKDFmJQ==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9DB1217E0309;
-	Tue, 24 Nov 2026 16:56:03 +0100 (CET)
-Message-ID: <f963eac22ff18ac8df07a4654e41d27639ead883.camel@collabora.com>
-Subject: Re: [PATCH v3 0/3] media: verisilicon: fix JPEG encoder writes past
- the CAPTURE buffer
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: shomenkow@gmail.com, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>,  Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil	
- <hverkuil@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia	
- <ezequiel@vanguardiasur.com.ar>, Chen-Yu Tsai <wenst@chromium.org>, Hugues
- Fruchet <hugues.fruchet@foss.st.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org, 
-	stable@vger.kernel.org
-Date: Tue, 24 Nov 2026 10:56:01 -0500
-In-Reply-To: <20261124-hantro-buflimit-v3-0-780903970ca0@gmail.com>
-References: <20261124-hantro-buflimit-v3-0-780903970ca0@gmail.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
+	id 1xVtia-00000007Co2-1qnZ;
+	Tue, 24 Nov 2026 16:50:11 +0000
+Received: from [IPv6:2a0a:edc0:0:900:1d::4e] (lupine.office.stw.pengutronix.de [IPv6:2a0a:edc0:0:900:1d::4e])
+	(Authenticated sender: pza@pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 4D1282004B4;
+	Tue, 24 Nov 2026 17:50:00 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
+	s=20260414; t=1795539000;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xUNyxepBbFqbxj/zwUONmjhAUEyk5osQzRo/USZMoIE=;
+	b=XsHPv4wROfnoOR/Al1PfP2g38rWs2d8VdHYo97JJQEXtxJQT+N9uvgkIodiO5oNj6sh83H
+	U5QGh7npHqJdM274F9Au9Ot4fma0AqtAjry/jfArpCu5LZpvK4yjAgSPwBAKpJszDhx7ZI
+	tq5nHwrqNUdqOwdNWEVIUuhV3kq2Yrx/8m8yi9bF+kC8dw7PkngMPQVPp5sivJI2Nyl4zM
+	qVMPEaynFWz55N4R5TfNj6mSgRJ9UcPlZtRdhkKOHNQD0mKVEbX3rwZU+lbngYVw+E1pa4
+	2EV2Tyy+r9dmljp1UlOabvuzrcsb6Q9G1yh0bvxK8BG/O2RNSZJzfWwvU0NjHQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
+	s=20260414; t=1795539000;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xUNyxepBbFqbxj/zwUONmjhAUEyk5osQzRo/USZMoIE=;
+	b=eW1vTA85NWp23HDiCbP0J1mb8m2Lel19Xv6D6ekUqtuU14YSbb7sY2dCrVbSRh0fdPIv7f
+	+nrr/ExGSsjMy1JF2Aniv8cXiMu459RvZ4QIn1De9svO5dufohaA1URv6JumlbUbCDUSPP
+	9hZ8+yfy+6TmMjbhOSVemV7fQ9oNToBaeUqKrdj5eLellXEq6hi5vT/glZ7FyrI2Vtn+/A
+	eej/RP8YybOZVrzMW65gCW5zL2Ssiq7iHbO04cjLtQCwEIBcVZCOdRLfQccTgA3M6U5u5J
+	5e68zrfEtPiskFTK0W2zVcQXP6dDkdbf1Bwuel+0uHhiYXXUO6twQXeKJMoIpg==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=pza@pengutronix.de smtp.mailfrom=p.zabel@pengutronix.de
+ARC-Seal: i=1; s=20260414; d=pengutronix.de; t=1795539000; a=rsa-sha256;
+	cv=none;
+	b=ahaXNxWTVb8qE7MA4+PnYkPbav+7Cg387gT7Qa6bu+zvF+t9SX2c2Dj5+Luv1cf/iKBoD2
+	hWVdVGUb7F14T0oXeuXuDBAWzelX0ZF1NZ8ibFgFXgIcfIyNXFPvu9JPfhbw3IpEcPRsNG
+	G9zEPanTyaBMjVX8h1HuyLFmIVQQFJIYSh1mKuemLyRfvEbjEcgnDUB4wWyzUd6HYJGphe
+	uRamHNbrRkKGZBMIOKKS15Ay8c9n1rq2NPKX0ww1oHM9F/EM4TwO/gIeIp6Bas+BRH+wPX
+	38Mk1oJN8UZ/vHpsFKSxqy22y9fGJ31oky6YZG6f12ajstjuTCywOtPA4tYkQA==
+Message-ID: <831aebd692fc5ddbbd1cf57f1aad3bcc0d3f30d2.camel@pengutronix.de>
+Subject: Re: [PATCH v8 16/18] drm/bridge: starfive: Add JH7110 HDMI
+ controller driver
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Michal Wilczynski <m.wilczynski@samsung.com>, Neil Armstrong	
+ <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski	 <krzk+dt@kernel.org>, Robert Foss <rfoss@kernel.org>, Laurent
+ Pinchart	 <Laurent.pinchart@ideasonboard.com>, Jernej Skrabec
+ <jernej.skrabec@gmail.com>,  Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Emil Renner
+ Berthing	 <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>, Heiko
+ Stuebner	 <heiko@sntech.de>, Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt
+	 <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti	
+ <alex@ghiti.fr>, Dominique Belhachemi <db@domibel.de>, Andy Yan
+ <andyshrk@163.com>,  David Airlie <airlied@gmail.com>, Simona Vetter
+ <simona@ffwll.ch>, Yakir Yang <kuankuan.y@gmail.com>,  Dmitry Baryshkov
+ <dmitry.baryshkov@oss.qualcomm.com>, Conor Dooley <conor@kernel.org>,
+ William Qiu	 <william.qiu@starfivetech.com>, Xingyu Wu
+ <xingyu.wu@starfivetech.com>,  Sandy Huang <hjc@rock-chips.com>, Manivannan
+ Sadhasivam <mani@kernel.org>
+Date: Tue, 24 Nov 2026 17:50:00 +0100
+In-Reply-To: <20261124-jh7110-clean-send-v8-16-de92635dd857@samsung.com>
+References: <20261124-jh7110-clean-send-v8-0-de92635dd857@samsung.com>
+		<CGME20261124155429eucas1p1015c7cd9beec294fefdcd6900dd407f6@eucas1p1.samsung.com>
+	 <20261124-jh7110-clean-send-v8-16-de92635dd857@samsung.com>
+User-Agent: Evolution 3.56.2-0+deb13u1 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_075608_865421_78E87B14 
-X-CRM114-Status: GOOD (  28.56  )
+X-CRM114-CacheID: sfid-20261124_085008_912953_8B7060A4 
+X-CRM114-Status: GOOD (  16.07  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,145 +108,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5875614713062493490=="
+Cc: Joshua Peisach <jpeisach@ubuntu.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>, Maud Spierings <maud_spierings@murena.io>, linux-rockchip@lists.infradead.org, Icenowy Zheng <zhengxingda@iscas.ac.cn>, Byron Stanoszek <gandalf@winds.org>, Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>, linux-riscv@lists.infradead.org, Graham Markall <hello@big-grey.co.uk>, Owen O'Hehir <oo.hehir@gmail.com>, linux-arm-kernel@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============5875614713062493490==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-Yn3avyQi8rWR3+bBFHV/"
-
---=-Yn3avyQi8rWR3+bBFHV/
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Le mardi 24 novembre 2026 =C3=A0 16:40 +0300, Sergei Khomenkov via B4 Relay=
- a =C3=A9crit=C2=A0:
-> The H1 and VEPU2 JPEG encoders are given their stream buffer limit in
-> bytes, but the register counts 64-bit words, so a stream that does not
-> fit the CAPTURE buffer is written past its end, up to eight times the
-> buffer size. A quality 100 frame of noise does not fit the default
-> sizeimage, and userspace can also set a smaller one.
->=20
-> Patch 1 stops the encoder in the VEPU1 interrupt handler after a
-> buffer-full interrupt, which leaves it paused. Patch 2 programs the
-> limit in 64-bit words, rounded down to whole 64-byte bursts, on the H1
-> and on the VEPU2. Patch 3 makes the smallest CAPTURE sizeimage of the
-> JPEG encoders the 624-byte header plus one burst, set in the variant
-> format data.
->=20
-> Testing, on an RK3026 (its H1 is Rockchip's VEPU1) only: without the
-> series the encoder wrote 230 KB past a default-sized 640x480 buffer and
-> 1.6 MB past a 1920x1088 one. With it, 17 overflowing frames, four of
-> them queued back to back, stopped at the programmed limit without
-> writing past the plane and came back with the ERROR flag, one interrupt
-> each and no timeout; the jobs after them completed, and frames that fit
-> are byte for byte the same as before. A sizeimage of 1 or 600 now reads
-> back 688. v4l2-compliance 1.30.1 on the encoder node shows no new
-> failures.
->=20
-> I cannot test the VEPU2 or the STM32MP25 VENC. The VEPU2 gets patches 2
-> and 3, but its interrupt handler is unchanged; Nicolas offered to test
-> the VEPU2 part of patch 2. The STM32MP25 VENC runs the H1 code of patch
-> 2 and gets patch 3, but not the stop of patch 1.
->=20
-> The bugs were found and the patches drafted with an LLM coding
-> assistant while porting mainline Linux to an RK3026 board.
->=20
+On Di, 2026-11-24 at 16:52 +0100, Michal Wilczynski wrote:
+> Add the HDMI controller (bridge) driver for the StarFive JH7110.
+> 
+[...]
+> 
+> Tested-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
+> Tested-by: Byron Stanoszek <gandalf@winds.org>
+> Tested-by: Owen O'Hehir <oo.hehir@gmail.com>
+> Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
 > ---
-> Changes in v3:
-> - Move the LLM and test notes below the --- line and add an
->   Assisted-by: tag (Nicolas).
+>  drivers/gpu/drm/bridge/Kconfig            |  11 ++
+>  drivers/gpu/drm/bridge/Makefile           |   1 +
+>  drivers/gpu/drm/bridge/jh7110-inno-hdmi.c | 297 ++++++++++++++++++++++++++++++
+>  3 files changed, 309 insertions(+)
+> 
+[...]
+> diff --git a/drivers/gpu/drm/bridge/jh7110-inno-hdmi.c b/drivers/gpu/drm/bridge/jh7110-inno-hdmi.c
+> new file mode 100644
+> index 0000000000000000000000000000000000000000..a0283f83ddc93e3e6c9e9192b73dca9a63f9d9ab
+> --- /dev/null
+> +++ b/drivers/gpu/drm/bridge/jh7110-inno-hdmi.c
+> @@ -0,0 +1,297 @@
+[...]
+> +
+> +struct stf_inno_hdmi_controller {
+> +	struct clk_bulk_data clks[CLK_CTRL_NUM];
+> +	struct reset_control *tx_rst;
 
-I've just learned today that we just don't do tagging anymore for this. So
-**if** you have to make a new version later on, just remove them.
+tx_rst is never used outside of starfive_inno_hdmi_controller_probe(),
+it could be a local variable.
 
-commit 1e035297ffdadf2184c3c773b8c098e372324aaf
-Author: Sasha Levin <sashal@kernel.org>
-Date:   Tue Oct 13 08:15:01 2026 -0400
+> +	struct phy *phy;
+> +	bool enabled;
+> +};
+> +
+[...]
+> +static void stf_inno_hdmi_rst_assert(void *data)
+> +{
+> +	reset_control_assert(data);
+> +}
+> +
+> +static int starfive_inno_hdmi_controller_probe(struct platform_device *pdev)
+> +{
+[...]
+> +	ctrl->tx_rst = devm_reset_control_get_exclusive(dev, NULL);
+> +	if (IS_ERR(ctrl->tx_rst))
+> +		return dev_err_probe(dev, PTR_ERR(ctrl->tx_rst), "failed to get tx reset\n");
+> +
+[...]
+> +
+> +	ret = reset_control_deassert(ctrl->tx_rst);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = devm_add_action_or_reset(dev, stf_inno_hdmi_rst_assert,
+> +				       ctrl->tx_rst);
+> +	if (ret)
+> +		return ret;
 
-    docs: remove Assisted-by references
+This looks like it could be simplified with
+devm_reset_control_get_exclusive_deasserted().
 
-
-> - 1/3: add Nicolas's Reviewed-by.
-> - 2/3: program the VEPU2 JPEG encoder's limit in 64-bit words as well;
->   Nicolas offered to test it. Subject says "JPEG encoder", not "H1".
-
-Yep, thanks, I'll do.
-
-> - 3/3: move the header + 64 floor out of hantro_try_fmt() into a new
->   min_size field of struct hantro_fmt, set in the JPEG encoder formats
->   of the Rockchip and STM32MP25 variants (Nicolas).
-> - Rebase on media next aa0f4c41d487.
-> - Link to v2: https://lore.kernel.org/all/20261110-hantro-buflimit-v2-0-f=
-f7790def9fc@gmail.com/
->=20
-> Changes in v2:
-> - Trim the commit messages and code comments (Nicolas).
-> - 1/3: clear only the enable bit of H1_REG_ENC_CTRL instead of writing
->   0 to the register, and add a rate-limited warning per fault bit, as
->   hantro_g2_irq() does; add the H1_REG_INTERRUPT_* fault bits (Nicolas).
-> - 3/3: keep max(): it is a floor of header + one burst, the 64-byte
->   rounding is on the stream limit in 2/3 (Nicolas).
-> - Move the test numbers from the commit messages to this cover letter.
-> - Link to v1: https://lore.kernel.org/r/20261109-hantro-buflimit-v1-0-f0b=
-86ce61e66@gmail.com
->=20
-> ---
-> Sergei Khomenkov (3):
->       media: verisilicon: stop the VEPU1 JPEG encoder after an unfinished=
- frame
->       media: verisilicon: program the JPEG encoder stream limit in 64-bit=
- words
->       media: verisilicon: leave room for the JPEG header and one stream b=
-urst
->=20
->  drivers/media/platform/verisilicon/hantro.h           |  2 ++
->  .../media/platform/verisilicon/hantro_h1_jpeg_enc.c   |  4 +++-
->  drivers/media/platform/verisilicon/hantro_h1_regs.h   |  4 ++++
->  drivers/media/platform/verisilicon/hantro_v4l2.c      |  3 +++
->  .../platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c  |  4 +++-
->  drivers/media/platform/verisilicon/rockchip_vpu_hw.c  | 19 +++++++++++++=
-++++++
->  drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c |  1 +
->  7 files changed, 35 insertions(+), 2 deletions(-)
-> ---
-> base-commit: aa0f4c41d4870a18e65772a1817af16427200371
-> change-id: 20261106-hantro-buflimit-055e8029be23
->=20
-> Best regards,
-
---=-Yn3avyQi8rWR3+bBFHV/
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawWzkQAKCRDZQZRRKWBy
-9MdHAQDjvqhdhgvEC6yzU/xqI6jnBrGCFgk13OkznNveuqz5XwEA/akOGrITD/C6
-zKXV88e4lNC3w3pTzGblavFC3Rc3Wg0=
-=l58F
------END PGP SIGNATURE-----
-
---=-Yn3avyQi8rWR3+bBFHV/--
-
-
---===============5875614713062493490==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5875614713062493490==--
-
