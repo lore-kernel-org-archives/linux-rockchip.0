@@ -2,102 +2,83 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20FE8606A6B7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 16:50:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1A15B606A69B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 17:08:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qO42UIaO;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=pengutronix.de header.i=@pengutronix.de header.a=rsa-sha256 header.s=20260414 header.b=XsHPv4wR
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RgN3p3PT;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=PqazgT6i
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FfTYWzgAsGEWU9CUAHbp+XEPkW8pKJcroXfo8D9g62g=; b=qO42UIaOLhljd1KJVlJoW3uWq9
-	XvnpjFL5pYTE4GgE3a7A+0YT6bnPgyi1IIncVzp7n1EGXQV3OGGfSYl4D1SxRxPZTNi8OiOo8OKpR
-	45xnTJI9GJOHF+gC/NmIuVGXlwfB7ORrM9A8HWnp1trFMCd4j6O2+gVIhDyhU4H7kx+pkhyrFMmfR
-	1tzb84uNMS5y0UljpB2V3R/jt6cBBHF/cBdd71/TnbJ0QbOk3Z8pQGdZkq31T5hxv+oQU4uAFhAVN
-	mdXt7ryEyn3TvQNMVj3YZYl0OLvVqRXU/5KwktCJfROEyyYbx2BAqBGAcsEjk1STMs4SX6qgvFeUl
-	93jG3u4g==;
+	bh=MmP5NYiBfCOhNdzkYCGHlC6jvxmgKbfQelvb/P/IjzU=; b=RgN3p3PTDfJ6C6vn3kcPuQA5LR
+	7hkpitTqtaG1l04lmE/4agpaUD5sNpECLXR4hwduGGJBzFJa+4JpduRdsQ+AgPCKObCll2e7XnKwI
+	xryJ6dCPmelksMuDANP5/J5vxEEFSyltmqrlCVZDN2xZpS1UDMkBovF6fQ2sDpeZXqnYKF/ztwlnf
+	MyPTHy5iT1L037+WGe0CptW7JZ066KCMID0+z30Q6E8+ANX0u5SNP/tebzLEja/0bOEyyyoK3WEXq
+	iIvt5gFcoYsHeNOqKcl8HDAx9T6kgg7cv6rUkTFchIqSI0AfPwAie5nq//TeoL2U0nnYW5WLgm/FK
+	6MGmUAwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVtif-00000007Cq7-0G9H;
-	Tue, 24 Nov 2026 16:50:13 +0000
-Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
+	id 1xVtzz-00000007GC3-3j3o;
+	Tue, 24 Nov 2026 17:08:07 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVtia-00000007Co2-1qnZ;
-	Tue, 24 Nov 2026 16:50:11 +0000
-Received: from [IPv6:2a0a:edc0:0:900:1d::4e] (lupine.office.stw.pengutronix.de [IPv6:2a0a:edc0:0:900:1d::4e])
-	(Authenticated sender: pza@pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 4D1282004B4;
-	Tue, 24 Nov 2026 17:50:00 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
-	s=20260414; t=1795539000;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xUNyxepBbFqbxj/zwUONmjhAUEyk5osQzRo/USZMoIE=;
-	b=XsHPv4wROfnoOR/Al1PfP2g38rWs2d8VdHYo97JJQEXtxJQT+N9uvgkIodiO5oNj6sh83H
-	U5QGh7npHqJdM274F9Au9Ot4fma0AqtAjry/jfArpCu5LZpvK4yjAgSPwBAKpJszDhx7ZI
-	tq5nHwrqNUdqOwdNWEVIUuhV3kq2Yrx/8m8yi9bF+kC8dw7PkngMPQVPp5sivJI2Nyl4zM
-	qVMPEaynFWz55N4R5TfNj6mSgRJ9UcPlZtRdhkKOHNQD0mKVEbX3rwZU+lbngYVw+E1pa4
-	2EV2Tyy+r9dmljp1UlOabvuzrcsb6Q9G1yh0bvxK8BG/O2RNSZJzfWwvU0NjHQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
-	s=20260414; t=1795539000;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xUNyxepBbFqbxj/zwUONmjhAUEyk5osQzRo/USZMoIE=;
-	b=eW1vTA85NWp23HDiCbP0J1mb8m2Lel19Xv6D6ekUqtuU14YSbb7sY2dCrVbSRh0fdPIv7f
-	+nrr/ExGSsjMy1JF2Aniv8cXiMu459RvZ4QIn1De9svO5dufohaA1URv6JumlbUbCDUSPP
-	9hZ8+yfy+6TmMjbhOSVemV7fQ9oNToBaeUqKrdj5eLellXEq6hi5vT/glZ7FyrI2Vtn+/A
-	eej/RP8YybOZVrzMW65gCW5zL2Ssiq7iHbO04cjLtQCwEIBcVZCOdRLfQccTgA3M6U5u5J
-	5e68zrfEtPiskFTK0W2zVcQXP6dDkdbf1Bwuel+0uHhiYXXUO6twQXeKJMoIpg==
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=pza@pengutronix.de smtp.mailfrom=p.zabel@pengutronix.de
-ARC-Seal: i=1; s=20260414; d=pengutronix.de; t=1795539000; a=rsa-sha256;
-	cv=none;
-	b=ahaXNxWTVb8qE7MA4+PnYkPbav+7Cg387gT7Qa6bu+zvF+t9SX2c2Dj5+Luv1cf/iKBoD2
-	hWVdVGUb7F14T0oXeuXuDBAWzelX0ZF1NZ8ibFgFXgIcfIyNXFPvu9JPfhbw3IpEcPRsNG
-	G9zEPanTyaBMjVX8h1HuyLFmIVQQFJIYSh1mKuemLyRfvEbjEcgnDUB4wWyzUd6HYJGphe
-	uRamHNbrRkKGZBMIOKKS15Ay8c9n1rq2NPKX0ww1oHM9F/EM4TwO/gIeIp6Bas+BRH+wPX
-	38Mk1oJN8UZ/vHpsFKSxqy22y9fGJ31oky6YZG6f12ajstjuTCywOtPA4tYkQA==
-Message-ID: <831aebd692fc5ddbbd1cf57f1aad3bcc0d3f30d2.camel@pengutronix.de>
-Subject: Re: [PATCH v8 16/18] drm/bridge: starfive: Add JH7110 HDMI
- controller driver
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Michal Wilczynski <m.wilczynski@samsung.com>, Neil Armstrong	
- <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski	 <krzk+dt@kernel.org>, Robert Foss <rfoss@kernel.org>, Laurent
- Pinchart	 <Laurent.pinchart@ideasonboard.com>, Jernej Skrabec
- <jernej.skrabec@gmail.com>,  Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Emil Renner
- Berthing	 <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>, Heiko
- Stuebner	 <heiko@sntech.de>, Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt
-	 <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti	
- <alex@ghiti.fr>, Dominique Belhachemi <db@domibel.de>, Andy Yan
- <andyshrk@163.com>,  David Airlie <airlied@gmail.com>, Simona Vetter
- <simona@ffwll.ch>, Yakir Yang <kuankuan.y@gmail.com>,  Dmitry Baryshkov
- <dmitry.baryshkov@oss.qualcomm.com>, Conor Dooley <conor@kernel.org>,
- William Qiu	 <william.qiu@starfivetech.com>, Xingyu Wu
- <xingyu.wu@starfivetech.com>,  Sandy Huang <hjc@rock-chips.com>, Manivannan
- Sadhasivam <mani@kernel.org>
-Date: Tue, 24 Nov 2026 17:50:00 +0100
-In-Reply-To: <20261124-jh7110-clean-send-v8-16-de92635dd857@samsung.com>
-References: <20261124-jh7110-clean-send-v8-0-de92635dd857@samsung.com>
-		<CGME20261124155429eucas1p1015c7cd9beec294fefdcd6900dd407f6@eucas1p1.samsung.com>
-	 <20261124-jh7110-clean-send-v8-16-de92635dd857@samsung.com>
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	id 1xVtzx-00000007GAH-2U4y;
+	Tue, 24 Nov 2026 17:08:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795540083;
+	bh=XVsm2g87K7EiScMpFX+YLK3BjagJwRTYcIiVjtlKvoU=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=PqazgT6iD61c1zbABIMmIWWGdKVAnMdvNQ7mKFGbQsmcNILBUjAJ1lRNTG0g+NbSd
+	 qVd80YvrB9OzKy6KMEdhSDT09jZXj7HoZCga8I+fLpiKUUgNAp7eFRSI2LGf351hVT
+	 /ghjLdlH9MA9i0IujvXnwVW5Vz0btMl0QwxyAv0EK7DHbrYgL0ZpjJNih5Cd2E0dqs
+	 /lji7+IMznkl18g3Kl5TvF9ftQQxjwjourYR0L5l90vg7pjLCaaqwrQ/F9GNA4m+KI
+	 Zh74e8AQOnW0zUNg88roYoDD7VM6+1uTQE/6gJci6g+PmEKf+1zwSifBtjrzb3eSDp
+	 qNSS/2uBuCWGA==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E112D17E047C;
+	Tue, 24 Nov 2026 18:08:01 +0100 (CET)
+Message-ID: <deea128399ee10bcd7e789a48763222b961ae0f1.camel@collabora.com>
+Subject: Re: [PATCH v8 1/3] media: v4l2-ctrls: validate AV1 reference frame
+ index
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+	p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de,
+ hverkuil@kernel.org
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	kernel@collabora.com
+Date: Tue, 24 Nov 2026 12:08:00 -0500
+In-Reply-To: <20261124131816.115131-2-benjamin.gaignard@collabora.com>
+References: <20261124131816.115131-1-benjamin.gaignard@collabora.com>
+	 <20261124131816.115131-2-benjamin.gaignard@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_085008_912953_8B7060A4 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20261124_090805_815338_7C2C01DF 
+X-CRM114-Status: GOOD (  18.21  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,9 +89,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Joshua Peisach <jpeisach@ubuntu.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>, Maud Spierings <maud_spierings@murena.io>, linux-rockchip@lists.infradead.org, Icenowy Zheng <zhengxingda@iscas.ac.cn>, Byron Stanoszek <gandalf@winds.org>, Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@baylibre.com>, linux-riscv@lists.infradead.org, Graham Markall <hello@big-grey.co.uk>, Owen O'Hehir <oo.hehir@gmail.com>, linux-arm-kernel@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8784229979313567673=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -119,72 +98,138 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Di, 2026-11-24 at 16:52 +0100, Michal Wilczynski wrote:
-> Add the HDMI controller (bridge) driver for the StarFive JH7110.
-> 
-[...]
-> 
-> Tested-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
-> Tested-by: Byron Stanoszek <gandalf@winds.org>
-> Tested-by: Owen O'Hehir <oo.hehir@gmail.com>
-> Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+--===============8784229979313567673==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-7bhjUBWK19mT5W91FGeZ"
+
+--=-7bhjUBWK19mT5W91FGeZ
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Le mardi 24 novembre 2026 =C3=A0 14:18 +0100, Benjamin Gaignard a =C3=A9cri=
+t=C2=A0:
+> The stateless AV1 decoders use primary_ref_frame and ref_frame_idx[] to
+> to find the matching reference frames.
+> V4L2_AV1_PRIMARY_REF_NONE is the value of primary_ref_frame indicating
+> that there is no primary reference frame.
+> Reject invalid indexes to avoid issues in the drivers while validate othe=
+r
+> frame parameters.
+>=20
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
->  drivers/gpu/drm/bridge/Kconfig            |  11 ++
->  drivers/gpu/drm/bridge/Makefile           |   1 +
->  drivers/gpu/drm/bridge/jh7110-inno-hdmi.c | 297 ++++++++++++++++++++++++++++++
->  3 files changed, 309 insertions(+)
-> 
-[...]
-> diff --git a/drivers/gpu/drm/bridge/jh7110-inno-hdmi.c b/drivers/gpu/drm/bridge/jh7110-inno-hdmi.c
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..a0283f83ddc93e3e6c9e9192b73dca9a63f9d9ab
-> --- /dev/null
-> +++ b/drivers/gpu/drm/bridge/jh7110-inno-hdmi.c
-> @@ -0,0 +1,297 @@
-[...]
-> +
-> +struct stf_inno_hdmi_controller {
-> +	struct clk_bulk_data clks[CLK_CTRL_NUM];
-> +	struct reset_control *tx_rst;
+> changes in v8
+> - check reference frame index when validating the frame before
+>   calling the driver.
+>=20
+>  .../verisilicon/rockchip_vpu981_hw_av1_dec.c  |  3 +--
+>  drivers/media/v4l2-core/v4l2-ctrls-core.c     | 20 +++++++++++++++++++
+>  include/uapi/linux/v4l2-controls.h            |  1 +
+>  3 files changed, 22 insertions(+), 2 deletions(-)
 
-tx_rst is never used outside of starfive_inno_hdmi_controller_probe(),
-it could be a local variable.
+Split core from driver changes.
 
-> +	struct phy *phy;
-> +	bool enabled;
-> +};
-> +
-[...]
-> +static void stf_inno_hdmi_rst_assert(void *data)
+>=20
+> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_de=
+c.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> index 2a145433e6d1..bbfca34688eb 100644
+> --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> @@ -20,7 +20,6 @@
+>  #define AV1_REF_SCALE_SHIFT=0914
+>  #define AV1_INVALID_IDX=09=09-1
+>  #define MAX_FRAME_DISTANCE=0931
+> -#define AV1_PRIMARY_REF_NONE=097
+>  #define AV1_TILE_SIZE=09=09ALIGN(32 * 128, 4096)
+>  /*
+>   * These 3 values aren't defined enum v4l2_av1_segment_feature because
+> @@ -1256,7 +1255,7 @@ static void rockchip_vpu981_av1_dec_set_prob(struct=
+ hantro_ctx *ctx)
+>  =09bool frame_is_intra =3D IS_INTRA(frame->frame_type);
+> =20
+>  =09if (error_resilient_mode || frame_is_intra ||
+> -=09    frame->primary_ref_frame =3D=3D AV1_PRIMARY_REF_NONE) {
+> +=09    frame->primary_ref_frame =3D=3D V4L2_AV1_PRIMARY_REF_NONE) {
+>  =09=09av1_dec->cdfs =3D &av1_dec->default_cdfs;
+>  =09=09av1_dec->cdfs_ndvc =3D &av1_dec->default_cdfs_ndvc;
+>  =09=09rockchip_av1_default_coeff_probs(quantization->base_q_idx,
+> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4=
+l2-core/v4l2-ctrls-core.c
+> index 6e751a043a21..f4c2a04fb721 100644
+> --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
+> +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+> @@ -817,10 +817,30 @@ static int validate_av1_tile_info(struct v4l2_av1_t=
+ile_info *t)
+>  =09return 0;
+>  }
+> =20
+> +static int validate_av1_reference_index(struct v4l2_ctrl_av1_frame *f)
 > +{
-> +	reset_control_assert(data);
+> +=09int idx;
+> +
+> +=09if (f->primary_ref_frame > V4L2_AV1_PRIMARY_REF_NONE)
+> +=09=09return -EINVAL;
+> +
+> +=09if (f->primary_ref_frame =3D=3D V4L2_AV1_PRIMARY_REF_NONE)
+> +=09=09return 0;
+> +
+> +=09idx =3D f->ref_frame_idx[f->primary_ref_frame];
+> +=09if (idx < 0 || idx >=3D V4L2_AV1_TOTAL_REFS_PER_FRAME)
+> +=09=09return -EINVAL;
+> +
+> +=09return 0;
 > +}
 > +
-> +static int starfive_inno_hdmi_controller_probe(struct platform_device *pdev)
-> +{
-[...]
-> +	ctrl->tx_rst = devm_reset_control_get_exclusive(dev, NULL);
-> +	if (IS_ERR(ctrl->tx_rst))
-> +		return dev_err_probe(dev, PTR_ERR(ctrl->tx_rst), "failed to get tx reset\n");
-> +
-[...]
-> +
-> +	ret = reset_control_deassert(ctrl->tx_rst);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = devm_add_action_or_reset(dev, stf_inno_hdmi_rst_assert,
-> +				       ctrl->tx_rst);
-> +	if (ret)
-> +		return ret;
+>  static int validate_av1_frame(struct v4l2_ctrl_av1_frame *f)
+>  {
+>  =09int ret =3D 0;
+> =20
+> +=09ret =3D validate_av1_reference_index(f);
+> +=09if (ret)
+> +=09=09return ret;
+>  =09ret =3D validate_av1_tile_info(&f->tile_info);
+>  =09if (ret)
+>  =09=09return ret;
+> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2=
+-controls.h
+> index d17e41d51d2e..82023fbffd6a 100644
+> --- a/include/uapi/linux/v4l2-controls.h
+> +++ b/include/uapi/linux/v4l2-controls.h
+> @@ -2940,6 +2940,7 @@ struct v4l2_ctrl_vp9_compressed_hdr {
+>  #define V4L2_AV1_MAX_TILE_COLS=09=0964
+>  #define V4L2_AV1_MAX_TILE_ROWS=09=0964
+>  #define V4L2_AV1_MAX_TILE_COUNT=09=09512
+> +#define V4L2_AV1_PRIMARY_REF_NONE=097
+> =20
+>  #define V4L2_AV1_SEQUENCE_FLAG_STILL_PICTURE=09=09  0x00000001
+>  #define V4L2_AV1_SEQUENCE_FLAG_USE_128X128_SUPERBLOCK=09  0x00000002
 
-This looks like it could be simplified with
-devm_reset_control_get_exclusive_deasserted().
+--=-7bhjUBWK19mT5W91FGeZ
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
-regards
-Philipp
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawXEcAAKCRDZQZRRKWBy
+9Ci7AQCh7xzeUtcWsraOr3AfuynLmcy7NS4EHZq9py+FhRQcXAEAtY05sOxD+TCy
+Tr02JjL2CDLvPbRoTN9ins5yelgbgwY=
+=sCxR
+-----END PGP SIGNATURE-----
+
+--=-7bhjUBWK19mT5W91FGeZ--
+
+
+--===============8784229979313567673==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8784229979313567673==--
+
