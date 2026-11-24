@@ -2,89 +2,98 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 934BA606A31E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 19:02:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 04D6C606A321
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 19:14:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GTEYUZEA;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=IawfrXj0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tk4bLtJI;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=RbjCupl3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=HvIrH++F5f0rNJ6ucpeSDw0cbGQ0z29PKiUHbP7rvYY=; b=GTEYUZEAjxNJIEIu1Hrf22l+BE
-	W9cI4oDKx0mE1VXMgV2RGrQImKGUozokacQ88j/bagal9XiTSIZJ9wz3xGqb/PilwB4x122n16l0N
-	Xhj0xx6rKDpr3a5r8zA4z3v6oJLKqwkqOUgaVaIYFH28q70t3TAKA2x+TEJwmfAad0139hjONJQur
-	QdDjFRe4TUnG1zDba7d6hC9FfztjNgaEAHQM6K+LxXJur/mrSS/03Kgkc5gM3egZpwnVbbfAA5L1Z
-	SzO4XYL/TYjg7FjNIDyS/WXUbrr3Lk7w8HiuibFVyoIuSGL4EnKrHI/uuzgx07pWAfdR6erA2zHhK
-	F0YBOUyw==;
+	bh=tCiNzpHyXR3QcXLJyLPAopxyDE3FDOkeITbfQtE9TcI=; b=tk4bLtJIbgQJKU1ymeeBrzvLVG
+	PCUfrgsFsDGkO+k6NjGpUj+0zw8ZkFEeFafwIzbTrmhZ8jOXyOqGIwTGJh4k2xz4+6Zh8mAYjcE/X
+	Hic97S3gN5YcxNDVhDG6KBR1+AfKozvinVR3HqOsvkzMemG+svTMlOekLJHXURyk/IBJVWW+GrQiu
+	6UuHuhec95uZ9ZZCNm4dK2elLgMaDzvSxTBDj36gfhw96+07F7QfD2NFxvw9EqF1CgunCi+rtFhMq
+	i+f3k8ha5EgFyAcI/xCRpWStxswqYsc/3H65UTFtArP6rUVxL3nYucVeXkYNdCv3JMw4XoEReL6vG
+	e2Ko2hXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVvmA-00000007Yqi-406X;
-	Tue, 24 Nov 2026 19:01:58 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xVvxi-00000007Zr7-26ef;
+	Tue, 24 Nov 2026 19:13:54 +0000
+Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVvm7-00000007YqE-2GqK;
-	Tue, 24 Nov 2026 19:01:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795546913;
-	bh=v/zeC8eyq6ykMNoigJa4vX8GQ35hbqzC3pORcHQ88dU=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=IawfrXj0A9bhAGD9kBd/giIzBNMaVyYpOJsSgqQZOkDhZt/+ALg3V0YuJAKCz5ez8
-	 KoX34MuneLaGb21dy6ynWSgyzzrwtIaPEiLTv9VkA/GBwBgRYWdTaedSMhreERe0JJ
-	 yMG6WMQBavwohYuPPyAXRUpvQvmXx0nTS6e/XkfFMsHKdSM6Kh4YumbfIkxzZyxLyT
-	 twpNCRDmAYCPr4ln3qqWmotmTJZ4wqjnRYfQPzkCJz9QKzT7YjxQ4DOPXO/KxJ7Hm/
-	 W3AdfljItE+HXhFimb73eycuAOQwccmUtao9ZiKwK+ldI8cD4kHVwJ/vTSuQx05L71
-	 dkkNbwnG0K1/w==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 89F4B17E0183;
-	Tue, 24 Nov 2026 20:01:51 +0100 (CET)
-Message-ID: <a12fc9eef54ee31cda73bc1912d44e508fb8c7b9.camel@collabora.com>
-Subject: Re: [PATCH 3/7] media: rkvdec: hevc: bound the RPS reads by the
- control size
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>, Ezequiel Garcia	
- <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
- <mchehab@kernel.org>,  Heiko Stuebner	 <heiko@sntech.de>, Alex Bee
- <knaerzche@gmail.com>, Hans Verkuil	 <hverkuil+cisco@kernel.org>, Jonas
- Karlman <jonas@kwiboo.se>, Sebastian Fricke	
- <sebastian.fricke@collabora.com>, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Date: Tue, 24 Nov 2026 14:01:49 -0500
-In-Reply-To: <awDWVpqEBcOGsCuu@makrotopia.org>
-References: <cover.1794645268.git.daniel@makrotopia.org>
-	 <bb9c44d0f56221874b105394169e5c377ef21b42.1794645268.git.daniel@makrotopia.org>
-	 <6ae6d1101d3f7095d11462579a5a3313153533e6.camel@collabora.com>
-	 <awDWVpqEBcOGsCuu@makrotopia.org>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
+	id 1xVvxf-00000007ZqA-3sub
+	for linux-rockchip@lists.infradead.org;
+	Tue, 24 Nov 2026 19:13:53 +0000
+Received: by mail-oi1-x235.google.com with SMTP id 5614622812f47-57e468d51b1so579846b6e.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 24 Nov 2026 11:13:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1795547630; x=1796152430; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=XeNdzIttNMTE0MJO+i5BOMI8/bNW8dsc8julRJQrMKc=;
+        b=RbjCupl3gs5jge72ENYkTKLLeEKamZn5TpIPCBYyv+J5qS7wEVus0wAV9L8GZRyo1D
+         M7xo0yMPhaVBHUOsxIGWMtKWe6JsX28jEtRya6Cf9HgyIv8PzoFkdSODpk+l2BTrdX7Y
+         HgNym0nSA3GOv+6JuqoXsoSYJGXYbikSFjar7F448X+GBXeMTvPG5ymQdfbvMzxV988f
+         Hqnv6ie6YvXxma5idDqQ/bAvln/i1nB0yalEck/5pvHYURTYqdDkPnLH8Xn2BRGAQnFu
+         kR0Uv4pFxcZ+RAiL70lx4MhDWclUfKIkj7apxTO0eo7lekyBxeyQTkj8J1/m5nurzUwA
+         tLyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795547630; x=1796152430;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=XeNdzIttNMTE0MJO+i5BOMI8/bNW8dsc8julRJQrMKc=;
+        b=RrZRfwYVyq58V32Y5FIEMenNJcJSPCxxeWGAxUD1mtTidHkJ1sTivaKT2cgutNiQjQ
+         klNNegZ+OhFfneOwKVqGjyMRDgrIfCh5dAyUzUbzpJoFIf5H1MFSGunYyMzU8aF1fXf+
+         aHxE1zh7HR7rIfK9zTgvGHuXDndxbCH9ipFIg5dadSYYxTzSDpCncJbAl1xAeYQkTSL1
+         Tn8OR856MYMhQ7e1wCetfLY03EcpHxfnBkoQocj2fWNUqpLoaPdgBmoG1XctSEqlRtnD
+         xb0Q1Snd2ps85rjgpY9kVo2xtCkYXHu8f8IIM9Rhr+Hv+4tHpTqotfoNOBMX/yaP6aKz
+         +Q7A==
+X-Gm-Message-State: APuU4Z9X+F31g+UNJ3PNKdmGwjb9V78VAGVK6Dys7KvDeTXGyPcxM+M7
+	srTXnMcwj83j4u/vdc2jzhiGyK4aHKAvU8U/i0skXIGdXuG24/oTlq5j649hHg==
+X-Gm-Gg: AZFdTZcUVU+V4KuAj9P7+QI/HP709qJl66elDYioKCDJ5/ITmTpNmDEM19P+ApNzrJq
+	la4MBG7RbaZnTf5latYTfCW2UHuK6sir5pWbEgesVLye9uR1l6oF5EislYWrPXSYW1NcxHGG99O
+	35I7lPcPKwXdSEGDak67vYxzo3YR7PiNKZkMVRXWPH4GgANp4Hb2GdS88faCXzweLW29Fhr7obo
+	bYsrRqKa4tSVUJEPziK45xXmU3cu60PEvCac+mh/lsAVMhfzlLIXOJ3tie+2hNc4UWAgbGHe52Y
+	94GWyGRdhw4rbEU3K9RBwG40EIrSFHx76Dc1HeLv0+6VPY/csNcQFAZT2uYUUg2bdt2vSLDCr0o
+	lpNORLgqN5swo6nNm95Pg5K6vDdDB3tKd1mWobaEqQCXsY7k7pwo6VHnp0I4BL5jpA3IObXPkVH
+	sWPZTR4ocTYnUmYrSVwg4kuTR7hbvkrXyiLywxOZZzSN8essTmd3HWBbHsgCHQf34TI0lCrwRar
+	zk8OvzdS4dZhZWsosduoAerxHhP1FGu3NoUnr8Wf357h/kqqDg7FdeSgQb/mF4pRPqiLc3WAFd2
+	k+W/3YBZwAU1ZxiFW+dQbIpwl/UAJfE=
+X-Received: by 2002:a05:6808:c1d3:b0:572:f1d1:d6b0 with SMTP id 5614622812f47-57a0c9c5064mr14920907b6e.65.1795547630522;
+        Tue, 24 Nov 2026 11:13:50 -0800 (PST)
+Received: from neuromancer ([75.28.21.198])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-57a362575fbsm12774058b6e.17.2026.11.24.11.13.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Nov 2026 11:13:49 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	shawn.lin@rock-chips.com,
+	linux-pm@vger.kernel.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	sre@kernel.org,
+	t.schramm@manjaro.org,
+	xsf@rock-chips.com,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH V4 0/3] Add Cellwise CW2217
+Date: Tue, 24 Nov 2026 13:13:43 -0600
+Message-ID: <20261124191346.434143-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.53.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_110155_758901_2C28283B 
-X-CRM114-Status: GOOD (  10.55  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261124_111351_968684_C62E8588 
+X-CRM114-Status: GOOD (  16.11  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,66 +103,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3466951374825581477=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============3466951374825581477==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-Zq1j3KpLxB33TMTKA8Is"
+From: Chris Morgan <macromorgan@hotmail.com>
 
---=-Zq1j3KpLxB33TMTKA8Is
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Add the Cellwise CW2217 battery gauge driver. This driver is based on
+the sources used for Rockchip's Board Support package [1] but has
+been updated to use the regmap API and devm helpers.
 
-Le vendredi 20 novembre 2026 =C3=A0 23:23 +0000, Daniel Golle a =C3=A9crit=
-=C2=A0:
-> Rejecting when the control is set does not work, as the count and the
-> array are separate controls which can be set in any order, also in
-> different requests. The first point where both are known is when the
-> request is applied in device_run.
+[1] https://github.com/rockchip-linux/kernel/blob/develop-6.12/drivers/power/supply/cw221x_battery.c
 
-Maybe we should have added validation in MEDIA_REQUEST_IOC_QUEUE ... Might =
-not
-be a totally missed opportunity, and would give an immediate result to user=
-.
-That being said, its does not invalidate your changes, so no action for thi=
-s
-specific comment.
+Changes Since V3:
+ - Two more small fixes requested by Sashiko, one trivial fix for the
+   to not always write CW2217_CONFIG_RESTART for the cw2217_active
+   method and a small fix for the regmap writeable/volatile ranges.
 
-Nicolas
+Changes Since V2:
+ - Fixed more bugs pointed out by Sashiko.
+ - Corrected an integer overflow condition when measuring current.
+ - Corrected logic for when we don't have a user specified battery
+   profile.
+ - Added power supply changed logic in the worker.
+ - Updated the Kconfig text to note support for the cw2215 and cw2218.
+ - Added a check to ensure polling interval cannot be below 250ms.
 
---=-Zq1j3KpLxB33TMTKA8Is
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+Changes Since V1:
+ - Added a default value for the shunt resistor in the binding
+   documentation, and updated the commit description to note that the
+   min and max for the battery profile is now per-compatible string.
+ - Fixed bugs pointed out by Sashiko bot, and corrected units for
+   temp and shunt resistor values.
+ - Corrected include pointed out by kernel test robot.
+ - Noted in the commit message the patch is based on original work by
+   Xu Shengfei at Rockchip. I did not list him as co-developed or
+   signed-off since I did not have his permission (yet) to do so,
+   but I have his authorship included in the file itself.
 
------BEGIN PGP SIGNATURE-----
+Chris Morgan (3):
+  dt-bindings: power: cw2015: add cw2215, cw2217, and cw2218
+  power: supply: cw2217: Add support for Cellwise cw2217
+  arm64: dts: rockchip: Add Battery Gauge to Anbernic  Vita-Pro
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawXfHQAKCRDZQZRRKWBy
-9PDaAP9JaEXDrgjNqXnAwmBBQaZfMuTkdkQqNBmHX1kOtDP4BwEAgt7hfvp8zlOm
-PSX0WEH+LwnvYvPGc8YUY/1TlMsijAQ=
-=6jr1
------END PGP SIGNATURE-----
+ .../bindings/power/supply/cw2015_battery.yaml |  41 +-
+ .../rockchip/rk3576-anbernic-rg-vita-pro.dts  |  21 +-
+ drivers/power/supply/Kconfig                  |  11 +
+ drivers/power/supply/Makefile                 |   1 +
+ drivers/power/supply/cw2217_battery.c         | 878 ++++++++++++++++++
+ 5 files changed, 945 insertions(+), 7 deletions(-)
+ create mode 100644 drivers/power/supply/cw2217_battery.c
 
---=-Zq1j3KpLxB33TMTKA8Is--
+-- 
+2.53.0
 
-
---===============3466951374825581477==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3466951374825581477==--
-
