@@ -2,61 +2,102 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C2E17606A32C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 04:28:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 97E04606A31E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 04:42:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=To6UvTcD;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=iav.lv header.i=@iav.lv header.a=rsa-sha256 header.s=zoho header.b=WRxd5AtB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RMmXh7Ej;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=MfXr9DVs
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ghfA++ehrxtFVznJjI558HNzEe7PRm4/3NN2BIFnSZ4=; b=To6UvTcDStr1V9dtr02SVFdCYk
-	vkvmYZ64p7NEvshe55GRveBFuzWpMibHmVmotpLnARAmcLpFVYcZ6YfRPKLUlFoG8eP46pKE5jiLw
-	ud1PUaxKeTcwm+2tRhGSfjULTa3fWBFLZAOcXCuM162SpkfjKcMowHIC0jA7UlM9VFAg0jyFuZSe+
-	KIoI4bvsIwE0hjxR/wbVv51EcIEb9AerAnIoaBcEG4vCD/D6oArzjB0zbZkPpCote70+sHCslnR6H
-	pf8M0fQl5sJjAJv5Ji4n4I4Mo0QqzUHROrM0NAweusywrufdFWM2iICUKa1XPlSydwhH7Fi9a+YcF
-	WXFyMfJg==;
+	bh=VFuEsaE/oqDe/+KcsHTqU03zTv3bvGpe4f733IRoIFc=; b=RMmXh7EjXomoIBl+OsDBZ+Aqg8
+	TzhiEXSeVNt8GMurX+w3sXWimRjoMQlpn8e6JwvNBg+LFPoOk5DAVtWuQJ57MEEYBF06wgoLCRt1y
+	NrLKomKFOD58CDvOV57L1Q74iIQI3D6/xQ/M4HAPs9jqxPAsdOGWzaM7viU63O87CrJ9VF15rvWC6
+	HIEAZZA7p6ADVf/OM6q7zEmf4PU0jMoYJAm4piLGxRROwKwR8M23L6EndxBLSnVZSFHdg1uYPGEPP
+	uLDPYAOV1NRAi1bEGNhgFKel2F3sb2XMB8NhEM82Ow864HfgRbGy061GaFe8Xqu1O2ZsH8W8AFHO7
+	n7f18Elw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVi8c-00000005XLK-40xV;
-	Tue, 24 Nov 2026 04:28:14 +0000
-Received: from sender-op-o15.zoho.eu ([136.143.169.15])
+	id 1xViLt-00000005YoH-0NZU;
+	Tue, 24 Nov 2026 04:41:57 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVi8a-00000005XJb-2vqo;
-	Tue, 24 Nov 2026 04:28:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1795494470; cv=none; 
-	d=zohomail.eu; s=zohoarc; 
-	b=Mmyzwk889ELTgYQyLnf7ie8jjy9zwLTbLgJUa00RTIdusRvaHZj1ccqBPasAkbiyjUa9VIrpbuFklkJ9G1KEb1jeRkMrJ1gWmcJaZtYJ8j35N6XevM9UOYKc8ekSYa1Erue/sC2eb6pZaFf9BKPK+9rWICR4M2eQUgQ3kWUqeHc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu; s=zohoarc; 
-	t=1795494470; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=AVBjQGBWsRhbqtXGph3xAHQAvMR6+/rx3lfHXKGz6Zg=; 
-	b=OU5/CiF5ZMGIYB2eLtEyBzkaWMWoftJ4jOayra0YFQDBAchPdhcFEPfxm7uI28dMW2Lavt0SmsD6oYFipSajAc0xvySgBflekGUI9A6xYhi+QwjI72thT58RwzW6f1YlcbWOIGxmj+1cJSJDdb7/EaQ7dnq9IHIql1dJxYAegTo=
-ARC-Authentication-Results: i=1; mx.zohomail.eu;
-	dkim=pass  header.i=iav.lv;
-	spf=pass  smtp.mailfrom=iav@iav.lv;
-	dmarc=pass header.from=<iav@iav.lv>
-DKIM-Signature: a=rsa-sha256; b=WRxd5AtB7K/QZ5HA6TcTMeRxMrm9lkOu0AXdJVXxL5ufL41Or+X2EvopnuyJUto0wHFJKv3eHDqp2s6Bk26W2sbMaXCwtff+iP04gp2YV4sSi1DDWeJHJjB2xCEyzNAGbFEQ4VSdGxXrEFnZeQnUCR5J1RUx0Rn6mbVp+7fuxfs=; c=relaxed/relaxed; s=zoho; d=iav.lv; v=1; bh=AVBjQGBWsRhbqtXGph3xAHQAvMR6+/rx3lfHXKGz6Zg=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zoho.eu with SMTPS id 1795494469281732.244746746565;
-	Tue, 24 Nov 2026 05:27:49 +0100 (CET)
-Date: Tue, 24 Nov 2026 06:27:47 +0200
-From: Igor Velkov <iav@iav.lv>
-To: netdev-bot+sashiko@kernel.org
-Cc: iav@iav.lv, andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk, davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com, tglx@kernel.org, linux-pm@vger.kernel.org, maxime.chevallier@bootlin.com, lukas@wunner.de, rafael.j.wysocki@intel.com, wei.fang@nxp.com, niklas.soderlund@ragnatech.se, paul@pbarker.dev, florian.fainelli@broadcom.com, opendmb@gmail.com, Thangaraj.S@microchip.com, shenwei.wang@nxp.com, Haoning.CHENG@cn.bosch.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net v8 5/5] net: phy: postpone PHY interrupts during sleep with MAC-managed PM
-Message-ID: <179549408717.90858.144565102470528@iav.lv>
-In-Reply-To: <179548270352.3135.4334710117066284426@kernel.org>
-References: <20261123-b4-phylib-mac-pm-irq-v3-v8-5-e9f706e79614@iav.lv> <179548270352.3135.4334710117066284426@kernel.org>
+	id 1xViLr-00000005Yni-3Rvq;
+	Tue, 24 Nov 2026 04:41:56 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 423D143656;
+	Tue, 24 Nov 2026 04:41:55 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795495315;
+	b=Ujt+ZafxNkdPO8AYE0YAWnp3gePWbGu6E2AFBvUfrpM171Lr7urm4yg1EMgnPVrmorp0
+	 0Uaz1JkJntHnHG7TudfRFpKaziLaAPZkZMQvge6EdkIU35BsHMxYsGe0K73Y+Xf/UZpb6
+	 TGHvaVOdcASo0t02xAgCICTXSv9brE/mgk6in239nxS9y7srETFvQlfJOCpfuPMSbvwpU
+	 cOJ5M7Qo/VAEJfvEZS1dfR6jZY+DngIrTYog3/mQbHAZaE+PVipZQNvh7vq0wqDbJtty1
+	 s71lUJRcsUtComDrQvsxuWy6mPsOPjVYxiljQToa+msh3aUCMaoEfmq9AQpieL9ywqw==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795495315;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:
+	 X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=w+k/XSop6T3iwyoxO1V6neN6LtpJfRFzAgcO+cSEBlI=;
+	b=V9WuGdQuJgwltM2ke7I/sfAwvN2MdAzOzxvL0JwoZA/UaVkLEhMUIMQTle2Eqz42fqK8
+	 I9K9DIg0XjRd0OcemAI3ReJGauOXzfrbHgEM1+QDWoqoAZ54SQFA7TD8LVfPAhGK/vvY6
+	 XxeLLYhi7z49zShO0iEylnY9xiBX4O2Mr0M6vjbWrXV6hF4bG9viCvKF3g1gb8wA7wbFu
+	 1SLEqK10EeBSL78DkI4dNf6Fw4ecCa7kh8wybrsvZ4anLa8NrRvYfKDY0G7gFh8VoSizh
+	 VPJYdZZNhdK6TR3SlGsA/RZvTcPVBBtxopdektq9azhFhikUrYldtBFsRna3xJSUXiA==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 52F161F000CA;
+	Tue, 24 Nov 2026 04:41:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795495315;
+	bh=w+k/XSop6T3iwyoxO1V6neN6LtpJfRFzAgcO+cSEBlI=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=MfXr9DVs1vBllVYorIBfgTy0hYCHe60ZAZTyNf3hPWl1JQGAG1lFTPj9izFz065uw
+	 3WVuYeTCk1oD9L+wS4oSGR8txMyA/pN9X+D0zVUZhqBKw3siyMcMWeLhZ2aAR0Ks//
+	 nXMSF3bbnadujDo86yk+F//yKlh+q0uVKApYMwB0a5loJX2xDsPrLMVS9wkrmZ0oTj
+	 NBYl1tGIAvSqllzcLuWozyKqsMBmruyAoOLIcXmIuLdjr+OhmZ3fHEKeLajmdBdI0+
+	 Y57vovqL2IuArbYtDhfseX2k0z4kCEuVQg9QTcEfuC4leTF+lkBpp+nb3NjZk/tIa6
+	 LbXcVW5hH5/dw==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id DD54D4C899;
+	Tue, 24 Nov 2026 04:41:48 +0000 (UTC)
+From: Suyuan Wang via B4 Relay <devnull+shyckless.gmail.com@kernel.org>
+Date: Tue, 24 Nov 2026 04:41:48 +0000
+Subject: [PATCH] crypto: rockchip - Drop the runtime PM reference on DMA
+ mapping errors
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_202813_020039_F615BB16 
-X-CRM114-Status: UNSURE (   8.93  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Message-Id: <20261124-rk-crypto-v1-1-8fb89152fac0@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAIsVBWsC/yXM0QpAMBSA4VfRubayMcqryMVsB4dCZ4jk3Q2XX
+ /39F3hkQg9ldAHjTp7mKUDGEdjeTB0KcsGgEpVLqTLBo7B8Luss0sLlThstU51A6BfGlo7vVdW
+ //dYMaNd3APf9APANq8JtAAAA
+X-Change-ID: 20261124-rk-crypto-37d6d5a51350
+To: clabbe@baylibre.com, heiko@sntech.de, herbert@gondor.apana.org.au, 
+ davem@davemloft.net
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795495308; l=1418;
+ i=shyckless@gmail.com; s=default; h=from:subject:message-id;
+ bh=AgEW09Ja4be96HPfEZUyJHdtDhjRWUkcTv5e5vEm5VU=;
+ b=z5SJG0ZYe/0QvbJ44vYq6t5KtYtYvnZ9FR9nBfe/4VDMot38yUW1Cah2mRq2R8ewl7/tCBvxf
+ cFFlOCDNGk/CYbT9LKvmoQdE78WSY+9SQ7MYp4Mj+tExK4ZTiGIahjC
+X-Developer-Key: i=shyckless@gmail.com; a=ed25519;
+ pk=pMtccVGiWES3bV+7YBFuBclkvq2n2HBHQ5azaBrK2lY=
+X-Endpoint-Received: by B4 Relay for shyckless@gmail.com/default with
+ auth_id=1498
+X-Original-From: Suyuan Wang <shyckless@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,37 +107,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: shyckless@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> in some topologies the replay here can still reach the MDIO bus before
-> the MAC has resumed.
+From: Suyuan Wang <stevewong@hust.edu.cn>
 
-Yes, the commit message describes it; the patch moves this access
-later, not earlier.
+rk_cipher_run() takes a runtime PM reference with
+pm_runtime_resume_and_get() at the start of every request. The normal
+exit path drops it again at the theend label.
 
-> Can this abort every suspend for a Broadcom BCM54210E behind stmmac with
-> PHY Wake-on-LAN on a level-triggered line?
+If dma_map_sg() fails, the function jumps to theend_sgs or theend_iv
+and returns the error without calling pm_runtime_put_autosuspend().
+Each such request leaves one usage count behind, so the device can no
+longer runtime suspend.
 
-That is the level-triggered case the commit message describes: the PHY
-driver has to restrict its interrupt to Wake-on-LAN in its suspend
-callback. I have no such hardware; bcm54xx_suspend() is for a separate
-patch.
+Drop the reference on this error path too.
 
-> Could the check fall back to irqd_is_wakeup_set() for nested-thread
-> lines?
+Found with a static analysis tool and checked by hand.
 
-The cover letter lists these lines as not covered. Enabling one in the
-noirq phase is not safe: enable_irq() goes through chip_bus_sync_unlock(),
-which on regmap-irq writes the mask over I2C or SPI while the bus
-controller may already be suspended.
+Fixes: 9dcd71c863a6 ("crypto: rockchip - Add support for RK3399")
+Cc: stable@vger.kernel.org
+Co-developed-by: Kaixuan Li <kaixuan.li@ntu.edu.sg>
+Signed-off-by: Kaixuan Li <kaixuan.li@ntu.edu.sg>
+Signed-off-by: Suyuan Wang <stevewong@hust.edu.cn>
+---
+Compile tested on arm64 (W=1). I don't have the hardware.
+---
+ drivers/crypto/rockchip/rk3288_crypto_skcipher.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+index e80f9148c012..3f285175a194 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
++++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+@@ -427,6 +427,7 @@ static int rk_cipher_run(struct crypto_engine *engine, void *async_req)
+ 		dma_unmap_sg(rkc->dev, sgd, 1, DMA_FROM_DEVICE);
+ 	}
+ theend_iv:
++	pm_runtime_put_autosuspend(rkc->dev);
+ 	return err;
+ }
+ 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
