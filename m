@@ -2,102 +2,86 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 97E04606A31E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 04:42:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4605C606A31E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 07:56:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RMmXh7Ej;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=MfXr9DVs
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JiwWLV+3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=VFuEsaE/oqDe/+KcsHTqU03zTv3bvGpe4f733IRoIFc=; b=RMmXh7EjXomoIBl+OsDBZ+Aqg8
-	TzhiEXSeVNt8GMurX+w3sXWimRjoMQlpn8e6JwvNBg+LFPoOk5DAVtWuQJ57MEEYBF06wgoLCRt1y
-	NrLKomKFOD58CDvOV57L1Q74iIQI3D6/xQ/M4HAPs9jqxPAsdOGWzaM7viU63O87CrJ9VF15rvWC6
-	HIEAZZA7p6ADVf/OM6q7zEmf4PU0jMoYJAm4piLGxRROwKwR8M23L6EndxBLSnVZSFHdg1uYPGEPP
-	uLDPYAOV1NRAi1bEGNhgFKel2F3sb2XMB8NhEM82Ow864HfgRbGy061GaFe8Xqu1O2ZsH8W8AFHO7
-	n7f18Elw==;
+	bh=czjgrTyV5+b7Q2JGtM3b67fPooSg/KQlXg4DAB2Yem4=; b=JiwWLV+3EbM7eU++OX4xhRSBt/
+	yN0DdcJkbmCjeH0vpwlTRstH/oEJMLNIR4IZ8GEg2ILS7J1sgKrcz2ssxaU+TlkXTbM51i6ly9WmY
+	4hZ/IjNQdllzdOUCLdDKBjFzisQmCl1kfwzMDMJ+40Wu+0ztCw4JwDj5LjBsk14umMGUHr4ljAkhT
+	iXdwBDQ9pgLNaqt9kRRieLKeg2MSfBsg2MudmpRkVigXRGxSz6YVbAcZf4mVPFhhYlqX+4gy2M7Wu
+	8A025a53O4WuSjqg+lAQOdCpyC5NfgSEDZqM7j+RJCkUSMvrkhobbmgYomPQwb63mIlGTWaf59cqs
+	0dWQ+uUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xViLt-00000005YoH-0NZU;
-	Tue, 24 Nov 2026 04:41:57 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xVlOL-00000005p0c-0Ui2;
+	Tue, 24 Nov 2026 07:56:41 +0000
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xViLr-00000005Yni-3Rvq;
-	Tue, 24 Nov 2026 04:41:56 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 423D143656;
-	Tue, 24 Nov 2026 04:41:55 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795495315;
-	b=Ujt+ZafxNkdPO8AYE0YAWnp3gePWbGu6E2AFBvUfrpM171Lr7urm4yg1EMgnPVrmorp0
-	 0Uaz1JkJntHnHG7TudfRFpKaziLaAPZkZMQvge6EdkIU35BsHMxYsGe0K73Y+Xf/UZpb6
-	 TGHvaVOdcASo0t02xAgCICTXSv9brE/mgk6in239nxS9y7srETFvQlfJOCpfuPMSbvwpU
-	 cOJ5M7Qo/VAEJfvEZS1dfR6jZY+DngIrTYog3/mQbHAZaE+PVipZQNvh7vq0wqDbJtty1
-	 s71lUJRcsUtComDrQvsxuWy6mPsOPjVYxiljQToa+msh3aUCMaoEfmq9AQpieL9ywqw==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795495315;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:
-	 X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=w+k/XSop6T3iwyoxO1V6neN6LtpJfRFzAgcO+cSEBlI=;
-	b=V9WuGdQuJgwltM2ke7I/sfAwvN2MdAzOzxvL0JwoZA/UaVkLEhMUIMQTle2Eqz42fqK8
-	 I9K9DIg0XjRd0OcemAI3ReJGauOXzfrbHgEM1+QDWoqoAZ54SQFA7TD8LVfPAhGK/vvY6
-	 XxeLLYhi7z49zShO0iEylnY9xiBX4O2Mr0M6vjbWrXV6hF4bG9viCvKF3g1gb8wA7wbFu
-	 1SLEqK10EeBSL78DkI4dNf6Fw4ecCa7kh8wybrsvZ4anLa8NrRvYfKDY0G7gFh8VoSizh
-	 VPJYdZZNhdK6TR3SlGsA/RZvTcPVBBtxopdektq9azhFhikUrYldtBFsRna3xJSUXiA==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 52F161F000CA;
-	Tue, 24 Nov 2026 04:41:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795495315;
-	bh=w+k/XSop6T3iwyoxO1V6neN6LtpJfRFzAgcO+cSEBlI=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=MfXr9DVs1vBllVYorIBfgTy0hYCHe60ZAZTyNf3hPWl1JQGAG1lFTPj9izFz065uw
-	 3WVuYeTCk1oD9L+wS4oSGR8txMyA/pN9X+D0zVUZhqBKw3siyMcMWeLhZ2aAR0Ks//
-	 nXMSF3bbnadujDo86yk+F//yKlh+q0uVKApYMwB0a5loJX2xDsPrLMVS9wkrmZ0oTj
-	 NBYl1tGIAvSqllzcLuWozyKqsMBmruyAoOLIcXmIuLdjr+OhmZ3fHEKeLajmdBdI0+
-	 Y57vovqL2IuArbYtDhfseX2k0z4kCEuVQg9QTcEfuC4leTF+lkBpp+nb3NjZk/tIa6
-	 LbXcVW5hH5/dw==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id DD54D4C899;
-	Tue, 24 Nov 2026 04:41:48 +0000 (UTC)
-From: Suyuan Wang via B4 Relay <devnull+shyckless.gmail.com@kernel.org>
-Date: Tue, 24 Nov 2026 04:41:48 +0000
-Subject: [PATCH] crypto: rockchip - Drop the runtime PM reference on DMA
- mapping errors
+	id 1xVlOB-00000005oxm-3d83;
+	Tue, 24 Nov 2026 07:56:40 +0000
+Received: from edelgard.fodlan.icenowy.me (unknown [120.85.97.139])
+	by APP-01 (Coremail) with SMTP id qwCowABHbfcVQwVrAUaUAQ--.8758S2;
+	Tue, 24 Nov 2026 15:56:06 +0800 (CST)
+From: Icenowy Zheng <zhengxingda@iscas.ac.cn>
+Subject: [PATCH v3 0/2] drm/bridge: add glue driver for T-Head TH1520 DW
+ MIPI DSI
+Date: Tue, 24 Nov 2026 15:56:01 +0800
+Message-Id: <20261124-th1520-dw-mipi-dsi-v3-0-ffcf2d87971b@iscas.ac.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261124-rk-crypto-v1-1-8fb89152fac0@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAIsVBWsC/yXM0QpAMBSA4VfRubayMcqryMVsB4dCZ4jk3Q2XX
- /39F3hkQg9ldAHjTp7mKUDGEdjeTB0KcsGgEpVLqTLBo7B8Luss0sLlThstU51A6BfGlo7vVdW
- //dYMaNd3APf9APANq8JtAAAA
-X-Change-ID: 20261124-rk-crypto-37d6d5a51350
-To: clabbe@baylibre.com, heiko@sntech.de, herbert@gondor.apana.org.au, 
- davem@davemloft.net
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-crypto@vger.kernel.org, linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795495308; l=1418;
- i=shyckless@gmail.com; s=default; h=from:subject:message-id;
- bh=AgEW09Ja4be96HPfEZUyJHdtDhjRWUkcTv5e5vEm5VU=;
- b=z5SJG0ZYe/0QvbJ44vYq6t5KtYtYvnZ9FR9nBfe/4VDMot38yUW1Cah2mRq2R8ewl7/tCBvxf
- cFFlOCDNGk/CYbT9LKvmoQdE78WSY+9SQ7MYp4Mj+tExK4ZTiGIahjC
-X-Developer-Key: i=shyckless@gmail.com; a=ed25519;
- pk=pMtccVGiWES3bV+7YBFuBclkvq2n2HBHQ5azaBrK2lY=
-X-Endpoint-Received: by B4 Relay for shyckless@gmail.com/default with
- auth_id=1498
-X-Original-From: Suyuan Wang <shyckless@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/32NywrCMBQFf0WyNiWPxiau/A9xkeZhr2BbkhqV0
+ n83qQsRxOXAOTMzii6Ai2i/mVFwCSIMfQa+3SDT6f7sMNjMiBG2o4QTPHVUMILtHV9hBGwjYCG
+ JFS1rFPMK5eMYnIfHKj2e3hxv7cWZqZjKooM4DeG5VhMtu7+BRDHBjeCe195yUvsDRKNjpU1le
+ lQSiX0klKqfEpYlSrfCK0mkl823ZFmWF34qUGENAQAA
+X-Change-ID: 20261030-th1520-dw-mipi-dsi-580d5b2792f9
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andyshrk@163.com>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-riscv@lists.infradead.org, 
+ Icneowy Zheng <uwu@icenowy.me>, Han Gao <gaohan@iscas.ac.cn>, 
+ Icenowy Zheng <zhengxingda@iscas.ac.cn>
+X-Mailer: b4 0.15.0
+X-CM-TRANSID: qwCowABHbfcVQwVrAUaUAQ--.8758S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7tryfKw1fKr4rAFW7Gw4rKrg_yoW8trWrpa
+	17Gry3JFyDJrZ29F9ayr18XFWfG3Z5JF98KFW5Kw1vvan8u3W8Xr9FkFs5WF1UXrn3uF42
+	vF4jg348WrsFvaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9Y14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
+	6r4UJwA2z4x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
+	CE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
+	2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJV
+	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2
+	Y2ka0xkIwI1lc7CjxVAaw2AFwI0_GFv_Wryl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x
+	0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2
+	zVAF1VAY17CE14v26r4a6rW5MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF
+	4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWU
+	CwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCT
+	nIWIevJa73UjIFyTuYvjTRM6wCDUUUU
+X-CM-SenderInfo: x2kh0wp0lqwv3d6l2u1dvotugofq/
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261123_235636_526872_1440E013 
+X-CRM114-Status: GOOD (  11.19  )
+X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,7 +91,6 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: shyckless@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -118,47 +101,57 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Suyuan Wang <stevewong@hust.edu.cn>
+T-Head TH1520 contains a DesignWare MIPI DSI host controller paired with
+an internal DesignWare PHY, as a similar design (but with a different
+PHY) with the Rockchip DW MIPI DSI.
 
-rk_cipher_run() takes a runtime PM reference with
-pm_runtime_resume_and_get() at the start of every request. The normal
-exit path drops it again at the theend label.
+The functionality to write to the PHY is shared between these two
+implementations of DW MIPI DSI, so it's extracted from the Rockchip
+driver to the common code. (The same sequence could be seen in the
+HiSilicon Kirin DRM driver, but that one hasn't been converted to common
+DW MIPI DSI.)
 
-If dma_map_sg() fails, the function jumps to theend_sgs or theend_iv
-and returns the error without calling pm_runtime_put_autosuspend().
-Each such request leaves one usage count behind, so the device can no
-longer runtime suspend.
+Tested on a Lichee Console 4A (with a Mingjun MJ070BI30IA2 panel) with
+further pending DT patches.
 
-Drop the reference on this error path too.
+One question remains: I have to copy the extra lane bandwidth headroom
+from the Rockchip driver, otherwise the Mingjun panel cannot keep sync
+to the display signal; from my testing, changing the hardcoded
+PHY_STOP_WAIT_TIME from 0x20 to 0x2 (which is written by the vendor
+driver) can also make this panel to work w/o the extra headroom. I want
+some advice on whether to keep the extra headroom or changing the common
+code to make the PHY_STOP_WAIT_TIME parameter adjustable.
 
-Found with a static analysis tool and checked by hand.
-
-Fixes: 9dcd71c863a6 ("crypto: rockchip - Add support for RK3399")
-Cc: stable@vger.kernel.org
-Co-developed-by: Kaixuan Li <kaixuan.li@ntu.edu.sg>
-Signed-off-by: Kaixuan Li <kaixuan.li@ntu.edu.sg>
-Signed-off-by: Suyuan Wang <stevewong@hust.edu.cn>
+Signed-off-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
 ---
-Compile tested on arm64 (W=1). I don't have the hardware.
+Changes in v3:
+- Fixed a remaining `syscon` in the DT binding.
+- Link to v2: https://patch.msgid.link/20261119-th1520-dw-mipi-dsi-v2-0-9ab5f9808f87@iscas.ac.cn
+
+Changes in v2:
+- Changed `syscon` to `thead,vo-syscon` in the DT binding.
+- Dropped the patch moving common PHY write routine to dw-mipi-dsi
+  common code.
+- Fixed a few problems pointed out by Sashiko in v1.
+- Link to v1: https://patch.msgid.link/20261030-th1520-dw-mipi-dsi-v1-0-753f34fd304f@iscas.ac.cn
+
 ---
- drivers/crypto/rockchip/rk3288_crypto_skcipher.c | 1 +
- 1 file changed, 1 insertion(+)
+Icenowy Zheng (2):
+      dt-bindings: display: bridge: document TH1520 MIPI DSI controller
+      drm/bridge: add TH1520 DesignWare MIPI DSI host controller
 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-index e80f9148c012..3f285175a194 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-@@ -427,6 +427,7 @@ static int rk_cipher_run(struct crypto_engine *engine, void *async_req)
- 		dma_unmap_sg(rkc->dev, sgd, 1, DMA_FROM_DEVICE);
- 	}
- theend_iv:
-+	pm_runtime_put_autosuspend(rkc->dev);
- 	return err;
- }
- 
+ .../display/bridge/thead,th1520-dw-mipi-dsi.yaml   | 103 ++++
+ drivers/gpu/drm/bridge/Kconfig                     |  12 +
+ drivers/gpu/drm/bridge/Makefile                    |   1 +
+ drivers/gpu/drm/bridge/th1520-dw-mipi-dsi.c        | 570 +++++++++++++++++++++
+ 4 files changed, 686 insertions(+)
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20261030-th1520-dw-mipi-dsi-580d5b2792f9
 
-
-
+Best regards,
+--  
+Icenowy Zheng <zhengxingda@iscas.ac.cn>
 
 
 _______________________________________________
