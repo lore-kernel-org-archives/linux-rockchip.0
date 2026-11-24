@@ -2,73 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EADD3606A32A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 15:15:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4718E606A680
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 15:23:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qdbsD5ag;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=AoPuYpEg
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jCKbydZv;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=kmjlBZil
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Hp3d/MmTSqFKP5b1oWXKKlH5Wqhh/rbcQVL/wOp11Gc=; b=qdbsD5agQOLLzxZI7vOr2gYWeA
-	1gHnbLCzfSWGKMlr4PIlU0XUupT6cCj6tTNnxIm7eYU1jS+Aiqvi/SAKrlmYPRmlqKxsKtBOoeouM
-	sNwHiiHNw8eV7fGUjGgE1706wFPgK6LouRMITkxVZmg486LkbRW/vW4ujuktEJibQVluOQPUH5hmU
-	OdSD7x2NDFzib7hFJQIiiqN4SBDzSVdbIbDIbmFO7l2+pkBiB6Zd8LPlyAR++u/gfB14Mq07gPcL/
-	pIAMTb6V4A/tIkRukuMMhjP+ZOBWvFIMIYRg2ekoCG7TYfABJZu7pf7R0TOgxqLvDuwCv6ofFGvHD
-	ag0/T7lQ==;
+	bh=Ke4Ak4rQVrCX+hAuMm8ab7kReO4uwPyyegpXhuj6u4U=; b=jCKbydZvX50hzAA+KkaOssuYyS
+	xXG2JO6TxdLVUxq369yBYueBPXrgsn1akGQbnzl6hKMiwl+HRSjntDebFbRG1tcVAUHuIWIYXxraL
+	WsTMXEhIRvh2Fc8CwCzpxw1k2CgTCFF/FzrKVc0wRkF3MrLlf1s05IWfgUu/rPq8AUd48Ipchdmrv
+	qdaVk/GRBBcW5aVkIXqOVzEnVti3XTiwxd9sKF/cbGZEaWsdrUEnSoq0xbv1ioDN+4k8mpqsHoKLy
+	4QTobZdetk83Tpp5iOjl7Nd0An4jNwCmehZtBfVMjzrK0Tu4LkJUAppFvRMy4+yAhczDoqcnPxHXh
+	w82t2diA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWEiY-0000000AJXA-1Dr6;
-	Wed, 25 Nov 2026 15:15:30 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xWEq9-0000000AKWi-1DxH;
+	Wed, 25 Nov 2026 15:23:21 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWEhU-0000000AJ2w-3axL;
-	Wed, 25 Nov 2026 15:14:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795619662;
-	bh=tBuZgwzt7+tIWp9kUOKRVQyHT1nAxNT4CFenV+1jQGw=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=AoPuYpEg952pRBEfI7ge8wHcg98UqA/cL7JLli864A6UNuql3FWr4K4UwmGzMRgIS
-	 QEQPZa87q3J6cOFRjAcxYHCPXUylcD6OeusWnWq5TweEfq+9ubYhhNEorL5jv8XaBo
-	 K3Rx9z0Ln2FYImDawOU5qyOPrAfIBvblaRcP0FkaOpA88WxDdOt4dlY1H5zDYR9A2/
-	 O2C3s5iXkRiQPqtXz4oV3elLyJU7e8gZ5TNwzl+S5hRp+u6/9pZy8H5rkaobWry2Bb
-	 dyuSg9slOnDNxs7lnKOFyf7qAqDHenOcTUenyweIicrdICApbbkSMrAEf9MLNVj1Gq
-	 Dihuv5YaXDqPg==
-Received: from [192.168.0.15] (unknown [100.64.0.170])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3C98D17E120C;
-	Wed, 25 Nov 2026 16:14:21 +0100 (CET)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-Date: Wed, 25 Nov 2026 10:12:01 -0500
-Subject: [PATCH v4 4/5] media: hantro: Add per-context fdinfo usage metrics
+	id 1xWEq7-0000000AKWB-0sOP;
+	Wed, 25 Nov 2026 15:23:19 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 968B240558;
+	Wed, 25 Nov 2026 15:23:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A8461F000C6;
+	Wed, 25 Nov 2026 15:23:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795620198;
+	bh=uNCx6F0Jb50sazmOSgNSIQP2RpHDiNerOJw/r/EpMcg=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=kmjlBZilBpRLesFyxaHfvlpUsDA53eQMDbSrz0P5ZoSpdl/WEy3QIQPTICnYOLInQ
+	 oh0SDdImWewF5vAnS6h/1R7v0rfpdZLX1cpM1S0j+j2R3FCcTSZ6P/7i1b2JBiWDmZ
+	 2ATK8TqMSw7z9EvU9exJyjwr+K5MQIAlFC2qJePcdeSVIxtbt4I9KU2+I1jhSp/6I7
+	 TATbxIyWdoVJTXeZvhJjDBIy244Nfei/nf65YxGZQUx8BFulyeGYbjBbHGDS6uyykP
+	 1don6BG/kIeEzHyZHru26XxDbLlMvpIjF2lOZM5G6u0qmis7rEm9VIxRNBc2atGSG6
+	 e5WfeSuLYNECQ==
+From: Mark Brown <broonie@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, quentin.schulz@cherry.de, 
+ Lee Jones <lee@kernel.org>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+In-Reply-To: <20261119135808.2377849-1-heiko@sntech.de>
+References: <20261119135808.2377849-1-heiko@sntech.de>
+Subject: Re: [PATCH v4 0/6] spi: Implement a atomic transfer as a last
+ resort
+Message-Id: <179554960286.947306.16162137377244301666.b4-ty@b4>
+Date: Tue, 24 Nov 2026 19:46:42 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261125-v4l2-add-fdinfo-v4-4-2dc73fad9932@collabora.com>
-References: <20261125-v4l2-add-fdinfo-v4-0-2dc73fad9932@collabora.com>
-In-Reply-To: <20261125-v4l2-add-fdinfo-v4-0-2dc73fad9932@collabora.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, kernel@collabora.com, 
- Detlev Casanova <detlev.casanova@collabora.com>, 
- linux-arm-kernel@lists.infradead.org, 
- Christopher Healy <healych@amazon.com>
-X-Mailer: b4 0.15.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_071425_084028_F16B8120 
-X-CRM114-Status: GOOD (  16.70  )
-X-Spam-Score: -2.1 (--)
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2012; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=BkRnoZ6dXxdejugLnRSwCT4+Gvx/LKOaQRRGFM8oQfc=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLLZ/ia3cWf/26wj2uthZiV6J1rtcaB7mNXy9W5T2ef6b
+ 14pEyvTUcrCIMbFICumyBKXxf2yvuT1Gr6DC9tg5rAygQxh4OIUgIn8eMTwP/qcmtKhyz6ydh5J
+ Oxv3rrSeez77sqFy64Sfwb+u7TTfbczI8Kl+Yqxpl590/dcLH5+cmpHFzcSieltc7lz3jhTTutC
+ rbAA=
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,179 +78,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DATE_IN_PAST_12_24,
+	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Christopher Healy <healych@amazon.com>
+On Thu, 19 Nov 2026 14:58:02 +0100, Heiko Stuebner wrote:
+> spi: Implement a atomic transfer as a last resort
+> 
+> SPI devices at times are used as PMICs including a power-controller
+> functionality that should turn off a system.
+> 
+> This happens in an atomic context very late during the shutdown, where
+> no interrupts are available anymore and conflicts with the asynchronous
+> nature of the SPI subsystem.
+> 
+> [...]
 
-Add VPU981 hardware utilization metrics to the Hantro VPU stateless
-codec driver, exposed via v4l2_metrics.
+Applied to
 
-Update the v4l2_metrics instance each time a job completes with the
-time it took in ns and the nuber of cycles reported by the hardware.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.5
 
-This enables userspace monitoring tools to compute per-process decoder
-and encoder utilization. The current and max frequency keys report the
-same value today since the driver lacks devfreq support, but will
-diverge once DVFS is added, allowing userspace to approximate true
-capacity utilization without any fdinfo code changes.
+Thanks!
 
-Signed-off-by: Christopher Healy <healych@amazon.com>
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
- drivers/media/platform/verisilicon/hantro.h           |  4 ++++
- drivers/media/platform/verisilicon/hantro_drv.c       | 19 +++++++++++++++++++
- drivers/media/platform/verisilicon/hantro_hw.h        |  1 +
- .../media/platform/verisilicon/rockchip_vpu981_regs.h |  1 +
- drivers/media/platform/verisilicon/rockchip_vpu_hw.c  |  6 ++++++
- 5 files changed, 31 insertions(+)
+[1/6] spi: Allow spi_toggle_csgpiod() to get called from atomic contexts
+      https://git.kernel.org/broonie/spi/c/bf7dd2bcdb4b
+[2/6] spi: Allow spi_delay_exec() to be used from atomic contexts
+      https://git.kernel.org/broonie/spi/c/3a54ec9ea89f
+[3/6] spi: Export spi_set_cs() function
+      https://git.kernel.org/broonie/spi/c/a26e42ee67cb
+[4/6] spi: Add infrastructure for atomic sync transfers
+      https://git.kernel.org/broonie/spi/c/4ab1c64f3f04
+[5/6] spi: rockchip: Fix runtime resume error handling
+      https://git.kernel.org/broonie/spi/c/2aa087742af9
+[6/6] spi: rockchip: Add an atomic transfer function
+      https://git.kernel.org/broonie/spi/c/324d55c0103c
 
-diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-index 0353de154a1e..2c136350d37a 100644
---- a/drivers/media/platform/verisilicon/hantro.h
-+++ b/drivers/media/platform/verisilicon/hantro.h
-@@ -16,6 +16,7 @@
- #include <linux/videodev2.h>
- #include <linux/wait.h>
- #include <linux/clk.h>
-+#include <linux/ktime.h>
- #include <linux/reset.h>
- 
- #include <media/v4l2-ctrls.h>
-@@ -236,6 +237,7 @@ struct hantro_dev {
-  * @bit_depth:		Bit depth of current frame
-  * @need_postproc:	Set to true if the bitstream features require to
-  *			use the post-processor.
-+ * @start_time:		The time at which the running job has been started.
-  *
-  * @codec_ops:		Set of operations related to codec mode.
-  * @postproc:		Post-processing context.
-@@ -268,6 +270,8 @@ struct hantro_ctx {
- 	struct hantro_postproc_ctx postproc;
- 	bool need_postproc;
- 
-+	ktime_t start_time;
-+
- 	/* Specific for particular codec modes. */
- 	union {
- 		struct hantro_h264_dec_hw_ctx h264_dec;
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 3734ea701145..6b57343ec062 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -21,6 +21,7 @@
- #include <linux/videodev2.h>
- #include <linux/workqueue.h>
- #include <media/v4l2-event.h>
-+#include <media/v4l2-metrics.h>
- #include <media/v4l2-mem2mem.h>
- #include <media/videobuf2-core.h>
- #include <media/videobuf2-vmalloc.h>
-@@ -90,6 +91,9 @@ static void hantro_job_finish(struct hantro_ctx *ctx,
- {
- 	struct hantro_dev *vpu = ctx->dev;
- 
-+	v4l2_metrics_update_hw_time(&ctx->fh.metrics,
-+				    ktime_to_ns(ktime_sub(ktime_get(), ctx->start_time)));
-+
- 	pm_runtime_put_autosuspend(vpu->dev);
- 	hantro_job_finish_no_pm(ctx, result);
- }
-@@ -182,6 +186,8 @@ static void device_run(void *priv)
- 
- 	v4l2_m2m_buf_copy_metadata(src, dst);
- 
-+	ctx->start_time = ktime_get();
-+
- 	ret = ctx->codec_ops->run(ctx);
- 	if (ret)
- 		hantro_job_finish(ctx, VB2_BUF_STATE_ERROR);
-@@ -656,6 +662,9 @@ static int hantro_open(struct file *filp)
- 
- 	v4l2_fh_init(&ctx->fh, vdev);
- 	v4l2_fh_add(&ctx->fh, filp);
-+	v4l2_metrics_set_driver_type(&ctx->fh.metrics,
-+				     ctx->is_encoder ? V4L2_DRIVER_TYPE_STATELESS_ENCODER
-+						     : V4L2_DRIVER_TYPE_STATELESS_DECODER);
- 
- 	hantro_reset_fmts(ctx);
- 
-@@ -693,10 +702,20 @@ static int hantro_release(struct file *filp)
- 	return 0;
- }
- 
-+static void hantro_show_fdinfo(struct seq_file *m, struct file *f)
-+{
-+	struct hantro_ctx *ctx = file_to_ctx(f);
-+	struct hantro_dev *vpu = ctx->dev;
-+
-+	v4l2_metrics_show(&ctx->fh.metrics, m, 0);
-+	v4l2_metrics_show_clock(m, vpu->clocks[0].clk, 0);
-+}
-+
- static const struct v4l2_file_operations hantro_fops = {
- 	.owner = THIS_MODULE,
- 	.open = hantro_open,
- 	.release = hantro_release,
-+	.show_fdinfo = hantro_show_fdinfo,
- 	.poll = v4l2_m2m_fop_poll,
- 	.unlocked_ioctl = video_ioctl2,
- 	.mmap = v4l2_m2m_fop_mmap,
-diff --git a/drivers/media/platform/verisilicon/hantro_hw.h b/drivers/media/platform/verisilicon/hantro_hw.h
-index 13e573f1f19d..7259ea89adcc 100644
---- a/drivers/media/platform/verisilicon/hantro_hw.h
-+++ b/drivers/media/platform/verisilicon/hantro_hw.h
-@@ -28,6 +28,7 @@
- #define FMT_MIN_WIDTH		48
- #define FMT_MIN_HEIGHT		48
- #define FMT_HD_WIDTH		1280
-+
- #define FMT_HD_HEIGHT		720
- #define FMT_FHD_WIDTH		1920
- #define FMT_FHD_HEIGHT		1088
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h b/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
-index e4008da64f19..5a1d1e1e941e 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
-@@ -451,6 +451,7 @@
- #define av1_pp0_dup_ver			AV1_DEC_REG(394, 16, 0xff)
- #define av1_pp0_dup_hor			AV1_DEC_REG(394, 24, 0xff)
- 
-+#define AV1_CYCLE_COUNT                 (AV1_SWREG(63))
- #define AV1_TILE_OUT_LU			(AV1_SWREG(65))
- #define AV1_REFERENCE_Y(i)		(AV1_SWREG(67) + ((i) * 0x8))
- #define AV1_SEGMENTATION		(AV1_SWREG(81))
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index 02673be9878e..fd3081242685 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -423,13 +423,19 @@ static irqreturn_t rockchip_vpu2_vepu_irq(int irq, void *dev_id)
- static irqreturn_t rk3588_vpu981_irq(int irq, void *dev_id)
- {
- 	struct hantro_dev *vpu = dev_id;
-+	struct hantro_ctx *ctx =
-+		v4l2_m2m_get_curr_priv(vpu->m2m_dev);
- 	enum vb2_buffer_state state;
- 	u32 status;
-+	u32 cycles;
- 
- 	status = vdpu_read(vpu, AV1_REG_INTERRUPT);
- 	state = (status & AV1_REG_INTERRUPT_DEC_RDY_INT) ?
- 		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
- 
-+	cycles = vdpu_read(vpu, AV1_CYCLE_COUNT);
-+	v4l2_metrics_update_hw_cycles(&ctx->fh.metrics, cycles);
-+
- 	vdpu_write(vpu, 0, AV1_REG_INTERRUPT);
- 	vdpu_write(vpu, AV1_REG_CONFIG_DEC_CLK_GATE_E, AV1_REG_CONFIG);
- 
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
--- 
-2.56.1
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
