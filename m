@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5DAAC606A31E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 20:46:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6AFAA606A680
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 20:51:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dDfpyLjw;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=ZPwD4VLg
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qNZOfIr9;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=iqVqhHVF
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,69 +14,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ej2B57sMeyE/lSmBL3t31pL41lVf0wDNrAVOs9HxMrY=; b=dDfpyLjwj08igw4pxEUHGSMxZ9
-	aPQUtk9mVHktOaXsiiGYIMgI5BUUQ4E4egV65kDDVKzxYpxy0je4TmXXom6W4ai0LMRlG2L7P+eho
-	BwOH5xoPU4CH2ADHp93RXeS6OhINWqNCvi2T2vi3QTu0PE/ukeUqOeroLPeLwc5mF4VTfI4URoSdF
-	v7JIE/5dvrFLf9GAA0lLFIg4JqM9O/5NKs3C2I7Br3I9mCkW2YcKb/xVxHfVyv64i+hDyN1cxLlYe
-	vesEvV9FbcfQsWak8GmtOg0GZJnvtfkAa7aDS+C8GJmY+pT/9fV8pR10yD4oX0s2oSJV5YOtE87Hx
-	ilOGUecg==;
+	bh=DYmezy+WBP24+nWbDXmM90ioZ2khLeSYj5OQhia6N84=; b=qNZOfIr98h+80r7Z1T3MvnuFBb
+	tYMb+bi865/otpu9iJZPVgzHGsQHYrCRTy4z01J1iPBtKAQvJC4ti0ihrYuOdSiqhvA/6LoiZB7BC
+	D0dmSn2Bs+iQcxCofC3GIC2VoYXoSBJiywQIhGSSAFAdkFYCzIwNOmM2NDZoxcom6c6J1aCaC0Kvx
+	Kymss8cMkaah6rpP8nncY9dPro7AX9QBXOflCtZunfQWo0gR6XRTKKHzc3UAkx7omvpO1RDs3WCHJ
+	7cLn0zPmpRtT7LnKINJYB5ohJi+3I00rLwnK7fuRnMcQKBQe0V/3gPLZaSwLaS8XO/QMpoQbRJjZL
+	8QLQCYVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVxPY-00000007l86-1uuo;
-	Tue, 24 Nov 2026 20:46:44 +0000
-Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f])
+	id 1xVxUV-00000007n42-2aEu;
+	Tue, 24 Nov 2026 20:51:51 +0000
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVxPU-00000007l6Y-3Q0b
+	id 1xVxUR-00000007n2i-39n4
 	for linux-rockchip@lists.infradead.org;
-	Tue, 24 Nov 2026 20:46:42 +0000
-Received: by mail-qt1-x82f.google.com with SMTP id d75a77b69052e-55c35262674so38641471cf.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 24 Nov 2026 12:46:40 -0800 (PST)
+	Tue, 24 Nov 2026 20:51:50 +0000
+Received: by mail-qt1-x836.google.com with SMTP id d75a77b69052e-53644ab1f7bso44635631cf.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 24 Nov 2026 12:51:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1795553199; x=1796157999; darn=lists.infradead.org;
+        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1795553506; x=1796158306; darn=lists.infradead.org;
         h=mime-version:user-agent:content-type:autocrypt:references
          :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=fiIU6xlbIXxSNj9YDB57fALFXrcAD48xRem5XKs4A1U=;
-        b=ZPwD4VLgt1BHvUVYZ/AYCj6Sq2/k3eliCJ7B8t+NjMcKOsA6RcTBEKH0ELpRMStNxD
-         62V3Aa6cDuUlttdZkwLCimgA+xpLoEDnBS+ik6PF+/D8HM9pqvIiPrbS4vM0dFl99+vc
-         D9fCwItJSxiCN/6YJpEqbscgKDt1gN72GB1yhDbWCs4cd+ze8g+H24Drq8xzdezTM2tx
-         /CHHfyrKLin2IraDi/T4PQZT8EF/GtYDS05CrYEeKsciIIPIHvvOoCAqwZLdzAgzxk0x
-         7zJTNdnnw00EHtET3z4nl2yrFU1pwWNurj3Ees3RMzfNNuyz/1E4zeZd0Y9Hd4PQvlV0
-         8jWA==
+        bh=RvU1ESTYysczxCSetKI0TL55rpMf6chQXLmsCQQ9a7E=;
+        b=iqVqhHVFdb3+12owJtCfydsYyoECMDKgV0iaD9GdQDh48Wy56QaEgqPxBymOKqdqKf
+         8HMI3GtEFf1jyCnxTdefpKEuJHwWBRC9bs4DIwo0O3xZYwzOAsRL8HUZ3OgIY+pOSIn5
+         72osiXHFgZ1aTqM8Xvx9bTZzaTy0yKCxbKtTEiLVQc5OKODxfhgY/c6lockegVtkJ/w5
+         O4rcVhDZqt+aMXknn0ttAxUuNHsT7DiV07zZwqcpLz12dcwBbV10w8VTmultQ1HN23P+
+         n/JrB8tfrpAoVPR8t1NFs6CMf9FsaXRnoRRLtgWPEMDAnx3XxMxxs7KMhGvWoTv0zx4v
+         Ig6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795553199; x=1796157999;
+        d=1e100.net; s=20260707; t=1795553506; x=1796158306;
         h=mime-version:user-agent:content-type:autocrypt:references
          :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=fiIU6xlbIXxSNj9YDB57fALFXrcAD48xRem5XKs4A1U=;
-        b=WgUJDyKatC8ZuJ2HytILasXFpQNnuvaubt8w0kRPo3guXQyABdYJvMVx02WsAbbt0f
-         dUybwHlyDDkhHBfV2FfOwI2jFUN4LzLWVK5HN7x9iE7pvtHhQlErO1WVnWIsM1PhTAGr
-         yB8MAX2g8pmtUqQQdKe8PXsZBU0pykFM9Q/K/iWoj4+LxbTPTd8vFXcleccphK8q3r6T
-         E7aYURywMxjx9C0SjhQ/u/i0zYblkhT9/t0PRRakwHWhfZqtKGrQ6pCiNfGm0rv7gJaM
-         dNGlKeugnu3h0JLblQuqAhXqhddD1tLEjXU8WNyoQf3BtGjmUaMmB0UrXeAmJt/L2gEF
-         hxiQ==
-X-Forwarded-Encrypted: i=1; AL+hErHJaEB3UNuLYyRuJJdJHBq3P9YHxNb7BUAtrQYEwjMChck6A/FXYGC7ojG+GRzhGxl+dstoLFPkJdxxAZT0ng==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9RXlorRMQ7UQteto53b+Xe29DVBspvVriYTI8JghQkUivCVrjK
-	jJ4FIyv/QkHkcIi1pSynDxyVfR0HKaR4gzPD6UyaCNE7djKu0WWmswMELG1sumdCTDY=
-X-Gm-Gg: AZFdTZe2xPHcKN8Oj8kOGWlI1PcWmQ/P/jxT235miy6zMaok6dsN+Hue9pVCjAhgrBO
-	Se7Y9V5JkCer+V6lDHiDOz7Vre3o15Jz1Tgr4AAN+kl1zlTJGiHG6V7d+K4e7E8d6ypUN7lWjks
-	j3FeaiqcansxaUa37s4Kui/SxiD1YqitvOPX1aBToDtCEpTvEYK4JDuuNuXQAu6KIH4sxgP35z7
-	XxeLY7Pj7HmuZfj1Gx9+mOZvcuKD+ujxjrsdDEpq/0tRiceYm1WcmPQ/8bUegsNcCWumfQW8Wro
-	GX37ZF+V/f7jQyeRqLwR6URfbk6/0SJY7x+iCpq3WgOmfkwYrpzaxa2BWsSniefVgTq7nMxGXQ2
-	KfBrGPEzZi21YpEqUR/RpswnlI1fwtiI+Ptg9+3WkyHXSqdmvLtc79EP3i0TIKVqMkB1ickZ6Ow
-	vcEFlsI01Da9f2eoDHmoHPw4CBh0T/xHMwqdfYz7tOZ7gJU+Ik8FesW7cPZ+P7QVN7tb9tF5Ayo
-	eee8+0IUTa4s46LNLr28nm0vt+iv9cVg6V1cFNc6P/3exGH7xjuJNBKrB6DfDlwFwPqcfG72+Pw
-	aZlJ4F2rdx4pDJjIMp/NkiezY8wnpRVzy4MhcVwb8jTASCJGHw8blLI=
-X-Received: by 2002:ac8:5a50:0:b0:535:a5fa:ee05 with SMTP id d75a77b69052e-55d76a68f72mr297291921cf.69.1795553199445;
-        Tue, 24 Nov 2026 12:46:39 -0800 (PST)
+        bh=RvU1ESTYysczxCSetKI0TL55rpMf6chQXLmsCQQ9a7E=;
+        b=bPKIGEWC2QpdmElKH8JMXkEp3ZazmepGjAe4kGwPoepi2jbRkaB276jzTj2Tn+x1gA
+         ZKKv7oIgxKJ+77mh/PCMb4BnqRGuyb5gg9cA5qNefYixqj8PYt6dePxpVpLpN5HlC2VA
+         axPmHhzdTIBdnuBBB4jYJv3c81dEhikt/b7WouIcLUGx8TRCZYp89dhoI5r8QSfgcmv6
+         7odQY8l3Adn03iDIsIsep/wrGb5uTDMU69HRm/vEphk+xDZXIruHjlpTY5yT/w72wKZ1
+         YRUEN/Nl4rIfCFj4WC+FPu0QEeoCSB4JWCHOuv4ozs/L27g9lOPHgwNMk1ePAI011Zfk
+         N1Qg==
+X-Forwarded-Encrypted: i=1; AL+hErEFQp+tuPgEYJgOZKhu5LDDEJtfXXaeU9pyuZBXZrZd4ZPFuoDRwB8CbaU/i7Eaqv9lmNB71Hf7r0bNjyQSaQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8EtkzJ3KeCkWcBOQiz1BRtPDjd1v0m4s2a7cuPE2K820qI7r5k
+	1BUymszJM5CZ/DTacdy89e0kXQcm3PQh/iDwi8M8A/vnMfO8ikXbZGJ65f+SBJjuKLs=
+X-Gm-Gg: AZFdTZcGn8oT2xrO+Q+hz4DifTYYZIXlvBmK6HYp7Fg0G/f9p7UGhbHXYbRMf11TVjS
+	Ua575uizzpj3kYbI/Kuvp/Iwxiqzwawn7q08p4xFsWDH5zogvg/Brwb2XHwazC7/QSCXuBuxVV8
+	9A2qaxQAgwkkOEaFZ9qfeZ3liyOmdtpZ+GyCRQjifTbszMrtRBnhIIaiYs5PYnOfDNmDLuhZMAz
+	HnYchi/rUuQdO91oQaxNTiMWwADDMl/ytvIXv0thIlcEocPFLsdJ9yaljpLKFi7SZTFuqGtTPdt
+	5iFeEcrmcd+VdiRWkSDQdffzwm39iBe7koXqB9p49D3CRcxdtLruEN4yDaHBYNn695KnHvgsGN7
+	A6vyKE4ce5qogZPq5Ee6UOr5uJ0rmDaA5oC7DQgkE9LVAvEXMdXGyOhmu9et0ut5PcRuYUHEov1
+	DacYJxSFXJxdcxaOrjVDALoNLWie0dIvUmNWglpQ/7EO29+QPkUyF566nhQNiw43FziQqEKf8qb
+	kPRLE1XdaEj1mJWyZ3Rr0ZrKKQGBvy8izfS8klfbof48zJga1o/W3SM5tUJooq5WaftHEjtL/QN
+	fhPHCThfJP0VGGgCqnZS27uupIe7EKtXRJNsrXQe0+DG3buXTu6e5MHq19C8mlI9sSrOz6jHT6j
+	L
+X-Received: by 2002:a05:622a:613:b0:55d:3254:6253 with SMTP id d75a77b69052e-55d76a518bamr289760521cf.42.1795553506144;
+        Tue, 24 Nov 2026 12:51:46 -0800 (PST)
 Received: from ?IPv6:2606:6d00:11:8ec9::c41? ([2606:6d00:11:8ec9::c41])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-55d7c654585sm130765191cf.5.2026.11.24.12.46.37
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-92134796288sm142427246d6.6.2026.11.24.12.51.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Nov 2026 12:46:38 -0800 (PST)
-Message-ID: <bc5e98e046f373ae491210e218ded9f06f997734.camel@ndufresne.ca>
-Subject: Re: [PATCH v2 04/17] media: rockchip: rga: removed unused regmap
- member
+        Tue, 24 Nov 2026 12:51:45 -0800 (PST)
+Message-ID: <89a387a88aff111fde71f00474776d1462b3594b.camel@ndufresne.ca>
+Subject: Re: [PATCH v2 05/17] media: rockchip: rga: use devres version of
+ pm_runtime_enable
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
 To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
 	 <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
@@ -88,10 +89,10 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	kernel@pengutronix.de, Detlev Casanova <detlev.casanova@collabora.com>, 
  Michael Tretter <m.tretter@pengutronix.de>, Guangshuo Li
  <lgs201920130244@gmail.com>
-Date: Tue, 24 Nov 2026 15:46:37 -0500
-In-Reply-To: <20260916-spu-rga3multicore-v2-4-23aa2cb74e61@pengutronix.de>
+Date: Tue, 24 Nov 2026 15:51:44 -0500
+In-Reply-To: <20260916-spu-rga3multicore-v2-5-23aa2cb74e61@pengutronix.de>
 References: <20260916-spu-rga3multicore-v2-0-23aa2cb74e61@pengutronix.de>
-	 <20260916-spu-rga3multicore-v2-4-23aa2cb74e61@pengutronix.de>
+	 <20260916-spu-rga3multicore-v2-5-23aa2cb74e61@pengutronix.de>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -109,8 +110,8 @@ User-Agent: Evolution 3.62.1 (3.62.1-1.fc45)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_124640_877710_01B0E926 
-X-CRM114-Status: GOOD (  13.93  )
+X-CRM114-CacheID: sfid-20261124_125147_819000_37EC4097 
+X-CRM114-Status: GOOD (  18.98  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -121,7 +122,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7633495471303503629=="
+Content-Type: multipart/mixed; boundary="===============3805206228476384503=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -130,57 +131,137 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============7633495471303503629==
+--===============3805206228476384503==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-MYb0fk1ys1f42Xkvhfm5"
+	protocol="application/pgp-signature"; boundary="=-+FFLPuXOIBC694qENGcJ"
 
---=-MYb0fk1ys1f42Xkvhfm5
+--=-+FFLPuXOIBC694qENGcJ
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Le mercredi 16 septembre 2026 =C3=A0 17:09 +0200, Sven P=C3=BCschel a =C3=
 =A9crit=C2=A0:
-> The grf member variable is never accessed or written by the RGA driver.
-> Therefore drop it from the rockchip_rga struct.
+> Use the devres version of pm_runtime_enable named
+> devm_pm_runtime_enable to ease up the cleanup handling. Also it avoids
+> having a mixed cleanup order due to the following
+> devm_platform_ioremap_resource being cleaned up anyways after the probe
+> function has returned.
+>=20
+> This also changes some dev_err calls to dev_err_probe for convenient
+> returning. This may not print these messages in the error case, as
+> dev_err_probe may handle them differently based on the error (e.g.
+> ENOMEM won't be printed).
 >=20
 > Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
+>=20
+> ---
+> v2
+> - added
+> ---
+>  drivers/media/platform/rockchip/rga/rga.c | 34 +++++++++++--------------=
+------
+>  1 file changed, 12 insertions(+), 22 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/pl=
+atform/rockchip/rga/rga.c
+> index 8c03422d669cf..d7f0712177b70 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.c
+> +++ b/drivers/media/platform/rockchip/rga/rga.c
+> @@ -797,37 +797,31 @@ static int rga_probe(struct platform_device *pdev)
+>  =09if (ret)
+>  =09=09return dev_err_probe(&pdev->dev, ret, "Unable to parse OF data\n")=
+;
+> =20
+> -=09pm_runtime_enable(rga->dev);
+> +=09ret =3D devm_pm_runtime_enable(rga->dev);
+> +=09if (ret)
+> +=09=09return ret;
+> =20
+>  =09rga->regs =3D devm_platform_ioremap_resource(pdev, 0);
+> -=09if (IS_ERR(rga->regs)) {
+> -=09=09ret =3D PTR_ERR(rga->regs);
+> -=09=09goto err_put_clk;
+> -=09}
+> +=09if (IS_ERR(rga->regs))
+> +=09=09return PTR_ERR(rga->regs);
+> =20
+>  =09irq =3D platform_get_irq(pdev, 0);
+> -=09if (irq < 0) {
+> -=09=09ret =3D irq;
+> -=09=09goto err_put_clk;
+> -=09}
+> +=09if (irq < 0)
+> +=09=09return irq;
+> =20
+>  =09ret =3D devm_request_irq(rga->dev, irq, rga_isr,
+>  =09=09=09       rga_has_internal_iommu(rga) ? 0 : IRQF_SHARED,
+>  =09=09=09       dev_name(rga->dev), rga);
+> -=09if (ret < 0) {
+> -=09=09dev_err(rga->dev, "failed to request irq\n");
+> -=09=09goto err_put_clk;
+> -=09}
+> +=09if (ret < 0)
+> +=09=09return dev_err_probe(rga->dev, ret, "failed to request irq\n");
+> =20
+>  =09ret =3D dma_set_mask_and_coherent(rga->dev, DMA_BIT_MASK(32));
+> -=09if (ret) {
+> -=09=09dev_err(rga->dev, "32-bit DMA not supported");
+> -=09=09goto err_put_clk;
+> -=09}
+> +=09if (ret)
+> +=09=09dev_err_probe(rga->dev, ret, "32-bit DMA not supported");
+
+Did you mean ?
+=09=09return dev_err_probe(rga->dev, ret, "32-bit DMA not
+supported");
+
+With this fixed:
 
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
-> ---
->  drivers/media/platform/rockchip/rga/rga.h | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/pl=
-atform/rockchip/rga/rga.h
-> index 2b4f5694375a4..0e62337f8dd38 100644
-> --- a/drivers/media/platform/rockchip/rga/rga.h
-> +++ b/drivers/media/platform/rockchip/rga/rga.h
-> @@ -71,7 +71,6 @@ struct rockchip_rga {
->  =09struct video_device *vfd;
 > =20
->  =09struct device *dev;
-> -=09struct regmap *grf;
->  =09void __iomem *regs;
->  =09struct clk_bulk_data *clks;
->  =09int num_clks;
+>  =09ret =3D v4l2_device_register(&pdev->dev, &rga->v4l2_dev);
+>  =09if (ret)
+> -=09=09goto err_put_clk;
+> +=09=09return ret;
+>  =09vfd =3D video_device_alloc();
+>  =09if (!vfd) {
+>  =09=09v4l2_err(&rga->v4l2_dev, "Failed to allocate video device\n");
+> @@ -877,8 +871,6 @@ static int rga_probe(struct platform_device *pdev)
+>  =09video_device_release(vfd);
+>  unreg_v4l2_dev:
+>  =09v4l2_device_unregister(&rga->v4l2_dev);
+> -err_put_clk:
+> -=09pm_runtime_disable(rga->dev);
+> =20
+>  =09return ret;
+>  }
+> @@ -892,8 +884,6 @@ static void rga_remove(struct platform_device *pdev)
+>  =09v4l2_m2m_release(rga->m2m_dev);
+>  =09video_unregister_device(rga->vfd);
+>  =09v4l2_device_unregister(&rga->v4l2_dev);
+> -
+> -=09pm_runtime_disable(rga->dev);
+>  }
+> =20
+>  static int __maybe_unused rga_runtime_suspend(struct device *dev)
 
---=-MYb0fk1ys1f42Xkvhfm5
+--=-+FFLPuXOIBC694qENGcJ
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawX3rQAKCRDZQZRRKWBy
-9PZvAP97BrjjWk9V+gf2ONjhQjCuulubPU+SH6u/ajoB9+AP+wEAhck2FAqU1AHS
-lSsUCU6gvG4EIWmI38xkcilLfrI5Ag0=
-=Yixs
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawX44AAKCRDZQZRRKWBy
+9FD0AP4s49BNgvZ0n2v4ASohGrNveTzQ0wXrIkR5ZrY0fdkokQEAwD1oRUFwpDXl
+d3x9ZgE+KkJELoR8Uvzc7O0MwUniOAQ=
+=goRl
 -----END PGP SIGNATURE-----
 
---=-MYb0fk1ys1f42Xkvhfm5--
+--=-+FFLPuXOIBC694qENGcJ--
 
 
---===============7633495471303503629==
+--===============3805206228476384503==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -191,5 +272,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7633495471303503629==--
+--===============3805206228476384503==--
 
