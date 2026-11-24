@@ -2,110 +2,108 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C92F5606A689
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 13:40:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 50CCB606A321
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 15:42:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZGhkEazx;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=AxYtJQJl
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=H9J53siK;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=UXtQRVTZ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=4XoYXXriTMD3pAQWGpkqvdyCRfOB/4BpfxW4+YjkQEg=; b=ZGhkEazxFDwkGMSLVDUICIBLTF
-	ALe2MENLAG56gj5Ymfjn9XGNDjkY1wzTKXSeGlPW7ha+PXPoAXm/0/YhvQdaw/m0u4sOj3qfK8uu8
-	ohad5ABJXTtMjKGwG9gG2uHlHKw9MbtGvP8TXK5J0ekBFhTdweWQuUkgBxmsuH+iaAcjIIZo3E2Cm
-	+rGlBmLfGVKdIYgGBnpjOQ/rHUnWzIHz0GnUH2A8TKxKRXe00QtvUFDTQ5KOx4KicM1PVdHWxfsn4
-	gE3opsZQSRdXWfDZh0eaoBHPCj8Ajd/KNFmNWaqMDuZNBwvka5IYIRE0kDWAzFdG3/DH/XJkDtr3u
-	0bBHp4nQ==;
+	bh=azwQfUbQ9M/IaEEWiF1EKHyjBHQfbV9V3J/fdS9I+Xw=; b=H9J53siKJrdBY4/YoWo2aeiat4
+	wFFE2vRaZQA7JqR+H874E1YOG76bUBHTCeVOElvVmhRXPDMkALb+CvNJxlmhMKv+cf4nb7PUzNUV3
+	UeNvMv3VawOqrn2tbev3jHJvVBuM5HoWGNFmQqLgVE0QpwrB60xqOo19KWlrMzcHqieuNp7jXuH8W
+	bypjG6oAVteme8vrtqEd5QDg36Hh5PKBky6u+itO3IZV3BVkVRLs8Cls6QxETlTz0juI685QN3DiK
+	gWnv76ABS6kaR0OW7BwN/4lQoJOFW/JnRh9oteVSRp5STfBXOn/DKx521YztczKK0xFsPX5GXZArp
+	JW51wIYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVqlD-00000006enA-123s;
-	Tue, 24 Nov 2026 13:40:39 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xVsep-00000006vVI-0S5m;
+	Tue, 24 Nov 2026 15:42:11 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVql7-00000006ej2-3lMn;
-	Tue, 24 Nov 2026 13:40:33 +0000
+	id 1xVsee-00000006vTt-0J3z;
+	Tue, 24 Nov 2026 15:42:00 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 34FBA4227D;
-	Tue, 24 Nov 2026 13:40:33 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795527632;
-	b=uL4+oO6IAhWwKgifrDsFwlKZWT1PBtgG8w9euQfJ+y7h7lW5Bb0WhPY0jJjhHHwinbl6
-	 10jkhT2Tvau2E5OioCszoNzXZa7S3erd2xean5NtYYLQbnQMFxTLfjt7DkQzx7hg3CaX9
-	 Z255XA4oVnYO088DiQKTdoBWE9dQiQDnPllTKdt2q9T2D4hyH1tPj8GFECIhzCpsBi3zo
-	 jSB+RuoLvWvYVfCXValzfK7jNJvM/fZpDaf2oKRE9BirscPDYUCbZU0ICncp0n6qjaL/n
-	 XKrRFurfBM7C60iNTlUsdXaAI7QEPg7Bxwi7kWSm1CKm9wcRuRH3a5jMqm4eWYX5THQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795527632;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=zN0w1+qLFqtq0+s8ZKdMVda+A74jQgGZWePF7NvjW/g=;
-	b=yFJWLTyLpExWlwsnI8OhR0uk8vlOnwzkZffWhVbD+OwWeFCgqNyfh99voBlrTH74VmuS
-	 OhdiZAdDZ74p3Jl3XyvBtuXa7obhxuWow3SduWyZij4NrgBRxZGr1FID5zbqEyLCZL9eZ
-	 ClW2QvWqidP9DY7MAtGntqfiX7h0cihPBZgkiJ7A9QmkgLVUX19wNAO4oYyXdZ+oj7Inf
-	 8/xCokxWQClcDVXLuU/74tMa+YCbidnpVU9xozPAwVtclkIKM4No+q0yVqe/eGBqjt4oq
-	 ZdnRpVJ+EhN+LLmjLudArDttMMfQ5iPcNMCnabTrLUO5zFi+MjscrgsWDlwcSNdVkNQ==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 104A91F000D1;
-	Tue, 24 Nov 2026 13:40:22 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2711A62732;
+	Tue, 24 Nov 2026 15:41:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6AF711F000D3;
+	Tue, 24 Nov 2026 15:41:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795527632;
-	bh=zN0w1+qLFqtq0+s8ZKdMVda+A74jQgGZWePF7NvjW/g=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=AxYtJQJl5vg21sPFcmjqJqBq0uxkIp3s7XEBw8jKDODPv0m6FdUxsJb8EdmSi0Ibq
-	 eV0gKtkqCYXRsZ9il9mnZW/geyZaf+gvB0woUT3ZEVJK8UjcWi+Po21Qvzv6GY+Xwi
-	 NVuh93ODFoWsaci65awpKgFMRPoCxqYi6+J5Uw9jaKcmXLW88o00nlypZOdJX4rQpu
-	 KGmoun6kgp7BNy6+DF5PsvU3s+QEnfbBv7owkjmqBbZTmGNReGgOJTDAENrhN62Ejp
-	 +RlsPkKka8MBAZQ01VvhMftlfMGI9kzb0N0MzSXbocZpvmsd/udQyRHSKnzPd/RaUG
-	 eg0c3voxau7RA==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 95E514CA63;
-	Tue, 24 Nov 2026 13:40:21 +0000 (UTC)
-From: Sergei Khomenkov via B4 Relay <devnull+shomenkow.gmail.com@kernel.org>
-Date: Tue, 24 Nov 2026 16:40:19 +0300
-Subject: [PATCH v3 3/3] media: verisilicon: leave room for the JPEG header
- and one stream burst
+	s=k20260515; t=1795534918;
+	bh=lzyWPH6N43nHOJGrLbm0KDeqII50zyohaciwgvVSjbw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=UXtQRVTZQkqWmsWmO6/2TQitWnLIJFkBsayzfsWYcQukMrzASqPjoeeTZip+LqLPn
+	 n5VEKkA8gfpmK8xdcOCarMiaOEIBSw8yreBYe73f1lx5zFeBDSBQogvo4JYes7a9Wd
+	 /YW3qG752NNBPU4lvMN2p5o8rxhx39t89btCXro98Lf4RgbcYJNv6lfJiNsH4ddWt6
+	 YATMn9lKY7fvuGakztMykAgnWnH12f4g325TDAnDpcqqniC5vGG8+HHrErndk+KExU
+	 TUhJY0JuWfQMeNXo3UJcRgibl1WoW8ImRnAzJU9QRwRjQUh5IVtjo/kMnsn2Zgj6yp
+	 O+Y6eYeYuJMQQ==
+Message-ID: <3bdaa592-7bbe-462d-a012-da6296251b33@kernel.org>
+Date: Tue, 24 Nov 2026 16:41:53 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261124-hantro-buflimit-v3-3-780903970ca0@gmail.com>
-References: <20261124-hantro-buflimit-v3-0-780903970ca0@gmail.com>
-In-Reply-To: <20261124-hantro-buflimit-v3-0-780903970ca0@gmail.com>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Hans Verkuil <hverkuil@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Chen-Yu Tsai <wenst@chromium.org>, 
- Hugues Fruchet <hugues.fruchet@foss.st.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, 
- linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org, 
- stable@vger.kernel.org, Sergei Khomenkov <shomenkow@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795527620; l=4102;
- i=shomenkow@gmail.com; s=20261104; h=from:subject:message-id;
- bh=TiSzcOqC25j0e7itf9kkOEO+cKiYOn5aUH2hDB8nhgU=;
- b=jW5fYvcKbkWssPYObNaxhqM72zSZMbb7b9O5FS5MeHiXeZaCt+uToeE5hT7tZlwAb6E5w6MmS
- /2PZNFVgMCDCCXe4zrVtiIAfl6r4rv5Z1iSXTCBy4U2fQf7khO2rOPZ
-X-Developer-Key: i=shomenkow@gmail.com; a=ed25519;
- pk=FwuHDVe7aiISDMLmQEcMC+RflEIJ6kEp/ekwznWXmI8=
-X-Endpoint-Received: by B4 Relay for shomenkow@gmail.com/20261104 with
- auth_id=1409
-X-Original-From: Sergei Khomenkov <shomenkow@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] dt-bindings: spi: rockchip-sfc: add RK3506 support
+To: ZhuXiangyu <1194781887@qq.com>, Mark Brown <broonie@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: Chris Morgan <macromorgan@hotmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, linux-spi@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20261121073246.1233736-1-1194781887@qq.com>
+ <tencent_E24973E955D1A26CF5A4F983929F8F8B0006@qq.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <tencent_E24973E955D1A26CF5A4F983929F8F8B0006@qq.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,110 +113,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: shomenkow@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Sergei Khomenkov <shomenkow@gmail.com>
+On 21/11/2026 08:32, ZhuXiangyu wrote:
+> Document the RK3506 FSPI compatible with the generic SFC fallback, and
+> the rockchip,grf and rockchip,max-dll properties used for the
+> power-good handshake and DLL training.
+> 
+> Signed-off-by: ZhuXiangyu <1194781887@qq.com>
+> ---
 
-hantro_try_fmt() keeps any non-zero CAPTURE sizeimage of the JPEG
-encoder, however small. The CPU writes the 624-byte header into the
-plane, and on the RK3026 the H1 then writes at least one 64-byte burst
-even with a stream limit of 0, so a smaller plane is written past its
-end. A plane smaller than the header also makes the WARN_ON() in
-hantro_h1_jpeg_enc_set_buffers() fire on every job.
+I will mark everything you as changes requested. This is all half
+broken, b4 review cannot even fetch for review.
 
-Add a minimum plane size to struct hantro_fmt, set it to header_size +
-64 in the JPEG encoder formats of the Rockchip and STM32MP25 variants,
-and raise a smaller coded sizeimage to it in hantro_try_fmt().
-
-Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
-Cc: stable@vger.kernel.org
-Assisted-by: Claude:claude-opus-5-5
-Signed-off-by: Sergei Khomenkov <shomenkow@gmail.com>
----
-Found with an LLM coding assistant while porting mainline Linux to a
-Rockchip RK3026 board; the assistant also drafted this change. Tested
-on that board: a sizeimage of 1 or 600 now reads back 688, and frames
-that do not fit a 688-byte plane stop exactly at its end. Not tested on
-other SoCs.
----
- drivers/media/platform/verisilicon/hantro.h           | 2 ++
- drivers/media/platform/verisilicon/hantro_v4l2.c      | 3 +++
- drivers/media/platform/verisilicon/rockchip_vpu_hw.c  | 1 +
- drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c | 1 +
- 4 files changed, 7 insertions(+)
-
-diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-index 0353de154a1e..f51beae79f1f 100644
---- a/drivers/media/platform/verisilicon/hantro.h
-+++ b/drivers/media/platform/verisilicon/hantro.h
-@@ -286,6 +286,7 @@ struct hantro_ctx {
-  * @codec_mode:	Codec mode related to this format. See
-  *		enum hantro_codec_mode.
-  * @header_size: Optional header size. Currently used by JPEG encoder.
-+ * @min_size:	Optional minimum sizeimage, for bitstream formats.
-  * @max_depth:	Maximum depth, for bitstream formats
-  * @enc_fmt:	Format identifier for encoder registers.
-  * @frmsize:	Supported range of frame sizes (only for bitstream formats).
-@@ -297,6 +298,7 @@ struct hantro_fmt {
- 	u32 fourcc;
- 	enum hantro_codec_mode codec_mode;
- 	int header_size;
-+	u32 min_size;
- 	int max_depth;
- 	enum hantro_enc_fmt enc_fmt;
- 	struct v4l2_frmsize_stepwise frmsize;
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 83af9fa1ce94..b3dbc0629d25 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -394,6 +394,9 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
- 		 */
- 		pix_mp->plane_fmt[0].sizeimage = fmt->header_size +
- 			pix_mp->width * pix_mp->height * fmt->max_depth;
-+	} else {
-+		pix_mp->plane_fmt[0].sizeimage =
-+			max(pix_mp->plane_fmt[0].sizeimage, fmt->min_size);
- 	}
- 
- 	return 0;
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-index d201b058e5e8..ab5abe2c78ad 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
-@@ -50,6 +50,7 @@ static const struct hantro_fmt rockchip_vpu_enc_fmts[] = {
- 		.codec_mode = HANTRO_MODE_JPEG_ENC,
- 		.max_depth = 2,
- 		.header_size = JPEG_HEADER_SIZE,
-+		.min_size = JPEG_HEADER_SIZE + 64,	/* header + one burst */
- 		.frmsize = {
- 			.min_width = 96,
- 			.max_width = 8192,
-diff --git a/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c b/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
-index 833821120b20..3f337554e936 100644
---- a/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/stm32mp25_vpu_hw.c
-@@ -83,6 +83,7 @@ static const struct hantro_fmt stm32mp25_venc_fmts[] = {
- 		.codec_mode = HANTRO_MODE_JPEG_ENC,
- 		.max_depth = 2,
- 		.header_size = JPEG_HEADER_SIZE,
-+		.min_size = JPEG_HEADER_SIZE + 64,	/* header + one burst */
- 		.frmsize = {
- 			.min_width = 96,
- 			.max_width = FMT_4K_WIDTH,
-
--- 
-2.53.0
-
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
