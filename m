@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E97B9606A323
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 18:46:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B95C6606A323
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 18:46:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TE/pAX9E;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=jbhIKLEx
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=suHbT83J;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=H/wn2Dhh
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,44 +14,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=dw9MZjygaWp8MpGY6gzd496l0E324KMPMjDhrVeyJEs=; b=TE/pAX9EhGRDttNelE0BVXRY7f
-	IhCeoWG6NS4eVwsMHTYQ/BG4Y3PJP+gvrb5r6aMM4Uk0kuKOcCBRz8hrF4UhtqXHCuCorm0U+WO6m
-	gkCIgDI22NUmvCSrYY81eYR81DQub+EapB5ebwiGOmsT8wlFL88Uh90zQ+2dg51A3rduCelcCpTDx
-	8R3+VJ79jLSOW0z2hmvq29iQvn0GIe9eksfMfcG95HXygE8FkMjgvUIO+B/9XURC9wc5oQMsixIDt
-	rGu2NhjHhoFgu4mz402Yf63dXtc986OLFLh3FD6d9DAgofS1LCJ/ffv9UL8nSUL23xQ5MphJh427B
-	Cc95DjWA==;
+	bh=PURESeeHQOmqRTFMc2gZpFd6ZLeLWUk9nE4v6nUZ4nQ=; b=suHbT83J3v0/y14RVsGFB52IS+
+	zVcGR7kkEHQCbhWukqrNBlYeJ1vaixG4yAJnFpT6rlHCIvvtvCQ7HI5IhOMRgtxcpSRmKr1ic8klE
+	aI1L3lbCiqm6p9r+g++WEVVjvyMPdzLLlFDqdPPu9aZ9GiP6tEbv6AUBQShBJXQlGAfd+IWvWCYCb
+	t5L/g1BvVoXITxsT5TNUce1+4IGb+/NWivIivftBrHpca0XM4OIike2vrtwNmZcmIoHMBTDs3SoAr
+	i6csn9yYSMiYmpjvMGbGTZEriCHrlcG9a4J3g8v1Vic+vmLDaoDPvRIXQCLgEiidLVCsWBU7TRoxW
+	Ua+8rWfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWI0C-0000000B3Mf-0s4E;
-	Wed, 25 Nov 2026 18:45:56 +0000
+	id 1xWI0K-0000000B3UJ-2izW;
+	Wed, 25 Nov 2026 18:46:04 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWHzP-0000000B2ry-0B6W;
-	Wed, 25 Nov 2026 18:45:14 +0000
+	id 1xWHzT-0000000B2uo-1Bme;
+	Wed, 25 Nov 2026 18:45:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795632304;
-	bh=NGbc8Fxp/m2XrR8id2lX4uwCcm+j1OUYcrLHIZ7FIAQ=;
+	s=mail; t=1795632309;
+	bh=AJIfwVf8wdiuFci8fQLP2oVwA2zvoSeP1nF8x4T09X4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=jbhIKLExcreI/0djbaObu7/K+HNhuJMQ3BnOmVeaKy9upMVSJQvGBflGX3teVXJXg
-	 O08hNGd0vyZ24iy0Htc2tlx5pkk0U2g3NWsSHSE1fkhk1IB2tN04Svo+fB6Tev2XG4
-	 JeMBXiAqFDI7gfBylK3JsSK9aGwdR5AIWAI5Iw0SpZYfFkm0l20H3USxzoOIigP6DG
-	 Ctc/2lXiRczMk+fGT4oo2Mq7GS74YTynM/w42jHC3XrZoTIA1tg4YonQpTN8rs92U2
-	 S/8QFgUt5eNhoyheZk/dU2p8xyrMDFSsWJpJ5J8oGFvMLX/NHAO1EzKacsbw/D1HJM
-	 VH3/6r7BVYe9g==
+	b=H/wn2Dhh7v7Zb17P2TTy/8mcQyEHOVK/FYK4NmRuM8awgHMaqD7nfML42vzHB5Bc/
+	 4pY98nQZy1cgrga6G4aq/uqYsQEOEtb4G/CdBWegNybN2lxR5jRu0XoVkMJ8C73AVd
+	 HFnN0on24crH2BuFPOxKjJ1+yjQ5cm4Vg4Vf7COQ1DjEh89Qm9Nz+NqhgpN2XC3Zil
+	 GmbrGY73QVb2DGd8I9rKV7oiPfblL6yyXjEaSGIQ7TMLJKr8cKxy+CQefQBKX6b6Yd
+	 mCTrIRA95U1eMxEFz8zhHP23cheJI06XgWTpQkShfvMSoRvDs+gbKpLuJNLj5DYlco
+	 KL+nwYGploW5g==
 Received: from [192.168.0.15] (unknown [100.64.0.170])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DB22C17E1296;
-	Wed, 25 Nov 2026 19:45:02 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6090917E0311;
+	Wed, 25 Nov 2026 19:45:07 +0100 (CET)
 From: Detlev Casanova <detlev.casanova@collabora.com>
-Date: Wed, 25 Nov 2026 13:33:29 -0500
-Subject: [PATCH v3 7/9] media: Add stream on/off traces and run them in the
- ioctl
+Date: Wed, 25 Nov 2026 13:33:31 -0500
+Subject: [PATCH v3 9/9] media: hantro: Add v4l2_hw run/done traces
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261125-v4l2-add-ftrace-v3-7-1d1db48372ed@collabora.com>
+Message-Id: <20261125-v4l2-add-ftrace-v3-9-1d1db48372ed@collabora.com>
 References: <20261125-v4l2-add-ftrace-v3-0-1d1db48372ed@collabora.com>
 In-Reply-To: <20261125-v4l2-add-ftrace-v3-0-1d1db48372ed@collabora.com>
 To: Daniel Almeida <daniel.almeida@collabora.com>, 
@@ -68,8 +67,8 @@ Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
  Detlev Casanova <detlev.casanova@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_104507_890369_D4D153A3 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20261125_104511_548786_BC6CFCE4 
+X-CRM114-Status: GOOD (  16.06  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,95 +89,110 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This will automatically add stream on/off tracing for all v4l2 drivers.
+Add the trace calls as well as retrieving the number of clock cycles for
+the rockchip_vpu core.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
- drivers/media/v4l2-core/v4l2-ioctl.c | 20 ++++++++++++++++++--
- include/trace/events/v4l2.h          | 34 ++++++++++++++++++++++++++++++++++
- 2 files changed, 52 insertions(+), 2 deletions(-)
+ drivers/media/platform/verisilicon/hantro.h               |  1 +
+ drivers/media/platform/verisilicon/hantro_drv.c           | 14 +++++++++++++-
+ drivers/media/platform/verisilicon/rockchip_vpu981_regs.h |  1 +
+ drivers/media/platform/verisilicon/rockchip_vpu_hw.c      |  4 ++++
+ 4 files changed, 19 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index 5d7fbaa1b41a..09e8bc9df132 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1965,13 +1965,29 @@ static int v4l_try_fmt(const struct v4l2_ioctl_ops *ops, struct file *file,
- static int v4l_streamon(const struct v4l2_ioctl_ops *ops, struct file *file,
- 			void *arg)
- {
--	return ops->vidioc_streamon(file, NULL, *(unsigned int *)arg);
-+	struct v4l2_fh *fh = file_to_v4l2_fh(file);
-+	int err;
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index 0353de154a1e..d5cddc783688 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -253,6 +253,7 @@ struct hantro_ctx {
+ 
+ 	u32 sequence_cap;
+ 	u32 sequence_out;
++	u32 hw_cycles;
+ 
+ 	const struct hantro_fmt *vpu_src_fmt;
+ 	struct v4l2_pix_format_mplane src_fmt;
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 3734ea701145..54a078ac14e4 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -25,6 +25,8 @@
+ #include <media/videobuf2-core.h>
+ #include <media/videobuf2-vmalloc.h>
+ 
++#include <trace/events/v4l2.h>
 +
-+	err = ops->vidioc_streamon(file, NULL, *(unsigned int *)arg);
+ #include "hantro_v4l2.h"
+ #include "hantro.h"
+ #include "hantro_hw.h"
+@@ -100,6 +102,9 @@ void hantro_irq_done(struct hantro_dev *vpu,
+ 	struct hantro_ctx *ctx =
+ 		v4l2_m2m_get_curr_priv(vpu->m2m_dev);
+ 
++	if (ctx)
++		trace_v4l2_hw_done(ctx->fh.tgid, ctx->fh.fd, ctx->hw_cycles);
 +
-+	if (!err)
-+		trace_v4l2_streamon(fh->tgid, fh->fd);
+ 	/*
+ 	 * If cancel_delayed_work returns false
+ 	 * the timeout expired. The watchdog is running,
+@@ -122,6 +127,9 @@ void hantro_watchdog(struct work_struct *work)
+ 	ctx = v4l2_m2m_get_curr_priv(vpu->m2m_dev);
+ 	if (ctx) {
+ 		vpu_err("frame processing timed out!\n");
 +
-+	return err;
++		trace_v4l2_hw_done(ctx->fh.tgid, ctx->fh.fd, ctx->hw_cycles);
++
+ 		if (ctx->codec_ops->reset)
+ 			ctx->codec_ops->reset(ctx);
+ 		hantro_job_finish(ctx, VB2_BUF_STATE_ERROR);
+@@ -183,8 +191,12 @@ static void device_run(void *priv)
+ 	v4l2_m2m_buf_copy_metadata(src, dst);
+ 
+ 	ret = ctx->codec_ops->run(ctx);
+-	if (ret)
++	if (ret) {
+ 		hantro_job_finish(ctx, VB2_BUF_STATE_ERROR);
++		return;
++	}
++
++	trace_v4l2_hw_run(ctx->fh.tgid, ctx->fh.fd);
  }
  
- static int v4l_streamoff(const struct v4l2_ioctl_ops *ops, struct file *file,
- 			 void *arg)
+ static const struct v4l2_m2m_ops vpu_m2m_ops = {
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h b/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
+index e4008da64f19..96b85470208b 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
++++ b/drivers/media/platform/verisilicon/rockchip_vpu981_regs.h
+@@ -451,6 +451,7 @@
+ #define av1_pp0_dup_ver			AV1_DEC_REG(394, 16, 0xff)
+ #define av1_pp0_dup_hor			AV1_DEC_REG(394, 24, 0xff)
+ 
++#define AV1_CYCLE_COUNT			(AV1_SWREG(63))
+ #define AV1_TILE_OUT_LU			(AV1_SWREG(65))
+ #define AV1_REFERENCE_Y(i)		(AV1_SWREG(67) + ((i) * 0x8))
+ #define AV1_SEGMENTATION		(AV1_SWREG(81))
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+index 02673be9878e..f959151b6645 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu_hw.c
+@@ -424,6 +424,8 @@ static irqreturn_t rk3588_vpu981_irq(int irq, void *dev_id)
  {
--	return ops->vidioc_streamoff(file, NULL, *(unsigned int *)arg);
-+	struct v4l2_fh *fh = file_to_v4l2_fh(file);
-+	int err;
-+
-+	err = ops->vidioc_streamoff(file, NULL, *(unsigned int *)arg);
-+
-+	if (!err)
-+		trace_v4l2_streamoff(fh->tgid, fh->fd);
-+
-+	return err;
- }
+ 	struct hantro_dev *vpu = dev_id;
+ 	enum vb2_buffer_state state;
++	struct hantro_ctx *ctx =
++		v4l2_m2m_get_curr_priv(vpu->m2m_dev);
+ 	u32 status;
  
- static int v4l_g_tuner(const struct v4l2_ioctl_ops *ops, struct file *file,
-diff --git a/include/trace/events/v4l2.h b/include/trace/events/v4l2.h
-index 248bc09bfc99..089c5ff0b3af 100644
---- a/include/trace/events/v4l2.h
-+++ b/include/trace/events/v4l2.h
-@@ -262,6 +262,40 @@ DEFINE_EVENT(vb2_v4l2_event_class, vb2_v4l2_qbuf,
- 	TP_ARGS(q, vb)
- );
+ 	status = vdpu_read(vpu, AV1_REG_INTERRUPT);
+@@ -433,6 +435,8 @@ static irqreturn_t rk3588_vpu981_irq(int irq, void *dev_id)
+ 	vdpu_write(vpu, 0, AV1_REG_INTERRUPT);
+ 	vdpu_write(vpu, AV1_REG_CONFIG_DEC_CLK_GATE_E, AV1_REG_CONFIG);
  
-+/* Events for stream on/off.
-+ *
-+ * These events will be fired every time userspace starts or stops a stream.
-+ * tgid and fd are used to identify the process that opened the video device.
-+ *
-+ * Note that this even can be fired multiple times for a given tgid/fd pair.
-+ * E.g.: mem2mem drivers expect stream on/off on both output and capture queues.
-+ */
-+DECLARE_EVENT_CLASS(v4l2_stream_class,
-+	TP_PROTO(u32 tgid, u32 fd),
-+	TP_ARGS(tgid, fd),
++	ctx->hw_cycles = vdpu_read(vpu, AV1_CYCLE_COUNT);
 +
-+	TP_STRUCT__entry(__field(u32, tgid)
-+			 __field(u32, fd)
-+	),
-+
-+	TP_fast_assign(__entry->tgid = tgid;
-+		       __entry->fd = fd;
-+	),
-+
-+	TP_printk("tgid = %u, fd = %u",
-+		  __entry->tgid, __entry->fd)
-+);
-+
-+DEFINE_EVENT(v4l2_stream_class, v4l2_streamon,
-+	TP_PROTO(u32 tgid, u32 fd),
-+	TP_ARGS(tgid, fd)
-+);
-+
-+DEFINE_EVENT(v4l2_stream_class, v4l2_streamoff,
-+	TP_PROTO(u32 tgid, u32 fd),
-+	TP_ARGS(tgid, fd)
-+);
-+
- #endif /* if !defined(_TRACE_V4L2_H) || defined(TRACE_HEADER_MULTI_READ) */
+ 	hantro_irq_done(vpu, state);
  
- /* This part must be outside protection */
+ 	return IRQ_HANDLED;
 
 -- 
 2.56.1
