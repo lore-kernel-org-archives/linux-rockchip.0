@@ -2,74 +2,60 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C4F21606A31E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 03:56:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9D45C606A327
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 07:31:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0cW8WiTE;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=Ph+hLG/U
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=O4pECVo5;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PG0ErR3g
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=JBTGl4n+oddXDEnAz7UMjLrcf0pYIsgvE4OoivM7Bdc=; b=0cW8WiTE5ReilL8bKT62BCoLlp
-	NAcpGrUvpojr247uRRb7QZaKGIHapQelos46Y5sMLiGfPbfFAXkyJ/rg8VRftGcoKIYsEYr1e6kSP
-	HMomkYh+EOQYUKWbpy4FgufgODnRB5y4eorTLVmOOc23eMpNNI8uZkmdIsqW3G/OjX/Xxq/eJxH4Y
-	wYQKoM/9eRaf4R2njDVuM+cvVCOcz2OO0oiE/OZH0I36YjT9sONjWeRt/iQxRmfMuv+7RSrVgzR3C
-	A+BVxB/3QMdybKl9llLRpAunO3cbhdeB3XcYfBw0zSl28H2mUXHoyzymChXFUaZJxW6GX8hSQFFyr
-	zf8PVpjA==;
+	bh=U7hBF8mgKu27ln0NccxyxyTAcI8eb4Tv6tMA3A5ZEfo=; b=O4pECVo5mqAoudYn+fzkRhgJzW
+	cdKatDMBSa5j8OJkDDfPQLjuyxT1Atd6koJ8KSotgu8w+b6qE00P8dn7OczwTq+7s1ZD9PGUbaaiZ
+	O5CxXKAw/e++J3mno5F9XjqmoQCapigNqhNI0YgcLq6PnuzJq33eRkxL+xzOHumjw9TXESGfG/CR8
+	KUNwf0l2wpKtg6KbM2O/USDhpN/l+GgA+cRC+d5CQovSxCoJTBOAtgcFvkf5Tv9/lsW+jw2ENDoeV
+	ARmAWf9TuLwX/Oyat1u8AhQT8EyMQ6c3XIhpMZD6tH+VfKFj95b39ZsiEUVn8ZNME2oHyXXEuO/ZJ
+	2u0ojPlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xW46t-00000008MF3-1i5H;
-	Wed, 25 Nov 2026 03:55:55 +0000
-Received: from mail-m158245.netease.com ([47.251.158.245])
+	id 1xW7Th-00000008tjS-1Kwm;
+	Wed, 25 Nov 2026 07:31:41 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xW46n-00000008MEQ-2QuZ;
-	Wed, 25 Nov 2026 03:55:53 +0000
-Received: from [172.16.12.74] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 55e7c8e52;
-	Wed, 25 Nov 2026 11:55:34 +0800 (GMT+08:00)
-Message-ID: <68d54499-044c-45af-abbb-9aa7bc212db5@rock-chips.com>
-Date: Wed, 25 Nov 2026 11:55:34 +0800
+	id 1xW7Te-00000008thS-1pAn;
+	Wed, 25 Nov 2026 07:31:38 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 13BED4011C;
+	Wed, 25 Nov 2026 07:31:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0EAE1F000C4;
+	Wed, 25 Nov 2026 07:31:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795591897;
+	bh=VBOZGBr55Ujwl78qDcJLp8xc/aTsL0m4eKXQ3BODtCU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=PG0ErR3gAmTnmjd1zmcQ4dqGICFZ9/gVAxZhRY5ICPtEvjZXvnumFGUXPCvUnUM57
+	 V7Ox3LPxJ/wqw5+ZP0v6lvBYkkzSOopSVTpyivztvutTZr1ReiNz//aM/+bvxfJqB8
+	 mCAVVGL2FBMZCmX+yS3Yfq1JyPrEWPWbduh4CLW6sYREGtigXHCHuMa5qMt76KzEME
+	 DOFFZL3mbaq4B/CGkkPNf+IZfang3VZrolXR/dyvBcclg9E35/1L8AxSwBir024KU6
+	 Cc3hc8mq2GNXx4e5L5QgfSIj1SSjtM9Wsu9qmLciKh2Pu3oSLW/1FW6g98iY+Pw+5U
+	 Y7gJQasbU6ElA==
+Date: Wed, 25 Nov 2026 08:31:34 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Michal Wilczynski <m.wilczynski@samsung.com>
+Subject: Re: [PATCH v8 04/18] dt-bindings: display: starfive: Add
+ starfive,jh7110-hdmi-subsystem
+Message-ID: <20261125-tasteful-brown-galago-a6725e@quoll>
+References: <20261124-jh7110-clean-send-v8-0-de92635dd857@samsung.com>
+ <CGME20261124155406eucas1p23a523deb496c21cbf3da3724812a8101@eucas1p2.samsung.com>
+ <20261124-jh7110-clean-send-v8-4-de92635dd857@samsung.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/6] dt-bindings: pwm: Add a new binding for
- rockchip,rk3576-pwm
-To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Lee Jones <lee@kernel.org>,
- William Breathitt Gray <wbg@kernel.org>, kernel@collabora.com,
- Jonas Karlman <jonas@kwiboo.se>, Alexey Charkov <alchark@gmail.com>,
- linux-rockchip@lists.infradead.org, linux-pwm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org,
- Conor Dooley <conor.dooley@microchip.com>,
- "chaoyi.chen" <chaoyi.chen@rock-chips.com>, Sandy Huang <hjc@rock-chips.com>
-References: <20260420-rk3576-pwm-v5-0-ae7cfbbe5427@collabora.com>
- <20260420-rk3576-pwm-v5-1-ae7cfbbe5427@collabora.com>
- <alCvmLX1ke0qjh99@monoceros>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <alCvmLX1ke0qjh99@monoceros>
-X-HM-Tid: 0aa210d8360203a8kunm11819cac735762
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZQh1MHlZLSh9KQh1DHU
-	9JTk5WFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
-	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=Ph+hLG/U/ehuFm1xORwAyVx8Z1h6dMUvRnaVJgrJQMVC1NWYy35lbIWmv5ub87pk4Xpwltj0cIRfK5iIWecdEokKUXIWS1h21FPK1MIlOBLf2n0Hz8Hso6BG8hOGyBIbwU+5Xefao0dS8yLtSFthl5iNKmq2pQN8EdSpwUOhYs8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=vBiVRAr+5XLhivQmL9zYbZRsjiirfBfGSpOjwM03dXk=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_195551_530329_7CA76183 
-X-CRM114-Status: GOOD (  17.90  )
-X-Spam-Score: -2.1 (--)
+Content-Disposition: inline
+In-Reply-To: <20261124-jh7110-clean-send-v8-4-de92635dd857@samsung.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,87 +65,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Joshua Peisach <jpeisach@ubuntu.com>, Conor Dooley <conor.dooley@microchip.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, William Qiu <william.qiu@starfivetech.com>, linux-riscv@lists.infradead.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>, David Airlie <airlied@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Dominique Belhachemi <db@domibel.de>, Robert Foss <rfoss@kernel.org>, Alexandre Ghiti <alex@ghiti.fr>, Andy Yan <andyshrk@163.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Hal Feng <hal.feng@starfivetech.com>, Maud Spierings <maud_spierings@murena.io>, linux-rockchip@lists.infradead.org, Icenowy Zheng <zhengxingda@iscas.ac.cn>, Marek Szyprowski <m.szyprowski@samsung.com>, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Albert Ou <aou@eecs.berkeley.edu>, Thomas Zimmermann <tzimmermann@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, Graham Markall <hello@big-grey.co.uk>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Xingyu Wu <xingyu.wu@starfivetech.com>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, Paul Walmsley <pjw@kernel.org>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Sandy Huang <hjc@rock-chips.com>, Conor Dooley <conor@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, Philipp Zabel <p.zabel@pengutronix.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Yakir Yang <kuankuan.y@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGVsbG8gYWxsLAoKT24gNy8xMC8yMDI2IDY6MzEgUE0sIFV3ZSBLbGVpbmUtS8O2bmlnIHdyb3Rl
-Ogo+IEhlbGxvLAo+IAo+IE9uIE1vbiwgQXByIDIwLCAyMDI2IGF0IDAzOjUyOjM4UE0gKzAyMDAs
-IE5pY29sYXMgRnJhdHRhcm9saSB3cm90ZToKPj4gVGhlIFJvY2tjaGlwIFJLMzU3NiBTb0MgaGFz
-IGEgbmV3ZXIgUFdNIGNvbnRyb2xsZXIgSVAgcmV2aXNpb24gdGhhbgo+PiBwcmV2aW91cyBSb2Nr
-Y2hpcCBTb0NzLiBUaGlzIElQLCBjYWxsZWQgIlBXTXY0IiBieSBSb2NrY2hpcCwgaW50cm9kdWNl
-cwo+PiBzZXZlcmFsIG5ldyBmZWF0dXJlcywgYW5kIGNvbnNlcXVlbnRseSBkaWZmZXJzIGluIGl0
-cyBiaW5kaW5ncy4KPj4KPj4gSW5zdGVhZCBvZiBleHBhbmRpbmcgdGhlIGV2ZXItZ3Jvd2luZyBy
-b2NrY2hpcC1wd20gYmluZGluZyB0aGF0IGFscmVhZHkKPj4gaGFzIGFuIGlmLWNvbmRpdGlvbiwg
-YWRkIGFuIGVudGlyZWx5IG5ldyBiaW5kaW5nIHRvIGhhbmRsZSB0aGlzLgo+Pgo+PiBUaGVyZSBh
-cmUgdHdvIGFkZGl0aW9uYWwgY2xvY2tzLCAib3NjIiBhbmQgInJjIi4gVGhlc2UgYXJlIGF2YWls
-YWJsZSBmb3IKPj4gZXZlcnkgUFdNIGluc3RhbmNlLCBhbmQgdGhlIFBXTSBoYXJkd2FyZSBjYW4g
-c3dpdGNoIGJldHdlZW4gdGhlICJwd20iLAo+PiAib3NjIiBhbmQgInJjIiBjbG9jayBhdCBydW50
-aW1lLgo+Pgo+PiBUaGUgUFdNIGNvbnRyb2xsZXIgYWxzbyBjb21lcyB3aXRoIGFuIGludGVycnVw
-dCBub3cuIFRoaXMgaW50ZXJydXB0IGlzCj4+IHVzZWQgdG8gc2lnbmFsIHZhcmlvdXMgY29uZGl0
-aW9ucy4KPj4KPj4gUmV2aWV3ZWQtYnk6IENvbm9yIERvb2xleSA8Y29ub3IuZG9vbGV5QG1pY3Jv
-Y2hpcC5jb20+Cj4+IFJldmlld2VkLWJ5OiBSb2IgSGVycmluZyAoQXJtKSA8cm9iaEBrZXJuZWwu
-b3JnPgo+PiBTaWduZWQtb2ZmLWJ5OiBOaWNvbGFzIEZyYXR0YXJvbGkgPG5pY29sYXMuZnJhdHRh
-cm9saUBjb2xsYWJvcmEuY29tPgo+PiAtLS0KPj4gICAuLi4vYmluZGluZ3MvcHdtL3JvY2tjaGlw
-LHJrMzU3Ni1wd20ueWFtbCAgICAgICAgICB8IDc3ICsrKysrKysrKysrKysrKysrKysrKysKPj4g
-ICBNQUlOVEFJTkVSUyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICA3
-ICsrCj4+ICAgMiBmaWxlcyBjaGFuZ2VkLCA4NCBpbnNlcnRpb25zKCspCj4+CgpXaXRoIE5pY29s
-YXMnIGFncmVlbWVudCwgSSdtIHBsYW5uaW5nIHRvIHRha2Ugb3ZlciB0aGUgUkszNTc2IFBXTSB2
-NApzdXBwb3J0IHdvcmsgYW5kIHRvIHJlc3RydWN0dXJlIHRoZSBkcml2ZXIgdG8gYSBjZXJ0YWlu
-IGV4dGVudC4KClRoZSBSSzM1NzYgUFdNIHY0IHJldmlzaW9uIGFjdHVhbGx5IHByb3ZpZGVzIGEg
-bGFyZ2UgbnVtYmVyIG9mCmZlYXR1cmVzLCBzdWNoIGFzIGNvdW50ZXIsIGZyZXF1ZW5jeSBtZXRl
-ciwgYmlwaGFzaWMgKEFCKSBjb3VudGVyLCBJUgp0cmFuc21pdHRlciBhbmQgSVIgcmVjZWl2ZXIu
-IEFsbCBvZiB0aGVzZSBmZWF0dXJlcyBzaGFyZSB0aGUgc2FtZQpwaHlzaWNhbCBhZGRyZXNzIHJh
-bmdlLiBGZWF0dXJlcyB0aGF0IGFwcGVhciB1bnJlbGF0ZWQgdG8gIlBXTSIgaGF2ZQpiZWVuIGZv
-bGRlZCBpbnRvIGEgc2luZ2xlIFBXTSBibG9jayAoZHVlIHRvIHNvbWUgdW5hdm9pZGFibGUKY29u
-c3RyYWludHMpLiBJbiBhIGZ1dHVyZSB2NSByZXZpc2lvbiB0aGVzZSBmZWF0dXJlcyB3aWxsIGJl
-IHNwbGl0CmludG8gc2VwYXJhdGUgYmxvY2tzLCBlYWNoIHdpdGggaXRzIG93biBwaHlzaWNhbCBh
-ZGRyZXNzIHJhbmdlLiBUaGlzCmlzIHRoZSBtYWluIHJlYXNvbiBJIHdvdWxkIGxpa2UgdG8gcmVz
-dHJ1Y3R1cmUgdGhlIGRyaXZlciBsYXlvdXQgbm93OgphbiBNRkQgYmFzZWQgdjQgZHJpdmVyIHdv
-dWxkIGhhdmUgdG8gYmUgcmV3b3JrZWQgaW50byBhIG5vbi1NRkQgb25lCmZvciB2NSBhbnl3YXks
-IHdoaWNoIHdvdWxkIGxlYXZlIHVzIHdpdGggdHdvIGRyaXZlcnMgZHVwbGljYXRpbmcgdGhlCnNh
-bWUgbG9naWMuCgpOaWNvbGFzJyBNRkQgdmVyc2lvbiBpcyBhbiBleGNlbGxlbnQgaW1wbGVtZW50
-YXRpb24gZm9yIHJ1bnRpbWUKZmVhdHVyZSBzd2l0Y2hpbmcsIGJ1dCBieSBkZXNpZ24gaW50ZW50
-IHdlIHByZWZlciB0aGUgZnVuY3Rpb24gdG8gYmUKZml4ZWQgYXQgaGFyZHdhcmUgZGVzaWduIHRp
-bWUsIGkuZS4gYSBzdGF0aWMgc2VsZWN0aW9uIGluc3RlYWQuIEkgaGF2ZQpmb3VuZCB0d28gc2lt
-aWxhciBleGlzdGluZyBpbXBsZW1lbnRhdGlvbnM6CgoxLiBUSSdzIGVDQVAgbW9kdWxlIHN3aXRj
-aGVzIGJldHdlZW4gZnVuY3Rpb25zIGJ5IG92ZXJyaWRpbmcgdGhlCiAgICBjb21wYXRpYmxlOgoK
-ICAgIGRyaXZlcnMvY291bnRlci90aS1lY2FwLWNhcHR1cmUuYwogICAgZHJpdmVycy9wd20vcHdt
-LXRpZWNhcC5jCiAgICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY291bnRlci90
-aSxhbTYyLWVjYXAtY2FwdHVyZS55YW1sCiAgICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
-ZGluZ3MvcHdtL3B3bS10aWVjYXAueWFtbAoKMi4gU2Ftc3VuZydzIFVTSSBtb2R1bGUsIHdoaWNo
-IFNhc2NoYSBwb2ludGVkIG1lIHRvLCB1c2VzIGEgdG9wLWxldmVsCiAgICBub2RlIG1hdGNoaW5n
-IHRoZSBVU0kgZHJpdmVyIHdpdGggb25lIGNoaWxkIG5vZGUgcGVyIGZ1bmN0aW9uCiAgICAoZGlz
-YWJsZWQgYnkgZGVmYXVsdCkuIFRoZSBib2FyZCBkdHMgdGhlbiBvbmx5IGhhcyB0byBlbmFibGUg
-dGhlCiAgICBjaGlsZCBub2RlIGl0IHdhbnRzIHRvIHVzZToKCiAgICBkcml2ZXJzL3NvYy9zYW1z
-dW5nL2V4eW5vcy11c2kuYwogICAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Nv
-Yy9zYW1zdW5nL2V4eW5vcy11c2kueWFtbAoKSSB3b3VsZCB2ZXJ5IG11Y2ggYXBwcmVjaWF0ZSB5
-b3VyIGZlZWRiYWNrIG9uIHRoaXMsIGFzIHlvdXIgb3BpbmlvbiBpcwprZXkgdG8gbWFraW5nIHN1
-cmUgdGhpcyByZXN0cnVjdHVyZSBkb2VzIG5vdCBoZWFkIGluIHRoZSB3cm9uZwpkaXJlY3Rpb24u
-CgpGb3IgcmVmZXJlbmNlLCB0aGUgcGxhbm5lZCB3b3JrIGlzOgoKMS4gU2V0dGxlIG9uIGEgc3Rh
-dGljIERUUyBtZXRob2QgdG8gc2VsZWN0IHRoZSBQV00gdjQgZmVhdHVyZXMuCjIuIE1lcmdlIHRo
-ZSBQV00gdjQgc3VwcG9ydCBpbnRvIHRoZSBleGlzdGluZyBwd20tcm9ja2NoaXAuYyBkcml2ZXIs
-CiAgICBiYXNlZCBvbiBbdjUsMy82XSBwd206IEFkZCByb2NrY2hpcCBQV012NCBkcml2ZXIuIEZv
-ciB2NCB0aGUKICAgIHdhdmVmb3JtIEFQSSBhbHJlYWR5IGFkYXB0ZWQgYnkgTmljb2xhcyB3aWxs
-IGJlIHVzZWQgKG9sZGVyCiAgICByZXZpc2lvbnMgd2lsbCBiZSBtaWdyYXRlZCB0byB0aGUgd2F2
-ZWZvcm0gQVBJIGluIHRoZSBmdXR1cmUpLgozLiBBZGQgYSBzZXBhcmF0ZSBjb3VudGVyIGRyaXZl
-ciBmb3IgdGhlIFBXTSBjYXB0dXJlIGZ1bmN0aW9uLCBiYXNlZAogICAgb24gW3Y1LDQvNl0gY291
-bnRlcjogQWRkIHJvY2tjaGlwLXB3bS1jYXB0dXJlIGRyaXZlci4KCi0tLS0gKHNlY29uZCBzdGFn
-ZSkgLS0tLQoKNC4gQWRkIGEgcm9ja2NoaXAtY2ZkLmMgZHJpdmVyIGJhc2VkIG9uIHRoZSBHZW5l
-cmljIENvdW50ZXIgZnJhbWV3b3JrLAogICAgc3VwcG9ydGluZyB0aGUgZnJlcXVlbmN5IG1ldGVy
-IGFuZCB0aGUgY291bnRlci4KNS4gQWRkIGEgcm9ja2NoaXAtcGNkLmMgZHJpdmVyIGJhc2VkIG9u
-IHRoZSBHZW5lcmljIENvdW50ZXIgZnJhbWV3b3JrLAogICAgc3VwcG9ydGluZyB0aGUgYmlwaGFz
-aWMgKEFCKSBjb3VudGVyLgo2LiBBZGQgYSByb2NrY2hpcC1pci10eC5jIGRyaXZlciBiYXNlZCBv
-biB0aGUgUkMgZnJhbWV3b3JrLCBzdXBwb3J0aW5nCiAgICBJUiBUWC4KNy4gQWRkIGEgcm9ja2No
-aXAtaXItcnguYyBkcml2ZXIgYmFzZWQgb24gdGhlIFJDIGZyYW1ld29yaywgc3VwcG9ydGluZwog
-ICAgSVIgUlguCgpCZXN0IHJlZ2FyZHMsCkRhbW9uCgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, Nov 24, 2026 at 04:52:40PM +0100, Michal Wilczynski wrote:
+> Add the dt-binding for the StarFive JH7110 HDMI subsystem.
+> 
+> The JH7110 HDMI IP is a monolithic block containing both the digital
+> controller and analog PHY in a single register space. This binding
+> defines the parent device, which holds the shared register map, and its
+> two children: the PHY and the controller.
+> 
+> The two have separate resources. The PHY takes the 24 MHz reference
+> clock and provides both the pixel clock, which the VOUT clock generator
+> routes on to the display controller, and the phy the controller uses.
+> The controller takes its clocks from the VOUT clock generator. What
+> they share is the register space, which the parent maps.
+> 
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+> ---
+>  .../starfive/starfive,jh7110-hdmi-subsystem.yaml   | 95 ++++++++++++++++++++++
+>  1 file changed, 95 insertions(+)
+> 
+
+DT bot reports here a lot of failures. I don't see immediate problem,
+but something feels odd.
+
+E.g. https://gitlab.com/robherring/linux-dt-review/-/jobs/18332570769/artifacts/raw/build-15017782.log
+(see rest on DT patchwork)
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
