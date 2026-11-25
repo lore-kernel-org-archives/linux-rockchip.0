@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9422F606A31E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 11:24:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A5E4A606A321
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 11:24:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4rLdxRc9;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=Iwfl+96T
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QVpQEKDG;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=Ope0rw3j
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,23 +14,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Ve5L+FCvQBwX1sntd2mP5VW1a/duRiKKBwjJqdQDO7Y=; b=4rLdxRc9SeozWyPz34EunB5CT9
-	4ROhRNDN2cCtqZt5TCfnfge9M5TSgKK8MJl0voEAP3U/ROYIQUz+6GjZIkUIKw979xY+wwgTQCL5T
-	UBhAK0HGofr+Ht1aPSvvfDKwgN3DHjtHq+gtH0s9xuvFNsdwuJRCFtvFJULDvt+Wep15iESgmbO3Q
-	R1AWSF5Uq9Ft0b5USMx9KvnlILw0qy0NPE7S6FHtBfQpctY0y3yOCc7MEwGaFQFsY44KAMm7Rl+vX
-	JDlifAby4Vrv+o0uWdN/YMtv/A87xSCdSZYNnDlzV1kzCS2eABo6Mmrygj92xKchOUYQecrIxg28/
-	lEYJ0KYA==;
+	bh=uNQjDJ3GdU5Q7ct3An6V4IFjAqO1szB67MhMYjxC3TU=; b=QVpQEKDG7oia7jxkBS7jBW1sow
+	Po1Gw3ELjrfQuEFbXR7+dvLgHfUDpSdFpAZpcFGSGhdbW1kd6x99aDcOVbJO9+EFC/E7ASDIXouXO
+	NoFk960A03tcBcF4SNGpghCcUStogoqYAuSvpQEp4xgGSF5/Ozst7iPidOxGvsOnkLGx88iIGvS1X
+	dd+jn6uSfzfuZSQUR4te90PATo+p0fnrHL3KvOYOpEEFBIEHsXYI/suZbRSvdIa08To6sYEXiE1ax
+	nrN/ohO0BkhoMKy6Ws0q774DofVHdrJwuzAXksCmpkLkHSPa9BP/Ap9dOnmsSqtF1C/f5t4TItnAR
+	NZUDRgBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWB6b-00000009bax-1Q30;
-	Wed, 25 Nov 2026 11:24:05 +0000
-Received: from mail-m16023653169.xmail.ntesmail.com ([160.236.53.169])
+	id 1xWB6x-00000009bmL-3X0C;
+	Wed, 25 Nov 2026 11:24:27 +0000
+Received: from mail-m158192.netease.com ([47.251.158.192])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWB4r-00000009a7p-1rgQ;
-	Wed, 25 Nov 2026 11:22:19 +0000
+	id 1xWB4t-00000009aAL-1zCt;
+	Wed, 25 Nov 2026 11:22:21 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 55f816069;
-	Wed, 25 Nov 2026 19:22:12 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 55f81606c;
+	Wed, 25 Nov 2026 19:22:14 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -62,27 +62,27 @@ Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
 	linux-samsung-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v7 14/20] drm/rockchip: analogix_dp: Unbind bridge when connector init fails
-Date: Wed, 25 Nov 2026 19:21:35 +0800
-Message-Id: <20261125112141.1434903-15-damon.ding@rock-chips.com>
+Subject: [PATCH v7 15/20] drm/exynos: exynos_dp: Unbind bridge when connector init fails
+Date: Wed, 25 Nov 2026 19:21:36 +0800
+Message-Id: <20261125112141.1434903-16-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261125112141.1434903-1-damon.ding@rock-chips.com>
 References: <20261125112141.1434903-1-damon.ding@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa212711e2703a8kunm17c230507758d2
+X-HM-Tid: 0aa21271232b03a8kunm17c230507758dc
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZTx9IVklLHU1OS01CSEMYTFYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaQkhCVkNPHRlDHk1DSU5NHVYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=Iwfl+96TVBGB7FAGE+rGSWA2yQq/vmKqPlgYhhIyBsga7Y1ekKEPBl0eYaVttVJua9OHTOLyzupetvuNEHhAJnBYytJNrlD3+Sv4h7TnqxXJGZmgq+/yWjCiqD1a6B27MrzUd8V3hrKvZVv1k8f7C/H5AKwIQvE9fxkJ23C91/A=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=8wdlz0LG+mt5/jNeMcYINGDfpLpelVy5XiXlc9r/roo=;
+	b=Ope0rw3jC4tAAH4rq2k/oGAe3l00Li+Py+YHRktF6SMaToNMgIUdRRdzb+iaNDdsnKO0tdPhHrh+lEcVlexh21IcKPAml7B569YFq08nJ/DSQh3Pe9A95DXx1vPcoU/7hsD6R453jsIxRAVs704u0GuelugS0Cr7clVt7lvxue0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=p4zmPdPsDeiWHAtXZWhH+tPhJrTy6vvnSAwhPV5ND4Q=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_032217_801235_97158E06 
-X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-CacheID: sfid-20261125_032220_121038_2C17B0D1 
+X-CRM114-Status: UNSURE (   9.43  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -104,15 +104,15 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The rockchip_dp_bind() returns without unwinding analogix_dp_bind()
-when drm_bridge_connector_init() fails.  The aux device registered by
+The exynos_dp_bind() returns without unwinding analogix_dp_bind() when
+drm_bridge_connector_init() fails.  The aux device registered by
 analogix_dp_bind() is then left behind with a dangling drm_dev
 pointer, which could be accessed on later AUX transfers.
 
 Call analogix_dp_unbind() in the error path to release the aux device.
 
 Fixes: 99a49ff5ef7a ("drm/bridge: analogix_dp: Apply drm_bridge_connector helper")
-Tested-by: Heiko Stuebner <heiko@sntech.de>
+Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 
 ---
@@ -123,19 +123,19 @@ Changes in v6:
 Changes in v7:
 - Add Fixes tag.
 ---
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 1 +
+ drivers/gpu/drm/exynos/exynos_dp.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 635146746b42..39eca3ec7160 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -419,6 +419,7 @@ static int rockchip_dp_bind(struct device *dev, struct device *master,
+diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
+index 572e261e09da..86dc53014fff 100644
+--- a/drivers/gpu/drm/exynos/exynos_dp.c
++++ b/drivers/gpu/drm/exynos/exynos_dp.c
+@@ -121,6 +121,7 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
  	if (IS_ERR(connector)) {
  		ret = PTR_ERR(connector);
  		dev_err(dp->dev, "Failed to initialize bridge_connector\n");
 +		analogix_dp_unbind(dp->adp);
- 		goto err_cleanup_encoder;
+ 		return ret;
  	}
  
 -- 
