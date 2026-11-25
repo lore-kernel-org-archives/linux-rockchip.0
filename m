@@ -2,61 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 73D20606A33A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Nov 2026 23:25:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 72450606A31E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 01:58:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xsn9wWoC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vNb2G81r;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Mjbu5DqC
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=wRL7rSquur7/9RJqGgcuEUqKZEB1Wx+aJKLN7n9wn4w=; b=xsn9wWoCnjwCM9TElHlO0Sa+0z
-	KQGysW9BSnO59NQV9pg+h6VIj+VgK1VxXUqlWxnLXKcWUlTStEKqmQM/x9xub2u60d9PIzwlEB4Ir
-	vWd5MlqPImEnIsywuedlrwNTYn1rwZsuk6WtWpPzcArK7uiz76DGwEl07vEQxA4LbeSnOXHvAh6X5
-	X+erpn7fxYkkZcbxqE0LXXs8jwAJlDnsTahlyQeNRydS0PLzuWQTUc20sG/IGQD0cNWNqWpSxl/cj
-	5/J0+zHlqfQ45MxN6XW4uXi9L0rH+lUoVYdVLp/IHXm6goZhmLW8q2iH9jOmDHZhRaJKM6QgN83st
-	Vq5syWOw==;
+	bh=aKZskLeBjDVQ3PWPKJ7qmqU25LZfRDfWhOtLEply4jc=; b=vNb2G81rvy5D8UU3u+6Imlejo+
+	G6qCM4ezNW4CIEPDtB0vKOPDDaKER9pl5EVxQjsHq2K5T+jyEkdc5sOrbJTzsbFXPVdsnP/4CxVVg
+	71NB+3CjWD3T/vHACU6VM9leZbWi3+LBuxoNTXtNQ/dtdt1UTmas/6z992QMw95djt5ZyynDkCK5U
+	rQquTLmE086o/6Y2Og6hnrAUU9SVMCpeh37FXnR5ekMV5uZ16wBpo2MZ2/ORq2wBpXQHL7JDmxPaY
+	/z2QWLpGt6hV4E9btoFAryGi9mczOn0mR7kygtvg6yfvnXUZG+HZBY0l5W3wvAEJXCazHd/sCCBIm
+	7LeYJXMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVztW-000000084TO-2Y0Y;
-	Tue, 24 Nov 2026 23:25:50 +0000
-Received: from woodpecker.gentoo.org ([140.211.166.183] helo=smtp.gentoo.org)
+	id 1xW2HC-00000008DXI-0emb;
+	Wed, 25 Nov 2026 01:58:26 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVztT-000000084SR-2Zeb;
-	Tue, 24 Nov 2026 23:25:49 +0000
-Received: from 8.2.7.0.b.1.5.7.a.9.4.1.f.a.c.8.c.6.e.0.c.6.2.0.0.b.8.0.1.0.0.2.ip6.arpa (unknown [IPv6:2001:8b0:26c:e6c:8caf:149a:751b:728])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	id 1xW2H9-00000008DWi-1iAN;
+	Wed, 25 Nov 2026 01:58:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795571899;
+	bh=RCwXdv4tItxKQe6YiWspccVkhW7JD4JZcpfpSEyn4tc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Mjbu5DqCZbhkGyqBolZeWH8RzEGyzS6Gv37b+Roq6+qV3mqjtjIQ7KM2nxVRNCxQj
+	 AloSyowdAROpG8C99PjqVwwE9YxKZADD6vuSvi9ixy0vcpIovKc9I9Oo44IK703rk5
+	 PGBb8OQXO3/tLulRqXxZAcoo+g/7R+pg7gTkQZdqn1o1nPjff/01696W3CRKOzUD5U
+	 eZqJilK/AiQDKdtbMwVW1gsK0DqvLzn5dEMtLXqU+ct99XGCGlaUjbBDn0ZTca0C/n
+	 NqehYBHGWCpGfiYmpmr6vFSF89pr77q88uI9v4n9cXbCe5eoAPssSHaeCa5pW5UIXw
+	 9UcIjsUCwoZJg==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: chewi)
-	by smtp.gentoo.org (Postfix) with ESMTPSA id CA44E34245A;
-	Tue, 24 Nov 2026 23:25:43 +0000 (UTC)
-Message-ID: <3d7bac3c74eec1015e17954e461fc5c4c41e6a72.camel@gentoo.org>
-Subject: Re: [PATCH] PCI: dw-rockchip: Clear stale link down interrupt
- before unmasking it
-From: James Le Cuirot <chewi@gentoo.org>
-To: Niklas Cassel <cassel@kernel.org>, Lorenzo Pieralisi
- <lpieralisi@kernel.org>,  Krzysztof =?UTF-8?Q?Wilczy=C5=84ski?=	
- <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, Rob
- Herring	 <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko
- Stuebner	 <heiko@sntech.de>, Wilfred Mallawa <wilfred.mallawa@wdc.com>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, Shawn Lin
-	 <shawn.lin@rock-chips.com>, stable@vger.kernel.org, Manivannan Sadhasivam
-	 <manivannan.sadhasivam@oss.qualcomm.com>, linux-pci@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Date: Tue, 24 Nov 2026 23:25:38 +0000
-In-Reply-To: <20261123121217.1107902-2-cassel@kernel.org>
-References: <20261123121217.1107902-2-cassel@kernel.org>
-User-Agent: Evolution 3.60.2 
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4363F17E00C4;
+	Wed, 25 Nov 2026 02:58:19 +0100 (CET)
+Message-ID: <3c203ba7-6a0b-45bf-ac88-9928ad0b4a11@collabora.com>
+Date: Wed, 25 Nov 2026 03:58:18 +0200
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 07/15] drm/rockchip: vop2: Reset AXI and DCLK to
+ improve robustness
+To: Tim Surber <me@timsurber.de>, Heiko Stuebner <heiko@sntech.de>
+Cc: Sandy Huang <hjc@rock-chips.com>, Andy Yan <andyshrk@163.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Daniel Stone <daniel@fooishbar.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Igor Paunovic <royalnet026@gmail.com>, kernel@collabora.com,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20261105-dw-hdmi-qp-yuv-v6-0-1bb63ef5766e@collabora.com>
+ <20261105-dw-hdmi-qp-yuv-v6-7-1bb63ef5766e@collabora.com>
+ <20261121023139.3515640-1-me@timsurber.de>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20261121023139.3515640-1-me@timsurber.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_152547_677435_CFEBD656 
-X-CRM114-Status: GOOD (  12.92  )
-X-Spam-Score: -4.2 (----)
+X-CRM114-CacheID: sfid-20261124_175823_635628_9BE8CE9C 
+X-CRM114-Status: GOOD (  22.59  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,84 +80,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4141259983820425479=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Hi Tim,
 
---===============4141259983820425479==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-qi+2NtxgvrcQ9iOuxkU9"
+On 11/21/26 4:31 AM, Tim Surber wrote:
+> Hi Cristian,
+> 
+> On Thu, 05 Nov 2026 03:00:41 +0200, Cristian Ciocaltea wrote:
+>> @@ -953,6 +974,8 @@ static int vop2_enable(struct vop2 *vop2)
+>>
+>>  static void vop2_disable(struct vop2 *vop2)
+>>  {
+>> +	vop2_reset_assert_deassert(vop2, vop2->axi_rst);
+>> +
+>>  	rockchip_drm_dma_detach_device(vop2->drm, vop2->dev);
+> 
+> with this patch my RK3588 board (FriendlyElec
+> CM3588) hangs hard sometimes when the last CRTC is switched off. Without the series
+> or with the AXI reset in vop2_disable() removed it does not happen.
+> 
+> Here is a minimal reproducer, run as root, with a display on HDMI and fbcon on it:
+> 
+>   python3 - <<'EOF' &
+>   import fcntl, os, struct
+>   fd = os.open("/dev/dri/by-path/platform-display-subsystem-card", os.O_RDWR)
+>   try:
+>       fcntl.ioctl(fd, 0x641F)        # DRM_IOCTL_DROP_MASTER: leave KMS to fbcon
+>   except OSError:
+>       pass
+>   while True:
+>       b = bytearray(struct.pack("6IQ", 2160, 3840, 32, 0, 0, 0, 0))
+>       fcntl.ioctl(fd, 0xC02064B2, b)                         # DRM_IOCTL_MODE_CREATE_DUMB
+>       handle = struct.unpack("6IQ", b)[4]
+>       fcntl.ioctl(fd, 0xC00464B4, struct.pack("I", handle))  # DRM_IOCTL_MODE_DESTROY_DUMB
+>   EOF
+>   while :; do
+>   	echo 4 > /sys/class/graphics/fb0/blank; sleep 0.3
+>   	echo 0 > /sys/class/graphics/fb0/blank; sleep 0.7
+>   done
+> 
+> This hangs the board within a few blank cycles. In
+> practice I hit it when a KMS application exits: it frees its buffers
+> while fbcon takes the display back with a full modeset.
 
+Thanks for reporting this - with your reproducer I could also trigger the hang
+on my Rock5B board, after ~15 cycles.
 
---=-qi+2NtxgvrcQ9iOuxkU9
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+> This issue can be fixed for me by moving vop2_reset_assert_deassert(vop2, vop2->axi_rst) from vop2_disable to vop2_enable.
+> 
+> --8<--
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -913,6 +913,9 @@ static int vop2_enable(struct vop2 *vop2)
+>  	if (ret)
+>  		goto err_put_pm;
+> 
+> +	/* Reset while idle; doing it in vop2_disable() can hang the SoC */
+> +	vop2_reset_assert_deassert(vop2, vop2->axi_rst);
+> +
+>  	ret = rockchip_drm_dma_attach_device(vop2->drm, vop2->dev);
+>  	if (ret) {
+>  		drm_err(vop2->drm, "failed to attach dma mapping: %d\n", ret);
+> @@ -973,8 +976,6 @@ static int vop2_enable(struct vop2 *vop2)
+> 
+>  static void vop2_disable(struct vop2 *vop2)
+>  {
+> -	vop2_reset_assert_deassert(vop2, vop2->axi_rst);
+> -
+>  	rockchip_drm_dma_detach_device(vop2->drm, vop2->dev);
+> 
+>  	regcache_drop_region(vop2->map, 0, vop2_regmap_config.max_register);
+> -->8--
+> 
+> Does that work for the cases the reset was added for (the RGB <-> YUV420
+> switch glitches and the DSI panel on the EVB1)? I can't test those here.
 
-On Mon, 2026-11-23 at 13:12 +0100, Niklas Cassel wrote:
-> PCIE_LINK_REQ_RST_NOT_INT is set by smlh_req_rst_not, which according to
-> the RK3568 TRM "is asserted after power-on reset until first link up".
-> The bit is thus already pending when the driver unmasks the interrupt
-> after resetting the controller, both in probe and in .reset_root_port(),
-> so the interrupt fires as soon as it is unmasked, even though the link
-> is up. Since each recovery resets the controller again, this results in
-> an endless loop, as seen on a Quartz64 Model B (RK3566):
->=20
-> =C2=A0 pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-> =C2=A0 pcieport 0000:00:00.0: Root Port has been reset
-> =C2=A0 pcieport 0000:00:00.0: AER: device recovery successful
-> =C2=A0 pcieport 0000:00:00.0: Recovering Root Port due to Link Down
->=20
-> Clear the bit before unmasking the interrupt, and in .reset_root_port()
-> only unmask it once the link is back up, like in probe. Also keep the
-> interrupt masked while .reset_root_port() resets the controller, so the
-> link down caused by the reset itself is not reported.
->=20
-> Fixes: b376b3ff9cb0 ("PCI: dw-rockchip: Implement .reset_root_port() and =
-use for link down")
-> Reported-by: James Le Cuirot <chewi@gentoo.org>
-> Closes: https://lore.kernel.org/linux-pci/08cc96c5171fc969b074371692e6d95=
-d46eba60b.camel@gentoo.org/
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Niklas Cassel <cassel@kernel.org>
+I briefly tested the RGB <-> YUV420 mode switches and didn't notice any obvious
+regressions. For the EVB1 we need Sebastian's help, as I don't have that board.
 
-I can confirm that this fixes the issue I reported. Thank you. :)
+Would you like to send a proper patch in the meantime? 
 
-Tested-by: James Le Cuirot <chewi@gentoo.org>
-
---=-qi+2NtxgvrcQ9iOuxkU9
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iQEDBAAWCgCrFiEE6qETVs4yu3Lfuc3XsNCJZ6jP87QFAmsGHPIbFIAAAAAABAAO
-bWFudTIsMi41KzEuMTIsMiwyXxSAAAAAAC4AKGlzc3Vlci1mcHJAbm90YXRpb25z
-Lm9wZW5wZ3AuZmlmdGhob3JzZW1hbi5uZXRFQUExMTM1NkNFMzJCQjcyREZCOUNE
-RDdCMEQwODk2N0E4Q0ZGM0I0ERxjaGV3aUBnZW50b28ub3JnAAoJELDQiWeoz/O0
-yP8BAPdopBp92UiyxdZ+jUx1aLnzOP2TATZVOBOtL27OYcZ1AP9p8sIx9Hk+iRsu
-qeK2k/0h9IIIwLieulOsh/hlJkdDAw==
-=jlB3
------END PGP SIGNATURE-----
-
---=-qi+2NtxgvrcQ9iOuxkU9--
-
-
---===============4141259983820425479==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Regards,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4141259983820425479==--
-
