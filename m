@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4F1BE606A31E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 11:23:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 23B68606A323
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 11:23:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bEc3Yxb8;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=QrjM7ZR8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lJeRp2rJ;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=aPpT0sd0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,23 +14,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=kiyexyRgQH5Ca/62dYjjtiMnBVAunNKffqcokTEqqwU=; b=bEc3Yxb8QwaE0mZg9ogHlKkVrY
-	UY1dsjMUDWTvXxqBPLYZ7eYiwp1turipCU0LUtLD0QbkFoNBP+TiCw+qF/whzIvuEYyhs8bgT0n8Q
-	NOYdINNNkXEo7OZzb+NDbGO1Sf113XjgoKB0CQYWvyHbxRbfllXw3mXnsi0uvEC84OGq/Vdx43V1F
-	VfF+MOp6iNPjcQX/ZybxuB64ZW35T3cT1cvokVQdiSGNNdCDpD9RJiiHAZzu+xbr7HOYmWBjqNvX9
-	usECATmMi3ajKQvzPP47pJgd79/ekvO8s8zfkgw/saKKbvNUrWENWt76Kh7B68q/9rwGNdPd6rrpa
-	nDnE9rmA==;
+	bh=VzA/Q0btfhwcD2iagLBT9sTP5KqN4jTpAD2Jp7iskD4=; b=lJeRp2rJTha6cUIdCk4koqLyEN
+	N/EMgAQ6CytTA+B6gklXEPxETGJsmQM7wi/vH51+JoB8oouRtF/HOT83fLPGZtCnyAXdK7iTax6We
+	FV1+Hp3egpMJ7bZkf4wlnok3i+uYw5e8bwEVoDX37mRaawEzEhbVB1mpC7Cs9TVVHrrCh4Q0SRqTU
+	l18rbVs1hkxkpT3tfk1yRQgLhCS8HH+sohYN+FCw1mWGZn4wAM0GnHhXwrSZcFuD+iW4eEZ9fRKoL
+	uwxKpC2KTaAmxDs+K2DAvLx22TpW3dtsMLbhyKWeabRNgE1zAvyzip19V5kUmE0eNBXT/ADim00a0
+	CArBjoYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWB5X-00000009ahx-2Yuw;
-	Wed, 25 Nov 2026 11:22:59 +0000
-Received: from mail-m160236538.xmail.ntesmail.com ([160.236.53.8])
+	id 1xWB5g-00000009anL-3L1b;
+	Wed, 25 Nov 2026 11:23:08 +0000
+Received: from mail-m8116.xmail.ntesmail.com ([156.224.81.16])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWB4i-00000009Zz9-2mCq;
-	Wed, 25 Nov 2026 11:22:10 +0000
+	id 1xWB4j-00000009a11-31fi;
+	Wed, 25 Nov 2026 11:22:11 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 55f816044;
-	Wed, 25 Nov 2026 19:22:03 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 55f816048;
+	Wed, 25 Nov 2026 19:22:04 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -61,29 +61,28 @@ Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-samsung-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	Damon Ding <damon.ding@rock-chips.com>,
-	Sashiko <sashiko-bot@kernel.org>
-Subject: [PATCH v7 07/20] drm/bridge: analogix_dp: Check all negative return values for &analogix_dp_device.irq
-Date: Wed, 25 Nov 2026 19:21:28 +0800
-Message-Id: <20261125112141.1434903-8-damon.ding@rock-chips.com>
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v7 08/20] drm/bridge: analogix_dp: Add IRQF_ONESHOT and simplify IRQ handling
+Date: Wed, 25 Nov 2026 19:21:29 +0800
+Message-Id: <20261125112141.1434903-9-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261125112141.1434903-1-damon.ding@rock-chips.com>
 References: <20261125112141.1434903-1-damon.ding@rock-chips.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-HM-Tid: 0aa21270f97a03a8kunm17c23050775894
+X-HM-Tid: 0aa21270fed903a8kunm17c23050775898
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaQk1DVktIT0IdGU0YHU5DSlYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDGR9IVhpMGkwaGEMeQ0gfSVYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=QrjM7ZR8pJ3EzmPj0v56jPZq94jjwPvloVlv1Emt4EQmsMiU7/r43wrszU+dbY9O0nPWw0QXG8jQ3pXQlWNeUX83jbA/06oqNtsD8DkKnR5wkj4FZxG1Tkn2+UZiBrO7DyFPcVBEcYiiI/kdXjI7mihzZseaes9BAmThSBMyWUc=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=KB2UOnA2/AVxrvyPRngGKJQSFTHCDi7Mco+n8BMKsyE=;
+	b=aPpT0sd0hAcXxv0h/Ou8lo8jfQloG8a28lIVLlKM4PGYl7IAH2sdDwHicmvtujWHUAqOVZfOj0233yhqWQcA7eW71V6creReYq0bMJZhtQtcseosIE2rjnKLczw66tKKNXcwU8r5Iz2clq0tCKpZhefS8NBi7ckQAinOfkE47Bs=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=B0S4TeatqcgFI1CQuKPrV5OqrTk62VwVmWdAQnwCQ+s=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_032208_989198_7748B6F8 
-X-CRM114-Status: GOOD (  13.81  )
+X-CRM114-CacheID: sfid-20261125_032210_072936_9F3C32A9 
+X-CRM114-Status: GOOD (  14.13  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,64 +103,89 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Currently only -ENXIO is checked for dp->irq from gpiod_to_irq(),
-which ignores other possible error codes like -EPROBE_DEFER, -ENOENT.
+The threaded IRQ is requested without IRQF_ONESHOT, allowing hardirq to
+preempt the threaded handler. This creates a read-modify-write race on
+HPD interrupt mask registers between the hardirq mute and thread unmute
+operations.
 
-Check for any negative value instead, and propagate the actual error
-code rather than hardcoding -ENODEV.
+Add IRQF_ONESHOT to keep the IRQ line masked during thread execution,
+which eliminates the race and makes the per-event mute/unmute calls in
+hardirq and thread handlers redundant. Move interrupt status clearing
+to the beginning of the threaded handler, before
+drm_helper_hpd_irq_event(), to avoid losing events that arrive during
+the event handling.
 
-Reported-by: Sashiko <sashiko-bot@kernel.org>
-Link: https://lore.kernel.org/all/20260804083307.84ECA1F000E9@smtp.kernel.org/
 Tested-by: Heiko Stuebner <heiko@sntech.de>
 Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 
 ---
 
+Changes in v3:
+- Split out a separate commit to improve the return value checking for
+  &analogix_dp_device.irq. (Sashiko)
+
 Changes in v4:
 - Add Tested-by tag.
-
-Changes in v5:
-- Change the type of &analogix_dp_device.irq from unsigned int to int
-  to fix the dead dp->irq < 0 check, which broke the probe deferral
-  for the HPD GPIO. (Sashiko)
 
 Changes in v6:
 - Add Tested-by tag.
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 4 ++--
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.h | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ .../gpu/drm/bridge/analogix/analogix_dp_core.c  | 17 +++++++----------
+ 1 file changed, 7 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 3ab1cf6b51d1..749d63e55d2a 100644
+index 749d63e55d2a..ecc10a01cb48 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1514,9 +1514,9 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
- 		irq_flags = IRQF_NO_AUTOEN;
+@@ -707,10 +707,8 @@ static irqreturn_t analogix_dp_hardirq(int irq, void *arg)
+ 	u32 irq_type;
+ 
+ 	irq_type = analogix_dp_get_irq_type(dp);
+-	if (irq_type) {
+-		analogix_dp_mute_hpd_interrupt(dp);
++	if (irq_type)
+ 		ret = IRQ_WAKE_THREAD;
+-	}
+ 
+ 	return ret;
+ }
+@@ -721,6 +719,9 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ 	u32 irq_type;
+ 
+ 	irq_type = analogix_dp_get_irq_type(dp);
++	if (irq_type)
++		analogix_dp_clear_hotplug_interrupts(dp);
++
+ 	if (irq_type & DP_IRQ_TYPE_HP_CABLE_IN ||
+ 	    irq_type & DP_IRQ_TYPE_HP_CABLE_OUT) {
+ 		dev_dbg(dp->dev, "Detected cable status changed!\n");
+@@ -728,11 +729,6 @@ static irqreturn_t analogix_dp_irq_thread(int irq, void *arg)
+ 			drm_helper_hpd_irq_event(dp->drm_dev);
  	}
  
--	if (dp->irq == -ENXIO) {
-+	if (dp->irq < 0) {
- 		dev_err(&pdev->dev, "failed to get irq\n");
--		return ERR_PTR(-ENODEV);
-+		return ERR_PTR(dp->irq);
+-	if (irq_type) {
+-		analogix_dp_clear_hotplug_interrupts(dp);
+-		analogix_dp_unmute_hpd_interrupt(dp);
+-	}
+-
+ 	return IRQ_HANDLED;
+ }
+ 
+@@ -1508,10 +1504,11 @@ analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data *plat_data)
+ 		 * that we can get the current state of the GPIO.
+ 		 */
+ 		dp->irq = gpiod_to_irq(dp->hpd_gpiod);
+-		irq_flags = IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING | IRQF_NO_AUTOEN;
++		irq_flags = IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING | IRQF_NO_AUTOEN |
++			    IRQF_ONESHOT;
+ 	} else {
+ 		dp->irq = platform_get_irq(pdev, 0);
+-		irq_flags = IRQF_NO_AUTOEN;
++		irq_flags = IRQF_NO_AUTOEN | IRQF_ONESHOT;
  	}
  
- 	ret = devm_request_threaded_irq(&pdev->dev, dp->irq,
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-index dc189f0b7a19..cc3466304531 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
-@@ -159,7 +159,7 @@ struct analogix_dp_device {
- 	struct drm_bridge	bridge;
- 	struct drm_dp_aux	aux;
- 	struct clk		*clock;
--	unsigned int		irq;
-+	int			irq;
- 	void __iomem		*reg_base;
- 
- 	struct video_info	video_info;
+ 	if (dp->irq < 0) {
 -- 
 2.34.1
 
