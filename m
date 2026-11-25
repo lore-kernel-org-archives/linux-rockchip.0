@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 27479606A326
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 19:37:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E42A606A323
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 19:37:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PzU0bmLo;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=flipper.net header.i=@flipper.net header.a=rsa-sha256 header.s=google header.b=ac7AvRaQ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QKAGtX0B;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=flipper.net header.i=@flipper.net header.a=rsa-sha256 header.s=google header.b=tCR2j2nI
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,74 +14,74 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=/ZtjQ+6ey9EVFBuCnvOFkbFiQRsAgRgrSqQTUwqgLkw=; b=PzU0bmLo8d0C2enrR2RFOmj01m
-	tEmKFeWZ8vfVAOGf+9F8U9Q5tQzu4FPPppGm4EauxEPEkk+q1+EliOVMTajLWK8rXFrAcArIFOrPh
-	k5sAUrxr6a7vegDfgHH1B/ln+RIR/NIWaPAEQSToucpKvmL6DCVjePwXnC5W+ycIx4aL9/GcZ4YJq
-	qG9+ukoWQE/bYLNPPng6XGXNnx7eQcwRtqG2AoeT/KMalIpJTXRmIwBEbtRyys1D6gXUO8KCLOoWd
-	cHEWl+MkGz5pFO7n2go2NynILKOXxFVlfHACPt/VJbYfTIBJNm138FMvPcn+T6y5EPYdR0xJe/Hcj
-	1GXrbQLg==;
+	bh=jk6E+JFiutdVvIqXCBOrOa46WjOISZTRZGgqSE6vMZY=; b=QKAGtX0BCRCEVpTmRVTO1hhIs6
+	zwdNzrMT5PTw7DVxKENgEbSnyLiU48XExU5BpjZchveRnWkoJTGa+iM3hRlZ7AIdLMwQr2+cndHtj
+	d0oCdbqTpegr5sxXsU5Cn0jDqNXaZS7FXsdlaA8/YdED5fquBqCvWhYQlM4HcsZonjHCcW6gUEPHU
+	VpdXcOMJzBoh3O2pDdjm6t/fD6F3sjzyJp0Wvi4BBEvNCeuXKKaXN3QTDi3t8yAGXBK7vx3hMCQuI
+	Mn/xzcmdxUoNCgJEl8bu3YaL1OenMXf1Fx93PcRnwqY5n87Zxz72p68kLNJg0yFRw/6ptxVkh70I4
+	s+TD+Axg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWIo0-0000000BAGl-0gvC;
-	Wed, 25 Nov 2026 19:37:24 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1xWIoC-0000000BARA-3sRx;
+	Wed, 25 Nov 2026 19:37:36 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWInk-0000000BA1s-2Rao
+	id 1xWInp-0000000BA6T-0EHz
 	for linux-rockchip@lists.infradead.org;
-	Wed, 25 Nov 2026 19:37:10 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-4a5024b3c28so4200720f8f.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 25 Nov 2026 11:37:08 -0800 (PST)
+	Wed, 25 Nov 2026 19:37:16 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-4a9be758734so3931694f8f.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 25 Nov 2026 11:37:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1795635427; x=1796240227; darn=lists.infradead.org;
+        d=flipper.net; s=google; t=1795635431; x=1796240231; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=Wr5AGl2n5OMdlwfzUx+Xnt2cvomNzozcQctK34Lni/M=;
-        b=ac7AvRaQ7V2kEzDTl+4i/yVyQHa+yxh/zmyx7sQ1iLGgzlKZmhDyFk/biIgc5kWzd0
-         5bmWTGTN0GaE5bJG9xV0Uvn33bIDgpvKGnoflZWF1Zt/yNwXgIo857lYBr6g5usAbIhy
-         vNnNBtv2pUs8QsntWl4fcKY8ZbTl2E9DNHTqNMLCQhT1KFUWl+yHdAVlmYGsfsYERAD8
-         HVQ7k37ufHdZKDq1RN6eUu6+kcaXHQLNs5lzsfuovAryu5u/8yqJJMu5eTkxRWQLe7K7
-         +z7cf0Tw4x8XmK4ncjYeqeta/7LgfLpVWNDzX3ZiBDQjZq1Qgv2HoN51J51h9rRbWEGD
-         /Zyg==
+        bh=ogqpT8rvdF/Gm93BWuS1bNrXpPYIVQ5iqYHH/0ZaQ3I=;
+        b=tCR2j2nI1c8SbjiYs+TFuhEtkwq3vJv9wVABOhaPMir+tV40ZpmNBGxhyelJk4PqNO
+         YdqetuetLWYsXE1VHnmPS22deez7BU77nTCJHnkKxuzZam9ux/YfZVV9ItnRyPfBCHwP
+         DmMVzSqUtQDxE69YdSXDj3C0dN4VLuwPubigTjKjoLiM03G8dUTs5hkU0SvkR20MKgOz
+         J0Qt3RsDzsle32zUMHdLLQHX2K/I8LZiR652rixJAKiUdIy5xDjySsbr08WL1zmplQH6
+         CiNO+1KWvaRBzwnKvcANnHzGxbXYMQX5Hu5k9sTSCW0HlkTHNsBTip0cIADl5QQxMDRc
+         eIaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795635427; x=1796240227;
+        d=1e100.net; s=20260707; t=1795635431; x=1796240231;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=Wr5AGl2n5OMdlwfzUx+Xnt2cvomNzozcQctK34Lni/M=;
-        b=HymECXDRzEDaNvxsoK6SMn0hpOR8efK43KD3sXpoTMFuyfY2HHga28JoMqTaX2C+ys
-         +VXPik+JxF5x02GfozVNF6zMWSLanyVXgcIhQBYvVo33kwOu34dyeKhiXRAU2F6OI2JW
-         mFuG+0enAO7UyIxMDtuJSoR7idM1UUkToaX4C/JJLLSZcRxP2h6tOkqoKNdPg1jwEwtg
-         GIlUZXylxxW93OLxODJeNWRwDPTuEx5Dcv1SSj3iUKA7mr2dDCCAlWxEPSvyNT32TXeE
-         Y8UOJjJs9PQ8WrtxXl2zsNX1e0HAAZZ2xMos19ksUtIlEukKHCpnNdRmU3RTCn9WOyBw
-         MnwQ==
-X-Forwarded-Encrypted: i=1; AL+hErEUABXHqrEJ9JeLEAm8mJqGARPYoog6HhaKSGov0cSuTLKFtu0j8kiqUki0FReZLYk9rNo5ZPw13kFJI9uqXA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8oasnQXAWYcwVPrKyEnJJPW4/PcHPvW0m6mIXjGdBHMt2k7di1
-	PUzMrmJN4i1CWyBMdpuJgHdOlAUbmHBoi0YnZaBsDH79jZA1/mZ/CA80Er2bMzL+bm4=
-X-Gm-Gg: AZFdTZeSXeNzPtD7L6IgBX406iw87B/V4VRvREAUeH9Vw19nX+u39aiK2d13HTeeIGa
-	lnP1FSPgXgYGWU3iP3MDLOUTfnW18mMI/6HhiNZeI1QPqqOoL/BZKSw5RXd9YDKNtOIn9vhREAq
-	muViknu4sOTENjCO/8a5dOlYvRrp+u1bJD7HsMLyw3HHWwFayLlfA6lqq1+aQtdTT4R70qTQGp6
-	i2w2KFMgxlQKtz7jHSxrTpzercvmD5oAgdYULn+PgJpuBiH3PApHBQNy/9asbEE0dwZH5RGmNs7
-	IPNQHTMDxQs7xqVf2fglNNwq8VNXKYINeuH/jG37Hu7XFNexf/r2gPUZSDtXk3UyxZY0qqvpmsa
-	j5dkD83YTflEehvuUzhOvI/19+7SqHc5eajyF9QN4MkOR34litL2x10Cf/rBaruZsFUwSDDEYSL
-	aU7h/9b6h//slrOY67F037Ohv78+BZFBv8vUvrJedSNfPHWM37ISgIV0t33psfX5PbA2z4u9Uoy
-	98oM0zsZbPZ1nSWrOGLrf9gy0TpcYOHOaGaIwz1y9OFs5fnntHsnRVpjqhNlACU5x7O0jS3wX4r
-	gZxSvkR/hx00nf9r87tL5rDYUmQeeIqfRSg8kmyzcc/34sjJPXOGCwbdQ+ksvLUa+IsyZ7H8O3C
-	P5gvThiCEgg==
-X-Received: by 2002:a05:6000:188a:b0:4a4:da59:aa60 with SMTP id ffacd0b85a97d-4abab4f5aaamr36933216f8f.3.1795635426983;
-        Wed, 25 Nov 2026 11:37:06 -0800 (PST)
+        bh=ogqpT8rvdF/Gm93BWuS1bNrXpPYIVQ5iqYHH/0ZaQ3I=;
+        b=y3bvn4QLBynpGyZGcuaUCR3JXczVBAQaLxMEfFb4Y9xX7UgNSyYP9kIBtHvL5DpgQe
+         AmiUoqdxBoncvpubiPGLNu91TNHkdhFo6Kna47rJPcjFIqXNQXgti6S+lyMWQOO7g59p
+         qhpos20rsHwoJAvT7jFuS/JE8zT3Np/2P+KMArDClAiBmykgJT6kpLVeaWqjsFSHTYSg
+         ax/9WMDESjNBHwUoJaGYSH5KBu8NvaaAaih6XUISZxmHEXZSw5mH2n3mkZKUE8M69FRO
+         HIvbcpIDa8peF2iI15oeDeIfVsc4VfePUq/wH24lPNdmZeTaEW8Q1KNC8U8LJRJDnbLn
+         3tsQ==
+X-Forwarded-Encrypted: i=1; AL+hErEr7B4JXBT50ZCS5MtEFoYAEWRPMEOIU33Olq4BoC3erTBGjfzrBhNrPhJTIUag0PBSHeOKsF1A9Y1I+qCvNg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+aRl2CiAylNPxPPlTJOLMXK4/xUNyyhU0uN+npj5LNolHnqBQ/
+	7+rmi3zoWCq2Abotix3PBzPNJVP0iXx3Ov3OAp6TQ1ynHyzwsQ/FeKQVcZ294Xy4RZo=
+X-Gm-Gg: AZFdTZfgTMJwY0djlRoikauhYxv6/OA7/XUf6Th+j4dCinZESBowovmGZe/zYf0frDo
+	1XCEMADWqgHEAJQOFMQZTJqBbUVSzSG3oHHCVKv//02TrBHH9kQRzmWv6UeqFoDeDlMDmeJvAR6
+	rVDDVB1UPJjvBZbWsrkXmkaN2Yg84g1iV47ZRT+IihgWa7SoOfPtm7LP54aDKnn0I77u+8Iu+lh
+	9yD0Ah00+K1IIN7RB1M4H4IimnVhxkzX9931fiJHZDcp9aDFmudeMN1FQpILdx8GyBcX4pzYQ40
+	4+fDc5n4qOtljXARLHb7GK++OhImINh33It1yjntaSjPiLJmt7WgnDisOdP7PMJpfrbNdrYAo48
+	WhA4epk1vc+1K4i4ASLorAJL9RFzW/p+pM+kGM8Za08COwYw0wYpJ6mkCLatf5R1VLDPHaCf+DD
+	QUBTHdjDDr/qgbOU4C/OSIUi73bmBsC/v48CRWeBSsHgj1t7EShAYuG8E2MfKdb82cNVbArxW9a
+	RtNPVu8ygiP3+D+pStwm9WVk3s6UtwLN+d0ZmBfh8gZRn1qROZCxo5il6mCO2ev39OmrPjilsOm
+	XH+9HTn3k6yx9xFAi+N/rLJs+zr/huKJbqCHeOSErDQulKw9hr2Fm9lp7zaqFqPR5oX0a4xqiZR
+	Vn77SMKJjCrJr8KdN4x2GAqv04AFOqA0=
+X-Received: by 2002:a5d:64c9:0:b0:4a7:69c3:94d5 with SMTP id ffacd0b85a97d-4abb0e469cfmr35425907f8f.28.1795635431246;
+        Wed, 25 Nov 2026 11:37:11 -0800 (PST)
 Received: from alchark-surface.localdomain (bba-86-98-194-229.alshamil.net.ae. [86.98.194.229])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4ab6baa3882sm35614063f8f.49.2026.11.25.11.37.03
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4ab6baa3882sm35614063f8f.49.2026.11.25.11.37.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Nov 2026 11:37:06 -0800 (PST)
+        Wed, 25 Nov 2026 11:37:11 -0800 (PST)
 From: Alexey Charkov <alchark@flipper.net>
-Date: Wed, 25 Nov 2026 23:36:41 +0400
-Subject: [PATCH v5 4/5] arm64: dts: rockchip: Move RK3576 OTP cells into a
- fixed layout
+Date: Wed, 25 Nov 2026 23:36:42 +0400
+Subject: [PATCH v5 5/5] arm64: dts: rockchip: Derive GMAC MAC addresses
+ from OTP on RK3576
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261125-rk3576-otp-cpuid-mac-v5-4-b3125c9a5fc8@flipper.net>
+Message-Id: <20261125-rk3576-otp-cpuid-mac-v5-5-b3125c9a5fc8@flipper.net>
 References: <20261125-rk3576-otp-cpuid-mac-v5-0-b3125c9a5fc8@flipper.net>
 In-Reply-To: <20261125-rk3576-otp-cpuid-mac-v5-0-b3125c9a5fc8@flipper.net>
 To: Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>, 
@@ -100,17 +100,17 @@ Cc: Ryan Leung <untilscour@protonmail.com>,
  netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
  Alexey Charkov <alchark@flipper.net>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3709; i=alchark@flipper.net;
- h=from:subject:message-id; bh=oXkReYjuRBJJEs/g0N/aMbEdzVAIdJ9dL3E3A7d18o4=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWSzW5xVaDb6V/mwdXXj4g3C817vE1xzUJyLs/rkPpG0z
- 7sSDK6v75jIwiDGxWAppsgy99sS26lGfLN2eXh8hZnDygQyRFqkgQEIWBj4chPzSo10jPRMtQ31
- DI10jHWMGLg4BWCqJzYw/C+1sbB2ad93Sdpo57mgtQeW37eODV++MbLXuGMyc85BphUMv1n/RBY
- viI8NXqDlb8XNWs7KvdBreTcj7x0P3yaN+movNgA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2032; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=JAiuEnOZimha69/KVwMW0+w3glgeOUOuX9RVnjpc4yU=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWSzW5xrWM62Y/37+T53Hwe17wu9ny+vGuP4jmV57fU++
+ Va1cysKOiayMIhxMViKKbLM/bbEdqoR36xdHh5fYeawMoEMkRZpYAACFga+3MS8UiMdIz1TbUM9
+ QyMdYx0jBi5OAZjqqmWMDNfbjKIlv9QFCs1NZY+oPnLYv9+6Jm/iyitLZfmfTruxRZ3hf1DXm2i
+ hwzpxLP1yR8r+vf1r9+22xYz5F1fNV5wutjFDjwkA
 X-Developer-Key: i=alchark@flipper.net; a=openpgp;
  fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_113708_885013_E17CAEF7 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20261125_113713_138382_B9B17489 
+X-CRM114-Status: GOOD (  12.32  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -131,141 +131,54 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The RK3576 OTP describes its cells as direct children of the OTP node,
-which is the deprecated syntax predating NVMEM layouts. It does not
-allow a compatible on a cell, which describing the CPU ID cell needs.
+RK3576 boards without dedicated storage for a MAC address only get a
+stable one if the bootloader derives it from the CPU ID and patches it
+into the device tree, which not every boot flow does.
 
-Move the cells into a fixed layout, as already done for RK3528, RK3562
-and RK356x. Labels and node names stay the same, so the cells keep their
-names and existing references keep working.
+Mark the CPU ID cell as such and reference it from both GMACs as their
+unique ID, so that the addresses can be derived from the device tree
+alone, whatever the bootloader. Each GMAC gets the address of its
+"ethernetN" alias, as with the bootloaders. Boards which store a MAC
+address of their own can reference it instead.
+
+Note that the GMACs then depend on the OTP memory being accessible, as
+the thermal sensors already do for their trim values.
 
 Signed-off-by: Alexey Charkov <alchark@flipper.net>
 ---
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 105 ++++++++++++++++---------------
- 1 file changed, 54 insertions(+), 51 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 6f5780af4192..2e83a73ddbb2 100644
+index 2e83a73ddbb2..d14236c783b5 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -2298,63 +2298,66 @@ rng: rng@2a410000 {
- 		otp: otp@2a580000 {
- 			compatible = "rockchip,rk3576-otp";
- 			reg = <0x0 0x2a580000 0x0 0x400>;
--			#address-cells = <1>;
--			#size-cells = <1>;
- 			clocks = <&cru CLK_OTPC_NS>, <&cru PCLK_OTPC_NS>,
- 				 <&cru CLK_OTP_PHY_G>;
- 			clock-names = "otp", "apb_pclk", "phy";
- 			resets = <&cru SRST_OTPC_NS>, <&cru SRST_P_OTPC_NS>;
- 			reset-names = "otp", "apb";
- 
--			/* Data cells */
--			cpu_code: cpu-code@2 {
--				reg = <0x02 0x2>;
--			};
--			otp_cpu_version: cpu-version@5 {
--				reg = <0x05 0x1>;
--				bits = <3 3>;
--			};
--			otp_id: id@a {
--				reg = <0x0a 0x10>;
--			};
--			cpub_leakage: cpub-leakage@1e {
--				reg = <0x1e 0x1>;
--			};
--			cpul_leakage: cpul-leakage@1f {
--				reg = <0x1f 0x1>;
--			};
--			npu_leakage: npu-leakage@20 {
--				reg = <0x20 0x1>;
--			};
--			gpu_leakage: gpu-leakage@21 {
--				reg = <0x21 0x1>;
--			};
--			log_leakage: log-leakage@22 {
--				reg = <0x22 0x1>;
--			};
--			bigcore_tsadc_trim: bigcore-tsadc-trim@24 {
--				reg = <0x24 0x2>;
--				bits = <0 10>;
--			};
--			litcore_tsadc_trim: litcore-tsadc-trim@26 {
--				reg = <0x26 0x2>;
--				bits = <0 10>;
--			};
--			ddr_tsadc_trim: ddr-tsadc-trim@28 {
--				reg = <0x28 0x2>;
--				bits = <0 10>;
--			};
--			npu_tsadc_trim: npu-tsadc-trim@2a {
--				reg = <0x2a 0x2>;
--				bits = <0 10>;
--			};
--			gpu_tsadc_trim: gpu-tsadc-trim@2c {
--				reg = <0x2c 0x2>;
--				bits = <0 10>;
--			};
--			soc_tsadc_trim: soc-tsadc-trim@64 {
--				reg = <0x64 0x2>;
--				bits = <0 10>;
-+			nvmem-layout {
-+				compatible = "fixed-layout";
-+				#address-cells = <1>;
-+				#size-cells = <1>;
-+
-+				cpu_code: cpu-code@2 {
-+					reg = <0x02 0x2>;
-+				};
-+				otp_cpu_version: cpu-version@5 {
-+					reg = <0x05 0x1>;
-+					bits = <3 3>;
-+				};
-+				otp_id: id@a {
-+					reg = <0x0a 0x10>;
-+				};
-+				cpub_leakage: cpub-leakage@1e {
-+					reg = <0x1e 0x1>;
-+				};
-+				cpul_leakage: cpul-leakage@1f {
-+					reg = <0x1f 0x1>;
-+				};
-+				npu_leakage: npu-leakage@20 {
-+					reg = <0x20 0x1>;
-+				};
-+				gpu_leakage: gpu-leakage@21 {
-+					reg = <0x21 0x1>;
-+				};
-+				log_leakage: log-leakage@22 {
-+					reg = <0x22 0x1>;
-+				};
-+				bigcore_tsadc_trim: bigcore-tsadc-trim@24 {
-+					reg = <0x24 0x2>;
-+					bits = <0 10>;
-+				};
-+				litcore_tsadc_trim: litcore-tsadc-trim@26 {
-+					reg = <0x26 0x2>;
-+					bits = <0 10>;
-+				};
-+				ddr_tsadc_trim: ddr-tsadc-trim@28 {
-+					reg = <0x28 0x2>;
-+					bits = <0 10>;
-+				};
-+				npu_tsadc_trim: npu-tsadc-trim@2a {
-+					reg = <0x2a 0x2>;
-+					bits = <0 10>;
-+				};
-+				gpu_tsadc_trim: gpu-tsadc-trim@2c {
-+					reg = <0x2c 0x2>;
-+					bits = <0 10>;
-+				};
-+				soc_tsadc_trim: soc-tsadc-trim@64 {
-+					reg = <0x64 0x2>;
-+					bits = <0 10>;
-+				};
- 			};
- 		};
- 
+@@ -2070,6 +2070,8 @@ gmac0: ethernet@2a220000 {
+ 			interrupts = <GIC_SPI 293 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <GIC_SPI 298 IRQ_TYPE_LEVEL_HIGH>;
+ 			interrupt-names = "macirq", "eth_wake_irq";
++			nvmem-cells = <&otp_id>;
++			nvmem-cell-names = "unique-id";
+ 			power-domains = <&power RK3576_PD_SDGMAC>;
+ 			resets = <&cru SRST_A_GMAC0>;
+ 			reset-names = "stmmaceth";
+@@ -2118,6 +2120,8 @@ gmac1: ethernet@2a230000 {
+ 			interrupts = <GIC_SPI 301 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <GIC_SPI 306 IRQ_TYPE_LEVEL_HIGH>;
+ 			interrupt-names = "macirq", "eth_wake_irq";
++			nvmem-cells = <&otp_id>;
++			nvmem-cell-names = "unique-id";
+ 			power-domains = <&power RK3576_PD_SDGMAC>;
+ 			resets = <&cru SRST_A_GMAC1>;
+ 			reset-names = "stmmaceth";
+@@ -2317,6 +2321,7 @@ otp_cpu_version: cpu-version@5 {
+ 					bits = <3 3>;
+ 				};
+ 				otp_id: id@a {
++					compatible = "rockchip,cpuid";
+ 					reg = <0x0a 0x10>;
+ 				};
+ 				cpub_leakage: cpub-leakage@1e {
 
 -- 
 2.56.0
