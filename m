@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9E214606A326
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 09:50:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A4E0C606A321
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 09:50:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ExrPiOVY;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=bkb6m36X
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gRgke+4X;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=c9OlPYx2
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,39 +14,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=/n40ZiG2d8BvBfZbc0OnZUIhqlGa7jw1/Sb3Efh/7kA=; b=ExrPiOVYAcfIWjaAaUSuPhnp6T
-	DInUK1yhTUphipsAf4ylJ1Hmc6REJPK1bbMZScRJDXv0oEmJOL+fchCZ++Yj2ot2MHs4UW1MEmNTK
-	cus2bG3HiYC3zESNNUp9VvWjRY9dfVrfe/OLvbyfpQ4TOJXc05DOHnd/Ng6LMPVhvzUuD8NwV83wd
-	SZULJckuNHoKOXMRhAC0/t3kqsrpBUQlAx1P9LAiNrskelvhS9GCcUnH35apEXbpMKBAMHzhCaJna
-	Z970YptkvO/z4BWJKvQZSpPv/TcwrlAJi+m9s8VI+JNK6Nrc8bBfGmq4qCOskflfrk+aqcmppAQeD
-	i5vHdaDw==;
+	bh=KnHWUMMsZBQBuC2SiLJjMNCp+yIKli0XSA+NwEsS+nc=; b=gRgke+4XgWidVnHO0DJKy+sOTB
+	wfRHXMZY5hm0RXLTonqfix0qGqvbt1lM4R1s3h+ikQO2GEa8PUgcg4DgPop3SB0WCGXbb6zJus0dW
+	bSPy8jTRNgsfSTRGBhjFnT/ImizIwr2XdsI6yyrMwx2Ps95d8iOaYBv4D+n/rZcpWbo+n2TRiQcqq
+	8a9QDyTCUUQwW4spdq2GaJVCK7/xPy1HWkagb05DzrgVp+8e+Wl1dZdqG5LErPRHl+cEXFiZDBEv1
+	Gx6TWhozx8Hmhi097t+Cj/sIoz16G2of/I533LE7VCa9JZS7jlCzfyxUR6Hh3w8+SgC9WlVKQSxer
+	zZmaC4ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xW9dV-00000009MmD-255D;
-	Wed, 25 Nov 2026 09:49:57 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xW9e4-00000009N03-078C;
+	Wed, 25 Nov 2026 09:50:32 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xW9cx-00000009Mdg-2v99;
-	Wed, 25 Nov 2026 09:49:33 +0000
+	id 1xW9dS-00000009MlH-0FY8;
+	Wed, 25 Nov 2026 09:49:54 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D1DBB40131;
-	Wed, 25 Nov 2026 09:49:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0BE4F1F000C0;
-	Wed, 25 Nov 2026 09:49:21 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5331861FCE;
+	Wed, 25 Nov 2026 09:49:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DE881F000C6;
+	Wed, 25 Nov 2026 09:49:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795600162;
-	bh=00kovWLRB5mU3CgTrku2HDMcvSM5rYFHby1xKMT+4ZA=;
+	s=k20260515; t=1795600192;
+	bh=xunVIrIg01k9dWl2kATM9x8o4Anfrw/KbUh3MVWvjx8=;
 	h=Subject:From:To:Cc:In-Reply-To:References:Date;
-	b=bkb6m36XwqElmmdgvWh48LQ8cYvUE9yizrdy/Hv0orBIxi17IupuLJ+xWcwpRX2yf
-	 lqZ72h8XbM6NvF5tdJJX+uHA0AMJpS8oztAPagiyy3JSZoGGPuVdKIQnB0znNM1DAA
-	 Hg2Y5MTfptol870TvCbEQxSRrltn9uRrtoqoDDJ7InwsROCvo8NhgpsN8ostIwtUAm
-	 P9Vh5CSkl8wHakaiazTm2DFFAs1dzLz8TCfVCP8+jq3Hg6H0NFVBVVyNAaCGwoVoDq
-	 mnrwugtmNTse54crHfUizVjvOcj+5m6/dcCVmyjDQYbpmLpj8zuOlKm6baUPCV4RZC
-	 WzBdlFbtN8WYg==
+	b=c9OlPYx2PUb+TnnyiKOi/AM/pSJQPhY8w0GpFwH7x6KuDmzvMvoFeUe03oy8IH28A
+	 e83D4o/FNEUNVJ8lxP4q59b4RV3vP9htyOLPp6ibBlYHJDZL1wH4kAujhXA8nOaeCt
+	 L6yZhC6EV3WVT1d+YmEIAluNYZ+ahmfbOb5t2Aki+GHhArOPfBH0BcplK2dLDhsTpi
+	 FYuaOzGZATGZYemP1Kr5f5rQKtVXxXSTn8+cpjGzy8neqIEZ4xCq6p9su+XoClKwnb
+	 U87p0ozEys3cwJt838wrptAU0CZaneC8nvQKMcCGjeu2bEHoGOVAfM/J65diXkG3hC
+	 1VwaPWUhkrotA==
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 3/8] dt-bindings: arm: rockchip: Add Luckfox Lyra
- and Lyra Plus
+Subject: Re: [PATCH v2 5/8] dt-bindings: arm: rockchip: Add Luckfox Lyra
+ Ultra
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Jonas Karlman <jonas@kwiboo.se>
 Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
@@ -54,11 +54,11 @@ Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>
-In-Reply-To: <20261122060114.773624-4-jonas@kwiboo.se>
+In-Reply-To: <20261122060114.773624-6-jonas@kwiboo.se>
 References: <20261122060114.773624-1-jonas@kwiboo.se>
- <20261122060114.773624-4-jonas@kwiboo.se>
-Date: Wed, 25 Nov 2026 10:49:20 +0100
-Message-Id: <179560016006.14607.17784216803858338533.b4-reply@b4>
+ <20261122060114.773624-6-jonas@kwiboo.se>
+Date: Wed, 25 Nov 2026 10:49:49 +0100
+Message-Id: <179560018960.14607.5906486541495491849.b4-reply@b4>
 X-Mailer: b4 0.17-dev
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,14 +80,17 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 On 2026-11-22 06:01 +0000, Jonas Karlman wrote:
-> Luckfox Lyra and Lyra Plus is powered by the Rockchip RK3506G2 SoC,
-> which integrates three Cortex-A7 cores, one Cortex-M0 core, and 128 MB
-> of DDR3 memory.
+> Luckfox Lyra Ultra is powered by the Rockchip RK3506B SoC, which
+> integrates three Cortex-A7 cores and one Cortex-M0 core. It includes
+> 512 MB of DDR3 memory, 8 GB of eMMC storage, MIPI DSI, Ethernet, and
+> IO expansion interfaces.
 > 
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
+> Changes in v2:
+> - No change
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Same commit, what's the point to split such trivial changes?
 
 Best regards,
 Krzysztof
