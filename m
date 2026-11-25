@@ -2,12 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D2E5606A31E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 21:45:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 80F43606A327
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 21:45:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=5FotFtuQ;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=trKSeYAa;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=FBqsSAQ4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=018htZq4;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=a0rkLRwF;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=efMWD6c/
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -15,42 +15,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=+H5qzyuV9qpCUX6rghZ6wygMrWlmwpmmkAVgL9Tv7k8=; b=5FotFtuQAMkkf+BZLjcdd2mwQ0
-	I/YMSuuD/28WMIiWn+iVJ/c3DPxA733iZw+qgtrYYviYCx1blYUMesh0E7lp02A+9pSR04Ax6+Xkk
-	p9Q4e0TrAHZ0QjS5Z3UryhORVhRgggUdLDnE7xhY8vJQoCU+PcUVFCF2gQWTEd0PfJUB1mp/w3qtd
-	IOshrp3k4iaPPw59+DhTlFOep7xsa1GXMsjy+Dqq/L+a2u2Wy1TCFCPsdZDn8c7XuAY3pebfpoSZc
-	mOfbV7aMkZ6fXr/95WgcXDZ3LhEiYixVZ2Np27aaabgZnk9ZNu2zgHURl/S4aFd50XAsLIr1Jwtcv
-	lcUIKu0Q==;
+	bh=CksBfNel5HeAIBQHyXjJby9gN2BB+wRKTuekZoaJIBU=; b=018htZq4CWVMAezq3EKOv09ps5
+	mNVzTvhktmwodneZBLob5P85PVTNJLlPkHTe8ntakZ711WTGXViTcWqleOBkC6iitF5LykP3nH3Wu
+	wFiVE1k3SPwf9N207MCht3mIJeno59nAuVOkHAb0Z0OBe/mp0L8uSQ0bHtY7sJGZon9JkPpWLUXfi
+	WgEGmD5YtJ23v0tbtPamWcYUhEaUNojvgpn1T3LwVPq0rtEpKy4yduEsfKV3m7b5hkweXyP2abeEz
+	CABF/EezPUJ2JUoAvOlN9ZFbehl1TDuWBjzCHg8bHIUe1bRDBZrIQ261mhSSA7IdH8jKw6bo+x78g
+	ddSs0HCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWKng-0000000BOdr-1OlQ;
+	id 1xWKng-0000000BOdi-0W0Y;
 	Wed, 25 Nov 2026 21:45:12 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWKnY-0000000BOX4-2tTK
+	id 1xWKnY-0000000BOXn-2tWG
 	for linux-rockchip@lists.infradead.org;
-	Wed, 25 Nov 2026 21:45:08 +0000
+	Wed, 25 Nov 2026 21:45:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From: CFBL-Address: CFBL-Feedback-ID;
- q=dns/txt; s=fe-e1b5cab7be; t=1795643102;
- bh=P3fIZN9wR3GP5H4ySKRBzErV81pAP8XccdYUMRKtqmU=;
- b=trKSeYAaLbFQV98hsNWMmLO5XZK6UO4Xby1XacKr61KqZZsWK7SDJKFTG46DmTzMAuZpImwlD
- enB4vxaO/DhCng/QZqApfJKe1jbJFuIyM9SodFZHflAwWAbNi+yyXhCtHcBRW0KK3iFinV0ZAY3
- iUalBnXf/0FG3jQaBen19tO+MhVyryOLG8lu8/sUiqyTaWmk43CLDH8+0QZn7HL4PoTpIfOZxJw
- NEeE/yL12XZCMn+5q5ymg2GXLakR0xHn97/CfNax+/vSGcvDKMystovLRFuSiGSehSC386iuNPe
- 8tr/YIU35gQY09X7CMtriSZWh3aMG5JMJRcysmg2b/pw==
+ q=dns/txt; s=fe-e1b5cab7be; t=1795643103;
+ bh=y5SCKUzhUGoAqeZEeFTmcGTW3YAUQPcSyJPK60KPAFY=;
+ b=a0rkLRwFQw8K4cKy0pYwHLlKfmWjsbTvLP22UJjY8KB4zc8HRwPx0j5v1EDJjmWGtdPMYghek
+ DLws1LFVbdKEgaipN9Ed/97UPt2HabbX3N8H9w11bQ2Eij2qPrie3TxkIy1XtvzHj4UKqoXKSYc
+ RGi2x1XO/S6T2bHLpue/QqMPsf+UukVyPe0umxtvFWbpJP7xHusKlWcIo3zeEK8UX+ROo+8V2o2
+ L376AmiS5redOHke06bU9H2/7cbY/cRgHdO01SkeyiKi80gYQLcOqPoyluamXPhZHa+LGWJWoqf
+ SLOeU/XKPfoGVFfbmSRiyzdSb9xLyZS77sJcN2wBAr9A==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=forwardemail.net;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From: CFBL-Address: CFBL-Feedback-ID;
- q=dns/txt; s=default; t=1795643102;
- bh=P3fIZN9wR3GP5H4ySKRBzErV81pAP8XccdYUMRKtqmU=;
- b=FBqsSAQ4S31JpzfgzBFbZhrNsiHZB/U2LFNRDq25UKulaS17HNDk7qT67OKRUm4mlS8g5lh5k
- 67lvJ0z06R2O5E3DS1cIu5iHuNLJ9RH3BuA/XCCpsDT+0ZHi4nBRqoCgS4vweDa4fYnAWZmvPVg
- 4y4kd5I1/Zr8uZh+VgxwxZs=
-CFBL-Feedback-ID: 6b0756c5f930f38bf754f99a:55ace0071697eb29754ce598a7fc0c7a
+ q=dns/txt; s=default; t=1795643103;
+ bh=y5SCKUzhUGoAqeZEeFTmcGTW3YAUQPcSyJPK60KPAFY=;
+ b=efMWD6c/iY42563eNxdL9gdB5hGdihcgii67gUrgo4iaKiWPQePN1QhvP4p7R4dwoCzSBFJf7
+ dCtHMhbjbAWs6LQZX27cL54RLoPgP4zYlBDgYRV3/viMy5tdO7m2dvvS1/NNrDbSgqAdoAuUZKL
+ Pzbva6LJ+z1JF0HGzq7CJpQ=
+CFBL-Feedback-ID: 6b0756ccf930f38bf754f9e9:d9f3869de73d583c5b2ea30ceb86e4c7
 CFBL-Address: abuse@forwardemail.net; report=arf
-X-Forward-Email-ID: 6b0756c5f930f38bf754f99a
+X-Forward-Email-ID: 6b0756ccf930f38bf754f9e9
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
 X-Forward-Email-Version: 2.19.39
@@ -67,20 +67,18 @@ Cc: devicetree@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH v3 3/6] dt-bindings: arm: rockchip: Add Luckfox Lyra boards
-Date: Wed, 25 Nov 2026 21:44:15 +0000
-Message-ID: <20261125214421.1580359-4-jonas@kwiboo.se>
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v3 6/6] ARM: dts: rockchip: Add Luckfox Lyra Zero W board
+Date: Wed, 25 Nov 2026 21:44:18 +0000
+Message-ID: <20261125214421.1580359-7-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.56.1
 In-Reply-To: <20261125214421.1580359-1-jonas@kwiboo.se>
 References: <20261125214421.1580359-1-jonas@kwiboo.se>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_134504_830250_D0CA6CC1 
-X-CRM114-Status: UNSURE (   8.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261125_134504_809352_6BF7F3E9 
+X-CRM114-Status: GOOD (  13.28  )
 X-Spam-Score: -2.0 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,46 +99,65 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add board compatibles for the Luckfox Lyra, Lyra Plus, Lyra Ultra and
-Lyra Zero W boards.
+Luckfox Lyra Zero W is a compact wireless development board powered by
+the Rockchip RK3506B SoC. It includes 512 MB of DDR3 memory, 256 MB of
+SPI NAND flash, 2.4 GHz Wi-Fi 6, Bluetooth 5.2, and BLE connectivity.
+MIPI DSI, USB OTG, USB Host, and RM_IO interfaces are available for
+peripheral expansion.
 
-The Lyra and Lyra Plus use the Rockchip RK3506G2 SoC variant with
-128 MiB integrated DDR3 memory. The Lyra Ultra and Lyra Zero W use the
-RK3506B SoC variant with 512 MiB external DDR3 memory.
-
+Link: https://wiki.luckfox.com/Luckfox-Lyra/Luckfox-Lyra-Zero-W
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
 Changes in v3:
-- Update commit message
-- Squash patches
-- Collect a-b tag
+- Add spi_nand label to flash@0 node
 Changes in v2:
 - No change
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ arch/arm/boot/dts/rockchip/Makefile           |  3 ++-
+ .../rockchip/rk3506b-luckfox-lyra-zero-w.dts  | 23 +++++++++++++++++++
+ 2 files changed, 25 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra-zero-w.dts
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index a5eec2ecf23c..49c61ee985e7 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -860,6 +860,15 @@ properties:
-           - const: luckfox,core3576
-           - const: rockchip,rk3576
- 
-+      - description: Luckfox Lyra boards
-+        items:
-+          - enum:
-+              - luckfox,lyra
-+              - luckfox,lyra-plus
-+              - luckfox,lyra-ultra
-+              - luckfox,lyra-zero-w
-+          - const: rockchip,rk3506
+diff --git a/arch/arm/boot/dts/rockchip/Makefile b/arch/arm/boot/dts/rockchip/Makefile
+index 9a699bb8fc5a..faebeb20f467 100644
+--- a/arch/arm/boot/dts/rockchip/Makefile
++++ b/arch/arm/boot/dts/rockchip/Makefile
+@@ -48,4 +48,5 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
+ 	rk3288-vyasa.dtb \
+ 	rk3506-luckfox-lyra-plus.dtb \
+ 	rk3506-luckfox-lyra.dtb \
+-	rk3506b-luckfox-lyra-ultra.dtb
++	rk3506b-luckfox-lyra-ultra.dtb \
++	rk3506b-luckfox-lyra-zero-w.dtb
+diff --git a/arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra-zero-w.dts b/arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra-zero-w.dts
+new file mode 100644
+index 000000000000..1ca6a25382f5
+--- /dev/null
++++ b/arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra-zero-w.dts
+@@ -0,0 +1,23 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +
-       - description: Lunzn FastRhino R66S / R68S
-         items:
-           - enum:
++/dts-v1/;
++#include "rk3506b-luckfox-lyra.dtsi"
++
++/ {
++	model = "Luckfox Lyra Zero W";
++	compatible = "luckfox,lyra-zero-w", "rockchip,rk3506";
++};
++
++&fspi {
++	status = "okay";
++
++	spi_nand: flash@0 {
++		compatible = "spi-nand";
++		reg = <0>;
++		bootph-pre-ram;
++		bootph-some-ram;
++		spi-max-frequency = <80000000>;
++		spi-rx-bus-width = <4>;
++		spi-tx-bus-width = <1>;
++	};
++};
 -- 
 2.56.1
 
