@@ -2,12 +2,12 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C0D7606A321
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 21:45:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 176F1606A327
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 21:45:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cQ8Ann+v;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=Er5mkAJf;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=f4Cs+pmW
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tKvCNRBr;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=mjL7I1mk;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=oFDTDNCK
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -15,42 +15,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=KsNzOEPuNG9sDbar0gXo9pkSyvFCuaESSVl7RrzazhI=; b=cQ8Ann+vpdMLdOzBqJ6CSV5jnw
-	yNgXslZ0knjTbPfR2alLuqCi1fwJ6C2hJbVvgRPtmcDIqMn5rQjhXCl1zCH4EHtxGrLtaB+T0DwLM
-	wbRTLMoTtS3T3t8oqoMfkn7+5NlxkMixjSrkVxHhhDveN0QOrP/lBXdTkawTLHv4IR4XXVwMU1jFI
-	J38orVzq/WM+whrA7X52Kf7WG0SGHGwQZ+IpR2/oSymBVlvR0xSVmr6tv0hY6BhhgUNdQLDpaTLma
-	37DWyvKSP2oium/6/RsKpjalSAXqAMP9b4QdwjTxMhHYePp2GH2NrUiO4JfbE1Y0A8SGbxfkmlSfQ
-	celr4n1w==;
+	bh=wEjaw0PraFZIFO2/d9CKR5UawTb6tE4vmyTmhyCRKHA=; b=tKvCNRBrMhnx758RKfDPNnXKem
+	o2RLex9BfkovuYE7vLAVilSp5vvpucFsUkxwJAeaL6Iz/ERgVK2yRJ4OL67Q1K72JBIIH8mRzHh48
+	A48e5i049eogz4+qvc8jY5DjrHkemRbf/WmAfJq6RLAyt2RHeINigtqRllQs/LkQ3O5T6cNAcqWbT
+	flAr87j9DW3n83qZT16tjgxHj/vPtFW48I/MmojP/waufc6fVh77wLe5dcF8/9/S7pprfWmmOc8hn
+	9m0rHm9w6WsIKjg46YUDBSmg5kgqzstNCY21Mcuad7TSDM7HYXvk70jr4LUKapICtdOL7r00Do7b2
+	E602T6ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWKng-0000000BOcD-04rq;
-	Wed, 25 Nov 2026 21:45:12 +0000
+	id 1xWKnh-0000000BOep-08Bw;
+	Wed, 25 Nov 2026 21:45:13 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWKnY-0000000BOXO-2tUR
+	id 1xWKnY-0000000BOXl-2tVl
 	for linux-rockchip@lists.infradead.org;
-	Wed, 25 Nov 2026 21:45:06 +0000
+	Wed, 25 Nov 2026 21:45:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From: CFBL-Address: CFBL-Feedback-ID;
  q=dns/txt; s=fe-e1b5cab7be; t=1795643103;
- bh=1RJs41FrYqmfcOvRx25c1d49cienNanNyFb93OwYRYY=;
- b=Er5mkAJfFYrNHGTBBrYkBMzhH6VjLQIG/+7ayo19gKm9EGRqdRckx7vrqV5u4Seko5pZAt9LZ
- aiHC1dXZT+BT/LxDsHUi3To+vI8/WDajpvoG/ktm7pPgvPFuqpegXrYPeukQiGgovXtgBglbsj7
- 8Sfb1iRx9ZVqRwLxXT/qdoyjMKG2FuucrSC/VEEvTAIZFPfcp6hDuRbl+m2mmYERRdefXtv5zRP
- sxnsJA9RTa26lcCNZGrWg1pK+6jz/dK/pOymw8qZEQO0Bp4uHGTd+wrPRAQL0d2dzl+8pijlFgK
- cVguBQC+99dfI2QWl+r7HZp4rJcrud/DJL9IikIzNC9w==
+ bh=+cUG8gA9hiKJyOSsgiNcUCH0QMEPPWjPVr18k4rmwCs=;
+ b=mjL7I1mkMKisUNW6y4wKXlFZLnstReU5Hu+FA72kDqXpb8L+Py0wLvcdh8K9JoQ0N4p0e39K4
+ bkrflEqhH7z+ujuPLDnPzIjU+y7Q9YtzaxNB7nXdO/0uoTwOEn3NaBq5h5U3a1HLcsIdYurSOwf
+ EAyjUQ4JFxHTZ455WI+zLeIP+1XJdFPu7atdysEPgb3zbGGNnFE0D4FWz1NJKXFOCv8zSznH7Ge
+ 82ZafVtuLmbKqbZLDFbeLvF6qp7HtdvtvVQ/yjOtuPflwomHXnx0PbGbWF8SW4lqIdJhQWg177a
+ xAmvH/Jk2VsKxrGbgbYK5kHfaNpivMBO82DrUfTuppxA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=forwardemail.net;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From: CFBL-Address: CFBL-Feedback-ID;
  q=dns/txt; s=default; t=1795643103;
- bh=1RJs41FrYqmfcOvRx25c1d49cienNanNyFb93OwYRYY=;
- b=f4Cs+pmWSH+Vc1+030upK/0ltshPBfWtjRM+QWqrpGQsDqruC5rVq1w9xpwo+wvHTeWAOH5r7
- w8X+GBZjLC/KGQxC5sijzF3TXVGlmvm237Tw8snx5JAfbBZkvJJhbWhmTFsA8RnuU6929dd5pTK
- hrhOvYWVLsBTQ6MBGG5SsVg=
-CFBL-Feedback-ID: 6b0756c7f930f38bf754f9b3:f6c7c6b62957cb3f2a00f957a471e786
+ bh=+cUG8gA9hiKJyOSsgiNcUCH0QMEPPWjPVr18k4rmwCs=;
+ b=oFDTDNCKCh9QMNkdBnmY85Ju4KL+/qIIZo1CshmlRLjHdfyV5xbASE5MqV8DV63HdUFIz8Ybp
+ WPQDm4QZnzoAhAr/8M7XyyiqcZxtAMPF25H3mweNAtqR/OolqkpQ9fRmfjc+goXyfHNY/IrO85k
+ MDFQmjQKLZnW+5gSBMcqCNo=
+CFBL-Feedback-ID: 6b0756c9f930f38bf754f9cc:8e331a1fcfe7d174c8ba0dfb4bdda1e6
 CFBL-Address: abuse@forwardemail.net; report=arf
-X-Forward-Email-ID: 6b0756c7f930f38bf754f9b3
+X-Forward-Email-ID: 6b0756c9f930f38bf754f9cc
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
 X-Forward-Email-Version: 2.19.39
@@ -68,17 +68,17 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v3 4/6] ARM: dts: rockchip: Add Luckfox Lyra and Lyra Plus boards
-Date: Wed, 25 Nov 2026 21:44:16 +0000
-Message-ID: <20261125214421.1580359-5-jonas@kwiboo.se>
+Subject: [PATCH v3 5/6] ARM: dts: rockchip: Add Luckfox Lyra Ultra board
+Date: Wed, 25 Nov 2026 21:44:17 +0000
+Message-ID: <20261125214421.1580359-6-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.56.1
 In-Reply-To: <20261125214421.1580359-1-jonas@kwiboo.se>
 References: <20261125214421.1580359-1-jonas@kwiboo.se>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_134504_798502_51F98785 
-X-CRM114-Status: GOOD (  15.60  )
+X-CRM114-CacheID: sfid-20261125_134504_821283_FDF09BDE 
+X-CRM114-Status: GOOD (  14.40  )
 X-Spam-Score: -2.0 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,55 +99,51 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Luckfox Lyra and Lyra Plus is powered by the Rockchip RK3506G2 SoC,
-which integrates three Cortex-A7 cores, one Cortex-M0 core, and 128 MB
-of DDR3 memory.
+Luckfox Lyra Ultra is powered by the Rockchip RK3506B SoC, which
+integrates three Cortex-A7 cores and one Cortex-M0 core. It includes
+512 MB of DDR3 memory, 8 GB of eMMC storage, MIPI DSI, Ethernet, and
+IO expansion interfaces.
 
-Link: https://wiki.luckfox.com/Luckfox-Lyra/Luckfox-Lyra
-Link: https://wiki.luckfox.com/Luckfox-Lyra/Luckfox-Lyra-Plus
+Link: https://wiki.luckfox.com/Luckfox-Lyra/Luckfox-Lyra-Ultra
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 Changes in v3:
-- Add spi_nand label to flash@0 node
 - Drop unnecessary /omit-if-no-ref/ on led1
 Changes in v2:
 - No change
 ---
- arch/arm/boot/dts/rockchip/Makefile           |   4 +-
- .../dts/rockchip/rk3506-luckfox-lyra-plus.dts |  31 +++++
- .../boot/dts/rockchip/rk3506-luckfox-lyra.dts |   9 ++
- .../dts/rockchip/rk3506-luckfox-lyra.dtsi     | 123 ++++++++++++++++++
- 4 files changed, 166 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra-plus.dts
- create mode 100644 arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra.dts
- create mode 100644 arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra.dtsi
+ arch/arm/boot/dts/rockchip/Makefile           |  3 +-
+ .../rockchip/rk3506b-luckfox-lyra-ultra.dts   | 31 ++++++
+ .../dts/rockchip/rk3506b-luckfox-lyra.dtsi    | 99 +++++++++++++++++++
+ 3 files changed, 132 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra-ultra.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra.dtsi
 
 diff --git a/arch/arm/boot/dts/rockchip/Makefile b/arch/arm/boot/dts/rockchip/Makefile
-index e9f9e0ac3bfd..df620116bb2d 100644
+index df620116bb2d..9a699bb8fc5a 100644
 --- a/arch/arm/boot/dts/rockchip/Makefile
 +++ b/arch/arm/boot/dts/rockchip/Makefile
-@@ -45,4 +45,6 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rk3288-veyron-pinky.dtb \
- 	rk3288-veyron-speedy.dtb \
+@@ -47,4 +47,5 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
  	rk3288-veyron-tiger.dtb \
--	rk3288-vyasa.dtb
-+	rk3288-vyasa.dtb \
-+	rk3506-luckfox-lyra-plus.dtb \
-+	rk3506-luckfox-lyra.dtb
-diff --git a/arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra-plus.dts b/arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra-plus.dts
+ 	rk3288-vyasa.dtb \
+ 	rk3506-luckfox-lyra-plus.dtb \
+-	rk3506-luckfox-lyra.dtb
++	rk3506-luckfox-lyra.dtb \
++	rk3506b-luckfox-lyra-ultra.dtb
+diff --git a/arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra-ultra.dts b/arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra-ultra.dts
 new file mode 100644
-index 000000000000..c8991f4179bd
+index 000000000000..5a3eb35eb70e
 --- /dev/null
-+++ b/arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra-plus.dts
++++ b/arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra-ultra.dts
 @@ -0,0 +1,31 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +
 +/dts-v1/;
-+#include "rk3506-luckfox-lyra.dtsi"
++#include "rk3506b-luckfox-lyra.dtsi"
 +
 +/ {
-+	model = "Luckfox Lyra Plus";
-+	compatible = "luckfox,lyra-plus", "rockchip,rk3506";
++	model = "Luckfox Lyra Ultra";
++	compatible = "luckfox,lyra-ultra", "rockchip,rk3506";
 +
 +	aliases {
 +		ethernet0 = &gmac1;
@@ -171,27 +167,12 @@ index 000000000000..c8991f4179bd
 +		reg = <1>;
 +	};
 +};
-diff --git a/arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra.dts b/arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra.dts
+diff --git a/arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra.dtsi b/arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra.dtsi
 new file mode 100644
-index 000000000000..b7f11c7c510f
+index 000000000000..bf19b1da110e
 --- /dev/null
-+++ b/arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra.dts
-@@ -0,0 +1,9 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+#include "rk3506-luckfox-lyra.dtsi"
-+
-+/ {
-+	model = "Luckfox Lyra";
-+	compatible = "luckfox,lyra", "rockchip,rk3506";
-+};
-diff --git a/arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra.dtsi b/arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra.dtsi
-new file mode 100644
-index 000000000000..9338263602da
---- /dev/null
-+++ b/arch/arm/boot/dts/rockchip/rk3506-luckfox-lyra.dtsi
-@@ -0,0 +1,123 @@
++++ b/arch/arm/boot/dts/rockchip/rk3506b-luckfox-lyra.dtsi
+@@ -0,0 +1,99 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +
 +#include <dt-bindings/input/input.h>
@@ -256,16 +237,6 @@ index 000000000000..9338263602da
 +		vin-supply = <&vcc5v0_sys>;
 +	};
 +
-+	vcc3v3_sd: regulator-3v3-sd {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_sd";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc_3v3>;
-+	};
-+
 +	vcc5v0_sys: regulator-5v0-sys {
 +		compatible = "regulator-fixed";
 +		regulator-name = "vcc5v0_sys";
@@ -273,20 +244,6 @@ index 000000000000..9338263602da
 +		regulator-boot-on;
 +		regulator-min-microvolt = <5000000>;
 +		regulator-max-microvolt = <5000000>;
-+	};
-+};
-+
-+&fspi {
-+	status = "okay";
-+
-+	spi_nand: flash@0 {
-+		compatible = "spi-nand";
-+		reg = <0>;
-+		bootph-pre-ram;
-+		bootph-some-ram;
-+		spi-max-frequency = <80000000>;
-+		spi-rx-bus-width = <4>;
-+		spi-tx-bus-width = <1>;
 +	};
 +};
 +
@@ -308,7 +265,7 @@ index 000000000000..9338263602da
 +	cap-sd-highspeed;
 +	disable-wp;
 +	no-sdio;
-+	vmmc-supply = <&vcc3v3_sd>;
++	vmmc-supply = <&vcc_3v3>;
 +	status = "okay";
 +};
 +
