@@ -2,78 +2,82 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2E0B9606A31E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 13:33:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 667CC606A32A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Nov 2026 13:35:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=oA+xwEt+;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=rock-chips.com header.i=@rock-chips.com header.a=rsa-sha256 header.s=default header.b=Fbu7h1EG
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EULYrHoZ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=u0X7/LvUXA0Pt6dJjk6dNi54KQMK+rJVc5BDbKidlBE=; b=oA+xwEt+kwzfCDwHRZG672cItZ
-	mkWcEjAepgFEWQxb+spyt0Aj4cIcHBXY1SEb2Sl65xNDPtizBFt56l5rxt08gMWyKgDlqT2iCzt04
-	f8d7NKrm/xfC87Gv6eCv+2jEKq0qcqDUvk5YLYC6/Zl3MhIw19TXQLCEElLIiRvDOAPp/XA5Sta/i
-	At2fkZRZrKnoOJfyB2315pxQv49aP2FkOjaVx5EHVLSYAw3J258I2L9ipx+e2Fg/rkFBkvxk88jNp
-	xT9BtQ2iqNwrq0S8FZaHK71TGdhgPwIyyQynfl0Fo74o7SeVSwlz/2A6juzKSu/r2WwmaAvv8XbL/
-	bzrv4H3g==;
+	bh=isjoEzJj8SIEfMud+wdKAErFi7VXenkxaXfT4CXFP6o=; b=EULYrHoZDtm1lGYNsgM8CwwvVa
+	BFgl6lOtHw7CYESv1pP7U0rYvQb7XBICHzNuhyeK3unmsVcfeKkU8/+WidPAwCuDYUCAXUKgsYhQC
+	KMlv4s8qXXxAA4ckBlQekZ3JLBD+PMb+QlXyivLnLUV6vmc3rmqEaiRpidfh17IRNF/MWR4kLZv7K
+	t1C8kJ2ZfYsrwftl2XrQ4zSomnGmCzSh4Iuj5lvx06GqALtZAXrutwGz//ccK+XAFGReIWbUlzL4e
+	3DCBm5HWEkoLgQZKab5kNsLE943YfYVkyqPRfhQO3mwmN2+GaIXvTmLKYBHFPnh4xrw9IRe0gusD/
+	2S58YHhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWD8F-0000000A0CS-1IAn;
-	Wed, 25 Nov 2026 13:33:55 +0000
-Received: from mail-m83232.xmail.ntesmail.com ([156.224.83.232])
+	id 1xWDA1-0000000A0f1-3RJp;
+	Wed, 25 Nov 2026 13:35:45 +0000
+Received: from exchange.fintech.ru ([195.54.195.159])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWD85-0000000A09W-3YfO;
-	Wed, 25 Nov 2026 13:33:53 +0000
-Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 55facbdab;
-	Wed, 25 Nov 2026 21:33:37 +0800 (GMT+08:00)
-Message-ID: <cb5cc4d5-150a-4215-a894-3b9c66db06fd@rock-chips.com>
-Date: Wed, 25 Nov 2026 21:33:37 +0800
-X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] drm/rockchip: analogix_dp: Disable pclk if setting
+	id 1xWD9x-0000000A0a9-3ekk;
+	Wed, 25 Nov 2026 13:35:43 +0000
+Received: from Ex16-02.fintech.ru (10.0.10.19) by exchange.fintech.ru
+ (195.54.195.169) with Microsoft SMTP Server (TLS) id 14.3.498.0; Wed, 25 Nov
+ 2026 16:35:38 +0300
+Received: from Ex16-01.fintech.ru (10.0.10.18) by Ex16-02.fintech.ru
+ (10.0.10.19) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2242.4; Wed, 25 Nov
+ 2026 16:35:38 +0300
+Received: from Ex16-01.fintech.ru ([fe80::2534:7600:5275:d3f9]) by
+ Ex16-01.fintech.ru ([fe80::2534:7600:5275:d3f9%7]) with mapi id
+ 15.01.2242.004; Wed, 25 Nov 2026 16:35:38 +0300
+From: =?utf-8?B?0JbQsNC90LTQsNGA0L7QstC40Ycg0J3QuNC60LjRgtCwINCY0LPQvtGA0LU=?=
+ =?utf-8?B?0LLQuNGH?= <n.zhandarovich@fintech.ru>
+To: Damon Ding <damon.ding@rock-chips.com>, Andrzej Hajda
+	<andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, Robert
+ Foss <rfoss@kernel.org>
+CC: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
+	<jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Luca Ceresoli
+	<luca.ceresoli@bootlin.com>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>, Dmitry Baryshkov
+	<dmitry.baryshkov@oss.qualcomm.com>, Sandy Huang <hjc@rock-chips.com>,
+	=?utf-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, Andy Yan
+	<andyshrk@163.com>, Alexandre Marquet <tb@a-marquet.fr>, Marek Szyprowski
+	<m.szyprowski@samsung.com>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "dri-devel@lists.freedesktop.org"
+	<dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "lvc-project@linuxtesting.org"
+	<lvc-project@linuxtesting.org>
+Subject: RE: [PATCH 2/3] drm/rockchip: analogix_dp: Disable pclk if setting
  eDP mode fails
-To: Nikita Zhandarovich <n.zhandarovich@fintech.ru>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andyshrk@163.com>,
- Alexandre Marquet <tb@a-marquet.fr>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- lvc-project@linuxtesting.org
+Thread-Topic: [PATCH 2/3] drm/rockchip: analogix_dp: Disable pclk if setting
+ eDP mode fails
+Thread-Index: AQHdfNI4tpDqD8mls0G0iPaPmNDMp7c+lzeAgAAyieA=
+Date: Wed, 25 Nov 2026 13:35:38 +0000
+Message-ID: <81d9540f6b80438ba9b890023a984c90@fintech.ru>
 References: <20261125114319.1089186-1-n.zhandarovich@fintech.ru>
  <20261125114319.1089186-3-n.zhandarovich@fintech.ru>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20261125114319.1089186-3-n.zhandarovich@fintech.ru>
-X-HM-Tid: 0aa212e96d3f03a8kunm52d5496e780fb0
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCTUsYVhhDGksaTBgdHkxLQ1YVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=Fbu7h1EGwVDk53lKVh4LIyAnmsdPnxl4yb1tAARl8moDFvuRqvHebHDAjcY7+ygNmqCfvDDBJiNNAOaHcoq8fBe/S5EVONIj4Cf1Jrq4wwq77bM70T+jzX4C/wVtulDYJ8blQbhqpMb/0b/mv1bXa+gErk6lQF9Bzt2qTcW3/0g=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=xN9G4ryMMM9+3du3bk45iP+b6+/ThJuYMnDmmu96Klc=;
-	h=date:mime-version:subject:message-id:from;
+ <cb5cc4d5-150a-4215-a894-3b9c66db06fd@rock-chips.com>
+In-Reply-To: <cb5cc4d5-150a-4215-a894-3b9c66db06fd@rock-chips.com>
+Accept-Language: en-US, ru-RU
+Content-Language: ru-RU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+X-Archived-By: <archiver.kernel.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_053346_549612_0D89A2F3 
-X-CRM114-Status: GOOD (  14.19  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261125_053542_294024_DAD25155 
+X-CRM114-Status: GOOD (  21.38  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,56 +87,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Nikita,
-
-On 11/25/2026 7:43 PM, Nikita Zhandarovich wrote:
-> The eDP-mode register write via rockchip_grf_field_write() call can
-> fail after pclk has been enabled. To prevent this, disable pclk before
-> returning that error so the platform power_on callback, in turn,
-> releases the clock reference it acquired on failure.
-> 
-> Fixes: 729f8eefdcad ("drm/rockchip: analogix_dp: Add support for RK3588")
-> Signed-off-by: Nikita Zhandarovich <n.zhandarovich@fintech.ru>
-> ---
->   drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> index 3a80600eece1..a9056303a987 100644
-> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-> @@ -145,8 +145,10 @@ static int rockchip_dp_poweron(struct analogix_dp_plat_data *plat_data)
->   	}
->   
->   	ret = rockchip_grf_field_write(dp->grf, &dp->data->edp_mode, 1);
-> -	if (ret != 0)
-> +	if (ret != 0) {
->   		DRM_DEV_ERROR(dp->dev, "failed to set edp mode %d\n", ret);
-> +		clk_disable_unprepare(dp->pclk);
-> +	}
->   
->   	return ret;
->   }
-
-For the earlier rockchip_dp_pre_init(), I think a goto-based error path
-might be cleaner.
-
-Best regards,
-Damon
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8sDQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRGFtb24gRGlu
+ZyA8ZGFtb24uZGluZ0Byb2NrLWNoaXBzLmNvbT4NCj4gU2VudDogV2VkbmVzZGF5LCBOb3ZlbWJl
+ciAyNSwgMjAyNiA0OjM0IFBNDQo+IFRvOiDQltCw0L3QtNCw0YDQvtCy0LjRhyDQndC40LrQuNGC
+0LAg0JjQs9C+0YDQtdCy0LjRhyA8bi56aGFuZGFyb3ZpY2hAZmludGVjaC5ydT47IEFuZHJ6ZWoN
+Cj4gSGFqZGEgPGFuZHJ6ZWouaGFqZGFAaW50ZWwuY29tPjsgTmVpbCBBcm1zdHJvbmcNCj4gPG5l
+aWwuYXJtc3Ryb25nQGxpbmFyby5vcmc+OyBSb2JlcnQgRm9zcyA8cmZvc3NAa2VybmVsLm9yZz4N
+Cj4gQ2M6IExhdXJlbnQgUGluY2hhcnQgPExhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNv
+bT47IEpvbmFzIEthcmxtYW4NCj4gPGpvbmFzQGt3aWJvby5zZT47IEplcm5laiBTa3JhYmVjIDxq
+ZXJuZWouc2tyYWJlY0BnbWFpbC5jb20+OyBMdWNhDQo+IENlcmVzb2xpIDxsdWNhLmNlcmVzb2xp
+QGJvb3RsaW4uY29tPjsgTWFhcnRlbiBMYW5raG9yc3QNCj4gPG1hYXJ0ZW4ubGFua2hvcnN0QGxp
+bnV4LmludGVsLmNvbT47IE1heGltZSBSaXBhcmQNCj4gPG1yaXBhcmRAa2VybmVsLm9yZz47IFRo
+b21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPjsNCj4gRGF2aWQgQWlybGllIDxh
+aXJsaWVkQGdtYWlsLmNvbT47IFNpbW9uYSBWZXR0ZXIgPHNpbW9uYUBmZndsbC5jaD47IERtaXRy
+eQ0KPiBCYXJ5c2hrb3YgPGRtaXRyeS5iYXJ5c2hrb3ZAb3NzLnF1YWxjb21tLmNvbT47IFNhbmR5
+IEh1YW5nDQo+IDxoamNAcm9jay1jaGlwcy5jb20+OyBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
+ZWNoLmRlPjsgQW5keSBZYW4NCj4gPGFuZHlzaHJrQDE2My5jb20+OyBBbGV4YW5kcmUgTWFycXVl
+dCA8dGJAYS1tYXJxdWV0LmZyPjsgTWFyZWsNCj4gU3p5cHJvd3NraSA8bS5zenlwcm93c2tpQHNh
+bXN1bmcuY29tPjsgbGludXgtDQo+IHJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmc7IGxpbnV4
+LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZzsgZHJpLQ0KPiBkZXZlbEBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmc7IGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmc7IGx2Yy0NCj4gcHJvamVj
+dEBsaW51eHRlc3Rpbmcub3JnDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggMi8zXSBkcm0vcm9ja2No
+aXA6IGFuYWxvZ2l4X2RwOiBEaXNhYmxlIHBjbGsgaWYgc2V0dGluZw0KPiBlRFAgbW9kZSBmYWls
+cw0KPiANCj4gSGkgTmlraXRhLA0KPiANCj4gT24gMTEvMjUvMjAyNiA3OjQzIFBNLCBOaWtpdGEg
+WmhhbmRhcm92aWNoIHdyb3RlOg0KPiA+IFRoZSBlRFAtbW9kZSByZWdpc3RlciB3cml0ZSB2aWEg
+cm9ja2NoaXBfZ3JmX2ZpZWxkX3dyaXRlKCkgY2FsbCBjYW4NCj4gPiBmYWlsIGFmdGVyIHBjbGsg
+aGFzIGJlZW4gZW5hYmxlZC4gVG8gcHJldmVudCB0aGlzLCBkaXNhYmxlIHBjbGsgYmVmb3JlDQo+
+ID4gcmV0dXJuaW5nIHRoYXQgZXJyb3Igc28gdGhlIHBsYXRmb3JtIHBvd2VyX29uIGNhbGxiYWNr
+LCBpbiB0dXJuLA0KPiA+IHJlbGVhc2VzIHRoZSBjbG9jayByZWZlcmVuY2UgaXQgYWNxdWlyZWQg
+b24gZmFpbHVyZS4NCj4gPg0KPiA+IEZpeGVzOiA3MjlmOGVlZmRjYWQgKCJkcm0vcm9ja2NoaXA6
+IGFuYWxvZ2l4X2RwOiBBZGQgc3VwcG9ydCBmb3INCj4gUkszNTg4IikNCj4gPiBTaWduZWQtb2Zm
+LWJ5OiBOaWtpdGEgWmhhbmRhcm92aWNoIDxuLnpoYW5kYXJvdmljaEBmaW50ZWNoLnJ1Pg0KPiA+
+IC0tLQ0KPiA+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJvY2tjaGlw
+LmMgfCA0ICsrKy0NCj4gPiAgIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDEgZGVs
+ZXRpb24oLSkNCj4gPg0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+YW5hbG9naXhfZHAtcm9ja2NoaXAuYw0KPiBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9hbmFs
+b2dpeF9kcC1yb2NrY2hpcC5jDQo+ID4gaW5kZXggM2E4MDYwMGVlY2UxLi5hOTA1NjMwM2E5ODcg
+MTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2FuYWxvZ2l4X2RwLXJv
+Y2tjaGlwLmMNCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvYW5hbG9naXhfZHAt
+cm9ja2NoaXAuYw0KPiA+IEBAIC0xNDUsOCArMTQ1LDEwIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBf
+ZHBfcG93ZXJvbihzdHJ1Y3QNCj4gYW5hbG9naXhfZHBfcGxhdF9kYXRhICpwbGF0X2RhdGEpDQo+
+ID4gICAJfQ0KPiA+DQo+ID4gICAJcmV0ID0gcm9ja2NoaXBfZ3JmX2ZpZWxkX3dyaXRlKGRwLT5n
+cmYsICZkcC0+ZGF0YS0+ZWRwX21vZGUsIDEpOw0KPiA+IC0JaWYgKHJldCAhPSAwKQ0KPiA+ICsJ
+aWYgKHJldCAhPSAwKSB7DQo+ID4gICAJCURSTV9ERVZfRVJST1IoZHAtPmRldiwgImZhaWxlZCB0
+byBzZXQgZWRwIG1vZGUgJWRcbiIsDQo+IHJldCk7DQo+ID4gKwkJY2xrX2Rpc2FibGVfdW5wcmVw
+YXJlKGRwLT5wY2xrKTsNCj4gPiArCX0NCj4gPg0KPiA+ICAgCXJldHVybiByZXQ7DQo+ID4gICB9
+DQo+IA0KPiBGb3IgdGhlIGVhcmxpZXIgcm9ja2NoaXBfZHBfcHJlX2luaXQoKSwgSSB0aGluayBh
+IGdvdG8tYmFzZWQgZXJyb3IgcGF0aA0KPiBtaWdodCBiZSBjbGVhbmVyLg0KPiANCj4gQmVzdCBy
+ZWdhcmRzLA0KPiBEYW1vbg0KDQpUaGFuayB5b3UgZm9yIHlvdXIgcmVjb21tZW5kYXRpb24sIEkn
+bGwgaW5jbHVkZSB0aGlzIGNoYW5nZSBpbiB0aGUgdjIgc2VyaWVzLg0KDQpCZXN0IHJlZ2FyZHMs
+DQpOaWtpdGENCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
