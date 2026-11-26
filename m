@@ -2,84 +2,108 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59FEF606A31C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 19:28:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 17B03606A321
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 19:51:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wKCRBXUX;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.a=rsa-sha256 header.s=fe-e1b5cab7be header.b=m/2h0fWf;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=forwardemail.net header.i=@forwardemail.net header.a=rsa-sha256 header.s=default header.b=k38sE0vc
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2fxKwe0l;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=cbXumifJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ziN5/HBiY3PoW5fOJMkAoIcTi4M0iIYGQdUgY+u4VC8=; b=wKCRBXUXpNUN9+5X3jiL7iylcB
-	PkNoG3Owz+vd3pH2xVrZ5fo6AN1h2oWPydDTMXvqD6j9LalDkQPjdTFVhHtWrKkordErP4V807tAV
-	riNoPfTGtWkDAJOO6i8J/68wQo/1ruskVXbuteedVISB2t0W4NV8bbwQ/1oYMGoBAB705lwkXUY0J
-	cPT3uGP252/yIFLV2wvDz3UXvNeYdVNqod1PpdJpHsLK0s1OW0tVD20L916+bIJSGtT5X2GPbvQJZ
-	NEMyG/uV4D/gF8jjFK8GAFu3xw5a8+eIlD/20ctVevRj2ePkzlNxd7T6BHqwqwzf+AqY2qt1uME6p
-	qZYJvCOg==;
+	bh=ZzOEaJ9YqbLKl3qoPN8QUjqAQ23DFDUCJP8PM2hJkMw=; b=2fxKwe0lAjQbG5/Vhm/7guNb7h
+	AecsG4ucpFkPfrUulM5E12i5dDu+5PSRw8MM5PGwjaE7xui3kIf+jAXM3dkr0bUigviIBjuYuM06I
+	v4tcveW8m+ItBj27pjFsvuDiK7b5r1+gASABtAEoNEMPHUzWKgPuC7uzHn4gGHONIfs0cggrVKLVt
+	GgFNrDorfjLdZ1cJ+HRKvh1MQTJcK+E5mfEe/c2dm9nfzwvIgZ3dKQWVA77qZivNCiOTH6xsVX6qq
+	TtaZPwuALjRSAb92wG+uSJcGLvlJvjqC+Z0cuyuWRAFzXnCynSMDh8RXJW93QOIRdIJHfzqScLa26
+	oNcl9Lrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWf8W-0000000EIdP-1wcK;
-	Thu, 26 Nov 2026 19:28:04 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1xWfVR-0000000EOBc-3GwA;
+	Thu, 26 Nov 2026 19:51:45 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWf8T-0000000EIbR-35G9
-	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Nov 2026 19:28:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From: CFBL-Address: CFBL-Feedback-ID;
- q=dns/txt; s=fe-e1b5cab7be; t=1795721281;
- bh=FNzEHA4/L2PAmJ+F/LcXdz2bE0OJ7mWf/LIjnfOf7EY=;
- b=m/2h0fWf1x7dTG2txUio2u6tQaxIHCFL4nEvkFG0h6GGE203fhZ90YGMSyMUNKVfGu8zbl0ro
- arC6iTYxTtTftuvzlXVeJ5p0/upM/cwyG1kPkMnU63wdSeJFCcoIj1XMN7nRYbxHpCaIs54Ys2J
- imDhWpy3CYrcjqnkZpng8FSfDa25GaCSd399uTpZJ9eu/cg46BwtcAHAiAV5ZbH2i+cbV/WQ3as
- IrQPQNNnW9s+TAXqiJS2KKKI/LFRZJ+6wjL9+Bz37/BhFNkXSm15JgdwlAlZa5+NyxqPZCEUzoI
- 1Unr68JlXQwE3ZrOYfzukg3xVjOhL0jpm5QOJEgZn5VQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=forwardemail.net;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From: CFBL-Address: CFBL-Feedback-ID;
- q=dns/txt; s=default; t=1795721281;
- bh=FNzEHA4/L2PAmJ+F/LcXdz2bE0OJ7mWf/LIjnfOf7EY=;
- b=k38sE0vcx3rMx3wUVYKsUIyDVUSxM0ELMzG0os3ZvmuifRO8ssETde4BU1zYyjophMh2vcluL
- KO8oJn0csKk3rG+sV/PLVpiZELCD57oFwfz/3JUEn6bQwIr0RyQ0vNcIC7DqgZJ9a6nblmZnuPJ
- 5KAszcHMGHPiwdMX2jSCqOg=
-CFBL-Feedback-ID: 6b08883ab69a54ed847adb5e:08f0c09a429f60df47897387344267c7
-CFBL-Address: abuse@forwardemail.net; report=arf
-X-Forward-Email-ID: 6b08883ab69a54ed847adb5e
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 2.19.39
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Jonas Karlman <jonas@kwiboo.se>,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 2/2] ARM: dts: rockchip: Add ArmSoM Forge1 board
-Date: Thu, 26 Nov 2026 19:27:45 +0000
-Message-ID: <20261126192746.1595707-3-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.56.1
-In-Reply-To: <20261126192746.1595707-1-jonas@kwiboo.se>
-References: <20261126192746.1595707-1-jonas@kwiboo.se>
+	id 1xWfVI-0000000EO6N-2sMm;
+	Thu, 26 Nov 2026 19:51:36 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2501561924;
+	Thu, 26 Nov 2026 19:51:36 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795722695;
+	b=NuNEDHOeNwZ0pHv1DIbkuxTPEBkvJ1rGmTdmDYYM2VLpjcGUpYo7xVGN0PkESTI2f3F1
+	 aOQJq9Fa0YBW6EKsWP43F6pbsmukXkoYBo4G9gMByNbPXFVpX9bmOkLrsmBknllEaE1NG
+	 /ipj90DvvpmgAUSVI5WZTx/G9AP6Cp8Lg/l+zlrx+DYhMDmvw9FmRdDGIdfdLNOHpoZbi
+	 zOae3Ez13rEl0Y8LtCb55gKyktFcrXbvE+xEXz30FBUsp0qTjBamUbyPyIlsYaJNxtiYd
+	 WAN7VQdD1z1SyKJg1GUQ13/w2hf4G/kP1un+24wHKtkOCBQu5XyAo+zOsvUX/qJ+zYg==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795722695;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=73w2j9RJXwR9kXhBP0i3TUU2mktgXrCF6+L1iCYVU1A=;
+	b=BbwRHsCxkZTPPoVBPqDDF2t/xDOqpuN/ttxzZ5e/pUY/G4lnJTbUlCZTYKw67o02Hd33
+	 BSpolHBp9yv+So6McYMpu4LnnId/FYyqT+zgsBsSz4L/f+W+B0tPaqrnHSDhLJkuQCInG
+	 P3pNn3Qo2M591OyaScUN/S7RxZ9SeZx+oAWh3uFdoYPM6t1Zl2q9GoHAuQURZJw93HEF6
+	 fxlI8faQmJzCS6ok5ekhIR805LW+GxVhvT34vzvWF0PTG7f3BsaGCmsS8q2shVIu6AF00
+	 2n6OkVJZBltbhk5yfo5KPucF+4o+UeZ/Vpzieby+JAL49XBc8uaCLqVvlAjkbFsRgEg==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id E13941F000CA;
+	Thu, 26 Nov 2026 19:51:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795722695;
+	bh=73w2j9RJXwR9kXhBP0i3TUU2mktgXrCF6+L1iCYVU1A=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=cbXumifJhczUq1KKbaBTkutvtMCC7CivHo5yy7zmGmdWJVOu500F2zJ5wHM6692cz
+	 HQ897/lpvLdTEZ+zppGXboApYH84SmnWdeP1v74zzqZbF9nWPTiVOSTO/ZZX5Guo+X
+	 SQqEgHanjxRc7tbvo+i2sNXbYyw6mikCVYUlE1jG5X7H45TeZ1yX0g9krRuhlEJGvA
+	 3aTCO1a/GmTJkQMYbeQA7oPL9KKBjyAs9R+f0g9kLpvk2bazg6G/DfMwV8prUNA0Wt
+	 5XvTt+o/Zs0tWiM7UWrCu2YO6WpLEtMHrhzNxOn9uvod9Vo/t6py/SXFvfa2HkTEG1
+	 +wozHom1qQSXg==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 6DFDE4D7CA;
+	Thu, 26 Nov 2026 19:51:28 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Date: Thu, 26 Nov 2026 19:51:27 +0000
+Subject: [PATCH v5 1/4] media: dt-bindings: Add Rockchip IEP2 deinterlacer
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_112801_985390_7A418F5A 
-X-CRM114-Status: GOOD (  14.10  )
-X-Spam-Score: -2.0 (--)
+Message-Id: <20261126-iep2-v5-1-3deac0976f10@gmail.com>
+References: <20261126-iep2-v5-0-3deac0976f10@gmail.com>
+In-Reply-To: <20261126-iep2-v5-0-3deac0976f10@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ "Joerg Roedel (AMD)" <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
+ Robin Murphy <robin.murphy@arm.com>, Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, iommu@lists.linux.dev, 
+ Hans Verkuil <hverkuil@kernel.org>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Alex Bee <knaerzche@gmail.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ Arun Iyengar <aiyengar1990@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795722687; l=3925;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=Qe6wQ4E2xaAvete4oI5amRHE0suyCMaOjV61Q0hB68c=;
+ b=nt5nRKKgSGB0J+czoTa4eC5CQiDVbWv0v1w7HAThLK8XPDSOAQG8mqYwHThJVeigi9VF/oiKd
+ rsbBIWwX2/EBxmULE5Lab+/xab2/vRnZaxbVGAVlOdr3q1lhcgQ8IWh
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,277 +113,156 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-ArmSoM Forge1 is an industrial-grade product powered by the RK3506J
-triple-core Cortex-A7 application processor. It is specifically designed
-for industrial gateways, HMIs, PLCs, handheld POS devices, and home
-appliance display/control applications.
+From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Link: https://docs.armsom.org/armsom-forge1
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
-Changes in v2:
-- Remove unintended use of zero-width space in commit message
-- Add spi_nand label to flash@0 node
-- Drop rtc_int pinctrl, it was not referenced and unclear how RMIO may
-  affect how hw description of RTC IC may end up
----
- arch/arm/boot/dts/rockchip/Makefile           |   3 +-
- .../dts/rockchip/rk3506j-armsom-forge1.dts    | 223 ++++++++++++++++++
- 2 files changed, 225 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm/boot/dts/rockchip/rk3506j-armsom-forge1.dts
+Add a binding for the IEP2 deinterlacer of the RK3568 and RK3588 SoCs.
+It is a different block from the IEP of RK3228/RK3288/RK3328/RK3399,
+hence "iep2". The RK3588 block falls back to the RK3568 compatible.
 
-diff --git a/arch/arm/boot/dts/rockchip/Makefile b/arch/arm/boot/dts/rockchip/Makefile
-index faebeb20f467..ef11b2b95ae4 100644
---- a/arch/arm/boot/dts/rockchip/Makefile
-+++ b/arch/arm/boot/dts/rockchip/Makefile
-@@ -49,4 +49,5 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rk3506-luckfox-lyra-plus.dtb \
- 	rk3506-luckfox-lyra.dtb \
- 	rk3506b-luckfox-lyra-ultra.dtb \
--	rk3506b-luckfox-lyra-zero-w.dtb
-+	rk3506b-luckfox-lyra-zero-w.dtb \
-+	rk3506j-armsom-forge1.dtb
-diff --git a/arch/arm/boot/dts/rockchip/rk3506j-armsom-forge1.dts b/arch/arm/boot/dts/rockchip/rk3506j-armsom-forge1.dts
+Clock and reset names follow the RGA binding. The resets are optional:
+the block has its own soft reset.
+
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+---
+ .../bindings/media/rockchip,rk3568-iep2.yaml       | 95 ++++++++++++++++++++++
+ MAINTAINERS                                        |  6 ++
+ 2 files changed, 101 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-iep2.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-iep2.yaml
 new file mode 100644
-index 000000000000..ddc752059d50
+index 000000000000..834282ef99a0
 --- /dev/null
-+++ b/arch/arm/boot/dts/rockchip/rk3506j-armsom-forge1.dts
-@@ -0,0 +1,223 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-iep2.yaml
+@@ -0,0 +1,95 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/rockchip,rk3568-iep2.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+/dts-v1/;
++title: Rockchip IEP2 image enhancement processor
 +
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/leds/common.h>
-+#include "rk3506.dtsi"
++maintainers:
++  - Arun Iyengar <aiyengar1990@gmail.com>
 +
-+/ {
-+	model = "ArmSoM Forge1";
-+	compatible = "armsom,forge1", "rockchip,rk3506";
++description:
++  Memory to memory video deinterlacer of the Rockchip RK3568 and RK3588
++  SoCs. It has its own IOMMU, with which it shares its interrupt line.
 +
-+	aliases {
-+		ethernet0 = &gmac0;
-+		ethernet1 = &gmac1;
-+		mmc0 = &sdmmc;
-+		serial0 = &uart0;
-+	};
++properties:
++  compatible:
++    oneOf:
++      - const: rockchip,rk3568-iep2
++      - items:
++          - const: rockchip,rk3588-iep2
++          - const: rockchip,rk3568-iep2
 +
-+	chosen {
-+		stdout-path = "serial0:1500000n8";
-+	};
++  reg:
++    maxItems: 1
 +
-+	adc-keys {
-+		compatible = "adc-keys";
-+		io-channels = <&saradc 0>;
-+		io-channel-names = "buttons";
-+		keyup-threshold-microvolt = <1800000>;
-+		poll-interval = <100>;
++  clocks:
++    items:
++      - description: AXI bus clock
++      - description: AHB bus clock
++      - description: Core clock
 +
-+		button-maskrom {
-+			label = "MASKROM";
-+			press-threshold-microvolt = <0>;
-+			linux,code = <KEY_SETUP>;
-+		};
-+	};
++  clock-names:
++    items:
++      - const: aclk
++      - const: hclk
++      - const: sclk
 +
-+	leds {
-+		compatible = "gpio-leds";
++  interrupts:
++    maxItems: 1
 +
-+		led-0 {
-+			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "on";
-+			function = LED_FUNCTION_HEARTBEAT;
-+			gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&run_led>;
-+			linux,default-trigger = "heartbeat";
-+		};
-+	};
++  resets:
++    items:
++      - description: AXI reset
++      - description: AHB reset
++      - description: Core reset
 +
-+	vdd_0v9: regulator-0v9 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_0v9";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <900000>;
-+		regulator-max-microvolt = <900000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
++  reset-names:
++    items:
++      - const: axi
++      - const: ahb
++      - const: core
 +
-+	vcc_1v8: regulator-1v8 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_1v8";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc_3v3>;
-+	};
++  power-domains:
++    maxItems: 1
 +
-+	vcc_3v3: regulator-3v3 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_3v3";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
++  iommus:
++    maxItems: 1
 +
-+	vcc5v0_sys: regulator-5v0-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - interrupts
++  - power-domains
++  - iommus
 +
-+	vcc5v0_usb20_otg1: regulator-5v0-usb20-otg1 {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio1 RK_PD0 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb20_otg1_drv_h>;
-+		regulator-name = "vcc5v0_usb20_otg1";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
++additionalProperties: false
 +
-+	vcc_ddr: regulator-vcc-ddr {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_ddr";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+};
++examples:
++  - |
++    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/rk3588-power.h>
++    #include <dt-bindings/reset/rockchip,rk3588-cru.h>
 +
-+&fspi {
-+	status = "okay";
++    bus {
++      #address-cells = <2>;
++      #size-cells = <2>;
 +
-+	spi_nand: flash@0 {
-+		compatible = "spi-nand";
-+		reg = <0>;
-+		bootph-pre-ram;
-+		bootph-some-ram;
-+		spi-max-frequency = <80000000>;
-+		spi-rx-bus-width = <4>;
-+		spi-tx-bus-width = <1>;
-+	};
-+};
++      deinterlace@fdbb0000 {
++        compatible = "rockchip,rk3588-iep2", "rockchip,rk3568-iep2";
++        reg = <0x0 0xfdbb0000 0x0 0x500>;
++        clocks = <&cru ACLK_IEP2P0>, <&cru HCLK_IEP2P0>,
++                 <&cru CLK_IEP2P0_CORE>;
++        clock-names = "aclk", "hclk", "sclk";
++        interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
++        resets = <&cru SRST_A_IEP2P0>, <&cru SRST_H_IEP2P0>,
++                 <&cru SRST_IEP2P0_CORE>;
++        reset-names = "axi", "ahb", "core";
++        power-domains = <&power RK3588_PD_VDPU>;
++        iommus = <&iep_mmu>;
++      };
++    };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index f72ce07a4e38..90ec701edce6 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -24285,6 +24285,12 @@ S:	Maintained
+ F:	Documentation/devicetree/bindings/sound/rockchip,i2s-tdm.yaml
+ F:	sound/soc/rockchip/rockchip_i2s_tdm.*
+ 
++ROCKCHIP IEP2 DEINTERLACER DRIVER
++M:	Arun Iyengar <aiyengar1990@gmail.com>
++L:	linux-rockchip@lists.infradead.org
++S:	Maintained
++F:	Documentation/devicetree/bindings/media/rockchip,rk3568-iep2.yaml
 +
-+&gmac0 {
-+	assigned-clocks = <&cru CLK_MAC0>;
-+	assigned-clock-rates = <50000000>;
-+	phy-handle = <&rmii_phy0>;
-+	phy-supply = <&vcc_3v3>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&eth_rmii0_miim>, <&eth_rmii0_tx_bus2>,
-+		    <&eth_rmii0_rx_bus2>, <&eth_rmii0_clk>;
-+	clock_in_out = "output";
-+	status = "okay";
-+};
-+
-+&gmac1 {
-+	assigned-clocks = <&cru CLK_MAC1>;
-+	assigned-clock-rates = <50000000>;
-+	phy-handle = <&rmii_phy1>;
-+	phy-supply = <&vcc_3v3>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&eth_rmii1_miim>, <&eth_rmii1_tx_bus2>,
-+		    <&eth_rmii1_rx_bus2>, <&eth_rmii1_clk>;
-+	clock_in_out = "output";
-+	status = "okay";
-+};
-+
-+&mdio0 {
-+	rmii_phy0: ethernet-phy@1 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&rmii0_rstn>;
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio0 RK_PC2 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&mdio1 {
-+	rmii_phy1: ethernet-phy@1 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&rmii1_rstn>;
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio1 RK_PC7 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&pinctrl {
-+	ethernet {
-+		rmii0_rstn: rmii0-rstn {
-+			rockchip,pins = <0 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		rmii1_rstn: rmii1-rstn {
-+			rockchip,pins = <1 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	leds {
-+		run_led: run-led {
-+			rockchip,pins = <4 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	sdmmc {
-+		sdmmc_det_l: sdmmc-det-l {
-+			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	usb {
-+		usb20_otg1_drv_h: usb20-otg1-drv-h {
-+			rockchip,pins = <1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&saradc {
-+	vref-supply = <&vcc_1v8>;
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	cd-gpios = <&gpio0 RK_PA3 GPIO_ACTIVE_LOW>;
-+	disable-wp;
-+	no-sdio;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc_bus4>, <&sdmmc_clk>, <&sdmmc_cmd>, <&sdmmc_det_l>;
-+	vmmc-supply = <&vcc_3v3>;
-+	vqmmc-supply = <&vcc_3v3>;
-+	status = "okay";
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
+ ROCKCHIP ISP V1 DRIVER
+ M:	Dafna Hirschfeld <dafna@fastmail.com>
+ M:	Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
 -- 
-2.56.1
+2.55.0
+
 
 
 _______________________________________________
