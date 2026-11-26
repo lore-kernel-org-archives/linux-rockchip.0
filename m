@@ -2,74 +2,61 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C3F23606A323
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 03:05:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA6AF606A321
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 04:02:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aE8+Fg6J;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=Mn/R+fv5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lqaa0eSX;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=protonmail.com header.i=@protonmail.com header.a=rsa-sha256 header.s=protonmail3 header.b=gZDYSHT+
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:From:To:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=L6kp5nx0nIcSQ5Qpf+ZrXWxcGu8AsqFGcmYPzSGGqa0=; b=aE8+Fg6J4C+kckLnwMvcsgV+/C
-	v48m1hKtClIAzrK24Oo9/T37H2cWGDweGBT87w5fhuIFQzsmUGfC487LJ2pt/KtN/iWcRw5T9VjfH
-	BonWLWmdF1ounhA21i1yrgkVSKvX0oZcmZvFhOg1wRQaK+UGXqQ86YoyCdt0wM1Qg7PDzbT6zGxFt
-	tjzDEAqs8AotTYFiCIACj0lso3pOSfjb87rB6CVDb7fyuzGmvGyxn1HzBoSHw/Edt1tMUlwpRounR
-	Yz/nc3ZTf10jw9ELX0iTstOZgOar1z2VYQgIWi60fM9MjPxgD7UcKNOApt4MLeo3aZTi//XLsgTIi
-	Or0iR2Ng==;
+	bh=1B1KkHaEqMixSd2RtzxhqVttKuZE+ip4p6XYzYa5CJ4=; b=lqaa0eSX9K77CPTx9B/CrCS+c0
+	LIyTI4y0CHN6VqfWb7u7GWaz+j3Rl1bZC6dJ5XMWOZJqXOHZMGhs8uAwlrjKl9goN5633YU1OjCnS
+	2jTPK9F6E2RxvcuqgwSzep+PY+ZZsjvJV9riWkYJwie0fxMmWSg+j1W740dpF9GWC9bYf3yey/Ojg
+	PZfIPNF4PWplgJEVZHAUY1hc5orwV5H5+xvSsnovBdnCnwdvIAgkK1IGYqNivz4C9Kphl11vQIDaX
+	Nl1tJETAGoU4/LT/AexfCMqU8u8rN0mwUfYErPDN7PLitekz5Um5bUWc6U8ClBFWEp97b3TImynoD
+	Y6JGWmxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWPnT-0000000BxgN-0G2j;
-	Thu, 26 Nov 2026 03:05:19 +0000
-Received: from sender5-op-o11.zoho.com ([165.173.182.11])
+	id 1xWQgu-0000000C2nu-2l1Q;
+	Thu, 26 Nov 2026 04:02:36 +0000
+Received: from mail-10698.protonmail.ch ([79.135.106.98])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWPnQ-0000000Bxfn-2Sah;
-	Thu, 26 Nov 2026 03:05:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1795662304; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=beLjr7bzVwzb8QTPzpm/u2lBKzIZ6PGCUZKJDIR/7RgcrGtI0U2uhHB1rkHYXJv88StPFh2lZxXR+RBsNX8bjTJFVKWnd6FdgY0Cu7aTVSPL//hEnIOD4HLfMPvMsSE92r7lr9h69tsZtZSIMhjpOy2JsEHe6gFvRIceFRzEgpc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1795662304; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=h5N4OA8SQE3E9YKn3UwdCPMRzewE8UsIoK77sNRV1p4=; 
-	b=T0xzWQErG6L/rAVO4NEM7P0lOUZ4x6RgcxAQrijw4GrZlQri67VrJqelTZOTgNj604x3vwM7mVWVVibxxl9KDW0UdF6SylGc4gPr2MsCiGUirf2g10OIHRIfX7GbVyMrAnF4qXPkq4KEkKirMuH3ILlGif9N6q7ffZSB/DMeg+A=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=Mn/R+fv5W0ghqtGrtEFpTU1CEG0/+f70dgkKuj8ZQS1BzA4XvccmFoq186sF2J4/2HXn1ivX5b+kFxGZTdWLox2Cr4ai2QpFm4Fw1nORmyCla0+uSWfc55pGA6g3HIkAZRUHZ9lifkCArTstePNv/toUhARTMWVa80qjZPrEtvs=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=h5N4OA8SQE3E9YKn3UwdCPMRzewE8UsIoK77sNRV1p4=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1795662301200627.4872012453012;
-	Wed, 25 Nov 2026 19:05:01 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id CDF8A18044A; Thu, 26 Nov 2026 04:04:56 +0100 (CET)
-Date: Thu, 26 Nov 2026 04:04:56 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Midgy Balon <midgy971@gmail.com>, Diederik de Haas <diederik@cknow-tech.com>, 
-	Elaine Zhang <zhangqing@rock-chips.com>, Freimut Diener <f.diener@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: power: rockchip: Allow
- post-init-providers for domains
-Message-ID: <aweeQ2McnEE6yXvY@venus>
-References: <20261125-rock5t-regulator-deps-v1-0-6a3470ad1855@pengutronix.de>
- <20261125-rock5t-regulator-deps-v1-1-6a3470ad1855@pengutronix.de>
- <oJj2NKd1Svmsn320H8YWrg@sntech.de>
- <962182b2-6fa0-4aaa-a47a-f78339b5d89e@rock-chips.com>
+	id 1xWQgr-0000000C2nR-1Taf;
+	Thu, 26 Nov 2026 04:02:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1795665750; x=1795924950;
+	bh=7Gltq0J+neesPC1o9IUwhCGnJYXEolSS4bAtXjeOr4Y=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=gZDYSHT+0VZl6WXEwngoV9+Abm7kbJQpwF4C/I2C/q54J9ddbIQN7VO9Gd7BJMlJe
+	 CvhpI428Qkbcr9l2dM9J0yYz4sac+CX7WugihFloqGJrs9Jde4SctB1WOUt5KKQn9V
+	 P+0Qe532R/sRMevdLeqSedvZkJUpt2r2ao58nzrcG37ZZVUWdZVaDkZ9HXTSffZmfj
+	 cCVaapFRLpRLC5MYd78l2q91tJE5K0aUrMCPf+k1gd5yrl2YiyncBILqqjO9+Z/+vx
+	 N8oA4XID6ckAp/sVzXDzyJlBsIg69Yqjv9AzpmJaCUSq6r2EQkDC/7dkJtCvv/s5Hy
+	 T/jpfysnHz1qQ==
+Date: Thu, 26 Nov 2026 04:02:17 +0000
+To: Alexey Charkov <alchark@flipper.net>
+From: Ryan Leung <untilscour@protonmail.com>
+Cc: Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, =?utf-8?Q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>, Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, Willem de Bruijn <willemb@google.com>, Simon Horman <horms@kernel.org>, Ricardo Pardini <ricardo@pardini.net>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 3/5] net: of_net: Derive MAC addresses from a unique device ID
+Message-ID: <WorU-BRgoHyPr-8qvenYMy4zDTR4joFxkzmN-qmrABKdMgS7LJ3Nx1rAUQFAoulhS7YjNRIM_bBnK3KdCFGhEF0PgQ1FLq0ieYeGRnkQX_Q=@protonmail.com>
+In-Reply-To: <20261125-rk3576-otp-cpuid-mac-v5-3-b3125c9a5fc8@flipper.net>
+References: <20261125-rk3576-otp-cpuid-mac-v5-0-b3125c9a5fc8@flipper.net> <20261125-rk3576-otp-cpuid-mac-v5-3-b3125c9a5fc8@flipper.net>
+Feedback-ID: 184418679:user:proton
+X-Pm-Message-ID: f5a7475f279d2efed66dcb8a5e8b361db3facbcf
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <962182b2-6fa0-4aaa-a47a-f78339b5d89e@rock-chips.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/295.650.59
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_190516_686072_96DA0DF0 
-X-CRM114-Status: GOOD (  31.21  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261125_200233_577915_E7DFBDE7 
+X-CRM114-Status: UNSURE (   4.85  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,163 +66,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7350602320730307331=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Hi Alexey,
 
---===============7350602320730307331==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qemy2mlvuv3ghs56"
-Content-Disposition: inline
+Tested-by: Ryan Leung <untilscour@protonmail.com> # RK3528 NanoPi R28S
 
+I tested on FriendlyELEC NanoPi R28S (RK3528) with ethernet200 = &gmac1 alias
+and the MAC address was exactly as expected with XOR 200 the last octet.
 
---qemy2mlvuv3ghs56
-Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 1/2] dt-bindings: power: rockchip: Allow
- post-init-providers for domains
-MIME-Version: 1.0
+Thanks and looking forward to using this.
 
-Hi,
-
-On Thu, Nov 26, 2026 at 09:50:56AM +0800, Chaoyi Chen wrote:
-> On 11/26/2026 4:37 AM, Heiko Stuebner wrote:
-> > Am Mittwoch, 25. November 2026, 11:33:57 Mitteleurop=E4ische Normalzeit=
- schrieb Freimut Diener:
-> >> A Rockchip power domain can have a supply that is required when
-> >> powering on the domain but is not required to initialize the power
-> >> controller.
-> >>
-> >> Allow post-init-providers on power-domain child nodes to describe
-> >> such dependencies.
-> >>
-> >> Signed-off-by: Freimut Diener <f.diener@pengutronix.de>
-> >=20
-> > Interesting that this exists since 2024 and this will be the first
-> > user it seems.
-> >=20
-> > I've looked at the dtschema for it, and this looks really great for thi=
-s.
-> >=20
-> > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> >=20
->=20
-> That's exactly what we want. :)
->=20
-> I guess it's because the kernel doesn't include this part of the
-> binding, and it's only included in the dt-schema repository,=20
-> so nobody noticed it?
->=20
-> https://github.com/devicetree-org/dt-schema/blob/main/dtschema/schemas/po=
-st-init-providers.yaml
->=20
-> Reviewed-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-
-I don't think that this is what we want. It just tells the kernel
-how to break a cyclic dependency: Probe the power-controller before
-the regulator. But things are already handled in the same way, so
-the only result is that the boot warning goes away. But it does not
-solve the fundamental problem:
-
-What we would actually want is dependency tree information on
-sub-device level, as the cyclic dependency only happens due to
-clustering all power-domains together. But doing dependency tracking
-on sub-device level in the kernel would be a *really* big task
-(it was discussed at this years LPC in a talk from me and Angelo
-on exactly this problem).
-
-Fortunately, there is only a few affected power-domains on Rockchip
-specifically, so an alternative solution is moving those to a
-separete device. At this point there is no cyclic dependency and the
-warning is also fixed. But there is a huge difference: Now the
-kernel has dependency informations, which are also used for
-suspend/resume. So the kernel knows it should resume the power
-domains required for SPI/I2C (bus used by regulator) first, then the
-regulator driver and then the power domains needing regulators.
-
-If you just add the post-init-providers, you basically just got rid
-of a kernel warning by adding a DT property that possibly becomes ABI.
-
-Greetings,
-
--- Sebastian
-
->=20
-> >=20
-> >> ---
-> >>  Documentation/devicetree/bindings/power/rockchip,power-controller.yam=
-l | 3 +++
-> >>  1 file changed, 3 insertions(+)
-> >>
-> >> diff --git a/Documentation/devicetree/bindings/power/rockchip,power-co=
-ntroller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-cont=
-roller.yaml
-> >> index b41db576f95de..d2b512dd95f63 100644
-> >> --- a/Documentation/devicetree/bindings/power/rockchip,power-controlle=
-r.yaml
-> >> +++ b/Documentation/devicetree/bindings/power/rockchip,power-controlle=
-r.yaml
-> >> @@ -147,6 +147,9 @@ $defs:
-> >>            A number of phandles to qos blocks which need to be saved a=
-nd restored
-> >>            while power domain switches state.
-> >> =20
-> >> +      post-init-providers:
-> >> +        $ref: /schemas/post-init-providers.yaml#/properties/post-init=
--providers
-> >> +
-> >>        "#power-domain-cells":
-> >>          enum: [0, 1]
-> >>          description:
-> >>
-> >>
-> >=20
->=20
-> --=20
-> Best,=20
-> Chaoyi
-
---qemy2mlvuv3ghs56
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmsHodUACgkQ2O7X88g7
-+po/3RAAlzYSBqgLZ0niXp3v5QXc7ekGkVrhAWNv1J3U+rDhKNy7fG3mHOGg+rIP
-dxa/MKFQC33DdBeTGGrmGpipUxbpSekApiWftLIvvcw70JHt7kpDAjDKQ1v/eudL
-UQgMlqMr+GjVpGNNGSiPHf9iSpPF+lLl5cASvO4wopGGDitYvcJDbNSz3ZlVbrbF
-ddXeuncx60pM1tKhuIg6P96ZMugn7iQBuZOvWYy89o2/Y/uFo79OQqx8EyUuwjmX
-YcCJjHn/9YMi4K5O8HlaNo1aQxLDiPb22ro0ju172J7VdVo3Ok5aN7B35004OuxE
-tD5xVw20QtghgtvogrB0iaESgTeupPeTImg5LTYzmETtAUAD7FGDGBIuJqZyFsmI
-5Rnv7iKuhmtMi1poqCpc7S6PgzpNUVoRfhnBA5OH2i+reNsW62QJ7R6CHclBL0xn
-lEzS3lD6hgF5Grmht9N8oUMI8sb8THb2/OGjlQ4LMXqVQ1rURH4/fd0GYETbE6bz
-uqoSDdHBoRovFdJhMht4QPwUrXYVvt8ODzapLE9Rmzf0kDhDefiPBg19w1uolC9A
-jECte6wVX33fz7LeItsy+K/DI4Ute2V9J029Ek8IWnz4Oi8mJ1fGNtohYTgsi5mj
-KwXGbDQkLBeuqQJLKNkiUh+3T0SOz/UrtVTQbUnKPsW5S7r2yk0=
-=WcPX
------END PGP SIGNATURE-----
-
---qemy2mlvuv3ghs56--
-
-
---===============7350602320730307331==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Best regards,
+Ryan
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7350602320730307331==--
-
