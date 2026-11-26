@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 78F9960A260E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 14:53:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 70DE9606A695
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 14:53:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PCkXIVJL;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=iN87VZmS
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eQhhUjlt;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=JWiWAJSt
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,46 +14,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=WBThLc5Wdy0ZqtWcLRTTyW6TgEkAKW9CpgjtXh+L/hY=; b=PCkXIVJLD1dwRw0CGn8Hh9a2dW
-	2S3yFrnUXptOaMXNBTKAwne7MLXKqnX2pZMpXUpaRNr8FqrZhz4QneMms+6ppnk7DlBumPx40UI+k
-	xgsc8jHmbaDKVYNhBIweIg+pfnAy2NO/LfqeAFRScQ3kKFWPuiUrVbG0YzyEMHjcWQkr9vH9fiOym
-	IpWJy70TernZVTstwUFxIF+LagSwKTQH8on5iyEKLF5ZK6CxorIHzFRgH5loYv8QEDYaMNM9BShHK
-	/z4rtxWvIdQBJ9I4jTHIkSiEf8FVt6lrvU+MuyHKNKLaXyAZGCz65xpDWgS3jsrlOO3suTeyjPOXr
-	2M/THOIA==;
+	bh=O9OWp++RImyfAhks8mMfEeLIcBzsALFZa7sXy/FYOZo=; b=eQhhUjlt1ayyKUl8xNQMLwsNds
+	pO/yLTOpV8d2jSchD/4cqiL8L5jzSCcq3OZCZBwfst/YQV3xH20E6quxOlXv76Tbl/6QyoTVXT/wE
+	lHY20uvQQCFdXLCn5lF48R+f/S5xqJPMhzrx+rBv7ksaNymdSGWCGF70LJlsbyX1QVv8v9jPcpMet
+	1oJSVEhOVzteQNSK+3/vP3mMJ2qq7BBILUWaapikySu6h6ilBZseuBGfwttr+KI2BmQBjwuQyTQmC
+	XG/ywkMtC9jmTHMCeEUC6JTKPcdnb6afHxeiG+lolDNwuQqj25B3UfTHgfnFlEdpYJIKauB1TxAB/
+	HpCnMHsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWaqW-0000000DcJB-08NI;
-	Thu, 26 Nov 2026 14:53:12 +0000
+	id 1xWaqj-0000000DcaM-2dVY;
+	Thu, 26 Nov 2026 14:53:25 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWaqS-0000000DcEt-043U;
-	Thu, 26 Nov 2026 14:53:10 +0000
+	id 1xWaqS-0000000DcFA-04GI;
+	Thu, 26 Nov 2026 14:53:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1795704784;
-	bh=EGZQ5hw1OE7xV9Ltk+oXBVhBXm1P+5H4gIIoayzJU3I=;
+	bh=VXjQmgPNcP6TxrE9fEJyZi07Hi5P0Q3culnMpUj9c98=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=iN87VZmSD5C5XJU1a0MmKkg5vZuA3sOHhOxOjn40cjvVa/aB93QpQTZQDd4SIyLZ5
-	 8KE/VJkbtVGxV66cCXUWRIiMIyalVummXvfuxF9dvCvLgtHUatbcPw4//2yH/HmRQh
-	 5HlyVAaTjbZDJepSc0VJT931NHrKGQUELTBVrY9kARLWkJHAsgdn2EPPM0DtxpDs6X
-	 nvQ1PJfxmAD3/dQSa9jCcNKQA9sn3SQjVSuX2Iz24eS7lWIcqF3s6VxNNfizgBJi8m
-	 3XePlPoBMYzzpSDvLwE4hvYusbzcy6SYiOqmG1zAwDGwU+d8IKmwjVLo9hKAGavPR/
-	 Ur2nr+vZXRhng==
+	b=JWiWAJStLHRo2lj/uUtvvglAI8dN/zmaCL/VwmSC2+oFe+qVIWaiucaNHbelwKhEm
+	 9+RPqJ/ihcaxCZflBG5ggTpttlRkC+/nMzwCBxrHB0oEM7IjSJTyhXpz7Na75yfgpW
+	 MDCF7Odlew+LZpAeL0aaM3EZIiNLuhC1jVPoje5lwp9jt6PLSZ1I1ewbgRsmth2h7P
+	 81U3ZYUEU8Rj5915rfjq/0fqKQUCNmPWM7FuvHwXu94TQ0kHzhThg0YKh0284cnox5
+	 B8FY+jm7BVJKt5f+vdyNCTHCH63bNN5yDlxo1xN4Zfk8BVmBgZ0K1eDdLKkTEk2jxn
+	 MapqJCyKC+DXg==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A152E17E00C4;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A567D17E0FD4;
 	Thu, 26 Nov 2026 15:53:04 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 60AA148002B; Thu, 26 Nov 2026 15:53:04 +0100 (CET)
+	id 63808480031; Thu, 26 Nov 2026 15:53:04 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 26 Nov 2026 15:52:36 +0100
-Subject: [PATCH v3 1/6] dt-bindings: clock: rk3588: add PCLK_DDR_MON_CH
- clocks
+Date: Thu, 26 Nov 2026 15:52:38 +0100
+Subject: [PATCH v3 3/6] clk: rockchip: rk3588: add PCLK_DDR_MON_CH gate
+ branches
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261126-dfi-clocks-and-rk3576-support-v3-1-0f33c1b8df48@collabora.com>
+Message-Id: <20261126-dfi-clocks-and-rk3576-support-v3-3-0f33c1b8df48@collabora.com>
 References: <20261126-dfi-clocks-and-rk3576-support-v3-0-0f33c1b8df48@collabora.com>
 In-Reply-To: <20261126-dfi-clocks-and-rk3576-support-v3-0-0f33c1b8df48@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
@@ -67,27 +67,26 @@ Cc: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1020;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1856;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=kl73j53q8IZijypx0BWfssWY6LoAy/tptcYcpgMl8Co=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGsIR9BglrZgxoQr6c65BCUnkeVfs6wFT5cKA
- eVu6cnnvIVorIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJrCEfQAAoJENju1/PI
- O/qagyIQAIaqNWBmj3m0y2I5nI5lwOdUpd4d5hVoAuN0jQGucPLzeV/PB8U2czKOVyoCn3nul3w
- o+JCqGbBnHusaS2n2gDLmhOT/NEATW1eqdjHzPOge56/0pmOTKw7UCqnejpnmmbM0NrGsJIJHcI
- IXnMDjOnO2sDfNbd5TSRzitoyjqmlVs/9IPKiyncJcDNxhQAMuCepS4JN6nb6MgdqS2Y+cLO+tJ
- qrvM8piwAFj7WHWjS5Av9yRcbGUTKEeaZYSKci5gp9JWeKaqMXPKFCO5tiRfigJlCCwSX2T/odx
- 0aGZvOJE+9Zxn11INKHhc5VrEkUug9EY7nrwvAjOnWky6HHHLElnxcC+XZDhTABem2ftCyPkEJq
- xD3G1OXUdCa+YhFZtI4N5j1tND+XYDL04zKpovkuh65gVUdxai5IoCaY7jXr8KlC36BDs2J4dux
- vdwJTnFr/G8v7wpvKMSiutXdY1AfPHWjC9F2ML2mAchgs/Mf4Ki8E8Dof4FJw67iiE8VJstTNLz
- pN//JdtP5ar9JooIieiakSiWdBJJyqU84kJ7+ZI7AZnIRKb3i0d8loPJ4HjyQUBLrq/TRRSUSS9
- P+UTY3XiXKSSX5FGfvvlg/BLKyS5Mc04NH5Y48lyjvLBKaKordlTkQ9t7Ds1GLxdleLq1FYl0qh
- /iprSqUWVB3BJFZZw5jMu8A==
+ bh=WfqRSjYFz7+ljRQE5uaOc11qdMoKK31EtGs4gkDrNM4=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGsIR9BgLmQS56N3xRiujYqbu7FvWjcjLib8h
+ 7MqHxszt3xtu4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJrCEfQAAoJENju1/PI
+ O/qa7pEP/jmZJ6C/rwWR+v7DY5++az7FWNw+FIgrGJ5IlqSiFzidk2vKcxyBNNisbI64fMeEMlm
+ AF9oSRdCMdoLBlDZmkZjQu64bMwveOM8B6PwFIx72Jd45EIFU5zgbfoKssucGoJHcuNQbHjv/3s
+ IvZdei2MSevo+3hUL7OMYUPQdRRWQ0lo0eLkxwZIMOqDh8IdPySfpFlxFPiffLCRvPi07cb/OEl
+ ZwcRy3YD+oAKaXuuLve0XaEEThTUpFBVQzVKDCldpARdabgcHODRz0j1UvziTtRPnzVBRow6Rah
+ KRfCGTfLfuFFpjRCG2Nssk+psTrCZ8RiQLnabZnBAWCirOxlbRC3onC2pOdEynUWvaOx5v/2SIH
+ EPth60jSuSNxkTfR1LVxghCybcmK+0GHpE0SvkiBX5/F4nJri+p6idi+72iAVvpW+80nbru6dw2
+ M20V4iK1kV03pFHr0fmHhMdTkrMqDUW03pwNJZaobdyTyu5GIxnepC5PM5HDaKEl/C6nl+vQpfM
+ bcIC7GAnP0xjZasghwEBEr3Mz8IGbVUhenm3YTwY+5yn4SfopwSBu91iOAwft287tq+ZvQic6Bx
+ gC3PNmWiN66suX44mBfs8sYghVUWyWMt53scI2wX0uo42k1dYZbiNd9xDRC3iuMFp2GXzG2eEKX
+ vh1G1MKENO5ej8D5OkgUq9w==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_065309_672539_578B6A21 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261126_065309_729831_C0DE4593 
+X-CRM114-Status: GOOD (  11.26  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,32 +109,42 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-On RK3588, each memory channel has its own DDR bandwidth monitor
-silicon, and each instance of that has its own clock gate that drives
-the monitor logic.
+On the Rockchip RK3588, each memory channel has some bandwidth
+monitoring silicon (hence the "DDR_MON"), which is driven by a clock
+gated by PCLK_DDR_MON_CH0/1/2/3.
+
+These clock branches were left out of the mainline clock tree until now.
+
+Add them, with the proper CRU reg bits, and the proper parent.  They are
+given the "CLK_IGNORE_UNUSED" flag, so that older device trees with
+newer kernels don't turn off the clocks because they're seen as not in
+use.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- include/dt-bindings/clock/rockchip,rk3588-cru.h | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/clk/rockchip/clk-rk3588.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/include/dt-bindings/clock/rockchip,rk3588-cru.h b/include/dt-bindings/clock/rockchip,rk3588-cru.h
-index 7528034cff56..6ea25019ebb4 100644
---- a/include/dt-bindings/clock/rockchip,rk3588-cru.h
-+++ b/include/dt-bindings/clock/rockchip,rk3588-cru.h
-@@ -738,6 +738,10 @@
- #define I2S1_8CH_MCLKOUT_TO_IO		723
- #define I2S2_2CH_MCLKOUT_TO_IO		724
- #define I2S3_2CH_MCLKOUT_TO_IO		725
-+#define PCLK_DDR_MON_CH0		726
-+#define PCLK_DDR_MON_CH1		727
-+#define PCLK_DDR_MON_CH2		728
-+#define PCLK_DDR_MON_CH3		729
- 
- /* scmi-clocks indices */
- 
+diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
+index 24baa0ef9bf3..0485faf27163 100644
+--- a/drivers/clk/rockchip/clk-rk3588.c
++++ b/drivers/clk/rockchip/clk-rk3588.c
+@@ -1349,6 +1349,14 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+ 	COMPOSITE(CLK_DDR_CM0_RTC, "clk_ddr_cm0_rtc", mux_24m_32k_p, CLK_IS_CRITICAL,
+ 			RK3588_CLKSEL_CON(166), 5, 1, MFLAGS, 0, 5, DFLAGS,
+ 			RK3588_CLKGATE_CON(70), 4, GFLAGS),
++	GATE(PCLK_DDR_MON_CH0, "pclk_ddr_mon_ch0", "pclk_center_root", CLK_IGNORE_UNUSED,
++			RK3588_CLKGATE_CON(20), 1, GFLAGS),
++	GATE(PCLK_DDR_MON_CH1, "pclk_ddr_mon_ch1", "pclk_center_root", CLK_IGNORE_UNUSED,
++			RK3588_CLKGATE_CON(20), 14, GFLAGS),
++	GATE(PCLK_DDR_MON_CH2, "pclk_ddr_mon_ch2", "pclk_center_root", CLK_IGNORE_UNUSED,
++			RK3588_CLKGATE_CON(23), 1, GFLAGS),
++	GATE(PCLK_DDR_MON_CH3, "pclk_ddr_mon_ch3", "pclk_center_root", CLK_IGNORE_UNUSED,
++			RK3588_CLKGATE_CON(23), 14, GFLAGS),
+ 	GATE(PCLK_WDT, "pclk_wdt", "pclk_center_root", 0,
+ 			RK3588_CLKGATE_CON(70), 7, GFLAGS),
+ 	GATE(PCLK_TIMER, "pclk_timer", "pclk_center_root", 0,
 
 -- 
 2.53.0
