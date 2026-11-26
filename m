@@ -2,72 +2,94 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0D585606A31E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 10:14:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 06148606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 10:59:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KZvmudc1;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=M46VGZc8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NyJtuNiR;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=pengutronix.de header.i=@pengutronix.de header.a=rsa-sha256 header.s=20260414 header.b=KuvFcVJM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=N3Av9NPuD/AQ3PjgKxcddgJWdZawokbVREOE2hbKT2s=; b=KZvmudc1yQOLDir01UOzgkW5ih
-	C4+FwBdOiZDkzKNsIACEBuSLNiC0EbO+S3BBnK9wESqQuw8lUuMQ0/g9XZL2A2UTOEwVBfef08n33
-	xEsu89UBETHHgQdib+Br/q/+ItVJ1KS5IpFAdSAa53DAZloQRpq+PF5LGQI5CdT0cw7fHKXFf4Bf3
-	WMf6X+dOnUTh5Mm25sSEQgYR9MsfXdUt5ylQ7bjApPUFJCQyBB6NeReM3ZvXTW8FGBY2EF7ezBWEo
-	n0ttIuQi+tlX8WQD28ATgBwc6F5QroNfDoc7Mza+ueOMENj2vWYOomfy0NAnaCnTv80UZzAzrPyaK
-	j+Gr2byw==;
+	bh=8/jpowYN+dAcIGiDUkhlLQVO/z+eok8UoLP5d60s3NM=; b=NyJtuNiRC0u7qZ1ZMBBAqvxrmA
+	Kb2FijgravHqVoW8zlU35L8Y/L3+Sg87QzPnzWmtDv5G91VjAerh+zBxr77lBBT8in17HZwdZO9MF
+	9C9iIlX+aO0fVCPdqnEyA2hukOVU52rdgdp+o0b4FZfTysKHd9zCcdGJncJl5TiUuW3CZntq05JSq
+	G2mtXIa3yQBewnnlzhLy7SIrWczpLj/ntsSJC/QltMG0QTHAJ0MrdzOT4EeUyqyVDCBN7LYbvQzI6
+	iAZvVAB8bh+sBx27BrwlkNi1Yx+GVCnlsyxzix3TIrVoUw3LaFRrU0ufFC27smByu3Ey4OHjUpJ+X
+	/eajsGVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWWUG-0000000CikV-3YRR;
-	Thu, 26 Nov 2026 10:13:56 +0000
-Received: from sender5-op-o11.zoho.com ([165.173.182.11])
+	id 1xWXCM-0000000CnAF-0QgH;
+	Thu, 26 Nov 2026 10:59:30 +0000
+Received: from mx1.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::107])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWWUE-0000000Cijx-1EFD;
-	Thu, 26 Nov 2026 10:13:55 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1795688029; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=FEKYPcf0ZahrNVgYr4P69tIWo7QWRD59zHUNVwhLfdnaHUVlX3Lf98cNyzlxx+yxdpl7zIo6uGjx+0MHmKh6Sh4c20pNQq/UGyF0g0qlavYdfZS+3ZdtDa2Ex9+OUYuIAgVwJvDj7ZhfrURIZMRIj1udTUhEwIOqicWhXPsW/Pw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1795688029; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=1uwUfdoO2tZn9/T6hpBts/o6K5tW0x82owJfGpBjksM=; 
-	b=YMK24uA7i7q/7bZ39bGaR7Kk3GGIKyqKP8bdZ/7LWVonlwjgwjL8vl1Ltb4iM7O+ZM1/kg6UPGyBlIroi1dLv5+L9kXoXvGKooZoz3HZvaBqbGmVJiUbkfGtDjfexpEMvEoOWLdlm3tIrHpghdqPppQcNB8Xrb64sN0eosh3IZg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: a=rsa-sha256; b=M46VGZc8Vp3HDlDTtJgWb3/jv13b7Ol0fD6XZ8z56pfZPIaWtEfLv+QovrWC/cJHITUpE+9FqRLPh/xojUYxGkmO6i6takle3ik7udQkhuMj5R0vYlbZ5+/qCBHsGoZk8HPHIA0xv3hK12oRPRw/7XyVF+WUzDKpiwqS98fc+B0=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=1uwUfdoO2tZn9/T6hpBts/o6K5tW0x82owJfGpBjksM=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
-Received: by smtp.zohomail.com with SMTPS id 1795688026107369.88534777876225;
-	Thu, 26 Nov 2026 02:13:46 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id ED61718040B; Thu, 26 Nov 2026 11:13:40 +0100 (CET)
-Date: Thu, 26 Nov 2026 11:13:40 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: aiyengar1990@gmail.com
-Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, 
-	"Joerg Roedel (AMD)" <joro@8bytes.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Niklas Cassel <cassel@kernel.org>, 
-	Pranjal Shrivastava <praan@google.com>, linux-arm-kernel@lists.infradead.org, iommu@lists.linux.dev, 
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	Shawn Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, 
-	Finley Xiao <finley.xiao@rock-chips.com>
-Subject: Re: [PATCH v4 2/3] iommu/arm-smmu-v3: Enable an optional clock
-Message-ID: <awgFSStwki6ytKsQ@venus>
-References: <20261126-smmu-v3-pcie-pd-v4-0-c340c2dbd1d2@gmail.com>
- <20261126-smmu-v3-pcie-pd-v4-2-c340c2dbd1d2@gmail.com>
+	id 1xWXCJ-0000000Cn9e-1lT5;
+	Thu, 26 Nov 2026 10:59:28 +0000
+Received: from localhost (unknown [IPv6:2a0a:edc0:0:701:2795:3815:4919:32a1])
+	(Authenticated sender: fdi@pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 6C75D20101E;
+	Thu, 26 Nov 2026 11:59:23 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
+	s=20260414; t=1795690763;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nl+JupRMQLLP+uOTpPc+emGSWiD9NUoCDaj28QKFU2Q=;
+	b=KuvFcVJMmUYUDym6pqWt50pYTvJ39RATnvJtweXL46mNPg8kP4dW69Rfni/012anIoBFn9
+	gnjwFV4sSABf82DAQb5u7fJFnXhW/MqGWmCEdEgJJ9V4SyJChJ+4uiVW77kJ5Rpq07N78K
+	bOUGAA9fz3sJHeojb3BWmMzhPyJ2y2leF8tWiMQJl3ernAeFeYToabA1fUjGtfsPL4JKpu
+	MmU2mO4aN9nXihUR1S9oP4eWHsfLuhEZzIRFvClo/dtxlUTMysZdB2D1GRoEOUjFxAOAOO
+	1OXQkynipH9yb/DM1U1uNfAsZk0A0osymiies0UJaErNv4Ah+Ai/f68v+aaJCw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=pengutronix.de;
+	s=20260414; t=1795690763;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nl+JupRMQLLP+uOTpPc+emGSWiD9NUoCDaj28QKFU2Q=;
+	b=EqNQVc9AytuC45ZYjhIu1Pdo9lCH9xno5xe/cSBOgKiJzbxCkac6kWgPcapMBaljWDYIYU
+	1/0cSIevKWt3NH7S7HFnvB8SUgo9eyoRT7QFyxah8ui2qXNgWmge9B/5y3W65llQKHXaxy
+	X3aUwYUeeWbEPWIv4DVYdm7OUEfDlKKXaygcXU2OhShr0iO3yRTlolnxFSaZ54tJ7axpaI
+	hpRX1AR5Yf/rF5Pag3QABi153sULYP0ghRg/T2BA3+/vfbN/ppuury+FYrHUtWlsYP18gF
+	4GLK1ERm/ArlGB3TtUNwPeBzY3qvbKh/1H817ElHdqJTysAEQHPDq5MS6SrDJw==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=fdi@pengutronix.de smtp.mailfrom=f.diener@pengutronix.de
+ARC-Seal: i=1; s=20260414; d=pengutronix.de; t=1795690763; a=rsa-sha256;
+	cv=none;
+	b=ZBquwfFLPs7ziIK2uHGAkB0wP2rxBh69jwngCHyY7x1PbpjqmASxszJTlGqHVWCmOrvZ1m
+	wh60j5sZLmkZ4U3dLIPNQBKhY31z01X7il6tTkryCq+tJjm91ZJrFlF1sEQ9Hg4RXEs/jH
+	sALFMNE42uzxy4sV1rtxq4j+QkQ2YlVTHO+tvKwSKwRolDEvn2k6i4Lbu5Sh1SCxMYfa05
+	7olkYIH3dGPDV5EBedfeFGDNkcxCXIanQAqxskM4V+T5KbkPb76FfrsqvoqDT9+NXKl6J2
+	/f1vl/cGQ+61PWyWHcpcf1H44Ko1vmr5UFkXmQ2gMrS8rhTY4XXhPj95jXTcFw==
+From: Freimut Diener <f.diener@pengutronix.de>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>, Chaoyi Chen
+ <chaoyi.chen@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Midgy Balon <midgy971@gmail.com>, Diederik de Haas
+ <diederik@cknow-tech.com>, Elaine Zhang <zhangqing@rock-chips.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: power: rockchip: Allow
+ post-init-providers for domains
+In-Reply-To: <aweeQ2McnEE6yXvY@venus>
+References: <20261125-rock5t-regulator-deps-v1-0-6a3470ad1855@pengutronix.de>
+ <20261125-rock5t-regulator-deps-v1-1-6a3470ad1855@pengutronix.de>
+ <oJj2NKd1Svmsn320H8YWrg@sntech.de>
+ <962182b2-6fa0-4aaa-a47a-f78339b5d89e@rock-chips.com>
+ <aweeQ2McnEE6yXvY@venus>
+Date: Thu, 26 Nov 2026 11:59:23 +0100
+Message-ID: <8733snj1tg.fsf@theta.mail-host-address-is-not-set>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20261126-smmu-v3-pcie-pd-v4-2-c340c2dbd1d2@gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/295.675.79
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_021354_378269_4471D310 
-X-CRM114-Status: GOOD (  22.14  )
+X-CRM114-CacheID: sfid-20261126_025927_606824_D05B15DF 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,129 +100,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4484025019057122599=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Sebastian Reichel <sebastian.reichel@collabora.com> writes:
 
---===============4484025019057122599==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="trvqlmcklbkkvnwt"
-Content-Disposition: inline
+> [...] an alternative solution is moving [affected power domains] to a
+> separete device.
+> [...]
+> Now the kernel has dependency informations, which are also used for
+> suspend/resume. So the kernel knows it should resume the power
+> domains required for SPI/I2C (bus used by regulator) first, then the
+> regulator driver and then the power domains needing regulators.
 
+Since the power domains are managed by a single hardware power
+controller, would you envision splitting them into separate devices
+internally in the Rockchip power-domain driver while retaining the
+existing DT representation, or would this also require changing the DT
+bindings?
 
---trvqlmcklbkkvnwt
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v4 2/3] iommu/arm-smmu-v3: Enable an optional clock
-MIME-Version: 1.0
-
-Hi,
-
-On Thu, Nov 26, 2026 at 09:54:14AM +0000, Arun Iyengar via B4 Relay wrote:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
->=20
-> On the RK3588 the PCIe SMMU's clock is gated as unused when no PCIe
-> controller holds it, and the CR0 write at shutdown then hangs. Enable
-> the clock from the firmware node, if any, while the driver is bound.
->=20
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
-> ---
-
-Once runtime PM support lands [0], this should move to runtime PM
-resume. But at the moment it looks sensible:
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-Greetings,
-
--- Sebastian
-
-[0] https://lore.kernel.org/linux-iommu/20260929034510.2023173-1-praan@goog=
-le.com/
-
->  drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
->=20
-> diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c b/drivers/iommu/=
-arm/arm-smmu-v3/arm-smmu-v3.c
-> index 100b34f07032..beea222dcf57 100644
-> --- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> +++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> @@ -12,6 +12,7 @@
->  #include <linux/acpi.h>
->  #include <linux/acpi_iort.h>
->  #include <linux/bitops.h>
-> +#include <linux/clk.h>
->  #include <linux/crash_dump.h>
->  #include <linux/delay.h>
->  #include <linux/err.h>
-> @@ -5786,12 +5787,19 @@ static int arm_smmu_device_probe(struct platform_=
-device *pdev)
->  	resource_size_t ioaddr;
->  	struct arm_smmu_device *smmu;
->  	struct device *dev =3D &pdev->dev;
-> +	struct clk *clk;
-> =20
->  	smmu =3D devm_kzalloc_obj(dev, *smmu);
->  	if (!smmu)
->  		return -ENOMEM;
->  	smmu->dev =3D dev;
-> =20
-> +	/* Before the firmware probe, which may take a CMDQV reference */
-> +	clk =3D devm_clk_get_optional_enabled(dev, NULL);
-> +	if (IS_ERR(clk))
-> +		return dev_err_probe(dev, PTR_ERR(clk),
-> +				     "failed to enable clock\n");
-> +
->  	if (dev->of_node) {
->  		ret =3D arm_smmu_device_dt_probe(pdev, smmu);
->  	} else {
->=20
-> --=20
-> 2.55.0
->=20
->=20
-
---trvqlmcklbkkvnwt
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmsIBlQACgkQ2O7X88g7
-+prL+w/9GJRhofBue91qCCzLZC9a3SdI+xVa3C+37ewGeBXjRN8WQ3oQJAEIgMDa
-UV1CJIg0QPveTd4D8M+1AIRKYEV5d6W7793UGpPK7zdalFdolIxw5cpxjlO3Lynv
-lZhCccXEEg/93BC9NPlFPWk3QaFWA88/ZrSnwX70q6vlafKhe/tJgVhKgjQh/gkY
-d4jIOfBSg0mWEhFd8HSUHAZvltis39p0XIkjAbMTaOnSA3+zg0jHOpqK0l43263H
-iOqoy/DJutYE0bwBsMmaqtx687Y4o6NUFmTiKQ+Sj58mzklx05z+lTdUJ0iftgfm
-qeQtOSM+Ju9CpoerPrKZL7SatDDca1fy7YS7fFZtWiR9nHjW0Ei15DzDWD4PfdTU
-tPt+WS2eNr0q2m/mCVGD9gSDYreBdbilUhm003BgZt6++u/DVb8NaMa6k3U8/zTV
-RMHBV6yGPp33xV/lIpltlBz62fbonvYCvg8TMfHwoptDL5VJIvrw9D2CAkg2+fze
-zo2mc8inuDpxaMMT/vQIWsSgUIYDMs1JNXRaDgVVZ25jBGXAqDZKgEUsf3buU+ks
-S3VgWHft1IUtmP7mDHwPORFouSMTsuPgUIrNiVi49RZsBnPovbzEwGiBHYFBodr/
-Gfjav4yl0P1OQ/KfJUcQc9DByRARuWfatt4zweqpCiRgUq0D1HI=
-=fBBJ
------END PGP SIGNATURE-----
-
---trvqlmcklbkkvnwt--
-
-
---===============4484025019057122599==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Best,
+Freimut
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4484025019057122599==--
-
