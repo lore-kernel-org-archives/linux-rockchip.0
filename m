@@ -2,59 +2,62 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5CAAC60A381D
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C4B92606A686
 	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 14:53:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Swl/uhak;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=YTz6949K
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ImBK/lyM;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=JnBWj0E6
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=4QpSLNdW5/Ytfo5f4Zbte9qxBOdOuUuR/2k2VTOv0OM=; b=Swl/uhakK1L6+Iq+KVKA8Ng6ff
-	9TVguOGRTb+cNqgT50indSCNUt/0m/VdLGIaO4vdgRfWwHiqAGIWnfUa1F9Rojz3KTTFIqN2APtsr
-	1ffhFb5jL8Zuw2cLAoqgQANkUF/BrmTLjHPugsaBz67ozL+uWYj7wOwmF3lCLCa42oZIrhrd9rhpZ
-	8msxLans03mIibXMpvarnTV6Y/h8Gibe8n6b5jjgG9GiEbmoOptCHcia3/OIlVKWe2yMB+dFb04ke
-	uNMu/PDvHqHo7nP+fJWFy0mMBQ1IX194G1E2IDdHHQ5pLMyI7R2k+CNZxt6+8BozAcFTF7gKfwCYF
-	GMJIjDMw==;
+	bh=paWjhQn6Ykl7J/ujU+Du0Dblkwo+1lUw/Zk/xfG9gkE=; b=ImBK/lyMLZ5U9irPSdLR8l/GWP
+	0GrVkitTt4nQoH6p+yaXQ/jEE1zWQJkOL5IJlX6K+PJCLsPvYB2UutWTUH+7hMTxw/jsB7SZ8Ghd2
+	iIzIWtgDIjDKhyPqtzq6hzMFFRoS1rQgC9kDm74cb9nOf00/kli202xme6sNagrrLVH/ts2Jkpq0T
+	Msf1nejSdryoDi5aAwVD0RUuGgTWzSNQ3QpQm6RiNtpJips+9LLKbkSoFRlCFi+SHviwxyHmSqoNp
+	e91ZMBp2juUylEYraEd+7SyJzPFBFb+9McFW4xvUWXmWKBmG4Dt+cimCKN2ZZk51H7/ikbidQo8zZ
+	J2IsvlNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWaqW-0000000DcJH-0PYr;
+	id 1xWaqW-0000000DcJs-1Lqu;
 	Thu, 26 Nov 2026 14:53:12 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWaqS-0000000DcEx-04Ip;
+	id 1xWaqS-0000000DcEu-02U4;
 	Thu, 26 Nov 2026 14:53:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1795704784;
-	bh=x5lh/SnBYdgauWzgJW1VmYgxUZi6pNiqdl7QV0jMsrk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=YTz6949KHfr8mdBagMCR2CgGYzxmiplxtPmb9MnJ0q8YZGhVTdp0lY0huLTM4pB3B
-	 ti+Q8/D/xg+NJMYLqYvlR7J3MlHDHP72O/9MKiBARLi24uxyq8KC+0CeWjwa117HeY
-	 mxscrymJI0otyDhm1eDYYJNXVDb3GTQ0E8n9N/yeIuzmsASJ01mM3W3jKSbGJd3FAn
-	 iv0oRFZlFDQjQsSOh7v+k8DJqT9rGBOMpBzRmGOWdk6R7FRym60nd3DYpjbfAIw6UK
-	 aDwk0G0rcJictqxoBvk8aCqVdvpef1cN6JpC7qKBHewiUUuf9iG13MexDxjmozki+X
-	 NWhJzA2bXB3Iw==
+	bh=Z99yblWrGkFB95zdt7nLTwpaeA6d3IbLOed7B8698CY=;
+	h=From:Subject:Date:To:Cc:From;
+	b=JnBWj0E6QnDwyfw1exMOhkXOAGFxlmwTm2TCzIY6++muW8/bI55BssVCc1KrCkszk
+	 Ilp8hKPhXdd4wYM3YMKe9m76/ylB+UQiQO+ZVE2/SKHZg2BNTMRBgtYVAmJtrbdrvz
+	 D9bTDmWA55wZUmzGOlLf8jNcdW5N2PO3R9cIGe5FQceXxd+y82Yiq9RpKQUowCIMpE
+	 T2fvkZegMoeOqhpMlCh2WMzsjr5A4CBW7FzT2PK4ndUTE4l0FziQh+aSe6Xzm53DHY
+	 sn8P4vvV+gyKC30pRdfrLuRZ5YtSnnAvQCoaE8DydCgDzkT9MoJvcoq8nxVghh63aN
+	 1xrS3k6NR8XPw==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A850C17E1031;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A2B0817E04F7;
 	Thu, 26 Nov 2026 15:53:04 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 6549D480035; Thu, 26 Nov 2026 15:53:04 +0100 (CET)
+	id 5F1AD48002C; Thu, 26 Nov 2026 15:53:04 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 26 Nov 2026 15:52:39 +0100
-Subject: [PATCH v3 4/6] clk: rockchip: rk3576: add missing DFI clock branch
+Subject: [PATCH v3 0/6] arm64: dts: rockchip: add RK3588 DFI clocks and
+ RK3576 DFI
+Date: Thu, 26 Nov 2026 15:52:35 +0100
+Message-Id: <20261126-dfi-clocks-and-rk3576-support-v3-0-0f33c1b8df48@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261126-dfi-clocks-and-rk3576-support-v3-4-0f33c1b8df48@collabora.com>
-References: <20261126-dfi-clocks-and-rk3576-support-v3-0-0f33c1b8df48@collabora.com>
-In-Reply-To: <20261126-dfi-clocks-and-rk3576-support-v3-0-0f33c1b8df48@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMwQrCMAwA0F8ZORuwLVbwV8TD2qQaJ21ptiGM/
+ btVj+/yNlBuwgqXYYPGq6iU3OEOA8THmO+MQt1gj9YbYz1SEoyvEifFMRO2yZ3OHnWptbQZUyS
+ y5HgMJkA/auMk799/vf2tS3hynL8p7PsHXuRevoEAAAA=
+X-Change-ID: 20261126-dfi-clocks-and-rk3576-support-fcdd2d3eab1b
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
  Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
@@ -66,26 +69,26 @@ Cc: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1647;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2148;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=H3GQwfzHoY547JOCdlVlgpdhn/jFBxUHgJfat1u3O8c=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGsIR9CI0k97g43kelSDCHB0tQh+Rpo9MpeO2
- 1lTgkHucpFBn4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJrCEfQAAoJENju1/PI
- O/qapxQP/AlPhxLBsLoTs+8YnEjTYy2dcO1GigrxwtQmnIq9xWle4QPvNMpyscDJnNKAn4ZAhEx
- rwb3xF/sr01Sem+yjTy8E0DLZjaoIJm8YsBhxEbqgGbnr+/6UpyC/Wjcau0+MprYR8YrJ88iT5z
- 6YOymiTobEePb1jqktHAVCzvQJZC1cJu3G47hMMMkAKPRcnnqr7UxoVpR1GcTSEgCC7ORTz6CNQ
- AE0RxqJL0Cc1nfNnXP9YfClP46Sx5xTN/lY0hyghUcMriaXXVi038Vxv+PWRAiMiWLvTw6cFoUX
- JkIEdQS6vSiWMevccvrskwq0oQQcxzKruZ/XURINLHMCX7BhU57FTbXLaBnsHZxEKE6aAN3IUMC
- KfULhKSG24wTc+Y+/ZWnR1Zvt0OAi3zPOB+IKCn8rY/MJ5ASYipyHTS0NYMXjv0UZ9s6P/sfN1t
- H2ZtGyHEUk8n04lUk4Vd7f9icGVq5aklzWX+7SyYLF+HLPLHMceDLeJxPOhR6GRYYDlkDxAXGpr
- /IJu9oTpUYjYMTKQxXVthJUNU3vLnearUMLg6/s+QMjzBVUgATJMBfGKgYUeXiyOE9Ye53oE2VS
- oMuvrx2Iyhh52C0XFsWms3skaZnankxL72HF9m1oW1c644ygB6151HS3CNcxkJ0zZh8WqBsGmkZ
- EMlwAp7YS2J51imdxZcUpIg==
+ bh=Z99yblWrGkFB95zdt7nLTwpaeA6d3IbLOed7B8698CY=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGsIR9DT7D1ADUqu10Ej8STv0K6p4ddyE2Zkf
+ 9D4Riz24KluqIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJrCEfQAAoJENju1/PI
+ O/qaB4gP/08rY1SXm09rN9dmsfpvQiHOv5lh0aYWhKoGnZM5ReM32Pp7hWrJmOv0iaWmCgn7LpF
+ s5D404oX60djiXBY/gvzNcArkAGxv+kpWVWKRcO/NPUjatF/PDDSTQ/sSR7yZyI4zQ/pPJsfeHk
+ TxM/6HMRTcrqqrUuTYoaluNfCMv9DpR2VEGQNY514O6JvsTtBOk0k6D+fXrTaooMl6XfvuKkwrq
+ wzO9N3OgF7k0hTl9naQrXncuDgsSpriubmLgwQTj8gC3IGS17gmjCFJz6zueFWziGAw8RKTdIj2
+ IndJXkfzU9s9cgvtXf8RgJUc3bm0Td1EPwuOui4LCjDljlMVyxEUz5hxi5sqy7UZABfL50Am+Cz
+ V4uTknk8Re8Xf9UZCarkPnwUA23MIgN+dvNHky0KH3FXOB2t4kBhdvxa+sW7/Yo1i9FUIeddu4T
+ CbV9H4P+UUGcjwpdOjf/em86FM5XTUi0+PTE8j4suRuyIR2vfxFB1GoOf3KpV4AimESkbgCovAa
+ dOGj9ZdJIxno54075yV2FVoA0SzNsDy0Rr2mJaSPoqSIv/g0OqqFFRcrQmW6Z/t51la7L4Rg/kv
+ hCPqlOqqnahlS+PXAe+v5qYZoAt6P9jaOIlpFxdyAIRDqBrv2dfI5jqWJAaR4JuIghiIr8pYN3P
+ TQhJFHWaa9QiCY8xwA2k6qQ==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_065309_742418_2CD57065 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20261126_065309_693936_2EBC23B6 
+X-CRM114-Status: GOOD (  12.34  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,42 +109,50 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+When RK3588 DFI support was added, support for the clocks was missed.
+This series fixes that and also adds the clocks for RK3576 as well as
+RK3576 DFI node itself.
 
-RK3576 DFI has one pclk for each channel's monitor. However, mainline's
-clock tree does not model this second DDRMON PCLK gate, and got away
-with it so far because they both default to ungated and there is no
-upstream RK3576 DFI driver.
+The DT binding for the DFI side already got merged together with the
+driver changes today, so there is no dependencies for this series:
 
-Add a clock gate branch for it, and remove the CLK_IGNORE_UNUSED flag
-from its sibling. In opposite to RK3588 we can add a mandatory
-requirement for a clock reference to the RK3576 DFI DT binding.
+https://lore.kernel.org/linux-pm/20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-0-517a68c008fe@collabora.com/
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+I expect all patches in this series to be handled by Heiko and kept
+them together in one series for simplicity even though they go through
+different trees.
+
+Changes in v3:
+ * Link to v2 (part 1): https://lore.kernel.org/linux-rockchip/20260921-rockchip-dfi-cleanup-v2-0-43ff34ac8599@collabora.com/
+ * Link to v2 (part 2): https://lore.kernel.org/linux-rockchip/20260921-b4-rockchip-dfi-rk3576-support-v2-0-04f847016321@collabora.com/
+- Split out clock and DTS patches from two DFI series; the DFI driver
+  patches got their own v3 (and v4 got applied as mentioned above)
+- None of the patches in this series changed compared to v2
+
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/clk/rockchip/clk-rk3576.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Nicolas Frattaroli (6):
+      dt-bindings: clock: rk3588: add PCLK_DDR_MON_CH clocks
+      dt-bindings: clock: rk3576: add more DFI clocks
+      clk: rockchip: rk3588: add PCLK_DDR_MON_CH gate branches
+      clk: rockchip: rk3576: add missing DFI clock branch
+      arm64: dts: rockchip: add dfi clocks on RK3588
+      arm64: dts: rockchip: add DFI node to RK3576
 
-diff --git a/drivers/clk/rockchip/clk-rk3576.c b/drivers/clk/rockchip/clk-rk3576.c
-index 577100659593..a48b7556df52 100644
---- a/drivers/clk/rockchip/clk-rk3576.c
-+++ b/drivers/clk/rockchip/clk-rk3576.c
-@@ -883,8 +883,10 @@ static struct rockchip_clk_branch rk3576_clk_branches[] __initdata = {
- 	COMPOSITE(PCLK_DDR_ROOT, "pclk_ddr_root", gpll_cpll_24m_p, CLK_IS_CRITICAL,
- 			RK3576_CLKSEL_CON(76), 5, 2, MFLAGS, 0, 5, DFLAGS,
- 			RK3576_CLKGATE_CON(21), 0, GFLAGS),
--	GATE(PCLK_DDR_MON_CH0, "pclk_ddr_mon_ch0", "pclk_ddr_root", CLK_IGNORE_UNUSED,
-+	GATE(PCLK_DDR_MON_CH0, "pclk_ddr_mon_ch0", "pclk_ddr_root", 0,
- 			RK3576_CLKGATE_CON(21), 1, GFLAGS),
-+	GATE(PCLK_DDR_MON_CH1, "pclk_ddr_mon_ch1", "pclk_ddr_root", 0,
-+			RK3576_CLKGATE_CON(21), 14, GFLAGS),
- 	COMPOSITE(HCLK_DDR_ROOT, "hclk_ddr_root", gpll_cpll_p, CLK_IGNORE_UNUSED,
- 			RK3576_CLKSEL_CON(77), 5, 1, MFLAGS, 0, 5, DFLAGS,
- 			RK3576_CLKGATE_CON(22), 11, GFLAGS),
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi        | 11 +++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi   |  4 ++++
+ drivers/clk/rockchip/clk-rk3576.c               |  4 +++-
+ drivers/clk/rockchip/clk-rk3588.c               |  8 ++++++++
+ include/dt-bindings/clock/rockchip,rk3576-cru.h |  6 ++++++
+ include/dt-bindings/clock/rockchip,rk3588-cru.h |  4 ++++
+ 6 files changed, 36 insertions(+), 1 deletion(-)
+---
+base-commit: 0202125a80af9dad6d762dfe52572b95ca7699db
+change-id: 20261126-dfi-clocks-and-rk3576-support-fcdd2d3eab1b
 
--- 
-2.53.0
+Best regards,
+--  
+Sebastian Reichel <sebastian.reichel@collabora.com>
 
 
 _______________________________________________
