@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BFDFB606A31E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 17:01:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DBF3C606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 17:03:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UjVDd47t;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=UcTugY3x
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bRaDFvly;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Axr6ng/e
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,71 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=X0k0N3Y4LcvCHrbjMHDsPJXlN5z0c9tl8sUpUABtJYE=; b=UjVDd47tA7hQ/qJcBrpMVsvLlV
-	AUJFUjn5CtK+q6jxrt2gVGV50/GEmCAxRlLPfqKJzFudcRsnEgz53u5UFmkxcguT0KU2NLZTBs7SI
-	nh+xnTyEuzS8RUNLp1VpiZ29WdBq6OC06tjZrfeROt74ziByON1lfc+cchthLOlBCKZvLBgdZt/za
-	1L2SpmRG8+E61CtZ/zRYodpSc0TG57IAxbl633l3oldJCu2xu2gz8WQDbWvRQN1b1imh6pZo1Sr5I
-	dLGKxse5tu/rd3lQWLhbO7pqNcCebSU3eT/wXunB8+NO5f7DAiHFGnwJ+BsioHua9X/ZzIXwdXuDS
-	OtaJwodA==;
+	bh=rIZ/TWDgUJtGeeeXi0ukwwWCzS4PSqb7R9ZD1HKQKlc=; b=bRaDFvlyU9xSDkqI30JCQGJa38
+	PUDlTEICkPu9mJJr3yskr7IcvwOC6t8K3UqpApCWNuMCBvQOUGar2nltxOuxh2DjzWhecXNXE0PLn
+	4MeLFYfUQGJ0AVubLreKL6xqNCDzPTScytEkjvnoCU3nWHQkh9iRzk2ghw7CEA1SIWQE8BBmLo901
+	hG/dL7+3uK1yGZDBvDmzRNulZDXOakeQP1EOc6au/fK4qpofea4b6eKI8PnSOAkPGNN1tp6hkldy6
+	we7DbcydgZ74h97TbZV4VY/x9YwIsKd+SASFQOuHvxxJhzxiPaPL4+pSoZL6JbTSuHsg7/Nhq4Ekc
+	OwKXyHow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWcqf-0000000E034-3p4I;
-	Thu, 26 Nov 2026 17:01:29 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xWcqm-0000000E07s-0Hhe;
+	Thu, 26 Nov 2026 17:01:36 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWcqI-0000000DzsB-0jxC;
-	Thu, 26 Nov 2026 17:01:06 +0000
+	id 1xWcqJ-0000000Dzsv-1cRJ;
+	Thu, 26 Nov 2026 17:01:07 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E95E645420;
-	Thu, 26 Nov 2026 17:01:05 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D0FEF60CEB;
+	Thu, 26 Nov 2026 17:01:06 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795712465;
-	b=bj5kZFxx78KtBPMo2UHV00RSeMDw9ubGzFdq9kR0KcXIil9qZhXOiLF+jSOrW1Fugbs/
-	 dQw0cAfNCzt+9iQZU4dol1RGIMCh8kebcriRCFXNPDAMqevxR0MnLNalu8/8Inm4xOu5E
-	 3HJH7U1+zN+DADl4Un0KO/g0Y9Nz3ku05MBMmhMrWTGZWA0cwPHUgyJ7S/5jc9Z4yCAQl
-	 KN3fUcYJHR2emggCtvRMYci/bXBJo9AlxKT6rCVGRAJClI1mxsHAszS3wG8ZXC8GCGxZj
-	 /u1BqN/LzWdffHGFBug7zXOLErjauhTYteSzfmXkfIjFsM/SpzNQL9zONtRHmDJb74Q==
+	t=1795712466;
+	b=BEKoULBeRPnlcgeBsKzQWZwOc0IJNdN3re5HZyMGSvzMp/MwOIYxNg8aWmkQnZI6nbRT
+	 Dnapml6czHJD6xLtr12/mYUCqgUzY+DmlS/63ms+CdzGpYVCoO0631wqjWwhvbJDExjpt
+	 AFx5ccQQq7+mO9bfRMsygUE1xck+PeZleZlQ91DNlXyA/i1g7XdLKViRTXP8h16jHnq2E
+	 auJw2GlRJ7QOGUAYiTWQcobSRR0Ll/9F4qFcLmeO79sbVZmcJAIU/CBWbCQKFQOyKINoz
+	 t/fQ9Z/EtJM94/0wVll2PwxiNNpHRYluW0KEaFD7rvdWY847gjWXSY2vx3crf25MxVA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795712465;
+	c=relaxed/relaxed; t=1795712466;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=ihZQ5p8dWmSnrX+zlAWQt/Oqd+bBwdl3OovemPu4ORI=;
-	b=fhdxZIgEliyN9jf7hU+ZOhxIB6GRoVoMt4cUCBv/hEdimkwUpXSNU2ttEqB9hm0Oq7eD
-	 W/I2pg7Bc6rfeXCF4/uiQRHqFJ2GRFQkT2d+bCCfASIVztOQjSqUKjAgF1GFcQ/484KYL
-	 v/JD7RAKlJg2pPVjJOxgbqQ1RF5BHCAj9Z0t/B7qHVv1lcZ6xDZbT4PJ4b9Z357sCOxDS
-	 4gGjyQai/kQUlQ8m1kH2yTxksKtAoccSI+XaznRzdK4AnuIVqQszqtPU7xD+DxQjtEcKP
-	 62+IshMmVyc/hKl7nLwi8NTapNYAcNX/RX51R7pbiPImoQLB28gcUvXb14oxFy53Oxg==
+	bh=hbkau+Lk5dpxesTjMuO6qlJZUIP3DJh+aDfaxG+Hca4=;
+	b=nWVF/qPFqG5Sk4zddcrkLVLW3doLmTd1Abh7ogBZqDjZ3cN6G8aR2aLgzw6GjU+DeXYM
+	 jByyJo/8vtI1/oiCw7JJNSCt1inaIkju2xZ4Q12xmg/MP6gv7vTD1uUUKnyDZjE3uTFKE
+	 qNf2jO92zQbQ8ROdDNavT01fjmRuyoRNtdzGOyG1LWo6nNzegv1lU826YORKGcbCqp+Tf
+	 uIOnRVFxnFd5KoNZTI19D5CjE6b5FZwVaj296k3m3wVZhSJFFqL/5IdVW6pHPSTuh28Ze
+	 qm9IkR1mUE9rKRPj6njEtE0flAI7KRalnXchAFRPcMgnLNmvd2dd/miMvRUTN05oVcQ==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 05D541F000C6;
+	by smtp.kernel.org (Postfix) with ESMTPS id 45C0C1F000CF;
 	Thu, 26 Nov 2026 17:00:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795712465;
-	bh=ihZQ5p8dWmSnrX+zlAWQt/Oqd+bBwdl3OovemPu4ORI=;
+	s=k20260515; t=1795712466;
+	bh=hbkau+Lk5dpxesTjMuO6qlJZUIP3DJh+aDfaxG+Hca4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=UcTugY3xdOmwOnykSNtSk4RUuK1BVHFmyqeaZAWsmRD3Hy9hrBNArbn3ilS2Ejk/V
-	 iQgJgVqMFCY/+sWoy2YJUkE0lXDmZHI8VVoRcGsEdRoqF2Xo3aeB0bSGnYoSHFqYwX
-	 sCY+Z4NZAKDS1nXA5yepcHMyXtPGdVQh9E9rovWdqv6csrVDiQKZMaB8g/Q4FQlsO2
-	 b3uZHSj8mPgB4I6GvUlJ1SiluQpLOcDiioGcPlc6+IXHH0DUowPRAmWTxbI90nsq+L
-	 2OA1KymtQmWDlrKFgE5kyOYVpjOJWz8DpJXU1s71y8yGf+jlY7xJPPDFrQL63/AClJ
-	 8tvhbyRQX+eAw==
+	b=Axr6ng/eWRNqH7IxrFL+kqLLOZahqP4dmwYX5zsUBfbT4oDnZDiA284n4XsV8xf2W
+	 5U3ahDC1CUSY511OgxvbrKSWb1EnlU4zHhEimQdh01ViM7GYB89s9Y40MzYlYsiw9v
+	 8q/KlAJLAOrmd0BdbqTV6rjxc9L38+xGUPECL1ZxKZAeh8TT5aunkz3sf93n6a2FF9
+	 lHMvr2C86S3jNml5r6soosUjZUzynbIt8YtyIGWuSlHz96nhFbjuOgYOkKfTmHSzvM
+	 jYlkqWdubPXjYB4mSxo/+OLvRWlSMiaUfhcSdRNY+TpQ6NIEvvtgy8bF//tl4oZy+6
+	 Ej2WhQCNyEEDg==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 81DCC4D74F;
+	by lkml.kernel.org (Postfix) with ESMTP id C1ACA4D757;
 	Thu, 26 Nov 2026 17:00:53 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Thu, 26 Nov 2026 17:00:54 +0000
-Subject: [PATCH v3 2/5] media: verisilicon: Keep the encoder coded size in
- sync with OUTPUT
+Date: Thu, 26 Nov 2026 17:00:56 +0000
+Subject: [PATCH v3 4/5] media: verisilicon: Restore the encoder raw format
+ when its reset fails
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261126-hantro-jpeg-enc-fixes-v3-2-07357d84a64b@gmail.com>
+Message-Id: <20261126-hantro-jpeg-enc-fixes-v3-4-07357d84a64b@gmail.com>
 References: <20261126-hantro-jpeg-enc-fixes-v3-0-07357d84a64b@gmail.com>
 In-Reply-To: <20261126-hantro-jpeg-enc-fixes-v3-0-07357d84a64b@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
@@ -95,11 +95,11 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  Sergei Khomenkov <shomenkow@gmail.com>, 
  Arun Iyengar <aiyengar1990@gmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795712452; l=1236;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795712452; l=1799;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=n5bwyJSG49jkdtemL0KSh1+eA5aydhtKJOe/+pE2GYE=;
- b=NfLRhF66l70a82f9aVI0jgytzYgmcM0cedvnN1BdyhvfiTZZ8enGBRSy6G0WOqkP2S1ted/Id
- tIE6TxLkzHHClI43MKvJMIcHhEwyNhWcJuE8NM7clN1leLm4Bk4py6m
+ bh=T4JxJzrpJHZ7bcC2wFn6o1S3mEh6CI2vghqlDg9OD7U=;
+ b=ryypf3/xIzVrNPoN9rN4vu2bdfqVXd85Gr/I4tuCQaAXlLpV/0aPDjaYFtCEM9drV8h8hlwra
+ BGr2IFX8va8AYYWgYws9LjNpF5bptF6PSpeZy7D0EOagqZ5fytNFpJb
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -128,33 +128,48 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-Setting the OUTPUT format leaves the coded size at the 96x32 default,
-so the JPEG header does not match the encoded frame. The OUTPUT S_FMT
-resets the crop to the full frame: copy its size to the coded format.
+hantro_reset_raw_fmt() sets ctx->vpu_src_fmt to the default raw format
+before hantro_set_fmt_out(), which fails while OUTPUT buffers exist. A
+CAPTURE S_FMT then leaves NM12 in ctx->src_fmt and YM12 in
+ctx->vpu_src_fmt, and the next job reads the third plane from IOVA 0
+(v4l2-ctl --stream-mmap). Restore ctx->vpu_src_fmt on failure.
 
-Fixes: 953aaa1492c5 ("media: rockchip/vpu: Prepare things to support decoders")
+Fixes: 14b4bd01f8e5 ("media: verisilicon: Additional fix for the crash when opening the driver")
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- drivers/media/platform/verisilicon/hantro_v4l2.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/media/platform/verisilicon/hantro_v4l2.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index 0d6d4f36d012..88b1cf66b713 100644
+index b91c0ef9b6a3..69e1ef985bff 100644
 --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
 +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -561,6 +561,12 @@ static int hantro_set_fmt_out(struct hantro_ctx *ctx,
- 	ctx->vpu_src_fmt = hantro_find_format(ctx, pix_mp->pixelformat);
- 	ctx->src_fmt = *pix_mp;
+@@ -455,7 +455,7 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
+ int
+ hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth, bool need_postproc)
+ {
+-	const struct hantro_fmt *raw_vpu_fmt;
++	const struct hantro_fmt *raw_vpu_fmt, *old_vpu_src_fmt = NULL;
+ 	struct v4l2_pix_format_mplane raw_fmt, *encoded_fmt;
+ 	int ret;
  
-+	/* Setting the OUTPUT format resets the encoder crop to the full frame. */
-+	if (ctx->is_encoder) {
-+		ctx->dst_fmt.width = pix_mp->width;
-+		ctx->dst_fmt.height = pix_mp->height;
-+	}
-+
- 	/*
- 	 * Current raw format might have become invalid with newly
- 	 * selected codec, so reset it to default just to be safe and
+@@ -465,6 +465,7 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth, bool need_postproc)
+ 
+ 	if (ctx->is_encoder) {
+ 		encoded_fmt = &ctx->dst_fmt;
++		old_vpu_src_fmt = ctx->vpu_src_fmt;
+ 		ctx->vpu_src_fmt = raw_vpu_fmt;
+ 	} else {
+ 		encoded_fmt = &ctx->src_fmt;
+@@ -481,6 +482,8 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx, int bit_depth, bool need_postproc)
+ 	if (!ret) {
+ 		ctx->bit_depth = bit_depth;
+ 		ctx->need_postproc = need_postproc;
++	} else if (ctx->is_encoder) {
++		ctx->vpu_src_fmt = old_vpu_src_fmt;
+ 	}
+ 
+ 	return ret;
 
 -- 
 2.55.0
