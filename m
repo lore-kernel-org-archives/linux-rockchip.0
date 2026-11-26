@@ -2,41 +2,41 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 38ADF606A321
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 19:02:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B15E6606A323
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 19:07:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YLR9sJ6j;
-	dkim=fail reason="signature verification failed" (4096-bit key) header.d=lausen.nl header.i=@lausen.nl header.a=rsa-sha256 header.s=uberspace header.b=gqWtYW47
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=w9qEyt6G;
+	dkim=fail reason="signature verification failed" (4096-bit key) header.d=lausen.nl header.i=@lausen.nl header.a=rsa-sha256 header.s=uberspace header.b=DbTVzRn3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=YXM43cshslF4WGres2kFEdKuu1s6LgA0bHKBw5J0/Jo=; b=YLR9sJ6jXJMQdKxPIi29o/4fN2
-	cDIw0hsn7zl2CozIPJ1u8GVGpuHtPAVfeGF3RkhRW9v2DgHAuMYTnT6eAB0xXeWBmcj9cS+A2EFIq
-	ld7j9l7rtTTUCmQ8yvIb5DT/Rf+bhIkCoCrDMI2Y6l+uendNZ6m0MHiRegmKRw0Q19gDJJjUOSM/y
-	/N0m04m8c1ILv7Xf3uLBDHghHVGQTC/qPJanC3Y3CyqEDn4A72EWyRFQQP0bprFucMcWNp6Cx1ct9
-	turLuEIadRMc10EP3kWEzkHV3A8T0xoVpo8exIokU2hO8woP9pA4DfoRcElcIuE7mzG1y32DccD7m
-	oIy4D88Q==;
+	bh=ec3F4MVTXZnzkHbrVgw7lk6uGTWqAnNIehPGTHSK9k4=; b=w9qEyt6GPdBhrX6inPNFErqxJ9
+	FR088pvePabCZihKhQk+cVCg0g4ASW1jRT+eloB638ghemB8hJRws1LKpQ4H/rBfeIT5CjfpI6djR
+	AAJALVxalz5eQMWpsWULifw1DxNB3Ql/JqFxNsaN/wravIuRojAok8iIzsP5NAAod4pbUV9kOvMIO
+	F/oLUsKXPCHZYIUy3/5YrwKDYjlmX2xQCCob4vCE5waC4Wv43yjnBxAFW+D4UsVKQa1eJ3e5wrI4X
+	ZzAqZz1pJP65VWmf1FB9UZw9LVa5swkoqcPvz+ncFYFB6UsY8fOBMF7C0wWdQ5BwQlzG6+I76fQpE
+	BC3OTy9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWejy-0000000EDVa-3lNe;
-	Thu, 26 Nov 2026 19:02:42 +0000
+	id 1xWeor-0000000EDyX-3jal;
+	Thu, 26 Nov 2026 19:07:45 +0000
 Received: from mailgate01.uberspace.is ([2001:1a50:11:0:c83f:a8ff:fea6:c8da])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWejw-0000000EDTS-2AGc
+	id 1xWeoo-0000000EDxJ-3EFS
 	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Nov 2026 19:02:41 +0000
+	Thu, 26 Nov 2026 19:07:44 +0000
 Received: from devico.uberspace.de (devico.uberspace.de [185.26.156.185])
-	by mailgate01.uberspace.is (Postfix) with ESMTPS id 83748616E8
-	for <linux-rockchip@lists.infradead.org>; Thu, 26 Nov 2026 20:02:29 +0100 (CET)
-Received: (qmail 23903 invoked by uid 990); 26 Nov 2026 19:02:29 -0000
+	by mailgate01.uberspace.is (Postfix) with ESMTPS id 5EC4061986
+	for <linux-rockchip@lists.infradead.org>; Thu, 26 Nov 2026 20:07:41 +0100 (CET)
+Received: (qmail 28566 invoked by uid 990); 26 Nov 2026 19:07:41 -0000
 Authentication-Results: devico.uberspace.de;
 	auth=pass (plain)
 Received: from unknown (HELO unknown) (::1)
-	by devico.uberspace.de (Haraka/3.1.1) with ESMTPSA; Thu, 26 Nov 2026 20:02:29 +0100
+	by devico.uberspace.de (Haraka/3.1.1) with ESMTPSA; Thu, 26 Nov 2026 20:07:41 +0100
 From: Leonard Lausen <leonard@lausen.nl>
 To: Ping-Ke Shih <pkshih@realtek.com>
 Cc: leonard@lausen.nl,
@@ -47,32 +47,34 @@ Cc: leonard@lausen.nl,
 	linux-wireless@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH rtw-next v4 0/2] wifi: rtw88: reduce RTL8822CS SDIO request overhead
-Date: Thu, 26 Nov 2026 19:02:13 +0000
-Message-ID: <20261126190217.1151186-2-leonard@lausen.nl>
+Subject: [PATCH rtw-next v5 1/2] wifi: rtw88: 8822c: filter hardware-handled control frames on SDIO
+Date: Thu, 26 Nov 2026 19:07:32 +0000
+Message-ID: <20261126190734.1151883-2-leonard@lausen.nl>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20261126190734.1151883-1-leonard@lausen.nl>
+References: <20261126190734.1151883-1-leonard@lausen.nl>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-Rspamd-Bar: -
-X-Rspamd-Report: MID_CONTAINS_FROM(1) BAYES_HAM(-2.999699) MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
-X-Rspamd-Score: -1.599699
+X-Rspamd-Bar: -----
+X-Rspamd-Report: REPLY(-4) BAYES_HAM(-3) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
+X-Rspamd-Score: -5.6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=lausen.nl; s=uberspace;
 	h=from:to:cc:subject:date;
-	bh=j/ZX86lZZUp33NjxWpRwiiuZcmq3gSu/deMMo7y9vi8=;
-	b=gqWtYW475NXgvOzYRKKvYBmKSq4nqsIEdyGPrm6FZkE3HVOkw2ohNECRI47/2qdMeWbynJphQi
-	IHazYmcCyFGKH3bUumtTivGUmCDh8JXp4cnE8J8CczwoCNRgN2R+zepuIDKFN6aXfEEVyhLZdLCs
-	GB/cYNIE+ymRLe8powTZof40Sxjv20M8kMhIY7a1bLJswBjckRaQX2DaXxWJMue87fPnsTzBrHe9
-	nTAKlaModD5gYSTkrAGUFK9J3Vse3eSp8WQ6guhWVu+TkX9YTy/g92mzPrTib4ItOABsus0dqcgU
-	V3tmyRrFs6Y5DjAQjBuPsQgNTnIQGPy7FJAs9mZRqRs/XH/05BRlamRev/F/oPEL9TxpR3Ob8FTb
-	yfxAzCiNruu22oDc5NMgRKOJ7Ff9281nUWcm2AJEDyiOvZQ5tDCq/8vg3qRdAO/y/Qmpo5U729hW
-	+ymoyWSDva+7dBCi3+De+OqYgcna+1hoo+uPNcgEOduHhSpuOB6+CGYaxZuQH2XR+zi4oGQmdGTo
-	c94b9Q7lUkkdzlPWboC91orVUW35fHTqcRZg1qnlXeV3z3MGPahRcub6wQ+gyHrT04RQ/eSduPRd
-	c2VN/fm+hWGu2JlOTy5ZBOdKdZZqTbCipF0r/1JJtKFb9FFHpdWnzWBKfxgF04dT+ICrQdjFLshA
-	w=
+	bh=kLl1y4e1euzJToTrfpuJCblhgzF66HZ0uAKxJO/0m3g=;
+	b=DbTVzRn3QsgEP++hzZg5xbvV2bWkPAklPkvpaiHhGItAmCL6BJmpfog6ruM+YeetzHg/4YtiBJ
+	8a8txEmvREjpqBgR/fitnSxgNAdwXugyiOTzgmf1qC7RK5nv/+fp2oQbNssnZfOnraM1MGBd/Dcm
+	h+P3dPzbseRr9FnxmPiIerZQA5LEH27+sVAfr+msTavnzgtqmbUWzf1lz6ZRg2iQhTIGluBfWrlm
+	mDMtrQ/3O3HBAeaKAirgw2/14UAnvDXu/0ubbfmpvkXPxOm5KiMc2XkX6YjFMIrJUE27WGuTf9zu
+	Z1IHHQj1Ey1AH6i3v0ELhzId9KAsHxaPJbiAW/kKkqKSUtybUCwfmpzkQH7Kmx9UQISBaio2Wz2J
+	qPd4JvbrTREHAqB9uQnw9Vh5p6byK6PVeI87vnYOqSK0PYBK6dN6Ix8cQBICy+2MGW7ODeFR+y16
+	EjR5byvqUjDQwu8sgVJ4KVmMO1D66luDLqs4/1mHLSCQFgs7hgQgDPZcyis5hu2X0QSNA9xEFKm3
+	pBBeKeeAkcx/58MSuKZnOMBXanb0O4eUwFtmsvsCEGo8r8GrMTj68/yy7EXnT3hEbh90oT+UCgn7
+	9UmxnDk/hUISKWjUtG0sFsoGKiOuKbdC2ZjQ4RdJoxsb1VUmWjqwLuIcPyJ6bLoMAswslEFwcsU1
+	E=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_110240_690592_6DB41E48 
-X-CRM114-Status: GOOD (  10.77  )
+X-CRM114-CacheID: sfid-20261126_110742_948393_1E6734FA 
+X-CRM114-Status: GOOD (  17.12  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,85 +88,241 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-21.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Reduce RTL8822CS SDIO request overhead by filtering hardware-handled
-control frames and combining adjacent TX-capacity reads.
+RTL8822C forwards every control-frame subtype to the host by default.
+ACK, Block Ack, RTS and CTS frames are handled by hardware, but forwarding
+them also adds small SDIO transfers to the data path.
 
-Changes in v4:
-- Add the requested blank line, order RXFLTMAP1 bits from high to low,
-  and describe the filter as not forwarding the selected control frames.
-- Quantify patch 2's request time and isolated throughput gain, and add
-  Ping-Ke Shih's Acked-by with that description.
+Clear these four subtypes from the normal SDIO RX filter, retaining BAR,
+PS-Poll and the remaining subtypes. Cache the current FIF_CONTROL request
+separately from that default, using the full requested flags even when
+changed_flags does not contain FIF_CONTROL.
 
-Full-series testing on RTL8822CS/NanoPi M5 on 16 November with v3
-measured these TCP medians in Mbit/s:
+Use a shared writer in filter configuration, every chip initializer and
+both beamforming paths. This keeps the monitor override across IPS wake,
+MAC reinitialization and beamforming, while removing the request restores
+the current normal filter.
 
-                              Upload   Download
-  Neither patch (rtw-next)      163.4      247.5
-  Both patches                  285.4      277.0
+Limit the reduced default to SDIO, where profiling identified this
+overhead. PCIe and USB receive paths have not been tested with it.
+FriendlyElec's RTL8822CS driver also filters control frames at startup;
+this change retains additional subtypes for mac80211.
 
-That comparison used three 20-second samples per direction and build:
-74.6% higher median upload and 11.9% higher median download.
-
-The follow-up v4 tests on 17 November isolate patch 2, with patch 1
-enabled in both builds. Median TCP throughput in Mbit/s:
-
-                              Upload   Download
-  Filtering only                254.4      275.4
-  Both patches                  284.7      285.5
-
-Upload increased by 11.9% and download by 3.7%. Each configuration used
-six 20-second samples per direction in F/FC/FC/F blocks, three samples
-per block. The two tables report separate test sessions on a shared
-Wi-Fi network; download samples overlap and throughput can vary.
-
-Separate MMC traces timed the reads of available transmit-buffer space.
-Without patch 2, the driver reads three registers using three 4-byte SDIO
-requests; patch 2 reads the same 12 bytes in one request. The median time
-from the first request start to the final completion fell from 51 to
-13 us (74.5%). This measures the SDIO request span, excluding waiting to
-acquire the host before the first request and processing results after
-the last completion.
-
-Two traces per build reproduced the same respective median during
-15-second UDP uploads. The sender's requested rate was 600 Mbit/s;
-achieved TCP throughput was measured separately above. No MMC errors
-or dropped trace events were observed.
-
-AI assistance: Codex developed the changes and messages and automated
-builds, hardware checks and measurements. Prompts requested the review
-corrections and an isolated, repeated benchmark of the register reads.
-
-Earlier discussion:
-https://lore.kernel.org/linux-wireless/20261116100804.425592-2-leonard@lausen.nl/T/#t
-
-Leonard Lausen (2):
-  wifi: rtw88: 8822c: filter hardware-handled control frames on SDIO
-  wifi: rtw88: sdio: combine free TX page register reads
-
- drivers/net/wireless/realtek/rtw88/bf.c       |  4 +-
- drivers/net/wireless/realtek/rtw88/mac80211.c | 10 ++-
- drivers/net/wireless/realtek/rtw88/main.c     | 11 ++++
- drivers/net/wireless/realtek/rtw88/main.h     |  2 +
- drivers/net/wireless/realtek/rtw88/reg.h      |  4 ++
+Link: https://github.com/friendlyarm/rtl8822cs/blob/c8b944a34bba2116fcdb060362bde40242bb87e5/hal/rtl8822c/rtl8822c_halinit.c
+Suggested-by: Luka Gejak <luka.gejak@linux.dev>
+Signed-off-by: Leonard Lausen <leonard@lausen.nl>
+Reviewed-by: Luka Gejak <luka.gejak@linux.dev>
+---
+ drivers/net/wireless/realtek/rtw88/bf.c       |  4 ++--
+ drivers/net/wireless/realtek/rtw88/mac80211.c | 10 ++++------
+ drivers/net/wireless/realtek/rtw88/main.c     | 11 +++++++++++
+ drivers/net/wireless/realtek/rtw88/main.h     |  2 ++
+ drivers/net/wireless/realtek/rtw88/reg.h      |  4 ++++
  drivers/net/wireless/realtek/rtw88/rtw8723x.c |  2 +-
  drivers/net/wireless/realtek/rtw88/rtw8814a.c |  2 +-
  drivers/net/wireless/realtek/rtw88/rtw8821c.c |  2 +-
  drivers/net/wireless/realtek/rtw88/rtw8822b.c |  2 +-
- drivers/net/wireless/realtek/rtw88/rtw8822c.c | 12 +++-
+ drivers/net/wireless/realtek/rtw88/rtw8822c.c | 12 +++++++++++-
  drivers/net/wireless/realtek/rtw88/rtw88xxa.c |  2 +-
- drivers/net/wireless/realtek/rtw88/sdio.c     | 64 +++++++++++++++++--
- drivers/net/wireless/realtek/rtw88/sdio.h     |  1 +
- 13 files changed, 100 insertions(+), 18 deletions(-)
+ 11 files changed, 39 insertions(+), 14 deletions(-)
 
-
-base-commit: 61a5eb87b2d9b4d5e353780b781cf691f39ba9e1
+diff --git a/drivers/net/wireless/realtek/rtw88/bf.c b/drivers/net/wireless/realtek/rtw88/bf.c
+index 7313ecc5c82a2..088e4ac88055f 100644
+--- a/drivers/net/wireless/realtek/rtw88/bf.c
++++ b/drivers/net/wireless/realtek/rtw88/bf.c
+@@ -138,7 +138,7 @@ void rtw_bf_cfg_sounding(struct rtw_dev *rtwdev, struct rtw_vif *vif,
+ 			RTW_SND_CTRL_SOUNDING);
+ 	rtw_write8(rtwdev, REG_SND_PTCL_CTRL + 3, 0x26);
+ 	rtwdev->hal.rxfltmap1 &= ~BIT_RXFLTMAP1_BF_REPORT_POLL;
+-	rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
++	rtw_update_rx_filter(rtwdev);
+ 	rtw_write8_clr(rtwdev, REG_RXFLTMAP4, BIT_RXFLTMAP4_BF_REPORT_POLL);
+ 
+ 	if (vif->net_type == RTW_NET_AP_MODE)
+@@ -271,7 +271,7 @@ void rtw_bf_enable_bfee_mu(struct rtw_dev *rtwdev, struct rtw_vif *vif,
+ 
+ 	/* accept NDPA and BF report poll */
+ 	rtwdev->hal.rxfltmap1 |= BIT_RXFLTMAP1_BF;
+-	rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
++	rtw_update_rx_filter(rtwdev);
+ }
+ EXPORT_SYMBOL(rtw_bf_enable_bfee_mu);
+ 
+diff --git a/drivers/net/wireless/realtek/rtw88/mac80211.c b/drivers/net/wireless/realtek/rtw88/mac80211.c
+index 5e40cf06a9e32..11ffafa051ddc 100644
+--- a/drivers/net/wireless/realtek/rtw88/mac80211.c
++++ b/drivers/net/wireless/realtek/rtw88/mac80211.c
+@@ -285,14 +285,12 @@ static void rtw_ops_configure_filter(struct ieee80211_hw *hw,
+ 
+ 	mutex_lock(&rtwdev->mutex);
+ 
++	rtwdev->hal.rx_control = *new_flags & FIF_CONTROL;
++
+ 	rtw_leave_lps_deep(rtwdev);
+ 
+-	if (changed_flags & FIF_CONTROL) {
+-		if (*new_flags & FIF_CONTROL)
+-			rtw_write16(rtwdev, REG_RXFLTMAP1, 0xffff);
+-		else
+-			rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
+-	}
++	rtw_update_rx_filter(rtwdev);
++
+ 	if (changed_flags & FIF_ALLMULTI) {
+ 		if (*new_flags & FIF_ALLMULTI)
+ 			rtwdev->hal.rcr |= BIT_AM;
+diff --git a/drivers/net/wireless/realtek/rtw88/main.c b/drivers/net/wireless/realtek/rtw88/main.c
+index f7708ad17b6f5..f857273417137 100644
+--- a/drivers/net/wireless/realtek/rtw88/main.c
++++ b/drivers/net/wireless/realtek/rtw88/main.c
+@@ -728,6 +728,17 @@ void rtw_set_rx_freq_band(struct rtw_rx_pkt_stat *pkt_stat, u8 channel)
+ }
+ EXPORT_SYMBOL(rtw_set_rx_freq_band);
+ 
++void rtw_update_rx_filter(struct rtw_dev *rtwdev)
++{
++	u16 rxfltmap1 = rtwdev->hal.rxfltmap1;
++
++	if (rtwdev->hal.rx_control)
++		rxfltmap1 = 0xffff;
++
++	rtw_write16(rtwdev, REG_RXFLTMAP1, rxfltmap1);
++}
++EXPORT_SYMBOL(rtw_update_rx_filter);
++
+ void rtw_set_dtim_period(struct rtw_dev *rtwdev, u8 dtim_period)
+ {
+ 	rtw_write32_set(rtwdev, REG_TCR, BIT_TCR_UPDATE_TIMIE);
+diff --git a/drivers/net/wireless/realtek/rtw88/main.h b/drivers/net/wireless/realtek/rtw88/main.h
+index 6ecbeb4ffe4be..b2df77098723a 100644
+--- a/drivers/net/wireless/realtek/rtw88/main.h
++++ b/drivers/net/wireless/realtek/rtw88/main.h
+@@ -1966,6 +1966,7 @@ struct rtw_sar {
+ struct rtw_hal {
+ 	u32 rcr;
+ 	u16 rxfltmap1;
++	bool rx_control;
+ 
+ 	u32 chip_version;
+ 	u8 cut_version;
+@@ -2241,6 +2242,7 @@ enum nl80211_band rtw_hw_to_nl80211_band(enum rtw_supported_band hw_band)
+ }
+ 
+ void rtw_set_rx_freq_band(struct rtw_rx_pkt_stat *pkt_stat, u8 channel);
++void rtw_update_rx_filter(struct rtw_dev *rtwdev);
+ void rtw_set_dtim_period(struct rtw_dev *rtwdev, u8 dtim_period);
+ void rtw_get_channel_params(struct cfg80211_chan_def *chandef,
+ 			    struct rtw_channel_params *ch_param);
+diff --git a/drivers/net/wireless/realtek/rtw88/reg.h b/drivers/net/wireless/realtek/rtw88/reg.h
+index afcdb66fdb9a1..d7bdb3b146008 100644
+--- a/drivers/net/wireless/realtek/rtw88/reg.h
++++ b/drivers/net/wireless/realtek/rtw88/reg.h
+@@ -587,6 +587,10 @@
+ 
+ #define REG_RXFLTMAP0		0x06A0
+ #define REG_RXFLTMAP1		0x06A2
++#define BIT_RXFLTMAP1_ACK	BIT(13)
++#define BIT_RXFLTMAP1_CTS	BIT(12)
++#define BIT_RXFLTMAP1_RTS	BIT(11)
++#define BIT_RXFLTMAP1_BACK	BIT(9)
+ #define REG_RXFLTMAP2		0x06A4
+ #define REG_RXFLTMAP4		0x068A
+ #define REG_BT_COEX_TABLE0	0x06C0
+diff --git a/drivers/net/wireless/realtek/rtw88/rtw8723x.c b/drivers/net/wireless/realtek/rtw88/rtw8723x.c
+index 5dd306cb058ea..66d37b61dc9db 100644
+--- a/drivers/net/wireless/realtek/rtw88/rtw8723x.c
++++ b/drivers/net/wireless/realtek/rtw88/rtw8723x.c
+@@ -357,7 +357,7 @@ static int __rtw8723x_mac_init(struct rtw_dev *rtwdev)
+ 
+ 	rtw_write16(rtwdev, REG_RXFLTMAP0, WLAN_RX_FILTER0);
+ 	rtwdev->hal.rxfltmap1 = WLAN_RX_FILTER1;
+-	rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
++	rtw_update_rx_filter(rtwdev);
+ 	rtw_write16(rtwdev, REG_RXFLTMAP2, WLAN_RX_FILTER2);
+ 	rtw_write32(rtwdev, REG_RCR, WLAN_RCR_CFG);
+ 
+diff --git a/drivers/net/wireless/realtek/rtw88/rtw8814a.c b/drivers/net/wireless/realtek/rtw88/rtw8814a.c
+index b6916d3dc6d33..b401a4581d078 100644
+--- a/drivers/net/wireless/realtek/rtw88/rtw8814a.c
++++ b/drivers/net/wireless/realtek/rtw88/rtw8814a.c
+@@ -401,7 +401,7 @@ static int rtw8814a_mac_init(struct rtw_dev *rtwdev)
+ 
+ 	rtw_write16(rtwdev, REG_RXFLTMAP0, 0xffff);
+ 	rtwdev->hal.rxfltmap1 = 0x0400;
+-	rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
++	rtw_update_rx_filter(rtwdev);
+ 	rtw_write16(rtwdev, REG_RXFLTMAP2, 0xffff);
+ 
+ 	rtw_write8(rtwdev, REG_MAX_AGGR_NUM, 0x36);
+diff --git a/drivers/net/wireless/realtek/rtw88/rtw8821c.c b/drivers/net/wireless/realtek/rtw88/rtw8821c.c
+index 83ac6b732e800..ea97c9658979f 100644
+--- a/drivers/net/wireless/realtek/rtw88/rtw8821c.c
++++ b/drivers/net/wireless/realtek/rtw88/rtw8821c.c
+@@ -250,7 +250,7 @@ static int rtw8821c_mac_init(struct rtw_dev *rtwdev)
+ 	/* WMAC configuration */
+ 	rtw_write16(rtwdev, REG_RXFLTMAP0, WLAN_RX_FILTER0);
+ 	rtwdev->hal.rxfltmap1 = WLAN_RX_FILTER1;
+-	rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
++	rtw_update_rx_filter(rtwdev);
+ 	rtw_write16(rtwdev, REG_RXFLTMAP2, WLAN_RX_FILTER2);
+ 	rtw_write32(rtwdev, REG_RCR, WLAN_RCR_CFG);
+ 	rtw_write8(rtwdev, REG_RX_PKT_LIMIT, WLAN_RXPKT_MAX_SZ_512);
+diff --git a/drivers/net/wireless/realtek/rtw88/rtw8822b.c b/drivers/net/wireless/realtek/rtw88/rtw8822b.c
+index cb05891c16274..f87a6ae567ee8 100644
+--- a/drivers/net/wireless/realtek/rtw88/rtw8822b.c
++++ b/drivers/net/wireless/realtek/rtw88/rtw8822b.c
+@@ -276,7 +276,7 @@ static int rtw8822b_mac_init(struct rtw_dev *rtwdev)
+ 	/* WMAC configuration */
+ 	rtw_write16(rtwdev, REG_RXFLTMAP0, WLAN_RX_FILTER0);
+ 	rtwdev->hal.rxfltmap1 = WLAN_RX_FILTER1;
+-	rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
++	rtw_update_rx_filter(rtwdev);
+ 	rtw_write16(rtwdev, REG_RXFLTMAP2, WLAN_RX_FILTER2);
+ 	rtw_write32(rtwdev, REG_RCR, WLAN_RCR_CFG);
+ 	rtw_write8(rtwdev, REG_RX_PKT_LIMIT, WLAN_RXPKT_MAX_SZ_512);
+diff --git a/drivers/net/wireless/realtek/rtw88/rtw8822c.c b/drivers/net/wireless/realtek/rtw88/rtw8822c.c
+index 09315d23e2c40..8c4046cf65652 100644
+--- a/drivers/net/wireless/realtek/rtw88/rtw8822c.c
++++ b/drivers/net/wireless/realtek/rtw88/rtw8822c.c
+@@ -2096,7 +2096,17 @@ static int rtw8822c_mac_init(struct rtw_dev *rtwdev)
+ 	rtw_write8(rtwdev, REG_WMAC_TRXPTCL_CTL_H  + 2, WLAN_BAR_ACK_TYPE);
+ 	rtw_write16(rtwdev, REG_RXFLTMAP0, WLAN_RX_FILTER0);
+ 	rtwdev->hal.rxfltmap1 = WLAN_RX_FILTER1;
+-	rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
++	if (rtw_hci_type(rtwdev) == RTW_HCI_TYPE_SDIO) {
++		/*
++		 * Do not forward these control frames to mac80211; retain BAR
++		 * and PS-Poll. The common writer preserves FIF_CONTROL requests.
++		 */
++		rtwdev->hal.rxfltmap1 &= ~(BIT_RXFLTMAP1_ACK |
++					   BIT_RXFLTMAP1_CTS |
++					   BIT_RXFLTMAP1_RTS |
++					   BIT_RXFLTMAP1_BACK);
++	}
++	rtw_update_rx_filter(rtwdev);
+ 	rtw_write16(rtwdev, REG_RXFLTMAP2, WLAN_RX_FILTER2);
+ 	rtw_write32(rtwdev, REG_RCR, WLAN_RCR_CFG);
+ 	rtw_write8(rtwdev, REG_RX_PKT_LIMIT, WLAN_RXPKT_MAX_SZ_512);
+diff --git a/drivers/net/wireless/realtek/rtw88/rtw88xxa.c b/drivers/net/wireless/realtek/rtw88/rtw88xxa.c
+index 5ffa29d18168e..7aacdb64c6e3c 100644
+--- a/drivers/net/wireless/realtek/rtw88/rtw88xxa.c
++++ b/drivers/net/wireless/realtek/rtw88/rtw88xxa.c
+@@ -513,7 +513,7 @@ static void rtw88xxa_init_wmac_setting(struct rtw_dev *rtwdev)
+ {
+ 	rtw_write16(rtwdev, REG_RXFLTMAP0, 0xffff);
+ 	rtwdev->hal.rxfltmap1 = 0x0400;
+-	rtw_write16(rtwdev, REG_RXFLTMAP1, rtwdev->hal.rxfltmap1);
++	rtw_update_rx_filter(rtwdev);
+ 	rtw_write16(rtwdev, REG_RXFLTMAP2, 0xffff);
+ 
+ 	rtw_write32(rtwdev, REG_MAR, 0xffffffff);
 
 _______________________________________________
 Linux-rockchip mailing list
