@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59107606A321
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 21:28:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 77D09606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 21:28:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EIALN6ma;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=m+oYj628
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zKHLrnrM;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=e8uuMufo
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,38 +14,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=UeZb7UlxkKymkXsG7sHWLmL8ujuE+wR62SN+7rf1PPQ=; b=EIALN6maVhTfqL+dHQdVb/E8Re
-	+wHgF8zF0SsSU7/Y8oR6Ua60Yp4FBqfb0d41Z1uqXyvf6/xTT7S27F76+jlMFY8sjp56KueampBmT
-	1RknVu+zONXCEsg578hkM7ihgvRgM8ZdnOW2USBQsahacPxOL8KovzgqoU5rY0bEFAkvF4v7cei2m
-	beS4TtDcF7dtwoVpjdlvFPtxp7dbwh2dIDROAvZLbvEL6ix3OtmtbRbGncX9J0YNmtjx01l2UxPhv
-	kkhoYPb0ZOh2db+xapf9Yq1mlol6Gt3SB+7ybGrvQflM0zhj/L3XG6wzz6wcpLCwtsj5m3EwN8u3K
-	qhOXT7sw==;
+	bh=rZtXr9EKFSNEQY9zt8cjAgVsJoiwVWCPHMQodR+HgS0=; b=zKHLrnrM4GSmwvjXlagQYg4DPr
+	ksV75T93DzQkuRUE54SjJeYjHCpP5DsdHrfuP1+TrBpN6RmhOvZUx4esZSrFmsi1t124WsGuNYciF
+	evEudeHeKtsZ2Gw3vkYZmhH5J3VAAO40p9Byiczcm90QgOG7pMonomaZdVhVOKAAoDcUk3bu4tILk
+	xLrBKSuhJS45hk1CGTk4/4obWvleTcYlX0TVeGZRaIbsfkMyfboT4G3e2zBdvtTdl4pmTmeGusM1+
+	nZj7rLj+8+2sB7VADpdS0CCVZLD6saPaloHkiVW7jjh7su2inV0LnKMm3kTZX6nfcMgUtmUZ6I/7z
+	i8Q8XLEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWh1B-0000000EYUO-0ws4;
-	Thu, 26 Nov 2026 21:28:37 +0000
+	id 1xWh0z-0000000EYRg-0d5A;
+	Thu, 26 Nov 2026 21:28:25 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWh10-0000000EYRu-2GVV;
-	Thu, 26 Nov 2026 21:28:26 +0000
+	id 1xWh0x-0000000EYRT-1MpZ;
+	Thu, 26 Nov 2026 21:28:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 50C0061B37;
-	Thu, 26 Nov 2026 21:28:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8FF331F000C1;
+	by tor.source.kernel.org (Postfix) with ESMTP id 685946141E;
 	Thu, 26 Nov 2026 21:28:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E0DE1F00898;
+	Thu, 26 Nov 2026 21:28:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795728504;
-	bh=AKE9hZpQGszWx/7HA8tIwIZOKLxBkMhWpBT53qbuBGk=;
+	s=k20260515; t=1795728501;
+	bh=6GLhuMbXegNOyHoLyDWvfiTzxggOMPvvXd+1vKENFmU=;
 	h=Subject:From:To:Cc:In-Reply-To:References:Date;
-	b=m+oYj6287zb9RCTfENOWwvGl/347fysghidRTIGsZIAgQmoNOAUZI1xSYgX7dJiQ/
-	 NRJK+RAtzUQDtCpRovni3fW5ILQGGCgP0SGIG885i+Acm/L/M+DV1mF53fqEJ6jZ03
-	 tF/R6JnEsWVP8szh5sBl3ygKbsZKDyT6STwJcNfY86gqYS0KJUKDWwAUAhaYFmO61I
-	 UHR6VaPZOa6ah08pJlSTdShRR3ouj7KvAtT7qvXMOkYaJPyB+dg1PYszQeu/tTHGhZ
-	 h6WBnHbokPHlhxTZjDWI+4nlxkW6e9Jic/7ytegVXwSn6Ry8NlwhPnxQhWkpqOj8F7
-	 uPT4Ps0lZtg7g==
+	b=e8uuMufoZZJAAQrzd8HyU5U+ybgGQsilFZTR54gz63MDayzI4gWQIDlWmyxPQesRZ
+	 iOAF6GQn4A+kiaNF0wCG0J216bmAHUyVeinfoBlm3OmqjZdkU5Rq6lR5lgDLFhm8rz
+	 DYobmZZPOfIgcoe237MM9IbvhmZl/YoFBh332SF8GIcfb4h9RNxY+BKyVqBuVpnSdx
+	 LMB2FpCCcnERZTSAymFuL3WUWEgT1HK7IRuvTKx8BoCDUoVL91ipUQcwqndSKQw8FC
+	 Jb9QRhaH1B/8YIw2IzAdWBfwthWb4C2bZWBlnfpstAEbZ0I5W+5fWgAxCdclaypkjP
+	 pjCoCu1G7Gcuw==
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH 2/2] dt-bindings: spi: rockchip-sfc: add RK3506 support
+Subject: Re: [PATCH 1/2] spi: rockchip-sfc: add RK3506 support
 From: Mark Brown <broonie@kernel.org>
 To: ZhuXiangyu <1194781887@qq.com>
 Cc: Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
@@ -54,18 +54,17 @@ Cc: Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Conor Dooley <conor+dt@kernel.org>, linux-spi@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-In-Reply-To: <tencent_E24973E955D1A26CF5A4F983929F8F8B0006@qq.com>
+In-Reply-To: <tencent_B239E24A7651B43AC21C4769D1E75FA0A505@qq.com>
 References: <tencent_B239E24A7651B43AC21C4769D1E75FA0A505@qq.com>
- <tencent_E24973E955D1A26CF5A4F983929F8F8B0006@qq.com>
 Date: Thu, 26 Nov 2026 21:28:16 +0000
-Message-Id: <179572849658.838304.8494302770279500225.b4-review@b4>
+Message-Id: <179572849657.838304.17453642107387470092.b4-review@b4>
 X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=558; i=broonie@kernel.org;
- h=from:subject:message-id; bh=NYkHdhnKP6nblxfLbI6IxY44AGsOc8rvLXvhgNlcXKI=;
- b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLI5lhTuFngeoThR2myD5bwJRrGbd9UE3D8kFiw5/Qu7X
- 5LrstaojlIWBjEuBlkxRZa4LO6X9SWv1/AdXNgGM4eVCWQIAxenAExESJrhJ6PKjGP1XEGOKRvd
- rHMWPBLKktfxD73+oPljAXNAL//fH4wMD+wTmRSauf/EVDjrfdFW3h5zKmPvfy/h/L6J7Fnc71T
- 5AQ==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1602; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=17xmrTkEbfk8M9MCDD02uxzPPUZzmo258y4i5BQ+1rc=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLI5lhS6bNORXfl9/uyUko1XfgS5VOZra8xbE+gnOK3+w
+ Mn9qspnO0pZGMS4GGTFFFnisrhf1pe8XsN3cGEbzBxWJpAhDFycAjCRwBiGfwoT1mi71b6OqQl7
+ zvv7W2/Wu7hYx2M9ogVv9mWs/OJvdonhfzjnsdM/V29ctTl3xdHMg9wzdmXL75xewie9cvmvCeG
+ FWUwA
 X-Developer-Key: i=broonie@kernel.org; a=openpgp;
  fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -80,22 +79,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=4.0.1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> Document the RK3506 FSPI compatible with the generic SFC fallback, and
-> the rockchip,grf and rockchip,max-dll properties used for the
-> power-good handshake and DLL training.
+> The RK3506 SFC reports version 9 but is compatible with the version 6
+> feature set. It needs a power-good handshake through the PMU GRF and
+> DLL delay-line training for clock rates above 50 MHz.
+> 
+> Add the version handling, DLL cell detection and training, and the
+> optional power-good poll. Parse the rockchip,max-dll property so boards
+> can limit the DLL training range.
+> 
+> Tested on an RK3506B board with the on-board SPI-NAND at 80 MHz.
+> DLL training selects cell 64; read and write are stable.
 
-Please submit patches using subject lines reflecting the style for the
-subsystem, this makes it easier for people to identify relevant patches.
-Look at what existing commits in the area you're changing are doing and
-make sure your subject lines visually resemble what they're doing.
-There's no need to resubmit to fix this alone.
+> @@ -375,6 +427,15 @@ static int rockchip_sfc_xfer_setup(struct rockchip_sfc *sfc,
+>  	dev_dbg(sfc->dev, "sfc ctrl=%x cmd=%x addr=%llx len=%x\n",
+>  		ctrl, cmd, op->addr.val, len);
+>  
+> +	if (sfc->data && sfc->data->powergood.valid) {
+> +		if (regmap_read_poll_timeout(sfc->grf, sfc->data->powergood.grf_offset,
+> +					     voltage, voltage & sfc->data->powergood.bits_mask,
+> +					     1000, jiffies_to_usecs(HZ))) {
+> +			dev_err(sfc->dev, "wait for powergood failed\n");
+> +			return -EIO;
+> +		}
+> +	}
+
+I note that the callers don't seem to check the return value...
+
+> +static void rockchip_sfc_delay_lines_tuning(struct rockchip_sfc *sfc, struct spi_mem *mem)
+> +{
+
+> +	if (rockchip_sfc_exec_op_bypass(sfc, mem, &op) ||
+> +	    (0xFF == id[0] && 0xFF == id[1]) ||
+> +	    (0x00 == id[0] && 0x00 == id[1])) {
+> +		dev_dbg(sfc->dev, "no dev, dll by pass\n");
+> +		rockchip_sfc_clk_set_rate(sfc, sfc->speed[cs]);
+> +		sfc->speed[cs] = SFC_DLL_THRESHOLD_RATE;
+
+Shouldn't we use the safe-frequency fallback?
 
 -- 
 Mark Brown <broonie@kernel.org>
