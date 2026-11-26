@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2F64A606A31E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 13:00:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D80C9606A329
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 13:28:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PSMgH2Lh;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=NhWPwhW2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZlWXS8+R;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=qpw1nyYg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
@@ -14,74 +14,74 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Cc:To:Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=sEdq5cSBDfgZiinIBzBypKvEEdawQzg979l/a4Z1XRM=; b=PSMgH2LhR3XFMX7lmY9q7vLeX9
-	u3or+Vq3NSZpwXGvJKknc8l1g2hESUIPvy5TMmBo3cOHWmgLXGOkOC80NQPy/o8gze/V13IZ9ujEE
-	ipJ7rocZ//eAboEMSszF2F5/EcK5ZT3RdMeU61kabfdIvnTJKIFVw8nbFAjiYTH3+5JLlVdqL0sJl
-	6Km8EmIU1O5lmvbGuGSExiDU8npIJIyLfOYrg4s9B3pe9G/UAsIHz9CtF3Q+0hOZuGbq7xT/obp6z
-	50PryRcKh1ziIVati8dDtDBJmxNYZB+EIlnoIoa80qR5MPVcIV9VyC64UAXgYS+/RzPtViIAZUAxi
-	NXEOYoUA==;
+	bh=Hc+7HpI2cYFZdvDRpijizsKEhUeTE1aaMhuj2Bdo03Y=; b=ZlWXS8+R3YMoAqZBwOt9bwF0vD
+	KSwINPzK7FNw7G2V9w9FvfKEDMEjt+Wst9+0eD0UR+d5ljp9EkvVZ/UFN2Qi+7tift5GnkTA+e7P3
+	KNgZnA8fpTA6J7dwewhfJxOplSH3NiqAwLY+5/QHBG59/jl+A+YXzXm2hurrtnM9ZBiid3GmDndO/
+	sLpa4G2ptcBkUx4LR2YEQkzWHUEuwrtS0knAklWApPTe42hytJQzKaytXVYfnsWHs2UdQ5th1DaSB
+	PNP3FYfzgvyXfweVgvOUZINDiQ08yuw5VkQG3DrMS8PDU0gBLNmhQcidjXQ9YB+2HW0IW3xFwwmnj
+	K4Dxntiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWZ5Z-0000000DHPQ-1F1x;
-	Thu, 26 Nov 2026 13:00:37 +0000
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+	id 1xWZWt-0000000DLsJ-3XZr;
+	Thu, 26 Nov 2026 13:28:52 +0000
+Received: from mail-dy1-x132d.google.com ([2607:f8b0:4864:20::132d])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWZ5V-0000000DHNS-1DyD
+	id 1xWZWc-0000000DLeM-33Ii
 	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Nov 2026 13:00:35 +0000
-Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-3b0ae87069dso2965071a91.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 26 Nov 2026 05:00:32 -0800 (PST)
+	Thu, 26 Nov 2026 13:28:37 +0000
+Received: by mail-dy1-x132d.google.com with SMTP id 5a478bee46e88-386c4d2e2ccso4711171eec.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 26 Nov 2026 05:28:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795698032; x=1796302832; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1795699714; x=1796304514; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:in-reply-to:from:references
          :cc:to:content-language:subject:reply-to:user-agent:mime-version
          :date:message-id:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=Db7swx/z5fRcWKIKhx/36FX+1LnzR+96h9IjzqTpdvs=;
-        b=NhWPwhW2pc1GhJvgBUI5MYDa5DfIZLTSAiutesfhLdT4oaOB1AG70TP/bKXzU4Snks
-         sudjwcS3Nbg9dhtiuzmqV0Fz6ztDsX69HjJbqvpOzCT9doAFXCQyauWzCW2qFrz4ZEDP
-         +D7SCTYXOfupM42l5rQIUY3k4hW1PsxJcWJddWThjpDlGRzM8zPzBCihlkTuBWn+RXHa
-         79e8zprN5mHnE1QBASADGNEu5NdLorXnFybthd7fjAnhwJP2kVFR4r7YxFHvKTu1p6Ib
-         BC40AQHxU0BElSug16B1Uq6nRZzfqW4yLJs9I34ADxzGFAOzV0r4Li6Q36BtB7AXzuaV
-         RUsw==
+        bh=pFahHhnApCqp4xWzSbnlx6J9bvCFbftUctTIaRpbdJw=;
+        b=qpw1nyYgt9vfUN+IKVBdpabMOSv3SF68TLpJCRBNyMY1s/T0yqnZ8csUxUFc9GMt6v
+         Av2igQ1H/KZLFUf15UnKdHapgcG8Rdw40snEPB7+7RTcaABiSDjSjoVjknAkiB+P0te7
+         1+4qPH8+hmPoc5XIxmKcEQgfib5/PoLVTHDc4SYm/LQv04p+Nnxws91MR7QaOjYNSpUp
+         WY4oZzRuINdx5YejmYvOqENanKp+E5gIWD/JSuPbCvVTi2tnL1J15bry6Ay2jHlLS8wn
+         h2UIYxZxEC5e2heP003lUP0nDEEN4VgOUY/DLPVsDCGpZxdxGmC1aZg7m0LJZq/ZTbAB
+         ytmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795698032; x=1796302832;
+        d=1e100.net; s=20260707; t=1795699714; x=1796304514;
         h=content-transfer-encoding:content-type:in-reply-to:from:references
          :cc:to:content-language:subject:reply-to:user-agent:mime-version
          :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=Db7swx/z5fRcWKIKhx/36FX+1LnzR+96h9IjzqTpdvs=;
-        b=OsMYXUA6oyqbaC98kTjWBCP26JHMbb0x1nAI3NwsMuBQ0VAhqoafZ50gt/rx5LrfNC
-         fw9b0eiETUjo0MNTLPTx+D71Y6cEhUqLR4Jzls/pnmEO9EllIEz16eZwdZ/JHJJeBAYz
-         XC08mmzcGEaZUIgx/jAEIPkICbFyYtuREWIro1UnyLw6gzu8U+9kUegWT4lY1FpKu2I2
-         8NxmD96rhPdQshJMY/5Bv3Z3i2tW3DkdvRpWAYsgfz57IFnh8JwO9qRriUfUklj3TxK8
-         5JrNyQcHn8Dulwx5BVXXVcBTW3iLon7CtqxqZOHKB46tomrVQRq9C4qH0C0yaGFGX6KG
-         VSDg==
-X-Forwarded-Encrypted: i=1; AL+hErEypY9V5Uf+wmDu5IDFDER/JbJsoNUtIrqIPr/Th2xkuovnVVO1lMAsIMHYdFwvnxtHJ6ytuLlsDsp8nIL9ng==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8a25jPeUtCs3rIOUO6GRXLdCd2CaNA2weszdcBmJ+9V25zDzmg
-	XVzSoofzr7rsAEZxSjIMKMwZioXYuAVxg2wK8DjCxtM9vR/OOj3//U4b
-X-Gm-Gg: AZFdTZeKBNZ9hPBeXMz8Q0UwPSFlUBWZq4DhbAOwZjNKatqCpBSICBrlvGXr8bdco76
-	gR0jshCqhR90QyitJYnCKedGwBDBvvidJMMXD5eFfWQnVjmdec1bqFYV0UpqZnTIZR5lksF8k8Q
-	sezkNkRrm7w/+8/pfGdTG9TKBC+pvQMvi0yghNiOLjWFCWe3ACC6a1xwlK6QRYqwzwZypLvPY63
-	RYINbJG/IM30fetT9ogxECRfgwW/YFHuzThaqRM40Dtof4nsZg5UHrJsDotOIeQ1aFZtsgZvDsv
-	3AqjsVHEJoz0DQ9yilO6SJFQ5ZVSiB9DksramA5tJYPnRWR6BX9O0+k1CKBLmNdZBZcKBh0tbzz
-	21yLuBIH3M9rprVu0M0t1czfEwuG+Q5TVJdRi79CbkJ+gGVzgyH/w1DMsHAET7+RKbquBccCi92
-	nY4ZTLDgff1QjoDwOfmkqygTgfFBFU2w9uNxrjr8jhtFjovJjYn+GTI4CUW2uP109b/Q6BN5w3g
-	VmJ6WonGiKuoUtdDj1RJKS71gKt8sqxrd22P8/QWmrf7l1F/Xh1euHJLKJYBRsLVxwSnKajEH+z
-	IP17p+bNDruUNLgt6PsjjavM7KjVEQ0+Pkw+ia+PYh4I5quuyg2l
-X-Received: by 2002:a17:90b:2cce:b0:3b0:a7b5:c046 with SMTP id 98e67ed59e1d1-3b41c9759cbmr21021163a91.54.1795698031561;
-        Thu, 26 Nov 2026 05:00:31 -0800 (PST)
+        bh=pFahHhnApCqp4xWzSbnlx6J9bvCFbftUctTIaRpbdJw=;
+        b=XL3W/M6qgf042qmd7dLOROW0oboGzJspt2CQOkBciP5gTHqUhVgcByQPGdni9/3vaO
+         is2Zfbg8WgHva1UpaALgnj70dffK98ex90XmSkWQwS7/820oFoqzR31bgcsS5/JFvTFQ
+         EP7oXg2A1UshFgktwS4ksUUfmfZu83YVDYvwQiTxh/uci1LOhKZ2CZIeY07aW6FuIewD
+         mR2sXkNlqKJzEJxjuRPSur4W3uYp+kIuuZXy2WtWSHfrZGKF6JXcZ/mMjW733j2FfkLE
+         v6IOJH59UnqUwV7IM8dHb3ou2VT9/Ieq1TOihAIIrOxP13OkO4T7Q/DViaawv9fpjkOR
+         plfg==
+X-Forwarded-Encrypted: i=1; AL+hErG3keAu+XWLdgJi53C5EyefLNfTSamB3z0fLvc6FH5p5InYt1zlqLyvVe03+Fk+WEqAnpbjE76H6Z33VeNDrA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+wwdly+1Src6SXL7QB5MgFw0WnGsfIAqyNACa2Q0ifZ9G/MVUO
+	6e0tBorvaTU7uxN0oCeCrUdwNYEFtr6qfIHsTpk5v9BvPqBZIBt450QO
+X-Gm-Gg: AZFdTZcgvYwwCQbD+BQVFzxIKawU4PyD/NidcXY/zKI8X7DRxIBP/5YKb8q+slNzZp1
+	top79VIx8Sg0C6qTu6it13PC/JDyLYTs4XIxrmIlZ388IXa6QxD73MMH7aCcnZ+2ff4P8AWWLBm
+	Lx1C+Uni7BP0DB6bLebbjU7HsK8usKYaeS8nXohpKKsmum9NtrSdQQo8wToCw4Qkdu+rZi1EIEW
+	2oLabbAewr1/Lz6MhDBJk4gOU5Yvm2C7VttnULQjQPZPQdl9UyPm8hov9ku1r2ob3eTC7QhZ8W2
+	voARfPe6eSBjyOV4AAgsO4pKiEG68kR6xoo5SZt7e90Xh/mQ9rmJsdG0tSVNHArGUFgFbX8AAB9
+	2QADbx4IpOr58DzPTIH1oem5Y9ZKq6kn+Z8bDHZb3PmM6IEngzdr30HsPiYCZHIiM8JJqUTWNkm
+	B7aRA8d5sU6VAuuIjyDZw5Rdd3B9ZFushuYhZFif+0vLWRBKhVuDEh/0UWeiveaKeoAvI8uSnPL
+	AoTWC2n9BmKpWdbUBQLtNI7gB/U0S7NX6lc5zhptfiSlcnID1jtO2qXRrEaVmjrzgbUAsHfiEX9
+	UG1XMwQmVf0PTTaIf1QS1DP6Q1DNknQ/XphTBnDwanRSFEI6MsmRsHZmR4xHzLslYVM=
+X-Received: by 2002:a05:7300:c00e:20b0:386:c3ab:ab7d with SMTP id 5a478bee46e88-386c3abaf3bmr8681892eec.3.1795699713612;
+        Thu, 26 Nov 2026 05:28:33 -0800 (PST)
 Received: from [192.168.35.43] ([218.50.238.131])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b4b0f482bdsm17077789a91.14.2026.11.26.05.00.27
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-385666e96bdsm59213477eec.7.2026.11.26.05.28.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 26 Nov 2026 05:00:30 -0800 (PST)
-Message-ID: <772ec0ea-da77-42e3-a281-8b8b7f364bf9@gmail.com>
-Date: Thu, 26 Nov 2026 22:00:25 +0900
+        Thu, 26 Nov 2026 05:28:32 -0800 (PST)
+Message-ID: <86a7174f-c44b-4663-862b-3631b0d6c5bd@gmail.com>
+Date: Thu, 26 Nov 2026 22:28:28 +0900
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 08/11] PM / devfreq: rockchip-dfi: make RK3588 use its
- clocks
+Subject: Re: [PATCH v4 00/11] PM / devfreq: rockchip-dfi: cleanups and RK3576
+ support
 Content-Language: ko
 To: Sebastian Reichel <sebastian.reichel@collabora.com>,
  Chanwoo Choi <cw00.choi@samsung.com>, MyungJoo Ham
@@ -92,14 +92,14 @@ To: Sebastian Reichel <sebastian.reichel@collabora.com>,
 Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
+ linux-kernel@vger.kernel.org, kernel@collabora.com,
+ Sashiko <sashiko-bot@kernel.org>, stable@vger.kernel.org
 References: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-0-517a68c008fe@collabora.com>
- <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-8-517a68c008fe@collabora.com>
 From: Chanwoo Choi <cwchoi00@gmail.com>
-In-Reply-To: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-8-517a68c008fe@collabora.com>
+In-Reply-To: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-0-517a68c008fe@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_050033_329044_01798A54 
-X-CRM114-Status: GOOD (  30.17  )
+X-CRM114-CacheID: sfid-20261126_052834_802293_577339B6 
+X-CRM114-Status: GOOD (  20.74  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -123,107 +123,63 @@ X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
-
 On 11/19/2026 10:01 PM, Sebastian Reichel wrote:
-> From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> This is a combination of the DFI driver patches from the following two
+> series to ease applying to devfreq tree. It is based on devfreq-next
+> and there are no other dependencies.
 > 
-> So far, RK3588 doesn't have the pclks for DDRMON used in the driver, as
-> they weren't modelled before.
+>  * https://lore.kernel.org/linux-rockchip/20260921-rockchip-dfi-cleanup-v2-0-43ff34ac8599@collabora.com/
+>  * https://lore.kernel.org/linux-rockchip/20260921-b4-rockchip-dfi-rk3576-support-v2-0-04f847016321@collabora.com/
 > 
-> However, they are now correctly modelled, so the driver should use them
-> when possible.
+> Changes in PATCHv4:
+>  * Link to v3: https://patch.msgid.link/20261117-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v3-0-32ff1546b0e4@collabora.com
+>  * In PATCHv3 I accidentally used the patches from PATCHv1 as base with
+>    the wrong DT bindings; this is now fixed
+>  * I've fixed num_clks typo in kernel doc (Sashiko)
+>  * I've fixed incorrect LPDDR5 BANK_MODE_MASK for RK3576 (Sashiko)
+>  * I added a fix at the start of the series correcting LPDDR5 bank
+>    mode value (Sashiko)
+>  * I've added a fix at the start of the series avoiding usage of
+>    uninitialized memory (Sashiko)
 > 
-> Instead of unconditionally getting them for this SoC, add a new variant
-> member that specifies whether the driver should let missing clocks
-> slide. This is needed because we want old device trees to keep
-> functioning, as otherwise we'd be introducing a breaking change for
-> literally no functional difference here.
+> Changes in PATCHv3:
+>  * split out DFI driver patches from both series and merge them into a
+>    new one; clock controller and DT patches will be sent separately.
+>  * rebase to devfreq-next
+>  * collecting Reviewed-by / Acked-by
 > 
-> Fill out a clock name list for this variant as well, and hand it to it.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
->  drivers/devfreq/event/rockchip-dfi.c | 29 +++++++++++++++++++++++++++--
->  1 file changed, 27 insertions(+), 2 deletions(-)
+> Nicolas Frattaroli (6):
+>       dt-bindings: devfreq: event: rockchip,dfi: add clocks to rk3588
+>       dt-bindings: devfreq: event: rockchip,dfi: add rk3576
+>       PM / devfreq: rockchip-dfi: move to per-variant const structs
+>       PM / devfreq: rockchip-dfi: add NO_INTERRUPT perf capability
+>       PM / devfreq: rockchip-dfi: use bulk clock APIs
+>       PM / devfreq: rockchip-dfi: make RK3588 use its clocks
 > 
-> diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-> index 2b9d9b26b11a..c51d7eeec394 100644
-> --- a/drivers/devfreq/event/rockchip-dfi.c
-> +++ b/drivers/devfreq/event/rockchip-dfi.c
-> @@ -117,6 +117,18 @@ struct rockchip_dfi {
->  	const struct rockchip_dfi_variant *variant;
->  };
->  
-> +/**
-> + * struct rockchip_dfi_variant
-> + * @init: pointer to the variant-specific initialisation function
-> + * @stride: address offset between the DDRMON per-channel instances
-> + * @ctrl_single: whether only one DDRMON instance monitors multiple channels
-> + * @max_channels: maximum number of memory channels for this SoC
-> + * @clk_names: pointer to a constant array of constant clock name strings
-> + * @num_clks: the number of elements in the @clk_names array
-> + * @clocks_optional: whether not finding the clocks is non-fatal. Set if the
-> + *                   DT binding for this variant didn't require clocks in the
-> + *                   past, so that the driver remains compatible with old DTs.
-> + */
->  struct rockchip_dfi_variant {
->  	int (*init)(struct rockchip_dfi *dfi);
->  	int stride;
-> @@ -124,6 +136,7 @@ struct rockchip_dfi_variant {
->  	unsigned int max_channels;
->  	const char * const *clk_names;
->  	unsigned int num_clks;
-> +	bool clocks_optional;
->  };
->  
->  static int rockchip_dfi_ddrtype_to_ctrl(struct rockchip_dfi *dfi, u32 *ctrl)
-> @@ -806,6 +819,11 @@ static const char * const rk3399_clk_names[] = {
->  	"pclk_ddr_mon",
->  };
->  
-> +static const char * const rk3588_clk_names[] = {
-> +	"pclk_ddr_mon_ch0", "pclk_ddr_mon_ch1", "pclk_ddr_mon_ch2",
-> +	"pclk_ddr_mon_ch3",
-> +};
-
-For proper operation of this patch, the following patch should be applied.
-The following patch is applied to other git?
-
-https://lore.kernel.org/linux-rockchip/20260921-rockchip-dfi-cleanup-v2-6-43ff34ac8599@collabora.com/
-
-> +
->  static const struct rockchip_dfi_variant rk3399_variant = {
->  	.init = rk3399_dfi_init,
->  	.stride = 0x14,
-> @@ -826,6 +844,9 @@ static const struct rockchip_dfi_variant rk3588_variant = {
->  	.init = rk3588_dfi_init,
->  	.stride = 0x4000,
->  	.max_channels = 4,
-> +	.clk_names = rk3588_clk_names,
-> +	.num_clks = ARRAY_SIZE(rk3588_clk_names),
-> +	.clocks_optional = true,
->  };
->  
->  static const struct of_device_id rockchip_dfi_id_match[] = {
-> @@ -885,8 +906,12 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
->  		for (i = 0; i < dfi->variant->num_clks; i++)
->  			dfi->clocks[i].id = dfi->variant->clk_names[i];
->  
-> -		ret = devm_clk_bulk_get(dev, dfi->variant->num_clks,
-> -					dfi->clocks);
-> +		if (dfi->variant->clocks_optional)
-> +			ret = devm_clk_bulk_get_optional(dev, dfi->variant->num_clks,
-> +							 dfi->clocks);
-> +		else
-> +			ret = devm_clk_bulk_get(dev, dfi->variant->num_clks,
-> +						dfi->clocks);
->  		if (ret)
->  			return dev_err_probe(dev, ret, "failed to get clocks\n");
->  	}
+> Sebastian Reichel (5):
+>       PM / devfreq: rockchip-dfi: drop incorrect shift of LP5 bank mode
+>       PM / devfreq: rockchip-dfi: initialize dmc_count structs
+>       PM / devfreq: rockchip-dfi: move register offsets to variant struct
+>       PM / devfreq: rockchip-dfi: prepare support for v4 DDRMON
+>       PM / devfreq: rockchip-dfi: add RK3576 support
 > 
+>  .../bindings/devfreq/event/rockchip,dfi.yaml       |  89 +++++-
+>  drivers/devfreq/event/rockchip-dfi.c               | 297 +++++++++++++++------
+>  2 files changed, 290 insertions(+), 96 deletions(-)
+> ---
+> base-commit: f9316c13d6f621af4f6f4a6089d3c989ffe899e6
+> change-id: 20261117-rockchip-dfi-rk3588-cleanups-and-rk3576-support-74727d64d729
+> 
+> Best regards,
+> --  
+> Sebastian Reichel <sebastian.reichel@collabora.com>
 
+Applied them. But you also need to send the clock patch[1] and get it applied.
+[1] https://lore.kernel.org/linux-rockchip/20260921-rockchip-dfi-cleanup-v2-6-43ff34ac8599@collabora.com/
+
+Thanks,
 
 -- 
 Best Regards,
