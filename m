@@ -2,86 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C4765606A321
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 20:34:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59107606A321
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 21:28:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3bA//zPn;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=frUaz41j
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EIALN6ma;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=m+oYj628
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:In-Reply-To:
+	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=DXEYAVsI+RHsH1pruagKRv0ZlV+Ruf+ZGieXm2iMdLk=; b=3bA//zPnK1ZZ6b4n0QJ3jhymIj
-	7R3KaZJ0EjC3/CALHYUfEZEsHnrlo55oggOa2BavY+ivjmBEr8R6DUI0dvNiYWVubi1zTDtHaT+f9
-	Pja37W23K6w6Tz1rId62xx2+AO0zCRR37EcpZrZI+Jag5KsgluR5KLubahaLxflnlwcQbRDnEOhY7
-	u611blrhIN8B/xW1tiQEYZNEf0IFCl9xmTMmwejhsdYRlkEJkSVnJIHs7dprvqu/l0DCBZP8dFKI7
-	loVcOYm3pdZZmazGqaMq8ThvZKiXdBQMsoQBZIo8zJJg1TdwaVASgaCxStIW1x6CwO+qbpfLKdCbP
-	Z0sPMSGg==;
+	bh=UeZb7UlxkKymkXsG7sHWLmL8ujuE+wR62SN+7rf1PPQ=; b=EIALN6maVhTfqL+dHQdVb/E8Re
+	+wHgF8zF0SsSU7/Y8oR6Ua60Yp4FBqfb0d41Z1uqXyvf6/xTT7S27F76+jlMFY8sjp56KueampBmT
+	1RknVu+zONXCEsg578hkM7ihgvRgM8ZdnOW2USBQsahacPxOL8KovzgqoU5rY0bEFAkvF4v7cei2m
+	beS4TtDcF7dtwoVpjdlvFPtxp7dbwh2dIDROAvZLbvEL6ix3OtmtbRbGncX9J0YNmtjx01l2UxPhv
+	kkhoYPb0ZOh2db+xapf9Yq1mlol6Gt3SB+7ybGrvQflM0zhj/L3XG6wzz6wcpLCwtsj5m3EwN8u3K
+	qhOXT7sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWgAr-0000000ETWq-1ks0;
-	Thu, 26 Nov 2026 20:34:33 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xWh1B-0000000EYUO-0ws4;
+	Thu, 26 Nov 2026 21:28:37 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWgAg-0000000ETRB-0Qpl;
-	Thu, 26 Nov 2026 20:34:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795725259;
-	bh=abqDquCjMGqMJ3NkU3LM2AslGjSstfozpN5N2jtE3gM=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=frUaz41jyxqWysbTEj7WnpwOkf/UkdVpsl4V+c3czHyi+dNs3eM8KpUC1JuQmitop
-	 1uuld94b69SM+aY/Mg19vPINTbi21n3CVEi6rwCSRUzuYXY78rnLoVcM2YkJy3MI1E
-	 h0fm6FX51SWmK/G65FoJY2xaJcYi1TiyjQrIO1vrVWDMam2DRPswx80TnYA75A5+3i
-	 YPJ/r+iGOJxMOmTpteOELJIk9303GQsUw239RzduK2ZWbn03O66osJfjMXzWkTD68i
-	 /qt8fg9tZP+hCsYWfdRsNqOvbJKGetDArEpLvcqI5Vuc5tkR6B2Yc5Lm2l9xzy0Xv9
-	 aRASBYTmrSD7Q==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6169517E01D1;
-	Thu, 26 Nov 2026 21:34:17 +0100 (CET)
-Message-ID: <3d866004c558c169d3bdbee8cd737b0fb818f3d9.camel@collabora.com>
-Subject: Re: [PATCH v5 2/4] iommu/rockchip: Add rockchip_iommu_restore()
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: aiyengar1990@gmail.com, Mauro Carvalho Chehab <mchehab@kernel.org>, Rob
- Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley	 <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, "Joerg
- Roedel (AMD)"	 <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin
- Murphy	 <robin.murphy@arm.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, iommu@lists.linux.dev, Hans Verkuil
-	 <hverkuil@kernel.org>, Alex Bee <knaerzche@gmail.com>
-Date: Thu, 26 Nov 2026 15:34:15 -0500
-In-Reply-To: <20261126-iep2-v5-2-3deac0976f10@gmail.com>
-References: <20261126-iep2-v5-0-3deac0976f10@gmail.com>
-	 <20261126-iep2-v5-2-3deac0976f10@gmail.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
+	id 1xWh10-0000000EYRu-2GVV;
+	Thu, 26 Nov 2026 21:28:26 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 50C0061B37;
+	Thu, 26 Nov 2026 21:28:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8FF331F000C1;
+	Thu, 26 Nov 2026 21:28:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795728504;
+	bh=AKE9hZpQGszWx/7HA8tIwIZOKLxBkMhWpBT53qbuBGk=;
+	h=Subject:From:To:Cc:In-Reply-To:References:Date;
+	b=m+oYj6287zb9RCTfENOWwvGl/347fysghidRTIGsZIAgQmoNOAUZI1xSYgX7dJiQ/
+	 NRJK+RAtzUQDtCpRovni3fW5ILQGGCgP0SGIG885i+Acm/L/M+DV1mF53fqEJ6jZ03
+	 tF/R6JnEsWVP8szh5sBl3ygKbsZKDyT6STwJcNfY86gqYS0KJUKDWwAUAhaYFmO61I
+	 UHR6VaPZOa6ah08pJlSTdShRR3ouj7KvAtT7qvXMOkYaJPyB+dg1PYszQeu/tTHGhZ
+	 h6WBnHbokPHlhxTZjDWI+4nlxkW6e9Jic/7ytegVXwSn6Ry8NlwhPnxQhWkpqOj8F7
+	 uPT4Ps0lZtg7g==
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_123422_344672_3598A665 
-X-CRM114-Status: GOOD (  24.78  )
-X-Spam-Score: -2.1 (--)
+Subject: Re: [PATCH 2/2] dt-bindings: spi: rockchip-sfc: add RK3506 support
+From: Mark Brown <broonie@kernel.org>
+To: ZhuXiangyu <1194781887@qq.com>
+Cc: Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Chris Morgan <macromorgan@hotmail.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, linux-spi@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+In-Reply-To: <tencent_E24973E955D1A26CF5A4F983929F8F8B0006@qq.com>
+References: <tencent_B239E24A7651B43AC21C4769D1E75FA0A505@qq.com>
+ <tencent_E24973E955D1A26CF5A4F983929F8F8B0006@qq.com>
+Date: Thu, 26 Nov 2026 21:28:16 +0000
+Message-Id: <179572849658.838304.8494302770279500225.b4-review@b4>
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=558; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=NYkHdhnKP6nblxfLbI6IxY44AGsOc8rvLXvhgNlcXKI=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLI5lhTuFngeoThR2myD5bwJRrGbd9UE3D8kFiw5/Qu7X
+ 5LrstaojlIWBjEuBlkxRZa4LO6X9SWv1/AdXNgGM4eVCWQIAxenAExESJrhJ6PKjGP1XEGOKRvd
+ rHMWPBLKktfxD73+oPljAXNAL//fH4wMD+wTmRSauf/EVDjrfdFW3h5zKmPvfy/h/L6J7Fnc71T
+ 5AQ==
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,165 +77,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7285878336949612111=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============7285878336949612111==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-3MjT44OPCjy6caLCkHly"
+> Document the RK3506 FSPI compatible with the generic SFC fallback, and
+> the rockchip,grf and rockchip,max-dll properties used for the
+> power-good handshake and DLL training.
 
---=-3MjT44OPCjy6caLCkHly
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Please submit patches using subject lines reflecting the style for the
+subsystem, this makes it easier for people to identify relevant patches.
+Look at what existing commits in the area you're changing are doing and
+make sure your subject lines visually resemble what they're doing.
+There's no need to resubmit to fix this alone.
 
-Le jeudi 26 novembre 2026 =C3=A0 19:51 +0000, Arun Iyengar via B4 Relay a =
-=C3=A9crit=C2=A0:
-> From: Arun Iyengar <aiyengar1990@gmail.com>
->=20
-> Some masters reset their IOMMU along with themselves. The RK3588 IEP2
-> does: after its soft reset, paging is off and its DMA is untranslated.
->=20
-> Add a helper to reprogram the IOMMU of such a master, so that its
-> driver need not attach and detach an empty domain to do it. rkvdec
-> does the same with rkvdec_iommu_restore().
->=20
-> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
-> ---
->  drivers/iommu/rockchip-iommu.c        | 36 +++++++++++++++++++++++++++++=
-++++++
->  include/soc/rockchip/rockchip_iommu.h | 17 +++++++++++++++++
->  2 files changed, 53 insertions(+)
->=20
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iomm=
-u.c
-> index 21af2f621c76..81cad102929e 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -27,6 +27,8 @@
->  #include <linux/spinlock.h>
->  #include <linux/string_choices.h>
-> =20
-> +#include <soc/rockchip/rockchip_iommu.h>
-> +
->  #include "iommu-pages.h"
-> =20
->  /** MMU register offsets */
-> @@ -1349,6 +1351,40 @@ static int __maybe_unused rk_iommu_resume(struct d=
-evice *dev)
->  =09return rk_iommu_enable(iommu);
->  }
-> =20
-> +/**
-> + * rockchip_iommu_restore() - Reprogram the IOMMU of a master after its =
-reset
-> + * @dev: master device, runtime active, with no DMA in flight
-> + *
-> + * Some masters reset their IOMMU with themselves, which turns paging of=
-f.
-> + *
-> + * Context: may sleep.
-> + *
-> + * Return: 0 on success or a negative error code.
-> + */
-> +int rockchip_iommu_restore(struct device *dev)
-> +{
-> +=09struct rk_iommu *iommu;
-> +=09int ret;
-> +
-> +=09if (!device_iommu_mapped(dev) ||
-> +=09    dev->iommu->iommu_dev->ops !=3D &rk_iommu_ops)
-> +=09=09return 0;
-> +
-> +=09iommu =3D rk_iommu_from_dev(dev);
-> +=09if (!iommu || iommu->domain =3D=3D &rk_identity_domain)
-> +=09=09return 0;
-
-I was checking the core, even though I'm not very knowledgeable, and all th=
-e
-attach/detach is protected by the group mutex. This helper bypass this. In =
-many
-ways, its fine for the media m2m use cases, since we call this "just after"=
- we
-have performed a reset of the core that exclusively use the IOMMU.
-
-If it was shared, here the condition above isn't guaranteed without holding=
- that
-mutex. Maybe its the documentation that should make that super clear?
-
-Nicolas
-
-> +
-> +=09ret =3D pm_runtime_get_if_in_use(iommu->dev);
-> +=09if (ret <=3D 0)
-> +=09=09return ret;
-> +
-> +=09ret =3D rk_iommu_enable(iommu);
-> +=09pm_runtime_put(iommu->dev);
-> +
-> +=09return ret;
-> +}
-> +EXPORT_SYMBOL_GPL(rockchip_iommu_restore);
-> +
->  static const struct dev_pm_ops rk_iommu_pm_ops =3D {
->  =09SET_RUNTIME_PM_OPS(rk_iommu_suspend, rk_iommu_resume, NULL)
->  =09SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
-> diff --git a/include/soc/rockchip/rockchip_iommu.h b/include/soc/rockchip=
-/rockchip_iommu.h
-> new file mode 100644
-> index 000000000000..79fdd898a0fc
-> --- /dev/null
-> +++ b/include/soc/rockchip/rockchip_iommu.h
-> @@ -0,0 +1,17 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +
-> +#ifndef __SOC_ROCKCHIP_IOMMU_H__
-> +#define __SOC_ROCKCHIP_IOMMU_H__
-> +
-> +struct device;
-> +
-> +#ifdef CONFIG_ROCKCHIP_IOMMU
-> +int rockchip_iommu_restore(struct device *dev);
-> +#else
-> +static inline int rockchip_iommu_restore(struct device *dev)
-> +{
-> +=09return 0;
-> +}
-> +#endif
-> +
-> +#endif /* __SOC_ROCKCHIP_IOMMU_H__ */
-
---=-3MjT44OPCjy6caLCkHly
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawiXxwAKCRDZQZRRKWBy
-9Cr2AQCsTl6XPrjbaY0SjcDbbzXlND83mZ41UCypu76rA3F1DQEAy7HVkCPVts6P
-z7OrYiyBAVAHXip+a45hCdo/piTAIwU=
-=KzIp
------END PGP SIGNATURE-----
-
---=-3MjT44OPCjy6caLCkHly--
-
-
---===============7285878336949612111==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Mark Brown <broonie@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7285878336949612111==--
-
