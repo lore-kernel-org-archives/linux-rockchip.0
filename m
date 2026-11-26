@@ -2,121 +2,106 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9977A606A331
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 08:55:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6138B606A31E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 09:19:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Cf/cIO0Z;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=uRSBEPII
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CKugnIgv;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=h6dCFrdy
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=S1L3N1wMJudEIjA1Tp/96ZAMIcUqRwYULHxzBS8nXSA=; b=Cf/cIO0ZH7AtKGjlZ9JYcCjiBF
-	fWel453SI4bXkRZjJUPnJVPFRNYkbKDCV8Cd/ovZJWM3FQPiERGxmFSyIE9I8ncNMqCkUTC6LGZyH
-	VhFb3AvJlHppLnoZQErSaP0/d4GVzc6KcBpE+bFkmxguYfwvb01KkX/TLu59mXSNnY9z55i6FzwUX
-	L7v4RdMSWQ43BpuS2BWv6qeLAv1DP0aPxacgR2efWt13ankQtH7+glCciHt7YrBJJb6x/4PWNe54t
-	4l8WOkGoI/4zU/ebTvoGXFaHUtUoOHsn4x46nV4stTPuko0stvuZqIMWjmB6rP2uisgtrOZ6rFZ5v
-	h7NvKAog==;
+	bh=EzvvCTMAMXaObCkj1GC9ku4vLu1wjJDZOjMakNIroDY=; b=CKugnIgv0oxgWcyCQVIDzpTZVp
+	JZYm3oSWfktdQ1PNt9tNtUYAgyY5B3VfRB4/pIhZlh331pQj7izoQL7yBi4o47lHb8CP7tkWJ6ECx
+	nxqGa2Z4Turwckf4sAIwJKO0nJqbUXEI6jc8rBZACboirQ4mRQ8Tmcvs76rk0LP8uX6fOiP4/tlhT
+	pw8yHGXg/oFA6UA/lZKt4LnXc3bKkWfMatXEo/zkbrWPdQ7K/uoZV89xDIQxTNIY8fjo3/IGaDyX5
+	pI+WYLsVRwrXICp9l7hPv1JLn7B2gZMeldj1IIuYtk42jj5e4XZB3iBVcL+sWwjTCI01nGcmVXQj+
+	9Wruz3bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWVGV-0000000CSD7-2yLE;
-	Thu, 26 Nov 2026 08:55:39 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1xWVdl-0000000CWHJ-3rKz;
+	Thu, 26 Nov 2026 09:19:41 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWVGT-0000000CSBH-0CRL
-	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Nov 2026 08:55:38 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5c154a41f8aso523080e87.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 26 Nov 2026 00:55:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795683335; cv=none;
-        d=google.com; s=arc-20260327;
-        b=i1ED1qSSFd1hmtoj/GKtjtKy/IkaksOCwGPVPO5hCmluqoWnFlpLhCz256uHWSCl8P
-         UEfwzgrppBLB02obiQj+53qfb8sqVuT8xeFTM/Y5P5oLH8u5Ig6Q1CzcZKQ/zjcODNGL
-         9zPuNBvA6fU+VkQyrUozeMwVJZZnB/tHTG9rxtyygjtI3875nRxkqCReYM8akPjV9vpb
-         b9dCIKtN+lg2KwA8b4B9OfkBAUBaqHMpfhMHK1xwB1RjNsAMkd8ZcO/P7FBkOprxuUVB
-         Xhz85x8NpZjs73loF5bAknGEie/ScT6rqgDuyP1R84N09mFFr0Q04tY4n8/R31PEH+f0
-         qWbw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=QKThXZIRAMEkOiH8X0ve/DDQDh2imYfE9WZ4cHyq7O4=;
-        fh=ZtXWoyMSDGI7jPugOP1NSsvD5pynwvWeq7x6vm65CAI=;
-        b=AWOszdWuewvL8zPaBCPE6G9eJotD1XrsQLBUDy7qIooF5h2qSRiyusB6PQ2Qscer94
-         RSDYWF3TunuXZmNtK0i7v5YZR5Czi/hFCz8tRmWccW1jZbq1i4dQGjwwV5mgQ6/Ah11t
-         LmdiOVLUfu3IhqW1fNS1am9NPdEq69YEkphhFbAYVq75N7LC/IJSf1AmKaYiPlbT0sEj
-         1MtmYo1764IA+YjhNwfCQwh+T6kOoNXPU4kWoI0XH2qBfBACDNiasLJ8JqGtvccBT0u0
-         McANbluG1nsmZ/Tt7OUeS23+KZnbc4aTDWXllOQE8GKarqmf6bJ0fpKCJa6TPUjAn6dr
-         OnuA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795683335; x=1796288135; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=QKThXZIRAMEkOiH8X0ve/DDQDh2imYfE9WZ4cHyq7O4=;
-        b=uRSBEPIIYR4IezidyQoIefAKTpYcjMh9/HPFKBbi03nVCxSzq0XKZZDr4p0JAiqSvH
-         4uSkJshlQ32bSmGt3JDSWMZv5KA++MwYGVs68jMSDcpTc6TxtwgfyHSJ7Bv4fc7ZEztw
-         KvZn/E8ArcuXrMNGVK+54PzJnZwXZVP36CUzA20mTITSEVnecKYOJdCx+/sK+XSgTXX+
-         PYOGEQ8vrV4a+Yuu1OFz3bFpOS4M1S25GhmxAqyFMKdHb30boyJuTQhI9ys8G+cD3Trd
-         lHwdRYdRGdQfM9ve2dOR8ptu9flRxD6TSgInABBfk/aU+gvdfFzz79clQD6xntlX+0S1
-         mqnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795683335; x=1796288135;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=QKThXZIRAMEkOiH8X0ve/DDQDh2imYfE9WZ4cHyq7O4=;
-        b=bahYVn2PWIENwgGV5f2ZBn5f6FvWFF/5IHl+XOrwYzGYI5e2tMhk4eG8HdFRcl1QMG
-         xQ/7krQfx2bQefZktLbjwKQ2vJuI6wtljhjomyTA5S31xXtz2BrzmqU+sdwlMj5yDyvq
-         PAdB20/RcgTST/S+iWetaqzuvD9asdFuXkS0LXfv/h0uAvJMOeC93u8ssso9NbdoccQu
-         mS2HF01gzFON7UwJlGI9Q9qu0uswF7gTdHGjuMu2mMGC26iv1y8Oq2zk0Zz59//jVOiw
-         /GS4rMWubUI77gUP64xzeJFELs6A2ghPq2KJzHNcrY0OTckRnglZN3yVweH524ZmTI7f
-         wTSQ==
-X-Forwarded-Encrypted: i=1; AL+hErFVUjqLN04iZ8MP0oW8eVYtHaTnH8navQ8bwrTc9a9wI4boFvjiPaZrXSenWjOH58iVkbPmVuTlsR5sTFUySA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z80/Yau6Cyu7fPaoMLL1awCEsnORoLYAqWIFa9lTD0EhIuWgsA6
-	vNpPXUMkAy8o9ErVASl8TAGm2qBcI44ov6cWzXYQhrqGV8ROKu2x5DH82pX9j95o+a/vDiFKe3+
-	6Bw2Yf5rHvxN3M1CwIHDneaPtnlR0Bvo=
-X-Gm-Gg: AZFdTZf/NSRd7l8J59vj02kz3YQrOKvaWSQ6WFmzjFiIFWwiEsLenYT8hZJcdp81lZc
-	jOlWb6HIONJRc3RtPb8weRjwtYVD7clQrPUONSoqd+JKMcD/8T19tWPzfWnSJIB53Rzzkw8bwRA
-	wqUL0W4+hvAGPiwxpW6FI4sK3sS9MLq1p9wIkP0qtkYPpFaB23QaU0qjUn1V+Xo2/pBYV2zmLuV
-	FVqC1gNKJPFQYE3h8RYi2BanxT0wpKuHWugt59o9gN/nEfRZJJpaQK4RSemplnxro2AInDGI7ue
-	RGbC8XatmHA28NjOafLuv8pt+qAEZM4Qk0x9FZYqSqaV8cQEbxhmgAaa/a0h+0AJxhmdvGTbQho
-	MKnhqJWG3C5NxN7p1DiBBiNg2EMP86bFNTpDgZ5f2UyY5VEAMPc/1a/B2EUhfBHfrkZXOKS8=
-X-Received: by 2002:a05:6512:1151:b0:5c0:62:7fc3 with SMTP id
- 2adb3069b0e04-5c1bc7ceb5fmr8223250e87.5.1795683334857; Thu, 26 Nov 2026
- 00:55:34 -0800 (PST)
+	id 1xWVdZ-0000000CWC0-2ea9;
+	Thu, 26 Nov 2026 09:19:29 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 0653B408C0;
+	Thu, 26 Nov 2026 09:19:29 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795684768;
+	b=ugT8VNumOhl71Pvi1B9ZwWJ84VHEinQIdfWK1zBEOLJQh0QupSacXsbb3lrDbQafVpKE
+	 hV6QCsiPv3MmAqWLutQbWKSoFxIguVYduOjMJS2oWkiN2gBVA593QwJ0v+YwKBPNFSKcB
+	 2+/eo8TBWhKfexo24PrZZnmrcpxZ9vBl/HoXbCbgspf1Z07U1xew+J9VgMFhbrgsdMwbx
+	 Er7LB/4pVaYU7ZNgoGiNSjVQQGd5TsWdmZwZnupnbQp+vlYRB7RnQ8yLGvugqFngNqxVn
+	 /rYJZWUdPjFqTrI5iyFsNK2xAj42RR0gHPn+PIMJ4CFgVAXMWDeOKAandW8mNG/qXDQ==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795684768;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=rjO4Z9fnGzJyAT3zi59WpM5QjCpGo5vCmcnuMsX5xB0=;
+	b=CLWqOjjKLMmMaK5AgnmBAzQxB3DfM5eKlAxBFqeZKEfkAh9Rui5qrwz6dyx5xjbtQ0uT
+	 U5TJvRGoJg4MAbaBwaYWwy7TlwsVAu/KXpu6Z8jg6c1Q24cePpBGVfB07Xzo4FfOFEO8H
+	 CmwEfHe13dKcGl+IVzEYbq5HU7Q4IGbAg+a6gaSZzdBuE2psOBinsKqa2W4ceFV+OwqAk
+	 reXmOE7r+0Mou+eSQ3bwqpY5N2uFKuehErf6Omj2QGARFje7JlpjE9L4uWDJUVNNxBP2a
+	 0TwRE6LDAADoFxMHVKCS3sY34XZyKrsJwbP32bfWBNm00EI0TSm5iIG+TrOb8UWIAPg==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 52D0D1F000C6;
+	Thu, 26 Nov 2026 09:19:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795684768;
+	bh=rjO4Z9fnGzJyAT3zi59WpM5QjCpGo5vCmcnuMsX5xB0=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=h6dCFrdyQvdiJ3okXT5Y4qWO9wzEXpRq7jT4IETmB8lcI3/h9WI9mZlgISFUwZEJN
+	 ES5/B3SFlevbj8p4mHWL8AW4xEKAtCpyOdGUmFeSKEj37DKNT57qxkLzdGntbDOTUl
+	 Da+J97R63oNKuhxG1SQGKVcKUJiDt7hVJgwO87K8oIi7ZT7/tL+95oCc+lUfDs5H1P
+	 RT2RByP3Kwx4Nr/vh8J8ADV6dWf9Jkhi/nIuAInpyY6rpLgjApafsFMKcS9tqpIfGZ
+	 VlSgUUNzixUoVjAPMOp3p9wAzFxZI/umVy1VhIUUHSi52tMN8Ggif/5F0Z/O84g//w
+	 YMhrhifwzdcCQ==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id A2BCF4D326;
+	Thu, 26 Nov 2026 09:19:20 +0000 (UTC)
+From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
+Subject: [PATCH v3 0/2] usb: typec: Find a Type-C partner after a warm
+ reboot on the Orange Pi 5
+Date: Thu, 26 Nov 2026 09:19:20 +0000
+Message-Id: <20261126-tcpm-attach-reboot-v3-0-1c97dfa5024a@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261113-mmu600-php-v1-0-231196049a3b@gmail.com>
- <20261113-mmu600-php-v1-1-231196049a3b@gmail.com> <20261123-quirky-scallop-of-beauty-c662b7@quoll>
-In-Reply-To: <20261123-quirky-scallop-of-beauty-c662b7@quoll>
-From: Arun Iyengar <aiyengar1990@gmail.com>
-Date: Thu, 26 Nov 2026 00:55:22 -0800
-X-Gm-Features: Aa3M54pFlibDAmDC24529Pztyl31CflHnU5Me60OGDKTLA2a_3s21NJ2pQ1ALv8
-Message-ID: <CAEy9hNX-TiThoXZ9+Q7j=bB7PpNBr7Wjz8_sH7C081HXka4xHA@mail.gmail.com>
-Subject: Re: [PATCH 1/9] dt-bindings: net: rockchip-dwmac: Allow iommus
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@kernel.org>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	David Wu <david.wu@rock-chips.com>, Damien Le Moal <dlemoal@kernel.org>, 
-	Niklas Cassel <cassel@kernel.org>, Serge Semin <fancer.lancer@gmail.com>, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-ide@vger.kernel.org, Pranjal Shrivastava <praan@google.com>, Will Deacon <will@kernel.org>, 
-	Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev, 
-	Shawn Lin <shawn.lin@rock-chips.com>, 
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_005537_127641_1376AEEB 
-X-CRM114-Status: UNSURE (   5.66  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/32Nyw7CIBQFf6VhLYZHH9aV/2FcwIW2GFsaQKJp+
+ u9C3XRhXE5yzsyCvHZGe3QuFuR0NN7YKQE/FAgGMfUaG5UYMcJqSinBAeYRixAEDNhpaW3AquW
+ q6nhdEi5ROs5Od+a1Sa+3L/unvGsI2ZQXg/HBuvdWjTTv/gYixQQ3ddUAUM0UiEs/CvM4gh1RD
+ kS2V7CfCpYUspRQgzjxsiV7xbquH4Iq5u8JAQAA
+X-Change-ID: 20261110-tcpm-attach-reboot-d93d5f36403b
+To: Badhri Jagan Sridharan <badhri@google.com>, 
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Guenter Roeck <linux@roeck-us.net>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ Arun Iyengar <aiyengar1990@gmail.com>, stable@vger.kernel.org
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795684760; l=1385;
+ i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
+ bh=O8mJr7+GZG2WrudGQ9eZZi1UioAIWkg07uAFPVTyYSU=;
+ b=GA9s3Yl1E+f6Nk1yfkUbft03ym7vcUn4ZSTL1j7Pzs8LGaQ6jkS+AQr0uamuXWBhYGc9IiOYg
+ ft/6LOPSeyHCD2EFF8mbH03W4AUfswZ2lTkN1cZBWewx/Q9dyAvEomb
+X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
+ pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
+X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
+ auth_id=1480
+X-Original-From: Arun Iyengar <aiyengar1990@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,19 +111,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: aiyengar1990@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_REPLYTO_END_DIGIT,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Sorry, I missed the report. v2 allows iommus only on the RK3588
-compatibles and drops the nested ifs in 3/9. It follows once the
-arm-smmu-v3 clocks/resets binding it needs is settled.
+After a warm reboot, an Orange Pi 5 (FUSB302) often did not find a
+USB-C to DisplayPort cable that stayed plugged in; only a replug
+brought DisplayPort back. Two causes:
+
+  1. tcpm: a re-queue at port registration cut the 100 ms
+     ErrorRecovery after PORT_RESET to 6 us.
+  2. fusb302: the chip never found this cable while toggling with
+     Rp 3.0A.
+
+Tested on an Orange Pi 5 with a USB-C DisplayPort monitor: DP alt mode
+on 16/16 warm reboots. Not tested: other TCPCs, ports without PD.
+
+Developed with Claude (Anthropic), which wrote the code and the commit
+messages. I reviewed every change.
+
+Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
+---
+Changes in v3:
+- Patch 2: Cc stable (Heikki Krogerus)
+- Code comments dropped, shorter messages, no functional change
+- Link to v2: https://patch.msgid.link/20261112-tcpm-attach-reboot-v2-0-b4bc6ca83490@gmail.com
+
+---
+Arun Iyengar (2):
+      usb: typec: tcpm: Don't cut a pending state delay short on a re-queue
+      usb: typec: fusb302: Toggle with the default Rp current
+
+ drivers/usb/typec/tcpm/fusb302.c | 12 ++++++++++--
+ drivers/usb/typec/tcpm/tcpm.c    |  5 +++++
+ 2 files changed, 15 insertions(+), 2 deletions(-)
+---
+base-commit: 90d6263e867be7089b3d3323bef8d2accd327c77
+change-id: 20261110-tcpm-attach-reboot-d93d5f36403b
+
+Best regards,
+--  
+Arun Iyengar <aiyengar1990@gmail.com>
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
