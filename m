@@ -2,72 +2,73 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 903FE606A31C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 13:36:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A32BF606A31C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Nov 2026 14:14:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vuIu8axl;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=Z/fjWoYP
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=j0gIL9eI;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=dxf4Z9oZ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Subject:To:From:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=2AD/3TJGo3CahF96KbcM76z8h9xpgkHgdY3zNcqadG8=; b=vuIu8axl8uoIBkYnCH6WTklx1z
-	OJbkKpm6HtxeYuYXh3T5BjpN7im0n3Mq2JByJGgJDLuRAkE6VeZEjI0LCPXVpGnJdgumF3F3mL3r5
-	2TYpxiesOmdlh6R2B7eRq5+YqsC0yPxRyGSb9o51x1/SdO1qYBPEg+Y/pUCey8LiDOlZ8qV4B5Hj2
-	KafNKiNPmE0zEGoGfI55d+CJUBYLDAfPzvW5vIzokZ+DOOQb5N7TJRjlbgkJA4pWZ6sb01Va97Jcr
-	dTuphXpjr7s9iePBT2/2Wo7GkFzOGVxUyn7uuL1TskGzjnK1zxGuPuXixb2fx9PhR+I2TE2hv6BkI
-	jGt4h3ow==;
+	bh=mUH9y4xhwKkbP6zFlOSXeW+1U79Mryjv8cg+WBGIuX0=; b=j0gIL9eIie4I1U3qmVunRDlvTJ
+	ZhZk9NgYtvzHmeTevG5P0IJ8NjJC996WgEnlrCmTONRYCnmcNA4fS5CMHCQJddAXUQGwOteu2GoSZ
+	LS1D+j9FKeFtdwUWnkM1GpeTBY6WNP75LzrmszwNYhdUyBHsz8clttxkZRU/Kl5bDoyVRv5osTato
+	ElH4/N6klBYeRu16sb0AU7mbf2mKsMtglFgfgtsLxdL0k2rO8N49T97vokF4uBeK5Mz5/4LsYH+R+
+	TDyFpN0G9dxKCwOTc967Rs/R9TaruJWE6A6/N0sYfZwyRvs8cLZAZ9SaayeqgD2s4iIAXlY7Cgq//
+	kYRxPOvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWZeU-0000000DOST-1g3r;
-	Thu, 26 Nov 2026 13:36:42 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1xWaF2-0000000DVbb-2SZ0;
+	Thu, 26 Nov 2026 14:14:28 +0000
+Received: from sender6-op-o11.zoho.com ([165.173.180.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWZeO-0000000DORQ-2SJp
-	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Nov 2026 13:36:38 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 54AAB1A1814;
-	Thu, 26 Nov 2026 13:36:33 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 28BAF604ED;
-	Thu, 26 Nov 2026 13:36:33 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B2CF111E68014;
-	Thu, 26 Nov 2026 14:36:23 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1795700188; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=H7KUPIMQTQxlieuvSYIhpe8VSF9yrzbbI9C5IKtg8XE=;
-	b=Z/fjWoYP2LAGa6bLi7P4Z6A4oK6uLAlsKjy48jTevgNt+gcBdaiS/FKo+vhiGy+hKVEc7P
-	hsoWpo8RFP+x+WsvWrwlEAcZmGZJ2Nu0iy3cdui/YjiibfHWSVQpVaws1OB/jgY/0OPcU6
-	wm2/OajYv86qWJIRnX0A8+9k9ToLwDtnSUVXQBigX3zX/Jv6NmiRhvCPn1e0/5OJ1JmONI
-	GEHs51lEiQJDhUA9RsvuY2YXr/OTwCdzIt3v3CUwy4SZ+BEGLiwGUOYHZBP8mTXDVcdiZT
-	u8TpQSKG38lCq1gopF2sTB71m3HQFLu6lYP8Vqmzrn7Qqsf2NewQu6a/xRxpOg==
+	id 1xWaEl-0000000DVML-2iSt;
+	Thu, 26 Nov 2026 14:14:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1795702437; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=QO94+WDzc88540FN7hTiPl1xptCjeno9y0BJSETD7qUhPkJBgdHlbK2DhMCaThUWhmlFwLNJMd86jTyuHNEvLvnh6+TqjLvFmTiBYURZcgPwdrt/E1izlmnd44fIFcWa76LzMLmweAPpbGPOyM0hhC2L4r/W27IHIDzQuvakucE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1795702437; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=v/0H+eeFYmdmqs3rzoBRgVbz7rsz3OGuWh6okG7NDWY=; 
+	b=Q3Qn9mrawWE+ITINRsKRmKaBBIRBfSLrsL9w2fTHA9Xx05V4yV2684qlBRybPIypo6EVtvpgq/fKcjjOm9ULEMywH0ul1u8Z3fQgiYrzk0EtYq43O1zTy6Nns+73kvfmxTS0d5FrUjqnrMeLyCZFjJGGNt3x0jbUUT9vkLrE9tE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=dxf4Z9oZ7Ex0qE4uw9fUrRbozgbecJ9MUAH6e3lKlIZSRO9VNoUvsGM82KpNcsir+qWA1Ws9r3uRawuWTXBabo3MuHkoCxVl0SswKRQvsvAfT8sgfq/JEp01NcsNQVrp0mnMp/veMT4hpo/4ml1qcR9S5TWeQIalQULzWsewKBE=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=v/0H+eeFYmdmqs3rzoBRgVbz7rsz3OGuWh6okG7NDWY=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1795702435028347.9531354202811;
+	Thu, 26 Nov 2026 06:13:55 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 35D121804FF; Thu, 26 Nov 2026 15:13:50 +0100 (CET)
+Date: Thu, 26 Nov 2026 15:13:50 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: chanwoo@kernel.org
+Cc: Chanwoo Choi <cw00.choi@samsung.com>, 
+	MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v4 08/11] PM / devfreq: rockchip-dfi: make RK3588 use its
+ clocks
+Message-ID: <awg8juW-7cCerIqO@venus>
+References: <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-0-517a68c008fe@collabora.com>
+ <20261119-rockchip-dfi-rk3588-cleanups-and-rk3576-support-v4-8-517a68c008fe@collabora.com>
+ <772ec0ea-da77-42e3-a281-8b8b7f364bf9@gmail.com>
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0
-Date: Thu, 26 Nov 2026 14:36:23 +0100
-Message-Id: <DN56L7R8OJ70.3FZ8Y1LD57SO@bootlin.com>
-Cc: "Ulf Hansson" <ulfh@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>,
- "Sebastian Reichel" <sebastian.reichel@collabora.com>, "Shawn Lin"
- <shawn.lin@rock-chips.com>, "Thomas Petazzoni"
- <thomas.petazzoni@bootlin.com>, <linux-pm@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-From: =?utf-8?q?Alexis_Lothor=C3=A9?= <alexis.lothore@bootlin.com>
-To: "Ulf Hansson" <ulf.hansson@oss.qualcomm.com>,
- =?utf-8?q?Alexis_Lothor=C3=A9?= <alexis.lothore@bootlin.com>
-Subject: Re: [PATCH] pmdomain: rockchip: fix warning when deferring probe
-X-Mailer: aerc 0.22.0-0-gc2f86b7abde3
-References: <20261122-rockchip-pm-defer-v1-1-5b41635e3410@bootlin.com>
- <CAPx+jO8+WAK+W8BVOSJVHoLEvQUUr0-d7gEEK+yNwhJH5skYUw@mail.gmail.com>
-In-Reply-To: <CAPx+jO8+WAK+W8BVOSJVHoLEvQUUr0-d7gEEK+yNwhJH5skYUw@mail.gmail.com>
-X-Last-TLS-Session-Version: TLSv1.3
+MIME-Version: 1.0
+In-Reply-To: <772ec0ea-da77-42e3-a281-8b8b7f364bf9@gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/295.675.79
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_053636_768327_38CA501D 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20261126_061414_463321_42127A1F 
+X-CRM114-Status: GOOD (  15.55  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,46 +79,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============3824917653759311603=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-SGkgVWxmLAoKT24gVGh1IE5vdiAyNiwgMjAyNiBhdCAxOjQzIFBNIENFVCwgVWxmIEhhbnNzb24g
-d3JvdGU6Cj4gT24gU3VuLCBOb3YgMjIsIDIwMjYgYXQgMjozOOKAr1BNIEFsZXhpcyBMb3Rob3LD
-qQo+IDxhbGV4aXMubG90aG9yZUBib290bGluLmNvbT4gd3JvdGU6CgpbLi4uXQoKPj4gRml4ZXM6
-IGQ4YjM4NDc3NzA2NiAoInBtZG9tYWluOiByb2NrY2hpcDogZml4IGNsb2NrIGxlYWsgb24gZG9t
-YWluIHByb2JlIGZhaWx1cmUiKQo+PiBTaWduZWQtb2ZmLWJ5OiBBbGV4aXMgTG90aG9yw6kgPGFs
-ZXhpcy5sb3Rob3JlQGJvb3RsaW4uY29tPgo+Cj4gSSBoYXZlIGFscmVhZHkgcXVldWVkIGEgcGF0
-Y2ggZm9yIHRoaXMgYXQgbXkgZml4ZXMgYnJhbmNoOgo+IGM2NzE2NjBlYTBhZiBwbWRvbWFpbjog
-cm9ja2NoaXA6IE9ubHkgcHV0IGNsb2NrcyB0aGF0IGhhdmUgYmVlbgo+IHN1Y2Nlc3NmdWxseSBv
-YnRhaW5lZAo+Cj4gSWYgdGhhdCBpc24ndCBzdWZmaWNpZW50LCBwbGVhc2UgcmUtc3BpbiB0aGUg
-JHN1YmplY3QgcGF0Y2guCgpJJ3ZlIHNlYXJjaGVkIGxvcmUgYmVmb3JlIHBvc3RpbmcgbXkgcGF0
-Y2gsIGJ1dCBub3Qgd2VsbCBlbm91Z2gKYXBwYXJlbnRseSA7KSBTb3JyeSBmb3IgdGhlIG5vaXNl
-IHRoZW4uCgpBbGV4aXMKCgo+Cj4gS2luZCByZWdhcmRzCj4gVWZmZQo+Cj4+IC0tLQo+PiAgZHJp
-dmVycy9wbWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5zLmMgfCAxICsKPj4gIDEgZmlsZSBjaGFu
-Z2VkLCAxIGluc2VydGlvbigrKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wbWRvbWFpbi9y
-b2NrY2hpcC9wbS1kb21haW5zLmMgYi9kcml2ZXJzL3BtZG9tYWluL3JvY2tjaGlwL3BtLWRvbWFp
-bnMuYwo+PiBpbmRleCBlMTkzZjk3OGQ1ZjMuLmFkYzNiZWJjZDkyOCAxMDA2NDQKPj4gLS0tIGEv
-ZHJpdmVycy9wbWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5zLmMKPj4gKysrIGIvZHJpdmVycy9w
-bWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5zLmMKPj4gQEAgLTg1NCw2ICs4NTQsNyBAQCBzdGF0
-aWMgaW50IHJvY2tjaGlwX3BtX2FkZF9vbmVfZG9tYWluKHN0cnVjdCByb2NrY2hpcF9wbXUgKnBt
-dSwKPj4gICAgICAgICAgICAgICAgICAgICAgICAgZGV2X2VycihwbXUtPmRldiwKPj4gICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAiJXBPRm46IGZhaWxlZCB0byBnZXQgY2xrIGF0IGlu
-ZGV4ICVkOiAlZFxuIiwKPj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBub2RlLCBp
-LCBlcnJvcik7Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgIHBkLT5udW1fY2xrcyA9IGk7Cj4+
-ICAgICAgICAgICAgICAgICAgICAgICAgIGdvdG8gZXJyX3B1dF9jbG9ja3M7Cj4+ICAgICAgICAg
-ICAgICAgICB9Cj4+ICAgICAgICAgfQo+Pgo+PiAtLS0KPj4gYmFzZS1jb21taXQ6IDk4ODExN2Nj
-MWJiMTczMzhjNTg2YTRlMjFhZGU4OGI1Mzk3ZWFjMzMKPj4gY2hhbmdlLWlkOiAyMDI2MTEyMi1y
-b2NrY2hpcC1wbS1kZWZlci1hZGIzMzMxM2YxMTAKPj4KPj4gQmVzdCByZWdhcmRzLAo+PiAtLQo+
-PiBBbGV4aXMgTG90aG9yw6kgPGFsZXhpcy5sb3Rob3JlQGJvb3RsaW4uY29tPgo+PgoKCgoKCi0t
-IApBbGV4aXMgTG90aG9yw6ksIEJvb3RsaW4KRW1iZWRkZWQgTGludXggYW5kIEtlcm5lbCBlbmdp
-bmVlcmluZwpodHRwczovL2Jvb3RsaW4uY29tCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+--===============3824917653759311603==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="a3o5crxq32b7rld2"
+Content-Disposition: inline
+
+
+--a3o5crxq32b7rld2
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v4 08/11] PM / devfreq: rockchip-dfi: make RK3588 use its
+ clocks
+MIME-Version: 1.0
+
+Hello Chanwoo,
+
+On Thu, Nov 26, 2026 at 10:00:25PM +0900, Chanwoo Choi wrote:
+> > +static const char * const rk3588_clk_names[] =3D {
+> > +	"pclk_ddr_mon_ch0", "pclk_ddr_mon_ch1", "pclk_ddr_mon_ch2",
+> > +	"pclk_ddr_mon_ch3",
+> > +};
+>=20
+> For proper operation of this patch, the following patch should be applied.
+> The following patch is applied to other git?
+>=20
+> https://lore.kernel.org/linux-rockchip/20260921-rockchip-dfi-cleanup-v2-6=
+-43ff34ac8599@collabora.com/
+
+Let me quote the cover letter:
+
+Changes in PATCHv3:
+ * split out DFI driver patches from both series and merge them into a
+   new one; clock controller and DT patches will be sent separately.
+
+FWIW those clock names are from DT, referencing them in DT obviously
+requires the clocks to exist in the first place. I will send a
+series with the clocks and the DT changes later today.
+
+Greetings,
+
+-- Sebastian
+
+--a3o5crxq32b7rld2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmsIPpIACgkQ2O7X88g7
++pr1IhAAqCA4Xj1b+Ss7BlM5Kv9ey5ZxdGBIA1MUwbSdahDgw4J4ULogZSDtKTf3
+qDdROlY8hubScVYAWfVWFNUp4eB6VUp3/XwMTpi0HVoBlyKqkoOW1cRHES2dz6Zv
+v5Bz0BgI5NIpyNgQo1qdJ1aVxRPFk19hqhP8XT8ZLGFsNbYiIdrXlv0wQIdCljhU
+GHxe2fx7ewRWY404EfZoAP6mXvewUQf7VtL+bfVbvk0trMeLxfJiYCRQjshzkHEv
+GjbL7I98hgKWg40iCTfAiPwWDtD4bIf4cFF2IivL7VgPK40Wbl230KIJI8pTM3Gz
+Q54qNozlMqHfcWf+x1EY2Fg8QqvHCgn8oWP2Nzguex/gzuN5wn58L94qChnIpKQy
+UJXdifgcjbmUCI0Qwii/FA60xP35ENYY8hRWJVtArHaN+RA8Lt418HPLNIV5JASX
+9KoyrM3uy7wNsiHk1dUhUfNRnSqQD2YGtSXAf7AhsPvp0r+zpel9ntUkyyVOgYQD
+mYWJMtEpIa70xhSA8Y+pmWohsO0Jynp78FHlyM/P3KQ3sf2MpJ7z52QECeSKrFe5
+HoqZyeBuCI27pLjfwnf5MtPnoL9Df8TSCFm/VM9YNSXtpROaGyUqOkCqTyOjzYKO
+WskTCeNT99DafpE63CbClDirt8DQbzAqklN6jEmJZyl9tr06rQg=
+=YCWj
+-----END PGP SIGNATURE-----
+
+--a3o5crxq32b7rld2--
+
+
+--===============3824917653759311603==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3824917653759311603==--
+
