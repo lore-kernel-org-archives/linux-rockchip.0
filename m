@@ -2,72 +2,69 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 65BEF606A693
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 11:42:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 78F77606A31F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 12:23:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zTxbCtg8;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=cesnet.cz header.i=@cesnet.cz header.a=rsa-sha256 header.s=office2-2020 header.b=La4Cgz56
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nSui9Fqs;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Nivgsl1R
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:In-Reply-To:
+	To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=TSeW8WTd7Wacztj6iaF+iHcsoavLMTGyM3MawEY3/aM=; b=zTxbCtg8RfZcdTOc4cTSAXivi9
-	VHWHNgRrNEFVRHFPsWAX0aZaRsYrRhTy8DPF8VIyo+uB6s+uXL+tjwrTMPBO04NLJtW29dbNSmAo0
-	/jMeLCERuBB/cX00o2s1XBaUWF0v7MxVzvO2cUftffksg1QVdGQRwwq72ZedBtV94t0kv6GB9UY6Y
-	025HdvzOP2rvawl7fMX88ao57Zt4jeHrCdl2TwcsG7LTjkLW4c91XUVd+U4avMc3Nh/jqDwvDbXso
-	racIVRqx8mSS3ngiAKLhtKP82kw99EW3sVg0FxuLHwwPONJvqu4/2pSwNI+OOz70T88P1UnYzYx9V
-	fQTdT/qQ==;
+	bh=r5dRD6E57ap10QiyTz7vKssLLjuOmmRNq6rcXEEa5ZU=; b=nSui9FqshhRhN30iMMG9ToRfQ1
+	Mxq3oFwOPLOLImyCAiaDErs+g/P2ZwpjhIDLqMr2xk+4HXDJThjNCffX1vJd+hJ4gDR8mY9LDVLJz
+	bXeF90RZHAk/fYrQROtYncaCG/uCi9gDKqGSz57LDk3aqr7dImUwfrOMef/qhY0A1UqRLvClKMyrS
+	f36R8fdrcX8rDvqj3X8EvluLQn196o1uYagSq5DicUvQ8FLZfT85eTlMBVn5kreR5tW9Cmq76Fcox
+	9mDC1BSlQq5Ps9NV8ynw3a/yGowT8D/8z/FwceJEFXxMwKTwe13ulLp+/3XmdzfJmOrUG7sARJByw
+	wO95qXkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWuKz-0000000Fry6-2jN2;
-	Fri, 27 Nov 2026 11:41:57 +0000
-Received: from office2.cesnet.cz ([78.128.248.237])
+	id 1xWuz8-0000000G6Y4-3sGr;
+	Fri, 27 Nov 2026 12:23:26 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWuKv-0000000FrvN-2eL4;
-	Fri, 27 Nov 2026 11:41:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cesnet.cz;
-	s=office2-2020; t=1795779704;
-	bh=0XGypaCJ7EJQifKr/qwYwdAUFvbJAWwik5NXmXNQWeA=;
-	h=From:To:Cc:Subject:Date;
-	b=La4Cgz560/hs2fK1204gQgoWc7x5S+YHF5BOLQvwmEqDXVHMojdu5d8dn8MXsh/Pa
-	 xnC3K8aDavr6nnLbiSagymIADfBNu5w0+aCr2C12JPmiGprqHz/tgowpYC9z2KYf9u
-	 I3M0DazwcRDJvQhZ7bUxm2UIGiao5Kcl8Jx89AsbY430kdH9uRn8R7PZ5jIrgG459g
-	 GLYGVgOxBMDYMXwe7yaLRbxZfY9OIOEu5fN5bMMQPLMI6Gl+G+k+FO5SpTxujoyxu9
-	 D9EqEnhrc4dBg6bn9JFODq/GmlrBxPruaHKohYccXn8yF6k3CAjgBmkIFrCl9W6gBv
-	 +F792sd0dPl7Q==
-Received: from localhost.localdomain (unknown [85.255.90.210])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by office2.cesnet.cz (Postfix) with ESMTPSA id B3501118007D;
-	Fri, 27 Nov 2026 12:41:43 +0100 (CET)
-From: Jaroslav Svoboda <jaroslav.svoboda@cesnet.cz>
-To: linux-media@vger.kernel.org,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org,
-	Jaroslav Svoboda <jaroslav.svoboda@cesnet.cz>
-Subject: [PATCH] media: rkvdec: Reject 4:0:0 HEVC streams
-Date: Fri, 27 Nov 2026 12:41:30 +0100
-Message-ID: <20261127114130.1680888-1-jaroslav.svoboda@cesnet.cz>
-X-Mailer: git-send-email 2.56.0
+	id 1xWuyw-0000000G6Qv-3jyO;
+	Fri, 27 Nov 2026 12:23:14 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8650C43F0B;
+	Fri, 27 Nov 2026 12:23:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 231E31F00893;
+	Fri, 27 Nov 2026 12:23:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795782194;
+	bh=c12Zkxjeg6rjGrTjjN1zUUM8OFcraLXLi6+BuwMU4QE=;
+	h=Subject:From:To:Cc:In-Reply-To:References:Date;
+	b=Nivgsl1Rie9zo+jVegl2JAscy+WS4emvn5WXBN7aZeLouEqCRFW/Ij0cPiOxef4yB
+	 7TQjWdkZHYz66WQRqFXlfVBwsN++Lp9UOko8o3ScfUYxRjjfg3ZzogLVfJ+JHj4F+W
+	 43Y8KDsv5fX/Gc2ZKdkVbhLmfB8BsRtCa2RjwMa9tGdPWIwFRu3Cx7Z/OOU+kgHQXq
+	 z5yRO4lqg/iIaF0YrsnJTC4L0bc4WX1jbOr/p+COqKFsf9Xyxq5uyJhtLLnAa6D5pL
+	 dBZjo+iAslkSNaw2Zxgx4iZB+PiZge9QvRqqu1eFs3ktC7gUEEUPWEJeslVK2ygWY6
+	 xPWJyHAWkI3Ew==
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_034154_133520_D572935F 
-X-CRM114-Status: GOOD (  15.13  )
-X-Spam-Score: -2.1 (--)
+Subject: Re: [PATCH] phy: rockchip: samsung-hdptx: Power down the lanes on
+ phy_power_off()
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Arun Iyengar <aiyengar1990@gmail.com>
+In-Reply-To: <20261110-hdptx-lanes-pwroff-v1-1-c2f85b7e06a4@gmail.com>
+References: <20261110-hdptx-lanes-pwroff-v1-1-c2f85b7e06a4@gmail.com>
+Date: Fri, 27 Nov 2026 17:53:05 +0530
+Message-Id: <179578218573.13164.1824444278264015973.b4-reply@b4>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2073; i=mani@kernel.org;
+ h=from:subject:message-id; bh=Oj5HV/thFvMBEahPJ2+46+EsI+CFa7Kz8uIFq/XTiSE=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBrCXYtawNTHXtgF90TUxjdD1J8a+FlpDcFmwX+/
+ KgyshZ7F4WJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCawl2LQAKCRBVnxHm/pHO
+ 9TqhB/0VwhOvKxRk8npFn6N+osdlrMNKoI2eGwyv109+fEdDmkOPXYREVtdGfWLNYeuHaGvfdAc
+ aOJGZhycAK83LE36fox2tn4fj3x1xZshOgJjxSsD43qRQOHWNwfu76yEsarhwVfXESxDaw2AKBk
+ g1WfOuUOAQLtHdQBrWlRjD+/UUMCq8BeMQcjJTJdD5JyO4P78KT8aNO5tgkB1QpKCVo84OVZMpK
+ zAPrIKIWjXr6wL6hArrhtXFCyl5Cw89T2ameZExNqqunLco244CWvA5MCccSy+cZc5eu3pkst2n
+ 7NPn04lmXFuf0buYSSDDLUyQhGA8LT/QlJ0NghLh0vHhuQky
+X-Developer-Key: i=mani@kernel.org; a=openpgp;
+ fpr=C668AEC3C3188E4C611465E7488550E901166008
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,68 +74,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Manivannan Sadhasivam <mani@kernel.org>, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The HEVC backend of the first rkvdec variant (RK3288, RK3328, RK3399)
-accepts an SPS with chroma_format_idc 0, its comment reading "Only 4:0:0
-and 4:2:0 are supported". The hardware has no monochrome HEVC: the
-RK3328 and RK3399 datasheets list HEVC Main and Main 10 only, and
-Rockchip's MPP library notes that its HEVC decoders before the RV1126B
-do not support YUV400.
+On 2026-11-10 07:16 +0000, Arun Iyengar wrote:
+> Since the PHY became a clock provider, rk_hdptx_phy_power_off() does
+> nothing but drop the shared usage count, and the PHY is only really
+> disabled when that count reaches zero.  The count is also held by every
+> clock consumer of the PHY PLL, so with a clock reference outstanding
+> the lanes keep driving the link after the HDMI controller has asked for
+> the PHY to be powered off.
+> 
+> On RK3588 a clock reference is almost always outstanding: the VOP lists
+> the PHY clock among its clocks so it can source its DCLK from it, and
+> the Rockchip power domain driver puts every clock of a device under
+> pm_clk, which prepares the PHY clock (i.e. bumps the usage count)
+> whenever the VOP is runtime active.  As soon as any other video port is
+> in use, e.g. a DP output, switching the HDMI CRTC off therefore leaves
+> the HDMI lanes enabled and the TMDS clock on the cable, so the sink
+> never sees the link go away.  The lanes stay on until the whole VOP
+> goes to runtime suspend.
+> 
+> The lanes belong to the PHY consumer alone, whereas the PLL is shared
+> with the clock consumers.  Hence disable the lane output and hold the
+> lanes in reset in rk_hdptx_phy_power_off() regardless of the usage
+> count, and keep leaving the PLL to the count.  This is the state the
+> PHY is in between PLL and lane bring-up anyway, and the next
+> rk_hdptx_phy_power_on() restores the lanes through the regular
+> rk_hdptx_post_enable_lane() path, so no additional PLL re-init is
+> needed.  The vendor driver does the same: its power_off callback only
+> clears the lane enable bits, leaving the PLL to the clock refcount.
+> 
+> The DP mode is left untouched: its PLL is not exposed as a clock and
+> the lanes are torn down by rk_hdptx_dp_reset() from the usage count.
+> 
+> Fixes: c4b09c562086 ("phy: phy-rockchip-samsung-hdptx: Add clock provider support")
+> Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 
-Given a monochrome HEVC stream (x265 fed gray or gray10le pictures),
-the RK3328 and the RK3399 decode every picture's luma as zeros, with
-IOMMU read faults at addresses near 0 and near the size of one luma
-plane. A 2160p stream hung both SoCs after a few seconds; only a power
-cycle brought them back.
+Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 
-Reject chroma_format_idc 0, as the VDPU381 and VDPU383 backends already
-do, so that setting the SPS control fails and userspace can fall back
-to a software decoder.
+- Mani
 
-Tested with this change on v7.3.1, on an RK3328 board and on a Pinebook
-Pro (RK3399): a monochrome HEVC stream is now refused at the SPS
-control, and 8-bit and 10-bit 4:2:0 streams still decode bit-exact
-against FFmpeg. Not tested on linux-next itself, nor on the RK3288.
-
-The problem was found, and this fix and message written, with the help
-of an AI coding assistant (Claude Opus 5.5 in Claude Code) during
-hardware testing of the boards above.
-
-Fixes: 3595375c2301 ("media: rkvdec: Add HEVC backend")
-Cc: stable@vger.kernel.org
-Signed-off-by: Jaroslav Svoboda <jaroslav.svoboda@cesnet.cz>
----
- drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
-index 88e90c438..97466705f 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-hevc.c
-@@ -487,8 +487,8 @@ static void config_registers(struct rkvdec_ctx *ctx,
- static int rkvdec_hevc_validate_sps(struct rkvdec_ctx *ctx,
- 				    const struct v4l2_ctrl_hevc_sps *sps)
- {
--	if (sps->chroma_format_idc > 1)
--		/* Only 4:0:0 and 4:2:0 are supported */
-+	if (sps->chroma_format_idc != 1)
-+		/* Only 4:2:0 is supported */
- 		return -EINVAL;
- 	if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
- 		/* Luma and chroma bit depth mismatch */
-
-base-commit: b4e3c4b6a36fd76f57bf3e48638f68ddecc54ba4
--- 
-2.56.0
 
 
 _______________________________________________
