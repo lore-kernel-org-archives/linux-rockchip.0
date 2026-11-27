@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3A508606A323
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 02:03:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E11F1606A31E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 02:03:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Dx6sEVjr;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=qlyUNqIj
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=HAUsMdC2;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=JUc4fyKs
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,40 +14,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=IAJhJ7EtSMIEPXU0vEsTPwPza9fl0U6litVXTxnRPwk=; b=Dx6sEVjr5HW4QMhQH1XFq4vN/U
-	2ea7pM6w14pUV7qYs5giSKGh1skcovqhlZhYYpOBaKlUq1j3BbHxxwP2a1llJ7Db8X+4e8mpzaLo9
-	Y97skIDFiAELZssZrlG9yeFf0QDP6GHEMctbyrLQ5L74vIuNv4PQDLP2Z8PyVzvCv4zLYyt/YW9qn
-	WKrZ4ECEJxLAAli9a09HHlpm3mNIiSfpi3AdI3oQ300bSEaUqDdkwnD4qTTnTJKVl/V9gM4q41rFl
-	zazsVVHyHZWxzhw2dlmZwTF2e0C/W+M4id/TX2JXI9do7u3QAs86CE1kM+t3mUbNisFQ5gVDjzsxG
-	VUHP5OFQ==;
+	bh=qOeE8wLN7Rha2mphWNx7fK67UI59Q1WTiczN1NqSoT4=; b=HAUsMdC2RP9IVvVKHEigEIcasD
+	fd7fPJjy6ybEUdRC7XLLl9CXsE+LJNA9nv8Ff4nmsELDbLxaODZUJbK8LZHk3k85OevSHjr464+mZ
+	lvFFKqBzCCcdGIN33LpYE0zs+vpXYyH5Ku0YTqY+DWA871gqXSv/GAMOVZ2xhgmNQxHmttnH/xmqa
+	GBQBf7fUc/GHFRPL2+oMACslL7FA+gOVSKOnIjsB9uXTz72DNNIVfJfZhJi1SPzo46iYzPhwNjuMr
+	Hyc1j8mPhdtnBPXezE2KRhJ4HUn78TEDVjp6OgPqhSrkP3ZD2JuVf/wN4KxjJdqDtVz8IRhhF2D6w
+	2OtaFXug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWlIy-0000000EknI-2jY3;
-	Fri, 27 Nov 2026 02:03:16 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xWlJH-0000000Ekst-3oFl;
+	Fri, 27 Nov 2026 02:03:35 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWlIv-0000000Ekmk-3RKy;
-	Fri, 27 Nov 2026 02:03:15 +0000
+	id 1xWlJD-0000000EkrM-3E88;
+	Fri, 27 Nov 2026 02:03:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795744991;
-	bh=BlfefGDf6j8A24L5AHOVwrRcE45Zzsule/dhSUU0Xn8=;
+	s=mail; t=1795745009;
+	bh=vbOHt71Rd2dKgPsjFkZRH/OqXPRhU2dyC/OJCjwDGrE=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=qlyUNqIjemzc9gar8sX2/CDWXpMQ1kYXPRSmcn7plG9WNBEyBDvqgOOY2PDshnO06
-	 QOyfatNgYupwwTOkDJHA60qN8rgeu0a2RJLKt1BsrQJTSKpJo1n+RcwEOW5Uu9EvF7
-	 ondCbjZ+XcgVTUr7a1ohxsP7lyDNPtozdGXPwFbn+StjCzeN3MMUmNUfz/SBueYi21
-	 fe0qnvJrESOQU9VlFBXYtt7T7hsX0AwDiEjB4X/y+gzSzizlyR3Uje7u/JhxMjYYFi
-	 hAFF3XM6S3Dw3Xdx20icu85v9g3Y92Lb7xTtS2FzvEWt0PtYd7uZ7R9B9dtQXB8rbV
-	 fxpVDPgdOoj7w==
+	b=JUc4fyKsJ0aDWvW23BXR8hrlSDuUC/tjT9b2H1Tv0SnbBQwYTZvIaXJoOIm0L+YrQ
+	 X4j+Tvee+eFcJSVq1P4auoIoarJw7spGV15n98wVwxXsFSLzWZ3kq4AXhhNMhHiA7s
+	 CtCNkIUn26slJNmWifJJAz13Ha07ayOtCD+ZNz7ZCMvAJBSPCa9AefROPWHXbvAK63
+	 kpYuBHlFtPhFORukZZ2iwSw8VPfUou1xQIKdyDj3zaz2R80C2Q6ez9t+r540XlYXLe
+	 I18JoyguZB0yEMfCbsakCHO6R4XRFRV91I2gl0uRFtmkeFUDT9MO0G9QMVU4AQqgp7
+	 QXQ6JaJAzmsYQ==
 Received: from [100.64.0.214] (unknown [100.64.0.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange secp256r1)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3960A17E01C2;
-	Fri, 27 Nov 2026 03:03:09 +0100 (CET)
-Message-ID: <747f8cf069d6e49b6eec3313d590b144d6e710fd.camel@collabora.com>
-Subject: Re: [PATCH v9 1/4] media: v4l2-ctrls: validate AV1 reference frame
- index
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9B74117E01C2;
+	Fri, 27 Nov 2026 03:03:27 +0100 (CET)
+Message-ID: <f6e35a9c3f8240dba3ae413c52b9627f42a34b27.camel@collabora.com>
+Subject: Re: [PATCH v9 2/4] media: verisilicon: Use
+ V4L2_AV1_PRIMARY_REF_NONE and V4L2_AV1_REF_FRAME_INVALID
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
 	p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de,
@@ -55,10 +55,10 @@ To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
 Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
 	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
 	kernel@collabora.com
-Date: Thu, 26 Nov 2026 21:03:06 -0500
-In-Reply-To: <20261125122825.236422-2-benjamin.gaignard@collabora.com>
+Date: Thu, 26 Nov 2026 21:03:26 -0500
+In-Reply-To: <20261125122825.236422-3-benjamin.gaignard@collabora.com>
 References: <20261125122825.236422-1-benjamin.gaignard@collabora.com>
-	 <20261125122825.236422-2-benjamin.gaignard@collabora.com>
+	 <20261125122825.236422-3-benjamin.gaignard@collabora.com>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -77,8 +77,8 @@ User-Agent: Evolution 3.62.1 (3.62.1-1.fc45)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_180314_039236_D8494E81 
-X-CRM114-Status: GOOD (  17.76  )
+X-CRM114-CacheID: sfid-20261126_180332_692126_EBA62FF2 
+X-CRM114-Status: GOOD (  15.18  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,7 +89,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3845163519360529154=="
+Content-Type: multipart/mixed; boundary="===============7029485144258302584=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
@@ -98,22 +98,20 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---===============3845163519360529154==
+--===============7029485144258302584==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-wX87arLetM5DzqhRtmsF"
+	protocol="application/pgp-signature"; boundary="=-F4AFt9xHfzt4V+lORLb9"
 
---=-wX87arLetM5DzqhRtmsF
+--=-F4AFt9xHfzt4V+lORLb9
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Le mercredi 25 novembre 2026 =C3=A0 13:28 +0100, Benjamin Gaignard a =C3=A9=
 crit=C2=A0:
-> The stateless AV1 decoders use primary_ref_frame and ref_frame_idx[] to
-> to find the matching reference frames.
-> V4L2_AV1_PRIMARY_REF_NONE is the value of primary_ref_frame indicating
-> that there is no primary reference frame.
-> Iterate over ref_frame_idx[] to check if the indexes are in [-1, 7] range
-> like described in AV1 specifications.
+> Use V4L2_AV1_PRIMARY_REF_NONE and V4L2_AV1_REF_FRAME_INVALID instead
+> of local definition.
+> Since ref_frame_idx[] values have been checked inside v4l2-ctrl-core.c
+> remove the useless duplicate check.
 >=20
 > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 
@@ -122,93 +120,98 @@ Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 > ---
 > changes in v9:
 > - Split core changes and drivers changes
-> - Add V4L2_AV1_REF_FRAME_INVALID
-> - Rework checks in validate_av1_reference_index() to be sure that
->   all values of ref_frame_idx[] are in the correct range.
+> - Use V4L2_AV1_REF_FRAME_INVALID
 >=20
->  drivers/media/v4l2-core/v4l2-ctrls-core.c | 30 +++++++++++++++++++++++
->  include/uapi/linux/v4l2-controls.h        |  2 ++
->  2 files changed, 32 insertions(+)
+>  .../verisilicon/rockchip_vpu981_hw_av1_dec.c       | 14 ++++++--------
+>  1 file changed, 6 insertions(+), 8 deletions(-)
 >=20
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4=
-l2-core/v4l2-ctrls-core.c
-> index 6e751a043a21..e707897e36fd 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> @@ -817,10 +817,40 @@ static int validate_av1_tile_info(struct v4l2_av1_t=
-ile_info *t)
->  =09return 0;
+> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_de=
+c.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> index 2a145433e6d1..087a944b3394 100644
+> --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> @@ -18,9 +18,7 @@
+>  #define AV1_TILE_INFO_SIZE=09(AV1_MAX_TILES * 16)
+>  #define AV1DEC_MAX_PIC_BUFFERS=0924
+>  #define AV1_REF_SCALE_SHIFT=0914
+> -#define AV1_INVALID_IDX=09=09-1
+>  #define MAX_FRAME_DISTANCE=0931
+> -#define AV1_PRIMARY_REF_NONE=097
+>  #define AV1_TILE_SIZE=09=09ALIGN(32 * 128, 4096)
+>  /*
+>   * These 3 values aren't defined enum v4l2_av1_segment_feature because
+> @@ -123,8 +121,8 @@ static int rockchip_vpu981_get_frame_index(struct han=
+tro_ctx *ctx, int ref)
+>  =09u64 timestamp;
+>  =09int i, idx =3D frame->ref_frame_idx[ref];
+> =20
+> -=09if (idx >=3D V4L2_AV1_TOTAL_REFS_PER_FRAME || idx < 0)
+> -=09=09return AV1_INVALID_IDX;
+> +=09if (idx < 0)
+> +=09=09return V4L2_AV1_REF_FRAME_INVALID;
+> =20
+>  =09timestamp =3D frame->reference_frame_ts[idx];
+>  =09for (i =3D 0; i < AV1_MAX_FRAME_BUF_COUNT; i++) {
+> @@ -134,7 +132,7 @@ static int rockchip_vpu981_get_frame_index(struct han=
+tro_ctx *ctx, int ref)
+>  =09=09=09return i;
+>  =09}
+> =20
+> -=09return AV1_INVALID_IDX;
+> +=09return V4L2_AV1_REF_FRAME_INVALID;
 >  }
 > =20
-> +static int validate_av1_reference_index(struct v4l2_ctrl_av1_frame *f)
-> +{
-> +=09int i, idx;
-> +
-> +=09/* The valid range for ref_frame_idx[] values is [-1, 7] */
-> +=09for (i =3D 0; i < V4L2_AV1_REFS_PER_FRAME; i++) {
-> +=09=09idx =3D f->ref_frame_idx[i];
-> +=09=09if (idx < V4L2_AV1_REF_FRAME_INVALID)
-> +=09=09=09return -EINVAL;
-> +=09=09if (idx >=3D V4L2_AV1_TOTAL_REFS_PER_FRAME)
-> +=09=09=09return -EINVAL;
-> +=09}
-> +
-> +=09if (f->primary_ref_frame > V4L2_AV1_PRIMARY_REF_NONE)
-> +=09=09return -EINVAL;
-> +
-> +=09if (f->primary_ref_frame =3D=3D V4L2_AV1_PRIMARY_REF_NONE)
-> +=09=09return 0;
-> +
-> +=09/* If set primary_ref_frame index must be valid */
-> +=09idx =3D f->ref_frame_idx[f->primary_ref_frame];
-> +=09if (idx <=3D V4L2_AV1_REF_FRAME_INVALID)
-> +=09=09return -EINVAL;
-> +
-> +=09return 0;
-> +}
-> +
->  static int validate_av1_frame(struct v4l2_ctrl_av1_frame *f)
->  {
->  =09int ret =3D 0;
+>  static int rockchip_vpu981_get_order_hint(struct hantro_ctx *ctx, int re=
+f)
+> @@ -142,7 +140,7 @@ static int rockchip_vpu981_get_order_hint(struct hant=
+ro_ctx *ctx, int ref)
+>  =09struct hantro_av1_dec_hw_ctx *av1_dec =3D &ctx->av1_dec;
+>  =09int idx =3D rockchip_vpu981_get_frame_index(ctx, ref);
 > =20
-> +=09ret =3D validate_av1_reference_index(f);
-> +=09if (ret)
-> +=09=09return ret;
->  =09ret =3D validate_av1_tile_info(&f->tile_info);
->  =09if (ret)
->  =09=09return ret;
-> diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2=
--controls.h
-> index d17e41d51d2e..f21f00fd5a84 100644
-> --- a/include/uapi/linux/v4l2-controls.h
-> +++ b/include/uapi/linux/v4l2-controls.h
-> @@ -2940,6 +2940,8 @@ struct v4l2_ctrl_vp9_compressed_hdr {
->  #define V4L2_AV1_MAX_TILE_COLS=09=0964
->  #define V4L2_AV1_MAX_TILE_ROWS=09=0964
->  #define V4L2_AV1_MAX_TILE_COUNT=09=09512
-> +#define V4L2_AV1_PRIMARY_REF_NONE=097
-> +#define V4L2_AV1_REF_FRAME_INVALID=09-1
+> -=09if (idx !=3D AV1_INVALID_IDX)
+> +=09if (idx !=3D V4L2_AV1_REF_FRAME_INVALID)
+>  =09=09return av1_dec->frame_refs[idx].order_hint;
 > =20
->  #define V4L2_AV1_SEQUENCE_FLAG_STILL_PICTURE=09=09  0x00000001
->  #define V4L2_AV1_SEQUENCE_FLAG_USE_128X128_SUPERBLOCK=09  0x00000002
+>  =09return 0;
+> @@ -179,7 +177,7 @@ static int rockchip_vpu981_av1_dec_frame_ref(struct h=
+antro_ctx *ctx,
+>  =09=09return i;
+>  =09}
+> =20
+> -=09return AV1_INVALID_IDX;
+> +=09return V4L2_AV1_REF_FRAME_INVALID;
+>  }
+> =20
+>  static void rockchip_vpu981_av1_dec_frame_unref(struct hantro_ctx *ctx, =
+int idx)
+> @@ -1256,7 +1254,7 @@ static void rockchip_vpu981_av1_dec_set_prob(struct=
+ hantro_ctx *ctx)
+>  =09bool frame_is_intra =3D IS_INTRA(frame->frame_type);
+> =20
+>  =09if (error_resilient_mode || frame_is_intra ||
+> -=09    frame->primary_ref_frame =3D=3D AV1_PRIMARY_REF_NONE) {
+> +=09    frame->primary_ref_frame =3D=3D V4L2_AV1_PRIMARY_REF_NONE) {
+>  =09=09av1_dec->cdfs =3D &av1_dec->default_cdfs;
+>  =09=09av1_dec->cdfs_ndvc =3D &av1_dec->default_cdfs_ndvc;
+>  =09=09rockchip_av1_default_coeff_probs(quantization->base_q_idx,
 
---=-wX87arLetM5DzqhRtmsF
+--=-F4AFt9xHfzt4V+lORLb9
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawjk2gAKCRDZQZRRKWBy
-9L8bAP9kLb6DFRzjOud0AdC2YPyZZQq2Cgedgv+EsaWKV3GZMgEAqn1TLGshOVRg
-Mnbc58ltgsXeHDNL2B07C6VsTYV9fQM=
-=aB01
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawjk7gAKCRDZQZRRKWBy
+9HU2AP9Uo6Vsm4QhJ7Kzx8kbnip6CwEzPNy9N2P7ptRISEWP+wEA2FqoTfLf0U9/
+do+1ErYb2GPGhnPqwAZVhUhNqvZCoQs=
+=DbLk
 -----END PGP SIGNATURE-----
 
---=-wX87arLetM5DzqhRtmsF--
+--=-F4AFt9xHfzt4V+lORLb9--
 
 
---===============3845163519360529154==
+--===============7029485144258302584==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -219,5 +222,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============3845163519360529154==--
+--===============7029485144258302584==--
 
