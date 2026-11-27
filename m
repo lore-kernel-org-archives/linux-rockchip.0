@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 97E81606A31E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 13:58:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CCF0C606A31E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 13:59:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZwJgFSP4;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Mwr1txn7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dWPhjSJ7;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jqEMdzdc
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -14,59 +14,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=lLB5RJTFosm8cMM4zCM5143f4mU3fp2TPuzUGSaJNQI=; b=ZwJgFSP4kfDzypciBRdk++B1m2
-	ikpx+ZfLGiqfmnJNaf6nmdiCAGoQXVr4rsSzPRmf1haJ9TNRAQ93/qalySESfcYjMEgwpCdNJuCso
-	664bwdry9iedM8LOoapNQVXrowuZP0HhLc8UcQgtAinEEJXLWoIf8gwUi00cLYzYKmmUNkFpQxfYX
-	bePxHCZOjHr5Hq7j+qaE1r9X5UVx2uhyv3S7LxuPnAIy9Sf9FTkkySLDXgT1yBhfXZu5mn4I7msTr
-	tr+ExEXCPzD6lmevby7rR755enyOkrZvQHxyMzw6wqEENrmblcgxWLW8AX3itSpRD0rnoebj4QJ56
-	Kv0ew6Hg==;
+	bh=HAIhi/+U3u1Avub3UjysWKWyrD0Wcrp0gc/Nps1bGMo=; b=dWPhjSJ7bGQUSEkiE2nMd3N1Z2
+	viYUqmYL4tNNig4cfLPaMQsCCsc2LCaBSQe1Xs4dG1H9vleVMUkYC2a5eXna5GtMiGHf9o6x0RIC5
+	rpvhuriFpUmfQZT2g6xyF+nBAw4dRiNGIKwMVBp+1J8Tt1HBpDi8Dji7QniIAj6ZHA0Yyg8vxwKK3
+	Dp3prteWBIB75d9RVpqh2q0dyWCyIp+FrJlTjzZTq50BcB8CMujjeMuj5ndA2jYpdT2gy7xQ5GUlH
+	8tnMfxyFeJQq45x0kngijrKN8XcmIV6T9Ct0cavqjcDdJ9JFWud5P4t4Y1gUoZzAgYIxgsy8f7Mum
+	5cyFIXnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWwSw-0000000GJpy-0zrS;
-	Fri, 27 Nov 2026 13:58:18 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xWwTy-0000000GK7T-1xY0;
+	Fri, 27 Nov 2026 13:59:22 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWwSv-0000000GJpa-1NZc;
-	Fri, 27 Nov 2026 13:58:17 +0000
+	id 1xWwTw-0000000GK6h-3g8H;
+	Fri, 27 Nov 2026 13:59:21 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7D70961DCD;
-	Fri, 27 Nov 2026 13:58:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4E9461F00897;
-	Fri, 27 Nov 2026 13:58:10 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 656E643B7D;
+	Fri, 27 Nov 2026 13:59:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F4C81F00898;
+	Fri, 27 Nov 2026 13:59:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795787895;
-	bh=f1cpR8UC2K9Hh290rl3zoXoR37d6lYjg5P7GDWf+Pv4=;
+	s=k20260515; t=1795787959;
+	bh=XCDRmkitv6anE5VKogqW8AH2LDMw98gqCBV3wPici/o=;
 	h=Subject:From:To:Cc:In-Reply-To:References:Date;
-	b=Mwr1txn7jxQbejBY5GLGQ0t+lgUPqvLYv6L9blRBfMR7VxoKA4rZm6Dmm7ILpH1gW
-	 o/Dm9uuaxFmgpPqYLRGdXbE2hghbvSsphBP3k6S6pYnyQYKvK/VC1O6W0wAjj2o8jK
-	 BFSOXBhJiocESx7bjUz8XyD8Xki1y7dymQIHMlb+vuMhNaRdSsuMc+vzs+Vy/7OMYC
-	 dQYhtmcIw8YGWicI2iUJx4ezMLQHA8B4/KsNKLH7a/6QjZJa896fOK/0ATMJR4uVt5
-	 AdnISnq9i30+Teum8o+Jeh9iDXUXGYqjlzsV016HNoS/+ceXxqDGpmfxzv23X+0FUh
-	 rAGob45wrO+Pg==
+	b=jqEMdzdcdUD9uZKKpUuXz4leJnRtw6K6Pph6ng77JUjfAdTRfV+fwQUN1tggPzH9i
+	 NQfXmd1EStzlvRkRsiu6/r/xsCK/eSmrSV8IidLe5Im8wL7Jc/FI/KMibzE9oUw9jW
+	 Ji/9JRAnDvoZcG4i+GyQ/V0zRlMg3swlawdEVBIArNwVZ5Nt/6TY53vaVLAly/p6Yy
+	 vRroxsNcyBBeKF5rMqPWl1n/R/U4xjy0+v9IBCOBFNDNQNpm0RjPZ16H2fggpHV+i+
+	 BvPx3YLXRb/YerZUCxxNkN4bS1515ZQEPIyc0IGfCdRYiMMrqbBvqRLUROOP2l1+Qe
+	 MTj/sXcoou16Q==
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH] phy: rockchip-usb: fix reset control leak
+Subject: Re: [PATCH v2] phy: rockchip: naneng-combphy: fix RK3588 SATA
+ pipe_con1 register offset
 From: Manivannan Sadhasivam <mani@kernel.org>
-To: Xia Yan <yanxia@cmss.chinamobile.com>
-Cc: vkoul@kernel.org, linux-phy@lists.infradead.org, 
- neil.armstrong@linaro.org, mani@kernel.org, heiko@sntech.de, 
- p.zabel@pengutronix.de, ayaka@soulik.info, kishon@kernel.org, 
+To: Ricardo Pardini <ricardo@pardini.net>
+Cc: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Lucas Tanure <tanure@linux.com>, linux-phy@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, stable@vger.kernel.org, yana06070@163.com
-In-Reply-To: <20261115042640.426517-1-yanxia@cmss.chinamobile.com>
-References: <20261115042640.426517-1-yanxia@cmss.chinamobile.com>
-Date: Fri, 27 Nov 2026 19:28:07 +0530
-Message-Id: <179578788741.13164.8538367481844332594.b4-reply@b4>
+ linux-kernel@vger.kernel.org, Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
+ stable@vger.kernel.org, Sebastian Reichel <sebastian.reichel@collabora.com>
+In-Reply-To: <20261115-rk3588-combphy-sata2-6g-v2-1-778e0e8011fe@pardini.net>
+References: <20261115-rk3588-combphy-sata2-6g-v2-1-778e0e8011fe@pardini.net>
+Date: Fri, 27 Nov 2026 19:29:11 +0530
+Message-Id: <179578795149.13164.15084635377833975036.b4-reply@b4>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2030; i=mani@kernel.org;
- h=from:subject:message-id; bh=2LC0gv6PbFQzQ2shw21mBeIjq7U/AJqmn3yIRLpECSI=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBrCYxy/tnNAqKySBaZmAGd4rkFqYGz3dced8FzB
- MTfEoh13lWJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCawmMcgAKCRBVnxHm/pHO
- 9VN+B/98sdGMuznYvCHZlcxI085NqcsaU/rEbhG5UbvhGEpYFkj6/u8oKd3mooQvZlX2tGjFKdV
- PgcK55C6Fo0i/ducIa1zXTckPf1O7vvQvzY0EgqgyWHs2PKM8GAzMU5vZ+34tmkjZRdtNGHZz40
- 9aWNyUo26t4Ww9pu+b9GUPYPWWZiU+Yl2/5s53mBHmYoJP2R0Y8KJxoqIt3WMBJKEIXUa8bYSuE
- LC6txnqr4S9bB/hm0prdJI1G3U+1qWV+oTNJEgt7Yit7OlshzUtFgRgKPMi+3gmeRP8rhOueZf0
- Ak4FJMjVf2PMxwknn5y1NRgYRiapdx6ymbozXFKFnU5DH/d1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1828; i=mani@kernel.org;
+ h=from:subject:message-id; bh=fei2KZ8hHxwdWll/UxDcgcWAumc1W/CM9dYMtiFW9PE=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBrCYyy36JOz4vBxPy+mlD2r/Ndn68OJGR1ec6Jt
+ EVD7aaKLtuJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCawmMsgAKCRBVnxHm/pHO
+ 9TMHCACRD8CQM4Zuum6FbyZ4wvFcFX4htMB2HCjPoLWqCi8hvdKdTijsn4B0/LxbOnumZ8RMbOc
+ iB6GpGWNMq0AdZ/k/Pgsp23ssTAyydiM0zEgmeA1nwsZ73NF3nGeO+zak63H2ScV24/e8BpeMjN
+ s/TSAAK6xi3C3scr26C8kgaZ1cQP+bKO6uSXrbU3LyhF+o5JX5oSXpCBTCk2MRwwb96/38K48kK
+ iJ4+p7SDMKnL0Luw36eME/rJlbmxvQkLdAEoS9ahl7fI4ytXlgvIvVszVlbLPtbs/9JqiK+kGWB
+ YzYpWJV8l1W6B0qX7u8Lonpm7Ek8oAMTbloToFVBjUWIo5zm
 X-Developer-Key: i=mani@kernel.org; a=openpgp;
  fpr=C668AEC3C3188E4C611465E7488550E901166008
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -81,69 +84,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 2026-11-15 12:26 +0800, Xia Yan wrote:
-> rockchip_usb_phy_init() acquires a reset control from each PHY child
-> node but never releases it on probe failure or driver detach.
+On 2026-11-15 16:48 +0100, Ricardo Pardini wrote:
+> From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
 > 
-> The leaked exclusive control prevents a later probe from acquiring
-> the same reset. Since lookup errors are converted to NULL, subsequent
-> PHY reset calls silently skip the hardware reset.
+> On RK3588, the sata2 PHY speed is selected by sata2_phy_spdmode in
+> PHP_GRF_PHP_CON1[1:0] (offset 0x0004), with sata2_phy_rx_err in bit 2.
+> rk3588_combphy_grfcfgs has pipe_con1_for_sata at offset 0x0000 though,
+> so the value 0x2 (6.0 Gb/s, rx_err cleared) ends up in PHP_GRF_PHP_CON0
+> and CON1 is never written.
 > 
-> Register a devres action after a successful lookup to release the
-> control on probe failure and detach. Keep the child-node lookup and
-> the existing handling of lookup errors.
+> This leaves sata2 at its 1.5 Gb/s reset value, so the link only trains
+> at 1.5 Gb/s, even with a 6 Gb/s capable disk and no SControl speed
+> limit. sata0 and sata1 are not affected: their speed fields are in
+> PHP_GRF_PHP_CON0 and are set by pipe_con0_for_sata.
 > 
-> Found during review of reset-control lifetimes.
+> The misplaced write also lands in PHP_GRF_PHP_CON0[2:0], which are the
+> PCIe link reset grant bits, and turns on the one for pcie3x2 whenever a
+> combphy is put in SATA mode. No effect from that is known, but this
+> stops it too.
 > 
-> Fixes: 0f74ab59ce87 ("phy: rockchip-usb: use rockchip_usb_phy_reset to reset phy during wakeup")
+> The register layout is described in the RK3588 TRM V1.0 Part1, section
+> 6.17 "PHP_GRF Register Description".
+> 
+> Tested with an mSATA SSD on sata2 (combphy2_psu). Before:
+> 
+>   ata2: SATA link up 1.5 Gbps (SStatus 113 SControl 300)
+>   Timing O_DIRECT disk reads: 374 MB in 3.01 seconds = 124.45 MB/sec
+> 
+> After:
+> 
+>   ata2: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+>   Timing O_DIRECT disk reads: 1266 MB in 3.00 seconds = 421.78 MB/sec
+> 
+> Fixes: a03c44277253 ("phy: rockchip: Add naneng combo phy support for RK3588")
 > Cc: stable@vger.kernel.org
+> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> [rewrite commit message]
+> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
 
-Stop CCing stable list for these minor fixes, please.
-
-> Signed-off-by: Xia Yan <yanxia@cmss.chinamobile.com>
-> ---
->  drivers/phy/rockchip/phy-rockchip-usb.c | 14 +++++++++++++-
->  1 file changed, 13 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-usb.c b/drivers/phy/rockchip/phy-rockchip-usb.c
-> index c5a2853a63d3..79b3315b6590 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-usb.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-usb.c
-> @@ -183,6 +183,11 @@ static const struct phy_ops ops = {
->  	.owner		= THIS_MODULE,
->  };
->  
-> +static void rockchip_usb_phy_reset_put(void *data)
-> +{
-> +	reset_control_put(data);
-> +}
-> +
->  static void rockchip_usb_phy_action(void *data)
->  {
->  	struct rockchip_usb_phy *rk_phy = data;
-> @@ -219,8 +224,15 @@ static int rockchip_usb_phy_init(struct rockchip_usb_phy_base *base,
->  	}
->  
->  	rk_phy->reset = of_reset_control_get(child, "phy-reset");
-> -	if (IS_ERR(rk_phy->reset))
-> +	if (IS_ERR(rk_phy->reset)) {
->  		rk_phy->reset = NULL;
-> +	} else {
-> +		err = devm_add_action_or_reset(base->dev,
-> +					       rockchip_usb_phy_reset_put,
-> +					       rk_phy->reset);
-> +		if (err)
-> +			return err;
-> +	}
-
-Why not devm_reset_control_get()?
+Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 
 - Mani
 
