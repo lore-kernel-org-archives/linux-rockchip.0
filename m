@@ -2,110 +2,119 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A809C606A323
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 06:03:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 93DFC606A323
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 06:24:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xcqEvlTo;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=lETBVbt7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dlwyLxdD;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=rhrFcT9/
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=wLolWuGjTRG74M1N6ImWpiUEBT+RdfzRlZ1nu9/ubVg=; b=xcqEvlToUGEdizQUYgPL6BeTRN
-	DFOA9r3nElLtxjuawgY/ZX9EKF92XSqf5UNHrSnGcKLE20AQDZIL4KTaFXuUgGSAgCMBjN7G5kusj
-	8KB0q3LBBiW9NpTygljQATxm1qRtYWqQQYwJvcmE0nz47WPg/bp67xf5qyn5w/RvOrW825i4PDM8L
-	qIBAAgqr1Gf8vqSwz7y9C8gnJcpcrc/SCDevB8enCZFS3jWjr4433BSDjGFcBIFTURU4VDfH8Vb+A
-	o0bqJ40xrN5MqM8WRloCXLE3Tpsuu6aOF6gC5mtnsz+N/ABPgCniHHE/RBJ4FudnbN/x1FqoEwVvn
-	guKHHkZw==;
+	bh=JbbdcWcSHfa+kD8nNP3cv1urQ+3hiSC2EikRZ+o8QiI=; b=dlwyLxdDWVOKfv78cQzpjQuSmW
+	tCtd9g/7mOGvgAdITgV9Ox1LThj1jOzrbDp1xPugCgyhLFV38ymV5IACUf05Ps7MC65vFC+L7f2cA
+	Pdpj3ix9z8dhq7lVCk4oqzuFkhg7dZNtZ/t67PwkR3zGO7Py5yuZ8egKCFVnNqUTS9NdLn61x2kb7
+	m6jmpvsCVkOCX5prfW/MpqYWpdYjAVzdLYqh243fnWeQrTCBRZXM9c8MOyW+6sKS2Q1Irw30x2vr4
+	c2CfF/iIJmxTIPhwXdgRrhnJL7BeoOJuol9gNnltSWskSH6GBEcuFPWlFfKxHaC9N+6OXF4lPpaJP
+	it/SCIpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWp3S-0000000Ezo5-1b2X;
-	Fri, 27 Nov 2026 06:03:30 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xWpNf-0000000F1wq-1k4v;
+	Fri, 27 Nov 2026 06:24:23 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWp3Q-0000000Eznr-34Ii;
-	Fri, 27 Nov 2026 06:03:28 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C465460D84;
-	Fri, 27 Nov 2026 06:03:27 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795759407;
-	b=C5sqw/5iAbnnSAlmo5ENy4HLtgjHQdrt+CLQEKI7wMhPD8UygyEk4r9Pq9jpMujhbw8t
-	 rqLHVMiMtUs1OAqWya9n640qUM7+ZVs8U9KlFhSludGusO+krnpHHxtdIOAGr9d+vjSv2
-	 ClJs4n8qBCG9N8p5ef2CMeLKcN4kQZQKXgCUs6PitkAZznktP4KyNlpPy5A+wRkBbfxcu
-	 KRdcpvq4JAGlOg1FO6EHO8IyT1BHiYehqqR34CqlQuGLgxq0Jxsta5JBi7pDw3iq7XNz6
-	 g0Hrew3SDMxi7G2VyOo7idEoLuxDWGvC+h2YT3YX6xZrD5WcWTEdQGjK5R2ccIsKvlA==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795759407;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=atoetghN1rZ2y5mnbOIg4F9lhKsi2yuFFQtuXNtre0c=;
-	b=UIqgRW5m6cqeNXLjWvkwJ18cUz1gBrSMlzSwHeDBtTyk177kzxy75E1ltAaLBwFB4+GV
-	 /ygOZbMQl4DUyQuo313ZmrH8Y3emieOKt14wICDtrX+4/NJPr/JDivj6CwNmzS6udRrV1
-	 iIKbA48vZh65Fe3C4UraJ8WWN8LcXjEZ6WtNNDxgeCeRdOXeCCYBHy44E9lOYoqpNsZT0
-	 V/Z2JW3qljCCoRT9fps5TQmFF8Am3YPc8RItg+Xf2WNLVHOXdbHYWgXgB7cygLO9RR0v1
-	 2d8TsLorTU/lSeUd93LreUnX9rmLwwqlPMPQR5sk7mLqbPN6zCzuKfLYazl+dVsRKbg==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 0E6D01F00898;
-	Fri, 27 Nov 2026 06:03:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795759407;
-	bh=atoetghN1rZ2y5mnbOIg4F9lhKsi2yuFFQtuXNtre0c=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=lETBVbt7uwEm7/1uE/NlOXzRm21NGU63clgBvVuREFBVHgU2mdeA/ufObCu3rjba/
-	 JIkBWsI6ogCIVvJQP1cBJTlLe76A8caOCypJaXCeSWbHObvdu4kiJdKs3XH4KIuTIo
-	 76sgZ4s6xuP1r9sp/rYlFQYGccFJWn2aK+oODby7rFFMX3z0vNYie4Wz42FXTA+rFy
-	 7Bcuxo0zwxkjJB48XaKcLUAs5WKQjZaP+V+10ax7U8nTQw4ykYZ8BTLz/fOR6+lxLY
-	 6waa9tB5TioHSkxuAWqdat3KEOZdxohAjYQj1iqJ7LMOZ+0RdJHFjvJewQjlfAqFd2
-	 4FJFjXYATaW3A==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 832FE4B5A7;
-	Fri, 27 Nov 2026 06:03:14 +0000 (UTC)
-From: Sergei Khomenkov via B4 Relay <devnull+shomenkow.gmail.com@kernel.org>
-Date: Fri, 27 Nov 2026 09:03:12 +0300
-Subject: [PATCH] media: verisilicon: size the JPEG encoder's sizeimage by
- quality
+	id 1xWpNd-0000000F1vy-0RKx
+	for linux-rockchip@lists.infradead.org;
+	Fri, 27 Nov 2026 06:24:22 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-6b86bbbe954so1203639a12.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 26 Nov 2026 22:24:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795760659; cv=none;
+        d=google.com; s=arc-20260327;
+        b=nFMpvpsdeMyihtALd6E0+G0bSvc53d1hGkJXRXSnF0OE4HaKo4MTfszojgFiBfcaIW
+         eYp2wgMXHAjuQ5qcvJ5AvDnD5/5kQRVAHkAarYZ0WeT6o9zGOWcHY12K8x0hQYtpuV/h
+         gLS1G6P7m+ZglcxsLRxFlv8PBr21jcBQNKf1moH6bBlUOHOlG0uB0c9+lOiLjEKimoOw
+         CT3kPM40pNerVo2W5xFqNhDKPvqX32jjlEP3jWx6g1XIUfr1yWzMLJ9yVGCvnJm+IvLC
+         ZWFjOFQUQmvl3oXrsP+vLxsO695KifjVtCP/byjY/0BKohNnWGDITdCLwjD7nWr9j9Dr
+         viEQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=SBkZFZAfcEuvoK54tInJ2sdXwGuJlWuARWjKskeguWQ=;
+        fh=iJFVMqf93AMDeAr5XwRqNu8cyMPFH8s0+kT3Cno0fcw=;
+        b=FbRVBjC4mQ26zjgWsMuJ1ce+17TjLNJFn5xqSLiCN7XpLn5OBcBUyr9OCU2rVnL0ko
+         1N/er16sDZmfmUQNt7k9yxW8Ksl3E028gTxxhOWwVRvivJ8devCZxmZNFM+4vhpwe1R+
+         oN2+GdQHoOU1WeYowGux/lpP3X4jVzmgh+IbarALIWujQ4TXXUfzrOZoc/Jv0OolNOPw
+         iJoVxYXJdlB8A++4SXvh42S65fNVWYmGVcrZGZFnxfXRyMiC8tI7mxx8g52eRp4yNvWA
+         Hp49oFHwYUjAqH+nw2kzXyKeZuULElZcq4vP74+QMIDOSwvcwS7HLzsaw8Ym7JQQhcWY
+         69zg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1795760659; x=1796365459; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=SBkZFZAfcEuvoK54tInJ2sdXwGuJlWuARWjKskeguWQ=;
+        b=rhrFcT9/2QldNSbThaYhFQ9jfhSwk/BoMzT1ERcWsEn26/26pkIkfO4+mRARlaTyg/
+         BUAPkkRs0/9H41a7K/w2AsbLwNQv9Cogyg/rbxkrsSvbYL7y++dOMl+e5ID29iU87BzM
+         gf5STsAaZqqoKQNolAPV4ILrLQSo6bgqOLneyIcWHlfL58z8pEISH9LkrBy2noxGj5BL
+         KH/2HMAfB28utpJAwjhaQJ+hwTaU2WW/rRFRxO3uH5D7NcoFlcAyNcAHnUPAmOQEgt6q
+         TRoCuHpN+5KqSgmNWkygpVpwSPlMDa0NtniAFf/SDzy7mVddKb6vAwOKViOafyb/oB0U
+         T61Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795760659; x=1796365459;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=SBkZFZAfcEuvoK54tInJ2sdXwGuJlWuARWjKskeguWQ=;
+        b=FTUMslsluVtbevmEVtoP35ytBcWSmpDWmXXfLpvPLK14OrUJsLNe80BR6oyYcVm/GB
+         2G23GulHvLZvGrKzrj45FP6itfjCudB2c8WSbU5QyJONh8UbeK8pO6Xc/Ss2JTUbgiaL
+         e9vY9UI7+/MjEMWhuCKPAYMoYyD4cynF4I8zFC3JPUnKS2ujhSReSQKJc6rJtTLa1UhY
+         dEu9YLiXcohS2FRu/XMByiQBHvpXym02D7pB+1tAXecaRKr0nD/fEbH1gcPsA6aCpg5d
+         5A67ZCoWS3/91crHcBZTUTzIKT9+xG7u3u+0byr6Vk+qtKQs+4kXaZAa4bp0WbcViUHo
+         dGfg==
+X-Forwarded-Encrypted: i=1; AL+hErGhjKZ6HoZCfQhhKxQv3tfbrQgE3rTRJQvivleb00rI1vZoejG4C1r2EUMKx2r4XMLOf9Tg7W4bDd61lEaS7w==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8iIwShuLcU4PTOK9VYCK1nEe4eMU07gZDDsf0U7RWcm3idMOtV
+	NFYxKLBedRTkSkjYEMNbZTnPDRH6tSzbU2DF+zeXnMAZSOfZec3UU4jRADEUPQKl7eFv8pInhZY
+	+Olbq4/bVycFWoP+FaW6Y6yrNyGOR4XE=
+X-Gm-Gg: AZFdTZehByAhI0GpwEELuTmrhXyYg92O1ypy0VEVICvBO2iH9VmOGAh4GGO2jEFoREF
+	RiKjmeTcFpZt76QILUv4UlRV7MY/s9t98lOBrskiiSSMis5H4Iem9R8F8WlhA11tUE3HJsk6d0P
+	4Wmokwt/pWuOKKxtbNzsGtWjBrGaYpiQrbgUs0u5VP3DQl3e2a63e+ixBsoB55NLow9dqhO74G4
+	C8hF06Fn4yOEsvggNJ/f1VQVZbQ8UaKvxPtooJsT1heU7dZwpxIZvWi8L0eN6m98l4xgGVN8idE
+	8jdC6Uit/+KRnmlbyo8qqrTkQtjgdYmxGEpPjNxHAl9cRtMDDZiT3tt2rWYQaVb1NIZR4cvonRY
+	9w4enJdR9DRJK4q+GJqj0L+JOmsPfsnNvOkRsHzy/CHWMLjEHrWUoKOOv+8AEHC7Ri5bX4IY=
+X-Received: by 2002:a05:6402:c521:20b0:6bb:3e3f:2cdc with SMTP id
+ 4fb4d7f45d1cf-6bb3e3f2fecmr4072358a12.2.1795760658224; Thu, 26 Nov 2026
+ 22:24:18 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Message-Id: <20261127-hantro-enc-sizestep-v1-1-7a732d1a4bbf@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/zWN0W7CMAxFf6XK8zzZaVqXakL8x8SDSV1mibYsK
- Wga4t+XwfZ2z5V97s1lTabZ9dXNJb1atmUuQC+Vix8yHxVsKOw8+pbIM5RyTQvoHCHbt+ZVzxB
- 82wxdo0I+uPJ5Tjra18P6vn9y0s9Lka/P0k2aszzkffX25w7/7sNlPNlkK1xrQOAON1hvGKPg7
- jiJnV7jMm1/dw6SFQqU274SwTHEQEPoGIU6bRtmXwKxjNQGzx6xZnL7+/0HPjC7+PcAAAA=
-X-Change-ID: 20261127-hantro-enc-sizestep-4265d85ea124
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Hans Verkuil <hverkuil@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Hugues Fruchet <hugues.fruchet@foss.st.com>, 
- Arun Iyengar <aiyengar1990@gmail.com>, linux-media@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org, 
- stable@vger.kernel.org, Sergei Khomenkov <shomenkow@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795759394; l=5937;
- i=shomenkow@gmail.com; s=20261104; h=from:subject:message-id;
- bh=v4JYN3YP75FPPDeInscD9Tx05Zfnftf4wowv5Ck5XCc=;
- b=H8XlpsNWAdXQENHAOEeE+KkW61TiJHBZUhsiu+rFCvKb8sRMwOJx45xk6MxI8bcKzKr7W24el
- OlsOoi/lUsYCAnCWMWpZ0LZsK8nfRRnwXW/A9ffgDHfds8iYVkCn4Ib
-X-Developer-Key: i=shomenkow@gmail.com; a=ed25519;
- pk=FwuHDVe7aiISDMLmQEcMC+RflEIJ6kEp/ekwznWXmI8=
-X-Endpoint-Received: by B4 Relay for shomenkow@gmail.com/20261104 with
- auth_id=1409
-X-Original-From: Sergei Khomenkov <shomenkow@gmail.com>
+References: <20261118-dcphy-rx-v1-v7-0-8de1adac3a74@gmail.com>
+In-Reply-To: <20261118-dcphy-rx-v1-v7-0-8de1adac3a74@gmail.com>
+From: =?UTF-8?B?5qWK5pm65oiQ?= <jason98166@gmail.com>
+Date: Fri, 27 Nov 2026 14:24:06 +0800
+X-Gm-Features: Aa3M54ovbh04_f0CIR-_hXe0njTveJM5wqr9aBZi2LAaLZkChYM5oN2Bhm_6rKk
+Message-ID: <CAPwA33K7f2EbtH8rqihnxB8RkB1PzJTmDyGJ39ojROuTYwK0Dw@mail.gmail.com>
+Subject: Re: [PATCH v7 0/9] phy: rockchip-samsung-dcphy: Add the MIPI D-PHY receiver
+To: Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Guochun Huang <hero.huang@rock-chips.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Michael Riesch <michael.riesch@collabora.com>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, 
+	"Bryan O'Donoghue" <bryan.odonoghue@linaro.org>, linux-phy@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+	Quentin Schulz <quentin.schulz@cherry.de>, Sashiko <sashiko-bot@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261126_222421_189721_2DB34967 
+X-CRM114-Status: UNSURE (   6.59  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,163 +124,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: shomenkow@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Sergei Khomenkov <shomenkow@gmail.com>
+Hi all,
 
-The JPEG encoder's default CAPTURE sizeimage is header_size + width *
-height * 2, but the H1 (VEPU1) of an RK3026 writes up to 3.23 bytes per
-pixel at quality 100.
+Michael, I kept your Reviewed-by from v6 on 6/9, 8/9 and 9/9, as the
+v7 changes there follow your suggestions. Are you fine with keeping it?
 
-Size it by the quality. With the 4:2:0 header and the Annex K tables
-this driver writes, an 8-bit frame needs at most 4.89 bytes per pixel at
-quality 100, 2.91 at 94 and 1.98 at 83, byte stuffing included. Use 5
-bytes per pixel from quality 95, 3 from 84 and 2 below as the default,
-when the client passes sizeimage 0. Below quality 84, the default 50
-included, the size is unchanged; from 95 it is 2.5 times larger, 10.4 MB
-instead of 4.2 MB for 1920x1080.
+For v8 I only plan to drop the Tested-by tags from 1/9 and 2/9.
+Please let me know if anything else should change before I send it.
 
-A request was raised to min_size but had no upper bound. S_FMT and
-TRY_FMT now cap it at the quality 100 size: no frame of that size can
-use more, and a request sized for a later quality raise still fits.
-CREATE_BUFS still takes any larger size. The default follows the quality
-at the time of S_FMT, so set V4L2_CID_JPEG_COMPRESSION_QUALITY first; a
-frame that no longer fits after a later raise ends with an error at the
-stream limit.
-
-Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
-Cc: stable@vger.kernel.org
-Signed-off-by: Sergei Khomenkov <shomenkow@gmail.com>
----
-Found with an LLM coding assistant while porting mainline Linux to a
-Rockchip RK3026 board; it also drafted the code and this message and
-computed the bounds (scripts on request). Tested on that board: 2316
-frames of 30 worst-case inputs, 640x480 and 1280x720, quality 80..100,
-all within the default size (largest 3.23 B/px at q100, 1.92 at q94,
-1.33 at q83); v4l2-compliance shows no new failure. Not tested on
-other SoCs.
-
-The bounds are a per-block maximum of the Huffman-coded bits at the
-quantizers of each quality, under the energy that 8-bit samples allow,
-DC difference and byte stuffing included; frames found by search reach
-about 0.7 of them.
-
-Where a ceiling matters: GStreamer up to 1.26.11 and 1.28.7 sizes the
-request from the largest enumerated frame, 8192x8192, and asks for
-32 MiB per buffer for a 640x480 JPEG; 1.28.8 sizes it from the
-negotiated frame:
-https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/08ea5bc9fab9
-
-Depends on "media: verisilicon: fix JPEG encoder writes past the
-CAPTURE buffer" v3:
-https://lore.kernel.org/all/20261124-hantro-buflimit-v3-0-780903970ca0@gmail.com/
-It overlaps Arun Iyengar's "media: verisilicon: Fix the JPEG encoder
-format handling" v2 2/7 in hantro_try_fmt(); whichever goes second
-needs a rebase.
----
- drivers/media/platform/verisilicon/hantro_jpeg.c | 25 ++++++++++++++++++++++++
- drivers/media/platform/verisilicon/hantro_jpeg.h |  4 ++++
- drivers/media/platform/verisilicon/hantro_v4l2.c |  6 ++++++
- 3 files changed, 35 insertions(+)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_jpeg.c b/drivers/media/platform/verisilicon/hantro_jpeg.c
-index 13a60638e43f..16ff9c49f889 100644
---- a/drivers/media/platform/verisilicon/hantro_jpeg.c
-+++ b/drivers/media/platform/verisilicon/hantro_jpeg.c
-@@ -243,3 +243,28 @@ void hantro_jpeg_header_assemble(struct hantro_jpeg_ctx *ctx)
- 
- 	jpeg_set_quality(ctx);
- }
-+
-+/*
-+ * Worst case for the quality set at the time of S_FMT, with the header
-+ * above: 4:2:0, the Annex K Huffman tables and the quantizers of
-+ * jpeg_set_quality(). A request is clamped to the quality 100 size, so
-+ * one sized for a later quality raise still fits.
-+ */
-+u32 hantro_jpeg_enc_sizeimage(const struct hantro_fmt *fmt, int quality,
-+			      u32 width, u32 height, u32 sizeimage)
-+{
-+	u32 bytes;
-+
-+	if (sizeimage)
-+		return clamp(sizeimage, fmt->min_size,
-+			     fmt->header_size + width * height * 5);
-+
-+	if (quality >= 95)
-+		bytes = 5;
-+	else if (quality >= 84)
-+		bytes = 3;
-+	else
-+		bytes = 2;
-+
-+	return fmt->header_size + width * height * bytes;
-+}
-diff --git a/drivers/media/platform/verisilicon/hantro_jpeg.h b/drivers/media/platform/verisilicon/hantro_jpeg.h
-index 0b49d0b82caa..1f5582df5244 100644
---- a/drivers/media/platform/verisilicon/hantro_jpeg.h
-+++ b/drivers/media/platform/verisilicon/hantro_jpeg.h
-@@ -1,5 +1,7 @@
- /* SPDX-License-Identifier: GPL-2.0+ */
- 
-+struct hantro_fmt;
-+
- #define JPEG_HEADER_SIZE	624
- #define JPEG_QUANT_SIZE		64
- 
-@@ -13,3 +15,5 @@ struct hantro_jpeg_ctx {
- };
- 
- void hantro_jpeg_header_assemble(struct hantro_jpeg_ctx *ctx);
-+u32 hantro_jpeg_enc_sizeimage(const struct hantro_fmt *fmt, int quality,
-+			      u32 width, u32 height, u32 sizeimage);
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index b3dbc0629d25..5e8d8de072a8 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -26,6 +26,7 @@
- 
- #include "hantro.h"
- #include "hantro_hw.h"
-+#include "hantro_jpeg.h"
- #include "hantro_v4l2.h"
- 
- #define  HANTRO_DEFAULT_BIT_DEPTH 8
-@@ -386,6 +387,11 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
- 			pix_mp->plane_fmt[0].sizeimage +=
- 				hantro_av1_mv_size(pix_mp->width,
- 						   pix_mp->height);
-+	} else if (fmt->codec_mode == HANTRO_MODE_JPEG_ENC) {
-+		pix_mp->plane_fmt[0].sizeimage =
-+			hantro_jpeg_enc_sizeimage(fmt, ctx->jpeg_quality,
-+						  pix_mp->width, pix_mp->height,
-+						  pix_mp->plane_fmt[0].sizeimage);
- 	} else if (!pix_mp->plane_fmt[0].sizeimage) {
- 		/*
- 		 * For coded formats the application can specify
-
----
-base-commit: aa0f4c41d4870a18e65772a1817af16427200371
-change-id: 20261127-hantro-enc-sizestep-4265d85ea124
-prerequisite-message-id: <20261124-hantro-buflimit-v3-0-780903970ca0@gmail.com>
-prerequisite-patch-id: bbf362b5a6b3ef0c7424c424979bbbdb7934aaf1
-prerequisite-patch-id: 3d509ba55530afd4d418732df88696e105e36512
-prerequisite-patch-id: bb3462a5633f2af738ddecf3915a8a3121e20611
-
-Best regards,
--- 
-Sergei Khomenkov <shomenkow@gmail.com>
-
-
+Thanks,
+Jason
 
 _______________________________________________
 Linux-rockchip mailing list
