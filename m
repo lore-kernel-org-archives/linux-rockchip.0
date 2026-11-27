@@ -2,138 +2,110 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EC63E606A31C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 03:33:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A809C606A323
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 06:03:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=os9mPUOw;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=chipsnmedia.com header.i=@chipsnmedia.com header.a=rsa-sha256 header.s=selector2 header.b=SOfA4Grz
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xcqEvlTo;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=lETBVbt7
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=AIGe96RXd7adK3Jr4V0tLGjDbIMNA+lAAKbgndqifxo=; b=os9mPUOwgqYt2ag3F7QBlLLvfM
-	eKzHF2Z5rmlQ64a2KdcyMipDNfnHrKvwocN5pkTgsTGXXjUwwLDV/+72TosXGgdaDeXgSHlT7hv7y
-	LJLYhig7nzIv0kSUp5oLNmWu3EBkUa3a4jwLU0bOZziWFrIFATrd0qUvmr3nLdfKgoApe0J+JMVRZ
-	IN1zWKSMCYThy3zQRzqPoGVZbnTPd7pTlg6y7etglp2muHnHFu87sVivpX0BqnbmdAAIK2INsdXC8
-	4uSm7GX7ylnw9zuEEA+U4IY7BzKGcdVnv10euhJFte7Injt7IRJPuSusyCA5HRaKiM40eG52D2j6+
-	5TAkinWQ==;
+	bh=wLolWuGjTRG74M1N6ImWpiUEBT+RdfzRlZ1nu9/ubVg=; b=xcqEvlToUGEdizQUYgPL6BeTRN
+	DFOA9r3nElLtxjuawgY/ZX9EKF92XSqf5UNHrSnGcKLE20AQDZIL4KTaFXuUgGSAgCMBjN7G5kusj
+	8KB0q3LBBiW9NpTygljQATxm1qRtYWqQQYwJvcmE0nz47WPg/bp67xf5qyn5w/RvOrW825i4PDM8L
+	qIBAAgqr1Gf8vqSwz7y9C8gnJcpcrc/SCDevB8enCZFS3jWjr4433BSDjGFcBIFTURU4VDfH8Vb+A
+	o0bqJ40xrN5MqM8WRloCXLE3Tpsuu6aOF6gC5mtnsz+N/ABPgCniHHE/RBJ4FudnbN/x1FqoEwVvn
+	guKHHkZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWmhu-0000000EsDo-1RGB;
-	Fri, 27 Nov 2026 03:33:06 +0000
-Received: from mail-koreasouthazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c410::1] helo=PUWP216CU001.outbound.protection.outlook.com)
+	id 1xWp3S-0000000Ezo5-1b2X;
+	Fri, 27 Nov 2026 06:03:30 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWmhq-0000000EsCx-49BL;
-	Fri, 27 Nov 2026 03:33:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Mx8vKVxgD76vSp/J7cQFnBHcdbn/K4xIGUp1H8hoeafaPfhqlUB3jyD/i/kaKYbsm1K2y1Qo1VpJWjT3d3VIk+CazNDxJrZec2fFgX/FJYvJ71bDyV6SEHwuLeByh2QPynJNdcW/QKseY6ZZD1GONIr1va3G/JNtF68nOXqDSQYam5WEolIVMWLt54iC2LBW9f5cdJu3C/iHiU2agx8BOfUDevMK5otxD0duL32dVE5+gD08ND3Gey3CKDesCIdtVpEYKuI8GQEdU8JhatMvXg9jxmjqI8rTbn9MEHeSdEU1BYr+67TaOth2dBQ3YhdNg82R6x+Osvuhep1vwaHrYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=GLlppsnWfzbdUB4PFBa49l1N7zvgcQAseaE4i2Ap+48=;
- b=KuxrMJZ7gLSQpTa1lAtsk27qBNHNOrJO+jFzcClJ61ggb0D4Ph+ZVO0vqZOkVDIGIAzOOqD17p4KbLKE7nFz7iO0sHxDtsfhw7R4GElCtc8MgIP4cmwXVrqVd4OLqhoyQ+V/0RxkQY3ey+pcYltsuVbNi9hldYbrdk3EqnFRrQlh6LDt6srHtH4PprjOcUHMXpss7BaNh/udw8zUjfcnyJlrh0hoHafCOvQffR5GmnpK3Lu2C0sHllY8Wtboh8VDp8oZKaifCZVnlgOLeig1oiXvqMwVyJ+jZxwlGXqM/m5WIyA0MQKKumdfUL9t/VfRC0FUPoBtpKRvevUQu8FmlA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=chipsnmedia.com; dmarc=pass action=none
- header.from=chipsnmedia.com; dkim=pass header.d=chipsnmedia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chipsnmedia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GLlppsnWfzbdUB4PFBa49l1N7zvgcQAseaE4i2Ap+48=;
- b=SOfA4Grz9CZZ3hXALB9L+SYbSBzxF5WzWESBne3Fehc4IRI6y57p+CxZwu85veKV3fX8cLT6iYtm+UXAMvIu8EOmiryiSqJGf/o/oZma2rZtx8iBGoW9dHXGRGapFQ3vf0KQLJcswQ15Vr3NbZ90spbetvSs6RgAgbazOYP+4DqGPpo+K5YwLtw+kUemNFNkk1t8x1FUbrXkSIIM0RxyGDzGff2BbSm8Tcv2V4MIGUP0FW+hnwC48Z98HO2ucbLq8JI1LmX8n3FXHPPKGIoMpSwPdE1LoJl4ISLS3LIHh0uyyECqNcWZJK+40eiZYdJ6grmwYYdlxvz5QOScCNGG1w==
-Received: from SL2P216MB2441.KORP216.PROD.OUTLOOK.COM (2603:1096:101:1b9::8)
- by PU4P216MB1870.KORP216.PROD.OUTLOOK.COM (2603:1096:301:10b::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.662.9; Fri, 27 Nov
- 2026 03:32:51 +0000
-Received: from SL2P216MB2441.KORP216.PROD.OUTLOOK.COM
- ([fe80::f234:3bc6:9197:8232]) by SL2P216MB2441.KORP216.PROD.OUTLOOK.COM
- ([fe80::f234:3bc6:9197:8232%6]) with mapi id 15.21.0662.007; Fri, 27 Nov 2026
- 03:32:51 +0000
-From: Nas Chung <nas.chung@chipsnmedia.com>
-To: Detlev Casanova <detlev.casanova@collabora.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel
-	<p.zabel@pengutronix.de>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Heiko Stuebner <heiko@sntech.de>
-CC: "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"kernel@collabora.com" <kernel@collabora.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Subject: RE: [PATCH v4 3/5] media: v4l2-core: Add v4l2-metrics interface
-Thread-Topic: [PATCH v4 3/5] media: v4l2-core: Add v4l2-metrics interface
-Thread-Index: AQHdfO+z6iX+INQb70eCriIYjocbqrdBK6aw
-Date: Fri, 27 Nov 2026 03:32:51 +0000
-Message-ID: <SL2P216MB2441C07DE4CD2D1B41341ED4FB412@SL2P216MB2441.KORP216.PROD.OUTLOOK.COM>
-References: <20261125-v4l2-add-fdinfo-v4-0-2dc73fad9932@collabora.com>
- <20261125-v4l2-add-fdinfo-v4-3-2dc73fad9932@collabora.com>
-In-Reply-To: <20261125-v4l2-add-fdinfo-v4-3-2dc73fad9932@collabora.com>
-Accept-Language: en-US, ko-KR
-Content-Language: ko-KR
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=chipsnmedia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SL2P216MB2441:EE_|PU4P216MB1870:EE_
-x-ms-office365-filtering-correlation-id: 83b80466-12d2-4ccf-86a8-08df4c371db9
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|366016|23010399003|1800799024|7416014|376014|38070700021|10067099003|56012099006|261026140227099003|261026121527099003|261028144727099003|261022105027099003|261102123227099003|261022075727099003|261021121427099003|261021135927099003|261102130727099003|261009223027099003|22082099003|18002099003|4143699003;
-x-microsoft-antispam-message-info: MKZKZ2plRjtEasBldORMeDo2nCQ3OQtKHTc4Pu8km8GLq+mJx8o60l/EJN8Yt8ZBeNKu8VULlA96bBD+BN2Ofx9A5CLAzGku8vvcXcw3sExqMRoN103dwVqher+J93GicdsrjMnCSLycvkwZO1dcpVvWExFybwE7DKYf8ZBiolcZStxLB8MzuGTn4d+06iQcYqZYn/s0+SCwDVRErx/97YTKNmorVEaRseSpZ5ENTul3u9f/7DTkMyxByktmqx/0jQ3T9wpfMCgsd+D2vmeAfPvgnmwZTBBQ/vERxe40VH2KoIOJ9+CZZKnnjvtRAuq0oLWlqNiIjDbfItY/tT4j5/O9gzZRuEICXCLMUs02nwVaR8t2s6aMeywFv3dXMU1LFiYKifsFGgT8sVemaOhN6XjC2bC++j393EuuEy7/VQi2TW9DykAw783+jlkZRcbKyyfOqMI+pYl/V+Jwkj47lcYxWhuRHNVO9EK/IgNti+gws7NJo3d5ol2f25SC+wkTlSIy4oxGaggyB5/D4j6b2bU231HWE8ixfDIboGkJ7Bax2mCT07AOMHwAOCJE6PrDtN7tP9PegsAijKpLgpeV54Ty+G0slW5exLmSi961PVE9ti/qLxiRrhuMrn0BfsWRmvzPT0arAOqKyDNyEuMmIBw/XDJaR+sRxhiuKaryJLD9mP1F/zeOG9TqUPdmUxdRQNLBPEXujyS44Kd0hwxtfimt+IN55IxXwJo2/ayFcWo=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SL2P216MB2441.KORP216.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(1800799024)(7416014)(376014)(38070700021)(10067099003)(56012099006)(261026140227099003)(261026121527099003)(261028144727099003)(261022105027099003)(261102123227099003)(261022075727099003)(261021121427099003)(261021135927099003)(261102130727099003)(261009223027099003)(22082099003)(18002099003)(4143699003);DIR:OUT;SFP:1102;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Ul1X4kOmdbTbqsZpKAUwiL5GLNdF1MuE7puXtaRXZYT8B7L+yBbSUldMni6E?=
- =?us-ascii?Q?+cEaCMGyroy1z6KX8piAget4EJaZrVa7m/agrd+YgVuyOIAKv7A3PJPXu4EI?=
- =?us-ascii?Q?beD5ZX2nnEtm4VhkMkPQx3ZYMoFutHCtYJG1JkQzTi5DmTmafXeRT9NQz0Wq?=
- =?us-ascii?Q?wlx9GpIRUjMF8bOkHjkDNPIjs245MnC79IzQQXXawbN/k1YImN5KboVwtxiX?=
- =?us-ascii?Q?ePrp0R/Zb6aUdpsiOJaXGtR1iOFXpI+SXsDs+mpB1u69c2I/PGzVkyT2SDMf?=
- =?us-ascii?Q?X5huT28lVhGlZz4WhUq3AJv7Sdq7wSUwwEU0OA/zUfe2kQf4QSVY1woJEobe?=
- =?us-ascii?Q?dX9XSfmvPzoUDrsJFqy8o0MoFE7YQXkEEGNc4EC9OAkRIJ/Nk3JKebqyHmsf?=
- =?us-ascii?Q?83Cr1KtjcmeRGEIIEkX4pC0CBpKiyu5D3x/QVusIzROL4iWaRtzA3fK/iL+j?=
- =?us-ascii?Q?93fezEs5JpTvh0g9YEpOCbI7zXH1XTat5LGzQauxVMadvmi6shqwMyuqpaeZ?=
- =?us-ascii?Q?d0VKvMXBoeDdEz7B8BRyJz2OaIkvMjRr6pNrPkpXh/56GtheL2RuJMSIdzoT?=
- =?us-ascii?Q?KrdJlJdhSAEOs2SCOj2xB+NjVxGRu97IDvRpl1xsRpcrX9RV+2mZs0clvSFI?=
- =?us-ascii?Q?Ctmo0IiEp8m3N2VGkrNHc/11o3Yo9QUoT+FqEA1JZxPUrqnfMym0eksFneUo?=
- =?us-ascii?Q?XSrHI8xhVJfh01DJlQhqy3H80PrUNDmhTqbyRW+gF2c1Ea9FFAFWjseS1nJI?=
- =?us-ascii?Q?xQVPEgXgkVD167+B0Ra/exihP0BS+53Lie8sQ63RusG48ymKOdZ9wp72J/9r?=
- =?us-ascii?Q?k/WZ+unPuI051pLGVOOI5PB7hhzeRHHxxkYKDFwxvyroi6o3Qq5MJeQ+fh6t?=
- =?us-ascii?Q?d84fE9YsB9UCz4Ih/G4tYE/Ksr1FE/LJgmvSvmZwjB7LFJCEYE27rchCtcrK?=
- =?us-ascii?Q?zg57b6OGtjKXBcM0Xeoe6iy7fvMVN6Hvn944kCut0uy8b22kkGN38HR9DkOG?=
- =?us-ascii?Q?3JObiB9MxojKHfBYo6pe9AsRXsXz+GCq5/AtQgmyPZ3hhTBmv7S9z5lN9TXJ?=
- =?us-ascii?Q?oK50YuTMgUvvyo1hBzf8f880R5ObFFZGHqvFOYcY5/s2kdA7L8LAyIvp7wpb?=
- =?us-ascii?Q?opgJDcxaGC7iKeykxv4DHq3MPFhbQ5kRU0Y4Ev5MMuJFMPBhAIMA5pp16Yua?=
- =?us-ascii?Q?rfTGkTny32V7DNp2RvsMwLAa9BS8M0YipM9i6fhhlAzG4W1QLIleFP8nwwuj?=
- =?us-ascii?Q?j1GI/UbNsRWXsNWTRuRihe2JP8YUEu2jE9em+dMr6P90QKvmAYeyNdnin5Af?=
- =?us-ascii?Q?yp9JYdsFZyyrDM6TF9j/FPxO3IVG/H3aG/tghZGJkjDzHpvt5fDi+CEKiOvK?=
- =?us-ascii?Q?yyqOjv7EhJloGpxpfNVs51rY1HwVqyK9gjo4CyV2iY0zeL00Y7cYu/tS4BVq?=
- =?us-ascii?Q?yYbWwKBWNhASX8b/OdasORHmxvVQlqNbK7QBtA/VpKJJsw1KEAEFSbPoao79?=
- =?us-ascii?Q?yx+aFnQSLO5BzbFu0UU57F/OSmjlOM6j+mnyIY/NxK2puzvWguRlrv2CciMm?=
- =?us-ascii?Q?qQApMuyrkStjwI1V5SjUjahSoysDaXa0Mhq8FzhL2kQC+dwkdMoPxa4ViK2d?=
- =?us-ascii?Q?mRqR9LT5ETQbZfpryLc5lBUfT1JH0nKUvSPgXnNAH2eWR5qv7XAeI2hFmRhY?=
- =?us-ascii?Q?gLgRPQetCwQPYLXTxBaB5y5d7MyzJ9d54SfkwfHfp6Pc1Kol2X6JIL1V+zeZ?=
- =?us-ascii?Q?X0lGIdu5dA=3D=3D?=
+	id 1xWp3Q-0000000Eznr-34Ii;
+	Fri, 27 Nov 2026 06:03:28 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id C465460D84;
+	Fri, 27 Nov 2026 06:03:27 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795759407;
+	b=C5sqw/5iAbnnSAlmo5ENy4HLtgjHQdrt+CLQEKI7wMhPD8UygyEk4r9Pq9jpMujhbw8t
+	 rqLHVMiMtUs1OAqWya9n640qUM7+ZVs8U9KlFhSludGusO+krnpHHxtdIOAGr9d+vjSv2
+	 ClJs4n8qBCG9N8p5ef2CMeLKcN4kQZQKXgCUs6PitkAZznktP4KyNlpPy5A+wRkBbfxcu
+	 KRdcpvq4JAGlOg1FO6EHO8IyT1BHiYehqqR34CqlQuGLgxq0Jxsta5JBi7pDw3iq7XNz6
+	 g0Hrew3SDMxi7G2VyOo7idEoLuxDWGvC+h2YT3YX6xZrD5WcWTEdQGjK5R2ccIsKvlA==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795759407;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=atoetghN1rZ2y5mnbOIg4F9lhKsi2yuFFQtuXNtre0c=;
+	b=UIqgRW5m6cqeNXLjWvkwJ18cUz1gBrSMlzSwHeDBtTyk177kzxy75E1ltAaLBwFB4+GV
+	 /ygOZbMQl4DUyQuo313ZmrH8Y3emieOKt14wICDtrX+4/NJPr/JDivj6CwNmzS6udRrV1
+	 iIKbA48vZh65Fe3C4UraJ8WWN8LcXjEZ6WtNNDxgeCeRdOXeCCYBHy44E9lOYoqpNsZT0
+	 V/Z2JW3qljCCoRT9fps5TQmFF8Am3YPc8RItg+Xf2WNLVHOXdbHYWgXgB7cygLO9RR0v1
+	 2d8TsLorTU/lSeUd93LreUnX9rmLwwqlPMPQR5sk7mLqbPN6zCzuKfLYazl+dVsRKbg==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 0E6D01F00898;
+	Fri, 27 Nov 2026 06:03:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795759407;
+	bh=atoetghN1rZ2y5mnbOIg4F9lhKsi2yuFFQtuXNtre0c=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=lETBVbt7uwEm7/1uE/NlOXzRm21NGU63clgBvVuREFBVHgU2mdeA/ufObCu3rjba/
+	 JIkBWsI6ogCIVvJQP1cBJTlLe76A8caOCypJaXCeSWbHObvdu4kiJdKs3XH4KIuTIo
+	 76sgZ4s6xuP1r9sp/rYlFQYGccFJWn2aK+oODby7rFFMX3z0vNYie4Wz42FXTA+rFy
+	 7Bcuxo0zwxkjJB48XaKcLUAs5WKQjZaP+V+10ax7U8nTQw4ykYZ8BTLz/fOR6+lxLY
+	 6waa9tB5TioHSkxuAWqdat3KEOZdxohAjYQj1iqJ7LMOZ+0RdJHFjvJewQjlfAqFd2
+	 4FJFjXYATaW3A==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 832FE4B5A7;
+	Fri, 27 Nov 2026 06:03:14 +0000 (UTC)
+From: Sergei Khomenkov via B4 Relay <devnull+shomenkow.gmail.com@kernel.org>
+Date: Fri, 27 Nov 2026 09:03:12 +0300
+Subject: [PATCH] media: verisilicon: size the JPEG encoder's sizeimage by
+ quality
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-OriginatorOrg: chipsnmedia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SL2P216MB2441.KORP216.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-Network-Message-Id: 83b80466-12d2-4ccf-86a8-08df4c371db9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Nov 2026 03:32:51.4475
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 4d70c8e9-142b-4389-b7f2-fa8a3c68c467
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: MOJxYEkJLGSqQ7zOXkvZUVSNCQA1N1p79x30ZNnx/HyDC7mOX94hv8gYjjyY5Ombv0VpxK418MoKbAkWHjSsqhSn0aihN79j/yacQgOds7c=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU4P216MB1870
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_193303_376663_9615DB4B 
-X-CRM114-Status: UNSURE (   9.63  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.1 (-)
+Message-Id: <20261127-hantro-enc-sizestep-v1-1-7a732d1a4bbf@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/zWN0W7CMAxFf6XK8zzZaVqXakL8x8SDSV1mibYsK
+ Wga4t+XwfZ2z5V97s1lTabZ9dXNJb1atmUuQC+Vix8yHxVsKOw8+pbIM5RyTQvoHCHbt+ZVzxB
+ 82wxdo0I+uPJ5Tjra18P6vn9y0s9Lka/P0k2aszzkffX25w7/7sNlPNlkK1xrQOAON1hvGKPg7
+ jiJnV7jMm1/dw6SFQqU274SwTHEQEPoGIU6bRtmXwKxjNQGzx6xZnL7+/0HPjC7+PcAAAA=
+X-Change-ID: 20261127-hantro-enc-sizestep-4265d85ea124
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Hans Verkuil <hverkuil@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Hugues Fruchet <hugues.fruchet@foss.st.com>, 
+ Arun Iyengar <aiyengar1990@gmail.com>, linux-media@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-kernel@vger.kernel.org, 
+ stable@vger.kernel.org, Sergei Khomenkov <shomenkow@gmail.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795759394; l=5937;
+ i=shomenkow@gmail.com; s=20261104; h=from:subject:message-id;
+ bh=v4JYN3YP75FPPDeInscD9Tx05Zfnftf4wowv5Ck5XCc=;
+ b=H8XlpsNWAdXQENHAOEeE+KkW61TiJHBZUhsiu+rFCvKb8sRMwOJx45xk6MxI8bcKzKr7W24el
+ OlsOoi/lUsYCAnCWMWpZ0LZsK8nfRRnwXW/A9ffgDHfds8iYVkCn4Ib
+X-Developer-Key: i=shomenkow@gmail.com; a=ed25519;
+ pk=FwuHDVe7aiISDMLmQEcMC+RflEIJ6kEp/ekwznWXmI8=
+X-Endpoint-Received: by B4 Relay for shomenkow@gmail.com/20261104 with
+ auth_id=1409
+X-Original-From: Sergei Khomenkov <shomenkow@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,159 +115,162 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: shomenkow@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Detlev,
+From: Sergei Khomenkov <shomenkow@gmail.com>
 
->-----Original Message-----
->From: Detlev Casanova <detlev.casanova@collabora.com>
->Sent: Thursday, November 26, 2026 12:12 AM
->To: Mauro Carvalho Chehab <mchehab@kernel.org>; Nicolas Dufresne
-><nicolas.dufresne@collabora.com>; Benjamin Gaignard
-><benjamin.gaignard@collabora.com>; Philipp Zabel <p.zabel@pengutronix.de>;
->Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>; Heiko Stuebner
-><heiko@sntech.de>
->Cc: linux-media@vger.kernel.org; linux-kernel@vger.kernel.org; linux-
->rockchip@lists.infradead.org; kernel@collabora.com; Detlev Casanova
-><detlev.casanova@collabora.com>; linux-arm-kernel@lists.infradead.org
->Subject: [PATCH v4 3/5] media: v4l2-core: Add v4l2-metrics interface
->
+The JPEG encoder's default CAPTURE sizeimage is header_size + width *
+height * 2, but the H1 (VEPU1) of an RK3026 writes up to 3.23 bytes per
+pixel at quality 100.
 
-...
+Size it by the quality. With the 4:2:0 header and the Annex K tables
+this driver writes, an 8-bit frame needs at most 4.89 bytes per pixel at
+quality 100, 2.91 at 94 and 1.98 at 83, byte stuffing included. Use 5
+bytes per pixel from quality 95, 3 from 84 and 2 below as the default,
+when the client passes sizeimage 0. Below quality 84, the default 50
+included, the size is unchanged; from 95 it is 2.5 times larger, 10.4 MB
+instead of 4.2 MB for 1920x1080.
 
->+
->+void v4l2_metrics_show(struct v4l2_metrics *metrics, struct seq_file *m,
->unsigned int core_id)
->+{
->+	seq_printf(m, "v4l2-driver-type:\t%s\n", driver_type_name[metrics-
->>driver_type]);
->+	seq_printf(m, "v4l2-core-usage-time-%u:\t%llu ns\n", core_id,
->metrics->hw_usage_time);
->+
->+	if (metrics->has_hw_usage_cycles)
->+		seq_printf(m, "v4l2-core-usage-cycles-%u:\t%llu\n",
->+			   core_id, metrics->hw_usage_cycles);
->+}
->+EXPORT_SYMBOL_GPL(v4l2_metrics_show);
->+
->+void v4l2_metrics_show_clock(struct seq_file *m, struct clk *clk, unsigned
->int core_id)
+A request was raised to min_size but had no upper bound. S_FMT and
+TRY_FMT now cap it at the quality 100 size: no frame of that size can
+use more, and a request sized for a later quality raise still fits.
+CREATE_BUFS still takes any larger size. The default follows the quality
+at the time of S_FMT, so set V4L2_CID_JPEG_COMPRESSION_QUALITY first; a
+frame that no longer fits after a later raise ends with an error at the
+stream limit.
 
-To allow maxfreq and curfreq to differ, how about passing both values
-instead of the clock?
+Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
+Cc: stable@vger.kernel.org
+Signed-off-by: Sergei Khomenkov <shomenkow@gmail.com>
+---
+Found with an LLM coding assistant while porting mainline Linux to a
+Rockchip RK3026 board; it also drafted the code and this message and
+computed the bounds (scripts on request). Tested on that board: 2316
+frames of 30 worst-case inputs, 640x480 and 1280x720, quality 80..100,
+all within the default size (largest 3.23 B/px at q100, 1.92 at q94,
+1.33 at q83); v4l2-compliance shows no new failure. Not tested on
+other SoCs.
 
-void v4l2_metrics_show_freq(struct seq_file *m, unsigned int core_id,
-                            unsigned long cur_freq, unsigned long max_freq)
+The bounds are a per-block maximum of the Huffman-coded bits at the
+quantizers of each quality, under the energy that 8-bit samples allow,
+DC difference and byte stuffing included; frames found by search reach
+about 0.7 of them.
 
-Thanks,
-Nas
+Where a ceiling matters: GStreamer up to 1.26.11 and 1.28.7 sizes the
+request from the largest enumerated frame, 8192x8192, and asks for
+32 MiB per buffer for a 640x480 JPEG; 1.28.8 sizes it from the
+negotiated frame:
+https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/08ea5bc9fab9
 
->+{
->+	seq_printf(m, "v4l2-maxfreq-%u:\t%lu Hz\n",
->+		   core_id, clk_get_rate(clk));
->+	seq_printf(m, "v4l2-curfreq-%u:\t%lu Hz\n",
->+		   core_id, clk_get_rate(clk));
->+}
->+EXPORT_SYMBOL_GPL(v4l2_metrics_show_clock);
->diff --git a/include/media/v4l2-fh.h b/include/media/v4l2-fh.h
->index aad4b3689d7e..4f1ca1bbc61f 100644
->--- a/include/media/v4l2-fh.h
->+++ b/include/media/v4l2-fh.h
->@@ -17,6 +17,7 @@
-> #include <linux/kconfig.h>
-> #include <linux/list.h>
-> #include <linux/videodev2.h>
->+#include <media/v4l2-metrics.h>
->
-> struct video_device;
-> struct v4l2_ctrl_handler;
->@@ -27,6 +28,7 @@ struct v4l2_ctrl_handler;
->  * @list: list of file handlers
->  * @vdev: pointer to &struct video_device
->  * @ctrl_handler: pointer to &struct v4l2_ctrl_handler
->+ * @metrics: metrics information for this handle
->  * @prio: priority of the file handler, as defined by &enum v4l2_priority
->  *
->  * @wait: event' s wait queue
->@@ -43,6 +45,7 @@ struct v4l2_fh {
-> 	struct list_head	list;
-> 	struct video_device	*vdev;
-> 	struct v4l2_ctrl_handler *ctrl_handler;
->+	struct v4l2_metrics	metrics;
-> 	enum v4l2_priority	prio;
->
-> 	/* Events */
->diff --git a/include/media/v4l2-metrics.h b/include/media/v4l2-metrics.h
->new file mode 100644
->index 000000000000..fc493b65f117
->--- /dev/null
->+++ b/include/media/v4l2-metrics.h
->@@ -0,0 +1,47 @@
->+/* SPDX-License-Identifier: GPL-2.0-only */
->+/*
->+ * v4l2-metrics.h
->+ *
->+ * V4L2 metrics management.
->+ *
->+ * Maintain a per-file handle list of statistics about the hardware and
->handle
->+ * exposing it in the fdinfo.
->+ *
->+ * Copyright (C) 2026 Collabora.
->+ *
->+ * Contact: Detlev Casanova <detlev.casanova@collabora.com>
->+ */
->+#ifndef V4L2_METRICS_H
->+#define V4L2_METRICS_H
->+
->+#include <linux/types.h>
->+
->+struct clk;
->+struct seq_file;
->+
->+enum v4l2_driver_type {
->+	V4L2_DRIVER_TYPE_UNKNOWN = 0,
->+	V4L2_DRIVER_TYPE_STATELESS_ENCODER,
->+	V4L2_DRIVER_TYPE_STATELESS_DECODER,
->+
->+	V4L2_DRIVER_TYPE_COUNT,
->+};
->+
->+struct v4l2_metrics {
->+	u64 hw_usage_time;
->+	u64 hw_usage_cycles;
->+	bool has_hw_usage_cycles;
->+	enum v4l2_driver_type driver_type;
->+};
->+
->+void v4l2_metrics_init(struct v4l2_metrics *metrics);
->+void v4l2_metrics_exit(struct v4l2_metrics *metrics);
->+
->+void v4l2_metrics_update_hw_time(struct v4l2_metrics *metrics, u64
->time_ns);
->+void v4l2_metrics_update_hw_cycles(struct v4l2_metrics *metrics, u64
->cycles);
->+void v4l2_metrics_set_driver_type(struct v4l2_metrics *metrics, enum
->v4l2_driver_type type);
->+
->+void v4l2_metrics_show(struct v4l2_metrics *metrics, struct seq_file *m,
->unsigned int core_id);
->+void v4l2_metrics_show_clock(struct seq_file *m, struct clk *clk, unsigned
->int core_id);
->+
->+#endif /* V4L2_METRICS_H */
->
->--
->2.56.1
->
+Depends on "media: verisilicon: fix JPEG encoder writes past the
+CAPTURE buffer" v3:
+https://lore.kernel.org/all/20261124-hantro-buflimit-v3-0-780903970ca0@gmail.com/
+It overlaps Arun Iyengar's "media: verisilicon: Fix the JPEG encoder
+format handling" v2 2/7 in hantro_try_fmt(); whichever goes second
+needs a rebase.
+---
+ drivers/media/platform/verisilicon/hantro_jpeg.c | 25 ++++++++++++++++++++++++
+ drivers/media/platform/verisilicon/hantro_jpeg.h |  4 ++++
+ drivers/media/platform/verisilicon/hantro_v4l2.c |  6 ++++++
+ 3 files changed, 35 insertions(+)
+
+diff --git a/drivers/media/platform/verisilicon/hantro_jpeg.c b/drivers/media/platform/verisilicon/hantro_jpeg.c
+index 13a60638e43f..16ff9c49f889 100644
+--- a/drivers/media/platform/verisilicon/hantro_jpeg.c
++++ b/drivers/media/platform/verisilicon/hantro_jpeg.c
+@@ -243,3 +243,28 @@ void hantro_jpeg_header_assemble(struct hantro_jpeg_ctx *ctx)
+ 
+ 	jpeg_set_quality(ctx);
+ }
++
++/*
++ * Worst case for the quality set at the time of S_FMT, with the header
++ * above: 4:2:0, the Annex K Huffman tables and the quantizers of
++ * jpeg_set_quality(). A request is clamped to the quality 100 size, so
++ * one sized for a later quality raise still fits.
++ */
++u32 hantro_jpeg_enc_sizeimage(const struct hantro_fmt *fmt, int quality,
++			      u32 width, u32 height, u32 sizeimage)
++{
++	u32 bytes;
++
++	if (sizeimage)
++		return clamp(sizeimage, fmt->min_size,
++			     fmt->header_size + width * height * 5);
++
++	if (quality >= 95)
++		bytes = 5;
++	else if (quality >= 84)
++		bytes = 3;
++	else
++		bytes = 2;
++
++	return fmt->header_size + width * height * bytes;
++}
+diff --git a/drivers/media/platform/verisilicon/hantro_jpeg.h b/drivers/media/platform/verisilicon/hantro_jpeg.h
+index 0b49d0b82caa..1f5582df5244 100644
+--- a/drivers/media/platform/verisilicon/hantro_jpeg.h
++++ b/drivers/media/platform/verisilicon/hantro_jpeg.h
+@@ -1,5 +1,7 @@
+ /* SPDX-License-Identifier: GPL-2.0+ */
+ 
++struct hantro_fmt;
++
+ #define JPEG_HEADER_SIZE	624
+ #define JPEG_QUANT_SIZE		64
+ 
+@@ -13,3 +15,5 @@ struct hantro_jpeg_ctx {
+ };
+ 
+ void hantro_jpeg_header_assemble(struct hantro_jpeg_ctx *ctx);
++u32 hantro_jpeg_enc_sizeimage(const struct hantro_fmt *fmt, int quality,
++			      u32 width, u32 height, u32 sizeimage);
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index b3dbc0629d25..5e8d8de072a8 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -26,6 +26,7 @@
+ 
+ #include "hantro.h"
+ #include "hantro_hw.h"
++#include "hantro_jpeg.h"
+ #include "hantro_v4l2.h"
+ 
+ #define  HANTRO_DEFAULT_BIT_DEPTH 8
+@@ -386,6 +387,11 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+ 			pix_mp->plane_fmt[0].sizeimage +=
+ 				hantro_av1_mv_size(pix_mp->width,
+ 						   pix_mp->height);
++	} else if (fmt->codec_mode == HANTRO_MODE_JPEG_ENC) {
++		pix_mp->plane_fmt[0].sizeimage =
++			hantro_jpeg_enc_sizeimage(fmt, ctx->jpeg_quality,
++						  pix_mp->width, pix_mp->height,
++						  pix_mp->plane_fmt[0].sizeimage);
+ 	} else if (!pix_mp->plane_fmt[0].sizeimage) {
+ 		/*
+ 		 * For coded formats the application can specify
+
+---
+base-commit: aa0f4c41d4870a18e65772a1817af16427200371
+change-id: 20261127-hantro-enc-sizestep-4265d85ea124
+prerequisite-message-id: <20261124-hantro-buflimit-v3-0-780903970ca0@gmail.com>
+prerequisite-patch-id: bbf362b5a6b3ef0c7424c424979bbbdb7934aaf1
+prerequisite-patch-id: 3d509ba55530afd4d418732df88696e105e36512
+prerequisite-patch-id: bb3462a5633f2af738ddecf3915a8a3121e20611
+
+Best regards,
+-- 
+Sergei Khomenkov <shomenkow@gmail.com>
+
 
 
 _______________________________________________
