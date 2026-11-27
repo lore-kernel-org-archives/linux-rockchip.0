@@ -2,72 +2,96 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57BC9606A31E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 16:05:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B6AF9606A31C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Nov 2026 16:19:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PokkA5QA;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Tatk61U7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TRmo5gTk;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.a=rsa-sha256 header.s=mail20170921 header.b=TbudbJfN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:In-Reply-To:
-	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:Cc:To:In-Reply-To:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=0nEnrJXcxIwumuQmr/qZD2ZKjyvwCkB/h5QdGYlbQiE=; b=PokkA5QAZzrnB0/CvREyaujD3C
-	5iQosf5qqrGHfuQDDKmQodstkBQ78UPty+5Z0bbpq9KhI0eSA1T3KsrHBC2XEpIkNQyvLuTZo4ta8
-	KTrlCpGuw22okXfjrs6GSpr3UdoUFFDITkJtbfaOzZHOQXk3GOEA3ZJJZnX6+cv050J2ULp4tDBxw
-	JhMr2lfQC8S2qyOTPGYzwbVwMNx28ZPysc1a/fuvYyoYF2AsrPHrOrNxT5pqrAz+oxXJB7ujfVNH3
-	BH2yuG7oJQl1BEgI/qOZW0Ra9z5Od2r+dI1fW9shlyZAGTlUodWWglqfD1BTKFCBjHsO7kfATpGc9
-	iOFtOD5Q==;
+	bh=Oi0RHL13k2IRKsWT34Ce7TRdeP1bxH1Q6mZWL3XfddI=; b=TRmo5gTkUKSfr4gXmUvi2b2xN2
+	UXrBtHfqqUKineWKXJrO5JysOKzleHMuw2RV0mXOOsdKIvKc/q4vhRGYOKhAi7Ph2EjZD0qua7zEh
+	a6z1IBPtjvBAlbnq08HV9vhm+7YVOBlMDhqs6PsISxxEL7gTb3lv6PNIcEdB/lfPTW1yyXgQ59suV
+	QqC6/1uaQCDawpYrzL9fY6JNiRJPx2UourE8RvEvwFeyh5UQ/7AHqT1j+R4T6n6GAX1i7Uo/GP1h5
+	Y6d1wrDAGnnxFWxE2cUI0/GxBl6+DXnVMB5vPpDsOAauzYvDtA6cfVxe53flvZxlT4Paj4SJnonqK
+	k8z1vcnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWyRh-0000000GzoX-1ULK;
-	Fri, 27 Nov 2026 16:05:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xWyfd-0000000H25r-2aZU;
+	Fri, 27 Nov 2026 16:19:33 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWyQV-0000000GzB8-3RZY;
-	Fri, 27 Nov 2026 16:03:55 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7A0664338F;
-	Fri, 27 Nov 2026 16:03:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 686461F000C1;
-	Fri, 27 Nov 2026 16:03:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795795435;
-	bh=wtVEXrF7PDLdob07RHXl5wJ+Psj2mWm2urShu9UZE9M=;
-	h=Subject:From:To:Cc:In-Reply-To:References:Date;
-	b=Tatk61U76lqiOESNFnTt0uo9+grvZOcfVkftvVc/AKPTdDhSlYKQuP4NzkeBFTR2h
-	 8nDvzvbwoXde+P20jaKhtfmUz8lyfQ/FIUlnYijgzDohJooAoIsx55AUR2nEVmpP6T
-	 4XPaxQrvNrZTz1jC+KpG3HFrs7VXepNG4Y0fwTgSM7uckaoFRnlrgHWewRk1vQUqaD
-	 5cYP6lwMyyXD7u+afMt2dUGhS6crF48qlRSgLkFeFqNxP6PzouQa74S7Az/nvtepDa
-	 qEnGkKuoZGlqfNJlRXs88yERql1yRYMsQoPnSkTaxCyMoTJmUcYepNNW7XiAXwl5bV
-	 jLOiG1S2oMEoA==
+	id 1xWyfI-0000000H1v5-24op
+	for linux-rockchip@lists.infradead.org;
+	Fri, 27 Nov 2026 16:19:23 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20261127161908euoutp01b95b4d760714dd5038ad3c867b964d73~r80Oyb0cf2743327433euoutp01J
+	for <linux-rockchip@lists.infradead.org>; Fri, 27 Nov 2026 16:19:08 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20261127161908euoutp01b95b4d760714dd5038ad3c867b964d73~r80Oyb0cf2743327433euoutp01J
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1795796348;
+	bh=hW4PnFCT49QnJHLHRZYt9yWGbDa7JaYp1uG9G1RshfE=;
+	h=From:Date:Subject:In-Reply-To:To:Cc:References:From;
+	b=TbudbJfN2KEAcseLCdqwwdr/3N0wOH56zgL2BIimSzpkBxuP/owSfOiCEhof6SP2C
+	 MiUaDOnX9CG+igbpmtHKVvakO0UfRcR5O2R1KPGRA2LdUyj1tOB3B0CQ7X9vCoZtbo
+	 Am8wlPKUb0JuspNHw5s4QNGgclbyXZMM+UasxgR8=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20261127161908eucas1p2fae4a07f1d72df6f675b1e4015727f13~r80OX2Anv1885618856eucas1p2L;
+	Fri, 27 Nov 2026 16:19:08 +0000 (GMT)
+Received: from AMDC4942.eu.corp.samsungelectronics.net (unknown
+	[106.210.136.40]) by eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20261127161907eusmtip2fc9fbad8311ea1a87aa12e400dd147cb~r80Ngzdhl2969229692eusmtip26;
+	Fri, 27 Nov 2026 16:19:07 +0000 (GMT)
+From: Michal Wilczynski <m.wilczynski@samsung.com>
+Date: Fri, 27 Nov 2026 17:19:01 +0100
+Subject: [PATCH 3/3] drm/bridge: inno-hdmi: Don't give the DDC adapter an OF
+ node
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH v3] phy: rockchip: inno-dsidphy: Fix 1.5GHz timing
- table rate units
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Xiangyu Zhu <jerrytech92@163.com>
-Cc: vkoul@kernel.org, neil.armstrong@linaro.org, mani@kernel.org, 
- heiko@sntech.de, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-In-Reply-To: <20261124092154.2280807-1-jerrytech92@163.com>
-References: <20261124092154.2280807-1-jerrytech92@163.com>
-Date: Fri, 27 Nov 2026 21:33:48 +0530
-Message-Id: <179579542861.13164.10889997089822321805.b4-reply@b4>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=975; i=mani@kernel.org;
- h=from:subject:message-id; bh=fqhy0jTAmYLSiPQeXBdoCC/NsqaLflMfCK0DiJd7z00=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBrCannhwo7BH8kdLwZBak4s8F3AlxwM0HxDBW9h
- St7b+H6HEqJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCawmp5wAKCRBVnxHm/pHO
- 9RtRB/42BG60xUYUb5E53oEI4AA7CqyGQ7AovZH+QzrKyDt+7Q/2TvppRwuSS6cD2I15x8EGkAa
- zvtOhyw3U3kXgqkUjNTCIZ8JA6CwDichviSwJd3pi9yegk946fdARYH4YYHbkeQ06tDEKnFiWkz
- nyOLdMErq2WRNgEvr4upPaUGpzHgBMfANaWYhbNL2xzQZiGk04ACqVeeAWYFdg4oPVzcJXvmWYG
- JP95/+nyejhzMKtAPHs6DRGEfJnkWIwe+46Xo0oeXPtjPsPUe+Ltr/wjY0Zx0i0UyY3kIn59ykA
- 4b4JwJ9GsrMOJAXni1USepexj0fYm1f9V2Pd+qNqlm9Sd2Ty
-X-Developer-Key: i=mani@kernel.org; a=openpgp;
- fpr=C668AEC3C3188E4C611465E7488550E901166008
+Message-Id: <20261127-inno-hdmi-ddc-of-node-v1-3-465622e1b7ad@samsung.com>
+In-Reply-To: <20261127-inno-hdmi-ddc-of-node-v1-0-465622e1b7ad@samsung.com>
+To: Andy Yan <andyshrk@163.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,  Laurent Pinchart
+	<Laurent.pinchart@ideasonboard.com>,  Jernej Skrabec
+	<jernej.skrabec@gmail.com>,  Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,  Maxime Ripard
+	<mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,  David Airlie
+	<airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,  Yakir Yang
+	<kuankuan.y@gmail.com>, Dmitry Baryshkov <lumag@kernel.org>,  Heiko Stuebner
+	<heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,  Maud Spierings
+	<maud_spierings@murena.io>,  Byron Stanoszek <gandalf@winds.org>, Dominique
+	Belhachemi <db@domibel.de>,  Owen O'Hehir <oo.hehir@gmail.com>,  Michal
+	Wilczynski <m.wilczynski@samsung.com>
+X-Mailer: b4 0.15-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1611;
+	i=m.wilczynski@samsung.com; h=from:subject:message-id;
+	bh=PekPu8YIeS97KeLHxN3IfvfgL2ZCxwDu1aOL1IF9Aio=;
+	b=owGbwMvMwCGWumv6zndzRCIZT6slMWRzri1fLcSmmGKvGXY7KeviEk6XVxoSnKo+1w1/t+Xzc
+	f0qeZXbUcrCIMbBICumyHJ2Y7SR5D+Gp+XHH/+CmcPKBDKEgYtTACbyV4Xhn0r+v+W/WJwebM9Z
+	wfc/LG3P25ePnF56euxSVnvMUbu9O4/hf0j183bZlVf2cX1c8uZm9cPKp/Uv4vX3TWZMYDWLVIn
+	JZgEA
+X-Developer-Key: i=m.wilczynski@samsung.com; a=openpgp;
+	fpr=CDB15B3219FE00E577C7E3FA65BA97B9EE9C1459
+X-CMS-MailID: 20261127161908eucas1p2fae4a07f1d72df6f675b1e4015727f13
+X-Msg-Generator: CA
+X-RootMTR: 20261127161908eucas1p2fae4a07f1d72df6f675b1e4015727f13
+X-EPHeader: CA
+X-CMS-RootMailID: 20261127161908eucas1p2fae4a07f1d72df6f675b1e4015727f13
+References: <20261127-inno-hdmi-ddc-of-node-v1-0-465622e1b7ad@samsung.com>
+	<CGME20261127161908eucas1p2fae4a07f1d72df6f675b1e4015727f13@eucas1p2.samsung.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261127_081913_871025_51FB14BF 
+X-CRM114-Status: GOOD (  11.50  )
+X-Spam-Score: -4.4 (----)
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,35 +104,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 2026-11-24 17:21 +0800, Xiangyu Zhu wrote:
-> The 1.5 GHz Innosilicon DSI PHY timing table stores its rates in Mbps,
-> whereas the other timing tables and the lookup loop use Hz. When
-> enabling a mode, the driver compares inno->pll.rate in Hz (e.g.
-> 372000000) against timings[].rate in Mbps (e.g. 400), so no entry
-> matches. The loop falls through to the last, fastest entry and programs
-> an excessively large TLPX/LPX counter, preventing panels from decoding
-> low-power DCS initialization commands.
-> 
-> Convert the 1.5 GHz timing table rate values to Hz so the lookup
-> selects the matching entry.
-> 
-> Tested on an RK3506B board: the panel receives the low-power init
-> sequence and the framebuffer console displays properly.
-> 
-> Fixes: 785a9d5bb145 ("phy: rockchip: inno-dsidphy: Add support for rk3506")
-> Signed-off-by: Xiangyu Zhu <jerrytech92@163.com>
+inno_hdmi_i2c_adapter() sets the DDC adapter's of_node to the HDMI
+controller's node. When the adapter is registered, the I2C core then
+tries to create an I2C client for every child of that node. On RK3036,
+RK3128 and the JH7110 the only child is the OF graph 'ports' node, which
+is not an I2C device, so each boot logs, here on the JH7110:
 
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+  i2c i2c-7: of_i2c: modalias failure on .../controller/ports
+  i2c i2c-7: Failed to create I2C device for .../controller/ports
 
-- Mani
+Nothing on the DDC bus is described in DT, and nothing looks the
+adapter up by its node, so don't assign one, as dw-hdmi doesn't either.
 
+Fixes: 412d4ae6b7a5 ("drm/rockchip: hdmi: add Innosilicon HDMI support")
+Reported-by: Owen O'Hehir <oo.hehir@gmail.com>
+Closes: https://lore.kernel.org/all/20261012175941.258219-1-electronicconsult1@gmail.com/
+Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+---
+ drivers/gpu/drm/bridge/inno-hdmi.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/bridge/inno-hdmi.c b/drivers/gpu/drm/bridge/inno-hdmi.c
+index bbc90ae9eaae04166d502c05fde52e126462b8be..bf39483d483e00ccef0daefb80f6579d5c86815a 100644
+--- a/drivers/gpu/drm/bridge/inno-hdmi.c
++++ b/drivers/gpu/drm/bridge/inno-hdmi.c
+@@ -1044,7 +1044,6 @@ static struct i2c_adapter *inno_hdmi_i2c_adapter(struct inno_hdmi *hdmi)
+ 	adap = &i2c->adap;
+ 	adap->owner = THIS_MODULE;
+ 	adap->dev.parent = hdmi->dev;
+-	adap->dev.of_node = hdmi->dev->of_node;
+ 	adap->algo = &inno_hdmi_algorithm;
+ 	strscpy(adap->name, "Inno HDMI", sizeof(adap->name));
+ 	i2c_set_adapdata(adap, hdmi);
+
+-- 
+2.34.1
 
 
 _______________________________________________
